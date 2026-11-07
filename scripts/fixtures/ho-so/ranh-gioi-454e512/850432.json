@@ -1,0 +1,223 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "850432",
+  "nhom": "8504",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1800#soan-850432",
+    "ngay": "2026-11-07"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "8504321",
+      "nguon": "tieuDe.8504321",
+      "trich": "8504321 Máy biến đổi đo lường(1) (biến áp và biến dòng) loại công suất danh định không quá 5 kVA",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy biến đổi đo lường"
+        },
+        {
+          "fact": "congSuatBieuKien",
+          "op": "<=",
+          "value": 5,
+          "donVi": "kVA"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "8504324",
+      "nguon": "tieuDe.8504324",
+      "trich": "8504324 Loại khác, có công suất danh định không quá 10 kVA",
+      "dieuKienSo": [
+        {
+          "fact": "congSuatBieuKien",
+          "op": "<=",
+          "value": 10,
+          "donVi": "kVA"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "8504325",
+      "nguon": "tieuDe.8504325",
+      "trich": "8504325 Loại khác, có công suất danh định trên 10 kVA",
+      "dieuKienSo": [
+        {
+          "fact": "congSuatBieuKien",
+          "op": ">",
+          "value": 10,
+          "donVi": "kVA"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "85043211",
+      "nguon": "sen.85043211",
+      "trich": "Máy biến áp đôi khi được sử dụng để phối hợp trở kháng của mạch điện. Máy biến áp biến đổi điện xoay chiều ở một điện áp này sang điện áp khác ở cùng dạng sóng… máy biến áp thích ứng có tỷ số vòng dây là 2",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Biến áp thích ứng"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "phối hợp trở kháng"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85043219",
+      "nguon": "tax.85043219",
+      "trich": "85043219 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85043220",
+      "nguon": "tax.85043220",
+      "trich": "85043220 - - - Loại khác, sử dụng cho đồ chơi, mô hình thu nhỏ hoặc các mô hình giải trí tương tự",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "đồ chơi",
+            "mô hình thu nhỏ",
+            "mô hình giải trí"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85043230",
+      "nguon": "tax.85043230",
+      "trich": "85043230 - - - Loại khác, tần số tối thiểu 3 MHz",
+      "dieuKienSo": [
+        {
+          "fact": "tanSo",
+          "op": ">=",
+          "value": 3,
+          "donVi": "MHz"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85043241",
+      "nguon": "sen.85043241",
+      "trich": "Máy biến áp đôi khi được sử dụng để phối hợp trở kháng của mạch điện. Máy biến áp biến đổi điện xoay chiều ở một điện áp này sang điện áp khác ở cùng dạng sóng… máy biến áp thích ứng có tỷ số vòng dây là 2",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Biến áp thích ứng"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "phối hợp trở kháng"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85043249",
+      "nguon": "tax.85043249",
+      "trich": "85043249 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85043251",
+      "nguon": "sen.85043251",
+      "trich": "Máy biến áp đôi khi được sử dụng để phối hợp trở kháng của mạch điện. Máy biến áp biến đổi điện xoay chiều ở một điện áp này sang điện áp khác ở cùng dạng sóng… máy biến áp thích ứng có tỷ số vòng dây là 2",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Biến áp thích ứng"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "phối hợp trở kháng"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85043259",
+      "nguon": "tax.85043259",
+      "trich": "85043259 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "8504321",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8504321 \"Máy biến đổi đo lường(1) (biến áp và biến dòng) loại công suất danh định không quá 5 kVA\" ⇒ tenLoai \"Máy biến đổi đo lường\" + congSuatBieuKien <= 5 kVA; ngoặc \"(biến áp và biến dòng)\" là thuyết minh (PHU)"
+    },
+    {
+      "ma": "85043211",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85043211 \"Biến áp thích ứng (SEN)\" ⇒ tenLoai \"Biến áp thích ứng\" (giống .41/.51, phân biệt theo tầng công suất)"
+    },
+    {
+      "ma": "85043219",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85043219 \"Loại khác\" trần ⇒ không điều kiện (tương tự .49/.59)"
+    },
+    {
+      "ma": "85043220",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85043220 \"Loại khác, sử dụng cho đồ chơi, mô hình thu nhỏ hoặc các mô hình giải trí tương tự\" ⇒ chỉ điều kiện của vế: dungCho mảng [đồ chơi, mô hình thu nhỏ, mô hình giải trí] (\"hoặc\" ⇒ mảng); dòng \"Loại khác…\" máy tự phủ định anh em (không ghi phanConLai)"
+    },
+    {
+      "ma": "85043230",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85043230 \"Loại khác, tần số tối thiểu 3 MHz\" ⇒ tanSo >= 3 MHz; máy tự phủ định anh em"
+    },
+    {
+      "ma": "8504324",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8504324 \"Loại khác, có công suất danh định không quá 10 kVA\" ⇒ chỉ điều kiện của vế: congSuatBieuKien <= 10 kVA; tieuDe.8504325 \"…trên 10 kVA\" ⇒ > 10 kVA"
+    },
+    {
+      "ma": "85043220",
+      "loai": "DUNG",
+      "ghiChu": "Cấu trúc chặn: .20/.30 là dòng \"Loại khác, <vế>\" ở GỐC, máy phủ định mọi anh em cùng gốc — trong đó tầng 8504324 (≤10 kVA) và 8504325 (>10 kVA) chia kín trục công suất nên không vector nào đồng thời thoả điều kiện vế của .20/.30 VÀ phủ định cả hai tầng ⇒ cong2-dong-khong-toi-duoc:85043220/.30 không sửa được không bịa chữ (biến áp dùng cho đồ chơi 8 kVA về mặt chữ thuộc cả .20 lẫn tầng .4 — biểu tự chồng). Báo Claude"
+    },
+    {
+      "ma": "85043211",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Nghĩa hẹp theo SEN: sen.85043211 \"được sử dụng để phối hợp trở kháng của mạch điện … máy biến áp thích ứng\" ⇒ thêm congDung \"phối hợp trở kháng\" — biến áp thích ứng theo SEN dùng phối hợp trở kháng mạch điện."
+    },
+    {
+      "ma": "85043241",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Nghĩa hẹp theo SEN: sen.85043241 \"được sử dụng để phối hợp trở kháng của mạch điện … máy biến áp thích ứng\" ⇒ thêm congDung \"phối hợp trở kháng\" — biến áp thích ứng theo SEN dùng phối hợp trở kháng mạch điện."
+    },
+    {
+      "ma": "85043251",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Nghĩa hẹp theo SEN: sen.85043251 \"được sử dụng để phối hợp trở kháng của mạch điện … máy biến áp thích ứng\" ⇒ thêm congDung \"phối hợp trở kháng\" — biến áp thích ứng theo SEN dùng phối hợp trở kháng mạch điện."
+    }
+  ]
+}

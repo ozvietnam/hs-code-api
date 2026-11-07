@@ -396,7 +396,8 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
     },
     {
       "hs": "21069067",
@@ -409,7 +410,8 @@
           "value": "sản xuất đồ uống có cồn"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
     },
     {
       "hs": "21069069",
@@ -804,7 +806,7 @@
     {
       "ma": "210690",
       "loai": "DUNG",
-      "ghiChu": "DỪNG — khoá lô 22 đã gỡ THIEU_KHOA (chuaCon ở 2106905/2106906, honHopHoaChatVoiThucPham ở 21069091; cổng 0, 3, 5 xanh), còn đỏ cổng 1/2: (1) cong2-dong-khong-toi-duoc:21069066 — .66 \"Loại khác, sử dụng để sản xuất đồ uống có cồn, dạng lỏng\" và .67 \"Loại khác, sử dụng để sản xuất đồ uống có cồn, dạng khác\" đều là \"Loại khác, <vế>\" nên phủ định lẫn nhau; .67 chỉ mang được congDung (\"dạng khác\" không đọc ra dangLong KHONG, phanConLai cấm trên dòng \"Loại khác…\") ⇒ .66 không tới được (lộ ra khi tiêu đề 2106906 có điều kiện); (2) cong2-dong-khong-toi-duoc:21069019 và :21069072 — tên tiêu đề/dòng là tiền tố tên dòng con cụ thể hơn (\"Đậu phụ\" ⊂ \"Đậu phụ tươi\"; \"Thực phẩm bảo vệ sức khỏe\" ⊂ \"… từ sâm\"), như trước; (3) cong1-khong-phu-kin:210690~r2701 và :r2704 — hai tầng không mã không có con \"Loại khác\", hai con đều đòi \"sản xuất đồ uống có cồn\" (khoảng trống của chữ biểu), như trước; (4) MỚI: cong2-chong-lan-truc:21069091:21069092,…,21069098 — .91 (honHopHoaChatVoiThucPham + congDung \"chế biến thực phẩm\") chồng trục với các dòng tên .92–.98; có hàng thật cho vài cặp (xirô pha hương liệu/chế phẩm hương liệu dùng để chế biến thực phẩm) nhưng không có hàng thật cho .91↔.96 \"Sản phẩm dinh dưỡng y tế khác\", .91↔.97 \"Tempeh\" ⇒ không khai chongLanTruc (vòng 8), không bịa viDuHang."
+      "ghiChu": "DỪNG — khoá lô 22 đã gỡ THIEU_KHOA (chuaCon ở 2106905/2106906, honHopHoaChatVoiThucPham ở 21069091; cổng 0, 3, 5 xanh), còn đỏ cổng 1/2: (1) [Claude gỡ 07/11/2026, #1109: .66/.67 \"Loại khác, <vế>\" khai phanConLai true ⇒ chỉ phủ định anh em ĐỨNG TRƯỚC; .67 phủ định .66 nên \"dạng khác\" = không phải dạng lỏng] (2) cong2-dong-khong-toi-duoc:21069019 và :21069072 — tên tiêu đề/dòng là tiền tố tên dòng con cụ thể hơn (\"Đậu phụ\" ⊂ \"Đậu phụ tươi\"; \"Thực phẩm bảo vệ sức khỏe\" ⊂ \"… từ sâm\"), như trước; (3) cong1-khong-phu-kin:210690~r2701 và :r2704 — hai tầng không mã không có con \"Loại khác\", hai con đều đòi \"sản xuất đồ uống có cồn\" (khoảng trống của chữ biểu), như trước; (4) MỚI: cong2-chong-lan-truc:21069091:21069092,…,21069098 — .91 (honHopHoaChatVoiThucPham + congDung \"chế biến thực phẩm\") chồng trục với các dòng tên .92–.98; có hàng thật cho vài cặp (xirô pha hương liệu/chế phẩm hương liệu dùng để chế biến thực phẩm) nhưng không có hàng thật cho .91↔.96 \"Sản phẩm dinh dưỡng y tế khác\", .91↔.97 \"Tempeh\" ⇒ không khai chongLanTruc (vòng 8), không bịa viDuHang."
     }
   ]
 }
