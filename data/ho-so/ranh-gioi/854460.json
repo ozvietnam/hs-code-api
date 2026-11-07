@@ -13,6 +13,20 @@
   "duyet": null,
   "dieuKienNut": [
     {
+      "id": "854460",
+      "nguon": "tieuDe.854460",
+      "trich": "Các vật dẫn điện khác(*), dùng cho điện áp trên 1000 V",
+      "dieuKienSo": [
+        {
+          "fact": "dienAp",
+          "op": ">",
+          "value": 1000,
+          "donVi": "V"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
       "id": "8544601",
       "nguon": "tieuDe.8544601",
       "trich": "8544601 Dùng cho điện áp trên 1 kV nhưng không quá 36 kV",
@@ -212,8 +226,8 @@
     },
     {
       "ma": "854460",
-      "loai": "DUNG",
-      "ghiChu": "cong1-khong-phu-kin:854460:dienAp=999.999 — ràng buộc \"dùng cho điện áp trên 1000 V\" nằm ở tiêu đề PHÂN NHÓM (ngoài cây các dòng/tầng của PN6, máy không đọc): vector điện áp <= 1 kV không rơi vào tầng nào (.1 > 1 kV, .2 > 36 kV, .3 > 66 kV) và 854460 không có dòng \"Loại khác\" ở gốc. Không thêm được điều kiện chữ tầng không nói (tiền lệ 030633). Báo Claude."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.854460 \"Các vật dẫn điện khác(*), dùng cho điện áp trên 1000 V\" ⇒ phạm vi phân nhóm (dieuKienNut[854460]) — chỉ để cổng 1 bỏ vector ngoài phân nhóm, không vào sổ tay lúc chạy (#1109)."
     }
   ]
 }

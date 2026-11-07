@@ -11,7 +11,24 @@
     "ngay": "2026-11-06"
   },
   "duyet": null,
-  "dieuKienNut": [],
+  "dieuKienNut": [
+    {
+      "id": "640620",
+      "nguon": "tieuDe.640620",
+      "trich": "Đế ngoài và gót giày, bằng cao su hoặc plastic",
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": [
+            "cao su",
+            "plastic"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
   "dong8": [
     {
       "hs": "64062010",
@@ -53,8 +70,8 @@
     },
     {
       "ma": "640620",
-      "loai": "DUNG",
-      "ghiChu": "cong1-khong-phu-kin không sửa được: cụm 640620 chỉ có hai con \"Bằng cao su\" (.10) và \"Bằng plastic\" (.20), không có con \"Loại khác\"; vector chatLieu giá trị khác (giấy, gỗ…) thoả tiêu đề tầng cha \"Đế ngoài và gót giày, bằng cao su hoặc plastic\" mà không rơi vào con nào — không thể thêm điều kiện chữ biểu không nói, không khai được dieuKienNut cho nút PN6 (máy từ chối id), DỪNG"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.640620 \"Đế ngoài và gót giày, bằng cao su hoặc plastic\" ⇒ phạm vi phân nhóm (dieuKienNut[640620]) — chỉ để cổng 1 bỏ vector ngoài phân nhóm, không vào sổ tay lúc chạy (#1109)."
     }
   ]
 }
