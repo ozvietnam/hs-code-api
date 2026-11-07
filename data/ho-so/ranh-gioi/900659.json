@@ -39,7 +39,8 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
     }
   ],
   "dong8": [
@@ -108,11 +109,6 @@
   ],
   "ghiChuSoan": [
     {
-      "ma": "90065921",
-      "loai": "DUNG",
-      "ghiChu": "cong2-dong-khong-toi-duoc:90065921 — dòng .21 \"Máy vẽ ảnh laser\" (dưới tiêu đề 9006592) trùng tên với giá trị thứ nhất của .30 \"Loại khác, máy vẽ ảnh laser hoặc máy tạo dựng ảnh với bộ xử lý ảnh mành\" ở tầng gốc: mọi vector làm .21 CO đều làm nhóm phủ định .30 MÂU THUẪN (chỉ phân biệt qua các phủ định Loại khác mà máy đọc CHƯA BIẾT); ngoài bảng luật chung ⇒ DỪNG theo QUY-TRINH mục 5."
-    },
-    {
       "ma": "9006591",
       "loai": "QUYET_DINH",
       "ghiChu": "tieuDe.9006591 \"Sử dụng phim cuộn khổ rộng dưới 35 mm\" ⇒ dungCho \"phim cuộn khổ rộng dưới 35 mm\" (trọn cụm đích, thuộc tính của hàng đích đi cùng đích — LUAT chung dòng 8)"
@@ -151,6 +147,11 @@
       "ma": "90065990",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.90065990 \"Loại khác\" trần ⇒ không điều kiện"
+    },
+    {
+      "ma": "900659",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude (#1109): tầng 9006592 \"Loại khác, dùng để chuẩn bị khuôn in hoặc ống in\" chỉ phủ định anh em ĐỨNG TRƯỚC (9006591) ⇒ phanConLai true. Máy vẽ ảnh laser dùng chuẩn bị khuôn in ⇒ .21; máy vẽ ảnh laser dùng việc khác ⇒ .30 (.30 phủ định 9006592 theo mặc định)."
     }
   ]
 }

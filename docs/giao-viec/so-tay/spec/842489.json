@@ -60,7 +60,8 @@
             "linh kiện của chúng"
           ]
         }
-      ]
+      ],
+      "phanConLai": true
     },
     "84248950": {
       "dieuKienSo": [
@@ -68,7 +69,8 @@
           "fact": "hoatDongBangDien",
           "op": "CO"
         }
-      ]
+      ],
+      "phanConLai": true
     },
     "84248990": {
       "dieuKienSo": [
@@ -106,9 +108,9 @@
       "ghiChu": "tax.84248990 \"Loại khác, không hoạt động bằng điện\" ⇒ chỉ vế: hoatDongBangDien KHONG."
     },
     {
-      "ma": "84248940",
-      "loai": "DUNG",
-      "ghiChu": "cong2-dong-khong-toi-duoc:84248940 — dòng \"Loại khác, <vế>\" bị luật đi phủ định MỌI anh em, kể cả hai dòng \"Loại khác, <vế>\" đứng sau là .50 \"Loại khác, hoạt động bằng điện\" và .90 \"Loại khác, không hoạt động bằng điện\" (hai vế bù nhau: hoatDongBangDien CO ∨ KHONG phủ kín mọi hàng) ⇒ không vector nào làm .40 CO. Cách biểu diễn hiện có không diễn đạt được thứ tự \"Loại khác, vế\" → \"Loại khác, vế\" (phanConLai chỉ áp cho dòng KHÔNG phải \"Loại khác\"); không đổi điều kiện để né. DỪNG, báo Claude."
+      "ma": "842489",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude (#1109): \"Loại khác, <vế>\" chỉ phủ định anh em ĐỨNG TRƯỚC (thứ tự dòng): .40 (mạch in) ⊥ .10/.20; .50 (điện) ⊥ .10/.20/.40 ⇒ phanConLai true; .90 đứng cuối giữ mặc định. Máy phun dùng sản xuất mạch in hoạt động bằng điện ⇒ .40."
     }
   ]
 }

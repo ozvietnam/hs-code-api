@@ -3,7 +3,7 @@ import './test-isolate-data.mjs';
 import { createRequire } from 'module';
 import { execFileSync } from 'child_process';
 const require = createRequire(import.meta.url);
-const { nhapDongCung, gieoNhap, THU_MUC_DONG_CUNG_38864C8, THU_MUC_DONG_CUNG_C05A07A } = await import('./fixtures/ho-so/nhap-dong-cung.mjs');
+const { nhapDongCung, gieoNhap, THU_MUC_DONG_CUNG_38864C8, THU_MUC_DONG_CUNG_C05A07A, THU_MUC_DONG_CUNG_454E512 } = await import('./fixtures/ho-so/nhap-dong-cung.mjs');
 const C = require('../lib/ho-so/cong-ranh-gioi.js');
 const S = require('../lib/so-tay.js');
 let pass = 0; let fail = 0;
@@ -42,6 +42,25 @@ check('2c bỏ dieuKienNut[870323] ⇒ cong1-khong-phu-kin trở lại', (k2.loi
   b.dong8 = b.dong8.map((m) => (m.hs === '85114033' ? { ...m, dieuKienSo: [{ fact: 'dungCho', op: 'CONG_DUNG', value: '87.04' }] } : m));
   const r2 = C.kiemRanhGioi('851140', b);
   check('4b 851140 bỏ 87.05 khỏi mọi con ⇒ dải hở thật (dungCho=87.05)', r2.loi.some((l) => /cong1-khong-phu-kin:8511403:.*87\.05/.test(l)), r2.loi.filter((l) => l.startsWith('cong1')));
+}
+// "Loại khác, <vế>" khai phanConLai true ⇒ chỉ phủ định anh em ĐỨNG TRƯỚC (#1109, 850432): .20 "Loại khác, dùng cho đồ chơi"
+// đứng trước tầng 8504324 "Loại khác, ≤ 10 kVA" — biến áp đồ chơi 8 kVA thuộc .20. Không khai ⇒ như cũ (.20 không tới được).
+{
+  const b0 = nhapDongCung('850432', THU_MUC_DONG_CUNG_454E512);
+  const r0 = C.kiemRanhGioi('850432', b0);
+  check('5a 850432 chưa khai ⇒ cong2-dong-khong-toi-duoc:85043220 (luật cũ: LK có vế phủ định MỌI anh em)', r0.loi.some((l) => l === 'cong2-dong-khong-toi-duoc:85043220'), r0.loi.slice(0, 4));
+  const b = nhapDongCung('850432', THU_MUC_DONG_CUNG_454E512);
+  const dat = (id) => { const m = [...(b.dong8 || []), ...(b.dieuKienNut || [])].find((x) => (x.hs || x.id) === id); m.phanConLai = true; };
+  ['85043220', '85043230', '8504324'].forEach(dat);
+  const r = C.kiemRanhGioi('850432', b);
+  check('5b 850432 khai phanConLai ⇒ hết dong-khong-toi-duoc, cổng 0 sạch', !r.loi.some((l) => /dong-khong-toi-duoc|cong0/.test(l)), r.loi.slice(0, 4));
+  const den = (id, h) => C.thuViDuHang('850432', b, id, null, h);
+  check('5c biến áp đồ chơi 8 kVA ⇒ .20 thoả, tầng .4 không', den('85043220', 'Biến áp dùng cho đồ chơi, công suất 8 kVA').thoa === true && den('8504324', 'Biến áp dùng cho đồ chơi, công suất 8 kVA').thoa === false);
+  check('5d biến áp khô 8 kVA ⇒ tầng .4', den('8504324', 'Máy biến áp khô công suất 8 kVA').thoa === true);
+  // Khai trên anh em ĐỨNG CUỐI là thừa (mặc định đã phủ định mọi anh em = anh em đứng trước).
+  const b2 = nhapDongCung('850432', THU_MUC_DONG_CUNG_454E512);
+  b2.dieuKienNut.find((x) => x.id === '8504325').phanConLai = true;
+  check('5e phanConLai trên "Loại khác, <vế>" đứng cuối ⇒ cong0-phan-con-lai-thua', C.kiemRanhGioi('850432', b2).loi.includes('cong0-phan-con-lai-thua:8504325'));
 }
 console.log(`\n${pass} pass, ${fail} fail`);
 process.exit(fail ? 1 : 0);
