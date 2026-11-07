@@ -35,7 +35,10 @@ check('tên tiếng Việt cho dòng "Loại khác" ghép tên nhóm', /Bộ ph�
 // 2. Thuế: 8708.29.99 ACFTA "0 (-ID, PH, CN)" → hàng CN KHÔNG được 0%; 7326.90.99 "0 (-KH)" → CN được 0%
 check('ACFTA CN bị loại trừ → acftaCn null + ghi chú KHÔNG được hưởng, MFN 15', o[0].thue.acftaCn === null && /KHÔNG được hưởng/.test(o[0].thue.acftaNoteVi) && o[0].thue.mfn === '15', JSON.stringify(o[0].thue));
 check('ACFTA CN được hưởng ở 7326 → acftaCn 0, VAT có', mat.thue.acftaCn === 0 && mat.thue.vat, JSON.stringify(mat.thue));
-check('cờ chính sách theo mã: 8708.99.99 có dòng BLOCKING (ATKT & BVMT) + level', (() => { const x = o.find((y) => y.hs === '87089999'); return x && x.coChinhSach.level === 'BLOCKING' && /12\/2022\/TT-BGTVT/.test(x.coChinhSach.lineVi); })(), JSON.stringify(o.find((y) => y.hs === '87089999')?.coChinhSach));
+// #1143: 12/2022/TT-BGTVT + 62/2024/TT-BGTVT hết hiệu lực 01/7/2026; khung NĐ 37/2026 với
+// TT 49/2026/TT-BXD chỉ giữ các nhóm phụ tùng đích danh (vd vành 8708.70) — "phụ tùng khác"
+// 8708.99 không còn KTCL cửa khẩu → dòng cs hạ INFO kèm ghi chú hết hiệu lực.
+check('cờ chính sách theo mã: 8708.99.99 dòng ATKT cũ hạ INFO + ghi VB hết hiệu lực (#1143)', (() => { const x = o.find((y) => y.hs === '87089999'); return x && x.coChinhSach.level === 'INFO' && /hết hiệu lực/.test(x.coChinhSach.lineVi) && /12\/2022\/TT-BGTVT/.test(x.coChinhSach.lineVi); })(), JSON.stringify(o.find((y) => y.hs === '87089999')?.coChinhSach));
 
 // 3. Nhựa + bộ phận máy (Phần XVI) → 3926.90.99, rủi ro CAO nhắc Chú giải 2 Phần XVI
 const topMach = lastOf('843149');

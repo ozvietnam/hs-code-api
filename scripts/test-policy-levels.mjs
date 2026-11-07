@@ -78,3 +78,19 @@ check(`toàn biểu thuế: chưa phân loại ${unclassified}/${total} < 1%`, t
 
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
+
+// #1143: dòng cs trích dẫn văn bản đã bị thay thế → hạ INFO kèm ghi chú (không cờ đỏ theo luật chết)
+const csKinh = classifyPolicy('SPHH phải KTNN về CL khi NK (01/2021/TT-BLĐTBXH)', {});
+const dlKinh = csKinh.policyLines.find((l) => l.rule === 'CS_VB_HET_HIEU_LUC');
+check('#1143 kính 90049050: dòng 01/2021/TT-BLĐTBXH hạ INFO + ghi thay bởi 16/2026/TT-BNV',
+  dlKinh && dlKinh.level === 'INFO' && /16\/2026\/TT-BNV/.test(dlKinh.text) && /hết hiệu lực/.test(dlKinh.text),
+  JSON.stringify(csKinh.policyLines.map((l) => [l.level, l.text])));
+check('#1143 kính: policyLevel không còn BLOCKING khi chỉ có dòng này', csKinh.policyLevel !== 'BLOCKING');
+
+const csCntt = classifyPolicy('SPHH lĩnh vực CNTT và VT bắt buộc phải chứng nhận hợp quy và công bố hợp quy (29/2025/TT-BKHCN-PL1)', {});
+const dlCntt = csCntt.policyLines.find((l) => l.rule === 'CS_VB_HET_HIEU_LUC');
+check('#1143 90278990: 29/2025/TT-BKHCN (gộp vào 36/2026) hạ INFO + ghi thay thế',
+  dlCntt && dlCntt.level === 'INFO' && /36\/2026\/TT-BKHCN/.test(dlCntt.text));
+
+check('#1143: VB còn sống (15/2024/TT-BYT) KHÔNG bị hạ — vẫn CONTROL BLOCKING',
+  classifyPolicy('Phải kiểm tra an toàn thực phẩm nhập khẩu (15/2024/TT-BYT)', {}).policyLines[0].level === 'BLOCKING');
