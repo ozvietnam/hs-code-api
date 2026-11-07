@@ -105,7 +105,7 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": [
-            "Dạng thanh",
+            "thanh",
             "que",
             "các dạng hình"
           ]
@@ -114,23 +114,40 @@
     }
   },
   "dieuKienNut": {
-    "3916901": {
+    "391690": {
       "dieuKienSo": [
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "polyme trùng hợp"
+          "value": [
+            "sợi monofilament",
+            "thanh",
+            "que",
+            "các dạng hình"
+          ]
+        }
+      ],
+      "nguon": "nhom3916.nhom",
+      "trich": "Nhóm này bao gồm sợi monofilament có kích thước mặt cắt ngang bất kỳ trên 1mm, thanh, que và các dạng hình"
+    },
+    "3916901": {
+      "dieuKienSo": [
+        {
+          "fact": "nhomPolyme",
+          "op": "TRONG",
+          "value": [
+            "TRUNG_HOP"
+          ]
         }
       ]
     },
     "3916902": {
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
+          "fact": "nhomPolyme",
+          "op": "TRONG",
           "value": [
-            "polyme trùng ngưng",
-            "tái sắp xếp"
+            "TRUNG_NGUNG_HOAC_TAI_SAP_XEP"
           ]
         }
       ]
@@ -159,8 +176,96 @@
     },
     {
       "ma": "391690",
-      "loai": "DUNG",
-      "ghiChu": "[THIẾU KHOÁ TỪ VỰNG] Biểu chia theo VẬT LIỆU (polypropylen, polystyren, nhựa phenolic…) rồi tầng «Loại khác» chia theo HÌNH DẠNG (monofilament; thanh, que, dạng hình), nhưng spec ghi cả hai trục bằng tenLoai ⇒ hàng «polypropylen» (không nêu hình dạng) bị coi là hở. CẦN: khoá vật liệu polyme riêng để tách hai trục. — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026 (#1109): tieuDe.3916901 \"Từ các polyme trùng hợp\" / 3916902 \"Từ các polyme trùng ngưng hoặc tái sắp xếp\" là NHÓM VẬT LIỆU, trước ghi tenLoai nên hàng «polypropylen» không vào tầng trùng hợp ⇒ khoá mới nhomPolyme (đọc cả tên plastic: PP, PS, polyamit…, theo Chú giải chung Chương 39). Phạm vi phân nhóm lấy hình dạng của nhóm 39.16 (nhom3916: \"sợi monofilament…, thanh, que và các dạng hình\") — hàng không nêu hình dạng không thuộc nhóm. Hai tầng nhóm polyme ↔ bốn dòng vật liệu tự nhiên/biến đổi (.30–.60): cụm chongLanTruc khai Q1 (Chương 39 tách 39.12, 39.13 khỏi 39.01–39.11). Dòng .92 \"Dạng thanh, que và các dạng hình\" ghi tên «thanh» cho khớp phạm vi."
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "3916901",
+        "3916902",
+        "39169030",
+        "39169040",
+        "39169050",
+        "39169060"
+      ],
+      "truc": {
+        "3916901": "DAC_DIEM",
+        "3916902": "DAC_DIEM",
+        "39169030": "TEN_LOAI",
+        "39169040": "TEN_LOAI",
+        "39169050": "TEN_LOAI",
+        "39169060": "TEN_LOAI"
+      },
+      "cauHoiPhanBiet": "Plastic làm hàng là polyme trùng hợp (tầng 3916901), polyme trùng ngưng hoặc tái sắp xếp (tầng 3916902), hay là xenlulo tái sinh/dẫn xuất xenlulo (39169030), protein đã làm cứng (39169040), sợi lưu hóa (39169050), dẫn xuất hóa học của cao su tự nhiên (39169060)?",
+      "trich": {
+        "3916901": "Từ các polyme trùng hợp",
+        "3916902": "Từ các polyme trùng ngưng hoặc tái sắp xếp",
+        "39169030": "Từ xenlulo tái sinh; từ xenlulo nitrat, xenlulo acetat và các este xenlulo, ete xenlulo và các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo",
+        "39169040": "Từ các protein đã được làm cứng",
+        "39169050": "Từ sợi lưu hóa",
+        "39169060": "Từ các dẫn xuất hóa học của cao su tự nhiên"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "3916901",
+            "39169030"
+          ],
+          "khongCoHangThat": "Chương 39 tách polyme tự nhiên và polyme tự nhiên đã biến đổi (xenlulo và dẫn xuất — 39.12; protein đã làm cứng, dẫn xuất hoá học của cao su tự nhiên — 39.13; sợi lưu hoá làm từ xenlulo) khỏi sản phẩm polyme hoá tổng hợp (39.01–39.11), và chính biểu 3916.90 xếp các vật liệu này thành dòng riêng ngoài hai tầng polyme trùng hợp / trùng ngưng. Không có plastic nào vừa là polyme trùng hợp vừa là xenlulo tái sinh hoặc dẫn xuất xenlulo."
+        },
+        {
+          "cap": [
+            "3916901",
+            "39169040"
+          ],
+          "khongCoHangThat": "Chương 39 tách polyme tự nhiên và polyme tự nhiên đã biến đổi (xenlulo và dẫn xuất — 39.12; protein đã làm cứng, dẫn xuất hoá học của cao su tự nhiên — 39.13; sợi lưu hoá làm từ xenlulo) khỏi sản phẩm polyme hoá tổng hợp (39.01–39.11), và chính biểu 3916.90 xếp các vật liệu này thành dòng riêng ngoài hai tầng polyme trùng hợp / trùng ngưng. Không có plastic nào vừa là polyme trùng hợp vừa là protein đã làm cứng."
+        },
+        {
+          "cap": [
+            "3916901",
+            "39169050"
+          ],
+          "khongCoHangThat": "Chương 39 tách polyme tự nhiên và polyme tự nhiên đã biến đổi (xenlulo và dẫn xuất — 39.12; protein đã làm cứng, dẫn xuất hoá học của cao su tự nhiên — 39.13; sợi lưu hoá làm từ xenlulo) khỏi sản phẩm polyme hoá tổng hợp (39.01–39.11), và chính biểu 3916.90 xếp các vật liệu này thành dòng riêng ngoài hai tầng polyme trùng hợp / trùng ngưng. Không có plastic nào vừa là polyme trùng hợp vừa là sợi lưu hoá."
+        },
+        {
+          "cap": [
+            "3916901",
+            "39169060"
+          ],
+          "khongCoHangThat": "Chương 39 tách polyme tự nhiên và polyme tự nhiên đã biến đổi (xenlulo và dẫn xuất — 39.12; protein đã làm cứng, dẫn xuất hoá học của cao su tự nhiên — 39.13; sợi lưu hoá làm từ xenlulo) khỏi sản phẩm polyme hoá tổng hợp (39.01–39.11), và chính biểu 3916.90 xếp các vật liệu này thành dòng riêng ngoài hai tầng polyme trùng hợp / trùng ngưng. Không có plastic nào vừa là polyme trùng hợp (tổng hợp) vừa là dẫn xuất hoá học của cao su tự nhiên."
+        },
+        {
+          "cap": [
+            "3916902",
+            "39169030"
+          ],
+          "khongCoHangThat": "Chương 39 tách polyme tự nhiên và polyme tự nhiên đã biến đổi (xenlulo và dẫn xuất — 39.12; protein đã làm cứng, dẫn xuất hoá học của cao su tự nhiên — 39.13; sợi lưu hoá làm từ xenlulo) khỏi sản phẩm polyme hoá tổng hợp (39.01–39.11), và chính biểu 3916.90 xếp các vật liệu này thành dòng riêng ngoài hai tầng polyme trùng hợp / trùng ngưng. Không có plastic nào vừa là polyme trùng ngưng/tái sắp xếp vừa là xenlulo tái sinh hoặc dẫn xuất xenlulo."
+        },
+        {
+          "cap": [
+            "3916902",
+            "39169040"
+          ],
+          "khongCoHangThat": "Chương 39 tách polyme tự nhiên và polyme tự nhiên đã biến đổi (xenlulo và dẫn xuất — 39.12; protein đã làm cứng, dẫn xuất hoá học của cao su tự nhiên — 39.13; sợi lưu hoá làm từ xenlulo) khỏi sản phẩm polyme hoá tổng hợp (39.01–39.11), và chính biểu 3916.90 xếp các vật liệu này thành dòng riêng ngoài hai tầng polyme trùng hợp / trùng ngưng. Không có plastic nào vừa là polyme trùng ngưng/tái sắp xếp vừa là protein đã làm cứng."
+        },
+        {
+          "cap": [
+            "3916902",
+            "39169050"
+          ],
+          "khongCoHangThat": "Chương 39 tách polyme tự nhiên và polyme tự nhiên đã biến đổi (xenlulo và dẫn xuất — 39.12; protein đã làm cứng, dẫn xuất hoá học của cao su tự nhiên — 39.13; sợi lưu hoá làm từ xenlulo) khỏi sản phẩm polyme hoá tổng hợp (39.01–39.11), và chính biểu 3916.90 xếp các vật liệu này thành dòng riêng ngoài hai tầng polyme trùng hợp / trùng ngưng. Không có plastic nào vừa là polyme trùng ngưng/tái sắp xếp vừa là sợi lưu hoá."
+        },
+        {
+          "cap": [
+            "3916902",
+            "39169060"
+          ],
+          "khongCoHangThat": "Chương 39 tách polyme tự nhiên và polyme tự nhiên đã biến đổi (xenlulo và dẫn xuất — 39.12; protein đã làm cứng, dẫn xuất hoá học của cao su tự nhiên — 39.13; sợi lưu hoá làm từ xenlulo) khỏi sản phẩm polyme hoá tổng hợp (39.01–39.11), và chính biểu 3916.90 xếp các vật liệu này thành dòng riêng ngoài hai tầng polyme trùng hợp / trùng ngưng. Không có plastic nào vừa là polyme trùng ngưng/tái sắp xếp vừa là dẫn xuất hoá học của cao su tự nhiên."
+        }
+      ],
+      "phanXu": null
     }
   ]
 }

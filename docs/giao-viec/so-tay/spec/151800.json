@@ -50,6 +50,13 @@
     "15180020": {
       "dieuKienSo": [
         {
+          "fact": "dangSanPhamNhom1518",
+          "op": "TRONG",
+          "value": [
+            "HON_HOP_KHONG_AN_DUOC"
+          ]
+        },
+        {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": [
@@ -144,12 +151,24 @@
     "15180060": {
       "dieuKienSo": [
         {
+          "fact": "dangSanPhamNhom1518",
+          "op": "TRONG",
+          "value": [
+            "HON_HOP_KHONG_AN_DUOC"
+          ]
+        },
+        {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": [
             "mỡ",
-            "dầu động vật",
-            "các phần phân đoạn của chúng",
+            "dầu động vật"
+          ]
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
             "chất béo",
             "dầu thực vật"
           ]
@@ -161,6 +180,13 @@
     "1518001": {
       "dieuKienSo": [
         {
+          "fact": "dangSanPhamNhom1518",
+          "op": "TRONG",
+          "value": [
+            "DA_BIEN_DOI_HOA_HOC"
+          ]
+        },
+        {
           "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": "15.16",
@@ -171,6 +197,13 @@
     },
     "1518003": {
       "dieuKienSo": [
+        {
+          "fact": "dangSanPhamNhom1518",
+          "op": "TRONG",
+          "value": [
+            "HON_HOP_KHONG_AN_DUOC"
+          ]
+        },
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
@@ -286,8 +319,17 @@
     },
     {
       "ma": "151800",
-      "loai": "DUNG",
-      "ghiChu": "[THIẾU KHOÁ TỪ VỰNG] Biểu chia 15.18 theo hai tiêu chí: tầng 1518001 là mỡ/dầu ĐÃ BIẾN ĐỔI HOÁ HỌC (đun sôi, oxy hoá, khử nước, sulphat hoá, thổi khô, polyme hoá…), còn .20, tầng 1518003, .60 là HỖN HỢP/CHẾ PHẨM KHÔNG ĂN ĐƯỢC. Spec chỉ ghi tên loại dầu nên hai bên chồng nhau. CẦN: khoá mới «đã biến đổi hoá học» (đọc các chữ đun sôi, oxy hoá, khử nước…); vế «không ăn được» dùng khoá có sẵn thichHopDungChoNguoi KHONG. — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026 (#1109): nhóm 15.18 chia hai vế — tieuDe.1518001 \"… đã đun sôi, oxy hóa, khử nước, sulphua hóa, thổi khô, polyme hóa …\" ↔ .20, tầng 1518003, .60 \"Các hỗn hợp hoặc các chế phẩm không ăn được …\" ⇒ khoá mới dangSanPhamNhom1518 (lúc chạy hỏi hàng thuộc vế nào). .60 «từ mỡ hoặc dầu động vật … và chất béo hoặc dầu thực vật» ghi HAI điều kiện tên (VÀ). Cặp .20/.39 khai chongLanVanBan: hỗn hợp động vật + thực vật vào .60."
+    }
+  ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "15180020",
+        "15180039"
+      ],
+      "lyDo": "Chồng lấn chữ, có dòng thứ ba phân xử (Claude 07/11/2026): .20 \"Các hỗn hợp hoặc các chế phẩm không ăn được từ mỡ hoặc dầu động vật hoặc từ các phần phân đoạn của các loại mỡ hoặc dầu động vật khác nhau\" ↔ tầng 1518003 \"Các hỗn hợp hoặc các chế phẩm không ăn được từ chất béo hoặc dầu thực vật hoặc từ các phần phân đoạn của các loại chất béo hoặc dầu thực vật khác nhau\" — hàng thoả cả hai là hỗn hợp có CẢ mỡ/dầu động vật LẪN chất béo/dầu thực vật; hàng đó thoả .60 \"Các hỗn hợp hoặc các chế phẩm không ăn được từ mỡ hoặc dầu động vật hoặc từ các phần phân đoạn của chúng và chất béo hoặc dầu thực vật hoặc các phần phân đoạn của chúng\", dòng ghi đủ cả hai thành phần nên cụ thể hơn cả .20 lẫn .39 (lúc chạy «tên cụ thể hơn thắng» chọn .60). Cổng 2 xét từng cặp nên vẫn báo cặp .20/.39."
     }
   ]
 }

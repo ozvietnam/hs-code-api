@@ -13,6 +13,22 @@
   "duyet": null,
   "dieuKienNut": [
     {
+      "id": "151329",
+      "nguon": "tieuDe.15132",
+      "trich": "Dầu hạt cọ hoặc dầu cọ ba-ba-su và các phần phân đoạn của chúng",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "hạt cọ",
+            "cọ ba-ba-su"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
       "id": "1513291",
       "nguon": "tieuDe.1513291",
       "trich": "1513291 Các phần phân đoạn của dầu hạt cọ hoặc dầu cọ ba-ba-su chưa tinh chế",
@@ -92,7 +108,7 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Dầu hạt cọ"
+          "value": "hạt cọ"
         },
         {
           "fact": "mucDoTinhCheDau",
@@ -102,7 +118,8 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
     },
     {
       "hs": "15132914",
@@ -112,7 +129,7 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Dầu cọ ba-ba-su"
+          "value": "cọ ba-ba-su"
         },
         {
           "fact": "mucDoTinhCheDau",
@@ -208,10 +225,11 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Dầu hạt cọ"
+          "value": "hạt cọ"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
     },
     {
       "hs": "15132997",
@@ -221,7 +239,7 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Dầu cọ ba-ba-su"
+          "value": "cọ ba-ba-su"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -280,8 +298,8 @@
     },
     {
       "ma": "151329",
-      "loai": "DUNG",
-      "ghiChu": "[THIẾU KHOÁ TỪ VỰNG] Tầng «Các phần phân đoạn của dầu… chưa tinh chế» chia con theo THỂ RẮN / THỂ LỎNG; từ vựng chưa có khoá trạng thái rắn–lỏng nên hàng chỉ ghi «phần phân đoạn» không vào con nào. CẦN: khoá mới «thể rắn / thể lỏng». — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026 (#1109): vướng cũ không phải thiếu khoá rắn/lỏng mà là: (1) phạm vi phân nhóm chưa khai — dieuKienNut[151329] lấy loại dầu từ tieuDe.15132 \"Dầu hạt cọ hoặc dầu cọ ba-ba-su và các phần phân đoạn của chúng\"; (2) các dòng «Loại khác, của dầu hạt cọ …» / «… của dầu cọ ba-ba-su» ghi tên «Dầu hạt cọ» nên hàng «olein hạt cọ» không khớp — «của dầu hạt cọ» là LOẠI DẦU ⇒ tenLoai «hạt cọ» / «cọ ba-ba-su», .13 và .96 phanConLai (phần còn lại sau dòng thể rắn của cùng loại dầu)."
     }
   ]
 }

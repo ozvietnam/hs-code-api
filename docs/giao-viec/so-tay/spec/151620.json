@@ -332,7 +332,13 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Stearin cọ, có chỉ số iốt trên 48"
+          "value": "Stearin cọ"
+        },
+        {
+          "fact": "chiSoIot",
+          "op": ">",
+          "value": 48,
+          "donVi": "IV"
         }
       ]
     },
@@ -397,13 +403,15 @@
     "1516201": {
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Đã tái este hóa, trừ của cọ dầu"
+          "fact": "cachBienDoiDau",
+          "op": "TRONG",
+          "value": [
+            "TAI_ESTE_HOA"
+          ]
         },
         {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
           "value": "cọ dầu",
           "chieu": "PHAI_KHONG"
         }
@@ -412,13 +420,15 @@
     "1516202": {
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Đã tái este hóa, của cọ dầu"
+          "fact": "cachBienDoiDau",
+          "op": "TRONG",
+          "value": [
+            "TAI_ESTE_HOA"
+          ]
         },
         {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
           "value": "cọ dầu"
         }
       ]
@@ -426,51 +436,73 @@
     "1516203": {
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Đã qua hydro hóa, dạng vảy"
+          "fact": "cachBienDoiDau",
+          "op": "TRONG",
+          "value": [
+            "HYDRO_HOA"
+          ]
+        },
+        {
+          "fact": "dangVayManh",
+          "op": "CO"
         }
       ]
     },
     "1516204": {
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Đã qua hydro hóa, dạng khác"
+          "fact": "cachBienDoiDau",
+          "op": "TRONG",
+          "value": [
+            "HYDRO_HOA"
+          ]
         }
       ],
-      "phanConLai": false
+      "phanConLai": [
+        "1516203"
+      ]
     },
     "1516205": {
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Đã este hóa liên hợp"
+          "fact": "cachBienDoiDau",
+          "op": "TRONG",
+          "value": [
+            "ESTE_HOA_LIEN_HOP"
+          ]
         }
       ]
     },
     "1516206": {
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Elaiđin hóa, stearin cọ"
+          "fact": "cachBienDoiDau",
+          "op": "TRONG",
+          "value": [
+            "ELAIDIN_HOA"
+          ]
         },
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "có chỉ số iốt không quá 48"
+          "value": "stearin cọ"
+        },
+        {
+          "fact": "chiSoIot",
+          "op": "<=",
+          "value": 48,
+          "donVi": "IV"
         }
       ]
     },
     "1516209": {
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Elaiđin hóa, loại khác"
+          "fact": "cachBienDoiDau",
+          "op": "TRONG",
+          "value": [
+            "ELAIDIN_HOA"
+          ]
         }
       ],
       "phanConLai": [
@@ -561,8 +593,8 @@
     },
     {
       "ma": "151620",
-      "loai": "DUNG",
-      "ghiChu": "[THIẾU KHOÁ TỪ VỰNG] Dòng «Stearin cọ, có chỉ số iốt không quá 48»: khoá chiSoIot đòi đơn vị «IV» nhưng chữ biểu ghi số trần, nên không ghi được điều kiện số. CẦN: cho khoá chiSoIot nhận số không đơn vị (chỉ số iốt là số thuần). — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026 (#1109): các tầng chia theo CÁCH BIẾN ĐỔI (tieuDe.1516201 \"Đã tái este hóa, trừ của cọ dầu\", 1516203 \"Đã qua hydro hóa, dạng vảy, mảnh\", 1516205 \"Đã este hóa liên hợp\", 1516206/1516209 \"Elaiđin hóa…\") trước đây bị ghi thành tên hàng ⇒ khoá mới cachBienDoiDau; dạng vảy, mảnh ⇒ khoá mới dangVayManh, tầng \"dạng khác\" = phần còn lại của 1516203; «trừ của cọ dầu» là loại dầu (tenLoai PHAI_KHONG), không phải dungCho. Chỉ số iốt (tầng 1516206 \"không quá 48\", .91 \"trên 48\") ⇒ chiSoIot (đọc không đơn vị)."
     }
   ]
 }
