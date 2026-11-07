@@ -7,8 +7,8 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T1001#soan-940370",
-    "ngay": "2026-11-06"
+    "phien": "zcode-sub:glm-5.3:20261106T1800#soan-940370",
+    "ngay": "2026-11-07"
   },
   "duyet": null,
   "dieuKienNut": [],
@@ -33,13 +33,17 @@
     },
     {
       "hs": "94037020",
-      "nguon": "tax.94037020",
-      "trich": "94037020 - - Tủ hút hơi độc (SEN)",
+      "nguon": "sen.94037020",
+      "trich": "Tủ hút hơi độc là một thiết bị thông gió cục bộ, được thiết kế để hạn chế khí, hơi, bụi độc hoặc nguy hiểm. Một tủ hút hơi độc điển hình là thiết bị lớn mà khu vực làm việc của nó có 5 mặt, có đáy thường được đặt ở độ cao khi đứng làm việc",
       "dieuKienSo": [
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Tủ hút hơi độc"
+        },
+        {
+          "fact": "tuHutHoiDoc",
+          "op": "CO"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -62,6 +66,11 @@
       "ma": "94037020",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.94037020: \"Tủ hút hơi độc (SEN)\" => tenLoai nguyên văn"
+    },
+    {
+      "ma": "94037020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Nghĩa hẹp theo SEN: sen.94037020 \"là một thiết bị thông gió cục bộ, được thiết kế để hạn chế khí, hơi, bụi độc hoặc nguy hiểm\" ⇒ thêm tuHutHoiDoc CO (khoá chuyên dụng của dòng này) — theo SEN là thiết bị thông gió hạn chế khí/hơi/bụi độc."
     }
   ]
 }

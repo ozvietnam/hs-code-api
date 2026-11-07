@@ -7,8 +7,8 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T1003#soan-870899",
-    "ngay": "2026-11-06"
+    "phien": "zcode-sub:glm-5.3:20261106T1800#soan-870899",
+    "ngay": "2026-11-07"
   },
   "duyet": null,
   "dieuKienNut": [
@@ -230,13 +230,18 @@
     },
     {
       "hs": "87089950",
-      "nguon": "tax.87089950",
-      "trich": "87089950 - - - - Tấm hướng luồng khí tản nhiệt (SEN) ",
+      "nguon": "sen.87089950",
+      "trich": "Tấm hướng luồng khi tản nhiệt là cầu nối giữa khung xe và bộ tản nhiệt giúp định hướng luồng khí… Tấm hướng luồng khí tản nhiệt được cấu tạo hoàn toàn bằng sợi carbon hoặc kim loại",
       "dieuKienSo": [
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Tấm hướng luồng khí tản nhiệt"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "bộ tản nhiệt"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -393,7 +398,7 @@
     {
       "ma": "87089950",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.87089950 \"Tấm hướng luồng khí tản nhiệt (SEN)\" ⇒ tenLoai \"Tấm hướng luồng khí tản nhiệt\""
+      "ghiChu": "Nghĩa hẹp theo SEN: sen.87089950 \"là cầu nối giữa khung xe và bộ tản nhiệt giúp định hướng luồng khí\" (câu đầu SEN ghi \"khi tản nhiệt\" — giữ nguyên văn) ⇒ thêm dungCho \"bộ tản nhiệt\"."
     },
     {
       "ma": "8708996",
@@ -439,6 +444,11 @@
       "ma": "87089999",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.87089999 \"Loại khác\" trần ⇒ không điều kiện"
+    },
+    {
+      "ma": "87089950",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Nghĩa hẹp theo SEN: sen.87089950 \"là cầu nối giữa khung xe và bộ tản nhiệt giúp định hướng luồng khí\" (câu đầu SEN ghi \"khi tản nhiệt\" — giữ nguyên văn) ⇒ thêm dungCho \"bộ tản nhiệt\"."
     }
   ]
 }

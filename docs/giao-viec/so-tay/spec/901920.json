@@ -1,31 +1,51 @@
 {
-  "phienBan": "ranh-gioi-spec@1",
-  "pn6": "901920",
-  "phien": "zcode-sub:glm-5.3:20261106T1001#soan-901920",
-  "dong8": {
-    "90192010": {
-      "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Máy trợ thở xâm lấn" }
-      ]
+ "phienBan": "ranh-gioi-spec@1",
+ "pn6": "901920",
+ "phien": "zcode-sub:glm-5.3:20261106T1800#soan-901920",
+ "dong8": {
+  "90192010": {
+   "nguon": "sen.90192010",
+   "trich": "Máy trợ thở là một máy hỗ trợ hoặc trợ giúp thở cho những bệnh nhân không thể tự thở… Mục đích của việc sử dụng máy này là cung cấp oxy đầy đủ cho bệnh nhân. Máy trợ thở xâm lấn sử dụng một ống được đưa vào khí quản của bệnh nhân qua cổ họng, do đó xâm nhập vào đường hô hấp",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Máy trợ thở xâm lấn"
     },
-    "90192020": {
-      "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Máy trợ thở khác" }
-      ],
-      "phanConLai": true
+    {
+     "fact": "congDung",
+     "op": "CONG_DUNG",
+     "value": "cung cấp oxy"
     }
+   ]
   },
-  "dieuKienNut": {},
-  "ghiChuSoan": [
+  "90192020": {
+   "dieuKienSo": [
     {
-      "ma": "90192010",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.90192010: \"Máy trợ thở xâm lấn (SEN)\" ⇒ tenLoai \"Máy trợ thở xâm lấn\" (danh từ ghép một hàng)"
-    },
-    {
-      "ma": "90192020",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.90192020: \"Máy trợ thở khác\" ⇒ tenLoai nguyên văn \"Máy trợ thở khác\" (giữ \"khác\" để rời anh em 90192010 \"Máy trợ thở xâm lấn\" chứa \"Máy trợ thở\", theo tiền lệ 32129022) + phanConLai true (phủ định 90192010)"
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Máy trợ thở khác"
     }
-  ]
+   ],
+   "phanConLai": true
+  }
+ },
+ "dieuKienNut": {},
+ "ghiChuSoan": [
+  {
+   "ma": "90192010",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.90192010: \"Máy trợ thở xâm lấn (SEN)\" ⇒ tenLoai \"Máy trợ thở xâm lấn\" (danh từ ghép một hàng)"
+  },
+  {
+   "ma": "90192020",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.90192020: \"Máy trợ thở khác\" ⇒ tenLoai nguyên văn \"Máy trợ thở khác\" (giữ \"khác\" để rời anh em 90192010 \"Máy trợ thở xâm lấn\" chứa \"Máy trợ thở\", theo tiền lệ 32129022) + phanConLai true (phủ định 90192010)"
+  },
+  {
+   "ma": "90192010",
+   "loai": "QUYET_DINH",
+   "ghiChu": "Nghĩa hẹp theo SEN: sen.90192010 \"Mục đích của việc sử dụng máy này là cung cấp oxy đầy đủ cho bệnh nhân. Máy trợ thở xâm lấn sử dụng một ống được đưa vào khí quản\" ⇒ thêm congDung \"cung cấp oxy\" — máy trợ thở xâm lấn theo SEN dùng ống vào khí quản để cung cấp oxy."
+  }
+ ]
 }

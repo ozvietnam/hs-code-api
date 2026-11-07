@@ -12505,3 +12505,63 @@ TARGET=data APPLY=1 node scripts/apply-review-lo082.mjs        # CHỈ nâng ngu
 | `npm test` | **ALL TESTS PASSED** |
 
 **Cấu trúc lô 082 sau soát — 82 mục** (không đổi số mục): `phamVi` 6 · `dieuKienVao` 0 · `loaiTru` 16 · `phanBiet` 16 · `boPhan` 6 · `tieuChi6` 10 · `cay.tenDien` 3 · `dong8` 25.
+
+---
+
+# SIẾT SEN LÔ C — chương 52-97, 72 dòng (issue #1097, nhánh `siet-sen/lo-C`, 06/11/2026)
+
+Nguồn danh sách: `docs/giao-viec/so-tay/tien-le-lech/thu-17.json` → `dongChiTenCoSenChuaDung.ma` lọc 2 số đầu ≥ 52 (72 mã).
+Quy trình: đọc SEN từng dòng → có đặc điểm xác định thì viết lại `dong8` spec (`nguon sen.<hs8>`, `trich` nguyên văn ≤300 ký tự, tên + đặc điểm) → `--ap-spec` → `--kiem` (SAU ≤ TRƯỚC từng PN6, không lỗi cong0/cong3 mới) → thử hàng (POS thoa:true / NEG không thoa). TestSuite `test-cong-ranh-gioi.mjs`: 4445 pass, 0 fail.
+
+## Kết quả: 43 siết / 10 không cần siết / 19 không siết được
+
+### A. SIẾT — 43 dòng (27 PN6, mỗi PN6: spec + ranh-gioi)
+
+| hs8 | điều kiện thêm (ngoài tenLoai) |
+|---|---|
+| 52091110 | kieuDet VAN_DIEM (SEN: kiểu dệt vân điểm) |
+| 52104110, 52114110 | cachDieuKhien BANG_TAY (SEN: dệt máy thủ công điều khiển bằng tay) |
+| 59031010 | congDung "gia cố" (SEN: dùng giữa hai lớp vải để gia cố) |
+| 62113220, 62113340, 62113940 | congDung "quấn quanh người" (SEN: 2 mảnh rời không khâu) |
+| 62114230, 62114370, 62114950 | congDung "quấn xung quanh eo" (SEN: mép khâu thành ống) |
+| 64069042, 64069052 | boPhanGiayDep DE_HOAN_THIEN; tenLoai "đế giày" (productHead cắt tại "đã", giá trị cũ không bao giờ khớp — khoá có kiểu gánh chữ "đã hoàn thiện") |
+| 68109110 | congDung "truyền tải lực xuống đất"; tenLoai về chữ SEN "cột bê tông"/"cọc" |
+| 70189010 | duongKinh ≥4 mm và ≤36 mm; tenLoai về chữ SEN "Thủy tinh dạng cầu"/"mắt búp bê"/"mắt đồ chơi" |
+| 76072010 | duocLotHoacCachNhiet CO (SEN: loại cách nhiệt ngăn truyền nhiệt bức xạ) |
+| 85043130 | congDung "hồi lưu"; tenLoai 3 tên chữ SEN (quét về/đầu ra ngang/quét ngang) — bộ đọc congDung cắt tại " điện áp " nên không dùng cụm dài |
+| 85043192 | congDung "phối hợp trở kháng" |
+| 85043193 | cachDieuKhien BANG_TAY (đầu ra điều chỉnh bằng tay); cập nhật chongLanTruc[0].viDuHang thêm ", điều chỉnh bằng tay" (có ghiChuSoan) |
+| 85043211, 85043241, 85043251, 85043311, 85043391, 85043411, 85043414, 85043422, 85043425 | congDung "phối hợp trở kháng" |
+| 85045020 | congDung "hạn chế dòng điện"; tenLoai "cuộn cảm cố định" (SEN viết "con chíp" ≠ "con chip" của tên dòng) |
+| 87085091, 87085094, 87085096 | dungCho "bộ vi sai" (SEN: nằm trong bộ vi sai truyền động bánh sau) — cổng 870850 giảm 17→10 lỗi |
+| 87089950 | dungCho "bộ tản nhiệt" (trich giữ nguyên văn "khi tản nhiệt" — lỗi chính tả của SEN) |
+| 87112011, 87112091 | congDung "đua mọi địa hình" |
+| 87112013, 87112093 | chieuCao < 50 cm (SEN: mô tô nhỏ cao dưới 50 cm) |
+| 90192010 | congDung "cung cấp oxy" |
+| 93032010 | congDung "săn bắn"; tenLoai "súng shotgun" (chữ SEN) |
+| 94029011 | congDung "thiết bị vệ sinh" (có hộc ngồi dùng làm thiết bị vệ sinh) |
+| 94029014 | congDung "khám bệnh" |
+| 94029015 | congDung "chăm sóc sức khỏe" |
+| 94037020 | tuHutHoiDoc CO (khoá chuyên dụng) |
+| 96019012 | congDung "sản xuất ngọc trai" |
+
+Thử hàng: mọi dòng siết có POS thoa:true + NEG (THIEU/MAU_THUAN) — bảng đầy đủ trong PR. Lưu ý kỹ thuật: hàng POS phải thoả cả TẦNG (điện áp/công suất/dungCho xe/dùng cho ngành y…) và tên cần từ có dấu nếu giá trị điều kiện chứa dấu câu không-ASCII (dấu “ ”) — bộ so chữ không so ASCII với không-ASCII.
+
+### B. KHÔNG CẦN SIẾT — 10 dòng (SEN chỉ nhắc lại tên / kể ví dụ / tả tầng cha)
+
+- 53110020 vải bố abaca: SEN kể ví dụ công dụng ("như giấy gói hoa"), đặc điểm còn lại ("chắc, xù xì") không có khoá.
+- 59021011: SEN tả TẦNG 5902101 "vải tráng cao su làm mép lốp", không tả dòng "ni lông 6" (chữ "ni lông 6" không nguyên văn trong SEN).
+- 74081910: đặc điểm SEN (mặt cắt ≤6mm, phương pháp mạ) không có khoá; "vàng/bạc" vốn là tên.
+- 74082910 đồng thanh: SEN chỉ tả hàm lượng % (60-90% Cu, 12-40% Sn) — không khoá, không công dụng mới.
+- 84029010, 84039010: SEN tả cấu tạo của chính cái tên (bồn chịu áp lực bao bọc…), fallback congDung trùng tên gây THIEU hàng đúng.
+- 85043412, 85043423: SEN gắn cho dòng là bài "đầu điện áp cao" chung của biến áp — không tả "loại khô phòng nổ".
+- 85393130: hai điều kiện tên hiện tại ("Bóng đèn huỳnh quang com-pắc" + "chấn lưu lắp liền") đã mang nghĩa tích hợp; SEN chỉ diễn giải thêm "không thể thay thế" (không có khoá).
+- 87089924: SEN chỉ liệt kê tên bộ phận (ống dẫn/nắp đậy/bình), không đặc điểm.
+
+### C. KHÔNG SIẾT ĐƯỢC — 19 dòng
+
+- Bản nháp DUYET — ap-spec chặn "spec-da-duyet", cần Claude `--tra-ve` trước (9): 52083110, 52084110, 52084210, 63079080, 70199020, 70199040, 76169951, 84145930, 84145950.
+- Thử hàng POS không thể thoa (1): 54071020 — tenLoai "Vải làm lốp xe"/"vải làm băng tải" bị productHead cắt còn "vải" (động từ "làm"); dangCuon CO thêm vào vẫn không cứu được POS ⇒ hoàn nguyên theo luật.
+- Tên dòng không nguyên văn trong SEN — viết lại sẽ mất phủ vế tên/chắn bùn (9): 87059060 (Xe điều chế chất nổ di động), 87082993, 87082996 (chắn bùn ngoài SEN), 87111014, 87111094 (powered kick scooter không có SEN), 87116012, 87116092 (kick scooter/tự cân bằng không có SEN), 87149911, 87149991 (tên các bộ phận không trong SEN).
+
+### Cổng --kiem 27 PN6 đã siết: SAU ≤ TRƯỚC hết (870850: 17→10; còn lại giữ nguyên, đa số 0). Không lỗi cong0/cong3 mới.

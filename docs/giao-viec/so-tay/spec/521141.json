@@ -1,33 +1,47 @@
 {
-  "phienBan": "ranh-gioi-spec@1",
-  "pn6": "521141",
-  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-521141",
-  "dong8": {
-    "52114110": {
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Vải Ikat"
-        }
-      ]
+ "phienBan": "ranh-gioi-spec@1",
+ "pn6": "521141",
+ "phien": "zcode-sub:glm-5.3:20261106T1800#soan-521141",
+ "dong8": {
+  "52114110": {
+   "nguon": "sen.52114110",
+   "trich": "Vải Ikat hay còn được gọi là “Ikat”, là một loại vải truyền thống, được dệt trên máy dệt thủ công truyền thống điều khiển bằng tay từ các sợi đặc biệt đã được nhuộm sau khi buộc (ikat) tại các đoạn cần thiết để tạo ra các họa tiết như mong muốn",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Vải Ikat"
+    },
+    {
+     "fact": "cachDieuKhien",
+     "op": "TRONG",
+     "value": [
+      "BANG_TAY"
+     ]
     }
+   ]
+  }
+ },
+ "ghiChuSoan": [
+  {
+   "ma": "52114110",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.52114110 \"Vải Ikat(SEN)\" ⇒ tenLoai \"Vải Ikat\"; \"(SEN)\" là dẫn nguồn chú giải."
   },
-  "ghiChuSoan": [
-    {
-      "ma": "52114110",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.52114110 \"Vải Ikat(SEN)\" ⇒ tenLoai \"Vải Ikat\"; \"(SEN)\" là dẫn nguồn chú giải."
-    },
-    {
-      "ma": "52114190",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.52114190 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
-    },
-    {
-      "ma": "521141",
-      "loai": "LECH_TIEN_LE",
-      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 521141-01 KHONG_LECH (3063/TB-TCHQ): soạn theo chữ biểu, khớp bảng."
-    }
-  ]
+  {
+   "ma": "52114190",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.52114190 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+  },
+  {
+   "ma": "521141",
+   "loai": "LECH_TIEN_LE",
+   "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 521141-01 KHONG_LECH (3063/TB-TCHQ): soạn theo chữ biểu, khớp bảng."
+  },
+  {
+   "ma": "52114110",
+   "loai": "QUYET_DINH",
+   "ghiChu": "Nghĩa hẹp theo SEN: sen.52114110 \"được dệt trên máy dệt thủ công truyền thống điều khiển bằng tay\" ⇒ thêm cachDieuKhien BANG_TAY — ikat theo SEN dệt trên máy dệt tay, sợi nhuộm sau khi buộc."
+  }
+ ]
 }

@@ -7,8 +7,8 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261105T0955#soan-850450",
-    "ngay": "2026-11-06"
+    "phien": "zcode-sub:glm-5.3:20261106T1800#soan-850450",
+    "ngay": "2026-11-07"
   },
   "duyet": null,
   "dieuKienNut": [],
@@ -36,13 +36,18 @@
     },
     {
       "hs": "85045020",
-      "nguon": "tax.85045020",
-      "trich": "85045020 - - Cuộn cảm cố định kiểu con chip (SEN)",
+      "nguon": "sen.85045020",
+      "trich": "Các cuộn cảm cố định kiểu con chíp có dạng những con chip nhỏ sử dụng cho đầu ghi băng video (VTRs), tivi, điện thoại di động… Chúng được sử dụng trong mạch điện để hạn chế dòng điện khi có hiện tượng đoản mạch",
       "dieuKienSo": [
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Cuộn cảm cố định kiểu con chip"
+          "value": "cuộn cảm cố định"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "hạn chế dòng điện"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -112,14 +117,14 @@
       "ghiChu": "tax.85045010 \"Cuộn cảm dùng cho bộ nguồn cấp điện của các thiết bị xử lý dữ liệu tự động và các khối chức năng của chúng, và thiết bị viễn thông\" ⇒ tenLoai \"Cuộn cảm\" + dungCho mảng [bộ nguồn cấp điện, thiết bị viễn thông] (đích \"bộ nguồn cấp điện\" của máy xử lý dữ liệu/khối chức năng, và \"thiết bị viễn thông\")"
     },
     {
-      "ma": "85045020",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.85045020 \"Cuộn cảm cố định kiểu con chip (SEN)\" ⇒ tenLoai \"Cuộn cảm cố định kiểu con chip\"; (SEN) là nguồn chú giải (PHU)"
-    },
-    {
       "ma": "85045093",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.85045093 \"Có công suất danh định không quá 2.500 kVA\" ⇒ congSuatBieuKien <= 2500 kVA; .94 \"trên 2.500 nhưng không quá 10.000\" ⇒ > 2500 và <= 10000; .95 \"trên 10.000\" ⇒ > 10000; tầng 8504509 \"Loại khác\" trần nên .93–.95 chỉ áp cho cuộn cảm ngoài .10/.20 (máy tự phủ định)"
+    },
+    {
+      "ma": "85045020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Nghĩa hẹp theo SEN: sen.85045020 \"được sử dụng trong mạch điện để hạn chế dòng điện khi có hiện tượng đoản mạch\" ⇒ tenLoai \"cuộn cảm cố định\" (SEN viết \"con chíp\" — khác chính tả tên dòng \"con chip\", nên giữ \"cuộn cảm cố định\" nguyên văn) + congDung \"hạn chế dòng điện\"."
     }
   ]
 }

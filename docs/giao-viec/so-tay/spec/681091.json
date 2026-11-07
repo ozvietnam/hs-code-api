@@ -1,17 +1,55 @@
 {
-  "phienBan": "ranh-gioi-spec@1",
-  "pn6": "681091",
-  "phien": "zcode-sub:glm-5.3:20261106T0856#soan-681091",
-  "dong8": {
-    "68109110": {
-      "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Cọc xây dựng bằng bê tông" }
+ "phienBan": "ranh-gioi-spec@1",
+ "pn6": "681091",
+ "phien": "zcode-sub:glm-5.3:20261106T1800#soan-681091",
+ "dong8": {
+  "68109110": {
+   "nguon": "sen.68109110",
+   "trich": "Đây là các cột bê tông được tạo thành bằng cách đúc. Chúng được sử dụng làm các cột chịu lực để truyền tải lực xuống đất… Các cọc này không chỉ được sử dụng cho kết cấu xây dựng mà còn được sử dụng cho mục đích kỹ thuật dân dụng đòi hỏi khả năng chịu lực của nền móng",
+   "dieuKienSo": [
+    {
+     "op": "HOAC",
+     "phuongAn": [
+      [
+       {
+        "fact": "tenLoai",
+        "op": "TEN_LOAI",
+        "value": "cột bê tông"
+       }
+      ],
+      [
+       {
+        "fact": "tenLoai",
+        "op": "TEN_LOAI",
+        "value": "cọc"
+       }
       ]
+     ]
+    },
+    {
+     "fact": "congDung",
+     "op": "CONG_DUNG",
+     "value": "truyền tải lực xuống đất"
     }
+   ]
+  }
+ },
+ "dieuKienNut": {},
+ "ghiChuSoan": [
+  {
+   "ma": "68109110",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.68109110 \"Cọc xây dựng bằng bê tông (SEN)\" ⇒ tenLoai TEN_LOAI \"Cọc xây dựng bằng bê tông\" — tên nguyên văn của chính dòng, phủ vế \"bằng bê tông\"; tu-vung@2 không có giá trị bê tông trong chatLieu; \"(SEN)\" là dẫn chú giải"
   },
-  "dieuKienNut": {},
-  "ghiChuSoan": [
-    { "ma": "68109110", "loai": "QUYET_DINH", "ghiChu": "tax.68109110 \"Cọc xây dựng bằng bê tông (SEN)\" ⇒ tenLoai TEN_LOAI \"Cọc xây dựng bằng bê tông\" — tên nguyên văn của chính dòng, phủ vế \"bằng bê tông\"; tu-vung@2 không có giá trị bê tông trong chatLieu; \"(SEN)\" là dẫn chú giải" },
-    { "ma": "68109190", "loai": "QUYET_DINH", "ghiChu": "tax.68109190 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)" }
-  ]
+  {
+   "ma": "68109190",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.68109190 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+  },
+  {
+   "ma": "68109110",
+   "loai": "QUYET_DINH",
+   "ghiChu": "Nghĩa hẹp theo SEN: sen.68109110 \"cột bê tông … chịu lực để truyền tải lực xuống đất … Các cọc này … kết cấu xây dựng\" ⇒ tenLoai về chữ SEN (\"cột bê tông\"/\"cọc\" — \"Cọc xây dựng bằng bê tông\" không nguyên văn trong SEN) + thêm congDung \"truyền tải lực xuống đất\" — cọc bê tông là cột chịu lực truyền tải xuống đất."
+  }
+ ]
 }

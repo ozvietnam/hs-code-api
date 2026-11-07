@@ -7,21 +7,25 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-mm:loop:20261106T1440#soan-760720",
-    "ngay": "2026-11-06"
+    "phien": "zcode-sub:glm-5.3:20261106T1800#soan-760720",
+    "ngay": "2026-11-07"
   },
   "duyet": null,
   "dieuKienNut": [],
   "dong8": [
     {
       "hs": "76072010",
-      "nguon": "tax.76072010",
-      "trich": "76072010 - - Nhôm lá mỏng cách nhiệt(SEN)",
+      "nguon": "sen.76072010",
+      "trich": "Nhôm lá mỏng cách nhiệt hoặc tấm cách nhiệt hoặc tấm ngăn bức xạ nhiệt (cũng được biết như là ngăn phản xạ) là một loại cách nhiệt (nhiệt nóng) để ngăn việc truyền nhiệt bằng bức xạ nhiệt",
       "dieuKienSo": [
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Nhôm lá mỏng cách nhiệt"
+        },
+        {
+          "fact": "duocLotHoacCachNhiet",
+          "op": "CO"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -76,6 +80,11 @@
       "ma": "760720",
       "loai": "QUYET_DINH",
       "ghiChu": "wco.760720 \"760720 Aluminium; foil, backed with paper, paperboard, plastics or similar backing materials, of a thickness (excluding any backing) not exceeding 0.2mm\" ⇒ hai điều kiện cấp 6 SỐ này (đã được bồi; độ dày không quá 0,2 mm) thuộc TẦNG 6 — sổ tay 7607 đã có ở tieuChi6 (fact duoc_boi_tren_giay_bia_plastic_hoac_vat_lieu_boi_tuong_tu, nguon wco.760720); ranh-gioi 6→8 chỉ khai dòng 8 số và tiêu đề 7 số CÓ TÊN ⇒ không khai lại ở đây (dieuKienNut không nhận id cấp phân nhóm)."
+    },
+    {
+      "ma": "76072010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Nghĩa hẹp theo SEN: sen.76072010 \"là một loại cách nhiệt (nhiệt nóng) để ngăn việc truyền nhiệt bằng bức xạ nhiệt\" ⇒ thêm duocLotHoacCachNhiet CO — theo SEN đây là loại cách nhiệt ngăn truyền nhiệt bằng bức xạ."
     }
   ]
 }

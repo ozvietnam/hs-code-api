@@ -1,17 +1,111 @@
 {
-  "phienBan": "ranh-gioi-spec@1",
-  "pn6": "621143",
-  "phien": "zcode-sub:glm-5.3:20261106T1528#soan-621143",
-  "dong8": {
-    "62114310": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Áo phẫu thuật" } ] },
-    "62114320": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Áo choàng không tay" }, { "fact": "dungCho", "op": "CONG_DUNG", "value": "cầu nguyện" } ] },
-    "62114330": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Bộ quần áo bảo hộ" }, { "fact": "tinhNangBaoHo", "op": "TRONG", "value": ["CHONG_NO"] } ] },
-    "62114340": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Quần áo đấu kiếm", "đấu vật"] } ] },
-    "62114350": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Quần áo" }, { "fact": "tinhNangBaoHo", "op": "TRONG", "value": ["HOA_CHAT_PHONG_XA_CHONG_CHAY"] } ] },
-    "62114360": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Bộ quần áo nhảy dù liền thân" } ] },
-    "62114370": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Sarong loại hình ống" } ] }
+ "phienBan": "ranh-gioi-spec@1",
+ "pn6": "621143",
+ "phien": "zcode-sub:glm-5.3:20261106T1800#soan-621143",
+ "dong8": {
+  "62114310": {
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Áo phẫu thuật"
+    }
+   ]
   },
-  "ghiChuSoan": [
-    { "ma": "62114350", "loai": "QUYET_DINH", "ghiChu": "tax.62114350 \"Quần áo chống các chất hóa học, phóng xạ hoặc chống cháy (SEN)\" — giá trị HOA_CHAT_PHONG_XA_CHONG_CHAY của tinhNangBaoHo được định nghĩa (tu-vung@2) đúng bằng cả cụm này; \"(SEN)\" là ngoặc nguồn." }
-  ]
+  "62114320": {
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Áo choàng không tay"
+    },
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": "cầu nguyện"
+    }
+   ]
+  },
+  "62114330": {
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Bộ quần áo bảo hộ"
+    },
+    {
+     "fact": "tinhNangBaoHo",
+     "op": "TRONG",
+     "value": [
+      "CHONG_NO"
+     ]
+    }
+   ]
+  },
+  "62114340": {
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": [
+      "Quần áo đấu kiếm",
+      "đấu vật"
+     ]
+    }
+   ]
+  },
+  "62114350": {
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Quần áo"
+    },
+    {
+     "fact": "tinhNangBaoHo",
+     "op": "TRONG",
+     "value": [
+      "HOA_CHAT_PHONG_XA_CHONG_CHAY"
+     ]
+    }
+   ]
+  },
+  "62114360": {
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Bộ quần áo nhảy dù liền thân"
+    }
+   ]
+  },
+  "62114370": {
+   "nguon": "sen.62114370",
+   "trich": "Sarong loại hình ống (hay còn gọi là Malong hoặc Longyi) là sản phẩm may mặc từ vải dệt có các mép được khâu với nhau thành dạng ống… Sarong được quấn xung quanh eo để che phần dưới cơ thể (từ eo trở xuống)",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Sarong loại hình ống"
+    },
+    {
+     "fact": "congDung",
+     "op": "CONG_DUNG",
+     "value": "quấn xung quanh eo"
+    }
+   ]
+  }
+ },
+ "ghiChuSoan": [
+  {
+   "ma": "62114350",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.62114350 \"Quần áo chống các chất hóa học, phóng xạ hoặc chống cháy (SEN)\" — giá trị HOA_CHAT_PHONG_XA_CHONG_CHAY của tinhNangBaoHo được định nghĩa (tu-vung@2) đúng bằng cả cụm này; \"(SEN)\" là ngoặc nguồn."
+  },
+  {
+   "ma": "62114370",
+   "loai": "QUYET_DINH",
+   "ghiChu": "Nghĩa hẹp theo SEN: sen.62114370 \"có các mép được khâu với nhau thành dạng ống … được quấn xung quanh eo để che phần dưới cơ thể\" ⇒ thêm congDung \"quấn xung quanh eo\" — sarong ống theo SEN quấn quanh eo, mép khâu thành ống."
+  }
+ ]
 }

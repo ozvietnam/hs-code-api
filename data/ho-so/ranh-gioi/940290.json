@@ -7,8 +7,8 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T1001#soan-940290",
-    "ngay": "2026-11-06"
+    "phien": "zcode-sub:glm-5.3:20261106T1800#soan-940290",
+    "ngay": "2026-11-07"
   },
   "duyet": null,
   "dieuKienNut": [
@@ -51,8 +51,8 @@
   "dong8": [
     {
       "hs": "94029011",
-      "nguon": "tax.94029011",
-      "trich": "94029011 - - - Ghế vệ sinh dành cho người bệnh (Commodes) (SEN)",
+      "nguon": "sen.94029011",
+      "trich": "Ghế vệ sinh dành cho người bệnh (Commode) là loại đồ nội thất có hình dáng tương tự ghế nhưng có một hộc ngồi cho người ốm hoặc già để sử dụng như một thiết bị vệ sinh",
       "dieuKienSo": [
         {
           "fact": "tenLoai",
@@ -63,6 +63,11 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "người bệnh"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "thiết bị vệ sinh"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -103,26 +108,36 @@
     },
     {
       "hs": "94029014",
-      "nguon": "tax.94029014",
-      "trich": "94029014 - - - Bàn khám (SEN)",
+      "nguon": "sen.94029014",
+      "trich": "Bàn khám được sử dụng ở nơi chăm sóc y tế, khám bệnh cho bệnh nhân. Nói chung, những loại bàn này có thể có chiều cao cố định hoặc điều chỉnh được",
       "dieuKienSo": [
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Bàn khám"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "khám bệnh"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "94029015",
-      "nguon": "tax.94029015",
-      "trich": "94029015 - - - Giường bệnh (SEN)",
+      "nguon": "sen.94029015",
+      "trich": "Giường bệnh là loại giường được thiết kế đặc biệt dành cho những bệnh nhân nằm viện hoặc các trường hợp khác cần được chăm sóc sức khỏe… Giường có các thanh ray bên hông để nâng hoặc hạ nhằm bảo vệ người bệnh",
       "dieuKienSo": [
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Giường bệnh"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "chăm sóc sức khỏe"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -178,6 +193,21 @@
       "ma": "94029015",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.94029015: \"Giường bệnh (SEN)\" => tenLoai nguyên văn"
+    },
+    {
+      "ma": "94029011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Nghĩa hẹp theo SEN: sen.94029011 \"có một hộc ngồi cho người ốm hoặc già để sử dụng như một thiết bị vệ sinh\" ⇒ thêm congDung \"thiết bị vệ sinh\" — ghế vệ sinh người bệnh theo SEN có hộc ngồi dùng làm thiết bị vệ sinh."
+    },
+    {
+      "ma": "94029014",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Nghĩa hẹp theo SEN: sen.94029014 \"được sử dụng ở nơi chăm sóc y tế, khám bệnh cho bệnh nhân\" ⇒ thêm congDung \"khám bệnh\" — bàn khám theo SEN dùng ở nơi chăm sóc y tế, khám bệnh."
+    },
+    {
+      "ma": "94029015",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Nghĩa hẹp theo SEN: sen.94029015 \"được thiết kế đặc biệt dành cho những bệnh nhân nằm viện hoặc các trường hợp khác cần được chăm sóc sức khỏe … thanh ray bên hông để nâng hoặc hạ\" ⇒ thêm congDung \"chăm sóc sức khỏe\" — giường bệnh theo SEN thiết kế đặc biệt cho bệnh nhân chăm sóc sức khỏe."
     }
   ]
 }
