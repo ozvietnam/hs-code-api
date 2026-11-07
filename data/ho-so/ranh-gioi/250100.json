@@ -15,13 +15,17 @@
   "dong8": [
     {
       "hs": "25010010",
-      "nguon": "tax.25010010",
-      "trich": "25010010 - Muối thực phẩm",
+      "nguon": "vb.tt08-2021-bnnptnt.d1",
+      "trich": "Muối thực phẩm (Mã HS 25010010 hoặc 2501.00.91): Là muối được bổ sung tăng cường vi chất i-ốt dùng để ăn trực tiếp và dùng trong chế biến thực phẩm, có hàm lượng các chất theo quy chuẩn kỹ thuật quốc gia này.",
       "dieuKienSo": [
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Muối thực phẩm"
+        },
+        {
+          "fact": "daBoSungIot",
+          "op": "CO"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -118,6 +122,11 @@
       "ma": "250100",
       "loai": "LECH_TIEN_LE",
       "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 250100-01 LECH_CHUA_PHAN_XU (3536/TB-TCHQ) và 250100-02 KHONG_LECH (3536/TB-TCHQ): soạn theo chữ biểu, khớp bảng."
+    },
+    {
+      "ma": "25010010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "vb.tt08-2021-bnnptnt.d1: QCVN 01-193:2021 mục I.3.2 định nghĩa muối thực phẩm (Mã HS 25010010) = muối BỔ SUNG I-ỐT ⇒ thêm daBoSungIot CO (#1101, TT 08/2021 thay TT 27/2017 đã hết hiệu lực)"
     }
   ]
 }
