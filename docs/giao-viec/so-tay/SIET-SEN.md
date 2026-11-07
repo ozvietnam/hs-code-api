@@ -49,6 +49,7 @@ phải khóa hãm cốp xe). 260 dòng 8 số hiện chỉ có điều kiện t�
 ## Không được
 
 - Lấy chữ ngoài SEN / chữ biểu / chú giải (không web, không văn bản khác). Không bịa giá trị không có trong `trich`.
+- Ngoại lệ #1101: nguồn `vb.<id>.<doanId>` (văn bản quy chuẩn chuyên ngành) ĐƯỢC DÙNG khi đoạn đã có trong `data/van-ban-chuyen-nganh/van-ban.json` và dòng 8 số nằm trong `apDungCho` của đoạn — không tự thêm văn bản mới vào kho trong PR siết SEN (mở issue riêng).
 - Sửa `lib/`, `scripts/`, `data/tu-vung/`, tệp ngoài hai tệp của PN6.
 - Tự duyệt (`--duyet`), tự merge.
 

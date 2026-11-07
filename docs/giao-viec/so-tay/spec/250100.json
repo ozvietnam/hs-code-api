@@ -1,87 +1,98 @@
 {
-  "phienBan": "ranh-gioi-spec@1",
-  "pn6": "250100",
-  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-250100",
-  "dong8": {
-    "25010010": {
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Muối thực phẩm"
-        }
-      ]
+ "phienBan": "ranh-gioi-spec@1",
+ "pn6": "250100",
+ "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-250100",
+ "dong8": {
+  "25010010": {
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Muối thực phẩm"
     },
-    "25010020": {
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Muối mỏ chưa chế biến"
-        }
-      ]
-    },
-    "25010050": {
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Nước biển"
-        }
-      ]
-    },
-    "25010091": {
-      "dieuKienSo": [
-        {
-          "fact": "hamLuongNatriClorua",
-          "op": ">",
-          "value": 60,
-          "donVi": "%"
-        },
-        {
-          "fact": "hamLuongNatriClorua",
-          "op": "<",
-          "value": 97,
-          "donVi": "%"
-        },
-        {
-          "fact": "daBoSungIot",
-          "op": "CO"
-        }
-      ]
-    },
-    "25010093": {
-      "dieuKienSo": [
-        {
-          "fact": "hamLuongNatriClorua",
-          "op": ">=",
-          "value": 97,
-          "donVi": "%"
-        }
-      ]
+    {
+     "fact": "daBoSungIot",
+     "op": "CO"
     }
+   ],
+   "nguon": "vb.tt08-2021-bnnptnt.d1",
+   "trich": "Muối thực phẩm (Mã HS 25010010 hoặc 2501.00.91): Là muối được bổ sung tăng cường vi chất i-ốt dùng để ăn trực tiếp và dùng trong chế biến thực phẩm, có hàm lượng các chất theo quy chuẩn kỹ thuật quốc gia này."
   },
-  "dieuKienNut": {},
-  "ghiChuSoan": [
+  "25010020": {
+   "dieuKienSo": [
     {
-      "ma": "25010020",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.25010020 \"Muối mỏ chưa chế biến\" — vế \"chưa chế biến\" nằm trong tên đầu nguyên văn của chính dòng ⇒ tenLoai giữ nguyên cả tên"
-    },
-    {
-      "ma": "25010091",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.25010091: \"Có hàm lượng natri clorua trên 60% nhưng dưới 97%, tính theo hàm lượng khô, đã bổ sung thêm i ốt\" ⇒ hamLuongNatriClorua > 60 % VÀ < 97 % (hai cận cùng khoá; bộ đọc chỉ trả cận đầu, đã đối chiếu tay) VÀ daBoSungIot CO; \"tính theo hàm lượng khô\" là cơ sở đại lượng"
-    },
-    {
-      "ma": "25010093",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.25010093: \"Có hàm lượng natri clorua từ 97% trở lên, tính theo hàm lượng khô\" ⇒ hamLuongNatriClorua >= 97 %"
-    },
-    {
-      "ma": "250100",
-      "loai": "LECH_TIEN_LE",
-      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 250100-01 LECH_CHUA_PHAN_XU (3536/TB-TCHQ) và 250100-02 KHONG_LECH (3536/TB-TCHQ): soạn theo chữ biểu, khớp bảng."
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Muối mỏ chưa chế biến"
     }
-  ]
+   ]
+  },
+  "25010050": {
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Nước biển"
+    }
+   ]
+  },
+  "25010091": {
+   "dieuKienSo": [
+    {
+     "fact": "hamLuongNatriClorua",
+     "op": ">",
+     "value": 60,
+     "donVi": "%"
+    },
+    {
+     "fact": "hamLuongNatriClorua",
+     "op": "<",
+     "value": 97,
+     "donVi": "%"
+    },
+    {
+     "fact": "daBoSungIot",
+     "op": "CO"
+    }
+   ]
+  },
+  "25010093": {
+   "dieuKienSo": [
+    {
+     "fact": "hamLuongNatriClorua",
+     "op": ">=",
+     "value": 97,
+     "donVi": "%"
+    }
+   ]
+  }
+ },
+ "dieuKienNut": {},
+ "ghiChuSoan": [
+  {
+   "ma": "25010020",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.25010020 \"Muối mỏ chưa chế biến\" — vế \"chưa chế biến\" nằm trong tên đầu nguyên văn của chính dòng ⇒ tenLoai giữ nguyên cả tên"
+  },
+  {
+   "ma": "25010091",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.25010091: \"Có hàm lượng natri clorua trên 60% nhưng dưới 97%, tính theo hàm lượng khô, đã bổ sung thêm i ốt\" ⇒ hamLuongNatriClorua > 60 % VÀ < 97 % (hai cận cùng khoá; bộ đọc chỉ trả cận đầu, đã đối chiếu tay) VÀ daBoSungIot CO; \"tính theo hàm lượng khô\" là cơ sở đại lượng"
+  },
+  {
+   "ma": "25010093",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.25010093: \"Có hàm lượng natri clorua từ 97% trở lên, tính theo hàm lượng khô\" ⇒ hamLuongNatriClorua >= 97 %"
+  },
+  {
+   "ma": "250100",
+   "loai": "LECH_TIEN_LE",
+   "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 250100-01 LECH_CHUA_PHAN_XU (3536/TB-TCHQ) và 250100-02 KHONG_LECH (3536/TB-TCHQ): soạn theo chữ biểu, khớp bảng."
+  },
+  {
+   "ma": "25010010",
+   "loai": "QUYET_DINH",
+   "ghiChu": "vb.tt08-2021-bnnptnt.d1: QCVN 01-193:2021 mục I.3.2 định nghĩa muối thực phẩm (Mã HS 25010010) = muối BỔ SUNG I-ỐT ⇒ thêm daBoSungIot CO (#1101, TT 08/2021 thay TT 27/2017 đã hết hiệu lực)"
+  }
+ ]
 }
