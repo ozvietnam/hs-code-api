@@ -24,7 +24,7 @@
     ] }
   },
   "ghiChuSoan": [
-    {"ma": "840732", "loai": "DUNG", "ghiChu": "Bế tắc cấu trúc: range gốc (50–250 cc) nằm ở tiêu đề PN6, máy không nhận dieuKienNut cho gốc (spec-ma-ngoai-phan-nhom) nên hai tầng (50,110]+(110,250] không phủ kín trục số ở gốc (lỗ 49.99995 cc). Bỏ \"> 50\" để hở cận dưới (khuôn 850152 bỏ mốc trùng giới hạn PN6) thì cong3-bien-lech-chu:8407321 chặn vì \"> 50\" là biên ĐẦU của chữ tầng dưới (máy so với biên đầu tiên đọc được). Không cách nào xanh mà không bỏ/vi phạm biên chữ — báo Claude."},
+    {"ma": "840732", "loai": "DUNG", "ghiChu": "Bế tắc cấu trúc: range gốc (50–250 cc) nằm ở tiêu đề PN6, máy không nhận dieuKienNut cho gốc (spec-ma-ngoai-phan-nhom) nên hai tầng (50,110]+(110,250] không phủ kín trục số ở gốc (lỗ 49.99995 cc). Bỏ \"> 50\" để hở cận dưới (khuôn 850152 bỏ mốc trùng giới hạn PN6) thì cong3-bien-lech-chu:8407321 chặn vì \"> 50\" là biên ĐẦU của chữ tầng dưới (máy so với biên đầu tiên đọc được). Không cách nào xanh mà không bỏ/vi phạm biên chữ. [Thử 2 lần: (1) đổi ≤→< cho 8407321, ≥ cho 8407322 → cong3-bien-lech-chu — giữ DỪNG]"},
     {"ma": "8407321", "loai": "QUYET_DINH", "ghiChu": "tieuDe.8407321 \"Dung tích xilanh trên 50 cc nhưng không quá 110 cc\" ⇒ dungTichXiLanh > 50 cc và <= 110 cc (\"trên\" = >, \"không quá\" = <=)."},
     {"ma": "8407322", "loai": "QUYET_DINH", "ghiChu": "tieuDe.8407322 \"Dung tích xilanh trên 110 cc nhưng không quá 250 cc\" ⇒ dungTichXiLanh > 110 cc và <= 250 cc."},
     {"ma": "84073211", "loai": "QUYET_DINH", "ghiChu": "tax.84073211 \"Dùng cho xe thuộc nhóm 87.01\" ⇒ dungCho \"87.01\" (cùng khuôn 840733 .10)."},
