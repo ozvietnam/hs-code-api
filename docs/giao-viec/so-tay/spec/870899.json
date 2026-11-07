@@ -350,8 +350,54 @@
     },
     {
       "ma": "870899",
-      "loai": "DUNG",
-      "ghiChu": "[CHỒNG LẤN CHƯA CÓ HÀNG THẬT] Dòng .40 «Giá đỡ hoặc khay đỡ bình ắc quy và khung của nó» chồng với các dòng «Dùng cho xe thuộc nhóm 87.02/87.03/87.04» và .70 «Khung giá đỡ động cơ»; thêm .25 không tới được (đích lồng «Thùng nhiên liệu và bộ phận» ↔ mã xe). CẦN: Claude khai Q1 cho cặp không có hàng thật + sửa bộ máy đích lồng. — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026 (#1109): .40 «Giá đỡ hoặc khay đỡ bình ắc quy và khung của nó» — «khung» là khung của giá/khay đỡ bình, không phải khung xe hay khung giá đỡ động cơ ⇒ cụm chongLanTruc (.40 trục công dụng «bình ắc quy») khai Q1. .21 «Thùng nhiên liệu» ↔ .24 bộ phận kể tên của thùng: chongLanVanBan (Q1). Bộ kiểm sửa cùng lượt: ghép ứng viên đọc điều kiện trong HOẶC (.25 tới được). Lúc chạy hàng thoả hai nhánh ⇒ hỏi."
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "87089940",
+        "8708996",
+        "87089970"
+      ],
+      "truc": {
+        "8708996": "TEN_LOAI",
+        "87089940": "CONG_DUNG",
+        "87089970": "TEN_LOAI"
+      },
+      "cauHoiPhanBiet": "Hàng này là giá đỡ hoặc khay đỡ bình ắc quy (hoặc khung của giá/khay đó) (87089940), là khung xe hoặc bộ phận của khung xe (tầng 8708996), hay là khung giá đỡ động cơ (87089970)?",
+      "trich": {
+        "8708996": "Khung xe hoặc các bộ phận của chúng",
+        "87089940": "Giá đỡ hoặc khay đỡ bình ắc quy và khung của nó",
+        "87089970": "Khung giá đỡ động cơ"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "87089940",
+            "8708996"
+          ],
+          "khongCoHangThat": "«Khung» ở dòng .40 là khung của chính giá đỡ hoặc khay đỡ bình ắc quy («và khung của nó»); khung xe (chassis) và bộ phận của khung xe là kết cấu chịu lực của cả xe, không phải đồ đỡ bình ắc quy. Không có hàng nào vừa là giá/khay đỡ bình ắc quy (hay khung của nó) vừa là khung xe."
+        },
+        {
+          "cap": [
+            "87089940",
+            "87089970"
+          ],
+          "khongCoHangThat": "Khung giá đỡ động cơ đỡ động cơ; giá đỡ, khay đỡ bình ắc quy và khung của nó đỡ bình ắc quy. Hai loại hàng khác hẳn nhau theo vật được đỡ."
+        }
+      ],
+      "phanXu": null
+    }
+  ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "87089921",
+        "87089924"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1, Claude 07/11/2026): \"Thùng nhiên liệu\" ↔ \"Nửa dưới của thùng nhiên liệu; nắp đậy thùng nhiên liệu; ống dẫn của thùng nhiên liệu (filler pipes); ống dẫn hướng có đầu nối với bình nhiên liệu (filler hose); đai giữ bình nhiên liệu (SEN)\" — dòng .21 là cả thùng nhiên liệu, dòng .24 là các bộ phận được kể tên của thùng; mô tả bộ phận có nhắc chữ «thùng nhiên liệu» nhưng không phải là cái thùng (máy so chữ ghép được vector chứa cả hai tên)."
     }
   ]
 }

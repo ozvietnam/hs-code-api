@@ -27,6 +27,9 @@ export const THU_MUC_DONG_CUNG_71A17E0 = path.join(process.cwd(), 'scripts', 'fi
 // ranh-gioi-b5bf024/ = bản sao nguyên văn tại commit b5bf024 (main sau #1148) — 140490 trước khi khai Q1 khongCoHangThat;
 // 730640 (trục số DAC_DIEM) và 721114 (cặp DAC_DIEM cùng trục) trước khi gỡ DỪNG.
 export const THU_MUC_DONG_CUNG_B5BF024 = path.join(process.cwd(), 'scripts', 'fixtures', 'ho-so', 'ranh-gioi-b5bf024');
+// ranh-gioi-8baef5e/ = bản sao nguyên văn tại commit 8baef5e (main sau #1151) — 852910, 870829 (đích lồng), 870850 (cầu chủ động)
+// trước khi gỡ DỪNG lô 3.
+export const THU_MUC_DONG_CUNG_8BAEF5E = path.join(process.cwd(), 'scripts', 'fixtures', 'ho-so', 'ranh-gioi-8baef5e');
 export const THU_MUC_DONG_CUNG_PR = path.join(process.cwd(), 'scripts', 'fixtures', 'ho-so', 'ranh-gioi-pr');
 // ranh-gioi-571d7a5/ = bản sao nguyên văn tại commit 571d7a5 (main sau #690) — 871410 dạng HOAC, 845290 (luật tên nguyên văn).
 // ranh-gioi-f457a19/ = bản sao nguyên văn tại commit f457a19 (main sau #697, trước soạn lại #699) — 841459 .10 và 950300 .91

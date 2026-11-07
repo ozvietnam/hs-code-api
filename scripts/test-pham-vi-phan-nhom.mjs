@@ -3,7 +3,7 @@ import './test-isolate-data.mjs';
 import { createRequire } from 'module';
 import { execFileSync } from 'child_process';
 const require = createRequire(import.meta.url);
-const { nhapDongCung, gieoNhap, THU_MUC_DONG_CUNG_38864C8, THU_MUC_DONG_CUNG_C05A07A, THU_MUC_DONG_CUNG_454E512, THU_MUC_DONG_CUNG_0519921, THU_MUC_DONG_CUNG_71A17E0, THU_MUC_DONG_CUNG_B5BF024 } = await import('./fixtures/ho-so/nhap-dong-cung.mjs');
+const { nhapDongCung, gieoNhap, THU_MUC_DONG_CUNG_38864C8, THU_MUC_DONG_CUNG_C05A07A, THU_MUC_DONG_CUNG_454E512, THU_MUC_DONG_CUNG_0519921, THU_MUC_DONG_CUNG_71A17E0, THU_MUC_DONG_CUNG_B5BF024, THU_MUC_DONG_CUNG_8BAEF5E } = await import('./fixtures/ho-so/nhap-dong-cung.mjs');
 const C = require('../lib/ho-so/cong-ranh-gioi.js');
 const S = require('../lib/so-tay.js');
 let pass = 0; let fail = 0;
@@ -134,6 +134,18 @@ const muc = (b, id) => [...(b.dong8 || []), ...(b.dieuKienNut || [])].find((x) =
   const b2 = nhapDongCung('721114', THU_MUC_DONG_CUNG_B5BF024);
   const m = (b2.dong8 || []).find((x) => x.hs === '72111415'); m.dieuKienSo = [{ fact: 'tenLoai', op: 'TEN_LOAI', value: 'Dạng cuộn để cán lại' }];
   check('13b đổi .15 sang khoá tên ⇒ cặp khác trục, chongLanVanBan không gỡ được', C.kiemRanhGioi('721114', b2).loi.some((l) => l.startsWith('cong2-chong-lan-van-ban-truc:72111414+72111415')), C.kiemRanhGioi('721114', b2).loi);
+}
+{ // 14. Ghép ứng viên (07/11/2026, lô 3): điều kiện trong HOẶC; đích chữ + mã ứng viên khi anh em bị phủ định ghi bằng mã
+  for (const p of ['852910', '870829']) {
+    const r = C.kiemRanhGioi(p, nhapDongCung(p, THU_MUC_DONG_CUNG_8BAEF5E));
+    check(`14a ${p} (đích lồng, spec không đổi) không còn cong2-dong-khong-toi-duoc`, !r.loi.some((l) => l.startsWith('cong2-dong-khong-toi-duoc')), r.loi);
+  }
+  const b = nhapDongCung('870850', THU_MUC_DONG_CUNG_8BAEF5E);
+  const r0 = C.kiemRanhGioi('870850', b);
+  check('14b 870850 bản cũ (thiếu vế «không phải bộ phận») vẫn chồng lấn tầng lắp ráp ↔ bộ phận', r0.loi.some((l) => l.startsWith('cong2-chong-lan:')), r0.loi.slice(0, 3));
+  for (const id of ['8708501', '8708502']) b.dieuKienNut.find((m) => m.id === id).dieuKienSo.push({ fact: 'laBoPhan', op: 'KHONG' });
+  const r = C.kiemRanhGioi('870850', b);
+  check('14c 870850 thêm laBoPhan KHONG ⇒ xanh, .96 «Bánh răng vành khăn» dưới tầng «Loại khác» tới được', r.hopLe === true, r.loi);
 }
 console.log(`\n${pass} pass, ${fail} fail`);
 process.exit(fail ? 1 : 0);
