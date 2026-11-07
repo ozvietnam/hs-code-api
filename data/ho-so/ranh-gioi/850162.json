@@ -11,7 +11,28 @@
     "ngay": "2026-11-06"
   },
   "duyet": null,
-  "dieuKienNut": [],
+  "dieuKienNut": [
+    {
+      "id": "850162",
+      "nguon": "tieuDe.850162",
+      "trich": "Công suất trên 75 kVA nhưng không quá 375 kVA",
+      "dieuKienSo": [
+        {
+          "fact": "congSuatBieuKien",
+          "op": ">",
+          "value": 75,
+          "donVi": "kVA"
+        },
+        {
+          "fact": "congSuatBieuKien",
+          "op": "<=",
+          "value": 375,
+          "donVi": "kVA"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
   "dong8": [
     {
       "hs": "85016210",
@@ -66,9 +87,9 @@
       "ghiChu": "tax.85016220 \"Công suất trên 150 kVA nhưng không quá 375 kVA\" ⇒ congSuatBieuKien > 150 kVA và <= 375 kVA"
     },
     {
-      "ma": "85016210",
-      "loai": "DUNG",
-      "ghiChu": "Cấu trúc chặn: 850162 chỉ có 2 dòng số chia đôi dải (>75…≤150 / >150…≤375 kVA), không có dòng \"Loại khác\" ở gốc — cong1 khong-phu-kin đòi vector biên ngay ngoài cận phân nhóm (74,999 kVA / 375,0004 kVA) phải rơi vào một dòng trong khi cả hai dòng đều đúng cận chữ (cong3-bien-lech-chu không cho bỏ cận). Mâu thuẫn cấu trúc, không bịa chữ được. Báo Claude"
+      "ma": "850162",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude (#1109): phạm vi phân nhóm dieuKienNut[850162] theo tieuDe.850162 \"Công suất trên 75 kVA nhưng không quá 375 kVA\" — vector ngoài phạm vi (cổng 1 cũ báo hở) thuộc phân nhóm khác, không phải lỗ hổng."
     }
   ]
 }
