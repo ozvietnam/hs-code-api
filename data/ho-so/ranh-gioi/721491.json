@@ -32,14 +32,52 @@
       "hs": "72149111",
       "nguon": "tax.72149111",
       "trich": "72149111 - - - - Có hàm lượng carbon từ 0,38% trở lên và hàm lượng mangan dưới 1,15% tính theo khối lượng",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": ">=",
+          "value": 0.38,
+          "donVi": "%"
+        },
+        {
+          "fact": "hamLuongMangan",
+          "op": "<",
+          "value": 1.15,
+          "donVi": "%"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "72149112",
       "nguon": "tax.72149112",
       "trich": "72149112 - - - - Có hàm lượng carbon từ 0,17% đến 0,46% và hàm lượng mangan từ 1,2% đến dưới 1,65% tính theo khối lượng",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": ">=",
+          "value": 0.17,
+          "donVi": "%"
+        },
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<=",
+          "value": 0.46,
+          "donVi": "%"
+        },
+        {
+          "fact": "hamLuongMangan",
+          "op": ">=",
+          "value": 1.2,
+          "donVi": "%"
+        },
+        {
+          "fact": "hamLuongMangan",
+          "op": "<",
+          "value": 1.65,
+          "donVi": "%"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -71,26 +109,31 @@
       "ghiChu": "tieuDe.7214911 \"Có hàm lượng carbon dưới 0,6% tính theo khối lượng\" ⇒ hamLuongCarbon < 0.6 %."
     },
     {
-      "ma": "72149120",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.72149120 \"Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng\" ⇒ hamLuongCarbon >= 0.6 %."
-    },
-    {
       "ma": "72149111",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "hamLuongMangan",
-      "ghiChu": "tax.72149111 \"Có hàm lượng carbon từ 0,38% trở lên và hàm lượng mangan dưới 1,15% tính theo khối lượng\" — vế \"hàm lượng mangan dưới 1,15%\" là vế GIỚI HẠN không có khoá (tu-vung@2 chỉ có hamLuongCarbon/Crom/Niken). Bỏ vế mangan làm đổi mã .11 ↔ .12 (carbon 0,38–0,46% thuộc cả hai) nên không ghi BO_VE."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72149111 \"Có hàm lượng carbon từ 0,38% trở lên và hàm lượng mangan dưới 1,15% tính theo khối lượng\" ⇒ hamLuongCarbon >= 0.38 % (\"từ … trở lên\") VÀ hamLuongMangan < 1.15 % (\"dưới\"; khoá lô 21)."
     },
     {
       "ma": "72149112",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "hamLuongMangan",
-      "ghiChu": "tax.72149112 \"Có hàm lượng carbon từ 0,17% đến 0,46% và hàm lượng mangan từ 1,2% đến dưới 1,65% tính theo khối lượng\" — vế \"hàm lượng mangan từ 1,2% đến dưới 1,65%\" không có khoá hamLuongMangan; bỏ vế làm đổi mã .11 ↔ .12."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72149112 \"Có hàm lượng carbon từ 0,17% đến 0,46% và hàm lượng mangan từ 1,2% đến dưới 1,65% tính theo khối lượng\" ⇒ hai cận mỗi đại lượng = hai điều kiện cùng khoá: hamLuongCarbon >= 0.17 % VÀ hamLuongCarbon <= 0.46 % (\"từ A đến B\", \"đến\" không có \"dưới\" ⇒ <=) VÀ hamLuongMangan >= 1.2 % VÀ hamLuongMangan < 1.65 % (\"đến dưới\" = <). Bộ đọc chỉ trả cận đầu; cận sau đã đối chiếu tay với chữ. .11 (Mn < 1,15) ↔ .12 (Mn >= 1,2) rời nhau nhờ khoá hamLuongMangan cùng thang."
     },
     {
-      "ma": "721491",
-      "loai": "DUNG",
-      "ghiChu": "DỪNG THIEU_KHOA_TU_VUNG hamLuongMangan: .11 và .12 phân biệt nhau chỉ nhờ điều kiện mangan (carbon 0,38%–0,46% thuộc cả hai). Không ép cho xanh. Dòng .20 và tiêu đề 7214911 đã khai đủ (hamLuongCarbon); .19 \"Loại khác\" trần không ghi."
+      "ma": "72149111",
+      "loai": "BO_VE",
+      "ve": "Có hàm lượng carbon",
+      "lyDo": "Chữ giới thiệu thuần: chỉ nêu tên đại lượng (hàm lượng carbon); đại lượng này đã được điều kiện hamLuongCarbon phủ cùng với vế biên số đứng sau, nên bỏ vế không đổi mã 8 số."
+    },
+    {
+      "ma": "72149112",
+      "loai": "BO_VE",
+      "ve": "Có hàm lượng carbon",
+      "lyDo": "Chữ giới thiệu thuần: chỉ nêu tên đại lượng (hàm lượng carbon); đại lượng này đã được điều kiện hamLuongCarbon phủ cùng với vế biên số đứng sau, nên bỏ vế không đổi mã 8 số."
+    },
+    {
+      "ma": "72149120",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72149120 \"Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng\" ⇒ hamLuongCarbon >= 0.6 %."
     },
     {
       "ma": "721491",

@@ -47,24 +47,38 @@
   },
   "dieuKienNut": {
     "2103901": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "fact": "loaiNuocXotGiaVi",
+          "op": "TRONG",
+          "value": [
+            "NUOC_XOT"
+          ]
+        }
+      ]
     },
     "2103902": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "fact": "loaiNuocXotGiaVi",
+          "op": "TRONG",
+          "value": [
+            "GIA_VI_HON_HOP"
+          ]
+        }
+      ]
     }
   },
   "ghiChuSoan": [
     {
       "ma": "2103901",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "loaiHangThuocTieuDe",
-      "ghiChu": "tieuDe.2103901 \"Nước xốt và các chế phẩm làm nước xốt\" (EN \"Sauces and preparations therefor\")"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.2103901 \"Nước xốt và các chế phẩm làm nước xốt\" (EN \"Sauces and preparations therefor\") ⇒ loaiNuocXotGiaVi TRONG [NUOC_XOT] (khoá lô 22; nhãn giá trị đúng bằng chữ tiêu đề, cách đọc \"nước xốt\" / \"chế phẩm làm nước xốt\"). Thay tenLoai: tên hạ danh của dòng con (\"Tương ớt\", \"Nước mắm\") không chứa chữ thượng danh nên tenLoai không nối được; khoá liệt kê cho tiêu đề một điều kiện tất định, hàng chỉ nêu hạ danh ⇒ CHUA_BIET ⇒ hỏi người khai. Ghi chú THIEU_KHOA_TU_VUNG loaiHangThuocTieuDe + DUNG cũ đã giải quyết: cổng 1 không còn cong1-khong-phu-kin ở tầng gốc."
     },
     {
       "ma": "2103902",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "loaiHangThuocTieuDe",
-      "ghiChu": "tieuDe.2103902 \"Gia vị hỗn hợp và bột canh hỗn hợp\" (EN \"Mixed condiments and mixed seasonings\")"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.2103902 \"Gia vị hỗn hợp và bột canh hỗn hợp\" (EN \"Mixed condiments and mixed seasonings\") ⇒ loaiNuocXotGiaVi TRONG [GIA_VI_HON_HOP] (cùng khoá với anh em 2103901 — thang đo đồng nhất; cách đọc \"gia vị hỗn hợp\" / \"bột canh hỗn hợp\")."
     },
     {
       "ma": "21039011",
@@ -100,11 +114,6 @@
       "ma": "210390",
       "loai": "LECH_TIEN_LE",
       "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 210390-03 LECH_CHUA_PHAN_XU (3790/TB-TCHQ .11 Tương ớt – 3788/TB-TCHQ .13 Nước xốt loại khác; hai TB chỉ ghi \"theo phụ lục\", chưa phân xử) và 210390-01/-02/-04 KHONG_LECH (1225, 238, 7341/TB-TCHQ): soạn theo chữ biểu, khớp bảng."
-    },
-    {
-      "ma": "210390",
-      "loai": "DUNG",
-      "ghiChu": "DỪNG THIEU_KHOA_TU_VUNG:2103901,2103902:loaiHangThuocTieuDe. Hai tiêu đề chỉ nêu TÊN LOẠI thượng danh (\"Nước xốt và các chế phẩm làm nước xốt\"; \"Gia vị hỗn hợp và bột canh hỗn hợp\") còn dòng con nêu hạ danh (\"Tương ớt\", \"Nước mắm\", \"Mắm tôm\"): tên hạ danh không chứa chữ của tên thượng danh nên bộ so chữ tenLoai không nối được. Đã thử: (a) tenLoai mảng ở tiêu đề ⇒ cong1-khong-phu-kin:210390:tenLoai=Tương ớt (tầng gốc hai tiêu đề không có \"Loại khác\") + cong2-dong-khong-toi-duoc:21039019 (\"chế phẩm làm nước xốt\" chứa trọn \"Nước xốt\" của 21039013); (b) HOAC [[tenLoai Nước xốt],[tenLoai chế phẩm + congDung làm nước xốt]] ⇒ dòng 21039011/12 không tới được (ứng viên ghép không nở HOAC). Không đổi sang khoá khác để né. Điều kiện các dòng con đã soạn đủ; tiêu đề để trống chờ khoá."
     }
   ]
 }

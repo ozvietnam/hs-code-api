@@ -131,7 +131,12 @@
       "hs": "96190093",
       "nguon": "tax.96190093",
       "trich": "96190093 - - Loại khác, dệt kim hoặc móc",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "detKimHoacMoc",
+          "op": "CO"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -175,9 +180,8 @@
     },
     {
       "ma": "96190093",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "kieuDet (thêm giá trị DET_KIM_HOAC_MOC) hoặc khoá CO_KHONG daDetKimHoacMoc",
-      "ghiChu": "tax.96190093 \"Loại khác, dệt kim hoặc móc\" (EN knitted or crocheted) — tu-vung@2 không có khoá nào đọc \"dệt kim\"/\"móc\" (kieuDet chỉ vân điểm/vân chéo/nổi vòng); vế \"dệt kim hoặc móc\" là GIỚI HẠN, bỏ vế làm .93 thành \"Loại khác\" trần ⇒ đổi mã .93/.99, không BO_VE"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.96190093 \"Loại khác, dệt kim hoặc móc\" ⇒ chỉ ghi điều kiện của vế sau \"Loại khác,\": detKimHoacMoc CO (khoá lô 22, đọc \"dệt kim hoặc móc\" / EN \"knitted or crocheted\")."
     }
   ]
 }

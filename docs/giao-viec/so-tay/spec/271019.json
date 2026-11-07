@@ -142,10 +142,34 @@
       ]
     },
     "27101981": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Nhiên liệu động cơ máy bay"
+        },
+        {
+          "fact": "doChopChay",
+          "op": ">=",
+          "value": 23,
+          "donVi": "oC"
+        }
+      ]
     },
     "27101982": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Nhiên liệu động cơ máy bay"
+        },
+        {
+          "fact": "doChopChay",
+          "op": "<",
+          "value": 23,
+          "donVi": "oC"
+        }
+      ]
     },
     "27101983": {
       "dieuKienSo": [
@@ -271,6 +295,16 @@
       "ghiChu": "tax.27101979 \"Dầu nhiên liệu\" ⇒ tenLoai \"Dầu nhiên liệu\"."
     },
     {
+      "ma": "27101981",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101981 \"Nhiên liệu động cơ máy bay (nhiên liệu phản lực) có độ chớp cháy từ 23oC trở lên\" ⇒ tenLoai \"Nhiên liệu động cơ máy bay\" + doChopChay >= 23 oC (đơn vị như chữ trích) (\"từ … trở lên\"; khoá lô 21, đơn vị \"oC\" thuộc hệ nhietDoC). \"(nhiên liệu phản lực)\" là ngoặc chú thích tên gọi khác. Có tenLoai (chữ của dòng) để .83/.89/.90 còn tới được: chỉ độ chớp cháy thì >= 23 và < 23 phủ kín mọi giá trị."
+    },
+    {
+      "ma": "27101982",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101982 \"Nhiên liệu động cơ máy bay (nhiên liệu phản lực) có độ chớp cháy dưới 23oC\" ⇒ tenLoai \"Nhiên liệu động cơ máy bay\" + doChopChay < 23 oC (đơn vị như chữ trích) (\"dưới\" = <). Cùng khoá, cùng biên 23 với .81 (thang đo đồng nhất)."
+    },
+    {
       "ma": "27101983",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.27101983 \"Các kerosine khác\" ⇒ tenLoai \"kerosine\" + phanConLai true (phần còn lại có tên, chữ \"khác\")."
@@ -286,21 +320,9 @@
       "ghiChu": "tax.27101990 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
     },
     {
-      "ma": "27101981",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "doChopChay",
-      "ghiChu": "tax.27101981 \"Nhiên liệu động cơ máy bay (nhiên liệu phản lực) có độ chớp cháy từ 23oC trở lên\" — vế GIỚI HẠN \"có độ chớp cháy từ 23oC trở lên\" cần khoá SO đơn vị °C (độ chớp cháy); tu-vung@2 không có khoá nhiệt độ/độ chớp cháy. Bỏ vế này thì .81 và .82 cùng một điều kiện (chồng lấn) và đổi mã giữa .81 ↔ .82."
-    },
-    {
-      "ma": "27101982",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "doChopChay",
-      "ghiChu": "tax.27101982 \"…có độ chớp cháy dưới 23oC\" — cùng khoá doChopChay (SO, °C) với .81; để dieuKienSo rỗng, không ép."
-    },
-    {
       "ma": "271019",
       "loai": "DUNG",
-      "ghiChu": "DỪNG: (1) THIEU_KHOA_TU_VUNG doChopChay (27101981, 27101982) ⇒ cong1-chua-so-hoa kéo theo .83/.89/.90; (2) cong2-chong-lan-truc: nhánh chia theo TÊN (27101920 \"Dầu thô đã tách phần nhẹ\", tiêu đề 2710194, 2710197) cạnh nhánh chia theo CÔNG DỤNG (27101950 \"dùng trong bộ hãm thủy lực\", 27101960 \"dùng cho máy biến điện …\") — không nghĩ ra hàng thật thoả cả \"Dầu thô đã tách phần nhẹ\" lẫn \"dùng trong bộ hãm thủy lực\" ⇒ không khai chongLanTruc (QUY-TRINH 4a), không đổi khoá để né. Khoá nhiệt độ/độ chớp cháy và cách biểu diễn dòng .50/.60 cần Claude quyết."
+      "ghiChu": "DỪNG cong2-chong-lan-truc (còn lại sau khi đã giải THIEU_KHOA doChopChay bằng khoá lô 21 cho .81/.82): nhánh chia theo TÊN (27101920 \"Dầu thô đã tách phần nhẹ\", tiêu đề 2710194 \"Dầu và mỡ bôi trơn\", 2710197 \"Nhiên liệu diesel; các loại dầu nhiên liệu\") cạnh nhánh chia theo CÔNG DỤNG (27101950 \"Dầu dùng trong bộ hãm thủy lực (dầu phanh)\", 27101960 \"Dầu dùng cho máy biến điện …\") kèm các cặp cong2-chong-lan :khong-tat-dinh trong cùng cụm. Không nghĩ ra hàng THẬT thoả cả \"Dầu thô đã tách phần nhẹ\" lẫn \"dùng trong bộ hãm thủy lực\" ⇒ không khai chongLanTruc/viDuHang (QUY-TRINH 4a, vòng 8), không đổi khoá để né. Cách biểu diễn .50/.60 cần Claude quyết."
     },
     {
       "ma": "271019",

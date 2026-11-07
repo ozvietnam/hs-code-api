@@ -110,7 +110,19 @@
       ]
     },
     "27101260": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dung môi"
+        },
+        {
+          "fact": "hamLuongCauTuThom",
+          "op": "<",
+          "value": 1,
+          "donVi": "%"
+        }
+      ]
     },
     "27101270": {
       "dieuKienSo": [
@@ -144,15 +156,47 @@
       ]
     },
     "27101292": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "spirit dầu mỏ"
+        },
+        {
+          "fact": "doChopChay",
+          "op": "<",
+          "value": 23,
+          "donVi": "oC"
+        }
+      ]
     }
   },
   "dieuKienNut": {
     "2710121": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xăng động cơ"
+        },
+        {
+          "fact": "coPhaChi",
+          "op": "CO"
+        }
+      ]
     },
     "2710122": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xăng động cơ"
+        },
+        {
+          "fact": "coPhaChi",
+          "op": "KHONG"
+        }
+      ]
     },
     "2710123": {
       "dieuKienSo": [
@@ -202,15 +246,13 @@
   "ghiChuSoan": [
     {
       "ma": "2710121",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "coPhaChi",
-      "ghiChu": "tieuDe.2710121 \"Xăng động cơ, có pha chì\" — vế GIỚI HẠN \"có pha chì\" không có khoá CO_KHONG trong tu-vung@2 (không có khoá nào đọc \"pha chì\"). Bỏ vế làm đổi nhánh 2710121 ↔ 2710122 (có chì/không chì) nên không ghi BO_VE và không ghi tenLoai \"Xăng động cơ\" một mình."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.2710121 \"Xăng động cơ, có pha chì\" ⇒ tenLoai \"Xăng động cơ\" + coPhaChi CO (khoá lô 21; ghiChu khoá nêu đúng tiêu đề này đọc CÓ)."
     },
     {
       "ma": "2710122",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "coPhaChi",
-      "ghiChu": "tieuDe.2710122 \"Xăng động cơ, không pha chì\" — vế \"không pha chì\" (op KHONG của khoá coPhaChi đề xuất) không có khoá; cùng lý do với 2710121."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.2710122 \"Xăng động cơ, không pha chì\" ⇒ tenLoai \"Xăng động cơ\" + coPhaChi KHONG (\"không …\" ⇒ op KHONG; cachDocKhong đọc \"không pha chì\"). Cùng khoá coPhaChi với 2710121 (thang đo đồng nhất)."
     },
     {
       "ma": "27101211",
@@ -304,9 +346,14 @@
     },
     {
       "ma": "27101260",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "hamLuongCauTuThom",
-      "ghiChu": "tax.27101260 \"Dung môi có hàm lượng cấu tử thơm thấp dưới 1% tính theo trọng lượng\" — vế GIỚI HẠN \"có hàm lượng cấu tử thơm thấp dưới 1% tính theo trọng lượng\" cần khoá SO đơn vị % (hàm lượng cấu tử thơm); tu-vung@2 không có (hamLuongCarbon/Crom/Niken là nguyên tố). Bỏ vế làm đổi mã .60 ↔ .70 (bảng tiền lệ 271012-02/-03 nói đúng ranh giới này) nên không ghi BO_VE."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101260 \"Dung môi có hàm lượng cấu tử thơm thấp dưới 1% tính theo trọng lượng\" ⇒ tenLoai \"Dung môi\" + hamLuongCauTuThom < 1 % (\"dưới\" = <; khoá lô 21). \"thấp\" chỉ là chữ mô tả của chính biên \"dưới 1%\", \"tính theo trọng lượng\" là cách đo (trong đơn vị %)."
+    },
+    {
+      "ma": "27101260",
+      "loai": "BO_VE",
+      "ve": "có hàm lượng cấu tử thơm thấp",
+      "lyDo": "Chữ giới thiệu thuần: nêu tên đại lượng (hàm lượng cấu tử thơm) và chữ \"thấp\" mô tả chính biên \"dưới 1%\" đứng liền sau; đại lượng đã được điều kiện hamLuongCauTuThom < 1 % phủ, nên bỏ vế không đổi mã 8 số."
     },
     {
       "ma": "27101270",
@@ -325,9 +372,8 @@
     },
     {
       "ma": "27101292",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "doChopChay",
-      "ghiChu": "tax.27101292 \"Loại khác, spirit dầu mỏ(1), có độ chớp cháy dưới 23oC\" — \"Loại khác, <vế>\": vế GIỚI HẠN \"có độ chớp cháy dưới 23oC\" cần khoá SO (độ chớp cháy, °C), tu-vung@2 không có. Vế \"spirit dầu mỏ\" là tên hàng (tenLoai) nhưng bỏ vế chớp cháy làm đổi mã .92 ↔ .99 nên để trống, không ép."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101292 \"Loại khác, spirit dầu mỏ(1), có độ chớp cháy dưới 23oC\" ⇒ chỉ ghi điều kiện của vế sau \"Loại khác,\": tenLoai \"spirit dầu mỏ\" + doChopChay < 23 oC (\"dưới\" = <; khoá lô 21, đơn vị như chữ trích). \"(1)\" là chú thích cuối trang, không thành điều kiện."
     },
     {
       "ma": "27101299",
@@ -342,7 +388,7 @@
     {
       "ma": "271012",
       "loai": "DUNG",
-      "ghiChu": "DỪNG THIEU_KHOA_TU_VUNG coPhaChi (2710121/2710122, có chì ↔ không chì: nền của 15 dòng xăng động cơ), hamLuongCauTuThom (27101260), doChopChay (27101292). Thêm DỪNG cong2-chong-lan-truc:27101280 (nhánh công dụng \"để pha chế xăng động cơ\" chồng trục với nhánh tên 2710123 Xăng máy bay, 27101240 Tetrapropylene, 27101250 Dung môi trắng): không có hàng THẬT nào thoả cả hai nhánh nên không khai chongLanTruc/viDuHang (không bịa). Các mục có khoá (RON, ethanol, tên, công dụng) đã khai đủ; mục thiếu khoá để dieuKienSo trống, không ép."
+      "ghiChu": "Đã giải THIEU_KHOA bằng khoá lô 21 (coPhaChi ở 2710121/2710122, hamLuongCauTuThom ở .60, doChopChay ở .92). Còn DỪNG vì hai lỗi ngoài lô 21: (1) cong2-chong-lan-truc:27101280 — nhánh công dụng .80 \"Naphtha, reformate (SEN) và các chế phẩm khác để pha chế xăng động cơ\" chồng trục với các nhánh tên (2710121/2710122 \"Xăng động cơ…\", 2710123 \"Xăng máy bay…\", .40 Tetrapropylene, .50 Dung môi trắng, .60, .70): không nghĩ ra hàng THẬT thoả cả hai nhánh nên không khai chongLanTruc/viDuHang (không bịa), không đổi khoá để né. (2) cong2-dong-khong-toi-duoc:27101223/27101226/27101229 — \"Loại khác\" dưới mỗi tầng RON không tới được vì khoá phaCheVoiEthanol nhị phân: \"Chưa pha chế\" (KHONG) + \"Pha chế với ethanol\" (CO) phủ kín, trong khi chữ biểu để chỗ cho xăng pha chế với chất khác ethanol. Cần Claude quyết khoá (vd khoá liệt kê CHUA_PHA_CHE/PHA_ETHANOL) — không ép."
     },
     {
       "ma": "271012",

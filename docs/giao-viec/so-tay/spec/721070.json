@@ -15,13 +15,31 @@
       ]
     },
     "72107013": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "fact": "lopMaPhu",
+          "op": "TRONG",
+          "value": [
+            "SON_SAU_MA_NHOM_KEM"
+          ]
+        }
+      ]
     },
     "72107021": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "fact": "daSon",
+          "op": "CO"
+        }
+      ]
     },
     "72107091": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "fact": "daSon",
+          "op": "CO"
+        }
+      ]
     }
   },
   "dieuKienNut": {
@@ -93,31 +111,23 @@
     },
     {
       "ma": "72107013",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "lopMaPhu (thêm giá trị SON_SAU_MA_NHOM_KEM)",
-      "ghiChu": "tax.72107013 \"Được sơn sau khi phủ, mạ bằng hợp kim nhôm - kẽm\" — lopMaPhu chỉ có SON_SAU_MA_KEM (mạ kẽm), không có giá trị \"được sơn sau khi phủ, mạ hợp kim nhôm - kẽm\"; chữ này không phải TÊN hàng nên không ép vào tenLoai. Bỏ vế làm đổi mã .13 ↔ .19 nên không ghi BO_VE."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72107013 \"Được sơn sau khi phủ, mạ bằng hợp kim nhôm - kẽm\" ⇒ lopMaPhu TRONG [SON_SAU_MA_NHOM_KEM] (giá trị lô 21, cách đọc \"được sơn sau khi phủ, mạ (bằng) hợp kim nhôm - kẽm\"). Cùng khoá lopMaPhu với anh em .12 (SON_SAU_MA_KEM) — thang đo đồng nhất; hai giá trị rời nhau nên .12 ↔ .13 không chồng."
     },
     {
       "ma": "72107021",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "daSon (đã sơn, quét vécni hoặc phủ plastic)",
-      "ghiChu": "tax.72107021 \"Được sơn\" — không có khoá tu-vung@2 đọc \"được sơn\" (lopMaPhu SON_SAU_MA_KEM là sơn SAU mạ kẽm, hẹp hơn chữ). Bỏ vế làm đổi mã .21 ↔ .29 nên không ghi BO_VE."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72107021 \"Được sơn\" ⇒ daSon CO (khoá lô 21; ghiChu khoá nêu đúng 7210.70.21 \"Được sơn\" phân biệt với .29 \"Loại khác\" = quét vécni hoặc phủ plastic)."
     },
     {
       "ma": "72107091",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "daSon (đã sơn, quét vécni hoặc phủ plastic)",
-      "ghiChu": "tax.72107091 \"Được sơn\" — như .21; bỏ vế làm đổi mã .91 ↔ .99."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72107091 \"Được sơn\" ⇒ daSon CO (như .21; phân biệt với .99 \"Loại khác\")."
     },
     {
       "ma": "72107019",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.72107019 \"Loại khác\" trần ⇒ không điều kiện, không đưa vào spec."
-    },
-    {
-      "ma": "721070",
-      "loai": "DUNG",
-      "ghiChu": "DỪNG THIEU_KHOA_TU_VUNG: .13 (sơn sau mạ hợp kim nhôm - kẽm), .21 và .91 (\"Được sơn\") không có khoá tu-vung@2; bỏ vế làm đổi mã. Không ép cho xanh. Đã khai tiêu đề 7210701/7210702 (hamLuongCarbon, doDay) và .12 (lopMaPhu SON_SAU_MA_KEM)."
     },
     {
       "ma": "721070",
