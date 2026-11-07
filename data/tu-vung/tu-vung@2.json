@@ -337,7 +337,8 @@
    "nhomPolyme",
    "dangSanPhamNhom1518",
    "toHopChucNangMayIn",
-   "maHsTuongUng"
+   "maHsTuongUng",
+   "moDunDanHoi"
   ],
   "tuVung1": {
    "trangThai": "DA_CHAM",
@@ -567,6 +568,18 @@
    "m/s": 3.6,
    "km/小时": 1,
    "公里/小时": 1
+  },
+  "danHoi": {
+   "psi": 1,
+   "ksi": 1000,
+   "kpsi": 1000,
+   "MPa": 145.038,
+   "N/mm²": 145.038,
+   "N/mm2": 145.038,
+   "MPa(abs)": 145.038,
+   "GPa": 145037.7,
+   "kPa": 0.145038,
+   "bar": 14.5038
   }
  },
  "bietDanhDonVi": {
@@ -22958,6 +22971,51 @@
     "zh": "该货物在第1–97章的8位HS编码（第98章对应编码）是什么？"
    },
    "ghiChu": "Cột MÃ HÀNG TƯƠNG ỨNG của dòng Chương 98 trong biểu Tổng cục — Chương 98 có dòng CÙNG chữ chỉ khác mã tương ứng (vd hai dòng thép hợp kim chứa Bo của nhóm 98.11: một dòng ↔ 72.24–72.28, dòng kia ↔ 72.29; hai dòng «Dùng cho hàng hóa khác thuộc Chương 87» của phân nhóm 9849.28 ↔ (8483.90.15) / (8483.90.95)). Chữ dòng 98 không ghi mã tương ứng nên khoá không đọc từ chữ biểu; nguồn spec là tuongUng.<mã 98> (mô tả + mã tương ứng nguyên văn của cùng dòng biểu). Giá trị là mã có dấu chấm, so theo lib/dieu-kien-so.js#maThamChieu. Lúc chạy hỏi mã 8 số của hàng ở 97 chương. Thêm 07/11/2026 (#1109, Claude).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "khoa": "moDunDanHoi",
+   "kieu": "SO",
+   "nhanVi": "mô-đun đàn hồi",
+   "nhanEn": "modulus of elasticity",
+   "nhanZh": "弹性模量",
+   "heDonVi": "danHoi",
+   "donViChuan": "psi",
+   "canNguCanh": true,
+   "docMoRong": true,
+   "nghinAnh": true,
+   "cachDoc": {
+    "vi": [
+     "mô[-\\s]?đun\\s+đàn\\s+hồi",
+     "mô[-\\s]?đun\\s+(?:uốn|kéo)",
+     "modul(?:e)?\\s+đàn\\s+hồi",
+     "modul(?:e)?\\s+(?:uốn|kéo)",
+     "đàn\\s+hồi\\s+(?:uốn|kéo)"
+    ],
+    "en": [
+     "modulus(?:\\s+of\\s+elasticity)?",
+     "flexural\\s+modulus",
+     "tensile\\s+modulus",
+     "young'?s?\\s+modulus",
+     "e-?modulus",
+     "astm\\s+d\\s?(?:747|790)"
+    ],
+    "zh": [
+     "弹性模量",
+     "弯曲模量",
+     "拉伸模量",
+     "模量"
+    ]
+   },
+   "cachViet": {
+    "vi": "mô-đun đàn hồi {giaTri}",
+    "viDat": "modul {giaTri}"
+   },
+   "cauHoi": {
+    "vi": "Mô-đun đàn hồi của vật liệu là bao nhiêu (psi/MPa)?",
+    "zh": "弹性模量是多少（psi/MPa）？"
+   },
+   "ghiChu": "Mô-đun đàn hồi uốn/kéo — chữ biểu 8 số chỉ ghi \"Loại cứng\" (không mang số), số nằm trong câu SEN của nhóm: neo vào (3920.10.11) với định nghĩa \"Plastic cứng dạng tấm và phiến có modul đàn hồi uốn hoặc module đàn hồi kéo lớn hơn 100,000 psi ở 23°C và có độ ẩm tương đối là 50% khi thử nghiệm theo tiêu chuẩn ASTM D747 hoặc ASTM D790\" (khoá lô 24, #1139). nghinAnh: \"100,000\" kiểu Anh = 100000 psi; MPa/GPa quy về psi (1 MPa = 145,038 psi).",
    "nguonLoai": "AI_DA_KIEM"
   }
  ],

@@ -1,72 +1,85 @@
 {
-  "phienBan": "ranh-gioi-spec@1",
-  "pn6": "392030",
-  "phien": "mm:minimax-m3:20261105T1705#soan-392030",
-  "dong8": {
-    "39203020": {
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Tấm Acrylonitril butadien styren (ABS)"
-        },
-        {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": "sản xuất tủ lạnh"
-        }
-      ]
+ "phienBan": "ranh-gioi-spec@1",
+ "pn6": "392030",
+ "phien": "mm:minimax-m3:20261105T1705#soan-392030",
+ "dong8": {
+  "39203020": {
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Tấm Acrylonitril butadien styren (ABS)"
     },
-    "39203091": {
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "tấm",
-            "phiến"
-          ]
-        },
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "cứng"
-        }
-      ]
-    },
-    "39203092": {
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "tấm",
-            "phiến"
-          ]
-        }
-      ]
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": "sản xuất tủ lạnh"
     }
+   ]
   },
-  "ghiChuSoan": [
+  "39203091": {
+   "dieuKienSo": [
     {
-      "ma": "39203020",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.39203020 \"Tấm Acrylonitril butadien styren (ABS) sử dụng trong sản xuất tủ lạnh\" ⇒ tenLoai (tên hàng) + dungCho \"sản xuất tủ lạnh\" phủ vế [GIỚI HẠN] \"sử dụng trong sản xuất tủ lạnh\"."
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": [
+      "tấm",
+      "phiến"
+     ]
     },
     {
-      "ma": "39203091",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.39203091 \"Dạng tấm và phiến, loại cứng(SEN)\" ↔ EN \"Plates and sheets, rigid\" ⇒ định ngữ chung \"loại cứng\" gắn cho MỌI danh từ đầu (\"tấm\" và \"phiến\") nên tách thành hai điều kiện cùng khoá tenLoai: tenLoai [\"tấm\",\"phiến\"] + tenLoai \"cứng\"."
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "cứng"
     },
     {
-      "ma": "39203092",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.39203092 \"Loại khác, dạng tấm và phiến (SEN)\" ⇒ \"Loại khác, <vế>\" chỉ ghi điều kiện của vế: tenLoai [\"tấm\",\"phiến\"] (máy tự phủ định anh em)."
-    },
-    {
-      "ma": "39203099",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.39203099 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+     "fact": "moDunDanHoi",
+     "op": ">",
+     "value": 100000,
+     "donVi": "psi"
     }
-  ]
+   ],
+   "nguon": "sen.39203091",
+   "trich": "Plastic cứng dạng tấm và phiến có modul đàn hồi uốn hoặc module đàn hồi kéo lớn hơn 100,000 psi ở 23°C và có độ ẩm tương đối là 50% khi thử nghiệm theo tiêu chuẩn ASTM D747 hoặc ASTM D790"
+  },
+  "39203092": {
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": [
+      "tấm",
+      "phiến"
+     ]
+    }
+   ]
+  }
+ },
+ "ghiChuSoan": [
+  {
+   "ma": "39203020",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.39203020 \"Tấm Acrylonitril butadien styren (ABS) sử dụng trong sản xuất tủ lạnh\" ⇒ tenLoai (tên hàng) + dungCho \"sản xuất tủ lạnh\" phủ vế [GIỚI HẠN] \"sử dụng trong sản xuất tủ lạnh\"."
+  },
+  {
+   "ma": "39203091",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.39203091 \"Dạng tấm và phiến, loại cứng(SEN)\" ↔ EN \"Plates and sheets, rigid\" ⇒ định ngữ chung \"loại cứng\" gắn cho MỌI danh từ đầu (\"tấm\" và \"phiến\") nên tách thành hai điều kiện cùng khoá tenLoai: tenLoai [\"tấm\",\"phiến\"] + tenLoai \"cứng\"."
+  },
+  {
+   "ma": "39203092",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.39203092 \"Loại khác, dạng tấm và phiến (SEN)\" ⇒ \"Loại khác, <vế>\" chỉ ghi điều kiện của vế: tenLoai [\"tấm\",\"phiến\"] (máy tự phủ định anh em)."
+  },
+  {
+   "ma": "39203099",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.39203099 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+  },
+  {
+   "ma": "39203091",
+   "loai": "QUYET_DINH",
+   "ghiChu": "sen.39203091: định nghĩa \"Loại cứng\" = mô-đun đàn hồi > 100,000 psi (ASTM D747/D790) ⇒ thêm moDunDanHoi > 100000 psi (#1139, khoá lô 24)"
+  }
+ ]
 }

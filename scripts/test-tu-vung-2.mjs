@@ -248,6 +248,7 @@ const KHOA_MOI = {
   motChieuTo: 'SO',
   mucDoGiaCongGo: 'LIET_KE',
   mucDoTinhCheDau: 'LIET_KE',
+  moDunDanHoi: "SO",
   ngamQuaThauKinhSLR: 'CO_KHONG',
   nguonGocSinhVat: 'LIET_KE',
   nguyenLieuLuyen: 'LIET_KE',

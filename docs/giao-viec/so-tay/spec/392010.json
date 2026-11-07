@@ -1,42 +1,55 @@
 {
-  "phienBan": "ranh-gioi-spec@1",
-  "pn6": "392010",
-  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-392010",
-  "dong8": {
-    "39201011": {
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "cứng"
-        }
-      ]
-    }
-  },
-  "dieuKienNut": {
-    "3920101": {
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "tấm",
-            "phiến"
-          ]
-        }
-      ]
-    }
-  },
-  "ghiChuSoan": [
+ "phienBan": "ranh-gioi-spec@1",
+ "pn6": "392010",
+ "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-392010",
+ "dong8": {
+  "39201011": {
+   "dieuKienSo": [
     {
-      "ma": "3920101",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.3920101: \"Dạng tấm và phiến (SEN)\" ⇒ tenLoai [\"tấm\", \"phiến\"]"
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "cứng"
     },
     {
-      "ma": "39201011",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.39201011: \"Loại cứng (SEN)\" ⇒ tenLoai \"cứng\" phủ vế [GIỚI HẠN] \"cứng\""
+     "fact": "moDunDanHoi",
+     "op": ">",
+     "value": 100000,
+     "donVi": "psi"
     }
-  ]
+   ],
+   "nguon": "sen.39201011",
+   "trich": "Plastic cứng dạng tấm và phiến có modul đàn hồi uốn hoặc module đàn hồi kéo lớn hơn 100,000 psi ở 23°C và có độ ẩm tương đối là 50% khi thử nghiệm theo tiêu chuẩn ASTM D747 hoặc ASTM D790"
+  }
+ },
+ "dieuKienNut": {
+  "3920101": {
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": [
+      "tấm",
+      "phiến"
+     ]
+    }
+   ]
+  }
+ },
+ "ghiChuSoan": [
+  {
+   "ma": "3920101",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tieuDe.3920101: \"Dạng tấm và phiến (SEN)\" ⇒ tenLoai [\"tấm\", \"phiến\"]"
+  },
+  {
+   "ma": "39201011",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.39201011: \"Loại cứng (SEN)\" ⇒ tenLoai \"cứng\" phủ vế [GIỚI HẠN] \"cứng\""
+  },
+  {
+   "ma": "39201011",
+   "loai": "QUYET_DINH",
+   "ghiChu": "sen.39201011: định nghĩa \"Loại cứng\" = mô-đun đàn hồi > 100,000 psi (ASTM D747/D790) ⇒ thêm moDunDanHoi > 100000 psi (#1139, khoá lô 24)"
+  }
+ ]
 }
