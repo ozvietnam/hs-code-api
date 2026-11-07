@@ -11,7 +11,23 @@
     "ngay": "2026-11-06"
   },
   "duyet": null,
-  "dieuKienNut": [],
+  "dieuKienNut": [
+    {
+      "id": "610520",
+      "nguon": "tieuDe.610520",
+      "trich": "Từ sợi nhân tạo",
+      "dieuKienSo": [
+        {
+          "fact": "loaiSoiDet",
+          "op": "TRONG",
+          "value": [
+            "NHAN_TAO"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
   "dong8": [
     {
       "hs": "61052010",
@@ -47,8 +63,8 @@
   "ghiChuSoan": [
     {
       "ma": "610520",
-      "loai": "DUNG",
-      "ghiChu": "cong1-khong-phu-kin:610520:loaiSoiDet=BONG — tiêu đề nhóm 6 số là \"Từ sợi nhân tạo\" (= sợi tổng hợp + sợi tái tạo) nhưng máy không cho khai dieuKienNut ở nút gốc (spec-ma-ngoai-phan-nhom); hai dòng .10/.20 đã phủ đúng hai loại sợi nhân tạo, vector loaiSoiDet ngoài hai giá trị (vd BONG) thuộc nhóm 6 số khác (610510) — chỉ hết lỗ nếu bịa thêm điều kiện chữ không nói"
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude (#1109): phạm vi phân nhóm dieuKienNut[610520] theo tieuDe.610520 \"Từ sợi nhân tạo\" — vector ngoài phạm vi (cổng 1 cũ báo hở) thuộc phân nhóm khác, không phải lỗ hổng."
     }
   ]
 }

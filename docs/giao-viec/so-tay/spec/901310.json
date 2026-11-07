@@ -71,11 +71,6 @@
   },
   "ghiChuSoan": [
     {
-      "ma": "901310",
-      "loai": "DUNG",
-      "ghiChu": "cong1-khong-phu-kin:901310 — phân nhóm chỉ có 2 dòng chia theo tên (\"Kính ngắm…; kính tiềm vọng\" ↔ \"Kính viễn vọng…\") kèm điều kiện đích/đặc điểm chéo (dungCho \"vũ khí\" ↔ laBoPhan/dungCho máy móc), KHÔNG có dòng \"Loại khác\" trần; vector ghép chéo (vd tenLoai=Kính viễn vọng + dungCho=vũ khí + laBoPhan=false) không rơi vào dòng nào. Ngoài bảng luật chung ⇒ DỪNG theo QUY-TRINH mục 5."
-    },
-    {
       "ma": "90131010",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.90131010 \"Kính ngắm để lắp vào vũ khí; kính tiềm vọng\" ⇒ HOAC [[tenLoai \"Kính ngắm\" + dungCho \"vũ khí\" (định ngữ riêng \"để lắp vào vũ khí\" chỉ của kính ngắm)],[tenLoai \"kính tiềm vọng\"]]"
@@ -84,6 +79,59 @@
       "ma": "90131020",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.90131020 \"Kính viễn vọng được thiết kế là bộ phận của máy, thiết bị, dụng cụ hoặc bộ dụng cụ của Chương này hoặc Phần XVI\" ⇒ HOAC [[tenLoai \"Kính viễn vọng\" + laBoPhan CO],[tenLoai \"Kính viễn vọng\" + dungCho [\"máy\",\"thiết bị\",\"dụng cụ\",\"bộ dụng cụ\"]]"
+    },
+    {
+      "ma": "901310",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude (#1109): phạm vi phân nhóm dieuKienNut[901310] theo tieuDe.901310 \"Kính ngắm để lắp vào vũ khí; kính tiềm vọng; kính viễn vọng được thiết kế là bộ phận của máy, thiết bị, dụng cụ hoặc bộ dụng cụ của Chương này hoặc Phần XVI\" — vector ngoài phạm vi (cổng 1 cũ báo hở) thuộc phân nhóm khác, không phải lỗ hổng."
+    },
+    {
+      "ma": "901310",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude (#1109): phạm vi phân nhóm dieuKienNut[901310] theo tieuDe.901310 \"Kính ngắm để lắp vào vũ khí; kính tiềm vọng; kính viễn vọng được thiết kế là bộ phận của máy, thiết bị, dụng cụ hoặc bộ dụng cụ của Chương này hoặc Phần XVI\" — vector ngoài phạm vi (cổng 1 cũ báo hở) thuộc phân nhóm khác, không phải lỗ hổng."
     }
-  ]
+  ],
+  "dieuKienNut": {
+    "901310": {
+      "nguon": "tieuDe.901310",
+      "trich": "Kính ngắm để lắp vào vũ khí; kính tiềm vọng; kính viễn vọng được thiết kế là bộ phận của máy, thiết bị, dụng cụ hoặc bộ dụng cụ của Chương này hoặc Phần XVI",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Kính ngắm"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "vũ khí"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "kính tiềm vọng"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "kính viễn vọng"
+              },
+              {
+                "fact": "laBoPhan",
+                "op": "CO"
+              }
+            ]
+          ]
+        }
+      ]
+    }
+  }
 }

@@ -13,6 +13,35 @@
   "duyet": null,
   "dieuKienNut": [
     {
+      "id": "870892",
+      "nguon": "tieuDe.870892",
+      "trich": "Ống xả và bộ giảm thanh; bộ phận của chúng",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "Ống xả",
+                  "bộ giảm thanh"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "laBoPhan",
+                "op": "CO"
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
       "id": "8708925",
       "nguon": "tieuDe.8708925",
       "trich": "8708925 Dùng cho xe thuộc phân nhóm 8704.10",
@@ -190,11 +219,6 @@
   ],
   "ghiChuSoan": [
     {
-      "ma": "8708925",
-      "loai": "DUNG",
-      "ghiChu": "Tầng 8708925 và 8708926 chia con theo trục TÊN (87089251/61 \"Ống xả và bộ giảm thanh\") ↔ \"là bộ phận\" (87089252/62 \"Bộ phận (SEN)\"), không có con \"Loại khác\" ⇒ cong1-khong-phu-kin: vector tenLoai ngoài danh sách + laBoPhan=false (và dungCho=8704.10 khớp tiền tố 87.04) không rơi vào con nào. \"Bộ phận\" không có chữ \"khác\" nên không khai được phanConLai (cong3-phan-con-lai-khong-co-chu-khac); chongLanTruc hai cụm đã khai hợp lệ nhưng không sửa được lỗ tầng. Theo QUY-TRINH mục 5: DỪNG."
-    },
-    {
       "ma": "87089210",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.87089210 \"Dùng cho xe thuộc nhóm 87.01\" ⇒ dungCho \"87.01\""
@@ -248,6 +272,11 @@
       "ma": "87089290",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.87089290 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "870892",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude (#1109): phạm vi phân nhóm dieuKienNut[870892] theo tieuDe.870892 \"Ống xả và bộ giảm thanh; bộ phận của chúng\" — vector ngoài phạm vi (cổng 1 cũ báo hở) thuộc phân nhóm khác, không phải lỗ hổng."
     }
   ]
 }
