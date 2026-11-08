@@ -5,7 +5,7 @@ const confusionPairs = require('../lib/confusion-pairs');
 const { buildAdminOverview } = require('../lib/admin-overview');
 const { getDocByCode, listDocs } = require('../lib/legal-docs');
 const { legalDocsInfo } = require('../lib/data-freshness');
-const { searchPrecedents, NGUONG_KHOP_TIEN_LE } = require('../lib/precedent-search');
+const { searchPrecedents, findBySoHieu, NGUONG_KHOP_TIEN_LE } = require('../lib/precedent-search');
 const { searchOzByHs, searchOzByKeyword } = require('../lib/oz-precedent-search');
 const { listMinistries, getMinistriesByChapter } = require('../lib/ministries');
 const { detectMaterials, listTaxonomySummary } = require('../lib/material-taxonomy');
@@ -137,6 +137,17 @@ module.exports = async function handler(req, res) {
 
     if (resource === 'precedents') {
       const { hs, q, description } = req.query;
+      // #443 — tra THẲNG theo số hiệu văn bản ("3609" / "3609/TB-TCHQ"): khách/broker
+      // thường CÓ SẴN số TB trong tay, cần đường xác minh/trích dẫn không qua chấm điểm
+      // mô tả (đường mô tả có ngưỡng 0,55 nên bản ghi đúng vẫn bị nuốt khi câu chữ lệch).
+      const soHieu = String(req.query.maTb || req.query.soHieu || '').trim();
+      if (soHieu) {
+        const items = findBySoHieu(soHieu);
+        if (!items.length) {
+          return res.status(200).json({ found: false, soHieu, total: 0, items: [] });
+        }
+        return res.status(200).json({ found: true, soHieu, total: items.length, items });
+      }
       const searchText = String(q || description || '').trim();
       if (searchText.length >= 3) {
         // Ngưỡng #359: dưới ngưỡng KHÔNG trả match — trả found:false kèm lý do, để người
@@ -148,6 +159,17 @@ module.exports = async function handler(req, res) {
         const coWco = matches.some((m) => m.loaiNguon === 'WCO_OP');
         const wcoBanQuyen = coWco ? require('../lib/wco-op').BAN_QUYEN : null;
         if (!matches.length) {
+          // #443 — đừng nuốt kết quả cận kề: trả kèm ganKetQua[] (top-3 ĐƯỚI ngưỡng,
+          // kèm similarity + cờ biChanTran) để người/LLM tầng trên tự quyết. Ca 22/10
+          // ("bộ truyền động điện cho van bướm") bản ghi ĐÚNG 3609/TB-TCHQ đứng top-1
+          // ganKetQua với sim 0,381 — trước đây bị nuốt mất hoàn toàn.
+          const ganKetQua = searchPrecedents(searchText, { topK: 3, minSimilarity: 0, maHs: hs })
+            .map((m) => ({
+              similarity: m.similarity,
+              duoiNguong: true,
+              ...(m.biChanTran ? { biChanTran: true } : {}),
+              ...m,
+            }));
           return res.status(200).json({
             found: false,
             query: searchText,
@@ -155,6 +177,10 @@ module.exports = async function handler(req, res) {
             matches: [],
             nguong: NGUONG_KHOP_TIEN_LE,
             lyDo: `không có tiền lệ đủ gần (mọi tiền lệ khớp dưới ngưỡng similarity ${NGUONG_KHOP_TIEN_LE})`,
+            ...(ganKetQua.length ? {
+              ganKetQua,
+              ghiChu: 'ganKetQua là kết quả CẬN KỀ dưới ngưỡng (kèm similarity; biChanTran = điểm bị chặn trần 0,45 vì câu hỏi không trùng tên tiền lệ) — người/LLM đọc tự quyết định, KHÔNG tự coi là tiền lệ.',
+            } : {}),
           });
         }
         return res.status(200).json({
