@@ -8,10 +8,10 @@ PN6 DỪNG không được dùng lúc chạy; lúc chạy chỉ dùng bản đã
 
 | | Số PN6 |
 |---|---|
-| DỪNG hiện tại | **26** |
+| DỪNG hiện tại | **23** |
 | Chờ oz-wiki: Q2 (văn bản ô tô) | 5 |
 | Chương 98 — Claude đang soát bản nháp | 0 |
-| Q1 còn lại — Claude xác minh / sửa bộ máy | 3 |
+| Q1 còn lại — Claude xác minh / sửa bộ máy | 0 |
 | Claude làm tiếp (công cụ / soát lại) | 18 |
 
 ## Việc cần anh quyết
@@ -29,7 +29,9 @@ theo SEN: cặp có hàng thật khai kèm hàng (ống nồi hơi thép không 
 cặp bị định nghĩa SEN loại trừ khai Q1. Lô 2 thêm hai luật bộ kiểm: nhánh chia theo **số đo** (đường kính, % niken) là trục
 `DAC_DIEM`; hai nhánh cùng chỉ có khoá đặc điểm tất định (có/không, liệt kê, số) là **cùng trục** ⇒ khai `chongLanVanBan` từng cặp.
 Lô 3 (#1152) gỡ thêm 870850 (spec sót vế «không phải bộ phận» ở tầng «Chưa/Đã lắp ráp hoàn chỉnh») và 870899 (giá đỡ bình ắc quy ↔
-khung xe: Q1; sửa bộ kiểm ở dưới). Còn 3 PN6 nhóm này vướng bộ máy hoặc cần quyết định nghĩa (bảng dưới).
+khung xe: Q1; sửa bộ kiểm ở dưới). Lô 9 (#LO9) xong 3 PN6 cuối: 853690 (luật «tên cụ thể ở dòng dưới Loại khác thắng tầng chung» — «phiến
+đầu nối cáp điện thoại» vào .93), 271012 (khoá `loaiPhaChe`; ví dụ .70↔.80 theo TB 1420/2022), 848180 (một cụm trục 9 nhánh, cặp không có hàng
+thật khai Q1). **Nhóm Q1 hết DỪNG.**
 
 ### Q2 — Ô tô ↔ xe ba bánh (5 PN6: 870421, 870431, 870441, 870451, 870460) — CHỜ oz-wiki
 
@@ -67,10 +69,6 @@ phủ trọn phân nhóm là tên phân nhóm. Chương 98 hết DỪNG.
 
 | PN6 | Tên phân nhóm | Vướng | Cần |
 |---|---|---|---|
-| **CHỒNG LẤN CHƯA CÓ HÀNG THẬT** | | | |
-| 271012 | Dầu nhẹ và các chế phẩm | Các dòng xăng thành phẩm (RON 97, RON 90–97, chưa pha chế, pha ethanol…), xăng máy bay, dung môi chồng với .80 «Naphtha, reformate và các chế phẩm khác để pha chế xăng động cơ» (tên ↔ công dụng — cần chongLanTruc, mỗi cặp lý do riêng); thêm dòng .23/.26/.29 không tới được (giới hạn bộ máy). | Q1 |
-| 848180 | Thiết bị khác | Tầng 8481805 «có khoang pha trộn» (khoá đặc điểm) chồng với nhiều nhánh tên van: van dùng cho săm, van lốp không săm, van xi lanh LPG, van bếp ga, van chai có ga, núm uống nước cho lợn… Không có van săm nào «có khoang pha trộn», nhưng chưa có hàng thật để làm ví dụ cho từng cặp nên theo luật vòng 8 chưa khai được. | Q1 |
-| 853690 | Thiết bị khác | Cổng xanh nhưng sai NGHĨA: hàng chính danh của .93 «Phiến đầu nối… cáp điện thoại» luôn thoả tầng 8536901 «Đầu nối… cho dây và cáp», mà .93 lại nằm dưới «Loại khác» 8536909 (loại trừ 8536901) ⇒ hiện chỉ tới được .93 bằng chữ «khối đấu nối». Chữ biểu tự xếp «phiến đầu nối cáp điện thoại» ra khỏi 8536901. | Q1 |
 | **Ô TÔ ↔ XE BA BÁNH** | | | |
 | 870421 | Khối lượng toàn bộ theo thiết kế (SEN) không quá 5 tấn | Dòng «Xe ba bánh» và các dòng «Ô tô …» (tải đông lạnh, pick-up, thu gom phế thải…) bị coi là chồng nhau vì máy chưa biết «ô tô» là xe từ bốn bánh trở lên. | Q2 |
 | 870431 | Khối lượng toàn bộ theo thiết kế (SEN) không quá 5 tấn | Dòng «Xe ba bánh» và các dòng «Ô tô …» (tải đông lạnh, pick-up, thu gom phế thải…) bị coi là chồng nhau vì máy chưa biết «ô tô» là xe từ bốn bánh trở lên. | Q2 |
@@ -119,6 +117,7 @@ phủ trọn phân nhóm là tên phân nhóm. Chương 98 hết DỪNG.
 | #1155 | 844331; Chương 98: 981000, 983412, 983610, 984912, 984916, 984918, 984923, 984931, 984933, 984937, 984942 | 844331 theo tổ hợp chức năng (GĐ chốt: in-copy-scan không fax ⇒ .99; PC-Fax không tính fax); Chương 98 là lớp mã thay thế (cột mã tương ứng), tên nhóm 98xx từ biểu |
 | #1158 | Chương 98: 981100, 981820, 981822, 984914, 984915, 984922, 984925, 984926, 984928, 984929, 984930, 984932, 984940, 984943 | Lớp tầng bọc ngoài + dòng lặp mã phân nhóm; laBoPhan KHONG theo anh em «Bộ phận»; maHsTuongUng (cột mã tương ứng); spec 981820 viết mới |
 | #1162 | Chương 98: 984934, 984935; sửa sót lô 6: 981820, 981100 | Vế tuỳ chọn «có hoặc không …» + tên đầu liên hợp; ghép nối tiếp ≥ 3 tầng; hiệu chỉnh gạch biểu có căn cứ mã tương ứng; tiêu đề trước dòng lá đầu; `maHsTuongUng` không tách đích lồng (981820 .31/.39); ghi chú THIEU_KHOA 981100 là phạm vi nhóm |
+| #LO9 | Chồng lấn (Q1): 271012, 848180, 853690 | Luật «tên cụ thể dưới Loại khác thắng tầng chung»; khoá loaiPhaChe (271012); cụm trục 9 nhánh + khongCoHangThat (848180); «van nối có núm» vào khongPhaiPhuDinh |
 
 Bài học: nhiều ghi chú cũ ghi «chồng lấn giả» hoặc «không sửa được», nhưng thật ra spec sót tên hoặc sót vế (170290 «trừ
 mantoza», 320890 thiếu tên «Sơn», 670290 vật liệu ghi thành tên hàng). Trước khi kết luận DỪNG, soát xem chữ biểu đã tự

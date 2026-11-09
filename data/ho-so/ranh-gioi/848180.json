@@ -891,17 +891,38 @@
   "chongLanTruc": [
     {
       "nhanh": [
+        "848180~r14535",
+        "848180~r14538",
+        "8481802",
+        "84818030",
+        "8481804",
         "8481805",
-        "848180~r14551"
+        "848180~r14551",
+        "848180~r14556",
+        "848180~r14559"
       ],
       "truc": {
+        "8481802": "CONG_DUNG",
+        "8481804": "CONG_DUNG",
         "8481805": "DAC_DIEM",
-        "848180~r14551": "CONG_DUNG"
+        "84818030": "CONG_DUNG",
+        "848180~r14535": "CONG_DUNG",
+        "848180~r14538": "CONG_DUNG",
+        "848180~r14551": "CONG_DUNG",
+        "848180~r14556": "TEN_LOAI",
+        "848180~r14559": "TEN_LOAI"
       },
-      "cauHoiPhanBiet": "Van/vòi này là \"Van và vòi có khoang pha trộn lưu chất\" (8481805) hay là \"Van đường ống nước\" (r14551)? Van có khoang pha trộn lắp cho đường ống nước (vd van trộn nước nóng lạnh) thoả cả hai: biểu thuế không nêu thứ tự — cần chuyên gia phân xử.",
+      "cauHoiPhanBiet": "Van này là loại nào: van săm, van lốp không săm, van xi lanh LPG bằng đồng, van bếp ga, van chai chất lỏng có ga / van rót bia, van và vòi có khoang pha trộn lưu chất, van đường ống nước, núm uống nước cho lợn, hay van nối có núm?",
       "trich": {
+        "8481802": "Van xi lanh khí dầu mỏ hóa lỏng (LPG) bằng đồng hoặc hợp kim đồng",
+        "8481804": "Van cho chai chất lỏng có ga; van cho bộ phận rót bia hoạt động bằng ga",
         "8481805": "Van và vòi có khoang pha trộn lưu chất",
-        "848180~r14551": "Van đường ống nước"
+        "84818030": "Van, đã hoặc chưa lắp bộ phận đánh lửa điện từ, dùng cho các bếp nấu hoặc bếp có lò nướng bằng ga",
+        "848180~r14535": "Van dùng cho săm",
+        "848180~r14538": "Van dùng cho lốp không săm",
+        "848180~r14551": "Van đường ống nước",
+        "848180~r14556": "Núm uống nước dùng cho lợn",
+        "848180~r14559": "Van nối có núm"
       },
       "viDuHang": [
         {
@@ -910,6 +931,97 @@
             "848180~r14551"
           ],
           "hang": "Van trộn nước nóng lạnh có khoang pha trộn lưu chất, dùng cho đường ống nước"
+        },
+        {
+          "cap": [
+            "8481805",
+            "848180~r14535"
+          ],
+          "khongCoHangThat": "van săm (van ruột xe) chỉ đóng/mở một dòng khí bơm vào săm — không có khoang pha trộn hai lưu chất"
+        },
+        {
+          "cap": [
+            "8481805",
+            "848180~r14538"
+          ],
+          "khongCoHangThat": "van lốp không săm chỉ nạp/xả khí một dòng — không có khoang pha trộn"
+        },
+        {
+          "cap": [
+            "8481805",
+            "8481802"
+          ],
+          "khongCoHangThat": "van xi lanh LPG đóng/mở một dòng khí dầu mỏ hoá lỏng — không pha trộn lưu chất trong van"
+        },
+        {
+          "cap": [
+            "8481805",
+            "84818030"
+          ],
+          "khongCoHangThat": "van bếp ga chỉ điều tiết một dòng ga; khí ga trộn không khí ở họng đốt của bếp, không trong khoang của van"
+        },
+        {
+          "cap": [
+            "8481805",
+            "8481804"
+          ],
+          "khongCoHangThat": "van chai chất lỏng có ga / van rót bia hoạt động bằng ga đóng mở một dòng chất lỏng — không có khoang pha trộn"
+        },
+        {
+          "cap": [
+            "8481805",
+            "848180~r14556"
+          ],
+          "khongCoHangThat": "núm uống nước cho lợn chỉ nhả một dòng nước khi lợn ngậm — không có khoang pha trộn"
+        },
+        {
+          "cap": [
+            "8481805",
+            "848180~r14559"
+          ],
+          "khongCoHangThat": "van nối có núm chỉ đóng/mở dòng qua đầu núm nối ống — chưa thấy van nối có núm nào có khoang pha trộn hai lưu chất"
+        },
+        {
+          "cap": [
+            "848180~r14559",
+            "848180~r14551"
+          ],
+          "hang": "Van nối có núm bằng plastic, dùng cho đường ống nước, đường kính trong 2 cm"
+        },
+        {
+          "cap": [
+            "848180~r14559",
+            "84818030"
+          ],
+          "hang": "Van nối có núm dùng cho các bếp nấu bằng ga, chưa lắp bộ phận đánh lửa điện từ"
+        },
+        {
+          "cap": [
+            "848180~r14559",
+            "848180~r14535"
+          ],
+          "khongCoHangThat": "van săm là van cài trong thân săm, không phải van nối có đầu núm nối ống"
+        },
+        {
+          "cap": [
+            "848180~r14559",
+            "848180~r14538"
+          ],
+          "khongCoHangThat": "van lốp không săm lắp xuyên vành, không phải van nối có đầu núm nối ống"
+        },
+        {
+          "cap": [
+            "848180~r14559",
+            "8481802"
+          ],
+          "khongCoHangThat": "van xi lanh LPG nối với bộ điều áp bằng ren, không phải van nối có núm"
+        },
+        {
+          "cap": [
+            "848180~r14559",
+            "8481804"
+          ],
+          "khongCoHangThat": "van chai chất lỏng có ga / van rót bia không phải van nối có đầu núm nối ống"
         }
       ],
       "phanXu": null
@@ -1070,8 +1182,8 @@
     },
     {
       "ma": "848180",
-      "loai": "DUNG",
-      "ghiChu": "[CHỒNG LẤN CHƯA CÓ HÀNG THẬT] Tầng 8481805 «có khoang pha trộn» (khoá đặc điểm) chồng với nhiều nhánh tên van: van dùng cho săm, van lốp không săm, van xi lanh LPG, van bếp ga, van chai có ga, núm uống nước cho lợn… Không có van săm nào «có khoang pha trộn», nhưng chưa có hàng thật để làm ví dụ cho từng cặp nên theo luật vòng 8 chưa khai được. CẦN: anh quyết Q1. LÚC CHẠY: hàng thoả cả hai thì hệ thống hỏi. — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 09/11/2026 (#1109, lô 9): hết DỪNG theo Q1 (anh chốt 07/11: Claude khai khongCoHangThat cho cặp không có hàng thật). Một cụm trục cho 9 nhánh anh em cấp gạch 2 (săm, lốp không săm, LPG, bếp ga, chai có ga/rót bia, đường ống nước = CÔNG DỤNG; «có khoang pha trộn» = ĐẶC ĐIỂM; «Núm uống nước cho lợn», «Van nối có núm» = TÊN). Cặp có hàng thật ghi hàng (van trộn nước nóng lạnh; van nối có núm cho đường ống nước / bếp ga); còn lại khongCoHangThat kèm lý do kỹ thuật. Từ vựng @2: thêm «van nối có núm» vào khongPhaiPhuDinh để bộ đọc tên không cắt ở «có». phanXu để trống (lúc chạy hàng thoả hai nhánh thì hỏi)."
     }
   ],
   "traVe": [
