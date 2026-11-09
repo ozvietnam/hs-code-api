@@ -258,5 +258,22 @@ const muc = (b, id) => [...(b.dong8 || []), ...(b.dieuKienNut || [])].find((x) =
   const r30 = DK.doiChieuDong8('93063091', dk({ tenLoai: 'Đạn cỡ 22', dungCho: 'súng bắn đinh' }), { soTay: st30 });
   check('20b 930630: đạn cỡ 22 cho súng bắn đinh KHÔNG vào .91 — anh em .20 thoả nhờ «dùng cho súng bắn đinh» mà đường .91 không nói tới', r30.ketQua === 'MAU_THUAN', r30.ketQua);
 }
+// Lô 10: chữ ↔ mã, đích lồng cùng nhóm, tên đa nghĩa, «tương tự» khi kiểm tới được, tên chung có anh em cụ thể hơn.
+{
+  const DK = require('../lib/dieu-kien-so.js'); const TSM = require('../lib/ten-sang-ma.js');
+  const so = (v, g) => DK.danhGiaDieuKien({ fact: 'dungCho', op: 'CONG_DUNG', value: v }, { fact: 'dungCho', giaTri: g }).trangThai;
+  check('21a «súng phun» ↔ 8424.20.11 THOẢ (tên phân nhóm 842420), ↔ 8424.82.10 TRÁI (nhóm 8424 đã tách «súng phun» ra 842420)', so('súng phun', '8424.20.11') === 'THOA' && so('súng phun', '8424.82.10') === 'TRAI', [so('súng phun', '8424.20.11'), so('súng phun', '8424.82.10')]);
+  check('21b laTenCuaMa: «sơ mi rơ-moóc» là tên của 8716.20 (phân nhóm một dòng 87162000)', TSM.laTenCuaMa('sơ mi rơ-moóc', '871620') && !TSM.laTenCuaMa('sơ mi rơ-moóc', '871680'));
+  const dk = (o) => Object.entries(o).map(([fact, giaTri]) => ({ fact, giaTri, nguon: 'KHACH', trangThai: 'DA_CO', bangChung: 'test' }));
+  const st99 = C.soTayTuNhap('842199', nhapDongCung('842199', THU_MUC_DONG_CUNG_16EED39));
+  const r91 = DK.doiChieuDong8('84219991', dk({ dungCho: '8421.29.20', tenLoai: 'ẑẑẑ' }), { soTay: st99 });
+  check('21c 842199: mã anh em cùng nhóm 8421 không tách «đích lồng» ⇒ .91 (8421.29.20) CO', r91.ketQua === 'CO', r91.duongDi.filter((e) => e.ketQua !== 'CO').map((e) => `${e.nut}:${e.ketQua}`));
+  const r06 = C.kiemRanhGioi('870600', nhapDongCung('870600', THU_MUC_DONG_CUNG_16EED39), { cong: [1] });
+  check('21d 870600: «dùng cho ô tô» (87.02/87.03/87.04) là tên đa nghĩa ⇒ cảnh báo, không còn cong1-khong-phu-kin', r06.canhBao.some((c) => c.startsWith('cong1-ten-da-nghia:')) && !r06.loi.some((l) => l.startsWith('cong1-khong-phu-kin')), r06.loi);
+  const r42 = C.kiemRanhGioi('442199', nhapDongCung('442199', THU_MUC_DONG_CUNG_16EED39), { cong: [2] });
+  check('21e 442199: .94 «Chuỗi hạt khác» tới được (câu «tương tự» của anh em + ứng viên tên chung ẑẑẑ)', !r42.loi.includes('cong2-dong-khong-toi-duoc:44219994'), r42.loi.slice(0, 5));
+  const r81 = C.kiemRanhGioi('681140', nhapDongCung('681140', THU_MUC_DONG_CUNG_16EED39), { cong: [2] });
+  check('21f 681140: .21 «Gạch lát nền» tới được khi trả lời «tương tự = có» (cảnh báo cong2-toi-khi-tuong-tu)', !r81.loi.includes('cong2-dong-khong-toi-duoc:68114021') && r81.canhBao.includes('cong2-toi-khi-tuong-tu:68114021'), r81.loi.slice(0, 5));
+}
 console.log(`\n${pass} pass, ${fail} fail`);
 process.exit(fail ? 1 : 0);

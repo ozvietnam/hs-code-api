@@ -473,3 +473,16 @@ dấu phẩy đầu — không cần điều kiện; «…, và <danh từ>» li
 Soát trước khi ghi "chồng lấn giả": nhiều ca là spec **sót tên** (320890 .30 thiếu "Sơn") hoặc **sót vế** (170290 "trừ mantoza"),
 hoặc **sai trục** (670290 "Bằng vật liệu dệt" ghi thành tên hàng; 854449 tầng khẳng định ghi `congDung`, tầng phủ định ghi
 `dungCho`). Danh sách PN6 DỪNG và lý do: `docs/giao-viec/so-tay/dung-khong-phu-kin.md`.
+
+**Chữ ↔ mã, tên đa nghĩa, «tương tự» (09/11/2026, lô 10)**:
+- Điều kiện ghi CHỮ («súng phun», «sơ mi rơ-moóc»), hàng ghi MÃ thuần (8424.20.11): bộ so giải tên qua cây HS (`lib/ten-sang-ma.js`
+  — chỉ tên nút nguyên văn, không bảng đồng nghĩa). THOẢ khi mã nằm trong nút sâu nhất khớp tên hoặc tên là một mục trong tên các nút
+  của chính mã (từ phân nhóm trở xuống); TRÁI chỉ khi nhóm 4 số đã tách tên ra phân nhóm riêng. Tên chung («thiết bị») không kết luận.
+- Đích lồng (tách dữ kiện «X dùng cho Y» theo tầng) chỉ khi hai tầng nêu mã KHÁC nhóm 4 số; mã anh em cùng nhóm là so thẳng.
+- Tên giải ra ≥ 2 nhóm và mỗi nhóm đều có dòng nhận («dùng cho ô tô» → 87.02/87.03/87.04): cảnh báo `cong1-ten-da-nghia` — lúc
+  chạy hỏi, không phải lỗ hổng.
+- Dòng chỉ tới được khi câu hỏi vế mở «… tương tự» (của tầng trên hoặc anh em bị phủ định) được trả lời: cảnh báo
+  `cong2-toi-khi-tuong-tu`, không phải «không tới được».
+- Ghi giá trị CHỮ theo đầu chung khi chữ biểu liệt kê bằng «hoặc» phần đuôi («máy phun bắn hơi nước hoặc cát …» ⇒ «máy phun bắn»);
+  không tách thành mảnh cụt một âm tiết («cát») sai nghĩa.
+

@@ -1,0 +1,363 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "870600",
+  "nhom": "8706",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-870600",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "8706001",
+      "nguon": "tieuDe.8706001",
+      "trich": "8706001 Dùng cho xe thuộc nhóm 87.01",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "87.01"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "8706002",
+      "nguon": "tieuDe.8706002",
+      "trich": "8706002 Dùng cho xe thuộc nhóm 87.02",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "87.02"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "8706003",
+      "nguon": "tieuDe.8706003",
+      "trich": "8706003 Dùng cho xe thuộc nhóm 87.03",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "87.03"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "8706004",
+      "nguon": "tieuDe.8706004",
+      "trich": "8706004 Dùng cho xe thuộc nhóm 87.04",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "87.04"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "87060011",
+      "nguon": "tax.87060011",
+      "trich": "87060011 - - Dùng cho máy kéo nông nghiệp thuộc nhóm 87.01",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "87.01"
+        },
+        {
+          "fact": "mayKeoNongNghiep",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87060019",
+      "nguon": "tax.87060019",
+      "trich": "87060019 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87060021",
+      "nguon": "tax.87060021",
+      "trich": "87060021 - - Dùng cho ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van) ",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "ô tô"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87060022",
+      "nguon": "tax.87060022",
+      "trich": "87060022 - - Loại khác, dùng cho xe có khối lượng toàn bộ theo thiết kế (SEN) không quá 24 tấn",
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuongToanBo",
+          "op": "<=",
+          "value": 24,
+          "donVi": "tấn"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87060023",
+      "nguon": "tax.87060023",
+      "trich": "87060023 - - Loại khác, dùng cho xe có khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuongToanBo",
+          "op": ">",
+          "value": 24,
+          "donVi": "tấn"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87060031",
+      "nguon": "tax.87060031",
+      "trich": "87060031 - - Dùng cho xe đua cỡ nhỏ và xe chơi gôn (kể cả xe golf buggies) và các loại xe tương tự",
+      "dieuKienSo": [
+        {
+          "fact": "laXeGolfVaTuongTu",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87060032",
+      "nguon": "tax.87060032",
+      "trich": "87060032 - - Dùng cho ô tô cứu thương",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "ô tô cứu thương"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87060033",
+      "nguon": "tax.87060033",
+      "trich": "87060033 - - Dùng cho ô tô (bao gồm cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van)",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "ô tô"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87060034",
+      "nguon": "tax.87060034",
+      "trich": "87060034 - - Dùng cho xe được thiết kế đặc biệt để đi trên tuyết (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe được thiết kế đặc biệt để đi trên tuyết"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87060039",
+      "nguon": "tax.87060039",
+      "trich": "87060039 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87060041",
+      "nguon": "tax.87060041",
+      "trich": "87060041 - - Dùng cho xe có khối lượng toàn bộ theo thiết kế (SEN) không quá 24 tấn",
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuongToanBo",
+          "op": "<=",
+          "value": 24,
+          "donVi": "tấn"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87060042",
+      "nguon": "tax.87060042",
+      "trich": "87060042 - - Dùng cho xe có khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuongToanBo",
+          "op": ">",
+          "value": 24,
+          "donVi": "tấn"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87060050",
+      "nguon": "tax.87060050",
+      "trich": "87060050 - Dùng cho xe thuộc nhóm 87.05",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "87.05"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "87060031",
+        "87060032",
+        "87060033",
+        "87060034"
+      ],
+      "truc": {
+        "87060031": "DAC_DIEM",
+        "87060032": "CONG_DUNG",
+        "87060033": "CONG_DUNG",
+        "87060034": "CONG_DUNG"
+      },
+      "cauHoiPhanBiet": "Khung gầm đã lắp động cơ này dùng cho loại xe 87.03 nào: xe đua cỡ nhỏ và xe chơi gôn (kể cả golf buggies) và các loại xe tương tự, ô tô cứu thương, ô tô chở người (station wagons, thể thao), hay xe thiết kế đi trên tuyết?",
+      "trich": {
+        "87060031": "Dùng cho xe đua cỡ nhỏ và xe chơi gôn (kể cả xe golf buggies) và các loại xe tương tự",
+        "87060032": "Dùng cho ô tô cứu thương",
+        "87060033": "Dùng cho ô tô (bao gồm cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van)",
+        "87060034": "Dùng cho xe được thiết kế đặc biệt để đi trên tuyết (SEN)"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "87060031",
+            "87060032"
+          ],
+          "khongCoHangThat": "Đã quét precedents (khung gầm|chassis): không có TB nào về khung gầm 8706; xe golf/kart tốc độ thấp không phải ô tô cứu thương (có buồng bệnh nhân/thiết bị y tế) — không hàng nào thoả cả hai"
+        },
+        {
+          "cap": [
+            "87060031",
+            "87060033"
+          ],
+          "khongCoHangThat": "TB 482/CHQ-NVTHQ và 1920/TCHQ-TXNK về «xe điện kiểu golf buggy» đều là xe nguyên chiếc nhóm 8703 chứ không phải khung gầm 8706; khung gầm xe golf (không thùng/khoang chở người) khác khung gầm ô tô chở người — precedents không có hàng thoả cả hai"
+        },
+        {
+          "cap": [
+            "87060031",
+            "87060034"
+          ],
+          "khongCoHangThat": "Xe đi tuyết có bánh xích/ván trượt, kết cấu khác hẳn xe golf bánh cao su; precedents không có TB khung gầm nào thoả cả hai"
+        }
+      ],
+      "phanXu": null
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "87060031",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87060031 \"Dùng cho xe đua cỡ nhỏ và xe chơi gôn (kể cả xe golf buggies) và các loại xe tương tự\" ⇒ laXeGolfVaTuongTu CO (khoá lô 20: nhãn đúng cụm này gồm vế mở \"và các loại xe tương tự\"); \"dùng cho xe\" lặp chữ tiêu đề 8706003"
+    },
+    {
+      "ma": "8706001",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8706001 \"Dùng cho xe thuộc nhóm 87.01\" ⇒ dungCho \"87.01\" (dẫn mã, máy tự nở dải)"
+    },
+    {
+      "ma": "8706002",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8706002 \"Dùng cho xe thuộc nhóm 87.02\" ⇒ dungCho \"87.02\""
+    },
+    {
+      "ma": "8706003",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8706003 \"Dùng cho xe thuộc nhóm 87.03\" ⇒ dungCho \"87.03\""
+    },
+    {
+      "ma": "8706004",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8706004 \"Dùng cho xe thuộc nhóm 87.04\" ⇒ dungCho \"87.04\""
+    },
+    {
+      "ma": "87060011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87060011 \"Dùng cho máy kéo nông nghiệp thuộc nhóm 87.01\" ⇒ dungCho \"87.01\" + mayKeoNongNghiep CO"
+    },
+    {
+      "ma": "87060021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87060021 \"Dùng cho ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)\" ⇒ dungCho \"ô tô\"; cụm ngoặc kể cả/trừ là PHU (luật 3.8), như đã chốt ở 87079021"
+    },
+    {
+      "ma": "87060022",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87060022 \"Loại khác, dùng cho xe có khối lượng toàn bộ theo thiết kế (SEN) không quá 24 tấn\" ⇒ \"Loại khác, <vế>\": chỉ điều kiện của vế — khoiLuongToanBo <= 24 tấn (như tiền lệ 840734 tách khối lượng ra khoá SO); vế \"dùng cho xe\" lặp chữ tiêu đề 8706002"
+    },
+    {
+      "ma": "87060023",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87060023 ⇒ khoiLuongToanBo > 24 tấn"
+    },
+    {
+      "ma": "87060032",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87060032 \"Dùng cho ô tô cứu thương\" ⇒ dungCho \"ô tô cứu thương\""
+    },
+    {
+      "ma": "87060033",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87060033 \"Dùng cho ô tô (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van)\" ⇒ dungCho \"ô tô\"; cụm ngoặc PHU (luật 3.8)"
+    },
+    {
+      "ma": "87060034",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87060034 \"Dùng cho xe được thiết kế đặc biệt để đi trên tuyết (SEN)\" ⇒ dungCho trọn cụm đích nguyên văn"
+    },
+    {
+      "ma": "87060041",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87060041 ⇒ chỉ khoiLuongToanBo biên đúng chữ; vế \"Dùng cho xe\" lặp chữ tiêu đề 8706004 \"Dùng cho xe thuộc nhóm 87.04\" (LAP tổ tiên), không lập lại dungCho ở dòng con để giữ cùng giá trị trục với tầng"
+    },
+    {
+      "ma": "87060042",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87060042 ⇒ chỉ khoiLuongToanBo biên đúng chữ; vế \"Dùng cho xe\" lặp chữ tiêu đề 8706004 \"Dùng cho xe thuộc nhóm 87.04\" (LAP tổ tiên), không lập lại dungCho ở dòng con để giữ cùng giá trị trục với tầng"
+    },
+    {
+      "ma": "87060050",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87060050 \"Dùng cho xe thuộc nhóm 87.05\" ⇒ dungCho \"87.05\""
+    },
+    {
+      "ma": "870600",
+      "loai": "DUNG",
+      "ghiChu": "[GIỚI HẠN BỘ MÁY] Vector «dùng cho ô tô» là tên ĐA NGHĨA (ô tô thuộc 87.02, 87.03 hay 87.04): lúc chạy hệ thống hỏi, nhưng cổng 1 lại coi là lỗ hổng. CẦN: quy ước cổng 1 cho tên đa nghĩa (Claude làm). — Claude 07/11/2026."
+    }
+  ]
+}

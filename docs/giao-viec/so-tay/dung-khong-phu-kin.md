@@ -8,11 +8,11 @@ PN6 DỪNG không được dùng lúc chạy; lúc chạy chỉ dùng bản đã
 
 | | Số PN6 |
 |---|---|
-| DỪNG hiện tại | **23** |
+| DỪNG hiện tại | **14** |
 | Chờ oz-wiki: Q2 (văn bản ô tô) | 5 |
 | Chương 98 — Claude đang soát bản nháp | 0 |
 | Q1 còn lại — Claude xác minh / sửa bộ máy | 0 |
-| Claude làm tiếp (công cụ / soát lại) | 18 |
+| Claude làm tiếp (công cụ / soát lại) | 9 |
 
 ## Việc cần anh quyết
 
@@ -61,7 +61,7 @@ phủ trọn phân nhóm là tên phân nhóm. Chương 98 hết DỪNG.
 | Từ vựng khai «giá trị chung ⊃ giá trị riêng» (sợi nhân tạo ⊃ tổng hợp, tái tạo) — đổi cả cách so lúc chạy | 610520 |
 | Cơ chế đính chính khoá @1 đọc sai nghĩa («micro switch») | 853650 |
 | «Bộ phận» trơn = bộ phận của tầng trên; luật «hàng không là bộ phận của chính nó» | 870895, 870891 |
-| Bộ máy: đích lồng, tên ↔ mã, tên đa nghĩa, HOẶC dưới tầng có tên, vế «tương tự» | 842490, 871690, 847790, 850790, 842199, 870600, 848620, 681140, 848690, 442199 |
+| Soát lại spec (46 dòng; dòng «Của kính hiển vi…» ghi nhầm tên hàng thay vì dùng cho) — lô riêng | 848690 |
 | Phạm vi «phủ định phân nhóm anh em»; phạm vi cho phân nhóm xxxx.00 | 030749, 480100 |
 | Soát lại cả phân nhóm | 210690, 321290 |
 
@@ -83,16 +83,7 @@ phủ trọn phân nhóm là tên phân nhóm. Chương 98 hết DỪNG.
 | 870891 | Két nước làm mát và bộ phận của chúng | Tầng 8708919 «Bộ phận» nằm dưới phân nhóm «Két nước làm mát và bộ phận của chúng», tức bộ phận CỦA KÉT NƯỚC, nhưng spec ghi «là bộ phận» (của xe) ⇒ két nước thoả cả tầng 8708911 lẫn 8708919. | như 870895 (Claude làm). |
 | 870895 | Túi khí an toàn lắp với hệ thống bơm phồng; bộ phận của nó | Dòng .90 «Bộ phận» nằm dưới phân nhóm «Túi khí…; bộ phận của nó», tức bộ phận CỦA TÚI KHÍ, nhưng chữ của chính dòng chỉ có «Bộ phận» nên spec chỉ ghi «là bộ phận». Túi khí (cũng là bộ phận của xe) thoả cả .10 lẫn .90. Ngoài ra tên .10 quá dài, bộ đọc cắt ở chữ «lắp». | cho mục «Bộ phận» trơn trích tên tầng tổ tiên + luật «hàng không là bộ phận của chính nó» (Claude làm). |
 | **GIỚI HẠN BỘ MÁY** | | | |
-| 442199 | Loại khác | Phần chồng lấn đã gỡ (Q1, 07/11). Còn dòng .94 «Chuỗi hạt khác» chỉ loại .93 «Chuỗi hạt cầu nguyện»: hàng ghi chung «chuỗi hạt» thì không biết có phải chuỗi hạt cầu nguyện không (kết quả «chưa biết», lúc chạy hệ thống hỏi), nhưng cổng 2 đòi chắc chắn mới coi là tới được. | cổng 2 coi «chưa biết» ở phủ định anh em là tới được (lúc chạy vẫn hỏi) — Claude làm. |
-| 681140 | Chứa amiăng | Tầng 6811402 có vế mở «và các loại tương tự» (TUONG_TU) nên với vector tên «Gạch lát nền» cho kết quả CHƯA BIẾT ⇒ dòng .21 không tới được. | cổng 2 tính «tương tự = có» khi dựng vector tới dòng con (Claude làm). |
-| 842199 | Loại khác | Hai dòng .91/.94 dưới tầng «Loại khác» ghi mã nguyên văn; phủ định anh em ghi bằng tên chữ cho kết quả chưa biết nên cổng 2 không dựng được vector tới hai dòng. | như 842490. |
-| 842490 | Bộ phận | Tầng «Của súng phun và các thiết bị tương tự» ghi bằng CHỮ, dòng con ghi bằng MÃ (8424.20.11, 8424.20.21); máy chưa đổi tên↔mã ở phía điều kiện nên hàng ghi mã không tới được tầng. | bộ so giải tên→mã cho điều kiện (Claude làm, có đo vì đổi so lúc chạy). |
-| 847790 | Bộ phận | Dòng .32 «Bộ phận của máy ép lớp mỏng dùng để sản xuất tấm mạch in» nằm dưới tầng «Của máy gia công plastic…»: đích lồng hai tầng trên cùng khoá dungCho. | như 852910. |
-| 848620 | Máy và thiết bị để sản xuất linh kiện bán dẫn hoặc mạch điện tử tích h | Dòng .13 gồm hai hàng nối «;» (ghi HOẶC), nằm dưới tầng cũng ghi tên «Thiết bị tạo lớp màng mỏng»; cổng 2 chưa ghép tên tầng với tên trong từng phương án HOẶC nên dòng không tới được. | sửa cổng 2 (Claude làm). |
 | 848690 | Bộ phận và phụ kiện | Các dòng «Bộ phận kẹp dụng cụ…, dùng cho máy công cụ» lặp dưới các tầng về MÁY cụ thể (máy phun, máy cắt laser…); không vector nào vừa thoả tầng vừa thoả dòng. | Claude soát lại cách ghi tầng và dòng. |
-| 850790 | Bộ phận | Dòng .93 «Loại khác, của hàng hóa thuộc phân nhóm 8507.10.92, …» ghi MÃ, cạnh .91 «Dùng cho máy bay» ghi CHỮ; bộ so coi mã ↔ chữ là chưa biết nên .93 không tới được. | như 842490. |
-| 870600 | 8706 - Khung gầm đã lắp động cơ, dùng cho xe có động cơ thuộc các nhóm | Vector «dùng cho ô tô» là tên ĐA NGHĨA (ô tô thuộc 87.02, 87.03 hay 87.04): lúc chạy hệ thống hỏi, nhưng cổng 1 lại coi là lỗ hổng. | quy ước cổng 1 cho tên đa nghĩa (Claude làm). |
-| 871690 | Bộ phận | Tầng «Dùng cho xe rơ-moóc và sơ mi rơ-moóc» ghi bằng CHỮ, dòng .13 ghi MÃ 8716.20; máy chưa đổi tên↔mã ở phía điều kiện. | như 842490. |
 | **PHẠM VI CHƯA BIỂU DIỄN ĐƯỢC** | | | |
 | 030749 | Loại khác | Phân nhóm tên «Loại khác» (mực khô, muối, hun khói): phạm vi là PHỦ ĐỊNH các phân nhóm anh em 0307.42/0307.43, bộ máy chưa biểu diễn được ⇒ mực đông lạnh bị coi là hở. Ngoài ra hai tầng «Khô, muối hoặc ngâm nước muối» / «Hun khói» đang ghi tenLoai, phải đổi sang phuongPhapBaoQuan như 030742. | phạm vi «phủ định phân nhóm anh em» (Claude làm). |
 | 480100 | Giấy in báo, dạng cuộn hoặc tờ. | Phạm vi «giấy in báo» nằm ở Chú giải 4 Chương 48 (cuộn rộng > 28 cm; tờ > 28 × 15 cm chưa gấp), nhưng phân nhóm 4801.00 có nút cây là cấp nhóm nên chưa khai được phạm vi; thêm cặp «dạng cuộn» ↔ «dạng tờ» bị coi là chồng (hai đặc điểm loại trừ nhau). | phạm vi cho phân nhóm xxxx.00 (Claude làm) + Q1. |
@@ -118,6 +109,7 @@ phủ trọn phân nhóm là tên phân nhóm. Chương 98 hết DỪNG.
 | #1158 | Chương 98: 981100, 981820, 981822, 984914, 984915, 984922, 984925, 984926, 984928, 984929, 984930, 984932, 984940, 984943 | Lớp tầng bọc ngoài + dòng lặp mã phân nhóm; laBoPhan KHONG theo anh em «Bộ phận»; maHsTuongUng (cột mã tương ứng); spec 981820 viết mới |
 | #1162 | Chương 98: 984934, 984935; sửa sót lô 6: 981820, 981100 | Vế tuỳ chọn «có hoặc không …» + tên đầu liên hợp; ghép nối tiếp ≥ 3 tầng; hiệu chỉnh gạch biểu có căn cứ mã tương ứng; tiêu đề trước dòng lá đầu; `maHsTuongUng` không tách đích lồng (981820 .31/.39); ghi chú THIEU_KHOA 981100 là phạm vi nhóm |
 | #1175 | Chồng lấn (Q1): 271012, 848180, 853690 | Luật «tên cụ thể dưới Loại khác thắng tầng chung»; khoá loaiPhaChe (271012); cụm trục 9 nhánh + khongCoHangThat (848180); «van nối có núm» vào khongPhaiPhuDinh |
+| #LO10 | Bộ máy: 842490, 842199, 850790, 871690, 847790, 870600, 681140, 442199, 848620 | Giải chữ↔mã qua cây HS; đích lồng chỉ khi khác nhóm 4 số; cổng 1 «tên đa nghĩa»; cổng 2 trả lời «tương tự» khi kiểm tới được + ứng viên tên chung ẑẑẑ; Q1 871690/848620 |
 
 Bài học: nhiều ghi chú cũ ghi «chồng lấn giả» hoặc «không sửa được», nhưng thật ra spec sót tên hoặc sót vế (170290 «trừ
 mantoza», 320890 thiếu tên «Sơn», 670290 vật liệu ghi thành tên hàng). Trước khi kết luận DỪNG, soát xem chữ biểu đã tự

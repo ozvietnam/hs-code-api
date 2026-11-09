@@ -1,0 +1,211 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "681140",
+  "nhom": "6811",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T0856#soan-681140",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "6811402",
+      "nguon": "tieuDe.6811402",
+      "trich": "6811402 Tấm, panel, tấm lát (tiles) và các sản phẩm tương tự khác",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TUONG_TU",
+          "value": [
+            "Tấm",
+            "panel",
+            "tấm lát"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": [
+        "68114010"
+      ]
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "68114010",
+      "nguon": "tax.68114010",
+      "trich": "68114010 - - Tấm làn sóng",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Tấm làn sóng"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "68114021",
+      "nguon": "tax.68114021",
+      "trich": "68114021 - - - Gạch lát nền hoặc ốp tường chứa plastic",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Gạch lát nền",
+            "ốp tường"
+          ]
+        },
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "plastic"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "68114022",
+      "nguon": "tax.68114022",
+      "trich": "68114022 - - - Dùng để lợp mái, ốp bề mặt hoặc làm vách ngăn",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "lợp mái",
+            "ốp bề mặt",
+            "làm vách ngăn"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "68114029",
+      "nguon": "tax.68114029",
+      "trich": "68114029 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "68114030",
+      "nguon": "tax.68114030",
+      "trich": "68114030 - - Ống hoặc ống dẫn",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Ống",
+            "ống dẫn"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "68114040",
+      "nguon": "tax.68114040",
+      "trich": "68114040 - - Các phụ kiện để ghép nối ống hoặc ống dẫn",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "phụ kiện"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "ghép nối"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "ống",
+            "ống dẫn"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "68114050",
+      "nguon": "tax.68114050",
+      "trich": "68114050 - - Các sản phẩm khác, của loại sử dụng cho xây dựng ",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xây dựng"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    },
+    {
+      "hs": "68114090",
+      "nguon": "tax.68114090",
+      "trich": "68114090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "68114010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.68114010 \"Tấm làn sóng\" ⇒ tenLoai TEN_LOAI \"Tấm làn sóng\" — tên đầu nguyên văn"
+    },
+    {
+      "ma": "6811402",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.6811402 \"Tấm, panel, tấm lát (tiles) và các sản phẩm tương tự khác\" ⇒ tenLoai TUONG_TU [\"Tấm\",\"panel\",\"tấm lát\"] + phanConLai [\"68114010\"] — vế mở \"và các sản phẩm tương tự\" (vòng 7); đã thử bỏ điều kiện liệt kê (cách 2) nhưng sinh cong1-chua-so-hoa cho .50/.90 và nhiều chồng lấn hơn ⇒ giữ TUONG_TU"
+    },
+    {
+      "ma": "68114021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.68114021 \"Gạch lát nền hoặc ốp tường chứa plastic\" ⇒ tenLoai [\"Gạch lát nền\",\"ốp tường\"] (mảng vì \"hoặc\") + chatLieu LA \"plastic\" — phủ vế \"chứa plastic\""
+    },
+    {
+      "ma": "68114022",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.68114022 \"Dùng để lợp mái, ốp bề mặt hoặc làm vách ngăn\" ⇒ congDung CONG_DUNG [\"lợp mái\",\"ốp bề mặt\",\"làm vách ngăn\"] — \"Dùng để\" là công dụng của chính hàng ⇒ congDung; mảng = hoặc"
+    },
+    {
+      "ma": "68114030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.68114030 \"Ống hoặc ống dẫn\" ⇒ tenLoai [\"Ống\",\"ống dẫn\"] — mảng vì \"hoặc\""
+    },
+    {
+      "ma": "68114040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.68114040 \"Các phụ kiện để ghép nối ống hoặc ống dẫn\" ⇒ tenLoai \"phụ kiện\" + congDung \"ghép nối\" (định ngữ chung) + dungCho [\"ống\",\"ống dẫn\"] (mảng vì \"hoặc\" — luật 841459 .10)"
+    },
+    {
+      "ma": "68114050",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.68114050 \"Các sản phẩm khác, của loại sử dụng cho xây dựng\" ⇒ dungCho \"xây dựng\" + phanConLai: true — \"Các sản phẩm khác\" là phần còn lại có tên, phủ mọi anh em đứng trước; vế \"của loại sử dụng cho xây dựng\" ⇒ dungCho"
+    },
+    {
+      "ma": "68114029",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.68114029 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "68114090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.68114090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "681140",
+      "loai": "DUNG",
+      "ghiChu": "[GIỚI HẠN BỘ MÁY] Tầng 6811402 có vế mở «và các loại tương tự» (TUONG_TU) nên với vector tên «Gạch lát nền» cho kết quả CHƯA BIẾT ⇒ dòng .21 không tới được. CẦN: cổng 2 tính «tương tự = có» khi dựng vector tới dòng con (Claude làm). — Claude 07/11/2026."
+    }
+  ]
+}
