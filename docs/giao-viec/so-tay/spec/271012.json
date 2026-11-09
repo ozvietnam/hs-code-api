@@ -395,5 +395,199 @@
       "loai": "DUNG",
       "ghiChu": "[CHỒNG LẤN CHƯA CÓ HÀNG THẬT] Các dòng xăng thành phẩm (RON 97, RON 90–97, chưa pha chế, pha ethanol…), xăng máy bay, dung môi chồng với .80 «Naphtha, reformate và các chế phẩm khác để pha chế xăng động cơ» (tên ↔ công dụng — cần chongLanTruc, mỗi cặp lý do riêng); thêm dòng .23/.26/.29 không tới được (giới hạn bộ máy). CẦN: Claude khai chongLanTruc từng cặp (Q1) + sửa bộ máy. — Claude 07/11/2026."
     }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "2710121",
+        "2710122",
+        "2710123",
+        "27101240",
+        "27101250",
+        "27101260",
+        "27101270",
+        "27101280"
+      ],
+      "truc": {
+        "2710121": "TEN_LOAI",
+        "2710122": "TEN_LOAI",
+        "2710123": "TEN_LOAI",
+        "27101240": "TEN_LOAI",
+        "27101250": "TEN_LOAI",
+        "27101260": "DAC_DIEM",
+        "27101270": "TEN_LOAI",
+        "27101280": "CONG_DUNG"
+      },
+      "cauHoiPhanBiet": "Hàng thuộc dòng nào: xăng động cơ hoàn chỉnh (có/không pha chì, theo RON), xăng máy bay động cơ piston, tetrapropylene, dung môi trắng (white spirit), dung môi cấu tử thơm dưới 1%, dung môi nhẹ khác, hay naphtha/reformate và chế phẩm khác để pha chế xăng động cơ?",
+      "trich": {
+        "2710121": "Xăng động cơ, có pha chì",
+        "2710122": "Xăng động cơ, không pha chì",
+        "2710123": "Xăng máy bay, loại sử dụng cho động cơ máy bay kiểu piston",
+        "27101240": "Tetrapropylene",
+        "27101250": "Dung môi trắng (white spirit)(SEN)",
+        "27101260": "Dung môi có hàm lượng cấu tử thơm thấp dưới 1% tính theo trọng lượng",
+        "27101270": "Dung môi nhẹ khác (SEN)",
+        "27101280": "Naphtha, reformate (SEN) và các chế phẩm khác để pha chế xăng động cơ"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "27101270",
+            "27101280"
+          ],
+          "hang": "Dung môi Naphtha nhẹ — Naphtha nhẹ cracking xúc tác 100% (Naphtha (Petroleum), light) — vừa là «dung môi nhẹ» vừa là «Naphtha» (TB-TCHQ 1420)"
+        },
+        {
+          "cap": [
+            "2710121",
+            "27101280"
+          ],
+          "khongCoHangThat": "Naphtha/reformate là bán thành phẩm ĐỂ PHA CHẾ xăng, không phải xăng động cơ hoàn chỉnh có RON xác định — không có TB nào trong precedents vừa là naphtha vừa là xăng có pha chì thành phẩm"
+        },
+        {
+          "cap": [
+            "2710122",
+            "27101280"
+          ],
+          "khongCoHangThat": "Naphtha/reformate là bán thành phẩm pha chế, không phải xăng động cơ không pha chì hoàn chỉnh (RON xác định); precedents không có TB thoả cả hai"
+        },
+        {
+          "cap": [
+            "2710123",
+            "27101280"
+          ],
+          "khongCoHangThat": "Xăng máy bay piston (octane 100+) là sản phẩm hoàn chỉnh riêng; naphtha/reformate là nguyên liệu pha chế — precedents không có TB nào thoả cả hai"
+        },
+        {
+          "cap": [
+            "27101240",
+            "27101280"
+          ],
+          "khongCoHangThat": "Đã quét precedents (productName + technicalSpec): không có TB nào về tetrapropylene; tetrapropylene nhập thực tế dùng sản xuất alkylbenzene, không thấy TB nhập làm chế phẩm pha chế xăng"
+        },
+        {
+          "cap": [
+            "27101250",
+            "27101280"
+          ],
+          "khongCoHangThat": "White spirit là phân đoạn riêng (mã SEN AAB11004V, TB 557/587 phân vào «dầu nhẹ và chế phẩm dung môi nhẹ khác»), naphtha/reformate là phân đoạn nhẹ khác — không có hàng đồng thời là cả hai"
+        },
+        {
+          "cap": [
+            "27101260",
+            "27101280"
+          ],
+          "khongCoHangThat": "TB 3055/TB-TCHQ «Paraffinic Naphtha» không kèm số % cấu tử thơm nên không kiểm được «thơm dưới 1%»; precedents không có TB naphtha nào ghi rõ hàm lượng thơm dưới 1%"
+        }
+      ],
+      "phanXu": null
+    }
+  ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "27101211",
+        "27101280"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1 pattern). A \"RON 97 và cao hơn\" — thuộc cây xăng động cơ thành phẩm có RON xác định. B \"Naphtha, reformate (SEN) và các chế phẩm khác để pha chế xăng động cơ\" — naphtha/reformate là bán thành phẩm ĐỂ PHA CHẾ xăng. TB 1420/3055/3056/6491 đều phân naphtha vào dòng dung môi/naphtha; precedents không có TB nào vừa naphtha vừa xăng thành phẩm"
+    },
+    {
+      "cap": [
+        "27101212",
+        "27101280"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1 pattern). A \"RON 90 và cao hơn nhưng dưới RON 97\" — thuộc cây xăng động cơ thành phẩm có RON xác định. B \"Naphtha, reformate (SEN) và các chế phẩm khác để pha chế xăng động cơ\" — naphtha/reformate là bán thành phẩm ĐỂ PHA CHẾ xăng. TB 1420/3055/3056/6491 đều phân naphtha vào dòng dung môi/naphtha; precedents không có TB nào vừa naphtha vừa xăng thành phẩm"
+    },
+    {
+      "cap": [
+        "27101213",
+        "27101280"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1 pattern). A \"RON khác\" — thuộc cây xăng động cơ thành phẩm có RON xác định. B \"Naphtha, reformate (SEN) và các chế phẩm khác để pha chế xăng động cơ\" — naphtha/reformate là bán thành phẩm ĐỂ PHA CHẾ xăng. TB 1420/3055/3056/6491 đều phân naphtha vào dòng dung môi/naphtha; precedents không có TB nào vừa naphtha vừa xăng thành phẩm"
+    },
+    {
+      "cap": [
+        "27101221",
+        "27101280"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1 pattern). A \"Chưa pha chế\" — thuộc cây xăng động cơ thành phẩm có RON xác định. B \"Naphtha, reformate (SEN) và các chế phẩm khác để pha chế xăng động cơ\" — naphtha/reformate là bán thành phẩm ĐỂ PHA CHẾ xăng. TB 1420/3055/3056/6491 đều phân naphtha vào dòng dung môi/naphtha; precedents không có TB nào vừa naphtha vừa xăng thành phẩm"
+    },
+    {
+      "cap": [
+        "27101222",
+        "27101280"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1 pattern). A \"Pha chế với ethanol\" — thuộc cây xăng động cơ thành phẩm có RON xác định. B \"Naphtha, reformate (SEN) và các chế phẩm khác để pha chế xăng động cơ\" — naphtha/reformate là bán thành phẩm ĐỂ PHA CHẾ xăng. TB 1420/3055/3056/6491 đều phân naphtha vào dòng dung môi/naphtha; precedents không có TB nào vừa naphtha vừa xăng thành phẩm"
+    },
+    {
+      "cap": [
+        "27101224",
+        "27101280"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1 pattern). A \"Chưa pha chế\" — thuộc cây xăng động cơ thành phẩm có RON xác định. B \"Naphtha, reformate (SEN) và các chế phẩm khác để pha chế xăng động cơ\" — naphtha/reformate là bán thành phẩm ĐỂ PHA CHẾ xăng. TB 1420/3055/3056/6491 đều phân naphtha vào dòng dung môi/naphtha; precedents không có TB nào vừa naphtha vừa xăng thành phẩm"
+    },
+    {
+      "cap": [
+        "27101225",
+        "27101280"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1 pattern). A \"Pha chế với ethanol\" — thuộc cây xăng động cơ thành phẩm có RON xác định. B \"Naphtha, reformate (SEN) và các chế phẩm khác để pha chế xăng động cơ\" — naphtha/reformate là bán thành phẩm ĐỂ PHA CHẾ xăng. TB 1420/3055/3056/6491 đều phân naphtha vào dòng dung môi/naphtha; precedents không có TB nào vừa naphtha vừa xăng thành phẩm"
+    },
+    {
+      "cap": [
+        "27101227",
+        "27101280"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1 pattern). A \"Chưa pha chế\" — thuộc cây xăng động cơ thành phẩm có RON xác định. B \"Naphtha, reformate (SEN) và các chế phẩm khác để pha chế xăng động cơ\" — naphtha/reformate là bán thành phẩm ĐỂ PHA CHẾ xăng. TB 1420/3055/3056/6491 đều phân naphtha vào dòng dung môi/naphtha; precedents không có TB nào vừa naphtha vừa xăng thành phẩm"
+    },
+    {
+      "cap": [
+        "27101228",
+        "27101280"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1 pattern). A \"Pha chế với ethanol\" — thuộc cây xăng động cơ thành phẩm có RON xác định. B \"Naphtha, reformate (SEN) và các chế phẩm khác để pha chế xăng động cơ\" — naphtha/reformate là bán thành phẩm ĐỂ PHA CHẾ xăng. TB 1420/3055/3056/6491 đều phân naphtha vào dòng dung môi/naphtha; precedents không có TB nào vừa naphtha vừa xăng thành phẩm"
+    },
+    {
+      "cap": [
+        "27101231",
+        "27101280"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1 pattern). A \"Octane 100 và cao hơn(SEN)\" — xăng máy bay động cơ piston (octane 100+) thành phẩm. B \"Naphtha, reformate (SEN) và các chế phẩm khác để pha chế xăng động cơ\" — bán thành phẩm pha chế xăng động cơ mặt đường, khác xăng máy bay; precedents không có TB nào thoả cả hai"
+    },
+    {
+      "cap": [
+        "27101239",
+        "27101280"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1 pattern). A \"Loại khác (SEN)\" — xăng máy bay động cơ piston (octane 100+) thành phẩm. B \"Naphtha, reformate (SEN) và các chế phẩm khác để pha chế xăng động cơ\" — bán thành phẩm pha chế xăng động cơ mặt đường, khác xăng máy bay; precedents không có TB nào thoả cả hai"
+    },
+    {
+      "cap": [
+        "27101240",
+        "27101280"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1 pattern). A \"Tetrapropylene\" — hoá chất riêng (nguyên liệu chính sản xuất alkylbenzene). B \"Naphtha, reformate (SEN) và các chế phẩm khác để pha chế xăng động cơ\" — precedents (productName+technicalSpec) không có TB nào về tetrapropylene, không thấy TB nhập làm chế phẩm pha chế xăng"
+    },
+    {
+      "cap": [
+        "27101250",
+        "27101280"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1 pattern). A \"Dung môi trắng (white spirit)(SEN)\" — phân đoạn white spirit riêng (mã SEN AAB11004V, TB 557/587). B \"Naphtha, reformate (SEN) và các chế phẩm khác để pha chế xăng động cơ\" — naphtha/reformate là phân đoạn nhẹ khác; không hàng nào đồng thời là cả hai"
+    },
+    {
+      "cap": [
+        "27101260",
+        "27101280"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1 pattern). A \"Dung môi có hàm lượng cấu tử thơm thấp dưới 1% tính theo trọng lượng\" — TB 3055/TB-TCHQ «Paraffinic Naphtha» không kèm số % cấu tử thơm nên không kiểm được «thơm dưới 1%». B \"Naphtha, reformate (SEN) và các chế phẩm khác để pha chế xăng động cơ\" — precedents không có TB naphtha nào ghi rõ hàm lượng thơm dưới 1%"
+    },
+    {
+      "cap": [
+        "27101270",
+        "27101280"
+      ],
+      "lyDo": "Cặp có hàng thật đã khai ở chongLanTruc.viDuHang: TB-TCHQ 1420 «Dung môi Naphtha nhẹ» thoả cả hai. A \"Dung môi nhẹ khác (SEN)\". B \"Naphtha, reformate (SEN) và các chế phẩm khác để pha chế xăng động cơ\""
+    }
   ]
 }
