@@ -65,7 +65,9 @@ const bo392690 = () => { const b = nhapFb('392690'); b.ghiChuSoan = (b.ghiChuSoa
   // Luật viDuHang (vòng 8, #721 — merge sau) đòi một hàng thật cho mỗi cặp cụm phủ; bản đông cứng fb2706c soạn trước luật đó nên
   // chỉ còn đúng các lỗi cong2-chong-lan-truc-thieu-vi-du — ngoài ra xanh.
   check('A1d … ngoài cong2-chong-lan-truc-thieu-vi-du (luật viDuHang, bản đông cứng soạn trước) không còn lỗi nào', r1.loi.every((l) => l.startsWith('cong2-chong-lan-truc-thieu-vi-du:')), r1.loi);
-  check('A1e … cụm chongLanTruc vẫn chỉ phủ cặp khác trục (cảnh báo -da-khai giữ 17 cặp)', co(r1.canhBao, 'cong2-chong-lan-truc-da-khai:39269010,39269020,3926903,3926904,3926905,39269060,3926908:17'), r1.canhBao);
+  // 09/11/2026 (#1109 lô 10): ứng viên «<tên chung> ẑẑẑ» (tên có anh em cụ thể hơn — «chuỗi hạt» ↔ .82 «Chuỗi hạt cầu nguyện»)
+  // dựng được vector tới .89 «Loại khác» dưới 3926908 ⇒ thêm 3 cặp khác trục .39/.49/.59 ↔ .89 (vẫn do cụm phủ) — 17 → 20.
+  check('A1e … cụm chongLanTruc vẫn chỉ phủ cặp khác trục (cảnh báo -da-khai giữ 20 cặp)', co(r1.canhBao, 'cong2-chong-lan-truc-da-khai:39269010,39269020,3926903,3926904,3926905,39269060,3926908:20'), r1.canhBao);
 
   // A2: đòi hỏi cũ giữ nguyên + cặp KHÁC trục vẫn bị cấm.
   const b2 = clone(b1);
