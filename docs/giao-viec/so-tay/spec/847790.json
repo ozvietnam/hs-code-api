@@ -8,10 +8,7 @@
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
-          "value": [
-            "máy gia công cao su",
-            "sản xuất các sản phẩm từ cao su"
-          ]
+          "value": "cao su"
         },
         {
           "fact": "hoatDongBangDien",
@@ -24,10 +21,7 @@
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
-          "value": [
-            "máy để gia công cao su",
-            "sản xuất các sản phẩm từ cao su"
-          ]
+          "value": "cao su"
         },
         {
           "fact": "hoatDongBangDien",
@@ -36,7 +30,21 @@
       ]
     },
     "84779032": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy ép lớp mỏng"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "sản xuất tấm mạch in",
+            "tấm dây in"
+          ]
+        }
+      ]
     },
     "84779039": {
       "dieuKienSo": []
@@ -46,10 +54,7 @@
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
-          "value": [
-            "máy để gia công plastic",
-            "các sản phẩm từ plastic"
-          ]
+          "value": "plastic"
         },
         {
           "fact": "hoatDongBangDien",
@@ -64,28 +69,49 @@
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
-          "value": [
-            "máy gia công plastic",
-            "sản xuất các sản phẩm từ plastic"
-          ]
+          "value": "plastic"
         },
         {
           "fact": "hoatDongBangDien",
           "op": "CO"
         }
       ]
+    },
+    "847790": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "cao su",
+            "plastic"
+          ]
+        }
+      ],
+      "nguon": "nhom8477.nhom",
+      "trich": "Nhóm này bao gồm máy móc để gia công cao su hoặc plastic hoặc dùng trong việc sản xuất ra các sản phẩm làm từ các vật liệu này"
     }
   },
   "ghiChuSoan": [
     {
-      "ma": "84779010",
+      "ma": "8477903",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.84779010: \"Của máy gia công cao su hoặc sản xuất các sản phẩm từ cao su hoạt động bằng điện\" — hai loại máy đích nối 'hoặc' ⇒ dungCho mảng; vế 'hoạt động bằng điện' ⇒ hoatDongBangDien CO (cách xử đã duyệt của 841490 .41)"
+      "ghiChu": "tieuDe.8477903 «Của máy gia công plastic hoặc sản xuất các sản phẩm từ plastic hoạt động bằng điện» và tax.84779040 «Của máy để gia công plastic hoặc các sản phẩm từ plastic, không hoạt động bằng điện» cùng một đích (EN cả hai: «machines for working plastics or for the manufacture of products from plastic materials»); trong phạm vi nhóm 84.77 (máy gia công cao su hoặc plastic) điều phân biệt chỉ là VẬT LIỆU ⇒ dungCho «plastic» / «cao su» (chuỗi con nguyên văn), phân điện / không điện bằng hoatDongBangDien (Claude 09/11, lô 10)."
+    },
+    {
+      "ma": "84779032",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84779032 «Bộ phận của máy ép lớp mỏng dùng để sản xuất tấm mạch in hoặc tấm dây in» ⇒ dungCho «máy ép lớp mỏng» + congDung [«sản xuất tấm mạch in», «tấm dây in»] (công dụng của máy ép, «hoặc» tách mảng). «Bộ phận» trùng tên phân nhóm 847790 ⇒ không ghi laBoPhan."
     },
     {
       "ma": "847790",
-      "loai": "DUNG",
-      "ghiChu": "[GIỚI HẠN BỘ MÁY] Dòng .32 «Bộ phận của máy ép lớp mỏng dùng để sản xuất tấm mạch in» nằm dưới tầng «Của máy gia công plastic…»: đích lồng hai tầng trên cùng khoá dungCho. CẦN: như 852910. — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 09/11/2026 (#1109, lô 10): hết DỪNG — .32 có điều kiện; đích hai tầng cùng khoá dungCho do bộ ghép cha–con (#653) xử («máy ép lớp mỏng gia công plastic»)."
+    },
+    {
+      "ma": "847790",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Phạm vi phân nhóm (chỉ lọc vector cổng 1): bộ phận của máy nhóm 84.77 — chú giải nhóm 8477 «máy móc để gia công cao su hoặc plastic hoặc dùng trong việc sản xuất ra các sản phẩm làm từ các vật liệu này» ⇒ dungCho [cao su, plastic]. Vector «máy ép lớp mỏng» không nêu vật liệu thì lúc chạy hỏi; máy ép lớp mỏng làm tấm mạch in là máy gia công plastic (.32 dưới 8477903)."
     }
   ]
 }

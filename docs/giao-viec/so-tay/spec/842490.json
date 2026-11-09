@@ -35,10 +35,7 @@
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
-          "value": [
-            "máy phun bắn hơi nước",
-            "cát"
-          ]
+          "value": "máy phun bắn"
         }
       ]
     },
@@ -147,11 +144,6 @@
       "ghiChu": "\"Của hàng hóa thuộc phân nhóm <mã>\" (.21/.24/.93/.96) ⇒ dungCho giữ nguyên chuỗi mã; .94/.95 mảng mã theo chữ \"hoặc\"."
     },
     {
-      "ma": "84249030",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.84249030 \"Của máy phun bắn hơi nước hoặc cát và các loại máy phun bắn tia tương tự\" ⇒ dungCho mảng [máy phun bắn hơi nước, cát] (CONG_DUNG, mảng = hoặc, tách tại \"hoặc\")."
-    },
-    {
       "ma": "8424909",
       "loai": "QUYET_DINH",
       "ghiChu": "tieuDe.8424909 \"Của thiết bị khác\" ⇒ dungCho \"thiết bị\" + phanConLai true (khuôn 841391 .90 \"Của bơm khác\")."
@@ -164,14 +156,13 @@
     },
     {
       "ma": "84249030",
-      "loai": "BO_VE",
-      "ve": "và các loại máy phun bắn tia tương tự",
-      "lyDo": "Op TUONG_TU chỉ có cho khoá tên (tenLoai), không áp dụng được đích dungCho; giữ mảng [máy phun bắn hơi nước, cát] nguyên văn, miễn vế MỞ như quy ước 392690 .42. Hướng sai còn lại: bộ phận của máy phun bắn tia tương tự (không chứa chữ mô tả nêu trên) rơi 84249099."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84249030 \"Của máy phun bắn hơi nước hoặc cát và các loại máy phun bắn tia tương tự\" ⇒ dungCho \"máy phun bắn\" — đầu chung của cả ba (hơi nước, cát, và vế mở «các loại máy phun bắn tia tương tự»), khớp tên 8424.30. Trước ghi mảng [máy phun bắn hơi nước, cát] làm «cát» đứng một mình sai nghĩa và bỏ vế mở (Claude 09/11, lô 10)."
     },
     {
       "ma": "842490",
-      "loai": "DUNG",
-      "ghiChu": "[GIỚI HẠN BỘ MÁY] Tầng «Của súng phun và các thiết bị tương tự» ghi bằng CHỮ, dòng con ghi bằng MÃ (8424.20.11, 8424.20.21); máy chưa đổi tên↔mã ở phía điều kiện nên hàng ghi mã không tới được tầng. CẦN: bộ so giải tên→mã cho điều kiện (Claude làm, có đo vì đổi so lúc chạy). — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude (#1109): hết DỪNG (09/11, lô 10). Bộ so giải chữ↔mã: «súng phun» là tên phân nhóm 842420 ⇒ hàng ghi 8424.20.11 vào tầng 8424902, 8424.82.10 TRÁI (lib/ten-sang-ma.js#tenSangMaSau, #laTenCuaMa); .30 ghi «máy phun bắn» (đầu chung, phủ cả vế mở)."
     }
   ]
 }
