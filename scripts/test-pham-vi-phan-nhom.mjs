@@ -235,5 +235,16 @@ const muc = (b, id) => [...(b.dong8 || []), ...(b.dieuKienNut || [])].find((x) =
   const r35 = C.kiemRanhGioi('984935', b35, { cong: [3] });
   check('18g laBoPhan KHONG cạnh anh em «Các bộ phận khác» lấy căn cứ cấu trúc (984935 .81 «Thùng nhiên liệu»)', !r35.loi.some((l) => l.startsWith('cong3-muc:98493581')) && r35.canhBao.includes('cong3-khong-bo-phan-tu-anh-em:98493581'), r35.loi.filter((l) => l.includes('98493581')));
 }
+// Lô 8: «trừ loại …» là một dấu hiệu (981826), «cháy bằng …» là cách đốt (982130) — không cắt vế rỗng/nhầm vật liệu.
+{
+  const V = require('../lib/ho-so/tach-ve.js');
+  const md = (s) => V.tachVe(s).ve.flatMap((v) => v.menhDe.filter((m) => !m.ngoac).map((m) => `${m.loai}/${m.kieu}:${m.chu}`));
+  const a = md('Loại khác, trừ loại bằng đồng hoặc hợp kim đồng với đường kính trong từ 2,5 cm trở xuống');
+  check('19a «trừ loại bằng đồng …» là MỘT vế trừ, không còn vế rỗng «trừ loại»', a.includes('GIOI_HAN/TRU:trừ loại bằng đồng hoặc hợp kim đồng') && !a.includes('GIOI_HAN/TRU:trừ loại'), a);
+  const b = md('Loại khác, trừ loại dùng cho xe có động cơ');
+  check('19b «trừ loại dùng cho …» giữ như cũ: một vế trừ trọn (dấu hiệu «trừ» không nuốt «loại dùng»)', b.includes('GIOI_HAN/TRU:trừ loại dùng cho xe có động cơ'), b);
+  const c = md('Của loại khác, có động cơ đốt trong kiểu piston đốt cháy bằng tia lửa điện');
+  check('19c «đốt cháy bằng tia lửa điện» không cắt «bằng» thành vế vật liệu', !c.some((x) => x.startsWith('GIOI_HAN/BANG')), c);
+}
 console.log(`\n${pass} pass, ${fail} fail`);
 process.exit(fail ? 1 : 0);
