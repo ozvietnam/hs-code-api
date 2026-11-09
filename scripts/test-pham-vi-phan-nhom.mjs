@@ -3,7 +3,7 @@ import './test-isolate-data.mjs';
 import { createRequire } from 'module';
 import { execFileSync } from 'child_process';
 const require = createRequire(import.meta.url);
-const { nhapDongCung, gieoNhap, THU_MUC_DONG_CUNG_38864C8, THU_MUC_DONG_CUNG_C05A07A, THU_MUC_DONG_CUNG_454E512, THU_MUC_DONG_CUNG_0519921, THU_MUC_DONG_CUNG_71A17E0, THU_MUC_DONG_CUNG_B5BF024, THU_MUC_DONG_CUNG_8BAEF5E, THU_MUC_DONG_CUNG_BF788F5, THU_MUC_DONG_CUNG_5174A56, THU_MUC_DONG_CUNG_EC27049 } = await import('./fixtures/ho-so/nhap-dong-cung.mjs');
+const { nhapDongCung, gieoNhap, THU_MUC_DONG_CUNG_38864C8, THU_MUC_DONG_CUNG_C05A07A, THU_MUC_DONG_CUNG_454E512, THU_MUC_DONG_CUNG_0519921, THU_MUC_DONG_CUNG_71A17E0, THU_MUC_DONG_CUNG_B5BF024, THU_MUC_DONG_CUNG_8BAEF5E, THU_MUC_DONG_CUNG_BF788F5, THU_MUC_DONG_CUNG_5174A56, THU_MUC_DONG_CUNG_EC27049, THU_MUC_DONG_CUNG_16EED39 } = await import('./fixtures/ho-so/nhap-dong-cung.mjs');
 const C = require('../lib/ho-so/cong-ranh-gioi.js');
 const S = require('../lib/so-tay.js');
 let pass = 0; let fail = 0;
@@ -245,6 +245,18 @@ const muc = (b, id) => [...(b.dong8 || []), ...(b.dieuKienNut || [])].find((x) =
   check('19b «trừ loại dùng cho …» giữ như cũ: một vế trừ trọn (dấu hiệu «trừ» không nuốt «loại dùng»)', b.includes('GIOI_HAN/TRU:trừ loại dùng cho xe có động cơ'), b);
   const c = md('Của loại khác, có động cơ đốt trong kiểu piston đốt cháy bằng tia lửa điện');
   check('19c «đốt cháy bằng tia lửa điện» không cắt «bằng» thành vế vật liệu', !c.some((x) => x.startsWith('GIOI_HAN/BANG')), c);
+}
+// Lô 9: tên cụ thể ở dòng dưới «Loại khác» thắng tầng chung (lib/dieu-kien-so.js#tenCuTheDuoi).
+{
+  const DK = require('../lib/dieu-kien-so.js');
+  const dk = (o) => Object.entries(o).map(([fact, giaTri]) => ({ fact, giaTri, nguon: 'KHACH', trangThai: 'DA_CO', bangChung: 'test' }));
+  const st90 = C.soTayTuNhap('853690', nhapDongCung('853690', THU_MUC_DONG_CUNG_16EED39));
+  const r90 = DK.doiChieuPhanNhom('853690', dk({ tenLoai: 'phiến đầu nối', dungCho: 'cáp điện thoại', dongDien: 10 }), { soTay: st90 });
+  const co = (r90.dong || []).filter((d) => d.ketQua === 'CO' && !d.biLanTen).map((d) => d.hs);
+  check('20a 853690: «phiến đầu nối cáp điện thoại» vào .93 (tên cụ thể dưới Loại khác thắng 8536901 «Đầu nối … cho cáp»)', co.join() === '85369093', r90.dong);
+  const st30 = C.soTayTuNhap('930630', nhapDongCung('930630', THU_MUC_DONG_CUNG_16EED39));
+  const r30 = DK.doiChieuDong8('93063091', dk({ tenLoai: 'Đạn cỡ 22', dungCho: 'súng bắn đinh' }), { soTay: st30 });
+  check('20b 930630: đạn cỡ 22 cho súng bắn đinh KHÔNG vào .91 — anh em .20 thoả nhờ «dùng cho súng bắn đinh» mà đường .91 không nói tới', r30.ketQua === 'MAU_THUAN', r30.ketQua);
 }
 console.log(`\n${pass} pass, ${fail} fail`);
 process.exit(fail ? 1 : 0);

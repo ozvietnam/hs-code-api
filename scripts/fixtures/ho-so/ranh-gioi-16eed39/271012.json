@@ -1,0 +1,729 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "271012",
+  "nhom": "2710",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-271012",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "271012~r3290",
+      "nguon": "tieuDe.271012~r3290",
+      "trich": "271012~r3290 RON 97 và cao hơn",
+      "dieuKienSo": [
+        {
+          "fact": "triSoOctan",
+          "op": ">=",
+          "value": 97,
+          "donVi": "RON"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "271012~r3294",
+      "nguon": "tieuDe.271012~r3294",
+      "trich": "271012~r3294 RON 90 và cao hơn nhưng dưới RON 97",
+      "dieuKienSo": [
+        {
+          "fact": "triSoOctan",
+          "op": ">=",
+          "value": 90,
+          "donVi": "RON"
+        },
+        {
+          "fact": "triSoOctan",
+          "op": "<",
+          "value": 97,
+          "donVi": "RON"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "271012~r3298",
+      "nguon": "tieuDe.271012~r3298",
+      "trich": "271012~r3298 RON khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    },
+    {
+      "id": "2710121",
+      "nguon": "tieuDe.2710121",
+      "trich": "2710121 Xăng động cơ, có pha chì",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xăng động cơ"
+        },
+        {
+          "fact": "coPhaChi",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "2710122",
+      "nguon": "tieuDe.2710122",
+      "trich": "2710122 Xăng động cơ, không pha chì",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xăng động cơ"
+        },
+        {
+          "fact": "coPhaChi",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "2710123",
+      "nguon": "tieuDe.2710123",
+      "trich": "2710123 Xăng máy bay, loại sử dụng cho động cơ máy bay kiểu piston",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xăng máy bay"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "động cơ máy bay kiểu piston"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "27101211",
+      "nguon": "tax.27101211",
+      "trich": "27101211 - - - - RON 97 và cao hơn",
+      "dieuKienSo": [
+        {
+          "fact": "triSoOctan",
+          "op": ">=",
+          "value": 97,
+          "donVi": "RON"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "27101212",
+      "nguon": "tax.27101212",
+      "trich": "27101212 - - - - RON 90 và cao hơn nhưng dưới RON 97",
+      "dieuKienSo": [
+        {
+          "fact": "triSoOctan",
+          "op": ">=",
+          "value": 90,
+          "donVi": "RON"
+        },
+        {
+          "fact": "triSoOctan",
+          "op": "<",
+          "value": 97,
+          "donVi": "RON"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "27101213",
+      "nguon": "tax.27101213",
+      "trich": "27101213 - - - - RON khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    },
+    {
+      "hs": "27101221",
+      "nguon": "tax.27101221",
+      "trich": "27101221 - - - - - Chưa pha chế",
+      "dieuKienSo": [
+        {
+          "fact": "phaCheVoiEthanol",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "27101222",
+      "nguon": "tax.27101222",
+      "trich": "27101222 - - - - - Pha chế với ethanol",
+      "dieuKienSo": [
+        {
+          "fact": "phaCheVoiEthanol",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "27101223",
+      "nguon": "tax.27101223",
+      "trich": "27101223 - - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "27101224",
+      "nguon": "tax.27101224",
+      "trich": "27101224 - - - - - Chưa pha chế",
+      "dieuKienSo": [
+        {
+          "fact": "phaCheVoiEthanol",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "27101225",
+      "nguon": "tax.27101225",
+      "trich": "27101225 - - - - - Pha chế với ethanol",
+      "dieuKienSo": [
+        {
+          "fact": "phaCheVoiEthanol",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "27101226",
+      "nguon": "tax.27101226",
+      "trich": "27101226 - - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "27101227",
+      "nguon": "tax.27101227",
+      "trich": "27101227 - - - - - Chưa pha chế",
+      "dieuKienSo": [
+        {
+          "fact": "phaCheVoiEthanol",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "27101228",
+      "nguon": "tax.27101228",
+      "trich": "27101228 - - - - - Pha chế với ethanol",
+      "dieuKienSo": [
+        {
+          "fact": "phaCheVoiEthanol",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "27101229",
+      "nguon": "tax.27101229",
+      "trich": "27101229 - - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "27101231",
+      "nguon": "tax.27101231",
+      "trich": "27101231 - - - - Octane 100 và cao hơn(SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "triSoOctan",
+          "op": ">=",
+          "value": 100,
+          "donVi": "octane"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "27101239",
+      "nguon": "tax.27101239",
+      "trich": "27101239 - - - - Loại khác (SEN)",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "27101240",
+      "nguon": "tax.27101240",
+      "trich": "27101240 - - - Tetrapropylene",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Tetrapropylene"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "27101250",
+      "nguon": "tax.27101250",
+      "trich": "27101250 - - - Dung môi trắng (white spirit)(SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dung môi trắng"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "27101260",
+      "nguon": "tax.27101260",
+      "trich": "27101260 - - - Dung môi có hàm lượng cấu tử thơm thấp dưới 1% tính theo trọng lượng",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dung môi"
+        },
+        {
+          "fact": "hamLuongCauTuThom",
+          "op": "<",
+          "value": 1,
+          "donVi": "%"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "27101270",
+      "nguon": "tax.27101270",
+      "trich": "27101270 - - - Dung môi nhẹ khác (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dung môi nhẹ"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": [
+        "27101250",
+        "27101260"
+      ]
+    },
+    {
+      "hs": "27101280",
+      "nguon": "tax.27101280",
+      "trich": "27101280 - - - Naphtha, reformate (SEN) và các chế phẩm khác để pha chế xăng động cơ",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "pha chế xăng động cơ"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "27101291",
+      "nguon": "tax.27101291",
+      "trich": "27101291 - - - - Alpha olefins",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Alpha olefins"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "27101292",
+      "nguon": "tax.27101292",
+      "trich": "27101292 - - - - Loại khác, spirit dầu mỏ(1), có độ chớp cháy dưới 23oC",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "spirit dầu mỏ"
+        },
+        {
+          "fact": "doChopChay",
+          "op": "<",
+          "value": 23,
+          "donVi": "oC"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "27101299",
+      "nguon": "tax.27101299",
+      "trich": "27101299 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "27101211",
+        "27101280"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1 pattern). A \"RON 97 và cao hơn\" — thuộc cây xăng động cơ thành phẩm có RON xác định. B \"Naphtha, reformate (SEN) và các chế phẩm khác để pha chế xăng động cơ\" — naphtha/reformate là bán thành phẩm ĐỂ PHA CHẾ xăng. TB 1420/3055/3056/6491 đều phân naphtha vào dòng dung môi/naphtha; precedents không có TB nào vừa naphtha vừa xăng thành phẩm"
+    },
+    {
+      "cap": [
+        "27101212",
+        "27101280"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1 pattern). A \"RON 90 và cao hơn nhưng dưới RON 97\" — thuộc cây xăng động cơ thành phẩm có RON xác định. B \"Naphtha, reformate (SEN) và các chế phẩm khác để pha chế xăng động cơ\" — naphtha/reformate là bán thành phẩm ĐỂ PHA CHẾ xăng. TB 1420/3055/3056/6491 đều phân naphtha vào dòng dung môi/naphtha; precedents không có TB nào vừa naphtha vừa xăng thành phẩm"
+    },
+    {
+      "cap": [
+        "27101213",
+        "27101280"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1 pattern). A \"RON khác\" — thuộc cây xăng động cơ thành phẩm có RON xác định. B \"Naphtha, reformate (SEN) và các chế phẩm khác để pha chế xăng động cơ\" — naphtha/reformate là bán thành phẩm ĐỂ PHA CHẾ xăng. TB 1420/3055/3056/6491 đều phân naphtha vào dòng dung môi/naphtha; precedents không có TB nào vừa naphtha vừa xăng thành phẩm"
+    },
+    {
+      "cap": [
+        "27101221",
+        "27101280"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1 pattern). A \"Chưa pha chế\" — thuộc cây xăng động cơ thành phẩm có RON xác định. B \"Naphtha, reformate (SEN) và các chế phẩm khác để pha chế xăng động cơ\" — naphtha/reformate là bán thành phẩm ĐỂ PHA CHẾ xăng. TB 1420/3055/3056/6491 đều phân naphtha vào dòng dung môi/naphtha; precedents không có TB nào vừa naphtha vừa xăng thành phẩm"
+    },
+    {
+      "cap": [
+        "27101222",
+        "27101280"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1 pattern). A \"Pha chế với ethanol\" — thuộc cây xăng động cơ thành phẩm có RON xác định. B \"Naphtha, reformate (SEN) và các chế phẩm khác để pha chế xăng động cơ\" — naphtha/reformate là bán thành phẩm ĐỂ PHA CHẾ xăng. TB 1420/3055/3056/6491 đều phân naphtha vào dòng dung môi/naphtha; precedents không có TB nào vừa naphtha vừa xăng thành phẩm"
+    },
+    {
+      "cap": [
+        "27101224",
+        "27101280"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1 pattern). A \"Chưa pha chế\" — thuộc cây xăng động cơ thành phẩm có RON xác định. B \"Naphtha, reformate (SEN) và các chế phẩm khác để pha chế xăng động cơ\" — naphtha/reformate là bán thành phẩm ĐỂ PHA CHẾ xăng. TB 1420/3055/3056/6491 đều phân naphtha vào dòng dung môi/naphtha; precedents không có TB nào vừa naphtha vừa xăng thành phẩm"
+    },
+    {
+      "cap": [
+        "27101225",
+        "27101280"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1 pattern). A \"Pha chế với ethanol\" — thuộc cây xăng động cơ thành phẩm có RON xác định. B \"Naphtha, reformate (SEN) và các chế phẩm khác để pha chế xăng động cơ\" — naphtha/reformate là bán thành phẩm ĐỂ PHA CHẾ xăng. TB 1420/3055/3056/6491 đều phân naphtha vào dòng dung môi/naphtha; precedents không có TB nào vừa naphtha vừa xăng thành phẩm"
+    },
+    {
+      "cap": [
+        "27101227",
+        "27101280"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1 pattern). A \"Chưa pha chế\" — thuộc cây xăng động cơ thành phẩm có RON xác định. B \"Naphtha, reformate (SEN) và các chế phẩm khác để pha chế xăng động cơ\" — naphtha/reformate là bán thành phẩm ĐỂ PHA CHẾ xăng. TB 1420/3055/3056/6491 đều phân naphtha vào dòng dung môi/naphtha; precedents không có TB nào vừa naphtha vừa xăng thành phẩm"
+    },
+    {
+      "cap": [
+        "27101228",
+        "27101280"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1 pattern). A \"Pha chế với ethanol\" — thuộc cây xăng động cơ thành phẩm có RON xác định. B \"Naphtha, reformate (SEN) và các chế phẩm khác để pha chế xăng động cơ\" — naphtha/reformate là bán thành phẩm ĐỂ PHA CHẾ xăng. TB 1420/3055/3056/6491 đều phân naphtha vào dòng dung môi/naphtha; precedents không có TB nào vừa naphtha vừa xăng thành phẩm"
+    },
+    {
+      "cap": [
+        "27101231",
+        "27101280"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1 pattern). A \"Octane 100 và cao hơn(SEN)\" — xăng máy bay động cơ piston (octane 100+) thành phẩm. B \"Naphtha, reformate (SEN) và các chế phẩm khác để pha chế xăng động cơ\" — bán thành phẩm pha chế xăng động cơ mặt đường, khác xăng máy bay; precedents không có TB nào thoả cả hai"
+    },
+    {
+      "cap": [
+        "27101239",
+        "27101280"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1 pattern). A \"Loại khác (SEN)\" — xăng máy bay động cơ piston (octane 100+) thành phẩm. B \"Naphtha, reformate (SEN) và các chế phẩm khác để pha chế xăng động cơ\" — bán thành phẩm pha chế xăng động cơ mặt đường, khác xăng máy bay; precedents không có TB nào thoả cả hai"
+    },
+    {
+      "cap": [
+        "27101240",
+        "27101280"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1 pattern). A \"Tetrapropylene\" — hoá chất riêng (nguyên liệu chính sản xuất alkylbenzene). B \"Naphtha, reformate (SEN) và các chế phẩm khác để pha chế xăng động cơ\" — precedents (productName+technicalSpec) không có TB nào về tetrapropylene, không thấy TB nhập làm chế phẩm pha chế xăng"
+    },
+    {
+      "cap": [
+        "27101250",
+        "27101280"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1 pattern). A \"Dung môi trắng (white spirit)(SEN)\" — phân đoạn white spirit riêng (mã SEN AAB11004V, TB 557/587). B \"Naphtha, reformate (SEN) và các chế phẩm khác để pha chế xăng động cơ\" — naphtha/reformate là phân đoạn nhẹ khác; không hàng nào đồng thời là cả hai"
+    },
+    {
+      "cap": [
+        "27101260",
+        "27101280"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1 pattern). A \"Dung môi có hàm lượng cấu tử thơm thấp dưới 1% tính theo trọng lượng\" — TB 3055/TB-TCHQ «Paraffinic Naphtha» không kèm số % cấu tử thơm nên không kiểm được «thơm dưới 1%». B \"Naphtha, reformate (SEN) và các chế phẩm khác để pha chế xăng động cơ\" — precedents không có TB naphtha nào ghi rõ hàm lượng thơm dưới 1%"
+    },
+    {
+      "cap": [
+        "27101270",
+        "27101280"
+      ],
+      "lyDo": "Cặp có hàng thật đã khai ở chongLanTruc.viDuHang: TB-TCHQ 1420 «Dung môi Naphtha nhẹ» thoả cả hai. A \"Dung môi nhẹ khác (SEN)\". B \"Naphtha, reformate (SEN) và các chế phẩm khác để pha chế xăng động cơ\""
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "2710121",
+        "2710122",
+        "2710123",
+        "27101240",
+        "27101250",
+        "27101260",
+        "27101270",
+        "27101280"
+      ],
+      "truc": {
+        "2710121": "TEN_LOAI",
+        "2710122": "TEN_LOAI",
+        "2710123": "TEN_LOAI",
+        "27101240": "TEN_LOAI",
+        "27101250": "TEN_LOAI",
+        "27101260": "DAC_DIEM",
+        "27101270": "TEN_LOAI",
+        "27101280": "CONG_DUNG"
+      },
+      "cauHoiPhanBiet": "Hàng thuộc dòng nào: xăng động cơ hoàn chỉnh (có/không pha chì, theo RON), xăng máy bay động cơ piston, tetrapropylene, dung môi trắng (white spirit), dung môi cấu tử thơm dưới 1%, dung môi nhẹ khác, hay naphtha/reformate và chế phẩm khác để pha chế xăng động cơ?",
+      "trich": {
+        "2710121": "Xăng động cơ, có pha chì",
+        "2710122": "Xăng động cơ, không pha chì",
+        "2710123": "Xăng máy bay, loại sử dụng cho động cơ máy bay kiểu piston",
+        "27101240": "Tetrapropylene",
+        "27101250": "Dung môi trắng (white spirit)(SEN)",
+        "27101260": "Dung môi có hàm lượng cấu tử thơm thấp dưới 1% tính theo trọng lượng",
+        "27101270": "Dung môi nhẹ khác (SEN)",
+        "27101280": "Naphtha, reformate (SEN) và các chế phẩm khác để pha chế xăng động cơ"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "27101270",
+            "27101280"
+          ],
+          "hang": "Dung môi Naphtha nhẹ — Naphtha nhẹ cracking xúc tác 100% (Naphtha (Petroleum), light) — vừa là «dung môi nhẹ» vừa là «Naphtha» (TB-TCHQ 1420)"
+        },
+        {
+          "cap": [
+            "2710121",
+            "27101280"
+          ],
+          "khongCoHangThat": "Naphtha/reformate là bán thành phẩm ĐỂ PHA CHẾ xăng, không phải xăng động cơ hoàn chỉnh có RON xác định — không có TB nào trong precedents vừa là naphtha vừa là xăng có pha chì thành phẩm"
+        },
+        {
+          "cap": [
+            "2710122",
+            "27101280"
+          ],
+          "khongCoHangThat": "Naphtha/reformate là bán thành phẩm pha chế, không phải xăng động cơ không pha chì hoàn chỉnh (RON xác định); precedents không có TB thoả cả hai"
+        },
+        {
+          "cap": [
+            "2710123",
+            "27101280"
+          ],
+          "khongCoHangThat": "Xăng máy bay piston (octane 100+) là sản phẩm hoàn chỉnh riêng; naphtha/reformate là nguyên liệu pha chế — precedents không có TB nào thoả cả hai"
+        },
+        {
+          "cap": [
+            "27101240",
+            "27101280"
+          ],
+          "khongCoHangThat": "Đã quét precedents (productName + technicalSpec): không có TB nào về tetrapropylene; tetrapropylene nhập thực tế dùng sản xuất alkylbenzene, không thấy TB nhập làm chế phẩm pha chế xăng"
+        },
+        {
+          "cap": [
+            "27101250",
+            "27101280"
+          ],
+          "khongCoHangThat": "White spirit là phân đoạn riêng (mã SEN AAB11004V, TB 557/587 phân vào «dầu nhẹ và chế phẩm dung môi nhẹ khác»), naphtha/reformate là phân đoạn nhẹ khác — không có hàng đồng thời là cả hai"
+        },
+        {
+          "cap": [
+            "27101260",
+            "27101280"
+          ],
+          "khongCoHangThat": "TB 3055/TB-TCHQ «Paraffinic Naphtha» không kèm số % cấu tử thơm nên không kiểm được «thơm dưới 1%»; precedents không có TB naphtha nào ghi rõ hàm lượng thơm dưới 1%"
+        }
+      ],
+      "phanXu": null
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "2710121",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.2710121 \"Xăng động cơ, có pha chì\" ⇒ tenLoai \"Xăng động cơ\" + coPhaChi CO (khoá lô 21; ghiChu khoá nêu đúng tiêu đề này đọc CÓ)."
+    },
+    {
+      "ma": "2710122",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.2710122 \"Xăng động cơ, không pha chì\" ⇒ tenLoai \"Xăng động cơ\" + coPhaChi KHONG (\"không …\" ⇒ op KHONG; cachDocKhong đọc \"không pha chì\"). Cùng khoá coPhaChi với 2710121 (thang đo đồng nhất)."
+    },
+    {
+      "ma": "27101211",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101211 \"RON 97 và cao hơn\" ⇒ triSoOctan >= 97 RON (\"và cao hơn\" = từ 97 trở lên)."
+    },
+    {
+      "ma": "27101212",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101212 \"RON 90 và cao hơn nhưng dưới RON 97\" ⇒ triSoOctan >= 90 RON VÀ < 97 RON (\"dưới\" = <)."
+    },
+    {
+      "ma": "27101213",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101213 \"RON khác\" ⇒ phần còn lại có tên (cùng nhóm RON, trừ .11 và .12) ⇒ phanConLai true, không điều kiện riêng."
+    },
+    {
+      "ma": "271012~r3290",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.271012~r3290 \"RON 97 và cao hơn\" (tầng không mã) ⇒ triSoOctan >= 97 RON."
+    },
+    {
+      "ma": "271012~r3294",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.271012~r3294 \"RON 90 và cao hơn nhưng dưới RON 97\" (tầng không mã) ⇒ triSoOctan >= 90 RON VÀ < 97 RON."
+    },
+    {
+      "ma": "271012~r3298",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.271012~r3298 \"RON khác\" (tầng không mã) ⇒ phần còn lại có tên ⇒ phanConLai true."
+    },
+    {
+      "ma": "27101221",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101221 \"Chưa pha chế\" ⇒ phaCheVoiEthanol KHONG (khoá đọc \"chưa pha chế\" là KHÔNG; lặp ở r3290)."
+    },
+    {
+      "ma": "27101222",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101222 \"Pha chế với ethanol\" ⇒ phaCheVoiEthanol CO."
+    },
+    {
+      "ma": "27101224",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101224 \"Chưa pha chế\" ⇒ phaCheVoiEthanol KHONG."
+    },
+    {
+      "ma": "27101225",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101225 \"Pha chế với ethanol\" ⇒ phaCheVoiEthanol CO."
+    },
+    {
+      "ma": "27101227",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101227 \"Chưa pha chế\" ⇒ phaCheVoiEthanol KHONG."
+    },
+    {
+      "ma": "27101228",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101228 \"Pha chế với ethanol\" ⇒ phaCheVoiEthanol CO."
+    },
+    {
+      "ma": "27101223",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101223 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em). Tương tự 27101226, 27101229."
+    },
+    {
+      "ma": "2710123",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.2710123 \"Xăng máy bay, loại sử dụng cho động cơ máy bay kiểu piston\" ⇒ tenLoai \"Xăng máy bay\" + dungCho \"động cơ máy bay kiểu piston\" (chữ \"loại sử dụng cho …\" ⇒ dungCho)."
+    },
+    {
+      "ma": "27101231",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101231 \"Octane 100 và cao hơn(SEN)\" ⇒ triSoOctan >= 100 octane (đơn vị \"octane\" như chữ trích). \"(SEN)\" là ghi chú trỏ chú giải, không thành điều kiện."
+    },
+    {
+      "ma": "27101239",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101239 \"Loại khác (SEN)\" ⇒ coi như \"Loại khác\" trần (phần \"(SEN)\" chỉ là ghi chú trỏ chú giải), không điều kiện."
+    },
+    {
+      "ma": "27101240",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101240 \"Tetrapropylene\" ⇒ chữ biểu chỉ nêu TÊN hàng ⇒ tenLoai \"Tetrapropylene\"."
+    },
+    {
+      "ma": "27101250",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101250 \"Dung môi trắng (white spirit)(SEN)\" ⇒ tenLoai \"Dung môi trắng\"; \"(white spirit)\" là ngoặc chú thích tên Anh, \"(SEN)\" ghi chú, không thành điều kiện. Không lấy dải sôi 130–230 °C từ SEN (không có trong chữ biểu của dòng)."
+    },
+    {
+      "ma": "27101260",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101260 \"Dung môi có hàm lượng cấu tử thơm thấp dưới 1% tính theo trọng lượng\" ⇒ tenLoai \"Dung môi\" + hamLuongCauTuThom < 1 % (\"dưới\" = <; khoá lô 21). \"thấp\" chỉ là chữ mô tả của chính biên \"dưới 1%\", \"tính theo trọng lượng\" là cách đo (trong đơn vị %)."
+    },
+    {
+      "ma": "27101260",
+      "loai": "BO_VE",
+      "ve": "có hàm lượng cấu tử thơm thấp",
+      "lyDo": "Chữ giới thiệu thuần: nêu tên đại lượng (hàm lượng cấu tử thơm) và chữ \"thấp\" mô tả chính biên \"dưới 1%\" đứng liền sau; đại lượng đã được điều kiện hamLuongCauTuThom < 1 % phủ, nên bỏ vế không đổi mã 8 số."
+    },
+    {
+      "ma": "27101270",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101270 \"Dung môi nhẹ khác (SEN)\" ⇒ tenLoai \"Dung môi nhẹ\" + phần còn lại có tên: \"khác\" trỏ các dòng dung môi đứng trước (.50 white spirit, .60 dung môi cấu tử thơm thấp) ⇒ phanConLai mảng [\"27101250\",\"27101260\"]; .40 Tetrapropylene không phải dung môi nên không đưa vào. Không lấy tiêu chí dải chưng cất ≤ 100 °C từ SEN (chữ biểu của dòng không nêu)."
+    },
+    {
+      "ma": "27101280",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101280 \"Naphtha, reformate (SEN) và các chế phẩm khác để pha chế xăng động cơ\" ⇒ congDung \"pha chế xăng động cơ\" (vế GIỚI HẠN \"để pha chế xăng động cơ\" áp cho cả tập Naphtha, reformate và chế phẩm khác — khớp bảng tiền lệ 271012-04). Không liệt kê đóng \"Naphtha, reformate\" thành tenLoai (vế mở \"và các chế phẩm khác\" — quy ước 392690)."
+    },
+    {
+      "ma": "27101291",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101291 \"Alpha olefins\" ⇒ chữ biểu chỉ nêu TÊN hàng ⇒ tenLoai \"Alpha olefins\"."
+    },
+    {
+      "ma": "27101292",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101292 \"Loại khác, spirit dầu mỏ(1), có độ chớp cháy dưới 23oC\" ⇒ chỉ ghi điều kiện của vế sau \"Loại khác,\": tenLoai \"spirit dầu mỏ\" + doChopChay < 23 oC (\"dưới\" = <; khoá lô 21, đơn vị như chữ trích). \"(1)\" là chú thích cuối trang, không thành điều kiện."
+    },
+    {
+      "ma": "27101299",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101299 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    },
+    {
+      "ma": "2710129",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.2710129 \"Loại khác\" trần ⇒ không điều kiện."
+    },
+    {
+      "ma": "271012",
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 271012-01 LECH_CHUA_PHAN_XU (1420, 3055, 3056, 928/TB-TCHQ naphtha hoá dầu .70 ↔ .99), 271012-02 LECH_CHUA_PHAN_XU (6491/TB-TCHQ dung môi C7–C8 .60/.70 ↔ .99), 271012-03 KHONG_LECH (3054, 3055), 271012-04 KHONG_LECH (.80 ↔ .99): soạn theo chữ biểu, khớp bảng."
+    },
+    {
+      "ma": "271012",
+      "loai": "DUNG",
+      "ghiChu": "[CHỒNG LẤN CHƯA CÓ HÀNG THẬT] Các dòng xăng thành phẩm (RON 97, RON 90–97, chưa pha chế, pha ethanol…), xăng máy bay, dung môi chồng với .80 «Naphtha, reformate và các chế phẩm khác để pha chế xăng động cơ» (tên ↔ công dụng — cần chongLanTruc, mỗi cặp lý do riêng); thêm dòng .23/.26/.29 không tới được (giới hạn bộ máy). CẦN: Claude khai chongLanTruc từng cặp (Q1) + sửa bộ máy. — Claude 07/11/2026."
+    }
+  ]
+}
