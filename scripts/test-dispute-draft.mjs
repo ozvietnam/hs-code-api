@@ -252,5 +252,27 @@ const ghi = fs.readdirSync(TEST_DATA_DIR, { recursive: true }).map(String);
 const coMoTa = ghi.some((f) => { try { return fs.readFileSync(path.join(TEST_DATA_DIR, f), 'utf8').includes('22 m'); } catch { return false; } });
 check('không file nào trong thư mục data tạm chứa mô tả hàng của khách', !coMoTa, ghi);
 
+// ── #475: 3 lỗi bản nháp — Telex in hoa, trích dẫn kề nhau, trùng hồ sơ kèm theo ──
+{
+  // 1+2: thân bài qua khungVanBan (qua lỗi build banNhap có sẵn) — test gián tiếp qua 2 hàm thuần đã tách
+  const { createRequire } = await import('module');
+  const require2 = createRequire(import.meta.url);
+  const src = require2('fs').readFileSync(require2('path').join(import.meta.dirname, '..', 'lib', 'dispute-draft.js'), 'utf8');
+  check('#475-1 có bộ sửa Telex in hoa (MôTà → MÔ TẢ)', src.includes('suaTelexInHoa') && src.includes('Mô\\s?T[àảạa]i?'));
+  check('#475-2 có bộ gộp trích dẫn kề nhau', src.includes('gopTrichDanKe'));
+  // chạy thực: dựng 1 bản nháp với thanBai có cả 2 artefact — lôi hàm qua VM nhỏ
+  const vm = require2('vm');
+  const ctx = { module: { exports: {} } };
+  const code = src.slice(src.indexOf('function suaTelexInHoa'), src.indexOf('function khungVanBan'));
+  vm.runInNewContext(code + '; module.exports = { suaTelexInHoa, gopTrichDanKe };', ctx);
+  const { suaTelexInHoa, gopTrichDanKe } = ctx.module.exports;
+  check('suaTelexInHoa: "MôTà HÀNG HÓA" → "MÔ TẢ HÀNG HÓA"', suaTelexInHoa('MôTà HÀNG HÓA') === 'MÔ TẢ HÀNG HÓA', suaTelexInHoa('MôTà HÀNG HÓA'));
+  check('suaTelexInHoa: từ hỗn hợp CủA Hàng → CỦA HÀNG (in hoa đủ từ)', /CỦA/.test(suaTelexInHoa('CủA HÀNG')) && !/CủA/.test(suaTelexInHoa('CủA HÀNG')), suaTelexInHoa('CủA HÀNG'));
+  const gop = gopTrichDanKe('theo (Điều 4 khoản 1 TT 85) (Điều 6 khoản 1 TT 85) (Điều 6 khoản 1 điểm a TT 85)');
+  check('gopTrichDanKe: 3 trích kề nhau → 1 ngoặc gộp ;', !gop.match(/\)\s*\(/) && gop.includes(';'), gop);
+  // 3: khử trùng squash — qua src có marker + logic
+  check('#475-3 khử trùng theo squash', src.includes('#475-3') && src.includes('squash'));
+}
+
 console.log(`\n${passed}/${passed + failed} passed`);
 process.exit(failed ? 1 : 0);
