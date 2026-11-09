@@ -30,6 +30,8 @@ const kq = phanTich(items);
 check('đối chiếu: 38/2015/TT-BTC đã có trong sổ → bỏ', kq.boQuaDaCo.length === 1 && kq.boQuaDaCo[0].soHieu === '38/2015/TT-BTC');
 check('đối chiếu: TT 99/2026/TT-BNNMT KDTV chưa có → MỚI', kq.moi.length === 1 && kq.moi[0].soHieu === '99/2026/TT-BNNMT');
 check('lọc: TT-BNV nội bộ tổ chức → ngoài phạm vi', kq.ngoaiPhamVi.length === 1);
+check('lọc: từ loại giáo dục chặn "tiêu chuẩn" (ca #388: TT 90/2026/TT-BGDDT)', !thuocPhamVi('90/2026/TT-BGDDT', 'Quy định tiêu chuẩn, điều kiện, chế độ làm việc, bổ nhiệm và xếp lương đối với nhân sự hỗ trợ giáo dục đại học'));
+check('lọc: QCVN đóng tàu nội địa (ca #388: TT 78/2026/TT-BXD) → ngoài', !thuocPhamVi('78/2026/TT-BXD', 'Ban hành Sửa đổi 1:2026 QCVN 72:2025/BGTVT Quy chuẩn kỹ thuật quốc gia về phân cấp và đóng phương tiện thủy nội địa'));
 
 console.log(`${passed} passed, ${failed} failed`);
 process.exit(failed ? 1 : 0);

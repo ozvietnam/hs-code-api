@@ -17,6 +17,9 @@ const TEP_DAU = 'radar-van-ban-da-xu-ly.json';
 // Internet/nguồn nước lọt chỉ vì đuôi VBHN-BTC — hợp nhất TT thuế XNK vẫn bắt được
 // bằng từ khoá trong tên, không cần quy tắc theo cơ quan).
 // Từ khoá tiêu đề: VB của bộ khác nhưng chạm phạm vi hàng hoá XNK vẫn đáng nạp.
+// Từ loại (ca đêm 7/11 ghi nhận #388): 'tiêu chuẩn/quy chuẩn' lọt VB giáo dục/nhân sự —
+// tiêu đề dính từ loại này thì bỏ dù có trúng từ khoá (hàng hoá XNK không dùng chữ này trong tiêu đề).
+const TU_LOAI = ['giáo dục', 'đào tạo', 'nhân sự', 'xếp lương', 'chế độ làm việc', 'bổ nhiệm', 'văn hóa', 'thể thao', 'nội bộ', 'tổ chức lại', 'tổ chức bộ máy', 'phương tiện thủy nội địa', 'phân cấp và đóng'];
 const TU_KHOA = ['xuất nhập khẩu', 'xuất, nhập khẩu', 'hải quan', 'thuế xuất khẩu', 'thuế nhập khẩu', 'trị giá hải quan', 'mã số hàng hóa', 'phân loại hàng', 'kiểm tra chuyên ngành', 'kiểm dịch', 'công bố', 'tiêu chuẩn', 'quy chuẩn', 'giấy phép nhập', 'tạm nhập', 'quá cảnh', 'giao thẳng', 'uỷ thác', 'ủy thác', 'xuất xứ', 'C/O', 'FTA', 'hàng hóa', 'hàng hoá', 'mỹ phẩm', 'thuốc', 'thực vật', 'động vật', 'gỗ', 'xăng dầu', 'hoá chất', 'hóa chất', 'phân bón', 'thức ăn', 'vaccine', 'thiết bị y tế'];
 
 /** Trích số hiệu từ slug công báo: "van-ban-hop-nhat-so-116-2026-vbhn-tt-nhnn-470863" → 116/2026/VBHN-TT-NHNN */
@@ -31,6 +34,7 @@ export function soHieuTuSlug(url) {
 export function thuocPhamVi(soHieu, moTa) {
   const sh = String(soHieu || '').toUpperCase();
   const t = String(moTa || '').toLowerCase();
+  if (TU_LOAI.some((k) => t.includes(k))) return false;
   return TU_KHOA.some((k) => t.includes(k.toLowerCase()));
 }
 
