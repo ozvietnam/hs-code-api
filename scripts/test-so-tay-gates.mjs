@@ -211,5 +211,85 @@ check('trangThaiDong8.veMoHinh: 73181510 chấm trọn nhãn "Đường kính ng
   check('L1-3b moTaDieuKienTrai: op mới in bằng nhãn tu-vung, không "undefined"', /lưới bảo vệ/.test(moTaDieuKienTrai(tv2)) && !/undefined/.test(moTaDieuKienTrai(tv2)), moTaDieuKienTrai(tv2));
 }
 
+// ── #1180: Nhóm 8539 đưa về SẠCH theo chuẩn LUẬT (3a, 3b, 3c, 3d, 3e) ──
+{
+  const { danhGiaDong } = require('../lib/so-tay-gates.js');
+  const fs8539 = require('fs');
+  const path8539 = require('path');
+
+  // 3(a) Bỏ "loại" đứng đầu tên dòng khỏi danh sách định ngữ trong headPhrases; giữ "loại" giữa câu làm định ngữ
+  const hpRenXoay = headPhrases('Loại đầu đèn ren xoáy').map((p) => p.join(' '));
+  const hpTrangTri = headPhrases('Loại dùng trong chiếu sáng trang trí, công suất không quá 60 W').map((p) => p.join(' '));
+  const hpGiuaCau = headPhrases('Máy bơm nước loại ly tâm').map((p) => p.join(' '));
+  check('#1180(3a) headPhrases: "Loại đầu đèn ren xoáy" rút ra ["đầu đèn ren xoáy"], không bị rỗng vì chữ "Loại" đầu câu',
+    hpRenXoay.includes('đầu đèn ren xoáy') && hpTrangTri.length === 0 && hpGiuaCau.includes('máy bơm nước'),
+    JSON.stringify({ hpRenXoay, hpTrangTri, hpGiuaCau }));
+
+  // 3(c) Xoá bản ghi trùng 85395210 trong data/so-tay/8539.json (mọi mã dong8 trong 8539.json là duy nhất)
+  const st8539 = JSON.parse(fs8539.readFileSync(path8539.join(process.cwd(), 'data/so-tay/8539.json'), 'utf8'));
+  const d85395210 = (st8539.dong8 || []).filter((d) => String(d.hs).replace(/\D/g, '') === '85395210');
+  const allHs8539 = (st8539.dong8 || []).map((d) => String(d.hs).replace(/\D/g, ''));
+  check('#1180(3c) data/so-tay/8539.json: chỉ còn đúng 1 bản ghi 85395210 có dieuKienSo, 40 dòng không trùng',
+    d85395210.length === 1 && Array.isArray(d85395210[0].dieuKienSo) && d85395210[0].dieuKienSo.length === 1 && new Set(allHs8539).size === allHs8539.length,
+    JSON.stringify({ count85395210: d85395210.length, total: allHs8539.length, unique: new Set(allHs8539).size }));
+
+  // 3(b) & 3(d) SO_TAY_DONG8 và chotDong8 đọc dieuKienSo của ranh giới DUYET + TEN_LOAI khớp nguyên văn hoặc tên khác L1/L2 là tất định
+  const kqNguyenVan = chotDong8({ hs: '85395290', productText: 'Bóng đèn đi-ốt phát quang (LED), Loại đầu đèn ren xoáy' });
+  check('#1180(3b+3d) chotDong8 khớp nguyên văn TEN_LOAI "Loại đầu đèn ren xoáy" → CHOT 85395210',
+    kqNguyenVan.ketQua === 'CHOT' && kqNguyenVan.hs === '85395210', JSON.stringify(kqNguyenVan));
+
+  const kqE27 = chotDong8({ hs: '85395290', productText: 'Bóng đèn LED tròn đuôi xoáy E27, 9W, 220V' });
+  const kqE14 = chotDong8({ hs: '85395290', productText: 'Bóng đèn LED quả nhót đui xoáy E14, 5W, 220V' });
+  const kqE40 = chotDong8({ hs: '85395290', productText: 'Bóng đèn LED công nghiệp đui đèn xoáy ren Edison E40, 50W' });
+  check('#1180(3b+3d) chotDong8 khớp tên khác có nguồn L1/L2 (E27 / E14 / E40) → CHOT 85395210',
+    kqE27.ketQua === 'CHOT' && kqE27.hs === '85395210' && kqE14.ketQua === 'CHOT' && kqE14.hs === '85395210' && kqE40.ketQua === 'CHOT' && kqE40.hs === '85395210',
+    JSON.stringify({ kqE27, kqE14, kqE40 }));
+
+  const gateE27 = soTayGates({ hs: '85395290', productText: 'Bóng đèn LED tròn đuôi xoáy E27, 9W, 220V' });
+  const chDong8E27 = gateE27.challenges.find((c) => c.gate === 'SO_TAY_DONG8');
+  check('#1180(3b) SO_TAY_DONG8 đọc dieuKienSo ranh giới DUYET + tên khác L1/L2: chọn 85395290 cho hàng E27 → bật cảnh báo sang 85395210',
+    Boolean(chDong8E27) && chDong8E27.sibling === '85395210', JSON.stringify(gateE27.challenges));
+
+  const kqB22 = chotDong8({ hs: '85395290', productText: 'Bóng đèn LED đui gài B22, 9W, 220V' });
+  const gateB22 = soTayGates({ hs: '85395290', productText: 'Bóng đèn LED đui gài B22, 9W, 220V' });
+  check('#1180(3d) ca đui gài B22 → không đẩy sang 85395210 (cả chotDong8 lẫn SO_TAY_DONG8)',
+    kqB22.hs !== '85395210' && !gateB22.challenges.some((c) => c.gate === 'SO_TAY_DONG8' && c.sibling === '85395210'),
+    JSON.stringify({ kqB22, challenges: gateB22.challenges }));
+
+  const kqLuiBieu = chotDong8({ hs: '853932', productText: 'Bóng đèn hơi thủy ngân hoặc natri; bóng đèn ha-lo-gien kim loại' });
+  check('#1180(3b) phân nhóm chưa có ranh-gioi.json (853932) lùi về tên biểu thuế → CHOT 85393200',
+    kqLuiBieu.ketQua === 'CHOT' && kqLuiBieu.hs === '85393200', JSON.stringify(kqLuiBieu));
+
+  // 3(e) 13 phân nhóm từng ném lỗi cauHoiCho(undefined) nay không ném lỗi nữa
+  const PN6_13 = ['380899', '630790', '640690', '732690', '840991', '845290', '848120', '851762', '853180', '853190', '871410', '940541', '940542'];
+  const loi13 = [];
+  for (const pn6 of PN6_13) {
+    try {
+      const r = chotDong8({ hs: pn6, productText: 'Hàng hóa mẫu kiểm tra không đủ thông số kỹ thuật' });
+      if (!r || !r.ketQua) loi13.push(`${pn6}:no-ketQua`);
+    } catch (e) {
+      loi13.push(`${pn6}:${e.message}`);
+    }
+  }
+  check('#1180(3e) 13 phân nhóm có điều kiện HOAC thiếu fact ở cấp ngoài không còn ném lỗi khi gọi chotDong8',
+    loi13.length === 0, JSON.stringify(loi13));
+
+  // Vòng 2: Khóa TEN_LOAI về "cụm phân biệt của dòng" (bỏ từ đã có ở tên nhóm 4 số / phân nhóm 6 số cha)
+  const r350510 = chotDong8({ hs: '350510', productText: 'Dextrin và các dạng tinh bột biến tính khác' });
+  check('Vòng 2 (350510): "Dextrin và các dạng tinh bột biến tính khác" không được tự chốt 35051010 (phải hỏi hoặc không chốt)',
+    r350510.ketQua !== 'CHOT' && r350510.hs !== '35051010' && ['THIEU_SO_LIEU', 'KHONG_THE_CHOT'].includes(r350510.ketQua),
+    JSON.stringify(r350510));
+
+  const r320619 = chotDong8({ hs: '320619', productText: 'Thuốc màu và các chế phẩm từ dioxit titan - Loại khác' });
+  check('Vòng 2 (320619): "… dioxit titan - Loại khác" không được tự chốt 32061910 (từ "Thuốc màu" đã nằm ở phân nhóm cha)',
+    r320619.ketQua !== 'CHOT' && r320619.hs !== '32061910' && ['THIEU_SO_LIEU', 'KHONG_THE_CHOT'].includes(r320619.ketQua),
+    JSON.stringify(r320619));
+
+  const r840991 = chotDong8({ hs: '840991', productText: 'Loại khác - Chỉ dùng hoặc chủ yếu dùng cho động cơ đốt trong kiểu piston đốt cháy bằng tia lửa điện: Dùng cho xe của nhóm 87.11' });
+  check('Vòng 2 (840991): "Loại khác - … Dùng cho xe của nhóm 87.11" không được tự chốt 84099137 (từ "piston" đã nằm ở tên phân nhóm 6 số)',
+    r840991.ketQua !== 'CHOT' && r840991.hs !== '84099137' && ['THIEU_SO_LIEU', 'KHONG_THE_CHOT'].includes(r840991.ketQua),
+    JSON.stringify(r840991));
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
