@@ -3,7 +3,7 @@ import './test-isolate-data.mjs';
 import { createRequire } from 'module';
 import { execFileSync } from 'child_process';
 const require = createRequire(import.meta.url);
-const { nhapDongCung, gieoNhap, THU_MUC_DONG_CUNG_38864C8, THU_MUC_DONG_CUNG_C05A07A, THU_MUC_DONG_CUNG_454E512, THU_MUC_DONG_CUNG_0519921, THU_MUC_DONG_CUNG_71A17E0, THU_MUC_DONG_CUNG_B5BF024, THU_MUC_DONG_CUNG_8BAEF5E, THU_MUC_DONG_CUNG_BF788F5, THU_MUC_DONG_CUNG_5174A56, THU_MUC_DONG_CUNG_EC27049, THU_MUC_DONG_CUNG_16EED39 } = await import('./fixtures/ho-so/nhap-dong-cung.mjs');
+const { nhapDongCung, gieoNhap, THU_MUC_DONG_CUNG_38864C8, THU_MUC_DONG_CUNG_C05A07A, THU_MUC_DONG_CUNG_454E512, THU_MUC_DONG_CUNG_0519921, THU_MUC_DONG_CUNG_71A17E0, THU_MUC_DONG_CUNG_B5BF024, THU_MUC_DONG_CUNG_8BAEF5E, THU_MUC_DONG_CUNG_BF788F5, THU_MUC_DONG_CUNG_5174A56, THU_MUC_DONG_CUNG_EC27049, THU_MUC_DONG_CUNG_16EED39, THU_MUC_DONG_CUNG_LO11 } = await import('./fixtures/ho-so/nhap-dong-cung.mjs');
 const C = require('../lib/ho-so/cong-ranh-gioi.js');
 const S = require('../lib/so-tay.js');
 let pass = 0; let fail = 0;
@@ -274,6 +274,25 @@ const muc = (b, id) => [...(b.dong8 || []), ...(b.dieuKienNut || [])].find((x) =
   check('21e 442199: .94 «Chuỗi hạt khác» tới được (câu «tương tự» của anh em + ứng viên tên chung ẑẑẑ)', !r42.loi.includes('cong2-dong-khong-toi-duoc:44219994'), r42.loi.slice(0, 5));
   const r81 = C.kiemRanhGioi('681140', nhapDongCung('681140', THU_MUC_DONG_CUNG_16EED39), { cong: [2] });
   check('21f 681140: .21 «Gạch lát nền» tới được khi trả lời «tương tự = có» (cảnh báo cong2-toi-khi-tuong-tu)', !r81.loi.includes('cong2-dong-khong-toi-duoc:68114021') && r81.canhBao.includes('cong2-toi-khi-tuong-tu:68114021'), r81.loi.slice(0, 5));
+}
+// Lô 11: che cụm đọc nhầm, giá trị cha, phạm vi «Loại khác»/xxxx.00, lỗ của biểu, công dụng chung có anh em cụ thể hơn.
+{
+  const TV = require('../lib/tu-vung.js'); const DK = require('../lib/dieu-kien-so.js');
+  const doc = (t) => TV.docGiaTri('loaiCongTac', t);
+  check('22a cumChanDoc: «micro switch»/«công tắc hành trình» không đọc thành NGAT_SOC_DONG (tầng 8536503 «công tắc micro» = microphone switch)', doc('Công tắc micro (micro switch) dùng cho máy giặt').trangThai === 'CHUA_BIET' && doc('công tắc hành trình').trangThai === 'CHUA_BIET' && doc('Công tắc micro cho bộ đàm').giaTri === 'NGAT_SOC_DONG', [doc('Công tắc micro (micro switch) dùng cho máy giặt'), doc('Công tắc micro cho bộ đàm')]);
+  const so = (dk, g) => DK.danhGiaDieuKien({ fact: 'loaiSoiDet', op: 'TRONG', value: dk }, { fact: 'loaiSoiDet', giaTri: g }).trangThai;
+  check('22b giaTriCha: điều kiện NHAN_TAO nhận SOI_TONG_HOP (THOẢ); dữ kiện NHAN_TAO so với [SOI_TONG_HOP] là CHƯA BIẾT', so(['NHAN_TAO'], 'SOI_TONG_HOP') === 'THOA' && so(['SOI_TONG_HOP'], 'NHAN_TAO') === 'CHUA_BIET', [so(['NHAN_TAO'], 'SOI_TONG_HOP'), so(['SOI_TONG_HOP'], 'NHAN_TAO')]);
+  for (const [pn6, mo] of [['030749', 'phạm vi «Loại khác» trích chú giải nhóm 03.07'], ['480100', 'phạm vi khai trên nút nhóm 4801 (Chú giải 4 Chương 48)'], ['321290', '.19 tới được nhờ ứng viên «sản xuất sơn ẑẑẑ"']]) {
+    const r = C.kiemRanhGioi(pn6, nhapDongCung(pn6, THU_MUC_DONG_CUNG_LO11), { cong: [0, 1, 2, 3] });
+    check(`22c ${pn6} xanh: ${mo}`, r.hopLe === true && !r.dung.length, r.loi.slice(0, 5));
+  }
+  const b10 = nhapDongCung('210690', THU_MUC_DONG_CUNG_LO11);
+  const r10 = C.kiemRanhGioi('210690', b10, { cong: [0, 1] });
+  check('22d 210690 loBieu: tầng r2701/r2704 không có con nhận hàng cho đồ uống không cồn ⇒ cảnh báo cong1-lo-bieu, không lỗi', r10.hopLe === true && r10.canhBao.some((c) => c.startsWith('cong1-lo-bieu:210690~r2701')), r10.loi.slice(0, 5));
+  const r10b = C.kiemRanhGioi('210690', { ...b10, loBieu: undefined }, { cong: [1] });
+  check('22e bỏ loBieu ⇒ lại cong1-khong-phu-kin (khai mới gỡ, không tự bỏ qua)', r10b.loi.some((l) => l.startsWith('cong1-khong-phu-kin:210690~r2701')), r10b.loi.slice(0, 3));
+  const r10c = C.kiemRanhGioi('210690', { ...b10, loBieu: [{ tang: '210690~r2701', lyDo: 'ngắn' }] }, { cong: [0] });
+  check('22f loBieu thiếu lý do ⇒ cổng 0 đỏ', r10c.loi.some((l) => l.startsWith('cong0-lo-bieu-thieu-ly-do')), r10c.loi);
 }
 console.log(`\n${pass} pass, ${fail} fail`);
 process.exit(fail ? 1 : 0);

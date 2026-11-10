@@ -22,6 +22,10 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Túi khí an toàn lắp với hệ thống bơm phồng"
+        },
+        {
+          "fact": "laBoPhan",
+          "op": "KHONG"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -60,9 +64,9 @@
       "ghiChu": "tax.87089590 \"Bộ phận\" ⇒ laBoPhan CO (bộ phận của túi khí, theo tên phân nhóm 870895 \"Túi khí an toàn lắp với hệ thống bơm phồng; bộ phận của nó\")"
     },
     {
-      "ma": "870895",
-      "loai": "DUNG",
-      "ghiChu": "[BỘ PHẬN CỦA NÓ] Dòng .90 «Bộ phận» nằm dưới phân nhóm «Túi khí…; bộ phận của nó», tức bộ phận CỦA TÚI KHÍ, nhưng chữ của chính dòng chỉ có «Bộ phận» nên spec chỉ ghi «là bộ phận». Túi khí (cũng là bộ phận của xe) thoả cả .10 lẫn .90. Ngoài ra tên .10 quá dài, bộ đọc cắt ở chữ «lắp». CẦN: cho mục «Bộ phận» trơn trích tên tầng tổ tiên + luật «hàng không là bộ phận của chính nó» (Claude làm). — Claude 07/11/2026."
+      "ma": "87089510",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87089510 «Túi khí an toàn lắp với hệ thống bơm phồng» — hàng hoàn chỉnh, anh em của .90 «Bộ phận» (bộ phận CỦA túi khí) ⇒ thêm laBoPhan KHONG (căn cứ cấu trúc, cong3-khong-bo-phan-tu-anh-em). Claude 10/11/2026 (#1109, lô 11): hết DỪNG."
     }
   ]
 }

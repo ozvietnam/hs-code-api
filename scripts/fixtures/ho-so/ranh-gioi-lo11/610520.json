@@ -1,0 +1,75 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "610520",
+  "nhom": "6105",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1618#soan-610520",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "610520",
+      "nguon": "tieuDe.610520",
+      "trich": "Từ sợi nhân tạo",
+      "dieuKienSo": [
+        {
+          "fact": "loaiSoiDet",
+          "op": "TRONG",
+          "value": [
+            "NHAN_TAO"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "61052010",
+      "nguon": "tax.61052010",
+      "trich": "61052010 - - Từ sợi tổng hợp",
+      "dieuKienSo": [
+        {
+          "fact": "loaiSoiDet",
+          "op": "TRONG",
+          "value": [
+            "SOI_TONG_HOP"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "61052020",
+      "nguon": "tax.61052020",
+      "trich": "61052020 - - Từ sợi tái tạo",
+      "dieuKienSo": [
+        {
+          "fact": "loaiSoiDet",
+          "op": "TRONG",
+          "value": [
+            "SOI_TAI_TAO"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "610520",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude (#1109): phạm vi phân nhóm dieuKienNut[610520] theo tieuDe.610520 \"Từ sợi nhân tạo\" — vector ngoài phạm vi (cổng 1 cũ báo hở) thuộc phân nhóm khác, không phải lỗ hổng."
+    },
+    {
+      "ma": "610520",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude (#1109): hết DỪNG (10/11, lô 11). Từ vựng @2 loaiSoiDet thêm giaTriCha {NHAN_TAO: [SOI_TONG_HOP, SOI_TAI_TAO]}: điều kiện NHAN_TAO nhận hai giá trị con; hàng ghi chung «sợi nhân tạo» so với dòng .10/.20 là CHƯA BIẾT (lúc chạy hỏi) — cổng 1 cảnh báo cong1-ten-da-nghia, không còn lỗ hổng."
+    }
+  ]
+}

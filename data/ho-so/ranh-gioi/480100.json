@@ -13,6 +13,49 @@
   "duyet": null,
   "dieuKienNut": [
     {
+      "id": "4801",
+      "nguon": "ch48.chuong",
+      "trich": "(a) ở dạng dải hoặc dạng cuộn có chiều rộng lớn hơn 28 cm; hoặc (b) ở dạng tờ hình chữ nhật (kể cả hình vuông) với một chiều lớn hơn 28 cm và chiều khác lớn hơn 15 cm ở dạng không gấp",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "dangCuon",
+                "op": "CO"
+              },
+              {
+                "fact": "chieuRong",
+                "op": ">",
+                "value": 28,
+                "donVi": "cm"
+              }
+            ],
+            [
+              {
+                "fact": "dangToChuNhat",
+                "op": "CO"
+              },
+              {
+                "fact": "motChieuTo",
+                "op": ">",
+                "value": 28,
+                "donVi": "cm"
+              },
+              {
+                "fact": "chieuKiaTo",
+                "op": ">",
+                "value": 15,
+                "donVi": "cm"
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
       "id": "4801001",
       "nguon": "tieuDe.4801001",
       "trich": "4801001 Có định lượng không quá 55 g/m2",
@@ -107,10 +150,6 @@
           "op": ">",
           "value": 15,
           "donVi": "cm"
-        },
-        {
-          "fact": "daGap",
-          "op": "KHONG"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -135,10 +174,6 @@
           "op": ">",
           "value": 15,
           "donVi": "cm"
-        },
-        {
-          "fact": "daGap",
-          "op": "KHONG"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -208,10 +243,6 @@
           "op": ">",
           "value": 15,
           "donVi": "cm"
-        },
-        {
-          "fact": "daGap",
-          "op": "KHONG"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -236,13 +267,67 @@
           "op": ">",
           "value": 15,
           "donVi": "cm"
-        },
-        {
-          "fact": "daGap",
-          "op": "KHONG"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "48010011",
+        "48010013"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1, Claude 10/11/2026): \"Ở dạng cuộn\" ↔ \"Ở dạng tờ, hình vuông hoặc hình chữ nhật\" — Chú giải 4 Chương 48 tách hai dạng: (a) dạng dải hoặc dạng cuộn, (b) dạng tờ hình chữ nhật; một tấm giấy in báo ở dạng cuộn thì không ở dạng tờ."
+    },
+    {
+      "cap": [
+        "48010011",
+        "48010014"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1, Claude 10/11/2026): \"Ở dạng cuộn\" ↔ \"Ở dạng tờ, hình vuông hoặc hình chữ nhật\" — Chú giải 4 Chương 48 tách hai dạng: (a) dạng dải hoặc dạng cuộn, (b) dạng tờ hình chữ nhật; một tấm giấy in báo ở dạng cuộn thì không ở dạng tờ."
+    },
+    {
+      "cap": [
+        "48010012",
+        "48010013"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1, Claude 10/11/2026): \"Ở dạng cuộn\" ↔ \"Ở dạng tờ, hình vuông hoặc hình chữ nhật\" — Chú giải 4 Chương 48 tách hai dạng: (a) dạng dải hoặc dạng cuộn, (b) dạng tờ hình chữ nhật; một tấm giấy in báo ở dạng cuộn thì không ở dạng tờ."
+    },
+    {
+      "cap": [
+        "48010012",
+        "48010014"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1, Claude 10/11/2026): \"Ở dạng cuộn\" ↔ \"Ở dạng tờ, hình vuông hoặc hình chữ nhật\" — Chú giải 4 Chương 48 tách hai dạng: (a) dạng dải hoặc dạng cuộn, (b) dạng tờ hình chữ nhật; một tấm giấy in báo ở dạng cuộn thì không ở dạng tờ."
+    },
+    {
+      "cap": [
+        "48010021",
+        "48010023"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1, Claude 10/11/2026): \"Ở dạng cuộn\" ↔ \"Ở dạng tờ, hình vuông hoặc hình chữ nhật\" — Chú giải 4 Chương 48 tách hai dạng: (a) dạng dải hoặc dạng cuộn, (b) dạng tờ hình chữ nhật; một tấm giấy in báo ở dạng cuộn thì không ở dạng tờ."
+    },
+    {
+      "cap": [
+        "48010021",
+        "48010024"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1, Claude 10/11/2026): \"Ở dạng cuộn\" ↔ \"Ở dạng tờ, hình vuông hoặc hình chữ nhật\" — Chú giải 4 Chương 48 tách hai dạng: (a) dạng dải hoặc dạng cuộn, (b) dạng tờ hình chữ nhật; một tấm giấy in báo ở dạng cuộn thì không ở dạng tờ."
+    },
+    {
+      "cap": [
+        "48010022",
+        "48010023"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1, Claude 10/11/2026): \"Ở dạng cuộn\" ↔ \"Ở dạng tờ, hình vuông hoặc hình chữ nhật\" — Chú giải 4 Chương 48 tách hai dạng: (a) dạng dải hoặc dạng cuộn, (b) dạng tờ hình chữ nhật; một tấm giấy in báo ở dạng cuộn thì không ở dạng tờ."
+    },
+    {
+      "cap": [
+        "48010022",
+        "48010024"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1, Claude 10/11/2026): \"Ở dạng cuộn\" ↔ \"Ở dạng tờ, hình vuông hoặc hình chữ nhật\" — Chú giải 4 Chương 48 tách hai dạng: (a) dạng dải hoặc dạng cuộn, (b) dạng tờ hình chữ nhật; một tấm giấy in báo ở dạng cuộn thì không ở dạng tờ."
     }
   ],
   "ghiChuSoan": [
@@ -254,27 +339,51 @@
     {
       "ma": "48010013",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.48010013 \"Ở dạng tờ, hình vuông hoặc hình chữ nhật, có một chiều trên 28 cm nhưng không quá 36 cm, và chiều kia trên 15 cm ở dạng không gấp\" ⇒ dangToChuNhat CO + motChieuTo (trên 28 cm nhưng không quá 36 cm) + chieuKiaTo > 15 cm + daGap KHONG (\"ở dạng không gấp\"); biên đúng chữ, đơn vị cm như chữ biểu"
+      "ghiChu": "tax.48010013 \"Ở dạng tờ, hình vuông hoặc hình chữ nhật, có một chiều trên 28 cm nhưng không quá 36 cm, và chiều kia trên 15 cm ở dạng không gấp\" ⇒ dangToChuNhat CO + motChieuTo (trên 28 cm nhưng không quá 36 cm) + chieuKiaTo > 15 cm; biên đúng chữ, đơn vị cm như chữ biểu"
     },
     {
       "ma": "48010014",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.48010014 \"Ở dạng tờ, hình vuông hoặc hình chữ nhật, có một chiều trên 36 cm, và chiều kia trên 15 cm ở dạng không gấp\" ⇒ dangToChuNhat CO + motChieuTo (trên 36 cm) + chieuKiaTo > 15 cm + daGap KHONG (\"ở dạng không gấp\"); biên đúng chữ, đơn vị cm như chữ biểu"
+      "ghiChu": "tax.48010014 \"Ở dạng tờ, hình vuông hoặc hình chữ nhật, có một chiều trên 36 cm, và chiều kia trên 15 cm ở dạng không gấp\" ⇒ dangToChuNhat CO + motChieuTo (trên 36 cm) + chieuKiaTo > 15 cm; biên đúng chữ, đơn vị cm như chữ biểu"
     },
     {
       "ma": "48010023",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.48010023 \"Ở dạng tờ, hình vuông hoặc hình chữ nhật, có một chiều trên 28 cm nhưng không quá 36 cm, và chiều kia trên 15 cm ở dạng không gấp\" ⇒ dangToChuNhat CO + motChieuTo (trên 28 cm nhưng không quá 36 cm) + chieuKiaTo > 15 cm + daGap KHONG (\"ở dạng không gấp\"); biên đúng chữ, đơn vị cm như chữ biểu"
+      "ghiChu": "tax.48010023 \"Ở dạng tờ, hình vuông hoặc hình chữ nhật, có một chiều trên 28 cm nhưng không quá 36 cm, và chiều kia trên 15 cm ở dạng không gấp\" ⇒ dangToChuNhat CO + motChieuTo (trên 28 cm nhưng không quá 36 cm) + chieuKiaTo > 15 cm; biên đúng chữ, đơn vị cm như chữ biểu"
     },
     {
       "ma": "48010024",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.48010024 \"Ở dạng tờ, hình vuông hoặc hình chữ nhật, có một chiều trên 36 cm, và chiều kia trên 15 cm ở dạng không gấp\" ⇒ dangToChuNhat CO + motChieuTo (trên 36 cm) + chieuKiaTo > 15 cm + daGap KHONG (\"ở dạng không gấp\"); biên đúng chữ, đơn vị cm như chữ biểu"
+      "ghiChu": "tax.48010024 \"Ở dạng tờ, hình vuông hoặc hình chữ nhật, có một chiều trên 36 cm, và chiều kia trên 15 cm ở dạng không gấp\" ⇒ dangToChuNhat CO + motChieuTo (trên 36 cm) + chieuKiaTo > 15 cm; biên đúng chữ, đơn vị cm như chữ biểu"
     },
     {
       "ma": "480100",
-      "loai": "DUNG",
-      "ghiChu": "[PHẠM VI CHƯA BIỂU DIỄN ĐƯỢC] Phạm vi «giấy in báo» nằm ở Chú giải 4 Chương 48 (cuộn rộng > 28 cm; tờ > 28 × 15 cm chưa gấp), nhưng phân nhóm 4801.00 có nút cây là cấp nhóm nên chưa khai được phạm vi; thêm cặp «dạng cuộn» ↔ «dạng tờ» bị coi là chồng (hai đặc điểm loại trừ nhau). CẦN: phạm vi cho phân nhóm xxxx.00 (Claude làm) + Q1. — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude (#1109): hết DỪNG (10/11, lô 11). (1) Phạm vi: 4801.00 là phân nhóm duy nhất của nhóm, gốc cây là nút nhóm 4801 ⇒ khai dieuKienNut[\"4801\"] (bộ máy nhận phạm vi trên nút nhóm khi phân nhóm là xxxx.00) trích Chú giải 4 Chương 48: dạng cuộn rộng > 28 cm HOẶC dạng tờ chữ nhật một chiều > 28 cm và chiều kia > 15 cm. (2) «ở dạng không gấp» là CÁCH ĐO kích thước (đo khi trải phẳng, EN «in the unfolded state»), không phải điều kiện hàng không được gấp ⇒ bỏ daGap KHONG ở .13/.14/.23/.24 (tờ gấp vẫn thuộc 4801 nếu kích thước trải phẳng đạt). (3) Cặp «dạng cuộn» ↔ «dạng tờ» khai chongLanVanBan (Q1): Chú giải 4 tách (a)/(b), không có hàng vừa cuộn vừa tờ."
+    },
+    {
+      "ma": "48010013",
+      "loai": "BO_VE",
+      "ve": "ở dạng không gấp",
+      "lyDo": "Vế nêu cách đo kích thước (trải phẳng, Chú giải 4 Chương 48 «ở dạng không gấp», EN «in the unfolded state»), không phải đặc điểm phân biệt hàng; kích thước đã số hoá ở motChieuTo/chieuKiaTo."
+    },
+    {
+      "ma": "48010014",
+      "loai": "BO_VE",
+      "ve": "ở dạng không gấp",
+      "lyDo": "Như 48010013: vế nêu cách đo kích thước (trải phẳng), không phải đặc điểm phân biệt hàng."
+    },
+    {
+      "ma": "48010023",
+      "loai": "BO_VE",
+      "ve": "ở dạng không gấp",
+      "lyDo": "Như 48010013: vế nêu cách đo kích thước (trải phẳng), không phải đặc điểm phân biệt hàng."
+    },
+    {
+      "ma": "48010024",
+      "loai": "BO_VE",
+      "ve": "ở dạng không gấp",
+      "lyDo": "Như 48010013: vế nêu cách đo kích thước (trải phẳng), không phải đặc điểm phân biệt hàng."
     }
   ]
 }

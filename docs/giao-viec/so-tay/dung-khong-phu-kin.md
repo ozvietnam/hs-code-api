@@ -1,6 +1,6 @@
 # Phân nhóm 6 số (PN6) đang DỪNG — vướng gì, cần gì
 
-Cập nhật 07/11/2026 (Claude, #1109). Thay toàn bộ bản cũ. Mỗi PN6 DỪNG có **đúng một** ghi chú `DUNG` trong
+Cập nhật 10/11/2026 (Claude, #1109). Thay toàn bộ bản cũ. Mỗi PN6 DỪNG có **đúng một** ghi chú `DUNG` trong
 `docs/giao-viec/so-tay/spec/<pn6>.json`, cùng khuôn: **[LOẠI] vướng gì — CẦN: gỡ bằng gì — (LÚC CHẠY: hệ thống làm gì trong lúc chờ)**.
 PN6 DỪNG không được dùng lúc chạy; lúc chạy chỉ dùng bản đã duyệt.
 
@@ -8,11 +8,11 @@ PN6 DỪNG không được dùng lúc chạy; lúc chạy chỉ dùng bản đã
 
 | | Số PN6 |
 |---|---|
-| DỪNG hiện tại | **14** |
+| DỪNG hiện tại | **6** |
 | Chờ oz-wiki: Q2 (văn bản ô tô) | 5 |
 | Chương 98 — Claude đang soát bản nháp | 0 |
 | Q1 còn lại — Claude xác minh / sửa bộ máy | 0 |
-| Claude làm tiếp (công cụ / soát lại) | 9 |
+| Claude làm tiếp (công cụ / soát lại) | 1 |
 
 ## Việc cần anh quyết
 
@@ -54,16 +54,11 @@ tuỳ chọn và «…, và các cầu bị động» là tên đầu liên hợ
 có căn cứ mã tương ứng (r19765–19767; dải r19818–19848); tiêu đề không mã đứng trước dòng lá đầu của phân nhóm 98 vào cây, tiêu đề
 phủ trọn phân nhóm là tên phân nhóm. Chương 98 hết DỪNG.
 
-## Việc Claude tự làm tiếp (công cụ)
+## Việc Claude tự làm tiếp
 
 | Việc | PN6 |
 |---|---|
-| Từ vựng khai «giá trị chung ⊃ giá trị riêng» (sợi nhân tạo ⊃ tổng hợp, tái tạo) — đổi cả cách so lúc chạy | 610520 |
-| Cơ chế đính chính khoá @1 đọc sai nghĩa («micro switch») | 853650 |
-| «Bộ phận» trơn = bộ phận của tầng trên; luật «hàng không là bộ phận của chính nó» | 870895, 870891 |
-| Soát lại spec (46 dòng; dòng «Của kính hiển vi…» ghi nhầm tên hàng thay vì dùng cho) — lô riêng | 848690 |
-| Phạm vi «phủ định phân nhóm anh em»; phạm vi cho phân nhóm xxxx.00 | 030749, 480100 |
-| Soát lại cả phân nhóm | 210690, 321290 |
+| Soát lại cả spec (31 dòng «bộ phận của máy X»: khoá dungCho/congDung trộn lẫn, cụm trục giữa các tầng máy) — lô riêng | 848690 |
 
 ## Bảng toàn bộ PN6 DỪNG
 
@@ -75,21 +70,8 @@ phủ trọn phân nhóm là tên phân nhóm. Chương 98 hết DỪNG.
 | 870441 | Khối lượng toàn bộ theo thiết kế (SEN) không quá 5 tấn | Dòng «Xe ba bánh» và các dòng «Ô tô …» (tải đông lạnh, pick-up, thu gom phế thải…) bị coi là chồng nhau vì máy chưa biết «ô tô» là xe từ bốn bánh trở lên. | Q2 |
 | 870451 | Khối lượng toàn bộ theo thiết kế (SEN) không quá 5 tấn | Dòng «Xe ba bánh» và các dòng «Ô tô …» (tải đông lạnh, pick-up, thu gom phế thải…) bị coi là chồng nhau vì máy chưa biết «ô tô» là xe từ bốn bánh trở lên. | Q2 |
 | 870460 | Loại khác, chỉ sử dụng động cơ điện để tạo động lực | Dòng «Xe ba bánh» và các dòng «Ô tô …» (tải đông lạnh, pick-up, thu gom phế thải…) bị coi là chồng nhau vì máy chưa biết «ô tô» là xe từ bốn bánh trở lên. | Q2 |
-| **GIÁ TRỊ CHUNG** | | | |
-| 610520 | Từ sợi nhân tạo | «Từ sợi nhân tạo» bao gồm «sợi tổng hợp» (.10) và «sợi tái tạo» (.20). Tờ khai ghi chung «sợi nhân tạo» bị coi là TRÁI cả hai dòng, đúng ra phải hỏi lại. | từ vựng khai giá trị chung ⊃ giá trị riêng (NHAN_TAO ⊃ SOI_TONG_HOP, SOI_TAI_TAO) để bộ so trả «chưa biết». Phạm vi phân nhóm đã khai (07/11). |
-| **TỪ VỰNG ĐỌC SAI NGHĨA** | | | |
-| 853650 | Thiết bị đóng ngắt mạch khác | Cổng đã xanh nhưng sai NGHĨA: khoá loaiCongTac đọc «micro switch» (công tắc hành trình, thuộc 8536.50.5x theo 4012/TB-TCHQ) thành «công tắc micro» của tầng 8536503. Khoá thuộc từ vựng @1 đang khoá cứng nên không sửa cách đọc được. | cơ chế đính chính khoá @1 có kiểm soát (Claude làm). |
-| **BỘ PHẬN CỦA NÓ** | | | |
-| 870891 | Két nước làm mát và bộ phận của chúng | Tầng 8708919 «Bộ phận» nằm dưới phân nhóm «Két nước làm mát và bộ phận của chúng», tức bộ phận CỦA KÉT NƯỚC, nhưng spec ghi «là bộ phận» (của xe) ⇒ két nước thoả cả tầng 8708911 lẫn 8708919. | như 870895 (Claude làm). |
-| 870895 | Túi khí an toàn lắp với hệ thống bơm phồng; bộ phận của nó | Dòng .90 «Bộ phận» nằm dưới phân nhóm «Túi khí…; bộ phận của nó», tức bộ phận CỦA TÚI KHÍ, nhưng chữ của chính dòng chỉ có «Bộ phận» nên spec chỉ ghi «là bộ phận». Túi khí (cũng là bộ phận của xe) thoả cả .10 lẫn .90. Ngoài ra tên .10 quá dài, bộ đọc cắt ở chữ «lắp». | cho mục «Bộ phận» trơn trích tên tầng tổ tiên + luật «hàng không là bộ phận của chính nó» (Claude làm). |
 | **GIỚI HẠN BỘ MÁY** | | | |
 | 848690 | Bộ phận và phụ kiện | Các dòng «Bộ phận kẹp dụng cụ…, dùng cho máy công cụ» lặp dưới các tầng về MÁY cụ thể (máy phun, máy cắt laser…); không vector nào vừa thoả tầng vừa thoả dòng. | Claude soát lại cách ghi tầng và dòng. |
-| **PHẠM VI CHƯA BIỂU DIỄN ĐƯỢC** | | | |
-| 030749 | Loại khác | Phân nhóm tên «Loại khác» (mực khô, muối, hun khói): phạm vi là PHỦ ĐỊNH các phân nhóm anh em 0307.42/0307.43, bộ máy chưa biểu diễn được ⇒ mực đông lạnh bị coi là hở. Ngoài ra hai tầng «Khô, muối hoặc ngâm nước muối» / «Hun khói» đang ghi tenLoai, phải đổi sang phuongPhapBaoQuan như 030742. | phạm vi «phủ định phân nhóm anh em» (Claude làm). |
-| 480100 | Giấy in báo, dạng cuộn hoặc tờ. | Phạm vi «giấy in báo» nằm ở Chú giải 4 Chương 48 (cuộn rộng > 28 cm; tờ > 28 × 15 cm chưa gấp), nhưng phân nhóm 4801.00 có nút cây là cấp nhóm nên chưa khai được phạm vi; thêm cặp «dạng cuộn» ↔ «dạng tờ» bị coi là chồng (hai đặc điểm loại trừ nhau). | phạm vi cho phân nhóm xxxx.00 (Claude làm) + Q1. |
-| **CẦN SOÁT LẠI** | | | |
-| 210690 | Loại khác | Còn ba vướng độc lập: (1) tên tầng/dòng là tiền tố của tên dòng con («Đậu phụ» ⊂ «Đậu phụ tươi»; «Thực phẩm bảo vệ sức khỏe» ⊂ «… từ sâm») ⇒ dòng «Loại khác» .19/.72 không tới được; (2) hai tầng không mã r2701/r2704 không có con «Loại khác»; (3) .91 «hỗn hợp hoá chất với thực phẩm… để chế biến thực phẩm» chồng trục với các dòng  | Claude soát lại cả phân nhóm. |
-| 321290 | Loại khác | Hai tầng gốc đều là vế GIỚI HẠN (môi trường phân tán / dạng lỏng hoặc nhão) nên chồng nhau, và dòng .19 không tới được. | Claude soát lại cách ghi hai tầng theo chữ biểu. |
 
 ## Đã gỡ trong #1109
 
@@ -110,6 +92,7 @@ phủ trọn phân nhóm là tên phân nhóm. Chương 98 hết DỪNG.
 | #1162 | Chương 98: 984934, 984935; sửa sót lô 6: 981820, 981100 | Vế tuỳ chọn «có hoặc không …» + tên đầu liên hợp; ghép nối tiếp ≥ 3 tầng; hiệu chỉnh gạch biểu có căn cứ mã tương ứng; tiêu đề trước dòng lá đầu; `maHsTuongUng` không tách đích lồng (981820 .31/.39); ghi chú THIEU_KHOA 981100 là phạm vi nhóm |
 | #1175 | Chồng lấn (Q1): 271012, 848180, 853690 | Luật «tên cụ thể dưới Loại khác thắng tầng chung»; khoá loaiPhaChe (271012); cụm trục 9 nhánh + khongCoHangThat (848180); «van nối có núm» vào khongPhaiPhuDinh |
 | #1176 | Bộ máy: 842490, 842199, 850790, 871690, 847790, 870600, 681140, 442199, 848620 | Giải chữ↔mã qua cây HS; đích lồng chỉ khi khác nhóm 4 số; cổng 1 «tên đa nghĩa»; cổng 2 trả lời «tương tự» khi kiểm tới được + ứng viên tên chung ẑẑẑ; Q1 871690/848620 |
+| #1178 | Lô 11: 853650, 610520, 870895, 870891, 030749, 480100, 210690, 321290 | Từ vựng @2 `cumChanDoc` (che «micro switch») và `giaTriCha`; phạm vi «Loại khác» từ chú giải nhóm; phạm vi trên nút nhóm cho xxxx.00 (4801.00); `loBieu` — lỗ của chính biểu (210690 r2701/r2704); ứng viên «công dụng chung ẑẑẑ»; Q1 cho cặp cuộn↔tờ, (A)↔(C) 32.12, .91↔.92–.97 21.06 |
 
 Bài học: nhiều ghi chú cũ ghi «chồng lấn giả» hoặc «không sửa được», nhưng thật ra spec sót tên hoặc sót vế (170290 «trừ
 mantoza», 320890 thiếu tên «Sơn», 670290 vật liệu ghi thành tên hàng). Trước khi kết luận DỪNG, soát xem chữ biểu đã tự

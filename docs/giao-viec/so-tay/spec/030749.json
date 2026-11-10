@@ -29,40 +29,48 @@
     }
   },
   "dieuKienNut": {
-    "0307492": {
+    "030749": {
+      "nguon": "nhom0307.nhom",
+      "trich": "làm khô, muối hoặc ngâm nước muối…Động vật thân mềm đã hun khói",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
           "value": [
-            "Khô",
-            "muối",
-            "ngâm nước muối"
+            "KHO_MUOI",
+            "HUN_KHOI"
+          ]
+        }
+      ]
+    },
+    "0307492": {
+      "nguon": "tieuDe.0307492",
+      "trich": "Khô, muối hoặc ngâm nước muối",
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "KHO_MUOI"
           ]
         }
       ]
     },
     "0307493": {
+      "nguon": "tieuDe.0307493",
+      "trich": "Hun khói",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Hun khói"
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "HUN_KHOI"
+          ]
         }
       ]
     }
   },
   "ghiChuSoan": [
-    {
-      "ma": "0307492",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.0307492 \"Khô, muối hoặc ngâm nước muối\" ⇒ tenLoai [\"Khô\",\"muối\",\"ngâm nước muối\"] — chữ Anh \"dried, salted or in brine\" là ba hàng thay thế, mảng = hoặc (LUAT-CHUNG bảng 1)"
-    },
-    {
-      "ma": "0307493",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.0307493 \"Hun khói\" ⇒ tenLoai \"Hun khói\" nguyên văn"
-    },
     {
       "ma": "03074921",
       "loai": "QUYET_DINH",
@@ -74,9 +82,19 @@
       "ghiChu": "tax.03074931 \"Mực nang (…) và mực ống (…)\" ⇒ tenLoai [\"Mực nang\",\"mực ống\"] như 03074921"
     },
     {
+      "ma": "0307492",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.0307492 «Khô, muối hoặc ngâm nước muối» là cách bảo quản (như 030742 «Sống»/«Tươi hoặc ướp lạnh») ⇒ phuongPhapBaoQuan TRONG [KHO_MUOI] (nhanVi tu-vung@2 «khô, muối hoặc ngâm nước muối»), không phải tenLoai."
+    },
+    {
+      "ma": "0307493",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.0307493 «Hun khói» ⇒ phuongPhapBaoQuan TRONG [HUN_KHOI]."
+    },
+    {
       "ma": "030749",
-      "loai": "DUNG",
-      "ghiChu": "[PHẠM VI CHƯA BIỂU DIỄN ĐƯỢC] Phân nhóm tên «Loại khác» (mực khô, muối, hun khói): phạm vi là PHỦ ĐỊNH các phân nhóm anh em 0307.42/0307.43, bộ máy chưa biểu diễn được ⇒ mực đông lạnh bị coi là hở. Ngoài ra hai tầng «Khô, muối hoặc ngâm nước muối» / «Hun khói» đang ghi tenLoai, phải đổi sang phuongPhapBaoQuan như 030742. CẦN: phạm vi «phủ định phân nhóm anh em» (Claude làm). — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude (#1109): hết DỪNG (10/11, lô 11). Phân nhóm «Loại khác» của 0307.4 (mực nang, mực ống) đứng sau 0307.42 «Sống, tươi hoặc ướp lạnh» và 0307.43 «Đông lạnh». Chú giải nhóm 03.07 nêu đủ cách bảo quản của nhóm: sống, tươi, ướp lạnh, đông lạnh, làm khô, muối hoặc ngâm nước muối (1) và hun khói (2); cách khác (luộc, ngâm dấm) sang 16.05. Trừ ba cách của hai phân nhóm anh em, phần còn lại đúng bằng hai tầng con ⇒ phạm vi phuongPhapBaoQuan TRONG [KHO_MUOI, HUN_KHOI] trích nhom0307.nhom. Mực đông lạnh không còn là lỗ hổng."
     }
   ]
 }
