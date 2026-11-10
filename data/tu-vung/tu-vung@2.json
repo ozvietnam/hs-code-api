@@ -5528,7 +5528,13 @@
     "zh": "纺织品主要由哪种纤维制成（棉；其他植物纤维如黄麻、亚麻、苎麻；羊毛/动物细毛；蚕丝；合成纤维如涤纶、尼龙；人造纤维如粘胶）？"
    },
    "ghiChu": "Loại xơ/sợi dệt của hàng dệt — chữ biểu \"Từ bông\" (6306.29.10, 6306.19.20, 6306.40.10), \"Từ sợi dệt thực vật thuộc nhóm 53.05\" (6306.19.10), \"Pha chủ yếu hoặc pha duy nhất với lông cừu hoặc lông động vật loại mịn\" (5515.99.10) — lát 2, đề xuất de-xuat-khoa-lat-2.md (loaiXoPha + studio-loop loaiSoiDet, gộp một khoá). \"Từ X\" ở chương 50–63 là vật liệu dệt CHIẾM TRỘI theo Chú giải 2 Phần XI: hàng pha (\"cotton 80% polyester 20%\") đọc được hai giá trị ⇒ CHUA_BIET + ungVien, người khai chốt theo tỉ trọng. Vật liệu không phải xơ dệt (bông thủy tinh, bông khoáng, bông gòn/tai/hoa; da lông cừu là da) ⇒ không đọc. Sợi đàn hồi / sợi cao su là trục CHỨA (tinhDanHoi), không nằm ở đây. Khoá @1 chatLieu (\"vải dệt\" chung) giữ nguyên. + NHAN_TAO (06/11): chữ biểu 6207.99.10 \"Từ sợi nhân tạo\", 5803.00.20 \"Từ xơ nhân tạo\" — \"nhân tạo\" = tổng hợp + tái tạo (chú giải Phần XI chú 1). + LONG_DONG_VAT_THO (06/11): chữ biểu 5102.20.00 \"Lông động vật loại thô\", 5113.00.00 \"Vải dệt thoi từ sợi lông động vật loại thô …\". Đề xuất loaiSoiDet (5 ghi chú). Đề xuất chatLieu \"bông\"/\"xơ đay\" cho 5703.90/5705.00 đã đọc được bằng loaiSoiDet BONG / SOI_THUC_VAT_KHAC. + LONG_DONG_VAT_THO đọc \"hoặc loại thô\" (06/11): (chữ biểu 5811.00.10, 5905.00.10 \"Từ lông cừu hoặc lông động vật loại mịn hoặc loại thô\" đọc ra hai ứng viên LEN_LONG_DONG_VAT_MIN và LONG_DONG_VAT_THO — dùng loaiSoiDet TRONG [cả hai]).",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "giaTriCha": {
+    "NHAN_TAO": [
+     "SOI_TONG_HOP",
+     "SOI_TAI_TAO"
+    ]
+   }
   },
   {
    "khoa": "doDay",
@@ -23230,6 +23236,13 @@
    "or less",
    "and below",
    "and lower"
+  ]
+ },
+ "cumChanDoc": {
+  "loaiCongTac": [
+   "công\\s+tắc\\s+micro\\s*\\(?\\s*micro\\s*-?\\s*switch\\s*\\)?",
+   "micro\\s*-?\\s*switch(?:es)?",
+   "công\\s+tắc\\s+hành\\s+trình"
   ]
  }
 }

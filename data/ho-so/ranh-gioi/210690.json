@@ -602,6 +602,99 @@
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "21069071",
+        "21069073"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1, Claude 10/11/2026): \"Thực phẩm bảo vệ sức khỏe từ sâm\" ↔ \"Hỗn hợp vi chất để bổ sung vào thực phẩm\" — thực phẩm bảo vệ sức khỏe là thành phẩm dùng trực tiếp; hỗn hợp vi chất (premix) là nguyên liệu trộn vào thực phẩm khác khi chế biến."
+    },
+    {
+      "cap": [
+        "21069072",
+        "21069073"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1, Claude 10/11/2026): \"Thực phẩm bảo vệ sức khỏe khác\" ↔ \"Hỗn hợp vi chất để bổ sung vào thực phẩm\" — thực phẩm bảo vệ sức khỏe là thành phẩm dùng trực tiếp; hỗn hợp vi chất (premix) là nguyên liệu trộn vào thực phẩm khác khi chế biến."
+    }
+  ],
+  "loBieu": [
+    {
+      "tang": "210690~r2701",
+      "lyDo": "Tầng «Chế phẩm được sử dụng làm nguyên liệu thô để sản xuất chất cô đặc tổng hợp» (dưới 2106906 «chế phẩm chứa cồn … để chế biến hoặc sản xuất đồ uống») chỉ có hai con «Loại sử dụng để sản xuất đồ uống có cồn, dạng lỏng» (.61) và «…, dạng khác» (.62), không có «Loại khác» (AHTN 2022 cùng cấu trúc). Chế phẩm thuộc tầng mà dùng cho đồ uống KHÔNG cồn không có dòng trong tầng; «Loại khác» .69 trần của 2106906 phủ định cả tầng. Lúc chạy hỏi người, không tự chọn dòng."
+    },
+    {
+      "tang": "210690~r2704",
+      "lyDo": "Tầng «Chất cô đặc tổng hợp dùng để pha đơn giản với nước làm đồ uống» (dưới 2106906) chỉ có hai con «Loại sử dụng để sản xuất đồ uống có cồn, dạng lỏng» (.64) và «…, dạng khác» (.65), không có «Loại khác». Chất cô đặc chứa cồn pha ra đồ uống KHÔNG cồn không có dòng trong tầng; «Loại khác» .69 trần phủ định cả tầng. Lúc chạy hỏi người, không tự chọn dòng."
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "21069091",
+        "21069092",
+        "21069093",
+        "21069095",
+        "21069096",
+        "21069097"
+      ],
+      "truc": {
+        "21069091": "CONG_DUNG",
+        "21069092": "TEN_LOAI",
+        "21069093": "TEN_LOAI",
+        "21069095": "TEN_LOAI",
+        "21069096": "TEN_LOAI",
+        "21069097": "TEN_LOAI"
+      },
+      "cauHoiPhanBiet": "Hàng này là hỗn hợp hoá chất với thực phẩm (hoặc chất dinh dưỡng) dùng để chế biến thực phẩm khác (21069091), hay là một trong các hàng có tên: xirô đã pha màu hoặc hương liệu (21069092), nước cốt dừa (21069093), seri kaya (21069095), sản phẩm dinh dưỡng y tế (21069096), tempeh (21069097)?",
+      "trich": {
+        "21069091": "Hỗn hợp khác của hóa chất với thực phẩm hoặc các chất khác có giá trị dinh dưỡng, dùng để chế biến thực phẩm",
+        "21069092": "Xirô đã pha màu hoặc hương liệu",
+        "21069093": "Nước cốt dừa, đã hoặc chưa làm thành bột",
+        "21069095": "Seri kaya",
+        "21069096": "Sản phẩm dinh dưỡng y tế khác",
+        "21069097": "Tempeh"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "21069091",
+            "21069092"
+          ],
+          "khongCoHangThat": "Không có hàng thật thoả cả hai: xirô pha màu/hương liệu là thực phẩm (đồ uống pha, rưới), không phải hỗn hợp hoá chất với thực phẩm dùng làm chất xử lý khi chế biến thực phẩm khác (Q1, Claude 10/11/2026)."
+        },
+        {
+          "cap": [
+            "21069091",
+            "21069093"
+          ],
+          "khongCoHangThat": "Không có hàng thật thoả cả hai: nước cốt dừa là sản phẩm ép từ cùi dừa, không phải hỗn hợp hoá chất với thực phẩm (Q1, Claude 10/11/2026)."
+        },
+        {
+          "cap": [
+            "21069091",
+            "21069095"
+          ],
+          "khongCoHangThat": "Không có hàng thật thoả cả hai: seri kaya là mứt dừa trứng ăn trực tiếp, không phải hỗn hợp hoá chất dùng để chế biến thực phẩm (Q1, Claude 10/11/2026)."
+        },
+        {
+          "cap": [
+            "21069091",
+            "21069096"
+          ],
+          "khongCoHangThat": "Không có hàng thật thoả cả hai: sản phẩm dinh dưỡng y tế dùng trực tiếp cho người bệnh, không phải chất dùng để chế biến thực phẩm khác (Q1, Claude 10/11/2026)."
+        },
+        {
+          "cap": [
+            "21069091",
+            "21069097"
+          ],
+          "khongCoHangThat": "Không có hàng thật thoả cả hai: tempeh là bánh đậu tương lên men ăn trực tiếp, không phải hỗn hợp hoá chất với thực phẩm (Q1, Claude 10/11/2026)."
+        }
+      ],
+      "phanXu": null
+    }
+  ],
   "ghiChuSoan": [
     {
       "ma": "2106901",
@@ -810,8 +903,8 @@
     },
     {
       "ma": "210690",
-      "loai": "DUNG",
-      "ghiChu": "[CẦN SOÁT LẠI] Còn ba vướng độc lập: (1) tên tầng/dòng là tiền tố của tên dòng con («Đậu phụ» ⊂ «Đậu phụ tươi»; «Thực phẩm bảo vệ sức khỏe» ⊂ «… từ sâm») ⇒ dòng «Loại khác» .19/.72 không tới được; (2) hai tầng không mã r2701/r2704 không có con «Loại khác»; (3) .91 «hỗn hợp hoá chất với thực phẩm… để chế biến thực phẩm» chồng trục với các dòng tên .92–.98, chưa có hàng thật cho mọi cặp. CẦN: Claude soát lại cả phân nhóm. — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude (#1109): hết DỪNG (10/11, lô 11). (1) Tiền tố tên («Đậu phụ» ⊂ «Đậu phụ tươi») đã được bộ máy «tên cụ thể hơn thắng» xử, .19/.72 tới được. (2) Hai tầng không mã r2701/r2704 chỉ có con «dùng sản xuất đồ uống có cồn», không có «Loại khác» ⇒ lỗ của chính biểu (AHTN cùng cấu trúc), khai loBieu: cổng 1 cảnh báo, lúc chạy hỏi người. (3) .91 (chia theo công dụng) ↔ .92/.93/.95/.96/.97 (chia theo tên) khai chongLanTruc, mọi cặp khongCoHangThat theo Q1; .71/.72 ↔ .73 khai chongLanVanBan theo Q1."
     }
   ]
 }

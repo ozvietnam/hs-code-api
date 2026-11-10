@@ -38,6 +38,9 @@ export const THU_MUC_DONG_CUNG_5174A56 = path.join(process.cwd(), 'scripts', 'fi
 export const THU_MUC_DONG_CUNG_EC27049 = path.join(process.cwd(), 'scripts', 'fixtures', 'ho-so', 'ranh-gioi-ec27049');
 // ranh-gioi-16eed39/ = bản sao nguyên văn tại commit 16eed39 (main sau #1172) — 853690, 930630 (tên cụ thể dưới «Loại khác»), 271012 trước lô 9; 842199, 870600, 442199, 681140 trước lô 10.
 export const THU_MUC_DONG_CUNG_16EED39 = path.join(process.cwd(), 'scripts', 'fixtures', 'ho-so', 'ranh-gioi-16eed39');
+// ranh-gioi-lo11/ = bản nháp SAU khi gỡ DỪNG lô 11 (#1109, 10/11/2026): 030749 (phạm vi «Loại khác» từ chú giải nhóm), 480100 (phạm vi
+// trên nút nhóm cho xxxx.00), 210690 (loBieu), 321290 (ứng viên công dụng chung ẑẑẑ), 610520 (giaTriCha).
+export const THU_MUC_DONG_CUNG_LO11 = path.join(process.cwd(), 'scripts', 'fixtures', 'ho-so', 'ranh-gioi-lo11');
 export const THU_MUC_DONG_CUNG_PR = path.join(process.cwd(), 'scripts', 'fixtures', 'ho-so', 'ranh-gioi-pr');
 // ranh-gioi-571d7a5/ = bản sao nguyên văn tại commit 571d7a5 (main sau #690) — 871410 dạng HOAC, 845290 (luật tên nguyên văn).
 // ranh-gioi-f457a19/ = bản sao nguyên văn tại commit f457a19 (main sau #697, trước soạn lại #699) — 841459 .10 và 950300 .91

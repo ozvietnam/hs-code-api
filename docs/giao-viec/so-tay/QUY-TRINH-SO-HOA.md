@@ -486,3 +486,20 @@ hoặc **sai trục** (670290 "Bằng vật liệu dệt" ghi thành tên hàng;
 - Ghi giá trị CHỮ theo đầu chung khi chữ biểu liệt kê bằng «hoặc» phần đuôi («máy phun bắn hơi nước hoặc cát …» ⇒ «máy phun bắn»);
   không tách thành mảnh cụt một âm tiết («cát») sai nghĩa.
 
+
+**Phạm vi «Loại khác», xxxx.00, lỗ của biểu, đọc nhầm khoá (10/11/2026, lô 11)**:
+- Phân nhóm tên «Loại khác» (0307.49, 3212.90) lấy phạm vi từ **chú giải NHÓM** (`nhomXXXX.nhom`) khi chú giải nêu đủ phạm vi nhóm:
+  phạm vi = phần chú giải trừ các phân nhóm anh em; QUYET_DINH ghi rõ phép trừ (030749: sống/tươi/đông lạnh thuộc 0307.42/.43 ⇒ còn
+  khô–muối–ngâm nước muối và hun khói).
+- Phân nhóm xxxx.00 (nhóm chỉ một phân nhóm — 4801.00) có gốc cây là NÚT NHÓM: khai phạm vi ở `dieuKienNut["<4 số>"]`
+  (480100: Chú giải 4 Chương 48). Chỉ lọc vector cổng 1, không vào sổ tay.
+- «ở dạng không gấp» (in the unfolded state) là cách ĐO kích thước, không phải điều kiện hàng không gấp ⇒ BO_VE có lý do.
+- **Lỗ của chính biểu** (`loBieu: [{tang, lyDo}]`, chỉ Claude/người soát khai): tầng có hàng thuộc tầng mà chữ các con hẹp hơn tầng,
+  không có «Loại khác» (210690 r2701/r2704 chỉ có con «dùng sản xuất đồ uống có cồn»). Cổng 1 hạ thành cảnh báo `cong1-lo-bieu`;
+  lúc chạy hàng ấy THIẾU (hỏi người), máy không tự chọn dòng. Thợ gặp lỗ thật ⇒ DỪNG.
+- Từ vựng @2 `cumChanDoc.<khoá>`: cụm che trước khi đọc giá trị (853650: «micro switch»/«công tắc hành trình» là công tắc hành
+  trình, không phải «công tắc micro» = microphone switch của 8536503). Khoá @1 không đổi.
+- Từ vựng @2 `giaTriCha` (610520: NHAN_TAO ⊃ SOI_TONG_HOP, SOI_TAI_TAO): điều kiện ghi cha nhận dữ kiện con; dữ kiện ghi cha so với
+  điều kiện chỉ ghi một phần con ⇒ CHƯA BIẾT (hỏi) — cổng 1 cảnh báo `cong1-ten-da-nghia`.
+- Ứng viên «<giá trị chung> ẑẑẑ» nay áp cả cho CÔNG DỤNG cùng khoá (tầng «sản xuất sơn» ↔ dòng «sản xuất sơn cho da thuộc»), để dòng
+  «Loại khác» dưới tầng tới được (321290 .19).
