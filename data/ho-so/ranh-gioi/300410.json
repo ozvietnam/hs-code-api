@@ -4,7 +4,7 @@
   "nhom": "3004",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-300410",
@@ -157,6 +157,13 @@
       "ma": "300410",
       "loai": "QUYET_DINH",
       "ghiChu": "Claude (#1109): phạm vi phân nhóm dieuKienNut[300410] theo tieuDe.300410 \"Chứa penicillins hoặc dẫn xuất của chúng, có cấu trúc axit penicillanic, hoặc streptomycins hoặc các dẫn xuất của chúng\" — vector ngoài phạm vi (cổng 1 cũ báo hở) thuộc phân nhóm khác, không phải lỗ hổng."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L9-20261111#soat-L9",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 300410:30041020 THU HẸP: chữ biểu 'Chứa các streptomycin hoặc các dẫn xuất của chúng' / EN 'Containing streptomycins or derivatives thereof' — điều kiện chỉ tenLoai 'streptomycin', bỏ vế 'các dẫn xuất của chúng' (người soạn tự ghi 'không có khoá') ⇒ thuốc chứa dihydrostreptomycin (một âm tiết, không chứa 'streptomycin') không thoả dòng nào của PN6. Quy ước đã có (293790, 292219, 292250): HOAC [[tenLoai 'streptomycin'],[tenLoai 'dẫn xuất' + dungCho 'streptomycin']]. (B) Ghi cho Claude, không phải lỗi người soạn: .16 giá trị nguyên văn 'amoxycillin' không khớp cách viết phổ biến 'amoxicillin' khi so âm tiết (khoá chuaPenicillin đã đọc amox[iy]cillin) ⇒ thuốc 'Amoxicillin … dạng uống' bị TRÁI ở .16 và dồn về .19. Phần còn lại (tiêu đề chuaPenicillin, .15 PHAI_KHONG benzathin, chongLanVanBan .19/.20 penicillin+streptomycin là hàng có thật) đã đối chiếu, đúng."
     }
   ]
 }
