@@ -4,19 +4,13 @@
   "nhom": "7211",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "DUYET",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T0857#soan-721113",
     "ngay": "2026-11-06"
   },
-  "duyet": {
-    "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L21-20261111#soat-L21",
-    "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu tiêu đề 7211131 'C dưới 0,6%'; .12 Corrugated ⇒ dangLuonSong, .13/.92 Hoop and strip, .14/.93 Universal plates ⇒ dangDaiDaiTamPhoDung; chồng lấn .12↔.13, .12↔.14 khai chongLanVanBan đúng (đai/dải, tấm phổ dụng lượn sóng thoả cả hai theo chữ biểu, chú giải 1(k) ch.72 cho phép làm gợn sóng).",
-    "bam": "717f2315f5dd1e7b1af91601f453bf0647ceb23c7ed267960e161c2196bc1d81"
-  },
+  "duyet": null,
   "dieuKienNut": [
     {
       "id": "7211131",
@@ -30,7 +24,7 @@
           "donVi": "%"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "dong8": [
@@ -44,7 +38,7 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "72111313",
@@ -59,7 +53,7 @@
           ]
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "72111314",
@@ -74,14 +68,14 @@
           ]
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "72111319",
       "nguon": "tax.72111319",
       "trich": "72111319 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "72111392",
@@ -96,7 +90,7 @@
           ]
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "72111393",
@@ -111,14 +105,14 @@
           ]
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "72111399",
       "nguon": "tax.72111399",
       "trich": "72111399 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "chongLanVanBan": [
@@ -183,6 +177,13 @@
       "ma": "72111399",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.72111399 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:tech-lead-20261111#soat-lai",
+      "ngay": "2026-11-11",
+      "lyDo": "bo-kiem-luat --toan-bieu (gộp thử với main, đo hai bên cùng nhịp): bản duyệt sinh ca chốt sai mới (chotSai/chotLoaiKhacSai tăng) — cổng gộp không cho tăng. Soạn/soát lại vế gây chốt sai rồi đo lại trước khi duyệt."
     }
   ]
 }

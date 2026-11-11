@@ -4,19 +4,13 @@
   "nhom": "7210",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "DUYET",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-721070",
     "ngay": "2026-11-06"
   },
-  "duyet": {
-    "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L21-20261111#soat-L21",
-    "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu tiêu đề 7210701 (C<0,6 & ≤1,5mm), 7210702 (Loại khác, C<0,6); .12 sơn sau mạ kẽm, .13 sơn sau mạ hợp kim nhôm-kẽm (lopMaPhu), .21/.91 'Được sơn' ⇒ daSon; đã đọc bảng hiệu chỉnh 721070-01/-02 (02 LECH_CHUA_PHAN_XU, soạn theo chữ biểu).",
-    "bam": "56fcfcd5cd8b3aac81858509148ac2a920b58e86a147a3ffbe5d4c6af4a52b99"
-  },
+  "duyet": null,
   "dieuKienNut": [
     {
       "id": "7210701",
@@ -36,7 +30,7 @@
           "donVi": "mm"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "id": "7210702",
@@ -50,7 +44,7 @@
           "donVi": "%"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "dong8": [
@@ -67,7 +61,7 @@
           ]
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "72107013",
@@ -82,14 +76,14 @@
           ]
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "72107019",
       "nguon": "tax.72107019",
       "trich": "72107019 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "72107021",
@@ -101,14 +95,14 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "72107029",
       "nguon": "tax.72107029",
       "trich": "72107029 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "72107091",
@@ -120,14 +114,14 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "72107099",
       "nguon": "tax.72107099",
       "trich": "72107099 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "ghiChuSoan": [
@@ -193,6 +187,13 @@
       "ma": "721070",
       "loai": "LECH_TIEN_LE",
       "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 721070-01 KHONG_LECH (6735–6739, 6766, 6785/TB-TCHQ ↔ 7436/TB-TCHQ) và 721070-02 LECH_CHUA_PHAN_XU (7436/TB-TCHQ thép C < 0,6%, dày 1,55 mm xếp .91 dưới \"Loại khác\", đọc thuần chữ biểu thoả 7210702 .21; chưa ai phân xử): soạn theo chữ biểu, không chọn bên, khớp bảng."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:tech-lead-20261111#soat-lai",
+      "ngay": "2026-11-11",
+      "lyDo": "bo-kiem-luat --toan-bieu (gộp thử với main, đo hai bên cùng nhịp): bản duyệt sinh ca chốt sai mới (chotSai/chotLoaiKhacSai tăng) — cổng gộp không cho tăng. Soạn/soát lại vế gây chốt sai rồi đo lại trước khi duyệt."
     }
   ]
 }

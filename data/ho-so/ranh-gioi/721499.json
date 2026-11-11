@@ -4,19 +4,13 @@
   "nhom": "7214",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "DUYET",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-721499",
     "ngay": "2026-11-06"
   },
-  "duyet": {
-    "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L21-20261111#soat-L21",
-    "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu tiêu đề 7214991 'C≥0,6%, trừ mặt cắt tròn' ⇒ hinhDangMatCatNgang PHAI_KHONG TRON; .11 Mn<1,15; nhánh Loại khác .91 (C<0,38, P≤0,05, S≤0,05), .92 (C≥0,38, Mn<1,15), .93 (EN '0.17% or more but less than 0.46%' ⇒ <0,46, Mn 1,2–<1,65) — biên đối chiếu tay; chồng lấn .91↔.93 là chữ biểu tự chồng, khai đúng; bảng 721499-01 KHONG_LECH khớp.",
-    "bam": "f2f9e71cdec0e544a0d73fbc9c6f273c88da5be3cd78d5e3ff8c06b297589d3c"
-  },
+  "duyet": null,
   "dieuKienNut": [
     {
       "id": "7214991",
@@ -38,7 +32,7 @@
           "chieu": "PHAI_KHONG"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "dong8": [
@@ -54,14 +48,14 @@
           "donVi": "%"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "72149919",
       "nguon": "tax.72149919",
       "trich": "72149919 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "72149991",
@@ -87,7 +81,7 @@
           "donVi": "%"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "72149992",
@@ -107,7 +101,7 @@
           "donVi": "%"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "72149993",
@@ -139,14 +133,14 @@
           "donVi": "%"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "72149999",
       "nguon": "tax.72149999",
       "trich": "72149999 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "chongLanVanBan": [
@@ -228,6 +222,13 @@
       "ma": "721499",
       "loai": "LECH_TIEN_LE",
       "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 721499-01 KHONG_LECH (3146, 3147/TB-TCHQ carbon ≈ 0,109% và 0,081% ⇒ .91; 3161, 5877, 447/TB-TCHQ carbon ≈ 0,50–0,54% ⇒ .92): soạn theo chữ biểu, khớp bảng."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:tech-lead-20261111#soat-lai",
+      "ngay": "2026-11-11",
+      "lyDo": "bo-kiem-luat --toan-bieu (gộp thử với main, đo hai bên cùng nhịp): bản duyệt sinh ca chốt sai mới (chotSai/chotLoaiKhacSai tăng) — cổng gộp không cho tăng. Soạn/soát lại vế gây chốt sai rồi đo lại trước khi duyệt."
     }
   ]
 }
