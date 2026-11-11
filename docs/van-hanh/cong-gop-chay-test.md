@@ -75,9 +75,11 @@ Nhãn đã được đẩy về **bước cuối cùng** (OZV-272). Dù vậy, �
    ```bash
    git fetch origin pull/<số>/head:refs/pr<số>-head --force
    git fetch origin main
+   git worktree remove /paperclip/workspaces/tmp/hs-soat-<số> --force 2>/dev/null; git worktree prune
    git worktree add --detach /paperclip/workspaces/tmp/hs-soat-<số> origin/main
    cd /paperclip/workspaces/tmp/hs-soat-<số>
    ln -s /paperclip/workspaces/hs-code-api/node_modules node_modules   # quy tắc 1
+   git reset --hard origin/main            # BẮT BUỘC — xem Bẫy 4b, đừng bỏ dòng này
    git merge --no-edit refs/pr<số>-head
    git rev-parse HEAD                      # SHA bản gộp thử — dán lên PR
    git diff --stat origin/main HEAD        # PHẢI khớp số tệp + số dòng của PR
@@ -104,7 +106,46 @@ phải làm*, không phải sơ suất hiếm gặp.
 **Mẫu áp dụng đầu tiên:** PR #1190 (nhóm 8541) — bản gộp thử `8aabe677`, `3 tệp, +1174/−9`, khớp đúng số
 của PR; cả hai mốc `bo-kiem-luat --toan-bieu` đo tại chỗ trên **chính cây đó**, không dùng mốc lưu sẵn.
 
-Chuẩn chung toàn công ty: `ozplugin/docs/cong-gop-pr.md` (OZV-282) — câu chữ quy tắc 4 ở đây lấy từ đó.
+### Bẫy 4b — soát LẠI cùng một PR: worktree cũ còn đó, cổng quy tắc 4 **im lặng** trên nền `main` cũ
+
+Thợ HS 01 tìm ra khi soát độc lập PR #1191, và **nó là lỗi của bản tài liệu đầu tiên** (bản đó bỏ mất
+dòng `git reset --hard origin/main` có trong chuẩn gốc). Giám đốc dự án đã tái lập lại đúng tình huống.
+
+Đường dẫn `hs-soat-<số>` cố định theo **số PR**. Thợ push thêm commit rồi soát lại cùng PR đó — việc xảy
+ra suốt — thì dòng `git worktree add` **chết ngay**:
+
+```
+fatal: '/paperclip/workspaces/tmp/hs-soat-1191' already exists   # RERUN_EXIT=128
+```
+
+Phản xạ tự nhiên khi đó là `cd` vào worktree cũ rồi `git merge` luôn. Worktree cũ còn đứng ở **`main` của
+nhịp trước**. Tái lập thật (worktree ở `9863158f`, `origin/main` đã tiến tới `6df451fe`):
+
+```
+git merge --no-edit refs/pr1191-head
+git diff --stat origin/main HEAD
+ CLAUDE.md                           |  2 +-
+ docs/van-hanh/cong-gop-chay-test.md | 59 +++++++++++++++++++++++++---
+ 2 files changed, 56 insertions(+), 5 deletions(-)      ← KHỚP ĐÚNG SỐ CỦA PR
+```
+
+**Cổng quy tắc 4 không báo gì cả.** Vì `git diff origin/main HEAD` chỉ thấy phần PR thêm vào, còn việc
+nền thiếu 1 commit `main` thì nó không đo. Lần đó vô hại (gộp ra fast-forward), nhưng điều đang kiểm là
+*"cây này đúng là `main` mới + PR"* — và cổng **không** trả lời được câu đó.
+
+Vì vậy hai dòng trong khối lệnh trên là **bắt buộc, không phải cho gọn**:
+
+- `git worktree remove … --force; git worktree prune` — để soát lại lần hai không chết ở dòng 3, khỏi
+  sinh ra phản xạ dùng lại worktree cũ;
+- `git reset --hard origin/main` **ngay trước** `git merge` — để nền luôn là `main` vừa fetch, bất kể
+  worktree trước đó đứng ở đâu. Chuẩn gốc có dòng này; bản đầu của tài liệu này bỏ mất nó.
+
+Muốn chắc thêm một nhịp: `git merge-base --is-ancestor origin/main HEAD` phải xanh sau khi gộp thử.
+
+**Chuẩn chung toàn công ty:** bản gốc ở `ozvietnam/ai-live` `docs/cong-gop-pr.md`; `ozplugin/docs/cong-gop-pr.md`
+(OZV-282) là **bản chép** và tự khai như vậy. Câu chữ quy tắc 4 ở đây lấy từ đó — **sửa chuẩn thì sửa bản
+gốc `ai-live` trước**, kẻo sửa đúng một bản chép. (Số thẻ gán cho quy tắc 4 giữa hai repo vốn đã lệch:
+`ai-live` ghi OZV-271/OZV-283, `ozplugin` ghi OZV-271/OZV-282.)
 
 ## Bẫy 3 — chạy trọn bộ `npm test` trên máy agent thì KHÔNG BAO GIỜ xong
 
@@ -159,8 +200,54 @@ Lấy `EXIT` của **chính lệnh node**, đừng để `| tail` ăn mất mã 
 node scripts/<bộ>.mjs > /tmp/g.log 2>&1; echo "EXIT=$?"; tail -6 /tmp/g.log
 ```
 
-Đạt hết ⇒ **bình luận biên bản TRƯỚC** (SHA bản gộp thử + `git diff --stat` + số ca + `EXIT`), **rồi mới**
-`gh pr merge <số> --squash`, rồi kiểm lại `main`. Không đạt ⇒ bình luận lỗi cụ thể lên thẻ, trả thợ.
+Đạt hết ⇒ **bình luận biên bản TRƯỚC**, **rồi mới** `gh pr merge <số> --squash`, rồi kiểm lại `main`.
+Không đạt ⇒ bình luận lỗi cụ thể lên thẻ, trả thợ.
+
+### Bình luận soát phải có gì (danh sách — thiếu gạch nào là biên bản chưa đủ)
+
+Chép từ chuẩn chung; hai gạch cuối là **luật OZ**, bản tài liệu đầu rơi mất nên ghi thành danh sách cho
+khỏi rơi lần nữa:
+
+- [ ] **Ai viết PR** — vì đây là thứ làm luật *"không tự gộp PR do mình viết"* kiểm được từ bên ngoài.
+- [ ] **SHA bản gộp thử** (`git rev-parse HEAD` trên cây gộp thử).
+- [ ] **Dòng `git diff --stat origin/main HEAD`** + số tệp/số dòng của PR để đối chiếu (quy tắc 4).
+- [ ] **Tổng số ca test chạy thật** — nguyên dòng `dem-ca-test.mjs` in ra, kèm `EXIT=0` của chính lần
+      chạy đó (quy tắc 2, 3). Số trọn bộ ghi rõ là **lấy ở CI**.
+- [ ] **Hai mốc `bo-kiem-luat`** đo tại chỗ cùng nhịp, cả hai bên.
+- [ ] **Một dòng "đã tra `sourcebot` gì, dùng lại gì"** — luật CEO 11/11, bắt buộc với PR sửa logic có
+      thể đã có ở repo khác.
+- [ ] **Dòng `KẾT LUẬN` của `soat-khac`** khi PR thuộc diện (xem dưới).
+
+### Khi nào phải soát bằng model khác (`soat-khac`)
+
+PR **> 300 dòng thêm**, hoặc chạm **tiền / khoá / dữ liệu khách / đăng nhập / điểm số**:
+
+```bash
+/paperclip/bin/soat-khac ozvietnam/hs-code-api <số>   # Gemini — khác model thợ
+```
+
+Dán dòng `KẾT LUẬN` vào PR. **CHẶN** thì kiểm lại lỗi đó **bằng tay**: lỗi thật ⇒ trả thợ; báo sai ⇒ ghi
+rõ lý do rồi mới gộp. Repo này chạm **tờ khai khách Oz** và **khoá LLM** nên thuộc diện rất thường xuyên;
+PR chỉ tài liệu hoặc chỉ thêm dữ liệu nhóm thì không bắt buộc.
+
+### PR thêm cổng chặn: cổng xanh trên dữ liệu sạch chưa chứng minh được gì
+
+PR thêm/sửa **cổng chặn** (`bo-kiem-luat`, `check-cay`, `check-legal-basis`, `check-so-tay`…) thì phải
+**tự tiêm dữ liệu bẩn** và xem cổng có **đỏ đúng dòng** mình nhắm, rồi hoàn nguyên. Cổng xanh trên dữ
+liệu sạch cũng là kết quả của một cổng **không bao giờ đỏ**. Dán cả hai chiều vào biên bản: đỏ đúng khi
+bẩn, xanh khi sạch.
+
+### PR tự nhận sửa lỗi mà cổng ra delta 0: phải đo hành vi trước/sau
+
+PR *sửa lỗi* (không phải thêm dữ liệu, không phải tài liệu) mà cổng không-hồi-quy ra **delta 0 trên mọi
+trường** thì **chưa đủ để gộp**: một bản vá **rỗng** cũng cho đúng kết quả đó, cũng khớp số tệp, cũng
+xanh test. Phải **đo trực tiếp hành vi** trên nền `origin/main` và trên bản gộp thử, rồi dán số.
+
+Mẫu: PR #1192 (vá đọc cụm "có hoặc không có X") có `chotDung` **4030 → 4030**, 37/37 trường delta 0.
+Chỉ khi dò ngược vào `data/tax.json` và gọi thẳng `khopCumTrongChu` trên cả hai cây mới ra bằng chứng:
+**1.408 nhãn đang bị đọc ngược nghĩa → 0**, và biết thêm vì sao cổng phẳng (1.255 dòng `whether or not`
+nằm ở chữ **Anh**, chưa vào đường chốt mã tiếng Việt). Công cụ đo một lần thì viết **ngoài repo**, nhưng
+**dán lệnh + số** để người sau chạy lại được. Đề xuất thành quy tắc chung ở OZV-310.
 
 **Không tự gộp PR do chính mình viết.** Người thứ hai soát độc lập + dán biên bản; cú `gh pr merge` vẫn
 do giám đốc dự án bấm sau khi có biên bản ĐẠT và CI xanh **trên commit cuối** (kiểm `head_sha` khớp —
