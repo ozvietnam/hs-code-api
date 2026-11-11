@@ -148,3 +148,8 @@ phẩm khác" — người soát xác nhận SAI). Báo "phủ" oan (máy coi ph
 | 310319 | DUYET | Đối chiếu VI+EN .10 'Loại dùng làm thức ăn chăn nuôi / Feed grade' ⇒ congDung thức ăn chăn nuôi; .90 trần — đúng. |
 | 310390 | DUYET | Đối chiếu VI+EN .10 'Calcined phosphatic fertilisers' ⇒ daNung CO (tên 'phân phosphat' đã là tên nhóm 31.03); .90 trần — đúng. |
 | 310510 | TRA_VE | (A) 310510:31051020 THU HẸP (tất định): chữ biểu 'có chứa hai hoặc ba trong số các nguyên tố cấu thành phân bón là nitơ, phospho và kali' / EN 'containing two or three of the fertilising elements nitrogen, phosphorus and potassium' ghi soNguyenToCauThanhPhanBon TRONG ['HAI_HOAC_BA'] — khoá có giá trị riêng BA và HAI_PHOSPHO_KALI, không có giaTriCha, nên phân NPK đọc được BA bị TRÁI tất định (đã thử danhGiaTuChu 'Phân bón NPK chứa ba nguyên tố cấu thành phân bón, bao 25kg' ⇒ TRAI; 'chứa hai nguyên tố … phospho và kali' ⇒ TRAI) ⇒ phân hỗn hợp đóng gói ≤10 kg rơi về .90. Ghi TRONG ['HAI_HOAC_BA','BA','HAI_PHOSPHO_KALI'] (hoặc xin Claude thêm giaTriCha HAI_HOAC_BA ⊃ BA, HAI_PHOSPHO_KALI). Phần còn lại (.10 mảng 2 tên, chongLanVanBan .10/.20 supephosphat có thêm N/K là hàng có thật) đúng. |
+
+
+## Soát lại của tech lead — bo-kiem-luat hai bên
+
+Trả về 310100: gộp thử với `main` làm phát sinh ca chốt sai mới trong `bo-kiem-luat --toan-bieu` (cổng gộp không cho `chotSai`/`chotLoaiKhacSai` tăng). Mục sổ tay giữ như `main`.
