@@ -73,6 +73,10 @@ Nhãn đã được đẩy về **bước cuối cùng** (OZV-272). Dù vậy, �
    con số test. Bình luận soát phải ghi **SHA bản gộp thử** và dòng `git diff --stat` bên cạnh số ca.
 
    ```bash
+   # PR đã gộp rồi thì khối dưới ra git diff RỖNG và MERGE_EXIT=0 — trông y như cổng hỏng.
+   # Kiểm trạng thái TRƯỚC, khỏi mất một lượt đi tìm lỗi không có:
+   gh pr view <số> -R ozvietnam/hs-code-api --json state --jq .state   # phải là OPEN
+
    git fetch origin pull/<số>/head:refs/pr<số>-head --force
    git fetch origin main
    git worktree remove /paperclip/workspaces/tmp/hs-soat-<số> --force 2>/dev/null; git worktree prune
@@ -129,9 +133,29 @@ git diff --stat origin/main HEAD
  2 files changed, 56 insertions(+), 5 deletions(-)      ← KHỚP ĐÚNG SỐ CỦA PR
 ```
 
-**Cổng quy tắc 4 không báo gì cả.** Vì `git diff origin/main HEAD` chỉ thấy phần PR thêm vào, còn việc
-nền thiếu 1 commit `main` thì nó không đo. Lần đó vô hại (gộp ra fast-forward), nhưng điều đang kiểm là
-*"cây này đúng là `main` mới + PR"* — và cổng **không** trả lời được câu đó.
+**Cổng quy tắc 4 không báo gì cả** — nhưng **lý do thì khác** điều bản tài liệu đầu tiên viết. Bản đó
+ghi *"vì `git diff origin/main HEAD` chỉ thấy phần PR thêm vào, nền thiếu commit `main` thì nó không đo"*.
+Câu đó **sai**, Thợ HS 01 bác lại ở lượt soát thứ hai và chứng minh bằng số.
+
+Sự thật: nhánh #1191 **cắt từ `6df451fe`**, nên gộp nó vào worktree đứng ở `9863158f` thì **phép gộp tự
+mang `6df451fe` theo**. Cây đó **đúng thật là `main` + PR** — cổng im vì **không có gì để báo**. Ca
+đó là ca *cổng đúng*, không phải ca *cổng mù*.
+
+Khi nền **thiếu thật** (nhánh không chứa commit `main` đang xét) thì cổng **đỏ to và chỉ đúng thủ phạm**.
+Thợ kiểm ngược bằng PR #1193 trên ba nền cũ khác nhau:
+
+```
+nền 9c12c74e -> cổng đo 13 tệp (GitHub: 11) | ancestor_exit=1
+nền 6df451fe -> cổng đo 13 tệp (GitHub: 11) | ancestor_exit=1
+nền 9863158f -> cổng đo 13 tệp (GitHub: 11) | ancestor_exit=1
+```
+
+Tệp của commit `main` bị thiếu hiện ra dạng **bị xoá ngược** (`-146`), và `git merge-base --is-ancestor`
+thoát **1**. Tức cổng quy tắc 4 **trả lời được** câu *"cây này đúng là `main` mới + PR"*.
+
+Vậy giữ hai dòng dưới đây **không phải** vì cổng mù, mà vì **worktree cũ làm người soát mất một lượt**
+(dòng `git worktree add` chết `EXIT=128`, rồi sinh phản xạ `cd` vào worktree cũ) và vì **không phải lúc
+nào nhánh cũng tình cờ cắt từ commit đủ mới** như ca #1191.
 
 Vì vậy hai dòng trong khối lệnh trên là **bắt buộc, không phải cho gọn**:
 
@@ -228,7 +252,15 @@ PR **> 300 dòng thêm**, hoặc chạm **tiền / khoá / dữ liệu khách / 
 
 Dán dòng `KẾT LUẬN` vào PR. **CHẶN** thì kiểm lại lỗi đó **bằng tay**: lỗi thật ⇒ trả thợ; báo sai ⇒ ghi
 rõ lý do rồi mới gộp. Repo này chạm **tờ khai khách Oz** và **khoá LLM** nên thuộc diện rất thường xuyên;
-PR chỉ tài liệu hoặc chỉ thêm dữ liệu nhóm thì không bắt buộc.
+PR **chỉ tài liệu** thì không bắt buộc.
+
+**PR dữ liệu nhóm KHÔNG được miễn** — bản đầu của tài liệu này từng ghi "chỉ tài liệu hoặc chỉ thêm dữ
+liệu nhóm thì không bắt buộc". Đó là **nới chuẩn gốc** (`ai-live:docs/cong-gop-pr.md` không có ngoại lệ
+theo loại PR), và nới đúng vào loại PR đông nhất repo này. Thợ HS 01 tìm ra khi soát độc lập PR #1191,
+có bằng chứng ngay trong repo: **#1190 là PR dữ liệu nhóm, +1174 dòng, đã chạy `soat-khac`**, và dòng
+`KẾT LUẬN` của nó nhắm đúng loại lỗi mà cổng này bắt được — **lệch dữ liệu giữa `so-tay/8541.json`,
+`ten-khac-8541.json` và `tu-vung@2.json`**, không phải lỗi mã. PR dữ liệu nhóm là nơi lỗi **lệch giữa
+ba tệp** sinh ra, mà đó chính là thứ một model khác dễ thấy hơn người đã soạn dữ liệu.
 
 ### PR thêm cổng chặn: cổng xanh trên dữ liệu sạch chưa chứng minh được gì
 
@@ -248,6 +280,43 @@ Chỉ khi dò ngược vào `data/tax.json` và gọi thẳng `khopCumTrongChu` 
 **1.408 nhãn đang bị đọc ngược nghĩa → 0**, và biết thêm vì sao cổng phẳng (1.255 dòng `whether or not`
 nằm ở chữ **Anh**, chưa vào đường chốt mã tiếng Việt). Công cụ đo một lần thì viết **ngoài repo**, nhưng
 **dán lệnh + số** để người sau chạy lại được. Đề xuất thành quy tắc chung ở OZV-310.
+
+### PR dữ liệu ra delta 0 **vì không ai đo**: hai mốc phải đo TẠI CHỖ, CÙNG NHỊP
+
+Mục trên nói về PR *sửa lỗi*. Mục này là mặt ngược lại và đã **mất tiền thật** ngày 11/11.
+
+Sáu PR lô ranh giới gộp trong khoảng **15:04Z–15:35Z**, mỗi PR **0 bình luận biên bản**, không PR nào
+có mốc `bo-kiem-luat --toan-bieu`. Khi giám đốc dự án kiểm `main` sau khi gộp PR #1196 thì phát hiện
+**hai hồi quy thật** đã nằm trong `main`:
+
+| PR | Hồi quy | Ca hỏng |
+|---|---|---|
+| #1200 (lô L2, chương 03) | `chotLoaiKhacSai` **11 → 13** | `03061190`, `03061290` — **tự chốt dòng "Loại khác" khi thiếu dữ kiện** (trước đó `KHONG_THE_CHOT`, im lặng và an toàn) |
+| #1205 (lô L10, chương 37) | `chotSai` **17 → 19** | `37069090` — **chốt sai sang mã khác `37069040`**, 2 ca cùng một mã |
+
+Cả hai PR đều có mặt tích cực thật (`chotDung` +34 và +84). Cổng không nói "PR xấu" — cổng nói
+**`chotSai`/`chotLoaiKhacSai` không được tăng, tổng VÀ từng loại ca**. Thêm ca đúng không mua được quyền
+thêm ca chốt sai: với người khai, **trích sai mã tệ hơn không trích**.
+
+Ba điều rút ra, áp cho mọi PR sửa `data/`:
+
+1. **Đo hai mốc tại chỗ, cùng nhịp** — một trên `origin/main` **vừa fetch**, một trên bản gộp thử.
+   `main` ở repo này tiến từng phút; **mốc lưu sẵn là mốc sai**. Ở nhịp 11/11, thợ đo nền `ade04cd0`
+   ra `chotSai` 12 còn nền thật lúc soát (`9e1c171e`) là **17** — chênh lệch của thợ đúng, mốc tuyệt
+   đối thì lệch, và nếu lấy mốc cũ làm chuẩn thì +2 kia chìm luôn.
+2. **So từng loại ca, không chỉ so tổng.** Dùng `--json` rồi so `theoLoai`; tổng có thể phẳng trong khi
+   một loại tăng và một loại giảm.
+3. **So `chiTietLoi` theo khoá `hs8|loaiCa`** để ra **danh sách ca** hỏng, không chỉ con số. Đó là cách
+   duy nhất tìm ra 4 ca trên, và là thứ dán lên PR để người vá khỏi dò lại:
+
+   ```bash
+   node scripts/bo-kiem-luat.mjs --toan-bieu --json > /tmp/nen.json   # trên origin/main
+   node scripts/bo-kiem-luat.mjs --toan-bieu --json > /tmp/pr.json    # trên bản gộp thử
+   # rồi so hai tệp theo khoá hs8|loaiCa, in ca MỚI và ca ĐỔI kết quả
+   ```
+
+Thẻ vá: OZV-325. Khi một họ tệp (`data/ho-so/ranh-gioi/`) có nhiều PR mở song song thì **dừng gộp cả họ**
+cho tới khi từng PR có hai mốc — vì chúng hỏng theo cùng một kiểu.
 
 **Không tự gộp PR do chính mình viết.** Người thứ hai soát độc lập + dán biên bản; cú `gh pr merge` vẫn
 do giám đốc dự án bấm sau khi có biên bản ĐẠT và CI xanh **trên commit cuối** (kiểm `head_sha` khớp —
