@@ -150,3 +150,8 @@ Lô này phần lớn là phân nhóm chỉ chia «hoạt động bằng điện
 - `node scripts/check-cay.mjs`: 0 lỗi lệch cây.
 - `node scripts/test-so-tay.mjs`: 65/65 passed.
 - 5 bản TRA_VE chỉ đổi `trangThai`/`traVe` trong `data/ho-so/ranh-gioi/<pn6>.json`; sổ tay của chúng giữ nguyên.
+
+
+## Soát lại của tech lead — bo-kiem-luat hai bên / test
+
+Trả về 843141 843149: gộp thử với `main` làm phát sinh ca chốt sai mới trong `bo-kiem-luat --toan-bieu` hoặc làm đỏ `test-so-tay-gates`/`test-so-tay-questions` (cổng gộp không cho tăng). Mục sổ tay giữ như `main`.
