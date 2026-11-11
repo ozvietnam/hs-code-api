@@ -1,0 +1,709 @@
+{
+  "phienBan": "ten-khac@1",
+  "nhom": "8540",
+  "tuVung": "tu-vung@2",
+  "ngay": "2026-11-11",
+  "chuaCoNguon": [
+    {
+      "ma": "85401100",
+      "cumDuKien": [
+        "CRT",
+        "CRT màu",
+        "bóng hình CRT",
+        "ống phóng điện tử CRT"
+      ],
+      "lyDo": "Chữ viết tắt \"CRT\" (Cathode-Ray Tube) chỉ xuất hiện ở trường tóm tắt `phan_biet` trong `data/chu-giai-heading.json#8540` (trường không được phép trích làm căn cứ pháp lý nguyên văn theo `lib/so-tay.js`), không xuất hiện nguyên văn trong chú giải pháp lý `nhom8540.nhom` hay biểu thuế `bieu-chinh.jsonl.gz`; theo nguyên tắc không tự viết trích dẫn, ghi nhận \"chưa có nguồn\"."
+    },
+    {
+      "ma": "85401200",
+      "cumDuKien": [
+        "CRT đơn sắc",
+        "bóng đèn hình đen trắng",
+        "ống đèn hình đen trắng"
+      ],
+      "lyDo": "Biểu thuế và chú giải nhóm 85.40 chỉ dùng thuật ngữ pháp lý \"Loại đơn sắc\" / \"Monochrome\", chưa có nguyên văn cụm thông tục \"đen trắng\" hoặc \"CRT đơn sắc\" trong kho dữ liệu pháp lý nội bộ; ghi nhận \"chưa có nguồn\"."
+    },
+    {
+      "ma": "85402000",
+      "cumDuKien": [
+        "photomultiplier",
+        "photomultiplier tube",
+        "PMT",
+        "plumbicon"
+      ],
+      "lyDo": "Chú giải `data/chu-giai-heading.json#8540.nhom` có nguyên văn tiếng Việt \"bộ nhân quang\", \"ống chân không cảm quang\", \"orthicon hình ảnh\", \"vidicon hình ảnh\", nhưng chưa có nguyên văn tiếng Anh \"photomultiplier\", \"photomultiplier tube\", \"PMT\", \"plumbicon\" hay tiêu chuẩn TCVN/IEC tương ứng trong kho dữ liệu nội bộ; ghi nhận \"chưa có nguồn\"."
+    },
+    {
+      "ma": "85407900",
+      "cumDuKien": [
+        "TWT",
+        "BWO",
+        "backward wave oscillator"
+      ],
+      "lyDo": "Biểu thuế và chú giải nhóm 85.40 có nguyên văn \"travelling wave tubes\", \"klystrons\", \"carcinotrons\" / \"đèn sóng lan truyền\", nhưng chưa có nguyên văn các chữ viết tắt kỹ thuật \"TWT\", \"BWO\", \"backward wave oscillator\" trong kho dữ liệu pháp lý nội bộ; ghi nhận \"chưa có nguồn\"."
+    },
+    {
+      "ma": "85408100",
+      "cumDuKien": [
+        "triode",
+        "tetrode",
+        "pentode",
+        "bóng đèn khuếch đại âm thanh"
+      ],
+      "lyDo": "Chú giải `data/chu-giai-heading.json#8540.nhom` có nguyên văn tiếng Việt \"đèn 2 cực, ba cực, bốn cực\", nhưng chưa có nguyên văn thuật ngữ tiếng Anh \"triode\", \"tetrode\", \"pentode\" hay tiêu chuẩn TCVN/IEC về đèn điện tử chân không trong kho dữ liệu pháp lý nội bộ; ghi nhận \"chưa có nguồn\"."
+    }
+  ],
+  "muc": [
+    {
+      "ma": "85401100",
+      "kieu": "TEN_LOAI",
+      "giaTri": "Loại màu",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "cachDoc": {
+        "vi": [
+          "ống đèn hình vô tuyến dùng tia ca-tốt loại màu",
+          "ống đèn hình của màn hình video dùng tia ca-tốt loại màu"
+        ],
+        "en": [
+          "colour",
+          "cathode-ray television picture tubes, colour",
+          "video monitor cathode-ray tubes, colour"
+        ],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz#85401100",
+        "trich": "- - Colour",
+        "nhan": "NGUYEN_VAN"
+      }
+    },
+    {
+      "ma": "85401200",
+      "kieu": "TEN_LOAI",
+      "giaTri": "Loại đơn sắc",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "cachDoc": {
+        "vi": [
+          "ống đèn hình vô tuyến dùng tia ca-tốt loại đơn sắc",
+          "ống đèn hình của màn hình video dùng tia ca-tốt loại đơn sắc"
+        ],
+        "en": [
+          "monochrome",
+          "cathode-ray television picture tubes, monochrome",
+          "video monitor cathode-ray tubes, monochrome"
+        ],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz#85401200",
+        "trich": "- - Monochrome",
+        "nhan": "NGUYEN_VAN"
+      }
+    },
+    {
+      "ma": "85402000",
+      "kieu": "TEN_LOAI",
+      "giaTri": "Ống camera truyền hình; bộ chuyển đổi hình ảnh và bộ tăng cường hình ảnh; ống đèn ca-tốt quang điện khác",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "cachDoc": {
+        "vi": [
+          "ống điện tử dùng cho camera truyền hình",
+          "ống thu hình",
+          "orthicon hình ảnh",
+          "vidicon hình ảnh"
+        ],
+        "en": [],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/chu-giai-heading.json#8540.nhom",
+        "trich": "(a) Các ống điện tử dùng cho camera truyền hình (các ống thu hình, ví dụ orthicon hình ảnh hoặc vidicon hình ảnh).",
+        "nhan": "NGUYEN_VAN"
+      }
+    },
+    {
+      "ma": "85402000",
+      "kieu": "TEN_LOAI",
+      "giaTri": "Ống camera truyền hình; bộ chuyển đổi hình ảnh và bộ tăng cường hình ảnh; ống đèn ca-tốt quang điện khác",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "cachDoc": {
+        "vi": [
+          "ống điện tử chuyển đổi hình ảnh"
+        ],
+        "en": [],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/chu-giai-heading.json#8540.nhom",
+        "trich": "(b) Các ống điện tử chuyển đổi hình ảnh.",
+        "nhan": "NGUYEN_VAN"
+      }
+    },
+    {
+      "ma": "85402000",
+      "kieu": "TEN_LOAI",
+      "giaTri": "Ống camera truyền hình; bộ chuyển đổi hình ảnh và bộ tăng cường hình ảnh; ống đèn ca-tốt quang điện khác",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "cachDoc": {
+        "vi": [
+          "ống điện tử tăng cường độ nét"
+        ],
+        "en": [],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/chu-giai-heading.json#8540.nhom",
+        "trich": "(c) Các ống điện tử tăng cường độ nét là những đèn ống điện tử, trong đó một hình ảnh được chiếu lên một bề mặt phát quang tạo ra một hình ảnh tương ứng được tăng cường độ nét trên một bề mặt phát sáng.",
+        "nhan": "NGUYEN_VAN"
+      }
+    },
+    {
+      "ma": "85402000",
+      "kieu": "TEN_LOAI",
+      "giaTri": "Ống camera truyền hình; bộ chuyển đổi hình ảnh và bộ tăng cường hình ảnh; ống đèn ca-tốt quang điện khác",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "cachDoc": {
+        "vi": [
+          "ống điện tử phát quang",
+          "phần tử phát quang"
+        ],
+        "en": [],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/chu-giai-heading.json#8540.nhom",
+        "trich": "(3) Các ống điện tử phát quang, chân không hoặc được đổ đầy khí (cũng được gọi là các phần tử phát quang).",
+        "nhan": "NGUYEN_VAN"
+      }
+    },
+    {
+      "ma": "85402000",
+      "kieu": "TEN_LOAI",
+      "giaTri": "Ống camera truyền hình; bộ chuyển đổi hình ảnh và bộ tăng cường hình ảnh; ống đèn ca-tốt quang điện khác",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "cachDoc": {
+        "vi": [
+          "bộ nhân quang",
+          "ống chân không cảm quang"
+        ],
+        "en": [],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/chu-giai-heading.json#8540.nhom",
+        "trich": "Các bộ nhân quang là các ống chân không cảm quang, chúng gồm một catốt phát quang và một bộ nhân điện tử.",
+        "nhan": "NGUYEN_VAN"
+      }
+    },
+    {
+      "ma": "85402000",
+      "kieu": "TEN_LOAI",
+      "giaTri": "Ống camera truyền hình; bộ chuyển đổi hình ảnh và bộ tăng cường hình ảnh; ống đèn ca-tốt quang điện khác",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "cachDoc": {
+        "vi": [],
+        "en": [
+          "television camera tubes",
+          "image converters and intensifiers",
+          "image converters",
+          "image intensifiers",
+          "other photo-cathode tubes",
+          "photo-cathode tubes"
+        ],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz#85402000",
+        "trich": "- Television camera tubes; image converters and intensifiers; other photo-cathode tubes",
+        "nhan": "NGUYEN_VAN"
+      }
+    },
+    {
+      "ma": "85404010",
+      "kieu": "CONG_DUNG",
+      "giaTri": "85.25",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "cachDoc": {
+        "vi": [
+          "dùng cho hàng hóa thuộc nhóm 85.25",
+          "của loại dùng cho hàng hóa thuộc nhóm 85.25",
+          "ống hiển thị dữ liệu/đồ họa, loại màu, của loại dùng cho hàng hóa thuộc nhóm 85.25"
+        ],
+        "en": [
+          "data/graphic display tubes, colour, of a kind used for articles of heading 85.25",
+          "of a kind used for articles of heading 85.25",
+          "used for articles of heading 85.25"
+        ],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz#85404010",
+        "trich": "- - Data/graphic display tubes, colour, of a kind used for articles of heading 85.25",
+        "nhan": "NGUYEN_VAN"
+      }
+    },
+    {
+      "ma": "85406000",
+      "kieu": "TEN_LOAI",
+      "giaTri": "Ống tia ca-tốt khác",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "cachDoc": {
+        "vi": [
+          "ống điện tử tia catốt khác",
+          "ống điện tử lưu thông tin"
+        ],
+        "en": [],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/chu-giai-heading.json#8540.nhom",
+        "trich": "(d) Các ống điện tử tia catốt khác mà trong nó các tín hiệu điện được biến đổi thành hình ảnh nhìn thấy được một cách trực tiếp hoặc gián tiếp. Ví dụ của loại này là ống điện tử lưu thông tin.",
+        "nhan": "NGUYEN_VAN"
+      }
+    },
+    {
+      "ma": "85406000",
+      "kieu": "TEN_LOAI",
+      "giaTri": "Ống tia ca-tốt khác",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "cachDoc": {
+        "vi": [],
+        "en": [
+          "other cathode-ray tubes"
+        ],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz#85406000",
+        "trich": "- Other cathode-ray tubes",
+        "nhan": "NGUYEN_VAN"
+      }
+    },
+    {
+      "ma": "85407100",
+      "kieu": "TEN_LOAI",
+      "giaTri": "Magnetrons",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "cachDoc": {
+        "vi": [
+          "magnetron",
+          "ống đèn vi sóng magnetron"
+        ],
+        "en": [
+          "magnetrons",
+          "magnetron"
+        ],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/chu-giai-heading.json#8540.nhom",
+        "trich": "Có nhiều loại đèn điện tử và ống điện tử, trong đó, một số được thiết kế cho những mục đích đặc biệt như các ống đèn vi sóng (ví dụ, magnetron, klystron, đèn sóng lan truyền, carcinotron), đèn ống đĩa gắn kín (đèn hải đăng), đèn điện tử ổn áp, thyratron, ignitron,….",
+        "nhan": "NGUYEN_VAN"
+      }
+    },
+    {
+      "ma": "85407900",
+      "kieu": "TEN_LOAI",
+      "giaTri": "Loại khác",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "cachDoc": {
+        "vi": [
+          "klystron",
+          "đèn sóng lan truyền",
+          "carcinotron"
+        ],
+        "en": [],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/chu-giai-heading.json#8540.nhom",
+        "trich": "Có nhiều loại đèn điện tử và ống điện tử, trong đó, một số được thiết kế cho những mục đích đặc biệt như các ống đèn vi sóng (ví dụ, magnetron, klystron, đèn sóng lan truyền, carcinotron), đèn ống đĩa gắn kín (đèn hải đăng), đèn điện tử ổn áp, thyratron, ignitron,….",
+        "nhan": "NGUYEN_VAN"
+      }
+    },
+    {
+      "ma": "85407900",
+      "kieu": "TEN_LOAI",
+      "giaTri": "Loại khác",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "cachDoc": {
+        "vi": [
+          "klystrons",
+          "ống đèn sóng lan truyền",
+          "carcinotrons"
+        ],
+        "en": [],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/bieu-thue/2026.04.05/tieu-de.jsonl.gz#15965",
+        "trich": "- Ống đèn vi sóng (ví dụ, magnetrons, klystrons, ống đèn sóng lan truyền, carcinotrons), trừ ống đèn điều khiển lưới:",
+        "nhan": "NGUYEN_VAN"
+      }
+    },
+    {
+      "ma": "85408100",
+      "kieu": "TEN_LOAI",
+      "giaTri": "Đèn điện tử và ống điện tử của máy thu hoặc máy khuếch đại",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "cachDoc": {
+        "vi": [
+          "đèn điện tử của máy thu",
+          "đèn điện tử của máy khuếch đại",
+          "ống điện tử của máy thu",
+          "ống điện tử của máy khuếch đại"
+        ],
+        "en": [
+          "receiver or amplifier valves and tubes",
+          "receiver valves and tubes",
+          "amplifier valves and tubes"
+        ],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz#85408100",
+        "trich": "- - Receiver or amplifier valves and tubes",
+        "nhan": "NGUYEN_VAN"
+      }
+    },
+    {
+      "ma": "85408900",
+      "kieu": "TEN_LOAI",
+      "giaTri": "Loại khác",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "cachDoc": {
+        "vi": [
+          "đèn điện tử chỉnh lưu",
+          "ống điện tử chỉnh lưu",
+          "thyraton"
+        ],
+        "en": [],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/chu-giai-heading.json#8540.nhom",
+        "trich": "(1) Các đèn điện tử và ống điện tử chỉnh lưu. Chúng được thiết kế để chỉnh lưu dòng xoay chiều AC thành dòng một chiều DC. Có thể phân loại chúng thành kiểu chân không, kiểu khí hoặc hơi (ví dụ, hơi thủy ngân) và nói chung có hai điện cực. Các kiểu cụ thể (ví dụ, thyraton) có lưới điều khiển để thay đổi chế độ làm việc và thậm chí đôi khi còn dùng để biến đổi ngược (chuyển từ DC sang AC).",
+        "nhan": "NGUYEN_VAN"
+      }
+    },
+    {
+      "ma": "85408900",
+      "kieu": "TEN_LOAI",
+      "giaTri": "Loại khác",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "cachDoc": {
+        "vi": [
+          "đèn và ống điện tử chỉnh lưu hồ quang thủy ngân",
+          "đèn điện tử chỉnh lưu hồ quang thủy ngân",
+          "ống điện tử chỉnh lưu hồ quang thủy ngân"
+        ],
+        "en": [
+          "mercury arc rectifying valves and tubes"
+        ],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz#8540",
+        "trich": "Đèn điện tử và ống điện tử dùng nhiệt điện tử, ca-tốt lạnh hoặc ca-tốt quang điện (ví dụ, đèn điện tử và ống đèn chân không hoặc nạp khí hoặc hơi, đèn và ống điện tử chỉnh lưu hồ quang thủy ngân, ống điện tử dùng tia ca-tốt, ống điện tử camera truyền hình)",
+        "nhan": "NGUYEN_VAN"
+      }
+    },
+    {
+      "ma": "85408900",
+      "kieu": "TEN_LOAI",
+      "giaTri": "Loại khác",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "cachDoc": {
+        "vi": [
+          "đèn ống đĩa gắn kín",
+          "đèn hải đăng",
+          "đèn điện tử ổn áp",
+          "thyratron",
+          "ignitron"
+        ],
+        "en": [],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/chu-giai-heading.json#8540.nhom",
+        "trich": "Có nhiều loại đèn điện tử và ống điện tử, trong đó, một số được thiết kế cho những mục đích đặc biệt như các ống đèn vi sóng (ví dụ, magnetron, klystron, đèn sóng lan truyền, carcinotron), đèn ống đĩa gắn kín (đèn hải đăng), đèn điện tử ổn áp, thyratron, ignitron,….",
+        "nhan": "NGUYEN_VAN"
+      }
+    },
+    {
+      "ma": "85408900",
+      "kieu": "TEN_LOAI",
+      "giaTri": "Loại khác",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L2",
+      "cachDoc": {
+        "vi": [],
+        "en": [
+          "hot cathode intense electronic positive ion sources"
+        ],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/wco-op/opinions.json#854089/1",
+        "trich": "1. Hot cathode intense electronic positive ion sources, for use in particle accelerators, mass spectrometers and the\n\nAdoption: 1958",
+        "nhan": "NGUYEN_VAN"
+      }
+    },
+    {
+      "ma": "85409100",
+      "kieu": "TEN_LOAI",
+      "giaTri": "Của ống đèn tia ca-tốt",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "cachDoc": {
+        "vi": [
+          "vỏ chống nổ cho các ống tia catốt",
+          "cuộn dây lái tia"
+        ],
+        "en": [],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/chu-giai-heading.json#8540.nhom",
+        "trich": "BỘ PHẬN Theo quy tắc chung về phân loại bộ phận (xem Chú giải Tổng quát Phần XVI), bộ phận của các mặt hàng thuộc nhóm này cũng được phân loại ở đây, ví dụ, các điện cực (catốt, lưới, anốt), các loại vỏ (bằng các vật liệu trừ thủy tinh) dùng cho các ống điện tử, các vỏ chống nổ cho các ống tia catốt, các cuộn dây lái tia được đặt xung quanh cổ ống tia catốt cho mục đích quét hình.",
+        "nhan": "NGUYEN_VAN"
+      }
+    },
+    {
+      "ma": "85409100",
+      "kieu": "TEN_LOAI",
+      "giaTri": "Của ống đèn tia ca-tốt",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "cachDoc": {
+        "vi": [],
+        "en": [
+          "parts of cathode-ray tubes",
+          "of cathode-ray tubes"
+        ],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz#85409100",
+        "trich": "- - Of cathode-ray tubes",
+        "nhan": "NGUYEN_VAN"
+      }
+    },
+    {
+      "ma": "85401100",
+      "kieu": "TEN_LOAI",
+      "giaTri": "Loại màu",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L3",
+      "nhan": "THAM_KHAO",
+      "cachDoc": {
+        "vi": [],
+        "en": [],
+        "zh": [
+          "彩色的",
+          "阴极射线电视显像管，包括视频监视器用阴极射线管"
+        ]
+      },
+      "nguon": {
+        "tap": "data/bieu-thue/zh/hs6-zh.jsonl#854011",
+        "url": "http://gss.mof.gov.cn/gzdt/zhengcefabu/202512/P020251231607833453633.pdf",
+        "trich": "{\"hs6\":\"854011\",\"tenZh\":\"彩色的\",\"tenZhCha\":\"阴极射线电视显像管，包括视频监视器用阴极射线管\",\"capKhop\":6,\"nguon\":{\"url\":\"http://gss.mof.gov.cn/gzdt/zhengcefabu/202512/P020251231607833453633.pdf\",\"sha256\":\"76af4db0b3af966ef4f95f4ffc6b4b2e34f1a95ef47f68e7299670a18b337d57\",\"layLuc\":\"2026-10-19T08:05:35.623Z\",\"viTri\":\"trang 1280, dòng mã 85401100\"}}",
+        "nhan": "THAM_KHAO"
+      }
+    },
+    {
+      "ma": "85401200",
+      "kieu": "TEN_LOAI",
+      "giaTri": "Loại đơn sắc",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L3",
+      "nhan": "THAM_KHAO",
+      "cachDoc": {
+        "vi": [],
+        "en": [],
+        "zh": [
+          "单色的"
+        ]
+      },
+      "nguon": {
+        "tap": "data/bieu-thue/zh/hs6-zh.jsonl#854012",
+        "url": "http://gss.mof.gov.cn/gzdt/zhengcefabu/202512/P020251231607833453633.pdf",
+        "trich": "{\"hs6\":\"854012\",\"tenZh\":\"单色的\",\"tenZhCha\":\"阴极射线电视显像管，包括视频监视器用阴极射线管\",\"capKhop\":6,\"nguon\":{\"url\":\"http://gss.mof.gov.cn/gzdt/zhengcefabu/202512/P020251231607833453633.pdf\",\"sha256\":\"76af4db0b3af966ef4f95f4ffc6b4b2e34f1a95ef47f68e7299670a18b337d57\",\"layLuc\":\"2026-10-19T08:05:35.623Z\",\"viTri\":\"trang 1281, dòng mã 85401200\"}}",
+        "nhan": "THAM_KHAO"
+      }
+    },
+    {
+      "ma": "85402000",
+      "kieu": "TEN_LOAI",
+      "giaTri": "Ống camera truyền hình; bộ chuyển đổi hình ảnh và bộ tăng cường hình ảnh; ống đèn ca-tốt quang điện khác",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L3",
+      "nhan": "THAM_KHAO",
+      "cachDoc": {
+        "vi": [],
+        "en": [],
+        "zh": [
+          "电视摄像管；变像管及图像增强管；其他光阴极管",
+          "电视摄像管",
+          "变像管",
+          "图像增强管",
+          "其他光阴极管"
+        ]
+      },
+      "nguon": {
+        "tap": "data/bieu-thue/zh/hs6-zh.jsonl#854020",
+        "url": "http://gss.mof.gov.cn/gzdt/zhengcefabu/202512/P020251231607833453633.pdf",
+        "trich": "{\"hs6\":\"854020\",\"tenZh\":\"电视摄像管；变像管及图像增强管；其他光阴极管\",\"tenZhCha\":null,\"capKhop\":6,\"nguon\":{\"url\":\"http://gss.mof.gov.cn/gzdt/zhengcefabu/202512/P020251231607833453633.pdf\",\"sha256\":\"76af4db0b3af966ef4f95f4ffc6b4b2e34f1a95ef47f68e7299670a18b337d57\",\"layLuc\":\"2026-10-19T08:05:35.623Z\",\"viTri\":\"trang 1281, dòng mã 85402010 (sec-dash1)\"}}",
+        "nhan": "THAM_KHAO"
+      }
+    },
+    {
+      "ma": "854040",
+      "kieu": "TEN_LOAI",
+      "giaTri": "Ống hiển thị dữ liệu/đồ họa, đơn sắc; ống hiển thị/đồ họa, loại màu, với điểm lân quang có bước nhỏ hơn 0,4 mm",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L3",
+      "nhan": "THAM_KHAO",
+      "cachDoc": {
+        "vi": [],
+        "en": [],
+        "zh": [
+          "单色的数据/图形显示管；彩色的数据/图形显示管，屏幕荧光点间"
+        ]
+      },
+      "nguon": {
+        "tap": "data/bieu-thue/zh/hs6-zh.jsonl#854040",
+        "url": "http://gss.mof.gov.cn/gzdt/zhengcefabu/202512/P020251231607833453633.pdf",
+        "trich": "{\"hs6\":\"854040\",\"tenZh\":\"单色的数据/图形显示管；彩色的数据/图形显示管，屏幕荧光点间\",\"tenZhCha\":null,\"capKhop\":6,\"nguon\":{\"url\":\"http://gss.mof.gov.cn/gzdt/zhengcefabu/202512/P020251231607833453633.pdf\",\"sha256\":\"76af4db0b3af966ef4f95f4ffc6b4b2e34f1a95ef47f68e7299670a18b337d57\",\"layLuc\":\"2026-10-19T08:05:35.623Z\",\"viTri\":\"trang 1281, dòng mã 85404010 (sec-dash1)\"}}",
+        "nhan": "THAM_KHAO"
+      }
+    },
+    {
+      "ma": "85406000",
+      "kieu": "TEN_LOAI",
+      "giaTri": "Ống tia ca-tốt khác",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L3",
+      "nhan": "THAM_KHAO",
+      "cachDoc": {
+        "vi": [],
+        "en": [],
+        "zh": [
+          "其他阴极射线管"
+        ]
+      },
+      "nguon": {
+        "tap": "data/bieu-thue/zh/hs6-zh.jsonl#854060",
+        "url": "http://gss.mof.gov.cn/gzdt/zhengcefabu/202512/P020251231607833453633.pdf",
+        "trich": "{\"hs6\":\"854060\",\"tenZh\":\"其他阴极射线管\",\"tenZhCha\":null,\"capKhop\":6,\"nguon\":{\"url\":\"http://gss.mof.gov.cn/gzdt/zhengcefabu/202512/P020251231607833453633.pdf\",\"sha256\":\"76af4db0b3af966ef4f95f4ffc6b4b2e34f1a95ef47f68e7299670a18b337d57\",\"layLuc\":\"2026-10-19T08:05:35.623Z\",\"viTri\":\"trang 1281, dòng mã 85406010 (sec-dash1)\"}}",
+        "nhan": "THAM_KHAO"
+      }
+    },
+    {
+      "ma": "85407100",
+      "kieu": "TEN_LOAI",
+      "giaTri": "Magnetrons",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L3",
+      "nhan": "THAM_KHAO",
+      "cachDoc": {
+        "vi": [],
+        "en": [],
+        "zh": [
+          "磁控管"
+        ]
+      },
+      "nguon": {
+        "tap": "data/bieu-thue/zh/hs6-zh.jsonl#854071",
+        "url": "http://gss.mof.gov.cn/gzdt/zhengcefabu/202512/P020251231607833453633.pdf",
+        "trich": "{\"hs6\":\"854071\",\"tenZh\":\"磁控管\",\"tenZhCha\":\"微波管（例如，磁控管、速调管、行波管、返波管），但不包括栅控管\",\"capKhop\":6,\"nguon\":{\"url\":\"http://gss.mof.gov.cn/gzdt/zhengcefabu/202512/P020251231607833453633.pdf\",\"sha256\":\"76af4db0b3af966ef4f95f4ffc6b4b2e34f1a95ef47f68e7299670a18b337d57\",\"layLuc\":\"2026-10-19T08:05:35.623Z\",\"viTri\":\"trang 1282, dòng mã 85407100\"}}",
+        "nhan": "THAM_KHAO"
+      }
+    },
+    {
+      "ma": "85407900",
+      "kieu": "TEN_LOAI",
+      "giaTri": "Loại khác",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L3",
+      "nhan": "THAM_KHAO",
+      "cachDoc": {
+        "vi": [],
+        "en": [],
+        "zh": [
+          "速调管",
+          "行波管",
+          "返波管"
+        ]
+      },
+      "nguon": {
+        "tap": "data/bieu-thue/zh/hs6-zh.jsonl#854071",
+        "url": "http://gss.mof.gov.cn/gzdt/zhengcefabu/202512/P020251231607833453633.pdf",
+        "trich": "{\"hs6\":\"854071\",\"tenZh\":\"磁控管\",\"tenZhCha\":\"微波管（例如，磁控管、速调管、行波管、返波管），但不包括栅控管\",\"capKhop\":6,\"nguon\":{\"url\":\"http://gss.mof.gov.cn/gzdt/zhengcefabu/202512/P020251231607833453633.pdf\",\"sha256\":\"76af4db0b3af966ef4f95f4ffc6b4b2e34f1a95ef47f68e7299670a18b337d57\",\"layLuc\":\"2026-10-19T08:05:35.623Z\",\"viTri\":\"trang 1282, dòng mã 85407100\"}}",
+        "nhan": "THAM_KHAO"
+      }
+    },
+    {
+      "ma": "85408100",
+      "kieu": "TEN_LOAI",
+      "giaTri": "Đèn điện tử và ống điện tử của máy thu hoặc máy khuếch đại",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L3",
+      "nhan": "THAM_KHAO",
+      "cachDoc": {
+        "vi": [],
+        "en": [],
+        "zh": [
+          "接收管或放大管",
+          "接收管",
+          "放大管"
+        ]
+      },
+      "nguon": {
+        "tap": "data/bieu-thue/zh/hs6-zh.jsonl#854081",
+        "url": "http://gss.mof.gov.cn/gzdt/zhengcefabu/202512/P020251231607833453633.pdf",
+        "trich": "{\"hs6\":\"854081\",\"tenZh\":\"接收管或放大管\",\"tenZhCha\":\"其他管\",\"capKhop\":6,\"nguon\":{\"url\":\"http://gss.mof.gov.cn/gzdt/zhengcefabu/202512/P020251231607833453633.pdf\",\"sha256\":\"76af4db0b3af966ef4f95f4ffc6b4b2e34f1a95ef47f68e7299670a18b337d57\",\"layLuc\":\"2026-10-19T08:05:35.623Z\",\"viTri\":\"trang 1282, dòng mã 85408100\"}}",
+        "nhan": "THAM_KHAO"
+      }
+    },
+    {
+      "ma": "85409100",
+      "kieu": "TEN_LOAI",
+      "giaTri": "Của ống đèn tia ca-tốt",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L3",
+      "nhan": "THAM_KHAO",
+      "cachDoc": {
+        "vi": [],
+        "en": [],
+        "zh": [
+          "阴极射线管用"
+        ]
+      },
+      "nguon": {
+        "tap": "data/bieu-thue/zh/hs6-zh.jsonl#854091",
+        "url": "http://gss.mof.gov.cn/gzdt/zhengcefabu/202512/P020251231607833453633.pdf",
+        "trich": "{\"hs6\":\"854091\",\"tenZh\":\"阴极射线管用\",\"tenZhCha\":null,\"capKhop\":6,\"nguon\":{\"url\":\"http://gss.mof.gov.cn/gzdt/zhengcefabu/202512/P020251231607833453633.pdf\",\"sha256\":\"76af4db0b3af966ef4f95f4ffc6b4b2e34f1a95ef47f68e7299670a18b337d57\",\"layLuc\":\"2026-10-19T08:05:35.623Z\",\"viTri\":\"trang 1282, dòng mã 85409110 (sec-dash2)\"}}",
+        "nhan": "THAM_KHAO"
+      }
+    }
+  ]
+}
