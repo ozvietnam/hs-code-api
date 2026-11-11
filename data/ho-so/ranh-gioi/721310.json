@@ -4,7 +4,7 @@
   "nhom": "7213",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-721310",
@@ -46,6 +46,13 @@
       "loai": "BO_VE",
       "ve": "Có đường kính mặt cắt ngang hình tròn không quá 50 mm",
       "lyDo": "Đã lượng hóa qua duongKinh <= 50 mm"
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 721310:72131010 SUY RỘNG (nhẹ): chữ biểu 'Có đường kính mặt cắt ngang hình tròn không quá 50 mm' / EN 'Of circular cross-section measuring not exceeding 50 mm in diameter' nhưng điều kiện chỉ duongKinh ≤ 50 mm — bỏ giới hạn 'mặt cắt ngang hình tròn' (bộ tách gộp nó vào một vế với biên số nên cổng 5 báo 'phủ'). Hệ quả: thanh cuộn có gân mặt cắt vuông/lục giác (kích thước ≤50 mm) lấn .10 thay vì .90. Sửa: thêm hinhDangMatCatNgang TRONG [TRON] (tu-vung đã có, như 721499/721550/722850)."
     }
   ]
 }

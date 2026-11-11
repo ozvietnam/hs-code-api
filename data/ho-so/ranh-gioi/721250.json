@@ -4,7 +4,7 @@
   "nhom": "7212",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-721250",
@@ -217,6 +217,13 @@
       "ma": "72125094",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.72125094: \"Dạng đai và dải khác; tấm phổ dụng(SEN)\" ⇒ dangDaiDaiTamPhoDung DAI_DAI_HOAC_PHO_DUNG + phanConLai [72125093]"
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 721250:72125014 SUY RỘNG: chữ biểu 'Dạng đai và dải(SEN), chiều rộng trên 25 mm; tấm phổ dụng (SEN)' / EN 'Hoop and strip, of a width exceeding 25 mm; universal plates' nhưng điều kiện chỉ chieuRong > 25 mm — bỏ cả hai danh từ đầu có định nghĩa SEN. Hệ quả: tấm cắt sẵn (không phải đai/dải, không phải tấm phổ dụng) phủ oxit crôm rộng >25 mm lấn .14 thay vì .19 'Loại khác'. Cần HOAC(DAI_VA_DAI & chieuRong>25 ; TAM_PHO_DUNG). (B) 72125023, 72125093 'Dạng đai và dải(SEN), có chiều rộng không quá 25 mm' ⇒ chỉ chieuRong ≤25 — cùng lỗi bỏ dạng (tác động nhỏ hơn). Phụ: tiêu đề 7212502 'hợp kim nhôm - kẽm' nên dùng lopMaPhu NHOM_KEM (tu-vung đã có) thay TEN_LOAI."
     }
   ]
 }
