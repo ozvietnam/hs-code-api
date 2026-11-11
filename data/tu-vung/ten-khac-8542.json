@@ -1,0 +1,259 @@
+{
+  "phienBan": "ten-khac@1",
+  "nhom": "8542",
+  "tuVung": "tu-vung@2",
+  "ngay": "2026-11-11",
+  "chuaCoNguon": [
+    {
+      "ma": "85423100",
+      "cumDuKien": [
+        "chip xử lý",
+        "MCU",
+        "GPU",
+        "SoC"
+      ],
+      "lyDo": "Kho pháp lý nội bộ (biểu thuế, chú giải, SEN, TB-TCHQ, ý kiến WCO) chưa có nguyên văn nêu các cụm này; chưa có TCVN/QCVN nguyên văn trong kho. Theo luật CEO: ghi \"chưa có nguồn\", không tự viết."
+    },
+    {
+      "ma": "85423200",
+      "cumDuKien": [
+        "bộ nhớ flash",
+        "NAND flash",
+        "chip nhớ"
+      ],
+      "lyDo": "Chưa có nguyên văn L1/L2 trong kho nêu các cụm này. Ghi \"chưa có nguồn\"."
+    },
+    {
+      "ma": "85423300",
+      "cumDuKien": [
+        "op-amp",
+        "khuếch đại thuật toán"
+      ],
+      "lyDo": "Chưa có nguyên văn L1/L2 trong kho nêu các cụm này. Ghi \"chưa có nguồn\"."
+    },
+    {
+      "ma": "85423900",
+      "cumDuKien": [
+        "mạch logic",
+        "mảng cổng",
+        "mạch giao diện",
+        "FPGA",
+        "PMIC"
+      ],
+      "lyDo": "\"mạch logic\", \"mảng cổng\", \"mạch giao diện\" có nguyên văn trong chú giải nhóm 85.42 nhưng chỉ là ví dụ mạch tích hợp, chú giải không nêu phân nhóm; gán vào dòng Loại khác 8542.39 là suy luận loại trừ, không đưa vào tất định. \"mạch logic\" còn nằm trong vế \"có hoặc không kết hợp với…\" của 8542.31. FPGA, PMIC chưa có nguồn."
+    }
+  ],
+  "muc": [
+    {
+      "kieu": "TEN_LOAI",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "ma": "85423100",
+      "giaTri": "đơn vị xử lý",
+      "cachDoc": {
+        "vi": [
+          "bộ vi xử lý",
+          "vi xử lý",
+          "CPU"
+        ],
+        "en": [],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/precedents.json#11693/TCHQ-TXNK (outcome 85423100)",
+        "url": "https://vbpl.ts24.com.vn/support/solutions/articles/16000018330",
+        "trich": "Bộ vi xử lý máy tính (CPU, ví dụ Intel Core i3), kể cả loại nhập khẩu có gắn liền quạt tản nhiệt làm mát bộ vi xử lý",
+        "nhan": "NGUYEN_VAN"
+      },
+      "ghiChu": "Văn bản TCHQ trong data/precedents.json xếp \"Bộ vi xử lý máy tính (CPU…)\" vào 8542.31.00 \"Đơn vị xử lý…\"."
+    },
+    {
+      "kieu": "TEN_LOAI",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "ma": "85423100",
+      "giaTri": "đơn vị điều khiển",
+      "cachDoc": {
+        "vi": [
+          "vi điều khiển"
+        ],
+        "en": [],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/chu-giai-heading.json#8542.nhom",
+        "trich": "Mạch tích hợp điện tử bao gồm các bộ nhớ (ví dụ, DRAMS, SRAMs, PROMS, EPROMS, EEPROMS (hoặc E2PROMS)), vi điều khiển, mạch điều khiển, mạch logic, mảng cổng, mạch giao diện,….",
+        "nhan": "NGUYEN_VAN"
+      },
+      "ghiChu": "Chú giải nhóm 85.42 liệt kê \"vi điều khiển\" là mạch tích hợp; vi điều khiển là loại \"đơn vị điều khiển\" (EN 8542.31: controllers). Không lấy \"mạch điều khiển\" vì chú giải không nói nó thuộc 8542.31 hay 8542.39."
+    },
+    {
+      "kieu": "TEN_LOAI",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "ma": "85423100",
+      "giaTri": "đơn vị xử lý",
+      "cachDoc": {
+        "vi": [],
+        "en": [
+          "processors",
+          "controllers"
+        ],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz#85423100",
+        "trich": "- - Processors and controllers, whether or not combined with memories, converters, logic circuits, amplifiers, clock and timing circuits, or other circuits",
+        "nhan": "NGUYEN_VAN"
+      }
+    },
+    {
+      "kieu": "TEN_LOAI",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "ma": "85423200",
+      "giaTri": "bộ nhớ",
+      "cachDoc": {
+        "vi": [
+          "DRAM",
+          "SRAM",
+          "PROM",
+          "EPROM",
+          "EEPROM",
+          "E2PROM"
+        ],
+        "en": [],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/chu-giai-heading.json#8542.nhom",
+        "trich": "Mạch tích hợp điện tử bao gồm các bộ nhớ (ví dụ, DRAMS, SRAMs, PROMS, EPROMS, EEPROMS (hoặc E2PROMS)), vi điều khiển, mạch điều khiển, mạch logic, mảng cổng, mạch giao diện,….",
+        "nhan": "NGUYEN_VAN"
+      },
+      "ghiChu": "Chú giải nhóm 85.42: \"các bộ nhớ (ví dụ, DRAMS, SRAMs, PROMS, EPROMS, EEPROMS (hoặc E2PROMS))\" — cụm là dạng số ít, là chuỗi con của câu trích."
+    },
+    {
+      "kieu": "TEN_LOAI",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "ma": "85423200",
+      "giaTri": "bộ nhớ",
+      "cachDoc": {
+        "vi": [],
+        "en": [
+          "memories"
+        ],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz#85423200",
+        "trich": "- - Memories",
+        "nhan": "NGUYEN_VAN"
+      }
+    },
+    {
+      "kieu": "TEN_LOAI",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "ma": "85423300",
+      "giaTri": "mạch khuếch đại",
+      "cachDoc": {
+        "vi": [],
+        "en": [
+          "amplifiers"
+        ],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz#85423300",
+        "trich": "- - Amplifiers",
+        "nhan": "NGUYEN_VAN"
+      }
+    },
+    {
+      "ma": "85423100",
+      "kieu": "TEN_LOAI",
+      "giaTri": "đơn vị xử lý",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L3",
+      "nhan": "THAM_KHAO",
+      "cachDoc": {
+        "vi": [],
+        "en": [],
+        "zh": [
+          "处理器",
+          "控制器"
+        ]
+      },
+      "nguon": {
+        "tap": "data/bieu-thue/zh/hs6-zh.jsonl#854231",
+        "url": "http://gss.mof.gov.cn/gzdt/zhengcefabu/202512/P020251231607833453633.pdf",
+        "trich": "{\"hs6\":\"854231\",\"tenZh\":\"处理器及控制器，不论是否带有存储器、转换器、逻辑电路、放大器、时钟及时序电路或其他电路\",\"tenZhCha\":null,\"capKhop\":6,\"nguon\":{\"url\":\"http://gss.mof.gov.cn/gzdt/zhengcefabu/202512/P020251231607833453633.pdf\",\"sha256\":\"76af4db0b3af966ef4f95f4ffc6b4b2e34f1a95ef47f68e7299670a18b337d57\",\"layLuc\":\"2026-10-19T08:05:35.623Z\",\"viTri\":\"trang 1286, dòng mã 85423111 (sec-dash2)\"}}",
+        "nhan": "THAM_KHAO"
+      }
+    },
+    {
+      "ma": "85423200",
+      "kieu": "TEN_LOAI",
+      "giaTri": "bộ nhớ",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L3",
+      "nhan": "THAM_KHAO",
+      "cachDoc": {
+        "vi": [],
+        "en": [],
+        "zh": [
+          "存储器"
+        ]
+      },
+      "nguon": {
+        "tap": "data/bieu-thue/zh/hs6-zh.jsonl#854232",
+        "url": "http://gss.mof.gov.cn/gzdt/zhengcefabu/202512/P020251231607833453633.pdf",
+        "trich": "{\"hs6\":\"854232\",\"tenZh\":\"存储器\",\"tenZhCha\":\"集成电路\",\"capKhop\":6,\"nguon\":{\"url\":\"http://gss.mof.gov.cn/gzdt/zhengcefabu/202512/P020251231607833453633.pdf\",\"sha256\":\"76af4db0b3af966ef4f95f4ffc6b4b2e34f1a95ef47f68e7299670a18b337d57\",\"layLuc\":\"2026-10-19T08:05:35.623Z\",\"viTri\":\"trang 1286, dòng mã 85423210 (sec-dash2)\"}}",
+        "nhan": "THAM_KHAO"
+      }
+    },
+    {
+      "ma": "85423300",
+      "kieu": "TEN_LOAI",
+      "giaTri": "mạch khuếch đại",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L3",
+      "nhan": "THAM_KHAO",
+      "cachDoc": {
+        "vi": [],
+        "en": [],
+        "zh": [
+          "放大器"
+        ]
+      },
+      "nguon": {
+        "tap": "data/bieu-thue/zh/hs6-zh.jsonl#854233",
+        "url": "http://gss.mof.gov.cn/gzdt/zhengcefabu/202512/P020251231607833453633.pdf",
+        "trich": "{\"hs6\":\"854233\",\"tenZh\":\"放大器\",\"tenZhCha\":\"集成电路\",\"capKhop\":6,\"nguon\":{\"url\":\"http://gss.mof.gov.cn/gzdt/zhengcefabu/202512/P020251231607833453633.pdf\",\"sha256\":\"76af4db0b3af966ef4f95f4ffc6b4b2e34f1a95ef47f68e7299670a18b337d57\",\"layLuc\":\"2026-10-19T08:05:35.623Z\",\"viTri\":\"trang 1286, dòng mã 85423310 (sec-dash2)\"}}",
+        "nhan": "THAM_KHAO"
+      }
+    },
+    {
+      "ma": "85429000",
+      "kieu": "TEN_LOAI",
+      "giaTri": "Bộ phận",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L3",
+      "nhan": "THAM_KHAO",
+      "cachDoc": {
+        "vi": [],
+        "en": [],
+        "zh": [
+          "零件"
+        ]
+      },
+      "nguon": {
+        "tap": "data/bieu-thue/zh/hs6-zh.jsonl#854290",
+        "url": "http://gss.mof.gov.cn/gzdt/zhengcefabu/202512/P020251231607833453633.pdf",
+        "trich": "{\"hs6\":\"854290\",\"tenZh\":\"零件\",\"tenZhCha\":\"集成电路\",\"capKhop\":6,\"nguon\":{\"url\":\"http://gss.mof.gov.cn/gzdt/zhengcefabu/202512/P020251231607833453633.pdf\",\"sha256\":\"76af4db0b3af966ef4f95f4ffc6b4b2e34f1a95ef47f68e7299670a18b337d57\",\"layLuc\":\"2026-10-19T08:05:35.623Z\",\"viTri\":\"trang 1287, dòng mã 85429000\"}}",
+        "nhan": "THAM_KHAO"
+      }
+    }
+  ]
+}

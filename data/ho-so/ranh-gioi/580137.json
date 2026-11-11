@@ -117,6 +117,16 @@
       "ma": "580137",
       "loai": "QUYET_DINH",
       "ghiChu": "Đặc trưng chung của phân nhóm (wco.580137 \"Fabrics; woven pile, of man-made fibres, warp pile fabrics, other than fabrics of heading no. 5802 or 5806\") chung cho cả bốn dòng nên không mã hoá thành điều kiện của dòng; gói soạn chỉ nêu chú giải (nhom5801.nhom 4.473 / ch58.chuong 2.716 / phan58.phan 46.130) kèm độ dài, không kèm câu chữ ⇒ điều kiện chỉ dựa trên chữ biểu của chính dòng."
+    },
+    {
+      "ma": "580137",
+      "loai": "DUNG",
+      "ghiChu": "Claude (#1109, 11/11): [TỪ VỰNG] cong1-khong-phu-kin tại 5801371/5801379 với vector kieuDet=VAN_DIEM — vector này TRÁI tên phân nhóm tieuDe.580137 \"Vải có sợi dọc nổi vòng\" (wco.580137 \"woven pile … warp pile fabrics\"), không phải khe hở; cách đúng là khai phạm vi dieuKienNut[\"580137\"] (phụ lục #1109) = kieuDet TRONG [NOI_VONG_DA_CAT, NOI_VONG_CHUA_CAT]. Vướng: cổng 3 đòi câu trích có cách đọc của TỪNG giá trị, mà tên phân nhóm chỉ nói \"nổi vòng\" (không nói đã/chưa cắt); chú giải nhóm 5801 chỉ có \"vải nổi vòng chưa cắt\" ở đoạn sợi dọc, còn \"nổi vòng đã cắt\" chỉ ở đoạn vải SỢI NGANG (5801.x2/x3) — trích đoạn đó cho phạm vi sợi dọc là sai nguồn. CẦN: từ vựng @2 thêm cho kieuDet giá trị cha (vd NOI_VONG \"vải nổi vòng (pile)\", đọc nổi\\s+vòng | pile, giaTriCha ⊃ NOI_VONG_DA_CAT, NOI_VONG_CHUA_CAT) — rồi khai dieuKienNut[\"580137\"] {nguon tieuDe.580137, trich \"Vải có sợi dọc nổi vòng\", kieuDet TRONG [NOI_VONG]}."
+    },
+    {
+      "ma": "580137",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude (#1109, 11/11): không đổi điều kiện nào; thử khai phạm vi dieuKienNut[\"580137\"] kieuDet TRONG [NOI_VONG_DA_CAT, NOI_VONG_CHUA_CAT] nhưng cổng 3 báo dieu-kien-so-trong-khong-co-trong-trich:NOI_VONG_DA_CAT (tên phân nhóm không nói đã/chưa cắt) ⇒ gỡ, để ĐỎ + ghi chú DUNG [TỪ VỰNG] bên dưới, không ép xanh."
     }
   ]
 }
