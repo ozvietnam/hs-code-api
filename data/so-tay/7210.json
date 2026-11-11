@@ -1,1377 +1,2035 @@
 {
- "nhom": "7210",
- "phamVi": {
-  "text": "Sản phẩm sắt hoặc thép không hợp kim cán phẳng, có chiều rộng từ 600 mm trở lên, đã được phủ, mạ hoặc tráng.",
-  "nguon": "nhom7210.nhom",
-  "trich": "Nhóm này bao gồm cùng một dạng sản phẩm như được mô tả trong nhóm 72.08 hoặc 72.09, nhưng để xếp vào nhóm này chúng phải được phủ, mạ hoặc tráng.",
-  "nguonLoai": "AI_DA_KIEM"
- },
- "dieuKienVao": [
-  {
-   "fact": "la_san_pham_can_phang_da_duoc_phu_ma_hoac_trang",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "nhom7210.nhom",
-   "trich": "Nhóm này bao gồm cùng một dạng sản phẩm như được mô tả trong nhóm 72.08 hoặc 72.09, nhưng để xếp vào nhóm này chúng phải được phủ, mạ hoặc tráng.",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "loaiTru": [
-  {
-   "dieuKien": "Các sản phẩm thuộc nhóm 83.10",
-   "sangNhom": "8310",
-   "nguon": "nhom7210.nhom",
-   "trich": "(b) Các sản phẩm thuộc nhóm 83.10.",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "phanBiet": [
-  {
-   "hoi": "Hàng hoá có phải là sản phẩm thuộc nhóm 83.10?",
-   "neuCo": "8310",
-   "neuKhong": "7210",
-   "nguon": "nhom7210.nhom",
-   "trich": "(b) Các sản phẩm thuộc nhóm 83.10.",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "tieuChi6": [
-  {
-   "hs6": "721011",
-   "fact": "thickness",
-   "op": ">=",
-   "value": 0.5,
-   "donVi": "mm",
-   "nguon": "wco.721011",
-   "trich": "thickness of 0.5mm or more",
-   "nguonLoai": "AI_DA_KIEM"
+  "nhom": "7210",
+  "phamVi": {
+    "text": "Sản phẩm sắt hoặc thép không hợp kim cán phẳng, có chiều rộng từ 600 mm trở lên, đã được phủ, mạ hoặc tráng.",
+    "nguon": "nhom7210.nhom",
+    "trich": "Nhóm này bao gồm cùng một dạng sản phẩm như được mô tả trong nhóm 72.08 hoặc 72.09, nhưng để xếp vào nhóm này chúng phải được phủ, mạ hoặc tráng.",
+    "nguonLoai": "AI_DA_KIEM"
   },
-  {
-   "hs6": "721012",
-   "fact": "thickness",
-   "op": "<",
-   "value": 0.5,
-   "donVi": "mm",
-   "nguon": "wco.721012",
-   "trich": "thickness of less than 0.5mm",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "dong8": [
-  {
-   "hs": "72101110",
-   "dieuKien": "Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng",
-   "loaiKhac": false,
-   "nguon": "tax.72101110",
-   "trich": "72101110 - - - Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72101190",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.72101190",
-   "trich": "72101190 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "721011",
-    "truAnhEm": [
-     "72101110"
-    ],
-    "truDayDu": [
-     "72101110"
-    ],
-    "toTienCoTen": "721011",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "72101210",
-   "dieuKien": "Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng",
-   "loaiKhac": false,
-   "nguon": "tax.72101210",
-   "trich": "72101210 - - - Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72101290",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.72101290",
-   "trich": "72101290 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "721012",
-    "truAnhEm": [
-     "72101210"
-    ],
-    "truDayDu": [
-     "72101210"
-    ],
-    "toTienCoTen": "721012",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "72102010",
-   "dieuKien": "Có hàm lượng carbon dưới 0,6% tính theo khối lượng và chiều dày không quá 1,5 mm",
-   "loaiKhac": false,
-   "nguon": "tax.72102010",
-   "trich": "72102010 - - Có hàm lượng carbon dưới 0,6% tính theo khối lượng và chiều dày không quá 1,5 mm",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72102090",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.72102090",
-   "trich": "72102090 - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "721020",
-    "truAnhEm": [
-     "72102010"
-    ],
-    "truDayDu": [
-     "72102010"
-    ],
-    "toTienCoTen": "721020",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "72103011",
-   "dieuKien": "Chiều dày không quá 1,2 mm",
-   "loaiKhac": false,
-   "nguon": "tax.72103011",
-   "trich": "72103011 - - - Chiều dày không quá 1,2 mm",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72103012",
-   "dieuKien": "Chiều dày trên 1,2 mm nhưng không quá 1,5 mm",
-   "loaiKhac": false,
-   "nguon": "tax.72103012",
-   "trich": "72103012 - - - Chiều dày trên 1,2 mm nhưng không quá 1,5 mm",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72103019",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.72103019",
-   "trich": "72103019 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "7210301",
-    "truAnhEm": [
-     "72103011",
-     "72103012"
-    ],
-    "truDayDu": [
-     "72103011",
-     "72103012"
-    ],
-    "toTienCoTen": "721030",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "72103091",
-   "dieuKien": "Chiều dày không quá 1,2 mm",
-   "loaiKhac": false,
-   "nguon": "tax.72103091",
-   "trich": "72103091 - - - Chiều dày không quá 1,2 mm",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72103099",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.72103099",
-   "trich": "72103099 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "7210309",
-    "truAnhEm": [
-     "72103091"
-    ],
-    "truDayDu": [
-     "72103091",
-     "7210301"
-    ],
-    "toTienCoTen": "721030",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "72104111",
-   "dieuKien": "Chiều dày không quá 1,2 mm",
-   "loaiKhac": false,
-   "nguon": "tax.72104111",
-   "trich": "72104111 - - - - Chiều dày không quá 1,2 mm",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72104112",
-   "dieuKien": "Chiều dày trên 1,2 mm nhưng không quá 1,5 mm",
-   "loaiKhac": false,
-   "nguon": "tax.72104112",
-   "trich": "72104112 - - - - Chiều dày trên 1,2 mm nhưng không quá 1,5 mm",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72104119",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.72104119",
-   "trich": "72104119 - - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "7210411",
-    "truAnhEm": [
-     "72104111",
-     "72104112"
-    ],
-    "truDayDu": [
-     "72104111",
-     "72104112"
-    ],
-    "toTienCoTen": "721041",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "72104191",
-   "dieuKien": "Chiều dày không quá 1,2 mm",
-   "loaiKhac": false,
-   "nguon": "tax.72104191",
-   "trich": "72104191 - - - - Chiều dày không quá 1,2 mm",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72104199",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.72104199",
-   "trich": "72104199 - - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "7210419",
-    "truAnhEm": [
-     "72104191"
-    ],
-    "truDayDu": [
-     "72104191",
-     "7210411"
-    ],
-    "toTienCoTen": "721041",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "72104911",
-   "dieuKien": "Được phủ, mạ hoặc tráng kẽm bằng phương pháp hợp kim hóa bề mặt, có hàm lượng carbon dưới 0,04% tính theo khối lượng và chiều dày không quá 1,2 mm",
-   "loaiKhac": false,
-   "nguon": "tax.72104911",
-   "trich": "72104911 - - - - Được phủ, mạ hoặc tráng kẽm bằng phương pháp hợp kim hóa bề mặt, có hàm lượng carbon dưới 0,04% tính theo khối lượng và chiều dày không quá 1,2 mm",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72104914",
-   "dieuKien": "Được phủ, mạ hoặc tráng bằng hợp kim kẽm – nhôm - magiê, có chiều dày không quá 1,2 mm",
-   "loaiKhac": false,
-   "nguon": "tax.72104914",
-   "trich": "72104914 - - - - Được phủ, mạ hoặc tráng bằng hợp kim kẽm – nhôm - magiê, có chiều dày không quá 1,2 mm",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72104915",
-   "dieuKien": "Được phủ, mạ hoặc tráng bằng hợp kim kẽm – nhôm - magiê, có chiều dày trên 1,2 mm nhưng không quá 1,5 mm",
-   "loaiKhac": false,
-   "nguon": "tax.72104915",
-   "trich": "72104915 - - - - Được phủ, mạ hoặc tráng bằng hợp kim kẽm – nhôm - magiê, có chiều dày trên 1,2 mm nhưng không quá 1,5 mm",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72104916",
-   "dieuKien": "Được phủ, mạ hoặc tráng bằng hợp kim kẽm – nhôm - magiê, có chiều dày trên 1,5 mm",
-   "loaiKhac": false,
-   "nguon": "tax.72104916",
-   "trich": "72104916 - - - - Được phủ, mạ hoặc tráng bằng hợp kim kẽm – nhôm - magiê, có chiều dày trên 1,5 mm",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72104917",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.72104917",
-   "trich": "72104917 - - - - Loại khác, chiều dày không quá 1,2 mm",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "7210491",
-    "truAnhEm": [
-     "72104911",
-     "72104914",
-     "72104915",
-     "72104916",
-     "72104918"
-    ],
-    "truDayDu": [
-     "72104911",
-     "72104914",
-     "72104915",
-     "72104916",
-     "72104918"
-    ],
-    "toTienCoTen": "721049",
-    "dinhNghiaDuoc": false
-   }
-  },
-  {
-   "hs": "72104918",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.72104918",
-   "trich": "72104918 - - - - Loại khác, chiều dày trên 1,2 mm nhưng không quá 1,5 mm",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "7210491",
-    "truAnhEm": [
-     "72104911",
-     "72104914",
-     "72104915",
-     "72104916",
-     "72104917"
-    ],
-    "truDayDu": [
-     "72104911",
-     "72104914",
-     "72104915",
-     "72104916",
-     "72104917"
-    ],
-    "toTienCoTen": "721049",
-    "dinhNghiaDuoc": false
-   }
-  },
-  {
-   "hs": "72104919",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.72104919",
-   "trich": "72104919 - - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "7210491",
-    "truAnhEm": [
-     "72104911",
-     "72104914",
-     "72104915",
-     "72104916",
-     "72104917",
-     "72104918"
-    ],
-    "truDayDu": [
-     "72104911",
-     "72104914",
-     "72104915",
-     "72104916",
-     "72104917",
-     "72104918"
-    ],
-    "toTienCoTen": "721049",
-    "dinhNghiaDuoc": false
-   }
-  },
-  {
-   "hs": "72104991",
-   "dieuKien": "Chiều dày không quá 1,2 mm",
-   "loaiKhac": false,
-   "nguon": "tax.72104991",
-   "trich": "72104991 - - - - Chiều dày không quá 1,2 mm",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72104999",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.72104999",
-   "trich": "72104999 - - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "7210499",
-    "truAnhEm": [
-     "72104991"
-    ],
-    "truDayDu": [
-     "72104991",
-     "7210491"
-    ],
-    "toTienCoTen": "721049",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "72105000",
-   "dieuKien": "Được phủ, mạ hoặc tráng bằng oxit crom hoặc bằng crom và oxit crom",
-   "loaiKhac": false,
-   "nguon": "tax.72105000",
-   "trich": "72105000 - Được phủ, mạ hoặc tráng bằng oxit crom hoặc bằng crom và oxit crom",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72106111",
-   "dieuKien": "Chiều dày không quá 1,2 mm",
-   "loaiKhac": false,
-   "nguon": "tax.72106111",
-   "trich": "72106111 - - - - Chiều dày không quá 1,2 mm",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72106112",
-   "dieuKien": "Chiều dày trên 1,2 mm nhưng không quá 1,5 mm",
-   "loaiKhac": false,
-   "nguon": "tax.72106112",
-   "trich": "72106112 - - - - Chiều dày trên 1,2 mm nhưng không quá 1,5 mm",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72106119",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.72106119",
-   "trich": "72106119 - - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "7210611",
-    "truAnhEm": [
-     "72106111",
-     "72106112"
-    ],
-    "truDayDu": [
-     "72106111",
-     "72106112"
-    ],
-    "toTienCoTen": "721061",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "72106191",
-   "dieuKien": "Chiều dày không quá 1,2 mm",
-   "loaiKhac": false,
-   "nguon": "tax.72106191",
-   "trich": "72106191 - - - - Chiều dày không quá 1,2 mm",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72106192",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.72106192",
-   "trich": "72106192 - - - - Loại khác, dạng lượn sóng",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "7210619",
-    "truAnhEm": [
-     "72106191"
-    ],
-    "truDayDu": [
-     "72106191",
-     "7210611"
-    ],
-    "toTienCoTen": "721061",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "72106199",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.72106199",
-   "trich": "72106199 - - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "7210619",
-    "truAnhEm": [
-     "72106191",
-     "72106192"
-    ],
-    "truDayDu": [
-     "72106191",
-     "72106192",
-     "7210611"
-    ],
-    "toTienCoTen": "721061",
-    "dinhNghiaDuoc": false
-   }
-  },
-  {
-   "hs": "72106911",
-   "dieuKien": "Chiều dày không quá 1,2 mm",
-   "loaiKhac": false,
-   "nguon": "tax.72106911",
-   "trich": "72106911 - - - - Chiều dày không quá 1,2 mm",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72106919",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.72106919",
-   "trich": "72106919 - - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "7210691",
-    "truAnhEm": [
-     "72106911"
-    ],
-    "truDayDu": [
-     "72106911"
-    ],
-    "toTienCoTen": "721069",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "72106991",
-   "dieuKien": "Chiều dày không quá 1,2 mm",
-   "loaiKhac": false,
-   "nguon": "tax.72106991",
-   "trich": "72106991 - - - - Chiều dày không quá 1,2 mm",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72106999",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.72106999",
-   "trich": "72106999 - - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "7210699",
-    "truAnhEm": [
-     "72106991"
-    ],
-    "truDayDu": [
-     "72106991",
-     "7210691"
-    ],
-    "toTienCoTen": "721069",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "72107012",
-   "dieuKien": "Được sơn sau khi phủ, mạ kẽm",
-   "loaiKhac": false,
-   "nguon": "tax.72107012",
-   "trich": "72107012 - - - Được sơn sau khi phủ, mạ kẽm",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72107013",
-   "dieuKien": "Được sơn sau khi phủ, mạ bằng hợp kim nhôm - kẽm",
-   "loaiKhac": false,
-   "nguon": "tax.72107013",
-   "trich": "72107013 - - - Được sơn sau khi phủ, mạ bằng hợp kim nhôm - kẽm",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72107019",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.72107019",
-   "trich": "72107019 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "7210701",
-    "truAnhEm": [
-     "72107012",
-     "72107013"
-    ],
-    "truDayDu": [
-     "72107012",
-     "72107013"
-    ],
-    "toTienCoTen": "721070",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "72107021",
-   "dieuKien": "Được sơn",
-   "loaiKhac": false,
-   "nguon": "tax.72107021",
-   "trich": "72107021 - - - Được sơn",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72107029",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.72107029",
-   "trich": "72107029 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "7210702",
-    "truAnhEm": [
-     "72107021"
-    ],
-    "truDayDu": [
-     "72107021",
-     "7210701",
-     "7210709"
-    ],
-    "toTienCoTen": "721070",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "72107091",
-   "dieuKien": "Được sơn",
-   "loaiKhac": false,
-   "nguon": "tax.72107091",
-   "trich": "72107091 - - - Được sơn",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72107099",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.72107099",
-   "trich": "72107099 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "7210709",
-    "truAnhEm": [
-     "72107091"
-    ],
-    "truDayDu": [
-     "72107091",
-     "7210701",
-     "7210702"
-    ],
-    "toTienCoTen": "721070",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "72109010",
-   "dieuKien": "Có hàm lượng carbon dưới 0,6% tính theo khối lượng và chiều dày không quá 1,5 mm",
-   "loaiKhac": false,
-   "nguon": "tax.72109010",
-   "trich": "72109010 - - Có hàm lượng carbon dưới 0,6% tính theo khối lượng và chiều dày không quá 1,5 mm",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72109090",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.72109090",
-   "trich": "72109090 - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "721090",
-    "truAnhEm": [
-     "72109010"
-    ],
-    "truDayDu": [
-     "72109010"
-    ],
-    "toTienCoTen": "721090",
-    "dinhNghiaDuoc": true
-   }
-  }
- ],
- "cay": {
-  "nguonLoai": "MAY_SUY",
-  "sinhTu": "lib/hs-tree.js",
-  "nut": [
-   {
-    "id": "7210",
-    "cap": 4,
-    "cha": "72",
-    "tenVi": "Các sản phẩm sắt hoặc thép không hợp kim được cán phẳng, có chiều rộng từ 600mm trở lên, đã dát phủ (clad), phủ, mạ (coated) hoặc tráng (plated) (+).",
-    "tenEn": "Iron or non-alloy steel; flat-rolled products, width 600mm or more, clad, plated or coated",
-    "suyRa": false
-   },
-   {
-    "id": "72101",
-    "cap": "NHOM_MOT_GACH",
-    "cha": "7210",
-    "tenVi": "Được phủ, mạ hoặc tráng thiếc",
-    "tenEn": null,
-    "suyRa": true
-   },
-   {
-    "id": "721011",
-    "cap": 6,
-    "cha": "72101",
-    "tenVi": "Có chiều dày từ 0,5 mm trở lên",
-    "tenEn": "Iron or non-alloy steel; flat-rolled, width 600mm or more, plated or coated with tin, thickness of 0.5mm or more",
-    "suyRa": false
-   },
-   {
-    "id": "72101110",
-    "cap": 8,
-    "cha": "721011",
-    "tenVi": "Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72101190",
-    "cap": 8,
-    "cha": "721011",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "721012",
-    "cap": 6,
-    "cha": "72101",
-    "tenVi": "Có chiều dày dưới 0,5 mm",
-    "tenEn": "Iron or non-alloy steel; flat-rolled, width 600mm or more, plated or coated with tin, thickness of less than 0.5mm",
-    "suyRa": false
-   },
-   {
-    "id": "72101210",
-    "cap": 8,
-    "cha": "721012",
-    "tenVi": "Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72101290",
-    "cap": 8,
-    "cha": "721012",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "721020",
-    "cap": 6,
-    "cha": "7210",
-    "tenVi": "Được phủ, mạ hoặc tráng chì, kể cả hợp kim chì thiếc",
-    "tenEn": "Iron or non-alloy steel; flat-rolled, width 600mm or more, plated or coated with lead, including terne-plate",
-    "suyRa": false
-   },
-   {
-    "id": "72102010",
-    "cap": 8,
-    "cha": "721020",
-    "tenVi": "Có hàm lượng carbon dưới 0,6% tính theo khối lượng và chiều dày không quá 1,5 mm",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72102090",
-    "cap": 8,
-    "cha": "721020",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "721030",
-    "cap": 6,
-    "cha": "7210",
-    "tenVi": "Được phủ, mạ hoặc tráng kẽm bằng phương pháp điện phân",
-    "tenEn": "Iron or non-alloy steel; flat-rolled, width 600mm or more, electrolytically plated or coated with zinc",
-    "suyRa": false
-   },
-   {
-    "id": "7210301",
-    "cap": "TIEU_DE_QG",
-    "cha": "721030",
-    "tenVi": "Có hàm lượng carbon dưới 0,6% tính theo khối lượng",
-    "tenEn": "Containing by weight less than 0.6% of carbon",
-    "suyRa": true
-   },
-   {
-    "id": "72103011",
-    "cap": 8,
-    "cha": "7210301",
-    "tenVi": "Chiều dày không quá 1,2 mm",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72103012",
-    "cap": 8,
-    "cha": "7210301",
-    "tenVi": "Chiều dày trên 1,2 mm nhưng không quá 1,5 mm",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72103019",
-    "cap": 8,
-    "cha": "7210301",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "7210309",
-    "cap": "TIEU_DE_QG",
-    "cha": "721030",
-    "tenVi": "Loại khác",
-    "tenEn": "Other",
-    "suyRa": true
-   },
-   {
-    "id": "72103091",
-    "cap": 8,
-    "cha": "7210309",
-    "tenVi": "Chiều dày không quá 1,2 mm",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72103099",
-    "cap": 8,
-    "cha": "7210309",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "72104",
-    "cap": "NHOM_MOT_GACH",
-    "cha": "7210",
-    "tenVi": "Được phủ, mạ hoặc tráng kẽm bằng phương pháp khác",
-    "tenEn": "Otherwise plated or coated with zinc",
-    "suyRa": true
-   },
-   {
-    "id": "721041",
-    "cap": 6,
-    "cha": "72104",
-    "tenVi": "Dạng lượn sóng",
-    "tenEn": "Iron or non-alloy steel; flat-rolled, width 600mm or more, corrugated, plated or coated with zinc (not electrolytically)",
-    "suyRa": false
-   },
-   {
-    "id": "7210411",
-    "cap": "TIEU_DE_QG",
-    "cha": "721041",
-    "tenVi": "Có hàm lượng carbon dưới 0,6% tính theo khối lượng",
-    "tenEn": "Containing by weight less than 0.6% of carbon",
-    "suyRa": true
-   },
-   {
-    "id": "72104111",
-    "cap": 8,
-    "cha": "7210411",
-    "tenVi": "Chiều dày không quá 1,2 mm",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72104112",
-    "cap": 8,
-    "cha": "7210411",
-    "tenVi": "Chiều dày trên 1,2 mm nhưng không quá 1,5 mm",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72104119",
-    "cap": 8,
-    "cha": "7210411",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "7210419",
-    "cap": "TIEU_DE_QG",
-    "cha": "721041",
-    "tenVi": "Loại khác",
-    "tenEn": "Other",
-    "suyRa": true
-   },
-   {
-    "id": "72104191",
-    "cap": 8,
-    "cha": "7210419",
-    "tenVi": "Chiều dày không quá 1,2 mm",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72104199",
-    "cap": 8,
-    "cha": "7210419",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "721049",
-    "cap": 6,
-    "cha": "72104",
-    "tenVi": "Loại khác",
-    "tenEn": "Iron or non-alloy steel; flat-rolled, width 600mm or more, (not corrugated), plated or coated with zinc (not electrolytically)",
-    "suyRa": false
-   },
-   {
-    "id": "7210491",
-    "cap": "TIEU_DE_QG",
-    "cha": "721049",
-    "tenVi": "Có hàm lượng carbon dưới 0,6% tính theo khối lượng",
-    "tenEn": "Containing by weight less than 0.6% of carbon",
-    "suyRa": true
-   },
-   {
-    "id": "72104911",
-    "cap": 8,
-    "cha": "7210491",
-    "tenVi": "Được phủ, mạ hoặc tráng kẽm bằng phương pháp hợp kim hóa bề mặt, có hàm lượng carbon dưới 0,04% tính theo khối lượng và chiều dày không quá 1,2 mm",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72104914",
-    "cap": 8,
-    "cha": "7210491",
-    "tenVi": "Được phủ, mạ hoặc tráng bằng hợp kim kẽm – nhôm - magiê, có chiều dày không quá 1,2 mm",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72104915",
-    "cap": 8,
-    "cha": "7210491",
-    "tenVi": "Được phủ, mạ hoặc tráng bằng hợp kim kẽm – nhôm - magiê, có chiều dày trên 1,2 mm nhưng không quá 1,5 mm",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72104916",
-    "cap": 8,
-    "cha": "7210491",
-    "tenVi": "Được phủ, mạ hoặc tráng bằng hợp kim kẽm – nhôm - magiê, có chiều dày trên 1,5 mm",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72104917",
-    "cap": 8,
-    "cha": "7210491",
-    "tenVi": "Loại khác, chiều dày không quá 1,2 mm",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "72104918",
-    "cap": 8,
-    "cha": "7210491",
-    "tenVi": "Loại khác, chiều dày trên 1,2 mm nhưng không quá 1,5 mm",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "72104919",
-    "cap": 8,
-    "cha": "7210491",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "7210499",
-    "cap": "TIEU_DE_QG",
-    "cha": "721049",
-    "tenVi": "Loại khác",
-    "tenEn": "Other",
-    "suyRa": true
-   },
-   {
-    "id": "72104991",
-    "cap": 8,
-    "cha": "7210499",
-    "tenVi": "Chiều dày không quá 1,2 mm",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72104999",
-    "cap": 8,
-    "cha": "7210499",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "72105000",
-    "cap": 8,
-    "cha": "7210",
-    "tenVi": "Được phủ, mạ hoặc tráng bằng oxit crom hoặc bằng crom và oxit crom",
-    "tenEn": "Iron or non-alloy steel; flat-rolled, width 600mm or more, plated or coated with chromium oxides or with chromium and chromium oxides",
-    "suyRa": false,
-    "laPhanNhom": "721050"
-   },
-   {
-    "id": "72106",
-    "cap": "NHOM_MOT_GACH",
-    "cha": "7210",
-    "tenVi": "Được phủ, mạ hoặc tráng nhôm",
-    "tenEn": null,
-    "suyRa": true
-   },
-   {
-    "id": "721061",
-    "cap": 6,
-    "cha": "72106",
-    "tenVi": "Được phủ, mạ hoặc tráng hợp kim nhôm - kẽm",
-    "tenEn": "Iron or non-alloy steel; flat-rolled, width 600mm or more, plated or coated with aluminium zinc-alloys",
-    "suyRa": false
-   },
-   {
-    "id": "7210611",
-    "cap": "TIEU_DE_QG",
-    "cha": "721061",
-    "tenVi": "Có hàm lượng carbon dưới 0,6% tính theo khối lượng",
-    "tenEn": "Containing by weight less than 0.6% of carbon",
-    "suyRa": true
-   },
-   {
-    "id": "72106111",
-    "cap": 8,
-    "cha": "7210611",
-    "tenVi": "Chiều dày không quá 1,2 mm",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72106112",
-    "cap": 8,
-    "cha": "7210611",
-    "tenVi": "Chiều dày trên 1,2 mm nhưng không quá 1,5 mm",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72106119",
-    "cap": 8,
-    "cha": "7210611",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "7210619",
-    "cap": "TIEU_DE_QG",
-    "cha": "721061",
-    "tenVi": "Loại khác",
-    "tenEn": "Other",
-    "suyRa": true
-   },
-   {
-    "id": "72106191",
-    "cap": 8,
-    "cha": "7210619",
-    "tenVi": "Chiều dày không quá 1,2 mm",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72106192",
-    "cap": 8,
-    "cha": "7210619",
-    "tenVi": "Loại khác, dạng lượn sóng",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "72106199",
-    "cap": 8,
-    "cha": "7210619",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "721069",
-    "cap": 6,
-    "cha": "72106",
-    "tenVi": "Loại khác",
-    "tenEn": "Iron or non-alloy steel; flat-rolled, width 600mm or more, plated or coated with aluminium, other than plated or coated with aluminium zinc-alloys",
-    "suyRa": false
-   },
-   {
-    "id": "7210691",
-    "cap": "TIEU_DE_QG",
-    "cha": "721069",
-    "tenVi": "Có hàm lượng carbon dưới 0,6% tính theo khối lượng",
-    "tenEn": "Containing by weight less than 0.6% of carbon",
-    "suyRa": true
-   },
-   {
-    "id": "72106911",
-    "cap": 8,
-    "cha": "7210691",
-    "tenVi": "Chiều dày không quá 1,2 mm",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72106919",
-    "cap": 8,
-    "cha": "7210691",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "7210699",
-    "cap": "TIEU_DE_QG",
-    "cha": "721069",
-    "tenVi": "Loại khác",
-    "tenEn": "Other",
-    "suyRa": true
-   },
-   {
-    "id": "72106991",
-    "cap": 8,
-    "cha": "7210699",
-    "tenVi": "Chiều dày không quá 1,2 mm",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72106999",
-    "cap": 8,
-    "cha": "7210699",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "721070",
-    "cap": 6,
-    "cha": "7210",
-    "tenVi": "Được sơn, quét vécni hoặc phủ plastic",
-    "tenEn": "Iron or non-alloy steel; flat-rolled, width 600mm or more, painted, varnished or coated with plastics",
-    "suyRa": false
-   },
-   {
-    "id": "7210701",
-    "cap": "TIEU_DE_QG",
-    "cha": "721070",
-    "tenVi": "Có hàm lượng carbon dưới 0,6% tính theo khối lượng và chiều dày không quá 1,5 mm",
-    "tenEn": "Containing by weight less than 0.6% of carbon and of a thickness of 1.5 mm or less",
-    "suyRa": true
-   },
-   {
-    "id": "72107012",
-    "cap": 8,
-    "cha": "7210701",
-    "tenVi": "Được sơn sau khi phủ, mạ kẽm",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72107013",
-    "cap": 8,
-    "cha": "7210701",
-    "tenVi": "Được sơn sau khi phủ, mạ bằng hợp kim nhôm - kẽm",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72107019",
-    "cap": 8,
-    "cha": "7210701",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "7210702",
-    "cap": "TIEU_DE_QG",
-    "cha": "721070",
-    "tenVi": "Loại khác, có hàm lượng carbon dưới 0,6% tính theo khối lượng",
-    "tenEn": "Other, containing by weight less than 0.6% of carbon",
-    "suyRa": true
-   },
-   {
-    "id": "72107021",
-    "cap": 8,
-    "cha": "7210702",
-    "tenVi": "Được sơn",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72107029",
-    "cap": 8,
-    "cha": "7210702",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "7210709",
-    "cap": "TIEU_DE_QG",
-    "cha": "721070",
-    "tenVi": "Loại khác",
-    "tenEn": "Other",
-    "suyRa": true
-   },
-   {
-    "id": "72107091",
-    "cap": 8,
-    "cha": "7210709",
-    "tenVi": "Được sơn",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72107099",
-    "cap": 8,
-    "cha": "7210709",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "721090",
-    "cap": 6,
-    "cha": "7210",
-    "tenVi": "Loại khác",
-    "tenEn": "Iron or non-alloy steel; flat-rolled, width 600mm or more, plated or coated with materials n.e.c. in heading no. 7210",
-    "suyRa": false
-   },
-   {
-    "id": "72109010",
-    "cap": 8,
-    "cha": "721090",
-    "tenVi": "Có hàm lượng carbon dưới 0,6% tính theo khối lượng và chiều dày không quá 1,5 mm",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72109090",
-    "cap": 8,
-    "cha": "721090",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   }
+  "dieuKienVao": [
+    {
+      "fact": "la_san_pham_can_phang_da_duoc_phu_ma_hoac_trang",
+      "op": "=",
+      "value": true,
+      "donVi": null,
+      "ngoaiTru": [],
+      "nguon": "nhom7210.nhom",
+      "trich": "Nhóm này bao gồm cùng một dạng sản phẩm như được mô tả trong nhóm 72.08 hoặc 72.09, nhưng để xếp vào nhóm này chúng phải được phủ, mạ hoặc tráng.",
+      "nguonLoai": "AI_DA_KIEM"
+    }
   ],
-  "tenDien": []
- },
- "dungTuNguon": [
-  "nhom7210.nhom",
-  "tax.72101110",
-  "tax.72101190",
-  "tax.72101210",
-  "tax.72101290",
-  "tax.72102010",
-  "tax.72102090",
-  "tax.72103011",
-  "tax.72103012",
-  "tax.72103019",
-  "tax.72103091",
-  "tax.72103099",
-  "tax.72104111",
-  "tax.72104112",
-  "tax.72104119",
-  "tax.72104191",
-  "tax.72104199",
-  "tax.72104911",
-  "tax.72104914",
-  "tax.72104915",
-  "tax.72104916",
-  "tax.72104917",
-  "tax.72104918",
-  "tax.72104919",
-  "tax.72104991",
-  "tax.72104999",
-  "tax.72105000",
-  "tax.72106111",
-  "tax.72106112",
-  "tax.72106119",
-  "tax.72106191",
-  "tax.72106192",
-  "tax.72106199",
-  "tax.72106911",
-  "tax.72106919",
-  "tax.72106991",
-  "tax.72106999",
-  "tax.72107012",
-  "tax.72107013",
-  "tax.72107019",
-  "tax.72107021",
-  "tax.72107029",
-  "tax.72107091",
-  "tax.72107099",
-  "tax.72109010",
-  "tax.72109090",
-  "wco.721011",
-  "wco.721012"
- ],
- "phienBan": "HS2022",
- "taoBoi": {
-  "provider": "google-studio:gemini-flash",
-  "model": null,
-  "luc": "2026-11-02T12:46:23.359Z",
-  "ms": 27
- },
- "kiemTra": {
-  "tong": 51,
-  "dat": 51,
-  "loai": 0,
-  "nguonBiCat": []
- }
+  "loaiTru": [
+    {
+      "dieuKien": "Các sản phẩm thuộc nhóm 83.10",
+      "sangNhom": "8310",
+      "nguon": "nhom7210.nhom",
+      "trich": "(b) Các sản phẩm thuộc nhóm 83.10.",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "phanBiet": [
+    {
+      "hoi": "Hàng hoá có phải là sản phẩm thuộc nhóm 83.10?",
+      "neuCo": "8310",
+      "neuKhong": "7210",
+      "nguon": "nhom7210.nhom",
+      "trich": "(b) Các sản phẩm thuộc nhóm 83.10.",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "tieuChi6": [
+    {
+      "hs6": "721011",
+      "fact": "thickness",
+      "op": ">=",
+      "value": 0.5,
+      "donVi": "mm",
+      "nguon": "wco.721011",
+      "trich": "thickness of 0.5mm or more",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "721012",
+      "fact": "thickness",
+      "op": "<",
+      "value": 0.5,
+      "donVi": "mm",
+      "nguon": "wco.721012",
+      "trich": "thickness of less than 0.5mm",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "72101110",
+      "dieuKien": "hàm lượng carbon >= 0.6 %",
+      "loaiKhac": false,
+      "nguon": "tax.72101110",
+      "trich": "72101110 - - - Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": ">=",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "b1fb8f11eb9cbbc30a3da1c35eafe3447fdb5cd57ed9761dd6b2334e73d811dc"
+        }
+      }
+    },
+    {
+      "hs": "72101190",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.72101190",
+      "trich": "72101190 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "721011",
+        "truAnhEm": [
+          "72101110"
+        ],
+        "truDayDu": [
+          "72101110"
+        ],
+        "toTienCoTen": "721011",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "72101210",
+      "dieuKien": "hàm lượng carbon >= 0.6 %",
+      "loaiKhac": false,
+      "nguon": "tax.72101210",
+      "trich": "72101210 - - - Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": ">=",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "06713735ee3b71a0870aa09704b1cf160ec801e116615d9b77234c85890b576b"
+        }
+      }
+    },
+    {
+      "hs": "72101290",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.72101290",
+      "trich": "72101290 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "721012",
+        "truAnhEm": [
+          "72101210"
+        ],
+        "truDayDu": [
+          "72101210"
+        ],
+        "toTienCoTen": "721012",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "72102010",
+      "dieuKien": "hàm lượng carbon < 0.6 %; độ dày <= 1.5 mm",
+      "loaiKhac": false,
+      "nguon": "tax.72102010",
+      "trich": "72102010 - - Có hàm lượng carbon dưới 0,6% tính theo khối lượng và chiều dày không quá 1,5 mm",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.6,
+          "donVi": "%"
+        },
+        {
+          "fact": "doDay",
+          "op": "<=",
+          "value": 1.5,
+          "donVi": "mm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "3d0749458e037a57cbcbc6d047afcf673af8369819673bd16943dd29f8684027"
+        }
+      }
+    },
+    {
+      "hs": "72102090",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.72102090",
+      "trich": "72102090 - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "721020",
+        "truAnhEm": [
+          "72102010"
+        ],
+        "truDayDu": [
+          "72102010"
+        ],
+        "toTienCoTen": "721020",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "72103011",
+      "dieuKien": "độ dày <= 1.2 mm",
+      "loaiKhac": false,
+      "nguon": "tax.72103011",
+      "trich": "72103011 - - - Chiều dày không quá 1,2 mm",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "doDay",
+          "op": "<=",
+          "value": 1.2,
+          "donVi": "mm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "8e0ac0b45adf5294768179f5ccd83bc83bdc3ed85f48ee1914add5f7b0120f84"
+        }
+      }
+    },
+    {
+      "hs": "72103012",
+      "dieuKien": "độ dày > 1.2 mm; độ dày <= 1.5 mm",
+      "loaiKhac": false,
+      "nguon": "tax.72103012",
+      "trich": "72103012 - - - Chiều dày trên 1,2 mm nhưng không quá 1,5 mm",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "doDay",
+          "op": ">",
+          "value": 1.2,
+          "donVi": "mm"
+        },
+        {
+          "fact": "doDay",
+          "op": "<=",
+          "value": 1.5,
+          "donVi": "mm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "8e0ac0b45adf5294768179f5ccd83bc83bdc3ed85f48ee1914add5f7b0120f84"
+        }
+      }
+    },
+    {
+      "hs": "72103019",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.72103019",
+      "trich": "72103019 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "7210301",
+        "truAnhEm": [
+          "72103011",
+          "72103012"
+        ],
+        "truDayDu": [
+          "72103011",
+          "72103012"
+        ],
+        "toTienCoTen": "721030",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "72103091",
+      "dieuKien": "độ dày <= 1.2 mm",
+      "loaiKhac": false,
+      "nguon": "tax.72103091",
+      "trich": "72103091 - - - Chiều dày không quá 1,2 mm",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "doDay",
+          "op": "<=",
+          "value": 1.2,
+          "donVi": "mm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "8e0ac0b45adf5294768179f5ccd83bc83bdc3ed85f48ee1914add5f7b0120f84"
+        }
+      }
+    },
+    {
+      "hs": "72103099",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.72103099",
+      "trich": "72103099 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "7210309",
+        "truAnhEm": [
+          "72103091"
+        ],
+        "truDayDu": [
+          "72103091",
+          "7210301"
+        ],
+        "toTienCoTen": "721030",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "72104111",
+      "dieuKien": "độ dày <= 1.2 mm",
+      "loaiKhac": false,
+      "nguon": "tax.72104111",
+      "trich": "72104111 - - - - Chiều dày không quá 1,2 mm",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "doDay",
+          "op": "<=",
+          "value": 1.2,
+          "donVi": "mm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "bc6785c6edab72abd0aa7368b5469f18e7a9c4e28584bfbd4d3eef696511b864"
+        }
+      }
+    },
+    {
+      "hs": "72104112",
+      "dieuKien": "độ dày > 1.2 mm; độ dày <= 1.5 mm",
+      "loaiKhac": false,
+      "nguon": "tax.72104112",
+      "trich": "72104112 - - - - Chiều dày trên 1,2 mm nhưng không quá 1,5 mm",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "doDay",
+          "op": ">",
+          "value": 1.2,
+          "donVi": "mm"
+        },
+        {
+          "fact": "doDay",
+          "op": "<=",
+          "value": 1.5,
+          "donVi": "mm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "bc6785c6edab72abd0aa7368b5469f18e7a9c4e28584bfbd4d3eef696511b864"
+        }
+      }
+    },
+    {
+      "hs": "72104119",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.72104119",
+      "trich": "72104119 - - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "7210411",
+        "truAnhEm": [
+          "72104111",
+          "72104112"
+        ],
+        "truDayDu": [
+          "72104111",
+          "72104112"
+        ],
+        "toTienCoTen": "721041",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "72104191",
+      "dieuKien": "độ dày <= 1.2 mm",
+      "loaiKhac": false,
+      "nguon": "tax.72104191",
+      "trich": "72104191 - - - - Chiều dày không quá 1,2 mm",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "doDay",
+          "op": "<=",
+          "value": 1.2,
+          "donVi": "mm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "bc6785c6edab72abd0aa7368b5469f18e7a9c4e28584bfbd4d3eef696511b864"
+        }
+      }
+    },
+    {
+      "hs": "72104199",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.72104199",
+      "trich": "72104199 - - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "7210419",
+        "truAnhEm": [
+          "72104191"
+        ],
+        "truDayDu": [
+          "72104191",
+          "7210411"
+        ],
+        "toTienCoTen": "721041",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "72104911",
+      "dieuKien": "tên loại hàng: hợp kim hóa bề mặt; hàm lượng carbon < 0.04 %; độ dày <= 1.2 mm",
+      "loaiKhac": false,
+      "nguon": "tax.72104911",
+      "trich": "72104911 - - - - Được phủ, mạ hoặc tráng kẽm bằng phương pháp hợp kim hóa bề mặt, có hàm lượng carbon dưới 0,04% tính theo khối lượng và chiều dày không quá 1,2 mm",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "hợp kim hóa bề mặt"
+        },
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.04,
+          "donVi": "%"
+        },
+        {
+          "fact": "doDay",
+          "op": "<=",
+          "value": 1.2,
+          "donVi": "mm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "dd83c5785e1fdab78bd3f00a1775720562a47b88d9d2556dbf67439e35a4fb2c"
+        }
+      }
+    },
+    {
+      "hs": "72104914",
+      "dieuKien": "tên loại hàng: hợp kim kẽm – nhôm - magiê; độ dày <= 1.2 mm",
+      "loaiKhac": false,
+      "nguon": "tax.72104914",
+      "trich": "72104914 - - - - Được phủ, mạ hoặc tráng bằng hợp kim kẽm – nhôm - magiê, có chiều dày không quá 1,2 mm",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "hợp kim kẽm – nhôm - magiê"
+        },
+        {
+          "fact": "doDay",
+          "op": "<=",
+          "value": 1.2,
+          "donVi": "mm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "dd83c5785e1fdab78bd3f00a1775720562a47b88d9d2556dbf67439e35a4fb2c"
+        }
+      }
+    },
+    {
+      "hs": "72104915",
+      "dieuKien": "tên loại hàng: hợp kim kẽm – nhôm - magiê; độ dày > 1.2 mm; độ dày <= 1.5 mm",
+      "loaiKhac": false,
+      "nguon": "tax.72104915",
+      "trich": "72104915 - - - - Được phủ, mạ hoặc tráng bằng hợp kim kẽm – nhôm - magiê, có chiều dày trên 1,2 mm nhưng không quá 1,5 mm",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "hợp kim kẽm – nhôm - magiê"
+        },
+        {
+          "fact": "doDay",
+          "op": ">",
+          "value": 1.2,
+          "donVi": "mm"
+        },
+        {
+          "fact": "doDay",
+          "op": "<=",
+          "value": 1.5,
+          "donVi": "mm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "dd83c5785e1fdab78bd3f00a1775720562a47b88d9d2556dbf67439e35a4fb2c"
+        }
+      }
+    },
+    {
+      "hs": "72104916",
+      "dieuKien": "tên loại hàng: hợp kim kẽm – nhôm - magiê; độ dày > 1.5 mm",
+      "loaiKhac": false,
+      "nguon": "tax.72104916",
+      "trich": "72104916 - - - - Được phủ, mạ hoặc tráng bằng hợp kim kẽm – nhôm - magiê, có chiều dày trên 1,5 mm",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "hợp kim kẽm – nhôm - magiê"
+        },
+        {
+          "fact": "doDay",
+          "op": ">",
+          "value": 1.5,
+          "donVi": "mm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "dd83c5785e1fdab78bd3f00a1775720562a47b88d9d2556dbf67439e35a4fb2c"
+        }
+      }
+    },
+    {
+      "hs": "72104917",
+      "dieuKien": "độ dày <= 1.2 mm",
+      "loaiKhac": true,
+      "nguon": "tax.72104917",
+      "trich": "72104917 - - - - Loại khác, chiều dày không quá 1,2 mm",
+      "nguonLoai": "CLAUDE_DUYET",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "7210491",
+        "truAnhEm": [
+          "72104911",
+          "72104914",
+          "72104915",
+          "72104916",
+          "72104918"
+        ],
+        "truDayDu": [
+          "72104911",
+          "72104914",
+          "72104915",
+          "72104916",
+          "72104918"
+        ],
+        "toTienCoTen": "721049",
+        "dinhNghiaDuoc": false
+      },
+      "dieuKienSo": [
+        {
+          "fact": "doDay",
+          "op": "<=",
+          "value": 1.2,
+          "donVi": "mm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "dd83c5785e1fdab78bd3f00a1775720562a47b88d9d2556dbf67439e35a4fb2c"
+        }
+      }
+    },
+    {
+      "hs": "72104918",
+      "dieuKien": "độ dày > 1.2 mm; độ dày <= 1.5 mm",
+      "loaiKhac": true,
+      "nguon": "tax.72104918",
+      "trich": "72104918 - - - - Loại khác, chiều dày trên 1,2 mm nhưng không quá 1,5 mm",
+      "nguonLoai": "CLAUDE_DUYET",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "7210491",
+        "truAnhEm": [
+          "72104911",
+          "72104914",
+          "72104915",
+          "72104916",
+          "72104917"
+        ],
+        "truDayDu": [
+          "72104911",
+          "72104914",
+          "72104915",
+          "72104916",
+          "72104917"
+        ],
+        "toTienCoTen": "721049",
+        "dinhNghiaDuoc": false
+      },
+      "dieuKienSo": [
+        {
+          "fact": "doDay",
+          "op": ">",
+          "value": 1.2,
+          "donVi": "mm"
+        },
+        {
+          "fact": "doDay",
+          "op": "<=",
+          "value": 1.5,
+          "donVi": "mm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "dd83c5785e1fdab78bd3f00a1775720562a47b88d9d2556dbf67439e35a4fb2c"
+        }
+      }
+    },
+    {
+      "hs": "72104919",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.72104919",
+      "trich": "72104919 - - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "7210491",
+        "truAnhEm": [
+          "72104911",
+          "72104914",
+          "72104915",
+          "72104916",
+          "72104917",
+          "72104918"
+        ],
+        "truDayDu": [
+          "72104911",
+          "72104914",
+          "72104915",
+          "72104916",
+          "72104917",
+          "72104918"
+        ],
+        "toTienCoTen": "721049",
+        "dinhNghiaDuoc": false
+      }
+    },
+    {
+      "hs": "72104991",
+      "dieuKien": "độ dày <= 1.2 mm",
+      "loaiKhac": false,
+      "nguon": "tax.72104991",
+      "trich": "72104991 - - - - Chiều dày không quá 1,2 mm",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "doDay",
+          "op": "<=",
+          "value": 1.2,
+          "donVi": "mm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "dd83c5785e1fdab78bd3f00a1775720562a47b88d9d2556dbf67439e35a4fb2c"
+        }
+      }
+    },
+    {
+      "hs": "72104999",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.72104999",
+      "trich": "72104999 - - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "7210499",
+        "truAnhEm": [
+          "72104991"
+        ],
+        "truDayDu": [
+          "72104991",
+          "7210491"
+        ],
+        "toTienCoTen": "721049",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "72105000",
+      "dieuKien": "Được phủ, mạ hoặc tráng bằng oxit crom hoặc bằng crom và oxit crom",
+      "loaiKhac": false,
+      "nguon": "tax.72105000",
+      "trich": "72105000 - Được phủ, mạ hoặc tráng bằng oxit crom hoặc bằng crom và oxit crom",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "72106111",
+      "dieuKien": "độ dày <= 1.2 mm",
+      "loaiKhac": false,
+      "nguon": "tax.72106111",
+      "trich": "72106111 - - - - Chiều dày không quá 1,2 mm",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "doDay",
+          "op": "<=",
+          "value": 1.2,
+          "donVi": "mm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "0d613a9bcc06d78613661e12ff251551c5edd9af5fee597cd625309152f54563"
+        }
+      }
+    },
+    {
+      "hs": "72106112",
+      "dieuKien": "độ dày > 1.2 mm; độ dày <= 1.5 mm",
+      "loaiKhac": false,
+      "nguon": "tax.72106112",
+      "trich": "72106112 - - - - Chiều dày trên 1,2 mm nhưng không quá 1,5 mm",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "doDay",
+          "op": ">",
+          "value": 1.2,
+          "donVi": "mm"
+        },
+        {
+          "fact": "doDay",
+          "op": "<=",
+          "value": 1.5,
+          "donVi": "mm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "0d613a9bcc06d78613661e12ff251551c5edd9af5fee597cd625309152f54563"
+        }
+      }
+    },
+    {
+      "hs": "72106119",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.72106119",
+      "trich": "72106119 - - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "7210611",
+        "truAnhEm": [
+          "72106111",
+          "72106112"
+        ],
+        "truDayDu": [
+          "72106111",
+          "72106112"
+        ],
+        "toTienCoTen": "721061",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "72106191",
+      "dieuKien": "độ dày <= 1.2 mm",
+      "loaiKhac": false,
+      "nguon": "tax.72106191",
+      "trich": "72106191 - - - - Chiều dày không quá 1,2 mm",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "doDay",
+          "op": "<=",
+          "value": 1.2,
+          "donVi": "mm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "0d613a9bcc06d78613661e12ff251551c5edd9af5fee597cd625309152f54563"
+        }
+      }
+    },
+    {
+      "hs": "72106192",
+      "dieuKien": "dạng lượn sóng",
+      "loaiKhac": true,
+      "nguon": "tax.72106192",
+      "trich": "72106192 - - - - Loại khác, dạng lượn sóng",
+      "nguonLoai": "CLAUDE_DUYET",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "7210619",
+        "truAnhEm": [
+          "72106191"
+        ],
+        "truDayDu": [
+          "72106191",
+          "7210611"
+        ],
+        "toTienCoTen": "721061",
+        "dinhNghiaDuoc": true
+      },
+      "dieuKienSo": [
+        {
+          "fact": "dangLuonSong",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "0d613a9bcc06d78613661e12ff251551c5edd9af5fee597cd625309152f54563"
+        }
+      }
+    },
+    {
+      "hs": "72106199",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.72106199",
+      "trich": "72106199 - - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "7210619",
+        "truAnhEm": [
+          "72106191",
+          "72106192"
+        ],
+        "truDayDu": [
+          "72106191",
+          "72106192",
+          "7210611"
+        ],
+        "toTienCoTen": "721061",
+        "dinhNghiaDuoc": false
+      }
+    },
+    {
+      "hs": "72106911",
+      "dieuKien": "độ dày <= 1.2 mm",
+      "loaiKhac": false,
+      "nguon": "tax.72106911",
+      "trich": "72106911 - - - - Chiều dày không quá 1,2 mm",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "doDay",
+          "op": "<=",
+          "value": 1.2,
+          "donVi": "mm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "c7b43bc277e5dba77f3875383850782d12f06d763772ef70db288533f0531055"
+        }
+      }
+    },
+    {
+      "hs": "72106919",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.72106919",
+      "trich": "72106919 - - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "7210691",
+        "truAnhEm": [
+          "72106911"
+        ],
+        "truDayDu": [
+          "72106911"
+        ],
+        "toTienCoTen": "721069",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "72106991",
+      "dieuKien": "độ dày <= 1.2 mm",
+      "loaiKhac": false,
+      "nguon": "tax.72106991",
+      "trich": "72106991 - - - - Chiều dày không quá 1,2 mm",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "doDay",
+          "op": "<=",
+          "value": 1.2,
+          "donVi": "mm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "c7b43bc277e5dba77f3875383850782d12f06d763772ef70db288533f0531055"
+        }
+      }
+    },
+    {
+      "hs": "72106999",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.72106999",
+      "trich": "72106999 - - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "7210699",
+        "truAnhEm": [
+          "72106991"
+        ],
+        "truDayDu": [
+          "72106991",
+          "7210691"
+        ],
+        "toTienCoTen": "721069",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "72107012",
+      "dieuKien": "lớp mạ hoặc tráng phủ bề mặt: được sơn sau khi phủ, mạ kẽm",
+      "loaiKhac": false,
+      "nguon": "tax.72107012",
+      "trich": "72107012 - - - Được sơn sau khi phủ, mạ kẽm",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "lopMaPhu",
+          "op": "TRONG",
+          "value": [
+            "SON_SAU_MA_KEM"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "56fcfcd5cd8b3aac81858509148ac2a920b58e86a147a3ffbe5d4c6af4a52b99"
+        }
+      }
+    },
+    {
+      "hs": "72107013",
+      "dieuKien": "lớp mạ hoặc tráng phủ bề mặt: được sơn sau khi phủ, mạ hợp kim nhôm - kẽm",
+      "loaiKhac": false,
+      "nguon": "tax.72107013",
+      "trich": "72107013 - - - Được sơn sau khi phủ, mạ bằng hợp kim nhôm - kẽm",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "lopMaPhu",
+          "op": "TRONG",
+          "value": [
+            "SON_SAU_MA_NHOM_KEM"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "56fcfcd5cd8b3aac81858509148ac2a920b58e86a147a3ffbe5d4c6af4a52b99"
+        }
+      }
+    },
+    {
+      "hs": "72107019",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.72107019",
+      "trich": "72107019 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "7210701",
+        "truAnhEm": [
+          "72107012",
+          "72107013"
+        ],
+        "truDayDu": [
+          "72107012",
+          "72107013"
+        ],
+        "toTienCoTen": "721070",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "72107021",
+      "dieuKien": "đã được sơn (bề mặt phủ sơn)",
+      "loaiKhac": false,
+      "nguon": "tax.72107021",
+      "trich": "72107021 - - - Được sơn",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "daSon",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "56fcfcd5cd8b3aac81858509148ac2a920b58e86a147a3ffbe5d4c6af4a52b99"
+        }
+      }
+    },
+    {
+      "hs": "72107029",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.72107029",
+      "trich": "72107029 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "7210702",
+        "truAnhEm": [
+          "72107021"
+        ],
+        "truDayDu": [
+          "72107021",
+          "7210701",
+          "7210709"
+        ],
+        "toTienCoTen": "721070",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "72107091",
+      "dieuKien": "đã được sơn (bề mặt phủ sơn)",
+      "loaiKhac": false,
+      "nguon": "tax.72107091",
+      "trich": "72107091 - - - Được sơn",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "daSon",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "56fcfcd5cd8b3aac81858509148ac2a920b58e86a147a3ffbe5d4c6af4a52b99"
+        }
+      }
+    },
+    {
+      "hs": "72107099",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.72107099",
+      "trich": "72107099 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "7210709",
+        "truAnhEm": [
+          "72107091"
+        ],
+        "truDayDu": [
+          "72107091",
+          "7210701",
+          "7210702"
+        ],
+        "toTienCoTen": "721070",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "72109010",
+      "dieuKien": "hàm lượng carbon < 0.6 %; độ dày <= 1.5 mm",
+      "loaiKhac": false,
+      "nguon": "tax.72109010",
+      "trich": "72109010 - - Có hàm lượng carbon dưới 0,6% tính theo khối lượng và chiều dày không quá 1,5 mm",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.6,
+          "donVi": "%"
+        },
+        {
+          "fact": "doDay",
+          "op": "<=",
+          "value": 1.5,
+          "donVi": "mm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "cf32bb92ad00b732daef61878ab5943b47213071e419b9e8f568eb28458d615f"
+        }
+      }
+    },
+    {
+      "hs": "72109090",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.72109090",
+      "trich": "72109090 - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "721090",
+        "truAnhEm": [
+          "72109010"
+        ],
+        "truDayDu": [
+          "72109010"
+        ],
+        "toTienCoTen": "721090",
+        "dinhNghiaDuoc": true
+      }
+    }
+  ],
+  "cay": {
+    "nguonLoai": "MAY_SUY",
+    "sinhTu": "lib/hs-tree.js",
+    "nut": [
+      {
+        "id": "7210",
+        "cap": 4,
+        "cha": "72",
+        "tenVi": "Các sản phẩm sắt hoặc thép không hợp kim được cán phẳng, có chiều rộng từ 600mm trở lên, đã dát phủ (clad), phủ, mạ (coated) hoặc tráng (plated) (+).",
+        "tenEn": "Iron or non-alloy steel; flat-rolled products, width 600mm or more, clad, plated or coated",
+        "suyRa": false
+      },
+      {
+        "id": "72101",
+        "cap": "NHOM_MOT_GACH",
+        "cha": "7210",
+        "tenVi": "Được phủ, mạ hoặc tráng thiếc",
+        "tenEn": null,
+        "suyRa": true
+      },
+      {
+        "id": "721011",
+        "cap": 6,
+        "cha": "72101",
+        "tenVi": "Có chiều dày từ 0,5 mm trở lên",
+        "tenEn": "Iron or non-alloy steel; flat-rolled, width 600mm or more, plated or coated with tin, thickness of 0.5mm or more",
+        "suyRa": false
+      },
+      {
+        "id": "72101110",
+        "cap": 8,
+        "cha": "721011",
+        "tenVi": "Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72101190",
+        "cap": 8,
+        "cha": "721011",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "721012",
+        "cap": 6,
+        "cha": "72101",
+        "tenVi": "Có chiều dày dưới 0,5 mm",
+        "tenEn": "Iron or non-alloy steel; flat-rolled, width 600mm or more, plated or coated with tin, thickness of less than 0.5mm",
+        "suyRa": false
+      },
+      {
+        "id": "72101210",
+        "cap": 8,
+        "cha": "721012",
+        "tenVi": "Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72101290",
+        "cap": 8,
+        "cha": "721012",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "721020",
+        "cap": 6,
+        "cha": "7210",
+        "tenVi": "Được phủ, mạ hoặc tráng chì, kể cả hợp kim chì thiếc",
+        "tenEn": "Iron or non-alloy steel; flat-rolled, width 600mm or more, plated or coated with lead, including terne-plate",
+        "suyRa": false
+      },
+      {
+        "id": "72102010",
+        "cap": 8,
+        "cha": "721020",
+        "tenVi": "Có hàm lượng carbon dưới 0,6% tính theo khối lượng và chiều dày không quá 1,5 mm",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72102090",
+        "cap": 8,
+        "cha": "721020",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "721030",
+        "cap": 6,
+        "cha": "7210",
+        "tenVi": "Được phủ, mạ hoặc tráng kẽm bằng phương pháp điện phân",
+        "tenEn": "Iron or non-alloy steel; flat-rolled, width 600mm or more, electrolytically plated or coated with zinc",
+        "suyRa": false
+      },
+      {
+        "id": "7210301",
+        "cap": "TIEU_DE_QG",
+        "cha": "721030",
+        "tenVi": "Có hàm lượng carbon dưới 0,6% tính theo khối lượng",
+        "tenEn": "Containing by weight less than 0.6% of carbon",
+        "suyRa": true
+      },
+      {
+        "id": "72103011",
+        "cap": 8,
+        "cha": "7210301",
+        "tenVi": "Chiều dày không quá 1,2 mm",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72103012",
+        "cap": 8,
+        "cha": "7210301",
+        "tenVi": "Chiều dày trên 1,2 mm nhưng không quá 1,5 mm",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72103019",
+        "cap": 8,
+        "cha": "7210301",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "7210309",
+        "cap": "TIEU_DE_QG",
+        "cha": "721030",
+        "tenVi": "Loại khác",
+        "tenEn": "Other",
+        "suyRa": true
+      },
+      {
+        "id": "72103091",
+        "cap": 8,
+        "cha": "7210309",
+        "tenVi": "Chiều dày không quá 1,2 mm",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72103099",
+        "cap": 8,
+        "cha": "7210309",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "72104",
+        "cap": "NHOM_MOT_GACH",
+        "cha": "7210",
+        "tenVi": "Được phủ, mạ hoặc tráng kẽm bằng phương pháp khác",
+        "tenEn": "Otherwise plated or coated with zinc",
+        "suyRa": true
+      },
+      {
+        "id": "721041",
+        "cap": 6,
+        "cha": "72104",
+        "tenVi": "Dạng lượn sóng",
+        "tenEn": "Iron or non-alloy steel; flat-rolled, width 600mm or more, corrugated, plated or coated with zinc (not electrolytically)",
+        "suyRa": false
+      },
+      {
+        "id": "7210411",
+        "cap": "TIEU_DE_QG",
+        "cha": "721041",
+        "tenVi": "Có hàm lượng carbon dưới 0,6% tính theo khối lượng",
+        "tenEn": "Containing by weight less than 0.6% of carbon",
+        "suyRa": true
+      },
+      {
+        "id": "72104111",
+        "cap": 8,
+        "cha": "7210411",
+        "tenVi": "Chiều dày không quá 1,2 mm",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72104112",
+        "cap": 8,
+        "cha": "7210411",
+        "tenVi": "Chiều dày trên 1,2 mm nhưng không quá 1,5 mm",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72104119",
+        "cap": 8,
+        "cha": "7210411",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "7210419",
+        "cap": "TIEU_DE_QG",
+        "cha": "721041",
+        "tenVi": "Loại khác",
+        "tenEn": "Other",
+        "suyRa": true
+      },
+      {
+        "id": "72104191",
+        "cap": 8,
+        "cha": "7210419",
+        "tenVi": "Chiều dày không quá 1,2 mm",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72104199",
+        "cap": 8,
+        "cha": "7210419",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "721049",
+        "cap": 6,
+        "cha": "72104",
+        "tenVi": "Loại khác",
+        "tenEn": "Iron or non-alloy steel; flat-rolled, width 600mm or more, (not corrugated), plated or coated with zinc (not electrolytically)",
+        "suyRa": false
+      },
+      {
+        "id": "7210491",
+        "cap": "TIEU_DE_QG",
+        "cha": "721049",
+        "tenVi": "Có hàm lượng carbon dưới 0,6% tính theo khối lượng",
+        "tenEn": "Containing by weight less than 0.6% of carbon",
+        "suyRa": true
+      },
+      {
+        "id": "72104911",
+        "cap": 8,
+        "cha": "7210491",
+        "tenVi": "Được phủ, mạ hoặc tráng kẽm bằng phương pháp hợp kim hóa bề mặt, có hàm lượng carbon dưới 0,04% tính theo khối lượng và chiều dày không quá 1,2 mm",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72104914",
+        "cap": 8,
+        "cha": "7210491",
+        "tenVi": "Được phủ, mạ hoặc tráng bằng hợp kim kẽm – nhôm - magiê, có chiều dày không quá 1,2 mm",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72104915",
+        "cap": 8,
+        "cha": "7210491",
+        "tenVi": "Được phủ, mạ hoặc tráng bằng hợp kim kẽm – nhôm - magiê, có chiều dày trên 1,2 mm nhưng không quá 1,5 mm",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72104916",
+        "cap": 8,
+        "cha": "7210491",
+        "tenVi": "Được phủ, mạ hoặc tráng bằng hợp kim kẽm – nhôm - magiê, có chiều dày trên 1,5 mm",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72104917",
+        "cap": 8,
+        "cha": "7210491",
+        "tenVi": "Loại khác, chiều dày không quá 1,2 mm",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "72104918",
+        "cap": 8,
+        "cha": "7210491",
+        "tenVi": "Loại khác, chiều dày trên 1,2 mm nhưng không quá 1,5 mm",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "72104919",
+        "cap": 8,
+        "cha": "7210491",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "7210499",
+        "cap": "TIEU_DE_QG",
+        "cha": "721049",
+        "tenVi": "Loại khác",
+        "tenEn": "Other",
+        "suyRa": true
+      },
+      {
+        "id": "72104991",
+        "cap": 8,
+        "cha": "7210499",
+        "tenVi": "Chiều dày không quá 1,2 mm",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72104999",
+        "cap": 8,
+        "cha": "7210499",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "72105000",
+        "cap": 8,
+        "cha": "7210",
+        "tenVi": "Được phủ, mạ hoặc tráng bằng oxit crom hoặc bằng crom và oxit crom",
+        "tenEn": "Iron or non-alloy steel; flat-rolled, width 600mm or more, plated or coated with chromium oxides or with chromium and chromium oxides",
+        "suyRa": false,
+        "laPhanNhom": "721050"
+      },
+      {
+        "id": "72106",
+        "cap": "NHOM_MOT_GACH",
+        "cha": "7210",
+        "tenVi": "Được phủ, mạ hoặc tráng nhôm",
+        "tenEn": null,
+        "suyRa": true
+      },
+      {
+        "id": "721061",
+        "cap": 6,
+        "cha": "72106",
+        "tenVi": "Được phủ, mạ hoặc tráng hợp kim nhôm - kẽm",
+        "tenEn": "Iron or non-alloy steel; flat-rolled, width 600mm or more, plated or coated with aluminium zinc-alloys",
+        "suyRa": false
+      },
+      {
+        "id": "7210611",
+        "cap": "TIEU_DE_QG",
+        "cha": "721061",
+        "tenVi": "Có hàm lượng carbon dưới 0,6% tính theo khối lượng",
+        "tenEn": "Containing by weight less than 0.6% of carbon",
+        "suyRa": true
+      },
+      {
+        "id": "72106111",
+        "cap": 8,
+        "cha": "7210611",
+        "tenVi": "Chiều dày không quá 1,2 mm",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72106112",
+        "cap": 8,
+        "cha": "7210611",
+        "tenVi": "Chiều dày trên 1,2 mm nhưng không quá 1,5 mm",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72106119",
+        "cap": 8,
+        "cha": "7210611",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "7210619",
+        "cap": "TIEU_DE_QG",
+        "cha": "721061",
+        "tenVi": "Loại khác",
+        "tenEn": "Other",
+        "suyRa": true
+      },
+      {
+        "id": "72106191",
+        "cap": 8,
+        "cha": "7210619",
+        "tenVi": "Chiều dày không quá 1,2 mm",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72106192",
+        "cap": 8,
+        "cha": "7210619",
+        "tenVi": "Loại khác, dạng lượn sóng",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "72106199",
+        "cap": 8,
+        "cha": "7210619",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "721069",
+        "cap": 6,
+        "cha": "72106",
+        "tenVi": "Loại khác",
+        "tenEn": "Iron or non-alloy steel; flat-rolled, width 600mm or more, plated or coated with aluminium, other than plated or coated with aluminium zinc-alloys",
+        "suyRa": false
+      },
+      {
+        "id": "7210691",
+        "cap": "TIEU_DE_QG",
+        "cha": "721069",
+        "tenVi": "Có hàm lượng carbon dưới 0,6% tính theo khối lượng",
+        "tenEn": "Containing by weight less than 0.6% of carbon",
+        "suyRa": true
+      },
+      {
+        "id": "72106911",
+        "cap": 8,
+        "cha": "7210691",
+        "tenVi": "Chiều dày không quá 1,2 mm",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72106919",
+        "cap": 8,
+        "cha": "7210691",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "7210699",
+        "cap": "TIEU_DE_QG",
+        "cha": "721069",
+        "tenVi": "Loại khác",
+        "tenEn": "Other",
+        "suyRa": true
+      },
+      {
+        "id": "72106991",
+        "cap": 8,
+        "cha": "7210699",
+        "tenVi": "Chiều dày không quá 1,2 mm",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72106999",
+        "cap": 8,
+        "cha": "7210699",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "721070",
+        "cap": 6,
+        "cha": "7210",
+        "tenVi": "Được sơn, quét vécni hoặc phủ plastic",
+        "tenEn": "Iron or non-alloy steel; flat-rolled, width 600mm or more, painted, varnished or coated with plastics",
+        "suyRa": false
+      },
+      {
+        "id": "7210701",
+        "cap": "TIEU_DE_QG",
+        "cha": "721070",
+        "tenVi": "Có hàm lượng carbon dưới 0,6% tính theo khối lượng và chiều dày không quá 1,5 mm",
+        "tenEn": "Containing by weight less than 0.6% of carbon and of a thickness of 1.5 mm or less",
+        "suyRa": true
+      },
+      {
+        "id": "72107012",
+        "cap": 8,
+        "cha": "7210701",
+        "tenVi": "Được sơn sau khi phủ, mạ kẽm",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72107013",
+        "cap": 8,
+        "cha": "7210701",
+        "tenVi": "Được sơn sau khi phủ, mạ bằng hợp kim nhôm - kẽm",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72107019",
+        "cap": 8,
+        "cha": "7210701",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "7210702",
+        "cap": "TIEU_DE_QG",
+        "cha": "721070",
+        "tenVi": "Loại khác, có hàm lượng carbon dưới 0,6% tính theo khối lượng",
+        "tenEn": "Other, containing by weight less than 0.6% of carbon",
+        "suyRa": true
+      },
+      {
+        "id": "72107021",
+        "cap": 8,
+        "cha": "7210702",
+        "tenVi": "Được sơn",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72107029",
+        "cap": 8,
+        "cha": "7210702",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "7210709",
+        "cap": "TIEU_DE_QG",
+        "cha": "721070",
+        "tenVi": "Loại khác",
+        "tenEn": "Other",
+        "suyRa": true
+      },
+      {
+        "id": "72107091",
+        "cap": 8,
+        "cha": "7210709",
+        "tenVi": "Được sơn",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72107099",
+        "cap": 8,
+        "cha": "7210709",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "721090",
+        "cap": 6,
+        "cha": "7210",
+        "tenVi": "Loại khác",
+        "tenEn": "Iron or non-alloy steel; flat-rolled, width 600mm or more, plated or coated with materials n.e.c. in heading no. 7210",
+        "suyRa": false
+      },
+      {
+        "id": "72109010",
+        "cap": 8,
+        "cha": "721090",
+        "tenVi": "Có hàm lượng carbon dưới 0,6% tính theo khối lượng và chiều dày không quá 1,5 mm",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72109090",
+        "cap": 8,
+        "cha": "721090",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      }
+    ],
+    "tenDien": []
+  },
+  "dungTuNguon": [
+    "nhom7210.nhom",
+    "tax.72101110",
+    "tax.72101190",
+    "tax.72101210",
+    "tax.72101290",
+    "tax.72102010",
+    "tax.72102090",
+    "tax.72103011",
+    "tax.72103012",
+    "tax.72103019",
+    "tax.72103091",
+    "tax.72103099",
+    "tax.72104111",
+    "tax.72104112",
+    "tax.72104119",
+    "tax.72104191",
+    "tax.72104199",
+    "tax.72104911",
+    "tax.72104914",
+    "tax.72104915",
+    "tax.72104916",
+    "tax.72104917",
+    "tax.72104918",
+    "tax.72104919",
+    "tax.72104991",
+    "tax.72104999",
+    "tax.72105000",
+    "tax.72106111",
+    "tax.72106112",
+    "tax.72106119",
+    "tax.72106191",
+    "tax.72106192",
+    "tax.72106199",
+    "tax.72106911",
+    "tax.72106919",
+    "tax.72106991",
+    "tax.72106999",
+    "tax.72107012",
+    "tax.72107013",
+    "tax.72107019",
+    "tax.72107021",
+    "tax.72107029",
+    "tax.72107091",
+    "tax.72107099",
+    "tax.72109010",
+    "tax.72109090",
+    "wco.721011",
+    "wco.721012"
+  ],
+  "phienBan": "HS2022",
+  "taoBoi": {
+    "provider": "google-studio:gemini-flash",
+    "model": null,
+    "luc": "2026-11-02T12:46:23.359Z",
+    "ms": 27
+  },
+  "kiemTra": {
+    "tong": 51,
+    "dat": 51,
+    "loai": 0,
+    "nguonBiCat": []
+  },
+  "dieuKienNut": [
+    {
+      "id": "7210301",
+      "nguon": "tieuDe.7210301",
+      "trich": "7210301 Có hàm lượng carbon dưới 0,6% tính theo khối lượng",
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "8e0ac0b45adf5294768179f5ccd83bc83bdc3ed85f48ee1914add5f7b0120f84"
+        }
+      }
+    },
+    {
+      "id": "7210411",
+      "nguon": "tieuDe.7210411",
+      "trich": "7210411 Có hàm lượng carbon dưới 0,6% tính theo khối lượng",
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "bc6785c6edab72abd0aa7368b5469f18e7a9c4e28584bfbd4d3eef696511b864"
+        }
+      }
+    },
+    {
+      "id": "7210491",
+      "nguon": "tieuDe.7210491",
+      "trich": "7210491 Có hàm lượng carbon dưới 0,6% tính theo khối lượng",
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "dd83c5785e1fdab78bd3f00a1775720562a47b88d9d2556dbf67439e35a4fb2c"
+        }
+      }
+    },
+    {
+      "id": "7210611",
+      "nguon": "tieuDe.7210611",
+      "trich": "7210611 Có hàm lượng carbon dưới 0,6% tính theo khối lượng",
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "0d613a9bcc06d78613661e12ff251551c5edd9af5fee597cd625309152f54563"
+        }
+      }
+    },
+    {
+      "id": "7210691",
+      "nguon": "tieuDe.7210691",
+      "trich": "7210691 Có hàm lượng carbon dưới 0,6% tính theo khối lượng",
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "c7b43bc277e5dba77f3875383850782d12f06d763772ef70db288533f0531055"
+        }
+      }
+    },
+    {
+      "id": "7210701",
+      "nguon": "tieuDe.7210701",
+      "trich": "7210701 Có hàm lượng carbon dưới 0,6% tính theo khối lượng và chiều dày không quá 1,5 mm",
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.6,
+          "donVi": "%"
+        },
+        {
+          "fact": "doDay",
+          "op": "<=",
+          "value": 1.5,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "56fcfcd5cd8b3aac81858509148ac2a920b58e86a147a3ffbe5d4c6af4a52b99"
+        }
+      }
+    },
+    {
+      "id": "7210702",
+      "nguon": "tieuDe.7210702",
+      "trich": "7210702 Loại khác, có hàm lượng carbon dưới 0,6% tính theo khối lượng",
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "56fcfcd5cd8b3aac81858509148ac2a920b58e86a147a3ffbe5d4c6af4a52b99"
+        }
+      }
+    }
+  ]
 }

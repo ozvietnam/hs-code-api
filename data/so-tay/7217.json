@@ -1,659 +1,1019 @@
 {
- "nhom": "7217",
- "phamVi": {
-  "text": "Dây bằng sắt hoặc thép không hợp kim.",
-  "nguon": "nhom7217.nhom",
-  "trich": "Dây thuộc nhóm này được định nghĩa trong Chú giải 1(o) của chương này.",
-  "nguonLoai": "AI_DA_KIEM"
- },
- "dieuKienVao": [
-  {
-   "fact": "la_day_kim_loai_den_o_dang_cuon",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "ch72.chuong",
-   "trich": "Dây\n\nCác sản phẩm được tạo hình nguội, ở dạng cuộn, có mặt cắt ngang đông đặc đều nhau dọc chiều dài, khác với định nghĩa về sản phẩm được cán phẳng.",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "loaiTru": [
-  {
-   "dieuKien": "Sợi trộn kim loại",
-   "sangNhom": "5605",
-   "nguon": "nhom7217.nhom",
-   "trich": "Sợi trộn kim loại (nhóm 56.05), dây xe hoặc dây thừng được gia cố với dây (nhóm 56.07).",
-   "nguonLoai": "AI_DA_KIEM"
+  "nhom": "7217",
+  "phamVi": {
+    "text": "Dây bằng sắt hoặc thép không hợp kim.",
+    "nguon": "nhom7217.nhom",
+    "trich": "Dây thuộc nhóm này được định nghĩa trong Chú giải 1(o) của chương này.",
+    "nguonLoai": "AI_DA_KIEM"
   },
-  {
-   "dieuKien": "Dây bện tao, dây thừng, dây cáp và các sản phẩm tương tự",
-   "sangNhom": "7312",
-   "nguon": "nhom7217.nhom",
-   "trich": "Dây bện tao, dây thừng, dây cáp và các sản phẩm tương tự thuộc nhóm 73.12.",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "dieuKien": "Dây thép gai, dây dẹt đơn xoắn",
-   "sangNhom": "7313",
-   "nguon": "nhom7217.nhom",
-   "trich": "Dây thép gai, dây dẹt đơn xoắn (có gai hoặc không) được dùng cho các vật liệu làm hàng rào (nhóm 73.13).",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "dieuKien": "Dây đôi như được sử dụng để làm bộ go máy dệt",
-   "sangNhom": "7326",
-   "nguon": "nhom7217.nhom",
-   "trich": "Dây đôi như được sử dụng để làm bộ go máy dệt và được tạo thành bởi việc hàn (bằng hợp kim dễ nóng chảy) hai nhánh dây lại với nhau sau khi kéo, dây được xoắn vào các lỗ xâu hoặc các vòng tại một hoặc cả hai đầu để buộc (nhóm 73.26).",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "dieuKien": "Các điện cực hàn đã được phủ",
-   "sangNhom": "8311",
-   "nguon": "nhom7217.nhom",
-   "trich": "Các điện cực hàn đã được phủ, (nhóm 83.11)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "dieuKien": "Dây cách điện (gồm cả dây tráng men)",
-   "sangNhom": "8544",
-   "nguon": "nhom7217.nhom",
-   "trich": "Dây cách điện (gồm cả dây tráng men) (nhóm 85.44).",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "dieuKien": "Dây đàn cho các nhạc cụ",
-   "sangNhom": "9209",
-   "nguon": "nhom7217.nhom",
-   "trich": "Dây đàn cho các nhạc cụ (nhóm 92.09).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "phanBiet": [
-  {
-   "hoi": "Hàng là sợi trộn kim loại?",
-   "neuCo": "5605",
-   "neuKhong": "7217",
-   "nguon": "nhom7217.nhom",
-   "trich": "Sợi trộn kim loại (nhóm 56.05), dây xe hoặc dây thừng được gia cố với dây (nhóm 56.07).",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hoi": "Hàng là dây bện tao, dây thừng, dây cáp?",
-   "neuCo": "7312",
-   "neuKhong": "7217",
-   "nguon": "nhom7217.nhom",
-   "trich": "Dây bện tao, dây thừng, dây cáp và các sản phẩm tương tự thuộc nhóm 73.12.",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hoi": "Hàng là dây thép gai, dây dẹt xoắn làm hàng rào?",
-   "neuCo": "7313",
-   "neuKhong": "7217",
-   "nguon": "nhom7217.nhom",
-   "trich": "Dây thép gai, dây dẹt đơn xoắn (có gai hoặc không) được dùng cho các vật liệu làm hàng rào (nhóm 73.13).",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hoi": "Hàng là dây đôi dùng làm bộ go máy dệt?",
-   "neuCo": "7326",
-   "neuKhong": "7217",
-   "nguon": "nhom7217.nhom",
-   "trich": "Dây đôi như được sử dụng để làm bộ go máy dệt và được tạo thành bởi việc hàn (bằng hợp kim dễ nóng chảy) hai nhánh dây lại với nhau sau khi kéo, dây được xoắn vào các lỗ xâu hoặc các vòng tại một hoặc cả hai đầu để buộc (nhóm 73.26).",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hoi": "Hàng là các điện cực hàn đã được phủ?",
-   "neuCo": "8311",
-   "neuKhong": "7217",
-   "nguon": "nhom7217.nhom",
-   "trich": "Các điện cực hàn đã được phủ, (nhóm 83.11)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hoi": "Hàng là dây cách điện?",
-   "neuCo": "8544",
-   "neuKhong": "7217",
-   "nguon": "nhom7217.nhom",
-   "trich": "Dây cách điện (gồm cả dây tráng men) (nhóm 85.44).",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hoi": "Hàng là dây đàn cho nhạc cụ?",
-   "neuCo": "9209",
-   "neuKhong": "7217",
-   "nguon": "nhom7217.nhom",
-   "trich": "Dây đàn cho các nhạc cụ (nhóm 92.09).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "tieuChi6": [],
- "dong8": [
-  {
-   "hs": "72171010",
-   "dieuKien": "Có hàm lượng carbon dưới 0,25% tính theo khối lượng",
-   "loaiKhac": false,
-   "nguon": "tax.72171010",
-   "trich": "72171010 - - Có hàm lượng carbon dưới 0,25% tính theo khối lượng",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72171022",
-   "dieuKien": "Dây dẹt cuộn tang; dây loại sử dụng để làm dây tao cho bê tông dự ứng lực; dây thép dễ cắt gọt",
-   "loaiKhac": false,
-   "nguon": "tax.72171022",
-   "trich": "72171022 - - - Dây dẹt cuộn tang; dây loại sử dụng để làm dây tao cho bê tông dự ứng lực; dây thép dễ cắt gọt",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72171029",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.72171029",
-   "trich": "72171029 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "7217102",
-    "truAnhEm": [
-     "72171022"
-    ],
-    "truDayDu": [
-     "72171022"
-    ],
-    "toTienCoTen": "721710",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "72171032",
-   "dieuKien": "Dây làm nan hoa; dây dẹt cuộn tang; dây thép dễ cắt gọt",
-   "loaiKhac": false,
-   "nguon": "tax.72171032",
-   "trich": "72171032 - - - Dây làm nan hoa; dây dẹt cuộn tang; dây thép dễ cắt gọt",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72171033",
-   "dieuKien": "Dây loại sử dụng để làm dây tao cho bê tông dự ứng lực",
-   "loaiKhac": false,
-   "nguon": "tax.72171033",
-   "trich": "72171033 - - - Dây loại sử dụng để làm dây tao cho bê tông dự ứng lực",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72171039",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.72171039",
-   "trich": "72171039 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "7217103",
-    "truAnhEm": [
-     "72171032",
-     "72171033"
-    ],
-    "truDayDu": [
-     "72171032",
-     "72171033"
-    ],
-    "toTienCoTen": "721710",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "72172010",
-   "dieuKien": "Có hàm lượng carbon dưới 0,25% tính theo khối lượng",
-   "loaiKhac": false,
-   "nguon": "tax.72172010",
-   "trich": "72172010 - - Có hàm lượng carbon dưới 0,25% tính theo khối lượng",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72172020",
-   "dieuKien": "Có hàm lượng carbon từ 0,25% đến dưới 0,45% tính theo khối lượng",
-   "loaiKhac": false,
-   "nguon": "tax.72172020",
-   "trich": "72172020 - - Có hàm lượng carbon từ 0,25% đến dưới 0,45% tính theo khối lượng",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72172091",
-   "dieuKien": "Dây thép dùng làm lõi cho cáp dẫn điện bằng nhôm (ACSR) (SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.72172091",
-   "trich": "72172091 - - - Dây thép dùng làm lõi cho cáp dẫn điện bằng nhôm (ACSR) (SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72172099",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.72172099",
-   "trich": "72172099 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "7217209",
-    "truAnhEm": [
-     "72172091"
-    ],
-    "truDayDu": [
-     "72172091"
-    ],
-    "toTienCoTen": "721720",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "72173011",
-   "dieuKien": "Phủ, mạ hoặc tráng thiếc",
-   "loaiKhac": false,
-   "nguon": "tax.72173011",
-   "trich": "72173011 - - - Phủ, mạ hoặc tráng thiếc",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72173019",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.72173019",
-   "trich": "72173019 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "7217301",
-    "truAnhEm": [
-     "72173011"
-    ],
-    "truDayDu": [
-     "72173011"
-    ],
-    "toTienCoTen": "721730",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "72173020",
-   "dieuKien": "Có hàm lượng carbon từ 0,25% đến dưới 0,6% tính theo khối lượng",
-   "loaiKhac": false,
-   "nguon": "tax.72173020",
-   "trich": "72173020 - - Có hàm lượng carbon từ 0,25% đến dưới 0,6% tính theo khối lượng",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72173033",
-   "dieuKien": "Dây thép phủ đồng thau dùng trong sản xuất lốp cao su loại bơm hơi (dây tanh)",
-   "loaiKhac": false,
-   "nguon": "tax.72173033",
-   "trich": "72173033 - - - Dây thép phủ đồng thau dùng trong sản xuất lốp cao su loại bơm hơi (dây tanh)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72173034",
-   "dieuKien": "Dây thép phủ hợp kim đồng loại khác dùng để làm lốp cao su loại bơm hơi (dây tanh)",
-   "loaiKhac": false,
-   "nguon": "tax.72173034",
-   "trich": "72173034 - - - Dây thép phủ hợp kim đồng loại khác dùng để làm lốp cao su loại bơm hơi (dây tanh)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72173035",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.72173035",
-   "trich": "72173035 - - - Loại khác, phủ, mạ hoặc tráng thiếc",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "7217303",
-    "truAnhEm": [
-     "72173033",
-     "72173034"
-    ],
-    "truDayDu": [
-     "72173033",
-     "72173034"
-    ],
-    "toTienCoTen": "721730",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "72173039",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.72173039",
-   "trich": "72173039 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "7217303",
-    "truAnhEm": [
-     "72173033",
-     "72173034",
-     "72173035"
-    ],
-    "truDayDu": [
-     "72173033",
-     "72173034",
-     "72173035"
-    ],
-    "toTienCoTen": "721730",
-    "dinhNghiaDuoc": false
-   }
-  },
-  {
-   "hs": "72179010",
-   "dieuKien": "Có hàm lượng carbon dưới 0,25% tính theo khối lượng",
-   "loaiKhac": false,
-   "nguon": "tax.72179010",
-   "trich": "72179010 - - Có hàm lượng carbon dưới 0,25% tính theo khối lượng",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72179090",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.72179090",
-   "trich": "72179090 - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "721790",
-    "truAnhEm": [
-     "72179010"
-    ],
-    "truDayDu": [
-     "72179010"
-    ],
-    "toTienCoTen": "721790",
-    "dinhNghiaDuoc": true
-   }
-  }
- ],
- "cay": {
-  "nguonLoai": "MAY_SUY",
-  "sinhTu": "lib/hs-tree.js",
-  "nut": [
-   {
-    "id": "7217",
-    "cap": 4,
-    "cha": "72",
-    "tenVi": "Dây của sắt hoặc thép không hợp kim (+).",
-    "tenEn": "Wire of iron or non-alloy steel",
-    "suyRa": false
-   },
-   {
-    "id": "721710",
-    "cap": 6,
-    "cha": "7217",
-    "tenVi": "Không được phủ, mạ hoặc tráng, đã hoặc chưa được đánh bóng",
-    "tenEn": "Iron or non-alloy steel; wire, (not plated or coated), whether or not polished",
-    "suyRa": false
-   },
-   {
-    "id": "72171010",
-    "cap": 8,
-    "cha": "721710",
-    "tenVi": "Có hàm lượng carbon dưới 0,25% tính theo khối lượng",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "7217102",
-    "cap": "TIEU_DE_QG",
-    "cha": "721710",
-    "tenVi": "Có hàm lượng carbon từ 0,25% đến dưới 0,6% tính theo khối lượng",
-    "tenEn": "Containing by weight 0.25% or more but less than 0.6% of carbon",
-    "suyRa": true
-   },
-   {
-    "id": "72171022",
-    "cap": 8,
-    "cha": "7217102",
-    "tenVi": "Dây dẹt cuộn tang; dây loại sử dụng để làm dây tao cho bê tông dự ứng lực; dây thép dễ cắt gọt",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72171029",
-    "cap": 8,
-    "cha": "7217102",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "7217103",
-    "cap": "TIEU_DE_QG",
-    "cha": "721710",
-    "tenVi": "Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng",
-    "tenEn": "Containing by weight 0.6% or more of carbon",
-    "suyRa": true
-   },
-   {
-    "id": "72171032",
-    "cap": 8,
-    "cha": "7217103",
-    "tenVi": "Dây làm nan hoa; dây dẹt cuộn tang; dây thép dễ cắt gọt",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72171033",
-    "cap": 8,
-    "cha": "7217103",
-    "tenVi": "Dây loại sử dụng để làm dây tao cho bê tông dự ứng lực",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72171039",
-    "cap": 8,
-    "cha": "7217103",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "721720",
-    "cap": 6,
-    "cha": "7217",
-    "tenVi": "Được phủ, mạ hoặc tráng kẽm",
-    "tenEn": "Iron or non-alloy steel; wire, plated or coated with zinc",
-    "suyRa": false
-   },
-   {
-    "id": "72172010",
-    "cap": 8,
-    "cha": "721720",
-    "tenVi": "Có hàm lượng carbon dưới 0,25% tính theo khối lượng",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72172020",
-    "cap": 8,
-    "cha": "721720",
-    "tenVi": "Có hàm lượng carbon từ 0,25% đến dưới 0,45% tính theo khối lượng",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "7217209",
-    "cap": "TIEU_DE_QG",
-    "cha": "721720",
-    "tenVi": "Chứa hàm lượng carbon từ 0,45% trở lên tính theo khối lượng",
-    "tenEn": "Containing by weight 0.45% or more of carbon",
-    "suyRa": true
-   },
-   {
-    "id": "72172091",
-    "cap": 8,
-    "cha": "7217209",
-    "tenVi": "Dây thép dùng làm lõi cho cáp dẫn điện bằng nhôm (ACSR) (SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72172099",
-    "cap": 8,
-    "cha": "7217209",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "721730",
-    "cap": 6,
-    "cha": "7217",
-    "tenVi": "Được phủ, mạ hoặc tráng kim loại cơ bản khác",
-    "tenEn": "Iron or non-alloy steel; wire, plated or coated with base metals (other than zinc)",
-    "suyRa": false
-   },
-   {
-    "id": "7217301",
-    "cap": "TIEU_DE_QG",
-    "cha": "721730",
-    "tenVi": "Có hàm lượng carbon dưới 0,25% tính theo khối lượng",
-    "tenEn": "Containing by weight less than 0.25% of carbon",
-    "suyRa": true
-   },
-   {
-    "id": "72173011",
-    "cap": 8,
-    "cha": "7217301",
-    "tenVi": "Phủ, mạ hoặc tráng thiếc",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72173019",
-    "cap": 8,
-    "cha": "7217301",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "72173020",
-    "cap": 8,
-    "cha": "721730",
-    "tenVi": "Có hàm lượng carbon từ 0,25% đến dưới 0,6% tính theo khối lượng",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "7217303",
-    "cap": "TIEU_DE_QG",
-    "cha": "721730",
-    "tenVi": "Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng",
-    "tenEn": "Containing by weight 0.6% or more of carbon",
-    "suyRa": true
-   },
-   {
-    "id": "72173033",
-    "cap": 8,
-    "cha": "7217303",
-    "tenVi": "Dây thép phủ đồng thau dùng trong sản xuất lốp cao su loại bơm hơi (dây tanh)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72173034",
-    "cap": 8,
-    "cha": "7217303",
-    "tenVi": "Dây thép phủ hợp kim đồng loại khác dùng để làm lốp cao su loại bơm hơi (dây tanh)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72173035",
-    "cap": 8,
-    "cha": "7217303",
-    "tenVi": "Loại khác, phủ, mạ hoặc tráng thiếc",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "72173039",
-    "cap": 8,
-    "cha": "7217303",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "721790",
-    "cap": 6,
-    "cha": "7217",
-    "tenVi": "Loại khác",
-    "tenEn": "Iron or non-alloy steel; wire, n.e.c. in heading no. 7217",
-    "suyRa": false
-   },
-   {
-    "id": "72179010",
-    "cap": 8,
-    "cha": "721790",
-    "tenVi": "Có hàm lượng carbon dưới 0,25% tính theo khối lượng",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72179090",
-    "cap": 8,
-    "cha": "721790",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   }
+  "dieuKienVao": [
+    {
+      "fact": "la_day_kim_loai_den_o_dang_cuon",
+      "op": "=",
+      "value": true,
+      "donVi": null,
+      "ngoaiTru": [],
+      "nguon": "ch72.chuong",
+      "trich": "Dây\n\nCác sản phẩm được tạo hình nguội, ở dạng cuộn, có mặt cắt ngang đông đặc đều nhau dọc chiều dài, khác với định nghĩa về sản phẩm được cán phẳng.",
+      "nguonLoai": "AI_DA_KIEM"
+    }
   ],
-  "tenDien": []
- },
- "dungTuNguon": [
-  "ch72.chuong",
-  "nhom7217.nhom",
-  "tax.72171010",
-  "tax.72171022",
-  "tax.72171029",
-  "tax.72171032",
-  "tax.72171033",
-  "tax.72171039",
-  "tax.72172010",
-  "tax.72172020",
-  "tax.72172091",
-  "tax.72172099",
-  "tax.72173011",
-  "tax.72173019",
-  "tax.72173020",
-  "tax.72173033",
-  "tax.72173034",
-  "tax.72173035",
-  "tax.72173039",
-  "tax.72179010",
-  "tax.72179090"
- ],
- "phienBan": "HS2022",
- "taoBoi": {
-  "provider": "google-studio:gemini-flash",
-  "model": null,
-  "luc": "2026-11-02T10:43:04.907Z",
-  "ms": 13
- },
- "kiemTra": {
-  "tong": 35,
-  "dat": 35,
-  "loai": 0,
-  "nguonBiCat": []
- }
+  "loaiTru": [
+    {
+      "dieuKien": "Sợi trộn kim loại",
+      "sangNhom": "5605",
+      "nguon": "nhom7217.nhom",
+      "trich": "Sợi trộn kim loại (nhóm 56.05), dây xe hoặc dây thừng được gia cố với dây (nhóm 56.07).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "dieuKien": "Dây bện tao, dây thừng, dây cáp và các sản phẩm tương tự",
+      "sangNhom": "7312",
+      "nguon": "nhom7217.nhom",
+      "trich": "Dây bện tao, dây thừng, dây cáp và các sản phẩm tương tự thuộc nhóm 73.12.",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "dieuKien": "Dây thép gai, dây dẹt đơn xoắn",
+      "sangNhom": "7313",
+      "nguon": "nhom7217.nhom",
+      "trich": "Dây thép gai, dây dẹt đơn xoắn (có gai hoặc không) được dùng cho các vật liệu làm hàng rào (nhóm 73.13).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "dieuKien": "Dây đôi như được sử dụng để làm bộ go máy dệt",
+      "sangNhom": "7326",
+      "nguon": "nhom7217.nhom",
+      "trich": "Dây đôi như được sử dụng để làm bộ go máy dệt và được tạo thành bởi việc hàn (bằng hợp kim dễ nóng chảy) hai nhánh dây lại với nhau sau khi kéo, dây được xoắn vào các lỗ xâu hoặc các vòng tại một hoặc cả hai đầu để buộc (nhóm 73.26).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "dieuKien": "Các điện cực hàn đã được phủ",
+      "sangNhom": "8311",
+      "nguon": "nhom7217.nhom",
+      "trich": "Các điện cực hàn đã được phủ, (nhóm 83.11)",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "dieuKien": "Dây cách điện (gồm cả dây tráng men)",
+      "sangNhom": "8544",
+      "nguon": "nhom7217.nhom",
+      "trich": "Dây cách điện (gồm cả dây tráng men) (nhóm 85.44).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "dieuKien": "Dây đàn cho các nhạc cụ",
+      "sangNhom": "9209",
+      "nguon": "nhom7217.nhom",
+      "trich": "Dây đàn cho các nhạc cụ (nhóm 92.09).",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "phanBiet": [
+    {
+      "hoi": "Hàng là sợi trộn kim loại?",
+      "neuCo": "5605",
+      "neuKhong": "7217",
+      "nguon": "nhom7217.nhom",
+      "trich": "Sợi trộn kim loại (nhóm 56.05), dây xe hoặc dây thừng được gia cố với dây (nhóm 56.07).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hoi": "Hàng là dây bện tao, dây thừng, dây cáp?",
+      "neuCo": "7312",
+      "neuKhong": "7217",
+      "nguon": "nhom7217.nhom",
+      "trich": "Dây bện tao, dây thừng, dây cáp và các sản phẩm tương tự thuộc nhóm 73.12.",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hoi": "Hàng là dây thép gai, dây dẹt xoắn làm hàng rào?",
+      "neuCo": "7313",
+      "neuKhong": "7217",
+      "nguon": "nhom7217.nhom",
+      "trich": "Dây thép gai, dây dẹt đơn xoắn (có gai hoặc không) được dùng cho các vật liệu làm hàng rào (nhóm 73.13).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hoi": "Hàng là dây đôi dùng làm bộ go máy dệt?",
+      "neuCo": "7326",
+      "neuKhong": "7217",
+      "nguon": "nhom7217.nhom",
+      "trich": "Dây đôi như được sử dụng để làm bộ go máy dệt và được tạo thành bởi việc hàn (bằng hợp kim dễ nóng chảy) hai nhánh dây lại với nhau sau khi kéo, dây được xoắn vào các lỗ xâu hoặc các vòng tại một hoặc cả hai đầu để buộc (nhóm 73.26).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hoi": "Hàng là các điện cực hàn đã được phủ?",
+      "neuCo": "8311",
+      "neuKhong": "7217",
+      "nguon": "nhom7217.nhom",
+      "trich": "Các điện cực hàn đã được phủ, (nhóm 83.11)",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hoi": "Hàng là dây cách điện?",
+      "neuCo": "8544",
+      "neuKhong": "7217",
+      "nguon": "nhom7217.nhom",
+      "trich": "Dây cách điện (gồm cả dây tráng men) (nhóm 85.44).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hoi": "Hàng là dây đàn cho nhạc cụ?",
+      "neuCo": "9209",
+      "neuKhong": "7217",
+      "nguon": "nhom7217.nhom",
+      "trich": "Dây đàn cho các nhạc cụ (nhóm 92.09).",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "tieuChi6": [],
+  "dong8": [
+    {
+      "hs": "72171010",
+      "dieuKien": "hàm lượng carbon < 0.25 %",
+      "loaiKhac": false,
+      "nguon": "tax.72171010",
+      "trich": "72171010 - - Có hàm lượng carbon dưới 0,25% tính theo khối lượng",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.25,
+          "donVi": "%"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "d00ee08bdfe23394fde226222a500e0784ec9e1e2769e8824d82cfb8c30f8c02"
+        }
+      }
+    },
+    {
+      "hs": "72171022",
+      "dieuKien": "tên loại hàng: Dây dẹt cuộn tang hoặc dây loại sử dụng để làm dây tao cho bê tông dự ứng lực hoặc dây thép dễ cắt gọt",
+      "loaiKhac": false,
+      "nguon": "tax.72171022",
+      "trich": "72171022 - - - Dây dẹt cuộn tang; dây loại sử dụng để làm dây tao cho bê tông dự ứng lực; dây thép dễ cắt gọt",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Dây dẹt cuộn tang",
+            "dây loại sử dụng để làm dây tao cho bê tông dự ứng lực",
+            "dây thép dễ cắt gọt"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "d00ee08bdfe23394fde226222a500e0784ec9e1e2769e8824d82cfb8c30f8c02"
+        }
+      }
+    },
+    {
+      "hs": "72171029",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.72171029",
+      "trich": "72171029 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "7217102",
+        "truAnhEm": [
+          "72171022"
+        ],
+        "truDayDu": [
+          "72171022"
+        ],
+        "toTienCoTen": "721710",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "72171032",
+      "dieuKien": "tên loại hàng: Dây làm nan hoa hoặc dây dẹt cuộn tang hoặc dây thép dễ cắt gọt",
+      "loaiKhac": false,
+      "nguon": "tax.72171032",
+      "trich": "72171032 - - - Dây làm nan hoa; dây dẹt cuộn tang; dây thép dễ cắt gọt",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Dây làm nan hoa",
+            "dây dẹt cuộn tang",
+            "dây thép dễ cắt gọt"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "d00ee08bdfe23394fde226222a500e0784ec9e1e2769e8824d82cfb8c30f8c02"
+        }
+      }
+    },
+    {
+      "hs": "72171033",
+      "dieuKien": "tên loại hàng: Dây loại sử dụng để làm dây tao cho bê tông dự ứng lực",
+      "loaiKhac": false,
+      "nguon": "tax.72171033",
+      "trich": "72171033 - - - Dây loại sử dụng để làm dây tao cho bê tông dự ứng lực",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dây loại sử dụng để làm dây tao cho bê tông dự ứng lực"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "d00ee08bdfe23394fde226222a500e0784ec9e1e2769e8824d82cfb8c30f8c02"
+        }
+      }
+    },
+    {
+      "hs": "72171039",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.72171039",
+      "trich": "72171039 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "7217103",
+        "truAnhEm": [
+          "72171032",
+          "72171033"
+        ],
+        "truDayDu": [
+          "72171032",
+          "72171033"
+        ],
+        "toTienCoTen": "721710",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "72172010",
+      "dieuKien": "hàm lượng carbon < 0.25 %",
+      "loaiKhac": false,
+      "nguon": "tax.72172010",
+      "trich": "72172010 - - Có hàm lượng carbon dưới 0,25% tính theo khối lượng",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.25,
+          "donVi": "%"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "6d55bf4938f4c42b30bf74b6da2c156b884ed21399617fd1957bfec133daddd9"
+        }
+      }
+    },
+    {
+      "hs": "72172020",
+      "dieuKien": "hàm lượng carbon >= 0.25 %; hàm lượng carbon < 0.45 %",
+      "loaiKhac": false,
+      "nguon": "tax.72172020",
+      "trich": "72172020 - - Có hàm lượng carbon từ 0,25% đến dưới 0,45% tính theo khối lượng",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": ">=",
+          "value": 0.25,
+          "donVi": "%"
+        },
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.45,
+          "donVi": "%"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "6d55bf4938f4c42b30bf74b6da2c156b884ed21399617fd1957bfec133daddd9"
+        }
+      }
+    },
+    {
+      "hs": "72172091",
+      "dieuKien": "tên loại hàng: Dây thép; công dụng / mục đích: làm lõi cho cáp dẫn điện bằng nhôm (ACSR)",
+      "loaiKhac": false,
+      "nguon": "tax.72172091",
+      "trich": "72172091 - - - Dây thép dùng làm lõi cho cáp dẫn điện bằng nhôm (ACSR) (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dây thép"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "làm lõi cho cáp dẫn điện bằng nhôm (ACSR)"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "6d55bf4938f4c42b30bf74b6da2c156b884ed21399617fd1957bfec133daddd9"
+        }
+      }
+    },
+    {
+      "hs": "72172099",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.72172099",
+      "trich": "72172099 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "7217209",
+        "truAnhEm": [
+          "72172091"
+        ],
+        "truDayDu": [
+          "72172091"
+        ],
+        "toTienCoTen": "721720",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "72173011",
+      "dieuKien": "lớp mạ hoặc tráng phủ bề mặt: tráng thiếc",
+      "loaiKhac": false,
+      "nguon": "tax.72173011",
+      "trich": "72173011 - - - Phủ, mạ hoặc tráng thiếc",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "lopMaPhu",
+          "op": "TRONG",
+          "value": [
+            "TRANG_THIEC"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "38a15073ee755a1c6dbbc77ff107584f6bcf73744ac7406c30246226b65f79ca"
+        }
+      }
+    },
+    {
+      "hs": "72173019",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.72173019",
+      "trich": "72173019 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "7217301",
+        "truAnhEm": [
+          "72173011"
+        ],
+        "truDayDu": [
+          "72173011"
+        ],
+        "toTienCoTen": "721730",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "72173020",
+      "dieuKien": "hàm lượng carbon >= 0.25 %; hàm lượng carbon < 0.6 %",
+      "loaiKhac": false,
+      "nguon": "tax.72173020",
+      "trich": "72173020 - - Có hàm lượng carbon từ 0,25% đến dưới 0,6% tính theo khối lượng",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": ">=",
+          "value": 0.25,
+          "donVi": "%"
+        },
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "38a15073ee755a1c6dbbc77ff107584f6bcf73744ac7406c30246226b65f79ca"
+        }
+      }
+    },
+    {
+      "hs": "72173033",
+      "dieuKien": "tên loại hàng: Dây thép phủ đồng thau; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): sản xuất lốp cao su loại bơm hơi",
+      "loaiKhac": false,
+      "nguon": "tax.72173033",
+      "trich": "72173033 - - - Dây thép phủ đồng thau dùng trong sản xuất lốp cao su loại bơm hơi (dây tanh)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dây thép phủ đồng thau"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "sản xuất lốp cao su loại bơm hơi"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "38a15073ee755a1c6dbbc77ff107584f6bcf73744ac7406c30246226b65f79ca"
+        }
+      }
+    },
+    {
+      "hs": "72173034",
+      "dieuKien": "tên loại hàng: Dây thép phủ hợp kim đồng; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): làm lốp cao su loại bơm hơi",
+      "loaiKhac": false,
+      "nguon": "tax.72173034",
+      "trich": "72173034 - - - Dây thép phủ hợp kim đồng loại khác dùng để làm lốp cao su loại bơm hơi (dây tanh)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dây thép phủ hợp kim đồng"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "làm lốp cao su loại bơm hơi"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "38a15073ee755a1c6dbbc77ff107584f6bcf73744ac7406c30246226b65f79ca"
+        }
+      },
+      "phanConLai": [
+        "72173033"
+      ]
+    },
+    {
+      "hs": "72173035",
+      "dieuKien": "lớp mạ hoặc tráng phủ bề mặt: tráng thiếc",
+      "loaiKhac": true,
+      "nguon": "tax.72173035",
+      "trich": "72173035 - - - Loại khác, phủ, mạ hoặc tráng thiếc",
+      "nguonLoai": "CLAUDE_DUYET",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "7217303",
+        "truAnhEm": [
+          "72173033",
+          "72173034"
+        ],
+        "truDayDu": [
+          "72173033",
+          "72173034"
+        ],
+        "toTienCoTen": "721730",
+        "dinhNghiaDuoc": true
+      },
+      "dieuKienSo": [
+        {
+          "fact": "lopMaPhu",
+          "op": "TRONG",
+          "value": [
+            "TRANG_THIEC"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "38a15073ee755a1c6dbbc77ff107584f6bcf73744ac7406c30246226b65f79ca"
+        }
+      }
+    },
+    {
+      "hs": "72173039",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.72173039",
+      "trich": "72173039 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "7217303",
+        "truAnhEm": [
+          "72173033",
+          "72173034",
+          "72173035"
+        ],
+        "truDayDu": [
+          "72173033",
+          "72173034",
+          "72173035"
+        ],
+        "toTienCoTen": "721730",
+        "dinhNghiaDuoc": false
+      }
+    },
+    {
+      "hs": "72179010",
+      "dieuKien": "hàm lượng carbon < 0.25 %",
+      "loaiKhac": false,
+      "nguon": "tax.72179010",
+      "trich": "72179010 - - Có hàm lượng carbon dưới 0,25% tính theo khối lượng",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.25,
+          "donVi": "%"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "9ef2fba8113a4e9ec985f0e678aa53aff3ed6da0cf22f52cda6523796103b474"
+        }
+      }
+    },
+    {
+      "hs": "72179090",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.72179090",
+      "trich": "72179090 - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "721790",
+        "truAnhEm": [
+          "72179010"
+        ],
+        "truDayDu": [
+          "72179010"
+        ],
+        "toTienCoTen": "721790",
+        "dinhNghiaDuoc": true
+      }
+    }
+  ],
+  "cay": {
+    "nguonLoai": "MAY_SUY",
+    "sinhTu": "lib/hs-tree.js",
+    "nut": [
+      {
+        "id": "7217",
+        "cap": 4,
+        "cha": "72",
+        "tenVi": "Dây của sắt hoặc thép không hợp kim (+).",
+        "tenEn": "Wire of iron or non-alloy steel",
+        "suyRa": false
+      },
+      {
+        "id": "721710",
+        "cap": 6,
+        "cha": "7217",
+        "tenVi": "Không được phủ, mạ hoặc tráng, đã hoặc chưa được đánh bóng",
+        "tenEn": "Iron or non-alloy steel; wire, (not plated or coated), whether or not polished",
+        "suyRa": false
+      },
+      {
+        "id": "72171010",
+        "cap": 8,
+        "cha": "721710",
+        "tenVi": "Có hàm lượng carbon dưới 0,25% tính theo khối lượng",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "7217102",
+        "cap": "TIEU_DE_QG",
+        "cha": "721710",
+        "tenVi": "Có hàm lượng carbon từ 0,25% đến dưới 0,6% tính theo khối lượng",
+        "tenEn": "Containing by weight 0.25% or more but less than 0.6% of carbon",
+        "suyRa": true
+      },
+      {
+        "id": "72171022",
+        "cap": 8,
+        "cha": "7217102",
+        "tenVi": "Dây dẹt cuộn tang; dây loại sử dụng để làm dây tao cho bê tông dự ứng lực; dây thép dễ cắt gọt",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72171029",
+        "cap": 8,
+        "cha": "7217102",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "7217103",
+        "cap": "TIEU_DE_QG",
+        "cha": "721710",
+        "tenVi": "Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng",
+        "tenEn": "Containing by weight 0.6% or more of carbon",
+        "suyRa": true
+      },
+      {
+        "id": "72171032",
+        "cap": 8,
+        "cha": "7217103",
+        "tenVi": "Dây làm nan hoa; dây dẹt cuộn tang; dây thép dễ cắt gọt",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72171033",
+        "cap": 8,
+        "cha": "7217103",
+        "tenVi": "Dây loại sử dụng để làm dây tao cho bê tông dự ứng lực",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72171039",
+        "cap": 8,
+        "cha": "7217103",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "721720",
+        "cap": 6,
+        "cha": "7217",
+        "tenVi": "Được phủ, mạ hoặc tráng kẽm",
+        "tenEn": "Iron or non-alloy steel; wire, plated or coated with zinc",
+        "suyRa": false
+      },
+      {
+        "id": "72172010",
+        "cap": 8,
+        "cha": "721720",
+        "tenVi": "Có hàm lượng carbon dưới 0,25% tính theo khối lượng",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72172020",
+        "cap": 8,
+        "cha": "721720",
+        "tenVi": "Có hàm lượng carbon từ 0,25% đến dưới 0,45% tính theo khối lượng",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "7217209",
+        "cap": "TIEU_DE_QG",
+        "cha": "721720",
+        "tenVi": "Chứa hàm lượng carbon từ 0,45% trở lên tính theo khối lượng",
+        "tenEn": "Containing by weight 0.45% or more of carbon",
+        "suyRa": true
+      },
+      {
+        "id": "72172091",
+        "cap": 8,
+        "cha": "7217209",
+        "tenVi": "Dây thép dùng làm lõi cho cáp dẫn điện bằng nhôm (ACSR) (SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72172099",
+        "cap": 8,
+        "cha": "7217209",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "721730",
+        "cap": 6,
+        "cha": "7217",
+        "tenVi": "Được phủ, mạ hoặc tráng kim loại cơ bản khác",
+        "tenEn": "Iron or non-alloy steel; wire, plated or coated with base metals (other than zinc)",
+        "suyRa": false
+      },
+      {
+        "id": "7217301",
+        "cap": "TIEU_DE_QG",
+        "cha": "721730",
+        "tenVi": "Có hàm lượng carbon dưới 0,25% tính theo khối lượng",
+        "tenEn": "Containing by weight less than 0.25% of carbon",
+        "suyRa": true
+      },
+      {
+        "id": "72173011",
+        "cap": 8,
+        "cha": "7217301",
+        "tenVi": "Phủ, mạ hoặc tráng thiếc",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72173019",
+        "cap": 8,
+        "cha": "7217301",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "72173020",
+        "cap": 8,
+        "cha": "721730",
+        "tenVi": "Có hàm lượng carbon từ 0,25% đến dưới 0,6% tính theo khối lượng",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "7217303",
+        "cap": "TIEU_DE_QG",
+        "cha": "721730",
+        "tenVi": "Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng",
+        "tenEn": "Containing by weight 0.6% or more of carbon",
+        "suyRa": true
+      },
+      {
+        "id": "72173033",
+        "cap": 8,
+        "cha": "7217303",
+        "tenVi": "Dây thép phủ đồng thau dùng trong sản xuất lốp cao su loại bơm hơi (dây tanh)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72173034",
+        "cap": 8,
+        "cha": "7217303",
+        "tenVi": "Dây thép phủ hợp kim đồng loại khác dùng để làm lốp cao su loại bơm hơi (dây tanh)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72173035",
+        "cap": 8,
+        "cha": "7217303",
+        "tenVi": "Loại khác, phủ, mạ hoặc tráng thiếc",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "72173039",
+        "cap": 8,
+        "cha": "7217303",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "721790",
+        "cap": 6,
+        "cha": "7217",
+        "tenVi": "Loại khác",
+        "tenEn": "Iron or non-alloy steel; wire, n.e.c. in heading no. 7217",
+        "suyRa": false
+      },
+      {
+        "id": "72179010",
+        "cap": 8,
+        "cha": "721790",
+        "tenVi": "Có hàm lượng carbon dưới 0,25% tính theo khối lượng",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72179090",
+        "cap": 8,
+        "cha": "721790",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      }
+    ],
+    "tenDien": []
+  },
+  "dungTuNguon": [
+    "ch72.chuong",
+    "nhom7217.nhom",
+    "tax.72171010",
+    "tax.72171022",
+    "tax.72171029",
+    "tax.72171032",
+    "tax.72171033",
+    "tax.72171039",
+    "tax.72172010",
+    "tax.72172020",
+    "tax.72172091",
+    "tax.72172099",
+    "tax.72173011",
+    "tax.72173019",
+    "tax.72173020",
+    "tax.72173033",
+    "tax.72173034",
+    "tax.72173035",
+    "tax.72173039",
+    "tax.72179010",
+    "tax.72179090"
+  ],
+  "phienBan": "HS2022",
+  "taoBoi": {
+    "provider": "google-studio:gemini-flash",
+    "model": null,
+    "luc": "2026-11-02T10:43:04.907Z",
+    "ms": 13
+  },
+  "kiemTra": {
+    "tong": 35,
+    "dat": 35,
+    "loai": 0,
+    "nguonBiCat": []
+  },
+  "dieuKienNut": [
+    {
+      "id": "7217102",
+      "nguon": "tieuDe.7217102",
+      "trich": "7217102 Có hàm lượng carbon từ 0,25% đến dưới 0,6% tính theo khối lượng",
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": ">=",
+          "value": 0.25,
+          "donVi": "%"
+        },
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "d00ee08bdfe23394fde226222a500e0784ec9e1e2769e8824d82cfb8c30f8c02"
+        }
+      }
+    },
+    {
+      "id": "7217103",
+      "nguon": "tieuDe.7217103",
+      "trich": "7217103 Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng",
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": ">=",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "d00ee08bdfe23394fde226222a500e0784ec9e1e2769e8824d82cfb8c30f8c02"
+        }
+      }
+    },
+    {
+      "id": "7217209",
+      "nguon": "tieuDe.7217209",
+      "trich": "7217209 Chứa hàm lượng carbon từ 0,45% trở lên tính theo khối lượng",
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": ">=",
+          "value": 0.45,
+          "donVi": "%"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "6d55bf4938f4c42b30bf74b6da2c156b884ed21399617fd1957bfec133daddd9"
+        }
+      }
+    },
+    {
+      "id": "7217301",
+      "nguon": "tieuDe.7217301",
+      "trich": "7217301 Có hàm lượng carbon dưới 0,25% tính theo khối lượng",
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.25,
+          "donVi": "%"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "38a15073ee755a1c6dbbc77ff107584f6bcf73744ac7406c30246226b65f79ca"
+        }
+      }
+    },
+    {
+      "id": "7217303",
+      "nguon": "tieuDe.7217303",
+      "trich": "7217303 Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng",
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": ">=",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "38a15073ee755a1c6dbbc77ff107584f6bcf73744ac7406c30246226b65f79ca"
+        }
+      }
+    }
+  ]
 }

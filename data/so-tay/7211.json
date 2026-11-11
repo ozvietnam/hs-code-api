@@ -1,1068 +1,1710 @@
 {
- "nhom": "7211",
- "phamVi": {
-  "text": "Sản phẩm sắt hoặc thép không hợp kim cán phẳng, có chiều rộng dưới 600 mm, chưa phủ, mạ hoặc tráng.",
-  "nguon": "nhom7211.nhom",
-  "trich": "Nhóm này bao gồm cùng loại sản phẩm được mô tả trong nhóm 72.08 hoặc 72.09, nhưng để xếp vào nhóm này, chứng phải có một chiều rộng dưới 600 mm.",
-  "nguonLoai": "AI_DA_KIEM"
- },
- "dieuKienVao": [
-  {
-   "fact": "la_san_pham_can_phang_chieu_rong_duoi_600mm",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "nhom7211.nhom",
-   "trich": "Nhóm này bao gồm cùng loại sản phẩm được mô tả trong nhóm 72.08 hoặc 72.09, nhưng để xếp vào nhóm này, chứng phải có một chiều rộng dưới 600 mm.",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "loaiTru": [
-  {
-   "dieuKien": "Đai xoắn bằng sắt hoặc thép, có đặc tính sử dụng để làm hàng rào",
-   "sangNhom": "7313",
-   "nguon": "nhom7211.nhom",
-   "trich": "(a) Đai xoắn bằng sắt hoặc thép, có đặc tính sử dụng để làm hàng rào (nhóm 73.13).",
-   "nguonLoai": "AI_DA_KIEM"
+  "nhom": "7211",
+  "phamVi": {
+    "text": "Sản phẩm sắt hoặc thép không hợp kim cán phẳng, có chiều rộng dưới 600 mm, chưa phủ, mạ hoặc tráng.",
+    "nguon": "nhom7211.nhom",
+    "trich": "Nhóm này bao gồm cùng loại sản phẩm được mô tả trong nhóm 72.08 hoặc 72.09, nhưng để xếp vào nhóm này, chứng phải có một chiều rộng dưới 600 mm.",
+    "nguonLoai": "AI_DA_KIEM"
   },
-  {
-   "dieuKien": "Dải lượn sóng với một cạnh mép có hình răng cưa hoặc vát nghiêng, có đinh gấp theo chiều dài được sử dụng để lắp ráp các bộ phận bằng gỗ",
-   "sangNhom": "7317",
-   "nguon": "nhom7211.nhom",
-   "trich": "(b) Dải lượn sóng với một cạnh mép có hình răng cưa hoặc vát nghiêng, có đinh gấp theo chiều dài được sử dụng để lắp ráp các bộ phận bằng gỗ (nhóm 73.17).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "phanBiet": [
-  {
-   "hoi": "Hàng hoá có phải là đai xoắn bằng sắt hoặc thép dùng làm hàng rào?",
-   "neuCo": "7313",
-   "neuKhong": "7211",
-   "nguon": "nhom7211.nhom",
-   "trich": "(a) Đai xoắn bằng sắt hoặc thép, có đặc tính sử dụng để làm hàng rào (nhóm 73.13).",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hoi": "Hàng hoá có phải là dải lượn sóng có đinh gấp dùng để lắp ráp các bộ phận bằng gỗ?",
-   "neuCo": "7317",
-   "neuKhong": "7211",
-   "nguon": "nhom7211.nhom",
-   "trich": "(b) Dải lượn sóng với một cạnh mép có hình răng cưa hoặc vát nghiêng, có đinh gấp theo chiều dài được sử dụng để lắp ráp các bộ phận bằng gỗ (nhóm 73.17).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "tieuChi6": [
-  {
-   "hs6": "721114",
-   "fact": "thickness",
-   "op": ">=",
-   "value": 4.75,
-   "donVi": "mm",
-   "nguon": "wco.721114",
-   "trich": "4.75mm thick or more",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs6": "721119",
-   "fact": "thickness",
-   "op": "<",
-   "value": 4.75,
-   "donVi": "mm",
-   "nguon": "wco.721119",
-   "trich": "less than 4.75mm thick",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs6": "721123",
-   "fact": "carbon_content_by_weight",
-   "op": "<",
-   "value": 0.25,
-   "donVi": "%",
-   "nguon": "wco.721123",
-   "trich": "containing by weight less than 0.25% of carbon",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs6": "721129",
-   "fact": "carbon_content_by_weight",
-   "op": ">=",
-   "value": 0.25,
-   "donVi": "%",
-   "nguon": "wco.721129",
-   "trich": "containing by weight 0.25% or more of carbon",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "dong8": [
-  {
-   "hs": "72111312",
-   "dieuKien": "Dạng lượn sóng",
-   "loaiKhac": false,
-   "nguon": "tax.72111312",
-   "trich": "72111312 - - - - Dạng lượn sóng",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72111313",
-   "dieuKien": "Dạng đai và dải(SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.72111313",
-   "trich": "72111313 - - - - Dạng đai và dải(SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72111314",
-   "dieuKien": "Tấm phổ dụng (SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.72111314",
-   "trich": "72111314 - - - - Tấm phổ dụng (SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72111319",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.72111319",
-   "trich": "72111319 - - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "7211131",
-    "truAnhEm": [
-     "72111312",
-     "72111313",
-     "72111314"
-    ],
-    "truDayDu": [
-     "72111312",
-     "72111313",
-     "72111314"
-    ],
-    "toTienCoTen": "721113",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "72111392",
-   "dieuKien": "Dạng đai và dải(SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.72111392",
-   "trich": "72111392 - - - - Dạng đai và dải(SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72111393",
-   "dieuKien": "Tấm phổ dụng (SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.72111393",
-   "trich": "72111393 - - - - Tấm phổ dụng (SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72111399",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.72111399",
-   "trich": "72111399 - - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "7211139",
-    "truAnhEm": [
-     "72111392",
-     "72111393"
-    ],
-    "truDayDu": [
-     "72111392",
-     "72111393",
-     "7211131"
-    ],
-    "toTienCoTen": "721113",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "72111414",
-   "dieuKien": "Dạng lượn sóng",
-   "loaiKhac": false,
-   "nguon": "tax.72111414",
-   "trich": "72111414 - - - - Dạng lượn sóng",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72111415",
-   "dieuKien": "Dạng cuộn để cán lại (SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.72111415",
-   "trich": "72111415 - - - - Dạng cuộn để cán lại (SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72111416",
-   "dieuKien": "Dạng đai và dải(SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.72111416",
-   "trich": "72111416 - - - - Dạng đai và dải(SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72111417",
-   "dieuKien": "Tấm phổ dụng (SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.72111417",
-   "trich": "72111417 - - - - Tấm phổ dụng (SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72111419",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.72111419",
-   "trich": "72111419 - - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "7211141",
-    "truAnhEm": [
-     "72111414",
-     "72111415",
-     "72111416",
-     "72111417"
-    ],
-    "truDayDu": [
-     "72111414",
-     "72111415",
-     "72111416",
-     "72111417"
-    ],
-    "toTienCoTen": "721114",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "72111494",
-   "dieuKien": "Dạng đai và dải(SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.72111494",
-   "trich": "72111494 - - - - Dạng đai và dải(SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72111495",
-   "dieuKien": "Tấm phổ dụng (SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.72111495",
-   "trich": "72111495 - - - - Tấm phổ dụng (SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72111499",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.72111499",
-   "trich": "72111499 - - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "7211149",
-    "truAnhEm": [
-     "72111494",
-     "72111495"
-    ],
-    "truDayDu": [
-     "72111494",
-     "72111495",
-     "7211141"
-    ],
-    "toTienCoTen": "721114",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "72111913",
-   "dieuKien": "Dạng đai và dải; tấm phổ dụng(SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.72111913",
-   "trich": "72111913 - - - - Dạng đai và dải; tấm phổ dụng(SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72111914",
-   "dieuKien": "Dạng lượn sóng",
-   "loaiKhac": false,
-   "nguon": "tax.72111914",
-   "trich": "72111914 - - - - Dạng lượn sóng",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72111919",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.72111919",
-   "trich": "72111919 - - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "7211191",
-    "truAnhEm": [
-     "72111913",
-     "72111914"
-    ],
-    "truDayDu": [
-     "72111913",
-     "72111914"
-    ],
-    "toTienCoTen": "721119",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "72111991",
-   "dieuKien": "Dạng đai và dải; tấm phổ dụng(SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.72111991",
-   "trich": "72111991 - - - - Dạng đai và dải; tấm phổ dụng(SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72111999",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.72111999",
-   "trich": "72111999 - - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "7211199",
-    "truAnhEm": [
-     "72111991"
-    ],
-    "truDayDu": [
-     "72111991",
-     "7211191"
-    ],
-    "toTienCoTen": "721119",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "72112310",
-   "dieuKien": "Dạng lượn sóng",
-   "loaiKhac": false,
-   "nguon": "tax.72112310",
-   "trich": "72112310 - - - Dạng lượn sóng",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72112320",
-   "dieuKien": "Dạng đai và dải(SEN), chiều rộng không quá 400 mm",
-   "loaiKhac": false,
-   "nguon": "tax.72112320",
-   "trich": "72112320 - - - Dạng đai và dải(SEN), chiều rộng không quá 400 mm",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72112330",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.72112330",
-   "trich": "72112330 - - - Loại khác, chiều dày không quá 0,17 mm",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "721123",
-    "truAnhEm": [
-     "72112310",
-     "72112320"
-    ],
-    "truDayDu": [
-     "72112310",
-     "72112320"
-    ],
-    "toTienCoTen": "721123",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "72112390",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.72112390",
-   "trich": "72112390 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "721123",
-    "truAnhEm": [
-     "72112310",
-     "72112320",
-     "72112330"
-    ],
-    "truDayDu": [
-     "72112310",
-     "72112320",
-     "72112330"
-    ],
-    "toTienCoTen": "721123",
-    "dinhNghiaDuoc": false
-   }
-  },
-  {
-   "hs": "72112910",
-   "dieuKien": "Dạng lượn sóng",
-   "loaiKhac": false,
-   "nguon": "tax.72112910",
-   "trich": "72112910 - - - Dạng lượn sóng",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72112920",
-   "dieuKien": "Dạng đai và dải(SEN), chiều rộng không quá 400 mm",
-   "loaiKhac": false,
-   "nguon": "tax.72112920",
-   "trich": "72112920 - - - Dạng đai và dải(SEN), chiều rộng không quá 400 mm",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72112930",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.72112930",
-   "trich": "72112930 - - - Loại khác, chiều dày không quá 0,17 mm",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "721129",
-    "truAnhEm": [
-     "72112910",
-     "72112920"
-    ],
-    "truDayDu": [
-     "72112910",
-     "72112920"
-    ],
-    "toTienCoTen": "721129",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "72112990",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.72112990",
-   "trich": "72112990 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "721129",
-    "truAnhEm": [
-     "72112910",
-     "72112920",
-     "72112930"
-    ],
-    "truDayDu": [
-     "72112910",
-     "72112920",
-     "72112930"
-    ],
-    "toTienCoTen": "721129",
-    "dinhNghiaDuoc": false
-   }
-  },
-  {
-   "hs": "72119011",
-   "dieuKien": "Dạng đai và dải(SEN), có chiều rộng không quá 25 mm",
-   "loaiKhac": false,
-   "nguon": "tax.72119011",
-   "trich": "72119011 - - - Dạng đai và dải(SEN), có chiều rộng không quá 25 mm",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72119012",
-   "dieuKien": "Dạng đai và dải(SEN), có chiều rộng trên 400 mm",
-   "loaiKhac": false,
-   "nguon": "tax.72119012",
-   "trich": "72119012 - - - Dạng đai và dải(SEN), có chiều rộng trên 400 mm",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72119013",
-   "dieuKien": "Dạng lượn sóng",
-   "loaiKhac": false,
-   "nguon": "tax.72119013",
-   "trich": "72119013 - - - Dạng lượn sóng",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72119014",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.72119014",
-   "trich": "72119014 - - - Loại khác, chiều dày không quá 0,17 mm",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "7211901",
-    "truAnhEm": [
-     "72119011",
-     "72119012",
-     "72119013"
-    ],
-    "truDayDu": [
-     "72119011",
-     "72119012",
-     "72119013"
-    ],
-    "toTienCoTen": "721190",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "72119019",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.72119019",
-   "trich": "72119019 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "7211901",
-    "truAnhEm": [
-     "72119011",
-     "72119012",
-     "72119013",
-     "72119014"
-    ],
-    "truDayDu": [
-     "72119011",
-     "72119012",
-     "72119013",
-     "72119014"
-    ],
-    "toTienCoTen": "721190",
-    "dinhNghiaDuoc": false
-   }
-  },
-  {
-   "hs": "72119091",
-   "dieuKien": "Chiều dày không quá 0,17 mm",
-   "loaiKhac": false,
-   "nguon": "tax.72119091",
-   "trich": "72119091 - - - Chiều dày không quá 0,17 mm",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72119099",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.72119099",
-   "trich": "72119099 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "7211909",
-    "truAnhEm": [
-     "72119091"
-    ],
-    "truDayDu": [
-     "72119091",
-     "7211901"
-    ],
-    "toTienCoTen": "721190",
-    "dinhNghiaDuoc": true
-   }
-  }
- ],
- "cay": {
-  "nguonLoai": "MAY_SUY",
-  "sinhTu": "lib/hs-tree.js",
-  "nut": [
-   {
-    "id": "7211",
-    "cap": 4,
-    "cha": "72",
-    "tenVi": "Các sản phẩm sắt hoặc thép không hợp kim cán phẳng, có chiều rộng dưới 600mm, chưa dát phủ (clad), phủ, mạ (coated) hoặc tráng (plated) (+).",
-    "tenEn": "Iron or non-alloy steel; flat-rolled products, width less than 600mm, not clad, plated or coated",
-    "suyRa": false
-   },
-   {
-    "id": "72111",
-    "cap": "NHOM_MOT_GACH",
-    "cha": "7211",
-    "tenVi": "Chưa được gia công quá mức cán nóng",
-    "tenEn": "Not further worked than hot-rolled",
-    "suyRa": true
-   },
-   {
-    "id": "721113",
-    "cap": 6,
-    "cha": "72111",
-    "tenVi": "Được cán 4 mặt hoặc ở dạng khuôn hộp kín, có chiều rộng trên 150 mm và chiều dày không dưới 4 mm, không ở dạng cuộn và không có hình dập nổi",
-    "tenEn": "Iron or non-alloy steel; flat-rolled, hot-rolled, rolled on four faces or in a closed box pass, of a width more than 150mm but less than 600mm, 4mm thick or more, not in coils, without patterns in relief",
-    "suyRa": false
-   },
-   {
-    "id": "7211131",
-    "cap": "TIEU_DE_QG",
-    "cha": "721113",
-    "tenVi": "Có hàm lượng carbon dưới 0,6% tính theo khối lượng",
-    "tenEn": "Containing by weight less than 0.6% of carbon",
-    "suyRa": true
-   },
-   {
-    "id": "72111312",
-    "cap": 8,
-    "cha": "7211131",
-    "tenVi": "Dạng lượn sóng",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72111313",
-    "cap": 8,
-    "cha": "7211131",
-    "tenVi": "Dạng đai và dải(SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72111314",
-    "cap": 8,
-    "cha": "7211131",
-    "tenVi": "Tấm phổ dụng (SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72111319",
-    "cap": 8,
-    "cha": "7211131",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "7211139",
-    "cap": "TIEU_DE_QG",
-    "cha": "721113",
-    "tenVi": "Loại khác",
-    "tenEn": "Other",
-    "suyRa": true
-   },
-   {
-    "id": "72111392",
-    "cap": 8,
-    "cha": "7211139",
-    "tenVi": "Dạng đai và dải(SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72111393",
-    "cap": 8,
-    "cha": "7211139",
-    "tenVi": "Tấm phổ dụng (SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72111399",
-    "cap": 8,
-    "cha": "7211139",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "721114",
-    "cap": 6,
-    "cha": "72111",
-    "tenVi": "Loại khác, chiều dày từ 4,75 mm trở lên",
-    "tenEn": "Iron or non-alloy steel; flat-rolled, hot-rolled, of a width less than 600mm, 4.75mm thick or more, excluding those of item no. 7211.13",
-    "suyRa": false
-   },
-   {
-    "id": "7211141",
-    "cap": "TIEU_DE_QG",
-    "cha": "721114",
-    "tenVi": "Có hàm lượng carbon dưới 0,6% tính theo khối lượng",
-    "tenEn": "Containing by weight less than 0.6% of carbon",
-    "suyRa": true
-   },
-   {
-    "id": "72111414",
-    "cap": 8,
-    "cha": "7211141",
-    "tenVi": "Dạng lượn sóng",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72111415",
-    "cap": 8,
-    "cha": "7211141",
-    "tenVi": "Dạng cuộn để cán lại (SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72111416",
-    "cap": 8,
-    "cha": "7211141",
-    "tenVi": "Dạng đai và dải(SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72111417",
-    "cap": 8,
-    "cha": "7211141",
-    "tenVi": "Tấm phổ dụng (SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72111419",
-    "cap": 8,
-    "cha": "7211141",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "7211149",
-    "cap": "TIEU_DE_QG",
-    "cha": "721114",
-    "tenVi": "Loại khác",
-    "tenEn": "Other",
-    "suyRa": true
-   },
-   {
-    "id": "72111494",
-    "cap": 8,
-    "cha": "7211149",
-    "tenVi": "Dạng đai và dải(SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72111495",
-    "cap": 8,
-    "cha": "7211149",
-    "tenVi": "Tấm phổ dụng (SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72111499",
-    "cap": 8,
-    "cha": "7211149",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "721119",
-    "cap": 6,
-    "cha": "72111",
-    "tenVi": "Loại khác",
-    "tenEn": "Iron or non-alloy steel; flat-rolled, hot-rolled, of a width less than 600mm, less than 4.75mm thick, excluding those of item no. 7211.13",
-    "suyRa": false
-   },
-   {
-    "id": "7211191",
-    "cap": "TIEU_DE_QG",
-    "cha": "721119",
-    "tenVi": "Có hàm lượng carbon dưới 0,6% tính theo khối lượng",
-    "tenEn": "Containing by weight less than 0.6% of carbon",
-    "suyRa": true
-   },
-   {
-    "id": "72111913",
-    "cap": 8,
-    "cha": "7211191",
-    "tenVi": "Dạng đai và dải; tấm phổ dụng(SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72111914",
-    "cap": 8,
-    "cha": "7211191",
-    "tenVi": "Dạng lượn sóng",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72111919",
-    "cap": 8,
-    "cha": "7211191",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "7211199",
-    "cap": "TIEU_DE_QG",
-    "cha": "721119",
-    "tenVi": "Loại khác",
-    "tenEn": "Other",
-    "suyRa": true
-   },
-   {
-    "id": "72111991",
-    "cap": 8,
-    "cha": "7211199",
-    "tenVi": "Dạng đai và dải; tấm phổ dụng(SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72111999",
-    "cap": 8,
-    "cha": "7211199",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "72112",
-    "cap": "NHOM_MOT_GACH",
-    "cha": "7211",
-    "tenVi": "Chưa được gia công quá mức cán nguội (ép nguội)",
-    "tenEn": null,
-    "suyRa": true
-   },
-   {
-    "id": "721123",
-    "cap": 6,
-    "cha": "72112",
-    "tenVi": "Có hàm lượng carbon dưới 0,25% tính theo khối lượng",
-    "tenEn": "Iron or non-alloy steel; flat-rolled, cold-rolled, of a width less than 600mm, containing by weight less than 0.25% of carbon",
-    "suyRa": false
-   },
-   {
-    "id": "72112310",
-    "cap": 8,
-    "cha": "721123",
-    "tenVi": "Dạng lượn sóng",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72112320",
-    "cap": 8,
-    "cha": "721123",
-    "tenVi": "Dạng đai và dải(SEN), chiều rộng không quá 400 mm",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72112330",
-    "cap": 8,
-    "cha": "721123",
-    "tenVi": "Loại khác, chiều dày không quá 0,17 mm",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "72112390",
-    "cap": 8,
-    "cha": "721123",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "721129",
-    "cap": 6,
-    "cha": "72112",
-    "tenVi": "Loại khác",
-    "tenEn": "Iron or non-alloy steel; flat-rolled, cold-rolled, of a width less than 600mm, containing by weight 0.25% or more of carbon",
-    "suyRa": false
-   },
-   {
-    "id": "72112910",
-    "cap": 8,
-    "cha": "721129",
-    "tenVi": "Dạng lượn sóng",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72112920",
-    "cap": 8,
-    "cha": "721129",
-    "tenVi": "Dạng đai và dải(SEN), chiều rộng không quá 400 mm",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72112930",
-    "cap": 8,
-    "cha": "721129",
-    "tenVi": "Loại khác, chiều dày không quá 0,17 mm",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "72112990",
-    "cap": 8,
-    "cha": "721129",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "721190",
-    "cap": 6,
-    "cha": "7211",
-    "tenVi": "Loại khác",
-    "tenEn": "Iron or non-alloy steel; flat-rolled, n.e.c. in heading no. 7211, width less than 600mm",
-    "suyRa": false
-   },
-   {
-    "id": "7211901",
-    "cap": "TIEU_DE_QG",
-    "cha": "721190",
-    "tenVi": "Có hàm lượng carbon dưới 0,6% tính theo khối lượng",
-    "tenEn": "Containing by weight less than 0.6% of carbon",
-    "suyRa": true
-   },
-   {
-    "id": "72119011",
-    "cap": 8,
-    "cha": "7211901",
-    "tenVi": "Dạng đai và dải(SEN), có chiều rộng không quá 25 mm",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72119012",
-    "cap": 8,
-    "cha": "7211901",
-    "tenVi": "Dạng đai và dải(SEN), có chiều rộng trên 400 mm",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72119013",
-    "cap": 8,
-    "cha": "7211901",
-    "tenVi": "Dạng lượn sóng",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72119014",
-    "cap": 8,
-    "cha": "7211901",
-    "tenVi": "Loại khác, chiều dày không quá 0,17 mm",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "72119019",
-    "cap": 8,
-    "cha": "7211901",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "7211909",
-    "cap": "TIEU_DE_QG",
-    "cha": "721190",
-    "tenVi": "Loại khác",
-    "tenEn": "Other",
-    "suyRa": true
-   },
-   {
-    "id": "72119091",
-    "cap": 8,
-    "cha": "7211909",
-    "tenVi": "Chiều dày không quá 0,17 mm",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72119099",
-    "cap": 8,
-    "cha": "7211909",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   }
+  "dieuKienVao": [
+    {
+      "fact": "la_san_pham_can_phang_chieu_rong_duoi_600mm",
+      "op": "=",
+      "value": true,
+      "donVi": null,
+      "ngoaiTru": [],
+      "nguon": "nhom7211.nhom",
+      "trich": "Nhóm này bao gồm cùng loại sản phẩm được mô tả trong nhóm 72.08 hoặc 72.09, nhưng để xếp vào nhóm này, chứng phải có một chiều rộng dưới 600 mm.",
+      "nguonLoai": "AI_DA_KIEM"
+    }
   ],
-  "tenDien": []
- },
- "dungTuNguon": [
-  "nhom7211.nhom",
-  "tax.72111312",
-  "tax.72111313",
-  "tax.72111314",
-  "tax.72111319",
-  "tax.72111392",
-  "tax.72111393",
-  "tax.72111399",
-  "tax.72111414",
-  "tax.72111415",
-  "tax.72111416",
-  "tax.72111417",
-  "tax.72111419",
-  "tax.72111494",
-  "tax.72111495",
-  "tax.72111499",
-  "tax.72111913",
-  "tax.72111914",
-  "tax.72111919",
-  "tax.72111991",
-  "tax.72111999",
-  "tax.72112310",
-  "tax.72112320",
-  "tax.72112330",
-  "tax.72112390",
-  "tax.72112910",
-  "tax.72112920",
-  "tax.72112930",
-  "tax.72112990",
-  "tax.72119011",
-  "tax.72119012",
-  "tax.72119013",
-  "tax.72119014",
-  "tax.72119019",
-  "tax.72119091",
-  "tax.72119099",
-  "wco.721114",
-  "wco.721119",
-  "wco.721123",
-  "wco.721129"
- ],
- "phienBan": "HS2022",
- "taoBoi": {
-  "provider": "google-studio:gemini-flash",
-  "model": null,
-  "luc": "2026-11-02T12:46:23.382Z",
-  "ms": 21
- },
- "kiemTra": {
-  "tong": 45,
-  "dat": 45,
-  "loai": 0,
-  "nguonBiCat": []
- }
+  "loaiTru": [
+    {
+      "dieuKien": "Đai xoắn bằng sắt hoặc thép, có đặc tính sử dụng để làm hàng rào",
+      "sangNhom": "7313",
+      "nguon": "nhom7211.nhom",
+      "trich": "(a) Đai xoắn bằng sắt hoặc thép, có đặc tính sử dụng để làm hàng rào (nhóm 73.13).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "dieuKien": "Dải lượn sóng với một cạnh mép có hình răng cưa hoặc vát nghiêng, có đinh gấp theo chiều dài được sử dụng để lắp ráp các bộ phận bằng gỗ",
+      "sangNhom": "7317",
+      "nguon": "nhom7211.nhom",
+      "trich": "(b) Dải lượn sóng với một cạnh mép có hình răng cưa hoặc vát nghiêng, có đinh gấp theo chiều dài được sử dụng để lắp ráp các bộ phận bằng gỗ (nhóm 73.17).",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "phanBiet": [
+    {
+      "hoi": "Hàng hoá có phải là đai xoắn bằng sắt hoặc thép dùng làm hàng rào?",
+      "neuCo": "7313",
+      "neuKhong": "7211",
+      "nguon": "nhom7211.nhom",
+      "trich": "(a) Đai xoắn bằng sắt hoặc thép, có đặc tính sử dụng để làm hàng rào (nhóm 73.13).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hoi": "Hàng hoá có phải là dải lượn sóng có đinh gấp dùng để lắp ráp các bộ phận bằng gỗ?",
+      "neuCo": "7317",
+      "neuKhong": "7211",
+      "nguon": "nhom7211.nhom",
+      "trich": "(b) Dải lượn sóng với một cạnh mép có hình răng cưa hoặc vát nghiêng, có đinh gấp theo chiều dài được sử dụng để lắp ráp các bộ phận bằng gỗ (nhóm 73.17).",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "tieuChi6": [
+    {
+      "hs6": "721114",
+      "fact": "thickness",
+      "op": ">=",
+      "value": 4.75,
+      "donVi": "mm",
+      "nguon": "wco.721114",
+      "trich": "4.75mm thick or more",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "721119",
+      "fact": "thickness",
+      "op": "<",
+      "value": 4.75,
+      "donVi": "mm",
+      "nguon": "wco.721119",
+      "trich": "less than 4.75mm thick",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "721123",
+      "fact": "carbon_content_by_weight",
+      "op": "<",
+      "value": 0.25,
+      "donVi": "%",
+      "nguon": "wco.721123",
+      "trich": "containing by weight less than 0.25% of carbon",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "721129",
+      "fact": "carbon_content_by_weight",
+      "op": ">=",
+      "value": 0.25,
+      "donVi": "%",
+      "nguon": "wco.721129",
+      "trich": "containing by weight 0.25% or more of carbon",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "72111312",
+      "dieuKien": "dạng lượn sóng",
+      "loaiKhac": false,
+      "nguon": "tax.72111312",
+      "trich": "72111312 - - - - Dạng lượn sóng",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dangLuonSong",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "717f2315f5dd1e7b1af91601f453bf0647ceb23c7ed267960e161c2196bc1d81"
+        }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "72111313",
+          "lyDo": "Chồng lấn thật cùng trục đặc điểm: .12 \"Dạng lượn sóng\" (dangLuonSong CO), .13 \"Dạng đai và dải(SEN)\" (dangDaiDaiTamPhoDung DAI_VA_DAI) — thép đai và dải cán bốn mặt dạng lượn sóng thoả cả hai dòng theo chữ biểu; không có căn cứ thứ tự"
+        },
+        {
+          "voi": "72111314",
+          "lyDo": "Chồng lấn thật cùng trục đặc điểm: .12 \"Dạng lượn sóng\" (dangLuonSong CO), .14 \"Tấm phổ dụng (SEN)\" (dangDaiDaiTamPhoDung TAM_PHO_DUNG) — tấm phổ dụng thép cán bốn mặt dạng lượn sóng thoả cả hai dòng theo chữ biểu; không có căn cứ thứ tự"
+        }
+      ]
+    },
+    {
+      "hs": "72111313",
+      "dieuKien": "dạng đai, dải hoặc tấm phổ dụng: dạng đai và dải",
+      "loaiKhac": false,
+      "nguon": "tax.72111313",
+      "trich": "72111313 - - - - Dạng đai và dải(SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dangDaiDaiTamPhoDung",
+          "op": "TRONG",
+          "value": [
+            "DAI_VA_DAI"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "717f2315f5dd1e7b1af91601f453bf0647ceb23c7ed267960e161c2196bc1d81"
+        }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "72111312",
+          "lyDo": "Chồng lấn thật cùng trục đặc điểm: .12 \"Dạng lượn sóng\" (dangLuonSong CO), .13 \"Dạng đai và dải(SEN)\" (dangDaiDaiTamPhoDung DAI_VA_DAI) — thép đai và dải cán bốn mặt dạng lượn sóng thoả cả hai dòng theo chữ biểu; không có căn cứ thứ tự"
+        }
+      ]
+    },
+    {
+      "hs": "72111314",
+      "dieuKien": "dạng đai, dải hoặc tấm phổ dụng: tấm phổ dụng",
+      "loaiKhac": false,
+      "nguon": "tax.72111314",
+      "trich": "72111314 - - - - Tấm phổ dụng (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dangDaiDaiTamPhoDung",
+          "op": "TRONG",
+          "value": [
+            "TAM_PHO_DUNG"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "717f2315f5dd1e7b1af91601f453bf0647ceb23c7ed267960e161c2196bc1d81"
+        }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "72111312",
+          "lyDo": "Chồng lấn thật cùng trục đặc điểm: .12 \"Dạng lượn sóng\" (dangLuonSong CO), .14 \"Tấm phổ dụng (SEN)\" (dangDaiDaiTamPhoDung TAM_PHO_DUNG) — tấm phổ dụng thép cán bốn mặt dạng lượn sóng thoả cả hai dòng theo chữ biểu; không có căn cứ thứ tự"
+        }
+      ]
+    },
+    {
+      "hs": "72111319",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.72111319",
+      "trich": "72111319 - - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "7211131",
+        "truAnhEm": [
+          "72111312",
+          "72111313",
+          "72111314"
+        ],
+        "truDayDu": [
+          "72111312",
+          "72111313",
+          "72111314"
+        ],
+        "toTienCoTen": "721113",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "72111392",
+      "dieuKien": "dạng đai, dải hoặc tấm phổ dụng: dạng đai và dải",
+      "loaiKhac": false,
+      "nguon": "tax.72111392",
+      "trich": "72111392 - - - - Dạng đai và dải(SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dangDaiDaiTamPhoDung",
+          "op": "TRONG",
+          "value": [
+            "DAI_VA_DAI"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "717f2315f5dd1e7b1af91601f453bf0647ceb23c7ed267960e161c2196bc1d81"
+        }
+      }
+    },
+    {
+      "hs": "72111393",
+      "dieuKien": "dạng đai, dải hoặc tấm phổ dụng: tấm phổ dụng",
+      "loaiKhac": false,
+      "nguon": "tax.72111393",
+      "trich": "72111393 - - - - Tấm phổ dụng (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dangDaiDaiTamPhoDung",
+          "op": "TRONG",
+          "value": [
+            "TAM_PHO_DUNG"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "717f2315f5dd1e7b1af91601f453bf0647ceb23c7ed267960e161c2196bc1d81"
+        }
+      }
+    },
+    {
+      "hs": "72111399",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.72111399",
+      "trich": "72111399 - - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "7211139",
+        "truAnhEm": [
+          "72111392",
+          "72111393"
+        ],
+        "truDayDu": [
+          "72111392",
+          "72111393",
+          "7211131"
+        ],
+        "toTienCoTen": "721113",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "72111414",
+      "dieuKien": "dạng lượn sóng",
+      "loaiKhac": false,
+      "nguon": "tax.72111414",
+      "trich": "72111414 - - - - Dạng lượn sóng",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dangLuonSong",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "d868ad18b557439155171471c1ea4544ba728ddc45efc1add27bf1bbbf0a58ee"
+        }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "72111415",
+          "lyDo": "Không có hàng thật thoả cả hai (Q1, Claude 07/11/2026): \"Dạng lượn sóng\" ↔ \"Dạng cuộn để cán lại (SEN)\" — SEN 72111415: dạng cuộn để cán lại là bán thành phẩm cán nóng có mặt cắt ngang hình chữ nhật; sản phẩm đã làm lượn sóng không còn mặt cắt chữ nhật."
+        },
+        {
+          "voi": "72111416",
+          "lyDo": "Không có hàng thật thoả cả hai (Q1, Claude 07/11/2026): \"Dạng lượn sóng\" ↔ \"Dạng đai và dải(SEN)\" — chú giải nhóm 72.11 cho phép đai, dải được gia công (làm gợn sóng), nhưng ở chiều dày từ 4,75 mm trở lên không thấy đai, dải cán nóng làm lượn sóng trên thực tế. Người soát nên xem lại cặp này khi có hàng thật."
+        },
+        {
+          "voi": "72111417",
+          "lyDo": "Không có hàng thật thoả cả hai (Q1, Claude 07/11/2026): \"Dạng lượn sóng\" ↔ \"Tấm phổ dụng (SEN)\" — SEN 7211: tấm phổ dụng là sản phẩm thẳng, có mặt cắt ngang hình chữ nhật, cán trong khuôn kín hoặc máy cán phổ dụng; tấm lượn sóng không thoả."
+        }
+      ]
+    },
+    {
+      "hs": "72111415",
+      "dieuKien": "để cán lại (dạng cuộn để cán lại)",
+      "loaiKhac": false,
+      "nguon": "tax.72111415",
+      "trich": "72111415 - - - - Dạng cuộn để cán lại (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "deCanLai",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "d868ad18b557439155171471c1ea4544ba728ddc45efc1add27bf1bbbf0a58ee"
+        }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "72111414",
+          "lyDo": "Không có hàng thật thoả cả hai (Q1, Claude 07/11/2026): \"Dạng lượn sóng\" ↔ \"Dạng cuộn để cán lại (SEN)\" — SEN 72111415: dạng cuộn để cán lại là bán thành phẩm cán nóng có mặt cắt ngang hình chữ nhật; sản phẩm đã làm lượn sóng không còn mặt cắt chữ nhật."
+        },
+        {
+          "voi": "72111416",
+          "lyDo": "Chồng lấn thật cùng trục đặc điểm (Claude 07/11/2026): \"Dạng cuộn để cán lại (SEN)\" ↔ \"Dạng đai và dải(SEN)\" — hàng thật: thép dải cán nóng dạng cuộn, rộng 550 mm, dày 5 mm, nặng 2.000 kg một cuộn, dùng để cán lại, thoả SEN 72111415 (cuộn, cán nóng, chữ nhật, dày ≥ 1,5 mm, rộng > 500 mm, ≥ 500 kg) và là dải theo chú giải nhóm 72.11; biểu thuế không nói dòng nào thắng."
+        },
+        {
+          "voi": "72111417",
+          "lyDo": "Không có hàng thật thoả cả hai (Q1, Claude 07/11/2026): \"Dạng cuộn để cán lại (SEN)\" ↔ \"Tấm phổ dụng (SEN)\" — SEN: dạng cuộn để cán lại phải ở dạng cuộn, còn tấm phổ dụng phải thẳng; một sản phẩm không vừa cuộn vừa thẳng."
+        }
+      ]
+    },
+    {
+      "hs": "72111416",
+      "dieuKien": "dạng đai, dải hoặc tấm phổ dụng: dạng đai và dải",
+      "loaiKhac": false,
+      "nguon": "tax.72111416",
+      "trich": "72111416 - - - - Dạng đai và dải(SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dangDaiDaiTamPhoDung",
+          "op": "TRONG",
+          "value": [
+            "DAI_VA_DAI"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "d868ad18b557439155171471c1ea4544ba728ddc45efc1add27bf1bbbf0a58ee"
+        }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "72111414",
+          "lyDo": "Không có hàng thật thoả cả hai (Q1, Claude 07/11/2026): \"Dạng lượn sóng\" ↔ \"Dạng đai và dải(SEN)\" — chú giải nhóm 72.11 cho phép đai, dải được gia công (làm gợn sóng), nhưng ở chiều dày từ 4,75 mm trở lên không thấy đai, dải cán nóng làm lượn sóng trên thực tế. Người soát nên xem lại cặp này khi có hàng thật."
+        },
+        {
+          "voi": "72111415",
+          "lyDo": "Chồng lấn thật cùng trục đặc điểm (Claude 07/11/2026): \"Dạng cuộn để cán lại (SEN)\" ↔ \"Dạng đai và dải(SEN)\" — hàng thật: thép dải cán nóng dạng cuộn, rộng 550 mm, dày 5 mm, nặng 2.000 kg một cuộn, dùng để cán lại, thoả SEN 72111415 (cuộn, cán nóng, chữ nhật, dày ≥ 1,5 mm, rộng > 500 mm, ≥ 500 kg) và là dải theo chú giải nhóm 72.11; biểu thuế không nói dòng nào thắng."
+        }
+      ]
+    },
+    {
+      "hs": "72111417",
+      "dieuKien": "dạng đai, dải hoặc tấm phổ dụng: tấm phổ dụng",
+      "loaiKhac": false,
+      "nguon": "tax.72111417",
+      "trich": "72111417 - - - - Tấm phổ dụng (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dangDaiDaiTamPhoDung",
+          "op": "TRONG",
+          "value": [
+            "TAM_PHO_DUNG"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "d868ad18b557439155171471c1ea4544ba728ddc45efc1add27bf1bbbf0a58ee"
+        }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "72111414",
+          "lyDo": "Không có hàng thật thoả cả hai (Q1, Claude 07/11/2026): \"Dạng lượn sóng\" ↔ \"Tấm phổ dụng (SEN)\" — SEN 7211: tấm phổ dụng là sản phẩm thẳng, có mặt cắt ngang hình chữ nhật, cán trong khuôn kín hoặc máy cán phổ dụng; tấm lượn sóng không thoả."
+        },
+        {
+          "voi": "72111415",
+          "lyDo": "Không có hàng thật thoả cả hai (Q1, Claude 07/11/2026): \"Dạng cuộn để cán lại (SEN)\" ↔ \"Tấm phổ dụng (SEN)\" — SEN: dạng cuộn để cán lại phải ở dạng cuộn, còn tấm phổ dụng phải thẳng; một sản phẩm không vừa cuộn vừa thẳng."
+        }
+      ]
+    },
+    {
+      "hs": "72111419",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.72111419",
+      "trich": "72111419 - - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "7211141",
+        "truAnhEm": [
+          "72111414",
+          "72111415",
+          "72111416",
+          "72111417"
+        ],
+        "truDayDu": [
+          "72111414",
+          "72111415",
+          "72111416",
+          "72111417"
+        ],
+        "toTienCoTen": "721114",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "72111494",
+      "dieuKien": "dạng đai, dải hoặc tấm phổ dụng: dạng đai và dải",
+      "loaiKhac": false,
+      "nguon": "tax.72111494",
+      "trich": "72111494 - - - - Dạng đai và dải(SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dangDaiDaiTamPhoDung",
+          "op": "TRONG",
+          "value": [
+            "DAI_VA_DAI"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "d868ad18b557439155171471c1ea4544ba728ddc45efc1add27bf1bbbf0a58ee"
+        }
+      }
+    },
+    {
+      "hs": "72111495",
+      "dieuKien": "dạng đai, dải hoặc tấm phổ dụng: tấm phổ dụng",
+      "loaiKhac": false,
+      "nguon": "tax.72111495",
+      "trich": "72111495 - - - - Tấm phổ dụng (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dangDaiDaiTamPhoDung",
+          "op": "TRONG",
+          "value": [
+            "TAM_PHO_DUNG"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "d868ad18b557439155171471c1ea4544ba728ddc45efc1add27bf1bbbf0a58ee"
+        }
+      }
+    },
+    {
+      "hs": "72111499",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.72111499",
+      "trich": "72111499 - - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "7211149",
+        "truAnhEm": [
+          "72111494",
+          "72111495"
+        ],
+        "truDayDu": [
+          "72111494",
+          "72111495",
+          "7211141"
+        ],
+        "toTienCoTen": "721114",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "72111913",
+      "dieuKien": "dạng đai, dải hoặc tấm phổ dụng: dạng đai và dải hoặc tấm phổ dụng",
+      "loaiKhac": false,
+      "nguon": "tax.72111913",
+      "trich": "72111913 - - - - Dạng đai và dải; tấm phổ dụng(SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dangDaiDaiTamPhoDung",
+          "op": "TRONG",
+          "value": [
+            "DAI_DAI_HOAC_PHO_DUNG"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "caaf7eed5fa924e51cd21219d867e2aeed6a3d425802d276c651b4287213c27d"
+        }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "72111914",
+          "lyDo": "Chồng lấn thật cùng trục đặc điểm: .13 \"Dạng đai và dải; tấm phổ dụng(SEN)\" (dangDaiDaiTamPhoDung DAI_DAI_HOAC_PHO_DUNG), .14 \"Dạng lượn sóng\" (dangLuonSong CO) — đai và dải hoặc tấm phổ dụng thép cán nóng dạng lượn sóng, carbon dưới 0,6%, thoả cả hai dòng theo chữ biểu; không có căn cứ thứ tự"
+        }
+      ]
+    },
+    {
+      "hs": "72111914",
+      "dieuKien": "dạng lượn sóng",
+      "loaiKhac": false,
+      "nguon": "tax.72111914",
+      "trich": "72111914 - - - - Dạng lượn sóng",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dangLuonSong",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "caaf7eed5fa924e51cd21219d867e2aeed6a3d425802d276c651b4287213c27d"
+        }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "72111913",
+          "lyDo": "Chồng lấn thật cùng trục đặc điểm: .13 \"Dạng đai và dải; tấm phổ dụng(SEN)\" (dangDaiDaiTamPhoDung DAI_DAI_HOAC_PHO_DUNG), .14 \"Dạng lượn sóng\" (dangLuonSong CO) — đai và dải hoặc tấm phổ dụng thép cán nóng dạng lượn sóng, carbon dưới 0,6%, thoả cả hai dòng theo chữ biểu; không có căn cứ thứ tự"
+        }
+      ]
+    },
+    {
+      "hs": "72111919",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.72111919",
+      "trich": "72111919 - - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "7211191",
+        "truAnhEm": [
+          "72111913",
+          "72111914"
+        ],
+        "truDayDu": [
+          "72111913",
+          "72111914"
+        ],
+        "toTienCoTen": "721119",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "72111991",
+      "dieuKien": "dạng đai, dải hoặc tấm phổ dụng: dạng đai và dải hoặc tấm phổ dụng",
+      "loaiKhac": false,
+      "nguon": "tax.72111991",
+      "trich": "72111991 - - - - Dạng đai và dải; tấm phổ dụng(SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dangDaiDaiTamPhoDung",
+          "op": "TRONG",
+          "value": [
+            "DAI_DAI_HOAC_PHO_DUNG"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "caaf7eed5fa924e51cd21219d867e2aeed6a3d425802d276c651b4287213c27d"
+        }
+      }
+    },
+    {
+      "hs": "72111999",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.72111999",
+      "trich": "72111999 - - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "7211199",
+        "truAnhEm": [
+          "72111991"
+        ],
+        "truDayDu": [
+          "72111991",
+          "7211191"
+        ],
+        "toTienCoTen": "721119",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "72112310",
+      "dieuKien": "dạng lượn sóng",
+      "loaiKhac": false,
+      "nguon": "tax.72112310",
+      "trich": "72112310 - - - Dạng lượn sóng",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dangLuonSong",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "0620edaabea053552e0411898483ffee7eb1f0c61e7f90fc3d797caa84573165"
+        }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "72112320",
+          "lyDo": "Chồng lấn thật cùng trục đặc điểm: .10 \"Dạng lượn sóng\" (dangLuonSong CO), .20 \"Dạng đai và dải(SEN), chiều rộng không quá 400 mm\" (dangDaiDaiTamPhoDung DAI_VA_DAI + chieuRong <= 400 mm) — đai và dải thép dạng lượn sóng rộng 350 mm thoả cả hai dòng theo chữ biểu; không có căn cứ thứ tự"
+        }
+      ]
+    },
+    {
+      "hs": "72112320",
+      "dieuKien": "dạng đai, dải hoặc tấm phổ dụng: dạng đai và dải; chiều rộng <= 400 mm",
+      "loaiKhac": false,
+      "nguon": "tax.72112320",
+      "trich": "72112320 - - - Dạng đai và dải(SEN), chiều rộng không quá 400 mm",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dangDaiDaiTamPhoDung",
+          "op": "TRONG",
+          "value": [
+            "DAI_VA_DAI"
+          ]
+        },
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 400,
+          "donVi": "mm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "0620edaabea053552e0411898483ffee7eb1f0c61e7f90fc3d797caa84573165"
+        }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "72112310",
+          "lyDo": "Chồng lấn thật cùng trục đặc điểm: .10 \"Dạng lượn sóng\" (dangLuonSong CO), .20 \"Dạng đai và dải(SEN), chiều rộng không quá 400 mm\" (dangDaiDaiTamPhoDung DAI_VA_DAI + chieuRong <= 400 mm) — đai và dải thép dạng lượn sóng rộng 350 mm thoả cả hai dòng theo chữ biểu; không có căn cứ thứ tự"
+        }
+      ]
+    },
+    {
+      "hs": "72112330",
+      "dieuKien": "độ dày <= 0.17 mm",
+      "loaiKhac": true,
+      "nguon": "tax.72112330",
+      "trich": "72112330 - - - Loại khác, chiều dày không quá 0,17 mm",
+      "nguonLoai": "CLAUDE_DUYET",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "721123",
+        "truAnhEm": [
+          "72112310",
+          "72112320"
+        ],
+        "truDayDu": [
+          "72112310",
+          "72112320"
+        ],
+        "toTienCoTen": "721123",
+        "dinhNghiaDuoc": true
+      },
+      "dieuKienSo": [
+        {
+          "fact": "doDay",
+          "op": "<=",
+          "value": 0.17,
+          "donVi": "mm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "0620edaabea053552e0411898483ffee7eb1f0c61e7f90fc3d797caa84573165"
+        }
+      }
+    },
+    {
+      "hs": "72112390",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.72112390",
+      "trich": "72112390 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "721123",
+        "truAnhEm": [
+          "72112310",
+          "72112320",
+          "72112330"
+        ],
+        "truDayDu": [
+          "72112310",
+          "72112320",
+          "72112330"
+        ],
+        "toTienCoTen": "721123",
+        "dinhNghiaDuoc": false
+      }
+    },
+    {
+      "hs": "72112910",
+      "dieuKien": "dạng lượn sóng",
+      "loaiKhac": false,
+      "nguon": "tax.72112910",
+      "trich": "72112910 - - - Dạng lượn sóng",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dangLuonSong",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "1239215e3672bd9c3da5424bdc83055dee7d1230bd78846d66f3968f3b010048"
+        }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "72112920",
+          "lyDo": "Chồng lấn thật cùng trục đặc điểm: .10 \"Dạng lượn sóng\" (dangLuonSong CO), .20 \"Dạng đai và dải(SEN), chiều rộng không quá 400 mm\" (dangDaiDaiTamPhoDung DAI_VA_DAI + chieuRong <= 400 mm) — đai và dải thép dạng lượn sóng rộng 350 mm thoả cả hai dòng theo chữ biểu; không có căn cứ thứ tự"
+        }
+      ]
+    },
+    {
+      "hs": "72112920",
+      "dieuKien": "dạng đai, dải hoặc tấm phổ dụng: dạng đai và dải; chiều rộng <= 400 mm",
+      "loaiKhac": false,
+      "nguon": "tax.72112920",
+      "trich": "72112920 - - - Dạng đai và dải(SEN), chiều rộng không quá 400 mm",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dangDaiDaiTamPhoDung",
+          "op": "TRONG",
+          "value": [
+            "DAI_VA_DAI"
+          ]
+        },
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 400,
+          "donVi": "mm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "1239215e3672bd9c3da5424bdc83055dee7d1230bd78846d66f3968f3b010048"
+        }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "72112910",
+          "lyDo": "Chồng lấn thật cùng trục đặc điểm: .10 \"Dạng lượn sóng\" (dangLuonSong CO), .20 \"Dạng đai và dải(SEN), chiều rộng không quá 400 mm\" (dangDaiDaiTamPhoDung DAI_VA_DAI + chieuRong <= 400 mm) — đai và dải thép dạng lượn sóng rộng 350 mm thoả cả hai dòng theo chữ biểu; không có căn cứ thứ tự"
+        }
+      ]
+    },
+    {
+      "hs": "72112930",
+      "dieuKien": "độ dày <= 0.17 mm",
+      "loaiKhac": true,
+      "nguon": "tax.72112930",
+      "trich": "72112930 - - - Loại khác, chiều dày không quá 0,17 mm",
+      "nguonLoai": "CLAUDE_DUYET",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "721129",
+        "truAnhEm": [
+          "72112910",
+          "72112920"
+        ],
+        "truDayDu": [
+          "72112910",
+          "72112920"
+        ],
+        "toTienCoTen": "721129",
+        "dinhNghiaDuoc": true
+      },
+      "dieuKienSo": [
+        {
+          "fact": "doDay",
+          "op": "<=",
+          "value": 0.17,
+          "donVi": "mm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "1239215e3672bd9c3da5424bdc83055dee7d1230bd78846d66f3968f3b010048"
+        }
+      }
+    },
+    {
+      "hs": "72112990",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.72112990",
+      "trich": "72112990 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "721129",
+        "truAnhEm": [
+          "72112910",
+          "72112920",
+          "72112930"
+        ],
+        "truDayDu": [
+          "72112910",
+          "72112920",
+          "72112930"
+        ],
+        "toTienCoTen": "721129",
+        "dinhNghiaDuoc": false
+      }
+    },
+    {
+      "hs": "72119011",
+      "dieuKien": "dạng đai, dải hoặc tấm phổ dụng: dạng đai và dải; chiều rộng <= 25 mm",
+      "loaiKhac": false,
+      "nguon": "tax.72119011",
+      "trich": "72119011 - - - Dạng đai và dải(SEN), có chiều rộng không quá 25 mm",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dangDaiDaiTamPhoDung",
+          "op": "TRONG",
+          "value": [
+            "DAI_VA_DAI"
+          ]
+        },
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 25,
+          "donVi": "mm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "f8f3ff89ecabbd5c26c701ed39b50a687113ee2771deba73ab59c0f7e5d491c2"
+        }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "72119013",
+          "lyDo": "Chồng lấn thật cùng trục đặc điểm: .13 \"Dạng lượn sóng\" (dangLuonSong CO), .11 \"Dạng đai và dải(SEN), có chiều rộng không quá 25 mm\" (dangDaiDaiTamPhoDung DAI_VA_DAI + chieuRong <= 25 mm) — đai và dải thép dạng lượn sóng rộng 20 mm thoả cả hai dòng theo chữ biểu; không có căn cứ thứ tự"
+        }
+      ]
+    },
+    {
+      "hs": "72119012",
+      "dieuKien": "dạng đai, dải hoặc tấm phổ dụng: dạng đai và dải; chiều rộng > 400 mm",
+      "loaiKhac": false,
+      "nguon": "tax.72119012",
+      "trich": "72119012 - - - Dạng đai và dải(SEN), có chiều rộng trên 400 mm",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dangDaiDaiTamPhoDung",
+          "op": "TRONG",
+          "value": [
+            "DAI_VA_DAI"
+          ]
+        },
+        {
+          "fact": "chieuRong",
+          "op": ">",
+          "value": 400,
+          "donVi": "mm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "f8f3ff89ecabbd5c26c701ed39b50a687113ee2771deba73ab59c0f7e5d491c2"
+        }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "72119013",
+          "lyDo": "Chồng lấn thật cùng trục đặc điểm: .13 \"Dạng lượn sóng\" (dangLuonSong CO), .12 \"Dạng đai và dải(SEN), có chiều rộng trên 400 mm\" (dangDaiDaiTamPhoDung DAI_VA_DAI + chieuRong > 400 mm) — đai và dải thép dạng lượn sóng rộng 450 mm thoả cả hai dòng theo chữ biểu; không có căn cứ thứ tự"
+        }
+      ]
+    },
+    {
+      "hs": "72119013",
+      "dieuKien": "dạng lượn sóng",
+      "loaiKhac": false,
+      "nguon": "tax.72119013",
+      "trich": "72119013 - - - Dạng lượn sóng",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dangLuonSong",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "f8f3ff89ecabbd5c26c701ed39b50a687113ee2771deba73ab59c0f7e5d491c2"
+        }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "72119011",
+          "lyDo": "Chồng lấn thật cùng trục đặc điểm: .13 \"Dạng lượn sóng\" (dangLuonSong CO), .11 \"Dạng đai và dải(SEN), có chiều rộng không quá 25 mm\" (dangDaiDaiTamPhoDung DAI_VA_DAI + chieuRong <= 25 mm) — đai và dải thép dạng lượn sóng rộng 20 mm thoả cả hai dòng theo chữ biểu; không có căn cứ thứ tự"
+        },
+        {
+          "voi": "72119012",
+          "lyDo": "Chồng lấn thật cùng trục đặc điểm: .13 \"Dạng lượn sóng\" (dangLuonSong CO), .12 \"Dạng đai và dải(SEN), có chiều rộng trên 400 mm\" (dangDaiDaiTamPhoDung DAI_VA_DAI + chieuRong > 400 mm) — đai và dải thép dạng lượn sóng rộng 450 mm thoả cả hai dòng theo chữ biểu; không có căn cứ thứ tự"
+        }
+      ]
+    },
+    {
+      "hs": "72119014",
+      "dieuKien": "độ dày <= 0.17 mm",
+      "loaiKhac": true,
+      "nguon": "tax.72119014",
+      "trich": "72119014 - - - Loại khác, chiều dày không quá 0,17 mm",
+      "nguonLoai": "CLAUDE_DUYET",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "7211901",
+        "truAnhEm": [
+          "72119011",
+          "72119012",
+          "72119013"
+        ],
+        "truDayDu": [
+          "72119011",
+          "72119012",
+          "72119013"
+        ],
+        "toTienCoTen": "721190",
+        "dinhNghiaDuoc": true
+      },
+      "dieuKienSo": [
+        {
+          "fact": "doDay",
+          "op": "<=",
+          "value": 0.17,
+          "donVi": "mm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "f8f3ff89ecabbd5c26c701ed39b50a687113ee2771deba73ab59c0f7e5d491c2"
+        }
+      }
+    },
+    {
+      "hs": "72119019",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.72119019",
+      "trich": "72119019 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "7211901",
+        "truAnhEm": [
+          "72119011",
+          "72119012",
+          "72119013",
+          "72119014"
+        ],
+        "truDayDu": [
+          "72119011",
+          "72119012",
+          "72119013",
+          "72119014"
+        ],
+        "toTienCoTen": "721190",
+        "dinhNghiaDuoc": false
+      }
+    },
+    {
+      "hs": "72119091",
+      "dieuKien": "độ dày <= 0.17 mm",
+      "loaiKhac": false,
+      "nguon": "tax.72119091",
+      "trich": "72119091 - - - Chiều dày không quá 0,17 mm",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "doDay",
+          "op": "<=",
+          "value": 0.17,
+          "donVi": "mm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "f8f3ff89ecabbd5c26c701ed39b50a687113ee2771deba73ab59c0f7e5d491c2"
+        }
+      }
+    },
+    {
+      "hs": "72119099",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.72119099",
+      "trich": "72119099 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "7211909",
+        "truAnhEm": [
+          "72119091"
+        ],
+        "truDayDu": [
+          "72119091",
+          "7211901"
+        ],
+        "toTienCoTen": "721190",
+        "dinhNghiaDuoc": true
+      }
+    }
+  ],
+  "cay": {
+    "nguonLoai": "MAY_SUY",
+    "sinhTu": "lib/hs-tree.js",
+    "nut": [
+      {
+        "id": "7211",
+        "cap": 4,
+        "cha": "72",
+        "tenVi": "Các sản phẩm sắt hoặc thép không hợp kim cán phẳng, có chiều rộng dưới 600mm, chưa dát phủ (clad), phủ, mạ (coated) hoặc tráng (plated) (+).",
+        "tenEn": "Iron or non-alloy steel; flat-rolled products, width less than 600mm, not clad, plated or coated",
+        "suyRa": false
+      },
+      {
+        "id": "72111",
+        "cap": "NHOM_MOT_GACH",
+        "cha": "7211",
+        "tenVi": "Chưa được gia công quá mức cán nóng",
+        "tenEn": "Not further worked than hot-rolled",
+        "suyRa": true
+      },
+      {
+        "id": "721113",
+        "cap": 6,
+        "cha": "72111",
+        "tenVi": "Được cán 4 mặt hoặc ở dạng khuôn hộp kín, có chiều rộng trên 150 mm và chiều dày không dưới 4 mm, không ở dạng cuộn và không có hình dập nổi",
+        "tenEn": "Iron or non-alloy steel; flat-rolled, hot-rolled, rolled on four faces or in a closed box pass, of a width more than 150mm but less than 600mm, 4mm thick or more, not in coils, without patterns in relief",
+        "suyRa": false
+      },
+      {
+        "id": "7211131",
+        "cap": "TIEU_DE_QG",
+        "cha": "721113",
+        "tenVi": "Có hàm lượng carbon dưới 0,6% tính theo khối lượng",
+        "tenEn": "Containing by weight less than 0.6% of carbon",
+        "suyRa": true
+      },
+      {
+        "id": "72111312",
+        "cap": 8,
+        "cha": "7211131",
+        "tenVi": "Dạng lượn sóng",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72111313",
+        "cap": 8,
+        "cha": "7211131",
+        "tenVi": "Dạng đai và dải(SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72111314",
+        "cap": 8,
+        "cha": "7211131",
+        "tenVi": "Tấm phổ dụng (SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72111319",
+        "cap": 8,
+        "cha": "7211131",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "7211139",
+        "cap": "TIEU_DE_QG",
+        "cha": "721113",
+        "tenVi": "Loại khác",
+        "tenEn": "Other",
+        "suyRa": true
+      },
+      {
+        "id": "72111392",
+        "cap": 8,
+        "cha": "7211139",
+        "tenVi": "Dạng đai và dải(SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72111393",
+        "cap": 8,
+        "cha": "7211139",
+        "tenVi": "Tấm phổ dụng (SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72111399",
+        "cap": 8,
+        "cha": "7211139",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "721114",
+        "cap": 6,
+        "cha": "72111",
+        "tenVi": "Loại khác, chiều dày từ 4,75 mm trở lên",
+        "tenEn": "Iron or non-alloy steel; flat-rolled, hot-rolled, of a width less than 600mm, 4.75mm thick or more, excluding those of item no. 7211.13",
+        "suyRa": false
+      },
+      {
+        "id": "7211141",
+        "cap": "TIEU_DE_QG",
+        "cha": "721114",
+        "tenVi": "Có hàm lượng carbon dưới 0,6% tính theo khối lượng",
+        "tenEn": "Containing by weight less than 0.6% of carbon",
+        "suyRa": true
+      },
+      {
+        "id": "72111414",
+        "cap": 8,
+        "cha": "7211141",
+        "tenVi": "Dạng lượn sóng",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72111415",
+        "cap": 8,
+        "cha": "7211141",
+        "tenVi": "Dạng cuộn để cán lại (SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72111416",
+        "cap": 8,
+        "cha": "7211141",
+        "tenVi": "Dạng đai và dải(SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72111417",
+        "cap": 8,
+        "cha": "7211141",
+        "tenVi": "Tấm phổ dụng (SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72111419",
+        "cap": 8,
+        "cha": "7211141",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "7211149",
+        "cap": "TIEU_DE_QG",
+        "cha": "721114",
+        "tenVi": "Loại khác",
+        "tenEn": "Other",
+        "suyRa": true
+      },
+      {
+        "id": "72111494",
+        "cap": 8,
+        "cha": "7211149",
+        "tenVi": "Dạng đai và dải(SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72111495",
+        "cap": 8,
+        "cha": "7211149",
+        "tenVi": "Tấm phổ dụng (SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72111499",
+        "cap": 8,
+        "cha": "7211149",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "721119",
+        "cap": 6,
+        "cha": "72111",
+        "tenVi": "Loại khác",
+        "tenEn": "Iron or non-alloy steel; flat-rolled, hot-rolled, of a width less than 600mm, less than 4.75mm thick, excluding those of item no. 7211.13",
+        "suyRa": false
+      },
+      {
+        "id": "7211191",
+        "cap": "TIEU_DE_QG",
+        "cha": "721119",
+        "tenVi": "Có hàm lượng carbon dưới 0,6% tính theo khối lượng",
+        "tenEn": "Containing by weight less than 0.6% of carbon",
+        "suyRa": true
+      },
+      {
+        "id": "72111913",
+        "cap": 8,
+        "cha": "7211191",
+        "tenVi": "Dạng đai và dải; tấm phổ dụng(SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72111914",
+        "cap": 8,
+        "cha": "7211191",
+        "tenVi": "Dạng lượn sóng",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72111919",
+        "cap": 8,
+        "cha": "7211191",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "7211199",
+        "cap": "TIEU_DE_QG",
+        "cha": "721119",
+        "tenVi": "Loại khác",
+        "tenEn": "Other",
+        "suyRa": true
+      },
+      {
+        "id": "72111991",
+        "cap": 8,
+        "cha": "7211199",
+        "tenVi": "Dạng đai và dải; tấm phổ dụng(SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72111999",
+        "cap": 8,
+        "cha": "7211199",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "72112",
+        "cap": "NHOM_MOT_GACH",
+        "cha": "7211",
+        "tenVi": "Chưa được gia công quá mức cán nguội (ép nguội)",
+        "tenEn": null,
+        "suyRa": true
+      },
+      {
+        "id": "721123",
+        "cap": 6,
+        "cha": "72112",
+        "tenVi": "Có hàm lượng carbon dưới 0,25% tính theo khối lượng",
+        "tenEn": "Iron or non-alloy steel; flat-rolled, cold-rolled, of a width less than 600mm, containing by weight less than 0.25% of carbon",
+        "suyRa": false
+      },
+      {
+        "id": "72112310",
+        "cap": 8,
+        "cha": "721123",
+        "tenVi": "Dạng lượn sóng",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72112320",
+        "cap": 8,
+        "cha": "721123",
+        "tenVi": "Dạng đai và dải(SEN), chiều rộng không quá 400 mm",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72112330",
+        "cap": 8,
+        "cha": "721123",
+        "tenVi": "Loại khác, chiều dày không quá 0,17 mm",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "72112390",
+        "cap": 8,
+        "cha": "721123",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "721129",
+        "cap": 6,
+        "cha": "72112",
+        "tenVi": "Loại khác",
+        "tenEn": "Iron or non-alloy steel; flat-rolled, cold-rolled, of a width less than 600mm, containing by weight 0.25% or more of carbon",
+        "suyRa": false
+      },
+      {
+        "id": "72112910",
+        "cap": 8,
+        "cha": "721129",
+        "tenVi": "Dạng lượn sóng",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72112920",
+        "cap": 8,
+        "cha": "721129",
+        "tenVi": "Dạng đai và dải(SEN), chiều rộng không quá 400 mm",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72112930",
+        "cap": 8,
+        "cha": "721129",
+        "tenVi": "Loại khác, chiều dày không quá 0,17 mm",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "72112990",
+        "cap": 8,
+        "cha": "721129",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "721190",
+        "cap": 6,
+        "cha": "7211",
+        "tenVi": "Loại khác",
+        "tenEn": "Iron or non-alloy steel; flat-rolled, n.e.c. in heading no. 7211, width less than 600mm",
+        "suyRa": false
+      },
+      {
+        "id": "7211901",
+        "cap": "TIEU_DE_QG",
+        "cha": "721190",
+        "tenVi": "Có hàm lượng carbon dưới 0,6% tính theo khối lượng",
+        "tenEn": "Containing by weight less than 0.6% of carbon",
+        "suyRa": true
+      },
+      {
+        "id": "72119011",
+        "cap": 8,
+        "cha": "7211901",
+        "tenVi": "Dạng đai và dải(SEN), có chiều rộng không quá 25 mm",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72119012",
+        "cap": 8,
+        "cha": "7211901",
+        "tenVi": "Dạng đai và dải(SEN), có chiều rộng trên 400 mm",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72119013",
+        "cap": 8,
+        "cha": "7211901",
+        "tenVi": "Dạng lượn sóng",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72119014",
+        "cap": 8,
+        "cha": "7211901",
+        "tenVi": "Loại khác, chiều dày không quá 0,17 mm",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "72119019",
+        "cap": 8,
+        "cha": "7211901",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "7211909",
+        "cap": "TIEU_DE_QG",
+        "cha": "721190",
+        "tenVi": "Loại khác",
+        "tenEn": "Other",
+        "suyRa": true
+      },
+      {
+        "id": "72119091",
+        "cap": 8,
+        "cha": "7211909",
+        "tenVi": "Chiều dày không quá 0,17 mm",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72119099",
+        "cap": 8,
+        "cha": "7211909",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      }
+    ],
+    "tenDien": []
+  },
+  "dungTuNguon": [
+    "nhom7211.nhom",
+    "tax.72111312",
+    "tax.72111313",
+    "tax.72111314",
+    "tax.72111319",
+    "tax.72111392",
+    "tax.72111393",
+    "tax.72111399",
+    "tax.72111414",
+    "tax.72111415",
+    "tax.72111416",
+    "tax.72111417",
+    "tax.72111419",
+    "tax.72111494",
+    "tax.72111495",
+    "tax.72111499",
+    "tax.72111913",
+    "tax.72111914",
+    "tax.72111919",
+    "tax.72111991",
+    "tax.72111999",
+    "tax.72112310",
+    "tax.72112320",
+    "tax.72112330",
+    "tax.72112390",
+    "tax.72112910",
+    "tax.72112920",
+    "tax.72112930",
+    "tax.72112990",
+    "tax.72119011",
+    "tax.72119012",
+    "tax.72119013",
+    "tax.72119014",
+    "tax.72119019",
+    "tax.72119091",
+    "tax.72119099",
+    "wco.721114",
+    "wco.721119",
+    "wco.721123",
+    "wco.721129"
+  ],
+  "phienBan": "HS2022",
+  "taoBoi": {
+    "provider": "google-studio:gemini-flash",
+    "model": null,
+    "luc": "2026-11-02T12:46:23.382Z",
+    "ms": 21
+  },
+  "kiemTra": {
+    "tong": 45,
+    "dat": 45,
+    "loai": 0,
+    "nguonBiCat": []
+  },
+  "dieuKienNut": [
+    {
+      "id": "7211131",
+      "nguon": "tieuDe.7211131",
+      "trich": "7211131 Có hàm lượng carbon dưới 0,6% tính theo khối lượng",
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "717f2315f5dd1e7b1af91601f453bf0647ceb23c7ed267960e161c2196bc1d81"
+        }
+      }
+    },
+    {
+      "id": "7211141",
+      "nguon": "tieuDe.7211141",
+      "trich": "7211141 Có hàm lượng carbon dưới 0,6% tính theo khối lượng",
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "d868ad18b557439155171471c1ea4544ba728ddc45efc1add27bf1bbbf0a58ee"
+        }
+      }
+    },
+    {
+      "id": "7211191",
+      "nguon": "tieuDe.7211191",
+      "trich": "7211191 Có hàm lượng carbon dưới 0,6% tính theo khối lượng",
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "caaf7eed5fa924e51cd21219d867e2aeed6a3d425802d276c651b4287213c27d"
+        }
+      }
+    },
+    {
+      "id": "7211901",
+      "nguon": "tieuDe.7211901",
+      "trich": "7211901 Có hàm lượng carbon dưới 0,6% tính theo khối lượng",
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "f8f3ff89ecabbd5c26c701ed39b50a687113ee2771deba73ab59c0f7e5d491c2"
+        }
+      }
+    }
+  ]
 }
