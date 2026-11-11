@@ -4,13 +4,19 @@
   "nhom": "3921",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1700#soan-392114",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:duyet-L12-20261111#soat-L12",
+    "ngay": "2026-11-11",
+    "ghiChu": "Đối chiếu VI+EN: tầng 'Cứng'/'Rigid' ⇒ loaiCung CO (đúng khoá); .21 'Dạng tấm và phiến' ⇒ tenLoai [tấm, phiến] + moDunDanHoi > 100000 psi lấy từ SEN (SEN gắn mã .21); .29 Loại khác; tầng Loại khác ⇒ .91 [tấm, phiến], .92 'Dạng màng'/'Film' ⇒ tenLoai 'màng', .99. Lưu ý: định nghĩa mô-đun của 'cứng' chỉ ở .21 nên hàng khai loaiCung CO mà mô-đun ≤ 100.000 psi rơi .29 (theo SEN thì không phải 'cứng') — biên hiếm.",
+    "bam": "46e875979ed3dc0a52052408c87b2d21ce72ab1fdc06acd7d85b79be767230eb"
+  },
   "dieuKienNut": [
     {
       "id": "3921142",
@@ -22,7 +28,7 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -46,14 +52,14 @@
           "donVi": "psi"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39211429",
       "nguon": "tax.39211429",
       "trich": "39211429 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39211491",
@@ -69,7 +75,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39211492",
@@ -82,14 +88,14 @@
           "value": "màng"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39211499",
       "nguon": "tax.39211499",
       "trich": "39211499 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
