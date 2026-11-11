@@ -4,19 +4,13 @@
   "nhom": "4421",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "DUYET",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T1545#soan-442191",
     "ngay": "2026-11-06"
   },
-  "duyet": {
-    "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L14-20261111#soat-L14",
-    "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu 7 dòng (VI+EN): .10 TUONG_TU đúng 4 hàng nêu tên; .40 \"Quạt và màn che kéo bằng tay … và các bộ phận của chúng\" (EN \"Fans and handscreens, frames and handles therefor, and parts thereof\") HOAC đúng — \"kéo bằng tay\" chỉ của màn che, khung/tay cầm thuộc nhánh bộ phận; hai cụm chongLanTruc khongCoHangThat đã đọc, đồng ý không có hàng thật.",
-    "bam": "6543d9f287c4033ef7f6fe4eeeedfa5638df7fb93195e5ae50a66b2a16f2508a"
-  },
+  "duyet": null,
   "dieuKienNut": [],
   "dong8": [
     {
@@ -35,7 +29,7 @@
           ]
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "44219120",
@@ -53,7 +47,7 @@
           "value": "làm diêm"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "44219130",
@@ -70,7 +64,7 @@
           ]
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "44219140",
@@ -118,7 +112,7 @@
           ]
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "44219150",
@@ -131,7 +125,7 @@
           "value": "Chuỗi hạt cầu nguyện"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "44219160",
@@ -144,7 +138,7 @@
           "value": "Tăm"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "44219170",
@@ -162,14 +156,14 @@
           "value": "làm nhang"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "44219190",
       "nguon": "tax.44219190",
       "trich": "44219190 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "chongLanTruc": [
@@ -254,6 +248,13 @@
       "ma": "442191",
       "loai": "QUYET_DINH",
       "ghiChu": "Claude 07/11/2026 (Q1, #1109): các cặp nhánh khác trục không có hàng thật thoả cả hai ⇒ chongLanTruc + khongCoHangThat (lý do từng cặp trong viDuHang). Lúc chạy hàng thoả cả hai ⇒ hỏi câu phân biệt."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:tech-lead-20261111#soat-lai",
+      "ngay": "2026-11-11",
+      "lyDo": "Bỏ mất ngưỡng số SEN mà sổ tay đang chạy dùng để chốt dòng (cong3-mat-nguong-so, #1214); thay ngưỡng bằng khoá tên/CO là lùi. Soạn lại: mã hoá đủ ngưỡng SEN bằng khoá đo đúng + vế tên."
     }
   ]
 }

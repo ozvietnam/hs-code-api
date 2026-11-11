@@ -142,3 +142,8 @@ soát xác nhận 51 vế phủ đúng. 2 vế báo "phủ" nhưng sai: hai vế
   khai "que/thanh tre làm diêm" nên sẽ không khớp khi so chữ, và lúc chạy hệ thống sẽ hỏi. Vì đúng chữ biểu nên không trả về.
 - **Tiền lệ:** 1805/TB-TCHQ (dây tết bện nylon → 46019920) đi đúng vào .20 của 460199. 6252/TB-TCHQ (44219099, biểu 2012) nay
   rơi đúng vào 44219999. 1648/TB-TCHQ (44029090) và 7164/TB-TCHQ (44187500) nằm ngoài lô.
+
+
+## Soát lại của tech lead — mất ngưỡng số SEN
+
+Trả về 442191, 442199: bản duyệt bỏ mất điều kiện số (SEN) mà sổ tay đang chạy dùng để chốt dòng. Dòng sổ tay của các PN6 này giữ như `main`. Cổng `cong3-mat-nguong-so` (#1214) sẽ chặn lỗi này từ nay.
