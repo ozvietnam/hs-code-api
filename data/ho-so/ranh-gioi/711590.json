@@ -4,19 +4,13 @@
   "nhom": "7115",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "DUYET",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T0857#soan-711590",
     "ngay": "2026-11-06"
   },
-  "duyet": {
-    "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L20-20261111#soat-L20",
-    "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu VI/EN \"Of gold or silver\" / \"Of metal clad with gold or silver\"; lưu ý: chữ tự do .10 [\"vàng\",\"bạc\"] không phủ định \"dát phủ\" — hàng dát phủ khớp cả .10 lẫn .20 (cùng MFN 30), lúc chạy không tự chốt; nên có khoá chất liệu kim loại quý.",
-    "bam": "8c367498bc4a767bcb9263461448b4305825c9154b63b48cac6dd20e2dfcc4de"
-  },
+  "duyet": null,
   "dieuKienNut": [],
   "dong8": [
     {
@@ -33,7 +27,7 @@
           ]
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "71159020",
@@ -54,14 +48,14 @@
           ]
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "71159090",
       "nguon": "tax.71159090",
       "trich": "71159090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "ghiChuSoan": [
@@ -79,6 +73,13 @@
       "ma": "71159090",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.71159090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:tech-lead-20261111#soat-lai",
+      "ngay": "2026-11-11",
+      "lyDo": "bo-kiem-luat --toan-bieu (gộp thử với main, đo hai bên cùng nhịp): bản duyệt sinh ca chốt sai mới (chotSai/chotLoaiKhacSai tăng) — cổng gộp không cho tăng. Soạn/soát lại vế gây chốt sai rồi đo lại trước khi duyệt."
     }
   ]
 }
