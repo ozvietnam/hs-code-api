@@ -246,31 +246,61 @@
     },
     {
       "hs": "09012111",
-      "dieuKien": "Cà phê Arabica — hàm lượng cafein thường 0,8 - 1,4%; hạt thường bầu dục, dài hơn Robusta",
+      "dieuKien": "tên loại hàng: Arabica",
+      "loaiKhac": false,
+      "nguon": "tax.09012111",
+      "trich": "09012111 - - - - Arabica (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Arabica"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L11-20261111#soat-L11",
+          "ngay": "2026-11-11",
+          "bam": "5483071ad9aeb8cd363d9996c770c7d52999bca54adcd6793386cbb5b2102ce2"
+        }
+      },
       "tieuChi": {
         "fact": "la_ca_phe_arabica",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "loaiKhac": false,
-      "nguon": "sen.09012111",
-      "trich": "CÀ PHÊ ARABICA … • Hình thức: Hình dạng của hạt thường có hình bầu dục và dài hơn Robusta. … • Hàm lượng cafein: thường 0,8 - 1,4% nên không quá đắng nhưng có độ chua cao hơn.",
-      "nguonLoai": "AI_DA_KIEM"
+      }
     },
     {
       "hs": "09012112",
-      "dieuKien": "Cà phê Robusta — hạt tròn hơn và thường lớn hơn; caffein thường là 1,7% - 4%",
+      "dieuKien": "tên loại hàng: Robusta",
+      "loaiKhac": false,
+      "nguon": "tax.09012112",
+      "trich": "09012112 - - - - Robusta (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Robusta"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L11-20261111#soat-L11",
+          "ngay": "2026-11-11",
+          "bam": "5483071ad9aeb8cd363d9996c770c7d52999bca54adcd6793386cbb5b2102ce2"
+        }
+      },
       "tieuChi": {
         "fact": "la_ca_phe_robusta",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "loaiKhac": false,
-      "nguon": "sen.09012112",
-      "trich": "CÀ PHÊ ROBUSTA … • Hình thức: Hạt cà phê tròn hơn và thường lớn hơn. … • Hàm lượng caffein: thường là 1,7% - 4% nên có vị đắng và độ chua thấp.",
-      "nguonLoai": "AI_DA_KIEM"
+      }
     },
     {
       "hs": "09012119",
@@ -293,17 +323,31 @@
     },
     {
       "hs": "09012120",
-      "dieuKien": "Đã xay",
+      "dieuKien": "đã xay",
+      "loaiKhac": false,
+      "nguon": "tax.09012120",
+      "trich": "09012120 - - - Đã xay",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "daXay",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L11-20261111#soat-L11",
+          "ngay": "2026-11-11",
+          "bam": "5483071ad9aeb8cd363d9996c770c7d52999bca54adcd6793386cbb5b2102ce2"
+        }
+      },
       "tieuChi": {
         "fact": "da_xay",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "loaiKhac": false,
-      "nguon": "tax.09012120",
-      "trich": "09012120 - - - Đã xay",
-      "nguonLoai": "AI_DA_KIEM"
+      }
     },
     {
       "hs": "09012210",
@@ -654,5 +698,27 @@
     "dat": 28,
     "loai": 0,
     "nguonBiCat": []
-  }
+  },
+  "dieuKienNut": [
+    {
+      "id": "0901211",
+      "nguon": "tieuDe.0901211",
+      "trich": "0901211 Chưa nghiền",
+      "dieuKienSo": [
+        {
+          "fact": "daXay",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L11-20261111#soat-L11",
+          "ngay": "2026-11-11",
+          "bam": "5483071ad9aeb8cd363d9996c770c7d52999bca54adcd6793386cbb5b2102ce2"
+        }
+      }
+    }
+  ]
 }
