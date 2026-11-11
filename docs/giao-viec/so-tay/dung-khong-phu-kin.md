@@ -8,11 +8,11 @@ PN6 DỪNG không được dùng lúc chạy; lúc chạy chỉ dùng bản đã
 
 | | Số PN6 |
 |---|---|
-| DỪNG hiện tại | **6** |
+| DỪNG hiện tại | **5** |
 | Chờ oz-wiki: Q2 (văn bản ô tô) | 5 |
 | Chương 98 — Claude đang soát bản nháp | 0 |
 | Q1 còn lại — Claude xác minh / sửa bộ máy | 0 |
-| Claude làm tiếp (công cụ / soát lại) | 1 |
+| Claude làm tiếp (công cụ / soát lại) | 0 |
 
 ## Việc cần anh quyết
 
@@ -58,7 +58,7 @@ phủ trọn phân nhóm là tên phân nhóm. Chương 98 hết DỪNG.
 
 | Việc | PN6 |
 |---|---|
-| Soát lại cả spec (31 dòng «bộ phận của máy X»: khoá dungCho/congDung trộn lẫn, cụm trục giữa các tầng máy) — lô riêng | 848690 |
+| (không còn — 848690 đã gỡ 11/11/2026) | |
 
 ## Bảng toàn bộ PN6 DỪNG
 
@@ -70,8 +70,6 @@ phủ trọn phân nhóm là tên phân nhóm. Chương 98 hết DỪNG.
 | 870441 | Khối lượng toàn bộ theo thiết kế (SEN) không quá 5 tấn | Dòng «Xe ba bánh» và các dòng «Ô tô …» (tải đông lạnh, pick-up, thu gom phế thải…) bị coi là chồng nhau vì máy chưa biết «ô tô» là xe từ bốn bánh trở lên. | Q2 |
 | 870451 | Khối lượng toàn bộ theo thiết kế (SEN) không quá 5 tấn | Dòng «Xe ba bánh» và các dòng «Ô tô …» (tải đông lạnh, pick-up, thu gom phế thải…) bị coi là chồng nhau vì máy chưa biết «ô tô» là xe từ bốn bánh trở lên. | Q2 |
 | 870460 | Loại khác, chỉ sử dụng động cơ điện để tạo động lực | Dòng «Xe ba bánh» và các dòng «Ô tô …» (tải đông lạnh, pick-up, thu gom phế thải…) bị coi là chồng nhau vì máy chưa biết «ô tô» là xe từ bốn bánh trở lên. | Q2 |
-| **GIỚI HẠN BỘ MÁY** | | | |
-| 848690 | Bộ phận và phụ kiện | Các dòng «Bộ phận kẹp dụng cụ…, dùng cho máy công cụ» lặp dưới các tầng về MÁY cụ thể (máy phun, máy cắt laser…); không vector nào vừa thoả tầng vừa thoả dòng. | Claude soát lại cách ghi tầng và dòng. |
 
 ## Đã gỡ trong #1109
 
@@ -93,6 +91,7 @@ phủ trọn phân nhóm là tên phân nhóm. Chương 98 hết DỪNG.
 | #1175 | Chồng lấn (Q1): 271012, 848180, 853690 | Luật «tên cụ thể dưới Loại khác thắng tầng chung»; khoá loaiPhaChe (271012); cụm trục 9 nhánh + khongCoHangThat (848180); «van nối có núm» vào khongPhaiPhuDinh |
 | #1176 | Bộ máy: 842490, 842199, 850790, 871690, 847790, 870600, 681140, 442199, 848620 | Giải chữ↔mã qua cây HS; đích lồng chỉ khi khác nhóm 4 số; cổng 1 «tên đa nghĩa»; cổng 2 trả lời «tương tự» khi kiểm tới được + ứng viên tên chung ẑẑẑ; Q1 871690/848620 |
 | #1178 | Lô 11: 853650, 610520, 870895, 870891, 030749, 480100, 210690, 321290 | Từ vựng @2 `cumChanDoc` (che «micro switch») và `giaTriCha`; phạm vi «Loại khác» từ chú giải nhóm; phạm vi trên nút nhóm cho xxxx.00 (4801.00); `loBieu` — lỗ của chính biểu (210690 r2701/r2704); ứng viên «công dụng chung ẑẑẑ»; Q1 cho cặp cuộn↔tờ, (A)↔(C) 32.12, .91↔.92–.97 21.06 |
+| (nhánh claude/dung-848690) | 848690 | Viết lại spec: tầng 7 số chia theo CÔNG DỤNG (congDung, bốn phân nhóm máy 8486.10/.20/.30/.40; 8486904 đọc từ Chú giải 11 (C) Chương 84), máy cụ thể ở dòng bằng dungCho; bỏ dungCho [máy, thiết bị] khớp mọi giá trị; phạm vi phân nhóm từ chú giải nhóm 84.86; .22↔.25 chồng thật, .23↔.25 Q1 |
 
 Bài học: nhiều ghi chú cũ ghi «chồng lấn giả» hoặc «không sửa được», nhưng thật ra spec sót tên hoặc sót vế (170290 «trừ
 mantoza», 320890 thiếu tên «Sơn», 670290 vật liệu ghi thành tên hàng). Trước khi kết luận DỪNG, soát xem chữ biểu đã tự
