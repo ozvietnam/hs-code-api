@@ -16,6 +16,12 @@ on:
       - 'data/community/**'
       - 'data/precedents.json'
 
+# Huỷ lượt của SHA cũ khi có push mới, chừa main để giữ dấu xanh commit đã gộp
+# (OZV-355). Cổng giữ: scripts/test-ci-concurrency.mjs
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
 jobs:
   validate:
     runs-on: ubuntu-latest

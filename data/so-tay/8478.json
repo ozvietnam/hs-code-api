@@ -1,117 +1,145 @@
 {
- "nhom": "8478",
- "phamVi": {
-  "text": "Máy chế biến hoặc đóng gói thuốc lá, chưa được chi tiết hoặc ghi ở nơi khác trong Chương 84; và các bộ phận của chúng.",
-  "nguon": "nhom8478.nhom",
-  "trich": "Nhóm này bao gồm những máy chưa được chi tiết hoặc ghi ở nơi khác thuộc chương này, dùng để chế biến hoặc đóng gói thuốc lá.",
-  "nguonLoai": "AI_DA_KIEM"
- },
- "dieuKienVao": [
-  {
-   "fact": "la_may_che_bien_hoac_dong_goi_thuoc_la",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "nhom8478.nhom",
-   "trich": "dùng để chế biến hoặc đóng gói thuốc lá.",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "loaiTru": [],
- "phanBiet": [],
- "tieuChi6": [],
- "dong8": [
-  {
-   "hs": "84781010",
-   "dieuKien": "Hoạt động bằng điện",
-   "loaiKhac": false,
-   "nguon": "tax.84781010",
-   "trich": "84781010 - - Hoạt động bằng điện",
-   "nguonLoai": "AI_DA_KIEM"
+  "nhom": "8478",
+  "phamVi": {
+    "text": "Máy chế biến hoặc đóng gói thuốc lá, chưa được chi tiết hoặc ghi ở nơi khác trong Chương 84; và các bộ phận của chúng.",
+    "nguon": "nhom8478.nhom",
+    "trich": "Nhóm này bao gồm những máy chưa được chi tiết hoặc ghi ở nơi khác thuộc chương này, dùng để chế biến hoặc đóng gói thuốc lá.",
+    "nguonLoai": "AI_DA_KIEM"
   },
-  {
-   "hs": "84781020",
-   "dieuKien": "Không hoạt động bằng điện",
-   "loaiKhac": false,
-   "nguon": "tax.84781020",
-   "trich": "84781020 - - Không hoạt động bằng điện",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "84789000",
-   "dieuKien": "Bộ phận",
-   "loaiKhac": false,
-   "nguon": "tax.84789000",
-   "trich": "84789000 - Bộ phận",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "cay": {
-  "nguonLoai": "MAY_SUY",
-  "sinhTu": "lib/hs-tree.js",
-  "nut": [
-   {
-    "id": "8478",
-    "cap": 4,
-    "cha": "84",
-    "tenVi": "Máy chế biến hoặc đóng gói thuốc lá, chưa được chi tiết hoặc ghi ở nơi khác trong Chương này.",
-    "tenEn": "Machinery; for preparing or making up tobacco, n.e.c. in this chapter",
-    "suyRa": false
-   },
-   {
-    "id": "847810",
-    "cap": 6,
-    "cha": "8478",
-    "tenVi": "Máy",
-    "tenEn": "Machinery; for preparing or making up tobacco, n.e.c. in this chapter",
-    "suyRa": false
-   },
-   {
-    "id": "84781010",
-    "cap": 8,
-    "cha": "847810",
-    "tenVi": "Hoạt động bằng điện",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "84781020",
-    "cap": 8,
-    "cha": "847810",
-    "tenVi": "Không hoạt động bằng điện",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "84789000",
-    "cap": 8,
-    "cha": "8478",
-    "tenVi": "Bộ phận",
-    "tenEn": "Machinery; parts of those for preparing or making up tobacco, n.e.c. in this chapter",
-    "suyRa": false,
-    "laPhanNhom": "847890"
-   }
+  "dieuKienVao": [
+    {
+      "fact": "la_may_che_bien_hoac_dong_goi_thuoc_la",
+      "op": "=",
+      "value": true,
+      "donVi": null,
+      "ngoaiTru": [],
+      "nguon": "nhom8478.nhom",
+      "trich": "dùng để chế biến hoặc đóng gói thuốc lá.",
+      "nguonLoai": "AI_DA_KIEM"
+    }
   ],
-  "tenDien": []
- },
- "dungTuNguon": [
-  "nhom8478.nhom",
-  "tax.84781010",
-  "tax.84781020",
-  "tax.84789000"
- ],
- "phienBan": "HS2022",
- "taoBoi": {
-  "provider": "google-studio:gemini-flash",
-  "model": null,
-  "luc": "2026-11-02T09:46:41.643Z",
-  "ms": 3
- },
- "kiemTra": {
-  "tong": 5,
-  "dat": 5,
-  "loai": 0,
-  "nguonBiCat": []
- }
+  "loaiTru": [],
+  "phanBiet": [],
+  "tieuChi6": [],
+  "dong8": [
+    {
+      "hs": "84781010",
+      "dieuKien": "hoạt động bằng điện",
+      "loaiKhac": false,
+      "nguon": "tax.84781010",
+      "trich": "84781010 - - Hoạt động bằng điện",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L27-20261111#soat-L27",
+          "ngay": "2026-11-11",
+          "bam": "01cb19b7a2a875b9e181e7370158e09af5ecc2bc5ab7fa4b240d83fe44e9112a"
+        }
+      }
+    },
+    {
+      "hs": "84781020",
+      "dieuKien": "không: hoạt động bằng điện",
+      "loaiKhac": false,
+      "nguon": "tax.84781020",
+      "trich": "84781020 - - Không hoạt động bằng điện",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L27-20261111#soat-L27",
+          "ngay": "2026-11-11",
+          "bam": "01cb19b7a2a875b9e181e7370158e09af5ecc2bc5ab7fa4b240d83fe44e9112a"
+        }
+      }
+    },
+    {
+      "hs": "84789000",
+      "dieuKien": "Bộ phận",
+      "loaiKhac": false,
+      "nguon": "tax.84789000",
+      "trich": "84789000 - Bộ phận",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "cay": {
+    "nguonLoai": "MAY_SUY",
+    "sinhTu": "lib/hs-tree.js",
+    "nut": [
+      {
+        "id": "8478",
+        "cap": 4,
+        "cha": "84",
+        "tenVi": "Máy chế biến hoặc đóng gói thuốc lá, chưa được chi tiết hoặc ghi ở nơi khác trong Chương này.",
+        "tenEn": "Machinery; for preparing or making up tobacco, n.e.c. in this chapter",
+        "suyRa": false
+      },
+      {
+        "id": "847810",
+        "cap": 6,
+        "cha": "8478",
+        "tenVi": "Máy",
+        "tenEn": "Machinery; for preparing or making up tobacco, n.e.c. in this chapter",
+        "suyRa": false
+      },
+      {
+        "id": "84781010",
+        "cap": 8,
+        "cha": "847810",
+        "tenVi": "Hoạt động bằng điện",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "84781020",
+        "cap": 8,
+        "cha": "847810",
+        "tenVi": "Không hoạt động bằng điện",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "84789000",
+        "cap": 8,
+        "cha": "8478",
+        "tenVi": "Bộ phận",
+        "tenEn": "Machinery; parts of those for preparing or making up tobacco, n.e.c. in this chapter",
+        "suyRa": false,
+        "laPhanNhom": "847890"
+      }
+    ],
+    "tenDien": []
+  },
+  "dungTuNguon": [
+    "nhom8478.nhom",
+    "tax.84781010",
+    "tax.84781020",
+    "tax.84789000"
+  ],
+  "phienBan": "HS2022",
+  "taoBoi": {
+    "provider": "google-studio:gemini-flash",
+    "model": null,
+    "luc": "2026-11-02T09:46:41.643Z",
+    "ms": 3
+  },
+  "kiemTra": {
+    "tong": 5,
+    "dat": 5,
+    "loai": 0,
+    "nguonBiCat": []
+  }
 }

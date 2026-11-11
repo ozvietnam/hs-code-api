@@ -4,7 +4,7 @@
   "nhom": "3901",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-390110",
@@ -99,6 +99,13 @@
       "loai": "BO_VE",
       "ve": "chứa các monomer alpha-olefin",
       "lyDo": "Vế \"chứa các monomer alpha-olefin\" được chính khoá hamLuongMonomerAlphaOlefin mang (nhãn tu-vung@2 \"hàm lượng monomer alpha-olefin\", cách viết \"chứa monomer alpha-olefin {giaTri}\"): chữ biểu gắn ngay ngưỡng \"từ 5% trở xuống\" vào chất đó, nên điều kiện <= 5 % trên khoá này đã phủ cả ý \"chứa\" lẫn ngưỡng; không có khoá có/không thứ hai nên bỏ vế riêng không đổi mã 8 số."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L12-20261111#soat-L12",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 390110:39011012 và :39011092 SUY RỘNG: chữ biểu 'Polyetylen chứa các monomer alpha-olefin từ 5% trở xuống' / EN 'Polyethylene containing 5% or less alpha-olefin monomers'; SEN 39011012/39011092 ghi rõ 'từ 5% trở xuống (ít nhất một lượng nhỏ) dùng để chỉ Polyetylen cấu trúc thẳng có nhánh ngắn tỷ trọng thấp (LLDPE)'. Bản nháp chỉ ghi hamLuongMonomerAlphaOlefin <= 5 % và BO_VE vế 'chứa các monomer alpha-olefin' với lý do 'ngưỡng đã phủ ý chứa' — sai: <= 5 gồm cả 0 %, nên polyetylen đồng nhất (homopolyme LDPE, 0 % alpha-olefin) dạng lỏng/nhão rơi vào .12 thay vì .19 (và .92 thay vì .99). Vế 'chứa' làm đổi mã ⇒ không được BO_VE; cần điều kiện > 0 (hoặc khoá có/không) theo SEN."
     }
   ]
 }

@@ -4,7 +4,7 @@
   "nhom": "4202",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1705#soan-420211",
@@ -49,6 +49,13 @@
       "ma": "42021110",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.42021110 \"Vali hoặc túi, cặp có kích thước tối đa 56cm x 45cm x 25cm\" (EN \"Suit-case or brief-case with maximum dimensions of 56 cm x 45 cm x 25 cm\") ⇒ tenLoai [\"Vali\",\"túi\",\"cặp\"] (chữ Anh \"Suit-case or brief-case\"; tách \"túi, cặp\" thành hai tên vì dấu phẩy gói liệt kê trong MỘT chuỗi) + kichThuoc <= 56 cm (\"tối đa\" = <=). Cổng 3 báo cong3-bien-khong-doc-duoc: đã đối chiếu tay — chữ biểu ghi \"tối đa\" nên op là <=, đơn vị cm. LƯU Ý cho người soát: chữ biểu nêu BA chiều (56cm x 45cm x 25cm) nhưng khung điều kiện SO chỉ chứa MỘT số; đã ghi chiều lớn nhất 56 cm, hai chiều còn lại (45 cm, 25 cm) không có chỗ trong khung — lúc chạy, hàng khai kích thước nhiều chiều sẽ ra CHUA_BIET (hỏi), không chốt sai."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L13-20261111#soat-L13",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 42021110 SUY RỘNG (biên bị bỏ): \"Vali hoặc túi, cặp có kích thước tối đa 56cm x 45cm x 25cm\" (EN \"maximum dimensions of 56 cm x 45 cm x 25 cm\") ghi kichThuoc <= 56 cm — bỏ hai biên 45 cm và 25 cm (người soạn tự ghi \"không có chỗ trong khung\"); vali 50×50×30 cm khi trả lời kích thước lớn nhất 50 cm sẽ THOẢ .10 dù vượt 45/25 ⇒ đáng lẽ THIEU_KHOA_TU_VUNG/DỪNG (khoá ba chiều), không ghi biên một phần."
     }
   ]
 }

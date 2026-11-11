@@ -4,7 +4,7 @@
   "nhom": "7304",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-730459",
@@ -52,6 +52,13 @@
       "loai": "BO_VE",
       "ve": "không nhỏ hơn 42.000 psi",
       "lyDo": "Đã lượng hóa qua gioiHanChay >= 42000 psi"
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L22-20261111#soat-L22",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 730459.json:73045910 SUY RỘNG: chữ biểu 'Ống dẫn chịu áp lực cao có giới hạn chảy (1) không nhỏ hơn 42.000 psi' / EN 'High-pressure pipe with a yield strength not less than 42,000 psi' — bản nháp chỉ giữ gioiHanChay>=42000 psi, bỏ tên 'Ống dẫn chịu áp lực cao' (máy xếp là DAU nên không đòi). Giới hạn chảy 42 ksi (~290 MPa) là mức thường của mọi ống thép hợp kim, nên gần như mọi ống liền 730459 có giới hạn chảy công bố sẽ bị kéo vào .10, .90 'Loại khác' gần như rỗng. Sửa: thêm ongChiuApLucCao CO (khoá có sẵn, đã dùng ở 73069091) hoặc tenLoai 'Ống dẫn chịu áp lực cao' như 73045120. (MFN .10=.90=0% nên không đổi thuế, nhưng ranh giới sai.)"
     }
   ]
 }

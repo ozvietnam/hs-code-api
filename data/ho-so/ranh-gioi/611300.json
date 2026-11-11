@@ -4,7 +4,7 @@
   "nhom": "6113",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-mm:loop:20261106T1442#soan-611300",
@@ -88,6 +88,13 @@
       "ma": "61130040",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.61130040: \"Quần áo bảo hộ khác\" ⇒ tenLoai \"Quần áo bảo hộ\" + phanConLai: true (phần còn lại có tên — phủ định 61130010 và 61130030 đứng trước). 61130090 \"Loại khác\" trần ⇒ không đưa vào spec (máy phủ định anh em)."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L17-20261111#soat-L17",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 61130030 THU HẸP: chữ biểu 'Quần áo chống cháy (SEN)' (MFN 5 %); bản nháp ghi CẢ tinhNangBaoHo CHONG_CHAY LẪN tenLoai 'Quần áo chống cháy' (so chữ tự do đòi đủ âm tiết 'quần','áo') ⇒ 'bộ đồ chống cháy', 'bộ đồ chữa cháy' bị TRÁI ở tenLoai và rơi sang .40 (MFN 20 %). Khoá tinhNangBaoHo một mình đã đủ (như 611430 .20). (B) 61130010 THU HẸP: chữ biểu 'Bộ đồ của thợ lặn' / EN 'Divers' suits (wetsuits)'; bản nháp thêm dungCho 'hoạt động lặn scuba' lấy từ câu mô tả SEN ⇒ wetsuit lặn tự do/lặn ống thở bị TRÁI, rơi sang .40/.90."
     }
   ]
 }

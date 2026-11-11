@@ -1,228 +1,299 @@
 {
- "nhom": "7229",
- "phamVi": {
-  "text": "Dây bằng thép hợp kim khác.",
-  "nguon": "wco.722920",
-  "trich": "722920 Steel, alloy; wire, of silico-manganese steel",
-  "nguonLoai": "AI_DA_KIEM"
- },
- "dieuKienVao": [
-  {
-   "fact": "la_day_thep_hop_kim_khac",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "ch72.chuong",
-   "trich": "Dây\n\nCác sản phẩm được tạo hình nguội, ở dạng cuộn, có mặt cắt ngang đông đặc đều nhau dọc chiều dài, khác với định nghĩa về sản phẩm được cán phẳng.",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "loaiTru": [],
- "phanBiet": [],
- "tieuChi6": [],
- "dong8": [
-  {
-   "hs": "72292000",
-   "dieuKien": "Bằng thép mangan - silic",
-   "loaiKhac": false,
-   "nguon": "tax.72292000",
-   "trich": "72292000 - Bằng thép mangan - silic",
-   "nguonLoai": "AI_DA_KIEM"
+  "nhom": "7229",
+  "phamVi": {
+    "text": "Dây bằng thép hợp kim khác.",
+    "nguon": "wco.722920",
+    "trich": "722920 Steel, alloy; wire, of silico-manganese steel",
+    "nguonLoai": "AI_DA_KIEM"
   },
-  {
-   "hs": "72299021",
-   "dieuKien": "Có hàm lượng crôm từ 0,5% trở lên tính theo khối lượng",
-   "loaiKhac": false,
-   "nguon": "tax.72299021",
-   "trich": "72299021 - - - Có hàm lượng crôm từ 0,5% trở lên tính theo khối lượng",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72299029",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.72299029",
-   "trich": "72299029 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "7229902",
-    "truAnhEm": [
-     "72299021"
-    ],
-    "truDayDu": [
-     "72299021"
-    ],
-    "toTienCoTen": "722990",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "72299030",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.72299030",
-   "trich": "72299030 - - Loại khác, bằng thép gió",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "722990",
-    "truAnhEm": [
-     "7229902",
-     "7229909"
-    ],
-    "truDayDu": [
-     "7229902",
-     "7229909"
-    ],
-    "toTienCoTen": "722990",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "72299091",
-   "dieuKien": "Có hàm lượng crôm từ 0,5% trở lên tính theo khối lượng",
-   "loaiKhac": false,
-   "nguon": "tax.72299091",
-   "trich": "72299091 - - - Có hàm lượng crôm từ 0,5% trở lên tính theo khối lượng",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72299099",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.72299099",
-   "trich": "72299099 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "7229909",
-    "truAnhEm": [
-     "72299091"
-    ],
-    "truDayDu": [
-     "72299091",
-     "7229902",
-     "72299030"
-    ],
-    "toTienCoTen": "722990",
-    "dinhNghiaDuoc": false
-   }
-  }
- ],
- "cay": {
-  "nguonLoai": "MAY_SUY",
-  "sinhTu": "lib/hs-tree.js",
-  "nut": [
-   {
-    "id": "7229",
-    "cap": 4,
-    "cha": "72",
-    "tenVi": "Dây thép hợp kim khác.",
-    "tenEn": "Wire of other alloy steel",
-    "suyRa": false
-   },
-   {
-    "id": "72292000",
-    "cap": 8,
-    "cha": "7229",
-    "tenVi": "Bằng thép mangan - silic",
-    "tenEn": "Steel, alloy; wire, of silico-manganese steel",
-    "suyRa": false,
-    "laPhanNhom": "722920"
-   },
-   {
-    "id": "722990",
-    "cap": 6,
-    "cha": "7229",
-    "tenVi": "Loại khác",
-    "tenEn": "Steel, alloy; wire, of materials other than silico-manganese steel",
-    "suyRa": false
-   },
-   {
-    "id": "7229902",
-    "cap": "TIEU_DE_QG",
-    "cha": "722990",
-    "tenVi": "Mặt cắt ngang không quá 5,5 mm",
-    "tenEn": "Of cross-section not exceeding 5.5 mm",
-    "suyRa": true
-   },
-   {
-    "id": "72299021",
-    "cap": 8,
-    "cha": "7229902",
-    "tenVi": "Có hàm lượng crôm từ 0,5% trở lên tính theo khối lượng",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72299029",
-    "cap": 8,
-    "cha": "7229902",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "72299030",
-    "cap": 8,
-    "cha": "722990",
-    "tenVi": "Loại khác, bằng thép gió",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "7229909",
-    "cap": "TIEU_DE_QG",
-    "cha": "722990",
-    "tenVi": "Loại khác",
-    "tenEn": "Other",
-    "suyRa": true
-   },
-   {
-    "id": "72299091",
-    "cap": 8,
-    "cha": "7229909",
-    "tenVi": "Có hàm lượng crôm từ 0,5% trở lên tính theo khối lượng",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72299099",
-    "cap": 8,
-    "cha": "7229909",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   }
+  "dieuKienVao": [
+    {
+      "fact": "la_day_thep_hop_kim_khac",
+      "op": "=",
+      "value": true,
+      "donVi": null,
+      "ngoaiTru": [],
+      "nguon": "ch72.chuong",
+      "trich": "Dây\n\nCác sản phẩm được tạo hình nguội, ở dạng cuộn, có mặt cắt ngang đông đặc đều nhau dọc chiều dài, khác với định nghĩa về sản phẩm được cán phẳng.",
+      "nguonLoai": "AI_DA_KIEM"
+    }
   ],
-  "tenDien": []
- },
- "dungTuNguon": [
-  "ch72.chuong",
-  "tax.72292000",
-  "tax.72299021",
-  "tax.72299029",
-  "tax.72299030",
-  "tax.72299091",
-  "tax.72299099",
-  "wco.722920"
- ],
- "phienBan": "HS2022",
- "taoBoi": {
-  "provider": "google-studio:gemini-flash",
-  "model": null,
-  "luc": "2026-11-02T10:43:05.014Z",
-  "ms": 5
- },
- "kiemTra": {
-  "tong": 8,
-  "dat": 8,
-  "loai": 0,
-  "nguonBiCat": []
- }
+  "loaiTru": [],
+  "phanBiet": [],
+  "tieuChi6": [],
+  "dong8": [
+    {
+      "hs": "72292000",
+      "dieuKien": "Bằng thép mangan - silic",
+      "loaiKhac": false,
+      "nguon": "tax.72292000",
+      "trich": "72292000 - Bằng thép mangan - silic",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "72299021",
+      "dieuKien": "hàm lượng crom >= 0.5 %",
+      "loaiKhac": false,
+      "nguon": "tax.72299021",
+      "trich": "72299021 - - - Có hàm lượng crôm từ 0,5% trở lên tính theo khối lượng",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCrom",
+          "op": ">=",
+          "value": 0.5,
+          "donVi": "%"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "aa97eedd67a76bd1f2b81daa995705540c249fba6e84216d80b3f0ff643ee965"
+        }
+      }
+    },
+    {
+      "hs": "72299029",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.72299029",
+      "trich": "72299029 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "7229902",
+        "truAnhEm": [
+          "72299021"
+        ],
+        "truDayDu": [
+          "72299021"
+        ],
+        "toTienCoTen": "722990",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "72299030",
+      "dieuKien": "tên loại hàng: thép gió",
+      "loaiKhac": true,
+      "nguon": "tax.72299030",
+      "trich": "72299030 - - Loại khác, bằng thép gió",
+      "nguonLoai": "CLAUDE_DUYET",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "722990",
+        "truAnhEm": [
+          "7229902",
+          "7229909"
+        ],
+        "truDayDu": [
+          "7229902",
+          "7229909"
+        ],
+        "toTienCoTen": "722990",
+        "dinhNghiaDuoc": true
+      },
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "thép gió"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "aa97eedd67a76bd1f2b81daa995705540c249fba6e84216d80b3f0ff643ee965"
+        }
+      }
+    },
+    {
+      "hs": "72299091",
+      "dieuKien": "hàm lượng crom >= 0.5 %",
+      "loaiKhac": false,
+      "nguon": "tax.72299091",
+      "trich": "72299091 - - - Có hàm lượng crôm từ 0,5% trở lên tính theo khối lượng",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCrom",
+          "op": ">=",
+          "value": 0.5,
+          "donVi": "%"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "aa97eedd67a76bd1f2b81daa995705540c249fba6e84216d80b3f0ff643ee965"
+        }
+      }
+    },
+    {
+      "hs": "72299099",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.72299099",
+      "trich": "72299099 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "7229909",
+        "truAnhEm": [
+          "72299091"
+        ],
+        "truDayDu": [
+          "72299091",
+          "7229902",
+          "72299030"
+        ],
+        "toTienCoTen": "722990",
+        "dinhNghiaDuoc": false
+      }
+    }
+  ],
+  "cay": {
+    "nguonLoai": "MAY_SUY",
+    "sinhTu": "lib/hs-tree.js",
+    "nut": [
+      {
+        "id": "7229",
+        "cap": 4,
+        "cha": "72",
+        "tenVi": "Dây thép hợp kim khác.",
+        "tenEn": "Wire of other alloy steel",
+        "suyRa": false
+      },
+      {
+        "id": "72292000",
+        "cap": 8,
+        "cha": "7229",
+        "tenVi": "Bằng thép mangan - silic",
+        "tenEn": "Steel, alloy; wire, of silico-manganese steel",
+        "suyRa": false,
+        "laPhanNhom": "722920"
+      },
+      {
+        "id": "722990",
+        "cap": 6,
+        "cha": "7229",
+        "tenVi": "Loại khác",
+        "tenEn": "Steel, alloy; wire, of materials other than silico-manganese steel",
+        "suyRa": false
+      },
+      {
+        "id": "7229902",
+        "cap": "TIEU_DE_QG",
+        "cha": "722990",
+        "tenVi": "Mặt cắt ngang không quá 5,5 mm",
+        "tenEn": "Of cross-section not exceeding 5.5 mm",
+        "suyRa": true
+      },
+      {
+        "id": "72299021",
+        "cap": 8,
+        "cha": "7229902",
+        "tenVi": "Có hàm lượng crôm từ 0,5% trở lên tính theo khối lượng",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72299029",
+        "cap": 8,
+        "cha": "7229902",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "72299030",
+        "cap": 8,
+        "cha": "722990",
+        "tenVi": "Loại khác, bằng thép gió",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "7229909",
+        "cap": "TIEU_DE_QG",
+        "cha": "722990",
+        "tenVi": "Loại khác",
+        "tenEn": "Other",
+        "suyRa": true
+      },
+      {
+        "id": "72299091",
+        "cap": 8,
+        "cha": "7229909",
+        "tenVi": "Có hàm lượng crôm từ 0,5% trở lên tính theo khối lượng",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72299099",
+        "cap": 8,
+        "cha": "7229909",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      }
+    ],
+    "tenDien": []
+  },
+  "dungTuNguon": [
+    "ch72.chuong",
+    "tax.72292000",
+    "tax.72299021",
+    "tax.72299029",
+    "tax.72299030",
+    "tax.72299091",
+    "tax.72299099",
+    "wco.722920"
+  ],
+  "phienBan": "HS2022",
+  "taoBoi": {
+    "provider": "google-studio:gemini-flash",
+    "model": null,
+    "luc": "2026-11-02T10:43:05.014Z",
+    "ms": 5
+  },
+  "kiemTra": {
+    "tong": 8,
+    "dat": 8,
+    "loai": 0,
+    "nguonBiCat": []
+  },
+  "dieuKienNut": [
+    {
+      "id": "7229902",
+      "nguon": "tieuDe.7229902",
+      "trich": "7229902 Mặt cắt ngang không quá 5,5 mm",
+      "dieuKienSo": [
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 5.5,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "aa97eedd67a76bd1f2b81daa995705540c249fba6e84216d80b3f0ff643ee965"
+        }
+      }
+    }
+  ]
 }

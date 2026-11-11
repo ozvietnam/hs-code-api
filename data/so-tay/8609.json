@@ -1,137 +1,152 @@
 {
- "nhom": "8609",
- "phamVi": {
-  "text": "Công-ten-nơ (kể cả công-ten-nơ dùng để vận chuyển chất lỏng) được thiết kế và trang bị đặc biệt để chuyên chở bằng một hay nhiều phương thức vận tải.",
-  "nguon": "nhom8609.nhom",
-  "trich": "Các công ten nơ (kể cả toa nâng hàng) là những thùng đựng được thiết kế và trang bị đặc biệt để có thể chuyển đi bằng một hay nhiều phương thức vận tải (ví dụ, đường bộ, đường sắt hay đường thuỷ hoặc đường không).",
-  "nguonLoai": "AI_DA_KIEM"
- },
- "dieuKienVao": [
-  {
-   "fact": "la_cong_ten_no_chuyen_cho_bang_mot_hay_nhieu_phuong_thuc",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "ch86.chuong",
-   "trich": "Công-ten-nơ được thiết kế và trang bị đặc biệt để vận chuyển theo một hoặc nhiều phương thức (nhóm 86.09).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "loaiTru": [
-  {
-   "dieuKien": "Các xe moóc đường sắt chuyên chở trên toa xe có ray dẫn hướng",
-   "sangNhom": "8716",
-   "nguon": "nhom8609.nhom",
-   "trich": "(b) Các xe moóc đường sắt (chủ yếu sử dụng như xe moóc trên đường bộ, nhưng được thiết kế để chúng có thể được vận chuyển trên toa xe đường sắt đặc biệt đã lắp ray dẫn hướng) (nhóm 87.16).",
-   "nguonLoai": "AI_DA_KIEM"
+  "nhom": "8609",
+  "phamVi": {
+    "text": "Công-ten-nơ (kể cả công-ten-nơ dùng để vận chuyển chất lỏng) được thiết kế và trang bị đặc biệt để chuyên chở bằng một hay nhiều phương thức vận tải.",
+    "nguon": "nhom8609.nhom",
+    "trich": "Các công ten nơ (kể cả toa nâng hàng) là những thùng đựng được thiết kế và trang bị đặc biệt để có thể chuyển đi bằng một hay nhiều phương thức vận tải (ví dụ, đường bộ, đường sắt hay đường thuỷ hoặc đường không).",
+    "nguonLoai": "AI_DA_KIEM"
   },
-  {
-   "dieuKien": "Các khối mô-đun xây dựng",
-   "sangNhom": "9406",
-   "nguon": "nhom8609.nhom",
-   "trich": "(c) Các khối mô-đun xây dựng (nhóm 94.06).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "phanBiet": [
-  {
-   "hoi": "Hàng là xe moóc đường sắt được thiết kế để vận chuyển trên toa xe đường sắt đặc biệt có ray dẫn hướng?",
-   "neuCo": "8716",
-   "neuKhong": "8609",
-   "nguon": "nhom8609.nhom",
-   "trich": "(b) Các xe moóc đường sắt (chủ yếu sử dụng như xe moóc trên đường bộ, nhưng được thiết kế để chúng có thể được vận chuyển trên toa xe đường sắt đặc biệt đã lắp ray dẫn hướng) (nhóm 87.16).",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hoi": "Hàng là các khối mô-đun xây dựng thuộc nhóm 94.06?",
-   "neuCo": "9406",
-   "neuKhong": "8609",
-   "nguon": "nhom8609.nhom",
-   "trich": "(c) Các khối mô-đun xây dựng (nhóm 94.06).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "tieuChi6": [],
- "dong8": [
-  {
-   "hs": "86090010",
-   "dieuKien": "Bằng kim loại cơ bản",
-   "loaiKhac": false,
-   "nguon": "tax.86090010",
-   "trich": "86090010 - Bằng kim loại cơ bản",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "86090090",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.86090090",
-   "trich": "86090090 - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "8609",
-    "truAnhEm": [
-     "86090010"
-    ],
-    "truDayDu": [
-     "86090010"
-    ],
-    "toTienCoTen": "8609",
-    "dinhNghiaDuoc": true
-   }
-  }
- ],
- "cay": {
-  "nguonLoai": "MAY_SUY",
-  "sinhTu": "lib/hs-tree.js",
-  "nut": [
-   {
-    "id": "8609",
-    "cap": 4,
-    "cha": "86",
-    "tenVi": "Công-ten-nơ (kể cả công-ten-nơ dùng vận chuyển chất lỏng) được thiết kế và trang bị đặc biệt để vận chuyển theo một hoặc nhiều phương thức.",
-    "tenEn": "Containers; (including containers for transport of fluids) specially designed and equipped for carriage by one or more modes of transport",
-    "suyRa": false
-   },
-   {
-    "id": "86090010",
-    "cap": 8,
-    "cha": "8609",
-    "tenVi": "Bằng kim loại cơ bản",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "86090090",
-    "cap": 8,
-    "cha": "8609",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   }
+  "dieuKienVao": [
+    {
+      "fact": "la_cong_ten_no_chuyen_cho_bang_mot_hay_nhieu_phuong_thuc",
+      "op": "=",
+      "value": true,
+      "donVi": null,
+      "ngoaiTru": [],
+      "nguon": "ch86.chuong",
+      "trich": "Công-ten-nơ được thiết kế và trang bị đặc biệt để vận chuyển theo một hoặc nhiều phương thức (nhóm 86.09).",
+      "nguonLoai": "AI_DA_KIEM"
+    }
   ],
-  "tenDien": []
- },
- "dungTuNguon": [
-  "ch86.chuong",
-  "nhom8609.nhom",
-  "tax.86090010",
-  "tax.86090090"
- ],
- "phienBan": "HS2022",
- "taoBoi": {
-  "provider": "google-studio:gemini-flash",
-  "model": null,
-  "luc": "2026-11-02T13:06:43.829Z",
-  "ms": 4
- },
- "kiemTra": {
-  "tong": 8,
-  "dat": 8,
-  "loai": 0,
-  "nguonBiCat": []
- }
+  "loaiTru": [
+    {
+      "dieuKien": "Các xe moóc đường sắt chuyên chở trên toa xe có ray dẫn hướng",
+      "sangNhom": "8716",
+      "nguon": "nhom8609.nhom",
+      "trich": "(b) Các xe moóc đường sắt (chủ yếu sử dụng như xe moóc trên đường bộ, nhưng được thiết kế để chúng có thể được vận chuyển trên toa xe đường sắt đặc biệt đã lắp ray dẫn hướng) (nhóm 87.16).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "dieuKien": "Các khối mô-đun xây dựng",
+      "sangNhom": "9406",
+      "nguon": "nhom8609.nhom",
+      "trich": "(c) Các khối mô-đun xây dựng (nhóm 94.06).",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "phanBiet": [
+    {
+      "hoi": "Hàng là xe moóc đường sắt được thiết kế để vận chuyển trên toa xe đường sắt đặc biệt có ray dẫn hướng?",
+      "neuCo": "8716",
+      "neuKhong": "8609",
+      "nguon": "nhom8609.nhom",
+      "trich": "(b) Các xe moóc đường sắt (chủ yếu sử dụng như xe moóc trên đường bộ, nhưng được thiết kế để chúng có thể được vận chuyển trên toa xe đường sắt đặc biệt đã lắp ray dẫn hướng) (nhóm 87.16).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hoi": "Hàng là các khối mô-đun xây dựng thuộc nhóm 94.06?",
+      "neuCo": "9406",
+      "neuKhong": "8609",
+      "nguon": "nhom8609.nhom",
+      "trich": "(c) Các khối mô-đun xây dựng (nhóm 94.06).",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "tieuChi6": [],
+  "dong8": [
+    {
+      "hs": "86090010",
+      "dieuKien": "chất liệu (theo vị trí): kim loại",
+      "loaiKhac": false,
+      "nguon": "tax.86090010",
+      "trich": "86090010 - Bằng kim loại cơ bản",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "kim loại"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L29-20261111#soat-L29",
+          "ngay": "2026-11-11",
+          "bam": "4d5e1e4d6556ea59ce055f1f1bce4825fa1cf3853b742e63b0d72e1daf045112"
+        }
+      }
+    },
+    {
+      "hs": "86090090",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.86090090",
+      "trich": "86090090 - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "8609",
+        "truAnhEm": [
+          "86090010"
+        ],
+        "truDayDu": [
+          "86090010"
+        ],
+        "toTienCoTen": "8609",
+        "dinhNghiaDuoc": true
+      }
+    }
+  ],
+  "cay": {
+    "nguonLoai": "MAY_SUY",
+    "sinhTu": "lib/hs-tree.js",
+    "nut": [
+      {
+        "id": "8609",
+        "cap": 4,
+        "cha": "86",
+        "tenVi": "Công-ten-nơ (kể cả công-ten-nơ dùng vận chuyển chất lỏng) được thiết kế và trang bị đặc biệt để vận chuyển theo một hoặc nhiều phương thức.",
+        "tenEn": "Containers; (including containers for transport of fluids) specially designed and equipped for carriage by one or more modes of transport",
+        "suyRa": false
+      },
+      {
+        "id": "86090010",
+        "cap": 8,
+        "cha": "8609",
+        "tenVi": "Bằng kim loại cơ bản",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "86090090",
+        "cap": 8,
+        "cha": "8609",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      }
+    ],
+    "tenDien": []
+  },
+  "dungTuNguon": [
+    "ch86.chuong",
+    "nhom8609.nhom",
+    "tax.86090010",
+    "tax.86090090"
+  ],
+  "phienBan": "HS2022",
+  "taoBoi": {
+    "provider": "google-studio:gemini-flash",
+    "model": null,
+    "luc": "2026-11-02T13:06:43.829Z",
+    "ms": 4
+  },
+  "kiemTra": {
+    "tong": 8,
+    "dat": 8,
+    "loai": 0,
+    "nguonBiCat": []
+  }
 }

@@ -65,6 +65,37 @@ const menhDe = (kq, loai) => kq.ve.flatMap((v) => v.menhDe).filter((m) => m.loai
   check('1r "Loại <thuộc tính>" ⇒ thuộc tính là giới hạn', menhDe(h, 'GIOI_HAN').includes('chưa ghi'), h.ve[0].menhDe);
 
   check('1s tách vế tất định', JSON.stringify(V.tachVe('Quạt và màn che kéo bằng tay')) === JSON.stringify(V.tachVe('Quạt và màn che kéo bằng tay')));
+
+  // OZV-307 — dấu hiệu TUY_CHON lấy mẫu từ lib/cum-tuy-chon.js (mức CỤM), hết bảng mẫu riêng ở tach-ve.js.
+  // Bản cũ chỉ nhận "có hoặc không" nên BỎ SÓT "đã|được hoặc không|chưa": vế tuỳ chọn ("grafted or not",
+  // "whether or not usable") bị đọc thành vế GIỚI HẠN ⇒ điều kiện HẸP hơn chữ, sai chiều nguy hiểm.
+  // 6 chuỗi biểu thật đổi kết quả, cả 6 theo chiều GIOI_HAN → PHU; bốn ca dưới là bốn dạng liên từ khác nhau.
+  const t1 = V.tachVe('- Cây hoa hồng, đã hoặc không ghép cành', '- Roses, grafted or not');
+  check('1t-1 "đã hoặc không ghép cành" (06024000) là vế TUỲ CHỌN, không phải giới hạn',
+    menhDe(t1, 'PHU').includes('đã hoặc không ghép cành') && !menhDe(t1, 'GIOI_HAN').includes('không ghép cành'),
+    { PHU: menhDe(t1, 'PHU'), GIOI_HAN: menhDe(t1, 'GIOI_HAN') });
+  check('1t-2 danh từ đầu không bị nuốt mất chữ "đã" (06024000)', menhDe(t1, 'DAU')[0] === 'Cây hoa hồng', menhDe(t1, 'DAU'));
+
+  const t2 = V.tachVe('(f) Chất thải phóng xạ còn sử dụng được hoặc không.', '(f) Radioactive residues whether or not usable.');
+  check('1t-3 "được hoặc không" (~r3418, EN "whether or not usable") là vế TUỲ CHỌN',
+    menhDe(t2, 'PHU').some((x) => /^được hoặc không/u.test(x)) && !menhDe(t2, 'GIOI_HAN').some((x) => /^không/u.test(x)),
+    { PHU: menhDe(t2, 'PHU'), GIOI_HAN: menhDe(t2, 'GIOI_HAN') });
+
+  const t3 = V.tachVe('- Cây, cây bụi, đã hoặc không ghép cành, thuộc loại có quả hoặc quả hạch (nuts) ăn được',
+    '- Trees, shrubs and bushes, grafted or not, of kinds which bear edible fruit or nuts');
+  check('1t-4 vế tuỳ chọn giữa câu (06022000): "thuộc loại …" vẫn là giới hạn riêng',
+    menhDe(t3, 'PHU').includes('đã hoặc không ghép cành')
+    && menhDe(t3, 'GIOI_HAN').some((x) => /^thuộc loại có quả/u.test(x)),
+    { PHU: menhDe(t3, 'PHU'), GIOI_HAN: menhDe(t3, 'GIOI_HAN') });
+
+  // Rào chiều ngược: gom mẫu KHÔNG được làm vế tuỳ chọn cũ hoá thành giới hạn. "có hoặc không chứa ca cao"
+  // (nhóm 1905) từng là chỗ em làm hỏng khi thử che cụm ở giaDauHieu() — 122 chuỗi đổi, nên có ca này chặn lại.
+  const t4 = V.tachVe('Bánh mì, bánh bột nhào (pastry), bánh quy và các loại bánh khác, có hoặc không chứa ca cao');
+  check('1t-5 (rào ngược) "có hoặc không chứa ca cao" (1905) vẫn là TUỲ CHỌN, không thành vế GIỚI HẠN "chứa ca cao"',
+    menhDe(t4, 'PHU').includes('có hoặc không chứa ca cao') && !menhDe(t4, 'GIOI_HAN').some((x) => /ca cao/u.test(x)),
+    { PHU: menhDe(t4, 'PHU'), GIOI_HAN: menhDe(t4, 'GIOI_HAN') });
+  check('1t-6 (rào ngược) "chưa ghi" vẫn là thuộc tính giới hạn (THUOC_TINH giữ chuỗi trần)',
+    menhDe(V.tachVe('- - - Loại chưa ghi'), 'GIOI_HAN').includes('chưa ghi'));
 }
 
 // ── 2. Chữ biểu của mục: VI + EN cùng dòng (dòng 8 số, tiêu đề có tên, tầng không mã) ──────────────────────────────

@@ -1,167 +1,283 @@
 {
- "nhom": "8904",
- "phamVi": {
-  "text": "Tàu kéo và tàu đẩy.",
-  "nguon": "nhom8904.nhom",
-  "trich": "Nhóm này bao gồm:\n\n(A) Tàu kéo, là những tàu thiết kế chủ yếu để kéo các tàu khác. … (B) Tàu đẩy, là những tàu được thiết kế đặc biệt để đẩy các sà lan...",
-  "nguonLoai": "AI_DA_KIEM"
- },
- "dieuKienVao": [
-  {
-   "fact": "la_tau_keo_hoac_tau_day",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "nhom8904.nhom",
-   "trich": "Nhóm này bao gồm:\n\n(A) Tàu kéo, là những tàu thiết kế chủ yếu để kéo các tàu khác. … (B) Tàu đẩy, là những tàu được thiết kế đặc biệt để đẩy các sà lan...",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "loaiTru": [
-  {
-   "dieuKien": "Tàu thuyền cứu hoả",
-   "sangNhom": "8905",
-   "nguon": "nhom8904.nhom",
-   "trich": "Tuy nhiên tàu thuyền cứu hoả thì bị loại trừ (nhóm 89.05).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "phanBiet": [
-  {
-   "hoi": "Hàng là tàu thuyền cứu hỏa?",
-   "neuCo": "8905",
-   "neuKhong": "8904",
-   "nguon": "nhom8904.nhom",
-   "trich": "Tuy nhiên tàu thuyền cứu hoả thì bị loại trừ (nhóm 89.05).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "tieuChi6": [],
- "dong8": [
-  {
-   "hs": "89040010",
-   "dieuKien": "Tổng dung tích (gross tonnage) không quá 26 ",
-   "loaiKhac": false,
-   "nguon": "tax.89040010",
-   "trich": "89040010 - Tổng dung tích (gross tonnage) không quá 26 ",
-   "nguonLoai": "AI_DA_KIEM"
+  "nhom": "8904",
+  "phamVi": {
+    "text": "Tàu kéo và tàu đẩy.",
+    "nguon": "nhom8904.nhom",
+    "trich": "Nhóm này bao gồm:\n\n(A) Tàu kéo, là những tàu thiết kế chủ yếu để kéo các tàu khác. … (B) Tàu đẩy, là những tàu được thiết kế đặc biệt để đẩy các sà lan...",
+    "nguonLoai": "AI_DA_KIEM"
   },
-  {
-   "hs": "89040032",
-   "dieuKien": "Công suất không quá 1.200 hp",
-   "loaiKhac": false,
-   "nguon": "tax.89040032",
-   "trich": "89040032 - - Công suất không quá 1.200 hp",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "89040033",
-   "dieuKien": "Công suất trên 1.200 hp nhưng không quá 3.200 hp",
-   "loaiKhac": false,
-   "nguon": "tax.89040033",
-   "trich": "89040033 - - Công suất trên 1.200 hp nhưng không quá 3.200 hp",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "89040034",
-   "dieuKien": "Công suất trên 3.200 hp nhưng không quá 4.000 hp",
-   "loaiKhac": false,
-   "nguon": "tax.89040034",
-   "trich": "89040034 - - Công suất trên 3.200 hp nhưng không quá 4.000 hp",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "89040035",
-   "dieuKien": "Công suất trên 4.000 hp",
-   "loaiKhac": false,
-   "nguon": "tax.89040035",
-   "trich": "89040035 - - Công suất trên 4.000 hp",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "cay": {
-  "nguonLoai": "MAY_SUY",
-  "sinhTu": "lib/hs-tree.js",
-  "nut": [
-   {
-    "id": "8904",
-    "cap": 4,
-    "cha": "89",
-    "tenVi": "Tàu kéo và tàu đẩy.",
-    "tenEn": "Tugs and pusher craft",
-    "suyRa": false
-   },
-   {
-    "id": "89040010",
-    "cap": 8,
-    "cha": "8904",
-    "tenVi": "Tổng dung tích (gross tonnage) không quá 26",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "8904003",
-    "cap": "TIEU_DE_QG",
-    "cha": "8904",
-    "tenVi": "Tổng dung tích (gross tonnage) trên 26",
-    "tenEn": "Of a gross tonnage exceeding 26",
-    "suyRa": true
-   },
-   {
-    "id": "89040032",
-    "cap": 8,
-    "cha": "8904003",
-    "tenVi": "Công suất không quá 1.200 hp",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "89040033",
-    "cap": 8,
-    "cha": "8904003",
-    "tenVi": "Công suất trên 1.200 hp nhưng không quá 3.200 hp",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "89040034",
-    "cap": 8,
-    "cha": "8904003",
-    "tenVi": "Công suất trên 3.200 hp nhưng không quá 4.000 hp",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "89040035",
-    "cap": 8,
-    "cha": "8904003",
-    "tenVi": "Công suất trên 4.000 hp",
-    "tenEn": null,
-    "suyRa": false
-   }
+  "dieuKienVao": [
+    {
+      "fact": "la_tau_keo_hoac_tau_day",
+      "op": "=",
+      "value": true,
+      "donVi": null,
+      "ngoaiTru": [],
+      "nguon": "nhom8904.nhom",
+      "trich": "Nhóm này bao gồm:\n\n(A) Tàu kéo, là những tàu thiết kế chủ yếu để kéo các tàu khác. … (B) Tàu đẩy, là những tàu được thiết kế đặc biệt để đẩy các sà lan...",
+      "nguonLoai": "AI_DA_KIEM"
+    }
   ],
-  "tenDien": []
- },
- "dungTuNguon": [
-  "nhom8904.nhom",
-  "tax.89040010",
-  "tax.89040032",
-  "tax.89040033",
-  "tax.89040034",
-  "tax.89040035"
- ],
- "phienBan": "HS2022",
- "taoBoi": {
-  "provider": "google-studio:gemini-flash",
-  "model": null,
-  "luc": "2026-11-02T13:25:42.690Z",
-  "ms": 5
- },
- "kiemTra": {
-  "tong": 9,
-  "dat": 9,
-  "loai": 0,
-  "nguonBiCat": []
- }
+  "loaiTru": [
+    {
+      "dieuKien": "Tàu thuyền cứu hoả",
+      "sangNhom": "8905",
+      "nguon": "nhom8904.nhom",
+      "trich": "Tuy nhiên tàu thuyền cứu hoả thì bị loại trừ (nhóm 89.05).",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "phanBiet": [
+    {
+      "hoi": "Hàng là tàu thuyền cứu hỏa?",
+      "neuCo": "8905",
+      "neuKhong": "8904",
+      "nguon": "nhom8904.nhom",
+      "trich": "Tuy nhiên tàu thuyền cứu hoả thì bị loại trừ (nhóm 89.05).",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "tieuChi6": [],
+  "dong8": [
+    {
+      "hs": "89040010",
+      "dieuKien": "tổng dung tích tàu thuyền (gross tonnage - GT) <= 26 GT",
+      "loaiKhac": false,
+      "nguon": "tax.89040010",
+      "trich": "89040010 - Tổng dung tích (gross tonnage) không quá 26 ",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": "<=",
+          "value": 26,
+          "donVi": "GT"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L31-20261111#soat-L31",
+          "ngay": "2026-11-11",
+          "bam": "e830cb2d63d0b5731bf53caeb76032160612778df18677133f508339b1270bda"
+        }
+      }
+    },
+    {
+      "hs": "89040032",
+      "dieuKien": "công suất <= 1200 hp",
+      "loaiKhac": false,
+      "nguon": "tax.89040032",
+      "trich": "89040032 - - Công suất không quá 1.200 hp",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 1200,
+          "donVi": "hp"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L31-20261111#soat-L31",
+          "ngay": "2026-11-11",
+          "bam": "e830cb2d63d0b5731bf53caeb76032160612778df18677133f508339b1270bda"
+        }
+      }
+    },
+    {
+      "hs": "89040033",
+      "dieuKien": "công suất > 1200 hp; công suất <= 3200 hp",
+      "loaiKhac": false,
+      "nguon": "tax.89040033",
+      "trich": "89040033 - - Công suất trên 1.200 hp nhưng không quá 3.200 hp",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 1200,
+          "donVi": "hp"
+        },
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 3200,
+          "donVi": "hp"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L31-20261111#soat-L31",
+          "ngay": "2026-11-11",
+          "bam": "e830cb2d63d0b5731bf53caeb76032160612778df18677133f508339b1270bda"
+        }
+      }
+    },
+    {
+      "hs": "89040034",
+      "dieuKien": "công suất > 3200 hp; công suất <= 4000 hp",
+      "loaiKhac": false,
+      "nguon": "tax.89040034",
+      "trich": "89040034 - - Công suất trên 3.200 hp nhưng không quá 4.000 hp",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 3200,
+          "donVi": "hp"
+        },
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 4000,
+          "donVi": "hp"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L31-20261111#soat-L31",
+          "ngay": "2026-11-11",
+          "bam": "e830cb2d63d0b5731bf53caeb76032160612778df18677133f508339b1270bda"
+        }
+      }
+    },
+    {
+      "hs": "89040035",
+      "dieuKien": "công suất > 4000 hp",
+      "loaiKhac": false,
+      "nguon": "tax.89040035",
+      "trich": "89040035 - - Công suất trên 4.000 hp",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 4000,
+          "donVi": "hp"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L31-20261111#soat-L31",
+          "ngay": "2026-11-11",
+          "bam": "e830cb2d63d0b5731bf53caeb76032160612778df18677133f508339b1270bda"
+        }
+      }
+    }
+  ],
+  "cay": {
+    "nguonLoai": "MAY_SUY",
+    "sinhTu": "lib/hs-tree.js",
+    "nut": [
+      {
+        "id": "8904",
+        "cap": 4,
+        "cha": "89",
+        "tenVi": "Tàu kéo và tàu đẩy.",
+        "tenEn": "Tugs and pusher craft",
+        "suyRa": false
+      },
+      {
+        "id": "89040010",
+        "cap": 8,
+        "cha": "8904",
+        "tenVi": "Tổng dung tích (gross tonnage) không quá 26",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "8904003",
+        "cap": "TIEU_DE_QG",
+        "cha": "8904",
+        "tenVi": "Tổng dung tích (gross tonnage) trên 26",
+        "tenEn": "Of a gross tonnage exceeding 26",
+        "suyRa": true
+      },
+      {
+        "id": "89040032",
+        "cap": 8,
+        "cha": "8904003",
+        "tenVi": "Công suất không quá 1.200 hp",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "89040033",
+        "cap": 8,
+        "cha": "8904003",
+        "tenVi": "Công suất trên 1.200 hp nhưng không quá 3.200 hp",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "89040034",
+        "cap": 8,
+        "cha": "8904003",
+        "tenVi": "Công suất trên 3.200 hp nhưng không quá 4.000 hp",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "89040035",
+        "cap": 8,
+        "cha": "8904003",
+        "tenVi": "Công suất trên 4.000 hp",
+        "tenEn": null,
+        "suyRa": false
+      }
+    ],
+    "tenDien": []
+  },
+  "dungTuNguon": [
+    "nhom8904.nhom",
+    "tax.89040010",
+    "tax.89040032",
+    "tax.89040033",
+    "tax.89040034",
+    "tax.89040035"
+  ],
+  "phienBan": "HS2022",
+  "taoBoi": {
+    "provider": "google-studio:gemini-flash",
+    "model": null,
+    "luc": "2026-11-02T13:25:42.690Z",
+    "ms": 5
+  },
+  "kiemTra": {
+    "tong": 9,
+    "dat": 9,
+    "loai": 0,
+    "nguonBiCat": []
+  },
+  "dieuKienNut": [
+    {
+      "id": "8904003",
+      "nguon": "tieuDe.8904003",
+      "trich": "8904003 Tổng dung tích (gross tonnage) trên 26",
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": ">",
+          "value": 26,
+          "donVi": "GT"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L31-20261111#soat-L31",
+          "ngay": "2026-11-11",
+          "bam": "e830cb2d63d0b5731bf53caeb76032160612778df18677133f508339b1270bda"
+        }
+      }
+    }
+  ]
 }

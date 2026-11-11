@@ -4,7 +4,7 @@
   "nhom": "4014",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1705#soan-401490",
@@ -82,6 +82,13 @@
       "ma": "40149040",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.40149040 \"Nút đậy dùng cho dược phẩm\" ⇒ tenLoai \"Nút đậy\" + dungCho \"dược phẩm\"; tax.40149050 \"Bao ngón tay\" ⇒ tenLoai \"Bao ngón tay\". Dòng .90 \"Loại khác\" trần ⇒ không điều kiện."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L13-20261111#soat-L13",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 40149010 THU HẸP (phạm vi vế mở): \"Núm vú của bình cho trẻ em ăn và các loại tương tự\" (EN \"Teats for feeding bottles and similar articles\") ghi TUONG_TU [\"Núm vú\"] VÀ dungCho \"bình cho trẻ em ăn\" áp cho CẢ hàng tương tự ⇒ ty ngậm/núm vú giả (soother — hàng tương tự, không dùng cho bình) nếu trả lời đúng 'không dùng cho bình' thì TRÁI, rơi 40149090. Giới hạn \"của bình cho trẻ em ăn\" chỉ của hàng nêu tên ⇒ HOAC [[TEN_LOAI Núm vú, dungCho bình…],[TUONG_TU \"Núm vú của bình cho trẻ em ăn\"]] (SOAT §1 TUONG_TU)."
     }
   ]
 }

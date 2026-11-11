@@ -4,7 +4,7 @@
   "nhom": "4304",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1024#soan-430400",
@@ -72,6 +72,13 @@
       "ma": "43040020",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.43040020 \"Sản phẩm dùng cho mục đích công nghiệp\" ⇒ tenLoai \"Sản phẩm\" + phamViSuDung CONG_NGHIEP (vế giới hạn \"dùng cho mục đích công nghiệp\"). .10 \"Da lông nhân tạo\" ⇒ tenLoai \"Da lông nhân tạo\". .91 \"Túi thể thao\" ⇒ tenLoai \"Túi thể thao\". Tiêu đề 4304009 là \"Loại khác\" TRẦN ⇒ không ghi điều kiện; .99 \"Loại khác\" trần ⇒ không ghi điều kiện."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L13-20261111#soat-L13",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 43040020 THU HẸP: \"Sản phẩm dùng cho mục đích công nghiệp\" (EN \"Articles for industrial uses\") ghi TEN_LOAI \"Sản phẩm\" + phamViSuDung CONG_NGHIEP ⇒ sản phẩm da lông nhân tạo khai bằng tên riêng TRAI, rơi tầng Loại khác 4304009 → .91/.99. Bỏ TEN_LOAI \"Sản phẩm\", giữ phamViSuDung (cùng lỗi 430390)."
     }
   ]
 }

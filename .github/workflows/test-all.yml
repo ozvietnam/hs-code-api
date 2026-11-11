@@ -1,9 +1,21 @@
 name: Full test suite
 
 on:
+  # KHÔNG thêm nhánh thợ ('claude/**', 'ozv-*') vào đây: nhánh thợ đều có PR nên
+  # `pull_request` đã phủ, bắt thêm `push` là sinh 2 lượt y hệt nhau cho cùng một
+  # SHA — đo lúc 00:30 VN 12/11/2026: 44/154 lượt trong hàng là rác thuần kiểu này
+  # (OZV-355). Giữ `main` vì cần dấu xanh trên main cho số đo "main xanh".
   push:
-    branches: [main, 'claude/**']
+    branches: [main]
   pull_request:
+
+# Push mới huỷ lượt của SHA cũ trên cùng nhánh/PR (trước đây nhánh claude/duyet-L31
+# có 3 SHA cùng nằm trong hàng, 2/3 là rác). Mẫu dùng lại từ ozplugin/.github/
+# workflows/ci.yml + erp-xnk. Chừa main: tự huỷ lượt của commit đã gộp là mất dấu
+# xanh ⇒ hỏng số đo "main xanh". Cổng giữ: scripts/test-ci-concurrency.mjs
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 jobs:
   test:

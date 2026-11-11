@@ -4,7 +4,7 @@
   "nhom": "4012",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1705#soan-401220",
@@ -212,6 +212,13 @@
       "ma": "40122091",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.40122091 \"Lốp trơn (SEN)\" ⇒ tenLoai \"Lốp trơn\"; cụm \"(SEN)\" là ngoặc chú thích nguồn kỹ thuật, không phải điều kiện."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L13-20261111#soat-L13",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 40122010 THU HẸP: \"Loại sử dụng cho ô tô con (motor car) (kể cả loại ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô đua)\" (EN \"motor cars (including station wagons, racing cars)\") ghi dungCho \"ô tô con (motor car)\" — bỏ vế \"kể cả … station wagons và ô tô đua\" và nhét chữ Anh \"(motor car)\" vào giá trị ⇒ 'Lốp cũ dùng cho ô tô đua' TRAI .10, rơi tầng 4012207 → 40122079 (MFN 20% thay vì 25%); 'Lốp cũ dùng cho ô tô con' chỉ ra CHUA_BIET vì thiếu âm tiết \"motor car\". Phải là mảng [\"ô tô con\",\"ô tô chở người có khoang chở hành lý chung\",\"ô tô đua\"]. (B) tầng 4012202 cùng lỗi nhét \"(buses)\"/\"(lorries)\" vào giá trị."
     }
   ]
 }

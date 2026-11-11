@@ -4,7 +4,7 @@
   "nhom": "7408",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T1528#soan-740819",
@@ -42,6 +42,13 @@
       "ma": "74081910",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.74081910 \"Được phủ, mạ hoặc tráng vàng hoặc bạc (SEN)\" — lopMaPhu@2 chưa có giá trị vàng/bạc và daTrangPhuEpLop là khoá phủ vải dệt (cách đọc không khớp vế); vế GIỚI HẠN được phủ bằng mảng nguyên văn [\"vàng\",\"bạc\"] (mỗi giá trị là chuỗi con của vế, mảng = hoặc); phần \"phủ, mạ hoặc tráng\" là cách thức, không tách được thành giá trị contiguous — so chữ tự do."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L23-20261111#soat-L23",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 74081910 SUY RỘNG/SAI KHOÁ: chữ biểu 'Được phủ, mạ hoặc tráng vàng hoặc bạc' / EN 'Plated or coated with gold or silver' là điều kiện LỚP MẠ, nhưng bản nháp ghi tenLoai TEN_LOAI [vàng, bạc] — tên hàng của dây đồng mạ bạc là 'dây đồng', không phải 'bạc'; còn 'vàng' trùng chữ màu (dây đồng màu vàng) ⇒ dây đồng mạ bạc rơi xuống 74081990, dây đồng không mạ mô tả 'màu vàng' có thể vào .10. Phải là lopMaPhu (thiếu giá trị MA_VANG/MA_BAC ⇒ THIEU_KHOA_TU_VUNG, DỪNG). (B) bỏ mất ngưỡng số SEN: so-tay 7408 hiện có sen.74081910 tieuChi kich_thuoc_mat_cat_toi_da <= 6 mm (dây đồng tinh luyện, mặt cắt ≤ 6 mm) — bản nháp không giữ."
     }
   ]
 }

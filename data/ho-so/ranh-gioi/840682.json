@@ -4,7 +4,7 @@
   "nhom": "8406",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T0941#soan-840682",
@@ -40,6 +40,13 @@
       "ma": "84068210",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.84068210 \"Công suất đầu ra không quá 5 MW\" ⇒ congSuat <= 5 MW (\"không quá\" = <=)."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L24-20261111#soat-L24",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 840682:84068210 SUY RỘNG/sai đơn vị: chữ biểu 'Công suất đầu ra không quá 5 MW' / 'Of an output not exceeding 5 MW' (megawatt) nhưng điều kiện ghi congSuat <= 5 donVi 'mW' — hệ đơn vị congSuat của tu-vung@2 coi mW = 0,001 W (miliwatt), không có MW. Hệ quả: mọi tuabin hơi ≤ 5 MW (MFN 0) bị đọc thành > 5 mW ⇒ rơi 84068290; dòng .10 gần như rỗng. Đáng lẽ DỪNG / THIEU_KHOA_TU_VUNG (thiếu đơn vị MW trong hệ congSuat)."
     }
   ]
 }

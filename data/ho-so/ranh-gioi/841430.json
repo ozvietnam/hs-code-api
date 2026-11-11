@@ -4,7 +4,7 @@
   "nhom": "8414",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-841430",
@@ -55,6 +55,13 @@
       "ma": "84143040",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.84143040: \"Có công suất làm lạnh trên 21,10 kW, hoặc có dung tích làm việc trên một chu kỳ từ 220 cc trở lên\" ⇒ HOAC [congSuat > 21.1 kW, theTich >= 220 cc]"
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L24-20261111#soat-L24",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 841430:84143040 SAI KHOÁ (đáng lẽ DỪNG/THIEU_KHOA_TU_VUNG): chữ biểu 'Công suất làm mát …' / 'Of a cooling capacity …' (năng suất lạnh) được ghi bằng khoá congSuat = 'power output' (cachDoc power/output/wattage/rated power; hệ đơn vị W/mW/kW/HP, không có BTU/h). Máy điều hoà ghi cả công suất điện tiêu thụ lẫn năng suất lạnh (thường bằng BTU/h); bộ đọc lấy công suất điện ⇒ chọn sai dải. — 'With a refrigeration capacity exceeding 21.10 kW' (năng suất lạnh của máy nén) ghi congSuat > 21,1 kW; máy nén ghi công suất mô-tơ (kW/HP) ⇒ máy nén 15 kW mô-tơ, 50 kW lạnh bị đọc thành .90. Cùng MFN 3 nhưng sai mã 8 số."
     }
   ]
 }

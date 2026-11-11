@@ -419,19 +419,35 @@
     },
     {
       "hs": "39206110",
-      "dieuKien": "Dạng tấm và phiến (SEN) của polycarbonat: đáp ứng Chú giải 10 Chương 39, mặt cắt ngang hình chữ nhật (kể cả hình vuông), độ dày trên 0,25 mm — phân nhóm 3920.61 (WCO: polycarbonates)",
+      "dieuKien": "tên loại hàng: tấm hoặc phiến; độ dày > 0.25 mm",
       "loaiKhac": false,
       "nguon": "sen.39206110",
-      "trich": "Tấm và phiến thuộc phân nhóm này đáp ứng đủ các yêu cầu của Chú giải 10 Chương 39, có mặt cắt ngang là hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25mm",
-      "nguonLoai": "AI_DA_KIEM",
+      "trich": "POLYCARBONAT DẠNG TẤM VÀ PHIẾN\nTấm và phiến thuộc phân nhóm này đáp ứng đủ các yêu cầu của Chú giải 10 Chương 39, có mặt cắt ngang là hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25mm.",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "be_day",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "tấm",
+            "phiến"
+          ]
+        },
+        {
+          "fact": "doDay",
           "op": ">",
           "value": 0.25,
           "donVi": "mm"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L12-20261111#soat-L12",
+          "ngay": "2026-11-11",
+          "bam": "ec862a46c227a951c3ed36af2711e2d93082644ebd8837a25c50a8ac97ebdbf2"
+        }
+      }
     },
     {
       "hs": "39206190",
@@ -559,19 +575,53 @@
     },
     {
       "hs": "39207110",
-      "dieuKien": "Màng xenlophan — phân nhóm 3920.71 (WCO: regenerated cellulose)",
+      "dieuKien": "tên loại hàng: Màng xenlophan",
       "loaiKhac": false,
       "nguon": "tax.39207110",
       "trich": "39207110 - - - Màng xenlophan",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Màng xenlophan"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L12-20261111#soat-L12",
+          "ngay": "2026-11-11",
+          "bam": "41bf508f54ced7295523356e4deaaad63392b0cc124d5657ef39e44c4ff6d47c"
+        }
+      }
     },
     {
       "hs": "39207191",
-      "dieuKien": "Dạng phiến (sheets) đã in — phân nhóm 3920.71 (WCO: regenerated cellulose)",
+      "dieuKien": "tên loại hàng: phiến; đã in (nội dung, họa tiết, vạch chia)",
       "loaiKhac": false,
       "nguon": "tax.39207191",
       "trich": "39207191 - - - - Dạng phiến (sheets) đã in",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "phiến"
+        },
+        {
+          "fact": "daIn",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L12-20261111#soat-L12",
+          "ngay": "2026-11-11",
+          "bam": "41bf508f54ced7295523356e4deaaad63392b0cc124d5657ef39e44c4ff6d47c"
+        }
+      }
     },
     {
       "hs": "39207199",
