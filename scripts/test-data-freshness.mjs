@@ -32,7 +32,7 @@ globalThis.Date = class extends OrigDate { constructor(...a) { super(...(a.lengt
 const exp = vr.vatReductionOf(row);
 globalThis.Date = OrigDate;
 Date.now = realNow;
-check('VAT sau hạn: eligible=null + cảnh báo', exp.eligible === null && exp.severity === 'warning' && /hết hạn/.test(exp.noteVi), exp);
+check('VAT sau hạn: rate về 10 (không giảm), eligible=false + cảnh báo — ERP đọc rate không khai thiếu', exp.rate === '10' && exp.alternateRate === '8' && exp.reduced === false && exp.eligible === false && exp.severity === 'warning' && /hết hạn/.test(exp.noteVi), exp);
 
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
