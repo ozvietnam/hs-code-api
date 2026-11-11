@@ -123,3 +123,8 @@ ngưỡng số đang có trong sổ tay (840999 50–155 mm; 841330/841370 200 m
    lý do này — khuôn đã DUYET ở 840991).
 6. **Cổng 3 không đối chiếu đơn vị theo hoa/thường** — 840682 trích "5 MW" nhưng `donVi: "mW"` vẫn qua cổng (cảnh báo chỉ là
    "bien-khong-doc-duoc"). Đề nghị cổng 3 so khớp đơn vị phân biệt hoa/thường và DỪNG khi đơn vị trong trích không có trong hệ.
+
+
+## Soát lại của tech lead — mất ngưỡng số SEN
+
+Trả về 840999: bản duyệt bỏ mất điều kiện số (SEN) mà sổ tay đang chạy dùng để chốt dòng. Dòng sổ tay của các PN6 này giữ như `main`. Cổng `cong3-mat-nguong-so` (#1214) sẽ chặn lỗi này từ nay.
