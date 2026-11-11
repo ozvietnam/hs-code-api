@@ -17,6 +17,15 @@
       "warnBeforeDays": 60,
       "howToCheckVi": "Kiểm tra văn bản gia hạn/thay thế chính sách giảm GTGT. Hết hạn mà không gia hạn → các dòng '8/10' phải về 10%."
     },
+    "mfnTemporaryFuel": {
+      "labelVi": "Thuế NK ưu đãi 0% tạm thời — xăng dầu, nguyên liệu SX xăng dầu (data/thue-tam-thoi.json)",
+      "legalBasis": "43/2026/NQ-CP",
+      "validUntil": "2026-12-31",
+      "lastCheckedAt": "2026-11-11",
+      "checkEveryDays": 30,
+      "warnBeforeDays": 30,
+      "howToCheckVi": "Kiểm tra Nghị quyết/Nghị định kéo dài hoặc chấm dứt mức 0% (NĐ 72/2026, NQ 25/2026 Điều 2) sau 31/12/2026 trên vanban.chinhphu.vn. Có văn bản mới: thêm một khoảng vào data/thue-tam-thoi.json (căn cứ + xacMinh) và cập nhật validUntil ở đây. Hết hạn mà không gia hạn: API tự thôi trả mfnTemporary."
+    },
     "precedents": {
       "labelVi": "Tiền lệ phân loại TB-TCHQ (data/precedents.json)",
       "lastCheckedAt": "2026-09-24",

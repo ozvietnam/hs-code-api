@@ -1,0 +1,64 @@
+{
+  "_comment": "Thuế suất thuế NK ưu đãi (MFN) TẠM THỜI, có thời hạn — KHÔNG ghi đè cột mfn của tax.json (mfn giữ mức nền NĐ 26/2023/NĐ-CP, mức sẽ quay lại khi hết hạn). lib/thue-tam-thoi.js đọc tệp này; /api/tax và /api/search trả mfnTemporary CHỈ khi hôm nay (giờ Việt Nam) nằm trong một khoảng hiệu lực. Mỗi khoảng ghi căn cứ riêng; khoảng trống giữa hai khoảng thì KHÔNG có mức tạm thời. xacMinh: NGUON_GOC = đã đọc bản gốc trên cổng Chính phủ (datafiles.chinhphu.vn); THU_CAP = chỉ có nguồn thứ cấp. Gia hạn mới → thêm một khoảng + cập nhật validUntil của mục mfnTemporaryFuel trong data-freshness.json. Soát 11/11/2026 — docs/soat-du-lieu-2026-11.md.",
+  "version": "2026-11-11",
+  "nhom": {
+    "xangDau2026": {
+      "labelVi": "Thuế NK ưu đãi 0% đối với một số mặt hàng xăng, dầu, nguyên liệu sản xuất xăng, dầu (2026)",
+      "rate": "0",
+      "dongHang": {
+        "ND72_PHU_LUC": {
+          "moTaVi": "Các dòng in đậm (mức 0%) trong Phụ lục NĐ 72/2026/NĐ-CP; trùng đúng các dòng biểu thuế Tổng cục 2026.04.05 ghi chú 'theo NĐ72' ở cột MFN.",
+          "canCu": { "soHieu": "72/2026/NĐ-CP", "dieuKhoan": "Điều 1 và Phụ lục", "url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/3/72-ndcp.signed.pdf" },
+          "ma": ["27073000", "27090020", "27101221", "27101222", "27101224", "27101225", "27101280", "27101971", "27101972", "27101979", "27101981", "27101982", "27101983", "29024300", "29029090"]
+        },
+        "NQ25_DIEU_2": {
+          "moTaVi": "Nguyên liệu sản xuất xăng, dầu: 2710.19.20 (Dầu thô đã tách phần nhẹ), 2710.19.89 (Dầu trung khác và các chế phẩm), 2711.19.00 (Loại khác) là 0% — áp từ 01/5/2026, KHÔNG thuộc khoảng NĐ 72 (09/3–30/4/2026).",
+          "canCu": { "soHieu": "25/2026/NQ-CP", "dieuKhoan": "Điều 2", "url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/4/25-nqcp.signed.pdf" },
+          "ma": ["27101920", "27101989", "27111900"]
+        }
+      },
+      "khoang": [
+        {
+          "id": "ND72",
+          "from": "2026-03-09",
+          "to": "2026-04-30",
+          "dongHang": ["ND72_PHU_LUC"],
+          "canCu": [
+            { "soHieu": "72/2026/NĐ-CP", "ngay": "2026-03-09", "dieuKhoan": "Điều 2 khoản 1: có hiệu lực kể từ ngày ký đến ngày 30 tháng 4 năm 2026", "url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/3/72-ndcp.signed.pdf" }
+          ],
+          "xacMinh": "NGUON_GOC"
+        },
+        {
+          "id": "NQ25",
+          "from": "2026-05-01",
+          "to": "2026-06-30",
+          "dongHang": ["ND72_PHU_LUC", "NQ25_DIEU_2"],
+          "canCu": [
+            { "soHieu": "25/2026/NQ-CP", "ngay": "2026-04-30", "dieuKhoan": "Điều 1 (kéo dài NĐ 72/2026 đến hết 30/6/2026), Điều 2, Điều 3 khoản 1 (hiệu lực từ 01/5/2026 đến hết 30/6/2026)", "url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/4/25-nqcp.signed.pdf" }
+          ],
+          "xacMinh": "NGUON_GOC"
+        },
+        {
+          "id": "NQ34",
+          "from": "2026-07-01",
+          "to": "2026-09-30",
+          "dongHang": ["ND72_PHU_LUC", "NQ25_DIEU_2"],
+          "canCu": [
+            { "soHieu": "34/2026/NQ-CP", "ngay": "2026-06-30", "dieuKhoan": "Điều 1 (kéo dài NQ 25/2026/NQ-CP và NĐ 72/2026/NĐ-CP đến hết 30/9/2026), Điều 3 khoản 1 (hiệu lực từ 01/7/2026 đến 30/9/2026)", "url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/7/34-nqcp.signed.pdf" }
+          ],
+          "xacMinh": "NGUON_GOC"
+        },
+        {
+          "id": "NQ43",
+          "from": "2026-10-01",
+          "to": "2026-12-31",
+          "dongHang": ["ND72_PHU_LUC", "NQ25_DIEU_2"],
+          "canCu": [
+            { "soHieu": "43/2026/NQ-CP", "ngay": "2026-09-30", "dieuKhoan": "Điều 1 (kéo dài NQ 25/2026/NQ-CP và NĐ 72/2026/NĐ-CP đến hết 31/12/2026), Điều 3 khoản 1 (hiệu lực từ 01/10/2026 đến hết 31/12/2026)", "url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/9/43_2026_nq-cp_30092026_1-signed.signed.pdf" }
+          ],
+          "xacMinh": "NGUON_GOC"
+        }
+      ]
+    }
+  }
+}
