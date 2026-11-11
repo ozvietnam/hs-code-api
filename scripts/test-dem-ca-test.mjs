@@ -96,5 +96,38 @@ function ca(ten, dieuKien) {
   ca('không đếm chữ fail giữa câu thành ca đỏ', so.caDo === 0 && so.caXanh === 1);
 }
 
+// 10) Định dạng `node:test` THẬT (soát khác model bắt được, 11/11). Dán nguyên văn từ `node <tệp>.mjs`:
+//     dấu ca là `✔`/`✖` (U+2714/U+2716, KHÁC `✓`/`✗`), và tổng kết để CHỮ TRƯỚC SỐ (`ℹ tests 2`).
+{
+  const log = [
+    '✔ xanh (1.238155ms)',
+    '✖ do (0.352967ms)',
+    'ℹ tests 2',
+    'ℹ suites 0',
+    'ℹ pass 1',
+    'ℹ fail 1',
+    'ℹ cancelled 0',
+    'ℹ skipped 0',
+    'ℹ todo 0',
+    'ℹ duration_ms 13.570823',
+    'EXIT=1',
+  ].join('\n');
+  const so = demCaTest(log);
+  ca('node:test: đếm dấu ✔ thành ca xanh', so.caXanh === 1);
+  ca('node:test: đếm dấu ✖ thành ca đỏ', so.caDo === 1);
+  ca('node:test: đọc `ℹ tests 2` thành 2 ca', so.tongKetSoCa === 2 && so.soDongTongKet === 1);
+  ca('node:test: đọc `ℹ fail 1`', so.soCaDoTongKet === 1);
+  ca('node:test: chấm ĐỎ', chamLog(so).xanh === false);
+}
+
+// 11) `node:test` toàn xanh: không được cộng đôi (`ℹ tests 5` + `ℹ pass 5` = 5, không phải 10).
+{
+  const log = ['✔ a', '✔ b', 'ℹ tests 5', 'ℹ pass 5', 'ℹ fail 0', 'ℹ duration_ms 15.2', 'EXIT=0'].join('\n');
+  const so = demCaTest(log);
+  ca('node:test xanh: tổng 5 ca, không cộng đôi', so.tongKetSoCa === 5 && so.soDongTongKet === 1);
+  ca('node:test xanh: `ℹ duration_ms` không bị tính thành ca', so.caXanh === 2 && so.caDo === 0);
+  ca('node:test xanh: chấm XANH', chamLog(so).xanh === true);
+}
+
 console.log(`\n${xanh} passed, ${do_} failed`);
 if (do_ > 0) process.exit(1);

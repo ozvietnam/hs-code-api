@@ -22,12 +22,23 @@
 
 import { readFileSync } from 'node:fs';
 
-/** Dấu một ca test lẻ: `PASS ...` đầu dòng (kiểu cũ của repo) hoặc `✓ ...` (kiểu node:test / bộ ca có nhóm). */
-const RE_CA_XANH = /^[ \t]*(?:PASS\b|✓)/;
-/** Dấu một ca ĐỎ. Giữ hẹp, chỉ khớp đầu dòng để không ăn chữ "fail" trong câu mô tả. */
-const RE_CA_DO = /^[ \t]*(?:FAIL\b|ĐỎ\b|✗|not ok\b)/;
-/** Dòng tổng kết của từng script: `49/49 passed, 0 failed` · `10 passed, 0 failed` · `ℹ pass 7`. */
-const RE_TONG_KET = /^[ \t]*(?:ℹ[ \t]*)?(?:(\d+)\/(\d+)[ \t]+(?:passed|pass)|(\d+)[ \t]+(?:passed|pass))\b(?:[^\n]*?(\d+)[ \t]+(?:failed|fail)\b)?/;
+/**
+ * Dấu một ca test lẻ.
+ *   `PASS ...` — kiểu cũ, phần lớn bộ ca của repo tự in.
+ *   `✓ ...`    — bộ ca tự in theo nhóm.
+ *   `✔ ...`    — **`node:test` in dấu U+2714, KHÁC U+2713 `✓`**. Sót dấu này là sót toàn bộ các bộ dùng
+ *                `node:test` (`test-web-facts`, `test-rieng-tu-nhanh-phu`, `test-tien-le-trung`…).
+ */
+const RE_CA_XANH = /^[ \t]*(?:PASS\b|✓|✔)/;
+/** Dấu một ca ĐỎ. Giữ hẹp, chỉ khớp đầu dòng để không ăn chữ "fail" trong câu mô tả. `✖` là U+2716 của `node:test`. */
+const RE_CA_DO = /^[ \t]*(?:FAIL\b|ĐỎ\b|✗|✖|not ok\b)/;
+/** Dòng tổng kết của từng script: `49/49 passed, 0 failed` · `10 passed, 0 failed` (số ĐỨNG TRƯỚC chữ). */
+const RE_TONG_KET = /^[ \t]*(?:(\d+)\/(\d+)[ \t]+(?:passed|pass)|(\d+)[ \t]+(?:passed|pass))\b(?:[^\n]*?(\d+)[ \t]+(?:failed|fail)\b)?/;
+/**
+ * Tổng kết của `node:test`: `ℹ tests 5` / `ℹ pass 5` / `ℹ fail 0` — chữ ĐỨNG TRƯỚC số, ngược với mẫu trên.
+ * Trước đây gộp chung một regex nên nhánh `ℹ` không bao giờ khớp (soát khác model bắt được, 11/11).
+ */
+const RE_TONG_KET_NODE = /^[ \t]*ℹ[ \t]+(tests|pass|fail)[ \t]+(\d+)[ \t]*$/;
 /** Lệnh trượt vì thiếu gói / thiếu tệp — bẫy số 1 ở trên. */
 const RE_TRUOT = /\b(?:Cannot find module|MODULE_NOT_FOUND|ERR_MODULE_NOT_FOUND|command not found)\b/;
 
@@ -79,6 +90,19 @@ export function demCaTest(log) {
     }
     if (RE_CA_XANH.test(d)) {
       caXanh += 1;
+      continue;
+    }
+
+    // Tổng kết kiểu `node:test`: đếm `ℹ tests N` làm tổng ca (một bộ = một dòng `tests`), `ℹ fail N` làm ca đỏ.
+    // KHÔNG đếm `ℹ pass N` vào tổng, nếu không thì một bộ bị cộng hai lần (tests + pass).
+    const mNode = d.match(RE_TONG_KET_NODE);
+    if (mNode) {
+      if (mNode[1] === 'tests') {
+        soDongTongKet += 1;
+        tongKetSoCa += Number(mNode[2]);
+      } else if (mNode[1] === 'fail') {
+        soCaDoTongKet += Number(mNode[2]);
+      }
       continue;
     }
 
