@@ -11,6 +11,9 @@
  *   3. Có bản ranh giới DUYET thì `apDung()` ghi được `dieuKienSo` vào khung, và sau đó máy chốt ĐÚNG mã
  *      (kỳ vọng vs máy, không chỉ "đã chốt được").
  *   4. Khung chỉ nhận chương 98, và không đè sổ tay đã có khi thiếu `--force`.
+ *   5. Tính lại bằng `--luc=<ISO của bản commit>` phải ra ĐÚNG BYTE bản trong `data/so-tay/` — phép soát "tính lại,
+ *      so byte" là cách duy nhất chứng minh dữ liệu trong PR không mồ côi (quy tắc 5). `taoBoi.luc` là trường duy
+ *      nhất không tất định, nên nếu không có cờ này thì phép soát luôn báo lệch GIẢ.
  */
 import './test-isolate-data.mjs';
 import fs from 'node:fs';
@@ -128,6 +131,31 @@ check('4b thiếu tham số thì hướng dẫn, không ghi bừa', maThoat2 ===
 const lan1 = chay('--nhom=9808');
 const lan2 = chay('--nhom=9808');
 check('4c lượt đầu ghi, lượt sau GIỮ khi thiếu --force', /9808: 2\/2 dòng/.test(lan1) && /9808: GIỮ/.test(lan2), `${lan1} || ${lan2}`);
+
+// ── 5. Tính lại với --luc phải ra ĐÚNG BYTE bản đã commit (dữ liệu KHÔNG mồ côi, quy tắc 5) ─────────────────────
+// Năm nhóm khung đã commit trong repo. Sinh lại vào thư mục ghi cách ly với đúng `taoBoi.luc` của bản commit rồi
+// so byte: lệch một byte nào cũng là bằng chứng tệp trong repo không còn do script này sinh ra.
+const DA_COMMIT = ['9811', '9812', '9817', '9821', '9846'];
+const lech = [];
+const thieu = [];
+for (const h4 of DA_COMMIT) {
+  const pCommit = path.join(ROOT, 'data', 'so-tay', `${h4}.json`);
+  if (!fs.existsSync(pCommit)) { thieu.push(h4); continue; }
+  const banCommit = fs.readFileSync(pCommit, 'utf8');
+  const luc = JSON.parse(banCommit).taoBoi.luc;
+  chay('--force', `--nhom=${h4}`, `--luc=${luc}`);
+  const banTinhLai = fs.readFileSync(path.join(WRITE, 'so-tay', `${h4}.json`), 'utf8');
+  if (banTinhLai !== banCommit) lech.push(h4);
+}
+check(`5a ${DA_COMMIT.length} nhóm đã commit: tính lại với --luc khớp ĐÚNG BYTE`, lech.length === 0 && thieu.length === 0, { lech, thieu });
+// Không có --luc thì `taoBoi.luc` phải là giờ chạy thật (cờ không được đóng băng dấu thời gian mặc định).
+chay('--force', '--nhom=9846');
+const lucThat = JSON.parse(fs.readFileSync(path.join(WRITE, 'so-tay', '9846.json'), 'utf8')).taoBoi.luc;
+check('5b không có --luc thì lấy giờ máy', Math.abs(Date.now() - Date.parse(lucThat)) < 120000, lucThat);
+// `--luc` rác thì phải thoát 2, không ghi tệp mang dấu thời gian vô nghĩa.
+let maThoat3 = 0; let loiOut3 = '';
+try { chay('--force', '--nhom=9846', '--luc=hom-qua'); } catch (e) { maThoat3 = e.status; loiOut3 = String(e.stderr || ''); }
+check('5c --luc rác thì từ chối chạy', maThoat3 === 2 && /--luc/.test(loiOut3), `${maThoat3} ${loiOut3.slice(0, 80)}`);
 
 console.log(`\nkhung sổ tay Chương 98: ${pass} PASS, ${fail} FAIL`);
 process.exit(fail ? 1 : 0);

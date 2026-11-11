@@ -23,6 +23,10 @@
  *   node scripts/so-tay-chuong-98.mjs --nhom=9811,9812      # vài nhóm
  *   node scripts/so-tay-chuong-98.mjs --co-ranh-gioi        # mọi nhóm 98xx đã có bản ranh giới trong data/ho-so/ranh-gioi/
  *   thêm: --dry (chỉ in, không ghi) · --force (ghi lại nhóm đã có sổ tay)
+ *         --luc=<ISO> (đặt `taoBoi.luc` thay vì lấy giờ máy) — để người soát TÍNH LẠI rồi so BYTE với bản đã commit:
+ *           `--luc` là trường duy nhất không tất định, nên không có cờ này thì phép soát "tính lại, so byte"
+ *           (cách duy nhất chứng minh mục trong PR không mồ côi — quy tắc 5) luôn báo lệch GIẢ ở mọi nhóm.
+ *           `node scripts/so-tay-chuong-98.mjs --nhom=9811 --force --luc="$(node -e "…json taoBoi.luc…")"` ⇒ khớp 0 byte lệch.
  *
  * Ghi qua `lib/data-paths.js` (HS_DATA_DIR cách ly khi test). Mã thoát: 0 xanh · 1 có nhóm bị loại mục / lệch cây · 2 dùng sai lệnh.
  */
@@ -41,6 +45,18 @@ const argv = Object.fromEntries(process.argv.slice(2).map((a) => {
 }));
 
 const nz = (v) => String(v == null ? '' : v).replace(/\D/g, '');
+
+/**
+ * `taoBoi.luc` — trường DUY NHẤT không tất định của khung. `--luc=<ISO>` cho người soát tính lại rồi so BYTE với bản
+ * đã commit (quy tắc 5: dữ liệu trong PR phải chứng minh được là không mồ côi). Không có cờ thì lấy giờ máy như cũ.
+ */
+function chotLuc() {
+  if (argv.luc === undefined) return new Date().toISOString();
+  const t = Date.parse(String(argv.luc));
+  if (!Number.isFinite(t)) { console.error('--luc phải là mốc thời gian ISO, ví dụ --luc=2026-11-11T19:57:00.229Z'); process.exit(2); }
+  return new Date(t).toISOString();
+}
+const LUC = chotLuc();
 
 /** Mọi nhóm 4 số của chương 98 có bản ranh giới 6→8 số đã soạn (bất kể trạng thái) — đó là các nhóm đáng nối trước. */
 function nhomCoRanhGioi() {
@@ -78,7 +94,7 @@ function khungNhom(h4) {
   const kc = S.kiemCay(soTay, h4);
   const out = {
     ...soTay,
-    taoBoi: { provider: 'scripts/so-tay-chuong-98.mjs', model: null, luc: new Date().toISOString(), ms: 0 },
+    taoBoi: { provider: 'scripts/so-tay-chuong-98.mjs', model: null, luc: LUC, ms: 0 },
     kiemTra: { tong, dat, loai: loai.length, nguonBiCat: [] },
   };
   return { h4, soTay: out, loai, tong, dat, cayLoi: kc.loi, thieuNguon, soLa: la.length };
