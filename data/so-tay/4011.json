@@ -143,44 +143,93 @@
     },
     {
       "hs": "40112011",
-      "dieuKien": "Lốp của phân nhóm 4011.20 (WCO: of a kind used on buses or lorries), thuộc tiêu đề quốc gia 4011201 (tên bị lược — đối chiếu biểu thuế): có chiều rộng không quá 230 mm VÀ lắp vành có đường kính không quá 16 inch. Khác 40112012 ở đường kính lắp vành (không quá 16 inch); khác 40112013 ở chiều rộng (không quá 230 mm).",
-      "tieuChi": null,
+      "dieuKien": "chiều rộng <= 230 mm; đường kính vành bánh xe (mâm xe lắp lốp) <= 16 inch",
       "nguon": "tax.40112011",
       "trich": "40112011 - - - Có chiều rộng không quá 230 mm và lắp vành có đường kính không quá 16 inch (SEN)",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
-    },
-    {
-      "hs": "40112012",
-      "dieuKien": "Lốp của phân nhóm 4011.20 (WCO: of a kind used on buses or lorries), thuộc tiêu đề quốc gia 4011201 (tên bị lược — đối chiếu biểu thuế): có chiều rộng không quá 230 mm VÀ lắp vành có đường kính trên 16 inch. Khác 40112011 ở đường kính lắp vành (trên 16 inch).",
-      "tieuChi": null,
-      "nguon": "tax.40112012",
-      "trich": "40112012 - - - Có chiều rộng không quá 230 mm và lắp vành có đường kính trên 16 inch (SEN)",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
-    },
-    {
-      "hs": "40112013",
-      "dieuKien": "Lốp của phân nhóm 4011.20 (WCO: of a kind used on buses or lorries), thuộc tiêu đề quốc gia 4011201 (tên bị lược — đối chiếu biểu thuế): có chiều rộng trên 230 mm nhưng không quá 385 mm. Khác 40112011/40112012 ở chiều rộng (trên 230 mm); trên 385 mm thì không thuộc dòng này.",
-      "tieuChi": null,
-      "nguon": "tax.40112013",
-      "trich": "40112013 - - - Có chiều rộng trên 230 mm nhưng không quá 385 mm (SEN)",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "loaiKhac": false,
       "dieuKienSo": [
         {
-          "fact": "chieu_rong",
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 230,
+          "donVi": "mm"
+        },
+        {
+          "fact": "duongKinhVanh",
+          "op": "<=",
+          "value": 16,
+          "donVi": "inch"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L13-20261111#soat-L13",
+          "ngay": "2026-11-11",
+          "bam": "db6d06842457576fe2282fa478782201533d2466cdd09ca2f04bb511394614f9"
+        }
+      }
+    },
+    {
+      "hs": "40112012",
+      "dieuKien": "chiều rộng <= 230 mm; đường kính vành bánh xe (mâm xe lắp lốp) > 16 inch",
+      "nguon": "tax.40112012",
+      "trich": "40112012 - - - Có chiều rộng không quá 230 mm và lắp vành có đường kính trên 16 inch (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 230,
+          "donVi": "mm"
+        },
+        {
+          "fact": "duongKinhVanh",
+          "op": ">",
+          "value": 16,
+          "donVi": "inch"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L13-20261111#soat-L13",
+          "ngay": "2026-11-11",
+          "bam": "db6d06842457576fe2282fa478782201533d2466cdd09ca2f04bb511394614f9"
+        }
+      }
+    },
+    {
+      "hs": "40112013",
+      "dieuKien": "chiều rộng > 230 mm; chiều rộng <= 385 mm",
+      "nguon": "tax.40112013",
+      "trich": "40112013 - - - Có chiều rộng trên 230 mm nhưng không quá 385 mm (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "chieuRong",
           "op": ">",
           "value": 230,
           "donVi": "mm"
         },
         {
-          "fact": "chieu_rong",
+          "fact": "chieuRong",
           "op": "<=",
           "value": 385,
           "donVi": "mm"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L13-20261111#soat-L13",
+          "ngay": "2026-11-11",
+          "bam": "db6d06842457576fe2282fa478782201533d2466cdd09ca2f04bb511394614f9"
+        }
+      }
     },
     {
       "hs": "40112019",
@@ -691,5 +740,29 @@
     "dat": 30,
     "loai": 0,
     "nguonBiCat": []
-  }
+  },
+  "dieuKienNut": [
+    {
+      "id": "4011201",
+      "nguon": "tieuDe.4011201",
+      "trich": "4011201 Chiều rộng không quá 450 mm",
+      "dieuKienSo": [
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 450,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L13-20261111#soat-L13",
+          "ngay": "2026-11-11",
+          "bam": "db6d06842457576fe2282fa478782201533d2466cdd09ca2f04bb511394614f9"
+        }
+      }
+    }
+  ]
 }

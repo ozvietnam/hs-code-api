@@ -4,7 +4,7 @@
   "nhom": "4005",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1707#soan-400599",
@@ -84,6 +84,13 @@
       "ma": "40059990",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.40059990 \"Loại khác\" trần => không ghi điều kiện (máy tự phủ định anh em đứng trước)."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L13-20261111#soat-L13",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 40059910 THU HẸP: \"Dạng latex (dạng mủ cao su)\" (EN \"Latex\") ghi tenLoai \"Dạng latex\", bỏ tên Việt trong ngoặc ⇒ 'Mủ cao su hỗn hợp tiền lưu hóa' TRAI, rơi 40059990; phải là mảng [\"latex\",\"mủ cao su\"]. (B) 40059920 THU HẸP: \"Cao su tự nhiên được pha trộn với các chất trừ carbon hoặc silica\" — vế \"được pha trộn với các chất\" và \"trừ carbon hoặc silica\" lặp chữ phân nhóm 4005.99 (đã là \"pha trộn … trừ muội carbon/silica\") nhưng bị ghi thành TEN_LOAI bắt buộc ⇒ 'Cao su tự nhiên hỗn hợp, dạng hạt, đã trộn lưu huỳnh và chất xúc tiến' TRAI, 'không chứa carbon' cũng TRAI (PHAI_KHONG carbon không đọc phủ định 'không chứa') ⇒ rơi 40059990. Chỉ cần tenLoai \"Cao su tự nhiên\" (vế lặp tổ tiên)."
     }
   ]
 }

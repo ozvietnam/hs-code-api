@@ -1,213 +1,230 @@
 {
- "nhom": "4101",
- "phamVi": {
-  "text": "Da sống của động vật họ trâu bò (kể cả trâu) hoặc động vật họ ngựa (tươi, hoặc muối, ngâm vôi, ngâm axit hoặc bảo quản cách khác, nhưng chưa thuộc, chưa làm thành da giấy hoặc xử lý thêm), đã hoặc chưa khử lông hoặc lạng xẻ.",
-  "nguon": "nhom4101.nhom",
-  "trich": "Nhóm này bao gồm da sống (đã hoặc chưa loại bỏ lông) của động vật họ trâu bò (kể cả trâu) (tức là, các loại động vật thuộc nhóm 01.02, xem Chú giải chi tiết của nhóm đó) hoặc của động vật họ ngựa (ngựa, la, lừa, ngựa vằn...).",
-  "nguonLoai": "AI_DA_KIEM"
- },
- "dieuKienVao": [],
- "loaiTru": [
-  {
-   "dieuKien": "Da chim hoặc các phần da chim còn lông vũ hoặc lông tơ",
-   "sangNhom": "0505",
-   "nguon": "ch41.chuong",
-   "trich": "(b) Da chim hoặc các phần da chim, còn lông vũ hoặc lông tơ, thuộc nhóm 05.05 hoặc nhóm 67.01; hoặc",
-   "nguonLoai": "AI_DA_KIEM"
+  "nhom": "4101",
+  "phamVi": {
+    "text": "Da sống của động vật họ trâu bò (kể cả trâu) hoặc động vật họ ngựa (tươi, hoặc muối, ngâm vôi, ngâm axit hoặc bảo quản cách khác, nhưng chưa thuộc, chưa làm thành da giấy hoặc xử lý thêm), đã hoặc chưa khử lông hoặc lạng xẻ.",
+    "nguon": "nhom4101.nhom",
+    "trich": "Nhóm này bao gồm da sống (đã hoặc chưa loại bỏ lông) của động vật họ trâu bò (kể cả trâu) (tức là, các loại động vật thuộc nhóm 01.02, xem Chú giải chi tiết của nhóm đó) hoặc của động vật họ ngựa (ngựa, la, lừa, ngựa vằn...).",
+    "nguonLoai": "AI_DA_KIEM"
   },
-  {
-   "dieuKien": "Da vụn và phế liệu tương tự từ da sống",
-   "sangNhom": "0511",
-   "nguon": "nhom4101.nhom",
-   "trich": "(b) Da vụn và phế liệu tương tự từ da sống (nhóm 05.11).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "phanBiet": [
-  {
-   "hoi": "Hàng hóa có phải là da chim còn lông vũ thuộc nhóm 05.05 hoặc 67.01 không?",
-   "neuCo": "0505",
-   "neuKhong": "4101",
-   "nguon": "ch41.chuong",
-   "trich": "(b) Da chim hoặc các phần da chim, còn lông vũ hoặc lông tơ, thuộc nhóm 05.05 hoặc nhóm 67.01; hoặc",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hoi": "Hàng hóa có phải là da vụn hoặc phế liệu da sống thuộc nhóm 05.11 không?",
-   "neuCo": "0511",
-   "neuKhong": "4101",
-   "nguon": "nhom4101.nhom",
-   "trich": "(b) Da vụn và phế liệu tương tự từ da sống (nhóm 05.11).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "tieuChi6": [
-  {
-   "hs6": "410120",
-   "fact": "khoi_luong_da_nguyen_con_kho_don_gian",
-   "op": "<=",
-   "value": 8,
-   "donVi": "kg",
-   "nguon": "wco.410120",
-   "trich": "of a weight per skin not exceeding 8kg when simply dried, 10kg when dry-salted or 16kg when fresh, wet-salted or otherwise preserved",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs6": "410120",
-   "fact": "khoi_luong_da_nguyen_con_muoi_kho",
-   "op": "<=",
-   "value": 10,
-   "donVi": "kg",
-   "nguon": "wco.410120",
-   "trich": "of a weight per skin not exceeding 8kg when simply dried, 10kg when dry-salted or 16kg when fresh, wet-salted or otherwise preserved",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs6": "410120",
-   "fact": "khoi_luong_da_nguyen_con_tuoi_muoi_uot",
-   "op": "<=",
-   "value": 16,
-   "donVi": "kg",
-   "nguon": "wco.410120",
-   "trich": "of a weight per skin not exceeding 8kg when simply dried, 10kg when dry-salted or 16kg when fresh, wet-salted or otherwise preserved",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs6": "410150",
-   "fact": "khoi_luong_da_nguyen_con",
-   "op": ">",
-   "value": 16,
-   "donVi": "kg",
-   "nguon": "wco.410150",
-   "trich": "of a weight per skin exceeding 16 kg",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "dong8": [
-  {
-   "hs": "41012000",
-   "dieuKien": "Da sống nguyên con, chưa xẻ, khối lượng da một con không quá 8 kg khi làm khô đơn giản, 10 kg khi muối khô, hoặc 16 kg ở dạng tươi, dạng muối ướt hoặc được bảo quản cách khác",
-   "loaiKhac": false,
-   "nguon": "tax.41012000",
-   "trich": "41012000 - Da sống nguyên con, chưa xẻ, khối lượng da một con không quá 8 kg khi làm khô đơn giản, 10 kg khi muối khô, hoặc 16 kg ở dạng tươi, dạng muối ướt hoặc được bảo quản cách khác",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "41015000",
-   "dieuKien": "Da sống nguyên con, khối lượng trên 16 kg",
-   "loaiKhac": false,
-   "nguon": "tax.41015000",
-   "trich": "41015000 - Da sống nguyên con, khối lượng trên 16 kg",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "41019010",
-   "dieuKien": "Đã được chuẩn bị để thuộc",
-   "loaiKhac": false,
-   "nguon": "tax.41019010",
-   "trich": "41019010 - - Đã được chuẩn bị để thuộc",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "41019090",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.41019090",
-   "trich": "41019090 - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "410190",
-    "truAnhEm": [
-     "41019010"
-    ],
-    "truDayDu": [
-     "41019010"
-    ],
-    "toTienCoTen": "410190",
-    "dinhNghiaDuoc": true
-   }
-  }
- ],
- "cay": {
-  "nguonLoai": "MAY_SUY",
-  "sinhTu": "lib/hs-tree.js",
-  "nut": [
-   {
-    "id": "4101",
-    "cap": 4,
-    "cha": "41",
-    "tenVi": "Da sống của động vật họ trâu bò (kể cả trâu) hoặc động vật họ ngựa (tươi, hoặc muối, khô, ngâm vôi, axit hoá hoặc được bảo quản cách khác, nhưng chưa thuộc, chưa làm thành da giấy hoặc gia công thêm), đã hoặc chưa khử lông hoặc lạng xẻ.",
-    "tenEn": "Raw hides and skins of bovine (including buffalo) or equine animals (fresh, salted, dried, limed, pickled, otherwise preserved but not tanned, parchment dressed or further prepared), whether or not dehaired or split",
-    "suyRa": false
-   },
-   {
-    "id": "41012000",
-    "cap": 8,
-    "cha": "4101",
-    "tenVi": "Da sống nguyên con, chưa xẻ, khối lượng da một con không quá 8 kg khi làm khô đơn giản, 10 kg khi muối khô, hoặc 16 kg ở dạng tươi, dạng muối ướt hoặc được bảo quản cách khác",
-    "tenEn": "Raw hides and skins; whole, unsplit, of bovine or equine animals, of a weight per skin not exceeding 8kg when simply dried, 10kg when dry-salted or 16kg when fresh, wet-salted or otherwise preserved",
-    "suyRa": false,
-    "laPhanNhom": "410120"
-   },
-   {
-    "id": "41015000",
-    "cap": 8,
-    "cha": "4101",
-    "tenVi": "Da sống nguyên con, khối lượng trên 16 kg",
-    "tenEn": "Hides and skins; raw, whole, of bovine or equine animals, of a weight per skin exceeding 16 kg",
-    "suyRa": false,
-    "laPhanNhom": "410150"
-   },
-   {
-    "id": "410190",
-    "cap": 6,
-    "cha": "4101",
-    "tenVi": "Loại khác, kể cả da mông, khuỷu và bụng",
-    "tenEn": "Hides and skins; other than whole, but including butts, bends and bellies, of bovine (including. buffalo) and equine animals, fresh, salted or preserved, but not tanned, parchment dressed or further prepared, whether or not dehaired or split",
-    "suyRa": false
-   },
-   {
-    "id": "41019010",
-    "cap": 8,
-    "cha": "410190",
-    "tenVi": "Đã được chuẩn bị để thuộc",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "41019090",
-    "cap": 8,
-    "cha": "410190",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   }
+  "dieuKienVao": [],
+  "loaiTru": [
+    {
+      "dieuKien": "Da chim hoặc các phần da chim còn lông vũ hoặc lông tơ",
+      "sangNhom": "0505",
+      "nguon": "ch41.chuong",
+      "trich": "(b) Da chim hoặc các phần da chim, còn lông vũ hoặc lông tơ, thuộc nhóm 05.05 hoặc nhóm 67.01; hoặc",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "dieuKien": "Da vụn và phế liệu tương tự từ da sống",
+      "sangNhom": "0511",
+      "nguon": "nhom4101.nhom",
+      "trich": "(b) Da vụn và phế liệu tương tự từ da sống (nhóm 05.11).",
+      "nguonLoai": "AI_DA_KIEM"
+    }
   ],
-  "tenDien": []
- },
- "dungTuNguon": [
-  "ch41.chuong",
-  "nhom4101.nhom",
-  "tax.41012000",
-  "tax.41015000",
-  "tax.41019010",
-  "tax.41019090",
-  "wco.410120",
-  "wco.410150"
- ],
- "phienBan": "HS2022",
- "taoBoi": {
-  "provider": "google-studio:gemini-flash",
-  "model": null,
-  "luc": "2026-11-02T11:48:34.348Z",
-  "ms": 3
- },
- "kiemTra": {
-  "tong": 14,
-  "dat": 13,
-  "loai": 1,
-  "nguonBiCat": []
- }
+  "phanBiet": [
+    {
+      "hoi": "Hàng hóa có phải là da chim còn lông vũ thuộc nhóm 05.05 hoặc 67.01 không?",
+      "neuCo": "0505",
+      "neuKhong": "4101",
+      "nguon": "ch41.chuong",
+      "trich": "(b) Da chim hoặc các phần da chim, còn lông vũ hoặc lông tơ, thuộc nhóm 05.05 hoặc nhóm 67.01; hoặc",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hoi": "Hàng hóa có phải là da vụn hoặc phế liệu da sống thuộc nhóm 05.11 không?",
+      "neuCo": "0511",
+      "neuKhong": "4101",
+      "nguon": "nhom4101.nhom",
+      "trich": "(b) Da vụn và phế liệu tương tự từ da sống (nhóm 05.11).",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "tieuChi6": [
+    {
+      "hs6": "410120",
+      "fact": "khoi_luong_da_nguyen_con_kho_don_gian",
+      "op": "<=",
+      "value": 8,
+      "donVi": "kg",
+      "nguon": "wco.410120",
+      "trich": "of a weight per skin not exceeding 8kg when simply dried, 10kg when dry-salted or 16kg when fresh, wet-salted or otherwise preserved",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "410120",
+      "fact": "khoi_luong_da_nguyen_con_muoi_kho",
+      "op": "<=",
+      "value": 10,
+      "donVi": "kg",
+      "nguon": "wco.410120",
+      "trich": "of a weight per skin not exceeding 8kg when simply dried, 10kg when dry-salted or 16kg when fresh, wet-salted or otherwise preserved",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "410120",
+      "fact": "khoi_luong_da_nguyen_con_tuoi_muoi_uot",
+      "op": "<=",
+      "value": 16,
+      "donVi": "kg",
+      "nguon": "wco.410120",
+      "trich": "of a weight per skin not exceeding 8kg when simply dried, 10kg when dry-salted or 16kg when fresh, wet-salted or otherwise preserved",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "410150",
+      "fact": "khoi_luong_da_nguyen_con",
+      "op": ">",
+      "value": 16,
+      "donVi": "kg",
+      "nguon": "wco.410150",
+      "trich": "of a weight per skin exceeding 16 kg",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "41012000",
+      "dieuKien": "Da sống nguyên con, chưa xẻ, khối lượng da một con không quá 8 kg khi làm khô đơn giản, 10 kg khi muối khô, hoặc 16 kg ở dạng tươi, dạng muối ướt hoặc được bảo quản cách khác",
+      "loaiKhac": false,
+      "nguon": "tax.41012000",
+      "trich": "41012000 - Da sống nguyên con, chưa xẻ, khối lượng da một con không quá 8 kg khi làm khô đơn giản, 10 kg khi muối khô, hoặc 16 kg ở dạng tươi, dạng muối ướt hoặc được bảo quản cách khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "41015000",
+      "dieuKien": "Da sống nguyên con, khối lượng trên 16 kg",
+      "loaiKhac": false,
+      "nguon": "tax.41015000",
+      "trich": "41015000 - Da sống nguyên con, khối lượng trên 16 kg",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "41019010",
+      "dieuKien": "giai đoạn / kiểu thuộc da: đã được chuẩn bị để thuộc",
+      "loaiKhac": false,
+      "nguon": "tax.41019010",
+      "trich": "41019010 - - Đã được chuẩn bị để thuộc",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "giaiDoanThuocDa",
+          "op": "TRONG",
+          "value": [
+            "CHUAN_BI_DE_THUOC"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L13-20261111#soat-L13",
+          "ngay": "2026-11-11",
+          "bam": "114408d9e0ff8ac9193c6292dbc142acf78289f49edad9543b026bf50a69f1b7"
+        }
+      }
+    },
+    {
+      "hs": "41019090",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.41019090",
+      "trich": "41019090 - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "410190",
+        "truAnhEm": [
+          "41019010"
+        ],
+        "truDayDu": [
+          "41019010"
+        ],
+        "toTienCoTen": "410190",
+        "dinhNghiaDuoc": true
+      }
+    }
+  ],
+  "cay": {
+    "nguonLoai": "MAY_SUY",
+    "sinhTu": "lib/hs-tree.js",
+    "nut": [
+      {
+        "id": "4101",
+        "cap": 4,
+        "cha": "41",
+        "tenVi": "Da sống của động vật họ trâu bò (kể cả trâu) hoặc động vật họ ngựa (tươi, hoặc muối, khô, ngâm vôi, axit hoá hoặc được bảo quản cách khác, nhưng chưa thuộc, chưa làm thành da giấy hoặc gia công thêm), đã hoặc chưa khử lông hoặc lạng xẻ.",
+        "tenEn": "Raw hides and skins of bovine (including buffalo) or equine animals (fresh, salted, dried, limed, pickled, otherwise preserved but not tanned, parchment dressed or further prepared), whether or not dehaired or split",
+        "suyRa": false
+      },
+      {
+        "id": "41012000",
+        "cap": 8,
+        "cha": "4101",
+        "tenVi": "Da sống nguyên con, chưa xẻ, khối lượng da một con không quá 8 kg khi làm khô đơn giản, 10 kg khi muối khô, hoặc 16 kg ở dạng tươi, dạng muối ướt hoặc được bảo quản cách khác",
+        "tenEn": "Raw hides and skins; whole, unsplit, of bovine or equine animals, of a weight per skin not exceeding 8kg when simply dried, 10kg when dry-salted or 16kg when fresh, wet-salted or otherwise preserved",
+        "suyRa": false,
+        "laPhanNhom": "410120"
+      },
+      {
+        "id": "41015000",
+        "cap": 8,
+        "cha": "4101",
+        "tenVi": "Da sống nguyên con, khối lượng trên 16 kg",
+        "tenEn": "Hides and skins; raw, whole, of bovine or equine animals, of a weight per skin exceeding 16 kg",
+        "suyRa": false,
+        "laPhanNhom": "410150"
+      },
+      {
+        "id": "410190",
+        "cap": 6,
+        "cha": "4101",
+        "tenVi": "Loại khác, kể cả da mông, khuỷu và bụng",
+        "tenEn": "Hides and skins; other than whole, but including butts, bends and bellies, of bovine (including. buffalo) and equine animals, fresh, salted or preserved, but not tanned, parchment dressed or further prepared, whether or not dehaired or split",
+        "suyRa": false
+      },
+      {
+        "id": "41019010",
+        "cap": 8,
+        "cha": "410190",
+        "tenVi": "Đã được chuẩn bị để thuộc",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "41019090",
+        "cap": 8,
+        "cha": "410190",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      }
+    ],
+    "tenDien": []
+  },
+  "dungTuNguon": [
+    "ch41.chuong",
+    "nhom4101.nhom",
+    "tax.41012000",
+    "tax.41015000",
+    "tax.41019010",
+    "tax.41019090",
+    "wco.410120",
+    "wco.410150"
+  ],
+  "phienBan": "HS2022",
+  "taoBoi": {
+    "provider": "google-studio:gemini-flash",
+    "model": null,
+    "luc": "2026-11-02T11:48:34.348Z",
+    "ms": 3
+  },
+  "kiemTra": {
+    "tong": 14,
+    "dat": 13,
+    "loai": 1,
+    "nguonBiCat": []
+  }
 }
