@@ -1,200 +1,256 @@
 {
- "nhom": "7303",
- "phamVi": {
-  "text": "Các loại ống, ống dẫn và thanh hình rỗng, bằng gang đúc.",
-  "nguon": "nhom7303.nhom",
-  "trich": "Nhóm này áp dụng cho các ống, ống dẫn và thanh hình rỗng được sản xuất bằng gang đúc như được định rõ trong Chú giải 1 của Chương này.",
-  "nguonLoai": "AI_DA_KIEM"
- },
- "dieuKienVao": [
-  {
-   "fact": "la_ong_ong_dan_hoac_thanh_hinh_rong_bang_gang_duc",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "nhom7303.nhom",
-   "trich": "Nhóm này áp dụng cho các ống, ống dẫn và thanh hình rỗng được sản xuất bằng gang đúc như được định rõ trong Chú giải 1 của Chương này.",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "loaiTru": [
-  {
-   "dieuKien": "Các phụ kiện ghép nối cho ống và ống dẫn",
-   "sangNhom": "7307",
-   "nguon": "nhom7303.nhom",
-   "trich": "Các phụ kiện ghép nối cho ống và ống dẫn (nhóm 73.07).",
-   "nguonLoai": "AI_DA_KIEM"
+  "nhom": "7303",
+  "phamVi": {
+    "text": "Các loại ống, ống dẫn và thanh hình rỗng, bằng gang đúc.",
+    "nguon": "nhom7303.nhom",
+    "trich": "Nhóm này áp dụng cho các ống, ống dẫn và thanh hình rỗng được sản xuất bằng gang đúc như được định rõ trong Chú giải 1 của Chương này.",
+    "nguonLoai": "AI_DA_KIEM"
   },
-  {
-   "dieuKien": "Các ống, ống dẫn và các thanh dạng rỗng được làm thành các bộ phận có thể nhận dạng của các bộ phận của lò sưởi trung tâm",
-   "sangNhom": "7322",
-   "nguon": "nhom7303.nhom",
-   "trich": "ví dụ như các bộ phận của lò sưởi trung tâm (nhóm 73.22) và các chi tiết máy (Phần XVI).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "phanBiet": [
-  {
-   "hoi": "Hàng là phụ kiện ghép nối cho ống và ống dẫn?",
-   "neuCo": "7307",
-   "neuKhong": "7303",
-   "nguon": "nhom7303.nhom",
-   "trich": "Các phụ kiện ghép nối cho ống và ống dẫn (nhóm 73.07).",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hoi": "Hàng là ống, ống dẫn hay thanh rỗng được làm thành bộ phận của lò sưởi trung tâm?",
-   "neuCo": "7322",
-   "neuKhong": "7303",
-   "nguon": "nhom7303.nhom",
-   "trich": "ví dụ như các bộ phận của lò sưởi trung tâm (nhóm 73.22) và các chi tiết máy (Phần XVI).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "tieuChi6": [],
- "dong8": [
-  {
-   "hs": "73030011",
-   "dieuKien": "Ống và ống dẫn không có đầu nối (SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.73030011",
-   "trich": "73030011 - - Ống và ống dẫn không có đầu nối (SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "73030019",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.73030019",
-   "trich": "73030019 - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "7303001",
-    "truAnhEm": [
-     "73030011"
-    ],
-    "truDayDu": [
-     "73030011"
-    ],
-    "toTienCoTen": "7303",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "73030091",
-   "dieuKien": "Với đường kính ngoài không quá 100 mm",
-   "loaiKhac": false,
-   "nguon": "tax.73030091",
-   "trich": "73030091 - - Với đường kính ngoài không quá 100 mm",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "73030099",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.73030099",
-   "trich": "73030099 - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "7303009",
-    "truAnhEm": [
-     "73030091"
-    ],
-    "truDayDu": [
-     "73030091",
-     "7303001"
-    ],
-    "toTienCoTen": "7303",
-    "dinhNghiaDuoc": true
-   }
-  }
- ],
- "cay": {
-  "nguonLoai": "MAY_SUY",
-  "sinhTu": "lib/hs-tree.js",
-  "nut": [
-   {
-    "id": "7303",
-    "cap": 4,
-    "cha": "73",
-    "tenVi": "Các loại ống, ốn dẫn và thanh hình rỗng, bằng ngang đúc.",
-    "tenEn": "Tubes, pipes and hollow profiles, of cast iron",
-    "suyRa": false
-   },
-   {
-    "id": "7303001",
-    "cap": "TIEU_DE_QG",
-    "cha": "7303",
-    "tenVi": "Các loại ống và ống dẫn",
-    "tenEn": "Tubes and pipes",
-    "suyRa": true
-   },
-   {
-    "id": "73030011",
-    "cap": 8,
-    "cha": "7303001",
-    "tenVi": "Ống và ống dẫn không có đầu nối (SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "73030019",
-    "cap": 8,
-    "cha": "7303001",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "7303009",
-    "cap": "TIEU_DE_QG",
-    "cha": "7303",
-    "tenVi": "Loại khác",
-    "tenEn": "Other",
-    "suyRa": true
-   },
-   {
-    "id": "73030091",
-    "cap": 8,
-    "cha": "7303009",
-    "tenVi": "Với đường kính ngoài không quá 100 mm",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "73030099",
-    "cap": 8,
-    "cha": "7303009",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   }
+  "dieuKienVao": [
+    {
+      "fact": "la_ong_ong_dan_hoac_thanh_hinh_rong_bang_gang_duc",
+      "op": "=",
+      "value": true,
+      "donVi": null,
+      "ngoaiTru": [],
+      "nguon": "nhom7303.nhom",
+      "trich": "Nhóm này áp dụng cho các ống, ống dẫn và thanh hình rỗng được sản xuất bằng gang đúc như được định rõ trong Chú giải 1 của Chương này.",
+      "nguonLoai": "AI_DA_KIEM"
+    }
   ],
-  "tenDien": []
- },
- "dungTuNguon": [
-  "nhom7303.nhom",
-  "tax.73030011",
-  "tax.73030019",
-  "tax.73030091",
-  "tax.73030099"
- ],
- "phienBan": "HS2022",
- "taoBoi": {
-  "provider": "google-studio:gemini-flash",
-  "model": null,
-  "luc": "2026-11-02T08:38:50.045Z",
-  "ms": 4
- },
- "kiemTra": {
-  "tong": 10,
-  "dat": 10,
-  "loai": 0,
-  "nguonBiCat": []
- }
+  "loaiTru": [
+    {
+      "dieuKien": "Các phụ kiện ghép nối cho ống và ống dẫn",
+      "sangNhom": "7307",
+      "nguon": "nhom7303.nhom",
+      "trich": "Các phụ kiện ghép nối cho ống và ống dẫn (nhóm 73.07).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "dieuKien": "Các ống, ống dẫn và các thanh dạng rỗng được làm thành các bộ phận có thể nhận dạng của các bộ phận của lò sưởi trung tâm",
+      "sangNhom": "7322",
+      "nguon": "nhom7303.nhom",
+      "trich": "ví dụ như các bộ phận của lò sưởi trung tâm (nhóm 73.22) và các chi tiết máy (Phần XVI).",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "phanBiet": [
+    {
+      "hoi": "Hàng là phụ kiện ghép nối cho ống và ống dẫn?",
+      "neuCo": "7307",
+      "neuKhong": "7303",
+      "nguon": "nhom7303.nhom",
+      "trich": "Các phụ kiện ghép nối cho ống và ống dẫn (nhóm 73.07).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hoi": "Hàng là ống, ống dẫn hay thanh rỗng được làm thành bộ phận của lò sưởi trung tâm?",
+      "neuCo": "7322",
+      "neuKhong": "7303",
+      "nguon": "nhom7303.nhom",
+      "trich": "ví dụ như các bộ phận của lò sưởi trung tâm (nhóm 73.22) và các chi tiết máy (Phần XVI).",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "tieuChi6": [],
+  "dong8": [
+    {
+      "hs": "73030011",
+      "dieuKien": "không: đã gắn đầu nối",
+      "loaiKhac": false,
+      "nguon": "tax.73030011",
+      "trich": "73030011 - - Ống và ống dẫn không có đầu nối (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "daGanDauNoi",
+          "op": "KHONG"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L22-20261111#soat-L22",
+          "ngay": "2026-11-11",
+          "bam": "4bcb8cf0fa8bd426a884f560d69b96ef2fe3f17a4908f6b37e67042753a9a808"
+        }
+      }
+    },
+    {
+      "hs": "73030019",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.73030019",
+      "trich": "73030019 - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "7303001",
+        "truAnhEm": [
+          "73030011"
+        ],
+        "truDayDu": [
+          "73030011"
+        ],
+        "toTienCoTen": "7303",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "73030091",
+      "dieuKien": "đường kính (ngoài) <= 100 mm",
+      "loaiKhac": false,
+      "nguon": "tax.73030091",
+      "trich": "73030091 - - Với đường kính ngoài không quá 100 mm",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 100,
+          "donVi": "mm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L22-20261111#soat-L22",
+          "ngay": "2026-11-11",
+          "bam": "4bcb8cf0fa8bd426a884f560d69b96ef2fe3f17a4908f6b37e67042753a9a808"
+        }
+      }
+    },
+    {
+      "hs": "73030099",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.73030099",
+      "trich": "73030099 - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "7303009",
+        "truAnhEm": [
+          "73030091"
+        ],
+        "truDayDu": [
+          "73030091",
+          "7303001"
+        ],
+        "toTienCoTen": "7303",
+        "dinhNghiaDuoc": true
+      }
+    }
+  ],
+  "cay": {
+    "nguonLoai": "MAY_SUY",
+    "sinhTu": "lib/hs-tree.js",
+    "nut": [
+      {
+        "id": "7303",
+        "cap": 4,
+        "cha": "73",
+        "tenVi": "Các loại ống, ốn dẫn và thanh hình rỗng, bằng ngang đúc.",
+        "tenEn": "Tubes, pipes and hollow profiles, of cast iron",
+        "suyRa": false
+      },
+      {
+        "id": "7303001",
+        "cap": "TIEU_DE_QG",
+        "cha": "7303",
+        "tenVi": "Các loại ống và ống dẫn",
+        "tenEn": "Tubes and pipes",
+        "suyRa": true
+      },
+      {
+        "id": "73030011",
+        "cap": 8,
+        "cha": "7303001",
+        "tenVi": "Ống và ống dẫn không có đầu nối (SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "73030019",
+        "cap": 8,
+        "cha": "7303001",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "7303009",
+        "cap": "TIEU_DE_QG",
+        "cha": "7303",
+        "tenVi": "Loại khác",
+        "tenEn": "Other",
+        "suyRa": true
+      },
+      {
+        "id": "73030091",
+        "cap": 8,
+        "cha": "7303009",
+        "tenVi": "Với đường kính ngoài không quá 100 mm",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "73030099",
+        "cap": 8,
+        "cha": "7303009",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      }
+    ],
+    "tenDien": []
+  },
+  "dungTuNguon": [
+    "nhom7303.nhom",
+    "tax.73030011",
+    "tax.73030019",
+    "tax.73030091",
+    "tax.73030099"
+  ],
+  "phienBan": "HS2022",
+  "taoBoi": {
+    "provider": "google-studio:gemini-flash",
+    "model": null,
+    "luc": "2026-11-02T08:38:50.045Z",
+    "ms": 4
+  },
+  "kiemTra": {
+    "tong": 10,
+    "dat": 10,
+    "loai": 0,
+    "nguonBiCat": []
+  },
+  "dieuKienNut": [
+    {
+      "id": "7303001",
+      "nguon": "tieuDe.7303001",
+      "trich": "7303001 Các loại ống và ống dẫn",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "ống",
+            "ống dẫn"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L22-20261111#soat-L22",
+          "ngay": "2026-11-11",
+          "bam": "4bcb8cf0fa8bd426a884f560d69b96ef2fe3f17a4908f6b37e67042753a9a808"
+        }
+      }
+    }
+  ]
 }

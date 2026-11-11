@@ -4,7 +4,7 @@
   "nhom": "7318",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-731816",
@@ -52,6 +52,13 @@
       "loai": "BO_VE",
       "ve": "có đường kính ngoài của thân không quá 16 mm",
       "lyDo": "Đã lượng hóa qua duongKinh <= 16 mm"
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L22-20261111#soat-L22",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 731816.json:73181610 SAI ĐỐI TƯỢNG ĐO: chữ biểu 'Cho bu lông có đường kính ngoài của thân không quá 16 mm' / EN 'For bolts having a shank of an external diameter not exceeding 16 mm' — ngưỡng 16 mm là đường kính THÂN BU LÔNG mà đai ốc lắp vào, không phải kích thước của đai ốc. Bản nháp BO_VE 'Cho bu lông' và đặt duongKinh<=16 (đường kính ngoài của chính hàng). Đai ốc M14 (cỡ ren 14 mm, đường kính ngoài/cạnh ~22 mm) khai đường kính ngoài 22 mm sẽ rơi .90 thay vì .10; ngược lại vòng đai ốc nhỏ của bu lông lớn không có thật nên ít sai chiều kia. MFN .10=.90=12% nhưng sai mã. Sửa: khoá cỡ ren / đường kính bu lông dùng kèm (chưa có ⇒ DỪNG THIEU_KHOA_TU_VUNG), không BO_VE 'Cho bu lông'."
     }
   ]
 }

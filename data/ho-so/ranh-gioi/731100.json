@@ -4,7 +4,7 @@
   "nhom": "7311",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T1008#soan-731100",
@@ -342,6 +342,13 @@
       "ma": "73110094",
       "loai": "QUYET_DINH",
       "ghiChu": "Đối chiếu tay biên: tax.73110094 \"từ 30 lít trở lên nhưng dưới 110 lít\" = dungTich >= 30 lít VÀ < 110 lít — đúng mốc, đúng dấu"
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L22-20261111#soat-L22",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 731100.json:tiêu đề 7311002 SUY RỘNG: chữ biểu 'Dạng hình trụ bằng thép đúc liền' / EN 'Seamless steel cylinders' — bản nháp chỉ có tenLoai 'hình trụ' + chatLieu LA 'sắt thép' (lặp chữ nhóm 7311), mất 'đúc liền'/'seamless' (máy báo 'bằng thép đúc liền' phủ vì khớp chữ 'thép'). Bình hàn (vd bình LPG 12 kg hàn thân, dung tích ~26 l) sẽ vào 73110023 (MFN 20%) thay vì 73110092 (MFN 17%); bình hàn 30–110 l sẽ vào .24/.27 thay vì .94. Các biên dung tích (>=30,<110,>=110,<=7,3,>7,3) đã đối chiếu tay: đúng. Sửa: cần khoá 'không nối/đúc liền' (seamless) — chưa có trong tu-vung@2 ⇒ DỪNG THIEU_KHOA_TU_VUNG."
     }
   ]
 }
