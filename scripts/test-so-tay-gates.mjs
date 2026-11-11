@@ -289,6 +289,33 @@ check('trangThaiDong8.veMoHinh: 73181510 chấm trọn nhãn "Đường kính ng
   check('Vòng 2 (840991): "Loại khác - … Dùng cho xe của nhóm 87.11" không được tự chốt 84099137 (từ "piston" đã nằm ở tên phân nhóm 6 số)',
     r840991.ketQua !== 'CHOT' && r840991.hs !== '84099137' && ['THIEU_SO_LIEU', 'KHONG_THE_CHOT'].includes(r840991.ketQua),
     JSON.stringify(r840991));
+
+  // Vá đọc phủ định trước cụm tên dòng / tên khác:
+  const rKoPhaiVanCan = chotDong8({ hs: '84813090', productText: 'Van kiểm tra lửa DN140 (van 1 chiều), ko phải van cản, bằng gang' });
+  check('Phủ định tên dòng: "Van kiểm tra lửa DN140 (van 1 chiều), ko phải van cản, bằng gang" → không chốt 84813010',
+    rKoPhaiVanCan.hs !== '84813010',
+    JSON.stringify(rKoPhaiVanCan));
+
+  const rVanCan = chotDong8({ hs: '84813090', productText: 'van cản bằng gang đúc DN100' });
+  check('Khẳng định tên dòng: "van cản bằng gang đúc DN100" → vẫn chốt 84813010',
+    rVanCan.ketQua === 'CHOT' && rVanCan.hs === '84813010',
+    JSON.stringify(rVanCan));
+
+  const rKhongPhaiDuiXoay = chotDong8({ hs: '85395290', productText: 'bóng LED không phải đui xoáy, đui gài B22' });
+  check('Phủ định tên khác: "bóng LED không phải đui xoáy, đui gài B22" → không chốt 85395210',
+    rKhongPhaiDuiXoay.hs !== '85395210',
+    JSON.stringify(rKhongPhaiDuiXoay));
+
+  const TU_PHU_DINH_12 = ['không phải', 'ko phải', 'k phải', 'không có', 'không dùng cho', 'không thuộc', 'trừ', 'ngoại trừ', 'chưa', 'not', 'non-', 'without'];
+  const loiPhuDinh12 = [];
+  for (const neg of TU_PHU_DINH_12) {
+    const txt = neg === 'non-' ? 'LED lamp non-screw base, B22' : `bóng LED ${neg} đui xoáy, đui gài B22`;
+    const r = chotDong8({ hs: '85395290', productText: txt });
+    if (r.hs === '85395210') loiPhuDinh12.push(`${neg}:${r.ketQua}:${r.hs}`);
+  }
+  check('Phủ định 12 từ tối thiểu ("không phải", "ko phải", "k phải", "không có", "không dùng cho", "không thuộc", "trừ", "ngoại trừ", "chưa", "not", "non-", "without") đều chặn chốt 85395210',
+    loiPhuDinh12.length === 0,
+    JSON.stringify(loiPhuDinh12));
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);
