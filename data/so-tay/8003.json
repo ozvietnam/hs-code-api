@@ -1,137 +1,160 @@
 {
- "nhom": "8003",
- "phamVi": {
-  "text": "Thanh, que, hình và dây bằng thiếc; các thanh của kim loại hàn cơ bản là thiếc chưa bị tẩm phủ chất trợ dung.",
-  "nguon": "nhom8003.nhom",
-  "trich": "Nhóm cũng bao gồm các thanh của kim loại hàn cơ bản là thiếc (nhìn chung được chế tạo từ phương pháp ép đùn) có thể có hoặc không bị cắt thành từng đoạn, với điều kiện là chúng\n\nkhông bị tẩm phủ các chất trợ dung",
-  "nguonLoai": "AI_DA_KIEM"
- },
- "dieuKienVao": [
-  {
-   "fact": "la_thanh_que_hinh_va_day_bang_thiec",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "ch80.chuong",
-   "trich": "Các sản phẩm thường thu được từ phương pháp cán hoặc ép thiếc chưa gia công thuộc nhóm 80.01 (nhóm 80.03 và nhóm 80.07)",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "loaiTru": [
-  {
-   "dieuKien": "Các thanh được bọc phủ chất trợ dung",
-   "sangNhom": "8311",
-   "nguon": "nhom8003.nhom",
-   "trich": "các thanh được bọc phủ bị loại trừ khỏi nhóm này (nhóm 83.11)",
-   "nguonLoai": "AI_DA_KIEM"
+  "nhom": "8003",
+  "phamVi": {
+    "text": "Thanh, que, hình và dây bằng thiếc; các thanh của kim loại hàn cơ bản là thiếc chưa bị tẩm phủ chất trợ dung.",
+    "nguon": "nhom8003.nhom",
+    "trich": "Nhóm cũng bao gồm các thanh của kim loại hàn cơ bản là thiếc (nhìn chung được chế tạo từ phương pháp ép đùn) có thể có hoặc không bị cắt thành từng đoạn, với điều kiện là chúng\n\nkhông bị tẩm phủ các chất trợ dung",
+    "nguonLoai": "AI_DA_KIEM"
   },
-  {
-   "dieuKien": "Các thanh đúc để cán, kéo hoặc để đúc lại thành các sản phẩm có hình dạng",
-   "sangNhom": "8001",
-   "nguon": "nhom8003.nhom",
-   "trich": "Nhóm này cũng loại trừ các thanh đúc, ví dụ, để cán hoặc kéo hoặc để đúc lại thành các sản phẩm có hình dạng ((nhóm 80.01).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "phanBiet": [
-  {
-   "hoi": "Hàng là các thanh được bọc phủ chất trợ dung?",
-   "neuCo": "8311",
-   "neuKhong": "8003",
-   "nguon": "nhom8003.nhom",
-   "trich": "các thanh được bọc phủ bị loại trừ khỏi nhóm này (nhóm 83.11)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hoi": "Hàng là các thanh đúc để cán, kéo hoặc đúc lại thành các sản phẩm có hình dạng?",
-   "neuCo": "8001",
-   "neuKhong": "8003",
-   "nguon": "nhom8003.nhom",
-   "trich": "Nhóm này cũng loại trừ các thanh đúc, ví dụ, để cán hoặc kéo hoặc để đúc lại thành các sản phẩm có hình dạng ((nhóm 80.01).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "tieuChi6": [],
- "dong8": [
-  {
-   "hs": "80030010",
-   "dieuKien": "Thanh và que hàn",
-   "loaiKhac": false,
-   "nguon": "tax.80030010",
-   "trich": "80030010 - Thanh và que hàn",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "80030090",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.80030090",
-   "trich": "80030090 - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "8003",
-    "truAnhEm": [
-     "80030010"
-    ],
-    "truDayDu": [
-     "80030010"
-    ],
-    "toTienCoTen": "8003",
-    "dinhNghiaDuoc": true
-   }
-  }
- ],
- "cay": {
-  "nguonLoai": "MAY_SUY",
-  "sinhTu": "lib/hs-tree.js",
-  "nut": [
-   {
-    "id": "8003",
-    "cap": 4,
-    "cha": "80",
-    "tenVi": "Thiếc ở dạng thanh, que, dạng hình và dây.",
-    "tenEn": "Tin; bars, rods, profiles and wire",
-    "suyRa": false
-   },
-   {
-    "id": "80030010",
-    "cap": 8,
-    "cha": "8003",
-    "tenVi": "Thanh và que hàn",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "80030090",
-    "cap": 8,
-    "cha": "8003",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   }
+  "dieuKienVao": [
+    {
+      "fact": "la_thanh_que_hinh_va_day_bang_thiec",
+      "op": "=",
+      "value": true,
+      "donVi": null,
+      "ngoaiTru": [],
+      "nguon": "ch80.chuong",
+      "trich": "Các sản phẩm thường thu được từ phương pháp cán hoặc ép thiếc chưa gia công thuộc nhóm 80.01 (nhóm 80.03 và nhóm 80.07)",
+      "nguonLoai": "AI_DA_KIEM"
+    }
   ],
-  "tenDien": []
- },
- "dungTuNguon": [
-  "ch80.chuong",
-  "nhom8003.nhom",
-  "tax.80030010",
-  "tax.80030090"
- ],
- "phienBan": "HS2022",
- "taoBoi": {
-  "provider": "google-studio:gemini-flash",
-  "model": null,
-  "luc": "2026-11-02T13:06:43.579Z",
-  "ms": 1551
- },
- "kiemTra": {
-  "tong": 8,
-  "dat": 8,
-  "loai": 0,
-  "nguonBiCat": []
- }
+  "loaiTru": [
+    {
+      "dieuKien": "Các thanh được bọc phủ chất trợ dung",
+      "sangNhom": "8311",
+      "nguon": "nhom8003.nhom",
+      "trich": "các thanh được bọc phủ bị loại trừ khỏi nhóm này (nhóm 83.11)",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "dieuKien": "Các thanh đúc để cán, kéo hoặc để đúc lại thành các sản phẩm có hình dạng",
+      "sangNhom": "8001",
+      "nguon": "nhom8003.nhom",
+      "trich": "Nhóm này cũng loại trừ các thanh đúc, ví dụ, để cán hoặc kéo hoặc để đúc lại thành các sản phẩm có hình dạng ((nhóm 80.01).",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "phanBiet": [
+    {
+      "hoi": "Hàng là các thanh được bọc phủ chất trợ dung?",
+      "neuCo": "8311",
+      "neuKhong": "8003",
+      "nguon": "nhom8003.nhom",
+      "trich": "các thanh được bọc phủ bị loại trừ khỏi nhóm này (nhóm 83.11)",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hoi": "Hàng là các thanh đúc để cán, kéo hoặc đúc lại thành các sản phẩm có hình dạng?",
+      "neuCo": "8001",
+      "neuKhong": "8003",
+      "nguon": "nhom8003.nhom",
+      "trich": "Nhóm này cũng loại trừ các thanh đúc, ví dụ, để cán hoặc kéo hoặc để đúc lại thành các sản phẩm có hình dạng ((nhóm 80.01).",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "tieuChi6": [],
+  "dong8": [
+    {
+      "hs": "80030010",
+      "dieuKien": "tên loại hàng: Thanh hoặc que; công dụng / mục đích: hàn",
+      "loaiKhac": false,
+      "nguon": "tax.80030010",
+      "trich": "80030010 - Thanh và que hàn",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Thanh",
+            "que"
+          ]
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "hàn"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L23-20261111#soat-L23",
+          "ngay": "2026-11-11",
+          "bam": "9fa924a2de9d2503aab200bb7561c8c17b7593b1aae6f47a92126a553a5488b8"
+        }
+      }
+    },
+    {
+      "hs": "80030090",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.80030090",
+      "trich": "80030090 - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "8003",
+        "truAnhEm": [
+          "80030010"
+        ],
+        "truDayDu": [
+          "80030010"
+        ],
+        "toTienCoTen": "8003",
+        "dinhNghiaDuoc": true
+      }
+    }
+  ],
+  "cay": {
+    "nguonLoai": "MAY_SUY",
+    "sinhTu": "lib/hs-tree.js",
+    "nut": [
+      {
+        "id": "8003",
+        "cap": 4,
+        "cha": "80",
+        "tenVi": "Thiếc ở dạng thanh, que, dạng hình và dây.",
+        "tenEn": "Tin; bars, rods, profiles and wire",
+        "suyRa": false
+      },
+      {
+        "id": "80030010",
+        "cap": 8,
+        "cha": "8003",
+        "tenVi": "Thanh và que hàn",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "80030090",
+        "cap": 8,
+        "cha": "8003",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      }
+    ],
+    "tenDien": []
+  },
+  "dungTuNguon": [
+    "ch80.chuong",
+    "nhom8003.nhom",
+    "tax.80030010",
+    "tax.80030090"
+  ],
+  "phienBan": "HS2022",
+  "taoBoi": {
+    "provider": "google-studio:gemini-flash",
+    "model": null,
+    "luc": "2026-11-02T13:06:43.579Z",
+    "ms": 1551
+  },
+  "kiemTra": {
+    "tong": 8,
+    "dat": 8,
+    "loai": 0,
+    "nguonBiCat": []
+  }
 }
