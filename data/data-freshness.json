@@ -12,10 +12,20 @@
       "labelVi": "Giảm thuế GTGT 10% → 8%",
       "legalBasis": "174/2025/NĐ-CP",
       "validUntil": "2026-12-31",
-      "lastCheckedAt": "2026-07-02",
+      "lastCheckedAt": "2026-11-11",
       "checkEveryDays": 30,
       "warnBeforeDays": 60,
-      "howToCheckVi": "Kiểm tra văn bản gia hạn/thay thế chính sách giảm GTGT. Hết hạn mà không gia hạn → các dòng '8/10' phải về 10%."
+      "howToCheckVi": "Kiểm tra văn bản gia hạn/thay thế chính sách giảm GTGT. Hết hạn mà không gia hạn → các dòng '8/10' phải về 10%.",
+      "ghiChuSoat": "11/11/2026 (Claude): chưa thấy văn bản gia hạn mức 8% sang 2027 (NQ 204/2025/QH15 + NĐ 174/2025/NĐ-CP áp 01/7/2025–31/12/2026). Từ 01/01/2027 /api/tax và /api/search tự trả rate 10 cho dòng «8/10» nếu validUntil chưa được gia hạn."
+    },
+    "mfnTemporaryFuel": {
+      "labelVi": "Thuế NK ưu đãi 0% tạm thời — xăng dầu, nguyên liệu SX xăng dầu (data/thue-tam-thoi.json)",
+      "legalBasis": "43/2026/NQ-CP",
+      "validUntil": "2026-12-31",
+      "lastCheckedAt": "2026-11-11",
+      "checkEveryDays": 30,
+      "warnBeforeDays": 30,
+      "howToCheckVi": "Kiểm tra Nghị quyết/Nghị định kéo dài hoặc chấm dứt mức 0% (NĐ 72/2026, NQ 25/2026 Điều 2) sau 31/12/2026 trên vanban.chinhphu.vn. Có văn bản mới: thêm một khoảng vào data/thue-tam-thoi.json (căn cứ + xacMinh) và cập nhật validUntil ở đây. Hết hạn mà không gia hạn: API tự thôi trả mfnTemporary."
     },
     "precedents": {
       "labelVi": "Tiền lệ phân loại TB-TCHQ (data/precedents.json)",
@@ -32,9 +42,10 @@
     "ktcnLists": {
       "labelVi": "Danh mục kiểm tra chuyên ngành của các bộ (data/ktcn-regime-2026.json + cột chính sách cs của tax.json)",
       "legalBasis": "37/2026/NĐ-CP",
-      "lastCheckedAt": "2026-10-04",
+      "lastCheckedAt": "2026-11-11",
       "checkEveryDays": 30,
-      "howToCheckVi": "Rà Công báo (congbao.chinhphu.vn) các thông tư 'Danh mục sản phẩm, hàng hóa có mức độ rủi ro trung bình, cao' và danh mục kiểm tra ATTP/kiểm dịch kèm mã HS của 8 bộ ban hành sau lastCheckedAt. Có văn bản mới: thêm vào lists/superseded trong ktcn-regime-2026.json; có phụ lục mã HS gốc: cập nhật cột cs của tax.json rồi mới cập nhật ngày. Xem Issue theo dõi cập nhật chính sách."
+      "howToCheckVi": "Rà Công báo (congbao.chinhphu.vn) các thông tư 'Danh mục sản phẩm, hàng hóa có mức độ rủi ro trung bình, cao' và danh mục kiểm tra ATTP/kiểm dịch kèm mã HS của 8 bộ ban hành sau lastCheckedAt. Có văn bản mới: thêm vào lists/superseded trong ktcn-regime-2026.json; có phụ lục mã HS gốc: cập nhật cột cs của tax.json rồi mới cập nhật ngày. Xem Issue theo dõi cập nhật chính sách.",
+      "ghiChuSoat": "Soát 11/11/2026 (docs/soat-du-lieu-2026-11.md): tìm web (không duyệt trực tiếp từng số Công báo) không thấy thông tư danh mục rủi ro trung bình/cao hay danh mục KT ATTP/kiểm dịch mới sau 04/10/2026; NĐ 46/2026 vẫn tạm ngưng, Luật ATTP sửa đổi chưa thấy thông qua. Chưa đối chiếu phụ lục mã HS các TT 2026 (việc cũ, vẫn mở)."
     },
     "plhqRegistry": {
       "labelVi": "Bản chụp sổ đăng ký văn bản cộng đồng (data/plhq-registry.json ← oz-wiki-plhq)",
@@ -45,9 +56,10 @@
     },
     "ministries": {
       "labelVi": "Danh mục bộ ngành (data/ministries-vn.json)",
-      "lastCheckedAt": "2026-09-24",
+      "lastCheckedAt": "2026-11-11",
       "checkEveryDays": 180,
-      "howToCheckVi": "Đối chiếu cơ cấu tổ chức Chính phủ hiện hành."
+      "howToCheckVi": "Đối chiếu cơ cấu tổ chức Chính phủ hiện hành.",
+      "ghiChuSoat": "Soát 11/11/2026: Chính phủ khoá XVI (QH thông qua 07/4/2026) giữ 14 bộ + 3 cơ quan ngang bộ như NQ 176/2025/QH15 — các bộ XNK trong tệp khớp. Sửa tên BTC: Tổng cục Hải quan → Cục Hải quan (QĐ 382/QĐ-BTC, từ 01/03/2025)."
     }
   }
 }
