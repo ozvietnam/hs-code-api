@@ -1,6 +1,9 @@
 // Cổng sổ tay chú giải lúc chạy (lib/so-tay-gates.js) — tất định, không AI. Dữ liệu: data/so-tay/8509.json.
 import './test-isolate-data.mjs';
+import fs from 'fs';
+import path from 'path';
 import { createRequire } from 'module';
+import { TEST_DATA_DIR } from './test-isolate-data.mjs';
 import { nhomChuaCoSoTay } from './nhom-chua-co-so-tay.mjs';
 const require = createRequire(import.meta.url);
 const { soTayGates, soTayBlock, headPhrases, productHead, phraseHit, isPartsLine, loadSoTay, chotDong8, giaTriCua, trangThaiDong8, chatLieuTrong, chatLieuRegex, MATERIALS, soTayMode } = require('../lib/so-tay-gates.js');
@@ -424,18 +427,53 @@ check('trangThaiDong8.veMoHinh: 73181510 chấm trọn nhãn "Đường kính ng
     && TC.boVeTuyChonTiep(TEN_NUT_3706).length === TEN_NUT_3706.length,
     JSON.stringify(TC.boVeTuyChonTiep(TEN_NUT_3706)));
 
-  // Rào ngược 1 — vế MANG NGHĨA sau dấu phẩy / " - " phải còn nguyên. Bản đầu không chặn ranh giới này
-  // đã ăn lẹm nhãn 2403 và làm MẤT 2 ca chotDung đang đúng (24031190, 24031999) — đo toàn biểu mới thấy.
-  const NHAN_2403 = 'Lá thuốc lá để hút (smoking), có hoặc không chứa chất thay thế lá thuốc lá với tỷ lệ bất kỳ - Thuốc lá sử dụng tẩu nước, chưa đóng gói';
-  check('tuỳ chọn 2b cụm nhiều vế KHÔNG ăn qua " - " / dấu phẩy (giữ vế mang nghĩa của nhãn 2403)',
-    TC.boVeTuyChonTiep(NHAN_2403) === NHAN_2403, JSON.stringify(TC.boVeTuyChonTiep(NHAN_2403)));
+  // Rào ngược 1 — vế MANG NGHĨA sau dấu phẩy / " - " phải CÒN NGUYÊN. Bản đầu không chặn ranh giới này
+  // đã ăn lẹm sang vế mang nghĩa và làm MẤT 2 ca chotDung đang đúng (24031190, 24031999) — đo toàn biểu
+  // mới thấy, nhìn tổng `chotSai` thì vẫn tưởng là được.
+  //
+  // CHỮ THẬT của biểu (data/tax.json), không phải chữ tự nghĩ: hai nhãn này có cụm tuỳ chọn rồi còn
+  // "hoặc" tiếp, nên regex ĂN được — phần sau dấu phẩy là chỗ duy nhất rào `(?!\s-\s)` + bỏ dấu phẩy
+  // khỏi lớp ký tự giữ lại được. Gỡ rào thì hai ca này đỏ ngay (đã chạy mutation để chắc không phải ca rỗng).
+  const NHAN_2514 = 'Đá phiến, đã hoặc chưa đẽo thô hoặc mới chỉ cắt, bằng cưa hoặc cách khác, thành khối hoặc tấm hình chữ nhật (kể cả hình vuông)';
+  check('tuỳ chọn 2b cụm nhiều vế KHÔNG ăn qua dấu phẩy — giữ vế mang nghĩa "bằng cưa…" của 2514.00',
+    /bằng cưa hoặc cách khác, thành khối hoặc tấm hình chữ nhật/u.test(TC.boVeTuyChonTiep(NHAN_2514))
+    && TC.boVeTuyChonTiep(NHAN_2514).length === NHAN_2514.length,
+    JSON.stringify(TC.boVeTuyChonTiep(NHAN_2514)));
+
+  const NHAN_2706 = 'Hắc ín chưng cất từ than đá, than non hoặc than bùn, và các loại hắc ín khoáng chất khác, đã hoặc chưa khử nước hoặc chưng cất từng phần, kể cả hắc ín tái chế';
+  check('tuỳ chọn 2b2 … và giữ vế "kể cả hắc ín tái chế" của 2706.00 (vế mở rộng phạm vi, mất là sai nghĩa)',
+    /kể cả hắc ín tái chế/u.test(TC.boVeTuyChonTiep(NHAN_2706)),
+    JSON.stringify(TC.boVeTuyChonTiep(NHAN_2706)));
 
   // Rào ngược 2 — chữ không có cụm tuỳ chọn thì trả y nguyên (gọi vô điều kiện vẫn an toàn).
   check('tuỳ chọn 2c chữ không có cụm tuỳ chọn → trả y nguyên',
     TC.boVeTuyChonTiep('Phim điện ảnh, chỉ có duy nhất rãnh tiếng') === 'Phim điện ảnh, chỉ có duy nhất rãnh tiếng',
     '');
 
-  // Cổng thật trên đường chốt dòng 8: hai ca của 37069090.
+  // ── Cổng thật trên đường chốt dòng 8 — bản nháp DUYET do CHÍNH TEST dựng ───────────────────────────
+  // KHÔNG đọc trạng thái `data/ho-so/ranh-gioi/370690.json` thật: các lô soát ranh giới còn đổi
+  // DUYET⇄TRA_VE liên tục, nên ca bám vào trạng thái dữ liệu là CA RỖNG — khi 370690 ở TRA_VE thì
+  // chotDong8 trả KHONG_THE_CHOT/`ranh-gioi-chua-so-hoa`, ca "không chốt .40" pass vì chẳng chốt gì,
+  // không phải vì bản vá (soát độc lập 11/11 bắt đúng lỗi này: mutation gỡ hẳn bản vá mà test không đỏ
+  // thêm ca nào). Dựng bản nháp tay vào thư mục tạm của test-isolate-data ⇒ ca độc lập với lô soát.
+  fs.mkdirSync(path.join(TEST_DATA_DIR, 'ho-so', 'ranh-gioi'), { recursive: true });
+  fs.writeFileSync(path.join(TEST_DATA_DIR, 'ho-so', 'ranh-gioi', '370690.json'), JSON.stringify({
+    phienBan: 'ranh-gioi@1', pn6: '370690', nhom: '3706', trangThai: 'DUYET',
+    soanBoi: { vai: 'AI', phien: 'phien-test-cum-tuy-chon', ngay: '2026-11-11' },
+    duyet: { vai: 'test', ngay: '2026-11-11' }, dieuKienNut: [], ghiChuSoan: [],
+    dong8: [
+      { hs: '37069010', nguon: 'tax.37069010', trich: '37069010 - - Phim thời sự, phim du lịch, phim kỹ thuật và phim khoa học', nguonLoai: 'AI_DA_KIEM',
+        dieuKienSo: [{ fact: 'tenLoai', op: 'TEN_LOAI', value: ['Phim thời sự', 'phim du lịch', 'phim kỹ thuật', 'phim khoa học'] }] },
+      { hs: '37069030', nguon: 'tax.37069030', trich: '37069030 - - Phim tài liệu khác', nguonLoai: 'AI_DA_KIEM', phanConLai: true,
+        dieuKienSo: [{ fact: 'tenLoai', op: 'TEN_LOAI', value: 'Phim tài liệu' }] },
+      { hs: '37069040', nguon: 'tax.37069040', trich: '37069040 - - Loại khác, chỉ có duy nhất rãnh tiếng', nguonLoai: 'AI_DA_KIEM',
+        dieuKienSo: [{ fact: 'chiCoRanhTieng', op: 'CO' }] },
+      { hs: '37069090', nguon: 'tax.37069090', trich: '37069090 - - Loại khác', nguonLoai: 'AI_DA_KIEM', dieuKienSo: [] },
+    ],
+  }));
+
+  // Ca vá: mô tả CHỈ có tên nút (chưa ai khai gì về rãnh tiếng) ⇒ không được chốt .40.
+  // Trên nền chưa vá (main 52663e4f, đo tại chỗ) ca này ra CHOT/37069040 — tức ĐỎ đúng chỗ.
   cd = chotDong8({ hs: '370690', productText: `${TEN_NUT_3706} - Loại khác` });
   check('370690 chỉ có tên nút (cụm tuỳ chọn nhiều vế) → KHÔNG chốt 37069040, phải hỏi/không chốt',
     cd.hs !== '37069040' && cd.ketQua !== 'CHOT', JSON.stringify([cd.ketQua, cd.hs, cd.lyDo]));
