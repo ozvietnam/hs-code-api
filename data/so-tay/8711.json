@@ -1,1294 +1,1701 @@
 {
- "nhom": "8711",
- "phamVi": {
-  "text": "Mô tô (kể cả moped) và xe đạp có gắn động cơ phụ trợ, có hoặc không có thùng xe bên cạnh; thùng xe có bánh (side-cars).",
-  "nguon": "nhom8711.nhom",
-  "trich": "Nhóm này bao gồm nhóm những xe môtô hai bánh được thiết kế chủ yếu để chở người. Ngoài các xe mô tô thông thường, Nhóm này bao gồm cả các xe tay ga, có đặc điểm là bánh xe cỡ nhỏ và một sàn nằm ngang nối phần trước và phần sau xe; xe gắn máy có bàn đạp được trang bị cả động cơ và hệ thống bàn đạp chân; và xe đạp có lắp động cơ phụ trợ.",
-  "nguonLoai": "AI_DA_KIEM"
- },
- "dieuKienVao": [
-  {
-   "fact": "la_mo_to_xe_hai_banh_co_dong_co",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "nhom8711.nhom",
-   "trich": "những xe môtô hai bánh được thiết kế chủ yếu để chở người.",
-   "nguonLoai": "AI_DA_KIEM"
+  "nhom": "8711",
+  "phamVi": {
+    "text": "Mô tô (kể cả moped) và xe đạp có gắn động cơ phụ trợ, có hoặc không có thùng xe bên cạnh; thùng xe có bánh (side-cars).",
+    "nguon": "nhom8711.nhom",
+    "trich": "Nhóm này bao gồm nhóm những xe môtô hai bánh được thiết kế chủ yếu để chở người. Ngoài các xe mô tô thông thường, Nhóm này bao gồm cả các xe tay ga, có đặc điểm là bánh xe cỡ nhỏ và một sàn nằm ngang nối phần trước và phần sau xe; xe gắn máy có bàn đạp được trang bị cả động cơ và hệ thống bàn đạp chân; và xe đạp có lắp động cơ phụ trợ.",
+    "nguonLoai": "AI_DA_KIEM"
   },
-  {
-   "fact": "la_thung_xe_co_banh_side_car",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "nhom8711.nhom",
-   "trich": "tất cả các loại mô tô thùng, được thiết kế để chở người hoặc hàng hoá, loại mà xe và thùng xe không thể tách ra để sử dụng độc lập được.",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "loaiTru": [
-  {
-   "dieuKien": "Xe môtô bốn bánh có khung gầm hình ống và cơ cấu lái kiểu ô tô",
-   "sangNhom": "8703",
-   "nguon": "nhom8711.nhom",
-   "trich": "Xe môtô bốn bánh dùng để chở người, có khung gầm hình ống và hệ thống lái loại xe hơi (ví dụ hệ thống lái dựa trên nguyên lý Acherman) (nhóm 87.03)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "dieuKien": "Các rơmoóc dùng để gắn vào xe mô tô hay xe đạp",
-   "sangNhom": "8716",
-   "nguon": "nhom8711.nhom",
-   "trich": "Các rơmoóc dùng để gắn vào xe mô tô hay xe đạp (nhóm 87.16).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "phanBiet": [
-  {
-   "hoi": "Hàng hoá có phải là xe bốn bánh địa hình chở người thuộc nhóm 87.03?",
-   "neuCo": "8703",
-   "neuKhong": "8711",
-   "nguon": "nhom8711.nhom",
-   "trich": "Xe môtô bốn bánh dùng để chở người, có khung gầm hình ống và hệ thống lái loại xe hơi (ví dụ hệ thống lái dựa trên nguyên lý Acherman) (nhóm 87.03)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hoi": "Hàng hoá có phải là rơ moóc gắn vào xe mô tô hoặc xe đạp thuộc nhóm 87.16?",
-   "neuCo": "8716",
-   "neuKhong": "8711",
-   "nguon": "nhom8711.nhom",
-   "trich": "Các rơmoóc dùng để gắn vào xe mô tô hay xe đạp (nhóm 87.16).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "tieuChi6": [
-  {
-   "hs6": "871110",
-   "fact": "dung_tich_xi_lanh_khong_qua_50cc",
-   "op": "<=",
-   "value": 50,
-   "donVi": "cc",
-   "nguon": "wco.871110",
-   "trich": "with internal combustion piston engine of a cylinder capacity not exceeding 50cc",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs6": "871120",
-   "fact": "dung_tich_xi_lanh_tren_50cc_den_250cc",
-   "op": "<=",
-   "value": 250,
-   "donVi": "cc",
-   "nguon": "wco.871120",
-   "trich": "of cylinder capacity exceeding 50cc but not exceeding 250cc",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs6": "871130",
-   "fact": "dung_tich_xi_lanh_tren_250cc_den_500cc",
-   "op": "<=",
-   "value": 500,
-   "donVi": "cc",
-   "nguon": "wco.871130",
-   "trich": "of cylinder capacity exceeding 250cc but not exceeding 500cc",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs6": "871140",
-   "fact": "dung_tich_xi_lanh_tren_500cc_den_800cc",
-   "op": "<=",
-   "value": 800,
-   "donVi": "cc",
-   "nguon": "wco.871140",
-   "trich": "of cylinder capacity exceeding 500cc but not exceeding 800cc",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs6": "871150",
-   "fact": "dung_tich_xi_lanh_tren_800cc",
-   "op": ">",
-   "value": 800,
-   "donVi": "cc",
-   "nguon": "wco.871150",
-   "trich": "of a cylinder capacity exceeding 800cc",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "dong8": [
-  {
-   "hs": "87111012",
-   "dieuKien": "Xe gắn máy có bàn đạp (moped) hoặc xe đạp có động cơ",
-   "loaiKhac": false,
-   "nguon": "tax.87111012",
-   "trich": "87111012 - - - Xe gắn máy có bàn đạp (moped) hoặc xe đạp có động cơ",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "87111014",
-   "dieuKien": "Xe \"powered kick scooter\"; xe “pocket motorcycle” (SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.87111014",
-   "trich": "87111014 - - - Xe \"powered kick scooter\"; xe “pocket motorcycle” (SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "87111015",
-   "dieuKien": "Xe mô tô và xe scooter khác",
-   "loaiKhac": false,
-   "nguon": "tax.87111015",
-   "trich": "87111015 - - - Xe mô tô và xe scooter khác",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "87111019",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.87111019",
-   "trich": "87111019 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "8711101",
-    "truAnhEm": [
-     "87111012",
-     "87111014",
-     "87111015"
-    ],
-    "truDayDu": [
-     "87111012",
-     "87111014",
-     "87111015"
-    ],
-    "toTienCoTen": "871110",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "87111092",
-   "dieuKien": "Xe gắn máy có bàn đạp (moped) hoặc xe đạp có động cơ",
-   "loaiKhac": false,
-   "nguon": "tax.87111092",
-   "trich": "87111092 - - - Xe gắn máy có bàn đạp (moped) hoặc xe đạp có động cơ",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "87111094",
-   "dieuKien": "Xe \"powered kick scooter\"; xe “pocket motorcycle” (SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.87111094",
-   "trich": "87111094 - - - Xe \"powered kick scooter\"; xe “pocket motorcycle” (SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "87111095",
-   "dieuKien": "Xe mô tô và xe scooter khác",
-   "loaiKhac": false,
-   "nguon": "tax.87111095",
-   "trich": "87111095 - - - Xe mô tô và xe scooter khác",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "87111099",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.87111099",
-   "trich": "87111099 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "8711109",
-    "truAnhEm": [
-     "87111092",
-     "87111094",
-     "87111095"
-    ],
-    "truDayDu": [
-     "87111092",
-     "87111094",
-     "87111095",
-     "8711101"
-    ],
-    "toTienCoTen": "871110",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "87112011",
-   "dieuKien": "Xe mô tô địa hình (SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.87112011",
-   "trich": "87112011 - - - Xe mô tô địa hình (SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "87112012",
-   "dieuKien": "Xe gắn máy có bàn đạp (moped) hoặc xe đạp có động cơ",
-   "loaiKhac": false,
-   "nguon": "tax.87112012",
-   "trich": "87112012 - - - Xe gắn máy có bàn đạp (moped) hoặc xe đạp có động cơ",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "87112013",
-   "dieuKien": "Xe “pocket motorcycle” (SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.87112013",
-   "trich": "87112013 - - - Xe “pocket motorcycle” (SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "87112014",
-   "dieuKien": "Dung tích xi lanh trên 150 cc nhưng không quá 200 cc ",
-   "loaiKhac": false,
-   "nguon": "tax.87112014",
-   "trich": "87112014 - - - - Dung tích xi lanh trên 150 cc nhưng không quá 200 cc ",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "87112015",
-   "dieuKien": "Dung tích xi lanh trên 200 cc nhưng không quá 250 cc ",
-   "loaiKhac": false,
-   "nguon": "tax.87112015",
-   "trich": "87112015 - - - - Dung tích xi lanh trên 200 cc nhưng không quá 250 cc ",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "87112016",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.87112016",
-   "trich": "87112016 - - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "871120~r17604",
-    "truAnhEm": [
-     "87112014",
-     "87112015"
-    ],
-    "truDayDu": [
-     "87112014",
-     "87112015",
-     "87112011",
-     "87112012",
-     "87112013"
-    ],
-    "toTienCoTen": "871120",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "87112019",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.87112019",
-   "trich": "87112019 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "8711201",
-    "truAnhEm": [
-     "87112011",
-     "87112012",
-     "87112013",
-     "871120~r17604"
-    ],
-    "truDayDu": [
-     "87112011",
-     "87112012",
-     "87112013",
-     "871120~r17604"
-    ],
-    "toTienCoTen": "871120",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "87112091",
-   "dieuKien": "Xe mô tô địa hình (SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.87112091",
-   "trich": "87112091 - - - Xe mô tô địa hình (SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "87112092",
-   "dieuKien": "Xe gắn máy có bàn đạp (moped) hoặc xe đạp có động cơ",
-   "loaiKhac": false,
-   "nguon": "tax.87112092",
-   "trich": "87112092 - - - Xe gắn máy có bàn đạp (moped) hoặc xe đạp có động cơ",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "87112093",
-   "dieuKien": "Xe “pocket motorcycle” (SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.87112093",
-   "trich": "87112093 - - - Xe “pocket motorcycle” (SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "87112094",
-   "dieuKien": "Dung tích xi lanh trên 150 cc nhưng không quá 200 cc ",
-   "loaiKhac": false,
-   "nguon": "tax.87112094",
-   "trich": "87112094 - - - - Dung tích xi lanh trên 150 cc nhưng không quá 200 cc ",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "87112095",
-   "dieuKien": "Dung tích xi lanh trên 200 cc nhưng không quá 250 cc ",
-   "loaiKhac": false,
-   "nguon": "tax.87112095",
-   "trich": "87112095 - - - - Dung tích xi lanh trên 200 cc nhưng không quá 250 cc ",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "87112096",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.87112096",
-   "trich": "87112096 - - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "871120~r17613",
-    "truAnhEm": [
-     "87112094",
-     "87112095"
-    ],
-    "truDayDu": [
-     "87112094",
-     "87112095",
-     "87112091",
-     "87112092",
-     "87112093",
-     "8711201"
-    ],
-    "toTienCoTen": "871120",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "87112099",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.87112099",
-   "trich": "87112099 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "8711209",
-    "truAnhEm": [
-     "87112091",
-     "87112092",
-     "87112093",
-     "871120~r17613"
-    ],
-    "truDayDu": [
-     "87112091",
-     "87112092",
-     "87112093",
-     "871120~r17613",
-     "8711201"
-    ],
-    "toTienCoTen": "871120",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "87113011",
-   "dieuKien": "Dạng CKD (SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.87113011",
-   "trich": "87113011 - - - Dạng CKD (SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "87113019",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.87113019",
-   "trich": "87113019 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "8711301",
-    "truAnhEm": [
-     "87113011"
-    ],
-    "truDayDu": [
-     "87113011"
-    ],
-    "toTienCoTen": "871130",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "87113030",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.87113030",
-   "trich": "87113030 - - Loại khác, dạng CKD (SEN)",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "871130",
-    "truAnhEm": [
-     "8711301"
-    ],
-    "truDayDu": [
-     "8711301"
-    ],
-    "toTienCoTen": "871130",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "87113090",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.87113090",
-   "trich": "87113090 - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "871130",
-    "truAnhEm": [
-     "8711301",
-     "87113030"
-    ],
-    "truDayDu": [
-     "8711301",
-     "87113030"
-    ],
-    "toTienCoTen": "871130",
-    "dinhNghiaDuoc": false
-   }
-  },
-  {
-   "hs": "87114011",
-   "dieuKien": "Dạng CKD (SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.87114011",
-   "trich": "87114011 - - - Dạng CKD (SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "87114019",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.87114019",
-   "trich": "87114019 - - - Loại khác (SEN)",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "8711401",
-    "truAnhEm": [
-     "87114011"
-    ],
-    "truDayDu": [
-     "87114011"
-    ],
-    "toTienCoTen": "871140",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "87114020",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.87114020",
-   "trich": "87114020 - - Loại khác, dạng CKD (SEN)",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "871140",
-    "truAnhEm": [
-     "8711401"
-    ],
-    "truDayDu": [
-     "8711401"
-    ],
-    "toTienCoTen": "871140",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "87114090",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.87114090",
-   "trich": "87114090 - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "871140",
-    "truAnhEm": [
-     "8711401",
-     "87114020"
-    ],
-    "truDayDu": [
-     "8711401",
-     "87114020"
-    ],
-    "toTienCoTen": "871140",
-    "dinhNghiaDuoc": false
-   }
-  },
-  {
-   "hs": "87115020",
-   "dieuKien": "Dạng CKD (SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.87115020",
-   "trich": "87115020 - - Dạng CKD (SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "87115090",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.87115090",
-   "trich": "87115090 - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "871150",
-    "truAnhEm": [
-     "87115020"
-    ],
-    "truDayDu": [
-     "87115020"
-    ],
-    "toTienCoTen": "871150",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "87116011",
-   "dieuKien": "Xe đạp",
-   "loaiKhac": false,
-   "nguon": "tax.87116011",
-   "trich": "87116011 - - - Xe đạp",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "87116012",
-   "dieuKien": "Xe \"kick scooter\"; xe tự cân bằng \"self-balancing cycle\"; xe \"pocket motorcycle” (SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.87116012",
-   "trich": "87116012 - - - Xe \"kick scooter\"; xe tự cân bằng \"self-balancing cycle\"; xe \"pocket motorcycle” (SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "87116013",
-   "dieuKien": "Xe mô tô khác",
-   "loaiKhac": false,
-   "nguon": "tax.87116013",
-   "trich": "87116013 - - - Xe mô tô khác",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "87116019",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.87116019",
-   "trich": "87116019 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "8711601",
-    "truAnhEm": [
-     "87116011",
-     "87116012",
-     "87116013"
-    ],
-    "truDayDu": [
-     "87116011",
-     "87116012",
-     "87116013"
-    ],
-    "toTienCoTen": "871160",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "87116092",
-   "dieuKien": "Xe \"kick scooter\"; xe tự cân bằng \"self-balancing cycle\"; xe \"pocket motorcycle” (SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.87116092",
-   "trich": "87116092 - - - Xe \"kick scooter\"; xe tự cân bằng \"self-balancing cycle\"; xe \"pocket motorcycle” (SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "87116093",
-   "dieuKien": "Xe mô tô khác",
-   "loaiKhac": false,
-   "nguon": "tax.87116093",
-   "trich": "87116093 - - - Xe mô tô khác",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "87116094",
-   "dieuKien": "Xe đạp, có động cơ điện phụ trợ không quá 250 W và tốc độ tối đa không quá 25 km/h",
-   "loaiKhac": false,
-   "nguon": "tax.87116094",
-   "trich": "87116094 - - - Xe đạp, có động cơ điện phụ trợ không quá 250 W và tốc độ tối đa không quá 25 km/h",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "87116095",
-   "dieuKien": "Xe đạp khác",
-   "loaiKhac": false,
-   "nguon": "tax.87116095",
-   "trich": "87116095 - - - Xe đạp khác",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "87116099",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.87116099",
-   "trich": "87116099 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "8711609",
-    "truAnhEm": [
-     "87116092",
-     "87116093",
-     "87116094",
-     "87116095"
-    ],
-    "truDayDu": [
-     "87116092",
-     "87116093",
-     "87116094",
-     "87116095",
-     "8711601"
-    ],
-    "toTienCoTen": "871160",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "87119040",
-   "dieuKien": "Thùng xe có bánh (side-cars)",
-   "loaiKhac": false,
-   "nguon": "tax.87119040",
-   "trich": "87119040 - - Thùng xe có bánh (side-cars)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "87119060",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.87119060",
-   "trich": "87119060 - - Loại khác, dạng CKD (SEN)",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "871190",
-    "truAnhEm": [
-     "87119040"
-    ],
-    "truDayDu": [
-     "87119040"
-    ],
-    "toTienCoTen": "871190",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "87119090",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.87119090",
-   "trich": "87119090 - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "871190",
-    "truAnhEm": [
-     "87119040",
-     "87119060"
-    ],
-    "truDayDu": [
-     "87119040",
-     "87119060"
-    ],
-    "toTienCoTen": "871190",
-    "dinhNghiaDuoc": false
-   }
-  }
- ],
- "cay": {
-  "nguonLoai": "MAY_SUY",
-  "sinhTu": "lib/hs-tree.js",
-  "nut": [
-   {
-    "id": "8711",
-    "cap": 4,
-    "cha": "87",
-    "tenVi": "Mô tô (kể cả xe gắn máy có bàn đạp (moped)) và xe đạp có gắn động cơ phụ trợ, có hoặc không có thùng xe bên cạnh; thùng xe có bánh (side- cars).",
-    "tenEn": "Motorcycles (including mopeds) and cycles; fitted with an auxiliary motor, with or without side-cars; side-cars",
-    "suyRa": false
-   },
-   {
-    "id": "871110",
-    "cap": 6,
-    "cha": "8711",
-    "tenVi": "Loại sử dụng động cơ đốt trong kiểu piston dung tích xi lanh không quá 50 cc",
-    "tenEn": "Motorcycles (including mopeds) and cycles; fitted with an auxiliary motor, with internal combustion piston engine of a cylinder capacity not exceeding 50cc, with or without side-cars; side-cars",
-    "suyRa": false
-   },
-   {
-    "id": "8711101",
-    "cap": "TIEU_DE_QG",
-    "cha": "871110",
-    "tenVi": "Dạng CKD (SEN)",
-    "tenEn": "Completely Knocked Down",
-    "suyRa": true
-   },
-   {
-    "id": "87111012",
-    "cap": 8,
-    "cha": "8711101",
-    "tenVi": "Xe gắn máy có bàn đạp (moped) hoặc xe đạp có động cơ",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "87111014",
-    "cap": 8,
-    "cha": "8711101",
-    "tenVi": "Xe \"powered kick scooter\"; xe “pocket motorcycle” (SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "87111015",
-    "cap": 8,
-    "cha": "8711101",
-    "tenVi": "Xe mô tô và xe scooter khác",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "87111019",
-    "cap": 8,
-    "cha": "8711101",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "8711109",
-    "cap": "TIEU_DE_QG",
-    "cha": "871110",
-    "tenVi": "Loại khác",
-    "tenEn": "Other",
-    "suyRa": true
-   },
-   {
-    "id": "87111092",
-    "cap": 8,
-    "cha": "8711109",
-    "tenVi": "Xe gắn máy có bàn đạp (moped) hoặc xe đạp có động cơ",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "87111094",
-    "cap": 8,
-    "cha": "8711109",
-    "tenVi": "Xe \"powered kick scooter\"; xe “pocket motorcycle” (SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "87111095",
-    "cap": 8,
-    "cha": "8711109",
-    "tenVi": "Xe mô tô và xe scooter khác",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "87111099",
-    "cap": 8,
-    "cha": "8711109",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "871120",
-    "cap": 6,
-    "cha": "8711",
-    "tenVi": "Loại sử dụng động cơ đốt trong kiểu piston dung tích xi lanh trên 50 cc nhưng không quá 250 cc",
-    "tenEn": "Motorcycles (including mopeds) and cycles; fitted with an auxiliary motor, internal combustion piston engine, of cylinder capacity exceeding 50cc but not exceeding 250cc, with or without side-cars; side-cars",
-    "suyRa": false
-   },
-   {
-    "id": "8711201",
-    "cap": "TIEU_DE_QG",
-    "cha": "871120",
-    "tenVi": "Dạng CKD (SEN)",
-    "tenEn": "Completely Knocked Down",
-    "suyRa": true
-   },
-   {
-    "id": "87112011",
-    "cap": 8,
-    "cha": "8711201",
-    "tenVi": "Xe mô tô địa hình (SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "87112012",
-    "cap": 8,
-    "cha": "8711201",
-    "tenVi": "Xe gắn máy có bàn đạp (moped) hoặc xe đạp có động cơ",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "87112013",
-    "cap": 8,
-    "cha": "8711201",
-    "tenVi": "Xe “pocket motorcycle” (SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "87112014",
-    "cap": 8,
-    "cha": "8711201",
-    "tenVi": "Dung tích xi lanh trên 150 cc nhưng không quá 200 cc",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "87112015",
-    "cap": 8,
-    "cha": "8711201",
-    "tenVi": "Dung tích xi lanh trên 200 cc nhưng không quá 250 cc",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "87112016",
-    "cap": 8,
-    "cha": "8711201",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "87112019",
-    "cap": 8,
-    "cha": "8711201",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "8711209",
-    "cap": "TIEU_DE_QG",
-    "cha": "871120",
-    "tenVi": "Loại khác",
-    "tenEn": "Other",
-    "suyRa": true
-   },
-   {
-    "id": "87112091",
-    "cap": 8,
-    "cha": "8711209",
-    "tenVi": "Xe mô tô địa hình (SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "87112092",
-    "cap": 8,
-    "cha": "8711209",
-    "tenVi": "Xe gắn máy có bàn đạp (moped) hoặc xe đạp có động cơ",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "87112093",
-    "cap": 8,
-    "cha": "8711209",
-    "tenVi": "Xe “pocket motorcycle” (SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "87112094",
-    "cap": 8,
-    "cha": "8711209",
-    "tenVi": "Dung tích xi lanh trên 150 cc nhưng không quá 200 cc",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "87112095",
-    "cap": 8,
-    "cha": "8711209",
-    "tenVi": "Dung tích xi lanh trên 200 cc nhưng không quá 250 cc",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "87112096",
-    "cap": 8,
-    "cha": "8711209",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "87112099",
-    "cap": 8,
-    "cha": "8711209",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "871130",
-    "cap": 6,
-    "cha": "8711",
-    "tenVi": "Loại sử dụng động cơ đốt trong kiểu piston dung tích xi lanh trên 250 cc nhưng không quá 500 cc",
-    "tenEn": "Motorcycles (including mopeds) and cycles; fitted with an auxiliary motor, internal combustion piston engine, of cylinder capacity exceeding 250cc but not exceeding 500cc, with or without side-cars; side-cars",
-    "suyRa": false
-   },
-   {
-    "id": "8711301",
-    "cap": "TIEU_DE_QG",
-    "cha": "871130",
-    "tenVi": "Xe mô tô địa hình (SEN)",
-    "tenEn": "Motocross motorcycles",
-    "suyRa": true
-   },
-   {
-    "id": "87113011",
-    "cap": 8,
-    "cha": "8711301",
-    "tenVi": "Dạng CKD (SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "87113019",
-    "cap": 8,
-    "cha": "8711301",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "87113030",
-    "cap": 8,
-    "cha": "871130",
-    "tenVi": "Loại khác, dạng CKD (SEN)",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "87113090",
-    "cap": 8,
-    "cha": "871130",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "871140",
-    "cap": 6,
-    "cha": "8711",
-    "tenVi": "Loại sử dụng động cơ đốt trong kiểu piston dung tích xi lanh trên 500 cc nhưng không quá 800 cc",
-    "tenEn": "Motorcycles (including mopeds) and cycles; fitted with auxiliary motor, internal combustion piston engine of cylinder capacity exceeding 500cc but not exceeding 800cc, with or without sidecars; side-cars",
-    "suyRa": false
-   },
-   {
-    "id": "8711401",
-    "cap": "TIEU_DE_QG",
-    "cha": "871140",
-    "tenVi": "Xe mô tô địa hình (SEN)",
-    "tenEn": "Motocross motorcycles",
-    "suyRa": true
-   },
-   {
-    "id": "87114011",
-    "cap": 8,
-    "cha": "8711401",
-    "tenVi": "Dạng CKD (SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "87114019",
-    "cap": 8,
-    "cha": "8711401",
-    "tenVi": "Loại khác (SEN)",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "87114020",
-    "cap": 8,
-    "cha": "871140",
-    "tenVi": "Loại khác, dạng CKD (SEN)",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "87114090",
-    "cap": 8,
-    "cha": "871140",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "871150",
-    "cap": 6,
-    "cha": "8711",
-    "tenVi": "Loại sử dụng động cơ đốt trong kiểu piston dung tích xi lanh trên 800 cc",
-    "tenEn": "Motorcycles (including mopeds) and cycles; fitted with auxiliary motor, with internal combustion piston engine of a cylinder capacity exceeding 800cc, with or without side-cars; side-cars",
-    "suyRa": false
-   },
-   {
-    "id": "87115020",
-    "cap": 8,
-    "cha": "871150",
-    "tenVi": "Dạng CKD (SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "87115090",
-    "cap": 8,
-    "cha": "871150",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "871160",
-    "cap": 6,
-    "cha": "8711",
-    "tenVi": "Loại dùng động cơ điện để tạo động lực",
-    "tenEn": "Motorcycles (including mopeds) and cycles; fitted with auxiliary motor, with electric motor for propulsion, with or without side-cars; side-cars",
-    "suyRa": false
-   },
-   {
-    "id": "8711601",
-    "cap": "TIEU_DE_QG",
-    "cha": "871160",
-    "tenVi": "Dạng CKD (SEN)",
-    "tenEn": "Completely Knocked Down",
-    "suyRa": true
-   },
-   {
-    "id": "87116011",
-    "cap": 8,
-    "cha": "8711601",
-    "tenVi": "Xe đạp",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "87116012",
-    "cap": 8,
-    "cha": "8711601",
-    "tenVi": "Xe \"kick scooter\"; xe tự cân bằng \"self-balancing cycle\"; xe \"pocket motorcycle” (SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "87116013",
-    "cap": 8,
-    "cha": "8711601",
-    "tenVi": "Xe mô tô khác",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "87116019",
-    "cap": 8,
-    "cha": "8711601",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "8711609",
-    "cap": "TIEU_DE_QG",
-    "cha": "871160",
-    "tenVi": "Loại khác",
-    "tenEn": "Other",
-    "suyRa": true
-   },
-   {
-    "id": "87116092",
-    "cap": 8,
-    "cha": "8711609",
-    "tenVi": "Xe \"kick scooter\"; xe tự cân bằng \"self-balancing cycle\"; xe \"pocket motorcycle” (SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "87116093",
-    "cap": 8,
-    "cha": "8711609",
-    "tenVi": "Xe mô tô khác",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "87116094",
-    "cap": 8,
-    "cha": "8711609",
-    "tenVi": "Xe đạp, có động cơ điện phụ trợ không quá 250 W và tốc độ tối đa không quá 25 km/h",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "87116095",
-    "cap": 8,
-    "cha": "8711609",
-    "tenVi": "Xe đạp khác",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "87116099",
-    "cap": 8,
-    "cha": "8711609",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "871190",
-    "cap": 6,
-    "cha": "8711",
-    "tenVi": "Loại khác",
-    "tenEn": "Motorcycles (including mopeds) and cycles; n.e.c. in heading no. 8711, fitted with auxiliary motor, with or without side-cars; side-cars",
-    "suyRa": false
-   },
-   {
-    "id": "87119040",
-    "cap": 8,
-    "cha": "871190",
-    "tenVi": "Thùng xe có bánh (side-cars)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "87119060",
-    "cap": 8,
-    "cha": "871190",
-    "tenVi": "Loại khác, dạng CKD (SEN)",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "87119090",
-    "cap": 8,
-    "cha": "871190",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   }
+  "dieuKienVao": [
+    {
+      "fact": "la_mo_to_xe_hai_banh_co_dong_co",
+      "op": "=",
+      "value": true,
+      "donVi": null,
+      "ngoaiTru": [],
+      "nguon": "nhom8711.nhom",
+      "trich": "những xe môtô hai bánh được thiết kế chủ yếu để chở người.",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "fact": "la_thung_xe_co_banh_side_car",
+      "op": "=",
+      "value": true,
+      "donVi": null,
+      "ngoaiTru": [],
+      "nguon": "nhom8711.nhom",
+      "trich": "tất cả các loại mô tô thùng, được thiết kế để chở người hoặc hàng hoá, loại mà xe và thùng xe không thể tách ra để sử dụng độc lập được.",
+      "nguonLoai": "AI_DA_KIEM"
+    }
   ],
-  "tenDien": []
- },
- "dungTuNguon": [
-  "nhom8711.nhom",
-  "tax.87111012",
-  "tax.87111014",
-  "tax.87111015",
-  "tax.87111019",
-  "tax.87111092",
-  "tax.87111094",
-  "tax.87111095",
-  "tax.87111099",
-  "tax.87112011",
-  "tax.87112012",
-  "tax.87112013",
-  "tax.87112014",
-  "tax.87112015",
-  "tax.87112016",
-  "tax.87112019",
-  "tax.87112091",
-  "tax.87112092",
-  "tax.87112093",
-  "tax.87112094",
-  "tax.87112095",
-  "tax.87112096",
-  "tax.87112099",
-  "tax.87113011",
-  "tax.87113019",
-  "tax.87113030",
-  "tax.87113090",
-  "tax.87114011",
-  "tax.87114019",
-  "tax.87114020",
-  "tax.87114090",
-  "tax.87115020",
-  "tax.87115090",
-  "tax.87116011",
-  "tax.87116012",
-  "tax.87116013",
-  "tax.87116019",
-  "tax.87116092",
-  "tax.87116093",
-  "tax.87116094",
-  "tax.87116095",
-  "tax.87116099",
-  "tax.87119040",
-  "tax.87119060",
-  "tax.87119090",
-  "wco.871110",
-  "wco.871120",
-  "wco.871130",
-  "wco.871140",
-  "wco.871150"
- ],
- "phienBan": "HS2022",
- "taoBoi": {
-  "provider": "google-studio:gemini-flash",
-  "model": null,
-  "luc": "2026-11-02T09:46:41.764Z",
-  "ms": 27
- },
- "kiemTra": {
-  "tong": 56,
-  "dat": 56,
-  "loai": 0,
-  "nguonBiCat": []
- }
+  "loaiTru": [
+    {
+      "dieuKien": "Xe môtô bốn bánh có khung gầm hình ống và cơ cấu lái kiểu ô tô",
+      "sangNhom": "8703",
+      "nguon": "nhom8711.nhom",
+      "trich": "Xe môtô bốn bánh dùng để chở người, có khung gầm hình ống và hệ thống lái loại xe hơi (ví dụ hệ thống lái dựa trên nguyên lý Acherman) (nhóm 87.03)",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "dieuKien": "Các rơmoóc dùng để gắn vào xe mô tô hay xe đạp",
+      "sangNhom": "8716",
+      "nguon": "nhom8711.nhom",
+      "trich": "Các rơmoóc dùng để gắn vào xe mô tô hay xe đạp (nhóm 87.16).",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "phanBiet": [
+    {
+      "hoi": "Hàng hoá có phải là xe bốn bánh địa hình chở người thuộc nhóm 87.03?",
+      "neuCo": "8703",
+      "neuKhong": "8711",
+      "nguon": "nhom8711.nhom",
+      "trich": "Xe môtô bốn bánh dùng để chở người, có khung gầm hình ống và hệ thống lái loại xe hơi (ví dụ hệ thống lái dựa trên nguyên lý Acherman) (nhóm 87.03)",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hoi": "Hàng hoá có phải là rơ moóc gắn vào xe mô tô hoặc xe đạp thuộc nhóm 87.16?",
+      "neuCo": "8716",
+      "neuKhong": "8711",
+      "nguon": "nhom8711.nhom",
+      "trich": "Các rơmoóc dùng để gắn vào xe mô tô hay xe đạp (nhóm 87.16).",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "tieuChi6": [
+    {
+      "hs6": "871110",
+      "fact": "dung_tich_xi_lanh_khong_qua_50cc",
+      "op": "<=",
+      "value": 50,
+      "donVi": "cc",
+      "nguon": "wco.871110",
+      "trich": "with internal combustion piston engine of a cylinder capacity not exceeding 50cc",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "871120",
+      "fact": "dung_tich_xi_lanh_tren_50cc_den_250cc",
+      "op": "<=",
+      "value": 250,
+      "donVi": "cc",
+      "nguon": "wco.871120",
+      "trich": "of cylinder capacity exceeding 50cc but not exceeding 250cc",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "871130",
+      "fact": "dung_tich_xi_lanh_tren_250cc_den_500cc",
+      "op": "<=",
+      "value": 500,
+      "donVi": "cc",
+      "nguon": "wco.871130",
+      "trich": "of cylinder capacity exceeding 250cc but not exceeding 500cc",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "871140",
+      "fact": "dung_tich_xi_lanh_tren_500cc_den_800cc",
+      "op": "<=",
+      "value": 800,
+      "donVi": "cc",
+      "nguon": "wco.871140",
+      "trich": "of cylinder capacity exceeding 500cc but not exceeding 800cc",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "871150",
+      "fact": "dung_tich_xi_lanh_tren_800cc",
+      "op": ">",
+      "value": 800,
+      "donVi": "cc",
+      "nguon": "wco.871150",
+      "trich": "of a cylinder capacity exceeding 800cc",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "87111012",
+      "dieuKien": "tên loại hàng: Xe gắn máy có bàn đạp hoặc xe đạp có động cơ",
+      "loaiKhac": false,
+      "nguon": "tax.87111012",
+      "trich": "87111012 - - - Xe gắn máy có bàn đạp (moped) hoặc xe đạp có động cơ",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Xe gắn máy có bàn đạp",
+            "xe đạp có động cơ"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L30-20261111#soat-L30",
+          "ngay": "2026-11-11",
+          "bam": "019a0efc4327f869d729c9a4f188dd6d14219d0e04c27c990f5bbf3e3e51bb28"
+        }
+      }
+    },
+    {
+      "hs": "87111014",
+      "dieuKien": "tên loại hàng: Xe \"powered kick scooter\" hoặc xe “pocket motorcycle”",
+      "loaiKhac": false,
+      "nguon": "tax.87111014",
+      "trich": "87111014 - - - Xe \"powered kick scooter\"; xe “pocket motorcycle” (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Xe \"powered kick scooter\"",
+            "xe “pocket motorcycle”"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L30-20261111#soat-L30",
+          "ngay": "2026-11-11",
+          "bam": "019a0efc4327f869d729c9a4f188dd6d14219d0e04c27c990f5bbf3e3e51bb28"
+        }
+      }
+    },
+    {
+      "hs": "87111015",
+      "dieuKien": "tên loại hàng: Xe mô tô hoặc xe scooter",
+      "loaiKhac": false,
+      "nguon": "tax.87111015",
+      "trich": "87111015 - - - Xe mô tô và xe scooter khác",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Xe mô tô",
+            "xe scooter"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L30-20261111#soat-L30",
+          "ngay": "2026-11-11",
+          "bam": "019a0efc4327f869d729c9a4f188dd6d14219d0e04c27c990f5bbf3e3e51bb28"
+        }
+      },
+      "phanConLai": true
+    },
+    {
+      "hs": "87111019",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.87111019",
+      "trich": "87111019 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "8711101",
+        "truAnhEm": [
+          "87111012",
+          "87111014",
+          "87111015"
+        ],
+        "truDayDu": [
+          "87111012",
+          "87111014",
+          "87111015"
+        ],
+        "toTienCoTen": "871110",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "87111092",
+      "dieuKien": "tên loại hàng: Xe gắn máy có bàn đạp hoặc xe đạp có động cơ",
+      "loaiKhac": false,
+      "nguon": "tax.87111092",
+      "trich": "87111092 - - - Xe gắn máy có bàn đạp (moped) hoặc xe đạp có động cơ",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Xe gắn máy có bàn đạp",
+            "xe đạp có động cơ"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L30-20261111#soat-L30",
+          "ngay": "2026-11-11",
+          "bam": "019a0efc4327f869d729c9a4f188dd6d14219d0e04c27c990f5bbf3e3e51bb28"
+        }
+      }
+    },
+    {
+      "hs": "87111094",
+      "dieuKien": "tên loại hàng: Xe \"powered kick scooter\" hoặc xe “pocket motorcycle”",
+      "loaiKhac": false,
+      "nguon": "tax.87111094",
+      "trich": "87111094 - - - Xe \"powered kick scooter\"; xe “pocket motorcycle” (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Xe \"powered kick scooter\"",
+            "xe “pocket motorcycle”"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L30-20261111#soat-L30",
+          "ngay": "2026-11-11",
+          "bam": "019a0efc4327f869d729c9a4f188dd6d14219d0e04c27c990f5bbf3e3e51bb28"
+        }
+      }
+    },
+    {
+      "hs": "87111095",
+      "dieuKien": "tên loại hàng: Xe mô tô hoặc xe scooter",
+      "loaiKhac": false,
+      "nguon": "tax.87111095",
+      "trich": "87111095 - - - Xe mô tô và xe scooter khác",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Xe mô tô",
+            "xe scooter"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L30-20261111#soat-L30",
+          "ngay": "2026-11-11",
+          "bam": "019a0efc4327f869d729c9a4f188dd6d14219d0e04c27c990f5bbf3e3e51bb28"
+        }
+      },
+      "phanConLai": true
+    },
+    {
+      "hs": "87111099",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.87111099",
+      "trich": "87111099 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "8711109",
+        "truAnhEm": [
+          "87111092",
+          "87111094",
+          "87111095"
+        ],
+        "truDayDu": [
+          "87111092",
+          "87111094",
+          "87111095",
+          "8711101"
+        ],
+        "toTienCoTen": "871110",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "87112011",
+      "dieuKien": "Xe mô tô địa hình (SEN)",
+      "loaiKhac": false,
+      "nguon": "tax.87112011",
+      "trich": "87112011 - - - Xe mô tô địa hình (SEN)",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87112012",
+      "dieuKien": "Xe gắn máy có bàn đạp (moped) hoặc xe đạp có động cơ",
+      "loaiKhac": false,
+      "nguon": "tax.87112012",
+      "trich": "87112012 - - - Xe gắn máy có bàn đạp (moped) hoặc xe đạp có động cơ",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87112013",
+      "dieuKien": "Xe “pocket motorcycle” (SEN)",
+      "loaiKhac": false,
+      "nguon": "tax.87112013",
+      "trich": "87112013 - - - Xe “pocket motorcycle” (SEN)",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87112014",
+      "dieuKien": "Dung tích xi lanh trên 150 cc nhưng không quá 200 cc ",
+      "loaiKhac": false,
+      "nguon": "tax.87112014",
+      "trich": "87112014 - - - - Dung tích xi lanh trên 150 cc nhưng không quá 200 cc ",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87112015",
+      "dieuKien": "Dung tích xi lanh trên 200 cc nhưng không quá 250 cc ",
+      "loaiKhac": false,
+      "nguon": "tax.87112015",
+      "trich": "87112015 - - - - Dung tích xi lanh trên 200 cc nhưng không quá 250 cc ",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87112016",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.87112016",
+      "trich": "87112016 - - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "871120~r17604",
+        "truAnhEm": [
+          "87112014",
+          "87112015"
+        ],
+        "truDayDu": [
+          "87112014",
+          "87112015",
+          "87112011",
+          "87112012",
+          "87112013"
+        ],
+        "toTienCoTen": "871120",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "87112019",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.87112019",
+      "trich": "87112019 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "8711201",
+        "truAnhEm": [
+          "87112011",
+          "87112012",
+          "87112013",
+          "871120~r17604"
+        ],
+        "truDayDu": [
+          "87112011",
+          "87112012",
+          "87112013",
+          "871120~r17604"
+        ],
+        "toTienCoTen": "871120",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "87112091",
+      "dieuKien": "Xe mô tô địa hình (SEN)",
+      "loaiKhac": false,
+      "nguon": "tax.87112091",
+      "trich": "87112091 - - - Xe mô tô địa hình (SEN)",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87112092",
+      "dieuKien": "Xe gắn máy có bàn đạp (moped) hoặc xe đạp có động cơ",
+      "loaiKhac": false,
+      "nguon": "tax.87112092",
+      "trich": "87112092 - - - Xe gắn máy có bàn đạp (moped) hoặc xe đạp có động cơ",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87112093",
+      "dieuKien": "Xe “pocket motorcycle” (SEN)",
+      "loaiKhac": false,
+      "nguon": "tax.87112093",
+      "trich": "87112093 - - - Xe “pocket motorcycle” (SEN)",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87112094",
+      "dieuKien": "Dung tích xi lanh trên 150 cc nhưng không quá 200 cc ",
+      "loaiKhac": false,
+      "nguon": "tax.87112094",
+      "trich": "87112094 - - - - Dung tích xi lanh trên 150 cc nhưng không quá 200 cc ",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87112095",
+      "dieuKien": "Dung tích xi lanh trên 200 cc nhưng không quá 250 cc ",
+      "loaiKhac": false,
+      "nguon": "tax.87112095",
+      "trich": "87112095 - - - - Dung tích xi lanh trên 200 cc nhưng không quá 250 cc ",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87112096",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.87112096",
+      "trich": "87112096 - - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "871120~r17613",
+        "truAnhEm": [
+          "87112094",
+          "87112095"
+        ],
+        "truDayDu": [
+          "87112094",
+          "87112095",
+          "87112091",
+          "87112092",
+          "87112093",
+          "8711201"
+        ],
+        "toTienCoTen": "871120",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "87112099",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.87112099",
+      "trich": "87112099 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "8711209",
+        "truAnhEm": [
+          "87112091",
+          "87112092",
+          "87112093",
+          "871120~r17613"
+        ],
+        "truDayDu": [
+          "87112091",
+          "87112092",
+          "87112093",
+          "871120~r17613",
+          "8711201"
+        ],
+        "toTienCoTen": "871120",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "87113011",
+      "dieuKien": "không: đã lắp ráp",
+      "loaiKhac": false,
+      "nguon": "tax.87113011",
+      "trich": "87113011 - - - Dạng CKD (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "daLapRap",
+          "op": "KHONG"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L30-20261111#soat-L30",
+          "ngay": "2026-11-11",
+          "bam": "e2d3f1e2fd79a3f16c4aa1f98c4349e28a2a1c09189aec98df408e84b0d14d53"
+        }
+      }
+    },
+    {
+      "hs": "87113019",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.87113019",
+      "trich": "87113019 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "8711301",
+        "truAnhEm": [
+          "87113011"
+        ],
+        "truDayDu": [
+          "87113011"
+        ],
+        "toTienCoTen": "871130",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "87113030",
+      "dieuKien": "không: đã lắp ráp",
+      "loaiKhac": true,
+      "nguon": "tax.87113030",
+      "trich": "87113030 - - Loại khác, dạng CKD (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "871130",
+        "truAnhEm": [
+          "8711301"
+        ],
+        "truDayDu": [
+          "8711301"
+        ],
+        "toTienCoTen": "871130",
+        "dinhNghiaDuoc": true
+      },
+      "dieuKienSo": [
+        {
+          "fact": "daLapRap",
+          "op": "KHONG"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L30-20261111#soat-L30",
+          "ngay": "2026-11-11",
+          "bam": "e2d3f1e2fd79a3f16c4aa1f98c4349e28a2a1c09189aec98df408e84b0d14d53"
+        }
+      }
+    },
+    {
+      "hs": "87113090",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.87113090",
+      "trich": "87113090 - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "871130",
+        "truAnhEm": [
+          "8711301",
+          "87113030"
+        ],
+        "truDayDu": [
+          "8711301",
+          "87113030"
+        ],
+        "toTienCoTen": "871130",
+        "dinhNghiaDuoc": false
+      }
+    },
+    {
+      "hs": "87114011",
+      "dieuKien": "không: đã lắp ráp",
+      "loaiKhac": false,
+      "nguon": "tax.87114011",
+      "trich": "87114011 - - - Dạng CKD (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "daLapRap",
+          "op": "KHONG"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L30-20261111#soat-L30",
+          "ngay": "2026-11-11",
+          "bam": "b3ee8781d2202ea9d05428b45ad598b0131ea88c5733a8add80b7dadf63eb78f"
+        }
+      }
+    },
+    {
+      "hs": "87114019",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.87114019",
+      "trich": "87114019 - - - Loại khác (SEN)",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "8711401",
+        "truAnhEm": [
+          "87114011"
+        ],
+        "truDayDu": [
+          "87114011"
+        ],
+        "toTienCoTen": "871140",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "87114020",
+      "dieuKien": "không: đã lắp ráp",
+      "loaiKhac": true,
+      "nguon": "tax.87114020",
+      "trich": "87114020 - - Loại khác, dạng CKD (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "871140",
+        "truAnhEm": [
+          "8711401"
+        ],
+        "truDayDu": [
+          "8711401"
+        ],
+        "toTienCoTen": "871140",
+        "dinhNghiaDuoc": true
+      },
+      "dieuKienSo": [
+        {
+          "fact": "daLapRap",
+          "op": "KHONG"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L30-20261111#soat-L30",
+          "ngay": "2026-11-11",
+          "bam": "b3ee8781d2202ea9d05428b45ad598b0131ea88c5733a8add80b7dadf63eb78f"
+        }
+      }
+    },
+    {
+      "hs": "87114090",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.87114090",
+      "trich": "87114090 - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "871140",
+        "truAnhEm": [
+          "8711401",
+          "87114020"
+        ],
+        "truDayDu": [
+          "8711401",
+          "87114020"
+        ],
+        "toTienCoTen": "871140",
+        "dinhNghiaDuoc": false
+      }
+    },
+    {
+      "hs": "87115020",
+      "dieuKien": "Dạng CKD (SEN)",
+      "loaiKhac": false,
+      "nguon": "tax.87115020",
+      "trich": "87115020 - - Dạng CKD (SEN)",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87115090",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.87115090",
+      "trich": "87115090 - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "871150",
+        "truAnhEm": [
+          "87115020"
+        ],
+        "truDayDu": [
+          "87115020"
+        ],
+        "toTienCoTen": "871150",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "87116011",
+      "dieuKien": "tên loại hàng: Xe đạp",
+      "loaiKhac": false,
+      "nguon": "tax.87116011",
+      "trich": "87116011 - - - Xe đạp",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xe đạp"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L30-20261111#soat-L30",
+          "ngay": "2026-11-11",
+          "bam": "cfcbb0539a4a2566d1c6fcba003321b5aa60b515c947aa10b00967b11bfb3721"
+        }
+      }
+    },
+    {
+      "hs": "87116012",
+      "dieuKien": "tên loại hàng: Xe \"kick scooter\" hoặc xe tự cân bằng \"self-balancing cycle\" hoặc xe \"pocket motorcycle”",
+      "loaiKhac": false,
+      "nguon": "tax.87116012",
+      "trich": "87116012 - - - Xe \"kick scooter\"; xe tự cân bằng \"self-balancing cycle\"; xe \"pocket motorcycle” (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Xe \"kick scooter\"",
+            "xe tự cân bằng \"self-balancing cycle\"",
+            "xe \"pocket motorcycle”"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L30-20261111#soat-L30",
+          "ngay": "2026-11-11",
+          "bam": "cfcbb0539a4a2566d1c6fcba003321b5aa60b515c947aa10b00967b11bfb3721"
+        }
+      }
+    },
+    {
+      "hs": "87116013",
+      "dieuKien": "tên loại hàng: Xe mô tô",
+      "loaiKhac": false,
+      "nguon": "tax.87116013",
+      "trich": "87116013 - - - Xe mô tô khác",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xe mô tô"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L30-20261111#soat-L30",
+          "ngay": "2026-11-11",
+          "bam": "cfcbb0539a4a2566d1c6fcba003321b5aa60b515c947aa10b00967b11bfb3721"
+        }
+      },
+      "phanConLai": true
+    },
+    {
+      "hs": "87116019",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.87116019",
+      "trich": "87116019 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "8711601",
+        "truAnhEm": [
+          "87116011",
+          "87116012",
+          "87116013"
+        ],
+        "truDayDu": [
+          "87116011",
+          "87116012",
+          "87116013"
+        ],
+        "toTienCoTen": "871160",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "87116092",
+      "dieuKien": "tên loại hàng: Xe \"kick scooter\" hoặc xe tự cân bằng \"self-balancing cycle\" hoặc xe \"pocket motorcycle”",
+      "loaiKhac": false,
+      "nguon": "tax.87116092",
+      "trich": "87116092 - - - Xe \"kick scooter\"; xe tự cân bằng \"self-balancing cycle\"; xe \"pocket motorcycle” (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Xe \"kick scooter\"",
+            "xe tự cân bằng \"self-balancing cycle\"",
+            "xe \"pocket motorcycle”"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L30-20261111#soat-L30",
+          "ngay": "2026-11-11",
+          "bam": "cfcbb0539a4a2566d1c6fcba003321b5aa60b515c947aa10b00967b11bfb3721"
+        }
+      }
+    },
+    {
+      "hs": "87116093",
+      "dieuKien": "tên loại hàng: Xe mô tô",
+      "loaiKhac": false,
+      "nguon": "tax.87116093",
+      "trich": "87116093 - - - Xe mô tô khác",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xe mô tô"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L30-20261111#soat-L30",
+          "ngay": "2026-11-11",
+          "bam": "cfcbb0539a4a2566d1c6fcba003321b5aa60b515c947aa10b00967b11bfb3721"
+        }
+      },
+      "phanConLai": true
+    },
+    {
+      "hs": "87116094",
+      "dieuKien": "tên loại hàng: Xe đạp; công suất <= 250 W; tốc độ di chuyển (tối đa) <= 25 km/h",
+      "loaiKhac": false,
+      "nguon": "tax.87116094",
+      "trich": "87116094 - - - Xe đạp, có động cơ điện phụ trợ không quá 250 W và tốc độ tối đa không quá 25 km/h",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xe đạp"
+        },
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 250,
+          "donVi": "W"
+        },
+        {
+          "fact": "tocDoDiChuyen",
+          "op": "<=",
+          "value": 25,
+          "donVi": "km/h"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L30-20261111#soat-L30",
+          "ngay": "2026-11-11",
+          "bam": "cfcbb0539a4a2566d1c6fcba003321b5aa60b515c947aa10b00967b11bfb3721"
+        }
+      }
+    },
+    {
+      "hs": "87116095",
+      "dieuKien": "tên loại hàng: Xe đạp",
+      "loaiKhac": false,
+      "nguon": "tax.87116095",
+      "trich": "87116095 - - - Xe đạp khác",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xe đạp"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L30-20261111#soat-L30",
+          "ngay": "2026-11-11",
+          "bam": "cfcbb0539a4a2566d1c6fcba003321b5aa60b515c947aa10b00967b11bfb3721"
+        }
+      },
+      "phanConLai": true
+    },
+    {
+      "hs": "87116099",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.87116099",
+      "trich": "87116099 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "8711609",
+        "truAnhEm": [
+          "87116092",
+          "87116093",
+          "87116094",
+          "87116095"
+        ],
+        "truDayDu": [
+          "87116092",
+          "87116093",
+          "87116094",
+          "87116095",
+          "8711601"
+        ],
+        "toTienCoTen": "871160",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "87119040",
+      "dieuKien": "tên loại hàng: Thùng xe có bánh (side-cars)",
+      "loaiKhac": false,
+      "nguon": "tax.87119040",
+      "trich": "87119040 - - Thùng xe có bánh (side-cars)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thùng xe có bánh (side-cars)"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L30-20261111#soat-L30",
+          "ngay": "2026-11-11",
+          "bam": "7ee995455957798facb651cd851b0e25f93ea4f4e975ba145d94b7c8ab65338d"
+        }
+      }
+    },
+    {
+      "hs": "87119060",
+      "dieuKien": "không: đã lắp ráp",
+      "loaiKhac": true,
+      "nguon": "tax.87119060",
+      "trich": "87119060 - - Loại khác, dạng CKD (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "871190",
+        "truAnhEm": [
+          "87119040"
+        ],
+        "truDayDu": [
+          "87119040"
+        ],
+        "toTienCoTen": "871190",
+        "dinhNghiaDuoc": true
+      },
+      "dieuKienSo": [
+        {
+          "fact": "daLapRap",
+          "op": "KHONG"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L30-20261111#soat-L30",
+          "ngay": "2026-11-11",
+          "bam": "7ee995455957798facb651cd851b0e25f93ea4f4e975ba145d94b7c8ab65338d"
+        }
+      }
+    },
+    {
+      "hs": "87119090",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.87119090",
+      "trich": "87119090 - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "871190",
+        "truAnhEm": [
+          "87119040",
+          "87119060"
+        ],
+        "truDayDu": [
+          "87119040",
+          "87119060"
+        ],
+        "toTienCoTen": "871190",
+        "dinhNghiaDuoc": false
+      }
+    }
+  ],
+  "cay": {
+    "nguonLoai": "MAY_SUY",
+    "sinhTu": "lib/hs-tree.js",
+    "nut": [
+      {
+        "id": "8711",
+        "cap": 4,
+        "cha": "87",
+        "tenVi": "Mô tô (kể cả xe gắn máy có bàn đạp (moped)) và xe đạp có gắn động cơ phụ trợ, có hoặc không có thùng xe bên cạnh; thùng xe có bánh (side- cars).",
+        "tenEn": "Motorcycles (including mopeds) and cycles; fitted with an auxiliary motor, with or without side-cars; side-cars",
+        "suyRa": false
+      },
+      {
+        "id": "871110",
+        "cap": 6,
+        "cha": "8711",
+        "tenVi": "Loại sử dụng động cơ đốt trong kiểu piston dung tích xi lanh không quá 50 cc",
+        "tenEn": "Motorcycles (including mopeds) and cycles; fitted with an auxiliary motor, with internal combustion piston engine of a cylinder capacity not exceeding 50cc, with or without side-cars; side-cars",
+        "suyRa": false
+      },
+      {
+        "id": "8711101",
+        "cap": "TIEU_DE_QG",
+        "cha": "871110",
+        "tenVi": "Dạng CKD (SEN)",
+        "tenEn": "Completely Knocked Down",
+        "suyRa": true
+      },
+      {
+        "id": "87111012",
+        "cap": 8,
+        "cha": "8711101",
+        "tenVi": "Xe gắn máy có bàn đạp (moped) hoặc xe đạp có động cơ",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "87111014",
+        "cap": 8,
+        "cha": "8711101",
+        "tenVi": "Xe \"powered kick scooter\"; xe “pocket motorcycle” (SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "87111015",
+        "cap": 8,
+        "cha": "8711101",
+        "tenVi": "Xe mô tô và xe scooter khác",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "87111019",
+        "cap": 8,
+        "cha": "8711101",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "8711109",
+        "cap": "TIEU_DE_QG",
+        "cha": "871110",
+        "tenVi": "Loại khác",
+        "tenEn": "Other",
+        "suyRa": true
+      },
+      {
+        "id": "87111092",
+        "cap": 8,
+        "cha": "8711109",
+        "tenVi": "Xe gắn máy có bàn đạp (moped) hoặc xe đạp có động cơ",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "87111094",
+        "cap": 8,
+        "cha": "8711109",
+        "tenVi": "Xe \"powered kick scooter\"; xe “pocket motorcycle” (SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "87111095",
+        "cap": 8,
+        "cha": "8711109",
+        "tenVi": "Xe mô tô và xe scooter khác",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "87111099",
+        "cap": 8,
+        "cha": "8711109",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "871120",
+        "cap": 6,
+        "cha": "8711",
+        "tenVi": "Loại sử dụng động cơ đốt trong kiểu piston dung tích xi lanh trên 50 cc nhưng không quá 250 cc",
+        "tenEn": "Motorcycles (including mopeds) and cycles; fitted with an auxiliary motor, internal combustion piston engine, of cylinder capacity exceeding 50cc but not exceeding 250cc, with or without side-cars; side-cars",
+        "suyRa": false
+      },
+      {
+        "id": "8711201",
+        "cap": "TIEU_DE_QG",
+        "cha": "871120",
+        "tenVi": "Dạng CKD (SEN)",
+        "tenEn": "Completely Knocked Down",
+        "suyRa": true
+      },
+      {
+        "id": "87112011",
+        "cap": 8,
+        "cha": "8711201",
+        "tenVi": "Xe mô tô địa hình (SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "87112012",
+        "cap": 8,
+        "cha": "8711201",
+        "tenVi": "Xe gắn máy có bàn đạp (moped) hoặc xe đạp có động cơ",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "87112013",
+        "cap": 8,
+        "cha": "8711201",
+        "tenVi": "Xe “pocket motorcycle” (SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "87112014",
+        "cap": 8,
+        "cha": "8711201",
+        "tenVi": "Dung tích xi lanh trên 150 cc nhưng không quá 200 cc",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "87112015",
+        "cap": 8,
+        "cha": "8711201",
+        "tenVi": "Dung tích xi lanh trên 200 cc nhưng không quá 250 cc",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "87112016",
+        "cap": 8,
+        "cha": "8711201",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "87112019",
+        "cap": 8,
+        "cha": "8711201",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "8711209",
+        "cap": "TIEU_DE_QG",
+        "cha": "871120",
+        "tenVi": "Loại khác",
+        "tenEn": "Other",
+        "suyRa": true
+      },
+      {
+        "id": "87112091",
+        "cap": 8,
+        "cha": "8711209",
+        "tenVi": "Xe mô tô địa hình (SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "87112092",
+        "cap": 8,
+        "cha": "8711209",
+        "tenVi": "Xe gắn máy có bàn đạp (moped) hoặc xe đạp có động cơ",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "87112093",
+        "cap": 8,
+        "cha": "8711209",
+        "tenVi": "Xe “pocket motorcycle” (SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "87112094",
+        "cap": 8,
+        "cha": "8711209",
+        "tenVi": "Dung tích xi lanh trên 150 cc nhưng không quá 200 cc",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "87112095",
+        "cap": 8,
+        "cha": "8711209",
+        "tenVi": "Dung tích xi lanh trên 200 cc nhưng không quá 250 cc",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "87112096",
+        "cap": 8,
+        "cha": "8711209",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "87112099",
+        "cap": 8,
+        "cha": "8711209",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "871130",
+        "cap": 6,
+        "cha": "8711",
+        "tenVi": "Loại sử dụng động cơ đốt trong kiểu piston dung tích xi lanh trên 250 cc nhưng không quá 500 cc",
+        "tenEn": "Motorcycles (including mopeds) and cycles; fitted with an auxiliary motor, internal combustion piston engine, of cylinder capacity exceeding 250cc but not exceeding 500cc, with or without side-cars; side-cars",
+        "suyRa": false
+      },
+      {
+        "id": "8711301",
+        "cap": "TIEU_DE_QG",
+        "cha": "871130",
+        "tenVi": "Xe mô tô địa hình (SEN)",
+        "tenEn": "Motocross motorcycles",
+        "suyRa": true
+      },
+      {
+        "id": "87113011",
+        "cap": 8,
+        "cha": "8711301",
+        "tenVi": "Dạng CKD (SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "87113019",
+        "cap": 8,
+        "cha": "8711301",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "87113030",
+        "cap": 8,
+        "cha": "871130",
+        "tenVi": "Loại khác, dạng CKD (SEN)",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "87113090",
+        "cap": 8,
+        "cha": "871130",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "871140",
+        "cap": 6,
+        "cha": "8711",
+        "tenVi": "Loại sử dụng động cơ đốt trong kiểu piston dung tích xi lanh trên 500 cc nhưng không quá 800 cc",
+        "tenEn": "Motorcycles (including mopeds) and cycles; fitted with auxiliary motor, internal combustion piston engine of cylinder capacity exceeding 500cc but not exceeding 800cc, with or without sidecars; side-cars",
+        "suyRa": false
+      },
+      {
+        "id": "8711401",
+        "cap": "TIEU_DE_QG",
+        "cha": "871140",
+        "tenVi": "Xe mô tô địa hình (SEN)",
+        "tenEn": "Motocross motorcycles",
+        "suyRa": true
+      },
+      {
+        "id": "87114011",
+        "cap": 8,
+        "cha": "8711401",
+        "tenVi": "Dạng CKD (SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "87114019",
+        "cap": 8,
+        "cha": "8711401",
+        "tenVi": "Loại khác (SEN)",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "87114020",
+        "cap": 8,
+        "cha": "871140",
+        "tenVi": "Loại khác, dạng CKD (SEN)",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "87114090",
+        "cap": 8,
+        "cha": "871140",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "871150",
+        "cap": 6,
+        "cha": "8711",
+        "tenVi": "Loại sử dụng động cơ đốt trong kiểu piston dung tích xi lanh trên 800 cc",
+        "tenEn": "Motorcycles (including mopeds) and cycles; fitted with auxiliary motor, with internal combustion piston engine of a cylinder capacity exceeding 800cc, with or without side-cars; side-cars",
+        "suyRa": false
+      },
+      {
+        "id": "87115020",
+        "cap": 8,
+        "cha": "871150",
+        "tenVi": "Dạng CKD (SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "87115090",
+        "cap": 8,
+        "cha": "871150",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "871160",
+        "cap": 6,
+        "cha": "8711",
+        "tenVi": "Loại dùng động cơ điện để tạo động lực",
+        "tenEn": "Motorcycles (including mopeds) and cycles; fitted with auxiliary motor, with electric motor for propulsion, with or without side-cars; side-cars",
+        "suyRa": false
+      },
+      {
+        "id": "8711601",
+        "cap": "TIEU_DE_QG",
+        "cha": "871160",
+        "tenVi": "Dạng CKD (SEN)",
+        "tenEn": "Completely Knocked Down",
+        "suyRa": true
+      },
+      {
+        "id": "87116011",
+        "cap": 8,
+        "cha": "8711601",
+        "tenVi": "Xe đạp",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "87116012",
+        "cap": 8,
+        "cha": "8711601",
+        "tenVi": "Xe \"kick scooter\"; xe tự cân bằng \"self-balancing cycle\"; xe \"pocket motorcycle” (SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "87116013",
+        "cap": 8,
+        "cha": "8711601",
+        "tenVi": "Xe mô tô khác",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "87116019",
+        "cap": 8,
+        "cha": "8711601",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "8711609",
+        "cap": "TIEU_DE_QG",
+        "cha": "871160",
+        "tenVi": "Loại khác",
+        "tenEn": "Other",
+        "suyRa": true
+      },
+      {
+        "id": "87116092",
+        "cap": 8,
+        "cha": "8711609",
+        "tenVi": "Xe \"kick scooter\"; xe tự cân bằng \"self-balancing cycle\"; xe \"pocket motorcycle” (SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "87116093",
+        "cap": 8,
+        "cha": "8711609",
+        "tenVi": "Xe mô tô khác",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "87116094",
+        "cap": 8,
+        "cha": "8711609",
+        "tenVi": "Xe đạp, có động cơ điện phụ trợ không quá 250 W và tốc độ tối đa không quá 25 km/h",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "87116095",
+        "cap": 8,
+        "cha": "8711609",
+        "tenVi": "Xe đạp khác",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "87116099",
+        "cap": 8,
+        "cha": "8711609",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "871190",
+        "cap": 6,
+        "cha": "8711",
+        "tenVi": "Loại khác",
+        "tenEn": "Motorcycles (including mopeds) and cycles; n.e.c. in heading no. 8711, fitted with auxiliary motor, with or without side-cars; side-cars",
+        "suyRa": false
+      },
+      {
+        "id": "87119040",
+        "cap": 8,
+        "cha": "871190",
+        "tenVi": "Thùng xe có bánh (side-cars)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "87119060",
+        "cap": 8,
+        "cha": "871190",
+        "tenVi": "Loại khác, dạng CKD (SEN)",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "87119090",
+        "cap": 8,
+        "cha": "871190",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      }
+    ],
+    "tenDien": []
+  },
+  "dungTuNguon": [
+    "nhom8711.nhom",
+    "tax.87111012",
+    "tax.87111014",
+    "tax.87111015",
+    "tax.87111019",
+    "tax.87111092",
+    "tax.87111094",
+    "tax.87111095",
+    "tax.87111099",
+    "tax.87112011",
+    "tax.87112012",
+    "tax.87112013",
+    "tax.87112014",
+    "tax.87112015",
+    "tax.87112016",
+    "tax.87112019",
+    "tax.87112091",
+    "tax.87112092",
+    "tax.87112093",
+    "tax.87112094",
+    "tax.87112095",
+    "tax.87112096",
+    "tax.87112099",
+    "tax.87113011",
+    "tax.87113019",
+    "tax.87113030",
+    "tax.87113090",
+    "tax.87114011",
+    "tax.87114019",
+    "tax.87114020",
+    "tax.87114090",
+    "tax.87115020",
+    "tax.87115090",
+    "tax.87116011",
+    "tax.87116012",
+    "tax.87116013",
+    "tax.87116019",
+    "tax.87116092",
+    "tax.87116093",
+    "tax.87116094",
+    "tax.87116095",
+    "tax.87116099",
+    "tax.87119040",
+    "tax.87119060",
+    "tax.87119090",
+    "wco.871110",
+    "wco.871120",
+    "wco.871130",
+    "wco.871140",
+    "wco.871150"
+  ],
+  "phienBan": "HS2022",
+  "taoBoi": {
+    "provider": "google-studio:gemini-flash",
+    "model": null,
+    "luc": "2026-11-02T09:46:41.764Z",
+    "ms": 27
+  },
+  "kiemTra": {
+    "tong": 56,
+    "dat": 56,
+    "loai": 0,
+    "nguonBiCat": []
+  },
+  "dieuKienNut": [
+    {
+      "id": "8711101",
+      "nguon": "tieuDe.8711101",
+      "trich": "8711101 Dạng CKD (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "daLapRap",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L30-20261111#soat-L30",
+          "ngay": "2026-11-11",
+          "bam": "019a0efc4327f869d729c9a4f188dd6d14219d0e04c27c990f5bbf3e3e51bb28"
+        }
+      }
+    },
+    {
+      "id": "8711301",
+      "nguon": "tieuDe.8711301",
+      "trich": "8711301 Xe mô tô địa hình (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xe mô tô địa hình"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L30-20261111#soat-L30",
+          "ngay": "2026-11-11",
+          "bam": "e2d3f1e2fd79a3f16c4aa1f98c4349e28a2a1c09189aec98df408e84b0d14d53"
+        }
+      }
+    },
+    {
+      "id": "8711401",
+      "nguon": "tieuDe.8711401",
+      "trich": "8711401 Xe mô tô địa hình (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xe mô tô địa hình"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L30-20261111#soat-L30",
+          "ngay": "2026-11-11",
+          "bam": "b3ee8781d2202ea9d05428b45ad598b0131ea88c5733a8add80b7dadf63eb78f"
+        }
+      }
+    },
+    {
+      "id": "8711601",
+      "nguon": "tieuDe.8711601",
+      "trich": "8711601 Dạng CKD (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "daLapRap",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L30-20261111#soat-L30",
+          "ngay": "2026-11-11",
+          "bam": "cfcbb0539a4a2566d1c6fcba003321b5aa60b515c947aa10b00967b11bfb3721"
+        }
+      }
+    }
+  ]
 }
