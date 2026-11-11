@@ -8,12 +8,26 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Catalog chỉ liệt kê tên sách và các ấn phẩm"
+          "value": "Catalog chỉ liệt kê tên"
         },
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": ["giáo dục", "kỹ thuật", "khoa học", "lịch sử", "văn hóa"]
+          "value": [
+            "sách",
+            "các ấn phẩm"
+          ]
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "giáo dục",
+            "kỹ thuật",
+            "khoa học",
+            "lịch sử",
+            "văn hóa"
+          ]
         }
       ]
     }
@@ -39,6 +53,11 @@
       "ma": "491110",
       "loai": "QUYET_DINH",
       "ghiChu": "Tiêu đề 6 số 491110 là TÊN NHÓM (heading 4911) \"Các ấn phẩm quảng cáo thương mại, các catalog thương mại và các ấn phẩm tương tự\" (cây gói hiện chữ WCO \"491110 Printed matter; trade advertising material, commercial catalogues and the like\") ⇒ không phải điều kiện của nút (mẫu 482320) nên dieuKienNut rỗng; goi.tangKhongMa rỗng. Vế MỞ \"tương tự\"/\"and the like\" không liệt kê đóng thành danh sách. wco.491110 là nguồn CHUNG cho cả hai dòng ⇒ ranh giới nằm ở tiêu đề dòng 49111010."
+    },
+    {
+      "ma": "49111010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude (#1109, 11/11): sửa cong3-liet-ke-trong-mot-chuoi — giá trị cũ \"Catalog chỉ liệt kê tên sách và các ấn phẩm\" gói liệt kê \"sách và các ấn phẩm\" (EN \"books and publications\") trong một chuỗi (bộ so đọc thành VÀ). Tách: tenLoai \"Catalog chỉ liệt kê tên\" (giữ vế giới hạn \"chỉ liệt kê\" / \"listing only\") + tenLoai [\"sách\",\"các ấn phẩm\"] + tenLoai [5 lĩnh vực] — ba điều kiện cùng khoá = VÀ, mỗi mảng = HOẶC; mọi giá trị nguyên văn chữ dòng."
     }
   ]
 }

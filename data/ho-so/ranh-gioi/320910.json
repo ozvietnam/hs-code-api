@@ -4,7 +4,7 @@
   "nhom": "3209",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1547#soan-320910",
@@ -95,6 +95,13 @@
       "ma": "32091050",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.32091050 \"Sơn chống hà và/hoặc chống ăn mòn dùng để sơn vỏ tàu thủy (SEN)\" (EN \"Anti-fouling and/or anti-corrosive paints for ships' hulls\") ⇒ sonChongHaHoacChongAnMonVoTau CO. KHÔNG ghi tenLoai: chữ biểu là \"sơn chống hà VÀ/HOẶC chống ăn mòn\" (một loại sơn có hai đặc tính), tách tên ra sẽ hẹp hơn chữ; cũng không ghi dungCho vì .10 (\"Vecni (kể cả dầu bóng)\") chỉ có khoá tên — thêm khoá công dụng ở .50 sẽ sinh chồng lấn theo TRỤC, nên cặp này khai chongLanVanBan."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L10-20261111#soat-L10",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 320910.json:32091050 SUY RỘNG: chữ biểu \"Sơn chống hà và/hoặc chống ăn mòn dùng để sơn vỏ tàu thủy\" (EN \"... paints for ships' hulls\") — điều kiện chỉ còn sonChongHaHoacChongAnMonVoTau CO, bỏ danh từ đầu \"Sơn\"/paints ⇒ vecni (kể cả dầu bóng) chống hà thoả .50. (B) chongLanVanBan 32091010+32091050 lyDo \"một sơn chống hà dạng vecni/dầu bóng thỏa cả hai dòng\" sai: vecni ↔ sơn là hai tên rời nhau (mẫu 320890 .30). (C) chongLanVanBan 32091040+32091050 tự mâu thuẫn: lyDo thừa nhận \"da thuộc và vỏ tàu thủy loại trừ nhau\" mà vẫn khai chồng lấn ⇒ lúc chạy hỏi thừa (MFN .40 5% ↔ .50 10%). Sửa: .50 thêm tenLoai \"Sơn\" (cùng khoá tên với .10/.40) + dungCho \"vỏ tàu thủy\" cùng khoá với .40, bỏ hai mục chongLanVanBan."
     }
   ]
 }
