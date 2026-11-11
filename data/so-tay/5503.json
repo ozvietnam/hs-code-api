@@ -1,298 +1,327 @@
 {
- "nhom": "5503",
- "phamVi": {
-  "text": "Xơ staple tổng hợp, chưa chải thô, chải kỹ hoặc gia công cách khác để kéo sợi, kể cả tô filament tổng hợp dài không quá 2m",
-  "nguon": "nhom5503.nhom",
-  "trich": "Các loại xơ của nhóm này được sản xuất như mô tả trong Chú giải tổng quát của Chương này.",
-  "nguonLoai": "AI_DA_KIEM"
- },
- "dieuKienVao": [
-  {
-   "fact": "la_xo_staple_tong_hop",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "nhom5503.nhom",
-   "trich": "Xơ staple tổng hợp thường được ép-đóng gói thành kiện.",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "loaiTru": [
-  {
-   "dieuKien": "Tô filament tổng hợp có chiều dài trên 2 m",
-   "sangNhom": "5501",
-   "nguon": "nhom5503.nhom",
-   "trich": "Tô filament tổng hợp có chiều dài trên 2 m bị loại trừ (nhóm 54.02 hoặc 55.01).",
-   "nguonLoai": "AI_DA_KIEM"
+  "nhom": "5503",
+  "phamVi": {
+    "text": "Xơ staple tổng hợp, chưa chải thô, chải kỹ hoặc gia công cách khác để kéo sợi, kể cả tô filament tổng hợp dài không quá 2m",
+    "nguon": "nhom5503.nhom",
+    "trich": "Các loại xơ của nhóm này được sản xuất như mô tả trong Chú giải tổng quát của Chương này.",
+    "nguonLoai": "AI_DA_KIEM"
   },
-  {
-   "dieuKien": "Xơ staple tổng hợp đã được chải thô, chải kỹ hoặc được gia công cách khác để kéo sợi",
-   "sangNhom": "5506",
-   "nguon": "nhom5503.nhom",
-   "trich": "Xơ staple tổng hợp đã được chải thô, chải kỹ hoặc được gia công cách khác để kéo sợi cũng bị loại trừ (nhóm 55.06).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "phanBiet": [
-  {
-   "hoi": "Hàng có phải là tô filament tổng hợp có chiều dài trên 2 m chuyển sang nhóm 55.01 không?",
-   "neuCo": "5501",
-   "neuKhong": "5503",
-   "nguon": "nhom5503.nhom",
-   "trich": "Tô filament tổng hợp có chiều dài trên 2 m bị loại trừ (nhóm 54.02 hoặc 55.01).",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hoi": "Hàng có phải là xơ staple tổng hợp đã được chải thô, chải kỹ hoặc được gia công cách khác để kéo sợi chuyển sang nhóm 55.06 không?",
-   "neuCo": "5506",
-   "neuKhong": "5503",
-   "nguon": "nhom5503.nhom",
-   "trich": "Xơ staple tổng hợp đã được chải thô, chải kỹ hoặc được gia công cách khác để kéo sợi cũng bị loại trừ (nhóm 55.06).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "tieuChi6": [],
- "dong8": [
-  {
-   "hs": "55031100",
-   "dieuKien": "Từ các aramit",
-   "loaiKhac": false,
-   "nguon": "tax.55031100",
-   "trich": "55031100 - - Từ các aramit",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "55031900",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.55031900",
-   "trich": "55031900 - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "55031",
-    "truAnhEm": [
-     "55031100"
-    ],
-    "truDayDu": [
-     "55031100",
-     "550320",
-     "55033000",
-     "55034000",
-     "550390"
-    ],
-    "toTienCoTen": "5503",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "55032010",
-   "dieuKien": "Loại có màu trừ màu trắng (SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.55032010",
-   "trich": "55032010 - - Loại có màu trừ màu trắng (SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "55032090",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.55032090",
-   "trich": "55032090 - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "550320",
-    "truAnhEm": [
-     "55032010"
-    ],
-    "truDayDu": [
-     "55032010"
-    ],
-    "toTienCoTen": "550320",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "55033000",
-   "dieuKien": "Từ acrylic hoặc modacrylic",
-   "loaiKhac": false,
-   "nguon": "tax.55033000",
-   "trich": "55033000 - Từ acrylic hoặc modacrylic",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "55034000",
-   "dieuKien": "Từ polypropylen",
-   "loaiKhac": false,
-   "nguon": "tax.55034000",
-   "trich": "55034000 - Từ polypropylen",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "55039010",
-   "dieuKien": "Từ polyvinyl alcohol",
-   "loaiKhac": false,
-   "nguon": "tax.55039010",
-   "trich": "55039010 - - Từ polyvinyl alcohol",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "55039090",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.55039090",
-   "trich": "55039090 - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "550390",
-    "truAnhEm": [
-     "55039010"
-    ],
-    "truDayDu": [
-     "55039010"
-    ],
-    "toTienCoTen": "550390",
-    "dinhNghiaDuoc": true
-   }
-  }
- ],
- "cay": {
-  "nguonLoai": "MAY_SUY",
-  "sinhTu": "lib/hs-tree.js",
-  "nut": [
-   {
-    "id": "5503",
-    "cap": 4,
-    "cha": "55",
-    "tenVi": "Xơ staple tổng hợp, chưa chải thô, chưa chải kỹ hoặc chưa gia công cách khác để kéo sợi.",
-    "tenEn": "Synthetic staple fibres, not carded, combed or otherwise processed for spinning",
-    "suyRa": false
-   },
-   {
-    "id": "55031",
-    "cap": "NHOM_MOT_GACH",
-    "cha": "5503",
-    "tenVi": "Từ ni lông hoặc từ các polyamit khác",
-    "tenEn": null,
-    "suyRa": true
-   },
-   {
-    "id": "55031100",
-    "cap": 8,
-    "cha": "55031",
-    "tenVi": "Từ các aramit",
-    "tenEn": "Fibres; synthetic staple fibres, of aramids, not carded, combed or otherwise processed for spinning",
-    "suyRa": false,
-    "laPhanNhom": "550311"
-   },
-   {
-    "id": "55031900",
-    "cap": 8,
-    "cha": "55031",
-    "tenVi": "Loại khác",
-    "tenEn": "Fibres; synthetic staple fibres, of nylon or other polyamides other than aramids, not carded, combed or otherwise processed for spinning",
-    "suyRa": false,
-    "loaiKhac": true,
-    "laPhanNhom": "550319"
-   },
-   {
-    "id": "550320",
-    "cap": 6,
-    "cha": "5503",
-    "tenVi": "Từ các polyeste",
-    "tenEn": "Fibres; synthetic staple fibres, of polyesters, not carded, combed or otherwise processed for spinning",
-    "suyRa": false
-   },
-   {
-    "id": "55032010",
-    "cap": 8,
-    "cha": "550320",
-    "tenVi": "Loại có màu trừ màu trắng (SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "55032090",
-    "cap": 8,
-    "cha": "550320",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "55033000",
-    "cap": 8,
-    "cha": "5503",
-    "tenVi": "Từ acrylic hoặc modacrylic",
-    "tenEn": "Fibres; synthetic staple fibres, acrylic or modacrylic, not carded, combed or otherwise processed for spinning",
-    "suyRa": false,
-    "laPhanNhom": "550330"
-   },
-   {
-    "id": "55034000",
-    "cap": 8,
-    "cha": "5503",
-    "tenVi": "Từ polypropylen",
-    "tenEn": "Fibres; synthetic staple fibres, of polypropylene, not carded, combed or otherwise processed for spinning",
-    "suyRa": false,
-    "laPhanNhom": "550340"
-   },
-   {
-    "id": "550390",
-    "cap": 6,
-    "cha": "5503",
-    "tenVi": "Loại khác",
-    "tenEn": "Fibres; synthetic staple fibres, of synthetic materials n.e.c. in heading no. 5503, not carded, combed or otherwise processed for spinning",
-    "suyRa": false
-   },
-   {
-    "id": "55039010",
-    "cap": 8,
-    "cha": "550390",
-    "tenVi": "Từ polyvinyl alcohol",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "55039090",
-    "cap": 8,
-    "cha": "550390",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   }
+  "dieuKienVao": [
+    {
+      "fact": "la_xo_staple_tong_hop",
+      "op": "=",
+      "value": true,
+      "donVi": null,
+      "ngoaiTru": [],
+      "nguon": "nhom5503.nhom",
+      "trich": "Xơ staple tổng hợp thường được ép-đóng gói thành kiện.",
+      "nguonLoai": "AI_DA_KIEM"
+    }
   ],
-  "tenDien": []
- },
- "dungTuNguon": [
-  "nhom5503.nhom",
-  "tax.55031100",
-  "tax.55031900",
-  "tax.55032010",
-  "tax.55032090",
-  "tax.55033000",
-  "tax.55034000",
-  "tax.55039010",
-  "tax.55039090"
- ],
- "phienBan": "HS2022",
- "taoBoi": {
-  "provider": "google-studio:gemini-flash",
-  "model": null,
-  "luc": "2026-11-02T12:27:45.894Z",
-  "ms": 14
- },
- "kiemTra": {
-  "tong": 14,
-  "dat": 14,
-  "loai": 0,
-  "nguonBiCat": [
-   "phan55.phan (46130→25000)"
-  ]
- }
+  "loaiTru": [
+    {
+      "dieuKien": "Tô filament tổng hợp có chiều dài trên 2 m",
+      "sangNhom": "5501",
+      "nguon": "nhom5503.nhom",
+      "trich": "Tô filament tổng hợp có chiều dài trên 2 m bị loại trừ (nhóm 54.02 hoặc 55.01).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "dieuKien": "Xơ staple tổng hợp đã được chải thô, chải kỹ hoặc được gia công cách khác để kéo sợi",
+      "sangNhom": "5506",
+      "nguon": "nhom5503.nhom",
+      "trich": "Xơ staple tổng hợp đã được chải thô, chải kỹ hoặc được gia công cách khác để kéo sợi cũng bị loại trừ (nhóm 55.06).",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "phanBiet": [
+    {
+      "hoi": "Hàng có phải là tô filament tổng hợp có chiều dài trên 2 m chuyển sang nhóm 55.01 không?",
+      "neuCo": "5501",
+      "neuKhong": "5503",
+      "nguon": "nhom5503.nhom",
+      "trich": "Tô filament tổng hợp có chiều dài trên 2 m bị loại trừ (nhóm 54.02 hoặc 55.01).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hoi": "Hàng có phải là xơ staple tổng hợp đã được chải thô, chải kỹ hoặc được gia công cách khác để kéo sợi chuyển sang nhóm 55.06 không?",
+      "neuCo": "5506",
+      "neuKhong": "5503",
+      "nguon": "nhom5503.nhom",
+      "trich": "Xơ staple tổng hợp đã được chải thô, chải kỹ hoặc được gia công cách khác để kéo sợi cũng bị loại trừ (nhóm 55.06).",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "tieuChi6": [],
+  "dong8": [
+    {
+      "hs": "55031100",
+      "dieuKien": "Từ các aramit",
+      "loaiKhac": false,
+      "nguon": "tax.55031100",
+      "trich": "55031100 - - Từ các aramit",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "55031900",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.55031900",
+      "trich": "55031900 - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "55031",
+        "truAnhEm": [
+          "55031100"
+        ],
+        "truDayDu": [
+          "55031100",
+          "550320",
+          "55033000",
+          "55034000",
+          "550390"
+        ],
+        "toTienCoTen": "5503",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "55032010",
+      "dieuKien": "có màu trừ màu trắng (sợi dệt hoặc xơ dệt)",
+      "loaiKhac": false,
+      "nguon": "tax.55032010",
+      "trich": "55032010 - - Loại có màu trừ màu trắng (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "coMauTruTrang",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L16-20261111#soat-L16",
+          "ngay": "2026-11-11",
+          "bam": "acbcab8e0e2e17dd0b02342e065fa0d5413f9cd6d4cb969f212325fe246a7583"
+        }
+      }
+    },
+    {
+      "hs": "55032090",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.55032090",
+      "trich": "55032090 - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "550320",
+        "truAnhEm": [
+          "55032010"
+        ],
+        "truDayDu": [
+          "55032010"
+        ],
+        "toTienCoTen": "550320",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "55033000",
+      "dieuKien": "Từ acrylic hoặc modacrylic",
+      "loaiKhac": false,
+      "nguon": "tax.55033000",
+      "trich": "55033000 - Từ acrylic hoặc modacrylic",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "55034000",
+      "dieuKien": "Từ polypropylen",
+      "loaiKhac": false,
+      "nguon": "tax.55034000",
+      "trich": "55034000 - Từ polypropylen",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "55039010",
+      "dieuKien": "tên loại hàng: polyvinyl alcohol",
+      "loaiKhac": false,
+      "nguon": "tax.55039010",
+      "trich": "55039010 - - Từ polyvinyl alcohol",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "polyvinyl alcohol"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L16-20261111#soat-L16",
+          "ngay": "2026-11-11",
+          "bam": "52f6fb0e42e4503621b8e5f74044cea3e436d6d9083286d5e06aebfaa3e4af75"
+        }
+      }
+    },
+    {
+      "hs": "55039090",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.55039090",
+      "trich": "55039090 - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "550390",
+        "truAnhEm": [
+          "55039010"
+        ],
+        "truDayDu": [
+          "55039010"
+        ],
+        "toTienCoTen": "550390",
+        "dinhNghiaDuoc": true
+      }
+    }
+  ],
+  "cay": {
+    "nguonLoai": "MAY_SUY",
+    "sinhTu": "lib/hs-tree.js",
+    "nut": [
+      {
+        "id": "5503",
+        "cap": 4,
+        "cha": "55",
+        "tenVi": "Xơ staple tổng hợp, chưa chải thô, chưa chải kỹ hoặc chưa gia công cách khác để kéo sợi.",
+        "tenEn": "Synthetic staple fibres, not carded, combed or otherwise processed for spinning",
+        "suyRa": false
+      },
+      {
+        "id": "55031",
+        "cap": "NHOM_MOT_GACH",
+        "cha": "5503",
+        "tenVi": "Từ ni lông hoặc từ các polyamit khác",
+        "tenEn": null,
+        "suyRa": true
+      },
+      {
+        "id": "55031100",
+        "cap": 8,
+        "cha": "55031",
+        "tenVi": "Từ các aramit",
+        "tenEn": "Fibres; synthetic staple fibres, of aramids, not carded, combed or otherwise processed for spinning",
+        "suyRa": false,
+        "laPhanNhom": "550311"
+      },
+      {
+        "id": "55031900",
+        "cap": 8,
+        "cha": "55031",
+        "tenVi": "Loại khác",
+        "tenEn": "Fibres; synthetic staple fibres, of nylon or other polyamides other than aramids, not carded, combed or otherwise processed for spinning",
+        "suyRa": false,
+        "loaiKhac": true,
+        "laPhanNhom": "550319"
+      },
+      {
+        "id": "550320",
+        "cap": 6,
+        "cha": "5503",
+        "tenVi": "Từ các polyeste",
+        "tenEn": "Fibres; synthetic staple fibres, of polyesters, not carded, combed or otherwise processed for spinning",
+        "suyRa": false
+      },
+      {
+        "id": "55032010",
+        "cap": 8,
+        "cha": "550320",
+        "tenVi": "Loại có màu trừ màu trắng (SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "55032090",
+        "cap": 8,
+        "cha": "550320",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "55033000",
+        "cap": 8,
+        "cha": "5503",
+        "tenVi": "Từ acrylic hoặc modacrylic",
+        "tenEn": "Fibres; synthetic staple fibres, acrylic or modacrylic, not carded, combed or otherwise processed for spinning",
+        "suyRa": false,
+        "laPhanNhom": "550330"
+      },
+      {
+        "id": "55034000",
+        "cap": 8,
+        "cha": "5503",
+        "tenVi": "Từ polypropylen",
+        "tenEn": "Fibres; synthetic staple fibres, of polypropylene, not carded, combed or otherwise processed for spinning",
+        "suyRa": false,
+        "laPhanNhom": "550340"
+      },
+      {
+        "id": "550390",
+        "cap": 6,
+        "cha": "5503",
+        "tenVi": "Loại khác",
+        "tenEn": "Fibres; synthetic staple fibres, of synthetic materials n.e.c. in heading no. 5503, not carded, combed or otherwise processed for spinning",
+        "suyRa": false
+      },
+      {
+        "id": "55039010",
+        "cap": 8,
+        "cha": "550390",
+        "tenVi": "Từ polyvinyl alcohol",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "55039090",
+        "cap": 8,
+        "cha": "550390",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      }
+    ],
+    "tenDien": []
+  },
+  "dungTuNguon": [
+    "nhom5503.nhom",
+    "tax.55031100",
+    "tax.55031900",
+    "tax.55032010",
+    "tax.55032090",
+    "tax.55033000",
+    "tax.55034000",
+    "tax.55039010",
+    "tax.55039090"
+  ],
+  "phienBan": "HS2022",
+  "taoBoi": {
+    "provider": "google-studio:gemini-flash",
+    "model": null,
+    "luc": "2026-11-02T12:27:45.894Z",
+    "ms": 14
+  },
+  "kiemTra": {
+    "tong": 14,
+    "dat": 14,
+    "loai": 0,
+    "nguonBiCat": [
+      "phan55.phan (46130→25000)"
+    ]
+  }
 }

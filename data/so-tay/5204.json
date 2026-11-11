@@ -1,211 +1,228 @@
 {
- "nhom": "5204",
- "phamVi": {
-  "text": "Chỉ khâu bằng bông, đã hoặc chưa đóng gói để bán lẻ.",
-  "nguon": "nhom5204.nhom",
-  "trich": "Nhóm này bao gồm chỉ khâu làm từ bông ở các dạng và phù hợp với điều kiện đã được mô tả trong Phần (I) (B) (4) của Chú giải Tổng quát Phần XI.",
-  "nguonLoai": "AI_DA_KIEM"
- },
- "dieuKienVao": [
-  {
-   "fact": "la_chi_khau_bang_bong",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "nhom5204.nhom",
-   "trich": "Nhóm này bao gồm chỉ khâu làm từ bông ở các dạng và phù hợp với điều kiện đã được mô tả trong Phần (I) (B) (4) của Chú giải Tổng quát Phần XI.",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "loaiTru": [
-  {
-   "dieuKien": "Sợi chỉ nằm trong phạm vi định nghĩa của sợi xe, v.v...",
-   "sangNhom": "5607",
-   "nguon": "nhom5204.nhom",
-   "trich": "Tuy nhiên, nếu sợi chỉ nằm trong phạm vi định nghĩa của sợi xe, v.v... (xem Phần (1) (B) (2) của Chú giải Tổng quát thuộc Phần XI) thì bị loại khỏi nhóm này - (nhóm 56.07).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "phanBiet": [
-  {
-   "hoi": "Hàng hoá có phải là sợi chỉ thuộc phạm vi định nghĩa của sợi xe, thừng, chão thuộc nhóm 56.07?",
-   "neuCo": "5607",
-   "neuKhong": "5204",
-   "nguon": "nhom5204.nhom",
-   "trich": "Tuy nhiên, nếu sợi chỉ nằm trong phạm vi định nghĩa của sợi xe, v.v... (xem Phần (1) (B) (2) của Chú giải Tổng quát thuộc Phần XI) thì bị loại khỏi nhóm này - (nhóm 56.07).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "tieuChi6": [
-  {
-   "hs6": "520411",
-   "fact": "ham_luong_bong",
-   "op": ">=",
-   "value": 85,
-   "donVi": "%",
-   "nguon": "wco.520411",
-   "trich": "containing 85% or more by weight of cotton",
-   "nguonLoai": "AI_DA_KIEM"
+  "nhom": "5204",
+  "phamVi": {
+    "text": "Chỉ khâu bằng bông, đã hoặc chưa đóng gói để bán lẻ.",
+    "nguon": "nhom5204.nhom",
+    "trich": "Nhóm này bao gồm chỉ khâu làm từ bông ở các dạng và phù hợp với điều kiện đã được mô tả trong Phần (I) (B) (4) của Chú giải Tổng quát Phần XI.",
+    "nguonLoai": "AI_DA_KIEM"
   },
-  {
-   "hs6": "520419",
-   "fact": "ham_luong_bong",
-   "op": "<",
-   "value": 85,
-   "donVi": "%",
-   "nguon": "wco.520419",
-   "trich": "containing less than 85% by weight of cotton",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "dong8": [
-  {
-   "hs": "52041110",
-   "dieuKien": "Chưa tẩy trắng",
-   "loaiKhac": false,
-   "nguon": "tax.52041110",
-   "trich": "52041110 - - - Chưa tẩy trắng",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "52041190",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.52041190",
-   "trich": "52041190 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "520411",
-    "truAnhEm": [
-     "52041110"
-    ],
-    "truDayDu": [
-     "52041110"
-    ],
-    "toTienCoTen": "520411",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "52041900",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.52041900",
-   "trich": "52041900 - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "52041",
-    "truAnhEm": [
-     "520411"
-    ],
-    "truDayDu": [
-     "520411"
-    ],
-    "toTienCoTen": "5204",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "52042000",
-   "dieuKien": "Đã đóng gói để bán lẻ",
-   "loaiKhac": false,
-   "nguon": "tax.52042000",
-   "trich": "52042000 - Đã đóng gói để bán lẻ",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "cay": {
-  "nguonLoai": "MAY_SUY",
-  "sinhTu": "lib/hs-tree.js",
-  "nut": [
-   {
-    "id": "5204",
-    "cap": 4,
-    "cha": "52",
-    "tenVi": "Chỉ khâu làm từ bông đã hoặc chưa đóng gói để bán lẻ.",
-    "tenEn": "Cotton sewing thread, whether or not put up for retail sale",
-    "suyRa": false
-   },
-   {
-    "id": "52041",
-    "cap": "NHOM_MOT_GACH",
-    "cha": "5204",
-    "tenVi": "Chưa đóng gói để bán lẻ",
-    "tenEn": "Not put up for retail sale",
-    "suyRa": true
-   },
-   {
-    "id": "520411",
-    "cap": 6,
-    "cha": "52041",
-    "tenVi": "Có hàm lượng bông chiếm từ 85% trở lên tính theo khối lượng",
-    "tenEn": "Cotton; sewing thread, containing 85% or more by weight of cotton, not put up for retail sale",
-    "suyRa": false
-   },
-   {
-    "id": "52041110",
-    "cap": 8,
-    "cha": "520411",
-    "tenVi": "Chưa tẩy trắng",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "52041190",
-    "cap": 8,
-    "cha": "520411",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "52041900",
-    "cap": 8,
-    "cha": "52041",
-    "tenVi": "Loại khác",
-    "tenEn": "Cotton; sewing thread, containing less than 85% by weight of cotton, not put up for retail sale",
-    "suyRa": false,
-    "loaiKhac": true,
-    "laPhanNhom": "520419"
-   },
-   {
-    "id": "52042000",
-    "cap": 8,
-    "cha": "5204",
-    "tenVi": "Đã đóng gói để bán lẻ",
-    "tenEn": "Cotton; sewing thread, put up for retail sale",
-    "suyRa": false,
-    "laPhanNhom": "520420"
-   }
+  "dieuKienVao": [
+    {
+      "fact": "la_chi_khau_bang_bong",
+      "op": "=",
+      "value": true,
+      "donVi": null,
+      "ngoaiTru": [],
+      "nguon": "nhom5204.nhom",
+      "trich": "Nhóm này bao gồm chỉ khâu làm từ bông ở các dạng và phù hợp với điều kiện đã được mô tả trong Phần (I) (B) (4) của Chú giải Tổng quát Phần XI.",
+      "nguonLoai": "AI_DA_KIEM"
+    }
   ],
-  "tenDien": []
- },
- "dungTuNguon": [
-  "nhom5204.nhom",
-  "tax.52041110",
-  "tax.52041190",
-  "tax.52041900",
-  "tax.52042000",
-  "wco.520411",
-  "wco.520419"
- ],
- "phienBan": "HS2022",
- "taoBoi": {
-  "provider": "google-studio:gemini-flash",
-  "model": null,
-  "luc": "2026-11-02T12:16:22.182Z",
-  "ms": 8
- },
- "kiemTra": {
-  "tong": 10,
-  "dat": 10,
-  "loai": 0,
-  "nguonBiCat": [
-   "phan52.phan (46130→25000)"
-  ]
- }
+  "loaiTru": [
+    {
+      "dieuKien": "Sợi chỉ nằm trong phạm vi định nghĩa của sợi xe, v.v...",
+      "sangNhom": "5607",
+      "nguon": "nhom5204.nhom",
+      "trich": "Tuy nhiên, nếu sợi chỉ nằm trong phạm vi định nghĩa của sợi xe, v.v... (xem Phần (1) (B) (2) của Chú giải Tổng quát thuộc Phần XI) thì bị loại khỏi nhóm này - (nhóm 56.07).",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "phanBiet": [
+    {
+      "hoi": "Hàng hoá có phải là sợi chỉ thuộc phạm vi định nghĩa của sợi xe, thừng, chão thuộc nhóm 56.07?",
+      "neuCo": "5607",
+      "neuKhong": "5204",
+      "nguon": "nhom5204.nhom",
+      "trich": "Tuy nhiên, nếu sợi chỉ nằm trong phạm vi định nghĩa của sợi xe, v.v... (xem Phần (1) (B) (2) của Chú giải Tổng quát thuộc Phần XI) thì bị loại khỏi nhóm này - (nhóm 56.07).",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "tieuChi6": [
+    {
+      "hs6": "520411",
+      "fact": "ham_luong_bong",
+      "op": ">=",
+      "value": 85,
+      "donVi": "%",
+      "nguon": "wco.520411",
+      "trich": "containing 85% or more by weight of cotton",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "520419",
+      "fact": "ham_luong_bong",
+      "op": "<",
+      "value": 85,
+      "donVi": "%",
+      "nguon": "wco.520419",
+      "trich": "containing less than 85% by weight of cotton",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "52041110",
+      "dieuKien": "tình trạng tẩy trắng (của xơ, sợi hoặc vải dệt): chưa tẩy trắng",
+      "loaiKhac": false,
+      "nguon": "tax.52041110",
+      "trich": "52041110 - - - Chưa tẩy trắng",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tinhTrangTayTrang",
+          "op": "TRONG",
+          "value": [
+            "CHUA_TAY_TRANG"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L16-20261111#soat-L16",
+          "ngay": "2026-11-11",
+          "bam": "02122e62ba95c3e3379310d27a6ec7eaa103844a0ac2a18281bbfa6a15e4299a"
+        }
+      }
+    },
+    {
+      "hs": "52041190",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.52041190",
+      "trich": "52041190 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "520411",
+        "truAnhEm": [
+          "52041110"
+        ],
+        "truDayDu": [
+          "52041110"
+        ],
+        "toTienCoTen": "520411",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "52041900",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.52041900",
+      "trich": "52041900 - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "52041",
+        "truAnhEm": [
+          "520411"
+        ],
+        "truDayDu": [
+          "520411"
+        ],
+        "toTienCoTen": "5204",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "52042000",
+      "dieuKien": "Đã đóng gói để bán lẻ",
+      "loaiKhac": false,
+      "nguon": "tax.52042000",
+      "trich": "52042000 - Đã đóng gói để bán lẻ",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "cay": {
+    "nguonLoai": "MAY_SUY",
+    "sinhTu": "lib/hs-tree.js",
+    "nut": [
+      {
+        "id": "5204",
+        "cap": 4,
+        "cha": "52",
+        "tenVi": "Chỉ khâu làm từ bông đã hoặc chưa đóng gói để bán lẻ.",
+        "tenEn": "Cotton sewing thread, whether or not put up for retail sale",
+        "suyRa": false
+      },
+      {
+        "id": "52041",
+        "cap": "NHOM_MOT_GACH",
+        "cha": "5204",
+        "tenVi": "Chưa đóng gói để bán lẻ",
+        "tenEn": "Not put up for retail sale",
+        "suyRa": true
+      },
+      {
+        "id": "520411",
+        "cap": 6,
+        "cha": "52041",
+        "tenVi": "Có hàm lượng bông chiếm từ 85% trở lên tính theo khối lượng",
+        "tenEn": "Cotton; sewing thread, containing 85% or more by weight of cotton, not put up for retail sale",
+        "suyRa": false
+      },
+      {
+        "id": "52041110",
+        "cap": 8,
+        "cha": "520411",
+        "tenVi": "Chưa tẩy trắng",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "52041190",
+        "cap": 8,
+        "cha": "520411",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "52041900",
+        "cap": 8,
+        "cha": "52041",
+        "tenVi": "Loại khác",
+        "tenEn": "Cotton; sewing thread, containing less than 85% by weight of cotton, not put up for retail sale",
+        "suyRa": false,
+        "loaiKhac": true,
+        "laPhanNhom": "520419"
+      },
+      {
+        "id": "52042000",
+        "cap": 8,
+        "cha": "5204",
+        "tenVi": "Đã đóng gói để bán lẻ",
+        "tenEn": "Cotton; sewing thread, put up for retail sale",
+        "suyRa": false,
+        "laPhanNhom": "520420"
+      }
+    ],
+    "tenDien": []
+  },
+  "dungTuNguon": [
+    "nhom5204.nhom",
+    "tax.52041110",
+    "tax.52041190",
+    "tax.52041900",
+    "tax.52042000",
+    "wco.520411",
+    "wco.520419"
+  ],
+  "phienBan": "HS2022",
+  "taoBoi": {
+    "provider": "google-studio:gemini-flash",
+    "model": null,
+    "luc": "2026-11-02T12:16:22.182Z",
+    "ms": 8
+  },
+  "kiemTra": {
+    "tong": 10,
+    "dat": 10,
+    "loai": 0,
+    "nguonBiCat": [
+      "phan52.phan (46130→25000)"
+    ]
+  }
 }

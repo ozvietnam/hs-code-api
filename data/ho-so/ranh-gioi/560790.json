@@ -4,7 +4,7 @@
   "nhom": "5607",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T1541#soan-560790",
@@ -138,6 +138,13 @@
       "ma": "5607902",
       "loai": "QUYET_DINH",
       "ghiChu": "Chữ \"khác\" trong tiêu đề tầng 5607902 (\"… hoặc các xơ (lá thực vật) cứng khác\") nghĩa là xơ lá thực vật cứng khác (ngoài abaca) — đã xử ở con 56079022 bằng phanConLai [\"56079021\"], tầng không phải phần còn lại ⇒ phanConLai false."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L16-20261111#soat-L16",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 560790:56079030 THU HẸP: chữ biểu \"Từ đay hoặc các loại xơ libe dệt khác thuộc nhóm 53.03\" / EN \"Of jute or other textile bast fibres of heading 53.03\" — \"thuộc nhóm 53.03\"/\"of heading 53.03\" là định ngữ phân loại xơ libe (xơ thuộc nhóm 53.03), KHÔNG phải công dụng, nhưng bị ghi dungCho CONG_DUNG \"nhóm 53.03\". Thử bộ đọc: \"Dây xe từ đay, đường kính 6mm\" ⇒ dungCho CHUA_BIET (thiếu dữ kiện) mãi mãi, trong khi tenLoai \"đay\" THOA tất định ⇒ dây đay không bao giờ chốt được .30, lúc chạy còn hỏi người khai \"dùng cho nhóm 53.03?\" vô nghĩa. Sửa: bỏ điều kiện dungCho (định ngữ đã nằm trong tên \"xơ libe dệt … thuộc nhóm 53.03\") hoặc ghi giá trị \"xơ libe dệt khác thuộc nhóm 53.03\" trong tenLoai. (B) lưu ý 56079022 tenLoai \"xơ (lá thực vật) cứng\": \"Dây thừng từ xơ sisal\" ⇒ TRAI (không tất định) — tên nhóm xơ không khớp tên xơ cụ thể; nên thêm tên xơ lá cứng cụ thể (sisal, henequen…) theo chú giải 53.05 nếu có trích."
     }
   ]
 }
