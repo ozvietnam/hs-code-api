@@ -88,6 +88,29 @@ check('4011 ngưỡng VÀNH không lấy đường kính ngoài → KHONG_THE_CH
 cd = chotDong8({ hs: '85044019', productText: 'Bộ đổi nguồn 30W dùng cho tủ điện' });
 check('8504.40 chọn .19 (LK trong) cũng không chốt được — phủ định chưa hoàn chỉnh', cd.ketQua === 'KHONG_THE_CHOT', JSON.stringify(cd));
 
+// ── OZV-325: "hun khói" KHÔNG loại trừ "đông lạnh" — hai TRỤC khác nhau ──
+// Biểu 0306 đặt dòng "Hun khói" BÊN TRONG tầng 1 gạch "Đông lạnh" (03061): tôm hùm hun khói ĐÔNG LẠNH là
+// hàng thật, nên "Đông lạnh" không hề phủ định "Hun khói". Khoá liệt kê phuongPhapBaoQuan gộp hai trục
+// (trạng thái bảo quản: sống/tươi/đông lạnh/khô-muối — và cách chế biến: hun khói/hấp-luộc chín) vào MỘT
+// khoá ⇒ đọc được "đông lạnh" là máy chấm TRÁI tất định điều kiện HUN_KHOI của dòng có tên, mọi anh em TRÁI
+// ⇒ tự chốt thẳng dòng "Loại khác" dù mô tả chỉ có tên phân nhóm 6 số, chưa khai hun khói hay không.
+// Cách sửa dùng lại chuẩn chính người soạn đã chọn ở 030719/030729/030829 ("không dùng phuongPhapBaoQuan
+// TRONG [HUN_KHOI] vì khoá liệt kê vét mọi giá trị từ vựng sinh lỗ hổng giả"): ghi tenLoai nguyên văn.
+for (const [pn6, lkSai, ten] of [
+  ['030611', '03061190', 'Tôm hùm đá và các loại tôm biển khác (Palinurus spp., Panulirus spp., Jasus spp.)'],
+  ['030612', '03061290', 'Tôm hùm (Homarus spp.)'],
+]) {
+  cd = chotDong8({ hs: pn6, productText: `Đông lạnh - ${ten}` });
+  check(`${pn6} thiếu dữ kiện (chỉ tên PN6 + "Đông lạnh") → KHÔNG tự chốt dòng Loại khác ${lkSai}`,
+    cd.ketQua !== 'LOAI_KHAC' && cd.hs !== lkSai, JSON.stringify([cd.ketQua, cd.hs, cd.lyDo]));
+  // Khai RÕ "hun khói" thì tuyệt đối không được đẩy sang dòng Loại khác. Chốt thẳng dòng hun khói là cái
+  // tenLoai (so chữ không tất định) KHÔNG hứa — chuẩn 030719/030729/030829 cũng dừng ở KHONG_THE_CHOT,
+  // im lặng vẫn hơn chốt sai. Ca này chặn đúng chiều sai: không bao giờ ra dòng Loại khác.
+  cd = chotDong8({ hs: pn6, productText: `Đông lạnh - ${ten}, hun khói` });
+  check(`${pn6} khai rõ "hun khói" (dù đông lạnh) → không bao giờ ra dòng Loại khác ${lkSai}`,
+    cd.hs !== lkSai && cd.ketQua !== 'LOAI_KHAC', JSON.stringify([cd.ketQua, cd.hs, cd.lyDo]));
+}
+
 // ── op HOAC (#195 vòng 4): fixture trong thư mục TẠM (test-isolate-data) — PN6 giả 871699 trong nhóm 8716 thật ──
 {
   const { dataPath } = require('../lib/data-paths.js');
