@@ -175,11 +175,11 @@ function cumKhangDinh(c) {
     return c.fact === 'dungCho' ? `dùng cho ${v}` : `dùng trong ${v}`;
   }
   if (c.op === 'CO') {
-    const m = (k?.cachDoc?.vi?.[0] || k?.nhanVi || c.fact).replace(/\\s\+/g, ' ');
+    const m = chuTuMau(k?.cachDoc?.vi?.[0] || k?.nhanVi || c.fact);
     return m;
   }
   if (c.op === 'KHONG') {
-    const m = (k?.cachDocKhong?.vi?.[0] || `không ${k?.cachDoc?.vi?.[0] || k?.nhanVi || c.fact}`).replace(/\\s\+/g, ' ');
+    const m = chuTuMau(k?.cachDocKhong?.vi?.[0] || `không ${k?.cachDoc?.vi?.[0] || k?.nhanVi || c.fact}`);
     return m;
   }
   if (c.op === 'LA') {
@@ -188,15 +188,30 @@ function cumKhangDinh(c) {
   }
   if (c.op === 'TRONG') {
     const v = Array.isArray(c.value) ? c.value[0] : c.value;
-    const m = (k?.moTaGiaTri?.[v]?.cachDoc?.vi?.[0] || k?.moTaGiaTri?.[v]?.nhanVi || v).replace(/\\s\+/g, ' ');
+    const m = chuTuMau(k?.moTaGiaTri?.[v]?.cachDoc?.vi?.[0] || k?.moTaGiaTri?.[v]?.nhanVi || v);
     return m;
   }
   if (['<=', '<', '>=', '>'].includes(c.op)) {
-    const ten = (k?.cachDoc?.vi?.[0] || k?.nhanVi || String(c.fact).replace(/_/g, ' ')).replace(/\\s\+/g, ' ');
+    const ten = chuTuMau(k?.cachDoc?.vi?.[0] || k?.nhanVi || String(c.fact).replace(/_/g, ' '));
     const v = c.op === '<=' || c.op === '<' ? Number((c.value * 0.5).toFixed(3)) : Number((c.value * 1.5 + 1).toFixed(3));
     return `${ten} ${v} ${c.donVi || ''}`.trim();
   }
   return '';
+}
+
+/**
+ * Mẫu đọc của từ vựng (regex) → chữ thường để làm mô tả hàng thử. Trước đây chỉ bỏ `\\s+`, nên `(?:không|chưa) dùng ngay được`
+ * lọt nguyên cú pháp regex vào mô tả ⇒ máy không thấy phủ định và chốt sai dòng anh em (200990, 370690 — #1109).
+ * Lấy nhánh đầu của `(?:a|b)`, giữ nội dung nhóm tuỳ chọn `(?:x)?`, bỏ `\\b` và ký tự neo.
+ */
+function chuTuMau(s) {
+  let t = String(s ?? '');
+  for (let i = 0; i < 5; i += 1) {
+    const truoc = t;
+    t = t.replace(/\(\?:([^()]*)\)\??/g, (_, x) => x.split('|')[0]);
+    if (t === truoc) break;
+  }
+  return t.replace(/\\s[+*]?/g, ' ').replace(/\\b/g, '').replace(/[\^$]/g, '').replace(/\\(.)/g, '$1').replace(/\s{2,}/g, ' ').trim();
 }
 
 /** Sinh cụm chữ TRÁI (phủ định) cho một nhóm điều kiện anh em PHAI_KHONG. */
@@ -217,11 +232,11 @@ function cumPhuDinhNhom(dsDieuKien) {
     return vs.map((v) => (c.fact === 'dungCho' ? `không dùng cho ${v}` : `không dùng trong ${v}`)).join(', ');
   }
   if (c.op === 'CO') {
-    const m = (k?.cachDocKhong?.vi?.[0] || `không ${k?.cachDoc?.vi?.[0] || k?.nhanVi || c.fact}`).replace(/\\s\+/g, ' ');
+    const m = chuTuMau(k?.cachDocKhong?.vi?.[0] || `không ${k?.cachDoc?.vi?.[0] || k?.nhanVi || c.fact}`);
     return m;
   }
   if (c.op === 'KHONG') {
-    const m = (k?.cachDoc?.vi?.[0] || k?.nhanVi || c.fact).replace(/\\s\+/g, ' ');
+    const m = chuTuMau(k?.cachDoc?.vi?.[0] || k?.nhanVi || c.fact);
     return m;
   }
   if (c.op === 'LA') {
@@ -232,13 +247,13 @@ function cumPhuDinhNhom(dsDieuKien) {
     const vs = Array.isArray(c.value) ? c.value : [c.value];
     return vs
       .map((v) => {
-        const m = (k?.moTaGiaTri?.[v]?.cachDoc?.vi?.[0] || k?.moTaGiaTri?.[v]?.nhanVi || v).replace(/\\s\+/g, ' ');
+        const m = chuTuMau(k?.moTaGiaTri?.[v]?.cachDoc?.vi?.[0] || k?.moTaGiaTri?.[v]?.nhanVi || v);
         return `không phải ${m}`;
       })
       .join(', ');
   }
   if (['<=', '<', '>=', '>'].includes(c.op)) {
-    const ten = (k?.cachDoc?.vi?.[0] || k?.nhanVi || String(c.fact).replace(/_/g, ' ')).replace(/\\s\+/g, ' ');
+    const ten = chuTuMau(k?.cachDoc?.vi?.[0] || k?.nhanVi || String(c.fact).replace(/_/g, ' '));
     const v = c.op === '<=' || c.op === '<' ? Number((c.value * 2 + 10).toFixed(3)) : Number(Math.max(0.1, c.value * 0.4).toFixed(3));
     return `${ten} ${v} ${c.donVi || ''}`.trim();
   }
@@ -277,12 +292,16 @@ function sinhMoTaLoaiTru(hs8, pn6, st) {
   }
   for (const [fact, groups] of soRanhGioi.entries()) {
     const k = (() => { try { return TV.layKhoa(fact); } catch { return null; } })();
-    const ten = k?.cachDoc?.vi?.[0] || k?.nhanVi || String(fact).replace(/_/g, ' ');
+    const ten = chuTuMau(k?.cachDoc?.vi?.[0] || k?.nhanVi || String(fact).replace(/_/g, ' '));
     const donVi = groups[0]?.[0]?.donVi || k?.donViChuan || '';
     const maxVal = Math.max(...groups.flat().map((c) => Number(c.value) || 0));
     const minVal = Math.min(...groups.flat().map((c) => Number(c.value) || 0));
     // Thử ứng viên lớn hơn maxVal trước; nếu vẫn rơi vào một nhóm anh em thì thử nhỏ hơn minVal
-    const cands = [maxVal * 2 + 50, Math.max(0.1, Number((minVal * 0.4).toFixed(3)))];
+    // … rồi tới giá trị GIỮA hai mốc liền nhau: anh em "≥ 20 kg" và "≤ 2 kg" thì cả 90 lẫn 0,8 đều rơi vào anh em, chỉ khoảng
+    // (2; 20) là của Loại khác. Trước đây hết ứng viên thì lùi về 90 ⇒ ca "Loại khác" mang số của anh em (0402 — #1109).
+    const moc = [...new Set(groups.flat().map((c) => Number(c.value) || 0))].sort((a, b) => a - b);
+    const giua = moc.slice(1).map((v, i) => Number(((moc[i] + v) / 2).toFixed(3)));
+    const cands = [maxVal * 2 + 50, Math.max(0.1, Number((minVal * 0.4).toFixed(3))), ...giua];
     let chosen = cands[0];
     for (const cand of cands) {
       const hitAny = groups.some((grp) =>
