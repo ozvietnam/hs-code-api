@@ -4,7 +4,7 @@
   "nhom": "5702",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-570250",
@@ -51,5 +51,12 @@
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
-  "ghiChuSoan": []
+  "ghiChuSoan": [],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L16-20261111#soat-L16",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 570250:57025020 SUY RỘNG: chữ biểu \"Từ xơ đay\" / EN \"Of jute fibres\" bị mã hoá loaiSoiDet TRONG [SOI_THUC_VAT_KHAC] — giá trị này trong tu-vung@2 là \"sợi dệt thực vật khác (đay, lanh, gai, xơ dừa… nhóm 53.05)\", cách đọc gồm flax/linen/ramie/sisal/hemp/abaca. Thử bộ đọc: \"Thảm dệt thoi từ xơ sisal, chưa chần\" ⇒ loaiSoiDet THOA tất định ⇒ thảm sisal/lanh/gai bị đẩy vào dòng \"Từ xơ đay\" thay vì \"Loại khác\" (MFN cùng 12% nhưng sai mã 8 số). Từ vựng không có giá trị riêng cho đay ⇒ đáng lẽ THIEU_KHOA_TU_VUNG (đề xuất giá trị DAY/XO_LIBE_5303) hoặc tenLoai \"đay\"/\"xơ đay\" (như 630510), không dùng khoá rộng hơn chữ. Cùng lỗi ở bản 570500 đã DUYET (ngoài lô) — cần soát lại."
+    }
+  ]
 }
