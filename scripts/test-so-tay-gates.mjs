@@ -318,5 +318,78 @@ check('trangThaiDong8.veMoHinh: 73181510 chấm trọn nhãn "Đường kính ng
     JSON.stringify(loiPhuDinh12));
 }
 
+// ── Cụm TUỲ CHỌN "có hoặc không có X" KHÔNG được đọc thành phủ định (OZV-276, #1109) ──────────────
+// "có hoặc không có đầu" nghĩa là đầu KHÔNG ràng buộc — hàng có đầu hay không đều vào dòng đó.
+// Trước bản vá, nhánh `không\s+có` của RE_PHU_DINH_VE (thêm ở PR #1185) cho phép cách cụm tối đa 3 từ
+// nên "…có hoặc không có đầu…" đọc ra PHU_DINH cho "đầu" (mà "đuôi"/"chân" vẫn KHANG_DINH — lệch
+// ngay trong một câu). Nếu ai sửa regex phủ định làm tái phát, bộ này đỏ.
+{
+  const DK = require('../lib/dieu-kien-so.js');
+  const TC = require('../lib/cum-tuy-chon.js');
+  const kc = (t, p) => DK.khopCumTrongChu(String(t).normalize('NFC'), p, { laTenLoai: true })?.trangThai ?? null;
+
+  const da = 'Da lông cừu nguyên con, có hoặc không có đầu, đuôi hoặc chân';
+  check('tuỳ chọn 1a "có hoặc không có đầu, đuôi hoặc chân" → cả ba cụm KHẲNG ĐỊNH, không cụm nào PHU_DINH',
+    kc(da, 'đầu') === 'KHANG_DINH' && kc(da, 'đuôi') === 'KHANG_DINH' && kc(da, 'chân') === 'KHANG_DINH',
+    JSON.stringify({ dau: kc(da, 'đầu'), duoi: kc(da, 'đuôi'), chan: kc(da, 'chân') }));
+
+  check('tuỳ chọn 1b "whether or not containing colour" → KHÔNG phủ định',
+    kc('Hàng hóa whether or not containing colour', 'colour') !== 'PHU_DINH',
+    String(kc('Hàng hóa whether or not containing colour', 'colour')));
+
+  // Các biến thể có thật trong data/tax.json (quét 11.871 dòng) + dạng viết tắt "ko có" mà
+  // lib/subheading-check.js đã gặp trên tờ khai thật.
+  const BIEN_THE = [
+    ['Gỗ đã cưa, đã hoặc chưa cắt đầu', 'đầu'],
+    ['Giấy in, có hoặc ko có hình', 'hình'],
+    ['Thịt, whether or not cooked before smoking', 'cooked'],
+    ['Vải dệt, with or without lining', 'lining'],
+    ['Cầu chủ động, có hoặc không kèm theo hộp số', 'hộp số'],
+    ['Thép tấm, đã hoặc không ghép lớp', 'ghép lớp'],
+  ];
+  const loiBienThe = BIEN_THE.filter(([t, p]) => kc(t, p) === 'PHU_DINH').map(([t, p]) => `${p} @ ${t}`);
+  check('tuỳ chọn 1c 6 biến thể thật trong biểu ("đã hoặc chưa", "có hoặc ko có", "whether or not", "with or without", "có hoặc không kèm", "đã hoặc không ghép") đều KHÔNG phủ định',
+    loiBienThe.length === 0, JSON.stringify(loiBienThe));
+
+  // Rào ngược — quan trọng hơn: vá xong PHỦ ĐỊNH THẬT vẫn phải chặn, nếu không là vá hỏng chiều kia.
+  const PHU_DINH_THAT = [
+    ['Da lông cừu không có đầu', 'đầu'],
+    ['Da lông cừu, ko có đầu', 'đầu'],
+    ['Bóng LED không phải đui xoáy', 'đui xoáy'],
+    ['Goods without colour', 'colour'],
+    ['Gỗ chưa có vỏ', 'vỏ'],
+    ['Thép, trừ loại ghép lớp', 'ghép lớp'],
+  ];
+  const sotPhuDinh = PHU_DINH_THAT.filter(([t, p]) => kc(t, p) !== 'PHU_DINH').map(([t, p]) => `${p} @ ${t} → ${kc(t, p)}`);
+  check('tuỳ chọn 1d phủ định THẬT ("không có", "ko có", "không phải", "without", "chưa có", "trừ") vẫn PHU_DINH — bản vá không nới phủ định',
+    sotPhuDinh.length === 0, JSON.stringify(sotPhuDinh));
+
+  // Bẫy trộn hai mức: câu CHO PHÉP mức CÂU vẫn chứa phủ định thật ở mức CỤM.
+  check('tuỳ chọn 1e "ngay cả khi không có đầu" vẫn là phủ định ở mức CỤM (không nhập hai mức)',
+    kc('Da lông cừu, ngay cả khi không có đầu', 'đầu') === 'PHU_DINH',
+    String(kc('Da lông cừu, ngay cả khi không có đầu', 'đầu')));
+
+  // Hàm dùng chung
+  check('tuỳ chọn 1f lib/cum-tuy-chon.js: nhận cụm tuỳ chọn, không nhận phủ định trần',
+    TC.coCumTuyChon('có hoặc không có đầu') && TC.coCumTuyChon('whether or not refined')
+    && TC.coCumTuyChon('đã hoặc chưa cắt') && TC.coCumTuyChon('có hoặc ko có hình')
+    && !TC.coCumTuyChon('không có đầu') && !TC.coCumTuyChon('và/hoặc'),
+    '');
+  // Bẫy em vấp thật ở lượt đầu: bản ASCII (cho lib/subheading-check.js#polarityText) phải ăn LUÔN động
+  // từ "co|chua" sau liên từ. Chỉ xoá liên từ thì "co hoac khong co ga" còn "co ga" ⇒ POS_FEATURE đọc
+  // thành đặc tính DƯƠNG "ga", nhãn 22021020 "Nước tăng lực có hoặc không có ga" bị coi là "có ga" →
+  // test-erp-input đỏ 2 ca. Đặc tính trong cụm tuỳ chọn phải thành KHÔNG CÓ CỰC TÍNH.
+  check('tuỳ chọn 1g-ascii boCumTuyChonAscii xoá cả động từ sau liên từ (không để lại "co ga" dương tính)',
+    !/\bco\s+ga\b/.test(TC.boCumTuyChonAscii('nuoc tang luc co hoac khong co ga'))
+    && /\bga\b/.test(TC.boCumTuyChonAscii('nuoc tang luc co hoac khong co ga'))
+    && !/\bco\s+dau\b/.test(TC.boCumTuyChonAscii('da cuu co hoac khong co dau')),
+    JSON.stringify(TC.boCumTuyChonAscii('nuoc tang luc co hoac khong co ga')));
+
+  check('tuỳ chọn 1h boCumTuyChon giữ nguyên độ dài chữ (không dán hai từ hai bên vào nhau)',
+    TC.boCumTuyChon('da cừu có hoặc không có đầu').length === 'da cừu có hoặc không có đầu'.length
+    && /^da cừu\s+có đầu$/u.test(TC.boCumTuyChon('da cừu có hoặc không có đầu').replace(/\s+(?=có đầu)/u, ' ')),
+    JSON.stringify(TC.boCumTuyChon('da cừu có hoặc không có đầu')));
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
