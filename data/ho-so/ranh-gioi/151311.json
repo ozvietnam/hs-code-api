@@ -4,7 +4,7 @@
   "nhom": "1513",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1530#soan-151311",
@@ -46,6 +46,13 @@
       "ma": "15131110",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.15131110 \"15131110 - - - Dầu dừa nguyên chất (SEN)\" ⇒ tenLoai \"Dầu dừa\" (tên hàng) + mucDoTinhCheDau DANG_THO (\"nguyên chất\"). Dòng 15131190 \"Loại khác\" trần ⇒ không ghi điều kiện."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L5-20261111#soat-L5",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 151311:15131110 SUY RỘNG: chữ biểu \"Dầu dừa nguyên chất\" / EN \"Virgin coconut oil\" ⇒ tenLoai \"Dầu dừa\" + DANG_THO; PN6 151311 là dầu dừa THÔ nên mọi hàng đều thoả DANG_THO và tên \"Dầu dừa\" ⇒ .10 nuốt toàn bộ, .90 \"Loại khác\" thành rỗng. \"Virgin/nguyên chất\" hẹp hơn \"crude\"; DANG_THO gộp hai nghĩa ⇒ phải DỪNG/THIEU_KHOA_TU_VUNG (cần giá trị riêng cho virgin)."
     }
   ]
 }
