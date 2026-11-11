@@ -21,7 +21,15 @@
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
-          "value": "bệ xí hoặc bệ đi tiểu giật nước (loại cố định)"
+          "value": [
+            "bệ xí",
+            "bệ đi tiểu"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "giật nước"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -38,7 +46,10 @@
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
-          "value": "bồn rửa nhà bếp hoặc bồn tắm"
+          "value": [
+            "bồn rửa nhà bếp",
+            "bồn tắm"
+          ]
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -55,7 +66,15 @@
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
-          "value": "bệ xí hoặc bệ đi tiểu giật nước (loại cố định)"
+          "value": [
+            "bệ xí",
+            "bệ đi tiểu"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "giật nước"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -98,6 +117,16 @@
       "ma": "732490",
       "loai": "QUYET_DINH",
       "ghiChu": "Vế giới hạn của tiêu đề WCO (wco.732490: \"Iron or steel; sanitary ware and parts thereof, excluding sinks, wash basins and baths\") không chép xuống điều kiện dòng: bồn rửa/bồn tắm không thuộc 732490, trong 732490 chỉ nhận BỘ PHẬN của chúng (laBoPhan CO ở 73249091); vế vật liệu thuộc tầng tiêu đề/nhóm 7324 nên không chép xuống dòng (mẫu 732410)."
+    },
+    {
+      "ma": "73249010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude (#1109, 11/11): tách liệt kê cong3-liet-ke-trong-mot-chuoi — .10/.93 \"bệ xí hoặc bệ đi tiểu giật nước\" ↔ EN \"Flushing water closets or urinals\": \"giật nước\"/\"flushing\" là định ngữ CHUNG ⇒ dungCho [\"bệ xí\",\"bệ đi tiểu\"] + dungCho \"giật nước\" (điều kiện riêng, cùng khoá = VÀ); .91 \"bồn rửa nhà bếp hoặc bồn tắm\" ↔ \"kitchen sinks or bathtubs\" ⇒ dungCho [\"bồn rửa nhà bếp\",\"bồn tắm\"]. \"(loại cố định)\" là PHU, không thành điều kiện."
+    },
+    {
+      "ma": "73249093",
+      "loai": "DUNG",
+      "ghiChu": "Claude (#1109, 11/11): [CẤU TRÚC] cong2-dong-khong-toi-duoc:73249093 — .10 \"Dùng cho bệ xí hoặc bệ đi tiểu giật nước (loại cố định)\" đứng trước tầng 7324909 \"Loại khác\" chứa .93 \"Bộ phận của bệ xí hoặc bệ đi tiểu giật nước (loại cố định)\"; đọc chữ Việt \"Dùng cho\" thì mọi bộ phận của bệ xí cũng thoả .10 nên .93 không tới được. Chữ Anh .10 \"Flushing water closets or urinals (fixed type)\" cho thấy .10 là chính bệ xí (hàng hoàn chỉnh), nhưng biểu không có anh em \"Bộ phận\" TRỰC TIẾP của .10 (anh em là tầng \"Loại khác\") nên laBoPhan KHONG không có căn cứ chữ/cấu trúc mà máy nhận (anhEmBoPhan chỉ xét anh em trực tiếp); đổi .10 sang tenLoai là đổi khoá để né (cấm). CẦN: Claude/GĐ quyết (a) mở rộng căn cứ cấu trúc laBoPhan KHONG trong lib/ho-so/cong-ranh-gioi.js#anhEmBoPhan cho nút có cháu \"Bộ phận của <đúng đích của nút>\" dưới tầng anh em \"Loại khác\", hoặc (b) cho phép đọc .10 theo chữ Anh (tenLoai) với ghi chú lệch dịch."
     }
   ]
 }

@@ -46,12 +46,6 @@
       "ghiChu": "tax.53110020: \"Vải bố (burlap) từ xơ chuối abaca (SEN)\" ⇒ tenLoai TEN_LOAI \"Vải bố (burlap) từ xơ chuối abaca\" — bỏ dấu hiệu \"(SEN)\" (không thuộc tên hàng). Không dùng loaiSoiDet vì khoá đó chỉ có giá trị \"SOI_THUC_VAT_KHAC\" (gộp chung xơ chuối abaca với xơ thực vật khác) nên không phân biệt được với 53110010; không dùng chatLieu vì giá trị \"vải dệt\" áp cho cả hai dòng. Chú giải SEN (sen.53110020) chỉ xác nhận vật liệu \"được làm từ xơ chuối abaca\" — đã có trong tên hàng; \"là một loại vải dệt thoi\" thuộc tiêu đề tầng 5311 (\"Vải dệt thoi từ các loại sợi dệt gốc thực vật khác\"), \"chắc, xù xì\" là tính chất mô tả không có khoá từ vựng."
     },
     {
-      "ma": "53110020",
-      "loai": "BO_VE",
-      "ve": "Vải này được sử dụng để làm túi, để gia cố vải sơn và dùng cho mục đích trang trí như giấy gói hoa.",
-      "lyDo": "sen.53110020: đây là công dụng điển hình nêu trong chú giải SEN, KHÔNG phải điều kiện giới hạn của dòng 53110020; mã hoá thành điều kiện congDung sẽ thu hẹp sai phạm vi dòng (vải bố từ xơ chuối abaca dùng cho mục đích khác vẫn thuộc dòng này) nên bỏ vế, không ghi điều kiện."
-    },
-    {
       "ma": "53110090",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.53110090: \"Loại khác\" trần ⇒ không ghi điều kiện, không đưa vào spec (máy phủ định anh em)."
@@ -59,7 +53,12 @@
     {
       "ma": "53110010+53110020",
       "loai": "QUYET_DINH",
-      "ghiChu": "Khai chongLanVanBan cho cặp 53110010/53110020: vải bố (burlap) từ xơ chuối abaca được in bằng phương pháp batik truyền thống thoả cả hai chữ biểu, chữ biểu không tách nên không bịa điều kiện tách. Không khai thứ tự ưu tiên vì gói không có căn cứ trích được (không có TB-TCHQ/SEN/GIR nói thứ tự) — để cổng 2 cảnh báo, người soát quyết."
+      "ghiChu": "Khai chongLanVanBan cho cặp 53110010/53110020: vải bố (burlap) từ xơ chuối abaca được in bằng phương pháp batik truyền thống thoả cả hai chữ biểu, chữ biểu không tách nên không bịa điều kiện tách. Không khai thứ tự ưu tiên vì gói không có căn cứ trích được (không có TB-TCHQ/SEN/GIR nói thứ tự) — cổng 2 thành cảnh báo, lúc chạy không tự chốt."
+    },
+    {
+      "ma": "53110020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude (#1109, 11/11): xoá BO_VE \"Vải này được sử dụng để làm túi, …\" (cong5-bo-ve-khong-co-trong-chu) — câu đó là chữ SEN (sen.53110020), không phải vế của chữ dòng tax.53110020 \"Vải bố (burlap) từ xơ chuối abaca\" (--ve: chỉ DAU + PHU \"(burlap)\", không vế GIỚI HẠN/MỞ nào cần miễn) nên không có gì để miễn; công dụng điển hình của SEN vẫn không thành điều kiện. Sửa câu cuối ghi chú cặp chongLanVanBan (cảnh báo cong5-de-trong-chua-xu-ly do cụm giao việc cho người duyệt) — cặp giữ nguyên, lúc chạy không tự chốt."
     }
   ]
 }

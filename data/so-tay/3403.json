@@ -131,11 +131,26 @@
   "dong8": [
     {
       "hs": "34031111",
-      "dieuKien": "Chế phẩm dầu bôi trơn",
+      "dieuKien": "tên loại hàng: Chế phẩm dầu bôi trơn",
       "loaiKhac": false,
       "nguon": "tax.34031111",
       "trich": "34031111 - - - - Chế phẩm dầu bôi trơn",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Chế phẩm dầu bôi trơn"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L10-20261111#soat-L10",
+          "ngay": "2026-11-11",
+          "bam": "064b9b4dc462d9afa1611906064cab027ff020de5ba42152158768d599371879"
+        }
+      }
     },
     {
       "hs": "34031119",
@@ -179,19 +194,55 @@
     },
     {
       "hs": "34031911",
-      "dieuKien": "Chế phẩm dùng cho động cơ của phương tiện bay",
+      "dieuKien": "tên loại hàng: Chế phẩm; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): động cơ của phương tiện bay",
       "loaiKhac": false,
       "nguon": "tax.34031911",
       "trich": "34031911 - - - - Chế phẩm dùng cho động cơ của phương tiện bay",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Chế phẩm"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "động cơ của phương tiện bay"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L10-20261111#soat-L10",
+          "ngay": "2026-11-11",
+          "bam": "1ad5d70c764a5639c0ce160b62ad73f7c1b8df19f557db8fead8fe26fd9ac994"
+        }
+      }
     },
     {
       "hs": "34031912",
-      "dieuKien": "Chế phẩm khác chứa dầu silicon",
+      "dieuKien": "tên loại hàng: Chế phẩm khác chứa dầu silicon",
       "loaiKhac": false,
       "nguon": "tax.34031912",
       "trich": "34031912 - - - - Chế phẩm khác chứa dầu silicon",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Chế phẩm khác chứa dầu silicon"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L10-20261111#soat-L10",
+          "ngay": "2026-11-11",
+          "bam": "1ad5d70c764a5639c0ce160b62ad73f7c1b8df19f557db8fead8fe26fd9ac994"
+        }
+      },
+      "phanConLai": true
     },
     {
       "hs": "34031919",
@@ -237,11 +288,26 @@
     },
     {
       "hs": "34039111",
-      "dieuKien": "Chế phẩm chứa dầu silicon",
+      "dieuKien": "tên loại hàng: Chế phẩm chứa dầu silicon",
       "loaiKhac": false,
       "nguon": "tax.34039111",
       "trich": "34039111 - - - - Chế phẩm chứa dầu silicon",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Chế phẩm chứa dầu silicon"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L10-20261111#soat-L10",
+          "ngay": "2026-11-11",
+          "bam": "62a7c5e6e612f7ae549e8c49cbb03c558abd4f02c85ee53fcbdb43a0ee4afe5f"
+        }
+      }
     },
     {
       "hs": "34039119",
@@ -618,6 +684,69 @@
     "nguonBiCat": []
   },
   "dieuKienNut": [
+    {
+      "id": "3403111",
+      "nguon": "tieuDe.3403111",
+      "trich": "3403111 Dạng lỏng",
+      "dieuKienSo": [
+        {
+          "fact": "dangLong",
+          "op": "CO",
+          "value": true
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L10-20261111#soat-L10",
+          "ngay": "2026-11-11",
+          "bam": "064b9b4dc462d9afa1611906064cab027ff020de5ba42152158768d599371879"
+        }
+      }
+    },
+    {
+      "id": "3403191",
+      "nguon": "tieuDe.3403191",
+      "trich": "3403191 Dạng lỏng",
+      "dieuKienSo": [
+        {
+          "fact": "dangLong",
+          "op": "CO",
+          "value": true
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L10-20261111#soat-L10",
+          "ngay": "2026-11-11",
+          "bam": "1ad5d70c764a5639c0ce160b62ad73f7c1b8df19f557db8fead8fe26fd9ac994"
+        }
+      }
+    },
+    {
+      "id": "3403911",
+      "nguon": "tieuDe.3403911",
+      "trich": "3403911 Dạng lỏng",
+      "dieuKienSo": [
+        {
+          "fact": "dangLong",
+          "op": "CO",
+          "value": true
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L10-20261111#soat-L10",
+          "ngay": "2026-11-11",
+          "bam": "62a7c5e6e612f7ae549e8c49cbb03c558abd4f02c85ee53fcbdb43a0ee4afe5f"
+        }
+      }
+    },
     {
       "id": "3403991",
       "nguon": "tieuDe.3403991",
