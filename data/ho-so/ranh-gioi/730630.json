@@ -4,19 +4,13 @@
   "nhom": "7306",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "DUYET",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-730630",
     "ngay": "2026-11-06"
   },
-  "duyet": {
-    "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L22-20261111#soat-L22",
-    "ngay": "2026-11-11",
-    "ghiChu": "Bốn tiêu đề (nồi hơi dungCho; mạ đồng/nhựa flo/kẽm cromat + OD<=15; ống áp lực cao giữ tên + yield>=42000) và các dòng OD<12,5, .30 ống bọc phần tử nhiệt bàn là/nồi cơm OD<=12, .91 ID>=12,5 & OD<140 & C<0,45, .92 ID<12,5 — đối chiếu tay biên; khongCoHangThat ba cặp hợp lý (ống phanh mạ đồng giới hạn chảy dưới 42 ksi); khớp bảng hiệu chỉnh 730630-01.",
-    "bam": "2af4b9a6a1137bb94d8167f7ad59da00dad4dd94f71674bfa00b6a23566f9527"
-  },
+  "duyet": null,
   "dieuKienNut": [
     {
       "id": "7306301",
@@ -29,7 +23,7 @@
           "value": "nồi hơi"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "id": "7306302",
@@ -52,7 +46,7 @@
           "donVi": "mm"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "id": "7306304",
@@ -71,7 +65,7 @@
           "donVi": "psi"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "dong8": [
@@ -87,14 +81,14 @@
           "donVi": "mm"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "73063019",
       "nguon": "tax.73063019",
       "trich": "73063019 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "73063021",
@@ -108,14 +102,14 @@
           "donVi": "mm"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "73063029",
       "nguon": "tax.73063029",
       "trich": "73063029 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "73063030",
@@ -147,7 +141,7 @@
           "donVi": "mm"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "73063041",
@@ -161,14 +155,14 @@
           "donVi": "mm"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "73063049",
       "nguon": "tax.73063049",
       "trich": "73063049 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "73063091",
@@ -194,7 +188,7 @@
           "donVi": "%"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "73063092",
@@ -208,14 +202,14 @@
           "donVi": "mm"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "73063099",
       "nguon": "tax.73063099",
       "trich": "73063099 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "chongLanTruc": [
@@ -365,6 +359,13 @@
       "ma": "730630",
       "loai": "QUYET_DINH",
       "ghiChu": "Claude 07/11/2026 (#1109): cụm 4 nhánh chia theo công dụng (nồi hơi; ống bọc gia nhiệt), lớp phủ + đường kính (DAC_DIEM) và tên «Ống dẫn chịu áp lực cao». Cặp nồi hơi ↔ áp lực cao là chồng THẬT (ống P355NH hàn dùng cho nồi hơi, giới hạn chảy ~51.500 psi). Bốn cặp còn lại khai Q1 (khongCoHangThat, lý do từng cặp trong viDuHang). Lúc chạy hàng thoả hai nhánh ⇒ hỏi câu phân biệt, không tự chọn."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:tech-lead-20261111#soat-lai",
+      "ngay": "2026-11-11",
+      "lyDo": "bo-kiem-luat --toan-bieu (gộp thử với main, đo hai bên cùng nhịp): bản duyệt sinh ca chốt sai mới (chotSai/chotLoaiKhacSai tăng) — cổng gộp không cho tăng. Soạn/soát lại vế gây chốt sai rồi đo lại trước khi duyệt."
     }
   ]
 }

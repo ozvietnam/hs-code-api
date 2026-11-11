@@ -4,19 +4,13 @@
   "nhom": "7320",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "DUYET",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-732020",
     "ngay": "2026-11-04"
   },
-  "duyet": {
-    "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L22-20261111#soat-L22",
-    "ngay": "2026-11-11",
-    "ghiChu": "Tiêu đề 7320201 dungCho [xe có động cơ, 84.29, 84.30]; .11 'For motor vehicles' → dungChoXeCoDongCo; .12 'For earth-moving machinery' → dungCho máy làm đất; .19/.90 trần.",
-    "bam": "4ded61f23964d2b8e9572ff75f03de95df0b12a280a48faa28d93fcfb8a0e40e"
-  },
+  "duyet": null,
   "dieuKienNut": [
     {
       "id": "7320201",
@@ -33,7 +27,7 @@
           ]
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "dong8": [
@@ -47,7 +41,7 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "73202012",
@@ -60,21 +54,21 @@
           "value": "máy làm đất"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "73202019",
       "nguon": "tax.73202019",
       "trich": "73202019 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "73202090",
       "nguon": "tax.73202090",
       "trich": "73202090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "ghiChuSoan": [
@@ -92,6 +86,13 @@
       "ma": "73202012",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.73202012: \"Dùng cho máy làm đất\" ⇒ dungCho \"máy làm đất\""
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:tech-lead-20261111#soat-lai",
+      "ngay": "2026-11-11",
+      "lyDo": "bo-kiem-luat --toan-bieu (gộp thử với main, đo hai bên cùng nhịp): bản duyệt sinh ca chốt sai mới (chotSai/chotLoaiKhacSai tăng) — cổng gộp không cho tăng. Soạn/soát lại vế gây chốt sai rồi đo lại trước khi duyệt."
     }
   ]
 }
