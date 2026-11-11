@@ -4,7 +4,7 @@
   "nhom": "4202",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1705#soan-420222",
@@ -50,6 +50,13 @@
       "ma": "42022220",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.42022220 \"Mặt ngoài bằng vật liệu dệt\" (EN \"With outer surface of textile materials\") ⇒ tenLoai \"vật liệu dệt\" (cùng lý do như .10: không dùng chatLieu \"vải dệt\" vì tầng gốc không có con \"Loại khác\")."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L13-20261111#soat-L13",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 42022210/42022220 THU HẸP + SAI KHOÁ: \"Mặt ngoài bằng tấm plastic\" / \"Mặt ngoài bằng vật liệu dệt\" (EN \"With outer surface of sheeting of plastics / of textile materials\") ghi TEN_LOAI \"tấm plastic\" / \"vật liệu dệt\" trong khi khoá chatLieu có sẵn giá trị \"plastic\"/\"vải dệt\"; thử 'Túi xách tay nữ mặt ngoài bằng vải polyester' và 'Túi xách tay nữ bằng nhựa PVC' ⇒ TRAI CẢ HAI dòng (phân nhóm không có Loại khác ⇒ không dòng nào nhận). Tiền lệ 8412/TB-TCHQ (túi xách 100% PU → 42022200) cũng không tới được. Dùng chatLieu LA \"plastic\" / \"vải dệt\" (viTri mặt ngoài nếu có)."
     }
   ]
 }

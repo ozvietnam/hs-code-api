@@ -4,7 +4,7 @@
   "nhom": "4013",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1705#soan-401310",
@@ -139,6 +139,13 @@
       "loai": "BO_VE",
       "ve": "Dùng cho loại lốp",
       "lyDo": "Vế \"Dùng cho loại lốp\" là đích CHUNG của mọi dòng 8 số dưới tiêu đề này (vòng ruột đều dùng cho loại lốp), không phân biệt dòng nào: điều kiện phân biệt là đích phương tiện nêu ở tiêu đề và biên chiều rộng ở dòng con. Ghi dungCho \"loại lốp\" ở dòng con sẽ làm cổng 1 không phủ kín (vector mang giá trị của tiêu đề không rơi vào dòng con nào), nên miễn vế này — bỏ vế không làm đổi mã 8 số."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L13-20261111#soat-L13",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 40131011/19/21/29 SAI TRỤC: \"Dùng cho loại lốp có chiều rộng không quá/trên 450 mm\" (EN \"Suitable for fitting to tyres of a width …\") — chiều rộng là của LỐP lắp săm, không phải của chính săm; BO_VE \"Dùng cho loại lốp\" với lyDo \"bỏ vế không làm đổi mã\" là SAI: bỏ vế này biến chieuRong thành rộng của săm (cùng loại lỗi 401180 'lắp vành'). Chênh MFN 30% (≤450) ↔ 10% (>450). Phải THIEU_KHOA_TU_VUNG (khoaDeXuat chiều rộng lốp lắp, như duongKinhVanh) ⇒ DỪNG. (B) tầng 4013101 dungCho \"ô tô con (motor car)\" bỏ vế \"kể cả … station wagons và ô tô đua\" ⇒ săm ô tô đua TRAI cả hai tầng (phân nhóm không có Loại khác)."
     }
   ]
 }
