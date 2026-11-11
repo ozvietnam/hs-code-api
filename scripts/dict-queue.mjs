@@ -39,6 +39,7 @@ import {
 } from './dict-lib.mjs';
 
 const require = createRequire(import.meta.url);
+const { sxTho } = require('../lib/sx-tat-dinh.js');
 const argv = process.argv.slice(2);
 const opt = (name, fallback = null) => {
   const hit = argv.find((a) => a.startsWith(`--${name}=`));
@@ -166,7 +167,8 @@ for (const h of allHeadings(tax)) {
   const st = progress.headings[h] || {};
   rows.push({ heading: h, tier, score, ...sig, whyVi, status: st.status || 'open', by: st.by || null });
 }
-rows.sort((a, b) => b.score - a.score || a.heading.localeCompare(b.heading));
+// sxTho (OZV-373): thứ tự này đi vào data/dictionary-queue.json ⇒ tất định, không theo ICU của máy chạy.
+rows.sort((a, b) => b.score - a.score || sxTho(a.heading, b.heading));
 
 const chapter = opt('chapter');
 const top = Number(opt('top', 30));

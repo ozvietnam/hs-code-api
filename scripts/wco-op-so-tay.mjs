@@ -18,6 +18,7 @@ import { fileURLToPath } from 'node:url';
 const require = createRequire(import.meta.url);
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const { verifySoTay, checkYKienWco, fingerprint } = require('../lib/so-tay.js');
+const { sxTho } = require('../lib/sx-tat-dinh.js');
 const wcoOp = require('../lib/wco-op.js');
 
 const arg = (n, d = null) => { const a = process.argv.find((x) => x.startsWith(`--${n}=`)); return a ? a.slice(n.length + 3) : d; };
@@ -68,7 +69,8 @@ function main() {
     const before = (cur.yKienWco || []).length;
     const merged = new Map((cur.yKienWco || []).map((x) => [x.nguon, x]));
     for (const x of list) merged.set(x.nguon, x);
-    const yk = [...merged.values()].sort((a, b) => a.hs.localeCompare(b.hs) || a.thuTuTrongMa - b.thuTuTrongMa);
+    // sxTho (OZV-373): thứ tự yKienWco GHI VÀO data/so-tay/ phải tất định, không theo ICU của máy chạy.
+    const yk = [...merged.values()].sort((a, b) => sxTho(a.hs, b.hs) || a.thuTuTrongMa - b.thuTuTrongMa);
     // Danh sách ý kiến WCO của nhóm KHÔNG đủ (ý kiến chưa đối chiếu được mã/số in bị loại) → không được hiểu là "nhóm này chỉ có chừng đó ý kiến".
     const next = { ...cur, yKienWco: yk, yKienWcoDayDu: wcoOp.incomplete() ? false : (cur.yKienWcoDayDu ?? false) };
     const r = verifySoTay(next, h4, undefined, { doiChieuWco: true });

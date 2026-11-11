@@ -11,6 +11,7 @@ import { createRequire } from 'module';
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const require = createRequire(join(root, 'package.json'));
 const { resolveTemplateId, TEMPLATES } = require('./lib/declaration-field-templates.js');
+const { sxTho } = require('./lib/sx-tat-dinh.js');
 
 const tax = JSON.parse(readFileSync(join(root, 'data', 'tax.json'), 'utf8'));
 const catalog = JSON.parse(readFileSync(join(root, 'data', 'chapter-declaration-fields.json'), 'utf8'));
@@ -44,7 +45,8 @@ const headings = {};
 let mapped = 0;
 let fallback = 0;
 
-for (const [heading, meta] of Object.entries(headingMeta).sort(([a], [b]) => a.localeCompare(b))) {
+// sxTho (OZV-373): thứ tự này đi vào data/heading-declaration-fields.json ⇒ tất định, không theo ICU của máy chạy.
+for (const [heading, meta] of Object.entries(headingMeta).sort(([a], [b]) => sxTho(a, b))) {
   const templateId = resolveTemplateId(heading);
   const template = templateId ? TEMPLATES[templateId] : null;
   if (template) {
