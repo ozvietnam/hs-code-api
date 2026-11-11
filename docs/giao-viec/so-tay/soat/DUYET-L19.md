@@ -132,3 +132,8 @@ Sau khi áp dụng: `check-so-tay` 0 mục lỗi nguồn (1228 nhóm), `check-ca
 
 13 cảnh báo `cong5-bo-ve`. Người soát xác nhận đúng 10 (690722 ×3, 690723 ×3, 690730 ×2, 690740 ×1, 680990 ×1),
 sai 3 (630619, 630710, 650610). Trong các vế máy báo "phủ", 2 bị báo oan (640391, 640399).
+
+
+## Soát lại của tech lead — bo-kiem-luat hai bên
+
+Trả về 680919 681019: gộp thử với `main` làm phát sinh ca chốt sai mới trong `bo-kiem-luat --toan-bieu` (cổng gộp không cho `chotSai`/`chotLoaiKhacSai` tăng). Mục sổ tay giữ như `main`.
