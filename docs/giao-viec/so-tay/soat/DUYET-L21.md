@@ -162,3 +162,8 @@ Sau khi áp dụng: `check-so-tay` 0 lỗi, `check-cay` 0 lỗi lệch cây, `te
 | 722870 | DUYET | Đối chiếu .10 'Chưa được gia công quá mức cán nóng, kéo nóng hoặc ép đùn'/EN 'Not further worked than hot-rolled…' ⇒ chuaGiaCongQuaMucCanNong CO; bảng 722870-01 KHONG_LECH khớp. |
 | 722880 | TRA_VE | (A) 722880: dòng 'Có mặt cắt ngang hình tròn' / EN 'Of circular cross-section' mã hoá bằng hinhDangCatGocKinh KHONG — khoá SAI NGHĨA (tu-vung: 'tấm KÍNH hình vuông hoặc hình chữ nhật', ch.70); phủ định ⇒ SUY RỘNG: thanh thép hợp kim mặt cắt lục giác/bát giác/dẹt cũng thoả, lấn dòng 'hình tròn' thay vì 'Loại khác'. Sửa: hinhDangMatCatNgang TRONG [TRON] (như 722850). |
 | 722990 | DUYET | Đối chiếu tiêu đề 7229902 'Mặt cắt ngang không quá 5,5 mm' (biên ≤ đối chiếu tay); .21/.91 'Crôm từ 0,5% trở lên' ⇒ ≥0,5; .30 'Loại khác, bằng thép gió' ⇒ TEN_LOAI; bảng 722990-01 KHONG_LECH khớp. Lưu ý: tiêu đề dùng duongKinh — nên đổi sang kichThuocMatCatNgang (như 722300) để dây dẹt/không tròn đọc được; không đổi ranh giới với dây tròn. |
+
+
+## Soát lại của tech lead — bo-kiem-luat hai bên
+
+Trả về 721070,721113,721114,721499: gộp thử với `main` làm phát sinh ca chốt sai mới trong `bo-kiem-luat --toan-bieu` (cổng gộp không cho `chotSai`/`chotLoaiKhacSai` tăng). Mục sổ tay giữ như `main`.
