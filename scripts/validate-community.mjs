@@ -302,6 +302,42 @@ function validateQuality(file, doc) {
     if (!BIEU_THUE.has(String(r.attributes?.bieuThue || ''))) problem(file, `${at} (${ref}): attributes.bieuThue phải là 2012 / 2017 / 2022`);
     if (r.attributes?.loaiTB && !LOAI_TB.has(r.attributes.loaiTB)) problem(file, `${at} (${ref}): attributes.loaiTB không hợp lệ`);
     if (String(doc.submittedAt || '') >= EVIDENCE_FROM) {
+      // LÀN DẪN NỐI (OZV-400): bản ghi thu thập TRƯỚC quy trình bằng chứng, được dẫn nối
+      // mã cũ (biểu thuế trước EN2022) → mã hiện hành rồi nộp lại (scripts/unpark-legacy-precedents.mjs).
+      // KHÔNG áp khối bằng chứng trang-đã-mở cho các bản ghi này: TB gốc kết luận bằng mã CŨ,
+      // buộc "câu kết luận nguyên văn chứa mã MỚI" là bắt bịa trích dẫn — đúng cái việc lầm
+      // (đổi mã cho khớp) mà khối bằng chứng ra đời để chặn. Thay vào đó chặt HỢP ĐỒNG DẪN NỐI:
+      // mọi căn cứ phải tự khai trong attributes và khớp nhau.
+      // (Bản ghi CÓ bằng chứng đọc-mới vẫn đi khối bằng chứng như thường — một số lượt
+      // goi-068→102 khai legacyHs kèm evidence vì TB kết luận mã biểu cũ; đó không phải làn này.)
+      const coBangChung = String(r?.evidence?.ketLuan || '').trim().length >= 30;
+      const maGoc = String(r?.attributes?.hs_code_goc || '');
+      const laDanNoi = !coBangChung && r?.attributes?.legacyHs === true;
+      if (laDanNoi && !/^\d{8}$/.test(maGoc)) {
+        problem(file, `${at} (${ref}): bản ghi khai legacyHs (không có bằng chứng đọc-mới) thì phải có attributes.hs_code_goc 8 chữ số`);
+      }
+      if (laDanNoi && /^\d{8}$/.test(maGoc)) {
+        const danNoi = String(r.attributes.legacyHsReasoning || '');
+        if (maGoc === String(r.hsCode)) {
+          problem(file, `${at} (${ref}): hs_code_goc trùng hsCode — bản ghi dẫn nối phải đứng dưới mã MỚI, mã CŨ giữ ở attributes`);
+        }
+        if (!(Array.isArray(r.attributes.legacyHsRemap) && r.attributes.legacyHsRemap.map(String).includes(String(r.hsCode)))) {
+          problem(file, `${at} (${ref}): legacyHsRemap phải là mảng chứa mã mới ${r.hsCode}`);
+        }
+        if (!hsInText(r.hsCode, danNoi)) {
+          problem(file, `${at} (${ref}): legacyHsReasoning phải chứa mã mới ${r.hsCode} — câu dẫn nối của chính bản ghi`);
+        }
+        // Phần lý do GỐC (bỏ câu dẫn nối ra) phải còn mã kết luận CŨ — không được thay chữ TB.
+        // Chấp nhận mã kiểu chấm-phẩy Việt Nam trong TB cũ (vd 9033.00,20, TB 2411/TB-TCHQ).
+        const phanGoc = reason.replace(danNoi, '');
+        const maPhay = `${maGoc.slice(0, 4)}.${maGoc.slice(4, 6)},${maGoc.slice(6)}`;
+        if (!hsInText(maGoc, phanGoc) && !phanGoc.replace(/\s+/g, '').includes(maPhay)) {
+          problem(file, `${at} (${ref}): phần lý do gốc (đã bỏ câu dẫn nối) không còn mã kết luận CŨ ${maGoc} — không được sửa chữ của thông báo`);
+        }
+        if (!['high', 'medium', 'low'].includes(String(r.attributes.legacyHsConfidence || ''))) {
+          problem(file, `${at} (${ref}): legacyHsConfidence phải là high / medium / low`);
+        }
+      } else {
       const ev = r.evidence || {};
       const nref = (x) => String(x || '').toUpperCase().replace(/^SỐ\s*:?\s*/i, '').replace(/\s+/g, '');
       if (!ev.soHieu) {
@@ -348,13 +384,17 @@ function validateQuality(file, doc) {
       if (tail && headings.some((h) => h.startsWith(tail.slice(0, 25)))) {
         problem(file, `${at} (${ref}): description nối thêm tên nhóm/phân nhóm biểu thuế ("${parts.slice(1).join(' - ').trim().slice(0, 40)}…") — đó là kết luận, không phải đặc tính hàng. Ghi chất liệu, cấu tạo, công dụng, thông số từ văn bản`);
       }
+      }
     }
     if (reason.trim().length < 80) {
       problem(file, `${at} (${ref}): reasonVi dưới 80 ký tự — chép nguyên văn chuỗi nhóm → phân nhóm → mã và căn cứ`);
       return;
     }
     if (!hsInText(r.hsCode, reason)) problem(file, `${at} (${ref}): reasonVi không chứa mã kết luận ${r.hsCode} — lý do phải kết thúc ở mã số`);
-    if (unbalanced(reason)) problem(file, `${at} (${ref}): reasonVi có ngoặc mở không đóng — có vẻ bị cắt giữa chừng`);
+    // Bản ghi dẫn nối: méo ngoặc có SẴN trong trích TB gốc đã nhận vào kho trước quy trình
+    // strict (vd TB 1012/TB-TCHQ trích "*Poly(metylen phenyl isocyanat) (MDI thô, polymer ic MDI"
+    // — biểu thuế in thiếu ngoặc) — giữ nguyên văn, không "sửa" chữ của thông báo.
+    if (unbalanced(reason) && r?.attributes?.legacyHs !== true) problem(file, `${at} (${ref}): reasonVi có ngoặc mở không đóng — có vẻ bị cắt giữa chừng`);
     if (reason.length > 1000) problem(file, `${at} (${ref}): reasonVi quá 1000 ký tự — bỏ phần mô tả hàng lặp lại, giữ chuỗi kết luận + căn cứ`);
     else if (reason.length < THIN_REASON) warn(file, `${at} (${ref}): reasonVi dưới ${THIN_REASON} ký tự sẽ bị coi là bản mỏng`);
   });
