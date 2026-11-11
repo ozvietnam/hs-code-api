@@ -107,3 +107,8 @@ Kiểm sau lô: `check-so-tay` xanh, `check-cay` xanh, `test-so-tay` 65/65.
 
 - **570500** (ngoài lô, đã DUYET) mắc cùng lỗi "Từ xơ đay" ⇒ `SOI_THUC_VAT_KHAC`, cần soát lại hoặc gỡ DUYET. Từ vựng `loaiSoiDet` thiếu giá trị cho đay (vd `DAY` hoặc `XO_LIBE_5303`). Đây là đề xuất THIEU_KHOA_TU_VUNG cho các bản 57.01–57.05 và có thể cả 63.05.
 - 540741 và 550952 cần một phiên soát khác phiên điều phối để duyệt.
+
+
+## Soát lại của tech lead — mất ngưỡng số SEN
+
+Trả về 520911: bản duyệt bỏ mất điều kiện số (SEN) mà sổ tay đang chạy dùng để chốt dòng. Dòng sổ tay của các PN6 này giữ như `main`. Cổng `cong3-mat-nguong-so` (#1214) sẽ chặn lỗi này từ nay.

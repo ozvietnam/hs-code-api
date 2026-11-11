@@ -654,36 +654,25 @@
   "dong8": [
     {
       "hs": "52091110",
-      "dieuKien": "tên loại hàng: Vải duck hoặc vải canvas; kiểu dệt / cấu trúc dệt của vải: vân điểm (plain weave)",
+      "dieuKien": "Vải Duck và vải Canvas là cùng một loại vải; thường làm từ sợi bông, sợi lanh, sợi gai dầu hoặc sợi đay, trọng lượng thông thường từ 200 đến 2000 g/m2; kiểu dệt vân điểm hoặc vân điểm kết thúc 2 đầu",
       "nguon": "sen.52091110",
-      "trich": "Vải Duck và vải Canvas là cùng một loại vải… Loại vải này thường được làm từ sợi bông, sợi lanh, sợi gai dầu hoặc sợi đay theo trọng lượng thông thường từ 200 đến 2000g/m2. Kiểu dệt vân điểm hoặc vân điểm kết thúc 2 đầu.",
+      "trich": "Loại vải này thường được làm từ sợi bông, sợi lanh, sợi gai dầu hoặc sợi đay theo trọng lượng thông thường từ 200 đến 2000g/m2. Kiểu dệt vân điểm hoặc vân điểm kết thúc 2 đầu.",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "Vải duck",
-            "vải canvas"
-          ]
+          "fact": "trong_luong_vai",
+          "op": ">=",
+          "value": 200,
+          "donVi": "g/m2"
         },
         {
-          "fact": "kieuDet",
-          "op": "TRONG",
-          "value": [
-            "VAN_DIEM"
-          ]
+          "fact": "trong_luong_vai",
+          "op": "<=",
+          "value": 2000,
+          "donVi": "g/m2"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET",
-      "loaiKhac": false,
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L16-20261111#soat-L16",
-          "ngay": "2026-11-11",
-          "bam": "7603e9ab71d6e3ad698895353f1d7f96b05a9c983097e11cf9f16d410ad57f62"
-        }
-      }
+      "nguonLoai": "AI_DA_KIEM",
+      "loaiKhac": false
     },
     {
       "hs": "52091190",
