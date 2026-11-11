@@ -1,6 +1,6 @@
 # Phân nhóm 6 số (PN6) đang DỪNG — vướng gì, cần gì
 
-Cập nhật 10/11/2026 (Claude, #1109). Thay toàn bộ bản cũ. Mỗi PN6 DỪNG có **đúng một** ghi chú `DUNG` trong
+Cập nhật 11/11/2026 (Claude, #1109). Thay toàn bộ bản cũ. Mỗi PN6 DỪNG có **đúng một** ghi chú `DUNG` trong
 `docs/giao-viec/so-tay/spec/<pn6>.json`, cùng khuôn: **[LOẠI] vướng gì — CẦN: gỡ bằng gì — (LÚC CHẠY: hệ thống làm gì trong lúc chờ)**.
 PN6 DỪNG không được dùng lúc chạy; lúc chạy chỉ dùng bản đã duyệt.
 
@@ -8,8 +8,8 @@ PN6 DỪNG không được dùng lúc chạy; lúc chạy chỉ dùng bản đã
 
 | | Số PN6 |
 |---|---|
-| DỪNG hiện tại | **6** |
-| Chờ oz-wiki: Q2 (văn bản ô tô) | 5 |
+| DỪNG hiện tại | **1** |
+| Chờ oz-wiki: Q2 (văn bản ô tô) | 0 |
 | Chương 98 — Claude đang soát bản nháp | 0 |
 | Q1 còn lại — Claude xác minh / sửa bộ máy | 0 |
 | Claude làm tiếp (công cụ / soát lại) | 1 |
@@ -33,11 +33,12 @@ khung xe: Q1; sửa bộ kiểm ở dưới). Lô 9 (#1175) xong 3 PN6 cuối: 8
 đầu nối cáp điện thoại» vào .93), 271012 (khoá `loaiPhaChe`; ví dụ .70↔.80 theo TB 1420/2022), 848180 (một cụm trục 9 nhánh, cặp không có hàng
 thật khai Q1). **Nhóm Q1 hết DỪNG.**
 
-### Q2 — Ô tô ↔ xe ba bánh (5 PN6: 870421, 870431, 870441, 870451, 870460) — CHỜ oz-wiki
+### Q2 — Ô tô ↔ xe ba bánh — XONG (#1177, #1182)
 
-Các dòng «Ô tô tải đông lạnh», «Ô tô pick-up»… bị coi là chồng với «Xe ba bánh», vì máy không biết «ô tô» là xe từ bốn bánh
-trở lên. Cần bản chính thức văn bản định nghĩa «xe ô tô» (Luật 36/2024/QH15 hoặc TCVN 6211) làm nguồn. Anh chốt 07/11: **chờ
-oz-wiki trả lời** (kho oz-wiki-plhq), Claude làm tiếp #1101 khi có.
+oz-wiki trả lời 10/11: ô tô là xe từ bốn bánh trở lên, không đồng thời là xe ba bánh. #1177 khai `chongLanVanBan` cho 5 PN6
+870421, 870431, 870441, 870451, 870460; #1182 gỡ ghi chú DUNG còn sót và **sửa căn cứ**: bản #1177 dẫn «Luật GTĐB 2008 Đ4» là sai (luật
+23/2008/QH12 đã thay bởi 36/2024/QH15; Điều 4 không phải điều định nghĩa) ⇒ lý do nay đứng trên cấu trúc biểu (SEN tách dòng «Xe ba
+bánh»), chưa trích điều luật cho tới khi có nguyên văn định nghĩa «xe ô tô» trong data (#1101).
 
 ### Q3 — Chương 98 — ANH CHỐT «LÀM LUÔN» 07/11, XONG (0 PN6 còn lại)
 
@@ -64,12 +65,6 @@ phủ trọn phân nhóm là tên phân nhóm. Chương 98 hết DỪNG.
 
 | PN6 | Tên phân nhóm | Vướng | Cần |
 |---|---|---|---|
-| **Ô TÔ ↔ XE BA BÁNH** | | | |
-| 870421 | Khối lượng toàn bộ theo thiết kế (SEN) không quá 5 tấn | Dòng «Xe ba bánh» và các dòng «Ô tô …» (tải đông lạnh, pick-up, thu gom phế thải…) bị coi là chồng nhau vì máy chưa biết «ô tô» là xe từ bốn bánh trở lên. | Q2 |
-| 870431 | Khối lượng toàn bộ theo thiết kế (SEN) không quá 5 tấn | Dòng «Xe ba bánh» và các dòng «Ô tô …» (tải đông lạnh, pick-up, thu gom phế thải…) bị coi là chồng nhau vì máy chưa biết «ô tô» là xe từ bốn bánh trở lên. | Q2 |
-| 870441 | Khối lượng toàn bộ theo thiết kế (SEN) không quá 5 tấn | Dòng «Xe ba bánh» và các dòng «Ô tô …» (tải đông lạnh, pick-up, thu gom phế thải…) bị coi là chồng nhau vì máy chưa biết «ô tô» là xe từ bốn bánh trở lên. | Q2 |
-| 870451 | Khối lượng toàn bộ theo thiết kế (SEN) không quá 5 tấn | Dòng «Xe ba bánh» và các dòng «Ô tô …» (tải đông lạnh, pick-up, thu gom phế thải…) bị coi là chồng nhau vì máy chưa biết «ô tô» là xe từ bốn bánh trở lên. | Q2 |
-| 870460 | Loại khác, chỉ sử dụng động cơ điện để tạo động lực | Dòng «Xe ba bánh» và các dòng «Ô tô …» (tải đông lạnh, pick-up, thu gom phế thải…) bị coi là chồng nhau vì máy chưa biết «ô tô» là xe từ bốn bánh trở lên. | Q2 |
 | **GIỚI HẠN BỘ MÁY** | | | |
 | 848690 | Bộ phận và phụ kiện | Các dòng «Bộ phận kẹp dụng cụ…, dùng cho máy công cụ» lặp dưới các tầng về MÁY cụ thể (máy phun, máy cắt laser…); không vector nào vừa thoả tầng vừa thoả dòng. | Claude soát lại cách ghi tầng và dòng. |
 
@@ -93,6 +88,7 @@ phủ trọn phân nhóm là tên phân nhóm. Chương 98 hết DỪNG.
 | #1175 | Chồng lấn (Q1): 271012, 848180, 853690 | Luật «tên cụ thể dưới Loại khác thắng tầng chung»; khoá loaiPhaChe (271012); cụm trục 9 nhánh + khongCoHangThat (848180); «van nối có núm» vào khongPhaiPhuDinh |
 | #1176 | Bộ máy: 842490, 842199, 850790, 871690, 847790, 870600, 681140, 442199, 848620 | Giải chữ↔mã qua cây HS; đích lồng chỉ khi khác nhóm 4 số; cổng 1 «tên đa nghĩa»; cổng 2 trả lời «tương tự» khi kiểm tới được + ứng viên tên chung ẑẑẑ; Q1 871690/848620 |
 | #1178 | Lô 11: 853650, 610520, 870895, 870891, 030749, 480100, 210690, 321290 | Từ vựng @2 `cumChanDoc` (che «micro switch») và `giaTriCha`; phạm vi «Loại khác» từ chú giải nhóm; phạm vi trên nút nhóm cho xxxx.00 (4801.00); `loBieu` — lỗ của chính biểu (210690 r2701/r2704); ứng viên «công dụng chung ẑẑẑ»; Q1 cho cặp cuộn↔tờ, (A)↔(C) 32.12, .91↔.92–.97 21.06 |
+| #1182 | Ô tô (Q2): 870421, 870431, 870441, 870451, 870460 | Gỡ ghi chú DUNG sót sau #1177; sửa căn cứ trích sai «Luật GTĐB 2008 Đ4» trong 30 lý do khai |
 
 Bài học: nhiều ghi chú cũ ghi «chồng lấn giả» hoặc «không sửa được», nhưng thật ra spec sót tên hoặc sót vế (170290 «trừ
 mantoza», 320890 thiếu tên «Sơn», 670290 vật liệu ghi thành tên hàng). Trước khi kết luận DỪNG, soát xem chữ biểu đã tự
