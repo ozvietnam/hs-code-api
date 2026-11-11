@@ -21,9 +21,20 @@
         {
           "fact": "congDung",
           "op": "CONG_DUNG",
+          "value": "quấn"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
           "value": [
-            "quấn tay cầm hoặc cán của các dụng cụ thể thao"
+            "tay cầm",
+            "cán"
           ]
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "dụng cụ thể thao"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -66,6 +77,11 @@
       "ma": "580620",
       "loai": "QUYET_DINH",
       "ghiChu": "Gói soạn chỉ nêu chú giải (nhom5806.nhom 5.427 / ch58.chuong 2.716 / phan58.phan 46.130) kèm độ dài, không kèm câu chữ ⇒ mọi trích trong spec lấy từ chữ biểu của chính dòng (tax.58062010) và tiêu đề phân nhóm (wco.580620 + tiêu đề tiếng Việt)."
+    },
+    {
+      "ma": "58062010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude (#1109, 11/11): sửa cong3-liet-ke-trong-mot-chuoi — giá trị cũ \"quấn tay cầm hoặc cán của các dụng cụ thể thao\" gói liệt kê «tay cầm hoặc cán» (EN «the grips or handles») trong một chuỗi. Tách cùng khoá congDung (VÀ giữa các điều kiện, HOẶC trong mảng): congDung \"quấn\" (to wrap) + congDung [\"tay cầm\",\"cán\"] + congDung \"dụng cụ thể thao\" (định ngữ chung «of sports equipment» của cả tay cầm lẫn cán). Mọi giá trị nguyên văn chữ dòng; không thêm điều kiện."
     }
   ]
 }
