@@ -20,7 +20,15 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Giấy và bìa trang trí"
+          "value": [
+            "Giấy",
+            "bìa"
+          ]
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "trang trí"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -46,7 +54,11 @@
         {
           "fact": "congDung",
           "op": "CONG_DUNG",
-          "value": "dùng để viết, in và các mục đích đồ bản khác"
+          "value": [
+            "viết",
+            "in",
+            "đồ bản"
+          ]
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -166,24 +178,58 @@
     {
       "nhanh": [
         "4802613",
-        "4802615"
+        "4802614",
+        "4802615",
+        "48026160"
       ],
       "truc": {
         "4802613": "TEN_LOAI",
-        "4802615": "CONG_DUNG"
+        "4802614": "CONG_DUNG",
+        "4802615": "CONG_DUNG",
+        "48026160": "DAC_DIEM"
       },
-      "cauHoiPhanBiet": "Hàng này là \"Giấy và bìa trang trí\" (4802613) hay loại \"dùng để viết, in và các mục đích đồ bản khác\" (4802615)? Nếu vừa là giấy và bìa trang trí vừa dùng để viết, in và các mục đích đồ bản, biểu thuế không nêu nhánh nào được ưu tiên — cần chuyên gia phân xử.",
+      "cauHoiPhanBiet": "Giấy này là \"Giấy và bìa trang trí\" (4802613), \"Giấy làm nền sản xuất giấy tráng nhôm\" (4802614), loại \"dùng để viết, in và các mục đích đồ bản khác\" (4802615) hay \"Giấy nhiều lớp\" (48026160)? Nếu hàng có cùng lúc đặc điểm của hai nhánh (vd giấy trang trí dùng để viết; giấy nhiều lớp dùng để in), biểu thuế không nêu nhánh nào được ưu tiên — cần chuyên gia phân xử?",
       "trich": {
         "4802613": "Giấy và bìa trang trí",
-        "4802615": "Loại dùng để viết, in và các mục đích đồ bản khác"
+        "4802614": "Giấy làm nền sản xuất giấy tráng nhôm",
+        "4802615": "Loại dùng để viết, in và các mục đích đồ bản khác",
+        "48026160": "Giấy nhiều lớp"
       },
       "viDuHang": [
         {
           "cap": [
             "4802613",
+            "4802614"
+          ],
+          "khongCoHangThat": "SEN 48026131: giấy và bìa trang trí là giấy đặc biệt có MẪU TRANG TRÍ HOÀN THIỆN trên bề mặt (hình bóng nước, vân đá granit, hoa văn xơ sợi, da giả cổ, đốm màu); SEN 48026141: giấy làm nền tráng nhôm là giấy nền chức năng đồng đều (bóng một mặt, độ trắng ≥ 82% ISO, độ mờ đục ≥ 60%, độ nhẵn ≤ 125 ml/phút) mà bề mặt sẽ bị lớp nhôm phủ kín — mẫu trang trí hoàn thiện mất tác dụng, không có hàng thương mại nào vừa là giấy trang trí vừa là giấy nền tráng nhôm."
+        },
+        {
+          "cap": [
+            "4802613",
             "4802615"
           ],
-          "hang": "Giấy và bìa trang trí dùng để viết, in và các mục đích đồ bản khác"
+          "hang": "Giấy trang trí có hình bóng nước dùng để viết thư, dạng cuộn, chiều rộng 10 cm"
+        },
+        {
+          "cap": [
+            "4802613",
+            "48026160"
+          ],
+          "hang": "Bìa trang trí nhiều lớp (duplex hai mặt khác màu) có hoa văn đốm màu, dạng cuộn, chiều rộng 10 cm"
+        },
+        {
+          "cap": [
+            "4802614",
+            "48026160"
+          ],
+          "khongCoHangThat": "SEN nhóm 48.02 (giấy nhiều lớp): giấy nhiều lớp thuộc nhóm 48.02 là loại \"Dùng để viết, in hoặc mục đích đồ bản\"; giấy nhiều lớp \"Không dùng để viết, in hoặc mục đích đồ bản\" thuộc nhóm 48.04/48.05. Giấy làm nền sản xuất giấy tráng nhôm không phải giấy dùng để viết/in/đồ bản ⇒ giấy nền tráng nhôm nhiều lớp (nếu có) không thuộc 4802.61, không có hàng thật nào trong phân nhóm này thoả cả hai nhánh."
+        },
+        {
+          "cap": [
+            "4802615",
+            "48026160"
+          ],
+          "hang": "Giấy photo nhiều lớp dùng để in, dạng cuộn, chiều rộng 10 cm"
         }
       ],
       "phanXu": null
@@ -196,14 +242,9 @@
       "ghiChu": "wco.480261 \"480261 Uncoated paper and paperboard (not 4801 or 4803); over 10% by weight of mechanical or chemi-mechanical processed fibre, in rolls\" (ten.vi \"Dạng cuộn\") là điều kiện CẤP PHÂN NHÓM ⇒ không mã hoá vào dong8 (dong8 chỉ chứa điều kiện phân biệt các dòng 8 số): vế \"hơn 10% xơ sợi xử lý cơ học hoặc hóa học-cơ học\" và vế \"ở dạng cuộn\" đều thuộc tiêu đề phân nhóm, không lặp vào từng dòng. Cây 480261 có 4 tầng tiêu đề 7 số (4802613, 4802614, 4802615, 4802619) và không có tầng không mã (tangKhongMa rỗng); 4802619 là tiêu đề \"Loại khác\" trần ⇒ không khai trong dieuKienNut."
     },
     {
-      "ma": "480261",
-      "loai": "QUYET_DINH",
-      "ghiChu": "Chồng lấn theo TRỤC ở cấp tiêu đề (#683): 4802613 \"Giấy và bìa trang trí\" (khoá tên tenLoai) đứng cạnh 4802615 \"Loại dùng để viết, in và các mục đích đồ bản khác\" (khoá công dụng congDung) — không chung khoá, có hàng thật thoả cả hai nhánh (giấy và bìa trang trí dùng để viết, in) ⇒ không khai chongLanVanBan (không gỡ được trục), khai chongLanTruc cho cụm hai tiêu đề, phanXu null (người khai/chuyên gia phân xử). Nhánh 4802614 \"Giấy làm nền sản xuất giấy tráng nhôm\" CÙNG trục công dụng với 4802615 (khác nhau ở công dụng: làm nền sản xuất giấy tráng nhôm vs dùng để viết, in) nên không phải cặp chồng lấn trục; không có hàng thật nào vừa là giấy trang trí vừa là giấy làm nền sản xuất giấy tráng nhôm ⇒ cặp (4802613, 4802614) không khai."
-    },
-    {
       "ma": "4802613",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.4802613 \"4802613 Giấy và bìa trang trí\" (tầng tiêu đề 7 số có tên) ⇒ tenLoai \"Giấy và bìa trang trí\": chữ biểu thuế chỉ nêu TÊN loại, không nêu công dụng hay định lượng ⇒ không có khoá nào khác đọc được (cùng cách với 4802582). sen.48026131 \"Giấy và bìa trang trí là loại giấy hoặc bìa đặc biệt với các mẫu trang trí hoàn thiện, ví dụ:\" mô tả CHÍNH tầng này ⇒ không mã hoá thêm điều kiện vào dòng 8 số."
+      "ghiChu": "tieuDe.4802613 \"4802613 Giấy và bìa trang trí\" (EN \"Fancy paper and paperboard\") ⇒ tenLoai [\"Giấy\",\"bìa\"] + tenLoai \"trang trí\" (hai tên đầu liên hợp, định ngữ \"trang trí\"/\"Fancy\" chung cho cả hai). sen.48026131 \"Giấy và bìa trang trí là loại giấy hoặc bìa đặc biệt với các mẫu trang trí hoàn thiện, ví dụ:\" mô tả CHÍNH tầng này ⇒ không mã hoá thêm điều kiện vào dòng 8 số."
     },
     {
       "ma": "4802614",
@@ -213,7 +254,7 @@
     {
       "ma": "4802615",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.4802615 \"4802615 Loại dùng để viết, in và các mục đích đồ bản khác\" (tầng tiêu đề 7 số có tên) ⇒ congDung \"dùng để viết, in và các mục đích đồ bản khác\" (giữ nguyên cụm chữ biểu, cùng khoá/cùng cách với 4802583). Gói gắn nghiPhanConLai cho tầng này: chữ \"khác\" ở cuối có thể là dấu hiệu phần còn lại (ngoài 4802613, 4802614) hoặc định ngữ của \"các mục đích đồ bản\" — không tự chốt nên KHÔNG khai phanConLai, cũng không bịa điều kiện loại trừ; tách nhánh bằng chongLanTruc (phanXu null)."
+      "ghiChu": "tieuDe.4802615 \"4802615 Loại dùng để viết, in và các mục đích đồ bản khác\" (EN \"writing, printing and other graphic purposes\") ⇒ congDung [\"viết\",\"in\",\"đồ bản\"] — viết/in là mục đích đồ bản, vế \"và các mục đích đồ bản khác\" mở ra mọi mục đích đồ bản nên giá trị \"đồ bản\" phủ vế mở (không đóng danh sách). Chữ \"khác\" là của \"các mục đích đồ bản khác\" (định ngữ), không phải phần còn lại của 4802613/4802614 ⇒ KHÔNG khai phanConLai."
     },
     {
       "ma": "4802619",
@@ -264,6 +305,11 @@
       "ma": "48026199",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.48026199 \"48026199 - - - - Loại khác\" trần (loaiKhac + khongCanDieuKien) ⇒ không đưa vào dong8, không ghi điều kiện (máy phủ định anh em 48026191)."
+    },
+    {
+      "ma": "480261",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude (#1109, 11/11): cổng 2 báo 15 lỗi chồng lấn trong cụm bốn nhánh anh em của 480261: 4802613 \"Giấy và bìa trang trí\" (TEN_LOAI), 4802614 \"Giấy làm nền sản xuất giấy tráng nhôm\" (CONG_DUNG), 4802615 \"Loại dùng để viết, in và các mục đích đồ bản khác\" (CONG_DUNG), 48026160 \"Giấy nhiều lớp\" (nhieuLop — DAC_DIEM) — chồng lấn theo TRỤC, cụm cũ chỉ khai 4802613/4802615 và ví dụ bị đọc sai. Sửa: (1) 4802615 congDung tách liệt kê thành [\"viết\",\"in\",\"đồ bản\"] (giá trị cũ một chuỗi đòi đủ âm tiết ⇒ hàng \"dùng để in\" không bao giờ thoả); (2) 4802613 tenLoai [\"Giấy\",\"bìa\"] + \"trang trí\" (giá trị cũ một chuỗi \"Giấy và bìa trang trí\" — hàng \"bìa trang trí\" không thoả); (3) chongLanTruc một cụm bốn nhánh, phanXu null, viDuHang cho 5 cặp khác trục: 13↔15 giấy trang trí có hình bóng nước dùng để viết thư; 13↔60 bìa trang trí duplex hai mặt khác màu có đốm màu; 15↔60 giấy photo nhiều lớp dùng để in (SEN 4802 nêu chính hàng này); 13↔14 và 14↔60 khongCoHangThat có lý do (SEN 48026131/48026141; SEN 4802: giấy nhiều lớp thuộc 48.02 phải dùng để viết/in/đồ bản, loại không dùng để viết/in thuộc 48.04/48.05). Cặp 14↔15 cùng trục CONG_DUNG — cổng 2 không thấy chồng ⇒ không khai."
     }
   ]
 }

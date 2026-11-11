@@ -4,7 +4,7 @@
   "nhom": "4901",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-mm:loop:20261106T0922#soan-490199",
@@ -60,6 +60,13 @@
       "ma": "490199",
       "loai": "QUYET_DINH",
       "ghiChu": "Phân nhóm 490199 không có tầng không mã (tangKhongMa rỗng) ⇒ dieuKienNut rỗng. wco.490199 \"490199 Printed matter; books, brochures, leaflets and similar printed matter n.e.c. in item no. 4901.10 or 4901.91\" là nguồn CHUNG cho cả hai dòng; vế \"n.e.c. in item no. 4901.10 or 4901.91\" giới hạn chính phân nhóm chứ không phân biệt 49019910 với 49019990 ⇒ không mã hoá thành điều kiện của dòng; ranh giới nằm ở tính chất sách trong tiêu đề biểu thuế."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L15-20261111#soat-L15",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 49019910 SUY RỘNG: «Sách giáo dục, kỹ thuật, khoa học, lịch sử hoặc văn hóa» / EN «Educational, technical, scientific, historical or cultural books» — ghi tenLoai TEN_LOAI ['giáo dục','kỹ thuật','khoa học','lịch sử','văn hóa'] (chỉ chủ đề), bỏ danh từ đầu «Sách / books». Phân nhóm 4901.99 gồm cả sách mỏng, tờ rơi và ấn phẩm tương tự: tờ rơi / brochure văn hoá, kỹ thuật khớp giá trị chủ đề ⇒ vào .10 (MFN 0%) thay vì .90 (5%). Phải giữ «sách» (vd tenLoai 'Sách' + chủ đề). Máy tách coi cả câu là DAU nên cổng 5 không đòi phủ."
     }
   ]
 }
