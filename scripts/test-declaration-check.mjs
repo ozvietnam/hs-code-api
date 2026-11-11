@@ -367,6 +367,21 @@ if (kq12?.dong) {
 }
 
 // ═══ 13. Bất biến trên MỌI kết quả đã thu ═══
+// ═══ MFN tạm thời xăng dầu (NĐ 72, NQ 25/34/43/2026 — data/thue-tam-thoi.json): K3 theo NGÀY ĐĂNG KÝ ═══
+{
+  const diesel = (nk, ngay) => ({ ngayDuKienDangKy: ngay, dongHang: [{ stt: 1, maHs: '27101971', moTa: 'Nhiên liệu diesel cho ô tô, DO 0,05S', xuatXu: 'SG', donViTinh: 'lít', thueSuatKhai: { nk, loai: 'MFN' } }] });
+  resetServiceRate();
+  const a = await call(diesel('0', '2026-11-20'));
+  check('K3 MFN tạm thời: diesel khai 0% ngày 20/11/2026 (NQ 43/2026) → DAT, nguồn có data/thue-tam-thoi.json', items(a._j, 1, 'K3').some((m) => m.trangThai === 'DAT' && (m.nguon || []).some((n) => /thue-tam-thoi/.test(n.duongDan))), items(a._j, 1, 'K3'));
+  resetServiceRate();
+  const b = await call(diesel('7', '2026-11-20'));
+  check('K3 MFN tạm thời: diesel khai mức nền 7% khi đang áp 0% → lệch biểu', items(b._j, 1, 'K3').some((m) => m.ma === 'THUE_SUAT_KHAI_LECH_BIEU'), items(b._j, 1, 'K3'));
+  resetServiceRate();
+  const c = await call(diesel('0', '2027-01-05'));
+  check('K3 MFN tạm thời: diesel khai 0% ngày 05/01/2027 (hết hạn, chưa gia hạn) → lệch mức nền', items(c._j, 1, 'K3').some((m) => m.ma === 'THUE_SUAT_KHAI_LECH_BIEU'), items(c._j, 1, 'K3'));
+  allResults.push(a._j, b._j, c._j);
+}
+
 const tong = allResults.filter(Boolean).flatMap((kq) => problems(kq));
 check(`bất biến trên mọi kết quả (${allResults.filter(Boolean).length} lượt): không LOI dựa HEURISTIC/LLM, CHUA_KIEM luôn có lý do, đủ 7 nhóm`, tong.length === 0, tong);
 
