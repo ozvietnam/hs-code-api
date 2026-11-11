@@ -1,0 +1,589 @@
+{
+  "phienBan": "ten-khac@1",
+  "nhom": "8541",
+  "tuVung": "tu-vung@2",
+  "ngay": "2026-11-11",
+  "chuaCoNguon": [
+    {
+      "ma": "85414300",
+      "cumDuKien": [
+        "tấm pin mặt trời",
+        "tấm pin năng lượng mặt trời",
+        "tấm quang năng",
+        "mô-đun quang điện"
+      ],
+      "lyDo": "Chưa có nguyên văn trong kho (L1) hoặc TCVN nguyên văn (L2). Cụm \"pin mặt trời\" của chú giải 85.41 áp cho cả hàng đã và chưa lắp thành môđun (\"đã hoặc chưa lắp thành môdun hoặc lập thành bảng\") nên không phân biệt 8541.42 với 8541.43, không dùng làm tên khác."
+    },
+    {
+      "ma": "85412100",
+      "cumDuKien": [
+        "tranzito lưỡng cực",
+        "tranzito hiệu ứng trường",
+        "MOSFET",
+        "IGBT"
+      ],
+      "lyDo": "Có nguồn L1 (chú giải 85.41 mục (A)(II)) nhưng là KIỂU tranzito, không phân biệt theo tiêu chí luật của 8541.21/8541.29 (tỷ lệ tiêu tán dưới 1 W hay từ 1 W) — không gán cho dòng nào."
+    },
+    {
+      "ma": "85414900",
+      "cumDuKien": [
+        "đi-ốt quang",
+        "tranzito quang",
+        "thyritors quang",
+        "linh kiện ghép quang",
+        "rơle quang"
+      ],
+      "lyDo": "Có nguồn L1 nhưng bản chú giải tiếng Việt xếp các mục này dưới \"Các loại tế bào quang điện đặc biệt\", trùng chữ với tên 8541.42/8541.43 (\"Tế bào quang điện\") — chưa phân xử được 8541.42 hay 8541.49 khi chưa có bản tiếng Anh của chú giải/SEN; không gán."
+    },
+    {
+      "ma": "85415900",
+      "cumDuKien": [
+        "varactor",
+        "đi-ốt dung kháng thay đổi",
+        "griditor",
+        "thiết bị hiệu ứng Gunn"
+      ],
+      "lyDo": "Có nguồn L1 (chú giải 85.41 mục (A)(IV)) nhưng chú giải không nêu phân nhóm 6 số; varactor là đi-ốt (có thể thuộc 8541.10) — không gán khi chưa có căn cứ phân nhóm."
+    },
+    {
+      "ma": "85416000",
+      "cumDuKien": [
+        "thạch anh dao động",
+        "bộ cộng hưởng gốm",
+        "linh kiện bằng sứ giúp xuất tín hiệu tần số ổn định"
+      ],
+      "lyDo": "7531/TB-TCHQ chỉ có câu mô tả chức năng (\"Linh kiện bằng sứ giúp xuất tín hiệu tần số ổn định\"), không phải tên hàng; chú giải nêu \"tinh thể thạch anh\" nhưng tinh thể CHƯA lắp ráp bị loại trừ (38.24/71.03/71.04) nên cụm không phân biệt — không gán."
+    },
+    {
+      "ma": "85415100",
+      "cumDuKien": [
+        "cảm biến dựa trên chất bán dẫn",
+        "cơ cấu chấp hành dựa trên chất bán dẫn",
+        "thiết bị cộng hưởng dựa trên chất bán dẫn"
+      ],
+      "lyDo": "Có nguồn L1 (chú giải 85.41 mục (A)(III)(1)-(3)) nhưng cổng anh em (scripts/cong-anh-em.mjs) báo cụm \"cảm biến dựa trên chất bán dẫn\" khớp mục loại trừ \"Cảm biến, bộ dẫn động, bộ cộng hưởng, bộ tạo dao động … dựa trên silic, chứa … mạch tích hợp\" (→ 85.42). Hai cụm còn lại cùng khái niệm với vế loại trừ đó (bộ dẫn động, bộ cộng hưởng), chỉ lọt cổng vì khác chữ — bỏ cả ba cho nhất quán; chỉ giữ tên tiếng Anh của biểu thuế."
+    },
+    {
+      "ma": "85419000",
+      "cumDuKien": [
+        "bộ phận",
+        "linh kiện"
+      ],
+      "lyDo": "Tên dòng \"Bộ phận\" chỉ gồm từ chung; điều kiện dòng đã mô hình bằng laBoPhan CO trong sổ tay — không cần tên khác."
+    }
+  ],
+  "muc": [
+    {
+      "kieu": "TEN_LOAI",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "ma": "85411000",
+      "giaTri": "Đi-ốt, trừ đi-ốt cảm quang hoặc đi-ốt phát quang (LED)",
+      "cachDoc": {
+        "vi": [
+          "đi-ốt tín hiệu",
+          "điốt chỉnh lưu công suất",
+          "đi-ốt điều điện áp chuẩn",
+          "đi-ốt ổn áp"
+        ],
+        "en": [],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/chu-giai-heading.json#8541.nhom",
+        "trich": "Các loại đi-ốt chính là đi-ốt tín hiệu, điốt chỉnh lưu công suất, đi-ốt điều điện áp chuẩn, đi-ốt ổn áp.",
+        "nhan": "NGUYEN_VAN"
+      }
+    },
+    {
+      "kieu": "TEN_LOAI",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "ma": "85411000",
+      "giaTri": "Đi-ốt, trừ đi-ốt cảm quang hoặc đi-ốt phát quang (LED)",
+      "cachDoc": {
+        "vi": [],
+        "en": [
+          "Diodes, other than photosensitive or light-emitting diodes (LED)"
+        ],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz#85411000",
+        "trich": "- Diodes, other than photosensitive or light-emitting diodes (LED)",
+        "nhan": "NGUYEN_VAN"
+      }
+    },
+    {
+      "kieu": "TEN_LOAI",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "ma": "85412100",
+      "giaTri": "Có tỷ lệ tiêu tán năng lượng dưới 1 W",
+      "cachDoc": {
+        "vi": [],
+        "en": [
+          "With a dissipation rate of less than 1 W"
+        ],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz#85412100",
+        "trich": "- - With a dissipation rate of less than 1 W",
+        "nhan": "NGUYEN_VAN"
+      }
+    },
+    {
+      "kieu": "TEN_LOAI",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "ma": "85412900",
+      "giaTri": "Tranzito, trừ tranzito cảm quang",
+      "cachDoc": {
+        "vi": [],
+        "en": [
+          "Packaged insulated gate bipolar transistor (IGBT)"
+        ],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/wco-op/opinions.json#854129/1",
+        "trich": "Packaged insulated gate bipolar transistor (IGBT)",
+        "nhan": "NGUYEN_VAN"
+      }
+    },
+    {
+      "kieu": "TEN_LOAI",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "ma": "85412900",
+      "giaTri": "Tranzito, trừ tranzito cảm quang",
+      "cachDoc": {
+        "vi": [],
+        "en": [
+          "Insulated Gate Bipolar Transistor (IGBT) module"
+        ],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/wco-op/opinions.json#854129/2",
+        "trich": "Insulated Gate Bipolar Transistor (IGBT) module",
+        "nhan": "NGUYEN_VAN"
+      }
+    },
+    {
+      "kieu": "TEN_LOAI",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "ma": "85413000",
+      "giaTri": "Thyristors, diacs và triacs, trừ thiết bị cảm quang",
+      "cachDoc": {
+        "vi": [
+          "thysisto 3 cực hai hướng"
+        ],
+        "en": [],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/chu-giai-heading.json#8541.nhom",
+        "trich": "(2) Triacs (các thysisto 3 cực hai hướng)",
+        "nhan": "NGUYEN_VAN"
+      }
+    },
+    {
+      "kieu": "TEN_LOAI",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "ma": "85413000",
+      "giaTri": "Thyristors, diacs và triacs, trừ thiết bị cảm quang",
+      "cachDoc": {
+        "vi": [],
+        "en": [
+          "Thyristors, diacs and triacs, other than photosensitive devices"
+        ],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz#85413000",
+        "trich": "- Thyristors, diacs and triacs, other than photosensitive devices",
+        "nhan": "NGUYEN_VAN"
+      }
+    },
+    {
+      "kieu": "TEN_LOAI",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "ma": "85414100",
+      "giaTri": "Đi-ốt phát quang (LED)",
+      "cachDoc": {
+        "vi": [
+          "gói đi-ốt phát quang (LED)"
+        ],
+        "en": [],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/chu-giai-heading.json#8541.nhom",
+        "trich": "(1) Gói đi-ốt phát quang (LED)",
+        "nhan": "NGUYEN_VAN"
+      }
+    },
+    {
+      "kieu": "TEN_LOAI",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "ma": "85414100",
+      "giaTri": "Đi-ốt phát quang (LED)",
+      "cachDoc": {
+        "vi": [
+          "cụm đi-ốt phát quang (LED)"
+        ],
+        "en": [],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/chu-giai-heading.json#8541.nhom",
+        "trich": "(2) Cụm đi-ốt phát quang (LED)",
+        "nhan": "NGUYEN_VAN"
+      }
+    },
+    {
+      "kieu": "TEN_LOAI",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "ma": "85414100",
+      "giaTri": "Đi-ốt phát quang (LED)",
+      "cachDoc": {
+        "vi": [
+          "gói LED trắng",
+          "gói LED"
+        ],
+        "en": [],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/chu-giai-heading.json#8541.nhom",
+        "trich": "Có hai loại gói LED trắng cơ bản.",
+        "nhan": "NGUYEN_VAN"
+      }
+    },
+    {
+      "kieu": "TEN_LOAI",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "ma": "85414100",
+      "giaTri": "Đi-ốt phát quang (LED)",
+      "cachDoc": {
+        "vi": [
+          "cụm LED"
+        ],
+        "en": [],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/chu-giai-heading.json#8541.nhom",
+        "trich": "Các cụm LED không có mạch điều khiển loại cần thiết để điều chỉnh nguồn AC và điều khiển dòng điện DC để các điốt phát quang (LED) có thể sử dụng được.",
+        "nhan": "NGUYEN_VAN"
+      }
+    },
+    {
+      "kieu": "TEN_LOAI",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "ma": "85414100",
+      "giaTri": "Đi-ốt phát quang (LED)",
+      "cachDoc": {
+        "vi": [
+          "đi-ốt lade"
+        ],
+        "en": [],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/chu-giai-heading.json#8541.nhom",
+        "trich": "Các đi-ốt lade phát ra một chùm sáng kết hợp",
+        "nhan": "NGUYEN_VAN"
+      }
+    },
+    {
+      "kieu": "TEN_LOAI",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "ma": "85414100",
+      "giaTri": "Đi-ốt phát quang (LED)",
+      "cachDoc": {
+        "vi": [],
+        "en": [
+          "light-emitting diode (LED) packages"
+        ],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/wco-op/opinions.json#854141/1",
+        "trich": "Assembly of 62 light-emitting diode (LED) packages mounted on a printed circuit board",
+        "nhan": "NGUYEN_VAN"
+      }
+    },
+    {
+      "kieu": "TEN_LOAI",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "ma": "85414100",
+      "giaTri": "Đi-ốt phát quang (LED)",
+      "cachDoc": {
+        "vi": [],
+        "en": [
+          "LED assembly"
+        ],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/wco-op/opinions.json#854141/1",
+        "trich": "The LED assembly is used",
+        "nhan": "NGUYEN_VAN"
+      }
+    },
+    {
+      "kieu": "TEN_LOAI",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "ma": "85414200",
+      "giaTri": "Tế bào quang điện chưa lắp ráp thành các mảng mô-đun hoặc thành bảng",
+      "cachDoc": {
+        "vi": [
+          "chưa lắp ráp thành các mảng module hoặc thành bảng"
+        ],
+        "en": [
+          "Mono-crystalline Silicon Solar Cell"
+        ],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/precedents.json#85414200[0]",
+        "soHieu": "4141/TB-TCHQ",
+        "url": "https://www.tracuuhs.com/tin-tuc/tchq-4141-2023",
+        "trich": "Tấm tế bào quang điện, dạng silicon đơn tinh thể (Mono-crystalline Silicon Solar Cell), chưa lắp ráp thành các mảng module hoặc thành bảng",
+        "nhan": "NGUYEN_VAN"
+      }
+    },
+    {
+      "kieu": "TEN_LOAI",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "ma": "85414200",
+      "giaTri": "Tế bào quang điện chưa lắp ráp thành các mảng mô-đun hoặc thành bảng",
+      "cachDoc": {
+        "vi": [],
+        "en": [
+          "Photovoltaic cells not assembled in modules or made up into panels"
+        ],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz#85414200",
+        "trich": "- - Photovoltaic cells not assembled in modules or made up into panels",
+        "nhan": "NGUYEN_VAN"
+      }
+    },
+    {
+      "kieu": "TEN_LOAI",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "ma": "85414300",
+      "giaTri": "Tế bào quang điện đã lắp ráp thành các mảng mô-đun hoặc thành bảng",
+      "cachDoc": {
+        "vi": [
+          "tấm module pin năng lượng mặt trời"
+        ],
+        "en": [],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/precedents.json#85414300[0]",
+        "soHieu": "4130/TB-TCHQ",
+        "url": "https://www.tracuuhs.com/tin-tuc/tchq-4130-2023",
+        "trich": "Tấm module pin năng lượng mặt trời. Dùng để chuyển đổi năng lượng mặt trời (quang năng) thành điện năng.",
+        "nhan": "NGUYEN_VAN"
+      }
+    },
+    {
+      "kieu": "TEN_LOAI",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "ma": "85414300",
+      "giaTri": "Tế bào quang điện đã lắp ráp thành các mảng mô-đun hoặc thành bảng",
+      "cachDoc": {
+        "vi": [],
+        "en": [
+          "Thin-film solar module"
+        ],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/wco-op/opinions.json#854143/1",
+        "trich": "Thin-film solar module",
+        "nhan": "NGUYEN_VAN"
+      }
+    },
+    {
+      "kieu": "TEN_LOAI",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "ma": "85414300",
+      "giaTri": "Tế bào quang điện đã lắp ráp thành các mảng mô-đun hoặc thành bảng",
+      "cachDoc": {
+        "vi": [],
+        "en": [
+          "Photovoltaic cells assembled in modules or made up into panels"
+        ],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz#85414300",
+        "trich": "- - Photovoltaic cells assembled in modules or made up into panels",
+        "nhan": "NGUYEN_VAN"
+      }
+    },
+    {
+      "kieu": "TEN_LOAI",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "ma": "85414900",
+      "giaTri": "Thiết bị bán dẫn cảm quang, kể cả tế bào quang điện đã hoặc chưa lắp ráp thành các mảng mô-đun hoặc thành bảng",
+      "cachDoc": {
+        "vi": [
+          "tế bào quang dẫn"
+        ],
+        "en": [],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/chu-giai-heading.json#8541.nhom",
+        "trich": "(1) Các tế bào quang dẫn (quang điện trở), thường gồm hai điện cực ở giữa là một chất bán dẫn",
+        "nhan": "NGUYEN_VAN"
+      }
+    },
+    {
+      "kieu": "TEN_LOAI",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "ma": "85415100",
+      "giaTri": "Thiết bị chuyển đổi dựa trên chất bán dẫn",
+      "cachDoc": {
+        "vi": [],
+        "en": [
+          "Semiconductor-based transducers"
+        ],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz#85415100",
+        "trich": "- - Semiconductor-based transducers",
+        "nhan": "NGUYEN_VAN"
+      }
+    },
+    {
+      "kieu": "TEN_LOAI",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "ma": "85416000",
+      "giaTri": "Tinh thể áp điện đã lắp ráp",
+      "cachDoc": {
+        "vi": [],
+        "en": [
+          "Mounted piezo-electric crystals"
+        ],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz#85416000",
+        "trich": "- Mounted piezo-electric crystals",
+        "nhan": "NGUYEN_VAN"
+      }
+    },
+    {
+      "ma": "85412100",
+      "kieu": "TEN_LOAI",
+      "giaTri": "Có tỷ lệ tiêu tán năng lượng dưới 1 W",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L3",
+      "nhan": "THAM_KHAO",
+      "cachDoc": {
+        "vi": [],
+        "en": [],
+        "zh": [
+          "耗散功率小于1瓦的"
+        ]
+      },
+      "nguon": {
+        "tap": "data/bieu-thue/zh/hs6-zh.jsonl#854121",
+        "url": "http://gss.mof.gov.cn/gzdt/zhengcefabu/202512/P020251231607833453633.pdf",
+        "trich": "{\"hs6\":\"854121\",\"tenZh\":\"耗散功率小于1瓦的\",\"tenZhCha\":\"晶体管，但光敏晶体管除外\",\"capKhop\":6,\"nguon\":{\"url\":\"http://gss.mof.gov.cn/gzdt/zhengcefabu/202512/P020251231607833453633.pdf\",\"sha256\":\"76af4db0b3af966ef4f95f4ffc6b4b2e34f1a95ef47f68e7299670a18b337d57\",\"layLuc\":\"2026-10-19T08:05:35.623Z\",\"viTri\":\"trang 1283, dòng mã 85412100\"}}",
+        "nhan": "THAM_KHAO"
+      }
+    },
+    {
+      "ma": "85414100",
+      "kieu": "TEN_LOAI",
+      "giaTri": "Đi-ốt phát quang (LED)",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L3",
+      "nhan": "THAM_KHAO",
+      "cachDoc": {
+        "vi": [],
+        "en": [],
+        "zh": [
+          "发光二极管（LED）"
+        ]
+      },
+      "nguon": {
+        "tap": "data/bieu-thue/zh/hs6-zh.jsonl#854141",
+        "url": "http://gss.mof.gov.cn/gzdt/zhengcefabu/202512/P020251231607833453633.pdf",
+        "trich": "{\"hs6\":\"854141\",\"tenZh\":\"发光二极管（LED）\",\"tenZhCha\":\"光敏半导体器件，包括不论是否装在组件内或组装成块的光电池；发光二极管\",\"capKhop\":6,\"nguon\":{\"url\":\"http://gss.mof.gov.cn/gzdt/zhengcefabu/202512/P020251231607833453633.pdf\",\"sha256\":\"76af4db0b3af966ef4f95f4ffc6b4b2e34f1a95ef47f68e7299670a18b337d57\",\"layLuc\":\"2026-10-19T08:05:35.623Z\",\"viTri\":\"trang 1284, dòng mã 85414100\"}}",
+        "nhan": "THAM_KHAO"
+      }
+    },
+    {
+      "ma": "85415100",
+      "kieu": "TEN_LOAI",
+      "giaTri": "Thiết bị chuyển đổi dựa trên chất bán dẫn",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L3",
+      "nhan": "THAM_KHAO",
+      "cachDoc": {
+        "vi": [],
+        "en": [],
+        "zh": [
+          "半导体基换能器"
+        ]
+      },
+      "nguon": {
+        "tap": "data/bieu-thue/zh/hs6-zh.jsonl#854151",
+        "url": "http://gss.mof.gov.cn/gzdt/zhengcefabu/202512/P020251231607833453633.pdf",
+        "trich": "{\"hs6\":\"854151\",\"tenZh\":\"半导体基换能器\",\"tenZhCha\":null,\"capKhop\":6,\"nguon\":{\"url\":\"http://gss.mof.gov.cn/gzdt/zhengcefabu/202512/P020251231607833453633.pdf\",\"sha256\":\"76af4db0b3af966ef4f95f4ffc6b4b2e34f1a95ef47f68e7299670a18b337d57\",\"layLuc\":\"2026-10-19T08:05:35.623Z\",\"viTri\":\"trang 1284, dòng mã 85415111 (sec-dash2)\"}}",
+        "nhan": "THAM_KHAO"
+      }
+    },
+    {
+      "ma": "85416000",
+      "kieu": "TEN_LOAI",
+      "giaTri": "Tinh thể áp điện đã lắp ráp",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L3",
+      "nhan": "THAM_KHAO",
+      "cachDoc": {
+        "vi": [],
+        "en": [],
+        "zh": [
+          "已装配的压电晶体"
+        ]
+      },
+      "nguon": {
+        "tap": "data/bieu-thue/zh/hs6-zh.jsonl#854160",
+        "url": "http://gss.mof.gov.cn/gzdt/zhengcefabu/202512/P020251231607833453633.pdf",
+        "trich": "{\"hs6\":\"854160\",\"tenZh\":\"已装配的压电晶体\",\"tenZhCha\":null,\"capKhop\":6,\"nguon\":{\"url\":\"http://gss.mof.gov.cn/gzdt/zhengcefabu/202512/P020251231607833453633.pdf\",\"sha256\":\"76af4db0b3af966ef4f95f4ffc6b4b2e34f1a95ef47f68e7299670a18b337d57\",\"layLuc\":\"2026-10-19T08:05:35.623Z\",\"viTri\":\"trang 1285, dòng mã 85416000\"}}",
+        "nhan": "THAM_KHAO"
+      }
+    }
+  ]
+}
