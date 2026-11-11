@@ -4,7 +4,7 @@
   "nhom": "9031",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T1001#soan-903149",
@@ -115,6 +115,13 @@
       "ma": "90314930",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.90314930: \"Dụng cụ và thiết bị quang học khác để đo hoặc kiểm tra tấm mạch in/tấm dây in và mạch in đã lắp ráp\" => tenLoai mảng [\"Dụng cụ\",\"thiết bị\"] + \"quang học\" + congDung mảng [\"đo\",\"kiểm tra\"] (\"hoặc\") + dungCho đích \"tấm mạch in/tấm dây in và mạch in đã lắp ráp\"; phanConLai true (\"khác\" phủ định 90314910, 90314920)"
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L31-20261111#soat-L31",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 90314920 và 90314930 THU HẸP — liệt kê gói trong MỘT chuỗi: chữ biểu '… cho tấm mạch in/tấm dây in và mạch in đã lắp ráp' / 'for printed circuit boards/printed wiring boards and printed circuit assemblies' là danh sách đối tượng thay thế; bản nháp ghi một chuỗi 'tấm mạch in/tấm dây in và mạch in đã lắp ráp' (congDung .20, dungCho .30) ⇒ thiết bị quang học chỉ kiểm tra tấm mạch in trần (hoặc chỉ mạch in đã lắp ráp) không chứa đủ chuỗi, rơi 90314990. Phải là mảng ['tấm mạch in','tấm dây in','mạch in đã lắp ráp'] kèm công dụng giữ nguyên (xác định và sửa lỗi / đo hoặc kiểm tra)."
     }
   ]
 }

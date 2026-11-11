@@ -4,13 +4,19 @@
   "nhom": "9017",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T1001#soan-901790",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:duyet-L31-20261111#soat-L31",
+    "ngay": "2026-11-11",
+    "ghiChu": "Đối chiếu .30 'Bộ phận và phụ kiện của máy vẽ ảnh để sản xuất tấm mạch in/tấm dây in' (dungCho giữ trọn cụm, không tách '/'), .40 'Bộ phận và phụ kiện, kể cả mạch in đã lắp ráp, của máy vẽ khác' = dungCho 'máy vẽ khác' + phanConLai (phủ định .30) — đúng mẫu phần còn lại có tên.",
+    "bam": "d0390b8c9cd06f443243e9fc23dd37b203b40b345f1004db12ba8573cbbc5073"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -24,7 +30,7 @@
           "value": "máy vẽ ảnh để sản xuất tấm mạch in/tấm dây in"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "90179040",
@@ -37,7 +43,7 @@
           "value": "máy vẽ khác"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": true
     },
     {
@@ -45,7 +51,7 @@
       "nguon": "tax.90179090",
       "trich": "90179090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
