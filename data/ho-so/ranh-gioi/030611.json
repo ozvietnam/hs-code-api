@@ -14,8 +14,8 @@
     "boi": "CLAUDE_DUYET",
     "phien": "claude-agent:duyet-L2-20261111#soat-L2",
     "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu VI/EN 03061110 Hun khói/Smoked ⇒ phuongPhapBaoQuan HUN_KHOI; .90 phần còn lại (gồm còn vỏ hấp/luộc chín).",
-    "bam": "ac4be1aabc8c29d9a995d0c05b02226e2e09368c21c24491ad7a71dd5893889c"
+    "ghiChu": "Đối chiếu VI/EN 03061110 Hun khói/Smoked ⇒ phuongPhapBaoQuan HUN_KHOI; .90 phần còn lại (gồm còn vỏ hấp/luộc chín). OZV-325: đổi dòng hun khói sang tenLoai nguyên văn (phuongPhapBaoQuan gộp hai trục ⇒ \"đông lạnh\" phủ định oan \"hun khói\", máy tự chốt dòng Loại khác).",
+    "bam": "b3039d13a52f7e056828c0a67f06782cfdf8f340fcaa80176d14e0c281a6e23e"
   },
   "dieuKienNut": [],
   "dong8": [
@@ -25,11 +25,9 @@
       "trich": "03061110 - - - Hun khói",
       "dieuKienSo": [
         {
-          "fact": "phuongPhapBaoQuan",
-          "op": "TRONG",
-          "value": [
-            "HUN_KHOI"
-          ]
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Hun khói"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -46,7 +44,7 @@
     {
       "ma": "03061110",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.03061110 \"Hun khói\" ⇒ phuongPhapBaoQuan HUN_KHOI"
+      "ghiChu": "tax.03061110 \"Hun khói\" ⇒ tenLoai \"Hun khói\" nguyên văn. KHÔNG dùng phuongPhapBaoQuan TRONG [HUN_KHOI]: dòng này nằm TRONG tầng 1 gạch \"Đông lạnh\" (03061), tôm hùm hun khói đông lạnh là hàng thật nên \"đông lạnh\" không phủ định \"hun khói\"; khoá liệt kê gộp hai trục (trạng thái bảo quản + cách chế biến) nên dữ kiện \"đông lạnh\" bị chấm TRÁI tất định điều kiện HUN_KHOI ⇒ máy tự chốt dòng Loại khác khi mô tả chưa khai hun khói (OZV-325; cùng lý do 030719/030729/030829)."
     }
   ]
 }
