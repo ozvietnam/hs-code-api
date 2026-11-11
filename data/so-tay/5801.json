@@ -1,880 +1,1073 @@
 {
- "nhom": "5801",
- "phamVi": {
-  "text": "Các loại vải dệt nổi vòng và vải sơnin, trừ các loại vải thuộc nhóm 58.02 hoặc 58.06",
-  "nguon": "nhom5801.nhom",
-  "trich": "Các loại vải dệt nổi vòng được tạo thành từ ít nhất 3 loại sợi: sợi dọc và ngang kết hợp chặt chẽ tạo thành vải nền và sợi dọc hoặc sợi ngang tạo thành nổi vòng (pile).",
-  "nguonLoai": "AI_DA_KIEM"
- },
- "dieuKienVao": [],
- "loaiTru": [
-  {
-   "dieuKien": "Vải giả da thú được làm bằng cách may hoặc dán bằng keo trên nhung",
-   "sangNhom": "4304",
-   "nguon": "nhom5801.nhom",
-   "trich": "vải giả da thú được làm bằng cách may hoặc dán bằng keo trên nhung thì bị loại trừ (nhóm 43.04).",
-   "nguonLoai": "AI_DA_KIEM"
+  "nhom": "5801",
+  "phamVi": {
+    "text": "Các loại vải dệt nổi vòng và vải sơnin, trừ các loại vải thuộc nhóm 58.02 hoặc 58.06",
+    "nguon": "nhom5801.nhom",
+    "trich": "Các loại vải dệt nổi vòng được tạo thành từ ít nhất 3 loại sợi: sợi dọc và ngang kết hợp chặt chẽ tạo thành vải nền và sợi dọc hoặc sợi ngang tạo thành nổi vòng (pile).",
+    "nguonLoai": "AI_DA_KIEM"
   },
-  {
-   "dieuKien": "Vải khăn lông và các loại vải dệt thoi tạo vòng lông tương tự và các loại vải dệt chần sợi nổi vòng",
-   "sangNhom": "5802",
-   "nguon": "nhom5801.nhom",
-   "trich": "(b) Vải khăn lông và các loại vải dệt thoi tạo vòng lông tương tự và các loại vải dệt chần sợi nổi vòng (thuộc nhóm 58.02).",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "dieuKien": "Các loại vải tuyết nhung nằm trong định nghĩa vải dệt thoi khổ hẹp",
-   "sangNhom": "5806",
-   "nguon": "nhom5801.nhom",
-   "trich": "(c) Các loại vải tuyết nhung (pile)..., các loại vải nằm trong định nghĩa vải dệt thoi khổ hẹp (nhóm 58.06).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "phanBiet": [
-  {
-   "hoi": "Hàng có phải là vải giả da thú may hoặc dán keo trên nhung chuyển sang nhóm 43.04 không?",
-   "neuCo": "4304",
-   "neuKhong": "5801",
-   "nguon": "nhom5801.nhom",
-   "trich": "vải giả da thú được làm bằng cách may hoặc dán bằng keo trên nhung thì bị loại trừ (nhóm 43.04).",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hoi": "Hàng có phải là vải khăn lông hoặc vải dệt chần sợi nổi vòng chuyển sang nhóm 58.02 không?",
-   "neuCo": "5802",
-   "neuKhong": "5801",
-   "nguon": "nhom5801.nhom",
-   "trich": "(b) Vải khăn lông và các loại vải dệt thoi tạo vòng lông tương tự và các loại vải dệt chần sợi nổi vòng (thuộc nhóm 58.02).",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hoi": "Hàng có phải là vải dệt thoi khổ hẹp chuyển sang nhóm 58.06 không?",
-   "neuCo": "5806",
-   "neuKhong": "5801",
-   "nguon": "nhom5801.nhom",
-   "trich": "(c) Các loại vải tuyết nhung (pile)..., các loại vải nằm trong định nghĩa vải dệt thoi khổ hẹp (nhóm 58.06).",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hoi": "Hàng có phải là vải dệt kim với lớp nhung nổi vòng chuyển sang nhóm 60.01 không?",
-   "neuCo": "6001",
-   "neuKhong": "5801",
-   "nguon": "nhom5801.nhom",
-   "trich": "(d) Các loại vải dệt kim hoặc hàng khâu đính với một lớp nhung đã cắt hoặc nổi vòng (nhóm 60.01 hoặc 56.02 tùy từng trường hợp).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "tieuChi6": [],
- "dong8": [
-  {
-   "hs": "58011010",
-   "dieuKien": "Đã tráng, phủ hoặc ép lớp",
-   "loaiKhac": false,
-   "nguon": "tax.58011010",
-   "trich": "58011010 - - Đã tráng, phủ hoặc ép lớp",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "58011090",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.58011090",
-   "trich": "58011090 - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "580110",
-    "truAnhEm": [
-     "58011010"
-    ],
-    "truDayDu": [
-     "58011010"
-    ],
-    "toTienCoTen": "580110",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "58012110",
-   "dieuKien": "Đã tráng, phủ hoặc ép lớp",
-   "loaiKhac": false,
-   "nguon": "tax.58012110",
-   "trich": "58012110 - - - Đã tráng, phủ hoặc ép lớp",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "58012190",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.58012190",
-   "trich": "58012190 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "580121",
-    "truAnhEm": [
-     "58012110"
-    ],
-    "truDayDu": [
-     "58012110"
-    ],
-    "toTienCoTen": "580121",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "58012210",
-   "dieuKien": "Đã tráng, phủ hoặc ép lớp",
-   "loaiKhac": false,
-   "nguon": "tax.58012210",
-   "trich": "58012210 - - - Đã tráng, phủ hoặc ép lớp",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "58012290",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.58012290",
-   "trich": "58012290 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "580122",
-    "truAnhEm": [
-     "58012210"
-    ],
-    "truDayDu": [
-     "58012210"
-    ],
-    "toTienCoTen": "580122",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "58012310",
-   "dieuKien": "Đã tráng, phủ hoặc ép lớp",
-   "loaiKhac": false,
-   "nguon": "tax.58012310",
-   "trich": "58012310 - - - Đã tráng, phủ hoặc ép lớp",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "58012390",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.58012390",
-   "trich": "58012390 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "580123",
-    "truAnhEm": [
-     "58012310"
-    ],
-    "truDayDu": [
-     "58012310"
-    ],
-    "toTienCoTen": "580123",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "58012610",
-   "dieuKien": "Đã tráng, phủ hoặc ép lớp",
-   "loaiKhac": false,
-   "nguon": "tax.58012610",
-   "trich": "58012610 - - - Đã tráng, phủ hoặc ép lớp",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "58012690",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.58012690",
-   "trich": "58012690 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "580126",
-    "truAnhEm": [
-     "58012610"
-    ],
-    "truDayDu": [
-     "58012610"
-    ],
-    "toTienCoTen": "580126",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "58012710",
-   "dieuKien": "Đã tráng, phủ hoặc ép lớp",
-   "loaiKhac": false,
-   "nguon": "tax.58012710",
-   "trich": "58012710 - - - Đã tráng, phủ hoặc ép lớp",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "58012790",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.58012790",
-   "trich": "58012790 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "580127",
-    "truAnhEm": [
-     "58012710"
-    ],
-    "truDayDu": [
-     "58012710"
-    ],
-    "toTienCoTen": "580127",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "58013110",
-   "dieuKien": "Đã tráng, phủ hoặc ép lớp",
-   "loaiKhac": false,
-   "nguon": "tax.58013110",
-   "trich": "58013110 - - - Đã tráng, phủ hoặc ép lớp",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "58013190",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.58013190",
-   "trich": "58013190 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "580131",
-    "truAnhEm": [
-     "58013110"
-    ],
-    "truDayDu": [
-     "58013110"
-    ],
-    "toTienCoTen": "580131",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "58013210",
-   "dieuKien": "Đã tráng, phủ hoặc ép lớp",
-   "loaiKhac": false,
-   "nguon": "tax.58013210",
-   "trich": "58013210 - - - Đã tráng, phủ hoặc ép lớp",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "58013290",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.58013290",
-   "trich": "58013290 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "580132",
-    "truAnhEm": [
-     "58013210"
-    ],
-    "truDayDu": [
-     "58013210"
-    ],
-    "toTienCoTen": "580132",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "58013310",
-   "dieuKien": "Đã tráng, phủ hoặc ép lớp",
-   "loaiKhac": false,
-   "nguon": "tax.58013310",
-   "trich": "58013310 - - - Đã tráng, phủ hoặc ép lớp",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "58013390",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.58013390",
-   "trich": "58013390 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "580133",
-    "truAnhEm": [
-     "58013310"
-    ],
-    "truDayDu": [
-     "58013310"
-    ],
-    "toTienCoTen": "580133",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "58013610",
-   "dieuKien": "Đã tráng, phủ hoặc ép lớp",
-   "loaiKhac": false,
-   "nguon": "tax.58013610",
-   "trich": "58013610 - - - Đã tráng, phủ hoặc ép lớp",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "58013690",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.58013690",
-   "trich": "58013690 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "580136",
-    "truAnhEm": [
-     "58013610"
-    ],
-    "truDayDu": [
-     "58013610"
-    ],
-    "toTienCoTen": "580136",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "58013711",
-   "dieuKien": "Sợi nổi vòng đã cắt",
-   "loaiKhac": false,
-   "nguon": "tax.58013711",
-   "trich": "58013711 - - - - Sợi nổi vòng đã cắt",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "58013712",
-   "dieuKien": "Sợi nổi vòng không cắt",
-   "loaiKhac": false,
-   "nguon": "tax.58013712",
-   "trich": "58013712 - - - - Sợi nổi vòng không cắt",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "58013791",
-   "dieuKien": "Sợi nổi vòng đã cắt",
-   "loaiKhac": false,
-   "nguon": "tax.58013791",
-   "trich": "58013791 - - - - Sợi nổi vòng đã cắt",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "58013792",
-   "dieuKien": "Sợi nổi vòng không cắt",
-   "loaiKhac": false,
-   "nguon": "tax.58013792",
-   "trich": "58013792 - - - - Sợi nổi vòng không cắt",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "58019011",
-   "dieuKien": "Đã tráng, phủ hoặc ép lớp",
-   "loaiKhac": false,
-   "nguon": "tax.58019011",
-   "trich": "58019011 - - - Đã tráng, phủ hoặc ép lớp",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "58019019",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.58019019",
-   "trich": "58019019 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "5801901",
-    "truAnhEm": [
-     "58019011"
-    ],
-    "truDayDu": [
-     "58019011"
-    ],
-    "toTienCoTen": "580190",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "58019091",
-   "dieuKien": "Đã tráng, phủ hoặc ép lớp",
-   "loaiKhac": false,
-   "nguon": "tax.58019091",
-   "trich": "58019091 - - - Đã tráng, phủ hoặc ép lớp",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "58019099",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.58019099",
-   "trich": "58019099 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "5801909",
-    "truAnhEm": [
-     "58019091"
-    ],
-    "truDayDu": [
-     "58019091",
-     "5801901"
-    ],
-    "toTienCoTen": "580190",
-    "dinhNghiaDuoc": true
-   }
-  }
- ],
- "cay": {
-  "nguonLoai": "MAY_SUY",
-  "sinhTu": "lib/hs-tree.js",
-  "nut": [
-   {
-    "id": "5801",
-    "cap": 4,
-    "cha": "58",
-    "tenVi": "Các loại vải dệt nổi vòng và các loại vải sơnin (chenille), trừ các loại vải thuộc nhóm 58.02 hoặc 58.06 (+).",
-    "tenEn": "Fabrics; woven pile and chenille fabrics, other than fabrics of heading no. 5802 or 5806",
-    "suyRa": false
-   },
-   {
-    "id": "580110",
-    "cap": 6,
-    "cha": "5801",
-    "tenVi": "Từ lông cừu hoặc lông động vật loại mịn",
-    "tenEn": "Fabrics; woven pile, of wool or fine animal hair, other than fabrics of heading no. 5802 or 5806",
-    "suyRa": false
-   },
-   {
-    "id": "58011010",
-    "cap": 8,
-    "cha": "580110",
-    "tenVi": "Đã tráng, phủ hoặc ép lớp",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "58011090",
-    "cap": 8,
-    "cha": "580110",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "58012",
-    "cap": "NHOM_MOT_GACH",
-    "cha": "5801",
-    "tenVi": "Từ bông",
-    "tenEn": "Of cotton",
-    "suyRa": true
-   },
-   {
-    "id": "580121",
-    "cap": 6,
-    "cha": "58012",
-    "tenVi": "Vải có sợi ngang nổi vòng không cắt",
-    "tenEn": "Fabrics; woven pile, of cotton, uncut weft pile fabrics, other than fabrics of heading no. 5802 or 5806",
-    "suyRa": false
-   },
-   {
-    "id": "58012110",
-    "cap": 8,
-    "cha": "580121",
-    "tenVi": "Đã tráng, phủ hoặc ép lớp",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "58012190",
-    "cap": 8,
-    "cha": "580121",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "580122",
-    "cap": 6,
-    "cha": "58012",
-    "tenVi": "Nhung kẻ đã cắt",
-    "tenEn": "Fabrics; woven pile, of cotton, cut corduroy, other than fabrics of heading no. 5802 or 5806",
-    "suyRa": false
-   },
-   {
-    "id": "58012210",
-    "cap": 8,
-    "cha": "580122",
-    "tenVi": "Đã tráng, phủ hoặc ép lớp",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "58012290",
-    "cap": 8,
-    "cha": "580122",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "580123",
-    "cap": 6,
-    "cha": "58012",
-    "tenVi": "Vải có sợi ngang nổi vòng khác",
-    "tenEn": "Fabrics; woven pile, of cotton, weft pile fabrics other than uncut and corduroy, other than fabrics of heading no. 5802 or 5806",
-    "suyRa": false
-   },
-   {
-    "id": "58012310",
-    "cap": 8,
-    "cha": "580123",
-    "tenVi": "Đã tráng, phủ hoặc ép lớp",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "58012390",
-    "cap": 8,
-    "cha": "580123",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "580126",
-    "cap": 6,
-    "cha": "58012",
-    "tenVi": "Các loại vải sơnin (chenille)",
-    "tenEn": "Fabrics; chenille, of cotton, other than fabrics of heading no. 5802 or 5806",
-    "suyRa": false
-   },
-   {
-    "id": "58012610",
-    "cap": 8,
-    "cha": "580126",
-    "tenVi": "Đã tráng, phủ hoặc ép lớp",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "58012690",
-    "cap": 8,
-    "cha": "580126",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "580127",
-    "cap": 6,
-    "cha": "58012",
-    "tenVi": "Vải có sợi dọc nổi vòng",
-    "tenEn": "Fabrics; woven pile, of cotton, warp pile fabrics, other than fabrics of heading no. 5802 or 5806",
-    "suyRa": false
-   },
-   {
-    "id": "58012710",
-    "cap": 8,
-    "cha": "580127",
-    "tenVi": "Đã tráng, phủ hoặc ép lớp",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "58012790",
-    "cap": 8,
-    "cha": "580127",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "58013",
-    "cap": "NHOM_MOT_GACH",
-    "cha": "5801",
-    "tenVi": "Từ xơ nhân tạo",
-    "tenEn": null,
-    "suyRa": true
-   },
-   {
-    "id": "580131",
-    "cap": 6,
-    "cha": "58013",
-    "tenVi": "Vải có sợi ngang nổi vòng không cắt",
-    "tenEn": "Fabrics; woven pile, of man-made fibres, uncut weft pile fabrics, other than fabrics of heading no. 5802 or 5806",
-    "suyRa": false
-   },
-   {
-    "id": "58013110",
-    "cap": 8,
-    "cha": "580131",
-    "tenVi": "Đã tráng, phủ hoặc ép lớp",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "58013190",
-    "cap": 8,
-    "cha": "580131",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "580132",
-    "cap": 6,
-    "cha": "58013",
-    "tenVi": "Nhung kẻ đã cắt",
-    "tenEn": "Fabrics; woven pile, of man-made fibres, cut corduroy, other than fabrics of heading no. 5802 or 5806",
-    "suyRa": false
-   },
-   {
-    "id": "58013210",
-    "cap": 8,
-    "cha": "580132",
-    "tenVi": "Đã tráng, phủ hoặc ép lớp",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "58013290",
-    "cap": 8,
-    "cha": "580132",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "580133",
-    "cap": 6,
-    "cha": "58013",
-    "tenVi": "Vải có sợi ngang nổi vòng khác",
-    "tenEn": "Fabrics; woven pile, of man-made fibres, other weft pile fabrics, other than fabrics of heading no. 5802 or 5806",
-    "suyRa": false
-   },
-   {
-    "id": "58013310",
-    "cap": 8,
-    "cha": "580133",
-    "tenVi": "Đã tráng, phủ hoặc ép lớp",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "58013390",
-    "cap": 8,
-    "cha": "580133",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "580136",
-    "cap": 6,
-    "cha": "58013",
-    "tenVi": "Các loại vải sơnin (chenille)",
-    "tenEn": "Fabrics; chenille, of man-made fibres, other than fabrics of heading no. 5802 or 5806",
-    "suyRa": false
-   },
-   {
-    "id": "58013610",
-    "cap": 8,
-    "cha": "580136",
-    "tenVi": "Đã tráng, phủ hoặc ép lớp",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "58013690",
-    "cap": 8,
-    "cha": "580136",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "580137",
-    "cap": 6,
-    "cha": "58013",
-    "tenVi": "Vải có sợi dọc nổi vòng",
-    "tenEn": "Fabrics; woven pile, of man-made fibres, warp pile fabrics, other than fabrics of heading no. 5802 or 5806",
-    "suyRa": false
-   },
-   {
-    "id": "5801371",
-    "cap": "TIEU_DE_QG",
-    "cha": "580137",
-    "tenVi": "Đã tráng, phủ hoặc ép lớp",
-    "tenEn": "Coated, covered or laminated",
-    "suyRa": true
-   },
-   {
-    "id": "58013711",
-    "cap": 8,
-    "cha": "5801371",
-    "tenVi": "Sợi nổi vòng đã cắt",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "58013712",
-    "cap": 8,
-    "cha": "5801371",
-    "tenVi": "Sợi nổi vòng không cắt",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "5801379",
-    "cap": "TIEU_DE_QG",
-    "cha": "580137",
-    "tenVi": "Loại khác",
-    "tenEn": "Other",
-    "suyRa": true
-   },
-   {
-    "id": "58013791",
-    "cap": 8,
-    "cha": "5801379",
-    "tenVi": "Sợi nổi vòng đã cắt",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "58013792",
-    "cap": 8,
-    "cha": "5801379",
-    "tenVi": "Sợi nổi vòng không cắt",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "580190",
-    "cap": 6,
-    "cha": "5801",
-    "tenVi": "Từ các vật liệu dệt khác",
-    "tenEn": "Fabrics; woven pile and chenille, of textile materials n.e.c. in heading no. 5801, other than fabrics of heading no. 5802 or 5806",
-    "suyRa": false
-   },
-   {
-    "id": "5801901",
-    "cap": "TIEU_DE_QG",
-    "cha": "580190",
-    "tenVi": "Từ tơ tằm",
-    "tenEn": "Of silk",
-    "suyRa": true
-   },
-   {
-    "id": "58019011",
-    "cap": 8,
-    "cha": "5801901",
-    "tenVi": "Đã tráng, phủ hoặc ép lớp",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "58019019",
-    "cap": 8,
-    "cha": "5801901",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "5801909",
-    "cap": "TIEU_DE_QG",
-    "cha": "580190",
-    "tenVi": "Loại khác",
-    "tenEn": "Other",
-    "suyRa": true
-   },
-   {
-    "id": "58019091",
-    "cap": 8,
-    "cha": "5801909",
-    "tenVi": "Đã tráng, phủ hoặc ép lớp",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "58019099",
-    "cap": 8,
-    "cha": "5801909",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   }
+  "dieuKienVao": [],
+  "loaiTru": [
+    {
+      "dieuKien": "Vải giả da thú được làm bằng cách may hoặc dán bằng keo trên nhung",
+      "sangNhom": "4304",
+      "nguon": "nhom5801.nhom",
+      "trich": "vải giả da thú được làm bằng cách may hoặc dán bằng keo trên nhung thì bị loại trừ (nhóm 43.04).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "dieuKien": "Vải khăn lông và các loại vải dệt thoi tạo vòng lông tương tự và các loại vải dệt chần sợi nổi vòng",
+      "sangNhom": "5802",
+      "nguon": "nhom5801.nhom",
+      "trich": "(b) Vải khăn lông và các loại vải dệt thoi tạo vòng lông tương tự và các loại vải dệt chần sợi nổi vòng (thuộc nhóm 58.02).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "dieuKien": "Các loại vải tuyết nhung nằm trong định nghĩa vải dệt thoi khổ hẹp",
+      "sangNhom": "5806",
+      "nguon": "nhom5801.nhom",
+      "trich": "(c) Các loại vải tuyết nhung (pile)..., các loại vải nằm trong định nghĩa vải dệt thoi khổ hẹp (nhóm 58.06).",
+      "nguonLoai": "AI_DA_KIEM"
+    }
   ],
-  "tenDien": []
- },
- "dungTuNguon": [
-  "nhom5801.nhom",
-  "tax.58011010",
-  "tax.58011090",
-  "tax.58012110",
-  "tax.58012190",
-  "tax.58012210",
-  "tax.58012290",
-  "tax.58012310",
-  "tax.58012390",
-  "tax.58012610",
-  "tax.58012690",
-  "tax.58012710",
-  "tax.58012790",
-  "tax.58013110",
-  "tax.58013190",
-  "tax.58013210",
-  "tax.58013290",
-  "tax.58013310",
-  "tax.58013390",
-  "tax.58013610",
-  "tax.58013690",
-  "tax.58013711",
-  "tax.58013712",
-  "tax.58013791",
-  "tax.58013792",
-  "tax.58019011",
-  "tax.58019019",
-  "tax.58019091",
-  "tax.58019099"
- ],
- "phienBan": "HS2022",
- "taoBoi": {
-  "provider": "google-studio:gemini-flash",
-  "model": null,
-  "luc": "2026-11-02T12:27:46.029Z",
-  "ms": 29
- },
- "kiemTra": {
-  "tong": 37,
-  "dat": 36,
-  "loai": 1,
-  "nguonBiCat": [
-   "phan58.phan (46130→25000)"
+  "phanBiet": [
+    {
+      "hoi": "Hàng có phải là vải giả da thú may hoặc dán keo trên nhung chuyển sang nhóm 43.04 không?",
+      "neuCo": "4304",
+      "neuKhong": "5801",
+      "nguon": "nhom5801.nhom",
+      "trich": "vải giả da thú được làm bằng cách may hoặc dán bằng keo trên nhung thì bị loại trừ (nhóm 43.04).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hoi": "Hàng có phải là vải khăn lông hoặc vải dệt chần sợi nổi vòng chuyển sang nhóm 58.02 không?",
+      "neuCo": "5802",
+      "neuKhong": "5801",
+      "nguon": "nhom5801.nhom",
+      "trich": "(b) Vải khăn lông và các loại vải dệt thoi tạo vòng lông tương tự và các loại vải dệt chần sợi nổi vòng (thuộc nhóm 58.02).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hoi": "Hàng có phải là vải dệt thoi khổ hẹp chuyển sang nhóm 58.06 không?",
+      "neuCo": "5806",
+      "neuKhong": "5801",
+      "nguon": "nhom5801.nhom",
+      "trich": "(c) Các loại vải tuyết nhung (pile)..., các loại vải nằm trong định nghĩa vải dệt thoi khổ hẹp (nhóm 58.06).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hoi": "Hàng có phải là vải dệt kim với lớp nhung nổi vòng chuyển sang nhóm 60.01 không?",
+      "neuCo": "6001",
+      "neuKhong": "5801",
+      "nguon": "nhom5801.nhom",
+      "trich": "(d) Các loại vải dệt kim hoặc hàng khâu đính với một lớp nhung đã cắt hoặc nổi vòng (nhóm 60.01 hoặc 56.02 tùy từng trường hợp).",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "tieuChi6": [],
+  "dong8": [
+    {
+      "hs": "58011010",
+      "dieuKien": "đã ngâm tẩm, tráng, phủ hoặc ép lớp (vải dệt)",
+      "loaiKhac": false,
+      "nguon": "tax.58011010",
+      "trich": "58011010 - - Đã tráng, phủ hoặc ép lớp",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "daTrangPhuEpLop",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L17-20261111#soat-L17",
+          "ngay": "2026-11-11",
+          "bam": "28482b30744d9178b74b24f8f961af900158a6260842d0b8b53df3b55274f80c"
+        }
+      }
+    },
+    {
+      "hs": "58011090",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.58011090",
+      "trich": "58011090 - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "580110",
+        "truAnhEm": [
+          "58011010"
+        ],
+        "truDayDu": [
+          "58011010"
+        ],
+        "toTienCoTen": "580110",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "58012110",
+      "dieuKien": "đã ngâm tẩm, tráng, phủ hoặc ép lớp (vải dệt)",
+      "loaiKhac": false,
+      "nguon": "tax.58012110",
+      "trich": "58012110 - - - Đã tráng, phủ hoặc ép lớp",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "daTrangPhuEpLop",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L17-20261111#soat-L17",
+          "ngay": "2026-11-11",
+          "bam": "75c928dd60328b720cbb642e16c0490a0d886e6c1c63d4efc30603b27987b08a"
+        }
+      }
+    },
+    {
+      "hs": "58012190",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.58012190",
+      "trich": "58012190 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "580121",
+        "truAnhEm": [
+          "58012110"
+        ],
+        "truDayDu": [
+          "58012110"
+        ],
+        "toTienCoTen": "580121",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "58012210",
+      "dieuKien": "đã ngâm tẩm, tráng, phủ hoặc ép lớp (vải dệt)",
+      "loaiKhac": false,
+      "nguon": "tax.58012210",
+      "trich": "58012210 - - - Đã tráng, phủ hoặc ép lớp",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "daTrangPhuEpLop",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L17-20261111#soat-L17",
+          "ngay": "2026-11-11",
+          "bam": "20400028f65e60705deb39dfb1afeda97efe6496d69c745b8e7467891cf344a7"
+        }
+      }
+    },
+    {
+      "hs": "58012290",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.58012290",
+      "trich": "58012290 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "580122",
+        "truAnhEm": [
+          "58012210"
+        ],
+        "truDayDu": [
+          "58012210"
+        ],
+        "toTienCoTen": "580122",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "58012310",
+      "dieuKien": "đã ngâm tẩm, tráng, phủ hoặc ép lớp (vải dệt)",
+      "loaiKhac": false,
+      "nguon": "tax.58012310",
+      "trich": "58012310 - - - Đã tráng, phủ hoặc ép lớp",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "daTrangPhuEpLop",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L17-20261111#soat-L17",
+          "ngay": "2026-11-11",
+          "bam": "ef17ec8e7b166002fce1808b303fbdd2679d6bbd4bfd36f38fd7a55e257f334d"
+        }
+      }
+    },
+    {
+      "hs": "58012390",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.58012390",
+      "trich": "58012390 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "580123",
+        "truAnhEm": [
+          "58012310"
+        ],
+        "truDayDu": [
+          "58012310"
+        ],
+        "toTienCoTen": "580123",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "58012610",
+      "dieuKien": "đã ngâm tẩm, tráng, phủ hoặc ép lớp (vải dệt)",
+      "loaiKhac": false,
+      "nguon": "tax.58012610",
+      "trich": "58012610 - - - Đã tráng, phủ hoặc ép lớp",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "daTrangPhuEpLop",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L17-20261111#soat-L17",
+          "ngay": "2026-11-11",
+          "bam": "c1dfbc71e0274036d2391a7dc5dc660284008063d423e1e81c931c11f0252621"
+        }
+      }
+    },
+    {
+      "hs": "58012690",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.58012690",
+      "trich": "58012690 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "580126",
+        "truAnhEm": [
+          "58012610"
+        ],
+        "truDayDu": [
+          "58012610"
+        ],
+        "toTienCoTen": "580126",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "58012710",
+      "dieuKien": "đã ngâm tẩm, tráng, phủ hoặc ép lớp (vải dệt)",
+      "loaiKhac": false,
+      "nguon": "tax.58012710",
+      "trich": "58012710 - - - Đã tráng, phủ hoặc ép lớp",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "daTrangPhuEpLop",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L17-20261111#soat-L17",
+          "ngay": "2026-11-11",
+          "bam": "78009bb138073e7c06b225ee537e1c3707f900df08e95cdb1ec8e8882696bdbb"
+        }
+      }
+    },
+    {
+      "hs": "58012790",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.58012790",
+      "trich": "58012790 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "580127",
+        "truAnhEm": [
+          "58012710"
+        ],
+        "truDayDu": [
+          "58012710"
+        ],
+        "toTienCoTen": "580127",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "58013110",
+      "dieuKien": "đã ngâm tẩm, tráng, phủ hoặc ép lớp (vải dệt)",
+      "loaiKhac": false,
+      "nguon": "tax.58013110",
+      "trich": "58013110 - - - Đã tráng, phủ hoặc ép lớp",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "daTrangPhuEpLop",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L17-20261111#soat-L17",
+          "ngay": "2026-11-11",
+          "bam": "994c3a27bfc3b400947486ffe2e725353995ed0c421ab9382a7b3d6bd855914b"
+        }
+      }
+    },
+    {
+      "hs": "58013190",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.58013190",
+      "trich": "58013190 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "580131",
+        "truAnhEm": [
+          "58013110"
+        ],
+        "truDayDu": [
+          "58013110"
+        ],
+        "toTienCoTen": "580131",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "58013210",
+      "dieuKien": "đã ngâm tẩm, tráng, phủ hoặc ép lớp (vải dệt)",
+      "loaiKhac": false,
+      "nguon": "tax.58013210",
+      "trich": "58013210 - - - Đã tráng, phủ hoặc ép lớp",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "daTrangPhuEpLop",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L17-20261111#soat-L17",
+          "ngay": "2026-11-11",
+          "bam": "b7a3eade7afac57d9106124cfc8d1f609ad03c2ed5bfe444bf19bee206291f8d"
+        }
+      }
+    },
+    {
+      "hs": "58013290",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.58013290",
+      "trich": "58013290 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "580132",
+        "truAnhEm": [
+          "58013210"
+        ],
+        "truDayDu": [
+          "58013210"
+        ],
+        "toTienCoTen": "580132",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "58013310",
+      "dieuKien": "đã ngâm tẩm, tráng, phủ hoặc ép lớp (vải dệt)",
+      "loaiKhac": false,
+      "nguon": "tax.58013310",
+      "trich": "58013310 - - - Đã tráng, phủ hoặc ép lớp",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "daTrangPhuEpLop",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L17-20261111#soat-L17",
+          "ngay": "2026-11-11",
+          "bam": "b7e3564aeec4e5723509ab1e2127ba212b1d678c83ca606f21f191da6a8f6008"
+        }
+      }
+    },
+    {
+      "hs": "58013390",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.58013390",
+      "trich": "58013390 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "580133",
+        "truAnhEm": [
+          "58013310"
+        ],
+        "truDayDu": [
+          "58013310"
+        ],
+        "toTienCoTen": "580133",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "58013610",
+      "dieuKien": "đã ngâm tẩm, tráng, phủ hoặc ép lớp (vải dệt)",
+      "loaiKhac": false,
+      "nguon": "tax.58013610",
+      "trich": "58013610 - - - Đã tráng, phủ hoặc ép lớp",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "daTrangPhuEpLop",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L17-20261111#soat-L17",
+          "ngay": "2026-11-11",
+          "bam": "9606b2a17e2c573cca1d6f463fe6482fa24b7dd2086d97227850fdef7a4b734a"
+        }
+      }
+    },
+    {
+      "hs": "58013690",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.58013690",
+      "trich": "58013690 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "580136",
+        "truAnhEm": [
+          "58013610"
+        ],
+        "truDayDu": [
+          "58013610"
+        ],
+        "toTienCoTen": "580136",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "58013711",
+      "dieuKien": "Sợi nổi vòng đã cắt",
+      "loaiKhac": false,
+      "nguon": "tax.58013711",
+      "trich": "58013711 - - - - Sợi nổi vòng đã cắt",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "58013712",
+      "dieuKien": "Sợi nổi vòng không cắt",
+      "loaiKhac": false,
+      "nguon": "tax.58013712",
+      "trich": "58013712 - - - - Sợi nổi vòng không cắt",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "58013791",
+      "dieuKien": "Sợi nổi vòng đã cắt",
+      "loaiKhac": false,
+      "nguon": "tax.58013791",
+      "trich": "58013791 - - - - Sợi nổi vòng đã cắt",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "58013792",
+      "dieuKien": "Sợi nổi vòng không cắt",
+      "loaiKhac": false,
+      "nguon": "tax.58013792",
+      "trich": "58013792 - - - - Sợi nổi vòng không cắt",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "58019011",
+      "dieuKien": "đã ngâm tẩm, tráng, phủ hoặc ép lớp (vải dệt)",
+      "loaiKhac": false,
+      "nguon": "tax.58019011",
+      "trich": "58019011 - - - Đã tráng, phủ hoặc ép lớp",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "daTrangPhuEpLop",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L17-20261111#soat-L17",
+          "ngay": "2026-11-11",
+          "bam": "f2d0164d91b82c721941a0f27a56fbcff949683eb9825da35058304cfaa32c57"
+        }
+      }
+    },
+    {
+      "hs": "58019019",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.58019019",
+      "trich": "58019019 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "5801901",
+        "truAnhEm": [
+          "58019011"
+        ],
+        "truDayDu": [
+          "58019011"
+        ],
+        "toTienCoTen": "580190",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "58019091",
+      "dieuKien": "đã ngâm tẩm, tráng, phủ hoặc ép lớp (vải dệt)",
+      "loaiKhac": false,
+      "nguon": "tax.58019091",
+      "trich": "58019091 - - - Đã tráng, phủ hoặc ép lớp",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "daTrangPhuEpLop",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L17-20261111#soat-L17",
+          "ngay": "2026-11-11",
+          "bam": "f2d0164d91b82c721941a0f27a56fbcff949683eb9825da35058304cfaa32c57"
+        }
+      }
+    },
+    {
+      "hs": "58019099",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.58019099",
+      "trich": "58019099 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "5801909",
+        "truAnhEm": [
+          "58019091"
+        ],
+        "truDayDu": [
+          "58019091",
+          "5801901"
+        ],
+        "toTienCoTen": "580190",
+        "dinhNghiaDuoc": true
+      }
+    }
+  ],
+  "cay": {
+    "nguonLoai": "MAY_SUY",
+    "sinhTu": "lib/hs-tree.js",
+    "nut": [
+      {
+        "id": "5801",
+        "cap": 4,
+        "cha": "58",
+        "tenVi": "Các loại vải dệt nổi vòng và các loại vải sơnin (chenille), trừ các loại vải thuộc nhóm 58.02 hoặc 58.06 (+).",
+        "tenEn": "Fabrics; woven pile and chenille fabrics, other than fabrics of heading no. 5802 or 5806",
+        "suyRa": false
+      },
+      {
+        "id": "580110",
+        "cap": 6,
+        "cha": "5801",
+        "tenVi": "Từ lông cừu hoặc lông động vật loại mịn",
+        "tenEn": "Fabrics; woven pile, of wool or fine animal hair, other than fabrics of heading no. 5802 or 5806",
+        "suyRa": false
+      },
+      {
+        "id": "58011010",
+        "cap": 8,
+        "cha": "580110",
+        "tenVi": "Đã tráng, phủ hoặc ép lớp",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "58011090",
+        "cap": 8,
+        "cha": "580110",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "58012",
+        "cap": "NHOM_MOT_GACH",
+        "cha": "5801",
+        "tenVi": "Từ bông",
+        "tenEn": "Of cotton",
+        "suyRa": true
+      },
+      {
+        "id": "580121",
+        "cap": 6,
+        "cha": "58012",
+        "tenVi": "Vải có sợi ngang nổi vòng không cắt",
+        "tenEn": "Fabrics; woven pile, of cotton, uncut weft pile fabrics, other than fabrics of heading no. 5802 or 5806",
+        "suyRa": false
+      },
+      {
+        "id": "58012110",
+        "cap": 8,
+        "cha": "580121",
+        "tenVi": "Đã tráng, phủ hoặc ép lớp",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "58012190",
+        "cap": 8,
+        "cha": "580121",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "580122",
+        "cap": 6,
+        "cha": "58012",
+        "tenVi": "Nhung kẻ đã cắt",
+        "tenEn": "Fabrics; woven pile, of cotton, cut corduroy, other than fabrics of heading no. 5802 or 5806",
+        "suyRa": false
+      },
+      {
+        "id": "58012210",
+        "cap": 8,
+        "cha": "580122",
+        "tenVi": "Đã tráng, phủ hoặc ép lớp",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "58012290",
+        "cap": 8,
+        "cha": "580122",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "580123",
+        "cap": 6,
+        "cha": "58012",
+        "tenVi": "Vải có sợi ngang nổi vòng khác",
+        "tenEn": "Fabrics; woven pile, of cotton, weft pile fabrics other than uncut and corduroy, other than fabrics of heading no. 5802 or 5806",
+        "suyRa": false
+      },
+      {
+        "id": "58012310",
+        "cap": 8,
+        "cha": "580123",
+        "tenVi": "Đã tráng, phủ hoặc ép lớp",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "58012390",
+        "cap": 8,
+        "cha": "580123",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "580126",
+        "cap": 6,
+        "cha": "58012",
+        "tenVi": "Các loại vải sơnin (chenille)",
+        "tenEn": "Fabrics; chenille, of cotton, other than fabrics of heading no. 5802 or 5806",
+        "suyRa": false
+      },
+      {
+        "id": "58012610",
+        "cap": 8,
+        "cha": "580126",
+        "tenVi": "Đã tráng, phủ hoặc ép lớp",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "58012690",
+        "cap": 8,
+        "cha": "580126",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "580127",
+        "cap": 6,
+        "cha": "58012",
+        "tenVi": "Vải có sợi dọc nổi vòng",
+        "tenEn": "Fabrics; woven pile, of cotton, warp pile fabrics, other than fabrics of heading no. 5802 or 5806",
+        "suyRa": false
+      },
+      {
+        "id": "58012710",
+        "cap": 8,
+        "cha": "580127",
+        "tenVi": "Đã tráng, phủ hoặc ép lớp",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "58012790",
+        "cap": 8,
+        "cha": "580127",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "58013",
+        "cap": "NHOM_MOT_GACH",
+        "cha": "5801",
+        "tenVi": "Từ xơ nhân tạo",
+        "tenEn": null,
+        "suyRa": true
+      },
+      {
+        "id": "580131",
+        "cap": 6,
+        "cha": "58013",
+        "tenVi": "Vải có sợi ngang nổi vòng không cắt",
+        "tenEn": "Fabrics; woven pile, of man-made fibres, uncut weft pile fabrics, other than fabrics of heading no. 5802 or 5806",
+        "suyRa": false
+      },
+      {
+        "id": "58013110",
+        "cap": 8,
+        "cha": "580131",
+        "tenVi": "Đã tráng, phủ hoặc ép lớp",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "58013190",
+        "cap": 8,
+        "cha": "580131",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "580132",
+        "cap": 6,
+        "cha": "58013",
+        "tenVi": "Nhung kẻ đã cắt",
+        "tenEn": "Fabrics; woven pile, of man-made fibres, cut corduroy, other than fabrics of heading no. 5802 or 5806",
+        "suyRa": false
+      },
+      {
+        "id": "58013210",
+        "cap": 8,
+        "cha": "580132",
+        "tenVi": "Đã tráng, phủ hoặc ép lớp",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "58013290",
+        "cap": 8,
+        "cha": "580132",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "580133",
+        "cap": 6,
+        "cha": "58013",
+        "tenVi": "Vải có sợi ngang nổi vòng khác",
+        "tenEn": "Fabrics; woven pile, of man-made fibres, other weft pile fabrics, other than fabrics of heading no. 5802 or 5806",
+        "suyRa": false
+      },
+      {
+        "id": "58013310",
+        "cap": 8,
+        "cha": "580133",
+        "tenVi": "Đã tráng, phủ hoặc ép lớp",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "58013390",
+        "cap": 8,
+        "cha": "580133",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "580136",
+        "cap": 6,
+        "cha": "58013",
+        "tenVi": "Các loại vải sơnin (chenille)",
+        "tenEn": "Fabrics; chenille, of man-made fibres, other than fabrics of heading no. 5802 or 5806",
+        "suyRa": false
+      },
+      {
+        "id": "58013610",
+        "cap": 8,
+        "cha": "580136",
+        "tenVi": "Đã tráng, phủ hoặc ép lớp",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "58013690",
+        "cap": 8,
+        "cha": "580136",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "580137",
+        "cap": 6,
+        "cha": "58013",
+        "tenVi": "Vải có sợi dọc nổi vòng",
+        "tenEn": "Fabrics; woven pile, of man-made fibres, warp pile fabrics, other than fabrics of heading no. 5802 or 5806",
+        "suyRa": false
+      },
+      {
+        "id": "5801371",
+        "cap": "TIEU_DE_QG",
+        "cha": "580137",
+        "tenVi": "Đã tráng, phủ hoặc ép lớp",
+        "tenEn": "Coated, covered or laminated",
+        "suyRa": true
+      },
+      {
+        "id": "58013711",
+        "cap": 8,
+        "cha": "5801371",
+        "tenVi": "Sợi nổi vòng đã cắt",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "58013712",
+        "cap": 8,
+        "cha": "5801371",
+        "tenVi": "Sợi nổi vòng không cắt",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "5801379",
+        "cap": "TIEU_DE_QG",
+        "cha": "580137",
+        "tenVi": "Loại khác",
+        "tenEn": "Other",
+        "suyRa": true
+      },
+      {
+        "id": "58013791",
+        "cap": 8,
+        "cha": "5801379",
+        "tenVi": "Sợi nổi vòng đã cắt",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "58013792",
+        "cap": 8,
+        "cha": "5801379",
+        "tenVi": "Sợi nổi vòng không cắt",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "580190",
+        "cap": 6,
+        "cha": "5801",
+        "tenVi": "Từ các vật liệu dệt khác",
+        "tenEn": "Fabrics; woven pile and chenille, of textile materials n.e.c. in heading no. 5801, other than fabrics of heading no. 5802 or 5806",
+        "suyRa": false
+      },
+      {
+        "id": "5801901",
+        "cap": "TIEU_DE_QG",
+        "cha": "580190",
+        "tenVi": "Từ tơ tằm",
+        "tenEn": "Of silk",
+        "suyRa": true
+      },
+      {
+        "id": "58019011",
+        "cap": 8,
+        "cha": "5801901",
+        "tenVi": "Đã tráng, phủ hoặc ép lớp",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "58019019",
+        "cap": 8,
+        "cha": "5801901",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "5801909",
+        "cap": "TIEU_DE_QG",
+        "cha": "580190",
+        "tenVi": "Loại khác",
+        "tenEn": "Other",
+        "suyRa": true
+      },
+      {
+        "id": "58019091",
+        "cap": 8,
+        "cha": "5801909",
+        "tenVi": "Đã tráng, phủ hoặc ép lớp",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "58019099",
+        "cap": 8,
+        "cha": "5801909",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      }
+    ],
+    "tenDien": []
+  },
+  "dungTuNguon": [
+    "nhom5801.nhom",
+    "tax.58011010",
+    "tax.58011090",
+    "tax.58012110",
+    "tax.58012190",
+    "tax.58012210",
+    "tax.58012290",
+    "tax.58012310",
+    "tax.58012390",
+    "tax.58012610",
+    "tax.58012690",
+    "tax.58012710",
+    "tax.58012790",
+    "tax.58013110",
+    "tax.58013190",
+    "tax.58013210",
+    "tax.58013290",
+    "tax.58013310",
+    "tax.58013390",
+    "tax.58013610",
+    "tax.58013690",
+    "tax.58013711",
+    "tax.58013712",
+    "tax.58013791",
+    "tax.58013792",
+    "tax.58019011",
+    "tax.58019019",
+    "tax.58019091",
+    "tax.58019099"
+  ],
+  "phienBan": "HS2022",
+  "taoBoi": {
+    "provider": "google-studio:gemini-flash",
+    "model": null,
+    "luc": "2026-11-02T12:27:46.029Z",
+    "ms": 29
+  },
+  "kiemTra": {
+    "tong": 37,
+    "dat": 36,
+    "loai": 1,
+    "nguonBiCat": [
+      "phan58.phan (46130→25000)"
+    ]
+  },
+  "dieuKienNut": [
+    {
+      "id": "5801901",
+      "nguon": "tieuDe.5801901",
+      "trich": "5801901 Từ tơ tằm",
+      "dieuKienSo": [
+        {
+          "fact": "loaiSoiDet",
+          "op": "TRONG",
+          "value": [
+            "TO_TAM"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L17-20261111#soat-L17",
+          "ngay": "2026-11-11",
+          "bam": "f2d0164d91b82c721941a0f27a56fbcff949683eb9825da35058304cfaa32c57"
+        }
+      }
+    }
   ]
- }
 }

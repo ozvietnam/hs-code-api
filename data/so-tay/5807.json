@@ -1,153 +1,168 @@
 {
- "nhom": "5807",
- "phamVi": {
-  "text": "Các loại nhãn, phù hiệu và các sản phẩm tương tự bằng vật liệu dệt, dạng chiếc, dạng dải hoặc cắt theo hình dáng nhất định, không thêu",
-  "nguon": "nhom5807.nhom",
-  "trich": "Các loại nhãn mác làm từ nguyên liệu dệt bất kỳ (kể cả hàng dệt kim).",
-  "nguonLoai": "AI_DA_KIEM"
- },
- "dieuKienVao": [],
- "loaiTru": [
-  {
-   "dieuKien": "Các loại nhãn, phù hiệu và các loại tương tự, đã được thêu",
-   "sangNhom": "5810",
-   "nguon": "nhom5807.nhom",
-   "trich": "Nhóm này không có các loại nhãn, phù hiệu và các loại tương tự, đã được thêu (nhóm 58.10)",
-   "nguonLoai": "AI_DA_KIEM"
+  "nhom": "5807",
+  "phamVi": {
+    "text": "Các loại nhãn, phù hiệu và các sản phẩm tương tự bằng vật liệu dệt, dạng chiếc, dạng dải hoặc cắt theo hình dáng nhất định, không thêu",
+    "nguon": "nhom5807.nhom",
+    "trich": "Các loại nhãn mác làm từ nguyên liệu dệt bất kỳ (kể cả hàng dệt kim).",
+    "nguonLoai": "AI_DA_KIEM"
   },
-  {
-   "dieuKien": "Sản xuất bằng các phương thức khác ngoài cách cắt thành cỡ hoặc thành hình dạng",
-   "sangNhom": "6117",
-   "nguon": "nhom5807.nhom",
-   "trich": "hoặc sản xuất bằng các phương thức khác ngoài cách cắt thành cỡ hoặc thành hình dạng (nhóm 61.17, 62.17 hoặc 63.07).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "phanBiet": [
-  {
-   "hoi": "Hàng có phải là nhãn, phù hiệu đã thêu chuyển sang nhóm 58.10 không?",
-   "neuCo": "5810",
-   "neuKhong": "5807",
-   "nguon": "nhom5807.nhom",
-   "trich": "Nhóm này không có các loại nhãn, phù hiệu và các loại tương tự, đã được thêu (nhóm 58.10)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hoi": "Hàng có phải chế tạo may sẵn ngoài việc cắt chuyển sang nhóm 61.17 không?",
-   "neuCo": "6117",
-   "neuKhong": "5807",
-   "nguon": "nhom5807.nhom",
-   "trich": "hoặc sản xuất bằng các phương thức khác ngoài cách cắt thành cỡ hoặc thành hình dạng (nhóm 61.17, 62.17 hoặc 63.07).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "tieuChi6": [],
- "dong8": [
-  {
-   "hs": "58071000",
-   "dieuKien": "Dệt thoi",
-   "loaiKhac": false,
-   "nguon": "tax.58071000",
-   "trich": "58071000 - Dệt thoi",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "58079010",
-   "dieuKien": "Vải không dệt",
-   "loaiKhac": false,
-   "nguon": "tax.58079010",
-   "trich": "58079010 - - Vải không dệt",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "58079090",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.58079090",
-   "trich": "58079090 - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "580790",
-    "truAnhEm": [
-     "58079010"
-    ],
-    "truDayDu": [
-     "58079010"
-    ],
-    "toTienCoTen": "580790",
-    "dinhNghiaDuoc": true
-   }
-  }
- ],
- "cay": {
-  "nguonLoai": "MAY_SUY",
-  "sinhTu": "lib/hs-tree.js",
-  "nut": [
-   {
-    "id": "5807",
-    "cap": 4,
-    "cha": "58",
-    "tenVi": "Các loại nhãn, phù hiệu và các mặt hàng tương tự từ vật liệu dệt, dạng chiếc, dạng dải hoặc đã cắt thành hình hoặc kích cỡ, không thêu.",
-    "tenEn": "Labels, badges and similar articles; of textile materials, in the piece, in strips or cut to shape or size, not embroidered",
-    "suyRa": false
-   },
-   {
-    "id": "58071000",
-    "cap": 8,
-    "cha": "5807",
-    "tenVi": "Dệt thoi",
-    "tenEn": "Labels, badges and similar articles; woven, of textile materials, in the piece, in strips or cut to shape or size, not embroidered",
-    "suyRa": false,
-    "laPhanNhom": "580710"
-   },
-   {
-    "id": "580790",
-    "cap": 6,
-    "cha": "5807",
-    "tenVi": "Loại khác",
-    "tenEn": "Labels, badges and similar articles; (other than woven), of textile materials, in the piece, in strips or cut to shape or size, not embroidered",
-    "suyRa": false
-   },
-   {
-    "id": "58079010",
-    "cap": 8,
-    "cha": "580790",
-    "tenVi": "Vải không dệt",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "58079090",
-    "cap": 8,
-    "cha": "580790",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   }
+  "dieuKienVao": [],
+  "loaiTru": [
+    {
+      "dieuKien": "Các loại nhãn, phù hiệu và các loại tương tự, đã được thêu",
+      "sangNhom": "5810",
+      "nguon": "nhom5807.nhom",
+      "trich": "Nhóm này không có các loại nhãn, phù hiệu và các loại tương tự, đã được thêu (nhóm 58.10)",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "dieuKien": "Sản xuất bằng các phương thức khác ngoài cách cắt thành cỡ hoặc thành hình dạng",
+      "sangNhom": "6117",
+      "nguon": "nhom5807.nhom",
+      "trich": "hoặc sản xuất bằng các phương thức khác ngoài cách cắt thành cỡ hoặc thành hình dạng (nhóm 61.17, 62.17 hoặc 63.07).",
+      "nguonLoai": "AI_DA_KIEM"
+    }
   ],
-  "tenDien": []
- },
- "dungTuNguon": [
-  "nhom5807.nhom",
-  "tax.58071000",
-  "tax.58079010",
-  "tax.58079090"
- ],
- "phienBan": "HS2022",
- "taoBoi": {
-  "provider": "google-studio:gemini-flash",
-  "model": null,
-  "luc": "2026-11-02T12:27:46.068Z",
-  "ms": 5
- },
- "kiemTra": {
-  "tong": 8,
-  "dat": 8,
-  "loai": 0,
-  "nguonBiCat": [
-   "phan58.phan (46130→25000)"
-  ]
- }
+  "phanBiet": [
+    {
+      "hoi": "Hàng có phải là nhãn, phù hiệu đã thêu chuyển sang nhóm 58.10 không?",
+      "neuCo": "5810",
+      "neuKhong": "5807",
+      "nguon": "nhom5807.nhom",
+      "trich": "Nhóm này không có các loại nhãn, phù hiệu và các loại tương tự, đã được thêu (nhóm 58.10)",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hoi": "Hàng có phải chế tạo may sẵn ngoài việc cắt chuyển sang nhóm 61.17 không?",
+      "neuCo": "6117",
+      "neuKhong": "5807",
+      "nguon": "nhom5807.nhom",
+      "trich": "hoặc sản xuất bằng các phương thức khác ngoài cách cắt thành cỡ hoặc thành hình dạng (nhóm 61.17, 62.17 hoặc 63.07).",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "tieuChi6": [],
+  "dong8": [
+    {
+      "hs": "58071000",
+      "dieuKien": "Dệt thoi",
+      "loaiKhac": false,
+      "nguon": "tax.58071000",
+      "trich": "58071000 - Dệt thoi",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "58079010",
+      "dieuKien": "tên loại hàng: Vải không dệt",
+      "loaiKhac": false,
+      "nguon": "tax.58079010",
+      "trich": "58079010 - - Vải không dệt",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Vải không dệt"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L17-20261111#soat-L17",
+          "ngay": "2026-11-11",
+          "bam": "fafb36c53f50072bcd717228aff015b05254011daca4725eeeb7c1c7ca351af5"
+        }
+      }
+    },
+    {
+      "hs": "58079090",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.58079090",
+      "trich": "58079090 - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "580790",
+        "truAnhEm": [
+          "58079010"
+        ],
+        "truDayDu": [
+          "58079010"
+        ],
+        "toTienCoTen": "580790",
+        "dinhNghiaDuoc": true
+      }
+    }
+  ],
+  "cay": {
+    "nguonLoai": "MAY_SUY",
+    "sinhTu": "lib/hs-tree.js",
+    "nut": [
+      {
+        "id": "5807",
+        "cap": 4,
+        "cha": "58",
+        "tenVi": "Các loại nhãn, phù hiệu và các mặt hàng tương tự từ vật liệu dệt, dạng chiếc, dạng dải hoặc đã cắt thành hình hoặc kích cỡ, không thêu.",
+        "tenEn": "Labels, badges and similar articles; of textile materials, in the piece, in strips or cut to shape or size, not embroidered",
+        "suyRa": false
+      },
+      {
+        "id": "58071000",
+        "cap": 8,
+        "cha": "5807",
+        "tenVi": "Dệt thoi",
+        "tenEn": "Labels, badges and similar articles; woven, of textile materials, in the piece, in strips or cut to shape or size, not embroidered",
+        "suyRa": false,
+        "laPhanNhom": "580710"
+      },
+      {
+        "id": "580790",
+        "cap": 6,
+        "cha": "5807",
+        "tenVi": "Loại khác",
+        "tenEn": "Labels, badges and similar articles; (other than woven), of textile materials, in the piece, in strips or cut to shape or size, not embroidered",
+        "suyRa": false
+      },
+      {
+        "id": "58079010",
+        "cap": 8,
+        "cha": "580790",
+        "tenVi": "Vải không dệt",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "58079090",
+        "cap": 8,
+        "cha": "580790",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      }
+    ],
+    "tenDien": []
+  },
+  "dungTuNguon": [
+    "nhom5807.nhom",
+    "tax.58071000",
+    "tax.58079010",
+    "tax.58079090"
+  ],
+  "phienBan": "HS2022",
+  "taoBoi": {
+    "provider": "google-studio:gemini-flash",
+    "model": null,
+    "luc": "2026-11-02T12:27:46.068Z",
+    "ms": 5
+  },
+  "kiemTra": {
+    "tong": 8,
+    "dat": 8,
+    "loai": 0,
+    "nguonBiCat": [
+      "phan58.phan (46130→25000)"
+    ]
+  }
 }
