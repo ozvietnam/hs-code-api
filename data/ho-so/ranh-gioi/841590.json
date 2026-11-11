@@ -4,7 +4,7 @@
   "nhom": "8415",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T1022#soan-841590",
@@ -388,6 +388,13 @@
       "ma": "84159015",
       "loai": "QUYET_DINH",
       "ghiChu": "Claude 07/11/2026: vế \"trừ loại thuộc phân nhóm 8415.90.13\" ⇒ phanConLai [\"84159013\"] — khung vỏ dùng cho phương tiện bay/đường sắt thuộc .13 (chữ biểu tự phân xử)."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L24-20261111#soat-L24",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 841590:8415901–8415904 SAI KHOÁ (đáng lẽ DỪNG/THIEU_KHOA_TU_VUNG): chữ biểu 'Công suất làm mát …' / 'Of a cooling capacity …' (năng suất lạnh) được ghi bằng khoá congSuat = 'power output' (cachDoc power/output/wattage/rated power; hệ đơn vị W/mW/kW/HP, không có BTU/h). Máy điều hoà ghi cả công suất điện tiêu thụ lẫn năng suất lạnh (thường bằng BTU/h); bộ đọc lấy công suất điện ⇒ chọn sai dải. (năng suất lạnh của MÁY chủ, hàng là bộ phận). (B) 84159015 SUY RỘNG: 'Khung vỏ, đã hàn và sơn' / 'Chassis, welded and painted' — điều kiện chỉ tenLoai 'Khung vỏ', bỏ 'đã hàn và sơn' (máy tách sai: gộp vào DAU nên cổng 5 không báo); khung vỏ chưa hàn/sơn lấn .15 thay vì .19 (cùng MFN 3 nhưng sai mã)."
     }
   ]
 }

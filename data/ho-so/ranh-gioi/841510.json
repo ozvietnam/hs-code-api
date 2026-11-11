@@ -4,7 +4,7 @@
   "nhom": "8415",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-841510",
@@ -65,6 +65,13 @@
       "ma": "84151030",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.84151030: \"Công suất làm mát trên 21,10 kW nhưng không quá 26,38 kW\" ⇒ congSuat > 21.1 kW, <= 26.38 kW"
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L24-20261111#soat-L24",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 841510:84151020/84151030 SAI KHOÁ (đáng lẽ DỪNG/THIEU_KHOA_TU_VUNG): chữ biểu 'Công suất làm mát …' / 'Of a cooling capacity …' (năng suất lạnh) được ghi bằng khoá congSuat = 'power output' (cachDoc power/output/wattage/rated power; hệ đơn vị W/mW/kW/HP, không có BTU/h). Máy điều hoà ghi cả công suất điện tiêu thụ lẫn năng suất lạnh (thường bằng BTU/h); bộ đọc lấy công suất điện ⇒ chọn sai dải. Hệ quả: máy năng suất lạnh 30 kW, điện 9 kW bị đọc ≤21,10 kW ⇒ .20 (MFN 30) thay vì .90 (MFN 20). Cần khoá riêng congSuatLamLanh (kW + BTU/h) — việc của Claude ở tu-vung."
     }
   ]
 }
