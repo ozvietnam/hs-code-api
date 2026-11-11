@@ -13,6 +13,29 @@
   "duyet": null,
   "dieuKienNut": [
     {
+      "id": "848690",
+      "nguon": "nhom8486.nhom",
+      "trich": "Nhóm này bao gồm các máy và thiết bị, loại chỉ dùng hoặc chủ yếu dùng để sản xuất khối bán dẫn hoặc tấm bán dẫn mỏng, thiết bị bán dẫn, mạch điện tử tích hợp hoặc tấm màn hình dẹt…(E) BỘ PHẬN VÀ PHỤ KIỆN…nhóm này cũng bao gồm bộ phận và phụ kiện của các máy và thiết bị thuộc nhóm",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "sản xuất"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "khối",
+            "tấm bán dẫn mỏng",
+            "mạch điện tử tích hợp",
+            "màn hình dẹt"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
       "id": "848690~r14721",
       "nguon": "tieuDe.848690~r14721",
       "trich": "848690~r14721 Của máy dùng để cắt khối bán dẫn đơn tinh thể thành các lớp, hoặc cưa miếng mỏng đơn tinh thể thành các chip",
@@ -39,26 +62,64 @@
       "trich": "848690~r14731 Của dụng cụ phun dùng để khắc axit, tẩy rửa hoặc làm sạch các tấm bán dẫn mỏng; của thiết bị để khắc axit ướt, hiện ảnh, tẩy rửa hoặc làm sạch các tấm bán dẫn mỏng; của các bản mẫu khắc khô trên vật liệu bán dẫn",
       "dieuKienSo": [
         {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": [
-            "dụng cụ phun",
-            "bản mẫu khắc khô"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "dụng cụ phun"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": [
+                  "khắc axit",
+                  "tẩy rửa",
+                  "làm sạch"
+                ]
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "tấm bán dẫn mỏng"
+              }
+            ],
+            [
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "thiết bị"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": [
+                  "khắc axit ướt",
+                  "hiện ảnh",
+                  "tẩy rửa",
+                  "làm sạch"
+                ]
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "tấm bán dẫn mỏng"
+              }
+            ],
+            [
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "bản mẫu khắc khô"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "vật liệu bán dẫn"
+              }
+            ]
           ]
-        },
-        {
-          "fact": "congDung",
-          "op": "CONG_DUNG",
-          "value": [
-            "khắc axit",
-            "tẩy rửa",
-            "làm sạch"
-          ]
-        },
-        {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": "tấm bán dẫn mỏng"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -126,12 +187,9 @@
       "trich": "8486901 Của máy móc và thiết bị để sản xuất khối hoặc tấm bán dẫn mỏng",
       "dieuKienSo": [
         {
-          "fact": "dungCho",
+          "fact": "congDung",
           "op": "CONG_DUNG",
-          "value": [
-            "máy",
-            "thiết bị"
-          ]
+          "value": "sản xuất"
         },
         {
           "fact": "congDung",
@@ -150,12 +208,9 @@
       "trich": "8486902 Của máy và thiết bị sản xuất linh kiện bán dẫn hoặc mạch điện tử tích hợp",
       "dieuKienSo": [
         {
-          "fact": "dungCho",
+          "fact": "congDung",
           "op": "CONG_DUNG",
-          "value": [
-            "máy",
-            "thiết bị"
-          ]
+          "value": "sản xuất"
         },
         {
           "fact": "congDung",
@@ -174,14 +229,6 @@
       "trich": "8486903 Của máy và thiết bị sản xuất màn hình dẹt",
       "dieuKienSo": [
         {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": [
-            "máy",
-            "thiết bị"
-          ]
-        },
-        {
           "fact": "congDung",
           "op": "CONG_DUNG",
           "value": "sản xuất màn hình dẹt"
@@ -191,15 +238,68 @@
     },
     {
       "id": "8486904",
-      "nguon": "tieuDe.8486904",
-      "trich": "8486904 Của máy hoặc thiết bị nêu tại Chú giải 11 (C) của Chương này",
+      "nguon": "ch84.chuong",
+      "trich": "(C) Nhóm 84.86 cũng bao gồm…(i) sản xuất hoặc sửa chữa màn (khuôn in) và lưới quang;…(ii) lắp ghép thiết bị bán dẫn hoặc các mạch điện tử tích hợp;…(iii) bộ phận nâng, giữ, xếp vào hoặc tháo dỡ khối bán dẫn, tấm bán dẫn mỏng, thiết bị bán dẫn, mạch điện tử tích hợp và màn hình dẹt",
       "dieuKienSo": [
         {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": [
-            "máy",
-            "thiết bị"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": [
+                  "sản xuất",
+                  "sửa chữa"
+                ]
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": [
+                  "màn (khuôn in)",
+                  "lưới quang"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "lắp ghép"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": [
+                  "thiết bị bán dẫn",
+                  "mạch điện tử tích hợp"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": [
+                  "nâng",
+                  "giữ",
+                  "xếp vào",
+                  "tháo dỡ"
+                ]
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": [
+                  "khối bán dẫn",
+                  "tấm bán dẫn mỏng",
+                  "thiết bị bán dẫn",
+                  "mạch điện tử tích hợp",
+                  "màn hình dẹt"
+                ]
+              }
+            ]
           ]
         }
       ],
@@ -433,17 +533,7 @@
               {
                 "fact": "dungCho",
                 "op": "CONG_DUNG",
-                "value": "thiết bị"
-              },
-              {
-                "fact": "congDung",
-                "op": "CONG_DUNG",
-                "value": "tạo lớp phủ nhũ tương cảm quang in ảnh"
-              },
-              {
-                "fact": "dungCho",
-                "op": "CONG_DUNG",
-                "value": "tấm bán dẫn mỏng"
+                "value": "thiết bị để tạo lớp phủ nhũ tương cảm quang in ảnh lên các tấm bán dẫn mỏng"
               },
               {
                 "fact": "nguyenLyXuLy",
@@ -461,7 +551,7 @@
     {
       "hs": "84869023",
       "nguon": "tax.84869023",
-      "trich": "Của máy cấy ghép ion cho … xử lý vật liệu bán dẫn; của thiết bị tạo kết tủa vật lý bằng phương pháp phun phủ …; của thiết bị … lắng đọng vật lý cho sản xuất bán dẫn; của thiết bị ghi trực tiếp lên tấm bán dẫn mỏng, thiết bị hiệu chỉnh vị trí mẫu theo bước và lặp lại và thiết bị in ly tô khác",
+      "trich": "Của máy cấy ghép ion cho … xử lý vật liệu bán dẫn; của thiết bị tạo kết tủa vật lý bằng phương pháp phun phủ …; của thiết bị để lắng đọng vật lý cho sản xuất bán dẫn; của thiết bị ghi trực tiếp lên tấm bán dẫn mỏng, thiết bị hiệu chỉnh vị trí mẫu theo bước và lặp lại và thiết bị in ly tô khác",
       "dieuKienSo": [
         {
           "op": "HOAC",
@@ -501,17 +591,7 @@
               {
                 "fact": "dungCho",
                 "op": "CONG_DUNG",
-                "value": "thiết bị"
-              },
-              {
-                "fact": "congDung",
-                "op": "CONG_DUNG",
-                "value": "lắng đọng vật lý"
-              },
-              {
-                "fact": "congDung",
-                "op": "CONG_DUNG",
-                "value": "sản xuất bán dẫn"
+                "value": "thiết bị để lắng đọng vật lý cho sản xuất bán dẫn"
               }
             ],
             [
@@ -669,8 +749,8 @@
           ]
         },
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
           "value": [
             "điện trở",
             "cảm ứng điện",
@@ -871,15 +951,12 @@
         {
           "fact": "congDung",
           "op": "CONG_DUNG",
-          "value": [
-            "sản xuất",
-            "sửa chữa"
-          ]
+          "value": "màn và lưới quang"
         },
         {
-          "fact": "congDung",
+          "fact": "dungCho",
           "op": "CONG_DUNG",
-          "value": "màn và lưới quang của các định dạng trên linh kiện bán dẫn"
+          "value": "các định dạng trên linh kiện bán dẫn"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -913,8 +990,8 @@
       "trich": "84869043 - - - Của máy tự động để dịch chuyển, xử lý và kẹp giữ các tấm bán dẫn mỏng, các khung miếng mỏng, hộp mỏng và vật liệu khác dùng cho thiết bị bán dẫn",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
           "value": "máy tự động"
         },
         {
@@ -946,16 +1023,16 @@
       "trich": "84869044 - - - Của kính hiển vi quang học soi nổi và kính hiển vi chụp ảnh được lắp với thiết bị chuyên dùng để kẹp giữ và dịch chuyển tấm bán dẫn bản mỏng hoặc tấm lưới bán dẫn",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
           "value": [
             "kính hiển vi quang học soi nổi",
             "kính hiển vi chụp ảnh"
           ]
         },
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
           "value": "thiết bị chuyên"
         },
         {
@@ -980,13 +1057,13 @@
       "trich": "84869045 - - - Của kính hiển vi điện tử được lắp với thiết bị chuyên dùng để kẹp giữ và dịch chuyển tấm bán dẫn bản mỏng hoặc tấm lưới bán dẫn",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
           "value": "kính hiển vi điện tử"
         },
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
           "value": "thiết bị chuyên"
         },
         {
@@ -1034,6 +1111,22 @@
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "84869022",
+        "84869025"
+      ],
+      "lyDo": "Chữ biểu tự chồng thật: .22 \"của thiết bị để tạo lớp phủ nhũ tương cảm quang in ảnh lên các tấm bán dẫn mỏng bằng phương pháp quay\" và tầng r14731 của .25 \"của thiết bị để khắc axit ướt, hiện ảnh, tẩy rửa hoặc làm sạch các tấm bán dẫn mỏng\" — hàng thật: bộ phận của cụm phủ–hiện ảnh cảm quang (coater/developer track) vừa phủ chất cảm quang bằng phương pháp quay vừa hiện ảnh tấm bán dẫn mỏng; không có căn cứ thứ tự trong chữ biểu (Claude 11/11/2026, #1109)."
+    },
+    {
+      "cap": [
+        "84869023",
+        "84869025"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1, Claude 11/11/2026, #1109): .23 \"của thiết bị ghi trực tiếp lên tấm bán dẫn mỏng\" là thiết bị in ly tô (vẽ mạch lên lớp cản quang), còn tầng r14731 của .25 \"của thiết bị để khắc axit ướt, hiện ảnh, tẩy rửa hoặc làm sạch các tấm bán dẫn mỏng\" là thiết bị xử lý ướt — không thiết bị nào vừa ghi trực tiếp vừa khắc axit ướt/tẩy rửa; chồng lấn chỉ do bộ so chữ gán «thiết bị … tấm bán dẫn mỏng» cho cả hai. Không có căn cứ thứ tự."
+    }
+  ],
   "ghiChuSoan": [
     {
       "ma": "84869012",
@@ -1048,17 +1141,17 @@
     {
       "ma": "84869022",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.84869022 hai hàng nối \";\" ⇒ HOAC: (1) máy kết tủa epitaxi dùng cho các tấm bán dẫn mỏng; (2) thiết bị tạo lớp phủ nhũ tương cảm quang in ảnh lên các tấm bán dẫn mỏng \"bằng phương pháp quay\" ⇒ nguyenLyXuLy QUAY (khoá lô 20)"
+      "ghiChu": "tax.84869022 hai hàng nối \";\" ⇒ HOAC: (1) dungCho \"máy kết tủa epitaxi\" + dungCho \"tấm bán dẫn mỏng\"; (2) máy ghi NGUYÊN cụm đích dungCho \"thiết bị để tạo lớp phủ nhũ tương cảm quang in ảnh lên các tấm bán dẫn mỏng\" (EN \"spinners for coating photographic emulsions on semiconductor wafers\") + \"bằng phương pháp quay\" ⇒ nguyenLyXuLy QUAY (khoá lô 20). Claude 11/11/2026: không tách «thiết bị» trần thành điều kiện riêng — «thiết bị» trần khớp mọi thiết bị anh em (.23 \"thiết bị ghi trực tiếp …\")."
     },
     {
       "ma": "84869023",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.84869023 bốn hàng nối \";\" ⇒ HOAC bốn phương án: (1) máy cấy ghép ion cho xử lý vật liệu bán dẫn; (2) thiết bị tạo kết tủa vật lý \"bằng phương pháp phun phủ\" ⇒ nguyenLyXuLy PHUN_PHU + lên tấm bán dẫn mỏng; (3) thiết bị lắng đọng vật lý cho sản xuất bán dẫn; (4) liệt kê ba tên thiết bị (ghi trực tiếp, hiệu chỉnh vị trí mẫu theo bước và lặp lại, in ly tô khác) ⇒ dungCho mảng. \"in ly tô khác\" nằm trong liệt kê, không phải phần còn lại ⇒ phanConLai false"
+      "ghiChu": "tax.84869023 bốn hàng nối \";\" ⇒ HOAC bốn phương án: (1) dungCho máy cấy ghép ion + congDung xử lý vật liệu bán dẫn; (2) thiết bị tạo kết tủa vật lý \"bằng phương pháp phun phủ\" ⇒ nguyenLyXuLy PHUN_PHU + lên tấm bán dẫn mỏng; (3) NGUYÊN cụm đích dungCho \"thiết bị để lắng đọng vật lý cho sản xuất bán dẫn\" (Claude 11/11/2026 — không tách «thiết bị» trần); (4) liệt kê ba tên thiết bị (ghi trực tiếp, hiệu chỉnh vị trí mẫu theo bước và lặp lại, in ly tô khác) ⇒ dungCho mảng. \"in ly tô khác\" nằm trong liệt kê, không phải phần còn lại ⇒ phanConLai false"
     },
     {
       "ma": "84869041",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.84869041 \"Của máy phay bằng chùm tia ion hội tụ để sản xuất hoặc sửa chữa màn và lưới quang …\": \"bằng chùm tia ion hội tụ\" ⇒ nguyenLyXuLy TRONG [CHUM_TIA_ION_HOI_TU] (khoá lô 20); \"sản xuất hoặc sửa chữa\" ⇒ congDung mảng (hoặc); đối tượng \"màn và lưới quang …\" ⇒ congDung riêng (định ngữ chung)"
+      "ghiChu": "tax.84869041 \"Của máy phay bằng chùm tia ion hội tụ để sản xuất hoặc sửa chữa màn và lưới quang của các định dạng trên linh kiện bán dẫn\": \"bằng chùm tia ion hội tụ\" ⇒ nguyenLyXuLy CHUM_TIA_ION_HOI_TU; đối tượng \"màn và lưới quang\" ⇒ congDung; \"của các định dạng trên linh kiện bán dẫn\" (masks and reticles FOR patterns on semiconductor devices) ⇒ dungCho. Động từ \"sản xuất hoặc sửa chữa\" lặp đúng mục (i) Chú giải 11 (C) của tầng 8486904 (congDung [sản xuất, sửa chữa]) — Claude 11/11/2026 không ghi lại ở dòng: ghép «sản xuất» với «linh kiện bán dẫn» trong một giá trị congDung làm bộ so chữ coi dòng thuộc cả tầng 8486902."
     },
     {
       "ma": "84869014",
@@ -1073,7 +1166,7 @@
     {
       "ma": "84869028",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.84869028 gồm cả lò điện trở lẫn lò cảm ứng/điện môi trong MỘT dòng ⇒ tenLoai mảng [điện trở, cảm ứng điện, điện môi] (hoặc); vế \"sử dụng/dùng trong sản xuất linh kiện bán dẫn…\" ⇒ congDung"
+      "ghiChu": "tax.84869028 \"Của lò sấy và lò luyện dùng điện trở …; của lò sấy và lò luyện hoạt động bằng hiệu ứng cảm ứng điện hoặc điện môi dùng trong sản xuất linh kiện bán dẫn…\" ⇒ máy (đích «Của …») ghi dungCho [lò sấy, lò luyện] + dungCho [điện trở, cảm ứng điện, điện môi] (định ngữ chung, cùng khoá — Claude 11/11/2026 đổi từ tenLoai: đây là cách gia nhiệt của LÒ, không phải tên của bộ phận); vế \"sử dụng/dùng trong sản xuất linh kiện bán dẫn\" ⇒ congDung"
     },
     {
       "ma": "84869046",
@@ -1081,9 +1174,26 @@
       "ghiChu": "tax.84869046 \"…kể cả mạch in đã lắp ráp\" — \"kể cả\" là vế PHU (cổng 5) ⇒ không thành điều kiện"
     },
     {
+      "ma": "8486901",
+      "loai": "BO_VE",
+      "ve": "Của máy móc và thiết bị",
+      "lyDo": "Đầu ngữ chung của cả bốn tầng 8486901–8486904 (mọi hàng của nhóm 84.86 là máy hoặc thiết bị); tầng tách nhau bằng CÔNG DỤNG «để sản xuất khối hoặc tấm bán dẫn mỏng» (congDung), máy cụ thể ghi ở dòng con bằng dungCho. Bỏ vế không đổi mã: không có bộ phận nào thuộc 8486.90 mà không phải của máy hoặc thiết bị."
+    },
+    {
+      "ma": "8486904",
+      "loai": "BO_VE",
+      "ve": "Của máy hoặc thiết bị nêu tại Chú giải 11 (C) của Chương này",
+      "lyDo": "Vế dẫn chiếu Chú giải 11 (C) Chương 84; điều kiện của tầng đọc từ chính chú giải đó (nguon ch84.chuong, trich ba mục (i)–(iii)) nên vế được phủ bằng nguồn dẫn chiếu, không bỏ giới hạn nào."
+    },
+    {
       "ma": "848690",
-      "loai": "DUNG",
-      "ghiChu": "[GIỚI HẠN BỘ MÁY] Các dòng «Bộ phận kẹp dụng cụ…, dùng cho máy công cụ» lặp dưới các tầng về MÁY cụ thể (máy phun, máy cắt laser…); không vector nào vừa thoả tầng vừa thoả dòng. CẦN: Claude soát lại cách ghi tầng và dòng. — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude (#1109): hết DỪNG [GIỚI HẠN BỘ MÁY] — viết lại spec cho mỗi «Của <máy X>» dùng MỘT cách ghi: TẦNG 7 số chia theo CÔNG DỤNG của máy (congDung, đúng bốn phân nhóm máy 8486.10/.20/.30/.40): 8486901 congDung «sản xuất» + [khối, tấm bán dẫn mỏng]; 8486902 «sản xuất» + [linh kiện bán dẫn, mạch điện tử tích hợp]; 8486903 «sản xuất màn hình dẹt»; 8486904 ba mục (i)–(iii) Chú giải 11 (C) Chương 84 (nguồn ch84.chuong). Bỏ dungCho [máy, thiết bị] ở tầng (khớp mọi giá trị ⇒ tầng 8486904 chồng mọi tầng — nguồn của ba cụm trục cũ) — BO_VE có lý do. MÁY cụ thể ghi ở DÒNG bằng dungCho; tenLoai chỉ còn ở dòng «Bộ phận kẹp dụng cụ…» (tên bộ phận thật). Phạm vi phân nhóm (dieuKienNut 848690, chỉ lọc vector cổng 1): chú giải nhóm 84.86 — bộ phận của máy «để sản xuất khối…, tấm bán dẫn mỏng, …, mạch điện tử tích hợp hoặc tấm màn hình dẹt» (E); vector chỉ mang mảnh công dụng («sản xuất» trần, «gia công mọi vật liệu…» của .13) không phải hàng của tầng nào. Kết quả: hết cong1 lỗ gốc, hết 18 cặp :khong-tat-dinh và ba cụm cong2-chong-lan-truc; còn hai cặp khai chongLanVanBan (.22↔.25 chồng thật — cụm phủ–hiện ảnh; .23↔.25 Q1 không có hàng thật)."
+    },
+    {
+      "ma": "8486904",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Tầng «Của máy hoặc thiết bị nêu tại Chú giải 11 (C) của Chương này» ⇒ điều kiện đọc từ chính Chú giải 11 (C) Chương 84 (nguon ch84.chuong): HOAC (i) congDung [sản xuất, sửa chữa] + [màn (khuôn in), lưới quang]; (ii) congDung «lắp ghép» + [thiết bị bán dẫn, mạch điện tử tích hợp]; (iii) congDung [nâng, giữ, xếp vào, tháo dỡ] + [khối bán dẫn, tấm bán dẫn mỏng, thiết bị bán dẫn, mạch điện tử tích hợp, màn hình dẹt]. Không thêm điều kiện ngoài chữ chú giải."
     }
   ]
 }

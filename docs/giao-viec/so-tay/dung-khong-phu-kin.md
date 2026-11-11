@@ -8,11 +8,11 @@ PN6 DỪNG không được dùng lúc chạy; lúc chạy chỉ dùng bản đã
 
 | | Số PN6 |
 |---|---|
-| DỪNG hiện tại | **1** |
+| DỪNG hiện tại | **0** |
 | Chờ oz-wiki: Q2 (văn bản ô tô) | 0 |
 | Chương 98 — Claude đang soát bản nháp | 0 |
 | Q1 còn lại — Claude xác minh / sửa bộ máy | 0 |
-| Claude làm tiếp (công cụ / soát lại) | 1 |
+| Claude làm tiếp (công cụ / soát lại) | 0 |
 
 ## Việc cần anh quyết
 
@@ -55,18 +55,10 @@ tuỳ chọn và «…, và các cầu bị động» là tên đầu liên hợ
 có căn cứ mã tương ứng (r19765–19767; dải r19818–19848); tiêu đề không mã đứng trước dòng lá đầu của phân nhóm 98 vào cây, tiêu đề
 phủ trọn phân nhóm là tên phân nhóm. Chương 98 hết DỪNG.
 
-## Việc Claude tự làm tiếp
-
-| Việc | PN6 |
-|---|---|
-| Soát lại cả spec (31 dòng «bộ phận của máy X»: khoá dungCho/congDung trộn lẫn, cụm trục giữa các tầng máy) — lô riêng | 848690 |
-
 ## Bảng toàn bộ PN6 DỪNG
 
 | PN6 | Tên phân nhóm | Vướng | Cần |
 |---|---|---|---|
-| **GIỚI HẠN BỘ MÁY** | | | |
-| 848690 | Bộ phận và phụ kiện | Các dòng «Bộ phận kẹp dụng cụ…, dùng cho máy công cụ» lặp dưới các tầng về MÁY cụ thể (máy phun, máy cắt laser…); không vector nào vừa thoả tầng vừa thoả dòng. | Claude soát lại cách ghi tầng và dòng. |
 
 ## Đã gỡ trong #1109
 
@@ -89,6 +81,7 @@ phủ trọn phân nhóm là tên phân nhóm. Chương 98 hết DỪNG.
 | #1176 | Bộ máy: 842490, 842199, 850790, 871690, 847790, 870600, 681140, 442199, 848620 | Giải chữ↔mã qua cây HS; đích lồng chỉ khi khác nhóm 4 số; cổng 1 «tên đa nghĩa»; cổng 2 trả lời «tương tự» khi kiểm tới được + ứng viên tên chung ẑẑẑ; Q1 871690/848620 |
 | #1178 | Lô 11: 853650, 610520, 870895, 870891, 030749, 480100, 210690, 321290 | Từ vựng @2 `cumChanDoc` (che «micro switch») và `giaTriCha`; phạm vi «Loại khác» từ chú giải nhóm; phạm vi trên nút nhóm cho xxxx.00 (4801.00); `loBieu` — lỗ của chính biểu (210690 r2701/r2704); ứng viên «công dụng chung ẑẑẑ»; Q1 cho cặp cuộn↔tờ, (A)↔(C) 32.12, .91↔.92–.97 21.06 |
 | #1182 | Ô tô (Q2): 870421, 870431, 870441, 870451, 870460 | Gỡ ghi chú DUNG sót sau #1177; sửa căn cứ trích sai «Luật GTĐB 2008 Đ4» trong 30 lý do khai |
+| #1188 | 848690 (bộ phận máy bán dẫn 84.86) | Viết lại spec: tầng chia theo công dụng khớp 4 phân nhóm máy 8486.10–.40 (8486904 theo Chú giải 11 (C) Chương 84); máy cụ thể ở dòng bằng dungCho; phạm vi từ chú giải nhóm 84.86 (E); 2 cặp chongLanVanBan (.22↔.25 chồng thật, .23↔.25 Q1) |
 
 Bài học: nhiều ghi chú cũ ghi «chồng lấn giả» hoặc «không sửa được», nhưng thật ra spec sót tên hoặc sót vế (170290 «trừ
 mantoza», 320890 thiếu tên «Sơn», 670290 vật liệu ghi thành tên hàng). Trước khi kết luận DỪNG, soát xem chữ biểu đã tự
