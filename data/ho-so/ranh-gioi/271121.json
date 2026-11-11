@@ -4,19 +4,13 @@
   "nhom": "2711",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "DUYET",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261105T1542#soan-271121",
     "ngay": "2026-11-05"
   },
-  "duyet": {
-    "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L7-20261111#soat-L7",
-    "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu .10 'Of a kind used as a motor fuel' ↔ congDung; .90 trần.",
-    "bam": "15faf5a4a3d0951c881eba2207bd65dca266b74640328b36c12eaffc15e5925f"
-  },
+  "duyet": null,
   "dieuKienNut": [],
   "dong8": [
     {
@@ -30,14 +24,14 @@
           "value": "sử dụng làm nhiên liệu động cơ"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "27112190",
       "nguon": "tax.27112190",
       "trich": "27112190 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "ghiChuSoan": [
@@ -45,6 +39,13 @@
       "ma": "27112110",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.27112110 \"Loại sử dụng làm nhiên liệu động cơ(SEN)\": danh từ đầu \"Loại\" là chỉ từ chung, không phải tên hàng; vế giới hạn \"sử dụng làm nhiên liệu động cơ\" là công dụng ⇒ congDung giữ nguyên vế."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:tech-lead-20261111#soat-lai",
+      "ngay": "2026-11-11",
+      "lyDo": "Bỏ mất ngưỡng số SEN mà sổ tay đang chạy dùng để chốt dòng (chất rắn 25–40% / độ ẩm-protein-béo / áp suất nén 200–250); khoá TEN_LOAI/CONG_DUNG là lùi. Soạn lại: mã hoá đủ ngưỡng SEN + vế tên."
     }
   ]
 }
