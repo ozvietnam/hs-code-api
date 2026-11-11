@@ -4,7 +4,7 @@
   "nhom": "0306",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261105T1529#soan-030636",
@@ -231,6 +231,13 @@
       "ma": "0306361",
       "loai": "QUYET_DINH",
       "ghiChu": "sen.03063611 (SEN) ⇒ congDung CONG_DUNG \"nhân giống\" cho tầng 0306361 \"Để nhân giống\" — SEN định nghĩa \"tôm shrimps và prawn để nhân giống\" là loại có kèm theo chứng nhận của các cơ quan có thẩm quyền theo quy định của luật quốc gia. Trước đây tầng này dùng dungCho CONG_DUNG: dungCho CHỈ đọc cụm \"dùng cho / sử dụng cho / lắp cho …\" nên KHÔNG đọc được \"để nhân giống\"; hệ quả: ba dòng 03063611/.12/.13 không bao giờ khớp (thử hàng ra THIEU). Đổi sang congDung (đọc được với dấu \"để\") theo chữ biểu của tầng. KHÔNG dùng khoá CO_KHONG dungLamGiong dù đọc chuẩn hơn: 030636 không có dòng \"Loại khác\" nên cổng 1 \"phủ kín\" đỏ (vector tôm đông lạnh / khô, muối không để nhân giống — vốn thuộc 0306.16 / 0305, không thuộc 030636)."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L2-20261111#soat-L2",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) ranh-gioi/030636.json:0306361 SAI KHOÁ + 4 chồng lấn GIẢ: tầng \"Để nhân giống\" / EN \"Breeding\" khai congDung CONG_DUNG \"nhân giống\" thay dungLamGiong CO; chongLanVanBan .11/.31, .12/.32, .13/.33, .19/.39 lý do \"tôm để nhân giống vẫn có thể tươi hoặc ướp lạnh\" — không có hàng thật (tôm giống là tôm sống; tầng anh em 0306362 \"Loại khác, sống\", 0306363 \"Tươi hoặc ướp lạnh\"). Hệ quả: tầng giống không đòi hàng sống, nên mô tả có chữ \"giống\" mà ở trạng thái ướp lạnh không tự chốt giữa 03063612 (MFN 0%) và 03063632 (MFN 12%) thay vì về .32. Sửa: nút 0306361 dungLamGiong CO (+ SONG), bỏ 4 chongLanVanBan."
     }
   ]
 }

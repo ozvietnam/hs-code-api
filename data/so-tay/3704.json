@@ -1,136 +1,151 @@
 {
- "nhom": "3704",
- "phamVi": {
-  "text": "Tấm, phim, giấy, bìa và vật liệu dệt để tạo ảnh, đã phơi sáng nhưng chưa tráng.",
-  "nguon": "nhom3704.nhom",
-  "trich": "Nhóm này bao gồm tấm, phim, giấy, bìa và vật liệu dệt để tạo ảnh được đề cập trong nhóm 37.01, 37.02 hoặc 37.03, với điều kiện những loại này đã phơi sáng nhưng chưa tráng.",
-  "nguonLoai": "AI_DA_KIEM"
- },
- "dieuKienVao": [
-  {
-   "fact": "la_vat_lieu_tao_anh_da_phoi_sang_chua_trang",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "nhom3704.nhom",
-   "trich": "Nhóm này bao gồm tấm, phim, giấy, bìa và vật liệu dệt để tạo ảnh được đề cập trong nhóm 37.01, 37.02 hoặc 37.03, với điều kiện những loại này đã phơi sáng nhưng chưa tráng.",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "loaiTru": [
-  {
-   "dieuKien": "Các tấm, phim đã tráng",
-   "sangNhom": "3705",
-   "nguon": "nhom3704.nhom",
-   "trich": "Các tấm, phim, giấy, bìa và vật liệu dệt đã tráng bị loại trừ (nhóm 37.05, 37.06, Chương 49 hoặc Phần XI).",
-   "nguonLoai": "AI_DA_KIEM"
+  "nhom": "3704",
+  "phamVi": {
+    "text": "Tấm, phim, giấy, bìa và vật liệu dệt để tạo ảnh, đã phơi sáng nhưng chưa tráng.",
+    "nguon": "nhom3704.nhom",
+    "trich": "Nhóm này bao gồm tấm, phim, giấy, bìa và vật liệu dệt để tạo ảnh được đề cập trong nhóm 37.01, 37.02 hoặc 37.03, với điều kiện những loại này đã phơi sáng nhưng chưa tráng.",
+    "nguonLoai": "AI_DA_KIEM"
   },
-  {
-   "dieuKien": "Phim điện ảnh đã tráng",
-   "sangNhom": "3706",
-   "nguon": "nhom3704.nhom",
-   "trich": "Các tấm, phim, giấy, bìa và vật liệu dệt đã tráng bị loại trừ (nhóm 37.05, 37.06, Chương 49 hoặc Phần XI).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "phanBiet": [
-  {
-   "hoi": "Hàng hoá có phải là tấm, phim ảnh đã tráng thuộc nhóm 37.05?",
-   "neuCo": "3705",
-   "neuKhong": "3704",
-   "nguon": "nhom3704.nhom",
-   "trich": "Các tấm, phim, giấy, bìa và vật liệu dệt đã tráng bị loại trừ (nhóm 37.05, 37.06, Chương 49 hoặc Phần XI).",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hoi": "Hàng hoá có phải là phim điện ảnh đã tráng thuộc nhóm 37.06?",
-   "neuCo": "3706",
-   "neuKhong": "3704",
-   "nguon": "nhom3704.nhom",
-   "trich": "Các tấm, phim, giấy, bìa và vật liệu dệt đã tráng bị loại trừ (nhóm 37.05, 37.06, Chương 49 hoặc Phần XI).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "tieuChi6": [],
- "dong8": [
-  {
-   "hs": "37040010",
-   "dieuKien": "Tấm hoặc phim dùng cho chụp X quang",
-   "loaiKhac": false,
-   "nguon": "tax.37040010",
-   "trich": "37040010 - Tấm hoặc phim dùng cho chụp X quang",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "37040090",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.37040090",
-   "trich": "37040090 - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "3704",
-    "truAnhEm": [
-     "37040010"
-    ],
-    "truDayDu": [
-     "37040010"
-    ],
-    "toTienCoTen": "3704",
-    "dinhNghiaDuoc": true
-   }
-  }
- ],
- "cay": {
-  "nguonLoai": "MAY_SUY",
-  "sinhTu": "lib/hs-tree.js",
-  "nut": [
-   {
-    "id": "3704",
-    "cap": 4,
-    "cha": "37",
-    "tenVi": "Tấm, phim, giấy, bìa và vật liệu dệt để tạo ảnh, đã phơi sáng nhưng chưa tráng.",
-    "tenEn": "Photographic plates, film, paper, paperboard and textiles, exposed but not developed",
-    "suyRa": false
-   },
-   {
-    "id": "37040010",
-    "cap": 8,
-    "cha": "3704",
-    "tenVi": "Tấm hoặc phim dùng cho chụp X quang",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "37040090",
-    "cap": 8,
-    "cha": "3704",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   }
+  "dieuKienVao": [
+    {
+      "fact": "la_vat_lieu_tao_anh_da_phoi_sang_chua_trang",
+      "op": "=",
+      "value": true,
+      "donVi": null,
+      "ngoaiTru": [],
+      "nguon": "nhom3704.nhom",
+      "trich": "Nhóm này bao gồm tấm, phim, giấy, bìa và vật liệu dệt để tạo ảnh được đề cập trong nhóm 37.01, 37.02 hoặc 37.03, với điều kiện những loại này đã phơi sáng nhưng chưa tráng.",
+      "nguonLoai": "AI_DA_KIEM"
+    }
   ],
-  "tenDien": []
- },
- "dungTuNguon": [
-  "nhom3704.nhom",
-  "tax.37040010",
-  "tax.37040090"
- ],
- "phienBan": "HS2022",
- "taoBoi": {
-  "provider": "google-studio:gemini-flash",
-  "model": null,
-  "luc": "2026-11-02T11:42:26.298Z",
-  "ms": 3
- },
- "kiemTra": {
-  "tong": 8,
-  "dat": 8,
-  "loai": 0,
-  "nguonBiCat": []
- }
+  "loaiTru": [
+    {
+      "dieuKien": "Các tấm, phim đã tráng",
+      "sangNhom": "3705",
+      "nguon": "nhom3704.nhom",
+      "trich": "Các tấm, phim, giấy, bìa và vật liệu dệt đã tráng bị loại trừ (nhóm 37.05, 37.06, Chương 49 hoặc Phần XI).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "dieuKien": "Phim điện ảnh đã tráng",
+      "sangNhom": "3706",
+      "nguon": "nhom3704.nhom",
+      "trich": "Các tấm, phim, giấy, bìa và vật liệu dệt đã tráng bị loại trừ (nhóm 37.05, 37.06, Chương 49 hoặc Phần XI).",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "phanBiet": [
+    {
+      "hoi": "Hàng hoá có phải là tấm, phim ảnh đã tráng thuộc nhóm 37.05?",
+      "neuCo": "3705",
+      "neuKhong": "3704",
+      "nguon": "nhom3704.nhom",
+      "trich": "Các tấm, phim, giấy, bìa và vật liệu dệt đã tráng bị loại trừ (nhóm 37.05, 37.06, Chương 49 hoặc Phần XI).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hoi": "Hàng hoá có phải là phim điện ảnh đã tráng thuộc nhóm 37.06?",
+      "neuCo": "3706",
+      "neuKhong": "3704",
+      "nguon": "nhom3704.nhom",
+      "trich": "Các tấm, phim, giấy, bìa và vật liệu dệt đã tráng bị loại trừ (nhóm 37.05, 37.06, Chương 49 hoặc Phần XI).",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "tieuChi6": [],
+  "dong8": [
+    {
+      "hs": "37040010",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): chụp X quang",
+      "loaiKhac": false,
+      "nguon": "tax.37040010",
+      "trich": "37040010 - Tấm hoặc phim dùng cho chụp X quang",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "chụp X quang"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L10-20261111#soat-L10",
+          "ngay": "2026-11-11",
+          "bam": "76ae35ef4fef6d693ce5bd9b24f3a2d183a181d63717513ff05156f4b650f3c9"
+        }
+      }
+    },
+    {
+      "hs": "37040090",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.37040090",
+      "trich": "37040090 - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "3704",
+        "truAnhEm": [
+          "37040010"
+        ],
+        "truDayDu": [
+          "37040010"
+        ],
+        "toTienCoTen": "3704",
+        "dinhNghiaDuoc": true
+      }
+    }
+  ],
+  "cay": {
+    "nguonLoai": "MAY_SUY",
+    "sinhTu": "lib/hs-tree.js",
+    "nut": [
+      {
+        "id": "3704",
+        "cap": 4,
+        "cha": "37",
+        "tenVi": "Tấm, phim, giấy, bìa và vật liệu dệt để tạo ảnh, đã phơi sáng nhưng chưa tráng.",
+        "tenEn": "Photographic plates, film, paper, paperboard and textiles, exposed but not developed",
+        "suyRa": false
+      },
+      {
+        "id": "37040010",
+        "cap": 8,
+        "cha": "3704",
+        "tenVi": "Tấm hoặc phim dùng cho chụp X quang",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "37040090",
+        "cap": 8,
+        "cha": "3704",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      }
+    ],
+    "tenDien": []
+  },
+  "dungTuNguon": [
+    "nhom3704.nhom",
+    "tax.37040010",
+    "tax.37040090"
+  ],
+  "phienBan": "HS2022",
+  "taoBoi": {
+    "provider": "google-studio:gemini-flash",
+    "model": null,
+    "luc": "2026-11-02T11:42:26.298Z",
+    "ms": 3
+  },
+  "kiemTra": {
+    "tong": 8,
+    "dat": 8,
+    "loai": 0,
+    "nguonBiCat": []
+  }
 }

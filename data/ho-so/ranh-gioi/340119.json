@@ -4,7 +4,7 @@
   "nhom": "3401",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1545#soan-340119",
@@ -81,6 +81,13 @@
       "ma": "34011990",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.34011990 \"Loại khác\" — dòng \"Loại khác\" TRẦN ⇒ không ghi điều kiện, không đưa vào spec (máy tự phủ định anh em)."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L10-20261111#soat-L10",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 340119.json:34011910 và 34011920 SAI NGHĨA KHOÁ (SUY RỘNG/THU HẸP tuỳ cách đọc): chữ biểu \"đã được thấm tẩm, tráng hoặc phủ xà phòng hoặc chất tẩy\" (EN \"impregnated, coated or covered with soap or detergent\") bị mã thành dungCho CONG_DUNG [\"xà phòng\",\"chất tẩy\"] — khoá dungCho nghĩa \"dùng cho (máy, xe, hàng mà hàng lắp vào/đi cùng)\", câu hỏi lúc chạy thành \"hàng dùng cho xà phòng?\" ⇒ giấy/nỉ đã tẩm xà phòng thật không trả lời được (khai \"khăn giấy tẩm chất tẩy\" không có chữ \"dùng cho\"), còn giấy gói xà phòng lại khớp. Sửa: bỏ dungCho (trong PN6 340119 mọi hàng đều là xà phòng/chất tẩy, tên vật liệu nỉ/không dệt/giấy đã đủ tách .10/.20/.90) hoặc dùng khoá tẩm/phủ đúng nghĩa (vd chatNgamTamTrangPhu nếu tu-vung cho giá trị)."
     }
   ]
 }

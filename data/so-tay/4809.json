@@ -1,170 +1,206 @@
 {
- "nhom": "4809",
- "phamVi": {
-  "text": "Giấy than, giấy tự nhân bản và các loại giấy copy hoặc giấy chuyển khác, có hoặc không in, ở dạng cuộn hoặc dạng tờ kích thước lớn.",
-  "nguon": "nhom4809.nhom",
-  "trich": "Nhóm này bao gồm giấy được tráng, thấm tẩm hoặc thu được bằng cách khác, ở dạng cuộn hoặc tờ. Về các kích thước của sản phẩm của nhóm này, xem Chú giải 8 của Chương này.\n\nCác loại giấy này khi không đáp ứng các điều kiện này, thì được phân loại vào nhóm 48.16",
-  "nguonLoai": "AI_DA_KIEM"
- },
- "dieuKienVao": [
-  {
-   "fact": "la_giay_than_giay_tu_nhan_ban_va_giay_sao_chep_kho_lon",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "nhom4809.nhom",
-   "trich": "Nhóm này bao gồm giấy được tráng, thấm tẩm hoặc thu được bằng cách khác, ở dạng cuộn hoặc tờ. Về các kích thước của sản phẩm của nhóm này, xem Chú giải 8 của Chương này.",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "loaiTru": [
-  {
-   "dieuKien": "Giấy tráng/thấm tẩm sao chép khi không đáp ứng kích thước khổ lớn theo Chú giải 8",
-   "sangNhom": "4816",
-   "nguon": "nhom4809.nhom",
-   "trich": "Các loại giấy này khi không đáp ứng các điều kiện này, thì được phân loại vào nhóm 48.16; về mô tả chi tiết của các loại giấy này xem Chú giải chi tiết của nhóm 48.16.",
-   "nguonLoai": "AI_DA_KIEM"
+  "nhom": "4809",
+  "phamVi": {
+    "text": "Giấy than, giấy tự nhân bản và các loại giấy copy hoặc giấy chuyển khác, có hoặc không in, ở dạng cuộn hoặc dạng tờ kích thước lớn.",
+    "nguon": "nhom4809.nhom",
+    "trich": "Nhóm này bao gồm giấy được tráng, thấm tẩm hoặc thu được bằng cách khác, ở dạng cuộn hoặc tờ. Về các kích thước của sản phẩm của nhóm này, xem Chú giải 8 của Chương này.\n\nCác loại giấy này khi không đáp ứng các điều kiện này, thì được phân loại vào nhóm 48.16",
+    "nguonLoai": "AI_DA_KIEM"
   },
-  {
-   "dieuKien": "Lá phôi dập",
-   "sangNhom": "3212",
-   "nguon": "nhom4809.nhom",
-   "trich": "(a) Lá phôi dập (nhóm 32.12)",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "phanBiet": [
-  {
-   "hoi": "Hàng là giấy than, giấy tự nhân bản không đáp ứng kích thước tại Chú giải 8?",
-   "neuCo": "4816",
-   "neuKhong": "4809",
-   "nguon": "nhom4809.nhom",
-   "trich": "Các loại giấy này khi không đáp ứng các điều kiện này, thì được phân loại vào nhóm 48.16; về mô tả chi tiết của các loại giấy này xem Chú giải chi tiết của nhóm 48.16.",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hoi": "Hàng là lá phôi dập?",
-   "neuCo": "3212",
-   "neuKhong": "4809",
-   "nguon": "nhom4809.nhom",
-   "trich": "(a) Lá phôi dập (nhóm 32.12)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hoi": "Hàng là giấy phủ lớp chất nhạy thuộc nhóm 37.03?",
-   "neuCo": "3703",
-   "neuKhong": "4809",
-   "nguon": "nhom4809.nhom",
-   "trich": "(b) Giấy phủ lớp chất nhạy (thường thuộc nhóm 37.03).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "tieuChi6": [],
- "dong8": [
-  {
-   "hs": "48092000",
-   "dieuKien": "Giấy tự nhân bản",
-   "loaiKhac": false,
-   "nguon": "tax.48092000",
-   "trich": "48092000 - Giấy tự nhân bản",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "48099010",
-   "dieuKien": "Giấy than và các loại giấy sao chép tương tự",
-   "loaiKhac": false,
-   "nguon": "tax.48099010",
-   "trich": "48099010 - - Giấy than và các loại giấy sao chép tương tự",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "48099090",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.48099090",
-   "trich": "48099090 - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "480990",
-    "truAnhEm": [
-     "48099010"
-    ],
-    "truDayDu": [
-     "48099010"
-    ],
-    "toTienCoTen": "480990",
-    "dinhNghiaDuoc": true
-   }
-  }
- ],
- "cay": {
-  "nguonLoai": "MAY_SUY",
-  "sinhTu": "lib/hs-tree.js",
-  "nut": [
-   {
-    "id": "4809",
-    "cap": 4,
-    "cha": "48",
-    "tenVi": "Giấy than, giấy tự nhân bản và các loại giấy sao chép hoặc giấy chuyển khác (kể cả giấy đã tráng hoặc thấm tẩm dùng cho giấy nến nhân bản hoặc các tấm in offset), đã hoặc chưa in, dạng cuộn hoặc tờ.",
-    "tenEn": "Carbon paper, self copy paper, and other copying or transfer papers (including coated or impregnated paper for duplicator stencils or offset plates), whether or not printed, in rolls or sheets",
-    "suyRa": false
-   },
-   {
-    "id": "48092000",
-    "cap": 8,
-    "cha": "4809",
-    "tenVi": "Giấy tự nhân bản",
-    "tenEn": "Paper; self-copy paper, whether or not printed, in rolls or sheets",
-    "suyRa": false,
-    "laPhanNhom": "480920"
-   },
-   {
-    "id": "480990",
-    "cap": 6,
-    "cha": "4809",
-    "tenVi": "Loại khác",
-    "tenEn": "Paper; carbon paper and other copying or transfer papers (including coated or impregnated paper for duplicator stencils or offset plates), whether or not printed, in rolls or sheets",
-    "suyRa": false
-   },
-   {
-    "id": "48099010",
-    "cap": 8,
-    "cha": "480990",
-    "tenVi": "Giấy than và các loại giấy sao chép tương tự",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "48099090",
-    "cap": 8,
-    "cha": "480990",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   }
+  "dieuKienVao": [
+    {
+      "fact": "la_giay_than_giay_tu_nhan_ban_va_giay_sao_chep_kho_lon",
+      "op": "=",
+      "value": true,
+      "donVi": null,
+      "ngoaiTru": [],
+      "nguon": "nhom4809.nhom",
+      "trich": "Nhóm này bao gồm giấy được tráng, thấm tẩm hoặc thu được bằng cách khác, ở dạng cuộn hoặc tờ. Về các kích thước của sản phẩm của nhóm này, xem Chú giải 8 của Chương này.",
+      "nguonLoai": "AI_DA_KIEM"
+    }
   ],
-  "tenDien": []
- },
- "dungTuNguon": [
-  "nhom4809.nhom",
-  "tax.48092000",
-  "tax.48099010",
-  "tax.48099090"
- ],
- "phienBan": "HS2022",
- "taoBoi": {
-  "provider": "google-studio:gemini-flash",
-  "model": null,
-  "luc": "2026-11-02T12:07:44.881Z",
-  "ms": 6
- },
- "kiemTra": {
-  "tong": 11,
-  "dat": 10,
-  "loai": 1,
-  "nguonBiCat": []
- }
+  "loaiTru": [
+    {
+      "dieuKien": "Giấy tráng/thấm tẩm sao chép khi không đáp ứng kích thước khổ lớn theo Chú giải 8",
+      "sangNhom": "4816",
+      "nguon": "nhom4809.nhom",
+      "trich": "Các loại giấy này khi không đáp ứng các điều kiện này, thì được phân loại vào nhóm 48.16; về mô tả chi tiết của các loại giấy này xem Chú giải chi tiết của nhóm 48.16.",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "dieuKien": "Lá phôi dập",
+      "sangNhom": "3212",
+      "nguon": "nhom4809.nhom",
+      "trich": "(a) Lá phôi dập (nhóm 32.12)",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "phanBiet": [
+    {
+      "hoi": "Hàng là giấy than, giấy tự nhân bản không đáp ứng kích thước tại Chú giải 8?",
+      "neuCo": "4816",
+      "neuKhong": "4809",
+      "nguon": "nhom4809.nhom",
+      "trich": "Các loại giấy này khi không đáp ứng các điều kiện này, thì được phân loại vào nhóm 48.16; về mô tả chi tiết của các loại giấy này xem Chú giải chi tiết của nhóm 48.16.",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hoi": "Hàng là lá phôi dập?",
+      "neuCo": "3212",
+      "neuKhong": "4809",
+      "nguon": "nhom4809.nhom",
+      "trich": "(a) Lá phôi dập (nhóm 32.12)",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hoi": "Hàng là giấy phủ lớp chất nhạy thuộc nhóm 37.03?",
+      "neuCo": "3703",
+      "neuKhong": "4809",
+      "nguon": "nhom4809.nhom",
+      "trich": "(b) Giấy phủ lớp chất nhạy (thường thuộc nhóm 37.03).",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "tieuChi6": [],
+  "dong8": [
+    {
+      "hs": "48092000",
+      "dieuKien": "Giấy tự nhân bản",
+      "loaiKhac": false,
+      "nguon": "tax.48092000",
+      "trich": "48092000 - Giấy tự nhân bản",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48099010",
+      "dieuKien": "(tên loại hàng: Giấy than) hoặc (tên loại hàng: Giấy than hoặc loại tương tự và công dụng / mục đích: sao chép)",
+      "loaiKhac": false,
+      "nguon": "tax.48099010",
+      "trich": "48099010 - - Giấy than và các loại giấy sao chép tương tự",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Giấy than"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TUONG_TU",
+                "value": [
+                  "Giấy than"
+                ]
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "sao chép"
+              }
+            ]
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L15-20261111#soat-L15",
+          "ngay": "2026-11-11",
+          "bam": "0cdad4321e130f52a0738eb2f4a3fb0b46f74efb6081dc1742d7fbdeeb6da48f"
+        }
+      }
+    },
+    {
+      "hs": "48099090",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.48099090",
+      "trich": "48099090 - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "480990",
+        "truAnhEm": [
+          "48099010"
+        ],
+        "truDayDu": [
+          "48099010"
+        ],
+        "toTienCoTen": "480990",
+        "dinhNghiaDuoc": true
+      }
+    }
+  ],
+  "cay": {
+    "nguonLoai": "MAY_SUY",
+    "sinhTu": "lib/hs-tree.js",
+    "nut": [
+      {
+        "id": "4809",
+        "cap": 4,
+        "cha": "48",
+        "tenVi": "Giấy than, giấy tự nhân bản và các loại giấy sao chép hoặc giấy chuyển khác (kể cả giấy đã tráng hoặc thấm tẩm dùng cho giấy nến nhân bản hoặc các tấm in offset), đã hoặc chưa in, dạng cuộn hoặc tờ.",
+        "tenEn": "Carbon paper, self copy paper, and other copying or transfer papers (including coated or impregnated paper for duplicator stencils or offset plates), whether or not printed, in rolls or sheets",
+        "suyRa": false
+      },
+      {
+        "id": "48092000",
+        "cap": 8,
+        "cha": "4809",
+        "tenVi": "Giấy tự nhân bản",
+        "tenEn": "Paper; self-copy paper, whether or not printed, in rolls or sheets",
+        "suyRa": false,
+        "laPhanNhom": "480920"
+      },
+      {
+        "id": "480990",
+        "cap": 6,
+        "cha": "4809",
+        "tenVi": "Loại khác",
+        "tenEn": "Paper; carbon paper and other copying or transfer papers (including coated or impregnated paper for duplicator stencils or offset plates), whether or not printed, in rolls or sheets",
+        "suyRa": false
+      },
+      {
+        "id": "48099010",
+        "cap": 8,
+        "cha": "480990",
+        "tenVi": "Giấy than và các loại giấy sao chép tương tự",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "48099090",
+        "cap": 8,
+        "cha": "480990",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      }
+    ],
+    "tenDien": []
+  },
+  "dungTuNguon": [
+    "nhom4809.nhom",
+    "tax.48092000",
+    "tax.48099010",
+    "tax.48099090"
+  ],
+  "phienBan": "HS2022",
+  "taoBoi": {
+    "provider": "google-studio:gemini-flash",
+    "model": null,
+    "luc": "2026-11-02T12:07:44.881Z",
+    "ms": 6
+  },
+  "kiemTra": {
+    "tong": 11,
+    "dat": 10,
+    "loai": 1,
+    "nguonBiCat": []
+  }
 }

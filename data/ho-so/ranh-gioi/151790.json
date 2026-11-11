@@ -37,11 +37,18 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": [
-            "chế phẩm ở dạng lỏng khác",
-            "chất béo",
-            "dầu thực vật",
-            "các phần phân đoạn của chúng"
+            "Hỗn hợp",
+            "chế phẩm"
           ]
+        },
+        {
+          "fact": "dangLong",
+          "op": "CO"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "thực vật"
         }
       ],
       "nguonLoai": "AI_DA_KIEM",
@@ -123,11 +130,18 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": [
-            "chế phẩm ở dạng rắn khác",
-            "chất béo",
-            "dầu thực vật",
-            "các phần phân đoạn của chúng"
+            "Hỗn hợp",
+            "chế phẩm"
           ]
+        },
+        {
+          "fact": "dangLong",
+          "op": "KHONG"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "thực vật"
         }
       ],
       "nguonLoai": "AI_DA_KIEM",
@@ -275,10 +289,14 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": [
-            "chế phẩm từ mỡ",
-            "dầu động vật",
-            "các phần phân đoạn của chúng"
+            "hỗn hợp",
+            "chế phẩm"
           ]
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "động vật"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -310,12 +328,12 @@
     {
       "ma": "15179050",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.15179050 \"15179050 - - Hỗn hợp hoặc chế phẩm ở dạng rắn khác của chất béo hoặc dầu thực vật hoặc của các phần phân đoạn của chúng\" ⇒ tenLoai [\"Hỗn hợp\",\"chế phẩm ở dạng rắn khác\",\"chất béo\",\"dầu thực vật\",\"các phần phân đoạn của chúng\"] (chữ biểu có nhiều \"hoặc\" ⇒ tách mảng). phanConLai: false — đây là MỘT LOẠI HÀNG (hỗn hợp ở dạng RẮN), song song với tiêu đề 1517906 (dạng LỎNG), không phải phần còn lại của anh em; chữ \"khác\" nằm trong cụm \"ở dạng rắn khác\"."
+      "ghiChu": "tax.15179050 \"15179050 - - Hỗn hợp hoặc chế phẩm ở dạng rắn khác của chất béo hoặc dầu thực vật hoặc của các phần phân đoạn của chúng\" (EN \"Other solid mixtures or preparations of vegetable fats or oils or of their fractions\") ⇒ tenLoai [\"Hỗn hợp\",\"chế phẩm\"] + dangLong KHONG (đọc \"dạng rắn\") + tenLoai \"thực vật\" (định ngữ \"vegetable\" chung cho chất béo/dầu). phanConLai: false giữ như bản soạn (song song với tiêu đề 1517906 dạng lỏng)."
     },
     {
       "ma": "1517906",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.1517906 \"1517906 Hỗn hợp hoặc chế phẩm ở dạng lỏng khác của chất béo hoặc dầu thực vật hoặc của các phần phân đoạn của chúng\" ⇒ tenLoai [\"Hỗn hợp\",\"chế phẩm ở dạng lỏng khác\",\"chất béo\",\"dầu thực vật\",\"các phần phân đoạn của chúng\"] (nhiều \"hoặc\" ⇒ tách mảng). phanConLai: false — song song với dòng 15179050 (dạng rắn), không phải phần còn lại."
+      "ghiChu": "tieuDe.1517906 \"1517906 Hỗn hợp hoặc chế phẩm ở dạng lỏng khác của chất béo hoặc dầu thực vật hoặc của các phần phân đoạn của chúng\" ⇒ tenLoai [\"Hỗn hợp\",\"chế phẩm\"] + dangLong CO (đọc \"dạng lỏng\") + tenLoai \"thực vật\". phanConLai: false — song song với dòng 15179050 (dạng rắn)."
     },
     {
       "ma": "15179063",
@@ -335,7 +353,7 @@
     {
       "ma": "15179080",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.15179080 \"15179080 - - Của hỗn hợp hoặc chế phẩm từ mỡ hoặc dầu động vật hoặc từ các phần phân đoạn của chúng\" ⇒ tenLoai [\"hỗn hợp\",\"chế phẩm từ mỡ\",\"dầu động vật\",\"các phần phân đoạn của chúng\"] (nhiều \"hoặc\" ⇒ tách mảng)."
+      "ghiChu": "tax.15179080 \"15179080 - - Của hỗn hợp hoặc chế phẩm từ mỡ hoặc dầu động vật hoặc từ các phần phân đoạn của chúng\" (EN \"Of mixtures or preparations of animal fats or oils or of their fractions\") ⇒ tenLoai [\"hỗn hợp\",\"chế phẩm\"] + tenLoai \"động vật\" (định ngữ \"animal\" chung cho mỡ/dầu)."
     },
     {
       "ma": "15179010",
@@ -376,6 +394,11 @@
       "ma": "15179068",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.15179068 \"15179068 - - - Thành phần chủ yếu là dầu hạt illipe\" ⇒ tenLoai \"Thành phần chủ yếu là dầu hạt illipe\"."
+    },
+    {
+      "ma": "151790",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude (#1109, 11/11): sửa 6 lỗi cong2-chong-lan / cong2-chong-lan-truc giữa 15179050, tầng 1517906 (.69) và 15179080. Gốc lỗi: bản soạn tách cả chuỗi \"hỗn hợp hoặc chế phẩm … của chất béo hoặc dầu thực vật hoặc của các phần phân đoạn của chúng\" thành MỘT mảng HOẶC [\"chế phẩm ở dạng rắn khác\",\"chất béo\",\"dầu thực vật\",\"các phần phân đoạn của chúng\"] — biến định ngữ (dạng rắn/lỏng, thực vật/động vật) thành phương án thay thế, nên hàng chỉ cần \"chất béo\" hoặc \"các phần phân đoạn của chúng\" là thoả cả ba nhánh (RỘNG hơn chữ). Viết lại đúng cấu trúc chữ: tên đầu [\"Hỗn hợp\",\"chế phẩm\"] VÀ trạng thái (dangLong KHONG \"dạng rắn\" ở .50 / dangLong CO \"dạng lỏng\" ở 1517906) VÀ nguồn (\"thực vật\" ở .50/1517906, \"động vật\" ở .80). Cùng khoá cho ba anh em; không thêm điều kiện chữ không nói. Bảng hiệu chỉnh 151790-01/-02 là KHONG_LECH (soạn theo chữ biểu, không cần LECH_TIEN_LE)."
     }
   ]
 }

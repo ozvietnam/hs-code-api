@@ -48,6 +48,15 @@
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "62052010",
+        "62052020"
+      ],
+      "lyDo": ".10 \"Được in bằng phương pháp batik truyền thống\" và .20 \"Áo Barong Tagalog\" — một áo Barong Tagalog từ bông (SEN: \"thường làm từ silk, bông, polyester …\", có phiên bản ít trang trọng) được in bằng phương pháp batik truyền thống thoả cả hai dòng: phương pháp in và tên áo là hai đặc điểm tất định không loại trừ nhau (cùng trục DAC_DIEM). Cùng cặp đã khai ở 620590 (.91↔.92). Không có căn cứ thứ tự."
+    }
+  ],
   "ghiChuSoan": [
     {
       "ma": "62052090",
@@ -65,14 +74,14 @@
       "ghiChu": "tax.62052020: \"Áo Barong Tagalog\" ⇒ khoá aoBarongTagalog (CO_KHONG) op CO — CÙNG khoá với anh em 62053010. Nguồn sen.62052020 (áo ngắn tay hoặc dài tay, thường làm từ silk, bông, polyester hoặc hỗn hợp các sợi vải khác nhau, được thêu dọc thân trước) không khai thành điều kiện: vật liệu nằm ở chữ biểu phân nhóm \"Từ bông\" (không thuộc ranh giới 6→8) và vế \"được thêu dọc thân trước\" không có khoá tu-vung đọc được."
     },
     {
-      "ma": "62052010+62052020",
-      "loai": "QUYET_DINH",
-      "ghiChu": "Hai dòng có tên dùng hai khoá khác nhau: 62052010 = phuongPhapIn (LIET_KE), 62052020 = aoBarongTagalog (CO_KHONG). Hai chữ biểu không trùng nhau ⇒ không khai chongLanVanBan; theo phân loại của cổng 2 cả hai khoá đều là DAC_DIEM (không phải cặp tên ↔ công dụng) nên không khai chongLanTruc. Nếu người soát xem 62052020 là nhánh chia theo TÊN hàng thì phải khai chongLanTruc kèm một hàng thật thoả cả hai nhánh."
-    },
-    {
       "ma": "620520",
       "loai": "QUYET_DINH",
       "ghiChu": "Điều kiện vật liệu \"Từ bông\" (WCO: \"of cotton\") và vế \"(not knitted or crocheted)\" nằm ở CHÍNH phân nhóm 620520 (chung cho 62052010/62052020/62052090) ⇒ không thuộc ranh giới 6→8, không khai trong spec này. tangKhongMa rỗng, phân nhóm không có tầng không mã và không có tiêu đề có tên ⇒ dieuKienNut rỗng."
+    },
+    {
+      "ma": "62052010+62052020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude (#1109, 11/11): cổng 2 báo cong2-chong-lan:62052010+62052020 (aoBarongTagalog=true, phuongPhapIn=BATIK). Hai dòng đều chỉ có khoá đặc điểm tất định (phuongPhapIn LIET_KE ↔ aoBarongTagalog CO_KHONG) ⇒ cùng trục DAC_DIEM (phụ lục 07/11/2026): không chongLanTruc; chữ biểu THẬT SỰ tự chồng (áo Barong Tagalog in batik truyền thống có thật — SEN nêu áo làm từ bông/silk/polyester, không loại trừ in batik) ⇒ khai chongLanVanBan trích nguyên văn hai dòng, như cặp tương ứng .91↔.92 của 620590. Thay ghi chú cũ \"không khai chongLanVanBan\" (đã sai với cổng hiện hành)."
     }
   ]
 }
