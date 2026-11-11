@@ -172,3 +172,8 @@ tu-vung@2 có sẵn.
 ## Kiểm sau lô
 
 `node scripts/check-so-tay.mjs`, `node scripts/check-cay.mjs`, `node scripts/test-so-tay.mjs` — đều xanh (mã thoát 0) sau khi áp 49 bản.
+
+
+## Soát lại của tech lead — mất ngưỡng số SEN
+
+Trả về 390421, 390422, 390430, 390440, 390450, 390461, 390469, 390490, 390769, 390791, 392043, 392062, 392063, 392069, 392079, 392091, 392092, 392093, 392094, 392111, 392114: bản duyệt bỏ mất điều kiện số (SEN) mà sổ tay đang chạy dùng để chốt dòng. Dòng sổ tay của các PN6 này giữ như `main`. Cổng `cong3-mat-nguong-so` (#1214) sẽ chặn lỗi này từ nay.

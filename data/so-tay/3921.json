@@ -80,35 +80,11 @@
   "dong8": [
     {
       "hs": "39211121",
-      "dieuKien": "tên loại hàng: tấm hoặc phiến; mô-đun đàn hồi > 100000 psi",
+      "dieuKien": "Plastic cứng dạng tấm và phiến, mô-đun đàn hồi uốn hoặc mô-đun đàn hồi kéo lớn hơn 100.000 psi ở 23°C, độ ẩm tương đối 50% (thử theo ASTM D747 hoặc ASTM D790); thuộc phân nhóm 392111 (tấm, phiến, màng, lá và dải bằng polyme styren, loại xốp)",
       "loaiKhac": false,
       "nguon": "sen.39211121",
-      "trich": "Plastic cứng dạng tấm và phiến có modul đàn hồi uốn hoặc module đàn hồi kéo lớn hơn 100,000 psi ở 23°C và có độ ẩm tương đối là 50% khi thử nghiệm theo tiêu chuẩn ASTM D747 hoặc ASTM D790",
-      "nguonLoai": "CLAUDE_DUYET",
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "tấm",
-            "phiến"
-          ]
-        },
-        {
-          "fact": "moDunDanHoi",
-          "op": ">",
-          "value": 100000,
-          "donVi": "psi"
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L12-20261111#soat-L12",
-          "ngay": "2026-11-11",
-          "bam": "f484ca446e6d066f7d834560ebbee09f8c0016eb239587e6c45a7137988a494a"
-        }
-      }
+      "trich": "Plastic cứng dạng tấm và phiến có modul đàn hồi uốn hoặc module đàn hồi kéo lớn hơn 100,000 psi ở 23°C và có độ ẩm tương đối là 50% khi thử nghiệm theo tiêu chuẩn ASTM D747 hoặc ASTM D790.",
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "39211129",
@@ -129,52 +105,27 @@
     },
     {
       "hs": "39211191",
-      "dieuKien": "tên loại hàng: tấm hoặc phiến",
+      "dieuKien": "Dạng tấm và phiến: đáp ứng yêu cầu của Chú giải 10 Chương 39, hình chữ nhật (kể cả hình vuông), độ dày trên 0,25 mm; thuộc phân nhóm 392111 (tấm, phiến, màng, lá và dải bằng polyme styren, loại xốp)",
       "loaiKhac": false,
-      "nguon": "tax.39211191",
-      "trich": "39211191 - - - - Dạng tấm và phiến (SEN)",
-      "nguonLoai": "CLAUDE_DUYET",
+      "nguon": "sen.3921",
+      "trich": "Theo mục đích của các phân nhóm ASEAN trong các nhóm này, \"tấm và phiến\" dùng để chỉ các sản phẩm đáp ứng các yêu cầu của Chú giải 10 của Chương 39, có hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25 mm.",
+      "nguonLoai": "AI_DA_KIEM",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "tấm",
-            "phiến"
-          ]
+          "fact": "be_day",
+          "op": ">",
+          "value": 0.25,
+          "donVi": "mm"
         }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L12-20261111#soat-L12",
-          "ngay": "2026-11-11",
-          "bam": "f484ca446e6d066f7d834560ebbee09f8c0016eb239587e6c45a7137988a494a"
-        }
-      }
+      ]
     },
     {
       "hs": "39211192",
-      "dieuKien": "tên loại hàng: màng",
+      "dieuKien": "Dạng màng: sản phẩm không đáp ứng mô tả \"tấm và phiến\" (hình chữ nhật, dày trên 0,25 mm) được phân loại là màng hoặc lá; thuộc phân nhóm 392111 (tấm, phiến, màng, lá và dải bằng polyme styren, loại xốp)",
       "loaiKhac": false,
-      "nguon": "tax.39211192",
-      "trich": "39211192 - - - - Dạng màng (SEN)",
-      "nguonLoai": "CLAUDE_DUYET",
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "màng"
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L12-20261111#soat-L12",
-          "ngay": "2026-11-11",
-          "bam": "f484ca446e6d066f7d834560ebbee09f8c0016eb239587e6c45a7137988a494a"
-        }
-      }
+      "nguon": "sen.3921",
+      "trich": "Theo mục đích của các phân nhóm ASEAN trong các nhóm này, \"tấm và phiến\" dùng để chỉ các sản phẩm đáp ứng các yêu cầu của Chú giải 10 của Chương 39, có hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25 mm. … Sản phẩm không đáp ứng mô tả trên sẽ được phân loại là màng hoặc lá.",
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "39211199",
@@ -314,35 +265,11 @@
     },
     {
       "hs": "39211421",
-      "dieuKien": "tên loại hàng: tấm hoặc phiến; mô-đun đàn hồi > 100000 psi",
+      "dieuKien": "Plastic cứng dạng tấm và phiến, mô-đun đàn hồi uốn hoặc mô-đun đàn hồi kéo lớn hơn 100.000 psi ở 23°C, độ ẩm tương đối 50% (thử theo ASTM D747 hoặc ASTM D790); thuộc phân nhóm 392114 (tấm, phiến, màng, lá và dải bằng xenlulo tái sinh, loại xốp)",
       "loaiKhac": false,
       "nguon": "sen.39211421",
-      "trich": "Plastic cứng dạng tấm và phiến có modul đàn hồi uốn hoặc module đàn hồi kéo lớn hơn 100,000 psi ở 23°C và có độ ẩm tương đối là 50% khi thử nghiệm theo tiêu chuẩn ASTM D747 hoặc ASTM D790",
-      "nguonLoai": "CLAUDE_DUYET",
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "tấm",
-            "phiến"
-          ]
-        },
-        {
-          "fact": "moDunDanHoi",
-          "op": ">",
-          "value": 100000,
-          "donVi": "psi"
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L12-20261111#soat-L12",
-          "ngay": "2026-11-11",
-          "bam": "46e875979ed3dc0a52052408c87b2d21ce72ab1fdc06acd7d85b79be767230eb"
-        }
-      }
+      "trich": "Plastic cứng dạng tấm và phiến có modul đàn hồi uốn hoặc module đàn hồi kéo lớn hơn 100,000 psi ở 23°C và có độ ẩm tương đối là 50% khi thử nghiệm theo tiêu chuẩn ASTM D747 hoặc ASTM D790.",
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "39211429",
@@ -363,52 +290,27 @@
     },
     {
       "hs": "39211491",
-      "dieuKien": "tên loại hàng: tấm hoặc phiến",
+      "dieuKien": "Dạng tấm và phiến: đáp ứng yêu cầu của Chú giải 10 Chương 39, hình chữ nhật (kể cả hình vuông), độ dày trên 0,25 mm; thuộc phân nhóm 392114 (tấm, phiến, màng, lá và dải bằng xenlulo tái sinh, loại xốp)",
       "loaiKhac": false,
-      "nguon": "tax.39211491",
-      "trich": "39211491 - - - - Dạng tấm và phiến (SEN)",
-      "nguonLoai": "CLAUDE_DUYET",
+      "nguon": "sen.3921",
+      "trich": "Theo mục đích của các phân nhóm ASEAN trong các nhóm này, \"tấm và phiến\" dùng để chỉ các sản phẩm đáp ứng các yêu cầu của Chú giải 10 của Chương 39, có hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25 mm.",
+      "nguonLoai": "AI_DA_KIEM",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "tấm",
-            "phiến"
-          ]
+          "fact": "be_day",
+          "op": ">",
+          "value": 0.25,
+          "donVi": "mm"
         }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L12-20261111#soat-L12",
-          "ngay": "2026-11-11",
-          "bam": "46e875979ed3dc0a52052408c87b2d21ce72ab1fdc06acd7d85b79be767230eb"
-        }
-      }
+      ]
     },
     {
       "hs": "39211492",
-      "dieuKien": "tên loại hàng: màng",
+      "dieuKien": "Dạng màng: sản phẩm không đáp ứng mô tả \"tấm và phiến\" (hình chữ nhật, dày trên 0,25 mm) được phân loại là màng hoặc lá; thuộc phân nhóm 392114 (tấm, phiến, màng, lá và dải bằng xenlulo tái sinh, loại xốp)",
       "loaiKhac": false,
-      "nguon": "tax.39211492",
-      "trich": "39211492 - - - - Dạng màng (SEN)",
-      "nguonLoai": "CLAUDE_DUYET",
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "màng"
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L12-20261111#soat-L12",
-          "ngay": "2026-11-11",
-          "bam": "46e875979ed3dc0a52052408c87b2d21ce72ab1fdc06acd7d85b79be767230eb"
-        }
-      }
+      "nguon": "sen.3921",
+      "trich": "Theo mục đích của các phân nhóm ASEAN trong các nhóm này, \"tấm và phiến\" dùng để chỉ các sản phẩm đáp ứng các yêu cầu của Chú giải 10 của Chương 39, có hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25 mm. … Sản phẩm không đáp ứng mô tả trên sẽ được phân loại là màng hoặc lá.",
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "39211499",
@@ -1280,26 +1182,6 @@
   "yKienWcoDayDu": false,
   "dieuKienNut": [
     {
-      "id": "3921112",
-      "nguon": "tieuDe.3921112",
-      "trich": "3921112 Cứng",
-      "dieuKienSo": [
-        {
-          "fact": "loaiCung",
-          "op": "CO"
-        }
-      ],
-      "nguonLoai": "CLAUDE_DUYET",
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L12-20261111#soat-L12",
-          "ngay": "2026-11-11",
-          "bam": "f484ca446e6d066f7d834560ebbee09f8c0016eb239587e6c45a7137988a494a"
-        }
-      }
-    },
-    {
       "id": "3921131",
       "nguon": "tieuDe.3921131",
       "trich": "3921131 Cứng",
@@ -1316,26 +1198,6 @@
           "phien": "mw-soatS2:20261107T0448#soat-392113",
           "ngay": "2026-11-07",
           "bam": "e1450c4f4be4d2bf9d4b77074c3987f941c68b7f224156cbb413ae814f1203e2"
-        }
-      }
-    },
-    {
-      "id": "3921142",
-      "nguon": "tieuDe.3921142",
-      "trich": "3921142 Cứng",
-      "dieuKienSo": [
-        {
-          "fact": "loaiCung",
-          "op": "CO"
-        }
-      ],
-      "nguonLoai": "CLAUDE_DUYET",
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L12-20261111#soat-L12",
-          "ngay": "2026-11-11",
-          "bam": "46e875979ed3dc0a52052408c87b2d21ce72ab1fdc06acd7d85b79be767230eb"
         }
       }
     }

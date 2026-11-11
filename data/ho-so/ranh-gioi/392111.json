@@ -4,19 +4,13 @@
   "nhom": "3921",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "DUYET",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1700#soan-392111",
     "ngay": "2026-11-05"
   },
-  "duyet": {
-    "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L12-20261111#soat-L12",
-    "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu VI+EN: tầng 'Cứng'/'Rigid' ⇒ loaiCung CO (đúng khoá); .21 'Dạng tấm và phiến' ⇒ tenLoai [tấm, phiến] + moDunDanHoi > 100000 psi lấy từ SEN (SEN gắn mã .21); .29 Loại khác; tầng Loại khác ⇒ .91 [tấm, phiến], .92 'Dạng màng'/'Film' ⇒ tenLoai 'màng', .99. Lưu ý: định nghĩa mô-đun của 'cứng' chỉ ở .21 nên hàng khai loaiCung CO mà mô-đun ≤ 100.000 psi rơi .29 (theo SEN thì không phải 'cứng') — biên hiếm.",
-    "bam": "f484ca446e6d066f7d834560ebbee09f8c0016eb239587e6c45a7137988a494a"
-  },
+  "duyet": null,
   "dieuKienNut": [
     {
       "id": "3921112",
@@ -28,7 +22,7 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "dong8": [
@@ -52,14 +46,14 @@
           "donVi": "psi"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "39211129",
       "nguon": "tax.39211129",
       "trich": "39211129 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "39211191",
@@ -75,7 +69,7 @@
           ]
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "39211192",
@@ -88,14 +82,14 @@
           "value": "màng"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "39211199",
       "nguon": "tax.39211199",
       "trich": "39211199 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "ghiChuSoan": [
@@ -133,6 +127,13 @@
       "ma": "39211121",
       "loai": "QUYET_DINH",
       "ghiChu": "sen.39211121: định nghĩa \"Loại cứng\" = mô-đun đàn hồi > 100,000 psi (ASTM D747/D790) ⇒ thêm moDunDanHoi > 100000 psi (#1139, khoá lô 24)"
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:tech-lead-20261111#soat-lai",
+      "ngay": "2026-11-11",
+      "lyDo": "Bỏ mất ngưỡng số SEN mà sổ tay đang chạy dùng để chốt dòng (cong3-mat-nguong-so, #1214); thay ngưỡng bằng khoá tên/CO là lùi. Soạn lại: mã hoá đủ ngưỡng SEN bằng khoá đo đúng + vế tên."
     }
   ]
 }

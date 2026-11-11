@@ -295,28 +295,25 @@
     },
     {
       "hs": "39076910",
-      "dieuKien": "dạng vật lý nguyên sinh của polyme: dạng hạt, viên, hạt cườm, vẩy, mảnh và các dạng tương tự",
-      "nguon": "tax.39076910",
-      "trich": "39076910 - - - Dạng hạt và các dạng tương tự (SEN)",
+      "dieuKien": "Dạng hạt và các dạng tương tự: sản phẩm dạng rắn ở dạng nguyên sinh trừ dạng bột, có ít hơn 10% khối lượng lọt qua lưới lọc có đường kính mắt lọc là 1mm và có 90% khối lượng trở lên lọt qua lưới lọc có đường kính mắt lọc là 5mm",
+      "nguon": "sen.3907",
+      "trich": "Sản phẩm dạng rắn ở dạng nguyên sinh trừ dạng bột, có ít hơn 10% khối lượng lọt qua lưới lọc có đường kính mắt lọc là 1mm và sản phẩm có 90% khối lượng trở lên lọt qua lưới lọc có đường kính mắt lọc là 5mm.",
       "dieuKienSo": [
         {
-          "fact": "dangNguyenSinh",
-          "op": "TRONG",
-          "value": [
-            "HAT_VIEN_VAY_MANH"
-          ]
+          "fact": "khoi_luong_lo_tqua_luoi_mat_loc_1mm",
+          "op": "<",
+          "value": 10,
+          "donVi": "%"
+        },
+        {
+          "fact": "khoi_luong_lo_tqua_luoi_mat_loc_5mm",
+          "op": ">=",
+          "value": 90,
+          "donVi": "%"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET",
-      "loaiKhac": false,
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L12-20261111#soat-L12",
-          "ngay": "2026-11-11",
-          "bam": "2b62028d782cfba7e898788464bd943df9e0ffe5c4816c81fbf6760393d92546"
-        }
-      }
+      "nguonLoai": "AI_DA_KIEM",
+      "loaiKhac": false
     },
     {
       "hs": "39076990",
@@ -345,53 +342,33 @@
     },
     {
       "hs": "39079120",
-      "dieuKien": "dạng vật lý nguyên sinh của polyme: dạng hạt, viên, hạt cườm, vẩy, mảnh và các dạng tương tự",
-      "nguon": "tax.39079120",
-      "trich": "39079120 - - - Dạng hạt và các dạng tương tự (SEN)",
+      "dieuKien": "Dạng hạt và các dạng tương tự: sản phẩm dạng rắn ở dạng nguyên sinh trừ dạng bột, có ít hơn 10% khối lượng lọt qua lưới lọc có đường kính mắt lọc là 1mm và có 90% khối lượng trở lên lọt qua lưới lọc có đường kính mắt lọc là 5mm",
+      "nguon": "sen.3907",
+      "trich": "Sản phẩm dạng rắn ở dạng nguyên sinh trừ dạng bột, có ít hơn 10% khối lượng lọt qua lưới lọc có đường kính mắt lọc là 1mm và sản phẩm có 90% khối lượng trở lên lọt qua lưới lọc có đường kính mắt lọc là 5mm.",
       "dieuKienSo": [
         {
-          "fact": "dangNguyenSinh",
-          "op": "TRONG",
-          "value": [
-            "HAT_VIEN_VAY_MANH"
-          ]
+          "fact": "khoi_luong_lo_tqua_luoi_mat_loc_1mm",
+          "op": "<",
+          "value": 10,
+          "donVi": "%"
+        },
+        {
+          "fact": "khoi_luong_lo_tqua_luoi_mat_loc_5mm",
+          "op": ">=",
+          "value": 90,
+          "donVi": "%"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET",
-      "loaiKhac": false,
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L12-20261111#soat-L12",
-          "ngay": "2026-11-11",
-          "bam": "8226fa50793e45b37753f1b971366d8c4f2eced2f10c39bf5261fbaf0c51f234"
-        }
-      }
+      "nguonLoai": "AI_DA_KIEM",
+      "loaiKhac": false
     },
     {
       "hs": "39079130",
-      "dieuKien": "dạng vật lý nguyên sinh của polyme: dạng lỏng hoặc dạng nhão",
+      "dieuKien": "Dạng lỏng hoặc dạng nhão",
       "nguon": "tax.39079130",
       "trich": "39079130 - - - Dạng lỏng hoặc dạng nhão",
-      "nguonLoai": "CLAUDE_DUYET",
-      "loaiKhac": false,
-      "dieuKienSo": [
-        {
-          "fact": "dangNguyenSinh",
-          "op": "TRONG",
-          "value": [
-            "LONG_HOAC_NHAO"
-          ]
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L12-20261111#soat-L12",
-          "ngay": "2026-11-11",
-          "bam": "8226fa50793e45b37753f1b971366d8c4f2eced2f10c39bf5261fbaf0c51f234"
-        }
-      }
+      "nguonLoai": "AI_DA_KIEM",
+      "loaiKhac": false
     },
     {
       "hs": "39079190",

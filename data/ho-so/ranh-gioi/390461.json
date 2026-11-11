@@ -4,19 +4,13 @@
   "nhom": "3904",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "DUYET",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-390461",
     "ngay": "2026-11-02"
   },
-  "duyet": {
-    "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L12-20261111#soat-L12",
-    "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu VI+EN: 'Dạng hạt'/'In the form of granules' ⇒ HAT_VIEN_VAY_MANH + tenLoai 'hạt'; 'Dạng bột'/'In the form of powder' ⇒ HAT_VIEN_VAY_MANH + tenLoai 'bột'; tenLoai (chuỗi con nguyên văn) tách hai anh em, dạng vẩy/mảnh rơi đúng 'Loại khác'. Lưu ý: giá trị HAT_VIEN_VAY_MANH rộng hơn từng dòng, phân biệt hạt/bột chỉ bằng so chữ (không tất định) — đề xuất tách giá trị HAT/BOT trong tu-vung.",
-    "bam": "867518c9569e7196ea0b66bcb1b03c2fc9a27b9455b70327e0318a3063d6d6f6"
-  },
+  "duyet": null,
   "dieuKienNut": [],
   "dong8": [
     {
@@ -37,7 +31,7 @@
           "value": "hạt"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "39046120",
@@ -57,14 +51,14 @@
           "value": "bột"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "39046190",
       "nguon": "tax.39046190",
       "trich": "39046190 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "ghiChuSoan": [
@@ -77,6 +71,13 @@
       "ma": "39046120",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.39046120 \"Dạng bột\" ⇒ dangNguyenSinh HAT_VIEN_VAY_MANH, tenLoai \"bột\""
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:tech-lead-20261111#soat-lai",
+      "ngay": "2026-11-11",
+      "lyDo": "Bỏ mất ngưỡng số SEN mà sổ tay đang chạy dùng để chốt dòng (cong3-mat-nguong-so, #1214); thay ngưỡng bằng khoá tên/CO là lùi. Soạn lại: mã hoá đủ ngưỡng SEN bằng khoá đo đúng + vế tên."
     }
   ]
 }

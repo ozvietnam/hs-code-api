@@ -202,69 +202,39 @@
     },
     {
       "hs": "39042110",
-      "dieuKien": "dạng vật lý nguyên sinh của polyme: dạng hạt, viên, hạt cườm, vẩy, mảnh và các dạng tương tự; tên loại hàng: hạt",
+      "dieuKien": "Dạng hạt — tiêu chuẩn dạng hạt theo SEN 3904 — phân nhóm 3904.21 (WCO): non-plasticised poly(vinyl chloride), in primary forms, mixed with other substances",
       "dieuKienSo": [
         {
-          "fact": "dangNguyenSinh",
-          "op": "TRONG",
-          "value": [
-            "HAT_VIEN_VAY_MANH"
-          ]
+          "fact": "khoi_luong_qui_doi_troi_qua_luoi_loc_1mm",
+          "op": "<",
+          "value": 10,
+          "donVi": "%"
         },
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "hạt"
+          "fact": "khoi_luong_qui_doi_troi_qua_luoi_loc_5mm",
+          "op": ">=",
+          "value": 90,
+          "donVi": "%"
         }
       ],
       "loaiKhac": false,
-      "nguon": "tax.39042110",
-      "trich": "39042110 - - - Dạng hạt(SEN)",
-      "nguonLoai": "CLAUDE_DUYET",
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L12-20261111#soat-L12",
-          "ngay": "2026-11-11",
-          "bam": "6fda29ce606b2f03286af19b53e975f8729ea2d833a7ed1bd7c53ce244273807"
-        }
-      }
+      "nguon": "sen.3904",
+      "trich": "Sản phẩm dạng rắn ở dạng nguyên sinh trừ dạng bột, có ít hơn 10% khối lượng lọt qua lưới lọc có đường kính mắt lọc là 1mm và sản phẩm có 90% khối lượng trở lên lọt qua lưới lọc có đường kính mắt lọc là 5mm.",
+      "nguonLoai": "NGUOI_DUYET"
     },
     {
       "hs": "39042120",
-      "dieuKien": "dạng vật lý nguyên sinh của polyme: dạng hạt, viên, hạt cườm, vẩy, mảnh và các dạng tương tự; tên loại hàng: bột",
-      "loaiKhac": false,
-      "nguon": "tax.39042120",
-      "trich": "39042120 - - - Dạng bột",
-      "nguonLoai": "CLAUDE_DUYET",
-      "dieuKienSo": [
-        {
-          "fact": "dangNguyenSinh",
-          "op": "TRONG",
-          "value": [
-            "HAT_VIEN_VAY_MANH"
-          ]
-        },
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "bột"
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L12-20261111#soat-L12",
-          "ngay": "2026-11-11",
-          "bam": "6fda29ce606b2f03286af19b53e975f8729ea2d833a7ed1bd7c53ce244273807"
-        }
-      },
+      "dieuKien": "Dạng bột — phân nhóm 3904.21 (WCO): non-plasticised poly(vinyl chloride), in primary forms, mixed with other substances",
       "tieuChi": {
         "fact": "la_dang_bot",
         "op": "=",
         "value": true,
         "donVi": null
-      }
+      },
+      "loaiKhac": false,
+      "nguon": "tax.39042120",
+      "trich": "39042120 - - - Dạng bột",
+      "nguonLoai": "NGUOI_DUYET"
     },
     {
       "hs": "39042190",
@@ -286,100 +256,53 @@
     },
     {
       "hs": "39042210",
-      "dieuKien": "dạng vật lý nguyên sinh của polyme: dạng phân tán",
-      "loaiKhac": false,
-      "nguon": "tax.39042210",
-      "trich": "39042210 - - - Dạng phân tán(SEN)",
-      "nguonLoai": "CLAUDE_DUYET",
-      "dieuKienSo": [
-        {
-          "fact": "dangNguyenSinh",
-          "op": "TRONG",
-          "value": [
-            "PHAN_TAN"
-          ]
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L12-20261111#soat-L12",
-          "ngay": "2026-11-11",
-          "bam": "f4bba5c5ec577e6256f6506fcd0336832311f6bfb7dca94ba6705566cfe8230b"
-        }
-      },
+      "dieuKien": "Dạng phân tán(SEN) — phân nhóm 3904.22 (WCO): plasticised poly(vinyl chloride), in primary forms, mixed with other substances",
       "tieuChi": {
         "fact": "la_dang_phan_tan",
         "op": "=",
         "value": true,
         "donVi": null
-      }
+      },
+      "loaiKhac": false,
+      "nguon": "tax.39042210",
+      "trich": "39042210 - - - Dạng phân tán(SEN)",
+      "nguonLoai": "NGUOI_DUYET"
     },
     {
       "hs": "39042220",
-      "dieuKien": "dạng vật lý nguyên sinh của polyme: dạng hạt, viên, hạt cườm, vẩy, mảnh và các dạng tương tự; tên loại hàng: hạt",
+      "dieuKien": "Dạng hạt — tiêu chuẩn dạng hạt theo SEN 3904 — phân nhóm 3904.22 (WCO): plasticised poly(vinyl chloride), in primary forms, mixed with other substances",
       "dieuKienSo": [
         {
-          "fact": "dangNguyenSinh",
-          "op": "TRONG",
-          "value": [
-            "HAT_VIEN_VAY_MANH"
-          ]
+          "fact": "khoi_luong_qui_doi_troi_qua_luoi_loc_1mm",
+          "op": "<",
+          "value": 10,
+          "donVi": "%"
         },
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "hạt"
+          "fact": "khoi_luong_qui_doi_troi_qua_luoi_loc_5mm",
+          "op": ">=",
+          "value": 90,
+          "donVi": "%"
         }
       ],
       "loaiKhac": false,
-      "nguon": "tax.39042220",
-      "trich": "39042220 - - - Dạng hạt(SEN)",
-      "nguonLoai": "CLAUDE_DUYET",
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L12-20261111#soat-L12",
-          "ngay": "2026-11-11",
-          "bam": "f4bba5c5ec577e6256f6506fcd0336832311f6bfb7dca94ba6705566cfe8230b"
-        }
-      }
+      "nguon": "sen.3904",
+      "trich": "Sản phẩm dạng rắn ở dạng nguyên sinh trừ dạng bột, có ít hơn 10% khối lượng lọt qua lưới lọc có đường kính mắt lọc là 1mm và sản phẩm có 90% khối lượng trở lên lọt qua lưới lọc có đường kính mắt lọc là 5mm.",
+      "nguonLoai": "NGUOI_DUYET"
     },
     {
       "hs": "39042230",
-      "dieuKien": "dạng vật lý nguyên sinh của polyme: dạng hạt, viên, hạt cườm, vẩy, mảnh và các dạng tương tự; tên loại hàng: bột",
-      "loaiKhac": false,
-      "nguon": "tax.39042230",
-      "trich": "39042230 - - - Dạng bột",
-      "nguonLoai": "CLAUDE_DUYET",
-      "dieuKienSo": [
-        {
-          "fact": "dangNguyenSinh",
-          "op": "TRONG",
-          "value": [
-            "HAT_VIEN_VAY_MANH"
-          ]
-        },
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "bột"
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L12-20261111#soat-L12",
-          "ngay": "2026-11-11",
-          "bam": "f4bba5c5ec577e6256f6506fcd0336832311f6bfb7dca94ba6705566cfe8230b"
-        }
-      },
+      "dieuKien": "Dạng bột — phân nhóm 3904.22 (WCO): plasticised poly(vinyl chloride), in primary forms, mixed with other substances",
       "tieuChi": {
         "fact": "la_dang_bot",
         "op": "=",
         "value": true,
         "donVi": null
-      }
+      },
+      "loaiKhac": false,
+      "nguon": "tax.39042230",
+      "trich": "39042230 - - - Dạng bột",
+      "nguonLoai": "NGUOI_DUYET"
     },
     {
       "hs": "39042290",
@@ -402,69 +325,39 @@
     },
     {
       "hs": "39043010",
-      "dieuKien": "dạng vật lý nguyên sinh của polyme: dạng hạt, viên, hạt cườm, vẩy, mảnh và các dạng tương tự; tên loại hàng: hạt",
+      "dieuKien": "Dạng hạt — tiêu chuẩn dạng hạt theo SEN 3904 — phân nhóm 3904.30 (WCO): vinyl chloride-vinyl acetate copolymers, in primary forms",
       "dieuKienSo": [
         {
-          "fact": "dangNguyenSinh",
-          "op": "TRONG",
-          "value": [
-            "HAT_VIEN_VAY_MANH"
-          ]
+          "fact": "khoi_luong_qui_doi_troi_qua_luoi_loc_1mm",
+          "op": "<",
+          "value": 10,
+          "donVi": "%"
         },
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "hạt"
+          "fact": "khoi_luong_qui_doi_troi_qua_luoi_loc_5mm",
+          "op": ">=",
+          "value": 90,
+          "donVi": "%"
         }
       ],
       "loaiKhac": false,
-      "nguon": "tax.39043010",
-      "trich": "39043010 - - Dạng hạt(SEN)",
-      "nguonLoai": "CLAUDE_DUYET",
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L12-20261111#soat-L12",
-          "ngay": "2026-11-11",
-          "bam": "b0d0943d70453936b2b68a2d8aa784421a8aa2a02704c68b1c30a49779044529"
-        }
-      }
+      "nguon": "sen.3904",
+      "trich": "Sản phẩm dạng rắn ở dạng nguyên sinh trừ dạng bột, có ít hơn 10% khối lượng lọt qua lưới lọc có đường kính mắt lọc là 1mm và sản phẩm có 90% khối lượng trở lên lọt qua lưới lọc có đường kính mắt lọc là 5mm.",
+      "nguonLoai": "NGUOI_DUYET"
     },
     {
       "hs": "39043020",
-      "dieuKien": "dạng vật lý nguyên sinh của polyme: dạng hạt, viên, hạt cườm, vẩy, mảnh và các dạng tương tự; tên loại hàng: bột",
-      "loaiKhac": false,
-      "nguon": "tax.39043020",
-      "trich": "39043020 - - Dạng bột",
-      "nguonLoai": "CLAUDE_DUYET",
-      "dieuKienSo": [
-        {
-          "fact": "dangNguyenSinh",
-          "op": "TRONG",
-          "value": [
-            "HAT_VIEN_VAY_MANH"
-          ]
-        },
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "bột"
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L12-20261111#soat-L12",
-          "ngay": "2026-11-11",
-          "bam": "b0d0943d70453936b2b68a2d8aa784421a8aa2a02704c68b1c30a49779044529"
-        }
-      },
+      "dieuKien": "Dạng bột — phân nhóm 3904.30 (WCO): vinyl chloride-vinyl acetate copolymers, in primary forms",
       "tieuChi": {
         "fact": "la_dang_bot",
         "op": "=",
         "value": true,
         "donVi": null
-      }
+      },
+      "loaiKhac": false,
+      "nguon": "tax.39043020",
+      "trich": "39043020 - - Dạng bột",
+      "nguonLoai": "NGUOI_DUYET"
     },
     {
       "hs": "39043090",
@@ -486,69 +379,39 @@
     },
     {
       "hs": "39044010",
-      "dieuKien": "dạng vật lý nguyên sinh của polyme: dạng hạt, viên, hạt cườm, vẩy, mảnh và các dạng tương tự; tên loại hàng: hạt",
+      "dieuKien": "Dạng hạt — tiêu chuẩn dạng hạt theo SEN 3904 — phân nhóm 3904.40 (WCO): vinyl chloride copolymers, in primary forms n.e.c. in heading no. 3904",
       "dieuKienSo": [
         {
-          "fact": "dangNguyenSinh",
-          "op": "TRONG",
-          "value": [
-            "HAT_VIEN_VAY_MANH"
-          ]
+          "fact": "khoi_luong_qui_doi_troi_qua_luoi_loc_1mm",
+          "op": "<",
+          "value": 10,
+          "donVi": "%"
         },
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "hạt"
+          "fact": "khoi_luong_qui_doi_troi_qua_luoi_loc_5mm",
+          "op": ">=",
+          "value": 90,
+          "donVi": "%"
         }
       ],
       "loaiKhac": false,
-      "nguon": "tax.39044010",
-      "trich": "39044010 - - Dạng hạt(SEN)",
-      "nguonLoai": "CLAUDE_DUYET",
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L12-20261111#soat-L12",
-          "ngay": "2026-11-11",
-          "bam": "c4351129361c73ed6457103462143d142067e95c57360f27141c62afa20dee2d"
-        }
-      }
+      "nguon": "sen.3904",
+      "trich": "Sản phẩm dạng rắn ở dạng nguyên sinh trừ dạng bột, có ít hơn 10% khối lượng lọt qua lưới lọc có đường kính mắt lọc là 1mm và sản phẩm có 90% khối lượng trở lên lọt qua lưới lọc có đường kính mắt lọc là 5mm.",
+      "nguonLoai": "NGUOI_DUYET"
     },
     {
       "hs": "39044020",
-      "dieuKien": "dạng vật lý nguyên sinh của polyme: dạng hạt, viên, hạt cườm, vẩy, mảnh và các dạng tương tự; tên loại hàng: bột",
-      "loaiKhac": false,
-      "nguon": "tax.39044020",
-      "trich": "39044020 - - Dạng bột",
-      "nguonLoai": "CLAUDE_DUYET",
-      "dieuKienSo": [
-        {
-          "fact": "dangNguyenSinh",
-          "op": "TRONG",
-          "value": [
-            "HAT_VIEN_VAY_MANH"
-          ]
-        },
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "bột"
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L12-20261111#soat-L12",
-          "ngay": "2026-11-11",
-          "bam": "c4351129361c73ed6457103462143d142067e95c57360f27141c62afa20dee2d"
-        }
-      },
+      "dieuKien": "Dạng bột — phân nhóm 3904.40 (WCO): vinyl chloride copolymers, in primary forms n.e.c. in heading no. 3904",
       "tieuChi": {
         "fact": "la_dang_bot",
         "op": "=",
         "value": true,
         "donVi": null
-      }
+      },
+      "loaiKhac": false,
+      "nguon": "tax.39044020",
+      "trich": "39044020 - - Dạng bột",
+      "nguonLoai": "NGUOI_DUYET"
     },
     {
       "hs": "39044090",
@@ -570,100 +433,53 @@
     },
     {
       "hs": "39045040",
-      "dieuKien": "dạng vật lý nguyên sinh của polyme: dạng phân tán",
-      "loaiKhac": false,
-      "nguon": "tax.39045040",
-      "trich": "39045040 - - Dạng phân tán(SEN)",
-      "nguonLoai": "CLAUDE_DUYET",
-      "dieuKienSo": [
-        {
-          "fact": "dangNguyenSinh",
-          "op": "TRONG",
-          "value": [
-            "PHAN_TAN"
-          ]
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L12-20261111#soat-L12",
-          "ngay": "2026-11-11",
-          "bam": "3b0e54d58abfe0f7ab9071ecc4aefeae1ee46e4c5befb50330e2cb15d218efe9"
-        }
-      },
+      "dieuKien": "Dạng phân tán(SEN) — phân nhóm 3904.50 (WCO): vinylidene chloride polymers, in primary forms",
       "tieuChi": {
         "fact": "la_dang_phan_tan",
         "op": "=",
         "value": true,
         "donVi": null
-      }
+      },
+      "loaiKhac": false,
+      "nguon": "tax.39045040",
+      "trich": "39045040 - - Dạng phân tán(SEN)",
+      "nguonLoai": "NGUOI_DUYET"
     },
     {
       "hs": "39045050",
-      "dieuKien": "dạng vật lý nguyên sinh của polyme: dạng hạt, viên, hạt cườm, vẩy, mảnh và các dạng tương tự; tên loại hàng: hạt",
+      "dieuKien": "Dạng hạt — tiêu chuẩn dạng hạt theo SEN 3904 — phân nhóm 3904.50 (WCO): vinylidene chloride polymers, in primary forms",
       "dieuKienSo": [
         {
-          "fact": "dangNguyenSinh",
-          "op": "TRONG",
-          "value": [
-            "HAT_VIEN_VAY_MANH"
-          ]
+          "fact": "khoi_luong_qui_doi_troi_qua_luoi_loc_1mm",
+          "op": "<",
+          "value": 10,
+          "donVi": "%"
         },
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "hạt"
+          "fact": "khoi_luong_qui_doi_troi_qua_luoi_loc_5mm",
+          "op": ">=",
+          "value": 90,
+          "donVi": "%"
         }
       ],
       "loaiKhac": false,
-      "nguon": "tax.39045050",
-      "trich": "39045050 - - Dạng hạt(SEN)",
-      "nguonLoai": "CLAUDE_DUYET",
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L12-20261111#soat-L12",
-          "ngay": "2026-11-11",
-          "bam": "3b0e54d58abfe0f7ab9071ecc4aefeae1ee46e4c5befb50330e2cb15d218efe9"
-        }
-      }
+      "nguon": "sen.3904",
+      "trich": "Sản phẩm dạng rắn ở dạng nguyên sinh trừ dạng bột, có ít hơn 10% khối lượng lọt qua lưới lọc có đường kính mắt lọc là 1mm và sản phẩm có 90% khối lượng trở lên lọt qua lưới lọc có đường kính mắt lọc là 5mm.",
+      "nguonLoai": "NGUOI_DUYET"
     },
     {
       "hs": "39045060",
-      "dieuKien": "dạng vật lý nguyên sinh của polyme: dạng hạt, viên, hạt cườm, vẩy, mảnh và các dạng tương tự; tên loại hàng: bột",
-      "loaiKhac": false,
-      "nguon": "tax.39045060",
-      "trich": "39045060 - - Dạng bột",
-      "nguonLoai": "CLAUDE_DUYET",
-      "dieuKienSo": [
-        {
-          "fact": "dangNguyenSinh",
-          "op": "TRONG",
-          "value": [
-            "HAT_VIEN_VAY_MANH"
-          ]
-        },
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "bột"
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L12-20261111#soat-L12",
-          "ngay": "2026-11-11",
-          "bam": "3b0e54d58abfe0f7ab9071ecc4aefeae1ee46e4c5befb50330e2cb15d218efe9"
-        }
-      },
+      "dieuKien": "Dạng bột — phân nhóm 3904.50 (WCO): vinylidene chloride polymers, in primary forms",
       "tieuChi": {
         "fact": "la_dang_bot",
         "op": "=",
         "value": true,
         "donVi": null
-      }
+      },
+      "loaiKhac": false,
+      "nguon": "tax.39045060",
+      "trich": "39045060 - - Dạng bột",
+      "nguonLoai": "NGUOI_DUYET"
     },
     {
       "hs": "39045090",
@@ -686,69 +502,39 @@
     },
     {
       "hs": "39046110",
-      "dieuKien": "dạng vật lý nguyên sinh của polyme: dạng hạt, viên, hạt cườm, vẩy, mảnh và các dạng tương tự; tên loại hàng: hạt",
+      "dieuKien": "Dạng hạt — tiêu chuẩn dạng hạt theo SEN 3904 — phân nhóm 3904.61 (WCO): fluoro-polymers, polytetrafluoroethylene, in primary forms",
       "dieuKienSo": [
         {
-          "fact": "dangNguyenSinh",
-          "op": "TRONG",
-          "value": [
-            "HAT_VIEN_VAY_MANH"
-          ]
+          "fact": "khoi_luong_qui_doi_troi_qua_luoi_loc_1mm",
+          "op": "<",
+          "value": 10,
+          "donVi": "%"
         },
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "hạt"
+          "fact": "khoi_luong_qui_doi_troi_qua_luoi_loc_5mm",
+          "op": ">=",
+          "value": 90,
+          "donVi": "%"
         }
       ],
       "loaiKhac": false,
-      "nguon": "tax.39046110",
-      "trich": "39046110 - - - Dạng hạt(SEN)",
-      "nguonLoai": "CLAUDE_DUYET",
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L12-20261111#soat-L12",
-          "ngay": "2026-11-11",
-          "bam": "867518c9569e7196ea0b66bcb1b03c2fc9a27b9455b70327e0318a3063d6d6f6"
-        }
-      }
+      "nguon": "sen.3904",
+      "trich": "Sản phẩm dạng rắn ở dạng nguyên sinh trừ dạng bột, có ít hơn 10% khối lượng lọt qua lưới lọc có đường kính mắt lọc là 1mm và sản phẩm có 90% khối lượng trở lên lọt qua lưới lọc có đường kính mắt lọc là 5mm.",
+      "nguonLoai": "NGUOI_DUYET"
     },
     {
       "hs": "39046120",
-      "dieuKien": "dạng vật lý nguyên sinh của polyme: dạng hạt, viên, hạt cườm, vẩy, mảnh và các dạng tương tự; tên loại hàng: bột",
-      "loaiKhac": false,
-      "nguon": "tax.39046120",
-      "trich": "39046120 - - - Dạng bột",
-      "nguonLoai": "CLAUDE_DUYET",
-      "dieuKienSo": [
-        {
-          "fact": "dangNguyenSinh",
-          "op": "TRONG",
-          "value": [
-            "HAT_VIEN_VAY_MANH"
-          ]
-        },
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "bột"
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L12-20261111#soat-L12",
-          "ngay": "2026-11-11",
-          "bam": "867518c9569e7196ea0b66bcb1b03c2fc9a27b9455b70327e0318a3063d6d6f6"
-        }
-      },
+      "dieuKien": "Dạng bột — phân nhóm 3904.61 (WCO): fluoro-polymers, polytetrafluoroethylene, in primary forms",
       "tieuChi": {
         "fact": "la_dang_bot",
         "op": "=",
         "value": true,
         "donVi": null
-      }
+      },
+      "loaiKhac": false,
+      "nguon": "tax.39046120",
+      "trich": "39046120 - - - Dạng bột",
+      "nguonLoai": "NGUOI_DUYET"
     },
     {
       "hs": "39046190",
@@ -770,100 +556,53 @@
     },
     {
       "hs": "39046930",
-      "dieuKien": "dạng vật lý nguyên sinh của polyme: dạng phân tán",
-      "loaiKhac": false,
-      "nguon": "tax.39046930",
-      "trich": "39046930 - - - Dạng phân tán(SEN)",
-      "nguonLoai": "CLAUDE_DUYET",
-      "dieuKienSo": [
-        {
-          "fact": "dangNguyenSinh",
-          "op": "TRONG",
-          "value": [
-            "PHAN_TAN"
-          ]
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L12-20261111#soat-L12",
-          "ngay": "2026-11-11",
-          "bam": "96bfbdd7c346a1c8444263b7596d1f2f61cb3ddbbb9fa4f884f4c4713398862a"
-        }
-      },
+      "dieuKien": "Dạng phân tán(SEN) — phân nhóm 3904.69 (WCO): fluoro-polymers (other than polytetrafluoroethylene), in primary forms",
       "tieuChi": {
         "fact": "la_dang_phan_tan",
         "op": "=",
         "value": true,
         "donVi": null
-      }
+      },
+      "loaiKhac": false,
+      "nguon": "tax.39046930",
+      "trich": "39046930 - - - Dạng phân tán(SEN)",
+      "nguonLoai": "NGUOI_DUYET"
     },
     {
       "hs": "39046940",
-      "dieuKien": "dạng vật lý nguyên sinh của polyme: dạng hạt, viên, hạt cườm, vẩy, mảnh và các dạng tương tự; tên loại hàng: hạt",
+      "dieuKien": "Dạng hạt — tiêu chuẩn dạng hạt theo SEN 3904 — phân nhóm 3904.69 (WCO): fluoro-polymers (other than polytetrafluoroethylene), in primary forms",
       "dieuKienSo": [
         {
-          "fact": "dangNguyenSinh",
-          "op": "TRONG",
-          "value": [
-            "HAT_VIEN_VAY_MANH"
-          ]
+          "fact": "khoi_luong_qui_doi_troi_qua_luoi_loc_1mm",
+          "op": "<",
+          "value": 10,
+          "donVi": "%"
         },
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "hạt"
+          "fact": "khoi_luong_qui_doi_troi_qua_luoi_loc_5mm",
+          "op": ">=",
+          "value": 90,
+          "donVi": "%"
         }
       ],
       "loaiKhac": false,
-      "nguon": "tax.39046940",
-      "trich": "39046940 - - - Dạng hạt(SEN)",
-      "nguonLoai": "CLAUDE_DUYET",
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L12-20261111#soat-L12",
-          "ngay": "2026-11-11",
-          "bam": "96bfbdd7c346a1c8444263b7596d1f2f61cb3ddbbb9fa4f884f4c4713398862a"
-        }
-      }
+      "nguon": "sen.3904",
+      "trich": "Sản phẩm dạng rắn ở dạng nguyên sinh trừ dạng bột, có ít hơn 10% khối lượng lọt qua lưới lọc có đường kính mắt lọc là 1mm và sản phẩm có 90% khối lượng trở lên lọt qua lưới lọc có đường kính mắt lọc là 5mm.",
+      "nguonLoai": "NGUOI_DUYET"
     },
     {
       "hs": "39046950",
-      "dieuKien": "dạng vật lý nguyên sinh của polyme: dạng hạt, viên, hạt cườm, vẩy, mảnh và các dạng tương tự; tên loại hàng: bột",
-      "loaiKhac": false,
-      "nguon": "tax.39046950",
-      "trich": "39046950 - - - Dạng bột",
-      "nguonLoai": "CLAUDE_DUYET",
-      "dieuKienSo": [
-        {
-          "fact": "dangNguyenSinh",
-          "op": "TRONG",
-          "value": [
-            "HAT_VIEN_VAY_MANH"
-          ]
-        },
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "bột"
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L12-20261111#soat-L12",
-          "ngay": "2026-11-11",
-          "bam": "96bfbdd7c346a1c8444263b7596d1f2f61cb3ddbbb9fa4f884f4c4713398862a"
-        }
-      },
+      "dieuKien": "Dạng bột — phân nhóm 3904.69 (WCO): fluoro-polymers (other than polytetrafluoroethylene), in primary forms",
       "tieuChi": {
         "fact": "la_dang_bot",
         "op": "=",
         "value": true,
         "donVi": null
-      }
+      },
+      "loaiKhac": false,
+      "nguon": "tax.39046950",
+      "trich": "39046950 - - - Dạng bột",
+      "nguonLoai": "NGUOI_DUYET"
     },
     {
       "hs": "39046990",
@@ -886,100 +625,53 @@
     },
     {
       "hs": "39049030",
-      "dieuKien": "dạng vật lý nguyên sinh của polyme: dạng phân tán",
-      "loaiKhac": false,
-      "nguon": "tax.39049030",
-      "trich": "39049030 - - Dạng phân tán(SEN)",
-      "nguonLoai": "CLAUDE_DUYET",
-      "dieuKienSo": [
-        {
-          "fact": "dangNguyenSinh",
-          "op": "TRONG",
-          "value": [
-            "PHAN_TAN"
-          ]
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L12-20261111#soat-L12",
-          "ngay": "2026-11-11",
-          "bam": "94c6f687beb6c2c6ec3534c6aae153d89cb1cbfc7b32ff29c18b528e0ea5a251"
-        }
-      },
+      "dieuKien": "Dạng phân tán(SEN) — phân nhóm 3904.90 (WCO): n.e.c. in heading no. 3904",
       "tieuChi": {
         "fact": "la_dang_phan_tan",
         "op": "=",
         "value": true,
         "donVi": null
-      }
+      },
+      "loaiKhac": false,
+      "nguon": "tax.39049030",
+      "trich": "39049030 - - Dạng phân tán(SEN)",
+      "nguonLoai": "NGUOI_DUYET"
     },
     {
       "hs": "39049040",
-      "dieuKien": "dạng vật lý nguyên sinh của polyme: dạng hạt, viên, hạt cườm, vẩy, mảnh và các dạng tương tự; tên loại hàng: hạt",
+      "dieuKien": "Dạng hạt — tiêu chuẩn dạng hạt theo SEN 3904 — phân nhóm 3904.90 (WCO): n.e.c. in heading no. 3904",
       "dieuKienSo": [
         {
-          "fact": "dangNguyenSinh",
-          "op": "TRONG",
-          "value": [
-            "HAT_VIEN_VAY_MANH"
-          ]
+          "fact": "khoi_luong_qui_doi_troi_qua_luoi_loc_1mm",
+          "op": "<",
+          "value": 10,
+          "donVi": "%"
         },
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "hạt"
+          "fact": "khoi_luong_qui_doi_troi_qua_luoi_loc_5mm",
+          "op": ">=",
+          "value": 90,
+          "donVi": "%"
         }
       ],
       "loaiKhac": false,
-      "nguon": "tax.39049040",
-      "trich": "39049040 - - Dạng hạt(SEN)",
-      "nguonLoai": "CLAUDE_DUYET",
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L12-20261111#soat-L12",
-          "ngay": "2026-11-11",
-          "bam": "94c6f687beb6c2c6ec3534c6aae153d89cb1cbfc7b32ff29c18b528e0ea5a251"
-        }
-      }
+      "nguon": "sen.3904",
+      "trich": "Sản phẩm dạng rắn ở dạng nguyên sinh trừ dạng bột, có ít hơn 10% khối lượng lọt qua lưới lọc có đường kính mắt lọc là 1mm và sản phẩm có 90% khối lượng trở lên lọt qua lưới lọc có đường kính mắt lọc là 5mm.",
+      "nguonLoai": "NGUOI_DUYET"
     },
     {
       "hs": "39049050",
-      "dieuKien": "dạng vật lý nguyên sinh của polyme: dạng hạt, viên, hạt cườm, vẩy, mảnh và các dạng tương tự; tên loại hàng: bột",
-      "loaiKhac": false,
-      "nguon": "tax.39049050",
-      "trich": "39049050 - - Dạng bột",
-      "nguonLoai": "CLAUDE_DUYET",
-      "dieuKienSo": [
-        {
-          "fact": "dangNguyenSinh",
-          "op": "TRONG",
-          "value": [
-            "HAT_VIEN_VAY_MANH"
-          ]
-        },
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "bột"
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L12-20261111#soat-L12",
-          "ngay": "2026-11-11",
-          "bam": "94c6f687beb6c2c6ec3534c6aae153d89cb1cbfc7b32ff29c18b528e0ea5a251"
-        }
-      },
+      "dieuKien": "Dạng bột — phân nhóm 3904.90 (WCO): n.e.c. in heading no. 3904",
       "tieuChi": {
         "fact": "la_dang_bot",
         "op": "=",
         "value": true,
         "donVi": null
-      }
+      },
+      "loaiKhac": false,
+      "nguon": "tax.39049050",
+      "trich": "39049050 - - Dạng bột",
+      "nguonLoai": "NGUOI_DUYET"
     },
     {
       "hs": "39049090",

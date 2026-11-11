@@ -4,19 +4,13 @@
   "nhom": "3904",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "DUYET",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-390422",
     "ngay": "2026-11-02"
   },
-  "duyet": {
-    "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L12-20261111#soat-L12",
-    "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu VI+EN: 'Dạng phân tán'/'In dispersion' ⇒ PHAN_TAN; 'Dạng hạt'/'granules' ⇒ HAT_VIEN_VAY_MANH + tenLoai 'hạt'; 'Dạng bột'/'powder' ⇒ HAT_VIEN_VAY_MANH + tenLoai 'bột'; dạng vẩy/mảnh rơi đúng 'Loại khác'. Lưu ý: hạt/bột chỉ tách bằng so chữ (không tất định) — đề xuất tách giá trị HAT/BOT trong tu-vung.",
-    "bam": "f4bba5c5ec577e6256f6506fcd0336832311f6bfb7dca94ba6705566cfe8230b"
-  },
+  "duyet": null,
   "dieuKienNut": [],
   "dong8": [
     {
@@ -32,7 +26,7 @@
           ]
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "39042220",
@@ -52,7 +46,7 @@
           "value": "hạt"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "39042230",
@@ -72,14 +66,14 @@
           "value": "bột"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "39042290",
       "nguon": "tax.39042290",
       "trich": "39042290 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "ghiChuSoan": [
@@ -97,6 +91,13 @@
       "ma": "39042230",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.39042230 \"Dạng bột\" ⇒ dangNguyenSinh HAT_VIEN_VAY_MANH, tenLoai \"bột\""
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:tech-lead-20261111#soat-lai",
+      "ngay": "2026-11-11",
+      "lyDo": "Bỏ mất ngưỡng số SEN mà sổ tay đang chạy dùng để chốt dòng (cong3-mat-nguong-so, #1214); thay ngưỡng bằng khoá tên/CO là lùi. Soạn lại: mã hoá đủ ngưỡng SEN bằng khoá đo đúng + vế tên."
     }
   ]
 }

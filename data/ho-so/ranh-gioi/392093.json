@@ -4,19 +4,13 @@
   "nhom": "3920",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "DUYET",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1705#soan-392093",
     "ngay": "2026-11-05"
   },
-  "duyet": {
-    "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L12-20261111#soat-L12",
-    "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu VI+EN: .10 'Dạng tấm và phiến'/'Plates and sheets' ⇒ tenLoai [tấm, phiến] (chuỗi con nguyên văn, mảng = hoặc); .90 Loại khác (màng, dải…).",
-    "bam": "a125bf4a3b61aeb7e0632089e634ce45c1deb8e63c2e99806aac7069532c3131"
-  },
+  "duyet": null,
   "dieuKienNut": [],
   "dong8": [
     {
@@ -33,14 +27,14 @@
           ]
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "39209390",
       "nguon": "tax.39209390",
       "trich": "39209390 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "ghiChuSoan": [
@@ -53,6 +47,13 @@
       "ma": "39209390",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.39209390 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:tech-lead-20261111#soat-lai",
+      "ngay": "2026-11-11",
+      "lyDo": "Bỏ mất ngưỡng số SEN mà sổ tay đang chạy dùng để chốt dòng (cong3-mat-nguong-so, #1214); thay ngưỡng bằng khoá tên/CO là lùi. Soạn lại: mã hoá đủ ngưỡng SEN bằng khoá đo đúng + vế tên."
     }
   ]
 }
