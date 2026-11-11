@@ -8,7 +8,11 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Dạng tấm, lá và dải, có chiều dày trên 0,2 mm"
+          "value": [
+            "Dạng tấm",
+            "lá",
+            "dải"
+          ]
         },
         {
           "fact": "doDay",
@@ -23,15 +27,32 @@
     "80070030": {
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Lá mỏng (đã hoặc chưa in hoặc bồi trên giấy, bìa, plastic hoặc vật liệu bồi tương tự), có chiều dày (trừ phần bồi) không quá 0,2 mm; dạng bột và vảy"
-        },
-        {
-          "fact": "doDay",
-          "op": "<=",
-          "value": 0.2,
-          "donVi": "mm"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Lá mỏng"
+              },
+              {
+                "fact": "doDay",
+                "op": "<=",
+                "value": 0.2,
+                "donVi": "mm"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "dạng bột",
+                  "vảy"
+                ]
+              }
+            ]
+          ]
         }
       ],
       "trich": "80070030 - Lá mỏng (đã hoặc chưa in hoặc bồi trên giấy, bìa, plastic hoặc vật liệu bồi tương tự), có chiều dày (trừ phần bồi) không quá 0,2 mm; dạng bột và vảy",
@@ -40,9 +61,39 @@
     "80070040": {
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Các loại ống, ống dẫn và phụ kiện để ghép nối của ống hoặc ống dẫn (ví dụ, khớp nối đôi, nối khuỷu, măng sông)"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "ống",
+                  "ống dẫn"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "phụ kiện"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "ghép nối"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "ống",
+                  "ống dẫn"
+                ]
+              }
+            ]
+          ]
         }
       ],
       "trich": "80070040 - Các loại ống, ống dẫn và phụ kiện để ghép nối của ống hoặc ống dẫn (ví dụ, khớp nối đôi, nối khuỷu, măng sông)",
@@ -53,7 +104,10 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Hộp đựng thuốc lá điếu; gạt tàn thuốc lá"
+          "value": [
+            "Hộp đựng thuốc lá điếu",
+            "gạt tàn thuốc lá"
+          ]
         }
       ],
       "trich": "80070091 - - Hộp đựng thuốc lá điếu; gạt tàn thuốc lá",
@@ -64,18 +118,19 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Các sản phẩm gia dụng khác"
+          "value": "sản phẩm gia dụng"
         }
       ],
       "trich": "80070092 - - Các sản phẩm gia dụng khác",
-      "nguon": "tax.80070092"
+      "nguon": "tax.80070092",
+      "phanConLai": true
     },
     "80070093": {
       "dieuKienSo": [
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Ống có thể gấp lại được (collapsible tubes)"
+          "value": "Ống có thể gấp lại được"
         }
       ],
       "trich": "80070093 - - Ống có thể gấp lại được (collapsible tubes)",
@@ -84,36 +139,6 @@
   },
   "dieuKienNut": {},
   "ghiChuSoan": [
-    {
-      "ma": "80070020",
-      "loai": "QUYET_DINH",
-      "ghiChu": "Dòng 80070020 khai 2 điều kiện: tenLoai ('Dạng tấm, lá và dải, có chiều dày trên 0,2 mm', nguồn tax.80070020) và doDay ('>' 0,2 mm) — ranh giới với 80070030 là NGƯỠNG độ dày (chữ 'trên' = >, đơn vị mm như chữ trích); tên loại giữ nguyên văn cả tiêu đề để không cắt vế."
-    },
-    {
-      "ma": "80070030",
-      "loai": "QUYET_DINH",
-      "ghiChu": "Dòng 80070030 khai tenLoai (nguyên văn cả tiêu đề) + doDay ('<=' 0,2 mm — chữ 'không quá' = <=); vế 'đã hoặc chưa in hoặc bồi trên giấy, bìa, plastic hoặc vật liệu bồi tương tự' và 'dạng bột và vảy' nằm trong tên loại nên không tách thành danh sách đóng."
-    },
-    {
-      "ma": "80070040",
-      "loai": "QUYET_DINH",
-      "ghiChu": "Dòng 80070040 khai 1 điều kiện tenLoai với giaTri nguyên văn cả tiêu đề kèm ngoặc ví dụ (nguồn tax.80070040); '(ví dụ, khớp nối đôi, nối khuỷu, măng sông)' là vế MỞ nên không tách thành danh sách đóng các loại phụ kiện."
-    },
-    {
-      "ma": "80070091",
-      "loai": "QUYET_DINH",
-      "ghiChu": "Dòng 80070091 khai 1 điều kiện tenLoai ('Hộp đựng thuốc lá điếu; gạt tàn thuốc lá', nguồn tax.80070091); hộp đựng thuốc lá điếu và gạt tàn thuốc lá là hai loại hàng nằm trong CÙNG dòng 8 số nên gộp một khoá — tách thành hai điều kiện cùng khoá sẽ biến thành phải thỏa CẢ HAI; không khai hopDungThuocLaDieu vì tiêu đề không nói 'có kèm gạt tàn'."
-    },
-    {
-      "ma": "80070092",
-      "loai": "QUYET_DINH",
-      "ghiChu": "Dòng 80070092 khai 1 điều kiện tenLoai ('Các sản phẩm gia dụng khác', nguồn tax.80070092); chữ 'khác' làm dòng này là phần dư (nghiPhanConLai) của sản phẩm gia dụng bằng thiếc trong nhóm — không tách thành danh sách đóng các loại gia dụng."
-    },
-    {
-      "ma": "80070093",
-      "loai": "QUYET_DINH",
-      "ghiChu": "Dòng 80070093 khai 1 điều kiện tenLoai ('Ống có thể gấp lại được (collapsible tubes)', nguồn tax.80070093); giữ nguyên cả tên tiếng Anh trong ngoặc theo chữ biểu."
-    },
     {
       "ma": "8007009",
       "loai": "QUYET_DINH",
@@ -138,6 +163,17 @@
       "ma": "800700",
       "loai": "QUYET_DINH",
       "ghiChu": "Gói không kèm nội dung chữ cho ba nguồn chú giải (nhom8007.nhom, ch80.chuong, phan80.phan) nên chỉ trích được từ tax.80070020, tax.80070030, tax.80070040, tax.80070091, tax.80070092, tax.80070093 và wco.800700."
+    },
+    {
+      "ma": "80070030",
+      "loai": "BO_VE",
+      "ve": "(trừ phần bồi)",
+      "lyDo": "«(trừ phần bồi)» (EN «excluding any backing») là CÁCH ĐO chiều dày: doDay <= 0,2 mm đọc trên độ dày lá thiếc không kể lớp bồi giấy/bìa/plastic; không phải điều kiện riêng của hàng (cùng lớp với «ở dạng không gấp» — QUY-TRINH lô 11). Bỏ vế không đổi mã: lá bồi vẫn so ngưỡng 0,2 mm trên phần kim loại."
+    },
+    {
+      "ma": "800700",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude (#1109, 11/11): sửa cong3-liet-ke-trong-mot-chuoi (.20/.30/.40/.91 gói cả tên dòng vào MỘT giá trị tenLoai — bộ so đọc thành VÀ, và giá trị .30 chứa «tương tự» ⇒ cong5-gia-tri-tuong-tu). Viết lại theo chữ: .20 tenLoai [\"Dạng tấm\",\"lá\",\"dải\"] (EN «Plates, sheets and strip») + doDay > 0,2 mm; .30 HOAC [[tenLoai \"Lá mỏng\", doDay <= 0,2 mm], [tenLoai [\"dạng bột\",\"vảy\"]]] — hai vế tách bằng «;» (EN «…; powders and flakes»), ngưỡng chỉ của lá mỏng; ngoặc «(đã hoặc chưa in hoặc bồi …)» là PHU; «(trừ phần bồi)» là cách đo ⇒ BO_VE. .40 HOAC [[tenLoai [\"ống\",\"ống dẫn\"]], [tenLoai \"phụ kiện\", dungCho \"ghép nối\", dungCho [\"ống\",\"ống dẫn\"]]] (EN «Tubes, pipes and tube or pipe fittings»; «(ví dụ …)» là PHU). .91 tenLoai [\"Hộp đựng thuốc lá điếu\",\"gạt tàn thuốc lá\"] (hai vế «;»). .92 «Các sản phẩm gia dụng khác» là phần còn lại CÓ TÊN ⇒ tenLoai \"sản phẩm gia dụng\" + phanConLai true (phủ định .91 — hộp thuốc lá/gạt tàn cũng là đồ gia dụng); giá trị cũ chứa «khác» đòi dữ kiện có chữ «khác». .93 tenLoai \"Ống có thể gấp lại được\" (bỏ «(collapsible tubes)» là ngoặc chú thích tiếng Anh). .40 «ống» ↔ .93: máy cảnh báo cong2-ten-cu-the-hon (tên cụ thể hơn thắng, #600) — đúng Chú giải 1(e) Chương 80 (ống/ống dẫn là sản phẩm rỗng có mặt cắt đều dọc chiều dài)."
     }
   ]
 }
