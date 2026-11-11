@@ -4,19 +4,13 @@
   "nhom": "4009",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "DUYET",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1707#soan-400931",
     "ngay": "2026-11-05"
   },
-  "duyet": {
-    "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L13-20261111#soat-L13",
-    "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu VI/EN: .10 khoá ống hút xả bùn mỏ; .91 'Fuel hoses, heater hoses and water hoses' = tenLoai mảng 3 tên (hoặc) + dungCho nhóm 87.02/87.03/87.04/87.11 (so theo cấp mã); tầng 4009319 Loại khác trần.",
-    "bam": "4d4962173d219dbeb0d53362452d6209640e085b3e0e3a9cbd20ed4c24b65b1c"
-  },
+  "duyet": null,
   "dieuKienNut": [],
   "dong8": [
     {
@@ -29,7 +23,7 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "40093191",
@@ -51,14 +45,14 @@
           "value": "xe gắn động cơ thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "40093199",
       "nguon": "tax.40093199",
       "trich": "40093199 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "ghiChuSoan": [
@@ -76,6 +70,13 @@
       "ma": "40093199",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.40093199 \"Loại khác\" trần => không ghi điều kiện (máy tự phủ định anh em đứng trước)."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:tech-lead-20261111#soat-L13-lai",
+      "ngay": "2026-11-11",
+      "lyDo": "Bỏ mất định nghĩa số của SEN (ống hút xả bùn khai thác mỏ: đường kính ≥ 15,24 cm, thành ≥ 1,27 cm, áp suất bục ≥ 517 kPa; dòng chịu áp ≥ 1800 kPa…) mà sổ tay hiện dùng để chốt dòng; thay bằng khoá CO yes/no là lùi. Soạn lại: mã hoá đủ ngưỡng SEN bằng khoá đúng (đường kính, độ dày thành, áp suất bục) + vế tên."
     }
   ]
 }

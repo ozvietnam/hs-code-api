@@ -4,19 +4,13 @@
   "nhom": "4009",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "DUYET",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1707#soan-400921",
     "ngay": "2026-11-05"
   },
-  "duyet": {
-    "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L13-20261111#soat-L13",
-    "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu VI/EN 'Mining slurry suction and discharge hoses': khoá ongHutXaBunKhaiThacMo CO phủ cả đầu ngữ lẫn vế 'dùng trong khai thác mỏ'.",
-    "bam": "d4349572b5d67b1d92607d5d512b85461cce7f4854a988e6f81823140f55bf4a"
-  },
+  "duyet": null,
   "dieuKienNut": [],
   "dong8": [
     {
@@ -29,14 +23,14 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "40092190",
       "nguon": "tax.40092190",
       "trich": "40092190 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "ghiChuSoan": [
@@ -44,6 +38,13 @@
       "ma": "40092110",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.40092110 \"Ống hút và xả bùn dùng trong khai thác mỏ(SEN)\" (EN \"Mining slurry suction and discharge hoses\") => ongHutXaBunKhaiThacMo CO; khoá đọc đúng cụm \"ống hút và xả bùn dùng trong khai thác mỏ\". Ngoặc \"(SEN)\" là ngoặc chú thích. Dòng 40092190 \"Loại khác\" trần => không ghi điều kiện."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:tech-lead-20261111#soat-L13-lai",
+      "ngay": "2026-11-11",
+      "lyDo": "Bỏ mất định nghĩa số của SEN (ống hút xả bùn khai thác mỏ: đường kính ≥ 15,24 cm, thành ≥ 1,27 cm, áp suất bục ≥ 517 kPa; dòng chịu áp ≥ 1800 kPa…) mà sổ tay hiện dùng để chốt dòng; thay bằng khoá CO yes/no là lùi. Soạn lại: mã hoá đủ ngưỡng SEN bằng khoá đúng (đường kính, độ dày thành, áp suất bục) + vế tên."
     }
   ]
 }

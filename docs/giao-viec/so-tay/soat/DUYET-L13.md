@@ -35,13 +35,13 @@ Lô không có ghi chú `DE_TRONG` / "người soát xem" nên không cần `--g
 | 400690 | **TRA_VE** | 40069011 TEN_LOAI "Các sản phẩm" ("Articles") — tên thật không chứa chữ "sản phẩm" ⇒ TRAI; tầng 4006901 "nhựa tự nhiên" cùng lỗi 400510 |
 | 400811 | **TRA_VE** | 40081110 "lined with textile fabric **on one side**": chatLieu CHINH "vải dệt" + bỏ vế "có một mặt" ⇒ lót hai mặt cũng vào .10; người soạn tự ghi "từ vựng chưa có vị trí lót" ⇒ đáng lẽ THIEU_KHOA/DỪNG |
 | 400821 | **TRA_VE** | Cùng lỗi 400811 ở 40082110 (chongLanVanBan .10↔.30/.40 hợp lý) |
-| 400912 | DUYET | Khoá ongHutXaBunKhaiThacMo |
-| 400921 | DUYET | Khoá ongHutXaBunKhaiThacMo |
-| 400922 | DUYET | Khoá ongHutXaBunKhaiThacMo |
-| 400931 | DUYET | .91 ba tên hoặc + dungCho mã 87.02/03/04/11 |
-| 400932 | DUYET | Khoá ongHutXaBunKhaiThacMo |
-| 400941 | DUYET | "Ống vòi cao su" + dungCho "bếp ga" |
-| 400942 | DUYET | .10 tenLoai+dungCho (không dùng khoá như 400912 — tương đương); .20 bếp ga |
+| 400912 | TRA_VE (tech lead soát lại) | Bỏ mất ngưỡng số SEN (ĐK ≥ 15,24 cm, thành ≥ 1,27 cm, áp suất bục…) — khoá CO là lùi so với sổ tay đang chạy |
+| 400921 | TRA_VE (tech lead soát lại) | Bỏ mất ngưỡng số SEN (ĐK ≥ 15,24 cm, thành ≥ 1,27 cm, áp suất bục…) — khoá CO là lùi so với sổ tay đang chạy |
+| 400922 | TRA_VE (tech lead soát lại) | Bỏ mất ngưỡng số SEN (ĐK ≥ 15,24 cm, thành ≥ 1,27 cm, áp suất bục…) — khoá CO là lùi so với sổ tay đang chạy |
+| 400931 | TRA_VE (tech lead soát lại) | Bỏ mất ngưỡng số SEN (ĐK ≥ 15,24 cm, thành ≥ 1,27 cm, áp suất bục…) — khoá CO là lùi so với sổ tay đang chạy |
+| 400932 | TRA_VE (tech lead soát lại) | Bỏ mất ngưỡng số SEN (ĐK ≥ 15,24 cm, thành ≥ 1,27 cm, áp suất bục…) — khoá CO là lùi so với sổ tay đang chạy |
+| 400941 | TRA_VE (tech lead soát lại) | Bỏ mất ngưỡng số SEN (ĐK ≥ 15,24 cm, thành ≥ 1,27 cm, áp suất bục…) — khoá CO là lùi so với sổ tay đang chạy |
+| 400942 | TRA_VE (tech lead soát lại) | Bỏ mất ngưỡng số SEN (ĐK ≥ 15,24 cm, thành ≥ 1,27 cm, áp suất bục…) — khoá CO là lùi so với sổ tay đang chạy |
 | 401120 | DUYET | duongKinhVanh (đúng trục "fitting a rim"), biên 230/385/450 mm, 16 inch đúng |
 | 401212 | DUYET | Rộng ≤ 450 mm (rộng của chính lốp) |
 | 401219 | DUYET | Nhóm 84.27, 84.29/84.30, tầng Chương 87, .41 máy kéo nông/lâm nghiệp (thử THOẢ) |
@@ -117,3 +117,8 @@ soạn miễn sai).
   "và" ("Scrap … and cup lump"); máy không nhận ra liên hợp nên không cảnh báo hai TEN_LOAI VÀ.
 - 420500 .40: "dùng cho máy móc hoặc thiết bị cơ khí hoặc mục đích kỹ thuật khác" coi là một vế "phủ" dù điều kiện tách thành VÀ
   qua hai khoá — cổng 5 nên kiểm vế có "hoặc" mà điều kiện phủ nằm trên ≥ 2 khoá khác nhau (VÀ ngầm).
+
+
+## Soát lại của tech lead (CI đỏ test-so-tay-gates)
+
+7 PN6 nhóm 4009 bị trả về: bản nháp thay định nghĩa SEN có số (ống hút và xả bùn dùng trong khai thác mỏ: đường kính ≥ 15,24 cm, độ dày thành ≥ 1,27 cm, áp suất bục ≥ 517 kPa) bằng một khoá CO/KHÔNG. Sổ tay đang chạy chốt dòng bằng các ngưỡng này; duyệt bản nháp làm mất khả năng chốt theo số. `data/so-tay/4009.json` giữ bản trên main.

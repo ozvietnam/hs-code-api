@@ -4,19 +4,13 @@
   "nhom": "4009",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "DUYET",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1705#soan-400942",
     "ngay": "2026-11-05"
   },
-  "duyet": {
-    "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L13-20261111#soat-L13",
-    "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu VI/EN: .10 tenLoai 'Ống hút và xả bùn' (danh từ ghép, không phải liệt kê) + dungCho 'khai thác mỏ'; .20 tenLoai 'Ống vòi cao su' + dungCho 'bếp ga'. Lưu ý: .10 không dùng khoá ongHutXaBunKhaiThacMo như 400912/21/22 — kết quả tương đương.",
-    "bam": "3ce60fd40c561d21acefc4d002c349caf86b96f992dc798346ffe83b31efb931"
-  },
+  "duyet": null,
   "dieuKienNut": [],
   "dong8": [
     {
@@ -35,7 +29,7 @@
           "value": "khai thác mỏ"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "40094220",
@@ -53,14 +47,14 @@
           "value": "bếp ga"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "40094290",
       "nguon": "tax.40094290",
       "trich": "40094290 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "ghiChuSoan": [
@@ -73,6 +67,13 @@
       "ma": "40094220",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.40094220 \"Ống vòi cao su dùng cho bếp ga (SEN)\" ⇒ tenLoai \"Ống vòi cao su\" + dungCho \"bếp ga\" phủ vế [GIỚI HẠN] \"dùng cho bếp ga\". Cụm \"(SEN)\" là ngoặc chú thích nguồn kỹ thuật, không phải điều kiện."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:tech-lead-20261111#soat-L13-lai",
+      "ngay": "2026-11-11",
+      "lyDo": "Bỏ mất định nghĩa số của SEN (ống hút xả bùn khai thác mỏ: đường kính ≥ 15,24 cm, thành ≥ 1,27 cm, áp suất bục ≥ 517 kPa; dòng chịu áp ≥ 1800 kPa…) mà sổ tay hiện dùng để chốt dòng; thay bằng khoá CO yes/no là lùi. Soạn lại: mã hoá đủ ngưỡng SEN bằng khoá đúng (đường kính, độ dày thành, áp suất bục) + vế tên."
     }
   ]
 }
