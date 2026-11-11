@@ -159,6 +159,32 @@ function soTayHieuLuc(nhom4, pn6) {
   return st;
 }
 
+/**
+ * Lời NGƯỜI ĐỌC của một cụm từ vựng (OZV-325). `cachDoc` là MẪU REGEX máy đọc, không phải chữ đọc được:
+ * bóc phần tử đầu rồi chỉ thay `\s+` sẽ để `\s*`, `(?:…)?`, `(a|b)` lọt nguyên vào `productText` của ca kiểm
+ * ("không đóng bao bì kín khí(?: để bán lẻ)?"), tức máy chấm luật bằng chữ hàng SAI HÌNH DẠNG. Khuôn lời đúng
+ * của repo là `cachViet` (qua TV.vietCum). Dùng vietCum trước; chỉ khi khoá chưa có cachViet mới lùi về nhãn,
+ * và dù lùi vẫn phải gỡ hết cú pháp regex.
+ */
+const boCuPhapRegex = (s) => String(s || '')
+  .replace(/\(\?:/g, '(')              // nhóm không bắt → ngoặc thường, rồi gỡ ngoặc tuỳ chọn bên dưới
+  .replace(/\(([^()|]*)\)\?/g, '')     // nhóm TUỲ CHỌN "(… )?" → bỏ hẳn (phần không bắt buộc)
+  .replace(/\(([^()|]*)\)/g, '$1')     // nhóm còn lại → giữ nội dung
+  .replace(/\(([^()]*)\)/g, '$1')      // nhóm có "|" còn sót → giữ nguyên nội dung, gỡ ngoặc
+  .replace(/\\s[*+?]/g, ' ')           // \s+ \s* \s? → một dấu cách
+  .replace(/\\b|\\\./g, (m) => (m === '\\.' ? '.' : ''))
+  .replace(/[*+?]$/g, '')
+  .replace(/\s{2,}/g, ' ')
+  .trim();
+/** Lời khẳng định của khoá (vd "đóng bao bì kín khí để bán lẻ"); `giaTri` theo kiểu khoá. */
+const loiKhoa = (fact, giaTri, duPhong) => {
+  try {
+    const s = TV.vietCum(fact, giaTri);
+    if (s) return s;
+  } catch { /* khoá chưa có cachViet → lùi về nhãn */ }
+  return boCuPhapRegex(duPhong);
+};
+
 /** Sinh cụm chữ KHẲNG ĐỊNH một điều kiện đơn (dùng cho nút trung gian PHAI_CO). */
 function cumKhangDinh(c) {
   if (!c) return '';
@@ -175,12 +201,10 @@ function cumKhangDinh(c) {
     return c.fact === 'dungCho' ? `dùng cho ${v}` : `dùng trong ${v}`;
   }
   if (c.op === 'CO') {
-    const m = chuTuMau(k?.cachDoc?.vi?.[0] || k?.nhanVi || c.fact);
-    return m;
+    return loiKhoa(c.fact, true, k?.nhanVi || c.fact);
   }
   if (c.op === 'KHONG') {
-    const m = chuTuMau(k?.cachDocKhong?.vi?.[0] || `không ${k?.cachDoc?.vi?.[0] || k?.nhanVi || c.fact}`);
-    return m;
+    return loiKhoa(c.fact, false, k?.cachDocKhong?.vi?.[0] || `không ${k?.nhanVi || c.fact}`);
   }
   if (c.op === 'LA') {
     const v = Array.isArray(c.value) ? c.value[0] : c.value;
@@ -188,30 +212,14 @@ function cumKhangDinh(c) {
   }
   if (c.op === 'TRONG') {
     const v = Array.isArray(c.value) ? c.value[0] : c.value;
-    const m = chuTuMau(k?.moTaGiaTri?.[v]?.cachDoc?.vi?.[0] || k?.moTaGiaTri?.[v]?.nhanVi || v);
-    return m;
+    return loiKhoa(c.fact, [v], k?.moTaGiaTri?.[v]?.nhanVi || v);
   }
   if (['<=', '<', '>=', '>'].includes(c.op)) {
-    const ten = chuTuMau(k?.cachDoc?.vi?.[0] || k?.nhanVi || String(c.fact).replace(/_/g, ' '));
+    const ten = boCuPhapRegex(k?.cachDoc?.vi?.[0] || k?.nhanVi || String(c.fact).replace(/_/g, ' '));
     const v = c.op === '<=' || c.op === '<' ? Number((c.value * 0.5).toFixed(3)) : Number((c.value * 1.5 + 1).toFixed(3));
     return `${ten} ${v} ${c.donVi || ''}`.trim();
   }
   return '';
-}
-
-/**
- * Mẫu đọc của từ vựng (regex) → chữ thường để làm mô tả hàng thử. Trước đây chỉ bỏ `\\s+`, nên `(?:không|chưa) dùng ngay được`
- * lọt nguyên cú pháp regex vào mô tả ⇒ máy không thấy phủ định và chốt sai dòng anh em (200990, 370690 — #1109).
- * Lấy nhánh đầu của `(?:a|b)`, giữ nội dung nhóm tuỳ chọn `(?:x)?`, bỏ `\\b` và ký tự neo.
- */
-function chuTuMau(s) {
-  let t = String(s ?? '');
-  for (let i = 0; i < 5; i += 1) {
-    const truoc = t;
-    t = t.replace(/\(\?:([^()]*)\)\??/g, (_, x) => x.split('|')[0]);
-    if (t === truoc) break;
-  }
-  return t.replace(/\\s[+*]?/g, ' ').replace(/\\b/g, '').replace(/[\^$]/g, '').replace(/\\(.)/g, '$1').replace(/\s{2,}/g, ' ').trim();
 }
 
 /** Sinh cụm chữ TRÁI (phủ định) cho một nhóm điều kiện anh em PHAI_KHONG. */
@@ -232,12 +240,11 @@ function cumPhuDinhNhom(dsDieuKien) {
     return vs.map((v) => (c.fact === 'dungCho' ? `không dùng cho ${v}` : `không dùng trong ${v}`)).join(', ');
   }
   if (c.op === 'CO') {
-    const m = chuTuMau(k?.cachDocKhong?.vi?.[0] || `không ${k?.cachDoc?.vi?.[0] || k?.nhanVi || c.fact}`);
-    return m;
+    // Lời PHỦ ĐỊNH của khoá CO_KHONG = cachViet.viPhuDinh (vietCum với giá trị false).
+    return loiKhoa(c.fact, false, k?.cachDocKhong?.vi?.[0] || `không ${k?.nhanVi || c.fact}`);
   }
   if (c.op === 'KHONG') {
-    const m = chuTuMau(k?.cachDoc?.vi?.[0] || k?.nhanVi || c.fact);
-    return m;
+    return loiKhoa(c.fact, true, k?.nhanVi || c.fact);
   }
   if (c.op === 'LA') {
     const vs = Array.isArray(c.value) ? c.value : [c.value];
@@ -246,14 +253,11 @@ function cumPhuDinhNhom(dsDieuKien) {
   if (c.op === 'TRONG') {
     const vs = Array.isArray(c.value) ? c.value : [c.value];
     return vs
-      .map((v) => {
-        const m = chuTuMau(k?.moTaGiaTri?.[v]?.cachDoc?.vi?.[0] || k?.moTaGiaTri?.[v]?.nhanVi || v);
-        return `không phải ${m}`;
-      })
+      .map((v) => `không phải ${loiKhoa(c.fact, [v], k?.moTaGiaTri?.[v]?.nhanVi || v)}`)
       .join(', ');
   }
   if (['<=', '<', '>=', '>'].includes(c.op)) {
-    const ten = chuTuMau(k?.cachDoc?.vi?.[0] || k?.nhanVi || String(c.fact).replace(/_/g, ' '));
+    const ten = boCuPhapRegex(k?.cachDoc?.vi?.[0] || k?.nhanVi || String(c.fact).replace(/_/g, ' '));
     const v = c.op === '<=' || c.op === '<' ? Number((c.value * 2 + 10).toFixed(3)) : Number(Math.max(0.1, c.value * 0.4).toFixed(3));
     return `${ten} ${v} ${c.donVi || ''}`.trim();
   }
@@ -292,7 +296,7 @@ function sinhMoTaLoaiTru(hs8, pn6, st) {
   }
   for (const [fact, groups] of soRanhGioi.entries()) {
     const k = (() => { try { return TV.layKhoa(fact); } catch { return null; } })();
-    const ten = chuTuMau(k?.cachDoc?.vi?.[0] || k?.nhanVi || String(fact).replace(/_/g, ' '));
+    const ten = boCuPhapRegex(k?.cachDoc?.vi?.[0] || k?.nhanVi || String(fact).replace(/_/g, ' '));
     const donVi = groups[0]?.[0]?.donVi || k?.donViChuan || '';
     const maxVal = Math.max(...groups.flat().map((c) => Number(c.value) || 0));
     const minVal = Math.min(...groups.flat().map((c) => Number(c.value) || 0));
