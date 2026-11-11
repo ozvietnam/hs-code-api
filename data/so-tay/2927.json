@@ -1,106 +1,121 @@
 {
- "nhom": "2927",
- "phamVi": {
-  "text": "Các hợp chất diazo-, azo- hoặc azoxy",
-  "nguon": "wco.292700",
-  "trich": "292700 Diazo-, azo- or azoxy compounds",
-  "nguonGhi": "tax.29270000",
-  "nguonLoai": "AI_DA_KIEM"
- },
- "dieuKienVao": [
-  {
-   "fact": "la_hop_chat_diazo_azo_hoac_azoxy",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "nhom2927.nhom",
-   "trich": "Các hợp chất này, quan trọng nhất thuộc về các loại chất thơm, được đặc trưng bởi hai nguyên tử nitơ nối bằng nối đôi.",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "loaiTru": [],
- "phanBiet": [],
- "tieuChi6": [],
- "dong8": [
-  {
-   "hs": "29270010",
-   "dieuKien": "Azodicarbonamide",
-   "loaiKhac": false,
-   "nguon": "tax.29270010",
-   "trich": "29270010 - Azodicarbonamide",
-   "nguonLoai": "AI_DA_KIEM"
+  "nhom": "2927",
+  "phamVi": {
+    "text": "Các hợp chất diazo-, azo- hoặc azoxy",
+    "nguon": "wco.292700",
+    "trich": "292700 Diazo-, azo- or azoxy compounds",
+    "nguonGhi": "tax.29270000",
+    "nguonLoai": "AI_DA_KIEM"
   },
-  {
-   "hs": "29270090",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.29270090",
-   "trich": "29270090 - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "2927",
-    "truAnhEm": [
-     "29270010"
-    ],
-    "truDayDu": [
-     "29270010"
-    ],
-    "toTienCoTen": "2927",
-    "dinhNghiaDuoc": true
-   }
-  }
- ],
- "cay": {
-  "nguonLoai": "MAY_SUY",
-  "sinhTu": "lib/hs-tree.js",
-  "nut": [
-   {
-    "id": "2927",
-    "cap": 4,
-    "cha": "29",
-    "tenVi": "Hợp chất diazo-, azo- hoặc azoxy",
-    "tenEn": "Diazo-, azo- or azoxy-compounds",
-    "suyRa": false
-   },
-   {
-    "id": "29270010",
-    "cap": 8,
-    "cha": "2927",
-    "tenVi": "Azodicarbonamide",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "29270090",
-    "cap": 8,
-    "cha": "2927",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   }
+  "dieuKienVao": [
+    {
+      "fact": "la_hop_chat_diazo_azo_hoac_azoxy",
+      "op": "=",
+      "value": true,
+      "donVi": null,
+      "ngoaiTru": [],
+      "nguon": "nhom2927.nhom",
+      "trich": "Các hợp chất này, quan trọng nhất thuộc về các loại chất thơm, được đặc trưng bởi hai nguyên tử nitơ nối bằng nối đôi.",
+      "nguonLoai": "AI_DA_KIEM"
+    }
   ],
-  "tenDien": []
- },
- "dungTuNguon": [
-  "nhom2927.nhom",
-  "tax.29270010",
-  "tax.29270090",
-  "wco.292700"
- ],
- "phienBan": "HS2022",
- "taoBoi": {
-  "provider": "google-studio:gemini-flash",
-  "model": null,
-  "luc": "2026-11-02T10:50:30.104Z",
-  "ms": 4
- },
- "kiemTra": {
-  "tong": 4,
-  "dat": 4,
-  "loai": 0,
-  "nguonBiCat": []
- }
+  "loaiTru": [],
+  "phanBiet": [],
+  "tieuChi6": [],
+  "dong8": [
+    {
+      "hs": "29270010",
+      "dieuKien": "tên loại hàng: Azodicarbonamide",
+      "loaiKhac": false,
+      "nguon": "tax.29270010",
+      "trich": "29270010 - Azodicarbonamide",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Azodicarbonamide"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L9-20261111#soat-L9",
+          "ngay": "2026-11-11",
+          "bam": "3d610ae0675307d1fb9fb615133d238155c4f5bcfbd676918a5fa384ba5b7a94"
+        }
+      }
+    },
+    {
+      "hs": "29270090",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.29270090",
+      "trich": "29270090 - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "2927",
+        "truAnhEm": [
+          "29270010"
+        ],
+        "truDayDu": [
+          "29270010"
+        ],
+        "toTienCoTen": "2927",
+        "dinhNghiaDuoc": true
+      }
+    }
+  ],
+  "cay": {
+    "nguonLoai": "MAY_SUY",
+    "sinhTu": "lib/hs-tree.js",
+    "nut": [
+      {
+        "id": "2927",
+        "cap": 4,
+        "cha": "29",
+        "tenVi": "Hợp chất diazo-, azo- hoặc azoxy",
+        "tenEn": "Diazo-, azo- or azoxy-compounds",
+        "suyRa": false
+      },
+      {
+        "id": "29270010",
+        "cap": 8,
+        "cha": "2927",
+        "tenVi": "Azodicarbonamide",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "29270090",
+        "cap": 8,
+        "cha": "2927",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      }
+    ],
+    "tenDien": []
+  },
+  "dungTuNguon": [
+    "nhom2927.nhom",
+    "tax.29270010",
+    "tax.29270090",
+    "wco.292700"
+  ],
+  "phienBan": "HS2022",
+  "taoBoi": {
+    "provider": "google-studio:gemini-flash",
+    "model": null,
+    "luc": "2026-11-02T10:50:30.104Z",
+    "ms": 4
+  },
+  "kiemTra": {
+    "tong": 4,
+    "dat": 4,
+    "loai": 0,
+    "nguonBiCat": []
+  }
 }

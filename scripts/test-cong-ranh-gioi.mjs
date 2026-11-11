@@ -269,7 +269,30 @@ function nhap853641() {
   check('10n mục mang dấu chồng lấn vẫn qua checkItem của sổ tay', S.checkItem('dong8', d10, S.sourcesFor('8536'), '8536') === null);
 }
 
-// ── 11. Sắp TẤT ĐỊNH, không theo ICU của máy chạy (OZV-373) ───────────────────────────────────────────────────────
+// ── 11. Không làm mất ngưỡng số đang chạy (#1109, lô L13 nhóm 4009): sổ tay 40092110 có ngưỡng SEN (đường kính ≥ 15,24 cm…);
+// bản duyệt chỉ có khoá CO → apDung từ chối cong3-mat-nguong-so; dòng không có số cũ (Loại khác) không bị ảnh hưởng.
+{
+  const nhap400921 = () => ({
+    phienBan: 'ranh-gioi@1', pn6: '400921', nhom: '4009', trangThai: 'NHAP',
+    soanBoi: { vai: 'AI', phien: 'phien-soan-A', ngay: '2026-11-05' }, duyet: null, dieuKienNut: [],
+    dong8: [
+      { hs: '40092110', nguon: 'tax.40092110', trich: '40092110 - - - Ống hút và xả bùn dùng trong khai thác mỏ(SEN)', nguonLoai: 'AI_DA_KIEM', dieuKienSo: [{ fact: 'ongHutXaBunKhaiThacMo', op: 'CO' }] },
+      { hs: '40092190', nguon: 'tax.40092190', trich: '40092190 - - - Loại khác', nguonLoai: 'AI_DA_KIEM', dieuKienSo: [] },
+    ],
+    ghiChuSoan: [],
+  });
+  const soTay = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data/so-tay/4009.json'), 'utf8'));
+  const cu = soTay.dong8.find((d) => d.hs === '40092110');
+  check('11a sổ tay 40092110 đang có ngưỡng số SEN (tiền đề)', (cu?.dieuKienSo || []).some((c) => typeof c.value === 'number'), cu?.dieuKienSo);
+  let ok = null; let nem = null;
+  try { ok = C.duyet(nhap400921(), { phien: 'https://claude.ai/code/session_TEST#soat-11', ngay: '2026-11-11' }); } catch (e) { nem = e.message; }
+  check('11b bản nháp khoá CO tự nó qua cổng (lỗi chỉ lộ khi áp)', ok?.trangThai === 'DUYET', nem);
+  nem = null; try { C.apDung(ok, soTay); } catch (e) { nem = e.message; }
+  check('11c apDung từ chối bản làm mất ngưỡng số → cong3-mat-nguong-so:sen.40092110', /40092110:cong3-mat-nguong-so:sen\.40092110/.test(String(nem)), nem);
+  check('11d dòng Loại khác 40092190 (không có số cũ) không bị báo', !/40092190:cong3-mat-nguong-so/.test(String(nem)), nem);
+}
+
+// ── 12. Sắp TẤT ĐỊNH, không theo ICU của máy chạy (OZV-373) ───────────────────────────────────────────────────────
 // localeCompare phụ thuộc bản ICU: Node có ICU đầy đủ bỏ qua `~` như dấu nối ⇒ `<pn6>~r<dòng>` đứng TRƯỚC
 // `<pn6><chữ số>`; Node small-icu so thô ⇒ đứng SAU. Hai máy khác ICU sinh hai sổ tay khác byte, phá phép soát
 // "tính lại rồi so byte" (quy tắc 5) và làm git diff nhiễu. Phát hiện khi soát PR #1230 (8703/8708 lô L30).
@@ -280,11 +303,11 @@ function nhap853641() {
   const docSt = (h4) => JSON.parse(fs.readFileSync(path.join(process.cwd(), `data/so-tay/${h4}.json`), 'utf8'));
   const b690721 = docRg('690721');
   const soTay6907 = docSt('6907');
-  // 11a–11b: khoá sắp không phụ thuộc locale, và đặt `~r` trước chữ số (khớp ICU đầy đủ ⇒ không phá dữ liệu cũ).
-  check('11a sxTho đặt <pn6>~r<dòng> TRƯỚC <pn6><chữ số> (ví dụ của OZV-373)', SX.sxTho('870323~r16487', '8703232') === -1, SX.sxTho('870323~r16487', '8703232'));
-  check('11b sxTho giữ thứ tự chữ số thường + trả 0 khi bằng', SX.sxTho('85011021', '85011022') === -1 && SX.sxTho('8501102', '8501102') === 0);
+  // 12a–12b: khoá sắp không phụ thuộc locale, và đặt `~r` trước chữ số (khớp ICU đầy đủ ⇒ không phá dữ liệu cũ).
+  check('12a sxTho đặt <pn6>~r<dòng> TRƯỚC <pn6><chữ số> (ví dụ của OZV-373)', SX.sxTho('870323~r16487', '8703232') === -1, SX.sxTho('870323~r16487', '8703232'));
+  check('12b sxTho giữ thứ tự chữ số thường + trả 0 khi bằng', SX.sxTho('85011021', '85011022') === -1 && SX.sxTho('8501102', '8501102') === 0);
 
-  // 11c: HỒ SƠ HỒI QUY THẬT — 850110 là phân nhóm DUYET đã commit có CẢ HAI dạng id cạnh nhau
+  // 12c: HỒ SƠ HỒI QUY THẬT — 850110 là phân nhóm DUYET đã commit có CẢ HAI dạng id cạnh nhau
   // ('850110~r14830', '8501102', '850110~r14839', '8501105'). Chạy apDung rồi khẳng định thứ tự ĐÚNG MỘT KIỂU.
   const b850110 = docRg('850110');
   const soTay8501 = docSt('8501');
@@ -293,12 +316,12 @@ function nhap853641() {
   let idTrong = null; let apLoi = null;
   try { idTrong = C.apDung(b850110, soTay8501).dieuKienNut.filter((m) => T.chuanMa(m.id).startsWith('850110')).map((m) => T.chuanMa(m.id)); }
   catch (e) { apLoi = e.message; }
-  check('11c apDung(850110) sắp dieuKienNut một kiểu tất định: hai nút ~r trước hai tiêu đề chữ số',
+  check('12c apDung(850110) sắp dieuKienNut một kiểu tất định: hai nút ~r trước hai tiêu đề chữ số',
     apLoi === null && JSON.stringify(idTrong) === JSON.stringify(['850110~r14830', '850110~r14839', '8501102', '8501105']), apLoi || idTrong);
 
-  // 11d: CHỐT CỨNG — không một dòng nào trên đường bamRanhGioi + apDung được gọi localeCompare.
+  // 12d: CHỐT CỨNG — không một dòng nào trên đường bamRanhGioi + apDung được gọi localeCompare.
   // Đây là ca "tự phá được" trên MỌI máy: hoàn nguyên bất kỳ sort nào về localeCompare thì ca này ĐỎ,
-  // kể cả trên máy có ICU đầy đủ (nơi thứ tự ở 11c vô tình vẫn đúng nên so byte một mình không phát hiện).
+  // kể cả trên máy có ICU đầy đủ (nơi thứ tự ở 12c vô tình vẫn đúng nên so byte một mình không phát hiện).
   const goclc = String.prototype.localeCompare;
   const vet = [];
   String.prototype.localeCompare = function (...a) { vet.push(String(this)); return goclc.apply(this, a); };
@@ -306,20 +329,20 @@ function nhap853641() {
   try { C.bamRanhGioi(b850110); C.apDung(b850110, soTay8501); C.bamRanhGioi(b690721); C.apDung(b690721, soTay6907); }
   catch (e) { lcLoi = e.message; }
   finally { String.prototype.localeCompare = goclc; }
-  check('11d bamRanhGioi + apDung không gọi localeCompare lần nào (sắp dữ liệu ghi ra tệp phải tất định)',
+  check('12d bamRanhGioi + apDung không gọi localeCompare lần nào (sắp dữ liệu ghi ra tệp phải tất định)',
     lcLoi === null && vet.length === 0, lcLoi || vet.slice(0, 6));
 
-  // 11e: băm của 4 bản DUYET đã commit mà so thô NGUYÊN BẢN sẽ phá (`~` U+007E lớn hơn chữ số) vẫn khớp —
+  // 12e: băm của 4 bản DUYET đã commit mà so thô NGUYÊN BẢN sẽ phá (`~` U+007E lớn hơn chữ số) vẫn khớp —
   // chứng minh khoá `~`→\x00 không làm cong0-sua-sau-duyet giả trên dữ liệu cũ.
   const bamKhop = ['271012', '840991', '850110', '854442'].filter((pn) => {
     const b = docRg(pn);
     return b.trangThai === 'DUYET' && C.bamRanhGioi(b) === b.duyet.bam;
   });
-  check('11e 4 bản DUYET có cả hai dạng id: băm tính lại vẫn khớp duyet.bam đã commit', bamKhop.length === 4, bamKhop);
+  check('12e 4 bản DUYET có cả hai dạng id: băm tính lại vẫn khớp duyet.bam đã commit', bamKhop.length === 4, bamKhop);
 
-  // 11f: BO_VE sắp theo (ma, ve) riêng — 690721 có 've' tiếng Việt + mã trùng, nơi ghép `${ma}|${ve}`
+  // 12f: BO_VE sắp theo (ma, ve) riêng — 690721 có 've' tiếng Việt + mã trùng, nơi ghép `${ma}|${ve}`
   // rồi so thô một lần sẽ ĐẢO thứ tự so với bản đã duyệt.
-  check('11f băm 690721 (BO_VE có ve tiếng Việt + mã trùng) khớp duyet.bam đã commit',
+  check('12f băm 690721 (BO_VE có ve tiếng Việt + mã trùng) khớp duyet.bam đã commit',
     b690721.trangThai === 'DUYET' && C.bamRanhGioi(b690721) === b690721.duyet.bam, C.bamRanhGioi(b690721));
 }
 

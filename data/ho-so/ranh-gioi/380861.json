@@ -4,7 +4,7 @@
   "nhom": "3808",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1704#soan-380861",
@@ -138,6 +138,13 @@
       "ma": "38086190",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.38086190 \"Loại khác\" trần ⇒ không ghi điều kiện (máy phủ định anh em)."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L11-20261111#soat-L11",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 380861:38086130 THU HẸP: 'Dạng bình xịt' / EN 'In aerosol cans' ghi tenLoai 'Dạng bình xịt' + dangBinhXit CO; (B) 380861:38086140 THU HẸP: 'Loại khác, dạng lỏng' / EN 'Other, in liquid form' ghi tenLoai 'dạng lỏng' + dangLong CO. 'Dạng bình xịt', 'dạng lỏng' là dạng, không phải tên loại; tenLoai thêm vào chỉ để né cổng 2 (ghi chú người soạn: 'báo chồng lấn giả') — tức ép điều kiện cho máy xanh. Hệ quả đo bằng danhGiaTuChu: 'Thuốc trừ muỗi dạng bình xịt' ⇒ tenLoai TRAI tất định (dangBinhXit THOA) ⇒ không vào .30; 'Thuốc trừ muỗi dạng lỏng' ⇒ TRAI tất định ⇒ không vào .40; 'Bình xịt diệt muỗi' ⇒ tenLoai không tất định ⇒ .30 không bao giờ tự chốt. Sửa: chỉ dangBinhXit CO / dangLong CO; chồng lấn dạng-chế-phẩm ↔ dạng-đóng-gói xử lý bằng thứ tự 'Loại khác' (CON_LAI) hoặc chongLanVanBan, không bằng tenLoai giả. Cùng lỗi tenLoai thừa (hẹp hơn khoá tất định) ở .10/.20."
     }
   ]
 }

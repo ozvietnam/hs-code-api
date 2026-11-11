@@ -1,551 +1,610 @@
 {
- "nhom": "3002",
- "phamVi": {
-  "text": "Máu người; máu động vật điều chế dùng cho phòng, chữa bệnh hoặc chẩn đoán; kháng huyết thanh, các phân đoạn máu và các sản phẩm miễn dịch; vắc-xin, độc tố, sinh khối vi sinh vật (trừ nấm men) và các sản phẩm tương tự; tế bào nuôi cấy.",
-  "nguon": "nhom3002.nhom",
-  "trich": "Nhóm này bao gồm: … (A) Máu người … (B) Máu động vật đã được điều chế dùng cho phòng bệnh, chữa bệnh hoặc chẩn đoán bệnh. … (C) Các kháng huyết thanh, các phần khác của máu và các sản phẩm miễn dịch … (D) Các loại vacxin, chất độc, các vi sinh nuôi cấy (trừ các loại men) và các sản phẩm tương tự. … (E) Tế bào nuôi cấy, có hoặc không cải biến",
-  "nguonLoai": "AI_DA_KIEM"
- },
- "dieuKienVao": [
-  {
-   "fact": "la_mau_nguoi_hoac_mau_dong_vat_dieu_che",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "nhom3002.nhom",
-   "trich": "Máu người (ví dụ, máu người đựng trong ống thuốc gắn kín).",
-   "nguonLoai": "AI_DA_KIEM"
+  "nhom": "3002",
+  "phamVi": {
+    "text": "Máu người; máu động vật điều chế dùng cho phòng, chữa bệnh hoặc chẩn đoán; kháng huyết thanh, các phân đoạn máu và các sản phẩm miễn dịch; vắc-xin, độc tố, sinh khối vi sinh vật (trừ nấm men) và các sản phẩm tương tự; tế bào nuôi cấy.",
+    "nguon": "nhom3002.nhom",
+    "trich": "Nhóm này bao gồm: … (A) Máu người … (B) Máu động vật đã được điều chế dùng cho phòng bệnh, chữa bệnh hoặc chẩn đoán bệnh. … (C) Các kháng huyết thanh, các phần khác của máu và các sản phẩm miễn dịch … (D) Các loại vacxin, chất độc, các vi sinh nuôi cấy (trừ các loại men) và các sản phẩm tương tự. … (E) Tế bào nuôi cấy, có hoặc không cải biến",
+    "nguonLoai": "AI_DA_KIEM"
   },
-  {
-   "fact": "la_khang_huyet_thanh_phan_khac_cua_mau_hoac_san_pham_mien_dich",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "nhom3002.nhom",
-   "trich": "Các kháng huyết thanh, các phần khác của máu và các sản phẩm miễn dịch, có hoặc không cải biến hoặc thu được bằng quy trình công nghệ sinh học.",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "fact": "la_vacxin_chat_doc_vi_sinh_nuoi_cay",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "nhom3002.nhom",
-   "trich": "Các loại vacxin, chất độc, các vi sinh nuôi cấy (trừ các loại men) và các sản phẩm tương tự.",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "fact": "la_te_bao_nuoi_cay",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "nhom3002.nhom",
-   "trich": "Tế bào nuôi cấy, có hoặc không cải biến",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "loaiTru": [
-  {
-   "dieuKien": "Máu động vật chưa được điều chế để sử dụng",
-   "sangNhom": "0511",
-   "nguon": "nhom3002.nhom",
-   "trich": "Máu động vật chưa được điều chế để sử dụng được phân loại vào nhóm 05.11.",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "dieuKien": "Các alkaloid",
-   "sangNhom": "2939",
-   "nguon": "nhom3002.nhom",
-   "trich": "Những chất độc này không bao gồm các alkaloid (nhóm 29.39).",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "dieuKien": "Vắc xin được đóng gói trong các bộ dụng cụ thử nghiệm lâm sàng được công nhận",
-   "sangNhom": "3006",
-   "nguon": "nhom3002.nhom",
-   "trich": "Nhóm này không bao gồm các loại vắc xin được đóng gói trong các bộ dụng cụ dành cho các thử nghiệm lâm sàng được công nhận (nhóm 30.06)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "dieuKien": "Chất thử dùng trong chẩn đoán bệnh nêu ở Chú giải 4(d) Chương 30",
-   "sangNhom": "3006",
-   "nguon": "nhom3002.nhom",
-   "trich": "Nhóm này cũng gồm các chất thử dùng trong chẩn đoán bệnh có nguồn gốc vi sinh, trừ các chất đã được ghi trong Chú giải 4(d) của Chương này - xem nhóm 30.06.",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "dieuKien": "Albumin máu chưa điều chế dùng cho phòng bệnh hoặc chữa bệnh",
-   "sangNhom": "3502",
-   "nguon": "nhom3002.nhom",
-   "trich": "Nhóm này không bao gồm albumin máu chưa điều chế dùng cho phòng bệnh hoặc chữa bệnh (nhóm 35.02)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "dieuKien": "Globulin trừ globulin máu và globulin huyết thanh",
-   "sangNhom": "3504",
-   "nguon": "nhom3002.nhom",
-   "trich": "hoặc các globulin (trừ globulin máu và globulin huyết thanh) (nhóm 35.04).",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "dieuKien": "Các enzym kể cả có nguồn gốc vi sinh",
-   "sangNhom": "3507",
-   "nguon": "nhom3002.nhom",
-   "trich": "Nhóm này không bao gồm các enzym (rennet, amylase, v.v...) ngay cả khi chúng có nguồn gốc vi sinh (streptokinase, streptodonase, v.v.) (nhóm 35.07)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "dieuKien": "Các vi sinh đơn bào đã chết (trừ vắc xin)",
-   "sangNhom": "2102",
-   "nguon": "nhom3002.nhom",
-   "trich": "hoặc các vi sinh đơn bào đã chết (trừ các vắc xin) (nhóm 21.02).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "phanBiet": [
-  {
-   "hoi": "Hàng là máu động vật chưa được điều chế để sử dụng?",
-   "neuCo": "0511",
-   "neuKhong": "3002",
-   "nguon": "nhom3002.nhom",
-   "trich": "Máu động vật chưa được điều chế để sử dụng được phân loại vào nhóm 05.11.",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hoi": "Hàng là các alkaloid?",
-   "neuCo": "2939",
-   "neuKhong": "3002",
-   "nguon": "nhom3002.nhom",
-   "trich": "Những chất độc này không bao gồm các alkaloid (nhóm 29.39).",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hoi": "Hàng là vắc xin trong bộ dụng cụ thử nghiệm lâm sàng công nhận?",
-   "neuCo": "3006",
-   "neuKhong": "3002",
-   "nguon": "nhom3002.nhom",
-   "trich": "Nhóm này không bao gồm các loại vắc xin được đóng gói trong các bộ dụng cụ dành cho các thử nghiệm lâm sàng được công nhận (nhóm 30.06)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hoi": "Hàng là thuốc thử chẩn đoán nguồn vi sinh thuộc Chú giải 4(d) Chương 30?",
-   "neuCo": "3006",
-   "neuKhong": "3002",
-   "nguon": "nhom3002.nhom",
-   "trich": "Nhóm này cũng gồm các chất thử dùng trong chẩn đoán bệnh có nguồn gốc vi sinh, trừ các chất đã được ghi trong Chú giải 4(d) của Chương này - xem nhóm 30.06.",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hoi": "Hàng là albumin máu chưa điều chế dùng cho phòng hoặc chữa bệnh?",
-   "neuCo": "3502",
-   "neuKhong": "3002",
-   "nguon": "nhom3002.nhom",
-   "trich": "Nhóm này không bao gồm albumin máu chưa điều chế dùng cho phòng bệnh hoặc chữa bệnh (nhóm 35.02)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hoi": "Hàng là globulin trừ globulin máu và globulin huyết thanh?",
-   "neuCo": "3504",
-   "neuKhong": "3002",
-   "nguon": "nhom3002.nhom",
-   "trich": "hoặc các globulin (trừ globulin máu và globulin huyết thanh) (nhóm 35.04).",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hoi": "Hàng là các enzym (kể cả có nguồn gốc vi sinh)?",
-   "neuCo": "3507",
-   "neuKhong": "3002",
-   "nguon": "nhom3002.nhom",
-   "trich": "Nhóm này không bao gồm các enzym (rennet, amylase, v.v...) ngay cả khi chúng có nguồn gốc vi sinh (streptokinase, streptodonase, v.v.) (nhóm 35.07)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hoi": "Hàng là các vi sinh đơn bào đã chết (trừ vắc xin)?",
-   "neuCo": "2102",
-   "neuKhong": "3002",
-   "nguon": "nhom3002.nhom",
-   "trich": "hoặc các vi sinh đơn bào đã chết (trừ các vắc xin) (nhóm 21.02).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "tieuChi6": [],
- "dong8": [
-  {
-   "hs": "30021210",
-   "dieuKien": "Kháng huyết thanh; dung dịch đạm huyết thanh; bột hemoglobin",
-   "loaiKhac": false,
-   "nguon": "tax.30021210",
-   "trich": "30021210 - - - Kháng huyết thanh; dung dịch đạm huyết thanh; bột hemoglobin",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "30021290",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.30021290",
-   "trich": "30021290 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "300212",
-    "truAnhEm": [
-     "30021210"
-    ],
-    "truDayDu": [
-     "30021210"
-    ],
-    "toTienCoTen": "300212",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "30021300",
-   "dieuKien": "Các sản phẩm miễn dịch, chưa được pha trộn, chưa đóng gói theo liều lượng hoặc làm thành dạng nhất định hoặc đóng gói để bán lẻ",
-   "loaiKhac": false,
-   "nguon": "tax.30021300",
-   "trich": "30021300 - - Các sản phẩm miễn dịch, chưa được pha trộn, chưa đóng gói theo liều lượng hoặc làm thành dạng nhất định hoặc đóng gói để bán lẻ",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "30021400",
-   "dieuKien": "Các sản phẩm miễn dịch, được pha trộn, chưa đóng gói theo liều lượng hoặc làm thành dạng nhất định hoặc đóng gói để bán lẻ",
-   "loaiKhac": false,
-   "nguon": "tax.30021400",
-   "trich": "30021400 - - Các sản phẩm miễn dịch, được pha trộn, chưa đóng gói theo liều lượng hoặc làm thành dạng nhất định hoặc đóng gói để bán lẻ",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "30021500",
-   "dieuKien": "Các sản phẩm miễn dịch, đóng gói theo liều lượng hoặc làm thành dạng nhất định hoặc đóng gói để bán lẻ",
-   "loaiKhac": false,
-   "nguon": "tax.30021500",
-   "trich": "30021500 - - Các sản phẩm miễn dịch, đóng gói theo liều lượng hoặc làm thành dạng nhất định hoặc đóng gói để bán lẻ",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "30024110",
-   "dieuKien": "Vắc xin uốn ván",
-   "loaiKhac": false,
-   "nguon": "tax.30024110",
-   "trich": "30024110 - - - Vắc xin uốn ván",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "30024120",
-   "dieuKien": "Vắc xin ho gà, sởi, viêm màng não hoặc bại liệt",
-   "loaiKhac": false,
-   "nguon": "tax.30024120",
-   "trich": "30024120 - - - Vắc xin ho gà, sởi, viêm màng não hoặc bại liệt",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "30024190",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.30024190",
-   "trich": "30024190 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "300241",
-    "truAnhEm": [
-     "30024110",
-     "30024120"
-    ],
-    "truDayDu": [
-     "30024110",
-     "30024120"
-    ],
-    "toTienCoTen": "300241",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "30024200",
-   "dieuKien": "Vắc xin thú y",
-   "loaiKhac": false,
-   "nguon": "tax.30024200",
-   "trich": "30024200 - - Vắc xin thú y",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "30024900",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.30024900",
-   "trich": "30024900 - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "30024",
-    "truAnhEm": [
-     "300241",
-     "30024200"
-    ],
-    "truDayDu": [
-     "300241",
-     "30024200"
-    ],
-    "toTienCoTen": "3002",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "30025100",
-   "dieuKien": "Các sản phẩm liệu pháp tế bào",
-   "loaiKhac": false,
-   "nguon": "tax.30025100",
-   "trich": "30025100 - - Các sản phẩm liệu pháp tế bào",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "30025900",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.30025900",
-   "trich": "30025900 - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "30025",
-    "truAnhEm": [
-     "30025100"
-    ],
-    "truDayDu": [
-     "30025100"
-    ],
-    "toTienCoTen": "3002",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "30029000",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.30029000",
-   "trich": "30029000 - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "3002",
-    "truAnhEm": [
-     "30021",
-     "30024",
-     "30025"
-    ],
-    "truDayDu": [
-     "30021",
-     "30024",
-     "30025"
-    ],
-    "toTienCoTen": "3002",
-    "dinhNghiaDuoc": true
-   }
-  }
- ],
- "cay": {
-  "nguonLoai": "MAY_SUY",
-  "sinhTu": "lib/hs-tree.js",
-  "nut": [
-   {
-    "id": "3002",
-    "cap": 4,
-    "cha": "30",
-    "tenVi": "Máu người; máu động vật đã điều chế dùng cho chữa bệnh, phòng bệnh hoặc chẩn đoán bệnh; kháng huyết thanh, các phần phân đoạn khác của máu và các sản phẩm miễn dịch, có hoặc không được cải biến hoặc thu được từ quy trình công nghệ sinh học; vắc xin, độc tố, vi sinh nuôi cấy (trừ các loại men) và các sản phẩm tương tự; tế bào nuôi cấy, có hoặc không cải biến (+).",
-    "tenEn": "Human blood; animal blood for therapeutic, prophylactic or diagnostic uses; antisera, other blood fractions, immunological products, modified or obtained by biotechnological processes; vaccines, toxins, cultures of micro-organisms (excluding yeasts) etc",
-    "suyRa": false
-   },
-   {
-    "id": "30021",
-    "cap": "NHOM_MOT_GACH",
-    "cha": "3002",
-    "tenVi": "Kháng huyết thanh, các phần phân đoạn khác của máu và các sản phẩm miễn dịch, có hoặc không cải biến hoặc thu được từ quy trình công nghệ sinh học",
-    "tenEn": "Antisera, other blood fractions and immunological products, whether or not modified or obtained by means of biotechnological processes",
-    "suyRa": true
-   },
-   {
-    "id": "300212",
-    "cap": 6,
-    "cha": "30021",
-    "tenVi": "Kháng huyết thanh và các phần phân đoạn khác của máu",
-    "tenEn": "Blood, human or animal, antisera, other blood fractions and immunological products; antisera and other blood fractions",
-    "suyRa": false
-   },
-   {
-    "id": "30021210",
-    "cap": 8,
-    "cha": "300212",
-    "tenVi": "Kháng huyết thanh; dung dịch đạm huyết thanh; bột hemoglobin",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "30021290",
-    "cap": 8,
-    "cha": "300212",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "30021300",
-    "cap": 8,
-    "cha": "30021",
-    "tenVi": "Các sản phẩm miễn dịch, chưa được pha trộn, chưa đóng gói theo liều lượng hoặc làm thành dạng nhất định hoặc đóng gói để bán lẻ",
-    "tenEn": "Blood, human or animal, antisera, other blood fractions and immunological products; immunological products, unmixed, not put up in measured doses or in forms or packings for retail sale",
-    "suyRa": false,
-    "laPhanNhom": "300213"
-   },
-   {
-    "id": "30021400",
-    "cap": 8,
-    "cha": "30021",
-    "tenVi": "Các sản phẩm miễn dịch, được pha trộn, chưa đóng gói theo liều lượng hoặc làm thành dạng nhất định hoặc đóng gói để bán lẻ",
-    "tenEn": "Blood, human or animal, antisera, other blood fractions and immunological products; immunological products, mixed, put up in measured doses or in forms or packings for retail sale",
-    "suyRa": false,
-    "laPhanNhom": "300214"
-   },
-   {
-    "id": "30021500",
-    "cap": 8,
-    "cha": "30021",
-    "tenVi": "Các sản phẩm miễn dịch, đóng gói theo liều lượng hoặc làm thành dạng nhất định hoặc đóng gói để bán lẻ",
-    "tenEn": "Blood, human or animal, antisera, other blood fractions and immunological products; immunological products, put up in measured doses or in forms or packings for retail sale",
-    "suyRa": false,
-    "laPhanNhom": "300215"
-   },
-   {
-    "id": "30024",
-    "cap": "NHOM_MOT_GACH",
-    "cha": "3002",
-    "tenVi": "Vắc xin, độc tố, vi sinh nuôi cấy (trừ các loại men) và các sản phẩm tương tự",
-    "tenEn": "Vaccines, toxins, cultures of micro-organisms (excluding yeasts) and similar products",
-    "suyRa": true
-   },
-   {
-    "id": "300241",
-    "cap": 6,
-    "cha": "30024",
-    "tenVi": "Vắc xin cho người",
-    "tenEn": "Vaccines, toxins, cultures of micro-organisms (excluding yeasts) and similar products; for human medicine",
-    "suyRa": false
-   },
-   {
-    "id": "30024110",
-    "cap": 8,
-    "cha": "300241",
-    "tenVi": "Vắc xin uốn ván",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "30024120",
-    "cap": 8,
-    "cha": "300241",
-    "tenVi": "Vắc xin ho gà, sởi, viêm màng não hoặc bại liệt",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "30024190",
-    "cap": 8,
-    "cha": "300241",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "30024200",
-    "cap": 8,
-    "cha": "30024",
-    "tenVi": "Vắc xin thú y",
-    "tenEn": "Vaccines, toxins, cultures of micro-organisms (excluding yeasts) and similar products; for veterinary medicine",
-    "suyRa": false,
-    "laPhanNhom": "300242"
-   },
-   {
-    "id": "30024900",
-    "cap": 8,
-    "cha": "30024",
-    "tenVi": "Loại khác",
-    "tenEn": "Toxins, cultures of micro-organisms (excluding yeasts) and similar products; n.e.c. in item 3002.3",
-    "suyRa": false,
-    "loaiKhac": true,
-    "laPhanNhom": "300249"
-   },
-   {
-    "id": "30025",
-    "cap": "NHOM_MOT_GACH",
-    "cha": "3002",
-    "tenVi": "Tế bào nuôi cấy, có hoặc không cải biến",
-    "tenEn": "Cell cultures, whether or not modified",
-    "suyRa": true
-   },
-   {
-    "id": "30025100",
-    "cap": 8,
-    "cha": "30025",
-    "tenVi": "Các sản phẩm liệu pháp tế bào",
-    "tenEn": "Cell cultures, whether or not modified; cell therapy products",
-    "suyRa": false,
-    "laPhanNhom": "300251"
-   },
-   {
-    "id": "30025900",
-    "cap": 8,
-    "cha": "30025",
-    "tenVi": "Loại khác",
-    "tenEn": "Cell cultures, whether or not modified; other cell cultures not including cell therapy products",
-    "suyRa": false,
-    "loaiKhac": true,
-    "laPhanNhom": "300259"
-   },
-   {
-    "id": "30029000",
-    "cap": 8,
-    "cha": "3002",
-    "tenVi": "Loại khác",
-    "tenEn": "Toxins, cultures of micro-organisms (excluding yeasts) and similar products",
-    "suyRa": false,
-    "loaiKhac": true,
-    "laPhanNhom": "300290"
-   }
+  "dieuKienVao": [
+    {
+      "fact": "la_mau_nguoi_hoac_mau_dong_vat_dieu_che",
+      "op": "=",
+      "value": true,
+      "donVi": null,
+      "ngoaiTru": [],
+      "nguon": "nhom3002.nhom",
+      "trich": "Máu người (ví dụ, máu người đựng trong ống thuốc gắn kín).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "fact": "la_khang_huyet_thanh_phan_khac_cua_mau_hoac_san_pham_mien_dich",
+      "op": "=",
+      "value": true,
+      "donVi": null,
+      "ngoaiTru": [],
+      "nguon": "nhom3002.nhom",
+      "trich": "Các kháng huyết thanh, các phần khác của máu và các sản phẩm miễn dịch, có hoặc không cải biến hoặc thu được bằng quy trình công nghệ sinh học.",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "fact": "la_vacxin_chat_doc_vi_sinh_nuoi_cay",
+      "op": "=",
+      "value": true,
+      "donVi": null,
+      "ngoaiTru": [],
+      "nguon": "nhom3002.nhom",
+      "trich": "Các loại vacxin, chất độc, các vi sinh nuôi cấy (trừ các loại men) và các sản phẩm tương tự.",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "fact": "la_te_bao_nuoi_cay",
+      "op": "=",
+      "value": true,
+      "donVi": null,
+      "ngoaiTru": [],
+      "nguon": "nhom3002.nhom",
+      "trich": "Tế bào nuôi cấy, có hoặc không cải biến",
+      "nguonLoai": "AI_DA_KIEM"
+    }
   ],
-  "tenDien": []
- },
- "dungTuNguon": [
-  "nhom3002.nhom",
-  "tax.30021210",
-  "tax.30021290",
-  "tax.30021300",
-  "tax.30021400",
-  "tax.30021500",
-  "tax.30024110",
-  "tax.30024120",
-  "tax.30024190",
-  "tax.30024200",
-  "tax.30024900",
-  "tax.30025100",
-  "tax.30025900",
-  "tax.30029000"
- ],
- "phienBan": "HS2022",
- "taoBoi": {
-  "provider": "google-studio:gemini-flash",
-  "model": null,
-  "luc": "2026-11-02T11:18:11.843Z",
-  "ms": 18
- },
- "kiemTra": {
-  "tong": 34,
-  "dat": 34,
-  "loai": 0,
-  "nguonBiCat": []
- }
+  "loaiTru": [
+    {
+      "dieuKien": "Máu động vật chưa được điều chế để sử dụng",
+      "sangNhom": "0511",
+      "nguon": "nhom3002.nhom",
+      "trich": "Máu động vật chưa được điều chế để sử dụng được phân loại vào nhóm 05.11.",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "dieuKien": "Các alkaloid",
+      "sangNhom": "2939",
+      "nguon": "nhom3002.nhom",
+      "trich": "Những chất độc này không bao gồm các alkaloid (nhóm 29.39).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "dieuKien": "Vắc xin được đóng gói trong các bộ dụng cụ thử nghiệm lâm sàng được công nhận",
+      "sangNhom": "3006",
+      "nguon": "nhom3002.nhom",
+      "trich": "Nhóm này không bao gồm các loại vắc xin được đóng gói trong các bộ dụng cụ dành cho các thử nghiệm lâm sàng được công nhận (nhóm 30.06)",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "dieuKien": "Chất thử dùng trong chẩn đoán bệnh nêu ở Chú giải 4(d) Chương 30",
+      "sangNhom": "3006",
+      "nguon": "nhom3002.nhom",
+      "trich": "Nhóm này cũng gồm các chất thử dùng trong chẩn đoán bệnh có nguồn gốc vi sinh, trừ các chất đã được ghi trong Chú giải 4(d) của Chương này - xem nhóm 30.06.",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "dieuKien": "Albumin máu chưa điều chế dùng cho phòng bệnh hoặc chữa bệnh",
+      "sangNhom": "3502",
+      "nguon": "nhom3002.nhom",
+      "trich": "Nhóm này không bao gồm albumin máu chưa điều chế dùng cho phòng bệnh hoặc chữa bệnh (nhóm 35.02)",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "dieuKien": "Globulin trừ globulin máu và globulin huyết thanh",
+      "sangNhom": "3504",
+      "nguon": "nhom3002.nhom",
+      "trich": "hoặc các globulin (trừ globulin máu và globulin huyết thanh) (nhóm 35.04).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "dieuKien": "Các enzym kể cả có nguồn gốc vi sinh",
+      "sangNhom": "3507",
+      "nguon": "nhom3002.nhom",
+      "trich": "Nhóm này không bao gồm các enzym (rennet, amylase, v.v...) ngay cả khi chúng có nguồn gốc vi sinh (streptokinase, streptodonase, v.v.) (nhóm 35.07)",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "dieuKien": "Các vi sinh đơn bào đã chết (trừ vắc xin)",
+      "sangNhom": "2102",
+      "nguon": "nhom3002.nhom",
+      "trich": "hoặc các vi sinh đơn bào đã chết (trừ các vắc xin) (nhóm 21.02).",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "phanBiet": [
+    {
+      "hoi": "Hàng là máu động vật chưa được điều chế để sử dụng?",
+      "neuCo": "0511",
+      "neuKhong": "3002",
+      "nguon": "nhom3002.nhom",
+      "trich": "Máu động vật chưa được điều chế để sử dụng được phân loại vào nhóm 05.11.",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hoi": "Hàng là các alkaloid?",
+      "neuCo": "2939",
+      "neuKhong": "3002",
+      "nguon": "nhom3002.nhom",
+      "trich": "Những chất độc này không bao gồm các alkaloid (nhóm 29.39).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hoi": "Hàng là vắc xin trong bộ dụng cụ thử nghiệm lâm sàng công nhận?",
+      "neuCo": "3006",
+      "neuKhong": "3002",
+      "nguon": "nhom3002.nhom",
+      "trich": "Nhóm này không bao gồm các loại vắc xin được đóng gói trong các bộ dụng cụ dành cho các thử nghiệm lâm sàng được công nhận (nhóm 30.06)",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hoi": "Hàng là thuốc thử chẩn đoán nguồn vi sinh thuộc Chú giải 4(d) Chương 30?",
+      "neuCo": "3006",
+      "neuKhong": "3002",
+      "nguon": "nhom3002.nhom",
+      "trich": "Nhóm này cũng gồm các chất thử dùng trong chẩn đoán bệnh có nguồn gốc vi sinh, trừ các chất đã được ghi trong Chú giải 4(d) của Chương này - xem nhóm 30.06.",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hoi": "Hàng là albumin máu chưa điều chế dùng cho phòng hoặc chữa bệnh?",
+      "neuCo": "3502",
+      "neuKhong": "3002",
+      "nguon": "nhom3002.nhom",
+      "trich": "Nhóm này không bao gồm albumin máu chưa điều chế dùng cho phòng bệnh hoặc chữa bệnh (nhóm 35.02)",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hoi": "Hàng là globulin trừ globulin máu và globulin huyết thanh?",
+      "neuCo": "3504",
+      "neuKhong": "3002",
+      "nguon": "nhom3002.nhom",
+      "trich": "hoặc các globulin (trừ globulin máu và globulin huyết thanh) (nhóm 35.04).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hoi": "Hàng là các enzym (kể cả có nguồn gốc vi sinh)?",
+      "neuCo": "3507",
+      "neuKhong": "3002",
+      "nguon": "nhom3002.nhom",
+      "trich": "Nhóm này không bao gồm các enzym (rennet, amylase, v.v...) ngay cả khi chúng có nguồn gốc vi sinh (streptokinase, streptodonase, v.v.) (nhóm 35.07)",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hoi": "Hàng là các vi sinh đơn bào đã chết (trừ vắc xin)?",
+      "neuCo": "2102",
+      "neuKhong": "3002",
+      "nguon": "nhom3002.nhom",
+      "trich": "hoặc các vi sinh đơn bào đã chết (trừ các vắc xin) (nhóm 21.02).",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "tieuChi6": [],
+  "dong8": [
+    {
+      "hs": "30021210",
+      "dieuKien": "tên loại hàng: Kháng huyết thanh hoặc dung dịch đạm huyết thanh hoặc bột hemoglobin",
+      "loaiKhac": false,
+      "nguon": "tax.30021210",
+      "trich": "30021210 - - - Kháng huyết thanh; dung dịch đạm huyết thanh; bột hemoglobin",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Kháng huyết thanh",
+            "dung dịch đạm huyết thanh",
+            "bột hemoglobin"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L9-20261111#soat-L9",
+          "ngay": "2026-11-11",
+          "bam": "07ea633a0eff8214b9a8666bd6bfcaf9b18a14c081e71bd54b5555d2cc98728f"
+        }
+      }
+    },
+    {
+      "hs": "30021290",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.30021290",
+      "trich": "30021290 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "300212",
+        "truAnhEm": [
+          "30021210"
+        ],
+        "truDayDu": [
+          "30021210"
+        ],
+        "toTienCoTen": "300212",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "30021300",
+      "dieuKien": "Các sản phẩm miễn dịch, chưa được pha trộn, chưa đóng gói theo liều lượng hoặc làm thành dạng nhất định hoặc đóng gói để bán lẻ",
+      "loaiKhac": false,
+      "nguon": "tax.30021300",
+      "trich": "30021300 - - Các sản phẩm miễn dịch, chưa được pha trộn, chưa đóng gói theo liều lượng hoặc làm thành dạng nhất định hoặc đóng gói để bán lẻ",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "30021400",
+      "dieuKien": "Các sản phẩm miễn dịch, được pha trộn, chưa đóng gói theo liều lượng hoặc làm thành dạng nhất định hoặc đóng gói để bán lẻ",
+      "loaiKhac": false,
+      "nguon": "tax.30021400",
+      "trich": "30021400 - - Các sản phẩm miễn dịch, được pha trộn, chưa đóng gói theo liều lượng hoặc làm thành dạng nhất định hoặc đóng gói để bán lẻ",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "30021500",
+      "dieuKien": "Các sản phẩm miễn dịch, đóng gói theo liều lượng hoặc làm thành dạng nhất định hoặc đóng gói để bán lẻ",
+      "loaiKhac": false,
+      "nguon": "tax.30021500",
+      "trich": "30021500 - - Các sản phẩm miễn dịch, đóng gói theo liều lượng hoặc làm thành dạng nhất định hoặc đóng gói để bán lẻ",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "30024110",
+      "dieuKien": "tên loại hàng: Vắc xin uốn ván",
+      "loaiKhac": false,
+      "nguon": "tax.30024110",
+      "trich": "30024110 - - - Vắc xin uốn ván",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Vắc xin uốn ván"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L9-20261111#soat-L9",
+          "ngay": "2026-11-11",
+          "bam": "6d0f11d88ccda6c41c463d80cceedf5a337e8fa86a2f533a954605fe6a7f2139"
+        }
+      }
+    },
+    {
+      "hs": "30024120",
+      "dieuKien": "tên loại hàng: Vắc xin; tên loại hàng: ho gà hoặc sởi hoặc viêm màng não hoặc bại liệt",
+      "loaiKhac": false,
+      "nguon": "tax.30024120",
+      "trich": "30024120 - - - Vắc xin ho gà, sởi, viêm màng não hoặc bại liệt",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Vắc xin"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "ho gà",
+            "sởi",
+            "viêm màng não",
+            "bại liệt"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L9-20261111#soat-L9",
+          "ngay": "2026-11-11",
+          "bam": "6d0f11d88ccda6c41c463d80cceedf5a337e8fa86a2f533a954605fe6a7f2139"
+        }
+      }
+    },
+    {
+      "hs": "30024190",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.30024190",
+      "trich": "30024190 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "300241",
+        "truAnhEm": [
+          "30024110",
+          "30024120"
+        ],
+        "truDayDu": [
+          "30024110",
+          "30024120"
+        ],
+        "toTienCoTen": "300241",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "30024200",
+      "dieuKien": "Vắc xin thú y",
+      "loaiKhac": false,
+      "nguon": "tax.30024200",
+      "trich": "30024200 - - Vắc xin thú y",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "30024900",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.30024900",
+      "trich": "30024900 - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "30024",
+        "truAnhEm": [
+          "300241",
+          "30024200"
+        ],
+        "truDayDu": [
+          "300241",
+          "30024200"
+        ],
+        "toTienCoTen": "3002",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "30025100",
+      "dieuKien": "Các sản phẩm liệu pháp tế bào",
+      "loaiKhac": false,
+      "nguon": "tax.30025100",
+      "trich": "30025100 - - Các sản phẩm liệu pháp tế bào",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "30025900",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.30025900",
+      "trich": "30025900 - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "30025",
+        "truAnhEm": [
+          "30025100"
+        ],
+        "truDayDu": [
+          "30025100"
+        ],
+        "toTienCoTen": "3002",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "30029000",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.30029000",
+      "trich": "30029000 - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "3002",
+        "truAnhEm": [
+          "30021",
+          "30024",
+          "30025"
+        ],
+        "truDayDu": [
+          "30021",
+          "30024",
+          "30025"
+        ],
+        "toTienCoTen": "3002",
+        "dinhNghiaDuoc": true
+      }
+    }
+  ],
+  "cay": {
+    "nguonLoai": "MAY_SUY",
+    "sinhTu": "lib/hs-tree.js",
+    "nut": [
+      {
+        "id": "3002",
+        "cap": 4,
+        "cha": "30",
+        "tenVi": "Máu người; máu động vật đã điều chế dùng cho chữa bệnh, phòng bệnh hoặc chẩn đoán bệnh; kháng huyết thanh, các phần phân đoạn khác của máu và các sản phẩm miễn dịch, có hoặc không được cải biến hoặc thu được từ quy trình công nghệ sinh học; vắc xin, độc tố, vi sinh nuôi cấy (trừ các loại men) và các sản phẩm tương tự; tế bào nuôi cấy, có hoặc không cải biến (+).",
+        "tenEn": "Human blood; animal blood for therapeutic, prophylactic or diagnostic uses; antisera, other blood fractions, immunological products, modified or obtained by biotechnological processes; vaccines, toxins, cultures of micro-organisms (excluding yeasts) etc",
+        "suyRa": false
+      },
+      {
+        "id": "30021",
+        "cap": "NHOM_MOT_GACH",
+        "cha": "3002",
+        "tenVi": "Kháng huyết thanh, các phần phân đoạn khác của máu và các sản phẩm miễn dịch, có hoặc không cải biến hoặc thu được từ quy trình công nghệ sinh học",
+        "tenEn": "Antisera, other blood fractions and immunological products, whether or not modified or obtained by means of biotechnological processes",
+        "suyRa": true
+      },
+      {
+        "id": "300212",
+        "cap": 6,
+        "cha": "30021",
+        "tenVi": "Kháng huyết thanh và các phần phân đoạn khác của máu",
+        "tenEn": "Blood, human or animal, antisera, other blood fractions and immunological products; antisera and other blood fractions",
+        "suyRa": false
+      },
+      {
+        "id": "30021210",
+        "cap": 8,
+        "cha": "300212",
+        "tenVi": "Kháng huyết thanh; dung dịch đạm huyết thanh; bột hemoglobin",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "30021290",
+        "cap": 8,
+        "cha": "300212",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "30021300",
+        "cap": 8,
+        "cha": "30021",
+        "tenVi": "Các sản phẩm miễn dịch, chưa được pha trộn, chưa đóng gói theo liều lượng hoặc làm thành dạng nhất định hoặc đóng gói để bán lẻ",
+        "tenEn": "Blood, human or animal, antisera, other blood fractions and immunological products; immunological products, unmixed, not put up in measured doses or in forms or packings for retail sale",
+        "suyRa": false,
+        "laPhanNhom": "300213"
+      },
+      {
+        "id": "30021400",
+        "cap": 8,
+        "cha": "30021",
+        "tenVi": "Các sản phẩm miễn dịch, được pha trộn, chưa đóng gói theo liều lượng hoặc làm thành dạng nhất định hoặc đóng gói để bán lẻ",
+        "tenEn": "Blood, human or animal, antisera, other blood fractions and immunological products; immunological products, mixed, put up in measured doses or in forms or packings for retail sale",
+        "suyRa": false,
+        "laPhanNhom": "300214"
+      },
+      {
+        "id": "30021500",
+        "cap": 8,
+        "cha": "30021",
+        "tenVi": "Các sản phẩm miễn dịch, đóng gói theo liều lượng hoặc làm thành dạng nhất định hoặc đóng gói để bán lẻ",
+        "tenEn": "Blood, human or animal, antisera, other blood fractions and immunological products; immunological products, put up in measured doses or in forms or packings for retail sale",
+        "suyRa": false,
+        "laPhanNhom": "300215"
+      },
+      {
+        "id": "30024",
+        "cap": "NHOM_MOT_GACH",
+        "cha": "3002",
+        "tenVi": "Vắc xin, độc tố, vi sinh nuôi cấy (trừ các loại men) và các sản phẩm tương tự",
+        "tenEn": "Vaccines, toxins, cultures of micro-organisms (excluding yeasts) and similar products",
+        "suyRa": true
+      },
+      {
+        "id": "300241",
+        "cap": 6,
+        "cha": "30024",
+        "tenVi": "Vắc xin cho người",
+        "tenEn": "Vaccines, toxins, cultures of micro-organisms (excluding yeasts) and similar products; for human medicine",
+        "suyRa": false
+      },
+      {
+        "id": "30024110",
+        "cap": 8,
+        "cha": "300241",
+        "tenVi": "Vắc xin uốn ván",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "30024120",
+        "cap": 8,
+        "cha": "300241",
+        "tenVi": "Vắc xin ho gà, sởi, viêm màng não hoặc bại liệt",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "30024190",
+        "cap": 8,
+        "cha": "300241",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "30024200",
+        "cap": 8,
+        "cha": "30024",
+        "tenVi": "Vắc xin thú y",
+        "tenEn": "Vaccines, toxins, cultures of micro-organisms (excluding yeasts) and similar products; for veterinary medicine",
+        "suyRa": false,
+        "laPhanNhom": "300242"
+      },
+      {
+        "id": "30024900",
+        "cap": 8,
+        "cha": "30024",
+        "tenVi": "Loại khác",
+        "tenEn": "Toxins, cultures of micro-organisms (excluding yeasts) and similar products; n.e.c. in item 3002.3",
+        "suyRa": false,
+        "loaiKhac": true,
+        "laPhanNhom": "300249"
+      },
+      {
+        "id": "30025",
+        "cap": "NHOM_MOT_GACH",
+        "cha": "3002",
+        "tenVi": "Tế bào nuôi cấy, có hoặc không cải biến",
+        "tenEn": "Cell cultures, whether or not modified",
+        "suyRa": true
+      },
+      {
+        "id": "30025100",
+        "cap": 8,
+        "cha": "30025",
+        "tenVi": "Các sản phẩm liệu pháp tế bào",
+        "tenEn": "Cell cultures, whether or not modified; cell therapy products",
+        "suyRa": false,
+        "laPhanNhom": "300251"
+      },
+      {
+        "id": "30025900",
+        "cap": 8,
+        "cha": "30025",
+        "tenVi": "Loại khác",
+        "tenEn": "Cell cultures, whether or not modified; other cell cultures not including cell therapy products",
+        "suyRa": false,
+        "loaiKhac": true,
+        "laPhanNhom": "300259"
+      },
+      {
+        "id": "30029000",
+        "cap": 8,
+        "cha": "3002",
+        "tenVi": "Loại khác",
+        "tenEn": "Toxins, cultures of micro-organisms (excluding yeasts) and similar products",
+        "suyRa": false,
+        "loaiKhac": true,
+        "laPhanNhom": "300290"
+      }
+    ],
+    "tenDien": []
+  },
+  "dungTuNguon": [
+    "nhom3002.nhom",
+    "tax.30021210",
+    "tax.30021290",
+    "tax.30021300",
+    "tax.30021400",
+    "tax.30021500",
+    "tax.30024110",
+    "tax.30024120",
+    "tax.30024190",
+    "tax.30024200",
+    "tax.30024900",
+    "tax.30025100",
+    "tax.30025900",
+    "tax.30029000"
+  ],
+  "phienBan": "HS2022",
+  "taoBoi": {
+    "provider": "google-studio:gemini-flash",
+    "model": null,
+    "luc": "2026-11-02T11:18:11.843Z",
+    "ms": 18
+  },
+  "kiemTra": {
+    "tong": 34,
+    "dat": 34,
+    "loai": 0,
+    "nguonBiCat": []
+  }
 }

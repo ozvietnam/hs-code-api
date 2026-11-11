@@ -4,7 +4,7 @@
   "nhom": "3004",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T0845#soan-300420",
@@ -179,6 +179,13 @@
       "ma": "300420",
       "loai": "LECH_TIEN_LE",
       "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 300420-01 KHONG_LECH (293/TB-TCHQ, 2719/TB-TCHQ) và 300420-02 KHONG_LECH (4323/TB-TCHQ, 3913/TB-TCHQ): soạn theo chữ biểu, khớp bảng."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L9-20261111#soat-L9",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 300420:30042010, 30042071, 30042091 THU HẸP (tất định): chữ biểu 'dạng uống (*) hoặc dạng mỡ' / EN 'of a kind taken orally or in ointment form' được ghi dangBaoCheThuoc TRONG ['UONG_HOAC_MO'] — giá trị gộp này không có giaTriCha, nên hàng đọc được DANG_UONG ('dạng uống', 'viên uống') hoặc DANG_MO bị chấm TRÁI tất định (đã thử danhGiaTuChu: 'Thuốc thú y chứa gentamycin, dạng uống' ⇒ TRAI; với ['DANG_UONG','DANG_MO'] ⇒ THOA) ⇒ thuốc uống/mỡ rơi về .39/.79/.99 'Loại khác'. Phải ghi TRONG ['DANG_UONG','DANG_MO'] (danh sách = hoặc). (B) tiêu đề 3004207 THU HẸP: 'Chứa tetracylin hoặc chloramphenicol hoặc các dẫn xuất của chúng' / EN 'tetracyclines or chloramphenicols or derivatives thereof' — bỏ vế 'các dẫn xuất của chúng' (florfenicol, thiamphenicol, doxycyclin, oxytetracyclin không chứa âm tiết 'tetracylin'/'chloramphenicol') ⇒ làm trái mục bảng 300420-01 (2719/TB-TCHQ: thuốc chứa florfenicol dạng uống ⇒ 3004.20.71). Cùng kiểu ở tiêu đề 3004203 (dẫn xuất erythromycin) và .10 (dẫn xuất gentamycin/lincomycin/sulphamethoxazole). Dùng quy ước HOAC [[tên],[tenLoai 'dẫn xuất' + dungCho tên]] như 293790/292219. (Ghi cho Claude: chữ biểu 'tetracylin' là lỗi chính tả của biểu — giá trị nguyên văn này không khớp mô tả 'tetracyclin'.)"
     }
   ]
 }

@@ -4,7 +4,7 @@
   "nhom": "5305",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-mm:loop:20261106T0903#soan-530500",
@@ -130,6 +130,13 @@
       "ma": "53050090",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.53050090 \"Loại khác\" trần ⇒ không ghi điều kiện, không đưa vào spec (máy phủ định anh em)."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L16-20261111#soat-L16",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 530500:53050010 THU HẸP (máy tách/giá trị gói): chữ biểu \"Xơ xidan (sisal) và xơ dệt khác của các cây thuộc chi cây thùa (Agave); tô (tow) và phế liệu của các loại xơ này (kể cả phế liệu sợi và sợi tái chế)\" / EN \"Sisal and other textile fibres of the genus Agave; tow and waste of these fibres\" được ghi thành tenLoai 2 chuỗi dài, mỗi chuỗi gói 2 hàng nối \"và\" + định ngữ. Thử bộ đọc: \"Xơ sisal thô, dạng bó\" ⇒ TRAI ⇒ xơ sisal — đúng hàng nêu tên đầu tiên của dòng — bị loại khỏi .10 và rơi về .90 \"Loại khác\". Sửa: tách mảng tên đầu [\"Xơ xidan (sisal)\", \"xơ sisal\", \"xơ dệt khác của các cây thuộc chi cây thùa (Agave)\", \"tô (tow)\", \"phế liệu\"] và giữ giới hạn \"của các loại xơ này\" (Agave) thành điều kiện riêng. (B) 53050021 tenLoai \"loại thô\" (EN \"raw\") là trạng thái chứ không phải tên loại; bộ đọc chịu được nhờ bỏ tiền tố \"loại\" nhưng nên dùng khoá trạng thái gia công nếu từ vựng có."
     }
   ]
 }

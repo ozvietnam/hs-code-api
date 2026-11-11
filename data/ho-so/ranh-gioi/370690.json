@@ -4,19 +4,13 @@
   "nhom": "3706",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "DUYET",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-370690",
     "ngay": "2026-11-06"
   },
-  "duyet": {
-    "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L10-20261111#soat-L10",
-    "ngay": "2026-11-11",
-    "ghiChu": "Như 370610: .10 bốn loại phim, .30 Phim tài liệu khác (phanConLai), .40 chỉ có rãnh tiếng — đủ chữ.",
-    "bam": "5beb875c789ccc3623c044e8156a624df34eb285c71a1ae58404baed71985dc8"
-  },
+  "duyet": null,
   "dieuKienNut": [],
   "dong8": [
     {
@@ -35,7 +29,7 @@
           ]
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "37069030",
@@ -48,7 +42,7 @@
           "value": "Phim tài liệu"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET",
+      "nguonLoai": "AI_DA_KIEM",
       "phanConLai": true
     },
     {
@@ -61,14 +55,14 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "37069090",
       "nguon": "tax.37069090",
       "trich": "37069090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "ghiChuSoan": [
@@ -91,6 +85,13 @@
       "ma": "37069090",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.37069090 \"Loại khác\" trần ⇒ không ghi điều kiện (máy phủ định anh em)."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:tech-lead-20261111#soat-lai",
+      "ngay": "2026-11-11",
+      "lyDo": "bo-kiem-luat THIEU_DU_KIEN: tên phân nhóm 3706.90 tự chứa \"đã hoặc chưa có rãnh tiếng hoặc chỉ có duy nhất rãnh tiếng\" ⇒ khoá chiCoRanhTieng đọc CO từ chính tên phân nhóm, tự chốt 37069040 khi thiếu dữ kiện. Soạn lại để vế .40 không khớp cụm lựa chọn của tên phân nhóm (hoặc chờ bộ đọc bỏ cụm \"hoặc\" tuỳ chọn), đo lại bo-kiem-luat."
     }
   ]
 }
