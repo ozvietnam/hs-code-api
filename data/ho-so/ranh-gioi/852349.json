@@ -4,19 +4,13 @@
   "nhom": "8523",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "DUYET",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T1003#soan-852349",
     "ngay": "2026-11-06"
   },
-  "duyet": {
-    "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L28-20261111#soat-L28",
-    "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu VI+EN: tầng laser, 'sound only', nội dung giáo dục…, .14/.93 HOAC có cả vế 'proprietary format storage media'; BO_VE 'binary' đúng vì vế tương tác qua máy XLDL vẫn giữ.",
-    "bam": "a6162a3d4751d4821b02d3d43e708dace5cd0751502a793acd2dd1ac56ad7a06"
-  },
+  "duyet": null,
   "dieuKienNut": [
     {
       "id": "852349~r15527",
@@ -33,7 +27,7 @@
           "value": "tái tạo âm thanh"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "id": "8523491",
@@ -46,7 +40,7 @@
           "value": "hệ thống đọc bằng laser"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "dong8": [
@@ -70,7 +64,7 @@
           "chieu": "PHAI_KHONG"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "85234912",
@@ -89,14 +83,14 @@
           ]
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "85234913",
       "nguon": "tax.85234913",
       "trich": "85234913 - - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "85234914",
@@ -136,7 +130,7 @@
           ]
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "85234915",
@@ -161,7 +155,7 @@
           "chieu": "PHAI_KHONG"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "85234916",
@@ -174,14 +168,14 @@
           "value": "điện ảnh"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "85234919",
       "nguon": "tax.85234919",
       "trich": "85234919 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "85234991",
@@ -203,7 +197,7 @@
           "chieu": "PHAI_KHONG"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "85234992",
@@ -220,7 +214,7 @@
           "value": "tái tạo âm thanh"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "85234993",
@@ -260,14 +254,14 @@
           ]
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "85234999",
       "nguon": "tax.85234999",
       "trich": "85234999 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "ghiChuSoan": [
@@ -317,6 +311,13 @@
       "loai": "BO_VE",
       "ve": "được ghi ở dạng mã nhị phân để máy có thể đọc được",
       "lyDo": "Vế mô tả DẠNG GHI của nội dung (EN \"recorded in a machine readable binary form\"), không tách hàng nào của phân nhóm 852349 \"Vật mang tin quang, đã ghi\" (EN \"Optical media; recorded\") khỏi .93: nội dung đã ghi trên đĩa quang để hệ thống đọc bằng laser đọc luôn ở dạng số máy đọc được, kể cả phim/âm thanh thuần của .91/.92/.99. Tiêu chí phân biệt thật của vế 1 là \"có thể thao tác hoặc có thể tương tác … thông qua một máy xử lý dữ liệu tự động\" — đã phủ bằng điều kiện riêng."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:tech-lead-20261111#soat-lai",
+      "ngay": "2026-11-11",
+      "lyDo": "bo-kiem-luat --toan-bieu (gộp thử với main, đo hai bên cùng nhịp): bản duyệt sinh ca chốt sai mới (chotSai/chotLoaiKhacSai tăng) hoặc làm đỏ test-so-tay-gates/test-so-tay-questions. Soạn/soát lại rồi đo lại trước khi duyệt."
     }
   ]
 }

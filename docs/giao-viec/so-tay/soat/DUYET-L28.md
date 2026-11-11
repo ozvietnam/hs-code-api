@@ -138,3 +138,8 @@ Kiểm thêm theo bổ sung 11/11:
   Kết quả: 850790 và 851829 DUYET sau khi đối chiếu đầy đủ; 851981 và 852329 TRA_VE.
 - **Khoá "chỉ":** 852349 dùng `chiHoacChuYeu CO` cho "chỉ sử dụng để tái tạo âm thanh", trong khi khoá này mang nghĩa "chỉ hoặc chủ
   yếu". Tôi chấp nhận theo quy ước khoá hiện có, dù nó rộng hơn chữ "only" một chút. Nếu sau này có khoá "chỉ" riêng thì nên soát lại.
+
+
+## Soát lại của tech lead — bo-kiem-luat hai bên / test
+
+Trả về 852349: gộp thử với `main` làm phát sinh ca chốt sai mới trong `bo-kiem-luat --toan-bieu` hoặc làm đỏ `test-so-tay-gates`/`test-so-tay-questions` (cổng gộp không cho tăng). Mục sổ tay giữ như `main`.
