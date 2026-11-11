@@ -123,3 +123,8 @@ Các lệnh sau đều qua, 0 lỗi:
 
 Lưu ý: `--ap-dung` thay các dòng SEN không có ngưỡng số của PN6 đã duyệt (vd sen.76042110, sen.83024131) bằng dòng ranh giới. Không
 dòng nào trong số đó mang ngưỡng số.
+
+
+## Soát lại của tech lead — bo-kiem-luat hai bên
+
+Trả về 830241: gộp thử với `main` làm phát sinh ca chốt sai mới trong `bo-kiem-luat --toan-bieu` (cổng gộp không cho `chotSai`/`chotLoaiKhacSai` tăng). Mục sổ tay giữ như `main`.
