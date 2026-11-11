@@ -412,6 +412,39 @@ check('trangThaiDong8.veMoHinh: 73181510 chấm trọn nhãn "Đường kính ng
     TC.boCumTuyChon('da cừu có hoặc không có đầu').length === 'da cừu có hoặc không có đầu'.length
     && /^da cừu\s+có đầu$/u.test(TC.boCumTuyChon('da cừu có hoặc không có đầu').replace(/\s+(?=có đầu)/u, ' ')),
     JSON.stringify(TC.boCumTuyChon('da cừu có hoặc không có đầu')));
+
+  // ── OZV-325: cụm tuỳ chọn NHIỀU VẾ — "đã hoặc chưa có X hoặc chỉ có Y" ──────────────────────────
+  // boCumTuyChon chỉ xoá LIÊN TỪ, nên vế sau chữ "hoặc" còn nguyên và bị đọc thành dữ kiện đã khai.
+  // Ca thật: tên nút 4 số của 3706 chứa "đã hoặc chưa có rãnh tiếng HOẶC CHỈ CÓ DUY NHẤT RÃNH TIẾNG",
+  // trùng nguyên văn cachDoc của khoá chiCoRanhTieng ⇒ hàng dòng "Loại khác" 37069090 bị chốt sang
+  // 37069040 ("Loại khác, chỉ có duy nhất rãnh tiếng"). Đây là chốt SAI MÃ, nặng hơn chốt Loại khác.
+  const TEN_NUT_3706 = 'Phim dùng trong điện ảnh, đã phơi sáng và đã tráng, đã hoặc chưa có rảnh tiếng hoặc chỉ có duy nhất rãnh tiếng.';
+  check('tuỳ chọn 2a cụm nhiều vế: xoá CẢ vế sau "hoặc" ("chỉ có duy nhất rãnh tiếng" không còn đọc được)',
+    !/chỉ\s+có\s+duy\s+nhất\s+rãnh\s+tiếng/u.test(TC.boVeTuyChonTiep(TEN_NUT_3706))
+    && TC.boVeTuyChonTiep(TEN_NUT_3706).length === TEN_NUT_3706.length,
+    JSON.stringify(TC.boVeTuyChonTiep(TEN_NUT_3706)));
+
+  // Rào ngược 1 — vế MANG NGHĨA sau dấu phẩy / " - " phải còn nguyên. Bản đầu không chặn ranh giới này
+  // đã ăn lẹm nhãn 2403 và làm MẤT 2 ca chotDung đang đúng (24031190, 24031999) — đo toàn biểu mới thấy.
+  const NHAN_2403 = 'Lá thuốc lá để hút (smoking), có hoặc không chứa chất thay thế lá thuốc lá với tỷ lệ bất kỳ - Thuốc lá sử dụng tẩu nước, chưa đóng gói';
+  check('tuỳ chọn 2b cụm nhiều vế KHÔNG ăn qua " - " / dấu phẩy (giữ vế mang nghĩa của nhãn 2403)',
+    TC.boVeTuyChonTiep(NHAN_2403) === NHAN_2403, JSON.stringify(TC.boVeTuyChonTiep(NHAN_2403)));
+
+  // Rào ngược 2 — chữ không có cụm tuỳ chọn thì trả y nguyên (gọi vô điều kiện vẫn an toàn).
+  check('tuỳ chọn 2c chữ không có cụm tuỳ chọn → trả y nguyên',
+    TC.boVeTuyChonTiep('Phim điện ảnh, chỉ có duy nhất rãnh tiếng') === 'Phim điện ảnh, chỉ có duy nhất rãnh tiếng',
+    '');
+
+  // Cổng thật trên đường chốt dòng 8: hai ca của 37069090.
+  cd = chotDong8({ hs: '370690', productText: `${TEN_NUT_3706} - Loại khác` });
+  check('370690 chỉ có tên nút (cụm tuỳ chọn nhiều vế) → KHÔNG chốt 37069040, phải hỏi/không chốt',
+    cd.hs !== '37069040' && cd.ketQua !== 'CHOT', JSON.stringify([cd.ketQua, cd.hs, cd.lyDo]));
+
+  // Chiều ĐÚNG vẫn phải chốt được: khai rõ "chỉ có duy nhất rãnh tiếng" (ngoài cụm tuỳ chọn) ⇒ .40.
+  // Nếu bản vá che cả chỗ này thì nó vá hỏng chiều kia — mất một dòng thuế dùng thật.
+  cd = chotDong8({ hs: '370690', productText: 'Phim điện ảnh đã phơi sáng và đã tráng, chỉ có duy nhất rãnh tiếng' });
+  check('370690 khai RÕ "chỉ có duy nhất rãnh tiếng" (ngoài cụm tuỳ chọn) → vẫn chốt 37069040',
+    cd.ketQua === 'CHOT' && cd.hs === '37069040', JSON.stringify([cd.ketQua, cd.hs, cd.lyDo]));
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);
