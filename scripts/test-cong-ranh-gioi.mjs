@@ -269,5 +269,59 @@ function nhap853641() {
   check('10n mục mang dấu chồng lấn vẫn qua checkItem của sổ tay', S.checkItem('dong8', d10, S.sourcesFor('8536'), '8536') === null);
 }
 
+// ── 11. Sắp TẤT ĐỊNH, không theo ICU của máy chạy (OZV-373) ───────────────────────────────────────────────────────
+// localeCompare phụ thuộc bản ICU: Node có ICU đầy đủ bỏ qua `~` như dấu nối ⇒ `<pn6>~r<dòng>` đứng TRƯỚC
+// `<pn6><chữ số>`; Node small-icu so thô ⇒ đứng SAU. Hai máy khác ICU sinh hai sổ tay khác byte, phá phép soát
+// "tính lại rồi so byte" (quy tắc 5) và làm git diff nhiễu. Phát hiện khi soát PR #1230 (8703/8708 lô L30).
+{
+  const SX = require('../lib/sx-tat-dinh.js');
+  const T = require('../lib/hs-tree.js');
+  const docRg = (pn) => JSON.parse(fs.readFileSync(path.join(process.cwd(), `data/ho-so/ranh-gioi/${pn}.json`), 'utf8'));
+  const docSt = (h4) => JSON.parse(fs.readFileSync(path.join(process.cwd(), `data/so-tay/${h4}.json`), 'utf8'));
+  const b690721 = docRg('690721');
+  const soTay6907 = docSt('6907');
+  // 11a–11b: khoá sắp không phụ thuộc locale, và đặt `~r` trước chữ số (khớp ICU đầy đủ ⇒ không phá dữ liệu cũ).
+  check('11a sxTho đặt <pn6>~r<dòng> TRƯỚC <pn6><chữ số> (ví dụ của OZV-373)', SX.sxTho('870323~r16487', '8703232') === -1, SX.sxTho('870323~r16487', '8703232'));
+  check('11b sxTho giữ thứ tự chữ số thường + trả 0 khi bằng', SX.sxTho('85011021', '85011022') === -1 && SX.sxTho('8501102', '8501102') === 0);
+
+  // 11c: HỒ SƠ HỒI QUY THẬT — 850110 là phân nhóm DUYET đã commit có CẢ HAI dạng id cạnh nhau
+  // ('850110~r14830', '8501102', '850110~r14839', '8501105'). Chạy apDung rồi khẳng định thứ tự ĐÚNG MỘT KIỂU.
+  const b850110 = docRg('850110');
+  const soTay8501 = docSt('8501');
+  // Bọc try: khoá sắp sai kiểu "so thô NGUYÊN BẢN" làm băm lệch ⇒ apDung NÉM cong0-sua-sau-duyet. Không bọc thì
+  // tệp test chết giữa đường, log không có tên ca nào — mà tiêu chí OZV-373 đòi ca đỏ KÈM TÊN.
+  let idTrong = null; let apLoi = null;
+  try { idTrong = C.apDung(b850110, soTay8501).dieuKienNut.filter((m) => T.chuanMa(m.id).startsWith('850110')).map((m) => T.chuanMa(m.id)); }
+  catch (e) { apLoi = e.message; }
+  check('11c apDung(850110) sắp dieuKienNut một kiểu tất định: hai nút ~r trước hai tiêu đề chữ số',
+    apLoi === null && JSON.stringify(idTrong) === JSON.stringify(['850110~r14830', '850110~r14839', '8501102', '8501105']), apLoi || idTrong);
+
+  // 11d: CHỐT CỨNG — không một dòng nào trên đường bamRanhGioi + apDung được gọi localeCompare.
+  // Đây là ca "tự phá được" trên MỌI máy: hoàn nguyên bất kỳ sort nào về localeCompare thì ca này ĐỎ,
+  // kể cả trên máy có ICU đầy đủ (nơi thứ tự ở 11c vô tình vẫn đúng nên so byte một mình không phát hiện).
+  const goclc = String.prototype.localeCompare;
+  const vet = [];
+  String.prototype.localeCompare = function (...a) { vet.push(String(this)); return goclc.apply(this, a); };
+  let lcLoi = null;
+  try { C.bamRanhGioi(b850110); C.apDung(b850110, soTay8501); C.bamRanhGioi(b690721); C.apDung(b690721, soTay6907); }
+  catch (e) { lcLoi = e.message; }
+  finally { String.prototype.localeCompare = goclc; }
+  check('11d bamRanhGioi + apDung không gọi localeCompare lần nào (sắp dữ liệu ghi ra tệp phải tất định)',
+    lcLoi === null && vet.length === 0, lcLoi || vet.slice(0, 6));
+
+  // 11e: băm của 4 bản DUYET đã commit mà so thô NGUYÊN BẢN sẽ phá (`~` U+007E lớn hơn chữ số) vẫn khớp —
+  // chứng minh khoá `~`→\x00 không làm cong0-sua-sau-duyet giả trên dữ liệu cũ.
+  const bamKhop = ['271012', '840991', '850110', '854442'].filter((pn) => {
+    const b = docRg(pn);
+    return b.trangThai === 'DUYET' && C.bamRanhGioi(b) === b.duyet.bam;
+  });
+  check('11e 4 bản DUYET có cả hai dạng id: băm tính lại vẫn khớp duyet.bam đã commit', bamKhop.length === 4, bamKhop);
+
+  // 11f: BO_VE sắp theo (ma, ve) riêng — 690721 có 've' tiếng Việt + mã trùng, nơi ghép `${ma}|${ve}`
+  // rồi so thô một lần sẽ ĐẢO thứ tự so với bản đã duyệt.
+  check('11f băm 690721 (BO_VE có ve tiếng Việt + mã trùng) khớp duyet.bam đã commit',
+    b690721.trangThai === 'DUYET' && C.bamRanhGioi(b690721) === b690721.duyet.bam, C.bamRanhGioi(b690721));
+}
+
 console.log(`\n${pass} pass, ${fail} fail`);
 if (fail) process.exit(1);

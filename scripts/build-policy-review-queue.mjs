@@ -26,6 +26,7 @@ import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const { dataPath, dataReadPath } = require('../lib/data-paths.js');
 const { getDocByCode } = require('../lib/legal-docs.js');
+const { sxTho } = require('../lib/sx-tat-dinh.js');
 
 const SEVERITY_RANK = { CRITICAL: 4, HIGH: 3, MEDIUM: 2, LOW: 1 };
 const SYSTEMIC = new Set(['USED_GOODS_BAN_READ_AS_LICENSE']);
@@ -79,7 +80,8 @@ export function buildQueue(enrichedMap, taxData) {
       enrichModel: e.enrichModel || '',
     };
   });
-  rows.sort((a, b) => b.priority - a.priority || a.hsCode.localeCompare(b.hsCode));
+  // sxTho (OZV-373): thứ tự này đi vào data/policy-review-queue.csv ⇒ tất định, không theo ICU của máy chạy.
+  rows.sort((a, b) => b.priority - a.priority || sxTho(a.hsCode, b.hsCode));
   return rows;
 }
 
