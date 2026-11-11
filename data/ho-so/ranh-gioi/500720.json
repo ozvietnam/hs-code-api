@@ -4,7 +4,7 @@
   "nhom": "5007",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T1537#soan-500720",
@@ -76,6 +76,13 @@
       "ma": "50072090",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.50072090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L15-20261111#soat-L15",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 50072020 SUY RỘNG: «Chưa tẩy trắng hoặc đã tẩy trắng» / EN «Unbleached or bleached» ghi tinhTrangTayTrang TRONG [CHUA_TAY_TRANG, DA_TAY_TRANG] = TOÀN BỘ giá trị của khoá ⇒ điều kiện không loại được vải đã nhuộm / từ sợi màu / đã in. Theo Chú giải phân nhóm 1 Phần XI, vải «chưa tẩy trắng», «đã tẩy trắng», «đã nhuộm», «từ các sợi có màu khác nhau», «đã in» là các trạng thái loại trừ nhau; vải lụa nhuộm (đã tẩy trước khi nhuộm) khai DA_TAY_TRANG sẽ vào 50072020 thay vì 50072090 (Loại khác). (B) chongLanVanBan 50072020↔50072030: lyDo «vải đã tẩy trắng mà in batik thoả cả hai nhánh» sai định nghĩa — vải in batik là «đã in», không phải «đã tẩy trắng»; ví dụ máy (BATIK + CHUA_TAY_TRANG) không phải hàng có thật. Khoá tinhTrangTayTrang thiếu giá trị DA_NHUOM / TU_SOI_MAU / DA_IN ⇒ đáng lẽ DỪNG THIEU_KHOA_TU_VUNG (báo Claude). Lưu ý: 540761, 540769 đã DUYET cùng mẫu này — cần soát lại."
     }
   ]
 }

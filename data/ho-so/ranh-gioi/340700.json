@@ -4,13 +4,19 @@
   "nhom": "3407",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:202611051735#soan-340700",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:duyet-L10-20261111#soat-L10",
+    "ngay": "2026-11-11",
+    "ghiChu": "Đối chiếu ba dòng (nhóm 34.07 không có Loại khác): .10 bột nhão làm hình mẫu (BO_VE \"dùng cho trẻ em\" thuộc vế kể cả — đúng), .20 hai tên \"sáp dùng trong nha khoa\"/\"hợp chất tạo khuôn răng\" (vế dạng đóng gói/phiến/thanh lặp phạm vi nhóm 34.07, không tách dòng trong PN6), .30 \"thạch cao plaster\" (vế \"dùng trong nha khoa\" là phạm vi nhóm; thêm khoá sẽ thủng phủ kín). Lưu ý: bột nặn gốc thạch cao thoả cả .10/.30 qua chữ tự do — lúc chạy hỏi. Máy tách sai vế ở dấu ngoặc kép .20.",
+    "bam": "2be0803424ae78478f335c265fe2d0238cad59cccb93e8e380af0e64429090a8"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -29,7 +35,7 @@
           "value": "làm hình mẫu"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "34070020",
@@ -45,7 +51,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "34070030",
@@ -58,7 +64,7 @@
           "value": "thạch cao plaster"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": true
     }
   ],
