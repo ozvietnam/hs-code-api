@@ -100,3 +100,8 @@ Sau khi áp dụng: `check-so-tay` 0 mục lỗi (1228 nhóm), `check-cay` 0 l�
 
 Cổng 5 báo 0 vế CHƯA PHỦ trên cả 43 PN6. 4/6 lỗi nằm ở vế mà cổng 5 chấm "phủ" (701710, 702000, 701090, 711299) vì bộ tách
 cắt sai cụm trước khi chấm. 2 lỗi còn lại (701590, 701890) nằm ở giá trị TEN_LOAI chữ tự do mà cổng không đối chiếu được.
+
+
+## Soát lại của tech lead — bo-kiem-luat hai bên
+
+Trả về 711590,711810: gộp thử với `main` làm phát sinh ca chốt sai mới trong `bo-kiem-luat --toan-bieu` (cổng gộp không cho `chotSai`/`chotLoaiKhacSai` tăng). Mục sổ tay giữ như `main`.
