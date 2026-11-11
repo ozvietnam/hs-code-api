@@ -113,3 +113,8 @@ Cổng 5 xanh cho cả 64 PN6, nhưng 13 bản vẫn sai — 9/13 lỗi nằm �
 "Chương 87", `tenLoai` "Thiết bị tự động", `dungCho` ["85.01","85.02"]) đọc tới chữ của vế dù đã bỏ một phần định ngữ/đích. Đề
 xuất: cổng 5 so phần chữ của vế còn lại sau khi trừ giá trị (vd vế "dùng cho động cơ xe của Chương 87" − "Chương 87" còn "động cơ
 xe" ⇒ cảnh báo).
+
+
+## Soát lại của tech lead — bo-kiem-luat hai bên / test
+
+Trả về 848530 850220 850431 848110 848140 850440: gộp thử với `main` làm phát sinh ca chốt sai mới trong `bo-kiem-luat --toan-bieu` hoặc làm đỏ `test-so-tay-gates`/`test-so-tay-questions` (cổng gộp không cho tăng). Mục sổ tay giữ như `main`.

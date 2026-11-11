@@ -4,19 +4,13 @@
   "nhom": "8481",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "DUYET",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-848110",
     "ngay": "2026-11-04"
   },
-  "duyet": {
-    "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L27-20261111#soat-L27",
-    "ngay": "2026-11-11",
-    "ghiChu": "Biên đối chiếu tay: .11 'trên 5 cm nhưng không quá 40 cm' ↔ >5 & <=40 (bổ sung biên 40 mà sổ tay cũ thiếu); .21/.22 ≤2,5/>2,5; .91 'từ 1cm đến 2,5 cm'/'not less than 1 cm and not more than 2.5 cm' ↔ >=1 & <=2.5; giữ đủ ngưỡng số cũ; van cổng điều khiển bằng tay ↔ cachDieuKhien BANG_TAY.",
-    "bam": "474ac2478c33e70201090cfd8734b448cab640664b8b55a9ca914883b5be4e7f"
-  },
+  "duyet": null,
   "dieuKienNut": [
     {
       "id": "8481101",
@@ -29,7 +23,7 @@
           "value": "sắt thép"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "id": "8481102",
@@ -42,7 +36,7 @@
           "value": "đồng"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "dong8": [
@@ -76,14 +70,14 @@
           "donVi": "cm"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "84811019",
       "nguon": "tax.84811019",
       "trich": "84811019 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "84811021",
@@ -97,7 +91,7 @@
           "donVi": "cm"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "84811022",
@@ -111,7 +105,7 @@
           "donVi": "cm"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "84811091",
@@ -136,14 +130,14 @@
           "donVi": "cm"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "84811099",
       "nguon": "tax.84811099",
       "trich": "84811099 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "ghiChuSoan": [
@@ -176,6 +170,13 @@
       "ma": "84811091",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.84811091: \"Bằng plastic, có đường kính trong từ 1cm đến 2,5 cm\" ⇒ chatLieu \"plastic\", duongKinhTrong >= 1 cm, <= 2.5 cm"
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:tech-lead-20261111#soat-lai",
+      "ngay": "2026-11-11",
+      "lyDo": "bo-kiem-luat --toan-bieu (gộp thử với main, đo hai bên cùng nhịp): bản duyệt sinh ca chốt sai mới (chotSai/chotLoaiKhacSai tăng) hoặc làm đỏ test-so-tay-gates/test-so-tay-questions. Soạn/soát lại rồi đo lại trước khi duyệt."
     }
   ]
 }

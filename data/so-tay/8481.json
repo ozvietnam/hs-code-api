@@ -172,45 +172,19 @@
   "dong8": [
     {
       "hs": "84811011",
-      "dieuKien": "tên loại hàng: Van cổng; cách điều khiển / vận hành: điều khiển bằng tay; đường kính trong (cửa nạp/cửa thoát, DN) > 5 cm; đường kính trong (cửa nạp/cửa thoát, DN) <= 40 cm",
+      "dieuKien": "8481.10 – Van giảm áp › - - - Van cổng điều khiển bằng tay có đường kính trong cửa nạp hoặc cửa thoát trên 5 cm nhưng không quá 40 cm",
       "loaiKhac": false,
       "nguon": "tax.84811011",
       "trich": "84811011 - - - Van cổng điều khiển bằng tay có đường kính trong cửa nạp hoặc cửa thoát trên 5 cm nhưng không quá 40 cm",
-      "nguonLoai": "CLAUDE_DUYET",
+      "nguonLoai": "AI_DA_KIEM",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Van cổng"
-        },
-        {
-          "fact": "cachDieuKhien",
-          "op": "TRONG",
-          "value": [
-            "BANG_TAY"
-          ]
-        },
-        {
-          "fact": "duongKinhTrong",
+          "fact": "duong_kinh",
           "op": ">",
           "value": 5,
           "donVi": "cm"
-        },
-        {
-          "fact": "duongKinhTrong",
-          "op": "<=",
-          "value": 40,
-          "donVi": "cm"
         }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L27-20261111#soat-L27",
-          "ngay": "2026-11-11",
-          "bam": "474ac2478c33e70201090cfd8734b448cab640664b8b55a9ca914883b5be4e7f"
-        }
-      }
+      ]
     },
     {
       "hs": "84811019",
@@ -231,86 +205,62 @@
     },
     {
       "hs": "84811021",
-      "dieuKien": "đường kính trong (cửa nạp/cửa thoát, DN) <= 2.5 cm",
+      "dieuKien": "8481.10 – Van giảm áp › - - - Có đường kính trong không quá 2,5 cm",
       "loaiKhac": false,
       "nguon": "tax.84811021",
-      "trich": "84811021 - - - Có đường kính trong không quá 2,5 cm ",
-      "nguonLoai": "CLAUDE_DUYET",
+      "trich": "84811021 - - - Có đường kính trong không quá 2,5 cm",
+      "nguonLoai": "AI_DA_KIEM",
       "dieuKienSo": [
         {
-          "fact": "duongKinhTrong",
+          "fact": "duong_kinh",
           "op": "<=",
           "value": 2.5,
           "donVi": "cm"
         }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L27-20261111#soat-L27",
-          "ngay": "2026-11-11",
-          "bam": "474ac2478c33e70201090cfd8734b448cab640664b8b55a9ca914883b5be4e7f"
-        }
-      }
+      ]
     },
     {
       "hs": "84811022",
-      "dieuKien": "đường kính trong (cửa nạp/cửa thoát, DN) > 2.5 cm",
+      "dieuKien": "8481.10 – Van giảm áp › - - - Có đường kính trong trên 2,5 cm",
       "loaiKhac": false,
       "nguon": "tax.84811022",
       "trich": "84811022 - - - Có đường kính trong trên 2,5 cm",
-      "nguonLoai": "CLAUDE_DUYET",
+      "nguonLoai": "AI_DA_KIEM",
       "dieuKienSo": [
         {
-          "fact": "duongKinhTrong",
+          "fact": "duong_kinh",
           "op": ">",
           "value": 2.5,
           "donVi": "cm"
         }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L27-20261111#soat-L27",
-          "ngay": "2026-11-11",
-          "bam": "474ac2478c33e70201090cfd8734b448cab640664b8b55a9ca914883b5be4e7f"
-        }
-      }
+      ]
     },
     {
       "hs": "84811091",
-      "dieuKien": "chất liệu (theo vị trí): plastic; đường kính trong (cửa nạp/cửa thoát, DN) >= 1 cm; đường kính trong (cửa nạp/cửa thoát, DN) <= 2.5 cm",
+      "dieuKien": "8481.10 – Van giảm áp › - - - Bằng plastic, có đường kính trong từ 1cm đến 2,5 cm",
       "loaiKhac": false,
       "nguon": "tax.84811091",
       "trich": "84811091 - - - Bằng plastic, có đường kính trong từ 1cm đến 2,5 cm",
-      "nguonLoai": "CLAUDE_DUYET",
+      "nguonLoai": "AI_DA_KIEM",
       "dieuKienSo": [
         {
-          "fact": "chatLieu",
+          "fact": "chat_lieu",
           "op": "LA",
           "value": "plastic"
         },
         {
-          "fact": "duongKinhTrong",
+          "fact": "duong_kinh",
           "op": ">=",
           "value": 1,
           "donVi": "cm"
         },
         {
-          "fact": "duongKinhTrong",
+          "fact": "duong_kinh",
           "op": "<=",
           "value": 2.5,
           "donVi": "cm"
         }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L27-20261111#soat-L27",
-          "ngay": "2026-11-11",
-          "bam": "474ac2478c33e70201090cfd8734b448cab640664b8b55a9ca914883b5be4e7f"
-        }
-      }
+      ]
     },
     {
       "hs": "84811099",
@@ -567,67 +517,46 @@
     },
     {
       "hs": "84814010",
-      "dieuKien": "chất liệu (theo vị trí): đồng; đường kính trong (cửa nạp/cửa thoát, DN) <= 2.5 cm",
+      "dieuKien": "8481.40 – Van an toàn hoặc van xả › - - Bằng đồng hoặc hợp kim đồng, có đường kính trong từ 2,5 cm trở xuống",
       "loaiKhac": false,
       "nguon": "tax.84814010",
       "trich": "84814010 - - Bằng đồng hoặc hợp kim đồng, có đường kính trong từ 2,5 cm trở xuống",
-      "nguonLoai": "CLAUDE_DUYET",
+      "nguonLoai": "AI_DA_KIEM",
       "dieuKienSo": [
         {
-          "fact": "chatLieu",
-          "op": "LA",
-          "value": "đồng"
-        },
-        {
-          "fact": "duongKinhTrong",
+          "fact": "duong_kinh",
           "op": "<=",
           "value": 2.5,
           "donVi": "cm"
         }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L27-20261111#soat-L27",
-          "ngay": "2026-11-11",
-          "bam": "e45496abbd2fcaa2a3d53192f27f653d9c3f361414a8554c449354a4bcb880a3"
-        }
-      }
+      ]
     },
     {
       "hs": "84814030",
-      "dieuKien": "chất liệu (theo vị trí): plastic; đường kính trong (cửa nạp/cửa thoát, DN) >= 1 cm; đường kính trong (cửa nạp/cửa thoát, DN) <= 2.5 cm",
+      "dieuKien": "8481.40 – Van an toàn hoặc van xả › - - Bằng plastic, có đường kính trong từ 1cm đến 2,5 cm",
       "loaiKhac": false,
       "nguon": "tax.84814030",
       "trich": "84814030 - - Bằng plastic, có đường kính trong từ 1cm đến 2,5 cm",
-      "nguonLoai": "CLAUDE_DUYET",
+      "nguonLoai": "AI_DA_KIEM",
       "dieuKienSo": [
         {
-          "fact": "chatLieu",
+          "fact": "chat_lieu",
           "op": "LA",
           "value": "plastic"
         },
         {
-          "fact": "duongKinhTrong",
+          "fact": "duong_kinh",
           "op": ">=",
           "value": 1,
           "donVi": "cm"
         },
         {
-          "fact": "duongKinhTrong",
+          "fact": "duong_kinh",
           "op": "<=",
           "value": 2.5,
           "donVi": "cm"
         }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L27-20261111#soat-L27",
-          "ngay": "2026-11-11",
-          "bam": "e45496abbd2fcaa2a3d53192f27f653d9c3f361414a8554c449354a4bcb880a3"
-        }
-      }
+      ]
     },
     {
       "hs": "84814090",
@@ -2393,48 +2322,6 @@
   },
   "yKienWcoDayDu": false,
   "dieuKienNut": [
-    {
-      "id": "8481101",
-      "nguon": "tieuDe.8481101",
-      "trich": "8481101 Bằng sắt hoặc thép",
-      "dieuKienSo": [
-        {
-          "fact": "chatLieu",
-          "op": "LA",
-          "value": "sắt thép"
-        }
-      ],
-      "nguonLoai": "CLAUDE_DUYET",
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L27-20261111#soat-L27",
-          "ngay": "2026-11-11",
-          "bam": "474ac2478c33e70201090cfd8734b448cab640664b8b55a9ca914883b5be4e7f"
-        }
-      }
-    },
-    {
-      "id": "8481102",
-      "nguon": "tieuDe.8481102",
-      "trich": "8481102 Bằng đồng hoặc hợp kim đồng",
-      "dieuKienSo": [
-        {
-          "fact": "chatLieu",
-          "op": "LA",
-          "value": "đồng"
-        }
-      ],
-      "nguonLoai": "CLAUDE_DUYET",
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L27-20261111#soat-L27",
-          "ngay": "2026-11-11",
-          "bam": "474ac2478c33e70201090cfd8734b448cab640664b8b55a9ca914883b5be4e7f"
-        }
-      }
-    },
     {
       "id": "8481201",
       "nguon": "tieuDe.8481201",

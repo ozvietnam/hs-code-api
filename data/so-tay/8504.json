@@ -488,87 +488,27 @@
     },
     {
       "hs": "85043111",
-      "dieuKien": "điện áp >= 110 kV",
+      "dieuKien": "Phân nhóm 8504.31 [Electrical transformers; n.e.c. in item no. 8504.2, having a power handling capacity not exceeding 1kVA]: Điện áp từ 110 kV trở lên (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
       "loaiKhac": false,
       "nguon": "tax.85043111",
-      "trich": "85043111 - - - - Điện áp từ 110 kV trở lên",
-      "nguonLoai": "CLAUDE_DUYET",
-      "dieuKienSo": [
-        {
-          "fact": "dienAp",
-          "op": ">=",
-          "value": 110,
-          "donVi": "kV"
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L27-20261111#soat-L27",
-          "ngay": "2026-11-11",
-          "bam": "3219683af9e86a5833db8ab27388edff2855d284ce6f14f1ff990a1d69dccd29"
-        }
-      }
+      "trich": "Điện áp từ 110 kV trở lên",
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "85043112",
-      "dieuKien": "điện áp >= 66 kV; điện áp < 110 kV",
+      "dieuKien": "Phân nhóm 8504.31 [Electrical transformers; n.e.c. in item no. 8504.2, having a power handling capacity not exceeding 1kVA]: Điện áp từ 66 kV trở lên, nhưng dưới 110 kV (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
       "loaiKhac": false,
       "nguon": "tax.85043112",
-      "trich": "85043112 - - - - Điện áp từ 66 kV trở lên, nhưng dưới 110 kV",
-      "nguonLoai": "CLAUDE_DUYET",
-      "dieuKienSo": [
-        {
-          "fact": "dienAp",
-          "op": ">=",
-          "value": 66,
-          "donVi": "kV"
-        },
-        {
-          "fact": "dienAp",
-          "op": "<",
-          "value": 110,
-          "donVi": "kV"
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L27-20261111#soat-L27",
-          "ngay": "2026-11-11",
-          "bam": "3219683af9e86a5833db8ab27388edff2855d284ce6f14f1ff990a1d69dccd29"
-        }
-      }
+      "trich": "Điện áp từ 66 kV trở lên, nhưng dưới 110 kV",
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "85043113",
-      "dieuKien": "điện áp >= 1 kV; điện áp < 66 kV",
+      "dieuKien": "Phân nhóm 8504.31 [Electrical transformers; n.e.c. in item no. 8504.2, having a power handling capacity not exceeding 1kVA]: Điện áp từ 1 kV trở lên, nhưng dưới 66 kV (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
       "loaiKhac": false,
       "nguon": "tax.85043113",
-      "trich": "85043113 - - - - Điện áp từ 1 kV trở lên, nhưng dưới 66 kV",
-      "nguonLoai": "CLAUDE_DUYET",
-      "dieuKienSo": [
-        {
-          "fact": "dienAp",
-          "op": ">=",
-          "value": 1,
-          "donVi": "kV"
-        },
-        {
-          "fact": "dienAp",
-          "op": "<",
-          "value": 66,
-          "donVi": "kV"
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L27-20261111#soat-L27",
-          "ngay": "2026-11-11",
-          "bam": "3219683af9e86a5833db8ab27388edff2855d284ce6f14f1ff990a1d69dccd29"
-        }
-      }
+      "trich": "Điện áp từ 1 kV trở lên, nhưng dưới 66 kV",
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "85043119",
@@ -591,37 +531,11 @@
     },
     {
       "hs": "85043121",
-      "dieuKien": "tên loại hàng: Máy biến dòng dạng vòng; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): đường dây; điện áp <= 220 kV",
+      "dieuKien": "Phân nhóm 8504.31 [Electrical transformers; n.e.c. in item no. 8504.2, having a power handling capacity not exceeding 1kVA]: Máy biến dòng dạng vòng dùng cho đường dây có điện áp không quá 220 kV (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế) — SEN: máy biến dòng (biến điện đo lường) dạng vòng, dùng đo dòng/rơle bảo vệ, cho đường dây điện áp không quá 220 kV",
       "loaiKhac": false,
-      "nguon": "tax.85043121",
-      "trich": "85043121 - - - - - Máy biến dòng dạng vòng dùng cho đường dây có điện áp không quá 220 kV (SEN)",
-      "nguonLoai": "CLAUDE_DUYET",
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Máy biến dòng dạng vòng"
-        },
-        {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": "đường dây"
-        },
-        {
-          "fact": "dienAp",
-          "op": "<=",
-          "value": 220,
-          "donVi": "kV"
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L27-20261111#soat-L27",
-          "ngay": "2026-11-11",
-          "bam": "3219683af9e86a5833db8ab27388edff2855d284ce6f14f1ff990a1d69dccd29"
-        }
-      }
+      "nguon": "sen.85043121",
+      "trich": "Máy biến dòng cũng được sử dụng phổ biến việc đo và trong các rơle bảo vệ trong công nghiệp điện. Một ví dụ điển hình của máy biến dòng đo dải đơn điện áp thấp là máy biến dòng dạng vòng.",
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "85043122",
@@ -644,63 +558,19 @@
     },
     {
       "hs": "85043123",
-      "dieuKien": "điện áp >= 66 kV; điện áp < 110 kV",
+      "dieuKien": "Phân nhóm 8504.31 [Electrical transformers; n.e.c. in item no. 8504.2, having a power handling capacity not exceeding 1kVA]: Điện áp từ 66 kV trở lên, nhưng dưới 110 kV (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
       "loaiKhac": false,
       "nguon": "tax.85043123",
-      "trich": "85043123 - - - - Điện áp từ 66 kV trở lên, nhưng dưới 110 kV",
-      "nguonLoai": "CLAUDE_DUYET",
-      "dieuKienSo": [
-        {
-          "fact": "dienAp",
-          "op": ">=",
-          "value": 66,
-          "donVi": "kV"
-        },
-        {
-          "fact": "dienAp",
-          "op": "<",
-          "value": 110,
-          "donVi": "kV"
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L27-20261111#soat-L27",
-          "ngay": "2026-11-11",
-          "bam": "3219683af9e86a5833db8ab27388edff2855d284ce6f14f1ff990a1d69dccd29"
-        }
-      }
+      "trich": "Điện áp từ 66 kV trở lên, nhưng dưới 110 kV",
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "85043124",
-      "dieuKien": "điện áp >= 1 kV; điện áp < 66 kV",
+      "dieuKien": "Phân nhóm 8504.31 [Electrical transformers; n.e.c. in item no. 8504.2, having a power handling capacity not exceeding 1kVA]: Điện áp từ 1 kV trở lên, nhưng dưới 66 kV (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
       "loaiKhac": false,
       "nguon": "tax.85043124",
-      "trich": "85043124 - - - - Điện áp từ 1 kV trở lên, nhưng dưới 66 kV",
-      "nguonLoai": "CLAUDE_DUYET",
-      "dieuKienSo": [
-        {
-          "fact": "dienAp",
-          "op": ">=",
-          "value": 1,
-          "donVi": "kV"
-        },
-        {
-          "fact": "dienAp",
-          "op": "<",
-          "value": 66,
-          "donVi": "kV"
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L27-20261111#soat-L27",
-          "ngay": "2026-11-11",
-          "bam": "3219683af9e86a5833db8ab27388edff2855d284ce6f14f1ff990a1d69dccd29"
-        }
-      }
+      "trich": "Điện áp từ 1 kV trở lên, nhưng dưới 66 kV",
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "85043129",
@@ -723,208 +593,43 @@
     },
     {
       "hs": "85043130",
-      "dieuKien": "tên loại hàng: Biến áp quét về hoặc biến áp đầu ra ngang hoặc biến áp quét ngang; công dụng / mục đích: hồi lưu",
+      "dieuKien": "Phân nhóm 8504.31 [Electrical transformers; n.e.c. in item no. 8504.2, having a power handling capacity not exceeding 1kVA]: Máy biến áp quét về (biến áp tần số quét ngược) — SEN: biến áp quét về (biến áp đầu ra ngang/quét ngang) dùng trong thiết bị thu truyền hình",
       "loaiKhac": false,
       "nguon": "sen.85043130",
-      "trich": "Biến áp quét về được sử dụng trong thiết bị thu truyền hình để cung cấp điện áp hồi lưu theo chiều ngang, mức điện áp cao hơn cho điện cực dương thứ hai của đèn hình, và điện áp mảnh cho chỉnh lưu cao áp. Biến áp quét về cũng được gọi là biến áp đầu ra ngang hay biến áp quét ngang",
-      "nguonLoai": "CLAUDE_DUYET",
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "Biến áp quét về",
-            "biến áp đầu ra ngang",
-            "biến áp quét ngang"
-          ]
-        },
-        {
-          "fact": "congDung",
-          "op": "CONG_DUNG",
-          "value": "hồi lưu"
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L27-20261111#soat-L27",
-          "ngay": "2026-11-11",
-          "bam": "3219683af9e86a5833db8ab27388edff2855d284ce6f14f1ff990a1d69dccd29"
-        }
-      }
+      "trich": "Biến áp quét về được sử dụng trong thiết bị thu truyền hình để cung cấp điện áp hồi lưu theo chiều ngang, mức điện áp cao hơn cho điện cực dương thứ hai của đèn hình, và điện áp mảnh cho chỉnh lưu cao áp.",
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "85043140",
-      "dieuKien": "tên loại hàng: Máy biến điện trung tần",
+      "dieuKien": "Phân nhóm 8504.31 [Electrical transformers; n.e.c. in item no. 8504.2, having a power handling capacity not exceeding 1kVA]: Máy biến điện trung tần",
       "loaiKhac": false,
       "nguon": "tax.85043140",
-      "trich": "85043140 - - - Máy biến điện trung tần",
-      "nguonLoai": "CLAUDE_DUYET",
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Máy biến điện trung tần"
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L27-20261111#soat-L27",
-          "ngay": "2026-11-11",
-          "bam": "3219683af9e86a5833db8ab27388edff2855d284ce6f14f1ff990a1d69dccd29"
-        }
-      }
+      "trich": "Máy biến điện trung tần",
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "85043191",
-      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): đồ chơi hoặc mô hình thu nhỏ hoặc mô hình giải trí",
+      "dieuKien": "Phân nhóm 8504.31 [Electrical transformers; n.e.c. in item no. 8504.2, having a power handling capacity not exceeding 1kVA]: Sử dụng cho đồ chơi, mô hình thu nhỏ hoặc các mô hình giải trí tương tự (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
       "loaiKhac": false,
       "nguon": "tax.85043191",
-      "trich": "85043191 - - - - Sử dụng cho đồ chơi, mô hình thu nhỏ hoặc các mô hình giải trí tương tự ",
-      "nguonLoai": "CLAUDE_DUYET",
-      "dieuKienSo": [
-        {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": [
-            "đồ chơi",
-            "mô hình thu nhỏ",
-            "mô hình giải trí"
-          ]
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L27-20261111#soat-L27",
-          "ngay": "2026-11-11",
-          "bam": "3219683af9e86a5833db8ab27388edff2855d284ce6f14f1ff990a1d69dccd29"
-        }
-      },
-      "chongLanTruc": {
-        "pn6": "850431",
-        "nhanh": [
-          "85043191",
-          "85043193"
-        ],
-        "truc": {
-          "85043191": "CONG_DUNG",
-          "85043193": "TEN_LOAI"
-        },
-        "cauHoiPhanBiet": "Máy biến áp này có tên là \"Máy biến áp tăng/giảm từng nấc\" hoặc \"máy điều chỉnh điện áp trượt\" (85043193) hay chỉ được dùng cho đồ chơi, mô hình thu nhỏ, mô hình giải trí (85043191)?",
-        "trich": {
-          "85043191": "Sử dụng cho đồ chơi, mô hình thu nhỏ hoặc các mô hình giải trí tương tự",
-          "85043193": "Máy biến áp tăng/giảm từng nấc (Step up/down transformers); máy điều chỉnh điện áp trượt (slide regulators)"
-        },
-        "phanXu": null,
-        "ranhGioi": {
-          "phienBan": "ranh-gioi@1",
-          "duyet": {
-            "phien": "claude-agent:duyet-L27-20261111#soat-L27",
-            "ngay": "2026-11-11",
-            "bam": "3219683af9e86a5833db8ab27388edff2855d284ce6f14f1ff990a1d69dccd29"
-          }
-        }
-      }
+      "trich": "Sử dụng cho đồ chơi, mô hình thu nhỏ hoặc các mô hình giải trí tương tự",
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "85043192",
-      "dieuKien": "tên loại hàng: Biến áp thích ứng; công dụng / mục đích: phối hợp trở kháng",
+      "dieuKien": "Phân nhóm 8504.31 [Electrical transformers; n.e.c. in item no. 8504.2, having a power handling capacity not exceeding 1kVA]: Biến áp thích ứng khác (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế) — SEN (mục 'MÁY BIẾN ÁP THÍCH ỨNG'): biến áp dùng để phối hợp trở kháng của mạch điện (vd biến áp cân bằng 300 Ω/75 Ω trong ti vi)",
       "loaiKhac": false,
       "nguon": "sen.85043192",
-      "trich": "Máy biến áp đôi khi được sử dụng để phối hợp trở kháng của mạch điện. Máy biến áp biến đổi điện xoay chiều ở một điện áp này sang điện áp khác ở cùng dạng sóng… máy biến áp thích ứng có tỷ số vòng dây là 2",
-      "nguonLoai": "CLAUDE_DUYET",
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Biến áp thích ứng"
-        },
-        {
-          "fact": "congDung",
-          "op": "CONG_DUNG",
-          "value": "phối hợp trở kháng"
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L27-20261111#soat-L27",
-          "ngay": "2026-11-11",
-          "bam": "3219683af9e86a5833db8ab27388edff2855d284ce6f14f1ff990a1d69dccd29"
-        }
-      },
-      "phanConLai": true
+      "trich": "MÁY BIẾN ÁP THÍCH ỨNG … Máy biến áp đôi khi được sử dụng để phối hợp trở kháng của mạch điện.",
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "85043193",
-      "dieuKien": "(tên loại hàng: Máy biến áp tăng/giảm từng nấc) hoặc (tên loại hàng: máy điều chỉnh điện áp trượt); cách điều khiển / vận hành: điều khiển bằng tay",
+      "dieuKien": "Phân nhóm 8504.31 [Electrical transformers; n.e.c. in item no. 8504.2, having a power handling capacity not exceeding 1kVA]: Máy biến áp tăng/giảm từng nấc (Step up/down transformers); máy điều chỉnh điện áp trượt (slide regulators) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế) — SEN: biến áp có đầu vào không ổn định trong dải điện áp nhất định, đầu ra là các điện áp nhất định điều chỉnh BẰNG TAY (máy điều chỉnh điện áp tự động → 90.32)",
       "loaiKhac": false,
       "nguon": "sen.85043193",
-      "trich": "Máy biến áp tăng/giảm từng nấc và máy điều chỉnh điện áp trượt là các máy biến áp có đầu vào không ổn định trong các dải điện áp nhất định và có đầu ra là các điện áp nhất định mà có thể được điều chỉnh bằng tay",
-      "nguonLoai": "CLAUDE_DUYET",
-      "dieuKienSo": [
-        {
-          "op": "HOAC",
-          "phuongAn": [
-            [
-              {
-                "fact": "tenLoai",
-                "op": "TEN_LOAI",
-                "value": "Máy biến áp tăng/giảm từng nấc"
-              }
-            ],
-            [
-              {
-                "fact": "tenLoai",
-                "op": "TEN_LOAI",
-                "value": "máy điều chỉnh điện áp trượt"
-              }
-            ]
-          ]
-        },
-        {
-          "fact": "cachDieuKhien",
-          "op": "TRONG",
-          "value": [
-            "BANG_TAY"
-          ]
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L27-20261111#soat-L27",
-          "ngay": "2026-11-11",
-          "bam": "3219683af9e86a5833db8ab27388edff2855d284ce6f14f1ff990a1d69dccd29"
-        }
-      },
-      "chongLanTruc": {
-        "pn6": "850431",
-        "nhanh": [
-          "85043191",
-          "85043193"
-        ],
-        "truc": {
-          "85043191": "CONG_DUNG",
-          "85043193": "TEN_LOAI"
-        },
-        "cauHoiPhanBiet": "Máy biến áp này có tên là \"Máy biến áp tăng/giảm từng nấc\" hoặc \"máy điều chỉnh điện áp trượt\" (85043193) hay chỉ được dùng cho đồ chơi, mô hình thu nhỏ, mô hình giải trí (85043191)?",
-        "trich": {
-          "85043191": "Sử dụng cho đồ chơi, mô hình thu nhỏ hoặc các mô hình giải trí tương tự",
-          "85043193": "Máy biến áp tăng/giảm từng nấc (Step up/down transformers); máy điều chỉnh điện áp trượt (slide regulators)"
-        },
-        "phanXu": null,
-        "ranhGioi": {
-          "phienBan": "ranh-gioi@1",
-          "duyet": {
-            "phien": "claude-agent:duyet-L27-20261111#soat-L27",
-            "ngay": "2026-11-11",
-            "bam": "3219683af9e86a5833db8ab27388edff2855d284ce6f14f1ff990a1d69dccd29"
-          }
-        }
-      }
+      "trich": "Máy biến áp tăng/giảm từng nấc và máy điều chỉnh điện áp trượt là các máy biến áp có đầu vào không ổn định trong các dải điện áp nhất định và có đầu ra là các điện áp nhất định mà có thể được điều chỉnh bằng tay.",
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "85043199",
@@ -1393,28 +1098,11 @@
     },
     {
       "hs": "85044011",
-      "dieuKien": "loại bộ biến đổi tĩnh điện: bộ nguồn cấp điện liên tục (UPS)",
+      "dieuKien": "Phân nhóm 8504.40 [Electrical static converters]: Bộ nguồn cấp điện liên tục (UPS) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế) — SEN: UPS là bộ biến đổi điện gồm biến điện, ắc quy chì-axit gắn kín với đầu ra hoặc tấm mạch in kèm điện trở, tụ, rơ le; bảo vệ nguồn, chống sốc điện, lọc nhiễu, nạp ắc quy tức thời",
       "loaiKhac": false,
-      "nguon": "tax.85044011",
-      "trich": "85044011 - - - Bộ nguồn cấp điện liên tục (UPS) (SEN)",
-      "nguonLoai": "CLAUDE_DUYET",
-      "dieuKienSo": [
-        {
-          "fact": "loaiBienDoiTinhDien",
-          "op": "TRONG",
-          "value": [
-            "UPS"
-          ]
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L27-20261111#soat-L27",
-          "ngay": "2026-11-11",
-          "bam": "91e9a827de53401fb231d03bc0c23683e573cb820b0dde121198b9f8063d336b"
-        }
-      }
+      "nguon": "sen.85044011",
+      "trich": "Bộ nguồn cấp điện liên tục là bộ biến đổi điện bao gồm các biến điện, các ắc quy chì-axit được gắn kín với đầu ra, hoặc các tấm mạch in lắp cùng với các điện trở, tụ điện, rơ le,...",
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "85044019",
@@ -1435,139 +1123,35 @@
     },
     {
       "hs": "85044020",
-      "dieuKien": "tên loại hàng: Máy nạp ắc qui; công suất biểu kiến > 100 kVA",
+      "dieuKien": "Phân nhóm 8504.40 [Electrical static converters]: Máy nạp ắc qui, pin có công suất danh định trên 100 kVA",
       "loaiKhac": false,
       "nguon": "tax.85044020",
-      "trich": "85044020 - - Máy nạp ắc qui, pin có công suất danh định trên 100 kVA",
-      "nguonLoai": "CLAUDE_DUYET",
+      "trich": "Máy nạp ắc qui, pin có công suất danh định trên 100 kVA",
+      "nguonLoai": "AI_DA_KIEM",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Máy nạp ắc qui"
-        },
-        {
-          "fact": "congSuatBieuKien",
+          "fact": "cong_suat",
           "op": ">",
           "value": 100,
           "donVi": "kVA"
         }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L27-20261111#soat-L27",
-          "ngay": "2026-11-11",
-          "bam": "91e9a827de53401fb231d03bc0c23683e573cb820b0dde121198b9f8063d336b"
-        }
-      },
-      "chongLanTruc": {
-        "pn6": "850440",
-        "nhanh": [
-          "8504401",
-          "85044020",
-          "85044040"
-        ],
-        "truc": {
-          "8504401": "CONG_DUNG",
-          "85044020": "TEN_LOAI",
-          "85044040": "DAC_DIEM"
-        },
-        "cauHoiPhanBiet": "Hàng này dùng cho máy xử lý dữ liệu tự động hoặc thiết bị viễn thông (tầng 8504401), hay là máy nạp ắc qui trên 100 kVA (85044020), hay là bộ nghịch lưu (85044040)?",
-        "trich": {
-          "8504401": "Dùng cho các máy xử lý dữ liệu tự động và các khối chức năng của chúng, và thiết bị viễn thông",
-          "85044020": "Máy nạp ắc qui, pin có công suất danh định trên 100 kVA",
-          "85044040": "Bộ nghịch lưu"
-        },
-        "phanXu": null,
-        "ranhGioi": {
-          "phienBan": "ranh-gioi@1",
-          "duyet": {
-            "phien": "claude-agent:duyet-L27-20261111#soat-L27",
-            "ngay": "2026-11-11",
-            "bam": "91e9a827de53401fb231d03bc0c23683e573cb820b0dde121198b9f8063d336b"
-          }
-        }
-      }
+      ]
     },
     {
       "hs": "85044030",
-      "dieuKien": "loại bộ biến đổi tĩnh điện: bộ chỉnh lưu",
+      "dieuKien": "Phân nhóm 8504.40 [Electrical static converters]: Bộ chỉnh lưu khác",
       "loaiKhac": false,
       "nguon": "tax.85044030",
-      "trich": "85044030 - - Bộ chỉnh lưu khác",
-      "nguonLoai": "CLAUDE_DUYET",
-      "dieuKienSo": [
-        {
-          "fact": "loaiBienDoiTinhDien",
-          "op": "TRONG",
-          "value": [
-            "CHINH_LUU"
-          ]
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L27-20261111#soat-L27",
-          "ngay": "2026-11-11",
-          "bam": "91e9a827de53401fb231d03bc0c23683e573cb820b0dde121198b9f8063d336b"
-        }
-      },
-      "phanConLai": true
+      "trich": "Bộ chỉnh lưu khác",
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "85044040",
-      "dieuKien": "loại bộ biến đổi tĩnh điện: bộ nghịch lưu",
+      "dieuKien": "Phân nhóm 8504.40 [Electrical static converters]: Bộ nghịch lưu",
       "loaiKhac": false,
       "nguon": "tax.85044040",
-      "trich": "85044040 - - Bộ nghịch lưu",
-      "nguonLoai": "CLAUDE_DUYET",
-      "dieuKienSo": [
-        {
-          "fact": "loaiBienDoiTinhDien",
-          "op": "TRONG",
-          "value": [
-            "NGHICH_LUU"
-          ]
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L27-20261111#soat-L27",
-          "ngay": "2026-11-11",
-          "bam": "91e9a827de53401fb231d03bc0c23683e573cb820b0dde121198b9f8063d336b"
-        }
-      },
-      "chongLanTruc": {
-        "pn6": "850440",
-        "nhanh": [
-          "8504401",
-          "85044020",
-          "85044040"
-        ],
-        "truc": {
-          "8504401": "CONG_DUNG",
-          "85044020": "TEN_LOAI",
-          "85044040": "DAC_DIEM"
-        },
-        "cauHoiPhanBiet": "Hàng này dùng cho máy xử lý dữ liệu tự động hoặc thiết bị viễn thông (tầng 8504401), hay là máy nạp ắc qui trên 100 kVA (85044020), hay là bộ nghịch lưu (85044040)?",
-        "trich": {
-          "8504401": "Dùng cho các máy xử lý dữ liệu tự động và các khối chức năng của chúng, và thiết bị viễn thông",
-          "85044020": "Máy nạp ắc qui, pin có công suất danh định trên 100 kVA",
-          "85044040": "Bộ nghịch lưu"
-        },
-        "phanXu": null,
-        "ranhGioi": {
-          "phienBan": "ranh-gioi@1",
-          "duyet": {
-            "phien": "claude-agent:duyet-L27-20261111#soat-L27",
-            "ngay": "2026-11-11",
-            "bam": "91e9a827de53401fb231d03bc0c23683e573cb820b0dde121198b9f8063d336b"
-          }
-        }
-      }
+      "trich": "Bộ nghịch lưu",
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "85044090",
@@ -2810,75 +2394,6 @@
       }
     },
     {
-      "id": "850431~r14985",
-      "nguon": "tieuDe.850431~r14985",
-      "trich": "850431~r14985 Dùng cho đường dây có điện áp từ 110 kV trở lên",
-      "dieuKienSo": [
-        {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": "đường dây"
-        },
-        {
-          "fact": "dienAp",
-          "op": ">=",
-          "value": 110,
-          "donVi": "kV"
-        }
-      ],
-      "nguonLoai": "CLAUDE_DUYET",
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L27-20261111#soat-L27",
-          "ngay": "2026-11-11",
-          "bam": "3219683af9e86a5833db8ab27388edff2855d284ce6f14f1ff990a1d69dccd29"
-        }
-      }
-    },
-    {
-      "id": "8504311",
-      "nguon": "tieuDe.8504311",
-      "trich": "8504311 Máy biến áp đo lường",
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Máy biến áp đo lường"
-        }
-      ],
-      "nguonLoai": "CLAUDE_DUYET",
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L27-20261111#soat-L27",
-          "ngay": "2026-11-11",
-          "bam": "3219683af9e86a5833db8ab27388edff2855d284ce6f14f1ff990a1d69dccd29"
-        }
-      }
-    },
-    {
-      "id": "8504312",
-      "nguon": "tieuDe.8504312",
-      "trich": "8504312 Máy biến dòng đo lường",
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Máy biến dòng đo lường"
-        }
-      ],
-      "nguonLoai": "CLAUDE_DUYET",
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L27-20261111#soat-L27",
-          "ngay": "2026-11-11",
-          "bam": "3219683af9e86a5833db8ab27388edff2855d284ce6f14f1ff990a1d69dccd29"
-        }
-      }
-    },
-    {
       "id": "8504321",
       "nguon": "tieuDe.8504321",
       "trich": "8504321 Máy biến đổi đo lường(1) (biến áp và biến dòng) loại công suất danh định không quá 5 kVA",
@@ -2969,59 +2484,6 @@
           "phien": "claude-agent:duyet-L27-20261111#soat-L27",
           "ngay": "2026-11-11",
           "bam": "19f6b4d6f83b0612b5942d39a2d1d9d113157fd80f0df85547ffab9837cdfb30"
-        }
-      }
-    },
-    {
-      "id": "8504401",
-      "nguon": "tieuDe.8504401",
-      "trich": "8504401 Dùng cho các máy xử lý dữ liệu tự động và các khối chức năng của chúng, và thiết bị viễn thông",
-      "dieuKienSo": [
-        {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": [
-            "máy xử lý dữ liệu tự động",
-            "khối chức năng",
-            "thiết bị viễn thông"
-          ]
-        }
-      ],
-      "nguonLoai": "CLAUDE_DUYET",
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L27-20261111#soat-L27",
-          "ngay": "2026-11-11",
-          "bam": "91e9a827de53401fb231d03bc0c23683e573cb820b0dde121198b9f8063d336b"
-        }
-      },
-      "chongLanTruc": {
-        "pn6": "850440",
-        "nhanh": [
-          "8504401",
-          "85044020",
-          "85044040"
-        ],
-        "truc": {
-          "8504401": "CONG_DUNG",
-          "85044020": "TEN_LOAI",
-          "85044040": "DAC_DIEM"
-        },
-        "cauHoiPhanBiet": "Hàng này dùng cho máy xử lý dữ liệu tự động hoặc thiết bị viễn thông (tầng 8504401), hay là máy nạp ắc qui trên 100 kVA (85044020), hay là bộ nghịch lưu (85044040)?",
-        "trich": {
-          "8504401": "Dùng cho các máy xử lý dữ liệu tự động và các khối chức năng của chúng, và thiết bị viễn thông",
-          "85044020": "Máy nạp ắc qui, pin có công suất danh định trên 100 kVA",
-          "85044040": "Bộ nghịch lưu"
-        },
-        "phanXu": null,
-        "ranhGioi": {
-          "phienBan": "ranh-gioi@1",
-          "duyet": {
-            "phien": "claude-agent:duyet-L27-20261111#soat-L27",
-            "ngay": "2026-11-11",
-            "bam": "91e9a827de53401fb231d03bc0c23683e573cb820b0dde121198b9f8063d336b"
-          }
         }
       }
     }

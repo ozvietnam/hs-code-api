@@ -206,111 +206,35 @@
     },
     {
       "hs": "85022010",
-      "dieuKien": "công suất biểu kiến <= 75 kVA",
+      "dieuKien": "Tổ máy phát điện có động cơ đốt trong kiểu tia lửa điện, công suất không quá 75 kVA",
       "loaiKhac": false,
       "nguon": "tax.85022010",
       "trich": "85022010 - - Công suất không quá 75 kVA",
-      "nguonLoai": "CLAUDE_DUYET",
-      "dieuKienSo": [
-        {
-          "fact": "congSuatBieuKien",
-          "op": "<=",
-          "value": 75,
-          "donVi": "kVA"
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L27-20261111#soat-L27",
-          "ngay": "2026-11-11",
-          "bam": "60462a2dd7b6749e5a8ace14e8e692106613d88bf44ef8c6b057bb48dbf6e1ed"
-        }
-      }
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "85022020",
-      "dieuKien": "công suất biểu kiến > 75 kVA; công suất biểu kiến <= 100 kVA",
+      "dieuKien": "Tổ máy phát điện có động cơ đốt trong kiểu tia lửa điện, công suất trên 75 kVA nhưng không quá 100 kVA",
       "loaiKhac": false,
       "nguon": "tax.85022020",
       "trich": "85022020 - - Công suất trên 75 kVA nhưng không quá 100 kVA",
-      "nguonLoai": "CLAUDE_DUYET",
-      "dieuKienSo": [
-        {
-          "fact": "congSuatBieuKien",
-          "op": ">",
-          "value": 75,
-          "donVi": "kVA"
-        },
-        {
-          "fact": "congSuatBieuKien",
-          "op": "<=",
-          "value": 100,
-          "donVi": "kVA"
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L27-20261111#soat-L27",
-          "ngay": "2026-11-11",
-          "bam": "60462a2dd7b6749e5a8ace14e8e692106613d88bf44ef8c6b057bb48dbf6e1ed"
-        }
-      }
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "85022030",
-      "dieuKien": "công suất biểu kiến > 100 kVA; công suất biểu kiến <= 10000 kVA",
+      "dieuKien": "Tổ máy phát điện có động cơ đốt trong kiểu tia lửa điện, công suất trên 100 kVA nhưng không quá 10.000 kVA",
       "loaiKhac": false,
       "nguon": "tax.85022030",
       "trich": "85022030 - - Công suất trên 100 kVA nhưng không quá 10.000 kVA",
-      "nguonLoai": "CLAUDE_DUYET",
-      "dieuKienSo": [
-        {
-          "fact": "congSuatBieuKien",
-          "op": ">",
-          "value": 100,
-          "donVi": "kVA"
-        },
-        {
-          "fact": "congSuatBieuKien",
-          "op": "<=",
-          "value": 10000,
-          "donVi": "kVA"
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L27-20261111#soat-L27",
-          "ngay": "2026-11-11",
-          "bam": "60462a2dd7b6749e5a8ace14e8e692106613d88bf44ef8c6b057bb48dbf6e1ed"
-        }
-      }
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "85022042",
-      "dieuKien": "công suất biểu kiến >= 12500 kVA",
+      "dieuKien": "Tổ máy phát điện có động cơ đốt trong kiểu tia lửa điện, công suất từ 12.500 kVA trở lên",
       "loaiKhac": false,
       "nguon": "tax.85022042",
       "trich": "85022042 - - - Công suất từ 12.500 kVA trở lên",
-      "nguonLoai": "CLAUDE_DUYET",
-      "dieuKienSo": [
-        {
-          "fact": "congSuatBieuKien",
-          "op": ">=",
-          "value": 12500,
-          "donVi": "kVA"
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L27-20261111#soat-L27",
-          "ngay": "2026-11-11",
-          "bam": "60462a2dd7b6749e5a8ace14e8e692106613d88bf44ef8c6b057bb48dbf6e1ed"
-        }
-      }
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "85022049",
@@ -696,29 +620,5 @@
     "dat": 26,
     "loai": 0,
     "nguonBiCat": []
-  },
-  "dieuKienNut": [
-    {
-      "id": "8502204",
-      "nguon": "tieuDe.8502204",
-      "trich": "8502204 Công suất trên 10.000 kVA",
-      "dieuKienSo": [
-        {
-          "fact": "congSuatBieuKien",
-          "op": ">",
-          "value": 10000,
-          "donVi": "kVA"
-        }
-      ],
-      "nguonLoai": "CLAUDE_DUYET",
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L27-20261111#soat-L27",
-          "ngay": "2026-11-11",
-          "bam": "60462a2dd7b6749e5a8ace14e8e692106613d88bf44ef8c6b057bb48dbf6e1ed"
-        }
-      }
-    }
-  ]
+  }
 }
