@@ -4,7 +4,7 @@
   "nhom": "1507",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1529#soan-150790",
@@ -74,6 +74,13 @@
       "ma": "15079090",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.15079090 \"Loại khác\" trần ⇒ không ghi điều kiện (máy phủ định anh em đứng trước)."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L5-20261111#soat-L5",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 150790:15079020 SUY RỘNG: chữ biểu \"Dầu đậu tương đã tinh chế, tẩy và khử mùi (RBD)\" / EN \"Refined, bleached and deodorised (RBD) soya-bean oil\" ⇒ mucDoTinhCheDau DA_TINH_CHE, nhưng giá trị này đọc cả \"đã tinh chế\"/\"refined\"/\"other than crude\" trơn ⇒ dầu đậu tương chỉ tinh chế (chưa tẩy, khử mùi) và phân đoạn của dầu đã tinh chế lọt .20 thay vì .90 (cùng MFN 15, sai mã). Vế \"tẩy và khử mùi\" bị bỏ mà không ghi THIEU_KHOA_TU_VUNG — cần giá trị RBD riêng trong tu-vung. Máy tách để cả câu là đầu ngữ nên cổng 5 không thấy."
     }
   ]
 }

@@ -4,7 +4,7 @@
   "nhom": "1513",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1530#soan-151329",
@@ -300,6 +300,13 @@
       "ma": "151329",
       "loai": "QUYET_DINH",
       "ghiChu": "Claude 07/11/2026 (#1109): vướng cũ không phải thiếu khoá rắn/lỏng mà là: (1) phạm vi phân nhóm chưa khai — dieuKienNut[151329] lấy loại dầu từ tieuDe.15132 \"Dầu hạt cọ hoặc dầu cọ ba-ba-su và các phần phân đoạn của chúng\"; (2) các dòng «Loại khác, của dầu hạt cọ …» / «… của dầu cọ ba-ba-su» ghi tên «Dầu hạt cọ» nên hàng «olein hạt cọ» không khớp — «của dầu hạt cọ» là LOẠI DẦU ⇒ tenLoai «hạt cọ» / «cọ ba-ba-su», .13 và .96 phanConLai (phần còn lại sau dòng thể rắn của cùng loại dầu)."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L5-20261111#soat-L5",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 151329:15132994, 15132995 SUY RỘNG: chữ biểu \"Olein hạt cọ, đã tinh chế, tẩy và khử mùi (RBD)\" / \"Dầu hạt cọ, đã tinh chế, tẩy và khử mùi (RBD)\" (EN \"refined, bleached and deodorised (RBD)\") ⇒ DA_TINH_CHE đọc cả \"refined\" trơn ⇒ dầu hạt cọ chỉ tinh chế lọt .95 (MFN 35) thay vì .96 \"Loại khác, của dầu hạt cọ\" (MFN 25). Cần giá trị RBD riêng (THIEU_KHOA_TU_VUNG). (B) giá trị tên không nhất quán: .11 \"hạt cọ\" nhưng .91 \"của dầu hạt cọ\"; ghi chú .13/.14 nói tenLoai \"Dầu hạt cọ\"/\"Dầu cọ ba-ba-su\" nhưng spec ghi \"hạt cọ\"/\"cọ ba-ba-su\"."
     }
   ]
 }

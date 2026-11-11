@@ -119,31 +119,61 @@
   "dong8": [
     {
       "hs": "09011120",
-      "dieuKien": "Cà phê Arabica — hàm lượng cafein thường 0,8 - 1,4%; hạt thường bầu dục, dài hơn Robusta",
+      "dieuKien": "tên loại hàng: Arabica",
+      "loaiKhac": false,
+      "nguon": "tax.09011120",
+      "trich": "09011120 - - - Arabica (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Arabica"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L4-20261111#soat-L4",
+          "ngay": "2026-11-11",
+          "bam": "bb64781d18174703e46e3510f9cce9746d1ed15b909531876d001e133cb246ea"
+        }
+      },
       "tieuChi": {
         "fact": "la_ca_phe_arabica",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "loaiKhac": false,
-      "nguon": "sen.09011120",
-      "trich": "CÀ PHÊ ARABICA … • Hình thức: Hình dạng của hạt thường có hình bầu dục và dài hơn Robusta. … • Hàm lượng cafein: thường 0,8 - 1,4% nên không quá đắng nhưng có độ chua cao hơn.",
-      "nguonLoai": "AI_DA_KIEM"
+      }
     },
     {
       "hs": "09011130",
-      "dieuKien": "Cà phê Robusta — hạt tròn hơn và thường lớn hơn; caffein thường là 1,7% - 4%",
+      "dieuKien": "tên loại hàng: Robusta",
+      "loaiKhac": false,
+      "nguon": "tax.09011130",
+      "trich": "09011130 - - - Robusta (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Robusta"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L4-20261111#soat-L4",
+          "ngay": "2026-11-11",
+          "bam": "bb64781d18174703e46e3510f9cce9746d1ed15b909531876d001e133cb246ea"
+        }
+      },
       "tieuChi": {
         "fact": "la_ca_phe_robusta",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "loaiKhac": false,
-      "nguon": "sen.09011130",
-      "trich": "CÀ PHÊ ROBUSTA … • Hình thức: Hạt cà phê tròn hơn và thường lớn hơn. … • Hàm lượng caffein: thường là 1,7% - 4% nên có vị đắng và độ chua thấp.",
-      "nguonLoai": "AI_DA_KIEM"
+      }
     },
     {
       "hs": "09011190",
@@ -166,17 +196,35 @@
     },
     {
       "hs": "09011220",
-      "dieuKien": "Arabica (SEN) hoặc Robusta (SEN)",
+      "dieuKien": "tên loại hàng: Arabica hoặc Robusta",
+      "loaiKhac": false,
+      "nguon": "tax.09011220",
+      "trich": "09011220 - - - Arabica (SEN) hoặc Robusta (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Arabica",
+            "Robusta"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L4-20261111#soat-L4",
+          "ngay": "2026-11-11",
+          "bam": "1be22d353959617286eead828d6ef948420a29f853cac8ce318739713a6c73aa"
+        }
+      },
       "tieuChi": {
         "fact": "la_ca_phe_arabica_hoac_robusta",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "loaiKhac": false,
-      "nguon": "tax.09011220",
-      "trich": "09011220 - - - Arabica (SEN) hoặc Robusta (SEN)",
-      "nguonLoai": "AI_DA_KIEM"
+      }
     },
     {
       "hs": "09011290",
@@ -303,59 +351,120 @@
     },
     {
       "hs": "09012210",
-      "dieuKien": "Chưa xay",
+      "dieuKien": "không: đã xay",
+      "loaiKhac": false,
+      "nguon": "tax.09012210",
+      "trich": "09012210 - - - Chưa xay",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "daXay",
+          "op": "KHONG"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L4-20261111#soat-L4",
+          "ngay": "2026-11-11",
+          "bam": "700cc8001e8159aced6ee4606f78b2e854ee472ca26cfd6751c767cbb2ee5991"
+        }
+      },
       "tieuChi": {
         "fact": "chua_xay",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "loaiKhac": false,
-      "nguon": "tax.09012210",
-      "trich": "09012210 - - - Chưa xay",
-      "nguonLoai": "AI_DA_KIEM"
+      }
     },
     {
       "hs": "09012220",
-      "dieuKien": "Đã xay",
+      "dieuKien": "đã xay",
+      "loaiKhac": false,
+      "nguon": "tax.09012220",
+      "trich": "09012220 - - - Đã xay",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "daXay",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L4-20261111#soat-L4",
+          "ngay": "2026-11-11",
+          "bam": "700cc8001e8159aced6ee4606f78b2e854ee472ca26cfd6751c767cbb2ee5991"
+        }
+      },
       "tieuChi": {
         "fact": "da_xay",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "loaiKhac": false,
-      "nguon": "tax.09012220",
-      "trich": "09012220 - - - Đã xay",
-      "nguonLoai": "AI_DA_KIEM"
+      }
     },
     {
       "hs": "09019010",
-      "dieuKien": "Vỏ quả và vỏ lụa cà phê",
+      "dieuKien": "tên loại hàng: Vỏ quả hoặc vỏ lụa cà phê",
+      "loaiKhac": false,
+      "nguon": "tax.09019010",
+      "trich": "09019010 - - Vỏ quả và vỏ lụa cà phê",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Vỏ quả",
+            "vỏ lụa cà phê"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L4-20261111#soat-L4",
+          "ngay": "2026-11-11",
+          "bam": "4af6162ffe6c73582e94ac58ceaff06e0292daddda39e93f607c1073d62052ae"
+        }
+      },
       "tieuChi": {
         "fact": "la_vo_qua_va_vo_lua_ca_phe",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "loaiKhac": false,
-      "nguon": "tax.09019010",
-      "trich": "09019010 - - Vỏ quả và vỏ lụa cà phê",
-      "nguonLoai": "AI_DA_KIEM"
+      }
     },
     {
       "hs": "09019020",
-      "dieuKien": "Các chất thay thế có chứa cà phê",
+      "dieuKien": "tên loại hàng: Các chất thay thế có chứa cà phê",
+      "loaiKhac": false,
+      "nguon": "tax.09019020",
+      "trich": "09019020 - - Các chất thay thế có chứa cà phê",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Các chất thay thế có chứa cà phê"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L4-20261111#soat-L4",
+          "ngay": "2026-11-11",
+          "bam": "4af6162ffe6c73582e94ac58ceaff06e0292daddda39e93f607c1073d62052ae"
+        }
+      },
       "tieuChi": {
         "fact": "la_chat_thay_the_co_chua_ca_phe",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "loaiKhac": false,
-      "nguon": "tax.09019020",
-      "trich": "09019020 - - Các chất thay thế có chứa cà phê",
-      "nguonLoai": "AI_DA_KIEM"
+      }
     }
   ],
   "cay": {

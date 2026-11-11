@@ -30,6 +30,7 @@ fs.writeFileSync(path.join(tmp, '0101.json'), JSON.stringify([
   muc('01019994', 'Khối lượng không dưới 600 gram.\nKích thước: 35-120 cm', [dkSo('khoi_luong', '>=', 600, 'gram'), dkSo('kich_thuoc_toi_da', '<=', 120, 'cm')]),
   muc('01019995', 'X - - Có ít hơn 10% khối lượng lọt qua lưới 1mm', [dkSo('khoi_luong_qui_doi', '<', 10, '%')]),
   muc('01019996', 'X - - Đóng gói khối lượng tịnh trên 2 kg đến dưới 20 kg', [dkSo('khoi_luong', '>', 2, 'kg'), dkSo('khoi_luong', '<', 20, 'kg')]),
+  muc('01019997', 'X - - Dạng tờ, không có chiều nào trên 360 mm ở dạng không gấp', [dkSo('kich_thuoc', '<=', 360, 'mm')]),
 ], null, 2));
 
 // nhóm "lỗi" — đúng lỗi gốc #458: "trở xuống" lưu thành >=, và một ca lưu ngược chiều khoảng
@@ -51,7 +52,7 @@ fs.copyFileSync(path.join(tmp, '0101.json'), path.join(duong, '0101.json'));
 const xanh = chay(duong);
 check('bộ đúng ⇒ exit 0', xanh.status === 0, `status=${xanh.status} ${xanh.stdout}\n${xanh.stderr}`);
 check('bộ đúng không có FAIL nào', !xanh.stdout.includes('FAIL'), xanh.stdout);
-check('tổng điều kiện kiểm đúng 11', xanh.stdout.includes('11 điều kiện số'), xanh.stdout);
+check('tổng điều kiện kiểm đúng 12 («không có chiều nào trên» = <=)', xanh.stdout.includes('12 điều kiện số'), xanh.stdout);
 
 console.log(`test-check-so-tay-bien: ${pass} đạt, ${fail} trượt`);
 process.exit(fail ? 1 : 0);

@@ -4,7 +4,7 @@
   "nhom": "0207",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-020760",
@@ -132,6 +132,13 @@
       "ma": "020760",
       "loai": "QUYET_DINH",
       "ghiChu": "Claude (#1109): phạm vi phân nhóm dieuKienNut[020760] theo wco.020760 \"fresh, chilled or frozen\" — vector ngoài phạm vi (cổng 1 cũ báo hở) thuộc phân nhóm khác, không phải lỗ hổng."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L1-20261111#soat-L1",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 020760.json:02076030 + 02076040 THU HẸP: chữ biểu VI \"Đã chặt mảnh và phụ phẩm sau giết mổ, tươi hoặc ướp lạnh/đông lạnh\" / EN \"Cuts and offal, fresh or chilled/frozen\" có HAI danh từ đầu (cuts | offal); điều kiện chỉ daChatManh CO — ghiChu của chính khoá daChatManh trong tu-vung@2 nói \"Khoá chỉ đọc vế 'chặt mảnh'; vế 'phụ phẩm sau giết mổ' do khoá khác đọc\", nhưng không có khoá nào đọc phụ phẩm. Hệ quả: phụ phẩm (gan, mề, tim gà lôi) không \"chặt mảnh\" ⇒ có thể trả lời daChatManh KHONG và rơi 02076010/02076020 (MFN 40%) thay vì 02076030/02076040 (MFN 15%). Bộ tách để nguyên cả dòng là DAU nên cổng 5 không thấy vế \"phụ phẩm sau giết mổ\". Sửa: HOAC [[daChatManh CO],[phụ phẩm CO]] — thiếu khoá ⇒ THIEU_KHOA_TU_VUNG/DỪNG, hoặc Claude định nghĩa lại daChatManh = \"không còn nguyên con (gồm phụ phẩm)\"."
     }
   ]
 }
