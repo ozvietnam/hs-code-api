@@ -4,19 +4,13 @@
   "nhom": "8708",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "DUYET",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T1003#soan-870892",
     "ngay": "2026-11-06"
   },
-  "duyet": {
-    "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L30-20261111#soat-L30",
-    "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu VI/EN: tầng 8704.10 ↔ '87.02 hoặc xe khác thuộc 87.04' phanConLai [8708925]; .51/.61 tên hai hàng ống xả/bộ giảm thanh ↔ .52/.62 bộ phận có chongLanTruc; phạm vi PN6 đúng tên.",
-    "bam": "91947b277a002dd7b48a1bcf91d7793766b780abb04c33ddda71edc2f58c7b3e"
-  },
+  "duyet": null,
   "dieuKienNut": [
     {
       "id": "870892",
@@ -45,7 +39,7 @@
           ]
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "id": "8708925",
@@ -58,7 +52,7 @@
           "value": "8704.10"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "id": "8708926",
@@ -74,7 +68,7 @@
           ]
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET",
+      "nguonLoai": "AI_DA_KIEM",
       "phanConLai": [
         "8708925"
       ]
@@ -92,7 +86,7 @@
           "value": "87.01"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "87089220",
@@ -105,7 +99,7 @@
           "value": "87.03"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "87089251",
@@ -121,7 +115,7 @@
           ]
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "87089252",
@@ -133,7 +127,7 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "87089261",
@@ -149,7 +143,7 @@
           ]
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "87089262",
@@ -161,14 +155,14 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "87089290",
       "nguon": "tax.87089290",
       "trich": "87089290 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "chongLanTruc": [
@@ -283,6 +277,13 @@
       "ma": "870892",
       "loai": "QUYET_DINH",
       "ghiChu": "Claude (#1109): phạm vi phân nhóm dieuKienNut[870892] theo tieuDe.870892 \"Ống xả và bộ giảm thanh; bộ phận của chúng\" — vector ngoài phạm vi (cổng 1 cũ báo hở) thuộc phân nhóm khác, không phải lỗ hổng."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:tech-lead-20261111#soat-lai",
+      "ngay": "2026-11-11",
+      "lyDo": "bo-kiem-luat --toan-bieu (gộp thử với main, đo hai bên cùng nhịp): bản duyệt sinh ca chốt sai mới (chotSai/chotLoaiKhacSai tăng) hoặc làm đỏ test-so-tay-gates/test-so-tay-questions. Soạn/soát lại rồi đo lại trước khi duyệt."
     }
   ]
 }

@@ -4,19 +4,13 @@
   "nhom": "8708",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "DUYET",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T1300#soan-870880",
     "ngay": "2026-11-06"
   },
-  "duyet": {
-    "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L30-20261111#soat-L30",
-    "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu VI/EN: tầng 'Hệ thống giảm chấn' ↔ 'Bộ phận' (laBoPhan CO) có chongLanTruc + ví dụ; dungCho mã nhóm/phân nhóm (8704.10, 87.05) đúng.",
-    "bam": "ea6dff7f42dbee7261a2064963a560232528866c9af4394ff5c1de59e1844aee"
-  },
+  "duyet": null,
   "dieuKienNut": [
     {
       "id": "8708801",
@@ -29,7 +23,7 @@
           "value": "Hệ thống giảm chấn"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "id": "8708809",
@@ -41,7 +35,7 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "dong8": [
@@ -56,7 +50,7 @@
           "value": "87.01"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "87088016",
@@ -69,7 +63,7 @@
           "value": "87.03"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "87088017",
@@ -85,14 +79,14 @@
           ]
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "87088019",
       "nguon": "tax.87088019",
       "trich": "87088019 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "87088091",
@@ -105,7 +99,7 @@
           "value": "87.01"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "87088092",
@@ -118,14 +112,14 @@
           "value": "87.03"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "87088099",
       "nguon": "tax.87088099",
       "trich": "87088099 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "chongLanTruc": [
@@ -200,6 +194,13 @@
       "ma": "87088099",
       "loai": "QUYET_DINH",
       "ghiChu": "\"Loại khác\" trần ⇒ không điều kiện"
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:tech-lead-20261111#soat-lai",
+      "ngay": "2026-11-11",
+      "lyDo": "bo-kiem-luat --toan-bieu (gộp thử với main, đo hai bên cùng nhịp): bản duyệt sinh ca chốt sai mới (chotSai/chotLoaiKhacSai tăng) hoặc làm đỏ test-so-tay-gates/test-so-tay-questions. Soạn/soát lại rồi đo lại trước khi duyệt."
     }
   ]
 }

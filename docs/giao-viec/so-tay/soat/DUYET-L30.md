@@ -129,3 +129,8 @@ Lô không có `cong5-de-trong-chua-xu-ly` nên không cần `--giai-quyet`. Kh�
 - `node scripts/check-cay.mjs` — EXIT=0.
 - `node scripts/test-so-tay.mjs` — EXIT=0, 65/65 passed.
 - Không chạy `bo-kiem-luat --toan-bieu` (BỔ SUNG 11/11 mục 4 — tech lead đo tập trung).
+
+
+## Soát lại của tech lead — bo-kiem-luat hai bên / test
+
+Trả về 870324 870422 870432 870442 870443 870452 870840 870880 870892 870899: gộp thử với `main` làm phát sinh ca chốt sai mới trong `bo-kiem-luat --toan-bieu` hoặc làm đỏ `test-so-tay-gates`/`test-so-tay-questions` (cổng gộp không cho tăng). Mục sổ tay giữ như `main`.
