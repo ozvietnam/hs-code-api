@@ -451,7 +451,7 @@ check('trangThaiDong8.veMoHinh: 73181510 chấm trọn nhãn "Đường kính ng
     '');
 
   // ── Cổng thật trên đường chốt dòng 8 — bản nháp DUYET do CHÍNH TEST dựng ───────────────────────────
-  // KHÔNG đọc trạng thái `data/ho-so/ranh-gioi/370690.json` thật: các lô soát ranh giới còn đổi
+  // KHÔNG đọc trạng thái bản nháp SỐNG của 370690 (tệp json trong thư mục ranh giới hồ sơ): các lô soát còn đổi
   // DUYET⇄TRA_VE liên tục, nên ca bám vào trạng thái dữ liệu là CA RỖNG — khi 370690 ở TRA_VE thì
   // chotDong8 trả KHONG_THE_CHOT/`ranh-gioi-chua-so-hoa`, ca "không chốt .40" pass vì chẳng chốt gì,
   // không phải vì bản vá (soát độc lập 11/11 bắt đúng lỗi này: mutation gỡ hẳn bản vá mà test không đỏ
