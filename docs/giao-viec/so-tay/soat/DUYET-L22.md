@@ -134,3 +134,8 @@ sai — máy xanh không phải tín hiệu đủ.
 | 732510 | DUYET | .20 'Manhole covers, gratings and frames therefor' → HOAC [tenLoai Nắp cống/lưới che cống] \| [tenLoai khung + dungCho nắp cống/lưới] — 'therefor' gắn đúng khung; .30 'Spouts and cups for latex collection' → tenLoai Máng/chén + congDung thu mủ cao su. |
 | 732599 | DUYET | .20 'Manhole covers, gratings and frames therefor' → HOAC nắp/lưới \| khung dùng cho nắp/lưới (đúng chữ 'therefor'); .90 trần. |
 | 732620 | DUYET | .50 'Poultry cages and the like' → TUONG_TU [Lồng nuôi gia cầm] (đúng thiết kế, không khai chongLan); .60 Bẫy chuột; .70 'Wire mesh curtain and blinds' → tenLoai [Rèm, rèm lưới] trong phạm vi sản phẩm bằng dây; .90 trần. |
+
+
+## Soát lại của tech lead — bo-kiem-luat hai bên
+
+Trả về 730630,732010,732020: gộp thử với `main` làm phát sinh ca chốt sai mới trong `bo-kiem-luat --toan-bieu` (cổng gộp không cho `chotSai`/`chotLoaiKhacSai` tăng). Mục sổ tay giữ như `main`.
