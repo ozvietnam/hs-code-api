@@ -75,6 +75,29 @@ check('A8 hai mức không trộn: "ngay cả khi không có đầu" vẫn bỏ 
   !/(?<![\p{L}])đầu(?![\p{L}])/u.test(boPhuDinh('ngay cả khi không có đầu')),
   boPhuDinh('ngay cả khi không có đầu'));
 
+// ── A9. "nhung"/"ma" KHÔNG DẤU là từ thật trong biểu thuế, không phải từ nối chuyển ý ────────────────
+// Lỗi của chính PR #1210 (soát độc lập bắt được, #1210 comment-6800594580): mẫu dùng lại của `zalo-bot`
+// nhận cả biến thể không dấu `nhung|ma` vì bên đó đọc caption Zalo (gõ thiếu dấu là thường), cắt sai chỉ
+// lọt thêm tạp âm. Bên này mẫu chạy trên ĐƯỜNG CHỐT MÃ: cắt sai thì mệnh đề phủ định của khách bị dừng
+// sớm, chữ khách đang LOẠI TRỪ lại thành bằng chứng khớp dòng — sai đúng chiều nguy hiểm.
+// 7 dòng biểu thuế có các từ này thật: 12115000/13021400 "cây ma hoàng", 32141000 "ma tít để gắn kính",
+// 96180000 "ma-nơ-canh", 59070040/59111000 "nhung xơ vụn", 07095500 "Nấm Tùng Nhung".
+for (const [s, mat] of [
+  ['không phải vải dệt kim nhung sợi dọc', 'nhung sợi dọc'],
+  ['không phải nấm Tùng Nhung sấy khô', 'Nhung sấy khô'],
+  ['không có ma tít gắn kính', 'ma tít'],
+  ['không có ma trận điểm', 'ma trận'],
+  ['trừ loại bằng nhung tơ tằm', 'nhung tơ tằm'],
+]) {
+  check(`A9 "${s}" → bỏ SẠCH mệnh đề phủ định ("${mat}" không được thành bằng chứng)`,
+    !new RegExp(mat, 'i').test(boPhuDinh(s)), boPhuDinh(s));
+}
+// … nhưng từ nối CÓ DẤU vẫn phải dừng như A1/A5 (bỏ hai biến thể ascii không được làm hỏng bản vá chính).
+check('A9b từ nối CÓ DẤU vẫn dừng: "không phải nhung tơ tằm nhưng là vải dệt kim"',
+  /vải dệt kim/.test(boPhuDinh('không phải nhung tơ tằm nhưng là vải dệt kim'))
+    && !/nhung tơ tằm/.test(boPhuDinh('không phải nhung tơ tằm nhưng là vải dệt kim')),
+  boPhuDinh('không phải nhung tơ tằm nhưng là vải dệt kim'));
+
 // ── B. Lỗi 1 — `khopVe` che cụm tuỳ chọn / cụm ghép TRƯỚC khi xét rào "không|chưa" ────────────────────
 // ≥ 2 vế TUỲ CHỌN (thẻ nêu: mật ong 17029020, urê 31021000) — trước vá cả hai trả null.
 check('B1 vế tuỳ chọn "Mật ong nhân tạo, đã hoặc chưa pha trộn…" khớp mô tả mật ong pha trộn',

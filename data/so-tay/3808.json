@@ -226,19 +226,62 @@
   "dong8": [
     {
       "hs": "38085210",
-      "dieuKien": "Thuốc bảo quản gỗ, là chế phẩm chứa chất trừ côn trùng hoặc trừ nấm, trừ chất phủ bề mặt",
+      "dieuKien": "tên loại hàng: Thuốc bảo quản gỗ; không tên loại hàng: chất phủ bề mặt",
       "loaiKhac": false,
       "nguon": "tax.38085210",
       "trich": "38085210 - - - Thuốc bảo quản gỗ, là chế phẩm chứa chất trừ côn trùng hoặc trừ nấm, trừ chất phủ bề mặt",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thuốc bảo quản gỗ"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "chất phủ bề mặt",
+          "chieu": "PHAI_KHONG"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L11-20261111#soat-L11",
+          "ngay": "2026-11-11",
+          "bam": "3216e1701951cfe899bb6b2c76f876f76b28d9a442c7cc26d5e64c4cec80d8a8"
+        }
+      }
     },
     {
       "hs": "38085220",
-      "dieuKien": "Thuốc trừ nấm và thuốc trừ côn trùng dạng bình xịt",
+      "dieuKien": "tên loại hàng: Thuốc trừ nấm hoặc thuốc trừ côn trùng; dạng bình xịt (aerosol)",
       "loaiKhac": false,
       "nguon": "tax.38085220",
       "trich": "38085220 - - - Thuốc trừ nấm và thuốc trừ côn trùng dạng bình xịt",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Thuốc trừ nấm",
+            "thuốc trừ côn trùng"
+          ]
+        },
+        {
+          "fact": "dangBinhXit",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L11-20261111#soat-L11",
+          "ngay": "2026-11-11",
+          "bam": "3216e1701951cfe899bb6b2c76f876f76b28d9a442c7cc26d5e64c4cec80d8a8"
+        }
+      }
     },
     {
       "hs": "38085290",
@@ -596,11 +639,33 @@
     },
     {
       "hs": "38086910",
-      "dieuKien": "Bột dùng làm hương vòng chống muỗi",
+      "dieuKien": "tên loại hàng: Bột dùng làm hương vòng chống muỗi; dạng chế phẩm diệt muỗi: bột dùng làm hương vòng chống muỗi",
       "loaiKhac": false,
       "nguon": "tax.38086910",
       "trich": "38086910 - - - Bột dùng làm hương vòng chống muỗi",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bột dùng làm hương vòng chống muỗi"
+        },
+        {
+          "fact": "dangChePhamDietMuoi",
+          "op": "TRONG",
+          "value": [
+            "BOT_LAM_HUONG_VONG"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L11-20261111#soat-L11",
+          "ngay": "2026-11-11",
+          "bam": "942ca662b0cc731849ca91bd4256166a999874fc90a1d08246c2231fd2ee1e47"
+        }
+      }
     },
     {
       "hs": "38086990",
@@ -781,11 +846,25 @@
     },
     {
       "hs": "38089311",
-      "dieuKien": "Dạng bình xịt",
+      "dieuKien": "dạng bình xịt (aerosol)",
       "loaiKhac": false,
       "nguon": "tax.38089311",
       "trich": "38089311 - - - - Dạng bình xịt",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dangBinhXit",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L11-20261111#soat-L11",
+          "ngay": "2026-11-11",
+          "bam": "b68d0d8cf8dbfcdd3d7555aaa5766ac185ca48beb017f980eb0cacc02a871f34"
+        }
+      }
     },
     {
       "hs": "38089319",
@@ -809,19 +888,49 @@
     },
     {
       "hs": "38089320",
-      "dieuKien": "Thuốc chống nảy mầm",
+      "dieuKien": "tên loại hàng: Thuốc chống nảy mầm",
       "loaiKhac": false,
       "nguon": "tax.38089320",
       "trich": "38089320 - - - Thuốc chống nảy mầm",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thuốc chống nảy mầm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L11-20261111#soat-L11",
+          "ngay": "2026-11-11",
+          "bam": "b68d0d8cf8dbfcdd3d7555aaa5766ac185ca48beb017f980eb0cacc02a871f34"
+        }
+      }
     },
     {
       "hs": "38089330",
-      "dieuKien": "Thuốc điều hòa sinh trưởng cây trồng",
+      "dieuKien": "tên loại hàng: Thuốc điều hòa sinh trưởng cây trồng",
       "loaiKhac": false,
       "nguon": "tax.38089330",
       "trich": "38089330 - - - Thuốc điều hòa sinh trưởng cây trồng",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thuốc điều hòa sinh trưởng cây trồng"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L11-20261111#soat-L11",
+          "ngay": "2026-11-11",
+          "bam": "b68d0d8cf8dbfcdd3d7555aaa5766ac185ca48beb017f980eb0cacc02a871f34"
+        }
+      }
     },
     {
       "hs": "38089410",
@@ -1617,6 +1726,27 @@
           "phien": "mw-soatS2:20261107T0448#soat-380892",
           "ngay": "2026-11-07",
           "bam": "cb74e19a0f99da9f5c6fbcb48fbb241c01232a533812355824b7cccb7c572032"
+        }
+      }
+    },
+    {
+      "id": "3808931",
+      "nguon": "tieuDe.3808931",
+      "trich": "3808931 Thuốc diệt cỏ",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thuốc diệt cỏ"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L11-20261111#soat-L11",
+          "ngay": "2026-11-11",
+          "bam": "b68d0d8cf8dbfcdd3d7555aaa5766ac185ca48beb017f980eb0cacc02a871f34"
         }
       }
     }

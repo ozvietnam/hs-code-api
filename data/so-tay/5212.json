@@ -1,369 +1,403 @@
 {
- "nhom": "5212",
- "phamVi": {
-  "text": "Các loại vải dệt thoi khác từ bông.",
-  "nguon": "nhom5212.nhom",
-  "trich": "Nhóm này bao gồm các loại vải dệt thoi (như đã định nghĩa trong Phần (I) (C) của Chú giải tổng quát Phần XI) làm từ sợi bông. Tuy nhiên, cần chú ý rằng nhóm này chỉ bao gồm các loại vải dệt từ sợi đã được pha",
-  "nguonLoai": "AI_DA_KIEM"
- },
- "dieuKienVao": [
-  {
-   "fact": "la_vai_det_thoi_khac_tu_bong",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "nhom5212.nhom",
-   "trich": "Nhóm này bao gồm các loại vải dệt thoi (như đã định nghĩa trong Phần (I) (C) của Chú giải tổng quát Phần XI) làm từ sợi bông.",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "loaiTru": [
-  {
-   "dieuKien": "Băng dùng trong y tế, đã tẩm thuốc hay đã đóng gói để bán lẻ",
-   "sangNhom": "3005",
-   "nguon": "nhom5212.nhom",
-   "trich": "Băng dùng trong y tế, đã tẩm thuốc hay đã đóng gói để bán lẻ thì bị loại khỏi nhóm này (nhóm 30.05).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "phanBiet": [
-  {
-   "hoi": "Hàng hoá có phải là băng dùng trong y tế, đã tẩm thuốc hay đã đóng gói để bán lẻ thuộc nhóm 30.05?",
-   "neuCo": "3005",
-   "neuKhong": "5212",
-   "nguon": "nhom5212.nhom",
-   "trich": "Băng dùng trong y tế, đã tẩm thuốc hay đã đóng gói để bán lẻ thì bị loại khỏi nhóm này (nhóm 30.05).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "tieuChi6": [
-  {
-   "hs6": "521211",
-   "fact": "dinh_luong_vai",
-   "op": "<=",
-   "value": 200,
-   "donVi": "g/m2",
-   "nguon": "wco.521211",
-   "trich": "weighing not more than 200g/m2",
-   "nguonLoai": "AI_DA_KIEM"
+  "nhom": "5212",
+  "phamVi": {
+    "text": "Các loại vải dệt thoi khác từ bông.",
+    "nguon": "nhom5212.nhom",
+    "trich": "Nhóm này bao gồm các loại vải dệt thoi (như đã định nghĩa trong Phần (I) (C) của Chú giải tổng quát Phần XI) làm từ sợi bông. Tuy nhiên, cần chú ý rằng nhóm này chỉ bao gồm các loại vải dệt từ sợi đã được pha",
+    "nguonLoai": "AI_DA_KIEM"
   },
-  {
-   "hs6": "521221",
-   "fact": "dinh_luong_vai",
-   "op": ">",
-   "value": 200,
-   "donVi": "g/m2",
-   "nguon": "wco.521221",
-   "trich": "weighing more than 200g/m2",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "dong8": [
-  {
-   "hs": "52121100",
-   "dieuKien": "Chưa tẩy trắng",
-   "loaiKhac": false,
-   "nguon": "tax.52121100",
-   "trich": "52121100 - - Chưa tẩy trắng",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "52121200",
-   "dieuKien": "Đã tẩy trắng",
-   "loaiKhac": false,
-   "nguon": "tax.52121200",
-   "trich": "52121200 - - Đã tẩy trắng",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "52121300",
-   "dieuKien": "Đã nhuộm",
-   "loaiKhac": false,
-   "nguon": "tax.52121300",
-   "trich": "52121300 - - Đã nhuộm",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "52121400",
-   "dieuKien": "Từ các sợi có các màu khác nhau",
-   "loaiKhac": false,
-   "nguon": "tax.52121400",
-   "trich": "52121400 - - Từ các sợi có các màu khác nhau",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "52121510",
-   "dieuKien": "Được in bằng phương pháp batik truyền thống (SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.52121510",
-   "trich": "52121510 - - - Được in bằng phương pháp batik truyền thống (SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "52121590",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.52121590",
-   "trich": "52121590 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "521215",
-    "truAnhEm": [
-     "52121510"
-    ],
-    "truDayDu": [
-     "52121510"
-    ],
-    "toTienCoTen": "521215",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "52122100",
-   "dieuKien": "Chưa tẩy trắng",
-   "loaiKhac": false,
-   "nguon": "tax.52122100",
-   "trich": "52122100 - - Chưa tẩy trắng",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "52122200",
-   "dieuKien": "Đã tẩy trắng",
-   "loaiKhac": false,
-   "nguon": "tax.52122200",
-   "trich": "52122200 - - Đã tẩy trắng",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "52122300",
-   "dieuKien": "Đã nhuộm",
-   "loaiKhac": false,
-   "nguon": "tax.52122300",
-   "trich": "52122300 - - Đã nhuộm",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "52122400",
-   "dieuKien": "Từ các sợi có các màu khác nhau",
-   "loaiKhac": false,
-   "nguon": "tax.52122400",
-   "trich": "52122400 - - Từ các sợi có các màu khác nhau",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "52122510",
-   "dieuKien": "Được in bằng phương pháp batik truyền thống (SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.52122510",
-   "trich": "52122510 - - - Được in bằng phương pháp batik truyền thống (SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "52122590",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.52122590",
-   "trich": "52122590 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "521225",
-    "truAnhEm": [
-     "52122510"
-    ],
-    "truDayDu": [
-     "52122510"
-    ],
-    "toTienCoTen": "521225",
-    "dinhNghiaDuoc": true
-   }
-  }
- ],
- "cay": {
-  "nguonLoai": "MAY_SUY",
-  "sinhTu": "lib/hs-tree.js",
-  "nut": [
-   {
-    "id": "5212",
-    "cap": 4,
-    "cha": "52",
-    "tenVi": "Vải dệt thoi khác từ sợi bông.",
-    "tenEn": "Other woven fabrics of cotton, n.e.c. in chapter 52",
-    "suyRa": false
-   },
-   {
-    "id": "52121",
-    "cap": "NHOM_MOT_GACH",
-    "cha": "5212",
-    "tenVi": "Định lượng không quá 200 g/m2",
-    "tenEn": "Weighing not more than 200 g/m²",
-    "suyRa": true
-   },
-   {
-    "id": "52121100",
-    "cap": 8,
-    "cha": "52121",
-    "tenVi": "Chưa tẩy trắng",
-    "tenEn": "Fabrics, woven; of cotton, unbleached, weighing not more than 200g/m2, n.e.c. in chapter 52",
-    "suyRa": false,
-    "laPhanNhom": "521211"
-   },
-   {
-    "id": "52121200",
-    "cap": 8,
-    "cha": "52121",
-    "tenVi": "Đã tẩy trắng",
-    "tenEn": "Fabrics, woven; of cotton, bleached, weighing not more than 200g/m2, n.e.c. in chapter 52",
-    "suyRa": false,
-    "laPhanNhom": "521212"
-   },
-   {
-    "id": "52121300",
-    "cap": 8,
-    "cha": "52121",
-    "tenVi": "Đã nhuộm",
-    "tenEn": "Fabrics, woven; of cotton, dyed, weighing not more than 200g/m2, n.e.c. in chapter 52",
-    "suyRa": false,
-    "laPhanNhom": "521213"
-   },
-   {
-    "id": "52121400",
-    "cap": 8,
-    "cha": "52121",
-    "tenVi": "Từ các sợi có các màu khác nhau",
-    "tenEn": "Fabrics, woven; of cotton, of yarns of different colours, weighing not more than 200g/m2, n.e.c. in chapter 52",
-    "suyRa": false,
-    "laPhanNhom": "521214"
-   },
-   {
-    "id": "521215",
-    "cap": 6,
-    "cha": "52121",
-    "tenVi": "Đã in",
-    "tenEn": "Fabrics, woven; of cotton, printed, weighing not more than 200g/m2, n.e.c. in chapter 52",
-    "suyRa": false
-   },
-   {
-    "id": "52121510",
-    "cap": 8,
-    "cha": "521215",
-    "tenVi": "Được in bằng phương pháp batik truyền thống (SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "52121590",
-    "cap": 8,
-    "cha": "521215",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "52122",
-    "cap": "NHOM_MOT_GACH",
-    "cha": "5212",
-    "tenVi": "Định lượng trên 200 g/m2",
-    "tenEn": "Weighing more than 200 g/m²",
-    "suyRa": true
-   },
-   {
-    "id": "52122100",
-    "cap": 8,
-    "cha": "52122",
-    "tenVi": "Chưa tẩy trắng",
-    "tenEn": "Fabrics, woven; of cotton, unbleached, weighing more than 200g/m2, n.e.c. in chapter 52",
-    "suyRa": false,
-    "laPhanNhom": "521221"
-   },
-   {
-    "id": "52122200",
-    "cap": 8,
-    "cha": "52122",
-    "tenVi": "Đã tẩy trắng",
-    "tenEn": "Fabrics, woven; of cotton, bleached, weighing more than 200g/m2, n.e.c. in chapter 52",
-    "suyRa": false,
-    "laPhanNhom": "521222"
-   },
-   {
-    "id": "52122300",
-    "cap": 8,
-    "cha": "52122",
-    "tenVi": "Đã nhuộm",
-    "tenEn": "Fabrics, woven; of cotton, dyed, weighing more than 200g/m2, n.e.c. in chapter 52",
-    "suyRa": false,
-    "laPhanNhom": "521223"
-   },
-   {
-    "id": "52122400",
-    "cap": 8,
-    "cha": "52122",
-    "tenVi": "Từ các sợi có các màu khác nhau",
-    "tenEn": "Fabrics, woven; of cotton, of yarns of different colours, weighing more than 200g/m2, n.e.c. in chapter 52",
-    "suyRa": false,
-    "laPhanNhom": "521224"
-   },
-   {
-    "id": "521225",
-    "cap": 6,
-    "cha": "52122",
-    "tenVi": "Đã in",
-    "tenEn": "Fabrics, woven; of cotton, printed, weighing more than 200g/m2, n.e.c. in chapter 52",
-    "suyRa": false
-   },
-   {
-    "id": "52122510",
-    "cap": 8,
-    "cha": "521225",
-    "tenVi": "Được in bằng phương pháp batik truyền thống (SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "52122590",
-    "cap": 8,
-    "cha": "521225",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   }
+  "dieuKienVao": [
+    {
+      "fact": "la_vai_det_thoi_khac_tu_bong",
+      "op": "=",
+      "value": true,
+      "donVi": null,
+      "ngoaiTru": [],
+      "nguon": "nhom5212.nhom",
+      "trich": "Nhóm này bao gồm các loại vải dệt thoi (như đã định nghĩa trong Phần (I) (C) của Chú giải tổng quát Phần XI) làm từ sợi bông.",
+      "nguonLoai": "AI_DA_KIEM"
+    }
   ],
-  "tenDien": []
- },
- "dungTuNguon": [
-  "nhom5212.nhom",
-  "tax.52121100",
-  "tax.52121200",
-  "tax.52121300",
-  "tax.52121400",
-  "tax.52121510",
-  "tax.52121590",
-  "tax.52122100",
-  "tax.52122200",
-  "tax.52122300",
-  "tax.52122400",
-  "tax.52122510",
-  "tax.52122590",
-  "wco.521211",
-  "wco.521221"
- ],
- "phienBan": "HS2022",
- "taoBoi": {
-  "provider": "google-studio:gemini-flash",
-  "model": null,
-  "luc": "2026-11-02T12:16:22.207Z",
-  "ms": 8
- },
- "kiemTra": {
-  "tong": 18,
-  "dat": 18,
-  "loai": 0,
-  "nguonBiCat": [
-   "phan52.phan (46130→25000)"
-  ]
- }
+  "loaiTru": [
+    {
+      "dieuKien": "Băng dùng trong y tế, đã tẩm thuốc hay đã đóng gói để bán lẻ",
+      "sangNhom": "3005",
+      "nguon": "nhom5212.nhom",
+      "trich": "Băng dùng trong y tế, đã tẩm thuốc hay đã đóng gói để bán lẻ thì bị loại khỏi nhóm này (nhóm 30.05).",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "phanBiet": [
+    {
+      "hoi": "Hàng hoá có phải là băng dùng trong y tế, đã tẩm thuốc hay đã đóng gói để bán lẻ thuộc nhóm 30.05?",
+      "neuCo": "3005",
+      "neuKhong": "5212",
+      "nguon": "nhom5212.nhom",
+      "trich": "Băng dùng trong y tế, đã tẩm thuốc hay đã đóng gói để bán lẻ thì bị loại khỏi nhóm này (nhóm 30.05).",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "tieuChi6": [
+    {
+      "hs6": "521211",
+      "fact": "dinh_luong_vai",
+      "op": "<=",
+      "value": 200,
+      "donVi": "g/m2",
+      "nguon": "wco.521211",
+      "trich": "weighing not more than 200g/m2",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "521221",
+      "fact": "dinh_luong_vai",
+      "op": ">",
+      "value": 200,
+      "donVi": "g/m2",
+      "nguon": "wco.521221",
+      "trich": "weighing more than 200g/m2",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "52121100",
+      "dieuKien": "Chưa tẩy trắng",
+      "loaiKhac": false,
+      "nguon": "tax.52121100",
+      "trich": "52121100 - - Chưa tẩy trắng",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "52121200",
+      "dieuKien": "Đã tẩy trắng",
+      "loaiKhac": false,
+      "nguon": "tax.52121200",
+      "trich": "52121200 - - Đã tẩy trắng",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "52121300",
+      "dieuKien": "Đã nhuộm",
+      "loaiKhac": false,
+      "nguon": "tax.52121300",
+      "trich": "52121300 - - Đã nhuộm",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "52121400",
+      "dieuKien": "Từ các sợi có các màu khác nhau",
+      "loaiKhac": false,
+      "nguon": "tax.52121400",
+      "trich": "52121400 - - Từ các sợi có các màu khác nhau",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "52121510",
+      "dieuKien": "phương pháp in (vải, hàng dệt): in batik truyền thống",
+      "loaiKhac": false,
+      "nguon": "tax.52121510",
+      "trich": "52121510 - - - Được in bằng phương pháp batik truyền thống (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapIn",
+          "op": "TRONG",
+          "value": [
+            "BATIK"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L16-20261111#soat-L16",
+          "ngay": "2026-11-11",
+          "bam": "e08508f17acee9de88540fbe3a6506632a98adf0ba24877bb23e2487c5616beb"
+        }
+      }
+    },
+    {
+      "hs": "52121590",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.52121590",
+      "trich": "52121590 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "521215",
+        "truAnhEm": [
+          "52121510"
+        ],
+        "truDayDu": [
+          "52121510"
+        ],
+        "toTienCoTen": "521215",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "52122100",
+      "dieuKien": "Chưa tẩy trắng",
+      "loaiKhac": false,
+      "nguon": "tax.52122100",
+      "trich": "52122100 - - Chưa tẩy trắng",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "52122200",
+      "dieuKien": "Đã tẩy trắng",
+      "loaiKhac": false,
+      "nguon": "tax.52122200",
+      "trich": "52122200 - - Đã tẩy trắng",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "52122300",
+      "dieuKien": "Đã nhuộm",
+      "loaiKhac": false,
+      "nguon": "tax.52122300",
+      "trich": "52122300 - - Đã nhuộm",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "52122400",
+      "dieuKien": "Từ các sợi có các màu khác nhau",
+      "loaiKhac": false,
+      "nguon": "tax.52122400",
+      "trich": "52122400 - - Từ các sợi có các màu khác nhau",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "52122510",
+      "dieuKien": "phương pháp in (vải, hàng dệt): in batik truyền thống",
+      "loaiKhac": false,
+      "nguon": "tax.52122510",
+      "trich": "52122510 - - - Được in bằng phương pháp batik truyền thống (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapIn",
+          "op": "TRONG",
+          "value": [
+            "BATIK"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L16-20261111#soat-L16",
+          "ngay": "2026-11-11",
+          "bam": "fa9220da5aa730ab0453d7e5656677d52faa9efd50ae36ffb3b8dc6f7606dc4e"
+        }
+      }
+    },
+    {
+      "hs": "52122590",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.52122590",
+      "trich": "52122590 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "521225",
+        "truAnhEm": [
+          "52122510"
+        ],
+        "truDayDu": [
+          "52122510"
+        ],
+        "toTienCoTen": "521225",
+        "dinhNghiaDuoc": true
+      }
+    }
+  ],
+  "cay": {
+    "nguonLoai": "MAY_SUY",
+    "sinhTu": "lib/hs-tree.js",
+    "nut": [
+      {
+        "id": "5212",
+        "cap": 4,
+        "cha": "52",
+        "tenVi": "Vải dệt thoi khác từ sợi bông.",
+        "tenEn": "Other woven fabrics of cotton, n.e.c. in chapter 52",
+        "suyRa": false
+      },
+      {
+        "id": "52121",
+        "cap": "NHOM_MOT_GACH",
+        "cha": "5212",
+        "tenVi": "Định lượng không quá 200 g/m2",
+        "tenEn": "Weighing not more than 200 g/m²",
+        "suyRa": true
+      },
+      {
+        "id": "52121100",
+        "cap": 8,
+        "cha": "52121",
+        "tenVi": "Chưa tẩy trắng",
+        "tenEn": "Fabrics, woven; of cotton, unbleached, weighing not more than 200g/m2, n.e.c. in chapter 52",
+        "suyRa": false,
+        "laPhanNhom": "521211"
+      },
+      {
+        "id": "52121200",
+        "cap": 8,
+        "cha": "52121",
+        "tenVi": "Đã tẩy trắng",
+        "tenEn": "Fabrics, woven; of cotton, bleached, weighing not more than 200g/m2, n.e.c. in chapter 52",
+        "suyRa": false,
+        "laPhanNhom": "521212"
+      },
+      {
+        "id": "52121300",
+        "cap": 8,
+        "cha": "52121",
+        "tenVi": "Đã nhuộm",
+        "tenEn": "Fabrics, woven; of cotton, dyed, weighing not more than 200g/m2, n.e.c. in chapter 52",
+        "suyRa": false,
+        "laPhanNhom": "521213"
+      },
+      {
+        "id": "52121400",
+        "cap": 8,
+        "cha": "52121",
+        "tenVi": "Từ các sợi có các màu khác nhau",
+        "tenEn": "Fabrics, woven; of cotton, of yarns of different colours, weighing not more than 200g/m2, n.e.c. in chapter 52",
+        "suyRa": false,
+        "laPhanNhom": "521214"
+      },
+      {
+        "id": "521215",
+        "cap": 6,
+        "cha": "52121",
+        "tenVi": "Đã in",
+        "tenEn": "Fabrics, woven; of cotton, printed, weighing not more than 200g/m2, n.e.c. in chapter 52",
+        "suyRa": false
+      },
+      {
+        "id": "52121510",
+        "cap": 8,
+        "cha": "521215",
+        "tenVi": "Được in bằng phương pháp batik truyền thống (SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "52121590",
+        "cap": 8,
+        "cha": "521215",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "52122",
+        "cap": "NHOM_MOT_GACH",
+        "cha": "5212",
+        "tenVi": "Định lượng trên 200 g/m2",
+        "tenEn": "Weighing more than 200 g/m²",
+        "suyRa": true
+      },
+      {
+        "id": "52122100",
+        "cap": 8,
+        "cha": "52122",
+        "tenVi": "Chưa tẩy trắng",
+        "tenEn": "Fabrics, woven; of cotton, unbleached, weighing more than 200g/m2, n.e.c. in chapter 52",
+        "suyRa": false,
+        "laPhanNhom": "521221"
+      },
+      {
+        "id": "52122200",
+        "cap": 8,
+        "cha": "52122",
+        "tenVi": "Đã tẩy trắng",
+        "tenEn": "Fabrics, woven; of cotton, bleached, weighing more than 200g/m2, n.e.c. in chapter 52",
+        "suyRa": false,
+        "laPhanNhom": "521222"
+      },
+      {
+        "id": "52122300",
+        "cap": 8,
+        "cha": "52122",
+        "tenVi": "Đã nhuộm",
+        "tenEn": "Fabrics, woven; of cotton, dyed, weighing more than 200g/m2, n.e.c. in chapter 52",
+        "suyRa": false,
+        "laPhanNhom": "521223"
+      },
+      {
+        "id": "52122400",
+        "cap": 8,
+        "cha": "52122",
+        "tenVi": "Từ các sợi có các màu khác nhau",
+        "tenEn": "Fabrics, woven; of cotton, of yarns of different colours, weighing more than 200g/m2, n.e.c. in chapter 52",
+        "suyRa": false,
+        "laPhanNhom": "521224"
+      },
+      {
+        "id": "521225",
+        "cap": 6,
+        "cha": "52122",
+        "tenVi": "Đã in",
+        "tenEn": "Fabrics, woven; of cotton, printed, weighing more than 200g/m2, n.e.c. in chapter 52",
+        "suyRa": false
+      },
+      {
+        "id": "52122510",
+        "cap": 8,
+        "cha": "521225",
+        "tenVi": "Được in bằng phương pháp batik truyền thống (SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "52122590",
+        "cap": 8,
+        "cha": "521225",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      }
+    ],
+    "tenDien": []
+  },
+  "dungTuNguon": [
+    "nhom5212.nhom",
+    "tax.52121100",
+    "tax.52121200",
+    "tax.52121300",
+    "tax.52121400",
+    "tax.52121510",
+    "tax.52121590",
+    "tax.52122100",
+    "tax.52122200",
+    "tax.52122300",
+    "tax.52122400",
+    "tax.52122510",
+    "tax.52122590",
+    "wco.521211",
+    "wco.521221"
+  ],
+  "phienBan": "HS2022",
+  "taoBoi": {
+    "provider": "google-studio:gemini-flash",
+    "model": null,
+    "luc": "2026-11-02T12:16:22.207Z",
+    "ms": 8
+  },
+  "kiemTra": {
+    "tong": 18,
+    "dat": 18,
+    "loai": 0,
+    "nguonBiCat": [
+      "phan52.phan (46130→25000)"
+    ]
+  }
 }

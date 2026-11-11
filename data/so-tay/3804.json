@@ -1,159 +1,194 @@
 {
- "nhom": "3804",
- "phamVi": {
-  "text": "Nước kiềm cặn thải từ quá trình sản xuất bột giấy gỗ, đã hoặc chưa cô đặc, khử đường hoặc xử lý hóa học, kể cả lignin sulphonat, nhưng trừ dầu tall thuộc nhóm 38.03.",
-  "nguon": "nhom3804.nhom",
-  "trich": "Dung dịch kiềm thải ra từ quá trình sản xuất bột giấy từ gỗ do quá trình sulphite, đã hoặc chưa cô đặc, khử đường hoặc xử lý hóa học.",
-  "nguonLoai": "AI_DA_KIEM"
- },
- "dieuKienVao": [],
- "loaiTru": [
-  {
-   "dieuKien": "NaOH",
-   "sangNhom": "2815",
-   "nguon": "nhom3804.nhom",
-   "trich": "(a) NaOH (nhóm 28.15)",
-   "nguonLoai": "AI_DA_KIEM"
+  "nhom": "3804",
+  "phamVi": {
+    "text": "Nước kiềm cặn thải từ quá trình sản xuất bột giấy gỗ, đã hoặc chưa cô đặc, khử đường hoặc xử lý hóa học, kể cả lignin sulphonat, nhưng trừ dầu tall thuộc nhóm 38.03.",
+    "nguon": "nhom3804.nhom",
+    "trich": "Dung dịch kiềm thải ra từ quá trình sản xuất bột giấy từ gỗ do quá trình sulphite, đã hoặc chưa cô đặc, khử đường hoặc xử lý hóa học.",
+    "nguonLoai": "AI_DA_KIEM"
   },
-  {
-   "dieuKien": "Dầu tall",
-   "sangNhom": "3803",
-   "nguon": "nhom3804.nhom",
-   "trich": "(b) Dầu tall (nhóm 38.03).",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "dieuKien": "Hắc ín sulphat (hắc ín của dầu tall)",
-   "sangNhom": "3807",
-   "nguon": "nhom3804.nhom",
-   "trich": "(c) Hắc ín sulphat (hắc ín của dầu tall) (nhóm 38.07).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "phanBiet": [
-  {
-   "hoi": "Hàng hoá có phải là natri hydroxit NaOH thuộc nhóm 28.15?",
-   "neuCo": "2815",
-   "neuKhong": "3804",
-   "nguon": "nhom3804.nhom",
-   "trich": "(a) NaOH (nhóm 28.15)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hoi": "Hàng hoá có phải là dầu tall thuộc nhóm 38.03?",
-   "neuCo": "3803",
-   "neuKhong": "3804",
-   "nguon": "nhom3804.nhom",
-   "trich": "(b) Dầu tall (nhóm 38.03).",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hoi": "Hàng hoá có phải là hắc ín sulphat thuộc nhóm 38.07?",
-   "neuCo": "3807",
-   "neuKhong": "3804",
-   "nguon": "nhom3804.nhom",
-   "trich": "(c) Hắc ín sulphat (hắc ín của dầu tall) (nhóm 38.07).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "tieuChi6": [],
- "dong8": [
-  {
-   "hs": "38040010",
-   "dieuKien": "Dung dịch kiềm sulphit cô đặc",
-   "loaiKhac": false,
-   "nguon": "tax.38040010",
-   "trich": "38040010 - Dung dịch kiềm sulphit cô đặc",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "38040020",
-   "dieuKien": "Chất kết dính calcium lignin sulphonates (Ca2LS) được dùng trong sản xuất gạch chịu lửa",
-   "loaiKhac": false,
-   "nguon": "tax.38040020",
-   "trich": "38040020 - Chất kết dính calcium lignin sulphonates (Ca2LS) được dùng trong sản xuất gạch chịu lửa",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "38040090",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.38040090",
-   "trich": "38040090 - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "3804",
-    "truAnhEm": [
-     "38040010",
-     "38040020"
-    ],
-    "truDayDu": [
-     "38040010",
-     "38040020"
-    ],
-    "toTienCoTen": "3804",
-    "dinhNghiaDuoc": true
-   }
-  }
- ],
- "cay": {
-  "nguonLoai": "MAY_SUY",
-  "sinhTu": "lib/hs-tree.js",
-  "nut": [
-   {
-    "id": "3804",
-    "cap": 4,
-    "cha": "38",
-    "tenVi": "Dung dịch kiềm thải ra trong quá trình sản xuất bột giấy từ gỗ, đã hoặc chưa cô đặc, khử đường hoặc xử lý hóa học, kể cả lignin sulphonates, nhưng trừ dầu tall thuộc nhóm 38.03.",
-    "tenEn": "Residual lyes from the manufacture of wood pulp, whether or not concentrated, desugared or chemically treated, including lignin sulphonates, but excluding tall oil of heading no. 3803",
-    "suyRa": false
-   },
-   {
-    "id": "38040010",
-    "cap": 8,
-    "cha": "3804",
-    "tenVi": "Dung dịch kiềm sulphit cô đặc",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "38040020",
-    "cap": 8,
-    "cha": "3804",
-    "tenVi": "Chất kết dính calcium lignin sulphonates (Ca2LS) được dùng trong sản xuất gạch chịu lửa",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "38040090",
-    "cap": 8,
-    "cha": "3804",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   }
+  "dieuKienVao": [],
+  "loaiTru": [
+    {
+      "dieuKien": "NaOH",
+      "sangNhom": "2815",
+      "nguon": "nhom3804.nhom",
+      "trich": "(a) NaOH (nhóm 28.15)",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "dieuKien": "Dầu tall",
+      "sangNhom": "3803",
+      "nguon": "nhom3804.nhom",
+      "trich": "(b) Dầu tall (nhóm 38.03).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "dieuKien": "Hắc ín sulphat (hắc ín của dầu tall)",
+      "sangNhom": "3807",
+      "nguon": "nhom3804.nhom",
+      "trich": "(c) Hắc ín sulphat (hắc ín của dầu tall) (nhóm 38.07).",
+      "nguonLoai": "AI_DA_KIEM"
+    }
   ],
-  "tenDien": []
- },
- "dungTuNguon": [
-  "nhom3804.nhom",
-  "tax.38040010",
-  "tax.38040020",
-  "tax.38040090"
- ],
- "phienBan": "HS2022",
- "taoBoi": {
-  "provider": "google-studio:gemini-flash",
-  "model": null,
-  "luc": "2026-11-02T11:42:26.328Z",
-  "ms": 3
- },
- "kiemTra": {
-  "tong": 11,
-  "dat": 10,
-  "loai": 1,
-  "nguonBiCat": []
- }
+  "phanBiet": [
+    {
+      "hoi": "Hàng hoá có phải là natri hydroxit NaOH thuộc nhóm 28.15?",
+      "neuCo": "2815",
+      "neuKhong": "3804",
+      "nguon": "nhom3804.nhom",
+      "trich": "(a) NaOH (nhóm 28.15)",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hoi": "Hàng hoá có phải là dầu tall thuộc nhóm 38.03?",
+      "neuCo": "3803",
+      "neuKhong": "3804",
+      "nguon": "nhom3804.nhom",
+      "trich": "(b) Dầu tall (nhóm 38.03).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hoi": "Hàng hoá có phải là hắc ín sulphat thuộc nhóm 38.07?",
+      "neuCo": "3807",
+      "neuKhong": "3804",
+      "nguon": "nhom3804.nhom",
+      "trich": "(c) Hắc ín sulphat (hắc ín của dầu tall) (nhóm 38.07).",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "tieuChi6": [],
+  "dong8": [
+    {
+      "hs": "38040010",
+      "dieuKien": "tên loại hàng: Dung dịch kiềm sulphit cô đặc",
+      "loaiKhac": false,
+      "nguon": "tax.38040010",
+      "trich": "38040010 - Dung dịch kiềm sulphit cô đặc",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dung dịch kiềm sulphit cô đặc"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L11-20261111#soat-L11",
+          "ngay": "2026-11-11",
+          "bam": "16f339c282dc40ea7660629e3101e441a1b29ac3665cd16e041728bf0cf957dc"
+        }
+      }
+    },
+    {
+      "hs": "38040020",
+      "dieuKien": "tên loại hàng: Chất kết dính calcium lignin sulphonates; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): sản xuất gạch chịu lửa",
+      "loaiKhac": false,
+      "nguon": "tax.38040020",
+      "trich": "38040020 - Chất kết dính calcium lignin sulphonates (Ca2LS) được dùng trong sản xuất gạch chịu lửa",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Chất kết dính calcium lignin sulphonates"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "sản xuất gạch chịu lửa"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L11-20261111#soat-L11",
+          "ngay": "2026-11-11",
+          "bam": "16f339c282dc40ea7660629e3101e441a1b29ac3665cd16e041728bf0cf957dc"
+        }
+      }
+    },
+    {
+      "hs": "38040090",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.38040090",
+      "trich": "38040090 - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "3804",
+        "truAnhEm": [
+          "38040010",
+          "38040020"
+        ],
+        "truDayDu": [
+          "38040010",
+          "38040020"
+        ],
+        "toTienCoTen": "3804",
+        "dinhNghiaDuoc": true
+      }
+    }
+  ],
+  "cay": {
+    "nguonLoai": "MAY_SUY",
+    "sinhTu": "lib/hs-tree.js",
+    "nut": [
+      {
+        "id": "3804",
+        "cap": 4,
+        "cha": "38",
+        "tenVi": "Dung dịch kiềm thải ra trong quá trình sản xuất bột giấy từ gỗ, đã hoặc chưa cô đặc, khử đường hoặc xử lý hóa học, kể cả lignin sulphonates, nhưng trừ dầu tall thuộc nhóm 38.03.",
+        "tenEn": "Residual lyes from the manufacture of wood pulp, whether or not concentrated, desugared or chemically treated, including lignin sulphonates, but excluding tall oil of heading no. 3803",
+        "suyRa": false
+      },
+      {
+        "id": "38040010",
+        "cap": 8,
+        "cha": "3804",
+        "tenVi": "Dung dịch kiềm sulphit cô đặc",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "38040020",
+        "cap": 8,
+        "cha": "3804",
+        "tenVi": "Chất kết dính calcium lignin sulphonates (Ca2LS) được dùng trong sản xuất gạch chịu lửa",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "38040090",
+        "cap": 8,
+        "cha": "3804",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      }
+    ],
+    "tenDien": []
+  },
+  "dungTuNguon": [
+    "nhom3804.nhom",
+    "tax.38040010",
+    "tax.38040020",
+    "tax.38040090"
+  ],
+  "phienBan": "HS2022",
+  "taoBoi": {
+    "provider": "google-studio:gemini-flash",
+    "model": null,
+    "luc": "2026-11-02T11:42:26.328Z",
+    "ms": 3
+  },
+  "kiemTra": {
+    "tong": 11,
+    "dat": 10,
+    "loai": 1,
+    "nguonBiCat": []
+  }
 }

@@ -269,5 +269,28 @@ function nhap853641() {
   check('10n mục mang dấu chồng lấn vẫn qua checkItem của sổ tay', S.checkItem('dong8', d10, S.sourcesFor('8536'), '8536') === null);
 }
 
+// ── 11. Không làm mất ngưỡng số đang chạy (#1109, lô L13 nhóm 4009): sổ tay 40092110 có ngưỡng SEN (đường kính ≥ 15,24 cm…);
+// bản duyệt chỉ có khoá CO → apDung từ chối cong3-mat-nguong-so; dòng không có số cũ (Loại khác) không bị ảnh hưởng.
+{
+  const nhap400921 = () => ({
+    phienBan: 'ranh-gioi@1', pn6: '400921', nhom: '4009', trangThai: 'NHAP',
+    soanBoi: { vai: 'AI', phien: 'phien-soan-A', ngay: '2026-11-05' }, duyet: null, dieuKienNut: [],
+    dong8: [
+      { hs: '40092110', nguon: 'tax.40092110', trich: '40092110 - - - Ống hút và xả bùn dùng trong khai thác mỏ(SEN)', nguonLoai: 'AI_DA_KIEM', dieuKienSo: [{ fact: 'ongHutXaBunKhaiThacMo', op: 'CO' }] },
+      { hs: '40092190', nguon: 'tax.40092190', trich: '40092190 - - - Loại khác', nguonLoai: 'AI_DA_KIEM', dieuKienSo: [] },
+    ],
+    ghiChuSoan: [],
+  });
+  const soTay = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data/so-tay/4009.json'), 'utf8'));
+  const cu = soTay.dong8.find((d) => d.hs === '40092110');
+  check('11a sổ tay 40092110 đang có ngưỡng số SEN (tiền đề)', (cu?.dieuKienSo || []).some((c) => typeof c.value === 'number'), cu?.dieuKienSo);
+  let ok = null; let nem = null;
+  try { ok = C.duyet(nhap400921(), { phien: 'https://claude.ai/code/session_TEST#soat-11', ngay: '2026-11-11' }); } catch (e) { nem = e.message; }
+  check('11b bản nháp khoá CO tự nó qua cổng (lỗi chỉ lộ khi áp)', ok?.trangThai === 'DUYET', nem);
+  nem = null; try { C.apDung(ok, soTay); } catch (e) { nem = e.message; }
+  check('11c apDung từ chối bản làm mất ngưỡng số → cong3-mat-nguong-so:sen.40092110', /40092110:cong3-mat-nguong-so:sen\.40092110/.test(String(nem)), nem);
+  check('11d dòng Loại khác 40092190 (không có số cũ) không bị báo', !/40092190:cong3-mat-nguong-so/.test(String(nem)), nem);
+}
+
 console.log(`\n${pass} pass, ${fail} fail`);
 if (fail) process.exit(1);
