@@ -4,7 +4,7 @@
   "nhom": "8429",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T1118#soan-842940",
@@ -82,6 +82,13 @@
       "ma": "84294050",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.84294050 \"Các loại xe lu rung lăn đường khác\" ⇒ tenLoai \"xe lu rung lăn đường\" + phanConLai true (\"khác\" — phủ định .30/.40 đứng trước)."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L25-20261111#soat-L25",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 84294040 SAI ĐẠI LƯỢNG / SUY RỘNG-THU HẸP: chữ biểu \"Xe lu rung, với lực rung của trống không quá 20 tấn tính theo khối lượng\" (EN \"Vibratory smooth drum rollers, with a centrifugal force drum not exceeding 20 t by weight\") — ngưỡng là LỰC LY TÂM (lực rung) của trống, không phải khối lượng máy; bản nháp ghi khoiLuong <= 20 tấn (ghi chú \"khối lượng của trống là khối lượng hàng mô tả\" là đọc sai). Xe lu 22 tấn có lực rung 18 t rơi .50 (0%) thay vì .40 (5%); xe lu 12 tấn lực rung 25 t rơi .40 thay vì .50. Không có khoá lực rung trong tu-vung@2 ⇒ phải THIEU_KHOA_TU_VUNG (DỪNG), không ép vào khoiLuong. Máy tách vế cũng cắt \"Xe lu rung, với lực rung\" làm danh từ đầu (tách sai)."
     }
   ]
 }
