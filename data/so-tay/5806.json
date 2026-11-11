@@ -303,35 +303,105 @@
     },
     {
       "hs": "58063110",
-      "dieuKien": "Vải dệt thoi khổ hẹp khác, từ bông (= phân nhóm 580631 — WCO: narrow woven fabrics of cotton), thích hợp cho sản xuất băng mực dùng cho máy chữ hoặc các loại máy tương tự",
-      "tieuChi": null,
+      "dieuKien": "tên loại hàng: Vải dệt thoi khổ hẹp; thích hợp để sản xuất băng mực dùng cho máy chữ hoặc máy tương tự (vải dệt khổ hẹp)",
       "loaiKhac": false,
       "nguon": "tax.58063110",
       "trich": "58063110 - - - Vải dệt thoi khổ hẹp thích hợp cho sản xuất băng mực dùng cho máy chữ hoặc các loại máy tương tự",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Vải dệt thoi khổ hẹp"
+        },
+        {
+          "fact": "thichHopLamBangMucMayChu",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L17-20261111#soat-L17",
+          "ngay": "2026-11-11",
+          "bam": "bf21c8b3ab503b06a1ed075eebc1bc293c8edd1acc1b1a1af3815dc4b65af2e8"
+        }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "58063120",
+          "lyDo": "tax.58063110 \"Vải dệt thoi khổ hẹp thích hợp cho sản xuất băng mực dùng cho máy chữ hoặc các loại máy tương tự\" không loại trừ tax.58063120 \"Làm nền cho giấy cách điện\" — vải khổ hẹp thích hợp làm băng mực máy chữ vẫn có thể dùng làm nền cho giấy cách điện; chữ biểu không nói gì tách hai dòng, không có căn cứ thứ tự"
+        }
+      ]
     },
     {
       "hs": "58063120",
-      "dieuKien": "Vải dệt thoi khổ hẹp khác, từ bông, làm nền cho giấy cách điện",
-      "tieuChi": null,
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): giấy cách điện",
       "loaiKhac": false,
       "nguon": "tax.58063120",
       "trich": "58063120 - - - Làm nền cho giấy cách điện",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "giấy cách điện"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L17-20261111#soat-L17",
+          "ngay": "2026-11-11",
+          "bam": "bf21c8b3ab503b06a1ed075eebc1bc293c8edd1acc1b1a1af3815dc4b65af2e8"
+        }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "58063110",
+          "lyDo": "tax.58063110 \"Vải dệt thoi khổ hẹp thích hợp cho sản xuất băng mực dùng cho máy chữ hoặc các loại máy tương tự\" không loại trừ tax.58063120 \"Làm nền cho giấy cách điện\" — vải khổ hẹp thích hợp làm băng mực máy chữ vẫn có thể dùng làm nền cho giấy cách điện; chữ biểu không nói gì tách hai dòng, không có căn cứ thứ tự"
+        }
+      ]
     },
     {
       "hs": "58063130",
-      "dieuKien": "Vải dệt thoi khổ hẹp khác, từ bông, là ruy băng dùng làm khóa kéo và có chiều rộng không quá 12 mm",
+      "dieuKien": "tên loại hàng: Ruy băng; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): khóa kéo; chiều rộng <= 12 mm",
+      "loaiKhac": false,
+      "nguon": "tax.58063130",
+      "trich": "58063130 - - - Ruy băng loại dùng làm khóa kéo và có chiều rộng không quá 12 mm",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ruy băng"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "khóa kéo"
+        },
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 12,
+          "donVi": "mm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L17-20261111#soat-L17",
+          "ngay": "2026-11-11",
+          "bam": "bf21c8b3ab503b06a1ed075eebc1bc293c8edd1acc1b1a1af3815dc4b65af2e8"
+        }
+      },
       "tieuChi": {
         "fact": "kho_rong",
         "op": "<=",
         "value": 12,
         "donVi": "mm"
-      },
-      "loaiKhac": false,
-      "nguon": "tax.58063130",
-      "trich": "58063130 - - - Ruy băng loại dùng làm khóa kéo và có chiều rộng không quá 12 mm",
-      "nguonLoai": "AI_DA_KIEM"
+      }
     },
     {
       "hs": "58063190",
@@ -355,35 +425,124 @@
     },
     {
       "hs": "58063210",
-      "dieuKien": "Vải dệt thoi khổ hẹp khác, từ xơ nhân tạo (= phân nhóm 580632 — WCO: narrow woven fabrics of man-made fibres), thích hợp cho sản xuất băng mực dùng cho máy chữ hoặc các loại máy tương tự; băng vải dùng làm dây đai an toàn ghế ngồi",
-      "tieuChi": null,
+      "dieuKien": "(tên loại hàng: Vải dệt thoi khổ hẹp và thích hợp để sản xuất băng mực dùng cho máy chữ hoặc máy tương tự (vải dệt khổ hẹp)) hoặc (tên loại hàng: băng vải và dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): dây đai an toàn ghế ngồi)",
       "loaiKhac": false,
       "nguon": "tax.58063210",
       "trich": "58063210 - - - Vải dệt thoi khổ hẹp thích hợp cho sản xuất băng mực dùng cho máy chữ hoặc các loại máy tương tự; băng vải dùng làm dây đai an toàn ghế ngồi",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Vải dệt thoi khổ hẹp"
+              },
+              {
+                "fact": "thichHopLamBangMucMayChu",
+                "op": "CO"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "băng vải"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "dây đai an toàn ghế ngồi"
+              }
+            ]
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L17-20261111#soat-L17",
+          "ngay": "2026-11-11",
+          "bam": "808faa444563b075f7c93a40f19eccfd24f3739d59438ff0d6f80c669f30b336"
+        }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "58063240",
+          "lyDo": "tax.58063210 \"Vải dệt thoi khổ hẹp thích hợp cho sản xuất băng mực dùng cho máy chữ hoặc các loại máy tương tự; băng vải dùng làm dây đai an toàn ghế ngồi\" không loại trừ tax.58063240 \"Làm nền cho giấy cách điện\" — vải khổ hẹp thích hợp làm băng mực máy chữ vẫn có thể dùng làm nền cho giấy cách điện; chữ biểu không nói gì tách hai dòng, không có căn cứ thứ tự"
+        }
+      ]
     },
     {
       "hs": "58063240",
-      "dieuKien": "Vải dệt thoi khổ hẹp khác, từ xơ nhân tạo, làm nền cho giấy cách điện",
-      "tieuChi": null,
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): giấy cách điện",
       "loaiKhac": false,
       "nguon": "tax.58063240",
       "trich": "58063240 - - - Làm nền cho giấy cách điện",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "giấy cách điện"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L17-20261111#soat-L17",
+          "ngay": "2026-11-11",
+          "bam": "808faa444563b075f7c93a40f19eccfd24f3739d59438ff0d6f80c669f30b336"
+        }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "58063210",
+          "lyDo": "tax.58063210 \"Vải dệt thoi khổ hẹp thích hợp cho sản xuất băng mực dùng cho máy chữ hoặc các loại máy tương tự; băng vải dùng làm dây đai an toàn ghế ngồi\" không loại trừ tax.58063240 \"Làm nền cho giấy cách điện\" — vải khổ hẹp thích hợp làm băng mực máy chữ vẫn có thể dùng làm nền cho giấy cách điện; chữ biểu không nói gì tách hai dòng, không có căn cứ thứ tự"
+        }
+      ]
     },
     {
       "hs": "58063250",
-      "dieuKien": "Vải dệt thoi khổ hẹp khác, từ xơ nhân tạo, là ruy băng dùng làm khóa kéo và có chiều rộng không quá 12 mm",
+      "dieuKien": "tên loại hàng: Ruy băng; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): khóa kéo; chiều rộng <= 12 mm",
+      "loaiKhac": false,
+      "nguon": "tax.58063250",
+      "trich": "58063250 - - - Ruy băng loại dùng làm khóa kéo và có chiều rộng không quá 12 mm",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ruy băng"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "khóa kéo"
+        },
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 12,
+          "donVi": "mm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L17-20261111#soat-L17",
+          "ngay": "2026-11-11",
+          "bam": "808faa444563b075f7c93a40f19eccfd24f3739d59438ff0d6f80c669f30b336"
+        }
+      },
       "tieuChi": {
         "fact": "kho_rong",
         "op": "<=",
         "value": 12,
         "donVi": "mm"
-      },
-      "loaiKhac": false,
-      "nguon": "tax.58063250",
-      "trich": "58063250 - - - Ruy băng loại dùng làm khóa kéo và có chiều rộng không quá 12 mm",
-      "nguonLoai": "AI_DA_KIEM"
+      }
     },
     {
       "hs": "58063290",
