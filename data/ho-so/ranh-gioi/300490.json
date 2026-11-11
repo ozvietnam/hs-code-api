@@ -4,7 +4,7 @@
   "nhom": "3004",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T0845#soan-300490",
@@ -626,6 +626,13 @@
       "ma": "300490",
       "loai": "LECH_TIEN_LE",
       "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 300490-01 KHONG_LECH (45618/TB-CHQ) và 300490-02 KHONG_LECH (4127/TB-TCHQ): soạn theo chữ biểu, khớp bảng."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L9-20261111#soat-L9",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 300490:3004905 (tiêu đề) THU HẸP + bỏ vế mở: chữ biểu EN 'Analgesics, antipyretics and other medicaments for the treatment of coughs or colds, whether or not containing antihistamines' — 'for the treatment of coughs or colds' là định ngữ của 'other medicaments' (vế mở), không của 'Analgesics, antipyretics'. Bản nháp ghi tenLoai [Thuốc giảm đau, thuốc hạ sốt] VÀ congDung [điều trị ho, cảm lạnh] ⇒ (i) thuốc giảm đau/hạ sốt thường (viên paracetamol, aspirin, diclofenac uống) không qua tiêu đề nên không tới .51/.53/.54 mà rơi về .99; (ii) thuốc ho/cảm không phải giảm đau bị loại. BO_VE 'và các loại dược phẩm khác' sai (máy còn báo cong5-bo-ve-thua) và làm trái mục bảng 300490-01 (45618/TB-CHQ: dung dịch súc miệng kháng viêm Difflam ⇒ 3004.90.59 dưới tiêu đề này). Đúng: HOAC [[tenLoai ['Thuốc giảm đau','thuốc hạ sốt']],[congDung ['điều trị ho','cảm lạnh']]]. (B) tiêu đề 3004908 THU HẸP: 'Các thuốc khác điều trị ung thư, HIV/AIDS hoặc các bệnh khó chữa khác' — tenLoai 'thuốc khác điều trị ung thư' đòi mô tả hàng có đủ âm tiết 'khác…ung thư' ⇒ thuốc chống HIV/AIDS không qua tiêu đề, .82 không tới được; chỉ cần congDung mảng 3 giá trị. Các dòng còn lại (.10, .20, .30, 3004904/.41, .55, .64, .91–.96) đã đối chiếu, đúng."
     }
   ]
 }

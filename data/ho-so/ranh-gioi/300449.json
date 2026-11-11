@@ -4,7 +4,7 @@
   "nhom": "3004",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T0845#soan-300449",
@@ -201,6 +201,13 @@
       "ma": "30044911",
       "loai": "QUYET_DINH",
       "ghiChu": "Claude (#1109): \"Dạng uống (*) hoặc tiêm\" ⇒ dangBaoCheThuoc [DANG_UONG, DANG_TIEM] — khoá thêm cách đọc \"hoặc tiêm\" (tu-vung@2, chỉ dòng này dùng) và \"dung dịch tiêm\"."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L9-20261111#soat-L9",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 300449:3004491 (tiêu đề) THU HẸP: 'Chứa morphine hoặc các dẫn xuất của nó' / EN 'Containing morphine or its derivatives' — chỉ tenLoai 'morphine', bỏ vế dẫn xuất (người soạn ghi 'không có khoá'); dẫn xuất morphin như codeine, pholcodine, ethylmorphine, diacetylmorphine không chứa âm tiết 'morphine' ⇒ thuốc ho chứa codein dạng uống không vào 30044911 mà rơi về .90. Dùng quy ước HOAC [[tenLoai 'morphine'],[tenLoai 'dẫn xuất' + dungCho 'morphine']] như 293790/292219. (B) 30044980 SUY RỘNG: nhánh 2 'Chứa quinine sulphate hoặc bisulphate, dạng uống' / EN 'containing quinine sulphate or bisulphate' — 'bisulphate' là quinine bisulphate (danh từ 'quinine' chung), nhưng giá trị tenLoai 'bisulphate' đứng một mình khớp MỌI muối bisulphate ⇒ viên uống 'clopidogrel bisulphate' thoả .80 (quinine). Phải gắn định ngữ chung: vd tenLoai ['quinine sulphate','bisulphate'] + tenLoai 'quinine' (VÀ), hoặc dungCho 'quinine'."
     }
   ]
 }
