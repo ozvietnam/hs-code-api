@@ -4,19 +4,13 @@
   "nhom": "9005",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "DUYET",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-900580",
     "ngay": "2026-11-04"
   },
-  "duyet": {
-    "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L31-20261111#soat-L31",
-    "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu .10 'Dụng cụ thiên văn, trừ dụng cụ thiên văn vô tuyến'/'Astronomical instruments, excluding instruments for radio-astronomy': vế trừ đã nằm ở chữ phân nhóm 9005.80 (lặp tổ tiên) nên tenLoai đủ; BO_VE thừa chỉ là cảnh báo, không đổi mã.",
-    "bam": "9c9cc44bb67e4017f99a1e33e835400d9f39e5a85ff86e311c6d3d8bbba7f574"
-  },
+  "duyet": null,
   "dieuKienNut": [],
   "dong8": [
     {
@@ -30,14 +24,14 @@
           "value": "Dụng cụ thiên văn"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "90058090",
       "nguon": "tax.90058090",
       "trich": "90058090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "ghiChuSoan": [
@@ -51,6 +45,13 @@
       "loai": "BO_VE",
       "ve": "trừ dụng cụ thiên văn vô tuyến",
       "lyDo": "Dụng cụ thiên văn vô tuyến thuộc nhóm 85.17/85.26, đây là vế loại trừ theo chú giải nhóm 9005"
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:tech-lead-20261111#soat-lai",
+      "ngay": "2026-11-11",
+      "lyDo": "bo-kiem-luat --toan-bieu (gộp thử với main, đo hai bên cùng nhịp): bản duyệt sinh ca chốt sai mới (chotSai/chotLoaiKhacSai tăng) hoặc làm đỏ test-so-tay-gates/test-so-tay-questions. Soạn/soát lại rồi đo lại trước khi duyệt."
     }
   ]
 }

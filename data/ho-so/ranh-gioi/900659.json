@@ -4,19 +4,13 @@
   "nhom": "9006",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "DUYET",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T1003#soan-900659",
     "ngay": "2026-11-06"
   },
-  "duyet": {
-    "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L31-20261111#soat-L31",
-    "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu tầng 9006591 'phim cuộn khổ rộng dưới 35 mm' (dungCho chữ tự do — không tất định, không sai), tầng 9006592 'Loại khác, dùng để chuẩn bị khuôn in hoặc ống in', .21 máy vẽ ảnh laser, .30 'Loại khác, máy vẽ ảnh laser hoặc máy tạo dựng ảnh với bộ xử lý ảnh mành' (định ngữ RIP giữ trong chuỗi) — thứ tự phần còn lại khớp chữ VI/EN.",
-    "bam": "e402d4ac6143256fdef5324a6c78718e3cbeb086bc42dd8ac8222d7549e06b44"
-  },
+  "duyet": null,
   "dieuKienNut": [
     {
       "id": "9006591",
@@ -29,7 +23,7 @@
           "value": "phim cuộn khổ rộng dưới 35 mm"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "id": "9006592",
@@ -45,7 +39,7 @@
           ]
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET",
+      "nguonLoai": "AI_DA_KIEM",
       "phanConLai": true
     }
   ],
@@ -60,14 +54,14 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "90065919",
       "nguon": "tax.90065919",
       "trich": "90065919 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "90065921",
@@ -80,14 +74,14 @@
           "value": "Máy vẽ ảnh laser"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "90065929",
       "nguon": "tax.90065929",
       "trich": "90065929 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "90065930",
@@ -103,14 +97,14 @@
           ]
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "90065990",
       "nguon": "tax.90065990",
       "trich": "90065990 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "ghiChuSoan": [
@@ -158,6 +152,13 @@
       "ma": "900659",
       "loai": "QUYET_DINH",
       "ghiChu": "Claude (#1109): tầng 9006592 \"Loại khác, dùng để chuẩn bị khuôn in hoặc ống in\" chỉ phủ định anh em ĐỨNG TRƯỚC (9006591) ⇒ phanConLai true. Máy vẽ ảnh laser dùng chuẩn bị khuôn in ⇒ .21; máy vẽ ảnh laser dùng việc khác ⇒ .30 (.30 phủ định 9006592 theo mặc định)."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:tech-lead-20261111#soat-lai",
+      "ngay": "2026-11-11",
+      "lyDo": "bo-kiem-luat --toan-bieu (gộp thử với main, đo hai bên cùng nhịp): bản duyệt sinh ca chốt sai mới (chotSai/chotLoaiKhacSai tăng) hoặc làm đỏ test-so-tay-gates/test-so-tay-questions. Soạn/soát lại rồi đo lại trước khi duyệt."
     }
   ]
 }

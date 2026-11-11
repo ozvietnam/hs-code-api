@@ -255,25 +255,11 @@
     },
     {
       "hs": "90065911",
-      "dieuKien": "có bộ ngắm qua thấu kính (phản chiếu đơn - SLR)",
+      "dieuKien": "Có bộ ngắm qua thấu kính (kính phản chiếu đơn (SLR)) ",
       "loaiKhac": false,
       "nguon": "tax.90065911",
       "trich": "90065911 - - - - Có bộ ngắm qua thấu kính (kính phản chiếu đơn (SLR)) ",
-      "nguonLoai": "CLAUDE_DUYET",
-      "dieuKienSo": [
-        {
-          "fact": "ngamQuaThauKinhSLR",
-          "op": "CO"
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L31-20261111#soat-L31",
-          "ngay": "2026-11-11",
-          "bam": "e402d4ac6143256fdef5324a6c78718e3cbeb086bc42dd8ac8222d7549e06b44"
-        }
-      }
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "90065919",
@@ -297,26 +283,11 @@
     },
     {
       "hs": "90065921",
-      "dieuKien": "tên loại hàng: Máy vẽ ảnh laser",
+      "dieuKien": "Máy vẽ ảnh laser",
       "loaiKhac": false,
       "nguon": "tax.90065921",
       "trich": "90065921 - - - - Máy vẽ ảnh laser",
-      "nguonLoai": "CLAUDE_DUYET",
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Máy vẽ ảnh laser"
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L31-20261111#soat-L31",
-          "ngay": "2026-11-11",
-          "bam": "e402d4ac6143256fdef5324a6c78718e3cbeb086bc42dd8ac8222d7549e06b44"
-        }
-      }
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "90065929",
@@ -342,11 +313,11 @@
     },
     {
       "hs": "90065930",
-      "dieuKien": "tên loại hàng: Máy vẽ ảnh laser hoặc máy tạo dựng ảnh với bộ xử lý ảnh mành",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
       "loaiKhac": true,
       "nguon": "tax.90065930",
       "trich": "90065930 - - - Loại khác, máy vẽ ảnh laser hoặc máy tạo dựng ảnh với bộ xử lý ảnh mành",
-      "nguonLoai": "CLAUDE_DUYET",
+      "nguonLoai": "AI_DA_KIEM",
       "phamViLoaiKhac": {
         "nguonLoai": "MAY_SUY",
         "cha": "900659",
@@ -360,24 +331,6 @@
         ],
         "toTienCoTen": "900659",
         "dinhNghiaDuoc": true
-      },
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "Máy vẽ ảnh laser",
-            "máy tạo dựng ảnh với bộ xử lý ảnh mành"
-          ]
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L31-20261111#soat-L31",
-          "ngay": "2026-11-11",
-          "bam": "e402d4ac6143256fdef5324a6c78718e3cbeb086bc42dd8ac8222d7549e06b44"
-        }
       }
     },
     {
@@ -882,53 +835,5 @@
     "dat": 42,
     "loai": 0,
     "nguonBiCat": []
-  },
-  "dieuKienNut": [
-    {
-      "id": "9006591",
-      "nguon": "tieuDe.9006591",
-      "trich": "9006591 Sử dụng phim cuộn khổ rộng dưới 35 mm",
-      "dieuKienSo": [
-        {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": "phim cuộn khổ rộng dưới 35 mm"
-        }
-      ],
-      "nguonLoai": "CLAUDE_DUYET",
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L31-20261111#soat-L31",
-          "ngay": "2026-11-11",
-          "bam": "e402d4ac6143256fdef5324a6c78718e3cbeb086bc42dd8ac8222d7549e06b44"
-        }
-      }
-    },
-    {
-      "id": "9006592",
-      "nguon": "tieuDe.9006592",
-      "trich": "9006592 Loại khác, dùng để chuẩn bị khuôn in hoặc ống in",
-      "dieuKienSo": [
-        {
-          "fact": "congDung",
-          "op": "CONG_DUNG",
-          "value": [
-            "khuôn in",
-            "ống in"
-          ]
-        }
-      ],
-      "nguonLoai": "CLAUDE_DUYET",
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:duyet-L31-20261111#soat-L31",
-          "ngay": "2026-11-11",
-          "bam": "e402d4ac6143256fdef5324a6c78718e3cbeb086bc42dd8ac8222d7549e06b44"
-        }
-      },
-      "phanConLai": true
-    }
-  ]
+  }
 }

@@ -115,3 +115,8 @@ Mẫu lỗi lặp lại (đều do thợ rẻ soạn; máy cổng 5 báo "phủ"
 7. Cổng 5 báo "phủ" cho mọi vế miễn có một điều kiện bất kỳ trên khoá liên quan — không phát hiện VÀ bị gom thành HOẶC (901480,
    901490, 903289) và danh từ đầu bị bỏ (902610, 902620, 920991). Đề nghị: vế DAU có tên mà dòng không có tenLoai ⇒ cảnh báo; mảng
    `dungCho` gom giá trị từ ≥ 2 vế GIOI_HAN khác nhau ⇒ cảnh báo.
+
+
+## Soát lại của tech lead — bo-kiem-luat hai bên / test
+
+Trả về 900580 900659: gộp thử với `main` làm phát sinh ca chốt sai mới trong `bo-kiem-luat --toan-bieu` hoặc làm đỏ `test-so-tay-gates`/`test-so-tay-questions` (cổng gộp không cho tăng). Mục sổ tay giữ như `main`.
