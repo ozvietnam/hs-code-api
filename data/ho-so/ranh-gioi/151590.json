@@ -4,7 +4,7 @@
   "nhom": "1515",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1530#soan-151590",
@@ -249,6 +249,13 @@
       "ma": "15159092",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.15159092 \"15159092 - - - Các phần phân đoạn của dầu chưa tinh chế\" ⇒ tenLoai \"Các phần phân đoạn\" + mucDoTinhCheDau DANG_THO (\"chưa tinh chế\")."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L5-20261111#soat-L5",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 151590:15159011, 15159021, 15159031, 15159091 THU HẸP: chữ biểu \"Dầu thô\" / EN \"Crude oil\" ghi tenLoai \"Dầu thô\" — thử bộ so chữ: \"Dầu hạt bơ chưa tinh chế\" ⇒ TRAI, \"Virgin jojoba oil, chưa tinh chế\" ⇒ CHUA_BIET; trong khi tiền lệ 2834/TB-TCHQ (dầu hạt bơ chưa tinh chế → 15159091), 2835, 2837, 2839/TB-TCHQ (→ .91) và 6407/TB-TCHQ (virgin jojoba chưa tinh chế → 15159031). Hệ quả: rơi .19/.29/.39/.99 (MFN 25/10/25/30 thay vì 5). Dùng mucDoTinhCheDau DANG_THO + laPhanDoan KHONG."
     }
   ]
 }

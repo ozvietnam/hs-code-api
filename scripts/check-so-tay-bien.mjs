@@ -36,6 +36,8 @@ const TRUOC = { '>=': [], '<=': [], '>': [], '<': [] };
 for (const [op, ds] of Object.entries(tv.soSanh.truoc || {})) TRUOC[op].push(...ds);
 TRUOC['>='].push('không\\s+thấp hơn', 'không\\s+bé hơn', 'từ$');
 TRUOC['<='].push('đến$', 'tới$');
+// «không có chiều/cạnh nào trên 360 mm» (no side exceeds) = mọi cạnh <= 360 — phủ định bao trùm, dài hơn «trên» nên thắng.
+TRUOC['<='].push('không\\s+có\\s+(?:chiều|cạnh)\\s+nào\\s+(?:trên|vượt\\s+quá|quá)');
 TRUOC['>'].push('hơn$', 'vượt$');
 // Chữ so sánh SAU số: tu-vung (chữ Hán) + trở lên/trở xuống và biến thể (soSanhSauMoRong của tu-vung).
 const SAU = { '>=': [], '<=': [] };

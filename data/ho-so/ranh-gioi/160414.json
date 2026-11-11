@@ -4,7 +4,7 @@
   "nhom": "1604",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261105T0911#soan-160414",
@@ -77,6 +77,13 @@
       "ma": "16041491",
       "loai": "QUYET_DINH",
       "ghiChu": "Nghĩa hẹp theo SEN (sen.16041491): \"Cá ngừ đã làm chín sơ gồm cá ngừ được hấp ở nhiệt độ khoảng 90oC, làm sạch da và xương mà không có bất kì thành phần thêm nào khác, được làm đông lạnh. Sản phẩm này là nguyên liệu thô trung gian, được dùng cho sản phẩm đóng hộp\" ⇒ tenLoai \"Cá ngừ\" + dungCho \"sản phẩm đóng hộp\" (nguyên liệu thô trung gian cho đóng hộp — phân biệt với 16041411 là hàng đã đóng hộp bán lẻ). TÊN PHẢI RÚT: bộ đọc tên cắt tại \"đã\" nên đọc \"Cá ngừ\", không đọc \"Cá ngừ đã làm chín sơ\" — điều kiện tên cũ KHÔNG BAO GIỜ khớp (dòng chết: mọi hàng đều ra THIEU). \"Cá ngừ\" là chuỗi con của 16041411 \"cá ngừ đại dương\" nên phải có thêm công dụng mới tách được; hàng \"Cá ngừ đại dương\" trần vẫn không khớp dòng này."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L5-20261111#soat-L5",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 160414:16041491 THU HẸP + SUY RỘNG: chữ biểu \"Cá ngừ đã làm chín sơ\" / EN \"Pre-cooked tunas\" ⇒ spec bỏ vế \"đã làm chín sơ\", thay bằng dungCho \"sản phẩm đóng hộp\" (chữ SEN, không có trong dòng — bịa điều kiện). Cá ngừ chín sơ khai không nêu \"dùng cho đóng hộp\" ⇒ không khớp → .99; cá ngừ chế biến khác (không chín sơ) khai \"nguyên liệu đóng hộp\" ⇒ .91. Điều kiện phải đọc \"làm chín sơ / pre-cooked\" (THIEU_KHOA_TU_VUNG nếu cần)."
     }
   ]
 }
