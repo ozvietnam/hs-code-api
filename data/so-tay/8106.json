@@ -1,191 +1,231 @@
 {
- "nhom": "8106",
- "phamVi": {
-  "text": "Bismut và các sản phẩm từ bismut, kể cả phế liệu và mảnh vụn.",
-  "nguon": "nhom8106.nhom",
-  "trich": "Bismut có màu trắng với sắc độ hồng, dễ gãy, rất khó để gia công và là chất dẫn (điện, nhiệt...) kém.",
-  "nguonLoai": "AI_DA_KIEM"
- },
- "dieuKienVao": [
-  {
-   "fact": "la_bismut_va_san_pham_cua_bismut",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "ch81.chuong",
-   "trich": "Chương này chỉ giới hạn bao gồm sau đây: các kim loại cơ bản, các hợp kim của chúng, và các sản phẩm của chúng mà không được đề cập riêng ở bất cứ phần nào trong Danh mục.\n\n(A) Vôn-fram (wolfram) (nhóm 81.01) … Bitmut(Bi) (nhóm 81.06)",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "loaiTru": [],
- "phanBiet": [],
- "tieuChi6": [
-  {
-   "hs6": "810610",
-   "fact": "ham_luong_bismut",
-   "op": ">",
-   "value": 99.99,
-   "donVi": "%",
-   "nguon": "wco.810610",
-   "trich": "810610 Bismuth; articles thereof, including waste and scrap, containing more than 99.99% of bismuth, by weight",
-   "nguonLoai": "AI_DA_KIEM"
+  "nhom": "8106",
+  "phamVi": {
+    "text": "Bismut và các sản phẩm từ bismut, kể cả phế liệu và mảnh vụn.",
+    "nguon": "nhom8106.nhom",
+    "trich": "Bismut có màu trắng với sắc độ hồng, dễ gãy, rất khó để gia công và là chất dẫn (điện, nhiệt...) kém.",
+    "nguonLoai": "AI_DA_KIEM"
   },
-  {
-   "hs6": "810690",
-   "fact": "ham_luong_bismut",
-   "op": "<=",
-   "value": 99.99,
-   "donVi": "%",
-   "nguon": "wco.810690",
-   "trich": "810690 Bismuth; including articles n.e.c. in heading 8106, including waste and scrap, containing less than or equal to 99.99% of bismuth, by weight",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "dong8": [
-  {
-   "hs": "81061010",
-   "dieuKien": "Bismut chưa gia công; phế liệu và mảnh vụn; bột",
-   "loaiKhac": false,
-   "nguon": "tax.81061010",
-   "trich": "81061010 - - Bismut chưa gia công; phế liệu và mảnh vụn; bột",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "81061090",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.81061090",
-   "trich": "81061090 - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "810610",
-    "truAnhEm": [
-     "81061010"
-    ],
-    "truDayDu": [
-     "81061010"
-    ],
-    "toTienCoTen": "810610",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "81069010",
-   "dieuKien": "Bismut chưa gia công; phế liệu và mảnh vụn; bột",
-   "loaiKhac": false,
-   "nguon": "tax.81069010",
-   "trich": "81069010 - - Bismut chưa gia công; phế liệu và mảnh vụn; bột",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "81069090",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.81069090",
-   "trich": "81069090 - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "810690",
-    "truAnhEm": [
-     "81069010"
-    ],
-    "truDayDu": [
-     "81069010"
-    ],
-    "toTienCoTen": "810690",
-    "dinhNghiaDuoc": true
-   }
-  }
- ],
- "cay": {
-  "nguonLoai": "MAY_SUY",
-  "sinhTu": "lib/hs-tree.js",
-  "nut": [
-   {
-    "id": "8106",
-    "cap": 4,
-    "cha": "81",
-    "tenVi": "Bismut và các sản phẩm làm từ bismut, kể cả phế liệu và mảnh vụn.",
-    "tenEn": "Bismuth; articles thereof, including waste and scrap",
-    "suyRa": false
-   },
-   {
-    "id": "810610",
-    "cap": 6,
-    "cha": "8106",
-    "tenVi": "Chứa hàm lượng bismut trên 99,99%, tính theo khối lượng",
-    "tenEn": "Bismuth; articles thereof, including waste and scrap, containing more than 99.99% of bismuth, by weight",
-    "suyRa": false
-   },
-   {
-    "id": "81061010",
-    "cap": 8,
-    "cha": "810610",
-    "tenVi": "Bismut chưa gia công; phế liệu và mảnh vụn; bột",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "81061090",
-    "cap": 8,
-    "cha": "810610",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "810690",
-    "cap": 6,
-    "cha": "8106",
-    "tenVi": "Loại khác",
-    "tenEn": "Bismuth; including articles n.e.c. in heading 8106, including waste and scrap, containing less than or equal to 99.99% of bismuth, by weight",
-    "suyRa": false
-   },
-   {
-    "id": "81069010",
-    "cap": 8,
-    "cha": "810690",
-    "tenVi": "Bismut chưa gia công; phế liệu và mảnh vụn; bột",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "81069090",
-    "cap": 8,
-    "cha": "810690",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   }
+  "dieuKienVao": [
+    {
+      "fact": "la_bismut_va_san_pham_cua_bismut",
+      "op": "=",
+      "value": true,
+      "donVi": null,
+      "ngoaiTru": [],
+      "nguon": "ch81.chuong",
+      "trich": "Chương này chỉ giới hạn bao gồm sau đây: các kim loại cơ bản, các hợp kim của chúng, và các sản phẩm của chúng mà không được đề cập riêng ở bất cứ phần nào trong Danh mục.\n\n(A) Vôn-fram (wolfram) (nhóm 81.01) … Bitmut(Bi) (nhóm 81.06)",
+      "nguonLoai": "AI_DA_KIEM"
+    }
   ],
-  "tenDien": []
- },
- "dungTuNguon": [
-  "ch81.chuong",
-  "nhom8106.nhom",
-  "tax.81061010",
-  "tax.81061090",
-  "tax.81069010",
-  "tax.81069090",
-  "wco.810610",
-  "wco.810690"
- ],
- "phienBan": "HS2022",
- "taoBoi": {
-  "provider": "google-studio:gemini-flash",
-  "model": null,
-  "luc": "2026-11-02T13:06:43.662Z",
-  "ms": 6
- },
- "kiemTra": {
-  "tong": 8,
-  "dat": 8,
-  "loai": 0,
-  "nguonBiCat": []
- }
+  "loaiTru": [],
+  "phanBiet": [],
+  "tieuChi6": [
+    {
+      "hs6": "810610",
+      "fact": "ham_luong_bismut",
+      "op": ">",
+      "value": 99.99,
+      "donVi": "%",
+      "nguon": "wco.810610",
+      "trich": "810610 Bismuth; articles thereof, including waste and scrap, containing more than 99.99% of bismuth, by weight",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "810690",
+      "fact": "ham_luong_bismut",
+      "op": "<=",
+      "value": 99.99,
+      "donVi": "%",
+      "nguon": "wco.810690",
+      "trich": "810690 Bismuth; including articles n.e.c. in heading 8106, including waste and scrap, containing less than or equal to 99.99% of bismuth, by weight",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "81061010",
+      "dieuKien": "tên loại hàng: Bismut chưa gia công hoặc phế liệu hoặc mảnh vụn hoặc bột",
+      "loaiKhac": false,
+      "nguon": "tax.81061010",
+      "trich": "81061010 - - Bismut chưa gia công; phế liệu và mảnh vụn; bột",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Bismut chưa gia công",
+            "phế liệu",
+            "mảnh vụn",
+            "bột"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L23-20261111#soat-L23",
+          "ngay": "2026-11-11",
+          "bam": "ca4940372c208aed9d54a6f2ce8c84203190159ef5f70151a76d59bc8c968644"
+        }
+      }
+    },
+    {
+      "hs": "81061090",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.81061090",
+      "trich": "81061090 - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "810610",
+        "truAnhEm": [
+          "81061010"
+        ],
+        "truDayDu": [
+          "81061010"
+        ],
+        "toTienCoTen": "810610",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "81069010",
+      "dieuKien": "tên loại hàng: Bismut chưa gia công hoặc phế liệu hoặc mảnh vụn hoặc bột",
+      "loaiKhac": false,
+      "nguon": "tax.81069010",
+      "trich": "81069010 - - Bismut chưa gia công; phế liệu và mảnh vụn; bột",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Bismut chưa gia công",
+            "phế liệu",
+            "mảnh vụn",
+            "bột"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L23-20261111#soat-L23",
+          "ngay": "2026-11-11",
+          "bam": "293490b75dec43bc4cb2e0245a7555e7aca14b75064eeb717e06ed6131e7cf90"
+        }
+      }
+    },
+    {
+      "hs": "81069090",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.81069090",
+      "trich": "81069090 - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "810690",
+        "truAnhEm": [
+          "81069010"
+        ],
+        "truDayDu": [
+          "81069010"
+        ],
+        "toTienCoTen": "810690",
+        "dinhNghiaDuoc": true
+      }
+    }
+  ],
+  "cay": {
+    "nguonLoai": "MAY_SUY",
+    "sinhTu": "lib/hs-tree.js",
+    "nut": [
+      {
+        "id": "8106",
+        "cap": 4,
+        "cha": "81",
+        "tenVi": "Bismut và các sản phẩm làm từ bismut, kể cả phế liệu và mảnh vụn.",
+        "tenEn": "Bismuth; articles thereof, including waste and scrap",
+        "suyRa": false
+      },
+      {
+        "id": "810610",
+        "cap": 6,
+        "cha": "8106",
+        "tenVi": "Chứa hàm lượng bismut trên 99,99%, tính theo khối lượng",
+        "tenEn": "Bismuth; articles thereof, including waste and scrap, containing more than 99.99% of bismuth, by weight",
+        "suyRa": false
+      },
+      {
+        "id": "81061010",
+        "cap": 8,
+        "cha": "810610",
+        "tenVi": "Bismut chưa gia công; phế liệu và mảnh vụn; bột",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "81061090",
+        "cap": 8,
+        "cha": "810610",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "810690",
+        "cap": 6,
+        "cha": "8106",
+        "tenVi": "Loại khác",
+        "tenEn": "Bismuth; including articles n.e.c. in heading 8106, including waste and scrap, containing less than or equal to 99.99% of bismuth, by weight",
+        "suyRa": false
+      },
+      {
+        "id": "81069010",
+        "cap": 8,
+        "cha": "810690",
+        "tenVi": "Bismut chưa gia công; phế liệu và mảnh vụn; bột",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "81069090",
+        "cap": 8,
+        "cha": "810690",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      }
+    ],
+    "tenDien": []
+  },
+  "dungTuNguon": [
+    "ch81.chuong",
+    "nhom8106.nhom",
+    "tax.81061010",
+    "tax.81061090",
+    "tax.81069010",
+    "tax.81069090",
+    "wco.810610",
+    "wco.810690"
+  ],
+  "phienBan": "HS2022",
+  "taoBoi": {
+    "provider": "google-studio:gemini-flash",
+    "model": null,
+    "luc": "2026-11-02T13:06:43.662Z",
+    "ms": 6
+  },
+  "kiemTra": {
+    "tong": 8,
+    "dat": 8,
+    "loai": 0,
+    "nguonBiCat": []
+  }
 }
