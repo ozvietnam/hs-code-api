@@ -4,7 +4,7 @@
   "nhom": "4418",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T1541#soan-441873",
@@ -56,6 +56,13 @@
       "ma": "44187320",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.44187320 \"Loại khác, nhiều lớp từ tre\" ⇒ chỉ điều kiện của vế \"nhiều lớp từ tre\" ⇒ nhieuLop CO (máy tự phủ định anh em .10 qua chữ \"Loại khác\")"
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L14-20261111#soat-L14",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 441873:44187320 SUY RỘNG: chữ biểu \"Loại khác, nhiều lớp từ tre\" (EN \"Other, of multilayer of bamboo\") — điều kiện chỉ nhieuLop CO, bỏ vế \"từ tre\". Phân nhóm 441873 gồm hai lớp hàng \"Từ tre HOẶC có ít nhất lớp trên cùng (lớp phủ) từ tre\"; \"từ tre\" ở dòng .20 chính là chữ tách lớp hàng nhiều lớp toàn tre khỏi tấm nhiều lớp chỉ có lớp mặt tre (lõi gỗ/HDF). Hệ quả: tấm lát sàn ghép nhiều lớp mặt tre lõi gỗ (rất phổ biến) bị kéo sang .20 trong khi theo chữ phải rơi .90 (cùng MFN 5% nhưng sai mã 8 số trên tờ khai). Cần điều kiện vật liệu các lớp là tre (không có khoá ⇒ THIEU_KHOA_TU_VUNG, DỪNG), không bỏ vế. (B) Máy tách sai: tach-ve coi cả \"nhiều lớp từ tre\" là đầu ngữ nên cổng 5 không báo vế \"từ tre\"."
     }
   ]
 }

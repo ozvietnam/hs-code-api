@@ -4,7 +4,7 @@
   "nhom": "4412",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T1558#soan-441291",
@@ -39,6 +39,13 @@
       "ma": "44129110",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.44129110 \"Với ít nhất một lớp ngoài bằng gỗ tếch \" (EN: With at least one outer ply of teak) ⇒ tenLoai \"gỗ tếch\" nguyên văn (chuỗi con của chính dòng; cùng cách xử lý vật liệu-loại như 391890 .11 tenLoai \"polyetylen\") — chatLieu tu-vung@2 chỉ có \"gỗ\" chung chung không tách được loài; \"lớp ngoài\" là vị trí của chất liệu, bộ đọc mô tả hàng plywood lớp ngoài gỗ tếch có chứa \"gỗ tếch\""
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L14-20261111#soat-L14",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 441291:44129110 SUY RỘNG: chữ biểu \"Với ít nhất một lớp ngoài bằng gỗ tếch\" (EN \"With at least one outer ply of teak\") — điều kiện chỉ tenLoai TEN_LOAI \"gỗ tếch\", bỏ giới hạn vị trí \"lớp ngoài\". Phân nhóm cha đã là \"ít nhất một lớp ngoài bằng gỗ nhiệt đới\"; dòng .10 hẹp lại ở chỗ CHÍNH lớp ngoài là tếch. Điều kiện hiện tại thoả cả ván có lớp mặt gỗ nhiệt đới khác (meranti…) mà chỉ lớp trong/lõi là tếch ⇒ .10 lấn .90 (cùng MFN 5% nhưng sai mã 8 số). Ngoài ra giá trị tenLoai là vật liệu, không phải tên hàng. Không có khoá vật liệu lớp ngoài ⇒ THIEU_KHOA_TU_VUNG (đề xuất khoá kiểu chatLieuLopNgoai), DỪNG báo Claude — không ép vào tenLoai. (B) Máy tách sai: tach-ve coi \"Với ít nhất một lớp ngoài\" là đầu ngữ nên cổng 5 xem vế \"bằng gỗ tếch\" đã phủ dù vị trí bị bỏ."
     }
   ]
 }
