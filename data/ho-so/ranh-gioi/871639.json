@@ -4,7 +4,7 @@
   "nhom": "8716",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-871639",
@@ -57,6 +57,13 @@
       "ma": "87163991",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.87163991: \"Có khối lượng hàng chuyên chở theo thiết kế (payload) trên 200 tấn\" ⇒ khoiLuongToanBo > 200 tấn"
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L30-20261111#soat-L30",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 871639:87163991 SUY RỘNG: 'Có khối lượng hàng chuyên chở theo thiết kế (payload) trên 200 tấn' ghi bằng khoiLuongToanBo > 200 tấn — khoá này gộp ba đại lượng khác nhau (GVW / payload / lượng giãn nước) nên câu hỏi lúc chạy không phân được tải trọng với khối lượng toàn bộ: rơ-moóc GVW > 200 t nhưng payload <= 200 t lọt .91 (MFN 5%) thay vì .99 (20%). Cần khoá riêng tải trọng chuyên chở ⇒ DỪNG/THIEU_KHOA_TU_VUNG (đề xuất tách khoá)."
     }
   ]
 }

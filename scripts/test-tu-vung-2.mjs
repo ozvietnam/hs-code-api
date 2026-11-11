@@ -676,6 +676,62 @@ check('vietCum phuongThucTruyenDan VO_TUYEN ⇒ "truyền dẫn vô tuyến"', v
 check('vietCum chiHoacChuYeu true/false ⇒ không chép chữ biểu "chỉ hoặc chủ yếu"', viet('chiHoacChuYeu', true) === 'chuyên dùng' && viet('chiHoacChuYeu', false) === 'loại dùng chung', [viet('chiHoacChuYeu', true), viet('chiHoacChuYeu', false)]);
 check('vietCum daNapChuongTrinh true/false', viet('daNapChuongTrinh', true) === 'đã nạp chương trình' && viet('daNapChuongTrinh', false) === 'chưa nạp chương trình', [viet('daNapChuongTrinh', true), viet('daNapChuongTrinh', false)]);
 check('vietCum đơn vị @1 KHÔNG đổi ("CS: 75000W" — không cách)', T.vietCum('congSuat', 75000, { tat: true }) === 'CS: 75000W', T.vietCum('congSuat', 75000, { tat: true }));
+
+// ── 5b. Khoá SO: đơn vị viết ĐÚNG MỘT LẦN (OZV-325) ─────────────────────────────────────────────────────────────────
+// `vietCum` kiểu SO TỰ chèn donViChuan sau số (dòng lib/tu-vung.js "đơn vị ghi MỘT lần ở cuối"), nên khuôn `cachViet.vi`
+// KHÔNG được ghi lại đơn vị. 46/73 khoá SO ghi lặp ⇒ máy viết ra "độ tinh khiết 12,5%%", "thể tích 12,5cm3 cm3" —
+// chữ này đi thẳng vào mô tả khai báo Hải quan (lib/ho-so/viet-mo-ta.js#cumGiaTri) và vào productText của ca kiểm.
+// Rào là CƠ CHẾ, không phải danh sách: quét mọi khoá SO, khoá mới thêm sai cũng đỏ ngay.
+{
+  const tv2 = T.taiTuVung();
+  const lap = [];
+  for (const k of tv2.khoa) {
+    if (k.kieu !== 'SO') continue;
+    const dv = k.donViChuan;
+    if (!dv) continue;
+    let s = null; try { s = T.vietCum(k.khoa, 12.5); } catch { s = null; }
+    if (typeof s !== 'string') continue;
+    if (s.split(dv).length - 1 >= 2) lap.push([k.khoa, s]);
+  }
+  check(`vietCum khoá SO: đơn vị viết đúng MỘT lần (0/${tv2.khoa.filter((k) => k.kieu === 'SO').length} khoá lặp)`, lap.length === 0, lap.slice(0, 8));
+  // hai ca CÓ TÊN: "%%" (độ tinh khiết) và "cm3 cm3" (thể tích) — đây là chữ đi vào mô tả khai báo
+  check('vietCum doTinhKhiet 12,5 ⇒ "độ tinh khiết 12,5%" (một dấu %)', T.vietCum('doTinhKhiet', 12.5) === 'độ tinh khiết 12,5%', T.vietCum('doTinhKhiet', 12.5));
+  check('vietCum theTich 12,5 ⇒ "thể tích 12,5cm3" (đơn vị một lần)', T.vietCum('theTich', 12.5) === 'thể tích 12,5cm3', T.vietCum('theTich', 12.5));
+  // cụm sau đơn vị giữ nguyên: đơn vị chèn ở {giaTri}, phần đuôi "tính theo khối lượng" không mất
+  check('vietCum hamLuongProtein 12,5 ⇒ "hàm lượng protein 12,5% tính theo khối lượng"', T.vietCum('hamLuongProtein', 12.5) === 'hàm lượng protein 12,5% tính theo khối lượng', T.vietCum('hamLuongProtein', 12.5));
+  // hai thang viết đơn vị TRONG khuôn, ở chỗ chữ biểu đặt nó (donViTrongKhuon) — không chèn thêm ⇒ không ra "RON 95RON"
+  check('vietCum triSoOctan 95 ⇒ "RON 95" (đơn vị trước số, chữ biểu 2710.12.11)', T.vietCum('triSoOctan', 95) === 'RON 95', T.vietCum('triSoOctan', 95));
+  check('vietCum doTruongNoBloom 250 ⇒ "độ trương nở Bloom thang A-250" (chữ biểu 3503.00.41)', T.vietCum('doTruongNoBloom', 250) === 'độ trương nở Bloom thang A-250', T.vietCum('doTruongNoBloom', 250));
+  check('triSoOctan/doTruongNoBloom: chữ máy viết đọc ngược ra đúng giá trị', T.docGiaTri('triSoOctan', T.vietCum('triSoOctan', 95)).giaTri === 95 && T.docGiaTri('doTruongNoBloom', T.vietCum('doTruongNoBloom', 250)).giaTri === 250, [T.docGiaTri('triSoOctan', 'RON 95'), T.docGiaTri('doTruongNoBloom', T.vietCum('doTruongNoBloom', 250))]);
+  // doXop KHÔNG dùng cờ: bỏ cụm đuôi "đơn vị CORESTA" để vietCum tự chèn ⇒ đọc ngược ĐẠT (trước đây CHUA_BIET)
+  check('vietCum doXop 95 ⇒ "độ xốp 95CORESTA" và đọc ngược ra 95 (chữ biểu 4813.20.22)', T.vietCum('doXop', 95) === 'độ xốp 95CORESTA' && T.docGiaTri('doXop', T.vietCum('doXop', 95)).giaTri === 95, [T.vietCum('doXop', 95), T.docGiaTri('doXop', T.vietCum('doXop', 95))]);
+  // bất biến thật của việc vá: KHÔNG khoá SO nào đọc ngược xấu đi so với nền (nền = 70/73 đạt)
+  {
+    const so = T.taiTuVung().khoa.filter((k) => k.kieu === 'SO');
+    const dat = so.filter((k) => { let s; try { s = T.vietCum(k.khoa, 95); } catch { return false; } let r; try { r = T.docGiaTri(k.khoa, s); } catch { return false; } return r?.trangThai === 'DA_CO' && r.giaTri === 95; });
+    check(`vietCum khoá SO: ≥ 70/${so.length} khoá đọc ngược đạt (mốc nền origin/main 70 — không khoá nào xấu đi)`, dat.length >= 70, { dat: dat.length, n: so.length, chua: so.filter((k) => !dat.includes(k)).map((k) => k.khoa) });
+  }
+}
+
+// ── 5c. Lược đồ chặn trước: cachViet.vi của khoá SO không được chứa donViChuan (OZV-325) ────────────────────────────
+{
+  const tv2 = clone(T.taiTuVung());
+  const k = tv2.khoa.find((x) => x.khoa === 'doTinhKhiet');
+  k.cachViet = { ...k.cachViet, vi: 'độ tinh khiết {giaTri}%' };   // đúng kiểu sai đã có trên main
+  const loi = T.kiemTuVung(tv2).map((x) => (typeof x === 'string' ? x : x.ma || x.loi || JSON.stringify(x)));
+  check('kiemTuVung: cachViet.vi khoá SO lặp donViChuan ⇒ báo "so-cach-viet-lap-don-vi"', loi.some((x) => String(x).includes('so-cach-viet-lap-don-vi')), loi.slice(0, 6));
+  check('kiemTuVung: tu-vung@2 thật KHÔNG còn lỗi lặp đơn vị', !T.kiemTuVung(T.taiTuVung()).map((x) => JSON.stringify(x)).some((x) => x.includes('so-cach-viet-lap-don-vi')));
+  // cờ donViTrongKhuon không được dùng để "tắt rào" lặng lẽ: khai cờ thì phải có ghiChu dẫn chữ biểu
+  const tv3 = clone(T.taiTuVung());
+  const k3 = tv3.khoa.find((x) => x.khoa === 'doTinhKhiet');
+  k3.donViTrongKhuon = true; delete k3.ghiChu;
+  check('kiemTuVung: khai donViTrongKhuon mà không có ghiChu chữ biểu ⇒ "so-don-vi-trong-khuon-thieu-ghi-chu"', T.kiemTuVung(tv3).map((x) => JSON.stringify(x)).some((x) => x.includes('so-don-vi-trong-khuon-thieu-ghi-chu')), T.kiemTuVung(tv3).slice(0, 5));
+  check('đúng 2 khoá khai donViTrongKhuon (triSoOctan, doTruongNoBloom) và đều có ghiChu dẫn chữ biểu', (() => { const ds = T.taiTuVung().khoa.filter((x) => x.donViTrongKhuon); return ds.length === 2 && ds.every((x) => String(x.ghiChu || '').trim()) && ds.map((x) => x.khoa).sort().join(',') === 'doTruongNoBloom,triSoOctan'; })(), T.taiTuVung().khoa.filter((x) => x.donViTrongKhuon).map((x) => x.khoa));
+  // cờ chỉ dành cho kiểu SO (bảng co-chi-cho-kieu)
+  const tv4 = clone(T.taiTuVung());
+  tv4.khoa.find((x) => x.kieu === 'CO_KHONG').donViTrongKhuon = true;
+  check('kiemTuVung: donViTrongKhuon đặt ở khoá không phải SO ⇒ "co-chi-cho-kieu"', T.kiemTuVung(tv4).map((x) => JSON.stringify(x)).some((x) => x.includes('co-chi-cho-kieu') && x.includes('donViTrongKhuon')), T.kiemTuVung(tv4).slice(0, 5));
+}
 { const kg = (v) => { try { return T.kiemGiaTri('phuongPhapCheTao', v).trangThai; } catch { return 'LOI'; } };
   check('kiemGiaTri phuongPhapCheTao: "RANG" ngoài danh sách ⇒ CHUA_BIET; ["DUC","DAP"] ⇒ DA_CO', kg('RANG') === 'CHUA_BIET' && kg(['DUC', 'DAP']) === 'DA_CO'); }
 { const ch = (l) => { try { return T.cauHoiCho('daNapChuongTrinh', l); } catch { return ''; } };

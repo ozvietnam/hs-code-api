@@ -36,7 +36,7 @@ tức **còn 14 bước test chạy sau nhãn**. Ai `grep "ALL TESTS PASSED"` đ
 
 Nhãn đã được đẩy về **bước cuối cùng** (OZV-272). Dù vậy, đừng lấy nhãn làm bằng chứng — lấy **số ca + EXIT**.
 
-## Bốn quy tắc bắt buộc
+## Sáu quy tắc bắt buộc
 
 1. **Worktree mới ⇒ cài gói TRƯỚC khi chạy lệnh kiểm.**
 
@@ -90,6 +90,16 @@ Nhãn đã được đẩy về **bước cuối cùng** (OZV-272). Dù vậy, �
    gh pr view <số> -R ozvietnam/hs-code-api --json files \
      --jq '.files[] | "\(.path) +\(.additions) -\(.deletions)"'
    ```
+
+5. **Cổng xanh / delta 0 KHÔNG phải bằng chứng bản vá có tác dụng.** Bốn quy tắc trên chỉ chứng minh
+   *"cây này có PR và cổng chạy thật"*; delta 0 chỉ chứng minh *"không hồi quy"*. Phải **đo trực tiếp
+   hành vi trước/sau** trên dữ liệu thật và dán lệnh + số. Không có số ⇒ **CHẶN**.
+   Chi tiết: [Quy tắc 5](#quy-tắc-5--bẫy-bản-vá-rỗng-ozv-310).
+
+6. **Biên bản `TRẢ THỢ` phải chặn được tay người gộp.** Kết luận chặn ⇒ gắn nhãn `tra-tho` bằng REST;
+   trước **mọi** lần gộp phải đọc nhãn + bình luận soát cuối. Còn nhãn ⇒ cấm gộp.
+   Kèm luật kiểm đối kháng cho PR sửa regex (6b) và PR chép mẫu từ repo khác (6c).
+   Chi tiết: [Quy tắc 6](#quy-tắc-6--biên-bản-trả-thợ-phải-chặn-được-tay-người-gộp-ozv-337).
 
 ### Bẫy 4 — `FETCH_HEAD` bị ghi đè, cổng chạy trên `main` thuần mà log vẫn xanh
 
@@ -201,6 +211,11 @@ Hai lần em (GĐ) đọc sai chỗ này, ghi lại để khỏi lặp:
 ## Cổng gộp đầy đủ cho một PR
 
 ```bash
+# BƯỚC 0 — chốt TRẢ THỢ (quy tắc 6a). Trước cả khi dựng worktree.
+gh pr view <số> -R ozvietnam/hs-code-api --json labels,comments \
+  -q '{nhan: [.labels[].name], soat_cuoi: (.comments | last | .body[0:200])}'
+# Còn nhãn tra-tho, HOẶC biên bản soát cuối là TRẢ THỢ ⇒ DỪNG, không gộp.
+
 gh pr checks <số> -R ozvietnam/hs-code-api   # phải toàn xanh; đang chạy thì CHỜ, đỏ thì trả thợ
 ```
 
@@ -232,12 +247,20 @@ Không đạt ⇒ bình luận lỗi cụ thể lên thẻ, trả thợ.
 Chép từ chuẩn chung; hai gạch cuối là **luật OZ**, bản tài liệu đầu rơi mất nên ghi thành danh sách cho
 khỏi rơi lần nữa:
 
+- [ ] **Nhãn `tra-tho` + bình luận soát cuối đã đọc** (quy tắc 6a) — dán kết quả lệnh `--json
+      labels,comments`. Đây là gạch **đầu tiên**, không phải gạch cuối.
 - [ ] **Ai viết PR** — vì đây là thứ làm luật *"không tự gộp PR do mình viết"* kiểm được từ bên ngoài.
 - [ ] **SHA bản gộp thử** (`git rev-parse HEAD` trên cây gộp thử).
 - [ ] **Dòng `git diff --stat origin/main HEAD`** + số tệp/số dòng của PR để đối chiếu (quy tắc 4).
 - [ ] **Tổng số ca test chạy thật** — nguyên dòng `dem-ca-test.mjs` in ra, kèm `EXIT=0` của chính lần
       chạy đó (quy tắc 2, 3). Số trọn bộ ghi rõ là **lấy ở CI**.
-- [ ] **Hai mốc `bo-kiem-luat`** đo tại chỗ cùng nhịp, cả hai bên.
+- [ ] **Hai mốc `bo-kiem-luat`** đo tại chỗ cùng nhịp, cả hai bên — **ba mốc** nếu PR sửa chính tệp đo
+      điểm (quy tắc 6b-bis).
+- [ ] **Bằng chứng bản vá CÓ tác dụng** (quy tắc 5): tên ca đỏ trên `main` chưa sửa, hoặc số đo hành vi
+      trước/sau khi cổng ra delta 0.
+- [ ] **Kiểm đối kháng ba chiều** (quy tắc 6b) khi PR chạm regex ăn dữ liệu thật: nhánh đã `grep`, hai
+      chiều, ca ReDoS kèm số ms.
+- [ ] **Dòng "mẫu gốc chịu được ngữ cảnh mới vì…"** (quy tắc 6c) khi PR chép mẫu từ repo khác.
 - [ ] **Một dòng "đã tra `sourcebot` gì, dùng lại gì"** — luật CEO 11/11, bắt buộc với PR sửa logic có
       thể đã có ở repo khác.
 - [ ] **Dòng `KẾT LUẬN` của `soat-khac`** khi PR thuộc diện (xem dưới).
@@ -269,17 +292,208 @@ PR thêm/sửa **cổng chặn** (`bo-kiem-luat`, `check-cay`, `check-legal-basi
 liệu sạch cũng là kết quả của một cổng **không bao giờ đỏ**. Dán cả hai chiều vào biên bản: đỏ đúng khi
 bẩn, xanh khi sạch.
 
-### PR tự nhận sửa lỗi mà cổng ra delta 0: phải đo hành vi trước/sau
+### Quy tắc 5 — bẫy bản vá rỗng (OZV-310)
 
-PR *sửa lỗi* (không phải thêm dữ liệu, không phải tài liệu) mà cổng không-hồi-quy ra **delta 0 trên mọi
-trường** thì **chưa đủ để gộp**: một bản vá **rỗng** cũng cho đúng kết quả đó, cũng khớp số tệp, cũng
-xanh test. Phải **đo trực tiếp hành vi** trên nền `origin/main` và trên bản gộp thử, rồi dán số.
+**Chỗ hỏng.** PR sửa lỗi `#1192` qua đủ 4 quy tắc trên, cổng không-hồi-quy toàn biểu ra **37/37 trường
+delta 0** (`chotDung` 4030 → 4030). Nhưng **một bản vá rỗng cũng ra đúng kết quả đó**, cũng khớp số tệp,
+cũng xanh test: 4 quy tắc đầu chỉ chứng minh *"cây này có PR và cổng chạy thật"*, delta 0 chỉ chứng minh
+*"không hồi quy"*. Không câu nào trong số đó chứng minh **bản sửa có tác dụng**.
 
-Mẫu: PR #1192 (vá đọc cụm "có hoặc không có X") có `chotDung` **4030 → 4030**, 37/37 trường delta 0.
 Chỉ khi dò ngược vào `data/tax.json` và gọi thẳng `khopCumTrongChu` trên cả hai cây mới ra bằng chứng:
 **1.408 nhãn đang bị đọc ngược nghĩa → 0**, và biết thêm vì sao cổng phẳng (1.255 dòng `whether or not`
 nằm ở chữ **Anh**, chưa vào đường chốt mã tiếng Việt). Công cụ đo một lần thì viết **ngoài repo**, nhưng
-**dán lệnh + số** để người sau chạy lại được. Đề xuất thành quy tắc chung ở OZV-310.
+**dán lệnh + số** để người sau chạy lại được.
+
+**Việc người soát phải làm:**
+
+- **PR *sửa lỗi* hoặc sửa cổng chặn:** dựng cây có **test của PR** nhưng **mã của `origin/main`**, chạy
+  đúng tệp test đó, xác nhận ca mới **ĐỎ đúng chỗ** — đỏ ở đúng phép kiểm mô tả lỗi, không phải đỏ vì
+  cây dựng sai. Dán **tên các ca đỏ** vào biên bản.
+- **Khi bảng đo tổng hợp ra delta 0 trên mọi trường:** không được coi là đạt. **Đo trực tiếp hành vi**
+  trước/sau (`origin/main` vs bản gộp thử), dán **lệnh + số**. Không có số ⇒ **CHẶN**.
+- **PR *thêm dữ liệu*:** delta 0 **trên chỉ số của chính nhóm mới là bất thường** — nghĩa là dữ liệu
+  **mồ côi**, chưa nối vào đường chạy. Chỉ số phủ của nhóm mới phải nhích **đúng số lượng thêm**, nhóm
+  cũ không hồi quy.
+
+Cách dựng cây "test của PR + mã của `main`" ở repo này — đổi `<tệp-mã>` thành tệp mã mà PR sửa:
+
+```bash
+cd /paperclip/workspaces/tmp/hs-soat-<số>   # cây đã gộp thử, đã nối node_modules (quy tắc 1)
+git checkout origin/main -- <tệp-mã>        # ví dụ lib/so-tay-runtime.js
+git diff --stat origin/main                 # PHẢI chỉ còn tệp test, mã về đúng main
+node scripts/<bộ-test-của-PR>.mjs > /tmp/do.log 2>&1; echo "EXIT=$?"; tail -8 /tmp/do.log
+git checkout HEAD -- <tệp-mã>               # hoàn nguyên trước khi chạy cổng
+```
+
+> **Bẫy trong chính quy tắc 5: "đỏ" rỗng.** Runner có thể in chữ `failed` trong khi **0 ca chạy** (cây
+> thiếu gói, tệp nạp lỗi). Ai đọc "failed" thành "đỏ đúng chỗ" là tự ký một bằng chứng rỗng y như thứ
+> quy tắc 5 sinh ra để chặn. **Chỉ nhận là đỏ khi log ghi `N failed | M passed` kèm TÊN CA.**
+> Mẫu đạt (#1223, bê tệp test của PR sang nền `45745b83`):
+>
+> ```
+> FAIL 030611 thiếu dữ kiện (chỉ tên PN6 + "Đông lạnh") → KHÔNG tự chốt dòng Loại khác 03061190
+> FAIL 030612 thiếu dữ kiện (chỉ tên PN6 + "Đông lạnh") → KHÔNG tự chốt dòng Loại khác 03061290
+> 93 passed, 2 failed
+> ```
+>
+> Trên cây PR: **95 passed, 0 failed, `EXIT=0`**. Có tên ca ⇒ đỏ thật.
+>
+> Và giữ luật: **không `git checkout` trong worktree đang chạy cổng.** Kiểm đỏ xong, hoàn nguyên, rồi
+> mới chạy cổng — hoặc dùng worktree thứ hai.
+
+### Quy tắc 6 — biên bản TRẢ THỢ phải chặn được tay người gộp (OZV-337)
+
+**Chỗ hỏng.** Bốn quy tắc đầu dạy người soát kết luận cho đúng; quy tắc 5 dạy đừng tin cổng xanh. Không
+quy tắc nào giữ được **kết luận đã đúng rồi**. Biên bản `TRẢ THỢ` là chữ trong một bình luận giữa hàng
+chục bình luận khác; `gh pr merge` không đọc chữ. Ngày 11/11 cả `ozplugin` và `hs-code-api` đều gộp PR
+**sau** khi giám đốc đã chặn, **mỗi lần chỉ 7–12 phút sau biên bản chặn** — ở repo này là
+[#1210](https://github.com/ozvietnam/hs-code-api/pull/1210): chặn `15:57:52Z` → gộp `16:09:37Z` =
+**11 phút 45 giây**. Chỗ hỏng thật nằm ở con số đó: **một biên bản chặn chỉ sống được 7–12 phút** nếu
+không có gì giữ nó. Một lỗi lặp ở hai repo độc lập trong cùng một buổi thì không phải người bất cẩn, mà
+là **thiếu cái chốt**.
+
+#### 6a. TRẢ THỢ ⇒ gắn nhãn `tra-tho`; trước mọi lần gộp phải đọc nhãn
+
+Khi kết luận **TRẢ THỢ**, người soát bắt buộc gắn nhãn cùng lúc với bình luận — **bằng REST, và phải
+đọc lại kết quả**:
+
+```bash
+gh api -X POST repos/ozvietnam/hs-code-api/issues/<số>/labels \
+  -f "labels[]=tra-tho" -q '[.[].name]'
+# PHẢI in ra một danh sách CÓ "tra-tho". Không in ⇒ nhãn chưa gắn ⇒ chốt chưa tồn tại.
+```
+
+(Nhãn `tra-tho` đã tạo trên `ozvietnam/hs-code-api` ngày 11/11/2026, màu `#B60205`.)
+
+> **Đừng dùng `gh pr edit --add-label` — nó hỏng, và hỏng im lặng.**
+> `gh pr edit <số> --add-label tra-tho` **chết** với `GraphQL: Projects (classic) is being deprecated …
+> (repository.pullRequest.projectCards)`: `gh pr edit` hỏi kèm `projectCards` qua GraphQL nên cả lệnh
+> đổ, dù việc gắn nhãn chẳng liên quan gì tới Projects. **Nhãn không được gắn.** Chiều gỡ
+> (`--remove-label`) hỏng y vậy. Kiểm chứng 11/11/2026 ở `ozplugin#385`: gỡ nhãn sạch (`[]`) → chạy
+> `gh pr edit --add-label` → `EXIT=1`, đọc lại nhãn vẫn `[]`; đường REST in `["tra-tho"]` ngay.
+> Bẫy phải nhớ: lần thử đầu tưởng lệnh *có* chạy, vì nhãn đã do người khác gắn sẵn bằng REST từ trước.
+> **Lệnh in lỗi mà kết quả vẫn "đúng" là lúc dễ kết luận sai nhất** — nên luật là đọc lại nhãn bằng một
+> lệnh riêng, không suy từ mã thoát.
+> Đây đúng là thứ quy tắc 6 sinh ra để chặn: **một cái chốt mà lệnh dựng nó không chạy thì cái chốt
+> không tồn tại.**
+
+**Bước đầu tiên** của mọi lần gộp — trước `gh pr merge`, trước cả khi dựng worktree:
+
+```bash
+gh pr view <số> -R ozvietnam/hs-code-api --json labels,comments \
+  -q '{nhan: [.labels[].name], soat_cuoi: (.comments | last | .body[0:200])}'
+# Còn nhãn tra-tho, HOẶC biên bản soát cuối là TRẢ THỢ ⇒ DỪNG, không gộp.
+```
+
+**Tuyệt đối không gộp** nếu còn nhãn `tra-tho`, **hoặc** bình luận soát mới nhất là `TRẢ THỢ`. Nhãn chỉ
+được gỡ khi có **đủ hai thứ, đúng thứ tự**: commit sửa mới **sau** giờ của biên bản chặn, **rồi** một
+biên bản soát lại trên PR nói rõ đã kiểm lại từng lỗi đã chặn. Gỡ nhãn mà chưa có commit mới là dựng lại
+đúng chỗ hỏng.
+
+Gỡ nhãn cũng đi REST:
+
+```bash
+gh api -X DELETE repos/ozvietnam/hs-code-api/issues/<số>/labels/tra-tho -q '[.[].name]'
+# PHẢI in danh sách KHÔNG còn "tra-tho".
+```
+
+Và người gỡ nhãn + gộp phải là người **không viết PR** đó (OZV-283).
+
+#### 6b. Sửa regex ăn dữ liệu thật / chữ khách / đầu ra LLM ⇒ kiểm đối kháng ba chiều
+
+Áp khi PR sửa hoặc thêm mẫu regex chạy trên dữ liệu nghiệp vụ thật, chữ khách gõ, hoặc đầu ra LLM:
+
+1. **Rã mẫu thành từng nhánh, `grep` mỗi nhánh trong dữ liệu đích** (bài học `#1210`) — xem nhánh đó có
+   là **từ thật của biểu thuế** không. Biến thể không dấu là chỗ chết người:
+
+   `data/tax.json` là **object khoá theo mã HS** (không phải mảng), tên hàng tiếng Việt ở trường `vn`:
+
+   ```bash
+   # đổi "nhung" thành nhánh mình vừa thêm vào regex
+   node -e '
+     const t=require("./data/tax.json");
+     const re=new RegExp("\\b"+process.argv[1]+"\\b","i");
+     let n=0;for(const [hs,r] of Object.entries(t)){
+       if(re.test(r.vn||"")){if(n++<4)console.log("  ",hs,(r.vn||"").slice(0,55));}}
+     console.log("  nhánh \""+process.argv[1]+"\" trùng",n,"dòng tiếng Việt của biểu");' nhung
+   ```
+
+   Đo thật trên `main` `cd5ddbbf` (chạy đúng lệnh trên):
+
+   ```
+   nhánh "nhung" trùng 3 dòng:  59070040 vải phủ nhung xơ · 59111000 vải phớt · 07095500 Nấm Tùng Nhung
+   nhánh "ma"    trùng 4 dòng:  12115000 Cây ma hoàng · 13021400 từ cây ma hoàng
+                                32141000 Ma tít gắn kính · 96180000 Ma-nơ-canh
+   ```
+
+   Ở `#1210`, nhánh `nhung|ma` không dấu đã cắt mất mệnh đề phủ định của **5 nhóm hàng thật** trong
+   biểu thuế. Quét cả `r.en` (chữ Anh) thì số trùng còn cao hơn (`ma` ra 21 dòng) — nhớ đo **đúng
+   trường mà regex của mình thật sự chạy trên đó**, kẻo tự dọa mình bằng số của cột khác.
+
+2. **Đo hai chiều trên cùng bộ ca** (bài học `ai-live#223/#228`): chứng minh đồng thời chiều *bắt được
+   lỗi cũ* **và** chiều *không bắt nhầm dữ liệu nghiệp vụ hợp lệ / không mở lỗ mới*. Một chiều không đủ
+   — mẫu bắt hết mọi thứ cũng "bắt được lỗi cũ". Mẫu đạt (#1223, gọi thẳng hàm bị đổi trên **2.140 mẫu
+   `cachDoc` thật / 396 khoá**): bản cũ sót cú pháp **28** khoá, bản mới **14** ⇒ *tốt hơn 14, xấu hơn 0*;
+   và **0/2140** mẫu bóc ra rỗng.
+
+3. **Một ca chuỗi dài đối kháng (ReDoS):** regex có lookbehind hoặc nhóm lặp mà ăn đầu ra LLM / chữ
+   khách phải có một ca chuỗi dài bất thường (**~40.000 từ lặp**) **chạy xong dưới 2 giây**. Đầu ra LLM
+   dài bao nhiêu là việc của model, không phải việc ta đoán. Cổng CI **không bao giờ tự sinh ca này**.
+
+   ```bash
+   # đổi lib/hàm thành hàm mà PR sửa; đặt chuỗi lặp ở GIỮA hai mốc mà regex phải khớp
+   node -e '
+     const {coCumTuyChon}=require("./lib/cum-tuy-chon.js");
+     const s="đã hoặc chưa "+"a ".repeat(40000)+"có hoặc không có "+"b ".repeat(40000)+"đầu";
+     const t=Date.now(); const r=coCumTuyChon(s);
+     console.log("độ dài:",s.length,"ký tự · kết quả:",r,"· ms:",Date.now()-t);'   # phải < 2000
+   ```
+
+   Đo thật trên `main` `cd5ddbbf`: `độ dài: 160033 ký tự · kết quả: true · ms: 4`.
+   Mẫu đạt khác (#1223): 40.000 lần lặp (1,64 triệu ký tự) = **23 ms**; 5.000 ngoặc mở lồng = 0 ms.
+
+#### 6b-bis. PR sửa CHÍNH tệp đo điểm ⇒ phải ĐO BA CHIỀU
+
+PR sửa `scripts/bo-kiem-luat.mjs`, `scripts/check-*.mjs` hay bất kỳ tệp sinh ra bảng số (`eval:*`) thì
+bảng số **do chính tệp bị sửa in ra**, nên nó **không tự chứng minh được gì**. Dựng **ba** cây:
+
+| cây | cách dựng |
+|---|---|
+| nền | `origin/main` vừa fetch |
+| **chỉ dữ liệu** | `git checkout refs/pr<n>-head -- <chỉ các tệp data/>` (giữ nguyên gate của `main`) |
+| đầy đủ | gộp cả PR |
+
+```bash
+# trên cây đứng ở origin/main, đã nối node_modules
+git checkout refs/pr<n>-head -- data/<đường-dẫn-PR-sửa>
+git diff --stat origin/main            # PHẢI chỉ còn tệp data/, scripts/ về đúng main
+node scripts/bo-kiem-luat.mjs --toan-bieu --json > /tmp/chi-du-lieu.json; echo "EXIT=$?"
+```
+
+Dấu hiệu **nới thước** phải soi: `không thể chốt` hoặc `nemLoi` **giảm bất thường**, ca chạy sang trạng
+thái dễ hơn (`chotSai` → `hỏi` → `chotDung` mà tổng ca đứng yên).
+
+Mẫu đã làm thật — **PR [#1223](https://github.com/ozvietnam/hs-code-api/pull/1223)**:
+
+| cây | chotDung | chotSai | chotLKSai | không thể chốt |
+|---|---:|---:|---:|---:|
+| nền `45745b83` | 4727 | 19 | 13 | 1845 |
+| **chỉ dữ liệu** (gate của `main`) | 4727 | 19 | **11** | 1845 |
+| đầy đủ (gộp PR) | **4763** | **16** | **11** | 1845 |
+
+Đọc ra: **phần dữ liệu** tự nó kéo `chotLoaiKhacSai` **13→11** — đúng mục tiêu thẻ; **phần gate** kéo
+thêm `chotDung` +36 và `chotSai` −3, và số học trong loại ca cho thấy 36 ca vào `chotDung` đến từ
+`hỏi` −33 và `chotSai` −3. `không thể chốt` **giữ nguyên 1845 cả ba cây**, `nemLoi` **0** ⇒ không ca nào
+bị đẩy sang trạng thái dễ để lấy điểm. Biên bản:
+<https://github.com/ozvietnam/hs-code-api/pull/1223#issuecomment-6801928049>
+
+#### 6c. Chép mẫu từ repo khác phải xét ngữ cảnh mới
+
+Luật dùng lại xuyên repo (tra `sourcebot` trước khi tự viết) vẫn giữ nguyên — nhưng chép regex hay hàm
+từ repo khác (ví dụ `zalo-bot/packs/hs/loc-tap-am.js` → `lib/soat-luat-re.js`) thì **phải ghi một dòng
+trong PR** chứng minh mẫu gốc chịu được ngữ cảnh đích: *"mẫu gốc chịu được ngữ cảnh mới vì…"* — dữ liệu
+ở đây khác gì nơi gốc, và đã kiểm chiều nào. **Mẫu đúng trên câu chat ngắn có thể sai trên một chương
+biểu thuế** (xem 6b.1: `nhung`, `ma`).
 
 ### PR dữ liệu ra delta 0 **vì không ai đo**: hai mốc phải đo TẠI CHỖ, CÙNG NHỊP
 

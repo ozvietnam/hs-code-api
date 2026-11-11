@@ -303,7 +303,12 @@ check('mã 8 số không có trong biểu ⇒ lỗi MA_KHONG_CO_TRONG_BIEU', coL
   process.env.HS_HO_SO = 'bat-bua'; check('HS_HO_SO lạ ⇒ off', HS.cheDoHoSo() === 'off');
   process.env.HS_HO_SO = 'on';
   check('on + lát 1 + ranh giới CLAUDE_DUYET ⇒ áp dụng (84135040)', HS.hoSoApDung('84135040') === true);
-  check('on + lát 1 chưa duyệt (39269099) ⇒ không', HS.hoSoApDung('39269099') === false);
+  // Mã "lát 1 chưa duyệt" chọn theo dữ liệu, không cố định: các lô soát lần lượt duyệt PN6 lát 1 (392690 đã DUYET ở L12, #1109).
+  const lat1 = JSON.parse(fs.readFileSync(`${process.cwd()}/data/ho-so/lat-1.json`, 'utf8')).phanNhom.map((x) => String(x.pn6));
+  const pn6Chua = lat1.find((p) => !HS.coRanhGioiDuyet(p));
+  const maChua = pn6Chua && T.tree().codes.find((c) => c.length === 8 && c.startsWith(pn6Chua));
+  if (maChua) check(`on + lát 1 chưa duyệt (${maChua}) ⇒ không`, HS.laMaLat1(maChua) && HS.hoSoApDung(maChua) === false);
+  else console.log('SKIP on + lát 1 chưa duyệt: mọi phân nhóm lát 1 đã duyệt — không còn mã để thử');
   check('on + ngoài lát 1 (01061100) ⇒ không', HS.hoSoApDung('01061100') === false);
   if (cu === undefined) delete process.env.HS_HO_SO; else process.env.HS_HO_SO = cu;
   check('index.js xuất lại dungDuongDi', HS.dungDuongDi === D.dungDuongDi && HS.PHIEN_BAN_HO_SO === 'ho-so@1');

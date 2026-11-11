@@ -4,7 +4,7 @@
   "nhom": "4001",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1700#soan-400129",
@@ -215,6 +215,13 @@
       "ma": "40012999",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.40012999 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L13-20261111#soat-L13",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 40012980 THU HẸP: chữ biểu \"Loại tận thu (trên cây, dưới đất hoặc loại đã xông khói) và phần thừa lại trên chén\" (EN \"Scrap (tree, earth or smoked) and cup lump\") nêu HAI hàng thay thế, bản nháp ghi HAI điều kiện TEN_LOAI riêng (\"Loại tận thu\" VÀ \"phần thừa lại trên chén\") ⇒ cup lump đứng riêng hoặc cao su tận thu đứng riêng đều TRÁI (đã thử 'Cao su phần thừa lại trên chén (cup lump)' ⇒ TRAI) và rơi về 40012999; phải là MỘT TEN_LOAI mảng [\"tận thu\",\"phần thừa lại trên chén\"]. (B) 40012950 THU HẸP: \"Crếp loại khác\" (EN \"Other crepes\") ghi TEN_LOAI \"Crếp loại khác\" — bộ so âm tiết giữ \"khác\" ⇒ 'Crếp cao su nâu (brown crepe)' TRAI, rơi 40012999; phải là tenLoai \"Crếp\" + phanConLai [.20,.30] (đúng mẫu ghi chú 401512 viện dẫn). (C) tầng 400129~r6313 \"Loại khác, dạng nguyên sinh\": tenLoai \"dạng nguyên sinh\" ⇒ 'Cao su tự nhiên đã khử protein DPNR dạng khối' TRAI tầng, rơi 40012999 thay vì 40012994 — người soạn cân nhắc lại cách đọc vế (Note 3 Ch.40: khối, cục, hạt… là dạng nguyên sinh)."
     }
   ]
 }

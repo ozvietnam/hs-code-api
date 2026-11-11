@@ -1,849 +1,1015 @@
 {
- "nhom": "8701",
- "phamVi": {
-  "text": "Xe kéo (trừ xe kéo thuộc nhóm 87.09); bao gồm máy kéo nông nghiệp, lâm nghiệp, xe đầu kéo kéo sơ mi rơ-moóc, máy kéo bánh xích và máy kéo trục đơn.",
-  "nguon": "ch87.chuong",
-  "trich": "xe kéo\" có nghĩa là phương tiện được thiết kế chủ yếu để kéo hoặc đẩy một phương tiện, một thiết bị hoặc một vật nặng khác, có hoặc không bao gồm bộ phận phụ trợ để vận chuyển các loại công cụ, hạt giống (seeds), phân bón hoặc hàng hoá khác, phù hợp với mục đích sử dụng chính của xe kéo.",
-  "nguonLoai": "AI_DA_KIEM"
- },
- "dieuKienVao": [
-  {
-   "fact": "la_phuong_tien_thiet_ke_chu_yeu_de_keo_hoac_day",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "ch87.chuong",
-   "trich": "phương tiện được thiết kế chủ yếu để kéo hoặc đẩy một phương tiện, một thiết bị hoặc một vật nặng khác, có hoặc không bao gồm bộ phận phụ trợ để vận chuyển các loại công cụ, hạt giống (seeds), phân bón hoặc hàng hoá khác, phù hợp với mục đích sử dụng chính của xe kéo.",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "loaiTru": [
-  {
-   "dieuKien": "Xe kéo sử dụng ở sân ga đường sắt",
-   "sangNhom": "8709",
-   "nguon": "nhom8701.nhom",
-   "trich": "Loại trừ các xe kéo sử dụng ở sân ga đường sắt thuộc nhóm 8709",
-   "nguonLoai": "AI_DA_KIEM"
+  "nhom": "8701",
+  "phamVi": {
+    "text": "Xe kéo (trừ xe kéo thuộc nhóm 87.09); bao gồm máy kéo nông nghiệp, lâm nghiệp, xe đầu kéo kéo sơ mi rơ-moóc, máy kéo bánh xích và máy kéo trục đơn.",
+    "nguon": "ch87.chuong",
+    "trich": "xe kéo\" có nghĩa là phương tiện được thiết kế chủ yếu để kéo hoặc đẩy một phương tiện, một thiết bị hoặc một vật nặng khác, có hoặc không bao gồm bộ phận phụ trợ để vận chuyển các loại công cụ, hạt giống (seeds), phân bón hoặc hàng hoá khác, phù hợp với mục đích sử dụng chính của xe kéo.",
+    "nguonLoai": "AI_DA_KIEM"
   },
-  {
-   "dieuKien": "Xe cứu hộ trang bị cần cẩu, bộ nâng, tời kéo",
-   "sangNhom": "8705",
-   "nguon": "nhom8701.nhom",
-   "trich": "Nhóm này loại trừ các xe cứu hộ, có trang bị cần cẩu, bộ nâng, tời kéo, v.v ... (nhóm 87.05).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "phanBiet": [
-  {
-   "hoi": "Hàng hoá có phải là xe kéo loại dùng trong sân ga đường sắt thuộc nhóm 87.09?",
-   "neuCo": "8709",
-   "neuKhong": "8701",
-   "nguon": "nhom8701.nhom",
-   "trich": "Loại trừ các xe kéo sử dụng ở sân ga đường sắt thuộc nhóm 8709",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hoi": "Hàng hoá có phải là xe cứu hộ có trang bị cần cẩu, bộ nâng, tời kéo thuộc nhóm 87.05?",
-   "neuCo": "8705",
-   "neuKhong": "8701",
-   "nguon": "nhom8701.nhom",
-   "trich": "Nhóm này loại trừ các xe cứu hộ, có trang bị cần cẩu, bộ nâng, tời kéo, v.v ... (nhóm 87.05).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "tieuChi6": [
-  {
-   "hs6": "870191",
-   "fact": "cong_suat_dong_co_khong_qua_18kw",
-   "op": "<=",
-   "value": 18,
-   "donVi": "kW",
-   "nguon": "wco.870191",
-   "trich": "of an engine power not exceeding 18kW",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs6": "870192",
-   "fact": "cong_suat_dong_co_tren_18kw_den_37kw",
-   "op": "<=",
-   "value": 37,
-   "donVi": "kW",
-   "nguon": "wco.870192",
-   "trich": "of an engine power exceeding 18kW but not exceeding 37kW",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs6": "870193",
-   "fact": "cong_suat_dong_co_tren_37kw_den_75kw",
-   "op": "<=",
-   "value": 75,
-   "donVi": "kW",
-   "nguon": "wco.870193",
-   "trich": "of an engine power exceeding 37kW but not exceeding 75kW",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs6": "870194",
-   "fact": "cong_suat_dong_co_tren_75kw_den_130kw",
-   "op": "<=",
-   "value": 130,
-   "donVi": "kW",
-   "nguon": "wco.870194",
-   "trich": "of an engine power exceeding 75kW but not exceeding 130kW",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs6": "870195",
-   "fact": "cong_suat_dong_co_tren_130kw",
-   "op": ">",
-   "value": 130,
-   "donVi": "kW",
-   "nguon": "wco.870195",
-   "trich": "of an engine power exceeding 130kW",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "dong8": [
-  {
-   "hs": "87011011",
-   "dieuKien": "Dùng cho nông nghiệp",
-   "loaiKhac": false,
-   "nguon": "tax.87011011",
-   "trich": "87011011 - - - Dùng cho nông nghiệp",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "87011019",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.87011019",
-   "trich": "87011019 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "8701101",
-    "truAnhEm": [
-     "87011011"
-    ],
-    "truDayDu": [
-     "87011011"
-    ],
-    "toTienCoTen": "870110",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "87011091",
-   "dieuKien": "Dùng cho nông nghiệp",
-   "loaiKhac": false,
-   "nguon": "tax.87011091",
-   "trich": "87011091 - - - Dùng cho nông nghiệp",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "87011099",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.87011099",
-   "trich": "87011099 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "8701109",
-    "truAnhEm": [
-     "87011091"
-    ],
-    "truDayDu": [
-     "87011091",
-     "8701101"
-    ],
-    "toTienCoTen": "870110",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "87012110",
-   "dieuKien": "Dạng CKD (SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.87012110",
-   "trich": "87012110 - - - Dạng CKD (SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "87012190",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.87012190",
-   "trich": "87012190 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "870121",
-    "truAnhEm": [
-     "87012110"
-    ],
-    "truDayDu": [
-     "87012110"
-    ],
-    "toTienCoTen": "870121",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "87012210",
-   "dieuKien": "Dạng CKD (SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.87012210",
-   "trich": "87012210 - - - Dạng CKD (SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "87012290",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.87012290",
-   "trich": "87012290 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "870122",
-    "truAnhEm": [
-     "87012210"
-    ],
-    "truDayDu": [
-     "87012210"
-    ],
-    "toTienCoTen": "870122",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "87012310",
-   "dieuKien": "Dạng CKD (SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.87012310",
-   "trich": "87012310 - - - Dạng CKD (SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "87012390",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.87012390",
-   "trich": "87012390 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "870123",
-    "truAnhEm": [
-     "87012310"
-    ],
-    "truDayDu": [
-     "87012310"
-    ],
-    "toTienCoTen": "870123",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "87012410",
-   "dieuKien": "Dạng CKD (SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.87012410",
-   "trich": "87012410 - - - Dạng CKD (SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "87012490",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.87012490",
-   "trich": "87012490 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "870124",
-    "truAnhEm": [
-     "87012410"
-    ],
-    "truDayDu": [
-     "87012410"
-    ],
-    "toTienCoTen": "870124",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "87012910",
-   "dieuKien": "Dạng CKD (SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.87012910",
-   "trich": "87012910 - - - Dạng CKD (SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "87012990",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.87012990",
-   "trich": "87012990 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "870129",
-    "truAnhEm": [
-     "87012910"
-    ],
-    "truDayDu": [
-     "87012910"
-    ],
-    "toTienCoTen": "870129",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "87013000",
-   "dieuKien": "Xe kéo bánh xích",
-   "loaiKhac": false,
-   "nguon": "tax.87013000",
-   "trich": "87013000 - Xe kéo bánh xích",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "87019110",
-   "dieuKien": "Máy kéo nông nghiệp",
-   "loaiKhac": false,
-   "nguon": "tax.87019110",
-   "trich": "87019110 - - - Máy kéo nông nghiệp",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "87019190",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.87019190",
-   "trich": "87019190 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "870191",
-    "truAnhEm": [
-     "87019110"
-    ],
-    "truDayDu": [
-     "87019110"
-    ],
-    "toTienCoTen": "870191",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "87019210",
-   "dieuKien": "Máy kéo nông nghiệp",
-   "loaiKhac": false,
-   "nguon": "tax.87019210",
-   "trich": "87019210 - - - Máy kéo nông nghiệp",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "87019290",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.87019290",
-   "trich": "87019290 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "870192",
-    "truAnhEm": [
-     "87019210"
-    ],
-    "truDayDu": [
-     "87019210"
-    ],
-    "toTienCoTen": "870192",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "87019310",
-   "dieuKien": "Máy kéo nông nghiệp",
-   "loaiKhac": false,
-   "nguon": "tax.87019310",
-   "trich": "87019310 - - - Máy kéo nông nghiệp",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "87019390",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.87019390",
-   "trich": "87019390 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "870193",
-    "truAnhEm": [
-     "87019310"
-    ],
-    "truDayDu": [
-     "87019310"
-    ],
-    "toTienCoTen": "870193",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "87019410",
-   "dieuKien": "Máy kéo nông nghiệp",
-   "loaiKhac": false,
-   "nguon": "tax.87019410",
-   "trich": "87019410 - - - Máy kéo nông nghiệp",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "87019490",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.87019490",
-   "trich": "87019490 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "870194",
-    "truAnhEm": [
-     "87019410"
-    ],
-    "truDayDu": [
-     "87019410"
-    ],
-    "toTienCoTen": "870194",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "87019510",
-   "dieuKien": "Máy kéo nông nghiệp",
-   "loaiKhac": false,
-   "nguon": "tax.87019510",
-   "trich": "87019510 - - - Máy kéo nông nghiệp",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "87019590",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.87019590",
-   "trich": "87019590 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "870195",
-    "truAnhEm": [
-     "87019510"
-    ],
-    "truDayDu": [
-     "87019510"
-    ],
-    "toTienCoTen": "870195",
-    "dinhNghiaDuoc": true
-   }
-  }
- ],
- "cay": {
-  "nguonLoai": "MAY_SUY",
-  "sinhTu": "lib/hs-tree.js",
-  "nut": [
-   {
-    "id": "8701",
-    "cap": 4,
-    "cha": "87",
-    "tenVi": "Xe kéo (trừ xe kéo thuộc nhóm 87.09) (+).",
-    "tenEn": "Tractors; (other than tractors of heading no 8709)",
-    "suyRa": false
-   },
-   {
-    "id": "870110",
-    "cap": 6,
-    "cha": "8701",
-    "tenVi": "Máy kéo trục đơn",
-    "tenEn": "Tractors; single axle",
-    "suyRa": false
-   },
-   {
-    "id": "8701101",
-    "cap": "TIEU_DE_QG",
-    "cha": "870110",
-    "tenVi": "Công suất không quá 22,5 kW, có hoặc không hoạt động bằng điện",
-    "tenEn": "Of a power not exceeding 22.5 kW, whether or not electrically operated",
-    "suyRa": true
-   },
-   {
-    "id": "87011011",
-    "cap": 8,
-    "cha": "8701101",
-    "tenVi": "Dùng cho nông nghiệp",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "87011019",
-    "cap": 8,
-    "cha": "8701101",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "8701109",
-    "cap": "TIEU_DE_QG",
-    "cha": "870110",
-    "tenVi": "Loại khác",
-    "tenEn": "Other",
-    "suyRa": true
-   },
-   {
-    "id": "87011091",
-    "cap": 8,
-    "cha": "8701109",
-    "tenVi": "Dùng cho nông nghiệp",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "87011099",
-    "cap": 8,
-    "cha": "8701109",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "87012",
-    "cap": "NHOM_MOT_GACH",
-    "cha": "8701",
-    "tenVi": "Ô tô đầu kéo dùng để kéo sơ mi rơ moóc (1)",
-    "tenEn": "Road tractors for semi-trailers",
-    "suyRa": true
-   },
-   {
-    "id": "870121",
-    "cap": 6,
-    "cha": "87012",
-    "tenVi": "Loại chỉ sử dụng động cơ đốt trong kiểu piston cháy do nén (diesel hoặc bán diesel)",
-    "tenEn": "Tractors; road tractors for semi-trailers, with only compression-ignition internal combustion piston engine (diesel or semi-diesel)",
-    "suyRa": false
-   },
-   {
-    "id": "87012110",
-    "cap": 8,
-    "cha": "870121",
-    "tenVi": "Dạng CKD (SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "87012190",
-    "cap": 8,
-    "cha": "870121",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "870122",
-    "cap": 6,
-    "cha": "87012",
-    "tenVi": "Loại kết hợp động cơ đốt trong kiểu piston cháy do nén (diesel hoặc bán diesel) và động cơ điện để tạo động lực",
-    "tenEn": "Tractors; road tractors for semi-trailers, with both compression-ignition internal combustion piston engine (diesel or semi-diesel) and electric motors for propulsion",
-    "suyRa": false
-   },
-   {
-    "id": "87012210",
-    "cap": 8,
-    "cha": "870122",
-    "tenVi": "Dạng CKD (SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "87012290",
-    "cap": 8,
-    "cha": "870122",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "870123",
-    "cap": 6,
-    "cha": "87012",
-    "tenVi": "Loại kết hợp động cơ đốt trong kiểu piston đốt cháy bằng tia lửa điện và động cơ điện để tạo động lực",
-    "tenEn": "Tractors; road tractors for semi-trailers, with both spark-ignition internal combustion piston engine and electric motors for propulsion",
-    "suyRa": false
-   },
-   {
-    "id": "87012310",
-    "cap": 8,
-    "cha": "870123",
-    "tenVi": "Dạng CKD (SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "87012390",
-    "cap": 8,
-    "cha": "870123",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "870124",
-    "cap": 6,
-    "cha": "87012",
-    "tenVi": "Loại chỉ sử dụng động cơ điện để tạo động lực",
-    "tenEn": "Tractors; road tractors for semi-trailers, with only electric motors for propulsion",
-    "suyRa": false
-   },
-   {
-    "id": "87012410",
-    "cap": 8,
-    "cha": "870124",
-    "tenVi": "Dạng CKD (SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "87012490",
-    "cap": 8,
-    "cha": "870124",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "870129",
-    "cap": 6,
-    "cha": "87012",
-    "tenVi": "Loại khác",
-    "tenEn": "Tractors; road tractors for semi-trailers, with other propulsion methods n.e.c. in item no 8701.2",
-    "suyRa": false
-   },
-   {
-    "id": "87012910",
-    "cap": 8,
-    "cha": "870129",
-    "tenVi": "Dạng CKD (SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "87012990",
-    "cap": 8,
-    "cha": "870129",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "87013000",
-    "cap": 8,
-    "cha": "8701",
-    "tenVi": "Xe kéo bánh xích",
-    "tenEn": "Tractors; track-laying",
-    "suyRa": false,
-    "laPhanNhom": "870130"
-   },
-   {
-    "id": "87019",
-    "cap": "NHOM_MOT_GACH",
-    "cha": "8701",
-    "tenVi": "Loại khác, có công suất máy",
-    "tenEn": null,
-    "suyRa": true
-   },
-   {
-    "id": "870191",
-    "cap": 6,
-    "cha": "87019",
-    "tenVi": "Không quá 18 kW",
-    "tenEn": "Tractors; n.e.c. in heading no 8701 (other than tractors of heading no 8709); of an engine power not exceeding 18kW",
-    "suyRa": false
-   },
-   {
-    "id": "87019110",
-    "cap": 8,
-    "cha": "870191",
-    "tenVi": "Máy kéo nông nghiệp",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "87019190",
-    "cap": 8,
-    "cha": "870191",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "870192",
-    "cap": 6,
-    "cha": "87019",
-    "tenVi": "Trên 18 kW nhưng không quá 37 kW",
-    "tenEn": "Tractors; n.e.c. in heading no 8701 (other than tractors of heading no 8709); of an engine power exceeding 18kW but not exceeding 37kW",
-    "suyRa": false
-   },
-   {
-    "id": "87019210",
-    "cap": 8,
-    "cha": "870192",
-    "tenVi": "Máy kéo nông nghiệp",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "87019290",
-    "cap": 8,
-    "cha": "870192",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "870193",
-    "cap": 6,
-    "cha": "87019",
-    "tenVi": "Trên 37 kW nhưng không quá 75 kW",
-    "tenEn": "Tractors; n.e.c. in heading no 8701 (other than tractors of heading no 8709); of an engine power exceeding 37kW but not exceeding 75kW",
-    "suyRa": false
-   },
-   {
-    "id": "87019310",
-    "cap": 8,
-    "cha": "870193",
-    "tenVi": "Máy kéo nông nghiệp",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "87019390",
-    "cap": 8,
-    "cha": "870193",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "870194",
-    "cap": 6,
-    "cha": "87019",
-    "tenVi": "Trên 75 kW nhưng không quá 130 kW",
-    "tenEn": "Tractors; n.e.c. in heading no 8701 (other than tractors of heading no 8709); of an engine power exceeding 75kW but not exceeding 130kW",
-    "suyRa": false
-   },
-   {
-    "id": "87019410",
-    "cap": 8,
-    "cha": "870194",
-    "tenVi": "Máy kéo nông nghiệp",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "87019490",
-    "cap": 8,
-    "cha": "870194",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "870195",
-    "cap": 6,
-    "cha": "87019",
-    "tenVi": "Trên 130 kW",
-    "tenEn": "Tractors; n.e.c. in heading no 8701 (other than tractors of heading no 8709); of an engine power exceeding 130kW",
-    "suyRa": false
-   },
-   {
-    "id": "87019510",
-    "cap": 8,
-    "cha": "870195",
-    "tenVi": "Máy kéo nông nghiệp",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "87019590",
-    "cap": 8,
-    "cha": "870195",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   }
+  "dieuKienVao": [
+    {
+      "fact": "la_phuong_tien_thiet_ke_chu_yeu_de_keo_hoac_day",
+      "op": "=",
+      "value": true,
+      "donVi": null,
+      "ngoaiTru": [],
+      "nguon": "ch87.chuong",
+      "trich": "phương tiện được thiết kế chủ yếu để kéo hoặc đẩy một phương tiện, một thiết bị hoặc một vật nặng khác, có hoặc không bao gồm bộ phận phụ trợ để vận chuyển các loại công cụ, hạt giống (seeds), phân bón hoặc hàng hoá khác, phù hợp với mục đích sử dụng chính của xe kéo.",
+      "nguonLoai": "AI_DA_KIEM"
+    }
   ],
-  "tenDien": []
- },
- "dungTuNguon": [
-  "ch87.chuong",
-  "nhom8701.nhom",
-  "tax.87011011",
-  "tax.87011019",
-  "tax.87011091",
-  "tax.87011099",
-  "tax.87012110",
-  "tax.87012190",
-  "tax.87012210",
-  "tax.87012290",
-  "tax.87012310",
-  "tax.87012390",
-  "tax.87012410",
-  "tax.87012490",
-  "tax.87012910",
-  "tax.87012990",
-  "tax.87013000",
-  "tax.87019110",
-  "tax.87019190",
-  "tax.87019210",
-  "tax.87019290",
-  "tax.87019310",
-  "tax.87019390",
-  "tax.87019410",
-  "tax.87019490",
-  "tax.87019510",
-  "tax.87019590",
-  "wco.870191",
-  "wco.870192",
-  "wco.870193",
-  "wco.870194",
-  "wco.870195"
- ],
- "phienBan": "HS2022",
- "taoBoi": {
-  "provider": "google-studio:gemini-flash",
-  "model": null,
-  "luc": "2026-11-02T09:46:41.733Z",
-  "ms": 30
- },
- "kiemTra": {
-  "tong": 36,
-  "dat": 36,
-  "loai": 0,
-  "nguonBiCat": []
- }
+  "loaiTru": [
+    {
+      "dieuKien": "Xe kéo sử dụng ở sân ga đường sắt",
+      "sangNhom": "8709",
+      "nguon": "nhom8701.nhom",
+      "trich": "Loại trừ các xe kéo sử dụng ở sân ga đường sắt thuộc nhóm 8709",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "dieuKien": "Xe cứu hộ trang bị cần cẩu, bộ nâng, tời kéo",
+      "sangNhom": "8705",
+      "nguon": "nhom8701.nhom",
+      "trich": "Nhóm này loại trừ các xe cứu hộ, có trang bị cần cẩu, bộ nâng, tời kéo, v.v ... (nhóm 87.05).",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "phanBiet": [
+    {
+      "hoi": "Hàng hoá có phải là xe kéo loại dùng trong sân ga đường sắt thuộc nhóm 87.09?",
+      "neuCo": "8709",
+      "neuKhong": "8701",
+      "nguon": "nhom8701.nhom",
+      "trich": "Loại trừ các xe kéo sử dụng ở sân ga đường sắt thuộc nhóm 8709",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hoi": "Hàng hoá có phải là xe cứu hộ có trang bị cần cẩu, bộ nâng, tời kéo thuộc nhóm 87.05?",
+      "neuCo": "8705",
+      "neuKhong": "8701",
+      "nguon": "nhom8701.nhom",
+      "trich": "Nhóm này loại trừ các xe cứu hộ, có trang bị cần cẩu, bộ nâng, tời kéo, v.v ... (nhóm 87.05).",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "tieuChi6": [
+    {
+      "hs6": "870191",
+      "fact": "cong_suat_dong_co_khong_qua_18kw",
+      "op": "<=",
+      "value": 18,
+      "donVi": "kW",
+      "nguon": "wco.870191",
+      "trich": "of an engine power not exceeding 18kW",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "870192",
+      "fact": "cong_suat_dong_co_tren_18kw_den_37kw",
+      "op": "<=",
+      "value": 37,
+      "donVi": "kW",
+      "nguon": "wco.870192",
+      "trich": "of an engine power exceeding 18kW but not exceeding 37kW",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "870193",
+      "fact": "cong_suat_dong_co_tren_37kw_den_75kw",
+      "op": "<=",
+      "value": 75,
+      "donVi": "kW",
+      "nguon": "wco.870193",
+      "trich": "of an engine power exceeding 37kW but not exceeding 75kW",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "870194",
+      "fact": "cong_suat_dong_co_tren_75kw_den_130kw",
+      "op": "<=",
+      "value": 130,
+      "donVi": "kW",
+      "nguon": "wco.870194",
+      "trich": "of an engine power exceeding 75kW but not exceeding 130kW",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "870195",
+      "fact": "cong_suat_dong_co_tren_130kw",
+      "op": ">",
+      "value": 130,
+      "donVi": "kW",
+      "nguon": "wco.870195",
+      "trich": "of an engine power exceeding 130kW",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "87011011",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): nông nghiệp",
+      "loaiKhac": false,
+      "nguon": "tax.87011011",
+      "trich": "87011011 - - - Dùng cho nông nghiệp",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "nông nghiệp"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L30-20261111#soat-L30",
+          "ngay": "2026-11-11",
+          "bam": "58ca3a671980956ec8dab5df9501e03dc07caeaf78bcf2c9c4ff8c6e82b19e3a"
+        }
+      }
+    },
+    {
+      "hs": "87011019",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.87011019",
+      "trich": "87011019 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "8701101",
+        "truAnhEm": [
+          "87011011"
+        ],
+        "truDayDu": [
+          "87011011"
+        ],
+        "toTienCoTen": "870110",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "87011091",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): nông nghiệp",
+      "loaiKhac": false,
+      "nguon": "tax.87011091",
+      "trich": "87011091 - - - Dùng cho nông nghiệp",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "nông nghiệp"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L30-20261111#soat-L30",
+          "ngay": "2026-11-11",
+          "bam": "58ca3a671980956ec8dab5df9501e03dc07caeaf78bcf2c9c4ff8c6e82b19e3a"
+        }
+      }
+    },
+    {
+      "hs": "87011099",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.87011099",
+      "trich": "87011099 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "8701109",
+        "truAnhEm": [
+          "87011091"
+        ],
+        "truDayDu": [
+          "87011091",
+          "8701101"
+        ],
+        "toTienCoTen": "870110",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "87012110",
+      "dieuKien": "Dạng CKD (SEN)",
+      "loaiKhac": false,
+      "nguon": "tax.87012110",
+      "trich": "87012110 - - - Dạng CKD (SEN)",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87012190",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.87012190",
+      "trich": "87012190 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "870121",
+        "truAnhEm": [
+          "87012110"
+        ],
+        "truDayDu": [
+          "87012110"
+        ],
+        "toTienCoTen": "870121",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "87012210",
+      "dieuKien": "không: đã lắp ráp",
+      "loaiKhac": false,
+      "nguon": "tax.87012210",
+      "trich": "87012210 - - - Dạng CKD (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "daLapRap",
+          "op": "KHONG"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L30-20261111#soat-L30",
+          "ngay": "2026-11-11",
+          "bam": "725a50ab22f4faaf12c4addd84dfee9b8637ec6b7497e581dbef2769dfe255e5"
+        }
+      }
+    },
+    {
+      "hs": "87012290",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.87012290",
+      "trich": "87012290 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "870122",
+        "truAnhEm": [
+          "87012210"
+        ],
+        "truDayDu": [
+          "87012210"
+        ],
+        "toTienCoTen": "870122",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "87012310",
+      "dieuKien": "không: đã lắp ráp",
+      "loaiKhac": false,
+      "nguon": "tax.87012310",
+      "trich": "87012310 - - - Dạng CKD (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "daLapRap",
+          "op": "KHONG"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L30-20261111#soat-L30",
+          "ngay": "2026-11-11",
+          "bam": "b88f6aaf32e79d788f2aecbb65dcc9301c5b6b6e36ba355dbdc2d8d795cb5f3d"
+        }
+      }
+    },
+    {
+      "hs": "87012390",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.87012390",
+      "trich": "87012390 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "870123",
+        "truAnhEm": [
+          "87012310"
+        ],
+        "truDayDu": [
+          "87012310"
+        ],
+        "toTienCoTen": "870123",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "87012410",
+      "dieuKien": "không: đã lắp ráp",
+      "loaiKhac": false,
+      "nguon": "tax.87012410",
+      "trich": "87012410 - - - Dạng CKD (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "daLapRap",
+          "op": "KHONG"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L30-20261111#soat-L30",
+          "ngay": "2026-11-11",
+          "bam": "bcb57319a9cf7115c5cb4605fc61bc7c811019ec0944bc166805a66ace8a7fc2"
+        }
+      }
+    },
+    {
+      "hs": "87012490",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.87012490",
+      "trich": "87012490 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "870124",
+        "truAnhEm": [
+          "87012410"
+        ],
+        "truDayDu": [
+          "87012410"
+        ],
+        "toTienCoTen": "870124",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "87012910",
+      "dieuKien": "không: đã lắp ráp",
+      "loaiKhac": false,
+      "nguon": "tax.87012910",
+      "trich": "87012910 - - - Dạng CKD (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "daLapRap",
+          "op": "KHONG"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L30-20261111#soat-L30",
+          "ngay": "2026-11-11",
+          "bam": "4764bbe5111e87f9c061d46cbe43bd148d3464cf3c106aff5c62d0d00dcc7299"
+        }
+      }
+    },
+    {
+      "hs": "87012990",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.87012990",
+      "trich": "87012990 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "870129",
+        "truAnhEm": [
+          "87012910"
+        ],
+        "truDayDu": [
+          "87012910"
+        ],
+        "toTienCoTen": "870129",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "87013000",
+      "dieuKien": "Xe kéo bánh xích",
+      "loaiKhac": false,
+      "nguon": "tax.87013000",
+      "trich": "87013000 - Xe kéo bánh xích",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87019110",
+      "dieuKien": "máy kéo nông nghiệp",
+      "loaiKhac": false,
+      "nguon": "tax.87019110",
+      "trich": "87019110 - - - Máy kéo nông nghiệp",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "mayKeoNongNghiep",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L30-20261111#soat-L30",
+          "ngay": "2026-11-11",
+          "bam": "1b815de2cf2d8bfb9d9f413bf2e387ba2a889447e0c10308637d390c8b2d5014"
+        }
+      }
+    },
+    {
+      "hs": "87019190",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.87019190",
+      "trich": "87019190 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "870191",
+        "truAnhEm": [
+          "87019110"
+        ],
+        "truDayDu": [
+          "87019110"
+        ],
+        "toTienCoTen": "870191",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "87019210",
+      "dieuKien": "máy kéo nông nghiệp",
+      "loaiKhac": false,
+      "nguon": "tax.87019210",
+      "trich": "87019210 - - - Máy kéo nông nghiệp",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "mayKeoNongNghiep",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L30-20261111#soat-L30",
+          "ngay": "2026-11-11",
+          "bam": "c03235a1b2b01527dd4c080b0a83a3d0bf58c47d189b30b15f9121c98fb26cf4"
+        }
+      }
+    },
+    {
+      "hs": "87019290",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.87019290",
+      "trich": "87019290 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "870192",
+        "truAnhEm": [
+          "87019210"
+        ],
+        "truDayDu": [
+          "87019210"
+        ],
+        "toTienCoTen": "870192",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "87019310",
+      "dieuKien": "máy kéo nông nghiệp",
+      "loaiKhac": false,
+      "nguon": "tax.87019310",
+      "trich": "87019310 - - - Máy kéo nông nghiệp",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "mayKeoNongNghiep",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L30-20261111#soat-L30",
+          "ngay": "2026-11-11",
+          "bam": "e64880e73c09e4de0875a25bdbe12ba828750592f2a2029d1707edc1d935e9a3"
+        }
+      }
+    },
+    {
+      "hs": "87019390",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.87019390",
+      "trich": "87019390 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "870193",
+        "truAnhEm": [
+          "87019310"
+        ],
+        "truDayDu": [
+          "87019310"
+        ],
+        "toTienCoTen": "870193",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "87019410",
+      "dieuKien": "Máy kéo nông nghiệp",
+      "loaiKhac": false,
+      "nguon": "tax.87019410",
+      "trich": "87019410 - - - Máy kéo nông nghiệp",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87019490",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.87019490",
+      "trich": "87019490 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "870194",
+        "truAnhEm": [
+          "87019410"
+        ],
+        "truDayDu": [
+          "87019410"
+        ],
+        "toTienCoTen": "870194",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "87019510",
+      "dieuKien": "máy kéo nông nghiệp",
+      "loaiKhac": false,
+      "nguon": "tax.87019510",
+      "trich": "87019510 - - - Máy kéo nông nghiệp",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "mayKeoNongNghiep",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L30-20261111#soat-L30",
+          "ngay": "2026-11-11",
+          "bam": "a26cf1f1cb99ad895b749e70b73e2bc478a1be099862b57cded349a87711e438"
+        }
+      }
+    },
+    {
+      "hs": "87019590",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.87019590",
+      "trich": "87019590 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "870195",
+        "truAnhEm": [
+          "87019510"
+        ],
+        "truDayDu": [
+          "87019510"
+        ],
+        "toTienCoTen": "870195",
+        "dinhNghiaDuoc": true
+      }
+    }
+  ],
+  "cay": {
+    "nguonLoai": "MAY_SUY",
+    "sinhTu": "lib/hs-tree.js",
+    "nut": [
+      {
+        "id": "8701",
+        "cap": 4,
+        "cha": "87",
+        "tenVi": "Xe kéo (trừ xe kéo thuộc nhóm 87.09) (+).",
+        "tenEn": "Tractors; (other than tractors of heading no 8709)",
+        "suyRa": false
+      },
+      {
+        "id": "870110",
+        "cap": 6,
+        "cha": "8701",
+        "tenVi": "Máy kéo trục đơn",
+        "tenEn": "Tractors; single axle",
+        "suyRa": false
+      },
+      {
+        "id": "8701101",
+        "cap": "TIEU_DE_QG",
+        "cha": "870110",
+        "tenVi": "Công suất không quá 22,5 kW, có hoặc không hoạt động bằng điện",
+        "tenEn": "Of a power not exceeding 22.5 kW, whether or not electrically operated",
+        "suyRa": true
+      },
+      {
+        "id": "87011011",
+        "cap": 8,
+        "cha": "8701101",
+        "tenVi": "Dùng cho nông nghiệp",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "87011019",
+        "cap": 8,
+        "cha": "8701101",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "8701109",
+        "cap": "TIEU_DE_QG",
+        "cha": "870110",
+        "tenVi": "Loại khác",
+        "tenEn": "Other",
+        "suyRa": true
+      },
+      {
+        "id": "87011091",
+        "cap": 8,
+        "cha": "8701109",
+        "tenVi": "Dùng cho nông nghiệp",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "87011099",
+        "cap": 8,
+        "cha": "8701109",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "87012",
+        "cap": "NHOM_MOT_GACH",
+        "cha": "8701",
+        "tenVi": "Ô tô đầu kéo dùng để kéo sơ mi rơ moóc (1)",
+        "tenEn": "Road tractors for semi-trailers",
+        "suyRa": true
+      },
+      {
+        "id": "870121",
+        "cap": 6,
+        "cha": "87012",
+        "tenVi": "Loại chỉ sử dụng động cơ đốt trong kiểu piston cháy do nén (diesel hoặc bán diesel)",
+        "tenEn": "Tractors; road tractors for semi-trailers, with only compression-ignition internal combustion piston engine (diesel or semi-diesel)",
+        "suyRa": false
+      },
+      {
+        "id": "87012110",
+        "cap": 8,
+        "cha": "870121",
+        "tenVi": "Dạng CKD (SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "87012190",
+        "cap": 8,
+        "cha": "870121",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "870122",
+        "cap": 6,
+        "cha": "87012",
+        "tenVi": "Loại kết hợp động cơ đốt trong kiểu piston cháy do nén (diesel hoặc bán diesel) và động cơ điện để tạo động lực",
+        "tenEn": "Tractors; road tractors for semi-trailers, with both compression-ignition internal combustion piston engine (diesel or semi-diesel) and electric motors for propulsion",
+        "suyRa": false
+      },
+      {
+        "id": "87012210",
+        "cap": 8,
+        "cha": "870122",
+        "tenVi": "Dạng CKD (SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "87012290",
+        "cap": 8,
+        "cha": "870122",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "870123",
+        "cap": 6,
+        "cha": "87012",
+        "tenVi": "Loại kết hợp động cơ đốt trong kiểu piston đốt cháy bằng tia lửa điện và động cơ điện để tạo động lực",
+        "tenEn": "Tractors; road tractors for semi-trailers, with both spark-ignition internal combustion piston engine and electric motors for propulsion",
+        "suyRa": false
+      },
+      {
+        "id": "87012310",
+        "cap": 8,
+        "cha": "870123",
+        "tenVi": "Dạng CKD (SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "87012390",
+        "cap": 8,
+        "cha": "870123",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "870124",
+        "cap": 6,
+        "cha": "87012",
+        "tenVi": "Loại chỉ sử dụng động cơ điện để tạo động lực",
+        "tenEn": "Tractors; road tractors for semi-trailers, with only electric motors for propulsion",
+        "suyRa": false
+      },
+      {
+        "id": "87012410",
+        "cap": 8,
+        "cha": "870124",
+        "tenVi": "Dạng CKD (SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "87012490",
+        "cap": 8,
+        "cha": "870124",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "870129",
+        "cap": 6,
+        "cha": "87012",
+        "tenVi": "Loại khác",
+        "tenEn": "Tractors; road tractors for semi-trailers, with other propulsion methods n.e.c. in item no 8701.2",
+        "suyRa": false
+      },
+      {
+        "id": "87012910",
+        "cap": 8,
+        "cha": "870129",
+        "tenVi": "Dạng CKD (SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "87012990",
+        "cap": 8,
+        "cha": "870129",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "87013000",
+        "cap": 8,
+        "cha": "8701",
+        "tenVi": "Xe kéo bánh xích",
+        "tenEn": "Tractors; track-laying",
+        "suyRa": false,
+        "laPhanNhom": "870130"
+      },
+      {
+        "id": "87019",
+        "cap": "NHOM_MOT_GACH",
+        "cha": "8701",
+        "tenVi": "Loại khác, có công suất máy",
+        "tenEn": null,
+        "suyRa": true
+      },
+      {
+        "id": "870191",
+        "cap": 6,
+        "cha": "87019",
+        "tenVi": "Không quá 18 kW",
+        "tenEn": "Tractors; n.e.c. in heading no 8701 (other than tractors of heading no 8709); of an engine power not exceeding 18kW",
+        "suyRa": false
+      },
+      {
+        "id": "87019110",
+        "cap": 8,
+        "cha": "870191",
+        "tenVi": "Máy kéo nông nghiệp",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "87019190",
+        "cap": 8,
+        "cha": "870191",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "870192",
+        "cap": 6,
+        "cha": "87019",
+        "tenVi": "Trên 18 kW nhưng không quá 37 kW",
+        "tenEn": "Tractors; n.e.c. in heading no 8701 (other than tractors of heading no 8709); of an engine power exceeding 18kW but not exceeding 37kW",
+        "suyRa": false
+      },
+      {
+        "id": "87019210",
+        "cap": 8,
+        "cha": "870192",
+        "tenVi": "Máy kéo nông nghiệp",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "87019290",
+        "cap": 8,
+        "cha": "870192",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "870193",
+        "cap": 6,
+        "cha": "87019",
+        "tenVi": "Trên 37 kW nhưng không quá 75 kW",
+        "tenEn": "Tractors; n.e.c. in heading no 8701 (other than tractors of heading no 8709); of an engine power exceeding 37kW but not exceeding 75kW",
+        "suyRa": false
+      },
+      {
+        "id": "87019310",
+        "cap": 8,
+        "cha": "870193",
+        "tenVi": "Máy kéo nông nghiệp",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "87019390",
+        "cap": 8,
+        "cha": "870193",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "870194",
+        "cap": 6,
+        "cha": "87019",
+        "tenVi": "Trên 75 kW nhưng không quá 130 kW",
+        "tenEn": "Tractors; n.e.c. in heading no 8701 (other than tractors of heading no 8709); of an engine power exceeding 75kW but not exceeding 130kW",
+        "suyRa": false
+      },
+      {
+        "id": "87019410",
+        "cap": 8,
+        "cha": "870194",
+        "tenVi": "Máy kéo nông nghiệp",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "87019490",
+        "cap": 8,
+        "cha": "870194",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "870195",
+        "cap": 6,
+        "cha": "87019",
+        "tenVi": "Trên 130 kW",
+        "tenEn": "Tractors; n.e.c. in heading no 8701 (other than tractors of heading no 8709); of an engine power exceeding 130kW",
+        "suyRa": false
+      },
+      {
+        "id": "87019510",
+        "cap": 8,
+        "cha": "870195",
+        "tenVi": "Máy kéo nông nghiệp",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "87019590",
+        "cap": 8,
+        "cha": "870195",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      }
+    ],
+    "tenDien": []
+  },
+  "dungTuNguon": [
+    "ch87.chuong",
+    "nhom8701.nhom",
+    "tax.87011011",
+    "tax.87011019",
+    "tax.87011091",
+    "tax.87011099",
+    "tax.87012110",
+    "tax.87012190",
+    "tax.87012210",
+    "tax.87012290",
+    "tax.87012310",
+    "tax.87012390",
+    "tax.87012410",
+    "tax.87012490",
+    "tax.87012910",
+    "tax.87012990",
+    "tax.87013000",
+    "tax.87019110",
+    "tax.87019190",
+    "tax.87019210",
+    "tax.87019290",
+    "tax.87019310",
+    "tax.87019390",
+    "tax.87019410",
+    "tax.87019490",
+    "tax.87019510",
+    "tax.87019590",
+    "wco.870191",
+    "wco.870192",
+    "wco.870193",
+    "wco.870194",
+    "wco.870195"
+  ],
+  "phienBan": "HS2022",
+  "taoBoi": {
+    "provider": "google-studio:gemini-flash",
+    "model": null,
+    "luc": "2026-11-02T09:46:41.733Z",
+    "ms": 30
+  },
+  "kiemTra": {
+    "tong": 36,
+    "dat": 36,
+    "loai": 0,
+    "nguonBiCat": []
+  },
+  "dieuKienNut": [
+    {
+      "id": "8701101",
+      "nguon": "tieuDe.8701101",
+      "trich": "8701101 Công suất không quá 22,5 kW, có hoặc không hoạt động bằng điện",
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 22.5,
+          "donVi": "kW"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L30-20261111#soat-L30",
+          "ngay": "2026-11-11",
+          "bam": "58ca3a671980956ec8dab5df9501e03dc07caeaf78bcf2c9c4ff8c6e82b19e3a"
+        }
+      }
+    }
+  ]
 }

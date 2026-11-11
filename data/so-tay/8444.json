@@ -1,146 +1,174 @@
 {
- "nhom": "8444",
- "phamVi": {
-  "text": "Máy ép đùn, kéo chuỗi, tạo dún hoặc cắt vật liệu dệt nhân tạo.",
-  "nguon": "nhom8444.nhom",
-  "trich": "Nhóm này bao gồm các máy dùng để sản xuất sợi nhân tạo, kể cả các máy dùng để cắt sợi.",
-  "nguonLoai": "AI_DA_KIEM"
- },
- "dieuKienVao": [
-  {
-   "fact": "la_may_san_xuat_soi_nhan_tao_hoac_cat_soi",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "nhom8444.nhom",
-   "trich": "Nhóm này bao gồm các máy dùng để sản xuất sợi nhân tạo, kể cả các máy dùng để cắt sợi.",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "loaiTru": [
-  {
-   "dieuKien": "Máy kéo sợi thủy tinh liên tục hoặc không liên tục",
-   "sangNhom": "8475",
-   "nguon": "nhom8444.nhom",
-   "trich": "(c) Máy dùng để kéo sợi thủy tinh liên tục hoặc không liên tục (nhóm 84.75).",
-   "nguonLoai": "AI_DA_KIEM"
+  "nhom": "8444",
+  "phamVi": {
+    "text": "Máy ép đùn, kéo chuỗi, tạo dún hoặc cắt vật liệu dệt nhân tạo.",
+    "nguon": "nhom8444.nhom",
+    "trich": "Nhóm này bao gồm các máy dùng để sản xuất sợi nhân tạo, kể cả các máy dùng để cắt sợi.",
+    "nguonLoai": "AI_DA_KIEM"
   },
-  {
-   "dieuKien": "Máy kéo sợi và thiết bị chải sợi",
-   "sangNhom": "8445",
-   "nguon": "nhom8444.nhom",
-   "trich": "(b) Máy kéo sợi và thiết bị chải sợi thuộc nhóm 84.45.",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "dieuKien": "Bộ phận và phụ kiện của máy thuộc nhóm 84.44",
-   "sangNhom": "8448",
-   "nguon": "nhom8444.nhom",
-   "trich": "các bộ phận và phụ kiện của các máy thuộc nhóm này được phân loại ở nhóm 84.48.",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "phanBiet": [
-  {
-   "hoi": "Hàng hoá có phải là máy xử lý nhiệt chuẩn bị vật liệu thô thuộc nhóm 84.19 không?",
-   "neuCo": "8419",
-   "neuKhong": "8444",
-   "nguon": "nhom8444.nhom",
-   "trich": "(a) Máy dùng để chuẩn bị các vật liệu thô cho việc kéo đùn sau đó thành sợi dệt nhân tạo (thường thuộc nhóm 84.19 hoặc 84.77).",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hoi": "Hàng hoá có phải là máy kéo sợi thủy tinh thuộc nhóm 84.75 không?",
-   "neuCo": "8475",
-   "neuKhong": "8444",
-   "nguon": "nhom8444.nhom",
-   "trich": "(c) Máy dùng để kéo sợi thủy tinh liên tục hoặc không liên tục (nhóm 84.75).",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hoi": "Hàng hoá có phải là máy kéo sợi hoặc chải sợi dệt thuộc nhóm 84.45 không?",
-   "neuCo": "8445",
-   "neuKhong": "8444",
-   "nguon": "nhom8444.nhom",
-   "trich": "(b) Máy kéo sợi và thiết bị chải sợi thuộc nhóm 84.45.",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hoi": "Hàng hoá có phải là bộ phận của máy kéo đùn tạo dún thuộc nhóm 84.48 không?",
-   "neuCo": "8448",
-   "neuKhong": "8444",
-   "nguon": "nhom8444.nhom",
-   "trich": "các bộ phận và phụ kiện của các máy thuộc nhóm này được phân loại ở nhóm 84.48.",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "tieuChi6": [],
- "dong8": [
-  {
-   "hs": "84440010",
-   "dieuKien": "Hoạt động bằng điện",
-   "loaiKhac": false,
-   "nguon": "tax.84440010",
-   "trich": "84440010 - Hoạt động bằng điện",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "84440020",
-   "dieuKien": "Không hoạt động bằng điện",
-   "loaiKhac": false,
-   "nguon": "tax.84440020",
-   "trich": "84440020 - Không hoạt động bằng điện",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "cay": {
-  "nguonLoai": "MAY_SUY",
-  "sinhTu": "lib/hs-tree.js",
-  "nut": [
-   {
-    "id": "8444",
-    "cap": 4,
-    "cha": "84",
-    "tenVi": "Máy ép đùn, kéo chuỗi, tạo dún hoặc máy cắt vật liệu dệt nhân tạo.",
-    "tenEn": "Textile machinery; for extruding, drawing, texturing or cutting man-made textile materials",
-    "suyRa": false
-   },
-   {
-    "id": "84440010",
-    "cap": 8,
-    "cha": "8444",
-    "tenVi": "Hoạt động bằng điện",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "84440020",
-    "cap": 8,
-    "cha": "8444",
-    "tenVi": "Không hoạt động bằng điện",
-    "tenEn": null,
-    "suyRa": false
-   }
+  "dieuKienVao": [
+    {
+      "fact": "la_may_san_xuat_soi_nhan_tao_hoac_cat_soi",
+      "op": "=",
+      "value": true,
+      "donVi": null,
+      "ngoaiTru": [],
+      "nguon": "nhom8444.nhom",
+      "trich": "Nhóm này bao gồm các máy dùng để sản xuất sợi nhân tạo, kể cả các máy dùng để cắt sợi.",
+      "nguonLoai": "AI_DA_KIEM"
+    }
   ],
-  "tenDien": []
- },
- "dungTuNguon": [
-  "nhom8444.nhom",
-  "tax.84440010",
-  "tax.84440020"
- ],
- "phienBan": "HS2022",
- "taoBoi": {
-  "provider": "google-studio:gemini-flash",
-  "model": null,
-  "luc": "2026-11-02T09:30:59.798Z",
-  "ms": 9
- },
- "kiemTra": {
-  "tong": 13,
-  "dat": 11,
-  "loai": 2,
-  "nguonBiCat": []
- }
+  "loaiTru": [
+    {
+      "dieuKien": "Máy kéo sợi thủy tinh liên tục hoặc không liên tục",
+      "sangNhom": "8475",
+      "nguon": "nhom8444.nhom",
+      "trich": "(c) Máy dùng để kéo sợi thủy tinh liên tục hoặc không liên tục (nhóm 84.75).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "dieuKien": "Máy kéo sợi và thiết bị chải sợi",
+      "sangNhom": "8445",
+      "nguon": "nhom8444.nhom",
+      "trich": "(b) Máy kéo sợi và thiết bị chải sợi thuộc nhóm 84.45.",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "dieuKien": "Bộ phận và phụ kiện của máy thuộc nhóm 84.44",
+      "sangNhom": "8448",
+      "nguon": "nhom8444.nhom",
+      "trich": "các bộ phận và phụ kiện của các máy thuộc nhóm này được phân loại ở nhóm 84.48.",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "phanBiet": [
+    {
+      "hoi": "Hàng hoá có phải là máy xử lý nhiệt chuẩn bị vật liệu thô thuộc nhóm 84.19 không?",
+      "neuCo": "8419",
+      "neuKhong": "8444",
+      "nguon": "nhom8444.nhom",
+      "trich": "(a) Máy dùng để chuẩn bị các vật liệu thô cho việc kéo đùn sau đó thành sợi dệt nhân tạo (thường thuộc nhóm 84.19 hoặc 84.77).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hoi": "Hàng hoá có phải là máy kéo sợi thủy tinh thuộc nhóm 84.75 không?",
+      "neuCo": "8475",
+      "neuKhong": "8444",
+      "nguon": "nhom8444.nhom",
+      "trich": "(c) Máy dùng để kéo sợi thủy tinh liên tục hoặc không liên tục (nhóm 84.75).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hoi": "Hàng hoá có phải là máy kéo sợi hoặc chải sợi dệt thuộc nhóm 84.45 không?",
+      "neuCo": "8445",
+      "neuKhong": "8444",
+      "nguon": "nhom8444.nhom",
+      "trich": "(b) Máy kéo sợi và thiết bị chải sợi thuộc nhóm 84.45.",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hoi": "Hàng hoá có phải là bộ phận của máy kéo đùn tạo dún thuộc nhóm 84.48 không?",
+      "neuCo": "8448",
+      "neuKhong": "8444",
+      "nguon": "nhom8444.nhom",
+      "trich": "các bộ phận và phụ kiện của các máy thuộc nhóm này được phân loại ở nhóm 84.48.",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "tieuChi6": [],
+  "dong8": [
+    {
+      "hs": "84440010",
+      "dieuKien": "hoạt động bằng điện",
+      "loaiKhac": false,
+      "nguon": "tax.84440010",
+      "trich": "84440010 - Hoạt động bằng điện",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L25-20261111#soat-L25",
+          "ngay": "2026-11-11",
+          "bam": "03ea10d3be32109722ebebd222e465b78c31bcc7e7c28be60821b1a328927e94"
+        }
+      }
+    },
+    {
+      "hs": "84440020",
+      "dieuKien": "không: hoạt động bằng điện",
+      "loaiKhac": false,
+      "nguon": "tax.84440020",
+      "trich": "84440020 - Không hoạt động bằng điện",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L25-20261111#soat-L25",
+          "ngay": "2026-11-11",
+          "bam": "03ea10d3be32109722ebebd222e465b78c31bcc7e7c28be60821b1a328927e94"
+        }
+      }
+    }
+  ],
+  "cay": {
+    "nguonLoai": "MAY_SUY",
+    "sinhTu": "lib/hs-tree.js",
+    "nut": [
+      {
+        "id": "8444",
+        "cap": 4,
+        "cha": "84",
+        "tenVi": "Máy ép đùn, kéo chuỗi, tạo dún hoặc máy cắt vật liệu dệt nhân tạo.",
+        "tenEn": "Textile machinery; for extruding, drawing, texturing or cutting man-made textile materials",
+        "suyRa": false
+      },
+      {
+        "id": "84440010",
+        "cap": 8,
+        "cha": "8444",
+        "tenVi": "Hoạt động bằng điện",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "84440020",
+        "cap": 8,
+        "cha": "8444",
+        "tenVi": "Không hoạt động bằng điện",
+        "tenEn": null,
+        "suyRa": false
+      }
+    ],
+    "tenDien": []
+  },
+  "dungTuNguon": [
+    "nhom8444.nhom",
+    "tax.84440010",
+    "tax.84440020"
+  ],
+  "phienBan": "HS2022",
+  "taoBoi": {
+    "provider": "google-studio:gemini-flash",
+    "model": null,
+    "luc": "2026-11-02T09:30:59.798Z",
+    "ms": 9
+  },
+  "kiemTra": {
+    "tong": 13,
+    "dat": 11,
+    "loai": 2,
+    "nguonBiCat": []
+  }
 }

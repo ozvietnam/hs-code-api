@@ -4,7 +4,7 @@
   "nhom": "8517",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261105T1025#soan-851779",
@@ -240,6 +240,13 @@
       "ma": "8517792",
       "loai": "QUYET_DINH",
       "ghiChu": "Claude (#1109): vế giới hạn \"trừ loại dùng cho phát thanh sóng vô tuyến hoặc thiết bị phát truyền hình, hoặc của loại thiết bị thu xách tay để gọi, báo hiệu hoặc nhắn tin và thiết bị cảnh báo bằng tin nhắn, kể cả máy nhắn tin\" ⇒ dungCho PHAI_KHONG các đích nêu nguyên văn (\"kể cả máy nhắn tin\" thuộc nhóm bị trừ)."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L28-20261111#soat-L28",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 851779:tiêu đề 8517792 THU HẸP: chữ biểu 'Của thiết bị truyền dẫn, trừ loại dùng cho phát thanh sóng vô tuyến hoặc thiết bị phát truyền hình, HOẶC CỦA loại thiết bị thu xách tay để gọi, báo hiệu hoặc nhắn tin và thiết bị cảnh báo bằng tin nhắn, kể cả máy nhắn tin' (EN 'Of transmission apparatus, other than radio-broadcasting or television transmission apparatus, OR OF portable receivers for calling, alerting or paging and paging alert devices, including pagers') — vế 'thiết bị thu xách tay/cảnh báo/máy nhắn tin' là NHÁNH BAO GỒM (HOAC), bản nháp lại đặt vào mảng PHAI_KHONG cùng phát thanh/truyền hình ⇒ bộ phận máy nhắn tin bị đẩy khỏi tầng .92x (đúng .29, MFN 0) sang tầng 'Loại khác' .99x (vd .92 MFN 5). Cần: HOAC[(dungCho thiết bị truyền dẫn & PHAI_KHONG [phát thanh, phát truyền hình]) | dungCho [thiết bị thu xách tay để gọi, báo hiệu hoặc nhắn tin, thiết bị cảnh báo bằng tin nhắn, máy nhắn tin]]. Máy tách sai: vế '(trừ …)' nuốt luôn 'hoặc của loại thiết bị thu xách tay'."
     }
   ]
 }

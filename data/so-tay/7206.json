@@ -1,175 +1,191 @@
 {
- "nhom": "7206",
- "phamVi": {
-  "text": "Sắt và thép không hợp kim ở dạng thỏi đúc hoặc các dạng thô khác (trừ sắt thuộc nhóm 72.03).",
-  "nguon": "nhom7206.nhom",
-  "trich": "Dạng thỏi đúc là dạng thô mà kim loại đen được đúc thành sau khi sản xuất bởi một trong các phương pháp được mô tả trong Chú giải chung cho chương này.",
-  "nguonLoai": "AI_DA_KIEM"
- },
- "dieuKienVao": [
-  {
-   "fact": "la_sat_thep_khong_hop_kim_dang_thoi_hoac_tho_khac",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "nhom7206.nhom",
-   "trich": "Ngoài thép ở trạng thái nóng chảy, nhóm này cũng bao gồm các khối, cục hoặc thanh khuấy luyện và cọc.",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "loaiTru": [
-  {
-   "dieuKien": "Thỏi đúc phế liệu nấu chảy lại",
-   "sangNhom": "7204",
-   "nguon": "nhom7206.nhom",
-   "trich": "Thỏi đúc phế liệu nấu chảy lại (nhóm 72.04).",
-   "nguonLoai": "AI_DA_KIEM"
+  "nhom": "7206",
+  "phamVi": {
+    "text": "Sắt và thép không hợp kim ở dạng thỏi đúc hoặc các dạng thô khác (trừ sắt thuộc nhóm 72.03).",
+    "nguon": "nhom7206.nhom",
+    "trich": "Dạng thỏi đúc là dạng thô mà kim loại đen được đúc thành sau khi sản xuất bởi một trong các phương pháp được mô tả trong Chú giải chung cho chương này.",
+    "nguonLoai": "AI_DA_KIEM"
   },
-  {
-   "dieuKien": "Các sản phẩm thu được bằng việc đúc liên tục",
-   "sangNhom": "7207",
-   "nguon": "nhom7206.nhom",
-   "trich": "Các sản phẩm thu được bằng việc đúc liên tục (nhóm 72.07).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "phanBiet": [
-  {
-   "hoi": "Hàng là thỏi đúc phế liệu nấu chảy lại?",
-   "neuCo": "7204",
-   "neuKhong": "7206",
-   "nguon": "nhom7206.nhom",
-   "trich": "Thỏi đúc phế liệu nấu chảy lại (nhóm 72.04).",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hoi": "Hàng là sản phẩm thu được bằng phương pháp đúc liên tục?",
-   "neuCo": "7207",
-   "neuKhong": "7206",
-   "nguon": "nhom7206.nhom",
-   "trich": "Các sản phẩm thu được bằng việc đúc liên tục (nhóm 72.07).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "tieuChi6": [],
- "dong8": [
-  {
-   "hs": "72061010",
-   "dieuKien": "Có hàm lượng carbon trên 0,6% tính theo khối lượng",
-   "loaiKhac": false,
-   "nguon": "tax.72061010",
-   "trich": "72061010 - - Có hàm lượng carbon trên 0,6% tính theo khối lượng",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "72061090",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.72061090",
-   "trich": "72061090 - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "720610",
-    "truAnhEm": [
-     "72061010"
-    ],
-    "truDayDu": [
-     "72061010"
-    ],
-    "toTienCoTen": "720610",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "72069000",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.72069000",
-   "trich": "72069000 - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "7206",
-    "truAnhEm": [
-     "720610"
-    ],
-    "truDayDu": [
-     "720610"
-    ],
-    "toTienCoTen": "7206",
-    "dinhNghiaDuoc": true
-   }
-  }
- ],
- "cay": {
-  "nguonLoai": "MAY_SUY",
-  "sinhTu": "lib/hs-tree.js",
-  "nut": [
-   {
-    "id": "7206",
-    "cap": 4,
-    "cha": "72",
-    "tenVi": "Sắt và thép không hợp kim dạng thỏi đúc hoặc các dạng thô khác (trừ sắt thuộc nhóm 72.03).",
-    "tenEn": "Iron and non-alloy steel in ingots or other primary forms (excluding iron of heading no. 7203)",
-    "suyRa": false
-   },
-   {
-    "id": "720610",
-    "cap": 6,
-    "cha": "7206",
-    "tenVi": "Dạng thỏi đúc",
-    "tenEn": "Iron or non-alloy steel; ingots (excluding iron of heading no. 7203)",
-    "suyRa": false
-   },
-   {
-    "id": "72061010",
-    "cap": 8,
-    "cha": "720610",
-    "tenVi": "Có hàm lượng carbon trên 0,6% tính theo khối lượng",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "72061090",
-    "cap": 8,
-    "cha": "720610",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "72069000",
-    "cap": 8,
-    "cha": "7206",
-    "tenVi": "Loại khác",
-    "tenEn": "Iron or non-alloy steel; primary forms (excluding ingots and iron of heading no. 7203)",
-    "suyRa": false,
-    "loaiKhac": true,
-    "laPhanNhom": "720690"
-   }
+  "dieuKienVao": [
+    {
+      "fact": "la_sat_thep_khong_hop_kim_dang_thoi_hoac_tho_khac",
+      "op": "=",
+      "value": true,
+      "donVi": null,
+      "ngoaiTru": [],
+      "nguon": "nhom7206.nhom",
+      "trich": "Ngoài thép ở trạng thái nóng chảy, nhóm này cũng bao gồm các khối, cục hoặc thanh khuấy luyện và cọc.",
+      "nguonLoai": "AI_DA_KIEM"
+    }
   ],
-  "tenDien": []
- },
- "dungTuNguon": [
-  "nhom7206.nhom",
-  "tax.72061010",
-  "tax.72061090",
-  "tax.72069000"
- ],
- "phienBan": "HS2022",
- "taoBoi": {
-  "provider": "google-studio:gemini-flash",
-  "model": null,
-  "luc": "2026-11-02T10:43:04.825Z",
-  "ms": 9
- },
- "kiemTra": {
-  "tong": 9,
-  "dat": 9,
-  "loai": 0,
-  "nguonBiCat": []
- }
+  "loaiTru": [
+    {
+      "dieuKien": "Thỏi đúc phế liệu nấu chảy lại",
+      "sangNhom": "7204",
+      "nguon": "nhom7206.nhom",
+      "trich": "Thỏi đúc phế liệu nấu chảy lại (nhóm 72.04).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "dieuKien": "Các sản phẩm thu được bằng việc đúc liên tục",
+      "sangNhom": "7207",
+      "nguon": "nhom7206.nhom",
+      "trich": "Các sản phẩm thu được bằng việc đúc liên tục (nhóm 72.07).",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "phanBiet": [
+    {
+      "hoi": "Hàng là thỏi đúc phế liệu nấu chảy lại?",
+      "neuCo": "7204",
+      "neuKhong": "7206",
+      "nguon": "nhom7206.nhom",
+      "trich": "Thỏi đúc phế liệu nấu chảy lại (nhóm 72.04).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hoi": "Hàng là sản phẩm thu được bằng phương pháp đúc liên tục?",
+      "neuCo": "7207",
+      "neuKhong": "7206",
+      "nguon": "nhom7206.nhom",
+      "trich": "Các sản phẩm thu được bằng việc đúc liên tục (nhóm 72.07).",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "tieuChi6": [],
+  "dong8": [
+    {
+      "hs": "72061010",
+      "dieuKien": "hàm lượng carbon > 0.6 %",
+      "loaiKhac": false,
+      "nguon": "tax.72061010",
+      "trich": "72061010 - - Có hàm lượng carbon trên 0,6% tính theo khối lượng",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": ">",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+          "ngay": "2026-11-11",
+          "bam": "1e180db74653c73f9d2c6cd36b2c5368e754d407c815aedb49c43dcb53fdccd3"
+        }
+      }
+    },
+    {
+      "hs": "72061090",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.72061090",
+      "trich": "72061090 - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "720610",
+        "truAnhEm": [
+          "72061010"
+        ],
+        "truDayDu": [
+          "72061010"
+        ],
+        "toTienCoTen": "720610",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "72069000",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.72069000",
+      "trich": "72069000 - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "7206",
+        "truAnhEm": [
+          "720610"
+        ],
+        "truDayDu": [
+          "720610"
+        ],
+        "toTienCoTen": "7206",
+        "dinhNghiaDuoc": true
+      }
+    }
+  ],
+  "cay": {
+    "nguonLoai": "MAY_SUY",
+    "sinhTu": "lib/hs-tree.js",
+    "nut": [
+      {
+        "id": "7206",
+        "cap": 4,
+        "cha": "72",
+        "tenVi": "Sắt và thép không hợp kim dạng thỏi đúc hoặc các dạng thô khác (trừ sắt thuộc nhóm 72.03).",
+        "tenEn": "Iron and non-alloy steel in ingots or other primary forms (excluding iron of heading no. 7203)",
+        "suyRa": false
+      },
+      {
+        "id": "720610",
+        "cap": 6,
+        "cha": "7206",
+        "tenVi": "Dạng thỏi đúc",
+        "tenEn": "Iron or non-alloy steel; ingots (excluding iron of heading no. 7203)",
+        "suyRa": false
+      },
+      {
+        "id": "72061010",
+        "cap": 8,
+        "cha": "720610",
+        "tenVi": "Có hàm lượng carbon trên 0,6% tính theo khối lượng",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "72061090",
+        "cap": 8,
+        "cha": "720610",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "72069000",
+        "cap": 8,
+        "cha": "7206",
+        "tenVi": "Loại khác",
+        "tenEn": "Iron or non-alloy steel; primary forms (excluding ingots and iron of heading no. 7203)",
+        "suyRa": false,
+        "loaiKhac": true,
+        "laPhanNhom": "720690"
+      }
+    ],
+    "tenDien": []
+  },
+  "dungTuNguon": [
+    "nhom7206.nhom",
+    "tax.72061010",
+    "tax.72061090",
+    "tax.72069000"
+  ],
+  "phienBan": "HS2022",
+  "taoBoi": {
+    "provider": "google-studio:gemini-flash",
+    "model": null,
+    "luc": "2026-11-02T10:43:04.825Z",
+    "ms": 9
+  },
+  "kiemTra": {
+    "tong": 9,
+    "dat": 9,
+    "loai": 0,
+    "nguonBiCat": []
+  }
 }

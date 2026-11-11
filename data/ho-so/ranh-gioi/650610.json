@@ -4,7 +4,7 @@
   "nhom": "6506",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T0856#soan-650610",
@@ -175,6 +175,13 @@
       "ma": "650610",
       "loai": "QUYET_DINH",
       "ghiChu": "Claude 07/11/2026 (Q1, #1109): các cặp nhánh khác trục không có hàng thật thoả cả hai ⇒ chongLanTruc + khongCoHangThat (lý do từng cặp trong viDuHang). Lúc chạy hàng thoả cả hai ⇒ hỏi câu phân biệt."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L19-20261111#soat-L19",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 65061020 BO_VE làm ĐỔI MÃ: \"Mũ bảo hộ công nghiệp … trừ mũ bảo hộ bằng thép\" (EN \"excluding steel helmets\") — BO_VE \"trừ mũ bảo hộ bằng thép\" với lý do \"không có op phủ định\" (sai: chatLieu LA nhận chieu PHAI_KHONG). Mũ bảo hộ công nghiệp bằng thép thoả cả .20 (nhánh HOAC tenLoai \"Mũ bảo hộ công nghiệp\") và .30 (\"Mũ bảo hộ\" + sắt thép); máy áp \"tên cụ thể hơn thắng\" (cảnh báo cong2-ten-cu-the-hon:65061020+65061030) ⇒ chọn .20, ngược chữ biểu (phải .30). Sửa: thêm chatLieu LA sắt thép chieu PHAI_KHONG vào .20."
     }
   ]
 }

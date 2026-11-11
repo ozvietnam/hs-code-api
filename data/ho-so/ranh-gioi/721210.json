@@ -4,7 +4,7 @@
   "nhom": "7212",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-721210",
@@ -135,6 +135,13 @@
       "loai": "BO_VE",
       "ve": "chiều rộng không quá 400 mm",
       "lyDo": "Đã lượng hóa qua chieuRong <= 400 mm"
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 721210:72121014 SUY RỘNG: chữ biểu 'Dạng đai và dải(SEN), có chiều rộng trên 400 mm' / EN 'Hoop and strip, of a width exceeding 400 mm' nhưng điều kiện chỉ chieuRong > 400 mm — bỏ mất giới hạn dạng 'đai và dải (SEN)' (BO_VE ghi 'đã lượng hoá qua chieuRong' là sai: chiều rộng không lượng hoá hình dạng). Hệ quả: tấm phổ dụng / tấm cắt sẵn tráng thiếc rộng 400–600 mm lấn sang .14 thay vì .19 'Loại khác'. (B) 72121094 SUY RỘNG cùng lỗi: 'Dạng đai và dải(SEN), chiều rộng không quá 400 mm' ⇒ chỉ chieuRong ≤ 400 — tấm phổ dụng ≤400 mm (C ≥0,6%) lấn .94 thay vì .99. (C) 72121011 cùng lỗi (≤25 mm, tác động nhỏ). Sửa: thêm dangDaiDaiTamPhoDung TRONG [DAI_VA_DAI] như 721230/721190."
     }
   ]
 }

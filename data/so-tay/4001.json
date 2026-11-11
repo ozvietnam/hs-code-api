@@ -1,785 +1,1055 @@
 {
- "nhom": "4001",
- "phamVi": {
-  "text": "Cao su tự nhiên, nhựa cây balata, nhựa két, nhựa cây cúc cao su, nhựa chicle và các loại nhựa tự nhiên tương tự, ở dạng nguyên sinh hoặc dạng tấm, tờ hoặc dải.",
-  "nguon": "ch40.chuong",
-  "trich": "cao su tự nhiên, nhựa cây balata, nhựa két, nhựa cây cúc cao su, nhựa chicle và các loại nhựa tự nhiên tương tự",
-  "nguonLoai": "AI_DA_KIEM"
- },
- "dieuKienVao": [
-  {
-   "fact": "la_cao_su_tu_nhien_hoac_nhua_tu_nhien_tuong_tu",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "nhom4001.nhom",
-   "trich": "Mủ cao su tự nhiên là chất lỏng được tiết ra chủ yếu từ cây cao su, và nhất là từ loài Hevea brasiliensis.",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "loaiTru": [
-  {
-   "dieuKien": "Hỗn hợp của bất kỳ sản phẩm nào thuộc nhóm 40.01 với sản phẩm thuộc nhóm 40.02",
-   "sangNhom": "4002",
-   "nguon": "nhom4001.nhom",
-   "trich": "Nhóm này không bao gồm: … (a) Các hỗn hợp của bất kỳ sản phẩm nào thuộc nhóm này với bất kỳ sản phẩm nào thuộc nhóm 40.02 (nhóm 40.02).",
-   "nguonLoai": "AI_DA_KIEM"
+  "nhom": "4001",
+  "phamVi": {
+    "text": "Cao su tự nhiên, nhựa cây balata, nhựa két, nhựa cây cúc cao su, nhựa chicle và các loại nhựa tự nhiên tương tự, ở dạng nguyên sinh hoặc dạng tấm, tờ hoặc dải.",
+    "nguon": "ch40.chuong",
+    "trich": "cao su tự nhiên, nhựa cây balata, nhựa két, nhựa cây cúc cao su, nhựa chicle và các loại nhựa tự nhiên tương tự",
+    "nguonLoai": "AI_DA_KIEM"
   },
-  {
-   "dieuKien": "Cao su tự nhiên pha trộn với các chất bị cấm theo Chú giải 5(A)",
-   "sangNhom": "4005",
-   "nguon": "nhom4001.nhom",
-   "trich": "(b) Cao su tự nhiên, nhựa balata, nhựa két (gutta - percha), nhựa guayule, nhựa chicle và các loại nhựa tự nhiên tương tự, được pha trộn, trước hoặc sau khi đông tụ, với các chất bị cấm theo Chú giải 5 (A) Chương này (nhóm 40.05 hoặc 40.06).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "phanBiet": [
-  {
-   "hoi": "Hàng hóa có phải là hỗn hợp của sản phẩm tự nhiên với cao su thuộc nhóm 40.02 không?",
-   "neuCo": "4002",
-   "neuKhong": "4001",
-   "nguon": "nhom4001.nhom",
-   "trich": "Nhóm này không bao gồm: … (a) Các hỗn hợp của bất kỳ sản phẩm nào thuộc nhóm này với bất kỳ sản phẩm nào thuộc nhóm 40.02 (nhóm 40.02).",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hoi": "Cao su có bị pha trộn với các chất cấm theo Chú giải 5(A) dẫn sang nhóm 40.05 hoặc 40.06 không?",
-   "neuCo": "4005",
-   "neuKhong": "4001",
-   "nguon": "nhom4001.nhom",
-   "trich": "(b) Cao su tự nhiên, nhựa balata, nhựa két (gutta - percha), nhựa guayule, nhựa chicle và các loại nhựa tự nhiên tương tự, được pha trộn, trước hoặc sau khi đông tụ, với các chất bị cấm theo Chú giải 5 (A) Chương này (nhóm 40.05 hoặc 40.06).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "tieuChi6": [],
- "dong8": [
-  {
-   "hs": "40011011",
-   "dieuKien": "Mủ cao su cô đặc bằng phương pháp ly tâm(SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.40011011",
-   "trich": "40011011 - - - Mủ cao su cô đặc bằng phương pháp ly tâm(SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "40011019",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.40011019",
-   "trich": "40011019 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "4001101",
-    "truAnhEm": [
-     "40011011"
-    ],
-    "truDayDu": [
-     "40011011"
-    ],
-    "toTienCoTen": "400110",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "40011021",
-   "dieuKien": "Mủ cao su cô đặc bằng phương pháp ly tâm(SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.40011021",
-   "trich": "40011021 - - - Mủ cao su cô đặc bằng phương pháp ly tâm(SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "40011029",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.40011029",
-   "trich": "40011029 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "4001102",
-    "truAnhEm": [
-     "40011021"
-    ],
-    "truDayDu": [
-     "40011021"
-    ],
-    "toTienCoTen": "400110",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "40012110",
-   "dieuKien": "RSS hạng 1 (SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.40012110",
-   "trich": "40012110 - - - RSS hạng 1 (SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "40012120",
-   "dieuKien": "RSS hạng 2 (SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.40012120",
-   "trich": "40012120 - - - RSS hạng 2 (SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "40012130",
-   "dieuKien": "RSS hạng 3 (SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.40012130",
-   "trich": "40012130 - - - RSS hạng 3 (SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "40012140",
-   "dieuKien": "RSS hạng 4 (SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.40012140",
-   "trich": "40012140 - - - RSS hạng 4 (SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "40012150",
-   "dieuKien": "RSS hạng 5 (SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.40012150",
-   "trich": "40012150 - - - RSS hạng 5 (SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "40012190",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.40012190",
-   "trich": "40012190 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "400121",
-    "truAnhEm": [
-     "40012110",
-     "40012120",
-     "40012130",
-     "40012140",
-     "40012150"
-    ],
-    "truDayDu": [
-     "40012110",
-     "40012120",
-     "40012130",
-     "40012140",
-     "40012150"
-    ],
-    "toTienCoTen": "400121",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "40012210",
-   "dieuKien": "TSNR 10 (SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.40012210",
-   "trich": "40012210 - - - TSNR 10 (SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "40012220",
-   "dieuKien": "TSNR 20 (SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.40012220",
-   "trich": "40012220 - - - TSNR 20 (SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "40012230",
-   "dieuKien": "TSNR L (SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.40012230",
-   "trich": "40012230 - - - TSNR L (SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "40012240",
-   "dieuKien": "TSNR CV (SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.40012240",
-   "trich": "40012240 - - - TSNR CV (SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "40012250",
-   "dieuKien": "TSNR GP (SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.40012250",
-   "trich": "40012250 - - - TSNR GP (SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "40012260",
-   "dieuKien": "TSNR 5 (SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.40012260",
-   "trich": "40012260 - - - TSNR 5 (SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "40012290",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.40012290",
-   "trich": "40012290 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "400122",
-    "truAnhEm": [
-     "40012210",
-     "40012220",
-     "40012230",
-     "40012240",
-     "40012250",
-     "40012260"
-    ],
-    "truDayDu": [
-     "40012210",
-     "40012220",
-     "40012230",
-     "40012240",
-     "40012250",
-     "40012260"
-    ],
-    "toTienCoTen": "400122",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "40012910",
-   "dieuKien": "Cao su dạng tờ được làm khô bằng không khí(SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.40012910",
-   "trich": "40012910 - - - Cao su dạng tờ được làm khô bằng không khí(SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "40012920",
-   "dieuKien": "Crếp từ mủ cao su (SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.40012920",
-   "trich": "40012920 - - - Crếp từ mủ cao su (SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "40012930",
-   "dieuKien": "Crếp làm đế giày (SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.40012930",
-   "trich": "40012930 - - - Crếp làm đế giày (SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "40012950",
-   "dieuKien": "Crếp loại khác",
-   "loaiKhac": false,
-   "nguon": "tax.40012950",
-   "trich": "40012950 - - - Crếp loại khác",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "40012960",
-   "dieuKien": "Cao su chế biến cao cấp",
-   "loaiKhac": false,
-   "nguon": "tax.40012960",
-   "trich": "40012960 - - - Cao su chế biến cao cấp",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "40012970",
-   "dieuKien": "Váng cao su",
-   "loaiKhac": false,
-   "nguon": "tax.40012970",
-   "trich": "40012970 - - - Váng cao su",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "40012980",
-   "dieuKien": "Loại tận thu (trên cây, dưới đất hoặc loại đã xông khói) và phần thừa lại trên chén(SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.40012980",
-   "trich": "40012980 - - - Loại tận thu (trên cây, dưới đất hoặc loại đã xông khói) và phần thừa lại trên chén(SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "40012994",
-   "dieuKien": "Cao su tự nhiên đã khử protein (DPNR) (SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.40012994",
-   "trich": "40012994 - - - - Cao su tự nhiên đã khử protein (DPNR) (SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "40012996",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.40012996",
-   "trich": "40012996 - - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "400129~r6313",
-    "truAnhEm": [
-     "40012994"
-    ],
-    "truDayDu": [
-     "40012994",
-     "40012910",
-     "40012920",
-     "40012930",
-     "40012950",
-     "40012960",
-     "40012970",
-     "40012980"
-    ],
-    "toTienCoTen": "400129",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "40012999",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.40012999",
-   "trich": "40012999 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "400129",
-    "truAnhEm": [
-     "40012910",
-     "40012920",
-     "40012930",
-     "40012950",
-     "40012960",
-     "40012970",
-     "40012980",
-     "400129~r6313"
-    ],
-    "truDayDu": [
-     "40012910",
-     "40012920",
-     "40012930",
-     "40012950",
-     "40012960",
-     "40012970",
-     "40012980",
-     "400129~r6313"
-    ],
-    "toTienCoTen": "400129",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "40013020",
-   "dieuKien": "Dạng nguyên sinh",
-   "loaiKhac": false,
-   "nguon": "tax.40013020",
-   "trich": "40013020 - - Dạng nguyên sinh",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "40013090",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.40013090",
-   "trich": "40013090 - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "400130",
-    "truAnhEm": [
-     "40013020"
-    ],
-    "truDayDu": [
-     "40013020"
-    ],
-    "toTienCoTen": "400130",
-    "dinhNghiaDuoc": true
-   }
-  }
- ],
- "cay": {
-  "nguonLoai": "MAY_SUY",
-  "sinhTu": "lib/hs-tree.js",
-  "nut": [
-   {
-    "id": "4001",
-    "cap": 4,
-    "cha": "40",
-    "tenVi": "Cao su tự nhiên, nhựa cây balata, nhựa két, nhựa cây cúc cao su, nhựa cây họ sacolasea và các loại nhựa tự nhiên tương tự, ở dạng nguyên sinh hoặc dạng tấm, lá hoặc dải.",
-    "tenEn": "Natural rubber, balata, gutta-percha, guayule, chicle and similar gums; in primary forms or in plates, sheets or strip",
-    "suyRa": false
-   },
-   {
-    "id": "400110",
-    "cap": 6,
-    "cha": "4001",
-    "tenVi": "Mủ cao su tự nhiên, đã hoặc chưa tiền lưu hóa",
-    "tenEn": "Rubber; natural rubber latex, whether or not pre-vulcanised, in primary forms or in plates, sheets or strip",
-    "suyRa": false
-   },
-   {
-    "id": "4001101",
-    "cap": "TIEU_DE_QG",
-    "cha": "400110",
-    "tenVi": "Chứa trên 0,5% hàm lượng amoniac tính theo thể tích",
-    "tenEn": "Exceeding 0.5% by volume of ammonia content",
-    "suyRa": true
-   },
-   {
-    "id": "40011011",
-    "cap": 8,
-    "cha": "4001101",
-    "tenVi": "Mủ cao su cô đặc bằng phương pháp ly tâm(SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "40011019",
-    "cap": 8,
-    "cha": "4001101",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "4001102",
-    "cap": "TIEU_DE_QG",
-    "cha": "400110",
-    "tenVi": "Chứa không quá 0,5% hàm lượng amoniac tính theo thể tích",
-    "tenEn": "Not exceeding 0.5% by volume of ammonia content",
-    "suyRa": true
-   },
-   {
-    "id": "40011021",
-    "cap": 8,
-    "cha": "4001102",
-    "tenVi": "Mủ cao su cô đặc bằng phương pháp ly tâm(SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "40011029",
-    "cap": 8,
-    "cha": "4001102",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "40012",
-    "cap": "NHOM_MOT_GACH",
-    "cha": "4001",
-    "tenVi": "Cao su tự nhiên ở dạng khác",
-    "tenEn": null,
-    "suyRa": true
-   },
-   {
-    "id": "400121",
-    "cap": 6,
-    "cha": "40012",
-    "tenVi": "Tờ cao su xông khói",
-    "tenEn": "Rubber; natural (excluding latex), in smoked sheets",
-    "suyRa": false
-   },
-   {
-    "id": "40012110",
-    "cap": 8,
-    "cha": "400121",
-    "tenVi": "RSS hạng 1 (SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "40012120",
-    "cap": 8,
-    "cha": "400121",
-    "tenVi": "RSS hạng 2 (SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "40012130",
-    "cap": 8,
-    "cha": "400121",
-    "tenVi": "RSS hạng 3 (SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "40012140",
-    "cap": 8,
-    "cha": "400121",
-    "tenVi": "RSS hạng 4 (SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "40012150",
-    "cap": 8,
-    "cha": "400121",
-    "tenVi": "RSS hạng 5 (SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "40012190",
-    "cap": 8,
-    "cha": "400121",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "400122",
-    "cap": 6,
-    "cha": "40012",
-    "tenVi": "Cao su tự nhiên được định chuẩn về kỹ thuật (TSNR)",
-    "tenEn": "Rubber; technically specified natural rubber (TSNR), in primary forms or in plates, sheets or strip (excluding latex and smoked sheets)",
-    "suyRa": false
-   },
-   {
-    "id": "40012210",
-    "cap": 8,
-    "cha": "400122",
-    "tenVi": "TSNR 10 (SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "40012220",
-    "cap": 8,
-    "cha": "400122",
-    "tenVi": "TSNR 20 (SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "40012230",
-    "cap": 8,
-    "cha": "400122",
-    "tenVi": "TSNR L (SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "40012240",
-    "cap": 8,
-    "cha": "400122",
-    "tenVi": "TSNR CV (SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "40012250",
-    "cap": 8,
-    "cha": "400122",
-    "tenVi": "TSNR GP (SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "40012260",
-    "cap": 8,
-    "cha": "400122",
-    "tenVi": "TSNR 5 (SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "40012290",
-    "cap": 8,
-    "cha": "400122",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "400129",
-    "cap": 6,
-    "cha": "40012",
-    "tenVi": "Loại khác",
-    "tenEn": "Rubber; natural (excluding latex, technically specified natural rubber and smoked sheets), in primary forms or in plates, sheets or strip",
-    "suyRa": false
-   },
-   {
-    "id": "40012910",
-    "cap": 8,
-    "cha": "400129",
-    "tenVi": "Cao su dạng tờ được làm khô bằng không khí(SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "40012920",
-    "cap": 8,
-    "cha": "400129",
-    "tenVi": "Crếp từ mủ cao su (SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "40012930",
-    "cap": 8,
-    "cha": "400129",
-    "tenVi": "Crếp làm đế giày (SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "40012950",
-    "cap": 8,
-    "cha": "400129",
-    "tenVi": "Crếp loại khác",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "40012960",
-    "cap": 8,
-    "cha": "400129",
-    "tenVi": "Cao su chế biến cao cấp",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "40012970",
-    "cap": 8,
-    "cha": "400129",
-    "tenVi": "Váng cao su",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "40012980",
-    "cap": 8,
-    "cha": "400129",
-    "tenVi": "Loại tận thu (trên cây, dưới đất hoặc loại đã xông khói) và phần thừa lại trên chén(SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "4001299",
-    "cap": "TIEU_DE_QG",
-    "cha": "400129",
-    "tenVi": null,
-    "tenEn": null,
-    "suyRa": true
-   },
-   {
-    "id": "40012994",
-    "cap": 8,
-    "cha": "4001299",
-    "tenVi": "Cao su tự nhiên đã khử protein (DPNR) (SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "40012996",
-    "cap": 8,
-    "cha": "4001299",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "40012999",
-    "cap": 8,
-    "cha": "4001299",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "400130",
-    "cap": 6,
-    "cha": "4001",
-    "tenVi": "Nhựa cây balata, nhựa két, nhựa cây cúc cao su, nhựa chicle và các loại nhựa tự nhiên tương tự",
-    "tenEn": "Balata, gutta-percha, guayule, chicle and similar natural gums; in primary forms or in plates, sheets or strip",
-    "suyRa": false
-   },
-   {
-    "id": "40013020",
-    "cap": 8,
-    "cha": "400130",
-    "tenVi": "Dạng nguyên sinh",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "40013090",
-    "cap": 8,
-    "cha": "400130",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   }
+  "dieuKienVao": [
+    {
+      "fact": "la_cao_su_tu_nhien_hoac_nhua_tu_nhien_tuong_tu",
+      "op": "=",
+      "value": true,
+      "donVi": null,
+      "ngoaiTru": [],
+      "nguon": "nhom4001.nhom",
+      "trich": "Mủ cao su tự nhiên là chất lỏng được tiết ra chủ yếu từ cây cao su, và nhất là từ loài Hevea brasiliensis.",
+      "nguonLoai": "AI_DA_KIEM"
+    }
   ],
-  "tenDien": []
- },
- "dungTuNguon": [
-  "ch40.chuong",
-  "nhom4001.nhom",
-  "tax.40011011",
-  "tax.40011019",
-  "tax.40011021",
-  "tax.40011029",
-  "tax.40012110",
-  "tax.40012120",
-  "tax.40012130",
-  "tax.40012140",
-  "tax.40012150",
-  "tax.40012190",
-  "tax.40012210",
-  "tax.40012220",
-  "tax.40012230",
-  "tax.40012240",
-  "tax.40012250",
-  "tax.40012260",
-  "tax.40012290",
-  "tax.40012910",
-  "tax.40012920",
-  "tax.40012930",
-  "tax.40012950",
-  "tax.40012960",
-  "tax.40012970",
-  "tax.40012980",
-  "tax.40012994",
-  "tax.40012996",
-  "tax.40012999",
-  "tax.40013020",
-  "tax.40013090"
- ],
- "phienBan": "HS2022",
- "taoBoi": {
-  "provider": "google-studio:gemini-flash",
-  "model": null,
-  "luc": "2026-11-02T11:48:34.286Z",
-  "ms": 14
- },
- "kiemTra": {
-  "tong": 35,
-  "dat": 35,
-  "loai": 0,
-  "nguonBiCat": []
- }
+  "loaiTru": [
+    {
+      "dieuKien": "Hỗn hợp của bất kỳ sản phẩm nào thuộc nhóm 40.01 với sản phẩm thuộc nhóm 40.02",
+      "sangNhom": "4002",
+      "nguon": "nhom4001.nhom",
+      "trich": "Nhóm này không bao gồm: … (a) Các hỗn hợp của bất kỳ sản phẩm nào thuộc nhóm này với bất kỳ sản phẩm nào thuộc nhóm 40.02 (nhóm 40.02).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "dieuKien": "Cao su tự nhiên pha trộn với các chất bị cấm theo Chú giải 5(A)",
+      "sangNhom": "4005",
+      "nguon": "nhom4001.nhom",
+      "trich": "(b) Cao su tự nhiên, nhựa balata, nhựa két (gutta - percha), nhựa guayule, nhựa chicle và các loại nhựa tự nhiên tương tự, được pha trộn, trước hoặc sau khi đông tụ, với các chất bị cấm theo Chú giải 5 (A) Chương này (nhóm 40.05 hoặc 40.06).",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "phanBiet": [
+    {
+      "hoi": "Hàng hóa có phải là hỗn hợp của sản phẩm tự nhiên với cao su thuộc nhóm 40.02 không?",
+      "neuCo": "4002",
+      "neuKhong": "4001",
+      "nguon": "nhom4001.nhom",
+      "trich": "Nhóm này không bao gồm: … (a) Các hỗn hợp của bất kỳ sản phẩm nào thuộc nhóm này với bất kỳ sản phẩm nào thuộc nhóm 40.02 (nhóm 40.02).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hoi": "Cao su có bị pha trộn với các chất cấm theo Chú giải 5(A) dẫn sang nhóm 40.05 hoặc 40.06 không?",
+      "neuCo": "4005",
+      "neuKhong": "4001",
+      "nguon": "nhom4001.nhom",
+      "trich": "(b) Cao su tự nhiên, nhựa balata, nhựa két (gutta - percha), nhựa guayule, nhựa chicle và các loại nhựa tự nhiên tương tự, được pha trộn, trước hoặc sau khi đông tụ, với các chất bị cấm theo Chú giải 5 (A) Chương này (nhóm 40.05 hoặc 40.06).",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "tieuChi6": [],
+  "dong8": [
+    {
+      "hs": "40011011",
+      "dieuKien": "tên loại hàng: Mủ cao su cô đặc; phương pháp chế tạo: ly tâm",
+      "loaiKhac": false,
+      "nguon": "tax.40011011",
+      "trich": "40011011 - - - Mủ cao su cô đặc bằng phương pháp ly tâm(SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Mủ cao su cô đặc"
+        },
+        {
+          "fact": "phuongPhapCheTao",
+          "op": "TRONG",
+          "value": [
+            "LY_TAM"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L13-20261111#soat-L13",
+          "ngay": "2026-11-11",
+          "bam": "6b8a6c85bcdd0356eb28684f734ec892bd1f85d162b3d12a7c06e47affba2e62"
+        }
+      }
+    },
+    {
+      "hs": "40011019",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.40011019",
+      "trich": "40011019 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "4001101",
+        "truAnhEm": [
+          "40011011"
+        ],
+        "truDayDu": [
+          "40011011"
+        ],
+        "toTienCoTen": "400110",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "40011021",
+      "dieuKien": "tên loại hàng: Mủ cao su cô đặc; phương pháp chế tạo: ly tâm",
+      "loaiKhac": false,
+      "nguon": "tax.40011021",
+      "trich": "40011021 - - - Mủ cao su cô đặc bằng phương pháp ly tâm(SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Mủ cao su cô đặc"
+        },
+        {
+          "fact": "phuongPhapCheTao",
+          "op": "TRONG",
+          "value": [
+            "LY_TAM"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L13-20261111#soat-L13",
+          "ngay": "2026-11-11",
+          "bam": "6b8a6c85bcdd0356eb28684f734ec892bd1f85d162b3d12a7c06e47affba2e62"
+        }
+      }
+    },
+    {
+      "hs": "40011029",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.40011029",
+      "trich": "40011029 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "4001102",
+        "truAnhEm": [
+          "40011021"
+        ],
+        "truDayDu": [
+          "40011021"
+        ],
+        "toTienCoTen": "400110",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "40012110",
+      "dieuKien": "tên loại hàng: RSS hạng 1",
+      "loaiKhac": false,
+      "nguon": "tax.40012110",
+      "trich": "40012110 - - - RSS hạng 1 (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "RSS hạng 1"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L13-20261111#soat-L13",
+          "ngay": "2026-11-11",
+          "bam": "427ddebb243694908767fb0694489a196430caaca876119340dcac3eab489e92"
+        }
+      }
+    },
+    {
+      "hs": "40012120",
+      "dieuKien": "tên loại hàng: RSS hạng 2",
+      "loaiKhac": false,
+      "nguon": "tax.40012120",
+      "trich": "40012120 - - - RSS hạng 2 (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "RSS hạng 2"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L13-20261111#soat-L13",
+          "ngay": "2026-11-11",
+          "bam": "427ddebb243694908767fb0694489a196430caaca876119340dcac3eab489e92"
+        }
+      }
+    },
+    {
+      "hs": "40012130",
+      "dieuKien": "tên loại hàng: RSS hạng 3",
+      "loaiKhac": false,
+      "nguon": "tax.40012130",
+      "trich": "40012130 - - - RSS hạng 3 (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "RSS hạng 3"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L13-20261111#soat-L13",
+          "ngay": "2026-11-11",
+          "bam": "427ddebb243694908767fb0694489a196430caaca876119340dcac3eab489e92"
+        }
+      }
+    },
+    {
+      "hs": "40012140",
+      "dieuKien": "tên loại hàng: RSS hạng 4",
+      "loaiKhac": false,
+      "nguon": "tax.40012140",
+      "trich": "40012140 - - - RSS hạng 4 (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "RSS hạng 4"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L13-20261111#soat-L13",
+          "ngay": "2026-11-11",
+          "bam": "427ddebb243694908767fb0694489a196430caaca876119340dcac3eab489e92"
+        }
+      }
+    },
+    {
+      "hs": "40012150",
+      "dieuKien": "tên loại hàng: RSS hạng 5",
+      "loaiKhac": false,
+      "nguon": "tax.40012150",
+      "trich": "40012150 - - - RSS hạng 5 (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "RSS hạng 5"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L13-20261111#soat-L13",
+          "ngay": "2026-11-11",
+          "bam": "427ddebb243694908767fb0694489a196430caaca876119340dcac3eab489e92"
+        }
+      }
+    },
+    {
+      "hs": "40012190",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.40012190",
+      "trich": "40012190 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "400121",
+        "truAnhEm": [
+          "40012110",
+          "40012120",
+          "40012130",
+          "40012140",
+          "40012150"
+        ],
+        "truDayDu": [
+          "40012110",
+          "40012120",
+          "40012130",
+          "40012140",
+          "40012150"
+        ],
+        "toTienCoTen": "400121",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "40012210",
+      "dieuKien": "tên loại hàng: TSNR 10",
+      "loaiKhac": false,
+      "nguon": "tax.40012210",
+      "trich": "40012210 - - - TSNR 10 (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "TSNR 10"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L13-20261111#soat-L13",
+          "ngay": "2026-11-11",
+          "bam": "91fe6da6307f28aa006e64aed6af0aaec2479d7db5a108d8ebe74c3f5f85c0de"
+        }
+      }
+    },
+    {
+      "hs": "40012220",
+      "dieuKien": "tên loại hàng: TSNR 20",
+      "loaiKhac": false,
+      "nguon": "tax.40012220",
+      "trich": "40012220 - - - TSNR 20 (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "TSNR 20"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L13-20261111#soat-L13",
+          "ngay": "2026-11-11",
+          "bam": "91fe6da6307f28aa006e64aed6af0aaec2479d7db5a108d8ebe74c3f5f85c0de"
+        }
+      }
+    },
+    {
+      "hs": "40012230",
+      "dieuKien": "tên loại hàng: TSNR L",
+      "loaiKhac": false,
+      "nguon": "tax.40012230",
+      "trich": "40012230 - - - TSNR L (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "TSNR L"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L13-20261111#soat-L13",
+          "ngay": "2026-11-11",
+          "bam": "91fe6da6307f28aa006e64aed6af0aaec2479d7db5a108d8ebe74c3f5f85c0de"
+        }
+      }
+    },
+    {
+      "hs": "40012240",
+      "dieuKien": "tên loại hàng: TSNR CV",
+      "loaiKhac": false,
+      "nguon": "tax.40012240",
+      "trich": "40012240 - - - TSNR CV (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "TSNR CV"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L13-20261111#soat-L13",
+          "ngay": "2026-11-11",
+          "bam": "91fe6da6307f28aa006e64aed6af0aaec2479d7db5a108d8ebe74c3f5f85c0de"
+        }
+      }
+    },
+    {
+      "hs": "40012250",
+      "dieuKien": "tên loại hàng: TSNR GP",
+      "loaiKhac": false,
+      "nguon": "tax.40012250",
+      "trich": "40012250 - - - TSNR GP (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "TSNR GP"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L13-20261111#soat-L13",
+          "ngay": "2026-11-11",
+          "bam": "91fe6da6307f28aa006e64aed6af0aaec2479d7db5a108d8ebe74c3f5f85c0de"
+        }
+      }
+    },
+    {
+      "hs": "40012260",
+      "dieuKien": "tên loại hàng: TSNR 5",
+      "loaiKhac": false,
+      "nguon": "tax.40012260",
+      "trich": "40012260 - - - TSNR 5 (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "TSNR 5"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L13-20261111#soat-L13",
+          "ngay": "2026-11-11",
+          "bam": "91fe6da6307f28aa006e64aed6af0aaec2479d7db5a108d8ebe74c3f5f85c0de"
+        }
+      }
+    },
+    {
+      "hs": "40012290",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.40012290",
+      "trich": "40012290 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "400122",
+        "truAnhEm": [
+          "40012210",
+          "40012220",
+          "40012230",
+          "40012240",
+          "40012250",
+          "40012260"
+        ],
+        "truDayDu": [
+          "40012210",
+          "40012220",
+          "40012230",
+          "40012240",
+          "40012250",
+          "40012260"
+        ],
+        "toTienCoTen": "400122",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "40012910",
+      "dieuKien": "Cao su dạng tờ được làm khô bằng không khí(SEN)",
+      "loaiKhac": false,
+      "nguon": "tax.40012910",
+      "trich": "40012910 - - - Cao su dạng tờ được làm khô bằng không khí(SEN)",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "40012920",
+      "dieuKien": "Crếp từ mủ cao su (SEN)",
+      "loaiKhac": false,
+      "nguon": "tax.40012920",
+      "trich": "40012920 - - - Crếp từ mủ cao su (SEN)",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "40012930",
+      "dieuKien": "Crếp làm đế giày (SEN)",
+      "loaiKhac": false,
+      "nguon": "tax.40012930",
+      "trich": "40012930 - - - Crếp làm đế giày (SEN)",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "40012950",
+      "dieuKien": "Crếp loại khác",
+      "loaiKhac": false,
+      "nguon": "tax.40012950",
+      "trich": "40012950 - - - Crếp loại khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "40012960",
+      "dieuKien": "Cao su chế biến cao cấp",
+      "loaiKhac": false,
+      "nguon": "tax.40012960",
+      "trich": "40012960 - - - Cao su chế biến cao cấp",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "40012970",
+      "dieuKien": "Váng cao su",
+      "loaiKhac": false,
+      "nguon": "tax.40012970",
+      "trich": "40012970 - - - Váng cao su",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "40012980",
+      "dieuKien": "Loại tận thu (trên cây, dưới đất hoặc loại đã xông khói) và phần thừa lại trên chén(SEN)",
+      "loaiKhac": false,
+      "nguon": "tax.40012980",
+      "trich": "40012980 - - - Loại tận thu (trên cây, dưới đất hoặc loại đã xông khói) và phần thừa lại trên chén(SEN)",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "40012994",
+      "dieuKien": "Cao su tự nhiên đã khử protein (DPNR) (SEN)",
+      "loaiKhac": false,
+      "nguon": "tax.40012994",
+      "trich": "40012994 - - - - Cao su tự nhiên đã khử protein (DPNR) (SEN)",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "40012996",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.40012996",
+      "trich": "40012996 - - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "400129~r6313",
+        "truAnhEm": [
+          "40012994"
+        ],
+        "truDayDu": [
+          "40012994",
+          "40012910",
+          "40012920",
+          "40012930",
+          "40012950",
+          "40012960",
+          "40012970",
+          "40012980"
+        ],
+        "toTienCoTen": "400129",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "40012999",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.40012999",
+      "trich": "40012999 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "400129",
+        "truAnhEm": [
+          "40012910",
+          "40012920",
+          "40012930",
+          "40012950",
+          "40012960",
+          "40012970",
+          "40012980",
+          "400129~r6313"
+        ],
+        "truDayDu": [
+          "40012910",
+          "40012920",
+          "40012930",
+          "40012950",
+          "40012960",
+          "40012970",
+          "40012980",
+          "400129~r6313"
+        ],
+        "toTienCoTen": "400129",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "40013020",
+      "dieuKien": "tên loại hàng: Dạng nguyên sinh",
+      "loaiKhac": false,
+      "nguon": "tax.40013020",
+      "trich": "40013020 - - Dạng nguyên sinh",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dạng nguyên sinh"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L13-20261111#soat-L13",
+          "ngay": "2026-11-11",
+          "bam": "38e8ccc7a2fb9fd8b85cd246fef6a1024ec67c8e743cb48dd80447b7e8fba76b"
+        }
+      }
+    },
+    {
+      "hs": "40013090",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.40013090",
+      "trich": "40013090 - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "400130",
+        "truAnhEm": [
+          "40013020"
+        ],
+        "truDayDu": [
+          "40013020"
+        ],
+        "toTienCoTen": "400130",
+        "dinhNghiaDuoc": true
+      }
+    }
+  ],
+  "cay": {
+    "nguonLoai": "MAY_SUY",
+    "sinhTu": "lib/hs-tree.js",
+    "nut": [
+      {
+        "id": "4001",
+        "cap": 4,
+        "cha": "40",
+        "tenVi": "Cao su tự nhiên, nhựa cây balata, nhựa két, nhựa cây cúc cao su, nhựa cây họ sacolasea và các loại nhựa tự nhiên tương tự, ở dạng nguyên sinh hoặc dạng tấm, lá hoặc dải.",
+        "tenEn": "Natural rubber, balata, gutta-percha, guayule, chicle and similar gums; in primary forms or in plates, sheets or strip",
+        "suyRa": false
+      },
+      {
+        "id": "400110",
+        "cap": 6,
+        "cha": "4001",
+        "tenVi": "Mủ cao su tự nhiên, đã hoặc chưa tiền lưu hóa",
+        "tenEn": "Rubber; natural rubber latex, whether or not pre-vulcanised, in primary forms or in plates, sheets or strip",
+        "suyRa": false
+      },
+      {
+        "id": "4001101",
+        "cap": "TIEU_DE_QG",
+        "cha": "400110",
+        "tenVi": "Chứa trên 0,5% hàm lượng amoniac tính theo thể tích",
+        "tenEn": "Exceeding 0.5% by volume of ammonia content",
+        "suyRa": true
+      },
+      {
+        "id": "40011011",
+        "cap": 8,
+        "cha": "4001101",
+        "tenVi": "Mủ cao su cô đặc bằng phương pháp ly tâm(SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "40011019",
+        "cap": 8,
+        "cha": "4001101",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "4001102",
+        "cap": "TIEU_DE_QG",
+        "cha": "400110",
+        "tenVi": "Chứa không quá 0,5% hàm lượng amoniac tính theo thể tích",
+        "tenEn": "Not exceeding 0.5% by volume of ammonia content",
+        "suyRa": true
+      },
+      {
+        "id": "40011021",
+        "cap": 8,
+        "cha": "4001102",
+        "tenVi": "Mủ cao su cô đặc bằng phương pháp ly tâm(SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "40011029",
+        "cap": 8,
+        "cha": "4001102",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "40012",
+        "cap": "NHOM_MOT_GACH",
+        "cha": "4001",
+        "tenVi": "Cao su tự nhiên ở dạng khác",
+        "tenEn": null,
+        "suyRa": true
+      },
+      {
+        "id": "400121",
+        "cap": 6,
+        "cha": "40012",
+        "tenVi": "Tờ cao su xông khói",
+        "tenEn": "Rubber; natural (excluding latex), in smoked sheets",
+        "suyRa": false
+      },
+      {
+        "id": "40012110",
+        "cap": 8,
+        "cha": "400121",
+        "tenVi": "RSS hạng 1 (SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "40012120",
+        "cap": 8,
+        "cha": "400121",
+        "tenVi": "RSS hạng 2 (SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "40012130",
+        "cap": 8,
+        "cha": "400121",
+        "tenVi": "RSS hạng 3 (SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "40012140",
+        "cap": 8,
+        "cha": "400121",
+        "tenVi": "RSS hạng 4 (SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "40012150",
+        "cap": 8,
+        "cha": "400121",
+        "tenVi": "RSS hạng 5 (SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "40012190",
+        "cap": 8,
+        "cha": "400121",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "400122",
+        "cap": 6,
+        "cha": "40012",
+        "tenVi": "Cao su tự nhiên được định chuẩn về kỹ thuật (TSNR)",
+        "tenEn": "Rubber; technically specified natural rubber (TSNR), in primary forms or in plates, sheets or strip (excluding latex and smoked sheets)",
+        "suyRa": false
+      },
+      {
+        "id": "40012210",
+        "cap": 8,
+        "cha": "400122",
+        "tenVi": "TSNR 10 (SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "40012220",
+        "cap": 8,
+        "cha": "400122",
+        "tenVi": "TSNR 20 (SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "40012230",
+        "cap": 8,
+        "cha": "400122",
+        "tenVi": "TSNR L (SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "40012240",
+        "cap": 8,
+        "cha": "400122",
+        "tenVi": "TSNR CV (SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "40012250",
+        "cap": 8,
+        "cha": "400122",
+        "tenVi": "TSNR GP (SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "40012260",
+        "cap": 8,
+        "cha": "400122",
+        "tenVi": "TSNR 5 (SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "40012290",
+        "cap": 8,
+        "cha": "400122",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "400129",
+        "cap": 6,
+        "cha": "40012",
+        "tenVi": "Loại khác",
+        "tenEn": "Rubber; natural (excluding latex, technically specified natural rubber and smoked sheets), in primary forms or in plates, sheets or strip",
+        "suyRa": false
+      },
+      {
+        "id": "40012910",
+        "cap": 8,
+        "cha": "400129",
+        "tenVi": "Cao su dạng tờ được làm khô bằng không khí(SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "40012920",
+        "cap": 8,
+        "cha": "400129",
+        "tenVi": "Crếp từ mủ cao su (SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "40012930",
+        "cap": 8,
+        "cha": "400129",
+        "tenVi": "Crếp làm đế giày (SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "40012950",
+        "cap": 8,
+        "cha": "400129",
+        "tenVi": "Crếp loại khác",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "40012960",
+        "cap": 8,
+        "cha": "400129",
+        "tenVi": "Cao su chế biến cao cấp",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "40012970",
+        "cap": 8,
+        "cha": "400129",
+        "tenVi": "Váng cao su",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "40012980",
+        "cap": 8,
+        "cha": "400129",
+        "tenVi": "Loại tận thu (trên cây, dưới đất hoặc loại đã xông khói) và phần thừa lại trên chén(SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "4001299",
+        "cap": "TIEU_DE_QG",
+        "cha": "400129",
+        "tenVi": null,
+        "tenEn": null,
+        "suyRa": true
+      },
+      {
+        "id": "40012994",
+        "cap": 8,
+        "cha": "4001299",
+        "tenVi": "Cao su tự nhiên đã khử protein (DPNR) (SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "40012996",
+        "cap": 8,
+        "cha": "4001299",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "40012999",
+        "cap": 8,
+        "cha": "4001299",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "400130",
+        "cap": 6,
+        "cha": "4001",
+        "tenVi": "Nhựa cây balata, nhựa két, nhựa cây cúc cao su, nhựa chicle và các loại nhựa tự nhiên tương tự",
+        "tenEn": "Balata, gutta-percha, guayule, chicle and similar natural gums; in primary forms or in plates, sheets or strip",
+        "suyRa": false
+      },
+      {
+        "id": "40013020",
+        "cap": 8,
+        "cha": "400130",
+        "tenVi": "Dạng nguyên sinh",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "40013090",
+        "cap": 8,
+        "cha": "400130",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      }
+    ],
+    "tenDien": []
+  },
+  "dungTuNguon": [
+    "ch40.chuong",
+    "nhom4001.nhom",
+    "tax.40011011",
+    "tax.40011019",
+    "tax.40011021",
+    "tax.40011029",
+    "tax.40012110",
+    "tax.40012120",
+    "tax.40012130",
+    "tax.40012140",
+    "tax.40012150",
+    "tax.40012190",
+    "tax.40012210",
+    "tax.40012220",
+    "tax.40012230",
+    "tax.40012240",
+    "tax.40012250",
+    "tax.40012260",
+    "tax.40012290",
+    "tax.40012910",
+    "tax.40012920",
+    "tax.40012930",
+    "tax.40012950",
+    "tax.40012960",
+    "tax.40012970",
+    "tax.40012980",
+    "tax.40012994",
+    "tax.40012996",
+    "tax.40012999",
+    "tax.40013020",
+    "tax.40013090"
+  ],
+  "phienBan": "HS2022",
+  "taoBoi": {
+    "provider": "google-studio:gemini-flash",
+    "model": null,
+    "luc": "2026-11-02T11:48:34.286Z",
+    "ms": 14
+  },
+  "kiemTra": {
+    "tong": 35,
+    "dat": 35,
+    "loai": 0,
+    "nguonBiCat": []
+  },
+  "dieuKienNut": [
+    {
+      "id": "4001101",
+      "nguon": "tieuDe.4001101",
+      "trich": "4001101 Chứa trên 0,5% hàm lượng amoniac tính theo thể tích",
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongAmoniacTheTich",
+          "op": ">",
+          "value": 0.5,
+          "donVi": "%"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L13-20261111#soat-L13",
+          "ngay": "2026-11-11",
+          "bam": "6b8a6c85bcdd0356eb28684f734ec892bd1f85d162b3d12a7c06e47affba2e62"
+        }
+      }
+    },
+    {
+      "id": "4001102",
+      "nguon": "tieuDe.4001102",
+      "trich": "4001102 Chứa không quá 0,5% hàm lượng amoniac tính theo thể tích",
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongAmoniacTheTich",
+          "op": "<=",
+          "value": 0.5,
+          "donVi": "%"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L13-20261111#soat-L13",
+          "ngay": "2026-11-11",
+          "bam": "6b8a6c85bcdd0356eb28684f734ec892bd1f85d162b3d12a7c06e47affba2e62"
+        }
+      }
+    }
+  ]
 }

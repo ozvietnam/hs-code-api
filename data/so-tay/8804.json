@@ -1,105 +1,138 @@
 {
- "nhom": "8804",
- "phamVi": {
-  "text": "Dù (kể cả dù có thể điều khiển được và dù lượn) và dù xoay; các bộ phận và phụ tùng của chúng.",
-  "nguon": "nhom8804.nhom",
-  "trich": "Nhóm này bao gồm các loại dù dùng thả người, thả thiết bị quân sự, dụng cụ khí tượng, pháo sáng, v.v...; một số loại được sử dụng như dù ở đuôi máy bay để hãm máy bay phản lực.",
-  "nguonLoai": "AI_DA_KIEM"
- },
- "dieuKienVao": [
-  {
-   "fact": "la_du_hoac_du_xoay",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "ch88.chuong",
-   "trich": "một số thiết bị tương tự khác như dù (nhóm 88.04)",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "loaiTru": [],
- "phanBiet": [],
- "tieuChi6": [],
- "dong8": [
-  {
-   "hs": "88040010",
-   "dieuKien": "Dù xoay và bộ phận của chúng",
-   "loaiKhac": false,
-   "nguon": "tax.88040010",
-   "trich": "88040010 - Dù xoay và bộ phận của chúng",
-   "nguonLoai": "AI_DA_KIEM"
+  "nhom": "8804",
+  "phamVi": {
+    "text": "Dù (kể cả dù có thể điều khiển được và dù lượn) và dù xoay; các bộ phận và phụ tùng của chúng.",
+    "nguon": "nhom8804.nhom",
+    "trich": "Nhóm này bao gồm các loại dù dùng thả người, thả thiết bị quân sự, dụng cụ khí tượng, pháo sáng, v.v...; một số loại được sử dụng như dù ở đuôi máy bay để hãm máy bay phản lực.",
+    "nguonLoai": "AI_DA_KIEM"
   },
-  {
-   "hs": "88040090",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.88040090",
-   "trich": "88040090 - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "8804",
-    "truAnhEm": [
-     "88040010"
-    ],
-    "truDayDu": [
-     "88040010"
-    ],
-    "toTienCoTen": "8804",
-    "dinhNghiaDuoc": true
-   }
-  }
- ],
- "cay": {
-  "nguonLoai": "MAY_SUY",
-  "sinhTu": "lib/hs-tree.js",
-  "nut": [
-   {
-    "id": "8804",
-    "cap": 4,
-    "cha": "88",
-    "tenVi": "Dù (kể cả dù điều khiển được và dù lượn) và dù xoay; các bộ phận và phụ kiện của chúng.",
-    "tenEn": "Parachutes (including dirigible parachutes and paragliders) and rotochutes; parts thereof and accessories thereto",
-    "suyRa": false
-   },
-   {
-    "id": "88040010",
-    "cap": 8,
-    "cha": "8804",
-    "tenVi": "Dù xoay và bộ phận của chúng",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "88040090",
-    "cap": 8,
-    "cha": "8804",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   }
+  "dieuKienVao": [
+    {
+      "fact": "la_du_hoac_du_xoay",
+      "op": "=",
+      "value": true,
+      "donVi": null,
+      "ngoaiTru": [],
+      "nguon": "ch88.chuong",
+      "trich": "một số thiết bị tương tự khác như dù (nhóm 88.04)",
+      "nguonLoai": "AI_DA_KIEM"
+    }
   ],
-  "tenDien": []
- },
- "dungTuNguon": [
-  "ch88.chuong",
-  "nhom8804.nhom",
-  "tax.88040010",
-  "tax.88040090"
- ],
- "phienBan": "HS2022",
- "taoBoi": {
-  "provider": "google-studio:gemini-flash",
-  "model": null,
-  "luc": "2026-11-02T13:06:43.846Z",
-  "ms": 3
- },
- "kiemTra": {
-  "tong": 4,
-  "dat": 4,
-  "loai": 0,
-  "nguonBiCat": []
- }
+  "loaiTru": [],
+  "phanBiet": [],
+  "tieuChi6": [],
+  "dong8": [
+    {
+      "hs": "88040010",
+      "dieuKien": "(tên loại hàng: Dù xoay) hoặc (là bộ phận (không phải hàng hoàn chỉnh) và dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): Dù xoay)",
+      "loaiKhac": false,
+      "nguon": "tax.88040010",
+      "trich": "88040010 - Dù xoay và bộ phận của chúng",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Dù xoay"
+              }
+            ],
+            [
+              {
+                "fact": "laBoPhan",
+                "op": "CO"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "Dù xoay"
+              }
+            ]
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L31-20261111#soat-L31",
+          "ngay": "2026-11-11",
+          "bam": "e398940dfcd85ff7fcf304a48991222a597b87e4d8dae6cf548ab7c2b9e1bb07"
+        }
+      }
+    },
+    {
+      "hs": "88040090",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.88040090",
+      "trich": "88040090 - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "8804",
+        "truAnhEm": [
+          "88040010"
+        ],
+        "truDayDu": [
+          "88040010"
+        ],
+        "toTienCoTen": "8804",
+        "dinhNghiaDuoc": true
+      }
+    }
+  ],
+  "cay": {
+    "nguonLoai": "MAY_SUY",
+    "sinhTu": "lib/hs-tree.js",
+    "nut": [
+      {
+        "id": "8804",
+        "cap": 4,
+        "cha": "88",
+        "tenVi": "Dù (kể cả dù điều khiển được và dù lượn) và dù xoay; các bộ phận và phụ kiện của chúng.",
+        "tenEn": "Parachutes (including dirigible parachutes and paragliders) and rotochutes; parts thereof and accessories thereto",
+        "suyRa": false
+      },
+      {
+        "id": "88040010",
+        "cap": 8,
+        "cha": "8804",
+        "tenVi": "Dù xoay và bộ phận của chúng",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "88040090",
+        "cap": 8,
+        "cha": "8804",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      }
+    ],
+    "tenDien": []
+  },
+  "dungTuNguon": [
+    "ch88.chuong",
+    "nhom8804.nhom",
+    "tax.88040010",
+    "tax.88040090"
+  ],
+  "phienBan": "HS2022",
+  "taoBoi": {
+    "provider": "google-studio:gemini-flash",
+    "model": null,
+    "luc": "2026-11-02T13:06:43.846Z",
+    "ms": 3
+  },
+  "kiemTra": {
+    "tong": 4,
+    "dat": 4,
+    "loai": 0,
+    "nguonBiCat": []
+  }
 }

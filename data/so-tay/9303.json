@@ -1,268 +1,303 @@
 {
- "nhom": "9303",
- "phamVi": {
-  "text": "Các loại súng cầm tay khác và các thiết bị tương tự hoạt động bằng cách đốt cháy lượng thuốc nổ.",
-  "nguon": "nhom9303.nhom",
-  "trich": "Nhóm này bao gồm tất cả các loại súng cầm tay không thuộc các nhóm 93.01 và 93.02, và cũng bao gồm một số thiết bị không phải vũ khí nhưng hoạt động bằng cách đốt cháy lượng thuốc nổ đã nạp.",
-  "nguonLoai": "AI_DA_KIEM"
- },
- "dieuKienVao": [
-  {
-   "fact": "la_sung_hoac_thiet_bi_hoat_dong_bang_dot_chay_thuoc_no",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [
-    "Vũ khí dùng cho quân đội thuộc nhóm 93.01",
-    "Súng lục và súng lục ổ quay thuộc nhóm 93.02"
-   ],
-   "nguon": "nhom9303.nhom",
-   "trich": "Nhóm này bao gồm tất cả các loại súng cầm tay không thuộc các nhóm 93.01 và 93.02, và cũng bao gồm một số thiết bị không phải vũ khí nhưng hoạt động bằng cách đốt cháy lượng thuốc nổ đã nạp.",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "loaiTru": [
-  {
-   "dieuKien": "Dụng cụ đóng đinh tán, đóng chốt hoạt động bằng sức nổ của thuốc nổ",
-   "sangNhom": "8205",
-   "nguon": "nhom9303.nhom",
-   "trich": "Nhóm này không bao gồm những dụng cụ đóng đinh tán, đóng chốt, v.v...hoạt động bằng sức nổ của thuốc nổ (nhóm 82.05).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "phanBiet": [
-  {
-   "hoi": "Hàng là súng bắn đạn dùng để giết súc vật thuộc nhóm súng lục?",
-   "neuCo": "9302",
-   "neuKhong": "9303",
-   "nguon": "nhom9303.nhom",
-   "trich": "Nhóm này không bao gồm loại súng bắn đạn (thường là loại đạn cỡ lớn), đôi khi dùng để giết súc vật (nhóm 93.02).",
-   "nguonLoai": "AI_DA_KIEM"
+  "nhom": "9303",
+  "phamVi": {
+    "text": "Các loại súng cầm tay khác và các thiết bị tương tự hoạt động bằng cách đốt cháy lượng thuốc nổ.",
+    "nguon": "nhom9303.nhom",
+    "trich": "Nhóm này bao gồm tất cả các loại súng cầm tay không thuộc các nhóm 93.01 và 93.02, và cũng bao gồm một số thiết bị không phải vũ khí nhưng hoạt động bằng cách đốt cháy lượng thuốc nổ đã nạp.",
+    "nguonLoai": "AI_DA_KIEM"
   },
-  {
-   "hoi": "Hàng là dụng cụ đóng đinh hoặc tán đinh hoạt động bằng thuốc nổ?",
-   "neuCo": "8205",
-   "neuKhong": "9303",
-   "nguon": "nhom9303.nhom",
-   "trich": "Nhóm này không bao gồm những dụng cụ đóng đinh tán, đóng chốt, v.v...hoạt động bằng sức nổ của thuốc nổ (nhóm 82.05).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "tieuChi6": [],
- "dong8": [
-  {
-   "hs": "93031000",
-   "dieuKien": "Súng cầm tay nạp đạn phía nòng",
-   "loaiKhac": false,
-   "nguon": "tax.93031000",
-   "trich": "93031000 - Súng cầm tay nạp đạn phía nòng",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "93032010",
-   "dieuKien": "Súng shotgun săn (SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.93032010",
-   "trich": "93032010 - - Súng shotgun săn (SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "93032090",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.93032090",
-   "trich": "93032090 - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "930320",
-    "truAnhEm": [
-     "93032010"
-    ],
-    "truDayDu": [
-     "93032010"
-    ],
-    "toTienCoTen": "930320",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "93033010",
-   "dieuKien": "Súng trường săn",
-   "loaiKhac": false,
-   "nguon": "tax.93033010",
-   "trich": "93033010 - - Súng trường săn",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "93033090",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.93033090",
-   "trich": "93033090 - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "930330",
-    "truAnhEm": [
-     "93033010"
-    ],
-    "truDayDu": [
-     "93033010"
-    ],
-    "toTienCoTen": "930330",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "93039010",
-   "dieuKien": "Súng lục bắn pháo hiệu và các loại khác được thiết kế chỉ để phóng pháo hiệu có cỡ nòng từ 20 mm trở lên nhưng trừ cỡ 23 mm và 26,5 mm",
-   "loaiKhac": false,
-   "nguon": "tax.93039010",
-   "trich": "93039010 - - Súng lục bắn pháo hiệu và các loại khác được thiết kế chỉ để phóng pháo hiệu có cỡ nòng từ 20 mm trở lên nhưng trừ cỡ 23 mm và 26,5 mm",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "93039090",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.93039090",
-   "trich": "93039090 - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "930390",
-    "truAnhEm": [
-     "93039010"
-    ],
-    "truDayDu": [
-     "93039010"
-    ],
-    "toTienCoTen": "930390",
-    "dinhNghiaDuoc": true
-   }
-  }
- ],
- "cay": {
-  "nguonLoai": "MAY_SUY",
-  "sinhTu": "lib/hs-tree.js",
-  "nut": [
-   {
-    "id": "9303",
-    "cap": 4,
-    "cha": "93",
-    "tenVi": "Súng cầm tay (firearm) khác và các loại tương tự hoạt động bằng cách đốt cháy lượng thuốc nổ đã nạp (ví dụ, súng shotgun thể thao và súng trường thể thao, súng cầm tay nạp đạn phía nòng, súng ngắn và các loại",
-    "tenEn": "Firearms; other similar devices (e.g. sporting shotguns and rifles, muzzle-loading firearms, very pistols, devices for firing flares or blank ammunition, captive bolt humane killers, line throwing guns)",
-    "suyRa": false
-   },
-   {
-    "id": "93031000",
-    "cap": 8,
-    "cha": "9303",
-    "tenVi": "Súng cầm tay nạp đạn phía nòng",
-    "tenEn": "Firearms; muzzle-loading",
-    "suyRa": false,
-    "laPhanNhom": "930310"
-   },
-   {
-    "id": "930320",
-    "cap": 6,
-    "cha": "9303",
-    "tenVi": "Súng shotgun thể thao, súng shotgun săn hoặc súng shotgun bắn bia khác, kể cả súng trường - shotgun kết hợp (combination shotgun-rifles)",
-    "tenEn": "Firearms; sporting, hunting or target-shooting shotguns, including combination shotgun-rifles",
-    "suyRa": false
-   },
-   {
-    "id": "93032010",
-    "cap": 8,
-    "cha": "930320",
-    "tenVi": "Súng shotgun săn (SEN)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "93032090",
-    "cap": 8,
-    "cha": "930320",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "930330",
-    "cap": 6,
-    "cha": "9303",
-    "tenVi": "Súng trường thể thao, súng trường săn hoặc súng trường bắn bia khác",
-    "tenEn": "Firearms; sporting, hunting or target-shooting rifles n.e.c. in heading no. 9303",
-    "suyRa": false
-   },
-   {
-    "id": "93033010",
-    "cap": 8,
-    "cha": "930330",
-    "tenVi": "Súng trường săn",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "93033090",
-    "cap": 8,
-    "cha": "930330",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "930390",
-    "cap": 6,
-    "cha": "9303",
-    "tenVi": "Loại khác",
-    "tenEn": "Firearms; n.e.c. in heading no. 9303",
-    "suyRa": false
-   },
-   {
-    "id": "93039010",
-    "cap": 8,
-    "cha": "930390",
-    "tenVi": "Súng lục bắn pháo hiệu và các loại khác được thiết kế chỉ để phóng pháo hiệu có cỡ nòng từ 20 mm trở lên nhưng trừ cỡ 23 mm và 26,5 mm",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "93039090",
-    "cap": 8,
-    "cha": "930390",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   }
+  "dieuKienVao": [
+    {
+      "fact": "la_sung_hoac_thiet_bi_hoat_dong_bang_dot_chay_thuoc_no",
+      "op": "=",
+      "value": true,
+      "donVi": null,
+      "ngoaiTru": [
+        "Vũ khí dùng cho quân đội thuộc nhóm 93.01",
+        "Súng lục và súng lục ổ quay thuộc nhóm 93.02"
+      ],
+      "nguon": "nhom9303.nhom",
+      "trich": "Nhóm này bao gồm tất cả các loại súng cầm tay không thuộc các nhóm 93.01 và 93.02, và cũng bao gồm một số thiết bị không phải vũ khí nhưng hoạt động bằng cách đốt cháy lượng thuốc nổ đã nạp.",
+      "nguonLoai": "AI_DA_KIEM"
+    }
   ],
-  "tenDien": []
- },
- "dungTuNguon": [
-  "nhom9303.nhom",
-  "tax.93031000",
-  "tax.93032010",
-  "tax.93032090",
-  "tax.93033010",
-  "tax.93033090",
-  "tax.93039010",
-  "tax.93039090"
- ],
- "phienBan": "HS2022",
- "taoBoi": {
-  "provider": "google-studio:gemini-flash",
-  "model": null,
-  "luc": "2026-11-02T13:25:42.839Z",
-  "ms": 8
- },
- "kiemTra": {
-  "tong": 13,
-  "dat": 12,
-  "loai": 1,
-  "nguonBiCat": []
- }
+  "loaiTru": [
+    {
+      "dieuKien": "Dụng cụ đóng đinh tán, đóng chốt hoạt động bằng sức nổ của thuốc nổ",
+      "sangNhom": "8205",
+      "nguon": "nhom9303.nhom",
+      "trich": "Nhóm này không bao gồm những dụng cụ đóng đinh tán, đóng chốt, v.v...hoạt động bằng sức nổ của thuốc nổ (nhóm 82.05).",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "phanBiet": [
+    {
+      "hoi": "Hàng là súng bắn đạn dùng để giết súc vật thuộc nhóm súng lục?",
+      "neuCo": "9302",
+      "neuKhong": "9303",
+      "nguon": "nhom9303.nhom",
+      "trich": "Nhóm này không bao gồm loại súng bắn đạn (thường là loại đạn cỡ lớn), đôi khi dùng để giết súc vật (nhóm 93.02).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hoi": "Hàng là dụng cụ đóng đinh hoặc tán đinh hoạt động bằng thuốc nổ?",
+      "neuCo": "8205",
+      "neuKhong": "9303",
+      "nguon": "nhom9303.nhom",
+      "trich": "Nhóm này không bao gồm những dụng cụ đóng đinh tán, đóng chốt, v.v...hoạt động bằng sức nổ của thuốc nổ (nhóm 82.05).",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "tieuChi6": [],
+  "dong8": [
+    {
+      "hs": "93031000",
+      "dieuKien": "Súng cầm tay nạp đạn phía nòng",
+      "loaiKhac": false,
+      "nguon": "tax.93031000",
+      "trich": "93031000 - Súng cầm tay nạp đạn phía nòng",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "93032010",
+      "dieuKien": "tên loại hàng: súng shotgun; công dụng / mục đích: săn bắn",
+      "loaiKhac": false,
+      "nguon": "sen.93032010",
+      "trich": "Một trong những công dụng chủ yếu của súng shotgun là dùng cho các môn thể thao bắn đĩa hướng chéo, bắn đĩa hướng thẳng và bắn vật thể đất sét… Săn bắn Súng shotgun rất thông dụng trong việc săn bắn chim, nó cũng được dùng trong nhiều loại hình săn bắn thông thường khác",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "súng shotgun"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "săn bắn"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L32-20261111#soat-L32",
+          "ngay": "2026-11-11",
+          "bam": "62f30cd1bff680d0019f47efd82fb02c71e6627553a6a145167b72bf740c5fcd"
+        }
+      }
+    },
+    {
+      "hs": "93032090",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.93032090",
+      "trich": "93032090 - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "930320",
+        "truAnhEm": [
+          "93032010"
+        ],
+        "truDayDu": [
+          "93032010"
+        ],
+        "toTienCoTen": "930320",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "93033010",
+      "dieuKien": "tên loại hàng: Súng trường săn",
+      "loaiKhac": false,
+      "nguon": "tax.93033010",
+      "trich": "93033010 - - Súng trường săn",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Súng trường săn"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L32-20261111#soat-L32",
+          "ngay": "2026-11-11",
+          "bam": "e9de1b4f3e203ea3d33b567b1c870dba3be1ad59072468adf3fdcccf4d1cee00"
+        }
+      }
+    },
+    {
+      "hs": "93033090",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.93033090",
+      "trich": "93033090 - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "930330",
+        "truAnhEm": [
+          "93033010"
+        ],
+        "truDayDu": [
+          "93033010"
+        ],
+        "toTienCoTen": "930330",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "93039010",
+      "dieuKien": "Súng lục bắn pháo hiệu và các loại khác được thiết kế chỉ để phóng pháo hiệu có cỡ nòng từ 20 mm trở lên nhưng trừ cỡ 23 mm và 26,5 mm",
+      "loaiKhac": false,
+      "nguon": "tax.93039010",
+      "trich": "93039010 - - Súng lục bắn pháo hiệu và các loại khác được thiết kế chỉ để phóng pháo hiệu có cỡ nòng từ 20 mm trở lên nhưng trừ cỡ 23 mm và 26,5 mm",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "93039090",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.93039090",
+      "trich": "93039090 - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "930390",
+        "truAnhEm": [
+          "93039010"
+        ],
+        "truDayDu": [
+          "93039010"
+        ],
+        "toTienCoTen": "930390",
+        "dinhNghiaDuoc": true
+      }
+    }
+  ],
+  "cay": {
+    "nguonLoai": "MAY_SUY",
+    "sinhTu": "lib/hs-tree.js",
+    "nut": [
+      {
+        "id": "9303",
+        "cap": 4,
+        "cha": "93",
+        "tenVi": "Súng cầm tay (firearm) khác và các loại tương tự hoạt động bằng cách đốt cháy lượng thuốc nổ đã nạp (ví dụ, súng shotgun thể thao và súng trường thể thao, súng cầm tay nạp đạn phía nòng, súng ngắn và các loại",
+        "tenEn": "Firearms; other similar devices (e.g. sporting shotguns and rifles, muzzle-loading firearms, very pistols, devices for firing flares or blank ammunition, captive bolt humane killers, line throwing guns)",
+        "suyRa": false
+      },
+      {
+        "id": "93031000",
+        "cap": 8,
+        "cha": "9303",
+        "tenVi": "Súng cầm tay nạp đạn phía nòng",
+        "tenEn": "Firearms; muzzle-loading",
+        "suyRa": false,
+        "laPhanNhom": "930310"
+      },
+      {
+        "id": "930320",
+        "cap": 6,
+        "cha": "9303",
+        "tenVi": "Súng shotgun thể thao, súng shotgun săn hoặc súng shotgun bắn bia khác, kể cả súng trường - shotgun kết hợp (combination shotgun-rifles)",
+        "tenEn": "Firearms; sporting, hunting or target-shooting shotguns, including combination shotgun-rifles",
+        "suyRa": false
+      },
+      {
+        "id": "93032010",
+        "cap": 8,
+        "cha": "930320",
+        "tenVi": "Súng shotgun săn (SEN)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "93032090",
+        "cap": 8,
+        "cha": "930320",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "930330",
+        "cap": 6,
+        "cha": "9303",
+        "tenVi": "Súng trường thể thao, súng trường săn hoặc súng trường bắn bia khác",
+        "tenEn": "Firearms; sporting, hunting or target-shooting rifles n.e.c. in heading no. 9303",
+        "suyRa": false
+      },
+      {
+        "id": "93033010",
+        "cap": 8,
+        "cha": "930330",
+        "tenVi": "Súng trường săn",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "93033090",
+        "cap": 8,
+        "cha": "930330",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "930390",
+        "cap": 6,
+        "cha": "9303",
+        "tenVi": "Loại khác",
+        "tenEn": "Firearms; n.e.c. in heading no. 9303",
+        "suyRa": false
+      },
+      {
+        "id": "93039010",
+        "cap": 8,
+        "cha": "930390",
+        "tenVi": "Súng lục bắn pháo hiệu và các loại khác được thiết kế chỉ để phóng pháo hiệu có cỡ nòng từ 20 mm trở lên nhưng trừ cỡ 23 mm và 26,5 mm",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "93039090",
+        "cap": 8,
+        "cha": "930390",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      }
+    ],
+    "tenDien": []
+  },
+  "dungTuNguon": [
+    "nhom9303.nhom",
+    "tax.93031000",
+    "tax.93032010",
+    "tax.93032090",
+    "tax.93033010",
+    "tax.93033090",
+    "tax.93039010",
+    "tax.93039090"
+  ],
+  "phienBan": "HS2022",
+  "taoBoi": {
+    "provider": "google-studio:gemini-flash",
+    "model": null,
+    "luc": "2026-11-02T13:25:42.839Z",
+    "ms": 8
+  },
+  "kiemTra": {
+    "tong": 13,
+    "dat": 12,
+    "loai": 1,
+    "nguonBiCat": []
+  }
 }

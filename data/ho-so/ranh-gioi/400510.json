@@ -4,7 +4,7 @@
   "nhom": "4005",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1707#soan-400510",
@@ -39,6 +39,13 @@
       "ma": "40051010",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.40051010 \"Của nhựa tự nhiên\" (EN \"Of natural gums\") => tenLoai \"nhựa tự nhiên\": cả dòng là vế \"của …\"; bỏ hư từ \"Của\" (theo mẫu 401190 \"Loại dùng cho xe thuộc Chương 87\" ⇒ dungCho \"xe thuộc Chương 87\"). Chữ biểu không có khoá tu-vung cho \"nhựa tự nhiên\" (EN \"natural gums\") nên ghi nguyên văn dạng tên loại hàng; so chữ tự do, không tất định. Dòng 40051090 \"Loại khác\" trần => không ghi điều kiện."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L13-20261111#soat-L13",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 40051010 THU HẸP: \"Của nhựa tự nhiên\" (EN \"Of natural gums\") ghi tenLoai \"nhựa tự nhiên\" ⇒ 'Cao su tự nhiên hỗn hợp với muội carbon, dạng tấm' TRAI, rơi 40051090. Theo Chú giải 1 Ch.40 và loại trừ (k) Ch.13 (\"Cao su tự nhiên, nhựa cây balata, nhựa két, nhựa cây cúc cao su, nhựa chicle hoặc các loại nhựa tự nhiên tương tự (nhóm 40.01)\"), \"nhựa tự nhiên\" là cả nhóm 40.01 kể cả cao su tự nhiên — điều kiện phải nhận cao su tự nhiên (vd TEN_LOAI mảng [\"cao su tự nhiên\",\"nhựa tự nhiên\", balata, két, cúc cao su, chicle…] hoặc khoá loaiCaoSu); không chắc ⇒ DỪNG báo Claude, không chốt tenLoai một từ."
     }
   ]
 }

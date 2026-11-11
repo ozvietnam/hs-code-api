@@ -4,7 +4,7 @@
   "nhom": "3920",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1705#soan-392051",
@@ -89,6 +89,13 @@
       "ma": "39205111",
       "loai": "QUYET_DINH",
       "ghiChu": "sen.39205111: định nghĩa \"Loại cứng\" = mô-đun đàn hồi > 100,000 psi (ASTM D747/D790) ⇒ thêm moDunDanHoi > 100000 psi (#1139, khoá lô 24)"
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L12-20261111#soat-L12",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 392051:39205111 khoá sai: chữ biểu 'Loại cứng' / EN 'Rigid' (SEN 'Plastic cứng dạng tấm và phiến có modul đàn hồi uốn hoặc module đàn hồi kéo lớn hơn 100,000 psi…') ghi tenLoai TEN_LOAI 'cứng' + moDunDanHoi > 100000 psi. 'cứng' là độ cứng, không phải tên hàng; tu-vung@2 có khoá loaiCung (CO_KHONG) mà ghiChu ghi đích danh dùng cho 3920.10.11, 3920.30.91, 3920.51.11, 3920.59.11. Điều kiện tenLoai 'cứng' (VÀ với mô-đun) làm tấm có mô-đun > 100.000 psi nhưng tên khai không có chữ 'cứng' (vd 'tấm PE', 'tấm PMMA') không thoả ⇒ rơi .19 thay vì .11. Thay bằng loaiCung CO (giữ moDunDanHoi)."
     }
   ]
 }

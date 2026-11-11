@@ -1,408 +1,457 @@
 {
- "nhom": "7305",
- "phamVi": {
-  "text": "Các ống và ống dẫn khác bằng sắt hoặc thép (ví dụ, hàn, tán đinh hoặc ghép nối tương tự), có mặt cắt ngang hình tròn, đường kính ngoài trên 406,4 mm",
-  "nguon": "nhom7305.nhom",
-  "trich": "Các ống và ống dẫn thuộc nhóm này thu được, ví dụ bằng cách hàn hoặc tán đinh các dạng được tạo hình truớc (được tạo hình truớc bằng cách hàn hoặc tán đinh), có hình ống, hở được làm từ các sản phẩm cán phẳng.",
-  "nguonLoai": "AI_DA_KIEM"
- },
- "dieuKienVao": [
-  {
-   "fact": "la_ong_va_ong_dan_thuoc_nhom_nay",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "nhom7305.nhom",
-   "trich": "Các ống và ống dẫn thuộc nhóm này thu được, ví dụ bằng cách hàn hoặc tán đinh các dạng được tạo hình truớc (được tạo hình truớc bằng cách hàn hoặc tán đinh), có hình ống, hở được làm từ các sản phẩm cán phẳng.",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "loaiTru": [
-  {
-   "dieuKien": "Ống, ống dẫn và thanh dạng rỗng, thuộc nhóm 73.03, 73.04 hoặc 73.06",
-   "sangNhom": "7303",
-   "nguon": "nhom7305.nhom",
-   "trich": "Nhóm này không bao gồm: … (a) Ống, ống dẫn và thanh dạng rỗng, thuộc nhóm 73.03, 73.04 hoặc 73.06.",
-   "nguonLoai": "AI_DA_KIEM"
+  "nhom": "7305",
+  "phamVi": {
+    "text": "Các ống và ống dẫn khác bằng sắt hoặc thép (ví dụ, hàn, tán đinh hoặc ghép nối tương tự), có mặt cắt ngang hình tròn, đường kính ngoài trên 406,4 mm",
+    "nguon": "nhom7305.nhom",
+    "trich": "Các ống và ống dẫn thuộc nhóm này thu được, ví dụ bằng cách hàn hoặc tán đinh các dạng được tạo hình truớc (được tạo hình truớc bằng cách hàn hoặc tán đinh), có hình ống, hở được làm từ các sản phẩm cán phẳng.",
+    "nguonLoai": "AI_DA_KIEM"
   },
-  {
-   "dieuKien": "Phụ kiện của ống hoặc ống dẫn bằng sắt hoặc thép",
-   "sangNhom": "7307",
-   "nguon": "nhom7305.nhom",
-   "trich": "Nhóm này không bao gồm: … (b) Phụ kiện của ống hoặc ống dẫn bằng sắt hoặc thép (nhóm 73.07).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "phanBiet": [
-  {
-   "hoi": "Hàng là ống, ống dẫn và thanh dạng rỗng thuộc nhóm 73.03, 73.04 hoặc 73.06?",
-   "neuCo": "7303",
-   "neuKhong": "7305",
-   "nguon": "nhom7305.nhom",
-   "trich": "Nhóm này không bao gồm: … (a) Ống, ống dẫn và thanh dạng rỗng, thuộc nhóm 73.03, 73.04 hoặc 73.06.",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hoi": "Hàng là phụ kiện của ống hoặc ống dẫn bằng sắt hoặc thép thuộc nhóm 73.07?",
-   "neuCo": "7307",
-   "neuKhong": "7305",
-   "nguon": "nhom7305.nhom",
-   "trich": "Nhóm này không bao gồm: … (b) Phụ kiện của ống hoặc ống dẫn bằng sắt hoặc thép (nhóm 73.07).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "tieuChi6": [
-  {
-   "hs6": "730511",
-   "fact": "duong_kinh_ngoai_vuot_qua",
-   "op": ">",
-   "value": 406.4,
-   "donVi": "mm",
-   "nguon": "wco.730511",
-   "trich": "having circular cross-sections, external diameter exceeds 406.4mm",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "dong8": [
-  {
-   "hs": "73051100",
-   "dieuKien": "Hàn chìm theo chiều dọc bằng hồ quang",
-   "loaiKhac": false,
-   "nguon": "tax.73051100",
-   "trich": "73051100 - - Hàn chìm theo chiều dọc bằng hồ quang",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "73051210",
-   "dieuKien": "Hàn điện trở (ERW)",
-   "loaiKhac": false,
-   "nguon": "tax.73051210",
-   "trich": "73051210 - - - Hàn điện trở (ERW)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "73051290",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.73051290",
-   "trich": "73051290 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "730512",
-    "truAnhEm": [
-     "73051210"
-    ],
-    "truDayDu": [
-     "73051210"
-    ],
-    "toTienCoTen": "730512",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "73051910",
-   "dieuKien": "Hàn chìm xoắn hoặc xoắn ốc bằng hồ quang ",
-   "loaiKhac": false,
-   "nguon": "tax.73051910",
-   "trich": "73051910 - - - Hàn chìm xoắn hoặc xoắn ốc bằng hồ quang ",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "73051990",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.73051990",
-   "trich": "73051990 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "730519",
-    "truAnhEm": [
-     "73051910"
-    ],
-    "truDayDu": [
-     "73051910"
-    ],
-    "toTienCoTen": "730519",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "73052000",
-   "dieuKien": "Ống chống sử dụng trong khoan dầu hoặc khí",
-   "loaiKhac": false,
-   "nguon": "tax.73052000",
-   "trich": "73052000 - Ống chống sử dụng trong khoan dầu hoặc khí",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "73053110",
-   "dieuKien": "Ống và ống dẫn bằng thép không gỉ",
-   "loaiKhac": false,
-   "nguon": "tax.73053110",
-   "trich": "73053110 - - - Ống và ống dẫn bằng thép không gỉ",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "73053190",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.73053190",
-   "trich": "73053190 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "730531",
-    "truAnhEm": [
-     "73053110"
-    ],
-    "truDayDu": [
-     "73053110"
-    ],
-    "toTienCoTen": "730531",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "73053910",
-   "dieuKien": "Ống dẫn chịu áp lực cao có giới hạn chảy (1) không nhỏ hơn 42.000 psi",
-   "loaiKhac": false,
-   "nguon": "tax.73053910",
-   "trich": "73053910 - - - Ống dẫn chịu áp lực cao có giới hạn chảy (1) không nhỏ hơn 42.000 psi",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "73053990",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.73053990",
-   "trich": "73053990 - - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "730539",
-    "truAnhEm": [
-     "73053910"
-    ],
-    "truDayDu": [
-     "73053910"
-    ],
-    "toTienCoTen": "730539",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "73059000",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.73059000",
-   "trich": "73059000 - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "7305",
-    "truAnhEm": [
-     "73051",
-     "73052000",
-     "73053"
-    ],
-    "truDayDu": [
-     "73051",
-     "73052000",
-     "73053"
-    ],
-    "toTienCoTen": "7305",
-    "dinhNghiaDuoc": true
-   }
-  }
- ],
- "cay": {
-  "nguonLoai": "MAY_SUY",
-  "sinhTu": "lib/hs-tree.js",
-  "nut": [
-   {
-    "id": "7305",
-    "cap": 4,
-    "cha": "73",
-    "tenVi": "Các loại ống và ống dẫn khác bằng sắt hoặc thép (ví dụ, được hàn, tán bằng đinh hoặc ghép với nhau bằng cách tương tự), có mặt cắt ngang hình tròn, đường kính ngoài trên trời 406,4 mm (+)",
-    "tenEn": "Iron or steel (excluding cast iron); tubes and pipes (e.g. welded, riveted or similarly closed), having circular cross-sections, external diameter of which exceeds 406.4mm, not seamless",
-    "suyRa": false
-   },
-   {
-    "id": "73051",
-    "cap": "NHOM_MOT_GACH",
-    "cha": "7305",
-    "tenVi": "Ống dẫn sử dụng cho đường ống dẫn dầu hoặc khí",
-    "tenEn": "Line pipe of a kind used for oil or gas pipelines",
-    "suyRa": true
-   },
-   {
-    "id": "73051100",
-    "cap": 8,
-    "cha": "73051",
-    "tenVi": "Hàn chìm theo chiều dọc bằng hồ quang",
-    "tenEn": "Iron or steel (excluding cast iron); line pipe of a kind used for oil or gas pipelines (not seamless), longitudinally submerged arc welded, having circular cross-sections, external diameter exceeds 406.4mm",
-    "suyRa": false,
-    "laPhanNhom": "730511"
-   },
-   {
-    "id": "730512",
-    "cap": 6,
-    "cha": "73051",
-    "tenVi": "Loại khác, hàn theo chiều dọc",
-    "tenEn": "Iron or steel (excluding cast iron); line pipe of a kind used for oil or gas pipelines (not seamless), longitudinally welded (not submerged arc welded), having circular cross-sections, external diameter exceeds 406.4mm",
-    "suyRa": false
-   },
-   {
-    "id": "73051210",
-    "cap": 8,
-    "cha": "730512",
-    "tenVi": "Hàn điện trở (ERW)",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "73051290",
-    "cap": 8,
-    "cha": "730512",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "730519",
-    "cap": 6,
-    "cha": "73051",
-    "tenVi": "Loại khác",
-    "tenEn": "Iron or steel (excluding cast iron); line pipe of a kind used for oil or gas pipelines (not seamless), (not longitudinally welded), having circular cross-sections, external diameter exceeds 406.4mm",
-    "suyRa": false
-   },
-   {
-    "id": "73051910",
-    "cap": 8,
-    "cha": "730519",
-    "tenVi": "Hàn chìm xoắn hoặc xoắn ốc bằng hồ quang",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "73051990",
-    "cap": 8,
-    "cha": "730519",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "73052000",
-    "cap": 8,
-    "cha": "7305",
-    "tenVi": "Ống chống sử dụng trong khoan dầu hoặc khí",
-    "tenEn": "Iron or steel (excluding cast iron); casing of a kind used in drilling for oil or gas (not seamless), having circular cross-sections, external diameter exceeds 406.4mm",
-    "suyRa": false,
-    "laPhanNhom": "730520"
-   },
-   {
-    "id": "73053",
-    "cap": "NHOM_MOT_GACH",
-    "cha": "7305",
-    "tenVi": "Loại khác, được hàn",
-    "tenEn": "Other, welded",
-    "suyRa": true
-   },
-   {
-    "id": "730531",
-    "cap": 6,
-    "cha": "73053",
-    "tenVi": "Hàn theo chiều dọc",
-    "tenEn": "Iron or steel (excluding cast iron); tubes and pipes (other than line pipe or casing of a kind used for oil or gas pipelines), longitudinally welded, having circular cross-sections, external diameter exceeds 406.4mm, (not seamless)",
-    "suyRa": false
-   },
-   {
-    "id": "73053110",
-    "cap": 8,
-    "cha": "730531",
-    "tenVi": "Ống và ống dẫn bằng thép không gỉ",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "73053190",
-    "cap": 8,
-    "cha": "730531",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "730539",
-    "cap": 6,
-    "cha": "73053",
-    "tenVi": "Loại khác",
-    "tenEn": "Iron or steel (excluding cast iron); tubes and pipes (other than line pipe or casing of a kind used for oil or gas pipelines), welded (not longitudinally welded), having circular cross-sections, external diameter exceeds 406.4mm, (not seamless)",
-    "suyRa": false
-   },
-   {
-    "id": "73053910",
-    "cap": 8,
-    "cha": "730539",
-    "tenVi": "Ống dẫn chịu áp lực cao có giới hạn chảy (1) không nhỏ hơn 42.000 psi",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "73053990",
-    "cap": 8,
-    "cha": "730539",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "73059000",
-    "cap": 8,
-    "cha": "7305",
-    "tenVi": "Loại khác",
-    "tenEn": "Iron or steel (excluding cast iron); tubes and pipes n.e.c. in heading no. 7305, having circular cross-sections, external diameter exceeds 406.4mm, (not seamless)",
-    "suyRa": false,
-    "loaiKhac": true,
-    "laPhanNhom": "730590"
-   }
+  "dieuKienVao": [
+    {
+      "fact": "la_ong_va_ong_dan_thuoc_nhom_nay",
+      "op": "=",
+      "value": true,
+      "donVi": null,
+      "ngoaiTru": [],
+      "nguon": "nhom7305.nhom",
+      "trich": "Các ống và ống dẫn thuộc nhóm này thu được, ví dụ bằng cách hàn hoặc tán đinh các dạng được tạo hình truớc (được tạo hình truớc bằng cách hàn hoặc tán đinh), có hình ống, hở được làm từ các sản phẩm cán phẳng.",
+      "nguonLoai": "AI_DA_KIEM"
+    }
   ],
-  "tenDien": []
- },
- "dungTuNguon": [
-  "nhom7305.nhom",
-  "tax.73051100",
-  "tax.73051210",
-  "tax.73051290",
-  "tax.73051910",
-  "tax.73051990",
-  "tax.73052000",
-  "tax.73053110",
-  "tax.73053190",
-  "tax.73053910",
-  "tax.73053990",
-  "tax.73059000",
-  "wco.730511"
- ],
- "phienBan": "HS2022",
- "taoBoi": {
-  "provider": "google-studio:gemini-flash",
-  "model": null,
-  "luc": "2026-11-02T10:24:37.175Z",
-  "ms": 1328
- },
- "kiemTra": {
-  "tong": 18,
-  "dat": 18,
-  "loai": 0,
-  "nguonBiCat": []
- }
+  "loaiTru": [
+    {
+      "dieuKien": "Ống, ống dẫn và thanh dạng rỗng, thuộc nhóm 73.03, 73.04 hoặc 73.06",
+      "sangNhom": "7303",
+      "nguon": "nhom7305.nhom",
+      "trich": "Nhóm này không bao gồm: … (a) Ống, ống dẫn và thanh dạng rỗng, thuộc nhóm 73.03, 73.04 hoặc 73.06.",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "dieuKien": "Phụ kiện của ống hoặc ống dẫn bằng sắt hoặc thép",
+      "sangNhom": "7307",
+      "nguon": "nhom7305.nhom",
+      "trich": "Nhóm này không bao gồm: … (b) Phụ kiện của ống hoặc ống dẫn bằng sắt hoặc thép (nhóm 73.07).",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "phanBiet": [
+    {
+      "hoi": "Hàng là ống, ống dẫn và thanh dạng rỗng thuộc nhóm 73.03, 73.04 hoặc 73.06?",
+      "neuCo": "7303",
+      "neuKhong": "7305",
+      "nguon": "nhom7305.nhom",
+      "trich": "Nhóm này không bao gồm: … (a) Ống, ống dẫn và thanh dạng rỗng, thuộc nhóm 73.03, 73.04 hoặc 73.06.",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hoi": "Hàng là phụ kiện của ống hoặc ống dẫn bằng sắt hoặc thép thuộc nhóm 73.07?",
+      "neuCo": "7307",
+      "neuKhong": "7305",
+      "nguon": "nhom7305.nhom",
+      "trich": "Nhóm này không bao gồm: … (b) Phụ kiện của ống hoặc ống dẫn bằng sắt hoặc thép (nhóm 73.07).",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "tieuChi6": [
+    {
+      "hs6": "730511",
+      "fact": "duong_kinh_ngoai_vuot_qua",
+      "op": ">",
+      "value": 406.4,
+      "donVi": "mm",
+      "nguon": "wco.730511",
+      "trich": "having circular cross-sections, external diameter exceeds 406.4mm",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "73051100",
+      "dieuKien": "Hàn chìm theo chiều dọc bằng hồ quang",
+      "loaiKhac": false,
+      "nguon": "tax.73051100",
+      "trich": "73051100 - - Hàn chìm theo chiều dọc bằng hồ quang",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "73051210",
+      "dieuKien": "phương pháp hàn ống thép: hàn điện trở (ERW)",
+      "loaiKhac": false,
+      "nguon": "tax.73051210",
+      "trich": "73051210 - - - Hàn điện trở (ERW)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapHanOngThep",
+          "op": "TRONG",
+          "value": [
+            "HAN_DIEN_TRO_ERW"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L22-20261111#soat-L22",
+          "ngay": "2026-11-11",
+          "bam": "9fb7cc0f4771e2784811f4c7c25c61ca7c8ca6e74c8ecd58158c90790f4bbfcb"
+        }
+      }
+    },
+    {
+      "hs": "73051290",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.73051290",
+      "trich": "73051290 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "730512",
+        "truAnhEm": [
+          "73051210"
+        ],
+        "truDayDu": [
+          "73051210"
+        ],
+        "toTienCoTen": "730512",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "73051910",
+      "dieuKien": "phương pháp hàn ống thép: hàn chìm xoắn hoặc xoắn ốc bằng hồ quang",
+      "loaiKhac": false,
+      "nguon": "tax.73051910",
+      "trich": "73051910 - - - Hàn chìm xoắn hoặc xoắn ốc bằng hồ quang ",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapHanOngThep",
+          "op": "TRONG",
+          "value": [
+            "HAN_HO_QUANG_CHIM_XOAN"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L22-20261111#soat-L22",
+          "ngay": "2026-11-11",
+          "bam": "53eeecf72304bcbfacc0958265e844ea5c181a4e28c4e6e5d06557f17d9edd95"
+        }
+      }
+    },
+    {
+      "hs": "73051990",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.73051990",
+      "trich": "73051990 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "730519",
+        "truAnhEm": [
+          "73051910"
+        ],
+        "truDayDu": [
+          "73051910"
+        ],
+        "toTienCoTen": "730519",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "73052000",
+      "dieuKien": "Ống chống sử dụng trong khoan dầu hoặc khí",
+      "loaiKhac": false,
+      "nguon": "tax.73052000",
+      "trich": "73052000 - Ống chống sử dụng trong khoan dầu hoặc khí",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "73053110",
+      "dieuKien": "chất liệu (theo vị trí): thép không gỉ",
+      "loaiKhac": false,
+      "nguon": "tax.73053110",
+      "trich": "73053110 - - - Ống và ống dẫn bằng thép không gỉ",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "thép không gỉ"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L22-20261111#soat-L22",
+          "ngay": "2026-11-11",
+          "bam": "1bf7e0e3eed88c25932837cff3dbda9058add98387dc89bde3571b20b0199ae5"
+        }
+      }
+    },
+    {
+      "hs": "73053190",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.73053190",
+      "trich": "73053190 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "730531",
+        "truAnhEm": [
+          "73053110"
+        ],
+        "truDayDu": [
+          "73053110"
+        ],
+        "toTienCoTen": "730531",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "73053910",
+      "dieuKien": "Ống dẫn chịu áp lực cao có giới hạn chảy (1) không nhỏ hơn 42.000 psi",
+      "loaiKhac": false,
+      "nguon": "tax.73053910",
+      "trich": "73053910 - - - Ống dẫn chịu áp lực cao có giới hạn chảy (1) không nhỏ hơn 42.000 psi",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "73053990",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.73053990",
+      "trich": "73053990 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "730539",
+        "truAnhEm": [
+          "73053910"
+        ],
+        "truDayDu": [
+          "73053910"
+        ],
+        "toTienCoTen": "730539",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "73059000",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.73059000",
+      "trich": "73059000 - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "7305",
+        "truAnhEm": [
+          "73051",
+          "73052000",
+          "73053"
+        ],
+        "truDayDu": [
+          "73051",
+          "73052000",
+          "73053"
+        ],
+        "toTienCoTen": "7305",
+        "dinhNghiaDuoc": true
+      }
+    }
+  ],
+  "cay": {
+    "nguonLoai": "MAY_SUY",
+    "sinhTu": "lib/hs-tree.js",
+    "nut": [
+      {
+        "id": "7305",
+        "cap": 4,
+        "cha": "73",
+        "tenVi": "Các loại ống và ống dẫn khác bằng sắt hoặc thép (ví dụ, được hàn, tán bằng đinh hoặc ghép với nhau bằng cách tương tự), có mặt cắt ngang hình tròn, đường kính ngoài trên trời 406,4 mm (+)",
+        "tenEn": "Iron or steel (excluding cast iron); tubes and pipes (e.g. welded, riveted or similarly closed), having circular cross-sections, external diameter of which exceeds 406.4mm, not seamless",
+        "suyRa": false
+      },
+      {
+        "id": "73051",
+        "cap": "NHOM_MOT_GACH",
+        "cha": "7305",
+        "tenVi": "Ống dẫn sử dụng cho đường ống dẫn dầu hoặc khí",
+        "tenEn": "Line pipe of a kind used for oil or gas pipelines",
+        "suyRa": true
+      },
+      {
+        "id": "73051100",
+        "cap": 8,
+        "cha": "73051",
+        "tenVi": "Hàn chìm theo chiều dọc bằng hồ quang",
+        "tenEn": "Iron or steel (excluding cast iron); line pipe of a kind used for oil or gas pipelines (not seamless), longitudinally submerged arc welded, having circular cross-sections, external diameter exceeds 406.4mm",
+        "suyRa": false,
+        "laPhanNhom": "730511"
+      },
+      {
+        "id": "730512",
+        "cap": 6,
+        "cha": "73051",
+        "tenVi": "Loại khác, hàn theo chiều dọc",
+        "tenEn": "Iron or steel (excluding cast iron); line pipe of a kind used for oil or gas pipelines (not seamless), longitudinally welded (not submerged arc welded), having circular cross-sections, external diameter exceeds 406.4mm",
+        "suyRa": false
+      },
+      {
+        "id": "73051210",
+        "cap": 8,
+        "cha": "730512",
+        "tenVi": "Hàn điện trở (ERW)",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "73051290",
+        "cap": 8,
+        "cha": "730512",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "730519",
+        "cap": 6,
+        "cha": "73051",
+        "tenVi": "Loại khác",
+        "tenEn": "Iron or steel (excluding cast iron); line pipe of a kind used for oil or gas pipelines (not seamless), (not longitudinally welded), having circular cross-sections, external diameter exceeds 406.4mm",
+        "suyRa": false
+      },
+      {
+        "id": "73051910",
+        "cap": 8,
+        "cha": "730519",
+        "tenVi": "Hàn chìm xoắn hoặc xoắn ốc bằng hồ quang",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "73051990",
+        "cap": 8,
+        "cha": "730519",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "73052000",
+        "cap": 8,
+        "cha": "7305",
+        "tenVi": "Ống chống sử dụng trong khoan dầu hoặc khí",
+        "tenEn": "Iron or steel (excluding cast iron); casing of a kind used in drilling for oil or gas (not seamless), having circular cross-sections, external diameter exceeds 406.4mm",
+        "suyRa": false,
+        "laPhanNhom": "730520"
+      },
+      {
+        "id": "73053",
+        "cap": "NHOM_MOT_GACH",
+        "cha": "7305",
+        "tenVi": "Loại khác, được hàn",
+        "tenEn": "Other, welded",
+        "suyRa": true
+      },
+      {
+        "id": "730531",
+        "cap": 6,
+        "cha": "73053",
+        "tenVi": "Hàn theo chiều dọc",
+        "tenEn": "Iron or steel (excluding cast iron); tubes and pipes (other than line pipe or casing of a kind used for oil or gas pipelines), longitudinally welded, having circular cross-sections, external diameter exceeds 406.4mm, (not seamless)",
+        "suyRa": false
+      },
+      {
+        "id": "73053110",
+        "cap": 8,
+        "cha": "730531",
+        "tenVi": "Ống và ống dẫn bằng thép không gỉ",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "73053190",
+        "cap": 8,
+        "cha": "730531",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "730539",
+        "cap": 6,
+        "cha": "73053",
+        "tenVi": "Loại khác",
+        "tenEn": "Iron or steel (excluding cast iron); tubes and pipes (other than line pipe or casing of a kind used for oil or gas pipelines), welded (not longitudinally welded), having circular cross-sections, external diameter exceeds 406.4mm, (not seamless)",
+        "suyRa": false
+      },
+      {
+        "id": "73053910",
+        "cap": 8,
+        "cha": "730539",
+        "tenVi": "Ống dẫn chịu áp lực cao có giới hạn chảy (1) không nhỏ hơn 42.000 psi",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "73053990",
+        "cap": 8,
+        "cha": "730539",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "73059000",
+        "cap": 8,
+        "cha": "7305",
+        "tenVi": "Loại khác",
+        "tenEn": "Iron or steel (excluding cast iron); tubes and pipes n.e.c. in heading no. 7305, having circular cross-sections, external diameter exceeds 406.4mm, (not seamless)",
+        "suyRa": false,
+        "loaiKhac": true,
+        "laPhanNhom": "730590"
+      }
+    ],
+    "tenDien": []
+  },
+  "dungTuNguon": [
+    "nhom7305.nhom",
+    "tax.73051100",
+    "tax.73051210",
+    "tax.73051290",
+    "tax.73051910",
+    "tax.73051990",
+    "tax.73052000",
+    "tax.73053110",
+    "tax.73053190",
+    "tax.73053910",
+    "tax.73053990",
+    "tax.73059000",
+    "wco.730511"
+  ],
+  "phienBan": "HS2022",
+  "taoBoi": {
+    "provider": "google-studio:gemini-flash",
+    "model": null,
+    "luc": "2026-11-02T10:24:37.175Z",
+    "ms": 1328
+  },
+  "kiemTra": {
+    "tong": 18,
+    "dat": 18,
+    "loai": 0,
+    "nguonBiCat": []
+  }
 }

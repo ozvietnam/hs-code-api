@@ -4,7 +4,7 @@
   "nhom": "8418",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T1030#soan-841869",
@@ -125,6 +125,13 @@
       "ma": "84186950",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.84186950 \"Thiết bị sản xuất đá vảy\" ⇒ tenLoai nguyên văn."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L24-20261111#soat-L24",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 841869:8418694 SAI KHOÁ (đáng lẽ DỪNG/THIEU_KHOA_TU_VUNG): tiêu đề 'Thiết bị làm lạnh nước có công suất làm lạnh trên 21,10 kW' / 'Water chillers with a refrigeration capacity exceeding 21.10 kW' ghi congSuat > 21,1 kW — congSuat là 'power output' (công suất điện/cơ), không phải năng suất lạnh (chiller thường ghi tấn lạnh/BTU/h + công suất điện thấp hơn nhiều). Chiller 50 kW lạnh, 15 kW điện bị đọc ≤21,10 ⇒ rơi .90 thay vì .41/.49 (cùng MFN 10 nhưng sai mã; .41 'Dùng cho máy điều hòa không khí' là dòng tách riêng)."
     }
   ]
 }

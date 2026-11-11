@@ -1,164 +1,183 @@
 {
- "nhom": "8105",
- "phamVi": {
-  "text": "Coban sten và các sản phẩm trung gian khác của luyện kim coban; coban và các sản phẩm từ coban, kể cả phế liệu và mảnh vụn.",
-  "nguon": "nhom8105.nhom",
-  "trich": "Nhóm này bao gồm coban sten, các sản phẩm trung gian trong quá luyện kim coban và coban ở tất cả các dạng của nó, ví dụ: thỏi, catot, hạt nhỏ, bột, phế liệu và mảnh vụn và những sản phẩm chưa được chi tiết ở nơi khác",
-  "nguonLoai": "AI_DA_KIEM"
- },
- "dieuKienVao": [
-  {
-   "fact": "la_coban_va_san_pham_trung_gian_luyen_kim_coban",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "ch81.chuong",
-   "trich": "Coban(Co), bao gồm các phụ phẩm và các sản phẩm trung gian khác của Coban thu được trong quá trình luyện kim Coban (nhóm 81.05)",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "loaiTru": [],
- "phanBiet": [],
- "tieuChi6": [],
- "dong8": [
-  {
-   "hs": "81052010",
-   "dieuKien": "Coban chưa gia công",
-   "loaiKhac": false,
-   "nguon": "tax.81052010",
-   "trich": "81052010 - - Coban chưa gia công",
-   "nguonLoai": "AI_DA_KIEM"
+  "nhom": "8105",
+  "phamVi": {
+    "text": "Coban sten và các sản phẩm trung gian khác của luyện kim coban; coban và các sản phẩm từ coban, kể cả phế liệu và mảnh vụn.",
+    "nguon": "nhom8105.nhom",
+    "trich": "Nhóm này bao gồm coban sten, các sản phẩm trung gian trong quá luyện kim coban và coban ở tất cả các dạng của nó, ví dụ: thỏi, catot, hạt nhỏ, bột, phế liệu và mảnh vụn và những sản phẩm chưa được chi tiết ở nơi khác",
+    "nguonLoai": "AI_DA_KIEM"
   },
-  {
-   "hs": "81052090",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.81052090",
-   "trich": "81052090 - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "810520",
-    "truAnhEm": [
-     "81052010"
-    ],
-    "truDayDu": [
-     "81052010"
-    ],
-    "toTienCoTen": "810520",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "81053000",
-   "dieuKien": "Phế liệu và mảnh vụn",
-   "loaiKhac": false,
-   "nguon": "tax.81053000",
-   "trich": "81053000 - Phế liệu và mảnh vụn",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "81059000",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.81059000",
-   "trich": "81059000 - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "8105",
-    "truAnhEm": [
-     "810520",
-     "81053000"
-    ],
-    "truDayDu": [
-     "810520",
-     "81053000"
-    ],
-    "toTienCoTen": "8105",
-    "dinhNghiaDuoc": true
-   }
-  }
- ],
- "cay": {
-  "nguonLoai": "MAY_SUY",
-  "sinhTu": "lib/hs-tree.js",
-  "nut": [
-   {
-    "id": "8105",
-    "cap": 4,
-    "cha": "81",
-    "tenVi": "Coban sten và các sản phẩm trung gian khác từ luyện coban; coban và các sản phẩm bằng coban, kể cả phế liệu và mảnh vụn.",
-    "tenEn": "Cobalt; mattes and other intermediate products of cobalt metallurgy, cobalt and articles thereof, including waste and scrap",
-    "suyRa": false
-   },
-   {
-    "id": "810520",
-    "cap": 6,
-    "cha": "8105",
-    "tenVi": "Coban sten và các sản phẩm trung gian khác từ luyện coban; coban chưa gia công; bột",
-    "tenEn": "Cobalt; mattes and other intermediate products of cobalt metallurgy, unwrought cobalt, powders",
-    "suyRa": false
-   },
-   {
-    "id": "81052010",
-    "cap": 8,
-    "cha": "810520",
-    "tenVi": "Coban chưa gia công",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "81052090",
-    "cap": 8,
-    "cha": "810520",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "81053000",
-    "cap": 8,
-    "cha": "8105",
-    "tenVi": "Phế liệu và mảnh vụn",
-    "tenEn": "Cobalt; waste and scrap",
-    "suyRa": false,
-    "laPhanNhom": "810530"
-   },
-   {
-    "id": "81059000",
-    "cap": 8,
-    "cha": "8105",
-    "tenVi": "Loại khác",
-    "tenEn": "Cobalt; articles n.e.c. in heading no. 8105",
-    "suyRa": false,
-    "loaiKhac": true,
-    "laPhanNhom": "810590"
-   }
+  "dieuKienVao": [
+    {
+      "fact": "la_coban_va_san_pham_trung_gian_luyen_kim_coban",
+      "op": "=",
+      "value": true,
+      "donVi": null,
+      "ngoaiTru": [],
+      "nguon": "ch81.chuong",
+      "trich": "Coban(Co), bao gồm các phụ phẩm và các sản phẩm trung gian khác của Coban thu được trong quá trình luyện kim Coban (nhóm 81.05)",
+      "nguonLoai": "AI_DA_KIEM"
+    }
   ],
-  "tenDien": []
- },
- "dungTuNguon": [
-  "ch81.chuong",
-  "nhom8105.nhom",
-  "tax.81052010",
-  "tax.81052090",
-  "tax.81053000",
-  "tax.81059000"
- ],
- "phienBan": "HS2022",
- "taoBoi": {
-  "provider": "google-studio:gemini-flash",
-  "model": null,
-  "luc": "2026-11-02T13:06:43.652Z",
-  "ms": 23
- },
- "kiemTra": {
-  "tong": 6,
-  "dat": 6,
-  "loai": 0,
-  "nguonBiCat": []
- }
+  "loaiTru": [],
+  "phanBiet": [],
+  "tieuChi6": [],
+  "dong8": [
+    {
+      "hs": "81052010",
+      "dieuKien": "tên loại hàng: Coban; không: kim loại đã gia công (khác dạng chưa gia công)",
+      "loaiKhac": false,
+      "nguon": "tax.81052010",
+      "trich": "81052010 - - Coban chưa gia công",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Coban"
+        },
+        {
+          "fact": "daGiaCong",
+          "op": "KHONG"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L23-20261111#soat-L23",
+          "ngay": "2026-11-11",
+          "bam": "7ce2115842f09763cd376545bcd3b0121071b92d4424a3a804a9d8112feb2eaf"
+        }
+      }
+    },
+    {
+      "hs": "81052090",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.81052090",
+      "trich": "81052090 - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "810520",
+        "truAnhEm": [
+          "81052010"
+        ],
+        "truDayDu": [
+          "81052010"
+        ],
+        "toTienCoTen": "810520",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "81053000",
+      "dieuKien": "Phế liệu và mảnh vụn",
+      "loaiKhac": false,
+      "nguon": "tax.81053000",
+      "trich": "81053000 - Phế liệu và mảnh vụn",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "81059000",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.81059000",
+      "trich": "81059000 - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "8105",
+        "truAnhEm": [
+          "810520",
+          "81053000"
+        ],
+        "truDayDu": [
+          "810520",
+          "81053000"
+        ],
+        "toTienCoTen": "8105",
+        "dinhNghiaDuoc": true
+      }
+    }
+  ],
+  "cay": {
+    "nguonLoai": "MAY_SUY",
+    "sinhTu": "lib/hs-tree.js",
+    "nut": [
+      {
+        "id": "8105",
+        "cap": 4,
+        "cha": "81",
+        "tenVi": "Coban sten và các sản phẩm trung gian khác từ luyện coban; coban và các sản phẩm bằng coban, kể cả phế liệu và mảnh vụn.",
+        "tenEn": "Cobalt; mattes and other intermediate products of cobalt metallurgy, cobalt and articles thereof, including waste and scrap",
+        "suyRa": false
+      },
+      {
+        "id": "810520",
+        "cap": 6,
+        "cha": "8105",
+        "tenVi": "Coban sten và các sản phẩm trung gian khác từ luyện coban; coban chưa gia công; bột",
+        "tenEn": "Cobalt; mattes and other intermediate products of cobalt metallurgy, unwrought cobalt, powders",
+        "suyRa": false
+      },
+      {
+        "id": "81052010",
+        "cap": 8,
+        "cha": "810520",
+        "tenVi": "Coban chưa gia công",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "81052090",
+        "cap": 8,
+        "cha": "810520",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "81053000",
+        "cap": 8,
+        "cha": "8105",
+        "tenVi": "Phế liệu và mảnh vụn",
+        "tenEn": "Cobalt; waste and scrap",
+        "suyRa": false,
+        "laPhanNhom": "810530"
+      },
+      {
+        "id": "81059000",
+        "cap": 8,
+        "cha": "8105",
+        "tenVi": "Loại khác",
+        "tenEn": "Cobalt; articles n.e.c. in heading no. 8105",
+        "suyRa": false,
+        "loaiKhac": true,
+        "laPhanNhom": "810590"
+      }
+    ],
+    "tenDien": []
+  },
+  "dungTuNguon": [
+    "ch81.chuong",
+    "nhom8105.nhom",
+    "tax.81052010",
+    "tax.81052090",
+    "tax.81053000",
+    "tax.81059000"
+  ],
+  "phienBan": "HS2022",
+  "taoBoi": {
+    "provider": "google-studio:gemini-flash",
+    "model": null,
+    "luc": "2026-11-02T13:06:43.652Z",
+    "ms": 23
+  },
+  "kiemTra": {
+    "tong": 6,
+    "dat": 6,
+    "loai": 0,
+    "nguonBiCat": []
+  }
 }

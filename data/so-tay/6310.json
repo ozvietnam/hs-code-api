@@ -1,169 +1,199 @@
 {
- "nhom": "6310",
- "phamVi": {
-  "text": "Vải vụn, mẩu dây xe, chão bện, thừng và cáp phế liệu và các sản phẩm đã qua sử dụng từ các vật liệu đó",
-  "nguon": "nhom6310.nhom",
-  "trich": "Nhóm này bao gồm các sản phẩm dệt sau đây:\n\n(1) Vải vụn (kể cả vải dệt kim hoặc móc, phớt hoặc sản phẩm không dệt). … (2) Mảnh vải vụn rời, dây xe, chão bện (cordage), dây thừng hoặc dây cáp, đã qua sử dụng hoặc chưa qua sử dụng",
-  "nguonLoai": "AI_DA_KIEM"
- },
- "dieuKienVao": [
-  {
-   "fact": "la_vai_vun_hoac_phe_lieu_day_thung_chao_ben",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "nhom6310.nhom",
-   "trich": "Để được phân loại vào nhóm này, các sản phẩm này phải bị mòn, sờn, dơ bẩn hoặc rách, hoặc ở dạng mảnh nhỏ.",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "loaiTru": [],
- "phanBiet": [],
- "tieuChi6": [],
- "dong8": [
-  {
-   "hs": "63101010",
-   "dieuKien": "Vải vụn đã qua sử dụng hoặc mới",
-   "loaiKhac": false,
-   "nguon": "tax.63101010",
-   "trich": "63101010 - - Vải vụn đã qua sử dụng hoặc mới",
-   "nguonLoai": "AI_DA_KIEM"
+  "nhom": "6310",
+  "phamVi": {
+    "text": "Vải vụn, mẩu dây xe, chão bện, thừng và cáp phế liệu và các sản phẩm đã qua sử dụng từ các vật liệu đó",
+    "nguon": "nhom6310.nhom",
+    "trich": "Nhóm này bao gồm các sản phẩm dệt sau đây:\n\n(1) Vải vụn (kể cả vải dệt kim hoặc móc, phớt hoặc sản phẩm không dệt). … (2) Mảnh vải vụn rời, dây xe, chão bện (cordage), dây thừng hoặc dây cáp, đã qua sử dụng hoặc chưa qua sử dụng",
+    "nguonLoai": "AI_DA_KIEM"
   },
-  {
-   "hs": "63101090",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.63101090",
-   "trich": "63101090 - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "631010",
-    "truAnhEm": [
-     "63101010"
-    ],
-    "truDayDu": [
-     "63101010"
-    ],
-    "toTienCoTen": "631010",
-    "dinhNghiaDuoc": true
-   }
-  },
-  {
-   "hs": "63109010",
-   "dieuKien": "Vải vụn đã qua sử dụng hoặc mới",
-   "loaiKhac": false,
-   "nguon": "tax.63109010",
-   "trich": "63109010 - - Vải vụn đã qua sử dụng hoặc mới",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "63109090",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.63109090",
-   "trich": "63109090 - - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "631090",
-    "truAnhEm": [
-     "63109010"
-    ],
-    "truDayDu": [
-     "63109010"
-    ],
-    "toTienCoTen": "631090",
-    "dinhNghiaDuoc": true
-   }
-  }
- ],
- "cay": {
-  "nguonLoai": "MAY_SUY",
-  "sinhTu": "lib/hs-tree.js",
-  "nut": [
-   {
-    "id": "6310",
-    "cap": 4,
-    "cha": "63",
-    "tenVi": "Vải vụn, mẩu dây xe, chão bện (cordage), thừng và dây cáp đã qua sử dụng hoặc mới và các phế liệu từ vải vụn, dây xe, chão bện (cordage), thừng hoặc cáp, từ vật liệu dệt.",
-    "tenEn": "Rags; used or new, scrap twine, cordage, rope and cables and worn out articles of twine, cordage, rope or cables, of textile materials",
-    "suyRa": false
-   },
-   {
-    "id": "631010",
-    "cap": 6,
-    "cha": "6310",
-    "tenVi": "Đã được phân loại",
-    "tenEn": "Rags; used or new, scrap twine, cordage, rope and cables and worn out articles of twine, cordage, rope or cables, of textile materials; sorted",
-    "suyRa": false
-   },
-   {
-    "id": "63101010",
-    "cap": 8,
-    "cha": "631010",
-    "tenVi": "Vải vụn đã qua sử dụng hoặc mới",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "63101090",
-    "cap": 8,
-    "cha": "631010",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   },
-   {
-    "id": "631090",
-    "cap": 6,
-    "cha": "6310",
-    "tenVi": "Loại khác",
-    "tenEn": "Rags; used or new, scrap twine, cordage, rope and cables and worn out articles of twine, cordage, rope or cables, of textile materials; other than sorted",
-    "suyRa": false
-   },
-   {
-    "id": "63109010",
-    "cap": 8,
-    "cha": "631090",
-    "tenVi": "Vải vụn đã qua sử dụng hoặc mới",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "63109090",
-    "cap": 8,
-    "cha": "631090",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   }
+  "dieuKienVao": [
+    {
+      "fact": "la_vai_vun_hoac_phe_lieu_day_thung_chao_ben",
+      "op": "=",
+      "value": true,
+      "donVi": null,
+      "ngoaiTru": [],
+      "nguon": "nhom6310.nhom",
+      "trich": "Để được phân loại vào nhóm này, các sản phẩm này phải bị mòn, sờn, dơ bẩn hoặc rách, hoặc ở dạng mảnh nhỏ.",
+      "nguonLoai": "AI_DA_KIEM"
+    }
   ],
-  "tenDien": []
- },
- "dungTuNguon": [
-  "nhom6310.nhom",
-  "tax.63101010",
-  "tax.63101090",
-  "tax.63109010",
-  "tax.63109090"
- ],
- "phienBan": "HS2022",
- "taoBoi": {
-  "provider": "google-studio:gemini-flash",
-  "model": null,
-  "luc": "2026-11-02T12:37:35.211Z",
-  "ms": 7
- },
- "kiemTra": {
-  "tong": 6,
-  "dat": 6,
-  "loai": 0,
-  "nguonBiCat": [
-   "phan63.phan (46130→25000)"
-  ]
- }
+  "loaiTru": [],
+  "phanBiet": [],
+  "tieuChi6": [],
+  "dong8": [
+    {
+      "hs": "63101010",
+      "dieuKien": "tên loại hàng: Vải vụn",
+      "loaiKhac": false,
+      "nguon": "tax.63101010",
+      "trich": "63101010 - - Vải vụn đã qua sử dụng hoặc mới",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Vải vụn"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L19-20261111#soat-L19",
+          "ngay": "2026-11-11",
+          "bam": "bc1ab5f390aca44d27ef46007fdb641f964a3d41b6067cf8a8590d3daa731cd9"
+        }
+      }
+    },
+    {
+      "hs": "63101090",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.63101090",
+      "trich": "63101090 - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "631010",
+        "truAnhEm": [
+          "63101010"
+        ],
+        "truDayDu": [
+          "63101010"
+        ],
+        "toTienCoTen": "631010",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "63109010",
+      "dieuKien": "tên loại hàng: Vải vụn",
+      "loaiKhac": false,
+      "nguon": "tax.63109010",
+      "trich": "63109010 - - Vải vụn đã qua sử dụng hoặc mới",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Vải vụn"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L19-20261111#soat-L19",
+          "ngay": "2026-11-11",
+          "bam": "a79424f586d35c3326ad03e0da624a559ee619dcc9593259f36c68e37aa60f80"
+        }
+      }
+    },
+    {
+      "hs": "63109090",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.63109090",
+      "trich": "63109090 - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "631090",
+        "truAnhEm": [
+          "63109010"
+        ],
+        "truDayDu": [
+          "63109010"
+        ],
+        "toTienCoTen": "631090",
+        "dinhNghiaDuoc": true
+      }
+    }
+  ],
+  "cay": {
+    "nguonLoai": "MAY_SUY",
+    "sinhTu": "lib/hs-tree.js",
+    "nut": [
+      {
+        "id": "6310",
+        "cap": 4,
+        "cha": "63",
+        "tenVi": "Vải vụn, mẩu dây xe, chão bện (cordage), thừng và dây cáp đã qua sử dụng hoặc mới và các phế liệu từ vải vụn, dây xe, chão bện (cordage), thừng hoặc cáp, từ vật liệu dệt.",
+        "tenEn": "Rags; used or new, scrap twine, cordage, rope and cables and worn out articles of twine, cordage, rope or cables, of textile materials",
+        "suyRa": false
+      },
+      {
+        "id": "631010",
+        "cap": 6,
+        "cha": "6310",
+        "tenVi": "Đã được phân loại",
+        "tenEn": "Rags; used or new, scrap twine, cordage, rope and cables and worn out articles of twine, cordage, rope or cables, of textile materials; sorted",
+        "suyRa": false
+      },
+      {
+        "id": "63101010",
+        "cap": 8,
+        "cha": "631010",
+        "tenVi": "Vải vụn đã qua sử dụng hoặc mới",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "63101090",
+        "cap": 8,
+        "cha": "631010",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      },
+      {
+        "id": "631090",
+        "cap": 6,
+        "cha": "6310",
+        "tenVi": "Loại khác",
+        "tenEn": "Rags; used or new, scrap twine, cordage, rope and cables and worn out articles of twine, cordage, rope or cables, of textile materials; other than sorted",
+        "suyRa": false
+      },
+      {
+        "id": "63109010",
+        "cap": 8,
+        "cha": "631090",
+        "tenVi": "Vải vụn đã qua sử dụng hoặc mới",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "63109090",
+        "cap": 8,
+        "cha": "631090",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      }
+    ],
+    "tenDien": []
+  },
+  "dungTuNguon": [
+    "nhom6310.nhom",
+    "tax.63101010",
+    "tax.63101090",
+    "tax.63109010",
+    "tax.63109090"
+  ],
+  "phienBan": "HS2022",
+  "taoBoi": {
+    "provider": "google-studio:gemini-flash",
+    "model": null,
+    "luc": "2026-11-02T12:37:35.211Z",
+    "ms": 7
+  },
+  "kiemTra": {
+    "tong": 6,
+    "dat": 6,
+    "loai": 0,
+    "nguonBiCat": [
+      "phan63.phan (46130→25000)"
+    ]
+  }
 }

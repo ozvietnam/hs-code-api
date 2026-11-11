@@ -1,7 +1,12 @@
 name: Describe compliance regression
 
 on:
+  # `branches: [main]` phải khai tường minh: `push:` trống nhánh là bắt MỌI nhánh,
+  # nên mỗi push lên nhánh đang có PR sinh 2 lượt — và hai lượt đó nằm ở hai
+  # `concurrency.group` khác tên (`<workflow>-refs/heads/<nhánh>` vs
+  # `<workflow>-<số-PR>`) nên concurrency không dọn hộ (OZV-355).
   push:
+    branches: [main]
     paths:
       - 'lib/declaration-validator.js'
       - 'lib/customs-prompt.js'
@@ -31,6 +36,12 @@ on:
       - 'lib/compliance-data.js'
       - 'tests/describe-cases.json'
       - 'tests/describe-chapter-fields.json'
+
+# Huỷ lượt của SHA cũ khi có push mới, chừa main để giữ dấu xanh commit đã gộp
+# (OZV-355). Cổng giữ: scripts/test-ci-concurrency.mjs
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 jobs:
   test-describe:
