@@ -4,7 +4,19 @@
   "phien": "mm:minimax-m3:20261105T0845#soan-300450",
   "dong8": {
     "30045010": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "fact": "thietKeChoTreEm",
+          "op": "CO"
+        },
+        {
+          "fact": "dangBaoCheThuoc",
+          "op": "TRONG",
+          "value": [
+            "XIRO"
+          ]
+        }
+      ]
     },
     "30045021": {
       "dieuKienSo": [
@@ -29,22 +41,18 @@
   },
   "dieuKienNut": {
     "3004502": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "fact": "soLoaiVitamin",
+          "op": ">",
+          "value": 1,
+          "donVi": "loại"
+        }
+      ],
+      "phanConLai": true
     }
   },
   "ghiChuSoan": [
-    {
-      "ma": "30045010",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "dangBaoCheThuoc (thêm giá trị XIRO cho chữ 'dạng xirô')",
-      "ghiChu": "tax.30045010 \"Loại phù hợp cho trẻ em, dạng xirô\" — vế \"phù hợp cho trẻ em\" đọc được bằng khoá thietKeChoTreEm, nhưng vế \"dạng xirô\" KHÔNG có khoá nào trong tu-vung@2 (dangBaoCheThuoc chưa có giá trị xirô) ⇒ để trống dieuKienSo của mục theo luật THIEU_KHOA_TU_VUNG (không tự đặt khoá, không mượn khoá gần nghĩa)."
-    },
-    {
-      "ma": "3004502",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "soLoaiThuoc (SO, đơn vị 'loại')",
-      "ghiChu": "tieuDe.3004502 \"Loại khác, chứa nhiều hơn một loại vitamin\" — vế \"chứa nhiều hơn một loại vitamin\" cần ĐẾM số loại (> 1) mà tu-vung@2 chưa có khoá số cho 'loại' (soLoi là 'số lõi dẫn', không dùng để mượn) ⇒ để trống dieuKienSo của mục theo luật THIEU_KHOA_TU_VUNG."
-    },
     {
       "ma": "30045091",
       "loai": "QUYET_DINH",
@@ -59,6 +67,21 @@
       "ma": "30045099",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.30045099 \"Loại khác\" trần ⇒ không ghi điều kiện (máy phủ định anh em)."
+    },
+    {
+      "ma": "30045010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.30045010 «Loại phù hợp cho trẻ em, dạng xirô» ⇒ thietKeChoTreEm CO («phù hợp cho trẻ em») + dangBaoCheThuoc TRONG [XIRO] («dạng xirô» — giá trị XIRO đã có trong tu-vung@2)."
+    },
+    {
+      "ma": "3004502",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.3004502 «Loại khác, chứa nhiều hơn một loại vitamin» ⇒ soLoaiVitamin > 1 loại (khoá đếm mới tu-vung@2, 11/11/2026); «Loại khác» đầu câu = phần còn lại sau .10 ⇒ phanConLai."
+    },
+    {
+      "ma": "300450",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude (#1109, 11/11): hết DỪNG — thêm khoá đếm soLoaiVitamin (+ bảng @2 soSanhDemTruoc «nhiều hơn» ⇒ > cho khoá đếm; bảng chung soSanh của @1 giữ nguyên), dùng giá trị XIRO sẵn có của dangBaoCheThuoc."
     }
   ]
 }
