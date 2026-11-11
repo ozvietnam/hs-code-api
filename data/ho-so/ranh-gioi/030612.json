@@ -4,19 +4,13 @@
   "nhom": "0306",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "DUYET",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-030612",
     "ngay": "2026-11-05"
   },
-  "duyet": {
-    "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L2-20261111#soat-L2",
-    "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu VI/EN 03061210 Hun khói/Smoked ⇒ HUN_KHOI; .90 phần còn lại.",
-    "bam": "44e5601041a886ac9beb4b5df939e200d3aaf33e6c678b7080bd63f378ef3265"
-  },
+  "duyet": null,
   "dieuKienNut": [],
   "dong8": [
     {
@@ -32,14 +26,14 @@
           ]
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "03061290",
       "nguon": "tax.03061290",
       "trich": "03061290 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "ghiChuSoan": [
@@ -47,6 +41,13 @@
       "ma": "03061210",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.03061210 \"Hun khói\" ⇒ phuongPhapBaoQuan HUN_KHOI"
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:tech-lead-20261111#soat-lai",
+      "ngay": "2026-11-11",
+      "lyDo": "bo-kiem-luat: ca THIEU_DU_KIEN tự chốt Loại khác (tu-chot-loai-khac-khi-thieu-du-kien). phuongPhapBaoQuan là LIET_KE một giá trị nên chữ \"Đông lạnh\" (vốn là phạm vi phân nhóm) chấm TRÁI \"Hun khói\" — nhưng hàng đông lạnh vẫn có thể hun khói. Soạn lại bằng khoá CO/KHONG riêng cho hun khói (hoặc chờ từ vựng cho phép giá trị đồng thời), đo lại bo-kiem-luat trước khi duyệt."
     }
   ]
 }
