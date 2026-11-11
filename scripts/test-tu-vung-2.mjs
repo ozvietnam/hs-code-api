@@ -276,6 +276,7 @@ const KHOA_MOI = {
   soCheTom: 'LIET_KE',
   soDuongTinHieuDauVao: 'SO',
   soLoi: 'SO',
+  soLoaiVitamin: 'SO',
   soNguyenToCauThanhPhanBon: 'LIET_KE',
   soSoi: 'SO',
   soTangBom: 'LIET_KE',
@@ -461,6 +462,9 @@ chuaBiet('không có chữ nào', 'daNapChuongTrinh', 'Bo mạch điều khiển
 la('khẳng định', 'soLoi', 'Cáp điện 2 lõi, mỗi lõi 7 sợi, bọc PVC', 2, { op: null });
 la('khẳng định số chữ', 'soLoi', 'dây điện bốn lõi bọc PVC', 4);
 la('"hai lõi hoặc hơn" ⇒ >= 2', 'soLoi', 'Cáp dẹt có hai lõi hoặc hơn', 2, { op: '>=', bc: 'hai lõi hoặc hơn' });
+// soLoaiVitamin — số loại vitamin (3004.50.2x «chứa nhiều hơn một loại vitamin»)
+la('khẳng định', 'soLoaiVitamin', 'Viên uống chứa 12 loại vitamin', 12, { op: null });
+la('"nhiều hơn một loại" ⇒ > 1', 'soLoaiVitamin', 'chế phẩm chứa nhiều hơn một loại vitamin', 1, { op: '>', bc: 'nhiều hơn một loại' });
 la('En "two or more cores" ⇒ >= 2', 'soLoi', 'cable with two or more cores', 2, { op: '>=' });
 la('Zh', 'soLoi', '4芯电缆', 4);
 la('Zh "两芯及以上" ⇒ >= 2', 'soLoi', '两芯及以上电缆', 2, { op: '>=' });
