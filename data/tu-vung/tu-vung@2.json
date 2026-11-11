@@ -338,7 +338,8 @@
    "dangSanPhamNhom1518",
    "toHopChucNangMayIn",
    "maHsTuongUng",
-   "moDunDanHoi"
+   "moDunDanHoi",
+   "soLoaiVitamin"
   ],
   "tuVung1": {
    "trangThai": "DA_CHAM",
@@ -580,6 +581,9 @@
    "GPa": 145037.7,
    "kPa": 0.145038,
    "bar": 14.5038
+  },
+  "loaiVitamin": {
+   "loại": 1
   }
  },
  "bietDanhDonVi": {
@@ -4429,6 +4433,37 @@
     "zh": "电缆/电线有几芯（几根导体）？"
    },
    "ghiChu": "Đếm lõi dẫn điện (\"2 lõi\", \"bốn ruột\", \"4芯\", \"two or more cores\" ⇒ >= 2). \"đường kính lõi 2 mm\" là duongKinhLoi. \"N sợi\" đọc ở soSoi.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "khoa": "soLoaiVitamin",
+   "kieu": "SO",
+   "nhanVi": "số loại vitamin trong chế phẩm",
+   "nhanEn": "number of vitamins contained",
+   "nhanZh": "所含维生素种类数",
+   "heDonVi": "loaiVitamin",
+   "donViChuan": "loại",
+   "demSo": true,
+   "donViCachRieng": true,
+   "cachDoc": {
+    "vi": [
+     "loại\\s+vitamin"
+    ],
+    "en": [
+     "vitamins?"
+    ],
+    "zh": [
+     "种维生素"
+    ]
+   },
+   "cachViet": {
+    "vi": "{giaTri}"
+   },
+   "cauHoi": {
+    "vi": "Chế phẩm chứa bao nhiêu loại vitamin?",
+    "zh": "该制剂含有几种维生素？"
+   },
+   "ghiChu": "Đếm số loại vitamin (3004.50.2x «chứa nhiều hơn một loại vitamin» ⇒ > 1). Tên vitamin cụ thể (A, B, C) đọc ở tenLoai.",
    "nguonLoai": "AI_DA_KIEM"
   },
   {
@@ -23220,6 +23255,12 @@
    "or fewer",
    "及以下",
    "以下"
+  ]
+ },
+ "soSanhDemTruoc": {
+  ">": [
+   "nhiều hơn",
+   "more than"
   ]
  },
  "soSanhSauMoRong": {

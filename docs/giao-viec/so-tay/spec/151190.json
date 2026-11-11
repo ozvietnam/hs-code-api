@@ -155,21 +155,9 @@
       "ghiChu": "tieuDe.151190~r1925 \"Các phần phân đoạn thể lỏng\" (tầng không mã) ⇒ tenLoai \"Các phần phân đoạn thể lỏng\" (cùng cách chia dùng tầng r1922)."
     },
     {
-      "ma": "15119031",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "ghiChu": "tax.15119031 \"15119031 - - - - Có chỉ số iốt từ 30 trở lên, nhưng dưới 40\" — chưa giao được điều kiện: khoá chiSoIot cần đơn vị \"IV\" mà chữ biểu KHÔNG viết (chỉ ghi \"chỉ số iốt\") nên cổng 3 chặn (dieu-kien-so-don-vi-khong-co-trong-trich:IV); tách vế theo dấu phẩy cũng không được vì hai vế rơi chung khoá tenLoai với tầng cha (vector không tới được dòng). Cần người duyệt quyết: ghi ngưỡng số 30–40 IV sau khi cổng 3 chấp nhận khoá đọc được đơn vị không có trong chữ.",
-      "khoaDeXuat": "chiSoIot"
-    },
-    {
       "ma": "15119036",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.15119036 \"15119036 - - - - Đóng gói với khối lượng tịnh không quá 25kg\" ⇒ khoiLuong <= 25 kg (\"không quá\" = <=)."
-    },
-    {
-      "ma": "15119037",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "ghiChu": "tax.15119037 \"15119037 - - - - Loại khác, có chỉ số iốt từ 55 trở lên, nhưng dưới 60\" — chưa giao được điều kiện, xem ghi chú 15119031 (đơn vị \"IV\" không có trong chữ biểu ⇒ cổng 3 chặn).",
-      "khoaDeXuat": "chiSoIot"
     },
     {
       "ma": "15119041",
@@ -185,6 +173,11 @@
       "ma": "151190",
       "loai": "QUYET_DINH",
       "ghiChu": "Claude 07/11/2026 (#1109): tieuDe.151190~r1922 \"Các phần phân đoạn thể rắn\" / r1925 \"Các phần phân đoạn thể lỏng\" và tax.15119041 ⇒ khoá mới thePhanDoan (THE_RAN/THE_LONG). tax.15119031 \"Có chỉ số iốt từ 30 trở lên, nhưng dưới 40\" ⇒ chiSoIot ≥ 30, < 40 (IV); tax.15119037 \"Loại khác, có chỉ số iốt từ 55 trở lên, nhưng dưới 60\" ⇒ chiSoIot ≥ 55, < 60 + phanConLai (phần còn lại sau .36)."
+    },
+    {
+      "ma": "151190",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude (#1109, 11/11): gỡ ghi chú THIEU_KHOA_TU_VUNG cũ của .31/.37 — khoá chiSoIot (SO, đơn vị IV) đã có và cổng 3 đọc số chỉ số iốt không kèm đơn vị từ #1153; điều kiện ≥30 <40 và ≥55 <60 đúng chữ biểu."
     }
   ]
 }
