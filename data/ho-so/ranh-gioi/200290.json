@@ -4,19 +4,13 @@
   "nhom": "2002",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "DUYET",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261105T0950#soan-200290",
     "ngay": "2026-11-05"
   },
-  "duyet": {
-    "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L6-20261111#soat-L6",
-    "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu VI/EN \"Tomato paste\" ↔ \"Tomato powder\": \"Bột cà chua dạng sệt\" ⊃ \"Bột cà chua\", tên cụ thể hơn thắng đúng chiều.",
-    "bam": "62c480c1ff979b57c3b42a69d13c6d346b410e685ee15262bc9d125959cfacdd"
-  },
+  "duyet": null,
   "dieuKienNut": [],
   "dong8": [
     {
@@ -30,7 +24,7 @@
           "value": "Bột cà chua dạng sệt"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "20029020",
@@ -43,14 +37,14 @@
           "value": "Bột cà chua"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "20029090",
       "nguon": "tax.20029090",
       "trich": "20029090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "ghiChuSoan": [
@@ -58,6 +52,13 @@
       "ma": "20029010",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.20029010 \"Bột cà chua dạng sệt (SEN)\": \"(SEN)\" dấu chú giải ⇒ PHU; \"Bột cà chua dạng sệt\" cụ thể hơn \"Bột cà chua\" của .20 ⇒ tên cụ thể hơn thắng"
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:tech-lead-20261111#soat-lai",
+      "ngay": "2026-11-11",
+      "lyDo": "Bỏ mất ngưỡng số SEN mà sổ tay đang chạy dùng để chốt dòng (chất rắn 25–40% / độ ẩm-protein-béo / áp suất nén 200–250); khoá TEN_LOAI/CONG_DUNG là lùi. Soạn lại: mã hoá đủ ngưỡng SEN + vế tên."
     }
   ]
 }
