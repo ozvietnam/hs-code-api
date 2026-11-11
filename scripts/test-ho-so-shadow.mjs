@@ -212,9 +212,21 @@ check('LLM chèn giá trị lạ ⇒ dòng llmBiLoai true, cheDoViet MAY, cheDoV
 chenGiaTriLa = false;
 
 process.env.HS_HO_SO = 'on';
-const CHUA_DUYET = HS.laMaLat1('39269099') && !HS.hoSoApDung('39269099') ? '39269099' : null;
+// Mã lát 1 chưa duyệt chọn theo dữ liệu (39269099 trước, rồi phân nhóm lát 1 đầu tiên chưa có ranh giới duyệt): các lô soát lần lượt
+// duyệt PN6 lát 1 (392690 đã DUYET ở L12, #1109) nên mã cố định sẽ hết "chưa duyệt".
+const chonChuaDuyet = () => {
+  if (HS.laMaLat1('39269099') && !HS.hoSoApDung('39269099')) return '39269099';
+  const T = require('../lib/hs-tree.js');
+  const lat1 = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data/ho-so/lat-1.json'), 'utf8')).phanNhom.map((x) => String(x.pn6));
+  for (const p of lat1) {
+    const ma = T.tree().codes.find((c) => c.length === 8 && c.startsWith(p));
+    if (ma && HS.laMaLat1(ma) && !HS.hoSoApDung(ma)) return ma;
+  }
+  return null;
+};
+const CHUA_DUYET = chonChuaDuyet();
 process.env.HS_HO_SO = 'shadow';
-check('có mã lát 1 chưa duyệt để thử (39269099)', Boolean(CHUA_DUYET));
+check(`có mã lát 1 chưa duyệt để thử (${CHUA_DUYET})`, Boolean(CHUA_DUYET));
 if (CHUA_DUYET) {
   xoaShadow();
   const bodyCd = { hsCode: CHUA_DUYET, productName: 'Hàng nhựa thử', customerDescription: 'đồ nhựa, mới 100%' };

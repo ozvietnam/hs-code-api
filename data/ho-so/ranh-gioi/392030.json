@@ -4,7 +4,7 @@
   "nhom": "3920",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1705#soan-392030",
@@ -107,6 +107,13 @@
       "ma": "39203091",
       "loai": "QUYET_DINH",
       "ghiChu": "sen.39203091: định nghĩa \"Loại cứng\" = mô-đun đàn hồi > 100,000 psi (ASTM D747/D790) ⇒ thêm moDunDanHoi > 100000 psi (#1139, khoá lô 24)"
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L12-20261111#soat-L12",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 392030:39203091 khoá sai: 'Dạng tấm và phiến, loại cứng' / EN 'Plates and sheets, rigid' ghi tenLoai [tấm, phiến] + tenLoai 'cứng' + moDunDanHoi > 100000 psi. 'cứng' là độ cứng, không phải tên hàng; tu-vung@2 có khoá loaiCung (CO_KHONG, ghiChu ghi đích danh 3920.30.91). Tấm ABS/PS có mô-đun > 100.000 psi mà tên khai không có chữ 'cứng' không thoả ⇒ rơi .92 thay vì .91. Thay tenLoai 'cứng' bằng loaiCung CO. .20 (tấm ABS dùng sản xuất tủ lạnh) và .92 đối chiếu đúng."
     }
   ]
 }
