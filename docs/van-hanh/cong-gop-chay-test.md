@@ -36,7 +36,7 @@ tức **còn 14 bước test chạy sau nhãn**. Ai `grep "ALL TESTS PASSED"` đ
 
 Nhãn đã được đẩy về **bước cuối cùng** (OZV-272). Dù vậy, đừng lấy nhãn làm bằng chứng — lấy **số ca + EXIT**.
 
-## Ba quy tắc bắt buộc
+## Bốn quy tắc bắt buộc
 
 1. **Worktree mới ⇒ cài gói TRƯỚC khi chạy lệnh kiểm.**
 
@@ -67,6 +67,44 @@ Nhãn đã được đẩy về **bước cuối cùng** (OZV-272). Dù vậy, �
    ```
    ca xanh 1234 (tổng kết 1456 ca / 188 bộ) · ca đỏ 0 · EXIT=0
    ```
+
+4. **Gộp thử xong phải xác nhận cây đúng là cây CÓ PR.** Dùng **ref có tên**, không dùng `FETCH_HEAD`.
+   Chạy `git diff --stat origin/main HEAD` và đối chiếu **đúng số tệp + số dòng** của PR rồi mới tin
+   con số test. Bình luận soát phải ghi **SHA bản gộp thử** và dòng `git diff --stat` bên cạnh số ca.
+
+   ```bash
+   git fetch origin pull/<số>/head:refs/pr<số>-head --force
+   git fetch origin main
+   git worktree add --detach /paperclip/workspaces/tmp/hs-soat-<số> origin/main
+   cd /paperclip/workspaces/tmp/hs-soat-<số>
+   ln -s /paperclip/workspaces/hs-code-api/node_modules node_modules   # quy tắc 1
+   git merge --no-edit refs/pr<số>-head
+   git rev-parse HEAD                      # SHA bản gộp thử — dán lên PR
+   git diff --stat origin/main HEAD        # PHẢI khớp số tệp + số dòng của PR
+   gh pr view <số> -R ozvietnam/hs-code-api --json files \
+     --jq '.files[] | "\(.path) +\(.additions) -\(.deletions)"'
+   ```
+
+### Bẫy 4 — `FETCH_HEAD` bị ghi đè, cổng chạy trên `main` thuần mà log vẫn xanh
+
+Phát hiện ở OZV-290 (Giám đốc Cổng OZ), cùng họ với hai bẫy trên. Khối lệnh cũ gộp thử bằng
+`git fetch origin pull/<số>/head` rồi `git merge FETCH_HEAD`. Nếu giữa hai lệnh đó có **bất kỳ**
+`git fetch` nào khác (ví dụ `git fetch origin main` để lấy `main` vừa tiến), lệnh fetch sau
+**ghi đè `FETCH_HEAD`**. `git merge FETCH_HEAD` kế tiếp báo `Already up to date`, cổng chạy trên
+**`main` thuần, không có một dòng nào của PR**, mà log ra đúng dạng của một bản gộp đạt — **đủ cả hai
+điều kiện của quy tắc 2**.
+
+Nguy hiểm đúng kiểu Bẫy 1 và 2: **log xanh thật, nhưng của một cây không phải cây mình tưởng đang kiểm.**
+Quy tắc 2 không bắt được, vì nó chỉ hỏi "số ca có thật không", không hỏi "cây này có chứa PR không".
+
+Ở repo này bẫy còn dễ sập hơn: dữ liệu nhóm HS gần như **luôn** cần `git fetch origin main` giữa lúc soát
+(nhánh thợ cắt từ `main` cũ, nhóm khác đã gộp xen vào), nên lệnh ghi đè `FETCH_HEAD` là việc *bình thường
+phải làm*, không phải sơ suất hiếm gặp.
+
+**Mẫu áp dụng đầu tiên:** PR #1190 (nhóm 8541) — bản gộp thử `8aabe677`, `3 tệp, +1174/−9`, khớp đúng số
+của PR; cả hai mốc `bo-kiem-luat --toan-bieu` đo tại chỗ trên **chính cây đó**, không dùng mốc lưu sẵn.
+
+Chuẩn chung toàn công ty: `ozplugin/docs/cong-gop-pr.md` (OZV-282) — câu chữ quy tắc 4 ở đây lấy từ đó.
 
 ## Bẫy 3 — chạy trọn bộ `npm test` trên máy agent thì KHÔNG BAO GIỜ xong
 
@@ -104,15 +142,28 @@ gh pr checks <số> -R ozvietnam/hs-code-api   # phải toàn xanh; đang chạy
 **Số ca trọn bộ lấy từ CI** (job `test` chạy sẵn `dem-ca-test.mjs` ở bước cuối) — mở log job và dán
 nguyên dòng `Số ca test đọc từ log: ...`. Đừng cố chạy trọn bộ ở máy agent (Bẫy 3).
 
-Rồi lấy nhánh ra worktree riêng, cài/nối `node_modules` (quy tắc 1), và chạy **phần liên quan**:
+Rồi **dựng bản gộp thử bằng ref có tên** và xác nhận cây có PR (quy tắc 4 — khối lệnh ở trên), cài/nối
+`node_modules` (quy tắc 1), và chạy **phần liên quan** trên **chính cây gộp thử đó**:
 
 ```bash
 node scripts/<bộ-test-liên-quan-thay-đổi>.mjs       # phải xanh, EXIT=0
 node scripts/bo-kiem-luat.mjs --toan-bieu           # chotSai/chotLoaiKhacSai không tăng, nemLoi 0
 ```
 
-Đạt hết ⇒ `gh pr merge <số> --squash`, rồi kiểm lại `main`. Không đạt ⇒ bình luận lỗi cụ thể lên thẻ, trả thợ.
+Hai mốc so sánh của `bo-kiem-luat` phải **đo tại chỗ cả hai bên** (nền `origin/main` và bản gộp thử)
+trong cùng nhịp soát — **không dùng mốc lưu sẵn** từ nhịp trước, vì `main` đã tiến.
 
-**Không tự gộp PR do chính mình viết** — chuyển cho người soát khác.
+Lấy `EXIT` của **chính lệnh node**, đừng để `| tail` ăn mất mã thoát:
+
+```bash
+node scripts/<bộ>.mjs > /tmp/g.log 2>&1; echo "EXIT=$?"; tail -6 /tmp/g.log
+```
+
+Đạt hết ⇒ **bình luận biên bản TRƯỚC** (SHA bản gộp thử + `git diff --stat` + số ca + `EXIT`), **rồi mới**
+`gh pr merge <số> --squash`, rồi kiểm lại `main`. Không đạt ⇒ bình luận lỗi cụ thể lên thẻ, trả thợ.
+
+**Không tự gộp PR do chính mình viết.** Người thứ hai soát độc lập + dán biên bản; cú `gh pr merge` vẫn
+do giám đốc dự án bấm sau khi có biên bản ĐẠT và CI xanh **trên commit cuối** (kiểm `head_sha` khớp —
+đừng dùng số ca của commit trước làm bằng chứng cho commit mới). Chuẩn chốt ở OZV-283/OZV-290.
 
 Xem thêm: `docs/MERGE-PROCEDURE.md` (PR có sửa `data/precedents.json`).
