@@ -198,10 +198,17 @@ check('#434 không mất ca đúng: Vỏ đúc nhôm, Que hàn inox, Ván ép g�
   mat('Vỏ đúc nhôm') === '["kim loại"]' && mat('Que hàn inox') === '["kim loại"]' && mat('Ván ép gỗ') === '["gỗ"]' && mat('Inox304') === '["kim loại"]' && mat('Ống nhựa uPVC') === '["plastic"]'
   && mat('CL vảidệt từ 100% polyester') === '["vải dệt"]' && mat('Bộ tóc giả dệt kim') === '["vải dệt"]' && mat('Hoa giả nhựa') === '["plastic"]');
 check('#434 "cổ ngỗng" không phải gỗ, "Slabs" không phải ABS; "sắt" là kim loại', mat('Micro cổ ngỗng') === '[]' && mat('Slabs') === '[]' && mat('Khung sắt sơn tĩnh điện') === '["kim loại"]');
-const MAU = { plastic: 'nhựa', 'cao su': 'cao su', giấy: 'giấy', gỗ: 'gỗ', 'kim loại': 'thép', 'thủy tinh': 'thủy tinh', 'gốm sứ': 'sứ', 'vải dệt': 'vải' };
+const MAU = { plastic: 'nhựa', 'cao su': 'cao su', giấy: 'giấy', gỗ: 'gỗ', 'kim loại': 'thép', 'thủy tinh': 'thủy tinh', 'gốm sứ': 'sứ', 'vải dệt': 'vải', 'vật liệu tổng hợp': 'vật liệu tổng hợp' };
 check('mẫu thô: kiểm được câu trích luật (lib/so-tay.js); là MỘT nhóm cờ u, ghép tiền tố vào .source thì áp cho mọi phương án (so-tay-extract-conditions)',
   chatLieuRegex('gốm sứ').test('Bằng sứ') && chatLieuRegex('plastic').test('84818041 - - - Bằng plastic') && chatLieuRegex('vải dệt').test('có một mặt được lót vải dệt')
   && MATERIALS.every(([n, re]) => re.flags.includes('u') && !re.flags.includes('g') && new RegExp(`bằng\\s+${re.source}`, re.flags).test(`bằng ${MAU[n]}`) && !new RegExp(`bằng\\s+${re.source}`, re.flags).test(MAU[n])));
+// #OZV-581 (OZV-540 PA-3 — T3): "vật liệu tổng hợp" (composite) — đọc được ở mọi nơi, CHỈ dùng để chốt ở nhóm
+// đã khai hồ sơ (data/ho-so/phan-biet-vat-lieu/<nhom>.json) ⇒ không tự chốt ở nhóm khác.
+check('#OZV-581 composite: đọc "vật liệu tổng hợp" (chữ chú giải), "composite(s)", 复合绝缘子/复合材料; KHÔNG đọc "compositeness"',
+  mat('Cách điện bằng composite') === '["vật liệu tổng hợp"]' && mat('bằng composites') === '["vật liệu tổng hợp"]'
+  && mat('vật liệu tổng hợp') === '["vật liệu tổng hợp"]' && mat('vật liệu cách điện tổng hợp') === '["vật liệu tổng hợp"]'
+  && mat('复合绝缘子') === '["vật liệu tổng hợp"]' && mat('复合材料') === '["vật liệu tổng hợp"]'
+  && mat('compositeness') === '[]' && mat('Máy đúc composite') === '[]');
 
 // ── Công tắc sổ tay dùng chung (HS_SO_TAY) — một bộ đọc cho động cơ và các cổng cảnh báo ──
 {

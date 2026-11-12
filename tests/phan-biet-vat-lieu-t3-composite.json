@@ -1,0 +1,121 @@
+{
+  "moTa": "Ca kiểm MỚI của OZV-581 (OZV-540 PA-3 — T3): vật liệu 'vật liệu tổng hợp' (composite) trong bảng đọc + vế phân biệt thứ 5 của nhóm 8546. Tệp RIÊNG — không sửa tệp cổng của GĐ (tests/ca-doi-chung-vat-lieu-8546-8547.json, scripts/test-ca-doi-chung-vat-lieu.mjs, scripts/bo-kiem-luat.mjs). Bốn chiều: (I) nêu composite làm vật liệu của hàng ⇒ chốt 85469000 (trước vá: 85462010 — gốm sứ, SAI VẬT LIỆU) · (II) gốm sứ ⇒ vẫn 85462010 (không hồi quy chiều ngược) · (III) không nêu vật liệu ⇒ hành vi Y HỆT main · (IV) ÂM TÍNH — mô tả có chữ 'composite' nhưng KHÔNG phải chất liệu của hàng (vật liệu của vật khác / chữ dính / động từ gia công / nhóm KHÁC) ⇒ hành vi Y HỆT main, KHÔNG đoán.",
+  "nen": "origin/main = 781c3789 (PR #1261 đã gộp) — đo bằng chính scripts/test-phan-biet-vat-lieu-t3.mjs ở chế độ --do",
+  "nhom": "8546",
+  "ca": [
+    {
+      "id": "t3-001",
+      "huong": "I",
+      "pn6": "854620",
+      "moTa": "Cách điện xuyên bằng composite cho máy biến điện",
+      "mong": { "ketQua": "CHOT", "hs": "85469000" },
+      "nenMain": { "ketQua": "CHOT", "hs": "85462010" },
+      "ghiChu": "Ca đỏ chủ lực của T3 (8546-008 của cổng GĐ). Chú giải nhóm 8546: 'vật liệu cách điện tổng hợp' là một trong các vật liệu làm được vật cách điện ⇒ thuộc tiêu đề 854690 'Loại khác' (dòng 85469000), KHÔNG phải 85462010 (gốm sứ)."
+    },
+    {
+      "id": "t3-002",
+      "huong": "I",
+      "pn6": "854620",
+      "moTa": "Cách điện xuyên bằng vật liệu composite cho máy biến điện 35kV",
+      "mong": { "ketQua": "CHOT", "hs": "85469000" },
+      "nenMain": { "ketQua": "CHOT", "hs": "85462010" },
+      "ghiChu": "Cách gọi 'vật liệu composite' (tiếng Anh trong tờ khai) ⇒ cùng vật liệu, cùng kết luận."
+    },
+    {
+      "id": "t3-003",
+      "huong": "I",
+      "pn6": "854620",
+      "moTa": "Cách điện xuyên bằng vật liệu tổng hợp cho máy biến điện",
+      "mong": { "ketQua": "CHOT", "hs": "85469000" },
+      "nenMain": { "ketQua": "CHOT", "hs": "85462010" },
+      "ghiChu": "Cách gọi theo CHỮ CHÚ GIẢI ('vật liệu cách điện tổng hợp') ⇒ 85469000."
+    },
+    {
+      "id": "t3-004",
+      "huong": "I",
+      "pn6": "854620",
+      "moTa": "复合绝缘子",
+      "mong": { "ketQua": "CHOT", "hs": "85469000" },
+      "nenMain": { "ketQua": "THIEU_SO_LIEU", "hs": null },
+      "ghiChu": "Mẫu Trung Quốc (复合绝缘子 = vật cách điện composite) ⇒ 85469000."
+    },
+    {
+      "id": "t3-005",
+      "huong": "I",
+      "pn6": "854610",
+      "moTa": "Cách điện xuyên bằng composite cho máy biến điện",
+      "mong": { "ketQua": "CHOT", "hs": "85469000" },
+      "nenMain": { "ketQua": "KHONG_THE_CHOT", "hs": null },
+      "ghiChu": "Hỏi ở tiêu đề ANH EM 854610 (thuỷ tinh) — vật liệu composite quyết định TIÊU ĐỀ ⇒ 85469000 (không phải 85461000)."
+    },
+    {
+      "id": "t3-006",
+      "huong": "I",
+      "pn6": "854620",
+      "moTa": "Insulator bằng vật liệu composite cho đường dây truyền tải 110kV",
+      "mong": { "ketQua": "CHOT", "hs": "85469000" },
+      "nenMain": { "ketQua": "THIEU_SO_LIEU", "hs": null },
+      "ghiChu": "Trước vá máy không chốt được (thiếu số liệu); có 'vật liệu composite' ⇒ chốt 85469000."
+    },
+    {
+      "id": "t3-007",
+      "huong": "II",
+      "pn6": "854620",
+      "moTa": "Cách điện xuyên bằng gốm sứ của máy biến điện 35kV",
+      "mong": { "ketQua": "CHOT", "hs": "85462010" },
+      "nenMain": { "ketQua": "CHOT", "hs": "85462010" },
+      "ghiChu": "Chiều ngược: gốm sứ ⇒ vẫn 85462010, KHÔNG rơi sang 85469000 (không hồi quy).",
+      "giuYHieuMain": true
+    },
+    {
+      "id": "t3-008",
+      "huong": "III",
+      "pn6": "854620",
+      "moTa": "Cách điện xuyên của máy biến dòng 35kV",
+      "mong": { "ketQua": "CHOT", "hs": "85462010" },
+      "nenMain": { "ketQua": "CHOT", "hs": "85462010" },
+      "ghiChu": "KHÔNG nêu vật liệu ⇒ giữ hành vi cũ (Q2 của GĐ): vẫn chốt 85462010.",
+      "giuYHieuMain": true
+    },
+    {
+      "id": "t3-009",
+      "huong": "IV",
+      "pn6": "854620",
+      "moTa": "Cách điện xuyên bằng gốm sứ cho máy biến điện, kèm tấm đệm composite",
+      "mong": { "ketQua": "CHOT", "hs": "85462010" },
+      "nenMain": { "ketQua": "CHOT", "hs": "85462010" },
+      "ghiChu": "ÂM TÍNH: có chữ 'composite' nhưng đó là vật liệu của TẤM ĐỆM đi kèm, không phải của vật cách điện; chữ báo 'bằng' chỉ gốm sứ ⇒ KHÔNG được nhảy 85469000.",
+      "giuYHieuMain": true
+    },
+    {
+      "id": "t3-010",
+      "huong": "IV",
+      "pn6": "854620",
+      "moTa": "Máy đúc composite dùng để làm cách điện cho máy biến điện",
+      "mong": { "ketQua": "THIEU_SO_LIEU", "hs": null },
+      "nenMain": { "ketQua": "THIEU_SO_LIEU", "hs": null },
+      "ghiChu": "ÂM TÍNH: 'đúc composite' = PHÔI (luật GIA_CONG_TRUOC chung) ⇒ không đọc là vật liệu ⇒ y hệt main, không đoán.",
+      "giuYHieuMain": true
+    },
+    {
+      "id": "t3-011",
+      "huong": "IV",
+      "pn6": "854710",
+      "moTa": "Phụ kiện cách điện bằng composite cho máy biến điện",
+      "mong": { "ketQua": "KHONG_THE_CHOT", "hs": null },
+      "nenMain": { "ketQua": "KHONG_THE_CHOT", "hs": null },
+      "ghiChu": "ÂM TÍNH + KHÔNG ÁP CHUNG: nhóm 8547 chưa khai hồ sơ phân biệt vật liệu ⇒ máy đọc được 'composite' nhưng KHÔNG dùng để chốt ⇒ y hệt main.",
+      "giuYHieuMain": true
+    },
+    {
+      "id": "t3-012",
+      "huong": "IV",
+      "pn6": "854620",
+      "moTa": "Cách điện xuyên bằng compositeness cho máy biến điện",
+      "mong": { "ketQua": "CHOT", "hs": "85462010" },
+      "nenMain": { "ketQua": "CHOT", "hs": "85462010" },
+      "ghiChu": "ÂM TÍNH: ranh giới chữ UNICODE — 'compositeness' KHÔNG phải 'composite' ⇒ không đọc ⇒ y hệt main.",
+      "giuYHieuMain": true
+    }
+  ]
+}
