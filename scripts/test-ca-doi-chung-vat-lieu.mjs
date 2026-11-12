@@ -4,11 +4,16 @@ import './test-isolate-data.mjs';
  * OZV-548 vòng hai (TRẢ THỢ PR #1255) — cổng chấm bộ 36 ca đối chứng VẬT LIỆU phải chặt theo HÀNH VI,
  * không chỉ theo "không chốt sai" (quy tắc 5 OZV-290: bản vá rỗng cũng phải ra số khác).
  *
- * OZV-558 vòng bốn (GĐ ngoại lệ có kiểm chứng, PR #1261) — cổng này khoá số SAU khi vá T2:
- * máy thật đạt DAT 35 · ĐỎ 1 (đỏ duy nhất `8546-008` = "composite", `canT3` ⇒ chờ T3 OZV-540 PA-3).
- * Số cũ (DAT 32 · ĐỎ 4 = 8546-005..008) là số TRƯỚC khi vá ⇒ 4 kỳ vọng B1/B2/D2/G3 đã đổi theo bảng
- * GĐ đo 2 chiều trên 2 worktree sạch: mọi kỳ vọng MỚI đều ĐỎ trên nền `origin/main` (rút bản vá ⇒ đỏ),
- * nên cổng là KHOÁ HỒI QUY, không phải nới thước.
+ * OZV-581 (GĐ cập nhật kỳ vọng, PR #1263 — T3 của OZV-540 PA-3) — cổng này khoá số SAU khi vá T3:
+ * máy thật đạt DAT 36 · ĐỎ 0 (đỏ duy nhất `8546-008` = "composite" ĐÃ hết đỏ vì T3 đọc được vật liệu
+ * tổng hợp/composite và nhóm 8546 đã khai vế ⇒ 85469000).
+ * Số cũ (DAT 35 · ĐỎ 1 = 8546-008) là số TRƯỚC T3 ⇒ 3 kỳ vọng B1/B2/G3 đã đổi theo bảng GĐ đo
+ * 2 chiều trên 2 worktree sạch (nền `origin/main` 781c3789 vs head PR #1263): kỳ vọng MỚI đều ĐỎ
+ * trên nền (rút bản vá T3 ⇒ đỏ trở lại), nên cổng là KHOÁ HỒI QUY, không phải nới thước.
+ * Lịch sử: OZV-558 vòng bốn (GĐ ngoại lệ có kiểm chứng, PR #1261) khoá số SAU khi vá T2:
+ * DAT 35 · ĐỎ 1; số cũ (DAT 32 · ĐỎ 4 = 8546-005..008) là số TRƯỚC khi vá ⇒ 4 kỳ vọng B1/B2/D2/G3
+ * đã đổi theo bảng GĐ đo 2 chiều trên 2 worktree sạch: mọi kỳ vọng MỚI đều ĐỎ trên nền
+ * `origin/main` (rút bản vá ⇒ đỏ), nên cổng là KHOÁ HỒI QUY, không phải nới thước.
  *
  * Lỗi cũ mà GĐ bắt: nhánh DUNG_VAT_LIEU chấm DAT cả khi máy MẤT CHỐT (chotVao=null) ⇒ một "T2" chỉ cần
  * khiến máy ngừng chốt mọi ca (CHOT → KHONG_THE_CHOT) vẫn ra 0 đỏ + 0 đổi hành vi — bẫy bản-vá-rỗng-cũng-xanh.
@@ -63,14 +68,14 @@ const tim = (cd, id) => cd.ca.find((x) => x.id === id);
   check('A4 pn6 luôn là tiền tố của hs8 (hỏi đúng phân nhóm 6 số của dòng)', pn6Lech.length === 0, pn6Lech);
 }
 
-// ── B. Máy thật trên cây hiện tại: DAT 35 · ĐỎ 1 (8546-008 chờ T3), 0 đổi hành vi, 0 ném lỗi ──────
+// ── B. Máy thật trên cây hiện tại: DAT 36 · ĐỎ 0 (T3 đã vá xong 8546-008), 0 đổi hành vi, 0 ném lỗi ──
 const that = chayCaDoiChungVatLieu(['8546', '8547']);
 {
-  check('B1 máy thật: 36 ca — DAT 35 · DO 1 (cầnT3 1) · DOI_HANH_VI 0 · NEM_LOI 0',
-    bang(that).tong === 36 && that.dat === 35 && that.do === 1 && that.doCanT3 === 1 && that.doiHanhVi === 0 && that.nemLoi === 0,
+  check('B1 máy thật: 36 ca — DAT 36 · DO 0 · DOI_HANH_VI 0 · NEM_LOI 0 (T3 đã vá hết ca đỏ)',
+    bang(that).tong === 36 && that.dat === 36 && that.do === 0 && that.doCanT3 === 0 && that.doiHanhVi === 0 && that.nemLoi === 0,
     bang(that));
   const doIds = that.ca.filter((c) => c.trangThai === 'DO').map((c) => c.id).sort();
-  check('B2 đỏ đúng chỗ là 8546-008 ("composite" chờ T3) — 005/006/007 đã vá xong', JSON.stringify(doIds) === JSON.stringify(['8546-008']), doIds);
+  check('B2 không còn ca đỏ nào — 8546-008 ("composite") đã hết đỏ sau T3; 005/006/007 đã vá từ T2', JSON.stringify(doIds) === JSON.stringify([]), doIds);
 }
 
 // ── C. CẠM BẪY BẢN VÁ RỖNG (quy tắc 5): máy ngừng chốt HOÀN TOÀN ⇒ cổng cũ ra 0 đỏ/0 đổi hành vi ────
@@ -130,8 +135,8 @@ const that = chayCaDoiChungVatLieu(['8546', '8547']);
     tim(cd, '8546-016').trangThai === 'DO', tim(cd, '8546-016'));
   check('G2 ca coSo=CHOT chốt dòng sai ngoài hs8Trai (85461000 ≠ hs8Dung 85469000) ⇒ DO, không đổi thành DOI_HANH_VI',
     tim(cd, '8546-005').trangThai === 'DO', tim(cd, '8546-005'));
-  check('G3 bẫy đã sập: đỏ 1→3 (8546-005 + 8546-016 chuyển từ DAT sang DO), đổi hành vi vẫn 0 (bản vá sai dòng không còn vượt cổng)',
-    cd.do === 3 && cd.doiHanhVi === 0 && cd.dat === 33, bang(cd));
+  check('G3 bẫy đã sập: đỏ 1→2 (8546-005 + 8546-016 chuyển từ DAT sang DO; 8546-008 hết đỏ sau T3 nên đỏ đếm 2), đổi hành vi vẫn 0 (bản vá sai dòng không còn vượt cổng)',
+    cd.do === 2 && cd.doiHanhVi === 0 && cd.dat === 34, bang(cd));
 }
 
 console.log(`\ncổng đối chứng vật liệu 8546+8547 (OZV-548 vòng ba): ${passed} PASS, ${failed} FAIL`);
