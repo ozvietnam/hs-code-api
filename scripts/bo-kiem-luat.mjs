@@ -185,8 +185,50 @@ const loiKhoa = (fact, giaTri, duPhong) => {
   return boCuPhapRegex(duPhong);
 };
 
+/**
+ * Lời của một VẾ SỐ ("đường kính 20mm") — OZV-325 vòng hai, theo cách GĐ chỉ ở PR #1223.
+ *
+ * Trước: nhánh vế số tự ghép `boCuPhapRegex(cachDoc.vi[0]) + số + donVi`. `cachDoc` là MẪU REGEX, nên 15 khoá
+ * SỐ dùng lookaround/nhóm chọn vẫn lọt cú pháp vào chữ hàng dù đã bóc: `"đường kính(?!\s*(?:trong|lõi|cửa))"`
+ * ra `"đường kính(?! trong|lõi|cửa)"`, `"(?<!đường\s+chéo\s+ngoài\s+của\s+)mặt\s+cắt\s+ngang(?!\s+hình)"` ra
+ * `"?<!đường chéo ngoài của mặt cắt ngang?! hình"`. Bóc lookaround bằng cách gỡ ngoặc thì về nguyên tắc không
+ * bao giờ đủ — nên KHÔNG đắp thêm regex vào `boCuPhapRegex`, mà đi khuôn lời đúng của repo: `cachViet` qua
+ * `TV.vietCum` (cả 15 khoá đều đã có `cachViet`).
+ *
+ * `vietCum` kiểu SO viết số ở ĐƠN VỊ CHUẨN của khoá, nên phải `TV.quyDoi` trước ("90 tấn" → "90000kg"), đúng
+ * như `lib/dieu-kien-so.js` quy ngưỡng về đơn vị chuẩn khi chấm.
+ *
+ * Cổng tự kiểm bắt buộc, chọn theo thứ tự:
+ *   1. lời nào máy đọc (`TV.docGiaTri`) đọc lại ra ĐÚNG con số vừa viết — ca kiểm mà máy không đọc nổi chữ
+ *      hàng thì vô nghĩa, nó đo bộ đọc chứ không đo luật. Khuôn `cachViet` có khoá đặt đơn vị giữa câu
+ *      ("hàm lượng amoniac {giaTri} tính theo thể tích") mà bộ đọc không đọc lại được ⇒ khoá đó giữ chữ cũ;
+ *   2. cả hai đều không đọc lại đúng ⇒ lấy lời SẠCH cú pháp (lời mới).
+ *
+ * Nhánh 2 có ca thật: `84603110` ghi ngưỡng `duongKinh ≤ 3,175 mm` (nguyên văn biểu). Chữ cũ ghép bằng
+ * `${value}` ra "3.175" nên bộ đọc đọc thành **3175 mm** — sai 1000 lần, ca kiểm hoá ra ca của hàng khác;
+ * chữ mới "đường kính 3,175mm" đúng hình dạng nhưng bộ đọc trả `CHUA_BIET` (nó coi ba chữ số sau dấu phẩy là
+ * phân nhóm nghìn, nên cũng không đọc nổi chính nguyên văn biểu). Đó là lỗi của BỘ ĐỌC `lib/tu-vung.js`, sửa
+ * thì ảnh hưởng toàn biểu nên phải PR riêng có mốc riêng (đã báo lên thẻ OZV-325); ở đây chọn lời sạch để ca
+ * kiểm không chốt theo một con số bịa.
+ */
+export function loiVeSo(fact, value, donVi, duPhong) {
+  const cu = `${boCuPhapRegex(duPhong)} ${value} ${donVi || ''}`.trim();
+  try {
+    const chuan = TV.quyDoi(fact, value, donVi);
+    if (chuan == null) return cu;
+    const moi = TV.vietCum(fact, chuan);
+    if (!moi) return cu;
+    const docDung = (chu) => {
+      const d = TV.docGiaTri(fact, chu);
+      return d && d.trangThai === 'DA_CO' && typeof d.giaTri === 'number' && Math.abs(d.giaTri - chuan) < 1e-9;
+    };
+    if (docDung(moi)) return moi;
+    return docDung(cu) ? cu : moi;
+  } catch { return cu; }
+}
+
 /** Sinh cụm chữ KHẲNG ĐỊNH một điều kiện đơn (dùng cho nút trung gian PHAI_CO). */
-function cumKhangDinh(c) {
+export function cumKhangDinh(c) {
   if (!c) return '';
   if (c.op === 'HOAC' && Array.isArray(c.phuongAn) && c.phuongAn[0]) {
     return c.phuongAn[0].map(cumKhangDinh).filter(Boolean).join(', ');
@@ -215,15 +257,14 @@ function cumKhangDinh(c) {
     return loiKhoa(c.fact, [v], k?.moTaGiaTri?.[v]?.nhanVi || v);
   }
   if (['<=', '<', '>=', '>'].includes(c.op)) {
-    const ten = boCuPhapRegex(k?.cachDoc?.vi?.[0] || k?.nhanVi || String(c.fact).replace(/_/g, ' '));
     const v = c.op === '<=' || c.op === '<' ? Number((c.value * 0.5).toFixed(3)) : Number((c.value * 1.5 + 1).toFixed(3));
-    return `${ten} ${v} ${c.donVi || ''}`.trim();
+    return loiVeSo(c.fact, v, c.donVi, k?.cachDoc?.vi?.[0] || k?.nhanVi || String(c.fact).replace(/_/g, ' '));
   }
   return '';
 }
 
 /** Sinh cụm chữ TRÁI (phủ định) cho một nhóm điều kiện anh em PHAI_KHONG. */
-function cumPhuDinhNhom(dsDieuKien) {
+export function cumPhuDinhNhom(dsDieuKien) {
   if (!Array.isArray(dsDieuKien) || !dsDieuKien.length) return '';
   const c = dsDieuKien[0];
   if (!c) return '';
@@ -257,9 +298,8 @@ function cumPhuDinhNhom(dsDieuKien) {
       .join(', ');
   }
   if (['<=', '<', '>=', '>'].includes(c.op)) {
-    const ten = boCuPhapRegex(k?.cachDoc?.vi?.[0] || k?.nhanVi || String(c.fact).replace(/_/g, ' '));
     const v = c.op === '<=' || c.op === '<' ? Number((c.value * 2 + 10).toFixed(3)) : Number(Math.max(0.1, c.value * 0.4).toFixed(3));
-    return `${ten} ${v} ${c.donVi || ''}`.trim();
+    return loiVeSo(c.fact, v, c.donVi, k?.cachDoc?.vi?.[0] || k?.nhanVi || String(c.fact).replace(/_/g, ' '));
   }
   return '';
 }
@@ -296,7 +336,6 @@ function sinhMoTaLoaiTru(hs8, pn6, st) {
   }
   for (const [fact, groups] of soRanhGioi.entries()) {
     const k = (() => { try { return TV.layKhoa(fact); } catch { return null; } })();
-    const ten = boCuPhapRegex(k?.cachDoc?.vi?.[0] || k?.nhanVi || String(fact).replace(/_/g, ' '));
     const donVi = groups[0]?.[0]?.donVi || k?.donViChuan || '';
     const maxVal = Math.max(...groups.flat().map((c) => Number(c.value) || 0));
     const minVal = Math.min(...groups.flat().map((c) => Number(c.value) || 0));
@@ -322,13 +361,13 @@ function sinhMoTaLoaiTru(hs8, pn6, st) {
         break;
       }
     }
-    parts.push(`${ten} ${chosen} ${donVi}`.trim());
+    parts.push(loiVeSo(fact, chosen, donVi, k?.cachDoc?.vi?.[0] || k?.nhanVi || String(fact).replace(/_/g, ' ')));
   }
   return parts.join(', ');
 }
 
 /** Sinh toàn bộ các ca kiểm luật cho một nhóm 4 số. */
-function sinhCaNhom(nhom4) {
+export function sinhCaNhom(nhom4) {
   const t = T.tree();
   const codes8 = t.codes.filter((c) => c.startsWith(nhom4) && c.length === 8);
   const byPn6 = new Map();
