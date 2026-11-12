@@ -70,11 +70,19 @@ CEO chốt 29/09/2026: bỏ Vercel, chạy trên Coolify của server nhà. GitH
 `/api/classify` mất 2–5 phút/món. Mỗi commit vào `main` làm thay container; nếu container cũ bị `docker stop`
 với mặc định 10 giây thì mọi lượt đang chạy dở chết (khách thấy "không kết nối được", Cổng hoàn điểm, ERP thử lại tốn tiền).
 
-**Phía mã (đã có từ #418):**
-- `server.js` đếm lượt đang chạy (`lib/inflight.js`). Nhận `SIGTERM`/`SIGINT` → **dừng nhận lượt mới** (`server.close`),
-  `GET /api/health` trả **503 `status: draining`** để healthcheck/LB ngừng đưa lượt mới, rồi **chờ lượt đang chạy xong**
-  tối đa `HS_DRAIN_MS` (mặc định 330 000 ms = trần request 300 s + dư) mới `exit 0`. Log ghi "chờ N lượt" và "đã xả hết sau X ms".
+**Phía mã (đã có từ #418, gia cố thêm tại OZV-505 ngày 12/11/2026):**
+- `server.js` gọi `warmUpHandlers()` trước `server.listen`: nạp sẵn toàn bộ 15 handler trong `api/*.js` và giải nén trước bảng biểu thuế gốc (`lib/tax-lookup` → `bieu-chinh.jsonl.gz`) vào RAM trước khi mở cổng 3000 — rút thời gian phản hồi lượt `GET /api/tax` đầu tiên sau khi khởi động từ **~2.200 ms xuống ~2 ms**, tránh làm nghẽn Event Loop lúc container vừa lên.
+- `server.js` đếm lượt đang chạy (`lib/inflight.js`). Nhận `SIGTERM`/`SIGINT` (`gracefulShutdown`) → bật `inflight.datDangXa(true)` **tức thì** để `GET /api/health` trả **503 `status: draining`** và mọi phản hồi HTTP tự động đính kèm header **`Connection: close`** (để Cổng OZ / proxy đóng kết nối Keep-Alive, không gửi tiếp lượt thứ 2 vào socket của container đang tắt); hỗ trợ khoảng đệm `HS_PRE_CLOSE_MS` trước khi gọi `server.close()` + `server.closeIdleConnections()`, rồi **chờ lượt đang chạy xong** tối đa `HS_DRAIN_MS` (mặc định 330 000 ms = trần request 300 s + 30 s đệm) mới `exit 0`.
+- `Dockerfile` đặt `STOPSIGNAL SIGTERM` và rút chu kỳ `HEALTHCHECK` xuống `--interval=10s --timeout=3s --start-period=10s --retries=2` (thay vì `30s / retries=3` cũ).
 - `GET /api/health` → `checks.engine.inflight` (số lượt đang chạy) + `checks.engine.draining`.
+
+**Đối chiếu sự cố cụm lỗi `tra_thue` tuần 05–10/11 (OZV-505):**
+- Số đo từ Cổng OZ: tuần 05–10/11 có `36/385` lượt `tra_thue` bị `BACKEND_LOI` (`9,4%`), rơi thành cụm (ngày 09/11 ~9h: 8 lượt; ngày 10/11 ~10h: 9 lượt), thời gian lỗi tức thì `~16 ms` (từ chối kết nối `ECONNREFUSED`).
+- Đối chiếu `git log origin/main --first-parent`:
+  - Toàn tuần 05–10/11 nhánh `main` có **225 commit** (05/11: 77 · 06/11: 62 · 07/11: 57 · 08/11: 5 · 09/11: 20 · 10/11: 4).
+  - Ngày **10/11**: suốt từ 00:00 đến 10:51 UTC không có commit nào, nhưng đúng khung **10h51–11h01 UTC** (17h51–18h01 giờ VN) có 2 lần gộp PR liên tiếp cách nhau 10 phút (`c4b2e6bb` lúc `10:51:51 UTC` — PR #1177; `706916cc` lúc `11:01:41 UTC` — PR #1178).
+  - Ngày **09/11**: theo giờ VN có commit đồng bộ `d9dfb9b0` lúc `08:44:32 +0700` (trước 9h sáng VN) và cụm 5 PR gộp dồn dập lúc `11:24–11:47 +0700`; theo giờ UTC (múi giờ cột `created_at` trong bảng `luot_goi` của Cổng) có PR #1172 gộp lúc `08:30:00 UTC` (`16eed39d`) và PR #1174 lúc `10:06–10:42 UTC` (`ca3cbc26` / `f9639442`).
+  - Vì trên máy chủ triển khai, `deploy-safe.sh` đang dừng container cũ rồi mới bật container mới trên cùng một cổng `3000`, mỗi lần gộp `main` tạo ra một cửa sổ chết vài giây (`ECONNREFUSED`). Trước OZV-499, Cổng OZ thử lại ngay lập tức 0 ms delay nên cả 2 lần gọi đều đập trúng cửa sổ chết (~8 ms × 2 = **~16 ms**). Xem phiếu giao việc hạ tầng tại `docs/viec/yeu-cau-2026-11-12-deploy-khong-gian-doan.md`.
 
 **Phía máy chủ (.120) — phải làm, mã trong repo không tự làm được:**
 1. `deploy-safe.sh`: dừng container cũ bằng **`docker stop -t 360 hs-code-api`** (Coolify: *Stop timeout* / `stop_grace_period: 360s`).
