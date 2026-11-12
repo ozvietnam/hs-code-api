@@ -14,8 +14,8 @@
     "boi": "CLAUDE_DUYET",
     "phien": "claude-agent:duyet-8543-20261112#soat-8543",
     "ngay": "2026-11-12",
-    "ghiChu": "Soát lại gói 8543 (OZV-452) trên nền main 7c863f2d. Sửa duy nhất so với gói Mac: điều kiện NÚT 8543702 viết thành HOAC 2 phương án — (1) tenLoai \"Thiết bị điều khiển từ xa\" (phạm vi gốc của tiêu đề, dùng cho mô tả tự do); (2) tenLoai nguyên văn cả tiêu đề 7 số (dùng khi mô tả trích nguyên văn tiêu đề). Lý do: lõi #1244 (lib/dieu-kien-so.js RE_PHU_DINH_VE bỏ \\b, thay bằng (?![\\p{L}\\p{M}])) nay đọc đúng vế \"trừ …\" là phủ định; mô tả hàng trích tiêu đề ⇒ cụm \"Thiết bị điều khiển từ xa\" nằm trong vế loại trừ ⇒ điều kiện nút cũ bị đọc thành phủ định ⇒ nút 8543702 bị loại ⇒ dòng .21 (dòng con duy nhất) không chốt được (đo 8543: DONG_CO_TEN 14/15). Mục BO_VE \"bằng sóng radio\" của nút bị bỏ vì thừa (vế đã có phương án (2) phủ); lý do loại trừ cấp nhóm (85269200) chuyển vào ghi chú QUYET_DINH của 8543702. Các dòng con và các cặp chồng trục giữ nguyên so với gói Mac.",
-    "bam": "73b3658ad127762d351decfea486ba4131f98106c7f1659c3113590a41427b97"
+    "ghiChu": "Soát lại gói 8543 (OZV-452 / OZV-485) trên nền main 7c863f2d. Nút 8543702 và dòng 85437021 giữ PHAI_KHONG cho vế loại trừ ('điều khiển từ xa bằng sóng radio' / 'bộ điều khiển trò chơi thuộc nhóm 95.04') kèm nhánh HOAC thứ hai là nguyên văn tiêu đề để mô tả trích tiêu đề không bị vế 'trừ …' đọc thành phủ định.",
+    "bam": "7280f0ca7df79c34647ef36d1b16af8d4b5b25376e2c5524888ce90db7bfa386"
   },
   "dieuKienNut": [
     {
@@ -31,6 +31,14 @@
                 "fact": "tenLoai",
                 "op": "TEN_LOAI",
                 "value": "Thiết bị điều khiển từ xa"
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "điều khiển từ xa bằng sóng radio"
+                ],
+                "chieu": "PHAI_KHONG"
               }
             ],
             [
@@ -71,14 +79,36 @@
       "trich": "85437021 - - - Thiết bị điều khiển từ xa hồng ngoại không dây dùng cho máy chơi trò chơi điện tử video, trừ bộ điều khiển trò chơi thuộc nhóm 95.04 ",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "điều khiển từ xa hồng ngoại không dây"
-        },
-        {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": "máy chơi trò chơi điện tử video"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "điều khiển từ xa hồng ngoại không dây"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "máy chơi trò chơi điện tử video"
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "bộ điều khiển trò chơi thuộc nhóm 95.04"
+                ],
+                "chieu": "PHAI_KHONG"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Thiết bị điều khiển từ xa hồng ngoại không dây dùng cho máy chơi trò chơi điện tử video, trừ bộ điều khiển trò chơi thuộc nhóm 95.04"
+              }
+            ]
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -351,13 +381,7 @@
     {
       "ma": "85437021",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85437021 \"Thiết bị điều khiển từ xa hồng ngoại không dây dùng cho máy chơi trò chơi điện tử video, trừ bộ điều khiển trò chơi thuộc nhóm 95.04\" ⇒ tenLoai \"điều khiển từ xa hồng ngoại không dây\" (\"Thiết bị\" lặp tầng 8543702) + dungCho \"máy chơi trò chơi điện tử video\". Vế \"trừ … 95.04\" miễn bằng BO_VE (loại trừ cấp phần/nhóm)."
-    },
-    {
-      "ma": "85437021",
-      "loai": "BO_VE",
-      "ve": "trừ bộ điều khiển trò chơi thuộc nhóm 95.04",
-      "lyDo": "Vế loại trừ cấp PHẦN, không phân biệt .21 với .29: bộ điều khiển trò chơi thuộc nhóm 95.04 là hàng Chương 95, mà Chú giải 1 Phần XVI ghi \"(p) Các sản phẩm thuộc Chương 95\" không thuộc Phần XVI (ch85.phan) — hàng đó không bao giờ ở nhóm 85.43. Ghi PHAI_KHONG chữ tự do sẽ đẩy hàng nhóm 95.04 sang 85437029 và chặn mọi điều khiển hồng ngoại cho máy trò chơi không nhắc chữ '95.04' (máy chấm vắng ⇒ không tất định)."
+      "ghiChu": "tax.85437021 \"Thiết bị điều khiển từ xa hồng ngoại không dây dùng cho máy chơi trò chơi điện tử video, trừ bộ điều khiển trò chơi thuộc nhóm 95.04\" ⇒ HOAC 2 phương án: (1) tenLoai \"điều khiển từ xa hồng ngoại không dây\" + dungCho \"máy chơi trò chơi điện tử video\" + PHAI_KHONG \"bộ điều khiển trò chơi thuộc nhóm 95.04\" (loại trừ bộ điều khiển trò chơi nhóm 95.04); (2) tenLoai nguyên văn cả tiêu đề 85437021 để mô tả trích nguyên văn tiêu đề không bị vế \"trừ …\" đọc thành phủ định."
     },
     {
       "ma": "85437030",
