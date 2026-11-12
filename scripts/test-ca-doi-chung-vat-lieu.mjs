@@ -4,6 +4,12 @@ import './test-isolate-data.mjs';
  * OZV-548 vòng hai (TRẢ THỢ PR #1255) — cổng chấm bộ 36 ca đối chứng VẬT LIỆU phải chặt theo HÀNH VI,
  * không chỉ theo "không chốt sai" (quy tắc 5 OZV-290: bản vá rỗng cũng phải ra số khác).
  *
+ * OZV-558 vòng bốn (GĐ ngoại lệ có kiểm chứng, PR #1261) — cổng này khoá số SAU khi vá T2:
+ * máy thật đạt DAT 35 · ĐỎ 1 (đỏ duy nhất `8546-008` = "composite", `canT3` ⇒ chờ T3 OZV-540 PA-3).
+ * Số cũ (DAT 32 · ĐỎ 4 = 8546-005..008) là số TRƯỚC khi vá ⇒ 4 kỳ vọng B1/B2/D2/G3 đã đổi theo bảng
+ * GĐ đo 2 chiều trên 2 worktree sạch: mọi kỳ vọng MỚI đều ĐỎ trên nền `origin/main` (rút bản vá ⇒ đỏ),
+ * nên cổng là KHOÁ HỒI QUY, không phải nới thước.
+ *
  * Lỗi cũ mà GĐ bắt: nhánh DUNG_VAT_LIEU chấm DAT cả khi máy MẤT CHỐT (chotVao=null) ⇒ một "T2" chỉ cần
  * khiến máy ngừng chốt mọi ca (CHOT → KHONG_THE_CHOT) vẫn ra 0 đỏ + 0 đổi hành vi — bẫy bản-vá-rỗng-cũng-xanh.
  * Cổng siết theo 3 quy tắc GĐ chỉ định:
@@ -57,14 +63,14 @@ const tim = (cd, id) => cd.ca.find((x) => x.id === id);
   check('A4 pn6 luôn là tiền tố của hs8 (hỏi đúng phân nhóm 6 số của dòng)', pn6Lech.length === 0, pn6Lech);
 }
 
-// ── B. Máy thật trên cây hiện tại: 4 đỏ đúng chỗ (8546-005..008), 0 đổi hành vi, 0 ném lỗi ─────────
+// ── B. Máy thật trên cây hiện tại: DAT 35 · ĐỎ 1 (8546-008 chờ T3), 0 đổi hành vi, 0 ném lỗi ──────
 const that = chayCaDoiChungVatLieu(['8546', '8547']);
 {
-  check('B1 máy thật: 36 ca — DAT 32 · DO 4 (cầnT3 1) · DOI_HANH_VI 0 · NEM_LOI 0',
-    bang(that).tong === 36 && that.dat === 32 && that.do === 4 && that.doCanT3 === 1 && that.doiHanhVi === 0 && that.nemLoi === 0,
+  check('B1 máy thật: 36 ca — DAT 35 · DO 1 (cầnT3 1) · DOI_HANH_VI 0 · NEM_LOI 0',
+    bang(that).tong === 36 && that.dat === 35 && that.do === 1 && that.doCanT3 === 1 && that.doiHanhVi === 0 && that.nemLoi === 0,
     bang(that));
   const doIds = that.ca.filter((c) => c.trangThai === 'DO').map((c) => c.id).sort();
-  check('B2 4 đỏ đúng chỗ là 8546-005..008 (đỏ "trước khi vá" của T2)', JSON.stringify(doIds) === JSON.stringify(['8546-005', '8546-006', '8546-007', '8546-008']), doIds);
+  check('B2 đỏ đúng chỗ là 8546-008 ("composite" chờ T3) — 005/006/007 đã vá xong', JSON.stringify(doIds) === JSON.stringify(['8546-008']), doIds);
 }
 
 // ── C. CẠM BẪY BẢN VÁ RỖNG (quy tắc 5): máy ngừng chốt HOÀN TOÀN ⇒ cổng cũ ra 0 đỏ/0 đổi hành vi ────
@@ -77,13 +83,15 @@ const that = chayCaDoiChungVatLieu(['8546', '8547']);
   check('C2 đúng 9 ca DOI_HANH_VI (8 ca coSo=CHOT + 1 KHONG_NEU lệch THIEU_SO_LIEU)', cd.doiHanhVi === 9 && cd.dat === 27 && cd.do === 0, bang(cd));
 }
 
-// ── D. T2 vá ĐÚNG 1 ca: đỏ giảm 4→3, ca được vá thành DAT, không phát sinh đổi hành vi ─────────────
+// ── D. Vá ĐÚNG ca đỏ còn lại: đỏ 1→0, ca được vá thành DAT, không phát sinh đổi hành vi ───────────
+// Ca thưởng = 8546-008 ("composite", chờ T3 OZV-540 PA-3) — ca đỏ DUY NHẤT còn lại sau khi vá T2.
+// Trước khi vá T2 ca thưởng là 8546-005 (đã DAT sẵn ⇒ cổng không còn thưởng vá thật, nên đổi).
 {
-  const moTa005 = fixture.find((c) => c.id === '8546-005').moTa;
-  const stubVat = (q) => (q.productText === moTa005 ? { ketQua: 'CHOT', hs: '85469000', lyDo: 'gia-suat-t2-vat-lieu' } : chotDong8(q));
+  const moTa008 = fixture.find((c) => c.id === '8546-008').moTa;
+  const stubVat = (q) => (q.productText === moTa008 ? { ketQua: 'CHOT', hs: '85469000', lyDo: 'gia-suat-t2-vat-lieu' } : chotDong8(q));
   const cd = chayCaDoiChungVatLieu(['8546', '8547'], stubVat);
-  check('D1 T2 chốt đúng 85469000 cho ca 8546-005 ⇒ ca đó DAT', tim(cd, '8546-005').trangThai === 'DAT', tim(cd, '8546-005'));
-  check('D2 đỏ giảm 4→3, đổi hành vi vẫn 0 (cổng thưởng vá thật, không chỉ phạt)', cd.do === 3 && cd.doiHanhVi === 0, bang(cd));
+  check('D1 vá chốt đúng 85469000 cho ca 8546-008 ⇒ ca đó DAT', tim(cd, '8546-008').trangThai === 'DAT', tim(cd, '8546-008'));
+  check('D2 đỏ giảm 1→0, đổi hành vi vẫn 0 (cổng thưởng vá thật, không chỉ phạt)', cd.do === 0 && cd.doiHanhVi === 0 && cd.dat === 36, bang(cd));
 }
 
 // ── E. Q2: từ chối mà deXuat lệch pn6 đúng ⇒ DO; deXuat đúng pn6 vẫn bị bắt mất chốt (Q1) ──────────
@@ -122,8 +130,8 @@ const that = chayCaDoiChungVatLieu(['8546', '8547']);
     tim(cd, '8546-016').trangThai === 'DO', tim(cd, '8546-016'));
   check('G2 ca coSo=CHOT chốt dòng sai ngoài hs8Trai (85461000 ≠ hs8Dung 85469000) ⇒ DO, không đổi thành DOI_HANH_VI',
     tim(cd, '8546-005').trangThai === 'DO', tim(cd, '8546-005'));
-  check('G3 bẫy đã sập: đỏ 4→5 (8546-016 chuyển từ DAT sang DO), đổi hành vi vẫn 0 (bản vá sai dòng không còn vượt cổng)',
-    cd.do === 5 && cd.doiHanhVi === 0 && cd.dat === 31, bang(cd));
+  check('G3 bẫy đã sập: đỏ 1→3 (8546-005 + 8546-016 chuyển từ DAT sang DO), đổi hành vi vẫn 0 (bản vá sai dòng không còn vượt cổng)',
+    cd.do === 3 && cd.doiHanhVi === 0 && cd.dat === 33, bang(cd));
 }
 
 console.log(`\ncổng đối chứng vật liệu 8546+8547 (OZV-548 vòng ba): ${passed} PASS, ${failed} FAIL`);
