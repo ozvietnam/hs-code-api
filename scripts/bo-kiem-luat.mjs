@@ -449,6 +449,92 @@ export function sinhCaNhom(nhom4) {
   return { caDongCoTen, caTenKhac, caLoaiTruLK, caThieuDuKien };
 }
 
+/** Ca đối chứng VẬT LIỆU viết tay (OZV-540 T1 / OZV-548) — mô tả kiểu khách khai thật, KHÔNG sinh từ dữ liệu.
+ * Vì sao cần bộ này: sinhCaNhom() sinh mô tả từ chính tên tiêu đề/dòng nên mô tả LUÔN chứa đúng vật liệu
+ * của tiêu đề ⇒ không bao giờ ra ca trái vật liệu ⇒ bộ sinh từ dữ liệu không bắt được lỗi "chốt 85462010
+ * cho hàng nhựa". Ca tay trong tests/ca-doi-chung-vat-lieu-8546-8547.json phải ĐỎ trên main (đỏ đúng chỗ,
+ * làm bằng chứng "trước khi vá" cho T2 của OZV-540) và XANH trên nhánh vá T2.
+ * Đo RIÊNG như caDacBiet8539 — không cộng vào tongSoCa/chotSai… để số bộ sinh từ dữ liệu không đổi khi thêm ca tay.
+ *
+ * CỔNG CHẤM SIẾT sau TRẢ THỢ PR #1255 (quy tắc 5 OZV-290 — bản vá rỗng không được xanh): bộ này là điều kiện
+ * nghiệm thu T2 nên chấm theo HÀNH VI, không chỉ theo "không chốt sai":
+ *  1. TRAI/DUNG có coSo.ketQua=CHOT (hoặc LOAI_KHAC) mà mất chốt (chotVao=null) ⇒ DOI_HANH_VI — T2 "không
+ *     chốt nữa" không được coi là đạt; kỳ vọng T2 là chốt ĐÚNG dòng vật liệu (CHOT 85469000 cho hàng nhựa…).
+ *  2. Máy từ chối mà deXuat lệch phân nhóm 6 số đúng của ca (hs8Dung) ⇒ DO — chặn vì vật liệu mà vẫn đề
+ *     xuất tiêu đề sai vật liệu là lỗi, không phải "an toàn".
+ *  3. KHONG_NEU_VAT_LIEU giữ nguyên tiêu chí so coSo (không hồi quy) — đã chặt sẵn từ T1.
+ *  4. (vòng 3) Máy CHỐT dòng 8 số ≠ hs8Dung (dòng đúng) ⇒ DO — kể cả dòng NGOÀI hs8Trai. Lỗi thật
+ *     GĐ chỉ tay: cổng cũ chỉ bắt "chốt đúng vào dòng bị loại trừ" (hs8Trai), nên máy chốt một dòng
+ *     sai khác rơi vào nhánh else ⇒ DAT ⇒ T2 vá sai dòng 8 số vẫn ra vàng giả (bản vá rỗng cũng xanh).
+ *     Chốt sai dòng = LỖI, không phải "đổi hành vi" ⇒ không được chấm DOI_HANH_VI. */
+export function chayCaDoiChungVatLieu(dsNhom4, chot = chotDong8) {
+  const p = path.join(ROOT, 'tests', 'ca-doi-chung-vat-lieu-8546-8547.json');
+  if (!fs.existsSync(p)) return { tong: 0, dat: 0, do: 0, doCanT3: 0, doiHanhVi: 0, nemLoi: 0, ca: [] };
+  const all = JSON.parse(fs.readFileSync(p, 'utf8')).ca || [];
+  const out = [];
+  for (const c of all) {
+    if (c.nhom && !dsNhom4.includes(c.nhom)) continue;
+    let kq = null;
+    let loi = null;
+    try {
+      kq = chot({ hs: c.pn6, productText: c.moTa });
+    } catch (e) {
+      loi = String(e?.message || e);
+    }
+    const chotVao = kq && (kq.ketQua === 'CHOT' || kq.ketQua === 'LOAI_KHAC') ? nz(kq.hs) : null;
+    const coSoLaChot = ['CHOT', 'LOAI_KHAC'].includes((c.coSo || {}).ketQua || '');
+    const hs8DungNz = c.hs8Dung ? nz(c.hs8Dung) : null;
+    // quy tắc 2: từ chối mà deXuat lệch phân nhóm 6 số đúng của ca
+    const deXuatLech = Boolean(
+      hs8DungNz && chotVao === null && kq && kq.deXuat && nz(kq.deXuat).slice(0, 6) !== hs8DungNz.slice(0, 6),
+    );
+    let trangThai;
+    if (loi) trangThai = 'NEM_LOI';
+    else if (c.loai === 'KHONG_NEU_VAT_LIEU') {
+      // KHONG_NEU_VAT_LIEU: phải GIỮ NGUYÊN hành vi như cơ sở đã đo trên main (tiêu chí không hồi quy của T2)
+      const cs = c.coSo || {};
+      const giongCoSo = (kq?.ketQua || '') === cs.ketQua && nz(kq?.hs || '') === nz(cs.hs || '');
+      trangThai = giongCoSo ? 'DAT' : 'DOI_HANH_VI';
+    } else if (hs8DungNz && chotVao === hs8DungNz) trangThai = 'DAT'; // chốt đúng dòng vật liệu
+    else if (chotVao && hs8DungNz)
+      trangThai = 'DO'; // quy tắc 4 (vòng 3): máy CHỐT dòng 8 số ≠ dòng đúng ⇒ ĐỎ — kể cả dòng NGOÀI
+      // hs8Trai (lỗi thật GĐ chỉ tay: cổng cũ để dòng sai rơi vào else ⇒ DAT ⇒ T2 vá sai dòng vẫn vàng giả)
+    else if (chotVao && (c.loai === 'DUNG_VAT_LIEU' || (c.hs8Trai || []).includes(chotVao)))
+      trangThai = 'DO'; // chốt dòng sai vật liệu (fallback cho ca chưa có hs8Dung: TRAI đúng vào dòng bị loại trừ)
+    else if (deXuatLech) trangThai = 'DO';
+    else if (coSoLaChot) trangThai = 'DOI_HANH_VI'; // quy tắc 1: mất chốt so với cơ sở main
+    else trangThai = 'DAT'; // cơ sở vốn không chốt, giữ nguyên không chốt ⇒ đạt ở cấp cổng
+    out.push({
+      id: c.id,
+      loai: c.loai,
+      pn6: c.pn6,
+      hs8: c.hs8,
+      moTa: c.moTa,
+      hs8Trai: c.hs8Trai || [],
+      hs8Dung: c.hs8Dung || null,
+      canT3: Boolean(c.canT3),
+      trangThai,
+      ketQua: kq?.ketQua || null,
+      hsMay: kq?.hs || null,
+      lyDo: loi ? `loi:${loi}` : kq?.lyDo || '',
+      deXuat: kq?.deXuat || null,
+      coSo: c.coSo || null,
+      ghiChu: c.ghiChu || '',
+      loi,
+    });
+  }
+  const dem = (st) => out.filter((x) => x.trangThai === st).length;
+  return {
+    tong: out.length,
+    dat: dem('DAT'),
+    do: dem('DO'),
+    doCanT3: out.filter((x) => x.trangThai === 'DO' && x.canT3).length,
+    doiHanhVi: dem('DOI_HANH_VI'),
+    nemLoi: dem('NEM_LOI'),
+    ca: out,
+  };
+}
+
 /** Chạy kiểm TB-TCHQ của nhóm trong data/precedents.json. */
 function kiemTienLeNhom(nhom4) {
   const precPath = dataReadPath('precedents.json');
@@ -539,6 +625,7 @@ export function chayBoKiemLuat(dsNhom4) {
     chiTietLoi: [],
     tienLe: [],
     caDacBiet8539: [],
+    caDoiChungVatLieu: chayCaDoiChungVatLieu(dsNhom4),
   };
 
   for (const nhom4 of dsNhom4) {
@@ -740,6 +827,20 @@ function inBaoCao(tk) {
     for (const c of tk.caDacBiet8539) {
       console.log(`  [${c.dat ? 'ĐẠT' : 'TRƯỢT'}] "${c.ten}" → chotDong8=${c.ketQuaChot}(${c.hsChot || '-'}), SO_TAY_DONG8=${c.gateRedirect || '-'}${c.loi ? ` LỖI: ${c.loi}` : ''}`);
     }
+  }
+
+  if (tk.caDoiChungVatLieu && tk.caDoiChungVatLieu.tong) {
+    const cd = tk.caDoiChungVatLieu;
+    console.log('\n--- Ca đối chứng VẬT LIỆU viết tay (OZV-540 T1) — đo riêng, KHÔNG tính vào bảng trên ---');
+    for (const c of cd.ca) {
+      const nhan = c.trangThai === 'DAT' ? 'ĐẠT' : c.trangThai === 'DO' ? (c.canT3 ? 'ĐỎ(cầnT3)' : 'ĐỎ') : c.trangThai === 'DOI_HANH_VI' ? 'ĐỔI-HÀNH-VI' : 'NÉM-LỖI';
+      const phan = `${c.loai === 'TRAI_VAT_LIEU' ? `trái ${c.hs8Trai.join('/')}` : c.loai === 'DUNG_VAT_LIEU' ? `đúng ${c.hs8Dung}` : 'không nêu VL'}${c.hs8Dung && c.loai !== 'DUNG_VAT_LIEU' ? ` (đúng: ${c.hs8Dung})` : ''}`;
+      console.log(`  [${nhan}] ${c.id} ${c.pn6} → ${c.ketQua}${c.hsMay ? ` ${c.hsMay}` : ''}${c.deXuat ? ` deXuat=${c.deXuat}` : ''} [${phan}] "${c.moTa}"`);
+    }
+    console.log(
+      `  Tổng: ${cd.tong} ca — ĐẠT ${cd.dat} · ĐỎ ${cd.do} (trong đó cần T3: ${cd.doCanT3}) · ĐỔI HÀNH VI ${cd.doiHanhVi} · NÉM LỖI ${cd.nemLoi}` +
+        (cd.do || cd.doCanT3 ? ' — ĐỎ là "đỏ trước khi vá" của T2 (OZV-540): ca tay phải đỏ trên main, xanh trên nhánh vá' : ' — T2 đã vá xong: 0 đỏ'),
+    );
   }
 
   if (tk.tienLe.length) {
