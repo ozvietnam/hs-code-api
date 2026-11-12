@@ -1,7 +1,7 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "854370",
-  "phien": "zcode-sub:glm-5.3:20261106T1003#soan-854370",
+  "phien": "claude-agent:paperclip-OZV-452-20261112#soan-854370",
   "dong8": {
     "85437010": {
       "dieuKienSo": [
@@ -28,27 +28,11 @@
           "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": "máy chơi trò chơi điện tử video"
-        },
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "bộ điều khiển trò chơi thuộc nhóm 95.04"
-          ],
-          "chieu": "PHAI_KHONG"
         }
       ]
     },
     "85437030": {
       "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "Máy",
-            "thiết bị điện"
-          ]
-        },
         {
           "fact": "congDung",
           "op": "CONG_DUNG",
@@ -187,10 +171,8 @@
                 "fact": "dungCho",
                 "op": "CONG_DUNG",
                 "value": [
-                  "dụng cụ điện tín",
-                  "mạng điện tín",
-                  "điện thoại",
-                  "thiết bị"
+                  "điện tín",
+                  "điện thoại"
                 ]
               }
             ]
@@ -203,61 +185,74 @@
     "8543702": {
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Thiết bị điều khiển từ xa"
-        },
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "điều khiển từ xa bằng sóng radio"
-          ],
-          "chieu": "PHAI_KHONG"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Thiết bị điều khiển từ xa"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Thiết bị điều khiển từ xa, trừ thiết bị điều khiển từ xa bằng sóng radio"
+              }
+            ]
+          ]
         }
-      ]
+      ],
+      "trich": "8543702 Thiết bị điều khiển từ xa, trừ thiết bị điều khiển từ xa bằng sóng radio"
     }
   },
   "ghiChuSoan": [
     {
       "ma": "85437010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85437010 \"Máy cung cấp năng lượng cho hàng rào điện\" ⇒ tenLoai \"Máy cung cấp năng lượng\" + dungCho \"hàng rào điện\" (vế \"cho …\" là đích)."
+      "ghiChu": "tax.85437010 \"Máy cung cấp năng lượng cho hàng rào điện\" (EN \"Electric fence energisers\"; chú giải nhóm 85.43 mục (15) cùng chữ) ⇒ tenLoai \"Máy cung cấp năng lượng\" + dungCho \"hàng rào điện\" (vế \"cho …\" là đích)."
     },
     {
       "ma": "8543702",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.8543702 \"Thiết bị điều khiển từ xa, trừ thiết bị điều khiển từ xa bằng sóng radio\" ⇒ tenLoai \"Thiết bị điều khiển từ xa\" + tenLoai PHAI_KHONG [\"điều khiển từ xa bằng sóng radio\"] (vế \"trừ …\")."
+      "ghiChu": "tieuDe.8543702 \"Thiết bị điều khiển từ xa, trừ thiết bị điều khiển từ xa bằng sóng radio\". Điều kiện nút = HOAC 2 phương án: (1) tenLoai \"Thiết bị điều khiển từ xa\" — phạm vi gốc của tiêu đề, dùng khi mô tả hàng viết tự do; (2) tenLoai nguyên văn CẢ tiêu đề 7 số \"Thiết bị điều khiển từ xa, trừ thiết bị điều khiển từ xa bằng sóng radio\" — dùng khi mô tả hàng TRÍCH NGUYÊN VĂN tiêu đề. Cần phương án (2) vì lõi đọc vế \"trừ …\" là phủ định (lõi sửa ở #1244: lib/dieu-kien-so.js RE_PHU_DINH_VE bỏ \\b — ranh giới \\w ASCII, chữ Việt KHÔNG phải \\w ⇒ \"trừ …\"/\"không có …\"/\"chưa có …\" KHÔNG bao giờ được đọc là phủ định — thay bằng (?!\\p{L}\\p{M})): khi mô tả hàng trích nguyên văn tiêu đề thì cụm \"Thiết bị điều khiển từ xa\" ở phương án (1) nằm ngay trong vế loại trừ ⇒ bị đọc thành phủ định ⇒ nút 8543702 bị loại ⇒ dòng .21 (dòng con DUY NHẤT của nút) không chốt được (đo 8543: DONG_CO_TEN 14/15). Phương án (2) giữ nguyên phạm vi nút khi mô tả có nguyên văn tiêu đề (có mặt tiêu đề = thuộc phạm vi nút) nên .21 chốt được (15/15); mô tả tự do vẫn dùng phương án (1) như cũ. Vế loại trừ \"trừ thiết bị điều khiển từ xa bằng sóng radio\" không miễn (BO_VE) nữa vì đã có phương án (2) phủ; vế đó là loại trừ cấp NHÓM (máy cổng 5 coi phần \"trừ thiết bị điều khiển từ xa\" đã phủ bởi tenLoai, chỉ còn đuôi \"bằng sóng radio\"), không phân biệt anh em trong 8543.70: thiết bị điều khiển từ xa bằng sóng radio đã được chi tiết ở dòng 85269200 \"Thiết bị điều khiển từ xa bằng sóng vô tuyến\" (EN \"Radio remote control apparatus\"), nên theo chính tên nhóm 85.43 \"chưa được chi tiết hoặc ghi ở nơi khác trong Chương này\" hàng đó không vào nhóm 85.43. Ghi PHAI_KHONG chữ tự do sẽ đẩy hàng sóng radio (vốn ngoài nhóm) sang 85437090 và chặn mọi điều khiển từ xa hồng ngoại không nhắc chữ 'radio' (máy chấm vắng ⇒ không tất định) — cùng cách 960990 (vế loại trừ đã xử lý ở cấp trên)."
     },
     {
       "ma": "85437021",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85437021 \"Thiết bị điều khiển từ xa hồng ngoại không dây dùng cho máy chơi trò chơi điện tử video, trừ bộ điều khiển trò chơi thuộc nhóm 95.04\" ⇒ tenLoai \"điều khiển từ xa hồng ngoại không dây\" + dungCho \"máy chơi trò chơi điện tử video\" + tenLoai PHAI_KHONG [\"bộ điều khiển trò chơi thuộc nhóm 95.04\"] (máy tự đọc mã 95.04); .29 \"Loại khác\" trần — máy phủ định."
+      "ghiChu": "tax.85437021 \"Thiết bị điều khiển từ xa hồng ngoại không dây dùng cho máy chơi trò chơi điện tử video, trừ bộ điều khiển trò chơi thuộc nhóm 95.04\" ⇒ tenLoai \"điều khiển từ xa hồng ngoại không dây\" (\"Thiết bị\" lặp tầng 8543702) + dungCho \"máy chơi trò chơi điện tử video\". Vế \"trừ … 95.04\" miễn bằng BO_VE (loại trừ cấp phần/nhóm)."
+    },
+    {
+      "ma": "85437021",
+      "loai": "BO_VE",
+      "ve": "trừ bộ điều khiển trò chơi thuộc nhóm 95.04",
+      "lyDo": "Vế loại trừ cấp PHẦN, không phân biệt .21 với .29: bộ điều khiển trò chơi thuộc nhóm 95.04 là hàng Chương 95, mà Chú giải 1 Phần XVI ghi \"(p) Các sản phẩm thuộc Chương 95\" không thuộc Phần XVI (ch85.phan) — hàng đó không bao giờ ở nhóm 85.43. Ghi PHAI_KHONG chữ tự do sẽ đẩy hàng nhóm 95.04 sang 85437029 và chặn mọi điều khiển hồng ngoại cho máy trò chơi không nhắc chữ '95.04' (máy chấm vắng ⇒ không tất định)."
     },
     {
       "ma": "85437030",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85437030 \"Máy, thiết bị điện có chức năng phiên dịch hoặc từ điển\" ⇒ tenLoai mảng [\"Máy\",\"thiết bị điện\"] + congDung mảng [\"phiên dịch\",\"từ điển\"] (\"hoặc\" ⇒ mảng)."
+      "ghiChu": "tax.85437030 \"Máy, thiết bị điện có chức năng phiên dịch hoặc từ điển\" ⇒ congDung [\"phiên dịch\",\"từ điển\"] (\"hoặc\" ⇒ mảng). Danh từ đầu \"Máy, thiết bị điện\" lặp tên nhóm 85.43 \"Máy và thiết bị điện\" — mọi hàng của nhóm đều là máy/thiết bị điện, không phân biệt gì trong 8543.70 nên không ghi tenLoai (máy chấm tên lặp chữ cha là không tất định và sẽ chặn chốt). TB-TCHQ 1127/TB-TCHQ (máy đọc sách \"có chức năng từ điển\") ⇒ 85437030 khớp cách đọc này."
     },
     {
       "ma": "85437040",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85437040 hai loại máy cách nhau bằng \";\" ⇒ HOAC. Loại 1: tenLoai mảng [\"Máy tách bụi\",\"khử tĩnh điện\"] (\"hoặc\", \"Máy\" định ngữ chung) + dungCho mảng [\"tấm mạch PCB/PWBs\",\"PCAs\"]. Loại 2: tenLoai \"máy làm đóng rắn vật liệu bằng tia cực tím\" (một chuỗi — \"bằng tia cực timid\" là đặc tính của máy, giữ trong tên) + dungCho mảng [\"sản xuất tấm mạch PCB/PWBs\",\"PCAs\"]. Dấu \"(1)\" là chân chú — giá trị dừng trước nó."
+      "ghiChu": "tax.85437040 hai loại máy cách nhau bằng \";\" ⇒ HOAC. Loại 1: tenLoai [\"Máy tách bụi\",\"khử tĩnh điện\"] (\"hoặc\") + dungCho [\"tấm mạch PCB/PWBs\",\"PCAs\"] (vế \"trong quá trình chế tạo tấm mạch PCB/PWBs(1) hoặc PCAs(1)\"). Loại 2: tenLoai \"máy làm đóng rắn vật liệu bằng tia cực tím\" (\"bằng tia cực tím\" là đặc tính của máy, giữ trong tên) + dungCho [\"sản xuất tấm mạch PCB/PWBs\",\"PCAs\"]. Dấu \"(1)\" là chân chú — giá trị dừng trước nó."
     },
     {
       "ma": "85437050",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85437060 hai loại hàng cách nhau bằng \";\" ⇒ HOAC. Loại 1 (Thiết bị xử lý tín hiệu kỹ thuật số): tenLoai + phuongThucTruyenDan [HUU_TUYEN,VO_TUYEN] (vế \"mạng có dây hoặc không dây\" — LIET_KE đọc \"có dây\"/\"không dây\" phủ vế) + congDung \"trộn âm thanh\" (vế \"để trộn âm thanh\"). Loại 2: congDung \"được thiết kế đặc biệt\" (vế; chiHoacChuYeu không đọc được \"đặc biệt\") + dungCho mảng đích [\"dụng cụ điện tín\",\"mạng điện tín\",\"điện thoại\",\"thiết bị\"] (\"thiết bị\"/\"dụng cụ\" danh từ đầu, \"điện tín\"/\"điện thoại\" định ngữ chung — máy không ghép được 2 điều kiện cùng khoá trong HOAC nên gộp mảng)."
+      "ghiChu": "tax.85437050 ba loại hàng cách nhau bằng \";\" ⇒ HOAC 3 phương án: tenLoai \"Bộ khuếch đại vi sóng\" | tenLoai \"máy ghi dữ liệu chuyến bay kỹ thuật số\" | tenLoai \"đầu đọc điện tử di động\" + nguonNangLuong TRONG [PIN_AC_QUY] (\"hoạt động bằng pin\") + congDung \"ghi và tái tạo\" + congDung [\"văn bản\",\"hình ảnh tĩnh\",\"tệp âm thanh\"]. SEN 8543.70.50 (sen.85437050) mô tả bộ khuếch đại vi sóng và máy ghi dữ liệu chuyến bay."
     },
     {
       "ma": "85437060",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85437060 hai loại hàng cách nhau bằng \";\" ⇒ HOAC. Loại 1: tenLoai \"Thiết bị xử lý tín hiệu kỹ thuật số\" + congDung \"kết nối với mạng\" + phuongThucTruyenDan [HUU_TUYEN,VO_TUYEN] (vế \"mạng có dây hoặc không dây\" ⇒ mảng giá trị) + congDung \"trộn âm thanh\". Loại 2 (\"các sản phẩm được thiết kế đặc biệt để kết nối với …\"): congDung \"kết nối với\" + dungCho mảng các đích [\"thiết bị\",\"dụng cụ điện tín\",\"điện thoại\",\"mạng điện tín\"] (\"hoặc\" ⇒ mảng; \"điện thoại\" chung, đích lặp \"điện tín hoặc điện thoại\" gọn thành mảng)."
+      "ghiChu": "tax.85437060 hai loại hàng cách nhau bằng \";\" ⇒ HOAC. Loại 1: tenLoai \"Thiết bị xử lý tín hiệu kỹ thuật số\" + phuongThucTruyenDan TRONG [HUU_TUYEN,VO_TUYEN] (vế \"kết nối với mạng có dây hoặc không dây\") + congDung \"trộn âm thanh\". Loại 2 (\"các sản phẩm được thiết kế đặc biệt để kết nối với thiết bị hoặc dụng cụ điện tín hoặc điện thoại hoặc với mạng điện tín hoặc điện thoại\"): congDung \"được thiết kế đặc biệt\" + dungCho [\"điện tín\",\"điện thoại\"] — định ngữ chung của cả bốn đích (thiết bị/dụng cụ/mạng điện tín hoặc điện thoại; EN \"telegraphic or telephonic apparatus or instruments or ... networks\"); bản nháp cũ ghi riêng \"thiết bị\" làm đích là rộng hơn chữ, đã bỏ."
     },
     {
       "ma": "854370",
       "loai": "QUYET_DINH",
-      "ghiChu": "Claude 07/11/2026 (Q1, #1109): các cặp nhánh khác trục không có hàng thật thoả cả hai ⇒ chongLanTruc + khongCoHangThat (lý do từng cặp trong viDuHang). Lúc chạy hàng thoả cả hai ⇒ hỏi câu phân biệt."
+      "ghiChu": "Các cặp nhánh khác trục (tên ↔ công dụng) ⇒ chongLanTruc; lúc chạy hàng thoả ≥ 2 nhánh ⇒ hỏi câu phân biệt. Cặp 85437030+85437050 có hàng thật thoả cả hai (đầu đọc điện tử di động chạy pin ghi/tái tạo văn bản có chức năng từ điển — 1127/TB-TCHQ: máy đọc sách có chức năng từ điển ⇒ .30) nên khai `hang` thay cho khongCoHangThat của bản nháp cũ."
     }
   ],
   "chongLanTruc": [
@@ -278,7 +273,7 @@
         "85437050": "TEN_LOAI",
         "85437060": "CONG_DUNG"
       },
-      "cauHoiPhanBiet": "Hàng này thuộc nhánh nào: «Máy cung cấp năng lượng cho hàng rào điện» (85437010), «Thiết bị điều khiển từ xa, trừ thiết bị điều khiển từ xa bằn» (8543702), «Máy, thiết bị điện có chức năng phiên dịch hoặc từ điển» (85437030), «Máy tách bụi hoặc khử tĩnh điện trong quá trình chế tạo tấm » (85437040), «Bộ khuếch đại vi sóng; máy ghi dữ liệu chuyến bay kỹ thuật s» (85437050), «Thiết bị xử lý tín hiệu kỹ thuật số có khả năng kết nối với » (85437060)?",
+      "cauHoiPhanBiet": "Hàng này thuộc nhánh nào: «Máy cung cấp năng lượng cho hàng rào điện» (85437010), «Thiết bị điều khiển từ xa, trừ thiết bị điều khiển từ xa bằng sóng radio» (8543702), «Máy, thiết bị điện có chức năng phiên dịch hoặc từ điển» (85437030), «Máy tách bụi/khử tĩnh điện hoặc máy đóng rắn bằng tia cực tím dùng trong sản xuất tấm mạch PCB/PCAs» (85437040), «Bộ khuếch đại vi sóng; máy ghi dữ liệu chuyến bay kỹ thuật số; đầu đọc điện tử di động chạy pin ghi và tái tạo văn bản, hình ảnh tĩnh hoặc tệp âm thanh» (85437050), «Thiết bị xử lý tín hiệu số kết nối mạng để trộn âm thanh; sản phẩm thiết kế đặc biệt để kết nối với thiết bị/mạng điện tín hoặc điện thoại» (85437060)?",
       "trich": {
         "8543702": "Thiết bị điều khiển từ xa, trừ thiết bị điều khiển từ xa bằng sóng radio",
         "85437010": "Máy cung cấp năng lượng cho hàng rào điện",
@@ -314,7 +309,7 @@
             "85437030",
             "85437050"
           ],
-          "khongCoHangThat": "Bộ khuếch đại vi sóng và máy ghi dữ liệu chuyến bay không có chức năng phiên dịch hay từ điển."
+          "hang": "Đầu đọc điện tử di động hoạt động bằng pin, dùng để ghi và tái tạo văn bản và tra từ điển"
         },
         {
           "cap": [
@@ -322,6 +317,13 @@
             "85437060"
           ],
           "khongCoHangThat": "Bộ khuếch đại vi sóng và máy ghi dữ liệu chuyến bay không phải thiết bị xử lý tín hiệu số kết nối mạng của dòng .60."
+        },
+        {
+          "cap": [
+            "8543702",
+            "85437030"
+          ],
+          "khongCoHangThat": "Thiết bị điều khiển từ xa chỉ phát lệnh điều khiển một thiết bị khác; máy phiên dịch hay từ điển là thiết bị dùng trực tiếp, không có thiết bị điều khiển từ xa nào mang chức năng phiên dịch hoặc từ điển."
         }
       ],
       "phanXu": null
