@@ -454,8 +454,16 @@ export function sinhCaNhom(nhom4) {
  * của tiêu đề ⇒ không bao giờ ra ca trái vật liệu ⇒ bộ sinh từ dữ liệu không bắt được lỗi "chốt 85462010
  * cho hàng nhựa". Ca tay trong tests/ca-doi-chung-vat-lieu-8546-8547.json phải ĐỎ trên main (đỏ đúng chỗ,
  * làm bằng chứng "trước khi vá" cho T2 của OZV-540) và XANH trên nhánh vá T2.
- * Đo RIÊNG như caDacBiet8539 — không cộng vào tongSoCa/chotSai… để số bộ sinh từ dữ liệu không đổi khi thêm ca tay. */
-export function chayCaDoiChungVatLieu(dsNhom4) {
+ * Đo RIÊNG như caDacBiet8539 — không cộng vào tongSoCa/chotSai… để số bộ sinh từ dữ liệu không đổi khi thêm ca tay.
+ *
+ * CỔNG CHẤM SIẾT sau TRẢ THỢ PR #1255 (quy tắc 5 OZV-290 — bản vá rỗng không được xanh): bộ này là điều kiện
+ * nghiệm thu T2 nên chấm theo HÀNH VI, không chỉ theo "không chốt sai":
+ *  1. TRAI/DUNG có coSo.ketQua=CHOT (hoặc LOAI_KHAC) mà mất chốt (chotVao=null) ⇒ DOI_HANH_VI — T2 "không
+ *     chốt nữa" không được coi là đạt; kỳ vọng T2 là chốt ĐÚNG dòng vật liệu (CHOT 85469000 cho hàng nhựa…).
+ *  2. Máy từ chối mà deXuat lệch phân nhóm 6 số đúng của ca (hs8Dung) ⇒ DO — chặn vì vật liệu mà vẫn đề
+ *     xuất tiêu đề sai vật liệu là lỗi, không phải "an toàn".
+ *  3. KHONG_NEU_VAT_LIEU giữ nguyên tiêu chí so coSo (không hồi quy) — đã chặt sẵn từ T1. */
+export function chayCaDoiChungVatLieu(dsNhom4, chot = chotDong8) {
   const p = path.join(ROOT, 'tests', 'ca-doi-chung-vat-lieu-8546-8547.json');
   if (!fs.existsSync(p)) return { tong: 0, dat: 0, do: 0, doCanT3: 0, doiHanhVi: 0, nemLoi: 0, ca: [] };
   const all = JSON.parse(fs.readFileSync(p, 'utf8')).ca || [];
@@ -465,22 +473,30 @@ export function chayCaDoiChungVatLieu(dsNhom4) {
     let kq = null;
     let loi = null;
     try {
-      kq = chotDong8({ hs: c.pn6, productText: c.moTa });
+      kq = chot({ hs: c.pn6, productText: c.moTa });
     } catch (e) {
       loi = String(e?.message || e);
     }
     const chotVao = kq && (kq.ketQua === 'CHOT' || kq.ketQua === 'LOAI_KHAC') ? nz(kq.hs) : null;
+    const coSoLaChot = ['CHOT', 'LOAI_KHAC'].includes((c.coSo || {}).ketQua || '');
+    const hs8DungNz = c.hs8Dung ? nz(c.hs8Dung) : null;
+    // quy tắc 2: từ chối mà deXuat lệch phân nhóm 6 số đúng của ca
+    const deXuatLech = Boolean(
+      hs8DungNz && chotVao === null && kq && kq.deXuat && nz(kq.deXuat).slice(0, 6) !== hs8DungNz.slice(0, 6),
+    );
     let trangThai;
     if (loi) trangThai = 'NEM_LOI';
-    else if (c.loai === 'TRAI_VAT_LIEU') trangThai = chotVao && (c.hs8Trai || []).includes(chotVao) ? 'DO' : 'DAT';
-    else if (c.loai === 'DUNG_VAT_LIEU')
-      trangThai = chotVao && chotVao !== nz(c.hs8Dung) ? 'DO' : 'DAT'; // hỏi/không chốt vẫn đạt ở cấp cổng; chốt nhầm dòng khác mới đỏ
-    else {
+    else if (c.loai === 'KHONG_NEU_VAT_LIEU') {
       // KHONG_NEU_VAT_LIEU: phải GIỮ NGUYÊN hành vi như cơ sở đã đo trên main (tiêu chí không hồi quy của T2)
       const cs = c.coSo || {};
       const giongCoSo = (kq?.ketQua || '') === cs.ketQua && nz(kq?.hs || '') === nz(cs.hs || '');
       trangThai = giongCoSo ? 'DAT' : 'DOI_HANH_VI';
-    }
+    } else if (hs8DungNz && chotVao === hs8DungNz) trangThai = 'DAT'; // chốt đúng dòng vật liệu
+    else if (chotVao && (c.loai === 'DUNG_VAT_LIEU' || (c.hs8Trai || []).includes(chotVao)))
+      trangThai = 'DO'; // chốt dòng sai vật liệu (TRAI: đúng vào dòng bị loại trừ; DUNG: bất kỳ dòng ≠ đúng)
+    else if (deXuatLech) trangThai = 'DO';
+    else if (coSoLaChot) trangThai = 'DOI_HANH_VI'; // quy tắc 1: mất chốt so với cơ sở main
+    else trangThai = 'DAT'; // cơ sở vốn không chốt, giữ nguyên không chốt ⇒ đạt ở cấp cổng
     out.push({
       id: c.id,
       loai: c.loai,
