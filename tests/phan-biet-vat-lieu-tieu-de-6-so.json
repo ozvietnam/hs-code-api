@@ -1,5 +1,5 @@
 {
-  "moTa": "Ca kiểm MỚI của OZV-558 — vật liệu quyết định TIÊU ĐỀ 6 SỐ (PA-B). Tệp RIÊNG, không sửa tệp cổng của GĐ (tests/ca-doi-chung-vat-lieu-8546-8547.json). Bốn chiều theo đặc tả GĐ: (I) nhựa/cao su ⇒ 85469000 · (II) gốm sứ ⇒ vẫn 85462010 (không hồi quy chiều ngược) · (III) không nêu vật liệu ⇒ hành vi Y HỆT main · (IV) 'composite' ⇒ hành vi Y HỆT main.",
+  "moTa": "Ca kiểm MỚI của OZV-558 — vật liệu quyết định TIÊU ĐỀ 6 SỐ (PA-B). Tệp RIÊNG, không sửa tệp cổng của GĐ (tests/ca-doi-chung-vat-lieu-8546-8547.json). Bốn chiều theo đặc tả GĐ: (I) nhựa/cao su ⇒ 85469000 · (II) gốm sứ ⇒ vẫn 85462010 (không hồi quy chiều ngược) · (III) không nêu vật liệu ⇒ hành vi Y HỆT main · (IV) 'composite' ⇒ hành vi Y HỆT main. CẬP NHẬT OZV-581 (OZV-540 PA-3 — T3): chiều IV KHÔNG còn là 'y hệt main' nữa — máy đã đọc được 'composite' (vật liệu tổng hợp) nên chốt 85469000; bộ ca riêng của T3 nằm ở tests/phan-biet-vat-lieu-t3-composite.json.",
   "nen": "origin/main = 5cd1e855 (PR #1255 đã gộp) — đo bằng chính scripts/test-phan-biet-vat-lieu.mjs ở chế độ --do",
   "nhom": "8546",
   "ca": [
@@ -102,20 +102,18 @@
       "huong": "IV",
       "pn6": "854620",
       "moTa": "Cách điện xuyên bằng composite cho máy biến điện",
-      "mong": { "ketQua": "CHOT", "hs": "85462010" },
+      "mong": { "ketQua": "CHOT", "hs": "85469000" },
       "nenMain": { "ketQua": "CHOT", "hs": "85462010" },
-      "ghiChu": "'composite' chưa có trong bảng đọc vật liệu ⇒ KHÔNG đoán, giữ hành vi cũ (Q3 của GĐ: composite = T3, ngoài phạm vi thẻ này).",
-      "giuYHieuMain": true
+      "ghiChu": "OZV-581 (OZV-540 PA-3 — T3): 'composite' ĐÃ có trong bảng đọc vật liệu (vật liệu tổng hợp) và nhóm 8546 đã khai vế ⇒ chốt 85469000 (trước T3: giữ hành vi cũ 85462010 = gốm sứ, SAI VẬT LIỆU)."
     },
     {
       "id": "pbvl-012",
       "huong": "IV",
       "pn6": "854620",
       "moTa": "Insulator bằng vật liệu composite cho đường dây truyền tải 110kV",
-      "mong": { "ketQua": "THIEU_SO_LIEU", "hs": null },
+      "mong": { "ketQua": "CHOT", "hs": "85469000" },
       "nenMain": { "ketQua": "THIEU_SO_LIEU", "hs": null },
-      "ghiChu": "Có chữ báo 'vật liệu' nhưng vật liệu KHÔNG đọc được ⇒ không suy ra vế nào ⇒ y hệt main.",
-      "giuYHieuMain": true
+      "ghiChu": "OZV-581 (T3): có chữ báo 'vật liệu' + đọc được 'composite' ⇒ chốt 85469000 (trước T3: không chốt được — thiếu số liệu)."
     }
   ]
 }
