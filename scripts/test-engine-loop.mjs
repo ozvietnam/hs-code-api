@@ -47,6 +47,23 @@ r = await run(TOY, [R1_TOY,
 check('cổng "trừ plastic" chặn 9503.00.50 → vòng 3 → 9503.00.99', r.results[0]?.hs === '95030099' && calls.length === 3 && r.engine.gates[0].blocks.includes('MAU_THUAN_NHAN_DONG'), JSON.stringify([r.results[0]?.hs, calls.length, r.engine.gates]));
 check('lý do chặn được gửi cho vòng 3', /trừ plastic|plastic/i.test(calls[2].user));
 
+// 0c. OZV-507 việc 2 — ms TỪNG VÒNG cho khoá dịch vụ (A3 đo trên prod): phases.llmTungVong = llmMs từng vòng ≥2,
+// tổng khớp phases.llmMs; có cho KHOÁ DỊCH VỤ (kenhGoi) và cho lượt thường; KHÔNG đổi shape khác của phản hồi.
+{
+  // Ca 3 lời gọi AI vừa chạy ở trên (vòng 2 bị chặn → vòng 3 sửa): llmTungVong phải có đúng 2 phần tử.
+  const ph3 = r.engine.phases || {};
+  const tv = ph3.llmTungVong;
+  check('OZV-507: llmTungVong đúng số vòng AI ≥2 (3 lời gọi → 2 phần tử), mỗi phần tử số ≥ 0', Array.isArray(tv) && tv.length === calls.length - 1 && tv.length === 2 && tv.every((m) => Number.isFinite(m) && m >= 0), JSON.stringify([calls.length, tv]));
+  check('OZV-507: tổng llmTungVong = phases.llmMs (cùng phép đo)', Array.isArray(tv) && Number.isFinite(ph3.llmMs) && Math.abs(ph3.llmMs - tv.reduce((a, b) => a + b, 0)) <= 1, JSON.stringify([ph3.llmMs, tv]));
+  check('OZV-507: shape khác không đổi — engine.log không xuất hiện khi không debug', r.engine.log === undefined, JSON.stringify(Object.keys(r.engine)));
+  // Lượt KHOÁ DỊCH VỤ (api/classify.js đẩy serviceCaller vào opts.kenhGoi): cùng phases.llmTungVong để đo A3 trên prod.
+  script = [R1_KNIFE, { decision: 'CHOT', hs: '82019000', confidence: 88, reason: 'dụng cụ cầm tay nông nghiệp, cơ-tay', gir: 'GIR 1', basis: [{ stream: 'SAN_PHAM', claim: 'dùng hái cau', evidence: '用于摘取槟榔' }, { stream: 'CHU_GIAI', claim: 'nhóm 8201 gồm dụng cụ cầm tay nông nghiệp', ref: '8201' }], conditions: [{ fact: 'thao tác bằng tay, không động cơ', status: 'MET', evidence: '伸缩杆' }], alternatives: [], questions: [] }];
+  calls = [];
+  const rk = await classify(KNIFE, { kenhGoi: 'cong-oz' });
+  const phk = rk.engine.phases || {};
+  check('OZV-507: khoá dịch vụ đọc được r1Ms + llmTungVong + engine.ms (tổng)', Number.isFinite(phk.r1Ms) && phk.r1Ms >= 0 && Array.isArray(phk.llmTungVong) && phk.llmTungVong.length === 1 && Number.isFinite(rk.engine.ms), JSON.stringify(phk));
+}
+
 // 3. HỎI → NEED_FACTS với câu hỏi về thuộc tính
 r = await run(TOY, [R1_TOY, { decision: 'HOI', hs: '950300', confidence: 50, reason: 'chưa rõ có phải mô hình theo tỷ lệ', basis: [], conditions: [{ fact: 'là mô hình thu nhỏ theo tỷ lệ của vật thật', status: 'UNKNOWN', evidence: '' }], alternatives: [], questions: [{ fact: 'mô hình theo tỷ lệ', question: 'Sản phẩm có phải bản thu nhỏ theo tỷ lệ của một vật thật không?', whereToFind: 'ảnh / hỏi người bán' }] }]);
 check('HỎI → NEED_FACTS, câu hỏi về thuộc tính, không nhắc mã', r.status === 'NEED_FACTS' && r.nextAction.questions[0].questionVi.includes('tỷ lệ') && !/9503/.test(r.nextAction.questions[0].questionVi), JSON.stringify([r.status, r.nextAction]));
