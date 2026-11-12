@@ -14,8 +14,8 @@
     "boi": "CLAUDE_DUYET",
     "phien": "https://claude.ai/code/session_29331a75-ozv342-soat#soat-ozv342",
     "ngay": "2026-11-12",
-    "ghiChu": "tiếp soát L29 11/11: 85444941 tenLoai \"Cáp\" (bỏ \"bọc\" — EN insulated), 85444942 phanConLai [.41]; bảng hiệu chỉnh tiền lệ 854449-01..05 KHONG_LECH giữ nguyên. | OZV-342 (12/11): tenLoai cụm chung (Cáp/Cáp điện/men tráng — mọi token đã trong tên nhóm 85.44 nên cumPhanBiet rỗng, không bao giờ tất định) thay bằng tên dòng nguyên văn có token mới (enamel/chống nhiễu/plastic/cao su…) — 13 ca DONG_CO_TEN hết THIEU_SO_LIEU/KHONG_THE_CHOT; 85444924 thêm phanConLai [.21,.22,.23] (tên \"Loại khác, …\" = phần còn lại của tầng .9492).",
-    "bam": "139be92a465f2468c12ae9533b715b61881136b40735d12c9df1463aebaca987"
+    "ghiChu": "tiếp soát L29 11/11: 85444941 tenLoai \"Cáp\" (bỏ \"bọc\" — EN insulated), 85444942 phanConLai [.41]; bảng hiệu chỉnh tiền lệ 854449-01..05 KHONG_LECH giữ nguyên. | OZV-342 (12/11): tenLoai cụm chung (Cáp/Cáp điện/men tráng — mọi token đã trong tên nhóm 85.44 nên cumPhanBiet rỗng, không bao giờ tất định) tách mảng từ khoá chưng cất cho tenLoai ([men tráng, enamel], [Dây đơn có vỏ bọc, chống nhiễu], [Cáp điện, plastic], [Cáp điện, cao su, giấy], [Cáp, plastic]) — bỏ câu nguyên văn có ngưỡng số/khác và giữ nhánh giấy 85444297; 85444924 thêm phanConLai [.21,.22,.23].",
+    "bam": "841aef2815730776beaf7939150d4d8a15caf0db1c988df97dc62a393c2b637a"
   },
   "dieuKienNut": [
     {
@@ -174,7 +174,10 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Dây đơn có vỏ bọc (chống nhiễu)"
+          "value": [
+            "Dây đơn có vỏ bọc",
+            "chống nhiễu"
+          ]
         },
         {
           "fact": "dungCho",
@@ -192,7 +195,10 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Cáp điện cách điện bằng plastic, trong đó mỗi lõi có đường kính không quá 19,5 mm"
+          "value": [
+            "Cáp điện",
+            "plastic"
+          ]
         },
         {
           "fact": "chatLieu",
@@ -217,7 +223,10 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Cáp điện cách điện bằng plastic khác"
+          "value": [
+            "Cáp điện",
+            "plastic"
+          ]
         },
         {
           "fact": "chatLieu",
@@ -323,7 +332,10 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Cáp bọc cách điện bằng plastic"
+          "value": [
+            "Cáp",
+            "plastic"
+          ]
         },
         {
           "fact": "chatLieu",

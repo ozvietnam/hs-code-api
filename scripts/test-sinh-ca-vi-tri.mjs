@@ -76,5 +76,32 @@ const dit = (c) => JSON.stringify(c);
   }
 }
 
+// ── 5. Ranh giới 8544 (soát GĐ PR #1258): tenLoai mảng từ khoá chưng cất, không câu nguyên văn ──────────────────────────
+{
+  const r97 = G.chotDong8({
+    hs: '854442',
+    productText: 'Cáp điện cách điện bằng giấy, đã lắp với đầu nối điện - không dùng trong viễn thông - không phải Cáp ắc qui',
+  });
+  check('5a 85444297 nhánh giấy ("cáp điện cách điện bằng giấy") chốt đúng 85444297', r97.ketQua === 'CHOT' && r97.hs === '85444297', dit(r97).slice(0, 400));
+
+  const r94 = G.chotDong8({
+    hs: '854442',
+    productText: 'Cáp điện cách điện bằng plastic, đường kính lõi 4 mm - không dùng trong viễn thông - không phải Cáp ắc qui',
+  });
+  check('5b 85444294 hàng thật ("cáp điện cách điện bằng plastic, đường kính lõi 4 mm") chốt 85444294 mà không cần câu nguyên văn', r94.ketQua === 'CHOT' && r94.hs === '85444294', dit(r94).slice(0, 400));
+
+  const r22 = G.chotDong8({
+    hs: '854449',
+    productText: 'Cáp điện cách điện bằng plastic, đường kính lõi 10 mm, điện áp 60 V - không dùng cho viễn thông',
+  });
+  check('5c 85444922 hàng thật ("cáp điện cách điện bằng plastic, đường kính lõi 10 mm") chốt 85444922', r22.ketQua === 'CHOT' && r22.hs === '85444922', dit(r22).slice(0, 400));
+
+  const r40 = G.chotDong8({
+    hs: '854411',
+    productText: 'Dây đồng tráng men (enamel)',
+  });
+  check('5d 85441140 mảng ["men tráng", "enamel"] chốt 85441140 mà không bắt buộc cụm "Có lớp phủ ngoài"', r40.ketQua === 'CHOT' && r40.hs === '85441140', dit(r40).slice(0, 400));
+}
+
 console.log(`\n${pass} pass, ${fail} fail`);
 if (fail) process.exit(1);

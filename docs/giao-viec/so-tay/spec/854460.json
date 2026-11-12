@@ -1,180 +1,186 @@
 {
- "phienBan": "ranh-gioi-spec@1",
- "pn6": "854460",
- "phien": "https://claude.ai/code/session_29331a75-ozv342-tho04#soan-854460",
- "dong8": {
-  "85446011": {
-   "dieuKienSo": [
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "854460",
+  "phien": "https://claude.ai/code/session_29331a75-ozv342-tho04#soan-854460",
+  "dong8": {
+    "85446011": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Cáp",
+            "plastic"
+          ]
+        },
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "plastic",
+          "viTri": "CACH_DIEN"
+        },
+        {
+          "fact": "duongKinhLoi",
+          "op": "<",
+          "value": 22.7,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "85446012": {
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": [
+            "cao su",
+            "plastic",
+            "giấy"
+          ],
+          "viTri": "CACH_DIEN"
+        }
+      ],
+      "phanConLai": [
+        "85446011"
+      ]
+    },
+    "85446021": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Cáp",
+            "plastic"
+          ]
+        },
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "plastic",
+          "viTri": "CACH_DIEN"
+        },
+        {
+          "fact": "duongKinhLoi",
+          "op": "<",
+          "value": 22.7,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "85446022": {
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": [
+            "cao su",
+            "plastic",
+            "giấy"
+          ],
+          "viTri": "CACH_DIEN"
+        }
+      ],
+      "phanConLai": [
+        "85446021"
+      ]
+    },
+    "85446031": {
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": [
+            "cao su",
+            "plastic",
+            "giấy"
+          ],
+          "viTri": "CACH_DIEN"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "854460": {
+      "nguon": "tieuDe.854460",
+      "trich": "Các vật dẫn điện khác(*), dùng cho điện áp trên 1000 V",
+      "dieuKienSo": [
+        {
+          "fact": "dienAp",
+          "op": ">",
+          "value": 1000,
+          "donVi": "V"
+        }
+      ]
+    },
+    "8544601": {
+      "dieuKienSo": [
+        {
+          "fact": "dienAp",
+          "op": ">",
+          "value": 1,
+          "donVi": "kV"
+        },
+        {
+          "fact": "dienAp",
+          "op": "<=",
+          "value": 36,
+          "donVi": "kV"
+        }
+      ]
+    },
+    "8544602": {
+      "dieuKienSo": [
+        {
+          "fact": "dienAp",
+          "op": ">",
+          "value": 36,
+          "donVi": "kV"
+        },
+        {
+          "fact": "dienAp",
+          "op": "<=",
+          "value": 66,
+          "donVi": "kV"
+        }
+      ]
+    },
+    "8544603": {
+      "dieuKienSo": [
+        {
+          "fact": "dienAp",
+          "op": ">",
+          "value": 66,
+          "donVi": "kV"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
     {
-     "fact": "tenLoai",
-     "op": "TEN_LOAI",
-     "value": "Cáp bọc cách điện bằng plastic, trong đó mỗi lõi có đường kính dưới 22,7 mm"
+      "ma": "8544601",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8544601/.2/.3 \"Dùng cho điện áp trên 1 kV nhưng không quá 36 kV\" / \"trên 36 kV nhưng không quá 66 kV\" / \"trên 66 kV\" ⇒ dienAp > 1 kV và <= 36 kV / > 36 kV và <= 66 kV / > 66 kV."
     },
     {
-     "fact": "chatLieu",
-     "op": "LA",
-     "value": "plastic",
-     "viTri": "CACH_DIEN"
+      "ma": "85446011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85446011/.21 \"Cáp bọc cách điện bằng plastic, trong đó mỗi lõi có đường kính dưới 22,7 mm\" ⇒ tenLoai \"Cáp bọc\" + chatLieu LA plastic viTri CACH_DIEN (vế \"bằng plastic\") + duongKinhLoi < 22,7 mm (\"dưới\" = <)."
     },
     {
-     "fact": "duongKinhLoi",
-     "op": "<",
-     "value": 22.7,
-     "donVi": "mm"
-    }
-   ]
-  },
-  "85446012": {
-   "dieuKienSo": [
-    {
-     "fact": "chatLieu",
-     "op": "LA",
-     "value": [
-      "cao su",
-      "plastic",
-      "giấy"
-     ],
-     "viTri": "CACH_DIEN"
-    }
-   ],
-   "phanConLai": [
-    "85446011"
-   ]
-  },
-  "85446021": {
-   "dieuKienSo": [
-    {
-     "fact": "tenLoai",
-     "op": "TEN_LOAI",
-     "value": "Cáp bọc cách điện bằng plastic, trong đó mỗi lõi có đường kính dưới 22,7 mm"
+      "ma": "85446012",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85446012/.22 \"Loại khác, cách điện bằng cao su, plastic hoặc giấy\" ⇒ chỉ ghi vế: chatLieu LA mảng [cao su, plastic, giấy] viTri CACH_DIEN — \"Loại khác\" máy tự phủ định .11/.21; tax.85446031 \"Cách điện bằng cao su, plastic hoặc giấy\" (dòng có tên, không phải LK) ⇒ cùng điều kiện; .19/.29/.39 \"Loại khác\" trần — máy phủ định."
     },
     {
-     "fact": "chatLieu",
-     "op": "LA",
-     "value": "plastic",
-     "viTri": "CACH_DIEN"
+      "ma": "854460",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.854460 \"Các vật dẫn điện khác(*), dùng cho điện áp trên 1000 V\" ⇒ phạm vi phân nhóm (dieuKienNut[854460]) — chỉ để cổng 1 bỏ vector ngoài phân nhóm, không vào sổ tay lúc chạy (#1109)."
     },
     {
-     "fact": "duongKinhLoi",
-     "op": "<",
-     "value": 22.7,
-     "donVi": "mm"
+      "ma": "85446011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "soát L29 11/11 trả về: tenLoai \"Cáp bọc\" THU HẸP — \"bọc cách điện\" = insulated (EN \"Cables insulated with plastics\"), không phải thuộc tính tên hàng ⇒ tenLoai \"Cáp\" (danh từ đầu tax.85446011 \"Cáp bọc cách điện bằng plastic…\"); .12/.22 ghi phanConLai để cổng 2 tách phần còn lại."
     }
-   ]
-  },
-  "85446022": {
-   "dieuKienSo": [
-    {
-     "fact": "chatLieu",
-     "op": "LA",
-     "value": [
-      "cao su",
-      "plastic",
-      "giấy"
-     ],
-     "viTri": "CACH_DIEN"
-    }
-   ],
-   "phanConLai": [
-    "85446021"
-   ]
-  },
-  "85446031": {
-   "dieuKienSo": [
-    {
-     "fact": "chatLieu",
-     "op": "LA",
-     "value": [
-      "cao su",
-      "plastic",
-      "giấy"
-     ],
-     "viTri": "CACH_DIEN"
-    }
-   ]
-  }
- },
- "dieuKienNut": {
-  "854460": {
-   "nguon": "tieuDe.854460",
-   "trich": "Các vật dẫn điện khác(*), dùng cho điện áp trên 1000 V",
-   "dieuKienSo": [
-    {
-     "fact": "dienAp",
-     "op": ">",
-     "value": 1000,
-     "donVi": "V"
-    }
-   ]
-  },
-  "8544601": {
-   "dieuKienSo": [
-    {
-     "fact": "dienAp",
-     "op": ">",
-     "value": 1,
-     "donVi": "kV"
-    },
-    {
-     "fact": "dienAp",
-     "op": "<=",
-     "value": 36,
-     "donVi": "kV"
-    }
-   ]
-  },
-  "8544602": {
-   "dieuKienSo": [
-    {
-     "fact": "dienAp",
-     "op": ">",
-     "value": 36,
-     "donVi": "kV"
-    },
-    {
-     "fact": "dienAp",
-     "op": "<=",
-     "value": 66,
-     "donVi": "kV"
-    }
-   ]
-  },
-  "8544603": {
-   "dieuKienSo": [
-    {
-     "fact": "dienAp",
-     "op": ">",
-     "value": 66,
-     "donVi": "kV"
-    }
-   ]
-  }
- },
- "ghiChuSoan": [
-  {
-   "ma": "8544601",
-   "loai": "QUYET_DINH",
-   "ghiChu": "tieuDe.8544601/.2/.3 \"Dùng cho điện áp trên 1 kV nhưng không quá 36 kV\" / \"trên 36 kV nhưng không quá 66 kV\" / \"trên 66 kV\" ⇒ dienAp > 1 kV và <= 36 kV / > 36 kV và <= 66 kV / > 66 kV."
-  },
-  {
-   "ma": "85446011",
-   "loai": "QUYET_DINH",
-   "ghiChu": "tax.85446011/.21 \"Cáp bọc cách điện bằng plastic, trong đó mỗi lõi có đường kính dưới 22,7 mm\" ⇒ tenLoai \"Cáp bọc\" + chatLieu LA plastic viTri CACH_DIEN (vế \"bằng plastic\") + duongKinhLoi < 22,7 mm (\"dưới\" = <)."
-  },
-  {
-   "ma": "85446012",
-   "loai": "QUYET_DINH",
-   "ghiChu": "tax.85446012/.22 \"Loại khác, cách điện bằng cao su, plastic hoặc giấy\" ⇒ chỉ ghi vế: chatLieu LA mảng [cao su, plastic, giấy] viTri CACH_DIEN — \"Loại khác\" máy tự phủ định .11/.21; tax.85446031 \"Cách điện bằng cao su, plastic hoặc giấy\" (dòng có tên, không phải LK) ⇒ cùng điều kiện; .19/.29/.39 \"Loại khác\" trần — máy phủ định."
-  },
-  {
-   "ma": "854460",
-   "loai": "QUYET_DINH",
-   "ghiChu": "tieuDe.854460 \"Các vật dẫn điện khác(*), dùng cho điện áp trên 1000 V\" ⇒ phạm vi phân nhóm (dieuKienNut[854460]) — chỉ để cổng 1 bỏ vector ngoài phân nhóm, không vào sổ tay lúc chạy (#1109)."
-  },
-  {
-   "ma": "85446011",
-   "loai": "QUYET_DINH",
-   "ghiChu": "soát L29 11/11 trả về: tenLoai \"Cáp bọc\" THU HẸP — \"bọc cách điện\" = insulated (EN \"Cables insulated with plastics\"), không phải thuộc tính tên hàng ⇒ tenLoai \"Cáp\" (danh từ đầu tax.85446011 \"Cáp bọc cách điện bằng plastic…\"); .12/.22 ghi phanConLai để cổng 2 tách phần còn lại."
-  }
- ]
+  ]
 }
