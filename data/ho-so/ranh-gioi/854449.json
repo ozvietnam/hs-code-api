@@ -14,8 +14,8 @@
     "boi": "CLAUDE_DUYET",
     "phien": "https://claude.ai/code/session_29331a75-ozv342-soat#soat-ozv342",
     "ngay": "2026-11-12",
-    "ghiChu": "tiếp soát L29 11/11: 85444941 tenLoai \"Cáp\" (bỏ \"bọc\" — EN insulated), 85444942 phanConLai [.41]; bảng hiệu chỉnh tiền lệ 854449-01..05 KHONG_LECH giữ nguyên.",
-    "bam": "8ca3d64b6440c90003c7ab786954a0ff2c73d63048fe3dba74671216e6d6c284"
+    "ghiChu": "tiếp soát L29 11/11: 85444941 tenLoai \"Cáp\" (bỏ \"bọc\" — EN insulated), 85444942 phanConLai [.41]; bảng hiệu chỉnh tiền lệ 854449-01..05 KHONG_LECH giữ nguyên. | OZV-342 (12/11): tenLoai cụm chung (Cáp/Cáp điện/men tráng — mọi token đã trong tên nhóm 85.44 nên cumPhanBiet rỗng, không bao giờ tất định) thay bằng tên dòng nguyên văn có token mới (enamel/chống nhiễu/plastic/cao su…) — 13 ca DONG_CO_TEN hết THIEU_SO_LIEU/KHONG_THE_CHOT; 85444924 thêm phanConLai [.21,.22,.23] (tên \"Loại khác, …\" = phần còn lại của tầng .9492).",
+    "bam": "8e1dc68e44d11a844daec7300627ab9eb5e8685111f1c6ed610b0371c79eb542"
   },
   "dieuKienNut": [
     {
@@ -174,7 +174,7 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Dây đơn có vỏ bọc"
+          "value": "Dây đơn có vỏ bọc (chống nhiễu)"
         },
         {
           "fact": "dungCho",
@@ -192,7 +192,7 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Cáp điện"
+          "value": "Cáp điện cách điện bằng plastic, trong đó mỗi lõi có đường kính không quá 19,5 mm"
         },
         {
           "fact": "chatLieu",
@@ -217,7 +217,7 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Cáp điện"
+          "value": "Cáp điện cách điện bằng plastic khác"
         },
         {
           "fact": "chatLieu",
@@ -247,7 +247,12 @@
           "viTri": "CACH_DIEN"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "CLAUDE_DUYET",
+      "phanConLai": [
+        "85444921",
+        "85444922",
+        "85444923"
+      ]
     },
     {
       "hs": "85444929",
@@ -319,7 +324,7 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Cáp"
+          "value": "Cáp bọc cách điện bằng plastic"
         },
         {
           "fact": "chatLieu",

@@ -380,7 +380,18 @@ function sinhMoTaLoaiTru(hs8, pn6, st) {
     }
     parts.push(loiVeSo(fact, chosen, donVi, k?.cachDoc?.vi?.[0] || k?.nhanVi || String(fact).replace(/_/g, ' ')));
   }
-  return parts.join(', ');
+  // OZV-342: chỉ tách đoạn " - " (ranh đoạn phuDinhCaDoan) quanh CỤM PHỦ ĐỊNH — chuỗi phủ định anh em
+  // ("không dùng cho 87.02, …") đứng chung đoạn với khẳng định thì nuốt mọi vế phía sau ⇒ THIEU_SO_LIEU
+  // (85444919) hoặc nhieu-dong-loai-khac (85443013). Phần KHÔNG phủ định vẫn nối ", " như nếp cũ: bộ đọc
+  // số gộp khoảng theo ",", tách " - " làm vế số "điện áp 100000V" rơi CHUA_BIET ⇒ .6039 đỏ lại (đo biến
+  // thể "số cuối ," ⇒ LOAI_KHAC 85446039).
+  const laPhu = (s) => /không dùng|không phải|không thuộc|other than|not a|不是/.test(String(s || ''));
+  let moTa = '';
+  for (let i = 0; i < parts.length; i++) {
+    if (i) moTa += laPhu(parts[i]) || laPhu(parts[i - 1]) ? ' - ' : ', ';
+    moTa += parts[i];
+  }
+  return moTa;
 }
 
 /** Sinh toàn bộ các ca kiểm luật cho một nhóm 4 số. */
@@ -429,7 +440,22 @@ export function sinhCaNhom(nhom4) {
             if (s && !phuKhong.includes(s)) phuKhong.push(s);
           }
         }
-        const moTa = [ten6, midText, hs8 === n?.laPhanNhom ? '' : tenDong].filter(Boolean).join(': ') + (phuKhong.length ? `, ${phuKhong.join(', ')}` : '');
+        // OZV-342: nối các phần bằng " - " (ranh đoạn của phuDinhCaDoan) thay vì ": " — ":" KHÔNG phải ranh
+        // đoạn nên tiêu đề tầng phủ định "Loại không dùng cho viễn thông, điện áp không quá 80 V" giết cả
+        // đoạn chứa tên dòng (85444921-.24/.41/.42: tenLoai + chatLieu đọc CHUA_BIET trên toàn bộ). Tách đoạn
+        // giữ nguyên văn mọi tiêu đề, chỉ cô lập phủ định vào đoạn riêng. Phụ phủ định phuKhong cũng nối
+        // " - " vì ", không phải Dây đơn có vỏ bọc" nằm cùng đoạn tenDong thì nuốt nốt vật liệu sau nó.
+        // OZV-342 (tiếp): KHÔNG tách hết — bộ đọc số gộp khoảng điện áp theo nếp cũ với ":", tách " - " ở
+        // tầng KHẲNG ĐỊNH (8544602 "trên 36 kV nhưng không quá 66 kV") làm vế dienAp>36 đứt thành CHUA_BIET
+        // (đo .6021/.6022/.6031 đỏ lại). Chỉ tách khi một trong hai vế kề nhau là tiêu đề phủ định.
+        const laPhuDinhDoan = (s) => /không dùng|không phải|không thuộc|other than|not a|不是/.test(String(s || ''));
+        const cacPhan = [ten6, ...mids.map((m) => (m.loaiKhac ? '' : m.tenVi)).filter(Boolean), hs8 === n?.laPhanNhom ? '' : tenDong].filter(Boolean);
+        let moTa = '';
+        for (let i = 0; i < cacPhan.length; i++) {
+          if (i) moTa += laPhuDinhDoan(cacPhan[i]) || laPhuDinhDoan(cacPhan[i - 1]) ? ' - ' : ': ';
+          moTa += cacPhan[i];
+        }
+        moTa += phuKhong.length ? ` - ${phuKhong.join(' - ')}` : '';
         caDongCoTen.push({
           loaiCa: 'DONG_CO_TEN',
           pn6,
