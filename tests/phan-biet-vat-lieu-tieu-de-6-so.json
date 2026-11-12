@@ -1,0 +1,121 @@
+{
+  "moTa": "Ca kiểm MỚI của OZV-558 — vật liệu quyết định TIÊU ĐỀ 6 SỐ (PA-B). Tệp RIÊNG, không sửa tệp cổng của GĐ (tests/ca-doi-chung-vat-lieu-8546-8547.json). Bốn chiều theo đặc tả GĐ: (I) nhựa/cao su ⇒ 85469000 · (II) gốm sứ ⇒ vẫn 85462010 (không hồi quy chiều ngược) · (III) không nêu vật liệu ⇒ hành vi Y HỆT main · (IV) 'composite' ⇒ hành vi Y HỆT main.",
+  "nen": "origin/main = 5cd1e855 (PR #1255 đã gộp) — đo bằng chính scripts/test-phan-biet-vat-lieu.mjs ở chế độ --do",
+  "nhom": "8546",
+  "ca": [
+    {
+      "id": "pbvl-001",
+      "huong": "I",
+      "pn6": "854620",
+      "moTa": "Cách điện xuyên máy biến áp 24kV bằng nhựa epoxid đúc",
+      "mong": { "ketQua": "CHOT", "hs": "85469000" },
+      "nenMain": { "ketQua": "CHOT", "hs": "85462010" },
+      "ghiChu": "Nhựa epoxid = vật liệu cách điện khác thuỷ tinh/gốm sứ ⇒ tiêu đề 'loại khác' 854690 (dòng 85469000). Nền main chốt 85462010 (gốm sứ) = SAI VẬT LIỆU."
+    },
+    {
+      "id": "pbvl-002",
+      "huong": "I",
+      "pn6": "854620",
+      "moTa": "Cách điện của thiết bị ngắt mạch bằng nhựa PVC, 24kV",
+      "mong": { "ketQua": "CHOT", "hs": "85469000" },
+      "nenMain": { "ketQua": "CHOT", "hs": "85462010" },
+      "ghiChu": "PVC = plastic ⇒ 85469000."
+    },
+    {
+      "id": "pbvl-003",
+      "huong": "I",
+      "pn6": "854620",
+      "moTa": "Cách điện của thiết bị ngắt mạch bằng cao su silicone",
+      "mong": { "ketQua": "CHOT", "hs": "85469000" },
+      "nenMain": { "ketQua": "CHOT", "hs": "85462010" },
+      "ghiChu": "Cao su silicone = vật liệu cách điện khác ⇒ 85469000 (chú giải nhóm 8546 nêu 'cao su cứng')."
+    },
+    {
+      "id": "pbvl-004",
+      "huong": "I",
+      "pn6": "854620",
+      "moTa": "Đĩa cách điện bằng nhựa polyamide cho đường dây tải điện",
+      "mong": { "ketQua": "CHOT", "hs": "85469000" },
+      "nenMain": { "ketQua": "THIEU_SO_LIEU", "hs": null },
+      "ghiChu": "Nhựa polyamide = plastic ⇒ 85469000. Nền main KHÔNG chốt (thiếu số liệu) ⇒ vá phải làm máy chốt được."
+    },
+    {
+      "id": "pbvl-005",
+      "huong": "I",
+      "pn6": "854620",
+      "moTa": "Sứ đứng cách điện bằng nhựa epoxid dùng trong trạm biến áp",
+      "mong": { "ketQua": "CHOT", "hs": "85469000" },
+      "nenMain": { "ketQua": "THIEU_SO_LIEU", "hs": null },
+      "ghiChu": "Tên hàng là 'sứ' nhưng vật liệu HÀNG LÀM BẰNG là nhựa ⇒ chốt theo vật liệu, không theo tên hàng (chống nhầm khi mô tả nêu nhiều vật liệu)."
+    },
+    {
+      "id": "pbvl-006",
+      "huong": "I",
+      "pn6": "854620",
+      "moTa": "Cách điện xuyên bằng thủy tinh của máy biến điện 35kV",
+      "mong": { "ketQua": "CHOT", "hs": "85461000" },
+      "nenMain": { "ketQua": "CHOT", "hs": "85462010" },
+      "ghiChu": "Thuỷ tinh là tiêu đề RIÊNG 854610 (anh em trong nhóm) ⇒ chốt 85461000, không phải 85462010."
+    },
+    {
+      "id": "pbvl-007",
+      "huong": "II",
+      "pn6": "854620",
+      "moTa": "Cách điện xuyên bằng gốm sứ của máy biến điện 35kV",
+      "mong": { "ketQua": "CHOT", "hs": "85462010" },
+      "nenMain": { "ketQua": "CHOT", "hs": "85462010" },
+      "ghiChu": "Chiều ngược: gốm sứ ⇒ vẫn 85462010, KHÔNG rơi sang 85469000.",
+      "giuYHieuMain": true
+    },
+    {
+      "id": "pbvl-008",
+      "huong": "II",
+      "pn6": "854620",
+      "moTa": "Cách điện của thiết bị ngắt mạch bằng sứ porcelaine 24kV",
+      "mong": { "ketQua": "CHOT", "hs": "85462010" },
+      "nenMain": { "ketQua": "CHOT", "hs": "85462010" },
+      "ghiChu": "Sứ = gốm sứ ⇒ 85462010 (không hồi quy).",
+      "giuYHieuMain": true
+    },
+    {
+      "id": "pbvl-009",
+      "huong": "III",
+      "pn6": "854620",
+      "moTa": "Cách điện xuyên của máy biến dòng 35kV",
+      "mong": { "ketQua": "CHOT", "hs": "85462010" },
+      "nenMain": { "ketQua": "CHOT", "hs": "85462010" },
+      "ghiChu": "KHÔNG nêu vật liệu ⇒ giữ hành vi cũ (Q2 của GĐ): vẫn chốt 85462010, không mất chốt, không đổi hành vi.",
+      "giuYHieuMain": true
+    },
+    {
+      "id": "pbvl-010",
+      "huong": "III",
+      "pn6": "854620",
+      "moTa": "Bộ cách điện cho công tắc mạch 24kV dùng trong trạm biến áp",
+      "mong": { "ketQua": "THIEU_SO_LIEU", "hs": null },
+      "nenMain": { "ketQua": "THIEU_SO_LIEU", "hs": null },
+      "ghiChu": "Không nêu vật liệu ⇒ y hệt main (nền main cũng không chốt ⇒ không được máy chốt thêm).",
+      "giuYHieuMain": true
+    },
+    {
+      "id": "pbvl-011",
+      "huong": "IV",
+      "pn6": "854620",
+      "moTa": "Cách điện xuyên bằng composite cho máy biến điện",
+      "mong": { "ketQua": "CHOT", "hs": "85462010" },
+      "nenMain": { "ketQua": "CHOT", "hs": "85462010" },
+      "ghiChu": "'composite' chưa có trong bảng đọc vật liệu ⇒ KHÔNG đoán, giữ hành vi cũ (Q3 của GĐ: composite = T3, ngoài phạm vi thẻ này).",
+      "giuYHieuMain": true
+    },
+    {
+      "id": "pbvl-012",
+      "huong": "IV",
+      "pn6": "854620",
+      "moTa": "Insulator bằng vật liệu composite cho đường dây truyền tải 110kV",
+      "mong": { "ketQua": "THIEU_SO_LIEU", "hs": null },
+      "nenMain": { "ketQua": "THIEU_SO_LIEU", "hs": null },
+      "ghiChu": "Có chữ báo 'vật liệu' nhưng vật liệu KHÔNG đọc được ⇒ không suy ra vế nào ⇒ y hệt main.",
+      "giuYHieuMain": true
+    }
+  ]
+}
