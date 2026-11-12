@@ -1,0 +1,676 @@
+{
+  "moTa": "Ca đối chứng VẬT LIỆU viết tay cho nhóm có tiêu đề 6 số anh em phân biệt bằng vật liệu (OZV-540 T1 / OZV-548). Bộ ca sinh từ dữ liệu KHÔNG BAO GIỜ ra ca trái vật liệu (mô tả sinh ra chứa đúng vật liệu của chính tiêu đề) nên lỗi này chỉ bắt được bằng ca TAY. Mỗi dòng 8 số của 8546 + 8547 có: >= 2 ca TRAI_VAT_LIEU (hàng mang vật liệu khác hỏi nơi tiêu đề quy định vật liệu khác — máy KHÔNG ĐƯỢC chốt dòng trái), >= 1 ca DUNG_VAT_LIEU (hàng đúng vật liệu — không được chốt nhầm dòng khác), >= 1 ca KHONG_NEU_VAT_LIEU (không nêu vật liệu — hành vi phải GIỮ NGUYÊN như mốc coSo). Mô tả viết theo kiểu khách khai thật, không bẻ từ tên dòng.",
+  "cachCham": {
+    "TRAI_VAT_LIEU": "ĐẠT khi chotDong8(pn6) KHÔNG chốt (CHOT/LOAI_KHAC) vào bất kỳ mã trong hs8Trai. ĐỎ trên main = đúng chỗ (đây là 'đỏ trước khi vá' cho T2 của OZV-540); XANH trên nhánh vá T2.",
+    "DUNG_VAT_LIEU": "ĐẠT khi chốt đúng hs8Dung HOẶC hỏi/không chốt (THIEU_SO_LIEU/KHONG_THE_CHOT); ĐỎ khi chốt vào mã khác hs8Dung.",
+    "KHONG_NEU_VAT_LIEU": "ĐẠT khi kết quả trùng cơ sở coSo (giữ nguyên hành vi cũ — tiêu chí không hồi quy của T2); DOI_HANH_VI khi lệch cơ sở.",
+    "ghiChu": "Các ca này KHÔNG cộng vào tongSoCa/chotSai... của bộ kiểm luật (đo riêng, như ca đặc biệt 8539) để số bộ sinh tự dữ liệu không đổi khi thêm ca tay."
+  },
+  "coSoChung": {
+    "nen": "7cd1889f",
+    "ngay": "2026-11-12",
+    "ghiChu": "coSo từng ca = kết quả đo trên main 44dc9fd6 (trước khi có T2)."
+  },
+  "ca": [
+    {
+      "id": "8546-001",
+      "nhom": "8546",
+      "pn6": "854610",
+      "hs8": "85461000",
+      "loai": "TRAI_VAT_LIEU",
+      "moTa": "Sứ cách điện đứng trạm biến áp 35kV bằng gốm sứ tráng men",
+      "hs8Trai": [
+        "85461000"
+      ],
+      "hs8Dung": "85462090",
+      "ghiChu": "Hàng gốm sứ hỏi ở tiêu đề 'Bằng thuỷ tinh'",
+      "coSo": {
+        "nen": "7cd1889f",
+        "ketQua": "KHONG_THE_CHOT",
+        "hs": null,
+        "lyDo": "ranh-gioi-so-chu-khong-tat-dinh"
+      }
+    },
+    {
+      "id": "8546-002",
+      "nhom": "8546",
+      "pn6": "854610",
+      "hs8": "85461000",
+      "loai": "TRAI_VAT_LIEU",
+      "moTa": "Chuỗi sứ cách điện 110kV bằng sứ porcelaine cho đường dây tải điện",
+      "hs8Trai": [
+        "85461000"
+      ],
+      "hs8Dung": "85462090",
+      "ghiChu": "Hàng gốm sứ hỏi ở tiêu đề 'Bằng thuỷ tinh'",
+      "coSo": {
+        "nen": "7cd1889f",
+        "ketQua": "KHONG_THE_CHOT",
+        "hs": null,
+        "lyDo": "ranh-gioi-so-chu-khong-tat-dinh"
+      }
+    },
+    {
+      "id": "8546-003",
+      "nhom": "8546",
+      "pn6": "854610",
+      "hs8": "85461000",
+      "loai": "DUNG_VAT_LIEU",
+      "moTa": "Vật cách điện bằng thuỷ tinh dùng cho đường dây tải điện trung thế",
+      "hs8Trai": [],
+      "hs8Dung": "85461000",
+      "ghiChu": "Đúng vật liệu thuỷ tinh của tiêu đề 854610",
+      "coSo": {
+        "nen": "7cd1889f",
+        "ketQua": "CHOT",
+        "hs": "85461000",
+        "lyDo": ""
+      }
+    },
+    {
+      "id": "8546-004",
+      "nhom": "8546",
+      "pn6": "854610",
+      "hs8": "85461000",
+      "loai": "KHONG_NEU_VAT_LIEU",
+      "moTa": "Vật cách điện hình đĩa dùng trên đường dây tải điện cao thế",
+      "hs8Trai": [],
+      "hs8Dung": null,
+      "ghiChu": "Không nêu vật liệu — giữ nguyên hành vi cũ",
+      "coSo": {
+        "nen": "7cd1889f",
+        "ketQua": "KHONG_THE_CHOT",
+        "hs": null,
+        "lyDo": "ranh-gioi-so-chu-khong-tat-dinh"
+      }
+    },
+    {
+      "id": "8546-005",
+      "nhom": "8546",
+      "pn6": "854620",
+      "hs8": "85462010",
+      "loai": "TRAI_VAT_LIEU",
+      "moTa": "Cách điện xuyên máy biến áp 24kV bằng nhựa epoxid đúc",
+      "hs8Trai": [
+        "85462010",
+        "85462090"
+      ],
+      "hs8Dung": "85469000",
+      "ghiChu": "Bushing nhựa hỏi ở tiêu đề 'Bằng gốm, sứ' — ca đỏ chủ lực của T2",
+      "coSo": {
+        "nen": "7cd1889f",
+        "ketQua": "CHOT",
+        "hs": "85462010",
+        "lyDo": ""
+      }
+    },
+    {
+      "id": "8546-006",
+      "nhom": "8546",
+      "pn6": "854620",
+      "hs8": "85462010",
+      "loai": "TRAI_VAT_LIEU",
+      "moTa": "Cách điện của thiết bị ngắt mạch bằng nhựa PVC, 24kV",
+      "hs8Trai": [
+        "85462010",
+        "85462090"
+      ],
+      "hs8Dung": "85469000",
+      "ghiChu": "Thiết bị ngắt mạch bằng nhựa hỏi ở tiêu đề 'Bằng gốm, sứ'",
+      "coSo": {
+        "nen": "7cd1889f",
+        "ketQua": "CHOT",
+        "hs": "85462010",
+        "lyDo": ""
+      }
+    },
+    {
+      "id": "8546-007",
+      "nhom": "8546",
+      "pn6": "854620",
+      "hs8": "85462010",
+      "loai": "TRAI_VAT_LIEU",
+      "moTa": "Cách điện của thiết bị ngắt mạch bằng cao su silicone",
+      "hs8Trai": [
+        "85462010",
+        "85462090"
+      ],
+      "hs8Dung": "85469000",
+      "ghiChu": "Cao su thuộc 'Loại khác' 854690 — không phải gốm sứ",
+      "coSo": {
+        "nen": "7cd1889f",
+        "ketQua": "CHOT",
+        "hs": "85462010",
+        "lyDo": ""
+      }
+    },
+    {
+      "id": "8546-008",
+      "nhom": "8546",
+      "pn6": "854620",
+      "hs8": "85462010",
+      "loai": "TRAI_VAT_LIEU",
+      "moTa": "Cách điện xuyên bằng composite cho máy biến điện",
+      "hs8Trai": [
+        "85462010",
+        "85462090"
+      ],
+      "hs8Dung": "85469000",
+      "canT3": true,
+      "ghiChu": "Cần T3 (OZV-540 PA-3): 'composite' chưa có trong từ vựng/bộ mẫu MATERIALS — ca này ĐỎ cho tới khi T3 vào",
+      "coSo": {
+        "nen": "7cd1889f",
+        "ketQua": "CHOT",
+        "hs": "85462010",
+        "lyDo": ""
+      }
+    },
+    {
+      "id": "8546-009",
+      "nhom": "8546",
+      "pn6": "854620",
+      "hs8": "85462010",
+      "loai": "DUNG_VAT_LIEU",
+      "moTa": "Cách điện xuyên bằng gốm sứ của máy biến điện 35kV",
+      "hs8Trai": [],
+      "hs8Dung": "85462010",
+      "ghiChu": "Đúng vật liệu + đúng hình dạng bushing — phải giữ chốt 85462010 (không hồi quy)",
+      "coSo": {
+        "nen": "7cd1889f",
+        "ketQua": "CHOT",
+        "hs": "85462010",
+        "lyDo": ""
+      }
+    },
+    {
+      "id": "8546-010",
+      "nhom": "8546",
+      "pn6": "854620",
+      "hs8": "85462010",
+      "loai": "DUNG_VAT_LIEU",
+      "moTa": "Cách điện của thiết bị ngắt mạch bằng sứ porcelaine 24kV",
+      "hs8Trai": [],
+      "hs8Dung": "85462010",
+      "ghiChu": "Đúng vật liệu + hình dạng thiết bị ngắt mạch — phải giữ chốt 85462010",
+      "coSo": {
+        "nen": "7cd1889f",
+        "ketQua": "CHOT",
+        "hs": "85462010",
+        "lyDo": ""
+      }
+    },
+    {
+      "id": "8546-011",
+      "nhom": "8546",
+      "pn6": "854620",
+      "hs8": "85462010",
+      "loai": "KHONG_NEU_VAT_LIEU",
+      "moTa": "Cách điện xuyên của máy biến dòng 35kV",
+      "hs8Trai": [],
+      "hs8Dung": null,
+      "ghiChu": "Không nêu vật liệu — T2 chấp nhận 'chon6 CHUA_BIET', giữ hành vi cũ",
+      "coSo": {
+        "nen": "7cd1889f",
+        "ketQua": "CHOT",
+        "hs": "85462010",
+        "lyDo": ""
+      }
+    },
+    {
+      "id": "8546-012",
+      "nhom": "8546",
+      "pn6": "854620",
+      "hs8": "85462090",
+      "loai": "TRAI_VAT_LIEU",
+      "moTa": "Sứ đứng cách điện bằng nhựa epoxid dùng trong trạm biến áp",
+      "hs8Trai": [
+        "85462090",
+        "85462010"
+      ],
+      "hs8Dung": "85469000",
+      "ghiChu": "Sứ đứng nhựa (không phải bushing) hỏi ở tiêu đề gốm sứ",
+      "coSo": {
+        "nen": "7cd1889f",
+        "ketQua": "THIEU_SO_LIEU",
+        "hs": null,
+        "lyDo": ""
+      }
+    },
+    {
+      "id": "8546-013",
+      "nhom": "8546",
+      "pn6": "854620",
+      "hs8": "85462090",
+      "loai": "TRAI_VAT_LIEU",
+      "moTa": "Đĩa cách điện bằng nhựa polyamide cho đường dây tải điện",
+      "hs8Trai": [
+        "85462090",
+        "85462010"
+      ],
+      "hs8Dung": "85469000",
+      "ghiChu": "Đĩa nhựa (không phải bushing) hỏi ở tiêu đề gốm sứ",
+      "coSo": {
+        "nen": "7cd1889f",
+        "ketQua": "THIEU_SO_LIEU",
+        "hs": null,
+        "lyDo": ""
+      }
+    },
+    {
+      "id": "8546-014",
+      "nhom": "8546",
+      "pn6": "854620",
+      "hs8": "85462090",
+      "loai": "DUNG_VAT_LIEU",
+      "moTa": "Sứ đứng cách điện bằng gốm sứ dùng trong trạm biến áp",
+      "hs8Trai": [],
+      "hs8Dung": "85462090",
+      "ghiChu": "Gốm sứ, không phải bushing/ngắt mạch ⇒ Loại khác của 854620; hỏi/không chốt vẫn đạt, cấm chốt nhầm 85462010/85469000",
+      "coSo": {
+        "nen": "7cd1889f",
+        "ketQua": "THIEU_SO_LIEU",
+        "hs": null,
+        "lyDo": ""
+      }
+    },
+    {
+      "id": "8546-015",
+      "nhom": "8546",
+      "pn6": "854620",
+      "hs8": "85462090",
+      "loai": "KHONG_NEU_VAT_LIEU",
+      "moTa": "Sứ đứng cách điện dùng trong trạm biến áp",
+      "hs8Trai": [],
+      "hs8Dung": null,
+      "ghiChu": "Không nêu vật liệu — giữ nguyên hành vi cũ",
+      "coSo": {
+        "nen": "7cd1889f",
+        "ketQua": "THIEU_SO_LIEU",
+        "hs": null,
+        "lyDo": ""
+      }
+    },
+    {
+      "id": "8546-016",
+      "nhom": "8546",
+      "pn6": "854690",
+      "hs8": "85469000",
+      "loai": "TRAI_VAT_LIEU",
+      "moTa": "Sứ cách điện trạm biến áp bằng gốm sứ 35kV",
+      "hs8Trai": [
+        "85469000"
+      ],
+      "hs8Dung": "85462090",
+      "ghiChu": "Hàng gốm sứ hỏi ở tiêu đề 854690 ('khác thuỷ tinh/gốm sứ') — phải từ chối + đề xuất 854620 (deXuat sau T2)",
+      "coSo": {
+        "nen": "7cd1889f",
+        "ketQua": "KHONG_THE_CHOT",
+        "hs": null,
+        "lyDo": "ranh-gioi-so-chu-khong-tat-dinh"
+      }
+    },
+    {
+      "id": "8546-017",
+      "nhom": "8546",
+      "pn6": "854690",
+      "hs8": "85469000",
+      "loai": "TRAI_VAT_LIEU",
+      "moTa": "Vật cách điện bằng thuỷ tinh dùng cho đường dây tải điện trung thế",
+      "hs8Trai": [
+        "85469000"
+      ],
+      "hs8Dung": "85461000",
+      "ghiChu": "Hàng thuỷ tinh hỏi ở 854690 — thuộc 854610",
+      "coSo": {
+        "nen": "7cd1889f",
+        "ketQua": "KHONG_THE_CHOT",
+        "hs": null,
+        "lyDo": "ranh-gioi-so-chu-khong-tat-dinh"
+      }
+    },
+    {
+      "id": "8546-018",
+      "nhom": "8546",
+      "pn6": "854690",
+      "hs8": "85469000",
+      "loai": "DUNG_VAT_LIEU",
+      "moTa": "Vật cách điện bằng nhựa dùng cho đường dây tải điện",
+      "hs8Trai": [],
+      "hs8Dung": "85469000",
+      "ghiChu": "Nhựa đúng chỗ 85469000 — sau T2 phải CHOT 85469000 (main hiện KHONG_THE_CHOT)",
+      "coSo": {
+        "nen": "7cd1889f",
+        "ketQua": "KHONG_THE_CHOT",
+        "hs": null,
+        "lyDo": "ranh-gioi-so-chu-khong-tat-dinh"
+      }
+    },
+    {
+      "id": "8546-019",
+      "nhom": "8546",
+      "pn6": "854690",
+      "hs8": "85469000",
+      "loai": "DUNG_VAT_LIEU",
+      "moTa": "Cách điện xuyên bằng composite cho máy biến điện",
+      "hs8Trai": [],
+      "hs8Dung": "85469000",
+      "canT3": true,
+      "ghiChu": "Cặp đôi với ca 8546-008 nhưng hỏi đúng chỗ 854690 — sau T2+T3 phải CHOT 85469000",
+      "coSo": {
+        "nen": "7cd1889f",
+        "ketQua": "KHONG_THE_CHOT",
+        "hs": null,
+        "lyDo": "ranh-gioi-so-chu-khong-tat-dinh"
+      }
+    },
+    {
+      "id": "8546-020",
+      "nhom": "8546",
+      "pn6": "854690",
+      "hs8": "85469000",
+      "loai": "KHONG_NEU_VAT_LIEU",
+      "moTa": "Cách điện xuyên của máy biến điện",
+      "hs8Trai": [],
+      "hs8Dung": null,
+      "ghiChu": "Không nêu vật liệu, hỏi ở 854690 — T2: chon6 CHUA_BIET, giữ hành vi cũ",
+      "coSo": {
+        "nen": "7cd1889f",
+        "ketQua": "KHONG_THE_CHOT",
+        "hs": null,
+        "lyDo": "ranh-gioi-so-chu-khong-tat-dinh"
+      }
+    },
+    {
+      "id": "8547-001",
+      "nhom": "8547",
+      "pn6": "854710",
+      "hs8": "85471000",
+      "loai": "TRAI_VAT_LIEU",
+      "moTa": "Đế kẹp thanh dẫn bằng nhựa cách điện, dùng trong tủ điện trung thế",
+      "hs8Trai": [
+        "85471000"
+      ],
+      "hs8Dung": "85472000",
+      "ghiChu": "Phụ kiện nhựa hỏi ở tiêu đề 'bằng gốm sứ' — cùng hình lỗi 8546 (nhóm anh em)",
+      "coSo": {
+        "nen": "7cd1889f",
+        "ketQua": "KHONG_THE_CHOT",
+        "hs": null,
+        "lyDo": "ranh-gioi-so-chu-khong-tat-dinh"
+      }
+    },
+    {
+      "id": "8547-002",
+      "nhom": "8547",
+      "pn6": "854710",
+      "hs8": "85471000",
+      "loai": "TRAI_VAT_LIEU",
+      "moTa": "Bát kẹp thanh góp bằng nhựa epoxy dùng trong tủ trung thế",
+      "hs8Trai": [
+        "85471000"
+      ],
+      "hs8Dung": "85472000",
+      "ghiChu": "Phụ kiện nhựa hỏi ở tiêu đề gốm sứ",
+      "coSo": {
+        "nen": "7cd1889f",
+        "ketQua": "KHONG_THE_CHOT",
+        "hs": null,
+        "lyDo": "ranh-gioi-so-chu-khong-tat-dinh"
+      }
+    },
+    {
+      "id": "8547-003",
+      "nhom": "8547",
+      "pn6": "854710",
+      "hs8": "85471000",
+      "loai": "DUNG_VAT_LIEU",
+      "moTa": "Đế kẹp thanh dẫn bằng sứ cách điện dùng trong tủ điện trung thế",
+      "hs8Trai": [],
+      "hs8Dung": "85471000",
+      "ghiChu": "Gốm sứ đúng chỗ — không được chốt nhầm sang nhựa/khác",
+      "coSo": {
+        "nen": "7cd1889f",
+        "ketQua": "KHONG_THE_CHOT",
+        "hs": null,
+        "lyDo": "ranh-gioi-so-chu-khong-tat-dinh"
+      }
+    },
+    {
+      "id": "8547-004",
+      "nhom": "8547",
+      "pn6": "854710",
+      "hs8": "85471000",
+      "loai": "KHONG_NEU_VAT_LIEU",
+      "moTa": "Đế kẹp thanh dẫn cách điện dùng trong tủ điện trung thế",
+      "hs8Trai": [],
+      "hs8Dung": null,
+      "ghiChu": "Không nêu vật liệu — giữ nguyên hành vi cũ",
+      "coSo": {
+        "nen": "7cd1889f",
+        "ketQua": "KHONG_THE_CHOT",
+        "hs": null,
+        "lyDo": "ranh-gioi-so-chu-khong-tat-dinh"
+      }
+    },
+    {
+      "id": "8547-005",
+      "nhom": "8547",
+      "pn6": "854720",
+      "hs8": "85472000",
+      "loai": "TRAI_VAT_LIEU",
+      "moTa": "Đế kẹp thanh dẫn bằng sứ cách điện dùng trong tủ điện trung thế",
+      "hs8Trai": [
+        "85472000"
+      ],
+      "hs8Dung": "85471000",
+      "ghiChu": "Cặp đối xứng với 8547-003: cùng mô tả, hỏi ở tiêu đề nhựa — phải từ chối + đề xuất 854710",
+      "coSo": {
+        "nen": "7cd1889f",
+        "ketQua": "KHONG_THE_CHOT",
+        "hs": null,
+        "lyDo": "ranh-gioi-so-chu-khong-tat-dinh"
+      }
+    },
+    {
+      "id": "8547-006",
+      "nhom": "8547",
+      "pn6": "854720",
+      "hs8": "85472000",
+      "loai": "TRAI_VAT_LIEU",
+      "moTa": "Bát kẹp gốm sứ cách điện cho tủ điện cao thế",
+      "hs8Trai": [
+        "85472000"
+      ],
+      "hs8Dung": "85471000",
+      "ghiChu": "Gốm sứ hỏi ở tiêu đề nhựa",
+      "coSo": {
+        "nen": "7cd1889f",
+        "ketQua": "KHONG_THE_CHOT",
+        "hs": null,
+        "lyDo": "ranh-gioi-so-chu-khong-tat-dinh"
+      }
+    },
+    {
+      "id": "8547-007",
+      "nhom": "8547",
+      "pn6": "854720",
+      "hs8": "85472000",
+      "loai": "DUNG_VAT_LIEU",
+      "moTa": "Bát kẹp thanh góp bằng nhựa epoxy dùng trong tủ trung thế",
+      "hs8Trai": [],
+      "hs8Dung": "85472000",
+      "ghiChu": "Cặp đôi với 8547-002, hỏi đúng chỗ nhựa",
+      "coSo": {
+        "nen": "7cd1889f",
+        "ketQua": "KHONG_THE_CHOT",
+        "hs": null,
+        "lyDo": "ranh-gioi-so-chu-khong-tat-dinh"
+      }
+    },
+    {
+      "id": "8547-008",
+      "nhom": "8547",
+      "pn6": "854720",
+      "hs8": "85472000",
+      "loai": "KHONG_NEU_VAT_LIEU",
+      "moTa": "Bát kẹp thanh góp cách điện dùng trong tủ trung thế",
+      "hs8Trai": [],
+      "hs8Dung": null,
+      "ghiChu": "Không nêu vật liệu — giữ nguyên hành vi cũ",
+      "coSo": {
+        "nen": "7cd1889f",
+        "ketQua": "KHONG_THE_CHOT",
+        "hs": null,
+        "lyDo": "ranh-gioi-so-chu-khong-tat-dinh"
+      }
+    },
+    {
+      "id": "8547-009",
+      "nhom": "8547",
+      "pn6": "854790",
+      "hs8": "85479010",
+      "loai": "TRAI_VAT_LIEU",
+      "moTa": "Ống dẫn dây điện bằng sứ cách điện",
+      "hs8Trai": [
+        "85479010",
+        "85479090"
+      ],
+      "hs8Dung": "85471000",
+      "ghiChu": "Ống sứ nguyên chất không phải 'kim loại lót cách điện'",
+      "coSo": {
+        "nen": "7cd1889f",
+        "ketQua": "KHONG_THE_CHOT",
+        "hs": null,
+        "lyDo": "ranh-gioi-chua-so-hoa"
+      }
+    },
+    {
+      "id": "8547-010",
+      "nhom": "8547",
+      "pn6": "854790",
+      "hs8": "85479010",
+      "loai": "TRAI_VAT_LIEU",
+      "moTa": "Khớp nối của ống dẫn dây điện bằng gốm sứ",
+      "hs8Trai": [
+        "85479010",
+        "85479090"
+      ],
+      "hs8Dung": "85471000",
+      "ghiChu": "Khớp nối gốm sứ không phải kim loại lót cách điện",
+      "coSo": {
+        "nen": "7cd1889f",
+        "ketQua": "KHONG_THE_CHOT",
+        "hs": null,
+        "lyDo": "ranh-gioi-chua-so-hoa"
+      }
+    },
+    {
+      "id": "8547-011",
+      "nhom": "8547",
+      "pn6": "854790",
+      "hs8": "85479010",
+      "loai": "DUNG_VAT_LIEU",
+      "moTa": "Ống dẫn dây điện bằng thép mạ kẽm được lót lớp vật liệu cách điện",
+      "hs8Trai": [],
+      "hs8Dung": "85479010",
+      "ghiChu": "Đúng dòng: kim loại cơ bản + lót cách điện",
+      "coSo": {
+        "nen": "7cd1889f",
+        "ketQua": "KHONG_THE_CHOT",
+        "hs": null,
+        "lyDo": "ranh-gioi-chua-so-hoa"
+      }
+    },
+    {
+      "id": "8547-012",
+      "nhom": "8547",
+      "pn6": "854790",
+      "hs8": "85479010",
+      "loai": "KHONG_NEU_VAT_LIEU",
+      "moTa": "Ống dẫn dây điện bằng đồng được lót vật liệu cách điện",
+      "hs8Trai": [],
+      "hs8Dung": null,
+      "ghiChu": "Nêu kim loại nhưng không nêu vật liệu lớp lót — giữ nguyên hành vi cũ",
+      "coSo": {
+        "nen": "7cd1889f",
+        "ketQua": "KHONG_THE_CHOT",
+        "hs": null,
+        "lyDo": "ranh-gioi-chua-so-hoa"
+      }
+    },
+    {
+      "id": "8547-013",
+      "nhom": "8547",
+      "pn6": "854790",
+      "hs8": "85479090",
+      "loai": "TRAI_VAT_LIEU",
+      "moTa": "Đế kẹp thanh dẫn bằng gốm sứ cho tủ điện cao thế",
+      "hs8Trai": [
+        "85479090",
+        "85479010"
+      ],
+      "hs8Dung": "85471000",
+      "ghiChu": "Gốm sứ không thuộc 'khác gốm sứ/nhựa' — phải từ chối + đề xuất 854710",
+      "coSo": {
+        "nen": "7cd1889f",
+        "ketQua": "KHONG_THE_CHOT",
+        "hs": null,
+        "lyDo": "ranh-gioi-chua-so-hoa"
+      }
+    },
+    {
+      "id": "8547-014",
+      "nhom": "8547",
+      "pn6": "854790",
+      "hs8": "85479090",
+      "loai": "TRAI_VAT_LIEU",
+      "moTa": "Tấm lót cách điện bằng nhựa cho máy điện",
+      "hs8Trai": [
+        "85479090",
+        "85479010"
+      ],
+      "hs8Dung": "85472000",
+      "ghiChu": "Nhựa không thuộc 'khác gốm sứ/nhựa'",
+      "coSo": {
+        "nen": "7cd1889f",
+        "ketQua": "KHONG_THE_CHOT",
+        "hs": null,
+        "lyDo": "ranh-gioi-chua-so-hoa"
+      }
+    },
+    {
+      "id": "8547-015",
+      "nhom": "8547",
+      "pn6": "854790",
+      "hs8": "85479090",
+      "loai": "DUNG_VAT_LIEU",
+      "moTa": "Tấm lót cách điện bằng cao su cứng ebonite cho máy điện",
+      "hs8Trai": [],
+      "hs8Dung": "85479090",
+      "ghiChu": "Cao su cứng = vật liệu 'khác' ⇒ Loại khác 85479090",
+      "coSo": {
+        "nen": "7cd1889f",
+        "ketQua": "KHONG_THE_CHOT",
+        "hs": null,
+        "lyDo": "ranh-gioi-chua-so-hoa"
+      }
+    },
+    {
+      "id": "8547-016",
+      "nhom": "8547",
+      "pn6": "854790",
+      "hs8": "85479090",
+      "loai": "KHONG_NEU_VAT_LIEU",
+      "moTa": "Tấm lót cách điện dùng cho máy điện",
+      "hs8Trai": [],
+      "hs8Dung": null,
+      "ghiChu": "Không nêu vật liệu — giữ nguyên hành vi cũ",
+      "coSo": {
+        "nen": "7cd1889f",
+        "ketQua": "KHONG_THE_CHOT",
+        "hs": null,
+        "lyDo": "ranh-gioi-chua-so-hoa"
+      }
+    }
+  ]
+}
