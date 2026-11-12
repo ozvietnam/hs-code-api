@@ -1,7 +1,7 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "854370",
-  "phien": "claude-agent:paperclip-OZV-452-20261112#soan-854370",
+  "phien": "claude-agent:paperclip-OZV-518-20261112#soan-854370",
   "dong8": {
     "85437010": {
       "dieuKienSo": [
@@ -187,14 +187,16 @@
               {
                 "fact": "congDung",
                 "op": "CONG_DUNG",
-                "value": "được thiết kế đặc biệt"
+                "value": "kết nối"
               },
               {
                 "fact": "dungCho",
                 "op": "CONG_DUNG",
                 "value": [
                   "điện tín",
-                  "điện thoại"
+                  "điện thoại",
+                  "dụng cụ điện tín",
+                  "mạng điện tín"
                 ]
               }
             ]
@@ -271,7 +273,13 @@
     {
       "ma": "85437060",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85437060 hai loại hàng cách nhau bằng \";\" ⇒ HOAC. Loại 1: tenLoai \"Thiết bị xử lý tín hiệu kỹ thuật số\" + phuongThucTruyenDan TRONG [HUU_TUYEN,VO_TUYEN] (vế \"kết nối với mạng có dây hoặc không dây\") + congDung \"trộn âm thanh\". Loại 2 (\"các sản phẩm được thiết kế đặc biệt để kết nối với thiết bị hoặc dụng cụ điện tín hoặc điện thoại hoặc với mạng điện tín hoặc điện thoại\"): congDung \"được thiết kế đặc biệt\" + dungCho [\"điện tín\",\"điện thoại\"] — định ngữ chung của cả bốn đích (thiết bị/dụng cụ/mạng điện tín hoặc điện thoại; EN \"telegraphic or telephonic apparatus or instruments or ... networks\"); bản nháp cũ ghi riêng \"thiết bị\" làm đích là rộng hơn chữ, đã bỏ."
+      "ghiChu": "tax.85437060 hai loại hàng cách nhau bằng \";\" ⇒ HOAC. Loại 1: tenLoai \"Thiết bị xử lý tín hiệu kỹ thuật số\" + phuongThucTruyenDan TRONG [HUU_TUYEN,VO_TUYEN] (vế \"kết nối với mạng có dây hoặc không dây\") + congDung \"trộn âm thanh\". Loại 2 (\"các sản phẩm được thiết kế đặc biệt để kết nối với thiết bị hoặc dụng cụ điện tín hoặc điện thoại hoặc với mạng điện tín hoặc điện thoại\"): congDung \"kết nối\" (hành động của \"để kết nối với\" — \"được thiết kế đặc biệt\" không phải công dụng, traVe L29 11/11) + dungCho [\"điện tín\",\"điện thoại\",\"dụng cụ điện tín\",\"mạng điện tín\"]. traVe L29 đích phải là 6 ghép [\"thiết bị điện tín\",\"dụng cụ điện tín\",\"thiết bị điện thoại\",\"dụng cụ điện thoại\",\"mạng điện tín\",\"mạng điện thoại\"] \"hoặc tương đương không còn 'thiết bị' trần\": 4/6 ghép KHÔNG liền mạch trong trích VI (chữ biểu ghi \"thiết bị hoặc dụng cụ điện tín hoặc điện thoại\" — \"hoặc\" ngắt giữa danh từ và định ngữ) nên cổng nguyên văn không cho phép; cách tương đương: cụm \"điện tín\"/\"điện thoại\" — MỌI đích trong danh sách 6 đều CHỨA một trong hai cụm này (mạng điện thoại ⊃ \"điện thoại\", thiết bị điện tín ⊃ \"điện tín\"…) nên mô tả nêu đích đầy đủ vẫn khớp qua ranh giới từ (đo: \"đầu nối điện … để kết nối với mạng điện thoại\" → CHOT .60), còn \"thiết bị\" trần đã bỏ theo traVe — hàng \"đặc biệt cho thiết bị\" bất kỳ không còn vào .60; hành động \"kết nối\" bắt buộc nên \"đặc biệt cho điện thoại\" mà không kết nối → hỏi, không chốt .60."
+    },
+    {
+      "ma": "85437060",
+      "loai": "BO_VE",
+      "ve": "được thiết kế đặc biệt",
+      "lyDo": "Vế chỉ MỤC ĐÍCH THIẾT KẾ, không phải công dụng (traVe L29 11/11: \"congDung 'được thiết kế đặc biệt' không phải công dụng\") — giữ làm điều kiện congDung riêng chính là lỗi SUY RỘNG vòng 2: mọi mô tả có chữ \"được thiết kế đặc biệt cho X\" (X = thiết bị/điện thoại trần) đều chốt .60 dù không kết nối gì (đo 4 ca PR #1247). Nghĩa vế đã giữ qua điều kiện hành động congDung \"kết nối\" + dungCho đích (\"để kết nối với …\"): sản phẩm phải LÀM hành động kết nối tới đích điện tín/điện thoại mới thuộc .60."
     },
     {
       "ma": "854370",

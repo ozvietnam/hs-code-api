@@ -7,15 +7,15 @@
   "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
-    "phien": "claude-agent:paperclip-OZV-452-20261112#soan-854370",
+    "phien": "claude-agent:paperclip-OZV-518-20261112#soan-854370",
     "ngay": "2026-11-12"
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-8543-20261112#soat-8543",
+    "phien": "claude-agent:paperclip-OZV-518-20261112-tu-soat#soat-854370-vong3",
     "ngay": "2026-11-12",
-    "ghiChu": "Soát lại gói 8543 (OZV-452 / OZV-485) trên nền main 7c863f2d. Nút 8543702 và dòng 85437021 giữ PHAI_KHONG cho vế loại trừ ('điều khiển từ xa bằng sóng radio' / 'bộ điều khiển trò chơi thuộc nhóm 95.04') kèm nhánh HOAC thứ hai là nguyên văn tiêu đề để mô tả trích tiêu đề không bị vế 'trừ …' đọc thành phủ định.",
-    "bam": "7280f0ca7df79c34647ef36d1b16af8d4b5b25376e2c5524888ce90db7bfa386"
+    "ghiChu": "Tự soát vòng 3 theo biên bản soát vòng 2 GĐ (PR #1247, OZV-518): sửa .60 phương án 2 bỏ congDung trần \"được thiết kế đặc biệt\" (BO_VE có lý do), congDung \"kết nối\" + dungCho cụm điện tín/điện thoại tương đương 6 đích traVe L29 (4/6 ghép không liền mạch trong trích VI nên cổng nguyên văn không nhận); GĐ soát lại trên PR.",
+    "bam": "8a81c6b0ac329c601972a0e79bf04074e1280d20a2067393407fa1d146275604"
   },
   "dieuKienNut": [
     {
@@ -269,14 +269,16 @@
               {
                 "fact": "congDung",
                 "op": "CONG_DUNG",
-                "value": "được thiết kế đặc biệt"
+                "value": "kết nối"
               },
               {
                 "fact": "dungCho",
                 "op": "CONG_DUNG",
                 "value": [
                   "điện tín",
-                  "điện thoại"
+                  "điện thoại",
+                  "dụng cụ điện tín",
+                  "mạng điện tín"
                 ]
               }
             ]
@@ -401,7 +403,13 @@
     {
       "ma": "85437060",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85437060 hai loại hàng cách nhau bằng \";\" ⇒ HOAC. Loại 1: tenLoai \"Thiết bị xử lý tín hiệu kỹ thuật số\" + phuongThucTruyenDan TRONG [HUU_TUYEN,VO_TUYEN] (vế \"kết nối với mạng có dây hoặc không dây\") + congDung \"trộn âm thanh\". Loại 2 (\"các sản phẩm được thiết kế đặc biệt để kết nối với thiết bị hoặc dụng cụ điện tín hoặc điện thoại hoặc với mạng điện tín hoặc điện thoại\"): congDung \"được thiết kế đặc biệt\" + dungCho [\"điện tín\",\"điện thoại\"] — định ngữ chung của cả bốn đích (thiết bị/dụng cụ/mạng điện tín hoặc điện thoại; EN \"telegraphic or telephonic apparatus or instruments or ... networks\"); bản nháp cũ ghi riêng \"thiết bị\" làm đích là rộng hơn chữ, đã bỏ."
+      "ghiChu": "tax.85437060 hai loại hàng cách nhau bằng \";\" ⇒ HOAC. Loại 1: tenLoai \"Thiết bị xử lý tín hiệu kỹ thuật số\" + phuongThucTruyenDan TRONG [HUU_TUYEN,VO_TUYEN] (vế \"kết nối với mạng có dây hoặc không dây\") + congDung \"trộn âm thanh\". Loại 2 (\"các sản phẩm được thiết kế đặc biệt để kết nối với thiết bị hoặc dụng cụ điện tín hoặc điện thoại hoặc với mạng điện tín hoặc điện thoại\"): congDung \"kết nối\" (hành động của \"để kết nối với\" — \"được thiết kế đặc biệt\" không phải công dụng, traVe L29 11/11) + dungCho [\"điện tín\",\"điện thoại\",\"dụng cụ điện tín\",\"mạng điện tín\"]. traVe L29 đích phải là 6 ghép [\"thiết bị điện tín\",\"dụng cụ điện tín\",\"thiết bị điện thoại\",\"dụng cụ điện thoại\",\"mạng điện tín\",\"mạng điện thoại\"] \"hoặc tương đương không còn 'thiết bị' trần\": 4/6 ghép KHÔNG liền mạch trong trích VI (chữ biểu ghi \"thiết bị hoặc dụng cụ điện tín hoặc điện thoại\" — \"hoặc\" ngắt giữa danh từ và định ngữ) nên cổng nguyên văn không cho phép; cách tương đương: cụm \"điện tín\"/\"điện thoại\" — MỌI đích trong danh sách 6 đều CHỨA một trong hai cụm này (mạng điện thoại ⊃ \"điện thoại\", thiết bị điện tín ⊃ \"điện tín\"…) nên mô tả nêu đích đầy đủ vẫn khớp qua ranh giới từ (đo: \"đầu nối điện … để kết nối với mạng điện thoại\" → CHOT .60), còn \"thiết bị\" trần đã bỏ theo traVe — hàng \"đặc biệt cho thiết bị\" bất kỳ không còn vào .60; hành động \"kết nối\" bắt buộc nên \"đặc biệt cho điện thoại\" mà không kết nối → hỏi, không chốt .60."
+    },
+    {
+      "ma": "85437060",
+      "loai": "BO_VE",
+      "ve": "được thiết kế đặc biệt",
+      "lyDo": "Vế chỉ MỤC ĐÍCH THIẾT KẾ, không phải công dụng (traVe L29 11/11: \"congDung 'được thiết kế đặc biệt' không phải công dụng\") — giữ làm điều kiện congDung riêng chính là lỗi SUY RỘNG vòng 2: mọi mô tả có chữ \"được thiết kế đặc biệt cho X\" (X = thiết bị/điện thoại trần) đều chốt .60 dù không kết nối gì (đo 4 ca PR #1247). Nghĩa vế đã giữ qua điều kiện hành động congDung \"kết nối\" + dungCho đích (\"để kết nối với …\"): sản phẩm phải LÀM hành động kết nối tới đích điện tín/điện thoại mới thuộc .60."
     },
     {
       "ma": "854370",
@@ -419,6 +427,11 @@
       "phien": "claude-agent:paperclip-OZV-452-20261112#tra-ve-854370",
       "ngay": "2026-11-12",
       "lyDo": "Sửa (E) điều kiện nút 8543702: cụm \"Thiết bị điều khiển từ xa\" nằm trong vế loại trừ \"trừ thiết bị điều khiển từ xa bằng sóng radio\"; lõi #1244 đọc phủ định theo vế (RE_PHU_DINH_VE bỏ \\b ASCII) ⇒ nút bị loại ⇒ dòng .21 (con duy nhất) không chốt được (DONG_CO_TEN 14/15). Sửa: điều kiện nút lấy cụm của dòng con .21 (nút chỉ có một con)."
+    },
+    {
+      "phien": "claude-agent:paperclip-OZV-518-20261112#tra-ve-854370",
+      "ngay": "2026-11-12",
+      "lyDo": "Biên bản soát vòng 2 PR #1247 (OZV-518): 85437060 phương án 2 còn suy rộng — congDung trần \"được thiết kế đặc biệt\" không phải công dụng, phải là hành động \"kết nối\" với 6 đích theo traVe L29 11/11."
     }
   ]
 }

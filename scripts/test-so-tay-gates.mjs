@@ -91,6 +91,19 @@ check('4011 ngưỡng VÀNH không lấy đường kính ngoài → KHONG_THE_CH
 cd = chotDong8({ hs: '85044019', productText: 'Bộ đổi nguồn 30W dùng cho tủ điện' });
 check('8504.40 chọn .19 (LK trong) cũng không chốt được — phủ định chưa hoàn chỉnh', cd.ketQua === 'KHONG_THE_CHOT', JSON.stringify(cd));
 
+// ── OZV-518 / PR #1247 vòng 3: 8543.70.60 phương án 2 phải bắt buộc hành động "kết nối" (traVe L29 11/11) ──
+// Biểu .60 loại 2: "các sản phẩm được thiết kế đặc biệt ĐỂ KẾT NỐI VỚI thiết bị hoặc dụng cụ điện tín hoặc điện
+// thoại hoặc với mạng điện tín hoặc điện thoại". "Được thiết kế đặc biệt" KHÔNG phải công dụng: hàng chỉ ghi
+// "đặc biệt cho điện thoại" mà không nói kết nối (máy đo tín hiệu, làm mát, đèn báo trạng thái) không thuộc .60.
+cd = chotDong8({ hs: '854370', productText: 'máy đo cường độ tín hiệu được thiết kế đặc biệt cho điện thoại' });
+check('8543.70: "đặc biệt cho điện thoại" KHÔNG kết nối → không chốt .60 (hỏi)', ['THIEU_SO_LIEU', 'KHONG_THE_CHOT'].includes(cd.ketQua) && cd.hs !== '85437060', JSON.stringify(cd));
+cd = chotDong8({ hs: '854370', productText: 'thiết bị làm mát điện tử được thiết kế đặc biệt cho điện thoại' });
+check('8543.70: làm mát cho điện thoại KHÔNG kết nối → không chốt .60 (hỏi)', ['THIEU_SO_LIEU', 'KHONG_THE_CHOT'].includes(cd.ketQua) && cd.hs !== '85437060', JSON.stringify(cd));
+cd = chotDong8({ hs: '854370', productText: 'đèn báo trạng thái được thiết kế đặc biệt cho mạng điện tín' });
+check('8543.70: đèn báo cho mạng điện tín KHÔNG kết nối → không chốt .60 (hỏi)', ['THIEU_SO_LIEU', 'KHONG_THE_CHOT'].includes(cd.ketQua) && cd.hs !== '85437060', JSON.stringify(cd));
+cd = chotDong8({ hs: '854370', productText: 'đầu nối điện được thiết kế đặc biệt để kết nối với mạng điện thoại' });
+check('8543.70: đầu nối thật "để kết nối với mạng điện thoại" → vẫn CHOT .60', cd.ketQua === 'CHOT' && cd.hs === '85437060', JSON.stringify(cd));
+
 // ── OZV-325: "hun khói" KHÔNG loại trừ "đông lạnh" — hai TRỤC khác nhau ──
 // Biểu 0306 đặt dòng "Hun khói" BÊN TRONG tầng 1 gạch "Đông lạnh" (03061): tôm hùm hun khói ĐÔNG LẠNH là
 // hàng thật, nên "Đông lạnh" không hề phủ định "Hun khói". Khoá liệt kê phuongPhapBaoQuan gộp hai trục

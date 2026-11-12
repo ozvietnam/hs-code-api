@@ -2,7 +2,7 @@
   "phienBan": "ten-khac@1",
   "nhom": "8543",
   "tuVung": "tu-vung@2",
-  "ngay": "2026-11-11",
+  "ngay": "2026-11-12",
   "soanBoi": "claude:opus-5.5:20261111 (nhom-8543-claude)",
   "thangNguon": "L1 = biểu thuế/chú giải/SEN/TB-TCHQ nguyên văn; L2 = TCVN/QCVN (chưa có cho 8543); L3 = nước ngoài, nhãn THAM_KHAO",
   "chuaCoNguon": [
@@ -267,16 +267,19 @@
       "loai": "DONG_NGHIA",
       "capNguon": "L1",
       "cachDoc": {
-        "vi": [],
+        "vi": [
+          "máy ghi bay"
+        ],
         "en": [
           "digital flight-data recorders"
         ],
         "zh": []
       },
       "nguon": {
-        "tap": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz#85437050.moTaEn",
-        "trich": "- - Microwave amplifiers; digital flight-data recorders; portable battery operated electronic reader for recording and reproducing text, still image or audio file",
-        "nhan": "NGUYEN_VAN"
+        "tap": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz#85437050",
+        "trich": "- - Bộ khuếch đại vi sóng; máy ghi dữ liệu chuyến bay kỹ thuật số; đầu đọc điện tử di động hoạt động bằng pin để ghi và tái tạo văn bản, hình ảnh tĩnh hoặc tệp âm thanh (SEN)",
+        "nhan": "NGUYEN_VAN",
+        "ghiChu": "Cách đọc 'máy ghi bay' rút từ chú giải nhóm 85.43 mục (18): 'Máy ghi dữ liệu chuyến bay kỹ thuật số (máy ghi bay) ở dạng một thiết bị điện tử chống lửa, chống va chạm để ghi liên tục các dữ liệu đặc biệt của chuyến bay.' (gộp 2 mục trùng cùng tên — soát PR #1247 vòng 2)."
       }
     },
     {
@@ -318,25 +321,6 @@
       }
     },
     {
-      "ma": "85437050",
-      "kieu": "TEN_LOAI",
-      "giaTri": "máy ghi dữ liệu chuyến bay kỹ thuật số",
-      "loai": "DONG_NGHIA",
-      "capNguon": "L1",
-      "cachDoc": {
-        "vi": [
-          "máy ghi bay"
-        ],
-        "en": [],
-        "zh": []
-      },
-      "nguon": {
-        "tap": "data/chu-giai-heading.json#8543.nhom",
-        "trich": "(18) Máy ghi dữ liệu chuyến bay kỹ thuật số (máy ghi bay) ở dạng một thiết bị điện tử chống lửa, chống va chạm để ghi liên tục các dữ liệu đặc biệt của chuyến bay.",
-        "nhan": "NGUYEN_VAN"
-      }
-    },
-    {
       "ma": "85434000",
       "kieu": "TEN_LOAI",
       "giaTri": "thiết bị điện hóa hơi cá nhân",
@@ -363,17 +347,34 @@
       "loai": "DONG_NGHIA",
       "capNguon": "L1",
       "cachDoc": {
-        "vi": [
-          "máy đọc sách"
-        ],
+        "vi": [],
         "en": [
           "portable battery operated electronic reader for recording and reproducing text, still image or audio file"
         ],
         "zh": []
       },
       "nguon": {
-        "tap": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz#85437050.moTaEn; data/precedents.json#85437030 (1127/TB-TCHQ)",
-        "trich": "- - Microwave amplifiers; digital flight-data recorders; portable battery operated electronic reader for recording and reproducing text, still image or audio file | Tên gọi: Máy đọc sách sử dụng màn hình công nghệ mực điện tử Eink, hiển thị như sách giấy, có chức năng từ điển.",
+        "tap": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz#85437050.moTaEn",
+        "trich": "- - Microwave amplifiers; digital flight-data recorders; portable battery operated electronic reader for recording and reproducing text, still image or audio file",
+        "nhan": "NGUYEN_VAN"
+      }
+    },
+    {
+      "ma": "85437050",
+      "kieu": "TEN_LOAI",
+      "giaTri": "đầu đọc điện tử di động",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "cachDoc": {
+        "vi": [
+          "máy đọc sách"
+        ],
+        "en": [],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/precedents.json#85437030 (1127/TB-TCHQ)",
+        "trich": "Tên gọi: Máy đọc sách sử dụng màn hình công nghệ mực điện tử Eink, hiển thị như sách giấy, có chức năng từ điển.",
         "nhan": "NGUYEN_VAN",
         "url": "https://www.tracuuhs.com/tin-tuc/tchq-1127-2024",
         "ghiChu": "Máy đọc sách (e-reader) thuộc 8543.70.50 (\"đầu đọc điện tử di động hoạt động bằng pin để ghi và tái tạo văn bản, hình ảnh tĩnh hoặc tệp âm thanh\"); chỉ khi có thêm chức năng từ điển mới xét 8543.70.30 (1127/TB-TCHQ)."
