@@ -106,5 +106,25 @@ const that = chayCaDoiChungVatLieu(['8546', '8547']);
   check('F1 máy ném lỗi ⇒ đúng 1 NEM_LOI, ca đó không DAT', cd.nemLoi === 1 && tim(cd, fixture[0].id).trangThai === 'NEM_LOI', bang(cd));
 }
 
-console.log(`\ncổng đối chứng vật liệu 8546+8547 (OZV-548 vòng hai): ${passed} PASS, ${failed} FAIL`);
+// ── G. VÒNG BA (TRẢ THỢ #1255): máy chốt dòng 8 số SAI ngoài hs8Trai và ≠ hs8Dung ⇒ phải DO ────────
+// Lỗi thật GĐ chỉ tay: cổng cũ để "máy chốt dòng sai" rơi vào nhánh else ⇒ DAT (vàng giả) ⇒ T2 vá sai
+// dòng 8 số vẫn xanh. Ca 8546-016: pn6 854690, hs8Trai [85469000], hs8Dung 85462090 — máy chốt
+// 85462010 (ngoài hs8Trai, ≠ hs8Dung) ⇒ cổng cũ chấm ĐẠT, cổng mới phải chấm ĐỎ.
+{
+  const moTa016 = fixture.find((c) => c.id === '8546-016').moTa;
+  const moTa005 = fixture.find((c) => c.id === '8546-005').moTa;
+  const stubSaiDong = (q) =>
+    q.productText === moTa016 ? { ketQua: 'CHOT', hs: '85462010', lyDo: 'gia-suat-chot-sai-dong' }
+      : q.productText === moTa005 ? { ketQua: 'CHOT', hs: '85461000', lyDo: 'gia-suat-chot-sai-dong' }
+      : chotDong8(q);
+  const cd = chayCaDoiChungVatLieu(['8546', '8547'], stubSaiDong);
+  check('G1 ca coSo=KHONG_THE_CHOT chốt dòng sai ngoài hs8Trai (85462010 ≠ hs8Dung 85462090) ⇒ DO, không lọt DAT',
+    tim(cd, '8546-016').trangThai === 'DO', tim(cd, '8546-016'));
+  check('G2 ca coSo=CHOT chốt dòng sai ngoài hs8Trai (85461000 ≠ hs8Dung 85469000) ⇒ DO, không đổi thành DOI_HANH_VI',
+    tim(cd, '8546-005').trangThai === 'DO', tim(cd, '8546-005'));
+  check('G3 bẫy đã sập: đỏ 4→5 (8546-016 chuyển từ DAT sang DO), đổi hành vi vẫn 0 (bản vá sai dòng không còn vượt cổng)',
+    cd.do === 5 && cd.doiHanhVi === 0 && cd.dat === 31, bang(cd));
+}
+
+console.log(`\ncổng đối chứng vật liệu 8546+8547 (OZV-548 vòng ba): ${passed} PASS, ${failed} FAIL`);
 process.exit(failed ? 1 : 0);

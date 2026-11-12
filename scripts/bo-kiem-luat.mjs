@@ -462,7 +462,11 @@ export function sinhCaNhom(nhom4) {
  *     chốt nữa" không được coi là đạt; kỳ vọng T2 là chốt ĐÚNG dòng vật liệu (CHOT 85469000 cho hàng nhựa…).
  *  2. Máy từ chối mà deXuat lệch phân nhóm 6 số đúng của ca (hs8Dung) ⇒ DO — chặn vì vật liệu mà vẫn đề
  *     xuất tiêu đề sai vật liệu là lỗi, không phải "an toàn".
- *  3. KHONG_NEU_VAT_LIEU giữ nguyên tiêu chí so coSo (không hồi quy) — đã chặt sẵn từ T1. */
+ *  3. KHONG_NEU_VAT_LIEU giữ nguyên tiêu chí so coSo (không hồi quy) — đã chặt sẵn từ T1.
+ *  4. (vòng 3) Máy CHỐT dòng 8 số ≠ hs8Dung (dòng đúng) ⇒ DO — kể cả dòng NGOÀI hs8Trai. Lỗi thật
+ *     GĐ chỉ tay: cổng cũ chỉ bắt "chốt đúng vào dòng bị loại trừ" (hs8Trai), nên máy chốt một dòng
+ *     sai khác rơi vào nhánh else ⇒ DAT ⇒ T2 vá sai dòng 8 số vẫn ra vàng giả (bản vá rỗng cũng xanh).
+ *     Chốt sai dòng = LỖI, không phải "đổi hành vi" ⇒ không được chấm DOI_HANH_VI. */
 export function chayCaDoiChungVatLieu(dsNhom4, chot = chotDong8) {
   const p = path.join(ROOT, 'tests', 'ca-doi-chung-vat-lieu-8546-8547.json');
   if (!fs.existsSync(p)) return { tong: 0, dat: 0, do: 0, doCanT3: 0, doiHanhVi: 0, nemLoi: 0, ca: [] };
@@ -492,8 +496,11 @@ export function chayCaDoiChungVatLieu(dsNhom4, chot = chotDong8) {
       const giongCoSo = (kq?.ketQua || '') === cs.ketQua && nz(kq?.hs || '') === nz(cs.hs || '');
       trangThai = giongCoSo ? 'DAT' : 'DOI_HANH_VI';
     } else if (hs8DungNz && chotVao === hs8DungNz) trangThai = 'DAT'; // chốt đúng dòng vật liệu
+    else if (chotVao && hs8DungNz)
+      trangThai = 'DO'; // quy tắc 4 (vòng 3): máy CHỐT dòng 8 số ≠ dòng đúng ⇒ ĐỎ — kể cả dòng NGOÀI
+      // hs8Trai (lỗi thật GĐ chỉ tay: cổng cũ để dòng sai rơi vào else ⇒ DAT ⇒ T2 vá sai dòng vẫn vàng giả)
     else if (chotVao && (c.loai === 'DUNG_VAT_LIEU' || (c.hs8Trai || []).includes(chotVao)))
-      trangThai = 'DO'; // chốt dòng sai vật liệu (TRAI: đúng vào dòng bị loại trừ; DUNG: bất kỳ dòng ≠ đúng)
+      trangThai = 'DO'; // chốt dòng sai vật liệu (fallback cho ca chưa có hs8Dung: TRAI đúng vào dòng bị loại trừ)
     else if (deXuatLech) trangThai = 'DO';
     else if (coSoLaChot) trangThai = 'DOI_HANH_VI'; // quy tắc 1: mất chốt so với cơ sở main
     else trangThai = 'DAT'; // cơ sở vốn không chốt, giữ nguyên không chốt ⇒ đạt ở cấp cổng
