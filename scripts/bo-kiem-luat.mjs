@@ -385,6 +385,9 @@ function sinhMoTaLoaiTru(hs8, pn6, st) {
   // (85444919) hoặc nhieu-dong-loai-khac (85443013). Phần KHÔNG phủ định vẫn nối ", " như nếp cũ: bộ đọc
   // số gộp khoảng theo ",", tách " - " làm vế số "điện áp 100000V" rơi CHUA_BIET ⇒ .6039 đỏ lại (đo biến
   // thể "số cuối ," ⇒ LOAI_KHAC 85446039).
+  // CHỈ áp cho nhóm 8544 (PR này sửa duy nhất 8544): đo --toan-bieu hai chân cho thấy tách đoạn toàn cục
+  // lật 8 ca thành chốt sai ở nhóm chưa được sửa (1605/4813/8413/8703/8711) — nhóm khác giữ nếp cũ ", ".
+  if (pn6.slice(0, 4) !== '8544') return parts.join(', ');
   const laPhu = (s) => /không dùng|không phải|không thuộc|other than|not a|不是/.test(String(s || ''));
   let moTa = '';
   for (let i = 0; i < parts.length; i++) {
@@ -422,6 +425,10 @@ export function sinhCaNhom(nhom4) {
         .filter(Boolean)
         .join(' - ');
       const laLKTran = Boolean(n?.loaiKhacTran) && list8.length > 1;
+      // OZV-342 (phạm vi): mọi biến thể sinh ca dưới đây CHỈ áp cho nhóm 8544 — PR này sửa duy nhất 8544.
+      // Đo --toan-bieu hai chân (origin/main + dữ liệu / nhánh đầy đủ) cho thấy áp toàn cục làm 8 ca nhóm
+      // khác (1605/4813/8413/8703/8711) lật thành chốt sai — nhóm khác giữ nguyên nếp cũ của main.
+      const chi8544 = nhom4 === '8544';
       if (!laLKTran) {
         // OZV-342: dòng có tên nằm dưới tầng "Loại khác" trần thì midText LƯỢT tiêu đề tầng ⇒ mô tả ca không
         // đụng tới nút anh em, nút đứng CHUA_BIET và dòng bị hạ xuống (_traiKhiNutThoa — 85444292 Cáp bọc,
@@ -431,7 +438,7 @@ export function sinhCaNhom(nhom4) {
         // dòng (85444292 "Cáp dữ liệu dẹt…" kèm "không phải Cáp dữ liệu dẹt" là câu tự triệt tiêu). Nhóm thuần
         // số bỏ qua — số đo của dòng đã có trong tên, gán thêm số ngoài khoảng anh em là bịa kiện.
         const phuKhong = [];
-        if (mids.some((m) => m.loaiKhac)) {
+        if (chi8544 && mids.some((m) => m.loaiKhac)) {
           const dd = DK.duongDiDong8(hs8, { soTay: st });
           for (const g of dd.nhom || []) {
             if (g.chieu !== 'PHAI_KHONG' || g.tang === 0 || !Array.isArray(g.dieuKien) || !g.dieuKien.length) continue;
@@ -451,11 +458,16 @@ export function sinhCaNhom(nhom4) {
         const laPhuDinhDoan = (s) => /không dùng|không phải|không thuộc|other than|not a|不是/.test(String(s || ''));
         const cacPhan = [ten6, ...mids.map((m) => (m.loaiKhac ? '' : m.tenVi)).filter(Boolean), hs8 === n?.laPhanNhom ? '' : tenDong].filter(Boolean);
         let moTa = '';
-        for (let i = 0; i < cacPhan.length; i++) {
-          if (i) moTa += laPhuDinhDoan(cacPhan[i]) || laPhuDinhDoan(cacPhan[i - 1]) ? ' - ' : ': ';
-          moTa += cacPhan[i];
+        if (chi8544) {
+          for (let i = 0; i < cacPhan.length; i++) {
+            if (i) moTa += laPhuDinhDoan(cacPhan[i]) || laPhuDinhDoan(cacPhan[i - 1]) ? ' - ' : ': ';
+            moTa += cacPhan[i];
+          }
+          moTa += phuKhong.length ? ` - ${phuKhong.join(' - ')}` : '';
+        } else {
+          // nếp cũ của main: midText vốn nối " - " bên trong, các phần trên nối ": "
+          moTa = [ten6, midText, hs8 === n?.laPhanNhom ? '' : tenDong].filter(Boolean).join(': ');
         }
-        moTa += phuKhong.length ? ` - ${phuKhong.join(' - ')}` : '';
         caDongCoTen.push({
           loaiCa: 'DONG_CO_TEN',
           pn6,
