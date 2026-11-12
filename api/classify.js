@@ -16,6 +16,8 @@ const { extractSpecs } = require('../lib/extract-specs');
 const { runDeclarationCheck, validateDeclarationCheckInput } = require('../lib/declaration-check');
 const { acquireServiceSlot } = require('../lib/service-rate-limit');
 const { ganHoSoClassify } = require('../lib/ho-so/api');
+// OZV-507 việc 1 — cache theo hash hồ sơ cho LƯỢT KHOÁ DỊCH VỤ (Postgres kín; lượt công khai không đụng).
+const { cacheBat, khoaCache, docCache, ghiCache, donPhienBanCu, phienBanDuLieu } = require('../lib/classify-cache');
 
 /** `supplierHs`: {code, source?, url?} hoặc chuỗi mã. Trả null khi không đủ 6 chữ số. */
 function parseSupplierHs(v) {
@@ -109,7 +111,24 @@ module.exports = async function handler(req, res) {
     const chay = (quyen) => classify(attrs, { tier, debug, kenhGoi }).then((kq) => ganHoSoClassify(kq, attrsHoSo, quyen));
     if (serviceCaller(req) !== null) {
       // Dữ liệu khách (#237 J1): LLM bên trong chỉ đi nhà cung cấp hợp lệ, không qua tầng miễn phí.
+      // OZV-507 việc 1 — cache kết quả theo hash hồ sơ (đã đo bước 0: 13,6% lượt trùng ≥ 10%, OZV-511).
+      // Chỉ khoá dịch vụ; debug/holdout đổi shape + ngữ cảnh ⇒ bỏ qua cache. Lượt cold giữ nguyên hành vi
+      // (không đụng dòng nào phía trên); lượt trúng trả nguyên phản hồi + cached:true, KHÔNG gọi LLM.
+      const dungCache = cacheBat() && !debug && !wantsEvalHoldout(req);
+      const pb = dungCache ? phienBanDuLieu() : null;
+      const khoa = dungCache
+        ? khoaCache(attrs, attrsHoSo, { tier, kenhGoi, noiBo: laNoiBoOz(req) })
+        : null;
+      if (dungCache) {
+        const tram = await docCache(khoa, pb);
+        if (tram) {
+          // Trúng cache: không có lượt LLM nào ⇒ usage rỗng (không tính phí token cho lượt này).
+          return res.status(200).json({ ...tram, attrs, usage: [], ms: Date.now() - started, cached: true, phienBanDuLieu: pb });
+        }
+        donPhienBanCu(pb); // đổi phiên bản dữ liệu ⇒ dọn dòng cũ (một lần mỗi tiến trình, không ném)
+      }
       const { result, usage } = await run(() => withPrivateData(() => withUsage(() => chay({ noiBo: laNoiBoOz(req), caller: serviceCaller(req) }))));
+      if (dungCache) ghiCache(khoa, pb, result); // ghi sau, lỗi DB nuốt trong lib — phản hồi như chưa có cache
       return res.status(200).json({ ...result, attrs, usage, ms: Date.now() - started });
     }
     // Lượt công khai / HS_API_TOKEN: đếm chi phí LLM (L0j, #547 — chỉ đếm, không chặn). Shape phản hồi không đổi.
