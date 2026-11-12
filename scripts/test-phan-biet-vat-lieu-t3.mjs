@@ -71,7 +71,11 @@ const { chatLieuTrong } = require('../lib/so-tay-gates.js');
 const TEN_VAT_LIEU = 'vật liệu tổng hợp';
 // KỲ VỌNG phải soi theo ĐÚNG luật ranh giới chữ của máy (`W()`): "composite" phải đứng riêng —
 // "Aluminum compositepanel" (tiền lệ 39199099#1) là chữ dính ⇒ máy KHÔNG đọc, và kỳ vọng cũng vậy.
-const NHAC_COMPOSITE = /(?<![\p{L}\p{M}])composite(?![\p{L}\p{M}])|vật liệu\s+tổng\s+hợp|复合绝缘子|复合材料/i;
+// ⚠️ BẮT BUỘC có cờ `u`: không có `u` thì `\p{L}` là identity escape ⇒ `[\p{L}\p{M}]` thành tập KÝ TỰ
+// LITERAL `[p{L}M]` ⇒ "compositeness" bị coi là khớp (sai với máy) — lỗi do soat-khac chỉ ra, GĐ vá.
+// Mẫu phải soi Y HỆT `MATERIALS` trong lib/so-tay-gates.js: `vật liệu tổng hợp` · `vật liệu composite`
+// · `W('composites?')` (chữ dính bị loại) · 2 mẫu Trung Quốc.
+const NHAC_COMPOSITE = /vật\s+liệu(?:\s+cách\s+điện)?\s+tổng\s+hợp|vật\s+liệu\s+composite|(?<![\p{L}\p{M}])composites?(?![\p{L}\p{M}])|复合绝缘子|复合材料/iu;
 
 const vanBanThat = [];
 try {
@@ -92,6 +96,14 @@ try {
   }
 } catch (e) {
   check('đọc dữ liệu thật (tax.json + precedents.json) để rã mẫu', false, String(e.message));
+}
+
+// Ca biên: kỳ vọng phải khớp ĐÚNG luật của máy — "compositeness" là chữ dính ⇒ MÁY không đọc,
+// và kỳ vọng cũng phải không đọc (trước khi vá, mẫu thiếu cờ `u` ⇒ kỳ vọng SAI ở ca này).
+for (const bien of ['compositeness', 'Aluminum compositepanel', 'composites', 'vật liệu tổng hợp']) {
+  const mong = NHAC_COMPOSITE.test(bien);
+  const co = chatLieuTrong(bien).includes(TEN_VAT_LIEU);
+  check(`ca biên "${bien}": kỳ vọng khớp đúng luật máy (${co ? 'có' : 'không'})`, mong === co, { mong, co });
 }
 
 let lech = 0;
