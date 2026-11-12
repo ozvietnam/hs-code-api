@@ -61,5 +61,55 @@ for (const c of fixture.ca) {
   }
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// Quy tắc 6b (OZV-290) — regex MỚI ăn dữ liệu thật ⇒ (1) rã mẫu từng nhánh trên dữ liệu thật,
+// (2) 1 ca ReDoS ~40.000 từ lặp phải < 2 giây.
+// (1) rã mẫu: quét MỌI văn bản thật của kho (tên dòng tax.json + mô tả tiền lệ) — "vật liệu tổng hợp"
+//     được đọc ra IFF văn bản thật sự nhắc composite / vật liệu tổng hợp (không bắt nhầm, không bỏ sót).
+// (2) ReDoS: mẫu "composites" lặp 40.000 từ + khoảng trắng dài ⇒ phải < 2 giây.
+const { chatLieuTrong } = require('../lib/so-tay-gates.js');
+const TEN_VAT_LIEU = 'vật liệu tổng hợp';
+// KỲ VỌNG phải soi theo ĐÚNG luật ranh giới chữ của máy (`W()`): "composite" phải đứng riêng —
+// "Aluminum compositepanel" (tiền lệ 39199099#1) là chữ dính ⇒ máy KHÔNG đọc, và kỳ vọng cũng vậy.
+const NHAC_COMPOSITE = /(?<![\p{L}\p{M}])composite(?![\p{L}\p{M}])|vật liệu\s+tổng\s+hợp|复合绝缘子|复合材料/i;
+
+const vanBanThat = [];
+try {
+  const tax = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'tax.json'), 'utf8'));
+  const dong = Array.isArray(tax) ? tax : Object.values(tax.items || tax.rows || tax);
+  for (const r of dong) {
+    if (!r || typeof r !== 'object') continue;
+    const hs = String(r.hs || r.code || r.ma || '');
+    if (r.vn) vanBanThat.push([`tax:${hs}.vn`, String(r.vn)]);
+    if (r.en) vanBanThat.push([`tax:${hs}.en`, String(r.en)]);
+  }
+  const pre = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'precedents.json'), 'utf8'));
+  for (const [ma, lst] of Object.entries(pre)) {
+    for (const [i, p] of (Array.isArray(lst) ? lst : []).entries()) {
+      const t = `${p.productName || ''} ${p.technicalSpec || ''}`.trim();
+      if (t) vanBanThat.push([`pre:${ma}#${i}`, t]);
+    }
+  }
+} catch (e) {
+  check('đọc dữ liệu thật (tax.json + precedents.json) để rã mẫu', false, String(e.message));
+}
+
+let lech = 0;
+const lechList = [];
+for (const [nguon, txt] of vanBanThat) {
+  const co = chatLieuTrong(txt).includes(TEN_VAT_LIEU);
+  const mong = NHAC_COMPOSITE.test(txt);
+  if (co !== mong) { lech += 1; if (lechList.length < 8) lechList.push({ nguon, mong, co, txt: txt.slice(0, 90) }); }
+}
+check(`rã mẫu trên ${vanBanThat.length} văn bản THẬT: đọc "${TEN_VAT_LIEU}" đúng IFF văn bản nhắc composite`,
+  lech === 0, { lech, lechList });
+
+const REDOS_LAU = `vật liệu composite ${'composites '.repeat(40000)}`;
+const t0 = Date.now();
+const ketRedos = chatLieuTrong(REDOS_LAU);
+const msRedos = Date.now() - t0;
+check(`ReDoS: 40.000 từ lặp (${REDOS_LAU.length} ký tự) chạy ${msRedos} ms (< 2000 ms)`,
+  msRedos < 2000, { msRedos, ketRedos });
+
 console.log(`\nvật liệu tổng hợp (composite) — OZV-581 / OZV-540 PA-3: ${passed} PASS, ${failed} FAIL`);
 process.exit(failed ? 1 : 0);
