@@ -3,24 +3,28 @@ import './test-isolate-data.mjs';
 /**
  * Bộ đo hồi quy 50 ca phân loại HS từ văn bản pháp luật (TB-TCHQ + biểu thuế) — KHÔNG gọi LLM, 0 tốn token (OZV-550 / OZV-517).
  *
+ * GIỚI HẠN QUAN TRỌNG (không đo tầng xếp hạng LLM):
+ *   - Đường `replay1211` phát lại giả thuyết mã `cong1211.maBot` từ ảnh chụp Cổng OZ 12/11 (kèm ứng viên rút từ gói
+ *     `gather()` trong `_user`, hoàn toàn không đọc đáp án `ca.ma`) để kiểm tra số ca sống sót qua toàn bộ tầng tất định
+ *     (`gather` → `gates` → `resolveHeading` → `chotDong8` → `kiemTruocChot`).
+ *   - Chỉ số `replay1211.top1SoSongSot` / `replay1211.top3SoSongSot` chỉ đo "số ca sống sót qua tầng tất định khi replay",
+ *     KHÔNG phải độ chính xác A1 trên Cổng sống và KHÔNG đo tầng xếp hạng của LLM vòng 1/vòng 2.
+ *
  * Nguồn bộ đề:
  *   - `tests/bo-50-ca-tb-tchq.json` (chuyển từ `ozvietnam/zalo-bot@d776735`: `eval/bo-de/phan-loai-tu-luat.json`
  *     và báo cáo `bao-cao/do-dung/2026-11-12.md`).
  *
  * Ba đường đo no-LLM trong repo (kèm đối chiếu chuẩn Cổng OZ 12/11):
- *   1. `classifyLoop (no-LLM replay 12/11)`: gọi `lib/engine-loop.js` (`classifyLoop`) với `callLLMJson` stub tất định
- *      từ ảnh chụp Cổng OZ 12/11 để đi qua toàn bộ tầng tất định của động cơ (`gather` → `gates` → `resolveHeading`
- *      bảng quyết định → `chotDong8` sổ tay → `kiemTruocChot`).
- *   2. `searchCandidates (no-LLM)`: gọi `lib/search-utils.js` (`searchCandidates`) trực tiếp trên `cauKhach`
- *      (cùng cơ chế với `scripts/benchmark-alias-holdout.mjs` trong workflow CI "Accuracy regression (no LLM)").
- *   3. `searchPrecedents (no-LLM TB-TCHQ)`: gọi `lib/precedent-search.js` (`searchPrecedents`) trực tiếp trên `cauKhach`
- *      (tầng tra cứu tiền lệ TB-TCHQ trong `gather()` và `applyPrecedentBoost`).
- *   (Tuỳ chọn `--with-suggest`: chạy thêm `suggestCore` no-LLM y hệt `scripts/bench-matrix.mjs --models=none`.)
+ *   - `[replay1211]`: gọi `lib/engine-loop.js` (`classifyLoop`) với `callLLMJson` stub tất định (không đọc `ca.ma`,
+ *     rút ứng viên đối lập từ `_user` do `gather()` sinh) để canh toàn bộ tầng tất định.
+ *   - `[searchCandidates]`: gọi `lib/search-utils.js` (`searchCandidates`) trực tiếp trên `cauKhach`.
+ *   - `[searchPrecedents]`: gọi `lib/precedent-search.js` (`searchPrecedents`) trực tiếp trên `cauKhach`.
+ *   - (Tuỳ chọn `--with-suggest`: chạy thêm `[suggestCoreNoLlm]` y hệt `scripts/bench-matrix.mjs --models=none`.)
  *
  * Cách dùng:
  *   node scripts/benchmark-50-ca-tb-tchq.mjs                 # chạy đủ 50 ca, in bảng đối chiếu
- *   node scripts/benchmark-50-ca-tb-tchq.mjs --gate          # kiểm ngưỡng hồi quy CI (thoát 1 nếu tụt)
- *   node scripts/benchmark-50-ca-tb-tchq.mjs --limit=5       # chạy nhanh N ca đầu (dùng cho unit test)
+ *   node scripts/benchmark-50-ca-tb-tchq.mjs --gate          # kiểm ngưỡng hồi quy CI (ép đúng 50 ca + đủ 3 đường, thoát 1 nếu tụt)
+ *   node scripts/benchmark-50-ca-tb-tchq.mjs --limit=5       # chạy nhanh N ca đầu (nếu kèm --gate sẽ đỏ vì tong !== 50)
  *   node scripts/benchmark-50-ca-tb-tchq.mjs --with-suggest  # chạy thêm suggestCore (no-LLM)
  */
 
@@ -48,27 +52,31 @@ const { suggestCore } = require('../lib/suggest-core.js');
 const chiSo = (s) => String(s ?? '').replace(/\D/g, '');
 const pct = (n, total) => (total ? ((n / total) * 100).toFixed(1) : '0.0');
 
-/** Đọc và kiểm khuôn bộ 50 ca từ `tests/bo-50-ca-tb-tchq.json`. */
+/** Đọc và kiểm khuôn bộ 50 ca từ `tests/bo-50-ca-tb-tchq.json`. Đánh số `stt` cố định 1..50. */
 export function docBo50Ca(duong = FIXTURE_PATH) {
   const raw = JSON.parse(readFileSync(duong, 'utf8'));
   if (!raw || !Array.isArray(raw.cases) || raw.cases.length !== 50) {
     throw new Error(`bo-50-ca-tb-tchq: phải có đúng 50 ca (hiện có ${raw?.cases?.length ?? 0})`);
   }
   const cases = raw.cases.map((ca, idx) => {
+    const sttExpected = idx + 1;
+    if (ca.stt !== sttExpected) {
+      throw new Error(`bo-50-ca-tb-tchq: ca #${sttExpected} có stt=${ca.stt} lệch thứ tự cố định 1..50`);
+    }
     const ma = chiSo(ca.ma);
     if (ma.length !== 8 || !taxData[ma]) {
-      throw new Error(`bo-50-ca-tb-tchq: ca #${idx + 1} mã đáp án không hợp lệ hoặc không có trong tax.json: ${ca.ma}`);
+      throw new Error(`bo-50-ca-tb-tchq: ca #${sttExpected} mã đáp án không hợp lệ hoặc không có trong tax.json: ${ca.ma}`);
     }
     const cauKhach = String(ca.cauKhach || '').trim();
     if (cauKhach.length < 10) {
-      throw new Error(`bo-50-ca-tb-tchq: ca #${idx + 1} (${ma}) thiếu cauKhach`);
+      throw new Error(`bo-50-ca-tb-tchq: ca #${sttExpected} (${ma}) thiếu cauKhach`);
     }
     const nguon = ca.nguon || {};
     if (nguon.loai !== 'TB-TCHQ' || !String(nguon.soHieu || '').trim()) {
-      throw new Error(`bo-50-ca-tb-tchq: ca #${idx + 1} (${ma}) thiếu nguồn TB-TCHQ hợp lệ`);
+      throw new Error(`bo-50-ca-tb-tchq: ca #${sttExpected} (${ma}) thiếu nguồn TB-TCHQ hợp lệ`);
     }
     return {
-      stt: ca.stt || idx + 1,
+      stt: sttExpected,
       ma,
       cauKhach,
       maLan: (ca.maLan || []).map(chiSo).filter((m) => m.length === 8 && m !== ma),
@@ -119,7 +127,7 @@ export function chamMotCa(ca, dsMa = []) {
   };
 }
 
-/** Tổng hợp các chỉ số cốt lõi: top-1 đúng / top-3 đúng / không ra mã (kèm 4-số, 6-số, mã dễ lẫn). */
+/** Tổng hợp các chỉ số cốt lõi cho đường tìm kiếm / tiền lệ: top-1 đúng / top-3 đúng / không ra mã. */
 export function tongHopKetQua(ketQua = []) {
   const tong = ketQua.length;
   const top1 = ketQua.filter((r) => r.top1).length;
@@ -147,15 +155,60 @@ export function tongHopKetQua(ketQua = []) {
 }
 
 /**
- * Chạy 1 ca qua `classifyLoop` (no-LLM replay 12/11):
- * Stub `llmTier.callLLMJson` trả giả thuyết & quyết định từ ảnh chụp 12/11 để đi qua toàn bộ
- * tầng tất định của `lib/engine-loop.js` (`gather` → `gates` → `resolveHeading` → `chotDong8` → `kiemTruocChot`).
+ * Tổng hợp riêng cho đường `replay1211`: dùng tên trường `top1SoSongSot` / `top3SoSongSot`
+ * để tách biệt rõ với chỉ số độ chính xác A1 (tránh đọc nhầm số replay thành A1).
+ */
+export function tongHopReplay1211(ketQua = []) {
+  const base = tongHopKetQua(ketQua);
+  return {
+    tong: base.tong,
+    top1SoSongSot: base.top1,
+    top1SoSongSotPct: base.top1Pct,
+    top3SoSongSot: base.top3,
+    top3SoSongSotPct: base.top3Pct,
+    khongRaMa: base.khongRaMa,
+    khongRaMaPct: base.khongRaMaPct,
+    top1Nhom4SoSongSot: base.top1Nhom4,
+    top1Nhom4SoSongSotPct: base.top1Nhom4Pct,
+    top3Nhom4SoSongSot: base.top3Nhom4,
+    top3Nhom4SoSongSotPct: base.top3Nhom4Pct,
+    dung6So: base.dung6So,
+    roiVaoMaLan: base.roiVaoMaLan,
+  };
+}
+
+/**
+ * Rút ứng viên 8 số từ gói `_user` (`pack` do `gather()` trong `lib/engine-loop.js` xây dựng),
+ * ưu tiên mục `TIỀN LỆ TB-TCHQ:` rồi tới `CHÚ GIẢI & DÒNG BIỂU THUẾ:`. Không bao giờ đọc `ca.ma`.
+ */
+export function rutUngVienTuUserPack(userPack = '', maChinh = '') {
+  const text = String(userPack || '');
+  const tbSection = text.split('TIỀN LỆ TB-TCHQ:')[1]?.split('\n\n')[0] || '';
+  const notesSection = text.split('CHÚ GIẢI & DÒNG BIỂU THUẾ')[1]?.split('\n\nTIỀN LỆ')[0] || '';
+  const out = [];
+  const seen = new Set(maChinh ? [maChinh] : []);
+  for (const sec of [tbSection, notesSection]) {
+    for (const m of sec.matchAll(/\b(\d{8})\b/g)) {
+      const code = m[1];
+      if (!seen.has(code) && taxData[code]) {
+        seen.add(code);
+        out.push(code);
+      }
+    }
+  }
+  return out;
+}
+
+/**
+ * Chạy 1 ca qua `classifyLoop` (`replay1211` — chỉ đo tầng tất định, không đo tầng xếp hạng LLM):
+ * Stub `llmTier.callLLMJson` phát lại mã `ca.cong1211.maBot` và rút `alternatives` từ `_user` do `gather()` sinh
+ * (tuyệt đối không đọc đáp án `ca.ma`).
  */
 export async function chayClassifyLoopReplayMotCa(ca) {
   const origCall = llmTier.callLLMJson;
   const ma1211 = ca.cong1211?.maBot || null;
-  const h4 = (ma1211 || ca.ma).slice(0, 4);
-  const h6 = (ma1211 || ca.ma).slice(0, 6);
+  const h4 = ma1211 ? ma1211.slice(0, 4) : '';
+  const h6 = ma1211 ? ma1211.slice(0, 6) : '';
   llmTier.callLLMJson = async (sys, _user, opts = {}) => {
     if (opts.step === 'understand' || String(sys || '').startsWith('VÒNG 1')) {
       return {
@@ -172,7 +225,7 @@ export async function chayClassifyLoopReplayMotCa(ca) {
             : [],
           verify: {
             searchVi: [ca.cauKhach.slice(0, 80)],
-            notesChapters: [h4.slice(0, 2)],
+            notesChapters: ma1211 ? [h4.slice(0, 2)] : [],
             codes8: ma1211 ? [ma1211] : [],
             micQuery: null,
             unknowns: [],
@@ -186,7 +239,7 @@ export async function chayClassifyLoopReplayMotCa(ca) {
       return {
         json: {
           decision: 'HOI',
-          hs: h6,
+          hs: '847989',
           confidence: 50,
           reason: 'ảnh chụp 12/11: cần bổ sung thông số để chốt dòng 8 số',
           gir: null,
@@ -199,6 +252,9 @@ export async function chayClassifyLoopReplayMotCa(ca) {
         model: 'stub-1211',
       };
     }
+    const ungVienTuGather = ca.cong1211?.top3 && !ca.cong1211?.top1
+      ? rutUngVienTuUserPack(_user, ma1211).slice(0, 2)
+      : [];
     return {
       json: {
         decision: ca.cong1211?.top3 && !ca.cong1211?.top1 ? 'DE_XUAT' : 'CHOT',
@@ -208,9 +264,10 @@ export async function chayClassifyLoopReplayMotCa(ca) {
         gir: 'GIR 1',
         basis: [],
         conditions: [],
-        alternatives: ca.cong1211?.top3 && !ca.cong1211?.top1
-          ? [{ hs: ca.ma, whyNot: 'ứng viên đối lập trong top-3 Cổng 12/11' }]
-          : [],
+        alternatives: ungVienTuGather.map((hs) => ({
+          hs,
+          whyNot: 'ứng viên đối lập rút từ gói gather (_user)',
+        })),
         questions: [],
       },
       provider: 'stub-1211',
@@ -227,9 +284,15 @@ export async function chayClassifyLoopReplayMotCa(ca) {
 }
 
 /** Chạy bộ đo 50 ca trên các đường no-LLM trong repo. */
-export async function chayBoDo50Ca({ limit = 0, withSuggest = false, skipSearch = false } = {}) {
+export async function chayBoDo50Ca({ limit = 0, sttList = null, withSuggest = false, skipSearch = false } = {}) {
   const boDe = docBo50Ca();
-  const cases = limit > 0 ? boDe.cases.slice(0, limit) : boDe.cases;
+  let cases = boDe.cases;
+  if (Array.isArray(sttList) && sttList.length > 0) {
+    const tap = new Set(sttList);
+    cases = boDe.cases.filter((c) => tap.has(c.stt));
+  } else if (limit > 0) {
+    cases = boDe.cases.slice(0, limit);
+  }
 
   const kqLoop = [];
   const kqSearch = [];
@@ -264,100 +327,109 @@ export async function chayBoDo50Ca({ limit = 0, withSuggest = false, skipSearch 
   return {
     boDe,
     soCa: cases.length,
-    classifyLoopReplay1211: { tomTat: tongHopKetQua(kqLoop), chiTiet: kqLoop },
+    replay1211: { tomTat: tongHopReplay1211(kqLoop), chiTiet: kqLoop },
     searchCandidates: skipSearch ? null : { tomTat: tongHopKetQua(kqSearch), chiTiet: kqSearch },
     searchPrecedents: { tomTat: tongHopKetQua(kqPrecedent), chiTiet: kqPrecedent },
     suggestCoreNoLlm: withSuggest ? { tomTat: tongHopKetQua(kqSuggest), chiTiet: kqSuggest } : null,
   };
 }
 
-/** In báo cáo kết quả ra stdout (CI đọc trực tiếp 3 con số: top-1 đúng / top-3 đúng / không ra mã). */
+/** In báo cáo kết quả ra stdout với nhãn cố định (tránh nhầm replay1211 với A1). */
 export function inBaoCao50Ca(res) {
-  const { boDe, soCa, classifyLoopReplay1211, searchCandidates: sc, searchPrecedents: sp, suggestCoreNoLlm: sg } = res;
+  const { boDe, soCa, replay1211, searchCandidates: sc, searchPrecedents: sp, suggestCoreNoLlm: sg } = res;
   const c1211 = boDe.chuanCong1211;
-  const l = classifyLoopReplay1211.tomTat;
+  const l = replay1211.tomTat;
   const p = sp.tomTat;
-  const s = sc ? sc.tomTat : boDe.chuanNoiBoNoLlm.searchCandidates;
-  const g = sg ? sg.tomTat : boDe.chuanNoiBoNoLlm.suggestCoreNoLlm;
+  const s = sc ? sc.tomTat : null;
+  const g = sg ? sg.tomTat : null;
 
   console.log('\n=== HỒI QUY BỘ 50 CA PHÂN LOẠI HS TỪ VĂN BẢN PHÁP LUẬT (NO-LLM) ===');
-  console.log(`Bộ đề        : tests/bo-50-ca-tb-tchq.json (${soCa}/${boDe.cases.length} ca)`);
+  console.log(`Bộ đề        : tests/bo-50-ca-tb-tchq.json (${soCa}/${boDe.cases.length} ca, đánh số cố định stt 1..50)`);
   console.log(`Nguồn gốc    : ${boDe.nguonBoDe}`);
-  console.log(`Báo cáo Cổng : ${boDe.nguonBaoCaoCong}\n`);
+  console.log(`Báo cáo Cổng : ${boDe.nguonBaoCaoCong}`);
+  console.log('Giới hạn     : Đường [replay1211] chỉ đo số ca sống sót qua tầng tất định khi phát lại ảnh chụp 12/11; KHÔNG đo tầng xếp hạng LLM và KHÔNG phải chỉ số A1.\n');
 
-  console.log('Chỉ số chính (8 số):');
-  console.log(`  [1] classifyLoop (no-LLM replay 12/11) : top-1 đúng = ${l.top1}/${soCa} (${pct(l.top1, soCa)}%) | top-3 đúng = ${l.top3}/${soCa} (${pct(l.top3, soCa)}%) | không ra mã = ${l.khongRaMa}/${soCa} (${pct(l.khongRaMa, soCa)}%)`);
-  if (sc) {
-    console.log(`  [2] searchCandidates (no-LLM từ khoá)  : top-1 đúng = ${s.top1}/${soCa} (${pct(s.top1, soCa)}%) | top-3 đúng = ${s.top3}/${soCa} (${pct(s.top3, soCa)}%) | không ra mã = ${s.khongRaMa}/${soCa} (${pct(s.khongRaMa, soCa)}%) [nhóm 4 số: top-1 ${s.top1Nhom4}/${soCa} = ${pct(s.top1Nhom4, soCa)}%, top-3 ${s.top3Nhom4}/${soCa} = ${pct(s.top3Nhom4, soCa)}%]`);
+  console.log('Chỉ số hồi quy (8 số — nhãn cố định theo đường chạy):');
+  console.log(`  [replay1211] classifyLoop (sống sót tầng tất định, không đo xếp hạng) : top1SoSongSot = ${l.top1SoSongSot}/${soCa} (${pct(l.top1SoSongSot, soCa)}%) | top3SoSongSot = ${l.top3SoSongSot}/${soCa} (${pct(l.top3SoSongSot, soCa)}%) | khongRaMa = ${l.khongRaMa}/${soCa} (${pct(l.khongRaMa, soCa)}%)`);
+  if (s) {
+    console.log(`  [searchCandidates] tìm kiếm từ khoá biểu thuế (no-LLM)                : top-1 đúng = ${s.top1}/${soCa} (${pct(s.top1, soCa)}%) | top-3 đúng = ${s.top3}/${soCa} (${pct(s.top3, soCa)}%) | không ra mã = ${s.khongRaMa}/${soCa} (${pct(s.khongRaMa, soCa)}%) [nhóm 4 số: top-1 ${s.top1Nhom4}/${soCa} = ${pct(s.top1Nhom4, soCa)}%, top-3 ${s.top3Nhom4}/${soCa} = ${pct(s.top3Nhom4, soCa)}%]`);
+  } else {
+    console.log('  [searchCandidates] tìm kiếm từ khoá biểu thuế (no-LLM)                : (bỏ qua — thiếu dữ liệu cho cổng --gate)');
   }
-  console.log(`  [3] searchPrecedents (no-LLM TB-TCHQ)  : top-1 đúng = ${p.top1}/${soCa} (${pct(p.top1, soCa)}%) | top-3 đúng = ${p.top3}/${soCa} (${pct(p.top3, soCa)}%) | không ra mã = ${p.khongRaMa}/${soCa} (${pct(p.khongRaMa, soCa)}%)`);
-  if (sg) {
-    console.log(`  [4] suggestCore (no-LLM /api/suggest)  : top-1 đúng = ${g.top1}/${soCa} (${pct(g.top1, soCa)}%) | top-3 đúng = ${g.top3}/${soCa} (${pct(g.top3, soCa)}%) | không ra mã = ${g.khongRaMa}/${soCa} (${pct(g.khongRaMa, soCa)}%)`);
+  console.log(`  [searchPrecedents] tra cứu tiền lệ TB-TCHQ (no-LLM)                   : top-1 đúng = ${p.top1}/${soCa} (${pct(p.top1, soCa)}%) | top-3 đúng = ${p.top3}/${soCa} (${pct(p.top3, soCa)}%) | không ra mã = ${p.khongRaMa}/${soCa} (${pct(p.khongRaMa, soCa)}%)`);
+  if (g) {
+    console.log(`  [suggestCoreNoLlm] /api/suggest khi tắt LLM                           : top-1 đúng = ${g.top1}/${soCa} (${pct(g.top1, soCa)}%) | top-3 đúng = ${g.top3}/${soCa} (${pct(g.top3, soCa)}%) | không ra mã = ${g.khongRaMa}/${soCa} (${pct(g.khongRaMa, soCa)}%)`);
   }
-  console.log(`  [*] Chuẩn Cổng OZ 12/11 (có LLM sống)  : top-1 đúng = ${c1211.top1}/${c1211.tong} (${c1211.top1Pct.toFixed(1)}%) | top-3 đúng = ${c1211.top3}/${c1211.tong} (${c1211.top3Pct.toFixed(1)}%) | không ra mã = ${c1211.khongRaMa}/${c1211.tong} (${pct(c1211.khongRaMa, c1211.tong)}%)`);
+  console.log(`  [cong1211] chuẩn tham chiếu Cổng OZ 12/11 (có LLM sống — A1/A2)       : top-1 đúng = ${c1211.top1}/${c1211.tong} (${c1211.top1Pct.toFixed(1)}%) | top-3 đúng = ${c1211.top3}/${c1211.tong} (${c1211.top3Pct.toFixed(1)}%) | không ra mã = ${c1211.khongRaMa}/${c1211.tong} (${pct(c1211.khongRaMa, c1211.tong)}%)`);
 
   console.log('\nGiải thích khác biệt giữa các đường chạy (chuẩn hồi quy nội bộ vs Cổng OZ 12/11):');
-  console.log('  - Đường [1] classifyLoop (no-LLM replay 12/11) đạt 33/50 top-1 (66.0%), 42/50 top-3 (84.0%), 7/50 không ra mã (14.0%):');
-  console.log('    top-1 và không-ra-mã khớp từng ca với Cổng OZ 12/11; top-3 cao hơn 2 ca (#9 39073030, #14 42029190) vì');
-  console.log('    `kiemTruocChot` trong `lib/engine-loop.js` đẩy mã TB-TCHQ vào `results[1]`, còn tầng render giọng Quyên của');
+  console.log('  - [replay1211] (top1SoSongSot = 33/50, top3SoSongSot = 42/50, khongRaMa = 7/50):');
+  console.log('    đo số ca sống sót qua tầng tất định (`gather` → `gates` → `resolveHeading` → `chotDong8` → `kiemTruocChot`).');
+  console.log('    top1SoSongSot và khongRaMa khớp từng ca với Cổng OZ 12/11; top3SoSongSot cao hơn 2 ca (#9 39073030, #14 42029190)');
+  console.log('    vì `kiemTruocChot` trong `lib/engine-loop.js` đẩy mã TB-TCHQ vào `results[1]`, còn tầng render giọng Quyên của');
   console.log('    zalo-bot trên Cổng 12/11 chỉ hiển thị 1 mã đầu cho khách.');
-  console.log('  - Đường [2] searchCandidates (2/50 top-1 = 4.0%, 3/50 top-3 = 6.0%, 0 không ra mã) và suggestCore no-LLM (2/50 = 4.0%):');
-  console.log('    chỉ khớp từ khoá/alias trực tiếp trên `data/tax.json` + `oz-gold` (không qua LLM vòng 1 rút tên hàng và không lấy');
-  console.log('    ứng viên trực tiếp từ `data/precedents.json` TB-TCHQ). Câu khách trong bộ 50 ca dài 100–400 ký tự kèm mệnh đề công');
-  console.log('    dụng ("dùng trong nhà máy...", "dùng làm dao cho máy cắt...") làm bộ lọc từ khoá biểu thuế trượt hoặc bị `oz-gold` át điểm.');
-  console.log('  - Đường [3] searchPrecedents (50/50 top-1 = 100.0%): bộ 50 ca được trích từ TB-TCHQ trong `data/precedents.json` nên');
+  console.log('  - [searchCandidates] (2/50 top-1 = 4.0%, 3/50 top-3 = 6.0%, 0 không ra mã) và [suggestCoreNoLlm] (2/50 = 4.0%):');
+  console.log('    chỉ khớp từ khoá/alias trực tiếp trên `data/tax.json` + `oz-gold` (không qua LLM vòng 1 rút tên hàng). Câu khách');
+  console.log('    trong bộ 50 ca dài 100–400 ký tự kèm mệnh đề công dụng làm bộ lọc từ khoá biểu thuế trượt hoặc bị `oz-gold` át điểm.');
+  console.log('  - [searchPrecedents] (50/50 top-1 = 100.0%): bộ 50 ca được trích từ TB-TCHQ trong `data/precedents.json` nên');
   console.log('    tầng đối chiếu tiền lệ TB-TCHQ khớp đúng 50/50 ca.');
 }
 
-/** Kiểm cổng CI (`--gate`): đảm bảo không tụt so với chuẩn hồi quy nội bộ trên `main`. */
+/**
+ * Kiểm cổng CI (`--gate`):
+ *   - Ép chặt `tong === 50` trên MỌI đường (`replay1211`, `searchPrecedents`, `searchCandidates`).
+ *   - Không có nhánh im lặng `if (s)`: thiếu đường nào hoặc chạy thiếu/thừa ca là đỏ ngay.
+ */
 export function kiemCong50Ca(res) {
-  const chuan = res.boDe.chuanNoiBoNoLlm;
-  const l = res.classifyLoopReplay1211.tomTat;
-  const p = res.searchPrecedents.tomTat;
-  const s = res.searchCandidates?.tomTat;
+  const chuan = res?.boDe?.chuanNoiBoNoLlm;
+  const l = res?.replay1211?.tomTat;
+  const p = res?.searchPrecedents?.tomTat;
+  const s = res?.searchCandidates?.tomTat;
 
-  const checks = [
+  const du50Ca = res?.soCa === 50 && l?.tong === 50 && p?.tong === 50 && s?.tong === 50;
+
+  return [
     {
-      name: `classifyLoop (no-LLM replay 12/11) top-1 ≥ ${chuan.classifyLoopReplay1211.top1}/50`,
-      ok: l.top1 >= chuan.classifyLoopReplay1211.top1,
-      actual: `${l.top1}/${l.tong}`,
+      name: 'bộ đề chạy đủ đúng 50 ca trên mọi đường (tong === 50, không skipSearch/limit)',
+      ok: du50Ca,
+      actual: `soCa=${res?.soCa ?? 0}, replay1211=${l?.tong ?? 0}, searchPrecedents=${p?.tong ?? 0}, searchCandidates=${s?.tong ?? 'thiếu'}`,
     },
     {
-      name: `classifyLoop (no-LLM replay 12/11) top-3 ≥ ${chuan.classifyLoopReplay1211.top3}/50`,
-      ok: l.top3 >= chuan.classifyLoopReplay1211.top3,
-      actual: `${l.top3}/${l.tong}`,
+      name: `replay1211.top1SoSongSot ≥ ${chuan.replay1211.top1SoSongSot}/50`,
+      ok: l?.tong === 50 && l.top1SoSongSot >= chuan.replay1211.top1SoSongSot,
+      actual: l ? `${l.top1SoSongSot}/${l.tong}` : 'thiếu replay1211',
     },
     {
-      name: `classifyLoop (no-LLM replay 12/11) không ra mã ≤ ${chuan.classifyLoopReplay1211.khongRaMa}/50`,
-      ok: l.khongRaMa <= chuan.classifyLoopReplay1211.khongRaMa,
-      actual: `${l.khongRaMa}/${l.tong}`,
+      name: `replay1211.top3SoSongSot ≥ ${chuan.replay1211.top3SoSongSot}/50`,
+      ok: l?.tong === 50 && l.top3SoSongSot >= chuan.replay1211.top3SoSongSot,
+      actual: l ? `${l.top3SoSongSot}/${l.tong}` : 'thiếu replay1211',
+    },
+    {
+      name: `replay1211.khongRaMa ≤ ${chuan.replay1211.khongRaMa}/50`,
+      ok: l?.tong === 50 && l.khongRaMa <= chuan.replay1211.khongRaMa,
+      actual: l ? `${l.khongRaMa}/${l.tong}` : 'thiếu replay1211',
     },
     {
       name: `searchPrecedents (no-LLM TB-TCHQ) top-1 ≥ ${chuan.searchPrecedents.top1}/50`,
-      ok: p.top1 >= chuan.searchPrecedents.top1,
-      actual: `${p.top1}/${p.tong}`,
+      ok: p?.tong === 50 && p.top1 >= chuan.searchPrecedents.top1,
+      actual: p ? `${p.top1}/${p.tong}` : 'thiếu searchPrecedents',
+    },
+    {
+      name: `searchCandidates (no-LLM) top-1 ≥ ${chuan.searchCandidates.top1}/50`,
+      ok: Boolean(s) && s.tong === 50 && s.top1 >= chuan.searchCandidates.top1,
+      actual: s ? `${s.top1}/${s.tong}` : 'thiếu searchCandidates',
+    },
+    {
+      name: `searchCandidates (no-LLM) top-3 ≥ ${chuan.searchCandidates.top3}/50`,
+      ok: Boolean(s) && s.tong === 50 && s.top3 >= chuan.searchCandidates.top3,
+      actual: s ? `${s.top3}/${s.tong}` : 'thiếu searchCandidates',
+    },
+    {
+      name: `searchCandidates (no-LLM) nhóm 4 số top-1 ≥ ${chuan.searchCandidates.top1Nhom4}/50`,
+      ok: Boolean(s) && s.tong === 50 && s.top1Nhom4 >= chuan.searchCandidates.top1Nhom4,
+      actual: s ? `${s.top1Nhom4}/${s.tong}` : 'thiếu searchCandidates',
     },
   ];
-  if (s) {
-    checks.push(
-      {
-        name: `searchCandidates (no-LLM) top-1 ≥ ${chuan.searchCandidates.top1}/50`,
-        ok: s.top1 >= chuan.searchCandidates.top1,
-        actual: `${s.top1}/${s.tong}`,
-      },
-      {
-        name: `searchCandidates (no-LLM) top-3 ≥ ${chuan.searchCandidates.top3}/50`,
-        ok: s.top3 >= chuan.searchCandidates.top3,
-        actual: `${s.top3}/${s.tong}`,
-      },
-      {
-        name: `searchCandidates (no-LLM) nhóm 4 số top-1 ≥ ${chuan.searchCandidates.top1Nhom4}/50`,
-        ok: s.top1Nhom4 >= chuan.searchCandidates.top1Nhom4,
-        actual: `${s.top1Nhom4}/${s.tong}`,
-      },
-    );
-  }
-  return checks;
 }
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
