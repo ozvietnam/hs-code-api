@@ -1,0 +1,1181 @@
+{
+  "version": "2026-11-12",
+  "nguonBoDe": "ozvietnam/zalo-bot@d776735:eval/bo-de/phan-loai-tu-luat.json",
+  "nguonBaoCaoCong": "ozvietnam/zalo-bot@d776735:bao-cao/do-dung/2026-11-12.md",
+  "ghiChu": "Bộ 50 ca hồi quy phân loại HS từ văn bản pháp luật (TB-TCHQ + biểu thuế). Không chứa dữ liệu khách hàng hay oz-gold-final.jsonl.",
+  "chuanCong1211": {
+    "tong": 50,
+    "top1": 33,
+    "top1Pct": 66,
+    "top3": 40,
+    "top3Pct": 80,
+    "khongRaMa": 7,
+    "dung6So": 5,
+    "roiVaoMaLan": 1
+  },
+  "chuanNoiBoNoLlm": {
+    "classifyLoopReplay1211": {
+      "top1": 33,
+      "top3": 42,
+      "khongRaMa": 7
+    },
+    "searchCandidates": {
+      "top1": 2,
+      "top3": 3,
+      "khongRaMa": 0,
+      "top1Nhom4": 10,
+      "top3Nhom4": 12
+    },
+    "suggestCoreNoLlm": {
+      "top1": 2,
+      "top3": 2,
+      "khongRaMa": 0,
+      "top1Nhom4": 3,
+      "top3Nhom4": 4
+    },
+    "searchPrecedents": {
+      "top1": 50,
+      "top3": 50,
+      "khongRaMa": 0
+    }
+  },
+  "cases": [
+    {
+      "stt": 1,
+      "ma": "12081000",
+      "cauKhach": "Bột đậu nành (roasted soy bean powder) đậu tương chưa khử béo, dạng bột đã rang màu vàng, không có vị đắng, qua xử lý nhiệt không thay đổi tính đặc trưng tự nhiên của hạt, nguyên liệu sản xuất bánh kẹo",
+      "maLan": [
+        "21061000",
+        "23040090"
+      ],
+      "tenDongBieuThue": "- Từ đậu tương",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "2342/TB-TCHQ",
+        "nam": 2020,
+        "trich": "Kết quả phân tích 2929/TB-KĐ3: đậu tương chưa khử béo, bột đã rang → nhóm 12.08 bột mịn và bột thô từ hạt có dầu, mã 1208.10.00 từ đậu tương; không phải chế phẩm thực phẩm 21.06.",
+        "tepBieuThue": "hs-code-api data/tax.json#12081000"
+      },
+      "cong1211": {
+        "maBot": "12081000",
+        "top1": true,
+        "top3": true,
+        "giay": 55.5
+      }
+    },
+    {
+      "stt": 2,
+      "ma": "21069099",
+      "cauKhach": "Nước làm kem đá vị xoài (water ice with mango flavour for freezing, Sun Lolly): dung dịch lỏng gồm nước 71,9%, đường 17,6%, puree xoài cô đặc 10%, axit citric, pectin, hương xoài tự nhiên, axit ascorbic, beta-caroten; đóng gói 60 g/gói, dùng đông lạnh tạo kem đá ăn liền",
+      "maLan": [
+        "21050000",
+        "22029990"
+      ],
+      "tenDongBieuThue": "- - - Loại khác",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "17752/TB-CHQ",
+        "nam": 2026,
+        "trich": "Chế phẩm thực phẩm dạng lỏng có pha đường, hương liệu, phụ gia, dùng đông lạnh thành kem đá; chưa được chi tiết ở nơi khác → nhóm 21.06, phân nhóm 2106.90, mã 2106.90.99.",
+        "tepBieuThue": "hs-code-api data/tax.json#21069099"
+      },
+      "cong1211": {
+        "maBot": "21069099",
+        "top1": true,
+        "top3": true,
+        "giay": 51.4
+      }
+    },
+    {
+      "stt": 3,
+      "ma": "25174100",
+      "cauKhach": "Bột đá CaCO3 (bột đá siêu mịn, calcium carbonate powder) từ đá hoa trắng (white marble), hàm lượng CaCO3 trên 93%, kích thước dưới 90 micromet (0,09 mm), độ trắng thường trên 80%, xuất khẩu",
+      "maLan": [
+        "25174900",
+        "28365000"
+      ],
+      "tenDongBieuThue": "- - Từ đá hoa (marble)",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "5722/TB-TCHQ",
+        "nam": 2023,
+        "trich": "Bột CaCO3 từ đá hoa trắng, CaCO3 > 93%, cỡ hạt < 90 µm, độ trắng > 80% thuộc mã 2517.41.00.10 (dòng 10 số trong Biểu thuế xuất khẩu); bột từ đá vôi trắng cùng chỉ tiêu thuộc 2517.49.00.10. Phân biệt theo nguồn gốc đá (đá hoa vs đá vôi).",
+        "tepBieuThue": "hs-code-api data/tax.json#25174100"
+      },
+      "cong1211": {
+        "maBot": "25174100",
+        "top1": true,
+        "top3": true,
+        "giay": 25.9
+      }
+    },
+    {
+      "stt": 4,
+      "ma": "27101990",
+      "cauKhach": "Dầu cắt gọt Cutting oil SCL-35 dầu cắt chứa từ 70% trở lên là dầu có nguồn gốc từ dầu mỏ thuộc phân đoạn nặng",
+      "maLan": [
+        "34031119",
+        "34031990"
+      ],
+      "tenDongBieuThue": "- - - Loại khác",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "4935/TB-TCHQ",
+        "nam": 2015,
+        "trich": "Kết quả phân tích 672/TB-PTPLHCM: chế phẩm chứa từ 70% trở lên dầu có nguồn gốc dầu mỏ → nhóm 27.10, phân nhóm 2710.19, mã 2710.19.90; không thuộc 34.03 (chế phẩm bôi trơn dưới 70% dầu mỏ).",
+        "tepBieuThue": "hs-code-api data/tax.json#27101990"
+      },
+      "cong1211": {
+        "maBot": "27101990",
+        "top1": true,
+        "top3": true,
+        "giay": 53.8
+      }
+    },
+    {
+      "stt": 5,
+      "ma": "32041900",
+      "cauKhach": "Thuốc màu MCF18: chế phẩm màu hữu cơ màu đỏ tan trong dung môi 1-methoxy-2-propanol (solvent dye), dạng lỏng",
+      "maLan": [
+        "32041700"
+      ],
+      "tenDongBieuThue": "- - Loại khác, kể cả hỗn hợp chất màu từ hai phân nhóm trở lên của các phân nhóm từ 3204.11 đến 3204.19",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "860/TB-TCHQ",
+        "nam": 2016,
+        "trich": "Chế phẩm chất màu hữu cơ tổng hợp loại khác (thuốc nhuộm tan trong dung môi) → 3204.19 (thông báo ghi 3204.19.0, tương ứng 3204.19.00). Mô tả kỹ thuật: Thuốc màu MCF18: chế phẩm màu hữu cơ màu đỏ tan trong dung môi 1-methoxy-2-propanol (solvent dye), d. Căn cứ: TB-TCHQ số 860/TB-TCHQ.",
+        "tepBieuThue": "hs-code-api data/tax.json#32041900"
+      },
+      "cong1211": {
+        "maBot": "32041900",
+        "top1": true,
+        "top3": true,
+        "giay": 48.2
+      }
+    },
+    {
+      "stt": 6,
+      "ma": "32064990",
+      "cauKhach": "Aluminium powder (bột nhôm): chất màu vô cơ có thành phần là bột nhôm",
+      "maLan": [
+        "76031000"
+      ],
+      "tenDongBieuThue": "- - - Loại khác",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "554/TB-TCHQ",
+        "nam": 2016,
+        "trich": "Bột nhôm dùng làm chất màu → 3206.49.90 (không phải 76.03). Mô tả kỹ thuật: Aluminium powder (bột nhôm): chất màu vô cơ có thành phần là bột nhôm. Căn cứ: TB-TCHQ số 554/TB-TCHQ.",
+        "tepBieuThue": "hs-code-api data/tax.json#32064990"
+      },
+      "cong1211": {
+        "maBot": "32064990",
+        "top1": true,
+        "top3": true,
+        "giay": 45.5
+      }
+    },
+    {
+      "stt": 7,
+      "ma": "32129019",
+      "cauKhach": "Fon TAN 10 PASTE (CK-F-P797060): thuốc màu từ kẽm ferrit phân tán trong môi trường không có nước, dạng lỏng, dùng sản xuất sơn",
+      "maLan": [
+        "32064990"
+      ],
+      "tenDongBieuThue": "- - - Loại khác",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "5987/TB-TCHQ",
+        "nam": 2015,
+        "trich": "Thuốc màu phân tán trong môi trường không có nước dùng sản xuất sơn → 3212.90.19. Mô tả kỹ thuật: Fon TAN 10 PASTE (CK-F-P797060): thuốc màu từ kẽm ferrit phân tán trong môi trường không có nước, dạ. Căn cứ: TB-TCHQ số 5987/TB-TCHQ.",
+        "tepBieuThue": "hs-code-api data/tax.json#32129019"
+      },
+      "cong1211": {
+        "maBot": "32129019",
+        "top1": true,
+        "top3": true,
+        "giay": 50.7
+      }
+    },
+    {
+      "stt": 8,
+      "ma": "37013000",
+      "cauKhach": "Tấm bản in CTP (Computer-to-plate printing plate) bằng nhôm dạng phẳng, đã phủ lớp nhạy sáng, chưa phơi sáng, kích thước 560x470 mm, dày 0,27 mm, dùng trong công nghiệp in",
+      "maLan": [
+        "84425000"
+      ],
+      "tenDongBieuThue": "- Tấm và phim loại khác, có từ một chiều bất kỳ trên 255 mm",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "5048/TB-TCHQ",
+        "nam": 2015,
+        "trich": "Kết quả phân tích 129/TB1-CNHP: tấm phẳng bằng nhôm có phủ lớp chất nhạy, chưa phơi sáng, một chiều trên 255 mm → nhóm 37.01, mã 3701.30.00. Mô tả kỹ thuật: Tấm bản in CTP (Computer-to-plate printing plate) bằng nhôm dạng phẳng, đã phủ lớp nhạy sáng, chưa p. Căn cứ: TB-TCHQ số 5048/TB-TCHQ.",
+        "tepBieuThue": "hs-code-api data/tax.json#37013000"
+      },
+      "cong1211": {
+        "maBot": "37013000",
+        "top1": true,
+        "top3": true,
+        "giay": 52.6
+      }
+    },
+    {
+      "stt": 9,
+      "ma": "39073030",
+      "cauKhach": "Bán thành phẩm của sơn đi từ polyme acrylic, thuốc màu hữu cơ tổng hợp EA-620 (theo khai báo); kết quả phân tích: nhựa epoxy biến tính, dạng lỏng",
+      "maLan": [
+        "32041700",
+        "32089090"
+      ],
+      "tenDongBieuThue": "- - Dạng lỏng hoặc dạng nhão",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "571/TB-TCHQ",
+        "nam": 2016,
+        "trich": "Khai báo là bán thành phẩm sơn/thuốc màu nhưng phân tích là nhựa epoxit dạng nguyên sinh → nhóm 39.07, 3907.30 nhựa epoxit, dạng lỏng hoặc nhão → 3907.30.30, không thuộc 32.04/32.08.",
+        "tepBieuThue": "hs-code-api data/tax.json#39073030"
+      },
+      "cong1211": {
+        "maBot": "32082090",
+        "top1": false,
+        "top3": false,
+        "giay": 45
+      }
+    },
+    {
+      "stt": 10,
+      "ma": "39199092",
+      "cauKhach": "Nhãn nhựa tự dính đã in (PLASTIC LABEL, tem nhãn) dạng chiếc phẳng 26x12 mm, dạng cuộn: lớp mặt PET phủ SiO2 in mực UV (logo, thông tin sản phẩm, mã vạch), lớp keo acrylic polymer, lớp đế giấy glassine phủ silicone/PE bóc bỏ trước khi dán",
+      "maLan": [
+        "49119990",
+        "39191099"
+      ],
+      "tenDongBieuThue": "- - - Từ các polyme trùng hợp; từ các polyme trùng ngưng hoặc tái sắp xếp; từ nitrat xenlulo, các acetat xenlulo và các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "16238/TB-CHQ",
+        "nam": 2025,
+        "trich": "Nhãn nhựa tự dính, dạng chiếc phẳng, đã in, bằng plastic → nhóm 39.19 tấm, phiến, màng, dải và các hình dạng phẳng khác tự dính bằng plastic, phân nhóm 3919.90, mã 3919.90.92 (từ polyme trùng ngưng - PET). Phù hợp hướng dẫn tại công văn 624/TCHQ-TXNK (không xếp vào 4911.99.90).",
+        "tepBieuThue": "hs-code-api data/tax.json#39199092"
+      },
+      "cong1211": {
+        "maBot": "39191092",
+        "top1": false,
+        "top3": true,
+        "giay": 53
+      }
+    },
+    {
+      "stt": 11,
+      "ma": "39232990",
+      "cauKhach": "Túi nilon PP (túi polypropylen) dùng đóng gói sản phẩm trong nhà máy, kích thước 0,06 x 350 x 550 mm (túi đóng gói bằng plastic, plastic packing bag)",
+      "maLan": [
+        "39232100"
+      ],
+      "tenDongBieuThue": "- - - Loại khác",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "7840/TB-TCHQ",
+        "nam": 2013,
+        "trich": "Thuộc Chương 39 (plastic và sản phẩm bằng plastic), nhóm 39.23 các sản phẩm dùng trong vận chuyển hoặc đóng gói hàng hóa, phân nhóm bao và túi, mã 3923.29.90 Loại khác (không phải polyme etylen 3923.21). Căn cứ Nghị định 06/2003/NĐ-CP và Thông tư 156/2011/TT-BTC (Danh mục HHXNK Việt Nam).",
+        "tepBieuThue": "hs-code-api data/tax.json#39232990"
+      },
+      "cong1211": {
+        "maBot": "39232990",
+        "top1": true,
+        "top3": true,
+        "giay": 50.7
+      }
+    },
+    {
+      "stt": 12,
+      "ma": "39269099",
+      "cauKhach": "Miếng nhựa dùng để cố định dây cáp (cable tie mount) 2x2 cm: sản phẩm bằng plastic kích thước 25 x 25 x 5 mm có gắn lớp tự dính, đã gia công, dập lỗ",
+      "maLan": [
+        "39199099"
+      ],
+      "tenDongBieuThue": "- - - Loại khác",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "3291/TB-TCHQ",
+        "nam": 2016,
+        "trich": "Sản phẩm bằng plastic khác đã gia công hoàn chỉnh → 3926.90.99 (không phải tấm tự dính 39.19). Mô tả kỹ thuật: Miếng nhựa dùng để cố định dây cáp (cable tie mount) 2x2 cm: sản phẩm bằng plastic kích thước 25 x 2. Căn cứ: TB-TCHQ số 3291/TB-TCHQ.",
+        "tepBieuThue": "hs-code-api data/tax.json#39269099"
+      },
+      "cong1211": {
+        "maBot": "39269099",
+        "top1": true,
+        "top3": true,
+        "giay": 50.4
+      }
+    },
+    {
+      "stt": 13,
+      "ma": "40169959",
+      "cauKhach": "Bộ thanh cao su lưu hóa hoàn chỉnh (rubber liner bars / mill lining) kích thước 650 x 104 x 84 mm, dùng làm lớp lót bên trong hủ nghiền (ball mill) sản xuất gạch ceramic đường kính 3,2 x 4,5 m, dung tích 34.000 lít",
+      "maLan": [
+        "84749010",
+        "84749020"
+      ],
+      "tenDongBieuThue": "- - - - Loại khác",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "7167/TB-TCHQ",
+        "nam": 2015,
+        "trich": "Kết quả phân loại: thanh cao su lưu hóa dùng làm lớp lót bên trong hủ nghiền sản xuất gạch ceramic thuộc nhóm 40.16 'Các sản phẩm khác bằng cao su lưu hóa trừ cao su cứng', phân nhóm 4016.99, '- - - Các sản phẩm khác sử dụng cho máy hoặc các thiết bị điện hoặc cơ khí, hoặc cho các mục đích kỹ thuật khác', mã số 4016.99.59 'Loại khác'. Dù là chi tiết lót của máy nghiền (nhóm 84.74) nhưng phân loại theo vật liệu cao su, không vào 8474.90. Căn cứ TT 14/2015/TT-BTC, TT 156/2011/TT-BTC.",
+        "tepBieuThue": "hs-code-api data/tax.json#40169959"
+      },
+      "cong1211": {
+        "maBot": "40169959",
+        "top1": true,
+        "top3": true,
+        "giay": 56.2
+      }
+    },
+    {
+      "stt": 14,
+      "ma": "42029190",
+      "cauKhach": "Vỏ điện thoại kiểu dáng ví dẹt mỏng (Flat Wallet Cover Note 4, EF-WN910F): vỏ giả da của điện thoại di động gồm da trong, da ngoài, chất liệu làm cứng, tấm bảo vệ bằng nhựa, khung, chíp nhận dạng, nam châm; bảo vệ và cố định điện thoại, tự bật/tắt màn hình khi mở/đóng",
+      "maLan": [
+        "42023100",
+        "42023200"
+      ],
+      "tenDongBieuThue": "- - - Loại khác",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "4410/TB-TCHQ",
+        "nam": null,
+        "trich": "Xác định trước mã số. Vỏ bảo vệ điện thoại mặt ngoài bằng da thuộc hoặc da tổng hợp → 42.02, 4202.91.90 (thông báo năm 2015). Mô tả kỹ thuật: Vỏ điện thoại kiểu dáng ví dẹt mỏng (Flat Wallet Cover Note 4, EF-WN910F): vỏ giả da của điện thoại . Căn cứ: TB-TCHQ số 4410/TB-TCHQ.",
+        "tepBieuThue": "hs-code-api data/tax.json#42029190"
+      },
+      "cong1211": {
+        "maBot": "42023200",
+        "top1": false,
+        "top3": false,
+        "giay": 55.8
+      }
+    },
+    {
+      "stt": 15,
+      "ma": "48114190",
+      "cauKhach": "Giấy tự dính HTMLS-W (100 cm x 3000 m) dùng làm nhãn: giấy một mặt phủ lớp nhạy nhiệt (giấy nhiệt), một mặt có lớp keo acrylic tự dính, bề mặt chưa in hình, in chữ, dạng cuộn, chiều rộng 100 cm",
+      "maLan": [
+        "48211010",
+        "48219010"
+      ],
+      "tenDongBieuThue": "- - - Loại khác",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "1252/TB-TCHQ",
+        "nam": 2016,
+        "trich": "Giấy tự dính chưa in ở dạng cuộn khổ rộng là giấy đã tráng phủ nhóm 48.11, phân nhóm 4811.41 loại tự dính → 4811.41.90; chưa cắt thành nhãn nên không thuộc 48.21.",
+        "tepBieuThue": "hs-code-api data/tax.json#48114190"
+      },
+      "cong1211": {
+        "maBot": "48114190",
+        "top1": true,
+        "top3": true,
+        "giay": 48
+      }
+    },
+    {
+      "stt": 16,
+      "ma": "49119990",
+      "cauKhach": "Màng nhựa PET (poly(etylen terephthalate)) không tự dính, đã in hoa văn một mặt, không xốp, chưa gia cố, chưa bổ trợ hay kết hợp với vật liệu khác, dạng cuộn, dùng dán trực tiếp lên tấm PVC khi đưa vào máy cán màng để tạo hoa văn trang trí bề mặt (decorative printed PET film)",
+      "maLan": [
+        "39206200"
+      ],
+      "tenDongBieuThue": "- - - Loại khác",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "2450/TCHQ-TXNK",
+        "nam": 2023,
+        "trich": "Chú giải 2 Phần VII (HS 2022): hàng bằng plastic (trừ nhóm 39.18, 39.19) được xếp vào Chương 49 nếu việc in không chỉ đơn thuần phục vụ công dụng chính và plastic chỉ là vật trung gian cho việc in. Tham khảo ý kiến phân loại WCO thư 22NL 186-BY ngày 19/12/2022. Màng PET in hoa văn dùng tạo trang trí bề mặt → nhóm 49.11, phân nhóm 4911.99, mã 4911.99.90.",
+        "tepBieuThue": "hs-code-api data/tax.json#49119990"
+      },
+      "cong1211": {
+        "maBot": "39206299",
+        "top1": false,
+        "top3": true,
+        "giay": 57
+      }
+    },
+    {
+      "stt": 17,
+      "ma": "54074200",
+      "cauKhach": "Vải dệt thoi kiểu vân điểm dệt từ sợi đơn 100% multifilament polyamide, đã thấm tẩm RFL (resorcinol-formaldehyde-latex) làm chất tăng bám dính với cao su dùng sản xuất lốp xe hoặc băng tải, lớp thấm tẩm không nhìn thấy bằng mắt thường, vải mang màu nâu, trọng lượng 197,36 g/m², dạng cuộn khổ trên 1 m",
+      "maLan": [
+        "59069900",
+        "54074100"
+      ],
+      "tenDongBieuThue": "- - Đã nhuộm",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "553/TCHQ-TXNK",
+        "nam": 2021,
+        "trich": "RFL không phải 'cao su tổng hợp' theo Chú giải 4 Chương 40 (tham khảo ý kiến Hải quan Mỹ HQ 966535) nên vải xử lý RFL không thuộc nhóm 59.06. Lớp thấm tẩm không nhìn thấy bằng mắt thường nhưng làm vải mang màu nâu đỏ → thỏa mãn định nghĩa vải dệt thoi đã nhuộm tại Chú giải phân nhóm 1(f) Phần XI → mã 5407.42.00. Kết quả xem xét lại Thông báo 3396/TB-TCHQ ngày 26/5/2020.",
+        "tepBieuThue": "hs-code-api data/tax.json#54074200"
+      },
+      "cong1211": {
+        "maBot": "54074200",
+        "top1": true,
+        "top3": true,
+        "giay": 76.7
+      }
+    },
+    {
+      "stt": 18,
+      "ma": "60064490",
+      "cauKhach": "Vải dệt kim sợi ngang (weft knitted fabric) thành phần 59% xơ staple visco, 37% filament polyester, 4% sợi đàn hồi polyurethane, đã in một mặt, không tráng phủ, trọng lượng 252 g/m², dạng cuộn khổ 1,70 m (trên 0,85 m)",
+      "maLan": [
+        "60063490",
+        "60041000"
+      ],
+      "tenDongBieuThue": "- - - Loại khác",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "4940/TB-TCHQ",
+        "nam": 2015,
+        "trich": "Kết quả phân tích 515/TB-PTPL: vải dệt kim sợi ngang, xơ tái tạo (visco) chiếm ưu thế, đã in → nhóm 60.06 vải dệt kim hoặc móc khác, từ xơ tái tạo, phân nhóm 6006.44 đã in, mã 6006.44.90.",
+        "tepBieuThue": "hs-code-api data/tax.json#60064490"
+      },
+      "cong1211": {
+        "maBot": "60064490",
+        "top1": true,
+        "top3": true,
+        "giay": 59.7
+      }
+    },
+    {
+      "stt": 19,
+      "ma": "69141000",
+      "cauKhach": "Khuôn sứ (ceramic hand former) dùng để sản xuất găng tay",
+      "maLan": [
+        "84772000",
+        "69099000"
+      ],
+      "tenDongBieuThue": "- Bằng sứ",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "1030/TCHQ-TXNK",
+        "nam": 2022,
+        "trich": "Công văn hướng dẫn phân loại khuôn sứ dùng để sản xuất găng tay (khuôn bàn tay bằng sứ nhúng cao su/nitrile) vào nhóm 69.14 các sản phẩm bằng gốm sứ khác, mã 6914.10.00 (bằng sứ). Nguồn thứ cấp chỉ chép tên hàng và mã kết luận.",
+        "tepBieuThue": "hs-code-api data/tax.json#69141000"
+      },
+      "cong1211": {
+        "maBot": "69091100",
+        "top1": false,
+        "top3": true,
+        "giay": 47.5
+      }
+    },
+    {
+      "stt": 20,
+      "ma": "70060090",
+      "cauKhach": "Mặt kính bảo vệ của thiết bị đo chất lượng không khí (tấm kính đã gia công, chưa làm khung, chưa lắp với vật liệu khác)",
+      "maLan": [
+        "90279099",
+        "70071990"
+      ],
+      "tenDongBieuThue": "- Loại khác",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "2958/TB-TCHQ",
+        "nam": 2020,
+        "trich": "Thông báo kết quả phân loại: mặt kính bảo vệ của thiết bị đo chất lượng không khí là kính đã gia công thêm nhưng chưa làm khung hoặc lắp với vật liệu khác → nhóm 70.06, mã 7006.00.90; không phân loại theo bộ phận của thiết bị đo (Chương 90).",
+        "tepBieuThue": "hs-code-api data/tax.json#70060090"
+      },
+      "cong1211": {
+        "maBot": "70060090",
+        "top1": true,
+        "top3": true,
+        "giay": 55.2
+      }
+    },
+    {
+      "stt": 21,
+      "ma": "70071990",
+      "cauKhach": "Mặt kính bếp ga (mặt kính cường lực/kính tôi nhiệt an toàn dùng làm mặt bếp gas), model PC-004D2",
+      "maLan": [
+        "70072990",
+        "70060090"
+      ],
+      "tenDongBieuThue": "- - - Loại khác",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "983/TB-TCHQ",
+        "nam": 2016,
+        "trich": "Thông báo kết quả phân loại: mặt kính bếp ga thuộc nhóm 70.07 kính an toàn, phân nhóm 7007.19 kính tôi nhiệt (tempered) loại khác, mã 7007.19.90. Nguồn thứ cấp chỉ chép tên hàng, model và mã kết luận, không chép căn cứ chi tiết.",
+        "tepBieuThue": "hs-code-api data/tax.json#70071990"
+      },
+      "cong1211": {
+        "maBot": "70071990",
+        "top1": true,
+        "top3": true,
+        "giay": 71
+      }
+    },
+    {
+      "stt": 22,
+      "ma": "70181010",
+      "cauKhach": "Viên thủy tinh trong (hạt bi thủy tinh pha lê, glass bead) đường kính 10 mm, có lỗ xuyên tâm để xâu thành dây gắn lên đèn treo/đèn chùm, đóng rời 1.350 viên/hộp, không đi kèm bộ đèn",
+      "maLan": [
+        "94059900",
+        "94059100"
+      ],
+      "tenDongBieuThue": "- - Hạt bi thủy tinh",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "6915/TCHQ-TXNK",
+        "nam": 2020,
+        "trich": "Mặt hàng bản chất là các viên thủy tinh trong 10 mm, mỗi viên không gắn kết cấu để gắn/móc, có lỗ xuyên tâm để xâu thành dây gắn vào đèn chùm; đóng gói riêng lẻ, không trình bày cùng bộ đèn chùm hoàn chỉnh (kể cả dạng chưa lắp ráp/tháo rời) → nhóm 70.18, phân nhóm 7018.10, mã 7018.10.10 hạt bi thủy tinh (TT 65/2017, chú giải chi tiết HS 2017).",
+        "tepBieuThue": "hs-code-api data/tax.json#70181010"
+      },
+      "cong1211": {
+        "maBot": "70181010",
+        "top1": true,
+        "top3": true,
+        "giay": 56
+      }
+    },
+    {
+      "stt": 23,
+      "ma": "72021900",
+      "cauKhach": "Hợp kim fero-mangan (ferromanganese, khai báo fero-silic-mangan) hàm lượng C = 0,52%, Si = 3,47%, Mn = 45,24%",
+      "maLan": [
+        "72023000",
+        "72021100"
+      ],
+      "tenDongBieuThue": "- - Loại khác",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "4941/TB-TCHQ",
+        "nam": 2015,
+        "trich": "Kết quả phân tích 979/TB-PTPLHCM: hợp kim fero-mangan (hàm lượng carbon 0,52% không quá 2%) → nhóm 72.02 hợp kim fero, phân nhóm fero-mangan, mã 7202.19.00 loại khác; không phải fero-silic-mangan 7202.30.00.",
+        "tepBieuThue": "hs-code-api data/tax.json#72021900"
+      },
+      "cong1211": {
+        "maBot": "72023000",
+        "top1": false,
+        "top3": true,
+        "giay": 50.4
+      }
+    },
+    {
+      "stt": 24,
+      "ma": "72082600",
+      "cauKhach": "Thép cán nóng không hợp kim, cán phẳng, dạng cuộn, đã ngâm tẩy gỉ (pickled), chưa sơn phủ mạ tráng, JIS G3131 SPHC-PO, kích thước 3,6 mm x 1312 mm x cuộn, mặt cắt ngang đặc hình chữ nhật",
+      "maLan": [
+        "72083800"
+      ],
+      "tenDongBieuThue": "- - Chiều dày từ 3 mm đến dưới 4,75 mm",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "6629/TB-TCHQ",
+        "nam": 2015,
+        "trich": "Thép không hợp kim cán phẳng rộng từ 600 mm trở lên, cán nóng, dạng cuộn, đã ngâm tẩy gỉ, chiều dày từ 3 mm đến dưới 4,75 mm → 7208.26.00. Mô tả kỹ thuật: Thép cán nóng không hợp kim, cán phẳng, dạng cuộn, đã ngâm tẩy gỉ (pickled), chưa sơn phủ mạ tráng, . Căn cứ: TB-TCHQ số 6629/TB-TCHQ.",
+        "tepBieuThue": "hs-code-api data/tax.json#72082600"
+      },
+      "cong1211": {
+        "maBot": null,
+        "top1": false,
+        "top3": false,
+        "giay": 44.7
+      }
+    },
+    {
+      "stt": 25,
+      "ma": "72091610",
+      "cauKhach": "Thép cuộn cán nguội, cán phẳng, không hợp kim, chưa tráng phủ mạ sơn, tiêu chuẩn JIS G3141, mác thép SPCC-SD, kích thước 1,2 mm x 1219 mm x cuộn",
+      "maLan": [
+        "72091690"
+      ],
+      "tenDongBieuThue": "- - - Chiều rộng không quá 1.250 mm",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "459/TB-TCHQ",
+        "nam": null,
+        "trich": "Thép cuộn cán nguội chiều dày trên 1 mm đến dưới 3 mm → 7209.16; chiều rộng 1219 mm (không quá 1.250 mm) → 7209.16.10. Mô tả kỹ thuật: Thép cuộn cán nguội, cán phẳng, không hợp kim, chưa tráng phủ mạ sơn, tiêu chuẩn JIS G3141, mác thép. Căn cứ: TB-TCHQ số 459/TB-TCHQ.",
+        "tepBieuThue": "hs-code-api data/tax.json#72091610"
+      },
+      "cong1211": {
+        "maBot": "72091610",
+        "top1": true,
+        "top3": true,
+        "giay": 98.4
+      }
+    },
+    {
+      "stt": 26,
+      "ma": "72112390",
+      "cauKhach": "Thép không hợp kim cán phẳng dạng cuộn cán nguội (cold rolled steel strip in coil, SPCC-4B), hàm lượng carbon dưới 0,25%, chiều dày 1 mm, chiều rộng 450 mm (dưới 600 mm), chưa phủ, mạ hoặc tráng, không gia công quá mức cán nguội",
+      "maLan": [
+        "72091690"
+      ],
+      "tenDongBieuThue": "- - - Loại khác",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "5095/TB-TCHQ",
+        "nam": 2015,
+        "trich": "Thép không hợp kim cán phẳng chiều rộng dưới 600 mm, chưa phủ mạ tráng → nhóm 72.11; chưa gia công quá mức cán nguội, hàm lượng carbon dưới 0,25% → phân nhóm 7211.23, mã 7211.23.90 loại khác.",
+        "tepBieuThue": "hs-code-api data/tax.json#72112390"
+      },
+      "cong1211": {
+        "maBot": null,
+        "top1": false,
+        "top3": false,
+        "giay": 120.2
+      }
+    },
+    {
+      "stt": 27,
+      "ma": "72122020",
+      "cauKhach": "Thép không hợp kim cán nguội, cán phẳng, mạ điện nhũ xám (galvannealed GA, mác SGACC) bằng phương pháp điện phân kẽm, không phủ dầu, dạng cuộn dày 0,8 mm, rộng trên 400 mm nhưng dưới 600 mm, hàm lượng carbon 0,0016%, lớp mạ 50/48 g/m², dùng làm cần gạt mưa, tủ điện",
+      "maLan": [
+        "72123019",
+        "72104911"
+      ],
+      "tenDongBieuThue": "- - Loại khác, có hàm lượng carbon dưới 0,6% tính theo khối lượng và chiều dày không quá 1,5 mm",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "1504/TB-TCHQ",
+        "nam": 2022,
+        "trich": "Thép không hợp kim cán phẳng chiều rộng dưới 600 mm đã mạ → nhóm 72.12; mạ kẽm bằng phương pháp điện phân → phân nhóm 7212.20; hàm lượng carbon dưới 0,6% và chiều dày không quá 1,5 mm → mã 7212.20.20. (Thông báo 1504/TB-TCHQ năm 2022, khác với 1504/TB-TCHQ năm 2023 về hạt thủy tinh.)",
+        "tepBieuThue": "hs-code-api data/tax.json#72122020"
+      },
+      "cong1211": {
+        "maBot": null,
+        "top1": false,
+        "top3": false,
+        "giay": 120.7
+      }
+    },
+    {
+      "stt": 28,
+      "ma": "73158200",
+      "cauKhach": "Xích nâng tải bằng sắt (load chain, xích cẩu hàng), các mắt xích ghép nối bằng mối hàn",
+      "maLan": [
+        "73158990",
+        "73159090",
+        "73269099"
+      ],
+      "tenDongBieuThue": "- - Loại khác, ghép nối bằng mối hàn",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "4764/TCHQ-TXNK",
+        "nam": 2018,
+        "trich": "Xích nâng tải bằng sắt, được ghép nối bằng mối hàn → nhóm 73.15 xích và các bộ phận của xích bằng sắt hoặc thép, phân nhóm xích khác, mã 7315.82.00 loại khác, ghép nối bằng mối hàn (TT 14/2015, TT 65/2017, chú giải chi tiết HS, tuyển tập ý kiến phân loại WCO 2017, CV 3933/TCHQ-TXNK 2011).",
+        "tepBieuThue": "hs-code-api data/tax.json#73158200"
+      },
+      "cong1211": {
+        "maBot": "73158200",
+        "top1": true,
+        "top3": true,
+        "giay": 113.7
+      }
+    },
+    {
+      "stt": 29,
+      "ma": "73269099",
+      "cauKhach": "Móc cẩu (hook), mắt nối xích (connecting link), vòng xích chủ (master link) và móc thu ngắn xích (shortening hook) bằng sắt hoặc thép, dùng với xích cẩu hàng",
+      "maLan": [
+        "73159090",
+        "73158200"
+      ],
+      "tenDongBieuThue": "- - - Loại khác",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "4764/TCHQ-TXNK",
+        "nam": 2018,
+        "trich": "Các phụ kiện móc cẩu, mắt nối xích, vòng xích chủ và móc thu ngắn xích bằng sắt/thép không phải là xích hay bộ phận của xích nhóm 73.15 → nhóm 73.26 các sản phẩm khác bằng sắt hoặc thép, phân nhóm 7326.90, mã 7326.90.99 (tham khảo tuyển tập ý kiến phân loại WCO 2017).",
+        "tepBieuThue": "hs-code-api data/tax.json#73269099"
+      },
+      "cong1211": {
+        "maBot": "73269099",
+        "top1": true,
+        "top3": true,
+        "giay": 102.7
+      }
+    },
+    {
+      "stt": 30,
+      "ma": "82089000",
+      "cauKhach": "Lưỡi cắt (dao) bằng thép hợp kim dạng cuộn, kích thước 2,5 x 19 mm, tiêu chuẩn JIS G405 S45C (Cr ≈ 0,94%, Mo ≈ 0,16%), dùng làm dao cho máy cắt/chặt vật liệu như vải, giấy, nhựa trong ngành giầy (steel in coil for producing cutting knives)",
+      "maLan": [
+        "72269990",
+        "72269100"
+      ],
+      "tenDongBieuThue": "- Loại khác",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "438/TB-TCHQ",
+        "nam": 2014,
+        "trich": "Hàng khai là nguyên liệu thép hợp kim cán nguội dạng cuộn 19x2,5mm nhưng kết quả phân tích xác định là lưỡi cắt bằng thép hợp kim dạng cuộn thường dùng làm dao cho máy cắt (chặt) vải, giấy, nhựa → nhóm 82.08 dao và lưỡi cắt dùng cho máy, mã 8208.90.00 loại khác (Danh mục TT 156/2011).",
+        "tepBieuThue": "hs-code-api data/tax.json#82089000"
+      },
+      "cong1211": {
+        "maBot": null,
+        "top1": false,
+        "top3": false,
+        "giay": 112
+      }
+    },
+    {
+      "stt": 31,
+      "ma": "83025000",
+      "cauKhach": "Giàn phơi quần áo thông minh (laundry drying rack) gắn trần hoặc gắn tường, thanh thép không gỉ và polycarbonate, nâng hạ bằng ròng rọc dây kéo tay hoặc mở ra/thu lại, gấp được, không dùng điện (model CH4190, CH4180 gắn trần; JR4200 gắn tường)",
+      "maLan": [
+        "73269099",
+        "94032090"
+      ],
+      "tenDongBieuThue": "- Giá để mũ, mắc mũ, chân giá đỡ và các loại giá cố định tương tự",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "4548/TCHQ-TXNK",
+        "nam": 2019,
+        "trich": "Giàn phơi gồm một thanh cố định trên tường/trần kết nối với giá treo đồ phơi, di chuyển ra vào bằng kết cấu cơ khí hoặc lên xuống bằng dây cáp/ròng rọc, không dùng điện → giá, khung, giá treo và các phụ kiện tương tự bằng kim loại cơ bản, nhóm 83.02, mã 8302.50.00 (TT 14/2015, TT 65/2017, chú giải chi tiết HS).",
+        "tepBieuThue": "hs-code-api data/tax.json#83025000"
+      },
+      "cong1211": {
+        "maBot": null,
+        "top1": false,
+        "top3": false,
+        "giay": 120.1
+      }
+    },
+    {
+      "stt": 32,
+      "ma": "84149029",
+      "cauKhach": "Bộ cánh quạt của tháp giải nhiệt (cooling tower fan) không gồm motor, 1 bộ = 4 cánh + 1 mâm quạt; cánh bằng nhôm hoặc nhựa kết hợp sợi thủy tinh, đường kính 0,5 m đến 10 m tùy công suất giải nhiệt; hoạt động theo nguyên lý hút gió tạo luồng gió mạnh hút hơi nóng qua dòng nước để thải ra khí quyển; chuyên dùng cho tháp làm mát công nghiệp TRƯỜNG HỢP nhập khẩu riêng rẽ (không kèm các chi tiết khác của tháp làm mát)",
+      "maLan": [
+        "84195010"
+      ],
+      "tenDongBieuThue": "- - - Loại khác",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "2943/TCHQ-TXNK",
+        "nam": 2020,
+        "trich": "Căn cứ Chú giải 2a Phần XVI: theo tài liệu kỹ thuật, tháp làm mát có một cấu phần quạt gồm 5 chi tiết (mô tơ, giảm tốc, lưới bảo vệ, khung đỡ mô tơ, bộ cánh quạt) đã có đầy đủ đặc trưng của quạt nhóm 84.14; bộ cánh quạt và mâm là bộ phận của cấu phần quạt, khi nhập riêng rẽ phân loại vào nhóm 84.14, phân nhóm 8414.90 'Bộ phận', mã số 8414.90.29 'Loại khác'. Nếu nhập đồng bộ cùng các chi tiết khác để lắp thành tháp làm mát hoàn chỉnh thì theo Quy tắc 2a phân loại 8419.50.10.",
+        "tepBieuThue": "hs-code-api data/tax.json#84149029"
+      },
+      "cong1211": {
+        "maBot": "84149029",
+        "top1": true,
+        "top3": true,
+        "giay": 101.6
+      }
+    },
+    {
+      "stt": 33,
+      "ma": "84184090",
+      "cauKhach": "Tủ lạnh âm sâu để chứa mẫu tế bào (super freezer / ultra-low freezer) dùng trong y tế, môi chất lạnh R-507, dung tích 310 lít, nhiệt độ làm lạnh từ -30 độ C đến -40 độ C, loại cửa trước",
+      "maLan": [
+        "84185091"
+      ],
+      "tenDongBieuThue": "- - Loại khác",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "5039/TCHQ-TXNK",
+        "nam": 2019,
+        "trich": "Tổng cục Hải quan hướng dẫn (tham khảo TCVN 7828:2016): tủ lạnh âm sâu chứa mẫu tế bào dung tích 310 lít thuộc nhóm 84.18, phân nhóm 8418.40 'Tủ kết đông, loại cửa trước, dung tích không quá 900 lít', mã số 8418.40.90 'Loại khác'. Cùng công văn: tủ trữ vắc xin được phân loại là trang thiết bị y tế thì vào 8418.50.91.",
+        "tepBieuThue": "hs-code-api data/tax.json#84184090"
+      },
+      "cong1211": {
+        "maBot": "84184090",
+        "top1": true,
+        "top3": true,
+        "giay": 57.8
+      }
+    },
+    {
+      "stt": 34,
+      "ma": "84264100",
+      "cauKhach": "Cần trục bánh lốp tự hành có một buồng lái chung đặt trên phần quay, vừa điều khiển di chuyển vừa điều khiển cơ cấu công tác (rough terrain crane / cần trục bánh lốp một cabin)",
+      "maLan": [
+        "87051000"
+      ],
+      "tenDongBieuThue": "- - Chạy bánh lốp",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "2383/TCHQ-TXNK",
+        "nam": 2018,
+        "trich": "Phạm vi nhóm 84.26 chỉ gồm máy tự hành dạng cần cẩu gắn trên khung xe có một cabin điều khiển chung; đối chiếu mục 3.4.1 TCVN 7772:2007 chỉ loại cần trục có một buồng lái chung đặt trên phần quay là phù hợp nhóm 84.26, mã 8426.41.00; loại dạng xe tải có cabin lái riêng thuộc 87.05.",
+        "tepBieuThue": "hs-code-api data/tax.json#84264100"
+      },
+      "cong1211": {
+        "maBot": "84264100",
+        "top1": true,
+        "top3": true,
+        "giay": 54
+      }
+    },
+    {
+      "stt": 35,
+      "ma": "84272000",
+      "cauKhach": "Xe nâng người làm việc trên cao dạng cần nâng ống lồng tự hành (self-propelled telescopic boom lift, hiệu GENIE model S65), động cơ diesel, đã qua sử dụng: phần di chuyển tự hành bánh lốp có gắn động cơ (tương tự máy đào bánh lốp), phần công tác gồm mâm xoay, cần nâng telescopic, giá nâng người và cơ cấu điều khiển; tầm với lớn, dùng trên công trình xây dựng, khu công nghiệp",
+      "maLan": [
+        "84289090"
+      ],
+      "tenDongBieuThue": "- Xe tự hành khác",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "2039/TCHQ-TXNK",
+        "nam": 2021,
+        "trich": "Công văn hướng dẫn phân loại (trả lời Cục Đăng kiểm và Cục HQ Hải Phòng): xe nâng người dạng telescopic boom tự hành bánh lốp mang đặc trưng của xe công xưởng có lắp thiết bị nâng hạ (works trucks fitted with lifting equipment), loại xe tự hành → nhóm 84.27, mã 8427.20.00 'Xe tự hành khác' (tự hành không bằng mô tơ điện). Căn cứ TT 14/2015/TT-BTC, TT 65/2017/TT-BTC. Đối chiếu: xe nâng người cắt kéo tự hành, cơ cấu di chuyển chỉ là phụ, cần 4 chân chống khi làm việc được xếp 8428.90.90 theo CV 2909/TCHQ-TXNK.",
+        "tepBieuThue": "hs-code-api data/tax.json#84272000"
+      },
+      "cong1211": {
+        "maBot": "84272000",
+        "top1": true,
+        "top3": true,
+        "giay": 129.8
+      }
+    },
+    {
+      "stt": 36,
+      "ma": "84289090",
+      "cauKhach": "Xe nâng người cắt kéo tự hành (self-propelled scissor lift, model GS2646), vận hành bằng điện 24V, nâng người và dụng cụ lên độ cao khoảng hơn 9m, tốc độ di chuyển tối đa 3,5 km/h, không có buồng lái, cơ cấu di chuyển chỉ là phụ, khi hoạt động cần 4 chân chống cố định; dùng thi công trong nhà xưởng, không tham gia giao thông",
+      "maLan": [
+        "84272000"
+      ],
+      "tenDongBieuThue": "- - Loại khác",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "2909/TCHQ-TXNK",
+        "nam": 2020,
+        "trich": "Công văn hướng dẫn phân loại (trả lời Cục HQ Hải Phòng): xe nâng người cắt kéo có cơ cấu di chuyển chỉ là phụ, không có buồng lái, phạm vi di chuyển hẹp, khi hoạt động phải có 4 chân chống cố định → nhóm 84.28 'Máy nâng hạ, giữ, xếp hoặc dỡ hàng khác', phân nhóm 8428.90 'Máy khác', mã 8428.90.90 'Loại khác'. Căn cứ TT 14/2015/TT-BTC, TT 65/2017/TT-BTC, TT 09/2019/TT-BTC. Đối chiếu: xe nâng người telescopic boom tự hành bánh lốp được xếp 8427.20.00 theo CV 2039/TCHQ-TXNK.",
+        "tepBieuThue": "hs-code-api data/tax.json#84289090"
+      },
+      "cong1211": {
+        "maBot": "84281039",
+        "top1": false,
+        "top3": true,
+        "giay": 116
+      }
+    },
+    {
+      "stt": 37,
+      "ma": "85044019",
+      "cauKhach": "Sạc pin cho điện thoại di động và máy tính bảng (adapter sạc AC-DC, travel adapter), model EP-TA20EBE; đầu vào 100-240 VAC, đầu ra 5V/2A và 9V/1,67A, công suất 15 W, cổng USB 2.0, hai chế độ sạc thường và sạc nhanh; vỏ nhựa, bản mạch; kích thước 50 x 33 x 20 mm, 45 g",
+      "maLan": [
+        "85044011",
+        "85044090"
+      ],
+      "tenDongBieuThue": "- - - Loại khác",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "2307/TB-TCHQ",
+        "nam": 2024,
+        "trich": "Bộ sạc biến đổi điện áp xoay chiều thành điện áp thấp một chiều (máy biến đổi tĩnh điện) dùng cho điện thoại di động và máy tính bảng: nhóm 85.04, phân nhóm 8504.40 (máy biến đổi tĩnh điện), phân nhóm dùng cho máy xử lý dữ liệu tự động và thiết bị viễn thông, mã 8504.40.19 (loại khác). Thông báo xác định trước mã số, toàn văn dạng PDF scan.",
+        "tepBieuThue": "hs-code-api data/tax.json#85044019"
+      },
+      "cong1211": {
+        "maBot": "85044019",
+        "top1": true,
+        "top3": true,
+        "giay": 116
+      }
+    },
+    {
+      "stt": 38,
+      "ma": "85051900",
+      "cauKhach": "Nam châm dạng tấm mềm dẻo (flexible rubber magnet sheet), từ cao su liên kết với bột từ tính đất hiếm; kích thước 210 x 295 mm, dày 1 mm, đã được từ hóa; vật liệu tổng hợp dẻo, dễ uốn (nhựa poly(caprolactone)triol với độn vô cơ Fe, Sr, Ca, Si)",
+      "maLan": [
+        "85051100"
+      ],
+      "tenDongBieuThue": "- - Loại khác",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "307/TB-TCHQ",
+        "nam": 2016,
+        "trich": "Sản phẩm dạng tấm đã được từ hóa, làm từ vật liệu tổng hợp mềm dẻo (không phải kim loại) nên thuộc nhóm 85.05, phân nhóm nam châm vĩnh cửu, mã 8505.19.00 (loại khác, không bằng kim loại). Căn cứ kết quả phân tích của Trung tâm PTPL (TB 1586/TB-PTPL ngày 29/12/2015).",
+        "tepBieuThue": "hs-code-api data/tax.json#85051900"
+      },
+      "cong1211": {
+        "maBot": "85051900",
+        "top1": true,
+        "top3": true,
+        "giay": 71.1
+      }
+    },
+    {
+      "stt": 39,
+      "ma": "85072094",
+      "cauKhach": "Bộ pin khô (ắc quy axit chì kín, sealed lead-acid battery) model 6-DZF-12 dùng cho xe đạp điện",
+      "maLan": [
+        "85071092",
+        "85072099"
+      ],
+      "tenDongBieuThue": "- - - - Chiều cao (không bao gồm đầu cực và tay cầm) không quá 13 cm",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "918/TB-TCHQ",
+        "nam": 2021,
+        "trich": "Trang nguồn chỉ có tiêu đề thông báo (số hiệu, ngày, tên hàng, mã 8507.20.94) kèm file tải về, không có toàn văn. Ắc quy axit chì khác (không phải loại dùng khởi động động cơ piston) dùng cho xe đạp điện: phân nhóm 8507.20, mã 8507.20.94.",
+        "tepBieuThue": "hs-code-api data/tax.json#85072094"
+      },
+      "cong1211": {
+        "maBot": "85072099",
+        "top1": false,
+        "top3": false,
+        "giay": 98.1
+      }
+    },
+    {
+      "stt": 40,
+      "ma": "85081100",
+      "cauKhach": "Máy hút bụi công nghiệp có động cơ điện gắn liền (industrial vacuum cleaner) Nilfisk model VHW310, dung tích thùng 15 lít, điện 3 pha 400V/50Hz, công suất 1,5 kW; động cơ gắn liền cánh quạt tạo lực hút, lắp chung trên đế cùng khối thùng lọc/chứa rác, nối bằng ống mềm",
+      "maLan": [
+        "85081910",
+        "85081990",
+        "85086000"
+      ],
+      "tenDongBieuThue": "- - Công suất không quá 1.500 W và có túi hứng bụi hoặc đồ chứa khác với sức chứa không quá 20 lít",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "1864/TCHQ-TXNK",
+        "nam": 2021,
+        "trich": "Động cơ là một phần gắn liền của máy hút bụi hoàn chỉnh → loại máy hút bụi có động cơ điện gắn liền, công suất không quá 1.500 W và đồ chứa không quá 20 lít → nhóm 85.08, mã 8508.11.00 (trả lời vướng mắc công văn 323/HQHP-TXNK).",
+        "tepBieuThue": "hs-code-api data/tax.json#85081100"
+      },
+      "cong1211": {
+        "maBot": "85081100",
+        "top1": true,
+        "top3": true,
+        "giay": 109.7
+      }
+    },
+    {
+      "stt": 41,
+      "ma": "85098090",
+      "cauKhach": "Máy tăm nước (oral irrigator, water flosser): thân máy gồm bình chứa nước và động cơ điện gắn liền, vòi xịt áp lực tháo rời; hút nước từ bình và phun tia nước làm sạch khoang miệng; dùng cho cá nhân/hộ gia đình",
+      "maLan": [
+        "90184900",
+        "85098010"
+      ],
+      "tenDongBieuThue": "- - Loại khác",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "4198/TCHQ-TXNK",
+        "nam": 2022,
+        "trich": "Thiết bị cơ điện gia dụng có động cơ điện gắn liền, phù hợp sử dụng cho cá nhân hoặc hộ gia đình: nhóm 85.09, phân nhóm 8509.80 (thiết bị khác), mã 8509.80.90. Công văn đồng thời chấm dứt hiệu lực các Thông báo 7062/TB-TCHQ (26/7/2016) và 8188/TB-TCHQ (23/8/2016) về máy tăm nước.",
+        "tepBieuThue": "hs-code-api data/tax.json#85098090"
+      },
+      "cong1211": {
+        "maBot": "84248950",
+        "top1": false,
+        "top3": true,
+        "giay": 48.9
+      }
+    },
+    {
+      "stt": 42,
+      "ma": "87031010",
+      "cauKhach": "Xe điện chở người 4 bánh, 8 chỗ ngồi (xe điện du lịch/xe golf kiểu buggy) hiệu Lvtong model LT-S8, LT-S8.FA, LT-S8.FB, LT-S8.F, dùng tham gia giao thông trong phạm vi hạn chế",
+      "maLan": [
+        "87021099",
+        "87038000",
+        "87139000"
+      ],
+      "tenDongBieuThue": "- - Xe chơi gôn (kể cả xe golf buggies) và các loại xe tương tự",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "482/CHQ-NVTHQ",
+        "nam": 2025,
+        "trich": "Xe điện chở người 4 bánh 8 chỗ → nhóm 87.03 (không thuộc 87.02 vì dưới 10 người), phân nhóm 8703.10 xe chơi gôn và các loại xe tương tự, mã 8703.10.10 (Danh mục TT 31/2022). Xe cùng mô tả, cấu tạo, thông số thì phân loại cùng mã, không phụ thuộc việc chỉ chạy trong phạm vi hạn chế hay giao thông công cộng.",
+        "tepBieuThue": "hs-code-api data/tax.json#87031010"
+      },
+      "cong1211": {
+        "maBot": "87031010",
+        "top1": true,
+        "top3": true,
+        "giay": 70.3
+      }
+    },
+    {
+      "stt": 43,
+      "ma": "87051000",
+      "cauKhach": "Cần trục bánh lốp dạng xe tải có buồng lái hoàn chỉnh, gắn cần cẩu và có cabin điều khiển cơ cấu công tác riêng biệt (xe cẩu), ví dụ các model Liebherr LTM 1160/2, XCMG QY50K, XCMG QY25E",
+      "maLan": [
+        "84264100"
+      ],
+      "tenDongBieuThue": "- Xe cần cẩu",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "2383/TCHQ-TXNK",
+        "nam": 2018,
+        "trich": "Theo chú giải chi tiết HS nhóm 84.26, nhóm 84.26 chỉ gồm máy tự hành dạng cần cẩu gắn trên khung xe có MỘT buồng lái chung vừa điều khiển di chuyển vừa điều khiển cơ cấu công tác (gạch đầu dòng 1 mục 3.4.1 TCVN 7772:2007); xe cần trục bánh lốp dạng xe tải có buồng lái hoàn chỉnh, gắn cần cẩu, có cabin điều khiển công tác riêng (gạch đầu dòng 2, 3) là xe tải chở cẩu → nhóm 87.05, mã 8705.10.00 (xác nhận CV 552/TCHQ-TXNK 26/01/2018).",
+        "tepBieuThue": "hs-code-api data/tax.json#87051000"
+      },
+      "cong1211": {
+        "maBot": "87051000",
+        "top1": true,
+        "top3": true,
+        "giay": 115.1
+      }
+    },
+    {
+      "stt": 44,
+      "ma": "87082998",
+      "cauKhach": "Nắp thùng xe bán tải (nắp đậy thùng, nắp chụp thùng xe pick-up, tonneau cover) phụ kiện chỉ dùng cho xe bán tải, loại dùng cho xe bán tải chở hàng",
+      "maLan": [
+        "87082995"
+      ],
+      "tenDongBieuThue": "- - - - - Loại khác",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "3552/TCHQ-TXNK",
+        "nam": 2021,
+        "trich": "Nắp thùng xe bán tải là phụ kiện chỉ dùng cho xe bán tải → nhóm 87.08, phân nhóm 8708.29; loại dùng cho xe bán tải chở hàng: 8708.29.98; chở người: 8708.29.95.",
+        "tepBieuThue": "hs-code-api data/tax.json#87082998"
+      },
+      "cong1211": {
+        "maBot": "87082998",
+        "top1": true,
+        "top3": true,
+        "giay": 96
+      }
+    },
+    {
+      "stt": 45,
+      "ma": "87141090",
+      "cauKhach": "Bản tiếp xúc bằng nhựa nhiệt cứng của chuôi dây điện ổ khóa xe máy (26K-Plate terminal): phần nhựa ép định hình, có các lỗ tròn luồn dây, lắp với chân tiếp điện bằng đồng trong cụm dây điện của ổ khóa xe máy",
+      "maLan": [
+        "39269099",
+        "85389019"
+      ],
+      "tenDongBieuThue": "- - Loại khác",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "346/TCHQ-TXNK",
+        "nam": 2018,
+        "trich": "Giữ nguyên kết quả xác định trước tại Thông báo 11704/TB-TCHQ ngày 13/12/2016: mặt hàng là nhựa nhiệt cứng ép trên máy đúc thành sản phẩm hoàn thiện định hình theo công dụng (có lỗ luồn dây), dùng lắp với chân tiếp điện bằng đồng trong cụm dây điện ổ khóa xe máy → bộ phận xe mô tô, mã 8714.10.90.",
+        "tepBieuThue": "hs-code-api data/tax.json#87141090"
+      },
+      "cong1211": {
+        "maBot": null,
+        "top1": false,
+        "top3": false,
+        "giay": 120.4
+      }
+    },
+    {
+      "stt": 46,
+      "ma": "90111000",
+      "cauKhach": "Kính hiển vi soi nổi (stereoscopic microscope), kính hiển vi quang học phức hợp; phụ kiện đi kèm phân loại riêng:",
+      "maLan": [
+        "90119000",
+        "90118000",
+        "90121000"
+      ],
+      "tenDongBieuThue": "- Kính hiển vi soi nổi",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "11484/TCHQ-TXNK",
+        "nam": 2015,
+        "trich": "Theo Danh mục ban hành kèm Thông tư 103/2015/TT-BTC, kính hiển vi soi nổi thuộc nhóm 90.11, mã 9011.10.00. Chú giải 2 Chương 90: phụ kiện của kính hiển vi nếu là hàng hóa thuộc nhóm bất kỳ của Chương 84, 85, 90, 91 thì phân loại vào nhóm riêng (đèn halogen → 8539.21; đèn LED → 94.05; camera → 90.06/90.07), không phân loại theo bộ phận/phụ kiện của kính hiển vi (9011.90).",
+        "tepBieuThue": "hs-code-api data/tax.json#90111000"
+      },
+      "cong1211": {
+        "maBot": null,
+        "top1": false,
+        "top3": false,
+        "giay": 120.6
+      }
+    },
+    {
+      "stt": 47,
+      "ma": "94032090",
+      "cauKhach": "Kệ chứa hàng pallet (kệ kho hàng, pallet rack) bằng kim loại, đã qua sử dụng",
+      "maLan": [
+        "73089099",
+        "73269099"
+      ],
+      "tenDongBieuThue": "- - Loại khác",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "5950/CHQ-NVTHQ",
+        "nam": 2025,
+        "trich": "Cục Hải quan đã hướng dẫn tại CV 6497/TCHQ-TXNK 25/12/2024 và CV 3250/TXNK-PL 13/3/2025: mặt hàng kệ kho hàng thuộc nhóm 94.03, mã 9403.20.90 đồ nội thất bằng kim loại khác; hàng đã qua sử dụng của phân nhóm 9403.20 thuộc Danh mục hàng tiêu dùng đã qua sử dụng cấm nhập khẩu (TT 12/2018/TT-BCT, TT 08/2023/TT-BCT).",
+        "tepBieuThue": "hs-code-api data/tax.json#94032090"
+      },
+      "cong1211": {
+        "maBot": "94032090",
+        "top1": true,
+        "top3": true,
+        "giay": 101.4
+      }
+    },
+    {
+      "stt": 48,
+      "ma": "95030010",
+      "cauKhach": "Xe đẩy đồ chơi cho trẻ em (xe tập đi kiểu đẩy, push walker) bằng nhựa, sắt hoặc chất liệu khác, có bánh xe, phần trên có tay đẩy, có thể mô phỏng hình ô tô..., có hoặc không có pin phát nhạc; trẻ đứng sau nắm tay đẩy để đẩy xe chạy",
+      "maLan": [
+        "94037010",
+        "87150000"
+      ],
+      "tenDongBieuThue": "- Xe đạp ba bánh, xe đẩy, xe có bàn đạp và đồ chơi tương tự có bánh; xe của búp bê",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "08/TCHQ-TXNK",
+        "nam": 2023,
+        "trich": "Trường hợp mặt hàng là xe đẩy bằng nhựa, sắt có bánh xe, tay đẩy, có thể mô phỏng hình ô tô, có hoặc không có pin phát nhạc, trẻ đứng sau nắm tay đẩy xe tiến về trước, dùng cho trẻ đã chập chững biết đi hoặc lớn hơn → xe đẩy đồ chơi, mã 9503.00.10; phân biệt với khung tập đi có ghế ngồi (9403.70.10).",
+        "tepBieuThue": "hs-code-api data/tax.json#95030010"
+      },
+      "cong1211": {
+        "maBot": "95030010",
+        "top1": true,
+        "top3": true,
+        "giay": 51
+      }
+    },
+    {
+      "stt": 49,
+      "ma": "95045090",
+      "cauKhach": "Bộ thiết bị đánh golf ảo (golf simulator system / virtual reality golf simulator): kiosk điều khiển màn hình cảm ứng hoặc PC, camera cảm biến, máy nhả bóng tự động, loa; có thể kèm thảm phát bóng, máy chiếu, màn hiển thị, chuột, bàn phím; mô phỏng đường bóng trên màn hình để tập luyện, giải trí trong nhà",
+      "maLan": [
+        "95069990",
+        "95069100",
+        "84713090"
+      ],
+      "tenDongBieuThue": "- - Loại khác",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "5725/TCHQ-TXNK",
+        "nam": 2023,
+        "trich": "Bộ thiết bị đánh golf ảo lắp trong không gian hẹp, tái hiện mô phỏng đường đi bóng golf, không tham gia động tác chính của môn golf → có đặc trưng thiết bị điện tử video mô phỏng thể thao mà hình ảnh tái tạo trên màn hình, đáp ứng nhóm 95.04 và chú giải phân nhóm 9504.50 → mã 9504.50.90 (TT 31/2022, chú giải chi tiết HS 2022); không thuộc 95.06.",
+        "tepBieuThue": "hs-code-api data/tax.json#95045090"
+      },
+      "cong1211": {
+        "maBot": "95045090",
+        "top1": true,
+        "top3": true,
+        "giay": 100.7
+      }
+    },
+    {
+      "stt": 50,
+      "ma": "95063200",
+      "cauKhach": "Bóng golf (golf balls), dùng riêng hoặc kết hợp với bộ thiết bị đánh golf ảo",
+      "maLan": [
+        "95045090",
+        "95069990"
+      ],
+      "tenDongBieuThue": "- - Bóng",
+      "nguon": {
+        "loai": "TB-TCHQ",
+        "soHieu": "5725/TCHQ-TXNK",
+        "nam": 2023,
+        "trich": "Bóng golf là dụng cụ chơi golf tham gia trực tiếp vào động tác chính của môn thể thao → nhóm 95.06, mã 9506.32.00 (TT 31/2022). Mô tả kỹ thuật: Bóng golf (golf balls), dùng riêng hoặc kết hợp với bộ thiết bị đánh golf ảo. Căn cứ: TB-TCHQ số 5725/TCHQ-TXNK.",
+        "tepBieuThue": "hs-code-api data/tax.json#95063200"
+      },
+      "cong1211": {
+        "maBot": "95030099",
+        "top1": false,
+        "top3": true,
+        "giay": 101.3
+      }
+    }
+  ]
+}
