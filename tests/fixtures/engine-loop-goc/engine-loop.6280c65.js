@@ -177,6 +177,33 @@ function round1Input(raw) {
 }
 
 // ───────────────────────── KIỂM CHỨNG (máy chủ) ─────────────────────────
+function noteOutline(text, itemLen = 90, maxLen = 1800) {
+  const t = String(text || '').replace(/\s+/g, ' ').trim();
+  if (!t) return '';
+  const base = clip(t, 450);
+  const pat = /(?:^|(?<=[.;:…]\)?)\s)\((?:[A-Z]|[ivxlc]{1,6}|\d{1,2})\)\s/g;
+  const all = t.match(pat) || [];
+  if (all.length < 2 || (base.match(pat) || []).length >= all.length) return base;
+  const parts = t.split(/(?<=[.;:…]\)?)\s(?=\((?:[A-Z]|[ivxlc]{1,6}|\d{1,2})\)\s)/);
+  const build = (iLen) => parts.map((raw) => {
+    const m = raw.match(/^\(([A-Z]|[ivxlc]{1,6}|\d{1,2})\)\s/);
+    if (m && /^[A-Z]$/.test(m[1])) return clip(raw, Math.max(140, iLen));
+    if (m) return `  ${clip(raw, iLen)}`;
+    return clip(raw, Math.max(160, iLen));
+  }).join('\n');
+  const len = (s) => s.replace(/…/g, '').replace(/\n\s*/g, '').trim().length;
+  const need = len(base);
+  let res = build(itemLen);
+  if (len(res) < need && itemLen === 90) {
+    for (const scale of [140, 180, 240, 320, 450]) {
+      res = build(scale);
+      if (len(res) >= need) break;
+    }
+  }
+  const finalRes = res.length > maxLen ? `${res.slice(0, maxLen).replace(/\s+$/, '')}…` : res;
+  return len(finalRes) < need ? base : finalRes;
+}
+
 function headingBlock(h4, queryText) {
   const { headingNotes, codesForPrompt } = lazy();
   const { codes, omitted } = codesForPrompt(h4, queryText, 22);
@@ -193,7 +220,7 @@ function headingBlock(h4, queryText) {
   return [
     `■ NHÓM ${h4} [chú giải nhóm — nguồn: ${clip(n.nguon, 60) || 'TT 31/2022'}]`,
     n.nhom && `  Phạm vi: ${clip(n.nhom, 350)}`,
-    n.baoGom && `  GỒM: ${clip(n.baoGom, 450)}`,
+    n.baoGom && `  GỒM: ${noteOutline(n.baoGom)}`,
     n.khongBaoGom && `  KHÔNG GỒM: ${clip(n.khongBaoGom, 300)}`,
     n.loaiTru && `  LOẠI TRỪ: ${clip(n.loaiTru, 300)}`,
     `  Dòng biểu thuế (${codes.length}${omitted ? `, bỏ ${omitted} dòng không liên quan` : ''}):\n${codes.map((c) => `    ${c.hs} ${String(c.vn || '').trim()}`).join('\n')}`,
