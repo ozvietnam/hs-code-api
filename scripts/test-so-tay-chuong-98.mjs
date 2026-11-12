@@ -63,7 +63,9 @@ check('2a khung đổi lý do khỏi nhom-chua-co-so-tay', r9811.lyDo !== 'nhom-
 check('2b khung một mình KHÔNG chốt mã', r9811.ketQua === 'KHONG_THE_CHOT' && /^ranh-gioi-/.test(String(r9811.lyDo)), r9811);
 
 // Nhóm 98 CHƯA sinh khung vẫn phải báo nhom-chua-co-so-tay (khung không rò sang nhóm khác).
-const chuaCo = G.chotDong8({ hs: '984900', productText: 'linh kiện ô tô' });
+// Nhóm mốc phải là nhóm KHÔNG có khung trong `data/so-tay/` — `dataReadPath` rơi về data/ thật khi thư mục cách ly
+// thiếu tệp, nên nhóm vừa được đưa vào repo sẽ làm ca này đỏ oan (9849 vào repo ở OZV-420). 9850 chưa có khung.
+const chuaCo = G.chotDong8({ hs: '985000', productText: 'linh kiện ô tô' });
 check('2c nhóm 98 chưa có khung vẫn nhom-chua-co-so-tay', chuaCo.lyDo === 'nhom-chua-co-so-tay', chuaCo);
 
 // ── 3. Có bản ranh giới DUYET ⇒ apDung ghi điều kiện vào khung, máy chốt ĐÚNG mã ─────────────────────────────────
