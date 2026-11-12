@@ -309,19 +309,43 @@ check('vòng 1 lỗi tạm thời → nextAction RETRY', r.nextAction?.type === 
   const cgh = JSON.parse(fs.readFileSync('data/chu-giai-heading.json', 'utf8'));
   const clip450 = (s) => { const t = String(s || '').replace(/\s+/g, ' ').trim(); return t.length > 450 ? `${t.slice(0, 450)}…` : t; };
   const pat = /\((?:[A-Z]|[ivxlc]{1,6})\)\s/g;
+  const patAll = /\((?:[A-Z]|[ivxlc]{1,6}|\d{1,2})\)\s/g;
+  const demChu = (s) => String(s || '').replace(/\n\s*/g, ' ').replace(/…/g, '').trim().length;
   let tot = 0; let lostClip = 0; let lostOut = 0; let rescuedGe2 = 0; let nonVerbatim = 0;
-  for (const h of Object.values(cgh)) {
+  let khongMuc = 0; let nhomBiMatChu = 0; let tongKyTuMat = 0;
+  let dongKetThucGiuaChuKhongEllipsis = 0; let dongCatDoiSoHS = 0;
+  const hs5Split = [];
+  for (const [code, h] of Object.entries(cgh)) {
     const bg = String(h.bao_gom || '').replace(/\s+/g, ' ').trim();
     if (!bg) continue;
     const out = noteOutline(h.bao_gom);
+    const cu450 = clip450(bg);
+    if ((bg.match(patAll) || []).length < 2) {
+      khongMuc += 1;
+      if (demChu(out) < demChu(cu450)) {
+        nhomBiMatChu += 1;
+        tongKyTuMat += demChu(cu450) - demChu(out);
+      }
+    }
     for (const line of out.split('\n')) {
-      const clean = line.trim().replace(/…+$/, '');
+      const s = line.replace(/^\s+/, '');
+      const clean = s.trim().replace(/…+$/, '');
       if (clean && !bg.includes(clean)) nonVerbatim += 1;
+      if (!s || s.endsWith('…')) continue;
+      const i = bg.indexOf(s);
+      if (i >= 0 && i + s.length < bg.length) {
+        const ke = bg[i + s.length];
+        if (ke !== ' ') dongKetThucGiuaChuKhongEllipsis += 1;
+        if (/\d[\d.]?$/.test(s) && /\d/.test(ke)) {
+          dongCatDoiSoHS += 1;
+          if (['1515', '3404', '4802', '6103', '7905'].includes(code)) hs5Split.push(`${code}:${s.slice(-20)}|${bg.slice(i + s.length, i + s.length + 6)}`);
+        }
+      }
     }
     const mAll = bg.match(pat) || [];
     if (mAll.length >= 2) {
       tot += 1;
-      const mCl = (clip450(bg).match(pat) || []).length;
+      const mCl = (cu450.match(pat) || []).length;
       const mOu = (out.match(pat) || []).length;
       if (mCl < mAll.length) lostClip += 1;
       if (mOu < mAll.length) lostOut += 1;
@@ -331,6 +355,16 @@ check('vòng 1 lỗi tạm thời → nextAction RETRY', r.nextAction?.type === 
   check('noteOutline: ≥ 150 nhóm giữ được ≥ 2 mục trong GỒM khi clip(450) chỉ giữ ≤ 1 mục, và số nhóm mất mục giảm mạnh (202/235 → ≤ 20/235)',
     tot === 235 && rescuedGe2 >= 150 && lostOut <= 20 && lostOut < lostClip,
     JSON.stringify({ tot, lostClip, lostOut, rescuedGe2 }));
+  const gom1212 = (headingBlock('1212', 'hàng mẫu') || '').split('\n').find((l) => l.includes('GỒM:')) || '';
+  check('noteOutline: chống hồi quy nhóm không-mục — headingBlock("1212") giữ ≥ 440 ký tự GỒM và 0/328 nhóm dưới 2 mục mất chữ so với clip(450)',
+    gom1212.length >= 440 && khongMuc === 328 && nhomBiMatChu === 0 && tongKyTuMat === 0,
+    JSON.stringify({ gom1212Len: gom1212.length, khongMuc, nhomBiMatChu, tongKyTuMat }));
+  check('noteOutline: 0 dòng kết thúc giữa chữ mà không có dấu … trên toàn bộ 1.269 nhóm',
+    dongKetThucGiuaChuKhongEllipsis === 0,
+    JSON.stringify({ dongKetThucGiuaChuKhongEllipsis }));
+  check('noteOutline: với 5 nhóm 1515/3404/4802/6103/7905 (và toàn biểu), không dòng nào kết thúc bằng chữ số mà ký tự kế tiếp trong nguồn là chữ số',
+    hs5Split.length === 0 && dongCatDoiSoHS === 0,
+    JSON.stringify({ hs5Split, dongCatDoiSoHS }));
   const t0 = Date.now();
   const redosOut = noteOutline(Array.from({ length: 40000 }, (_, i) => `(xviii) muc_${i}`).join(' '));
   const redosMs = Date.now() - t0;

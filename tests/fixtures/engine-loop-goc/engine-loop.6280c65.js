@@ -180,13 +180,14 @@ function round1Input(raw) {
 function noteOutline(text, itemLen = 90, maxLen = 1800) {
   const t = String(text || '').replace(/\s+/g, ' ').trim();
   if (!t) return '';
+  if ((t.match(/\((?:[A-Z]|[ivxlc]{1,6}|\d{1,2})\)\s/g) || []).length < 2) return clip(t, 450);
   const parts = t.split(/\s(?=\((?:[A-Z]|[ivxlc]{1,6}|\d{1,2})\)\s)/);
   const out = [];
   for (const raw of parts) {
     const m = raw.match(/^\(([A-Z]|[ivxlc]{1,6}|\d{1,2})\)\s/);
-    if (m && /^[A-Z]$/.test(m[1])) out.push(raw.slice(0, 140));
-    else if (m) out.push(`  ${raw.slice(0, itemLen)}${raw.length > itemLen ? '…' : ''}`);
-    else out.push(raw.slice(0, 160));
+    if (m && /^[A-Z]$/.test(m[1])) out.push(clip(raw, 140));
+    else if (m) out.push(`  ${clip(raw, itemLen)}`);
+    else out.push(clip(raw, 160));
   }
   const res = out.join('\n');
   return res.length > maxLen ? `${res.slice(0, maxLen)}…` : res;
