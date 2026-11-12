@@ -13,11 +13,22 @@ import './test-isolate-data.mjs';
 import fs from 'node:fs';
 import { createRequire } from 'node:module';
 import { chayBoDo50Ca } from './benchmark-50-ca-tb-tchq.mjs';
+import { gieoNhap } from './fixtures/ho-so/nhap-dong-cung.mjs';
 
 const require = createRequire(import.meta.url);
 const { chotDong8 } = require('../lib/so-tay-gates.js');
 const { kiemCongAnhEm } = await import('./cong-anh-em.mjs');
 const C = require('../lib/ho-so/cong-ranh-gioi.js');
+
+/*
+ * Bản nháp ranh giới 721220 dùng ở đây là BẢN ĐÔNG CỨNG:
+ * `scripts/fixtures/ho-so/ranh-gioi-721220/721220.json` = bản sao nguyên văn của bản nháp 721220
+ * tại commit 8b514c11 (nhánh PR #1265). Test KHÔNG đọc bản nháp sống trong data/ho-so —
+ * guard `scripts/test-cong-cu-vong-3.mjs` mục 4a cấm, và bản nháp sống đổi theo vòng soát làm test vỡ oan.
+ * Bản đông cứng còn được GIEO vào HS_DATA_DIR (xem `gieoNhap`) ⇒ cả cổng `chotDong8` cũng đọc
+ * đúng bản này, không đọc trộn bản sống. Thêm bản đông cứng mới thì tạo thư mục riêng theo commit,
+ * không chép đè thư mục cũ.
+ */
 
 const bo = JSON.parse(fs.readFileSync('tests/bo-50-ca-tb-tchq.json', 'utf8'));
 const caOf = (stt) => bo.cases.find((c) => c.stt === stt);
@@ -38,7 +49,10 @@ function check(name, ok, detail = '') {
 // 1. Cổng ranh giới 721220 + Cổng anh em 8302
 // ============================================================================
 {
-  const rg721220 = JSON.parse(fs.readFileSync('data/ho-so/ranh-gioi/721220.json', 'utf8'));
+  const rg721220 = JSON.parse(
+    fs.readFileSync('scripts/fixtures/ho-so/ranh-gioi-721220/721220.json', 'utf8'),
+  );
+  gieoNhap('721220', rg721220); // cổng chotDong8 đọc bản đông cứng này, không đọc bản nháp sống
   const kqRg = C.kiemRanhGioi('721220', rg721220);
   check(
     'ranh-gioi 721220: trạng thái DUYET và qua kiemRanhGioi với 0 lỗi',
