@@ -155,17 +155,22 @@
       "dieuKien": "Máy phát tín hiệu (máy phát xung, xung chuẩn, máy phát quét…)",
       "loaiKhac": false,
       "nguon": "tax.85432000",
-      "trich": "85432000 - Máy phát tín hiệu",
+      "trich": "85432000 - Máy phát tín hiệu ",
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "85433020",
-      "dieuKien": "công dụng / mục đích: bản mạch PCB/PWBs",
+      "dieuKien": "tên loại hàng: Thiết bị xử lý ướt; công dụng / mục đích: bản mạch PCB/PWBs",
       "loaiKhac": false,
       "nguon": "tax.85433020",
       "trich": "85433020 - - Thiết bị xử lý ướt bằng phương pháp nhúng trong dung dịch hóa chất hoặc điện hóa, để tách hoặc không tách vật liệu gia công trên nền (tấm đế) của bản mạch PCB/PWBs(1)",
       "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thiết bị xử lý ướt"
+        },
         {
           "fact": "congDung",
           "op": "CONG_DUNG",
@@ -175,9 +180,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L29-20261111#soat-L29",
+          "phien": "may-kiem:cong-ranh-gioi:20261111T1000#soat-854330",
           "ngay": "2026-11-11",
-          "bam": "11bb152f1bf3d1ef314e5e1dcd85b73e1e147d61aace93e1fa14168cc1362712"
+          "bam": "e5b0c6c1b50093ee93e7ff1448c70d5baba7a8c5b4ca404d6c6e47ff2eb63aee"
         }
       }
     },
@@ -202,9 +207,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L29-20261111#soat-L29",
+          "phien": "may-kiem:cong-ranh-gioi:20261111T1000#soat-854330",
           "ngay": "2026-11-11",
-          "bam": "11bb152f1bf3d1ef314e5e1dcd85b73e1e147d61aace93e1fa14168cc1362712"
+          "bam": "e5b0c6c1b50093ee93e7ff1448c70d5baba7a8c5b4ca404d6c6e47ff2eb63aee"
         }
       }
     },
@@ -230,24 +235,123 @@
       "dieuKien": "Thiết bị điện tử cho thuốc lá điện tử và thiết bị điện hóa hơi cá nhân tương tự (loại nạp lại/dùng cartridge thay thế)",
       "loaiKhac": false,
       "nguon": "tax.85434000",
-      "trich": "85434000 - Thiết bị điện tử dùng cho thuốc lá điện tử và các thiết bị điện hóa hơi cá nhân tương tự",
+      "trich": "85434000 - Thiết bị điện tử dùng cho thuốc lá điện tử và các thiết bị điện hóa hơi cá nhân tương tự ",
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "85437010",
-      "dieuKien": "Máy cung cấp năng lượng cho hàng rào điện",
+      "dieuKien": "tên loại hàng: Máy cung cấp năng lượng; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): hàng rào điện",
       "loaiKhac": false,
       "nguon": "tax.85437010",
       "trich": "85437010 - - Máy cung cấp năng lượng cho hàng rào điện",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy cung cấp năng lượng"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "hàng rào điện"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:paperclip-OZV-518-20261112-tu-soat#soat-854370-vong3",
+          "ngay": "2026-11-12",
+          "bam": "8a81c6b0ac329c601972a0e79bf04074e1280d20a2067393407fa1d146275604"
+        }
+      },
+      "chongLanTruc": {
+        "pn6": "854370",
+        "nhanh": [
+          "85437010",
+          "8543702",
+          "85437030",
+          "85437040",
+          "85437050",
+          "85437060"
+        ],
+        "truc": {
+          "8543702": "TEN_LOAI",
+          "85437010": "TEN_LOAI",
+          "85437030": "CONG_DUNG",
+          "85437040": "TEN_LOAI",
+          "85437050": "TEN_LOAI",
+          "85437060": "CONG_DUNG"
+        },
+        "cauHoiPhanBiet": "Hàng này thuộc nhánh nào: «Máy cung cấp năng lượng cho hàng rào điện» (85437010), «Thiết bị điều khiển từ xa, trừ thiết bị điều khiển từ xa bằng sóng radio» (8543702), «Máy, thiết bị điện có chức năng phiên dịch hoặc từ điển» (85437030), «Máy tách bụi/khử tĩnh điện hoặc máy đóng rắn bằng tia cực tím dùng trong sản xuất tấm mạch PCB/PCAs» (85437040), «Bộ khuếch đại vi sóng; máy ghi dữ liệu chuyến bay kỹ thuật số; đầu đọc điện tử di động chạy pin ghi và tái tạo văn bản, hình ảnh tĩnh hoặc tệp âm thanh» (85437050), «Thiết bị xử lý tín hiệu số kết nối mạng để trộn âm thanh; sản phẩm thiết kế đặc biệt để kết nối với thiết bị/mạng điện tín hoặc điện thoại» (85437060)?",
+        "trich": {
+          "8543702": "Thiết bị điều khiển từ xa, trừ thiết bị điều khiển từ xa bằng sóng radio",
+          "85437010": "Máy cung cấp năng lượng cho hàng rào điện",
+          "85437030": "Máy, thiết bị điện có chức năng phiên dịch hoặc từ điển",
+          "85437040": "Máy tách bụi hoặc khử tĩnh điện trong quá trình chế tạo tấm mạch PCB/PWBs(1) hoặc PCAs(1); máy làm đóng rắn vật liệu bằng tia cực tím dùng trong sản xuất tấm mạch PCB/PWBs(1) hoặc PCAs(1)",
+          "85437050": "Bộ khuếch đại vi sóng; máy ghi dữ liệu chuyến bay kỹ thuật số; đầu đọc điện tử di động hoạt động bằng pin để ghi và tái tạo văn bản, hình ảnh tĩnh hoặc tệp âm thanh (SEN)",
+          "85437060": "Thiết bị xử lý tín hiệu kỹ thuật số có khả năng kết nối với mạng có dây hoặc không dây để trộn âm thanh; các sản phẩm được thiết kế đặc biệt để kết nối với thiết bị hoặc dụng cụ điện tín hoặc điện thoại hoặc với mạng điện tín hoặc điện thoại"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:paperclip-OZV-518-20261112-tu-soat#soat-854370-vong3",
+            "ngay": "2026-11-12",
+            "bam": "8a81c6b0ac329c601972a0e79bf04074e1280d20a2067393407fa1d146275604"
+          }
+        }
+      }
     },
     {
       "hs": "85437021",
-      "dieuKien": "Điều khiển từ xa hồng ngoại không dây dùng cho máy chơi trò chơi điện tử video, trừ bộ điều khiển trò chơi thuộc nhóm 95.04",
+      "dieuKien": "(tên loại hàng: điều khiển từ xa hồng ngoại không dây và dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): máy chơi trò chơi điện tử video và không tên loại hàng: bộ điều khiển trò chơi thuộc nhóm 95.04) hoặc (tên loại hàng: Thiết bị điều khiển từ xa hồng ngoại không dây dùng cho máy chơi trò chơi điện tử video, trừ bộ điều khiển trò chơi thuộc nhóm 95.04)",
       "loaiKhac": false,
       "nguon": "tax.85437021",
-      "trich": "85437021 - - - Thiết bị điều khiển từ xa hồng ngoại không dây dùng cho máy chơi trò chơi điện tử video, trừ bộ điều khiển trò chơi thuộc nhóm 95.04",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "85437021 - - - Thiết bị điều khiển từ xa hồng ngoại không dây dùng cho máy chơi trò chơi điện tử video, trừ bộ điều khiển trò chơi thuộc nhóm 95.04 ",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "điều khiển từ xa hồng ngoại không dây"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "máy chơi trò chơi điện tử video"
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "bộ điều khiển trò chơi thuộc nhóm 95.04"
+                ],
+                "chieu": "PHAI_KHONG"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Thiết bị điều khiển từ xa hồng ngoại không dây dùng cho máy chơi trò chơi điện tử video, trừ bộ điều khiển trò chơi thuộc nhóm 95.04"
+              }
+            ]
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:paperclip-OZV-518-20261112-tu-soat#soat-854370-vong3",
+          "ngay": "2026-11-12",
+          "bam": "8a81c6b0ac329c601972a0e79bf04074e1280d20a2067393407fa1d146275604"
+        }
+      }
     },
     {
       "hs": "85437029",
@@ -268,35 +372,358 @@
     },
     {
       "hs": "85437030",
-      "dieuKien": "Máy, thiết bị điện có chức năng phiên dịch hoặc từ điển",
+      "dieuKien": "công dụng / mục đích: phiên dịch hoặc từ điển",
       "loaiKhac": false,
       "nguon": "tax.85437030",
       "trich": "85437030 - - Máy, thiết bị điện có chức năng phiên dịch hoặc từ điển",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "phiên dịch",
+            "từ điển"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:paperclip-OZV-518-20261112-tu-soat#soat-854370-vong3",
+          "ngay": "2026-11-12",
+          "bam": "8a81c6b0ac329c601972a0e79bf04074e1280d20a2067393407fa1d146275604"
+        }
+      },
+      "chongLanTruc": {
+        "pn6": "854370",
+        "nhanh": [
+          "85437010",
+          "8543702",
+          "85437030",
+          "85437040",
+          "85437050",
+          "85437060"
+        ],
+        "truc": {
+          "8543702": "TEN_LOAI",
+          "85437010": "TEN_LOAI",
+          "85437030": "CONG_DUNG",
+          "85437040": "TEN_LOAI",
+          "85437050": "TEN_LOAI",
+          "85437060": "CONG_DUNG"
+        },
+        "cauHoiPhanBiet": "Hàng này thuộc nhánh nào: «Máy cung cấp năng lượng cho hàng rào điện» (85437010), «Thiết bị điều khiển từ xa, trừ thiết bị điều khiển từ xa bằng sóng radio» (8543702), «Máy, thiết bị điện có chức năng phiên dịch hoặc từ điển» (85437030), «Máy tách bụi/khử tĩnh điện hoặc máy đóng rắn bằng tia cực tím dùng trong sản xuất tấm mạch PCB/PCAs» (85437040), «Bộ khuếch đại vi sóng; máy ghi dữ liệu chuyến bay kỹ thuật số; đầu đọc điện tử di động chạy pin ghi và tái tạo văn bản, hình ảnh tĩnh hoặc tệp âm thanh» (85437050), «Thiết bị xử lý tín hiệu số kết nối mạng để trộn âm thanh; sản phẩm thiết kế đặc biệt để kết nối với thiết bị/mạng điện tín hoặc điện thoại» (85437060)?",
+        "trich": {
+          "8543702": "Thiết bị điều khiển từ xa, trừ thiết bị điều khiển từ xa bằng sóng radio",
+          "85437010": "Máy cung cấp năng lượng cho hàng rào điện",
+          "85437030": "Máy, thiết bị điện có chức năng phiên dịch hoặc từ điển",
+          "85437040": "Máy tách bụi hoặc khử tĩnh điện trong quá trình chế tạo tấm mạch PCB/PWBs(1) hoặc PCAs(1); máy làm đóng rắn vật liệu bằng tia cực tím dùng trong sản xuất tấm mạch PCB/PWBs(1) hoặc PCAs(1)",
+          "85437050": "Bộ khuếch đại vi sóng; máy ghi dữ liệu chuyến bay kỹ thuật số; đầu đọc điện tử di động hoạt động bằng pin để ghi và tái tạo văn bản, hình ảnh tĩnh hoặc tệp âm thanh (SEN)",
+          "85437060": "Thiết bị xử lý tín hiệu kỹ thuật số có khả năng kết nối với mạng có dây hoặc không dây để trộn âm thanh; các sản phẩm được thiết kế đặc biệt để kết nối với thiết bị hoặc dụng cụ điện tín hoặc điện thoại hoặc với mạng điện tín hoặc điện thoại"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:paperclip-OZV-518-20261112-tu-soat#soat-854370-vong3",
+            "ngay": "2026-11-12",
+            "bam": "8a81c6b0ac329c601972a0e79bf04074e1280d20a2067393407fa1d146275604"
+          }
+        }
+      }
     },
     {
       "hs": "85437040",
-      "dieuKien": "Máy tách bụi/khử tĩnh điện khi chế tạo tấm mạch PCB/PWBs/PCAs; máy đóng rắn bằng tia cực tím dùng sản xuất PCB/PWBs/PCAs",
+      "dieuKien": "(tên loại hàng: Máy tách bụi hoặc khử tĩnh điện và dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): tấm mạch PCB/PWBs hoặc PCAs) hoặc (tên loại hàng: máy làm đóng rắn vật liệu bằng tia cực tím và dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): sản xuất tấm mạch PCB/PWBs hoặc PCAs)",
       "loaiKhac": false,
       "nguon": "tax.85437040",
       "trich": "85437040 - - Máy tách bụi hoặc khử tĩnh điện trong quá trình chế tạo tấm mạch PCB/PWBs(1) hoặc PCAs(1); máy làm đóng rắn vật liệu bằng tia cực tím dùng trong sản xuất tấm mạch PCB/PWBs(1) hoặc PCAs(1)",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "Máy tách bụi",
+                  "khử tĩnh điện"
+                ]
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "tấm mạch PCB/PWBs",
+                  "PCAs"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "máy làm đóng rắn vật liệu bằng tia cực tím"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "sản xuất tấm mạch PCB/PWBs",
+                  "PCAs"
+                ]
+              }
+            ]
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:paperclip-OZV-518-20261112-tu-soat#soat-854370-vong3",
+          "ngay": "2026-11-12",
+          "bam": "8a81c6b0ac329c601972a0e79bf04074e1280d20a2067393407fa1d146275604"
+        }
+      },
+      "chongLanTruc": {
+        "pn6": "854370",
+        "nhanh": [
+          "85437010",
+          "8543702",
+          "85437030",
+          "85437040",
+          "85437050",
+          "85437060"
+        ],
+        "truc": {
+          "8543702": "TEN_LOAI",
+          "85437010": "TEN_LOAI",
+          "85437030": "CONG_DUNG",
+          "85437040": "TEN_LOAI",
+          "85437050": "TEN_LOAI",
+          "85437060": "CONG_DUNG"
+        },
+        "cauHoiPhanBiet": "Hàng này thuộc nhánh nào: «Máy cung cấp năng lượng cho hàng rào điện» (85437010), «Thiết bị điều khiển từ xa, trừ thiết bị điều khiển từ xa bằng sóng radio» (8543702), «Máy, thiết bị điện có chức năng phiên dịch hoặc từ điển» (85437030), «Máy tách bụi/khử tĩnh điện hoặc máy đóng rắn bằng tia cực tím dùng trong sản xuất tấm mạch PCB/PCAs» (85437040), «Bộ khuếch đại vi sóng; máy ghi dữ liệu chuyến bay kỹ thuật số; đầu đọc điện tử di động chạy pin ghi và tái tạo văn bản, hình ảnh tĩnh hoặc tệp âm thanh» (85437050), «Thiết bị xử lý tín hiệu số kết nối mạng để trộn âm thanh; sản phẩm thiết kế đặc biệt để kết nối với thiết bị/mạng điện tín hoặc điện thoại» (85437060)?",
+        "trich": {
+          "8543702": "Thiết bị điều khiển từ xa, trừ thiết bị điều khiển từ xa bằng sóng radio",
+          "85437010": "Máy cung cấp năng lượng cho hàng rào điện",
+          "85437030": "Máy, thiết bị điện có chức năng phiên dịch hoặc từ điển",
+          "85437040": "Máy tách bụi hoặc khử tĩnh điện trong quá trình chế tạo tấm mạch PCB/PWBs(1) hoặc PCAs(1); máy làm đóng rắn vật liệu bằng tia cực tím dùng trong sản xuất tấm mạch PCB/PWBs(1) hoặc PCAs(1)",
+          "85437050": "Bộ khuếch đại vi sóng; máy ghi dữ liệu chuyến bay kỹ thuật số; đầu đọc điện tử di động hoạt động bằng pin để ghi và tái tạo văn bản, hình ảnh tĩnh hoặc tệp âm thanh (SEN)",
+          "85437060": "Thiết bị xử lý tín hiệu kỹ thuật số có khả năng kết nối với mạng có dây hoặc không dây để trộn âm thanh; các sản phẩm được thiết kế đặc biệt để kết nối với thiết bị hoặc dụng cụ điện tín hoặc điện thoại hoặc với mạng điện tín hoặc điện thoại"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:paperclip-OZV-518-20261112-tu-soat#soat-854370-vong3",
+            "ngay": "2026-11-12",
+            "bam": "8a81c6b0ac329c601972a0e79bf04074e1280d20a2067393407fa1d146275604"
+          }
+        }
+      }
     },
     {
       "hs": "85437050",
-      "dieuKien": "Bộ khuếch đại vi sóng; máy ghi dữ liệu chuyến bay kỹ thuật số (thiết bị ghi điện tử đặt trên phương tiện bay phục vụ điều tra tai nạn); đầu đọc điện tử di động chạy pin ghi/tái tạo văn bản, ảnh tĩnh, âm thanh",
+      "dieuKien": "(tên loại hàng: Bộ khuếch đại vi sóng) hoặc (tên loại hàng: máy ghi dữ liệu chuyến bay kỹ thuật số) hoặc (tên loại hàng: đầu đọc điện tử di động và nguồn năng lượng: pin / ắc quy (nguồn năng lượng riêng) và công dụng / mục đích: ghi và tái tạo và công dụng / mục đích: văn bản hoặc hình ảnh tĩnh hoặc tệp âm thanh)",
       "loaiKhac": false,
-      "nguon": "sen.85437050",
-      "trich": "Máy ghi chuyến bay là thiết bị ghi điện tử được đặt trong phương tiện bay nhằm mục đích hỗ trợ điều tra tai nạn, sự cố hàng không.",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguon": "tax.85437050",
+      "trich": "85437050 - - Bộ khuếch đại vi sóng; máy ghi dữ liệu chuyến bay kỹ thuật số; đầu đọc điện tử di động hoạt động bằng pin để ghi và tái tạo văn bản, hình ảnh tĩnh hoặc tệp âm thanh (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Bộ khuếch đại vi sóng"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "máy ghi dữ liệu chuyến bay kỹ thuật số"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "đầu đọc điện tử di động"
+              },
+              {
+                "fact": "nguonNangLuong",
+                "op": "TRONG",
+                "value": [
+                  "PIN_AC_QUY"
+                ]
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "ghi và tái tạo"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": [
+                  "văn bản",
+                  "hình ảnh tĩnh",
+                  "tệp âm thanh"
+                ]
+              }
+            ]
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:paperclip-OZV-518-20261112-tu-soat#soat-854370-vong3",
+          "ngay": "2026-11-12",
+          "bam": "8a81c6b0ac329c601972a0e79bf04074e1280d20a2067393407fa1d146275604"
+        }
+      },
+      "chongLanTruc": {
+        "pn6": "854370",
+        "nhanh": [
+          "85437010",
+          "8543702",
+          "85437030",
+          "85437040",
+          "85437050",
+          "85437060"
+        ],
+        "truc": {
+          "8543702": "TEN_LOAI",
+          "85437010": "TEN_LOAI",
+          "85437030": "CONG_DUNG",
+          "85437040": "TEN_LOAI",
+          "85437050": "TEN_LOAI",
+          "85437060": "CONG_DUNG"
+        },
+        "cauHoiPhanBiet": "Hàng này thuộc nhánh nào: «Máy cung cấp năng lượng cho hàng rào điện» (85437010), «Thiết bị điều khiển từ xa, trừ thiết bị điều khiển từ xa bằng sóng radio» (8543702), «Máy, thiết bị điện có chức năng phiên dịch hoặc từ điển» (85437030), «Máy tách bụi/khử tĩnh điện hoặc máy đóng rắn bằng tia cực tím dùng trong sản xuất tấm mạch PCB/PCAs» (85437040), «Bộ khuếch đại vi sóng; máy ghi dữ liệu chuyến bay kỹ thuật số; đầu đọc điện tử di động chạy pin ghi và tái tạo văn bản, hình ảnh tĩnh hoặc tệp âm thanh» (85437050), «Thiết bị xử lý tín hiệu số kết nối mạng để trộn âm thanh; sản phẩm thiết kế đặc biệt để kết nối với thiết bị/mạng điện tín hoặc điện thoại» (85437060)?",
+        "trich": {
+          "8543702": "Thiết bị điều khiển từ xa, trừ thiết bị điều khiển từ xa bằng sóng radio",
+          "85437010": "Máy cung cấp năng lượng cho hàng rào điện",
+          "85437030": "Máy, thiết bị điện có chức năng phiên dịch hoặc từ điển",
+          "85437040": "Máy tách bụi hoặc khử tĩnh điện trong quá trình chế tạo tấm mạch PCB/PWBs(1) hoặc PCAs(1); máy làm đóng rắn vật liệu bằng tia cực tím dùng trong sản xuất tấm mạch PCB/PWBs(1) hoặc PCAs(1)",
+          "85437050": "Bộ khuếch đại vi sóng; máy ghi dữ liệu chuyến bay kỹ thuật số; đầu đọc điện tử di động hoạt động bằng pin để ghi và tái tạo văn bản, hình ảnh tĩnh hoặc tệp âm thanh (SEN)",
+          "85437060": "Thiết bị xử lý tín hiệu kỹ thuật số có khả năng kết nối với mạng có dây hoặc không dây để trộn âm thanh; các sản phẩm được thiết kế đặc biệt để kết nối với thiết bị hoặc dụng cụ điện tín hoặc điện thoại hoặc với mạng điện tín hoặc điện thoại"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:paperclip-OZV-518-20261112-tu-soat#soat-854370-vong3",
+            "ngay": "2026-11-12",
+            "bam": "8a81c6b0ac329c601972a0e79bf04074e1280d20a2067393407fa1d146275604"
+          }
+        }
+      }
     },
     {
       "hs": "85437060",
-      "dieuKien": "Thiết bị xử lý tín hiệu số kết nối mạng có dây/không dây để trộn âm thanh; sản phẩm thiết kế đặc biệt để kết nối với thiết bị/mạng điện tín, điện thoại",
+      "dieuKien": "(tên loại hàng: Thiết bị xử lý tín hiệu kỹ thuật số và phương thức truyền dẫn: hữu tuyến hoặc vô tuyến và công dụng / mục đích: trộn âm thanh) hoặc (công dụng / mục đích: kết nối và dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): điện tín hoặc điện thoại hoặc dụng cụ điện tín hoặc mạng điện tín)",
       "loaiKhac": false,
       "nguon": "tax.85437060",
-      "trich": "85437060 - - Thiết bị xử lý tín hiệu kỹ thuật số có khả năng kết nối với mạng có dây hoặc không dây để trộn âm thanh; các sản phẩm được thiết kế đặc biệt để kết nối với thiết bị hoặc dụng cụ điện tín hoặc điện thoại hoặc với mạng điện tín hoặc điện thoại",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "85437060 - - Thiết bị xử lý tín hiệu kỹ thuật số có khả năng kết nối với mạng có dây hoặc không dây để trộn âm thanh; các sản phẩm được thiết kế đặc biệt để kết nối với thiết bị hoặc dụng cụ điện tín hoặc điện thoại hoặc với mạng điện tín hoặc điện thoại ",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Thiết bị xử lý tín hiệu kỹ thuật số"
+              },
+              {
+                "fact": "phuongThucTruyenDan",
+                "op": "TRONG",
+                "value": [
+                  "HUU_TUYEN",
+                  "VO_TUYEN"
+                ]
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "trộn âm thanh"
+              }
+            ],
+            [
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "kết nối"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "điện tín",
+                  "điện thoại",
+                  "dụng cụ điện tín",
+                  "mạng điện tín"
+                ]
+              }
+            ]
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:paperclip-OZV-518-20261112-tu-soat#soat-854370-vong3",
+          "ngay": "2026-11-12",
+          "bam": "8a81c6b0ac329c601972a0e79bf04074e1280d20a2067393407fa1d146275604"
+        }
+      },
+      "chongLanTruc": {
+        "pn6": "854370",
+        "nhanh": [
+          "85437010",
+          "8543702",
+          "85437030",
+          "85437040",
+          "85437050",
+          "85437060"
+        ],
+        "truc": {
+          "8543702": "TEN_LOAI",
+          "85437010": "TEN_LOAI",
+          "85437030": "CONG_DUNG",
+          "85437040": "TEN_LOAI",
+          "85437050": "TEN_LOAI",
+          "85437060": "CONG_DUNG"
+        },
+        "cauHoiPhanBiet": "Hàng này thuộc nhánh nào: «Máy cung cấp năng lượng cho hàng rào điện» (85437010), «Thiết bị điều khiển từ xa, trừ thiết bị điều khiển từ xa bằng sóng radio» (8543702), «Máy, thiết bị điện có chức năng phiên dịch hoặc từ điển» (85437030), «Máy tách bụi/khử tĩnh điện hoặc máy đóng rắn bằng tia cực tím dùng trong sản xuất tấm mạch PCB/PCAs» (85437040), «Bộ khuếch đại vi sóng; máy ghi dữ liệu chuyến bay kỹ thuật số; đầu đọc điện tử di động chạy pin ghi và tái tạo văn bản, hình ảnh tĩnh hoặc tệp âm thanh» (85437050), «Thiết bị xử lý tín hiệu số kết nối mạng để trộn âm thanh; sản phẩm thiết kế đặc biệt để kết nối với thiết bị/mạng điện tín hoặc điện thoại» (85437060)?",
+        "trich": {
+          "8543702": "Thiết bị điều khiển từ xa, trừ thiết bị điều khiển từ xa bằng sóng radio",
+          "85437010": "Máy cung cấp năng lượng cho hàng rào điện",
+          "85437030": "Máy, thiết bị điện có chức năng phiên dịch hoặc từ điển",
+          "85437040": "Máy tách bụi hoặc khử tĩnh điện trong quá trình chế tạo tấm mạch PCB/PWBs(1) hoặc PCAs(1); máy làm đóng rắn vật liệu bằng tia cực tím dùng trong sản xuất tấm mạch PCB/PWBs(1) hoặc PCAs(1)",
+          "85437050": "Bộ khuếch đại vi sóng; máy ghi dữ liệu chuyến bay kỹ thuật số; đầu đọc điện tử di động hoạt động bằng pin để ghi và tái tạo văn bản, hình ảnh tĩnh hoặc tệp âm thanh (SEN)",
+          "85437060": "Thiết bị xử lý tín hiệu kỹ thuật số có khả năng kết nối với mạng có dây hoặc không dây để trộn âm thanh; các sản phẩm được thiết kế đặc biệt để kết nối với thiết bị hoặc dụng cụ điện tín hoặc điện thoại hoặc với mạng điện tín hoặc điện thoại"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:paperclip-OZV-518-20261112-tu-soat#soat-854370-vong3",
+            "ngay": "2026-11-12",
+            "bam": "8a81c6b0ac329c601972a0e79bf04074e1280d20a2067393407fa1d146275604"
+          }
+        }
+      }
     },
     {
       "hs": "85437090",
@@ -340,7 +767,7 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L29-20261111#soat-L29",
+          "phien": "may-kiem:cong-ranh-gioi:20261111T1000#soat-854390",
           "ngay": "2026-11-11",
           "bam": "8b899319329676326ffecdb3056aa43bfe7ecac94ad9e21d1cfa5c3bd18345f9"
         }
@@ -363,7 +790,7 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L29-20261111#soat-L29",
+          "phien": "may-kiem:cong-ranh-gioi:20261111T1000#soat-854390",
           "ngay": "2026-11-11",
           "bam": "8b899319329676326ffecdb3056aa43bfe7ecac94ad9e21d1cfa5c3bd18345f9"
         }
@@ -386,7 +813,7 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L29-20261111#soat-L29",
+          "phien": "may-kiem:cong-ranh-gioi:20261111T1000#soat-854390",
           "ngay": "2026-11-11",
           "bam": "8b899319329676326ffecdb3056aa43bfe7ecac94ad9e21d1cfa5c3bd18345f9"
         }
@@ -409,7 +836,7 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L29-20261111#soat-L29",
+          "phien": "may-kiem:cong-ranh-gioi:20261111T1000#soat-854390",
           "ngay": "2026-11-11",
           "bam": "8b899319329676326ffecdb3056aa43bfe7ecac94ad9e21d1cfa5c3bd18345f9"
         }
@@ -767,5 +1194,87 @@
       ]
     }
   },
-  "yKienWcoDayDu": false
+  "yKienWcoDayDu": false,
+  "dieuKienNut": [
+    {
+      "id": "8543702",
+      "nguon": "tieuDe.8543702",
+      "trich": "8543702 Thiết bị điều khiển từ xa, trừ thiết bị điều khiển từ xa bằng sóng radio",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Thiết bị điều khiển từ xa"
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "điều khiển từ xa bằng sóng radio"
+                ],
+                "chieu": "PHAI_KHONG"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Thiết bị điều khiển từ xa, trừ thiết bị điều khiển từ xa bằng sóng radio"
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:paperclip-OZV-518-20261112-tu-soat#soat-854370-vong3",
+          "ngay": "2026-11-12",
+          "bam": "8a81c6b0ac329c601972a0e79bf04074e1280d20a2067393407fa1d146275604"
+        }
+      },
+      "chongLanTruc": {
+        "pn6": "854370",
+        "nhanh": [
+          "85437010",
+          "8543702",
+          "85437030",
+          "85437040",
+          "85437050",
+          "85437060"
+        ],
+        "truc": {
+          "8543702": "TEN_LOAI",
+          "85437010": "TEN_LOAI",
+          "85437030": "CONG_DUNG",
+          "85437040": "TEN_LOAI",
+          "85437050": "TEN_LOAI",
+          "85437060": "CONG_DUNG"
+        },
+        "cauHoiPhanBiet": "Hàng này thuộc nhánh nào: «Máy cung cấp năng lượng cho hàng rào điện» (85437010), «Thiết bị điều khiển từ xa, trừ thiết bị điều khiển từ xa bằng sóng radio» (8543702), «Máy, thiết bị điện có chức năng phiên dịch hoặc từ điển» (85437030), «Máy tách bụi/khử tĩnh điện hoặc máy đóng rắn bằng tia cực tím dùng trong sản xuất tấm mạch PCB/PCAs» (85437040), «Bộ khuếch đại vi sóng; máy ghi dữ liệu chuyến bay kỹ thuật số; đầu đọc điện tử di động chạy pin ghi và tái tạo văn bản, hình ảnh tĩnh hoặc tệp âm thanh» (85437050), «Thiết bị xử lý tín hiệu số kết nối mạng để trộn âm thanh; sản phẩm thiết kế đặc biệt để kết nối với thiết bị/mạng điện tín hoặc điện thoại» (85437060)?",
+        "trich": {
+          "8543702": "Thiết bị điều khiển từ xa, trừ thiết bị điều khiển từ xa bằng sóng radio",
+          "85437010": "Máy cung cấp năng lượng cho hàng rào điện",
+          "85437030": "Máy, thiết bị điện có chức năng phiên dịch hoặc từ điển",
+          "85437040": "Máy tách bụi hoặc khử tĩnh điện trong quá trình chế tạo tấm mạch PCB/PWBs(1) hoặc PCAs(1); máy làm đóng rắn vật liệu bằng tia cực tím dùng trong sản xuất tấm mạch PCB/PWBs(1) hoặc PCAs(1)",
+          "85437050": "Bộ khuếch đại vi sóng; máy ghi dữ liệu chuyến bay kỹ thuật số; đầu đọc điện tử di động hoạt động bằng pin để ghi và tái tạo văn bản, hình ảnh tĩnh hoặc tệp âm thanh (SEN)",
+          "85437060": "Thiết bị xử lý tín hiệu kỹ thuật số có khả năng kết nối với mạng có dây hoặc không dây để trộn âm thanh; các sản phẩm được thiết kế đặc biệt để kết nối với thiết bị hoặc dụng cụ điện tín hoặc điện thoại hoặc với mạng điện tín hoặc điện thoại"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:paperclip-OZV-518-20261112-tu-soat#soat-854370-vong3",
+            "ngay": "2026-11-12",
+            "bam": "8a81c6b0ac329c601972a0e79bf04074e1280d20a2067393407fa1d146275604"
+          }
+        }
+      }
+    }
+  ]
 }
