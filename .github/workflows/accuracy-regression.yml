@@ -23,4 +23,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: node scripts/benchmark-alias-holdout.mjs --gate
+      - name: Hồi quy bộ 50 ca TB-TCHQ (no LLM)
+        run: node scripts/benchmark-50-ca-tb-tchq.mjs --gate
+      - name: Hồi quy tập giữ riêng 763 tờ khai (no LLM)
+        run: node scripts/benchmark-alias-holdout.mjs --gate
