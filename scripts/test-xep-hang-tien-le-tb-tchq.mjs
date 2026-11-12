@@ -73,6 +73,47 @@ ok('A2 âm: mô tả gần giống KHÔNG sinh đề xuất "chắc chắn" cho 
 const kcChinhNo = K.kiemTruocChot({ topHs: MA_DUNG, hang: { tenHang: TEN_TL || '', moTa: TEN_TL || '' }, ungVien: [MA_DUNG] });
 ok('A3 âm: mã đang chốt không bị đề xuất lại ("đề xuất chính nó")', !kcChinhNo.deXuat.some((d) => d.hs === MA_DUNG));
 
+// A4 (DƯƠNG) — cờ của PR này KHÔNG bị mất khi ghép với phần chuẩn hoá mã gộp của #1268.
+// Bối cảnh: tiền lệ TB-TCHQ kết luận mã ĐÃ BỊ GỘP (mã chết) vẫn là bằng chứng cho mã sống sau khi gộp. Khi ghép
+// #1268 (chuẩn hoá mã gộp) với #1269 (cờ chacChan/diem/chung/soTienLe), nhánh "mã chết" trong `tienLeGiongTheoMa`
+// có thể bị bỏ sót `bestChung` ⇒ cờ `chung` = 0 ⇒ `chacChan` = false ⇒ mã tiền lệ CHẮC CHẮN không lên được vị trí 1.
+// Ca này dùng DỮ LIỆU THẬT (data/precedents.json — tiền lệ của mã đã bị gộp), không dựng dữ liệu giả.
+const db = require('../lib/data.js').precedentsData || {};
+const rawChet = require('../lib/data.js').precedentsMaChetDaGop || [];
+const listChet = Array.isArray(rawChet) ? rawChet : Object.values(rawChet).flat();
+const TREE = require('../lib/hs-tree.js');
+const { doGiongTenHang } = require('../lib/giong-ten-hang.js');
+/** TB sống của mã hs có khớp trùng khít với mô tả không (để chọn ca "chỉ khớp qua TB chết"). */
+const coTbSongKhop = (hs, hang) => (db[hs] || []).some((x) => {
+  if (!x || !x.productName) return false;
+  const g = doGiongTenHang(hang, x.productName);
+  return g.giong && g.diem === 1 && g.chung >= 5;
+});
+let caChet = null;
+for (const e of listChet) {
+  const hs = String(e.maSong || '');
+  if (!/^[0-9]{8}$/.test(hs) || !e.productName || !TREE.nodeOf(hs)) continue;
+  const hang = { tenHang: e.productName, moTa: e.productName };
+  const g = doGiongTenHang(hang, e.productName);
+  if (!g.giong || g.diem !== 1 || g.chung < 5) continue;
+  if (coTbSongKhop(hs, hang)) continue;              // đã có TB sống khớp ⇒ không chứng minh được lỗi mất cờ
+  caChet = { hs, e, g };
+  break;
+}
+if (!caChet) {
+  ok('A4 dương: tìm được tiền lệ THẬT của mã đã bị gộp (mô tả chỉ khớp qua TB chết)', false);
+} else {
+  const hangChet = { tenHang: caChet.e.productName, moTa: caChet.e.productName };
+  const kcChet = K.kiemTruocChot({ topHs: '42029190', hang: hangChet, ungVien: [caChet.hs] });
+  const dxChet = kcChet.deXuat.find((d) => d.hs === caChet.hs);
+  ok('A4 dương: mã sống (sau khi gộp) vẫn được đề xuất từ tiền lệ của mã đã bị gộp', Boolean(dxChet));
+  ok('A4 dương: cờ diem = 1 (trùng khít) không bị mất', dxChet?.diem === 1);
+  ok('A4 dương: cờ chung = số từ chung THẬT của TB (không rơi về 0)', dxChet?.chung === caChet.g.chung);
+  ok('A4 dương: cờ chacChan = true (tiền lệ chắc chắn lên được vị trí 1)', dxChet?.chacChan === true);
+  ok('A4 dương: cờ soTienLe có số hiệu TB', Boolean(dxChet?.soTienLe));
+  ok('A4 dương: nhãn mã đã bị gộp vẫn còn (không mất dấu vết #1268)', dxChet?.maDaBietGop === true);
+}
+
 // ── B. ENGINE: vị trí trong `results` + nhãn khách thấy (lib/engine-loop.js) ────────────────────────────────────
 /** Phát lại 1 ca qua classifyLoop với LLM stub tất định (giống scripts/benchmark-50-ca-tb-tchq.mjs). */
 async function replayMotCa(ca, text) {
