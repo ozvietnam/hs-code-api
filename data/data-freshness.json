@@ -4,9 +4,11 @@
     "tariff": {
       "labelVi": "Biểu thuế XNK (data/tax.json)",
       "effectiveDate": "2026-01-01",
-      "lastCheckedAt": "2026-05-27",
+      "lastCheckedAt": "2026-11-12",
       "checkEveryDays": 30,
-      "howToCheckVi": "Tra văn bản sửa đổi, bổ sung Nghị định biểu thuế XNK ưu đãi và các Nghị định biểu thuế FTA ban hành sau lastCheckedAt (congbao.chinhphu.vn, customs.gov.vn)."
+      "howToCheckVi": "Tra văn bản sửa đổi, bổ sung Nghị định biểu thuế XNK ưu đãi và các Nghị định biểu thuế FTA ban hành sau lastCheckedAt (congbao.chinhphu.vn, customs.gov.vn).",
+      "ghiChuSoat": "Soát 12/11/2026 (OZV-504 luồng 3b) theo danh sách văn bản của sổ oz-wiki-plhq (OZV-503): trong 64 văn bản ban hành sau 27/05/2026 chỉ 3 đụng thuế XNK. (1) NĐ 201/2026/NĐ-CP (BH 08/6, hiệu lực 23/7/2026) chỉ sửa thuế XUẤT KHẨU nhóm 25.29 + 81.06 (đọc toàn văn PDF Công báo số 343) — tax.json không có cột thuế XK và /api/tax chưa trả thuế XK, không mã nào của tax.json đổi (thẻ theo dõi). (2) QĐ 1309/QĐ-BCT (hiệu lực 16/6/2026) bãi bỏ QĐ 2105/QĐ-BCT, tiếp tục CBPG+CTC đường mía Thái đến 15/06/2031 — đã đổi căn cứ cột cs của 6 mã chương 17 (phiên bản v3-2026-11-12-duong-1309). (3) NQ 43/2026/NQ-CP (0% MFN xăng dầu đến 31/12/2026) đã có sẵn trong data/thue-tam-thoi.json (NGUON_GOC). Không văn bản nào đổi thuế NK ưu đãi MFN/FTA theo dòng 8 số ngoài 3 mục trên.",
+      "checkedBy": "Thợ HS 01 (OZV-504)"
     },
     "vatReduction": {
       "labelVi": "Giảm thuế GTGT 10% → 8%",
