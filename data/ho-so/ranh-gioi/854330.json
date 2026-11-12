@@ -7,15 +7,15 @@
   "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
-    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-854330",
-    "ngay": "2026-11-04"
+    "phien": "claude:opus-5.5:20261111T0900#soan-854330",
+    "ngay": "2026-11-11"
   },
   "duyet": {
-    "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L29-20261111#soat-L29",
+    "boi": "MAY_KIEM",
+    "phien": "may-kiem:cong-ranh-gioi:20261111T1000#soat-854330",
     "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu VI+EN: .20 wet processing by immersion cho PCB/PWB — BO_VE 'bằng phương pháp nhúng …' chấp nhận (máy mạ/điện phân/điện di của 8543.30 vốn nhúng dung dịch); .91 chiHoacChuYeu + sản xuất mạch in dưới 8543309 'Loại khác' nên không chồng .20; BO_VE thứ hai thừa (cảnh báo) vô hại.",
-    "bam": "11bb152f1bf3d1ef314e5e1dcd85b73e1e147d61aace93e1fa14168cc1362712"
+    "ghiChu": "Duyệt bằng máy: cổng ranh giới 0–3+5 xanh, trích nguyên văn, không người ký (CEO 11/11)",
+    "bam": "e5b0c6c1b50093ee93e7ff1448c70d5baba7a8c5b4ca404d6c6e47ff2eb63aee"
   },
   "dieuKienNut": [],
   "dong8": [
@@ -24,6 +24,11 @@
       "nguon": "tax.85433020",
       "trich": "85433020 - - Thiết bị xử lý ướt bằng phương pháp nhúng trong dung dịch hóa chất hoặc điện hóa, để tách hoặc không tách vật liệu gia công trên nền (tấm đế) của bản mạch PCB/PWBs(1)",
       "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thiết bị xử lý ướt"
+        },
         {
           "fact": "congDung",
           "op": "CONG_DUNG",
@@ -61,24 +66,23 @@
     {
       "ma": "85433020",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85433020: \"Thiết bị xử lý ướt bằng phương pháp nhúng trong dung dịch hóa chất hoặc điện hóa, để tách hoặc không tách vật liệu gia công trên nền (tấm đế) của bản mạch PCB/PWBs(1)\" ⇒ congDung \"bản mạch PCB/PWBs\""
+      "ghiChu": "tax.85433020 \"Thiết bị xử lý ướt bằng phương pháp nhúng trong dung dịch hóa chất hoặc điện hóa, để tách hoặc không tách vật liệu gia công trên nền (tấm đế) của bản mạch PCB/PWBs(1)\" (EN \"Wet processing equipment ... on printed circuit board/printed wiring board substrates\") ⇒ tenLoai \"Thiết bị xử lý ướt\" (danh từ đầu, EN \"Wet processing equipment\") + congDung \"bản mạch PCB/PWBs\" (đích của vế \"để tách hoặc không tách vật liệu gia công trên nền (tấm đế) của bản mạch PCB/PWBs\"; \"tách hoặc không tách\" không giới hạn gì). Dấu \"(1)\" là chân chú — giá trị dừng trước nó."
     },
     {
       "ma": "85433020",
       "loai": "BO_VE",
       "ve": "bằng phương pháp nhúng trong dung dịch hóa chất hoặc điện hóa",
-      "lyDo": "Phương pháp gia công nhúng ướt của thiết bị"
-    },
-    {
-      "ma": "85433020",
-      "loai": "BO_VE",
-      "ve": "để tách hoặc không tách vật liệu gia công trên nền (tấm đế) của bản mạch PCB/PWBs(1)",
-      "lyDo": "Đã phủ đối tượng đích bản mạch PCB/PWBs trong congDung"
+      "lyDo": "Phân nhóm 8543.30 chỉ gồm máy và thiết bị dùng trong mạ điện, điện phân hoặc điện di (tieuDe.854330) — các quá trình này đều xử lý vật liệu ngâm trong dung dịch điện phân/hoá chất, nên với 'thiết bị xử lý ướt' của chính phân nhóm này vế phương pháp nhúng không tách thêm hàng nào giữa .20 và nhánh 8543309. tu-vung@2 chưa có khoá phương pháp nhúng (nguyenLyXuLy chỉ có QUAY/PHUN_PHU/TIA_LASER_HOAC_TIA_SANG_KHAC/CHUM_TIA_ION_HOI_TU) nên không ghi thành điều kiện."
     },
     {
       "ma": "85433091",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85433091: \"Máy mạ điện và điện phân chỉ dùng hoặc chủ yếu dùng để sản xuất mạch in\" ⇒ chiHoacChuYeu CO + congDung \"sản xuất mạch in\""
+      "ghiChu": "tax.85433091 \"Máy mạ điện và điện phân chỉ dùng hoặc chủ yếu dùng để sản xuất mạch in\" ⇒ chiHoacChuYeu CO (vế \"chỉ dùng hoặc chủ yếu dùng\") + congDung \"sản xuất mạch in\". Tên \"Máy mạ điện và điện phân\" lặp chữ phân nhóm cha (\"dùng trong mạ điện, điện phân\") — không ghi tenLoai vì không có cụm phân biệt (máy chấm không tất định)."
+    },
+    {
+      "ma": "85433099",
+      "loai": "QUYET_DINH",
+      "ghiChu": "\"Loại khác\" trần dưới tầng 8543309 \"Loại khác:\" — phần còn lại: máy phủ định 85433091 (truAnhEm); cả nhánh 8543309 là phần còn lại sau 85433020."
     }
   ]
 }

@@ -7,14 +7,14 @@
   "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
-    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-854390",
-    "ngay": "2026-11-04"
+    "phien": "claude:opus-5.5:20261111T0900#soan-854390",
+    "ngay": "2026-11-11"
   },
   "duyet": {
-    "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L29-20261111#soat-L29",
+    "boi": "MAY_KIEM",
+    "phien": "may-kiem:cong-ranh-gioi:20261111T1000#soat-854390",
     "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu VI+EN: 4 dòng 'Of goods of subheading …' ⇒ dungCho mã 8543.10/8543.20, 8543.30.20, 8543.70.30, 8543.70.40 (so theo cấp mã); .90 trần; tiền lệ 4205/TB-TCHQ -> .90 (màng điện phân) khớp.",
+    "ghiChu": "Duyệt bằng máy: cổng ranh giới 0–3+5 xanh, trích nguyên văn, không người ký (CEO 11/11)",
     "bam": "8b899319329676326ffecdb3056aa43bfe7ecac94ad9e21d1cfa5c3bd18345f9"
   },
   "dieuKienNut": [],
@@ -86,22 +86,27 @@
     {
       "ma": "85439010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85439010: \"Của hàng hóa thuộc phân nhóm 8543.10 hoặc 8543.20\" ⇒ dungCho [\"8543.10\",\"8543.20\"]"
+      "ghiChu": "tax.85439010 \"Của hàng hóa thuộc phân nhóm 8543.10 hoặc 8543.20\" ⇒ dungCho [\"8543.10\",\"8543.20\"] (\"hoặc\" ⇒ mảng; mã tham chiếu = máy tự đọc mã)."
     },
     {
       "ma": "85439020",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85439020: \"Của hàng hóa thuộc phân nhóm 8543.30.20\" ⇒ dungCho \"8543.30.20\""
+      "ghiChu": "tax.85439020 \"Của hàng hóa thuộc phân nhóm 8543.30.20\" ⇒ dungCho \"8543.30.20\"."
     },
     {
       "ma": "85439030",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85439030: \"Của hàng hóa thuộc phân nhóm 8543.70.30\" ⇒ dungCho \"8543.70.30\""
+      "ghiChu": "tax.85439030 \"Của hàng hóa thuộc phân nhóm 8543.70.30\" ⇒ dungCho \"8543.70.30\"."
     },
     {
       "ma": "85439040",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85439040: \"Của hàng hóa thuộc phân nhóm 8543.70.40\" ⇒ dungCho \"8543.70.40\""
+      "ghiChu": "tax.85439040 \"Của hàng hóa thuộc phân nhóm 8543.70.40\" ⇒ dungCho \"8543.70.40\"."
+    },
+    {
+      "ma": "85439090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "\"Loại khác\" trần — bộ phận của hàng hoá các phân nhóm còn lại (8543.30 trừ .30.20, 8543.40, 8543.70 trừ .70.30/.70.40); máy phủ định 85439010–85439040 (truAnhEm)."
     }
   ]
 }
