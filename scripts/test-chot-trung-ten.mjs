@@ -123,6 +123,19 @@ check('G2-pre 98182219 là dòng Loại khác trần duy nhất của 981822', B
   const r = G.chotDong8({ hs: '40092190', productText: 'ống cao su có lắp phụ kiện cứng, đường kính 20 cm, độ dày thành ống 2 cm' });
   check('N2 4009.21 ca chốt dương tính: vẫn CHOT 40092110 như cũ', r.ketQua === 'CHOT' && r.hs === '40092110', { ketQua: r.ketQua, hs: r.hs, lyDo: r.lyDo });
 }
+// N4 — 170290: CHỮ KHỚP phải đến từ phần MÔ TẢ HÀNG, không đến từ đoạn lineage tên cha ghép vào `productText`.
+// Ca thật do chính cổng luật sinh (`sinhCaNhom('1702')` ghép tên nhóm 4 + tên phân nhóm 6 vào đầu mô tả). Nút tầng
+// `1702901` "Mantoza và xirô mantoza" bắt được chữ "mantoza" từ TÊN NHÓM 1702 ("Đường khác, kể cả đường lactoza,
+// mantoza, glucoza và fructoza…") chứ không từ mô tả hàng — hàng là *Đường sáp dừa*. Nếu G3 tính đó là "chữ khớp mà
+// máy chưa chắc" thì nó chặn oan cả hai ca này (đo 12/11: `chotDung` 6934 → 6932). Mã kỳ vọng phải chốt ĐÚNG.
+{
+  const LINEAGE = 'Đường khác, kể cả đường lactoza, mantoza, glucoza và fructoza, tinh khiết về mặt hoá học, ở thể rắn; xirô đường chưa pha thêm hương liệu hoặc chất màu; mật ong nhân tạo, đã hoặc chưa pha trộn với mật ong tự nhiên; đường caramen. - Loại khác, kể cả đường nghịch chuyển và đường khác và hỗn hợp xirô đường có chứa hàm lượng fructoza là 50% tính theo khối lượng ở thể khô';
+  const r1 = G.chotDong8({ hs: '170290', productText: `${LINEAGE}: Đường từ cây họ cọ (Palm sugar): Đường sáp dừa (Coconut sap sugar) (SEN)` });
+  check('N4a 170290 DONG_CO_TEN 17029051 (Đường sáp dừa): vẫn CHOT 17029051 — "mantoza" trong lineage KHÔNG phải dữ kiện về hàng', r1.ketQua === 'CHOT' && r1.hs === '17029051', { ketQua: r1.ketQua, hs: r1.hs, lyDo: r1.lyDo, nutChan: r1.nutChan });
+  const r2 = G.chotDong8({ hs: '170290', productText: `${LINEAGE}, không phải Đường sáp dừa, Đường từ cây họ cọ` });
+  check('N4b 170290 LOAI_TRU_LOAI_KHAC 17029059: vẫn LOAI_KHAC 17029059 — không bị nút 1702901 chặn oan', r2.ketQua === 'LOAI_KHAC' && r2.hs === '17029059', { ketQua: r2.ketQua, hs: r2.hs, lyDo: r2.lyDo, nutChan: r2.nutChan });
+}
+
 // Ba ca chốt "Loại khác" ĐÚNG lấy từ chính `scripts/bo-kiem-luat.mjs#sinhCaNhom` trên dữ liệu `data/so-tay/` thật —
 // mã đúng nằm DƯỚI nút tầng (0105949, 0306149) hoặc thẳng trong phân nhóm (010229). Phép kiểm mới phải cho qua cả ba:
 // nếu bản vá chặn luôn nhóm này thì nó đang "chữa" bằng cách tắt tính năng chốt Loại khác, không phải chữa đoán bừa.
