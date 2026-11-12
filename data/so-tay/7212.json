@@ -108,19 +108,42 @@
     },
     {
       "hs": "72122010",
-      "dieuKien": "Dạng đai và dải(SEN), chiều rộng không quá 400 mm",
+      "dieuKien": "dạng đai, dải hoặc tấm phổ dụng: dạng đai và dải; chiều rộng <= 400 mm",
       "loaiKhac": false,
       "nguon": "tax.72122010",
       "trich": "72122010 - - Dạng đai và dải(SEN), chiều rộng không quá 400 mm",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dangDaiDaiTamPhoDung",
+          "op": "TRONG",
+          "value": [
+            "DAI_VA_DAI"
+          ]
+        },
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 400,
+          "donVi": "mm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "paperclip:ozv-590#soat-721220",
+          "ngay": "2026-11-12",
+          "bam": "f7ee533c40f440d13334cd400926ce2cc7a8121d8024292c0a505b3373615d70"
+        }
+      }
     },
     {
       "hs": "72122020",
-      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "dieuKien": "hàm lượng carbon < 0.6 %; độ dày <= 1.5 mm",
       "loaiKhac": true,
       "nguon": "tax.72122020",
       "trich": "72122020 - - Loại khác, có hàm lượng carbon dưới 0,6% tính theo khối lượng và chiều dày không quá 1,5 mm",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phamViLoaiKhac": {
         "nguonLoai": "MAY_SUY",
         "cha": "721220",
@@ -132,6 +155,28 @@
         ],
         "toTienCoTen": "721220",
         "dinhNghiaDuoc": true
+      },
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.6,
+          "donVi": "%"
+        },
+        {
+          "fact": "doDay",
+          "op": "<=",
+          "value": 1.5,
+          "donVi": "mm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "paperclip:ozv-590#soat-721220",
+          "ngay": "2026-11-12",
+          "bam": "f7ee533c40f440d13334cd400926ce2cc7a8121d8024292c0a505b3373615d70"
+        }
       }
     },
     {
