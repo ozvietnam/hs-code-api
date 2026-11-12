@@ -295,6 +295,50 @@ check('vòng 1 lỗi tạm thời → nextAction RETRY', r.nextAction?.type === 
   check('nhãn hồ sơ: dòng tiêu đề mục (chỉ có nhãn) không phải câu trích', headers.length === 3 && headers.every((l) => verifyQuote(l, srcRich) === 'bad'), JSON.stringify(headers));
 }
 
+// ── OZV-398: dàn mục chú giải noteOutline trong headingBlock (thay clip 450 làm 203/235 nhóm mất mục con) ──
+{
+  const fs = require('fs');
+  const { gather, noteOutline, headingBlock } = require('../lib/engine-loop.js');
+  const g9503 = await gather(R1_TOY, TOY, { micAllowed: false });
+  const blk9503 = (headingBlock('9503', 'đồ chơi') || '').normalize('NFC');
+  const pack9503 = (g9503.pack || '').normalize('NFC');
+  check('noteOutline: nhóm 9503 trong gói vòng 2 giữ "(D) Đồ chơi khác" và các mục con (vii) khinh khí cầu và diều, (viii) vũ khí đồ chơi, (x) xe cút-kít, (xi) đèn ảo thuật',
+    ['(D) Đồ chơi khác', 'Khinh khí cầu và diều đồ chơi', 'vũ khí đồ chơi', 'xe cút-kít', 'đèn ảo thuật'].every((kw) => blk9503.includes(kw) && pack9503.includes(kw)),
+    blk9503.slice(0, 400));
+
+  const cgh = JSON.parse(fs.readFileSync('data/chu-giai-heading.json', 'utf8'));
+  const clip450 = (s) => { const t = String(s || '').replace(/\s+/g, ' ').trim(); return t.length > 450 ? `${t.slice(0, 450)}…` : t; };
+  const pat = /\((?:[A-Z]|[ivxlc]{1,6})\)\s/g;
+  let tot = 0; let lostClip = 0; let lostOut = 0; let rescuedGe2 = 0; let nonVerbatim = 0;
+  for (const h of Object.values(cgh)) {
+    const bg = String(h.bao_gom || '').replace(/\s+/g, ' ').trim();
+    if (!bg) continue;
+    const out = noteOutline(h.bao_gom);
+    for (const line of out.split('\n')) {
+      const clean = line.trim().replace(/…+$/, '');
+      if (clean && !bg.includes(clean)) nonVerbatim += 1;
+    }
+    const mAll = bg.match(pat) || [];
+    if (mAll.length >= 2) {
+      tot += 1;
+      const mCl = (clip450(bg).match(pat) || []).length;
+      const mOu = (out.match(pat) || []).length;
+      if (mCl < mAll.length) lostClip += 1;
+      if (mOu < mAll.length) lostOut += 1;
+      if (mCl <= 1 && mOu >= 2) rescuedGe2 += 1;
+    }
+  }
+  check('noteOutline: ≥ 150 nhóm giữ được ≥ 2 mục trong GỒM khi clip(450) chỉ giữ ≤ 1 mục, và số nhóm mất mục giảm mạnh (202/235 → ≤ 20/235)',
+    tot === 235 && rescuedGe2 >= 150 && lostOut <= 20 && lostOut < lostClip,
+    JSON.stringify({ tot, lostClip, lostOut, rescuedGe2 }));
+  const t0 = Date.now();
+  const redosOut = noteOutline(Array.from({ length: 40000 }, (_, i) => `(xviii) muc_${i}`).join(' '));
+  const redosMs = Date.now() - t0;
+  check('noteOutline: trích nguyên văn 100% trên toàn bộ 1.269 nhóm và chịu chuỗi dài đối kháng 40.000 từ lặp < 2 giây',
+    nonVerbatim === 0 && redosMs < 2000 && redosOut.length <= 1801,
+    JSON.stringify({ nonVerbatim, redosMs, len: redosOut.length }));
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
 

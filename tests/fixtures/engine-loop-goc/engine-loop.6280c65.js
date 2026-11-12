@@ -177,6 +177,21 @@ function round1Input(raw) {
 }
 
 // ───────────────────────── KIỂM CHỨNG (máy chủ) ─────────────────────────
+function noteOutline(text, itemLen = 90, maxLen = 1800) {
+  const t = String(text || '').replace(/\s+/g, ' ').trim();
+  if (!t) return '';
+  const parts = t.split(/\s(?=\((?:[A-Z]|[ivxlc]{1,6}|\d{1,2})\)\s)/);
+  const out = [];
+  for (const raw of parts) {
+    const m = raw.match(/^\(([A-Z]|[ivxlc]{1,6}|\d{1,2})\)\s/);
+    if (m && /^[A-Z]$/.test(m[1])) out.push(raw.slice(0, 140));
+    else if (m) out.push(`  ${raw.slice(0, itemLen)}${raw.length > itemLen ? '…' : ''}`);
+    else out.push(raw.slice(0, 160));
+  }
+  const res = out.join('\n');
+  return res.length > maxLen ? `${res.slice(0, maxLen)}…` : res;
+}
+
 function headingBlock(h4, queryText) {
   const { headingNotes, codesForPrompt } = lazy();
   const { codes, omitted } = codesForPrompt(h4, queryText, 22);
@@ -193,7 +208,7 @@ function headingBlock(h4, queryText) {
   return [
     `■ NHÓM ${h4} [chú giải nhóm — nguồn: ${clip(n.nguon, 60) || 'TT 31/2022'}]`,
     n.nhom && `  Phạm vi: ${clip(n.nhom, 350)}`,
-    n.baoGom && `  GỒM: ${clip(n.baoGom, 450)}`,
+    n.baoGom && `  GỒM: ${noteOutline(n.baoGom)}`,
     n.khongBaoGom && `  KHÔNG GỒM: ${clip(n.khongBaoGom, 300)}`,
     n.loaiTru && `  LOẠI TRỪ: ${clip(n.loaiTru, 300)}`,
     `  Dòng biểu thuế (${codes.length}${omitted ? `, bỏ ${omitted} dòng không liên quan` : ''}):\n${codes.map((c) => `    ${c.hs} ${String(c.vn || '').trim()}`).join('\n')}`,
