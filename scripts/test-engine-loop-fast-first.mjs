@@ -3,7 +3,9 @@
 //   (a) cờ TẮT ⇒ hành vi y hệt bản trước OZV-570: vòng 1 KHÔNG thinking-off, đủ 2 lời AI, không có engine.fastFirst;
 //   (b) cờ BẬT + hồ sơ rõ (nguồn độc lập xác nhận — cổng nguonDocLap có sẵn) ⇒ đường fast-path: chỉ 1 lời AI (vòng 1
 //       thinking-off), bỏ vòng 2, có dấu vết đo được (engine.fastFirst.boQuaVong2 + engine.gates log fastFirst:true);
-//   (c) cờ BẬT + hồ sơ mơ hồ / cổng chặn ⇒ VẪN leo sâu: vòng 2 gọi thinking-on như cũ.
+//   (c) cờ BẬT + hồ sơ mơ hồ / cổng chặn ⇒ VẪN leo sâu: vòng 2 gọi thinking-on như cũ;
+//   (e) 2 lỗi soát GĐ (trả PR): nguồn độc lập MÂU THUẪN (2 mã khác nhau cùng hs6) ⇒ leo sâu; ứng viên khác hs6 của vòng 1
+//       (dù cùng nhóm 4 số) ⇒ bị loại; nhiều tiền lệ CÙNG 1 mã ⇒ vẫn chốt (không chặn nhầm).
 import './test-isolate-data.mjs';
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
@@ -105,6 +107,40 @@ const ozKhopCao = async () => ({ items: [{ hsCode: '82019000', tenHang: 'Dao há
   check('(d) fastFirstUngVien thuần máy: không nguồn → lyDo, không throw', kq && !kq.hs8 && Array.isArray(kq.lyDo) && kq.lyDo.includes('khong-nguon-doc-lap'), JSON.stringify(kq));
   const kq2 = fastFirstUngVien({ r1: { hypotheses: [] }, gathered: { headings: [] }, productText: '' });
   check('(d) không giả thuyết → lyDo khong-gia-thuyet', kq2?.lyDo?.includes('khong-gia-thuyet'), JSON.stringify(kq2));
+}
+
+// (e) 2 LỖI SOÁT GĐ (trả PR #1262): nguồn độc lập MÂU THUẪN phải leo sâu; ứng viên khác phân nhóm 6 số của vòng 1 bị loại.
+{
+  // (e1) Hai mã 8 số KHÁC NHAU cùng phân nhóm 6 số 820190 của vòng 1 ⇒ mâu thuẫn ⇒ KHÔNG chốt, vẫn gọi vòng 2.
+  const kqM = fastFirstUngVien({ r1: R1_RO, gathered: { headings: ['8201'], ozPrecedents: [
+    { hs: '82019000', name: 'Dao hái cau伸缩杆', cov: 90, oz: 5 },
+    { hs: '82019099', name: 'Dao hái quả kiểu khác', cov: 80, oz: 3 },
+  ] }, productText: 'dao hái cau' });
+  check('(e1) 2 mã khác nhau: không hs8, lyDo nguon-doc-lap-mau-thuan', kqM && !kqM.hs8 && Array.isArray(kqM.lyDo) && kqM.lyDo.includes('nguon-doc-lap-mau-thuan'), JSON.stringify(kqM));
+  ozMod.searchOzByKeyword = async () => ({ items: [
+    { hsCode: '82019000', tenHang: 'Dao hái cau伸缩杆', ozCount: 5, matchCoverage: 90 },
+    { hsCode: '82019099', tenHang: 'Dao hái quả kiểu khác', ozCount: 3, matchCoverage: 80 },
+  ] });
+  const r = await run(DAO, [R1_RO, CHOT2]);
+  check('(e1) hội nhập: KHÔNG fast-path — vẫn 2 lời AI, vòng 2 thinking-on như cũ', calls.length === 2 && calls[1].round === 2 && calls[1].thinkingOff === false, JSON.stringify(calls.map((c) => [c.round, c.thinkingOff])));
+  check('(e1) engine.fastFirst.boQuaVong2 = false + lyDo mâu thuẫn', r.engine.fastFirst?.boQuaVong2 === false && /nguon-doc-lap-mau-thuan/.test(r.engine.fastFirst?.lyDo || ''), JSON.stringify(r.engine.fastFirst));
+  check('(e1) vẫn chốt bình thường qua vòng 2', r.results[0]?.hs === '82019000', JSON.stringify(r.results?.[0]?.hs));
+
+  // (e2) Ứng viên cùng nhóm 4 SỐ 8201 nhưng khác phân nhóm 6 SỐ (820140 ≠ 820190 của vòng 1) ⇒ bị loại, không chốt nhầm.
+  const kqSaiNhom = fastFirstUngVien({ r1: R1_RO, gathered: { headings: ['8201'], ozPrecedents: [
+    { hs: '82014000', name: 'Dao cắt mía', cov: 90, oz: 4 },
+  ] }, productText: 'dao hái cau' });
+  check('(e2) khác hs6 vòng 1: bị loại — không hs8, lyDo khong-nguon-doc-lap', kqSaiNhom && !kqSaiNhom.hs8 && kqSaiNhom.lyDo?.includes('khong-nguon-doc-lap'), JSON.stringify(kqSaiNhom));
+  ozMod.searchOzByKeyword = async () => ({ items: [{ hsCode: '82014000', tenHang: 'Dao cắt mía', ozCount: 4, matchCoverage: 90 }] });
+  const r2 = await run(DAO, [R1_RO, CHOT2]);
+  check('(e2) hội nhập: vẫn 2 lời AI (leo sâu), không chốt 82014000', r2.engine.fastFirst?.boQuaVong2 === false && calls.length === 2 && r2.results[0]?.hs === '82019000', JSON.stringify([calls.length, r2.engine.fastFirst, r2.results?.[0]?.hs]));
+
+  // (e3) Nhiều tiền lệ cùng nói MỘT mã ⇒ vẫn chốt fast-path (kiểm mới không chặn nhầm nguồn đồng thuận).
+  const kqDongThuan = fastFirstUngVien({ r1: R1_RO, gathered: { headings: ['8201'], ozPrecedents: [
+    { hs: '82019000', name: 'Dao hái cau伸缩杆', cov: 90, oz: 5 },
+    { hs: '82019000', name: 'Dụng cụ hái cau cán dài', cov: 80, oz: 3 },
+  ] }, productText: 'dao hái cau' });
+  check('(e3) nhiều tiền lệ CÙNG 1 mã: vẫn chốt 82019000 (không chặn nhầm)', kqDongThuan?.hs8 === '82019000' && kqDongThuan?.kieu === 'tien-le-oz', JSON.stringify(kqDongThuan));
 }
 
 ozMod.searchOzByKeyword = ozGoc;
