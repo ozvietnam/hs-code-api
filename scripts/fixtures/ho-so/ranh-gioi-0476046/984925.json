@@ -1,0 +1,296 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "984925",
+  "nhom": "9849",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "DUYET",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1001#soan-984925",
+    "ngay": "2026-11-06"
+  },
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:duyet-L33-20261111#soat-L33",
+    "ngay": "2026-11-11",
+    "ghiChu": "Đối chiếu biểu + 8415: 9849251 (8415.20) / Loại khác: bơm nhiệt, có làm lạnh (pcl), không làm lạnh; BO_VE '(trừ … 8415.20)' đúng vì tầng Loại khác đã phủ định 9849251; Bộ phận ≤21,10 kW theo quy ước 841590.",
+    "bam": "c81a7aad1c98c196a5121454498f4baa7b16129a629141f3fab000a67160ce50"
+  },
+  "dieuKienNut": [
+    {
+      "id": "984925~r19578",
+      "nguon": "tieuDe.984925~r19578",
+      "trich": "984925~r19578 Kèm theo một bộ phận làm lạnh và một van đảo chiều chu trình nóng/lạnh (bơm nhiệt có đảo chiều)",
+      "dieuKienSo": [
+        {
+          "fact": "coBoPhanLamLanh",
+          "op": "CO"
+        },
+        {
+          "fact": "coVanDaoChieu",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "id": "984925~r19582",
+      "nguon": "tieuDe.984925~r19582",
+      "trich": "984925~r19582 Loại khác, có kèm theo bộ phận làm lạnh",
+      "dieuKienSo": [
+        {
+          "fact": "coBoPhanLamLanh",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "phanConLai": true
+    },
+    {
+      "id": "984925~r19586",
+      "nguon": "tieuDe.984925~r19586",
+      "trich": "984925~r19586 Không gắn kèm bộ phận làm lạnh",
+      "dieuKienSo": [
+        {
+          "fact": "coBoPhanLamLanh",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "id": "984925~r19590",
+      "nguon": "tieuDe.984925~r19590",
+      "trich": "984925~r19590 Bộ phận",
+      "dieuKienSo": [
+        {
+          "fact": "laBoPhan",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "id": "984925~r19591",
+      "nguon": "tieuDe.984925~r19591",
+      "trich": "984925~r19591 Của máy có công suất làm mát không quá 21,10 kW",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy"
+        },
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 21.1,
+          "donVi": "kW"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "id": "9849251",
+      "nguon": "tieuDe.9849251",
+      "trich": "9849251 Loại sử dụng cho người, trong xe có động cơ",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "người"
+        },
+        {
+          "fact": "dungChoXeCoDongCo",
+          "op": "CO"
+        },
+        {
+          "fact": "laBoPhan",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "id": "9849252",
+      "nguon": "tieuDe.9849252",
+      "trich": "9849252 Sử dụng cho xe có động cơ (trừ loại thuộc phân nhóm 8415.20)",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe có động cơ"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "id": "9849253",
+      "nguon": "tieuDe.9849253",
+      "trich": "9849253 Sử dụng cho xe có động cơ (trừ loại thuộc phân nhóm 8415.20)",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe có động cơ"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "id": "9849254",
+      "nguon": "tieuDe.9849254",
+      "trich": "9849254 Sử dụng cho xe có động cơ (trừ loại thuộc phân nhóm 8415.20)",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe có động cơ"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "98492511",
+      "nguon": "tax.98492511",
+      "trich": "98492511 - - - Công suất làm mát không quá 26,38 kW",
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 26.38,
+          "donVi": "kW"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "hs": "98492519",
+      "nguon": "tax.98492519",
+      "trich": "98492519 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "hs": "98492521",
+      "nguon": "tax.98492521",
+      "trich": "98492521 - - - - - Công suất làm mát không quá 26,38 kW",
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 26.38,
+          "donVi": "kW"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "hs": "98492529",
+      "nguon": "tax.98492529",
+      "trich": "98492529 - - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "hs": "98492531",
+      "nguon": "tax.98492531",
+      "trich": "98492531 - - - - - Công suất làm mát không quá 26,38 kW",
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 26.38,
+          "donVi": "kW"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "hs": "98492539",
+      "nguon": "tax.98492539",
+      "trich": "98492539 - - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "hs": "98492541",
+      "nguon": "tax.98492541",
+      "trich": "98492541 - - - - - Công suất làm mát không quá 26,38 kW",
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 26.38,
+          "donVi": "kW"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "hs": "98492549",
+      "nguon": "tax.98492549",
+      "trich": "98492549 - - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "hs": "98492590",
+      "nguon": "tax.98492590",
+      "trich": "98492590 - - - - Thiết bị làm bay hơi hoặc ngưng tụ dùng cho máy điều hoà không khí lắp trên xe có động cơ ",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Thiết bị làm bay hơi",
+            "ngưng tụ"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy điều hoà không khí lắp trên xe có động cơ"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "9849252",
+      "loai": "BO_VE",
+      "ve": "(trừ loại thuộc phân nhóm 8415.20)",
+      "lyDo": "vế trừ dẫn mã phân nhóm 8415.20: hàng thuộc 8415.20 được phân loại tại chính phân nhóm đó, không dòng nào của 984925 nhận nó; tu-vung@2 không có op phủ định theo mã cho dungCho — bỏ vế không làm hàng 8415.20 rơi nhầm vì ranh giới đã nằm ở cấp phân nhóm"
+    },
+    {
+      "ma": "9849253",
+      "loai": "BO_VE",
+      "ve": "(trừ loại thuộc phân nhóm 8415.20)",
+      "lyDo": "vế trừ dẫn mã phân nhóm 8415.20: hàng thuộc 8415.20 được phân loại tại chính phân nhóm đó, không dòng nào của 984925 nhận nó; tu-vung@2 không có op phủ định theo mã cho dungCho — bỏ vế không làm hàng 8415.20 rơi nhầm vì ranh giới đã nằm ở cấp phân nhóm"
+    },
+    {
+      "ma": "9849254",
+      "loai": "BO_VE",
+      "ve": "(trừ loại thuộc phân nhóm 8415.20)",
+      "lyDo": "vế trừ dẫn mã phân nhóm 8415.20: hàng thuộc 8415.20 được phân loại tại chính phân nhóm đó, không dòng nào của 984925 nhận nó; tu-vung@2 không có op phủ định theo mã cho dungCho — bỏ vế không làm hàng 8415.20 rơi nhầm vì ranh giới đã nằm ở cấp phân nhóm"
+    },
+    {
+      "ma": "98492590",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98492590 \"Thiết bị làm bay hơi hoặc ngưng tụ\" — \"hoặc\" nối hai loại thiết bị ⇒ mảng [\"Thiết bị làm bay hơi\", \"ngưng tụ\"]"
+    },
+    {
+      "ma": "984925~r19591",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.984925~r19591 \"Của máy có công suất làm mát không quá 21,10 kW\" — vế \"Của máy\" phủ bằng dungCho \"máy\", vế biên phủ bằng congSuat <= 21,10 kW"
+    },
+    {
+      "ma": "984925",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026 (#1109): lớp tầng mới r19578 \"Kèm theo một bộ phận làm lạnh và một van đảo chiều…\" / r19582 \"Loại khác, có kèm theo bộ phận làm lạnh\" (phần còn lại) / r19586 \"Không gắn kèm bộ phận làm lạnh\" ⇒ coBoPhanLamLanh + coVanDaoChieu (mở rộng cách đọc «một bộ phận», «gắn kèm»). tieuDe.9849251 \"Loại sử dụng cho người, trong xe có động cơ\" tách thành dungCho «người» + dungChoXeCoDongCo + laBoPhan KHONG (anh em \"Bộ phận\")."
+    }
+  ]
+}
