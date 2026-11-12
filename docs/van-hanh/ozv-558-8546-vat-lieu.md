@@ -107,13 +107,31 @@ Chỉ sửa `data/so-tay/8546.json` + một chỗ lib để **câu 8546 ở mứ
 PA-B là bản nhỏ của PA-A: cùng một lõi "ứng viên vượt biên pn6", nhưng khoanh vùng đúng nhóm 8546 để
 đo được **delta 0** ở 14491 ca còn lại.
 
-### Vì sao chưa vá trong nhịp này
+### Vì sao chưa vá ở nhịp phân tích (và vá thế nào)
 
-Nhịp này đã hết giờ (CEO 12/11: tự kết thúc trước 23:59). Hai phương án trên đều **đổi ngữ nghĩa `chotDong8`**
-(dùng chung với `lib/engine-loop.js`, `lib/ho-so/lat-1.js`) nên phải đo 3 chiều `--toan-bieu` (nền `origin/main`
-vs nhánh) và bộ `--nhom=8546,8547` trước khi chốt — việc đó **không kịp trong một nhịp**, và vá dở để lại
-chắc chắn làm hỏng nghiệm thu (xem §2.4: điều kiện vật liệu dở dang ⇒ 3 ca chuyển ĐỎ → ĐỔI_HÀNH_VI ⇒
-vi phạm tiêu chí `DOI_HANH_VI = 0`).
+Nhịp phân tích (commit `55a3c7ae`) hết giờ nên chỉ ghi phân tích. Nhịp sau **đã vá thật** theo **PA-B siết**:
+vế phân biệt vật liệu khai ở tệp RIÊNG `data/ho-so/phan-biet-vat-lieu/8546.json` (mỗi nhóm **tự khai** — opt-in,
+nên phạm vi thay đổi đúng nhóm 8546, không nới thước chung), và `chotDong8` chỉ dùng vế đó khi mô tả hàng **đọc
+được vật liệu**; không đọc được (không nêu vật liệu, hoặc vật liệu chưa có trong bảng đọc) thì **giữ nguyên hành
+vi cũ** (không đoán).
+
+- Vật liệu quyết định **tiêu đề 6 số**; nếu tiêu đề đích có **đúng một** dòng 8 số ⇒ chốt dòng đó
+  (854610 → 85461000; 854690 → 85469000); nếu tiêu đề đích có **nhiều** dòng 8 số (854620: .10/.90) ⇒
+  **không đoán dòng**, từ chối + đề xuất tiêu đề đúng (`deXuat`).
+- Mô tả nêu **nhiều vật liệu** ⇒ ưu tiên vật liệu đứng ngay sau chữ "bằng/chất liệu/vật liệu" (vd "Sứ đứng
+  cách điện **bằng nhựa** epoxid": chữ "sứ" ở đầu là tên hàng, vật liệu là nhựa); không có chữ báo thì lấy vật
+  liệu nêu sau cùng.
+
+Số đo sau khi vá (đo trực tiếp, xem §4):
+
+| cổng | nền `origin/main` (5cd1e855) | nhánh |
+|---|---|---|
+| `--nhom=8546,8547` | DAT 32 · ĐỎ 4 · ĐỔI_HÀNH_VI 0 · NÉM LỖI 0 | **DAT 35 · ĐỎ 1 (8546-008, canT3) · 0 · 0** |
+| `--toan-bieu` (14 491 ca) | chotSai 7 · chotLoaiKhacSai 0 · nemLoi 0 | **7 · 0 · 0** (không đổi) |
+
+Lưu ý: `scripts/test-ca-doi-chung-vat-lieu.mjs` (cổng của GĐ, **không sửa**) có các khẳng định GHI CỨNG số
+NỀN (B1/B2: máy thật còn đỏ 4; D2/G3: kịch bản giả lớp trên máy thật nền) ⇒ sau khi vá thật, các khẳng định
+đó **đỏ** dù cổng chấm việc (`--nhom=8546,8547`) đạt. GĐ cập nhật cổng của mình (không sửa được từ thợ).
 
 ## 4. Nghiệm thu khi vá (viết lại để người sau đo đúng)
 
