@@ -4,9 +4,11 @@
     "tariff": {
       "labelVi": "Biểu thuế XNK (data/tax.json)",
       "effectiveDate": "2026-01-01",
-      "lastCheckedAt": "2026-05-27",
+      "lastCheckedAt": "2026-11-12",
       "checkEveryDays": 30,
-      "howToCheckVi": "Tra văn bản sửa đổi, bổ sung Nghị định biểu thuế XNK ưu đãi và các Nghị định biểu thuế FTA ban hành sau lastCheckedAt (congbao.chinhphu.vn, customs.gov.vn)."
+      "howToCheckVi": "Tra văn bản sửa đổi, bổ sung Nghị định biểu thuế XNK ưu đãi và các Nghị định biểu thuế FTA ban hành sau lastCheckedAt (congbao.chinhphu.vn, customs.gov.vn).",
+      "ghiChuSoat": "Soát 12/11/2026 (OZV-504 luồng 3b) theo danh sách văn bản của sổ oz-wiki-plhq (OZV-503): trong 64 văn bản ban hành sau 27/05/2026 chỉ 3 đụng thuế XNK. (1) NĐ 201/2026/NĐ-CP (BH 08/6, hiệu lực 23/7/2026) chỉ sửa thuế XUẤT KHẨU nhóm 25.29 + 81.06 (đọc toàn văn PDF Công báo số 343) — tax.json không có cột thuế XK và /api/tax chưa trả thuế XK, không mã nào của tax.json đổi (thẻ theo dõi). (2) QĐ 1309/QĐ-BCT (hiệu lực 16/6/2026) bãi bỏ QĐ 2105/QĐ-BCT, tiếp tục CBPG+CTC đường mía Thái đến 15/06/2031 — đã đổi căn cứ cột cs của 6 mã chương 17 (phiên bản v3-2026-11-12-duong-1309). (3) NQ 43/2026/NQ-CP (0% MFN xăng dầu đến 31/12/2026) đã có sẵn trong data/thue-tam-thoi.json (NGUON_GOC). Không văn bản nào đổi thuế NK ưu đãi MFN/FTA theo dòng 8 số ngoài 3 mục trên.",
+      "checkedBy": "Thợ HS 01 (OZV-504)"
     },
     "vatReduction": {
       "labelVi": "Giảm thuế GTGT 10% → 8%",
@@ -29,15 +31,19 @@
     },
     "precedents": {
       "labelVi": "Tiền lệ phân loại TB-TCHQ (data/precedents.json)",
-      "lastCheckedAt": "2026-09-24",
+      "lastCheckedAt": "2026-11-13",
       "checkEveryDays": 30,
-      "howToCheckVi": "Rà thông báo kết quả phân loại mới trên customs.gov.vn, bổ sung vào precedents.json, remap mã theo biểu hiện hành."
+      "howToCheckVi": "Rà thông báo kết quả phân loại mới trên customs.gov.vn, bổ sung vào precedents.json, remap mã theo biểu hiện hành.",
+      "checkedBy": "Thợ HS 03 (OZV-592)",
+      "ghiChuSoat": "Rà 13/11/2026 (OZV-582 → OZV-592): đã rà 3 kho — data/precedents.json (4.908 tiền lệ, issuedDate mới nhất 20/08/2026), data/community/tb-tchq/ (170 tệp, 5.472 bản ghi, mới nhất 20/08/2026), sổ oz-wiki-plhq bản chụp 2026-11-12 (1.925 mục TB-TCHQ, mới nhất 01/01/2026) — không có thông báo TB-TCHQ mới nào sau 24/09/2026 trong 3 kho đã rà. Giới hạn: cổng chính thức customs.gov.vn cần captcha/đăng nhập để export danh sách (SPA shell, API công khai không trả dataset TB-TCHQ) ⇒ khoảng 24/09→13/11 cần người có tài khoản export tay — đã có thẻ riêng (OZV-582 T4)."
     },
     "legalDocs": {
       "labelVi": "Văn bản pháp luật chính sách (data/legal-docs.json)",
-      "lastCheckedAt": "2026-07-02",
+      "lastCheckedAt": "2026-11-12",
       "checkEveryDays": 60,
-      "howToCheckVi": "Kiểm tra hiệu lực/thay thế của các văn bản trong legal-docs.json; cập nhật status, replacedBy."
+      "howToCheckVi": "Kiểm tra hiệu lực/thay thế của các văn bản trong legal-docs.json; cập nhật status, replacedBy.",
+      "checkedBy": "Thợ HS 03 (OZV-592)",
+      "ghiChuSoat": "Soát 12–13/11/2026 (OZV-592): đối chiếu 109 mục legal-docs.json với sổ oz-wiki-plhq bản chụp 2026-11-12 (2.453 văn bản, bacNguon A) bằng lib/plhq-registry.js#libraryConflicts — 16 mục lệch: 12 mục đóng ngay theo Nguồn A (hết hiệu lực 01/2026–09/2026, đổi status + replacedBy + note kèm URL, căn cứ điều khoản); 4 mục PVTM (2333/1978×2/2093 QĐ-BCT) sổ tự mâu thuẫn (CON_HIEU_LUC nhưng quan hệ thay thế không kèm ngày) ⇒ note \"chưa xác minh\", giữ nguyên status chờ đọc Nguồn A. Còn 29 nhóm số hiệu chưa khớp sổ (13 bản 09/2024/TT-BYT-DM… ) — thẻ chuẩn hoá riêng (OZV-582 T5)."
     },
     "ktcnLists": {
       "labelVi": "Danh mục kiểm tra chuyên ngành của các bộ (data/ktcn-regime-2026.json + cột chính sách cs của tax.json)",

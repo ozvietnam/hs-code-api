@@ -71,7 +71,7 @@ dashboard) mới cần Bearer token.
 | Tiền lệ TB-TCHQ (1.099 mã trong biểu hiện hành) | `data/precedents.json` — trích thêm/bổ sung theo [`docs/huong-dan-trich-tb-tchq.md`](docs/huong-dan-trich-tb-tchq.md) |
 | Cảnh báo mã dễ nhầm (68) | `data/conflicts.json` |
 | **Bảng quyết định phân giải** | `data/conflict-tables.json` |
-| Văn bản pháp luật (108) | `data/legal-docs.json` |
+| Văn bản pháp luật (109) | `data/legal-docs.json` |
 | Mã loại hình XNK | `data/customs-types.json` |
 | Sản phẩm ví dụ cho mã "Loại khác" | `data/loai-khac-products.jsonl` |
 | **Nguồn gốc từng tệp dữ liệu** | `data/SOURCES.json` |
@@ -254,7 +254,7 @@ trên 763 tờ khai giữ riêng (`npm run bench:matrix`, 2026-09-25): đúng nh
 
 - **Đừng khẳng định mã HS 8 số là chắc chắn.** Tỷ lệ đúng thật là 24,6%.
 - **Đừng bịa số hiệu văn bản pháp luật.** Chỉ trích những văn bản có trong
-  `data/legal-docs.json`; trong đó 106/108 được verify tiêu đề thật.
+  `data/legal-docs.json`; trong đó 107/109 được verify tiêu đề thật.
 - **Đừng dùng cảnh báo nhãn hiệu như kết luận** — mới 1/53 nhãn được xác minh.
 - **Đừng đọc `data/oz-export/`** — dữ liệu riêng tư, đã gitignore.
 - **Đừng đưa thông tin khách hàng vào bất kỳ tệp nào sẽ commit.**

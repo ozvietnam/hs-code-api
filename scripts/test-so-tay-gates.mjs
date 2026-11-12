@@ -91,6 +91,19 @@ check('4011 ngưỡng VÀNH không lấy đường kính ngoài → KHONG_THE_CH
 cd = chotDong8({ hs: '85044019', productText: 'Bộ đổi nguồn 30W dùng cho tủ điện' });
 check('8504.40 chọn .19 (LK trong) cũng không chốt được — phủ định chưa hoàn chỉnh', cd.ketQua === 'KHONG_THE_CHOT', JSON.stringify(cd));
 
+// ── OZV-518 / PR #1247 vòng 3: 8543.70.60 phương án 2 phải bắt buộc hành động "kết nối" (traVe L29 11/11) ──
+// Biểu .60 loại 2: "các sản phẩm được thiết kế đặc biệt ĐỂ KẾT NỐI VỚI thiết bị hoặc dụng cụ điện tín hoặc điện
+// thoại hoặc với mạng điện tín hoặc điện thoại". "Được thiết kế đặc biệt" KHÔNG phải công dụng: hàng chỉ ghi
+// "đặc biệt cho điện thoại" mà không nói kết nối (máy đo tín hiệu, làm mát, đèn báo trạng thái) không thuộc .60.
+cd = chotDong8({ hs: '854370', productText: 'máy đo cường độ tín hiệu được thiết kế đặc biệt cho điện thoại' });
+check('8543.70: "đặc biệt cho điện thoại" KHÔNG kết nối → không chốt .60 (hỏi)', ['THIEU_SO_LIEU', 'KHONG_THE_CHOT'].includes(cd.ketQua) && cd.hs !== '85437060', JSON.stringify(cd));
+cd = chotDong8({ hs: '854370', productText: 'thiết bị làm mát điện tử được thiết kế đặc biệt cho điện thoại' });
+check('8543.70: làm mát cho điện thoại KHÔNG kết nối → không chốt .60 (hỏi)', ['THIEU_SO_LIEU', 'KHONG_THE_CHOT'].includes(cd.ketQua) && cd.hs !== '85437060', JSON.stringify(cd));
+cd = chotDong8({ hs: '854370', productText: 'đèn báo trạng thái được thiết kế đặc biệt cho mạng điện tín' });
+check('8543.70: đèn báo cho mạng điện tín KHÔNG kết nối → không chốt .60 (hỏi)', ['THIEU_SO_LIEU', 'KHONG_THE_CHOT'].includes(cd.ketQua) && cd.hs !== '85437060', JSON.stringify(cd));
+cd = chotDong8({ hs: '854370', productText: 'đầu nối điện được thiết kế đặc biệt để kết nối với mạng điện thoại' });
+check('8543.70: đầu nối thật "để kết nối với mạng điện thoại" → vẫn CHOT .60', cd.ketQua === 'CHOT' && cd.hs === '85437060', JSON.stringify(cd));
+
 // ── OZV-325: "hun khói" KHÔNG loại trừ "đông lạnh" — hai TRỤC khác nhau ──
 // Biểu 0306 đặt dòng "Hun khói" BÊN TRONG tầng 1 gạch "Đông lạnh" (03061): tôm hùm hun khói ĐÔNG LẠNH là
 // hàng thật, nên "Đông lạnh" không hề phủ định "Hun khói". Khoá liệt kê phuongPhapBaoQuan gộp hai trục
@@ -185,10 +198,17 @@ check('#434 không mất ca đúng: Vỏ đúc nhôm, Que hàn inox, Ván ép g�
   mat('Vỏ đúc nhôm') === '["kim loại"]' && mat('Que hàn inox') === '["kim loại"]' && mat('Ván ép gỗ') === '["gỗ"]' && mat('Inox304') === '["kim loại"]' && mat('Ống nhựa uPVC') === '["plastic"]'
   && mat('CL vảidệt từ 100% polyester') === '["vải dệt"]' && mat('Bộ tóc giả dệt kim') === '["vải dệt"]' && mat('Hoa giả nhựa') === '["plastic"]');
 check('#434 "cổ ngỗng" không phải gỗ, "Slabs" không phải ABS; "sắt" là kim loại', mat('Micro cổ ngỗng') === '[]' && mat('Slabs') === '[]' && mat('Khung sắt sơn tĩnh điện') === '["kim loại"]');
-const MAU = { plastic: 'nhựa', 'cao su': 'cao su', giấy: 'giấy', gỗ: 'gỗ', 'kim loại': 'thép', 'thủy tinh': 'thủy tinh', 'gốm sứ': 'sứ', 'vải dệt': 'vải' };
+const MAU = { plastic: 'nhựa', 'cao su': 'cao su', giấy: 'giấy', gỗ: 'gỗ', 'kim loại': 'thép', 'thủy tinh': 'thủy tinh', 'gốm sứ': 'sứ', 'vải dệt': 'vải', 'vật liệu tổng hợp': 'vật liệu tổng hợp' };
 check('mẫu thô: kiểm được câu trích luật (lib/so-tay.js); là MỘT nhóm cờ u, ghép tiền tố vào .source thì áp cho mọi phương án (so-tay-extract-conditions)',
   chatLieuRegex('gốm sứ').test('Bằng sứ') && chatLieuRegex('plastic').test('84818041 - - - Bằng plastic') && chatLieuRegex('vải dệt').test('có một mặt được lót vải dệt')
   && MATERIALS.every(([n, re]) => re.flags.includes('u') && !re.flags.includes('g') && new RegExp(`bằng\\s+${re.source}`, re.flags).test(`bằng ${MAU[n]}`) && !new RegExp(`bằng\\s+${re.source}`, re.flags).test(MAU[n])));
+// #OZV-581 (OZV-540 PA-3 — T3): "vật liệu tổng hợp" (composite) — đọc được ở mọi nơi, CHỈ dùng để chốt ở nhóm
+// đã khai hồ sơ (data/ho-so/phan-biet-vat-lieu/<nhom>.json) ⇒ không tự chốt ở nhóm khác.
+check('#OZV-581 composite: đọc "vật liệu tổng hợp" (chữ chú giải), "composite(s)", 复合绝缘子/复合材料; KHÔNG đọc "compositeness"',
+  mat('Cách điện bằng composite') === '["vật liệu tổng hợp"]' && mat('bằng composites') === '["vật liệu tổng hợp"]'
+  && mat('vật liệu tổng hợp') === '["vật liệu tổng hợp"]' && mat('vật liệu cách điện tổng hợp') === '["vật liệu tổng hợp"]'
+  && mat('复合绝缘子') === '["vật liệu tổng hợp"]' && mat('复合材料') === '["vật liệu tổng hợp"]'
+  && mat('compositeness') === '[]' && mat('Máy đúc composite') === '[]');
 
 // ── Công tắc sổ tay dùng chung (HS_SO_TAY) — một bộ đọc cho động cơ và các cổng cảnh báo ──
 {

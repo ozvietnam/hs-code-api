@@ -75,7 +75,14 @@
    "loaiKhac": false,
    "nguon": "tax.85461000",
    "trich": "85461000 - Bằng thuỷ tinh",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Bằng thuỷ tinh"
+    }
+   ]
   },
   {
    "hs": "85462010",
@@ -83,7 +90,37 @@
    "loaiKhac": false,
    "nguon": "tax.85462010",
    "trich": "85462010 - - Cách điện xuyên của máy biến điện (máy biến áp và máy biến dòng) và cách điện của thiết bị ngắt mạch",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "dieuKienSo": [
+    {
+     "op": "HOAC",
+     "phuongAn": [
+      [
+       {
+        "fact": "tenLoai",
+        "op": "TEN_LOAI",
+        "value": "cách điện xuyên"
+       },
+       {
+        "fact": "dungCho",
+        "op": "CONG_DUNG",
+        "value": [
+         "máy biến điện",
+         "máy biến áp",
+         "máy biến dòng"
+        ]
+       }
+      ],
+      [
+       {
+        "fact": "dungCho",
+        "op": "CONG_DUNG",
+        "value": "thiết bị ngắt mạch"
+       }
+      ]
+     ]
+    }
+   ]
   },
   {
    "hs": "85462090",

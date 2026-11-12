@@ -24,7 +24,8 @@ const ROOT = __dirname;
 const PUBLIC_DIR = path.join(ROOT, 'public');
 const API_DIR = path.join(ROOT, 'api');
 const MAX_BODY = 10 * 1024 * 1024;
-const TIMEOUT_MS = Number(process.env.HS_REQUEST_TIMEOUT_MS) || 300000; // = maxDuration cũ
+const TIMEOUT_MS = Number(process.env.HS_REQUEST_TIMEOUT_MS) || 300000; // = maxDuration cũ (300 s)
+const DEFAULT_DRAIN_MS = 330000; // 330 s = trần request 300 s + 30 s đệm xả khi SIGTERM (#418, OZV-505)
 
 const routeConfig = JSON.parse(fs.readFileSync(path.join(ROOT, 'routes.json'), 'utf8'));
 
@@ -62,10 +63,14 @@ const MIME = {
 };
 
 function withHelpers(res) {
+  const ensureDrainCloseHeader = () => {
+    if (inflight.laDangXa() && !res.headersSent) res.setHeader('Connection', 'close');
+  };
   res.status = (code) => { res.statusCode = code; return res; };
   res.json = (obj) => {
     const body = Buffer.from(JSON.stringify(obj), 'utf8');
     if (!res.headersSent) {
+      ensureDrainCloseHeader();
       if (!res.getHeader('Content-Type')) res.setHeader('Content-Type', 'application/json; charset=utf-8');
       res.setHeader('Content-Length', body.length);
     }
@@ -74,12 +79,14 @@ function withHelpers(res) {
   };
   res.send = (x) => {
     if (x && typeof x === 'object' && !Buffer.isBuffer(x)) return res.json(x);
+    ensureDrainCloseHeader();
     res.end(x == null ? '' : x);
     return res;
   };
   res.redirect = (a, b) => {
     const [code, loc] = typeof a === 'number' ? [a, b] : [307, a];
     res.statusCode = code;
+    ensureDrainCloseHeader();
     res.setHeader('Location', loc);
     res.end();
     return res;
@@ -119,6 +126,26 @@ function loadHandler(name) {
   const fn = typeof mod === 'function' ? mod : (mod && typeof mod.default === 'function' ? mod.default : null);
   handlerCache.set(name, fn);
   return fn;
+}
+
+/**
+ * OZV-505: Nạp sẵn toàn bộ handler trong api/*.js và giải nén trước bảng biểu thuế gốc
+ * (lib/tax-lookup -> bieu-chinh.jsonl.gz ~2s) trước khi mở cổng lắng nghe, tránh nghẽn
+ * Event Loop ~2,2 giây ở lượt tra thuế đầu tiên ngay sau khi container khởi động lại.
+ */
+function warmUpHandlers() {
+  if (!fs.existsSync(API_DIR)) return [];
+  const loaded = [];
+  for (const entry of fs.readdirSync(API_DIR).sort()) {
+    if (!entry.endsWith('.js')) continue;
+    const name = entry.slice(0, -3);
+    if (loadHandler(name)) loaded.push(name);
+  }
+  try {
+    const { buildTaxLookup } = require('./lib/tax-lookup');
+    buildTaxLookup('72052100');
+  } catch { /* bỏ qua nếu môi trường test cô lập thiếu bảng phụ */ }
+  return loaded;
 }
 
 function applyStaticHeaders(res, pathname) {
@@ -168,6 +195,7 @@ function createServer() {
     // #418: đếm lượt đang chạy để khi deploy (SIGTERM) chờ xả hết rồi mới thoát; 'close' bắn cả khi xong lẫn khi đứt.
     inflight.vao();
     res.once('close', () => inflight.ra());
+    if (inflight.laDangXa() && !res.headersSent) res.setHeader('Connection', 'close');
     if (process.env.HS_ACCESS_LOG !== '0') {
       // #261: khách không đồng ý chia sẻ → log stdout KHÔNG lộ mô tả hàng (che q/moTa/description, giữ độ dài).
       res.on('finish', () => {
@@ -194,28 +222,56 @@ function createServer() {
   return server;
 }
 
-module.exports = { createServer, applyRewrite };
+/**
+ * #418 + OZV-505: Tắt êm khi nhận SIGTERM/SIGINT:
+ * 1. Bật cờ đang xả (`inflight.datDangXa(true)`) NGAY LẬP TỨC → `/api/health` trả 503 `draining`
+ *    và mọi phản hồi HTTP gắn `Connection: close` để Cổng OZ / proxy đóng kết nối Keep-Alive.
+ * 2. Tuỳ chọn chờ ngắn `preCloseMs` (env `HS_PRE_CLOSE_MS`, mặc định 0) để LB/proxy kịp đọc health 503
+ *    trước khi đóng socket lắng nghe.
+ * 3. Gọi `server.close()` + `server.closeIdleConnections()` (ngừng nhận kết nối mới, giải phóng keep-alive rảnh).
+ * 4. Chờ toàn bộ lượt đang chạy xong tới tối đa `drainMs` (`HS_DRAIN_MS`, mặc định 330000 ms > trần request 300 s).
+ */
+async function gracefulShutdown(server, opts = {}) {
+  const t0 = Date.now();
+  const sig = opts.signal || 'SIGTERM';
+  const drainMaxMs = Number(opts.drainMs) || Number(process.env.HS_DRAIN_MS) || DEFAULT_DRAIN_MS;
+  const preCloseMs = opts.preCloseMs !== undefined ? Number(opts.preCloseMs) : (Number(process.env.HS_PRE_CLOSE_MS) || 0);
+  const buocMs = Number(opts.buocMs) || 500;
+  const shouldExit = opts.exit !== false;
+
+  inflight.datDangXa(true);
+  const dangBanDau = inflight.soDangChay();
+  console.log(`${sig} — dừng nhận request mới, chờ ${dangBanDau} lượt đang chạy (tối đa ${drainMaxMs} ms)`);
+
+  if (preCloseMs > 0) {
+    await new Promise((r) => setTimeout(r, Math.min(preCloseMs, drainMaxMs)));
+  }
+  server.close();
+  if (typeof server.closeIdleConnections === 'function') server.closeIdleConnections();
+
+  const remainingMs = Math.max(0, drainMaxMs - (Date.now() - t0));
+  const r = await inflight.xa({ maxMs: remainingMs, buocMs });
+  const tongMs = Date.now() - t0;
+  console.log(r.conLai ? `hết giờ xả sau ${tongMs} ms, còn ${r.conLai} lượt bị cắt` : `đã xả hết sau ${tongMs} ms`);
+  if (shouldExit) process.exit(0);
+  return { conLai: r.conLai, choMs: tongMs, dangBanDau, drainMaxMs, signal: sig };
+}
+
+module.exports = { createServer, applyRewrite, warmUpHandlers, gracefulShutdown, DEFAULT_DRAIN_MS, TIMEOUT_MS };
 
 if (require.main === module) {
   const port = Number(process.env.PORT) || 3000;
   const host = process.env.HOST || '0.0.0.0';
+  warmUpHandlers();
   const server = createServer();
   server.listen(port, host, () => {
     console.log(`hs-code-api listening on http://${host}:${port} (data write dir: ${process.env.HS_DATA_DIR || 'data/'})`);
   });
-  // #418: deploy thay container → SIGTERM. Dừng nhận lượt mới (server.close + health 503 draining), CHỜ lượt
-  // đang chạy (classify 2–5 phút) xong, tối đa HS_DRAIN_MS (mặc định 330 s), rồi mới thoát. Docker phải cho
-  // đủ thời gian: `docker stop -t 360` / stop_grace_period — xem docs/deploy-coolify.md.
   let dangDung = false;
-  const stop = async (sig) => {
-    if (dangDung) return;
+  const stop = (sig) => {
+    if (dangDung) return undefined;
     dangDung = true;
-    const dang = inflight.soDangChay();
-    console.log(`${sig} — dừng nhận request mới, chờ ${dang} lượt đang chạy (tối đa ${Number(process.env.HS_DRAIN_MS) || 330000} ms)`);
-    server.close();
-    const r = await inflight.xa();
-    console.log(r.conLai ? `hết giờ xả sau ${r.choMs} ms, còn ${r.conLai} lượt bị cắt` : `đã xả hết sau ${r.choMs} ms`);
-    process.exit(0);
+    return gracefulShutdown(server, { signal: sig });
   };
   process.on('SIGTERM', () => stop('SIGTERM'));
   process.on('SIGINT', () => stop('SIGINT'));

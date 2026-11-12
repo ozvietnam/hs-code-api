@@ -47,6 +47,23 @@ r = await run(TOY, [R1_TOY,
 check('cổng "trừ plastic" chặn 9503.00.50 → vòng 3 → 9503.00.99', r.results[0]?.hs === '95030099' && calls.length === 3 && r.engine.gates[0].blocks.includes('MAU_THUAN_NHAN_DONG'), JSON.stringify([r.results[0]?.hs, calls.length, r.engine.gates]));
 check('lý do chặn được gửi cho vòng 3', /trừ plastic|plastic/i.test(calls[2].user));
 
+// 0c. OZV-507 việc 2 — ms TỪNG VÒNG cho khoá dịch vụ (A3 đo trên prod): phases.llmTungVong = llmMs từng vòng ≥2,
+// tổng khớp phases.llmMs; có cho KHOÁ DỊCH VỤ (kenhGoi) và cho lượt thường; KHÔNG đổi shape khác của phản hồi.
+{
+  // Ca 3 lời gọi AI vừa chạy ở trên (vòng 2 bị chặn → vòng 3 sửa): llmTungVong phải có đúng 2 phần tử.
+  const ph3 = r.engine.phases || {};
+  const tv = ph3.llmTungVong;
+  check('OZV-507: llmTungVong đúng số vòng AI ≥2 (3 lời gọi → 2 phần tử), mỗi phần tử số ≥ 0', Array.isArray(tv) && tv.length === calls.length - 1 && tv.length === 2 && tv.every((m) => Number.isFinite(m) && m >= 0), JSON.stringify([calls.length, tv]));
+  check('OZV-507: tổng llmTungVong = phases.llmMs (cùng phép đo)', Array.isArray(tv) && Number.isFinite(ph3.llmMs) && Math.abs(ph3.llmMs - tv.reduce((a, b) => a + b, 0)) <= 1, JSON.stringify([ph3.llmMs, tv]));
+  check('OZV-507: shape khác không đổi — engine.log không xuất hiện khi không debug', r.engine.log === undefined, JSON.stringify(Object.keys(r.engine)));
+  // Lượt KHOÁ DỊCH VỤ (api/classify.js đẩy serviceCaller vào opts.kenhGoi): cùng phases.llmTungVong để đo A3 trên prod.
+  script = [R1_KNIFE, { decision: 'CHOT', hs: '82019000', confidence: 88, reason: 'dụng cụ cầm tay nông nghiệp, cơ-tay', gir: 'GIR 1', basis: [{ stream: 'SAN_PHAM', claim: 'dùng hái cau', evidence: '用于摘取槟榔' }, { stream: 'CHU_GIAI', claim: 'nhóm 8201 gồm dụng cụ cầm tay nông nghiệp', ref: '8201' }], conditions: [{ fact: 'thao tác bằng tay, không động cơ', status: 'MET', evidence: '伸缩杆' }], alternatives: [], questions: [] }];
+  calls = [];
+  const rk = await classify(KNIFE, { kenhGoi: 'cong-oz' });
+  const phk = rk.engine.phases || {};
+  check('OZV-507: khoá dịch vụ đọc được r1Ms + llmTungVong + engine.ms (tổng)', Number.isFinite(phk.r1Ms) && phk.r1Ms >= 0 && Array.isArray(phk.llmTungVong) && phk.llmTungVong.length === 1 && Number.isFinite(rk.engine.ms), JSON.stringify(phk));
+}
+
 // 3. HỎI → NEED_FACTS với câu hỏi về thuộc tính
 r = await run(TOY, [R1_TOY, { decision: 'HOI', hs: '950300', confidence: 50, reason: 'chưa rõ có phải mô hình theo tỷ lệ', basis: [], conditions: [{ fact: 'là mô hình thu nhỏ theo tỷ lệ của vật thật', status: 'UNKNOWN', evidence: '' }], alternatives: [], questions: [{ fact: 'mô hình theo tỷ lệ', question: 'Sản phẩm có phải bản thu nhỏ theo tỷ lệ của một vật thật không?', whereToFind: 'ảnh / hỏi người bán' }] }]);
 check('HỎI → NEED_FACTS, câu hỏi về thuộc tính, không nhắc mã', r.status === 'NEED_FACTS' && r.nextAction.questions[0].questionVi.includes('tỷ lệ') && !/9503/.test(r.nextAction.questions[0].questionVi), JSON.stringify([r.status, r.nextAction]));
@@ -293,6 +310,117 @@ check('vòng 1 lỗi tạm thời → nextAction RETRY', r.nextAction?.type === 
   const lech = content.filter((l) => verifyQuote(l, srcRich) !== 'ok');
   check('nhãn hồ sơ: mọi dòng có nội dung của HỒ SƠ GỐC chép nguyên văn kèm nhãn → kiểm được', content.length === 12 && !lech.length, JSON.stringify([content.length, lech]));
   check('nhãn hồ sơ: dòng tiêu đề mục (chỉ có nhãn) không phải câu trích', headers.length === 3 && headers.every((l) => verifyQuote(l, srcRich) === 'bad'), JSON.stringify(headers));
+}
+
+// ── OZV-398: dàn mục chú giải noteOutline trong headingBlock (thay clip 450 làm 203/235 nhóm mất mục con) ──
+{
+  const fs = require('fs');
+  const { gather, noteOutline, headingBlock } = require('../lib/engine-loop.js');
+  const g9503 = await gather(R1_TOY, TOY, { micAllowed: false });
+  const blk9503 = (headingBlock('9503', 'đồ chơi') || '').normalize('NFC');
+  const pack9503 = (g9503.pack || '').normalize('NFC');
+  check('noteOutline: nhóm 9503 trong gói vòng 2 giữ "(D) Đồ chơi khác" và các mục con (vii) khinh khí cầu và diều, (viii) vũ khí đồ chơi, (x) xe cút-kít, (xi) đèn ảo thuật',
+    ['(D) Đồ chơi khác', 'Khinh khí cầu và diều đồ chơi', 'vũ khí đồ chơi', 'xe cút-kít', 'đèn ảo thuật'].every((kw) => blk9503.includes(kw) && pack9503.includes(kw)),
+    blk9503.slice(0, 400));
+
+  const cgh = JSON.parse(fs.readFileSync('data/chu-giai-heading.json', 'utf8'));
+  const clip450 = (s) => { const t = String(s || '').replace(/\s+/g, ' ').trim(); return t.length > 450 ? `${t.slice(0, 450)}…` : t; };
+  const patTrueSrc = /(?:^|(?<=[.;:…]\)?)\s)\((?:[A-Z]|[ivxlc]{1,6}|\d{1,2})\)\s/g;
+  const patTrueOut = /(?:^\s*|\n\s*|(?<=[.;:…]\)?)\s)\((?:[A-Z]|[ivxlc]{1,6}|\d{1,2})\)\s/g;
+  const patAll = /\((?:[A-Z]|[ivxlc]{1,6}|\d{1,2})\)\s/g;
+  const demChu = (s) => String(s || '').replace(/…/g, '').replace(/\s+/g, ' ').trim().length;
+  let tot = 0; let lostClip = 0; let lostOut = 0; let chi1Clip = 0; let chi1Out = 0; let rescuedGe2 = 0; let nonVerbatim = 0;
+  let khongMuc = 0; let nhomBiMatChu = 0; let tongKyTuMat = 0;
+  let soNhomNganHonNen = 0; let tongKyTuMatToanBo = 0;
+  let soNhomNenNguyenVenBiCat = 0; let tongKyTuMatNenNguyenVen = 0;
+  let dongCheDoiCau = 0; const nhomCheDoiCau = new Set();
+  let dongKetThucGiuaChuKhongEllipsis = 0; let dongCatDoiSoHS = 0;
+  const hs5Split = [];
+  for (const [code, h] of Object.entries(cgh)) {
+    const bg = String(h.bao_gom || '').replace(/\s+/g, ' ').trim();
+    if (!bg) continue;
+    const out = noteOutline(h.bao_gom);
+    const cu450 = clip450(bg);
+    const lenOut = demChu(out);
+    const lenCu = demChu(cu450);
+    if (lenOut < lenCu) {
+      soNhomNganHonNen += 1;
+      tongKyTuMatToanBo += lenCu - lenOut;
+      if (bg.length <= 450) {
+        soNhomNenNguyenVenBiCat += 1;
+        tongKyTuMatNenNguyenVen += lenCu - lenOut;
+      }
+    }
+    if ((bg.match(patAll) || []).length < 2) {
+      khongMuc += 1;
+      if (lenOut < lenCu) {
+        nhomBiMatChu += 1;
+        tongKyTuMat += lenCu - lenOut;
+      }
+    }
+    for (const line of out.split('\n')) {
+      const s = line.replace(/^\s+/, '');
+      const clean = s.trim().replace(/…+$/, '');
+      if (clean && !bg.includes(clean)) nonVerbatim += 1;
+      if (/^\((?:[A-Z]|[ivxlc]{1,6}|\d{1,2})\)\s/.test(clean)) {
+        const idx = bg.indexOf(clean);
+        if (idx > 0 && /[a-zà-ỹ,]/.test(bg.slice(0, idx).trimEnd().slice(-1))) {
+          dongCheDoiCau += 1;
+          nhomCheDoiCau.add(code);
+        }
+      }
+      if (!s || s.endsWith('…')) continue;
+      const i = bg.indexOf(s);
+      if (i >= 0 && i + s.length < bg.length) {
+        const ke = bg[i + s.length];
+        if (ke !== ' ') dongKetThucGiuaChuKhongEllipsis += 1;
+        if (/\d[\d.]?$/.test(s) && /\d/.test(ke)) {
+          dongCatDoiSoHS += 1;
+          if (['1515', '3404', '4802', '6103', '7905'].includes(code)) hs5Split.push(`${code}:${s.slice(-20)}|${bg.slice(i + s.length, i + s.length + 6)}`);
+        }
+      }
+    }
+    const mAll = bg.match(patTrueSrc) || [];
+    if (mAll.length >= 2) {
+      tot += 1;
+      const mCl = (cu450.match(patTrueSrc) || []).length;
+      const mOu = (out.match(patTrueOut) || []).length;
+      if (mCl < mAll.length) lostClip += 1;
+      if (mOu < mAll.length) lostOut += 1;
+      if (mCl <= 1) chi1Clip += 1;
+      if (mOu <= 1) chi1Out += 1;
+      if (mCl <= 1 && mOu >= 2) rescuedGe2 += 1;
+    }
+  }
+  check('noteOutline: trên 448 nhóm có ≥ 2 đầu mục thật, số nhóm mất mục giảm mạnh (400 → ≤ 27) và nhóm chỉ còn ≤ 1 mục về 0 (239 → 0)',
+    tot === 448 && rescuedGe2 >= 200 && lostOut <= 27 && lostOut < lostClip && chi1Out === 0,
+    JSON.stringify({ tot, lostClip, lostOut, chi1Clip, chi1Out, rescuedGe2 }));
+  const gom1212 = (headingBlock('1212', 'hàng mẫu') || '').split('\n').find((l) => l.includes('GỒM:')) || '';
+  check('noteOutline: chống hồi quy nhóm không-mục — headingBlock("1212") giữ ≥ 440 ký tự GỒM và 0/328 nhóm dưới 2 mục mất chữ so với clip(450)',
+    gom1212.length >= 440 && khongMuc === 328 && nhomBiMatChu === 0 && tongKyTuMat === 0,
+    JSON.stringify({ gom1212Len: gom1212.length, khongMuc, nhomBiMatChu, tongKyTuMat }));
+  check('noteOutline: 0 dòng kết thúc giữa chữ mà không có dấu … trên toàn bộ 1.269 nhóm',
+    dongKetThucGiuaChuKhongEllipsis === 0,
+    JSON.stringify({ dongKetThucGiuaChuKhongEllipsis }));
+  check('noteOutline: với 5 nhóm 1515/3404/4802/6103/7905 (và toàn biểu), không dòng nào kết thúc bằng chữ số mà ký tự kế tiếp trong nguồn là chữ số',
+    hs5Split.length === 0 && dongCatDoiSoHS === 0,
+    JSON.stringify({ hs5Split, dongCatDoiSoHS }));
+  check('noteOutline: 0 dòng bắt đầu bằng dấu mục mà chữ liền trước trong nguồn là chữ thường/dấu phẩy (chống chẻ đôi câu luật 135 nhóm)',
+    dongCheDoiCau === 0 && nhomCheDoiCau.size === 0,
+    JSON.stringify({ dongCheDoiCau, soNhomCheDoiCau: nhomCheDoiCau.size }));
+  check('noteOutline: 0 nhóm có đầu ra ngắn hơn clip(450) trên toàn bộ 815 nhóm có bao_gom (kể cả 22 nhóm nền giữ nguyên vẹn)',
+    soNhomNganHonNen === 0 && tongKyTuMatToanBo === 0 && soNhomNenNguyenVenBiCat === 0 && tongKyTuMatNenNguyenVen === 0,
+    JSON.stringify({ soNhomNganHonNen, tongKyTuMatToanBo, soNhomNenNguyenVenBiCat, tongKyTuMatNenNguyenVen }));
+  const gom5212 = (headingBlock('5212', 'vải dệt thoi') || '').split('\n').find((l) => l.includes('GỒM:')) || '';
+  check('noteOutline: headingBlock("5212") giữ ≥ 440 ký tự GỒM (nguồn 445 ký tự, nền giữ nguyên vẹn)',
+    gom5212.length >= 440,
+    JSON.stringify({ gom5212Len: gom5212.length }));
+  const t0 = Date.now();
+  const redosOut = noteOutline(Array.from({ length: 40000 }, (_, i) => `(xviii) muc_${i}.`).join(' '));
+  const redosMs = Date.now() - t0;
+  check('noteOutline: trích nguyên văn 100% trên toàn bộ 1.269 nhóm và chịu chuỗi dài đối kháng 40.000 từ lặp < 2 giây',
+    nonVerbatim === 0 && redosMs < 2000 && redosOut.length <= 1801,
+    JSON.stringify({ nonVerbatim, redosMs, len: redosOut.length }));
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);

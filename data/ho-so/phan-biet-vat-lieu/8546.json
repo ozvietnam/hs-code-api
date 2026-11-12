@@ -1,0 +1,14 @@
+{
+  "nhom": "8546",
+  "nguonLoai": "AI_DA_KIEM",
+  "nguon": "data/chu-giai-heading.json#8546.nhom",
+  "trich": "Vật cách điện có thể được làm từ bất kỳ vật liệu cách điện nào, thường rất cứng và không xốp, ví dụ, vật liệu gốm (sứ, steatite), thủy tinh, bazan nóng chảy, cao su cứng, plastic hoặc vật liệu cách điện tổng hợp.",
+  "vay": [
+    { "vatLieu": "thủy tinh", "pn6": "854610", "tenPn6": "Bằng thuỷ tinh" },
+    { "vatLieu": "gốm sứ", "pn6": "854620", "tenPn6": "Bằng gốm, sứ" },
+    { "vatLieu": "plastic", "pn6": "854690", "tenPn6": "Loại khác" },
+    { "vatLieu": "cao su", "pn6": "854690", "tenPn6": "Loại khác" },
+    { "vatLieu": "vật liệu tổng hợp", "pn6": "854690", "tenPn6": "Loại khác" }
+  ],
+  "ghiChu": "Nhóm 8546 có 3 TIÊU ĐỀ 6 SỐ ANH EM phân biệt nhau bằng VẬT LIỆU: 854610 (thuỷ tinh) · 854620 (gốm, sứ) · 854690 (loại khác: bazan nóng chảy, cao su cứng, plastic, vật liệu cách điện tổng hợp — theo chú giải nhóm). Vật liệu quyết định TIÊU ĐỀ, không chỉ đuôi 8 số. Mỗi vế chép NGUYÊN VĂN câu chú giải ở `trich` (kiểm được trong data/chu-giai-heading.json#8546.nhom). Vế 'vật liệu tổng hợp' (vật liệu cách điện tổng hợp = composite) khai từ OZV-581 (OZV-540 PA-3) — bảng đọc vật liệu ở lib/so-tay-gates.js đã có mẫu 'composite' / 'vật liệu tổng hợp' / 复合绝缘子 / 复合材料. Vật liệu CHƯA có trong bảng đọc thì KHÔNG khai ở đây — máy không đọc được vật liệu thì giữ hành vi cũ (chốt theo tiêu đề đang hỏi), không đoán."
+}
