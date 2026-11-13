@@ -109,7 +109,7 @@ check(
 //    - #9 (39073030, maBot=32082090): trượt top-1, được kiemTruocChot cứu vào top-3
 //    - #10 (39199092, maBot=39191092): trượt top-1, được gather (_user) đưa vào top-3
 //    - #14 (42029190, maBot=42023200): trượt top-1, được kiemTruocChot cứu vào top-3
-//    - #24 (72082600, maBot=null): NEED_FACTS -> không ra mã
+//    - #24 (72082600, maBot=null): mã tiền lệ TB-TCHQ 6629 lên vị trí 1 -> chốt đúng 72082600
 //    - #39 (85072094, maBot=85072099): sai mã 8 số (cùng 6 số đầu, rơi vào mã dễ lẫn)
 const diverseRun = await chayBoDo50Ca({ sttList: [1, 9, 10, 14, 24, 39], skipSearch: false });
 const byStt = Object.fromEntries(diverseRun.replay1211.chiTiet.map((r) => [r.stt, r]));
@@ -121,11 +121,11 @@ check(
     && byStt[9]?.top1 === true && byStt[9]?.top3 === true && byStt[9]?.dsMa[0] === '39073030'
     && byStt[10]?.top1 === true && byStt[10]?.top3 === true && byStt[10]?.dsMa[0] === '39199092'
     && byStt[14]?.top1 === true && byStt[14]?.top3 === true && byStt[14]?.dsMa[0] === '42029190'
-    && byStt[24]?.khongRaMa === true
+    && byStt[24]?.top1 === true && byStt[24]?.dsMa[0] === '72082600' && byStt[24]?.khongRaMa === false
     && byStt[39]?.top1 === false && byStt[39]?.top3 === false && byStt[39]?.dung6So === true && byStt[39]?.roiVaoMaLan === '85072099'
-    && diverseRun.replay1211.tomTat.top1SoSongSot === 4
-    && diverseRun.replay1211.tomTat.top3SoSongSot === 4
-    && diverseRun.replay1211.tomTat.khongRaMa === 1
+    && diverseRun.replay1211.tomTat.top1SoSongSot === 5
+    && diverseRun.replay1211.tomTat.top3SoSongSot === 5
+    && diverseRun.replay1211.tomTat.khongRaMa === 0
     && diverseRun.searchCandidates.tomTat.tong === 6
     && diverseRun.searchCandidates.tomTat.top1Nhom4 === 1
     && diverseRun.searchPrecedents.tomTat.top1 === 6,
