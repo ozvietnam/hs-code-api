@@ -6,9 +6,12 @@ import './test-isolate-data.mjs';
  *      chốt đúng mã 8 số ở cả tầng chotDong8 và tầng replay1211 / classifyLoop.
  *   2. Kiểm tối thiểu 3 ca âm tính (mô tả gần giống nhưng thuộc dòng anh em / nhóm khác hoặc thiếu số liệu)
  *      cho MỖI ca đã sửa — chứng minh không đoán bậy hay nới điều kiện bừa.
- *   3. Kiểm 3 ca còn lại (#24 72082600 thiếu chữ ngữ cảnh "dày", #30 82089000 dòng Loại khác trần,
- *      #45 87141090 dòng Loại khác còn nhánh CONG_DUNG tự do chưa phủ định) giữ nguyên hành vi an toàn
- *      (hỏi thêm hoặc không thể chốt, tuyệt đối không chốt sai).
+ *   3. Kiểm 2 ca còn lại (#30 82089000 dòng Loại khác trần, #45 87141090 dòng Loại khác còn nhánh
+ *      CONG_DUNG tự do chưa phủ định) giữ nguyên hành vi an toàn (hỏi thêm hoặc không thể chốt,
+ *      tuyệt đối không chốt sai).
+ *   4. Ca #24 (72082600): OZV-517 đôn mã tiền lệ TB-TCHQ 6629/TB-TCHQ lên vị trí 1 nên nay chốt
+ *      ĐÚNG 72082600 (mô tả "3,6 mm" khớp dòng "chiều dày từ 3 mm đến dưới 4,75 mm") — chuyển từ
+ *      nhóm "không ra mã" sang nhóm "chốt đúng", khung an toàn của #30/#45 giữ nguyên.
  */
 import fs from 'node:fs';
 import { createRequire } from 'node:module';
@@ -283,7 +286,7 @@ function check(name, ok, detail = '') {
   const rep = kq.replay1211;
   const byStt = Object.fromEntries(rep.chiTiet.map((r) => [r.stt, r]));
 
-  for (const [stt, expectedHs] of [[26, '72112390'], [27, '72122020'], [31, '83025000'], [46, '90111000']]) {
+  for (const [stt, expectedHs] of [[26, '72112390'], [27, '72122020'], [31, '83025000'], [46, '90111000'], [24, '72082600']]) {
     const r = byStt[stt];
     check(
       `Replay 50 ca — Ca #${stt} chốt đúng ${expectedHs} và khongRaMa=false`,
@@ -292,7 +295,7 @@ function check(name, ok, detail = '') {
     );
   }
 
-  for (const stt of [24, 30, 45]) {
+  for (const stt of [30, 45]) {
     const r = byStt[stt];
     check(
       `Replay 50 ca — Ca #${stt} giữ nguyên khongRaMa=true (an toàn, không đoán bậy khi thiếu ngữ cảnh/loại trừ)`,

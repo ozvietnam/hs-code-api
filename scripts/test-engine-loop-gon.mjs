@@ -1,8 +1,13 @@
 // Tối ưu độ trễ engine-loop (backlog 09 bước 3+4): HS_GON_DAU_RA + HS_MAX_VONG_SUA — AI giả, không mạng, không LLM.
-//  A. CÔNG TẮC TẮT = origin/main TỪNG BYTE. Cùng kịch bản chạy qua golden master (tests/fixtures/engine-loop-goc/ — bản đóng
-//     băng lib/engine-loop.js tại main 6280c65) và qua lib/engine-loop.js với HS_GON_DAU_RA=off HS_MAX_VONG_SUA=off: mọi lời gọi AI
+//  A. CÔNG TẮC TẮT = MỐC MỚI TỪNG BYTE. Cùng kịch bản chạy qua golden master (tests/fixtures/engine-loop-goc/ — bản đóng
+//     băng lib/engine-loop.js tại commit 688bf156) và qua lib/engine-loop.js với HS_GON_DAU_RA=off HS_MAX_VONG_SUA=off: mọi lời gọi AI
 //     (system, user, opts kể cả khoá undefined, đúng thứ tự khoá) và phản hồi (bỏ trường đo giờ) phải trùng từng byte. Hai bản
 //     đọc CÙNG dữ liệu nên commit dữ liệu (sổ tay, biểu thuế…) không làm đỏ test. Thêm: băm SYS_R1/SYS_R2 ghim theo origin/main.
+//     MỐC CHUYỂN (OZV-517, GĐ 13/11 TRẢ THỢ PR #1269): mốc cũ 6280c65 → mốc mới 688bf156. Lý do: PR #1269 làm giàu
+//     prompt tiền lệ (thêm khối chú giải nhóm từ tiền lệ) + ưu tiên mã tiền lệ TB-TCHQ chắc chắn lên vị trí 1 ⇒ byte prompt
+//     ĐỔI CHỦ Ý, không phải hồi quy (GĐ đã tự đo: mã chốt giống hệt 20/20 kịch bản vàng). Đây là CHUYỂN MỐC CÓ SUY XÉT, không
+//     phải nới thước: guard vẫn so byte từng ký tự với mốc mới nên mọi hồi quy prompt ở PR sau vẫn bị bắt. Fixture cũ 6280c65
+//     GIỮ LẠI trong repo (không xoá theo chỉ đạo GĐ) — chỉ là bản tham chiếu lịch sử.
 //  B. MẶC ĐỊNH BẬT: prompt có trần (khớp đúng phần code đọc), maxTokens 6000/10000, AI giả ra kết quả hợp lệ; JSON cụt/mảnh vụn
 //     → lưới an toàn (gọi lại tắt suy nghĩ); trần vòng sửa giữ cờ; bước tất định NHOM_CHUA_KIEM (nhận / giải trình gộp / vòng AI).
 import './test-isolate-data.mjs';
@@ -41,9 +46,10 @@ const webMod = require('../lib/web-facts.js');
 const webThat = webMod.webFacts;
 const WEB_GIA = async () => ({ cauTraLoi: 'Móc khoá súng ngón tay in 3D, không phải mô hình theo tỷ lệ.', nguon: [{ url: 'https://example.com' }] });
 let ozGoi = 0;
-// Golden master = RÀO CHẮN THỜI GIAN TRIỂN KHAI: chứng minh "off" ≡ main 6280c65 trong lúc hai công tắc mới bật trên prod.
+// Golden master = RÀO CHẮN THỜI GIAN TRIỂN KHAI: chứng minh "off" ≡ mốc 688bf156 trong lúc hai công tắc mới bật trên prod.
+// Mốc 6280c65 (bản cũ) còn nằm trong thư mục này để đối chiếu lịch sử — KHÔNG xoá (GĐ 13/11).
 // XOÁ fixture này cùng phần A dưới đây ≤ 2 tuần sau khi HS_GON_DAU_RA / HS_MAX_VONG_SUA được xác nhận ổn trên prod.
-const GOC = require('../tests/fixtures/engine-loop-goc/engine-loop.6280c65.js');
+const GOC = require('../tests/fixtures/engine-loop-goc/engine-loop.688bf156.js');
 const MOI = require('../lib/engine-loop.js');
 const { TRAN } = MOI;
 let pass = 0; let fail = 0;
@@ -139,9 +145,10 @@ const lechDau = (a, b) => { let i = 0; while (i < a.length && a[i] === b[i]) i +
 const sha = (s) => createHash('sha256').update(s, 'utf8').digest('hex');
 
 // ═════════ A. CÔNG TẮC TẮT = origin/main TỪNG BYTE ═════════
-// Băm prompt hệ thống của origin/main 6280c65 (độc lập dữ liệu) — đổi chữ SYS_R1/SYS_R2 là đỏ ở đây.
-check('A0 SYS_R1 trùng origin/main 6280c65 (sha256 ghim)', sha(MOI.SYS_R1) === '2ceb6b55f3cced0ece9bca9cb3d004d91654865a94cfc4bd0df130bd63807f8d' && MOI.SYS_R1 === GOC.SYS_R1, sha(MOI.SYS_R1));
-check('A0 SYS_R2 trùng origin/main 6280c65 (sha256 ghim)', sha(MOI.SYS_R2) === '6d1267b2028d80fa264b4c3bb34fafabfc3dadd80d69fe40714d965077cd5677' && MOI.SYS_R2 === GOC.SYS_R2, sha(MOI.SYS_R2));
+// Băm prompt hệ thống (độc lập dữ liệu) — đổi chữ SYS_R1/SYS_R2 là đỏ ở đây. OZV-517: mốc so byte chuyển
+// 6280c65 → 688bf156, nhưng HAI SHA256 GHIM SYS_R1/SYS_R2 KHÔNG ĐỔI (prompt hệ thống không được đổi — GĐ 13/11).
+check('A0 SYS_R1 trùng mốc mới 688bf156 (sha256 ghim — KHÔNG đổi từ 6280c65)', sha(MOI.SYS_R1) === '2ceb6b55f3cced0ece9bca9cb3d004d91654865a94cfc4bd0df130bd63807f8d' && MOI.SYS_R1 === GOC.SYS_R1, sha(MOI.SYS_R1));
+check('A0 SYS_R2 trùng mốc mới 688bf156 (sha256 ghim — KHÔNG đổi từ 6280c65)', sha(MOI.SYS_R2) === '6d1267b2028d80fa264b4c3bb34fafabfc3dadd80d69fe40714d965077cd5677' && MOI.SYS_R2 === GOC.SYS_R2, sha(MOI.SYS_R2));
 // #725-45 nâng trần lần "tắt suy nghĩ" 30 s → 45 s (LOOP_THINKING_OFF_TIMEOUT_MS); so từng byte với bản gốc thì ghim lại 30 s.
 const TAT = { HS_GON_DAU_RA: 'off', HS_MAX_VONG_SUA: 'off', LOOP_THINKING_OFF_TIMEOUT_MS: '30000' };
 for (const name of Object.keys(SC)) {
