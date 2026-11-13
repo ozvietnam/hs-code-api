@@ -4,13 +4,19 @@
   "nhom": "8544",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T1003#soan-854411",
-    "ngay": "2026-11-06"
+    "phien": "https://claude.ai/code/session_29331a75-ozv342-tho04#soan-854411",
+    "ngay": "2026-11-12"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "https://claude.ai/code/session_29331a75-ozv342-soat#soat-ozv342",
+    "ngay": "2026-11-12",
+    "ghiChu": "tiếp soát L29 11/11: bỏ neo tenLoai \"lớp phủ ngoài\" (BO_VE lý do vế vị trí), chỉ giữ chất liệu phủ/bọc — vế \"hoặc bọc\" hết thu hẹp; cổng 0-5 XANH. | OZV-342 (12/11): tenLoai 85441140 [men tráng, enamel], 85444921 [Dây đơn có vỏ bọc, chống nhiễu], 85444922/.23 \"Cáp điện\", 85444941 & 85446011/.21 \"Cáp\" (chatLieu CACH_DIEN kiểm vật liệu, không trộn vật liệu vào mảng OR tenLoai); 85444924 phanConLai [.22,.23]; bỏ khoảng trắng cuối trich .4922/.6011/.6021.",
+    "bam": "39542c582c71c9f1af94abba39712e34cf393f33cd34713e8ef4acca54ca71f8"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -21,11 +27,6 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "lớp phủ ngoài"
-        },
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
           "value": [
             "giấy",
             "vật liệu dệt",
@@ -33,7 +34,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85441130",
@@ -43,15 +44,13 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "lớp phủ ngoài"
-        },
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "dầu bóng"
+          "value": [
+            "dầu bóng",
+            "lacquer"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85441140",
@@ -61,22 +60,20 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "lớp phủ ngoài"
-        },
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "men tráng"
+          "value": [
+            "men tráng",
+            "enamel"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85441190",
       "nguon": "tax.85441190",
       "trich": "85441190 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -89,6 +86,24 @@
       "ma": "85441130",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.85441130 \"Có lớp phủ ngoài bằng dầu bóng (lacquer)\" ⇒ tenLoai \"lớp phủ ngoài\" + tenLoai \"dầu bóng\" (ngoặc \"(lacquer)\" chú thích); tax.85441140 \"… bằng men tráng (enamel)\" ⇒ tenLoai \"lớp phủ ngoài\" + tenLoai \"men tráng\". .90 \"Loại khác\" trần — máy phủ định."
+    },
+    {
+      "ma": "85441120",
+      "loai": "BO_VE",
+      "ve": "Có một lớp phủ ngoài hoặc bọc",
+      "lyDo": "soát L29 11/11 trả về: neo tenLoai \"lớp phủ ngoài\" bỏ vế \"hoặc bọc\" (EN \"or covering\") và thuộc tính lớp phủ không nằm trong tên hàng (\"dây đồng tráng men\") ⇒ bỏ vế vị trí, chỉ giữ điều kiện chất liệu của lớp phủ/bọc (giấy, vật liệu dệt, poly(vinyl clorua) / dầu bóng (lacquer) / men tráng (enamel)) — mô tả \"bọc giấy\"/\"tráng men\" đọc được mà không cần chữ \"lớp phủ ngoài\"."
+    },
+    {
+      "ma": "85441130",
+      "loai": "BO_VE",
+      "ve": "Có lớp phủ ngoài",
+      "lyDo": "soát L29 11/11 trả về: vế vị trí \"lớp phủ ngoài\" không neo vào điều kiện — thuộc tính lớp phủ không nằm trong tên hàng thực (\"dây đồng tráng men\"), chỉ giữ điều kiện chất liệu của lớp phủ/bọc (dầu bóng (lacquer) / men tráng (enamel)) nên mô tả thật vẫn đọc được."
+    },
+    {
+      "ma": "85441140",
+      "loai": "BO_VE",
+      "ve": "Có lớp phủ ngoài",
+      "lyDo": "soát L29 11/11 trả về: vế vị trí \"lớp phủ ngoài\" không neo vào điều kiện — thuộc tính lớp phủ không nằm trong tên hàng thực (\"dây đồng tráng men\"), chỉ giữ điều kiện chất liệu của lớp phủ/bọc (dầu bóng (lacquer) / men tráng (enamel)) nên mô tả thật vẫn đọc được."
     }
   ],
   "traVe": [

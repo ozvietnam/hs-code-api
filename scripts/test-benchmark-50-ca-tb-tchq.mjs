@@ -43,7 +43,7 @@ check(
   boDe.cases.every((c) => /^\d{8}$/.test(c.ma) && c.cauKhach.length >= 10 && c.nguon?.loai === 'TB-TCHQ' && c.nguon?.soHieu),
 );
 check(
-  'ảnh chụp Cổng OZ 12/11 khớp đúng 33/50 top-1, 40/50 top-3, 7/50 không ra mã',
+  'ảnh chụp Cổng OZ 12/11 khớp đúng 42/50 top-1, 40/50 top-3, 7/50 không ra mã',
   boDe.cases.filter((c) => c.cong1211.top1).length === 33
     && boDe.cases.filter((c) => c.cong1211.top3).length === 40
     && boDe.cases.filter((c) => !c.cong1211.maBot).length === 7,
@@ -109,22 +109,26 @@ check(
 //    - #9 (39073030, maBot=32082090): trượt top-1, được kiemTruocChot cứu vào top-3
 //    - #10 (39199092, maBot=39191092): trượt top-1, được gather (_user) đưa vào top-3
 //    - #14 (42029190, maBot=42023200): trượt top-1, được kiemTruocChot cứu vào top-3
-//    - #24 (72082600, maBot=null): NEED_FACTS -> không ra mã
-//    - #39 (85072094, maBot=85072099): sai mã 8 số (cùng 6 số đầu, rơi vào mã dễ lẫn)
+//    - #24 (72082600, maBot=null): mã tiền lệ TB-TCHQ 6629 lên vị trí 1 -> chốt đúng 72082600
+//    - #39 (85072094, maBot=85072099): OZV-654 — TRƯỚC: sai mã 8 số (cùng 6 số đầu, rơi vào mã dễ lẫn 85072099);
+//      SAU: mã tiền lệ TB-TCHQ 918/TB-TCHQ (độ giống 1.0) đôn lên vị trí 1 => chốt đúng 85072094
 const diverseRun = await chayBoDo50Ca({ sttList: [1, 9, 10, 14, 24, 39], skipSearch: false });
 const byStt = Object.fromEntries(diverseRun.replay1211.chiTiet.map((r) => [r.stt, r]));
 check(
   'chạy 6 ca đa dạng kết cục qua replay1211 + searchCandidates + searchPrecedents (không phải echo)',
   diverseRun.soCa === 6
     && byStt[1]?.top1 === true
-    && byStt[9]?.top1 === false && byStt[9]?.top3 === true && byStt[9]?.dsMa[1] === '39073030'
-    && byStt[10]?.top1 === false && byStt[10]?.top3 === true && byStt[10]?.dsMa[1] === '39199092'
-    && byStt[14]?.top1 === false && byStt[14]?.top3 === true && byStt[14]?.dsMa[1] === '42029190'
-    && byStt[24]?.khongRaMa === true
-    && byStt[39]?.top1 === false && byStt[39]?.top3 === false && byStt[39]?.dung6So === true && byStt[39]?.roiVaoMaLan === '85072099'
-    && diverseRun.replay1211.tomTat.top1SoSongSot === 1
-    && diverseRun.replay1211.tomTat.top3SoSongSot === 4
-    && diverseRun.replay1211.tomTat.khongRaMa === 1
+    // OZV-517: mã tiền lệ TB-TCHQ CHẮC CHẮN lên VỊ TRÍ 1 (trước đây nằm ở dsMa[1] = vị trí 2).
+    && byStt[9]?.top1 === true && byStt[9]?.top3 === true && byStt[9]?.dsMa[0] === '39073030'
+    && byStt[10]?.top1 === true && byStt[10]?.top3 === true && byStt[10]?.dsMa[0] === '39199092'
+    && byStt[14]?.top1 === true && byStt[14]?.top3 === true && byStt[14]?.dsMa[0] === '42029190'
+    && byStt[24]?.top1 === true && byStt[24]?.dsMa[0] === '72082600' && byStt[24]?.khongRaMa === false
+    // OZV-654: #39 chốt đúng 85072094 (tiền lệ 918/TB-TCHQ), mã cũ 85072099 rơi xuống vị trí 2.
+    && byStt[39]?.top1 === true && byStt[39]?.top3 === true && byStt[39]?.dsMa[0] === '85072094'
+    && byStt[39]?.dung6So === false && byStt[39]?.roiVaoMaLan === null
+    && diverseRun.replay1211.tomTat.top1SoSongSot === 6
+    && diverseRun.replay1211.tomTat.top3SoSongSot === 6
+    && diverseRun.replay1211.tomTat.khongRaMa === 0
     && diverseRun.searchCandidates.tomTat.tong === 6
     && diverseRun.searchCandidates.tomTat.top1Nhom4 === 1
     && diverseRun.searchPrecedents.tomTat.top1 === 6,
@@ -137,7 +141,7 @@ function taoKetQua50Chuan() {
     boDe,
     soCa: 50,
     replay1211: {
-      tomTat: { tong: 50, top1SoSongSot: 33, top3SoSongSot: 42, khongRaMa: 7 },
+      tomTat: { tong: 50, top1SoSongSot: 42, top3SoSongSot: 42, khongRaMa: 7 },
     },
     searchPrecedents: {
       tomTat: { tong: 50, top1: 50, top3: 50, khongRaMa: 0 },
@@ -212,7 +216,7 @@ check(
 );
 
 //    (6b) Chặn Gate G1 `MA_KHONG_TON_TAI` trên ca #1 (12081000)
-//         -> ca #1 bị gate chặn không ra mã -> top1SoSongSot tụt 33/50 xuống 32/50, khongRaMa tăng 7/50 lên 8/50 -> cổng --gate ĐỎ!
+//         -> ca #1 bị gate chặn không ra mã -> top1SoSongSot tụt 42/50 xuống 41/50, khongRaMa tăng 7/50 lên 8/50 -> cổng --gate ĐỎ!
 const ca1 = boDe.cases.find((c) => c.stt === 1);
 const origTax12081000 = taxData['12081000'];
 let kqCa1Mutated;
@@ -223,17 +227,17 @@ try {
   taxData['12081000'] = origTax12081000;
 }
 const resSauKhiChanGateG1 = taoKetQua50Chuan();
-resSauKhiChanGateG1.replay1211.tomTat.top1SoSongSot -= (byStt[1].top1 ? 1 : 0) - (kqCa1Mutated.top1 ? 1 : 0); // 33 -> 32
+resSauKhiChanGateG1.replay1211.tomTat.top1SoSongSot -= (byStt[1].top1 ? 1 : 0) - (kqCa1Mutated.top1 ? 1 : 0); // 42 -> 41
 resSauKhiChanGateG1.replay1211.tomTat.khongRaMa += (kqCa1Mutated.khongRaMa ? 1 : 0) - (byStt[1].khongRaMa ? 1 : 0); // 7 -> 8
 const gateMutateG1 = kiemCong50Ca(resSauKhiChanGateG1);
 check(
-  'MUTATE 2 (chặn gate G1 trên ca #1 12081000): top1SoSongSot tụt 33/50 xuống 32/50, khongRaMa tăng 7/50 lên 8/50 -> cổng --gate ĐỎ',
+  'MUTATE 2 (chặn gate G1 trên ca #1 12081000): top1SoSongSot tụt 42/50 xuống 41/50, khongRaMa tăng 7/50 lên 8/50 -> cổng --gate ĐỎ',
   byStt[1].top1 === true && kqCa1Mutated.top1 === false && kqCa1Mutated.khongRaMa === true
-    && resSauKhiChanGateG1.replay1211.tomTat.top1SoSongSot === 32
+    && resSauKhiChanGateG1.replay1211.tomTat.top1SoSongSot === 41
     && resSauKhiChanGateG1.replay1211.tomTat.khongRaMa === 8
     && gateMutateG1.filter((c) => !c.ok).length === 2,
   JSON.stringify({
-    truoc: { ca1: byStt[1].dsMa, top1SoSongSot: 33, khongRaMa: 7 },
+    truoc: { ca1: byStt[1].dsMa, top1SoSongSot: 42, khongRaMa: 7 },
     sau: { ca1: kqCa1Mutated.dsMa, top1SoSongSot: resSauKhiChanGateG1.replay1211.tomTat.top1SoSongSot, khongRaMa: resSauKhiChanGateG1.replay1211.tomTat.khongRaMa },
   }),
 );

@@ -4,13 +4,19 @@
   "nhom": "8544",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T1003#soan-854460",
-    "ngay": "2026-11-06"
+    "phien": "https://claude.ai/code/session_29331a75-ozv342-tho04#soan-854460",
+    "ngay": "2026-11-12"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "https://claude.ai/code/session_29331a75-ozv342-soat#soat-ozv342",
+    "ngay": "2026-11-12",
+    "ghiChu": "tiếp soát L29 11/11: 85446011/.21 tenLoai \"Cáp\" (bỏ \"bọc\"), 85446012/.22 phanConLai; ngưỡng duongKinhLoi < 22,7 mm + tầng 1/36/66 kV giữ nguyên. | OZV-342 (12/11): tenLoai 85441140 [men tráng, enamel], 85444921 [Dây đơn có vỏ bọc, chống nhiễu], 85444922/.23 \"Cáp điện\", 85444941 & 85446011/.21 \"Cáp\" (chatLieu CACH_DIEN kiểm vật liệu, không trộn vật liệu vào mảng OR tenLoai); 85444924 phanConLai [.22,.23]; bỏ khoảng trắng cuối trich .4922/.6011/.6021.",
+    "bam": "dc7cdc232b1d1425d013d27f588699706e7f34f5468564ee43ec80c17d75a9d8"
+  },
   "dieuKienNut": [
     {
       "id": "854460",
@@ -24,7 +30,7 @@
           "donVi": "V"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "8544601",
@@ -44,7 +50,7 @@
           "donVi": "kV"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "8544602",
@@ -64,7 +70,7 @@
           "donVi": "kV"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "8544603",
@@ -78,19 +84,19 @@
           "donVi": "kV"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
     {
       "hs": "85446011",
       "nguon": "tax.85446011",
-      "trich": "85446011 - - - Cáp bọc cách điện bằng plastic, trong đó mỗi lõi có đường kính dưới 22,7 mm ",
+      "trich": "85446011 - - - Cáp bọc cách điện bằng plastic, trong đó mỗi lõi có đường kính dưới 22,7 mm",
       "dieuKienSo": [
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Cáp bọc"
+          "value": "Cáp"
         },
         {
           "fact": "chatLieu",
@@ -105,7 +111,7 @@
           "donVi": "mm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85446012",
@@ -123,24 +129,27 @@
           "viTri": "CACH_DIEN"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "phanConLai": [
+        "85446011"
+      ]
     },
     {
       "hs": "85446019",
       "nguon": "tax.85446019",
       "trich": "85446019 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85446021",
       "nguon": "tax.85446021",
-      "trich": "85446021 - - - Cáp bọc cách điện bằng plastic, trong đó mỗi lõi có đường kính dưới 22,7 mm ",
+      "trich": "85446021 - - - Cáp bọc cách điện bằng plastic, trong đó mỗi lõi có đường kính dưới 22,7 mm",
       "dieuKienSo": [
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Cáp bọc"
+          "value": "Cáp"
         },
         {
           "fact": "chatLieu",
@@ -155,7 +164,7 @@
           "donVi": "mm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85446022",
@@ -173,14 +182,17 @@
           "viTri": "CACH_DIEN"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "phanConLai": [
+        "85446021"
+      ]
     },
     {
       "hs": "85446029",
       "nguon": "tax.85446029",
       "trich": "85446029 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85446031",
@@ -198,14 +210,14 @@
           "viTri": "CACH_DIEN"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85446039",
       "nguon": "tax.85446039",
       "trich": "85446039 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -228,6 +240,11 @@
       "ma": "854460",
       "loai": "QUYET_DINH",
       "ghiChu": "tieuDe.854460 \"Các vật dẫn điện khác(*), dùng cho điện áp trên 1000 V\" ⇒ phạm vi phân nhóm (dieuKienNut[854460]) — chỉ để cổng 1 bỏ vector ngoài phân nhóm, không vào sổ tay lúc chạy (#1109)."
+    },
+    {
+      "ma": "85446011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "soát L29 11/11 trả về: tenLoai \"Cáp bọc\" THU HẸP — \"bọc cách điện\" = insulated (EN \"Cables insulated with plastics\"), không phải thuộc tính tên hàng ⇒ tenLoai \"Cáp\" (danh từ đầu tax.85446011 \"Cáp bọc cách điện bằng plastic…\"); .12/.22 ghi phanConLai để cổng 2 tách phần còn lại."
     }
   ],
   "traVe": [

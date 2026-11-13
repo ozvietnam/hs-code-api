@@ -363,16 +363,25 @@ export function inBaoCao50Ca(res) {
   console.log(`  [cong1211] chuẩn tham chiếu Cổng OZ 12/11 (có LLM sống — A1/A2)       : top-1 đúng = ${c1211.top1}/${c1211.tong} (${c1211.top1Pct.toFixed(1)}%) | top-3 đúng = ${c1211.top3}/${c1211.tong} (${c1211.top3Pct.toFixed(1)}%) | không ra mã = ${c1211.khongRaMa}/${c1211.tong} (${pct(c1211.khongRaMa, c1211.tong)}%)`);
 
   console.log('\nGiải thích khác biệt giữa các đường chạy (chuẩn hồi quy nội bộ vs Cổng OZ 12/11):');
-  console.log('  - [replay1211] (top1SoSongSot = 33/50, top3SoSongSot = 42/50, khongRaMa = 7/50):');
+  // OZV-517: mọi số trong khối giải thích lấy TỪ SỐ ĐO của lần chạy này — không in cứng (bản in cứng 33/50 đã lệch với
+  // số đo thật sau khi PR này đổi thứ tự mã đầu).
+  console.log(`  - [replay1211] (top1SoSongSot = ${l.top1SoSongSot}/${soCa}, top3SoSongSot = ${l.top3SoSongSot}/${soCa}, khongRaMa = ${l.khongRaMa}/${soCa}):`);
   console.log('    đo số ca sống sót qua tầng tất định (`gather` → `gates` → `resolveHeading` → `chotDong8` → `kiemTruocChot`).');
-  console.log('    top1SoSongSot và khongRaMa khớp từng ca với Cổng OZ 12/11; top3SoSongSot cao hơn 2 ca (#9 39073030, #14 42029190)');
-  console.log('    vì `kiemTruocChot` trong `lib/engine-loop.js` đẩy mã TB-TCHQ vào `results[1]`, còn tầng render giọng Quyên của');
-  console.log('    zalo-bot trên Cổng 12/11 chỉ hiển thị 1 mã đầu cho khách.');
-  console.log('  - [searchCandidates] (2/50 top-1 = 4.0%, 3/50 top-3 = 6.0%, 0 không ra mã) và [suggestCoreNoLlm] (2/50 = 4.0%):');
-  console.log('    chỉ khớp từ khoá/alias trực tiếp trên `data/tax.json` + `oz-gold` (không qua LLM vòng 1 rút tên hàng). Câu khách');
+  console.log(`    Ảnh chụp Cổng OZ 12/11: top-1 ${c1211.top1}/${c1211.tong}, top-3 ${c1211.top3}/${c1211.tong}, không ra mã ${c1211.khongRaMa}/${c1211.tong}.`);
+  console.log(`    · không ra mã: ${l.khongRaMa}/${soCa} (đường này) vs ${c1211.khongRaMa}/${c1211.tong} (Cổng 12/11) — ${l.khongRaMa === c1211.khongRaMa ? 'khớp' : 'khác'}.`);
+  console.log(`    · top-1: ${l.top1SoSongSot}/${soCa} (đường này) vs ${c1211.top1}/${c1211.tong} (Cổng 12/11) — chênh ${l.top1SoSongSot - c1211.top1} ca.`);
+  console.log('      Khác biệt nằm ở THỨ TỰ mã đầu: OZV-517 đưa mã tiền lệ TB-TCHQ "chắc chắn" (độ giống tên hàng = 1.0,');
+  console.log('      ≥5 từ có nghĩa chung, ứng viên DUY NHẤT) lên VỊ TRÍ 1, trong khi ảnh chụp Cổng 12/11 mã máy chọn luôn đứng đầu.');
+  console.log(`    · top-3: ${l.top3SoSongSot}/${soCa} vs ${c1211.top3}/${c1211.tong} — chênh ${l.top3SoSongSot - c1211.top3} ca.`);
+  const dongSearch = [
+    s ? `[searchCandidates] (top-1 ${s.top1}/${soCa} = ${pct(s.top1, soCa)}%, top-3 ${s.top3}/${soCa} = ${pct(s.top3, soCa)}%, không ra mã ${s.khongRaMa}/${soCa})` : null,
+    g ? `[suggestCoreNoLlm] (top-1 ${g.top1}/${soCa} = ${pct(g.top1, soCa)}%)` : null,
+  ].filter(Boolean);
+  console.log(`  - ${dongSearch.length ? dongSearch.join(' và ') : '[searchCandidates] + [suggestCoreNoLlm] (không chạy trong lượt này)'}: ứng viên lấy từ`);
+  console.log('    từ khoá/alias trực tiếp trên `data/tax.json` + `oz-gold` (không qua LLM vòng 1 rút tên hàng). Câu khách');
   console.log('    trong bộ 50 ca dài 100–400 ký tự kèm mệnh đề công dụng làm bộ lọc từ khoá biểu thuế trượt hoặc bị `oz-gold` át điểm.');
-  console.log('  - [searchPrecedents] (50/50 top-1 = 100.0%): bộ 50 ca được trích từ TB-TCHQ trong `data/precedents.json` nên');
-  console.log('    tầng đối chiếu tiền lệ TB-TCHQ khớp đúng 50/50 ca.');
+  console.log(`  - [searchPrecedents] (${p.top1}/${soCa} top-1 = ${pct(p.top1, soCa)}%): bộ 50 ca được trích từ TB-TCHQ trong \`data/precedents.json\` nên`);
+  console.log(`    tầng đối chiếu tiền lệ TB-TCHQ khớp đúng ${p.top1}/${soCa} ca.`);
 }
 
 /**
