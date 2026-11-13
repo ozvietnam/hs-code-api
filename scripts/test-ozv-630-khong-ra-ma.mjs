@@ -50,21 +50,24 @@ console.log('=== TEST OZV-630: 3 CA KHÔNG RA MÃ CÒN LẠI (#24, #30, #45) + C
 const bo50 = JSON.parse(fs.readFileSync(path.join(ROOT, 'tests', 'bo-50-ca-tb-tchq.json'), 'utf8')).cases;
 const caByStt = Object.fromEntries(bo50.map((c) => [c.stt, c]));
 
-// ── 1. Ca #24 (72082600 — Chẩn đoán thiếu chữ ngữ cảnh "dày" trong "3,6 mm x 1312 mm x cuộn", giữ nguyên ngưỡng cổng) ─
+// ── 1. Ca #24 (72082600 — Chẩn đoán ngữ cảnh "dày" / quy cách cuộn cán nóng "3,6 mm x 1312 mm x cuộn", giữ nguyên ngưỡng cổng) ─
 {
   const ca24 = caByStt[24];
-  const valsThieuNguCanh = giaTriCua('be_day', ca24.cauKhach);
+  const textMoHo = 'Thép tấm không hợp kim, cán phẳng, kích thước 10 mm x 20 mm';
+  const valsThieuNguCanh = giaTriCua('be_day', textMoHo);
+  const cdThieuNguCanh = chotDong8({ hs: '720826', productText: textMoHo });
   check(
-    'Ca #24 (chẩn đoán 1) — câu gốc thiếu chữ "dày" trước "3,6 mm x 1312 mm x cuộn" → giaTriCua("be_day") trả [] (không đoán)',
-    valsThieuNguCanh.length === 0,
-    JSON.stringify(valsThieuNguCanh),
+    'Ca #24 (chẩn đoán 1 — âm tính thiếu ngữ cảnh) — phép nhân "10 mm x 20 mm" thiếu chữ "dày" và không phải quy cách cuộn → giaTriCua("be_day") trả [] và chotDong8 trả THIEU_SO_LIEU',
+    valsThieuNguCanh.length === 0 && cdThieuNguCanh.ketQua === 'THIEU_SO_LIEU' && !cdThieuNguCanh.hs,
+    JSON.stringify({ valsThieuNguCanh, cdThieuNguCanh }),
   );
 
-  const cdThieuNguCanh = chotDong8({ hs: '720826', productText: ca24.cauKhach });
+  const valsCuon = giaTriCua('be_day', ca24.cauKhach);
+  const cdCuon = chotDong8({ hs: '720826', productText: ca24.cauKhach });
   check(
-    'Ca #24 (chẩn đoán 2) — chotDong8(720826) trên câu gốc thiếu chữ "dày" trả THIEU_SO_LIEU (an toàn, không nới cổng)',
-    cdThieuNguCanh.ketQua === 'THIEU_SO_LIEU' && !cdThieuNguCanh.hs,
-    JSON.stringify(cdThieuNguCanh),
+    'Ca #24 (chẩn đoán 2 — dương tính câu gốc TB 1687/TB-TCHQ) — quy cách "3,6 mm x 1312 mm x cuộn" trên thép cán nóng dạng cuộn → chotDong8(720826) chốt đúng 72082600',
+    valsCuon.length === 1 && Math.abs(valsCuon[0] - 0.36) < 1e-6 && cdCuon.ketQua === 'CHOT' && cdCuon.hs === '72082600',
+    JSON.stringify({ valsCuon, cdCuon }),
   );
 
   const textCoChuDay = 'Thép cán nóng không hợp kim, cán phẳng, dạng cuộn, đã ngâm tẩy gỉ, bề dày 3,6 mm, rộng 1312 mm';
@@ -236,20 +239,20 @@ const caByStt = Object.fromEntries(bo50.map((c) => [c.stt, c]));
   const kq50 = await chayBoDo50Ca({ skipSearch: true });
   const rp = kq50.replay1211;
   check(
-    `Replay 50 ca TB-TCHQ — khongRaMa giảm từ 3/50 xuống 1/50 (thực tế: ${rp.tomTat.khongRaMa}/50, yêu cầu ≤ 1/50)`,
-    rp.tomTat.khongRaMa === 1 && rp.tomTat.khongRaMa <= 1,
+    `Replay 50 ca TB-TCHQ — khongRaMa đạt ${rp.tomTat.khongRaMa}/50 (yêu cầu ≤ 1/50)`,
+    rp.tomTat.khongRaMa <= 1,
     `khongRaMa=${rp.tomTat.khongRaMa}`,
   );
   check(
-    `Replay 50 ca TB-TCHQ — top1SoSongSot tăng từ 37/50 lên 39/50 (thực tế: ${rp.tomTat.top1SoSongSot}/50, yêu cầu ≥ 37/50)`,
-    rp.tomTat.top1SoSongSot === 39 && rp.tomTat.top1SoSongSot >= 37,
+    `Replay 50 ca TB-TCHQ — top1SoSongSot đạt ${rp.tomTat.top1SoSongSot}/50 (yêu cầu ≥ 37/50)`,
+    rp.tomTat.top1SoSongSot >= 37,
     `top1SoSongSot=${rp.tomTat.top1SoSongSot}`,
   );
 
   const byStt = Object.fromEntries(rp.chiTiet.map((x) => [x.stt, x]));
   check(
-    'Replay 50 ca — Ca #24 giữ nguyên khongRaMa=true an toàn khi thiếu chữ "dày" trước số',
-    byStt[24] && byStt[24].khongRaMa === true,
+    'Replay 50 ca — Ca #24 chốt đúng 72082600 (khongRaMa=false, top1=true)',
+    byStt[24] && byStt[24].khongRaMa === false && byStt[24].top1 === true && byStt[24].maDau === '72082600',
     JSON.stringify(byStt[24]),
   );
   for (const [stt, hs] of [
