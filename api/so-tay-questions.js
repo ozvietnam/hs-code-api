@@ -26,7 +26,7 @@
 const { setCors, handleOptions } = require('../lib/cors');
 const { publicReadEnabled } = require('../lib/public-access');
 const { requireAuth } = require('../lib/auth');
-const { loadSoTay, soTayGates, chotDong8, tacDongThueDong8, chatLieuTrong, MATERIALS } = require('../lib/so-tay-gates');
+const { loadSoTay, soTayGates, chotDong8, tacDongThueDong8, chatLieuTrong, MATERIALS, khoaCuaFact } = require('../lib/so-tay-gates');
 const { missingStructured } = require('../lib/declaration-fields');
 
 // Nhãn tiếng Việt thân thiện cho từng đại lượng máy (khớp LOAI_GIA_TRI trong lib/so-tay-gates.js).
@@ -104,7 +104,9 @@ module.exports = async function handler(req, res) {
             add({ key: 'chat_lieu', questionVi: 'Vật liệu chính của hàng là gì?', type: 'choice', options: MATERIAL_OPTIONS, required: true, loai: 'DONG_BIEU', tacDongThue: thue, nguon: nguon && nguon.nguon, trich: nguon && nguon.trich });
             continue;
           }
-          const label = FACT_LABELS[fact];
+          // #OZV-723: fact khoá mới (tu-vung@2, vd `duongKinh`) tra ngược anh-xa-cu về nhãn của khoá cũ —
+          // vẫn sinh câu number thân thiện, `key` giữ nguyên fact gốc để truy vết về điều kiện trong sổ tay.
+          const label = FACT_LABELS[khoaCuaFact(fact) || fact];
           if (label) {
             add({ key: fact, questionVi: `${label}${mf.donVi ? ` (${mf.donVi})` : ''}?`, type: 'number', unit: mf.donVi || undefined, required: true, loai: 'DONG_BIEU', tacDongThue: thue, nguon: nguon && nguon.nguon, trich: nguon && nguon.trich });
           } else {

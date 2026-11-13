@@ -97,6 +97,25 @@ assert('#411 câu cổng sổ tay: loai CONG + askStaff + required:false + khôn
 r = await call({ hs: '70189010' }); // 7018.90: 70189010 (đường kính ≥ 4 mm, MFN 0 %) ↔ 70189090 Loại khác (30 %)
 const dk7018 = (r._j.questions || []).find((q) => q.key === 'duong_kinh');
 assert('#411(d) 70189010: duong_kinh DONG_BIEU, tacDongThue {mfnMin 0, mfnMax 30, chenh 30, acftaKhac false, dong 2 dòng}', Boolean(dk7018) && dk7018.loai === 'DONG_BIEU' && JSON.stringify(dk7018.tacDongThue) === JSON.stringify({ mfnMin: 0, mfnMax: 30, chenh: 30, acftaKhac: false, dong: ['70189010', '70189090'] }), dk7018);
+
+// #OZV-723 (13/11/2026): CÙNG câu hỏi khi sổ tay viết điều kiện bằng khoá MỚI `duongKinh` (tu-vung@2).
+// Hồ sơ ranh-gioi-spec@1 ép fact ∈ tu-vung@2 nên spec ranh giới soạn bằng `duongKinh`; máy sinh câu hỏi
+// phải tra ngược data/tu-vung/anh-xa-cu.json (qua lib/so-tay-gates.js#khoaCuaFact) về mẫu của khoá cũ
+// `duong_kinh` thay vì rơi nhánh askStaff — đây là chỗ PR #1278 làm đỏ ca #411(d) ở trên.
+// Bản sao nhóm 7018 ghi trong thư mục TẠM (test-isolate-data): dữ liệu thật (274 chỗ `duong_kinh`
+// trong data/so-tay/) không đổi, và loadSoTay cache theo đường dẫn phân giải nên đọc bản tạm tươi.
+{
+  const { dataPath } = require('../lib/data-paths.js');
+  const fsx = require('fs'); const pathx = require('path');
+  const goc = JSON.parse(fsx.readFileSync(pathx.join(process.cwd(), 'data/so-tay/7018.json'), 'utf8'));
+  for (const d of goc.dong8 || []) for (const c of d.dieuKienSo || []) if (c.fact === 'duong_kinh') c.fact = 'duongKinh';
+  fsx.mkdirSync(dataPath('so-tay'), { recursive: true });
+  fsx.writeFileSync(dataPath('so-tay/7018.json'), JSON.stringify(goc));
+  r = await call({ hs: '70189010' });
+  const dkMoi = (r._j.questions || []).find((q) => q.key === 'duongKinh');
+  assert('#OZV-723 70189010 duongKinh: vẫn câu number DONG_BIEU unit mm, nhãn "Đường kính" (không rơi askStaff)', Boolean(dkMoi) && dkMoi.type === 'number' && dkMoi.loai === 'DONG_BIEU' && dkMoi.unit === 'mm' && /[Đđ]ường kính/.test(dkMoi.questionVi) && !dkMoi.askStaff, dkMoi);
+  assert('#OZV-723 70189010 duongKinh: cùng tacDongThue như khoá cũ {mfnMin 0, mfnMax 30, chenh 30, acftaKhac false, dong 2 dòng}', Boolean(dkMoi) && JSON.stringify(dkMoi.tacDongThue) === JSON.stringify({ mfnMin: 0, mfnMax: 30, chenh: 30, acftaKhac: false, dong: ['70189010', '70189090'] }), dkMoi && dkMoi.tacDongThue);
+}
 r = await call({ hs: '84181039' }); // 8418.10: dung tích quyết định MFN 3 % ↔ 25 %, ACFTA 0 ↔ 15 (-KH, TH)
 const dt8418 = (r._j.questions || []).find((q) => q.key === 'dung_tich');
 assert('#411(d) 84181039: dung_tich chenh 22 (3 → 25) + acftaKhac true', Boolean(dt8418) && Boolean(dt8418.tacDongThue) && dt8418.tacDongThue.mfnMin === 3 && dt8418.tacDongThue.mfnMax === 25 && dt8418.tacDongThue.chenh === 22 && dt8418.tacDongThue.acftaKhac === true, dt8418);
