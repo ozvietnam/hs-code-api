@@ -105,6 +105,26 @@ Nghiệm thu: bắt đầu một lượt classify, gộp một commit nhỏ vào
   trong repo cho tới khi xoá — đồng bộ lại vào GitHub định kỳ.
 - Sao lưu volume `/data` theo lịch sao lưu của server.
 
+### Biết ảnh đang chạy là bản nào (OZV-724)
+
+`GET /api/health` trả thêm `commit` (SHA ngắn 12 ký tự) + `buildTime` (ISO 8601) để mọi phép đo prod
+biết đang đo bản nào. Giá trị lấy từ **biến môi trường lúc build** (`ARG SOURCE_COMMIT` / `BUILD_TIME`
+→ `ENV` trong `Dockerfile`), không chạy `git` lúc chạy vì ảnh không có `.git` (`.dockerignore`).
+Thiếu biến ⇒ trả `null`, health không bao giờ đỏ vì chuyện này.
+
+```bash
+curl -s https://hs-kb.uythacnhapkhau.com/api/health | jq '{commit,buildTime}'
+# khớp SHA của commit cuối trên main ⇒ ảnh đúng bản
+# commit: null ⇒ build không truyền SOURCE_COMMIT (xem hai gạch đầu dòng dưới)
+```
+
+- **Coolify** truyền sẵn build arg `SOURCE_COMMIT`; nếu `commit` vẫn `null` thì khai thêm trong phần
+  Build Arguments của ứng dụng.
+- ⚠ **Máy chủ .120 dùng Dockerfile riêng ở `/opt/hs-code-api/deploy/`** (xem mục dưới) — `ARG`/`ENV` của
+  repo KHÔNG có tác dụng ở đó. Muốn `commit` khác `null` trên .120 thì `deploy-safe.sh` phải thêm
+  `--build-arg SOURCE_COMMIT=$(git rev-parse HEAD)`, hoặc đặt `SOURCE_COMMIT` trong `hs.env`.
+- Build tay: `docker build --build-arg SOURCE_COMMIT=$(git rev-parse HEAD) .`
+
 ## Biến môi trường trên máy chủ .120 (ghi 07/10/2026)
 `/opt/hs-code-api/deploy-safe.sh` build bằng **Dockerfile riêng** ở `/opt/hs-code-api/deploy/` (đè Dockerfile trong repo) và chạy container với `--env-file /opt/hs-code-api/hs.env`. Vì vậy `ENV` trong Dockerfile của repo **không có tác dụng trên máy chủ**; muốn đổi biến (vd `HS_CLASSIFY_ENGINE=loop|legacy`, `LLM_STEP_*`) thì sửa `hs.env` rồi chạy `deploy-safe.sh main --force` để tạo lại container. Bản 07/10: `HS_CLASSIFY_ENGINE=loop` (động cơ hai vòng + chốt chặn).
 

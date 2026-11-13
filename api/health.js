@@ -10,6 +10,9 @@ const { llmStatus } = require('../lib/llm-tier');
 const { freshnessReport } = require('../lib/data-freshness');
 // Postgres (L0g, #545) là tầng TUỲ CHỌN: chỉ báo trạng thái, không đổi mã HTTP / "healthy". Không lộ URL/host.
 const { dbDaCauHinh, trangThaiDb } = require('../lib/db');
+// OZV-724: bản đang chạy (SHA commit + thời điểm dựng ảnh) để mọi phép đo prod biết đang đo bản nào.
+// Chỉ đọc biến môi trường do Docker build ghi vào; thiếu ⇒ null, không bao giờ ném.
+const { banDung } = require('../lib/ban-dung');
 
 module.exports = function handler(req, res) {
   setCors(res, req);
@@ -27,9 +30,14 @@ module.exports = function handler(req, res) {
   // #418: đang xả (SIGTERM) → 503 'draining' để healthcheck/LB ngừng đưa lượt mới; lượt đang chạy vẫn được chờ.
   const draining = inflight.laDangXa();
 
+  const ban = banDung();
+
   const traLoi = (db) => res.status(healthy && !draining ? 200 : 503).json({
     service: 'hs-code-api',
     version: '2.0.0',
+    // SHA ngắn của bản đang chạy + thời điểm dựng ảnh (null khi build không truyền biến vào).
+    commit: ban.commit,
+    buildTime: ban.buildTime,
     status: draining ? 'draining' : healthy ? 'healthy' : 'degraded',
     // 'stale' = có nguồn quá hạn đối chiếu / sắp hoặc đã hết hiệu lực (xem checks.dataFreshness).
     dataStatus: freshness.ok ? 'fresh' : 'stale',
