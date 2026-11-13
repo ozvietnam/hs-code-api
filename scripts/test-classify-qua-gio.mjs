@@ -19,6 +19,19 @@ let chayGia = async () => ({ results: [{ hs: '84818061', confidence: 70, reason:
 const libClassify = require('../lib/classify.js');
 libClassify.classify = (...a) => chayGia(...a);
 
+// Cache (nhóm G): thay lib/classify-cache bằng bộ nhớ trong — không đụng Postgres. Phải patch TRƯỚC khi
+// api/classify.js require (nó destructure lúc nạp).
+process.env.HS_SERVICE_TOKENS = 'cong-oz-test:khoa-dich-vu-test'; // định dạng "tên:khoá" (lib/auth.js) ⇒ serviceCaller !== null
+const kho = new Map();
+const demGhi = { n: 0 };
+const libCache = require('../lib/classify-cache.js');
+libCache.cacheBat = () => true;
+libCache.phienBanDuLieu = () => 'pb-test';
+libCache.khoaCache = (attrs) => `k:${attrs.tenHang}`;
+libCache.docCache = async (k) => kho.get(k) || null;
+libCache.ghiCache = (k, pb, kq) => { demGhi.n += 1; kho.set(k, kq); };
+libCache.donPhienBanCu = () => {};
+
 console.error = () => {};
 console.warn = () => {};
 
@@ -100,21 +113,24 @@ chayGia = async () => KQ_BT;
 const rD = await goi({ tenHang: 'van xả máy giặt' });
 check('D6 không có env ⇒ lượt thường vẫn 200 (trần mặc định không phải 0)', rD._s === 200 && rD._j?.trangThai === undefined, String(rD._s));
 
-// ═════════ E. OZV-756 — event loop BỊ CHẶN giữa chừng ⇒ cửa vẫn phải bắn ═════════
-// Thực địa 13/11: POST /api/classify "xi măng portland" trên prod trả HTTP 200 sau 120,76 s
-// (thân ENGINE_TIMEOUT) — trần 85 s KHÔNG bắn. Cơ chế: `setTimeout` là macrotask, chỉ chạy khi event
-// loop rảnh. Khi đường chạy chiếm CPU đồng bộ vắt qua mốc trần, lúc loop rảnh lại thì MICROTASK của
-// lượt chính (`.then` của promise đã resolve) chạy TRƯỚC macrotask hẹn giờ ⇒ `Promise.race` lấy kết quả
-// thật dù đã quá hạn từ lâu. Cửa phải chốt bằng ĐỒNG HỒ tại điểm quyết định, không chỉ bằng hẹn giờ.
+// ═════════ E. Event loop BỊ CHẶN ĐỒNG BỘ vắt qua trần ═════════
+// GIỚI HẠN ĐÃ BIẾT, ghi thành test để đừng ai hiểu nhầm cửa này là "cắt thật" (OZV-756):
+// việc đồng bộ của chính tiến trình thì KHÔNG cắt được — lượt vẫn trả muộn đúng bằng lúc CPU nhả
+// (E1t dưới đây khẳng định bằng số). Cái cửa bảo đảm là: khi đã quá hạn thì bên gọi nhận JSON thật
+// (503 QUA_GIO) thay vì chuỗi `error code: 524` của Cloudflare — đúng mục đích gốc OZV-713.
 process.env.HS_CLASSIFY_TRAN_MS = '200';
 chayGia = async () => { const het = Date.now() + 900; while (Date.now() < het); return KQ_BT; }; // chặn CPU 900 ms > trần 200 ms
 const tE = Date.now();
 const rE = await goi({ tenHang: 'xi măng portland' });
 const msE = Date.now() - tE;
-check('E1 chặn event loop vắt qua trần ⇒ 503, KHÔNG phải 200 trả muộn', rE._s === 503, JSON.stringify({ s: rE._s, msE, keys: Object.keys(rE._j || {}) }));
+check('E1 chặn CPU vắt qua trần ⇒ 503 QUA_GIO (bên gọi nhận JSON thật, không phải "error code: 524")', rE._s === 503, JSON.stringify({ s: rE._s, msE, keys: Object.keys(rE._j || {}) }));
 check('E2 trangThai QUA_GIO', rE._j?.trangThai === 'QUA_GIO', JSON.stringify(rE._j).slice(0, 200));
 check('E3 ms báo đúng là đã vượt trần', Number.isFinite(rE._j?.ms) && rE._j.ms >= 200, JSON.stringify({ ms: rE._j?.ms, tranMs: rE._j?.tranMs }));
 check('E4 KHÔNG trả results của lượt quá hạn (bên gọi đã bỏ cuộc, mã này không được dùng)', rE._j?.results === undefined, JSON.stringify(rE._j?.results));
+// E1t — KHẲNG ĐỊNH THỜI GIAN, ghi thẳng giới hạn vào test (OZV-756): cửa KHÔNG rút ngắn được lượt chặn CPU.
+// Việc đồng bộ 900 ms vẫn chạy hết mới nhả; cửa chỉ đổi cái bên gọi nhận được thành JSON thật. Ai muốn
+// "cắt thật" phải làm ở tầng ngoài (proxy / tiến trình khác) — đừng vá tiếp ở đây rồi tưởng đã cắt.
+check('E1t thời gian trả lời VẪN ≈ lúc CPU nhả (≥ 900 ms), KHÔNG cắt ở trần 200 ms — giới hạn đã biết', msE >= 900, `${msE} ms`);
 
 // E5: chặn CPU NGẮN hơn trần ⇒ vẫn 200 như cũ (không bắt oan lượt chậm hợp lệ).
 process.env.HS_CLASSIFY_TRAN_MS = '3000';
@@ -135,6 +151,42 @@ check('E5 chặn CPU DƯỚI trần ⇒ vẫn 200, kết quả nguyên vẹn (kh
   process.off('warning', onWarn);
   check('E6 trần đã tiêu hết ⇒ 503 QUA_GIO, không có TimeoutNegativeWarning', rE6._s === 503 && rE6._j?.trangThai === 'QUA_GIO' && canhBao.length === 0, JSON.stringify({ s: rE6._s, canhBao }));
 }
+// ═════════ F. HAI LƯỢT SONG SONG — không bắt oan lượt hợp lệ ═════════
+// Server thật phục vụ nhiều lượt trên CÙNG một event loop. Lượt B chặn CPU thì lượt A (việc riêng chỉ 100 ms)
+// cũng bị giữ lại theo — nhưng A KHÔNG hề quá hạn về phần việc của nó. Nếu cửa chốt bằng ĐỒNG HỒ TƯỜNG thì A
+// bị gắn nhãn QUA_GIO và kết quả ĐÃ CÓ bị vứt (đo được khi vá sai: main 200 có results → vá 503). Ca này khoá
+// lại hành vi đúng: A vẫn 200, vẫn nguyên results.
+process.env.HS_CLASSIFY_TRAN_MS = '1000';
+chayGia = async (attrs) => {
+  if (attrs?.tenHang === 'luot B chan cpu') { const het = Date.now() + 1500; while (Date.now() < het); return KQ_BT; }
+  await new Promise((r) => { const h = setTimeout(r, 100); if (h.unref) h.unref(); }); // lượt A: việc riêng 100 ms
+  return KQ_BT;
+};
+const [rFa, rFb] = await Promise.all([goi({ tenHang: 'luot A viec rieng 100ms' }), goi({ tenHang: 'luot B chan cpu' })]);
+check('F1 lượt A (việc riêng 100 ms, trần 1000 ms) ⇒ 200 dù lượt B chặn CPU cùng lúc', rFa._s === 200, JSON.stringify({ s: rFa._s, j: rFa._j }).slice(0, 220));
+check('F2 lượt A giữ nguyên results — KHÔNG vứt kết quả đã có', rFa._j?.results?.[0]?.hs === '84818061', JSON.stringify(rFa._j?.results));
+check('F3 lượt A không bị gắn nhãn QUA_GIO', rFa._j?.trangThai === undefined, JSON.stringify(rFa._j).slice(0, 160));
+check('F4 lượt B (chặn CPU 1500 ms > trần 1000 ms) ⇒ 503 QUA_GIO', rFb._s === 503 && rFb._j?.trangThai === 'QUA_GIO', JSON.stringify({ s: rFb._s, t: rFb._j?.trangThai }));
+
+// ═════════ G. Lượt QUÁ GIỜ vẫn phải GHI CACHE — tiền LLM đã tiêu thì đừng mất trắng ═════════
+// Lượt quá hạn không huỷ được: nó chạy nền tới khi xong và TỐN đủ tiền LLM. Nếu bỏ luôn kết quả thì lượt
+// sau cùng hồ sơ lại gọi LLM lần nữa ⇒ trả tiền hai lần cho đúng một câu hỏi (OZV-507 việc 1).
+{
+  kho.clear(); demGhi.n = 0;
+  process.env.HS_CLASSIFY_TRAN_MS = '150';
+  let soLuotLLM = 0;
+  chayGia = async () => { soLuotLLM += 1; await new Promise((r) => { const h = setTimeout(r, 400); if (h.unref) h.unref(); }); return KQ_BT; };
+  const rG1 = await goi({ tenHang: 'bom nuoc ly tam' }, { token: 'khoa-dich-vu-test' });
+  check('G1 khoá dịch vụ, lượt 400 ms > trần 150 ms ⇒ 503 QUA_GIO', rG1._s === 503 && rG1._j?.trangThai === 'QUA_GIO', JSON.stringify({ s: rG1._s, t: rG1._j?.trangThai }));
+  await new Promise((r) => { const h = setTimeout(r, 450); if (h.unref) h.unref(); }); // chờ lượt nền chạy xong
+  check('G2 lượt quá giờ VẪN ghi cache (tiền LLM đã tiêu không mất trắng)', demGhi.n === 1, JSON.stringify({ soLanGhiCache: demGhi.n, soLuotLLM }));
+
+  process.env.HS_CLASSIFY_TRAN_MS = '85000';
+  const rG3 = await goi({ tenHang: 'bom nuoc ly tam' }, { token: 'khoa-dich-vu-test' });
+  check('G3 lượt sau cùng hồ sơ ⇒ trúng cache, 200 + cached:true', rG3._s === 200 && rG3._j?.cached === true, JSON.stringify({ s: rG3._s, cached: rG3._j?.cached }));
+  check('G4 lượt trúng cache KHÔNG gọi LLM lần nữa (vẫn đúng 1 lượt)', soLuotLLM === 1, JSON.stringify({ soLuotLLM }));
+}
+
 process.env.HS_CLASSIFY_TRAN_MS = '85000';
 
 clearInterval(giuSong);
