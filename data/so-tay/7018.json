@@ -203,16 +203,15 @@
     },
     {
       "hs": "70189010",
-      "dieuKien": "Mắt thủy tinh dạng cầu, ô van hoặc tròn không có khung hoặc cơ cấu cơ khí bên ngoài; dùng để làm mắt búp bê, mắt đồ chơi",
-      "tieuChi": {
-        "fact": "khong_co_khung_hoac_co_cau_co_khoi_ben_ngoai",
-        "op": "=",
-        "value": true,
-        "donVi": null
-      },
+      "dieuKien": "tên loại hàng: Mắt thủy tinh; đường kính (ngoài) >= 4 mm; đường kính (ngoài) <= 36 mm",
       "nguon": "sen.70189010",
-      "trich": "Thủy tinh dạng cầu, ô van hoặc tròn không có khung hoặc cơ cấu cơ khí bên ngoài, đường kính 4-36 mm. Chúng có thể có nhiều màu khác nhau, được hoặc không được trang trí, sơn. Chúng sử dụng để làm mắt búp bê, mắt đồ chơi hoặc mắt các sản phẩm thuộc Chương",
+      "trich": "MẮT THỦY TINH…Thủy tinh dạng cầu, ô van hoặc tròn không có khung hoặc cơ cấu cơ khí bên ngoài, đường kính 4-36 mm. Chúng có thể có nhiều màu khác nhau, được hoặc không được trang trí, sơn. Chúng sử dụng để làm mắt búp bê, mắt đồ chơi hoặc mắt các sản phẩm thuộc Chương",
       "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Mắt thủy tinh"
+        },
         {
           "fact": "duong_kinh",
           "op": ">=",
@@ -226,8 +225,22 @@
           "donVi": "mm"
         }
       ],
-      "nguonLoai": "NGUOI_DUYET",
-      "loaiKhac": false
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:pc-tho-hs-03:20261113T1344#soat-701890",
+          "ngay": "2026-11-13",
+          "bam": "70e8c254198118191496ce2f6d7bfba4895e2e67682e8f16a4f658d53d194eab"
+        }
+      },
+      "tieuChi": {
+        "fact": "khong_co_khung_hoac_co_cau_co_khoi_ben_ngoai",
+        "op": "=",
+        "value": true,
+        "donVi": null
+      }
     },
     {
       "hs": "70189090",

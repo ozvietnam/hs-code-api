@@ -1,47 +1,48 @@
 {
- "phienBan": "ranh-gioi-spec@1",
- "pn6": "701890",
- "phien": "zcode-sub:glm-5.3:20261106T1800#soan-701890",
- "dong8": {
-  "70189010": {
-   "nguon": "sen.70189010",
-   "trich": "Thủy tinh dạng cầu, ô van hoặc tròn không có khung hoặc cơ cấu cơ khí bên ngoài, đường kính 4-36 mm. Chúng có thể có nhiều màu khác nhau, được hoặc không được trang trí, sơn. Chúng sử dụng để làm mắt búp bê, mắt đồ chơi hoặc mắt các sản phẩm thuộc Chương",
-   "dieuKienSo": [
-    {
-     "fact": "tenLoai",
-     "op": "TEN_LOAI",
-     "value": [
-      "Thủy tinh dạng cầu",
-      "mắt búp bê",
-      "mắt đồ chơi"
-     ]
-    },
-    {
-     "fact": "duongKinh",
-     "op": ">=",
-     "value": 4,
-     "donVi": "mm"
-    },
-    {
-     "fact": "duongKinh",
-     "op": "<=",
-     "value": 36,
-     "donVi": "mm"
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "701890",
+  "phien": "claude-agent:pc-tho-hs-03:20261113T1351#soan-701890",
+  "dong8": {
+    "70189010": {
+      "nguon": "sen.70189010",
+      "trich": "MẮT THỦY TINH…Thủy tinh dạng cầu, ô van hoặc tròn không có khung hoặc cơ cấu cơ khí bên ngoài, đường kính 4-36 mm. Chúng có thể có nhiều màu khác nhau, được hoặc không được trang trí, sơn. Chúng sử dụng để làm mắt búp bê, mắt đồ chơi hoặc mắt các sản phẩm thuộc Chương",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Mắt thủy tinh"
+        },
+        {
+          "fact": "duongKinh",
+          "op": ">=",
+          "value": 4,
+          "donVi": "mm"
+        },
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 36,
+          "donVi": "mm"
+        }
+      ]
     }
-   ]
-  }
- },
- "dieuKienNut": {},
- "ghiChuSoan": [
-  {
-   "ma": "70189010",
-   "loai": "QUYET_DINH",
-   "ghiChu": "tax.70189010: \"Mắt thủy tinh(SEN)\" ⇒ tenLoai TEN_LOAI \"Mắt thủy tinh\""
   },
-  {
-   "ma": "70189010",
-   "loai": "QUYET_DINH",
-   "ghiChu": "Nghĩa hẹp theo SEN: sen.70189010 \"dạng cầu, ô van hoặc tròn … đường kính 4-36 mm … làm mắt búp bê, mắt đồ chơi\" ⇒ tenLoai về chữ SEN + thêm duongKinh 4–36 mm — mắt thủy tinh theo SEN là hình cầu/ô van/tròn 4–36 mm dùng làm mắt búp bê/đồ chơi."
-  }
- ]
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "70189010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.70189010 \"Mắt thủy tinh(SEN)\" ⇒ tenLoai TEN_LOAI \"Mắt thủy tinh\" — GIỮ TÊN DÒNG làm mỏ neo. Bản nháp cũ thay tên dòng bằng mảnh SEN (\"Thủy tinh dạng cầu\"/\"mắt búp bê\"/\"mắt đồ chơi\") nên thu hẹp: mắt thủy tinh ô van hoặc tròn khai cho thú nhồi bông không nhắc búp bê lọt .90 (MFN 30%) — lý do trả về OZV-690 (A)."
+    },
+    {
+      "ma": "70189010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "sen.70189010 \"dạng cầu, ô van hoặc tròn\" và \"mắt búp bê, mắt đồ chơi hoặc mắt các sản phẩm thuộc Chương\" (Chương 95) giữ TRỌN trong trích (nguon sen kèm đầu mục \"MẮT THỦY TINH\") để máy đọc đủ vế; là vế mô tả hình dạng/công dụng điển hình, không phải giới hạn đổi dòng trong 701890 nên không tách điều kiện AND — tách sẽ thu hẹp (mắt thủy tinh 4-36 mm khai không nêu công dụng vẫn là .10)."
+    },
+    {
+      "ma": "70189010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Vế \"không có khung hoặc cơ cấu cơ khí bên ngoài\" (lý do trả về OZV-690 (B)): sổ tay NGUOI_DUYET cũ giữ bằng tieuChi văn bản; tu-vung@2 không có khoá khung/coCauCoKhi nên không dựng được điều kiện số, máy --ve không đỏ vế này; mắt có khung là hàng .90 — giới hạn nằm ở phần dư luận giải, người duyệt cân nhắc thêm khoá ở vòng sau."
+    }
+  ]
 }

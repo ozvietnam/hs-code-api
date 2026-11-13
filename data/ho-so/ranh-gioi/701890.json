@@ -7,8 +7,8 @@
   "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T1800#soan-701890",
-    "ngay": "2026-11-07"
+    "phien": "claude-agent:pc-tho-hs-03:20261113T1351#soan-701890",
+    "ngay": "2026-11-13"
   },
   "duyet": null,
   "dieuKienNut": [],
@@ -16,16 +16,12 @@
     {
       "hs": "70189010",
       "nguon": "sen.70189010",
-      "trich": "Thủy tinh dạng cầu, ô van hoặc tròn không có khung hoặc cơ cấu cơ khí bên ngoài, đường kính 4-36 mm. Chúng có thể có nhiều màu khác nhau, được hoặc không được trang trí, sơn. Chúng sử dụng để làm mắt búp bê, mắt đồ chơi hoặc mắt các sản phẩm thuộc Chương",
+      "trich": "MẮT THỦY TINH…Thủy tinh dạng cầu, ô van hoặc tròn không có khung hoặc cơ cấu cơ khí bên ngoài, đường kính 4-36 mm. Chúng có thể có nhiều màu khác nhau, được hoặc không được trang trí, sơn. Chúng sử dụng để làm mắt búp bê, mắt đồ chơi hoặc mắt các sản phẩm thuộc Chương",
       "dieuKienSo": [
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": [
-            "Thủy tinh dạng cầu",
-            "mắt búp bê",
-            "mắt đồ chơi"
-          ]
+          "value": "Mắt thủy tinh"
         },
         {
           "fact": "duongKinh",
@@ -54,12 +50,17 @@
     {
       "ma": "70189010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.70189010: \"Mắt thủy tinh(SEN)\" ⇒ tenLoai TEN_LOAI \"Mắt thủy tinh\""
+      "ghiChu": "tax.70189010 \"Mắt thủy tinh(SEN)\" ⇒ tenLoai TEN_LOAI \"Mắt thủy tinh\" — GIỮ TÊN DÒNG làm mỏ neo. Bản nháp cũ thay tên dòng bằng mảnh SEN (\"Thủy tinh dạng cầu\"/\"mắt búp bê\"/\"mắt đồ chơi\") nên thu hẹp: mắt thủy tinh ô van hoặc tròn khai cho thú nhồi bông không nhắc búp bê lọt .90 (MFN 30%) — lý do trả về OZV-690 (A)."
     },
     {
       "ma": "70189010",
       "loai": "QUYET_DINH",
-      "ghiChu": "Nghĩa hẹp theo SEN: sen.70189010 \"dạng cầu, ô van hoặc tròn … đường kính 4-36 mm … làm mắt búp bê, mắt đồ chơi\" ⇒ tenLoai về chữ SEN + thêm duongKinh 4–36 mm — mắt thủy tinh theo SEN là hình cầu/ô van/tròn 4–36 mm dùng làm mắt búp bê/đồ chơi."
+      "ghiChu": "sen.70189010 \"dạng cầu, ô van hoặc tròn\" và \"mắt búp bê, mắt đồ chơi hoặc mắt các sản phẩm thuộc Chương\" (Chương 95) giữ TRỌN trong trích (nguon sen kèm đầu mục \"MẮT THỦY TINH\") để máy đọc đủ vế; là vế mô tả hình dạng/công dụng điển hình, không phải giới hạn đổi dòng trong 701890 nên không tách điều kiện AND — tách sẽ thu hẹp (mắt thủy tinh 4-36 mm khai không nêu công dụng vẫn là .10)."
+    },
+    {
+      "ma": "70189010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Vế \"không có khung hoặc cơ cấu cơ khí bên ngoài\" (lý do trả về OZV-690 (B)): sổ tay NGUOI_DUYET cũ giữ bằng tieuChi văn bản; tu-vung@2 không có khoá khung/coCauCoKhi nên không dựng được điều kiện số, máy --ve không đỏ vế này; mắt có khung là hàng .90 — giới hạn nằm ở phần dư luận giải, người duyệt cân nhắc thêm khoá ở vòng sau."
     }
   ],
   "traVe": [
@@ -67,6 +68,11 @@
       "phien": "claude-agent:duyet-L20-20261111#soat-L20",
       "ngay": "2026-11-11",
       "lyDo": "(A) 701890.json:70189010 THU HẸP: tên dòng \"Mắt thủy tinh(SEN)\" / EN \"Glass eyes\" bị bỏ khỏi tenLoai; mảng thay bằng mảnh SEN [\"Thủy tinh dạng cầu\",\"mắt búp bê\",\"mắt đồ chơi\"] — SEN nguyên văn \"dạng cầu, ô van hoặc tròn … làm mắt búp bê, mắt đồ chơi hoặc mắt các sản phẩm thuộc Chương …\": mất \"ô van hoặc tròn\" và \"mắt các sản phẩm thuộc Chương …\" ⇒ mắt thủy tinh ô van 10 mm cho thú nhồi bông/sản phẩm khác rơi .90 (MFN 30 %) thay vì .10 (0 %). (B) SUY RỘNG/hồi quy so với so-tay 7018 hiện hành (NGUOI_DUYET, nguon sen.70189010): bản cũ giữ tiêu chí \"không có khung hoặc cơ cấu cơ khí bên ngoài\", bản nháp bỏ mất vế giới hạn này. Ngưỡng số 4–36 mm giữ được (đổi tên fact duong_kinh→duongKinh)."
+    },
+    {
+      "phien": "claude-agent:pc-tho-hs-03:20261113T1640",
+      "ngay": "2026-11-13",
+      "lyDo": "PR #1278 TRẢ THỞ (GĐ): fact duong_kinh bị đổi thành duongKinh làm mất câu hỏi DONG_BIEU (test #411(d) đỏ, CI đỏ) — máy cũ so-tay-gates chỉ biết duong_kinh; sửa spec + duyệt lại."
     }
   ]
 }
