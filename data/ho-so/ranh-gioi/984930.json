@@ -4,13 +4,19 @@
   "nhom": "9849",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T1001#soan-984930",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-03:ranh-gioi-9849-20261113#soat-984930",
+    "ngay": "2026-11-13",
+    "ghiChu": "OZV-655: bỏ laBoPhan KHONG ở trích không có chữ bộ phận (r19664/9849303/98493040/r19889/98494310), giữ laBoPhan CO ở r19675/98494390; khai chongLanTruc (984930, khác trục TEN_LOAI↔DAC_DIEM) + chongLanVanBan 3 cặp (984943, cùng trục DAC_DIEM)",
+    "bam": "5576405e84418e69fb0c6ac3af48cb586ee82714ee79e72e936f0d6be6bf9d4e"
+  },
   "dieuKienNut": [
     {
       "id": "984930~r19664",
@@ -24,13 +30,9 @@
             "Thiết bị chiếu sáng",
             "tạo tín hiệu trực quan"
           ]
-        },
-        {
-          "fact": "laBoPhan",
-          "op": "KHONG"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": false
     },
     {
@@ -43,7 +45,7 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "9849303",
@@ -54,13 +56,9 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Thiết bị tín hiệu âm thanh"
-        },
-        {
-          "fact": "laBoPhan",
-          "op": "KHONG"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -82,14 +80,14 @@
           "op": "KHONG"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "98493020",
       "nguon": "tax.98493020",
       "trich": "98493020 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "98493031",
@@ -106,7 +104,7 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "98493032",
@@ -123,7 +121,7 @@
           "op": "KHONG"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "98493033",
@@ -141,14 +139,14 @@
           "value": "xe cộ"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "98493039",
       "nguon": "tax.98493039",
       "trich": "98493039 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "98493040",
@@ -162,13 +160,9 @@
             "Cái gạt nước",
             "gạt và chống tạo sương và tuyết"
           ]
-        },
-        {
-          "fact": "laBoPhan",
-          "op": "KHONG"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "98493050",
@@ -181,7 +175,7 @@
           "value": "hàng hóa thuộc phân nhóm 8512.20, 8512.30 hoặc 8512.40"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -211,9 +205,61 @@
       "ghiChu": "tieuDe.984930~r19666 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em r19664)"
     },
     {
+      "ma": "984930~r19675",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.984930~r19675 \"Bộ phận\" ⇒ laBoPhan CO (đọc CÓ \"bộ phận\" — chữ có sẵn trong trích)"
+    },
+    {
       "ma": "984930",
       "loai": "QUYET_DINH",
-      "ghiChu": "Claude 07/11/2026 (#1109): tầng thiết bị chiếu sáng/tín hiệu, tín hiệu âm thanh và dòng .40 gạt nước cạnh tầng anh em \"Bộ phận\" (r19675) ⇒ laBoPhan KHONG (căn cứ cấu trúc). Chồng lấn cũ hàng hoàn chỉnh ↔ bộ phận do spec sót vế."
+      "ghiChu": "OZV-655 trả về 13/11/2026 (lỗi 4): laBoPhan KHONG khai ở r19664/9849303/98493040 bị cổng từ chối vì các trích đó KHÔNG có chữ \"bộ phận\" (cách đọc chỉ hiện khi chữ có trong trích — không suy từ cấu trúc anh em) ⇒ bỏ cả ba; duy nhất r19675 \"Bộ phận\" giữ laBoPhan CO. Ghi chú #1109 cũ (laBoPhan KHONG căn cứ cấu trúc) mất hiệu lực."
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "984930~r19664",
+        "9849303",
+        "984930~r19675",
+        "98493040"
+      ],
+      "truc": {
+        "9849303": "TEN_LOAI",
+        "98493040": "TEN_LOAI",
+        "984930~r19664": "TEN_LOAI",
+        "984930~r19675": "DAC_DIEM"
+      },
+      "cauHoiPhanBiet": "Hàng là \"Bộ phận\" — bộ phận dùng cho hàng hóa thuộc phân nhóm 8512.20, 8512.30 hoặc 8512.40 (r19675, dòng .50) — hay là thiết bị chiếu sáng hoặc tạo tín hiệu trực quan (r19664), \"Thiết bị tín hiệu âm thanh\" (9849303), \"Cái gạt nước, gạt và chống tạo sương và tuyết\" (98493040)?",
+      "trich": {
+        "9849303": "Thiết bị tín hiệu âm thanh",
+        "98493040": "Cái gạt nước, gạt và chống tạo sương và tuyết",
+        "984930~r19664": "Thiết bị chiếu sáng hoặc tạo tín hiệu trực quan khác",
+        "984930~r19675": "Bộ phận"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "984930~r19664",
+            "984930~r19675"
+          ],
+          "hang": "Bộ phận tạo tín hiệu trực quan của ô tô"
+        },
+        {
+          "cap": [
+            "9849303",
+            "984930~r19675"
+          ],
+          "hang": "Thiết bị tín hiệu âm thanh bộ phận của ô tô"
+        },
+        {
+          "cap": [
+            "98493040",
+            "984930~r19675"
+          ],
+          "hang": "Bộ phận cái gạt nước của ô tô"
+        }
+      ],
+      "phanXu": null
     }
   ],
   "traVe": [
