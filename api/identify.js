@@ -4,7 +4,7 @@
 //        thieuTruong[], questions[], anh?, anhBoVi[], ms } — KHÔNG trả mã HS (việc của phan_loai_hs).
 // LLM lỗi → degraded:true + llmError (không fail-silent). Bearer bắt buộc (rule 2: endpoint sinh nội dung bằng LLM).
 const { requireAuth, serviceCaller } = require('../lib/auth');
-const { withPrivateData } = require('../lib/llm-privacy');
+const { withHangHoa } = require('../lib/llm-privacy');
 const { setCors, handleOptions } = require('../lib/cors');
 const { identify } = require('../lib/identify');
 
@@ -22,8 +22,9 @@ module.exports = async function handler(req, res) {
   if (tenHang.length < 2) return res.status(400).json({ error: 'tenHang bắt buộc, tối thiểu 2 ký tự' });
 
   try {
-    // Khoá dịch vụ (Cổng OZ, ERP…) = dữ liệu khách (#237 J1): mọi lượt LLM không qua tầng miễn phí — như /api/suggest.
-    const run = serviceCaller(req) !== null ? (fn) => withPrivateData(fn) : (fn) => fn();
+    // Khoá dịch vụ (Cổng OZ, ERP…) mang THÔNG TIN HÀNG (tên, model, thương hiệu, ảnh) — OZV-754: đủ chuỗi dự phòng
+    // khi QT bật HS_KHACH_MO_CHUOI_AI; mặc định giữ #237 J1 (chỉ nhà cung cấp hợp lệ).
+    const run = serviceCaller(req) !== null ? (fn) => withHangHoa(fn) : (fn) => fn();
     const out = await run(() => identify({
       tenHang,
       model: body?.model || null,
