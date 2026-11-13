@@ -110,7 +110,8 @@ check(
 //    - #10 (39199092, maBot=39191092): trượt top-1, được gather (_user) đưa vào top-3
 //    - #14 (42029190, maBot=42023200): trượt top-1, được kiemTruocChot cứu vào top-3
 //    - #24 (72082600, maBot=null): mã tiền lệ TB-TCHQ 6629 lên vị trí 1 -> chốt đúng 72082600
-//    - #39 (85072094, maBot=85072099): sai mã 8 số (cùng 6 số đầu, rơi vào mã dễ lẫn)
+//    - #39 (85072094, maBot=85072099): OZV-654 — TRƯỚC: sai mã 8 số (cùng 6 số đầu, rơi vào mã dễ lẫn 85072099);
+//      SAU: mã tiền lệ TB-TCHQ 918/TB-TCHQ (độ giống 1.0) đôn lên vị trí 1 => chốt đúng 85072094
 const diverseRun = await chayBoDo50Ca({ sttList: [1, 9, 10, 14, 24, 39], skipSearch: false });
 const byStt = Object.fromEntries(diverseRun.replay1211.chiTiet.map((r) => [r.stt, r]));
 check(
@@ -122,9 +123,11 @@ check(
     && byStt[10]?.top1 === true && byStt[10]?.top3 === true && byStt[10]?.dsMa[0] === '39199092'
     && byStt[14]?.top1 === true && byStt[14]?.top3 === true && byStt[14]?.dsMa[0] === '42029190'
     && byStt[24]?.top1 === true && byStt[24]?.dsMa[0] === '72082600' && byStt[24]?.khongRaMa === false
-    && byStt[39]?.top1 === false && byStt[39]?.top3 === false && byStt[39]?.dung6So === true && byStt[39]?.roiVaoMaLan === '85072099'
-    && diverseRun.replay1211.tomTat.top1SoSongSot === 5
-    && diverseRun.replay1211.tomTat.top3SoSongSot === 5
+    // OZV-654: #39 chốt đúng 85072094 (tiền lệ 918/TB-TCHQ), mã cũ 85072099 rơi xuống vị trí 2.
+    && byStt[39]?.top1 === true && byStt[39]?.top3 === true && byStt[39]?.dsMa[0] === '85072094'
+    && byStt[39]?.dung6So === false && byStt[39]?.roiVaoMaLan === null
+    && diverseRun.replay1211.tomTat.top1SoSongSot === 6
+    && diverseRun.replay1211.tomTat.top3SoSongSot === 6
     && diverseRun.replay1211.tomTat.khongRaMa === 0
     && diverseRun.searchCandidates.tomTat.tong === 6
     && diverseRun.searchCandidates.tomTat.top1Nhom4 === 1
