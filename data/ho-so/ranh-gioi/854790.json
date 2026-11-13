@@ -4,13 +4,19 @@
   "nhom": "8547",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-854790",
     "ngay": "2026-11-04"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:duyet-L34-20261113#soat-L34",
+    "ngay": "2026-11-13",
+    "ghiChu": "Theo TRA_VE L29: tenLoai .10 ['Ống dẫn dây điện','khớp nối'] (danh từ đầu nguyên văn, EN 'joints therefor' — 'của chúng' là luật liên kết); bỏ BO_VE thừa 'bằng kim loại cơ bản' (đã phủ bởi chatLieu kim loại).",
+    "bam": "a0235aaf3a5e45e928a8839b8bf402217560e926c09d3819ddb9352c477317e3"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -23,7 +29,7 @@
           "op": "TEN_LOAI",
           "value": [
             "Ống dẫn dây điện",
-            "các khớp nối của chúng"
+            "khớp nối"
           ]
         },
         {
@@ -32,27 +38,21 @@
           "value": "kim loại"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85479090",
       "nguon": "tax.85479090",
       "trich": "85479090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "85479010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85479010: \"Ống dẫn dây điện và các khớp nối của chúng, làm bằng kim loại cơ bản được lót bằng vật liệu cách điện\" ⇒ tenLoai mảng + chatLieu \"kim loại\""
-    },
-    {
-      "ma": "85479010",
-      "loai": "BO_VE",
-      "ve": "bằng kim loại cơ bản",
-      "lyDo": "Đã được phủ bằng chatLieu kim loại"
+      "ghiChu": "tax.85479010: \"Ống dẫn dây điện và các khớp nối của chúng, làm bằng kim loại cơ bản được lót bằng vật liệu cách điện\" ⇒ tenLoai [\"Ống dẫn dây điện\", \"khớp nối\"] (danh từ đầu nguyên văn; EN \"joints therefor\" — \"của chúng\" là luật liên kết, âm tiết \"chúng\" không phải hư từ, TRA_VE L29) + chatLieu \"kim loại\""
     },
     {
       "ma": "85479010",
