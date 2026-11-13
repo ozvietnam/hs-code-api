@@ -4,13 +4,19 @@
   "nhom": "9849",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T1001#soan-984923",
-    "ngay": "2026-11-06"
+    "phien": "claude-agent:sua-trich-9849-20261113#soan-984923",
+    "ngay": "2026-11-13"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:duyet-9849-sua-trich-20261113#soat-984923",
+    "ngay": "2026-11-13",
+    "ghiChu": "Sửa 13/11/2026 (OZV-655, trả thợ L33 lỗi 3): 9849231 giữ chữ 'Bơm' làm tenLoai, liệt kê 'nhiên liệu/dầu bôi trơn/chất làm mát' tách sang congDung (cách cổng cong3 chỉ dẫn: định ngữ chung thành điều kiện riêng) — hết cảnh 'dầu bôi trơn' trần khớp nút máy bơm",
+    "bam": "6245302e20a4528357b12395c18d759b18715634a00b9d89e5e1ab2fc0aa0c82"
+  },
   "dieuKienNut": [
     {
       "id": "9849231",
@@ -20,10 +26,15 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
+          "value": "Bơm"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
           "value": [
-            "Bơm nhiên liệu",
+            "nhiên liệu",
             "dầu bôi trơn",
-            "bơm chất làm mát"
+            "chất làm mát"
           ]
         },
         {
@@ -32,7 +43,7 @@
           "value": "động cơ đốt trong kiểu piston"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -52,7 +63,7 @@
           "value": "động cơ của xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "98492319",
@@ -70,19 +81,19 @@
           "value": "động cơ của xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
-      "ma": "9849231",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.9849231 \"Bơm nhiên liệu, dầu bôi trơn hoặc bơm chất làm mát\" liệt kê thay thế (hoặc) ⇒ mảng giá trị nguyên văn, mỗi mục một hàng; vế GIỚI HẠN \"dùng cho động cơ đốt trong kiểu piston\" phủ bằng dungCho"
-    },
-    {
       "ma": "984923",
       "loai": "QUYET_DINH",
       "ghiChu": "Claude 07/11/2026 (#1109, Q3 — GĐ chốt «làm luôn»): hết DỪNG. Chương 98 là lớp mã THAY THẾ — mỗi dòng 98 có cột mã tương ứng ở 97 chương trong biểu Tổng cục, không có phần còn lại; hàng trong tên nhóm 98xx mà không vào dòng 98 nào thì khai mã tương ứng ở 97 chương ⇒ cổng 1 chỉ cảnh báo (cong1-chuong98-ngoai-dong). Tên nhóm 98xx nay có trong cây (tenMa 4 số từ biểu Tổng cục). Spec không đổi."
+    },
+    {
+      "ma": "9849231",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Sửa 13/11/2026 (OZV-655, trả thợ L33): trước đây tách tenLoai thành mảng [\"Bơm nhiên liệu\",\"dầu bôi trơn\",\"bơm chất làm mát\"] — phần tử giữa mất chữ \"bơm\" nên CHÍNH dầu bôi trơn (mặt hàng Chương 27/34) khớp nhánh bơm. Nay giữ NGUYÊN VĂN một giá trị \"Bơm nhiên liệu, dầu bôi trơn hoặc bơm chất làm mát\"."
     }
   ],
   "traVe": [
@@ -90,6 +101,11 @@
       "phien": "claude-agent:duyet-L33-20261111#soat-L33",
       "ngay": "2026-11-11",
       "lyDo": "(A) 9849231 GIÁ TRỊ SAI TÊN HÀNG: tầng 'Bơm nhiên liệu, dầu bôi trơn hoặc bơm chất làm mát' (danh từ đầu 'Bơm' dùng chung: bơm nhiên liệu / bơm dầu bôi trơn / bơm chất làm mát) ghi tenLoai ['Bơm nhiên liệu','dầu bôi trơn','bơm chất làm mát'] — 'dầu bôi trơn' là tên chất, không phải hàng; sửa 'bơm dầu bôi trơn'. Không đổi mã 8 số hiện tại nhưng giá trị bịa tên hàng. Máy tách sai: .19 'Bơm nước loại' | 'được sử dụng cho…'."
+    },
+    {
+      "phien": "claude-agent:duyet-9849-sua-trich-20261113#soat-984923",
+      "ngay": "2026-11-13",
+      "lyDo": "Sửa trích theo trả thợ OZV-655 (L33): giữ nguyên văn vế trừ/vế hoặc trong tenLoai"
     }
   ]
 }
