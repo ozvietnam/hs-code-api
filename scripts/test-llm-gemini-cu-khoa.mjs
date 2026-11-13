@@ -78,7 +78,41 @@ let r = await callLLMJson('sys', 'user', { tier: 'premium', containsCustomerData
 check('(b) cụm khoá được gọi, trả kết quả cho lượt khách', r.provider === 'gemini-free' && r.json.who === 'free-ok', JSON.stringify({ r, calls }));
 check('(b) thứ tự giữ nguyên: khoá trả phí (402) → MiniMax (429) → cụm khoá',
   calls.join() === 'gemini:paid,minimax,gemini:free-ok', JSON.stringify(calls));
+// ── (b-bis) VÁ THỨ TỰ (GĐ 13/11/2026): khoá trả phí CÒN SỐNG (200) phải chặn cụm miễn phí ──
+// Trước bản vá: lượt standard (mặc định) và premium+PREMIUM_PROVIDER=minimax đều cho ra
+// [minimax → gemini:free-ok] và khách được trả lời bằng tầng miễn phí TRONG KHI khoá trả phí vẫn sống.
+process.env.GEMINI_API_KEY = 'paid-song'; // fetch giả lập: khoá lạ ⇒ 200
+minimaxMode = 'down';
+reset();
+r = await callLLMJson('sys', 'user', { containsCustomerData: true }); // KHÔNG truyền tier ⇒ standard
+check('(b-bis) standard + khoá trả phí sống: khoá trả phí trả lời, cụm miễn phí KHÔNG bị gọi',
+  r.provider === 'gemini' && !calls.some((c) => c.startsWith('gemini:free')), JSON.stringify({ provider: r.provider, calls }));
+check('(b-bis) standard: thứ tự = MiniMax → khoá trả phí', calls.join() === 'minimax,gemini:paid-song', JSON.stringify(calls));
+
+process.env.PREMIUM_PROVIDER = 'minimax'; // cấu hình prod (CEO 14/10/2026)
+reset();
+r = await callLLMJson('sys', 'user', { tier: 'premium', containsCustomerData: true });
+check('(b-bis) premium + PREMIUM_PROVIDER=minimax: khoá trả phí trả lời, cụm miễn phí KHÔNG bị gọi',
+  r.provider === 'gemini' && !calls.some((c) => c.startsWith('gemini:free')), JSON.stringify({ provider: r.provider, calls }));
+check('(b-bis) premium+minimax: thứ tự = MiniMax → khoá trả phí', calls.join() === 'minimax,gemini:paid-song', JSON.stringify(calls));
+
+// khoá trả phí LỖI ⇒ cụm miễn phí mới là lưới cuối, và khoá trả phí chỉ bị gọi ĐÚNG MỘT lần mỗi lượt
+process.env.GEMINI_API_KEY = 'paid';
+reset();
+r = await callLLMJson('sys', 'user', { containsCustomerData: true });
+check('(b-bis) khoá trả phí 402 → cụm miễn phí gánh (lưới cuối đúng vai)', r.provider === 'gemini-free' && r.json.who === 'free-ok', JSON.stringify({ provider: r.provider, calls }));
+check('(b-bis) khoá trả phí chỉ bị gọi 1 lần/lượt (không gọi lại ở bước 3)',
+  calls.filter((c) => c === 'gemini:paid').length === 1 && calls.join() === 'minimax,gemini:paid,gemini:free-ok', JSON.stringify(calls));
+delete process.env.PREMIUM_PROVIDER;
+
+// lượt CÔNG KHAI (không phải dữ liệu khách) giữ nguyên hành vi cũ: cụm miễn phí trước khoá trả phí
+reset();
+r = await callLLMJson('sys', 'user', {});
+check('(b-bis) lượt công khai KHÔNG đổi: cụm miễn phí vẫn đứng trước khoá trả phí',
+  r.provider === 'gemini-free' && calls.join() === 'minimax,gemini:free-ok', JSON.stringify({ provider: r.provider, calls }));
+
 delete process.env.GEMINI_API_KEY;
+minimaxMode = 'rate';
 
 // ── (c) khoá 1 hết lượt NGÀY ⇒ nghỉ tới nửa đêm Thái Bình Dương, khoá 2 chạy trong CÙNG lượt ──
 process.env.GEMINI_FREE_KEYS = 'free-day,free-ok';
