@@ -299,12 +299,27 @@
   },
   {
    "hs": "98492011",
-   "dieuKien": "khung Chương 98 — điều kiện do bản ranh giới 6→8 số đã duyệt điền",
-   "tieuChi": null,
+   "dieuKien": "dung tích xi lanh <= 50 cc",
    "nguon": "tax.98492011",
    "trich": "98492011 - - - Dung tích xi lanh không quá 50 cc",
    "loaiKhac": false,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "dungTichXiLanh",
+     "op": "<=",
+     "value": 50,
+     "donVi": "cc"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:ozv-682-duyet-9849-3pn-20261113#soat-984920",
+     "ngay": "2026-11-13",
+     "bam": "86f7058b41885a9c80ef1b593ff240b05f143655dd51f28abc2c9ce6a9dcd505"
+    }
+   }
   },
   {
    "hs": "98492012",
@@ -359,57 +374,159 @@
   },
   {
    "hs": "98492015",
-   "dieuKien": "khung Chương 98 — điều kiện do bản ranh giới 6→8 số đã duyệt điền",
-   "tieuChi": null,
+   "dieuKien": "dung tích xi lanh <= 2000 cc",
    "nguon": "tax.98492015",
    "trich": "98492015 - - - - - - Dung tích xi lanh không quá 2.000 cc",
    "loaiKhac": false,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "dungTichXiLanh",
+     "op": "<=",
+     "value": 2000,
+     "donVi": "cc"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:ozv-682-duyet-9849-3pn-20261113#soat-984920",
+     "ngay": "2026-11-13",
+     "bam": "86f7058b41885a9c80ef1b593ff240b05f143655dd51f28abc2c9ce6a9dcd505"
+    }
+   }
   },
   {
    "hs": "98492016",
-   "dieuKien": "khung Chương 98 — điều kiện do bản ranh giới 6→8 số đã duyệt điền",
-   "tieuChi": null,
+   "dieuKien": "dung tích xi lanh > 2000 cc; dung tích xi lanh <= 3000 cc",
    "nguon": "tax.98492016",
    "trich": "98492016 - - - - - - Dung tích xi lanh trên 2.000 cc nhưng không quá 3.000 cc",
    "loaiKhac": false,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "dungTichXiLanh",
+     "op": ">",
+     "value": 2000,
+     "donVi": "cc"
+    },
+    {
+     "fact": "dungTichXiLanh",
+     "op": "<=",
+     "value": 3000,
+     "donVi": "cc"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:ozv-682-duyet-9849-3pn-20261113#soat-984920",
+     "ngay": "2026-11-13",
+     "bam": "86f7058b41885a9c80ef1b593ff240b05f143655dd51f28abc2c9ce6a9dcd505"
+    }
+   }
   },
   {
    "hs": "98492017",
-   "dieuKien": "khung Chương 98 — điều kiện do bản ranh giới 6→8 số đã duyệt điền",
-   "tieuChi": null,
+   "dieuKien": "dung tích xi lanh > 3000 cc",
    "nguon": "tax.98492017",
    "trich": "98492017 - - - - - - Dung tích xi lanh trên 3.000 cc",
    "loaiKhac": false,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "dungTichXiLanh",
+     "op": ">",
+     "value": 3000,
+     "donVi": "cc"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:ozv-682-duyet-9849-3pn-20261113#soat-984920",
+     "ngay": "2026-11-13",
+     "bam": "86f7058b41885a9c80ef1b593ff240b05f143655dd51f28abc2c9ce6a9dcd505"
+    }
+   }
   },
   {
    "hs": "98492018",
-   "dieuKien": "khung Chương 98 — điều kiện do bản ranh giới 6→8 số đã duyệt điền",
-   "tieuChi": null,
+   "dieuKien": "dung tích xi lanh <= 2000 cc",
    "nguon": "tax.98492018",
    "trich": "98492018 - - - - - Dung tích xi lanh không quá 2.000 cc",
    "loaiKhac": false,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "dungTichXiLanh",
+     "op": "<=",
+     "value": 2000,
+     "donVi": "cc"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:ozv-682-duyet-9849-3pn-20261113#soat-984920",
+     "ngay": "2026-11-13",
+     "bam": "86f7058b41885a9c80ef1b593ff240b05f143655dd51f28abc2c9ce6a9dcd505"
+    }
+   }
   },
   {
    "hs": "98492019",
-   "dieuKien": "khung Chương 98 — điều kiện do bản ranh giới 6→8 số đã duyệt điền",
-   "tieuChi": null,
+   "dieuKien": "dung tích xi lanh > 2000 cc; dung tích xi lanh <= 3000 cc",
    "nguon": "tax.98492019",
    "trich": "98492019 - - - - - Dung tích xi lanh trên 2.000 cc nhưng không quá 3.000 cc",
    "loaiKhac": false,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "dungTichXiLanh",
+     "op": ">",
+     "value": 2000,
+     "donVi": "cc"
+    },
+    {
+     "fact": "dungTichXiLanh",
+     "op": "<=",
+     "value": 3000,
+     "donVi": "cc"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:ozv-682-duyet-9849-3pn-20261113#soat-984920",
+     "ngay": "2026-11-13",
+     "bam": "86f7058b41885a9c80ef1b593ff240b05f143655dd51f28abc2c9ce6a9dcd505"
+    }
+   }
   },
   {
    "hs": "98492020",
-   "dieuKien": "khung Chương 98 — điều kiện do bản ranh giới 6→8 số đã duyệt điền",
-   "tieuChi": null,
+   "dieuKien": "dung tích xi lanh > 3000 cc",
    "nguon": "tax.98492020",
    "trich": "98492020 - - - - - Dung tích xi lanh trên 3.000 cc",
    "loaiKhac": false,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "dungTichXiLanh",
+     "op": ">",
+     "value": 3000,
+     "donVi": "cc"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:ozv-682-duyet-9849-3pn-20261113#soat-984920",
+     "ngay": "2026-11-13",
+     "bam": "86f7058b41885a9c80ef1b593ff240b05f143655dd51f28abc2c9ce6a9dcd505"
+    }
+   }
   },
   {
    "hs": "98492111",
@@ -6134,6 +6251,160 @@
      "phien": "claude-agent:duyet-9849-sua-trich-20261113#soat-984915",
      "ngay": "2026-11-13",
      "bam": "e93645a6e070a9d69c2fb83fd446ea1a3efd9b9c3b8be90d08896eb013d2ddbf"
+    }
+   }
+  },
+  {
+   "id": "984920~r19516",
+   "nguon": "tieuDe.984920~r19516",
+   "trich": "984920~r19516 Dung tích xi lanh trên 50 cc nhưng không quá 250 cc",
+   "dieuKienSo": [
+    {
+     "fact": "dungTichXiLanh",
+     "op": ">",
+     "value": 50,
+     "donVi": "cc"
+    },
+    {
+     "fact": "dungTichXiLanh",
+     "op": "<=",
+     "value": 250,
+     "donVi": "cc"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:ozv-682-duyet-9849-3pn-20261113#soat-984920",
+     "ngay": "2026-11-13",
+     "bam": "86f7058b41885a9c80ef1b593ff240b05f143655dd51f28abc2c9ce6a9dcd505"
+    }
+   }
+  },
+  {
+   "id": "984920~r19517",
+   "nguon": "tieuDe.984920~r19517",
+   "trich": "984920~r19517 Dung tích xilanh trên 50 cc nhưng không quá 110 cc",
+   "dieuKienSo": [
+    {
+     "fact": "dungTichXiLanh",
+     "op": ">",
+     "value": 50,
+     "donVi": "cc"
+    },
+    {
+     "fact": "dungTichXiLanh",
+     "op": "<=",
+     "value": 110,
+     "donVi": "cc"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:ozv-682-duyet-9849-3pn-20261113#soat-984920",
+     "ngay": "2026-11-13",
+     "bam": "86f7058b41885a9c80ef1b593ff240b05f143655dd51f28abc2c9ce6a9dcd505"
+    }
+   }
+  },
+  {
+   "id": "984920~r19519",
+   "nguon": "tieuDe.984920~r19519",
+   "trich": "984920~r19519 Dung tích xilanh trên 110 cc nhưng không quá 250 cc",
+   "dieuKienSo": [
+    {
+     "fact": "dungTichXiLanh",
+     "op": ">",
+     "value": 110,
+     "donVi": "cc"
+    },
+    {
+     "fact": "dungTichXiLanh",
+     "op": "<=",
+     "value": 250,
+     "donVi": "cc"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:ozv-682-duyet-9849-3pn-20261113#soat-984920",
+     "ngay": "2026-11-13",
+     "bam": "86f7058b41885a9c80ef1b593ff240b05f143655dd51f28abc2c9ce6a9dcd505"
+    }
+   }
+  },
+  {
+   "id": "984920~r19521",
+   "nguon": "tieuDe.984920~r19521",
+   "trich": "984920~r19521 Dung tích xi lanh trên 250 cc nhưng không quá 1.000 cc",
+   "dieuKienSo": [
+    {
+     "fact": "dungTichXiLanh",
+     "op": ">",
+     "value": 250,
+     "donVi": "cc"
+    },
+    {
+     "fact": "dungTichXiLanh",
+     "op": "<=",
+     "value": 1000,
+     "donVi": "cc"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:ozv-682-duyet-9849-3pn-20261113#soat-984920",
+     "ngay": "2026-11-13",
+     "bam": "86f7058b41885a9c80ef1b593ff240b05f143655dd51f28abc2c9ce6a9dcd505"
+    }
+   }
+  },
+  {
+   "id": "984920~r19523",
+   "nguon": "tieuDe.984920~r19523",
+   "trich": "984920~r19523 Dung tích xi lanh trên 1.000 cc",
+   "dieuKienSo": [
+    {
+     "fact": "dungTichXiLanh",
+     "op": ">",
+     "value": 1000,
+     "donVi": "cc"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:ozv-682-duyet-9849-3pn-20261113#soat-984920",
+     "ngay": "2026-11-13",
+     "bam": "86f7058b41885a9c80ef1b593ff240b05f143655dd51f28abc2c9ce6a9dcd505"
+    }
+   }
+  },
+  {
+   "id": "984920~r19524",
+   "nguon": "tieuDe.984920~r19524",
+   "trich": "984920~r19524 Đã lắp ráp hoàn chỉnh",
+   "dieuKienSo": [
+    {
+     "fact": "daLapRap",
+     "op": "CO"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:ozv-682-duyet-9849-3pn-20261113#soat-984920",
+     "ngay": "2026-11-13",
+     "bam": "86f7058b41885a9c80ef1b593ff240b05f143655dd51f28abc2c9ce6a9dcd505"
     }
    }
   },
