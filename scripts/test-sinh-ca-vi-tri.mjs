@@ -101,6 +101,31 @@ const dit = (c) => JSON.stringify(c);
     productText: 'Dây đồng tráng men (enamel)',
   });
   check('5d 85441140 mảng ["men tráng", "enamel"] chốt 85441140 mà không bắt buộc cụm "Có lớp phủ ngoài"', r40.ketQua === 'CHOT' && r40.hs === '85441140', dit(r40).slice(0, 400));
+
+  // Soát vòng 2 PR #1258: mặt hàng dây điện phi-cáp có chữ "plastic" không bị hút nhầm vào mã cáp
+  const r21Raw = G.chotDong8({
+    hs: '854449',
+    productText: 'Dây đơn có vỏ bọc plastic dùng trong sản xuất bó dây dẫn điện của ô tô',
+  });
+  check('5e dây đơn ô tô vỏ bọc plastic (chưa nêu điện áp) không bị chốt nhầm vào mã cáp (85444941/85444922/85444923)', !['85444941', '85444922', '85444923'].includes(r21Raw.hs), dit(r21Raw).slice(0, 400));
+
+  const r21 = G.chotDong8({
+    hs: '854449',
+    productText: 'Dây đơn có vỏ bọc plastic dùng trong sản xuất bó dây dẫn điện của ô tô, điện áp 12 V - không dùng cho viễn thông',
+  });
+  check('5f dây đơn ô tô vỏ bọc plastic (đủ tầng 8544492 <=80V, phi-viễn-thông) chốt đúng 85444921, không nhảy sang 85444923', r21.ketQua === 'CHOT' && r21.hs === '85444921', dit(r21).slice(0, 400));
+
+  const rDayDon = G.chotDong8({
+    hs: '854449',
+    productText: 'Dây điện đơn cách điện plastic, 2 x 1,5 mm2',
+  });
+  check('5g dây điện đơn cách điện plastic (chưa nêu điện áp) không bị chốt nhầm vào mã cáp (85444941/85444922/85444923)', !['85444941', '85444922', '85444923'].includes(rDayDon.hs), dit(rDayDon).slice(0, 400));
+
+  const rDayDon220 = G.chotDong8({
+    hs: '854449',
+    productText: 'Dây điện đơn cách điện plastic, 2 x 1,5 mm2, điện áp 220 V - không dùng cho viễn thông',
+  });
+  check('5h dây điện đơn cách điện plastic (220 V, phi-viễn-thông) chốt đúng 85444942 (nhánh plastic sống), không nhảy sang 85444941', rDayDon220.ketQua === 'CHOT' && rDayDon220.hs === '85444942', dit(rDayDon220).slice(0, 400));
 }
 
 console.log(`\n${pass} pass, ${fail} fail`);
