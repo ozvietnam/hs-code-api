@@ -4,23 +4,25 @@
   "nhom": "9849",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-984943",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-03:ranh-gioi-9849-20261113#soat-984943",
+    "ngay": "2026-11-13",
+    "ghiChu": "OZV-655: bỏ laBoPhan KHONG ở r19889/98494310, giữ laBoPhan CO ở 98494390; khai chongLanVanBan 3 cặp (.10/.21/.29 với .90, cùng trục DAC_DIEM)",
+    "bam": "16dd3d8e718561e60e86428a4cac7d8ca3a0c75a07e31f03841fb5c0f72dcad0"
+  },
   "dieuKienNut": [
     {
       "id": "984943~r19889",
       "nguon": "tieuDe.984943~r19889",
       "trich": "984943~r19889 Loại khác (trừ loại thuộc phân nhóm 8506.10, 8506.30, 8506.40, 8506.50, 8506.60), trừ loại bằng kẽm carbon",
       "dieuKienSo": [
-        {
-          "fact": "laBoPhan",
-          "op": "KHONG"
-        },
         {
           "fact": "loaiPin",
           "op": "TRONG",
@@ -30,7 +32,7 @@
           "chieu": "PHAI_KHONG"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": true
     }
   ],
@@ -46,13 +48,9 @@
           "value": [
             "LITI"
           ]
-        },
-        {
-          "fact": "laBoPhan",
-          "op": "KHONG"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "98494321",
@@ -66,14 +64,14 @@
           "donVi": "cm3"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "98494329",
       "nguon": "tax.98494329",
       "trich": "98494329 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "98494390",
@@ -85,7 +83,7 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -116,9 +114,32 @@
       "lyDo": "Vế loại trừ ghi bằng MÃ phân nhóm của Chương 85, không có chữ chất liệu pin để đọc. Hai dòng dưới tầng có cột mã tương ứng 8506.80.30 / 8506.80.90 (biểu Tổng cục) — chính là phần còn lại của 85.06 sau các phân nhóm bị trừ; liti (8506.50) đã loại bằng phanConLai (anh em .10 \"Bằng liti\"), kẽm carbon ghi loaiPin PHAI_KHONG."
     },
     {
-      "ma": "984943",
+      "ma": "984943~r19889",
       "loai": "QUYET_DINH",
-      "ghiChu": "Claude 07/11/2026 (#1109): biểu ghi tiêu đề \"- - Loại khác (trừ loại thuộc phân nhóm 8506.10, …), trừ loại bằng kẽm carbon:\" bằng chính mã 984943 lặp lại nên cây cũ mất tầng (.21/.29 bị xếp ngang .10 «Bằng liti» ⇒ chồng lấn giả). Lớp tầng nay nhận dòng lặp mã phân nhóm ở gạch trong là tiêu đề ⇒ tầng 984943~r19889: phanConLai (sau .10) + loaiPin PHAI_KHONG KEM_CACBON + laBoPhan KHONG (anh em .90 \"Bộ phận\")."
+      "ghiChu": "OZV-655 trả về 13/11/2026 (lỗi 4): laBoPhan KHONG khai ở r19889/98494310 bị cổng từ chối vì trích KHÔNG có chữ \"bộ phận\" (cách đọc chỉ hiện khi chữ có trong trích — không suy từ cấu trúc anh em .90) ⇒ bỏ cả hai; giữ laBoPhan CO ở 98494390 \"Bộ phận\" và loaiPin PHAI_KHONG KEM_CACBON (\"kẽm carbon\" có trong trích). Ghi chú #1109 cũ (laBoPhan KHONG căn cứ cấu trúc) mất hiệu lực; phần còn lại của #1109 (tầng r19889 là tiêu đề nhờ dòng lặp mã) vẫn đứng."
+    }
+  ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "98494310",
+        "98494390"
+      ],
+      "lyDo": "Hai dòng cùng trục đặc điểm, câu chữ không loại trừ nhau: .10 \"Bằng liti\" không nói pin đã lắp ráp hoàn chỉnh, .90 \"Bộ phận\" không ghi chất liệu pin — mô tả \"bộ phận pin liti\" (vd vỏ pin, cực pin liti) thỏa cả hai dòng; không có căn cứ thứ tự trong chữ biểu."
+    },
+    {
+      "cap": [
+        "98494321",
+        "98494390"
+      ],
+      "lyDo": "Hai dòng cùng trục đặc điểm, câu chữ không loại trừ nhau: .21 \"Có thể tích ngoài không quá 300 cm3\" không nói pin hoàn chỉnh, .90 \"Bộ phận\" không giới hạn thể tích — mô tả \"bộ phận pin có thể tích ngoài không quá 300 cm3\" thỏa cả hai dòng; không có căn cứ thứ tự trong chữ biểu."
+    },
+    {
+      "cap": [
+        "98494329",
+        "98494390"
+      ],
+      "lyDo": "Hai dòng cùng trục đặc điểm, câu chữ không loại trừ nhau: .29 \"Loại khác\" là phần còn lại theo chất liệu pin, .90 \"Bộ phận\" là phần còn lại theo mức hoàn chỉnh — bộ phận của pin chất liệu khác (không liti, thể tích trên 300 cm3) thỏa cả hai dòng; không có căn cứ thứ tự trong chữ biểu."
     }
   ],
   "traVe": [
