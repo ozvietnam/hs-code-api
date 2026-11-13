@@ -38,6 +38,9 @@ module.exports = function handler(req, res) {
     // SHA ngắn của bản đang chạy + thời điểm dựng ảnh (null khi build không truyền biến vào).
     commit: ban.commit,
     buildTime: ban.buildTime,
+    // OZV-755: rỗng thì nói VÌ SAO rỗng, bằng mã slug (không đường dẫn, không tên biến). Chỉ xuất hiện
+    // khi thiếu. `buildTime: 'khong-co-tep'` = ảnh không dựng bằng Dockerfile của repo.
+    ...(ban.lyDo ? { banDungLyDo: ban.lyDo } : {}),
     status: draining ? 'draining' : healthy ? 'healthy' : 'degraded',
     // 'stale' = có nguồn quá hạn đối chiếu / sắp hoặc đã hết hiệu lực (xem checks.dataFreshness).
     dataStatus: freshness.ok ? 'fresh' : 'stale',
