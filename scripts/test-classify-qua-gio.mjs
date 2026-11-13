@@ -100,6 +100,43 @@ chayGia = async () => KQ_BT;
 const rD = await goi({ tenHang: 'van xả máy giặt' });
 check('D6 không có env ⇒ lượt thường vẫn 200 (trần mặc định không phải 0)', rD._s === 200 && rD._j?.trangThai === undefined, String(rD._s));
 
+// ═════════ E. OZV-756 — event loop BỊ CHẶN giữa chừng ⇒ cửa vẫn phải bắn ═════════
+// Thực địa 13/11: POST /api/classify "xi măng portland" trên prod trả HTTP 200 sau 120,76 s
+// (thân ENGINE_TIMEOUT) — trần 85 s KHÔNG bắn. Cơ chế: `setTimeout` là macrotask, chỉ chạy khi event
+// loop rảnh. Khi đường chạy chiếm CPU đồng bộ vắt qua mốc trần, lúc loop rảnh lại thì MICROTASK của
+// lượt chính (`.then` của promise đã resolve) chạy TRƯỚC macrotask hẹn giờ ⇒ `Promise.race` lấy kết quả
+// thật dù đã quá hạn từ lâu. Cửa phải chốt bằng ĐỒNG HỒ tại điểm quyết định, không chỉ bằng hẹn giờ.
+process.env.HS_CLASSIFY_TRAN_MS = '200';
+chayGia = async () => { const het = Date.now() + 900; while (Date.now() < het); return KQ_BT; }; // chặn CPU 900 ms > trần 200 ms
+const tE = Date.now();
+const rE = await goi({ tenHang: 'xi măng portland' });
+const msE = Date.now() - tE;
+check('E1 chặn event loop vắt qua trần ⇒ 503, KHÔNG phải 200 trả muộn', rE._s === 503, JSON.stringify({ s: rE._s, msE, keys: Object.keys(rE._j || {}) }));
+check('E2 trangThai QUA_GIO', rE._j?.trangThai === 'QUA_GIO', JSON.stringify(rE._j).slice(0, 200));
+check('E3 ms báo đúng là đã vượt trần', Number.isFinite(rE._j?.ms) && rE._j.ms >= 200, JSON.stringify({ ms: rE._j?.ms, tranMs: rE._j?.tranMs }));
+check('E4 KHÔNG trả results của lượt quá hạn (bên gọi đã bỏ cuộc, mã này không được dùng)', rE._j?.results === undefined, JSON.stringify(rE._j?.results));
+
+// E5: chặn CPU NGẮN hơn trần ⇒ vẫn 200 như cũ (không bắt oan lượt chậm hợp lệ).
+process.env.HS_CLASSIFY_TRAN_MS = '3000';
+chayGia = async () => { const het = Date.now() + 300; while (Date.now() < het); return KQ_BT; };
+const rE5 = await goi({ tenHang: 'xi măng portland' });
+check('E5 chặn CPU DƯỚI trần ⇒ vẫn 200, kết quả nguyên vẹn (không bắt oan)', rE5._s === 200 && rE5._j?.results?.[0]?.hs === '84818061', JSON.stringify({ s: rE5._s, r: rE5._j?.results }));
+
+// E6: thời gian còn lại <= 0 (lượt đã tiêu hết trần ở bước trước) ⇒ QUA_GIO ngay, KHÔNG đặt hẹn giờ âm.
+// Hẹn giờ âm làm Node cảnh báo TimeoutNegativeWarning và tự hạ xuống 1 ms — dựa vào đó là may rủi.
+{
+  const canhBao = [];
+  const onWarn = (w) => { if (w && /TimeoutNegativeWarning/.test(String(w.name))) canhBao.push(String(w.message)); };
+  process.on('warning', onWarn);
+  process.env.HS_CLASSIFY_TRAN_MS = '50';
+  chayGia = async () => { const het = Date.now() + 400; while (Date.now() < het); return KQ_BT; };
+  const rE6 = await goi({ tenHang: 'xi măng portland' });
+  await new Promise((r) => { const h = setTimeout(r, 30); if (h.unref) h.unref(); });
+  process.off('warning', onWarn);
+  check('E6 trần đã tiêu hết ⇒ 503 QUA_GIO, không có TimeoutNegativeWarning', rE6._s === 503 && rE6._j?.trangThai === 'QUA_GIO' && canhBao.length === 0, JSON.stringify({ s: rE6._s, canhBao }));
+}
+process.env.HS_CLASSIFY_TRAN_MS = '85000';
+
 clearInterval(giuSong);
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);

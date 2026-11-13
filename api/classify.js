@@ -39,14 +39,28 @@ function tranMs() {
   const v = Number(process.env.HS_CLASSIFY_TRAN_MS);
   return Number.isFinite(v) && v > 0 ? v : TRAN_MS_MAC_DINH;
 }
-/** Chạy `p` trong hạn `ms`: trả `{ quaGio: true }` khi hết giờ, ngược lại chuyển tiếp kết quả/lỗi y như cũ. */
+/**
+ * Chạy `p` trong hạn `ms`: trả `{ quaGio: true }` khi hết giờ, ngược lại chuyển tiếp kết quả/lỗi y như cũ.
+ *
+ * OZV-756 — vì sao phải chốt bằng ĐỒNG HỒ chứ không chỉ bằng hẹn giờ: `setTimeout` là macrotask, chỉ chạy khi
+ * event loop rảnh. Đường chạy classify chiếm CPU đồng bộ từng quãng dài (đo 13/11: lượt 2 866 ms, hẹn giờ 100 ms
+ * bắn 0 lần). Khi loop rảnh lại thì MICROTASK của lượt chính (`.then` của promise đã resolve) chạy TRƯỚC macrotask
+ * hẹn giờ ⇒ `Promise.race` lấy kết quả thật dù đã quá hạn từ lâu — prod trả HTTP 200 sau 120,76 s với trần 85 s.
+ * Vì vậy sau khi race xong vẫn phải so `Date.now()` với mốc hạn tuyệt đối.
+ */
 async function trongHan(p, ms) {
+  const mocHan = Date.now() + ms;
+  // Hạn đã tiêu hết trước khi chạy: trả ngay, KHÔNG đặt hẹn giờ âm (Node cảnh báo TimeoutNegativeWarning rồi tự hạ
+  // xuống 1 ms — dựa vào đó là may rủi). Vẫn để `p` chạy nền như mọi lượt quá hạn khác; kết quả bị bỏ.
+  if (ms <= 0) { Promise.resolve(p).catch(() => {}); return { quaGio: true }; }
   let hen;
   const het = new Promise((r) => { hen = setTimeout(() => r({ quaGio: true }), ms); if (hen.unref) hen.unref(); });
   try {
     const kq = await Promise.race([Promise.resolve(p).then((v) => ({ v }), (loi) => ({ loi })), het]);
     if (kq.quaGio) return kq;
+    // Hẹn giờ thua microtask ⇒ tự chốt bằng đồng hồ. Lỗi thật vẫn ném như cũ (C1/C2: cửa quá giờ không nuốt lỗi).
     if (kq.loi) throw kq.loi;
+    if (Date.now() >= mocHan) return { quaGio: true };
     return kq;
   } finally { clearTimeout(hen); }
 }
