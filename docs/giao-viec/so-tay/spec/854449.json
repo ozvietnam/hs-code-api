@@ -1,7 +1,7 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "854449",
-  "phien": "zcode-sub:glm-5.3:20261106T1003#soan-854449",
+  "phien": "https://claude.ai/code/session_29331a75-ozv342-tho04#soan-854449",
   "dong8": {
     "85444911": {
       "dieuKienSo": [
@@ -35,7 +35,10 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Dây đơn có vỏ bọc"
+          "value": [
+            "Dây đơn có vỏ bọc",
+            "chống nhiễu"
+          ]
         },
         {
           "fact": "dungCho",
@@ -95,6 +98,10 @@
           ],
           "viTri": "CACH_DIEN"
         }
+      ],
+      "phanConLai": [
+        "85444922",
+        "85444923"
       ]
     },
     "85444931": {
@@ -138,7 +145,7 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Cáp bọc"
+          "value": "Cáp"
         },
         {
           "fact": "chatLieu",
@@ -160,6 +167,9 @@
           ],
           "viTri": "CACH_DIEN"
         }
+      ],
+      "phanConLai": [
+        "85444941"
       ]
     }
   },
@@ -301,6 +311,11 @@
       "ma": "85444923",
       "loai": "QUYET_DINH",
       "ghiChu": "Claude (#1109): \"Cáp điện cách điện bằng plastic khác\" = phần còn lại có tên của .22 (cùng tên + vật liệu, .22 thêm lõi ≤ 19,5 mm) ⇒ phanConLai [\"85444922\"]."
+    },
+    {
+      "ma": "85444941",
+      "loai": "QUYET_DINH",
+      "ghiChu": "soát L29 11/11 trả về: tenLoai \"Cáp bọc\" THU HẸP — \"Cáp điện cách điện PVC, 600 V\" (không chữ \"bọc\") đọc TRÁI .41 ⇒ tenLoai \"Cáp\" (danh từ đầu tax.85444941 \"Cáp bọc cách điện bằng plastic\"); .42 \"Loại khác, cách điện bằng…\" ghi phanConLai [.41]."
     }
   ]
 }

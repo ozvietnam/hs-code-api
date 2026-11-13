@@ -250,6 +250,12 @@ export function cumKhangDinh(c) {
   }
   if (c.op === 'LA') {
     const v = Array.isArray(c.value) ? c.value[0] : c.value;
+    // OZV-342: điều kiện có viTri (chatLieu CACH_DIEN…) phải sinh theo khuôn cachViet.vi của khoá ("cách điện
+    // bằng {giaTri}") — cụm "bằng cao su" trơn bộ đọc không thấy vị trí ⇒ CHUA_BIET (đo 85443013: r16045 đứng
+    // CHUA_BIET khiến ca rơi nhieu-dong-loai-khac). Không có viTri ⇒ giữ "bằng X" như cũ.
+    if (c.viTri && k?.moTaViTri?.[c.viTri]?.cachViet?.vi) {
+      return String(k.moTaViTri[c.viTri].cachViet.vi).replace('{giaTri}', v);
+    }
     return `bằng ${v}`;
   }
   if (c.op === 'TRONG') {
@@ -289,6 +295,17 @@ export function cumPhuDinhNhom(dsDieuKien) {
   }
   if (c.op === 'LA') {
     const vs = Array.isArray(c.value) ? c.value : [c.value];
+    // OZV-342: "không phải bằng cao su" là cụm CHẾT với bộ đọc theo viTri (đo 85444913: CHUA_BIET). Muốn nói
+    // TRÁI một nhóm chatLieu LA [cao su, plastic, giấy] thì khẳng một vật liệu NGOÀI danh sách theo đúng khuôn
+    // vị trí của khoá — "cách điện bằng thủy tinh" máy đọc thành TRÁI (đã đo trên điều kiện thật 85444913).
+    // Vật liệu chọn từ moTaGiaTri của chính khoá (máy biết đọc), ưu tiên vật liệu làm lớp cách điện có thật.
+    if (c.viTri && k?.moTaViTri?.[c.viTri]?.cachViet?.vi) {
+      const khong = new Set(vs.map(String));
+      const khaThi = Object.keys(k.moTaGiaTri || {});
+      const uuTien = ['thủy tinh', 'gốm sứ', 'vải dệt', 'giấy', 'gỗ', 'kim loại', 'đồng', 'nhôm', 'gang'];
+      const ngoai = uuTien.find((m) => !khong.has(m) && khaThi.includes(m)) || khaThi.find((m) => !khong.has(m));
+      if (ngoai) return String(k.moTaViTri[c.viTri].cachViet.vi).replace('{giaTri}', ngoai);
+    }
     return vs.map((v) => `không phải bằng ${v}`).join(', ');
   }
   if (c.op === 'TRONG') {
@@ -363,7 +380,21 @@ function sinhMoTaLoaiTru(hs8, pn6, st) {
     }
     parts.push(loiVeSo(fact, chosen, donVi, k?.cachDoc?.vi?.[0] || k?.nhanVi || String(fact).replace(/_/g, ' ')));
   }
-  return parts.join(', ');
+  // OZV-342: chỉ tách đoạn " - " (ranh đoạn phuDinhCaDoan) quanh CỤM PHỦ ĐỊNH — chuỗi phủ định anh em
+  // ("không dùng cho 87.02, …") đứng chung đoạn với khẳng định thì nuốt mọi vế phía sau ⇒ THIEU_SO_LIEU
+  // (85444919) hoặc nhieu-dong-loai-khac (85443013). Phần KHÔNG phủ định vẫn nối ", " như nếp cũ: bộ đọc
+  // số gộp khoảng theo ",", tách " - " làm vế số "điện áp 100000V" rơi CHUA_BIET ⇒ .6039 đỏ lại (đo biến
+  // thể "số cuối ," ⇒ LOAI_KHAC 85446039).
+  // CHỈ áp cho nhóm 8544 (PR này sửa duy nhất 8544): đo --toan-bieu hai chân cho thấy tách đoạn toàn cục
+  // lật 8 ca thành chốt sai ở nhóm chưa được sửa (1605/4813/8413/8703/8711) — nhóm khác giữ nếp cũ ", ".
+  if (pn6.slice(0, 4) !== '8544') return parts.join(', ');
+  const laPhu = (s) => /không dùng|không phải|không thuộc|other than|not a|不是/.test(String(s || ''));
+  let moTa = '';
+  for (let i = 0; i < parts.length; i++) {
+    if (i) moTa += laPhu(parts[i]) || laPhu(parts[i - 1]) ? ' - ' : ', ';
+    moTa += parts[i];
+  }
+  return moTa;
 }
 
 /** Sinh toàn bộ các ca kiểm luật cho một nhóm 4 số. */
@@ -394,8 +425,49 @@ export function sinhCaNhom(nhom4) {
         .filter(Boolean)
         .join(' - ');
       const laLKTran = Boolean(n?.loaiKhacTran) && list8.length > 1;
+      // OZV-342 (phạm vi): mọi biến thể sinh ca dưới đây CHỈ áp cho nhóm 8544 — PR này sửa duy nhất 8544.
+      // Đo --toan-bieu hai chân (origin/main + dữ liệu / nhánh đầy đủ) cho thấy áp toàn cục làm 8 ca nhóm
+      // khác (1605/4813/8413/8703/8711) lật thành chốt sai — nhóm khác giữ nguyên nếp cũ của main.
+      const chi8544 = nhom4 === '8544';
       if (!laLKTran) {
-        const moTa = [ten6, midText, hs8 === n?.laPhanNhom ? '' : tenDong].filter(Boolean).join(': ');
+        // OZV-342: dòng có tên nằm dưới tầng "Loại khác" trần thì midText LƯỢT tiêu đề tầng ⇒ mô tả ca không
+        // đụng tới nút anh em, nút đứng CHUA_BIET và dòng bị hạ xuống (_traiKhiNutThoa — 85444292 Cáp bọc,
+        // 85444234, 85443014). Bù bằng phủ định anh em PHAI_KHONG trên đường đi: hàng thuộc dòng này thì không
+        // thuộc tầng/dòng anh em — đúng nghĩa luật, và máy đọc được ("không dùng trong viễn thông" ⇒ TRAI).
+        // CHỈ lấy nhóm tầng TRÊN dòng (g.tang > 0): phủ định anh em CÙNG TẦNG dòng sẽ mâu thuẫn với chính tên
+        // dòng (85444292 "Cáp dữ liệu dẹt…" kèm "không phải Cáp dữ liệu dẹt" là câu tự triệt tiêu). Nhóm thuần
+        // số bỏ qua — số đo của dòng đã có trong tên, gán thêm số ngoài khoảng anh em là bịa kiện.
+        const phuKhong = [];
+        if (chi8544 && mids.some((m) => m.loaiKhac)) {
+          const dd = DK.duongDiDong8(hs8, { soTay: st });
+          for (const g of dd.nhom || []) {
+            if (g.chieu !== 'PHAI_KHONG' || g.tang === 0 || !Array.isArray(g.dieuKien) || !g.dieuKien.length) continue;
+            if (g.dieuKien.every((x) => ['<=', '<', '>=', '>'].includes(x.op))) continue;
+            const s = cumPhuDinhNhom(g.dieuKien);
+            if (s && !phuKhong.includes(s)) phuKhong.push(s);
+          }
+        }
+        // OZV-342: nối các phần bằng " - " (ranh đoạn của phuDinhCaDoan) thay vì ": " — ":" KHÔNG phải ranh
+        // đoạn nên tiêu đề tầng phủ định "Loại không dùng cho viễn thông, điện áp không quá 80 V" giết cả
+        // đoạn chứa tên dòng (85444921-.24/.41/.42: tenLoai + chatLieu đọc CHUA_BIET trên toàn bộ). Tách đoạn
+        // giữ nguyên văn mọi tiêu đề, chỉ cô lập phủ định vào đoạn riêng. Phụ phủ định phuKhong cũng nối
+        // " - " vì ", không phải Dây đơn có vỏ bọc" nằm cùng đoạn tenDong thì nuốt nốt vật liệu sau nó.
+        // OZV-342 (tiếp): KHÔNG tách hết — bộ đọc số gộp khoảng điện áp theo nếp cũ với ":", tách " - " ở
+        // tầng KHẲNG ĐỊNH (8544602 "trên 36 kV nhưng không quá 66 kV") làm vế dienAp>36 đứt thành CHUA_BIET
+        // (đo .6021/.6022/.6031 đỏ lại). Chỉ tách khi một trong hai vế kề nhau là tiêu đề phủ định.
+        const laPhuDinhDoan = (s) => /không dùng|không phải|không thuộc|other than|not a|不是/.test(String(s || ''));
+        const cacPhan = [ten6, ...mids.map((m) => (m.loaiKhac ? '' : m.tenVi)).filter(Boolean), hs8 === n?.laPhanNhom ? '' : tenDong].filter(Boolean);
+        let moTa = '';
+        if (chi8544) {
+          for (let i = 0; i < cacPhan.length; i++) {
+            if (i) moTa += laPhuDinhDoan(cacPhan[i]) || laPhuDinhDoan(cacPhan[i - 1]) ? ' - ' : ': ';
+            moTa += cacPhan[i];
+          }
+          moTa += phuKhong.length ? ` - ${phuKhong.join(' - ')}` : '';
+        } else {
+          // nếp cũ của main: midText vốn nối " - " bên trong, các phần trên nối ": "
+          moTa = [ten6, midText, hs8 === n?.laPhanNhom ? '' : tenDong].filter(Boolean).join(': ');
+        }
         caDongCoTen.push({
           loaiCa: 'DONG_CO_TEN',
           pn6,
