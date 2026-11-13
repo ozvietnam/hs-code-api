@@ -157,30 +157,85 @@
   },
   {
    "hs": "98491510",
-   "dieuKien": "khung Chương 98 — điều kiện do bản ranh giới 6→8 số đã duyệt điền",
-   "tieuChi": null,
+   "dieuKien": "tên loại hàng: Miếng đệm hoặc vành khung tròn; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): xe có động cơ thuộc nhóm 87.02, 87.03, 87.04",
    "nguon": "tax.98491510",
    "trich": "98491510 - - - Miếng đệm và vành khung tròn, loại dùng cho xe có động cơ thuộc nhóm 87.02, 87.03, 87.04 ",
    "loaiKhac": false,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": [
+      "Miếng đệm",
+      "vành khung tròn"
+     ]
+    },
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": "xe có động cơ thuộc nhóm 87.02, 87.03, 87.04"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:duyet-9849-20261113#soat-9849",
+     "ngay": "2026-11-13",
+     "bam": "470720d538d7092df2c86c08905ac698aed2600bc85e47b01381f704d0cf721f"
+    }
+   }
   },
   {
    "hs": "98491521",
-   "dieuKien": "khung Chương 98 — điều kiện do bản ranh giới 6→8 số đã duyệt điền",
-   "tieuChi": null,
+   "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05",
    "nguon": "tax.98491521",
    "trich": "98491521 - - - - - Dùng cho xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05, trừ viền cao su quanh kính cửa",
    "loaiKhac": false,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": "xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:duyet-9849-20261113#soat-9849",
+     "ngay": "2026-11-13",
+     "bam": "470720d538d7092df2c86c08905ac698aed2600bc85e47b01381f704d0cf721f"
+    }
+   }
   },
   {
    "hs": "98491529",
-   "dieuKien": "khung Chương 98 — điều kiện do bản ranh giới 6→8 số đã duyệt điền",
-   "tieuChi": null,
+   "dieuKien": "tên loại hàng: Viền cao su quanh kính cửa; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04",
    "nguon": "tax.98491529",
    "trich": "98491529 - - - - - Viền cao su quanh kính cửa, dùng cho xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04",
    "loaiKhac": false,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Viền cao su quanh kính cửa"
+    },
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": "xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:duyet-9849-20261113#soat-9849",
+     "ngay": "2026-11-13",
+     "bam": "470720d538d7092df2c86c08905ac698aed2600bc85e47b01381f704d0cf721f"
+    }
+   }
   },
   {
    "hs": "98491610",
@@ -238,12 +293,27 @@
   },
   {
    "hs": "98492011",
-   "dieuKien": "khung Chương 98 — điều kiện do bản ranh giới 6→8 số đã duyệt điền",
-   "tieuChi": null,
+   "dieuKien": "dung tích xi lanh <= 50 cc",
    "nguon": "tax.98492011",
    "trich": "98492011 - - - Dung tích xi lanh không quá 50 cc",
    "loaiKhac": false,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "dungTichXiLanh",
+     "op": "<=",
+     "value": 50,
+     "donVi": "cc"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:duyet-9849-20261113#soat-9849",
+     "ngay": "2026-11-13",
+     "bam": "86f7058b41885a9c80ef1b593ff240b05f143655dd51f28abc2c9ce6a9dcd505"
+    }
+   }
   },
   {
    "hs": "98492012",
@@ -298,57 +368,159 @@
   },
   {
    "hs": "98492015",
-   "dieuKien": "khung Chương 98 — điều kiện do bản ranh giới 6→8 số đã duyệt điền",
-   "tieuChi": null,
+   "dieuKien": "dung tích xi lanh <= 2000 cc",
    "nguon": "tax.98492015",
    "trich": "98492015 - - - - - - Dung tích xi lanh không quá 2.000 cc",
    "loaiKhac": false,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "dungTichXiLanh",
+     "op": "<=",
+     "value": 2000,
+     "donVi": "cc"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:duyet-9849-20261113#soat-9849",
+     "ngay": "2026-11-13",
+     "bam": "86f7058b41885a9c80ef1b593ff240b05f143655dd51f28abc2c9ce6a9dcd505"
+    }
+   }
   },
   {
    "hs": "98492016",
-   "dieuKien": "khung Chương 98 — điều kiện do bản ranh giới 6→8 số đã duyệt điền",
-   "tieuChi": null,
+   "dieuKien": "dung tích xi lanh > 2000 cc; dung tích xi lanh <= 3000 cc",
    "nguon": "tax.98492016",
    "trich": "98492016 - - - - - - Dung tích xi lanh trên 2.000 cc nhưng không quá 3.000 cc",
    "loaiKhac": false,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "dungTichXiLanh",
+     "op": ">",
+     "value": 2000,
+     "donVi": "cc"
+    },
+    {
+     "fact": "dungTichXiLanh",
+     "op": "<=",
+     "value": 3000,
+     "donVi": "cc"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:duyet-9849-20261113#soat-9849",
+     "ngay": "2026-11-13",
+     "bam": "86f7058b41885a9c80ef1b593ff240b05f143655dd51f28abc2c9ce6a9dcd505"
+    }
+   }
   },
   {
    "hs": "98492017",
-   "dieuKien": "khung Chương 98 — điều kiện do bản ranh giới 6→8 số đã duyệt điền",
-   "tieuChi": null,
+   "dieuKien": "dung tích xi lanh > 3000 cc",
    "nguon": "tax.98492017",
    "trich": "98492017 - - - - - - Dung tích xi lanh trên 3.000 cc",
    "loaiKhac": false,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "dungTichXiLanh",
+     "op": ">",
+     "value": 3000,
+     "donVi": "cc"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:duyet-9849-20261113#soat-9849",
+     "ngay": "2026-11-13",
+     "bam": "86f7058b41885a9c80ef1b593ff240b05f143655dd51f28abc2c9ce6a9dcd505"
+    }
+   }
   },
   {
    "hs": "98492018",
-   "dieuKien": "khung Chương 98 — điều kiện do bản ranh giới 6→8 số đã duyệt điền",
-   "tieuChi": null,
+   "dieuKien": "dung tích xi lanh <= 2000 cc",
    "nguon": "tax.98492018",
    "trich": "98492018 - - - - - Dung tích xi lanh không quá 2.000 cc",
    "loaiKhac": false,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "dungTichXiLanh",
+     "op": "<=",
+     "value": 2000,
+     "donVi": "cc"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:duyet-9849-20261113#soat-9849",
+     "ngay": "2026-11-13",
+     "bam": "86f7058b41885a9c80ef1b593ff240b05f143655dd51f28abc2c9ce6a9dcd505"
+    }
+   }
   },
   {
    "hs": "98492019",
-   "dieuKien": "khung Chương 98 — điều kiện do bản ranh giới 6→8 số đã duyệt điền",
-   "tieuChi": null,
+   "dieuKien": "dung tích xi lanh > 2000 cc; dung tích xi lanh <= 3000 cc",
    "nguon": "tax.98492019",
    "trich": "98492019 - - - - - Dung tích xi lanh trên 2.000 cc nhưng không quá 3.000 cc",
    "loaiKhac": false,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "dungTichXiLanh",
+     "op": ">",
+     "value": 2000,
+     "donVi": "cc"
+    },
+    {
+     "fact": "dungTichXiLanh",
+     "op": "<=",
+     "value": 3000,
+     "donVi": "cc"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:duyet-9849-20261113#soat-9849",
+     "ngay": "2026-11-13",
+     "bam": "86f7058b41885a9c80ef1b593ff240b05f143655dd51f28abc2c9ce6a9dcd505"
+    }
+   }
   },
   {
    "hs": "98492020",
-   "dieuKien": "khung Chương 98 — điều kiện do bản ranh giới 6→8 số đã duyệt điền",
-   "tieuChi": null,
+   "dieuKien": "dung tích xi lanh > 3000 cc",
    "nguon": "tax.98492020",
    "trich": "98492020 - - - - - Dung tích xi lanh trên 3.000 cc",
    "loaiKhac": false,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "dungTichXiLanh",
+     "op": ">",
+     "value": 3000,
+     "donVi": "cc"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:duyet-9849-20261113#soat-9849",
+     "ngay": "2026-11-13",
+     "bam": "86f7058b41885a9c80ef1b593ff240b05f143655dd51f28abc2c9ce6a9dcd505"
+    }
+   }
   },
   {
    "hs": "98492111",
@@ -621,21 +793,59 @@
   },
   {
    "hs": "98492311",
-   "dieuKien": "khung Chương 98 — điều kiện do bản ranh giới 6→8 số đã duyệt điền",
-   "tieuChi": null,
+   "dieuKien": "tên loại hàng: Bơm nhiên liệu; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): động cơ của xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04",
    "nguon": "tax.98492311",
    "trich": "98492311 - - - Bơm nhiên liệu loại sử dụng cho động cơ của xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04",
    "loaiKhac": false,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Bơm nhiên liệu"
+    },
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": "động cơ của xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:duyet-9849-20261113#soat-9849",
+     "ngay": "2026-11-13",
+     "bam": "179f60ec008c1e63300ba7e79089fd1553beac81ce335e9fc35aaffd9ab8a803"
+    }
+   }
   },
   {
    "hs": "98492319",
-   "dieuKien": "khung Chương 98 — điều kiện do bản ranh giới 6→8 số đã duyệt điền",
-   "tieuChi": null,
+   "dieuKien": "tên loại hàng: Bơm nước; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): động cơ của xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04",
    "nguon": "tax.98492319",
    "trich": "98492319 - - - Bơm nước loại được sử dụng cho động cơ của xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04",
    "loaiKhac": false,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Bơm nước"
+    },
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": "động cơ của xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:duyet-9849-20261113#soat-9849",
+     "ngay": "2026-11-13",
+     "bam": "179f60ec008c1e63300ba7e79089fd1553beac81ce335e9fc35aaffd9ab8a803"
+    }
+   }
   },
   {
    "hs": "98492400",
@@ -896,21 +1106,71 @@
   },
   {
    "hs": "98492710",
-   "dieuKien": "khung Chương 98 — điều kiện do bản ranh giới 6→8 số đã duyệt điền",
-   "tieuChi": null,
+   "dieuKien": "tên loại hàng: Van ngắt nhiên liệu; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): xe thuộc nhóm 87.02, 87.03 hoặc 87.04",
    "nguon": "tax.98492710",
    "trich": "98492710 - - Van ngắt nhiên liệu dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04",
    "loaiKhac": false,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Van ngắt nhiên liệu"
+    },
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": "xe thuộc nhóm 87.02, 87.03 hoặc 87.04"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:duyet-9849-20261113#soat-9849",
+     "ngay": "2026-11-13",
+     "bam": "28fe2805f07421f798449fed91de5cfa7399a5dc80acb80667fd6332882a7869"
+    }
+   },
+   "chongLanVanBan": [
+    {
+     "voi": "98492790",
+     "lyDo": "Hai dòng có chữ biểu TRÙNG NHAU từng chữ .10 \"Van ngắt nhiên liệu dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04\" và .90 \"Van ngắt nhiên liệu dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04\" — mọi hàng thoả dòng này đều thoả dòng kia, không có căn cứ thứ tự hay đặc điểm nào tách được; lúc chạy máy hỏi, không tự chốt"
+    }
+   ]
   },
   {
    "hs": "98492790",
-   "dieuKien": "khung Chương 98 — điều kiện do bản ranh giới 6→8 số đã duyệt điền",
-   "tieuChi": null,
+   "dieuKien": "tên loại hàng: Van ngắt nhiên liệu; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): xe thuộc nhóm 87.02, 87.03 hoặc 87.04",
    "nguon": "tax.98492790",
    "trich": "98492790 - - Van ngắt nhiên liệu dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04",
    "loaiKhac": false,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Van ngắt nhiên liệu"
+    },
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": "xe thuộc nhóm 87.02, 87.03 hoặc 87.04"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:duyet-9849-20261113#soat-9849",
+     "ngay": "2026-11-13",
+     "bam": "28fe2805f07421f798449fed91de5cfa7399a5dc80acb80667fd6332882a7869"
+    }
+   },
+   "chongLanVanBan": [
+    {
+     "voi": "98492710",
+     "lyDo": "Hai dòng có chữ biểu TRÙNG NHAU từng chữ .10 \"Van ngắt nhiên liệu dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04\" và .90 \"Van ngắt nhiên liệu dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04\" — mọi hàng thoả dòng này đều thoả dòng kia, không có căn cứ thứ tự hay đặc điểm nào tách được; lúc chạy máy hỏi, không tự chốt"
+    }
+   ]
   },
   {
    "hs": "98492811",
@@ -2763,21 +3023,59 @@
   },
   {
    "hs": "98493810",
-   "dieuKien": "khung Chương 98 — điều kiện do bản ranh giới 6→8 số đã duyệt điền",
-   "tieuChi": null,
+   "dieuKien": "tên loại hàng: Đồng hồ tốc độ; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): xe có động cơ",
    "nguon": "tax.98493810",
    "trich": "98493810 - - - Đồng hồ tốc độ dùng cho xe có động cơ",
    "loaiKhac": false,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Đồng hồ tốc độ"
+    },
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": "xe có động cơ"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:duyet-9849-20261113#soat-9849",
+     "ngay": "2026-11-13",
+     "bam": "ee3744d0b24e34a4f823c69b6dd1f7b6d5ed2ed395421a6e4ed25992990d3523"
+    }
+   }
   },
   {
    "hs": "98493890",
-   "dieuKien": "khung Chương 98 — điều kiện do bản ranh giới 6→8 số đã duyệt điền",
-   "tieuChi": null,
+   "dieuKien": "tên loại hàng: Máy đo tốc độ góc; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): xe có động cơ",
    "nguon": "tax.98493890",
    "trich": "98493890 - - - Máy đo tốc độ góc cho xe có động cơ",
    "loaiKhac": false,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Máy đo tốc độ góc"
+    },
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": "xe có động cơ"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:duyet-9849-20261113#soat-9849",
+     "ngay": "2026-11-13",
+     "bam": "ee3744d0b24e34a4f823c69b6dd1f7b6d5ed2ed395421a6e4ed25992990d3523"
+    }
+   }
   },
   {
    "hs": "98493910",
@@ -2871,12 +3169,29 @@
   },
   {
    "hs": "98494110",
-   "dieuKien": "khung Chương 98 — điều kiện do bản ranh giới 6→8 số đã duyệt điền",
-   "tieuChi": null,
+   "dieuKien": "tên loại hàng: Kết hợp với thiết bị ghi hoặc tái tạo âm thanh",
    "nguon": "tax.98494110",
    "trich": "98494110 - - Kết hợp với thiết bị ghi hoặc tái tạo âm thanh",
    "loaiKhac": false,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": [
+      "Kết hợp với thiết bị ghi",
+      "tái tạo âm thanh"
+     ]
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:duyet-9849-20261113#soat-9849",
+     "ngay": "2026-11-13",
+     "bam": "fa9368d017d9fb93aff510d0001dda4556cc7dab5890fe575e28eaf2440c95cc"
+    }
+   }
   },
   {
    "hs": "98494190",
@@ -5897,5 +6212,220 @@
   "dat": 239,
   "loai": 0,
   "nguonBiCat": []
- }
+ },
+ "dieuKienNut": [
+  {
+   "id": "9849152",
+   "nguon": "tieuDe.9849152",
+   "trich": "9849152 Bộ phận và phụ kiện dùng cho xe thuộc Chương 87",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": [
+      "Bộ phận",
+      "phụ kiện"
+     ]
+    },
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": "xe thuộc Chương 87"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:duyet-9849-20261113#soat-9849",
+     "ngay": "2026-11-13",
+     "bam": "470720d538d7092df2c86c08905ac698aed2600bc85e47b01381f704d0cf721f"
+    }
+   }
+  },
+  {
+   "id": "984920~r19516",
+   "nguon": "tieuDe.984920~r19516",
+   "trich": "984920~r19516 Dung tích xi lanh trên 50 cc nhưng không quá 250 cc",
+   "dieuKienSo": [
+    {
+     "fact": "dungTichXiLanh",
+     "op": ">",
+     "value": 50,
+     "donVi": "cc"
+    },
+    {
+     "fact": "dungTichXiLanh",
+     "op": "<=",
+     "value": 250,
+     "donVi": "cc"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:duyet-9849-20261113#soat-9849",
+     "ngay": "2026-11-13",
+     "bam": "86f7058b41885a9c80ef1b593ff240b05f143655dd51f28abc2c9ce6a9dcd505"
+    }
+   }
+  },
+  {
+   "id": "984920~r19517",
+   "nguon": "tieuDe.984920~r19517",
+   "trich": "984920~r19517 Dung tích xilanh trên 50 cc nhưng không quá 110 cc",
+   "dieuKienSo": [
+    {
+     "fact": "dungTichXiLanh",
+     "op": ">",
+     "value": 50,
+     "donVi": "cc"
+    },
+    {
+     "fact": "dungTichXiLanh",
+     "op": "<=",
+     "value": 110,
+     "donVi": "cc"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:duyet-9849-20261113#soat-9849",
+     "ngay": "2026-11-13",
+     "bam": "86f7058b41885a9c80ef1b593ff240b05f143655dd51f28abc2c9ce6a9dcd505"
+    }
+   }
+  },
+  {
+   "id": "984920~r19519",
+   "nguon": "tieuDe.984920~r19519",
+   "trich": "984920~r19519 Dung tích xilanh trên 110 cc nhưng không quá 250 cc",
+   "dieuKienSo": [
+    {
+     "fact": "dungTichXiLanh",
+     "op": ">",
+     "value": 110,
+     "donVi": "cc"
+    },
+    {
+     "fact": "dungTichXiLanh",
+     "op": "<=",
+     "value": 250,
+     "donVi": "cc"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:duyet-9849-20261113#soat-9849",
+     "ngay": "2026-11-13",
+     "bam": "86f7058b41885a9c80ef1b593ff240b05f143655dd51f28abc2c9ce6a9dcd505"
+    }
+   }
+  },
+  {
+   "id": "984920~r19521",
+   "nguon": "tieuDe.984920~r19521",
+   "trich": "984920~r19521 Dung tích xi lanh trên 250 cc nhưng không quá 1.000 cc",
+   "dieuKienSo": [
+    {
+     "fact": "dungTichXiLanh",
+     "op": ">",
+     "value": 250,
+     "donVi": "cc"
+    },
+    {
+     "fact": "dungTichXiLanh",
+     "op": "<=",
+     "value": 1000,
+     "donVi": "cc"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:duyet-9849-20261113#soat-9849",
+     "ngay": "2026-11-13",
+     "bam": "86f7058b41885a9c80ef1b593ff240b05f143655dd51f28abc2c9ce6a9dcd505"
+    }
+   }
+  },
+  {
+   "id": "984920~r19523",
+   "nguon": "tieuDe.984920~r19523",
+   "trich": "984920~r19523 Dung tích xi lanh trên 1.000 cc",
+   "dieuKienSo": [
+    {
+     "fact": "dungTichXiLanh",
+     "op": ">",
+     "value": 1000,
+     "donVi": "cc"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:duyet-9849-20261113#soat-9849",
+     "ngay": "2026-11-13",
+     "bam": "86f7058b41885a9c80ef1b593ff240b05f143655dd51f28abc2c9ce6a9dcd505"
+    }
+   }
+  },
+  {
+   "id": "984920~r19524",
+   "nguon": "tieuDe.984920~r19524",
+   "trich": "984920~r19524 Đã lắp ráp hoàn chỉnh",
+   "dieuKienSo": [
+    {
+     "fact": "daLapRap",
+     "op": "CO"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:duyet-9849-20261113#soat-9849",
+     "ngay": "2026-11-13",
+     "bam": "86f7058b41885a9c80ef1b593ff240b05f143655dd51f28abc2c9ce6a9dcd505"
+    }
+   }
+  },
+  {
+   "id": "9849231",
+   "nguon": "tieuDe.9849231",
+   "trich": "9849231 Bơm nhiên liệu, dầu bôi trơn hoặc bơm chất làm mát, dùng cho động cơ đốt trong kiểu piston",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": [
+      "Bơm nhiên liệu",
+      "dầu bôi trơn",
+      "bơm chất làm mát"
+     ]
+    },
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": "động cơ đốt trong kiểu piston"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:duyet-9849-20261113#soat-9849",
+     "ngay": "2026-11-13",
+     "bam": "179f60ec008c1e63300ba7e79089fd1553beac81ce335e9fc35aaffd9ab8a803"
+    }
+   }
+  }
+ ]
 }
