@@ -408,7 +408,9 @@ const paths = {
       summary: 'Kiểm tra dịch vụ + trạng thái LLM',
       description:
         'Trả 200 khi đủ cả 3 điều kiện: có dữ liệu biểu thuế, có token cấu hình, và còn ít nhất một nhà cung cấp LLM. ' +
-        'Thiếu LLM thì trả 503 kèm `checks.llm.note` — /api/suggest và /api/describe chỉ chạy chế độ không AI (degraded).',
+        'Thiếu LLM thì trả 503 kèm `checks.llm.note` — /api/suggest và /api/describe chỉ chạy chế độ không AI (degraded). ' +
+        'Kèm `commit` (SHA ngắn của bản đang chạy) và `buildTime` (thời điểm dựng ảnh, ISO 8601) để biết phép đo đang đo bản nào; ' +
+        'cả hai là `null` khi build không truyền biến vào.',
     }),
   },
   '/api/tax': {
