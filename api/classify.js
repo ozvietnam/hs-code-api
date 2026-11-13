@@ -29,6 +29,38 @@ function parseSupplierHs(v) {
   return { code, source: String(o.source || '').trim().slice(0, 40) || null, url: /^https?:\/\//i.test(url) ? url : null };
 }
 
+// ── Cửa trả lời khi HẾT GIỜ (OZV-713) ────────────────────────────────────────────────────────────────────────────
+// Cloudflare cắt lượt ~100 s và trả chuỗi `error code: 524` (KHÔNG phải JSON) ⇒ bên gọi parse JSON là ném lỗi và
+// đếm thành "lỗi AI". Trần dưới đây ngắn hơn trần Cloudflare để handler TỰ trả lời bằng JSON thật.
+// Ngân sách động cơ (CLASSIFY_BUDGET_MS, mặc định 285000) vẫn giữ nguyên — đây chỉ là cửa trả lời, không cắt động cơ:
+// lượt quá hạn vẫn chạy nền tới khi xong (không huỷ được), kết quả bị bỏ.
+const TRAN_MS_MAC_DINH = 85000;
+function tranMs() {
+  const v = Number(process.env.HS_CLASSIFY_TRAN_MS);
+  return Number.isFinite(v) && v > 0 ? v : TRAN_MS_MAC_DINH;
+}
+/** Chạy `p` trong hạn `ms`: trả `{ quaGio: true }` khi hết giờ, ngược lại chuyển tiếp kết quả/lỗi y như cũ. */
+async function trongHan(p, ms) {
+  let hen;
+  const het = new Promise((r) => { hen = setTimeout(() => r({ quaGio: true }), ms); if (hen.unref) hen.unref(); });
+  try {
+    const kq = await Promise.race([Promise.resolve(p).then((v) => ({ v }), (loi) => ({ loi })), het]);
+    if (kq.quaGio) return kq;
+    if (kq.loi) throw kq.loi;
+    return kq;
+  } finally { clearTimeout(hen); }
+}
+/** Thân JSON thật cho lượt quá giờ — 503 + trangThai QUA_GIO. Không có `results`: chưa chốt được mã nào. */
+function traLoiQuaGio(res, { ms, tranMs: tran, attrs }) {
+  return res.status(503).json({
+    trangThai: 'QUA_GIO',
+    thongDiep: 'Chưa chốt được mã trong thời gian cho phép, mời thử lại hoặc mô tả rõ hơn (thêm chất liệu, công dụng).',
+    ms,
+    tranMs: tran,
+    attrs,
+  });
+}
+
 module.exports = async function handler(req, res) {
   setCors(res);
   if (handleOptions(req, res)) return;
@@ -100,6 +132,7 @@ module.exports = async function handler(req, res) {
 
   try {
     const started = Date.now();
+    const tran = tranMs(); // OZV-713: trần trả lời, ngắn hơn trần Cloudflare (~100 s) — xem trongHan/traLoiQuaGio.
     // Khoá dịch vụ có tên (Cổng ozplugin…) nhận thêm `usage` để tính phí; công khai / HS_API_TOKEN thì không.
     // Bench chống rò (R5): header X-OZ-Eval-Holdout: 1 → kho tiền lệ Oz bỏ tập giữ riêng trong lượt này. Chỉ bớt ngữ cảnh.
     const run = wantsEvalHoldout(req) ? (fn) => withEvalHoldout(fn) : (fn) => fn();
@@ -127,13 +160,16 @@ module.exports = async function handler(req, res) {
         }
         donPhienBanCu(pb); // đổi phiên bản dữ liệu ⇒ dọn dòng cũ (một lần mỗi tiến trình, không ném)
       }
-      const { result, usage } = await run(() => withPrivateData(() => withUsage(() => chay({ noiBo: laNoiBoOz(req), caller: serviceCaller(req) }))));
+      const kq = await trongHan(run(() => withPrivateData(() => withUsage(() => chay({ noiBo: laNoiBoOz(req), caller: serviceCaller(req) })))), tran - (Date.now() - started));
+      if (kq.quaGio) return traLoiQuaGio(res, { ms: Date.now() - started, tranMs: tran, attrs });
+      const { result, usage } = kq.v;
       if (dungCache) ghiCache(khoa, pb, result); // ghi sau, lỗi DB nuốt trong lib — phản hồi như chưa có cache
       return res.status(200).json({ ...result, attrs, usage, ms: Date.now() - started });
     }
     // Lượt công khai / HS_API_TOKEN: đếm chi phí LLM (L0j, #547 — chỉ đếm, không chặn). Shape phản hồi không đổi.
-    const result = await run(() => demLuotCongKhai('classify', () => chay({ noiBo: false }), { req }));
-    return res.status(200).json({ ...result, attrs, ms: Date.now() - started });
+    const kq = await trongHan(run(() => demLuotCongKhai('classify', () => chay({ noiBo: false }), { req })), tran - (Date.now() - started));
+    if (kq.quaGio) return traLoiQuaGio(res, { ms: Date.now() - started, tranMs: tran, attrs });
+    return res.status(200).json({ ...kq.v, attrs, ms: Date.now() - started });
   } catch (e) {
     return res.status(502).json({ error: 'Classify failed', detail: String(e.message).slice(0, 240) });
   }
