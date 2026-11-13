@@ -24,11 +24,20 @@ Service HTTP API cho ERP `erp-xnk` gọi sang để:
   env `GEMINI_TRA_PHI_CHOT_CUOI` mặc định `on`) làm chốt cuối cho lượt công khai khi mọi nhà cung cấp trên đã lỗi. Không phụ
   thuộc Gemini miễn phí. Thiếu key provider nào thì tự bỏ qua; local dev dùng OpenRouter free
   — `docs/openrouter.md`, `npm run openrouter:ping`
-- **Dữ liệu khách không ra tầng miễn phí** (`lib/llm-privacy.js`, #237 J1, CEO chốt 11/10/2026): lượt từ khoá
-  dịch vụ (`HS_SERVICE_TOKENS`: Cổng OZ, ERP) chạy trong `withPrivateData()` → LLM chỉ đi nhà cung cấp trong
-  `LLM_NO_TRAIN_PROVIDERS` (mặc định MiniMax + khoá Gemini trả phí); không Gemini miễn phí, không mẫu `:free`,
-  không Hermes. Hết nhà cung cấp hợp lệ → `NO_PRIVATE_LLM`, không rơi xuống tầng miễn phí. Script batch chạy trên
-  tờ khai Oz đặt `HS_LLM_PRIVATE_ALL=true`. Thêm endpoint LLM mới cho khoá dịch vụ thì phải bọc `withPrivateData`.
+- **Dữ liệu khách không ra tầng miễn phí — chỉ khi nó THẬT SỰ là dữ liệu khách** (`lib/llm-privacy.js`, #237 J1 chốt
+  11/10/2026; ranh giới thu hẹp theo OZV-754 — anh Thắng 13/11/2026: "thông tin hàng thì đầy rẫy trên web, chả có gì
+  là bí mật"). **KHÔNG còn riêng tư** (thông tin hàng): tên hàng, mô tả, thông số, chất liệu, công dụng, ảnh, link sàn,
+  hãng, model. **VẪN riêng tư**: số tờ khai; invoice đủ thông tin mua bán; số lượng; đơn giá/trị giá; danh tính khách;
+  mọi đường chạm kho tờ khai Oz (oz-gold, `HS_INTERNAL_CALLERS`, `locTheoQuyen`) và dữ liệu trang/ảnh của khách trong
+  phiếu khai. Cửa chỉ mang thông tin hàng (suggest, describe, classify, identify, extract-specs, mkt sourcing, ho-so)
+  bọc `withHangHoa()` — bằng `withPrivateData()` khi env `HS_KHACH_MO_CHUOI_AI` TẮT (mặc định; giữ nguyên luật
+  #237 J1 + cờ `containsCustomerData` ở lib), và bằng lượt THƯỜNG khi QT bật env (lượt đó đi đủ chuỗi dự phòng —
+  DeepSeek/Hermes/OpenRouter TRẢ TIỀN THEO LƯỢT, nên env mặc định TẮT, QT quyết). Cửa mang dữ liệu thật sự riêng tư
+  (declaration-sheet, dispute-draft, declaration-check, lớp `lib/ho-so/*` dùng câu Oz) LUÔN `withPrivateData()`
+  bất kể env. Lượt `withPrivateData()` → LLM chỉ đi `LLM_NO_TRAIN_PROVIDERS` (mặc định MiniMax + khoá Gemini trả
+  phí), không web (B1b `isPrivate()`), hết → `NO_PRIVATE_LLM` không rơi tầng miễn phí. Script batch trên tờ khai Oz
+  đặt `HS_LLM_PRIVATE_ALL=true`. Thêm endpoint LLM cho khoá dịch vụ: dữ liệu tờ khai → bọc `withPrivateData`, chỉ
+  thông tin hàng → bọc `withHangHoa`. `HS_GEMINI_FREE_CHO_KHACH` giữ nguyên (lưới chốt cuối, OZV-726).
 - Auth: Bearer token (`HS_API_TOKEN` env)
 - Deploy: server riêng của Oz (Docker/Coolify, `server.js` + `Dockerfile`), domain prod `hs-kb.uythacnhapkhau.com` qua Cloudflare. **Đã gỡ Vercel (CEO chốt 09/10/2026).** Định tuyến nằm ở `routes.json`
 - **Nguồn sự thật là GitHub `ozvietnam/hs-code-api`** (CEO chốt 29/09/2026). Gitea của

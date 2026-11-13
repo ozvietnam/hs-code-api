@@ -6,7 +6,7 @@
 
 const { requireAuth, serviceCaller, laNoiBoOz } = require('../lib/auth');
 const { withUsage } = require('../lib/usage-context');
-const { withPrivateData } = require('../lib/llm-privacy');
+const { withHangHoa } = require('../lib/llm-privacy');
 const { withEvalHoldout, wantsEvalHoldout } = require('../lib/holdout');
 const { requireAuthOrPublicLlm } = require('../lib/public-llm');
 const { demLuotCongKhai } = require('../lib/public-llm-meter');
@@ -81,7 +81,7 @@ module.exports = async function handler(req, res) {
 
   // POST /api/extract-specs (rewrite → ?mode=extract_specs): rút thông số chuẩn từ chữ
   // tiếng Trung + chữ OCR ozsource gửi sang. Gộp vào function này theo pattern routes.json.
-  // Chữ trang/ảnh của khách → LUÔN withPrivateData, bất kể ai gọi (L0a #546).
+  // Chữ trang/ảnh sản phẩm = THÔNG TIN HÀNG, không còn riêng tư khi QT bật HS_KHACH_MO_CHUOI_AI (OZV-754, thay L0a #546).
   if (String(req.query?.mode || '') === 'extract_specs') {
     const hasText = body && (body.titleZh || (Array.isArray(body.specsZh) ? body.specsZh.length : body.specsZh) || (Array.isArray(body.imageTexts) && body.imageTexts.length));
     if (!hasText) {
@@ -89,7 +89,7 @@ module.exports = async function handler(req, res) {
     }
     try {
       const started = Date.now();
-      const result = await withPrivateData(() => extractSpecs(body));
+      const result = await withHangHoa(() => extractSpecs(body));
       return res.status(200).json({ ...result, ms: Date.now() - started });
     } catch (e) {
       return res.status(502).json({ error: 'Extract specs failed', detail: String(e.message).slice(0, 240) });
@@ -143,7 +143,8 @@ module.exports = async function handler(req, res) {
     const kenhGoi = serviceCaller(req);
     const chay = (quyen) => classify(attrs, { tier, debug, kenhGoi }).then((kq) => ganHoSoClassify(kq, attrsHoSo, quyen));
     if (serviceCaller(req) !== null) {
-      // Dữ liệu khách (#237 J1): LLM bên trong chỉ đi nhà cung cấp hợp lệ, không qua tầng miễn phí.
+      // OZV-754: classify chỉ mang THÔNG TIN HÀNG (tên, chất liệu, công dụng…) — withHangHoa: đủ chuỗi dự phòng
+      // khi QT bật HS_KHACH_MO_CHUOI_AI, mặc định giữ #237 J1. (declaration-check ?mode=check vẫn withPrivateData — tờ khai.)
       // OZV-507 việc 1 — cache kết quả theo hash hồ sơ (đã đo bước 0: 13,6% lượt trùng ≥ 10%, OZV-511).
       // Chỉ khoá dịch vụ; debug/holdout đổi shape + ngữ cảnh ⇒ bỏ qua cache. Lượt cold giữ nguyên hành vi
       // (không đụng dòng nào phía trên); lượt trúng trả nguyên phản hồi + cached:true, KHÔNG gọi LLM.
@@ -160,7 +161,7 @@ module.exports = async function handler(req, res) {
         }
         donPhienBanCu(pb); // đổi phiên bản dữ liệu ⇒ dọn dòng cũ (một lần mỗi tiến trình, không ném)
       }
-      const kq = await trongHan(run(() => withPrivateData(() => withUsage(() => chay({ noiBo: laNoiBoOz(req), caller: serviceCaller(req) })))), tran - (Date.now() - started));
+      const kq = await trongHan(run(() => withHangHoa(() => withUsage(() => chay({ noiBo: laNoiBoOz(req), caller: serviceCaller(req) })))), tran - (Date.now() - started));
       if (kq.quaGio) return traLoiQuaGio(res, { ms: Date.now() - started, tranMs: tran, attrs });
       const { result, usage } = kq.v;
       if (dungCache) ghiCache(khoa, pb, result); // ghi sau, lỗi DB nuốt trong lib — phản hồi như chưa có cache

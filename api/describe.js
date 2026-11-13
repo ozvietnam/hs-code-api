@@ -1,6 +1,6 @@
 const { requireAuth, serviceCaller, laNoiBoOz } = require('../lib/auth');
 const { withUsage } = require('../lib/usage-context');
-const { withPrivateData } = require('../lib/llm-privacy');
+const { withPrivateData, withHangHoa } = require('../lib/llm-privacy');
 const { requireAuthOrPublicLlm } = require('../lib/public-llm');
 const { demLuotCongKhai } = require('../lib/public-llm-meter');
 const { setCors, handleOptions } = require('../lib/cors');
@@ -23,7 +23,7 @@ module.exports = async function handler(req, res) {
   // POST /api/mkt/sourcing-assist (rewrite → ?mode=sourcing): trợ lý Tìm nguồn của oz-mkt. KÍN — CHỈ khoá dịch vụ,
   // không qua requireAuthOrPublicLlm, không nhận HS_API_TOKEN. Rẽ nhánh TRƯỚC mọi cổng công khai.
   if (mode === 'sourcing') return sourcingAssist(req, res);
-  // POST /api/ho-so (rewrite → ?mode=ho_so, L1-5d #648): hồ sơ phân loại. KÍN — chỉ khoá dịch vụ, LUÔN withPrivateData.
+  // POST /api/ho-so (rewrite → ?mode=ho_so, L1-5d #648): hồ sơ phân loại. KÍN — chỉ khoá dịch vụ, withHangHoa theo cờ OZV-754.
   if (mode === 'ho_so') return hoSo(req, res);
   if ((mode === 'sheet' || mode === 'dispute') ? requireAuth(req, res) : requireAuthOrPublicLlm(req, res)) return;
 
@@ -51,8 +51,9 @@ module.exports = async function handler(req, res) {
 
   // Khoá dịch vụ có tên nhận thêm `usage` để tính phí; công khai / HS_API_TOKEN thì không (shape không đổi).
   if (serviceCaller(req) !== null) {
-    // Dữ liệu khách (#237 J1): LLM bên trong chỉ đi nhà cung cấp hợp lệ, không qua tầng miễn phí.
-    const { result: out, usage } = await withPrivateData(() => withUsage(() => describeProduct(body, { noiBo: laNoiBoOz(req), caller: serviceCaller(req) })));
+    // OZV-754: describe chỉ mang THÔNG TIN HÀNG (tên, mô tả, chất liệu) — withHangHoa: đủ chuỗi dự phòng
+    // khi QT bật HS_KHACH_MO_CHUOI_AI; mặc định giữ #237 J1.
+    const { result: out, usage } = await withHangHoa(() => withUsage(() => describeProduct(body, { noiBo: laNoiBoOz(req), caller: serviceCaller(req) })));
     const json = out.json && typeof out.json === 'object' && !Array.isArray(out.json) ? { ...out.json, usage } : out.json;
     return res.status(out.status).json(json);
   }
@@ -63,8 +64,9 @@ module.exports = async function handler(req, res) {
 
 /**
  * POST /api/ho-so (rewrite → ?mode=ho_so): HoSoPhanLoai (lib/ho-so/api.js#hoSoApi; hợp đồng docs/api/ho-so-contract.md).
- * Chỉ khoá dịch vụ (HS_SERVICE_TOKENS): không token/sai → 401, HS_API_TOKEN → 403 CHI_KHOA_DICH_VU. Mọi lượt trong withPrivateData
- * (dữ liệu khách), hồ sơ lọc theo quyền (laNoiBoOz: chỉ khoá nội bộ — mặc định erp — nhận tín hiệu kho Oz; cong-oz không bao giờ).
+ * Chỉ khoá dịch vụ (HS_SERVICE_TOKENS): không token/sai → 401, HS_API_TOKEN → 403 CHI_KHOA_DICH_VU. Cửa bọc withHangHoa
+ * (thông tin hàng, OZV-754; lớp trong lib/ho-so/* tự withPrivateData khi chạm câu Oz), hồ sơ lọc theo quyền (laNoiBoOz:
+ * chỉ khoá nội bộ — mặc định erp — nhận tín hiệu kho Oz; cong-oz không bao giờ).
  * Không lưu gì về hồ sơ (bộ não không giữ dữ liệu khách); shadow chỉ ghi một dòng số đo.
  */
 async function hoSo(req, res) {
@@ -77,7 +79,10 @@ async function hoSo(req, res) {
     try { body = JSON.parse(body); } catch { return res.status(400).json({ error: 'DAU_VAO_SAI', chiTiet: ['Body không phải JSON hợp lệ.'] }); }
   }
   try {
-    const { result: out, usage } = await withPrivateData(() => withUsage(() => hoSoApi(body, { noiBo: laNoiBoOz(req), caller })));
+    // OZV-754: cửa ho-so nhận thông tin hàng → withHangHoa theo cờ; LƯU Ý các bước LLM bên trong
+    // lib/ho-so/* (nghien-cuu/doc-du-kien/viet-mo-ta) vẫn TỰ withPrivateData theo cờ riêng vì dùng
+    // câu Oz = kho tờ khai Oz (VẪN riêng tư theo định nghĩa mới) — lớp trong là nơi giữ luật tờ khai.
+    const { result: out, usage } = await withHangHoa(() => withUsage(() => hoSoApi(body, { noiBo: laNoiBoOz(req), caller })));
     return res.status(out.status).json(out.status === 200 ? { ...out.json, usage } : out.json);
   } catch (e) {
     const code = e?.code === 'NO_PRIVATE_LLM' ? 'NO_PRIVATE_LLM' : 'HO_SO_LOI';
@@ -110,8 +115,9 @@ async function disputeDraft(req, res) {
 /**
  * POST /api/mkt/sourcing-assist (rewrite → ?mode=sourcing): clarify | brief | score cho trang Tìm nguồn (oz-mkt PR #9).
  * Chỉ khoá dịch vụ (HS_SERVICE_TOKENS): không token/sai → 401, HS_API_TOKEN (không phải khoá dịch vụ) → 403.
- * Mọi lượt LLM trong withPrivateData; hết nhà cung cấp hợp lệ → 502 NO_PRIVATE_LLM. Không log nội dung khách,
- * lỗi không vọng lại nguyên văn đầu vào/đầu ra LLM. Tắt khẩn cấp: HS_MKT_SOURCING=false → 503.
+ * Mọi lượt LLM trong withHangHoa (thông tin hàng, OZV-754 — đủ chuỗi khi QT bật HS_KHACH_MO_CHUOI_AI); hết nhà
+ * cung cấp hợp lệ → 502 NO_PRIVATE_LLM. Không log nội dung khách, lỗi không vọng lại nguyên văn đầu vào/đầu ra
+ * LLM. Tắt khẩn cấp: HS_MKT_SOURCING=false → 503.
  */
 async function sourcingAssist(req, res) {
   res.setHeader('Cache-Control', 'no-store');
@@ -133,7 +139,9 @@ async function sourcingAssist(req, res) {
     return res.status(429).json({ error: 'VUOT_HAN_MUC', chiTiet: [slot.lyDo], retryAfter: slot.retryAfter });
   }
   try {
-    const { result: out, usage } = await withPrivateData(() => withUsage(() => runSourcingAssist(v.task, v.data)));
+    // OZV-754: trợ lý Tìm nguồn chỉ mang thông tin hàng/nhu cầu sourcing → withHangHoa theo cờ
+    // (lib/mkt-sourcing.js cũng bỏ cờ containsCustomerData khi cờ bật — hai lớp phải cùng mở).
+    const { result: out, usage } = await withHangHoa(() => withUsage(() => runSourcingAssist(v.task, v.data)));
     return res.status(200).json({ result: out.result, usage });
   } catch (e) {
     const code = ['NO_PRIVATE_LLM', 'LLM_LOI', 'LLM_KET_QUA_SAI'].includes(e?.code) ? e.code : 'LLM_LOI';

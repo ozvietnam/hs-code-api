@@ -176,5 +176,55 @@ const HS = Object.keys(taxData)[0];
   check('classify + khoá dịch vụ: trả 200, báo lỗi LLM rõ (không im lặng)', res._s === 200 && /NO_PRIVATE_LLM/.test(JSON.stringify(res._j?.llmError || res._j?.status || '')), JSON.stringify({ s: res._s, st: res._j?.status, e: res._j?.llmError }).slice(0, 300));
 }
 
+// ── 9. OZV-754: thông tin hàng (withHangHoa) — env HS_KHACH_MO_CHUOI_AI mặc định TẮT giữ #237 J1, bật thì đủ chuỗi ──
+const { withHangHoa, khachMoChuoiAi } = require('../lib/llm-privacy.js');
+const { b1bApDung } = require('../lib/b1b-web.js');
+const { runSourcingAssist } = require('../lib/mkt-sourcing.js');
+process.env.ZAI_WEB_FACTS = 'on';
+process.env.HERMES_API_KEY = 'hk';
+process.env.HERMES_BASE_URL = 'https://hermes.test/v1';
+process.env.OPENROUTER_API_KEY = 'or';
+minimaxMode = 'down';
+let soWeb = 0;
+const webFactsMock = async () => { soWeb += 1; return { cauTraLoi: 'công suất 500W, lưỡi thép không gỉ', nguon: [{ ten: 'mock', url: 'https://x' }] }; };
+const needFacts = { status: 'NEED_FACTS', nextAction: { questions: [{ questionVi: 'công suất bao nhiêu W?' }] } };
+check('OZV-754: env TẮT mặc định → khachMoChuoiAi()=false', khachMoChuoiAi() === false);
+// 9a. env tắt: withHangHoa ≡ withPrivateData — lượt khoá dịch vụ vẫn nhốt (không web, không tầng miễn phí)
+soWeb = 0;
+let b9 = await withHangHoa(() => b1bApDung({ tenHang: 'máy xay sinh tố' }, needFacts, { _b1bWebFacts: webFactsMock }, async () => ({ status: 'OK' })));
+check('OZV-754 env tắt: B1b KHÔNG tra web (giữ #237 J1 / L0a #546)', soWeb === 0 && b9 === needFacts, JSON.stringify({ soWeb }));
+threw = null;
+try { await withHangHoa(() => callLLMJson('sys', 'user')); } catch (e) { threw = e; }
+check('OZV-754 env tắt: MiniMax sập → vẫn NO_PRIVATE_LLM', threw?.code === 'NO_PRIVATE_LLM', String(threw?.code || threw));
+// 9b. env bật: thông tin hàng đi ĐỦ chuỗi dự phòng + B1b được tra web
+process.env.HS_KHACH_MO_CHUOI_AI = 'on';
+check('OZV-754 env bật: khachMoChuoiAi()=true', khachMoChuoiAi() === true);
+check('OZV-754 env bật: withHangHoa không còn đặt cờ riêng tư', (await withHangHoa(() => isPrivate())) === false);
+soWeb = 0;
+reset();
+b9 = await withHangHoa(() => b1bApDung({ tenHang: 'máy xay sinh tố' }, needFacts, { _b1bWebFacts: webFactsMock }, async () => ({ status: 'OK', hs: '8509' })));
+check('OZV-754 env bật: B1b GỌI web + chạy lại ra kết quả (webFactsApplied)', soWeb === 1 && b9?.webFactsApplied === true && b9?.status === 'OK', JSON.stringify({ soWeb, st: b9?.status }));
+reset();
+r = await withHangHoa(() => callLLMJson('sys', 'user'));
+check('OZV-754 env bật: MiniMax sập → rơi tầng dự phòng (hermes), không NO_PRIVATE_LLM', r.provider === 'hermes', JSON.stringify({ r, calls }));
+// 9c. handler: khoá dịch vụ + env bật → describe không còn NO_PRIVATE_LLM
+reset();
+const res3 = mkRes();
+await describe(mkReq('khoa-cong', { hsCode: HS, productName: 'hàng thử của khách', material: 'thép' }), res3);
+check('OZV-754 env bật: describe + khoá dịch vụ đi tầng dự phòng (không NO_PRIVATE_LLM)', res3._s === 200 && res3._j?.llmError?.code !== 'NO_PRIVATE_LLM' && calls.some((c) => c.startsWith('hermes') || c.startsWith('openrouter') || c.startsWith('gemini:free-ok')), JSON.stringify({ s: res3._s, e: res3._j?.llmError?.code, calls }));
+// 9d. dữ liệu tờ khai VẪN riêng tư: withPrivateData luôn thắng, không phụ thuộc env
+soWeb = 0;
+b9 = await withPrivateData(() => b1bApDung({ tenHang: 'hàng trên tờ khai số 123' }, needFacts, { _b1bWebFacts: webFactsMock }, async () => ({ status: 'OK' })));
+check('OZV-754 env bật: đường withPrivateData (tờ khai) vẫn KHÔNG tra web', soWeb === 0 && b9 === needFacts, JSON.stringify({ soWeb }));
+// 9e. mkt-sourcing: cờ containsCustomerData tắt theo env (hai lớp cùng mở — OZV-310: bản vá không rỗng)
+threw = null;
+try { await runSourcingAssist('clarify', { text: 'cần máy in UV điện thoại', links: [], imageCount: 0 }); } catch (e) { threw = e; }
+check('OZV-754 env bật: mkt sourcing đi tầng dự phòng (không NO_PRIVATE_LLM)', threw?.code !== 'NO_PRIVATE_LLM', String(threw?.code || threw));
+delete process.env.HS_KHACH_MO_CHUOI_AI;
+threw = null;
+try { await runSourcingAssist('clarify', { text: 'cần máy in UV điện thoại', links: [], imageCount: 0 }); } catch (e) { threw = e; }
+check('OZV-754 env tắt lại: mkt sourcing về NO_PRIVATE_LLM như cũ', threw?.code === 'NO_PRIVATE_LLM', String(threw?.code || threw));
+delete process.env.ZAI_WEB_FACTS;
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
