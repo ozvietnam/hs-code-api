@@ -410,7 +410,8 @@ const paths = {
         'Trả 200 khi đủ cả 3 điều kiện: có dữ liệu biểu thuế, có token cấu hình, và còn ít nhất một nhà cung cấp LLM. ' +
         'Thiếu LLM thì trả 503 kèm `checks.llm.note` — /api/suggest và /api/describe chỉ chạy chế độ không AI (degraded). ' +
         'Kèm `commit` (SHA ngắn của bản đang chạy) và `buildTime` (thời điểm dựng ảnh, ISO 8601) để biết phép đo đang đo bản nào; ' +
-        'cả hai là `null` khi build không truyền biến vào.',
+        'cả hai là `null` khi build không truyền biến vào — khi đó có thêm `banDungLyDo` nói vì sao rỗng ' +
+        '(`khong-co-bien` | `bien-sai-dinh-dang` | `khong-co-tep` | `khong-doc-duoc-tep` | `tep-rong` | `tep-sai-dinh-dang`).',
     }),
   },
   '/api/tax': {
