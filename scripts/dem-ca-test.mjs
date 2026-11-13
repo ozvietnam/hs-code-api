@@ -39,8 +39,20 @@ const RE_TONG_KET = /^[ \t]*(?:(\d+)\/(\d+)[ \t]+(?:passed|pass)|(\d+)[ \t]+(?:p
  * Trước đây gộp chung một regex nên nhánh `ℹ` không bao giờ khớp (soát khác model bắt được, 11/11).
  */
 const RE_TONG_KET_NODE = /^[ \t]*ℹ[ \t]+(tests|pass|fail)[ \t]+(\d+)[ \t]*$/;
-/** Lệnh trượt vì thiếu gói / thiếu tệp — bẫy số 1 ở trên. */
-const RE_TRUOT = /\b(?:Cannot find module|MODULE_NOT_FOUND|ERR_MODULE_NOT_FOUND|command not found)\b/;
+/**
+ * Lệnh trượt vì thiếu gói / thiếu tệp — bẫy số 1 ở trên.
+ *
+ * Hai nhánh, CỐ Ý khác độ chặt (OZV-764):
+ *   1. Câu chữ cũ (`Cannot find module`…) khớp tự do vì nó là câu Node in ra, không ai viết vào tên ca test.
+ *   2. Mã lỗi `ERR_*` của Node chỉ khớp khi nằm TRONG NGOẶC VUÔNG, đúng cách Node in
+ *      (`TypeError [ERR_UNKNOWN_FILE_EXTENSION]: …`). Khớp tự do thì một ca test có tên nhắc tới mã lỗi
+ *      (`PASS nhắc ERR_REQUIRE_ESM…`) sẽ bị cổng đọc thành "lệnh trượt" ⇒ chặn PR oan.
+ *
+ * Bốn mã nhánh 2 đều là kiểu trượt lúc CÀI/CHẠY, không phải test đỏ: log không có ca nào mà cổng cũ
+ * vẫn đọc ra XANH nếu lệnh tình cờ thoát 0.
+ */
+const RE_TRUOT =
+  /\b(?:Cannot find module|MODULE_NOT_FOUND|ERR_MODULE_NOT_FOUND|command not found)\b|\[(?:ERR_UNKNOWN_FILE_EXTENSION|ERR_PACKAGE_PATH_NOT_EXPORTED|ERR_REQUIRE_ESM|ERR_UNSUPPORTED_DIR_IMPORT)\]/;
 
 /**
  * Đọc log `npm test` và rút số ca thật.
