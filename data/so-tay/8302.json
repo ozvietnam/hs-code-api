@@ -183,11 +183,25 @@
     },
     {
       "hs": "83024131",
-      "dieuKien": "Bản lề để móc khóa (hasps) (SEN): móc cài, then cài bằng kim loại có bộ phận có khe/rãnh gắn tai móc khóa (staple), đóng bằng một chốt, hoặc ổ khóa, để cố định cửa ra vào, cửa sổ, hộp, đồ nội thất, túi xách, cổng, lồng v.v. — phân nhóm 8302.41 (WCO: mountings, fittings and similar articles of base metal, suitable for buildings)",
+      "dieuKien": "bản lề để móc khóa (hasps)",
       "loaiKhac": false,
-      "nguon": "sen.83024131",
-      "trich": "Bản lề để móc khoá bằng kim loại là móc cài, then cài (fastener) bằng kim loại với một bộ phận có khe/rãnh được gắn tai móc khoá (staple) và được đóng bằng một chốt, hoặc ổ khóa để cố định cửa ra vào, cửa sổ",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguon": "tax.83024131",
+      "trich": "83024131 - - - - Bản lề để móc khóa (Hasps)(SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "banLeMocKhoaHasps",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:pc-tho-hs-03:20261113T1344#soat-830241",
+          "ngay": "2026-11-13",
+          "bam": "c3d3acc8a2cc744b74c536b26d05d053cbfb7f35270ed376c74d4022f2552de9"
+        }
+      }
     },
     {
       "hs": "83024139",
@@ -593,5 +607,71 @@
         "phamViLoaiKhac"
       ]
     }
-  }
+  },
+  "dieuKienNut": [
+    {
+      "id": "8302413",
+      "nguon": "tieuDe.8302413",
+      "trich": "8302413 Bản lề để móc khóa và đinh kẹp dùng cho cửa ra vào; móc và mắt cài khóa; chốt cửa",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Bản lề"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "cửa ra vào"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "đinh kẹp"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "cửa ra vào"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "móc"
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "mắt cài khóa"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "chốt cửa"
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:pc-tho-hs-03:20261113T1344#soat-830241",
+          "ngay": "2026-11-13",
+          "bam": "c3d3acc8a2cc744b74c536b26d05d053cbfb7f35270ed376c74d4022f2552de9"
+        }
+      }
+    }
+  ]
 }
