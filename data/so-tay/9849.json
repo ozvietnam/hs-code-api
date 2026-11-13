@@ -180,15 +180,15 @@
    "ranhGioi": {
     "phienBan": "ranh-gioi@1",
     "duyet": {
-     "phien": "claude-agent:duyet-9849-20261113#soat-9849",
+     "phien": "claude-agent:duyet-9849-sua-trich-20261113#soat-984915",
      "ngay": "2026-11-13",
-     "bam": "470720d538d7092df2c86c08905ac698aed2600bc85e47b01381f704d0cf721f"
+     "bam": "e93645a6e070a9d69c2fb83fd446ea1a3efd9b9c3b8be90d08896eb013d2ddbf"
     }
    }
   },
   {
    "hs": "98491521",
-   "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05",
+   "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05; không tên loại hàng: viền cao su quanh kính cửa",
    "nguon": "tax.98491521",
    "trich": "98491521 - - - - - Dùng cho xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05, trừ viền cao su quanh kính cửa",
    "loaiKhac": false,
@@ -198,14 +198,20 @@
      "fact": "dungCho",
      "op": "CONG_DUNG",
      "value": "xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05"
+    },
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "viền cao su quanh kính cửa",
+     "chieu": "PHAI_KHONG"
     }
    ],
    "ranhGioi": {
     "phienBan": "ranh-gioi@1",
     "duyet": {
-     "phien": "claude-agent:duyet-9849-20261113#soat-9849",
+     "phien": "claude-agent:duyet-9849-sua-trich-20261113#soat-984915",
      "ngay": "2026-11-13",
-     "bam": "470720d538d7092df2c86c08905ac698aed2600bc85e47b01381f704d0cf721f"
+     "bam": "e93645a6e070a9d69c2fb83fd446ea1a3efd9b9c3b8be90d08896eb013d2ddbf"
     }
    }
   },
@@ -231,9 +237,9 @@
    "ranhGioi": {
     "phienBan": "ranh-gioi@1",
     "duyet": {
-     "phien": "claude-agent:duyet-9849-20261113#soat-9849",
+     "phien": "claude-agent:duyet-9849-sua-trich-20261113#soat-984915",
      "ngay": "2026-11-13",
-     "bam": "470720d538d7092df2c86c08905ac698aed2600bc85e47b01381f704d0cf721f"
+     "bam": "e93645a6e070a9d69c2fb83fd446ea1a3efd9b9c3b8be90d08896eb013d2ddbf"
     }
    }
   },
@@ -696,9 +702,9 @@
    "ranhGioi": {
     "phienBan": "ranh-gioi@1",
     "duyet": {
-     "phien": "claude-agent:duyet-9849-20261113#soat-9849",
+     "phien": "claude-agent:duyet-9849-sua-trich-20261113#soat-984923",
      "ngay": "2026-11-13",
-     "bam": "179f60ec008c1e63300ba7e79089fd1553beac81ce335e9fc35aaffd9ab8a803"
+     "bam": "6245302e20a4528357b12395c18d759b18715634a00b9d89e5e1ab2fc0aa0c82"
     }
    }
   },
@@ -724,9 +730,9 @@
    "ranhGioi": {
     "phienBan": "ranh-gioi@1",
     "duyet": {
-     "phien": "claude-agent:duyet-9849-20261113#soat-9849",
+     "phien": "claude-agent:duyet-9849-sua-trich-20261113#soat-984923",
      "ngay": "2026-11-13",
-     "bam": "179f60ec008c1e63300ba7e79089fd1553beac81ce335e9fc35aaffd9ab8a803"
+     "bam": "6245302e20a4528357b12395c18d759b18715634a00b9d89e5e1ab2fc0aa0c82"
     }
    }
   },
@@ -3052,7 +3058,7 @@
   },
   {
    "hs": "98494110",
-   "dieuKien": "tên loại hàng: Kết hợp với thiết bị ghi hoặc tái tạo âm thanh",
+   "dieuKien": "tên loại hàng: Kết hợp với thiết bị; công dụng / mục đích: ghi hoặc tái tạo âm thanh",
    "nguon": "tax.98494110",
    "trich": "98494110 - - Kết hợp với thiết bị ghi hoặc tái tạo âm thanh",
    "loaiKhac": false,
@@ -3061,8 +3067,13 @@
     {
      "fact": "tenLoai",
      "op": "TEN_LOAI",
+     "value": "Kết hợp với thiết bị"
+    },
+    {
+     "fact": "congDung",
+     "op": "CONG_DUNG",
      "value": [
-      "Kết hợp với thiết bị ghi",
+      "ghi",
       "tái tạo âm thanh"
      ]
     }
@@ -3070,9 +3081,9 @@
    "ranhGioi": {
     "phienBan": "ranh-gioi@1",
     "duyet": {
-     "phien": "claude-agent:duyet-9849-20261113#soat-9849",
+     "phien": "claude-agent:duyet-9849-sua-trich-20261113#soat-984941",
      "ngay": "2026-11-13",
-     "bam": "fa9368d017d9fb93aff510d0001dda4556cc7dab5890fe575e28eaf2440c95cc"
+     "bam": "f8263cb1e215719e74b957b47ec7c7749710bdc48b236777a89e52aeabefae75"
     }
    }
   },
@@ -6120,9 +6131,9 @@
    "ranhGioi": {
     "phienBan": "ranh-gioi@1",
     "duyet": {
-     "phien": "claude-agent:duyet-9849-20261113#soat-9849",
+     "phien": "claude-agent:duyet-9849-sua-trich-20261113#soat-984915",
      "ngay": "2026-11-13",
-     "bam": "470720d538d7092df2c86c08905ac698aed2600bc85e47b01381f704d0cf721f"
+     "bam": "e93645a6e070a9d69c2fb83fd446ea1a3efd9b9c3b8be90d08896eb013d2ddbf"
     }
    }
   },
@@ -6134,10 +6145,15 @@
     {
      "fact": "tenLoai",
      "op": "TEN_LOAI",
+     "value": "Bơm"
+    },
+    {
+     "fact": "congDung",
+     "op": "CONG_DUNG",
      "value": [
-      "Bơm nhiên liệu",
+      "nhiên liệu",
       "dầu bôi trơn",
-      "bơm chất làm mát"
+      "chất làm mát"
      ]
     },
     {
@@ -6150,9 +6166,9 @@
    "ranhGioi": {
     "phienBan": "ranh-gioi@1",
     "duyet": {
-     "phien": "claude-agent:duyet-9849-20261113#soat-9849",
+     "phien": "claude-agent:duyet-9849-sua-trich-20261113#soat-984923",
      "ngay": "2026-11-13",
-     "bam": "179f60ec008c1e63300ba7e79089fd1553beac81ce335e9fc35aaffd9ab8a803"
+     "bam": "6245302e20a4528357b12395c18d759b18715634a00b9d89e5e1ab2fc0aa0c82"
     }
    }
   }

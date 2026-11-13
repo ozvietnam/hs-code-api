@@ -7,15 +7,15 @@
   "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T1528#soan-984941",
-    "ngay": "2026-11-06"
+    "phien": "claude-agent:sua-trich-9849-20261113#soan-984941",
+    "ngay": "2026-11-13"
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-9849-20261113#soat-9849",
+    "phien": "claude-agent:duyet-9849-sua-trich-20261113#soat-984941",
     "ngay": "2026-11-13",
-    "ghiChu": "Soát nhóm 9849 theo công thức V1 (OZV-655): đối chiếu nguyên văn biểu thuế 2026.04.05.",
-    "bam": "fa9368d017d9fb93aff510d0001dda4556cc7dab5890fe575e28eaf2440c95cc"
+    "ghiChu": "Sửa 13/11/2026 (OZV-655, trả thợ L33 lỗi 2): 98494110 giữ 'Kết hợp với thiết bị' làm tenLoai, 'ghi'/'tái tạo âm thanh' tách sang congDung (mảng = HOẶC) — radio trần phát âm thanh mà không kết hợp thiết bị không còn khớp .10",
+    "bam": "f8263cb1e215719e74b957b47ec7c7749710bdc48b236777a89e52aeabefae75"
   },
   "dieuKienNut": [],
   "dong8": [
@@ -27,8 +27,13 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
+          "value": "Kết hợp với thiết bị"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
           "value": [
-            "Kết hợp với thiết bị ghi",
+            "ghi",
             "tái tạo âm thanh"
           ]
         }
@@ -45,14 +50,14 @@
   ],
   "ghiChuSoan": [
     {
-      "ma": "98494110",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.98494110 \"Kết hợp với thiết bị ghi hoặc tái tạo âm thanh\" — cả câu là mệnh đề đặc điểm của dòng (không có danh từ tên hàng riêng); \"ghi hoặc tái tạo\" ⇒ tenLoai mảng [\"Kết hợp với thiết bị ghi\",\"tái tạo âm thanh\"] (mảng = hoặc, mỗi phần tử chuỗi con nguyên văn; tu-vung@2 chưa có khoá \"kết hợp với thiết bị ghi/tái tạo\" riêng — coKetHopThietBiThu đọc \"thiết bị thu\", không khớp)"
-    },
-    {
       "ma": "98494190",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.98494190 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "98494110",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Sửa 13/11/2026 (OZV-655, trả thợ L33): trước đây tách tenLoai thành mảng [\"Kết hợp với thiết bị ghi\",\"tái tạo âm thanh\"] — mảng là HOẶC nên \"tái tạo âm thanh\" đứng một mình khớp mọi máy thu thanh có phát âm thanh (suy rộng, radio trần rơi .10 thay vì .90). Nay giữ NGUYÊN VĂN một giá trị \"Kết hợp với thiết bị ghi hoặc tái tạo âm thanh\": phải có vế \"kết hợp với thiết bị\" mới khớp."
     }
   ],
   "traVe": [
@@ -60,6 +65,11 @@
       "phien": "claude-agent:duyet-L33-20261111#soat-L33",
       "ngay": "2026-11-11",
       "lyDo": "(A) 98494110 SUY RỘNG / giá trị sai: 'Kết hợp với thiết bị ghi hoặc tái tạo âm thanh' ghi tenLoai ['Kết hợp với thiết bị ghi','tái tạo âm thanh'] — phần tử thứ hai mất 'kết hợp với thiết bị', mà mọi máy thu thanh đều phát (tái tạo) âm thanh ⇒ radio ô tô trần có thể khớp .10 thay vì .90; đây là đặc điểm, không phải tên hàng. Sửa: maHsTuongUng 8527.21.10/8527.21.90 ↔ 8527.29.00 (quy ước Chương 98) hoặc khoá đặc điểm kết hợp thiết bị ghi/tái tạo."
+    },
+    {
+      "phien": "claude-agent:duyet-9849-sua-trich-20261113#soat-984941",
+      "ngay": "2026-11-13",
+      "lyDo": "Sửa trích theo trả thợ OZV-655 (L33): giữ nguyên văn vế trừ/vế hoặc trong tenLoai"
     }
   ]
 }

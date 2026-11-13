@@ -7,15 +7,15 @@
   "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T1001#soan-984915",
-    "ngay": "2026-11-06"
+    "phien": "claude-agent:sua-trich-9849-20261113#soan-984915",
+    "ngay": "2026-11-13"
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-9849-20261113#soat-9849",
+    "phien": "claude-agent:duyet-9849-sua-trich-20261113#soat-984915",
     "ngay": "2026-11-13",
-    "ghiChu": "Soát nhóm 9849 theo công thức V1 (OZV-655): đối chiếu nguyên văn biểu thuế 2026.04.05.",
-    "bam": "470720d538d7092df2c86c08905ac698aed2600bc85e47b01381f704d0cf721f"
+    "ghiChu": "Sửa 13/11/2026 (OZV-655, trả thợ L33): 98491521 giữ nguyên văn vế 'trừ viền cao su quanh kính cửa' bằng tenLoai TEN_LOAI chieu=PHAI_KHONG; băm lại duyet.bam",
+    "bam": "e93645a6e070a9d69c2fb83fd446ea1a3efd9b9c3b8be90d08896eb013d2ddbf"
   },
   "dieuKienNut": [
     {
@@ -71,6 +71,12 @@
           "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": "xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "viền cao su quanh kính cửa",
+          "chieu": "PHAI_KHONG"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -96,15 +102,14 @@
   ],
   "ghiChuSoan": [
     {
-      "ma": "98491521",
-      "loai": "BO_VE",
-      "ve": "trừ viền cao su quanh kính cửa",
-      "lyDo": "tu-vung@2 không có op phủ định cho tenLoai; hàng bị trừ đã được nêu đích danh bằng dòng anh em 98491529 \"Viền cao su quanh kính cửa, dùng cho xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04\" cùng tầng — lúc chạy máy thấy hàng thoả cả hai dòng sẽ hỏi, không tự chốt nhầm"
-    },
-    {
       "ma": "984915",
       "loai": "QUYET_DINH",
       "ghiChu": "Claude 07/11/2026 (#1109): hết DỪNG — tầng \"- - Loại khác:\" của biểu có cùng tập dòng với tầng có tên \"- - - Loại dùng cho các xe khác thuộc Chương 87:\"; trước đây cây báo KHONG_DAT (trùng tập khác tên). Lớp tầng nay đặt tiêu đề \"Loại khác:\" trần (hoặc tiêu đề có tên ở gạch ngoài) làm tầng BỌC NGOÀI nút cùng tập. Spec không đổi."
+    },
+    {
+      "ma": "98491521",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Sửa 13/11/2026 (OZV-655, trả thợ L33): vế \"trừ viền cao su quanh kính cửa\" nay khoá bằng tenLoai TEN_LOAI chieu=PHAI_KHONG (tu-vung@2 CÓ chiều phủ định — ghi chú BO_VE cũ nói \"không có op phủ định\" là SAI, đã bỏ). Viền cao su quanh kính cửa của xe 87.05 không còn rơi vào .21; viền kính cho 87.02–87.04 chỉ thoả .29."
     }
   ],
   "traVe": [
@@ -112,6 +117,11 @@
       "phien": "claude-agent:duyet-L33-20261111#soat-L33",
       "ngay": "2026-11-11",
       "lyDo": "(A) 98491521 SUY RỘNG: 'Dùng cho xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05, trừ viền cao su quanh kính cửa' — BO_VE bỏ vế trừ; anh em .29 chỉ nhận viền kính cho 87.02–87.04 nên viền cao su quanh kính cửa của xe 87.05 rơi .21 (đáng lẽ không vào dòng 98 nào, khai 4016.99 ở 97 chương), còn viền kính cho 87.02–87.04 thoả cả .21 và .29. Sửa theo quy ước Chương 98: maHsTuongUng 4016.99.11 (.21) / 4016.99.13 (.29)."
+    },
+    {
+      "phien": "claude-agent:duyet-9849-sua-trich-20261113#soat-984915",
+      "ngay": "2026-11-13",
+      "lyDo": "Sửa trích theo trả thợ OZV-655 (L33): giữ nguyên văn vế trừ/vế hoặc trong tenLoai"
     }
   ]
 }
