@@ -15,12 +15,24 @@ const check = (name, cond, extra = '') => {
 // minimaxMode: ok | no-highspeed (400 cho bản highspeed) | down (500) | quota (402 — hết hạn mức gói)
 let minimaxMode = 'ok';
 const calls = [];
+
+// OZV-749: thân 429 THẬT của Gemini như đo ở prod: 557 ký tự, chữ PerDay nằm ở vị trí 431 — trong
+// quotaId "GenerateRequestsPerDayPerProjectPerModel-FreeTier" tận cuối khối QuotaFailure, tức SAU mốc
+// cắt 300 ký tự của err.message trong lib/gemini.js. Số đệm (traceId/quotaValue) chỉnh cho khớp đúng
+// hai số đo đó — hai check dưới chốt hai bất biến này để sửa fixture sau này không âm thầm mất ý nghĩa.
+const THAN_429_NGAY = '{"error":{"code":429,"message":"Resource exhausted.","status":"RESOURCE_EXHAUSTED","details":[{"@type":"type.googleapis.com/google.rpc.RetryInfo","retryDelay":"66s"},{"@type":"type.googleapis.com/google.rpc.QuotaFailure","violations":[{"quotaMetric":"generativelanguage.googleapis.com/generate_content_free_tier_requests","dimensions":{"model":"gemini-2.5-flash","location":"global","traceId":"a1b2c3d"},"quotaId":"GenerateRequestsPerDayPerProjectPerModel-FreeTier","quotaValue":"2222222222222222222222222222222222222222222222222222222222222222222222"}]}]}}';
+const THAN_429_PHUT = THAN_429_NGAY.replace('RequestsPerDay', 'RequestsPerMinute');
+check('fixture OZV-749: đúng 557 ký tự, PerDay ở vị trí 431 (như đo ở prod)', THAN_429_NGAY.length === 557 && THAN_429_NGAY.indexOf('PerDay') === 431, `len=${THAN_429_NGAY.length} PerDay@${THAN_429_NGAY.indexOf('PerDay')}`);
+check('fixture OZV-749: 300 ký tự đầu KHÔNG có tín hiệu per-day (tái hiện đúng điều kiện lỗi)', !/per ?day|PerDay|daily/i.test(THAN_429_NGAY.slice(0, 300)));
+
 globalThis.fetch = async (url, init = {}) => {
   const u = String(url);
   if (u.includes('generativelanguage.googleapis.com')) {
     const key = new URL(u).searchParams.get('key');
     calls.push(`gemini:${key}`);
     if (key === 'free-day') return new Response('{"error":{"status":"RESOURCE_EXHAUSTED","message":"Quota exceeded for metric generate_content_free_tier_requests, limit: 250, PerDay"}}', { status: 429 });
+    if (key === 'free-day-dai') return new Response(THAN_429_NGAY, { status: 429 });
+    if (key === 'free-min-dai') return new Response(THAN_429_PHUT, { status: 429 });
     if (key === 'free-min') return new Response('{"error":{"status":"RESOURCE_EXHAUSTED","message":"Quota exceeded ... PerMinute"}}', { status: 429 });
     return new Response(JSON.stringify({ candidates: [{ content: { parts: [{ text: `{"who":"${key}"}` }] } }] }), { status: 200 });
   }
@@ -77,6 +89,51 @@ r = await callLLMJson('sys', 'user');
 check('hết lượt ngày → xoay sang khóa kế', r.json.who === 'free-ok', JSON.stringify(calls));
 const until = _internal.cooldown.get('free-day');
 check('nghỉ ≤ 24h, > 1 phút', until > Date.now() + 60 * 1000 && until <= Date.now() + 24 * 3600 * 1000, String(until - Date.now()));
+
+// 4b. OZV-749: thân 429 THẬT 557 ký tự (PerDay ở vị trí 431 — sau mốc cắt 300 ký tự của err.message)
+//     → khoá cạn hạn mức NGÀY vẫn phải nghỉ tới nửa đêm Thái Bình Dương (≈18h), không phải 65 giây.
+process.env.GEMINI_FREE_KEYS = 'free-day-dai,free-ok';
+reset();
+r = await callLLMJson('sys', 'user');
+check('thân dài: xoay sang khóa kế', r.json.who === 'free-ok', JSON.stringify(calls));
+const untilDai = _internal.cooldown.get('free-day-dai');
+check('thân dài: nghỉ tới nửa đêm Thái Bình Dương (≈18h, không phải 65 giây)', untilDai > Date.now() + 3600 * 1000 && untilDai <= Date.now() + 24 * 3600 * 1000, `${Math.round((untilDai - Date.now()) / 60000)} phút`);
+
+// 4c. Chiều ngược: thân 429 cũng dài như vậy nhưng hết lượt theo PHÚT (PerMinute) → vẫn nghỉ đúng 65 giây.
+process.env.GEMINI_FREE_KEYS = 'free-min-dai,free-ok';
+reset();
+r = await callLLMJson('sys', 'user');
+check('thân dài PerMinute: xoay sang khóa kế', r.json.who === 'free-ok', JSON.stringify(calls));
+const untilPhut = _internal.cooldown.get('free-min-dai');
+check('thân dài PerMinute: vẫn nghỉ đúng 65 giây', untilPhut - Date.now() > 30 * 1000 && untilPhut - Date.now() <= 66 * 1000, `${Math.round((untilPhut - Date.now()) / 1000)} giây`);
+
+// 4d. Đo trực tiếp quotaResetAt hai chiều trên đúng thân 557 ký tự — tái hiện con số trước/sau của OZV-749.
+{
+  const now = Date.now();
+  const msgCatCu = `Gemini API error 429: ${THAN_429_NGAY.slice(0, 300)}`; // đúng những gì lib/gemini.js ghi vào message
+  const thatCu = _internal.quotaResetAt({ status: 429, message: msgCatCu }, now); // hình lỗi cũ: chỉ message đã cắt
+  check('tái hiện lỗi cũ: chỉ message cắt 300 (không quotaId/body) → 65 giây', thatCu === now + 65000, `${Math.round((thatCu - now) / 1000)} giây`);
+  const errMoi = { status: 429, message: msgCatCu, quotaId: 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', body: THAN_429_NGAY };
+  const thatMoi = _internal.quotaResetAt(errMoi, now);
+  check('bản vá: có quotaId+body → nghỉ tới nửa đêm Thái Bình Dương', thatMoi === _internal.nextPacificMidnight(now) && thatMoi - now > 3600 * 1000, `${Math.round((thatMoi - now) / 3600000)} giờ`);
+  const thatPhut = _internal.quotaResetAt({ status: 429, message: msgCatCu, quotaId: 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', body: THAN_429_PHUT }, now);
+  check('bản vá, chiều ngược: PerMinute → vẫn đúng 65 giây', thatPhut === now + 65000, `${Math.round((thatPhut - now) / 1000)} giây`);
+  const thatMsgKhac = _internal.quotaResetAt({ message: 'Gemini API error 429: Quota exceeded ... limit: 250, PerDay' }, now);
+  check('tương thích ngược: lỗi từ nơi khác, chỉ message có PerDay → vẫn nửa đêm Thái Bình Dương', thatMsgKhac === _internal.nextPacificMidnight(now));
+}
+
+// 4e. Hình lỗi lib/gemini.js ném ra: quotaId gắn được, body gắn nhưng KHÔNG enumerable (log/JSON không lộ thân lỗi),
+//     message vẫn ngắn — đúng ba yêu cầu của OZV-749.
+{
+  const { geminiGenerateJson } = require('../lib/gemini.js');
+  let errThat = null;
+  try { await geminiGenerateJson({ systemPrompt: 's', userPrompt: 'u', apiKey: 'free-day-dai', defaultModel: 'gemini-2.5-flash' }); } catch (e) { errThat = e; }
+  check('gemini.js: ném đúng lỗi GEMINI_API_ERROR 429', errThat?.code === 'GEMINI_API_ERROR' && errThat?.status === 429, String(errThat?.code));
+  check('gemini.js: error 429 gắn quotaId chứa PerDayPerProjectPerModel (máy đọc được)', /GenerateRequestsPerDayPerProjectPerModel/.test(errThat?.quotaId || ''), String(errThat?.quotaId));
+  check('gemini.js: error giữ nguyên thân 557 ký tự trên object (err.body)', errThat?.body === THAN_429_NGAY, String(errThat?.body?.length));
+  check('gemini.js: body KHÔNG enumerable — JSON.stringify không lộ THÂN LỖI (RetryInfo chỉ nằm trong body)', !JSON.stringify(errThat).includes('RetryInfo'));
+  check('gemini.js: message vẫn ngắn (≤ 325 ký tự) cho log sạch', (errThat?.message || '').length <= 325, String(errThat?.message?.length));
+}
 
 // 5. MiniMax sập + mọi khóa miễn phí hết lượt + GEMINI_TRA_PHI_CHOT_CUOI=off → lỗi, KHÔNG đốt khóa trả phí (hành vi cũ)
 process.env.GEMINI_FREE_KEYS = 'free-day,free-min';
