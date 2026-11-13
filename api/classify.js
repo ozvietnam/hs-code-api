@@ -32,8 +32,10 @@ function parseSupplierHs(v) {
 // ── Cửa trả lời khi HẾT GIỜ (OZV-713) ────────────────────────────────────────────────────────────────────────────
 // Cloudflare cắt lượt ~100 s và trả chuỗi `error code: 524` (KHÔNG phải JSON) ⇒ bên gọi parse JSON là ném lỗi và
 // đếm thành "lỗi AI". Trần dưới đây ngắn hơn trần Cloudflare để handler TỰ trả lời bằng JSON thật.
-// Ngân sách động cơ (CLASSIFY_BUDGET_MS, mặc định 285000) vẫn giữ nguyên — đây chỉ là cửa trả lời, không cắt động cơ:
-// lượt quá hạn vẫn chạy nền tới khi xong (không huỷ được), kết quả bị bỏ.
+// Ngân sách động cơ (CLASSIFY_BUDGET_MS, mặc định 285000) vẫn là trần MỀM khi bên gọi không nói gì.
+// OZV-771: trần này được truyền xuống động cơ làm `hanChotMs` (xem `chay()` bên dưới) — động cơ lấy hạn NGẮN HƠN
+// giữa hai bên, co hạn từng bước AI và dừng lặp sớm để trả cái nó đã có. Cửa dưới đây vẫn giữ làm lưới chốt cuối
+// (lượt đã quá hạn không huỷ được giữa chừng), nhưng bình thường động cơ phải về trước khi cửa chạm trần.
 const TRAN_MS_MAC_DINH = 85000;
 function tranMs() {
   const v = Number(process.env.HS_CLASSIFY_TRAN_MS);
@@ -141,7 +143,9 @@ module.exports = async function handler(req, res) {
     const attrsHoSo = { ...attrs, loaiToKhai: body?.loaiToKhai, manufacturer: body?.manufacturer, dimensions: body?.dimensions, condition: body?.condition, packaging: body?.packaging, brand: body?.brand, model: body?.model, duKien: body?.duKien };
     // #725-45: kenhGoi = tên khoá dịch vụ (null = công khai/HS_API_TOKEN) — chỉ ERP (có nút "Áp mã") nhận câu "bấm Áp mã lại".
     const kenhGoi = serviceCaller(req);
-    const chay = (quyen) => classify(attrs, { tier, debug, kenhGoi }).then((kq) => ganHoSoClassify(kq, attrsHoSo, quyen));
+    // OZV-771: nói cho động cơ biết hạn chót THẬT của lượt HTTP này (= trần trả lời). Động cơ tự co hạn từng bước
+    // AI và dừng lặp sớm để trả cái nó đã có, thay vì tự cho mình 285 s rồi chạy tiếp sau khi cửa đã trả 503.
+    const chay = (quyen) => classify(attrs, { tier, debug, kenhGoi, hanChotMs: started + tran }).then((kq) => ganHoSoClassify(kq, attrsHoSo, quyen));
     if (serviceCaller(req) !== null) {
       // OZV-754: classify chỉ mang THÔNG TIN HÀNG (tên, chất liệu, công dụng…) — withHangHoa: đủ chuỗi dự phòng
       // khi QT bật HS_KHACH_MO_CHUOI_AI, mặc định giữ #237 J1. (declaration-check ?mode=check vẫn withPrivateData — tờ khai.)
