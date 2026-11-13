@@ -39,14 +39,30 @@ function tranMs() {
   const v = Number(process.env.HS_CLASSIFY_TRAN_MS);
   return Number.isFinite(v) && v > 0 ? v : TRAN_MS_MAC_DINH;
 }
-/** Chạy `p` trong hạn `ms`: trả `{ quaGio: true }` khi hết giờ, ngược lại chuyển tiếp kết quả/lỗi y như cũ. */
+/**
+ * Chạy `p` trong hạn `ms`: trả `{ quaGio: true }` khi hết giờ, ngược lại chuyển tiếp kết quả/lỗi y như cũ.
+ *
+ * GIỚI HẠN ĐÃ BIẾT (OZV-756, ghi lại để đừng ai vá nhầm lần nữa): `setTimeout` là macrotask, chỉ bắn khi event
+ * loop rảnh. Nếu đường chạy chiếm CPU ĐỒNG BỘ vắt qua mốc trần thì cửa này KHÔNG cắt được — lượt vẫn trả muộn
+ * đúng bằng lúc CPU nhả. Trong một tiến trình Node không có cách nào cắt việc đồng bộ của chính nó; muốn cắt
+ * thật phải ở tầng ngoài (proxy / tiến trình khác). Cửa này chỉ bảo đảm MỘT điều, và đó là mục đích gốc của
+ * OZV-713: khi quá hạn thì bên gọi nhận JSON thật (503 QUA_GIO) thay vì chuỗi `error code: 524` của Cloudflare.
+ *
+ * ĐÃ THỬ VÀ BỎ: chốt thêm bằng `Date.now()` sau khi race. Đồng hồ là giờ TƯỜNG, không phải giờ CPU của lượt này
+ * ⇒ một lượt khác chặn CPU làm lượt đang chạy ngon bị gắn nhãn quá giờ và VỨT kết quả đã có (đo: lượt việc riêng
+ * 100 ms, trần 1000 ms ⇒ main 200 có results, bản vá 503). Mà nó cũng không rút ngắn thời gian trả lời thật
+ * (trần 1000 ms, chặn CPU 3000 ms ⇒ vẫn trả ở 3002 ms). Bắt oan mà không chữa được bệnh ⇒ gỡ.
+ */
 async function trongHan(p, ms) {
+  // Hạn đã tiêu hết trước khi chạy: trả ngay, KHÔNG đặt hẹn giờ âm (Node cảnh báo TimeoutNegativeWarning rồi tự hạ
+  // xuống 1 ms — dựa vào đó là may rủi). Vẫn để `p` chạy nền như mọi lượt quá hạn khác.
+  if (ms <= 0) { Promise.resolve(p).catch(() => {}); return { quaGio: true }; }
   let hen;
   const het = new Promise((r) => { hen = setTimeout(() => r({ quaGio: true }), ms); if (hen.unref) hen.unref(); });
   try {
     const kq = await Promise.race([Promise.resolve(p).then((v) => ({ v }), (loi) => ({ loi })), het]);
     if (kq.quaGio) return kq;
-    if (kq.loi) throw kq.loi;
+    if (kq.loi) throw kq.loi; // Lỗi thật vẫn ném như cũ (C1/C2: cửa quá giờ không nuốt lỗi).
     return kq;
   } finally { clearTimeout(hen); }
 }
@@ -161,10 +177,13 @@ module.exports = async function handler(req, res) {
         }
         donPhienBanCu(pb); // đổi phiên bản dữ liệu ⇒ dọn dòng cũ (một lần mỗi tiến trình, không ném)
       }
-      const kq = await trongHan(run(() => withHangHoa(() => withUsage(() => chay({ noiBo: laNoiBoOz(req), caller: serviceCaller(req) })))), tran - (Date.now() - started));
+      // Lượt quá hạn vẫn chạy nền tới khi xong và vẫn TỐN tiền LLM như thường. Gắn ghi cache vào chính promise đó
+      // để tiền đã tiêu không mất trắng: lượt sau cùng hồ sơ trúng cache, khỏi gọi LLM lại (OZV-507 việc 1).
+      const chayCoCache = run(() => withHangHoa(() => withUsage(() => chay({ noiBo: laNoiBoOz(req), caller: serviceCaller(req) }))))
+        .then((kq2) => { if (dungCache) ghiCache(khoa, pb, kq2.result); return kq2; }); // lỗi DB nuốt trong lib
+      const kq = await trongHan(chayCoCache, tran - (Date.now() - started));
       if (kq.quaGio) return traLoiQuaGio(res, { ms: Date.now() - started, tranMs: tran, attrs });
       const { result, usage } = kq.v;
-      if (dungCache) ghiCache(khoa, pb, result); // ghi sau, lỗi DB nuốt trong lib — phản hồi như chưa có cache
       return res.status(200).json({ ...result, attrs, usage, ms: Date.now() - started });
     }
     // Lượt công khai / HS_API_TOKEN: đếm chi phí LLM (L0j, #547 — chỉ đếm, không chặn). Shape phản hồi không đổi.
