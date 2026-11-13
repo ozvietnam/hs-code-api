@@ -114,6 +114,68 @@ if (!caChet) {
   ok('A4 dương: nhãn mã đã bị gộp vẫn còn (không mất dấu vết #1268)', dxChet?.maDaBietGop === true);
 }
 
+// A5 (ÂM) — luật "Loại khác" của #725-46 CÓ HIỆU LỰC với mã sắp chốt ⇒ KHÔNG được đôn mã tiền lệ lên vị trí 1 (ý (5)).
+// Bối cảnh: #725-46 quy định khi mã chốt là "Loại khác" mà mô tả khớp dòng/tiêu đề bị trừ thì KHÔNG CHOT mà hạ DE_XUAT +
+// bật cờ chuyên viên (hành vi "cần hỏi"). Đôn mã tiền lệ ở đây sẽ LẠI mất đúng hành vi "cần hỏi" đó ⇒ ứng viên vẫn được
+// ĐỀ XUẤT ở vị trí 2 (mã đề xuất xem), nhưng KHÔNG được đôn lên vị trí 1.
+// Ca này dùng DỮ LIỆU THẬT (data/precedents.json + cây HS), không dựng dữ liệu giả. Test tự KIỂM CHỨNG LẠI tiền đề
+// (mã chốt là "Loại khác" + luật có hiệu lực + ứng viên trùng khít) trước khi kết luận ⇒ dữ liệu đổi thì test ĐỎ, không đoán.
+const tenTB = (hs) => {
+  const e = tbCuaMa(hs).find((x) => x && x.productName && String(x.productName).length >= 25);
+  return e ? String(e.productName) : null;
+};
+const laLoaiKhac = (hs) => Boolean(TREE.nodeOf(hs)?.loaiKhac);
+// Cặp ca THẬT tìm được trên data/precedents.json (2026-11-13): mã chốt 15179090 ("Loại khác", luật "Loại khác" có
+// hiệu lực với mô tả này) + ứng viên 34039919 có TB tên hàng khớp TRÙNG KHÍT.
+let caA5 = null;
+for (const [lk, x] of [['15179090', '34039919']]) {
+  const tn = tenTB(x);
+  if (!tn || !laLoaiKhac(lk)) continue;
+  const g = doGiongTenHang({ tenHang: tn, moTa: tn }, tn);
+  if (!g.giong || g.diem !== 1 || g.chung < 5) continue;
+  if (!K.luatLoaiKhac(lk, { tenHang: tn, moTa: tn }).length) continue;   // luật "Loại khác" phải CÓ hiệu lực
+  caA5 = { lk, x, hang: tn };
+  break;
+}
+if (!caA5) {
+  ok('A5 âm: tìm được ca THẬT (mã chốt "Loại khác" + luật có hiệu lực + ứng viên trùng khít)', false);
+} else {
+  const hangA5 = { tenHang: caA5.hang, moTa: caA5.hang };
+  const kcLK = K.kiemTruocChot({ topHs: caA5.lk, hang: hangA5, ungVien: [caA5.x] });
+  const dxLK = kcLK.deXuat.find((d) => d.hs === caA5.x);
+  ok('A5 âm: tìm được ca THẬT (mã chốt "Loại khác" + luật có hiệu lực + ứng viên trùng khít)', true);
+  ok('A5 âm: luật "Loại khác" của #725-46 CÓ bắn (ma NGHI_LOAI_KHAC_THUOC_DONG_BI_TRU)', kcLK.canhBao.some((c) => c.ma === 'NGHI_LOAI_KHAC_THUOC_DONG_BI_TRU'));
+  ok('A5 âm: ứng viên TRÙNG KHÍT (độ giống = 1.0)', dxLK?.diem === 1);
+  ok('A5 âm: ứng viên ≥5 từ chung', Number(dxLK?.chung || 0) >= 5);
+  ok('A5 âm: KHÔNG gắn cờ "chắc chắn" ⇒ KHÔNG đôn lên vị trí 1', dxLK?.chacChan !== true);
+  ok('A5 âm: ứng viên VẪN được đề xuất ở vị trí sau (giữ hành vi "cần hỏi" của #725-46)', Boolean(dxLK));
+  // ĐO HAI CHIỀU (cùng cặp mã + cùng mô tả): gọi THẲNG `tienLeNguoc` với mặc định (KHÔNG khoá cờ) ⇒ cùng ứng viên đó
+  // ĐỦ điều kiện "chắc chắn" ⇒ chứng minh khác biệt CHỈ do luật "Loại khác" của #725-46, KHÔNG phải do khớp yếu hay dữ liệu.
+  // (Tắt guard trong `kiemTruocChot` ⇒ cờ bật ⇒ ca "KHÔNG gắn cờ" ở trên ĐỎ ⇒ ca này bắt được đúng lỗi.)
+  const nguocMacDinh = K.tienLeNguoc(caA5.lk, [caA5.x], hangA5);
+  const dxMacDinh = nguocMacDinh.find((d) => d.hs === caA5.x);
+  ok('A5 đo hai chiều: cùng cặp mã/mô tả, KHÔNG khoá cờ ⇒ ứng viên ĐỦ điều kiện "chắc chắn"', dxMacDinh?.chacChan === true);
+  // ĐO HAI CHIỒU: cùng ứng viên + cùng mô tả, nhưng mã chốt KHÔNG có luật "Loại khác" hiệu lực ⇒ PHẢI đủ điều kiện đôn.
+  // ⇒ chứng minh khác biệt đến từ luật "Loại khác", không phải từ dữ liệu/khớp yếu.
+  const topKhongLK = Object.keys(db).find((hs) => {
+    if (hs === caA5.lk || hs === caA5.x || !TREE.nodeOf(hs)) return false;
+    if (laLoaiKhac(hs) || TREE.nodeOf(hs)?.parent === TREE.nodeOf(caA5.x)?.parent) return false;
+    if (K.luatLoaiKhac(hs, hangA5).length) return false;
+    if (tbCuaMa(hs).some((e) => { const gg = doGiongTenHang(hangA5, e.productName); return gg.giong && gg.diem >= 1; })) return false;
+    // mã chốt này phải THỰC SỰ cho ứng viên x đủ điều kiện đôn (đó là ý nghĩa của "đo hai chiều")
+    const d = K.kiemTruocChot({ topHs: hs, hang: hangA5, ungVien: [caA5.x] }).deXuat.find((q) => q.hs === caA5.x);
+    return d?.chacChan === true;
+  });
+  if (!topKhongLK) {
+    ok('A5 đo hai chiều: tìm được mã chốt KHÔNG có luật "Loại khác" để so sánh', false);
+  } else {
+    const kcKhongLK = K.kiemTruocChot({ topHs: topKhongLK, hang: hangA5, ungVien: [caA5.x] });
+    const dxKhongLK = kcKhongLK.deXuat.find((d) => d.hs === caA5.x);
+    ok('A5 đo hai chiều: tìm được mã chốt KHÔNG có luật "Loại khác" để so sánh', true);
+    ok('A5 đo hai chiều: cùng ứng viên + cùng mô tả, không có luật "Loại khác" ⇒ ĐỦ điều kiện đôn', dxKhongLK?.chacChan === true);
+  }
+}
+
 // ── B. ENGINE: vị trí trong `results` + nhãn khách thấy (lib/engine-loop.js) ────────────────────────────────────
 /** Phát lại 1 ca qua classifyLoop với LLM stub tất định (giống scripts/benchmark-50-ca-tb-tchq.mjs). */
 async function replayMotCa(ca, text) {
@@ -155,6 +217,25 @@ if (layDung) {
   ok('B3 âm: ca mã AI đã đúng thì mã đầu giữ nguyên', outDung.results?.[0]?.hs === layDung.cong1211?.maBot);
   ok('B3 âm: ca mã AI đã đúng thì không mang nhãn xếp hạng theo tiền lệ', !(outDung.results || []).some((r) => r.xepHang === 'TIEN_LE_TB_TCHQ'));
 }
+
+// ── C. ENGINE: cảnh báo/dự xuất phải bám mã ĐANG Ở VỊ TRÍ 1 (ý CHẶN (1) của GĐ 13/11) ───────────────────────────
+// Bối cảnh: `kiemChot` được tính cho mã CŨ (mã máy chốt) ở dòng ~974. Khi mã tiền lệ `chacChan` được đôn lên vị trí 1,
+// mã ở vị trí 1 đã đổi ⇒ cảnh báo/dự xuất bám mã CŨ là CĂN CỨ SAI (đây là bằng chứng đưa cho Hải quan).
+// Bản vá: đã đôn mã thì LUÔN tính lại `kiemChot` cho mã đang ở vị trí 1.
+const MA_CU = lay.cong1211?.maBot || '32082090';
+// fmt8 (lib/kiem-truoc-chot.js) in mã theo dạng có dấu chấm: "3208.20.90" — so khớp phải dùng đúng dạng đó.
+const cham8 = (h) => String(h).replace(/^(\d{4})(\d{2})(\d{2})$/, '$1.$2.$3');
+const MA_CU_CHAM = cham8(MA_CU);
+const reasonsC = outDuong.review?.reasons || [];
+ok('C1 âm: sau khi đôn mã, cảnh báo KHÔNG bám mã CŨ (không có "máy chốt <mã cũ>")', !reasonsC.some((r) => new RegExp(`máy chốt\\s+${MA_CU_CHAM.replace(/\./g, '\\.')}\\b`).test(String(r))));
+ok('C2 âm: sau khi đôn mã, không còn cảnh báo "Tiền lệ cùng loại hàng ngược kết luận" bám mã CŨ', !reasonsC.some((r) => /Tiền lệ cùng loại hàng ngược kết luận/.test(String(r)) && String(r).includes(MA_CU_CHAM)));
+// ĐO HAI CHIỀU: `kiemChot` tính cho MÃ CŨ (trước khi đôn) CÓ đúng cảnh báo đó ⇒ chứng minh cảnh báo là thật,
+// chỉ là bám SAI mã sau khi đôn (có bằng chứng trước/sau trên cùng dữ liệu thật).
+const kcCu = K.kiemTruocChot({ topHs: MA_CU, hang: { tenHang: TEN_TL || '', moTa: TEN_TL || '' }, ungVien: [MA_DUNG] });
+const canhBaoCu = kcCu.canhBao.find((c) => /Tiền lệ cùng loại hàng ngược kết luận/.test(c.noiDung || ''));
+ok('C3 dương: cảnh báo CÓ THẬT ở mã CŨ (nên "biến mất" là do tính lại cho mã mới, không phải do rơi mất)', Boolean(canhBaoCu));
+const MA_DUNG_CHAM = String(MA_DUNG).replace(/^(\d{4})(\d{2})(\d{2})$/, '$1.$2.$3'); // fmt8 (dấu chấm)
+ok('C4 dương: cảnh báo ở mã CŨ nói đúng mã đang được đôn lên vị trí 1', String(canhBaoCu?.noiDung || '').includes(MA_DUNG_CHAM));
 
 console.log(`\n${pass} passed | ${fail} failed`);
 process.exit(fail ? 1 : 0);
