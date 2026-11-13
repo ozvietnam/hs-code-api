@@ -4,7 +4,7 @@
   "nhom": "9849",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "DUYET",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "claude-agent:ozv-682-sua-9849-3pn-20261113#soan-984920",
@@ -286,5 +286,12 @@
     "ngay": "2026-11-13",
     "ghiChu": "Duyệt lại 13/11/2026 (OZV-682): bổ sung nút gạch-4 984920~r19529 \"Loại khác\" (anh em của r19524 \"Đã lắp ráp hoàn chỉnh\") cho đúng cây gạch của biểu; nút tiêu đề Loại khác trần nên dieuKienSo rỗng (cổng cong3 cấm tiêu đề Loại khác trần mang điều kiện) — máy tự phủ định anh em.",
     "bam": "2b609d9979296a94c2ef93b6cda2ac1e7a021ebed471bf9180fc3b2c6c4e17fa"
-  }
+  },
+  "traVe": [
+    {
+      "phien": "claude-agent:ozv-682-9849-3pn-20261113#do-bo-kiem-luat",
+      "ngay": "2026-11-13",
+      "lyDo": "OZV-682 13/11/2026 — ĐO ĐƯỢC: áp bản duyệt này vào sổ tay làm bộ kiểm luật 9849 CHỐT SAI 3 ca (98492018→98492015, 98492019→98492016, 98492020→98492017), mốc main là 0. Nguyên nhân cấu trúc, chưa có đường ra bằng căn cứ nguyên văn: dưới 984920~r19523 (\"trên 1.000 cc\") có hai nút gạch-4 anh em — r19524 \"Đã lắp ráp hoàn chỉnh\" (→ .15/.16/.17) và r19529 \"Loại khác\" (→ .18/.19/.20). r19529 là \"Loại khác\" TRẦN nên cổng cong3 cấm mang dieuKienSo (cong3-muc:984920~r19529:dieu-kien-nut-tren-tieu-de-loai-khac), mà nút dieuKienSo rỗng lại không vào data/so-tay/9849.json, nên lúc chạy máy không thấy nhánh chưa lắp ráp và chốt vào .15/.16/.17. Cần luật phủ định anh em cho nút tiêu đề \"Loại khác\" ở tầng gạch-4 (việc của máy, không phải của hồ sơ) rồi mới duyệt lại. KHÔNG đoán thêm điều kiện (OZV-420)."
+    }
+  ]
 }
