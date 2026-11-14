@@ -276,12 +276,39 @@
     },
     {
       "hs": "58062010",
-      "dieuKien": "Vải dệt thoi khác có sợi đàn hồi hoặc sợi cao su từ 5% trở lên tính theo khối lượng (= phân nhóm 580620 — WCO: narrow fabrics containing 5% or more of elastomeric yarn or rubber thread), dạng băng dùng để quấn tay cầm hoặc cán của các dụng cụ thể thao",
-      "tieuChi": null,
+      "dieuKien": "công dụng / mục đích: quấn; công dụng / mục đích: tay cầm hoặc cán; công dụng / mục đích: dụng cụ thể thao",
       "loaiKhac": false,
       "nguon": "tax.58062010",
       "trich": "58062010 - - Băng loại dùng để quấn tay cầm hoặc cán của các dụng cụ thể thao",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "quấn"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "tay cầm",
+            "cán"
+          ]
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "dụng cụ thể thao"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude:tho-hs-01:20261115#soat-5806-8502-8526",
+          "ngay": "2026-11-14",
+          "bam": "6779abe8c14bc2289a156fd8d8259b6aeafe79deb743c4c6f8bda22ec3e504ef"
+        }
+      }
     },
     {
       "hs": "58062090",
@@ -566,44 +593,129 @@
     },
     {
       "hs": "58063910",
-      "dieuKien": "Vải dệt thoi khổ hẹp khác, từ vật liệu dệt khác (= phân nhóm 580639 — WCO: narrow woven fabrics of other textile materials), từ tơ tằm",
-      "tieuChi": null,
+      "dieuKien": "loại xơ/sợi dệt (vật liệu dệt chủ yếu): từ tơ tằm",
       "loaiKhac": false,
       "nguon": "tax.58063910",
       "trich": "58063910 - - - Từ tơ tằm",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "loaiSoiDet",
+          "op": "TRONG",
+          "value": [
+            "TO_TAM"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude:tho-hs-01:20261115#soat-5806-8502-8526",
+          "ngay": "2026-11-14",
+          "bam": "837fb5c5cc0858404bd63136f5927bd21a77f94f985bf172cbd3bb8bf6379159"
+        }
+      }
     },
     {
       "hs": "58063991",
-      "dieuKien": "Vải dệt thoi khổ hẹp khác, từ vật liệu dệt khác, làm nền cho giấy cách điện",
-      "tieuChi": null,
+      "dieuKien": "công dụng / mục đích: Làm nền; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): giấy cách điện",
       "loaiKhac": false,
       "nguon": "tax.58063991",
       "trich": "58063991 - - - - Làm nền cho giấy cách điện",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "Làm nền"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "giấy cách điện"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude:tho-hs-01:20261115#soat-5806-8502-8526",
+          "ngay": "2026-11-14",
+          "bam": "837fb5c5cc0858404bd63136f5927bd21a77f94f985bf172cbd3bb8bf6379159"
+        }
+      }
     },
     {
       "hs": "58063992",
-      "dieuKien": "Vải dệt thoi khổ hẹp khác, từ vật liệu dệt khác, thích hợp cho sản xuất băng mực dùng cho máy chữ hoặc các loại máy tương tự",
-      "tieuChi": null,
+      "dieuKien": "tên loại hàng: Vải dệt thoi khổ hẹp; công dụng / mục đích: sản xuất băng mực; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): máy chữ",
       "loaiKhac": false,
       "nguon": "tax.58063992",
       "trich": "58063992 - - - - Vải dệt thoi khổ hẹp thích hợp cho sản xuất băng mực dùng cho máy chữ hoặc các loại máy tương tự",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Vải dệt thoi khổ hẹp"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "sản xuất băng mực"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy chữ"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude:tho-hs-01:20261115#soat-5806-8502-8526",
+          "ngay": "2026-11-14",
+          "bam": "837fb5c5cc0858404bd63136f5927bd21a77f94f985bf172cbd3bb8bf6379159"
+        }
+      }
     },
     {
       "hs": "58063993",
-      "dieuKien": "Vải dệt thoi khổ hẹp khác, từ vật liệu dệt khác, là ruy băng dùng làm khóa kéo và có chiều rộng không quá 12 mm",
+      "dieuKien": "tên loại hàng: Ruy băng; công dụng / mục đích: làm khóa kéo; chiều rộng <= 12 mm",
+      "loaiKhac": false,
+      "nguon": "tax.58063993",
+      "trich": "58063993 - - - - Ruy băng loại dùng làm khóa kéo và có chiều rộng không quá 12 mm",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ruy băng"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "làm khóa kéo"
+        },
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 12,
+          "donVi": "mm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude:tho-hs-01:20261115#soat-5806-8502-8526",
+          "ngay": "2026-11-14",
+          "bam": "837fb5c5cc0858404bd63136f5927bd21a77f94f985bf172cbd3bb8bf6379159"
+        }
+      },
       "tieuChi": {
         "fact": "kho_rong",
         "op": "<=",
         "value": 12,
         "donVi": "mm"
-      },
-      "loaiKhac": false,
-      "nguon": "tax.58063993",
-      "trich": "58063993 - - - - Ruy băng loại dùng làm khóa kéo và có chiều rộng không quá 12 mm",
-      "nguonLoai": "AI_DA_KIEM"
+      }
     },
     {
       "hs": "58063999",

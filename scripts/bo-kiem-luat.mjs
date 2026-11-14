@@ -337,22 +337,33 @@ function sinhMoTaLoaiTru(hs8, pn6, st) {
   const dd = DK.duongDiDong8(hs8, { soTay: st });
   const parts = [ten6];
   const soRanhGioi = new Map();
+  const soPhaiCo = new Map();
+  for (const g of dd.nhom || []) {
+    if (!Array.isArray(g.dieuKien) || !g.dieuKien.length) continue;
+    if (g.chieu === 'PHAI_KHONG' && g.dieuKien.every((c) => ['<=', '<', '>=', '>'].includes(c.op))) {
+      const c0 = g.dieuKien[0];
+      const list = soRanhGioi.get(c0.fact) || [];
+      list.push(g.dieuKien);
+      soRanhGioi.set(c0.fact, list);
+    }
+  }
   for (const g of dd.nhom || []) {
     if (!Array.isArray(g.dieuKien) || !g.dieuKien.length) continue;
     if (g.chieu === 'PHAI_CO') {
       for (const c of g.dieuKien) {
+        if (['<=', '<', '>=', '>'].includes(c.op) && soRanhGioi.has(c.fact)) {
+          const list = soPhaiCo.get(c.fact) || [];
+          list.push(c);
+          soPhaiCo.set(c.fact, list);
+          continue;
+        }
         const s = cumKhangDinh(c);
         if (s && !parts.includes(s)) parts.push(s);
       }
     } else if (g.chieu === 'PHAI_KHONG') {
       // Nếu điều kiện anh em chỉ gồm các vế số (SO), gom lại để chọn số nằm ngoài mọi anh em
       const allSo = g.dieuKien.every((c) => ['<=', '<', '>=', '>'].includes(c.op));
-      if (allSo) {
-        const c0 = g.dieuKien[0];
-        const list = soRanhGioi.get(c0.fact) || [];
-        list.push(g.dieuKien);
-        soRanhGioi.set(c0.fact, list);
-      } else {
+      if (!allSo) {
         const s = cumPhuDinhNhom(g.dieuKien);
         if (s && !parts.includes(s)) parts.push(s);
       }
@@ -360,26 +371,28 @@ function sinhMoTaLoaiTru(hs8, pn6, st) {
   }
   for (const [fact, groups] of soRanhGioi.entries()) {
     const k = (() => { try { return TV.layKhoa(fact); } catch { return null; } })();
-    const donVi = groups[0]?.[0]?.donVi || k?.donViChuan || '';
-    const maxVal = Math.max(...groups.flat().map((c) => Number(c.value) || 0));
-    const minVal = Math.min(...groups.flat().map((c) => Number(c.value) || 0));
+    const phaiCoList = soPhaiCo.get(fact) || [];
+    const allConds = [...groups.flat(), ...phaiCoList];
+    const donVi = groups[0]?.[0]?.donVi || phaiCoList[0]?.donVi || k?.donViChuan || '';
+    const maxVal = Math.max(...allConds.map((c) => Number(c.value) || 0));
+    const minVal = Math.min(...allConds.map((c) => Number(c.value) || 0));
     // Thử ứng viên lớn hơn maxVal trước; nếu vẫn rơi vào một nhóm anh em thì thử nhỏ hơn minVal
     // … rồi tới giá trị GIỮA hai mốc liền nhau: anh em "≥ 20 kg" và "≤ 2 kg" thì cả 90 lẫn 0,8 đều rơi vào anh em, chỉ khoảng
     // (2; 20) là của Loại khác. Trước đây hết ứng viên thì lùi về 90 ⇒ ca "Loại khác" mang số của anh em (0402 — #1109).
-    const moc = [...new Set(groups.flat().map((c) => Number(c.value) || 0))].sort((a, b) => a - b);
+    const moc = [...new Set(allConds.map((c) => Number(c.value) || 0))].sort((a, b) => a - b);
     const giua = moc.slice(1).map((v, i) => Number(((moc[i] + v) / 2).toFixed(3)));
     const cands = [maxVal * 2 + 50, Math.max(0.1, Number((minVal * 0.4).toFixed(3))), ...giua];
     let chosen = cands[0];
+    const thoaDieuKienSo = (val, c) => {
+      if (c.op === '<=') return val <= c.value;
+      if (c.op === '<') return val < c.value;
+      if (c.op === '>=') return val >= c.value;
+      if (c.op === '>') return val > c.value;
+      return false;
+    };
     for (const cand of cands) {
-      const hitAny = groups.some((grp) =>
-        grp.every((c) => {
-          if (c.op === '<=') return cand <= c.value;
-          if (c.op === '<') return cand < c.value;
-          if (c.op === '>=') return cand >= c.value;
-          if (c.op === '>') return cand > c.value;
-          return false;
-        }),
-      );
+      if (!phaiCoList.every((c) => thoaDieuKienSo(cand, c))) continue;
+      const hitAny = groups.some((grp) => grp.every((c) => thoaDieuKienSo(cand, c)));
       if (!hitAny) {
         chosen = cand;
         break;
