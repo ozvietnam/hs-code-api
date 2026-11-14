@@ -1,12 +1,11 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "392310",
-  "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-392310",
+  "phien": "paperclip:tho-hs-03:20261114T1745#soan-392310",
   "dong8": {
     "39231010": {
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Hộp" },
-        { "fact": "dungCho", "op": "CONG_DUNG", "value": ["phim", "băng từ", "đĩa quang"] }
+        { "fact": "congDung", "op": "CONG_DUNG", "value": "đựng phim, băng từ và đĩa quang" }
       ]
     },
     "39231020": {
@@ -16,7 +15,7 @@
     }
   },
   "ghiChuSoan": [
-    { "ma": "39231010", "loai": "QUYET_DINH", "ghiChu": "tax.39231010 \"Hộp đựng phim, băng từ và đĩa quang\" ⇒ tenLoai \"Hộp\" + dungCho [\"phim\", \"băng từ\", \"đĩa quang\"] (\"đựng\" ⇒ hàng đi cùng; mảng = hoặc: hộp đựng một trong ba loại đều thuộc dòng)." },
+    { "ma": "39231010", "loai": "QUYET_DINH", "ghiChu": "tax.39231010 \"Hộp đựng phim, băng từ và đĩa quang\" ⇒ congDung \"đựng phim, băng từ và đĩa quang\" (chuỗi con nguyên văn của vế giới hạn). Bỏ tenLoai \"Hộp\" vì trùng tiêu đề PN6 392310 (\"Hộp, hòm…\") → mất coCumPhanBiet; bỏ dungCho vì động từ \"đựng\" không kích hoạt bộ trích dungCho (mẫu 39239010 Tuýp để đựng kem đánh răng)." },
     { "ma": "39231020", "loai": "QUYET_DINH", "ghiChu": "tax.39231020 \"Loại khác, có hình dạng đặc biệt hoặc thích hợp để vận chuyển hoặc đóng gói các tấm bán dẫn mỏng, màn hoặc lưới quang\" — dòng \"Loại khác, <vế>\": chỉ ghi điều kiện của vế. Chữ Anh cùng dòng \"specially shaped or fitted for the conveyance or packing of semiconductor wafers, masks, or reticles\": \"có hình dạng đặc biệt hoặc thích hợp\" cùng bổ nghĩa cho \"để vận chuyển hoặc đóng gói …\" (bộ tách vòng 4 đọc là một vế) ⇒ dungCho [\"tấm bán dẫn mỏng\", \"màn\", \"lưới quang\"] — tách \"màn hoặc lưới quang\" thành hai giá trị (\"masks, or reticles\"): một chuỗi gộp đòi đủ âm tiết \"màn\", \"lưới\", \"quang\" ⇒ hẹp hơn chữ (góp ý soát PR #629)." }
   ]
 }
