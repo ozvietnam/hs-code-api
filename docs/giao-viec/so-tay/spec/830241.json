@@ -1,17 +1,7 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "830241",
-  "phien": "claude-agent:pc-tho-hs-03:20261113T1351#soan-830241",
-  "dong8": {
-    "83024131": {
-      "dieuKienSo": [
-        {
-          "fact": "banLeMocKhoaHasps",
-          "op": "CO"
-        }
-      ]
-    }
-  },
+  "phien": "pc-tho-hs-01:OZV-856#soan-830241",
   "dieuKienNut": {
     "8302413": {
       "dieuKienSo": [
@@ -22,12 +12,17 @@
               {
                 "fact": "tenLoai",
                 "op": "TEN_LOAI",
-                "value": "Bản lề"
-              },
+                "value": "chốt cửa"
+              }
+            ],
+            [
               {
-                "fact": "dungCho",
-                "op": "CONG_DUNG",
-                "value": "cửa ra vào"
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "móc",
+                  "mắt cài khóa"
+                ]
               }
             ],
             [
@@ -44,21 +39,13 @@
             ],
             [
               {
-                "fact": "tenLoai",
-                "op": "TEN_LOAI",
-                "value": "móc"
+                "fact": "banLeMocKhoaHasps",
+                "op": "CO"
               },
               {
-                "fact": "tenLoai",
-                "op": "TEN_LOAI",
-                "value": "mắt cài khóa"
-              }
-            ],
-            [
-              {
-                "fact": "tenLoai",
-                "op": "TEN_LOAI",
-                "value": "chốt cửa"
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "cửa ra vào"
               }
             ]
           ]
@@ -66,16 +53,19 @@
       ]
     }
   },
-  "ghiChuSoan": [
-    {
-      "ma": "83024131",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.83024131 \"Bản lề để móc khóa (Hasps)(SEN)\" ⇒ banLeMocKhoaHasps CO (cùng khuôn 830242 .20)."
-    },
-    {
-      "ma": "8302413",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.8302413 \"Bản lề để móc khóa và đinh kẹp dùng cho cửa ra vào; móc và mắt cài khóa; chốt cửa\" ⇒ HOAC theo 3 cụm phân cách \";\". \"móc và mắt cài khóa\" là MỘT cụm nối \"và\" (hasp-and-eye) ⇒ MỘT phương án đòi đủ hai tên (VÀ). Bản nháp cũ cho \"móc\" và \"mắt cài khóa\" mỗi tên một phương án riêng (HOẶC) ⇒ \"móc\" trơ trọi thành đỉnh hở: ca nhóm khác có chữ móc (móc treo 8302.50…) lọt nút 8302413 rồi rơi .39 \"Loại khác\" ⇒ sinh ca chốt sai mới trên --toan-bieu — lý do trả về OZV-690."
+  "dong8": {
+    "83024131": {
+      "dieuKienSo": [
+        {
+          "fact": "banLeMocKhoaHasps",
+          "op": "CO"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bản lề để móc khóa (Hasps)"
+        }
+      ]
     }
-  ]
+  }
 }

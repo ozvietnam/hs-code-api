@@ -4,20 +4,71 @@
   "nhom": "8302",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
-    "phien": "claude-agent:pc-tho-hs-03:20261113T1421#soan-lai-830241",
-    "ngay": "2026-11-13"
+    "phien": "pc-tho-hs-01:OZV-856#soan-830241",
+    "ngay": "2026-11-14"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-soat:OZV-856#soat-1",
+    "ngay": "2026-11-14",
+    "bam": "a6b45bb7ac81871d55803ddddd76bbad7cea5570cb6dc4f07d00e212fafe4ef5"
+  },
   "dieuKienNut": [
     {
       "id": "8302413",
       "nguon": "tieuDe.8302413",
       "trich": "8302413 Bản lề để móc khóa và đinh kẹp dùng cho cửa ra vào; móc và mắt cài khóa; chốt cửa",
-      "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "chốt cửa"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "móc",
+                  "mắt cài khóa"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "đinh kẹp"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "cửa ra vào"
+              }
+            ],
+            [
+              {
+                "fact": "banLeMocKhoaHasps",
+                "op": "CO"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "cửa ra vào"
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -36,35 +87,24 @@
           "value": "Bản lề để móc khóa (Hasps)"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "83024139",
       "nguon": "tax.83024139",
       "trich": "83024139 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "83024190",
       "nguon": "tax.83024190",
       "trich": "83024190 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
-  "ghiChuSoan": [
-    {
-      "ma": "83024131",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.83024131 \"Bản lề để móc khóa (Hasps)(SEN)\" ⇒ banLeMocKhoaHasps CO + vế tên TEN_LOAI \"Bản lề để móc khóa (Hasps)\" (chữ \"(Hasps)\" chỉ có ở tên dòng 8 số). Ca THIEU_DU_KIEN của bench lấy NGUYÊN tiêu đề nút 8302413 làm text (\"Bản lề để móc khóa và đinh kẹp dùng cho cửa ra vào; …\") — không có \"(Hasps)\" — mà regex từ vựng banLeMocKhoaHasps không bắt buộc ngoặc nên tiếng vọng vẫn CO ⇒ .31 THOA giả ⇒ CHOT sai (chotSai 1, OZV-690). Thêm vế tên này để tiếng vọng nút TRAI (.31 không còn thỏa), còn mô tả thật trích tên dòng (có \"(Hasps)(SEN)\") vẫn thỏa cả hai vế."
-    },
-    {
-      "ma": "8302413",
-      "loai": "QUYET_DINH",
-      "ghiChu": "BỎ điều kiện nút 8302413 (dieuKienNut rỗng, theo khuôn 830242/830249 đã duyệt): với nút có điều kiện, tiếng vọng tiêu đề nút làm nút THOA + mọi con TRAI ⇒ chotDong8 trả LOAI_KHAC 83024139 — trên ca THIEU_DU_KIEN là chotLoaiKhacSai. Bỏ nút ⇒ tiếng vọng rơi KHONG_THE_CHOT 'nhieu-dong-loai-khac' (đúng: text không tách được dòng nào). Đổi lại ca LOAI_TRU .90 hết LOAI_KHAC .90 (mất 1 chotDung so bản cũ). Cổng nút cũ cũng là nguồn rò rỉ nhóm khác (lý do traVe 2026-11-11); .31 giờ đòi đủ hai vế nên text chỉ có \"móc\"/\"chốt cửa\" không còn đường vào dòng cụ thể nào."
-    }
-  ],
+  "ghiChuSoan": [],
   "traVe": [
     {
       "phien": "claude-agent:tech-lead-20261111#soat-lai",
