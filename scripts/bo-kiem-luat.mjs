@@ -449,6 +449,7 @@ export function sinhCaNhom(nhom4) {
         .filter(Boolean)
         .join(' - ');
       const laLKTran = Boolean(n?.loaiKhacTran) && list8.length > 1;
+      if (list8.length === 1 && n?.loaiKhacTran && T.nodeOf(pn6)?.loaiKhacTran && mids.length > 0 && mids.every((m) => m.loaiKhacTran)) continue;
       // OZV-342 (phạm vi): mọi biến thể sinh ca dưới đây CHỈ áp cho nhóm 8544 — PR này sửa duy nhất 8544.
       // Đo --toan-bieu hai chân (origin/main + dữ liệu / nhánh đầy đủ) cho thấy áp toàn cục làm 8 ca nhóm
       // khác (1605/4813/8413/8703/8711) lật thành chốt sai — nhóm khác giữ nguyên nếp cũ của main.
