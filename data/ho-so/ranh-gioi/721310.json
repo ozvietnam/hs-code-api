@@ -4,13 +4,18 @@
   "nhom": "7213",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-721310",
     "ngay": "2026-11-04"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude:thot-02:20261114#soat-721310",
+    "ngay": "2026-11-14",
+    "bam": "c3b1445b545f5cd85c1f8917523e466de246b27dc329a3af0296193d099ce47a"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -23,29 +28,30 @@
           "op": "<=",
           "value": 50,
           "donVi": "mm"
+        },
+        {
+          "fact": "hinhDangMatCatNgang",
+          "op": "TRONG",
+          "value": [
+            "TRON"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "72131090",
       "nguon": "tax.72131090",
       "trich": "72131090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "72131010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.72131010: \"Có đường kính mặt cắt ngang hình tròn không quá 50 mm\" ⇒ duongKinh <= 50 mm"
-    },
-    {
-      "ma": "72131010",
-      "loai": "BO_VE",
-      "ve": "Có đường kính mặt cắt ngang hình tròn không quá 50 mm",
-      "lyDo": "Đã lượng hóa qua duongKinh <= 50 mm"
+      "ghiChu": "tax.72131010: \"Có đường kính mặt cắt ngang hình tròn không quá 50 mm\" ⇒ duongKinh <= 50 mm, hinhDangMatCatNgang TRONG ['TRON']"
     }
   ],
   "traVe": [

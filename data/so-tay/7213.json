@@ -62,11 +62,34 @@
   "dong8": [
     {
       "hs": "72131010",
-      "dieuKien": "Có đường kính mặt cắt ngang hình tròn không quá 50 mm",
+      "dieuKien": "đường kính (ngoài) <= 50 mm; hình dạng mặt cắt ngang: mặt cắt ngang hình tròn",
       "loaiKhac": false,
       "nguon": "tax.72131010",
       "trich": "72131010 - - Có đường kính mặt cắt ngang hình tròn không quá 50 mm",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 50,
+          "donVi": "mm"
+        },
+        {
+          "fact": "hinhDangMatCatNgang",
+          "op": "TRONG",
+          "value": [
+            "TRON"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude:thot-02:20261114#soat-721310",
+          "ngay": "2026-11-14",
+          "bam": "c3b1445b545f5cd85c1f8917523e466de246b27dc329a3af0296193d099ce47a"
+        }
+      }
     },
     {
       "hs": "72131090",
