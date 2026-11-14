@@ -4,13 +4,19 @@
   "nhom": "9022",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-902219",
     "ngay": "2026-11-04"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "pc-tho-hs-01:OZV-931#soat-902219",
+    "ngay": "2026-11-14",
+    "ghiChu": "OZV-931: sửa TRA_VE giữ nguyên cụm congDung ở .10 không tách tại '/', .90 Loại khác.",
+    "bam": "f1adc39aa79d0b913e10b99fee4f0d9afc21baab787ff84e99cf9ad29936a154"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -21,27 +27,24 @@
         {
           "fact": "congDung",
           "op": "CONG_DUNG",
-          "value": [
-            "kiểm tra vật lý các điểm hàn nối trên tấm mạch in",
-            "tấm dây in"
-          ]
+          "value": "kiểm tra vật lý các điểm hàn nối trên tấm mạch in/tấm dây in"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "90221990",
       "nguon": "tax.90221990",
       "trich": "90221990 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "90221910",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.90221910: \"Thiết bị sử dụng tia X để kiểm tra vật lý các điểm hàn nối trên tấm mạch in/tấm dây in\" ⇒ congDung mảng 2 chuỗi"
+      "ghiChu": "tax.90221910: \"Thiết bị sử dụng tia X để kiểm tra vật lý các điểm hàn nối trên tấm mạch in/tấm dây in\" ⇒ congDung giữ nguyên cụm \"kiểm tra vật lý các điểm hàn nối trên tấm mạch in/tấm dây in\" (không tách tại \"/\" làm mất định ngữ chung)"
     }
   ],
   "traVe": [
