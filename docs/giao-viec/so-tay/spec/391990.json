@@ -1,7 +1,7 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "391990",
-  "phien": "mm:minimax-m3:20261105T1705#soan-391990",
+  "phien": "pc-tho-hs-01:OZV-890#soan-391990",
   "dong8": {
     "39199010": {
       "dieuKienSo": [
@@ -33,20 +33,34 @@
     "39199092": {
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "các polyme trùng hợp",
-            "các polyme trùng ngưng",
-            "tái sắp xếp",
-            "từ nitrat xenlulo",
-            "các acetat xenlulo",
-            "các dẫn xuất hóa học khác của xenlulo"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "polyme trùng hợp",
+                  "polyme trùng ngưng"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "nitrat xenlulo",
+                  "acetat xenlulo",
+                  "dẫn xuất hóa học khác của xenlulo"
+                ]
+              },
+              {
+                "fact": "daHoaDeo",
+                "op": "CO"
+              }
+            ]
           ]
-        },
-        {
-          "fact": "daHoaDeo",
-          "op": "CO"
         }
       ],
       "phanConLai": false
@@ -71,7 +85,7 @@
     {
       "ma": "39199092",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.39199092 \"Từ các polyme trùng hợp; từ các polyme trùng ngưng hoặc tái sắp xếp; từ nitrat xenlulo, các acetat xenlulo và các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo\" ⇒ tenLoai tách theo dấu liệt kê của chữ biểu (\";\" + \"hoặc\" + phẩy + \"và\") + daHoaDeo CO cho vế \"đã hóa dẻo\"."
+      "ghiChu": "tax.39199092 \"Từ các polyme trùng hợp; từ các polyme trùng ngưng hoặc tái sắp xếp; từ nitrat xenlulo, các acetat xenlulo và các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo\" ⇒ đồng bộ với 39191092: dấu \";\" tách 3 vế, \"đã hóa dẻo\" chỉ thuộc vế 3 (các dẫn xuất xenlulo) ⇒ HOAC [[tenLoai [\"polyme trùng hợp\", \"polyme trùng ngưng\"]], [tenLoai [\"nitrat xenlulo\", \"acetat xenlulo\", \"dẫn xuất hóa học khác của xenlulo\"], daHoaDeo CO]]."
     },
     {
       "ma": "39199092",

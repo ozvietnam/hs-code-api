@@ -1,14 +1,10 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "731210",
-  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-731210",
+  "phien": "pc-tho-hs-01:OZV-890#soan-731210",
   "dong8": {
     "73121010": {
       "dieuKienSo": [
-        {
-          "fact": "dangCuon",
-          "op": "CO"
-        },
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
@@ -51,11 +47,6 @@
     "73121091": {
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Dây thép bện tao"
-        },
-        {
           "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": "bê tông dự ứng lực"
@@ -68,7 +59,7 @@
     {
       "ma": "73121010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.73121010: \"Cuộn dây bện tao kiểu bọc, dây tao dẹt và dây cáp chống xoắn(1) (SEN)\" ⇒ dangCuon CO (\"Cuộn\" — cachDoc đọc \"cuộn dây\" nguyên văn đầu câu) + tenLoai [\"dây bện tao kiểu bọc\",\"dây tao dẹt\",\"dây cáp chống xoắn\"] (ba tên hàng nối phẩy và \"và\" ⇒ mảng); \"(1)\" là đánh dấu chú thích, \"(SEN)\" là dẫn nguồn"
+      "ghiChu": "tax.73121010: \"Cuộn dây bện tao kiểu bọc, dây tao dẹt và dây cáp chống xoắn(1) (SEN)\" / EN \"Locked coils, flattened strands and non-rotating wire ropes\" ⇒ tenLoai [\"dây bện tao kiểu bọc\",\"dây tao dẹt\",\"dây cáp chống xoắn\"] (\"locked coil\" là tên kiểu cáp bện kín, không phải điều kiện dạng cuộn); \"(1)\" là đánh dấu chú thích, \"(SEN)\" là dẫn nguồn"
     },
     {
       "ma": "73121020",
@@ -78,7 +69,7 @@
     {
       "ma": "73121091",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.73121091: \"Dây thép bện tao cho bê tông dự ứng lực\" ⇒ tenLoai \"Dây thép bện tao\" + dungCho \"bê tông dự ứng lực\" (vế \"cho bê tông dự ứng lực\")"
+      "ghiChu": "tax.73121091: \"Dây thép bện tao cho bê tông dự ứng lực\" ⇒ dungCho \"bê tông dự ứng lực\" (vế \"cho bê tông dự ứng lực\"; không khai tenLoai \"Dây thép bện tao\" vì mọi âm tiết đều lặp tiêu đề nhóm 7312/phân nhóm 731210 làm coCumPhanBiet=false)"
     },
     {
       "ma": "73121099",
