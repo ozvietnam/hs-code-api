@@ -510,6 +510,52 @@ check('trangThaiDong8.veMoHinh: 73181510 chấm trọn nhãn "Đường kính ng
   cd = chotDong8({ hs: '370690', productText: 'Phim điện ảnh đã phơi sáng và đã tráng, chỉ có duy nhất rãnh tiếng' });
   check('370690 khai RÕ "chỉ có duy nhất rãnh tiếng" (ngoài cụm tuỳ chọn) → vẫn chốt 37069040',
     cd.ketQua === 'CHOT' && cd.hs === '37069040', JSON.stringify([cd.ketQua, cd.hs, cd.lyDo]));
+
+  // ── OZV-972: Giữ tiêu đề trung gian "Loại khác, <vế riêng>" ở DONG_CO_TEN + coTenLoaiPhanBiet / coDieuKienPhanBietCungDong ──
+  cd = chotDong8({ hs: '902810', productText: 'Thiết bị đo khí: Thiết bị đo khí được lắp trên bình ga' });
+  check('OZV-972 90281010: TEN_LOAI lặp tên cha "Thiết bị đo khí" đi kèm TEN_LOAI phân biệt "lắp trên bình ga" → CHOT 90281010',
+    cd.ketQua === 'CHOT' && cd.hs === '90281010', JSON.stringify([cd.ketQua, cd.hs, cd.lyDo]));
+
+  cd = chotDong8({ hs: '902810', productText: 'Thiết bị đo khí' });
+  check('OZV-972 902810 rào ngược THIEU_DU_KIEN: chỉ có tên cha "Thiết bị đo khí" → KHÔNG tự chốt',
+    cd.ketQua !== 'CHOT' && cd.ketQua !== 'LOAI_KHAC', JSON.stringify([cd.ketQua, cd.hs, cd.lyDo]));
+
+  cd = chotDong8({
+    hs: '903289',
+    productText: 'Dụng cụ và thiết bị khác - Loại khác: Dụng cụ và thiết bị đi kèm hoặc hoạt động cùng với máy xử lý dữ liệu tự động, để điều chỉnh hoặc điều khiển tự động hệ thống đẩy, giữ thăng bằng hoặc xếp hàng hóa của tàu thuyền',
+  });
+  check('OZV-972 90328910: TEN_LOAI/CONG_DUNG lặp tên nhóm 9032 đi kèm CONG_DUNG phân biệt "tàu thuyền" → CHOT 90328910',
+    cd.ketQua === 'CHOT' && cd.hs === '90328910', JSON.stringify([cd.ketQua, cd.hs, cd.lyDo]));
+
+  cd = chotDong8({
+    hs: '903289',
+    productText: 'Dụng cụ và thiết bị khác - Loại khác: Dụng cụ và thiết bị tự động để điều chỉnh hoặc điều khiển dung dịch hóa chất hoặc điện hóa trong sản xuất tấm mạch in/tấm dây in hoặc mạch in đã lắp ráp',
+  });
+  check('OZV-972 90328920: TEN_LOAI/CONG_DUNG lặp tên nhóm 9032 đi kèm CONG_DUNG phân biệt "dung dịch hóa chất" → CHOT 90328920',
+    cd.ketQua === 'CHOT' && cd.hs === '90328920', JSON.stringify([cd.ketQua, cd.hs, cd.lyDo]));
+
+  cd = chotDong8({
+    hs: '903289',
+    productText: 'Dụng cụ và thiết bị khác - Loại khác: Loại khác, hoạt động bằng điện: Bộ điều chỉnh điện áp tự động (ổn áp)',
+  });
+  check('OZV-972 90328931: giữ tiêu đề trung gian "Loại khác, hoạt động bằng điện" → CHOT 90328931',
+    cd.ketQua === 'CHOT' && cd.hs === '90328931', JSON.stringify([cd.ketQua, cd.hs, cd.lyDo]));
+
+  cd = chotDong8({ hs: '903289', productText: 'Dụng cụ và thiết bị khác - Loại khác' });
+  check('OZV-972 903289 rào ngược THIEU_DU_KIEN: chỉ có "Dụng cụ và thiết bị khác - Loại khác" → KHÔNG tự chốt',
+    cd.ketQua !== 'CHOT' && cd.ketQua !== 'LOAI_KHAC', JSON.stringify([cd.ketQua, cd.hs, cd.lyDo]));
+
+  cd = chotDong8({
+    hs: '481320',
+    productText: 'Dạng tập hoặc ống có chiều rộng không quá 5 cm: Loại khác, không phủ: Giấy cuốn đầu lọc có độ xốp hơn 12 cm3 (min-1. cm-2) đo theo tiêu chuẩn ISO 2965, và có độ mờ lớn hơn 75%',
+  });
+  check('OZV-972 48132022: giữ tiêu đề trung gian "Loại khác, không phủ" + đọc op ">" cho "độ xốp hơn 12 cm3..." → CHOT 48132022 (không rơi 48132023)',
+    cd.ketQua === 'CHOT' && cd.hs === '48132022', JSON.stringify([cd.ketQua, cd.hs, cd.lyDo]));
+
+  const t0Redos = Date.now();
+  DK.danhGiaTuChu({ fact: 'doXop', op: '>', value: 12 }, `${'độ xốp hơn '.repeat(40000)}12 cm3 (min-1. cm-2)`, '48132022');
+  const dtRedos = Date.now() - t0Redos;
+  check('OZV-972 ReDoS: câu ~40.000 từ lặp chạy < 2 giây', dtRedos < 2000, `${dtRedos}ms`);
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);
