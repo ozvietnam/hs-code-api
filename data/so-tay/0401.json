@@ -220,19 +220,54 @@
     },
     {
       "hs": "04014010",
-      "dieuKien": "Sữa và kem, hàm lượng chất béo trên 6% nhưng không quá 10% (phân nhóm 0401.40) — sữa dạng lỏng",
+      "dieuKien": "ở dạng lỏng",
       "nguon": "tax.04014010",
       "trich": "04014010 - - Sữa dạng lỏng",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "dangLong",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude:tho-hs-02:20261115#soat-0101-0102-0207-0401",
+          "ngay": "2026-11-14",
+          "bam": "6ed2579ad3a7bdfdee45f9c1b8212bee70d4618c09608a592700b2f4158db85f"
+        }
+      }
     },
     {
       "hs": "04014020",
-      "dieuKien": "Sữa và kem, hàm lượng chất béo trên 6% nhưng không quá 10% (phân nhóm 0401.40) — sữa dạng đông lạnh",
+      "dieuKien": "không: ở dạng lỏng; phương pháp bảo quản / trạng thái bảo quản: đông lạnh",
       "nguon": "tax.04014020",
       "trich": "04014020 - - Sữa dạng đông lạnh",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "dangLong",
+          "op": "KHONG"
+        },
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "DONG_LANH"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude:tho-hs-02:20261115#soat-0101-0102-0207-0401",
+          "ngay": "2026-11-14",
+          "bam": "6ed2579ad3a7bdfdee45f9c1b8212bee70d4618c09608a592700b2f4158db85f"
+        }
+      }
     },
     {
       "hs": "04014090",
