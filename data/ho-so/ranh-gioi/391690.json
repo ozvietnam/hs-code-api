@@ -4,13 +4,18 @@
   "nhom": "3916",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
-    "phien": "mm:minimax-m3:20261105T1709#soan-391690",
-    "ngay": "2026-11-05"
+    "phien": "pc-tho-hs-01:OZV-891#soan-391690",
+    "ngay": "2026-11-14"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-soat:OZV-891#soat-1",
+    "ngay": "2026-11-14",
+    "bam": "af1d6fcbf9ca5d8f2e9cb3e034dcac587a648b995c993b564be064671b217296"
+  },
   "dieuKienNut": [
     {
       "id": "391690",
@@ -28,7 +33,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "3916901",
@@ -43,7 +48,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "3916902",
@@ -58,7 +63,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -73,7 +78,7 @@
           "value": "polypropylen"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39169012",
@@ -86,14 +91,14 @@
           "value": "polystyren"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39169019",
       "nguon": "tax.39169019",
       "trich": "39169019 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39169021",
@@ -109,7 +114,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39169022",
@@ -122,14 +127,14 @@
           "value": "polyamide"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39169029",
       "nguon": "tax.39169029",
       "trich": "39169029 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39169030",
@@ -137,23 +142,36 @@
       "trich": "39169030 - - Từ xenlulo tái sinh; từ xenlulo nitrat, xenlulo acetat và các este xenlulo, ete xenlulo và các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "xenlulo tái sinh",
-            "xenlulo nitrat",
-            "xenlulo acetat",
-            "este xenlulo",
-            "ete xenlulo",
-            "dẫn xuất hóa học khác của xenlulo"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "xenlulo tái sinh"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "xenlulo nitrat",
+                  "xenlulo acetat",
+                  "este xenlulo",
+                  "ete xenlulo",
+                  "dẫn xuất hóa học khác của xenlulo"
+                ]
+              },
+              {
+                "fact": "daHoaDeo",
+                "op": "CO"
+              }
+            ]
           ]
-        },
-        {
-          "fact": "daHoaDeo",
-          "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": false
     },
     {
@@ -167,7 +185,7 @@
           "value": "protein đã được làm cứng"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39169050",
@@ -180,7 +198,7 @@
           "value": "sợi lưu hóa"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39169060",
@@ -193,7 +211,7 @@
           "value": "dẫn xuất hóa học của cao su tự nhiên"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39169091",
@@ -206,7 +224,7 @@
           "value": "Sợi monofilament"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39169092",
@@ -223,7 +241,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "chongLanTruc": [
@@ -328,7 +346,7 @@
     {
       "ma": "39169030",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.39169030 \"Từ xenlulo tái sinh; từ xenlulo nitrat, xenlulo acetat và các este xenlulo, ete xenlulo và các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo\" ⇒ tenLoai mảng 6 loại vật liệu + daHoaDeo CO. phanConLai: false — chữ \"khác\" nằm TRONG cụm \"các dẫn xuất hóa học khác của xenlulo\" (khác với các dẫn xuất hóa học khác đã nêu), không trỏ anh em đứng trước (anh em của .30 là .11/.12/.19/.21/.22/.29 — khác loại vật liệu), nên .30 KHÔNG phải phần còn lại."
+      "ghiChu": "tax.39169030 \"Từ xenlulo tái sinh; từ xenlulo nitrat, xenlulo acetat và các este xenlulo, ete xenlulo và các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo\" ⇒ dấu \";\" tách hai vế, \"đã hóa dẻo\" chỉ thuộc vế 2 ⇒ HOAC [[tenLoai \"xenlulo tái sinh\"], [tenLoai [5 dẫn xuất xenlulo], daHoaDeo CO]]. phanConLai: false — chữ \"khác\" nằm TRONG cụm \"các dẫn xuất hóa học khác của xenlulo\" (khác với các dẫn xuất hóa học đã nêu), không trỏ anh em đứng trước."
     },
     {
       "ma": "39169092",
