@@ -237,6 +237,23 @@ ok('C3 dương: cảnh báo CÓ THẬT ở mã CŨ (nên "biến mất" là do t
 const MA_DUNG_CHAM = String(MA_DUNG).replace(/^(\d{4})(\d{2})(\d{2})$/, '$1.$2.$3'); // fmt8 (dấu chấm)
 ok('C4 dương: cảnh báo ở mã CŨ nói đúng mã đang được đôn lên vị trí 1', String(canhBaoCu?.noiDung || '').includes(MA_DUNG_CHAM));
 
+/** Rút toàn bộ mã HS 8 số (dạng có chấm 1234.56.78 hoặc liền 12345678) xuất hiện trong mảng `evidence`. */
+const ma8TrongEvidence = (ev) => {
+  const ds = Array.isArray(ev) ? ev : [];
+  const out = [];
+  for (const s of ds) {
+    for (const m of String(s || '').matchAll(/\b(\d{4})\.(\d{2})\.(\d{2})\b|\b(\d{8})\b/g)) {
+      out.push(m[4] || `${m[1]}${m[2]}${m[3]}`);
+    }
+  }
+  return [...new Set(out)];
+};
+ok(
+  'C5 âm: results[0].evidence của ca đôn mã CHỈ chứa đúng mã được đôn (không chứa mã cũ hay mã mồi nào khác)',
+  JSON.stringify(ma8TrongEvidence(rDung?.evidence)) === JSON.stringify([MA_DUNG])
+    && !(rDung?.evidence || []).some((s) => /mã máy chốt/i.test(String(s))),
+);
+
 // ── D. OZV-822: 3 CA TRƯỢT A1 (stt 4: 27101990, stt 6: 32064990, stt 18: 60064490) + CA ÂM ĐỐI CHỨNG (OZV-581) ───
 // D1 — Ca stt 18 (60064490, 4940/TB-TCHQ): hai tiền lệ trùng 10 từ mở đầu ("Vải dệt kim sợi ngang weft knitted...")
 // nhưng khác thành phần % sợi (59% visco / 37% polyester / 4% polyurethane vs 95,2% polyester / 4,8% polyurethane).
@@ -289,11 +306,26 @@ ok('C4 dương: cảnh báo ở mã CŨ nói đúng mã đang được đôn lê
     try { return await classifyLoop({ tenHang: ca18.cauKhach }, { mic: false }); } finally { llmTier.callLLMJson = orig; }
   })();
   ok('D1 engine (stt 18): classifyLoop đôn 60064490 lên vị trí 1, status = REVIEW', out18.status === 'REVIEW' && out18.results?.[0]?.hs === '60064490' && out18.results?.[0]?.xepHang === 'TIEN_LE_TB_TCHQ');
+  ok(
+    'D1 evidence (stt 18): results[0].evidence CHỈ chứa mã 60064490, KHÔNG chứa 60064290 hay mã mồi nào khác',
+    JSON.stringify(ma8TrongEvidence(out18.results?.[0]?.evidence)) === JSON.stringify(['60064490'])
+      && !(out18.results?.[0]?.evidence || []).some((s) => /mã máy chốt/i.test(String(s))),
+  );
 }
 
 // D2 — Ca stt 6 (32064990, 554/TB-TCHQ): Vòng 2 trả decision="HOI" + mã 6 số "760310" trong khi poolCodes có 32064990 trùng khít chắc chắn.
 {
   const ca6 = cases.find((c) => c.stt === 6);
+  // Kiểm trực tiếp đường vào tường minh "không có mã dẫn" (`topHs: null`) của `kiemTruocChot`:
+  const kcKhongTop = K.kiemTruocChot({ topHs: null, hang: { tenHang: ca6.cauKhach, moTa: ca6.cauKhach }, ungVien: ['32064990', '76031000', '76032020'] });
+  const dxKhongTop = kcKhongTop.deXuat.find((d) => d.hs === '32064990');
+  ok(
+    'D2 đường vào topHs: null: kiemTruocChot nhận diện 32064990 chacChan = true mà không cần mã mồi, canhBao rỗng, evidence chỉ chứa 32064990',
+    dxKhongTop?.chacChan === true
+      && kcKhongTop.canhBao.length === 0
+      && JSON.stringify(ma8TrongEvidence(dxKhongTop?.evidence)) === JSON.stringify(['32064990']),
+  );
+
   const chayCa6 = async (cau) => {
     const orig = llmTier.callLLMJson;
     llmTier.callLLMJson = async (sys, _user, opts = {}) => {
@@ -322,6 +354,11 @@ ok('C4 dương: cảnh báo ở mã CŨ nói đúng mã đang được đôn lê
   const out6Duong = await chayCa6(ca6.cauKhach);
   ok('D2 dương (stt 6): khi R2 dừng ở 6 số 760310 (HOI) nhưng có 32064990 (554/TB-TCHQ) trùng khít chắc chắn → đôn 32064990 lên vị trí 1', out6Duong.results?.[0]?.hs === '32064990' && out6Duong.results?.[0]?.xepHang === 'TIEN_LE_TB_TCHQ');
   ok('D2 dương (stt 6): status chuyển sang REVIEW (không còn NEED_FACTS làm B1b chạy đè)', out6Duong.status === 'REVIEW' && out6Duong.review?.needed === true);
+  ok(
+    'D2 evidence (stt 6): results[0].evidence CHỈ chứa mã 32064990, KHÔNG chứa mã mồi 01012100/97069000 hay mã nào khác',
+    JSON.stringify(ma8TrongEvidence(out6Duong.results?.[0]?.evidence)) === JSON.stringify(['32064990'])
+      && !(out6Duong.results?.[0]?.evidence || []).some((s) => /mã máy chốt|0101\.21\.00|9706\.90\.00/i.test(String(s))),
+  );
 
   // D2 âm đối chứng: bột nhôm nguyên chất dùng trong luyện kim (không phải chất màu vô cơ nhão của 554/TB-TCHQ) → giữ nguyên NEED_FACTS ở 760310
   const out6Am = await chayCa6('Bột nhôm nguyên chất 99,7% dùng trong luyện kim và hàn nhiệt nhôm, chưa rõ cấu trúc lớp hay không');
@@ -331,7 +368,7 @@ ok('C4 dương: cảnh báo ở mã CŨ nói đúng mã đang được đôn lê
 // D3 — Ca stt 4 (27101990, 4935/TB-TCHQ): Vòng 1 đã khoanh đúng nhóm 2710 (codes8: 27101980, 27101990), nhưng Vòng 2 & 3 trả hs="" (MA_KHONG_TON_TAI).
 {
   const ca4 = cases.find((c) => c.stt === 4);
-  const chayCa4 = async (cau) => {
+  const chayCa4 = async (cau, hsR2 = '') => {
     const orig = llmTier.callLLMJson;
     llmTier.callLLMJson = async (sys, _user, opts = {}) => {
       if (opts.step === 'understand' || String(sys || '').startsWith('VÒNG 1')) {
@@ -345,29 +382,45 @@ ok('C4 dương: cảnh báo ở mã CŨ nói đúng mã đang được đôn lê
         };
       }
       return {
-        json: { decision: '', hs: '', confidence: 0, reason: '', gir: '', basis: [], conditions: [], alternatives: [], questions: [] },
+        json: { decision: hsR2 ? 'CHOT' : '', hs: hsR2, confidence: hsR2 ? 80 : 0, reason: '', gir: '', basis: [], conditions: [], alternatives: [], questions: [] },
         provider: 'stub-822', model: 'stub-822',
       };
     };
-    try { return await classifyLoop({ tenHang: cau }, { mic: false }); } finally { llmTier.callLLMJson = orig; }
+    try { return await classifyLoop({ tenHang: cau }, { mic: false, debug: true }); } finally { llmTier.callLLMJson = orig; }
   };
 
   const out4Duong = await chayCa4(ca4.cauKhach);
   ok('D3 dương (stt 4): khi R2/R3 trả hs="" nhưng nhóm 2710 đã ở Vòng 1 và 27101990 (4935/TB-TCHQ) trùng khít chắc chắn → đôn 27101990 lên vị trí 1', out4Duong.results?.[0]?.hs === '27101990' && out4Duong.results?.[0]?.xepHang === 'TIEN_LE_TB_TCHQ');
   ok('D3 dương (stt 4): status = REVIEW và review.needed = true (không còn NEEDS_EXPERT / LLM_REJECTED rỗng)', out4Duong.status === 'REVIEW' && out4Duong.review?.needed === true);
+  ok(
+    'D3 evidence (stt 4): results[0].evidence CHỈ chứa mã 27101990, KHÔNG chứa mã mồi 01012100/97069000 hay mã nào khác',
+    JSON.stringify(ma8TrongEvidence(out4Duong.results?.[0]?.evidence)) === JSON.stringify(['27101990'])
+      && !(out4Duong.results?.[0]?.evidence || []).some((s) => /mã máy chốt|0101\.21\.00|9706\.90\.00/i.test(String(s))),
+  );
 
-  // D3 âm đối chứng: mô tả dầu bôi trơn tổng hợp PAO hàng không (không khớp trùng khít 4935/TB-TCHQ) khi R2/R3 trả hs="" → giữ nguyên NEEDS_EXPERT (LLM_REJECTED), results rỗng
+  // D3 âm đối chứng 1: mô tả dầu bôi trơn tổng hợp PAO hàng không (không khớp trùng khít 4935/TB-TCHQ) khi R2/R3 trả hs="" → giữ nguyên NEEDS_EXPERT (LLM_REJECTED), results rỗng
   const out4Am = await chayCa4('Dầu bôi trơn hộp số tổng hợp 100% PAO dùng cho động cơ tua-bin hàng không dân dụng');
-  ok('D3 âm đối chứng: mô tả không khớp trùng khít tiền lệ khi R2 trả hs="" → giữ nguyên NEEDS_EXPERT và results rỗng', out4Am.status === 'NEEDS_EXPERT' && (out4Am.results || []).length === 0);
+  ok('D3 âm đối chứng 1: mô tả không khớp trùng khít tiền lệ khi R2 trả hs="" → giữ nguyên NEEDS_EXPERT và results rỗng', out4Am.status === 'NEEDS_EXPERT' && (out4Am.results || []).length === 0);
+
+  // D3 âm đối chứng 2 (cổng cứng MA_KHONG_TON_TAI): khi R2 bịa mã 8 số không tồn tại trong biểu thuế ("27101999") → KHÔNG đôn tiền lệ đè cổng cứng, giữ cảnh báo chặn MA_KHONG_TON_TAI trong missing và log
+  const out4MaBia = await chayCa4(ca4.cauKhach, '27101999');
+  ok(
+    'D3 âm đối chứng 2: khi R2 bịa mã 8 số không tồn tại (27101999) → cổng cứng MA_KHONG_TON_TAI giữ nguyên, KHÔNG đôn 27101990',
+    out4MaBia.results?.[0]?.hs !== '27101990'
+      && !(out4MaBia.results || []).some((r) => r.xepHang === 'TIEN_LE_TB_TCHQ')
+      && (out4MaBia.missing || []).some((m) => /Mã 27101999 không có trong biểu thuế/.test(String(m)))
+      && (out4MaBia.engine?.log || []).some((x) => Array.isArray(x.blocks) && x.blocks.includes('MA_KHONG_TON_TAI')),
+  );
 }
 
 // D4 — tyLePhanTram & chống ReDoS ~40.000 từ lặp < 2 giây (Quy tắc 6b)
 {
   const { tyLePhanTram, doGiongTenHang } = require('../lib/giong-ten-hang.js');
-  ok('D4 dương: tyLePhanTram lấy đúng tỷ lệ thành phần ("59%", "95,2%") và bỏ "hàng mới 100%" / "new 100%"', JSON.stringify(tyLePhanTram('Vải 59% visco, 95.2% polyester, hàng mới 100%, new 100%')) === JSON.stringify(['59%', '95,2%']));
+  const kqMau = typeof tyLePhanTram === 'function' ? tyLePhanTram('Vải 59% visco, 95.2% polyester, hàng mới 100%, new 100%') : null;
+  ok('D4 dương: tyLePhanTram lấy đúng tỷ lệ thành phần ("59%", "95,2%") và bỏ "hàng mới 100%" / "new 100%"', JSON.stringify(kqMau) === JSON.stringify(['59%', '95,2%']));
   const chuoiDai = Array.from({ length: 40000 }, (_, i) => (i % 7 === 0 ? '95,2%' : 'hàng')).join(' ');
   const t0 = Date.now();
-  const kqTyLe = tyLePhanTram(chuoiDai);
+  const kqTyLe = typeof tyLePhanTram === 'function' ? tyLePhanTram(chuoiDai) : [];
   const kqGiong = doGiongTenHang({ tenHang: 'Vải dệt kim sợi ngang', moTa: chuoiDai }, 'Vải dệt kim sợi ngang 95,2% polyester');
   const elapsed = Date.now() - t0;
   ok(`D4 ReDoS: 40.000 từ lặp chạy trong ${elapsed}ms (< 2000ms)`, elapsed < 2000 && Array.isArray(kqTyLe) && typeof kqGiong.diem === 'number');
