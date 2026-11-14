@@ -64,6 +64,13 @@ check('đã chọn dòng cụ thể → không nghi', !gatesOf(r).some((g) => g.
 
 // ── #195 CHỐT DÒNG 8 SỐ (dieuKienSo đã ốp vào data/so-tay) ──
 check('đọc số quy đổi: mm → cm, DN25 → 2.5cm, kích thước bao không lọt', JSON.stringify(giaTriCua('duong_kinh', 'đường kính 30 mm')) === '[3]' && JSON.stringify(giaTriCua('duong_kinh', 'van DN25')) === '[2.5]' && giaTriCua('duong_kinh', 'thùng 10 x 20 cm').length === 0);
+// OZV-920: chiều dày / kvar / cửa sổ ngữ cảnh 50 ký tự (định ngữ biểu thuế dài)
+check('OZV-920 be_day: "Chiều dày từ 4,75 mm" (72082500) → 0.475 cm', Math.abs(giaTriCua('be_day', 'Chiều dày từ 4,75 mm trở lên')[0] - 0.475) < 1e-9);
+check('OZV-920 cong_suat kvar: "0,5 kvar" (85321000) → 500 W', JSON.stringify(giaTriCua('cong_suat', 'có giới hạn công suất phản kháng cho phép không dưới 0,5 kvar (tụ nguồn)')) === '[500]');
+check('OZV-920 duong_kinh cửa sổ 50: "Đường kính ngoài của thân không quá 16 mm" (73181210) → 1.6 cm', JSON.stringify(giaTriCua('duong_kinh', 'Đường kính ngoài của thân không quá 16 mm')) === '[1.6]');
+check('OZV-920 ngưỡng hai đầu tên dòng 84811011 không đọc thành số đo', giaTriCua('duong_kinh', 'Van cổng điều khiển bằng tay có đường kính trong cửa nạp hoặc cửa thoát trên 5 cm nhưng không quá 40 cm').length === 0);
+check('OZV-920 hàng thật cửa sổ 50: "đường kính trong cửa nạp 8 cm" → 8', JSON.stringify(giaTriCua('duong_kinh', 'Van cổng điều khiển bằng tay có đường kính trong cửa nạp hoặc cửa thoát 8 cm')) === '[8]');
+check('OZV-920 chống khớp nhầm qua ; khi cửa sổ >30: không lấy 200 mm làm đường kính', giaTriCua('duong_kinh', 'có đường kính trong cửa nạp hoặc cửa thoát; dài 200 mm').length === 0);
 let cd = chotDong8({ hs: '40092190', productText: 'ống cao su có lắp phụ kiện cứng, đường kính 20 cm, độ dày thành ống 2 cm' });
 check('4009.21: 20cm + 2cm → CHOT 40092110 kèm trích nguồn', cd.ketQua === 'CHOT' && cd.hs === '40092110' && cd.traNguon?.[0]?.nguon === 'sen.40092110', JSON.stringify(cd.ketQua));
 cd = chotDong8({ hs: '40092110', productText: 'ống cao su có phụ kiện, đường kính 12 mm' });
