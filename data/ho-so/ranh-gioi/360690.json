@@ -4,13 +4,18 @@
   "nhom": "3606",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
-    "phien": "mm:minimax-m3:202611051900#soan-360690",
-    "ngay": "2026-11-05"
+    "phien": "pc-tho-hs-01:OZV-856#soan-360690",
+    "ngay": "2026-11-14"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-soat:OZV-856#soat-1",
+    "ngay": "2026-11-14",
+    "bam": "ff37ebd83d159f508e98f0058e4e9fe7e4ed2be1f0410f8e9d4406ef648389fc"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -19,17 +24,44 @@
       "trich": "36069010 - - Nhiên liệu rắn hoặc bán rắn, cồn rắn và các nhiên liệu được điều chế tương tự ",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "Nhiên liệu rắn",
-            "bán rắn",
-            "cồn rắn",
-            "các nhiên liệu được điều chế"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "Nhiên liệu rắn",
+                  "cồn rắn"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Nhiên liệu"
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "bán rắn"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TUONG_TU",
+                "value": [
+                  "Nhiên liệu rắn",
+                  "cồn rắn"
+                ]
+              }
+            ]
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "36069020",
@@ -42,12 +74,12 @@
           "value": "Đá lửa"
         },
         {
-          "fact": "congDung",
+          "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": "bật lửa"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "36069030",
@@ -59,27 +91,22 @@
           "op": "TEN_LOAI",
           "value": [
             "Hợp kim xeri-sắt",
-            "các hợp kim tự cháy khác ở tất cả các dạng"
+            "các hợp kim tự cháy"
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "phanConLai": false
     },
     {
       "hs": "36069090",
       "nguon": "tax.36069090",
       "trich": "36069090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
-  "ghiChuSoan": [
-    {
-      "ma": "36069010",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.36069010 \"Nhiên liệu rắn hoặc bán rắn, cồn rắn và các nhiên liệu được điều chế tương tự\" ⇒ tenLoai mảng 4 phương án nguyên văn (tách \"hoặc\"/\"và\" để không gói một liệt kê trong một chuỗi); phương án thứ tư lấy \"các nhiên liệu được điều chế\" (bỏ chữ \"tương tự\" vì giá trị chữ tự do chứa \"tương tự\" là giá trị CHẾT theo vòng 7 — không khai được; vế \"được điều chế tương tự\" vẫn được phủ vì neo nằm trong đoạn đó). .20 \"Đá lửa dùng cho bật lửa\" ⇒ tenLoai \"Đá lửa\" + congDung \"bật lửa\". .30 \"Hợp kim xeri-sắt và các hợp kim tự cháy khác ở tất cả các dạng\" ⇒ tenLoai mảng 2 phương án nguyên văn. Dòng .90 là \"Loại khác\" trần ⇒ không ghi điều kiện. Chữ \"khác\" trong .30 là \"các hợp kim tự cháy khác\" (khác loại xeri-sắt), KHÔNG phải phần còn lại ⇒ không khai phanConLai."
-    }
-  ],
+  "ghiChuSoan": [],
   "traVe": [
     {
       "phien": "claude-agent:duyet-L10-20261111#soat-L10",

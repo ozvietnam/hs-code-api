@@ -1,18 +1,45 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "360690",
-  "phien": "mm:minimax-m3:202611051900#soan-360690",
+  "phien": "pc-tho-hs-01:OZV-856#soan-360690",
   "dong8": {
     "36069010": {
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "Nhiên liệu rắn",
-            "bán rắn",
-            "cồn rắn",
-            "các nhiên liệu được điều chế"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "Nhiên liệu rắn",
+                  "cồn rắn"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Nhiên liệu"
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "bán rắn"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TUONG_TU",
+                "value": [
+                  "Nhiên liệu rắn",
+                  "cồn rắn"
+                ]
+              }
+            ]
           ]
         }
       ]
@@ -25,7 +52,7 @@
           "value": "Đá lửa"
         },
         {
-          "fact": "congDung",
+          "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": "bật lửa"
         }
@@ -38,17 +65,11 @@
           "op": "TEN_LOAI",
           "value": [
             "Hợp kim xeri-sắt",
-            "các hợp kim tự cháy khác ở tất cả các dạng"
+            "các hợp kim tự cháy"
           ]
         }
-      ]
+      ],
+      "phanConLai": false
     }
-  },
-  "ghiChuSoan": [
-    {
-      "ma": "36069010",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.36069010 \"Nhiên liệu rắn hoặc bán rắn, cồn rắn và các nhiên liệu được điều chế tương tự\" ⇒ tenLoai mảng 4 phương án nguyên văn (tách \"hoặc\"/\"và\" để không gói một liệt kê trong một chuỗi); phương án thứ tư lấy \"các nhiên liệu được điều chế\" (bỏ chữ \"tương tự\" vì giá trị chữ tự do chứa \"tương tự\" là giá trị CHẾT theo vòng 7 — không khai được; vế \"được điều chế tương tự\" vẫn được phủ vì neo nằm trong đoạn đó). .20 \"Đá lửa dùng cho bật lửa\" ⇒ tenLoai \"Đá lửa\" + congDung \"bật lửa\". .30 \"Hợp kim xeri-sắt và các hợp kim tự cháy khác ở tất cả các dạng\" ⇒ tenLoai mảng 2 phương án nguyên văn. Dòng .90 là \"Loại khác\" trần ⇒ không ghi điều kiện. Chữ \"khác\" trong .30 là \"các hợp kim tự cháy khác\" (khác loại xeri-sắt), KHÔNG phải phần còn lại ⇒ không khai phanConLai."
-    }
-  ]
+  }
 }

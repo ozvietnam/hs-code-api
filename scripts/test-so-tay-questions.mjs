@@ -95,7 +95,7 @@ assert('#411 câu cổng sổ tay: loai CONG + askStaff + required:false + khôn
 
 // (d) tacDongThue cho câu DONG_BIEU = chênh MFN giữa các dòng 8 số cùng phân nhóm 6 mà câu quyết định (chỉ tính, không xếp lại).
 r = await call({ hs: '70189010' }); // 7018.90: 70189010 (đường kính ≥ 4 mm, MFN 0 %) ↔ 70189090 Loại khác (30 %)
-const dk7018 = (r._j.questions || []).find((q) => q.key === 'duong_kinh');
+const dk7018 = (r._j.questions || []).find((q) => q.key === 'duong_kinh' || q.key === 'duongKinh');
 assert('#411(d) 70189010: duong_kinh DONG_BIEU, tacDongThue {mfnMin 0, mfnMax 30, chenh 30, acftaKhac false, dong 2 dòng}', Boolean(dk7018) && dk7018.loai === 'DONG_BIEU' && JSON.stringify(dk7018.tacDongThue) === JSON.stringify({ mfnMin: 0, mfnMax: 30, chenh: 30, acftaKhac: false, dong: ['70189010', '70189090'] }), dk7018);
 
 // #OZV-723 (13/11/2026): CÙNG câu hỏi khi sổ tay viết điều kiện bằng khoá MỚI `duongKinh` (tu-vung@2).
