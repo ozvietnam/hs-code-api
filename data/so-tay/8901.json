@@ -443,83 +443,279 @@
     },
     {
       "hs": "89019011",
-      "dieuKien": "Tổng dung tích (gross tonnage) không quá 26 ",
+      "dieuKien": "tổng dung tích tàu thuyền (gross tonnage - GT) <= 26 GT",
       "loaiKhac": false,
       "nguon": "tax.89019011",
       "trich": "89019011 - - - Tổng dung tích (gross tonnage) không quá 26 ",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": "<=",
+          "value": 26,
+          "donVi": "GT"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude:tho-hs-02:20261114#soat-890190",
+          "ngay": "2026-11-14",
+          "bam": "5310ce9ad0c8545b742e59469741fa0ed62147b6327f5158498b0bdbd0c9c1da"
+        }
+      }
     },
     {
       "hs": "89019012",
-      "dieuKien": "Tổng dung tích (gross tonnage) trên 26 nhưng không quá 500 ",
+      "dieuKien": "tổng dung tích tàu thuyền (gross tonnage - GT) > 26 GT; tổng dung tích tàu thuyền (gross tonnage - GT) <= 500 GT",
       "loaiKhac": false,
       "nguon": "tax.89019012",
       "trich": "89019012 - - - Tổng dung tích (gross tonnage) trên 26 nhưng không quá 500 ",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": ">",
+          "value": 26,
+          "donVi": "GT"
+        },
+        {
+          "fact": "tongDungTichTau",
+          "op": "<=",
+          "value": 500,
+          "donVi": "GT"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude:tho-hs-02:20261114#soat-890190",
+          "ngay": "2026-11-14",
+          "bam": "5310ce9ad0c8545b742e59469741fa0ed62147b6327f5158498b0bdbd0c9c1da"
+        }
+      }
     },
     {
       "hs": "89019014",
-      "dieuKien": "Tổng dung tích (gross tonnage) trên 500",
+      "dieuKien": "tổng dung tích tàu thuyền (gross tonnage - GT) > 500 GT",
       "loaiKhac": false,
       "nguon": "tax.89019014",
       "trich": "89019014 - - - Tổng dung tích (gross tonnage) trên 500",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": ">",
+          "value": 500,
+          "donVi": "GT"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude:tho-hs-02:20261114#soat-890190",
+          "ngay": "2026-11-14",
+          "bam": "5310ce9ad0c8545b742e59469741fa0ed62147b6327f5158498b0bdbd0c9c1da"
+        }
+      }
     },
     {
       "hs": "89019031",
-      "dieuKien": "Tổng dung tích (gross tonnage) không quá 26 ",
+      "dieuKien": "tổng dung tích tàu thuyền (gross tonnage - GT) <= 26 GT",
       "loaiKhac": false,
       "nguon": "tax.89019031",
       "trich": "89019031 - - - Tổng dung tích (gross tonnage) không quá 26 ",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": "<=",
+          "value": 26,
+          "donVi": "GT"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude:tho-hs-02:20261114#soat-890190",
+          "ngay": "2026-11-14",
+          "bam": "5310ce9ad0c8545b742e59469741fa0ed62147b6327f5158498b0bdbd0c9c1da"
+        }
+      }
     },
     {
       "hs": "89019032",
-      "dieuKien": "Tổng dung tích (gross tonnage) trên 26 nhưng không quá 500 ",
+      "dieuKien": "tổng dung tích tàu thuyền (gross tonnage - GT) > 26 GT; tổng dung tích tàu thuyền (gross tonnage - GT) <= 500 GT",
       "loaiKhac": false,
       "nguon": "tax.89019032",
       "trich": "89019032 - - - Tổng dung tích (gross tonnage) trên 26 nhưng không quá 500 ",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": ">",
+          "value": 26,
+          "donVi": "GT"
+        },
+        {
+          "fact": "tongDungTichTau",
+          "op": "<=",
+          "value": 500,
+          "donVi": "GT"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude:tho-hs-02:20261114#soat-890190",
+          "ngay": "2026-11-14",
+          "bam": "5310ce9ad0c8545b742e59469741fa0ed62147b6327f5158498b0bdbd0c9c1da"
+        }
+      }
     },
     {
       "hs": "89019033",
-      "dieuKien": "Tổng dung tích (gross tonnage) trên 500 nhưng không quá 1.000 ",
+      "dieuKien": "tổng dung tích tàu thuyền (gross tonnage - GT) > 500 GT; tổng dung tích tàu thuyền (gross tonnage - GT) <= 1000 GT",
       "loaiKhac": false,
       "nguon": "tax.89019033",
       "trich": "89019033 - - - Tổng dung tích (gross tonnage) trên 500 nhưng không quá 1.000 ",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": ">",
+          "value": 500,
+          "donVi": "GT"
+        },
+        {
+          "fact": "tongDungTichTau",
+          "op": "<=",
+          "value": 1000,
+          "donVi": "GT"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude:tho-hs-02:20261114#soat-890190",
+          "ngay": "2026-11-14",
+          "bam": "5310ce9ad0c8545b742e59469741fa0ed62147b6327f5158498b0bdbd0c9c1da"
+        }
+      }
     },
     {
       "hs": "89019034",
-      "dieuKien": "Tổng dung tích (gross tonnage) trên 1.000 nhưng không quá 4.000 ",
+      "dieuKien": "tổng dung tích tàu thuyền (gross tonnage - GT) > 1000 GT; tổng dung tích tàu thuyền (gross tonnage - GT) <= 4000 GT",
       "loaiKhac": false,
       "nguon": "tax.89019034",
       "trich": "89019034 - - - Tổng dung tích (gross tonnage) trên 1.000 nhưng không quá 4.000 ",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": ">",
+          "value": 1000,
+          "donVi": "GT"
+        },
+        {
+          "fact": "tongDungTichTau",
+          "op": "<=",
+          "value": 4000,
+          "donVi": "GT"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude:tho-hs-02:20261114#soat-890190",
+          "ngay": "2026-11-14",
+          "bam": "5310ce9ad0c8545b742e59469741fa0ed62147b6327f5158498b0bdbd0c9c1da"
+        }
+      }
     },
     {
       "hs": "89019035",
-      "dieuKien": "Tổng dung tích (gross tonnage) trên 4.000 nhưng không quá 5.000",
+      "dieuKien": "tổng dung tích tàu thuyền (gross tonnage - GT) > 4000 GT; tổng dung tích tàu thuyền (gross tonnage - GT) <= 5000 GT",
       "loaiKhac": false,
       "nguon": "tax.89019035",
       "trich": "89019035 - - - Tổng dung tích (gross tonnage) trên 4.000 nhưng không quá 5.000",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": ">",
+          "value": 4000,
+          "donVi": "GT"
+        },
+        {
+          "fact": "tongDungTichTau",
+          "op": "<=",
+          "value": 5000,
+          "donVi": "GT"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude:tho-hs-02:20261114#soat-890190",
+          "ngay": "2026-11-14",
+          "bam": "5310ce9ad0c8545b742e59469741fa0ed62147b6327f5158498b0bdbd0c9c1da"
+        }
+      }
     },
     {
       "hs": "89019036",
-      "dieuKien": "Tổng dung tích (gross tonnage) trên 5.000 nhưng không quá 50.000",
+      "dieuKien": "tổng dung tích tàu thuyền (gross tonnage - GT) > 5000 GT; tổng dung tích tàu thuyền (gross tonnage - GT) <= 50000 GT",
       "loaiKhac": false,
       "nguon": "tax.89019036",
       "trich": "89019036 - - - Tổng dung tích (gross tonnage) trên 5.000 nhưng không quá 50.000",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": ">",
+          "value": 5000,
+          "donVi": "GT"
+        },
+        {
+          "fact": "tongDungTichTau",
+          "op": "<=",
+          "value": 50000,
+          "donVi": "GT"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude:tho-hs-02:20261114#soat-890190",
+          "ngay": "2026-11-14",
+          "bam": "5310ce9ad0c8545b742e59469741fa0ed62147b6327f5158498b0bdbd0c9c1da"
+        }
+      }
     },
     {
       "hs": "89019037",
-      "dieuKien": "Tổng dung tích (gross tonnage) trên 50.000",
+      "dieuKien": "tổng dung tích tàu thuyền (gross tonnage - GT) > 50000 GT",
       "loaiKhac": false,
       "nguon": "tax.89019037",
       "trich": "89019037 - - - Tổng dung tích (gross tonnage) trên 50.000",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": ">",
+          "value": 50000,
+          "donVi": "GT"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude:tho-hs-02:20261114#soat-890190",
+          "ngay": "2026-11-14",
+          "bam": "5310ce9ad0c8545b742e59469741fa0ed62147b6327f5158498b0bdbd0c9c1da"
+        }
+      }
     }
   ],
   "cay": {
@@ -851,6 +1047,46 @@
           "phien": "claude-agent:duyet-L31-20261111#soat-L31",
           "ngay": "2026-11-11",
           "bam": "388e7395f3e49b70ae76b19e63fed1504faa3c4c255ae728c550b0fc7403637b"
+        }
+      }
+    },
+    {
+      "id": "8901901",
+      "nguon": "tieuDe.8901901",
+      "trich": "8901901 Không có động cơ đẩy",
+      "dieuKienSo": [
+        {
+          "fact": "coDongCoDay",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude:tho-hs-02:20261114#soat-890190",
+          "ngay": "2026-11-14",
+          "bam": "5310ce9ad0c8545b742e59469741fa0ed62147b6327f5158498b0bdbd0c9c1da"
+        }
+      }
+    },
+    {
+      "id": "8901903",
+      "nguon": "tieuDe.8901903",
+      "trich": "8901903 Có động cơ đẩy",
+      "dieuKienSo": [
+        {
+          "fact": "coDongCoDay",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude:tho-hs-02:20261114#soat-890190",
+          "ngay": "2026-11-14",
+          "bam": "5310ce9ad0c8545b742e59469741fa0ed62147b6327f5158498b0bdbd0c9c1da"
         }
       }
     }
