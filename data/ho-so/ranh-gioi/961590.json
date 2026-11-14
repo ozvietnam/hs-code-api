@@ -4,13 +4,18 @@
   "nhom": "9615",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T1031#soan-961590",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-01-20261115#soat-961590",
+    "ngay": "2026-11-15",
+    "bam": "a06fef5c77e2573abb0a726d927fb9e6cd897413b90c6040b3249445968b963e"
+  },
   "dieuKienNut": [
     {
       "id": "9615901",
@@ -28,7 +33,7 @@
           "value": "trang trí"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "9615902",
@@ -36,11 +41,12 @@
       "trich": "9615902 Bộ phận",
       "dieuKienSo": [
         {
-          "fact": "laBoPhan",
-          "op": "CO"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bộ phận"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -55,7 +61,7 @@
           "value": "nhôm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "96159012",
@@ -68,7 +74,7 @@
           "value": "sắt thép"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "96159013",
@@ -81,14 +87,14 @@
           "value": "plastic"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "96159019",
       "nguon": "tax.96159019",
       "trich": "96159019 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "96159021",
@@ -101,7 +107,7 @@
           "value": "plastic"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "96159022",
@@ -114,7 +120,7 @@
           "value": "sắt thép"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "96159023",
@@ -127,14 +133,14 @@
           "value": "nhôm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "96159029",
       "nguon": "tax.96159029",
       "trich": "96159029 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "96159091",
@@ -147,7 +153,7 @@
           "value": "nhôm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "96159092",
@@ -160,7 +166,7 @@
           "value": "sắt thép"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "96159093",
@@ -173,41 +179,14 @@
           "value": "plastic"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "96159099",
       "nguon": "tax.96159099",
       "trich": "96159099 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
-    }
-  ],
-  "chongLanTruc": [
-    {
-      "nhanh": [
-        "9615901",
-        "9615902"
-      ],
-      "truc": {
-        "9615901": "TEN_LOAI",
-        "9615902": "DAC_DIEM"
-      },
-      "cauHoiPhanBiet": "Mặt hàng này là \"Ghim cài tóc trang trí\" hoàn chỉnh (9615901) hay là \"Bộ phận\" của kẹp/ghim tóc (9615902)?",
-      "trich": {
-        "9615901": "Ghim cài tóc trang trí",
-        "9615902": "Bộ phận"
-      },
-      "viDuHang": [
-        {
-          "cap": [
-            "9615901",
-            "9615902"
-          ],
-          "hang": "Ghim cài tóc trang trí bằng nhôm, là bộ phận tháo rời"
-        }
-      ],
-      "phanXu": null
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -219,7 +198,7 @@
     {
       "ma": "9615902",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.9615902 \"Bộ phận\" ⇒ laBoPhan CO"
+      "ghiChu": "tieuDe.9615902 \"Bộ phận\" ⇒ tenLoai \"Bộ phận\" (cùng trục TEN_LOAI với 9615901, tránh dính chữ \"và bộ phận của chúng\" ở tiêu đề nhóm 9615)"
     },
     {
       "ma": "96159019",

@@ -4,13 +4,18 @@
   "nhom": "9005",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-900590",
     "ngay": "2026-11-04"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-01-20261115#soat-900590",
+    "ngay": "2026-11-15",
+    "bam": "baba4c4f3a2a470febf09e1835f37288f8dd2044100e7e166483b5a537c124fe"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -21,17 +26,23 @@
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
-          "value": "dụng cụ thiên văn"
+          "value": "Dùng cho dụng cụ thiên văn"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "chieu": "PHAI_KHONG",
+          "value": "dụng cụ thiên văn vô tuyến"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "90059090",
       "nguon": "tax.90059090",
       "trich": "90059090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -39,18 +50,6 @@
       "ma": "90059010",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.90059010: \"Dùng cho dụng cụ thiên văn, trừ dụng cụ thiên văn vô tuyến\" ⇒ dungCho \"dụng cụ thiên văn\""
-    },
-    {
-      "ma": "90059010",
-      "loai": "BO_VE",
-      "ve": "Dùng cho dụng cụ thiên văn",
-      "lyDo": "Đã được lượng hóa qua dungCho dụng cụ thiên văn"
-    },
-    {
-      "ma": "90059010",
-      "loai": "BO_VE",
-      "ve": "trừ dụng cụ thiên văn vô tuyến",
-      "lyDo": "Vế loại trừ đối tượng thuộc chương 85"
     }
   ]
 }
