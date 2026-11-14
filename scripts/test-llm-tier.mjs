@@ -81,6 +81,19 @@ reset();
 r = await callLLMJson('sys', 'user');
 check('MiniMax 500 → không thử model khác', calls.filter((c) => c.startsWith('minimax')).length === 1, JSON.stringify(calls));
 check('MiniMax sập → Gemini miễn phí dự phòng', r.provider === 'gemini-free' && r.json.who === 'free-ok', JSON.stringify(calls));
+// OZV-826: tầng dự phòng thắng vẫn phải lộ lỗi chuỗi chính (trước đây chìm → không quan sát được từ debug:true).
+check('OZV-826: MiniMax lỗi → gemini-free thắng kèm loiChuoiChinh (All providers failed / minimax)', typeof r.loiChuoiChinh === 'string' && /All providers failed|minimax/i.test(r.loiChuoiChinh), String(r.loiChuoiChinh || ''));
+check('OZV-826: MiniMax lỗi → không bịa boQua (lỗi thật sự gọi, không phải bỏ qua)', !Array.isArray(r.boQua) || r.boQua.length === 0, JSON.stringify(r.boQua));
+minimaxMode = 'ok';
+reset();
+r = await callLLMJson('sys', 'user');
+check('OZV-826: MiniMax ok → không kèm loiChuoiChinh/boQua (shape cũ)', r.provider === 'minimax' && r.loiChuoiChinh == null && r.boQua == null, JSON.stringify({ p: r.provider, loi: r.loiChuoiChinh, boQua: r.boQua }));
+// Hết hạn chót trước chuỗi chính → bỏ qua MiniMax, Gemini miễn phí thắng + boQua quan sát được.
+minimaxMode = 'ok';
+reset();
+r = await callLLMJson('sys', 'user', { timeoutMs: 500, hanChotMs: Date.now() + 60_000 });
+check('OZV-826: hetHan chuỗi chính → gemini-free + boQua có "chuỗi chính"', r.provider === 'gemini-free' && Array.isArray(r.boQua) && r.boQua.some((s) => /chuỗi chính/.test(s)) && !calls.some((c) => c.startsWith('minimax')), JSON.stringify({ p: r.provider, boQua: r.boQua, calls }));
+minimaxMode = 'down'; // trả lại trạng thái test 3 — các ca xoay khoá miễn phí bên dưới cần chuỗi chính lỗi
 
 // 4. Khóa miễn phí hết lượt ngày → xoay khóa, khóa đó nghỉ tới nửa đêm giờ Thái Bình Dương
 process.env.GEMINI_FREE_KEYS = 'free-day,free-ok';

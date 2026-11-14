@@ -184,6 +184,19 @@ check('health không in khoá', !JSON.stringify(body).includes('"mm"') && !JSON.
   script = [R1, R2];
   out = await classify(attrs, { debug: true });
   check('debug → engine.log là mảng + engine.llm.timeoutMs theo bước', Array.isArray(out.engine?.log) && out.engine.llm && Number.isFinite(out.engine.llm.timeoutMs?.understand) && Number.isFinite(out.engine.llm.timeoutMs?.gir) && Array.isArray(out.engine.llm.ngatMach), JSON.stringify(out.engine?.llm));
+  // OZV-826: stub không lỗi chuỗi chính → debug.llm không bịa boQua/loiChuoiChinh (chỉ có khi thật sự bỏ qua/lỗi).
+  check('OZV-826: stub ok → debug.llm không có boQua/loiChuoiChinh', out.engine?.llm && !('boQua' in out.engine.llm) && !('loiChuoiChinh' in out.engine.llm), JSON.stringify(out.engine?.llm));
+  script = [R1, R2];
+  let lan = 0;
+  llmTier.callLLMJson = async () => ({
+    json: script.shift(),
+    provider: 'gemini-free',
+    model: 'stub',
+    loiChuoiChinh: 'All providers failed: minimax/MiniMax-M2.7-highspeed: HTTP 500',
+    boQua: lan++ === 0 ? ['chuỗi chính: bỏ qua — còn 0ms tới hạn chót lượt'] : undefined,
+  });
+  out = await classify(attrs, { debug: true });
+  check('OZV-826: debug.llm lộ boQua + loiChuoiChinh khi tầng dự phòng thắng', Array.isArray(out.engine?.llm?.boQua) && out.engine.llm.boQua.some((s) => /chuỗi chính/.test(s)) && Array.isArray(out.engine?.llm?.loiChuoiChinh) && out.engine.llm.loiChuoiChinh.some((s) => /minimax/i.test(s)), JSON.stringify(out.engine?.llm));
   llmTier.callLLMJson = origCall;
 
   // api/classify.js: body.debug / ?debug=1 → đẩy vào opts
