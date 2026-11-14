@@ -6,16 +6,17 @@
     "90289010": {
       "dieuKienSo": [
         {
-          "op": "HOAC",
-          "phuongAn": [
-            [
-              { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Vỏ" }
-            ],
-            [
-              { "fact": "tenLoai", "op": "TEN_LOAI", "value": "thân" },
-              { "fact": "dungCho", "op": "CONG_DUNG", "value": "công tơ nước" }
-            ]
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Vỏ",
+            "thân"
           ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "công tơ nước"
         }
       ]
     }
@@ -25,7 +26,13 @@
     {
       "ma": "90289010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.90289010: \"Vỏ hoặc thân của công tơ nước\" (EN \"Water meter housings or bodies\") => HOAC [[tenLoai \"Vỏ\"], [tenLoai \"thân\", dungCho \"công tơ nước\"]] — máy tách định ngữ phương án B: theo chữ Anh, định ngữ đi với danh từ cuối"
+      "ghiChu": "tax.90289010: \"Vỏ hoặc thân của công tơ nước\" (EN \"Water meter housings or bodies\") => tenLoai mảng [\"Vỏ\", \"thân\"] + dungCho \"công tơ nước\" (định ngữ chung áp cho cả Vỏ lẫn thân)"
+    },
+    {
+      "ma": "90289010",
+      "loai": "BO_VE",
+      "ve": "của công tơ nước",
+      "lyDo": "EN \"Water meter housings or bodies\" — định ngữ \"Water meter\" đứng đầu áp chung cho cả \"housings\" (Vỏ) và \"bodies\" (thân); máy tách EN theo giới từ cuối nên báo nhầm chỉ gắn danh từ cuối"
     }
   ]
 }

@@ -4,13 +4,19 @@
   "nhom": "9032",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T1001#soan-903289",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-952-20261114#soat-903289",
+    "ngay": "2026-11-14",
+    "ghiChu": "Đối chiếu .10 tách 3 điều kiện VÀ cho dungCho (máy xử lý dữ liệu tự động + hệ thống đẩy/giữ thăng bằng/xếp hàng hóa + tàu thuyền) cùng cấu trúc với .20; .31 Bộ điều chỉnh điện áp tự động dưới tiêu đề 9032893 hoạt động bằng điện.",
+    "bam": "d87d2b9afbf5082f90c291f177e1172bf84c385287d7b0a70c7fbdec4c0943f1"
+  },
   "dieuKienNut": [
     {
       "id": "9032893",
@@ -22,7 +28,7 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -42,13 +48,7 @@
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
-          "value": [
-            "máy xử lý dữ liệu tự động",
-            "hệ thống đẩy",
-            "giữ thăng bằng",
-            "xếp hàng hóa",
-            "tàu thuyền"
-          ]
+          "value": "máy xử lý dữ liệu tự động"
         },
         {
           "fact": "congDung",
@@ -57,9 +57,23 @@
             "điều chỉnh",
             "điều khiển tự động"
           ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "hệ thống đẩy",
+            "giữ thăng bằng",
+            "xếp hàng hóa"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "tàu thuyền"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "90328920",
@@ -104,7 +118,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "90328931",
@@ -117,28 +131,28 @@
           "value": "Bộ điều chỉnh điện áp tự động"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "90328939",
       "nguon": "tax.90328939",
       "trich": "90328939 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "90328990",
       "nguon": "tax.90328990",
       "trich": "90328990 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "90328910",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.90328910: \"Dụng cụ và thiết bị đi kèm hoặc hoạt động cùng với máy xử lý dữ liệu tự động, để điều chỉnh hoặc điều khiển tự động hệ thống đẩy, giữ thăng bằng hoặc xếp hàng hóa của tàu thuyền\" => tenLoai mảng [\"Dụng cụ\",\"thiết bị\"] + dungCho mảng [\"máy xử lý dữ liệu tự động\",\"hệ thống đẩy\",\"giữ thăng bằng\",\"xếp hàng hóa\",\"tàu thuyền\"] (gộp các đích, tiền lệ 901490) + congDung mảng [\"điều chỉnh\",\"điều khiển tự động\"]"
+      "ghiChu": "tax.90328910: \"Dụng cụ và thiết bị đi kèm hoặc hoạt động cùng với máy xử lý dữ liệu tự động, để điều chỉnh hoặc điều khiển tự động hệ thống đẩy, giữ thăng bằng hoặc xếp hàng hóa của tàu thuyền\" => tenLoai mảng [\"Dụng cụ\",\"thiết bị\"] + dungCho \"máy xử lý dữ liệu tự động\" + congDung mảng [\"điều chỉnh\",\"điều khiển tự động\"] + dungCho mảng [\"hệ thống đẩy\",\"giữ thăng bằng\",\"xếp hàng hóa\"] + dungCho \"tàu thuyền\""
     },
     {
       "ma": "90328920",

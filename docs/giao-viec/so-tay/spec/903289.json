@@ -16,13 +16,7 @@
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
-          "value": [
-            "máy xử lý dữ liệu tự động",
-            "hệ thống đẩy",
-            "giữ thăng bằng",
-            "xếp hàng hóa",
-            "tàu thuyền"
-          ]
+          "value": "máy xử lý dữ liệu tự động"
         },
         {
           "fact": "congDung",
@@ -31,6 +25,20 @@
             "điều chỉnh",
             "điều khiển tự động"
           ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "hệ thống đẩy",
+            "giữ thăng bằng",
+            "xếp hàng hóa"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "tàu thuyền"
         }
       ]
     },
@@ -99,7 +107,7 @@
     {
       "ma": "90328910",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.90328910: \"Dụng cụ và thiết bị đi kèm hoặc hoạt động cùng với máy xử lý dữ liệu tự động, để điều chỉnh hoặc điều khiển tự động hệ thống đẩy, giữ thăng bằng hoặc xếp hàng hóa của tàu thuyền\" => tenLoai mảng [\"Dụng cụ\",\"thiết bị\"] + dungCho mảng [\"máy xử lý dữ liệu tự động\",\"hệ thống đẩy\",\"giữ thăng bằng\",\"xếp hàng hóa\",\"tàu thuyền\"] (gộp các đích, tiền lệ 901490) + congDung mảng [\"điều chỉnh\",\"điều khiển tự động\"]"
+      "ghiChu": "tax.90328910: \"Dụng cụ và thiết bị đi kèm hoặc hoạt động cùng với máy xử lý dữ liệu tự động, để điều chỉnh hoặc điều khiển tự động hệ thống đẩy, giữ thăng bằng hoặc xếp hàng hóa của tàu thuyền\" => tenLoai mảng [\"Dụng cụ\",\"thiết bị\"] + dungCho \"máy xử lý dữ liệu tự động\" + congDung mảng [\"điều chỉnh\",\"điều khiển tự động\"] + dungCho mảng [\"hệ thống đẩy\",\"giữ thăng bằng\",\"xếp hàng hóa\"] + dungCho \"tàu thuyền\""
     },
     {
       "ma": "90328920",
