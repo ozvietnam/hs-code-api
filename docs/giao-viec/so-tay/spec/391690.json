@@ -1,7 +1,7 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "391690",
-  "phien": "mm:minimax-m3:20261105T1709#soan-391690",
+  "phien": "pc-tho-hs-01:OZV-891#soan-391690",
   "dong8": {
     "39169011": {
       "dieuKienSo": [
@@ -45,20 +45,33 @@
     "39169030": {
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "xenlulo tái sinh",
-            "xenlulo nitrat",
-            "xenlulo acetat",
-            "este xenlulo",
-            "ete xenlulo",
-            "dẫn xuất hóa học khác của xenlulo"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "xenlulo tái sinh"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "xenlulo nitrat",
+                  "xenlulo acetat",
+                  "este xenlulo",
+                  "ete xenlulo",
+                  "dẫn xuất hóa học khác của xenlulo"
+                ]
+              },
+              {
+                "fact": "daHoaDeo",
+                "op": "CO"
+              }
+            ]
           ]
-        },
-        {
-          "fact": "daHoaDeo",
-          "op": "CO"
         }
       ],
       "phanConLai": false
@@ -167,7 +180,7 @@
     {
       "ma": "39169030",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.39169030 \"Từ xenlulo tái sinh; từ xenlulo nitrat, xenlulo acetat và các este xenlulo, ete xenlulo và các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo\" ⇒ tenLoai mảng 6 loại vật liệu + daHoaDeo CO. phanConLai: false — chữ \"khác\" nằm TRONG cụm \"các dẫn xuất hóa học khác của xenlulo\" (khác với các dẫn xuất hóa học khác đã nêu), không trỏ anh em đứng trước (anh em của .30 là .11/.12/.19/.21/.22/.29 — khác loại vật liệu), nên .30 KHÔNG phải phần còn lại."
+      "ghiChu": "tax.39169030 \"Từ xenlulo tái sinh; từ xenlulo nitrat, xenlulo acetat và các este xenlulo, ete xenlulo và các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo\" ⇒ dấu \";\" tách hai vế, \"đã hóa dẻo\" chỉ thuộc vế 2 ⇒ HOAC [[tenLoai \"xenlulo tái sinh\"], [tenLoai [5 dẫn xuất xenlulo], daHoaDeo CO]]. phanConLai: false — chữ \"khác\" nằm TRONG cụm \"các dẫn xuất hóa học khác của xenlulo\" (khác với các dẫn xuất hóa học đã nêu), không trỏ anh em đứng trước."
     },
     {
       "ma": "39169092",
