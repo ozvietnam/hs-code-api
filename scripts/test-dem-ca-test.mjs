@@ -3,6 +3,7 @@
 // Mỗi ca dựng một log GIẢ rồi đòi bộ đếm kết luận đúng; không chạy npm test thật, không ghi data/.
 import './test-isolate-data.mjs';
 
+import { readFileSync } from 'node:fs';
 import { demCaTest, chamLog, dongDanPR } from './dem-ca-test.mjs';
 
 let xanh = 0;
@@ -127,6 +128,67 @@ function ca(ten, dieuKien) {
   ca('node:test xanh: tổng 5 ca, không cộng đôi', so.tongKetSoCa === 5 && so.soDongTongKet === 1);
   ca('node:test xanh: `ℹ duration_ms` không bị tính thành ca', so.caXanh === 2 && so.caDo === 0);
   ca('node:test xanh: chấm XANH', chamLog(so).xanh === true);
+}
+
+// 12) Mã lỗi Node khi cài/chạy sai mà cổng TRƯỚC ĐÂY bỏ lọt (OZV-764). Cả 4 mã đều là "lệnh trượt",
+//     không phải "test đỏ": log không có ca nào mà cổng cũ chấm XANH thì người soát ghi "xanh" lên PR oan.
+//     Mỗi mã dán theo nguyên văn Node in ra, kèm EXIT=1 như lần chạy thật.
+{
+  const caTruot = [
+    // Chạy `node tệp.ts` / tệp có đuôi lạ khi thiếu loader — gặp khi devDependencies bị omit.
+    ['ERR_UNKNOWN_FILE_EXTENSION', 'TypeError [ERR_UNKNOWN_FILE_EXTENSION]: Unknown file extension ".ts" for /repo/scripts/x.ts'],
+    // Gói có `exports` không mở đường dẫn con — đổi bản gói là trượt kiểu này.
+    ['ERR_PACKAGE_PATH_NOT_EXPORTED', "Error [ERR_PACKAGE_PATH_NOT_EXPORTED]: Package subpath './lib/x' is not defined by \"exports\" in /repo/node_modules/xlsx/package.json"],
+    // `require()` một gói ESM — gặp khi gói nhảy sang ESM thuần.
+    ['ERR_REQUIRE_ESM', 'Error [ERR_REQUIRE_ESM]: require() of ES Module /repo/node_modules/pdf-parse/index.js not supported'],
+    // `import` trỏ vào thư mục, ESM không tự tìm index.js.
+    ['ERR_UNSUPPORTED_DIR_IMPORT', 'Error [ERR_UNSUPPORTED_DIR_IMPORT]: Directory import /repo/lib/ho-so is not supported resolving ES modules'],
+  ];
+  for (const [ten, dong] of caTruot) {
+    const so = demCaTest([dong, '    at node:internal/modules/esm/load:1:1', 'EXIT=1'].join('\n'));
+    ca(`${ten}: nhận ra dòng lệnh trượt`, so.truot.length === 1);
+    ca(`${ten}: chấm ĐỎ, không đọc thành xanh`, chamLog(so).xanh === false);
+    ca(`${ten}: lý do nói rõ "trượt vì thiếu gói/tệp"`, chamLog(so).lyDo.some((l) => l.includes('trượt')));
+  }
+}
+
+// 13) Chiều ngược của ca 12: log BÌNH THƯỜNG không được báo trượt oan. Gài sẵn những chữ dễ khớp lầm
+//     nếu ai nới RE_TRUOT thành `includes` lỏng (tên ca test nhắc tới mã lỗi, chữ "module"/"not found" giữa câu).
+{
+  const log = [
+    'PASS tải module cấu hình',
+    'PASS mã lạ → null, không phải not found',
+    'PASS nhắc ERR_REQUIRE_ESM trong tên ca vẫn đếm là ca xanh',
+    '3/3 passed, 0 failed',
+    '=== ALL TESTS PASSED ===',
+    'EXIT=0',
+  ].join('\n');
+  const so = demCaTest(log);
+  ca('log bình thường: 0 dòng trượt', so.truot.length === 0);
+  ca('log bình thường: đếm đủ 3 ca', so.caXanh === 3 && so.tongKetSoCa === 3);
+  ca('log bình thường: vẫn XANH', chamLog(so).xanh === true);
+}
+
+// 14) Quy tắc 6b: regex ăn log thô (có thể dài, có thể là đầu ra LLM/stack trace) phải không nổ thời gian.
+//     ~40.000 từ lặp sát mẫu `RE_TRUOT` (chữ "module", ngoặc vuông mở không đóng) phải xong dưới 2 giây.
+{
+  const acQuy = `Error [${'ERR_REQUIRE_ESM '.repeat(2000)}`;
+  const log = [`${'Cannot find '.repeat(20000)}`, acQuy, 'PASS a', '1 passed, 0 failed', 'EXIT=0'].join('\n');
+  const t0 = Date.now();
+  demCaTest(log);
+  const ms = Date.now() - t0;
+  ca(`ReDoS: log ~40.000 từ lặp xong dưới 2 giây (đo ${ms}ms)`, ms < 2000);
+}
+
+// 15) Khoá chuỗi `scripts.test` trong package.json (OZV-815): không có `&&node` thiếu khoảng trắng
+//     làm mọi nơi `split(' && ')` đếm hụt bộ test.
+{
+  const pkg = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'));
+  const chuoiTest = String(pkg?.scripts?.test ?? '');
+  const tachChuan = chuoiTest.split(' && ');
+  const tachLong = chuoiTest.split(/\s*&&\s*/);
+  ca('package.json scripts.test: không có `&&` dính liền thiếu khoảng trắng (`&&node`)', !/(?:^|\S)&&|&&(?:\S|$)/.test(chuoiTest));
+  ca('package.json scripts.test: split(" && ") khớp đúng split(/\\s*&&\\s*/)', tachChuan.length === tachLong.length && tachChuan.length >= 230);
 }
 
 console.log(`\n${xanh} passed, ${do_} failed`);

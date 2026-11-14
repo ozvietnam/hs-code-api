@@ -4,13 +4,12 @@
   "nhom": "9849",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T1001#soan-984920",
-    "ngay": "2026-11-06"
+    "phien": "claude-agent:ozv-682-sua-9849-3pn-20261113#soan-984920",
+    "ngay": "2026-11-13"
   },
-  "duyet": null,
   "dieuKienNut": [
     {
       "id": "984920~r19516",
@@ -116,6 +115,13 @@
           "op": "CO"
         }
       ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "984920~r19529",
+      "nguon": "tieuDe.984920~r19529",
+      "trich": "984920~r19529 Loại khác",
+      "dieuKienSo": [],
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
@@ -267,6 +273,19 @@
       "ma": "98492016",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.98492016 \"Dung tích xi lanh trên 2.000 cc nhưng không quá 3.000 cc\" ⇒ > 2000 và <= 3000, \"2.000\"/\"3.000\" viết lại 2000/3000"
+    },
+    {
+      "ma": "984920~r19529",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Bổ sung 13/11/2026 (OZV-682): cây gạch thật của biểu có hai tầng gạch-4 anh em dưới r19523 \"Dung tích xi lanh trên 1.000 cc\" — r19524 \"Đã lắp ráp hoàn chỉnh\" (→ 98492015/16/17) và r19529 \"Loại khác\" (→ 98492018/19/20). Hồ sơ trước thiếu r19529 nên máy không phủ định được nhánh đã lắp ráp: ba dòng .18/.19/.20 mang điều kiện dung tích y hệt .15/.16/.17, bộ kiểm luật chốt sai 3 ca (kỳ vọng .18/.19/.20 nhưng ra .15/.16/.17). \"Loại khác\" trần ⇒ dieuKienSo rỗng, máy tự phủ định anh em (daLapRap CO)."
+    }
+  ],
+  "duyet": null,
+  "traVe": [
+    {
+      "phien": "claude-agent:ozv-682-9849-3pn-20261113#do-bo-kiem-luat",
+      "ngay": "2026-11-13",
+      "lyDo": "OZV-682 13/11/2026 — ĐO ĐƯỢC: áp bản duyệt này vào sổ tay làm bộ kiểm luật 9849 CHỐT SAI 3 ca (98492018→98492015, 98492019→98492016, 98492020→98492017), mốc main là 0. Nguyên nhân cấu trúc, chưa có đường ra bằng căn cứ nguyên văn: dưới 984920~r19523 (\"trên 1.000 cc\") có hai nút gạch-4 anh em — r19524 \"Đã lắp ráp hoàn chỉnh\" (→ .15/.16/.17) và r19529 \"Loại khác\" (→ .18/.19/.20). r19529 là \"Loại khác\" TRẦN nên cổng cong3 cấm mang dieuKienSo (cong3-muc:984920~r19529:dieu-kien-nut-tren-tieu-de-loai-khac), mà nút dieuKienSo rỗng lại không vào data/so-tay/9849.json, nên lúc chạy máy không thấy nhánh chưa lắp ráp và chốt vào .15/.16/.17. Cần luật phủ định anh em cho nút tiêu đề \"Loại khác\" ở tầng gạch-4 (việc của máy, không phải của hồ sơ) rồi mới duyệt lại. KHÔNG đoán thêm điều kiện (OZV-420)."
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "984935",
-  "phien": "zcode-sub:glm-5.3:20261106T1001#soan-984935",
+  "phien": "claude-agent:tho-hs-01:20261113T1710#soan-984935",
   "dong8": {
     "98493510": {
       "dieuKienSo": [
@@ -46,8 +46,17 @@
           "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": "xe thuộc nhóm 87.02 hoặc 87.04"
+        },
+        {
+          "fact": "maHsTuongUng",
+          "op": "CONG_DUNG",
+          "value": [
+            "8708.91.94"
+          ]
         }
-      ]
+      ],
+      "nguon": "tuongUng.98493532",
+      "trich": "Nút xả dùng cho xe thuộc nhóm 87.02 hoặc 87.04 (trừ loại thuộc phân nhóm 8704.10) — mã hàng tương ứng: 8708.91.94"
     },
     "98493533": {
       "dieuKienSo": [
@@ -567,7 +576,7 @@
       "ma": "98493532",
       "loai": "BO_VE",
       "ve": "(trừ loại thuộc phân nhóm 8704.10)",
-      "lyDo": "vế trừ dẫn phân nhóm 8704.10: nút xả dùng cho xe 8704.10 không thoả 98493531 (87.03) và bị trừ khỏi 98493532 ⇒ rơi về 98493539 \"Loại khác\" của cụm; tu-vung@2 không có op phủ định theo mã cho dungCho"
+      "lyDo": "vế trừ dẫn phân nhóm 8704.10: tu-vung@2 không có op phủ định theo mã cho dungCho. Giữ tất định bằng mã tương ứng (luật Chương 98): nguồn tuongUng.98493532 cho mã hàng tương ứng 8708.91.94, khai maHsTuongUng ⇒ dòng rời hẳn với 98493521/98493531 và với \"Loại khác\" của cụm mà không cần dịch vế trừ thành điều kiện"
     },
     {
       "ma": "98493582",

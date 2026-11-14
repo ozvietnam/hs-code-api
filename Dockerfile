@@ -15,6 +15,16 @@ COPY . .
 # dùng npm install là đủ cho tầng này (package-lock được giữ đồng bộ).
 RUN npm install --no-audit --no-fund && npm run build && mkdir -p /data && chown -R node:node /data
 
+# OZV-724: ghi bản đang chạy vào ảnh để /api/health trả `commit` + `buildTime`.
+# Coolify truyền sẵn build arg SOURCE_COMMIT; build tay thì `docker build --build-arg SOURCE_COMMIT=$(git rev-parse HEAD)`.
+# Ảnh KHÔNG có .git (.dockerignore) nên lúc chạy không thể hỏi git — phải chốt ở đây.
+ARG SOURCE_COMMIT=""
+ARG BUILD_TIME=""
+ENV SOURCE_COMMIT=${SOURCE_COMMIT} \
+    BUILD_TIME=${BUILD_TIME}
+# Không truyền BUILD_TIME thì lấy giờ dựng; lớp này đổi theo SOURCE_COMMIT ở trên nên không dính cache cũ.
+RUN [ -n "$BUILD_TIME" ] || date -u +%Y-%m-%dT%H:%M:%SZ > /app/.build-time
+
 USER node
 EXPOSE 3000
 VOLUME ["/data"]

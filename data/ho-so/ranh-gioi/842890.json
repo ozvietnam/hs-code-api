@@ -4,13 +4,18 @@
   "nhom": "8428",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T1115#soan-842890",
-    "ngay": "2026-11-06"
+    "phien": "claude-agent:pc-tho-hs-03:20261113T1351#soan-842890",
+    "ngay": "2026-11-13"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:pc-tho-hs-03:20261113T1344#soat-842890",
+    "ngay": "2026-11-13",
+    "bam": "a6de83b063a201099f7a68ce14a19bd043bee9d756171a49c6b14e4b39fdef33"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -38,7 +43,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84289030",
@@ -47,35 +52,39 @@
       "dieuKienSo": [
         {
           "fact": "tenLoai",
-          "op": "TEN_LOAI",
+          "op": "TUONG_TU",
           "value": [
             "Thiết bị đẩy xe goòng trong hầm mỏ",
             "thanh ngang xe goòng",
-            "đầu máy",
             "thiết bị lật toa xe"
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84289090",
       "nguon": "tax.84289090",
       "trich": "84289090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "84289020",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.84289020 \"Máy tự động để dịch chuyển, xử lý và kẹp giữ tấm mạch in, tấm dây in hoặc mạch in đã lắp ráp\" ⇒ tenLoai \"Máy tự động\" + congDung \"dịch chuyển, xử lý và kẹp giữ\" (liệt kê nối và sau \"để\" — một máy làm đủ các việc, máy không báo như 853710 .30) + dungCho mảng 3 đích (hoặc)."
+      "ghiChu": "tax.84289020 \"Máy tự động để dịch chuyển, xử lý và kẹp giữ tấm mạch in, tấm dây in hoặc mạch in đã lắp ráp\" ⇒ tenLoai \"Máy tự động\" + congDung \"dịch chuyển, xử lý và kẹp giữ\" + dungCho mảng 3 đích (hoặc)."
     },
     {
       "ma": "84289030",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.84289030 \"Thiết bị đẩy xe goòng trong hầm mỏ, thanh ngang xe goòng hoặc đầu máy, thiết bị lật toa xe và các thiết bị giữ xe goòng chạy đường sắt tương tự\" ⇒ tenLoai mảng 4 tên nguyên văn; cụm \"và các thiết bị giữ xe goòng chạy đường sắt tương tự\" — máy không tách vế MỞ ở dòng này."
+      "ghiChu": "tax.84289030: \"thanh ngang xe goòng hoặc đầu máy\" là MỘT loại hàng (bàn chuyển ngang; EN \"locomotive or wagon traversers\") ⇒ mỏ neo giữ \"thanh ngang xe goòng\" — KHÔNG tách \"đầu máy\" đứng riêng làm mỏ neo vì \"đầu máy\" (locomotive) tự nó là tên hàng khác nhóm 8603, tách sai cụm là lý do trả về OZV-690 (B). Vế \"hoặc đầu máy\" là định ngữ của thanh ngang; khai \"thanh ngang đầu máy\" vẫn chạm mỏ neo \"thanh ngang xe goòng\" qua so tương tự (đủ âm tiết \"thanh ngang\")."
+    },
+    {
+      "ma": "84289030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Vế mở \"và các thiết bị giữ xe goòng chạy đường sắt tương tự\" ⇒ tenLoai TUONG_TU [3 tên đã nêu] theo quy ước \"X, Y, Z và các loại tương tự\" (vòng 7, bước 3.2) — phủ cả thiết bị giữ toa tương tự, không thu hẹp thành danh sách đóng 3 tên (lý do trả về OZV-690 (A))."
     }
   ],
   "traVe": [

@@ -7,8 +7,8 @@
   "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T1001#soan-984926",
-    "ngay": "2026-11-06"
+    "phien": "claude-agent:ozv-682-sua-9849-3pn-20261113#soan-984926",
+    "ngay": "2026-11-13"
   },
   "duyet": null,
   "dieuKienNut": [
@@ -20,11 +20,12 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": [
-            "Máy",
-            "thiết bị lọc",
-            "tinh chế chất lỏng"
-          ]
+          "value": "Máy và thiết bị lọc"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "chất lỏng"
         },
         {
           "fact": "laBoPhan",
@@ -41,7 +42,10 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Bộ lọc"
+          "value": [
+            "Bộ lọc dầu",
+            "xăng"
+          ]
         },
         {
           "fact": "dungCho",
@@ -59,11 +63,12 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": [
-            "Máy",
-            "thiết bị lọc",
-            "tinh chế các loại khí"
-          ]
+          "value": "Máy và thiết bị lọc"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "các loại khí"
         },
         {
           "fact": "laBoPhan",
@@ -221,7 +226,12 @@
     {
       "ma": "984926",
       "loai": "QUYET_DINH",
-      "ghiChu": "Claude 07/11/2026 (#1109): tầng tieuDe.984926~r19595 \"Bộ lọc dầu hoặc xăng cho động cơ đốt trong\" (lớp tầng mới bọc 9849261/9849262) ⇒ tenLoai «Bộ lọc» + dungCho «động cơ đốt trong»; tầng máy lọc chất lỏng / chất khí cạnh anh em \"Bộ phận\" ⇒ laBoPhan KHONG (chồng lấn cũ bộ lọc khí nạp ↔ bộ phận). Loại chất lọc (dầu/xăng) do dòng con phân."
+      "ghiChu": "Claude 07/11/2026 (#1109): tầng tieuDe.984926~r19595 \"Bộ lọc dầu hoặc xăng cho động cơ đốt trong\" (lớp tầng mới bọc 9849261/9849262) ⇒ tenLoai + dungCho «động cơ đốt trong»; tầng máy lọc chất lỏng / chất khí cạnh anh em \"Bộ phận\" ⇒ laBoPhan KHONG (chồng lấn cũ bộ lọc khí nạp ↔ bộ phận). Sửa 13/11/2026 (OZV-655, trả thợ L33): r19595 giữ ĐỦ hai giá trị nguyên văn [\"Bộ lọc dầu\",\"xăng\"] (mảng = HOẶC) — theo cây gạch thật của biểu (984926 g1 → r19594 g2 \"…chất lỏng\" → r19595 g3 \"Bộ lọc dầu hoặc xăng…\" → r19596 g4 \"Dùng cho xe có động cơ thuộc Chương 87\" → 98492611 \"Bộ lọc dầu\" / 98492619 \"Loại khác\"), dòng 98492619 chính là bộ lọc XĂNG cho xe Chương 87, nên tầng cha phải mang cả chữ \"xăng\". Bộ lọc khí nạp không khớp \"Bộ lọc dầu\" cũng không khớp \"xăng\" nên rơi đúng dòng .30. r19594/r19602 giữ định ngữ \"chất lỏng\"/\"các loại khí\" (tách sang congDung) để hai tầng anh em rời nhau theo chữ. Dòng 98492619 là \"Loại khác\" trần — máy tự phủ định anh em."
+    },
+    {
+      "ma": "984926~r19595",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Sửa 13/11/2026 (OZV-655, trả thợ L33): tầng tieuDe.984926~r19595 nguyên văn \"Bộ lọc dầu hoặc xăng cho động cơ đốt trong\" — chữ \"hoặc\" là phép HOẶC trên trục tên loại, nên tenLoai là MẢNG [\"Bộ lọc dầu\",\"xăng\"] (mảng = HOẶC, công thức V1), dungCho \"động cơ đốt trong\". Trước đó ghi tenLoai \"Bộ lọc\" trần (bỏ cả \"dầu hoặc xăng\") làm bộ lọc khí nạp thoả tầng này và rơi dòng .19 \"Loại khác\" thay vì .30; còn nếu ép còn một giá trị \"Bộ lọc dầu\" thì trùng y hệt dòng con 98492611 \"Bộ lọc dầu\", dòng 98492619 \"Loại khác\" (= bộ lọc xăng cho xe Chương 87) hết đường vào (cổng cong2-dong-khong-toi-duoc:98492619). Giữ cả hai giá trị là đúng chữ biểu và dòng .19 tới được."
     }
   ],
   "traVe": [
@@ -229,6 +239,11 @@
       "phien": "claude-agent:duyet-L33-20261111#soat-L33",
       "ngay": "2026-11-11",
       "lyDo": "(A) 984926~r19595 SUY RỘNG: tầng 'Bộ lọc dầu hoặc xăng cho động cơ đốt trong' ghi tenLoai 'Bộ lọc' + dungCho động cơ đốt trong — bỏ 'dầu hoặc xăng': bộ lọc khí nạp cho động cơ xe Chương 87 thoả tầng này và rơi .19 'Loại khác' (↔ 8421.23.29) thay vì .30 (↔ 8421.31.20); ghi chú 'dòng con phân chất lọc' sai vì .19 là Loại khác trần. (B) r19594/r19602 tenLoai ['Máy','thiết bị lọc','tinh chế …'] — 'Máy' và 'thiết bị lọc' trần mất định ngữ 'chất lỏng'/'các loại khí' nên hai tầng anh em không còn rời nhau theo chữ."
+    },
+    {
+      "phien": "claude-agent:ozv-682-9849-3pn-20261113#do-bo-kiem-luat",
+      "ngay": "2026-11-13",
+      "lyDo": "OZV-682 13/11/2026 — ĐO ĐƯỢC: áp bản duyệt này làm bộ kiểm luật 9849 CHỐT SAI ca 98492619→98492611 (loaiCa THIEU_DU_KIEN, kyVong HOI_HOAC_KHONG_CHOT, lyDo tu-chot-dong-co-ten-khi-thieu-du-kien), mốc main là 0 — máy TỰ CHỐT ở chỗ đáng lẽ phải hỏi. Cách soạn r19595 giữ hai giá trị nguyên văn [\"Bộ lọc dầu\",\"xăng\"] đã gỡ được phần suy rộng của lần trả về L33, nhưng chưa đủ dữ kiện để tách 98492611 với 98492619 \"Loại khác\" khi tờ khai không nói rõ chất lọc; chưa có căn cứ nguyên văn nào trong biểu để thêm, nên để TRA_VE chứ không đoán (OZV-420)."
     }
   ]
 }
