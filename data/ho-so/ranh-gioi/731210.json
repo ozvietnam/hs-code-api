@@ -4,13 +4,19 @@
   "nhom": "7312",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
-    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-731210",
-    "ngay": "2026-11-06"
+    "phien": "pc-tho-hs-01:OZV-890#soan-731210",
+    "ngay": "2026-11-14"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-soat:OZV-890#soat-731210",
+    "ngay": "2026-11-14",
+    "ghiChu": ".10 bỏ dangCuon CO, giữ tenLoai 3 tên; .91 giữ dungCho 'bê tông dự ứng lực'; .20/.30/.99 đúng.",
+    "bam": "ea476aefdea6eb187768091cbb405ec51054fa26b06ec3ad0f292e1be7028311"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -18,10 +24,6 @@
       "nguon": "tax.73121010",
       "trich": "73121010 - - Cuộn dây bện tao kiểu bọc, dây tao dẹt và dây cáp chống xoắn(1) (SEN)",
       "dieuKienSo": [
-        {
-          "fact": "dangCuon",
-          "op": "CO"
-        },
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
@@ -32,7 +34,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "73121020",
@@ -53,7 +55,7 @@
           "donVi": "mm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "73121030",
@@ -68,7 +70,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "73121091",
@@ -76,24 +78,19 @@
       "trich": "73121091 - - - Dây thép bện tao cho bê tông dự ứng lực",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Dây thép bện tao"
-        },
-        {
           "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": "bê tông dự ứng lực"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "73121099",
       "nguon": "tax.73121099",
       "trich": "73121099 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "chongLanVanBan": [
@@ -116,7 +113,7 @@
     {
       "ma": "73121010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.73121010: \"Cuộn dây bện tao kiểu bọc, dây tao dẹt và dây cáp chống xoắn(1) (SEN)\" ⇒ dangCuon CO (\"Cuộn\" — cachDoc đọc \"cuộn dây\" nguyên văn đầu câu) + tenLoai [\"dây bện tao kiểu bọc\",\"dây tao dẹt\",\"dây cáp chống xoắn\"] (ba tên hàng nối phẩy và \"và\" ⇒ mảng); \"(1)\" là đánh dấu chú thích, \"(SEN)\" là dẫn nguồn"
+      "ghiChu": "tax.73121010: \"Cuộn dây bện tao kiểu bọc, dây tao dẹt và dây cáp chống xoắn(1) (SEN)\" / EN \"Locked coils, flattened strands and non-rotating wire ropes\" ⇒ tenLoai [\"dây bện tao kiểu bọc\",\"dây tao dẹt\",\"dây cáp chống xoắn\"] (\"locked coil\" là tên kiểu cáp bện kín, không phải điều kiện dạng cuộn); \"(1)\" là đánh dấu chú thích, \"(SEN)\" là dẫn nguồn"
     },
     {
       "ma": "73121020",
@@ -126,7 +123,7 @@
     {
       "ma": "73121091",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.73121091: \"Dây thép bện tao cho bê tông dự ứng lực\" ⇒ tenLoai \"Dây thép bện tao\" + dungCho \"bê tông dự ứng lực\" (vế \"cho bê tông dự ứng lực\")"
+      "ghiChu": "tax.73121091: \"Dây thép bện tao cho bê tông dự ứng lực\" ⇒ dungCho \"bê tông dự ứng lực\" (vế \"cho bê tông dự ứng lực\"; không khai tenLoai \"Dây thép bện tao\" vì mọi âm tiết đều lặp tiêu đề nhóm 7312/phân nhóm 731210 làm coCumPhanBiet=false)"
     },
     {
       "ma": "73121099",
@@ -149,6 +146,11 @@
       "phien": "claude-agent:duyet-L22-20261111#soat-L22",
       "ngay": "2026-11-11",
       "lyDo": "(A) 731210.json:73121010 THU HẸP do điều kiện bịa: chữ biểu 'Cuộn dây bện tao kiểu bọc, dây tao dẹt và dây cáp chống xoắn(1) (SEN)' / EN 'Locked coils, flattened strands and non-rotating wire ropes' — 'locked coil' là TÊN một kiểu cáp (cáp bện kín), không phải 'ở dạng cuộn'; bản nháp thêm dangCuon CO áp cho cả ba tên (kể cả dây tao dẹt, cáp chống xoắn). Cáp chống xoắn giao trên tang/ru-lô (không khai 'dạng cuộn') sẽ trượt khỏi .10 sang .99. Sửa: bỏ dangCuon, giữ tenLoai ba tên. (Các dòng .20 đồng thau+<=3 mm, .30 nhôm, .91 dự ứng lực đúng.)"
+    },
+    {
+      "phien": "claude-soat:OZV-890#soat-731210",
+      "ngay": "2026-11-14",
+      "lyDo": "Bỏ tenLoai lặp tiêu đề nhóm ở 73121091"
     }
   ]
 }

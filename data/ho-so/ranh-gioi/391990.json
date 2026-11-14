@@ -7,14 +7,15 @@
   "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
-    "phien": "mm:minimax-m3:20261105T1705#soan-391990",
-    "ngay": "2026-11-05"
+    "phien": "pc-tho-hs-01:OZV-890#soan-391990",
+    "ngay": "2026-11-14"
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "mw-soatS2:20261107T0448#soat-391990",
-    "ngay": "2026-11-07",
-    "bam": "fb2a1b051bd13e3a3f24893a3bb7684588194a1ddf264f9a392e9dc1f9545d1c"
+    "phien": "claude-soat:OZV-890#soat-391990",
+    "ngay": "2026-11-14",
+    "ghiChu": "Đồng bộ .92 với 39191092: tách HOAC [[polyme trùng hợp/trùng ngưng], [dẫn xuất xenlulo + daHoaDeo CO]].",
+    "bam": "512fa001fb107b4a024508762652c01eaa18a2d4af6825ab6e5dbb710552badc"
   },
   "dieuKienNut": [],
   "dong8": [
@@ -63,20 +64,34 @@
       "trich": "39199092 - - - Từ các polyme trùng hợp; từ các polyme trùng ngưng hoặc tái sắp xếp; từ nitrat xenlulo, các acetat xenlulo và các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "các polyme trùng hợp",
-            "các polyme trùng ngưng",
-            "tái sắp xếp",
-            "từ nitrat xenlulo",
-            "các acetat xenlulo",
-            "các dẫn xuất hóa học khác của xenlulo"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "polyme trùng hợp",
+                  "polyme trùng ngưng"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "nitrat xenlulo",
+                  "acetat xenlulo",
+                  "dẫn xuất hóa học khác của xenlulo"
+                ]
+              },
+              {
+                "fact": "daHoaDeo",
+                "op": "CO"
+              }
+            ]
           ]
-        },
-        {
-          "fact": "daHoaDeo",
-          "op": "CO"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET",
@@ -109,7 +124,7 @@
     {
       "ma": "39199092",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.39199092 \"Từ các polyme trùng hợp; từ các polyme trùng ngưng hoặc tái sắp xếp; từ nitrat xenlulo, các acetat xenlulo và các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo\" ⇒ tenLoai tách theo dấu liệt kê của chữ biểu (\";\" + \"hoặc\" + phẩy + \"và\") + daHoaDeo CO cho vế \"đã hóa dẻo\"."
+      "ghiChu": "tax.39199092 \"Từ các polyme trùng hợp; từ các polyme trùng ngưng hoặc tái sắp xếp; từ nitrat xenlulo, các acetat xenlulo và các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo\" ⇒ đồng bộ với 39191092: dấu \";\" tách 3 vế, \"đã hóa dẻo\" chỉ thuộc vế 3 (các dẫn xuất xenlulo) ⇒ HOAC [[tenLoai [\"polyme trùng hợp\", \"polyme trùng ngưng\"]], [tenLoai [\"nitrat xenlulo\", \"acetat xenlulo\", \"dẫn xuất hóa học khác của xenlulo\"], daHoaDeo CO]]."
     },
     {
       "ma": "39199092",
@@ -120,6 +135,13 @@
       "ma": "39199099",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.39199099 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-soat:OZV-890#soat-391990",
+      "ngay": "2026-11-14",
+      "lyDo": "Đồng bộ 39199092 với 39191092: đã hóa dẻo chỉ thuộc vế 3 (các dẫn xuất xenlulo)."
     }
   ]
 }

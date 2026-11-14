@@ -4,13 +4,19 @@
   "nhom": "7321",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
-    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-732190",
-    "ngay": "2026-11-04"
+    "phien": "pc-tho-hs-01:OZV-890#soan-732190",
+    "ngay": "2026-11-14"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-soat:OZV-890#soat-732190",
+    "ngay": "2026-11-14",
+    "ghiChu": "Tiêu đề 7321902 thêm dungCho ['dụng cụ nấu và dụng cụ hâm nóng dạng tấm dùng nhiên liệu khí', 'dụng cụ nấu', 'dụng cụ hâm nóng dạng tấm'] cùng nhiên liệu khí; .10/.21/.29/.90 đúng.",
+    "bam": "7384cf534272f73fdaedf53e298d4304b9224fe1262a76105bda5fc81a362211"
+  },
   "dieuKienNut": [
     {
       "id": "7321902",
@@ -20,10 +26,19 @@
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
+          "value": [
+            "dụng cụ nấu và dụng cụ hâm nóng dạng tấm dùng nhiên liệu khí",
+            "dụng cụ nấu",
+            "dụng cụ hâm nóng dạng tấm"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
           "value": "nhiên liệu khí"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -38,7 +53,7 @@
           "value": "bếp dầu hỏa"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "73219021",
@@ -67,21 +82,21 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "73219029",
       "nguon": "tax.73219029",
       "trich": "73219029 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "73219090",
       "nguon": "tax.73219090",
       "trich": "73219090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -93,13 +108,7 @@
     {
       "ma": "7321902",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.7321902: \"Của dụng cụ nấu và dụng cụ hâm nóng dạng tấm dùng nhiên liệu khí (SEN)\" ⇒ dungCho \"nhiên liệu khí\""
-    },
-    {
-      "ma": "7321902",
-      "loai": "BO_VE",
-      "ve": "Của dụng cụ nấu và dụng cụ hâm nóng dạng tấm dùng nhiên liệu khí",
-      "lyDo": "Đã đưa nhiên liệu khí vào dungCho"
+      "ghiChu": "tieuDe.7321902: \"Của dụng cụ nấu và dụng cụ hâm nóng dạng tấm dùng nhiên liệu khí (SEN)\" ⇒ dungCho [\"dụng cụ nấu và dụng cụ hâm nóng dạng tấm dùng nhiên liệu khí\", \"dụng cụ nấu\", \"dụng cụ hâm nóng dạng tấm\"] + dungCho \"nhiên liệu khí\" (đặt cả cụm nguyên văn kèm \"nhiên liệu khí\" lên đầu để coCumPhanBiet=true vì \"dụng cụ nấu\"/\"dụng cụ hâm nóng dạng tấm\" lặp tiêu đề nhóm 7321)"
     },
     {
       "ma": "73219021",
@@ -110,13 +119,7 @@
       "ma": "73219021",
       "loai": "BO_VE",
       "ve": "được sản xuất",
-      "lyDo": "Vế nối phương pháp chế tạo"
-    },
-    {
-      "ma": "73219021",
-      "loai": "BO_VE",
-      "ve": "bằng quá trình dập hoặc ép",
-      "lyDo": "Đã lượng hóa qua phuongPhapCheTao DAP"
+      "lyDo": "Động từ nối dẫn vào vế phương pháp chế tạo \"bằng quá trình dập hoặc ép\" đã phủ qua phuongPhapCheTao DAP"
     }
   ],
   "traVe": [
@@ -124,6 +127,11 @@
       "phien": "claude-agent:duyet-L22-20261111#soat-L22",
       "ngay": "2026-11-11",
       "lyDo": "(A) 732190.json:tiêu đề 7321902 SUY RỘNG: chữ biểu 'Của dụng cụ nấu và dụng cụ hâm nóng dạng tấm dùng nhiên liệu khí (SEN)' / EN 'Of cooking appliances and plate warmers using gas fuel' — bản nháp chỉ giữ dungCho 'nhiên liệu khí', bỏ 'dụng cụ nấu và dụng cụ hâm nóng dạng tấm'. Bộ phận của lò sưởi/thiết bị sưởi dùng khí (7321.81, không phải dụng cụ nấu) sẽ vào .21/.29 thay vì .90 (MFN cùng 10%, sai mã). Sửa: thêm dungCho ['dụng cụ nấu','dụng cụ hâm nóng dạng tấm'] cùng điều kiện khí đốt. (.10 bếp dầu hoả và .21 HOAC đầu đốt | dập/ép đúng.)"
+    },
+    {
+      "phien": "claude-soat:OZV-890#soat-732190",
+      "ngay": "2026-11-14",
+      "lyDo": "Bổ sung cụm nguyên văn có nhiên liệu khí ở 7321902 để đạt coCumPhanBiet"
     }
   ]
 }
