@@ -69,6 +69,22 @@ function ca(ten, dieuKien) {
   ca('lấy mã chốt ở thân', ma8So({ hsCode: '12081000' }) === '12081000');
   ca('thân rỗng = null', ma8So({}) === null && ma8So(null) === null);
   ca('ca đầu có mã 8 số thì lấy ca đó', ma8So({ results: [{ hsCode: '9405' }, { hsCode: '94052190' }] }) === '94052190');
+
+  // HÌNH DẠNG THẬT của /api/classify (đo prod 14/11): trường tên là `hs`, kèm `hsLevel`.
+  // Mọi ca trên đây dùng `hsCode` — một hình dạng KHÔNG tồn tại ở đường chạy thật — nên
+  // test xanh mà bộ đo vẫn in "A1: 0" cho cả 22 ca. Giữ các ca thật dưới đây làm mỏ neo.
+  ca(
+    'THẬT: lấy mã 8 số ở results[].hs',
+    ma8So({ status: 'OK', results: [{ hs: '84433190', hsLevel: 8, confidence: 85 }] }) === '84433190',
+  );
+  ca(
+    'THẬT: hsLevel 6 (mã 6 số) không tính là ra mã',
+    ma8So({ status: 'NEED_FACTS', results: [{ hs: '844331', hsLevel: 6, confidence: 85 }, { hs: '844332', hsLevel: 6 }] }) === null,
+  );
+  ca(
+    'THẬT: bỏ qua ca 6 số, lấy ca 8 số phía sau',
+    ma8So({ results: [{ hs: '844331', hsLevel: 6 }, { hs: '84433190', hsLevel: 8 }] }) === '84433190',
+  );
 }
 
 // 6) Cổng tin cậy (OZV-780, vá lỗ hổng GĐ ghi 14/11): cổng cũ CHỈ bắt khi MỌI ca
@@ -120,6 +136,17 @@ function ca(ten, dieuKien) {
     ...Array.from({ length: 10 }, (_, i) => ok(50 + i)),
   ];
   ca('quá nửa ca lỗi ⇒ chặn', kiemTinCay(nhieuLoi, suc).hopLe === false);
+
+  // 6g) MỎ NEO CHỐNG BÁO OAN — đây là bảng giây CÓ THẬT, đo prod 14/11/2026 trên
+  //   22 ca của `tests/bo-ca-do-han-chot.json`. Lượt nhanh nhất 4,52 giây nhưng vẫn
+  //   là lượt AI thật (`engine.rounds = 2`, providers `["gemini-free","gemini-free"]`).
+  //   Ngưỡng cũ 5 giây coi 6/22 ca này là "không có AI" và chặn oan đúng bảng số mà
+  //   dự án đang cần để đo A3. Ca này khoá ngưỡng lại: bảng thật phải đi qua được.
+  const PROD_14_11 = [7.31, 4.97, 24.74, 25.63, 4.52, 6.97, 5.36, 5.46, 12.48, 6.89, 5.98,
+    5.37, 13.9, 6.84, 6.52, 5.93, 12.91, 5.27, 12.46, 21.72, 13.44, 10.08];
+  const bangThat = PROD_14_11.map((g) => ok(g));
+  ca('bảng prod 14/11 có thật ⇒ KHÔNG bị chặn oan', kiemTinCay(bangThat, suc).hopLe === true);
+  ca('bảng prod 14/11 không nêu lý do nào', kiemTinCay(bangThat, suc).lyDo.length === 0);
 
   // 6g) Vài ca lỗi lẻ tẻ (3/22) là chuyện thường của lượt LLM thật ⇒ KHÔNG chặn,
   //     để cổng không báo oan làm người đo bỏ luôn số đúng.

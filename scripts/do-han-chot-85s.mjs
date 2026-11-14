@@ -42,8 +42,17 @@ const LIMIT = Number(doCo('limit', '0')) || 0;
 const TIMEOUT_MS = (Number(doCo('timeout', '180')) || 180) * 1000;
 const RA = doCo('ra', null);
 
-/** Ngưỡng nghi "không có lượt AI thật": lượt thật rẻ nhất trong thực địa cũng ~36 giây. */
-const NGUONG_NGHI_KHONG_AI_MS = 5000;
+/**
+ * Ngưỡng nghi "không có lượt AI thật", tính bằng ms.
+ *
+ * Bản đầu đặt 5000 ms theo câu "lượt thật rẻ nhất trong thực địa cũng ~36 giây".
+ * Đo thật trên prod 14/11 (22 ca, `/api/classify`) BÁC BỎ câu đó: ca `td-05` về
+ * trong 4,52 giây mà vẫn là lượt AI thật — `engine.rounds = 2`, `engine.providers
+ * = ["gemini-free","gemini-free"]`. Giữ 5000 ms thì cổng sẽ chặn oan chính những
+ * bảng số ĐÚNG mà dự án đang cần. Hạ về 2000 ms: đó mới là dải của bản chạy
+ * không khoá, nơi `/api/classify` trả ENGINE_TIMEOUT gần như tức thì.
+ */
+const NGUONG_NGHI_KHONG_AI_MS = 2000;
 const MA_8_SO = /^\d{8}$/;
 /** Mã lý do chứng tỏ bản chạy thiếu khoá — chỉ cần MỘT ca là cả bảng hỏng. */
 const MA_THIEU_KHOA = new Set(['LLM_NOT_CONFIGURED', 'NO_PRIVATE_LLM', 'LLM_UNAVAILABLE']);
@@ -58,14 +67,23 @@ export function docBoCa() {
   return LIMIT > 0 ? cases.slice(0, LIMIT) : cases;
 }
 
-/** Mã 8 số đầu tiên mà phản hồi chốt được (A1). Chỉ nhận mã ở `results`, không nhận gợi ý nhóm 4 số. */
+/**
+ * Mã 8 số đầu tiên mà phản hồi chốt được (A1). Chỉ nhận mã ở `results`, không nhận
+ * gợi ý nhóm 4/6 số.
+ *
+ * TÊN TRƯỜNG: `/api/classify` thật trả `results[].hs` (kèm `hsLevel`), KHÔNG phải
+ * `hsCode`. Bản đầu chỉ đọc `hsCode`/`ma` nên bộ đo prod 14/11 in "A1 số ca ra mã
+ * 8 số: 0" cho cả 22 ca trong khi dịch vụ vẫn trả mã — số 0 đó là lỗi máy đo, không
+ * phải lỗi dịch vụ. Test cũ không bắt được vì fixture tự dựng `{hsCode}`, một hình
+ * dạng không tồn tại ở đường chạy thật. Đọc cả ba tên, `hs` trước.
+ */
 export function ma8So(body) {
   const ds = Array.isArray(body?.results) ? body.results : [];
   for (const r of ds) {
-    const ma = String(r?.hsCode ?? r?.ma ?? '').replace(/\D/g, '');
+    const ma = String(r?.hs ?? r?.hsCode ?? r?.ma ?? '').replace(/\D/g, '');
     if (MA_8_SO.test(ma)) return ma;
   }
-  const chot = String(body?.hsCode ?? body?.ma ?? '').replace(/\D/g, '');
+  const chot = String(body?.hs ?? body?.hsCode ?? body?.ma ?? '').replace(/\D/g, '');
   return MA_8_SO.test(chot) ? chot : null;
 }
 
@@ -170,7 +188,7 @@ export function kiemTinCay(ketQua, suc) {
   } else {
     const nhanh = giay.filter((g) => g < NGUONG_NGHI_KHONG_AI_MS / 1000).length;
     if (nhanh * 4 >= giay.length) {
-      lyDo.push(`${nhanh}/${giay.length} ca về dưới ${NGUONG_NGHI_KHONG_AI_MS / 1000} giây — nhanh bất thường, lượt thật rẻ nhất cũng ~36 giây.`);
+      lyDo.push(`${nhanh}/${giay.length} ca về dưới ${NGUONG_NGHI_KHONG_AI_MS / 1000} giây — nhanh bất thường, đó là dải của bản chạy không khoá (ENGINE_TIMEOUT tức thì), không phải lượt AI thật.`);
     }
   }
 
@@ -232,7 +250,7 @@ async function main() {
     console.log('');
     console.log('SỐ ĐO KHÔNG HỢP LỆ — đừng dán bảng trên lên thẻ. Lý do:');
     for (const d of tinCay.lyDo) console.log(`- ${d}`);
-    console.log('Lượt LLM thật rẻ nhất trong thực địa cũng ~36 giây; bảng "nhanh vượt bậc" ở đây là bản chạy thiếu khoá, không phải bản vá ăn.');
+    console.log('Bảng "nhanh vượt bậc" ở đây là dấu hiệu bản chạy thiếu khoá, không phải bản vá ăn — soi lại trước khi dán số.');
     process.exit(3);
   }
 }
