@@ -4,13 +4,19 @@
   "nhom": "8485",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-848530",
     "ngay": "2026-11-04"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:duyet-OZV-870-20261114#soat-848530",
+    "ngay": "2026-11-14",
+    "ghiChu": "Đối chiếu VI+EN: 84853010 'Bằng lắng đọng thủy tinh' dùng tenLoai tránh khớp giả chatLieu trên tên pn6 848530 ('...hoặc thủy tinh') gây chotSai ở THIEU_DU_KIEN 84853090 (sửa TRA_VE L26); .90 Loại khác trần.",
+    "bam": "09a6eb9e6d797fe22da3c67103351d0a19699f516a4d4df37be919522fbe0fa4"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -19,26 +25,26 @@
       "trich": "84853010 - - Bằng lắng đọng thủy tinh ",
       "dieuKienSo": [
         {
-          "fact": "chatLieu",
-          "op": "LA",
-          "value": "thủy tinh"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bằng lắng đọng thủy tinh"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84853090",
       "nguon": "tax.84853090",
       "trich": "84853090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "84853010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.84853010: \"Bằng lắng đọng thủy tinh\" ⇒ chatLieu \"thủy tinh\""
+      "ghiChu": "tax.84853010: \"Bằng lắng đọng thủy tinh\" ⇒ tenLoai \"Bằng lắng đọng thủy tinh\" (sửa TRA_VE L26: không dùng chatLieu LA \"thủy tinh\" vì khớp giả trên tên pn6 848530 \"Bằng lắng đọng thạch cao, xi măng, gốm hoặc thủy tinh\" gây chotSai ở THIEU_DU_KIEN 84853090)"
     }
   ],
   "traVe": [

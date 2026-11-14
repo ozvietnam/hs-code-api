@@ -4,10 +4,10 @@
   "phien": "zcode-sub:glm-5.3:20261106T0941#soan-840682",
   "dong8": {
     "84068210": { "dieuKienSo": [
-      {"fact": "congSuat", "op": "<=", "value": 5, "donVi": "mW"}
+      {"fact": "tenLoai", "op": "TEN_LOAI", "value": "Công suất đầu ra không quá 5 MW"}
     ] }
   },
   "ghiChuSoan": [
-    {"ma": "84068210", "loai": "QUYET_DINH", "ghiChu": "tax.84068210 \"Công suất đầu ra không quá 5 MW\" ⇒ congSuat <= 5 MW (\"không quá\" = <=)."}
+    {"ma": "84068210", "loai": "QUYET_DINH", "ghiChu": "tax.84068210 \"Công suất đầu ra không quá 5 MW\" ⇒ tenLoai \"Công suất đầu ra không quá 5 MW\" (hệ đơn vị congSuat của tu-vung@2 không có MW và chặn MW hoa để không hạ thành mW miliwatt như lỗi TRA_VE L24; neo nguyên văn cụm dòng có số phân biệt '5' với tiêu đề phân nhóm '40')."}
   ]
 }
