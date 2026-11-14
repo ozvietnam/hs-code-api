@@ -140,13 +140,34 @@ function ca(ten, dieuKien) {
   // 6g) MỎ NEO CHỐNG BÁO OAN — đây là bảng giây CÓ THẬT, đo prod 14/11/2026 trên
   //   22 ca của `tests/bo-ca-do-han-chot.json`. Lượt nhanh nhất 4,52 giây nhưng vẫn
   //   là lượt AI thật (`engine.rounds = 2`, providers `["gemini-free","gemini-free"]`).
-  //   Ngưỡng cũ 5 giây coi 6/22 ca này là "không có AI" và chặn oan đúng bảng số mà
-  //   dự án đang cần để đo A3. Ca này khoá ngưỡng lại: bảng thật phải đi qua được.
+  //   Bảng này chỉ có 2/22 ca dưới 5 giây (DƯỚI cổng 1/4 = 5,5), nên nó đi qua được
+  //   ở CẢ ngưỡng 2000 lẫn 5000 ms — tự nó KHÔNG khoá được ngưỡng. Giữ ca này làm mỏ
+  //   neo "bảng thật phải lọt"; việc khoá vùng biên là của ca `6g-bis` ngay dưới.
   const PROD_14_11 = [7.31, 4.97, 24.74, 25.63, 4.52, 6.97, 5.36, 5.46, 12.48, 6.89, 5.98,
     5.37, 13.9, 6.84, 6.52, 5.93, 12.91, 5.27, 12.46, 21.72, 13.44, 10.08];
   const bangThat = PROD_14_11.map((g) => ok(g));
   ca('bảng prod 14/11 có thật ⇒ KHÔNG bị chặn oan', kiemTinCay(bangThat, suc).hopLe === true);
   ca('bảng prod 14/11 không nêu lý do nào', kiemTinCay(bangThat, suc).lyDo.length === 0);
+
+  // 6g-bis) KHOÁ VÙNG BIÊN 2000–5000 ms. Đây mới là ca chết nếu ai đó nâng
+  //   `NGUONG_NGHI_KHONG_AI_MS` ngược về 5000: 8/22 ca nằm trong dải 2–5 giây
+  //   (trên cổng 1/4 = 5,5 ca). Ở ngưỡng 2000 ms chúng là lượt AI thật rẻ tiền ⇒
+  //   PHẢI lọt; ở ngưỡng 5000 ms chúng bị gom vào "không có AI" ⇒ chặn oan.
+  //   Mốc 4,52 giây đo được trên prod là bằng chứng dải này có lượt thật.
+  const biên = [
+    ...Array.from({ length: 8 }, (_, i) => ok(2.5 + i * 0.3)),
+    ...Array.from({ length: 14 }, (_, i) => ok(20 + i)),
+  ];
+  ca('8/22 ca trong dải 2–5 giây ⇒ vẫn hợp lệ (khoá ngưỡng 2000, không phải 5000)',
+    kiemTinCay(biên, suc).hopLe === true);
+
+  // 6g-ter) Phía kia của cùng cái biên: ca THẬT SỰ dưới 2 giây vẫn phải bị chặn,
+  //   để việc hạ ngưỡng không biến cổng thành vô dụng.
+  const duoiHaiGiay = [
+    ...Array.from({ length: 6 }, (_, i) => ok(0.4 + i * 0.2, { ma8So: null, reasonCode: 'ENGINE_TIMEOUT' })),
+    ...Array.from({ length: 16 }, (_, i) => ok(20 + i)),
+  ];
+  ca('6/22 ca dưới 2 giây ⇒ chặn', kiemTinCay(duoiHaiGiay, suc).hopLe === false);
 
   // 6g) Vài ca lỗi lẻ tẻ (3/22) là chuyện thường của lượt LLM thật ⇒ KHÔNG chặn,
   //     để cổng không báo oan làm người đo bỏ luôn số đúng.

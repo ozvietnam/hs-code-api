@@ -48,9 +48,16 @@ const RA = doCo('ra', null);
  * Bản đầu đặt 5000 ms theo câu "lượt thật rẻ nhất trong thực địa cũng ~36 giây".
  * Đo thật trên prod 14/11 (22 ca, `/api/classify`) BÁC BỎ câu đó: ca `td-05` về
  * trong 4,52 giây mà vẫn là lượt AI thật — `engine.rounds = 2`, `engine.providers
- * = ["gemini-free","gemini-free"]`. Giữ 5000 ms thì cổng sẽ chặn oan chính những
- * bảng số ĐÚNG mà dự án đang cần. Hạ về 2000 ms: đó mới là dải của bản chạy
- * không khoá, nơi `/api/classify` trả ENGINE_TIMEOUT gần như tức thì.
+ * = ["gemini-free","gemini-free"]`.
+ *
+ * Nói cho đúng số (soát chéo 14/11 bắt được chỗ này): bảng prod 14/11 chỉ có
+ * 2/22 ca dưới 5 giây, DƯỚI cổng 1/4 (5,5 ca), nên bảng đó đi qua được ở CẢ hai
+ * ngưỡng — không phải "5000 ms chặn oan bảng ấy". Lý do hạ là ở nguyên tắc: đã
+ * chứng minh được một lượt AI THẬT về trong 4,52 giây thì mốc 5000 ms nằm sai
+ * chỗ, nó gom lượt thật vào vùng nghi. Chỉ cần thực địa nhanh thêm chút (4 ca
+ * nữa trong dải 2–5 giây) là cổng 5000 ms chặn oan thật. 2000 ms mới là dải
+ * riêng của bản chạy không khoá, nơi `/api/classify` trả ENGINE_TIMEOUT gần như
+ * tức thì. Ca `6g-bis` trong bộ test khoá đúng vùng biên 2000–5000 ms này.
  */
 const NGUONG_NGHI_KHONG_AI_MS = 2000;
 const MA_8_SO = /^\d{8}$/;
@@ -159,12 +166,14 @@ const lam2 = (n) => (n == null ? '—' : n.toFixed(2));
  *  1. `/api/health` nói thẳng không có nhà cung cấp LLM nào (`llm.order` rỗng) —
  *     dấu hiệu chắc chắn nhất, không phải đoán theo giây;
  *  2. có ca trả mã lý do thiếu khoá (`LLM_NOT_CONFIGURED`…) — một ca là đủ;
- *  3. từ 1/4 số ca trở lên về dưới 5 giây — lượt thật rẻ nhất trong thực địa ~36 giây;
+ *  3. từ 1/4 số ca trở lên về dưới `NGUONG_NGHI_KHONG_AI_MS` (2 giây) — xem ghi
+ *     chú ở hằng số đó: lượt AI thật đã đo được ở 4,52 giây, nên mốc nghi phải
+ *     nằm dưới dải đó, chỉ ôm vùng ENGINE_TIMEOUT tức thì;
  *  4. quá nửa số ca lỗi (A2) — bảng trung vị/p95 khi đó vô nghĩa.
  *
  * Hai ngưỡng khác nhau là cố ý. Ca LỖI lác đác là chuyện thường của lượt LLM thật
  * (nhà cung cấp rớt rồi lên lại), nên chỉ chặn khi quá nửa — cổng báo oan sẽ làm
- * người đo bỏ luôn số đúng. Còn ca về DƯỚI 5 GIÂY thì không có cách đọc lành nào:
+ * người đo bỏ luôn số đúng. Còn ca về dưới 2 GIÂY thì không có cách đọc lành nào:
  * nó là bản chạy không gọi AI, nên 1/4 đã đủ chặn.
  */
 export function kiemTinCay(ketQua, suc) {
