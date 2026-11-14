@@ -4,13 +4,18 @@
   "nhom": "8404",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-840410",
     "ngay": "2026-11-02"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude:soat:840410#soat-840410",
+    "ngay": "2026-11-14",
+    "bam": "e53ec180c4097908e449bc0e95273d7930cae631a6ca40753588e705542f2219"
+  },
   "dieuKienNut": [
     {
       "id": "8404101",
@@ -20,10 +25,10 @@
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
-          "value": "84.02"
+          "value": "nồi hơi thuộc nhóm 84.02"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -41,14 +46,14 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84041019",
       "nguon": "tax.84041019",
       "trich": "84041019 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84041020",
@@ -58,17 +63,17 @@
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
-          "value": "84.03"
+          "value": "nồi hơi thuộc nhóm 84.03"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "8404101",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.8404101: \"Dùng cho nồi hơi thuộc nhóm 84.02\" ⇒ dungCho \"84.02\""
+      "ghiChu": "tieuDe.8404101: \"Dùng cho nồi hơi thuộc nhóm 84.02\" ⇒ dungCho \"nồi hơi thuộc nhóm 84.02\""
     },
     {
       "ma": "84041011",
@@ -78,7 +83,7 @@
     {
       "ma": "84041020",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.84041020: \"Dùng cho nồi hơi thuộc nhóm 84.03\" ⇒ dungCho \"84.03\""
+      "ghiChu": "tax.84041020: \"Dùng cho nồi hơi thuộc nhóm 84.03\" ⇒ dungCho \"nồi hơi thuộc nhóm 84.03\""
     }
   ],
   "traVe": [
@@ -86,6 +91,11 @@
       "phien": "claude-agent:tech-lead-20261111#soat-lai",
       "ngay": "2026-11-11",
       "lyDo": "bo-kiem-luat --toan-bieu (gộp thử với main, đo hai bên cùng nhịp): bản duyệt sinh ca chốt sai mới (chotSai/chotLoaiKhacSai tăng) — cổng gộp không cho tăng. Soạn/soát lại vế gây chốt sai rồi đo lại trước khi duyệt."
+    },
+    {
+      "phien": "claude:travet:840410#travet-840410",
+      "ngay": "2026-11-14",
+      "lyDo": "Sửa spec theo góp ý soát"
     }
   ]
 }

@@ -530,27 +530,144 @@
     },
     {
       "hs": "84798910",
-      "dieuKien": "Thiết bị tự động sắp đặt/loại bỏ linh kiện hoặc phần tử tiếp xúc chỉ/chủ yếu dùng sản xuất mạch in đã lắp ráp",
+      "dieuKien": "tên loại hàng: Thiết bị tự động; chỉ hoặc chủ yếu dùng cho (mức ràng buộc công dụng); dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): sản xuất mạch in đã lắp ráp",
       "loaiKhac": false,
       "nguon": "tax.84798910",
-      "trich": "Thiết bị tự động sắp đặt hoặc loại bỏ các linh kiện hoặc phần tử tiếp xúc chỉ sử dụng hoặc chủ yếu sử dụng để sản xuất mạch in đã lắp ráp",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "84798910 - - - Thiết bị tự động sắp đặt hoặc loại bỏ các linh kiện hoặc phần tử tiếp xúc chỉ sử dụng hoặc chủ yếu sử dụng để sản xuất mạch in đã lắp ráp",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thiết bị tự động"
+        },
+        {
+          "fact": "chiHoacChuYeu",
+          "op": "CO"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "sản xuất mạch in đã lắp ráp"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "https://claude.ai/code/session_THO_HS_02#soat-847989",
+          "ngay": "2026-11-14",
+          "bam": "819c52e9c3f39a34924111c0d7409c9bb310b744bfbf3e4d71dd909aa5ecd48d"
+        }
+      }
     },
     {
       "hs": "84798950",
-      "dieuKien": "Máy lắp bo mạch nhánh CPU vào vỏ plastic; thiết bị tái sinh dung dịch hóa học, làm sạch cơ học, đồng chỉnh tấm mạch in/tấm dây in trong sản xuất",
+      "dieuKien": "(tên loại hàng: Máy lắp ráp và dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): bộ xử lý trung tâm (CPU) và dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): hộp đựng bằng plastic) hoặc (tên loại hàng: thiết bị tái sinh dung dịch hóa học và dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): tấm mạch in hoặc tấm dây in) hoặc (tên loại hàng: thiết bị làm sạch cơ học và dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): tấm mạch in hoặc tấm dây in) hoặc (tên loại hàng: thiết bị đồng chỉnh và dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): tấm mạch in hoặc tấm dây in hoặc mạch in đã lắp ráp)",
       "loaiKhac": false,
       "nguon": "tax.84798950",
-      "trich": "Máy lắp ráp các bo mạch nhánh của bộ xử lý trung tâm (CPU) vào các vỏ hoặc hộp đựng bằng plastic; thiết bị tái sinh dung dịch hóa học dùng trong sản xuất tấm mạch in hoặc tấm dây in",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "Máy lắp ráp … bộ xử lý trung tâm (CPU) vào các vỏ hoặc hộp đựng bằng plastic; thiết bị tái sinh dung dịch hóa học … tấm mạch in hoặc tấm dây in; thiết bị làm sạch cơ học … tấm mạch in hoặc tấm dây in trong sản xuất; thiết bị đồng chỉnh tấm mạch in … mạch in đã lắp ráp trong quá trình sản xuất",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Máy lắp ráp"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "bộ xử lý trung tâm (CPU)"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "hộp đựng bằng plastic"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "thiết bị tái sinh dung dịch hóa học"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "tấm mạch in",
+                  "tấm dây in"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "thiết bị làm sạch cơ học"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "tấm mạch in",
+                  "tấm dây in"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "thiết bị đồng chỉnh"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "tấm mạch in",
+                  "tấm dây in",
+                  "mạch in đã lắp ráp"
+                ]
+              }
+            ]
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "https://claude.ai/code/session_THO_HS_02#soat-847989",
+          "ngay": "2026-11-14",
+          "bam": "819c52e9c3f39a34924111c0d7409c9bb310b744bfbf3e4d71dd909aa5ecd48d"
+        }
+      }
     },
     {
       "hs": "84798961",
-      "dieuKien": "Máy bán hàng dịch vụ tự động",
+      "dieuKien": "tên loại hàng: Máy bán hàng dịch vụ tự động",
       "loaiKhac": false,
       "nguon": "tax.84798961",
       "trich": "84798961 - - - - Máy bán hàng dịch vụ tự động (Automatic service-vending machines)",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy bán hàng dịch vụ tự động"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "https://claude.ai/code/session_THO_HS_02#soat-847989",
+          "ngay": "2026-11-14",
+          "bam": "819c52e9c3f39a34924111c0d7409c9bb310b744bfbf3e4d71dd909aa5ecd48d"
+        }
+      }
     },
     {
       "hs": "84798969",
@@ -571,11 +688,11 @@
     },
     {
       "hs": "84798970",
-      "dieuKien": "Loại khác thuộc 8479.89, không hoạt động bằng điện",
+      "dieuKien": "không: hoạt động bằng điện",
       "loaiKhac": true,
       "nguon": "tax.84798970",
       "trich": "84798970 - - - Loại khác, không hoạt động bằng điện",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phamViLoaiKhac": {
         "nguonLoai": "MAY_SUY",
         "cha": "847989",
@@ -586,6 +703,20 @@
         ],
         "toTienCoTen": "847989",
         "dinhNghiaDuoc": true
+      },
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "https://claude.ai/code/session_THO_HS_02#soat-847989",
+          "ngay": "2026-11-14",
+          "bam": "819c52e9c3f39a34924111c0d7409c9bb310b744bfbf3e4d71dd909aa5ecd48d"
+        }
       }
     },
     {
@@ -1047,5 +1178,27 @@
       ]
     }
   },
-  "yKienWcoDayDu": false
+  "yKienWcoDayDu": false,
+  "dieuKienNut": [
+    {
+      "id": "8479896",
+      "nguon": "tieuDe.8479896",
+      "trich": "8479896 Loại khác, hoạt động bằng điện",
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "https://claude.ai/code/session_THO_HS_02#soat-847989",
+          "ngay": "2026-11-14",
+          "bam": "819c52e9c3f39a34924111c0d7409c9bb310b744bfbf3e4d71dd909aa5ecd48d"
+        }
+      }
+    }
+  ]
 }
