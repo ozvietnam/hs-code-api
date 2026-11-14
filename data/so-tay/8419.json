@@ -659,43 +659,103 @@
     },
     {
       "hs": "84195010",
-      "dieuKien": "Tháp làm mát (phân nhóm 841950: bộ trao đổi nhiệt, không dùng trong gia đình)",
+      "dieuKien": "tên loại hàng: Tháp làm mát",
       "loaiKhac": false,
       "nguon": "tax.84195010",
       "trich": "84195010 - - Tháp làm mát",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Tháp làm mát"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "pc-tho-hs-03:OZV-940#soat-841950",
+          "ngay": "2026-11-14",
+          "bam": "223cc264630e67cb057f040137dbc38b5a7ae1bf03bc7b97d1f8b9139d514caa"
+        }
+      }
     },
     {
       "hs": "84195020",
-      "dieuKien": "Bộ trao đổi nhiệt làm bằng các ống fluoropolyme, với ống đầu vào và ống ra có đường kính trong từ 3 cm trở xuống (SEN)",
+      "dieuKien": "tên loại hàng: Bộ trao đổi nhiệt; bằng fluoropolyme (polyme flo hóa: PTFE, PFA, FEP, PVDF); đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) <= 3 cm",
       "loaiKhac": false,
-      "nguon": "sen.84195020",
-      "trich": "BỘ TRAO ĐỔI NHIỆT LÀM BẰNG CÁC ỐNG FLUOROPOLYME, VỚI ỐNG ĐẦU VÀO VÀ ỐNG RA CÓ ĐƯỜNG KÍNH TRONG TỪ 3CM TRỞ XUỐNG",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguon": "tax.84195020",
+      "trich": "84195020 - - Bộ trao đổi nhiệt làm bằng các ống fluoropolyme, với ống đầu vào và ống ra có đường kính trong từ 3 cm trở xuống (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "duong_kinh",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bộ trao đổi nhiệt"
+        },
+        {
+          "fact": "bangFluoropolyme",
+          "op": "CO"
+        },
+        {
+          "fact": "duongKinhTrong",
           "op": "<=",
           "value": 3,
           "donVi": "cm"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "pc-tho-hs-03:OZV-940#soat-841950",
+          "ngay": "2026-11-14",
+          "bam": "223cc264630e67cb057f040137dbc38b5a7ae1bf03bc7b97d1f8b9139d514caa"
+        }
+      }
     },
     {
       "hs": "84195091",
-      "dieuKien": "Hoạt động bằng điện (phân nhóm 841950: bộ trao đổi nhiệt, không dùng trong gia đình)",
+      "dieuKien": "hoạt động bằng điện",
       "loaiKhac": false,
       "nguon": "tax.84195091",
       "trich": "84195091 - - - Hoạt động bằng điện",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "pc-tho-hs-03:OZV-940#soat-841950",
+          "ngay": "2026-11-14",
+          "bam": "223cc264630e67cb057f040137dbc38b5a7ae1bf03bc7b97d1f8b9139d514caa"
+        }
+      }
     },
     {
       "hs": "84195092",
-      "dieuKien": "Không hoạt động bằng điện (phân nhóm 841950: bộ trao đổi nhiệt, không dùng trong gia đình)",
+      "dieuKien": "không: hoạt động bằng điện",
       "loaiKhac": false,
       "nguon": "tax.84195092",
       "trich": "84195092 - - - Không hoạt động bằng điện",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "pc-tho-hs-03:OZV-940#soat-841950",
+          "ngay": "2026-11-14",
+          "bam": "223cc264630e67cb057f040137dbc38b5a7ae1bf03bc7b97d1f8b9139d514caa"
+        }
+      }
     },
     {
       "hs": "84196000",
