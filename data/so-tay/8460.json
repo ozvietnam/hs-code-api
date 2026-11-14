@@ -181,12 +181,41 @@
     },
     {
       "hs": "84603110",
-      "dieuKien": "Máy mài sắc, điều khiển số, có bộ phận đồ gá kẹp mẫu gia công hình ống lắp cố định và có công suất không quá 0,74 kW, để mài sắc các mũi khoan bằng vật liệu carbua với đường kính chuôi không quá 3,175 mm",
-      "tieuChi": null,
+      "dieuKien": "công suất <= 0.74 kW; lắp vừa mũi có đường kính chuôi không quá 3,175 mm; tên loại hàng: bộ phận đồ gá kẹp mẫu gia công hình ống lắp cố định; công dụng / mục đích: mài sắc các mũi khoan bằng vật liệu carbua",
       "loaiKhac": false,
       "nguon": "tax.84603110",
       "trich": "84603110 - - - Máy công cụ, điều khiển số, có bộ phận đồ gá kẹp mẫu gia công hình ống lắp cố định và có công suất không quá 0,74 kW, để mài sắc các mũi khoan bằng vật liệu carbua với đường kính chuôi không quá 3,175 mm",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 0.74,
+          "donVi": "kW"
+        },
+        {
+          "fact": "chuoiMuiKhongQua3175",
+          "op": "CO"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "bộ phận đồ gá kẹp mẫu gia công hình ống lắp cố định"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "mài sắc các mũi khoan bằng vật liệu carbua"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-OZV-870-20261114#soat-846031",
+          "ngay": "2026-11-14",
+          "bam": "efda021948a09c477f46a77d233cb60fc3ec1550f4ec9f2a2316e61b976c372a"
+        }
+      }
     },
     {
       "hs": "84603190",

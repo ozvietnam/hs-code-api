@@ -4,13 +4,19 @@
   "nhom": "8406",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T0941#soan-840682",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:duyet-OZV-870-20261114#soat-840682",
+    "ngay": "2026-11-14",
+    "ghiChu": "Đối chiếu VI+EN: 84068210 'Công suất đầu ra không quá 5 MW' neo tenLoai nguyên văn (tu-vung@2 congSuat không có MW, chặn hạ mW miliwatt của TRA_VE L24); .90 Loại khác trần.",
+    "bam": "8171bf0731bd42640719a9194bfecc4b0caddffd541b8dfb87dcf2245362fdf2"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -19,27 +25,26 @@
       "trich": "84068210 - - - Công suất đầu ra không quá 5 MW",
       "dieuKienSo": [
         {
-          "fact": "congSuat",
-          "op": "<=",
-          "value": 5,
-          "donVi": "mW"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Công suất đầu ra không quá 5 MW"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84068290",
       "nguon": "tax.84068290",
       "trich": "84068290 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "84068210",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.84068210 \"Công suất đầu ra không quá 5 MW\" ⇒ congSuat <= 5 MW (\"không quá\" = <=)."
+      "ghiChu": "tax.84068210 \"Công suất đầu ra không quá 5 MW\" ⇒ tenLoai \"Công suất đầu ra không quá 5 MW\" (hệ đơn vị congSuat của tu-vung@2 không có MW và chặn MW hoa để không hạ thành mW miliwatt như lỗi TRA_VE L24; neo nguyên văn cụm dòng có số phân biệt '5' với tiêu đề phân nhóm '40')."
     }
   ],
   "traVe": [

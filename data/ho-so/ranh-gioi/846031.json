@@ -4,13 +4,19 @@
   "nhom": "8460",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-846031",
     "ngay": "2026-11-04"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:duyet-OZV-870-20261114#soat-846031",
+    "ngay": "2026-11-14",
+    "ghiChu": "Đối chiếu VI+EN: 84603110 phủ đủ 5/5 vế (congSuat <= 0.74 kW + chuoiMuiKhongQua3175 CO + tenLoai đồ gá hình ống lắp cố định + congDung mài sắc mũi khoan bằng vật liệu carbua), bỏ 2 BO_VE suy rộng của TRA_VE L26; .90 Loại khác trần.",
+    "bam": "efda021948a09c477f46a77d233cb60fc3ec1550f4ec9f2a2316e61b976c372a"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -25,44 +31,35 @@
           "donVi": "kW"
         },
         {
-          "fact": "duongKinh",
-          "op": "<=",
-          "value": 3.175,
-          "donVi": "mm"
+          "fact": "chuoiMuiKhongQua3175",
+          "op": "CO"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "bộ phận đồ gá kẹp mẫu gia công hình ống lắp cố định"
         },
         {
           "fact": "congDung",
           "op": "CONG_DUNG",
-          "value": "để mài sắc các mũi khoan"
+          "value": "mài sắc các mũi khoan bằng vật liệu carbua"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84603190",
       "nguon": "tax.84603190",
       "trich": "84603190 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "84603110",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.84603110: \"Máy công cụ, điều khiển số, có bộ phận đồ gá kẹp mẫu gia công hình ống lắp cố định và có công suất không quá 0,74 kW, để mài sắc các mũi khoan bằng vật liệu carbua với đường kính chuôi không quá 3,175 mm\" ⇒ congSuat <= 0.74 kW + duongKinh <= 3.175 mm + congDung \"để mài sắc các mũi khoan\""
-    },
-    {
-      "ma": "84603110",
-      "loai": "BO_VE",
-      "ve": "có bộ phận đồ gá kẹp mẫu gia công hình ống lắp cố định",
-      "lyDo": "Chi tiết cấu tạo đặc thù của đồ gá kẹp, không có khoá tương ứng trong tu-vung@2, đã phân biệt bằng công suất và đường kính chuôi"
-    },
-    {
-      "ma": "84603110",
-      "loai": "BO_VE",
-      "ve": "bằng vật liệu carbua",
-      "lyDo": "Vật liệu của mũi khoan (đối tượng gia công), không phải chất liệu của máy"
+      "ghiChu": "tax.84603110: \"Máy công cụ, điều khiển số, có bộ phận đồ gá kẹp mẫu gia công hình ống lắp cố định và có công suất không quá 0,74 kW, để mài sắc các mũi khoan bằng vật liệu carbua với đường kính chuôi không quá 3,175 mm\" ⇒ congSuat <= 0.74 kW + chuoiMuiKhongQua3175 CO (khoá lô 20 đọc nguyên văn \"đường kính chuôi không quá 3,175 mm\") + tenLoai \"bộ phận đồ gá kẹp mẫu gia công hình ống lắp cố định\" + congDung \"mài sắc các mũi khoan bằng vật liệu carbua\" (sửa TRA_VE L26: phủ đủ 5/5 vế, bỏ 2 BO_VE suy rộng)"
     }
   ],
   "traVe": [
