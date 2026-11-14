@@ -216,11 +216,31 @@
     },
     {
       "hs": "73053910",
-      "dieuKien": "Ống dẫn chịu áp lực cao có giới hạn chảy (1) không nhỏ hơn 42.000 psi",
+      "dieuKien": "ống dẫn chịu áp lực cao; giới hạn chảy >= 42000 psi",
       "loaiKhac": false,
       "nguon": "tax.73053910",
       "trich": "73053910 - - - Ống dẫn chịu áp lực cao có giới hạn chảy (1) không nhỏ hơn 42.000 psi",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "ongChiuApLucCao",
+          "op": "CO"
+        },
+        {
+          "fact": "gioiHanChay",
+          "op": ">=",
+          "value": 42000,
+          "donVi": "psi"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-soat:OZV-871#soat-730539",
+          "ngay": "2026-11-14",
+          "bam": "5171a2720a1537b6b6730500b6fb628a7a702d7bc6e543b0ac6f367ea59335dc"
+        }
+      }
     },
     {
       "hs": "73053990",

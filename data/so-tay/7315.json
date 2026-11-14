@@ -152,21 +152,60 @@
   "dong8": [
     {
       "hs": "73151110",
-      "dieuKien": "Xích xe đạp hoặc xích xe mô tô, thuộc phân nhóm xích được nối bản lề loại con lăn (tên WCO 731511: articulated link, roller)",
-      "tieuChi": null,
+      "dieuKien": "xích xe đạp hoặc xích xe mô tô",
       "loaiKhac": false,
       "nguon": "tax.73151110",
-      "trich": "Xích xe đạp hoặc xích xe mô tô",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "73151110 - - - Xích xe đạp hoặc xích xe mô tô",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "xichXeDapMoTo",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-soat:OZV-871#soat-731511",
+          "ngay": "2026-11-14",
+          "bam": "c8b349e7343850eca4e5a5ecf0788004d54843b3a773a995171dd55c698f5750"
+        }
+      }
     },
     {
       "hs": "73151191",
-      "dieuKien": "Xích truyền có độ dài mắt xích từ 6 mm đến 32 mm, không phải xích xe đạp/xe mô tô (dòng 73151110), thuộc phân nhóm xích được nối bản lề loại con lăn (WCO 731511)",
-      "tieuChi": null,
+      "dieuKien": "tên loại hàng: Xích truyền; chiều dài >= 6 mm; chiều dài <= 32 mm",
       "loaiKhac": false,
       "nguon": "tax.73151191",
-      "trich": "Xích truyền, có độ dài mắt xích từ 6 mm đến 32 mm",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "73151191 - - - - Xích truyền, có độ dài mắt xích từ 6 mm đến 32 mm",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xích truyền"
+        },
+        {
+          "fact": "chieuDai",
+          "op": ">=",
+          "value": 6,
+          "donVi": "mm"
+        },
+        {
+          "fact": "chieuDai",
+          "op": "<=",
+          "value": 32,
+          "donVi": "mm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-soat:OZV-871#soat-731511",
+          "ngay": "2026-11-14",
+          "bam": "c8b349e7343850eca4e5a5ecf0788004d54843b3a773a995171dd55c698f5750"
+        }
+      }
     },
     {
       "hs": "73151199",

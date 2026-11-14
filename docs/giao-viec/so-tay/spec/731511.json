@@ -1,7 +1,7 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "731511",
-  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-731511",
+  "phien": "pc-tho-hs-01:OZV-871#soan-731511",
   "dong8": {
     "73151110": {
       "dieuKienSo": [
@@ -14,13 +14,18 @@
     "73151191": {
       "dieuKienSo": [
         {
-          "fact": "chieuDaiCuon",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xích truyền"
+        },
+        {
+          "fact": "chieuDai",
           "op": ">=",
           "value": 6,
           "donVi": "mm"
         },
         {
-          "fact": "chieuDaiCuon",
+          "fact": "chieuDai",
           "op": "<=",
           "value": 32,
           "donVi": "mm"
@@ -38,19 +43,13 @@
     {
       "ma": "73151191",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.73151191: \"Xích truyền, có độ dài mắt xích từ 6 mm đến 32 mm\" ⇒ chieuDaiCuon >= 6 mm, <= 32 mm"
+      "ghiChu": "tax.73151191: \"Xích truyền, có độ dài mắt xích từ 6 mm đến 32 mm\" ⇒ tenLoai \"Xích truyền\" + chieuDai >= 6 mm, <= 32 mm (đơn vị chuẩn mm, đọc 'độ dài')"
     },
     {
       "ma": "73151191",
       "loai": "BO_VE",
       "ve": "có độ dài mắt xích",
-      "lyDo": "Cụm danh từ chỉ thuộc tính độ dài"
-    },
-    {
-      "ma": "73151191",
-      "loai": "BO_VE",
-      "ve": "từ 6 mm đến 32 mm",
-      "lyDo": "Đã lượng hóa qua chieuDaiCuon"
+      "lyDo": "Cụm danh từ chỉ thuộc tính độ dài mắt xích đã được lượng hoá qua chieuDai >= 6 mm, <= 32 mm kết hợp tenLoai \"Xích truyền\""
     }
   ]
 }
