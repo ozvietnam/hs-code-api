@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "claude-agent:tho-hs-03:20261114T1612#soan-984935",
+    "phien": "claude-agent:tho-hs-03:20261114T1645#soan-984935",
     "ngay": "2026-11-14"
   },
   "duyet": null,
@@ -52,10 +52,6 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Két nước làm mát"
-        },
-        {
-          "fact": "laBoPhan",
-          "op": "KHONG"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -384,19 +380,10 @@
     },
     {
       "hs": "98493529",
-      "nguon": "tuongUng.98493529",
-      "trich": "Loại khác — mã hàng tương ứng: 8708.91.19",
-      "dieuKienSo": [
-        {
-          "fact": "maHsTuongUng",
-          "op": "CONG_DUNG",
-          "value": [
-            "8708.91.19"
-          ]
-        }
-      ],
-      "nguonLoai": "AI_DA_KIEM",
-      "phanConLai": true
+      "nguon": "tax.98493529",
+      "trich": "98493529 - - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "98493531",
@@ -463,19 +450,10 @@
     },
     {
       "hs": "98493539",
-      "nguon": "tuongUng.98493539",
-      "trich": "Loại khác — mã hàng tương ứng: 8708.91.99",
-      "dieuKienSo": [
-        {
-          "fact": "maHsTuongUng",
-          "op": "CONG_DUNG",
-          "value": [
-            "8708.91.99"
-          ]
-        }
-      ],
-      "nguonLoai": "AI_DA_KIEM",
-      "phanConLai": true
+      "nguon": "tax.98493539",
+      "trich": "98493539 - - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "98493541",
@@ -937,7 +915,7 @@
     {
       "ma": "984935~r19798",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.984935~r19798 \"Két nước làm mát\" — hàng hoàn chỉnh, anh em của 9849353 \"Bộ phận\" ⇒ tenLoai \"Két nước làm mát\" + laBoPhan KHONG (căn cứ cấu trúc: anh em tên trần \"Bộ phận\")"
+      "ghiChu": "tieuDe.984935~r19798 \"Két nước làm mát\" — chỉ tenLoai (bỏ laBoPhan KHONG): tổ tiên r19796 chữ \"Bộ phận khác…\" làm laBoPhan=true trên ca tên dòng ⇒ KHONG ở nút này đánh TRÁI rồi rơi sang 98493539 (GĐ trả OZV-655)"
     },
     {
       "ma": "9849354",
@@ -977,7 +955,7 @@
     {
       "ma": "98493529",
       "loai": "QUYET_DINH",
-      "ghiChu": "OZV-655: Loại khác két nước hoàn chỉnh — phanConLai + maHsTuongUng 8708.91.19 để hết chotLoaiKhacSai .29→.39"
+      "ghiChu": "OZV-655 trả thợ: xoá 98493529/98493539 khỏi dong8 — dòng Loại khác giữ phanConLai máy sinh, không gắn dieuKienSo (Cổng 0/3); hết chotLoaiKhacSai bằng bỏ laBoPhan KHONG ở r19798"
     }
   ],
   "traVe": [
