@@ -228,21 +228,78 @@
     },
     {
       "hs": "74198010",
-      "dieuKien": "xích và các bộ phận của xích, thuộc 7419.80",
-      "tieuChi": null,
+      "dieuKien": "(tên loại hàng: Xích) hoặc (là bộ phận (không phải hàng hoàn chỉnh) và dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): Xích)",
       "nguon": "tax.74198010",
       "trich": "74198010 - - Xích và các bộ phận của xích",
-      "nguonLoai": "NGUOI_DUYET",
-      "loaiKhac": false
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Xích"
+              }
+            ],
+            [
+              {
+                "fact": "laBoPhan",
+                "op": "CO"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "Xích"
+              }
+            ]
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-947:20261114T1430#soat-741980",
+          "ngay": "2026-11-14",
+          "bam": "f4d9d3b51a44ba371a446c2ce8752bf0e35d35df8332de6d9cef0dcce7247f07"
+        }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "74198080",
+          "lyDo": "Không có hàng thật thoả cả hai (Q1, Claude 07/11/2026): \"Xích và các bộ phận của xích\" ↔ \"Thùng, két, bể chứa và các loại đồ chứa đựng tương tự có dung tích từ 300 lít trở xuống không gắn thiết bị cơ khí hoặc thiết bị gia nhiệt\" — xích (và bộ phận của xích) và thùng, két, bể chứa là hai loại hàng khác hẳn nhau."
+        }
+      ]
     },
     {
       "hs": "74198021",
-      "dieuKien": "tấm đan (kể cả đai liền), phên và lưới bằng dây đồng — dòng chuyên biệt là đai liền cho máy móc",
-      "tieuChi": null,
+      "dieuKien": "tên loại hàng: Đai liền; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): máy móc",
       "nguon": "tax.74198021",
       "trich": "74198021 - - - Đai liền cho máy móc",
-      "nguonLoai": "NGUOI_DUYET",
-      "loaiKhac": false
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Đai liền"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy móc"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-947:20261114T1430#soat-741980",
+          "ngay": "2026-11-14",
+          "bam": "f4d9d3b51a44ba371a446c2ce8752bf0e35d35df8332de6d9cef0dcce7247f07"
+        }
+      }
     },
     {
       "hs": "74198029",
@@ -264,62 +321,264 @@
     },
     {
       "hs": "74198030",
-      "dieuKien": "lò xo, trừ lò xo đồng hồ thời gian hoặc đồng hồ cá nhân (nhóm 91.14)",
-      "tieuChi": null,
+      "dieuKien": "tên loại hàng: Lò xo",
       "nguon": "tax.74198030",
       "trich": "74198030 - - Lò xo",
-      "nguonLoai": "NGUOI_DUYET",
-      "loaiKhac": false
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Lò xo"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-947:20261114T1430#soat-741980",
+          "ngay": "2026-11-14",
+          "bam": "f4d9d3b51a44ba371a446c2ce8752bf0e35d35df8332de6d9cef0dcce7247f07"
+        }
+      }
     },
     {
       "hs": "74198040",
-      "dieuKien": "hộp đựng thuốc lá điếu",
-      "tieuChi": null,
+      "dieuKien": "tên loại hàng: Hộp đựng thuốc lá điếu; hộp đựng thuốc lá điếu (kể cả có kèm gạt tàn)",
       "nguon": "tax.74198040",
       "trich": "74198040 - - Hộp đựng thuốc lá điếu",
-      "nguonLoai": "NGUOI_DUYET",
-      "loaiKhac": false
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Hộp đựng thuốc lá điếu"
+        },
+        {
+          "fact": "hopDungThuocLaDieu",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-947:20261114T1430#soat-741980",
+          "ngay": "2026-11-14",
+          "bam": "f4d9d3b51a44ba371a446c2ce8752bf0e35d35df8332de6d9cef0dcce7247f07"
+        }
+      }
     },
     {
       "hs": "74198050",
-      "dieuKien": "thiết bị nấu hoặc đun nóng trừ loại dùng trong gia đình, và các bộ phận của các sản phẩm này",
-      "tieuChi": null,
+      "dieuKien": "(tên loại hàng: Thiết bị nấu hoặc đun nóng và không phạm vi sử dụng: gia đình (gia dụng)) hoặc (là bộ phận (không phải hàng hoàn chỉnh) và dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): Thiết bị nấu hoặc đun nóng)",
       "nguon": "tax.74198050",
       "trich": "74198050 - - Thiết bị nấu hoặc đun nóng, trừ loại dùng trong gia đình, và các bộ phận của các sản phẩm này",
-      "nguonLoai": "NGUOI_DUYET",
-      "loaiKhac": false
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "Thiết bị nấu",
+                  "đun nóng"
+                ]
+              },
+              {
+                "fact": "phamViSuDung",
+                "op": "TRONG",
+                "value": [
+                  "GIA_DINH"
+                ],
+                "chieu": "PHAI_KHONG"
+              }
+            ],
+            [
+              {
+                "fact": "laBoPhan",
+                "op": "CO"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "Thiết bị nấu",
+                  "đun nóng"
+                ]
+              }
+            ]
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-947:20261114T1430#soat-741980",
+          "ngay": "2026-11-14",
+          "bam": "f4d9d3b51a44ba371a446c2ce8752bf0e35d35df8332de6d9cef0dcce7247f07"
+        }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "74198080",
+          "lyDo": "Không có hàng thật thoả cả hai (Q1, Claude 07/11/2026): \"Thiết bị nấu hoặc đun nóng, trừ loại dùng trong gia đình, và các bộ phận của các sản phẩm này\" ↔ \"Thùng, két, bể chứa và các loại đồ chứa đựng tương tự có dung tích từ 300 lít trở xuống không gắn thiết bị cơ khí hoặc thiết bị gia nhiệt\" — thiết bị nấu hoặc đun nóng luôn có bộ phận gia nhiệt, còn dòng .80 chỉ gồm đồ chứa KHÔNG gắn thiết bị gia nhiệt; không có hàng thoả cả hai."
+        }
+      ]
     },
     {
       "hs": "74198060",
-      "dieuKien": "vật dụng bằng đồng dùng trong nghi lễ tôn giáo, có hình dáng và thiết kế đặc biệt; hàng hoá phải được nhận biết là dùng trong nghi lễ tôn giáo (SEN)",
-      "tieuChi": null,
-      "nguon": "sen.74198060",
-      "trich": "Để được xếp vào phân nhóm này, hàng hoá đó phải được nhận biết là chúng được sử dụng trong các nghi lễ tôn giáo.",
-      "nguonLoai": "NGUOI_DUYET",
-      "loaiKhac": false
+      "dieuKien": "tên loại hàng: vật dụng; công dụng / mục đích: sử dụng trong nghi lễ tôn giáo",
+      "nguon": "tax.74198060",
+      "trich": "74198060 - - Các vật dụng được thiết kế riêng sử dụng trong nghi lễ tôn giáo (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "vật dụng"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "sử dụng trong nghi lễ tôn giáo"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-947:20261114T1430#soat-741980",
+          "ngay": "2026-11-14",
+          "bam": "f4d9d3b51a44ba371a446c2ce8752bf0e35d35df8332de6d9cef0dcce7247f07"
+        }
+      }
     },
     {
       "hs": "74198070",
-      "dieuKien": "a-nốt mạ điện; dụng cụ đo dung tích, trừ loại gia dụng",
-      "tieuChi": null,
+      "dieuKien": "(tên loại hàng: A-nốt mạ điện) hoặc (tên loại hàng: dụng cụ đo dung tích và không phạm vi sử dụng: gia đình (gia dụng))",
       "nguon": "tax.74198070",
       "trich": "74198070 - - A-nốt mạ điện; dụng cụ đo dung tích (trừ loại gia dụng)",
-      "nguonLoai": "NGUOI_DUYET",
-      "loaiKhac": false
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "A-nốt mạ điện"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "dụng cụ đo dung tích"
+              },
+              {
+                "fact": "phamViSuDung",
+                "op": "TRONG",
+                "value": [
+                  "GIA_DINH"
+                ],
+                "chieu": "PHAI_KHONG"
+              }
+            ]
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-947:20261114T1430#soat-741980",
+          "ngay": "2026-11-14",
+          "bam": "f4d9d3b51a44ba371a446c2ce8752bf0e35d35df8332de6d9cef0dcce7247f07"
+        }
+      }
     },
     {
       "hs": "74198080",
-      "dieuKien": "thùng, két, bể chứa và các loại đồ chứa đựng tương tự có dung tích từ 300 lít trở xuống, không gắn thiết bị cơ khí hoặc thiết bị gia nhiệt",
+      "dieuKien": "(tên loại hàng: Thùng hoặc két hoặc bể chứa và dung tích chứa <= 300 lít) hoặc (tên loại hàng: Thùng, két, bể chứa hoặc loại tương tự và dung tích chứa <= 300 lít); không: có gắn thiết bị cơ khí hoặc thiết bị nhiệt / gia nhiệt (đồ chứa, nhà trồng cây)",
+      "nguon": "tax.74198080",
+      "trich": "74198080 - - Thùng, két, bể chứa và các loại đồ chứa đựng tương tự có dung tích từ 300 lít trở xuống không gắn thiết bị cơ khí hoặc thiết bị gia nhiệt ",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "Thùng",
+                  "két",
+                  "bể chứa"
+                ]
+              },
+              {
+                "fact": "dungTich",
+                "op": "<=",
+                "value": 300,
+                "donVi": "lít"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TUONG_TU",
+                "value": [
+                  "Thùng",
+                  "két",
+                  "bể chứa"
+                ]
+              },
+              {
+                "fact": "dungTich",
+                "op": "<=",
+                "value": 300,
+                "donVi": "lít"
+              }
+            ]
+          ]
+        },
+        {
+          "fact": "ganThietBiCoKhiHoacGiaNhiet",
+          "op": "KHONG"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-947:20261114T1430#soat-741980",
+          "ngay": "2026-11-14",
+          "bam": "f4d9d3b51a44ba371a446c2ce8752bf0e35d35df8332de6d9cef0dcce7247f07"
+        }
+      },
       "tieuChi": {
         "fact": "dung_tich_toi_da",
         "op": "<=",
         "value": 300,
         "donVi": "lít"
       },
-      "nguon": "tax.74198080",
-      "trich": "74198080 - - Thùng, két, bể chứa và các loại đồ chứa đựng tương tự có dung tích từ 300 lít trở xuống không gắn thiết bị cơ khí hoặc thiết bị gia nhiệt",
-      "nguonLoai": "NGUOI_DUYET",
-      "loaiKhac": false
+      "chongLanVanBan": [
+        {
+          "voi": "74198010",
+          "lyDo": "Không có hàng thật thoả cả hai (Q1, Claude 07/11/2026): \"Xích và các bộ phận của xích\" ↔ \"Thùng, két, bể chứa và các loại đồ chứa đựng tương tự có dung tích từ 300 lít trở xuống không gắn thiết bị cơ khí hoặc thiết bị gia nhiệt\" — xích (và bộ phận của xích) và thùng, két, bể chứa là hai loại hàng khác hẳn nhau."
+        },
+        {
+          "voi": "74198050",
+          "lyDo": "Không có hàng thật thoả cả hai (Q1, Claude 07/11/2026): \"Thiết bị nấu hoặc đun nóng, trừ loại dùng trong gia đình, và các bộ phận của các sản phẩm này\" ↔ \"Thùng, két, bể chứa và các loại đồ chứa đựng tương tự có dung tích từ 300 lít trở xuống không gắn thiết bị cơ khí hoặc thiết bị gia nhiệt\" — thiết bị nấu hoặc đun nóng luôn có bộ phận gia nhiệt, còn dòng .80 chỉ gồm đồ chứa KHÔNG gắn thiết bị gia nhiệt; không có hàng thoả cả hai."
+        }
+      ]
     },
     {
       "hs": "74198090",
@@ -523,5 +782,64 @@
     "dat": 27,
     "loai": 0,
     "nguonBiCat": []
-  }
+  },
+  "dieuKienNut": [
+    {
+      "id": "7419802",
+      "nguon": "tieuDe.7419802",
+      "trich": "7419802 Tấm đan (kể cả đai liền), phên và lưới, bằng dây đồng; sản phẩm dạng lưới bằng đồng được tạo hình bằng phương pháp đột dập và kéo giãn thành lưới",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "Tấm đan",
+                  "đai liền",
+                  "phên",
+                  "lưới"
+                ]
+              },
+              {
+                "fact": "chatLieu",
+                "op": "LA",
+                "value": "đồng"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "sản phẩm dạng lưới"
+              },
+              {
+                "fact": "chatLieu",
+                "op": "LA",
+                "value": "đồng"
+              },
+              {
+                "fact": "phuongPhapCheTao",
+                "op": "TRONG",
+                "value": [
+                  "DOT_DAP_KEO_GIAN"
+                ]
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-947:20261114T1430#soat-741980",
+          "ngay": "2026-11-14",
+          "bam": "f4d9d3b51a44ba371a446c2ce8752bf0e35d35df8332de6d9cef0dcce7247f07"
+        }
+      }
+    }
+  ]
 }

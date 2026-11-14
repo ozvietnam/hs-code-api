@@ -1,206 +1,175 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "790700",
-  "phien": "zcode-mm:loop:20261106T1500#soan-790700",
+  "phien": "zcode-sub:glm-5.3:20261106T0930#soan-790700",
   "dong8": {
     "79070030": {
-      "ten": "Ống máng, mái nhà, khung cửa sổ của mái nhà và các cấu kiện xây dựng khác",
-      "nguon": [
-        "tax.79070030"
-      ],
-      "trich": [
-        "79070030 - Ống máng, mái nhà, khung cửa sổ của mái nhà và các cấu kiện xây dựng khác"
-      ],
       "dieuKienSo": [
         {
-          "khoa": "tenLoai",
+          "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "giaTri": "Ống máng, mái nhà, khung cửa sổ của mái nhà và các cấu kiện xây dựng khác",
-          "trich": "Ống máng, mái nhà, khung cửa sổ của mái nhà và các cấu kiện xây dựng khác",
-          "nguon": "tax.79070030"
+          "value": [
+            "Ống máng",
+            "mái nhà",
+            "khung cửa sổ của mái nhà",
+            "cấu kiện xây dựng"
+          ]
         }
-      ]
+      ],
+      "phanConLai": false
     },
     "79070040": {
-      "ten": "Các loại ống, ống dẫn và phụ kiện để ghép nối của ống hoặc ống dẫn (ví dụ, khớp nối đôi, nối khuỷu, măng sông)",
-      "nguon": [
-        "tax.79070040"
-      ],
-      "trich": [
-        "79070040 - Các loại ống, ống dẫn và phụ kiện để ghép nối của ống hoặc ống dẫn (ví dụ, khớp nối đôi, nối khuỷu, măng sông)"
-      ],
       "dieuKienSo": [
         {
-          "khoa": "tenLoai",
-          "op": "TEN_LOAI",
-          "giaTri": "Các loại ống, ống dẫn và phụ kiện để ghép nối của ống hoặc ống dẫn (ví dụ, khớp nối đôi, nối khuỷu, măng sông)",
-          "trich": "Các loại ống, ống dẫn và phụ kiện để ghép nối của ống hoặc ống dẫn (ví dụ, khớp nối đôi, nối khuỷu, măng sông)",
-          "nguon": "tax.79070040"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "ống",
+                  "ống dẫn"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "phụ kiện"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": [
+                  "ghép nối của ống",
+                  "ống dẫn"
+                ]
+              }
+            ]
+          ]
         }
       ]
     },
     "79070091": {
-      "ten": "Hộp đựng thuốc lá điếu; gạt tàn thuốc lá",
-      "nguon": [
-        "tax.79070091"
-      ],
-      "trich": [
-        "79070091 - - Hộp đựng thuốc lá điếu; gạt tàn thuốc lá"
-      ],
       "dieuKienSo": [
         {
-          "khoa": "tenLoai",
-          "op": "TEN_LOAI",
-          "giaTri": "Hộp đựng thuốc lá điếu; gạt tàn thuốc lá",
-          "trich": "Hộp đựng thuốc lá điếu; gạt tàn thuốc lá",
-          "nguon": "tax.79070091"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Hộp đựng thuốc lá điếu"
+              },
+              {
+                "fact": "hopDungThuocLaDieu",
+                "op": "CO"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "gạt tàn thuốc lá"
+              }
+            ]
+          ]
         }
       ]
     },
     "79070092": {
-      "ten": "Các sản phẩm gia dụng khác",
-      "nguon": [
-        "tax.79070092"
-      ],
-      "trich": [
-        "79070092 - - Các sản phẩm gia dụng khác"
-      ],
       "dieuKienSo": [
         {
-          "khoa": "tenLoai",
-          "op": "TEN_LOAI",
-          "giaTri": "Các sản phẩm gia dụng khác",
-          "trich": "Các sản phẩm gia dụng khác",
-          "nguon": "tax.79070092"
+          "fact": "phamViSuDung",
+          "op": "TRONG",
+          "value": [
+            "GIA_DINH"
+          ]
         }
+      ],
+      "phanConLai": [
+        "79070091",
+        "79070093"
       ]
     },
     "79070093": {
-      "ten": "Tấm điện a-nốt; khuôn tô (stencil plates); đinh, đinh bấm, đai ốc, bu lông, đinh vít, đinh tán và những sản phẩm chốt tương tự; miếng kẽm hình lục giác dùng để sản xuất pin(SEN)",
-      "nguon": [
-        "tax.79070093",
-        "sen.79070093"
-      ],
-      "trich": [
-        "79070093 - - Tấm điện a-nốt; khuôn tô (stencil plates); đinh, đinh bấm, đai ốc, bu lông, đinh vít, đinh tán và những sản phẩm chốt tương tự; miếng kẽm hình lục giác dùng để sản xuất pin(SEN)",
-        "MIẾNG KẼM HÌNH LỤC GIÁC DÙNG ĐỂ SẢN XUẤT PIN",
-        "Miếng kẽm hình lục giác là một dải hoặc tấm hợp kim kẽm được dập thành các hình dạng nhất định, thích hợp để sản xuất điện cực âm trong pin."
-      ],
       "dieuKienSo": [
         {
-          "khoa": "tenLoai",
-          "op": "TEN_LOAI",
-          "giaTri": "Tấm điện a-nốt; khuôn tô (stencil plates); đinh, đinh bấm, đai ốc, bu lông, đinh vít, đinh tán và những sản phẩm chốt tương tự; miếng kẽm hình lục giác dùng để sản xuất pin",
-          "trich": "Tấm điện a-nốt; khuôn tô (stencil plates); đinh, đinh bấm, đai ốc, bu lông, đinh vít, đinh tán và những sản phẩm chốt tương tự; miếng kẽm hình lục giác dùng để sản xuất pin",
-          "nguon": "tax.79070093"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Tấm điện a-nốt"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "khuôn tô"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TUONG_TU",
+                "value": [
+                  "đinh",
+                  "đinh bấm",
+                  "đai ốc",
+                  "bu lông",
+                  "đinh vít",
+                  "đinh tán"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "miếng kẽm hình lục giác"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "sản xuất pin"
+              }
+            ]
+          ]
         }
       ]
     }
   },
-  "dieuKienNut": {
-    "790700": {
-      "ten": "Zinc; articles n.e.c. in chapter 79",
-      "nguon": [
-        "wco.790700"
-      ],
-      "trich": [
-        "790700 Zinc; articles n.e.c. in chapter 79"
-      ],
-      "dieuKienSo": [
-        {
-          "khoa": "chatLieu",
-          "op": "LA",
-          "giaTri": "kẽm",
-          "trich": "Zinc",
-          "nguon": "wco.790700"
-        }
-      ]
-    }
-  },
+  "dieuKienNut": {},
   "ghiChuSoan": [
     {
       "ma": "79070030",
       "loai": "QUYET_DINH",
-      "ghiChu": "Dòng 79070030 khai 1 điều kiện tenLoai với giaTri nguyên văn tiêu đề (nguồn tax.79070030); vế MỞ 'và các cấu kiện xây dựng khác' (dòng có nghiPhanConLai — phần dư của nhánh cấu kiện xây dựng) không bị cắt thành danh sách đóng, giữ nguyên trong một giaTrị tên loại."
+      "ghiChu": "tax.79070030 \"Ống máng, mái nhà, khung cửa sổ của mái nhà và các cấu kiện xây dựng khác\" ⇒ tenLoai [\"Ống máng\",\"mái nhà\",\"khung cửa sổ của mái nhà\",\"cấu kiện xây dựng\"]; phanConLai false — chữ \"khác\" thuộc tên hàng \"các cấu kiện xây dựng khác\" (danh sách mở của chính dòng), không phải phần còn lại của anh em (dòng .40, .91–.93 vẫn nhận hàng riêng)."
     },
     {
       "ma": "79070040",
       "loai": "QUYET_DINH",
-      "ghiChu": "Dòng 79070040 khai 1 điều kiện tenLoai với giaTri nguyên văn cả tiêu đề kèm ngoặc ví dụ (nguồn tax.79070040); '(ví dụ, khớp nối đôi, nối khuỷu, măng sông)' là vế MỞ nên không tách thành danh sách đóng các loại phụ kiện, giữ nguyên trong một giaTrị tên loại."
+      "ghiChu": "tax.79070040 \"Các loại ống, ống dẫn và phụ kiện để ghép nối của ống hoặc ống dẫn (ví dụ, khớp nối đôi, nối khuỷu, măng sông)\" ⇒ định ngữ \"để ghép nối…\" chỉ của \"phụ kiện\" ⇒ HOAC [[tenLoai [\"ống\",\"ống dẫn\"]],[tenLoai \"phụ kiện\", congDung [\"ghép nối của ống\",\"ống dẫn\"] (mảng cho \"hoặc\")]]; \"(ví dụ, …)\" là PHU."
     },
     {
       "ma": "79070091",
       "loai": "QUYET_DINH",
-      "ghiChu": "Dòng 79070091 khai 1 điều kiện tenLoai với giaTri nguyên văn cả tiêu đề (nguồn tax.79070091); hộp đựng thuốc lá điếu và gạt tàn thuốc lá là hai loại hàng nằm trong CÙNG dòng 8 số nên gộp một khoá — tách thành hai điều kiện cùng khoá sẽ biến thành phải thỏa CẢ HAI."
+      "ghiChu": "tax.79070091 \"Hộp đựng thuốc lá điếu; gạt tàn thuốc lá\" ⇒ HOAC [[tenLoai \"Hộp đựng thuốc lá điếu\", hopDungThuocLaDieu CO],[tenLoai \"gạt tàn thuốc lá\"]]."
     },
     {
       "ma": "79070092",
       "loai": "QUYET_DINH",
-      "ghiChu": "Dòng 79070092 khai 1 điều kiện tenLoai ('Các sản phẩm gia dụng khác', nguồn tax.79070092); chữ 'khác' làm dòng này là phần dư (nghiPhanConLai) của sản phẩm gia dụng bằng kẽm trong nhóm — không tách thành danh sách đóng các loại gia dụng."
+      "ghiChu": "tax.79070092 \"Các sản phẩm gia dụng khác\" ⇒ phamViSuDung TRONG [GIA_DINH] + phanConLai [\"79070091\",\"79070093\"] (phần còn lại có tên — \"khác\" loại trừ hàng đã nêu tên ở .91 và .93 của cùng cụm tiêu đề 7907009)."
     },
     {
       "ma": "79070093",
       "loai": "QUYET_DINH",
-      "ghiChu": "Dòng 79070093 khai 1 điều kiện tenLoai với giaTri nguyên văn tiêu đề bỏ nhãn (SEN) (nguồn tax.79070093); bốn loại hàng trong dòng (tấm điện a-nốt; khuôn tô; đinh, đinh bấm, đai ốc, bu lông, đinh vít, đinh tán và những sản phẩm chốt tương tự; miếng kẽm hình lục giác dùng để sản xuất pin) nằm chung một dòng 8 số nên gộp một khoá, và vế MỞ 'và những sản phẩm chốt tương tự' giữ nguyên trong tên loại."
-    },
-    {
-      "ma": "79070093",
-      "loai": "QUYET_DINH",
-      "ghiChu": "SEN (sen.79070093) mô tả riêng miếng kẽm hình lục giác ('là một dải hoặc tấm hợp kim kẽm được dập thành các hình dạng nhất định, thích hợp để sản xuất điện cực âm trong pin') nhưng đó là chi tiết của MỘT trong bốn loại hàng của dòng, không phân biệt 79070093 với 79070030 / 79070040 / 79070091 / 79070092 nên không khai thêm điều kiện dungCho/congDung cho cả dòng; đoạn cuối nguồn SEN ('General flow of making batteries: ... Quy trình sản xuất pin') là dòng chú thích hình, không phải nội dung điều kiện nên không đưa vào trích."
-    },
-    {
-      "ma": "79070091",
-      "loai": "QUYET_DINH",
-      "ghiChu": "Không khai khoá hopDungThuocLaDieu / hopDungThuocLaTrangTri cho 79070091: tiêu đề chỉ nói 'Hộp đựng thuốc lá điếu; gạt tàn thuốc lá', không nói gì về 'có kèm gạt tàn' hay 'đồ trang trí' — chỉ khai điều kiện mà câu trích thực sự nói (điều kiện chỉ nói điều câu trích nói)."
-    },
-    {
-      "ma": "7907009",
-      "loai": "QUYET_DINH",
-      "ghiChu": "Tiêu đề 'Loại khác' trần (tieuDe.7907009) không khai dieuKienNut (máy phủ định anh em); 7907009 chỉ là tầng trung gian dẫn tới 79070091 / 79070092 / 79070093 / 79070099."
-    },
-    {
-      "ma": "79070099",
-      "loai": "QUYET_DINH",
-      "ghiChu": "Dòng 'Loại khác' trần (tax.79070099) không khai điều kiện và không đưa vào spec theo luật máy phủ định; 79070099 là phần dư của 7907009 và của nhóm 790700."
-    },
-    {
-      "ma": "790700",
-      "loai": "QUYET_DINH",
-      "ghiChu": "Khai dieuKienNut ở tầng 6 số 790700 với nguồn wco.790700; cây của gói không có nút 790700 (dòng 79070030 / 79070040 treo thẳng dưới nhóm 7907, nhánh còn lại đi qua tầng 7907009) nhưng tiêu đề WCO có cụm 'n.e.c.' nên đây là tiêu đề riêng của phân nhóm 6 số (phần dư của chương 79), không phải tên chung của cả heading 7907."
-    },
-    {
-      "ma": "790700",
-      "loai": "QUYET_DINH",
-      "ghiChu": "Vế 'Zinc;' ở đầu tiêu đề WCO khai bằng khoá chatLieu với giá trị 'kẽm' (có trong tu-vung); đây là đặc trưng chung của cả nhóm nên khai ở tầng 6 số, không chép xuống từng dòng 8 số."
-    },
-    {
-      "ma": "790700",
-      "loai": "BO_VE",
-      "ve": "articles n.e.c. in chapter 79",
-      "lyDo": "Vế giới hạn 'chưa phân loại ở mục khác trong chương 79' (nghĩa là phần dư của chương 79, KHÔNG phải 'trừ chương 79') định nghĩa phạm vi của chính phân nhóm 6 số, không phân biệt 79070030 / 79070040 / 79070091 / 79070092 / 79070093; gói không có khoá tu-vung cho vế này nên không khai điều kiện."
-    },
-    {
-      "ma": "790700",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "khongPhaiMucKhacTrongChuong79",
-      "ghiChu": "articles n.e.c. in chapter 79"
-    },
-    {
-      "ma": "790700",
-      "loai": "QUYET_DINH",
-      "ghiChu": "Tên nhóm tiếng Việt 'Các sản phẩm khác bằng kẽm.' trong gói không có mã nguồn (tieuDe.790700) nên 'ten' của dieuKienNut lấy theo mẫu các lô trước: tiêu đề WCO (nguồn wco.790700)."
-    },
-    {
-      "ma": "790700",
-      "loai": "QUYET_DINH",
-      "ghiChu": "Gói không kèm nội dung chữ cho ba nguồn chú giải (nhom7907.nhom, ch79.chuong, phan79.phan) nên chỉ trích được từ tax.79070030, tax.79070040, tax.79070091, tax.79070092, tax.79070093, sen.79070093 và wco.790700."
-    },
-    {
-      "ma": "79070030",
-      "loai": "QUYET_DINH",
-      "ghiChu": "Các dòng 8 số trong nhóm (79070030 / 79070040 / 79070091 / 79070092 / 79070093) đều chia theo TÊN loại hàng nên dùng CHUNG khoá tenLoai; ranh giới 'ống máng, mái nhà, khung cửa sổ, cấu kiện xây dựng' (79070030) với 'ống, ống dẫn và phụ kiện ghép nối' (79070040) cũng là ranh giới theo tên loại, không phải theo công dụng — gói không kèm tiền lệ hay hàng thật thoả cả hai nhánh nên không khai chongLanTruc, và không có chữ biểu tự chồng lấn giữa các dòng nên không khai chongLanVanBan."
+      "ghiChu": "tax.79070093 \"Tấm điện a-nốt; khuôn tô (stencil plates); đinh, đinh bấm, đai ốc, bu lông, đinh vít, đinh tán và những sản phẩm chốt tương tự; miếng kẽm hình lục giác dùng để sản xuất pin(SEN)\" ⇒ HOAC [[tenLoai \"Tấm điện a-nốt\"],[tenLoai \"khuôn tô\"],[tenLoai TUONG_TU [6 tên] (vế mở \"và những sản phẩm chốt tương tự\")],[tenLoai \"miếng kẽm hình lục giác\", congDung \"sản xuất pin\"]]; \"(stencil plates)\" là ngoặc PHU."
     }
-  ],
-  "chongLanVanBan": [],
-  "chongLanTruc": []
+  ]
 }
