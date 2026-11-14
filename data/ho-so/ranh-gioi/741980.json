@@ -4,13 +4,19 @@
   "nhom": "7419",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T0900#soan-741980",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-947:20261114T1430#soat-741980",
+    "ngay": "2026-11-14",
+    "ghiChu": "Đã bổ sung đai liền ở tiêu đề 7419802 và dòng 74198021 theo traVe; các BO_VE và chongLanVanBan đã đối chiếu hợp lệ.",
+    "bam": "f4d9d3b51a44ba371a446c2ce8752bf0e35d35df8332de6d9cef0dcce7247f07"
+  },
   "dieuKienNut": [
     {
       "id": "7419802",
@@ -26,6 +32,7 @@
                 "op": "TEN_LOAI",
                 "value": [
                   "Tấm đan",
+                  "đai liền",
                   "phên",
                   "lưới"
                 ]
@@ -58,7 +65,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -91,7 +98,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "74198021",
@@ -99,19 +106,24 @@
       "trich": "74198021 - - - Đai liền cho máy móc",
       "dieuKienSo": [
         {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Đai liền"
+        },
+        {
           "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": "máy móc"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "74198029",
       "nguon": "tax.74198029",
       "trich": "74198029 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "74198030",
@@ -124,7 +136,7 @@
           "value": "Lò xo"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "74198040",
@@ -141,7 +153,7 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "74198050",
@@ -186,7 +198,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "74198060",
@@ -204,7 +216,7 @@
           "value": "sử dụng trong nghi lễ tôn giáo"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "74198070",
@@ -239,7 +251,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "74198080",
@@ -290,14 +302,14 @@
           "op": "KHONG"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "74198090",
       "nguon": "tax.74198090",
       "trich": "74198090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "chongLanVanBan": [
@@ -325,12 +337,12 @@
     {
       "ma": "7419802",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.7419802 hai nhóm phân cách \";\": (1) \"Tấm đan (kể cả đai liền), phên và lưới, bằng dây đồng\" ⇒ tenLoai [3 tên] + chatLieu LA đồng; (2) \"sản phẩm dạng lưới bằng đồng được tạo hình bằng phương pháp đột dập và kéo giãn thành lưới\" ⇒ tenLoai \"sản phẩm dạng lưới\" + chatLieu LA đồng + phuongPhapCheTao DOT_DAP_KEO_GIAN (khoá gợi ý của --goi). \"kể cả đai liền\" là kể-cả, không thành điều kiện."
+      "ghiChu": "tieuDe.7419802 hai nhóm phân cách \";\": (1) \"Tấm đan (kể cả đai liền), phên và lưới, bằng dây đồng\" ⇒ tenLoai [\"Tấm đan\",\"đai liền\",\"phên\",\"lưới\"] + chatLieu LA đồng; (2) \"sản phẩm dạng lưới bằng đồng được tạo hình bằng phương pháp đột dập và kéo giãn thành lưới\" ⇒ tenLoai \"sản phẩm dạng lưới\" + chatLieu LA đồng + phuongPhapCheTao DOT_DAP_KEO_GIAN (khoá gợi ý của --goi)."
     },
     {
       "ma": "74198021",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.74198021 \"Đai liền cho máy móc\": tên \"đai liền\" đã có trong vế kể cả của tiêu đề 7419802 (tấm đan kể cả đai liền) ⇒ dòng chỉ cần điều kiện riêng của vế: dungCho \"máy móc\" (giữ cùng khoá tenLoai ở tiêu đề, không lặp tên con)."
+      "ghiChu": "tax.74198021 \"Đai liền cho máy móc\" ⇒ tenLoai \"Đai liền\" + dungCho \"máy móc\"."
     },
     {
       "ma": "74198040",

@@ -33,6 +33,11 @@
     "74198021": {
       "dieuKienSo": [
         {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Đai liền"
+        },
+        {
           "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": "máy móc"
@@ -207,6 +212,7 @@
                 "op": "TEN_LOAI",
                 "value": [
                   "Tấm đan",
+                  "đai liền",
                   "phên",
                   "lưới"
                 ]
@@ -250,12 +256,12 @@
     {
       "ma": "7419802",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.7419802 hai nhóm phân cách \";\": (1) \"Tấm đan (kể cả đai liền), phên và lưới, bằng dây đồng\" ⇒ tenLoai [3 tên] + chatLieu LA đồng; (2) \"sản phẩm dạng lưới bằng đồng được tạo hình bằng phương pháp đột dập và kéo giãn thành lưới\" ⇒ tenLoai \"sản phẩm dạng lưới\" + chatLieu LA đồng + phuongPhapCheTao DOT_DAP_KEO_GIAN (khoá gợi ý của --goi). \"kể cả đai liền\" là kể-cả, không thành điều kiện."
+      "ghiChu": "tieuDe.7419802 hai nhóm phân cách \";\": (1) \"Tấm đan (kể cả đai liền), phên và lưới, bằng dây đồng\" ⇒ tenLoai [\"Tấm đan\",\"đai liền\",\"phên\",\"lưới\"] + chatLieu LA đồng; (2) \"sản phẩm dạng lưới bằng đồng được tạo hình bằng phương pháp đột dập và kéo giãn thành lưới\" ⇒ tenLoai \"sản phẩm dạng lưới\" + chatLieu LA đồng + phuongPhapCheTao DOT_DAP_KEO_GIAN (khoá gợi ý của --goi)."
     },
     {
       "ma": "74198021",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.74198021 \"Đai liền cho máy móc\": tên \"đai liền\" đã có trong vế kể cả của tiêu đề 7419802 (tấm đan kể cả đai liền) ⇒ dòng chỉ cần điều kiện riêng của vế: dungCho \"máy móc\" (giữ cùng khoá tenLoai ở tiêu đề, không lặp tên con)."
+      "ghiChu": "tax.74198021 \"Đai liền cho máy móc\" ⇒ tenLoai \"Đai liền\" + dungCho \"máy móc\"."
     },
     {
       "ma": "74198040",

@@ -4,13 +4,19 @@
   "nhom": "7907",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T0930#soan-790700",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-947:20261114T1430#soat-790700",
+    "ngay": "2026-11-14",
+    "ghiChu": "Đã bổ sung phương án HOAC tenLoai gạt tàn thuốc lá cho 79070091 theo traVe.",
+    "bam": "1f87c5339012985dcc71d33a560b293fd797526dc79b3b6c6945e7e2235613b2"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -29,7 +35,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": false
     },
     {
@@ -68,7 +74,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "79070091",
@@ -76,16 +82,30 @@
       "trich": "79070091 - - Hộp đựng thuốc lá điếu; gạt tàn thuốc lá",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Hộp đựng thuốc lá điếu"
-        },
-        {
-          "fact": "hopDungThuocLaDieu",
-          "op": "CO"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Hộp đựng thuốc lá điếu"
+              },
+              {
+                "fact": "hopDungThuocLaDieu",
+                "op": "CO"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "gạt tàn thuốc lá"
+              }
+            ]
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "79070092",
@@ -100,7 +120,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": [
         "79070091",
         "79070093"
@@ -157,14 +177,14 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "79070099",
       "nguon": "tax.79070099",
       "trich": "79070099 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -181,7 +201,7 @@
     {
       "ma": "79070091",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.79070091 \"Hộp đựng thuốc lá điếu; gạt tàn thuốc lá\" ⇒ tenLoai \"Hộp đựng thuốc lá điếu\" (cùng khoá tenLoai như anh em) + hopDungThuocLaDieu CO (khoá đọc trọn cả \"; gạt tàn thuốc lá\")."
+      "ghiChu": "tax.79070091 \"Hộp đựng thuốc lá điếu; gạt tàn thuốc lá\" ⇒ HOAC [[tenLoai \"Hộp đựng thuốc lá điếu\", hopDungThuocLaDieu CO],[tenLoai \"gạt tàn thuốc lá\"]]."
     },
     {
       "ma": "79070092",
