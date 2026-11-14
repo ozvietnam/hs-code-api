@@ -4,13 +4,19 @@
   "nhom": "7315",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
-    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-731511",
-    "ngay": "2026-11-04"
+    "phien": "pc-tho-hs-01:OZV-871#soan-731511",
+    "ngay": "2026-11-14"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-soat:OZV-871#soat-731511",
+    "ngay": "2026-11-14",
+    "ghiChu": ".10 xichXeDapMoTo CO; .91 tenLoai 'Xích truyền' + chieuDai >= 6 mm, <= 32 mm; .99 LK trần.",
+    "bam": "c8b349e7343850eca4e5a5ecf0788004d54843b3a773a995171dd55c698f5750"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -23,7 +29,7 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "73151191",
@@ -31,26 +37,31 @@
       "trich": "73151191 - - - - Xích truyền, có độ dài mắt xích từ 6 mm đến 32 mm",
       "dieuKienSo": [
         {
-          "fact": "chieuDaiCuon",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xích truyền"
+        },
+        {
+          "fact": "chieuDai",
           "op": ">=",
           "value": 6,
           "donVi": "mm"
         },
         {
-          "fact": "chieuDaiCuon",
+          "fact": "chieuDai",
           "op": "<=",
           "value": 32,
           "donVi": "mm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "73151199",
       "nguon": "tax.73151199",
       "trich": "73151199 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -62,19 +73,13 @@
     {
       "ma": "73151191",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.73151191: \"Xích truyền, có độ dài mắt xích từ 6 mm đến 32 mm\" ⇒ chieuDaiCuon >= 6 mm, <= 32 mm"
+      "ghiChu": "tax.73151191: \"Xích truyền, có độ dài mắt xích từ 6 mm đến 32 mm\" ⇒ tenLoai \"Xích truyền\" + chieuDai >= 6 mm, <= 32 mm (đơn vị chuẩn mm, đọc 'độ dài')"
     },
     {
       "ma": "73151191",
       "loai": "BO_VE",
       "ve": "có độ dài mắt xích",
-      "lyDo": "Cụm danh từ chỉ thuộc tính độ dài"
-    },
-    {
-      "ma": "73151191",
-      "loai": "BO_VE",
-      "ve": "từ 6 mm đến 32 mm",
-      "lyDo": "Đã lượng hóa qua chieuDaiCuon"
+      "lyDo": "Cụm danh từ chỉ thuộc tính độ dài mắt xích đã được lượng hoá qua chieuDai >= 6 mm, <= 32 mm kết hợp tenLoai \"Xích truyền\""
     }
   ],
   "traVe": [

@@ -1,7 +1,7 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "731419",
-  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-731419",
+  "phien": "pc-tho-hs-01:OZV-871#soan-731419",
   "dong8": {
     "73141910": {
       "dieuKienSo": [
@@ -18,25 +18,13 @@
     {
       "ma": "73141910",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.73141910: \"Đai liền dùng cho máy móc, trừ loại bằng thép không gỉ\" ⇒ dungCho \"máy móc\""
-    },
-    {
-      "ma": "73141910",
-      "loai": "BO_VE",
-      "ve": "dùng cho máy móc",
-      "lyDo": "Đã đưa vào dungCho"
-    },
-    {
-      "ma": "73141910",
-      "loai": "BO_VE",
-      "ve": "trừ loại",
-      "lyDo": "Từ nối vế loại trừ"
+      "ghiChu": "tax.73141910: \"Đai liền dùng cho máy móc, trừ loại bằng thép không gỉ\" ⇒ dungCho \"máy móc\". Không khai tenLoai \"Đai liền\" vì cả hai âm tiết ('đai', 'liền') đều nằm trong tiêu đề nhóm 73.14 (\"Tấm đan (kể cả đai liền)...\"), khiến tuChaCua(73141910) lọc hết từ phân biệt (coCumPhanBiet=false) làm điều kiện chữ tự do rơi vào khongTatDinh và chặn chốt dòng 73141910 (cùng cơ chế 85149020 PR #1307)"
     },
     {
       "ma": "73141910",
       "loai": "BO_VE",
       "ve": "bằng thép không gỉ",
-      "lyDo": "Thép không gỉ thuộc phân nhóm 7314.12, đây là vế loại trừ"
+      "lyDo": "Thép không gỉ đã thuộc phân nhóm 7314.12/7314.14 và tiêu đề phân nhóm 7314.19 đã loại trừ thép không gỉ, đây là vế loại trừ nhắc lại"
     }
   ]
 }

@@ -4,13 +4,19 @@
   "nhom": "7314",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
-    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-731419",
-    "ngay": "2026-11-04"
+    "phien": "pc-tho-hs-01:OZV-871#soan-731419",
+    "ngay": "2026-11-14"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-soat:OZV-871#soat-731419",
+    "ngay": "2026-11-14",
+    "ghiChu": ".10 'Endless bands for machinery other than of stainless steel' → dungCho 'máy móc' (không khai tenLoai 'Đai liền' vì trùng tiêu đề nhóm 7314 làm mất coCumPhanBiet); BO_VE vế loại trừ thép không gỉ; .90 LK trần.",
+    "bam": "652f210692fde9b5fcbb63491a95dccd563d1b0dab3445142b1b4a0138aee105"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -24,39 +30,27 @@
           "value": "máy móc"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "73141990",
       "nguon": "tax.73141990",
       "trich": "73141990 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "73141910",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.73141910: \"Đai liền dùng cho máy móc, trừ loại bằng thép không gỉ\" ⇒ dungCho \"máy móc\""
-    },
-    {
-      "ma": "73141910",
-      "loai": "BO_VE",
-      "ve": "dùng cho máy móc",
-      "lyDo": "Đã đưa vào dungCho"
-    },
-    {
-      "ma": "73141910",
-      "loai": "BO_VE",
-      "ve": "trừ loại",
-      "lyDo": "Từ nối vế loại trừ"
+      "ghiChu": "tax.73141910: \"Đai liền dùng cho máy móc, trừ loại bằng thép không gỉ\" ⇒ dungCho \"máy móc\". Không khai tenLoai \"Đai liền\" vì cả hai âm tiết ('đai', 'liền') đều nằm trong tiêu đề nhóm 73.14 (\"Tấm đan (kể cả đai liền)...\"), khiến tuChaCua(73141910) lọc hết từ phân biệt (coCumPhanBiet=false) làm điều kiện chữ tự do rơi vào khongTatDinh và chặn chốt dòng 73141910 (cùng cơ chế 85149020 PR #1307)"
     },
     {
       "ma": "73141910",
       "loai": "BO_VE",
       "ve": "bằng thép không gỉ",
-      "lyDo": "Thép không gỉ thuộc phân nhóm 7314.12, đây là vế loại trừ"
+      "lyDo": "Thép không gỉ đã thuộc phân nhóm 7314.12/7314.14 và tiêu đề phân nhóm 7314.19 đã loại trừ thép không gỉ, đây là vế loại trừ nhắc lại"
     }
   ],
   "traVe": [
