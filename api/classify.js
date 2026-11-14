@@ -32,21 +32,39 @@ function parseSupplierHs(v) {
 // ── Cửa trả lời khi HẾT GIỜ (OZV-713) ────────────────────────────────────────────────────────────────────────────
 // Cloudflare cắt lượt ~100 s và trả chuỗi `error code: 524` (KHÔNG phải JSON) ⇒ bên gọi parse JSON là ném lỗi và
 // đếm thành "lỗi AI". Trần dưới đây ngắn hơn trần Cloudflare để handler TỰ trả lời bằng JSON thật.
-// Ngân sách động cơ (CLASSIFY_BUDGET_MS, mặc định 285000) vẫn giữ nguyên — đây chỉ là cửa trả lời, không cắt động cơ:
-// lượt quá hạn vẫn chạy nền tới khi xong (không huỷ được), kết quả bị bỏ.
+// Ngân sách động cơ (CLASSIFY_BUDGET_MS, mặc định 285000) vẫn là trần MỀM khi bên gọi không nói gì.
+// OZV-771: trần này được truyền xuống động cơ làm `hanChotMs` (xem `chay()` bên dưới) — động cơ lấy hạn NGẮN HƠN
+// giữa hai bên, co hạn từng bước AI và dừng lặp sớm để trả cái nó đã có. Cửa dưới đây vẫn giữ làm lưới chốt cuối
+// (lượt đã quá hạn không huỷ được giữa chừng), nhưng bình thường động cơ phải về trước khi cửa chạm trần.
 const TRAN_MS_MAC_DINH = 85000;
 function tranMs() {
   const v = Number(process.env.HS_CLASSIFY_TRAN_MS);
   return Number.isFinite(v) && v > 0 ? v : TRAN_MS_MAC_DINH;
 }
-/** Chạy `p` trong hạn `ms`: trả `{ quaGio: true }` khi hết giờ, ngược lại chuyển tiếp kết quả/lỗi y như cũ. */
+/**
+ * Chạy `p` trong hạn `ms`: trả `{ quaGio: true }` khi hết giờ, ngược lại chuyển tiếp kết quả/lỗi y như cũ.
+ *
+ * GIỚI HẠN ĐÃ BIẾT (OZV-756, ghi lại để đừng ai vá nhầm lần nữa): `setTimeout` là macrotask, chỉ bắn khi event
+ * loop rảnh. Nếu đường chạy chiếm CPU ĐỒNG BỘ vắt qua mốc trần thì cửa này KHÔNG cắt được — lượt vẫn trả muộn
+ * đúng bằng lúc CPU nhả. Trong một tiến trình Node không có cách nào cắt việc đồng bộ của chính nó; muốn cắt
+ * thật phải ở tầng ngoài (proxy / tiến trình khác). Cửa này chỉ bảo đảm MỘT điều, và đó là mục đích gốc của
+ * OZV-713: khi quá hạn thì bên gọi nhận JSON thật (503 QUA_GIO) thay vì chuỗi `error code: 524` của Cloudflare.
+ *
+ * ĐÃ THỬ VÀ BỎ: chốt thêm bằng `Date.now()` sau khi race. Đồng hồ là giờ TƯỜNG, không phải giờ CPU của lượt này
+ * ⇒ một lượt khác chặn CPU làm lượt đang chạy ngon bị gắn nhãn quá giờ và VỨT kết quả đã có (đo: lượt việc riêng
+ * 100 ms, trần 1000 ms ⇒ main 200 có results, bản vá 503). Mà nó cũng không rút ngắn thời gian trả lời thật
+ * (trần 1000 ms, chặn CPU 3000 ms ⇒ vẫn trả ở 3002 ms). Bắt oan mà không chữa được bệnh ⇒ gỡ.
+ */
 async function trongHan(p, ms) {
+  // Hạn đã tiêu hết trước khi chạy: trả ngay, KHÔNG đặt hẹn giờ âm (Node cảnh báo TimeoutNegativeWarning rồi tự hạ
+  // xuống 1 ms — dựa vào đó là may rủi). Vẫn để `p` chạy nền như mọi lượt quá hạn khác.
+  if (ms <= 0) { Promise.resolve(p).catch(() => {}); return { quaGio: true }; }
   let hen;
   const het = new Promise((r) => { hen = setTimeout(() => r({ quaGio: true }), ms); if (hen.unref) hen.unref(); });
   try {
     const kq = await Promise.race([Promise.resolve(p).then((v) => ({ v }), (loi) => ({ loi })), het]);
     if (kq.quaGio) return kq;
-    if (kq.loi) throw kq.loi;
+    if (kq.loi) throw kq.loi; // Lỗi thật vẫn ném như cũ (C1/C2: cửa quá giờ không nuốt lỗi).
     return kq;
   } finally { clearTimeout(hen); }
 }
@@ -141,7 +159,9 @@ module.exports = async function handler(req, res) {
     const attrsHoSo = { ...attrs, loaiToKhai: body?.loaiToKhai, manufacturer: body?.manufacturer, dimensions: body?.dimensions, condition: body?.condition, packaging: body?.packaging, brand: body?.brand, model: body?.model, duKien: body?.duKien };
     // #725-45: kenhGoi = tên khoá dịch vụ (null = công khai/HS_API_TOKEN) — chỉ ERP (có nút "Áp mã") nhận câu "bấm Áp mã lại".
     const kenhGoi = serviceCaller(req);
-    const chay = (quyen) => classify(attrs, { tier, debug, kenhGoi }).then((kq) => ganHoSoClassify(kq, attrsHoSo, quyen));
+    // OZV-771: nói cho động cơ biết hạn chót THẬT của lượt HTTP này (= trần trả lời). Động cơ tự co hạn từng bước
+    // AI và dừng lặp sớm để trả cái nó đã có, thay vì tự cho mình 285 s rồi chạy tiếp sau khi cửa đã trả 503.
+    const chay = (quyen) => classify(attrs, { tier, debug, kenhGoi, hanChotMs: started + tran }).then((kq) => ganHoSoClassify(kq, attrsHoSo, quyen));
     if (serviceCaller(req) !== null) {
       // OZV-754: classify chỉ mang THÔNG TIN HÀNG (tên, chất liệu, công dụng…) — withHangHoa: đủ chuỗi dự phòng
       // khi QT bật HS_KHACH_MO_CHUOI_AI, mặc định giữ #237 J1. (declaration-check ?mode=check vẫn withPrivateData — tờ khai.)
@@ -161,10 +181,13 @@ module.exports = async function handler(req, res) {
         }
         donPhienBanCu(pb); // đổi phiên bản dữ liệu ⇒ dọn dòng cũ (một lần mỗi tiến trình, không ném)
       }
-      const kq = await trongHan(run(() => withHangHoa(() => withUsage(() => chay({ noiBo: laNoiBoOz(req), caller: serviceCaller(req) })))), tran - (Date.now() - started));
+      // Lượt quá hạn vẫn chạy nền tới khi xong và vẫn TỐN tiền LLM như thường. Gắn ghi cache vào chính promise đó
+      // để tiền đã tiêu không mất trắng: lượt sau cùng hồ sơ trúng cache, khỏi gọi LLM lại (OZV-507 việc 1).
+      const chayCoCache = run(() => withHangHoa(() => withUsage(() => chay({ noiBo: laNoiBoOz(req), caller: serviceCaller(req) }))))
+        .then((kq2) => { if (dungCache) ghiCache(khoa, pb, kq2.result); return kq2; }); // lỗi DB nuốt trong lib
+      const kq = await trongHan(chayCoCache, tran - (Date.now() - started));
       if (kq.quaGio) return traLoiQuaGio(res, { ms: Date.now() - started, tranMs: tran, attrs });
       const { result, usage } = kq.v;
-      if (dungCache) ghiCache(khoa, pb, result); // ghi sau, lỗi DB nuốt trong lib — phản hồi như chưa có cache
       return res.status(200).json({ ...result, attrs, usage, ms: Date.now() - started });
     }
     // Lượt công khai / HS_API_TOKEN: đếm chi phí LLM (L0j, #547 — chỉ đếm, không chặn). Shape phản hồi không đổi.

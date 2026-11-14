@@ -41,7 +41,8 @@ globalThis.fetch = async (url, init = {}) => {
   }
   if (u.includes('api.minimax.io')) {
     calls.push(`minimax:${body.model}`);
-    if (minimaxMode === 'down') return new Response('upstream error', { status: 500 });
+    // OZV-722: thân lỗi nhiều dòng (giống log nhà cung cấp) — thông điệp cuối phải một dòng.
+    if (minimaxMode === 'down') return new Response('upstream error\n  detail: rate or 5xx\n  code=MM_DOWN', { status: 500 });
     return okJson(body.model);
   }
   if (u.includes('hermes.test')) { calls.push(`hermes:${body.model}`); return okJson('hermes'); }
@@ -83,6 +84,8 @@ try { await callLLMJson('sys', 'user', { containsCustomerData: true }); } catch 
 check('riêng tư, MiniMax sập → NO_PRIVATE_LLM (502)', threw?.code === 'NO_PRIVATE_LLM' && threw?.status === 502, String(threw));
 check('riêng tư, MiniMax sập → KHÔNG rơi xuống Gemini miễn phí / Hermes / :free', noFree(), JSON.stringify(calls));
 check('riêng tư: thông điệp giữ lỗi gốc để phân loại gọi lại (500)', /500/.test(String(threw?.message)), String(threw?.message));
+check('OZV-722: thông điệp NO_PRIVATE_LLM một dòng (không còn \\n)', threw != null && !/\n/.test(String(threw.message)), String(threw?.message));
+check('OZV-722: nội dung lỗi gốc vẫn còn sau khi nối một dòng', /MM_DOWN|upstream error|rate or 5xx/.test(String(threw?.message || '')), String(threw?.message));
 check('riêng tư: chỉ MiniMax được gọi', calls.every((c) => c.startsWith('minimax')), JSON.stringify(calls));
 
 // ── 3. Cùng cấu hình, KHÔNG riêng tư → hành vi cũ (Gemini miễn phí dự phòng) ──
