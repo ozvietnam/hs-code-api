@@ -491,6 +491,19 @@ export function sinhCaNhom(nhom4) {
         } else {
           // nếp cũ của main: midText vốn nối " - " bên trong, các phần trên nối ": "
           moTa = [ten6, midText, hs8 === n?.laPhanNhom ? '' : tenDong].filter(Boolean).join(': ');
+          if (
+            mids.some((m) => m.loaiKhacTran)
+            && tenDong
+            && list8.some((o) => o !== hs8 && cleanText(T.nodeOf(o)?.tenVi || '') === tenDong)
+          ) {
+            const dd = DK.duongDiDong8(hs8, { soTay: st });
+            for (const g of dd.nhom || []) {
+              if (g.chieu !== 'PHAI_KHONG' || !(g.tang > 0) || !Array.isArray(g.dieuKien) || !g.dieuKien.length) continue;
+              if (!g.dieuKien.every((x) => ['<=', '<', '>=', '>'].includes(x.op))) continue;
+              const s = cumPhuDinhNhom(g.dieuKien);
+              if (s) moTa += `, ${s}`;
+            }
+          }
         }
         caDongCoTen.push({
           loaiCa: 'DONG_CO_TEN',
