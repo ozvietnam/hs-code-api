@@ -7,15 +7,15 @@
   "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
-    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-392310",
-    "ngay": "2026-10-31"
+    "phien": "paperclip:tho-hs-03:20261114T1745#soan-392310",
+    "ngay": "2026-11-14"
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot4",
-    "ngay": "2026-10-31",
-    "ghiChu": "Đối chiếu tay VI+EN: .10 tenLoai \"Hộp\" + dungCho [phim, băng từ, đĩa quang] (Cases for film, tape and optical discs; mảng = hoặc); .20 \"Loại khác, <vế>\" chỉ ghi vế: dungCho [tấm bán dẫn mỏng, màn, lưới quang] — \"có hình dạng đặc biệt hoặc thích hợp để vận chuyển hoặc đóng gói\" là một vế (shaped or fitted for), trong 3923.10 hộp/hòm dùng cho tấm bán dẫn tương đương; .90 trần. Không tiền lệ liên quan trong precedents.json.",
-    "bam": "2bb7a297a886248527efe082a5994f30e2928153cd58a9e7382064581cc2ff99"
+    "phien": "paperclip:cuon-chieu-soat:20261114T1800#soat-392310",
+    "ngay": "2026-11-14",
+    "ghiChu": "OZV-899: đối chiếu VI+EN + cổng máy xanh; 39231010 congDung; 392321 theo trả về L12 (Túi vô trùng/chieuDai/ganNapDemKin); 950300 giữ bản đã qua 6 vòng — dungCho đích búp bê thử rồi ĐỎ cổng.",
+    "bam": "42ceeba6c9c1b88313b523a117c05ba112770e92d11521206acd33ca52e056f7"
   },
   "dieuKienNut": [],
   "dong8": [
@@ -25,18 +25,9 @@
       "trich": "39231010 - - Hộp đựng phim, băng từ và đĩa quang",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Hộp"
-        },
-        {
-          "fact": "dungCho",
+          "fact": "congDung",
           "op": "CONG_DUNG",
-          "value": [
-            "phim",
-            "băng từ",
-            "đĩa quang"
-          ]
+          "value": "đựng phim, băng từ và đĩa quang"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -70,12 +61,19 @@
     {
       "ma": "39231010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.39231010 \"Hộp đựng phim, băng từ và đĩa quang\" ⇒ tenLoai \"Hộp\" + dungCho [\"phim\", \"băng từ\", \"đĩa quang\"] (\"đựng\" ⇒ hàng đi cùng; mảng = hoặc: hộp đựng một trong ba loại đều thuộc dòng)."
+      "ghiChu": "tax.39231010 \"Hộp đựng phim, băng từ và đĩa quang\" ⇒ congDung \"đựng phim, băng từ và đĩa quang\" (chuỗi con nguyên văn của vế giới hạn). Bỏ tenLoai \"Hộp\" vì trùng tiêu đề PN6 392310 (\"Hộp, hòm…\") → mất coCumPhanBiet; bỏ dungCho vì động từ \"đựng\" không kích hoạt bộ trích dungCho (mẫu 39239010 Tuýp để đựng kem đánh răng)."
     },
     {
       "ma": "39231020",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.39231020 \"Loại khác, có hình dạng đặc biệt hoặc thích hợp để vận chuyển hoặc đóng gói các tấm bán dẫn mỏng, màn hoặc lưới quang\" — dòng \"Loại khác, <vế>\": chỉ ghi điều kiện của vế. Chữ Anh cùng dòng \"specially shaped or fitted for the conveyance or packing of semiconductor wafers, masks, or reticles\": \"có hình dạng đặc biệt hoặc thích hợp\" cùng bổ nghĩa cho \"để vận chuyển hoặc đóng gói …\" (bộ tách vòng 4 đọc là một vế) ⇒ dungCho [\"tấm bán dẫn mỏng\", \"màn\", \"lưới quang\"] — tách \"màn hoặc lưới quang\" thành hai giá trị (\"masks, or reticles\"): một chuỗi gộp đòi đủ âm tiết \"màn\", \"lưới\", \"quang\" ⇒ hẹp hơn chữ (góp ý soát PR #629)."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "paperclip:tho-hs-03:20261114T1745#soat-392310",
+      "ngay": "2026-11-14",
+      "lyDo": "Sửa 39231010: bỏ tenLoai Hộp (trùng tiêu đề PN6) + dungCho (động từ đựng không kích hoạt); đổi sang congDung chuỗi con nguyên văn theo mẫu 392390 — DONG_CO_TEN đang KHONG_THE_CHOT (OZV-899)."
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "950300",
-  "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-950300",
+  "phien": "paperclip:tho-hs-03:20261114T1755#soan-950300",
   "dong8": {
     "95030010": {
       "dieuKienSo": [
@@ -267,11 +267,6 @@
       "ghiChu": "Soạn lại theo trả về #706 + quyết định GĐ vòng 7 (op TUONG_TU). tax.95030010 \"Xe đạp ba bánh, xe đẩy, xe có bàn đạp và đồ chơi tương tự có bánh; xe của búp bê\" (EN \"Tricycles, scooters, pedal cars and similar wheeled toys; dolls' carriages\") ⇒ HOAC ba phương án: (1) hàng NÊU TÊN tenLoai TEN_LOAI [\"Xe đạp ba bánh\",\"xe đẩy\",\"xe có bàn đạp\"]; (2) vế MỞ \"và đồ chơi tương tự có bánh\" ⇒ tenLoai TUONG_TU [ba tên đó] + coBanh CO (\"có bánh\"/\"wheeled\" chỉ giới hạn đồ chơi TƯƠNG TỰ — hàng nêu tên vốn có bánh nên không đòi coBanh ở phương án 1); (3) vế 2 tenLoai \"xe của búp bê\". Bỏ giá trị chết \"đồ chơi tương tự có bánh\" (soát đợt 4: mô tả hàng thật không có chữ \"tương tự\" ⇒ xe chòi chân rơi .99 20%). Lúc chạy: tên khớp một hàng nêu tên ⇒ THOẢ; tên khác (xe chòi chân, ô tô điện đồ chơi) ⇒ CHƯA BIẾT + câu hỏi \"có thuộc loại tương tự … không?\" (không bao giờ TRÁI chỉ vì khác tên), có bánh = không ⇒ TRÁI tất định."
     },
     {
-      "ma": "950300~r18723",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.950300~r18723 \"Bộ phận và phụ kiện\" ⇒ tenLoai [\"Bộ phận\",\"phụ kiện\"] (chuỗi con nguyên văn). Bản trước ghi laBoPhan CO ⇒ cong2-chong-lan .21+.29 (vật laBoPhan CO mang tên chứa \"búp bê\" thoả cả .21 \"Búp bê, có hoặc không có trang phục\"); .21 và tầng r18723 là ANH EM cùng tầng 9503002 phân theo TÊN (búp bê ↔ bộ phận/phụ kiện) ⇒ đưa về cùng khoá tenLoai (QUY-TRINH §4 chồng lấn bước 2); tên trên đường đi \"Búp bê\" + \"Bộ phận\" cụ thể hơn \"Búp bê\" ⇒ tenCuTheHon phân. \"phụ kiện\" (quần áo, giầy…) cũng không phải \"bộ phận\" nên laBoPhan hẹp hơn chữ. .22 \"Quần áo và phụ kiện quần áo; giầy và mũ\" ⇒ tenLoai [\"Quần áo\",\"phụ kiện quần áo\",\"giầy\",\"mũ\"]; .29 \"Loại khác\" trần. .21 \"Búp bê, có hoặc không có trang phục\" ⇒ tenLoai \"Búp bê\" (vế \"có hoặc không có trang phục\" không thu hẹp)."
-    },
-    {
       "ma": "95030030",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.95030030 \"Xe điện, kể cả đường ray, đèn hiệu và các phụ kiện khác của chúng\" (EN \"Electric trains, including tracks, signals and other accessories therefor\") ⇒ HOAC [[tenLoai \"Xe điện\"], [tenLoai [\"đường ray\",\"đèn hiệu\",\"phụ kiện\"], dungCho \"Xe điện\"]]. Vế \"kể cả …\" có vế MỞ \"các phụ kiện khác của chúng\": không liệt kê đóng [Xe điện, đường ray, đèn hiệu] (hẹp hơn chữ — soát đợt 3 #696: phụ kiện khác của xe điện đồ chơi rơi .99). \"của chúng\"/\"therefor\" là định ngữ chung của đường ray, đèn hiệu và phụ kiện (\"các phụ kiện KHÁC\" ⇒ đường ray, đèn hiệu cũng là phụ kiện của xe điện) ⇒ cả ba tên đi kèm dungCho \"Xe điện\" (chuỗi con nguyên văn). \"phụ kiện\" không phải \"bộ phận\" ⇒ không dùng laBoPhan. Chữ \"khác\" ở đây không phải phần còn lại của anh em ⇒ không phanConLai (cảnh báo nghi-phan-con-lai:95030030 giữ lại có chủ ý: không ghi phanConLai: false vì scripts/test-cong-cu-vong-2.mjs ca 6d dùng chính dòng này làm mẫu \"thêm phanConLai: false\"; luật đi như nhau). Cặp với nhánh búp bê (.21/.22/.29 dưới tiêu đề 9503002 \"Búp bê\", không có dungCho): đích \"Xe điện\" (danh từ đầu .30, vế \"của chúng\"/\"therefor\") rời đích \"Búp bê\" (danh từ đầu tiêu đề tổ tiên) ⇒ cổng 2 coi là loại trừ (quyết định GĐ vòng 5, cảnh báo cong2-dich-cua-chung-roi); lúc chạy hàng thoả cả hai thì động cơ hỏi."
@@ -305,6 +300,21 @@
       "ma": "95030099",
       "loai": "LECH_TIEN_LE",
       "ghiChu": "Bảng hiệu chỉnh tiền lệ 950300-01 KHONG_LECH (5875/TB-TCHQ: quả địa cầu thực tế ảo → .99, không phải đồ chơi xây dựng). Bản nháp theo chữ biểu, khớp bảng."
+    },
+    {
+      "ma": "9503002",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Trả về đợt 7 gợi ý dungCho đích búp bê trên 9503002/r18723/.22 (hoặc DUNG). Đã thử HOAC [[tenLoai Búp bê],[dungCho Búp bê]] + mở r18723/thêm dungCho ở .22 → ĐỎ cổng (cong3 trich, cong1-khong-phu-kin, cong2-chong-lan nhiều cặp, cong2-chong-lan-truc). Quyết định: giữ tenLoai như bản đã qua 6 vòng soát (không đổi khoá để né); ca \"Quần áo cho búp bê\" vẫn cần người/đường khác — ghi rõ để GĐ biết khi soát."
+    },
+    {
+      "ma": "950300~r18723",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.950300~r18723 \"Bộ phận và phụ kiện\" ⇒ tenLoai [\"Bộ phận\",\"phụ kiện\"] (giữ bản đã qua cổng; xem DUNG ở 9503002)."
+    },
+    {
+      "ma": "95030022",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.95030022 \"Quần áo và phụ kiện quần áo; giầy và mũ\" ⇒ tenLoai [\"Quần áo\",\"phụ kiện quần áo\",\"giầy\",\"mũ\"] (giữ bản đã qua cổng; xem DUNG ở 9503002)."
     }
   ]
 }

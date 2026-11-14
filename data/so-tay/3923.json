@@ -35,33 +35,24 @@
   "dong8": [
     {
       "hs": "39231010",
-      "dieuKien": "tên loại hàng: Hộp; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): phim hoặc băng từ hoặc đĩa quang",
+      "dieuKien": "công dụng / mục đích: đựng phim, băng từ và đĩa quang",
       "loaiKhac": false,
       "nguon": "tax.39231010",
       "trich": "39231010 - - Hộp đựng phim, băng từ và đĩa quang",
       "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Hộp"
-        },
-        {
-          "fact": "dungCho",
+          "fact": "congDung",
           "op": "CONG_DUNG",
-          "value": [
-            "phim",
-            "băng từ",
-            "đĩa quang"
-          ]
+          "value": "đựng phim, băng từ và đĩa quang"
         }
       ],
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot4",
-          "ngay": "2026-10-31",
-          "bam": "2bb7a297a886248527efe082a5994f30e2928153cd58a9e7382064581cc2ff99"
+          "phien": "paperclip:cuon-chieu-soat:20261114T1800#soat-392310",
+          "ngay": "2026-11-14",
+          "bam": "42ceeba6c9c1b88313b523a117c05ba112770e92d11521206acd33ca52e056f7"
         }
       }
     },
@@ -95,9 +86,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot4",
-          "ngay": "2026-10-31",
-          "bam": "2bb7a297a886248527efe082a5994f30e2928153cd58a9e7382064581cc2ff99"
+          "phien": "paperclip:cuon-chieu-soat:20261114T1800#soat-392310",
+          "ngay": "2026-11-14",
+          "bam": "42ceeba6c9c1b88313b523a117c05ba112770e92d11521206acd33ca52e056f7"
         }
       }
     },
@@ -121,25 +112,37 @@
     },
     {
       "hs": "39232111",
-      "dieuKien": "Có chiều rộng từ 315 mm trở lên và có chiều dài từ 410 mm trở lên, gắn với nắp đệm kín — WCO 392321: Ethylene polymers; sacks and bags (including cones), for the conveyance or packing of goods",
+      "dieuKien": "chiều rộng >= 315 mm; chiều dài >= 410 mm; gắn với nắp đệm kín",
       "loaiKhac": false,
       "nguon": "tax.39232111",
       "trich": "39232111 - - - - Có chiều rộng từ 315 mm trở lên và có chiều dài từ 410 mm trở lên, gắn với nắp đệm kín",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "chieu_dai",
+          "fact": "chieuRong",
           "op": ">=",
           "value": 315,
           "donVi": "mm"
         },
         {
-          "fact": "chieu_dai",
+          "fact": "chieuDai",
           "op": ">=",
           "value": 410,
           "donVi": "mm"
+        },
+        {
+          "fact": "ganNapDemKin",
+          "op": "CO"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "paperclip:cuon-chieu-soat:20261114T1828#soat-392321",
+          "ngay": "2026-11-14",
+          "bam": "5a124a47cb46e2ed916401a602408168b5a2e8f99dc11237762ef4f0628af8e1"
+        }
+      }
     },
     {
       "hs": "39232119",
@@ -160,30 +163,42 @@
     },
     {
       "hs": "39232191",
-      "dieuKien": "TÚI VÔ TRÙNG KHÔNG ĐƯỢC GIA CỐ BẰNG LÁ NHÔM (TRỪ TÚI ĐÁY NỞ - RETORT), CHIỀU RỘNG TỪ 315 MM TRỞ LÊN VÀ CHIỀU DÀI TỪ 410 MM TRỞ LÊN, GẮN VỚI NẮP ĐỆM KÍN",
+      "dieuKien": "tên loại hàng: Túi vô trùng không được gia cố bằng lá nhôm; chiều rộng >= 315 mm; chiều dài >= 410 mm; gắn với nắp đệm kín",
       "loaiKhac": false,
-      "nguon": "sen.39232191",
-      "trich": "TÚI VÔ TRÙNG KHÔNG ĐƯỢC GIA CỐ BẰNG LÁ NHÔM (TRỪ TÚI ĐÁY NỞ - RETORT), CHIỀU RỘNG TỪ 315 MM TRỞ LÊN VÀ CHIỀU DÀI TỪ 410 MM TRỞ LÊN, GẮN VỚI NẮP ĐỆM KÍN",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguon": "tax.39232191",
+      "trich": "39232191 - - - - Túi vô trùng không được gia cố bằng lá nhôm (trừ túi đáy nở-retort), chiều rộng từ 315 mm trở lên và chiều dài từ 410 mm trở lên, gắn với nắp đệm kín(SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "chat_lieu",
-          "op": "LA",
-          "value": "kim loại"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Túi vô trùng không được gia cố bằng lá nhôm"
         },
         {
-          "fact": "chieu_dai",
+          "fact": "chieuRong",
           "op": ">=",
           "value": 315,
           "donVi": "mm"
         },
         {
-          "fact": "chieu_dai",
+          "fact": "chieuDai",
           "op": ">=",
           "value": 410,
           "donVi": "mm"
+        },
+        {
+          "fact": "ganNapDemKin",
+          "op": "CO"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "paperclip:cuon-chieu-soat:20261114T1828#soat-392321",
+          "ngay": "2026-11-14",
+          "bam": "5a124a47cb46e2ed916401a602408168b5a2e8f99dc11237762ef4f0628af8e1"
+        }
+      }
     },
     {
       "hs": "39232199",
@@ -751,5 +766,28 @@
       ]
     }
   },
-  "yKienWcoDayDu": false
+  "yKienWcoDayDu": false,
+  "dieuKienNut": [
+    {
+      "id": "3923211",
+      "nguon": "tieuDe.3923211",
+      "trich": "3923211 Túi vô trùng được gia cố bằng lá nhôm (trừ túi đáy nở-retort)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Túi vô trùng được gia cố bằng lá nhôm"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "paperclip:cuon-chieu-soat:20261114T1828#soat-392321",
+          "ngay": "2026-11-14",
+          "bam": "5a124a47cb46e2ed916401a602408168b5a2e8f99dc11237762ef4f0628af8e1"
+        }
+      }
+    }
+  ]
 }

@@ -219,11 +219,19 @@ for (const ma of ['85362019', '85362099', '85366999', '84135090', '85444299']) {
     }
   }
   check('GIR đường đi: bằng chứng = trích nguyên văn của ranh giới đã duyệt, không từ mục CHUA_SO_HOA / có hiệu chỉnh', !loiBc.length, loiBc);
-  // L1-4c đợt 4: 853710 đã duyệt nên 85371019 cố định không còn là "không ranh giới đã duyệt". Lấy mã lát 1 đầu tiên mà sổ
-  // tay của nhóm 4 số chưa có mục nào CLAUDE_DUYET/NGUOI_DUYET (đọc sổ tay như ca 854442 ở trên — không đọc bản nháp sống).
+  // L1-4c đợt 4: 853710 đã duyệt nên 85371019 cố định không còn là "không ranh giới đã duyệt".
+  // Khi cả 50 mã lát 1 đã có CLAUDE_DUYET/NGUOI_DUYET (sau khi 9503 lên DUYET), tiêm sổ tay 9503 về
+  // AI_DA_KIEM (giống mẫu tiêm st ở ca anh em chưa duyệt phía trên) để vẫn kiểm nhánh "không ranh giới đã duyệt".
   const nhomCoDuyet = (h4) => { const st = loadSoTay(h4); return Boolean(st) && [...(st.dong8 || []), ...(st.dieuKienNut || [])].some((d) => NHAN_DUYET.has(d.nguonLoai)); };
   const maKhongDuyet = ma50.find((m) => !nhomCoDuyet(m.slice(0, 4)));
-  check(`GIR đường đi: không ranh giới đã duyệt ⇒ không GIR (${maKhongDuyet})`, Boolean(maKhongDuyet) && D.dungDuongDi(maKhongDuyet, 'NHAP').canCu.girRulesApplied.length === 0);
+  if (maKhongDuyet) {
+    check(`GIR đường đi: không ranh giới đã duyệt ⇒ không GIR (${maKhongDuyet})`, D.dungDuongDi(maKhongDuyet, 'NHAP').canCu.girRulesApplied.length === 0);
+  } else {
+    const stChuaDuyet = clone(loadSoTay('9503'));
+    stChuaDuyet.dong8 = (stChuaDuyet.dong8 || []).map((d) => ({ ...d, nguonLoai: 'AI_DA_KIEM' }));
+    stChuaDuyet.dieuKienNut = (stChuaDuyet.dieuKienNut || []).map((n) => ({ ...n, nguonLoai: 'AI_DA_KIEM' }));
+    check('GIR đường đi: không ranh giới đã duyệt ⇒ không GIR (95030010 tiêm chưa duyệt)', D.dungDuongDi('95030010', 'NHAP', { soTay: stChuaDuyet }).canCu.girRulesApplied.length === 0);
+  }
   const ngoai = ma50.map((m) => { const r = clone(D.dungDuongDi(m, 'NHAP')); delete r.canCu.girRulesApplied; delete r.canCu.girDisclaimer; return JSON.stringify(r); }).join('\n');
   check('không nhãn GIR nào ngoài canCu.girRulesApplied', !/GIR[\s-]*\d/.test(ngoai), (ngoai.match(/.{40}GIR[\s-]*\d.{40}/) || [''])[0]);
 }

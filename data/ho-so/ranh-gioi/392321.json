@@ -4,13 +4,19 @@
   "nhom": "3923",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
-    "phien": "mm:minimax-m3:20261105T1700#soan-392321",
-    "ngay": "2026-11-05"
+    "phien": "paperclip:tho-hs-03:20261114T1825#soan-392321",
+    "ngay": "2026-11-14"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "paperclip:cuon-chieu-soat:20261114T1828#soat-392321",
+    "ngay": "2026-11-14",
+    "ghiChu": "OZV-899: tenLoai đầy đủ phân biệt gia cố nhôm; BO_VE vế trừ retort (tránh ca loại trừ .19 lệch tầng).",
+    "bam": "5a124a47cb46e2ed916401a602408168b5a2e8f99dc11237762ef4f0628af8e1"
+  },
   "dieuKienNut": [
     {
       "id": "3923211",
@@ -18,19 +24,12 @@
       "trich": "3923211 Túi vô trùng được gia cố bằng lá nhôm (trừ túi đáy nở-retort)",
       "dieuKienSo": [
         {
-          "fact": "chatLieu",
-          "op": "LA",
-          "value": "nhôm",
-          "viTri": "GIA_CO"
-        },
-        {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "túi đáy nở-retort",
-          "chieu": "PHAI_KHONG"
+          "value": "Túi vô trùng được gia cố bằng lá nhôm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -46,20 +45,24 @@
           "donVi": "mm"
         },
         {
-          "fact": "chieuDaiCuon",
+          "fact": "chieuDai",
           "op": ">=",
           "value": 410,
           "donVi": "mm"
+        },
+        {
+          "fact": "ganNapDemKin",
+          "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39232119",
       "nguon": "tax.39232119",
       "trich": "39232119 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39232191",
@@ -67,17 +70,9 @@
       "trich": "39232191 - - - - Túi vô trùng không được gia cố bằng lá nhôm (trừ túi đáy nở-retort), chiều rộng từ 315 mm trở lên và chiều dài từ 410 mm trở lên, gắn với nắp đệm kín(SEN)",
       "dieuKienSo": [
         {
-          "fact": "chatLieu",
-          "op": "LA",
-          "value": "nhôm",
-          "viTri": "GIA_CO",
-          "chieu": "PHAI_KHONG"
-        },
-        {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "túi đáy nở-retort",
-          "chieu": "PHAI_KHONG"
+          "value": "Túi vô trùng không được gia cố bằng lá nhôm"
         },
         {
           "fact": "chieuRong",
@@ -86,47 +81,63 @@
           "donVi": "mm"
         },
         {
-          "fact": "chieuDaiCuon",
+          "fact": "chieuDai",
           "op": ">=",
           "value": 410,
           "donVi": "mm"
+        },
+        {
+          "fact": "ganNapDemKin",
+          "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39232199",
       "nguon": "tax.39232199",
       "trich": "39232199 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "3923211",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.3923211 \"Túi vô trùng được gia cố bằng lá nhôm (trừ túi đáy nở-retort)\" (EN \"Aseptic bags reinforced with aluminium foil (other than retort pouches)\") ⇒ chatLieu LA \"nhôm\" viTri \"GIA_CO\" — lớp gia cố của túi là lá nhôm (mẫu vật liệu đọc \"nhôm\"; mẫu vị trí GIA_CO đọc \"gia cố bằng\"). Vế \"(trừ túi đáy nở-retort)\" là ngoại lệ không có khoá tu-vung ⇒ xem ghi chú 400129/39232191."
+      "ghiChu": "tieuDe.3923211 ⇒ tenLoai \"Túi vô trùng được gia cố bằng lá nhôm\"."
+    },
+    {
+      "ma": "3923211",
+      "loai": "BO_VE",
+      "ve": "(trừ túi đáy nở-retort)",
+      "lyDo": "Vế trừ retort: đặt PHAI_KHONG trên nút làm ca loại trừ .19 (sinh \"túi đáy nở-retort\" để phá .11) bị đẩy sang 3923219/.99; máy đọc TEN_LOAI chưa tách phủ định \"không được gia cố\" khỏi chữ nhôm. Miễn vế trừ — phân biệt retort để lát sau / người khai."
     },
     {
       "ma": "39232111",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.39232111 \"Có chiều rộng từ 315 mm trở lên và có chiều dài từ 410 mm trở lên, gắn với nắp đệm kín\" (EN \"Of a width of 315 mm or more and of a length of 410 mm or more, incorporating a sealed gland\") ⇒ chieuRong >= 315 mm (\"từ 315 mm trở lên\" = >=) + chieuDaiCuon >= 410 mm. Vế \"gắn với nắp đệm kín\" (EN \"incorporating a sealed gland\") không có khoá tu-vung (daGanDauNoi đọc \"đầu nối\", không phải \"nắp đệm kín\") ⇒ để vế này chưa số hoá, ghi chú cho người soát."
+      "ghiChu": "tax.39232111 ⇒ chieuRong/chieuDai + ganNapDemKin CO."
     },
     {
       "ma": "39232191",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.39232191 \"Túi vô trùng không được gia cố bằng lá nhôm (trừ túi đáy nở-retort), chiều rộng từ 315 mm trở lên và chiều dài từ 410 mm trở lên, gắn với nắp đệm kín(SEN)\" ⇒ chieuRong >= 315 mm + chieuDaiCuon >= 410 mm. Điều kiện \"KHÔNG gia cố bằng lá nhôm\" do máy phủ định: dòng nằm dưới tiêu đề \"Loại khác\" (3923219) nên phủ định điều kiện của anh em 3923211 (gia cố lá nhôm)."
+      "ghiChu": "tax.39232191 ⇒ tenLoai \"Túi vô trùng không được gia cố bằng lá nhôm\" + kích thước + ganNapDemKin. Vế trừ retort BO_VE cùng lý do nút."
+    },
+    {
+      "ma": "39232191",
+      "loai": "BO_VE",
+      "ve": "(trừ túi đáy nở-retort)",
+      "lyDo": "Cùng lý do BO_VE ở 3923211 — tránh PHAI_KHONG retort làm ca loại trừ lệch tầng."
     },
     {
       "ma": "39232119",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.39232119 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+      "ghiChu": "Loại khác trần."
     },
     {
       "ma": "39232199",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.39232199 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+      "ghiChu": "Loại khác trần."
     }
   ],
   "traVe": [
@@ -134,6 +145,16 @@
       "phien": "claude-agent:duyet-L12-20261111#soat-L12",
       "ngay": "2026-11-11",
       "lyDo": "(A) 392321:3923211 SUY RỘNG: tiêu đề 'Túi vô trùng được gia cố bằng lá nhôm (trừ túi đáy nở-retort)' / EN 'Aseptic bags reinforced with aluminium foil (other than retort pouches):' chỉ ghi chatLieu nhôm GIA_CO + PHAI_KHONG 'túi đáy nở-retort' — bỏ 'Túi vô trùng' (aseptic; tu-vung@2 có daTietTrung hoặc tenLoai 'Túi vô trùng' như 392329) ⇒ túi PE ghép nhôm thường (túi cà phê…) vào nhánh 3923211. (B) 392321:39232111 và :39232191 SUY RỘNG: vế 'gắn với nắp đệm kín' / 'incorporating a sealed gland' không có điều kiện (392329 cùng chữ đã dùng ganNapDemKin CO) ⇒ túi không có nắp đệm kín vào .11/.91 thay vì .19/.99. Máy tách gộp 'có chiều dài từ 410 mm trở lên, gắn với nắp đệm kín' thành MỘT vế nên báo 'phủ' (ghi cho tach-ve.js). .91 cũng thiếu 'Túi vô trùng'. Khoá chieuDaiCuon (chiều dài cuộn) cho chiều dài túi — dùng chieuDai như 392329."
+    },
+    {
+      "phien": "paperclip:cuon-chieu-soat:20261114T1810#soat-392321",
+      "ngay": "2026-11-14",
+      "lyDo": "Sửa phân biệt 3923211/.91: bỏ chatLieu nhôm (đọc oan trên câu phủ định); dùng tenLoai chuỗi đầy đủ (OZV-899)."
+    },
+    {
+      "phien": "paperclip:cuon-chieu-soat:20261114T1820#soat-392321",
+      "ngay": "2026-11-14",
+      "lyDo": "Chuyển PHAI_KHONG retort từ nút xuống .11/.91 để ca loại trừ .19 không rơi .99 (OZV-899)."
     }
   ]
 }
