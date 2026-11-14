@@ -5,7 +5,7 @@ import './test-isolate-data.mjs';
 
 import { readFileSync } from 'node:fs';
 
-import { docBoCa, trungVi, p95, ma8So } from './do-han-chot-85s.mjs';
+import { docBoCa, trungVi, p95, ma8So, kiemTinCay } from './do-han-chot-85s.mjs';
 
 let xanh = 0;
 let do_ = 0;
@@ -69,6 +69,71 @@ function ca(ten, dieuKien) {
   ca('lấy mã chốt ở thân', ma8So({ hsCode: '12081000' }) === '12081000');
   ca('thân rỗng = null', ma8So({}) === null && ma8So(null) === null);
   ca('ca đầu có mã 8 số thì lấy ca đó', ma8So({ results: [{ hsCode: '9405' }, { hsCode: '94052190' }] }) === '94052190');
+}
+
+// 6) Cổng tin cậy (OZV-780, vá lỗ hổng GĐ ghi 14/11): cổng cũ CHỈ bắt khi MỌI ca
+//    dưới 5 giây. Nếu một PHẦN nhà cung cấp chết thì bảng vẫn in ra số đẹp mà
+//    không ai thấy. Cổng mới phải bắt cả bốn dấu hiệu dưới đây.
+{
+  const ok = (giay, them = {}) => ({ id: `c${giay}`, giay, http: 200, trangThai: 'done', ma8So: '39264000', ...them });
+
+  // 6a) Health nói thẳng là không có nhà cung cấp nào ⇒ chặn NGAY, không cần đoán theo giây.
+  const thatLau = Array.from({ length: 22 }, (_, i) => ok(40 + i));
+  const khongProvider = kiemTinCay(thatLau, { checks: { llm: { ok: false, order: [] } } });
+  ca('health không có provider ⇒ chặn dù ca chạy lâu', khongProvider.hopLe === false);
+  ca('lý do nêu đúng "không có nhà cung cấp"', /nhà cung cấp/i.test(khongProvider.lyDo.join(' ')));
+
+  // 6b) Bản chạy đủ provider + ca chạy thật ⇒ số dùng được.
+  const suc = { checks: { llm: { ok: true, order: ['minimax', 'deepseek'] } } };
+  ca('đủ provider + ca chạy thật ⇒ hợp lệ', kiemTinCay(thatLau, suc).hopLe === true);
+
+  // 6c) Cổng cũ: mọi ca dưới 5 giây.
+  const nhanhHet = Array.from({ length: 22 }, () => ok(1.8, { ma8So: null, reasonCode: 'ENGINE_TIMEOUT' }));
+  ca('mọi ca dưới 5 giây ⇒ chặn', kiemTinCay(nhanhHet, suc).hopLe === false);
+
+  // 6d) LỖ HỔNG CŨ: một phần ca nhanh bất thường (nhà cung cấp chết giữa chừng).
+  //     11/22 ca về trong 1.8 giây mà cổng cũ vẫn in bảng vì không phải "mọi ca".
+  const motNua = [
+    ...Array.from({ length: 11 }, (_, i) => ok(1.8 + i * 0.01, { ma8So: null, reasonCode: 'ENGINE_TIMEOUT' })),
+    ...Array.from({ length: 11 }, (_, i) => ok(60 + i)),
+  ];
+  ca('một nửa ca nhanh bất thường ⇒ chặn (lỗ hổng cũ)', kiemTinCay(motNua, suc).hopLe === false);
+  ca('lý do nêu số ca nhanh bất thường', /nhanh bất thường/i.test(kiemTinCay(motNua, suc).lyDo.join(' ')));
+
+  // 6d-bis) Chốt ngưỡng 1/4 ở hai phía biên. Ngưỡng cột GIÂY cố tình gắt hơn cột
+  //   lỗi (quá nửa): ca lỗi lác đác là chuyện thường, còn ca dưới 5 giây thì không
+  //   có cách đọc lành nào — đó là bản chạy không gọi AI.
+  const tron = (nhanh, tong = 22) => [
+    ...Array.from({ length: nhanh }, (_, i) => ok(1.8 + i * 0.01, { ma8So: null, reasonCode: 'ENGINE_TIMEOUT' })),
+    ...Array.from({ length: tong - nhanh }, (_, i) => ok(60 + i)),
+  ];
+  ca('đúng 1/4 ca nhanh (5/20) ⇒ chặn', kiemTinCay(tron(5, 20), suc).hopLe === false);
+  ca('dưới 1/4 ca nhanh (4/20) ⇒ vẫn hợp lệ', kiemTinCay(tron(4, 20), suc).hopLe === true);
+
+  // 6e) Dù chỉ MỘT ca trả LLM_NOT_CONFIGURED thì bản chạy đó đã thiếu khoá ⇒ chặn.
+  const motCaThieuKhoa = [...Array.from({ length: 21 }, (_, i) => ok(50 + i)), ok(52, { reasonCode: 'LLM_NOT_CONFIGURED', ma8So: null })];
+  ca('một ca LLM_NOT_CONFIGURED ⇒ chặn', kiemTinCay(motCaThieuKhoa, suc).hopLe === false);
+
+  // 6f) Quá nửa số ca lỗi (A2) ⇒ bảng vô nghĩa, dù giây trông bình thường.
+  const nhieuLoi = [
+    ...Array.from({ length: 12 }, (_, i) => ok(40 + i, { loi: 'HTTP_503', ma8So: null })),
+    ...Array.from({ length: 10 }, (_, i) => ok(50 + i)),
+  ];
+  ca('quá nửa ca lỗi ⇒ chặn', kiemTinCay(nhieuLoi, suc).hopLe === false);
+
+  // 6g) Vài ca lỗi lẻ tẻ (3/22) là chuyện thường của lượt LLM thật ⇒ KHÔNG chặn,
+  //     để cổng không báo oan làm người đo bỏ luôn số đúng.
+  const loiLeTe = [
+    ...Array.from({ length: 3 }, (_, i) => ok(40 + i, { loi: 'HTTP_503', ma8So: null })),
+    ...Array.from({ length: 19 }, (_, i) => ok(50 + i)),
+  ];
+  ca('vài ca lỗi lẻ tẻ ⇒ vẫn hợp lệ', kiemTinCay(loiLeTe, suc).hopLe === true);
+
+  // 6h) Không có ca nào chạy được (mạng hỏng) ⇒ chặn, đừng in bảng rỗng.
+  ca('không ca nào có số giây ⇒ chặn', kiemTinCay([{ id: 'x', giay: null, loi: 'MANG_ECONNREFUSED' }], suc).hopLe === false);
+
+  // 6i) Thiếu khối health (gọi /api/health hỏng) ⇒ chặn, không đoán bừa là có khoá.
+  ca('thiếu khối health ⇒ chặn', kiemTinCay(thatLau, null).hopLe === false);
 }
 
 console.log('');

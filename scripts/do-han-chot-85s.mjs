@@ -17,7 +17,10 @@
  * CỔNG TIN CẬY (luật 5, OZV-310): nếu bản chạy không có nhà cung cấp LLM nào thì
  * mọi ca về trong ~2 giây với ENGINE_TIMEOUT và bảng số trông như "nhanh vượt bậc"
  * trong khi thật ra KHÔNG có lượt AI nào. Script tự phát hiện và thoát mã 3 —
- * số đo không hợp lệ, đừng dán lên thẻ.
+ * số đo không hợp lệ, đừng dán lên thẻ. Cổng soi bốn dấu hiệu, xem `kiemTinCay()`:
+ * health không có provider · ca trả mã thiếu khoá · quá nửa ca nhanh bất thường ·
+ * quá nửa ca lỗi. Chỉ cần một dấu hiệu là chặn (trước đây phải MỌI ca nhanh mới chặn,
+ * nên một phần nhà cung cấp chết thì bảng vẫn in — GĐ ghi 14/11).
  */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
@@ -42,6 +45,8 @@ const RA = doCo('ra', null);
 /** Ngưỡng nghi "không có lượt AI thật": lượt thật rẻ nhất trong thực địa cũng ~36 giây. */
 const NGUONG_NGHI_KHONG_AI_MS = 5000;
 const MA_8_SO = /^\d{8}$/;
+/** Mã lý do chứng tỏ bản chạy thiếu khoá — chỉ cần MỘT ca là cả bảng hỏng. */
+const MA_THIEU_KHOA = new Set(['LLM_NOT_CONFIGURED', 'NO_PRIVATE_LLM', 'LLM_UNAVAILABLE']);
 
 export function docBoCa() {
   const raw = JSON.parse(readFileSync(BO, 'utf8'));
@@ -126,6 +131,57 @@ export function p95(ds) {
 
 const lam2 = (n) => (n == null ? '—' : n.toFixed(2));
 
+/**
+ * Cổng tin cậy (luật 5, OZV-310) — trả `{ hopLe, lyDo[] }`.
+ *
+ * Bản đầu chỉ chặn khi MỌI ca về dưới 5 giây; GĐ ghi 14/11 rằng nếu chỉ MỘT PHẦN
+ * nhà cung cấp chết thì bảng vẫn in và người đọc phải tự soi cột A2 — tức là cổng
+ * không giữ được. Nay chặn theo bốn dấu hiệu độc lập, chỉ cần một dấu hiệu là đủ:
+ *
+ *  1. `/api/health` nói thẳng không có nhà cung cấp LLM nào (`llm.order` rỗng) —
+ *     dấu hiệu chắc chắn nhất, không phải đoán theo giây;
+ *  2. có ca trả mã lý do thiếu khoá (`LLM_NOT_CONFIGURED`…) — một ca là đủ;
+ *  3. từ 1/4 số ca trở lên về dưới 5 giây — lượt thật rẻ nhất trong thực địa ~36 giây;
+ *  4. quá nửa số ca lỗi (A2) — bảng trung vị/p95 khi đó vô nghĩa.
+ *
+ * Hai ngưỡng khác nhau là cố ý. Ca LỖI lác đác là chuyện thường của lượt LLM thật
+ * (nhà cung cấp rớt rồi lên lại), nên chỉ chặn khi quá nửa — cổng báo oan sẽ làm
+ * người đo bỏ luôn số đúng. Còn ca về DƯỚI 5 GIÂY thì không có cách đọc lành nào:
+ * nó là bản chạy không gọi AI, nên 1/4 đã đủ chặn.
+ */
+export function kiemTinCay(ketQua, suc) {
+  const lyDo = [];
+  const giay = ketQua.map((k) => k.giay).filter((g) => typeof g === 'number');
+
+  const llm = suc?.checks?.llm;
+  if (!llm) {
+    lyDo.push('không đọc được khối `checks.llm` của /api/health — không biết bản chạy có khoá hay không.');
+  } else if (!Array.isArray(llm.order) || llm.order.length === 0) {
+    lyDo.push('/api/health báo KHÔNG có nhà cung cấp LLM nào (`llm.order` rỗng) — mọi lượt chạy chế độ không AI.');
+  }
+
+  const thieuKhoa = ketQua.filter((k) => MA_THIEU_KHOA.has(String(k.reasonCode || '')));
+  if (thieuKhoa.length) {
+    lyDo.push(`${thieuKhoa.length} ca trả mã thiếu khoá (${[...new Set(thieuKhoa.map((k) => k.reasonCode))].join(', ')}).`);
+  }
+
+  if (!giay.length) {
+    lyDo.push('không ca nào chạy xong — không có số để tính trung vị.');
+  } else {
+    const nhanh = giay.filter((g) => g < NGUONG_NGHI_KHONG_AI_MS / 1000).length;
+    if (nhanh * 4 >= giay.length) {
+      lyDo.push(`${nhanh}/${giay.length} ca về dưới ${NGUONG_NGHI_KHONG_AI_MS / 1000} giây — nhanh bất thường, lượt thật rẻ nhất cũng ~36 giây.`);
+    }
+  }
+
+  const loi = ketQua.filter((k) => k.loi).length;
+  if (ketQua.length && loi * 2 > ketQua.length) {
+    lyDo.push(`${loi}/${ketQua.length} ca lỗi (A2 quá nửa) — trung vị/p95 của phần còn lại không đại diện.`);
+  }
+
+  return { hopLe: lyDo.length === 0, lyDo };
+}
+
 async function main() {
   const cases = docBoCa();
   let suc = null;
@@ -171,14 +227,12 @@ async function main() {
   }
 
   // Cổng tin cậy: không có lượt AI thật thì bảng số trên là rác, đừng dán lên thẻ.
-  const nhanh = giay.filter((g) => g < NGUONG_NGHI_KHONG_AI_MS / 1000).length;
-  const engineTimeout = ketQua.filter((k) => k.reasonCode === 'ENGINE_TIMEOUT').length;
-  if (giay.length && nhanh === giay.length) {
+  const tinCay = kiemTinCay(ketQua, suc);
+  if (!tinCay.hopLe) {
     console.log('');
-    console.log(`SỐ ĐO KHÔNG HỢP LỆ: cả ${giay.length} ca về dưới ${NGUONG_NGHI_KHONG_AI_MS / 1000} giây` +
-      `${engineTimeout ? ` và ${engineTimeout} ca trả ENGINE_TIMEOUT` : ''}.`);
-    console.log('Bản chạy gần như chắc chắn KHÔNG có khoá nhà cung cấp LLM nào (xem log: LLM_NOT_CONFIGURED).');
-    console.log('Lượt thật rẻ nhất trong thực địa cũng ~36 giây. Đừng dán bảng này lên thẻ.');
+    console.log('SỐ ĐO KHÔNG HỢP LỆ — đừng dán bảng trên lên thẻ. Lý do:');
+    for (const d of tinCay.lyDo) console.log(`- ${d}`);
+    console.log('Lượt LLM thật rẻ nhất trong thực địa cũng ~36 giây; bảng "nhanh vượt bậc" ở đây là bản chạy thiếu khoá, không phải bản vá ăn.');
     process.exit(3);
   }
 }
