@@ -4,13 +4,19 @@
   "nhom": "8514",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-851490",
     "ngay": "2026-11-02"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:duyet-OZV-845-20261114#soat-851490",
+    "ngay": "2026-11-14",
+    "ghiChu": "Đối chiếu VI/EN: .20 congDung ['tấm mạch in', 'tấm dây in', 'mạch in đã lắp ráp'] (cùng khuôn 85142020/85143110/85143210/85143910 đã duyệt); miễn BO_VE 'của lò luyện, nung hoặc lò sấy điện' vì mọi âm tiết lặp tiêu đề nhóm 85.14 khiến tuChaCua lọc rỗng cumPhanBiet (như 85479010 PR #1283); bỏ BO_VE thừa thứ hai; .90 LK trần.",
+    "bam": "767e53aed8b6a7fc62988f7f6e08f8cdc2438c8553d05553aceef6fd8a891481"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -28,14 +34,14 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85149090",
       "nguon": "tax.85149090",
       "trich": "85149090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -43,18 +49,12 @@
       "ma": "85149020",
       "loai": "BO_VE",
       "ve": "của lò luyện, nung hoặc lò sấy điện",
-      "lyDo": "Lặp lại tên nhóm 85.14, không tạo điều kiện giới hạn riêng của dòng"
-    },
-    {
-      "ma": "85149020",
-      "loai": "BO_VE",
-      "ve": "dùng trong công nghiệp hoặc phòng thí nghiệm",
-      "lyDo": "Lặp lại phạm vi của nhóm 85.14 quy định tại chú giải tiêu đề nhóm"
+      "lyDo": "Mọi âm tiết ('lò', 'luyện', 'nung', 'sấy', 'điện') đều nằm trong tiêu đề nhóm 85.14 ('Lò luyện, nung và lò sấy điện...'), khiến tuChaCua(85149020) lọc hết từ phân biệt (coCumPhanBiet=false) làm điều kiện chữ tự do rơi vào khongTatDinh và chặn chốt dòng 85149020 (cùng cơ chế miễn BO_VE ở 85479010 PR #1283)"
     },
     {
       "ma": "85149020",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85149020: \"cho sản xuất tấm mạch in/tấm dây in hoặc mạch in đã lắp ráp\" ⇒ congDung CONG_DUNG mảng 3 đối tượng"
+      "ghiChu": "tax.85149020: \"cho sản xuất tấm mạch in/tấm dây in hoặc mạch in đã lắp ráp\" ⇒ congDung CONG_DUNG mảng 3 đối tượng sản xuất (cùng khuôn 85142020, 85143110, 85143210, 85143910 đã duyệt); bỏ BO_VE thừa \"dùng trong công nghiệp hoặc phòng thí nghiệm\""
     }
   ],
   "traVe": [

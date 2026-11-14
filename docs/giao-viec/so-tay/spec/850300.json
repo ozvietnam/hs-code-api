@@ -6,16 +6,13 @@
     "85030020": {
       "dieuKienSo": [
         {
-          "fact": "laBoPhan",
-          "op": "CO"
-        },
-        {
           "fact": "dungCho",
           "op": "CONG_DUNG",
-          "value": [
-            "85.01",
-            "85.02"
-          ]
+          "value": "máy phát điện (kể cả tổ máy phát điện) thuộc nhóm 85.01 hoặc 85.02"
+        },
+        {
+          "fact": "laBoPhan",
+          "op": "CO"
         },
         {
           "fact": "congSuatBieuKien",
@@ -30,7 +27,7 @@
     {
       "ma": "85030020",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85030020: \"Bộ phận của máy phát điện (kể cả tổ máy phát điện) thuộc nhóm 85.01 hoặc 85.02, công suất từ 12.500 kVA trở lên\" ⇒ laBoPhan CO, dungCho 85.01 hoặc 85.02, congSuatBieuKien >= 12500 kVA"
+      "ghiChu": "tax.85030020: \"Bộ phận của máy phát điện (kể cả tổ máy phát điện) thuộc nhóm 85.01 hoặc 85.02, công suất từ 12.500 kVA trở lên\" ⇒ laBoPhan CO, dungCho \"máy phát điện (kể cả tổ máy phát điện) thuộc nhóm 85.01 hoặc 85.02\" (giữ đích máy phát điện kèm nhóm 85.01/85.02 để không lấn bộ phận động cơ điện 85.01), congSuatBieuKien >= 12500 kVA"
     }
   ]
 }
