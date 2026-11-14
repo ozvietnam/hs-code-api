@@ -4,13 +4,19 @@
   "nhom": "8508",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-850870",
     "ngay": "2026-11-02"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:duyet-L34-20261113#soat-L34",
+    "ngay": "2026-11-13",
+    "ghiChu": "Đối chiếu VI/EN + tiền lệ 94059930: .10 dungCho 'máy hút bụi thuộc phân nhóm 8508.11.00 hoặc 8508.19.10' (chữ kèm mã, giữ chuỗi 'hoặc'; mã trần không khớp dữ kiện tên #697); LK trần.",
+    "bam": "1ad26dd3ff9fada6166b40bff3995ed3570ae31dfb6ebf928bae0e130f73090f"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -21,27 +27,24 @@
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
-          "value": [
-            "8508.11.00",
-            "8508.19.10"
-          ]
+          "value": "máy hút bụi thuộc phân nhóm 8508.11.00 hoặc 8508.19.10"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85087090",
       "nguon": "tax.85087090",
       "trich": "85087090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "85087010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85087010: \"Của máy hút bụi thuộc phân nhóm 8508.11.00 hoặc 8508.19.10\" ⇒ dungCho CONG_DUNG [\"8508.11.00\", \"8508.19.10\"]"
+      "ghiChu": "tax.85087010: \"Của máy hút bụi thuộc phân nhóm 8508.11.00 hoặc 8508.19.10\" ⇒ dungCho \"máy hút bụi thuộc phân nhóm 8508.11.00 hoặc 8508.19.10\" (chữ mô tả kèm mã, giữ nguyên chuỗi 'hoặc' — như 94059930; mã trần không có tên thì dữ kiện không ra mã ⇒ CHUA_BIET, #697)"
     }
   ]
 }
