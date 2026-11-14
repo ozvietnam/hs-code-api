@@ -77,11 +77,32 @@
   "dong8": [
     {
       "hs": "39011012",
-      "dieuKien": "Polyetylen chứa các monomer alpha-olefin từ 5% trở xuống (SEN)",
+      "dieuKien": "tên loại hàng: LLDPE; hàm lượng monomer alpha-olefin <= 5 %",
       "loaiKhac": false,
-      "nguon": "tax.39011012",
-      "trich": "39011012 - - - Polyetylen chứa các monomer alpha-olefin từ 5% trở xuống (SEN)",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguon": "sen.39011012",
+      "trich": "Polyetylen chứa các monomer alpha-olefin từ 5% trở xuống (ít nhất một lượng nhỏ) dùng để chỉ Polyetylen cấu trúc thẳng có nhánh ngắn tỷ trọng thấp (LLDPE) với hàm lượng monomer alpha olefin từ 5% trở xuống tính theo khối lượng.",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "LLDPE"
+        },
+        {
+          "fact": "hamLuongMonomerAlphaOlefin",
+          "op": "<=",
+          "value": 5,
+          "donVi": "%"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "paperclip:tho-hs-03:20261114T1400#soat-cuon-chieu",
+          "ngay": "2026-11-14",
+          "bam": "792d76d931dc8e4fdeebf584c05f360931c53294f9bcaa20862431d81e84a908"
+        }
+      }
     },
     {
       "hs": "39011019",
@@ -105,11 +126,32 @@
     },
     {
       "hs": "39011092",
-      "dieuKien": "Polyetylen chứa các monomer alpha-olefin từ 5% trở xuống (SEN)",
+      "dieuKien": "tên loại hàng: LLDPE; hàm lượng monomer alpha-olefin <= 5 %",
       "loaiKhac": false,
-      "nguon": "tax.39011092",
-      "trich": "39011092 - - - Polyetylen chứa các monomer alpha-olefin từ 5% trở xuống (SEN)",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguon": "sen.39011092",
+      "trich": "Polyetylen chứa các monomer alpha-olefin từ 5% trở xuống (ít nhất một lượng nhỏ) dùng để chỉ Polyetylen cấu trúc thẳng có nhánh ngắn tỷ trọng thấp (LLDPE) với hàm lượng monomer alpha olefin từ 5% trở xuống tính theo khối lượng.",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "LLDPE"
+        },
+        {
+          "fact": "hamLuongMonomerAlphaOlefin",
+          "op": "<=",
+          "value": 5,
+          "donVi": "%"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "paperclip:tho-hs-03:20261114T1400#soat-cuon-chieu",
+          "ngay": "2026-11-14",
+          "bam": "792d76d931dc8e4fdeebf584c05f360931c53294f9bcaa20862431d81e84a908"
+        }
+      }
     },
     {
       "hs": "39011099",
@@ -354,5 +396,30 @@
     "nguonBiCat": [
       "ch39.chuong (44853→40000)"
     ]
-  }
+  },
+  "dieuKienNut": [
+    {
+      "id": "3901101",
+      "nguon": "tieuDe.3901101",
+      "trich": "3901101 Dạng lỏng hoặc dạng nhão",
+      "dieuKienSo": [
+        {
+          "fact": "dangNguyenSinh",
+          "op": "TRONG",
+          "value": [
+            "LONG_HOAC_NHAO"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "paperclip:tho-hs-03:20261114T1400#soat-cuon-chieu",
+          "ngay": "2026-11-14",
+          "bam": "792d76d931dc8e4fdeebf584c05f360931c53294f9bcaa20862431d81e84a908"
+        }
+      }
+    }
+  ]
 }

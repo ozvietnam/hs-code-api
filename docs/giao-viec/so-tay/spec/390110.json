@@ -1,10 +1,17 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "390110",
-  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-390110",
+  "phien": "cursor:grok-4.5:20261114T1350#soan-390110",
   "dong8": {
     "39011012": {
+      "nguon": "sen.39011012",
+      "trich": "Polyetylen chứa các monomer alpha-olefin từ 5% trở xuống (ít nhất một lượng nhỏ) dùng để chỉ Polyetylen cấu trúc thẳng có nhánh ngắn tỷ trọng thấp (LLDPE) với hàm lượng monomer alpha olefin từ 5% trở xuống tính theo khối lượng.",
       "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "LLDPE"
+        },
         {
           "fact": "hamLuongMonomerAlphaOlefin",
           "op": "<=",
@@ -14,7 +21,14 @@
       ]
     },
     "39011092": {
+      "nguon": "sen.39011092",
+      "trich": "Polyetylen chứa các monomer alpha-olefin từ 5% trở xuống (ít nhất một lượng nhỏ) dùng để chỉ Polyetylen cấu trúc thẳng có nhánh ngắn tỷ trọng thấp (LLDPE) với hàm lượng monomer alpha olefin từ 5% trở xuống tính theo khối lượng.",
       "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "LLDPE"
+        },
         {
           "fact": "hamLuongMonomerAlphaOlefin",
           "op": "<=",
@@ -41,29 +55,29 @@
     {
       "ma": "3901101",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.3901101 \"Dạng lỏng hoặc dạng nhão\" ⇒ dangNguyenSinh TRONG [LONG_HOAC_NHAO] (khoá đọc đúng chữ \"dạng lỏng hoặc dạng nhão\")."
+      "ghiChu": "tieuDe.3901101 \"Dạng lỏng hoặc dạng nhão\" ⇒ dangNguyenSinh TRONG [LONG_HOAC_NHAO]."
     },
     {
       "ma": "39011012",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.39011012 \"Polyetylen chứa các monomer alpha-olefin từ 5% trở xuống (SEN)\" ⇒ hamLuongMonomerAlphaOlefin <= 5 % (\"từ 5% trở xuống\" = <=). Khoá mới (lô 20) mang luôn ý \"chứa các monomer alpha-olefin\" bằng con số nên không cần khoá có/không thứ hai; \"Polyetylen\" là tên của chính phân nhóm 390110, không thêm tenLoai."
+      "ghiChu": "sen.39011012: dòng này \"dùng để chỉ … (LLDPE) với hàm lượng monomer alpha olefin từ 5% trở xuống\" ⇒ tenLoai \"LLDPE\" + hamLuongMonomerAlphaOlefin <= 5 %. Không ghi > 0 % vì số 0 không có nguyên văn trong tax/SEN (cong3); tenLoai LLDPE thay cho khoá có/không — homopolyme 0 % (LDPE) không phải LLDPE nên không vào .12."
     },
     {
       "ma": "39011092",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.39011092 \"Polyetylen chứa các monomer alpha-olefin từ 5% trở xuống (SEN)\" ⇒ hamLuongMonomerAlphaOlefin <= 5 % (cùng khoá, cùng biên với 39011012)."
+      "ghiChu": "sen.39011092 cùng định nghĩa LLDPE ⇒ tenLoai \"LLDPE\" + hamLuongMonomerAlphaOlefin <= 5 % (cùng lý do với 39011012)."
     },
     {
       "ma": "39011012",
       "loai": "BO_VE",
       "ve": "chứa các monomer alpha-olefin",
-      "lyDo": "Vế \"chứa các monomer alpha-olefin\" được chính khoá hamLuongMonomerAlphaOlefin mang (nhãn tu-vung@2 \"hàm lượng monomer alpha-olefin\", cách viết \"chứa monomer alpha-olefin {giaTri}\"): chữ biểu gắn ngay ngưỡng \"từ 5% trở xuống\" vào chất đó, nên điều kiện <= 5 % trên khoá này đã phủ cả ý \"chứa\" lẫn ngưỡng; không có khoá có/không thứ hai nên bỏ vế riêng không đổi mã 8 số."
+      "lyDo": "Vế \"chứa các monomer alpha-olefin\" được SEN.39011012 định nghĩa bằng chính đối tượng LLDPE: \"…(ít nhất một lượng nhỏ) dùng để chỉ Polyetylen cấu trúc thẳng có nhánh ngắn tỷ trọng thấp (LLDPE)…\". Điều kiện tenLoai \"LLDPE\" đã loại homopolyme 0 % alpha-olefin (LDPE) khỏi .12; kèm hamLuongMonomerAlphaOlefin <= 5 % đúng chữ \"từ 5% trở xuống\". Không thể ghi > 0 % vì số 0 không có nguyên văn trong tax/SEN (cong3-nguong-khong-co-trong-trich)."
     },
     {
       "ma": "39011092",
       "loai": "BO_VE",
       "ve": "chứa các monomer alpha-olefin",
-      "lyDo": "Vế \"chứa các monomer alpha-olefin\" được chính khoá hamLuongMonomerAlphaOlefin mang (nhãn tu-vung@2 \"hàm lượng monomer alpha-olefin\", cách viết \"chứa monomer alpha-olefin {giaTri}\"): chữ biểu gắn ngay ngưỡng \"từ 5% trở xuống\" vào chất đó, nên điều kiện <= 5 % trên khoá này đã phủ cả ý \"chứa\" lẫn ngưỡng; không có khoá có/không thứ hai nên bỏ vế riêng không đổi mã 8 số."
+      "lyDo": "Vế \"chứa các monomer alpha-olefin\" được SEN.39011092 định nghĩa bằng chính đối tượng LLDPE: \"…(ít nhất một lượng nhỏ) dùng để chỉ Polyetylen cấu trúc thẳng có nhánh ngắn tỷ trọng thấp (LLDPE)…\". Điều kiện tenLoai \"LLDPE\" đã loại homopolyme 0 % alpha-olefin (LDPE) khỏi .92; kèm hamLuongMonomerAlphaOlefin <= 5 % đúng chữ \"từ 5% trở xuống\". Không thể ghi > 0 % vì số 0 không có nguyên văn trong tax/SEN (cong3-nguong-khong-co-trong-trich)."
     }
   ]
 }
