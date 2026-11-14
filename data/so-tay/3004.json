@@ -508,57 +508,19 @@
     },
     {
       "hs": "30045010",
-      "dieuKien": "được thiết kế chủ yếu cho trẻ em; dạng bào chế / đường dùng của thuốc: dạng xirô",
+      "dieuKien": "Phân nhóm 3004.50 [Medicaments; containing vitamins or their derivatives, for therapeutic or prophylactic use, packaged for retail sale]: Loại phù hợp cho trẻ em, dạng xirô",
       "loaiKhac": false,
       "nguon": "tax.30045010",
-      "trich": "30045010 - - Loại phù hợp cho trẻ em, dạng xirô",
-      "nguonLoai": "CLAUDE_DUYET",
-      "dieuKienSo": [
-        {
-          "fact": "thietKeChoTreEm",
-          "op": "CO"
-        },
-        {
-          "fact": "dangBaoCheThuoc",
-          "op": "TRONG",
-          "value": [
-            "XIRO"
-          ]
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:tho-hs-01-20261115#soat-300450",
-          "ngay": "2026-11-14",
-          "bam": "55aa38a4cb5df94e20c6c2b9da95f342c5a81f383b07471360bdea8a92e5746e"
-        }
-      }
+      "trich": "Loại phù hợp cho trẻ em, dạng xirô",
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "30045021",
-      "dieuKien": "dạng bào chế / đường dùng của thuốc: dạng uống",
+      "dieuKien": "Phân nhóm 3004.50 [Medicaments; containing vitamins or their derivatives, for therapeutic or prophylactic use, packaged for retail sale]: Dạng uống (*) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
       "loaiKhac": false,
       "nguon": "tax.30045021",
-      "trich": "30045021 - - - Dạng uống (*)",
-      "nguonLoai": "CLAUDE_DUYET",
-      "dieuKienSo": [
-        {
-          "fact": "dangBaoCheThuoc",
-          "op": "TRONG",
-          "value": [
-            "DANG_UONG"
-          ]
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:tho-hs-01-20261115#soat-300450",
-          "ngay": "2026-11-14",
-          "bam": "55aa38a4cb5df94e20c6c2b9da95f342c5a81f383b07471360bdea8a92e5746e"
-        }
-      }
+      "trich": "Dạng uống (*)",
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "30045029",
@@ -579,26 +541,11 @@
     },
     {
       "hs": "30045091",
-      "dieuKien": "tên loại hàng: vitamin",
+      "dieuKien": "Phân nhóm 3004.50 [Medicaments; containing vitamins or their derivatives, for therapeutic or prophylactic use, packaged for retail sale]: Chứa vitamin A, B hoặc C (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
       "loaiKhac": false,
       "nguon": "tax.30045091",
-      "trich": "30045091 - - - Chứa vitamin A, B hoặc C",
-      "nguonLoai": "CLAUDE_DUYET",
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "vitamin"
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:tho-hs-01-20261115#soat-300450",
-          "ngay": "2026-11-14",
-          "bam": "55aa38a4cb5df94e20c6c2b9da95f342c5a81f383b07471360bdea8a92e5746e"
-        }
-      }
+      "trich": "Chứa vitamin A, B hoặc C",
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "30045099",
@@ -1898,30 +1845,5 @@
       ]
     }
   },
-  "yKienWcoDayDu": false,
-  "dieuKienNut": [
-    {
-      "id": "3004502",
-      "nguon": "tieuDe.3004502",
-      "trich": "3004502 Loại khác, chứa nhiều hơn một loại vitamin",
-      "dieuKienSo": [
-        {
-          "fact": "soLoaiVitamin",
-          "op": ">",
-          "value": 1,
-          "donVi": "loại"
-        }
-      ],
-      "nguonLoai": "CLAUDE_DUYET",
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:tho-hs-01-20261115#soat-300450",
-          "ngay": "2026-11-14",
-          "bam": "55aa38a4cb5df94e20c6c2b9da95f342c5a81f383b07471360bdea8a92e5746e"
-        }
-      },
-      "phanConLai": true
-    }
-  ]
+  "yKienWcoDayDu": false
 }
