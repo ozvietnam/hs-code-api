@@ -17,7 +17,10 @@
  * CỔNG TIN CẬY (luật 5, OZV-310): nếu bản chạy không có nhà cung cấp LLM nào thì
  * mọi ca về trong ~2 giây với ENGINE_TIMEOUT và bảng số trông như "nhanh vượt bậc"
  * trong khi thật ra KHÔNG có lượt AI nào. Script tự phát hiện và thoát mã 3 —
- * số đo không hợp lệ, đừng dán lên thẻ.
+ * số đo không hợp lệ, đừng dán lên thẻ. Cổng soi bốn dấu hiệu, xem `kiemTinCay()`:
+ * health không có provider · ca trả mã thiếu khoá · quá nửa ca nhanh bất thường ·
+ * quá nửa ca lỗi. Chỉ cần một dấu hiệu là chặn (trước đây phải MỌI ca nhanh mới chặn,
+ * nên một phần nhà cung cấp chết thì bảng vẫn in — GĐ ghi 14/11).
  */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
@@ -39,9 +42,27 @@ const LIMIT = Number(doCo('limit', '0')) || 0;
 const TIMEOUT_MS = (Number(doCo('timeout', '180')) || 180) * 1000;
 const RA = doCo('ra', null);
 
-/** Ngưỡng nghi "không có lượt AI thật": lượt thật rẻ nhất trong thực địa cũng ~36 giây. */
-const NGUONG_NGHI_KHONG_AI_MS = 5000;
+/**
+ * Ngưỡng nghi "không có lượt AI thật", tính bằng ms.
+ *
+ * Bản đầu đặt 5000 ms theo câu "lượt thật rẻ nhất trong thực địa cũng ~36 giây".
+ * Đo thật trên prod 14/11 (22 ca, `/api/classify`) BÁC BỎ câu đó: ca `td-05` về
+ * trong 4,52 giây mà vẫn là lượt AI thật — `engine.rounds = 2`, `engine.providers
+ * = ["gemini-free","gemini-free"]`.
+ *
+ * Nói cho đúng số (soát chéo 14/11 bắt được chỗ này): bảng prod 14/11 chỉ có
+ * 2/22 ca dưới 5 giây, DƯỚI cổng 1/4 (5,5 ca), nên bảng đó đi qua được ở CẢ hai
+ * ngưỡng — không phải "5000 ms chặn oan bảng ấy". Lý do hạ là ở nguyên tắc: đã
+ * chứng minh được một lượt AI THẬT về trong 4,52 giây thì mốc 5000 ms nằm sai
+ * chỗ, nó gom lượt thật vào vùng nghi. Chỉ cần thực địa nhanh thêm chút (4 ca
+ * nữa trong dải 2–5 giây) là cổng 5000 ms chặn oan thật. 2000 ms mới là dải
+ * riêng của bản chạy không khoá, nơi `/api/classify` trả ENGINE_TIMEOUT gần như
+ * tức thì. Ca `6g-bis` trong bộ test khoá đúng vùng biên 2000–5000 ms này.
+ */
+const NGUONG_NGHI_KHONG_AI_MS = 2000;
 const MA_8_SO = /^\d{8}$/;
+/** Mã lý do chứng tỏ bản chạy thiếu khoá — chỉ cần MỘT ca là cả bảng hỏng. */
+const MA_THIEU_KHOA = new Set(['LLM_NOT_CONFIGURED', 'NO_PRIVATE_LLM', 'LLM_UNAVAILABLE']);
 
 export function docBoCa() {
   const raw = JSON.parse(readFileSync(BO, 'utf8'));
@@ -53,14 +74,23 @@ export function docBoCa() {
   return LIMIT > 0 ? cases.slice(0, LIMIT) : cases;
 }
 
-/** Mã 8 số đầu tiên mà phản hồi chốt được (A1). Chỉ nhận mã ở `results`, không nhận gợi ý nhóm 4 số. */
+/**
+ * Mã 8 số đầu tiên mà phản hồi chốt được (A1). Chỉ nhận mã ở `results`, không nhận
+ * gợi ý nhóm 4/6 số.
+ *
+ * TÊN TRƯỜNG: `/api/classify` thật trả `results[].hs` (kèm `hsLevel`), KHÔNG phải
+ * `hsCode`. Bản đầu chỉ đọc `hsCode`/`ma` nên bộ đo prod 14/11 in "A1 số ca ra mã
+ * 8 số: 0" cho cả 22 ca trong khi dịch vụ vẫn trả mã — số 0 đó là lỗi máy đo, không
+ * phải lỗi dịch vụ. Test cũ không bắt được vì fixture tự dựng `{hsCode}`, một hình
+ * dạng không tồn tại ở đường chạy thật. Đọc cả ba tên, `hs` trước.
+ */
 export function ma8So(body) {
   const ds = Array.isArray(body?.results) ? body.results : [];
   for (const r of ds) {
-    const ma = String(r?.hsCode ?? r?.ma ?? '').replace(/\D/g, '');
+    const ma = String(r?.hs ?? r?.hsCode ?? r?.ma ?? '').replace(/\D/g, '');
     if (MA_8_SO.test(ma)) return ma;
   }
-  const chot = String(body?.hsCode ?? body?.ma ?? '').replace(/\D/g, '');
+  const chot = String(body?.hs ?? body?.hsCode ?? body?.ma ?? '').replace(/\D/g, '');
   return MA_8_SO.test(chot) ? chot : null;
 }
 
@@ -126,6 +156,59 @@ export function p95(ds) {
 
 const lam2 = (n) => (n == null ? '—' : n.toFixed(2));
 
+/**
+ * Cổng tin cậy (luật 5, OZV-310) — trả `{ hopLe, lyDo[] }`.
+ *
+ * Bản đầu chỉ chặn khi MỌI ca về dưới 5 giây; GĐ ghi 14/11 rằng nếu chỉ MỘT PHẦN
+ * nhà cung cấp chết thì bảng vẫn in và người đọc phải tự soi cột A2 — tức là cổng
+ * không giữ được. Nay chặn theo bốn dấu hiệu độc lập, chỉ cần một dấu hiệu là đủ:
+ *
+ *  1. `/api/health` nói thẳng không có nhà cung cấp LLM nào (`llm.order` rỗng) —
+ *     dấu hiệu chắc chắn nhất, không phải đoán theo giây;
+ *  2. có ca trả mã lý do thiếu khoá (`LLM_NOT_CONFIGURED`…) — một ca là đủ;
+ *  3. từ 1/4 số ca trở lên về dưới `NGUONG_NGHI_KHONG_AI_MS` (2 giây) — xem ghi
+ *     chú ở hằng số đó: lượt AI thật đã đo được ở 4,52 giây, nên mốc nghi phải
+ *     nằm dưới dải đó, chỉ ôm vùng ENGINE_TIMEOUT tức thì;
+ *  4. quá nửa số ca lỗi (A2) — bảng trung vị/p95 khi đó vô nghĩa.
+ *
+ * Hai ngưỡng khác nhau là cố ý. Ca LỖI lác đác là chuyện thường của lượt LLM thật
+ * (nhà cung cấp rớt rồi lên lại), nên chỉ chặn khi quá nửa — cổng báo oan sẽ làm
+ * người đo bỏ luôn số đúng. Còn ca về dưới 2 GIÂY thì không có cách đọc lành nào:
+ * nó là bản chạy không gọi AI, nên 1/4 đã đủ chặn.
+ */
+export function kiemTinCay(ketQua, suc) {
+  const lyDo = [];
+  const giay = ketQua.map((k) => k.giay).filter((g) => typeof g === 'number');
+
+  const llm = suc?.checks?.llm;
+  if (!llm) {
+    lyDo.push('không đọc được khối `checks.llm` của /api/health — không biết bản chạy có khoá hay không.');
+  } else if (!Array.isArray(llm.order) || llm.order.length === 0) {
+    lyDo.push('/api/health báo KHÔNG có nhà cung cấp LLM nào (`llm.order` rỗng) — mọi lượt chạy chế độ không AI.');
+  }
+
+  const thieuKhoa = ketQua.filter((k) => MA_THIEU_KHOA.has(String(k.reasonCode || '')));
+  if (thieuKhoa.length) {
+    lyDo.push(`${thieuKhoa.length} ca trả mã thiếu khoá (${[...new Set(thieuKhoa.map((k) => k.reasonCode))].join(', ')}).`);
+  }
+
+  if (!giay.length) {
+    lyDo.push('không ca nào chạy xong — không có số để tính trung vị.');
+  } else {
+    const nhanh = giay.filter((g) => g < NGUONG_NGHI_KHONG_AI_MS / 1000).length;
+    if (nhanh * 4 >= giay.length) {
+      lyDo.push(`${nhanh}/${giay.length} ca về dưới ${NGUONG_NGHI_KHONG_AI_MS / 1000} giây — nhanh bất thường, đó là dải của bản chạy không khoá (ENGINE_TIMEOUT tức thì), không phải lượt AI thật.`);
+    }
+  }
+
+  const loi = ketQua.filter((k) => k.loi).length;
+  if (ketQua.length && loi * 2 > ketQua.length) {
+    lyDo.push(`${loi}/${ketQua.length} ca lỗi (A2 quá nửa) — trung vị/p95 của phần còn lại không đại diện.`);
+  }
+
+  return { hopLe: lyDo.length === 0, lyDo };
+}
+
 async function main() {
   const cases = docBoCa();
   let suc = null;
@@ -171,14 +254,12 @@ async function main() {
   }
 
   // Cổng tin cậy: không có lượt AI thật thì bảng số trên là rác, đừng dán lên thẻ.
-  const nhanh = giay.filter((g) => g < NGUONG_NGHI_KHONG_AI_MS / 1000).length;
-  const engineTimeout = ketQua.filter((k) => k.reasonCode === 'ENGINE_TIMEOUT').length;
-  if (giay.length && nhanh === giay.length) {
+  const tinCay = kiemTinCay(ketQua, suc);
+  if (!tinCay.hopLe) {
     console.log('');
-    console.log(`SỐ ĐO KHÔNG HỢP LỆ: cả ${giay.length} ca về dưới ${NGUONG_NGHI_KHONG_AI_MS / 1000} giây` +
-      `${engineTimeout ? ` và ${engineTimeout} ca trả ENGINE_TIMEOUT` : ''}.`);
-    console.log('Bản chạy gần như chắc chắn KHÔNG có khoá nhà cung cấp LLM nào (xem log: LLM_NOT_CONFIGURED).');
-    console.log('Lượt thật rẻ nhất trong thực địa cũng ~36 giây. Đừng dán bảng này lên thẻ.');
+    console.log('SỐ ĐO KHÔNG HỢP LỆ — đừng dán bảng trên lên thẻ. Lý do:');
+    for (const d of tinCay.lyDo) console.log(`- ${d}`);
+    console.log('Bảng "nhanh vượt bậc" ở đây là dấu hiệu bản chạy thiếu khoá, không phải bản vá ăn — soi lại trước khi dán số.');
     process.exit(3);
   }
 }
