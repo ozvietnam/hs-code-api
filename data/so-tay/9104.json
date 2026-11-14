@@ -1,136 +1,151 @@
 {
- "nhom": "9104",
- "phamVi": {
-  "text": "Đồng hồ thời gian lắp trên bảng điều khiển và các loại đồng hồ thời gian tương tự, dùng cho xe cộ, máy bay, tàu vũ trụ hoặc tàu thuyền.",
-  "nguon": "nhom9104.nhom",
-  "trich": "Nhóm này bao gồm tất cả các loại đồng hồ thời gian, hoàn chỉnh với vỏ và máy, được đặc biệt chế tạo để lắp trên bàn điều khiển phương tiện, vô lăng, gương chiếu hậu, v.v... của xe cộ (xe có động cơ, xe đạp có động cơ, v.v...) máy bay, tàu vũ trụ hay tàu thủy, bất kể chủng loại và độ dày của máy như thế nào.",
-  "nguonLoai": "AI_DA_KIEM"
- },
- "dieuKienVao": [
-  {
-   "fact": "la_dong_ho_thoi_gian_lap_bang_dieu_khien_phuong_tien",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "nhom9104.nhom",
-   "trich": "Nhóm này bao gồm tất cả các loại đồng hồ thời gian, hoàn chỉnh với vỏ và máy, được đặc biệt chế tạo để lắp trên bàn điều khiển phương tiện, vô lăng, gương chiếu hậu, v.v... của xe cộ (xe có động cơ, xe đạp có động cơ, v.v...) máy bay, tàu vũ trụ hay tàu thủy, bất kể chủng loại và độ dày của máy như thế nào.",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "loaiTru": [
-  {
-   "dieuKien": "Máy đồng hồ trình bày riêng biệt",
-   "sangNhom": "9108",
-   "nguon": "nhom9104.nhom",
-   "trich": "Nhóm này không bao gồm những loại sau khi chúng được trình bày riêng biệt: máy (nhóm 91.08 hay 91.10)",
-   "nguonLoai": "AI_DA_KIEM"
+  "nhom": "9104",
+  "phamVi": {
+    "text": "Đồng hồ thời gian lắp trên bảng điều khiển và các loại đồng hồ thời gian tương tự, dùng cho xe cộ, máy bay, tàu vũ trụ hoặc tàu thuyền.",
+    "nguon": "nhom9104.nhom",
+    "trich": "Nhóm này bao gồm tất cả các loại đồng hồ thời gian, hoàn chỉnh với vỏ và máy, được đặc biệt chế tạo để lắp trên bàn điều khiển phương tiện, vô lăng, gương chiếu hậu, v.v... của xe cộ (xe có động cơ, xe đạp có động cơ, v.v...) máy bay, tàu vũ trụ hay tàu thủy, bất kể chủng loại và độ dày của máy như thế nào.",
+    "nguonLoai": "AI_DA_KIEM"
   },
-  {
-   "dieuKien": "Vỏ đồng hồ thời gian trình bày riêng biệt",
-   "sangNhom": "9112",
-   "nguon": "nhom9104.nhom",
-   "trich": "vỏ đồng hồ thời gian (nhóm 91.12)",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "phanBiet": [
-  {
-   "hoi": "Hàng là máy đồng hồ trình bày riêng?",
-   "neuCo": "9108",
-   "neuKhong": "9104",
-   "nguon": "nhom9104.nhom",
-   "trich": "Nhóm này không bao gồm những loại sau khi chúng được trình bày riêng biệt: máy (nhóm 91.08 hay 91.10)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hoi": "Hàng là vỏ đồng hồ trình bày riêng?",
-   "neuCo": "9112",
-   "neuKhong": "9104",
-   "nguon": "nhom9104.nhom",
-   "trich": "vỏ đồng hồ thời gian (nhóm 91.12)",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "tieuChi6": [],
- "dong8": [
-  {
-   "hs": "91040010",
-   "dieuKien": "Dùng cho xe cộ",
-   "loaiKhac": false,
-   "nguon": "tax.91040010",
-   "trich": "91040010 - Dùng cho xe cộ",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "91040090",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.91040090",
-   "trich": "91040090 - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "9104",
-    "truAnhEm": [
-     "91040010"
-    ],
-    "truDayDu": [
-     "91040010"
-    ],
-    "toTienCoTen": "9104",
-    "dinhNghiaDuoc": true
-   }
-  }
- ],
- "cay": {
-  "nguonLoai": "MAY_SUY",
-  "sinhTu": "lib/hs-tree.js",
-  "nut": [
-   {
-    "id": "9104",
-    "cap": 4,
-    "cha": "91",
-    "tenVi": "Đồng hồ thời gian lắp trên bàn điều khiển phương tiện và các loại đồng hồ thời gian tương tự dùng cho xe cộ, phương tiện bay, tàu vũ trụ hoặc tàu thủy.",
-    "tenEn": "Instrument panel clocks and clocks of a similar type for vehicles, aircraft, spacecraft or vessels",
-    "suyRa": false
-   },
-   {
-    "id": "91040010",
-    "cap": 8,
-    "cha": "9104",
-    "tenVi": "Dùng cho xe cộ",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "91040090",
-    "cap": 8,
-    "cha": "9104",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   }
+  "dieuKienVao": [
+    {
+      "fact": "la_dong_ho_thoi_gian_lap_bang_dieu_khien_phuong_tien",
+      "op": "=",
+      "value": true,
+      "donVi": null,
+      "ngoaiTru": [],
+      "nguon": "nhom9104.nhom",
+      "trich": "Nhóm này bao gồm tất cả các loại đồng hồ thời gian, hoàn chỉnh với vỏ và máy, được đặc biệt chế tạo để lắp trên bàn điều khiển phương tiện, vô lăng, gương chiếu hậu, v.v... của xe cộ (xe có động cơ, xe đạp có động cơ, v.v...) máy bay, tàu vũ trụ hay tàu thủy, bất kể chủng loại và độ dày của máy như thế nào.",
+      "nguonLoai": "AI_DA_KIEM"
+    }
   ],
-  "tenDien": []
- },
- "dungTuNguon": [
-  "nhom9104.nhom",
-  "tax.91040010",
-  "tax.91040090"
- ],
- "phienBan": "HS2022",
- "taoBoi": {
-  "provider": "google-studio:gemini-flash",
-  "model": null,
-  "luc": "2026-11-02T13:25:42.759Z",
-  "ms": 5
- },
- "kiemTra": {
-  "tong": 8,
-  "dat": 8,
-  "loai": 0,
-  "nguonBiCat": []
- }
+  "loaiTru": [
+    {
+      "dieuKien": "Máy đồng hồ trình bày riêng biệt",
+      "sangNhom": "9108",
+      "nguon": "nhom9104.nhom",
+      "trich": "Nhóm này không bao gồm những loại sau khi chúng được trình bày riêng biệt: máy (nhóm 91.08 hay 91.10)",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "dieuKien": "Vỏ đồng hồ thời gian trình bày riêng biệt",
+      "sangNhom": "9112",
+      "nguon": "nhom9104.nhom",
+      "trich": "vỏ đồng hồ thời gian (nhóm 91.12)",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "phanBiet": [
+    {
+      "hoi": "Hàng là máy đồng hồ trình bày riêng?",
+      "neuCo": "9108",
+      "neuKhong": "9104",
+      "nguon": "nhom9104.nhom",
+      "trich": "Nhóm này không bao gồm những loại sau khi chúng được trình bày riêng biệt: máy (nhóm 91.08 hay 91.10)",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hoi": "Hàng là vỏ đồng hồ trình bày riêng?",
+      "neuCo": "9112",
+      "neuKhong": "9104",
+      "nguon": "nhom9104.nhom",
+      "trich": "vỏ đồng hồ thời gian (nhóm 91.12)",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "tieuChi6": [],
+  "dong8": [
+    {
+      "hs": "91040010",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): xe cộ",
+      "loaiKhac": false,
+      "nguon": "tax.91040010",
+      "trich": "91040010 - Dùng cho xe cộ",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe cộ"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "pc-tho-hs-01:OZV-974#soat-910400",
+          "ngay": "2026-11-14",
+          "bam": "9ef3f2311dc51440796b0987179a196929a10228c60fdf68f3293996b5308fb6"
+        }
+      }
+    },
+    {
+      "hs": "91040090",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.91040090",
+      "trich": "91040090 - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "9104",
+        "truAnhEm": [
+          "91040010"
+        ],
+        "truDayDu": [
+          "91040010"
+        ],
+        "toTienCoTen": "9104",
+        "dinhNghiaDuoc": true
+      }
+    }
+  ],
+  "cay": {
+    "nguonLoai": "MAY_SUY",
+    "sinhTu": "lib/hs-tree.js",
+    "nut": [
+      {
+        "id": "9104",
+        "cap": 4,
+        "cha": "91",
+        "tenVi": "Đồng hồ thời gian lắp trên bàn điều khiển phương tiện và các loại đồng hồ thời gian tương tự dùng cho xe cộ, phương tiện bay, tàu vũ trụ hoặc tàu thủy.",
+        "tenEn": "Instrument panel clocks and clocks of a similar type for vehicles, aircraft, spacecraft or vessels",
+        "suyRa": false
+      },
+      {
+        "id": "91040010",
+        "cap": 8,
+        "cha": "9104",
+        "tenVi": "Dùng cho xe cộ",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "91040090",
+        "cap": 8,
+        "cha": "9104",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      }
+    ],
+    "tenDien": []
+  },
+  "dungTuNguon": [
+    "nhom9104.nhom",
+    "tax.91040010",
+    "tax.91040090"
+  ],
+  "phienBan": "HS2022",
+  "taoBoi": {
+    "provider": "google-studio:gemini-flash",
+    "model": null,
+    "luc": "2026-11-02T13:25:42.759Z",
+    "ms": 5
+  },
+  "kiemTra": {
+    "tong": 8,
+    "dat": 8,
+    "loai": 0,
+    "nguonBiCat": []
+  }
 }

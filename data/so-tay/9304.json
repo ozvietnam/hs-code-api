@@ -1,121 +1,142 @@
 {
- "nhom": "9304",
- "phamVi": {
-  "text": "Vũ khí khác (ví dụ: súng và súng lục dùng lò xo, hơi hoặc khí ga, dùi cui), trừ các loại thuộc nhóm 93.07.",
-  "nguon": "nhom9304.nhom",
-  "trich": "Nhóm này gồm những vũ khí khác với súng cầm tay các loại thuộc các nhóm từ 93.01 đến 93.03 và vũ khí thuộc nhóm 93.07.",
-  "nguonLoai": "AI_DA_KIEM"
- },
- "dieuKienVao": [
-  {
-   "fact": "la_vu_khi_khac_sung_cam_tay_va_khong_thuoc_9307",
-   "op": "=",
-   "value": true,
-   "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "nhom9304.nhom",
-   "trich": "Nhóm này gồm những vũ khí khác với súng cầm tay các loại thuộc các nhóm từ 93.01 đến 93.03 và vũ khí thuộc nhóm 93.07.",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "loaiTru": [
-  {
-   "dieuKien": "Súng cao su đồ chơi",
-   "sangNhom": "9503",
-   "nguon": "nhom9304.nhom",
-   "trich": "Súng cao su đồ chơi bị loại trừ (nhóm 95.03).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "phanBiet": [
-  {
-   "hoi": "Hàng là súng cao su đồ chơi?",
-   "neuCo": "9503",
-   "neuKhong": "9304",
-   "nguon": "nhom9304.nhom",
-   "trich": "Súng cao su đồ chơi bị loại trừ (nhóm 95.03).",
-   "nguonLoai": "AI_DA_KIEM"
-  }
- ],
- "tieuChi6": [],
- "dong8": [
-  {
-   "hs": "93040010",
-   "dieuKien": "Súng hơi, hoạt động với áp suất dưới 7 kgf/cm2",
-   "loaiKhac": false,
-   "nguon": "tax.93040010",
-   "trich": "93040010 - Súng hơi, hoạt động với áp suất dưới 7 kgf/cm2",
-   "nguonLoai": "AI_DA_KIEM"
+  "nhom": "9304",
+  "phamVi": {
+    "text": "Vũ khí khác (ví dụ: súng và súng lục dùng lò xo, hơi hoặc khí ga, dùi cui), trừ các loại thuộc nhóm 93.07.",
+    "nguon": "nhom9304.nhom",
+    "trich": "Nhóm này gồm những vũ khí khác với súng cầm tay các loại thuộc các nhóm từ 93.01 đến 93.03 và vũ khí thuộc nhóm 93.07.",
+    "nguonLoai": "AI_DA_KIEM"
   },
-  {
-   "hs": "93040090",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
-   "loaiKhac": true,
-   "nguon": "tax.93040090",
-   "trich": "93040090 - Loại khác",
-   "nguonLoai": "AI_DA_KIEM",
-   "phamViLoaiKhac": {
-    "nguonLoai": "MAY_SUY",
-    "cha": "9304",
-    "truAnhEm": [
-     "93040010"
-    ],
-    "truDayDu": [
-     "93040010"
-    ],
-    "toTienCoTen": "9304",
-    "dinhNghiaDuoc": true
-   }
-  }
- ],
- "cay": {
-  "nguonLoai": "MAY_SUY",
-  "sinhTu": "lib/hs-tree.js",
-  "nut": [
-   {
-    "id": "9304",
-    "cap": 4,
-    "cha": "93",
-    "tenVi": "Vũ khí khác (ví dụ, súng và súng lục sử dụng lò xo, hơi hoặc khí ga, dùi cui), trừ các loại thuộc nhóm 93.07.",
-    "tenEn": "Firearms; (e.g. spring, air or gas guns and pistols, truncheons), excluding those of heading no. 9307",
-    "suyRa": false
-   },
-   {
-    "id": "93040010",
-    "cap": 8,
-    "cha": "9304",
-    "tenVi": "Súng hơi, hoạt động với áp suất dưới 7 kgf/cm2",
-    "tenEn": null,
-    "suyRa": false
-   },
-   {
-    "id": "93040090",
-    "cap": 8,
-    "cha": "9304",
-    "tenVi": "Loại khác",
-    "tenEn": null,
-    "suyRa": false,
-    "loaiKhac": true
-   }
+  "dieuKienVao": [
+    {
+      "fact": "la_vu_khi_khac_sung_cam_tay_va_khong_thuoc_9307",
+      "op": "=",
+      "value": true,
+      "donVi": null,
+      "ngoaiTru": [],
+      "nguon": "nhom9304.nhom",
+      "trich": "Nhóm này gồm những vũ khí khác với súng cầm tay các loại thuộc các nhóm từ 93.01 đến 93.03 và vũ khí thuộc nhóm 93.07.",
+      "nguonLoai": "AI_DA_KIEM"
+    }
   ],
-  "tenDien": []
- },
- "dungTuNguon": [
-  "nhom9304.nhom",
-  "tax.93040010",
-  "tax.93040090"
- ],
- "phienBan": "HS2022",
- "taoBoi": {
-  "provider": "google-studio:gemini-flash",
-  "model": null,
-  "luc": "2026-11-02T13:25:42.844Z",
-  "ms": 3
- },
- "kiemTra": {
-  "tong": 6,
-  "dat": 6,
-  "loai": 0,
-  "nguonBiCat": []
- }
+  "loaiTru": [
+    {
+      "dieuKien": "Súng cao su đồ chơi",
+      "sangNhom": "9503",
+      "nguon": "nhom9304.nhom",
+      "trich": "Súng cao su đồ chơi bị loại trừ (nhóm 95.03).",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "phanBiet": [
+    {
+      "hoi": "Hàng là súng cao su đồ chơi?",
+      "neuCo": "9503",
+      "neuKhong": "9304",
+      "nguon": "nhom9304.nhom",
+      "trich": "Súng cao su đồ chơi bị loại trừ (nhóm 95.03).",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "tieuChi6": [],
+  "dong8": [
+    {
+      "hs": "93040010",
+      "dieuKien": "tên loại hàng: Súng hơi; áp suất (làm việc) < 7 kgf/cm2",
+      "loaiKhac": false,
+      "nguon": "tax.93040010",
+      "trich": "93040010 - Súng hơi, hoạt động với áp suất dưới 7 kgf/cm2",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Súng hơi"
+        },
+        {
+          "fact": "apSuat",
+          "op": "<",
+          "value": 7,
+          "donVi": "kgf/cm2"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "pc-tho-hs-01:OZV-974#soat-930400",
+          "ngay": "2026-11-14",
+          "bam": "acaf5e3904d9ba0b668008d794228baa697c26cfb3d7e1bb97218ae845bd98ad"
+        }
+      }
+    },
+    {
+      "hs": "93040090",
+      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "loaiKhac": true,
+      "nguon": "tax.93040090",
+      "trich": "93040090 - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "9304",
+        "truAnhEm": [
+          "93040010"
+        ],
+        "truDayDu": [
+          "93040010"
+        ],
+        "toTienCoTen": "9304",
+        "dinhNghiaDuoc": true
+      }
+    }
+  ],
+  "cay": {
+    "nguonLoai": "MAY_SUY",
+    "sinhTu": "lib/hs-tree.js",
+    "nut": [
+      {
+        "id": "9304",
+        "cap": 4,
+        "cha": "93",
+        "tenVi": "Vũ khí khác (ví dụ, súng và súng lục sử dụng lò xo, hơi hoặc khí ga, dùi cui), trừ các loại thuộc nhóm 93.07.",
+        "tenEn": "Firearms; (e.g. spring, air or gas guns and pistols, truncheons), excluding those of heading no. 9307",
+        "suyRa": false
+      },
+      {
+        "id": "93040010",
+        "cap": 8,
+        "cha": "9304",
+        "tenVi": "Súng hơi, hoạt động với áp suất dưới 7 kgf/cm2",
+        "tenEn": null,
+        "suyRa": false
+      },
+      {
+        "id": "93040090",
+        "cap": 8,
+        "cha": "9304",
+        "tenVi": "Loại khác",
+        "tenEn": null,
+        "suyRa": false,
+        "loaiKhac": true
+      }
+    ],
+    "tenDien": []
+  },
+  "dungTuNguon": [
+    "nhom9304.nhom",
+    "tax.93040010",
+    "tax.93040090"
+  ],
+  "phienBan": "HS2022",
+  "taoBoi": {
+    "provider": "google-studio:gemini-flash",
+    "model": null,
+    "luc": "2026-11-02T13:25:42.844Z",
+    "ms": 3
+  },
+  "kiemTra": {
+    "tong": 6,
+    "dat": 6,
+    "loai": 0,
+    "nguonBiCat": []
+  }
 }
