@@ -4,13 +4,19 @@
   "nhom": "9013",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-901380",
     "ngay": "2026-11-04"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-952-20261114#soat-901380",
+    "ngay": "2026-11-14",
+    "ghiChu": "Đối chiếu .10 'Thiết bị quang học để xác định và sửa lỗi cho tấm mạch in/tấm dây in và mạch in đã lắp ráp': tách congDung 'xác định và sửa lỗi' VÀ dungCho ['tấm mạch in/tấm dây in', 'mạch in đã lắp ráp'] giữ đủ định ngữ cho mọi đối tượng.",
+    "bam": "7de10424001d02c88b062af05830ffc10179eaaa2cfefc1a3b8c36a478c6d3e7"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -21,28 +27,32 @@
         {
           "fact": "congDung",
           "op": "CONG_DUNG",
+          "value": "xác định và sửa lỗi"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
           "value": [
-            "xác định và sửa lỗi cho tấm mạch in",
-            "tấm dây in",
+            "tấm mạch in/tấm dây in",
             "mạch in đã lắp ráp"
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "90138090",
       "nguon": "tax.90138090",
       "trich": "90138090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "90138010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.90138010: \"Thiết bị quang học để xác định và sửa lỗi cho tấm mạch in/tấm dây in và mạch in đã lắp ráp\" ⇒ congDung mảng 3 mục đích"
+      "ghiChu": "tax.90138010: \"Thiết bị quang học để xác định và sửa lỗi cho tấm mạch in/tấm dây in và mạch in đã lắp ráp\" ⇒ congDung \"xác định và sửa lỗi\" + dungCho mảng [\"tấm mạch in/tấm dây in\", \"mạch in đã lắp ráp\"]"
     }
   ],
   "traVe": [
