@@ -20,6 +20,10 @@
           "value": "Bộ trao đổi nhiệt"
         },
         {
+          "fact": "bangFluoropolyme",
+          "op": "CO"
+        },
+        {
           "fact": "duongKinhTrong",
           "op": "<=",
           "value": 3,
@@ -52,14 +56,8 @@
     },
     {
       "ma": "84195020",
-      "loai": "BO_VE",
-      "ve": "bằng các ống fluoropolyme, với ống đầu vào và ống ra",
-      "lyDo": "tu-vung@2 chưa có chất liệu fluoropolyme, đặc tính kết cấu ống được đại diện qua tên loại và đường kính trong"
-    },
-    {
-      "ma": "84195020",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.84195020: \"Bộ trao đổi nhiệt làm bằng các ống fluoropolyme, với ống đầu vào và ống ra có đường kính trong từ 3 cm trở xuống\" ⇒ tenLoai \"Bộ trao đổi nhiệt\" + duongKinhTrong <= 3 cm"
+      "ghiChu": "tax.84195020: \"Bộ trao đổi nhiệt làm bằng các ống fluoropolyme, với ống đầu vào và ống ra có đường kính trong từ 3 cm trở xuống\" ⇒ tenLoai \"Bộ trao đổi nhiệt\" + bangFluoropolyme CO + duongKinhTrong <= 3 cm"
     },
     {
       "ma": "84195091",
