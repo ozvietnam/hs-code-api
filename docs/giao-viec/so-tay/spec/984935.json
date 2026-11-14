@@ -299,7 +299,7 @@
         }
       ],
       "nguon": "tuongUng.98493582",
-      "trich": "Nửa dưới của thùng nhiên liệu; nắp đậy thùng nhiên liệu; ống dẫn của thùng nhiên liệu; ống dẫn hướng có đầu nối với bình nhiên liệu; đai giữ bình nhiên liệu — mã hàng tương ứng: 8708.99.24"
+      "trich": "98493582 Nửa dưới của thùng nhiên liệu; nắp đậy thùng nhiên liệu; ống dẫn của thùng nhiên liệu (filler pipes); ống dẫn hướng có đầu nối với bình nhiên liệu (filler hose); đai giữ bình nhiên liệu — mã hàng tương ứng: 8708.99.24"
     },
     "98493583": {
       "dieuKienSo": [
@@ -422,12 +422,6 @@
         {
           "fact": "laBoPhan",
           "op": "CO"
-        },
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Két nước làm mát",
-          "chieu": "PHAI_KHONG"
         }
       ]
     },
@@ -783,6 +777,38 @@
       "ma": "98493529",
       "loai": "QUYET_DINH",
       "ghiChu": "OZV-655 trả thợ: xoá 98493529/98493539 khỏi dong8 — dòng Loại khác giữ phanConLai máy sinh, không gắn dieuKienSo (Cổng 0/3); hết chotLoaiKhacSai bằng bỏ laBoPhan KHONG ở r19798"
+    },
+    {
+      "ma": "9849353",
+      "loai": "QUYET_DINH",
+      "ghiChu": "OZV-921: bỏ PHAI_KHONG két nước (trich bịa); giữ laBoPhan CO; maHs lá 1x/2x↔9x; chongLanTruc TEN_LOAI↔DAC_DIEM với khongCoHangThat (như 984930)"
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "984935~r19798",
+        "9849353"
+      ],
+      "truc": {
+        "984935~r19798": "TEN_LOAI",
+        "9849353": "DAC_DIEM"
+      },
+      "cauHoiPhanBiet": "Hàng là \"Két nước làm mát\" hoàn chỉnh (984935~r19798, mã tương ứng 8708.91.1x/2x) hay \"Bộ phận\" của két nước (9849353, mã tương ứng 8708.91.9x — nút xả / loại khác bộ phận)?",
+      "trich": {
+        "984935~r19798": "Két nước làm mát",
+        "9849353": "Bộ phận"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "984935~r19798",
+            "9849353"
+          ],
+          "khongCoHangThat": "Biểu tách két nước hoàn chỉnh (mã tương ứng 8708.91.1x/2x dưới 984935~r19798) khỏi bộ phận két nước (8708.91.9x dưới 9849353). Một hàng không vừa là két nước hoàn chỉnh vừa là bộ phận của két nước; chồng lấn cổng 2 chỉ do so chữ tenLoai không tất định khi tổ tiên \"Bộ phận khác…\" gán laBoPhan=true."
+        }
+      ],
+      "phanXu": null
     }
   ]
 }

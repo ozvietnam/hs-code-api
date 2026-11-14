@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "claude-agent:tho-hs-03:20261114T1645#soan-984935",
+    "phien": "claude-agent:tho-hs-03:20261114T2110#soan-984935",
     "ngay": "2026-11-14"
   },
   "duyet": null,
@@ -189,17 +189,11 @@
     {
       "id": "9849353",
       "nguon": "tieuDe.9849353",
-      "trich": "9849353 Bộ phận (không phải Két nước làm mát — tách nhánh 984935~r19798)",
+      "trich": "9849353 Bộ phận",
       "dieuKienSo": [
         {
           "fact": "laBoPhan",
           "op": "CO"
-        },
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Két nước làm mát",
-          "chieu": "PHAI_KHONG"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -386,32 +380,16 @@
     },
     {
       "hs": "98493522",
-      "nguon": "tuongUng.98493522",
-      "trich": "98493522 - - - - - - Loại khác — mã hàng tương ứng: 8708.91.18",
-      "dieuKienSo": [
-        {
-          "fact": "maHsTuongUng",
-          "op": "CONG_DUNG",
-          "value": [
-            "8708.91.18"
-          ]
-        }
-      ],
+      "nguon": "tax.98493522",
+      "trich": "98493522 - - - - - - Loại khác",
+      "dieuKienSo": [],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "98493529",
-      "nguon": "tuongUng.98493529",
-      "trich": "98493529 - - - - - Loại khác — mã hàng tương ứng: 8708.91.19",
-      "dieuKienSo": [
-        {
-          "fact": "maHsTuongUng",
-          "op": "CONG_DUNG",
-          "value": [
-            "8708.91.19"
-          ]
-        }
-      ],
+      "nguon": "tax.98493529",
+      "trich": "98493529 - - - - - Loại khác",
+      "dieuKienSo": [],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -486,17 +464,9 @@
     },
     {
       "hs": "98493539",
-      "nguon": "tuongUng.98493539",
-      "trich": "98493539 - - - - - Loại khác — mã hàng tương ứng: 8708.91.99",
-      "dieuKienSo": [
-        {
-          "fact": "maHsTuongUng",
-          "op": "CONG_DUNG",
-          "value": [
-            "8708.91.99"
-          ]
-        }
-      ],
+      "nguon": "tax.98493539",
+      "trich": "98493539 - - - - - Loại khác",
+      "dieuKienSo": [],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -732,7 +702,7 @@
     {
       "hs": "98493582",
       "nguon": "tuongUng.98493582",
-      "trich": "Nửa dưới của thùng nhiên liệu; nắp đậy thùng nhiên liệu; ống dẫn của thùng nhiên liệu; ống dẫn hướng có đầu nối với bình nhiên liệu; đai giữ bình nhiên liệu — mã hàng tương ứng: 8708.99.24",
+      "trich": "98493582 Nửa dưới của thùng nhiên liệu; nắp đậy thùng nhiên liệu; ống dẫn của thùng nhiên liệu (filler pipes); ống dẫn hướng có đầu nối với bình nhiên liệu (filler hose); đai giữ bình nhiên liệu — mã hàng tương ứng: 8708.99.24",
       "dieuKienSo": [
         {
           "fact": "tenLoai",
@@ -1011,7 +981,7 @@
     {
       "ma": "9849353",
       "loai": "QUYET_DINH",
-      "ghiChu": "OZV-921: gỡ 8 cặp cong2 r19798↔9849353 — tenLoai TEN_LOAI \"Két nước làm mát\" chieu PHAI_KHONG tại 9849353; mở trich ghi rõ \"không phải Két nước làm mát\" để cổng 3 nhận giá trị"
+      "ghiChu": "OZV-921: không PHAI_KHONG \"Két nước làm mát\" ở 9849353 — chữ đó không có trong trich nguyên văn \"Bộ phận\" (CI cong3-trich-khong-co-trong-nguon). Giữ laBoPhan CO; tách lá có tên bằng maHsTuongUng 8708.91.1x/2x ↔ 8708.91.9x; cặp còn lại (có Loại khác trần) khai chongLanTruc TEN_LOAI↔DAC_DIEM như 984930."
     },
     {
       "ma": "98493581",
@@ -1021,7 +991,39 @@
     {
       "ma": "98493582",
       "loai": "QUYET_DINH",
-      "ghiChu": "OZV-921: khai maHsTuongUng 8708.99.24 (ma_tuong_ung tax) để tách cong2 với 98493581 (8708.99.21)"
+      "ghiChu": "OZV-921: khai maHsTuongUng 8708.99.24; trich đúng nguyên văn tuongUng.98493582 (có filler pipes/hose) — không lược ngoặc Anh"
+    },
+    {
+      "ma": "98493522",
+      "loai": "QUYET_DINH",
+      "ghiChu": "OZV-921 CI: .22/.29/.39 Loại khác trần — dieuKienSo [] + nguồn tax (cấm maHs trên dòng loại khác trần)"
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "984935~r19798",
+        "9849353"
+      ],
+      "truc": {
+        "984935~r19798": "TEN_LOAI",
+        "9849353": "DAC_DIEM"
+      },
+      "cauHoiPhanBiet": "Hàng là \"Két nước làm mát\" hoàn chỉnh (984935~r19798, mã tương ứng 8708.91.1x/2x) hay \"Bộ phận\" của két nước (9849353, mã tương ứng 8708.91.9x — nút xả / loại khác bộ phận)?",
+      "trich": {
+        "984935~r19798": "Két nước làm mát",
+        "9849353": "Bộ phận"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "984935~r19798",
+            "9849353"
+          ],
+          "khongCoHangThat": "Biểu tách két nước hoàn chỉnh (mã tương ứng 8708.91.1x/2x dưới 984935~r19798) khỏi bộ phận két nước (8708.91.9x dưới 9849353). Một hàng không vừa là két nước hoàn chỉnh vừa là bộ phận của két nước; chồng lấn cổng 2 chỉ do so chữ tenLoai không tất định khi tổ tiên \"Bộ phận khác…\" gán laBoPhan=true."
+        }
+      ],
+      "phanXu": null
     }
   ],
   "traVe": [
