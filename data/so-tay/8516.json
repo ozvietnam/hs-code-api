@@ -425,11 +425,33 @@
     },
     {
       "hs": "85169021",
-      "dieuKien": "Phân nhóm 8516.90 [Electro-thermic appliances; parts, of heating resistors, of water, space and soil heaters, hair-dressing apparatus, hand dryers, smoothing irons and other domestic appliances of heading no. 8516]: Các tấm toả nhiệt (sealed hotplates) dùng cho thiết bị gia dụng (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+      "dieuKien": "tên loại hàng: Các tấm toả nhiệt (sealed hotplates); phạm vi sử dụng: gia đình (gia dụng)",
       "loaiKhac": false,
       "nguon": "tax.85169021",
-      "trich": "Các tấm toả nhiệt (sealed hotplates) dùng cho thiết bị gia dụng",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "85169021 - - - Các tấm toả nhiệt (sealed hotplates) dùng cho thiết bị gia dụng",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Các tấm toả nhiệt (sealed hotplates)"
+        },
+        {
+          "fact": "phamViSuDung",
+          "op": "TRONG",
+          "value": [
+            "GIA_DINH"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude:thot-02:20261114#soat-851690",
+          "ngay": "2026-11-14",
+          "bam": "154dfc4b188357cbe2561076f024d98d26be8427daf565e4652c6eadc09cad58"
+        }
+      }
     },
     {
       "hs": "85169029",
@@ -450,19 +472,57 @@
     },
     {
       "hs": "85169030",
-      "dieuKien": "Phân nhóm 8516.90 [Electro-thermic appliances; parts, of heating resistors, of water, space and soil heaters, hair-dressing apparatus, hand dryers, smoothing irons and other domestic appliances of heading no. 8516]: Của hàng hóa thuộc phân nhóm 8516.10",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): 8516.10",
       "loaiKhac": false,
       "nguon": "tax.85169030",
-      "trich": "Của hàng hóa thuộc phân nhóm 8516.10",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "85169030 - - Của hàng hóa thuộc phân nhóm 8516.10",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8516.10"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude:thot-02:20261114#soat-851690",
+          "ngay": "2026-11-14",
+          "bam": "154dfc4b188357cbe2561076f024d98d26be8427daf565e4652c6eadc09cad58"
+        }
+      }
     },
     {
       "hs": "85169040",
-      "dieuKien": "Phân nhóm 8516.90 [Electro-thermic appliances; parts, of heating resistors, of water, space and soil heaters, hair-dressing apparatus, hand dryers, smoothing irons and other domestic appliances of heading no. 8516]: Của điện trở đốt nóng bằng điện dùng cho máy đúc chữ hoặc máy sắp chữ",
+      "dieuKien": "tên loại hàng: điện trở đốt nóng bằng điện; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): máy đúc chữ hoặc máy sắp chữ",
       "loaiKhac": false,
       "nguon": "tax.85169040",
-      "trich": "Của điện trở đốt nóng bằng điện dùng cho máy đúc chữ hoặc máy sắp chữ",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "85169040 - - Của điện trở đốt nóng bằng điện dùng cho máy đúc chữ hoặc máy sắp chữ",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "điện trở đốt nóng bằng điện"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "máy đúc chữ",
+            "máy sắp chữ"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude:thot-02:20261114#soat-851690",
+          "ngay": "2026-11-14",
+          "bam": "154dfc4b188357cbe2561076f024d98d26be8427daf565e4652c6eadc09cad58"
+        }
+      }
     },
     {
       "hs": "85169090",
@@ -943,6 +1003,33 @@
           "phien": "claude-agent:duyet-L28-20261111#soat-L28",
           "ngay": "2026-11-11",
           "bam": "c79a05f749816a78285ec8563125c90d31c9937c2bb7f66d6ed357e2b1c21e5d"
+        }
+      }
+    },
+    {
+      "id": "8516902",
+      "nguon": "tieuDe.8516902",
+      "trich": "8516902 Của hàng hóa thuộc phân nhóm 8516.33, 8516.50, 8516.60, 8516.71 hoặc 8516.79.10",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "8516.33",
+            "8516.50",
+            "8516.60",
+            "8516.71",
+            "8516.79.10"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude:thot-02:20261114#soat-851690",
+          "ngay": "2026-11-14",
+          "bam": "154dfc4b188357cbe2561076f024d98d26be8427daf565e4652c6eadc09cad58"
         }
       }
     }
