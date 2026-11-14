@@ -208,35 +208,158 @@
     },
     {
       "hs": "90303310",
-      "dieuKien": "Dụng cụ đo điện áp, dòng điện, điện trở hoặc công suất của tấm mạch in/tấm dây in hoặc mạch in đã lắp ráp (tiêu đề quốc gia 9030.33.1, tên bị lược — đối chiếu biểu thuế) trong phân nhóm 9030.33 (đo U/I/R/P không có thiết bị ghi, không phải multimeter)",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): tấm mạch in hoặc tấm dây in hoặc mạch in đã lắp ráp",
       "nguon": "tax.90303310",
-      "trich": "90303310 - - - Dụng cụ và thiết bị để đo hoặc kiểm tra điện áp, dòng điện, điện trở hoặc công suất của tấm mạch in/tấm dây in hoặc mạch in đã lắp ráp",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      "trich": "90303310 - - - Dụng cụ và thiết bị để đo hoặc kiểm tra điện áp, dòng điện, điện trở hoặc công suất của tấm mạch in/tấm dây in hoặc mạch in đã lắp ráp ",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "tấm mạch in",
+            "tấm dây in",
+            "mạch in đã lắp ráp"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "pc-tho-hs-01:OZV-950#soat-903033",
+          "ngay": "2026-11-14",
+          "bam": "a6674d112d12a0e6de2503a3fd58557a7f3b0a6f32814440abda769c73e3a5be"
+        }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "90303320",
+          "lyDo": "90303310 (\"tấm mạch in/tấm dây in hoặc mạch in đã lắp ráp\") chia theo đối tượng được đo/kiểm tra (dungCho); 90303320 (\"Dụng cụ và thiết bị đo trở kháng được thiết kế để cảnh báo\") chia theo chức năng chuyên biệt liên quan tĩnh điện (congDung/dungCho) — hai trục độc lập trong văn bản biểu thuế."
+        }
+      ]
     },
     {
       "hs": "90303320",
-      "dieuKien": "Dụng cụ đo trở kháng được thiết kế để cảnh báo dưới dạng hình ảnh và/hoặc dưới dạng âm thanh trong môi trường phóng tĩnh điện mà có thể làm hỏng mạch điện tử; dụng cụ kiểm tra thiết bị điều khiển tĩnh điện và thiết bị tĩnh điện nối đất/cố định (tiêu đề quốc gia 9030.33.2, tên bị lược — đối chiếu biểu thuế) trong phân nhóm 9030.33",
+      "dieuKien": "(tên loại hàng: Dụng cụ hoặc thiết bị và công dụng / mục đích: đo trở kháng và công dụng / mục đích: phóng tĩnh điện và công dụng / mục đích: cảnh báo dưới dạng hình ảnh hoặc dưới dạng âm thanh) hoặc (dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): thiết bị điều khiển tĩnh điện hoặc thiết bị tĩnh điện nối đất/cố định)",
       "nguon": "tax.90303320",
-      "trich": "90303320 - - - Dụng cụ và thiết bị đo trở kháng được thiết kế để cảnh báo dưới dạng hình ảnh và/hoặc dưới dạng âm thanh trong môi trường phóng tĩnh điện mà có thể làm hỏng mạch điện tử; dụng cụ kiểm tra thiết bị điều khiển tĩnh điện và thiết bị tĩnh điện nối đất/cố định",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      "trich": "90303320 - - - Dụng cụ và thiết bị đo trở kháng được thiết kế để cảnh báo dưới dạng hình ảnh và/hoặc dưới dạng âm thanh trong môi trường phóng tĩnh điện mà có thể làm hỏng mạch điện tử; dụng cụ kiểm tra thiết bị điều khiển tĩnh điện và thiết bị tĩnh điện nối đất/cố định ",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "Dụng cụ",
+                  "thiết bị"
+                ]
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "đo trở kháng"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "phóng tĩnh điện"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": [
+                  "cảnh báo dưới dạng hình ảnh",
+                  "dưới dạng âm thanh"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "thiết bị điều khiển tĩnh điện",
+                  "thiết bị tĩnh điện nối đất/cố định"
+                ]
+              }
+            ]
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "pc-tho-hs-01:OZV-950#soat-903033",
+          "ngay": "2026-11-14",
+          "bam": "a6674d112d12a0e6de2503a3fd58557a7f3b0a6f32814440abda769c73e3a5be"
+        }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "90303310",
+          "lyDo": "90303310 (\"tấm mạch in/tấm dây in hoặc mạch in đã lắp ráp\") chia theo đối tượng được đo/kiểm tra (dungCho); 90303320 (\"Dụng cụ và thiết bị đo trở kháng được thiết kế để cảnh báo\") chia theo chức năng chuyên biệt liên quan tĩnh điện (congDung/dungCho) — hai trục độc lập trong văn bản biểu thuế."
+        }
+      ]
     },
     {
       "hs": "90303330",
-      "dieuKien": "Ampe kế và vôn kế dùng cho xe có động cơ (tiêu đề quốc gia 9030.33.3, tên bị lược — đối chiếu biểu thuế) trong phân nhóm 9030.33",
+      "dieuKien": "tên loại hàng: Ampe kế hoặc vôn kế; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): xe có động cơ",
       "nguon": "tax.90303330",
       "trich": "90303330 - - - Ampe kế và vôn kế dùng cho xe có động cơ",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Ampe kế",
+            "vôn kế"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe có động cơ"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "pc-tho-hs-01:OZV-950#soat-903033",
+          "ngay": "2026-11-14",
+          "bam": "a6674d112d12a0e6de2503a3fd58557a7f3b0a6f32814440abda769c73e3a5be"
+        }
+      }
     },
     {
       "hs": "90303340",
-      "dieuKien": "Dụng cụ đo điện trở khác (tiêu đề quốc gia 9030.33.4, tên bị lược — đối chiếu biểu thuế) trong phân nhóm 9030.33",
+      "dieuKien": "tên loại hàng: Dụng cụ đo điện trở",
       "nguon": "tax.90303340",
       "trich": "90303340 - - - Dụng cụ đo điện trở khác",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dụng cụ đo điện trở"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "pc-tho-hs-01:OZV-950#soat-903033",
+          "ngay": "2026-11-14",
+          "bam": "a6674d112d12a0e6de2503a3fd58557a7f3b0a6f32814440abda769c73e3a5be"
+        }
+      },
+      "phanConLai": true
     },
     {
       "hs": "90303390",
@@ -371,74 +494,6 @@
     },
     {
       "hs": "90308910",
-      "dieuKien": "Dụng cụ và thiết bị, không kèm thiết bị ghi, dùng để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp (tiêu đề quốc gia 9030.89.1, tên bị lược — đối chiếu biểu thuế) trong phân nhóm 9030.89 (khác, không có thiết bị ghi)",
-      "nguon": "tax.90308910",
-      "trich": "90308910 - - - Dụng cụ và thiết bị, không kèm thiết bị ghi, dùng để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
-    },
-    {
-      "hs": "90308990",
-      "dieuKien": "Phần còn lại của phân nhóm 9030.89 (khác, không có thiết bị ghi) trừ 90308910",
-      "nguon": "tax.90308990",
-      "trich": "90308990 - - - Loại khác",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": true,
-      "phamViLoaiKhac": {
-        "nguonLoai": "MAY_SUY",
-        "cha": "903089",
-        "truAnhEm": [
-          "90308910"
-        ],
-        "toTienCoTen": "903089",
-        "dinhNghiaDuoc": true
-      }
-    },
-    {
-      "hs": "90309010",
-      "dieuKien": "Bộ phận và phụ kiện (kể cả mạch in đã lắp ráp) của các hàng hóa thuộc phân nhóm 9030.40 hoặc 9030.82 (phân nhóm 9030.90)",
-      "nguon": "tax.90309010",
-      "trich": "90309010 - - Bộ phận và phụ kiện (kể cả mạch in đã lắp ráp) của các hàng hóa thuộc phân nhóm 9030.40 hoặc 9030.82",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
-    },
-    {
-      "hs": "90309030",
-      "dieuKien": "Bộ phận và phụ kiện của dụng cụ và thiết bị quang học để đo hoặc kiểm tra tấm mạch in/tấm dây in và mạch in đã lắp ráp (tiêu đề quốc gia 9030.90.3, tên bị lược — đối chiếu biểu thuế) trong phân nhóm 9030.90",
-      "nguon": "tax.90309030",
-      "trich": "90309030 - - Bộ phận và phụ kiện của dụng cụ và thiết bị quang học để đo hoặc kiểm tra tấm mạch in/tấm dây in và mạch in đã lắp ráp",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
-    },
-    {
-      "hs": "90309040",
-      "dieuKien": "Bộ phận và phụ kiện của dụng cụ và thiết bị dùng để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp (tiêu đề quốc gia 9030.90.4, tên bị lược — đối chiếu biểu thuế) trong phân nhóm 9030.90",
-      "nguon": "tax.90309040",
-      "trich": "90309040 - - Bộ phận và phụ kiện của dụng cụ và thiết bị dùng để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
-    },
-    {
-      "hs": "90309090",
-      "dieuKien": "Phần còn lại của phân nhóm 9030.90 (bộ phận và phụ kiện) trừ 90309010, 90309030, 90309040",
-      "nguon": "tax.90309090",
-      "trich": "90309090 - - Loại khác",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": true,
-      "phamViLoaiKhac": {
-        "nguonLoai": "MAY_SUY",
-        "cha": "903090",
-        "truAnhEm": [
-          "90309010",
-          "90309030",
-          "90309040"
-        ],
-        "toTienCoTen": "903090",
-        "dinhNghiaDuoc": true
-      }
-    },
-    {
-      "hs": "90308910",
       "dieuKien": "công dụng / mục đích: tấm mạch in hoặc tấm dây in hoặc mạch in đã lắp ráp",
       "nguon": "tax.90308910",
       "trich": "90308910 - - - Dụng cụ và thiết bị, không kèm thiết bị ghi, dùng để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp",
@@ -462,6 +517,161 @@
           "ngay": "2026-11-02",
           "bam": "23d3852405d55e9bd66ca4b6fadf9ce0f83499e51a00f4a7868883f664ea58cc"
         }
+      }
+    },
+    {
+      "hs": "90308990",
+      "dieuKien": "Phần còn lại của phân nhóm 9030.89 (khác, không có thiết bị ghi) trừ 90308910",
+      "nguon": "tax.90308990",
+      "trich": "90308990 - - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "loaiKhac": true,
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "903089",
+        "truAnhEm": [
+          "90308910"
+        ],
+        "toTienCoTen": "903089",
+        "dinhNghiaDuoc": true
+      }
+    },
+    {
+      "hs": "90309010",
+      "dieuKien": "là bộ phận (không phải hàng hoàn chỉnh); dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): 9030.40 hoặc 9030.82",
+      "nguon": "tax.90309010",
+      "trich": "90309010 - - Bộ phận và phụ kiện (kể cả mạch in đã lắp ráp) của các hàng hóa thuộc phân nhóm 9030.40 hoặc 9030.82",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "laBoPhan",
+          "op": "CO"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "9030.40",
+            "9030.82"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "https://claude.ai/code/session_gd-v044-20261106#soat-v044-dot1",
+          "ngay": "2026-11-06",
+          "bam": "ddd131357ee80dda30b8b823e12eda42b069f1da8840698b1f214a329c09c8cf"
+        }
+      }
+    },
+    {
+      "hs": "90309030",
+      "dieuKien": "là bộ phận (không phải hàng hoàn chỉnh); dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): dụng cụ và thiết bị quang học; công dụng / mục đích: tấm mạch in hoặc tấm dây in hoặc mạch in đã lắp ráp",
+      "nguon": "tax.90309030",
+      "trich": "90309030 - - Bộ phận và phụ kiện của dụng cụ và thiết bị quang học để đo hoặc kiểm tra tấm mạch in/tấm dây in và mạch in đã lắp ráp ",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "laBoPhan",
+          "op": "CO"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "dụng cụ và thiết bị quang học"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "tấm mạch in",
+            "tấm dây in",
+            "mạch in đã lắp ráp"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "https://claude.ai/code/session_gd-v044-20261106#soat-v044-dot1",
+          "ngay": "2026-11-06",
+          "bam": "ddd131357ee80dda30b8b823e12eda42b069f1da8840698b1f214a329c09c8cf"
+        }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "90309040",
+          "lyDo": "Hai dòng cùng trục công dụng, câu chữ không loại trừ nhau: .30 \"Bộ phận và phụ kiện của dụng cụ và thiết bị quang học để đo hoặc kiểm tra tấm mạch in/tấm dây in và mạch in đã lắp ráp\" — \"dụng cụ và thiết bị quang học\" vẫn là \"dụng cụ và thiết bị\" của .40 \"Bộ phận và phụ kiện của dụng cụ và thiết bị dùng để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp\" — bộ phận của thiết bị quang học đồng thời đo đại lượng điện của tấm mạch in thoả cả hai dòng; không có căn cứ thứ tự trong chữ biểu."
+        }
+      ]
+    },
+    {
+      "hs": "90309040",
+      "dieuKien": "là bộ phận (không phải hàng hoàn chỉnh); dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): dụng cụ và thiết bị; công dụng / mục đích: đại lượng điện; công dụng / mục đích: tấm mạch in hoặc tấm dây in hoặc mạch in đã lắp ráp",
+      "nguon": "tax.90309040",
+      "trich": "90309040 - - Bộ phận và phụ kiện của dụng cụ và thiết bị dùng để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "laBoPhan",
+          "op": "CO"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "dụng cụ và thiết bị"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "đại lượng điện"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "tấm mạch in",
+            "tấm dây in",
+            "mạch in đã lắp ráp"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "https://claude.ai/code/session_gd-v044-20261106#soat-v044-dot1",
+          "ngay": "2026-11-06",
+          "bam": "ddd131357ee80dda30b8b823e12eda42b069f1da8840698b1f214a329c09c8cf"
+        }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "90309030",
+          "lyDo": "Hai dòng cùng trục công dụng, câu chữ không loại trừ nhau: .30 \"Bộ phận và phụ kiện của dụng cụ và thiết bị quang học để đo hoặc kiểm tra tấm mạch in/tấm dây in và mạch in đã lắp ráp\" — \"dụng cụ và thiết bị quang học\" vẫn là \"dụng cụ và thiết bị\" của .40 \"Bộ phận và phụ kiện của dụng cụ và thiết bị dùng để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp\" — bộ phận của thiết bị quang học đồng thời đo đại lượng điện của tấm mạch in thoả cả hai dòng; không có căn cứ thứ tự trong chữ biểu."
+        }
+      ]
+    },
+    {
+      "hs": "90309090",
+      "dieuKien": "Phần còn lại của phân nhóm 9030.90 (bộ phận và phụ kiện) trừ 90309010, 90309030, 90309040",
+      "nguon": "tax.90309090",
+      "trich": "90309090 - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "loaiKhac": true,
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "903090",
+        "truAnhEm": [
+          "90309010",
+          "90309030",
+          "90309040"
+        ],
+        "toTienCoTen": "903090",
+        "dinhNghiaDuoc": true
       }
     }
   ],
