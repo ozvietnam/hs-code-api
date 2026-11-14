@@ -100,7 +100,14 @@ function tieuDeTrungGian(hs8) {
   while (cur && cur !== pn6 && cur.length > 4) {
     const n = T.nodeOf(cur);
     const tv = cleanText(n?.tenVi || '');
-    if (tv) mids.unshift({ id: cur, tenVi: tv, loaiKhac: /^lo[aạ]i kh[aá]c\b/i.test(tv) });
+    if (tv) {
+      mids.unshift({
+        id: cur,
+        tenVi: tv,
+        loaiKhac: /^lo[aạ]i kh[aá]c\b/i.test(tv),
+        loaiKhacTran: DK.laLoaiKhacTranTen(n),
+      });
+    }
     cur = T.chaTang(cur);
   }
   return mids;
@@ -421,6 +428,10 @@ export function sinhCaNhom(nhom4) {
       const tenDong = cleanText(n?.tenVi || '');
       const mids = tieuDeTrungGian(hs8);
       const midText = mids
+        .map((m) => (m.loaiKhacTran ? '' : m.tenVi))
+        .filter(Boolean)
+        .join(' - ');
+      const midTextThieu = mids
         .map((m) => (m.loaiKhac ? '' : m.tenVi))
         .filter(Boolean)
         .join(' - ');
@@ -456,7 +467,7 @@ export function sinhCaNhom(nhom4) {
         // tầng KHẲNG ĐỊNH (8544602 "trên 36 kV nhưng không quá 66 kV") làm vế dienAp>36 đứt thành CHUA_BIET
         // (đo .6021/.6022/.6031 đỏ lại). Chỉ tách khi một trong hai vế kề nhau là tiêu đề phủ định.
         const laPhuDinhDoan = (s) => /không dùng|không phải|không thuộc|other than|not a|不是/.test(String(s || ''));
-        const cacPhan = [ten6, ...mids.map((m) => (m.loaiKhac ? '' : m.tenVi)).filter(Boolean), hs8 === n?.laPhanNhom ? '' : tenDong].filter(Boolean);
+        const cacPhan = [ten6, ...mids.map((m) => (m.loaiKhacTran ? '' : m.tenVi)).filter(Boolean), hs8 === n?.laPhanNhom ? '' : tenDong].filter(Boolean);
         let moTa = '';
         if (chi8544) {
           for (let i = 0; i < cacPhan.length; i++) {
@@ -488,7 +499,7 @@ export function sinhCaNhom(nhom4) {
           loaiCa: 'THIEU_DU_KIEN',
           pn6,
           hs8,
-          productText: [ten6, midText].filter(Boolean).join(': '),
+          productText: [ten6, midTextThieu].filter(Boolean).join(': '),
           kyVong: 'HOI_HOAC_KHONG_CHOT',
         });
       }
@@ -500,7 +511,7 @@ export function sinhCaNhom(nhom4) {
     const pn6 = hs8.slice(0, 6);
     const ten6 = tenPhanNhom6(pn6);
     const mids = tieuDeTrungGian(hs8);
-    const midText = mids.map((m) => (m.loaiKhac ? '' : m.tenVi)).filter(Boolean).join(' - ');
+    const midText = mids.map((m) => (m.loaiKhacTran ? '' : m.tenVi)).filter(Boolean).join(' - ');
     const loai = tk.loai || 'DONG_NGHIA';
     const nhanNguon = tk.nguon?.nhan || 'NGUYEN_VAN';
     if (nhanNguon === 'THAM_KHAO') continue; // L3 chỉ tham khảo, không dùng làm căn cứ tất định
