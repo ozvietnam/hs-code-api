@@ -1337,35 +1337,51 @@
     },
     {
       "hs": "85016110",
-      "dieuKien": "Công suất không quá 12,5 kVA (thuộc WCO 850161: Generators; AC generators, (alternators), other than photovoltaic generators, of an output not exceeding 75kVA)",
+      "dieuKien": "công suất biểu kiến <= 12.5 kVA",
       "loaiKhac": false,
       "nguon": "tax.85016110",
       "trich": "85016110 - - - Công suất không quá 12,5 kVA",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "cong_suat",
+          "fact": "congSuatBieuKien",
           "op": "<=",
           "value": 12.5,
           "donVi": "kVA"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude:tho-hs-02:20261114#soat-850161",
+          "ngay": "2026-11-14",
+          "bam": "dbd04d192b51267a1d9571cb4988ba549bea309735b8562a177cfc97ab8a0e9b"
+        }
+      }
     },
     {
       "hs": "85016120",
-      "dieuKien": "Công suất trên 12,5 kVA (thuộc WCO 850161: Generators; AC generators, (alternators), other than photovoltaic generators, of an output not exceeding 75kVA)",
+      "dieuKien": "công suất biểu kiến > 12.5 kVA",
       "loaiKhac": false,
       "nguon": "tax.85016120",
       "trich": "85016120 - - - Công suất trên 12,5 kVA",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "cong_suat",
+          "fact": "congSuatBieuKien",
           "op": ">",
           "value": 12.5,
           "donVi": "kVA"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude:tho-hs-02:20261114#soat-850161",
+          "ngay": "2026-11-14",
+          "bam": "dbd04d192b51267a1d9571cb4988ba549bea309735b8562a177cfc97ab8a0e9b"
+        }
+      }
     },
     {
       "hs": "85016210",

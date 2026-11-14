@@ -48,119 +48,182 @@
   "dong8": [
     {
       "hs": "85071010",
-      "dieuKien": "Phân nhóm 8507.10 [Electric accumulators; lead-acid, of a kind used for starting piston engines, including separators, whether or not rectangular (including square)]: Dùng cho máy bay",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): máy bay",
       "loaiKhac": false,
       "nguon": "tax.85071010",
-      "trich": "Dùng cho máy bay",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "85071010 - - Dùng cho máy bay",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy bay"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude:tho-hs-02:20261114#soat-850710",
+          "ngay": "2026-11-14",
+          "bam": "7b67bdb76427367499ece42546834ff2e1d29f6cdb9c4391b3bab187af787089"
+        }
+      }
     },
     {
       "hs": "85071092",
-      "dieuKien": "Phân nhóm 8507.10 [Electric accumulators; lead-acid, of a kind used for starting piston engines, including separators, whether or not rectangular (including square)]: nhánh thứ nhất (85071092/95/96) — chiều cao (không gồm đầu cực và tay cầm) không quá 13 cm; tiêu chí dòng cha phân biệt với nhánh 85071097/98/99 KHÔNG có trong nguồn, phải đối chiếu biểu thuế",
+      "dieuKien": "chiều cao <= 13 cm",
       "loaiKhac": false,
       "nguon": "tax.85071092",
-      "trich": "Chiều cao (không bao gồm đầu cực và tay cầm) không quá 13 cm",
-      "nguonLoai": "AI_DA_KIEM",
+      "trich": "85071092 - - - - Chiều cao (không bao gồm đầu cực và tay cầm) không quá 13 cm",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "chieu_cao",
+          "fact": "chieuCao",
           "op": "<=",
           "value": 13,
           "donVi": "cm"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude:tho-hs-02:20261114#soat-850710",
+          "ngay": "2026-11-14",
+          "bam": "7b67bdb76427367499ece42546834ff2e1d29f6cdb9c4391b3bab187af787089"
+        }
+      }
     },
     {
       "hs": "85071095",
-      "dieuKien": "Phân nhóm 8507.10 [Electric accumulators; lead-acid, of a kind used for starting piston engines, including separators, whether or not rectangular (including square)]: nhánh thứ nhất (85071092/95/96) — chiều cao trên 13 cm nhưng không quá 23 cm; tiêu chí dòng cha KHÔNG có trong nguồn",
+      "dieuKien": "chiều cao > 13 cm; chiều cao <= 23 cm",
       "loaiKhac": false,
       "nguon": "tax.85071095",
-      "trich": "Chiều cao (không bao gồm đầu cực và tay cầm) trên 13 cm nhưng không quá 23 cm",
-      "nguonLoai": "AI_DA_KIEM",
+      "trich": "85071095 - - - - Chiều cao (không bao gồm đầu cực và tay cầm) trên 13 cm nhưng không quá 23 cm",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "chieu_cao",
+          "fact": "chieuCao",
           "op": ">",
           "value": 13,
           "donVi": "cm"
         },
         {
-          "fact": "chieu_cao",
+          "fact": "chieuCao",
           "op": "<=",
           "value": 23,
           "donVi": "cm"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude:tho-hs-02:20261114#soat-850710",
+          "ngay": "2026-11-14",
+          "bam": "7b67bdb76427367499ece42546834ff2e1d29f6cdb9c4391b3bab187af787089"
+        }
+      }
     },
     {
       "hs": "85071096",
-      "dieuKien": "Phân nhóm 8507.10 [Electric accumulators; lead-acid, of a kind used for starting piston engines, including separators, whether or not rectangular (including square)]: nhánh thứ nhất (85071092/95/96) — chiều cao trên 23 cm; tiêu chí dòng cha KHÔNG có trong nguồn",
+      "dieuKien": "chiều cao > 23 cm",
       "loaiKhac": false,
       "nguon": "tax.85071096",
-      "trich": "Chiều cao (không bao gồm đầu cực và tay cầm) trên 23 cm",
-      "nguonLoai": "AI_DA_KIEM",
+      "trich": "85071096 - - - - Chiều cao (không bao gồm đầu cực và tay cầm) trên 23 cm",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "chieu_cao",
+          "fact": "chieuCao",
           "op": ">",
           "value": 23,
           "donVi": "cm"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude:tho-hs-02:20261114#soat-850710",
+          "ngay": "2026-11-14",
+          "bam": "7b67bdb76427367499ece42546834ff2e1d29f6cdb9c4391b3bab187af787089"
+        }
+      }
     },
     {
       "hs": "85071097",
-      "dieuKien": "Phân nhóm 8507.10 [Electric accumulators; lead-acid, of a kind used for starting piston engines, including separators, whether or not rectangular (including square)]: nhánh thứ hai (85071097/98/99) — chiều cao (không gồm đầu cực và tay cầm) không quá 13 cm; tiêu chí dòng cha KHÔNG có trong nguồn",
+      "dieuKien": "chiều cao <= 13 cm",
       "loaiKhac": false,
       "nguon": "tax.85071097",
-      "trich": "Chiều cao (không bao gồm đầu cực và tay cầm) không quá 13 cm",
-      "nguonLoai": "AI_DA_KIEM",
+      "trich": "85071097 - - - - Chiều cao (không bao gồm đầu cực và tay cầm) không quá 13 cm",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "chieu_cao",
+          "fact": "chieuCao",
           "op": "<=",
           "value": 13,
           "donVi": "cm"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude:tho-hs-02:20261114#soat-850710",
+          "ngay": "2026-11-14",
+          "bam": "7b67bdb76427367499ece42546834ff2e1d29f6cdb9c4391b3bab187af787089"
+        }
+      }
     },
     {
       "hs": "85071098",
-      "dieuKien": "Phân nhóm 8507.10 [Electric accumulators; lead-acid, of a kind used for starting piston engines, including separators, whether or not rectangular (including square)]: nhánh thứ hai (85071097/98/99) — chiều cao trên 13 cm nhưng không quá 23 cm; tiêu chí dòng cha KHÔNG có trong nguồn",
+      "dieuKien": "chiều cao > 13 cm; chiều cao <= 23 cm",
       "loaiKhac": false,
       "nguon": "tax.85071098",
-      "trich": "Chiều cao (không bao gồm đầu cực và tay cầm) trên 13 cm nhưng không quá 23 cm",
-      "nguonLoai": "AI_DA_KIEM",
+      "trich": "85071098 - - - - Chiều cao (không bao gồm đầu cực và tay cầm) trên 13 cm nhưng không quá 23 cm",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "chieu_cao",
+          "fact": "chieuCao",
           "op": ">",
           "value": 13,
           "donVi": "cm"
         },
         {
-          "fact": "chieu_cao",
+          "fact": "chieuCao",
           "op": "<=",
           "value": 23,
           "donVi": "cm"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude:tho-hs-02:20261114#soat-850710",
+          "ngay": "2026-11-14",
+          "bam": "7b67bdb76427367499ece42546834ff2e1d29f6cdb9c4391b3bab187af787089"
+        }
+      }
     },
     {
       "hs": "85071099",
-      "dieuKien": "Phân nhóm 8507.10 [Electric accumulators; lead-acid, of a kind used for starting piston engines, including separators, whether or not rectangular (including square)]: nhánh thứ hai (85071097/98/99) — chiều cao trên 23 cm; tiêu chí dòng cha KHÔNG có trong nguồn",
+      "dieuKien": "chiều cao > 23 cm",
       "loaiKhac": false,
       "nguon": "tax.85071099",
-      "trich": "Chiều cao (không bao gồm đầu cực và tay cầm) trên 23 cm",
-      "nguonLoai": "AI_DA_KIEM",
+      "trich": "85071099 - - - - Chiều cao (không bao gồm đầu cực và tay cầm) trên 23 cm",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "chieu_cao",
+          "fact": "chieuCao",
           "op": ">",
           "value": 23,
           "donVi": "cm"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude:tho-hs-02:20261114#soat-850710",
+          "ngay": "2026-11-14",
+          "bam": "7b67bdb76427367499ece42546834ff2e1d29f6cdb9c4391b3bab187af787089"
+        }
+      }
     },
     {
       "hs": "85072010",
@@ -1357,6 +1420,61 @@
   },
   "yKienWcoDayDu": false,
   "dieuKienNut": [
+    {
+      "id": "850710~r15093",
+      "nguon": "tieuDe.850710~r15093",
+      "trich": "850710~r15093 Điện áp danh định 6 V hoặc 12 V, có dung lượng phóng điện không quá 200 Ah",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "dienAp",
+                "op": ">=",
+                "value": 6,
+                "donVi": "V"
+              },
+              {
+                "fact": "dienAp",
+                "op": "<=",
+                "value": 6,
+                "donVi": "V"
+              }
+            ],
+            [
+              {
+                "fact": "dienAp",
+                "op": ">=",
+                "value": 12,
+                "donVi": "V"
+              },
+              {
+                "fact": "dienAp",
+                "op": "<=",
+                "value": 12,
+                "donVi": "V"
+              }
+            ]
+          ]
+        },
+        {
+          "fact": "dungLuong",
+          "op": "<=",
+          "value": 200,
+          "donVi": "Ah"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude:tho-hs-02:20261114#soat-850710",
+          "ngay": "2026-11-14",
+          "bam": "7b67bdb76427367499ece42546834ff2e1d29f6cdb9c4391b3bab187af787089"
+        }
+      }
+    },
     {
       "id": "850720~r15104",
       "nguon": "tieuDe.850720~r15104",
