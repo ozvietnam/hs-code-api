@@ -15,7 +15,7 @@ import './test-isolate-data.mjs';
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const { parseVatField, vatReductionOf } = require('../lib/vat-reduction');
-const { freshnessReport, evaluateSource } = require('../lib/data-freshness');
+const { freshnessReport, evaluateSource, docDataFreshnessTuHealth, demNguonDueTuHealth } = require('../lib/data-freshness');
 const taxData = require('../data/tax.json');
 
 let pass = 0;
@@ -249,11 +249,12 @@ withFakeClock('2026-11-15', () => {
     },
   };
   healthHandler(req, res);
-  const df = healthBody?.checks?.dataFreshness;
+  const df = docDataFreshnessTuHealth(healthBody);
   check(
-    '/api/health tại 2026-11-15: dataStatus="fresh", dataFreshness.ok=true, giữ EXPIRING trong sources[] và warnings[]',
+    '/api/health tại 2026-11-15: dataStatus="fresh", checks.dataFreshness.ok=true, giữ EXPIRING trong sources[] và warnings[]',
     Boolean(
       healthBody &&
+        !('dataFreshness' in healthBody) &&
         healthBody.dataStatus === 'fresh' &&
         df?.ok === true &&
         df?.sources?.some((s) => s.key === 'vatReduction' && s.status === 'EXPIRING') &&
@@ -265,6 +266,23 @@ withFakeClock('2026-11-15', () => {
         ),
     ),
     { dataStatus: healthBody?.dataStatus, ok: df?.ok, warnings: df?.warnings },
+  );
+  check(
+    '/api/health tại 2026-11-15: checks.dataFreshness.sources là mảng >= 8 phần tử, 0 mục DUE; nếu 1 nguồn mang trangThai="DUE" thì đếm DUE > 0 (ĐỎ)',
+    Array.isArray(df?.sources) &&
+      df.sources.length >= 8 &&
+      demNguonDueTuHealth(healthBody) === 0 &&
+      demNguonDueTuHealth({
+        ...healthBody,
+        checks: {
+          ...healthBody.checks,
+          dataFreshness: {
+            ...df,
+            sources: [...df.sources, { key: 'gia', trangThai: 'DUE' }],
+          },
+        },
+      }) === 1,
+    { sourcesLen: df?.sources?.length, due: demNguonDueTuHealth(healthBody) },
   );
 });
 
