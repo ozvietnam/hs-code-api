@@ -116,6 +116,15 @@ const SC = {
 };
 
 const ENV_KEYS = ['HS_SO_TAY', 'HS_GON_DAU_RA', 'HS_MAX_VONG_SUA', 'R1_MAX_TOKENS', 'GIR_MAX_TOKENS', 'ZAI_WEB_FACTS', 'LOOP_THINKING_OFF_TIMEOUT_MS'];
+/** Xoá trường đo thời gian (`ms` hoặc `msXxx`) khỏi cả cây JSON trước khi so byte — tránh lệch 0/1 ms (webHint.msWeb…). */
+function xoaTruongDoGio(v) {
+  if (!v || typeof v !== 'object') return;
+  if (Array.isArray(v)) { for (const x of v) xoaTruongDoGio(x); return; }
+  for (const k of Object.keys(v)) {
+    if (k === 'ms' || /^ms[A-Z]/.test(k)) delete v[k];
+    else xoaTruongDoGio(v[k]);
+  }
+}
 /** Chạy một kịch bản qua `mod` (GOC/MOI) với env cho trước; trả lời gọi AI + phản hồi đã bỏ trường đo giờ. */
 async function chay(mod, scName, env = {}) {
   const sc = SC[scName]();
@@ -136,8 +145,8 @@ async function chay(mod, scName, env = {}) {
   let o = null;
   if (out) {
     o = JSON.parse(JSON.stringify(out, UNDEF));
-    delete o.engine.ms; delete o.engine.phases;
-    for (const e of o.engine.gates || []) delete e.ms; // ms của nhật ký lùi/thử lại
+    delete o.engine?.phases; // khối số đo phases (không khớp ms*) — vẫn bỏ trước so byte
+    xoaTruongDoGio(o); // ms, msWeb, msTimWeb, gates[].ms…
   }
   return { calls: calls.map(({ system, user, opts }) => ({ system, user, opts })), out: o, err, conLai: script.length, raw: out, rawCalls: calls };
 }
