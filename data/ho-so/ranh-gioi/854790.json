@@ -4,13 +4,19 @@
   "nhom": "8547",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-854790",
     "ngay": "2026-11-04"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:duyet-L34-20261114#soat-L34",
+    "ngay": "2026-11-14",
+    "ghiChu": "Sửa 85479010: tenLoai ['Ống dẫn dây điện','khớp nối'] (danh từ đầu nguyên văn); BO_VE 'bằng kim loại cơ bản' lặp lại tiêu đề nhóm 85.47 để không phủ định oan ca trái vật liệu (8547-009/010/013) sang 85479090 và không hỏi thừa ở 8547-016.",
+    "bam": "4701beda65b196716b2c0cda227337b638eb8942d8d4841601f005b7009b71cc"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -23,36 +29,31 @@
           "op": "TEN_LOAI",
           "value": [
             "Ống dẫn dây điện",
-            "các khớp nối của chúng"
+            "khớp nối"
           ]
-        },
-        {
-          "fact": "chatLieu",
-          "op": "LA",
-          "value": "kim loại"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85479090",
       "nguon": "tax.85479090",
       "trich": "85479090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "85479010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85479010: \"Ống dẫn dây điện và các khớp nối của chúng, làm bằng kim loại cơ bản được lót bằng vật liệu cách điện\" ⇒ tenLoai mảng + chatLieu \"kim loại\""
+      "ghiChu": "tax.85479010: \"Ống dẫn dây điện và các khớp nối của chúng, làm bằng kim loại cơ bản được lót bằng vật liệu cách điện\" ⇒ tenLoai [\"Ống dẫn dây điện\", \"khớp nối\"] (danh từ đầu nguyên văn; EN \"joints therefor\" — \"của chúng\" là luật liên kết, âm tiết \"chúng\" không phải hư từ, TRA_VE L29); các vế vật liệu/lót lặp lại tiêu đề nhóm 85.47"
     },
     {
       "ma": "85479010",
       "loai": "BO_VE",
       "ve": "bằng kim loại cơ bản",
-      "lyDo": "Đã được phủ bằng chatLieu kim loại"
+      "lyDo": "Lặp lại tiêu đề nhóm 8547 (ống dẫn dây điện và các khớp nối của chúng, bằng kim loại cơ bản được lót lớp vật liệu cách điện)"
     },
     {
       "ma": "85479010",

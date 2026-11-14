@@ -145,7 +145,8 @@ module.exports = async function handler(req, res) {
 
   // tier: "auto" của NV (body.auto=true hoặc tier="premium") → Gemini trả phí (nhanh+chính xác); mặc định MiniMax $0
   const tier = (body?.tier === 'premium' || body?.auto === true) ? 'premium' : 'standard';
-  // #425: debug (body.debug=true hoặc ?debug=1) → engine.log + engine.llm (timeout theo bước, mạch đang mở). Không lộ khoá.
+  // #425: debug (body.debug=true hoặc ?debug=1) → engine.log + engine.llm (timeout theo bước, mạch đang mở).
+  // OZV-826: debug.llm thêm boQua/loiChuoiChinh khi chuỗi chính lỗi/bỏ qua mà tầng dự phòng vẫn thắng. Không lộ khoá.
   const debug = body?.debug === true || String(req.query?.debug || '') === '1';
 
   try {
