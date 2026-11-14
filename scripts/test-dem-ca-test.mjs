@@ -3,6 +3,7 @@
 // Mỗi ca dựng một log GIẢ rồi đòi bộ đếm kết luận đúng; không chạy npm test thật, không ghi data/.
 import './test-isolate-data.mjs';
 
+import { readFileSync } from 'node:fs';
 import { demCaTest, chamLog, dongDanPR } from './dem-ca-test.mjs';
 
 let xanh = 0;
@@ -177,6 +178,17 @@ function ca(ten, dieuKien) {
   demCaTest(log);
   const ms = Date.now() - t0;
   ca(`ReDoS: log ~40.000 từ lặp xong dưới 2 giây (đo ${ms}ms)`, ms < 2000);
+}
+
+// 15) Khoá chuỗi `scripts.test` trong package.json (OZV-815): không có `&&node` thiếu khoảng trắng
+//     làm mọi nơi `split(' && ')` đếm hụt bộ test.
+{
+  const pkg = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'));
+  const chuoiTest = String(pkg?.scripts?.test ?? '');
+  const tachChuan = chuoiTest.split(' && ');
+  const tachLong = chuoiTest.split(/\s*&&\s*/);
+  ca('package.json scripts.test: không có `&&` dính liền thiếu khoảng trắng (`&&node`)', !/(?:^|\S)&&|&&(?:\S|$)/.test(chuoiTest));
+  ca('package.json scripts.test: split(" && ") khớp đúng split(/\\s*&&\\s*/)', tachChuan.length === tachLong.length && tachChuan.length >= 230);
 }
 
 console.log(`\n${xanh} passed, ${do_} failed`);
