@@ -76,9 +76,25 @@
     "8413701": {
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Bơm nước"
+          "fact": "soTangBom",
+          "op": "TRONG",
+          "value": [
+            "MOT_TANG"
+          ]
+        },
+        {
+          "fact": "kieuHutBom",
+          "op": "TRONG",
+          "value": [
+            "MOT_CHIEU"
+          ]
+        },
+        {
+          "fact": "huongTrucBom",
+          "op": "TRONG",
+          "value": [
+            "NGANG"
+          ]
         },
         {
           "fact": "kieuTruyenDong",
@@ -95,19 +111,24 @@
             "DONG_TRUC_DONG_CO"
           ],
           "chieu": "PHAI_KHONG"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bơm nước"
         }
       ]
     },
     "8413703": {
       "dieuKienSo": [
         {
+          "fact": "datChim",
+          "op": "CO"
+        },
+        {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Bơm nước"
-        },
-        {
-          "fact": "datChim",
-          "op": "CO"
         }
       ]
     },
@@ -160,12 +181,7 @@
     {
       "ma": "8413701",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.8413701 \"Bơm nước một tầng, một chiều hút, trục ngang được truyền động bằng dây đai hoặc khớp nối trực tiếp, trừ loại bơm đồng trục với động cơ\" ⇒ tenLoai \"Bơm nước\" (cùng khoá, cùng giá trị với anh em .3/.4/.5) + kieuTruyenDong TRONG [DAY_DAI, KHOP_NOI_TRUC_TIEP] (khoá lô 22: \"truyền động bằng dây đai\" / \"khớp nối trực tiếp\") + kieuTruyenDong TRONG [DONG_TRUC_DONG_CO] chieu PHAI_KHONG (vế \"trừ loại bơm đồng trục với động cơ\"; cùng khoá — liệt kê loại trừ nhau nên điều kiện này thừa về nghĩa nhưng phủ vế). Ghi chú THIEU_KHOA_TU_VUNG cachTruyenDongBom đã giải quyết."
-    },
-    {
-      "ma": "8413701",
-      "loai": "QUYET_DINH",
-      "ghiChu": "Danh từ đầu \"một tầng, một chiều hút, trục ngang\" (EN \"Single stage, single suction horizontal shaft\") KHÔNG thành điều kiện: không có khoá tu-vung; một chuỗi tenLoai \"Bơm nước một tầng, một chiều hút, trục ngang\" bị cổng 3 chặn (cong3-liet-ke-trong-mot-chuoi), ba điều kiện tenLoai riêng làm .11/.19 không tới được (cong2-dong-khong-toi-duoc). Cổng 5 không đòi phủ danh từ đầu; hệ quả: tiêu đề này đang RỘNG hơn chữ ở ba thuộc tính đó (bơm nhiều tầng truyền động dây đai sẽ rơi vào .1 thay vì .4/.5/.9) — đề xuất khoá soTangBom / kieuHutBom / huongTrucBom nếu cần chặt."
+      "ghiChu": "tieuDe.8413701 \"Bơm nước một tầng, một chiều hút, trục ngang được truyền động bằng dây đai hoặc khớp nối trực tiếp, trừ loại bơm đồng trục với động cơ\" ⇒ tenLoai \"Bơm nước\" (cùng khoá, cùng giá trị với anh em .3/.4/.5) + soTangBom TRONG [MOT_TANG] + kieuHutBom TRONG [MOT_CHIEU] + huongTrucBom TRONG [NGANG] + kieuTruyenDong TRONG [DAY_DAI, KHOP_NOI_TRUC_TIEP] + kieuTruyenDong TRONG [DONG_TRUC_DONG_CO] chieu PHAI_KHONG (vế \"trừ loại bơm đồng trục với động cơ\"; cùng khoá — liệt kê loại trừ nhau nên điều kiện này thừa về nghĩa nhưng phủ vế). Sửa TRA_VE (OZV-924): bổ sung đủ 3 khoá soTangBom / kieuHutBom / huongTrucBom để không suy rộng sang bơm nhiều tầng / hút hai phía / trục đứng."
     },
     {
       "ma": "8413703",
