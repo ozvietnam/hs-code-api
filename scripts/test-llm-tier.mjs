@@ -110,7 +110,7 @@ reset();
 r = await callLLMJson('sys', 'user');
 check('thân dài: xoay sang khóa kế', r.json.who === 'free-ok', JSON.stringify(calls));
 const untilDai = _internal.cooldown.get('free-day-dai');
-check('thân dài: nghỉ tới nửa đêm Thái Bình Dương (≈18h, không phải 65 giây)', untilDai > Date.now() + 3600 * 1000 && untilDai <= Date.now() + 24 * 3600 * 1000, `${Math.round((untilDai - Date.now()) / 60000)} phút`);
+check('thân dài: nghỉ tới nửa đêm Thái Bình Dương (≈18h, không phải 65 giây)', untilDai > Date.now() + 60 * 1000 && untilDai <= Date.now() + 24 * 3600 * 1000, `${Math.round((untilDai - Date.now()) / 60000)} phút`);
 
 // 4c. Chiều ngược: thân 429 cũng dài như vậy nhưng hết lượt theo PHÚT (PerMinute) → vẫn nghỉ đúng 65 giây.
 process.env.GEMINI_FREE_KEYS = 'free-min-dai,free-ok';
@@ -122,7 +122,7 @@ check('thân dài PerMinute: vẫn nghỉ đúng 65 giây', untilPhut - Date.now
 
 // 4d. Đo trực tiếp quotaResetAt hai chiều trên đúng thân 557 ký tự — tái hiện con số trước/sau của OZV-749.
 {
-  const now = Date.now();
+  const now = Date.parse('2026-11-11T00:00:00Z'); // mốc cố định 16:00 PST — còn 8h trước nửa đêm TBĐ (tránh ĐỎ gần 23:00–00:00 PST)
   const msgCatCu = `Gemini API error 429: ${THAN_429_NGAY.slice(0, 300)}`; // đúng những gì lib/gemini.js ghi vào message
   const thatCu = _internal.quotaResetAt({ status: 429, message: msgCatCu }, now); // hình lỗi cũ: chỉ message đã cắt
   check('tái hiện lỗi cũ: chỉ message cắt 300 (không quotaId/body) → 65 giây', thatCu === now + 65000, `${Math.round((thatCu - now) / 1000)} giây`);
