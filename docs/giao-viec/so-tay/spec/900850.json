@@ -8,8 +8,13 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
+          "value": "Máy đọc"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
           "value": [
-            "Máy đọc vi phim",
+            "vi phim",
             "vi thẻ",
             "vi bản"
           ]
@@ -22,7 +27,7 @@
     {
       "ma": "90085010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.90085010 \"Máy đọc vi phim, vi thẻ hoặc vi bản khác, có hoặc không có khả năng sao chép\" ⇒ tenLoai [\"Máy đọc vi phim\",\"vi thẻ\",\"vi bản\"]; phanConLai false — \"khác\" trong \"vi bản khác\" là mục cuối danh sách của chính dòng; \"có hoặc không có khả năng sao chép\" là hai chiều (không thành điều kiện)"
+      "ghiChu": "tax.90085010 \"Máy đọc vi phim, vi thẻ hoặc vi bản khác, có hoặc không có khả năng sao chép\" ⇒ tenLoai \"Máy đọc\", dungCho [\"vi phim\",\"vi thẻ\",\"vi bản\"]; phanConLai false"
     },
     {
       "ma": "90085090",

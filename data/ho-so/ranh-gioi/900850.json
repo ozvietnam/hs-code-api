@@ -4,13 +4,18 @@
   "nhom": "9008",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T1003#soan-900850",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude:soat:900850#soat-900850",
+    "ngay": "2026-11-14",
+    "bam": "dd36764a4f1bbff2221e8ed16128c3e358d082a34b9bb72c50e4ec365e63f552"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -21,14 +26,19 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
+          "value": "Máy đọc"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
           "value": [
-            "Máy đọc vi phim",
+            "vi phim",
             "vi thẻ",
             "vi bản"
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": false
     },
     {
@@ -36,14 +46,14 @@
       "nguon": "tax.90085090",
       "trich": "90085090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "90085010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.90085010 \"Máy đọc vi phim, vi thẻ hoặc vi bản khác, có hoặc không có khả năng sao chép\" ⇒ tenLoai [\"Máy đọc vi phim\",\"vi thẻ\",\"vi bản\"]; phanConLai false — \"khác\" trong \"vi bản khác\" là mục cuối danh sách của chính dòng; \"có hoặc không có khả năng sao chép\" là hai chiều (không thành điều kiện)"
+      "ghiChu": "tax.90085010 \"Máy đọc vi phim, vi thẻ hoặc vi bản khác, có hoặc không có khả năng sao chép\" ⇒ tenLoai \"Máy đọc\", dungCho [\"vi phim\",\"vi thẻ\",\"vi bản\"]; phanConLai false"
     },
     {
       "ma": "90085090",
