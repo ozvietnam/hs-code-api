@@ -111,6 +111,13 @@ describe('lib/dieu-kien-so.js — tuChaCua / coCumPhanBiet & chotDong8 (OZV-911)
     assert.notEqual(rThieu.ketQua, 'CHOT');
   });
 
+  test('Ca bảo vệ 85479010: dòng 8 số đa mệnh đề có dấu phẩy không bị gỡ vế cha để tự chốt chỉ theo "Ống dẫn dây điện"', () => {
+    assert.equal(DK.coCumPhanBiet('Ống dẫn dây điện', '85479010'), false);
+    assert.equal(DK.coCumPhanBiet('khớp nối', '85479010'), false);
+    const r = chotDong8({ hs: '854790', productText: 'Ống dẫn dây điện bằng sứ cách điện' });
+    assert.notEqual(r.hs, '85479010');
+  });
+
   test('ReDoS guard: chuỗi ~40.000 từ lặp có "kể cả / bao gồm" chạy dưới 2 giây', () => {
     const longText = `${'kể cả bao gồm dụng cụ dùng nhiên liệu rắn, '.repeat(6000)}Loại dùng nhiên liệu rắn`;
     const t0 = Date.now();
