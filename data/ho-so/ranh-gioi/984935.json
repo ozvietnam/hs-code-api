@@ -189,11 +189,17 @@
     {
       "id": "9849353",
       "nguon": "tieuDe.9849353",
-      "trich": "9849353 Bộ phận",
+      "trich": "9849353 Bộ phận (không phải Két nước làm mát — tách nhánh 984935~r19798)",
       "dieuKienSo": [
         {
           "fact": "laBoPhan",
           "op": "CO"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Két nước làm mát",
+          "chieu": "PHAI_KHONG"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -360,35 +366,58 @@
     },
     {
       "hs": "98493521",
-      "nguon": "tax.98493521",
-      "trich": "98493521 - - - - - - Dùng cho xe thuộc phân nhóm 8704.10",
+      "nguon": "tuongUng.98493521",
+      "trich": "98493521 - - - - - - Dùng cho xe thuộc phân nhóm 8704.10 — mã hàng tương ứng: 8708.91.17",
       "dieuKienSo": [
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": "xe thuộc phân nhóm 8704.10"
+        },
+        {
+          "fact": "maHsTuongUng",
+          "op": "CONG_DUNG",
+          "value": [
+            "8708.91.17"
+          ]
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "98493522",
-      "nguon": "tax.98493522",
-      "trich": "98493522 - - - - - - Loại khác",
-      "dieuKienSo": [],
+      "nguon": "tuongUng.98493522",
+      "trich": "98493522 - - - - - - Loại khác — mã hàng tương ứng: 8708.91.18",
+      "dieuKienSo": [
+        {
+          "fact": "maHsTuongUng",
+          "op": "CONG_DUNG",
+          "value": [
+            "8708.91.18"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "98493529",
-      "nguon": "tax.98493529",
-      "trich": "98493529 - - - - - Loại khác",
-      "dieuKienSo": [],
+      "nguon": "tuongUng.98493529",
+      "trich": "98493529 - - - - - Loại khác — mã hàng tương ứng: 8708.91.19",
+      "dieuKienSo": [
+        {
+          "fact": "maHsTuongUng",
+          "op": "CONG_DUNG",
+          "value": [
+            "8708.91.19"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "98493531",
-      "nguon": "tax.98493531",
-      "trich": "98493531 - - - - - Nút xả dùng cho xe thuộc nhóm 87.03 ",
+      "nguon": "tuongUng.98493531",
+      "trich": "98493531 - - - - - Nút xả dùng cho xe thuộc nhóm 87.03 — mã hàng tương ứng: 8708.91.93",
       "dieuKienSo": [
         {
           "fact": "tenLoai",
@@ -399,6 +428,13 @@
           "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": "xe thuộc nhóm 87.03"
+        },
+        {
+          "fact": "maHsTuongUng",
+          "op": "CONG_DUNG",
+          "value": [
+            "8708.91.93"
+          ]
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -450,9 +486,17 @@
     },
     {
       "hs": "98493539",
-      "nguon": "tax.98493539",
-      "trich": "98493539 - - - - - Loại khác",
-      "dieuKienSo": [],
+      "nguon": "tuongUng.98493539",
+      "trich": "98493539 - - - - - Loại khác — mã hàng tương ứng: 8708.91.99",
+      "dieuKienSo": [
+        {
+          "fact": "maHsTuongUng",
+          "op": "CONG_DUNG",
+          "value": [
+            "8708.91.99"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -687,8 +731,8 @@
     },
     {
       "hs": "98493582",
-      "nguon": "tax.98493582",
-      "trich": "98493582 - - - - - Nửa dưới của thùng nhiên liệu; nắp đậy thùng nhiên liệu; ống dẫn của thùng nhiên liệu (filler pipes); ống dẫn hướng có đầu nối với bình nhiên liệu (filler hose); đai giữ bình nhiên liệu ",
+      "nguon": "tuongUng.98493582",
+      "trich": "Nửa dưới của thùng nhiên liệu; nắp đậy thùng nhiên liệu; ống dẫn của thùng nhiên liệu; ống dẫn hướng có đầu nối với bình nhiên liệu; đai giữ bình nhiên liệu — mã hàng tương ứng: 8708.99.24",
       "dieuKienSo": [
         {
           "fact": "tenLoai",
@@ -699,6 +743,13 @@
             "ống dẫn của thùng nhiên liệu",
             "ống dẫn hướng có đầu nối với bình nhiên liệu",
             "đai giữ bình nhiên liệu"
+          ]
+        },
+        {
+          "fact": "maHsTuongUng",
+          "op": "CONG_DUNG",
+          "value": [
+            "8708.99.24"
           ]
         }
       ],
@@ -956,6 +1007,21 @@
       "ma": "98493529",
       "loai": "QUYET_DINH",
       "ghiChu": "OZV-655 trả thợ: xoá 98493529/98493539 khỏi dong8 — dòng Loại khác giữ phanConLai máy sinh, không gắn dieuKienSo (Cổng 0/3); hết chotLoaiKhacSai bằng bỏ laBoPhan KHONG ở r19798"
+    },
+    {
+      "ma": "9849353",
+      "loai": "QUYET_DINH",
+      "ghiChu": "OZV-921: gỡ 8 cặp cong2 r19798↔9849353 — tenLoai TEN_LOAI \"Két nước làm mát\" chieu PHAI_KHONG tại 9849353; mở trich ghi rõ \"không phải Két nước làm mát\" để cổng 3 nhận giá trị"
+    },
+    {
+      "ma": "98493581",
+      "loai": "QUYET_DINH",
+      "ghiChu": "OZV-921: gỡ cong2 98493581+98493582 — thêm maHsTuongUng 8708.99.24 ở .82 (đối lập .81=8708.99.21); không dùng tenLoai PHAI_KHONG vì tên bộ phận không có trong trich .81 (cong3)"
+    },
+    {
+      "ma": "98493582",
+      "loai": "QUYET_DINH",
+      "ghiChu": "OZV-921: khai maHsTuongUng 8708.99.24 (ma_tuong_ung tax) để tách cong2 với 98493581 (8708.99.21)"
     }
   ],
   "traVe": [
