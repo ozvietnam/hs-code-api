@@ -10,6 +10,11 @@
           "op": "<=",
           "value": 50,
           "donVi": "mm"
+        },
+        {
+          "fact": "hinhDangMatCatNgang",
+          "op": "TRONG",
+          "value": ["TRON"]
         }
       ]
     }
@@ -19,13 +24,7 @@
     {
       "ma": "72131010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.72131010: \"Có đường kính mặt cắt ngang hình tròn không quá 50 mm\" ⇒ duongKinh <= 50 mm"
-    },
-    {
-      "ma": "72131010",
-      "loai": "BO_VE",
-      "ve": "Có đường kính mặt cắt ngang hình tròn không quá 50 mm",
-      "lyDo": "Đã lượng hóa qua duongKinh <= 50 mm"
+      "ghiChu": "tax.72131010: \"Có đường kính mặt cắt ngang hình tròn không quá 50 mm\" ⇒ duongKinh <= 50 mm, hinhDangMatCatNgang TRONG ['TRON']"
     }
   ]
 }
