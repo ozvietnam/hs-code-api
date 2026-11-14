@@ -1,7 +1,7 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "984934",
-  "phien": "zcode-sub:glm-5.3:20261106T1001#soan-984934",
+  "phien": "claude-agent:tho-hs-03:20261114T1555#soan-984934",
   "dong8": {
     "98493412": {
       "dieuKienSo": [
@@ -64,8 +64,17 @@
           "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": "dây đai an toàn"
+        },
+        {
+          "fact": "maHsTuongUng",
+          "op": "CONG_DUNG",
+          "value": [
+            "8708.29.20"
+          ]
         }
-      ]
+      ],
+      "nguon": "tuongUng.98493418",
+      "trich": "Bộ phận của dây đai an toàn — mã hàng tương ứng: 8708.29.20"
     },
     "98493419": {
       "dieuKienSo": [
@@ -278,8 +287,17 @@
           "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": "xe thuộc nhóm 87.02 hoặc 87.04"
+        },
+        {
+          "fact": "maHsTuongUng",
+          "op": "CONG_DUNG",
+          "value": [
+            "8708.70.23"
+          ]
         }
-      ]
+      ],
+      "nguon": "tuongUng.98493476",
+      "trich": "Dùng cho xe thuộc nhóm 87.02 hoặc 87.04 (trừ phân nhóm 8704.10) — mã hàng tương ứng: 8708.70.23"
     },
     "98493478": {
       "dieuKienSo": [
@@ -302,8 +320,17 @@
           "op": ">",
           "value": 45,
           "donVi": "tấn"
+        },
+        {
+          "fact": "maHsTuongUng",
+          "op": "CONG_DUNG",
+          "value": [
+            "8708.70.33"
+          ]
         }
-      ]
+      ],
+      "nguon": "tuongUng.98493479",
+      "trich": "Dùng cho xe tự đổ được thiết kế để sử dụng trên các loại đường không phải đường quốc lộ có khối lượng toàn bộ theo thiết kế trên 45 tấn — mã hàng tương ứng: 8708.70.33"
     },
     "98493480": {
       "dieuKienSo": [
@@ -332,8 +359,17 @@
           "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": "xe thuộc nhóm 87.03"
+        },
+        {
+          "fact": "maHsTuongUng",
+          "op": "CONG_DUNG",
+          "value": [
+            "8708.70.97"
+          ]
         }
-      ]
+      ],
+      "nguon": "tuongUng.98493483",
+      "trich": "Dùng cho xe thuộc nhóm 87.03 — mã hàng tương ứng: 8708.70.97"
     },
     "98493491": {
       "dieuKienSo": [
@@ -759,18 +795,12 @@
       "ma": "98493476",
       "loai": "BO_VE",
       "ve": "(trừ phân nhóm 8704.10)",
-      "lyDo": "vế trừ dẫn phân nhóm 8704.10: hàng dùng cho xe 8704.10 đã có dòng riêng 98493472 dưới cùng cây (r19771 → 98493472); tu-vung@2 không có op phủ định theo mã cho dungCho — bỏ vế không làm hàng 8704.10 rơi nhầm vì đã được dòng anh em trong cùng cụm nhận"
+      "lyDo": "vế trừ dẫn phân nhóm 8704.10: tu-vung@2 không có op phủ định theo mã cho dungCho. Giữ tất định bằng mã tương ứng (luật Chương 98): nguồn tuongUng.98493476 cho mã hàng tương ứng 8708.70.23, khai maHsTuongUng ⇒ dòng rời hẳn với 98493477 (↔ 8708.70.29) và với bánh xe lắp lốp cho xe tự đổ 8704.10, không cần dịch vế trừ thành điều kiện. Lý do BO_VE cũ ('đã có dòng 98493472 cùng cây') SAI vì .72 nằm dưới 'Ốp đầu trục bánh xe', còn .76 dưới 'Bánh xe đã được lắp lốp'."
     },
     {
       "ma": "98493479",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.98493479 vế \"có khối lượng toàn bộ theo thiết kế trên 45 tấn\" ⇒ khoiLuongToanBo > 45 tấn; vế \"Dùng cho xe tự đổ\" ⇒ dungCho \"xe tự đổ\""
-    },
-    {
-      "ma": "98493479",
-      "loai": "BO_VE",
-      "ve": "để sử dụng trên các loại đường không phải đường quốc lộ",
-      "lyDo": "vế nêu môi trường hoạt động của xe tự đổ (off-road) — tu-vung@2 không có khoá đọc loại đường; ranh giới chính của dòng là đích \"xe tự đổ\" + khối lượng > 45 tấn đã phủ; hàng tự đổ dưới 45 tấn hoặc dùng đường quốc lộ rơi về 98493480/98493481"
     },
     {
       "ma": "984934~r19775",
@@ -798,12 +828,6 @@
       "ghiChu": "tieuDe.9849349 \"(kể cả giảm sóc)\" là ngoặc kể cả (PHU) ⇒ không thành điều kiện; vế MỞ \"và bộ phận của nó\" ⇒ HOAC"
     },
     {
-      "ma": "98493479",
-      "loai": "BO_VE",
-      "ve": "được thiết kế",
-      "lyDo": "vế \"được thiết kế để sử dụng trên các loại đường không phải đường quốc lộ\" là một cụm điều kiện thiết kế off-road của xe tự đổ; tu-vung@2 không có khoá đọc thiết kế đường — ý ràng buộc đã phủ ở dungCho \"xe tự đổ\" + khối lượng > 45 tấn; bỏ vế không đưa hàng sai dòng vì các dòng anh em 98493480/81 phân theo nhóm xe khác"
-    },
-    {
       "ma": "98493480",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.98493480 \"Dùng cho xe thuộc nhóm 87.02 hoặc xe khác thuộc nhóm 87.04\" — \"xe khác\" loại anh em 98493479 (xe tự đổ off-highway > 45 tấn, thuộc 8704.10 ⊂ 87.04) ⇒ phanConLai [\"98493479\"]; cùng cách khai với dòng tương ứng 8708.70.34 ↔ 8708.70.33 ở spec 870870"
@@ -812,6 +836,22 @@
       "ma": "984934",
       "loai": "QUYET_DINH",
       "ghiChu": "Claude 07/11/2026 (#1109): hết DỪNG (lô 7). Bộ tách vế đọc đúng \"có hoặc không kèm theo … , và các cầu bị động\" (vế tuỳ chọn + tên đầu liên hợp) nên luật chéo khoá nhận \"Cầu chủ động có vi sai\"/\"cầu bị động\" là tên đầu; ghép giá trị 3 tầng cùng khoá (thân xe ⊃ cửa xe ⊃ xe 87.03) cho .13–.16; tầng \"Loại khác\" r19765 (cùng .59/.60) thụt thiếu một gạch trong biểu — hiệu chỉnh có căn cứ mã tương ứng 8708.50.96/.99 (lib/ho-so/tang-khong-ma.js GACH_HIEU_CHINH); .80 \"xe khác thuộc nhóm 87.04\" ⇒ phanConLai [.79] như 8708.70.34."
+    },
+    {
+      "ma": "98493479",
+      "loai": "BO_VE",
+      "ve": "được thiết kế để sử dụng trên các loại đường không phải đường quốc lộ",
+      "lyDo": "vế nêu môi trường hoạt động (off-road) của xe tự đổ — tu-vung@2 không có khoá đọc loại đường. Giữ tất định bằng mã tương ứng (luật Chương 98): nguồn tuongUng.98493479 cho mã hàng tương ứng 8708.70.33, khai maHsTuongUng ⇒ xe tự đổ đường bộ GVW > 45 t không rơi nhầm vào .79 (phải về .80 ↔ 8708.70.34)."
+    },
+    {
+      "ma": "98493418",
+      "loai": "QUYET_DINH",
+      "ghiChu": "OZV-655: cùng chữ/cạnh Dây đai an toàn — giữ tất định bằng maHsTuongUng 8708.29.20 (không để laBoPhan CO + dungCho 'dây đai' cướp ca tên dòng .12 khi chữ tổ tiên có 'Bộ phận…')."
+    },
+    {
+      "ma": "98493483",
+      "loai": "QUYET_DINH",
+      "ghiChu": "OZV-655: lá chỉ dungCho 'xe 87.03' trùng nhiều nhánh (hộp số/cầu/bánh) — siết bằng maHsTuongUng 8708.70.97 (Cụm bánh xe) để hết chotSai .44/.51/.54/.58 → .83."
     }
   ]
 }
