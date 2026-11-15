@@ -4,14 +4,31 @@
   "nhom": "0803",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T1542#soan-080310",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
-  "dieuKienNut": [],
+  "duyet": { "boi": "CLAUDE_DUYET", "phien": "claude-agent:tho-hs-01-20261115#soat-080310", "ngay": "2026-11-15", "ghiChu": "Đối chiếu tax.08031010 \"Tươi\" / 08031020 \"Khô\" và wco.080310 \"plantains, fresh or dried\" ⇒ phuongPhapBaoQuan TUOI_UOP_LANH / KHO_MUOI (OZV-1112)", "bam": "3d838fffeaf7953195f387084223d31a2ac28f64dba3e39efe37fab25e6cb997" },
+  "dieuKienNut": [
+    {
+      "id": "080310",
+      "nguon": "wco.080310",
+      "trich": "080310 Fruit, edible; plantains, fresh or dried",
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "TUOI_UOP_LANH",
+            "KHO_MUOI"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    }
+  ],
   "dong8": [
     {
       "hs": "08031010",
@@ -19,12 +36,14 @@
       "trich": "08031010 - - Tươi",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Tươi"
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "TUOI_UOP_LANH"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "08031020",
@@ -32,24 +51,31 @@
       "trich": "08031020 - - Khô",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Khô"
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "KHO_MUOI"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
+      "ma": "080310",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Phạm vi phân nhóm dieuKienNut[080310] theo wco.080310 \"plantains, fresh or dried\" ⇒ phuongPhapBaoQuan TRONG [TUOI_UOP_LANH, KHO_MUOI] (theo mẫu 080450)."
+    },
+    {
       "ma": "08031010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.08031010 \"Tươi\" ⇒ tenLoai \"Tươi\" nguyên văn (không dùng phuongPhapBaoQuan TRONG [TUOI_UOP_LANH]: tầng không có con \"Loại khác\", khoá liệt kê vét mọi giá trị từ vựng — vector sống/đông lạnh/hun khói không thuộc phân nhóm (chỉ tươi hoặc khô) nhưng bị coi là lỗ hổng, cùng xử lý như 030711, 640620)"
+      "ghiChu": "tax.08031010 \"Tươi\" ⇒ phuongPhapBaoQuan TRONG [TUOI_UOP_LANH]."
     },
     {
       "ma": "08031020",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.08031020 \"Khô\" ⇒ tenLoai \"Khô\" nguyên văn, cùng khoá với anh em .10 (lý do như ghi chú .10)"
+      "ghiChu": "tax.08031020 \"Khô\" ⇒ phuongPhapBaoQuan TRONG [KHO_MUOI]."
     }
   ],
   "traVe": [
