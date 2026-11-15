@@ -4,13 +4,19 @@
   "nhom": "4205",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1024#soan-420500",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-02#soat-420500",
+    "ngay": "2026-11-15",
+    "ghiChu": "Đã đối chiếu chữ biểu thuế VI+EN và xử lý mục trả về.",
+    "bam": "1c596e83291f95abc8890a1cdb645e06227092af554c18f97001b0a02e636a73"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -23,11 +29,11 @@
           "op": "TEN_LOAI",
           "value": [
             "Dây buộc giày",
-            "tấm lót (mats)"
+            "tấm lót"
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "42050020",
@@ -68,7 +74,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "42050030",
@@ -89,7 +95,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "42050040",
@@ -97,33 +103,37 @@
       "trich": "42050040 - Sản phẩm khác dùng cho máy móc hoặc thiết bị cơ khí hoặc mục đích kỹ thuật khác",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Sản phẩm khác"
-        },
-        {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": [
-            "máy móc",
-            "thiết bị cơ khí"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "máy móc",
+                  "thiết bị cơ khí"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "mục đích kỹ thuật khác"
+              }
+            ]
           ]
-        },
-        {
-          "fact": "congDung",
-          "op": "CONG_DUNG",
-          "value": "mục đích kỹ thuật khác"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
-      "phanConLai": false
+      "nguonLoai": "CLAUDE_DUYET",
+      "phanConLai": true
     },
     {
       "hs": "42050090",
       "nguon": "tax.42050090",
       "trich": "42050090 - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -140,12 +150,12 @@
     {
       "ma": "42050040",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.42050040 \"Sản phẩm khác dùng cho máy móc hoặc thiết bị cơ khí hoặc mục đích kỹ thuật khác\" ⇒ tenLoai \"Sản phẩm khác\" + dungCho mảng [\"máy móc\", \"thiết bị cơ khí\"] + congDung \"mục đích kỹ thuật khác\". Đặt phanConLai: false — .90 mới là \"Loại khác\" trần (phần còn lại không tên); \"Sản phẩm khác\" ở .40 là tên dòng CÓ điều kiện (dùng cho máy móc/thiết bị cơ khí/mục đích kỹ thuật khác), không phải phần còn lại."
+      "ghiChu": "tax.42050040 \"Sản phẩm khác dùng cho máy móc hoặc thiết bị cơ khí hoặc mục đích kỹ thuật khác\" (EN \"Other articles of a kind used in machinery or mechanical appliances or for other technical uses\") ⇒ HOAC [[dungCho [\"máy móc\", \"thiết bị cơ khí\"]], [congDung \"mục đích kỹ thuật khác\"]] + phanConLai: true (phần còn lại có điều kiện công dụng/đích sử dụng so với .10–.30, không đòi tenLoai \"Sản phẩm khác\")."
     },
     {
       "ma": "42050010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.42050010 \"Dây buộc giày; tấm lót (mats)\" ⇒ tenLoai mảng [\"Dây buộc giày\", \"tấm lót (mats)\"] (dấu \";\" trong chữ biểu — cổng 3 chặn giá trị chứa \";\" nên tách thành mảng). .90 \"Loại khác\" trần ⇒ không ghi điều kiện."
+      "ghiChu": "tax.42050010 \"Dây buộc giày; tấm lót (mats)\" ⇒ tenLoai mảng [\"Dây buộc giày\", \"tấm lót\"] (bỏ ngoặc chú thích tiếng Anh \"(mats)\"). .90 \"Loại khác\" trần ⇒ không ghi điều kiện."
     }
   ],
   "traVe": [

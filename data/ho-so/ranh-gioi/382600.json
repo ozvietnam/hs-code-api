@@ -4,13 +4,19 @@
   "nhom": "3826",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-382600",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-02#soat-382600",
+    "ngay": "2026-11-15",
+    "ghiChu": "Đã đối chiếu chữ biểu thuế VI+EN và xử lý mục trả về.",
+    "bam": "676d72337884c6844323c8c267a12ecacd064e623eb8cea2a257ed4a84dc612c"
+  },
   "dieuKienNut": [
     {
       "id": "382600~r5544",
@@ -22,7 +28,7 @@
           "op": "KHONG"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "3826002",
@@ -32,10 +38,13 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Este metyl từ cọ"
+          "value": [
+            "Este metyl từ cọ",
+            "methyl este từ hạt cọ"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -50,7 +59,7 @@
           "value": "Este metyl từ dừa"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "38260021",
@@ -70,7 +79,7 @@
           "donVi": "%"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "38260022",
@@ -84,28 +93,28 @@
           "donVi": "%"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "38260029",
       "nguon": "tax.38260029",
       "trich": "38260029 - - - Loại khác (SEN)",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "38260030",
       "nguon": "tax.38260030",
       "trich": "38260030 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "38260090",
       "nguon": "tax.38260090",
       "trich": "38260090 - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -132,7 +141,7 @@
     {
       "ma": "3826002",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.3826002 \"Este metyl từ cọ (kể cả methyl este từ hạt cọ)\" ⇒ tenLoai \"Este metyl từ cọ\"; vế \"kể cả …\" là phụ, không thành điều kiện."
+      "ghiChu": "tieuDe.3826002 \"Este metyl từ cọ (kể cả methyl este từ hạt cọ)\" (EN \"Palm methyl ester (including palm kernel methyl ester)\") ⇒ tenLoai [\"Este metyl từ cọ\", \"methyl este từ hạt cọ\"] (vế \"kể cả\" mở rộng đưa PKME vào nhóm tiêu đề)."
     }
   ],
   "traVe": [

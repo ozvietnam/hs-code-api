@@ -4,13 +4,19 @@
   "nhom": "7020",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T0954#soan-702000",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-02#soat-702000",
+    "ngay": "2026-11-15",
+    "ghiChu": "Đã đối chiếu chữ biểu thuế VI+EN và xử lý mục trả về.",
+    "bam": "6f6ef6d2dfb6fff11d2aceca07fc7b4cd042fa8c4e8b94114453b0eda5cbd0ce"
+  },
   "dieuKienNut": [
     {
       "id": "7020001",
@@ -28,7 +34,7 @@
           "value": "thủy tinh"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -43,14 +49,14 @@
           "value": "dùng để sản xuất các sản phẩm acrylic"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "70200019",
       "nguon": "tax.70200019",
       "trich": "70200019 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "70200020",
@@ -58,36 +64,20 @@
       "trich": "70200020 - Ống thạch anh dùng trong lò phản ứng và vòng kẹp được thiết kế để chèn vào lò luyện khuếch tán và lò ôxi hóa để sản xuất tấm bán dẫn mỏng",
       "dieuKienSo": [
         {
-          "op": "HOAC",
-          "phuongAn": [
-            [
-              {
-                "fact": "tenLoai",
-                "op": "TEN_LOAI",
-                "value": "Ống thạch anh"
-              },
-              {
-                "fact": "dungCho",
-                "op": "CONG_DUNG",
-                "value": "dùng trong lò phản ứng"
-              }
-            ],
-            [
-              {
-                "fact": "tenLoai",
-                "op": "TEN_LOAI",
-                "value": "vòng kẹp"
-              },
-              {
-                "fact": "dungCho",
-                "op": "CONG_DUNG",
-                "value": "được thiết kế để chèn vào lò luyện khuếch tán và lò ôxi hóa để sản xuất tấm bán dẫn mỏng"
-              }
-            ]
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Ống thạch anh dùng trong lò phản ứng",
+            "vòng kẹp"
           ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "được thiết kế để chèn vào lò luyện khuếch tán và lò ôxi hóa để sản xuất tấm bán dẫn mỏng"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "70200030",
@@ -103,7 +93,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": false
     },
     {
@@ -122,14 +112,14 @@
           "value": "sử dụng trong bình nước nóng năng lượng mặt trời"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "70200090",
       "nguon": "tax.70200090",
       "trich": "70200090 - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -151,7 +141,7 @@
     {
       "ma": "70200020",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.70200020 gồm hai hàng: \"Ống thạch anh\" dùng trong lò phản ứng, và \"vòng kẹp\" được thiết kế để chèn vào lò luyện khuếch tán/lò ôxi hóa sản xuất tấm bán dẫn mỏng ⇒ HOAC hai phương án; \"lò luyện khuếch tán và lò ôxi hóa\" là cụm đích một khối nên giữ một chuỗi"
+      "ghiChu": "tax.70200020 (EN \"Quartz reactor tubes and holders designed for insertion into diffusion and oxidation furnaces for production of semiconductor wafers\") ⇒ tenLoai [\"Ống thạch anh dùng trong lò phản ứng\", \"vòng kẹp\"] VÀ dungCho \"được thiết kế để chèn vào lò luyện khuếch tán và lò ôxi hóa để sản xuất tấm bán dẫn mỏng\" (định ngữ chung gắn cho cả hai loại hàng)."
     },
     {
       "ma": "70200030",

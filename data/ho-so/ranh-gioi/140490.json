@@ -4,13 +4,19 @@
   "nhom": "1404",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1529#soan-140490",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-02#soat-140490",
+    "ngay": "2026-11-15",
+    "ghiChu": "Đã đối chiếu chữ biểu thuế VI+EN và xử lý mục trả về.",
+    "bam": "647c2b94b1b9225553be66e34977a7406dba9150a35e6e2fbfcdcc8ec0f1e9bc"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -27,7 +33,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "14049030",
@@ -40,7 +46,7 @@
           "value": "Bông gòn"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "14049091",
@@ -53,7 +59,7 @@
           "value": "Vỏ hạt cọ"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "14049092",
@@ -63,22 +69,17 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Chùm không quả"
-        },
-        {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": "cây cọ dầu"
+          "value": "Chùm không quả của cây cọ dầu"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "14049099",
       "nguon": "tax.14049099",
       "trich": "14049099 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "chongLanTruc": [
@@ -122,7 +123,7 @@
     {
       "ma": "14049092",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.14049092 \"Chùm không quả của cây cọ dầu\" (EN \"Empty fruit bunch of oil palm\") ⇒ tenLoai \"Chùm không quả\" (tên hàng) + dungCho \"cây cọ dầu\" (vế GIỚI HẠN \"của cây cọ dầu\"; khuôn 848190 \"Vỏ của van cổng hoặc van cống\")."
+      "ghiChu": "tax.14049092 \"Chùm không quả của cây cọ dầu\" (EN \"Empty fruit bunch of oil palm\") ⇒ tenLoai \"Chùm không quả của cây cọ dầu\" (giữ nguyên cụm tên hàng như 12079950 \"Chùm quả tươi của cây cọ dầu\"; \"của cây cọ dầu\" là loài cây trong tên hàng, không tách sang dungCho)."
     },
     {
       "ma": "14049099",
