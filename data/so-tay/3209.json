@@ -54,30 +54,9 @@
  ],
  "tieuChi6": [],
  "dong8": [
-  {
-   "hs": "32091010",
-   "dieuKien": "Vecni (kể cả dầu bóng)",
-   "loaiKhac": false,
-   "nguon": "tax.32091010",
-   "trich": "32091010 - - Vecni (kể cả dầu bóng)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "32091040",
-   "dieuKien": "Sơn cho da thuộc (SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.32091040",
-   "trich": "32091040  - - Sơn cho da thuộc (SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hs": "32091050",
-   "dieuKien": "Sơn chống hà và/hoặc chống ăn mòn dùng để sơn vỏ tàu thủy (SEN)",
-   "loaiKhac": false,
-   "nguon": "tax.32091050",
-   "trich": "32091050 - - Sơn chống hà và/hoặc chống ăn mòn dùng để sơn vỏ tàu thủy (SEN)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
+  {"hs":"32091010","dieuKien":"tên loại hàng: Vecni (kể cả dầu bóng)","loaiKhac":false,"nguon":"tax.32091010","trich":"32091010 - - Vecni (kể cả dầu bóng)","nguonLoai":"CLAUDE_DUYET","dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Vecni (kể cả dầu bóng)"}],"ranhGioi":{"phienBan":"ranh-gioi@1","duyet":{"phien":"claude-agent:tho-hs-01-20261115#soat-320910","ngay":"2026-11-15","bam":"0e8d979b213d5bc2603ffc8ff4dcd990df93369342dda377182e1a14c95887bb"}},"chongLanVanBan":[{"voi":"32091050","lyDo":"Chữ biểu chồng lấn: .10 \"Vecni (kể cả dầu bóng)\" (EN \"Varnishes (including lacquers)\") là vecni/dầu bóng; .50 \"Sơn chống hà và/hoặc chống ăn mòn dùng để sơn vỏ tàu thủy (SEN)\" (EN \"Anti-fouling and/or anti-corrosive paints for ships' hulls\") là sơn chống hà vỏ tàu thủy — hai nhánh dùng khoá khác nhau (tenLoai ↔ CO_KHONG) nên máy không tự loại trừ được; một sơn chống hà dạng vecni/dầu bóng thỏa cả hai dòng. 3209.10 không có SEN; chú giải nhóm 32.09 không nói thứ tự ⇒ không có căn cứ ưu tiên, lúc chạy hỏi người khai."}]},
+  {"hs":"32091040","dieuKien":"tên loại hàng: Sơn; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): da thuộc","loaiKhac":false,"nguon":"tax.32091040","trich":"32091040  - - Sơn cho da thuộc (SEN)","nguonLoai":"CLAUDE_DUYET","dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Sơn"},{"fact":"dungCho","op":"CONG_DUNG","value":"da thuộc"}],"ranhGioi":{"phienBan":"ranh-gioi@1","duyet":{"phien":"claude-agent:tho-hs-01-20261115#soat-320910","ngay":"2026-11-15","bam":"0e8d979b213d5bc2603ffc8ff4dcd990df93369342dda377182e1a14c95887bb"}},"chongLanVanBan":[{"voi":"32091050","lyDo":"Chữ biểu chồng lấn: .40 \"Sơn cho da thuộc (SEN)\" (EN \"Leather paints\") là sơn cho da thuộc; .50 \"Sơn chống hà và/hoặc chống ăn mòn dùng để sơn vỏ tàu thủy (SEN)\" (EN \"Anti-fouling and/or anti-corrosive paints for ships' hulls\") là sơn chống hà vỏ tàu thủy — hai nhánh dùng khoá khác nhau (tenLoai+dungCho ↔ CO_KHONG) nên máy không tự loại trừ được. Chữ biểu cho thấy \"da thuộc\" và \"vỏ tàu thủy\" loại trừ nhau, nhưng không có căn cứ ưu tiên trong nguồn (3209.10 không có SEN; chú giải nhóm 32.09 không nói thứ tự) ⇒ khai chồng lấn để lúc chạy hỏi người khai thay vì tự chốt."}]},
+  {"hs":"32091050","dieuKien":"sơn chống hà hoặc chống ăn mòn dùng sơn vỏ tàu thủy","loaiKhac":false,"nguon":"tax.32091050","trich":"32091050 - - Sơn chống hà và/hoặc chống ăn mòn dùng để sơn vỏ tàu thủy (SEN)","nguonLoai":"CLAUDE_DUYET","dieuKienSo":[{"fact":"sonChongHaHoacChongAnMonVoTau","op":"CO"}],"ranhGioi":{"phienBan":"ranh-gioi@1","duyet":{"phien":"claude-agent:tho-hs-01-20261115#soat-320910","ngay":"2026-11-15","bam":"0e8d979b213d5bc2603ffc8ff4dcd990df93369342dda377182e1a14c95887bb"}},"chongLanVanBan":[{"voi":"32091010","lyDo":"Chữ biểu chồng lấn: .10 \"Vecni (kể cả dầu bóng)\" (EN \"Varnishes (including lacquers)\") là vecni/dầu bóng; .50 \"Sơn chống hà và/hoặc chống ăn mòn dùng để sơn vỏ tàu thủy (SEN)\" (EN \"Anti-fouling and/or anti-corrosive paints for ships' hulls\") là sơn chống hà vỏ tàu thủy — hai nhánh dùng khoá khác nhau (tenLoai ↔ CO_KHONG) nên máy không tự loại trừ được; một sơn chống hà dạng vecni/dầu bóng thỏa cả hai dòng. 3209.10 không có SEN; chú giải nhóm 32.09 không nói thứ tự ⇒ không có căn cứ ưu tiên, lúc chạy hỏi người khai."},{"voi":"32091040","lyDo":"Chữ biểu chồng lấn: .40 \"Sơn cho da thuộc (SEN)\" (EN \"Leather paints\") là sơn cho da thuộc; .50 \"Sơn chống hà và/hoặc chống ăn mòn dùng để sơn vỏ tàu thủy (SEN)\" (EN \"Anti-fouling and/or anti-corrosive paints for ships' hulls\") là sơn chống hà vỏ tàu thủy — hai nhánh dùng khoá khác nhau (tenLoai+dungCho ↔ CO_KHONG) nên máy không tự loại trừ được. Chữ biểu cho thấy \"da thuộc\" và \"vỏ tàu thủy\" loại trừ nhau, nhưng không có căn cứ ưu tiên trong nguồn (3209.10 không có SEN; chú giải nhóm 32.09 không nói thứ tự) ⇒ khai chồng lấn để lúc chạy hỏi người khai thay vì tự chốt."}]},
   {
    "hs": "32091090",
    "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
