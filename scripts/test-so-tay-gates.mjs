@@ -77,12 +77,12 @@ cd = chotDong8({ hs: '40092110', productText: 'ống cao su có phụ kiện, đ
 check('4009.21: 1.2cm trái mọi điều kiện → LOAI_KHAC 40092190 (phủ định hoàn chỉnh)', cd.ketQua === 'LOAI_KHAC' && cd.hs === '40092190', JSON.stringify(cd));
 cd = chotDong8({ hs: '40092190', productText: 'ống cao su có lắp phụ kiện cứng' });
 check('thiếu số liệu → THIEU_SO_LIEU + missingFacts duong_kinh', cd.ketQua === 'THIEU_SO_LIEU' && cd.missingFacts?.[0]?.fact === 'duong_kinh', JSON.stringify(cd.missingFacts));
-cd = chotDong8({ hs: '84811019', productText: 'van cổng điều khiển bằng tay bằng thép và đồng, đường kính trong 30 cm' });
-check('8481.10: thép + đồng 30 cm → 2 dòng cùng thoả → TRANH_CAP (không đoán)', cd.ketQua === 'TRANH_CAP' && (cd.dongThoa || []).length === 2, JSON.stringify(cd.dongThoa));
-cd = chotDong8({ hs: '84811019', productText: 'van giảm áp bằng đồng, đường kính trong 2 cm' });
-check('8481.10 + op LA: đồng 2cm → CHOT 84811021 (đúng luật, không cần AI chọn dòng)', cd.ketQua === 'CHOT' && cd.hs === '84811021', JSON.stringify([cd.ketQua, cd.hs]));
-cd = chotDong8({ hs: '84811019', productText: 'van giảm áp bằng plastic, đường kính trong 2 cm' });
-check('8481.10: plastic 2cm (nút .21 yêu cầu đồng) → CHOT 84811091', cd.ketQua === 'CHOT' && cd.hs === '84811091', JSON.stringify([cd.ketQua, cd.hs]));
+cd = chotDong8({ hs: '84811019', productText: 'van cổng điều khiển bằng tay, đường kính 30 cm' });
+check('8481.10: 30 cm → 2 dòng cùng thoả → TRANH_CAP (không đoán)', cd.ketQua === 'TRANH_CAP' && (cd.dongThoa || []).length === 2, JSON.stringify(cd.dongThoa));
+cd = chotDong8({ hs: '84811019', productText: 'van giảm áp kim loại, đường kính trong 2 cm' });
+check('8481.10 + op LA: kim loại 2cm → CHOT 84811021 (đúng luật, không cần AI chọn dòng)', cd.ketQua === 'CHOT' && cd.hs === '84811021', JSON.stringify([cd.ketQua, cd.hs]));
+cd = chotDong8({ hs: '84811019', productText: 'van giảm áp bằng plastic, đường kính 2 cm' });
+check('8481.10: plastic 2cm → TRANH_CAP .21/.91 (nhánh plastic cụ thể hơn — chuyên viên chốt)', cd.ketQua === 'TRANH_CAP' && (cd.dongThoa || []).includes('84811091'), JSON.stringify(cd.dongThoa));
 cd = chotDong8({ hs: '84051099', productText: 'máy phát acetylen' });
 check('phân nhóm chưa số hóa ranh giới → KHONG_THE_CHOT (điểm mù)', cd.checked === false || cd.ketQua === 'KHONG_THE_CHOT', JSON.stringify(cd.ketQua));
 
@@ -557,19 +557,19 @@ check('trangThaiDong8.veMoHinh: 73181510 chấm trọn nhãn "Đường kính ng
   const dtRedos = Date.now() - t0Redos;
   check('OZV-972 ReDoS: câu ~40.000 từ lặp chạy < 2 giây', dtRedos < 2000, `${dtRedos}ms`);
 
-  // ── OZV-1090: 900490 (CO_KHONG gỡ tiêu đề nhóm 90.04 đa vế), 961380 (giữ hỏi chatLieu), 160510, 841810, 848110 ──
-  cd = chotDong8({ hs: '900490', productText: 'Kính cận thị' });
-  check('OZV-1090 90049010: "Kính cận thị" (hieuChinhThiLuc CO) → CHOT 90049010',
-    cd.ketQua === 'CHOT' && cd.hs === '90049010', JSON.stringify([cd.ketQua, cd.hs]));
+  // ── OZV-1090: 900490 (CO_KHONG gỡ tiêu đề nhóm 90.04 đa vế), 961380 (giữ hỏi chatLieu), 160510, 84811022/84181091 ──
   cd = chotDong8({ hs: '900490', productText: 'Kính đeo, kính bảo hộ và các loại tương tự, kính thuốc, kính bảo vệ mắt hoặc loại khác. - Loại khác' });
-  check('OZV-1090 90049090 THIEU_DU_KIEN: tiêu đề nhóm 90.04 chứa "kính thuốc" → KHÔNG chốt nhầm 90049010',
-    cd.ketQua !== 'CHOT' && cd.ketQua !== 'LOAI_KHAC', JSON.stringify([cd.ketQua, cd.hs]));
+  check('OZV-1090 900490: "Kính cận thị" → CHOT 90049010; tiêu đề nhóm 90.04 chứa "kính thuốc" → KHÔNG chốt nhầm 90049010',
+    chotDong8({ hs: '900490', productText: 'Kính cận thị' }).hs === '90049010' && cd.ketQua !== 'CHOT' && cd.ketQua !== 'LOAI_KHAC', JSON.stringify([cd.ketQua, cd.hs]));
   cd = chotDong8({ hs: '961380', productText: 'Bật lửa châm thuốc lá' });
   check('OZV-1090 961380: chỉ ghi "Bật lửa châm thuốc lá" chưa khai chất liệu → THIEU_SO_LIEU (không chốt sai .30)',
     cd.ketQua === 'THIEU_SO_LIEU' && cd.hs !== '96138030', JSON.stringify([cd.ketQua, cd.hs]));
   cd = chotDong8({ hs: '160510', productText: 'Cua, ghẹ: Đóng bao bì kín khí để bán lẻ' });
   check('OZV-1090 16051014 THIEU_DU_KIEN: tiêu đề phân nhóm "Cua, ghẹ" → KHÔNG chốt nhầm 16051011',
     cd.ketQua !== 'CHOT' && cd.ketQua !== 'LOAI_KHAC', JSON.stringify([cd.ketQua, cd.hs]));
+  cd = chotDong8({ hs: '848110', productText: 'Van giảm áp: Bằng đồng hoặc hợp kim đồng: Có đường kính trong trên 2,5 cm — 2,6 cm' });
+  check('OZV-1090 84811022: ngưỡng một đầu "trên 2,5 cm" không bị giaTriCua đọc thành 2,5 → không chốt nhầm 84811021',
+    cd.hs !== '84811021' && giaTriCua('duong_kinh', 'Có đường kính trong trên 2,5 cm').length === 0, JSON.stringify([cd.ketQua, cd.hs]));
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);
