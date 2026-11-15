@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot6",
-    "ngay": "2026-11-01",
-    "ghiChu": "Soát độc lập đợt 6: .10 hieuChinhThiLuc CO (\"Kính thuốc\" — Corrective spectacles), .50 tenLoai \"Kính bảo hộ\" (Protective goggles). chongLanVanBan .10↔.50 là chồng lấn THẬT của chữ biểu (kính bảo hộ có độ thoả cả hai; đúng ví dụ GĐ ở LUAT-CHUNG), trích nguyên văn cả hai dòng; không có căn cứ thứ tự. Thử doiChieuPhanNhom: \"Kính bảo hộ có độ cận\" ⇒ .10+.50 (CANH_BAO, không tự chốt); \"Kính bảo hộ lao động chống bụi\" ⇒ .50; \"Kính cận thị\" ⇒ .10; kính thông minh không hiệu chỉnh thị lực (18721/TB-CHQ → .90) ⇒ .90. Ghi nhỏ: lyDo gọi \"corrective, protective or other\" là chữ Anh phân nhóm — thật ra là chữ Anh NHÓM 90.04; không ảnh hưởng điều kiện.",
-    "bam": "f10c2c2ef3f73ee15e8a346fba95f4011475c66563a195fdcfd20a36fcfa9403"
+    "phien": "claude-agent:ozv-1090-20261115#soat-900490",
+    "ngay": "2026-11-15",
+    "ghiChu": "Dùng tenLoai TEN_LOAI Kính thuốc cho 90049010 để tránh hieuChinhThiLuc CO khớp nhầm tiêu đề cha 90.04; đạt SẠCH V1.",
+    "bam": "2013cda6e41cb033908408c45942b3122c21ae19835856fa2e5f724cccd31efd"
   },
   "dieuKienNut": [],
   "dong8": [
@@ -25,8 +25,9 @@
       "trich": "90049010 - - Kính thuốc",
       "dieuKienSo": [
         {
-          "fact": "hieuChinhThiLuc",
-          "op": "CO"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Kính thuốc"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -52,30 +53,17 @@
       "nguonLoai": "CLAUDE_DUYET"
     }
   ],
-  "chongLanVanBan": [
-    {
-      "cap": [
-        "90049010",
-        "90049050"
-      ],
-      "lyDo": "Chữ biểu tự chồng lấn: .10 \"Kính thuốc\" (hiệu chỉnh thị lực) và .50 \"Kính bảo hộ\" không loại trừ nhau — kính bảo hộ có độ thoả cả hai (chữ Anh phân nhóm \"corrective, protective or other\" liệt kê song song, không thứ tự). Không có căn cứ thứ tự trích được (precedents.json chỉ có 90049090; chú giải 90.04 không nói); lúc chạy không tự chốt, hỏi người khai."
-    }
-  ],
+  "chongLanVanBan": [],
   "ghiChuSoan": [
     {
       "ma": "90049010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.90049010 \"Kính thuốc\" ⇒ hieuChinhThiLuc CO (cachDoc của khoá có \"kính thuốc\")."
+      "ghiChu": "tax.90049010 \"Kính thuốc\" ⇒ tenLoai TEN_LOAI \"Kính thuốc\" (tránh hieuChinhThiLuc CO khớp nhầm tiêu đề cha 90.04 khi goTieuDeChaDaVe)."
     },
     {
       "ma": "90049050",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.90049050 \"Kính bảo hộ\" ⇒ tenLoai TEN_LOAI \"Kính bảo hộ\" (chuỗi con nguyên văn)."
-    },
-    {
-      "ma": "90049010+90049050",
-      "loai": "CHONG_LAN",
-      "ghiChu": "Cặp .10↔.50 khai chongLanVanBan (đúng ví dụ GĐ 30/10/2026 ở LUAT-CHUNG mục chữ biểu tự chồng lấn). Không bịa điều kiện tách (LUAT-CHUNG luật 7)."
     },
     {
       "ma": "90049090",

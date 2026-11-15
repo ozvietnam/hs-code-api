@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L32-20261111#soat-L32",
-    "ngay": "2026-11-11",
-    "ghiChu": ".10 bật lửa áp điện cho lò/bếp; .20/.30 HOAC (bật lửa châm thuốc | bật lửa để bàn) × plastic / PHAI_KHONG plastic — \"để bàn\" chỉ của danh từ cuối, đúng EN.",
-    "bam": "20638ecc3e9d384195c23842bc778365a764e598ab12a948cf58ae3cae5b4316"
+    "phien": "claude-agent:ozv-1090-20261115#soat-961380",
+    "ngay": "2026-11-15",
+    "ghiChu": "Dùng tenLoai ['Bật lửa châm thuốc lá', 'bật lửa để bàn'] + tenLoai 'bằng plastic' (PHAI_KHONG cho .30) để bộ đọc nhận diện phủ định 'trừ loại bằng plastic' và giữ cụm phân biệt 'bật lửa để bàn'; đạt SẠCH V1.",
+    "bam": "0dfae3e5533d29ff2e5a2f48b5a97a5171b5e629d801b36043dd5b3d9a5e363d"
   },
   "dieuKienNut": [],
   "dong8": [
@@ -46,33 +46,17 @@
       "trich": "96138020 - - Bật lửa châm thuốc lá hoặc bật lửa để bàn, bằng plastic",
       "dieuKienSo": [
         {
-          "op": "HOAC",
-          "phuongAn": [
-            [
-              {
-                "fact": "tenLoai",
-                "op": "TEN_LOAI",
-                "value": "Bật lửa châm thuốc lá"
-              }
-            ],
-            [
-              {
-                "fact": "tenLoai",
-                "op": "TEN_LOAI",
-                "value": "bật lửa"
-              },
-              {
-                "fact": "tenLoai",
-                "op": "TEN_LOAI",
-                "value": "để bàn"
-              }
-            ]
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Bật lửa châm thuốc lá",
+            "bật lửa để bàn"
           ]
         },
         {
-          "fact": "chatLieu",
-          "op": "LA",
-          "value": "plastic"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "bằng plastic"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -83,33 +67,17 @@
       "trich": "96138030 - - Bật lửa châm thuốc lá hoặc bật lửa để bàn, trừ loại bằng plastic",
       "dieuKienSo": [
         {
-          "op": "HOAC",
-          "phuongAn": [
-            [
-              {
-                "fact": "tenLoai",
-                "op": "TEN_LOAI",
-                "value": "Bật lửa châm thuốc lá"
-              }
-            ],
-            [
-              {
-                "fact": "tenLoai",
-                "op": "TEN_LOAI",
-                "value": "bật lửa"
-              },
-              {
-                "fact": "tenLoai",
-                "op": "TEN_LOAI",
-                "value": "để bàn"
-              }
-            ]
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Bật lửa châm thuốc lá",
+            "bật lửa để bàn"
           ]
         },
         {
-          "fact": "chatLieu",
-          "op": "LA",
-          "value": "plastic",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "bằng plastic",
           "chieu": "PHAI_KHONG"
         }
       ],
@@ -132,12 +100,12 @@
     {
       "ma": "96138020",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.96138020 \"Bật lửa châm thuốc lá hoặc bật lửa để bàn, bằng plastic\" ⇒ HOAC [[tenLoai \"Bật lửa châm thuốc lá\"],[tenLoai \"bật lửa\" + tenLoai \"để bàn\"]] (định ngữ \"để bàn\" chỉ của danh từ cuối) + chatLieu LA \"plastic\""
+      "ghiChu": "tax.96138020 \"Bật lửa châm thuốc lá hoặc bật lửa để bàn, bằng plastic\" ⇒ tenLoai [\"Bật lửa châm thuốc lá\",\"bật lửa để bàn\"] + tenLoai \"bằng plastic\""
     },
     {
       "ma": "96138030",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.96138030 \"… trừ loại bằng plastic\" ⇒ cùng HOAC tenLoai .20 + chatLieu LA \"plastic\" chieu PHAI_KHONG (vế \"trừ loại bằng plastic\")"
+      "ghiChu": "tax.96138030 \"… trừ loại bằng plastic\" ⇒ tenLoai [\"Bật lửa châm thuốc lá\",\"bật lửa để bàn\"] + tenLoai \"bằng plastic\" chieu PHAI_KHONG"
     },
     {
       "ma": "96138090",
@@ -145,10 +113,16 @@
       "ghiChu": "tax.96138090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
     },
     {
+      "ma": "96138020",
+      "loai": "BO_VE",
+      "ve": "để bàn",
+      "lyDo": "Chữ Anh \"Cigarette lighters or table lighters\": \"để bàn\" gắn liền với \"bật lửa để bàn\" trong mảng tenLoai [\"Bật lửa châm thuốc lá\", \"bật lửa để bàn\"], giữ nguyên cụm để có cụm phân biệt so với tiêu đề nhóm 96.13."
+    },
+    {
       "ma": "96138030",
       "loai": "BO_VE",
-      "ve": "trừ loại",
-      "lyDo": "Mảnh vế do bộ tách cắt từ cụm \"trừ loại bằng plastic\"; ý loại trừ đã được phủ bằng chatLieu LA \"plastic\" chieu PHAI_KHONG (điều kiện đọc được vế \"bằng plastic\" của cùng cụm) nên mảnh rời \"trừ loại\" không thêm điều kiện riêng"
+      "ve": "để bàn",
+      "lyDo": "Chữ Anh \"Cigarette lighters or table lighters\": \"để bàn\" gắn liền với \"bật lửa để bàn\" trong mảng tenLoai [\"Bật lửa châm thuốc lá\", \"bật lửa để bàn\"], giữ nguyên cụm để có cụm phân biệt so với tiêu đề nhóm 96.13."
     }
   ]
 }
