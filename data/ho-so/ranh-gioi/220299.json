@@ -4,13 +4,19 @@
   "nhom": "2202",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-220299",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-02#soat-220299",
+    "ngay": "2026-11-15",
+    "ghiChu": "Đã đối chiếu chữ biểu thuế VI+EN và xử lý mục trả về.",
+    "bam": "60b88c1d595a19b95437fec1bd1354985ed1df1b4b9f8e4ff587acc7c2cd3d06"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -24,7 +30,7 @@
           "value": "Đồ uống chứa sữa tiệt trùng có hương liệu"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "22029920",
@@ -37,7 +43,7 @@
           "value": "Đồ uống sữa đậu nành"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "22029930",
@@ -50,7 +56,7 @@
           "value": "Đồ uống từ nước dừa"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "22029940",
@@ -66,7 +72,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "22029950",
@@ -76,10 +82,14 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Đồ uống không có ga khác dùng ngay được không cần pha loãng"
+          "value": "Đồ uống không có ga"
+        },
+        {
+          "fact": "dungNgayDuoc",
+          "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": true
     },
     {
@@ -87,7 +97,7 @@
       "nguon": "tax.22029990",
       "trich": "22029990 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -114,7 +124,7 @@
     {
       "ma": "22029950",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.22029950 \"Đồ uống không có ga khác dùng ngay được không cần pha loãng\" ⇒ có chữ \"khác\" nên là phần còn lại CÓ TÊN ⇒ phanConLai true (phủ định các dòng .10–.40); tenLoai nguyên văn cả tên (gồm \"không có ga\" và \"dùng ngay được không cần pha loãng\" — không có khoá có/không ga hay pha loãng trong tu-vung@2)."
+      "ghiChu": "tax.22029950 \"Đồ uống không có ga khác dùng ngay được không cần pha loãng\" ⇒ tenLoai \"Đồ uống không có ga\" (bỏ chữ \"khác\" của phần còn lại khỏi tenLoai) + dungNgayDuoc CO (\"dùng ngay được không cần pha loãng\") + phanConLai: true (phủ định các dòng .10–.40)."
     },
     {
       "ma": "22029990",

@@ -4,13 +4,19 @@
   "nhom": "3912",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-391220",
     "ngay": "2026-11-02"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-02#soat-391220",
+    "ngay": "2026-11-15",
+    "ghiChu": "Đã đối chiếu chữ biểu thuế VI+EN và xử lý mục trả về.",
+    "bam": "41d1a1ab2564ac532221cff12cff9b885ece8af0684c0013af55f5d04e496943"
+  },
   "dieuKienNut": [
     {
       "id": "3912201",
@@ -22,7 +28,7 @@
           "op": "KHONG"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -32,12 +38,12 @@
       "trich": "39122011 - - - Nitroxenlulo đã ngâm nước (SEN)",
       "dieuKienSo": [
         {
-          "fact": "congDung",
-          "op": "CONG_DUNG",
-          "value": "ngâm nước"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Nitroxenlulo đã ngâm nước"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39122012",
@@ -45,19 +51,19 @@
       "trich": "39122012 - - - Nitroxenlulo đã ngâm cồn",
       "dieuKienSo": [
         {
-          "fact": "congDung",
-          "op": "CONG_DUNG",
-          "value": "ngâm cồn"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Nitroxenlulo đã ngâm cồn"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39122019",
       "nguon": "tax.39122019",
       "trich": "39122019 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39122020",
@@ -69,7 +75,7 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -81,12 +87,12 @@
     {
       "ma": "39122011",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.39122011 \"Nitroxenlulo đã ngâm nước\" ⇒ congDung \"ngâm nước\""
+      "ghiChu": "tax.39122011 \"Nitroxenlulo đã ngâm nước (SEN)\" ⇒ tenLoai \"Nitroxenlulo đã ngâm nước\" (tên hàng kèm trạng thái làm ẩm trong tên; không ép vào congDung)"
     },
     {
       "ma": "39122012",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.39122012 \"Nitroxenlulo đã ngâm cồn\" ⇒ congDung \"ngâm cồn\""
+      "ghiChu": "tax.39122012 \"Nitroxenlulo đã ngâm cồn\" ⇒ tenLoai \"Nitroxenlulo đã ngâm cồn\" (tên hàng kèm trạng thái làm ẩm trong tên; không ép vào congDung)"
     },
     {
       "ma": "39122020",

@@ -255,11 +255,25 @@
     },
     {
       "hs": "90065911",
-      "dieuKien": "Có bộ ngắm qua thấu kính (kính phản chiếu đơn (SLR)) ",
+      "dieuKien": "có bộ ngắm qua thấu kính (phản chiếu đơn - SLR)",
       "loaiKhac": false,
       "nguon": "tax.90065911",
       "trich": "90065911 - - - - Có bộ ngắm qua thấu kính (kính phản chiếu đơn (SLR)) ",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "ngamQuaThauKinhSLR",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-02#soat-900659",
+          "ngay": "2026-11-15",
+          "bam": "e402d4ac6143256fdef5324a6c78718e3cbeb086bc42dd8ac8222d7549e06b44"
+        }
+      }
     },
     {
       "hs": "90065919",
@@ -283,11 +297,26 @@
     },
     {
       "hs": "90065921",
-      "dieuKien": "Máy vẽ ảnh laser",
+      "dieuKien": "tên loại hàng: Máy vẽ ảnh laser",
       "loaiKhac": false,
       "nguon": "tax.90065921",
       "trich": "90065921 - - - - Máy vẽ ảnh laser",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy vẽ ảnh laser"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-02#soat-900659",
+          "ngay": "2026-11-15",
+          "bam": "e402d4ac6143256fdef5324a6c78718e3cbeb086bc42dd8ac8222d7549e06b44"
+        }
+      }
     },
     {
       "hs": "90065929",
@@ -313,11 +342,11 @@
     },
     {
       "hs": "90065930",
-      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "dieuKien": "tên loại hàng: Máy vẽ ảnh laser hoặc máy tạo dựng ảnh với bộ xử lý ảnh mành",
       "loaiKhac": true,
       "nguon": "tax.90065930",
       "trich": "90065930 - - - Loại khác, máy vẽ ảnh laser hoặc máy tạo dựng ảnh với bộ xử lý ảnh mành",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phamViLoaiKhac": {
         "nguonLoai": "MAY_SUY",
         "cha": "900659",
@@ -331,6 +360,24 @@
         ],
         "toTienCoTen": "900659",
         "dinhNghiaDuoc": true
+      },
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Máy vẽ ảnh laser",
+            "máy tạo dựng ảnh với bộ xử lý ảnh mành"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-02#soat-900659",
+          "ngay": "2026-11-15",
+          "bam": "e402d4ac6143256fdef5324a6c78718e3cbeb086bc42dd8ac8222d7549e06b44"
+        }
       }
     },
     {
@@ -835,5 +882,53 @@
     "dat": 42,
     "loai": 0,
     "nguonBiCat": []
-  }
+  },
+  "dieuKienNut": [
+    {
+      "id": "9006591",
+      "nguon": "tieuDe.9006591",
+      "trich": "9006591 Sử dụng phim cuộn khổ rộng dưới 35 mm",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "phim cuộn khổ rộng dưới 35 mm"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-02#soat-900659",
+          "ngay": "2026-11-15",
+          "bam": "e402d4ac6143256fdef5324a6c78718e3cbeb086bc42dd8ac8222d7549e06b44"
+        }
+      }
+    },
+    {
+      "id": "9006592",
+      "nguon": "tieuDe.9006592",
+      "trich": "9006592 Loại khác, dùng để chuẩn bị khuôn in hoặc ống in",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "khuôn in",
+            "ống in"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-02#soat-900659",
+          "ngay": "2026-11-15",
+          "bam": "e402d4ac6143256fdef5324a6c78718e3cbeb086bc42dd8ac8222d7549e06b44"
+        }
+      },
+      "phanConLai": true
+    }
+  ]
 }

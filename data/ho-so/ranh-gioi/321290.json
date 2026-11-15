@@ -4,13 +4,19 @@
   "nhom": "3212",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-321290",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-02#soat-321290",
+    "ngay": "2026-11-15",
+    "ghiChu": "Đã đối chiếu chữ biểu thuế VI+EN và xử lý mục trả về.",
+    "bam": "303de5b525f3418938eab4d020f2898866a9252e9924d8bd1e2c2d579dd8d6e0"
+  },
   "dieuKienNut": [
     {
       "id": "321290",
@@ -47,7 +53,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "3212901",
@@ -71,7 +77,7 @@
           "value": "sản xuất sơn"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "3212902",
@@ -83,7 +89,7 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": false
     }
   ],
@@ -104,7 +110,7 @@
           "value": "nhôm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "32129013",
@@ -114,10 +120,10 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "chì trắng"
+          "value": "chì trắng phân tán trong dầu"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "32129014",
@@ -130,14 +136,14 @@
           "value": "sản xuất sơn cho da thuộc"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "32129019",
       "nguon": "tax.32129019",
       "trich": "32129019 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "32129021",
@@ -153,7 +159,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "32129022",
@@ -166,7 +172,7 @@
           "value": "Thuốc nhuộm khác"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": true
     },
     {
@@ -174,7 +180,7 @@
       "nguon": "tax.32129029",
       "trich": "32129029 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "chongLanVanBan": [
@@ -235,7 +241,7 @@
     {
       "ma": "32129013",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.32129013 \"Loại chì trắng phân tán trong dầu\" (EN \"White lead dispersed in oil\") ⇒ tenLoai TEN_LOAI \"chì trắng\": vế GIỚI HẠN \"chì trắng phân tán trong dầu\" được phủ bởi tên \"chì trắng\"; \"phân tán trong dầu\" là dạng của sản phẩm, chatLieu không có \"dầu\" (không mượn khoá gần nghĩa)."
+      "ghiChu": "tax.32129013 \"Loại chì trắng phân tán trong dầu\" (EN \"White lead dispersed in oil\") ⇒ tenLoai TEN_LOAI \"chì trắng phân tán trong dầu\" (giữ nguyên vế giới hạn \"phân tán trong dầu\" trong cụm tên để không suy rộng sang chì trắng phân tán trong dung môi hữu cơ khác)."
     },
     {
       "ma": "32129021",

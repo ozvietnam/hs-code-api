@@ -4,13 +4,19 @@
   "nhom": "4001",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1700#soan-400129",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-02#soat-400129",
+    "ngay": "2026-11-15",
+    "ghiChu": "Đã đối chiếu chữ biểu thuế VI+EN và xử lý mục trả về.",
+    "bam": "ec6712560df8cc017924e098707467f22b8257c9d6c40e9783aaeb3098aeb002"
+  },
   "dieuKienNut": [
     {
       "id": "400129~r6313",
@@ -23,7 +29,7 @@
           "value": "dạng nguyên sinh"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -43,7 +49,7 @@
           "value": "được làm khô bằng không khí"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "40012920",
@@ -56,7 +62,7 @@
           "value": "Crếp từ mủ cao su"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "40012930",
@@ -69,7 +75,7 @@
           "value": "Crếp làm đế giày"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "40012950",
@@ -79,10 +85,10 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Crếp loại khác"
+          "value": "Crếp"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": [
         "40012920",
         "40012930"
@@ -99,7 +105,7 @@
           "value": "Cao su chế biến cao cấp"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "40012970",
@@ -112,7 +118,7 @@
           "value": "Váng cao su"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "40012980",
@@ -122,15 +128,13 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Loại tận thu"
-        },
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "phần thừa lại trên chén"
+          "value": [
+            "Loại tận thu",
+            "phần thừa lại trên chén"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "40012994",
@@ -143,21 +147,21 @@
           "value": "Cao su tự nhiên đã khử protein"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "40012996",
       "nguon": "tax.40012996",
       "trich": "40012996 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "40012999",
       "nguon": "tax.40012999",
       "trich": "40012999 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -194,7 +198,7 @@
     {
       "ma": "40012980",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.40012980 \"Loại tận thu (trên cây, dưới đất hoặc loại đã xông khói) và phần thừa lại trên chén(SEN)\" (EN \"Scrap (tree, earth or smoked) and cup lump\") ⇒ tenLoai \"Loại tận thu\" + tenLoai \"phần thừa lại trên chén\" (hai hàng nối \"và\" theo chữ Anh \"Scrap … and cup lump\"). Ngoặc \"(trên cây, dưới đất hoặc loại đã xông khói)\" là chú thích (ngoặc) nên không thành điều kiện."
+      "ghiChu": "tax.40012980 \"Loại tận thu (trên cây, dưới đất hoặc loại đã xông khói) và phần thừa lại trên chén(SEN)\" (EN \"Scrap (tree, earth or smoked) and cup lump\") ⇒ tenLoai mảng [\"Loại tận thu\", \"phần thừa lại trên chén\"] (hai hàng thay thế nối bằng \"và\")."
     },
     {
       "ma": "400129~r6313",

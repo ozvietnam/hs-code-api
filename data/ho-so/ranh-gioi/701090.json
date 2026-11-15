@@ -4,13 +4,19 @@
   "nhom": "7010",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-701090",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-02#soat-701090",
+    "ngay": "2026-11-15",
+    "ghiChu": "Đã đối chiếu chữ biểu thuế VI+EN và xử lý mục trả về.",
+    "bam": "6ab2bcce6a79b14cd87e533d69cb940d659335425634f3b4de80c4c5b1e4a6ef"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -21,10 +27,13 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Bình lớn có vỏ bọc ngoài và bình thót cổ"
+          "value": [
+            "Bình lớn có vỏ bọc ngoài",
+            "bình thót cổ"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "70109040",
@@ -72,8 +81,8 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
-      "phanConLai": true
+      "nguonLoai": "CLAUDE_DUYET",
+      "phanConLai": false
     },
     {
       "hs": "70109091",
@@ -87,26 +96,26 @@
           "donVi": "lít"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "70109099",
       "nguon": "tax.70109099",
       "trich": "70109099 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "70109010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.70109010 \"Bình lớn có vỏ bọc ngoài và bình thót cổ\" — tên hàng trọn vẹn một khối (bình lớn có hai đặc điểm: vỏ bọc ngoài, thót cổ), không tách mảng vì \"và\" nối hai đặc điểm của cùng một hàng, không phải hai hàng thay thế"
+      "ghiChu": "tax.70109010 \"Bình lớn có vỏ bọc ngoài và bình thót cổ\" (EN \"Carboys and demijohns\") ⇒ tenLoai [\"Bình lớn có vỏ bọc ngoài\", \"bình thót cổ\"] (hai hàng thay thế: carboy = bình lớn có vỏ bọc ngoài; demijohn = bình thót cổ)"
     },
     {
       "ma": "70109040",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.70109040 chia \"…\" thành hai nhóm hàng nối \";\": (1) \"Chai, lọ và ống dạng phial\" để đựng thuốc kháng sinh/huyết thanh/chất tiêm truyền, (2) \"chai\" để đựng dung dịch tiêm, truyền tĩnh mạch ⇒ HOAC hai phương án; phanConLai: true (phần còn lại có tên so với anh em 70109010)"
+      "ghiChu": "tax.70109040 chia thành hai nhóm hàng nối \";\": (1) \"Chai, lọ và ống dạng phial\" để đựng thuốc kháng sinh/huyết thanh/chất tiêm truyền khác, (2) \"chai\" để đựng dung dịch tiêm, truyền tĩnh mạch ⇒ HOAC hai phương án; phanConLai: false (chữ \"khác\" thuộc \"các chất tiêm truyền khác\", dòng có tên riêng, không phải phần còn lại)"
     },
     {
       "ma": "70109091",
