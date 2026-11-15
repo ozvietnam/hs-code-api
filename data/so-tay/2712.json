@@ -6,7 +6,18 @@
     "trich": "Vazơlin nhờn khi sờ. Nó có màu trắng, hơi vàng hoặc nâu sẫm. … (B) Sáp paraffin, sáp dầu mỏ vi tinh thế, sáp mềm, ozokerite, sáp than non, sáp than bùn, các loại sáp khoáng khác và các sản phẩm tương tự thu được bằng quy trình tổng hợp hoặc quy trình khác có hoặc chưa nhuộm màu.",
     "nguonLoai": "NGUOI_DUYET"
   },
-  "dieuKienVao": [],
+  "dieuKienVao": [
+    {
+      "fact": "diem_dong_dac_khong_thap_hon",
+      "op": ">=",
+      "value": 30,
+      "donVi": "°C",
+      "ngoaiTru": [],
+      "nguon": "nhom2712.nhom",
+      "trich": "Để được xếp vào nhóm này, Vazơlin (Petroleum jelly) phải có điểm đông đặc, được xác định theo phương pháp nhiệt kế quay (phương pháp ISO 2207 tương đương với phương pháp ASTM D 938) không thấp hơn 30°C",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
   "loaiTru": [
     {
       "dieuKien": "vaselin đóng gói bán lẻ dùng để chăm sóc da",
@@ -121,23 +132,9 @@
   "dong8": [
     {
       "hs": "27121000",
-      "dieuKien": "Vazơlin (petroleum jelly): điểm đông đặc không thấp hơn 30°C",
-      "tieuChi": {
-        "fact": "diem_dong_dac_khong_thap_hon",
-        "op": ">=",
-        "value": 30,
-        "donVi": "°C"
-      },
-      "dieuKienSo": [
-        {
-          "fact": "diem_dong_dac_khong_thap_hon",
-          "op": ">=",
-          "value": 30,
-          "donVi": "°C"
-        }
-      ],
-      "nguon": "nhom2712.nhom",
-      "trich": "Để được xếp vào nhóm này, Vazơlin (Petroleum jelly) phải có điểm đông đặc, được xác định theo phương pháp nhiệt kế quay (phương pháp ISO 2207 tương đương với phương pháp ASTM D 938) không thấp hơn 30°C",
+      "dieuKien": "Vazơlin (petroleum jelly)",
+      "nguon": "tax.27121000",
+      "trich": "27121000 - Vazơlin (petroleum jelly)",
       "nguonLoai": "AI_DA_KIEM",
       "loaiKhac": false
     },
