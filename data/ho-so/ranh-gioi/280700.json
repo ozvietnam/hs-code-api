@@ -4,13 +4,18 @@
   "nhom": "2807",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-280700",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:duyet-L3-20261115#soat-L3",
+    "ngay": "2026-11-15",
+    "bam": "9375de7e1ab36d576977629c3f7129e22e28aa0d2ebd0e0c307eee4c09706b02"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -19,34 +24,32 @@
       "trich": "28070010 - Axit sulphuric chứa H2SO4 trên 80% tính theo trọng lượng",
       "dieuKienSo": [
         {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Axit sulphuric"
+        },
+        {
           "fact": "hamLuongH2SO4",
           "op": ">",
           "value": 80,
           "donVi": "%"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "28070090",
       "nguon": "tax.28070090",
       "trich": "28070090 - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "28070010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.28070010: \"Axit sulphuric chứa H2SO4 trên 80% tính theo trọng lượng\" ⇒ hamLuongH2SO4 > 80 % (khoá lô 20 thay cho THIEU_KHOA)"
-    }
-  ],
-  "traVe": [
-    {
-      "phien": "claude-agent:duyet-L8-20261111#soat-L8",
-      "ngay": "2026-11-11",
-      "lyDo": "(A) 280700.json:28070010 SUY RỘNG: chữ biểu 'Axit sulphuric chứa H2SO4 trên 80% tính theo trọng lượng' / EN 'Sulphuric acid containing by weight more than 80% of H2SO4' — điều kiện chỉ còn hamLuongH2SO4 > 80, bỏ danh từ đầu 'Axit sulphuric' (DAU). Nhóm 2807 gồm HAI hàng 'Axit sulphuric; oleum': oleum (khai theo % H2SO4 tương đương, thường > 100%) thoả > 80 và bị kéo vào .10 thay vì .90. Sửa: thêm tenLoai 'Axit sulphuric' cùng điều kiện hàm lượng."
+      "ghiChu": "tax.28070010: \"Axit sulphuric chứa H2SO4 trên 80% tính theo trọng lượng\" ⇒ tenLoai 'Axit sulphuric' + hamLuongH2SO4 > 80 % (tránh kéo oleum vào .10)."
     }
   ]
 }
