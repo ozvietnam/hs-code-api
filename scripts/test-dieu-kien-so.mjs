@@ -292,6 +292,8 @@ const ST8544 = {
   check('10c 84439920: boMenhDeKeCa bỏ ngoặc (ví dụ, ...) và coDieuKienPhanBietCungDong nhận CO → chốt 84439920', kq8443.ketQua === 'CHOT' && kq8443.hs === '84439920', j(kq8443));
   const kq9613 = chotDong8({ hs: '961380', productText: 'Bật lửa khác: Bật lửa châm thuốc lá hoặc bật lửa để bàn, trừ loại bằng plastic' });
   check('10d 96138030: phủ định chất liệu "trừ loại bằng plastic" → chốt 96138030', kq9613.ketQua === 'CHOT' && kq9613.hs === '96138030', j(kq9613));
+  const kq8547 = chotDong8({ hs: '854790', productText: 'Ống dẫn dây điện bằng nhựa PVC hoàn toàn' });
+  check('10e 85479010: không tách vế cha khi dòng 8 số có ", làm bằng..." để giữ BO_VE vật liệu → không chốt sai 85479010', kq8547.hs !== '85479010', j(kq8547));
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);
