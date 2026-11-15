@@ -1,6 +1,6 @@
 # Thiết kế Một trang (v2) — Kho đáp án khép vòng ("Cuốn sổ thứ tư", G5 · OZV-760)
 
-- **Ngày:** 14/11/2026 (bản v2 — đã sửa đủ 6 điểm từ báo cáo soát độc lập `/paperclip/du-lieu/nghien-cuu/OZV-760-soat-doc-lap-thiet-ke.md`)
+- **Ngày:** 15/11/2026 (bản v2.1 — đã sửa đủ 6 điểm soát lần 1 + cập nhật nguồn nạp ngược `oz_gateway.phan_loai_cong_viec` theo kết luận soát lần 2 của QT)
 - **Người viết:** GĐ `hs-code-api` · **Thẻ:** [OZV-760](/OZV/issues/OZV-760) (con của [OZV-754](/OZV/issues/OZV-754))
 - **Đã đối chiếu mã trên `main`:** `lib/classify-cache.js`, `db/migrations/0002_classify_cache.sql`, `api/classify.js`, `lib/b1b-web.js`, `lib/ho-so/api.js`, `api/feedback.js`, `lib/feedback-store.js`, `lib/embed-pool.js`, `scripts/build-hs-aliases.mjs`, `lib/subheading-check.js`, `lib/so-tay-gates.js`, `lib/kiem-truoc-chot.js`, `data/attributes.json`.
 
@@ -22,7 +22,7 @@
   - **20% → 33%** lượt trùng tên/hãng/model nhưng khác hoặc thiếu `thongSo`: **Chỉ dùng lại DỮ KIỆN đã tra** (`khoa_du_kien` — không tra web `B1b` lại, nhưng bắt buộc chạy động cơ để chốt mã theo đúng `thongSo` mới).
 - **Hai số đo thực tế khác từ truy vấn 511 lượt của QT:**
   1. Món bị hỏi lặp nhiều nhất: **20 lần / 7 ngày** (tiếp theo: `16, 16, 8, 8, 7, 7, 6`); có **111 món** bị hỏi từ 2 lần trở lên.
-  2. `503/511` lượt có trạng thái `XONG`, nhưng **0 lượt có trường mã HS trong `ket_qua`** của bảng `phan_loai_cong_viec` (khoá chính `ma_luot`, cột `dau_vao` dùng khoá `tenHang, thongSo, congDung, chatLieu, thuongHieu, xuatXu`) ⇒ không thể nạp ngược từ `phan_loai_cong_viec`. Nguồn nạp ngược khả thi duy nhất hiện có là bảng `classify_cache` trong DB `hs_code_api` (đang lưu `phan_hoi` JSONB đầy đủ).
+  2. **Nguồn nạp ngược thực tế (QT đo 15/11 trên `.120`):** Bảng `hs_code_api.classify_cache` chỉ có **48 dòng** (quá nhỏ); bảng `oz_gateway.luot_goi` (37.669 dòng) chỉ là sổ đo lượt/điểm/chi phí, không có cột `dau_vao` và `ket_qua`; còn bảng **`oz_gateway.phan_loai_cong_viec`** có **1.159 dòng** (01/11 → 14/11; **636 dòng** trong 7 ngày) có cả `dau_vao` và `ket_qua`, trong đó **797 dòng có chuỗi 8 chữ số trong `ket_qua`** (173 dòng có khoá dạng `ma…`). Nguồn nạp ngược duy nhất có ý nghĩa là `oz_gateway.phan_loai_cong_viec` (`classify_cache` 48 dòng chỉ là nguồn phụ). **Quy tắc bắt buộc trước khi viết PR 2:** đo bóc thử trong 797 dòng đó ra được bao nhiêu cặp `(dấu nhận dạng → mã 8 số)` đủ tin để ghi vào kho ở trạng thái `MAY_TRA` (`CHO_CHAM`); **nếu dưới ~300 cặp thì bỏ hẳn việc nạp ngược**, để kho tự ghi từ lúc bật `shadow`.
 - **Câu lệnh SQL chuẩn để đo lại trên `oz_gateway` (dùng đúng khoá chính `ma_luot` và khoá JSON thật):**
 ```sql
 WITH raw AS (
@@ -103,7 +103,7 @@ Bảng `kho_dap_an` đặt trong Postgres kín `hs_code_api` (luật migration: 
 ### 4.3. Đường duyệt lên `DUYET` & Cổng máy kiểm bắt buộc
 - **Hai nguồn lên `DUYET`:**
   1. **Từ luồng duyệt sẵn có của `lib/feedback-store.js` (`reviewFeedback` / `bulkApproveByPattern`):** Khi bản ghi feedback được chuyển sang `status = 'approved'`, hệ thống ánh xạ trường (`input.nameVi || productName → tenHang`, `input.titleZh → nameZh`, `input.specsZh → specs`, `input.facts → facts`), lọc qua `locRiengTuKhoDapAn()`, kiểm qua **Cổng máy** dưới đây rồi ghi lên `DUYET`.
-  2. **Từ lô chấm định kỳ (`scripts/cham-kho-dap-an.mjs`) + নমুনা kiểm bằng người 5%/tuần:** Chạy ngoài đường khách cho các bản `CHO_CHAM`, các dòng nạp ngược từ bảng `classify_cache` hiện có, và bản `NHAP` có `so_lan_gap >= 2`. Mô hình mạnh hơn (Opus / Gemini Pro) chấm độc lập; vì `so_lan_gap >= 2` không đồng nghĩa với đúng và mô hình chấm có thể cùng họ với mô hình phân loại, mỗi tuần xuất ngẫu nhiên **5% bản `DUYET` do máy chấm** để người kiểm chéo.
+  2. **Từ lô chấm định kỳ (`scripts/cham-kho-dap-an.mjs`) + mẫu kiểm bằng người 5%/tuần:** Chạy ngoài đường khách cho các bản `CHO_CHAM`, các dòng nạp ngược từ bảng `oz_gateway.phan_loai_cong_viec` (khi bước đo bóc thử 797 dòng có chuỗi 8 chữ số đạt ≥ 300 cặp hợp lệ ở trạng thái `MAY_TRA`/`CHO_CHAM`; dưới ~300 cặp thì bỏ nạp ngược; `classify_cache` 48 dòng chỉ là nguồn phụ), và bản `NHAP` có `so_lan_gap >= 2`. Mô hình mạnh hơn (Opus / Gemini Pro) chấm độc lập; vì `so_lan_gap >= 2` không đồng nghĩa với đúng và mô hình chấm có thể cùng họ với mô hình phân loại, mỗi tuần xuất ngẫu nhiên **5% bản `DUYET` do máy chấm** để người kiểm chéo.
 - **Cổng máy kiểm bắt buộc trước khi bất kỳ bản ghi nào lên `DUYET`:**
   1. `ma_hs` (8 số) tồn tại trong `data/tax.json`.
   2. Chạy `chotDong8` (`lib/so-tay-gates.js`) + `kiemTruocChot` (`lib/kiem-truoc-chot.js`) + `checkPolarity` & `checkSubheading` (`lib/subheading-check.js`) = **0 lỗi chặn, 0 cờ `loaiKhacSai`**.
@@ -155,9 +155,9 @@ Bảng `kho_dap_an` đặt trong Postgres kín `hs_code_api` (luật migration: 
 3. **PR 1c — Nối luồng duyệt `lib/feedback-store.js` (`ADR-034`) vào `kho_dap_an`:**
    - *Tệp:* `lib/feedback-store.js`, `api/feedback.js`, `scripts/test-feedback-kho-dap-an.mjs`.
    - *An toàn:* Cờ riêng `HS_FEEDBACK_KHO_DAP_AN=off|on` (mặc định `off`), đi qua `locRiengTuKhoDapAn()`.
-4. **PR 2 — Công cụ chấm lô (`scripts/cham-kho-dap-an.mjs`) + Nạp ngược từ `classify_cache` + Nhánh `HS_KHO_DAP_AN=on` (chỉ trả bản `DUYET`):**
+4. **PR 2 — Đo bóc thử `oz_gateway.phan_loai_cong_viec` (797 dòng) + Công cụ chấm lô (`scripts/cham-kho-dap-an.mjs`) + Nhánh `HS_KHO_DAP_AN=on` (chỉ trả bản `DUYET`):**
    - *Tệp:* `scripts/cham-kho-dap-an.mjs`, `lib/kho-dap-an.js`, `scripts/test-cham-kho-dap-an.mjs`.
-   - *An toàn:* Chạy lô chấm ngoài đường khách + kiểm 100% cổng máy (`chotDong8`, `kiemTruocChot`, `checkPolarity`, `checkSubheading`) + xuất `data/so-thieu-luat.jsonl`. Chỉ mở `HS_KHO_DAP_AN=on` sau khi có ≥ 50 bản `DUYET` và kiểm mẫu 5% bằng người đạt 100%.
+   - *Thứ tự & điều kiện bắt buộc:* Chỉ mở PR 2 sau khi đã có số đo từ PR 1a (`shadow`). Trước khi viết bộ nạp ngược, đo xem trong 797 dòng có chuỗi 8 chữ số của `oz_gateway.phan_loai_cong_viec` bóc ra được bao nhiêu cặp `(dấu nhận dạng → mã)` đủ tin để ghi ở trạng thái `MAY_TRA` (`CHO_CHAM`): **nếu dưới ~300 cặp thì BỎ nạp ngược** (kho tự ghi từ lúc bật `shadow`; `classify_cache` 48 dòng chỉ là nguồn phụ). Chạy lô chấm ngoài đường khách + kiểm 100% cổng máy (`chotDong8`, `kiemTruocChot`, `checkPolarity`, `checkSubheading`) + xuất `data/so-thieu-luat.jsonl`. Chỉ mở `HS_KHO_DAP_AN=on` sau khi có ≥ 50 bản `DUYET` và kiểm mẫu 5% bằng người đạt 100%.
 5. **PR 3 — Khớp gần nghĩa K3 (`vec_e5` + mô hình quyết định G3 `OZV-758`):**
    - *Tệp:* `lib/kho-dap-an.js`, `scripts/test-kho-dap-an-k3.mjs`.
    - *An toàn:* Cờ riêng `HS_KHO_DAP_AN_K3=off|shadow|on` (mặc định `off`), trần cứng 300 ms, chỉ bật sau khi `test-kho-dap-an-k3.mjs` đạt `0%` ghép nhầm dòng 8 số anh em.
