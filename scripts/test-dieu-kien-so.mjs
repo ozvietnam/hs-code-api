@@ -281,5 +281,20 @@ const ST8544 = {
   check('9d 1000 có trong "1.000 kg"; 2.5 có trong "2,50 mm"; 2.5 không có trong "2,501"', f(1000, 'trên 1.000 kg') && f(2.5, '2,50 mm') && !f(2.5, '2,501'));
 }
 
+// 10. OZV-1076: boMenhDeKeCa (ngoặc ví dụ), boVeRiengCuaDong, coDieuKienPhanBietCungDong
+{
+  const { chotDong8 } = require('../lib/so-tay-gates.js');
+  const kq2001 = chotDong8({ hs: '200190', productText: 'Loại khác: Hành tây' });
+  check('10a 20019010: boVeRiengCuaDong tách vế liệt kê ở nhóm 4 số → chốt 20019010', kq2001.ketQua === 'CHOT' && kq2001.hs === '20019010', j(kq2001));
+  const kq8460 = chotDong8({ hs: '846090', productText: 'Loại khác: Hoạt động bằng điện' });
+  check('10b 84609010: coDieuKienPhanBietCungDong nhận vế tất định TRONG không trùng anh em → chốt 84609010', kq8460.ketQua === 'CHOT' && kq8460.hs === '84609010', j(kq8460));
+  const kq8443 = chotDong8({ hs: '844399', productText: 'Bộ phận và phụ kiện - Loại khác: Hộp mực in đã có mực in' });
+  check('10c 84439920: boMenhDeKeCa bỏ ngoặc (ví dụ, ...) và coDieuKienPhanBietCungDong nhận CO → chốt 84439920', kq8443.ketQua === 'CHOT' && kq8443.hs === '84439920', j(kq8443));
+  const kq9613 = chotDong8({ hs: '961380', productText: 'Bật lửa khác: Bật lửa châm thuốc lá hoặc bật lửa để bàn, trừ loại bằng plastic' });
+  check('10d 96138030: phủ định chất liệu "trừ loại bằng plastic" → chốt 96138030', kq9613.ketQua === 'CHOT' && kq9613.hs === '96138030', j(kq9613));
+  const kq8547 = chotDong8({ hs: '854790', productText: 'Ống dẫn dây điện bằng nhựa PVC hoàn toàn' });
+  check('10e 85479010: không tách vế cha khi dòng 8 số có ", làm bằng..." để giữ BO_VE vật liệu → không chốt sai 85479010', kq8547.hs !== '85479010', j(kq8547));
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);

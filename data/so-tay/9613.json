@@ -220,72 +220,104 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:ozv-1090-20261115#soat-961380",
-          "ngay": "2026-11-15",
-          "bam": "0dfae3e5533d29ff2e5a2f48b5a97a5171b5e629d801b36043dd5b3d9a5e363d"
+          "phien": "claude-agent:duyet-L32-20261111#soat-L32",
+          "ngay": "2026-11-11",
+          "bam": "20638ecc3e9d384195c23842bc778365a764e598ab12a948cf58ae3cae5b4316"
         }
       }
     },
     {
       "hs": "96138020",
-      "dieuKien": "tên loại hàng: Bật lửa châm thuốc lá hoặc bật lửa để bàn; tên loại hàng: bằng plastic",
+      "dieuKien": "(tên loại hàng: Bật lửa châm thuốc lá) hoặc (tên loại hàng: bật lửa và tên loại hàng: để bàn); chất liệu (theo vị trí): plastic",
       "loaiKhac": false,
       "nguon": "tax.96138020",
       "trich": "96138020 - - Bật lửa châm thuốc lá hoặc bật lửa để bàn, bằng plastic",
       "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "Bật lửa châm thuốc lá",
-            "bật lửa để bàn"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Bật lửa châm thuốc lá"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "bật lửa"
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "để bàn"
+              }
+            ]
           ]
         },
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "bằng plastic"
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "plastic"
         }
       ],
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:ozv-1090-20261115#soat-961380",
-          "ngay": "2026-11-15",
-          "bam": "0dfae3e5533d29ff2e5a2f48b5a97a5171b5e629d801b36043dd5b3d9a5e363d"
+          "phien": "claude-agent:duyet-L32-20261111#soat-L32",
+          "ngay": "2026-11-11",
+          "bam": "20638ecc3e9d384195c23842bc778365a764e598ab12a948cf58ae3cae5b4316"
         }
       }
     },
     {
       "hs": "96138030",
-      "dieuKien": "tên loại hàng: Bật lửa châm thuốc lá hoặc bật lửa để bàn; không tên loại hàng: bằng plastic",
+      "dieuKien": "(tên loại hàng: Bật lửa châm thuốc lá) hoặc (tên loại hàng: bật lửa và tên loại hàng: để bàn); không chất liệu (theo vị trí): plastic",
       "loaiKhac": false,
       "nguon": "tax.96138030",
       "trich": "96138030 - - Bật lửa châm thuốc lá hoặc bật lửa để bàn, trừ loại bằng plastic",
       "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "Bật lửa châm thuốc lá",
-            "bật lửa để bàn"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Bật lửa châm thuốc lá"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "bật lửa"
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "để bàn"
+              }
+            ]
           ]
         },
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "bằng plastic",
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "plastic",
           "chieu": "PHAI_KHONG"
         }
       ],
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:ozv-1090-20261115#soat-961380",
-          "ngay": "2026-11-15",
-          "bam": "0dfae3e5533d29ff2e5a2f48b5a97a5171b5e629d801b36043dd5b3d9a5e363d"
+          "phien": "claude-agent:duyet-L32-20261111#soat-L32",
+          "ngay": "2026-11-11",
+          "bam": "20638ecc3e9d384195c23842bc778365a764e598ab12a948cf58ae3cae5b4316"
         }
       }
     },
