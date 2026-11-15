@@ -12,9 +12,9 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-soat:OZV-9849#soat-1",
+    "phien": "claude-agent:tho-hs-02:20261114T2046#soat-984934",
     "ngay": "2026-11-14",
-    "bam": "47162cc309e2da434aa935f8e0ddf9bc5890070d5ff2c597a1af3031eb5495ea"
+    "bam": "2f1c37e024c227ec0a40d93cfa76537152838d249acbfc09fca8d328c7eb4c22"
   },
   "dieuKienNut": [
     {
@@ -1072,13 +1072,20 @@
     },
     {
       "hs": "98493482",
-      "nguon": "tax.98493482",
-      "trich": "98493482 - - - - Dùng cho xe thuộc nhóm 87.02 hoặc 87.04",
+      "nguon": "tuongUng.98493482",
+      "trich": "Dùng cho xe thuộc nhóm 87.02 hoặc 87.04 — mã hàng tương ứng: 8708.70.96",
       "dieuKienSo": [
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": "xe thuộc nhóm 87.02 hoặc 87.04"
+        },
+        {
+          "fact": "maHsTuongUng",
+          "op": "CONG_DUNG",
+          "value": [
+            "8708.70.96"
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -1238,6 +1245,11 @@
       "ghiChu": "OZV-655: cùng chữ/cạnh Dây đai an toàn — giữ tất định bằng maHsTuongUng 8708.29.20 (không để laBoPhan CO + dungCho 'dây đai' cướp ca tên dòng .12 khi chữ tổ tiên có 'Bộ phận…')."
     },
     {
+      "ma": "98493482",
+      "loai": "QUYET_DINH",
+      "ghiChu": "OZV-1030: lá chỉ dungCho 'xe 87.02 hoặc 87.04' trùng nhánh thân xe (.22–.24) — siết bằng maHsTuongUng 8708.70.96 (Cụm bánh xe) để hết chotSai 98493424 → 98493482."
+    },
+    {
       "ma": "98493483",
       "loai": "QUYET_DINH",
       "ghiChu": "OZV-655: lá chỉ dungCho 'xe 87.03' trùng nhiều nhánh (hộp số/cầu/bánh) — siết bằng maHsTuongUng 8708.70.97 (Cụm bánh xe) để hết chotSai .44/.51/.54/.58 → .83."
@@ -1253,6 +1265,11 @@
       "phien": "claude-agent:tho-hs-03:ozv-655-20261114#tra-ve-984934",
       "ngay": "2026-11-14",
       "lyDo": "OZV-655: cổng --kiem xanh nhưng áp runtime (loadRanhGioiDuyet) làm chotSai 0→13 / chotLoaiKhacSai 0→1 trên nhóm 9849 — trả về để siết điều kiện anh em trước khi duyệt lại"
+    },
+    {
+      "phien": "claude-agent:tho-hs-02:20261114T2045#soat-984934",
+      "ngay": "2026-11-14",
+      "lyDo": "OZV-1030: siết maHsTuongUng 8708.70.96 cho 98493482"
     }
   ]
 }
