@@ -127,34 +127,8 @@
    "nguonLoai": "AI_DA_KIEM",
    "loaiKhac": false
   },
-  {
-   "hs": "15109010",
-   "dieuKien": "Dầu thô",
-   "tieuChi": {
-    "fact": "la_dau_tho",
-    "op": "=",
-    "value": true,
-    "donVi": null
-   },
-   "nguon": "tax.15109010",
-   "trich": "15109010 - - Dầu thô",
-   "nguonLoai": "AI_DA_KIEM",
-   "loaiKhac": false
-  },
-  {
-   "hs": "15109020",
-   "dieuKien": "Các phần phân đoạn của dầu chưa tinh chế",
-   "tieuChi": {
-    "fact": "la_cac_phan_phan_doan_cua_dau_chua_tinh_che",
-    "op": "=",
-    "value": true,
-    "donVi": null
-   },
-   "nguon": "tax.15109020",
-   "trich": "15109020 - - Các phần phân đoạn của dầu chưa tinh chế",
-   "nguonLoai": "AI_DA_KIEM",
-   "loaiKhac": false
-  },
+  {"hs":"15109010","dieuKien":"tên loại hàng: Dầu thô","nguon":"tax.15109010","trich":"15109010 - - Dầu thô","nguonLoai":"CLAUDE_DUYET","loaiKhac":false,"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Dầu thô"}],"ranhGioi":{"phienBan":"ranh-gioi@1","duyet":{"phien":"claude-agent:tho-hs-01-20261115#soat-151090","ngay":"2026-11-15","bam":"5e53f5188c87abc2514a78e376ee2a3fef3df9deeca2254656f5e4b3dcc01666"}},"tieuChi":{"fact":"la_dau_tho","op":"=","value":true,"donVi":null}},
+  {"hs":"15109020","dieuKien":"tên loại hàng: Các phần phân đoạn; mức độ tinh chế của dầu và chất béo: dầu thô / dạng thô / chưa tinh chế","nguon":"tax.15109020","trich":"15109020 - - Các phần phân đoạn của dầu chưa tinh chế","nguonLoai":"CLAUDE_DUYET","loaiKhac":false,"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Các phần phân đoạn"},{"fact":"mucDoTinhCheDau","op":"TRONG","value":["DANG_THO"]}],"ranhGioi":{"phienBan":"ranh-gioi@1","duyet":{"phien":"claude-agent:tho-hs-01-20261115#soat-151090","ngay":"2026-11-15","bam":"5e53f5188c87abc2514a78e376ee2a3fef3df9deeca2254656f5e4b3dcc01666"}},"tieuChi":{"fact":"la_cac_phan_phan_doan_cua_dau_chua_tinh_che","op":"=","value":true,"donVi":null}},
   {
    "hs": "15109090",
    "dieuKien": "Loại khác: Vegetable oils; oils and their fractions n.e.c. in heading 1510",
