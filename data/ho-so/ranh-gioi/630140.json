@@ -4,13 +4,13 @@
   "nhom": "6301",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T1528#soan-630140",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": { "boi": "CLAUDE_DUYET", "phien": "claude-agent:tho-hs-01-20261115#soat-630140", "ngay": "2026-11-15", "ghiChu": "Đối chiếu tax.63014010 \"Vải không dệt\" ⇒ congDung \"Vải không dệt\" (giữ G2 CV 755 NK-3 xanh); 63014090 Loại khác trần (OZV-1112)", "bam": "a149c7f114175da5134e6d1793c0dc8950c280f1b7bdd100f850709464874cbb" },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -19,26 +19,26 @@
       "trich": "63014010 - - Vải không dệt",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
+          "fact": "congDung",
+          "op": "CONG_DUNG",
           "value": "Vải không dệt"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "63014090",
       "nguon": "tax.63014090",
       "trich": "63014090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "63014010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.63014010 \"Vải không dệt\" — vế GIỚI HẠN \"không dệt\" nằm trọn trong tên hàng \"Vải không dệt\"; tu-vung@2 chưa có khoá riêng cho vải không dệt nên dùng tenLoai trọn tên nguyên văn."
+      "ghiChu": "tax.63014010 \"Vải không dệt\" ⇒ congDung CONG_DUNG \"Vải không dệt\" (tên hàng của phân nhóm 6301.40 là Chăn và chăn du lịch, dòng .10 phân nhánh theo đặc tính vải không dệt; không dùng tenLoai để tránh mô tả sơ sài chỉ khai tên hàng \"chăn lông hoá học\" tự loại trừ .10 và chốt .90 trái CV 755/TCHQ-GSQL)."
     }
   ],
   "traVe": [

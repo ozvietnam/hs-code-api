@@ -41,11 +41,31 @@
  "dong8": [
   {
    "hs": "05080020",
-   "dieuKien": "Mai, vỏ động vật thân mềm, động vật giáp xác hoặc động vật da gai",
+   "dieuKien": "tên loại hàng: Mai hoặc vỏ; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): động vật thân mềm hoặc động vật giáp xác hoặc động vật da gai",
    "nguon": "tax.05080020",
    "trich": "05080020 - Mai, vỏ động vật thân mềm, động vật giáp xác hoặc động vật da gai",
-   "nguonLoai": "AI_DA_KIEM",
-   "loaiKhac": false
+   "nguonLoai": "CLAUDE_DUYET",
+   "loaiKhac": false,
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": [
+      "Mai",
+      "vỏ"
+     ]
+    },
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": [
+      "động vật thân mềm",
+      "động vật giáp xác",
+      "động vật da gai"
+     ]
+    }
+   ],
+   "ranhGioi": { "phienBan": "ranh-gioi@1", "duyet": { "phien": "claude-agent:tho-hs-01-20261115#soat-050800", "ngay": "2026-11-15", "bam": "21bb74e174022a3063a7fd965d5fdd74bdf8585e35ea3ec251c6ca86a5cfb31f" } }
   },
   {
    "hs": "05080090",

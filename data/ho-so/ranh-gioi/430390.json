@@ -4,13 +4,13 @@
   "nhom": "4303",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-430390",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": { "boi": "CLAUDE_DUYET", "phien": "claude-agent:tho-hs-01-20261115#soat-430390", "ngay": "2026-11-15", "ghiChu": "Đối chiếu tax.43039020 \"Sản phẩm dùng cho mục đích công nghiệp\" ⇒ phamViSuDung CONG_NGHIEP; 43039090 Loại khác trần (OZV-1112)", "bam": "f4aa33d377cf9075baaae98423bfe443ba4de6ee1e67517cfb38405772ed2b0f" },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -19,11 +19,6 @@
       "trich": "43039020 - - Sản phẩm dùng cho mục đích công nghiệp",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Sản phẩm"
-        },
-        {
           "fact": "phamViSuDung",
           "op": "TRONG",
           "value": [
@@ -31,21 +26,21 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "43039090",
       "nguon": "tax.43039090",
       "trich": "43039090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "43039020",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.43039020 'Sản phẩm dùng cho mục đích công nghiệp' ⇒ tenLoai 'Sản phẩm', phamViSuDung 'CONG_NGHIEP'"
+      "ghiChu": "tax.43039020 \"Sản phẩm dùng cho mục đích công nghiệp\" ⇒ phamViSuDung TRONG [CONG_NGHIEP] (bỏ danh từ chung \"Sản phẩm\" để không làm hẹp tên hàng riêng)."
     }
   ],
   "traVe": [
