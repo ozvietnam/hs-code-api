@@ -12,10 +12,9 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:tho-hs-01-20261115#soat-ozv-1141",
+    "phien": "claude-agent:tho-hs-01-20261115#soat-ozv-1141-v2",
     "ngay": "2026-11-15",
-    "ghiChu": "Đã đối chiếu chữ biểu thuế VI+EN 620190 và xử lý mục trả về (6201902 Từ ramie dùng tenLoai ramie không suy rộng sang vải lanh) — duyệt áp sổ tay 6201 (OZV-1141)",
-    "bam": "2c41ee19ba0316b6f630877119c5ddd0be5bf45ae3afd9bb6bb3d86cb23d9f95"
+    "bam": "e5fcc48df2061c7e56552aedda7d4172e61ba833cde4e05fdb64b60cd51fb999"
   },
   "dieuKienNut": [
     {
@@ -24,9 +23,11 @@
       "trich": "6201901 Từ tơ tằm",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "tơ tằm"
+          "fact": "loaiSoiDet",
+          "op": "TRONG",
+          "value": [
+            "TO_TAM"
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -37,9 +38,11 @@
       "trich": "6201902 Từ ramie",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "ramie"
+          "fact": "loaiSoiDet",
+          "op": "TRONG",
+          "value": [
+            "SOI_THUC_VAT_KHAC"
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -126,24 +129,44 @@
   ],
   "ghiChuSoan": [
     {
-      "ma": "6201901",
+      "ma": "62019019",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.6201901 \"Từ tơ tằm\" ⇒ tenLoai TEN_LOAI \"tơ tằm\" (cùng trục tenLoai với 6201902 \"Từ ramie\" do loaiSoiDet chưa có giá trị riêng cho ramie)"
+      "ghiChu": "62019019 là dòng \"Loại khác\" trần (loaiKhac=true, khongCanDieuKien=true) ⇒ không đưa vào spec (máy tự phủ định anh em 62019011)."
     },
     {
-      "ma": "6201902",
+      "ma": "62019029",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.6201902 \"Từ ramie\" ⇒ tenLoai TEN_LOAI \"ramie\" (xử lý mục trả về: không dùng SOI_THUC_VAT_KHAC để tránh suy rộng sang vải lanh/gai dầu thuộc 62019090)"
+      "ghiChu": "62019029 là dòng \"Loại khác\" trần (loaiKhac=true, khongCanDieuKien=true) ⇒ không đưa vào spec (máy tự phủ định anh em 62019021)."
+    },
+    {
+      "ma": "62019090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "62019090 là dòng \"Loại khác\" trần (loaiKhac=true, khongCanDieuKien=true) ⇒ không đưa vào spec (máy tự phủ định hai tiêu đề 6201901 và 6201902)."
     },
     {
       "ma": "62019011",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.62019011: chữ biểu nêu danh sách 14 kiểu áo khoác/áo choàng ⇒ tenLoai TEN_LOAI mảng 14 tên nguyên văn; trích lược bằng \"…\" <= 300 ký tự"
+      "ghiChu": "tax.62019011: chữ biểu nêu danh sách tên các kiểu áo khoác/áo choàng ⇒ khoá tenLoai (TEN_LOAI) với mảng 14 tên nguyên văn (nhiều phần tử = \"hoặc\"). Vế \"bằng vải gabardines\", \"có mũ trùm đầu\", \"có đệm\" là bộ phận của chính tên loại nên không tách thành điều kiện riêng. Trích lược bằng \"…\" giữa \"áo khoác bằng vải gabardines\" và \"áo khoác ghi lê có đệm\" (bỏ mỗi liên từ \"và\"); hai đoạn đều nguyên văn và đúng thứ tự nguồn."
     },
     {
       "ma": "62019021",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.62019021: chữ biểu Y HỆT 62019011 (cùng danh sách 14 kiểu áo) ⇒ dùng cùng khoá tenLoai TEN_LOAI và cùng mảng 14 tên nguyên văn"
+      "ghiChu": "tax.62019021: chữ biểu Y HỆT 62019011 (cùng danh sách 14 kiểu áo) ⇒ dùng CÙNG khoá tenLoai (TEN_LOAI) và cùng mảng giá trị. Ranh giới giữa hai dòng nằm ở vật liệu của tầng tiêu đề (6201901 tơ tằm / 6201902 ramie) nên không tách thêm điều kiện ở dòng 8 số."
+    },
+    {
+      "ma": "6201901",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.6201901: \"Từ tơ tằm\" ⇒ khoá loaiSoiDet (LIET_KE) giá trị TO_TAM. Vật liệu nằm ở tầng tiêu đề nên không chép vào dòng 8 số."
+    },
+    {
+      "ma": "6201902",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.6201902: \"Từ ramie\" ⇒ khoá vật liệu dệt loaiSoiDet (LIET_KE) giá trị SOI_THUC_VAT_KHAC — CÙNG khoá với 6201901 (anh em chia theo vật liệu), không dùng tenLoai để khỏi đụng tenLoai danh sách kiểu áo ở dòng 8 số (GĐ soát PR #1351). GIỚI HẠN ĐÃ BIẾT (mục trả về L18): tu-vung@2 chưa có giá trị riêng cho ramie nên SOI_THUC_VAT_KHAC phủ cả lanh/gai dầu — áo khoác vải lanh có thể rơi vào 6201902x thay vì 62019090 (MFN cùng 20%). Đề xuất khoá: thêm giá trị RAMIE vào loaiSoiDet (cần thẻ riêng sửa từ vựng có soát độc lập), rồi siết lại 6201902 và 62029020. Cùng cách ghi với 620290 đã DUYET (OZV-1121)."
+    },
+    {
+      "ma": "620190",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Điều kiện vật liệu \"Từ các vật liệu dệt khác\" nằm ở CHÍNH phân nhóm 620190 (chung cho mọi dòng 8 số) ⇒ không thuộc ranh giới 6→8, không khai trong spec này. tangKhongMa rỗng, phân nhóm không có tầng không mã."
     }
   ],
   "traVe": [

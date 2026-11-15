@@ -80,32 +80,48 @@
   "dong8": [
     {
       "hs": "70171010",
-      "dieuKien": "tên loại hàng: Ống thạch anh dùng trong lò phản ứng hoặc vòng kẹp; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): được thiết kế để chèn vào lò luyện khuếch tán và lò ôxi hóa để sản xuất tấm bán dẫn mỏng",
+      "dieuKien": "(tên loại hàng: Ống thạch anh dùng trong lò phản ứng và dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): được thiết kế để chèn vào lò luyện khuếch tán và lò ôxi hóa để sản xuất tấm bán dẫn mỏng) hoặc (tên loại hàng: vòng kẹp và dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): được thiết kế để chèn vào lò luyện khuếch tán và lò ôxi hóa để sản xuất tấm bán dẫn mỏng)",
       "nguon": "tax.70171010",
       "trich": "70171010 - - Ống thạch anh dùng trong lò phản ứng và vòng kẹp được thiết kế để chèn vào lò luyện khuếch tán và lò ôxi hóa để sản xuất tấm bán dẫn mỏng",
       "nguonLoai": "CLAUDE_DUYET",
       "loaiKhac": false,
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "Ống thạch anh dùng trong lò phản ứng",
-            "vòng kẹp"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Ống thạch anh dùng trong lò phản ứng"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "được thiết kế để chèn vào lò luyện khuếch tán và lò ôxi hóa để sản xuất tấm bán dẫn mỏng"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "vòng kẹp"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "được thiết kế để chèn vào lò luyện khuếch tán và lò ôxi hóa để sản xuất tấm bán dẫn mỏng"
+              }
+            ]
           ]
-        },
-        {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": "được thiết kế để chèn vào lò luyện khuếch tán và lò ôxi hóa để sản xuất tấm bán dẫn mỏng"
         }
       ],
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:tho-hs-01-20261115#soat-ozv-1141",
+          "phien": "claude-agent:tho-hs-01-20261115#soat-ozv-1141-v2",
           "ngay": "2026-11-15",
-          "bam": "194550e8627c240402c7e04c9e6e8ce339cad12db95757c3d1a203abe67e8ad1"
+          "bam": "efb4333964b92c7754876614c60e182dcd7023fdb78b708eda1dd048afcac285"
         }
       }
     },

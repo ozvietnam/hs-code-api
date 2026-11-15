@@ -12,10 +12,9 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:tho-hs-01-20261115#soat-ozv-1141",
+    "phien": "claude-agent:tho-hs-01-20261115#soat-ozv-1141-v2",
     "ngay": "2026-11-15",
-    "ghiChu": "Đã đối chiếu chữ biểu thuế VI+EN và xử lý mục trả về (OZV-1141)",
-    "bam": "194550e8627c240402c7e04c9e6e8ce339cad12db95757c3d1a203abe67e8ad1"
+    "bam": "efb4333964b92c7754876614c60e182dcd7023fdb78b708eda1dd048afcac285"
   },
   "dieuKienNut": [],
   "dong8": [
@@ -25,17 +24,33 @@
       "trich": "70171010 - - Ống thạch anh dùng trong lò phản ứng và vòng kẹp được thiết kế để chèn vào lò luyện khuếch tán và lò ôxi hóa để sản xuất tấm bán dẫn mỏng",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "Ống thạch anh dùng trong lò phản ứng",
-            "vòng kẹp"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Ống thạch anh dùng trong lò phản ứng"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "được thiết kế để chèn vào lò luyện khuếch tán và lò ôxi hóa để sản xuất tấm bán dẫn mỏng"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "vòng kẹp"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "được thiết kế để chèn vào lò luyện khuếch tán và lò ôxi hóa để sản xuất tấm bán dẫn mỏng"
+              }
+            ]
           ]
-        },
-        {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": "được thiết kế để chèn vào lò luyện khuếch tán và lò ôxi hóa để sản xuất tấm bán dẫn mỏng"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -52,7 +67,7 @@
     {
       "ma": "70171010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.70171010 (EN \"Quartz reactor tubes and holders designed for insertion into diffusion and oxidation furnaces for production of semiconductor wafers\") ⇒ tenLoai [\"Ống thạch anh dùng trong lò phản ứng\", \"vòng kẹp\"] VÀ dungCho \"được thiết kế để chèn vào lò luyện khuếch tán và lò ôxi hóa để sản xuất tấm bán dẫn mỏng\" (định ngữ chung gắn cho cả hai loại hàng)."
+      "ghiChu": "tax.70171010 (EN \"Quartz reactor tubes and holders designed for insertion into diffusion and oxidation furnaces for production of semiconductor wafers\") gồm hai hàng ⇒ HOAC hai phương án riêng: [tenLoai \"Ống thạch anh dùng trong lò phản ứng\" + dungCho] HOẶC [tenLoai \"vòng kẹp\" + dungCho]. Vế \"được thiết kế để chèn vào lò luyện khuếch tán và lò ôxi hóa để sản xuất tấm bán dẫn mỏng\" là định ngữ CHUNG của cả \"tubes\" và \"holders\" (theo bản EN) nên lặp nguyên văn trong cả hai phương án — ống thạch anh lò phản ứng KHÔNG dùng cho lò khuếch tán/ôxi hoá sản xuất tấm bán dẫn thuộc 70171090 (xử lý mục trả về L20)."
     },
     {
       "ma": "70171090",
@@ -65,6 +80,11 @@
       "phien": "claude-agent:duyet-L20-20261111#soat-L20",
       "ngay": "2026-11-11",
       "lyDo": "(A) 701710.json:70171010 SUY RỘNG: EN \"Quartz reactor tubes and holders designed for insertion into diffusion and oxidation furnaces for production of semiconductor wafers\" — vế \"designed for insertion … semiconductor wafers\" là định ngữ CHUNG của cả \"tubes\" và \"holders\"; HOAC hiện tại gắn vế đó chỉ cho \"vòng kẹp\", còn \"Ống thạch anh\" chỉ cần \"dùng trong lò phản ứng\" ⇒ mọi ống thạch anh lò phản ứng (vd lò phản ứng hoá chất phòng thí nghiệm) lấn từ .90 sang .10. Đúng: tenLoai [\"Ống thạch anh dùng trong lò phản ứng\",\"vòng kẹp\"] VÀ dungCho \"chèn vào lò luyện khuếch tán và lò ôxi hóa để sản xuất tấm bán dẫn mỏng\". (Máy tách sai: GIOI_HAN \"dùng trong lò phản ứng và vòng kẹp\" cắt danh từ \"vòng kẹp\" vào vế.) MFN .10/.90 cùng 0 %."
+    },
+    {
+      "phien": "tho-hs-01#soat-ozv-1141-v2",
+      "ngay": "2026-11-15",
+      "lyDo": "GĐ soát PR #1351: 70171010 phải giữ HOAC hai phương án (ống thạch anh / vòng kẹp); sửa lại HOAC, mỗi phương án kèm định ngữ chung dungCho theo bản EN"
     }
   ]
 }
