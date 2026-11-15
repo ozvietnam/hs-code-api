@@ -10,7 +10,13 @@
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-811269",
     "ngay": "2026-11-05"
   },
-  "duyet": {"boi":"CLAUDE_DUYET","phien":"claude-agent:tho-hs-01-20261115#soat-811269","ngay":"2026-11-15","ghiChu":"Đối chiếu chữ biểu thuế 811269 (81126910 cadimi chưa gia công và bột; 81126990 loại khác) khớp dieuKienSo và câu hỏi phân nhánh — duyệt áp sổ tay 8112 (OZV-1113)","bam":"01031abdf4f27e780a19f5d394e35262bde3c0f1d706f8fb4eb9fb508afbe216"},
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-01-20261115#soat-ozv-1141",
+    "ngay": "2026-11-15",
+    "ghiChu": "Đã đối chiếu chữ biểu thuế VI+EN và xử lý mục trả về (OZV-1141)",
+    "bam": "5cdc087a57fc4c4703c9105483e99b8e748dda8df419e8e2fa276d7281023e09"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -19,11 +25,21 @@
       "trich": "81126910 - - - Chưa gia công; bột",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "Chưa gia công",
-            "bột"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "daGiaCong",
+                "op": "KHONG"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "bột"
+              }
+            ]
           ]
         }
       ],
@@ -41,7 +57,7 @@
     {
       "ma": "81126910",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.81126910 \"Chưa gia công; bột\" ⇒ tenLoai mảng Chưa gia công, bột"
+      "ghiChu": "tax.81126910 \"Chưa gia công; bột\" (EN \"Unwrought; powders\") ⇒ HOAC hai phương án: [daGiaCong KHONG] (chưa gia công) hoặc [tenLoai \"bột\"]."
     }
   ],
   "traVe": [
