@@ -556,6 +556,20 @@ check('trangThaiDong8.veMoHinh: 73181510 chấm trọn nhãn "Đường kính ng
   DK.danhGiaTuChu({ fact: 'doXop', op: '>', value: 12 }, `${'độ xốp hơn '.repeat(40000)}12 cm3 (min-1. cm-2)`, '48132022');
   const dtRedos = Date.now() - t0Redos;
   check('OZV-972 ReDoS: câu ~40.000 từ lặp chạy < 2 giây', dtRedos < 2000, `${dtRedos}ms`);
+
+  // ── OZV-1090: 900490 (CO_KHONG gỡ tiêu đề nhóm 90.04 đa vế), 961380 (giữ hỏi chatLieu), 160510, 84811022/84181091 ──
+  cd = chotDong8({ hs: '900490', productText: 'Kính đeo, kính bảo hộ và các loại tương tự, kính thuốc, kính bảo vệ mắt hoặc loại khác. - Loại khác' });
+  check('OZV-1090 900490: "Kính cận thị" → CHOT 90049010; tiêu đề nhóm 90.04 chứa "kính thuốc" → KHÔNG chốt nhầm 90049010',
+    chotDong8({ hs: '900490', productText: 'Kính cận thị' }).hs === '90049010' && cd.ketQua !== 'CHOT' && cd.ketQua !== 'LOAI_KHAC', JSON.stringify([cd.ketQua, cd.hs]));
+  cd = chotDong8({ hs: '961380', productText: 'Bật lửa châm thuốc lá' });
+  check('OZV-1090 961380: chỉ ghi "Bật lửa châm thuốc lá" chưa khai chất liệu → THIEU_SO_LIEU (không chốt sai .30)',
+    cd.ketQua === 'THIEU_SO_LIEU' && cd.hs !== '96138030', JSON.stringify([cd.ketQua, cd.hs]));
+  cd = chotDong8({ hs: '160510', productText: 'Cua, ghẹ: Đóng bao bì kín khí để bán lẻ' });
+  check('OZV-1090 16051014 THIEU_DU_KIEN: tiêu đề phân nhóm "Cua, ghẹ" → KHÔNG chốt nhầm 16051011',
+    cd.ketQua !== 'CHOT' && cd.ketQua !== 'LOAI_KHAC', JSON.stringify([cd.ketQua, cd.hs]));
+  cd = chotDong8({ hs: '848110', productText: 'Van giảm áp: Bằng đồng hoặc hợp kim đồng: Có đường kính trong trên 2,5 cm — 2,6 cm' });
+  check('OZV-1090 84811022: ngưỡng một đầu "trên 2,5 cm" không bị giaTriCua đọc thành 2,5 → không chốt nhầm 84811021',
+    cd.hs !== '84811021' && giaTriCua('duong_kinh', 'Có đường kính trong trên 2,5 cm').length === 0, JSON.stringify([cd.ketQua, cd.hs]));
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);
