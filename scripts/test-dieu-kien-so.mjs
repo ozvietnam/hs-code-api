@@ -281,5 +281,21 @@ const ST8544 = {
   check('9d 1000 có trong "1.000 kg"; 2.5 có trong "2,50 mm"; 2.5 không có trong "2,501"', f(1000, 'trên 1.000 kg') && f(2.5, '2,50 mm') && !f(2.5, '2,501'));
 }
 
+// 10. OZV-1074: boMenhDeKeCa ("ví dụ…" trong ngoặc) + boVeRiengCuaDong (dòng 8 số có ,/; và tách vế "hoặc"/"và")
+{
+  check('10a boMenhDeKeCa gỡ "(ví dụ, … kể cả …)" có ngoặc con: 34059010 "nhớt bôi trơn" có cụm phân biệt',
+    DK.coCumPhanBiet('nhớt bôi trơn', '34059010') === true);
+  check('10b boVeRiengCuaDong cho dòng 8 số có dấu phẩy/chấm phẩy: 09109910 "Húng tây", 73071910 "Phụ kiện đường ống dạng chuông"',
+    DK.coCumPhanBiet('Húng tây', '09109910') === true && DK.coCumPhanBiet('Phụ kiện đường ống dạng chuông', '73071910') === true);
+  check('10c boVeRiengCuaDong tách vế "hoặc"/"và": 11062020 "Từ cọ sago", 96161010 "Bình xịt nước hoa", 88052910 "Thiết bị huấn luyện bay mặt đất"',
+    DK.coCumPhanBiet('Từ cọ sago', '11062020') === true
+    && DK.coCumPhanBiet('Bình xịt nước hoa', '96161010') === true
+    && DK.coCumPhanBiet('Thiết bị huấn luyện bay mặt đất', '88052910') === true);
+  check('10d boVeRiengCuaDong + tuChaCua không nạp lại từ vay mượn đã gỡ khỏi tenVi: 15030010 "Stearin mỡ lợn", 68029110 "marble", 48089020 "làm chun"',
+    DK.coCumPhanBiet('Stearin mỡ lợn', '15030010') === true
+    && DK.coCumPhanBiet('marble', '68029110') === true
+    && DK.coCumPhanBiet('làm chun', '48089020') === true);
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
