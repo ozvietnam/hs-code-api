@@ -113,6 +113,37 @@ chayGia = async () => KQ_BT;
 const rD = await goi({ tenHang: 'van xả máy giặt' });
 check('D6 không có env ⇒ lượt thường vẫn 200 (trần mặc định không phải 0)', rD._s === 200 && rD._j?.trangThai === undefined, String(rD._s));
 
+// ═════════ H. OZV-1260 — env KHÔNG được đẩy trần vượt trần cứng (Cloudflare ~100 s) ═════════
+// Thực địa 16/11: prod treo 0-byte >95 s, không thấy 503 QUA_GIO. Giả thuyết (1): Coolify
+// `HS_CLASSIFY_TRAN_MS` đặt quá cao (vd 300000) ⇒ cửa không cắt trước khi client/CF bỏ cuộc.
+// Luật: env chỉ được HẠ trần (canary/local), không được NÂNG trên TRAN_MS_TOI_DA (85 s).
+{
+  const toiDaGoc = handler._tranMsToiDa();
+  check('H0 trần cứng mặc định = 85000 (ngắn hơn Cloudflare ~100 s)', toiDaGoc === 85000, String(toiDaGoc));
+
+  process.env.HS_CLASSIFY_TRAN_MS = '300000';
+  check('H1 env 300000 ⇒ kẹp đúng trần cứng 85000', handler._tranMs() === 85000, String(handler._tranMs()));
+
+  process.env.HS_CLASSIFY_TRAN_MS = '30000';
+  check('H2 env 30000 ⇒ vẫn 30000 (được hạ để canary)', handler._tranMs() === 30000, String(handler._tranMs()));
+
+  // Đo hành vi cửa: giả lập trần cứng 100 ms, env cố đẩy 5000 ms — lượt treo 800 ms phải QUA_GIO theo 100 ms.
+  handler._setTranMsToiDa(100);
+  process.env.HS_CLASSIFY_TRAN_MS = '5000';
+  check('H3 sau khi kẹp: tranMs() = 100 (env 5000 thua trần cứng test)', handler._tranMs() === 100, String(handler._tranMs()));
+  let huyH = null;
+  chayGia = () => new Promise((r) => { huyH = setTimeout(() => r(KQ_BT), 800); if (huyH.unref) huyH.unref(); });
+  const tH = Date.now();
+  const rH = await goi({ tenHang: 'bo loc khi ar2000' });
+  const msH = Date.now() - tH;
+  clearTimeout(huyH);
+  check('H4 env cao + trần cứng thấp ⇒ 503 QUA_GIO (không treo tới 5 s)', rH._s === 503 && rH._j?.trangThai === 'QUA_GIO', JSON.stringify({ s: rH._s, t: rH._j?.trangThai, msH }));
+  check('H5 tranMs trong thân = trần cứng đã kẹp (100), không phải 5000', rH._j?.tranMs === 100, JSON.stringify({ tranMs: rH._j?.tranMs }));
+  check('H6 trả SỚM hơn nhiều so với env 5000 ms', msH < 500, `${msH} ms`);
+  handler._setTranMsToiDa(toiDaGoc);
+  delete process.env.HS_CLASSIFY_TRAN_MS;
+}
+
 // ═════════ E. Event loop BỊ CHẶN ĐỒNG BỘ vắt qua trần ═════════
 // GIỚI HẠN ĐÃ BIẾT, ghi thành test để đừng ai hiểu nhầm cửa này là "cắt thật" (OZV-756):
 // việc đồng bộ của chính tiến trình thì KHÔNG cắt được — lượt vẫn trả muộn đúng bằng lúc CPU nhả
