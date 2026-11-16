@@ -2896,6 +2896,82 @@
    "gir": "GIR 1",
    "basis": "RULE_TABLE",
    "sourceVi": "Biểu thuế VN: 8481.20 van dùng cho truyền động oleohydraulic/pneumatic; 8421.39 máy/thiết bị lọc khí khác (84213920 = Máy lọc không khí / Air purifiers; 84213930/90 = loại khác). Series Airtac/Zonye AR=regulator, AF=filter, AFR/FR=filter+regulator trên mạch khí nén — đo A2/khách 16/11 câu «bộ lọc khí zonye ar2000 -02» API thô từng dừng 6 số / lệch sang 84213920."
+  },
+  {
+   "id": "giac-hut-chan-khong-vacuum-pad",
+   "titleVi": "Giác/núm hút chân không (vacuum pad / suction cup)",
+   "terms": [
+    "giác hút chân không",
+    "giắc hút chân không",
+    "giác hút",
+    "giắc hút",
+    "núm hút chân không",
+    "núm hút",
+    "vacuum pad",
+    "vacuum pads",
+    "suction cup",
+    "suction cups",
+    "smc zp",
+    "zp-905",
+    "zp2-",
+    "zp3-",
+    "zpb"
+   ],
+   "excludeIfAny": [
+    "cánh gạt",
+    "cánh than",
+    "carbon vane",
+    "máy bơm",
+    "bơm chân không",
+    "vacuum pump",
+    "máy hút chân không",
+    "máy đóng gói",
+    "van hút",
+    "bộ giác hút"
+   ],
+   "excludeReasonVi": "Cánh gạt/bơm/máy đóng gói/van hút là máy hoặc bộ phận máy nén·bơm (84.14/84.22/84.81) — khác miếng giác/núm cao su·nhựa dùng kẹp hút linh kiện.",
+   "candidates": [
+    {
+     "hs": "40169999",
+     "whenVi": "Giác/núm hút bằng cao su lưu hóa (không xốp), series SMC ZP/ZP2/ZP3 hoặc tương đương — vật phẩm cao su khác 4016.99.99",
+     "confidence": "high"
+    },
+    {
+     "hs": "40169959",
+     "whenVi": "Cùng loại giác/núm cao su lưu hóa không xốp khi khai theo nhánh 4016.99.59 (tiền lệ Oz PCB/máy công nghiệp)",
+     "confidence": "medium"
+    },
+    {
+     "hs": "39269099",
+     "whenVi": "Giác/núm hút chất liệu nhựa/plastic (không phải cao su) — sản phẩm nhựa khác 3926.90.99",
+     "confidence": "medium"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "841490",
+     "whyVi": "8414.90 là bộ phận bơm không khí/bơm chân không/máy nén — giác hút SMC ZP là miếng đệm hút linh kiện, không phải cánh/rotor/vỏ bơm; đo A2/khách 16/11 API thô lệch 84149041/84149029."
+    },
+    {
+     "prefix": "841410",
+     "whyVi": "8414.10 là bơm chân không nguyên chiếc — khác giác/núm hút thay thế."
+    },
+    {
+     "prefix": "8414",
+     "whyVi": "Nhóm 84.14 gồm bơm/máy nén/quạt và bộ phận — không nhận miếng giác cao su·nhựa dùng kẹp hút."
+    },
+    {
+     "prefix": "8422",
+     "whyVi": "8422 là máy đóng gói (kể cả máy hút chân không đóng túi) — khác giác hút rời."
+    }
+   ],
+   "askVi": [
+    "Giác/núm hút bằng cao su lưu hóa, nhựa, hay thân kim loại/nhôm?",
+    "Là miếng giác/núm thay thế để kẹp hút linh kiện — không phải bơm chân không hay cánh gạt bơm?"
+   ],
+   "gir": "GIR 1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Kho tờ khai Oz (oz-gold): SMC ZP/ZP2/ZP3 «giác/giắc/núm hút chân không» đa số khai 4016.99.99 hoặc 4016.99.59 (cao su lưu hóa), bản nhựa → 3926.90.99. Chú giải nhóm 40.16: vật phẩm cao su lưu hóa khác; 84.14 là bơm/máy nén và bộ phận — không phủ miếng giác hút. Đo A2/khách 16/11 câu «giác hút chân không smc zp-905-08eu» API thô NEEDS_EXPERT + top 841490*."
   }
  ],
  "updatedAt": "2026-11-16"

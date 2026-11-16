@@ -101,6 +101,10 @@ console.log('\n== Câu hỏi thật của khách phải ra đúng mã (kho Oz kh
     // OZV-1256 — A2/khách: «bộ lọc khí zonye ar2000 -02» lệch máy lọc phòng 84213920
     ['bộ lọc khí zonye ar2000 -02', ['84812090', '84213990', '84812011', '84213930']],
     ['bộ lọc khí nén af2000', ['84213990', '84213930', '84812090']],
+    // OZV-1261 — A2/khách: «giác hút chân không smc zp-905…» lệch phụ tùng máy nén 841490*
+    ['giác hút chân không smc zp-905-08eu', ['40169999', '40169959', '39269099']],
+    ['núm hút chân không cao su silicone', ['40169999', '40169959']],
+    ['vacuum pad smc zp2', ['40169999', '40169959', '39269099']],
   ];
   for (const [q, want] of cases) {
     const top2 = searchCandidates(q, { topCandidates: 2 }).map((c) => c.hsCode);
@@ -145,6 +149,10 @@ console.log('\n== Mã bẫy phải bị loại HẲN, không phải tụt hạng
   const ar2000 = searchCandidates('bộ lọc khí zonye ar2000 -02', { topCandidates: 50 });
   check('AR2000 khí nén không lẫn máy lọc phòng 84213920', ar2000.every((c) => c.hsCode !== '84213920'));
   check('AR2000 khí nén không lẫn lọc khí thải động cơ 842132', ar2000.every((c) => !c.hsCode.startsWith('842132')));
+
+  const pad = searchCandidates('giác hút chân không smc zp-905-08eu', { topCandidates: 50 });
+  check('giác hút SMC không lẫn phụ tùng bơm/máy nén 841490', pad.every((c) => !c.hsCode.startsWith('841490')));
+  check('giác hút SMC không lẫn bơm chân không 841410', pad.every((c) => c.hsCode !== '84141000'));
 }
 
 console.log('\n== Từ điển không được lan sang câu không liên quan ==');
@@ -179,6 +187,20 @@ console.log('\n== Từ điển không được lan sang câu không liên quan =
   // Có từ ngữ cảnh thì mới tính.
   const grade = lookupTradeTerms('thép tấm 2311');
   check('"thép tấm 2311" thì tính mác thép', grade.matches.some((m) => m.entryId === 'thep-lam-khuon'));
+
+  // OZV-1261 — phụ tùng bơm chân không thật không được kích hoạt mục giác hút
+  const vane = lookupTradeTerms('cánh gạt cacbon máy bơm hút chân không BECKER');
+  check('cánh gạt bơm chân không không kích hoạt mục giác hút',
+    !(vane.matches || []).some((m) => m.entryId === 'giac-hut-chan-khong-vacuum-pad'));
+  const vaneSearch = searchCandidates('cánh gạt cacbon máy bơm hút chân không BECKER', { topCandidates: 5 });
+  check('cánh gạt bơm chân không vẫn ra 841490*', vaneSearch.some((c) => c.hsCode.startsWith('841490')));
+
+  const padHit = lookupTradeTerms('giác hút chân không smc zp-905-08eu');
+  check('câu giác hút SMC khớp mục từ điển',
+    (padHit.matches || []).some((m) => m.entryId === 'giac-hut-chan-khong-vacuum-pad'));
+  check('mục giác hút loại prefix 841490',
+    ((padHit.matches || []).find((m) => m.entryId === 'giac-hut-chan-khong-vacuum-pad')?.avoid || [])
+      .some((a) => String(a.prefix || '').startsWith('841490')));
 }
 
 console.log('\n== Mục chưa chắc thì phải nói chưa chắc ==');
