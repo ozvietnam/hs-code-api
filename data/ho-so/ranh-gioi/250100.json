@@ -12,9 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude:tho-hs-01:20261114#soat-250100",
-    "ngay": "2026-11-14",
-    "bam": "55a8ebe1f865747fb9bc63033836e15e89cd27b69e13fc4d76701b98ea945b4c"
+    "phien": "cursor:tho-hs-03:20261116#soat-250100",
+    "ngay": "2026-11-16",
+    "ghiChu": "25010010 bỏ daBoSungIot khỏi dieuKienSo — tenLoai đủ cho DONG_CO_TEN; iốt gắn định nghĩa tên QCVN.",
+    "bam": "5d3fb2217c1514bad36c1dcfd3f254f127bdf14b0b16d8bf6012932d5af6d091"
   },
   "dieuKienNut": [],
   "dong8": [
@@ -27,10 +28,6 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Muối thực phẩm"
-        },
-        {
-          "fact": "daBoSungIot",
-          "op": "CO"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -131,7 +128,7 @@
     {
       "ma": "25010010",
       "loai": "QUYET_DINH",
-      "ghiChu": "vb.tt08-2021-bnnptnt.d1: QCVN 01-193:2021 mục I.3.2 định nghĩa muối thực phẩm (Mã HS 25010010) = muối BỔ SUNG I-ỐT ⇒ thêm daBoSungIot CO (#1101, TT 08/2021 thay TT 27/2017 đã hết hiệu lực)"
+      "ghiChu": "vb.tt08-2021-bnnptnt.d1: muối thực phẩm (HS 25010010) = muối bổ sung i-ốt theo định nghĩa QCVN. Giữ tenLoai \"Muối thực phẩm\"; bỏ daBoSungIot CO khỏi dieuKienSo vì ca DONG_CO_TEN chỉ có chữ \"Muối thực phẩm\" (không có \"i ốt\") → THIEU_SO_LIEU. 25010091 vẫn giữ daBoSungIot + hàm lượng."
     }
   ]
 }
