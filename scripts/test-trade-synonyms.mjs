@@ -201,6 +201,28 @@ console.log('\n== Từ điển không được lan sang câu không liên quan =
   check('mục giác hút loại prefix 841490',
     ((padHit.matches || []).find((m) => m.entryId === 'giac-hut-chan-khong-vacuum-pad')?.avoid || [])
       .some((a) => String(a.prefix || '').startsWith('841490')));
+
+  // OZV-1261 vòng soát 1 — hàng khác có giác hút làm PHỤ KIỆN không được kích
+  // hoạt mục giác hút SMC (đồ chơi 9503, giá đỡ, móc dán, dụng cụ nâng kính,
+  // đồ trẻ em) và từ khoá trần "zpb" không dính cáp/hàng lạ.
+  for (const q of [
+    'đồ chơi mũi tên giác hút',
+    'giá đỡ điện thoại ô tô giác hút',
+    'móc dán tường giác hút nhà tắm',
+    'giác hút kính nâng tấm kính 3 chấu',
+    'núm hút sữa',
+    'zpb cable',
+  ]) {
+    check(`«${q}» không kích hoạt mục giác hút`,
+      !(lookupTradeTerms(q).matches || []).some((m) => m.entryId === 'giac-hut-chan-khong-vacuum-pad'));
+  }
+  // Câu khách nguyên văn không có chữ «chân không» vẫn khớp qua mã series SMC.
+  const padShort = lookupTradeTerms('giác hút smc zp-905-08eu');
+  check('«giác hút smc zp-905…» vẫn khớp mục giác hút',
+    (padShort.matches || []).some((m) => m.entryId === 'giac-hut-chan-khong-vacuum-pad'));
+  const padTop = searchCandidates('giác hút smc zp-905-08eu', { topCandidates: 5 });
+  check('«giác hút smc zp-905…» có 4016* trong top 2',
+    padTop.slice(0, 2).some((c) => c.hsCode.startsWith('4016')));
 }
 
 console.log('\n== Mục chưa chắc thì phải nói chưa chắc ==');
