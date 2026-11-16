@@ -105,6 +105,9 @@ console.log('\n== Câu hỏi thật của khách phải ra đúng mã (kho Oz kh
     ['giác hút chân không smc zp-905-08eu', ['40169999', '40169959', '39269099']],
     ['núm hút chân không cao su silicone', ['40169999', '40169959']],
     ['vacuum pad smc zp2', ['40169999', '40169959', '39269099']],
+    // OZV-1263 — dây đai dẹt truyền lực
+    ['dây đai dẹt t10-259-e, truyền lực', ['40103900', '40103500', '40103600']],
+    ['dây curoa cao su', ['40103900', '40103500', '40103600']],
   ];
   for (const [q, want] of cases) {
     const top2 = searchCandidates(q, { topCandidates: 2 }).map((c) => c.hsCode);
@@ -223,6 +226,18 @@ console.log('\n== Từ điển không được lan sang câu không liên quan =
   const padTop = searchCandidates('giác hút smc zp-905-08eu', { topCandidates: 5 });
   check('«giác hút smc zp-905…» có 4016* trong top 2',
     padTop.slice(0, 2).some((c) => c.hsCode.startsWith('4016')));
+  // OZV-1263 — dây đai truyền lực không kích hoạt khi có puly, bánh đai, máy giặt, khóa đai
+  for (const q of [
+    'puly',
+    'puly curoa',
+    'puly đai răng htd 5m',
+    'bánh đai răng t10 nhôm',
+    'máy giặt dây curoa',
+    'khóa đai t10',
+  ]) {
+    check(`«${q}» không kích hoạt mục dây đai truyền lực`,
+      !(lookupTradeTerms(q).matches || []).some((m) => m.entryId === 'day-dai-truyen-luc'));
+  }
 }
 
 console.log('\n== Mục chưa chắc thì phải nói chưa chắc ==');
