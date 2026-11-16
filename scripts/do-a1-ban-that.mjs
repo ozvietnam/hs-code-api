@@ -59,16 +59,25 @@ export function docBo50Ca(duong = FIXTURE_PATH) {
   };
 }
 
-/** Thân lời gọi: CHỈ mô tả hàng của khách. */
-export function dungThanGoi(ca) {
+/** Thân lời gọi: CHỈ mô tả hàng của khách. Hỗ trợ suggest và classify. */
+export function dungThanGoi(ca, endpoint = 'suggest') {
+  if (endpoint === 'classify') {
+    return { tenHang: ca.cauKhach };
+  }
   return { description: ca.cauKhach };
 }
 
-/** Rút danh sách mã 8 số theo thứ tự từ phản hồi /api/suggest. */
+/** Rút danh sách mã 8 số theo thứ tự từ phản hồi /api/suggest hoặc /api/classify. */
 export function rutMaTuPhanHoi(body) {
-  const ds = Array.isArray(body?.suggestions) ? body.suggestions : [];
+  const ds = Array.isArray(body?.results)
+    ? body.results
+    : Array.isArray(body?.suggestions)
+    ? body.suggestions
+    : Array.isArray(body?.candidates)
+    ? body.candidates
+    : [];
   return ds
-    .map((s) => chiSo(s?.hsCode ?? s?.code ?? s?.hs ?? ''))
+    .map((s) => chiSo(s?.hs ?? s?.hsCode ?? s?.code ?? s?.ma ?? ''))
     .filter((m) => m.length === 8);
 }
 
@@ -207,23 +216,24 @@ export function inBaoCaoMd(banGhis, { nguon = '', chuanCong1211 = null } = {}) {
   return out.join('\n') + '\n';
 }
 
-/** Gọi /api/suggest cho 1 ca, có hết giờ + thử lại tối đa 1 lần khi lỗi mạng. */
-export async function goiMotCa(ca, { url = URL_MAC_DINH, timeoutMs = TIMEOUT_TOI_DA_MS, fetchFn = fetch } = {}) {
+/** Gọi /api/suggest hoặc /api/classify cho 1 ca, có hết giờ + thử lại tối đa 1 lần khi lỗi mạng. */
+export async function goiMotCa(ca, { url = URL_MAC_DINH, endpoint = 'suggest', timeoutMs = TIMEOUT_TOI_DA_MS, fetchFn = fetch } = {}) {
   const batDau = new Date().toISOString();
   const t0 = Date.now();
   let thuLai = 0;
   let loi = null;
   let httpStatus = null;
   let body = null;
+  const path = endpoint === 'classify' ? '/api/classify' : '/api/suggest';
   for (let lan = 0; lan < 2; lan += 1) {
     const ac = new AbortController();
     const hen = setTimeout(() => ac.abort(), timeoutMs);
     loi = null;
     try {
-      const res = await fetchFn(`${url.replace(/\/$/, '')}/api/suggest`, {
+      const res = await fetchFn(`${url.replace(/\/$/, '')}${path}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'User-Agent': 'oz-do-a1-ban-that/1 (OZV-1233)' },
-        body: JSON.stringify(dungThanGoi(ca)),
+        body: JSON.stringify(dungThanGoi(ca, endpoint)),
         signal: ac.signal,
       });
       httpStatus = res.status;
@@ -264,12 +274,12 @@ export async function goiMotCa(ca, { url = URL_MAC_DINH, timeoutMs = TIMEOUT_TOI
     httpStatus,
     loi,
     thuLai,
-    status: body?.status ?? null,
+    status: body?.status ?? body?.trangThai ?? null,
     engine: body?.engine ?? null,
     degraded: body?.degraded ?? null,
     dsMa: rutMaTuPhanHoi(body).slice(0, 5),
     nextActionType: body?.nextAction?.type ?? null,
-    missingFacts: (body?.missingFacts || []).map((m) => m?.attribute).filter(Boolean),
+    missingFacts: (body?.missingFacts || body?.missing || []).map((m) => (typeof m === 'string' ? m : m?.attribute)).filter(Boolean),
   };
 }
 
@@ -321,6 +331,8 @@ async function tuKiem() {
   const than = dungThanGoi(bo.cases[0]);
   ca('thân gọi chỉ có description', Object.keys(than).join() === 'description');
   ca('thân gọi không lộ mã đáp án', !JSON.stringify(than).includes(bo.cases[0].ma));
+  const thanClassify = dungThanGoi(bo.cases[0], 'classify');
+  ca('thân gọi classify có tenHang', Object.keys(thanClassify).join() === 'tenHang' && thanClassify.tenHang === bo.cases[0].cauKhach);
 
   ca(
     'rút mã từ suggestions, bỏ mã không đủ 8 số',
@@ -423,13 +435,14 @@ async function main() {
   }
   if (ts.limit) cases = cases.slice(0, Number(ts.limit));
   const url = typeof ts.url === 'string' ? ts.url : URL_MAC_DINH;
+  const endpoint = typeof ts.endpoint === 'string' ? ts.endpoint : 'suggest';
   const timeoutMs = Math.min(Number(ts['timeout-ms']) || TIMEOUT_TOI_DA_MS, TIMEOUT_TOI_DA_MS);
   const dongThoi = Math.min(Number(ts.concurrency) || DONG_THOI_TOI_DA, DONG_THOI_TOI_DA);
-  console.error(`[do-a1] ${cases.length} ca · ${url} · đồng thời ${dongThoi} · timeout ${timeoutMs} ms`);
+  console.error(`[do-a1] ${cases.length} ca · ${url} (${endpoint}) · đồng thời ${dongThoi} · timeout ${timeoutMs} ms`);
   let xong = 0;
   const ketQua = await chayHangDoi(cases, {
     dongThoi,
-    goi: (ca) => goiMotCa(ca, { url, timeoutMs }),
+    goi: (ca) => goiMotCa(ca, { url, endpoint, timeoutMs }),
     moiCa: (r) => {
       xong += 1;
       process.stdout.write(JSON.stringify(r) + '\n');
