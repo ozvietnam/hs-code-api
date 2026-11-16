@@ -3067,6 +3067,58 @@
    "gir": "GIR 1",
    "basis": "RULE_TABLE",
    "sourceVi": "Biểu thuế 2026 nhóm 4010 (băng truyền hoặc đai truyền, bằng cao su lưu hóa) và 3926.90.53 (bằng chất dẻo). Ca thật OZV-1257: 'dây đai dẹt t10-259-e, truyền lực'."
+  },
+  {
+   "id": "gian-phoi-quan-ao",
+   "titleVi": "Giàn phơi quần áo thông minh / laundry drying rack (giá cố định kim loại 83.02)",
+   "terms": [
+    "giàn phơi",
+    "giàn phơi quần áo",
+    "giàn phơi thông minh",
+    "laundry drying rack",
+    "clothes drying rack",
+    "giá phơi đồ",
+    "cây phơi đồ",
+    "giàn giá phơi"
+   ],
+   "excludeIfAny": [
+    "máy sấy",
+    "tumble dryer",
+    "clothes dryer",
+    "tủ quần áo",
+    "wardrobe",
+    "pallet rack",
+    "kệ kho",
+    "kệ chứa hàng"
+   ],
+   "excludeReasonVi": "Máy sấy quần áo thuộc 84.51; tủ/wardrobe và kệ kho thuộc đồ nội thất 94.03 — không phải giá cố định/phụ kiện kim loại nhóm 83.02.",
+   "candidates": [
+    {
+     "hs": "83025000",
+     "whenVi": "Giàn/giá phơi gắn trần hoặc gắn tường bằng kim loại cơ bản (kể cả có polycarbonate), nâng hạ/kéo tay bằng ròng rọc hoặc gấp thu, không dùng điện — giá để mũ, mắc mũ, chân giá đỡ và các loại giá cố định tương tự (8302.50.00).",
+     "confidence": "high"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "9403",
+     "whyVi": "9403 là đồ nội thất (kệ/tủ kim loại) — đo A1 16/11 API thô trả 94031000 là nhiễu từ 'phơi/thông minh'; giàn phơi gắn tường/trần kiểu giá cố định thuộc 83.02 theo TB-TCHQ 4548/TCHQ-TXNK."
+    },
+    {
+     "prefix": "7326",
+     "whyVi": "7326 sản phẩm thép khác dư địa — TB-TCHQ 4548 đã loại nhầm 7326.90.99; hàng này có nhóm riêng 83.02.50."
+    },
+    {
+     "prefix": "8483",
+     "whyVi": "8483 bánh đà/ròng rọc — từ khóa 'ròng rọc' trong mô tả cơ cấu nâng hạ không biến cả giàn phơi thành puli; hàng là giá cố định 83.02.50."
+    }
+   ],
+   "askVi": [
+    "Là giàn/giá phơi gắn tường hoặc trần (nhóm 83.02) hay máy sấy có động cơ (84.51) / tủ-kệ nội thất đứng sàn (94.03)?"
+   ],
+   "gir": "GIR 1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "TB-TCHQ số 4548/TCHQ-TXNK (2019, có trong data/precedents.json#83025000): Giàn phơi quần áo thông minh gắn trần/tường, thanh thép không gỉ và polycarbonate, nâng hạ bằng ròng rọc dây kéo tay hoặc mở ra/thu lại, gấp được, không dùng điện → nhóm 83.02, mã 8302.50.00 (TT 14/2015, TT 65/2017, chú giải chi tiết HS). Tránh nhầm 7326.90.99 và đồ nội thất 94.03."
   }
  ],
  "updatedAt": "2026-11-16"

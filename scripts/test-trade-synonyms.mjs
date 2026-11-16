@@ -108,6 +108,9 @@ console.log('\n== Câu hỏi thật của khách phải ra đúng mã (kho Oz kh
     // OZV-1263 — dây đai dẹt truyền lực
     ['dây đai dẹt t10-259-e, truyền lực', ['40103900', '40103500', '40103600']],
     ['dây curoa cao su', ['40103900', '40103500', '40103600']],
+    // OZV-1277 — đo A1 16/11: ca 31 (83025000) lệch nội thất 94031000
+    ['Giàn phơi quần áo thông minh (laundry drying rack) gắn trần hoặc gắn tường', ['83025000']],
+    ['laundry drying rack ceiling mounted stainless steel', ['83025000']],
   ];
   for (const [q, want] of cases) {
     const top2 = searchCandidates(q, { topCandidates: 2 }).map((c) => c.hsCode);
@@ -156,6 +159,14 @@ console.log('\n== Mã bẫy phải bị loại HẲN, không phải tụt hạng
   const pad = searchCandidates('giác hút chân không smc zp-905-08eu', { topCandidates: 50 });
   check('giác hút SMC không lẫn phụ tùng bơm/máy nén 841490', pad.every((c) => !c.hsCode.startsWith('841490')));
   check('giác hút SMC không lẫn bơm chân không 841410', pad.every((c) => c.hsCode !== '84141000'));
+
+  const gianPhoi = searchCandidates(
+    'Giàn phơi quần áo thông minh (laundry drying rack) gắn trần hoặc gắn tường, thanh thép không gỉ và polycarbonate, nâng hạ bằng ròng rọc dây kéo tay',
+    { topCandidates: 50 }
+  );
+  check('giàn phơi không lẫn đồ nội thất 9403', gianPhoi.every((c) => !c.hsCode.startsWith('9403')));
+  check('giàn phơi không lẫn sản phẩm thép dư 7326', gianPhoi.every((c) => !c.hsCode.startsWith('7326')));
+  check('giàn phơi không lẫn bánh đà/ròng rọc 8483', gianPhoi.every((c) => !c.hsCode.startsWith('8483')));
 }
 
 console.log('\n== Từ điển không được lan sang câu không liên quan ==');
@@ -238,6 +249,21 @@ console.log('\n== Từ điển không được lan sang câu không liên quan =
     check(`«${q}» không kích hoạt mục dây đai truyền lực`,
       !(lookupTradeTerms(q).matches || []).some((m) => m.entryId === 'day-dai-truyen-luc'));
   }
+  // OZV-1277 — câu có «giàn phơi/drying rack» nhưng là máy sấy / tủ / kệ kho → tắt mục
+  for (const q of [
+    'giàn phơi kiểu máy sấy quần áo có động cơ',
+    'laundry drying rack gắn trong wardrobe tủ quần áo',
+    'giàn phơi kệ kho hàng pallet rack',
+  ]) {
+    check(`«${q}» không kích hoạt mục giàn phơi`,
+      !(lookupTradeTerms(q).matches || []).some((m) => m.entryId === 'gian-phoi-quan-ao'));
+  }
+  check(
+    'câu khách stt31 khớp mục giàn phơi',
+    lookupTradeTerms(
+      'Giàn phơi quần áo thông minh (laundry drying rack) gắn trần hoặc gắn tường'
+    ).matches.some((m) => m.entryId === 'gian-phoi-quan-ao')
+  );
 }
 
 console.log('\n== Mục chưa chắc thì phải nói chưa chắc ==');
