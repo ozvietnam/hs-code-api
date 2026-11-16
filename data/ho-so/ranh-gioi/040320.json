@@ -14,7 +14,7 @@
     "boi": "CLAUDE_DUYET",
     "phien": "paperclip:tho-hs-02:ozv-1218#sua-dong-co-ten",
     "ngay": "2026-11-16",
-    "ghiChu": "OZV-1218: bỏ dangLong khỏi nút 0403201 (tránh _traiKhiNutThoa hỏi dangLong ở .91). Đưa dangLong CO xuống .11/.19. .91 dùng tenLoai cụm hương liệu đầy đủ (tatDinh) + phanConLai [.11] để khi có dangLong thì .11 thắng, khi thiếu dangLong thì .91 chốt được.",
+    "ghiChu": "OZV-1218: dangLong CO chỉ trên ranh-gioi .11 (runtime overlay #1180 3b). Sổ tay .11 bỏ dangLong vì L1-3b trich dòng 8 số không có «dạng lỏng» (chữ đó ở tiêu đề QG 0403201). .91 tenLoai cụm hương liệu + phanConLai [.11]. Không đặt dangLong ở nút 0403201 — sẽ hỏi dangLong khi đo ca .91.",
     "bam": "164659a326897d2c1e897170b962a583b30095422afebe10cf30ebac0637ed34"
   },
   "dieuKienNut": [],
@@ -70,7 +70,7 @@
     {
       "ma": "04032011",
       "loai": "QUYET_DINH",
-      "ghiChu": "OZV-1218: dangLong CO + daThemHuongLieuHoaQuaHatHoacCaCao CO trên chính dòng .11 (không còn ở nút 0403201)."
+      "ghiChu": "OZV-1218: ranh-gioi giữ dangLong+daThem; sổ tay chỉ daThem (L1-3b). Runtime đọc overlay ranh-gioi."
     },
     {
       "ma": "04032019",
