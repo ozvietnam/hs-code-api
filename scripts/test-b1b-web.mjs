@@ -106,6 +106,23 @@ test('OZV-1259: z.ai chậm hơn trần HS_B1B_ZAI_MS → cắt đúng trần, b
   assert.ok(ms < 1500, `phải cắt ở ~300 ms, mất ${ms} ms`);
 });
 
+test('OZV-1259: đồng hồ đua hạn chót giữ vòng sự kiện — tiến trình trơ trọi vẫn nhận kết quả (CI #1373 đỏ vì unref)', async () => {
+  // Tiến trình con không có socket/handle nào khác: nếu đồng hồ đua bị unref, Node thoát trước 300 ms → không in XONG.
+  const { spawnSync } = await import('node:child_process');
+  const { fileURLToPath } = await import('node:url');
+  const lib = fileURLToPath(new URL('../lib/b1b-web.js', import.meta.url));
+  const ma = `
+    process.env.ZAI_WEB_FACTS = 'on'; process.env.HS_B1B_ZAI_MS = '300'; delete process.env.ZAI_SEARCH_KEY;
+    const { b1bApDung } = require(${JSON.stringify(lib)});
+    b1bApDung({ tenHang: 'máy phun socola 5 tầng' }, { status: 'NEED_FACTS', nextAction: { questions: [{ questionVi: 'chất liệu?' }] } }, {
+      hanChotMs: Date.now() + 60000, _timWeb: async () => [],
+      _b1bWebFacts: () => new Promise((res) => setTimeout(() => res({ cauTraLoi: 'trễ' }), 3000).unref()),
+    }, async () => null).then((r) => console.log('XONG', r.webHint === undefined ? 'khong-hint' : 'co-hint'));
+  `;
+  const kq = spawnSync(process.execPath, ['-e', ma], { encoding: 'utf8', timeout: 10000 });
+  assert.match(kq.stdout, /XONG khong-hint/, `tiến trình phải in kết quả; stdout=${kq.stdout.slice(-200)} stderr=${kq.stderr.slice(-200)}`);
+});
+
 test('OZV-1259: trần z.ai co theo hạn chót lượt (còn − 5 s lề), nhỏ hơn trần env', async () => {
   process.env.ZAI_WEB_FACTS = 'on';
   let timeoutNhan = null;
