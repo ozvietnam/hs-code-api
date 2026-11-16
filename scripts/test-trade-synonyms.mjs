@@ -292,6 +292,24 @@ console.log('\n== Từ điển không được lan sang câu không liên quan =
     (camHint?.candidates || []).some((c) => (c.hsCode || c.hs) === '85258920' && c.confidence === 'high'));
   check('camera truyền hình tránh nhiễu MIC 8544',
     (camHint?.avoid || []).some((a) => String(a.prefix) === '8544'));
+  // OZV-1285 — máy phun socola ≠ máy phun cát/sơn 8424; tắt khi phun sơn/cát/thuốc
+  for (const q of [
+    'máy phun sơn công nghiệp',
+    'máy phun cát sandblast',
+    'máy phun thuốc trừ sâu nông nghiệp',
+  ]) {
+    check(`«${q}» không kích hoạt mục máy phun socola`,
+      !(lookupTradeTerms(q).matches || []).some((m) => m.entryId === 'may-phun-socola'));
+  }
+  check(
+    'câu khách máy phun socola 5 tầng khớp mục may-phun-socola',
+    lookupTradeTerms('máy phun socola 5 tầng').matches.some((m) => m.entryId === 'may-phun-socola')
+  );
+  {
+    const m = lookupTradeTerms('máy phun socola 5 tầng').matches.find((x) => x.entryId === 'may-phun-socola');
+    check('máy phun socola ưu tiên 84382010', (m?.candidates || []).some((c) => (c.hsCode || c.hs) === '84382010'));
+    check('máy phun socola tránh 8424', (m?.avoid || []).some((a) => String(a.prefix) === '8424'));
+  }
 }
 
 console.log('\n== Mục chưa chắc thì phải nói chưa chắc ==');

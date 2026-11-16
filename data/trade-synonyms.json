@@ -3183,6 +3183,67 @@
    "gir": "GIR 1",
    "basis": "RULE_TABLE",
    "sourceVi": "Biểu thuế VN nhóm 85.25 dòng 8525.89.20 «Camera truyền hình»; TB-TCHQ 622/TB-TCHQ trong data/precedents.json#85258920 (camera gắn dây tín hiệu/LED thuộc 85.25). Ca khách OZV-1282 «camera truyền hình cmr12»: search đã ra 85258x nhưng classify hay NEEDS_EXPERT vì MIC model CMR* đồng thuận nhiễu 8544 — từ điển ưu tiên 85258920 và loại hẳn 8544/9006/8471/8537."
+  },
+  {
+   "id": "may-phun-socola",
+   "titleVi": "Máy phun / phủ socola công nghiệp (8438.20 — chế biến bánh kẹo/cacao/socola)",
+   "terms": [
+    "máy phun socola",
+    "máy phun sô cô la",
+    "máy phun chocolate",
+    "máy phủ socola",
+    "máy phủ chocolate",
+    "chocolate spraying machine",
+    "chocolate coating machine",
+    "chocolate enrober",
+    "máy phun phủ socola",
+    "máy phun socola 5 tầng"
+   ],
+   "excludeIfAny": [
+    "máy phun sơn",
+    "phun sơn",
+    "phun cát",
+    "sandblast",
+    "thuốc trừ sâu",
+    "phun thuốc",
+    "máy pha socola",
+    "kẹo socola",
+    "thanh socola"
+   ],
+   "excludeReasonVi": "Máy phun sơn/cát/thuốc thuộc nhóm 84.24 (thiết bị phun, xịt, phun bắn). Kẹo/thanh socola là hàng thực phẩm ch.18; máy PHA đồ uống socola gia dụng khác máy chế biến công nghiệp 84.38.",
+   "candidates": [
+    {
+     "hs": "84382010",
+     "whenVi": "Máy công nghiệp dùng để chế biến/phủ/phun socola, cacao hoặc bánh kẹo (enrober, coating, tempering/phun tầng), hoạt động bằng điện → 8438.20.10",
+     "confidence": "high"
+    },
+    {
+     "hs": "84382020",
+     "whenVi": "Cùng loại máy chế biến/phủ socola–bánh kẹo nhưng KHÔNG hoạt động bằng điện → 8438.20.20",
+     "confidence": "medium"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "8424",
+     "whyVi": "8424 là máy/thiết bị phun–xịt–phun bắn (cát, sơn, thuốc, tia) — chữ «phun» trong «máy phun socola» dễ kéo sang 8424.30/8424.89; hàng này là máy chế biến thực phẩm nhóm 84.38.20 theo đúng dòng biểu thuế confectionery/cocoa/chocolate."
+    },
+    {
+     "prefix": "1806",
+     "whyVi": "1806 là socola/chế phẩm cacao thành phẩm ăn được, không phải máy."
+    },
+    {
+     "prefix": "8516",
+     "whyVi": "8516.71 dụng cụ pha chè/cà phê gia dụng — không phải máy phủ/phun socola công nghiệp 84.38.20."
+    }
+   ],
+   "askVi": [
+    "Máy dùng để chế biến/phủ socola–bánh kẹo công nghiệp (→ 8438.20) hay chỉ là bình/súng phun sơn–cát–thuốc (→ 84.24)?",
+    "Máy hoạt động bằng điện (→ 8438.20.10) hay không dùng điện (→ 8438.20.20)?"
+   ],
+   "gir": "1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế 2026 phân nhóm 8438.20 «Máy dùng để sản xuất bánh kẹo, cacao hoặc sôcôla» (EN: Machinery; industrial, for the manufacture of confectionery, cocoa or chocolate): 84382010 hoạt động bằng điện; 84382020 không hoạt động bằng điện. Ca A1 khách «máy phun socola 5 tầng» (OZV-1285): tìm kiếm thô ưu tiên 84243000 vì chữ «phun» — cần từ điển kéo về 8438.20 và loại hẳn 8424."
   }
  ],
  "updatedAt": "2026-11-16"
