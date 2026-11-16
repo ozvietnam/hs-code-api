@@ -136,5 +136,137 @@ const R1_SAI_8414 = {
   );
 }
 
+// ── OZV-1290: camera CMR12 — classify còn NEED_FACTS 6 số dù từ điển đã 85258920 ─────────
+// Search/suggest đã top1 85258920 (#1381). Classify: R2 HOI dừng 852589 (cùng nhánh, KHÔNG
+// biCam) hoặc cổng NHA_SAN_XUAT_KHAC_NHOM vì MIC model CMR* đồng thuận nhiễu 8544.
+const TEN_CAM = 'camera truyền hình cmr12';
+const R1_CAM = {
+  product: {
+    nameVi: 'camera truyền hình CMR12',
+    nameEn: 'television camera CMR12',
+    purpose: 'quan sát / truyền hình',
+    mechanism: 'điện tử',
+    material: null,
+    form: 'hoàn chỉnh',
+    model: 'CMR12',
+    evidence: {},
+  },
+  hypotheses: [
+    {
+      chapter: '85',
+      heading4: '8525',
+      subheading6: '852589',
+      why: 'camera truyền hình',
+      confidence: 75,
+    },
+  ],
+  verify: {
+    searchVi: ['camera truyền hình', 'cmr12'],
+    codes8: ['85258920'],
+    micQuery: 'television camera CMR12',
+    unknowns: [],
+  },
+};
+
+{
+  const saved = llmTier.callLLMJson;
+  const queue = [
+    R1_CAM,
+    {
+      decision: 'HOI',
+      hs: '852589',
+      confidence: 60,
+      reason: 'cần xác nhận nhà sản xuất / loại camera',
+      basis: [{ stream: 'SAN_PHAM', claim: 'camera truyền hình', evidence: 'camera truyền hình' }],
+      conditions: [],
+      alternatives: [],
+      questions: [{
+        fact: 'nhaSanXuat',
+        question: 'Nhà sản xuất hoặc thương hiệu trên tem là gì?',
+        whereToFind: 'tem nhãn / catalogue',
+      }],
+    },
+  ];
+  llmTier.callLLMJson = async () => {
+    const next = queue.shift();
+    if (!next) throw new Error('hết stub LLM camera HOI');
+    return { json: next };
+  };
+  const out = await classifyLoop({ tenHang: TEN_CAM, model: 'CMR12' }, { mic: false, crossCheck: false, timeoutMs: 5000 });
+  llmTier.callLLMJson = saved;
+  check(
+    'OZV-1290 camera HOI 852589: đôn 85258920 (không NEED_FACTS vì hỏi NSX)',
+    out.results?.[0]?.hs === '85258920' && out.status !== 'NEED_FACTS',
+    { status: out.status, top: out.results?.[0]?.hs, next: out.nextAction },
+  );
+  check(
+    'OZV-1290 camera HOI: câu hỏi nextAction không còn bắt nhà sản xuất',
+    !(out.nextAction?.questions || []).some((q) => /nhà sản xuất|NSX|manufacturer/i.test(q.questionVi || '')),
+    out.nextAction,
+  );
+}
+
+{
+  // MIC nhiễu 8544 (cùng chương 85) trong khi AI đã CHOT 85258920 — cổng NSX không được chặn.
+  const micMod = require('../lib/mic-lookup.js');
+  const savedMic = micMod.micLookup;
+  const savedLlm = llmTier.callLLMJson;
+  const PG = (shop, hsCode, name) => ({
+    shop,
+    url: `https://${shop}.en.made-in-china.com/product/x/y.html`,
+    name,
+    hsCode,
+    props: {},
+  });
+  micMod.micLookup = async () => ({
+    query: 'CMR12',
+    searched: true,
+    pages: [
+      PG('s1', '8544422900', 'CMR cable'),
+      PG('s2', '8544492900', 'CMR wire'),
+      PG('s3', '8544421900', 'CMR12 cable'),
+    ],
+    consensus: null,
+  });
+  process.env.MIC_OFF = '';
+  const queue = [
+    R1_CAM,
+    {
+      decision: 'CHOT',
+      hs: '85258920',
+      confidence: 82,
+      reason: 'camera truyền hình — dòng 8525.89.20',
+      basis: [{ stream: 'SAN_PHAM', claim: 'camera truyền hình', evidence: 'camera truyền hình' }],
+      conditions: [],
+      alternatives: [],
+      questions: [],
+    },
+  ];
+  llmTier.callLLMJson = async () => {
+    const next = queue.shift();
+    if (!next) throw new Error('hết stub LLM camera MIC');
+    return { json: next };
+  };
+  const out = await classifyLoop(
+    { tenHang: TEN_CAM, model: 'CMR12' },
+    { mic: true, crossCheck: false, timeoutMs: 8000 },
+  );
+  llmTier.callLLMJson = savedLlm;
+  micMod.micLookup = savedMic;
+  const gates = (out.engine?.gates || []).flatMap((g) => g.blocks || []);
+  check(
+    'OZV-1290 camera + MIC 8544: không cổng NHA_SAN_XUAT_KHAC_NHOM',
+    !gates.includes('NHA_SAN_XUAT_KHAC_NHOM'),
+    { gates, engineGates: out.engine?.gates },
+  );
+  check(
+    'OZV-1290 camera + MIC 8544: chốt 85258920, không NEED_FACTS/NEEDS_EXPERT vì NSX',
+    out.results?.[0]?.hs === '85258920'
+      && out.status !== 'NEED_FACTS'
+      && !(out.status === 'NEEDS_EXPERT' && /NHA_SAN_XUAT|nhà sản xuất|made-in-china/i.test(JSON.stringify(out.nextAction || {}))),
+    { status: out.status, top: out.results?.[0]?.hs, next: out.nextAction },
+  );
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
