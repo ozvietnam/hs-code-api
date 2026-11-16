@@ -2817,6 +2817,85 @@
    "gir": "GIR 1",
    "basis": "RULE_TABLE",
    "sourceVi": "CV 6497/TCHQ-TXNK 25/12/2024 và CV 3250/TXNK-PL 13/3/2025 (dẫn tại 5950/CHQ-NVTHQ 2025): kệ kho hàng thuộc nhóm 94.03, mã 9403.20.90 đồ nội thất bằng kim loại khác; hàng đã qua sử dụng của 9403.20 thuộc danh mục hàng tiêu dùng đã qua sử dụng cấm NK (TT 12/2018/TT-BCT, TT 08/2023/TT-BCT)."
+  },
+  {
+   "id": "bo-loc-dieu-ap-khi-nen-frl",
+   "titleVi": "Bộ lọc / điều áp khí nén FRL (AR·AF·AFR series)",
+   "terms": [
+    "ar2000",
+    "af2000",
+    "afr2000",
+    "afc2000",
+    "aw2000",
+    "ar2000-02",
+    "af2000-02",
+    "bộ lọc khí nén",
+    "bo loc khi nen",
+    "điều áp khí nén",
+    "van điều áp khí nén",
+    "air filter regulator",
+    "frl khí nén",
+    "frc khí nén",
+    "pneumatic air filter",
+    "pneumatic regulator"
+   ],
+   "excludeIfAny": [
+    "máy lọc không khí",
+    "air purifier",
+    "air purifiers",
+    "diện tích lọc",
+    "bắt muỗi",
+    "phòng ngủ",
+    "gia dụng"
+   ],
+   "excludeReasonVi": "Máy lọc không khí phòng/gia dụng (vd Sharp) thuộc 8421.39.20 — khác hẳn cụm FRL khí nén công nghiệp.",
+   "candidates": [
+    {
+     "hs": "84812090",
+     "whenVi": "Model AR / van·điều áp khí nén (pressure regulator) trên mạch truyền động khí nén — van 8481.20 loại khác",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84812011",
+     "whenVi": "Cùng chức năng điều áp/van khí nén, thân bằng sắt hoặc thép",
+     "confidence": "low"
+    },
+    {
+     "hs": "84213990",
+     "whenVi": "Model AF / chỉ là bộ lọc khí nén (không phải máy lọc không khí phòng) — lọc khí loại khác 8421.39.90",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84213930",
+     "whenVi": "Bộ lọc khí nén vỏ thép không gỉ, Ø trong ống vào/ra ≤ 1,3 cm",
+     "confidence": "low"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "84213920",
+     "whyVi": "8421.39.20 là Máy lọc không khí (air purifiers) — tiền lệ TB-TCHQ 2700/TB-TCHQ là máy Sharp lọc phòng; AR/AF khí nén không thuộc dòng này."
+    },
+    {
+     "prefix": "842132",
+     "whyVi": "8421.32 là bộ xúc tác / lọc hạt khí thải động cơ đốt trong — không phải FRL khí nén thiết bị."
+    },
+    {
+     "prefix": "842123",
+     "whyVi": "8421.23 là bộ lọc dầu cho động cơ — khác bộ lọc khí nén."
+    },
+    {
+     "prefix": "842131",
+     "whyVi": "8421.31 là bộ lọc khí nạp động cơ đốt trong — khác FRL mạch khí nén công nghiệp."
+    }
+   ],
+   "askVi": [
+    "Đây là van/điều áp (model AR), bộ lọc (AF), hay bộ lọc kèm điều áp (AFR/FR/FRL)?",
+    "Dùng trên mạch khí nén công nghiệp — không phải máy lọc không khí phòng/gia dụng?"
+   ],
+   "gir": "GIR 1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế VN: 8481.20 van dùng cho truyền động oleohydraulic/pneumatic; 8421.39 máy/thiết bị lọc khí khác (84213920 = Máy lọc không khí / Air purifiers; 84213930/90 = loại khác). Series Airtac/Zonye AR=regulator, AF=filter, AFR/FR=filter+regulator trên mạch khí nén — đo A2/khách 16/11 câu «bộ lọc khí zonye ar2000 -02» API thô từng dừng 6 số / lệch sang 84213920."
   }
  ],
  "updatedAt": "2026-11-16"

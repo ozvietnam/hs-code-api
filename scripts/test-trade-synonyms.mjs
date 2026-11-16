@@ -98,6 +98,9 @@ console.log('\n== Câu hỏi thật của khách phải ra đúng mã (kho Oz kh
     ['ceramic hand former for glove production', ['69141000']],
     ['Kệ chứa hàng pallet (kệ kho hàng, pallet rack) bằng kim loại, đã qua sử dụng', ['94032090']],
     ['pallet rack metal warehouse', ['94032090']],
+    // OZV-1256 — A2/khách: «bộ lọc khí zonye ar2000 -02» lệch máy lọc phòng 84213920
+    ['bộ lọc khí zonye ar2000 -02', ['84812090', '84213990', '84812011', '84213930']],
+    ['bộ lọc khí nén af2000', ['84213990', '84213930', '84812090']],
   ];
   for (const [q, want] of cases) {
     const top2 = searchCandidates(q, { topCandidates: 2 }).map((c) => c.hsCode);
@@ -138,6 +141,10 @@ console.log('\n== Mã bẫy phải bị loại HẲN, không phải tụt hạng
   const rack = searchCandidates('Kệ chứa hàng pallet (kệ kho hàng, pallet rack) bằng kim loại', { topCandidates: 50 });
   check('pallet rack không lẫn cầu/kết cấu 7308', rack.every((c) => !c.hsCode.startsWith('7308')));
   check('pallet rack không lẫn sản phẩm thép dư 7326', rack.every((c) => !c.hsCode.startsWith('7326')));
+
+  const ar2000 = searchCandidates('bộ lọc khí zonye ar2000 -02', { topCandidates: 50 });
+  check('AR2000 khí nén không lẫn máy lọc phòng 84213920', ar2000.every((c) => c.hsCode !== '84213920'));
+  check('AR2000 khí nén không lẫn lọc khí thải động cơ 842132', ar2000.every((c) => !c.hsCode.startsWith('842132')));
 }
 
 console.log('\n== Từ điển không được lan sang câu không liên quan ==');
