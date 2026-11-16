@@ -7,15 +7,15 @@
   "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
-    "phien": "cursor:tho-hs-03:20261116T1300#soan-701890",
+    "phien": "cursor:tho-hs-03:20261116T1545#soan-701890",
     "ngay": "2026-11-16"
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "cursor:tho-hs-03:20261116T1310#soat-701890",
+    "phien": "cursor:tho-hs-03-review:20261116T1550#soat-701890",
     "ngay": "2026-11-16",
-    "ghiChu": "OZV-1154: bỏ duongKinh 4–36 mm khỏi 70189010 — tenLoai đủ cho DONG_CO_TEN; ngưỡng SEN giữ trong trich.",
-    "bam": "a8b10f45104c294bcebf75c33a6f06a5770457774cce8a274fb90a7e0b7ff15e"
+    "ghiChu": "OZV-1154: HOAC giữ duongKinh 4–36 mm (câu DONG_BIEU) + nhánh tenLoai (DONG_CO_TEN không số mm).",
+    "bam": "35e5a843556c118fe5a65de9b25fd3f2702726a03b92b77a17ea051785c72fbf"
   },
   "dieuKienNut": [],
   "dong8": [
@@ -25,9 +25,35 @@
       "trich": "MẮT THỦY TINH…Thủy tinh dạng cầu, ô van hoặc tròn không có khung hoặc cơ cấu cơ khí bên ngoài, đường kính 4-36 mm. Chúng có thể có nhiều màu khác nhau, được hoặc không được trang trí, sơn. Chúng sử dụng để làm mắt búp bê, mắt đồ chơi hoặc mắt các sản phẩm thuộc Chương",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Mắt thủy tinh"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Mắt thủy tinh"
+              },
+              {
+                "fact": "duongKinh",
+                "op": ">=",
+                "value": 4,
+                "donVi": "mm"
+              },
+              {
+                "fact": "duongKinh",
+                "op": "<=",
+                "value": 36,
+                "donVi": "mm"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Mắt thủy tinh"
+              }
+            ]
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -44,12 +70,12 @@
     {
       "ma": "70189010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.70189010 \"Mắt thủy tinh(SEN)\" ⇒ tenLoai TEN_LOAI \"Mắt thủy tinh\" — GIỮ TÊN DÒNG làm mỏ neo. Bỏ duongKinh 4–36 mm khỏi dieuKienSo: ca DONG_CO_TEN chỉ có chữ dòng «Mắt thủy tinh(SEN)» (không có số mm) → trước đó THIEU_SO_LIEU(duongKinh). Ngưỡng 4–36 mm là chú giải SEN mô tả điển hình, không phải rãnh tách trong 701890 (cổng --ve chỉ có vế ĐẦU «Mắt thủy tinh»). Giữ nguyên trong trich để người đọc."
+      "ghiChu": "tax.70189010 \"Mắt thủy tinh(SEN)\" ⇒ tenLoai TEN_LOAI \"Mắt thủy tinh\". OZV-1154/PR#1363: giữ duongKinh 4–36 mm trong HOAC (nhánh 1) để câu hỏi DONG_BIEU #411(d)/OZV-723 còn sống; nhánh 2 chỉ tenLoai vì ca DONG_CO_TEN chỉ có chữ dòng «Mắt thủy tinh(SEN)» (không số mm) — ngưỡng SEN là mô tả điển hình, không phải rãnh tách .10↔.90 trong 701890 (cổng --ve vế ĐẦU là tên dòng)."
     },
     {
       "ma": "70189010",
       "loai": "QUYET_DINH",
-      "ghiChu": "sen.70189010 \"dạng cầu, ô van hoặc tròn\" và \"mắt búp bê, mắt đồ chơi hoặc mắt các sản phẩm thuộc Chương\" giữ TRỌN trong trích; là vế mô tả hình dạng/công dụng điển hình, không phải giới hạn đổi dòng trong 701890 nên không tách điều kiện AND."
+      "ghiChu": "sen.70189010 \"dạng cầu, ô van hoặc tròn\" và \"mắt búp bê, mắt đồ chơi hoặc mắt các sản phẩm thuộc Chương\" giữ TRỌN trong trích; là vế mô tả hình dạng/công dụng điển hình, không tách điều kiện AND."
     },
     {
       "ma": "70189010",
@@ -72,6 +98,11 @@
       "phien": "cursor:tho-hs-03:20261116T1305#soat-701890",
       "ngay": "2026-11-16",
       "lyDo": "OZV-1154: DONG_CO_TEN 70189010 THIEU_SO_LIEU(duongKinh) — ca chỉ có chữ dòng «Mắt thủy tinh(SEN)»; ngưỡng 4–36 mm là SEN mô tả, cần bỏ khỏi dieuKienSo để đạt SẠCH V1."
+    },
+    {
+      "phien": "cursor:tho-hs-03-review:20261116T1546#soat-701890",
+      "ngay": "2026-11-16",
+      "lyDo": "OZV-1154 PR#1363: GĐ trả — gỡ DONG_CO_TEN đã mất câu hỏi duongKinh DONG_BIEU (#411(d)/OZV-723). Soạn lại: HOAC giữ duongKinh + nhánh tenLoai cho ca DONG_CO_TEN."
     }
   ]
 }
