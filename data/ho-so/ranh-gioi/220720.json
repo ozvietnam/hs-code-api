@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L6-20261111#soat-L6",
-    "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu VI/EN: tiêu đề \"Denatured ethyl alcohol, including methylated spirits\" (kể cả = PHU), .11 \"exceeding 99% vol.\" ⇒ > 99 (đã đối chiếu tay biên cong3-bien-khong-doc-duoc).",
-    "bam": "1e5ae083afc09ff96ea52bd386abf17ac17c4ccdf721d494213829155be0e1a0"
+    "phien": "cursor:tho-hs-03:20261116#soat-220720",
+    "ngay": "2026-11-16",
+    "ghiChu": "22072011 tenLoai nguyên văn (khuôn 840682) + 2207201 tenLoai đủ chữ tiêu đề (giữ methyl để tất định vs PN6) — gỡ DONG_CO_TEN.",
+    "bam": "8cb2bbb31194698f3b5fe29c474e324db0232a62124fc90f23fa47e210f448d7"
   },
   "dieuKienNut": [
     {
@@ -26,7 +26,7 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Cồn etylic đã biến tính"
+          "value": "Cồn etylic đã biến tính, kể cả rượu mạnh đã methyl hoá"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -39,10 +39,9 @@
       "trich": "22072011 - - - Cồn etylic có nồng độ trên 99% tính theo thể tích",
       "dieuKienSo": [
         {
-          "fact": "nongDoCon",
-          "op": ">",
-          "value": 99,
-          "donVi": "%"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Cồn etylic có nồng độ trên 99% tính theo thể tích"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -64,14 +63,14 @@
   ],
   "ghiChuSoan": [
     {
-      "ma": "22072011",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.22072011 \"Cồn etylic có nồng độ trên 99% tính theo thể tích\" ⇒ nongDoCon > 99 (đơn vị %) — đã đối chiếu tay: 'trên 99%' = op > giá trị 99, đúng chữ; cảnh báo cong3-bien-khong-doc-duoc chỉ là máy không đọc lại được biên từ chữ nguồn"
-    },
-    {
       "ma": "2207201",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.2207201 \"Cồn etylic đã biến tính, kể cả rượu mạnh đã methyl hoá\" — \"kể cả rượu mạnh đã methyl hoá\" là vế PHU (bao gồm) ⇒ chỉ giữ tên đầu tenLoai \"Cồn etylic đã biến tính\""
+      "ghiChu": "tieuDe.2207201: giữ NGUYÊN văn kể cả vế \"kể cả rượu mạnh đã methyl hoá\" trong tenLoai (khác nếp bỏ PHU). Lý do: tenLoai chỉ \"Cồn etylic đã biến tính\" trùng âm tiết PN6 → so chữ không tất định (tatDinh=false) chặn chốt .11 (ranh-gioi-so-chu-khong-tat-dinh). Cụm methyl là âm tiết phân biệt với PN6."
+    },
+    {
+      "ma": "22072011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.22072011 \"Cồn etylic có nồng độ trên 99% tính theo thể tích\" ⇒ tenLoai neo nguyên văn (khuôn 840682): cachDoc nongDoCon đòi \"nồng độ cồn\" còn chữ biểu chỉ \"nồng độ … % thể tích\" → DONG_CO_TEN THIEU_SO_LIEU."
     },
     {
       "ma": "22072019",

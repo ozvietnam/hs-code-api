@@ -17227,7 +17227,8 @@
     "vi": [
      "(?:đã\\s+)?bổ\\s+sung\\s+(?:thêm\\s+)?i[-\\s]?ốt",
      "(?:đã\\s+)?(?:được\\s+)?(?:tăng\\s+cường|làm\\s+giàu)\\s+(?:vi\\s+chất\\s+)?i[-\\s]?ốt",
-     "(?:bổ\\s+sung|tăng\\s+cường)[^\\n]{0,25}?i[-\\s]?ốt"
+     "(?:bổ\\s+sung|tăng\\s+cường)[^\\n]{0,25}?i[-\\s]?ốt",
+     "muối\\s+thực\\s+phẩm"
     ],
     "en": [
      "fortified\\s+with\\s+iodine",
@@ -17259,7 +17260,9 @@
    },
    "cachDocKhong": {
     "vi": [
-     "(?:không|chưa)\\s+(?:được\\s+)?bổ\\s+sung\\s+(?:thêm\\s+)?i\\s*ốt"
+     "(?:không|chưa)\\s+(?:được\\s+)?bổ\\s+sung\\s+(?:thêm\\s+)?i\\s*ốt",
+     "(?:không|chưa)\\s+(?:chứa\\s+)?i[-\\s]?ốt",
+     "không\\s+i[-\\s]?ốt"
     ],
     "en": [
      "not\\s+fortified\\s+with\\s+iodine",
@@ -17278,7 +17281,7 @@
     "vi": "Sản phẩm đã được bổ sung thêm i ốt chưa?",
     "zh": "该产品是否已添加碘？"
    },
-   "ghiChu": "Chữ biểu 2501.00.91 \"Có hàm lượng natri clorua trên 60% nhưng dưới 97%, tính theo hàm lượng khô, đã bổ sung thêm i ốt (SEN)\" (đọc CÓ; EN \"fortified with iodine\").",
+   "ghiChu": "Chữ biểu 2501.00.91 \"Có hàm lượng natri clorua trên 60% nhưng dưới 97%, tính theo hàm lượng khô, đã bổ sung thêm i ốt (SEN)\" (đọc CÓ; EN \"fortified with iodine\"). OZV-1219: cụm tên pháp lý \"Muối thực phẩm\" (QCVN/TT 08) suy ra CÓ i-ốt; \"không i-ốt\"/\"không chứa i-ốt\" → KHÔNG (tránh bỏ daBoSungIot để xanh giả DONG_CO_TEN).",
    "nguonLoai": "AI_DA_KIEM"
   },
   {
