@@ -504,7 +504,7 @@ module.exports = async function handler(req, res) {
 
     // Mốc đổi hiệu lực sắp tới (?ngay=YYYY-MM-DD, ?so_ngay=90) — trả VB lên hiệu lực MỚI,
     // hết hiệu lực, hoặc tạm ngưng trong cửa sổ ngày. Công cụ "canh" cho cả hệ thống:
-    // TT 142/2026 (16-11-2026), NQ 43/2026 (31-12-2026), TT 154/2026 + Luật 11/2026 (2027).
+    // TT 142/2026 đã CON từ 16-11-2026; NQ 43/2026 (31-12-2026), TT 154/2026 + Luật 11/2026 (2027).
     if (resource === 'hieu_luc_sap_doi') {
       const meta = plhq.registryMeta();
       if (!meta) return res.status(503).json({ error: 'Chưa có bản chụp sổ cộng đồng (data/plhq-registry.json)' });
