@@ -3119,6 +3119,70 @@
    "gir": "GIR 1",
    "basis": "RULE_TABLE",
    "sourceVi": "TB-TCHQ số 4548/TCHQ-TXNK (2019, có trong data/precedents.json#83025000): Giàn phơi quần áo thông minh gắn trần/tường, thanh thép không gỉ và polycarbonate, nâng hạ bằng ròng rọc dây kéo tay hoặc mở ra/thu lại, gấp được, không dùng điện → nhóm 83.02, mã 8302.50.00 (TT 14/2015, TT 65/2017, chú giải chi tiết HS). Tránh nhầm 7326.90.99 và đồ nội thất 94.03."
+  },
+  {
+   "id": "camera-truyen-hinh-cctv",
+   "titleVi": "Camera truyền hình / CCTV / camera quan sát (nhóm 85.25)",
+   "terms": [
+    "camera truyền hình",
+    "camera quan sát",
+    "camera an ninh",
+    "camera giám sát",
+    "camera cctv",
+    "cctv",
+    "cctv camera",
+    "surveillance camera",
+    "television camera",
+    "security camera",
+    "camera ip",
+    "camera wifi"
+   ],
+   "excludeIfAny": [
+    "webcam",
+    "máy ảnh",
+    "photographic camera",
+    "camera hành trình",
+    "dashcam",
+    "ống camera truyền hình",
+    "camera tube",
+    "camera ghi hình ảnh"
+   ],
+   "excludeReasonVi": "Webcam có dòng riêng 8525.89.30; máy ảnh chụp ảnh thuộc 90.06; camera hành trình/dashcam và camera ghi hình ảnh là nhánh khác trong 85.25 — không gộp vào camera truyền hình thường.",
+   "candidates": [
+    {
+     "hs": "85258920",
+     "whenVi": "Camera truyền hình / camera quan sát / CCTV thường (không thuộc phân nhóm tốc độ cao 8525.81, chịu bức xạ 8525.82, nhìn đêm chuyên dụng 8525.83) — dòng «Camera truyền hình» 8525.89.20 theo biểu thuế và TB-TCHQ 622/TB-TCHQ.",
+     "confidence": "high"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "8544",
+     "whyVi": "8544 là dây/cáp cách điện — đo A1 OZV-1282: model CMR* trên made-in-china nhiễu sang shop ghi 8544; hàng tên «camera truyền hình» thuộc nhóm 85.25, không phải dây dẫn."
+    },
+    {
+     "prefix": "9006",
+     "whyVi": "9006 máy ảnh chụp ảnh (photographic) — khác camera truyền hình/CCTV nhóm 85.25."
+    },
+    {
+     "prefix": "8528",
+     "whyVi": "8528 máy thu hình/màn hình — chức năng hiển thị, không phải camera ghi/phát hình."
+    },
+    {
+     "prefix": "8471",
+     "whyVi": "8471 máy xử lý dữ liệu / ổ cứng — model CMR trên MIC hay lẫn HDD «CMR SATA»; không phải camera truyền hình."
+    },
+    {
+     "prefix": "8537",
+     "whyVi": "8537 bảng điều khiển — series CMR đồng hồ chân không trên MIC không phải camera truyền hình 85.25."
+    }
+   ],
+   "askVi": [
+    "Là camera truyền hình/quan sát thường (8525.89.20), webcam (8525.89.30), camera nhìn đêm/hồng ngoại chuyên dụng (8525.83), tốc độ cao (8525.81), chịu bức xạ (8525.82), hay máy ảnh chụp ảnh (90.06)?"
+   ],
+   "gir": "GIR 1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế VN nhóm 85.25 dòng 8525.89.20 «Camera truyền hình»; TB-TCHQ 622/TB-TCHQ trong data/precedents.json#85258920 (camera gắn dây tín hiệu/LED thuộc 85.25). Ca khách OZV-1282 «camera truyền hình cmr12»: search đã ra 85258x nhưng classify hay NEEDS_EXPERT vì MIC model CMR* đồng thuận nhiễu 8544 — từ điển ưu tiên 85258920 và loại hẳn 8544/9006/8471/8537."
   }
  ],
  "updatedAt": "2026-11-16"
