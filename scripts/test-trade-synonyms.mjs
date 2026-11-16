@@ -179,6 +179,16 @@ console.log('\n== Từ điển không được lan sang câu không liên quan =
   check('không gợi ý 8504 cho điều hòa inverter', ac.matches.every((m) => m.entryId !== 'bien-tan-vfd'));
   check('nói rõ vì sao không áp dụng', ac.excluded.some((x) => x.entryId === 'bien-tan-vfd'));
 
+  // OZV-1239: mục bột nhôm chất màu 32.06 không được ăn bột/vảy nhôm luyện
+  // kim (76.03) hay bột nhão nhôm (32.12) — probe trước khi chặn: cả 2 câu
+  // đều đẩy 32064990 lên đầu.
+  for (const q of ['bột nhôm dạng vảy dùng luyện kim', 'bột nhôm nhão aluminium paste cho sơn', 'aluminium powder for welding']) {
+    check(`"${q}" không kích mục bột nhôm chất màu`,
+      !lookupTradeTerms(q).matches.some((m) => m.entryId === 'aluminium-powder-pigment'));
+  }
+  check('câu bột nhôm chất màu (TB 554) vẫn kích mục',
+    lookupTradeTerms('Aluminium powder (bột nhôm): chất màu vô cơ').matches.some((m) => m.entryId === 'aluminium-powder-pigment'));
+
   const ex = lookupTradeTerms('máy điều hòa inverter 12000 BTU').excluded[0];
   check('lý do nhắc đây là tính năng', /tính năng/i.test(ex?.reasonVi || ''));
 
