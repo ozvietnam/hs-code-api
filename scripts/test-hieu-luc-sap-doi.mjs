@@ -27,19 +27,22 @@ const goi = async (query) => {
   return { code: res.__c, body: JSON.parse(res.__b || '{}') };
 };
 
-// Cửa sổ rộng bắt đủ mốc đã biết (TT 142/2026 lên 16-11-2026; NQ 43/2026 hết 31-12-2026; Luật 11/2026 lên 01-03-2027)
+// Cửa sổ rộng: TT 142/2026 đã CON_HIEU_LUC từ 16-11-2026 nên KHÔNG còn LEN;
+// mốc LEN còn lại: TT 154/2026 (01-01-2027), Luật 11/2026 (01-03-2027); HET: NQ 43/2026 (31-12-2026).
 const r1 = await goi({ resource: 'hieu_luc_sap_doi', tu: '2026-10-30', so_ngay: '180' });
 check('trả 200 + có items', r1.code === 200 && Array.isArray(r1.body.items) && r1.body.total > 0, JSON.stringify(r1.body).slice(0, 120));
 const len = r1.body.items.filter((x) => x.suKien === 'LEN_HIEU_LUC');
 const het = r1.body.items.filter((x) => x.suKien === 'HET_HIEU_LUC');
-check('có LEN_HIEU_LUC (TT 142/2026 16-11-2026)', len.some((x) => x.soHieu === '142/2026/TT-BTC' && x.ngay === '2026-11-16'));
+check('142/2026 đã CON → không còn LEN_HIEU_LUC', !len.some((x) => x.soHieu === '142/2026/TT-BTC'));
+check('có LEN_HIEU_LUC (TT 154/2026 01-01-2027)', len.some((x) => x.soHieu === '154/2026/TT-BTC' && x.ngay === '2027-01-01'));
 check('có HET_HIEU_LUC (NQ 43/2026 31-12-2026 — ưu đãi thuế xăng dầu)', het.some((x) => x.soHieu === '43/2026/NQ-CP' && x.ngay === '2026-12-31'));
 check('Luật 11/2026 lên 01-03-2027', len.some((x) => x.soHieu === '11/2026/QH16' && x.ngay === '2027-03-01'));
 check('sắp xếp theo ngày tăng dần', r1.body.items.every((x, i, a) => i === 0 || a[i - 1].ngay <= x.ngay));
 
-// Cửa sổ hẹp chỉ bắt đúng 1 mốc
-const r2 = await goi({ resource: 'hieu_luc_sap_doi', tu: '2026-11-10', so_ngay: '10' });
-check('cửa sổ 10 ngày quanh 16-11 chỉ có TT 142/2026 LEN', r2.body.total === 1 && r2.body.items[0].soHieu === '142/2026/TT-BTC', JSON.stringify(r2.body.items));
+// Cửa sổ hẹp quanh 01-01-2027: TT 154 còn CHUA_CO → đúng 1 mốc LEN (372/NĐ-CP cũng 01-01 nhưng cùng ngày — bắt ≥1 gồm 154)
+const r2 = await goi({ resource: 'hieu_luc_sap_doi', tu: '2026-12-28', so_ngay: '10' });
+const len2 = (r2.body.items || []).filter((x) => x.suKien === 'LEN_HIEU_LUC');
+check('cửa sổ quanh 01-01-2027 có TT 154/2026 LEN', len2.some((x) => x.soHieu === '154/2026/TT-BTC' && x.ngay === '2027-01-01'), JSON.stringify(r2.body.items));
 
 // so_ngay giới hạn 1..3650, tu sai định dạng → mặc định hôm nay
 const r3 = await goi({ resource: 'hieu_luc_sap_doi', so_ngay: '99999', tu: 'abc' });
