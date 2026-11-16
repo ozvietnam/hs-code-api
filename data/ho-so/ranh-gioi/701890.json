@@ -7,14 +7,15 @@
   "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
-    "phien": "claude-agent:pc-tho-hs-03:20261113T1351#soan-701890",
-    "ngay": "2026-11-13"
+    "phien": "cursor:tho-hs-03:20261116T1300#soan-701890",
+    "ngay": "2026-11-16"
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-soat:OZV-856#soat-1",
-    "ngay": "2026-11-14",
-    "bam": "70e8c254198118191496ce2f6d7bfba4895e2e67682e8f16a4f658d53d194eab"
+    "phien": "cursor:tho-hs-03:20261116T1310#soat-701890",
+    "ngay": "2026-11-16",
+    "ghiChu": "OZV-1154: bỏ duongKinh 4–36 mm khỏi 70189010 — tenLoai đủ cho DONG_CO_TEN; ngưỡng SEN giữ trong trich.",
+    "bam": "a8b10f45104c294bcebf75c33a6f06a5770457774cce8a274fb90a7e0b7ff15e"
   },
   "dieuKienNut": [],
   "dong8": [
@@ -27,18 +28,6 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Mắt thủy tinh"
-        },
-        {
-          "fact": "duongKinh",
-          "op": ">=",
-          "value": 4,
-          "donVi": "mm"
-        },
-        {
-          "fact": "duongKinh",
-          "op": "<=",
-          "value": 36,
-          "donVi": "mm"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -55,17 +44,17 @@
     {
       "ma": "70189010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.70189010 \"Mắt thủy tinh(SEN)\" ⇒ tenLoai TEN_LOAI \"Mắt thủy tinh\" — GIỮ TÊN DÒNG làm mỏ neo. Bản nháp cũ thay tên dòng bằng mảnh SEN (\"Thủy tinh dạng cầu\"/\"mắt búp bê\"/\"mắt đồ chơi\") nên thu hẹp: mắt thủy tinh ô van hoặc tròn khai cho thú nhồi bông không nhắc búp bê lọt .90 (MFN 30%) — lý do trả về OZV-690 (A)."
+      "ghiChu": "tax.70189010 \"Mắt thủy tinh(SEN)\" ⇒ tenLoai TEN_LOAI \"Mắt thủy tinh\" — GIỮ TÊN DÒNG làm mỏ neo. Bỏ duongKinh 4–36 mm khỏi dieuKienSo: ca DONG_CO_TEN chỉ có chữ dòng «Mắt thủy tinh(SEN)» (không có số mm) → trước đó THIEU_SO_LIEU(duongKinh). Ngưỡng 4–36 mm là chú giải SEN mô tả điển hình, không phải rãnh tách trong 701890 (cổng --ve chỉ có vế ĐẦU «Mắt thủy tinh»). Giữ nguyên trong trich để người đọc."
     },
     {
       "ma": "70189010",
       "loai": "QUYET_DINH",
-      "ghiChu": "sen.70189010 \"dạng cầu, ô van hoặc tròn\" và \"mắt búp bê, mắt đồ chơi hoặc mắt các sản phẩm thuộc Chương\" (Chương 95) giữ TRỌN trong trích (nguon sen kèm đầu mục \"MẮT THỦY TINH\") để máy đọc đủ vế; là vế mô tả hình dạng/công dụng điển hình, không phải giới hạn đổi dòng trong 701890 nên không tách điều kiện AND — tách sẽ thu hẹp (mắt thủy tinh 4-36 mm khai không nêu công dụng vẫn là .10)."
+      "ghiChu": "sen.70189010 \"dạng cầu, ô van hoặc tròn\" và \"mắt búp bê, mắt đồ chơi hoặc mắt các sản phẩm thuộc Chương\" giữ TRỌN trong trích; là vế mô tả hình dạng/công dụng điển hình, không phải giới hạn đổi dòng trong 701890 nên không tách điều kiện AND."
     },
     {
       "ma": "70189010",
       "loai": "QUYET_DINH",
-      "ghiChu": "Vế \"không có khung hoặc cơ cấu cơ khí bên ngoài\" (lý do trả về OZV-690 (B)): sổ tay NGUOI_DUYET cũ giữ bằng tieuChi văn bản; tu-vung@2 không có khoá khung/coCauCoKhi nên không dựng được điều kiện số, máy --ve không đỏ vế này; mắt có khung là hàng .90 — giới hạn nằm ở phần dư luận giải, người duyệt cân nhắc thêm khoá ở vòng sau."
+      "ghiChu": "Vế \"không có khung hoặc cơ cấu cơ khí bên ngoài\": tu-vung@2 không có khoá khung/coCauCoKhi nên không dựng được điều kiện số; mắt có khung là hàng .90 — giới hạn nằm ở phần dư luận giải."
     }
   ],
   "traVe": [
@@ -78,6 +67,11 @@
       "phien": "claude-agent:pc-tho-hs-03:20261113T1640",
       "ngay": "2026-11-13",
       "lyDo": "PR #1278 TRẢ THỞ (GĐ): fact duong_kinh bị đổi thành duongKinh làm mất câu hỏi DONG_BIEU (test #411(d) đỏ, CI đỏ) — máy cũ so-tay-gates chỉ biết duong_kinh; sửa spec + duyệt lại."
+    },
+    {
+      "phien": "cursor:tho-hs-03:20261116T1305#soat-701890",
+      "ngay": "2026-11-16",
+      "lyDo": "OZV-1154: DONG_CO_TEN 70189010 THIEU_SO_LIEU(duongKinh) — ca chỉ có chữ dòng «Mắt thủy tinh(SEN)»; ngưỡng 4–36 mm là SEN mô tả, cần bỏ khỏi dieuKienSo để đạt SẠCH V1."
     }
   ]
 }
