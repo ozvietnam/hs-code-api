@@ -166,6 +166,52 @@ test('OZV-1259: không có hạn chót (CLI/bench) → hành vi y cũ, không c�
   assert.equal(r.webHint?.nguonWeb, 'zai');
 });
 
+// OZV-1280: sau #1377 SMC A3 vẫn b1b ~15s trên NEED_FACTS (còn ≥ 120 s → OZV-1269 không bỏ web;
+// HS_B1B_ZAI_MS mặc định 15 s). Khách sắp bị hỏi — trần cứng pha web ≤ 3 s khi có hạn chót HTTP.
+test('OZV-1280: HTTP NEED_FACTS còn ≥ 120 s — z.ai chậm vẫn cắt ≤ 3 s, trả NEED_FACTS + câu hỏi', async () => {
+  process.env.ZAI_WEB_FACTS = 'on';
+  delete process.env.HS_B1B_WEB_MS;
+  delete process.env.HS_B1B_ZAI_MS; // mặc định cũ 15 s — đúng tình huống đo 01:05
+  let timeoutNhan = null;
+  const out = NF();
+  const t0 = Date.now();
+  const r = await b1bApDung({ tenHang: 'giác hút SMC ZP2-B01' }, out, {
+    hanChotMs: Date.now() + 180000, // còn đủ chạy lại → OZV-1269 không bỏ
+    _timWeb: timRong,
+    _b1bWebFacts: (o) => {
+      timeoutNhan = o.timeoutMs;
+      return new Promise((res) => setTimeout(() => res({ cauTraLoi: 'cao su NBR' }), 8000).unref());
+    },
+  }, async () => { throw new Error('không được chạy lại khi web quá hạn'); });
+  const ms = Date.now() - t0;
+  delete process.env.ZAI_WEB_FACTS;
+  assert.equal(r.status, 'NEED_FACTS');
+  assert.ok(r.nextAction?.questions?.length > 0, 'giữ câu hỏi hỏi khách');
+  assert.ok(timeoutNhan != null && timeoutNhan <= 3000, `trần web ≤ 3 s, nhận ${timeoutNhan}`);
+  assert.equal(r.webHint, undefined, 'z.ai quá hạn → không gắn webHint');
+  assert.ok(ms < 4500, `pha B1b phải ≤ ~3 s, mất ${ms} ms`);
+});
+
+test('OZV-1280: HTTP shadow — timWeb chậm cũng bị trần ≤ 3 s (không chờ 6 s mặc định)', async () => {
+  process.env.ZAI_WEB_FACTS = 'shadow';
+  delete process.env.HS_B1B_WEB_MS;
+  let timTimeout = null;
+  const t0 = Date.now();
+  const r = await b1bApDung({ tenHang: 'giác hút SMC' }, NF(), {
+    hanChotMs: Date.now() + 180000,
+    _timWeb: (q, o) => {
+      timTimeout = o && o.timeoutMs;
+      return new Promise((res) => setTimeout(() => res([{ doanTrich: 'x', url: 'https://x', tieuDe: 't' }]), 8000).unref());
+    },
+    _b1bWebFacts: async () => ({ cauTraLoi: 'không tới đây' }),
+  }, async () => null);
+  const ms = Date.now() - t0;
+  delete process.env.ZAI_WEB_FACTS;
+  assert.equal(r.status, 'NEED_FACTS');
+  assert.ok(timTimeout != null && timTimeout <= 3000, `timWeb nhận timeoutMs ≤ 3 s, nhận ${timTimeout}`);
+  assert.ok(ms < 4500, `pha B1b phải ≤ ~3 s, mất ${ms} ms`);
+});
+
 test('gopDauVao: giới hạn ~1000 ký tự, giữ các trường gốc', () => {
   const g = gopDauVao({ tenHang: 't', chatLieu: 'gang' }, 'x'.repeat(3000));
   assert.ok(g.tenHang.length <= 1000);
