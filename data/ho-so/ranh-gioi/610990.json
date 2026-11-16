@@ -10,7 +10,13 @@
     "phien": "zcode-sub:glm-5.3:20261106T1625#soan-610990",
     "ngay": "2026-11-06"
   },
-  "duyet": {"boi":"CLAUDE_DUYET","phien":"claude-agent:tho-hs-01-20261115#soat-610990","ngay":"2026-11-15","ghiChu":"Đối chiếu chữ biểu thuế 610990 (61099010 nam/trẻ em trai từ ramie, lanh hoặc tơ tằm; 61099020 nam/trẻ em trai từ vật liệu dệt khác; 61099030 phụ nữ/trẻ em gái) khớp dieuKienSo và câu hỏi phân nhánh — duyệt áp sổ tay 6109 (OZV-1121)","bam":"c1628ac56c3c1ddcd2e5342ba1c233091927f9304253118cf34d3ab4c12ff070"},
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-01-20261116#ozv-1182-ramie-610990",
+    "ngay": "2026-11-16",
+    "ghiChu": "OZV-1182: thêm RAMIE vào 61099010 (chữ biểu nêu ramie, lanh hoặc tơ tằm) sau khi tách RAMIE khỏi SOI_THUC_VAT_KHAC",
+    "bam": "107d4f0a15638bfbf651669c29b9dec696a316c37e11b3b4f0265def0df0c6d9"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -31,6 +37,7 @@
           "op": "TRONG",
           "value": [
             "SOI_THUC_VAT_KHAC",
+            "RAMIE",
             "TO_TAM"
           ]
         }
