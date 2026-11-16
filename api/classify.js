@@ -18,6 +18,8 @@ const { acquireServiceSlot } = require('../lib/service-rate-limit');
 const { ganHoSoClassify } = require('../lib/ho-so/api');
 // OZV-507 việc 1 — cache theo hash hồ sơ cho LƯỢT KHOÁ DỊCH VỤ (Postgres kín; lượt công khai không đụng).
 const { cacheBat, khoaCache, docCache, ghiCache, donPhienBanCu, phienBanDuLieu } = require('../lib/classify-cache');
+// OZV-1144 / OZV-1211 (G5 · OZV-760) — kho đáp án: HS_KHO_DAP_AN=off|shadow|on (mặc định off; on chỉ trả bản DUYET).
+const { cheDoKhoDapAn, soiBong, traTuKho } = require('../lib/kho-dap-an');
 
 /** `supplierHs`: {code, source?, url?} hoặc chuỗi mã. Trả null khi không đủ 6 chữ số. */
 function parseSupplierHs(v) {
@@ -170,13 +172,35 @@ module.exports = async function handler(req, res) {
       // Chỉ khoá dịch vụ; debug/holdout đổi shape + ngữ cảnh ⇒ bỏ qua cache. Lượt cold giữ nguyên hành vi
       // (không đụng dòng nào phía trên); lượt trúng trả nguyên phản hồi + cached:true, KHÔNG gọi LLM.
       const dungCache = cacheBat() && !debug && !wantsEvalHoldout(req);
-      const pb = dungCache ? phienBanDuLieu() : null;
+      // OZV-1144 / OZV-1211 — kho đáp án: shadow|on ghi sau động cơ (fire-and-forget); on còn đọc TRƯỚC và trả DUYET.
+      // Bỏ qua debug/holdout (điều 7 mục 3 thiết kế). Lọc riêng tư nằm trong lib/kho-dap-an.js.
+      const cheDoKho = cheDoKhoDapAn();
+      const ghiKho = (cheDoKho === 'shadow' || cheDoKho === 'on') && !debug && !wantsEvalHoldout(req);
+      const dungKhoOn = cheDoKho === 'on' && !debug && !wantsEvalHoldout(req);
+      const dauVaoKho = (ghiKho || dungKhoOn)
+        ? { ...attrs, thuongHieu: body?.thuongHieu || body?.brand || null, model: body?.model || null, xuatXu: body?.xuatXu || body?.origin || null }
+        : null;
+      const chayBong = (ketQua, soLuotLlm) => {
+        if (!ghiKho) return;
+        soiBong(dauVaoKho, ketQua, { tier, quaGio: Date.now() - started >= tran, soLuotLlm }).catch(() => {});
+      };
+      const pb = phienBanDuLieu();
+      if (dungKhoOn && dauVaoKho) {
+        const tra = await traTuKho(dauVaoKho, { tier, phienBan: pb, debug, holdout: wantsEvalHoldout(req) });
+        if (tra.hit && tra.phanHoi) {
+          return res.status(200).json({
+            ...tra.phanHoi, attrs, usage: [], ms: Date.now() - started,
+            khoDapAn: true, phienBanDuLieu: pb,
+          });
+        }
+      }
       const khoa = dungCache
         ? khoaCache(attrs, attrsHoSo, { tier, kenhGoi, noiBo: laNoiBoOz(req) })
         : null;
       if (dungCache) {
         const tram = await docCache(khoa, pb);
         if (tram) {
+          chayBong(tram, 0);
           // Trúng cache: không có lượt LLM nào ⇒ usage rỗng (không tính phí token cho lượt này).
           return res.status(200).json({ ...tram, attrs, usage: [], ms: Date.now() - started, cached: true, phienBanDuLieu: pb });
         }
@@ -185,7 +209,11 @@ module.exports = async function handler(req, res) {
       // Lượt quá hạn vẫn chạy nền tới khi xong và vẫn TỐN tiền LLM như thường. Gắn ghi cache vào chính promise đó
       // để tiền đã tiêu không mất trắng: lượt sau cùng hồ sơ trúng cache, khỏi gọi LLM lại (OZV-507 việc 1).
       const chayCoCache = run(() => withHangHoa(() => withUsage(() => chay({ noiBo: laNoiBoOz(req), caller: serviceCaller(req) }))))
-        .then((kq2) => { if (dungCache) ghiCache(khoa, pb, kq2.result); return kq2; }); // lỗi DB nuốt trong lib
+        .then((kq2) => {
+          if (dungCache) ghiCache(khoa, pb, kq2.result); // lỗi DB nuốt trong lib
+          chayBong(kq2.result, Array.isArray(kq2.usage) ? kq2.usage.length : null);
+          return kq2;
+        });
       const kq = await trongHan(chayCoCache, tran - (Date.now() - started));
       if (kq.quaGio) return traLoiQuaGio(res, { ms: Date.now() - started, tranMs: tran, attrs });
       const { result, usage } = kq.v;

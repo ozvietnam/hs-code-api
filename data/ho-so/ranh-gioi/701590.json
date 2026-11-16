@@ -10,7 +10,13 @@
     "phien": "zcode-sub:glm-5.3:20261106T0951#soan-701590",
     "ngay": "2026-11-06"
   },
-  "duyet": {"boi":"CLAUDE_DUYET","phien":"claude-agent:tho-hs-01-20261115#soat-701590","ngay":"2026-11-15","ghiChu":"Đối chiếu chữ biểu thuế 701590 (70159010 mặt kính đồng hồ cá nhân hoặc đồng hồ khác; 70159090 loại khác) khớp dieuKienSo và câu hỏi phân nhánh — duyệt áp sổ tay 7015 (OZV-1113)","bam":"bbfa05e4a6e48ef25f0572d8445010d47dc38e9c7fcf969027174a860cfd11aa"},
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-01-20261115#soat-ozv-1141",
+    "ngay": "2026-11-15",
+    "ghiChu": "Đã đối chiếu chữ biểu thuế VI+EN và xử lý mục trả về (OZV-1141)",
+    "bam": "f2c5760bdefe97bcf1d560d293b84b5e7d5215862c45fdfa8c25a040338ccaa5"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -21,8 +27,13 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
+          "value": "Kính"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
           "value": [
-            "Kính đồng hồ thời gian",
+            "đồng hồ thời gian",
             "đồng hồ cá nhân"
           ]
         }
@@ -41,7 +52,7 @@
     {
       "ma": "70159010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.70159010 \"Kính đồng hồ thời gian hoặc đồng hồ cá nhân\" — hai dạng kính nối \"hoặc\" ⇒ mảng (kính cho đồng hồ thời gian hoặc cho đồng hồ đeo tay cá nhân)"
+      "ghiChu": "tax.70159010 \"Kính đồng hồ thời gian hoặc đồng hồ cá nhân\" (EN \"Clock or watch glasses\") ⇒ tenLoai \"Kính\" + dungCho [\"đồng hồ thời gian\", \"đồng hồ cá nhân\"] (Kính là danh từ đầu chung của cả hai loại đồng hồ)."
     },
     {
       "ma": "70159090",
