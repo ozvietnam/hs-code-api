@@ -3253,8 +3253,12 @@
     "chocolate spraying machine",
     "chocolate coating machine",
     "chocolate enrober",
+    "chocolate fountain",
     "máy phun phủ socola",
-    "máy phun socola 5 tầng"
+    "máy phun socola 5 tầng",
+    "đài phun socola",
+    "tháp phun socola",
+    "máy đài phun socola"
    ],
    "excludeIfAny": [
     "máy phun sơn",
@@ -3265,25 +3269,47 @@
     "phun thuốc",
     "máy pha socola",
     "kẹo socola",
-    "thanh socola"
+    "thanh socola",
+    "máy làm bánh"
    ],
-   "excludeReasonVi": "Máy phun sơn/cát/thuốc thuộc nhóm 84.24 (thiết bị phun, xịt, phun bắn). Kẹo/thanh socola là hàng thực phẩm ch.18; máy PHA đồ uống socola gia dụng khác máy chế biến công nghiệp 84.38.",
+   "excludeReasonVi": "Máy phun sơn/cát/thuốc thuộc nhóm 84.24 (thiết bị phun, xịt, phun bắn). Kẹo/thanh socola là hàng thực phẩm ch.18; máy PHA đồ uống socola gia dụng khác máy chế biến công nghiệp 84.38. Máy làm bánh/mỳ là 8438.10 — không lẫn mục phủ/phun socola 8438.20.",
    "candidates": [
     {
      "hs": "84382010",
-     "whenVi": "Máy công nghiệp dùng để chế biến/phủ/phun socola, cacao hoặc bánh kẹo (enrober, coating, tempering/phun tầng), hoạt động bằng điện → 8438.20.10",
+     "whenVi": "Máy công nghiệp dùng để chế biến/phủ/phun socola, cacao hoặc bánh kẹo (enrober, coating, tempering/phun tầng, chocolate fountain), hoạt động bằng điện → 8438.20.10. Ca «5 tầng»/đài phun thương mại mặc định điện.",
      "confidence": "high"
     },
     {
      "hs": "84382020",
      "whenVi": "Cùng loại máy chế biến/phủ socola–bánh kẹo nhưng KHÔNG hoạt động bằng điện → 8438.20.20",
      "confidence": "medium"
+    },
+    {
+     "hs": "84389019",
+     "whenVi": "Phụ tùng loại khác của máy nhóm 84.38 (không phải máy giấy 84.39) — chỉ khi hàng là phụ tùng; máy nguyên chiếc ưu tiên 8438.20.10",
+     "confidence": "low"
     }
    ],
    "avoid": [
     {
      "prefix": "8424",
      "whyVi": "8424 là máy/thiết bị phun–xịt–phun bắn (cát, sơn, thuốc, tia) — chữ «phun» trong «máy phun socola» dễ kéo sang 8424.30/8424.89; hàng này là máy chế biến thực phẩm nhóm 84.38.20 theo đúng dòng biểu thuế confectionery/cocoa/chocolate."
+    },
+    {
+     "prefix": "8439",
+     "whyVi": "8439 là máy sản xuất giấy/bìa — chữ «máy» + điểm tìm kiếm yếu dễ đẩy 84392000 vào top3 cạnh 8438.20; không phải máy phủ/phun socola."
+    },
+    {
+     "prefix": "8543",
+     "whyVi": "8543 máy/thiết bị điện có chức năng riêng — nhiễu «loại khác» khi câu ngắn; không phải máy chế biến thực phẩm 84.38.20."
+    },
+    {
+     "prefix": "8479",
+     "whyVi": "8479 máy/thiết bị cơ khí có chức năng riêng (kể cả một số máy thực phẩm dư) — nhiễu xếp hạng; máy phủ/phun socola công nghiệp đã có dòng riêng 8438.20."
+    },
+    {
+     "prefix": "8486",
+     "whyVi": "8486 máy/thiết bị bán dẫn — nhiễu điểm từ khoá ngắn; không liên quan chế biến socola."
     },
     {
      "prefix": "1806",
@@ -3295,12 +3321,11 @@
     }
    ],
    "askVi": [
-    "Máy dùng để chế biến/phủ socola–bánh kẹo công nghiệp (→ 8438.20) hay chỉ là bình/súng phun sơn–cát–thuốc (→ 84.24)?",
-    "Máy hoạt động bằng điện (→ 8438.20.10) hay không dùng điện (→ 8438.20.20)?"
+    "Máy hoạt động bằng điện (→ 8438.20.10, mặc định với đài/phun tầng thương mại) hay không dùng điện (→ 8438.20.20)?"
    ],
    "gir": "1",
    "basis": "RULE_TABLE",
-   "sourceVi": "Biểu thuế 2026 phân nhóm 8438.20 «Máy dùng để sản xuất bánh kẹo, cacao hoặc sôcôla» (EN: Machinery; industrial, for the manufacture of confectionery, cocoa or chocolate): 84382010 hoạt động bằng điện; 84382020 không hoạt động bằng điện. Ca A1 khách «máy phun socola 5 tầng» (OZV-1285): tìm kiếm thô ưu tiên 84243000 vì chữ «phun» — cần từ điển kéo về 8438.20 và loại hẳn 8424."
+   "sourceVi": "Biểu thuế 2026 phân nhóm 8438.20 «Máy dùng để sản xuất bánh kẹo, cacao hoặc sôcôla» (EN: Machinery; industrial, for the manufacture of confectionery, cocoa or chocolate): 84382010 hoạt động bằng điện; 84382020 không hoạt động bằng điện. OZV-1285 kéo khỏi bẫy 8424; OZV-1297 loại hẳn nhiễu 8439/8543/8479 khỏi top3 và bổ sung fountain/đài phun để search ra đủ mã 8 số nhóm 8438."
   }
  ],
  "updatedAt": "2026-11-17"
