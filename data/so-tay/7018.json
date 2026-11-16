@@ -203,26 +203,40 @@
     },
     {
       "hs": "70189010",
-      "dieuKien": "tên loại hàng: Mắt thủy tinh; đường kính (ngoài) >= 4 mm; đường kính (ngoài) <= 36 mm",
+      "dieuKien": "(tên loại hàng: Mắt thủy tinh và đường kính (ngoài) >= 4 mm và đường kính (ngoài) <= 36 mm) hoặc (tên loại hàng: Mắt thủy tinh)",
       "nguon": "sen.70189010",
       "trich": "MẮT THỦY TINH…Thủy tinh dạng cầu, ô van hoặc tròn không có khung hoặc cơ cấu cơ khí bên ngoài, đường kính 4-36 mm. Chúng có thể có nhiều màu khác nhau, được hoặc không được trang trí, sơn. Chúng sử dụng để làm mắt búp bê, mắt đồ chơi hoặc mắt các sản phẩm thuộc Chương",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Mắt thủy tinh"
-        },
-        {
-          "fact": "duongKinh",
-          "op": ">=",
-          "value": 4,
-          "donVi": "mm"
-        },
-        {
-          "fact": "duongKinh",
-          "op": "<=",
-          "value": 36,
-          "donVi": "mm"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Mắt thủy tinh"
+              },
+              {
+                "fact": "duongKinh",
+                "op": ">=",
+                "value": 4,
+                "donVi": "mm"
+              },
+              {
+                "fact": "duongKinh",
+                "op": "<=",
+                "value": 36,
+                "donVi": "mm"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Mắt thủy tinh"
+              }
+            ]
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET",
@@ -230,9 +244,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-soat:OZV-856#soat-1",
-          "ngay": "2026-11-14",
-          "bam": "70e8c254198118191496ce2f6d7bfba4895e2e67682e8f16a4f658d53d194eab"
+          "phien": "cursor:tho-hs-03-review:20261116T1550#soat-701890",
+          "ngay": "2026-11-16",
+          "bam": "35e5a843556c118fe5a65de9b25fd3f2702726a03b92b77a17ea051785c72fbf"
         }
       },
       "tieuChi": {
