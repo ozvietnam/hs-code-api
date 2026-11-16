@@ -489,6 +489,22 @@ export function sinhCaNhom(nhom4) {
             moTa += cacPhan[i];
           }
           moTa += phuKhong.length ? ` - ${phuKhong.join(' - ')}` : '';
+          // OZV-1180: gắn khẳng định PHAI_CO của CHÍNH dòng (CO / SỐ / TRONG) vào mô tả ca — chữ tiêu đề
+          // đôi khi không trùng mẫu đọc tu-vung (vd 22072011 \"nồng độ trên 99%\" ≠ \"nồng độ cồn\"; 25010010
+          // \"Muối thực phẩm\" cần daBoSungIot theo QCVN). Bỏ TEN_LOAI/CONG_DUNG (đã có trong tenDong).
+          {
+            const dd = DK.duongDiDong8(hs8, { soTay: st });
+            const khang = [];
+            for (const g of dd.nhom || []) {
+              if (g.chieu !== 'PHAI_CO' || g.tang !== 0 || !Array.isArray(g.dieuKien)) continue;
+              for (const c of g.dieuKien) {
+                if (!c || c.op === 'TEN_LOAI' || c.op === 'CONG_DUNG' || c.op === 'TUONG_TU') continue;
+                const s = cumKhangDinh(c);
+                if (s && !khang.includes(s) && !moTa.includes(s)) khang.push(s);
+              }
+            }
+            if (khang.length) moTa += ` - ${khang.join(' - ')}`;
+          }
         } else {
           // nếp cũ của main: midText vốn nối " - " bên trong, các phần trên nối ": "
           moTa = [ten6, midText, hs8 === n?.laPhanNhom ? '' : tenDong].filter(Boolean).join(': ');
