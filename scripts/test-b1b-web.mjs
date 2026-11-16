@@ -69,6 +69,85 @@ test('b1b: lượt chạy lại (_b1bDaThu) không tra web lần nữa — trả
   assert.deepEqual(r, out);
 });
 
+// OZV-1259: đo prod 16/11 — z.ai (rơi về khi SearXNG rỗng) ăn 8–27 s/lượt chỉ để gắn webHint (lượt chạy lại không
+// bao giờ chạy trên HTTP vì trần 85 s < B1B_LAI_MIN_MS 120 s); goiZai mặc định 45 s có thể đẩy cả lượt quá trần ⇒ 503
+// QUA_GIO, khách mất luôn đáp án NEED_FACTS. Có hạn chót lượt (opts.hanChotMs) thì z.ai phải nằm gọn trong hạn.
+const NF = () => ({ status: 'NEED_FACTS', nextAction: { questions: [{ questionVi: 'chất liệu?' }] } });
+const timRong = async () => [];
+
+test('OZV-1259: còn quá ít giờ tới hạn chót → KHÔNG gọi z.ai, trả out nguyên vẹn ngay', async () => {
+  process.env.ZAI_WEB_FACTS = 'on';
+  let daGoi = 0;
+  const t0 = Date.now();
+  const out = NF();
+  const r = await b1bApDung({ tenHang: 'giác hút SMC' }, out, {
+    hanChotMs: Date.now() + 3000, _timWeb: timRong,
+    _b1bWebFacts: async () => { daGoi++; return { cauTraLoi: 'cao su NBR' }; },
+  }, async () => null);
+  delete process.env.ZAI_WEB_FACTS;
+  assert.equal(daGoi, 0);
+  assert.equal(r.webHint, undefined);
+  assert.ok(Date.now() - t0 < 500, `phải trả ngay, mất ${Date.now() - t0} ms`);
+});
+
+test('OZV-1259: z.ai chậm hơn trần HS_B1B_ZAI_MS → cắt đúng trần, bỏ webHint, không chờ z.ai', async () => {
+  process.env.ZAI_WEB_FACTS = 'on';
+  process.env.HS_B1B_ZAI_MS = '300';
+  let timeoutNhan = null;
+  const t0 = Date.now();
+  const r = await b1bApDung({ tenHang: 'máy phun socola 5 tầng' }, NF(), {
+    hanChotMs: Date.now() + 60000, _timWeb: timRong,
+    _b1bWebFacts: (o) => { timeoutNhan = o.timeoutMs; return new Promise((res) => setTimeout(() => res({ cauTraLoi: 'trễ' }), 3000).unref()); },
+  }, async () => null);
+  const ms = Date.now() - t0;
+  delete process.env.ZAI_WEB_FACTS; delete process.env.HS_B1B_ZAI_MS;
+  assert.equal(timeoutNhan, 300, 'webFacts phải nhận timeoutMs = trần');
+  assert.equal(r.webHint, undefined);
+  assert.ok(ms < 1500, `phải cắt ở ~300 ms, mất ${ms} ms`);
+});
+
+test('OZV-1259: đồng hồ đua hạn chót giữ vòng sự kiện — tiến trình trơ trọi vẫn nhận kết quả (CI #1373 đỏ vì unref)', async () => {
+  // Tiến trình con không có socket/handle nào khác: nếu đồng hồ đua bị unref, Node thoát trước 300 ms → không in XONG.
+  const { spawnSync } = await import('node:child_process');
+  const { fileURLToPath } = await import('node:url');
+  const lib = fileURLToPath(new URL('../lib/b1b-web.js', import.meta.url));
+  const ma = `
+    process.env.ZAI_WEB_FACTS = 'on'; process.env.HS_B1B_ZAI_MS = '300'; delete process.env.ZAI_SEARCH_KEY;
+    const { b1bApDung } = require(${JSON.stringify(lib)});
+    b1bApDung({ tenHang: 'máy phun socola 5 tầng' }, { status: 'NEED_FACTS', nextAction: { questions: [{ questionVi: 'chất liệu?' }] } }, {
+      hanChotMs: Date.now() + 60000, _timWeb: async () => [],
+      _b1bWebFacts: () => new Promise((res) => setTimeout(() => res({ cauTraLoi: 'trễ' }), 3000).unref()),
+    }, async () => null).then((r) => console.log('XONG', r.webHint === undefined ? 'khong-hint' : 'co-hint'));
+  `;
+  const kq = spawnSync(process.execPath, ['-e', ma], { encoding: 'utf8', timeout: 10000 });
+  assert.match(kq.stdout, /XONG khong-hint/, `tiến trình phải in kết quả; stdout=${kq.stdout.slice(-200)} stderr=${kq.stderr.slice(-200)}`);
+});
+
+test('OZV-1259: trần z.ai co theo hạn chót lượt (còn − 5 s lề), nhỏ hơn trần env', async () => {
+  process.env.ZAI_WEB_FACTS = 'on';
+  let timeoutNhan = null;
+  const r = await b1bApDung({ tenHang: 'đèn led hình gấu' }, NF(), {
+    hanChotMs: Date.now() + 9000, _timWeb: timRong,
+    _b1bWebFacts: async (o) => { timeoutNhan = o.timeoutMs; return { cauTraLoi: 'đèn ngủ phát sáng thật' }; },
+  }, async () => null);
+  delete process.env.ZAI_WEB_FACTS;
+  assert.ok(timeoutNhan > 2000 && timeoutNhan <= 4000, `trần phải ≈ 9 s − 5 s, nhận ${timeoutNhan}`);
+  assert.equal(r.webHint?.nguonWeb, 'zai', 'z.ai trả kịp thì vẫn gắn webHint như cũ');
+});
+
+test('OZV-1259: không có hạn chót (CLI/bench) → hành vi y cũ, không cắt z.ai', async () => {
+  process.env.ZAI_WEB_FACTS = 'on';
+  process.env.HS_B1B_ZAI_MS = '50';
+  let timeoutNhan = 'chua';
+  const r = await b1bApDung({ tenHang: 'bộ lọc khí AR2000' }, NF(), {
+    _timWeb: timRong,
+    _b1bWebFacts: (o) => { timeoutNhan = o.timeoutMs; return new Promise((res) => setTimeout(() => res({ cauTraLoi: 'lọc khí nén' }), 200)); },
+  }, async () => null);
+  delete process.env.ZAI_WEB_FACTS; delete process.env.HS_B1B_ZAI_MS;
+  assert.equal(timeoutNhan, undefined);
+  assert.equal(r.webHint?.nguonWeb, 'zai');
+});
+
 test('gopDauVao: giới hạn ~1000 ký tự, giữ các trường gốc', () => {
   const g = gopDauVao({ tenHang: 't', chatLieu: 'gang' }, 'x'.repeat(3000));
   assert.ok(g.tenHang.length <= 1000);
