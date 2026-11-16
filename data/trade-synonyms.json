@@ -2664,7 +2664,7 @@
   },
   {
    "id": "card-chuyen-doi-cong",
-   "titleVi": "Card mở rộng / chuyển đổi cổng giao tiếp (PCI-E → RS-232/RS-485/CAN, USB-COM, NIC)",
+   "titleVi": "Card mở rộng / chuyển đổi cổng giao tiếp (PCI-E → RS-232/RS-485, USB-COM, adapter nối thiết bị I/O)",
    "terms": [
     "card mở rộng cổng",
     "card chuyển đổi cổng",
@@ -2691,13 +2691,13 @@
    "excludeReasonVi": "Card âm thanh/hình ảnh thuộc 8471.80.70 (AHTN); card RAID/SATA điều khiển lưu trữ NỘI BỘ máy tính thuộc 8471.80.10.",
    "candidates": [
     {
-     "hs": "85176243",
-     "whenVi": "Card GIAO TIẾP TRUYỀN THÔNG với thiết bị ngoài qua chuẩn truyền (RS-232/RS-485/CAN/USB-COM, card mạng NIC) — chuyển đổi + truyền dữ liệu giữa máy tính và thiết bị ngoài. CBP N294888 đã đối chiếu nguyên văn (PCI adapter network card → 8517.62.0050); VN: TB-CHQ 89 (cổng kết nối ESL → 8517.62.43)",
+     "hs": "84718010",
+     "whenVi": "Card/adapter DÂY NỐI nối máy tính với THIẾT BỊ NGOÀI theo chuẩn truyền nối tiếp (RS-232/RS-485/CAN/USB-COM sang cân, PLC, đầu đọc, cảm biến) — 'bộ điều khiển và bộ thích ứng' nối CPU với đơn vị vào/ra. CBP N236756 (đã mở nguyên văn: USB adapter nối transducer↔PC → 8471.80.1000, viện Chú giải 5(C) ví dụ (4) 'control and adaptor units to effect interconnection of the CPU to input or output units')",
      "confidence": "medium"
     },
     {
-     "hs": "84718010",
-     "whenVi": "Card ĐIỀU KHIỂN NỘI BỘ máy tính theo Chú giải 5(B) Chương 84 — RAID/SATA/SAS host adapter quản lý lưu trữ của chính hệ thống (không phải giao tiếp truyền thông ra ngoài)",
+     "hs": "85176243",
+     "whenVi": "Chỉ khi chức năng là GIAO TIẾP MẠNG/VÔ TUYẾN (card NIC có dây/RF, bridge, router) — CBP N294888 item 2 (PCI wireless NIC → 8517.62.0050, đã mở nguyên văn); VN TB-CHQ 89 (cổng kết nối ESL anten 2,4GHz → 8517.62.43). Cha 8517.62.4x = 'thiết bị hệ thống hữu tuyến sóng mang/hữu tuyến số' — hẹp theo viễn thông",
      "confidence": "medium"
     }
    ],
@@ -2716,7 +2716,186 @@
    ],
    "gir": "GIR 1 + Chú giải 5 khoản (B) Chương 84",
    "basis": "RULE_TABLE",
-   "sourceVi": "Ca thật 16/11/2026: card UTEK PCI-E → 8×RS-232; 2 dòng VN 8471.80.10 và 8517.62.43 TRÙNG tiền tố tên 'Bộ điều khiển và bộ thích ứng' — phân bằng bối cảnh heading + chức năng. CBP N294888 (23/3/2018, TP-Link — đã mở nguyên văn CROSS: 'AC 1900 Wireless Dual Band PCI Express Adapter, a PCI adapter network card used in a PC to provide wireless connectivity' → 8517.62.0050). LƯU Ý: N266646 là programmable controllers ELAN → 8537.10 (chỉ có cổng RS-232 trong mô tả) — KHÔNG dùng làm tiền lệ cho cặp này."
+   "sourceVi": "Đính chính 16/11 sau phản biện + kiểm chứng nguyên văn CROSS bằng trình duyệt: N236756 (Phoenix Contact, 18/1/2013 — adapter USB nối transducer↔PC → 8471.80.1000 theo Chú giải 5(C) ví dụ (4)) là tiền lệ đích danh cho card RS-232 dây; N294888 và TB-CHQ 89 đều là hàng VÔ TUYẾN/MẠNG — chỉ lập luận cho card mạng. Ca UTEK PCI-E→8×RS-232 chốt 8471.80.10 (MFN 0%, sạch GP/KTCL)."
+  },
+  {
+   "id": "khuon-su-hand-former",
+   "titleVi": "Khuôn sứ (ceramic hand former) sản xuất găng tay",
+   "terms": [
+    "ceramic hand former",
+    "hand former",
+    "khuôn sứ",
+    "khuôn bàn tay bằng sứ",
+    "khuôn sản xuất găng tay",
+    "khuôn găng tay sứ"
+   ],
+   "excludeIfAny": [
+    "thép làm khuôn",
+    "mold steel",
+    "khuôn nhựa",
+    "injection mold",
+    "khuôn đúc kim loại"
+   ],
+   "excludeReasonVi": "Thép/khuôn nhựa/khuôn đúc kim loại là nguyên liệu hoặc khuôn máy (ch.72/84.80), không phải sản phẩm gốm sứ nhóm 69.14.",
+   "candidates": [
+    {
+     "hs": "69141000",
+     "whenVi": "Khuôn bàn tay bằng sứ/porcelain (ceramic hand former) dùng nhúng cao su/nitrile để sản xuất găng tay — sản phẩm bằng gốm sứ khác, bằng sứ (69.14.10.00).",
+     "confidence": "high"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "6603",
+     "whyVi": "6603 là khung ô/cán gậy — 'hand' trong hand former không phải cán ô; đo A1 16/11 API thô trả 66032000 là nhiễu từ khoá hand."
+    },
+    {
+     "prefix": "8477",
+     "whyVi": "8477 là máy chế biến cao su/plastic — khuôn sứ là vật phẩm gốm, không phải máy."
+    },
+    {
+     "prefix": "6909",
+     "whyVi": "6909 là đồ gốm dùng trong phòng thí nghiệm/công nghiệp hoá (chậu, nồi) — khuôn former găng tay thuộc 69.14 theo TB-TCHQ."
+    },
+    {
+     "prefix": "8480",
+     "whyVi": "8480 là khuôn đúc kim loại/khuôn ép nhựa của máy — khác khuôn sứ former đã thành hình để nhúng găng."
+    }
+   ],
+   "askVi": [
+    "Khuôn làm bằng sứ/porcelain để nhúng găng, hay là khuôn máy đúc/ép (kim loại/nhựa)?"
+   ],
+   "gir": "GIR 1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "TB-TCHQ / CV 1030/TCHQ-TXNK (2022): khuôn sứ dùng sản xuất găng tay (khuôn bàn tay bằng sứ nhúng cao su/nitrile) → nhóm 69.14, mã 6914.10.00 (bằng sứ). Biểu thuế 2026 dòng 6914.10.00 'Bằng sứ' / EN 'of porcelain or china'."
+  },
+  {
+   "id": "ke-pallet-rack",
+   "titleVi": "Kệ chứa hàng pallet / pallet rack (kệ kho kim loại)",
+   "terms": [
+    "pallet rack",
+    "pallet racks",
+    "kệ chứa hàng pallet",
+    "kệ kho hàng",
+    "kệ pallet",
+    "kệ chứa pallet"
+   ],
+   "excludeIfAny": [
+    "xe nâng",
+    "forklift",
+    "hand pallet",
+    "pallet jack",
+    "xe nâng tay",
+    "cầu",
+    "bridge"
+   ],
+   "excludeReasonVi": "Xe nâng/pallet jack thuộc 84.27; kết cấu cầu thuộc 73.08 — không phải kệ kho đồ nội thất 94.03.",
+   "candidates": [
+    {
+     "hs": "94032090",
+     "whenVi": "Kệ kho / pallet rack bằng kim loại (đã lắp thành đồ nội thất kho), kể cả đã qua sử dụng — đồ nội thất bằng kim loại khác (94.03.20.90).",
+     "confidence": "high"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "7308",
+     "whyVi": "7308 là cấu kiện cầu/cửa đập/trụ tháp — đo A1 16/11 API thô trả 73081010/90 là nhiễu 'kim loại/kết cấu'; kệ kho là đồ nội thất 94.03 theo TB-TCHQ."
+    },
+    {
+     "prefix": "730890",
+     "whyVi": "7308.90 kết cấu thép xây dựng khác — không phải kệ chứa hàng kiểu đồ nội thất kho."
+    },
+    {
+     "prefix": "7326",
+     "whyVi": "7326 sản phẩm thép khác dư địa — khi đã có nhóm 94.03 nhận kệ kho thì không đẩy sang 7326."
+    }
+   ],
+   "askVi": [
+    "Là kệ kho/pallet rack đặt sàn để chứa pallet, hay kết cấu xây dựng/cầu/cột thép?"
+   ],
+   "gir": "GIR 1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "CV 6497/TCHQ-TXNK 25/12/2024 và CV 3250/TXNK-PL 13/3/2025 (dẫn tại 5950/CHQ-NVTHQ 2025): kệ kho hàng thuộc nhóm 94.03, mã 9403.20.90 đồ nội thất bằng kim loại khác; hàng đã qua sử dụng của 9403.20 thuộc danh mục hàng tiêu dùng đã qua sử dụng cấm NK (TT 12/2018/TT-BCT, TT 08/2023/TT-BCT)."
+  },
+  {
+   "id": "bo-loc-dieu-ap-khi-nen-frl",
+   "titleVi": "Bộ lọc / điều áp khí nén FRL (AR·AF·AFR series)",
+   "terms": [
+    "ar2000",
+    "af2000",
+    "afr2000",
+    "afc2000",
+    "aw2000",
+    "ar2000-02",
+    "af2000-02",
+    "bộ lọc khí nén",
+    "bo loc khi nen",
+    "điều áp khí nén",
+    "van điều áp khí nén",
+    "air filter regulator",
+    "frl khí nén",
+    "frc khí nén",
+    "pneumatic air filter",
+    "pneumatic regulator"
+   ],
+   "excludeIfAny": [
+    "máy lọc không khí",
+    "air purifier",
+    "air purifiers",
+    "diện tích lọc",
+    "bắt muỗi",
+    "phòng ngủ",
+    "gia dụng"
+   ],
+   "excludeReasonVi": "Máy lọc không khí phòng/gia dụng (vd Sharp) thuộc 8421.39.20 — khác hẳn cụm FRL khí nén công nghiệp.",
+   "candidates": [
+    {
+     "hs": "84812090",
+     "whenVi": "Model AR / van·điều áp khí nén (pressure regulator) trên mạch truyền động khí nén — van 8481.20 loại khác",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84812011",
+     "whenVi": "Cùng chức năng điều áp/van khí nén, thân bằng sắt hoặc thép",
+     "confidence": "low"
+    },
+    {
+     "hs": "84213990",
+     "whenVi": "Model AF / chỉ là bộ lọc khí nén (không phải máy lọc không khí phòng) — lọc khí loại khác 8421.39.90",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84213930",
+     "whenVi": "Bộ lọc khí nén vỏ thép không gỉ, Ø trong ống vào/ra ≤ 1,3 cm",
+     "confidence": "low"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "84213920",
+     "whyVi": "8421.39.20 là Máy lọc không khí (air purifiers) — tiền lệ TB-TCHQ 2700/TB-TCHQ là máy Sharp lọc phòng; AR/AF khí nén không thuộc dòng này."
+    },
+    {
+     "prefix": "842132",
+     "whyVi": "8421.32 là bộ xúc tác / lọc hạt khí thải động cơ đốt trong — không phải FRL khí nén thiết bị."
+    },
+    {
+     "prefix": "842123",
+     "whyVi": "8421.23 là bộ lọc dầu cho động cơ — khác bộ lọc khí nén."
+    },
+    {
+     "prefix": "842131",
+     "whyVi": "8421.31 là bộ lọc khí nạp động cơ đốt trong — khác FRL mạch khí nén công nghiệp."
+    }
+   ],
+   "askVi": [
+    "Đây là van/điều áp (model AR), bộ lọc (AF), hay bộ lọc kèm điều áp (AFR/FR/FRL)?",
+    "Dùng trên mạch khí nén công nghiệp — không phải máy lọc không khí phòng/gia dụng?"
+   ],
+   "gir": "GIR 1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế VN: 8481.20 van dùng cho truyền động oleohydraulic/pneumatic; 8421.39 máy/thiết bị lọc khí khác (84213920 = Máy lọc không khí / Air purifiers; 84213930/90 = loại khác). Series Airtac/Zonye AR=regulator, AF=filter, AFR/FR=filter+regulator trên mạch khí nén — đo A2/khách 16/11 câu «bộ lọc khí zonye ar2000 -02» API thô từng dừng 6 số / lệch sang 84213920."
   }
  ],
  "updatedAt": "2026-11-16"

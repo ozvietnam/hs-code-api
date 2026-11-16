@@ -18,8 +18,8 @@ const { acquireServiceSlot } = require('../lib/service-rate-limit');
 const { ganHoSoClassify } = require('../lib/ho-so/api');
 // OZV-507 việc 1 — cache theo hash hồ sơ cho LƯỢT KHOÁ DỊCH VỤ (Postgres kín; lượt công khai không đụng).
 const { cacheBat, khoaCache, docCache, ghiCache, donPhienBanCu, phienBanDuLieu } = require('../lib/classify-cache');
-// OZV-1144 (G5 PR 1a, OZV-760) — kho đáp án CHẾ ĐỘ BÓNG: HS_KHO_DAP_AN=off|shadow (mặc định off, chưa có 'on').
-const { cheDoKhoDapAn, soiBong } = require('../lib/kho-dap-an');
+// OZV-1144 / OZV-1211 (G5 · OZV-760) — kho đáp án: HS_KHO_DAP_AN=off|shadow|on (mặc định off; on chỉ trả bản DUYET).
+const { cheDoKhoDapAn, soiBong, traTuKho } = require('../lib/kho-dap-an');
 
 /** `supplierHs`: {code, source?, url?} hoặc chuỗi mã. Trả null khi không đủ 6 chữ số. */
 function parseSupplierHs(v) {
@@ -172,17 +172,28 @@ module.exports = async function handler(req, res) {
       // Chỉ khoá dịch vụ; debug/holdout đổi shape + ngữ cảnh ⇒ bỏ qua cache. Lượt cold giữ nguyên hành vi
       // (không đụng dòng nào phía trên); lượt trúng trả nguyên phản hồi + cached:true, KHÔNG gọi LLM.
       const dungCache = cacheBat() && !debug && !wantsEvalHoldout(req);
-      // OZV-1144 — kho đáp án BÓNG: chạy SAU khi đã có kết quả, không await ⇒ khách không chờ thêm ms nào;
-      // không đổi phản hồi. Bỏ qua debug/holdout (điều 7 mục 3 thiết kế). Lọc riêng tư nằm trong lib/kho-dap-an.js.
-      const bong = cheDoKhoDapAn() === 'shadow' && !debug && !wantsEvalHoldout(req);
-      const dauVaoKho = bong
+      // OZV-1144 / OZV-1211 — kho đáp án: shadow|on ghi sau động cơ (fire-and-forget); on còn đọc TRƯỚC và trả DUYET.
+      // Bỏ qua debug/holdout (điều 7 mục 3 thiết kế). Lọc riêng tư nằm trong lib/kho-dap-an.js.
+      const cheDoKho = cheDoKhoDapAn();
+      const ghiKho = (cheDoKho === 'shadow' || cheDoKho === 'on') && !debug && !wantsEvalHoldout(req);
+      const dungKhoOn = cheDoKho === 'on' && !debug && !wantsEvalHoldout(req);
+      const dauVaoKho = (ghiKho || dungKhoOn)
         ? { ...attrs, thuongHieu: body?.thuongHieu || body?.brand || null, model: body?.model || null, xuatXu: body?.xuatXu || body?.origin || null }
         : null;
       const chayBong = (ketQua, soLuotLlm) => {
-        if (!bong) return;
+        if (!ghiKho) return;
         soiBong(dauVaoKho, ketQua, { tier, quaGio: Date.now() - started >= tran, soLuotLlm }).catch(() => {});
       };
-      const pb = dungCache ? phienBanDuLieu() : null;
+      const pb = phienBanDuLieu();
+      if (dungKhoOn && dauVaoKho) {
+        const tra = await traTuKho(dauVaoKho, { tier, phienBan: pb, debug, holdout: wantsEvalHoldout(req) });
+        if (tra.hit && tra.phanHoi) {
+          return res.status(200).json({
+            ...tra.phanHoi, attrs, usage: [], ms: Date.now() - started,
+            khoDapAn: true, phienBanDuLieu: pb,
+          });
+        }
+      }
       const khoa = dungCache
         ? khoaCache(attrs, attrsHoSo, { tier, kenhGoi, noiBo: laNoiBoOz(req) })
         : null;

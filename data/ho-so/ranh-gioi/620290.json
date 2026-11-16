@@ -10,7 +10,13 @@
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-620290",
     "ngay": "2026-11-05"
   },
-  "duyet": {"boi":"CLAUDE_DUYET","phien":"claude-agent:tho-hs-01-20261115#soat-620290","ngay":"2026-11-15","ghiChu":"Đối chiếu chữ biểu thuế 620290 (62029010 từ tơ tằm; 62029020 từ ramie; 62029090 loại khác) khớp dieuKienSo và câu hỏi phân nhánh — duyệt áp sổ tay 6202 (OZV-1121)","bam":"7faf7a430043a19a81936b0df1b2708d726df65c9544c57c0eb0f349cdce9ead"},
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-01-20261116#ozv-1182-ramie",
+    "ngay": "2026-11-16",
+    "ghiChu": "Đối chiếu chữ biểu thuế 620290 (62029010 từ tơ tằm; 62029020 từ ramie; 62029090 loại khác) khớp dieuKienSo và câu hỏi phân nhánh — duyệt áp sổ tay 6202 (OZV-1121); OZV-1182: nút ramie dùng loaiSoiDet RAMIE",
+    "bam": "8e8e1f8042b68561c31f12ff1691917d2c13b88bc373bbd79ac5e94657657d3c"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -37,7 +43,7 @@
           "fact": "loaiSoiDet",
           "op": "TRONG",
           "value": [
-            "SOI_THUC_VAT_KHAC"
+            "RAMIE"
           ]
         }
       ],
@@ -60,7 +66,7 @@
     {
       "ma": "62029020",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.62029020: \"Từ ramie\" ⇒ loaiSoiDet SOI_THUC_VAT_KHAC"
+      "ghiChu": "tax.62029020: \"Từ ramie\" ⇒ loaiSoiDet RAMIE (OZV-1182 — tách khỏi SOI_THUC_VAT_KHAC)"
     }
   ],
   "traVe": [
