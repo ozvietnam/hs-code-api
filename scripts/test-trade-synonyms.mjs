@@ -118,6 +118,9 @@ console.log('\n== Câu hỏi thật của khách phải ra đúng mã (kho Oz kh
     ['camera truyền hình cmr12', ['85258920']],
     ['camera quan sát an ninh CCTV', ['85258920']],
     ['surveillance camera outdoor IP', ['85258920']],
+    // OZV-1298 — câu ngắn thiếu «truyền hình» vẫn về 85258920 (trước lệch 9001/9002)
+    ['camera cmr12', ['85258920']],
+    ['camera giám sát IP', ['85258920']],
   ];
   for (const [q, want] of cases) {
     const top2 = searchCandidates(q, { topCandidates: 2 }).map((c) => c.hsCode);
@@ -201,6 +204,13 @@ console.log('\n== Mã bẫy phải bị loại HẲN, không phải tụt hạng
   check('camera truyền hình không lẫn máy ảnh 9006', camCctv.every((c) => !c.hsCode.startsWith('9006')));
   check('camera truyền hình không lẫn ổ cứng/máy tính 8471', camCctv.every((c) => !c.hsCode.startsWith('8471')));
   check('camera truyền hình không lẫn tủ điện 8537', camCctv.every((c) => !c.hsCode.startsWith('8537')));
+  // OZV-1298 — câu ngắn + avoid thấu kính 9001/9002
+  const camShort = searchCandidates('camera cmr12', { topCandidates: 50 });
+  check('camera cmr12 top1 = 85258920', camShort[0]?.hsCode === '85258920', `nhận ${camShort[0]?.hsCode}`);
+  check('camera cmr12 không lẫn thấu kính 9001', camShort.every((c) => !c.hsCode.startsWith('9001')));
+  check('camera cmr12 không lẫn thấu kính 9002', camShort.every((c) => !c.hsCode.startsWith('9002')));
+  const lens = searchCandidates('thấu kính máy ảnh', { topCandidates: 5 });
+  check('đối chứng thấu kính máy ảnh vẫn 9001*', lens[0]?.hsCode?.startsWith('9001'), `nhận ${lens[0]?.hsCode}`);
 }
 
 console.log('\n== Từ điển không được lan sang câu không liên quan ==');
@@ -311,11 +321,22 @@ console.log('\n== Từ điển không được lan sang câu không liên quan =
     'câu khách OZV-1282 khớp mục camera truyền hình',
     lookupTradeTerms('camera truyền hình cmr12').matches.some((m) => m.entryId === 'camera-truyen-hinh-cctv')
   );
+  check(
+    'OZV-1298 câu ngắn camera cmr12 khớp mục camera truyền hình',
+    lookupTradeTerms('camera cmr12').matches.some((m) => m.entryId === 'camera-truyen-hinh-cctv')
+  );
+  check(
+    'đối chứng thấu kính máy ảnh không kích hoạt mục camera truyền hình',
+    !(lookupTradeTerms('thấu kính máy ảnh').matches || []).some((m) => m.entryId === 'camera-truyen-hinh-cctv')
+  );
   const camHint = lookupTradeTerms('camera truyền hình cmr12').matches.find((m) => m.entryId === 'camera-truyen-hinh-cctv');
   check('camera truyền hình ưu tiên 85258920 high',
     (camHint?.candidates || []).some((c) => (c.hsCode || c.hs) === '85258920' && c.confidence === 'high'));
   check('camera truyền hình tránh nhiễu MIC 8544',
     (camHint?.avoid || []).some((a) => String(a.prefix) === '8544'));
+  check('OZV-1298 camera tránh thấu kính 9001/9002',
+    (camHint?.avoid || []).some((a) => String(a.prefix) === '9001')
+    && (camHint?.avoid || []).some((a) => String(a.prefix) === '9002'));
   // OZV-1285 / OZV-1297 — máy phun socola ≠ máy phun cát/sơn 8424; tắt khi phun sơn/cát/thuốc
   for (const q of [
     'máy phun sơn công nghiệp',

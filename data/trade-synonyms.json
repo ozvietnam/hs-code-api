@@ -3200,7 +3200,9 @@
     "television camera",
     "security camera",
     "camera ip",
-    "camera wifi"
+    "camera wifi",
+    "camera cmr12",
+    "camera cmr"
    ],
    "excludeIfAny": [
     "webcam",
@@ -3240,6 +3242,14 @@
     {
      "prefix": "8537",
      "whyVi": "8537 bảng điều khiển — series CMR đồng hồ chân không trên MIC không phải camera truyền hình 85.25."
+    },
+    {
+     "prefix": "9001",
+     "whyVi": "9001 thấu kính/kính quang học — đo OZV-1298: câu ngắn «camera cmr12» (thiếu «truyền hình») search lệch 9001; camera truyền hình/CCTV thuộc 85.25, không phải thấu kính."
+    },
+    {
+     "prefix": "9002",
+     "whyVi": "9002 thấu kính gắn máy/thiết bị quang — cùng bẫy search câu ngắn «camera cmr*»; không phải camera truyền hình 85.25."
     }
    ],
    "askVi": [
@@ -3247,7 +3257,7 @@
    ],
    "gir": "GIR 1",
    "basis": "RULE_TABLE",
-   "sourceVi": "Biểu thuế VN nhóm 85.25 dòng 8525.89.20 «Camera truyền hình»; TB-TCHQ 622/TB-TCHQ trong data/precedents.json#85258920 (camera gắn dây tín hiệu/LED thuộc 85.25). Ca khách OZV-1282 «camera truyền hình cmr12»: search đã ra 85258x nhưng classify hay NEEDS_EXPERT vì MIC model CMR* đồng thuận nhiễu 8544 — từ điển ưu tiên 85258920 và loại hẳn 8544/9006/8471/8537."
+   "sourceVi": "Biểu thuế VN nhóm 85.25 dòng 8525.89.20 «Camera truyền hình»; TB-TCHQ 622/TB-TCHQ trong data/precedents.json#85258920 (camera gắn dây tín hiệu/LED thuộc 85.25). Ca khách OZV-1282/OZV-1298 «camera truyền hình cmr12»: search đủ cụm đã ra 85258x; câu ngắn «camera cmr12» lệch 9001/9002 thấu kính — bổ sung term camera cmr*/cmr12 + avoid 9001/9002. Classify MIC nhiễu 8544 đã xử ở OZV-1290."
   },
   {
    "id": "may-phun-socola",
