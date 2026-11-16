@@ -601,6 +601,10 @@ la('chữ biểu 55159910 "lông cừu hoặc lông động vật loại mịn"'
 la('En "of cotton"', 'loaiSoiDet', 'tent of cotton', 'BONG');
 la('Zh "纯棉"', 'loaiSoiDet', '纯棉帐篷', 'BONG');
 la('"vải lanh" ⇒ sợi thực vật khác', 'loaiSoiDet', 'khăn trải bàn vải lanh', 'SOI_THUC_VAT_KHAC');
+la('"ramie" ⇒ RAMIE (tách khỏi SOI_THUC_VAT_KHAC)', 'loaiSoiDet', 'áo khoác từ ramie', 'RAMIE');
+la('"gai ramie"', 'loaiSoiDet', 'vải gai ramie 100%', 'RAMIE');
+la('En "Of ramie"', 'loaiSoiDet', 'Of ramie', 'RAMIE');
+la('Zh "苎麻"', 'loaiSoiDet', '苎麻外套', 'RAMIE');
 la('"áo len lông cừu"', 'loaiSoiDet', 'áo len lông cừu', 'LEN_LONG_DONG_VAT_MIN');
 la('"tơ tằm"', 'loaiSoiDet', 'khăn lụa tơ tằm', 'TO_TAM');
 la('En "silk"', 'loaiSoiDet', 'silk scarf', 'TO_TAM');
@@ -612,6 +616,10 @@ chuaBiet('"silk-screen" là in lưới, không phải tơ tằm', 'loaiSoiDet', 
 {
   const r = chuaBiet('hàng pha hai loại xơ — không đoán (Chú giải 2 Phần XI: theo tỉ trọng)', 'loaiSoiDet', 'cotton 80% polyester 20%');
   check('loaiSoiDet hàng pha ⇒ ungVien [BONG, SOI_TONG_HOP]', JSON.stringify((r.ungVien || []).slice().sort()) === JSON.stringify(['BONG', 'SOI_TONG_HOP']), r);
+}
+{
+  const r = T.docGiaTri('loaiSoiDet', 'khăn trải bàn vải lanh');
+  check('loaiSoiDet "vải lanh" vẫn SOI_THUC_VAT_KHAC (không nhảy sang RAMIE)', r.giaTri === 'SOI_THUC_VAT_KHAC' && r.trangThai === 'DA_CO', r);
 }
 
 // doDay — SO mm, cần ngữ cảnh (lát 2, chữ biểu 7308.30.10 "Cửa ra vào, có độ dày từ 6 mm đến 8 mm")
