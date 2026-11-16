@@ -334,8 +334,8 @@ const R1_AR_SAI_8421 = {
     { status: out.status, top3, next: out.nextAction },
   );
   check(
-    'OZV-1300 AR2000: top1 = 84812090 (từ điển high)',
-    top3[0] === '84812090',
+    'OZV-1305 AR2000: top1 = 84812011 (từ điển high, hết residual 84812090)',
+    top3[0] === '84812011',
     top3,
   );
   check(
