@@ -333,11 +333,31 @@ async function tuKiem() {
   ca('thân gọi không lộ mã đáp án', !JSON.stringify(than).includes(bo.cases[0].ma));
   const thanClassify = dungThanGoi(bo.cases[0], 'classify');
   ca('thân gọi classify có tenHang', Object.keys(thanClassify).join() === 'tenHang' && thanClassify.tenHang === bo.cases[0].cauKhach);
+  ca(
+    'thân gọi classify không lộ mã đáp án',
+    !JSON.stringify(thanClassify).includes(bo.cases[0].ma) && !('description' in thanClassify),
+  );
 
   ca(
     'rút mã từ suggestions, bỏ mã không đủ 8 số',
     rutMaTuPhanHoi({ suggestions: [{ hsCode: '1208.10.00' }, { hsCode: '1208' }, { hsCode: '23040090' }] }).join() ===
       '12081000,23040090',
+  );
+  ca(
+    'rút mã từ results (classify) theo trường hs',
+    rutMaTuPhanHoi({ results: [{ hs: '1208.10.00' }, { hs: '12' }, { hsCode: '23040090' }] }).join() ===
+      '12081000,23040090',
+  );
+
+  let urlClassify = '';
+  const fetchClassify = async (u) => {
+    urlClassify = u;
+    return new Response(JSON.stringify({ status: 'REVIEW', results: [{ hs: '12081000' }] }), { status: 200 });
+  };
+  const rClassify = await goiMotCa(bo.cases[0], { endpoint: 'classify', fetchFn: fetchClassify, timeoutMs: 1000 });
+  ca(
+    'goiMotCa classify gọi /api/classify và đọc mã từ results',
+    urlClassify.endsWith('/api/classify') && rClassify.dsMa[0] === '12081000' && !rClassify.loi,
   );
 
   const g = { stt: 1, ma: '12081000', maLan: ['23040090'] };
