@@ -2717,6 +2717,106 @@
    "gir": "GIR 1 + Chú giải 5 khoản (B) Chương 84",
    "basis": "RULE_TABLE",
    "sourceVi": "Đính chính 16/11 sau phản biện + kiểm chứng nguyên văn CROSS bằng trình duyệt: N236756 (Phoenix Contact, 18/1/2013 — adapter USB nối transducer↔PC → 8471.80.1000 theo Chú giải 5(C) ví dụ (4)) là tiền lệ đích danh cho card RS-232 dây; N294888 và TB-CHQ 89 đều là hàng VÔ TUYẾN/MẠNG — chỉ lập luận cho card mạng. Ca UTEK PCI-E→8×RS-232 chốt 8471.80.10 (MFN 0%, sạch GP/KTCL)."
+  },
+  {
+   "id": "khuon-su-hand-former",
+   "titleVi": "Khuôn sứ (ceramic hand former) sản xuất găng tay",
+   "terms": [
+    "ceramic hand former",
+    "hand former",
+    "khuôn sứ",
+    "khuôn bàn tay bằng sứ",
+    "khuôn sản xuất găng tay",
+    "khuôn găng tay sứ"
+   ],
+   "excludeIfAny": [
+    "thép làm khuôn",
+    "mold steel",
+    "khuôn nhựa",
+    "injection mold",
+    "khuôn đúc kim loại"
+   ],
+   "excludeReasonVi": "Thép/khuôn nhựa/khuôn đúc kim loại là nguyên liệu hoặc khuôn máy (ch.72/84.80), không phải sản phẩm gốm sứ nhóm 69.14.",
+   "candidates": [
+    {
+     "hs": "69141000",
+     "whenVi": "Khuôn bàn tay bằng sứ/porcelain (ceramic hand former) dùng nhúng cao su/nitrile để sản xuất găng tay — sản phẩm bằng gốm sứ khác, bằng sứ (69.14.10.00).",
+     "confidence": "high"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "6603",
+     "whyVi": "6603 là khung ô/cán gậy — 'hand' trong hand former không phải cán ô; đo A1 16/11 API thô trả 66032000 là nhiễu từ khoá hand."
+    },
+    {
+     "prefix": "8477",
+     "whyVi": "8477 là máy chế biến cao su/plastic — khuôn sứ là vật phẩm gốm, không phải máy."
+    },
+    {
+     "prefix": "6909",
+     "whyVi": "6909 là đồ gốm dùng trong phòng thí nghiệm/công nghiệp hoá (chậu, nồi) — khuôn former găng tay thuộc 69.14 theo TB-TCHQ."
+    },
+    {
+     "prefix": "8480",
+     "whyVi": "8480 là khuôn đúc kim loại/khuôn ép nhựa của máy — khác khuôn sứ former đã thành hình để nhúng găng."
+    }
+   ],
+   "askVi": [
+    "Khuôn làm bằng sứ/porcelain để nhúng găng, hay là khuôn máy đúc/ép (kim loại/nhựa)?"
+   ],
+   "gir": "GIR 1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "TB-TCHQ / CV 1030/TCHQ-TXNK (2022): khuôn sứ dùng sản xuất găng tay (khuôn bàn tay bằng sứ nhúng cao su/nitrile) → nhóm 69.14, mã 6914.10.00 (bằng sứ). Biểu thuế 2026 dòng 6914.10.00 'Bằng sứ' / EN 'of porcelain or china'."
+  },
+  {
+   "id": "ke-pallet-rack",
+   "titleVi": "Kệ chứa hàng pallet / pallet rack (kệ kho kim loại)",
+   "terms": [
+    "pallet rack",
+    "pallet racks",
+    "kệ chứa hàng pallet",
+    "kệ kho hàng",
+    "kệ pallet",
+    "kệ chứa pallet"
+   ],
+   "excludeIfAny": [
+    "xe nâng",
+    "forklift",
+    "hand pallet",
+    "pallet jack",
+    "xe nâng tay",
+    "cầu",
+    "bridge"
+   ],
+   "excludeReasonVi": "Xe nâng/pallet jack thuộc 84.27; kết cấu cầu thuộc 73.08 — không phải kệ kho đồ nội thất 94.03.",
+   "candidates": [
+    {
+     "hs": "94032090",
+     "whenVi": "Kệ kho / pallet rack bằng kim loại (đã lắp thành đồ nội thất kho), kể cả đã qua sử dụng — đồ nội thất bằng kim loại khác (94.03.20.90).",
+     "confidence": "high"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "7308",
+     "whyVi": "7308 là cấu kiện cầu/cửa đập/trụ tháp — đo A1 16/11 API thô trả 73081010/90 là nhiễu 'kim loại/kết cấu'; kệ kho là đồ nội thất 94.03 theo TB-TCHQ."
+    },
+    {
+     "prefix": "730890",
+     "whyVi": "7308.90 kết cấu thép xây dựng khác — không phải kệ chứa hàng kiểu đồ nội thất kho."
+    },
+    {
+     "prefix": "7326",
+     "whyVi": "7326 sản phẩm thép khác dư địa — khi đã có nhóm 94.03 nhận kệ kho thì không đẩy sang 7326."
+    }
+   ],
+   "askVi": [
+    "Là kệ kho/pallet rack đặt sàn để chứa pallet, hay kết cấu xây dựng/cầu/cột thép?"
+   ],
+   "gir": "GIR 1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "CV 6497/TCHQ-TXNK 25/12/2024 và CV 3250/TXNK-PL 13/3/2025 (dẫn tại 5950/CHQ-NVTHQ 2025): kệ kho hàng thuộc nhóm 94.03, mã 9403.20.90 đồ nội thất bằng kim loại khác; hàng đã qua sử dụng của 9403.20 thuộc danh mục hàng tiêu dùng đã qua sử dụng cấm NK (TT 12/2018/TT-BCT, TT 08/2023/TT-BCT)."
   }
  ],
  "updatedAt": "2026-11-16"

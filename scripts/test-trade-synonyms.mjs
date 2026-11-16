@@ -93,6 +93,11 @@ console.log('\n== Câu hỏi thật của khách phải ra đúng mã (kho Oz kh
     ['scissor lift', ['84289090']],
     ['forklift', ['84271000', '84272000', '84279000']],
     ['thang cuốn', ['84284000', '84281031', '84281039', '84281040']],
+    // OZV-1237 — đo A1 16/11: API thô NEEDS_EXPERT vì thiếu từ điển tên chợ
+    ['Khuôn sứ (ceramic hand former) dùng để sản xuất găng tay', ['69141000']],
+    ['ceramic hand former for glove production', ['69141000']],
+    ['Kệ chứa hàng pallet (kệ kho hàng, pallet rack) bằng kim loại, đã qua sử dụng', ['94032090']],
+    ['pallet rack metal warehouse', ['94032090']],
   ];
   for (const [q, want] of cases) {
     const top2 = searchCandidates(q, { topCandidates: 2 }).map((c) => c.hsCode);
@@ -125,6 +130,14 @@ console.log('\n== Mã bẫy phải bị loại HẲN, không phải tụt hạng
   const stove = searchCandidates('van bếp ga', { topCandidates: 50 });
   check('van bếp không lẫn 848120', stove.every((c) => !c.hsCode.startsWith('848120')));
   check('van bếp không lẫn bếp nguyên chiếc 7321', stove.every((c) => !c.hsCode.startsWith('7321')));
+
+  const former = searchCandidates('Khuôn sứ (ceramic hand former) dùng để sản xuất găng tay', { topCandidates: 50 });
+  check('hand former không lẫn khung ô 6603', former.every((c) => !c.hsCode.startsWith('6603')));
+  check('hand former không lẫn máy cao su 8477', former.every((c) => !c.hsCode.startsWith('8477')));
+
+  const rack = searchCandidates('Kệ chứa hàng pallet (kệ kho hàng, pallet rack) bằng kim loại', { topCandidates: 50 });
+  check('pallet rack không lẫn cầu/kết cấu 7308', rack.every((c) => !c.hsCode.startsWith('7308')));
+  check('pallet rack không lẫn sản phẩm thép dư 7326', rack.every((c) => !c.hsCode.startsWith('7326')));
 }
 
 console.log('\n== Từ điển không được lan sang câu không liên quan ==');
