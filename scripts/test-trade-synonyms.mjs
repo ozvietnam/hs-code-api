@@ -108,6 +108,9 @@ console.log('\n== Câu hỏi thật của khách phải ra đúng mã (kho Oz kh
     // OZV-1263 — dây đai dẹt truyền lực
     ['dây đai dẹt t10-259-e, truyền lực', ['40103900', '40103500', '40103600']],
     ['dây curoa cao su', ['40103900', '40103500', '40103600']],
+    // OZV-1239 — đo A1 16/11: ca 6 (32064990) và ca 40 (85081100)
+    ['Aluminium powder (bột nhôm): chất màu vô cơ', ['32064990']],
+    ['industrial vacuum cleaner Nilfisk model VHW310', ['85081100', '85081910', '85081990']],
   ];
   for (const [q, want] of cases) {
     const top2 = searchCandidates(q, { topCandidates: 2 }).map((c) => c.hsCode);
@@ -156,6 +159,13 @@ console.log('\n== Mã bẫy phải bị loại HẲN, không phải tụt hạng
   const pad = searchCandidates('giác hút chân không smc zp-905-08eu', { topCandidates: 50 });
   check('giác hút SMC không lẫn phụ tùng bơm/máy nén 841490', pad.every((c) => !c.hsCode.startsWith('841490')));
   check('giác hút SMC không lẫn bơm chân không 841410', pad.every((c) => c.hsCode !== '84141000'));
+
+  const alum = searchCandidates('Aluminium powder (bột nhôm): chất màu vô cơ', { topCandidates: 50 });
+  check('bột nhôm chất màu không lẫn nhôm thỏi 7601', alum.every((c) => !c.hsCode.startsWith('7601')));
+  check('bột nhôm chất màu không lẫn bột nhôm luyện kim 7603', alum.every((c) => !c.hsCode.startsWith('7603')));
+
+  const vac = searchCandidates('industrial vacuum cleaner Nilfisk model VHW310', { topCandidates: 50 });
+  check('máy hút bụi công nghiệp không lẫn lọc nước 842121', vac.every((c) => !c.hsCode.startsWith('842121')));
 }
 
 console.log('\n== Từ điển không được lan sang câu không liên quan ==');
