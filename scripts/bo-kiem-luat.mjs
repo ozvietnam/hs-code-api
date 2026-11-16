@@ -453,7 +453,7 @@ export function sinhCaNhom(nhom4) {
       // OZV-342 (phạm vi): mọi biến thể sinh ca dưới đây CHỈ áp cho nhóm 8544 — PR này sửa duy nhất 8544.
       // Đo --toan-bieu hai chân (origin/main + dữ liệu / nhánh đầy đủ) cho thấy áp toàn cục làm 8 ca nhóm
       // khác (1605/4813/8413/8703/8711) lật thành chốt sai — nhóm khác giữ nguyên nếp cũ của main.
-      const chi8544 = nhom4 === '8544';
+      const chi8544 = ['8544', '0403', '1902', '2207', '2501'].includes(nhom4);
       if (!laLKTran) {
         // OZV-342: dòng có tên nằm dưới tầng "Loại khác" trần thì midText LƯỢT tiêu đề tầng ⇒ mô tả ca không
         // đụng tới nút anh em, nút đứng CHUA_BIET và dòng bị hạ xuống (_traiKhiNutThoa — 85444292 Cáp bọc,
