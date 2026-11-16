@@ -3070,24 +3070,14 @@
    "excludeReasonVi": "Dây đai an toàn ô tô (8708.21) hoặc bảo vệ dùng trong công nghiệp (4205.00) không phải đai truyền lực cơ khí. Puly, bánh đai, bánh răng, khóa đai, máy giặt là thiết bị/bộ phận khác, không phải dây đai.",
    "candidates": [
     {
-     "hs": "40103900",
-     "whenVi": "Đai truyền lực / băng truyền dẹt hoặc loại khác bằng cao su lưu hóa (không phải băng chữ V hoặc băng đồng bộ theo chu vi)",
+     "hs": "40103500",
+     "whenVi": "Đai răng / timing belt / mã T5·T10·HTD đồng bộ bằng cao su lưu hóa, chu vi ngoài > 60 cm và ≤ 150 cm",
      "confidence": "high"
     },
     {
-     "hs": "40103500",
-     "whenVi": "Băng truyền đồng bộ liên tục (đai răng / timing belt) bằng cao su lưu hóa, chu vi ngoài > 60 cm và ≤ 150 cm",
-     "confidence": "medium"
-    },
-    {
      "hs": "40103600",
-     "whenVi": "Băng truyền đồng bộ liên tục (đai răng / timing belt) bằng cao su lưu hóa, chu vi ngoài > 150 cm và ≤ 198 cm",
-     "confidence": "medium"
-    },
-    {
-     "hs": "39269053",
-     "whenVi": "Dây curoa / đai truyền lực bằng chất dẻo (nhựa)",
-     "confidence": "medium"
+     "whenVi": "Đai răng / timing belt đồng bộ bằng cao su lưu hóa, chu vi ngoài > 150 cm và ≤ 198 cm",
+     "confidence": "high"
     }
    ],
    "avoid": [
@@ -3126,12 +3116,12 @@
    ],
    "askVi": [
     "Vật liệu chế tạo: cao su lưu hóa hay chất dẻo (nhựa)?",
-    "Loại đai: đai dẹt, đai răng (timing belt) đồng bộ, hay đai chữ V?",
-    "Chu vi ngoài của đai (cm) nếu là đai răng đồng bộ?"
+    "Đai có răng đồng bộ (timing / T5·T10·HTD) hay đai dẹt trơn không răng?",
+    "Chu vi ngoài của đai (cm) nếu là đai răng đồng bộ? (≤60 / 60–150 / 150–198 / >198)"
    ],
    "gir": "GIR 1",
    "basis": "RULE_TABLE",
-   "sourceVi": "Biểu thuế 2026 nhóm 4010 (băng truyền hoặc đai truyền, bằng cao su lưu hóa) và 3926.90.53 (bằng chất dẻo). Ca thật OZV-1257: 'dây đai dẹt t10-259-e, truyền lực'."
+   "sourceVi": "Biểu thuế 2026 nhóm 4010.35–4010.36 (băng truyền đồng bộ cao su lưu hóa). OZV-1304: câu 'dây đai dẹt t10-259-e' là đai răng đồng bộ — inject 401035/401036, không bơm residual 40103900 hay nhựa 39269053 lên top khi thiếu chu vi/vật liệu."
   },
   {
    "id": "gian-phoi-quan-ao",

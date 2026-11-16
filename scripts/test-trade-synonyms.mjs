@@ -108,9 +108,10 @@ console.log('\n== Câu hỏi thật của khách phải ra đúng mã (kho Oz kh
     ['giác hút chân không smc zp-905-08eu', ['40169999', '40169959', '39269099']],
     ['núm hút chân không cao su silicone', ['40169999', '40169959']],
     ['vacuum pad smc zp2', ['40169999', '40169959', '39269099']],
-    // OZV-1263 — dây đai dẹt truyền lực
-    ['dây đai dẹt t10-259-e, truyền lực', ['40103900', '40103500', '40103600']],
-    ['dây curoa cao su', ['40103900', '40103500', '40103600']],
+    // OZV-1304 — đai dẹt T10 = đai đồng bộ; không top-1 residual 40103900 / nhựa 39269053
+    ['dây đai dẹt t10-259-e, truyền lực', ['40103500', '40103600']],
+    ['dây đai dẹt t10-259-e', ['40103500', '40103600']],
+    ['dây curoa cao su', ['40103500', '40103600']],
     // OZV-1277 — đo A1 16/11: ca 31 (83025000) lệch nội thất 94031000
     ['Giàn phơi quần áo thông minh (laundry drying rack) gắn trần hoặc gắn tường', ['83025000']],
     ['laundry drying rack ceiling mounted stainless steel', ['83025000']],
@@ -282,6 +283,22 @@ console.log('\n== Từ điển không được lan sang câu không liên quan =
   ]) {
     check(`«${q}» không kích hoạt mục dây đai truyền lực`,
       !(lookupTradeTerms(q).matches || []).some((m) => m.entryId === 'day-dai-truyen-luc'));
+  }
+  // OZV-1304 — câu khách T10: top-1 là đai đồng bộ 401035/401036, không residual/nhựa
+  {
+    const t10Top = searchCandidates('dây đai dẹt t10-259-e', { topCandidates: 5 });
+    const top1 = t10Top[0]?.hsCode;
+    check(
+      'OZV-1304 top1 T10 ∈ {40103500,40103600}',
+      top1 === '40103500' || top1 === '40103600',
+      `nhận ${top1}`
+    );
+    check('OZV-1304 top1 không phải 40103900 Loại khác', top1 !== '40103900');
+    check(
+      'OZV-1304 top2 không phải nhựa 39269053',
+      t10Top[1]?.hsCode !== '39269053',
+      `nhận ${t10Top.slice(0, 2).map((c) => c.hsCode).join(',')}`
+    );
   }
   // OZV-1277 — câu có «giàn phơi/drying rack» nhưng là máy sấy / tủ / kệ kho → tắt mục
   for (const q of [
