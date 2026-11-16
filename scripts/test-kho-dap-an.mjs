@@ -1,7 +1,8 @@
-// scripts/test-kho-dap-an.mjs — Kho đáp án chế độ BÓNG (G5 PR 1a, OZV-1144; thiết kế OZV-760).
+// scripts/test-kho-dap-an.mjs — Kho đáp án bóng + on/seed (G5 OZV-1144 / OZV-1211; thiết kế OZV-760).
 // Không mạng, không ghi data/ thật: Postgres chạy TRONG TIẾN TRÌNH bằng PGlite (như test-classify-cache.mjs).
 // Kiểm: (1) tách khoa_dap_an / khoa_du_kien; (2) luật cấm ghi / cấm trúng đáp án; (3) bộ lọc riêng tư;
-// (4) bóng bắt mâu thuẫn + trần 150 ms; (5) scripts/thong-ke-kho-dap-an.mjs --json chạy xanh; (6) migration idempotent.
+// (4) bóng bắt mâu thuẫn + trần 150 ms; (5) scripts/thong-ke-kho-dap-an.mjs --json chạy xanh; (6) migration idempotent;
+// (7) HS_KHO_DAP_AN=on + seed DUYET ca LED → traTuKho hit; bản NHAP không hit.
 import './test-isolate-data.mjs';
 import { createRequire } from 'module';
 import { spawnSync } from 'child_process';
@@ -32,7 +33,7 @@ const MA_B = ma8.find((k) => k.startsWith('8501') && k !== MA_A) || ma8.find((k)
 // ── 0. Công tắc ───────────────────────────────────────────────────────────────────────────────────────────────
 check('cheDo: mặc định off', kho.cheDoKhoDapAn() === 'off');
 process.env.HS_KHO_DAP_AN = 'on';
-check('cheDo: "on" chưa có trong PR 1a ⇒ off', kho.cheDoKhoDapAn() === 'off');
+check('cheDo: on', kho.cheDoKhoDapAn() === 'on');
 process.env.HS_KHO_DAP_AN = 'Shadow';
 check('cheDo: shadow', kho.cheDoKhoDapAn() === 'shadow');
 delete process.env.HS_KHO_DAP_AN;
@@ -218,12 +219,51 @@ try { tkRong = JSON.parse(chayRong.stdout); } catch { /* để check báo */ }
 check('thong-ke: không có dữ liệu ⇒ thoát 0, tỉ lệ null (không bịa số)', chayRong.status === 0 && tkRong && tkRong.tongLuot === 0 && tkRong.soDo.tyLeTrungDapAn === null, chayRong.stdout + chayRong.stderr);
 fs.rmSync(tmp, { recursive: true, force: true });
 
-// ── 6. Gắn vào api/classify.js: chỉ khi shadow, bỏ debug/holdout, không await ─────────────────────────────────
+// ── 6. Gắn vào api/classify.js: shadow|on ghi sau; on đọc trước; soiBong không await ───────────────────────────
 const nguonApi = fs.readFileSync(path.join(root, 'api', 'classify.js'), 'utf8');
-check('api/classify.js: bóng chỉ bật khi cheDoKhoDapAn()==="shadow" và không debug/holdout',
-  /cheDoKhoDapAn\(\) === 'shadow' && !debug && !wantsEvalHoldout\(req\)/.test(nguonApi));
+check('api/classify.js: ghi kho khi shadow|on và không debug/holdout',
+  /cheDoKho === 'shadow' \|\| cheDoKho === 'on'/.test(nguonApi) && /!debug && !wantsEvalHoldout\(req\)/.test(nguonApi));
 check('api/classify.js: soiBong không bị await (fire-and-forget)', /soiBong\(/.test(nguonApi) && !/await\s+soiBong\(/.test(nguonApi));
-check('api/classify.js: không có nhánh HS_KHO_DAP_AN=on', !/=== 'on'/.test(nguonApi.split('soiBong')[0].slice(-2000)));
+check('api/classify.js: có nhánh on gọi traTuKho', /cheDoKho === 'on'/.test(nguonApi) && /traTuKho\(/.test(nguonApi));
+
+// ── 7. OZV-1211: seed DUYET ca LED → on hit; NHAP không hit; đo ms 2 lần ─────────────────────────────────────
+const MA_LED = tax['94051199'] ? '94051199' : (ma8.find((k) => k.startsWith('9405')) || MA_A);
+const seedPath = path.join(root, 'data', 'kho-dap-an', 'seed-led-gau.json');
+const seedJson = JSON.parse(fs.readFileSync(seedPath, 'utf8'));
+check('seed-led-gau.json: có ≥2 bản ghi + mã 94051199',
+  Array.isArray(seedJson.banGhi) && seedJson.banGhi.length >= 2 && seedJson.banGhi.every((b) => b.maHs === '94051199'));
+const ledGau = { tenHang: 'đèn led cắm tường hình gấu' };
+const kqLed = {
+  status: 'REVIEW',
+  results: [{ hs: MA_LED, reason: 'seed DUYET LED (OZV-1211)' }],
+  missing: [],
+  girRulesApplied: [],
+  candidates: [],
+};
+const pbLed = 'pb-led-test';
+const tMiss0 = Date.now();
+const miss1 = await kho.traTuKho(ledGau, { tier: 'standard', phienBan: pbLed }, { db });
+const msMiss1 = Date.now() - tMiss0;
+check(`on/tra: lần 1 chưa seed ⇒ không hit (${msMiss1} ms)`, miss1.hit === false && miss1.ketQua === 'KHONG_TRUNG', JSON.stringify(miss1));
+const nap = await kho.napSeedDuyet(ledGau, kqLed, { tier: 'standard', phienBan: pbLed, moHinhCham: 'test-ozv-1211' }, { db });
+check('seed: napSeedDuyet LED → ok DUYET', nap.ok === true && nap.maHs === MA_LED, JSON.stringify(nap));
+const dLed = (await db.query('SELECT trang_thai, ma_hs, cap_da_chac FROM kho_dap_an WHERE khoa_dap_an = $1', [nap.khoa])).rows[0];
+check('seed: dòng DB là DUYET cấp 8', dLed && dLed.trang_thai === 'DUYET' && dLed.cap_da_chac === 8 && dLed.ma_hs === MA_LED);
+const tHit0 = Date.now();
+const hit2 = await kho.traTuKho(ledGau, { tier: 'standard', phienBan: pbLed }, { db });
+const msHit2 = Date.now() - tHit0;
+check(`on/tra: lần 2 sau seed ⇒ hit (${msHit2} ms)`, hit2.hit === true && hit2.maHs === MA_LED && hit2.phanHoi?.results?.[0]?.hs === MA_LED, JSON.stringify(hit2));
+check('on/tra: lần 2 < 10s (trần A3 cửa HS)', msHit2 < 10_000);
+console.log(JSON.stringify({ ozv1211: { lan1_miss_ms: msMiss1, lan2_hit_ms: msHit2, maHs: MA_LED, hit: hit2.hit } }));
+// Bản NHAP (động cơ ghi) không được trả — seed riêng một món khác rồi hạ về NHAP không cần: soiBong đã chứng minh leRaTra=false.
+const ledTho = { tenHang: 'đèn led cắm tường hình thỏ' };
+const ghiNhap = await kho.ghiKhoDapAn(kho.locRiengTuKhoDapAn(ledTho), kqLed, { tier: 'standard', phienBan: pbLed }, { db });
+const traNhap = await kho.traTuKho(ledTho, { tier: 'standard', phienBan: pbLed }, { db });
+check('on/tra: bản NHAP không hit (chỉ DUYET)', ghiNhap.ghi === 'NHAP' && traNhap.hit === false && traNhap.ketQua === 'TRUNG_DAP_AN' && traNhap.leRaTra === false, JSON.stringify({ ghiNhap, traNhap }));
+const dry = spawnSync(process.execPath, [path.join(root, 'scripts', 'seed-kho-dap-an.mjs')], { encoding: 'utf8', env: envCon });
+let dryOut = null;
+try { dryOut = JSON.parse(dry.stdout); } catch { /* check báo */ }
+check('seed-kho-dap-an.mjs dry-run thoát 0 + ok đủ bản ghi', dry.status === 0 && dryOut && dryOut.write === false && dryOut.ok === dryOut.tong, dry.stderr || dry.stdout.slice(0, 400));
 
 await pgl.close();
 console.log(`\n${pass}/${pass + fail} passed, ${fail} failed`);

@@ -2661,7 +2661,63 @@
    "gir": "GIR 1",
    "basis": "RULE_TABLE",
    "sourceVi": "Biểu thuế VN 7314.49 'Tấm đan dệt thoi khác, bằng thép không gỉ' (MFN 30%) vs 7314.50 'đột dập và kéo giãn' (MFN 20%). Ca thật 05/11/2026: tờ khai ghi 7314.50.00 cho lưới DỆT 80–260 mắt — sai 10 điểm thuế."
+  },
+  {
+   "id": "card-chuyen-doi-cong",
+   "titleVi": "Card mở rộng / chuyển đổi cổng giao tiếp (PCI-E → RS-232/RS-485/CAN, USB-COM, NIC)",
+   "terms": [
+    "card mở rộng cổng",
+    "card chuyển đổi cổng",
+    "card cổng nối tiếp",
+    "pci-e sang rs-232",
+    "rs232",
+    "rs-232",
+    "rs-485",
+    "usb chuyển com",
+    "usb to com",
+    "card com",
+    "cổng nối tiếp",
+    "serial card",
+    "card mạng",
+    "nic"
+   ],
+   "excludeIfAny": [
+    "card âm thanh",
+    "card hình ảnh",
+    "card đồ họa",
+    "card raid",
+    "raid controller"
+   ],
+   "excludeReasonVi": "Card âm thanh/hình ảnh thuộc 8471.80.70 (AHTN); card RAID/SATA điều khiển lưu trữ NỘI BỘ máy tính thuộc 8471.80.10.",
+   "candidates": [
+    {
+     "hs": "85176243",
+     "whenVi": "Card GIAO TIẾP TRUYỀN THÔNG với thiết bị ngoài qua chuẩn truyền (RS-232/RS-485/CAN/USB-COM, card mạng NIC) — chuyển đổi + truyền dữ liệu giữa máy tính và thiết bị ngoài. CBP N294888 đã đối chiếu nguyên văn (PCI adapter network card → 8517.62.0050); VN: TB-CHQ 89 (cổng kết nối ESL → 8517.62.43)",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84718010",
+     "whenVi": "Card ĐIỀU KHIỂN NỘI BỘ máy tính theo Chú giải 5(B) Chương 84 — RAID/SATA/SAS host adapter quản lý lưu trữ của chính hệ thống (không phải giao tiếp truyền thông ra ngoài)",
+     "confidence": "medium"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "847330",
+     "whyVi": "8473.30 là nhóm bộ phận/phụ kiện DƯ ĐỊA — chỉ nhận khi không heading nào mô tả cụ thể; card hoàn chỉnh có chức năng riêng đã được 8517.62.43 / 8471.80.10 mô tả đích danh (GIR 1). 8473.30.10 'tấm mạch in đã lắp ráp' dành PCBA trần làm linh kiện, không dành card thiết bị hoàn chỉnh."
+    },
+    {
+     "prefix": "854370",
+     "whyVi": "Máy có chức năng riêng khác 8543 — chỉ là dư địa khi không nhóm nào nhận; ở đây 8517.62 nhận cụ thể."
+    }
+   ],
+   "askVi": [
+    "Card dùng để NỐI THIẾT BỊ NGOÀI qua chuẩn truyền (RS-232/RS-485/CAN/mạng) hay ĐIỀU KHIỂN LƯU TRỮ NỘI BỘ máy (RAID/SATA)?"
+   ],
+   "gir": "GIR 1 + Chú giải 5 khoản (B) Chương 84",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Ca thật 16/11/2026: card UTEK PCI-E → 8×RS-232; 2 dòng VN 8471.80.10 và 8517.62.43 TRÙNG tiền tố tên 'Bộ điều khiển và bộ thích ứng' — phân bằng bối cảnh heading + chức năng. CBP N294888 (23/3/2018, TP-Link — đã mở nguyên văn CROSS: 'AC 1900 Wireless Dual Band PCI Express Adapter, a PCI adapter network card used in a PC to provide wireless connectivity' → 8517.62.0050). LƯU Ý: N266646 là programmable controllers ELAN → 8537.10 (chỉ có cổng RS-232 trong mô tả) — KHÔNG dùng làm tiền lệ cho cặp này."
   }
  ],
- "updatedAt": "2026-11-05"
+ "updatedAt": "2026-11-16"
 }
