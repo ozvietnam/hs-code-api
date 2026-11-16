@@ -115,7 +115,8 @@ check('on: lượt chạy lại tính giờ theo hạn của lượt chính — 
 const hanTat = await run('on', { steps: [R1_TOY, HOI, R1_TOY, CHOT_99], env: { HS_MAX_VONG_SUA: 'off' } });
 check('on + HS_MAX_VONG_SUA=off: lượt chạy lại mở ngân sách mới như main (vòng 1 timeout 100 s)', hanTat.calls[2]?.r1 && hanTat.calls[2].timeoutMs === 100000, JSON.stringify(hanTat.calls.map((c) => c.timeoutMs)));
 on = await run('on', { steps: [R1_TOY, HOI, R1_TOY, CHOT_99], opts: { _b1bHanChot: Date.now() + 100000 } });
-check('on: còn < 120 s → KHÔNG chạy lại, trả NEED_FACTS + webHint, ghi lý do', on.out.status === 'NEED_FACTS' && on.r1 === 1 && on.llm === 2 && on.out.webHint && on.out.webFactsApplied === undefined && ghiChu(on.out, /b1b: không chạy lại — còn \d+ s < 120 s/), JSON.stringify([on.out.status, on.llm, on.out.engine?.gates]));
+// OZV-1269: còn < 120 s → bỏ cả tra web (trước đây vẫn tra ~11 s rồi mới ghi "không chạy lại"). Không webHint.
+check('on: còn < 120 s → KHÔNG tra web / không chạy lại, giữ NEED_FACTS (OZV-1269)', on.out.status === 'NEED_FACTS' && on.r1 === 1 && on.llm === 2 && on.web === 0 && on.out.webHint === undefined && on.out.webFactsApplied === undefined && on.stdout.some((l) => l.type === 'b1b_web' && l.boQuaWeb === 'khong-du-chay-lai'), JSON.stringify([on.out.status, on.llm, on.web, on.stdout.filter((l) => l.type === 'b1b_web')]));
 // 3e. Lượt chạy lại HỎNG (ENGINE_TIMEOUT: NEEDS_EXPERT/RETRY, không mã) không thay đáp án NEED_FACTS hợp lệ.
 on = await run('on', { steps: [R1_TOY, HOI, new Error('HTTP 429 Token Plan rate limit')] });
 check('on: lượt chạy lại hỏng → giữ NEED_FACTS gốc (câu hỏi cho khách) + webHint, ghi lý do', on.out.status === 'NEED_FACTS' && on.out.nextAction?.questions?.length > 0 && on.out.webHint && on.out.webFactsApplied === undefined && ghiChu(on.out, /b1b: lượt chạy lại không ra mã \(ENGINE_TIMEOUT\)/), JSON.stringify([on.out.status, on.out.nextAction, on.out.engine?.gates]));

@@ -3,7 +3,7 @@
 //   (a) cờ TẮT ⇒ hành vi y hệt bản trước OZV-570: vòng 1 KHÔNG thinking-off, đủ 2 lời AI, không có engine.fastFirst;
 //   (b) cờ BẬT + hồ sơ rõ (nguồn độc lập xác nhận — cổng nguonDocLap có sẵn) ⇒ đường fast-path: chỉ 1 lời AI (vòng 1
 //       thinking-off), bỏ vòng 2, có dấu vết đo được (engine.fastFirst.boQuaVong2 + engine.gates log fastFirst:true);
-//   (c) cờ BẬT + hồ sơ mơ hồ / cổng chặn ⇒ VẪN leo sâu: vòng 2 gọi thinking-on như cũ;
+//   (c) cờ BẬT + hồ sơ mơ hồ / cổng chặn ⇒ leo sâu (vòng 2 thinking-on); unknowns + gon mặc định → early-exit HOI (OZV-1269);
 //   (e) 2 lỗi soát GĐ (trả PR): nguồn độc lập MÂU THUẪN (2 mã khác nhau cùng hs6) ⇒ leo sâu; ứng viên khác hs6 của vòng 1
 //       (dù cùng nhóm 4 số) ⇒ bị loại; nhiều tiền lệ CÙNG 1 mã ⇒ vẫn chốt (không chặn nhầm).
 import './test-isolate-data.mjs';
@@ -75,12 +75,23 @@ const ozKhopCao = async () => ({ items: [{ hsCode: '82019000', tenHang: 'Dao há
   check('(c1) MƠ HỒ: engine.fastFirst ghi lyDo leo sâu', r.engine.fastFirst?.boQuaVong2 === false && /tu-tin-duoi-nguong/.test(r.engine.fastFirst?.lyDo || ''), JSON.stringify(r.engine.fastFirst));
 }
 
-// (c2) CỜ BẬT + còn dữ kiện chưa rõ (r1.verify.unknowns) ⇒ leo sâu.
+// (c2) CỜ BẬT + còn dữ kiện chưa rõ (r1.verify.unknowns) ⇒ fast-first từ chối (lyDo).
+// OZV-1269: gon mặc định BẬT + unknowns ⇒ early-exit HOI bỏ lời GIR (1 lời AI, NEED_FACTS) — đúng mục tiêu A3 khi MiniMax khoẻ.
 {
   ozMod.searchOzByKeyword = ozKhopCao;
   const R1ChuaRo = { ...R1_RO, verify: { ...R1_RO.verify, unknowns: ['cơ-tay hay điện'] } };
   const r = await run(DAO, [R1ChuaRo, CHOT2]);
-  check('(c2) CÒN UNKNOWN: 2 lời AI + lyDo con-du-kien-chua-ro', calls.length === 2 && /con-du-kien-chua-ro/.test(r.engine.fastFirst?.lyDo || ''), JSON.stringify([calls.length, r.engine.fastFirst]));
+  check('(c2) CÒN UNKNOWN: 1 lời AI (early-exit HOI) + lyDo con-du-kien-chua-ro', calls.length === 1 && /con-du-kien-chua-ro/.test(r.engine.fastFirst?.lyDo || ''), JSON.stringify([calls.length, r.engine.fastFirst]));
+  check('(c2) CÒN UNKNOWN: NEED_FACTS + earlyExitHoi trong gates', r.status === 'NEED_FACTS' && (r.engine.gates || []).some((g) => g.earlyExitHoi === true), JSON.stringify([r.status, r.engine.gates?.slice(-2)]));
+}
+// (c2b) gon TẮT + unknowns ⇒ không early-exit → leo sâu GIR (2 lời AI) như hợp đồng OZV-570 cũ.
+{
+  process.env.HS_GON_DAU_RA = 'off';
+  ozMod.searchOzByKeyword = ozKhopCao;
+  const R1ChuaRo = { ...R1_RO, verify: { ...R1_RO.verify, unknowns: ['cơ-tay hay điện'] } };
+  const r = await run(DAO, [R1ChuaRo, CHOT2]);
+  delete process.env.HS_GON_DAU_RA;
+  check('(c2b) gon=off + UNKNOWN: 2 lời AI + lyDo con-du-kien-chua-ro', calls.length === 2 && /con-du-kien-chua-ro/.test(r.engine.fastFirst?.lyDo || ''), JSON.stringify([calls.length, r.engine.fastFirst]));
 }
 
 // (c3) CỜ BẬT + KHÔNG nguồn độc lập (tiền lệ Oz không khớp đủ) ⇒ leo sâu.

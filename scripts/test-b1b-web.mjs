@@ -75,6 +75,22 @@ test('b1b: lượt chạy lại (_b1bDaThu) không tra web lần nữa — trả
 const NF = () => ({ status: 'NEED_FACTS', nextAction: { questions: [{ questionVi: 'chất liệu?' }] } });
 const timRong = async () => [];
 
+test('OZV-1269: mode=on còn < 120 s tới hạn chót → KHÔNG gọi timWeb/z.ai (không đủ chạy lại)', async () => {
+  process.env.ZAI_WEB_FACTS = 'on';
+  let tim = 0; let zai = 0;
+  const t0 = Date.now();
+  const r = await b1bApDung({ tenHang: 'giác hút SMC' }, NF(), {
+    hanChotMs: Date.now() + 30000, // < B1B_LAI_MIN_MS 120 s — đúng tình huống HTTP A3 sau R1+GIR
+    _timWeb: async () => { tim += 1; return [{ doanTrich: 'x', url: 'https://x', tieuDe: 't' }]; },
+    _b1bWebFacts: async () => { zai += 1; return { cauTraLoi: 'cao su NBR' }; },
+  }, async () => { throw new Error('không được chạy lại'); });
+  delete process.env.ZAI_WEB_FACTS;
+  assert.equal(tim, 0);
+  assert.equal(zai, 0);
+  assert.equal(r.webHint, undefined);
+  assert.ok(Date.now() - t0 < 500, `phải trả ngay, mất ${Date.now() - t0} ms`);
+});
+
 test('OZV-1259: còn quá ít giờ tới hạn chót → KHÔNG gọi z.ai, trả out nguyên vẹn ngay', async () => {
   process.env.ZAI_WEB_FACTS = 'on';
   let daGoi = 0;
@@ -95,8 +111,9 @@ test('OZV-1259: z.ai chậm hơn trần HS_B1B_ZAI_MS → cắt đúng trần, b
   process.env.HS_B1B_ZAI_MS = '300';
   let timeoutNhan = null;
   const t0 = Date.now();
+  // Hạn chót ≥ 120 s để vẫn vào nhánh tra web (OZV-1269 bỏ web khi < 120 s); trần z.ai vẫn 300 ms.
   const r = await b1bApDung({ tenHang: 'máy phun socola 5 tầng' }, NF(), {
-    hanChotMs: Date.now() + 60000, _timWeb: timRong,
+    hanChotMs: Date.now() + 180000, _timWeb: timRong,
     _b1bWebFacts: (o) => { timeoutNhan = o.timeoutMs; return new Promise((res) => setTimeout(() => res({ cauTraLoi: 'trễ' }), 3000).unref()); },
   }, async () => null);
   const ms = Date.now() - t0;
@@ -115,7 +132,7 @@ test('OZV-1259: đồng hồ đua hạn chót giữ vòng sự kiện — tiến
     process.env.ZAI_WEB_FACTS = 'on'; process.env.HS_B1B_ZAI_MS = '300'; delete process.env.ZAI_SEARCH_KEY;
     const { b1bApDung } = require(${JSON.stringify(lib)});
     b1bApDung({ tenHang: 'máy phun socola 5 tầng' }, { status: 'NEED_FACTS', nextAction: { questions: [{ questionVi: 'chất liệu?' }] } }, {
-      hanChotMs: Date.now() + 60000, _timWeb: async () => [],
+      hanChotMs: Date.now() + 180000, _timWeb: async () => [],
       _b1bWebFacts: () => new Promise((res) => setTimeout(() => res({ cauTraLoi: 'trễ' }), 3000).unref()),
     }, async () => null).then((r) => console.log('XONG', r.webHint === undefined ? 'khong-hint' : 'co-hint'));
   `;
@@ -123,8 +140,9 @@ test('OZV-1259: đồng hồ đua hạn chót giữ vòng sự kiện — tiến
   assert.match(kq.stdout, /XONG khong-hint/, `tiến trình phải in kết quả; stdout=${kq.stdout.slice(-200)} stderr=${kq.stderr.slice(-200)}`);
 });
 
-test('OZV-1259: trần z.ai co theo hạn chót lượt (còn − 5 s lề), nhỏ hơn trần env', async () => {
-  process.env.ZAI_WEB_FACTS = 'on';
+test('OZV-1259: trần z.ai co theo hạn chót lượt (còn − 5 s lề), nhỏ hơn trần env — shadow vẫn tra khi < 120 s', async () => {
+  // mode=on + < 120 s bị OZV-1269 bỏ web; shadow vẫn tra để kiểm hanZaiMs co theo hạn.
+  process.env.ZAI_WEB_FACTS = 'shadow';
   let timeoutNhan = null;
   const r = await b1bApDung({ tenHang: 'đèn led hình gấu' }, NF(), {
     hanChotMs: Date.now() + 9000, _timWeb: timRong,
