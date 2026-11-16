@@ -2857,6 +2857,10 @@
    ],
    "avoid": [
     {
+     "prefix": "8421",
+     "whyVi": "Cả nhóm 8421 (máy lọc / phụ tùng lọc 8421.99…) — series AR là điều áp van 8481.20. Classify từng dừng NEED_FACTS ở 842199 vì chữ «bộ lọc khí» (OZV-1300 sau OZV-1286)."
+    },
+    {
      "prefix": "842139",
      "whyVi": "8421.39 là máy/thiết bị lọc khí — series AR là điều áp (van 8481.20), chữ «bộ lọc khí» của khách không đổi bản chất model AR (OZV-1286)."
     },
@@ -2875,6 +2879,10 @@
     {
      "prefix": "842131",
      "whyVi": "8421.31 là bộ lọc khí nạp động cơ đốt trong — khác AR mạch khí nén công nghiệp."
+    },
+    {
+     "prefix": "842199",
+     "whyVi": "8421.99 phụ tùng máy lọc — không phải điều áp AR; classify prod từng kẹt NEED_FACTS hỏi «bộ lọc thay thế hay hoàn chỉnh» (OZV-1300)."
     }
    ],
    "askVi": [
@@ -2882,7 +2890,7 @@
    ],
    "gir": "GIR 1",
    "basis": "RULE_TABLE",
-   "sourceVi": "Biểu thuế VN 8481.20 van dùng cho truyền động oleohydraulic/pneumatic. Series Airtac/Zonye: AR=regulator. Đo A2/khách 16–17/11 «bộ lọc khí zonye ar2000» còn 1/2 lượt dừng 6 số / lệch 842139 — tách AR khỏi AF (OZV-1286 sau OZV-1256)."
+   "sourceVi": "Biểu thuế VN 8481.20 van dùng cho truyền động oleohydraulic/pneumatic. Series Airtac/Zonye: AR=regulator. OZV-1286 tách AR khỏi AF; OZV-1300 mở avoid 8421/842199 vì classify còn dừng 6 số NEED_FACTS phụ tùng lọc."
   },
   {
    "id": "bo-loc-khi-nen-af-frl",

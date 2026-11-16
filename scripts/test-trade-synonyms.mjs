@@ -170,6 +170,19 @@ console.log('\n== Mã bẫy phải bị loại HẲN, không phải tụt hạng
     ar2000plain.every((c) => !c.hsCode.startsWith('842139')),
     `top ${ar2000plain.map((c) => c.hsCode).join(',')}`,
   );
+  // OZV-1300 — classify prod lệch 842199 (phụ tùng lọc); avoid phải phủ cả nhóm 8421
+  check(
+    'OZV-1300 AR2000 không còn 8421* trong top3',
+    ar2000plain.slice(0, 3).every((c) => !c.hsCode.startsWith('8421')),
+    `top3 ${ar2000plain.slice(0, 3).map((c) => c.hsCode).join(',')}`,
+  );
+  const arHit = lookupTradeTerms('bộ lọc khí zonye ar2000');
+  const arEntry = (arHit.matches || []).find((m) => m.entryId === 'dieu-ap-khi-nen-ar');
+  check(
+    'OZV-1300 AR avoid phủ 8421 (kèm 842199 phụ tùng lọc)',
+    (arEntry?.avoid || []).some((a) => String(a.prefix) === '8421'),
+    (arEntry?.avoid || []).map((a) => a.prefix),
+  );
 
   const pad = searchCandidates('giác hút chân không smc zp-905-08eu', { topCandidates: 50 });
   check('giác hút SMC không lẫn phụ tùng bơm/máy nén 841490', pad.every((c) => !c.hsCode.startsWith('841490')));

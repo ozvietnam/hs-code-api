@@ -268,5 +268,82 @@ const R1_CAM = {
   );
 }
 
+// ── OZV-1300: Zonye AR2000 — classify lệch 842199 (phụ tùng lọc) + NEED_FACTS hỏi lọc ──
+// Prod 17/11: /api/classify «bộ lọc khí zonye ar2000» → NEED_FACTS hs=842199 (6 số).
+// Avoid cũ chỉ 842139/842132/… → 842199 không biCam → không đôn 84812090.
+const TEN_AR = 'bộ lọc khí zonye ar2000';
+const R1_AR_SAI_8421 = {
+  product: {
+    nameVi: 'bộ lọc khí Zonye AR2000',
+    purpose: 'lọc khí',
+    mechanism: null,
+    material: null,
+    form: 'thiết bị',
+    model: 'AR2000',
+    evidence: {},
+  },
+  hypotheses: [
+    {
+      chapter: '84',
+      heading4: '8421',
+      subheading6: '842199',
+      why: 'phụ tùng máy lọc',
+      confidence: 65,
+    },
+  ],
+  verify: {
+    searchVi: ['bộ lọc khí', 'zonye ar2000'],
+    codes8: ['84219900', '84213990'],
+    micQuery: null,
+    unknowns: [],
+  },
+};
+
+{
+  const saved = llmTier.callLLMJson;
+  const queue = [
+    R1_AR_SAI_8421,
+    {
+      decision: 'HOI',
+      hs: '842199',
+      confidence: 60,
+      reason: 'Hồ sơ thiếu dữ kiện quyết định mã: Hàng là bộ lọc thay thế hay thiết bị lọc hoàn chỉnh',
+      basis: [{ stream: 'SUY_LUAN', claim: '8421.99', evidence: 'bộ lọc khí' }],
+      conditions: [],
+      alternatives: [{ hs: '84213990', whyNot: 'có thể thiết bị lọc hoàn chỉnh' }],
+      questions: [
+        { fact: 'boLoc', question: 'Hàng là bộ lọc thay thế hay thiết bị lọc hoàn chỉnh', whereToFind: 'catalogue' },
+        { fact: 'congDung', question: 'Hàng dùng cho đội bảo hộ, máy thở hay thiết bị công nghiệp', whereToFind: 'catalogue' },
+      ],
+    },
+  ];
+  llmTier.callLLMJson = async () => {
+    const next = queue.shift();
+    if (!next) throw new Error('hết stub LLM AR2000');
+    return { json: next };
+  };
+  const out = await classifyLoop({ tenHang: TEN_AR, model: 'AR2000' }, { mic: false, crossCheck: false, timeoutMs: 5000 });
+  llmTier.callLLMJson = saved;
+  const top3 = (out.results || []).map((r) => r.hs);
+  check(
+    'OZV-1300 AR2000: đôn 848120* 8 số (không kẹt NEED_FACTS 842199)',
+    out.status !== 'NEED_FACTS'
+      && top3[0]
+      && String(top3[0]).startsWith('848120')
+      && String(top3[0]).length === 8,
+    { status: out.status, top3, next: out.nextAction },
+  );
+  check(
+    'OZV-1300 AR2000: top1 = 84812090 (từ điển high)',
+    top3[0] === '84812090',
+    top3,
+  );
+  check(
+    'OZV-1300 AR2000: top3 không còn 842139* / 842199*',
+    top3.every((h) => !String(h).startsWith('8421')),
+    top3,
+  );
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
