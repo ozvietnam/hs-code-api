@@ -347,6 +347,14 @@ function sinhMoTaLoaiTru(hs8, pn6, st) {
       soRanhGioi.set(c0.fact, list);
     }
   }
+  // OZV-1182: CHỈ 6201/6202 — khoá LIET_KE chỉ ở PHAI_KHONG TRONG (Loại khác dưới tiêu đề chia vật liệu)
+  // cần 1 giá trị KHẲNG ĐỊNH ngoài tập bị loại, đặt TRƯỚC cụm "không phải …" (biPhuDinh nuốt cụm sau
+  // "không phải"+≤2 từ kể cả khi đã tách " - "). Không mở toàn cục: đo 03061719 bị chốt sai khi reorder mọi nhóm.
+  const pn4Sinh = pn6.slice(0, 4);
+  const siet620x = pn4Sinh === '6201' || pn4Sinh === '6202';
+  const lietKePhaiKhong = new Map(); // fact → Set giá trị bị loại
+  const lietKePhaiCo = new Set();
+  const phuDinhParts = [];
   for (const g of dd.nhom || []) {
     if (!Array.isArray(g.dieuKien) || !g.dieuKien.length) continue;
     if (g.chieu === 'PHAI_CO') {
@@ -357,6 +365,7 @@ function sinhMoTaLoaiTru(hs8, pn6, st) {
           soPhaiCo.set(c.fact, list);
           continue;
         }
+        if (siet620x && c.op === 'TRONG') lietKePhaiCo.add(c.fact);
         const s = cumKhangDinh(c);
         if (s && !parts.includes(s)) parts.push(s);
       }
@@ -364,10 +373,35 @@ function sinhMoTaLoaiTru(hs8, pn6, st) {
       // Nếu điều kiện anh em chỉ gồm các vế số (SO), gom lại để chọn số nằm ngoài mọi anh em
       const allSo = g.dieuKien.every((c) => ['<=', '<', '>=', '>'].includes(c.op));
       if (!allSo) {
+        if (siet620x) {
+          for (const c of g.dieuKien) {
+            if (c.op === 'TRONG') {
+              const set = lietKePhaiKhong.get(c.fact) || new Set();
+              for (const v of (Array.isArray(c.value) ? c.value : [c.value])) if (v != null) set.add(String(v));
+              lietKePhaiKhong.set(c.fact, set);
+            }
+          }
+        }
         const s = cumPhuDinhNhom(g.dieuKien);
-        if (s && !parts.includes(s)) parts.push(s);
+        if (siet620x) {
+          if (s && !phuDinhParts.includes(s) && !parts.includes(s)) phuDinhParts.push(s);
+        } else if (s && !parts.includes(s)) {
+          parts.push(s);
+        }
       }
     }
+  }
+  if (siet620x) {
+    for (const [fact, biLoai] of lietKePhaiKhong.entries()) {
+      if (lietKePhaiCo.has(fact) || !biLoai.size) continue;
+      const k = (() => { try { return TV.layKhoa(fact); } catch { return null; } })();
+      if (!k || k.kieu !== 'LIET_KE') continue;
+      const ngoai = (k.giaTriHopLe || []).find((v) => !biLoai.has(String(v)));
+      if (!ngoai) continue;
+      const s = cumKhangDinh({ fact, op: 'TRONG', value: [ngoai] });
+      if (s && !parts.includes(s)) parts.push(s);
+    }
+    for (const s of phuDinhParts) if (!parts.includes(s)) parts.push(s);
   }
   for (const [fact, groups] of soRanhGioi.entries()) {
     const k = (() => { try { return TV.layKhoa(fact); } catch { return null; } })();
@@ -405,9 +439,13 @@ function sinhMoTaLoaiTru(hs8, pn6, st) {
   // (85444919) hoặc nhieu-dong-loai-khac (85443013). Phần KHÔNG phủ định vẫn nối ", " như nếp cũ: bộ đọc
   // số gộp khoảng theo ",", tách " - " làm vế số "điện áp 100000V" rơi CHUA_BIET ⇒ .6039 đỏ lại (đo biến
   // thể "số cuối ," ⇒ LOAI_KHAC 85446039).
-  // CHỈ áp cho nhóm 8544 (PR này sửa duy nhất 8544): đo --toan-bieu hai chân cho thấy tách đoạn toàn cục
-  // lật 8 ca thành chốt sai ở nhóm chưa được sửa (1605/4813/8413/8703/8711) — nhóm khác giữ nếp cũ ", ".
-  if (pn6.slice(0, 4) !== '8544') return parts.join(', ');
+  // Ban đầu CHỈ áp 8544: đo --toan-bieu hai chân cho thấy tách đoạn toàn cục lật 8 ca thành chốt sai ở
+  // nhóm chưa được sửa (1605/4813/8413/8703/8711) — nhóm khác giữ nếp cũ ", ".
+  // OZV-1182: thêm 6201/6202 — sau khi tiêu đề "Từ ramie/tơ tằm" chuyển sang loaiSoiDet (#1351), ca
+  // LOAI_TRU nối "không phải áo …, từ ramie" bằng dấu phẩy ⇒ phuDinhCaDoan nuốt khẳng định vật liệu
+  // (62019019/29/90 không chốt). Tách " - " quanh cụm phủ định trả 3 ca về chốt đúng; không mở toàn cục.
+  const pn4 = pn6.slice(0, 4);
+  if (pn4 !== '8544' && pn4 !== '6201' && pn4 !== '6202') return parts.join(', ');
   const laPhu = (s) => /không dùng|không phải|không thuộc|other than|not a|不是/.test(String(s || ''));
   let moTa = '';
   for (let i = 0; i < parts.length; i++) {

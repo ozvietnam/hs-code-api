@@ -97,9 +97,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "paperclip:tho-hs-02:ozv-1218#sua-dong-co-ten",
-          "ngay": "2026-11-16",
-          "bam": "164659a326897d2c1e897170b962a583b30095422afebe10cf30ebac0637ed34"
+          "phien": "claude-agent:duyet-L3-20261111#soat-L3",
+          "ngay": "2026-11-11",
+          "bam": "a78695068b7478126b56cf8f03e8082738c4665013b7c944fdd0423120163dcd"
         }
       }
     },
@@ -108,7 +108,7 @@
       "dieuKien": "Sữa chua (phân nhóm 0403.20), dạng lỏng đã hoặc chưa cô đặc (tiêu đề quốc gia 0403.20.1) — dòng biểu thuế ghi \"Loại khác\"",
       "nguon": "tax.04032019",
       "trich": "04032019 - - - Loại khác",
-      "nguonLoai": "CLAUDE_DUYET",
+      "nguonLoai": "AI_DA_KIEM",
       "loaiKhac": true,
       "phamViLoaiKhac": {
         "nguonLoai": "MAY_SUY",
@@ -118,15 +118,6 @@
         ],
         "toTienCoTen": "040320",
         "dinhNghiaDuoc": true
-      },
-      "dieuKienSo": [],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "paperclip:tho-hs-02:ozv-1218#sua-dong-co-ten",
-          "ngay": "2026-11-16",
-          "bam": "164659a326897d2c1e897170b962a583b30095422afebe10cf30ebac0637ed34"
-        }
       }
     },
     {
@@ -138,29 +129,25 @@
       "loaiKhac": false,
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Đã thêm hương liệu hoặc thêm hoa quả (kể cả thịt quả và mứt), quả hạch (nuts) hoặc ca cao"
+          "fact": "daThemHuongLieuHoaQuaHatHoacCaCao",
+          "op": "CO"
         }
       ],
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "paperclip:tho-hs-02:ozv-1218#sua-dong-co-ten",
-          "ngay": "2026-11-16",
-          "bam": "164659a326897d2c1e897170b962a583b30095422afebe10cf30ebac0637ed34"
+          "phien": "claude-agent:duyet-L3-20261111#soat-L3",
+          "ngay": "2026-11-11",
+          "bam": "a78695068b7478126b56cf8f03e8082738c4665013b7c944fdd0423120163dcd"
         }
-      },
-      "phanConLai": [
-        "04032011"
-      ]
+      }
     },
     {
       "hs": "04032099",
       "dieuKien": "Sữa chua (phân nhóm 0403.20), loại khác (tiêu đề quốc gia 0403.20.9) — dòng biểu thuế ghi \"Loại khác\"",
       "nguon": "tax.04032099",
       "trich": "04032099 - - - Loại khác",
-      "nguonLoai": "CLAUDE_DUYET",
+      "nguonLoai": "AI_DA_KIEM",
       "loaiKhac": true,
       "phamViLoaiKhac": {
         "nguonLoai": "MAY_SUY",
@@ -170,15 +157,6 @@
         ],
         "toTienCoTen": "040320",
         "dinhNghiaDuoc": true
-      },
-      "dieuKienSo": [],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "paperclip:tho-hs-02:ozv-1218#sua-dong-co-ten",
-          "ngay": "2026-11-16",
-          "bam": "164659a326897d2c1e897170b962a583b30095422afebe10cf30ebac0637ed34"
-        }
       }
     },
     {
@@ -345,5 +323,26 @@
     "loai": 0,
     "nguonBiCat": []
   },
-  "dieuKienNut": []
+  "dieuKienNut": [
+    {
+      "id": "0403201",
+      "nguon": "tieuDe.0403201",
+      "trich": "0403201 Dạng lỏng, đã hoặc chưa cô đặc",
+      "dieuKienSo": [
+        {
+          "fact": "dangLong",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L3-20261111#soat-L3",
+          "ngay": "2026-11-11",
+          "bam": "a78695068b7478126b56cf8f03e8082738c4665013b7c944fdd0423120163dcd"
+        }
+      }
+    }
+  ]
 }

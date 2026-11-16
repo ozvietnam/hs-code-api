@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L6-20261111#soat-L6",
-    "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu VI/EN: .20 BUN_MI_GAO (rice vermicelli, kể cả bee hoon), .30 MIEN (transparent vermicelli), .40 \"Mì khác\" tenLoai \"Mì\" + phanConLai; lưu ý chữ VI \"Mì\" rộng hơn EN \"noodles\" (mì ống có thể khớp) — so chữ tự do nên lúc chạy không tự chốt.",
-    "bam": "e8663062a485d0d1021593bb56aaddc45fa178bae6191fdc90e45807a4e1bbd7"
+    "phien": "paperclip:tho-hs-02:ozv-1226#sua-dong-co-ten",
+    "ngay": "2026-11-16",
+    "ghiChu": "OZV-1226: .20 BUN_MI_GAO, .30 MIEN, .40 MI_KHAC (loaiMiBunMien TRONG — tatDinh). Bỏ tenLoai «Mì» + phanConLai vì «mì» nằm trong tên nhóm 1902 (coCumPhanBiet=false) nên DONG_CO_TEN hỏi loaiMiBunMien thay vì chốt.",
+    "bam": "ef5332129af9bc1aebf407201035444a4989b0f2120609e688474dc98039ae4e"
   },
   "dieuKienNut": [],
   "dong8": [
@@ -55,9 +55,11 @@
       "trich": "19021940 - - - Mì khác",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Mì"
+          "fact": "loaiMiBunMien",
+          "op": "TRONG",
+          "value": [
+            "MI_KHAC"
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET",
@@ -80,7 +82,7 @@
     {
       "ma": "19021940",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.19021940 \"Mì khác\": phần còn lại có tên — mì không thuộc .20 (làm từ gạo) và .30 (miến) ⇒ tenLoai \"Mì\" + phanConLai true"
+      "ghiChu": "OZV-1226: tax.19021940 \"Mì khác\" ⇒ loaiMiBunMien TRONG [MI_KHAC] (cachDoc \"mì khác\" — âm tiết phân biệt trong từ vựng, tatDinh). Không dùng tenLoai «Mì» (không coCumPhanBiet)."
     }
   ]
 }
