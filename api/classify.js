@@ -18,6 +18,8 @@ const { acquireServiceSlot } = require('../lib/service-rate-limit');
 const { ganHoSoClassify } = require('../lib/ho-so/api');
 // OZV-507 việc 1 — cache theo hash hồ sơ cho LƯỢT KHOÁ DỊCH VỤ (Postgres kín; lượt công khai không đụng).
 const { cacheBat, khoaCache, docCache, ghiCache, donPhienBanCu, phienBanDuLieu } = require('../lib/classify-cache');
+// OZV-1144 (G5 PR 1a, OZV-760) — kho đáp án CHẾ ĐỘ BÓNG: HS_KHO_DAP_AN=off|shadow (mặc định off, chưa có 'on').
+const { cheDoKhoDapAn, soiBong } = require('../lib/kho-dap-an');
 
 /** `supplierHs`: {code, source?, url?} hoặc chuỗi mã. Trả null khi không đủ 6 chữ số. */
 function parseSupplierHs(v) {
@@ -170,6 +172,16 @@ module.exports = async function handler(req, res) {
       // Chỉ khoá dịch vụ; debug/holdout đổi shape + ngữ cảnh ⇒ bỏ qua cache. Lượt cold giữ nguyên hành vi
       // (không đụng dòng nào phía trên); lượt trúng trả nguyên phản hồi + cached:true, KHÔNG gọi LLM.
       const dungCache = cacheBat() && !debug && !wantsEvalHoldout(req);
+      // OZV-1144 — kho đáp án BÓNG: chạy SAU khi đã có kết quả, không await ⇒ khách không chờ thêm ms nào;
+      // không đổi phản hồi. Bỏ qua debug/holdout (điều 7 mục 3 thiết kế). Lọc riêng tư nằm trong lib/kho-dap-an.js.
+      const bong = cheDoKhoDapAn() === 'shadow' && !debug && !wantsEvalHoldout(req);
+      const dauVaoKho = bong
+        ? { ...attrs, thuongHieu: body?.thuongHieu || body?.brand || null, model: body?.model || null, xuatXu: body?.xuatXu || body?.origin || null }
+        : null;
+      const chayBong = (ketQua, soLuotLlm) => {
+        if (!bong) return;
+        soiBong(dauVaoKho, ketQua, { tier, quaGio: Date.now() - started >= tran, soLuotLlm }).catch(() => {});
+      };
       const pb = dungCache ? phienBanDuLieu() : null;
       const khoa = dungCache
         ? khoaCache(attrs, attrsHoSo, { tier, kenhGoi, noiBo: laNoiBoOz(req) })
@@ -177,6 +189,7 @@ module.exports = async function handler(req, res) {
       if (dungCache) {
         const tram = await docCache(khoa, pb);
         if (tram) {
+          chayBong(tram, 0);
           // Trúng cache: không có lượt LLM nào ⇒ usage rỗng (không tính phí token cho lượt này).
           return res.status(200).json({ ...tram, attrs, usage: [], ms: Date.now() - started, cached: true, phienBanDuLieu: pb });
         }
@@ -185,7 +198,11 @@ module.exports = async function handler(req, res) {
       // Lượt quá hạn vẫn chạy nền tới khi xong và vẫn TỐN tiền LLM như thường. Gắn ghi cache vào chính promise đó
       // để tiền đã tiêu không mất trắng: lượt sau cùng hồ sơ trúng cache, khỏi gọi LLM lại (OZV-507 việc 1).
       const chayCoCache = run(() => withHangHoa(() => withUsage(() => chay({ noiBo: laNoiBoOz(req), caller: serviceCaller(req) }))))
-        .then((kq2) => { if (dungCache) ghiCache(khoa, pb, kq2.result); return kq2; }); // lỗi DB nuốt trong lib
+        .then((kq2) => {
+          if (dungCache) ghiCache(khoa, pb, kq2.result); // lỗi DB nuốt trong lib
+          chayBong(kq2.result, Array.isArray(kq2.usage) ? kq2.usage.length : null);
+          return kq2;
+        });
       const kq = await trongHan(chayCoCache, tran - (Date.now() - started));
       if (kq.quaGio) return traLoiQuaGio(res, { ms: Date.now() - started, tranMs: tran, attrs });
       const { result, usage } = kq.v;
