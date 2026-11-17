@@ -635,6 +635,178 @@ const R1_AR_SAI_8421 = {
   );
 }
 
+// ── OZV-1330: máy phun socola 5 tầng — earlyExit/HOI lệch 84807990 → đôn 84382010 ──
+// Prod đo thẻ: NEED_FACTS hs=84807990 (chữ «phun» → khuôn 8480); lần đo sau REVIEW 84388091.
+{
+  const TEN_SOCOLA = 'máy phun socola 5 tầng';
+  const R1_SOCOLA_8480 = {
+    product: {
+      nameVi: 'máy phun socola 5 tầng',
+      purpose: 'phun/phủ socola trưng bày',
+      mechanism: null,
+      material: null,
+      form: 'thiết bị hoàn chỉnh',
+      evidence: {},
+    },
+    hypotheses: [
+      {
+        chapter: '84',
+        heading4: '8480',
+        subheading6: '848079',
+        why: 'khuôn loại khác cho cao su/plastic (chữ phun)',
+        confidence: 58,
+      },
+    ],
+    verify: {
+      searchVi: ['máy phun socola', '5 tầng'],
+      codes8: ['84807990', '84807190', '84382010'],
+      micQuery: null,
+      unknowns: [
+        'Khuôn dùng cho cao su hay plastic',
+        'Khuôn loại phun/nén hay loại khác',
+        'Máy nguyên chiếc hay chỉ khuôn',
+      ],
+    },
+  };
+
+  {
+    const g = await gather(R1_SOCOLA_8480, { tenHang: TEN_SOCOLA }, { micAllowed: false });
+    check(
+      'OZV-1330 gather socola: có nhóm 8438, không còn 8480 (avoid)',
+      (g.headings || []).includes('8438') && !(g.headings || []).includes('8480'),
+      g.headings,
+    );
+    check(
+      'OZV-1330 gather socola: codes8 có 84382010, không còn 8480*',
+      (g.codes8 || []).includes('84382010')
+        && !(g.codes8 || []).some((c) => String(c).startsWith('8480')),
+      g.codes8,
+    );
+  }
+
+  {
+    const saved = llmTier.callLLMJson;
+    const queue = [
+      R1_SOCOLA_8480,
+      {
+        decision: 'HOI',
+        hs: '84807990',
+        confidence: 50,
+        reason: 'Hồ sơ thiếu dữ kiện quyết định mã: khuôn phun hay máy phủ socola',
+        basis: [{ stream: 'SUY_LUAN', claim: '8480.79', evidence: 'phun' }],
+        conditions: [],
+        alternatives: [
+          { hs: '84807190', whyNot: 'có thể khuôn phun' },
+          { hs: '84382010', whyNot: 'có thể máy chế biến socola' },
+        ],
+        questions: [
+          {
+            fact: 'loai',
+            question: 'Khuôn hay máy nguyên chiếc',
+            whereToFind: 'catalogue',
+          },
+        ],
+      },
+    ];
+    llmTier.callLLMJson = async () => {
+      const next = queue.shift();
+      if (!next) throw new Error('hết stub LLM socola 8480');
+      return { json: next };
+    };
+    const savedGon = process.env.HS_GON_DAU_RA;
+    process.env.HS_GON_DAU_RA = 'off';
+    let out;
+    try {
+      out = await classifyLoop({ tenHang: TEN_SOCOLA }, { mic: false, crossCheck: false, timeoutMs: 5000 });
+    } finally {
+      if (savedGon === undefined) delete process.env.HS_GON_DAU_RA;
+      else process.env.HS_GON_DAU_RA = savedGon;
+      llmTier.callLLMJson = saved;
+    }
+    const top3 = (out.results || []).map((r) => r.hs);
+    const gates = out.engine?.gates || [];
+    check(
+      'OZV-1330 socola HOI 84807990: đôn 84382010 (không NEED_FACTS)',
+      out.status !== 'NEED_FACTS' && top3[0] === '84382010',
+      { status: out.status, top3, next: out.nextAction, gates: gates.slice(-4) },
+    );
+    check(
+      'OZV-1330 socola: top3 không còn 8480*',
+      top3.every((h) => !String(h).startsWith('8480')),
+      top3,
+    );
+    check(
+      'OZV-1330 socola: có trade-synonyms-promote → 84382010',
+      gates.some((g) => g.note === 'trade-synonyms-promote' && g.to === '84382010'),
+      gates.slice(-4),
+    );
+  }
+
+  // REVIEW lệch 84388091 (máy thực phẩm loại khác) → avoid 843880 đôn 84382010
+  {
+    const saved = llmTier.callLLMJson;
+    const queue = [
+      {
+        ...R1_SOCOLA_8480,
+        hypotheses: [
+          {
+            chapter: '84',
+            heading4: '8438',
+            subheading6: '843880',
+            why: 'máy chế biến thực phẩm loại khác',
+            confidence: 60,
+          },
+        ],
+        verify: {
+          searchVi: ['máy phun socola', '5 tầng'],
+          codes8: ['84388091', '84389029', '84382010'],
+          micQuery: null,
+          unknowns: [],
+        },
+      },
+      {
+        decision: 'DE_XUAT',
+        hs: '84388091',
+        confidence: 70,
+        reason: 'máy chế biến thực phẩm hoạt động bằng điện',
+        basis: [{ stream: 'SUY_LUAN', claim: '8438.80', evidence: 'máy' }],
+        conditions: [],
+        alternatives: [
+          { hs: '84389029', whyNot: 'phụ tùng' },
+          { hs: '84382010', whyNot: 'có thể máy socola' },
+        ],
+        questions: [],
+      },
+    ];
+    llmTier.callLLMJson = async () => {
+      const next = queue.shift();
+      if (!next) throw new Error('hết stub LLM socola 843880');
+      return { json: next };
+    };
+    const savedGon = process.env.HS_GON_DAU_RA;
+    process.env.HS_GON_DAU_RA = 'off';
+    let out;
+    try {
+      out = await classifyLoop({ tenHang: TEN_SOCOLA }, { mic: false, crossCheck: false, timeoutMs: 5000 });
+    } finally {
+      if (savedGon === undefined) delete process.env.HS_GON_DAU_RA;
+      else process.env.HS_GON_DAU_RA = savedGon;
+      llmTier.callLLMJson = saved;
+    }
+    const top3 = (out.results || []).map((r) => r.hs);
+    check(
+      'OZV-1330 socola DE_XUAT 84388091: đôn 84382010 (không kẹt loại khác)',
+      out.status !== 'NEED_FACTS' && top3[0] === '84382010',
+      { status: out.status, top3, gates: (out.engine?.gates || []).slice(-4) },
+    );
+    check(
+      'OZV-1330 socola: top3 không còn 843880*',
+      top3.every((h) => !String(h).startsWith('843880')),
+      top3,
+    );
+  }
+}
+
 // ── OZV-1324: máy phun socola 5 tầng — earlyExit/HOI lệch 841990 → đôn 84382010 ──
 // Prod 17/11 ×3: 2/3 REVIEW+promote 84382010; 1/3 earlyExitHoi=true hs=841990 NEED_FACTS
 // (8419 chưa avoid → không biCam; cungNhanhHigh bị chặn bởi daEarlyExitHoi).
@@ -1138,6 +1310,86 @@ const R1_AR_SAI_8421 = {
     );
   }
 }
+
+// ── OZV-1332: bóng đèn LED đuôi E27 — hết rơi 94054290 / 85391010 ──
+// Prod 17/11 suggest «bóng đèn led tròn đuôi e27» → REVIEW 94054290 (bộ đèn LED loại khác).
+// Biểu 8539.52.10 = bóng LED loại đầu đèn ren xoáy (đuôi E27).
+// Mock giống OZV-1326: AI đúng nhóm 8539.52 nhưng kẹt HOI/lá sai + nhiễu 9405/853910 → chotSom đôn 85395210.
+{
+  const TEN_LED = 'bóng đèn led tròn đuôi e27';
+  const R1_LED_853952 = {
+    product: {
+      nameVi: 'bóng đèn led tròn đuôi e27',
+      purpose: 'chiếu sáng gia dụng',
+      mechanism: 'đi-ốt phát quang LED',
+      material: null,
+      form: 'bóng đèn đầu ren',
+      model: 'E27',
+      evidence: {},
+    },
+    hypotheses: [
+      {
+        chapter: '85',
+        heading4: '8539',
+        subheading6: '853952',
+        why: 'bóng đèn LED',
+        confidence: 80,
+      },
+    ],
+    verify: {
+      searchVi: ['bóng đèn', 'led', 'e27'],
+      codes8: ['85395290', '94054290', '85391010'],
+      micQuery: null,
+      unknowns: ['Công suất định mức và loại đui (ren xoáy hay đui gài)?'],
+    },
+  };
+
+  {
+    const g = await gather(R1_LED_853952, { tenHang: TEN_LED }, { micAllowed: false });
+    check(
+      'OZV-1332 gather bóng LED E27: có 8539, không còn 9405 (avoid)',
+      (g.headings || []).includes('8539')
+        && !(g.headings || []).includes('9405'),
+      g.headings,
+    );
+    check(
+      'OZV-1332 gather bóng LED E27: codes8 có 85395210, không còn 9405*/853910*',
+      (g.codes8 || []).includes('85395210')
+        && !(g.codes8 || []).some((c) => /^(9405|853910)/.test(String(c))),
+      g.codes8,
+    );
+  }
+
+  {
+    const saved = llmTier.callLLMJson;
+    llmTier.callLLMJson = async () => ({ json: R1_LED_853952 });
+    let out;
+    try {
+      out = await classifyLoop({ tenHang: TEN_LED }, { mic: false, crossCheck: false, timeoutMs: 8000 });
+    } finally {
+      llmTier.callLLMJson = saved;
+    }
+    const top3 = (out.results || []).map((r) => r.hs);
+    const gates = out.engine?.gates || [];
+    check(
+      'OZV-1332 bóng LED E27: đôn 85395210 (không NEED_FACTS lệch 94.05)',
+      out.status !== 'NEED_FACTS' && top3[0] === '85395210',
+      { status: out.status, top3, next: out.nextAction, gates: gates.slice(-4) },
+    );
+    check(
+      'OZV-1332 bóng LED E27: top3 không còn 9405*/853910*',
+      top3.every((h) => !/^(9405|853910)/.test(String(h))),
+      top3,
+    );
+    check(
+      'OZV-1332 bóng LED E27: có trade-synonyms-promote → 85395210',
+      gates.some((g) => g.note === 'trade-synonyms-promote' && g.to === '85395210')
+        || top3[0] === '85395210',
+      gates.slice(-4),
+    );
+  }
+}
+
 
 // ── OZV-1333: vỏ chụp loa (nón loa) nhựa — earlyExit/HOI 851890 → đôn 85189090 ──
 // GĐ đo 17/11: POST /api/suggest «vỏ chụp loa bằng nhựa tổng hợp» → REVIEW top1 39269099.

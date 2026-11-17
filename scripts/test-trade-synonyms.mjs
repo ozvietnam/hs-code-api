@@ -535,6 +535,9 @@ console.log('\n== Từ điển không được lan sang câu không liên quan =
     check('máy phun socola ưu tiên 84382010', (m?.candidates || []).some((c) => (c.hsCode || c.hs) === '84382010'));
     check('máy phun socola tránh 8424', (m?.avoid || []).some((a) => String(a.prefix) === '8424'));
     check('máy phun socola tránh máy gia nhiệt 8419 (OZV-1324)', (m?.avoid || []).some((a) => String(a.prefix) === '8419'));
+    check('máy phun socola tránh khuôn phun 8480 (OZV-1330)', (m?.avoid || []).some((a) => String(a.prefix) === '8480'));
+    check('máy phun socola tránh máy thực phẩm loại khác 843880 (OZV-1330)', (m?.avoid || []).some((a) => String(a.prefix) === '843880'));
+    check('máy phun socola chotSom (OZV-1330)', m?.chotSom === true);
     check('máy phun socola tránh máy giấy 8439', (m?.avoid || []).some((a) => String(a.prefix) === '8439'));
     check('máy phun socola tránh nhiễu 8543', (m?.avoid || []).some((a) => String(a.prefix) === '8543'));
     check('máy phun socola tránh nhiễu 8479', (m?.avoid || []).some((a) => String(a.prefix) === '8479'));
@@ -571,6 +574,12 @@ console.log('\n== Từ điển không được lan sang câu không liên quan =
     );
     check('search máy phun socola không lẫn máy giấy 8439', !top3.some((hs) => String(hs).startsWith('8439')));
     check('search máy phun socola không lẫn 8419/8543/8479', !top3.some((hs) => /^(8419|8543|8479)/.test(String(hs))));
+    check('search máy phun socola top1 84382010 (OZV-1330)', top3[0] === '84382010', `top3=${top3.join(',')}`);
+    check(
+      'search máy phun socola không lẫn khuôn 8480 / 843880 (OZV-1330)',
+      !top3.some((hs) => /^(8480|843880)/.test(String(hs))),
+      `top3=${top3.join(',')}`,
+    );
   }
   // OZV-1325 — đầu lắc xilanh FD1016 ≠ nối ống 7307 / quy lát 8409 / xi lanh nguyên chiếc 841231
   for (const q of [
@@ -654,6 +663,58 @@ console.log('\n== Từ điển không được lan sang câu không liên quan =
       'OZV-1326 tránh phụ tùng máy may 8452 / chân ga xe 8708',
       (m?.avoid || []).some((a) => String(a.prefix) === '8452')
         && (m?.avoid || []).some((a) => String(a.prefix) === '8708'),
+    );
+  }
+}
+
+// OZV-1332 — bóng đèn LED đuôi E27 (đầu ren xoáy) → 85395210
+// Prod 17/11 suggest «bóng đèn led tròn đuôi e27» → REVIEW 94054290 (bộ đèn LED loại khác).
+// Biểu: 8539.52.10 = bóng LED loại đầu đèn ren xoáy (đuôi E27/E14/E40).
+{
+  const TEN_LED = 'bóng đèn led tròn đuôi e27';
+  check(
+    'OZV-1332 câu khách bóng LED đuôi E27 khớp mục bong-den-led-duoi-e27',
+    lookupTradeTerms(TEN_LED).matches.some((m) => m.entryId === 'bong-den-led-duoi-e27'),
+  );
+  check(
+    'OZV-1332 không dấu bong den led tron duoi e27 vẫn khớp',
+    lookupTradeTerms('bong den led tron duoi e27').matches.some((m) => m.entryId === 'bong-den-led-duoi-e27'),
+  );
+  for (const q of [
+    'đèn led cắm tường hình gấu',
+    'bóng đèn LED đui gài B22',
+    'chip led smd 2835',
+    'module led cob',
+  ]) {
+    check(
+      `OZV-1332 «${q}» không kích hoạt mục bong-den-led-duoi-e27`,
+      !(lookupTradeTerms(q).matches || []).some((m) => m.entryId === 'bong-den-led-duoi-e27'),
+    );
+  }
+  {
+    const m = lookupTradeTerms(TEN_LED).matches.find((x) => x.entryId === 'bong-den-led-duoi-e27');
+    check(
+      'OZV-1332 ưu tiên 85395210 high + chotSom',
+      (m?.candidates || []).some((c) => (c.hsCode || c.hs) === '85395210' && c.confidence === 'high')
+        && m?.chotSom === true,
+    );
+    check(
+      'OZV-1332 tránh bộ đèn 9405 / bóng xe 853910',
+      (m?.avoid || []).some((a) => String(a.prefix) === '9405')
+        && (m?.avoid || []).some((a) => String(a.prefix) === '853910'),
+    );
+  }
+  {
+    const top3 = searchCandidates(TEN_LED, { topCandidates: 3 }).map((c) => c.hsCode);
+    check(
+      'OZV-1332 search bóng LED đuôi E27 top1 85395210',
+      top3[0] === '85395210',
+      `top3=${top3.join(',')}`,
+    );
+    check(
+      'OZV-1332 search không còn top1/top3 94054290',
+      !top3.includes('94054290'),
+      `top3=${top3.join(',')}`,
     );
   }
 }

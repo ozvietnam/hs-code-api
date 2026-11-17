@@ -3462,6 +3462,14 @@
      "whyVi": "8419 là máy gia nhiệt/nấu/làm nóng đồ uống–thực phẩm (8419.81) và phụ tùng (8419.90) — đài/phun socola 5 tầng dễ bị vòng 1 kéo sang «máy nấu socola» rồi earlyExit NEED_FACTS 841990 (đo prod OZV-1324 17/11: 1/3 lượt). Hàng này là máy chế biến/phủ bánh kẹo–cacao–socola nhóm 84.38.20, không phải 84.19."
     },
     {
+     "prefix": "8480",
+     "whyVi": "8480 là khuôn đúc/ép cao su–plastic (8480.71 phun hoặc nén, 8480.79 loại khác) — chữ «phun» trong «máy phun socola» dễ kéo sang khuôn phun rồi earlyExit NEED_FACTS 84807990 (đo prod OZV-1330 17/11). Hàng này là máy chế biến/phủ socola 84.38.20, không phải khuôn."
+    },
+    {
+     "prefix": "843880",
+     "whyVi": "8438.80 là máy chế biến thực phẩm/đồ uống loại khác — LLM/search dễ chọn 84388091 (điện) thay vì dòng riêng cacao/socola 8438.20 (đo prod OZV-1330 17/11: REVIEW top1 84388091). Có dòng 8438.20 thì không xếp vào 8438.80."
+    },
+    {
      "prefix": "8439",
      "whyVi": "8439 là máy sản xuất giấy/bìa — chữ «máy» + điểm tìm kiếm yếu dễ đẩy 84392000 vào top3 cạnh 8438.20; không phải máy phủ/phun socola."
     },
@@ -3489,9 +3497,10 @@
    "askVi": [
     "Máy hoạt động bằng điện (→ 8438.20.10, mặc định với đài/phun tầng thương mại) hay không dùng điện (→ 8438.20.20)?"
    ],
+   "chotSom": true,
    "gir": "1",
    "basis": "RULE_TABLE",
-   "sourceVi": "Biểu thuế 2026 phân nhóm 8438.20 «Máy dùng để sản xuất bánh kẹo, cacao hoặc sôcôla» (EN: Machinery; industrial, for the manufacture of confectionery, cocoa or chocolate): 84382010 hoạt động bằng điện; 84382020 không hoạt động bằng điện. OZV-1285 kéo khỏi bẫy 8424; OZV-1297 loại hẳn nhiễu 8439/8543/8479 khỏi top3 và bổ sung fountain/đài phun để search ra đủ mã 8 số nhóm 8438. OZV-1324: thêm avoid 8419 — earlyExitHoi lệch 841990 (phụ tùng máy gia nhiệt) không biCam nên không đôn 84382010."
+   "sourceVi": "Biểu thuế 2026 phân nhóm 8438.20 «Máy dùng để sản xuất bánh kẹo, cacao hoặc sôcôla» (EN: Machinery; industrial, for the manufacture of confectionery, cocoa or chocolate): 84382010 hoạt động bằng điện; 84382020 không hoạt động bằng điện. OZV-1285 kéo khỏi bẫy 8424; OZV-1297 loại hẳn nhiễu 8439/8543/8479 khỏi top3 và bổ sung fountain/đài phun để search ra đủ mã 8 số nhóm 8438. OZV-1324: thêm avoid 8419 — earlyExitHoi lệch 841990 (phụ tùng máy gia nhiệt) không biCam nên không đôn 84382010. OZV-1330: avoid 8480 (khuôn «phun») + 843880 (máy thực phẩm loại khác) + chotSom — hết NEED_FACTS 84807990 / REVIEW lệch 84388091."
   },
   {
    "id": "den-led-cam-tuong",
@@ -3865,6 +3874,79 @@
    "gir": "GIR 1",
    "basis": "RULE_TABLE",
    "sourceVi": "Shop VN kitbuy/thegioitech: Công tắc bàn đạp chân TFS-1/TFS-01/FS-01 ABS/kim loại, dây 2m, 250V-10A — dùng máy may/thiết bị cần đạp chân. hs-aliases «cong tac ban dap» → 85365099. Biểu thuế 8536.50.99 công tắc khác. OZV-1326: câu khách «bàn ga tfs-1 (2 mét)» (ga = biến thể/đánh máy của đạp; 2 mét = dây) — prod earlyExit NEED_FACTS 853650 / NEEDS_EXPERT; chotSom đôn 8 số."
+  },
+    {
+   "id": "bong-den-led-duoi-e27",
+   "titleVi": "Bóng đèn LED đầu ren xoáy (đuôi E27/E14/E40) — 8539.52.10",
+   "terms": [
+    "bóng đèn led tròn đuôi e27",
+    "bong den led tron duoi e27",
+    "bóng đèn led đuôi e27",
+    "bong den led duoi e27",
+    "bóng đèn led e27",
+    "bong den led e27",
+    "bóng led e27",
+    "bong led e27",
+    "đuôi e27",
+    "duoi e27",
+    "đui xoáy e27",
+    "dui xoay e27",
+    "đuôi xoáy e27",
+    "bóng đèn led đuôi xoáy",
+    "bóng đèn led đui xoáy",
+    "bóng đèn led đầu ren",
+    "led bulb e27",
+    "led lamp e27",
+    "e27 led bulb"
+   ],
+   "excludeIfAny": [
+    "cắm tường",
+    "cam tuong",
+    "gắn tường",
+    "gan tuong",
+    "b22",
+    "đui gài",
+    "dui gai",
+    "bayonet",
+    "chip led",
+    "module led",
+    "mô-đun led",
+    "mo-dun led",
+    "đèn pha",
+    "đèn xe",
+    "đèn ô tô",
+    "led strip",
+    "dải led"
+   ],
+   "excludeReasonVi": "Đèn cắm/gắn tường là bộ đèn hoàn chỉnh nhóm 94.05. Đui gài B22/bayonet là 8539.52.90 (không phải đầu ren xoáy). Chip/module LED → 8539.51; đèn xe → 85.12; dải LED cần mục riêng.",
+   "candidates": [
+    {
+     "hs": "85395210",
+     "whenVi": "Bóng đèn đi-ốt phát quang (LED) loại đầu đèn ren xoáy (đuôi/đui E27, E14, E40) — lá 8539.52.10. Không phải bộ đèn lắp sẵn nhóm 94.05.",
+     "confidence": "high"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "9405",
+     "whyVi": "9405 là bộ đèn/đèn trang trí hoàn chỉnh (luminaires). Prod 17/11 suggest «bóng đèn led tròn đuôi e27» rơi 94054290 «Loại khác» — bóng LED rời đầu ren thuộc 85.39.52, không phải bộ đèn 94.05."
+    },
+    {
+     "prefix": "853910",
+     "whyVi": "8539.10 bóng đèn pha kín dùng cho xe Chương 87 — search «bóng đèn» dễ kéo 85391010 lên top; bóng LED gia dụng đuôi E27 không phải bóng xe."
+    },
+    {
+     "prefix": "853951",
+     "whyVi": "8539.51 là mô-đun LED (chip/module), không phải bóng đèn hoàn chỉnh có đuôi ren."
+    }
+   ],
+   "askVi": [
+    "Bóng LED rời có đuôi/đui ren xoáy (E27/E14/E40), đui gài B22, hay là bộ đèn gắn tường/trần hoàn chỉnh?"
+   ],
+   "chotSom": true,
+   "gir": "GIR 1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế 2026 phân nhóm 8539.52 «Bóng đèn đi-ốt phát quang (LED)»: 85395210 Loại đầu đèn ren xoáy; 85395290 Loại khác. OZV-1332: câu khách «bóng đèn led tròn đuôi e27» — prod REVIEW 94054290; search lệch 85391010. Mục den-led-cam-tuong đã exclude «bóng đèn» nhưng chưa inject 85395210 → thêm mục riêng + chotSom + avoid 9405/853910."
   },
   {
    "id": "vo-chup-loa-non-loa",
