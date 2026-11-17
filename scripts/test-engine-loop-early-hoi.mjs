@@ -84,5 +84,49 @@ check('gon=off + unknowns → vẫn gọi GIR (1 lời)', off.girCalls === 1 && 
 const ro = await run(R1_RO, { r2: CHOT });
 check('gon + unknowns rỗng → gọi GIR như cũ (chốt)', ro.girCalls === 1 && ro.out.status !== 'NEED_FACTS', JSON.stringify({ gir: ro.girCalls, status: ro.out.status, hs: ro.out.results?.[0]?.hs }));
 
+// OZV-1320: earlyExit HOI 848190 bị sổ tay thách thức → vẫn gọi GIR, chốt 84812011
+const ZONYE = { tenHang: 'bộ lọc khí zonye ar2000 -02' };
+const R1_ZONYE = {
+  product: {
+    nameVi: 'bộ lọc khí AR2000-02',
+    nameEn: 'Air Filter Regulator / Pneumatic Filter',
+    purpose: 'lọc khí nén, tách nước và tạp chất trong hệ thống khí nén',
+    mechanism: 'không áp dụng',
+    material: 'hợp kim nhôm, nhựa',
+    form: 'hoàn chỉnh',
+    brand: 'Zonye',
+    model: 'AR2000-02',
+    evidence: {},
+  },
+  hypotheses: [
+    { chapter: '84', heading4: '8481', subheading6: '848190', why: 'phụ tùng van', confidence: 90 },
+    { chapter: '84', heading4: '8414', subheading6: '841480', why: 'máy', confidence: 10 },
+  ],
+  verify: {
+    searchVi: ['bộ lọc khí nén AR2000'],
+    codes8: ['84819000', '84812011'],
+    unknowns: ['Chất liệu vỏ chính', 'Có tích hợp van điều áp (regulator) hay chỉ lọc khí đơn thuần'],
+  },
+};
+const CHOT_ZONYE = {
+  decision: 'CHOT', hs: '84812011', confidence: 88,
+  reason: 'AR = van điều áp khí nén truyền động — 8481.20.11',
+  basis: [{ stream: 'SAN_PHAM', claim: 'điều áp khí nén', evidence: 'zonye ar2000' }],
+  conditions: [], alternatives: [], questions: [],
+};
+async function runZonye(r1, { env = {}, opts = {}, r2 = CHOT_ZONYE } = {}) {
+  for (const [k, v] of Object.entries(env)) process.env[k] = v;
+  script = [r1, r2];
+  llmCalls = [];
+  let out;
+  try { out = await classifyLoop(ZONYE, opts); }
+  finally { for (const k of Object.keys(env)) delete process.env[k]; }
+  return { out, llm: llmCalls, girCalls: llmCalls.filter((c) => !c.r1).length };
+}
+const zonye = await runZonye(R1_ZONYE, { env: { HS_SO_TAY: 'full' } });
+check('OZV-1320 Zonye: sổ tay chặn earlyExit → vẫn gọi GIR', zonye.girCalls === 1, JSON.stringify({ gir: zonye.girCalls, gates: zonye.out.engine?.gates?.slice(-3) }));
+check('OZV-1320 Zonye: không earlyExitHoi=true', !(zonye.out.engine?.gates || []).some((g) => g.earlyExitHoi === true), JSON.stringify(zonye.out.engine?.gates?.slice(-3)));
+check('OZV-1320 Zonye: chốt 84812011 (không NEED_FACTS 848190)', zonye.out.status !== 'NEED_FACTS' && (zonye.out.results?.[0]?.hs || '') === '84812011', JSON.stringify({ status: zonye.out.status, hs: zonye.out.results?.[0]?.hs }));
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
