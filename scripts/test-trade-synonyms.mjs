@@ -667,6 +667,58 @@ console.log('\n== Từ điển không được lan sang câu không liên quan =
   }
 }
 
+// OZV-1332 — bóng đèn LED đuôi E27 (đầu ren xoáy) → 85395210
+// Prod 17/11 suggest «bóng đèn led tròn đuôi e27» → REVIEW 94054290 (bộ đèn LED loại khác).
+// Biểu: 8539.52.10 = bóng LED loại đầu đèn ren xoáy (đuôi E27/E14/E40).
+{
+  const TEN_LED = 'bóng đèn led tròn đuôi e27';
+  check(
+    'OZV-1332 câu khách bóng LED đuôi E27 khớp mục bong-den-led-duoi-e27',
+    lookupTradeTerms(TEN_LED).matches.some((m) => m.entryId === 'bong-den-led-duoi-e27'),
+  );
+  check(
+    'OZV-1332 không dấu bong den led tron duoi e27 vẫn khớp',
+    lookupTradeTerms('bong den led tron duoi e27').matches.some((m) => m.entryId === 'bong-den-led-duoi-e27'),
+  );
+  for (const q of [
+    'đèn led cắm tường hình gấu',
+    'bóng đèn LED đui gài B22',
+    'chip led smd 2835',
+    'module led cob',
+  ]) {
+    check(
+      `OZV-1332 «${q}» không kích hoạt mục bong-den-led-duoi-e27`,
+      !(lookupTradeTerms(q).matches || []).some((m) => m.entryId === 'bong-den-led-duoi-e27'),
+    );
+  }
+  {
+    const m = lookupTradeTerms(TEN_LED).matches.find((x) => x.entryId === 'bong-den-led-duoi-e27');
+    check(
+      'OZV-1332 ưu tiên 85395210 high + chotSom',
+      (m?.candidates || []).some((c) => (c.hsCode || c.hs) === '85395210' && c.confidence === 'high')
+        && m?.chotSom === true,
+    );
+    check(
+      'OZV-1332 tránh bộ đèn 9405 / bóng xe 853910',
+      (m?.avoid || []).some((a) => String(a.prefix) === '9405')
+        && (m?.avoid || []).some((a) => String(a.prefix) === '853910'),
+    );
+  }
+  {
+    const top3 = searchCandidates(TEN_LED, { topCandidates: 3 }).map((c) => c.hsCode);
+    check(
+      'OZV-1332 search bóng LED đuôi E27 top1 85395210',
+      top3[0] === '85395210',
+      `top3=${top3.join(',')}`,
+    );
+    check(
+      'OZV-1332 search không còn top1/top3 94054290',
+      !top3.includes('94054290'),
+      `top3=${top3.join(',')}`,
+    );
+  }
+}
+
 console.log('\n== Mục chưa chắc thì phải nói chưa chắc ==');
 {
   const mb = lookupTradeTerms('masterbatch hạt nhựa màu').matches[0];

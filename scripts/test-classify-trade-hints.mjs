@@ -1311,6 +1311,85 @@ const R1_AR_SAI_8421 = {
   }
 }
 
+// ── OZV-1332: bóng đèn LED đuôi E27 — hết rơi 94054290 / 85391010 ──
+// Prod 17/11 suggest «bóng đèn led tròn đuôi e27» → REVIEW 94054290 (bộ đèn LED loại khác).
+// Biểu 8539.52.10 = bóng LED loại đầu đèn ren xoáy (đuôi E27).
+// Mock giống OZV-1326: AI đúng nhóm 8539.52 nhưng kẹt HOI/lá sai + nhiễu 9405/853910 → chotSom đôn 85395210.
+{
+  const TEN_LED = 'bóng đèn led tròn đuôi e27';
+  const R1_LED_853952 = {
+    product: {
+      nameVi: 'bóng đèn led tròn đuôi e27',
+      purpose: 'chiếu sáng gia dụng',
+      mechanism: 'đi-ốt phát quang LED',
+      material: null,
+      form: 'bóng đèn đầu ren',
+      model: 'E27',
+      evidence: {},
+    },
+    hypotheses: [
+      {
+        chapter: '85',
+        heading4: '8539',
+        subheading6: '853952',
+        why: 'bóng đèn LED',
+        confidence: 80,
+      },
+    ],
+    verify: {
+      searchVi: ['bóng đèn', 'led', 'e27'],
+      codes8: ['85395290', '94054290', '85391010'],
+      micQuery: null,
+      unknowns: ['Công suất định mức và loại đui (ren xoáy hay đui gài)?'],
+    },
+  };
+
+  {
+    const g = await gather(R1_LED_853952, { tenHang: TEN_LED }, { micAllowed: false });
+    check(
+      'OZV-1332 gather bóng LED E27: có 8539, không còn 9405 (avoid)',
+      (g.headings || []).includes('8539')
+        && !(g.headings || []).includes('9405'),
+      g.headings,
+    );
+    check(
+      'OZV-1332 gather bóng LED E27: codes8 có 85395210, không còn 9405*/853910*',
+      (g.codes8 || []).includes('85395210')
+        && !(g.codes8 || []).some((c) => /^(9405|853910)/.test(String(c))),
+      g.codes8,
+    );
+  }
+
+  {
+    const saved = llmTier.callLLMJson;
+    llmTier.callLLMJson = async () => ({ json: R1_LED_853952 });
+    let out;
+    try {
+      out = await classifyLoop({ tenHang: TEN_LED }, { mic: false, crossCheck: false, timeoutMs: 8000 });
+    } finally {
+      llmTier.callLLMJson = saved;
+    }
+    const top3 = (out.results || []).map((r) => r.hs);
+    const gates = out.engine?.gates || [];
+    check(
+      'OZV-1332 bóng LED E27: đôn 85395210 (không NEED_FACTS lệch 94.05)',
+      out.status !== 'NEED_FACTS' && top3[0] === '85395210',
+      { status: out.status, top3, next: out.nextAction, gates: gates.slice(-4) },
+    );
+    check(
+      'OZV-1332 bóng LED E27: top3 không còn 9405*/853910*',
+      top3.every((h) => !/^(9405|853910)/.test(String(h))),
+      top3,
+    );
+    check(
+      'OZV-1332 bóng LED E27: có trade-synonyms-promote → 85395210',
+      gates.some((g) => g.note === 'trade-synonyms-promote' && g.to === '85395210')
+        || top3[0] === '85395210',
+      gates.slice(-4),
+    );
+  }
+}
+
 
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
