@@ -635,6 +635,161 @@ const R1_AR_SAI_8421 = {
   );
 }
 
+// ── OZV-1324: máy phun socola 5 tầng — earlyExit/HOI lệch 841990 → đôn 84382010 ──
+// Prod 17/11 ×3: 2/3 REVIEW+promote 84382010; 1/3 earlyExitHoi=true hs=841990 NEED_FACTS
+// (8419 chưa avoid → không biCam; cungNhanhHigh bị chặn bởi daEarlyExitHoi).
+{
+  const TEN_SOCOLA = 'máy phun socola 5 tầng';
+  const R1_SOCOLA_8419 = {
+    product: {
+      nameVi: 'máy phun socola 5 tầng',
+      purpose: 'phun/phủ socola trưng bày',
+      mechanism: null,
+      material: null,
+      form: 'thiết bị hoàn chỉnh',
+      evidence: {},
+    },
+    hypotheses: [
+      {
+        chapter: '84',
+        heading4: '8419',
+        subheading6: '841990',
+        why: 'phụ tùng máy gia nhiệt / nấu socola',
+        confidence: 62,
+      },
+    ],
+    verify: {
+      searchVi: ['máy phun socola', '5 tầng'],
+      codes8: ['84199019', '84198110', '84382010'],
+      micQuery: null,
+      unknowns: [
+        'Máy dùng điện hay cơ-tay để vận hành',
+        'Vật liệu các bộ phận tiếp xúc socola',
+        'Kích thước, công suất và áp suất bơm',
+        'Nhãn hiệu và model',
+        'Máy có bộ điều khiển, bơm và đầu phun đi kèm không',
+      ],
+    },
+  };
+
+  {
+    const g = await gather(R1_SOCOLA_8419, { tenHang: TEN_SOCOLA }, { micAllowed: false });
+    check(
+      'OZV-1324 gather socola: có nhóm 8438, không còn 8419 (avoid)',
+      (g.headings || []).includes('8438') && !(g.headings || []).includes('8419'),
+      g.headings,
+    );
+    check(
+      'OZV-1324 gather socola: codes8 có 84382010, không còn 8419*',
+      (g.codes8 || []).includes('84382010')
+        && !(g.codes8 || []).some((c) => String(c).startsWith('8419')),
+      g.codes8,
+    );
+  }
+
+  {
+    const saved = llmTier.callLLMJson;
+    const queue = [
+      R1_SOCOLA_8419,
+      {
+        decision: 'HOI',
+        hs: '841990',
+        confidence: 55,
+        reason: 'Hồ sơ thiếu dữ kiện quyết định mã: máy nấu/gia nhiệt hay máy phun phủ',
+        basis: [{ stream: 'SUY_LUAN', claim: '8419.90', evidence: 'socola' }],
+        conditions: [],
+        alternatives: [
+          { hs: '84198110', whyNot: 'có thể máy nấu đồ uống' },
+          { hs: '84382010', whyNot: 'có thể máy chế biến socola' },
+        ],
+        questions: [
+          {
+            fact: 'dien',
+            question: 'Máy dùng điện hay cơ-tay để vận hành',
+            whereToFind: 'catalogue',
+          },
+        ],
+      },
+    ];
+    llmTier.callLLMJson = async () => {
+      const next = queue.shift();
+      if (!next) throw new Error('hết stub LLM socola 8419');
+      return { json: next };
+    };
+    // gon=off: buộc leo GIR HOI 841990 (đúng nhánh biCam sau khi earlyExit bị NHOM_CHUA_KIEM).
+    const savedGon = process.env.HS_GON_DAU_RA;
+    process.env.HS_GON_DAU_RA = 'off';
+    let out;
+    try {
+      out = await classifyLoop({ tenHang: TEN_SOCOLA }, { mic: false, crossCheck: false, timeoutMs: 5000 });
+    } finally {
+      if (savedGon === undefined) delete process.env.HS_GON_DAU_RA;
+      else process.env.HS_GON_DAU_RA = savedGon;
+      llmTier.callLLMJson = saved;
+    }
+    const top3 = (out.results || []).map((r) => r.hs);
+    const gates = out.engine?.gates || [];
+    check(
+      'OZV-1324 socola HOI 841990: đôn 84382010 (không NEED_FACTS)',
+      out.status !== 'NEED_FACTS' && top3[0] === '84382010',
+      { status: out.status, top3, next: out.nextAction, gates: gates.slice(-4) },
+    );
+    check(
+      'OZV-1324 socola: top3 không còn 8419*',
+      top3.every((h) => !String(h).startsWith('8419')),
+      top3,
+    );
+    check(
+      'OZV-1324 socola: có trade-synonyms-promote → 84382010',
+      gates.some((g) => g.note === 'trade-synonyms-promote' && g.to === '84382010'),
+      gates.slice(-4),
+    );
+  }
+
+  // earlyExitHoi (gon bật) + R1 lệch 841990: avoid 8419 → earlyExit thường bị NHOM_CHUA_KIEM,
+  // leo GIR; nếu vẫn earlyExit được thì biCam vẫn đôn. Canary: không kẹt NEED_FACTS 841990.
+  {
+    const saved = llmTier.callLLMJson;
+    const queue = [
+      R1_SOCOLA_8419,
+      {
+        decision: 'HOI',
+        hs: '841990',
+        confidence: 50,
+        reason: 'thiếu dữ kiện máy gia nhiệt',
+        basis: [{ stream: 'SUY_LUAN', claim: '8419.90', evidence: 'socola' }],
+        conditions: [],
+        alternatives: [{ hs: '84382010', whyNot: 'máy chế biến socola' }],
+        questions: [
+          { fact: 'dien', question: 'Máy dùng điện hay cơ-tay', whereToFind: 'catalogue' },
+        ],
+      },
+    ];
+    llmTier.callLLMJson = async () => {
+      const next = queue.shift();
+      if (!next) throw new Error('hết stub LLM socola earlyExit');
+      return { json: next };
+    };
+    const savedGon = process.env.HS_GON_DAU_RA;
+    delete process.env.HS_GON_DAU_RA; // mặc định gon bật
+    let out;
+    try {
+      out = await classifyLoop({ tenHang: TEN_SOCOLA }, { mic: false, crossCheck: false, timeoutMs: 5000 });
+    } finally {
+      if (savedGon !== undefined) process.env.HS_GON_DAU_RA = savedGon;
+      llmTier.callLLMJson = saved;
+    }
+    const top3 = (out.results || []).map((r) => r.hs);
+    check(
+      'OZV-1324 socola earlyExit/HOI 8419: ra 84382010 8 số, không NEED_FACTS',
+      out.status !== 'NEED_FACTS'
+        && top3[0] === '84382010'
+        && String(top3[0]).length === 8,
+      { status: out.status, top3, gates: (out.engine?.gates || []).slice(-4) },
+    );
+  }
+}
+
 // ── OZV-1315: STT 26 strip CRC khổ hẹp — R2 lệch 72091610 → đôn 72112390 (avoid 7209) ──
 {
   const TEN_26 =
