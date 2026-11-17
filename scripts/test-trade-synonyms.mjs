@@ -127,6 +127,12 @@ console.log('\n== Câu hỏi thật của khách phải ra đúng mã (kho Oz kh
     ['đèn led cắm tường hình gấu', ['94051199', '94054290']],
     ['đèn led cắm tường hình thỏ', ['94051199', '94054290']],
     ['den led cam tuong', ['94051199', '94054290']],
+    // OZV-1315 — A1 STT 26: strip CRC khổ hẹp → 72112390, hết lệch 72091610
+    [
+      'Thép không hợp kim cán phẳng dạng cuộn cán nguội (cold rolled steel strip in coil, SPCC-4B), hàm lượng carbon dưới 0,25%, chiều dày 1 mm, chiều rộng 450 mm (dưới 600 mm), chưa phủ, mạ hoặc tráng, không gia công quá mức cán nguội',
+      ['72112390'],
+    ],
+    ['cold rolled steel strip in coil SPCC-4B width 450 mm', ['72112390']],
   ];
   for (const [q, want] of cases) {
     const top2 = searchCandidates(q, { topCandidates: 2 }).map((c) => c.hsCode);
@@ -258,6 +264,47 @@ console.log('\n== Mã bẫy phải bị loại HẲN, không phải tụt hạng
   check(
     'OZV-1306 avoided ghi 8540',
     (denLed.avoidedByTradeRules || []).some((a) => String(a.prefix) === '8540' || String(a.hsCode || '').startsWith('8540')),
+  );
+
+  // OZV-1315 — STT 26 strip khổ hẹp: top 72112390, loại hẳn 7209; STT 25 rộng vẫn 7209
+  const stt26 =
+    'Thép không hợp kim cán phẳng dạng cuộn cán nguội (cold rolled steel strip in coil, SPCC-4B), hàm lượng carbon dưới 0,25%, chiều dày 1 mm, chiều rộng 450 mm (dưới 600 mm), chưa phủ, mạ hoặc tráng, không gia công quá mức cán nguội';
+  const hep = searchCandidates(stt26, { topCandidates: 8 });
+  check(
+    'OZV-1315 STT26 top1 = 72112390',
+    hep[0]?.hsCode === '72112390',
+    `nhận ${hep[0]?.hsCode}`,
+  );
+  check(
+    'OZV-1315 STT26 top không còn 7209*',
+    hep.every((c) => !String(c.hsCode).startsWith('7209')),
+    `top ${hep.map((c) => c.hsCode).join(',')}`,
+  );
+  check(
+    'OZV-1315 STT26 avoided 7209',
+    (hep.avoidedByTradeRules || []).some((a) => String(a.prefix) === '7209' || String(a.hsCode || '').startsWith('7209')),
+  );
+  const hit26 = lookupTradeTerms(stt26);
+  check(
+    'OZV-1315 lookup khớp thep-dai-can-nguoi-hep',
+    (hit26.matches || []).some((m) => m.entryId === 'thep-dai-can-nguoi-hep'),
+  );
+  check(
+    'OZV-1315 CRC rộng bị exclude khi có dưới 600 / strip',
+    (hit26.excluded || []).some((e) => e.entryId === 'thep-cuon-can-nguoi'),
+  );
+  const stt25 =
+    'Thép cuộn cán nguội, cán phẳng, không hợp kim, chưa tráng phủ mạ sơn, tiêu chuẩn JIS G3141, mác thép SPCC-SD, kích thước 1,2 mm x 1219 mm x cuộn';
+  const rong = searchCandidates(stt25, { topCandidates: 5 });
+  check(
+    'OZV-1315 STT25 rộng vẫn top 7209*',
+    rong[0]?.hsCode?.startsWith('7209'),
+    `nhận ${rong[0]?.hsCode}`,
+  );
+  check(
+    'OZV-1315 STT25 không top 72112390',
+    rong[0]?.hsCode !== '72112390',
+    `nhận ${rong[0]?.hsCode}`,
   );
 }
 
