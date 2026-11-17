@@ -85,7 +85,7 @@ const nhap88 = (pn6) => nhapDongCung(pn6, THU_MUC_DONG_CUNG_88444A8);
   check('4b "thiết kế chỉ để" (không "được") cũng đọc', DK.kiemDieuKien(CH, 'Thiết bị thiết kế chỉ để lắp vào máy') === null);
   check('4c EN "designed only for" / "solely designed for"', DK.kiemDieuKien(CH, 'apparatus designed only for connection') === null && DK.kiemDieuKien(CH, 'parts solely designed for machines') === null);
   const tv1 = TV.taiTuVung('tu-vung@1'); const tv2 = TV.taiTuVung('tu-vung@2');
-  check('4d tu-vung@2 vẫn là siêu tập của @1; @1 không đổi (67de4948a117)', TV.kiemSieuTap(tv1, tv2).length === 0 && TV.sha256Tep('data/tu-vung/tu-vung@1.json').startsWith('67de4948a117'));
+  check('4d tu-vung@2 vẫn là siêu tập của @1; @1 sha c504396c2837 (OZV-940 cửa hút)', TV.kiemSieuTap(tv1, tv2).length === 0 && TV.sha256Tep('data/tu-vung/tu-vung@1.json').startsWith('c504396c2837'));
   const tvb = V.tachVe(V.chuBieu('85176243').vi).chu;
   check('4e cổng 5 neo chiHoacChuYeu vào "được thiết kế chỉ"', V.neoMot(CH, tvb).some(([a, b2]) => /thiết kế chỉ/u.test(tvb.slice(a, b2))), V.neoMot(CH, tvb).map(([a, b2]) => tvb.slice(a, b2)));
 }

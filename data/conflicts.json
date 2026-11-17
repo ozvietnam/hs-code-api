@@ -1365,16 +1365,72 @@
       "94039000",
       "94017900",
       "94029000",
-      "73269099"
+      "73269099",
+      "73081010",
+      "73081090",
+      "73089099"
     ],
     "reasonsVi": [
       "Mã 9403.20.10 áp dụng cho đồ nội thất kim loại chuyên dùng trong văn phòng (bàn, tủ hồ sơ), trong khi 9403.20.90 là các loại đồ nội thất kim loại khác không thuộc nhóm này.",
       "Mã 9403.90.00 dành cho các bộ phận riêng lẻ của đồ nội thất, còn 9403.20.90 áp dụng cho đồ nội thất kim loại hoàn chỉnh hoặc các cụm lắp ráp chính có chức năng của đồ nội thất.",
       "Mã 9401.79.00 dành cho ghế ngồi có khung kim loại, trong khi 9403.20.90 là đồ nội thất kim loại khác không phải ghế ngồi.",
       "Mã 9402.90.00 áp dụng cho đồ nội thất kim loại có công dụng chuyên biệt trong y tế, phẫu thuật, nha khoa hoặc thú y, còn 9403.20.90 là đồ nội thất kim loại thông thường.",
-      "Mã 7326.90.99 là các sản phẩm bằng sắt hoặc thép khác không được chi tiết ở nơi khác, trong khi 9403.20.90 yêu cầu sản phẩm phải có chức năng của đồ nội thất."
+      "Mã 7326.90.99 là các sản phẩm bằng sắt hoặc thép khác không được chi tiết ở nơi khác, trong khi 9403.20.90 yêu cầu sản phẩm phải có chức năng của đồ nội thất.",
+      "Mã 7308.10 / 7308.90 là cầu và kết cấu thép xây dựng — kệ kho/pallet rack theo TB-TCHQ thuộc đồ nội thất kim loại 9403.20.90, không phải kết cấu cầu."
     ],
     "precedents": [],
     "sourceFile": "conflict_index.json"
+  },
+  "69141000": {
+    "hsCode": "69141000",
+    "riskLevel": "ORANGE",
+    "confusedWith": [
+      "66032000",
+      "84772000",
+      "69099000",
+      "84807900"
+    ],
+    "reasonsVi": [
+      "6603.20.00 là khung ô/cán gậy — 'hand' trong ceramic hand former không phải cán ô.",
+      "8477 là máy chế biến cao su/plastic; khuôn sứ former là vật phẩm gốm 69.14.",
+      "6909 là đồ gốm phòng thí nghiệm/công nghiệp hoá; khuôn former găng tay theo TB-TCHQ thuộc 69.14.",
+      "8480 là khuôn đúc/ép của máy; khuôn sứ hand former đã thành hình để nhúng găng thuộc 6914.10.00."
+    ],
+    "precedents": [],
+    "sourceFile": "ozv-1237"
+  },
+  "84149029": {
+    "hsCode": "84149029",
+    "riskLevel": "ORANGE",
+    "confusedWith": [
+      "84195010",
+      "84149042",
+      "84149021"
+    ],
+    "reasonsVi": [
+      "Bộ cánh quạt tháp giải nhiệt nhập riêng rẽ là bộ phận quạt 8414.90.29; nếu nhập đồng bộ để lắp tháp hoàn chỉnh thì theo GIR 2a vào 8419.50.10.",
+      "8414.90.42 là bộ phận dùng cho máy không hoạt động bằng điện — không dùng cho cánh quạt tháp giải nhiệt kiểu quạt nhóm 84.14 khi TB đã chốt 8414.90.29.",
+      "8414.90.21 dành cho bộ phận của hàng 84.15/84.18/85.09/85.16 — tháp giải nhiệt công nghiệp không thuộc các nhóm đó."
+    ],
+    "precedents": [
+      "2943/TCHQ-TXNK"
+    ],
+    "group": "CF-cooling-tower-fan-blade",
+    "sourceFile": "conflict_resolver_seed"
+  },
+  "84195010": {
+    "hsCode": "84195010",
+    "riskLevel": "ORANGE",
+    "confusedWith": [
+      "84149029"
+    ],
+    "reasonsVi": [
+      "8419.50.10 là tháp làm mát hoàn chỉnh (hoặc nhập đồng bộ mang đặc trưng tháp). Bộ cánh quạt nhập riêng rẽ không kèm chi tiết khác của tháp → 8414.90.29."
+    ],
+    "precedents": [
+      "2943/TCHQ-TXNK"
+    ],
+    "group": "CF-cooling-tower-fan-blade",
+    "sourceFile": "conflict_resolver_seed"
   }
 }

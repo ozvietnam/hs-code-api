@@ -5,7 +5,7 @@
  "phamVi": "Lát 1 — các khoá dữ kiện mà 50 phân nhóm data/ho-so/lat-1.json cần (ranh giới 6→8 số, dữ kiện cấp 4/6 của bộ đề lát 1, nhận diện + kiểm hoá cho mô tả). Spec hồ sơ phân loại §8.2; plan L1-3a (#570). tu-vung@2 = tu-vung@1 (53 khoá giữ NGUYÊN) + 7 khoá cho ranh giới 6→8 số mà lát 1 cần (đề xuất docs/giao-viec/so-tay/de-xuat-tu-vung-2.md) + hai luật bộ đọc #667/#675 chuyển từ mã vào dữ liệu + khoá phuongThucTruyenDan (LIET_KE VO_TUYEN | HUU_TUYEN, #606 — 851762 \"truyền dẫn dưới dạng sóng vô tuyến\") + hai khoá daXuLyBeMat (CO_KHONG, \"đã được xử lý bề mặt\") và nhienLieu (LIET_KE GA | DIEN, \"bằng ga\") (#577 — 848180 .97, .30). + 4 khoá lát 2 (02/11, đề xuất docs/giao-viec/so-tay/de-xuat-khoa-lat-2.md — GĐ duyệt): phuongPhapIn (LIET_KE BATIK | IN_LUOI | IN_KY_THUAT_SO | IN_CHUYEN_NHIET — 5208.59.10, 6204.x \"in bằng phương pháp batik truyền thống\"), tinhDanHoi (CO_KHONG — 6006.x.10 \"Đàn hồi (kết hợp với sợi cao su)\", 6001.92.30 \"Chứa sợi đàn hồi hoặc sợi cao su\"), loaiSoiDet (LIET_KE BONG | SOI_THUC_VAT_KHAC | LEN_LONG_DONG_VAT_MIN | TO_TAM | SOI_TONG_HOP | SOI_TAI_TAO — 6306 \"Từ bông\", 5515.99.10 lông cừu), doDay (SO mm — 7308.30.10 \"độ dày từ 6 mm đến 8 mm\").",
  "tienThan": {
   "phienBan": "tu-vung@1",
-  "sha256": "67de4948a117f635b731d157b103e1082c6eec56738baef1e295a4352a5ed75e",
+  "sha256": "c504396c2837eb5cc16fc0b03ac218fd7f62acd4276437d088402f83a2dcf329",
   "ghiChu": "Siêu tập: mọi khoá @1 giống hệt; danh sách chung của @1 là tiền tố; bảng (heDonVi, bietDanhDonVi, soSanh) giữ mọi mục @1. Bench lát 1 (data/bench/ho-so-lat-1.tu-vung.json) khoá theo @1 — scripts/check-tu-vung.mjs đo độ phủ trên @1 và kiểm siêu tập (lib/tu-vung.js#kiemSieuTap)."
  },
  "ghiChu": [
@@ -36,7 +36,7 @@
   "tu-vung@2 (03/11, sửa đọc): khoá mới phải ĐỌC ĐƯỢC chữ biểu nó trích (test \"khoá mới đọc được ghiChu\"). Cờ docMoRong (chỉ khoá @2 số, không đụng vân tay @1): cửa sổ ngữ cảnh 50 ký tự, so sánh đứng sau theo soSanhSauMoRong (\"trở lên\", \"và cao hơn\", \"or more\"), docThem mang op. docThem cho chiSoIot (IV), triSoOctan (RON/octane), tongDungTichTau (GT); laPhanDoan tách từ mucDoTinhCheDau; lopMaPhu + TRANG_THIEC; sửa cachDoc daIn, thietKeChoTreEm, hinhDangCatGocKinh.",
   "tu-vung@2 (03/11, lô 10 — gói ✗ máy ch.86–89): 3 khoá — bonBanhChuDong, xeBaBanh, khoiLuongToanBo — Studio đọc 353 dòng máy chưa đọc + dòng ✓ cùng PN6 (quét sót máy #1001); trích 12/12 đúng biểu thật. nguonLoai AI_DA_KIEM, vào chamDuyetDocLap.khoaChuaCham. Khoá @1 không đổi. Studio khongChac: laCabinLai (1 PN6 8707.90 — phụ tùng, bỏ).",
   "tu-vung@2 (03/11, lô 10b — gói ✗ máy ch.86–89, vòng 2): 3 khoá — kieuXeChoNguoi, kieuXeChoHang, mayKeoNongNghiep — Studio xét lại dòng ✗ lặp ≥5 PN6 bị bỏ ở vòng 1: kiểu xe chở người/chở hàng là tập giá trị, không phải tên hàng; trích 20/20 đúng biểu thật. nguonLoai AI_DA_KIEM, vào chamDuyetDocLap.khoaChuaCham. Khoá @1 không đổi. Studio khongChac: laMayBay (tên hàng 8802, tenLoai đọc được — bỏ), thietBiCoDien (1 dòng — bỏ).",
-  "tu-vung@2 (03/11, lô 11 — gói ✗ máy ch.84): 6 khoá — loaiBoPhanDongCoPiston, dungTrongNongNghiep, canDienTu, mayRenKhuonHoacDapKhuon, dungTrongYTeHoacThiNghiem, dieuKhienSo — Studio đọc 177 dòng máy chưa đọc ch.84; trích 25/25 đúng; dieuKhienSo tách từ đề xuất boSung vào cachDieuKhien (@1). nguonLoai AI_DA_KIEM, vào chamDuyetDocLap.khoaChuaCham. Khoá @1 không đổi. Studio khongChac: congSuatDauRaMW (MW ngoài hệ congSuat @1 — 1 dòng, bỏ), congSuatTronTanGio (1 PN6, bỏ), lucRungTrongLu (1 dòng, bỏ), banKinhTien/khuonDeGiayDep (2 dòng, bỏ), boSung duongKinhTrong cửa hút (@1 đóng băng, để vòng sau).",
+  "tu-vung@2 (03/11, lô 11 — gói ✗ máy ch.84): 6 khoá — loaiBoPhanDongCoPiston, dungTrongNongNghiep, canDienTu, mayRenKhuonHoacDapKhuon, dungTrongYTeHoacThiNghiem, dieuKhienSo — Studio đọc 177 dòng máy chưa đọc ch.84; trích 25/25 đúng; dieuKhienSo tách từ đề xuất boSung vào cachDieuKhien (@1). nguonLoai AI_DA_KIEM, vào chamDuyetDocLap.khoaChuaCham. Khoá @1 không đổi. Studio khongChac: congSuatDauRaMW (MW ngoài hệ congSuat @1 — 1 dòng, bỏ), congSuatTronTanGio (1 PN6, bỏ), lucRungTrongLu (1 dòng, bỏ), banKinhTien/khuonDeGiayDep (2 dòng, bỏ), boSung duongKinhTrong cửa hút — đã thêm OZV-940 (mẫu «đường kính cửa hút»/«cửa hút»; @1+@2 khớp siêu tập).",
   "tu-vung@2 (03/11, lô 12 — gói ✗ máy ch.85): 6 khoá — dungChoXeCoDongCo, bienApThichUng, loaiXachTay, laMayPhatDien, loaiBienDoiTinhDien, loaiThietBiBaoDong — Studio đọc 141 dòng máy chưa đọc ch.85; trích 28/28 đúng. nguonLoai AI_DA_KIEM, vào chamDuyetDocLap.khoaChuaCham. Khoá @1 không đổi. Studio khongChac: taiTaoHienTuongTruAmThanhHinhAnh/soMatMachIn/bongDenPhanXa/dungChoDoChoiMoHinh (≤4 dòng, bỏ), MW vào hệ congSuat (@1 đóng băng), boSung chieuCao/congSuat (@1), congSuatBieuKien (mẫu là từ so sánh — sai) bỏ.",
   "tu-vung@2 (03/11, lô 13 — gói ✗ máy ch.31–49): 11 khoá — dangTamPhienMang, tamPhuSan, dangChePhamDietMuoi, loaiHangDanLat, ongHutXaBunKhaiThacMo, dungChoDienAnh, sonChongHaHoacChongAnMonVoTau, tamMiengGhepLatNenOpTuong, dungTrongNhaKhoa, dayTetBen, loaiCung — Studio đọc 308 dòng máy chưa đọc ch.31–49; trích 38/39 đúng (1 lệch khoảng trắng). nguonLoai AI_DA_KIEM, vào chamDuyetDocLap.khoaChuaCham. Khoá @1 không đổi. Studio khongChac: lamLopMatGoDan/noiDungGiaoDucKhoaHocVanHoa/dangXop (3 dòng, bỏ), boSung NGUYEN_SINH vào dangNguyenSinh: tập cha của giá trị sẵn có, phá loại trừ — bỏ.",
   "tu-vung@2 (03/11, lô 14 — gói ✗ máy ch.01–15): 6 khoá — boPhanThitGiaCam, thichHopDungChoNguoi, caBot, laChe, daXay, soCheTom — Studio đọc 252 dòng máy chưa đọc ch.01–15; trích 25/25 đúng; + giá trị BAO_QUAN_BANG_KHI_SUNPHURO vào phuongPhapBaoQuan. nguonLoai AI_DA_KIEM, vào chamDuyetDocLap.khoaChuaCham. Khoá @1 không đổi. Studio khongChac: daThemHuongLieuHoaQua/longVuVitNgan/reuVaDiaY (2 dòng, bỏ).",
@@ -980,7 +980,7 @@
   {
    "khoa": "duongKinhTrong",
    "kieu": "SO",
-   "nhanVi": "đường kính trong (cửa nạp/cửa thoát, DN)",
+   "nhanVi": "đường kính trong (cửa nạp/cửa thoát/cửa hút, DN)",
    "nhanEn": "inner (inlet/outlet) diameter, DN",
    "nhanZh": "内径（进出口径，公称通径）",
    "heDonVi": "dai",
@@ -991,8 +991,10 @@
      "đường kính trong",
      "đường kính cửa nạp",
      "đường kính cửa thoát",
+     "đường kính cửa hút",
      "cửa nạp",
      "cửa thoát",
+     "cửa hút",
      "cỡ ống"
     ],
     "en": [
@@ -5303,6 +5305,7 @@
    "giaTriHopLe": [
     "BONG",
     "SOI_THUC_VAT_KHAC",
+    "RAMIE",
     "LEN_LONG_DONG_VAT_MIN",
     "TO_TAM",
     "SOI_TONG_HOP",
@@ -5335,22 +5338,22 @@
      "cachViet": "từ bông"
     },
     "SOI_THUC_VAT_KHAC": {
-     "nhanVi": "từ sợi dệt thực vật khác (đay, lanh, gai, xơ dừa… nhóm 53.05)",
-     "nhanEn": "of other vegetable textile fibres (jute, flax, ramie, coir…)",
-     "nhanZh": "其他植物纺织纤维（黄麻、亚麻、苎麻、椰壳纤维等）",
+     "nhanVi": "từ sợi dệt thực vật khác (đay, lanh, gai, xơ dừa… nhóm 53.05 — trừ ramie, xem RAMIE)",
+     "nhanEn": "of other vegetable textile fibres (jute, flax, coir… — excluding ramie, see RAMIE)",
+     "nhanZh": "其他植物纺织纤维（黄麻、亚麻、椰壳纤维等 — 不含苎麻，见 RAMIE）",
      "cachDoc": {
       "vi": [
        "(?:sợi|xơ)\\s+(?:dệt\\s+)?thực\\s+vật",
-       "(?:từ|bằng|sợi|vải|xơ)\\s+(?:đay|lanh|gai|lanh\\s+gai|xơ\\s+dừa|sisal|chuối\\s+sợi|dứa\\s+sợi)",
+       "(?:từ|bằng|sợi|vải|xơ)\\s+(?:đay|lanh|gai(?!\\s+ramie)|lanh\\s+gai|xơ\\s+dừa|sisal|chuối\\s+sợi|dứa\\s+sợi)",
        "vải\\s+lanh",
-       "vải\\s+đay"
+       "vải\\s+đay",
+       "lanh(?!\\s+gai)"
       ],
       "en": [
        "vegetable\\s+(?:textile\\s+)?fib(?:re|er)s?",
        "jute",
        "flax",
        "linen",
-       "ramie",
        "sisal",
        "coir",
        "hemp",
@@ -5361,7 +5364,6 @@
        "植物纺织纤维",
        "黄麻",
        "亚麻",
-       "苎麻",
        "剑麻",
        "椰壳纤维",
        "大麻纤维",
@@ -5369,6 +5371,26 @@
       ]
      },
      "cachViet": "từ sợi dệt thực vật"
+    },
+    "RAMIE": {
+     "nhanVi": "từ ramie (gai ramie)",
+     "nhanEn": "of ramie",
+     "nhanZh": "苎麻",
+     "cachDoc": {
+      "vi": [
+       "(?:từ|bằng|sợi|vải|xơ|chất\\s+liệu)\\s+gai\\s+ramie",
+       "gai\\s+ramie",
+       "(?:từ|bằng|sợi|vải|xơ|chất\\s+liệu)\\s+ramie",
+       "ramie"
+      ],
+      "en": [
+       "(?:of\\s+)?ramie"
+      ],
+      "zh": [
+       "苎麻"
+      ]
+     },
+     "cachViet": "từ ramie"
     },
     "LEN_LONG_DONG_VAT_MIN": {
      "nhanVi": "từ lông cừu hoặc lông động vật loại mịn (len)",
@@ -5562,7 +5584,7 @@
     "vi": "Hàng dệt làm từ loại xơ/sợi nào là chủ yếu (bông; sợi dệt thực vật khác như đay, lanh, gai; len/lông động vật loại mịn; tơ tằm; sợi tổng hợp như polyeste, nylon; sợi tái tạo như visco)?",
     "zh": "纺织品主要由哪种纤维制成（棉；其他植物纤维如黄麻、亚麻、苎麻；羊毛/动物细毛；蚕丝；合成纤维如涤纶、尼龙；人造纤维如粘胶）？"
    },
-   "ghiChu": "Loại xơ/sợi dệt của hàng dệt — chữ biểu \"Từ bông\" (6306.29.10, 6306.19.20, 6306.40.10), \"Từ sợi dệt thực vật thuộc nhóm 53.05\" (6306.19.10), \"Pha chủ yếu hoặc pha duy nhất với lông cừu hoặc lông động vật loại mịn\" (5515.99.10) — lát 2, đề xuất de-xuat-khoa-lat-2.md (loaiXoPha + studio-loop loaiSoiDet, gộp một khoá). \"Từ X\" ở chương 50–63 là vật liệu dệt CHIẾM TRỘI theo Chú giải 2 Phần XI: hàng pha (\"cotton 80% polyester 20%\") đọc được hai giá trị ⇒ CHUA_BIET + ungVien, người khai chốt theo tỉ trọng. Vật liệu không phải xơ dệt (bông thủy tinh, bông khoáng, bông gòn/tai/hoa; da lông cừu là da) ⇒ không đọc. Sợi đàn hồi / sợi cao su là trục CHỨA (tinhDanHoi), không nằm ở đây. Khoá @1 chatLieu (\"vải dệt\" chung) giữ nguyên. + NHAN_TAO (06/11): chữ biểu 6207.99.10 \"Từ sợi nhân tạo\", 5803.00.20 \"Từ xơ nhân tạo\" — \"nhân tạo\" = tổng hợp + tái tạo (chú giải Phần XI chú 1). + LONG_DONG_VAT_THO (06/11): chữ biểu 5102.20.00 \"Lông động vật loại thô\", 5113.00.00 \"Vải dệt thoi từ sợi lông động vật loại thô …\". Đề xuất loaiSoiDet (5 ghi chú). Đề xuất chatLieu \"bông\"/\"xơ đay\" cho 5703.90/5705.00 đã đọc được bằng loaiSoiDet BONG / SOI_THUC_VAT_KHAC. + LONG_DONG_VAT_THO đọc \"hoặc loại thô\" (06/11): (chữ biểu 5811.00.10, 5905.00.10 \"Từ lông cừu hoặc lông động vật loại mịn hoặc loại thô\" đọc ra hai ứng viên LEN_LONG_DONG_VAT_MIN và LONG_DONG_VAT_THO — dùng loaiSoiDet TRONG [cả hai]).",
+   "ghiChu": "Loại xơ/sợi dệt của hàng dệt — chữ biểu \"Từ bông\" (6306.29.10, 6306.19.20, 6306.40.10), \"Từ sợi dệt thực vật thuộc nhóm 53.05\" (6306.19.10), \"Pha chủ yếu hoặc pha duy nhất với lông cừu hoặc lông động vật loại mịn\" (5515.99.10) — lát 2, đề xuất de-xuat-khoa-lat-2.md (loaiXoPha + studio-loop loaiSoiDet, gộp một khoá). \"Từ X\" ở chương 50–63 là vật liệu dệt CHIẾM TRỘI theo Chú giải 2 Phần XI: hàng pha (\"cotton 80% polyester 20%\") đọc được hai giá trị ⇒ CHUA_BIET + ungVien, người khai chốt theo tỉ trọng. Vật liệu không phải xơ dệt (bông thủy tinh, bông khoáng, bông gòn/tai/hoa; da lông cừu là da) ⇒ không đọc. Sợi đàn hồi / sợi cao su là trục CHỨA (tinhDanHoi), không nằm ở đây. Khoá @1 chatLieu (\"vải dệt\" chung) giữ nguyên. + NHAN_TAO (06/11): chữ biểu 6207.99.10 \"Từ sợi nhân tạo\", 5803.00.20 \"Từ xơ nhân tạo\" — \"nhân tạo\" = tổng hợp + tái tạo (chú giải Phần XI chú 1). + LONG_DONG_VAT_THO (06/11): chữ biểu 5102.20.00 \"Lông động vật loại thô\", 5113.00.00 \"Vải dệt thoi từ sợi lông động vật loại thô …\". Đề xuất loaiSoiDet (5 ghi chú). Đề xuất chatLieu \"bông\"/\"xơ đay\" cho 5703.90/5705.00 đã đọc được bằng loaiSoiDet BONG / SOI_THUC_VAT_KHAC. + LONG_DONG_VAT_THO đọc \"hoặc loại thô\" (06/11): (chữ biểu 5811.00.10, 5905.00.10 \"Từ lông cừu hoặc lông động vật loại mịn hoặc loại thô\" đọc ra hai ứng viên LEN_LONG_DONG_VAT_MIN và LONG_DONG_VAT_THO — dùng loaiSoiDet TRONG [cả hai]). + RAMIE (16/11, OZV-1182): chữ biểu 6201.90.2x / 6202.90.20 \"Từ ramie\" / \"Of ramie\" — tách khỏi SOI_THUC_VAT_KHAC để áo khoác vải lanh/gai dầu không lấn sang dòng ramie. Không đặt giaTriCha SOI_THUC_VAT_KHAC ⊃ RAMIE: nếu đặt thì \"vải lanh\" (SOI_THUC_VAT_KHAC) so với điều kiện RAMIE ra CHUA_BIET (gia-tri-chung-hon) thay vì TRAI — áo khoác vải lanh lại hỏi thay vì về Loại khác. Dòng \"sợi dệt thực vật thuộc nhóm 53.05\" cần nhận cả ramie thì khai TRONG [SOI_THUC_VAT_KHAC, RAMIE] ở ranh giới đó.",
    "nguonLoai": "AI_DA_KIEM",
    "giaTriCha": {
     "NHAN_TAO": [
@@ -11992,7 +12014,8 @@
    "nhanZh": "面条、米粉及粉丝类型",
    "giaTriHopLe": [
     "BUN_MI_GAO",
-    "MIEN"
+    "MIEN",
+    "MI_KHAC"
    ],
    "moTaGiaTri": {
     "BUN_MI_GAO": {
@@ -12030,6 +12053,24 @@
       ]
      },
      "cachViet": "miến"
+    },
+    "MI_KHAC": {
+     "nhanVi": "mì khác",
+     "nhanEn": "other noodles",
+     "nhanZh": "其他面条",
+     "cachDoc": {
+      "vi": [
+       "mì\\s+khác"
+      ],
+      "en": [
+       "other\\s+noodles?"
+      ],
+      "zh": [
+       "其他面条",
+       "其它面条"
+      ]
+     },
+     "cachViet": "mì khác"
     }
    },
    "cachDoc": {
@@ -12041,10 +12082,10 @@
     "vi": "{giaTri}"
    },
    "cauHoi": {
-    "vi": "Sản phẩm là mì/bún gạo hay miến?",
-    "zh": "该产品属于米粉还是粉丝？"
+    "vi": "Sản phẩm là mì/bún gạo, miến, hay mì khác?",
+    "zh": "该产品属于米粉、粉丝还是其他面条？"
    },
-   "ghiChu": "Trục phân loại sản phẩm tinh bột khô và ăn liền tại nhóm 1902: 1902.19.20, 1902.30.20 'Mì, bún làm từ gạo (kể cả bee hoon)', 1902.19.30, 1902.30.30 'Miến'.",
+   "ghiChu": "Trục phân loại sản phẩm tinh bột khô và ăn liền tại nhóm 1902: 1902.19.20, 1902.30.20 'Mì, bún làm từ gạo (kể cả bee hoon)', 1902.19.30, 1902.30.30 'Miến', 1902.19.40 'Mì khác' (MI_KHAC — OZV-1226: tenLoai «Mì» không tatDinh vì âm tiết nằm trong tên nhóm 1902).",
    "nguonLoai": "AI_DA_KIEM",
    "cumDaiThang": true
   },
@@ -17188,7 +17229,8 @@
     "vi": [
      "(?:đã\\s+)?bổ\\s+sung\\s+(?:thêm\\s+)?i[-\\s]?ốt",
      "(?:đã\\s+)?(?:được\\s+)?(?:tăng\\s+cường|làm\\s+giàu)\\s+(?:vi\\s+chất\\s+)?i[-\\s]?ốt",
-     "(?:bổ\\s+sung|tăng\\s+cường)[^\\n]{0,25}?i[-\\s]?ốt"
+     "(?:bổ\\s+sung|tăng\\s+cường)[^\\n]{0,25}?i[-\\s]?ốt",
+     "muối\\s+thực\\s+phẩm"
     ],
     "en": [
      "fortified\\s+with\\s+iodine",
@@ -17220,7 +17262,9 @@
    },
    "cachDocKhong": {
     "vi": [
-     "(?:không|chưa)\\s+(?:được\\s+)?bổ\\s+sung\\s+(?:thêm\\s+)?i\\s*ốt"
+     "(?:không|chưa)\\s+(?:được\\s+)?bổ\\s+sung\\s+(?:thêm\\s+)?i\\s*ốt",
+     "(?:không|chưa)\\s+(?:chứa\\s+)?i[-\\s]?ốt",
+     "không\\s+i[-\\s]?ốt"
     ],
     "en": [
      "not\\s+fortified\\s+with\\s+iodine",
@@ -17239,7 +17283,7 @@
     "vi": "Sản phẩm đã được bổ sung thêm i ốt chưa?",
     "zh": "该产品是否已添加碘？"
    },
-   "ghiChu": "Chữ biểu 2501.00.91 \"Có hàm lượng natri clorua trên 60% nhưng dưới 97%, tính theo hàm lượng khô, đã bổ sung thêm i ốt (SEN)\" (đọc CÓ; EN \"fortified with iodine\").",
+   "ghiChu": "Chữ biểu 2501.00.91 \"Có hàm lượng natri clorua trên 60% nhưng dưới 97%, tính theo hàm lượng khô, đã bổ sung thêm i ốt (SEN)\" (đọc CÓ; EN \"fortified with iodine\"). OZV-1219: cụm tên pháp lý \"Muối thực phẩm\" (QCVN/TT 08) suy ra CÓ i-ốt; \"không i-ốt\"/\"không chứa i-ốt\" → KHÔNG (tránh bỏ daBoSungIot để xanh giả DONG_CO_TEN).",
    "nguonLoai": "AI_DA_KIEM"
   },
   {

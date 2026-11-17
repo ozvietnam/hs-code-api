@@ -12,9 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:tho-hs-01-20261115#soat-ozv-1141-v2",
-    "ngay": "2026-11-15",
-    "bam": "e5fcc48df2061c7e56552aedda7d4172e61ba833cde4e05fdb64b60cd51fb999"
+    "phien": "claude-agent:tho-hs-01-20261116#ozv-1182-ramie",
+    "ngay": "2026-11-16",
+    "bam": "005eb3f1af488935f293a3322fde671c2132a27ce0de87f08449761fbf82f6dc",
+    "ghiChu": "OZV-1182: nút ramie dùng loaiSoiDet RAMIE"
   },
   "dieuKienNut": [
     {
@@ -41,7 +42,7 @@
           "fact": "loaiSoiDet",
           "op": "TRONG",
           "value": [
-            "SOI_THUC_VAT_KHAC"
+            "RAMIE"
           ]
         }
       ],
@@ -161,7 +162,7 @@
     {
       "ma": "6201902",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.6201902: \"Từ ramie\" ⇒ khoá vật liệu dệt loaiSoiDet (LIET_KE) giá trị SOI_THUC_VAT_KHAC — CÙNG khoá với 6201901 (anh em chia theo vật liệu), không dùng tenLoai để khỏi đụng tenLoai danh sách kiểu áo ở dòng 8 số (GĐ soát PR #1351). GIỚI HẠN ĐÃ BIẾT (mục trả về L18): tu-vung@2 chưa có giá trị riêng cho ramie nên SOI_THUC_VAT_KHAC phủ cả lanh/gai dầu — áo khoác vải lanh có thể rơi vào 6201902x thay vì 62019090 (MFN cùng 20%). Đề xuất khoá: thêm giá trị RAMIE vào loaiSoiDet (cần thẻ riêng sửa từ vựng có soát độc lập), rồi siết lại 6201902 và 62029020. Cùng cách ghi với 620290 đã DUYET (OZV-1121)."
+      "ghiChu": "tieuDe.6201902: \"Từ ramie\" ⇒ khoá loaiSoiDet (LIET_KE) giá trị RAMIE (OZV-1182) — CÙNG khoá với 6201901 (anh em chia theo vật liệu), không dùng tenLoai để khỏi đụng tenLoai danh sách kiểu áo ở dòng 8 số (GĐ soát PR #1351). Tách RAMIE khỏi SOI_THUC_VAT_KHAC để áo khoác vải lanh/gai dầu về 62019090 Loại khác, không lấn 6201902x."
     },
     {
       "ma": "620190",

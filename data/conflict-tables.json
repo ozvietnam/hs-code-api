@@ -185,6 +185,76 @@
           "source": "Biểu thuế VN — 8481.80.30"
         }
       ]
+    },
+    "CF-cooling-tower-fan-blade": {
+      "titleVi": "Cánh quạt tháp giải nhiệt — phụ tùng quạt (8414.90) vs tháp hoàn chỉnh (8419.50)",
+      "verified": true,
+      "verifiedBy": "ozvietnam",
+      "verifiedAt": "2026-11",
+      "members": [
+        "84149029",
+        "84195010"
+      ],
+      "essenceTestVi": "Nhập riêng bộ cánh quạt/mâm (phụ tùng quạt) hay đồng bộ để lắp thành tháp làm mát?",
+      "requireAny": [
+        "tháp giải nhiệt",
+        "cooling tower",
+        "tháp làm mát"
+      ],
+      "requireAlsoAny": [
+        "cánh quạt",
+        "cooling tower fan",
+        "fan blade",
+        "bộ cánh"
+      ],
+      "inputs": [
+        {
+          "attribute": "coolingTowerFanImport",
+          "detect": {
+            "partsOnly": [
+              "nhập khẩu riêng rẽ",
+              "nhập riêng rẽ",
+              "không kèm các chi tiết khác của tháp",
+              "không kèm các chi tiết khác của tháp làm mát",
+              "trường hợp nhập khẩu riêng"
+            ],
+            "completeTower": [
+              "nhập khẩu đồng bộ",
+              "nhập đồng bộ",
+              "lắp thành tháp làm mát hoàn chỉnh",
+              "đồng bộ cùng các chi tiết khác của tháp",
+              "theo điều 8 thông tư 14/2015"
+            ]
+          }
+        }
+      ],
+      "hitPolicy": "PRIORITY",
+      "rules": [
+        {
+          "id": "ctf1",
+          "priority": 20,
+          "when": {
+            "coolingTowerFanImport": "partsOnly"
+          },
+          "hs": "84149029",
+          "gir": "GIR 1",
+          "evidence": "hard",
+          "reasonVi": "Bộ cánh quạt + mâm của tháp giải nhiệt nhập riêng rẽ là bộ phận của quạt nhóm 84.14 → 8414.90.29 (Loại khác). Không phân loại theo tháp làm mát 8419.50 khi không nhập đồng bộ các chi tiết khác.",
+          "source": "TB 2943/TCHQ-TXNK (2020); Chú giải 2a Phần XVI"
+        },
+        {
+          "id": "ctf2",
+          "priority": 10,
+          "when": {
+            "coolingTowerFanImport": "completeTower"
+          },
+          "hs": "84195010",
+          "gir": "GIR 2(a)",
+          "evidence": "hard",
+          "reasonVi": "Cánh quạt nhập đồng bộ cùng chi tiết khác để lắp thành tháp làm mát hoàn chỉnh → phân loại theo tháp 8419.50.10 (Quy tắc 2a).",
+          "source": "TB 2943/TCHQ-TXNK (2020); GIR 2(a)"
+        }
+      ]
     }
   }
 }

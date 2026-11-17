@@ -34,14 +34,18 @@ function parseSupplierHs(v) {
 // ── Cửa trả lời khi HẾT GIỜ (OZV-713) ────────────────────────────────────────────────────────────────────────────
 // Cloudflare cắt lượt ~100 s và trả chuỗi `error code: 524` (KHÔNG phải JSON) ⇒ bên gọi parse JSON là ném lỗi và
 // đếm thành "lỗi AI". Trần dưới đây ngắn hơn trần Cloudflare để handler TỰ trả lời bằng JSON thật.
-// Ngân sách động cơ (CLASSIFY_BUDGET_MS, mặc định 285000) vẫn là trần MỀM khi bên gọi không nói gì.
+// Ngân sách động cơ (CLASSIFY_BUDGET_MS, mặc định 85000 — OZV-1314) vẫn là trần MỀM khi bên gọi không nói gì.
 // OZV-771: trần này được truyền xuống động cơ làm `hanChotMs` (xem `chay()` bên dưới) — động cơ lấy hạn NGẮN HƠN
 // giữa hai bên, co hạn từng bước AI và dừng lặp sớm để trả cái nó đã có. Cửa dưới đây vẫn giữ làm lưới chốt cuối
 // (lượt đã quá hạn không huỷ được giữa chừng), nhưng bình thường động cơ phải về trước khi cửa chạm trần.
 const TRAN_MS_MAC_DINH = 85000;
+// OZV-1260: trần CỨNG — env `HS_CLASSIFY_TRAN_MS` chỉ được HẠ (canary/local), không được NÂNG trên mức này.
+// Cloudflare cắt ~100 s; nếu Coolify lỡ đặt 180000/300000 thì cửa cũ không kịp trả 503 QUA_GIO ⇒ client thấy 0-byte.
+let TRAN_MS_TOI_DA = TRAN_MS_MAC_DINH;
 function tranMs() {
   const v = Number(process.env.HS_CLASSIFY_TRAN_MS);
-  return Number.isFinite(v) && v > 0 ? v : TRAN_MS_MAC_DINH;
+  if (!Number.isFinite(v) || v <= 0) return TRAN_MS_MAC_DINH;
+  return Math.min(v, TRAN_MS_TOI_DA);
 }
 /**
  * Chạy `p` trong hạn `ms`: trả `{ quaGio: true }` khi hết giờ, ngược lại chuyển tiếp kết quả/lỗi y như cũ.
@@ -81,7 +85,7 @@ function traLoiQuaGio(res, { ms, tranMs: tran, attrs }) {
   });
 }
 
-module.exports = async function handler(req, res) {
+async function handler(req, res) {
   setCors(res);
   if (handleOptions(req, res)) return;
   if (req.method !== 'POST') {
@@ -255,3 +259,12 @@ async function declarationCheck(req, res) {
     slot.release();
   }
 }
+
+module.exports = handler;
+// OZV-1260: móc test đọc/kẹp trần cứng (scripts/test-classify-qua-gio.mjs nhóm H). Không dùng ở runtime.
+handler._tranMs = tranMs;
+handler._tranMsToiDa = () => TRAN_MS_TOI_DA;
+handler._setTranMsToiDa = (n) => {
+  const x = Number(n);
+  if (Number.isFinite(x) && x > 0) TRAN_MS_TOI_DA = x;
+};

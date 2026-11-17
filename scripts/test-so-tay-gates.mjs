@@ -56,6 +56,29 @@ check('bộ phận + dòng bộ phận → không nghi', !gatesOf(r).some((g) =>
 r = soTayGates({ hs: '85099090', productName: 'Bánh xe thay thế', form: 'hoàn chỉnh' });
 check('chiều ngược (hoàn chỉnh + dòng bộ phận) không làm', !gatesOf(r).some((g) => g.startsWith('SO_TAY_BO_PHAN')));
 
+// OZV-1320: nhóm 8481 opt-in thách thức khi hàng hoàn chỉnh (AR/FRL) bị xếp nhầm 8481.90
+r = soTayGates({
+  hs: '848190',
+  productName: 'bộ lọc khí zonye ar2000 -02',
+  productText: 'bộ lọc khí zonye ar2000 -02',
+  form: 'hoàn chỉnh',
+});
+check('OZV-1320 Zonye AR hoàn chỉnh + 848190 → SO_TAY_BO_PHAN (chặn earlyExit HOI)', gatesOf(r).some((g) => g.startsWith('SO_TAY_BO_PHAN:8481')), JSON.stringify(gatesOf(r)));
+r = soTayGates({
+  hs: '84812011',
+  productName: 'bộ lọc khí zonye ar2000 -02',
+  productText: 'bộ lọc khí zonye ar2000 -02',
+  form: 'hoàn chỉnh',
+});
+check('OZV-1320 Zonye AR đã đúng 84812011 → không nghi bộ phận', !gatesOf(r).some((g) => g.startsWith('SO_TAY_BO_PHAN')), JSON.stringify(gatesOf(r)));
+r = soTayGates({
+  hs: '84819090',
+  productName: 'Vỏ van cổng DN80',
+  productText: 'vỏ van cổng, bộ phận rời',
+  form: 'bộ phận',
+});
+check('OZV-1320 bộ phận van thật + 848190 → không nghi chiều ngược', !gatesOf(r).some((g) => g.startsWith('SO_TAY_BO_PHAN')), JSON.stringify(gatesOf(r)));
+
 // 4. Dòng "Loại khác"
 r = soTayGates({ hs: '85098090', productName: 'Máy đánh bóng sàn nhà mini' });
 check('chọn "Loại khác" khi tên hàng là tên dòng cụ thể → nghi, đích 85098010', gatesOf(r).includes('SO_TAY_DONG8:85098010'), JSON.stringify(gatesOf(r)));

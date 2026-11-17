@@ -18,6 +18,9 @@ process.env.HS_CLASSIFY_ENGINE = 'loop';
 process.env.MIC_OFF = '1';
 process.env.HS_EVAL_EXCLUDE_HOLDOUT = '1';
 for (const k of ['HS_GON_DAU_RA', 'HS_MAX_VONG_SUA', 'R1_MAX_TOKENS', 'GIR_MAX_TOKENS', 'HS_SO_TAY', 'HS_SO_TAY_DONG', 'HS_EMBED_POOL', 'LOOP_PROVIDER', 'ZAI_WEB_FACTS', 'ZAI_SEARCH_KEY']) delete process.env[k];
+// OZV-1314: mặc định BUDGET_MS = 85 s (timeoutMs vòng 1 → 30 s). Golden master so byte vẫn gắn mốc cũ
+// (timeoutMs 100000 dưới ngân sách 285 s) — ghim env để phần A không đỏ vì đổi trần mềm.
+process.env.CLASSIFY_BUDGET_MS = '285000';
 
 const llmTier = require('../lib/llm-tier');
 const { parseJsonLoose } = require('../lib/parse-json');
