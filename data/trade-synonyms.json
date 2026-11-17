@@ -3381,14 +3381,27 @@
     {
      "prefix": "9002",
      "whyVi": "9002 thấu kính gắn máy/thiết bị quang — cùng bẫy search câu ngắn «camera cmr*»; không phải camera truyền hình 85.25."
+    },
+    {
+     "prefix": "852581",
+     "whyVi": "8525.81 camera tốc độ cao — đo OZV-1322: AI earlyExit lệch 852581 khi tên chỉ «camera truyền hình cmr12» không có tốc độ khung hình; dòng thường là 8525.89.20."
+    },
+    {
+     "prefix": "852582",
+     "whyVi": "8525.82 camera chịu bức xạ — chỉ khi hồ sơ nêu chịu bức xạ; CCTV/CMR thường không thuộc."
+    },
+    {
+     "prefix": "852583",
+     "whyVi": "8525.83 camera nhìn đêm/hồng ngoại chuyên dụng — chỉ khi hồ sơ nêu nhìn đêm chuyên dụng; «camera truyền hình» thường thuộc 8525.89."
     }
    ],
    "askVi": [
     "Là camera truyền hình/quan sát thường (8525.89.20), webcam (8525.89.30), camera nhìn đêm/hồng ngoại chuyên dụng (8525.83), tốc độ cao (8525.81), chịu bức xạ (8525.82), hay máy ảnh chụp ảnh (90.06)?"
    ],
+   "chotSom": true,
    "gir": "GIR 1",
    "basis": "RULE_TABLE",
-   "sourceVi": "Biểu thuế VN nhóm 85.25 dòng 8525.89.20 «Camera truyền hình»; TB-TCHQ 622/TB-TCHQ trong data/precedents.json#85258920 (camera gắn dây tín hiệu/LED thuộc 85.25). Ca khách OZV-1282/OZV-1298 «camera truyền hình cmr12»: search đủ cụm đã ra 85258x; câu ngắn «camera cmr12» lệch 9001/9002 thấu kính — bổ sung term camera cmr*/cmr12 + avoid 9001/9002. Classify MIC nhiễu 8544 đã xử ở OZV-1290."
+   "sourceVi": "Biểu thuế VN nhóm 85.25 dòng 8525.89.20 «Camera truyền hình»; TB-TCHQ 622/TB-TCHQ trong data/precedents.json#85258920 (camera gắn dây tín hiệu/LED thuộc 85.25). Ca khách OZV-1282/OZV-1298 «camera truyền hình cmr12»: search đủ cụm đã ra 85258x; câu ngắn «camera cmr12» lệch 9001/9002 thấu kính — bổ sung term camera cmr*/cmr12 + avoid 9001/9002. Classify MIC nhiễu 8544 đã xử ở OZV-1290. OZV-1322: avoid 852581/82/83 + chotSom — hết earlyExit lệch tốc độ cao / dừng 6 số."
   },
   {
    "id": "may-phun-socola",
