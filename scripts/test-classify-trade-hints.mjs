@@ -1558,6 +1558,91 @@ const R1_AR_SAI_8421 = {
   }
 }
 
+// ── OZV-1349: cảm biến quang FT-S13 24V — NEED_FACTS 853650/903180 → đôn 85365051 ──
+// GĐ đo 18/11: «cảm biến quang FT-S13 24V» → NEED_FACTS dừng 853650 (~57s, LLM timeout).
+// TB 18181/TB-CHQ + bảng 8536: photoelectric switch <16A → 85365051; chotSom bỏ vòng LLM.
+{
+  const TEN_FT = 'cảm biến quang FT-S13 24V';
+  const R1_FT_853650 = {
+    product: {
+      nameVi: 'cảm biến quang điện FT-S13',
+      purpose: 'phát hiện vật bằng tia quang, đóng ngắt mạch 24V',
+      mechanism: 'photoelectric / công tắc bán dẫn',
+      material: null,
+      form: 'cảm biến hoàn chỉnh',
+      model: 'FT-S13',
+      evidence: {},
+    },
+    hypotheses: [
+      {
+        chapter: '85',
+        heading4: '8536',
+        subheading6: '853650',
+        why: 'công tắc điện tử / cảm biến quang dạng đóng ngắt',
+        confidence: 78,
+      },
+    ],
+    verify: {
+      searchVi: ['cảm biến quang', 'photoelectric sensor', 'FT-S13'],
+      codes8: ['85365051', '85365099', '90318090', '90314990', '85414900'],
+      micQuery: null,
+      unknowns: [
+        'Dòng điện định mức qua ngưỡng 16A?',
+        'Chỉ phần tử cảm quang hay có mạch đóng ngắt?',
+        'Model FT-S13 là đầu sợi quang rời hay bộ hoàn chỉnh?',
+      ],
+    },
+  };
+
+  {
+    const g = await gather(R1_FT_853650, { tenHang: TEN_FT }, { micAllowed: false });
+    check(
+      'OZV-1349 gather FT-S13: có nhóm 8536, không còn 9031/8541 (avoid)',
+      (g.headings || []).includes('8536')
+        && !(g.headings || []).includes('9031')
+        && !(g.headings || []).includes('8541'),
+      g.headings,
+    );
+    check(
+      'OZV-1349 gather FT-S13: codes8 có 85365051, không còn 9031*/8541*',
+      (g.codes8 || []).includes('85365051')
+        && !(g.codes8 || []).some((c) => String(c).startsWith('9031'))
+        && !(g.codes8 || []).some((c) => String(c).startsWith('8541')),
+      g.codes8,
+    );
+  }
+
+  {
+    const saved = llmTier.callLLMJson;
+    llmTier.callLLMJson = async () => ({ json: R1_FT_853650 });
+    let out;
+    try {
+      out = await classifyLoop({ tenHang: TEN_FT }, { mic: false, crossCheck: false, timeoutMs: 8000 });
+    } finally {
+      llmTier.callLLMJson = saved;
+    }
+    const top3 = (out.results || []).map((r) => r.hs);
+    const gates = out.engine?.gates || [];
+    check(
+      'OZV-1349 FT-S13 earlyExit/HOI 853650: đôn 85365051 (không NEED_FACTS)',
+      out.status !== 'NEED_FACTS' && top3[0] === '85365051',
+      { status: out.status, top3, next: out.nextAction, gates: gates.slice(-4) },
+    );
+    check(
+      'OZV-1349 FT-S13: top3 không còn 9031*/8541*',
+      top3.every((h) => !String(h).startsWith('9031') && !String(h).startsWith('8541')),
+      top3,
+    );
+    check(
+      'OZV-1349 FT-S13: earlyExitTradeChotSom hoặc promote → 85365051',
+      gates.some((g) => g.earlyExitTradeChotSom === true && g.hs === '85365051')
+        || gates.some((g) => g.note === 'trade-synonyms-promote' && g.to === '85365051')
+        || top3[0] === '85365051',
+      gates.slice(-4),
+    );
+  }
+}
+
 
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
