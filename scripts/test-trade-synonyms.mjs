@@ -99,10 +99,10 @@ console.log('\n== Câu hỏi thật của khách phải ra đúng mã (kho Oz kh
     ['Kệ chứa hàng pallet (kệ kho hàng, pallet rack) bằng kim loại, đã qua sử dụng', ['94032090']],
     ['pallet rack metal warehouse', ['94032090']],
     // OZV-1256 — A2/khách: «bộ lọc khí zonye ar2000 -02» lệch máy lọc phòng 84213920
-    ['bộ lọc khí zonye ar2000 -02', ['84812090', '84812011']],
-    // OZV-1286 — thực địa còn 1/2 lượt dừng 6 số: câu không «-02» phải top1 điều áp 84812090
-    ['bộ lọc khí zonye ar2000', ['84812090']],
-    ['bo loc khi zonye ar2000', ['84812090']],
+    ['bộ lọc khí zonye ar2000 -02', ['84812011', '84812090']],
+    // OZV-1305 — search không top residual 84812090; ưu tiên 84812011 (sắt/thép)
+    ['bộ lọc khí zonye ar2000', ['84812011']],
+    ['bo loc khi zonye ar2000', ['84812011']],
     ['bộ lọc khí nén af2000', ['84213990', '84213930', '84812090']],
     // OZV-1261 — A2/khách: «giác hút chân không smc zp-905…» lệch phụ tùng máy nén 841490*
     ['giác hút chân không smc zp-905-08eu', ['40169999', '40169959', '39269099']],
@@ -166,9 +166,14 @@ console.log('\n== Mã bẫy phải bị loại HẲN, không phải tụt hạng
   const ar2000 = searchCandidates('bộ lọc khí zonye ar2000 -02', { topCandidates: 50 });
   check('AR2000 khí nén không lẫn máy lọc phòng 84213920', ar2000.every((c) => c.hsCode !== '84213920'));
   check('AR2000 khí nén không lẫn lọc khí thải động cơ 842132', ar2000.every((c) => !c.hsCode.startsWith('842132')));
-  // OZV-1286 — model AR = điều áp 8481.20; chữ «bộ lọc khí» không được kéo sang 8421.39
+  // OZV-1305 — model AR = điều áp 8481.20; top không residual 84812090 / máy khí 8405
   const ar2000plain = searchCandidates('bộ lọc khí zonye ar2000', { topCandidates: 5 });
-  check('OZV-1286 top1 AR2000 = 84812090 (8 số)', ar2000plain[0]?.hsCode === '84812090', `nhận ${ar2000plain[0]?.hsCode}`);
+  check('OZV-1305 top1 AR2000 = 84812011 (8 số)', ar2000plain[0]?.hsCode === '84812011', `nhận ${ar2000plain[0]?.hsCode}`);
+  check(
+    'OZV-1305 AR2000 top1 không còn residual 84812090',
+    ar2000plain[0]?.hsCode !== '84812090',
+    `nhận ${ar2000plain[0]?.hsCode}`,
+  );
   check(
     'OZV-1286 AR2000 không còn 842139* trong top',
     ar2000plain.every((c) => !c.hsCode.startsWith('842139')),
@@ -178,6 +183,11 @@ console.log('\n== Mã bẫy phải bị loại HẲN, không phải tụt hạng
   check(
     'OZV-1300 AR2000 không còn 8421* trong top3',
     ar2000plain.slice(0, 3).every((c) => !c.hsCode.startsWith('8421')),
+    `top3 ${ar2000plain.slice(0, 3).map((c) => c.hsCode).join(',')}`,
+  );
+  check(
+    'OZV-1305 AR2000 không còn 8405* trong top3 (máy sản xuất khí + bộ lọc)',
+    ar2000plain.slice(0, 3).every((c) => !c.hsCode.startsWith('8405')),
     `top3 ${ar2000plain.slice(0, 3).map((c) => c.hsCode).join(',')}`,
   );
   const arHit = lookupTradeTerms('bộ lọc khí zonye ar2000');
