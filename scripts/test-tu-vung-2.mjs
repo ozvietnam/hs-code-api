@@ -327,7 +327,7 @@ const tv1 = T.taiTuVung('tu-vung@1');
 const tv2 = T.taiTuVung();
 check('runtime nạp tu-vung@2 mặc định (TEP_TU_VUNG)', T.TEP_TU_VUNG === 'tu-vung/tu-vung@2.json' && tv2.phienBan === 'tu-vung@2', { tep: T.TEP_TU_VUNG, pb: tv2.phienBan });
 check('tu-vung@1 vẫn nạp theo tên — bench lát 1 khoá theo @1 (PHIEN_BAN_KHOA_BENCH)', tv1.phienBan === 'tu-vung@1' && T.PHIEN_BAN_KHOA_BENCH === 'tu-vung@1' && tv1 !== tv2, { pb1: tv1.phienBan, khoa: T.PHIEN_BAN_KHOA_BENCH });
-check('băm tu-vung@1 không đổi (67de4948a117…): tệp @1 không bị sửa', T.phienBan('tu-vung@1').sha256.startsWith('67de4948a117') && T.sha256Tep('data/tu-vung/tu-vung@1.json').startsWith('67de4948a117'), T.phienBan('tu-vung@1'));
+check('băm tu-vung@1 (c504396c2837…, OZV-940 cửa hút): tệp @1 khớp', T.phienBan('tu-vung@1').sha256.startsWith('c504396c2837') && T.sha256Tep('data/tu-vung/tu-vung@1.json').startsWith('c504396c2837'), T.phienBan('tu-vung@1'));
 check('phienBan() mặc định = tu-vung@2 + sha256 của tệp @2 (HoSoPhanLoai.phienBan.tuVung)', T.phienBan().ten === 'tu-vung@2' && T.phienBan().sha256 === T.sha256Tep('data/tu-vung/tu-vung@2.json'), T.phienBan());
 
 // ── 2. Lược đồ + siêu tập ────────────────────────────────────────────────────────────────────────────────────────

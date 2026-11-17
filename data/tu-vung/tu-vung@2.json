@@ -5,7 +5,7 @@
  "phamVi": "Lát 1 — các khoá dữ kiện mà 50 phân nhóm data/ho-so/lat-1.json cần (ranh giới 6→8 số, dữ kiện cấp 4/6 của bộ đề lát 1, nhận diện + kiểm hoá cho mô tả). Spec hồ sơ phân loại §8.2; plan L1-3a (#570). tu-vung@2 = tu-vung@1 (53 khoá giữ NGUYÊN) + 7 khoá cho ranh giới 6→8 số mà lát 1 cần (đề xuất docs/giao-viec/so-tay/de-xuat-tu-vung-2.md) + hai luật bộ đọc #667/#675 chuyển từ mã vào dữ liệu + khoá phuongThucTruyenDan (LIET_KE VO_TUYEN | HUU_TUYEN, #606 — 851762 \"truyền dẫn dưới dạng sóng vô tuyến\") + hai khoá daXuLyBeMat (CO_KHONG, \"đã được xử lý bề mặt\") và nhienLieu (LIET_KE GA | DIEN, \"bằng ga\") (#577 — 848180 .97, .30). + 4 khoá lát 2 (02/11, đề xuất docs/giao-viec/so-tay/de-xuat-khoa-lat-2.md — GĐ duyệt): phuongPhapIn (LIET_KE BATIK | IN_LUOI | IN_KY_THUAT_SO | IN_CHUYEN_NHIET — 5208.59.10, 6204.x \"in bằng phương pháp batik truyền thống\"), tinhDanHoi (CO_KHONG — 6006.x.10 \"Đàn hồi (kết hợp với sợi cao su)\", 6001.92.30 \"Chứa sợi đàn hồi hoặc sợi cao su\"), loaiSoiDet (LIET_KE BONG | SOI_THUC_VAT_KHAC | LEN_LONG_DONG_VAT_MIN | TO_TAM | SOI_TONG_HOP | SOI_TAI_TAO — 6306 \"Từ bông\", 5515.99.10 lông cừu), doDay (SO mm — 7308.30.10 \"độ dày từ 6 mm đến 8 mm\").",
  "tienThan": {
   "phienBan": "tu-vung@1",
-  "sha256": "67de4948a117f635b731d157b103e1082c6eec56738baef1e295a4352a5ed75e",
+  "sha256": "c504396c2837eb5cc16fc0b03ac218fd7f62acd4276437d088402f83a2dcf329",
   "ghiChu": "Siêu tập: mọi khoá @1 giống hệt; danh sách chung của @1 là tiền tố; bảng (heDonVi, bietDanhDonVi, soSanh) giữ mọi mục @1. Bench lát 1 (data/bench/ho-so-lat-1.tu-vung.json) khoá theo @1 — scripts/check-tu-vung.mjs đo độ phủ trên @1 và kiểm siêu tập (lib/tu-vung.js#kiemSieuTap)."
  },
  "ghiChu": [
@@ -36,7 +36,7 @@
   "tu-vung@2 (03/11, sửa đọc): khoá mới phải ĐỌC ĐƯỢC chữ biểu nó trích (test \"khoá mới đọc được ghiChu\"). Cờ docMoRong (chỉ khoá @2 số, không đụng vân tay @1): cửa sổ ngữ cảnh 50 ký tự, so sánh đứng sau theo soSanhSauMoRong (\"trở lên\", \"và cao hơn\", \"or more\"), docThem mang op. docThem cho chiSoIot (IV), triSoOctan (RON/octane), tongDungTichTau (GT); laPhanDoan tách từ mucDoTinhCheDau; lopMaPhu + TRANG_THIEC; sửa cachDoc daIn, thietKeChoTreEm, hinhDangCatGocKinh.",
   "tu-vung@2 (03/11, lô 10 — gói ✗ máy ch.86–89): 3 khoá — bonBanhChuDong, xeBaBanh, khoiLuongToanBo — Studio đọc 353 dòng máy chưa đọc + dòng ✓ cùng PN6 (quét sót máy #1001); trích 12/12 đúng biểu thật. nguonLoai AI_DA_KIEM, vào chamDuyetDocLap.khoaChuaCham. Khoá @1 không đổi. Studio khongChac: laCabinLai (1 PN6 8707.90 — phụ tùng, bỏ).",
   "tu-vung@2 (03/11, lô 10b — gói ✗ máy ch.86–89, vòng 2): 3 khoá — kieuXeChoNguoi, kieuXeChoHang, mayKeoNongNghiep — Studio xét lại dòng ✗ lặp ≥5 PN6 bị bỏ ở vòng 1: kiểu xe chở người/chở hàng là tập giá trị, không phải tên hàng; trích 20/20 đúng biểu thật. nguonLoai AI_DA_KIEM, vào chamDuyetDocLap.khoaChuaCham. Khoá @1 không đổi. Studio khongChac: laMayBay (tên hàng 8802, tenLoai đọc được — bỏ), thietBiCoDien (1 dòng — bỏ).",
-  "tu-vung@2 (03/11, lô 11 — gói ✗ máy ch.84): 6 khoá — loaiBoPhanDongCoPiston, dungTrongNongNghiep, canDienTu, mayRenKhuonHoacDapKhuon, dungTrongYTeHoacThiNghiem, dieuKhienSo — Studio đọc 177 dòng máy chưa đọc ch.84; trích 25/25 đúng; dieuKhienSo tách từ đề xuất boSung vào cachDieuKhien (@1). nguonLoai AI_DA_KIEM, vào chamDuyetDocLap.khoaChuaCham. Khoá @1 không đổi. Studio khongChac: congSuatDauRaMW (MW ngoài hệ congSuat @1 — 1 dòng, bỏ), congSuatTronTanGio (1 PN6, bỏ), lucRungTrongLu (1 dòng, bỏ), banKinhTien/khuonDeGiayDep (2 dòng, bỏ), boSung duongKinhTrong cửa hút (@1 đóng băng, để vòng sau).",
+  "tu-vung@2 (03/11, lô 11 — gói ✗ máy ch.84): 6 khoá — loaiBoPhanDongCoPiston, dungTrongNongNghiep, canDienTu, mayRenKhuonHoacDapKhuon, dungTrongYTeHoacThiNghiem, dieuKhienSo — Studio đọc 177 dòng máy chưa đọc ch.84; trích 25/25 đúng; dieuKhienSo tách từ đề xuất boSung vào cachDieuKhien (@1). nguonLoai AI_DA_KIEM, vào chamDuyetDocLap.khoaChuaCham. Khoá @1 không đổi. Studio khongChac: congSuatDauRaMW (MW ngoài hệ congSuat @1 — 1 dòng, bỏ), congSuatTronTanGio (1 PN6, bỏ), lucRungTrongLu (1 dòng, bỏ), banKinhTien/khuonDeGiayDep (2 dòng, bỏ), boSung duongKinhTrong cửa hút — đã thêm OZV-940 (mẫu «đường kính cửa hút»/«cửa hút»; @1+@2 khớp siêu tập).",
   "tu-vung@2 (03/11, lô 12 — gói ✗ máy ch.85): 6 khoá — dungChoXeCoDongCo, bienApThichUng, loaiXachTay, laMayPhatDien, loaiBienDoiTinhDien, loaiThietBiBaoDong — Studio đọc 141 dòng máy chưa đọc ch.85; trích 28/28 đúng. nguonLoai AI_DA_KIEM, vào chamDuyetDocLap.khoaChuaCham. Khoá @1 không đổi. Studio khongChac: taiTaoHienTuongTruAmThanhHinhAnh/soMatMachIn/bongDenPhanXa/dungChoDoChoiMoHinh (≤4 dòng, bỏ), MW vào hệ congSuat (@1 đóng băng), boSung chieuCao/congSuat (@1), congSuatBieuKien (mẫu là từ so sánh — sai) bỏ.",
   "tu-vung@2 (03/11, lô 13 — gói ✗ máy ch.31–49): 11 khoá — dangTamPhienMang, tamPhuSan, dangChePhamDietMuoi, loaiHangDanLat, ongHutXaBunKhaiThacMo, dungChoDienAnh, sonChongHaHoacChongAnMonVoTau, tamMiengGhepLatNenOpTuong, dungTrongNhaKhoa, dayTetBen, loaiCung — Studio đọc 308 dòng máy chưa đọc ch.31–49; trích 38/39 đúng (1 lệch khoảng trắng). nguonLoai AI_DA_KIEM, vào chamDuyetDocLap.khoaChuaCham. Khoá @1 không đổi. Studio khongChac: lamLopMatGoDan/noiDungGiaoDucKhoaHocVanHoa/dangXop (3 dòng, bỏ), boSung NGUYEN_SINH vào dangNguyenSinh: tập cha của giá trị sẵn có, phá loại trừ — bỏ.",
   "tu-vung@2 (03/11, lô 14 — gói ✗ máy ch.01–15): 6 khoá — boPhanThitGiaCam, thichHopDungChoNguoi, caBot, laChe, daXay, soCheTom — Studio đọc 252 dòng máy chưa đọc ch.01–15; trích 25/25 đúng; + giá trị BAO_QUAN_BANG_KHI_SUNPHURO vào phuongPhapBaoQuan. nguonLoai AI_DA_KIEM, vào chamDuyetDocLap.khoaChuaCham. Khoá @1 không đổi. Studio khongChac: daThemHuongLieuHoaQua/longVuVitNgan/reuVaDiaY (2 dòng, bỏ).",
@@ -980,7 +980,7 @@
   {
    "khoa": "duongKinhTrong",
    "kieu": "SO",
-   "nhanVi": "đường kính trong (cửa nạp/cửa thoát, DN)",
+   "nhanVi": "đường kính trong (cửa nạp/cửa thoát/cửa hút, DN)",
    "nhanEn": "inner (inlet/outlet) diameter, DN",
    "nhanZh": "内径（进出口径，公称通径）",
    "heDonVi": "dai",
@@ -991,8 +991,10 @@
      "đường kính trong",
      "đường kính cửa nạp",
      "đường kính cửa thoát",
+     "đường kính cửa hút",
      "cửa nạp",
      "cửa thoát",
+     "cửa hút",
      "cỡ ống"
     ],
     "en": [

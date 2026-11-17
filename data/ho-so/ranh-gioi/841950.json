@@ -4,13 +4,19 @@
   "nhom": "8419",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-841950",
     "ngay": "2026-11-02"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "pc-tho-hs-03:OZV-940#soat-841950",
+    "ngay": "2026-11-14",
+    "ghiChu": "OZV-940: bổ sung bangFluoropolyme CO cho 84195020 (gỡ BO_VE sai); tu-vung@2 đã có khoá; ngưỡng duongKinhTrong <= 3 cm giữ nguyên.",
+    "bam": "223cc264630e67cb057f040137dbc38b5a7ae1bf03bc7b97d1f8b9139d514caa"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -24,7 +30,7 @@
           "value": "Tháp làm mát"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84195020",
@@ -37,13 +43,17 @@
           "value": "Bộ trao đổi nhiệt"
         },
         {
+          "fact": "bangFluoropolyme",
+          "op": "CO"
+        },
+        {
           "fact": "duongKinhTrong",
           "op": "<=",
           "value": 3,
           "donVi": "cm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84195091",
@@ -55,7 +65,7 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84195092",
@@ -67,7 +77,7 @@
           "op": "KHONG"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -78,14 +88,8 @@
     },
     {
       "ma": "84195020",
-      "loai": "BO_VE",
-      "ve": "bằng các ống fluoropolyme, với ống đầu vào và ống ra",
-      "lyDo": "tu-vung@2 chưa có chất liệu fluoropolyme, đặc tính kết cấu ống được đại diện qua tên loại và đường kính trong"
-    },
-    {
-      "ma": "84195020",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.84195020: \"Bộ trao đổi nhiệt làm bằng các ống fluoropolyme, với ống đầu vào và ống ra có đường kính trong từ 3 cm trở xuống\" ⇒ tenLoai \"Bộ trao đổi nhiệt\" + duongKinhTrong <= 3 cm"
+      "ghiChu": "tax.84195020: \"Bộ trao đổi nhiệt làm bằng các ống fluoropolyme, với ống đầu vào và ống ra có đường kính trong từ 3 cm trở xuống\" ⇒ tenLoai \"Bộ trao đổi nhiệt\" + bangFluoropolyme CO + duongKinhTrong <= 3 cm"
     },
     {
       "ma": "84195091",

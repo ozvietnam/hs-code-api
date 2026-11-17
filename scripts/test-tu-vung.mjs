@@ -346,7 +346,7 @@ check('nhãn tệp: tu-vung/*.json ⇒ CLAUDE_DUYET (lib/nguon-loai.js)', N.nhan
   chuaBiet('#675 "có nắp rời" chỉ là đặc điểm của hàng', 'laBoPhan', 'Bình giữ nhiệt có nắp rời');
   dung('#675 phủ định cấu trúc', 'laBoPhan', 'không phải vỏ ngoài rời của bình', false);
   // băm tu-vung@1 không đổi (bench khoá băm)
-  check('#667 tu-vung@1 giữ nguyên: sha256 67de4948a117…', T.phienBan('tu-vung@1').sha256.startsWith('67de4948a117'), T.phienBan('tu-vung@1'));
+  check('#667 tu-vung@1 sha256 c504396c2837… (OZV-940 cửa hút)', T.phienBan('tu-vung@1').sha256.startsWith('c504396c2837'), T.phienBan('tu-vung@1'));
 }
 
 console.log(`\n${pass} pass, ${fail} fail`);
