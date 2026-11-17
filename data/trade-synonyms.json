@@ -1,5 +1,5 @@
 {
- "version": "2026-09",
+ "version": "2026-11",
  "noteVi": "Từ điển TÊN THƯƠNG MẠI → mã HS, do người soạn và kiểm chứng từng dòng. Khác hoàn toàn data/hs-aliases.json (đào tự động từ tờ khai Oz): bảng này phủ những ngành Oz KHÔNG có tờ khai nào — điển hình là sắt thép chương 72–81 — nên không thể đào ra được. Mỗi mục bắt buộc có sourceVi dẫn chứng; mục nào dữ liệu không khẳng định nổi một mã thì để nhiều ứng viên kèm askVi, KHÔNG chốt bừa.",
  "numericTermContext": [
   "thep",
@@ -120,6 +120,63 @@
    "gir": "3a",
    "basis": "RULE_TABLE",
    "sourceVi": "Biểu thuế 2026: mã 84796000 ghi đúng chữ \"Máy làm mát không khí bằng bay hơi\". Biểu thuế đã gọi tên mặt hàng này nên không cần suy luận."
+  },
+  {
+   "id": "coc-giu-nhiet-chan-khong",
+   "titleVi": "Cốc / bình giữ nhiệt chân không hoàn chỉnh — 9617.00.10",
+   "terms": [
+    "cốc giữ nhiệt chân không",
+    "coc giu nhiet chan khong",
+    "ly giữ nhiệt chân không",
+    "ly giu nhiet chan khong",
+    "bình giữ nhiệt chân không",
+    "binh giu nhiet chan khong",
+    "bình chân không hoàn chỉnh",
+    "binh chan khong hoan chinh",
+    "bình chân không hoàn",
+    "binh chan khong hoan",
+    "phích chân không hoàn chỉnh",
+    "phich chan khong hoan chinh",
+    "phích chân không",
+    "phich chan khong",
+    "vacuum flask",
+    "vacuum bottle"
+   ],
+   "excludeIfAny": [
+    "ruột thủy tinh",
+    "ruot thuy tinh",
+    "bộ phận",
+    "bo phan",
+    "linh kiện",
+    "linh kien",
+    "parts only",
+    "spare part"
+   ],
+   "excludeReasonVi": "Ruột thủy tinh / bộ phận rời của bình chân không → 9617.00.20, không phải hàng hoàn chỉnh 9617.00.10.",
+   "candidates": [
+    {
+     "hs": "96170010",
+     "whenVi": "Cốc/bình/phích có lớp CHÂN KHÔNG giữa hai vách, còn nguyên vỏ, hoàn chỉnh — lá 9617.00.10 (biểu thuế: «Phích chân không và các loại bình chân không khác, hoàn chỉnh»).",
+     "confidence": "high"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "7323",
+     "whyVi": "7323 là đồ dùng nhà bếp/bàn ăn bằng sắt thép nói chung. Khi mô tả đã nói «chân không» thì nhóm 9617 cụ thể hơn (GIR 3(a)). Không chân không → mới xét 7323."
+    },
+    {
+     "prefix": "8516",
+     "whyVi": "8516.21 là thiết bị sưởi/bức xạ giữ nhiệt điện — search «giữ nhiệt» dễ kéo 85162100; cốc/bình chân không thụ động thuộc 96.17."
+    }
+   ],
+   "askVi": [
+    "Hàng là cốc/bình hoàn chỉnh có hút chân không giữa hai vách (không phải bộ phận/ruột thủy tinh rời)?"
+   ],
+   "chotSom": true,
+   "gir": "GIR 1 / GIR 3(a)",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế 2026 mã 96170010: «Phích chân không và các loại bình chân không khác, hoàn chỉnh». OZV-1336: câu khách «cốc giữ nhiệt chân không (bình chân không hoàn c…)» — prod 17/11 earlyExit NEED_FACTS dừng 961700 (6 số); chotSom đôn 8 số 96170010."
   },
   {
    "id": "binh-giu-nhiet-chan-khong",

@@ -1471,5 +1471,91 @@ const R1_AR_SAI_8421 = {
 }
 
 
+
+// ── OZV-1336: cốc giữ nhiệt chân không — earlyExit/HOI 961700 → đôn 96170010 ──
+// Prod 17/11: POST /api/classify «cốc giữ nhiệt chân không (bình chân không hoàn c…)»
+// → NEED_FACTS earlyExitHoi hs=961700. Mục mới chotSom → đôn 8 số 96170010.
+{
+  const TEN_COC = 'cốc giữ nhiệt chân không (bình chân không hoàn c';
+  const R1_COC_961700 = {
+    product: {
+      nameVi: 'cốc giữ nhiệt chân không / bình chân không hoàn chỉnh',
+      purpose: 'giữ nhiệt đồ uống',
+      mechanism: 'chân không giữa hai vách',
+      material: 'inox',
+      form: 'cốc / bình hoàn chỉnh',
+      model: null,
+      evidence: {},
+    },
+    hypotheses: [
+      {
+        chapter: '96',
+        heading4: '9617',
+        subheading6: '961700',
+        why: 'phích / bình chân không',
+        confidence: 80,
+      },
+    ],
+    verify: {
+      searchVi: ['cốc giữ nhiệt', 'bình chân không', 'vacuum flask'],
+      codes8: ['96170010', '96170020', '73239990', '85162100'],
+      micQuery: null,
+      unknowns: [
+        'Vật liệu thân bình và nắp',
+        'Có cấu tạo chân không kép hay chỉ lớp cách nhiệt',
+        'Dung tích và kích thước',
+      ],
+    },
+  };
+
+  {
+    const g = await gather(R1_COC_961700, { tenHang: TEN_COC }, { micAllowed: false });
+    check(
+      'OZV-1336 gather cốc chân không: có nhóm 9617, không còn 7323/8516 (avoid)',
+      (g.headings || []).includes('9617')
+        && !(g.headings || []).includes('7323')
+        && !(g.headings || []).includes('8516'),
+      g.headings,
+    );
+    check(
+      'OZV-1336 gather cốc chân không: codes8 có 96170010, không còn 7323*/8516*',
+      (g.codes8 || []).includes('96170010')
+        && !(g.codes8 || []).some((c) => String(c).startsWith('7323'))
+        && !(g.codes8 || []).some((c) => String(c).startsWith('8516')),
+      g.codes8,
+    );
+  }
+
+  {
+    const saved = llmTier.callLLMJson;
+    llmTier.callLLMJson = async () => ({ json: R1_COC_961700 });
+    let out;
+    try {
+      out = await classifyLoop({ tenHang: TEN_COC }, { mic: false, crossCheck: false, timeoutMs: 8000 });
+    } finally {
+      llmTier.callLLMJson = saved;
+    }
+    const top3 = (out.results || []).map((r) => r.hs);
+    const gates = out.engine?.gates || [];
+    check(
+      'OZV-1336 cốc chân không earlyExit/HOI 961700: đôn 96170010 (không NEED_FACTS)',
+      out.status !== 'NEED_FACTS' && top3[0] === '96170010',
+      { status: out.status, top3, next: out.nextAction, gates: gates.slice(-4) },
+    );
+    check(
+      'OZV-1336 cốc chân không: top3 không còn 7323*/8516*',
+      top3.every((h) => !String(h).startsWith('7323') && !String(h).startsWith('8516')),
+      top3,
+    );
+    check(
+      'OZV-1336 cốc chân không: có trade-synonyms-promote → 96170010',
+      gates.some((g) => g.note === 'trade-synonyms-promote' && g.to === '96170010')
+        || top3[0] === '96170010',
+      gates.slice(-4),
+    );
+  }
+}
+
+
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
