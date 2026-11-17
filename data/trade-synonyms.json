@@ -3875,7 +3875,7 @@
    "basis": "RULE_TABLE",
    "sourceVi": "Shop VN kitbuy/thegioitech: Công tắc bàn đạp chân TFS-1/TFS-01/FS-01 ABS/kim loại, dây 2m, 250V-10A — dùng máy may/thiết bị cần đạp chân. hs-aliases «cong tac ban dap» → 85365099. Biểu thuế 8536.50.99 công tắc khác. OZV-1326: câu khách «bàn ga tfs-1 (2 mét)» (ga = biến thể/đánh máy của đạp; 2 mét = dây) — prod earlyExit NEED_FACTS 853650 / NEEDS_EXPERT; chotSom đôn 8 số."
   },
-    {
+  {
    "id": "bong-den-led-duoi-e27",
    "titleVi": "Bóng đèn LED đầu ren xoáy (đuôi E27/E14/E40) — 8539.52.10",
    "terms": [
@@ -4019,6 +4019,87 @@
    "gir": "GIR 1",
    "basis": "RULE_TABLE",
    "sourceVi": "Biểu thuế 2026 nhóm 85.18 phân nhóm 8518.90 «Bộ phận»: 85189090 - - Loại khác. Chú giải heading 8518 (chu-giai-heading + so-tay/8518.json): bộ phận của sản phẩm nhóm này phân loại tại đây theo quy tắc bộ phận Phần XVI. OZV-1333: câu khách «vỏ chụp loa bằng nhựa tổng hợp (nón loa)» — GĐ đo suggest top1 39269099; search lệch «tổng hợp» chương 42 — thêm mục + chotSom + avoid 3926/851821–29."
+  },
+  {
+   "id": "may-bom-nuoc-ly-tam",
+   "titleVi": "Máy bơm nước ly tâm gia đình / công nghiệp (centrifugal water pump) — 8413.70",
+   "terms": [
+    "máy bơm nước ly tâm",
+    "may bom nuoc ly tam",
+    "bơm nước ly tâm",
+    "bom nuoc ly tam",
+    "bơm ly tâm",
+    "bom ly tam",
+    "máy bơm ly tâm",
+    "may bom ly tam",
+    "máy bơm nước ly tâm gia đình",
+    "may bom nuoc ly tam gia dinh",
+    "bơm nước ly tâm gia đình",
+    "bom nuoc ly tam gia dinh",
+    "máy bơm ly tâm gia đình",
+    "may bom ly tam gia dinh"
+   ],
+   "excludeIfAny": [
+    "bơm chân không",
+    "vacuum pump",
+    "bơm nhiên liệu",
+    "fuel pump",
+    "bơm bê tông",
+    "concrete pump",
+    "bơm định lượng",
+    "dosing pump",
+    "bơm màng",
+    "diaphragm pump"
+   ],
+   "excludeReasonVi": "Bơm chân không (84.14), bơm nhiên liệu động cơ (8413.30), bơm bê tông (8413.40) hoặc các loại bơm chuyên dụng khác không thuộc nhóm bơm nước ly tâm thông thường (8413.70).",
+   "candidates": [
+    {
+     "hs": "84137042",
+     "whenVi": "Máy bơm nước ly tâm hoạt động bằng điện, đường kính cửa hút không quá 200 mm (phổ biến cho bơm gia đình/dân dụng) — 8413.70.42.",
+     "confidence": "high"
+    },
+    {
+     "hs": "84137043",
+     "whenVi": "Máy bơm nước ly tâm không hoạt động bằng điện, đường kính cửa hút không quá 200 mm — 8413.70.43.",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84137031",
+     "whenVi": "Bơm ly tâm khác (đường kính cửa hút không quá 200 mm) — 8413.70.31.",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84137049",
+     "whenVi": "Máy bơm nước ly tâm hoạt động bằng điện, loại khác (cửa hút > 200mm hoặc đặc thù) — 8413.70.49.",
+     "confidence": "low"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "8414",
+     "whyVi": "8414 là quạt, máy nén khí hoặc bơm chân không — máy bơm chất lỏng/bơm nước ly tâm thuộc nhóm 84.13."
+    },
+    {
+     "prefix": "841320",
+     "whyVi": "8413.20 là bơm tay — máy bơm ly tâm chạy điện là máy cơ điện thuộc phân nhóm 8413.70."
+    },
+    {
+     "prefix": "841330",
+     "whyVi": "8413.30 là bơm nhiên liệu hoặc bơm nước cho động cơ xe (87.02/03/04)."
+    },
+    {
+     "prefix": "841340",
+     "whyVi": "8413.40 là bơm bê tông."
+    }
+   ],
+   "askVi": [
+    "Máy bơm chạy bằng điện hay động cơ nổ/thủ công?",
+    "Đường kính cửa hút có lớn hơn 200 mm (20 cm) không?"
+   ],
+   "chotSom": true,
+   "gir": "GIR 1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế XNK nhóm 84.13 phân nhóm 8413.70 (bơm ly tâm cho chất lỏng). Yêu cầu OZV-1334: máy bơm nước ly tâm gia đình tránh dừng sớm ở NEED_FACTS hoặc kẹt 6 số 841370, chotSom về 8 số 84137042."
   }
  ],
  "updatedAt": "2026-11-17"
