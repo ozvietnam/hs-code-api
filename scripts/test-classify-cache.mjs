@@ -158,7 +158,8 @@ const boSoSanh = (v) => {
     // jsonb (Postgres) chuẩn hoá THỨ TỰ KHOÁ khi lưu ⇒ so sánh phải sắp khoá đệ quy,
     // bỏ đúng các trường thời gian (ms, *Ms, llmTungVong) đổi theo từng lượt chạy.
     for (const k of Object.keys(v).sort()) {
-      if (k === 'ms' || k === 'llmTungVong' || /Ms$/.test(k)) continue;
+      // phases = đo thời gian từng đoạn (afterEngineMs…) — đổi theo lượt, không phải nội dung phân loại
+      if (k === 'ms' || k === 'llmTungVong' || k === 'phases' || /Ms$/.test(k)) continue;
       out[k] = boSoSanh(v[k]);
     }
     return out;
