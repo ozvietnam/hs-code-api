@@ -268,6 +268,62 @@ const R1_CAM = {
   );
 }
 
+// ── OZV-1322: camera CMR12 — earlyExit lệch 852581 (tốc độ cao) hoặc dừng 852589 6 số ──
+// Đo prod 17/11: lượt 2 earlyExitHoi hs=852581 → ra 85258120 (sai nhánh); lượt khác NEED_FACTS 6 số.
+{
+  const R1_CAM_852581 = {
+    ...R1_CAM,
+    hypotheses: [
+      {
+        chapter: '85',
+        heading4: '8525',
+        subheading6: '852581',
+        why: 'camera truyền hình chuyên dụng tốc độ cao',
+        confidence: 90,
+      },
+    ],
+    verify: {
+      ...R1_CAM.verify,
+      unknowns: ['Thông số kỹ thuật chi tiết của camera', 'Độ phân giải và khả năng quay'],
+    },
+  };
+  const saved = llmTier.callLLMJson;
+  llmTier.callLLMJson = async () => ({ json: R1_CAM_852581 });
+  const out = await classifyLoop({ tenHang: TEN_CAM, model: 'CMR12' }, { mic: false, crossCheck: false, timeoutMs: 8000 });
+  llmTier.callLLMJson = saved;
+  check(
+    'OZV-1322 camera earlyExit 852581: đôn 85258920 (không kẹt 852581*)',
+    out.results?.[0]?.hs === '85258920' && out.status !== 'NEED_FACTS',
+    { status: out.status, top: out.results?.[0]?.hs, gates: out.engine?.gates?.slice(-3) },
+  );
+  check(
+    'OZV-1322 camera earlyExit 852581: top không còn 852581*',
+    !(out.results || []).some((r) => String(r.hs || '').startsWith('852581')),
+    (out.results || []).map((r) => r.hs),
+  );
+}
+
+{
+  const R1_CAM_852589_UNK = {
+    ...R1_CAM,
+    verify: {
+      ...R1_CAM.verify,
+      unknowns: ['Thông số kỹ thuật chi tiết của camera', 'Nhà sản xuất trên tem'],
+    },
+  };
+  const saved = llmTier.callLLMJson;
+  llmTier.callLLMJson = async () => ({ json: R1_CAM_852589_UNK });
+  const out = await classifyLoop({ tenHang: TEN_CAM, model: 'CMR12' }, { mic: false, crossCheck: false, timeoutMs: 8000 });
+  llmTier.callLLMJson = saved;
+  check(
+    'OZV-1322 camera earlyExit 852589+unknowns: đôn 85258920 (hết dừng 6 số)',
+    out.results?.[0]?.hs === '85258920'
+      && out.status !== 'NEED_FACTS'
+      && String(out.results?.[0]?.hs || '').length === 8,
+    { status: out.status, top: out.results?.[0]?.hs, next: out.nextAction, gates: out.engine?.gates?.slice(-3) },
+  );
+}
+
 // ── OZV-1300: Zonye AR2000 — classify lệch 842199 (phụ tùng lọc) + NEED_FACTS hỏi lọc ──
 // Prod 17/11: /api/classify «bộ lọc khí zonye ar2000» → NEED_FACTS hs=842199 (6 số).
 // Avoid cũ chỉ 842139/842132/… → 842199 không biCam → không đôn 84812090.
