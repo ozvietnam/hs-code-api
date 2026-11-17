@@ -489,6 +489,96 @@ const R1_AR_SAI_8421 = {
   );
 }
 
+// ── OZV-1320: GIR HOI 848120 + R1 còn unknowns → vẫn đôn 84812011 (prod lần 3) ──
+// Prod 10:54–10:57 VN sau #1400: lần 3 NEED_FACTS · 848120 (6 số) · NHOM_CHUA_KIEM →
+// GIR HOI 848120 · không promote vì cungNhanhHigh đòi !conUnknownsR1 (gemini-free để lại
+// unknowns). earlyExitHoi=false (đã leo GIR) → phải đôn; ca giác hút earlyExit vẫn chặn.
+{
+  const saved = llmTier.callLLMJson;
+  const queue = [
+    {
+      product: {
+        nameVi: 'bộ lọc khí Zonye AR2000-02',
+        purpose: 'điều áp khí nén',
+        mechanism: null,
+        material: null,
+        form: 'hoàn chỉnh',
+        brand: 'Zonye',
+        model: 'AR2000-02',
+        evidence: {},
+      },
+      hypotheses: [
+        {
+          chapter: '84',
+          heading4: '8481',
+          subheading6: '848120',
+          why: 'van truyền động khí nén',
+          confidence: 78,
+        },
+      ],
+      verify: {
+        searchVi: ['bộ lọc khí', 'zonye ar2000'],
+        codes8: ['84812011', '84812090'],
+        micQuery: null,
+        unknowns: [
+          'Chất liệu vỏ chính',
+          'Có tích hợp van điều áp (regulator) hay chỉ lọc khí đơn thuần',
+        ],
+      },
+    },
+    {
+      decision: 'HOI',
+      hs: '848120',
+      confidence: 58,
+      reason: 'Hồ sơ thiếu dữ kiện: chất liệu thân / có regulator hay không',
+      basis: [{ stream: 'SUY_LUAN', claim: '8481.20', evidence: 'AR2000' }],
+      conditions: [],
+      alternatives: [
+        { hs: '84812011', whyNot: 'cần xác nhận thân sắt/thép' },
+        { hs: '84819000', whyNot: 'không phải phụ tùng' },
+      ],
+      questions: [
+        {
+          fact: 'chatLieuVo',
+          question: 'Chất liệu vỏ chính là gì?',
+          whereToFind: 'catalogue',
+        },
+      ],
+    },
+  ];
+  llmTier.callLLMJson = async () => {
+    const next = queue.shift();
+    if (!next) throw new Error('hết stub LLM OZV-1320 HOI+unknowns');
+    return { json: next };
+  };
+  // gon=off: bỏ earlyExit để buộc đi GIR HOI (đúng lỗ prod lần 3 — đã leo GIR).
+  const savedGon = process.env.HS_GON_DAU_RA;
+  process.env.HS_GON_DAU_RA = 'off';
+  let out;
+  try {
+    out = await classifyLoop(
+      { tenHang: 'bộ lọc khí zonye ar2000 -02', model: 'AR2000-02' },
+      { mic: false, crossCheck: false, timeoutMs: 5000 },
+    );
+  } finally {
+    if (savedGon === undefined) delete process.env.HS_GON_DAU_RA;
+    else process.env.HS_GON_DAU_RA = savedGon;
+    llmTier.callLLMJson = saved;
+  }
+  const top3 = (out.results || []).map((r) => r.hs);
+  const gates = out.engine?.gates || [];
+  check(
+    'OZV-1320 HOI 848120 + unknowns: đôn 84812011 (không NEED_FACTS)',
+    out.status !== 'NEED_FACTS' && top3[0] === '84812011',
+    { status: out.status, top3, next: out.nextAction, gates: gates.slice(-3) },
+  );
+  check(
+    'OZV-1320 HOI+unknowns: không earlyExitHoi (đã leo GIR)',
+    !gates.some((g) => g.earlyExitHoi === true),
+    gates.slice(-3),
+  );
+}
+
 // ── OZV-1315: STT 26 strip CRC khổ hẹp — R2 lệch 72091610 → đôn 72112390 (avoid 7209) ──
 {
   const TEN_26 =

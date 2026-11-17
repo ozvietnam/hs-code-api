@@ -79,7 +79,10 @@ const off = await run(R1_SMC, { env: { HS_GON_DAU_RA: 'off' }, r2: {
   basis: [], conditions: [], alternatives: [],
   questions: [{ fact: 'chất liệu', question: 'Chất liệu đế hút?', whereToFind: 'catalogue' }],
 } });
-check('gon=off + unknowns → vẫn gọi GIR (1 lời)', off.girCalls === 1 && off.out.status === 'NEED_FACTS', JSON.stringify({ gir: off.girCalls, status: off.out.status }));
+// OZV-1320: gon=off → buộc leo GIR; sau HOI cùng nhánh high, trade-synonyms có thể đôn (REVIEW).
+// Ca giác hút NEED_FACTS bắt buộc nằm ở earlyExit+unknowns (PASS phía trên), không phải gon=off.
+check('gon=off + unknowns → vẫn gọi GIR (1 lời)', off.girCalls === 1, JSON.stringify({ gir: off.girCalls, status: off.out.status, hs: off.out.results?.[0]?.hs }));
+check('gon=off + unknowns → không earlyExitHoi', !(off.out.engine?.gates || []).some((g) => g.earlyExitHoi === true), JSON.stringify(off.out.engine?.gates?.slice(-3)));
 
 const ro = await run(R1_RO, { r2: CHOT });
 check('gon + unknowns rỗng → gọi GIR như cũ (chốt)', ro.girCalls === 1 && ro.out.status !== 'NEED_FACTS', JSON.stringify({ gir: ro.girCalls, status: ro.out.status, hs: ro.out.results?.[0]?.hs }));
