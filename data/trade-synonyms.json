@@ -3576,7 +3576,15 @@
     "led wall night light",
     "plug in wall led",
     "wall plug led light",
-    "led night light wall"
+    "led night light wall",
+    "đèn LED hình gấu",
+    "đèn led hình gấu",
+    "den led hinh gau",
+    "đèn LED hình gấu trang trí tường",
+    "đèn led hình gấu trang trí tường",
+    "đèn LED trang trí hình gấu",
+    "led hình gấu",
+    "led hinh gau"
    ],
    "excludeIfAny": [
     "bóng đèn",
@@ -3595,13 +3603,13 @@
    "excludeReasonVi": "Bóng/chip/module LED là nguồn sáng hoặc linh kiện (thường 85.39/85.41), không phải bộ đèn hoàn chỉnh nhóm 94.05. Đèn xe/ô tô thuộc 85.12; màn hình/TV LED thuộc 85.28; dải/led strip cần mục riêng — không gom vào đèn cắm tường trang trí.",
    "candidates": [
     {
-     "hs": "94051199",
-     "whenVi": "Đèn/bộ đèn gắn trần hoặc gắn tường, thiết kế chỉ dùng nguồn sáng LED (không phải đèn đường/công cộng) — lá «Loại khác» 9405.11.99",
+     "hs": "94054290",
+     "whenVi": "Bộ đèn điện khác thiết kế chỉ dùng LED (đèn ngủ cắm ổ tường / trang trí hình thú khi không khớp đúng dòng gắn tường 9405.11) — lá «Loại khác» 9405.42.90",
      "confidence": "high"
     },
     {
-     "hs": "94054290",
-     "whenVi": "Bộ đèn điện khác thiết kế chỉ dùng LED (đèn ngủ cắm ổ tường / trang trí hình thú khi không khớp đúng dòng gắn tường 9405.11) — lá «Loại khác» 9405.42.90",
+     "hs": "94051199",
+     "whenVi": "Đèn/bộ đèn gắn trần hoặc gắn tường, thiết kế chỉ dùng nguồn sáng LED (không phải đèn đường/công cộng) — lá «Loại khác» 9405.11.99",
      "confidence": "high"
     },
     {
@@ -3626,7 +3634,8 @@
    ],
    "gir": "1",
    "basis": "RULE_TABLE",
-   "sourceVi": "Biểu thuế 2026 nhóm 94.05: 9405.11 đèn trần/tường thiết kế chỉ dùng LED; 9405.42 bộ đèn điện khác thiết kế chỉ dùng LED; 9405.21 đèn bàn/đầu giường/đứng sàn chỉ dùng LED. OZV-1306: search «đèn led cắm tường hình gấu» hết kéo 85402000 (ống CRT) / 98342300 vào top — inject 9405.11/9405.42 + avoid 8540/9834."
+   "sourceVi": "Biểu thuế 2026 nhóm 94.05: 9405.11 đèn trần/tường thiết kế chỉ dùng LED; 9405.42 bộ đèn điện khác thiết kế chỉ dùng LED; 9405.21 đèn bàn/đầu giường/đứng sàn chỉ dùng LED. OZV-1306: search «đèn led cắm tường hình gấu» hết kéo 85402000 (ống CRT) / 98342300 vào top — inject 9405.11/9405.42 + avoid 8540/9834. OZV-1346: câu khách «đèn LED hình gấu» / «đèn LED hình gấu trang trí tường» — prod NEED_FACTS dừng 940542 ~37s (MiniMax timeout); thêm term đèn LED hình gấu + chotSom đôn 8 số 94054290 (đèn ngủ trang trí hình thú), bỏ vòng AI.",
+   "chotSom": true
   },
   {
    "id": "nhan-nhua-tu-dinh-3919",
