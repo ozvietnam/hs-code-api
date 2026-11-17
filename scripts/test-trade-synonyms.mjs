@@ -137,6 +137,9 @@ console.log('\n== Câu hỏi thật của khách phải ra đúng mã (kho Oz kh
     ['Nhãn nhựa tự dính đã in (PLASTIC LABEL, tem nhãn) dạng chiếc phẳng 26x12 mm, dạng cuộn', ['39199092']],
     ['nhãn nhựa tự dính đã in PET', ['39199092']],
     ['plastic label self-adhesive PET', ['39199092']],
+    // OZV-1239 — đo A1 16/11: ca 6 (32064990) và ca 40 (85081100)
+    ['Aluminium powder (bột nhôm): chất màu vô cơ', ['32064990']],
+    ['industrial vacuum cleaner Nilfisk model VHW310', ['85081100', '85081910', '85081990']],
   ];
   for (const [q, want] of cases) {
     const top2 = searchCandidates(q, { topCandidates: 2 }).map((c) => c.hsCode);
@@ -329,6 +332,13 @@ console.log('\n== Mã bẫy phải bị loại HẲN, không phải tụt hạng
     'OZV-1316 nhãn nhựa không lẫn cuộn ≤20cm 391910',
     nhanNhua.every((c) => !String(c.hsCode).startsWith('391910')),
   );
+
+  const alum = searchCandidates('Aluminium powder (bột nhôm): chất màu vô cơ', { topCandidates: 50 });
+  check('bột nhôm chất màu không lẫn nhôm thỏi 7601', alum.every((c) => !c.hsCode.startsWith('7601')));
+  check('bột nhôm chất màu không lẫn bột nhôm luyện kim 7603', alum.every((c) => !c.hsCode.startsWith('7603')));
+
+  const vac = searchCandidates('industrial vacuum cleaner Nilfisk model VHW310', { topCandidates: 50 });
+  check('máy hút bụi công nghiệp không lẫn lọc nước 842121', vac.every((c) => !c.hsCode.startsWith('842121')));
 }
 
 console.log('\n== Từ điển không được lan sang câu không liên quan ==');
@@ -599,6 +609,16 @@ console.log('\n== Từ điển không được lan sang câu không liên quan =
     );
     check('search đầu lắc không lẫn 7307/8409', !top3.some((hs) => /^(7307|8409)/.test(String(hs))));
   }
+
+  // OZV-1239: mục bột nhôm chất màu 32.06 không được ăn bột/vảy nhôm luyện
+  // kim (76.03) hay bột nhão nhôm (32.12) — probe trước khi chặn: cả 2 câu
+  // đều đẩy 32064990 lên đầu.
+  for (const q of ['bột nhôm dạng vảy dùng luyện kim', 'bột nhôm nhão aluminium paste cho sơn', 'aluminium powder for welding']) {
+    check(`"${q}" không kích mục bột nhôm chất màu`,
+      !lookupTradeTerms(q).matches.some((m) => m.entryId === 'aluminium-powder-pigment'));
+  }
+  check('câu bột nhôm chất màu (TB 554) vẫn kích mục',
+    lookupTradeTerms('Aluminium powder (bột nhôm): chất màu vô cơ').matches.some((m) => m.entryId === 'aluminium-powder-pigment'));
 }
 
 console.log('\n== Mục chưa chắc thì phải nói chưa chắc ==');
