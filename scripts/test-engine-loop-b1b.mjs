@@ -11,6 +11,8 @@ process.env.MIC_OFF = '1';
 process.env.HS_EVAL_EXCLUDE_HOLDOUT = '1';
 for (const k of ['ZAI_WEB_FACTS', 'HS_GON_DAU_RA', 'HS_MAX_VONG_SUA', 'HS_SO_TAY', 'R1_MAX_TOKENS', 'GIR_MAX_TOKENS']) delete process.env[k];
 delete process.env.ZAI_SEARCH_KEY; // phòng hờ: web giả có hỏng thì webFacts thật cũng trả null, không gọi mạng
+// OZV-1314: B1b chạy lại cần ≥120 s còn lại — ghim ngân sách cũ 285 s để phần ON vẫn đo được lượt chạy lại.
+process.env.CLASSIFY_BUDGET_MS = '285000';
 
 const llmTier = require('../lib/llm-tier');
 let script = []; let llmCalls = [];

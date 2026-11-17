@@ -107,6 +107,9 @@ const rA7 = await withPrivateData(() => llmTier.callLLMJson('sys', 'user', { ste
 check('A7 không truyền hanChotMs → như cũ: Gemini trả phí vẫn là dự phòng cho dữ liệu khách', rA7.provider === 'gemini', JSON.stringify(rA7));
 
 // ═════════ B. callWithFallback — đúng ca prod 02/11 ═════════
+// OZV-1314: mặc định BUDGET_MS = 85 s; bài #725-45 đo ca dài (R1 100 s + thinking-off 45 s) nên giữ ngân sách cũ.
+process.env.CLASSIFY_BUDGET_MS = '285000';
+delete require.cache[require.resolve('../lib/engine-loop.js')];
 const engineLoop = require('../lib/engine-loop.js');
 reset();
 const logB = [];

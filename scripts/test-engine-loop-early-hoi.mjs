@@ -7,6 +7,8 @@ process.env.HS_EVAL_EXCLUDE_HOLDOUT = '1';
 for (const k of ['ZAI_WEB_FACTS', 'HS_GON_DAU_RA', 'HS_MAX_VONG_SUA', 'HS_SO_TAY', 'HS_CLASSIFY_FAST_FIRST', 'R1_MAX_TOKENS', 'GIR_MAX_TOKENS']) {
   delete process.env[k];
 }
+// OZV-1314: bài này đo early-exit HOI, không đo trần 85 s — ghim ngân sách cũ để timeoutMs không lệch kịch bản.
+process.env.CLASSIFY_BUDGET_MS = '285000';
 
 const llmTier = require('../lib/llm-tier');
 let script = [];
