@@ -3111,6 +3111,22 @@
      "whyVi": "Băng chữ V (V-belts) phần tiết diện hình thang."
     },
     {
+     "prefix": "401011",
+     "whyVi": "4010.11 là băng tải / đai tải (elevator/conveyor) chỉ gia cố bằng kim loại — không phải đai răng đồng bộ truyền lực (T5/T10/HTD)."
+    },
+    {
+     "prefix": "401012",
+     "whyVi": "4010.12 là băng tải / đai tải chỉ gia cố bằng vật liệu dệt — classify hay dừng 6 số tại đây; không phải đai răng đồng bộ 4010.35–.36."
+    },
+    {
+     "prefix": "401019",
+     "whyVi": "4010.19 là băng tải / đai tải loại khác — không phải đai răng đồng bộ truyền lực."
+    },
+    {
+     "prefix": "39269053",
+     "whyVi": "3926.90.53 là băng truyền / đai truyền bằng chất dẻo — câu khách T10/timing belt cao su đồng bộ thuộc 4010.35–.36, không nhảy sang nhựa khi chưa có chất liệu."
+    },
+    {
      "prefix": "7313",
      "whyVi": "Nhóm 7313 là dây gai / dây đai thép làm hàng rào, không phải đai truyền lực cơ khí bằng cao su/nhựa."
     },
@@ -3134,7 +3150,7 @@
    ],
    "gir": "GIR 1",
    "basis": "RULE_TABLE",
-   "sourceVi": "Biểu thuế 2026 nhóm 4010.35–4010.36 (băng truyền đồng bộ cao su lưu hóa). OZV-1304: câu 'dây đai dẹt t10-259-e' là đai răng đồng bộ — inject 401035/401036, không bơm residual 40103900 hay nhựa 39269053 lên top khi thiếu chu vi/vật liệu."
+   "sourceVi": "Biểu thuế 2026 nhóm 4010.35–4010.36 (băng truyền đồng bộ cao su lưu hóa). OZV-1304: inject 401035/401036. OZV-1257: loại hẳn 401011/401012/401019 (băng tải) và 39269053 (nhựa) — classify prod từng dừng NEED_FACTS ở 401012 (6 số) vì promote chỉ đôn cùng nhánh 6 số."
   },
   {
    "id": "gian-phoi-quan-ao",
