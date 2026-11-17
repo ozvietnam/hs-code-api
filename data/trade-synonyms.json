@@ -2857,6 +2857,10 @@
    ],
    "avoid": [
     {
+     "prefix": "848110",
+     "whyVi": "8481.10 van giảm áp (pressure reducing valves) — series AR trên mạch truyền động khí nén thuộc 8481.20, không phải 8481.10. Classify prod sau #1394 từng NEED_FACTS kết quả 848110 (OZV-1313)."
+    },
+    {
      "prefix": "84812090",
      "whyVi": "8481.20.90 residual «Loại khác» — khi khách chỉ ghi model AR/Zonye, không đẩy residual lên top; ưu tiên 8481.20.11 (thân sắt/thép phổ biến). Classify R2 từng CHOT 84812090 dù search đã 84812011 (OZV-1307)."
     },
@@ -2899,7 +2903,7 @@
    ],
    "gir": "GIR 1",
    "basis": "RULE_TABLE",
-   "sourceVi": "Biểu thuế VN 8481.20 van dùng cho truyền động oleohydraulic/pneumatic. Series Airtac/Zonye: AR=regulator. OZV-1286 tách AR khỏi AF; OZV-1300 mở avoid 8421/842199; OZV-1305 inject high 84812011 + avoid 8405; OZV-1307 avoid residual 84812090 để classify đôn .11 khi R2 CHOT .90."
+   "sourceVi": "Biểu thuế VN 8481.20 van dùng cho truyền động oleohydraulic/pneumatic. Series Airtac/Zonye: AR=regulator. OZV-1286 tách AR khỏi AF; OZV-1300 mở avoid 8421/842199; OZV-1305 inject high 84812011 + avoid 8405; OZV-1307 avoid residual 84812090 để classify đôn .11 khi R2 CHOT .90; OZV-1313 avoid 848110 (van giảm áp) để classify hết NEED_FACTS 8481.10."
   },
   {
    "id": "bo-loc-khi-nen-af-frl",

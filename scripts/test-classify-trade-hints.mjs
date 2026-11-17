@@ -414,5 +414,80 @@ const R1_AR_SAI_8421 = {
   );
 }
 
+// ── OZV-1313: classify R2 NEED_FACTS/CHOT nhóm 848110 (van giảm áp) → đôn 84812011 ──
+// Prod GĐ 08:41 VN (sau #1394): classify NEED_FACTS · kết quả 848110 · gemini-free.
+// Series AR = van truyền động khí nén 8481.20, không phải pressure-reducing 8481.10.
+{
+  const saved = llmTier.callLLMJson;
+  const queue = [
+    {
+      product: {
+        nameVi: 'bộ lọc khí Zonye AR2000-02',
+        purpose: 'điều áp khí nén',
+        mechanism: null,
+        material: null,
+        form: 'thiết bị',
+        model: 'AR2000-02',
+        evidence: {},
+      },
+      hypotheses: [
+        {
+          chapter: '84',
+          heading4: '8481',
+          subheading6: '848110',
+          why: 'van giảm áp',
+          confidence: 70,
+        },
+      ],
+      verify: {
+        searchVi: ['bộ lọc khí', 'zonye ar2000'],
+        codes8: ['84811011', '84812011', '84811099'],
+        micQuery: null,
+        unknowns: [],
+      },
+    },
+    {
+      decision: 'HOI',
+      hs: '848110',
+      confidence: 62,
+      reason: 'Hồ sơ thiếu dữ kiện quyết định mã: van giảm áp loại nào / chất liệu thân',
+      basis: [{ stream: 'SUY_LUAN', claim: '8481.10', evidence: 'điều áp' }],
+      conditions: [],
+      alternatives: [
+        { hs: '84812011', whyNot: 'có thể van truyền động khí nén' },
+        { hs: '84811011', whyNot: 'cần xác nhận van giảm áp thân sắt/thép' },
+      ],
+      questions: [
+        {
+          fact: 'loaiVan',
+          question: 'Đây là van giảm áp (pressure reducing) hay van/điều áp trên mạch truyền động khí nén?',
+          whereToFind: 'catalogue',
+        },
+      ],
+    },
+  ];
+  llmTier.callLLMJson = async () => {
+    const next = queue.shift();
+    if (!next) throw new Error('hết stub LLM AR2000 848110');
+    return { json: next };
+  };
+  const out = await classifyLoop(
+    { tenHang: 'bộ lọc khí zonye ar2000-02', model: 'AR2000-02' },
+    { mic: false, crossCheck: false, timeoutMs: 5000 },
+  );
+  llmTier.callLLMJson = saved;
+  const top3 = (out.results || []).map((r) => r.hs);
+  check(
+    'OZV-1313 AR2000: R2 HOI 848110 → hết NEED_FACTS, đôn top1 84812011',
+    out.status !== 'NEED_FACTS' && top3[0] === '84812011',
+    { status: out.status, top3, next: out.nextAction },
+  );
+  check(
+    'OZV-1313 AR2000: top/results không còn 848110*',
+    top3.every((h) => !String(h).startsWith('848110')),
+    top3,
+  );
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
