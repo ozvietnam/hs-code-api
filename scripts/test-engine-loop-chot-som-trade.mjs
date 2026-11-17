@@ -47,7 +47,7 @@ for (const c of CA) {
   const ee = earlyExitChotTuTrade(hints, c.ten);
   check(
     `earlyExitChotTuTrade ${c.id}: CHOT ${c.hs}`,
-    ee?.decision === 'CHOT' && ee?.hs === c.hs && ee?._tradeEarly?.entryId,
+    ee?.decision === 'CHOT' && ee?.hs === c.hs && ee?._tradeEarly?.entryId && ee?.gir == null,
     ee,
   );
 }
@@ -64,6 +64,7 @@ for (const c of CA) {
   const out = await classifyLoop({ tenHang: c.ten }, { mic: false, crossCheck: false, timeoutMs: 8000 });
   const top = out.results?.[0]?.hs;
   const gates = out.engine?.gates || [];
+  const girs = Array.isArray(out.girRulesApplied) ? out.girRulesApplied : [];
   check(
     `classifyLoop ${c.id}: REVIEW ${c.hs} không gọi LLM`,
     out.status === 'REVIEW' && top === c.hs && llmCalls.length === 0,
@@ -73,6 +74,14 @@ for (const c of CA) {
     `classifyLoop ${c.id}: log earlyExitTradeChotSom`,
     gates.some((g) => g.earlyExitTradeChotSom === true && g.hs === c.hs),
     gates.slice(-3),
+  );
+  // OZV-1341 trả thợ: early-exit từ điển không được gắn GIR giả LLM_ASSERTED.
+  const llmGir = girs.filter((d) => d && d.basis === 'LLM_ASSERTED');
+  const okBasis = girs.every((d) => !d?.basis || d.basis === 'DETERMINISTIC' || d.basis === 'RULE_TABLE');
+  check(
+    `classifyLoop ${c.id}: girRulesApplied không LLM_ASSERTED`,
+    llmGir.length === 0 && okBasis,
+    girs.map((d) => ({ rule: d.ruleKey || d.id, basis: d.basis, source: d.source })),
   );
 }
 
