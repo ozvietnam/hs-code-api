@@ -1,0 +1,80 @@
+// OZV-1341: early-exit CHOT từ trade-synonyms high+chotSom — bỏ vòng AI (R1+GIR).
+// Mục tiêu A3: trung vị 4 câu top 24h ≤ 10 s (R1 MiniMax đo ≥15 s nên phải bỏ LLM khi từ điển đã chốt).
+import './test-isolate-data.mjs';
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+process.env.MIC_OFF = '1';
+process.env.HS_EVAL_EXCLUDE_HOLDOUT = '1';
+for (const k of ['ZAI_WEB_FACTS', 'HS_GON_DAU_RA', 'HS_MAX_VONG_SUA', 'HS_SO_TAY', 'HS_CLASSIFY_FAST_FIRST', 'R1_MAX_TOKENS', 'GIR_MAX_TOKENS']) {
+  delete process.env[k];
+}
+process.env.CLASSIFY_BUDGET_MS = '285000';
+
+const llmTier = require('../lib/llm-tier');
+let llmCalls = [];
+llmTier.callLLMJson = async (system, user, opts = {}) => {
+  llmCalls.push({ step: opts.step || (String(system).startsWith('VÒNG 1') ? 'understand' : 'gir') });
+  throw new Error('LLM không được gọi khi earlyExitTradeChotSom');
+};
+console.error = () => {};
+console.warn = () => {};
+
+const { classifyLoop, earlyExitChotTuTrade } = require('../lib/engine-loop.js');
+const { tradeClassifyHints, tradePreferredHs } = require('../lib/trade-classify-hints.js');
+
+let pass = 0;
+let fail = 0;
+const check = (n, c, x = '') => {
+  if (c) { pass += 1; console.log(`PASS ${n}`); }
+  else { fail += 1; console.log(`FAIL ${n} ${typeof x === 'string' ? x.slice(0, 500) : JSON.stringify(x).slice(0, 500)}`); }
+};
+
+const CA = [
+  { ten: 'bóng đèn led tròn đuôi e27', hs: '85395210', id: 'bong-den-led-duoi-e27' },
+  { ten: 'cốc giữ nhiệt chân không (bình chân không)', hs: '96170010', id: 'coc-giu-nhiet-chan-khong' },
+  { ten: 'máy bơm nước ly tâm dùng trong gia đình', hs: '84137042', id: 'may-bom-nuoc-ly-tam' },
+  { ten: 'vỏ chụp loa bằng nhựa tổng hợp (nón loa)', hs: '85189090', id: 'vo-chup-loa-non-loa' },
+];
+
+for (const c of CA) {
+  const hints = tradeClassifyHints(c.ten);
+  const pref = tradePreferredHs(hints);
+  check(
+    `từ điển ${c.id}: high+chotSom → ${c.hs}`,
+    pref?.hs === c.hs && pref.confidence === 'high' && pref.chotSom === true,
+    pref,
+  );
+  const ee = earlyExitChotTuTrade(hints, c.ten);
+  check(
+    `earlyExitChotTuTrade ${c.id}: CHOT ${c.hs}`,
+    ee?.decision === 'CHOT' && ee?.hs === c.hs && ee?._tradeEarly?.entryId,
+    ee,
+  );
+}
+
+// Giác hút: có từ điển nhưng KHÔNG chotSom → null (leo AI như cũ — OZV-1320).
+{
+  const hints = tradeClassifyHints('giác hút chân không smc zp-905-08eu');
+  const ee = earlyExitChotTuTrade(hints, 'giác hút chân không smc zp-905-08eu');
+  check('giác hút không chotSom → earlyExitChotTuTrade null', ee === null, ee);
+}
+
+for (const c of CA) {
+  llmCalls = [];
+  const out = await classifyLoop({ tenHang: c.ten }, { mic: false, crossCheck: false, timeoutMs: 8000 });
+  const top = out.results?.[0]?.hs;
+  const gates = out.engine?.gates || [];
+  check(
+    `classifyLoop ${c.id}: REVIEW ${c.hs} không gọi LLM`,
+    out.status === 'REVIEW' && top === c.hs && llmCalls.length === 0,
+    { status: out.status, top, llm: llmCalls.length, gates: gates.slice(-3) },
+  );
+  check(
+    `classifyLoop ${c.id}: log earlyExitTradeChotSom`,
+    gates.some((g) => g.earlyExitTradeChotSom === true && g.hs === c.hs),
+    gates.slice(-3),
+  );
+}
+
+console.log(`\n${pass} passed, ${fail} failed`);
+process.exit(fail ? 1 : 0);

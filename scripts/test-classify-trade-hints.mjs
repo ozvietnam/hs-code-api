@@ -736,8 +736,9 @@ const R1_AR_SAI_8421 = {
       top3,
     );
     check(
-      'OZV-1330 socola: có trade-synonyms-promote → 84382010',
-      gates.some((g) => g.note === 'trade-synonyms-promote' && g.to === '84382010'),
+      'OZV-1330 socola: chốt 84382010 (promote hoặc earlyExitTradeChotSom)',
+      gates.some((g) => g.note === 'trade-synonyms-promote' && g.to === '84382010')
+        || gates.some((g) => g.earlyExitTradeChotSom === true && g.hs === '84382010'),
       gates.slice(-4),
     );
   }
@@ -912,8 +913,9 @@ const R1_AR_SAI_8421 = {
       top3,
     );
     check(
-      'OZV-1324 socola: có trade-synonyms-promote → 84382010',
-      gates.some((g) => g.note === 'trade-synonyms-promote' && g.to === '84382010'),
+      'OZV-1324 socola: chốt 84382010 (promote hoặc earlyExitTradeChotSom)',
+      gates.some((g) => g.note === 'trade-synonyms-promote' && g.to === '84382010')
+        || gates.some((g) => g.earlyExitTradeChotSom === true && g.hs === '84382010'),
       gates.slice(-4),
     );
   }
