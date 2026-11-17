@@ -127,5 +127,23 @@ function run(topHs, attrs, expect) {
   assert('van thiếu dữ kiện → hỏi valveCircuit', r.status === 'INSUFFICIENT' && (r.ask || []).some((a) => a.attribute === 'valveCircuit'));
 }
 
+// OZV-1317 — cánh quạt tháp giải nhiệt (TB 2943/TCHQ-TXNK)
+{
+  const r = run('84149029', { coolingTowerFanImport: 'partsOnly' }, {});
+  assert('cánh quạt tháp riêng rẽ → 84149029', r.status === 'RESOLVED' && r.decidedHs === '84149029' && r.tableVerified === true);
+}
+{
+  const r = run('84149029', { coolingTowerFanImport: 'completeTower' }, {});
+  assert('cánh quạt tháp đồng bộ → 84195010', r.status === 'RESOLVED' && r.decidedHs === '84195010' && r.overrodeLlm === true);
+}
+{
+  const r = run('84195010', { coolingTowerFanImport: 'partsOnly' }, {});
+  assert('từ 84195010 + riêng rẽ → override 84149029', r.status === 'RESOLVED' && r.decidedHs === '84149029' && r.overrodeLlm === true);
+}
+{
+  const r = run('84149029', {}, {});
+  assert('cánh quạt tháp thiếu dữ kiện → hỏi coolingTowerFanImport', r.status === 'INSUFFICIENT' && (r.ask || []).some((a) => a.attribute === 'coolingTowerFanImport'));
+}
+
 console.log(`\n${passed}/${passed + failed} passed`);
 process.exit(failed ? 1 : 0);
