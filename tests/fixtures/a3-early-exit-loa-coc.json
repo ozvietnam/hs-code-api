@@ -1,0 +1,25 @@
+{
+  "issue": "OZV-1350",
+  "mucTieu": "Khoá regression A3: 2 câu earlyExitTradeChotSom đã xanh trên hs-kb (loa ~0,6s · cốc ~9s) — không được mất chốt <10s / không đi LLM dài.",
+  "doGd": {
+    "luc": "2026-11-17T01:33+07:00",
+    "ghiChu": "GĐ đo trên hs-kb; FT-S13/LED không thuộc thẻ này."
+  },
+  "cases": [
+    {
+      "id": "vo-chup-loa-non-loa",
+      "tenHang": "vỏ chụp loa bằng nhựa tổng hợp (nón loa)",
+      "hs": "85189090",
+      "liveMs": 551,
+      "ghiChu": "earlyExitTradeChotSom → 85189090"
+    },
+    {
+      "id": "coc-giu-nhiet-chan-khong",
+      "tenHang": "cốc giữ nhiệt chân không (bình chân không)",
+      "hs": "96170010",
+      "liveMs": 9042,
+      "ghiChu": "earlyExitTradeChotSom → 96170010 (gần trần 10s trên prod — regression phải giữ chốt sớm)"
+    }
+  ],
+  "tranMs": 10000
+}
