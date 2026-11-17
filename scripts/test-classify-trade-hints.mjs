@@ -1058,5 +1058,87 @@ const R1_AR_SAI_8421 = {
   }
 }
 
+// ── OZV-1326: bàn ga TFS-1 (2 mét) — earlyExit/HOI 853650 → đôn 85365099 ──
+// Prod 17/11 ×2 classify «bàn ga tfs-1 (2 mét)»:
+//   lượt 1 NEEDS_EXPERT · CHOT 85365099 (đúng lá) nhưng bị CAU_TRICH/NHOM_CHUA_KIEM;
+//   lượt 2 NEED_FACTS · earlyExitHoi hs=853650 (hỏi điện áp công tắc).
+// Shop VN: TFS-1/TFS-01 = công tắc bàn đạp chân dây 2m (250V/10A) — alias Oz «cong tac ban dap» → 85365099.
+{
+  const TEN_TFS = 'bàn ga tfs-1 (2 mét)';
+  const R1_TFS_853650 = {
+    product: {
+      nameVi: 'bàn đạp điện điều khiển máy may',
+      purpose: 'điều khiển bật tắt thiết bị điện bằng chân',
+      mechanism: null,
+      material: 'nhựa và kim loại',
+      form: 'công tắc đạp chân',
+      model: 'TFS-1',
+      evidence: {},
+    },
+    hypotheses: [
+      {
+        chapter: '85',
+        heading4: '8536',
+        subheading6: '853650',
+        why: 'công tắc điện áp ≤1000V',
+        confidence: 80,
+      },
+    ],
+    verify: {
+      searchVi: ['bàn đạp', 'công tắc chân', 'tfs-1'],
+      codes8: ['85365099', '85371099', '84529099'],
+      micQuery: null,
+      unknowns: ['Điện áp và dòng điện định mức của công tắc'],
+    },
+  };
+
+  {
+    const g = await gather(R1_TFS_853650, { tenHang: TEN_TFS }, { micAllowed: false });
+    check(
+      'OZV-1326 gather bàn ga TFS: có nhóm 8536, không còn 8452/8708 (avoid)',
+      (g.headings || []).includes('8536')
+        && !(g.headings || []).includes('8452')
+        && !(g.headings || []).includes('8708'),
+      g.headings,
+    );
+    check(
+      'OZV-1326 gather bàn ga TFS: codes8 có 85365099, không còn 8452*/8708*',
+      (g.codes8 || []).includes('85365099')
+        && !(g.codes8 || []).some((c) => /^(8452|8708)/.test(String(c))),
+      g.codes8,
+    );
+  }
+
+  {
+    const saved = llmTier.callLLMJson;
+    llmTier.callLLMJson = async () => ({ json: R1_TFS_853650 });
+    let out;
+    try {
+      out = await classifyLoop({ tenHang: TEN_TFS, model: 'TFS-1' }, { mic: false, crossCheck: false, timeoutMs: 8000 });
+    } finally {
+      llmTier.callLLMJson = saved;
+    }
+    const top3 = (out.results || []).map((r) => r.hs);
+    const gates = out.engine?.gates || [];
+    check(
+      'OZV-1326 bàn ga TFS earlyExit/HOI 853650: đôn 85365099 (không NEED_FACTS)',
+      out.status !== 'NEED_FACTS' && top3[0] === '85365099',
+      { status: out.status, top3, next: out.nextAction, gates: gates.slice(-4) },
+    );
+    check(
+      'OZV-1326 bàn ga TFS: top3 không còn 8452*/8708*',
+      top3.every((h) => !/^(8452|8708)/.test(String(h))),
+      top3,
+    );
+    check(
+      'OZV-1326 bàn ga TFS: có trade-synonyms-promote → 85365099',
+      gates.some((g) => g.note === 'trade-synonyms-promote' && g.to === '85365099')
+        || top3[0] === '85365099',
+      gates.slice(-4),
+    );
+  }
+}
+
+
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);

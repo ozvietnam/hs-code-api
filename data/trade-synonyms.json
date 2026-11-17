@@ -3800,6 +3800,71 @@
    "gir": "GIR 1",
    "basis": "RULE_TABLE",
    "sourceVi": "TB-TCHQ số 1864/TCHQ-TXNK: Động cơ là một phần gắn liền của máy hút bụi hoàn chỉnh → loại máy hút bụi có động cơ điện gắn liền, công suất không quá 1.500 W và đồ chứa không quá 20 lít → nhóm 85.08, mã 8508.11.00 (hoặc 8508.19 tùy công suất/thùng chứa). Tránh nhiễu 8421 từ từ khóa thùng lọc."
+  },
+  {
+   "id": "cong-tac-ban-dap-tfs",
+   "titleVi": "Công tắc bàn đạp chân TFS-1 / TFS-01 (foot switch) — 8536.50",
+   "terms": [
+    "bàn ga tfs-1",
+    "ban ga tfs-1",
+    "bàn ga tfs",
+    "ban ga tfs",
+    "bàn ga tfs-01",
+    "ban ga tfs-01",
+    "tfs-1 (2 mét)",
+    "tfs-1 (2 met)",
+    "tfs-1 2m",
+    "tfs-1 2 m",
+    "công tắc bàn đạp tfs",
+    "cong tac ban dap tfs",
+    "công tắc chân tfs-1",
+    "cong tac chan tfs-1",
+    "công tắc máy may tfs-1",
+    "foot switch tfs-1",
+    "foot switch tfs",
+    "tfs-01 foot switch"
+   ],
+   "excludeIfAny": [
+    "bàn cắt ga",
+    "ban cat ga",
+    "bàn bếp ga",
+    "ban bep ga",
+    "bếp ga",
+    "bep ga",
+    "gas cutting",
+    "flame cutting",
+    "oxy cắt",
+    "cắt kim loại bằng ga"
+   ],
+   "excludeReasonVi": "Bàn cắt ga / bàn bếp ga là thiết bị cắt hoặc đun nấu — khác công tắc đạp chân điện TFS-1 (dây 2m). Không gom vào mục foot switch 85.36.",
+   "candidates": [
+    {
+     "hs": "85365099",
+     "whenVi": "Công tắc bàn đạp chân (foot switch) model TFS-1/TFS-01/FS-01, thường kèm dây 1–2m, điện áp ≤1000V (vd 250V/10A) — lá «Loại khác» 8536.50.99. Kho Oz alias «cong tac ban dap» → 85365099. «2 mét» trên catalogue là chiều dài dây, không phải kích thước bàn.",
+     "confidence": "high"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "8452",
+     "whyVi": "8452 là máy may và phụ tùng (8452.90). Prod classify 17/11 đưa 84529099 vào top khi hiểu «bàn đạp máy may» — hàng TFS-1 là công tắc điện 85.36, không phải phụ tùng cơ khí máy may."
+    },
+    {
+     "prefix": "8708",
+     "whyVi": "8708.99 có dòng «chân ga (bàn đạp ga)» xe — search «bàn ga» dễ kéo sang phụ tùng xe. TFS-1 là công tắc đạp chân thiết bị điện/máy may, không phải bàn đạp ga ô tô."
+    },
+    {
+     "prefix": "8537",
+     "whyVi": "8537 là bảng tủ điều khiển đã lắp — khác công tắc đơn lẻ nhóm 85.36. Prod có 85371099 trong top phụ."
+    }
+   ],
+   "askVi": [
+    "Hàng là công tắc đạp chân (foot switch) model TFS-1/TFS-01 kèm dây ~2m, không phải bàn cắt ga hay bếp ga?"
+   ],
+   "chotSom": true,
+   "gir": "GIR 1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Shop VN kitbuy/thegioitech: Công tắc bàn đạp chân TFS-1/TFS-01/FS-01 ABS/kim loại, dây 2m, 250V-10A — dùng máy may/thiết bị cần đạp chân. hs-aliases «cong tac ban dap» → 85365099. Biểu thuế 8536.50.99 công tắc khác. OZV-1326: câu khách «bàn ga tfs-1 (2 mét)» (ga = biến thể/đánh máy của đạp; 2 mét = dây) — prod earlyExit NEED_FACTS 853650 / NEEDS_EXPERT; chotSom đôn 8 số."
   }
  ],
  "updatedAt": "2026-11-17"

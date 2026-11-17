@@ -621,6 +621,43 @@ console.log('\n== Từ điển không được lan sang câu không liên quan =
     lookupTradeTerms('Aluminium powder (bột nhôm): chất màu vô cơ').matches.some((m) => m.entryId === 'aluminium-powder-pigment'));
 }
 
+// OZV-1326 — bàn ga TFS-1 (2 mét) = công tắc bàn đạp chân dây 2m → 85365099
+// (không phải bàn cắt ga / bếp ga; «2 mét» là chiều dài dây).
+{
+  const TEN = 'bàn ga tfs-1 (2 mét)';
+  check(
+    'OZV-1326 câu khách bàn ga tfs-1 khớp mục cong-tac-ban-dap-tfs',
+    lookupTradeTerms(TEN).matches.some((m) => m.entryId === 'cong-tac-ban-dap-tfs'),
+  );
+  check(
+    'OZV-1326 không dấu ban ga tfs-1 vẫn khớp',
+    lookupTradeTerms('ban ga tfs-1 (2 met)').matches.some((m) => m.entryId === 'cong-tac-ban-dap-tfs'),
+  );
+  for (const q of [
+    'bàn cắt ga CNC 2 mét',
+    'bàn bếp ga công nghiệp 2 mét',
+    'chân ga bàn đạp phanh ô tô',
+  ]) {
+    check(
+      `OZV-1326 «${q}» không kích hoạt mục cong-tac-ban-dap-tfs`,
+      !(lookupTradeTerms(q).matches || []).some((m) => m.entryId === 'cong-tac-ban-dap-tfs'),
+    );
+  }
+  {
+    const m = lookupTradeTerms(TEN).matches.find((x) => x.entryId === 'cong-tac-ban-dap-tfs');
+    check(
+      'OZV-1326 ưu tiên 85365099 high + chotSom',
+      (m?.candidates || []).some((c) => (c.hsCode || c.hs) === '85365099' && c.confidence === 'high')
+        && m?.chotSom === true,
+    );
+    check(
+      'OZV-1326 tránh phụ tùng máy may 8452 / chân ga xe 8708',
+      (m?.avoid || []).some((a) => String(a.prefix) === '8452')
+        && (m?.avoid || []).some((a) => String(a.prefix) === '8708'),
+    );
+  }
+}
+
 console.log('\n== Mục chưa chắc thì phải nói chưa chắc ==');
 {
   const mb = lookupTradeTerms('masterbatch hạt nhựa màu').matches[0];
