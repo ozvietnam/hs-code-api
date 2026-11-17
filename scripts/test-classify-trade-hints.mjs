@@ -1391,5 +1391,85 @@ const R1_AR_SAI_8421 = {
 }
 
 
+// ── OZV-1333: vỏ chụp loa (nón loa) nhựa — earlyExit/HOI 851890 → đôn 85189090 ──
+// GĐ đo 17/11: POST /api/suggest «vỏ chụp loa bằng nhựa tổng hợp» → REVIEW top1 39269099.
+// Mock giống OZV-1326: AI đúng nhóm 8518.90 nhưng kẹt HOI/lá 6 số + nhiễu 3926/851829
+// → chotSom đôn 85189090; avoid loại 3926* khỏi hồ sơ.
+{
+  const TEN_LOA = 'vỏ chụp loa bằng nhựa tổng hợp (nón loa)';
+  const R1_LOA_851890 = {
+    product: {
+      nameVi: 'vỏ chụp loa / nón loa bằng nhựa tổng hợp',
+      purpose: 'bộ phận tạo sóng âm của loa',
+      mechanism: null,
+      material: 'nhựa tổng hợp',
+      form: 'nón / chụp hình nón',
+      model: null,
+      evidence: {},
+    },
+    hypotheses: [
+      {
+        chapter: '85',
+        heading4: '8518',
+        subheading6: '851890',
+        why: 'bộ phận của loa nhóm 85.18',
+        confidence: 80,
+      },
+    ],
+    verify: {
+      searchVi: ['vỏ chụp loa', 'nón loa', 'nhựa tổng hợp'],
+      codes8: ['85189090', '39269099', '85182990'],
+      micQuery: null,
+      unknowns: ['Loa thuộc phân nhóm nào (loa thùng / loa chưa vỏ)'],
+    },
+  };
+
+  {
+    const g = await gather(R1_LOA_851890, { tenHang: TEN_LOA }, { micAllowed: false });
+    check(
+      'OZV-1333 gather nón loa: có nhóm 8518, không còn 3926 (avoid)',
+      (g.headings || []).includes('8518')
+        && !(g.headings || []).includes('3926'),
+      g.headings,
+    );
+    check(
+      'OZV-1333 gather nón loa: codes8 có 85189090, không còn 3926*',
+      (g.codes8 || []).includes('85189090')
+        && !(g.codes8 || []).some((c) => String(c).startsWith('3926')),
+      g.codes8,
+    );
+  }
+
+  {
+    const saved = llmTier.callLLMJson;
+    llmTier.callLLMJson = async () => ({ json: R1_LOA_851890 });
+    let out;
+    try {
+      out = await classifyLoop({ tenHang: TEN_LOA }, { mic: false, crossCheck: false, timeoutMs: 8000 });
+    } finally {
+      llmTier.callLLMJson = saved;
+    }
+    const top3 = (out.results || []).map((r) => r.hs);
+    const gates = out.engine?.gates || [];
+    check(
+      'OZV-1333 nón loa earlyExit/HOI 851890: đôn 85189090 (không NEED_FACTS)',
+      out.status !== 'NEED_FACTS' && top3[0] === '85189090',
+      { status: out.status, top3, next: out.nextAction, gates: gates.slice(-4) },
+    );
+    check(
+      'OZV-1333 nón loa: top3 không còn 3926*',
+      top3.every((h) => !String(h).startsWith('3926')),
+      top3,
+    );
+    check(
+      'OZV-1333 nón loa: có trade-synonyms-promote → 85189090',
+      gates.some((g) => g.note === 'trade-synonyms-promote' && g.to === '85189090')
+        || top3[0] === '85189090',
+      gates.slice(-4),
+    );
+  }
+}
+
+
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
