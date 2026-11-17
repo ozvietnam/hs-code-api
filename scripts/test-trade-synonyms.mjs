@@ -658,6 +658,58 @@ console.log('\n== Từ điển không được lan sang câu không liên quan =
   }
 }
 
+// OZV-1333 — vỏ chụp loa / nón loa nhựa tổng hợp = bộ phận loa 8518.90.90
+// (không phải nhựa «Loại khác» 3926.90.99).
+{
+  const TEN = 'vỏ chụp loa bằng nhựa tổng hợp (nón loa)';
+  check(
+    'OZV-1333 câu khách vỏ chụp loa khớp mục vo-chup-loa-non-loa',
+    lookupTradeTerms(TEN).matches.some((m) => m.entryId === 'vo-chup-loa-non-loa'),
+  );
+  check(
+    'OZV-1333 không dấu vo chup loa / non loa vẫn khớp',
+    lookupTradeTerms('vo chup loa bang nhua tong hop (non loa)').matches.some((m) => m.entryId === 'vo-chup-loa-non-loa')
+      && lookupTradeTerms('non loa nhua').matches.some((m) => m.entryId === 'vo-chup-loa-non-loa'),
+  );
+  for (const q of [
+    'loa bluetooth hoàn chỉnh',
+    'loa thùng 2.1 bluetooth',
+    'miếng chắn bụi màng loa tự dính điện thoại',
+  ]) {
+    check(
+      `OZV-1333 «${q}» không kích hoạt mục vo-chup-loa-non-loa`,
+      !(lookupTradeTerms(q).matches || []).some((m) => m.entryId === 'vo-chup-loa-non-loa'),
+    );
+  }
+  {
+    const m = lookupTradeTerms(TEN).matches.find((x) => x.entryId === 'vo-chup-loa-non-loa');
+    check(
+      'OZV-1333 ưu tiên 85189090 high + chotSom',
+      (m?.candidates || []).some((c) => (c.hsCode || c.hs) === '85189090' && c.confidence === 'high')
+        && m?.chotSom === true,
+    );
+    check(
+      'OZV-1333 tránh 3926 nhựa loại khác / loa nguyên chiếc 851821–29',
+      (m?.avoid || []).some((a) => String(a.prefix) === '3926')
+        && (m?.avoid || []).some((a) => String(a.prefix) === '851821')
+        && (m?.avoid || []).some((a) => String(a.prefix) === '851829'),
+    );
+  }
+  {
+    const top3 = searchCandidates(TEN, { topCandidates: 3 }).map((c) => c.hsCode);
+    check(
+      'search vỏ chụp loa nón loa top1 85189090',
+      top3[0] === '85189090',
+      `top3=${top3.join(',')}`,
+    );
+    check(
+      'search vỏ chụp loa không còn 3926* top3',
+      !top3.some((hs) => String(hs).startsWith('3926')),
+      `top3=${top3.join(',')}`,
+    );
+  }
+}
+
 console.log('\n== Mục chưa chắc thì phải nói chưa chắc ==');
 {
   const mb = lookupTradeTerms('masterbatch hạt nhựa màu').matches[0];

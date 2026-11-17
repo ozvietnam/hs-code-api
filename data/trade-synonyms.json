@@ -3865,6 +3865,78 @@
    "gir": "GIR 1",
    "basis": "RULE_TABLE",
    "sourceVi": "Shop VN kitbuy/thegioitech: Công tắc bàn đạp chân TFS-1/TFS-01/FS-01 ABS/kim loại, dây 2m, 250V-10A — dùng máy may/thiết bị cần đạp chân. hs-aliases «cong tac ban dap» → 85365099. Biểu thuế 8536.50.99 công tắc khác. OZV-1326: câu khách «bàn ga tfs-1 (2 mét)» (ga = biến thể/đánh máy của đạp; 2 mét = dây) — prod earlyExit NEED_FACTS 853650 / NEEDS_EXPERT; chotSom đôn 8 số."
+  },
+  {
+   "id": "vo-chup-loa-non-loa",
+   "titleVi": "Vỏ chụp loa / nón loa (speaker cone) bằng nhựa — bộ phận 8518.90.90",
+   "terms": [
+    "vỏ chụp loa bằng nhựa tổng hợp (nón loa)",
+    "vo chup loa bang nhua tong hop (non loa)",
+    "vỏ chụp loa bằng nhựa tổng hợp",
+    "vo chup loa bang nhua tong hop",
+    "vỏ chụp loa nhựa",
+    "vo chup loa nhua",
+    "vỏ chụp loa",
+    "vo chup loa",
+    "nón loa nhựa",
+    "non loa nhua",
+    "nón loa",
+    "non loa",
+    "chụp loa nhựa tổng hợp",
+    "chup loa nhua tong hop",
+    "speaker cone",
+    "plastic speaker cone",
+    "cone loa nhựa",
+    "cone loa"
+   ],
+   "excludeIfAny": [
+    "loa thùng",
+    "loa bluetooth",
+    "loa hoàn chỉnh",
+    "unit speaker",
+    "miếng chắn bụi tự dính",
+    "màng phim tự dính",
+    "self adhesive",
+    "tự dính điện thoại",
+    "tai nghe hoàn chỉnh"
+   ],
+   "excludeReasonVi": "Loa thùng/bluetooth/unit speaker hoàn chỉnh thuộc 85.18 loa nguyên chiếc (8518.21–29), không phải bộ phận. Miếng chắn bụi tự dính cho điện thoại (tiền lệ Oz/TB màng phim) là tấm dán 39.19 — khác nón loa / dust cone là bộ phận loa.",
+   "candidates": [
+    {
+     "hs": "85189090",
+     "whenVi": "Nón loa / vỏ chụp loa (speaker cone, dust cone) bằng nhựa — bộ phận nhận dạng được của loa nhóm 85.18. Chú giải 85.18: bộ phận của sản phẩm nhóm này phân loại tại đây (quy tắc bộ phận Phần XVI). Không nêu loại loa cụ thể → lá dư bộ phận 8518.90.90.",
+     "confidence": "high"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "3926",
+     "whyVi": "3926.90.99 «Loại khác» là bẫy A2 khi câu có «nhựa tổng hợp». Nón/chụp loa là bộ phận nhóm 85.18, không phải sản phẩm nhựa dư Chương 39. Prod 17/11 suggest «vỏ chụp loa bằng nhựa tổng hợp» rơi 39269099."
+    },
+    {
+     "prefix": "3919",
+     "whyVi": "3919 là tấm/màng tự dính (vd miếng chắn bụi màng loa điện thoại). Nón loa hình nón không tự dính thuộc bộ phận 85.18."
+    },
+    {
+     "prefix": "851821",
+     "whyVi": "8518.21 là loa đơn đã lắp vỏ — hàng là bộ phận nón/chụp, không phải loa nguyên chiếc."
+    },
+    {
+     "prefix": "851822",
+     "whyVi": "8518.22 là bộ loa cùng một vỏ — khác bộ phận rời."
+    },
+    {
+     "prefix": "851829",
+     "whyVi": "8518.29 loa chưa lắp vỏ (unit speaker). Search «vỏ chụp loa» dễ kéo 85182920; nón loa là bộ phận 8518.90, không phải loa hoàn chỉnh."
+    }
+   ],
+   "askVi": [
+    "Hàng là nón/chụp loa (bộ phận) bằng nhựa, hay loa nguyên chiếc / miếng dán chắn bụi tự dính cho điện thoại?"
+   ],
+   "chotSom": true,
+   "gir": "GIR 1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế 2026 nhóm 85.18 phân nhóm 8518.90 «Bộ phận»: 85189090 - - Loại khác. Chú giải heading 8518 (chu-giai-heading + so-tay/8518.json): bộ phận của sản phẩm nhóm này phân loại tại đây theo quy tắc bộ phận Phần XVI. OZV-1333: câu khách «vỏ chụp loa bằng nhựa tổng hợp (nón loa)» — GĐ đo suggest top1 39269099; search lệch «tổng hợp» chương 42 — thêm mục + chotSom + avoid 3926/851821–29."
   }
  ],
  "updatedAt": "2026-11-17"
