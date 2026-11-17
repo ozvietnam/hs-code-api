@@ -3544,6 +3544,63 @@
    "gir": "1",
    "basis": "RULE_TABLE",
    "sourceVi": "Biểu thuế 2026 nhóm 94.05: 9405.11 đèn trần/tường thiết kế chỉ dùng LED; 9405.42 bộ đèn điện khác thiết kế chỉ dùng LED; 9405.21 đèn bàn/đầu giường/đứng sàn chỉ dùng LED. OZV-1306: search «đèn led cắm tường hình gấu» hết kéo 85402000 (ống CRT) / 98342300 vào top — inject 9405.11/9405.42 + avoid 8540/9834."
+  },
+  {
+   "id": "nhan-nhua-tu-dinh-3919",
+   "titleVi": "Nhãn / tem nhựa tự dính đã in (plastic label) — nhóm 3919.90",
+   "terms": [
+    "nhãn nhựa tự dính",
+    "nhan nhua tu dinh",
+    "tem nhãn nhựa tự dính",
+    "tem nhan nhua tu dinh",
+    "plastic label",
+    "self-adhesive plastic label",
+    "self adhesive plastic label",
+    "printed plastic label",
+    "nhãn pet tự dính",
+    "nhan pet tu dinh",
+    "tem nhựa pet",
+    "tem nhua pet",
+    "pl label tự dính",
+    "nhãn dán nhựa đã in"
+   ],
+   "excludeIfAny": [
+    "giấy nhãn",
+    "nhãn giấy",
+    "paper label",
+    "decal giấy",
+    "sticker giấy"
+   ],
+   "excludeReasonVi": "Nhãn/tem giấy (không phải plastic tự dính nhóm 39.19) thường thuộc chương 48/49 — không gom vào mục này.",
+   "candidates": [
+    {
+     "hs": "39199092",
+     "whenVi": "Nhãn/tem hình dạng phẳng tự dính bằng plastic (PET/polyme trùng hợp hoặc trùng ngưng), đã in hoặc chưa, dạng chiếc hoặc gắn trên cuộn đế bóc — mã 3919.90.92 (TB-TCHQ 16238/TB-CHQ; CV 624/TCHQ-TXNK: không xếp 4911.99.90)",
+     "confidence": "high"
+    },
+    {
+     "hs": "39199099",
+     "whenVi": "Cùng nhóm 3919.90 nhưng không khớp nhánh polyme trùng hợp/trùng ngưng/xenlulo hóa dẻo — lá «Loại khác» 3919.90.99",
+     "confidence": "low"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "4911",
+     "whyVi": "4911 ấn phẩm khác (nhãn in giấy/ấn phẩm) — chú giải Ch.49 + CV 624/TCHQ-TXNK: tấm/nhãn tự dính bằng plastic thuộc 39.19 dù đã in, không xếp 4911.99.90."
+    },
+    {
+     "prefix": "391910",
+     "whyVi": "3919.10 là dạng cuộn khổ rộng ≤ 20 cm (băng/dải liên tục). Nhãn/tem dạng chiếc phẳng (dù gắn trên cuộn đế bóc) theo TB 16238 thuộc 3919.90 — không dừng ở 3919.10."
+    }
+   ],
+   "askVi": [
+    "Nhãn/tem bằng plastic tự dính hay nhãn giấy/ấn phẩm?",
+    "Dạng chiếc đã cắt hình, hay băng/dải cuộn liên tục khổ ≤ 20 cm?"
+   ],
+   "gir": "1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế nhóm 39.19 tấm/phiến/màng/dải tự dính bằng plastic; 3919.90.92 từ polyme trùng hợp/trùng ngưng/xenlulo hóa dẻo. TB-TCHQ 16238/TB-CHQ (2025) + CV 624/TCHQ-TXNK: nhãn nhựa tự dính đã in PET → 3919.90.92, không 4911.99.90. OZV-1316: A1 STT 10 hết NEED_FACTS/không ra mã."
   }
  ],
  "updatedAt": "2026-11-17"

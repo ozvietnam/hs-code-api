@@ -133,6 +133,10 @@ console.log('\n== Câu hỏi thật của khách phải ra đúng mã (kho Oz kh
       ['72112390'],
     ],
     ['cold rolled steel strip in coil SPCC-4B width 450 mm', ['72112390']],
+    // OZV-1316 — A1 STT 10: nhãn nhựa tự dính PET → 39199092 (TB 16238), không 4911
+    ['Nhãn nhựa tự dính đã in (PLASTIC LABEL, tem nhãn) dạng chiếc phẳng 26x12 mm, dạng cuộn', ['39199092']],
+    ['nhãn nhựa tự dính đã in PET', ['39199092']],
+    ['plastic label self-adhesive PET', ['39199092']],
   ];
   for (const [q, want] of cases) {
     const top2 = searchCandidates(q, { topCandidates: 2 }).map((c) => c.hsCode);
@@ -305,6 +309,25 @@ console.log('\n== Mã bẫy phải bị loại HẲN, không phải tụt hạng
     'OZV-1315 STT25 không top 72112390',
     rong[0]?.hsCode !== '72112390',
     `nhận ${rong[0]?.hsCode}`,
+  );
+
+  // OZV-1316 — nhãn nhựa tự dính không lẫn ấn phẩm 4911 / cuộn ≤20cm 391910
+  const nhanNhua = searchCandidates(
+    'Nhãn nhựa tự dính đã in (PLASTIC LABEL, tem nhãn) dạng chiếc phẳng 26x12 mm, dạng cuộn',
+    { topCandidates: 8 },
+  );
+  check(
+    'OZV-1316 top1 nhãn nhựa = 39199092',
+    nhanNhua[0]?.hsCode === '39199092',
+    `nhận ${nhanNhua.map((c) => c.hsCode).join(',')}`,
+  );
+  check(
+    'OZV-1316 nhãn nhựa không lẫn ấn phẩm 4911',
+    nhanNhua.every((c) => !String(c.hsCode).startsWith('4911')),
+  );
+  check(
+    'OZV-1316 nhãn nhựa không lẫn cuộn ≤20cm 391910',
+    nhanNhua.every((c) => !String(c.hsCode).startsWith('391910')),
   );
 }
 

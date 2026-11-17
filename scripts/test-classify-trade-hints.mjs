@@ -557,5 +557,55 @@ const R1_AR_SAI_8421 = {
   );
 }
 
+// ── OZV-1316: STT 10 nhãn nhựa tự dính — earlyExitHoi unknowns → đôn 39199092 (TB 16238) ──
+// Đo A1 17/11: NEED_FACTS / không ra mã vì unknowns độ dày/gia cố + checkSubheading chặn chacChan.
+{
+  const TEN_10 =
+    'Nhãn nhựa tự dính đã in (PLASTIC LABEL, tem nhãn) dạng chiếc phẳng 26x12 mm, dạng cuộn: lớp mặt PET phủ SiO2 in mực UV (logo, thông tin sản phẩm, mã vạch), lớp keo acrylic polymer, lớp đế giấy glassine phủ silicone/PE bóc bỏ trước khi dán';
+  const R1_STT10 = {
+    product: {
+      nameVi: 'Nhãn nhựa tự dính đã in PET',
+      purpose: 'nhãn dán sản phẩm',
+      mechanism: 'tự dính',
+      material: 'PET / acrylic',
+      form: 'chiếc phẳng / cuộn',
+      evidence: {},
+    },
+    hypotheses: [
+      {
+        chapter: '39',
+        heading4: '3919',
+        subheading6: '391990',
+        why: 'tấm/màng tự dính bằng plastic',
+        confidence: 72,
+      },
+    ],
+    verify: {
+      searchVi: ['nhãn nhựa tự dính', 'plastic label'],
+      codes8: ['49119990', '39191099'],
+      micQuery: null,
+      unknowns: [
+        'Độ dày tổng thể của nhãn nhựa có vượt quá 1 mm không',
+        'Màng nhựa có gia cố hoặc kết hợp với vật liệu khác ngoài chất dẻo không',
+      ],
+    },
+  };
+  const saved = llmTier.callLLMJson;
+  llmTier.callLLMJson = async () => ({ json: R1_STT10 });
+  const out = await classifyLoop({ tenHang: TEN_10 }, { mic: false, crossCheck: false, timeoutMs: 8000 });
+  llmTier.callLLMJson = saved;
+  const top3 = (out.results || []).map((r) => r.hs);
+  check(
+    'OZV-1316 STT10: hết NEED_FACTS, top1 39199092',
+    out.status !== 'NEED_FACTS' && top3[0] === '39199092',
+    { status: out.status, top3, next: out.nextAction },
+  );
+  check(
+    'OZV-1316 STT10: top3 không còn 4911* / 391910*',
+    top3.every((h) => !/^(4911|391910)/.test(String(h))),
+    top3,
+  );
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
