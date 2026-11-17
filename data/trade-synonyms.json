@@ -3618,6 +3618,74 @@
    "gir": "1",
    "basis": "RULE_TABLE",
    "sourceVi": "Biểu thuế nhóm 39.19 tấm/phiến/màng/dải tự dính bằng plastic; 3919.90.92 từ polyme trùng hợp/trùng ngưng/xenlulo hóa dẻo. TB-TCHQ 16238/TB-CHQ (2025) + CV 624/TCHQ-TXNK: nhãn nhựa tự dính đã in PET → 3919.90.92, không 4911.99.90. OZV-1316: A1 STT 10 hết NEED_FACTS/không ra mã."
+  },
+  {
+   "id": "dau-lac-xilanh-fd",
+   "titleVi": "Đầu lắc xi lanh khí nén (floating joint) — bộ phận 8412.90",
+   "terms": [
+    "đầu lắc xilanh",
+    "đầu lắc xi lanh",
+    "dau lac xilanh",
+    "dau lac xi lanh",
+    "đầu lắc xi lanh khí nén",
+    "dau lac xi lanh khi nen",
+    "đầu lắc khí nén",
+    "dau lac khi nen",
+    "fd1016",
+    "floating joint",
+    "cylinder floating joint",
+    "rod end cylinder"
+   ],
+   "excludeIfAny": [
+    "xi lanh nguyên chiếc",
+    "xilanh nguyên chiếc",
+    "xylanh nguyên chiếc",
+    "pneumatic cylinder complete",
+    "quy lát",
+    "nắp quy lát",
+    "ô tô",
+    "xe máy",
+    "rotin",
+    "rô tin",
+    "càng a"
+   ],
+   "excludeReasonVi": "Xi lanh khí nén nguyên chiếc thuộc 8412.31 (tịnh tiến), không phải đầu lắc/bộ phận 8412.90. Quy lát/nắp quy lát động cơ đốt trong là 8409. Rotin/càng A ô tô·xe máy là phụ tùng xe (87.08), không theo đầu lắc xi lanh thiết bị.",
+   "candidates": [
+    {
+     "hs": "84129090",
+     "whenVi": "Đầu lắc / khớp nối đu đưa (floating joint, model FD…) của xi lanh khí nén — bộ phận động cơ/mô tơ nhóm 84.12 loại khác → 8412.90.90. Kho Oz (FD1016 ROANY thép) và hs-aliases «dau lac xi lanh khi nen» → 84129090.",
+     "confidence": "high"
+    },
+    {
+     "hs": "84129010",
+     "whenVi": "Chỉ khi chứng minh là bộ phận của động cơ phản lực 8412.10 — hiếm với đầu lắc khí nén công nghiệp",
+     "confidence": "low"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "7307",
+     "whyVi": "7307 là phụ kiện ống/ống nối thép (tube/pipe fittings). Prod classify 17/11 earlyExit NEED_FACTS 730799 trên «đầu lắc xilanh fd1016» — chữ «đầu» dễ kéo sang đầu nối ống; hàng này là bộ phận xi lanh khí nén 8412.90."
+    },
+    {
+     "prefix": "8409",
+     "whyVi": "8409 là bộ phận động cơ đốt trong (quy lát, piston…). Suggest lệch 84099115 trên câu ngắn «đầu lắc xilanh» — không phải đầu lắc khí nén."
+    },
+    {
+     "prefix": "841231",
+     "whyVi": "8412.31 là xi lanh khí nén nguyên chiếc chuyển động tịnh tiến — khác đầu lắc/khớp nối thay thế (bộ phận 8412.90)."
+    },
+    {
+     "prefix": "8483",
+     "whyVi": "8483 là ổ đỡ/trục/bánh răng truyền động. Một số catalogue gọi floating joint là rod-end bearing, nhưng tiền lệ Oz FD1016 khai 84129090 theo bộ phận 84.12."
+    }
+   ],
+   "askVi": [
+    "Hàng là đầu lắc/khớp nối thay thế của xi lanh khí nén (model FD…), không phải xi lanh nguyên chiếc hay phụ kiện ống thép?"
+   ],
+   "gir": "GIR 1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Oz-gold: «Đầu lắc xi lanh khí nén FD1016» → 84129090 (4 tờ). hs-aliases «dau lac xi lanh khi nen» → 84129090. Biểu thuế 8412.90.90 bộ phận loại khác của nhóm 84.12. Decision-table 8412 liệt kê đầu lắc là bộ phận (parts)."
   }
  ],
  "updatedAt": "2026-11-17"

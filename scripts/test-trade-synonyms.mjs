@@ -562,6 +562,43 @@ console.log('\n== Từ điển không được lan sang câu không liên quan =
     check('search máy phun socola không lẫn máy giấy 8439', !top3.some((hs) => String(hs).startsWith('8439')));
     check('search máy phun socola không lẫn 8419/8543/8479', !top3.some((hs) => /^(8419|8543|8479)/.test(String(hs))));
   }
+  // OZV-1325 — đầu lắc xilanh FD1016 ≠ nối ống 7307 / quy lát 8409 / xi lanh nguyên chiếc 841231
+  for (const q of [
+    'đầu lắc xilanh nguyên chiếc tịnh tiến',
+    'đầu lắc fd1016 quy lát động cơ',
+    'đầu lắc xilanh rotin càng a ô tô',
+  ]) {
+    check(`«${q}» không kích hoạt mục đầu lắc xilanh`,
+      !(lookupTradeTerms(q).matches || []).some((m) => m.entryId === 'dau-lac-xilanh-fd'));
+  }
+  check(
+    'câu khách đầu lắc xilanh fd1016 khớp mục dau-lac-xilanh-fd',
+    lookupTradeTerms('đầu lắc xilanh fd1016').matches.some((m) => m.entryId === 'dau-lac-xilanh-fd')
+  );
+  check(
+    'câu ngắn đầu lắc xi lanh khớp mục dau-lac-xilanh-fd',
+    lookupTradeTerms('đầu lắc xi lanh').matches.some((m) => m.entryId === 'dau-lac-xilanh-fd')
+  );
+  {
+    const m = lookupTradeTerms('đầu lắc xilanh fd1016').matches.find((x) => x.entryId === 'dau-lac-xilanh-fd');
+    check('đầu lắc xilanh ưu tiên 84129090 high',
+      (m?.candidates || []).some((c) => (c.hsCode || c.hs) === '84129090' && c.confidence === 'high'));
+    check('đầu lắc xilanh tránh 7307 (nối ống — earlyExit prod)',
+      (m?.avoid || []).some((a) => String(a.prefix) === '7307'));
+    check('đầu lắc xilanh tránh 8409 (quy lát ĐCĐT)',
+      (m?.avoid || []).some((a) => String(a.prefix) === '8409'));
+    check('đầu lắc xilanh tránh 841231 (xi lanh nguyên chiếc)',
+      (m?.avoid || []).some((a) => String(a.prefix) === '841231'));
+  }
+  {
+    const top3 = searchCandidates('đầu lắc xilanh fd1016', { topCandidates: 3 }).map((c) => c.hsCode);
+    check(
+      'search đầu lắc xilanh fd1016 top1 84129090',
+      top3[0] === '84129090',
+      `top3=${top3.join(',')}`
+    );
+    check('search đầu lắc không lẫn 7307/8409', !top3.some((hs) => /^(7307|8409)/.test(String(hs))));
+  }
 }
 
 console.log('\n== Mục chưa chắc thì phải nói chưa chắc ==');
