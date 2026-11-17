@@ -122,6 +122,10 @@ console.log('\n== Câu hỏi thật của khách phải ra đúng mã (kho Oz kh
     // OZV-1298 — câu ngắn thiếu «truyền hình» vẫn về 85258920 (trước lệch 9001/9002)
     ['camera cmr12', ['85258920']],
     ['camera giám sát IP', ['85258920']],
+    // OZV-1306 — đèn LED cắm tường hình gấu: top thuộc 9405, hết nhiễu ống CRT 8540
+    ['đèn led cắm tường hình gấu', ['94051199', '94054290']],
+    ['đèn led cắm tường hình thỏ', ['94051199', '94054290']],
+    ['den led cam tuong', ['94051199', '94054290']],
   ];
   for (const [q, want] of cases) {
     const top2 = searchCandidates(q, { topCandidates: 2 }).map((c) => c.hsCode);
@@ -222,6 +226,28 @@ console.log('\n== Mã bẫy phải bị loại HẲN, không phải tụt hạng
   check('camera cmr12 không lẫn thấu kính 9002', camShort.every((c) => !c.hsCode.startsWith('9002')));
   const lens = searchCandidates('thấu kính máy ảnh', { topCandidates: 5 });
   check('đối chứng thấu kính máy ảnh vẫn 9001*', lens[0]?.hsCode?.startsWith('9001'), `nhận ${lens[0]?.hsCode}`);
+
+  // OZV-1306 — «hình gấu/thỏ» không được kéo ống CRT 8540 / đầu cắm 9834 vào top
+  const denLed = searchCandidates('đèn led cắm tường hình gấu', { topCandidates: 5 });
+  check(
+    'OZV-1306 top1 đèn LED tường thuộc 9405',
+    denLed[0]?.hsCode?.startsWith('9405'),
+    `nhận ${denLed[0]?.hsCode}`,
+  );
+  check(
+    'OZV-1306 top3 không còn 8540 (ống CRT)',
+    denLed.slice(0, 3).every((c) => !c.hsCode.startsWith('8540')),
+    `top3 ${denLed.slice(0, 3).map((c) => c.hsCode).join(',')}`,
+  );
+  check(
+    'OZV-1306 top3 không còn 9834 (đầu cắm đèn chân không)',
+    denLed.slice(0, 3).every((c) => !c.hsCode.startsWith('9834')),
+    `top3 ${denLed.slice(0, 3).map((c) => c.hsCode).join(',')}`,
+  );
+  check(
+    'OZV-1306 avoided ghi 8540',
+    (denLed.avoidedByTradeRules || []).some((a) => String(a.prefix) === '8540' || String(a.hsCode || '').startsWith('8540')),
+  );
 }
 
 console.log('\n== Từ điển không được lan sang câu không liên quan ==');
@@ -385,6 +411,29 @@ console.log('\n== Từ điển không được lan sang câu không liên quan =
     check('máy phun socola tránh máy giấy 8439', (m?.avoid || []).some((a) => String(a.prefix) === '8439'));
     check('máy phun socola tránh nhiễu 8543', (m?.avoid || []).some((a) => String(a.prefix) === '8543'));
     check('máy phun socola tránh nhiễu 8479', (m?.avoid || []).some((a) => String(a.prefix) === '8479'));
+  }
+  // OZV-1306 — đèn LED cắm tường
+  for (const q of [
+    'bóng đèn led E27',
+    'chip led smd',
+    'đèn pha ô tô led',
+    'màn hình led quảng cáo',
+    'dải led strip 12v',
+  ]) {
+    check(`«${q}» không kích hoạt mục đèn LED cắm tường`,
+      !(lookupTradeTerms(q).matches || []).some((m) => m.entryId === 'den-led-cam-tuong'));
+  }
+  check(
+    'câu khách đèn led cắm tường hình gấu khớp mục den-led-cam-tuong',
+    lookupTradeTerms('đèn led cắm tường hình gấu').matches.some((m) => m.entryId === 'den-led-cam-tuong')
+  );
+  {
+    const m = lookupTradeTerms('đèn led cắm tường hình gấu').matches.find((x) => x.entryId === 'den-led-cam-tuong');
+    check('đèn LED tường ưu tiên 94051199/94054290',
+      (m?.candidates || []).some((c) => (c.hsCode || c.hs) === '94051199' && c.confidence === 'high')
+      && (m?.candidates || []).some((c) => (c.hsCode || c.hs) === '94054290' && c.confidence === 'high'));
+    check('đèn LED tường tránh ống CRT 8540', (m?.avoid || []).some((a) => String(a.prefix) === '8540'));
+    check('đèn LED tường tránh đầu cắm 9834', (m?.avoid || []).some((a) => String(a.prefix) === '9834'));
   }
   {
     const top3 = searchCandidates('máy phun socola 5 tầng', { topCandidates: 3 }).map((c) => c.hsCode);
