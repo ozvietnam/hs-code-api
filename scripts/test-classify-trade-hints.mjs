@@ -345,5 +345,74 @@ const R1_AR_SAI_8421 = {
   );
 }
 
+// ── OZV-1307: classify R2 đã CHOT residual 84812090 8 số → phải đôn 84812011 ──
+// Prod GĐ 08:00 17/11 (sau #1391 search ĐẠT): classify REVIEW · top 84812090.
+// Promote cũ chỉ đôn khi HOI / <8 số / biCam 8421 — residual cùng 848120* không biCam.
+{
+  const saved = llmTier.callLLMJson;
+  const queue = [
+    {
+      product: {
+        nameVi: 'bộ lọc khí Zonye AR2000-02',
+        purpose: 'điều áp khí nén',
+        mechanism: null,
+        material: null,
+        form: 'thiết bị',
+        model: 'AR2000-02',
+        evidence: {},
+      },
+      hypotheses: [
+        {
+          chapter: '84',
+          heading4: '8481',
+          subheading6: '848120',
+          why: 'van truyền động khí nén',
+          confidence: 80,
+        },
+      ],
+      verify: {
+        searchVi: ['bộ lọc khí', 'zonye ar2000'],
+        codes8: ['84812090', '84812011', '63079069'],
+        micQuery: null,
+        unknowns: [],
+      },
+    },
+    {
+      decision: 'CHOT',
+      hs: '84812090',
+      confidence: 72,
+      reason: 'Van khí nén loại khác — chưa nêu chất liệu thân',
+      basis: [{ stream: 'SUY_LUAN', claim: '8481.20.90', evidence: 'AR2000 điều áp' }],
+      conditions: [],
+      alternatives: [
+        { hs: '84812011', whyNot: 'cần xác nhận thân sắt/thép' },
+        { hs: '63079069', whyNot: 'không phải hàng dệt' },
+      ],
+      questions: [],
+    },
+  ];
+  llmTier.callLLMJson = async () => {
+    const next = queue.shift();
+    if (!next) throw new Error('hết stub LLM AR2000 residual');
+    return { json: next };
+  };
+  const out = await classifyLoop(
+    { tenHang: 'bộ lọc khí zonye ar2000-02', model: 'AR2000-02' },
+    { mic: false, crossCheck: false, timeoutMs: 5000 },
+  );
+  llmTier.callLLMJson = saved;
+  const top3 = (out.results || []).map((r) => r.hs);
+  check(
+    'OZV-1307 AR2000: R2 CHOT residual 84812090 → đôn top1 84812011',
+    out.status !== 'NEED_FACTS' && top3[0] === '84812011',
+    { status: out.status, top3, next: out.nextAction },
+  );
+  check(
+    'OZV-1307 AR2000: top3 không ưu tiên residual 84812090',
+    top3[0] !== '84812090',
+    top3,
+  );
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
