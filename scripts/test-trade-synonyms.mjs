@@ -839,6 +839,42 @@ console.log('\n== Ứng viên cấp nhóm: cộng điểm cho lá khớp lời v
   check('vẫn dẫn về nhóm 8481.80', r.length > 0 && r[0].hsCode.startsWith('8481'));
 }
 
+// OZV-1334 — máy bơm nước ly tâm gia đình → 84137042, hết NEED_FACTS dừng 841370
+{
+  const TEN = 'máy bơm nước ly tâm gia đình';
+  check(
+    'OZV-1334 máy bơm nước ly tâm gia đình khớp mục may-bom-nuoc-ly-tam',
+    lookupTradeTerms(TEN).matches.some((m) => m.entryId === 'may-bom-nuoc-ly-tam'),
+  );
+  check(
+    'OZV-1334 không dấu may bom nuoc ly tam gia dinh vẫn khớp',
+    lookupTradeTerms('may bom nuoc ly tam gia dinh').matches.some((m) => m.entryId === 'may-bom-nuoc-ly-tam'),
+  );
+  for (const q of [
+    'bơm chân không',
+    'vacuum pump',
+    'bơm bê tông',
+  ]) {
+    check(
+      `OZV-1334 «${q}» không kích hoạt mục may-bom-nuoc-ly-tam`,
+      !(lookupTradeTerms(q).matches || []).some((m) => m.entryId === 'may-bom-nuoc-ly-tam'),
+    );
+  }
+  {
+    const m = lookupTradeTerms(TEN).matches.find((x) => x.entryId === 'may-bom-nuoc-ly-tam');
+    check(
+      'OZV-1334 ưu tiên 84137042 high + chotSom',
+      (m?.candidates || []).some((c) => (c.hsCode || c.hs) === '84137042' && c.confidence === 'high')
+        && m?.chotSom === true,
+    );
+    check(
+      'OZV-1334 tránh 8414 (bơm chân không/quạt) / 841330 (bơm nhiên liệu)',
+      (m?.avoid || []).some((a) => String(a.prefix) === '8414')
+        && (m?.avoid || []).some((a) => String(a.prefix) === '841330'),
+    );
+  }
+}
+
 console.log('\n== Thống kê ==');
 {
   const s = tradeTermStats();
