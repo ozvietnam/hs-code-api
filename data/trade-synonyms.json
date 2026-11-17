@@ -3334,6 +3334,75 @@
    "gir": "1",
    "basis": "RULE_TABLE",
    "sourceVi": "Biểu thuế 2026 phân nhóm 8438.20 «Máy dùng để sản xuất bánh kẹo, cacao hoặc sôcôla» (EN: Machinery; industrial, for the manufacture of confectionery, cocoa or chocolate): 84382010 hoạt động bằng điện; 84382020 không hoạt động bằng điện. OZV-1285 kéo khỏi bẫy 8424; OZV-1297 loại hẳn nhiễu 8439/8543/8479 khỏi top3 và bổ sung fountain/đài phun để search ra đủ mã 8 số nhóm 8438."
+  },
+  {
+   "id": "den-led-cam-tuong",
+   "titleVi": "Đèn LED cắm/gắn tường (đèn ngủ trang trí hình thú)",
+   "terms": [
+    "đèn led cắm tường",
+    "den led cam tuong",
+    "đèn led gắn tường",
+    "den led gan tuong",
+    "đèn ngủ cắm tường",
+    "den ngu cam tuong",
+    "đèn led tường hình",
+    "den led tuong hinh",
+    "đèn tường hình gấu",
+    "đèn tường hình thỏ",
+    "led wall night light",
+    "plug in wall led",
+    "wall plug led light",
+    "led night light wall"
+   ],
+   "excludeIfAny": [
+    "bóng đèn",
+    "chip led",
+    "module led",
+    "đèn pha",
+    "đèn xe",
+    "đèn ô tô",
+    "đèn xe máy",
+    "màn hình led",
+    "tivi led",
+    "tv led",
+    "dải led",
+    "led strip"
+   ],
+   "excludeReasonVi": "Bóng/chip/module LED là nguồn sáng hoặc linh kiện (thường 85.39/85.41), không phải bộ đèn hoàn chỉnh nhóm 94.05. Đèn xe/ô tô thuộc 85.12; màn hình/TV LED thuộc 85.28; dải/led strip cần mục riêng — không gom vào đèn cắm tường trang trí.",
+   "candidates": [
+    {
+     "hs": "94051199",
+     "whenVi": "Đèn/bộ đèn gắn trần hoặc gắn tường, thiết kế chỉ dùng nguồn sáng LED (không phải đèn đường/công cộng) — lá «Loại khác» 9405.11.99",
+     "confidence": "high"
+    },
+    {
+     "hs": "94054290",
+     "whenVi": "Bộ đèn điện khác thiết kế chỉ dùng LED (đèn ngủ cắm ổ tường / trang trí hình thú khi không khớp đúng dòng gắn tường 9405.11) — lá «Loại khác» 9405.42.90",
+     "confidence": "high"
+    },
+    {
+     "hs": "94052190",
+     "whenVi": "Đèn để bàn / đầu giường / đứng sàn thiết kế chỉ dùng LED — khi hàng không phải kiểu gắn/cắm tường",
+     "confidence": "medium"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "8540",
+     "whyVi": "8540.20 ống camera / ống đèn ca-tốt quang điện (CRT) — chữ «hình» trong «hình gấu/thỏ» dễ khớp «hình ảnh» của dòng 85402000; đo prod 17/11 kéo 85402000 vào top-2 cạnh đèn LED tường (OZV-1306)."
+    },
+    {
+     "prefix": "9834",
+     "whyVi": "9834.23 đầu cắm tín hiệu hình/tiếng / đầu cắm đèn chân không — chữ «cắm»+«hình»+«đèn» nhiễu sang phụ tùng ống chân không; không phải bộ đèn LED hoàn chỉnh 94.05."
+    }
+   ],
+   "askVi": [
+    "Đèn gắn/cắm tường cố định, để bàn/đầu giường, hay chỉ là bóng LED rời?",
+    "Thiết kế chỉ dùng nguồn sáng LED (đi-ốt phát quang) hay bóng khác (huỳnh quang/sợi đốt)?"
+   ],
+   "gir": "1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế 2026 nhóm 94.05: 9405.11 đèn trần/tường thiết kế chỉ dùng LED; 9405.42 bộ đèn điện khác thiết kế chỉ dùng LED; 9405.21 đèn bàn/đầu giường/đứng sàn chỉ dùng LED. OZV-1306: search «đèn led cắm tường hình gấu» hết kéo 85402000 (ống CRT) / 98342300 vào top — inject 9405.11/9405.42 + avoid 8540/9834."
   }
  ],
  "updatedAt": "2026-11-17"
