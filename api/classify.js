@@ -34,7 +34,7 @@ function parseSupplierHs(v) {
 // ── Cửa trả lời khi HẾT GIỜ (OZV-713) ────────────────────────────────────────────────────────────────────────────
 // Cloudflare cắt lượt ~100 s và trả chuỗi `error code: 524` (KHÔNG phải JSON) ⇒ bên gọi parse JSON là ném lỗi và
 // đếm thành "lỗi AI". Trần dưới đây ngắn hơn trần Cloudflare để handler TỰ trả lời bằng JSON thật.
-// Ngân sách động cơ (CLASSIFY_BUDGET_MS, mặc định 285000) vẫn là trần MỀM khi bên gọi không nói gì.
+// Ngân sách động cơ (CLASSIFY_BUDGET_MS, mặc định 85000 — OZV-1314) vẫn là trần MỀM khi bên gọi không nói gì.
 // OZV-771: trần này được truyền xuống động cơ làm `hanChotMs` (xem `chay()` bên dưới) — động cơ lấy hạn NGẮN HƠN
 // giữa hai bên, co hạn từng bước AI và dừng lặp sớm để trả cái nó đã có. Cửa dưới đây vẫn giữ làm lưới chốt cuối
 // (lượt đã quá hạn không huỷ được giữa chừng), nhưng bình thường động cơ phải về trước khi cửa chạm trần.
