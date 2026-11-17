@@ -697,5 +697,155 @@ const R1_AR_SAI_8421 = {
   );
 }
 
+// ── OZV-1325: đầu lắc xilanh FD1016 — earlyExit/HOI lệch 730799 → đôn 84129090 ──
+// Prod 17/11 ×3 classify: cả 3 NEED_FACTS · earlyExitHoi hs=730799 (nối ống thép).
+// Suggest lệch 841231 / 840991. Oz-gold + hs-aliases: FD1016 → 84129090.
+{
+  const TEN_DAU_LAC = 'đầu lắc xilanh fd1016';
+  const R1_DAU_LAC_7307 = {
+    product: {
+      nameVi: 'đầu lắc xilanh fd1016',
+      purpose: 'khớp nối đu đưa cho xi lanh khí nén',
+      mechanism: null,
+      material: 'thép',
+      form: 'bộ phận',
+      evidence: {},
+    },
+    hypotheses: [
+      {
+        chapter: '73',
+        heading4: '7307',
+        subheading6: '730799',
+        why: 'phụ kiện ống / đầu nối thép',
+        confidence: 58,
+      },
+    ],
+    verify: {
+      searchVi: ['đầu lắc', 'xilanh', 'fd1016'],
+      codes8: ['73079990', '84123100', '84129090'],
+      micQuery: null,
+      unknowns: [
+        'Chất liệu và kiểu ren (M16…)',
+        'Hàng là đầu lắc thay thế hay xi lanh nguyên chiếc',
+      ],
+    },
+  };
+
+  {
+    const g = await gather(R1_DAU_LAC_7307, { tenHang: TEN_DAU_LAC }, { micAllowed: false });
+    check(
+      'OZV-1325 gather đầu lắc: có nhóm 8412, không còn 7307 (avoid)',
+      (g.headings || []).includes('8412') && !(g.headings || []).includes('7307'),
+      g.headings,
+    );
+    check(
+      'OZV-1325 gather đầu lắc: codes8 có 84129090, không còn 7307*',
+      (g.codes8 || []).includes('84129090')
+        && !(g.codes8 || []).some((c) => String(c).startsWith('7307')),
+      g.codes8,
+    );
+  }
+
+  {
+    const saved = llmTier.callLLMJson;
+    const queue = [
+      R1_DAU_LAC_7307,
+      {
+        decision: 'HOI',
+        hs: '730799',
+        confidence: 50,
+        reason: 'Hồ sơ thiếu dữ kiện quyết định mã: đầu nối ống hay bộ phận xi lanh',
+        basis: [{ stream: 'SUY_LUAN', claim: '7307.99', evidence: 'đầu lắc' }],
+        conditions: [],
+        alternatives: [
+          { hs: '73079990', whyNot: 'có thể phụ kiện ống thép' },
+          { hs: '84129090', whyNot: 'có thể bộ phận xi lanh khí nén' },
+        ],
+        questions: [
+          {
+            fact: 'loaiHang',
+            question: 'Đây là đầu lắc/khớp nối của xi lanh khí nén hay phụ kiện ống thép?',
+            whereToFind: 'catalogue / tem model FD',
+          },
+        ],
+      },
+    ];
+    llmTier.callLLMJson = async () => {
+      const next = queue.shift();
+      if (!next) throw new Error('hết stub LLM đầu lắc 7307');
+      return { json: next };
+    };
+    const savedGon = process.env.HS_GON_DAU_RA;
+    process.env.HS_GON_DAU_RA = 'off';
+    let out;
+    try {
+      out = await classifyLoop({ tenHang: TEN_DAU_LAC }, { mic: false, crossCheck: false, timeoutMs: 5000 });
+    } finally {
+      if (savedGon === undefined) delete process.env.HS_GON_DAU_RA;
+      else process.env.HS_GON_DAU_RA = savedGon;
+      llmTier.callLLMJson = saved;
+    }
+    const top3 = (out.results || []).map((r) => r.hs);
+    const gates = out.engine?.gates || [];
+    check(
+      'OZV-1325 đầu lắc HOI 730799: đôn 84129090 (không NEED_FACTS)',
+      out.status !== 'NEED_FACTS' && top3[0] === '84129090',
+      { status: out.status, top3, next: out.nextAction, gates: gates.slice(-4) },
+    );
+    check(
+      'OZV-1325 đầu lắc: top3 không còn 7307*',
+      top3.every((h) => !String(h).startsWith('7307')),
+      top3,
+    );
+    check(
+      'OZV-1325 đầu lắc: có trade-synonyms-promote → 84129090',
+      gates.some((g) => g.note === 'trade-synonyms-promote' && g.to === '84129090'),
+      gates.slice(-4),
+    );
+  }
+
+  // earlyExitHoi (gon bật) + R1 lệch 730799: avoid 7307 → biCam đôn dù daEarlyExitHoi.
+  {
+    const saved = llmTier.callLLMJson;
+    const queue = [
+      R1_DAU_LAC_7307,
+      {
+        decision: 'HOI',
+        hs: '730799',
+        confidence: 50,
+        reason: 'thiếu dữ kiện đầu nối ống',
+        basis: [{ stream: 'SUY_LUAN', claim: '7307.99', evidence: 'đầu lắc' }],
+        conditions: [],
+        alternatives: [{ hs: '84129090', whyNot: 'bộ phận xi lanh' }],
+        questions: [
+          { fact: 'loaiHang', question: 'Đầu lắc xi lanh hay nối ống?', whereToFind: 'catalogue' },
+        ],
+      },
+    ];
+    llmTier.callLLMJson = async () => {
+      const next = queue.shift();
+      if (!next) throw new Error('hết stub LLM đầu lắc earlyExit');
+      return { json: next };
+    };
+    const savedGon = process.env.HS_GON_DAU_RA;
+    delete process.env.HS_GON_DAU_RA; // mặc định gon bật
+    let out;
+    try {
+      out = await classifyLoop({ tenHang: TEN_DAU_LAC }, { mic: false, crossCheck: false, timeoutMs: 5000 });
+    } finally {
+      if (savedGon !== undefined) process.env.HS_GON_DAU_RA = savedGon;
+      llmTier.callLLMJson = saved;
+    }
+    const top3 = (out.results || []).map((r) => r.hs);
+    check(
+      'OZV-1325 đầu lắc earlyExit/HOI 7307: ra 84129090 8 số, không NEED_FACTS',
+      out.status !== 'NEED_FACTS'
+        && top3[0] === '84129090'
+        && String(top3[0]).length === 8,
+      { status: out.status, top3, gates: (out.engine?.gates || []).slice(-4) },
+    );
+  }
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
