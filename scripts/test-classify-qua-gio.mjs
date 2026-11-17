@@ -84,9 +84,9 @@ process.env.HS_CLASSIFY_TRAN_MS = '85000';
 const rB = await goi({ tenHang: 'van xả máy giặt' });
 check('B1 mã 200 như cũ', rB._s === 200, String(rB._s));
 check('B2 không có trangThai QUA_GIO', rB._j?.trangThai === undefined, JSON.stringify(rB._j).slice(0, 160));
-check('B3 KHÔNG thêm trường nào ngoài shape cũ (results/status/girRulesApplied/missing + attrs + ms)', (() => {
+check('B3 KHÔNG thêm trường nào ngoài shape cũ (results/status/girRulesApplied/missing + attrs + ms + phases)', (() => {
   const them = Object.keys(rB._j).filter((k) => !Object.keys(KQ_BT).includes(k));
-  return them.length === 2 && them.includes('attrs') && them.includes('ms');
+  return them.length === 3 && them.includes('attrs') && them.includes('ms') && them.includes('phases');
 })(), JSON.stringify(Object.keys(rB._j)));
 check('B4 KHÔNG bớt trường nào của động cơ', Object.keys(KQ_BT).every((k) => k in rB._j), JSON.stringify(Object.keys(rB._j)));
 check('B5 kết quả truyền nguyên vẹn', rB._j?.results?.[0]?.hs === '84818061' && rB._j?.status === 'OK', JSON.stringify(rB._j?.results));

@@ -1,0 +1,18 @@
+{
+  "issue": "OZV-1353",
+  "mucTieu": "Khoá regression A3: câu LED đuôi E27 đã earlyExitTradeChotSom trên hs-kb (0,35s → 85395210) — không được mất chốt <10s / không đi LLM dài.",
+  "doGd": {
+    "luc": "2026-11-17T01:47+07:00",
+    "ghiChu": "GĐ đo live hs-kb; entryId=bong-den-led-duoi-e27. FT-S13 / LED hình gấu không thuộc thẻ này (OZV-1349 / OZV-1346)."
+  },
+  "cases": [
+    {
+      "id": "bong-den-led-duoi-e27",
+      "tenHang": "bóng đèn led tròn đuôi e27 9w 220v",
+      "hs": "85395210",
+      "liveMs": 350,
+      "ghiChu": "earlyExitTradeChotSom → 85395210 (entryId=bong-den-led-duoi-e27)"
+    }
+  ],
+  "tranMs": 10000
+}
