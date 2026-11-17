@@ -47,6 +47,24 @@ function tranMs() {
   if (!Number.isFinite(v) || v <= 0) return TRAN_MS_MAC_DINH;
   return Math.min(v, TRAN_MS_TOI_DA);
 }
+
+/**
+ * OZV-1363 / A3: gắn `phases` ngoài engine để đo khe prod (wall − engine.ms).
+ * `classifyMs` / `ganHoSoMs` là mốc bọc quanh bước sau classifyLoop; `afterEngineMs` = ms − engine.ms.
+ * Không đổi mã/status — chỉ đo.
+ */
+function kemPhasesNgoaiEngine(phanHoi, started, moc = {}) {
+  if (!phanHoi || typeof phanHoi !== 'object') return phanHoi;
+  const ms = Date.now() - started;
+  const engineMs = Number(phanHoi?.engine?.ms);
+  const goc = (phanHoi.phases && typeof phanHoi.phases === 'object' && !Array.isArray(phanHoi.phases))
+    ? { ...phanHoi.phases }
+    : {};
+  if (Number.isFinite(moc.classifyMs)) goc.classifyMs = Math.max(0, Math.round(moc.classifyMs));
+  if (Number.isFinite(moc.ganHoSoMs)) goc.ganHoSoMs = Math.max(0, Math.round(moc.ganHoSoMs));
+  if (Number.isFinite(engineMs)) goc.afterEngineMs = Math.max(0, Math.round(ms - engineMs));
+  return { ...phanHoi, ms, phases: goc };
+}
 /**
  * Chạy `p` trong hạn `ms`: trả `{ quaGio: true }` khi hết giờ, ngược lại chuyển tiếp kết quả/lỗi y như cũ.
  *
@@ -168,7 +186,18 @@ async function handler(req, res) {
     const kenhGoi = serviceCaller(req);
     // OZV-771: nói cho động cơ biết hạn chót THẬT của lượt HTTP này (= trần trả lời). Động cơ tự co hạn từng bước
     // AI và dừng lặp sớm để trả cái nó đã có, thay vì tự cho mình 285 s rồi chạy tiếp sau khi cửa đã trả 503.
-    const chay = (quyen) => classify(attrs, { tier, debug, kenhGoi, hanChotMs: started + tran }).then((kq) => ganHoSoClassify(kq, attrsHoSo, quyen));
+    // OZV-1363: bấm giờ classify vs ganHoSo — gắn vào phases khi trả JSON (đo khe ngoài engine).
+    const mocPhases = { classifyMs: null, ganHoSoMs: null };
+    const chay = async (quyen) => {
+      const t0 = Date.now();
+      const kq = await classify(attrs, { tier, debug, kenhGoi, hanChotMs: started + tran });
+      const t1 = Date.now();
+      const out = await ganHoSoClassify(kq, attrsHoSo, quyen);
+      const t2 = Date.now();
+      mocPhases.classifyMs = t1 - t0;
+      mocPhases.ganHoSoMs = t2 - t1;
+      return out;
+    };
     if (serviceCaller(req) !== null) {
       // OZV-754: classify chỉ mang THÔNG TIN HÀNG (tên, chất liệu, công dụng…) — withHangHoa: đủ chuỗi dự phòng
       // khi QT bật HS_KHACH_MO_CHUOI_AI, mặc định giữ #237 J1. (declaration-check ?mode=check vẫn withPrivateData — tờ khai.)
@@ -221,12 +250,13 @@ async function handler(req, res) {
       const kq = await trongHan(chayCoCache, tran - (Date.now() - started));
       if (kq.quaGio) return traLoiQuaGio(res, { ms: Date.now() - started, tranMs: tran, attrs });
       const { result, usage } = kq.v;
-      return res.status(200).json({ ...result, attrs, usage, ms: Date.now() - started });
+      return res.status(200).json({ ...kemPhasesNgoaiEngine(result, started, mocPhases), attrs, usage });
     }
     // Lượt công khai / HS_API_TOKEN: đếm chi phí LLM (L0j, #547 — chỉ đếm, không chặn). Shape phản hồi không đổi.
+    // OZV-1363: thêm phases ngoài engine (classifyMs/ganHoSoMs/afterEngineMs) — không đổi mã/status.
     const kq = await trongHan(run(() => demLuotCongKhai('classify', () => chay({ noiBo: false }), { req })), tran - (Date.now() - started));
     if (kq.quaGio) return traLoiQuaGio(res, { ms: Date.now() - started, tranMs: tran, attrs });
-    return res.status(200).json({ ...kq.v, attrs, ms: Date.now() - started });
+    return res.status(200).json({ ...kemPhasesNgoaiEngine(kq.v, started, mocPhases), attrs });
   } catch (e) {
     return res.status(502).json({ error: 'Classify failed', detail: String(e.message).slice(0, 240) });
   }
