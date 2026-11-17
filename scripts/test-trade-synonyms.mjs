@@ -137,6 +137,9 @@ console.log('\n== Câu hỏi thật của khách phải ra đúng mã (kho Oz kh
     ['Nhãn nhựa tự dính đã in (PLASTIC LABEL, tem nhãn) dạng chiếc phẳng 26x12 mm, dạng cuộn', ['39199092']],
     ['nhãn nhựa tự dính đã in PET', ['39199092']],
     ['plastic label self-adhesive PET', ['39199092']],
+    // OZV-1239 — đo A1 16/11: ca 6 (32064990) và ca 40 (85081100)
+    ['Aluminium powder (bột nhôm): chất màu vô cơ', ['32064990']],
+    ['industrial vacuum cleaner Nilfisk model VHW310', ['85081100', '85081910', '85081990']],
   ];
   for (const [q, want] of cases) {
     const top2 = searchCandidates(q, { topCandidates: 2 }).map((c) => c.hsCode);
@@ -329,6 +332,13 @@ console.log('\n== Mã bẫy phải bị loại HẲN, không phải tụt hạng
     'OZV-1316 nhãn nhựa không lẫn cuộn ≤20cm 391910',
     nhanNhua.every((c) => !String(c.hsCode).startsWith('391910')),
   );
+
+  const alum = searchCandidates('Aluminium powder (bột nhôm): chất màu vô cơ', { topCandidates: 50 });
+  check('bột nhôm chất màu không lẫn nhôm thỏi 7601', alum.every((c) => !c.hsCode.startsWith('7601')));
+  check('bột nhôm chất màu không lẫn bột nhôm luyện kim 7603', alum.every((c) => !c.hsCode.startsWith('7603')));
+
+  const vac = searchCandidates('industrial vacuum cleaner Nilfisk model VHW310', { topCandidates: 50 });
+  check('máy hút bụi công nghiệp không lẫn lọc nước 842121', vac.every((c) => !c.hsCode.startsWith('842121')));
 }
 
 console.log('\n== Từ điển không được lan sang câu không liên quan ==');
@@ -562,6 +572,53 @@ console.log('\n== Từ điển không được lan sang câu không liên quan =
     check('search máy phun socola không lẫn máy giấy 8439', !top3.some((hs) => String(hs).startsWith('8439')));
     check('search máy phun socola không lẫn 8419/8543/8479', !top3.some((hs) => /^(8419|8543|8479)/.test(String(hs))));
   }
+  // OZV-1325 — đầu lắc xilanh FD1016 ≠ nối ống 7307 / quy lát 8409 / xi lanh nguyên chiếc 841231
+  for (const q of [
+    'đầu lắc xilanh nguyên chiếc tịnh tiến',
+    'đầu lắc fd1016 quy lát động cơ',
+    'đầu lắc xilanh rotin càng a ô tô',
+  ]) {
+    check(`«${q}» không kích hoạt mục đầu lắc xilanh`,
+      !(lookupTradeTerms(q).matches || []).some((m) => m.entryId === 'dau-lac-xilanh-fd'));
+  }
+  check(
+    'câu khách đầu lắc xilanh fd1016 khớp mục dau-lac-xilanh-fd',
+    lookupTradeTerms('đầu lắc xilanh fd1016').matches.some((m) => m.entryId === 'dau-lac-xilanh-fd')
+  );
+  check(
+    'câu ngắn đầu lắc xi lanh khớp mục dau-lac-xilanh-fd',
+    lookupTradeTerms('đầu lắc xi lanh').matches.some((m) => m.entryId === 'dau-lac-xilanh-fd')
+  );
+  {
+    const m = lookupTradeTerms('đầu lắc xilanh fd1016').matches.find((x) => x.entryId === 'dau-lac-xilanh-fd');
+    check('đầu lắc xilanh ưu tiên 84129090 high',
+      (m?.candidates || []).some((c) => (c.hsCode || c.hs) === '84129090' && c.confidence === 'high'));
+    check('đầu lắc xilanh tránh 7307 (nối ống — earlyExit prod)',
+      (m?.avoid || []).some((a) => String(a.prefix) === '7307'));
+    check('đầu lắc xilanh tránh 8409 (quy lát ĐCĐT)',
+      (m?.avoid || []).some((a) => String(a.prefix) === '8409'));
+    check('đầu lắc xilanh tránh 841231 (xi lanh nguyên chiếc)',
+      (m?.avoid || []).some((a) => String(a.prefix) === '841231'));
+  }
+  {
+    const top3 = searchCandidates('đầu lắc xilanh fd1016', { topCandidates: 3 }).map((c) => c.hsCode);
+    check(
+      'search đầu lắc xilanh fd1016 top1 84129090',
+      top3[0] === '84129090',
+      `top3=${top3.join(',')}`
+    );
+    check('search đầu lắc không lẫn 7307/8409', !top3.some((hs) => /^(7307|8409)/.test(String(hs))));
+  }
+
+  // OZV-1239: mục bột nhôm chất màu 32.06 không được ăn bột/vảy nhôm luyện
+  // kim (76.03) hay bột nhão nhôm (32.12) — probe trước khi chặn: cả 2 câu
+  // đều đẩy 32064990 lên đầu.
+  for (const q of ['bột nhôm dạng vảy dùng luyện kim', 'bột nhôm nhão aluminium paste cho sơn', 'aluminium powder for welding']) {
+    check(`"${q}" không kích mục bột nhôm chất màu`,
+      !lookupTradeTerms(q).matches.some((m) => m.entryId === 'aluminium-powder-pigment'));
+  }
+  check('câu bột nhôm chất màu (TB 554) vẫn kích mục',
+    lookupTradeTerms('Aluminium powder (bột nhôm): chất màu vô cơ').matches.some((m) => m.entryId === 'aluminium-powder-pigment'));
 }
 
 // OZV-1326 — bàn ga TFS-1 (2 mét) = công tắc bàn đạp chân dây 2m → 85365099
