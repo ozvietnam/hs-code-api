@@ -3686,6 +3686,120 @@
    "gir": "GIR 1",
    "basis": "RULE_TABLE",
    "sourceVi": "Oz-gold: «Đầu lắc xi lanh khí nén FD1016» → 84129090 (4 tờ). hs-aliases «dau lac xi lanh khi nen» → 84129090. Biểu thuế 8412.90.90 bộ phận loại khác của nhóm 84.12. Decision-table 8412 liệt kê đầu lắc là bộ phận (parts)."
+  },
+  {
+   "id": "aluminium-powder-pigment",
+   "titleVi": "Bột nhôm chất màu / Aluminium powder pigment (chất màu vô cơ)",
+   "terms": [
+    "aluminium powder",
+    "bột nhôm",
+    "aluminum powder",
+    "bột nhôm chất màu",
+    "chất màu bột nhôm",
+    "aluminium pigment",
+    "aluminum pigment"
+   ],
+   "excludeIfAny": [
+    "thỏi nhôm",
+    "nhôm thỏi",
+    "aluminium ingots",
+    "aluminum ingots",
+    "bột nhôm luyện kim",
+    "bột nhôm hàn",
+    "luyện kim",
+    "metallurgy",
+    "metallurgical",
+    "welding",
+    "dạng vảy",
+    "vảy nhôm",
+    "flake",
+    "flakes",
+    "nhão",
+    "bột nhão",
+    "paste"
+   ],
+   "excludeReasonVi": "Thỏi nhôm thuộc 76.01; bột/vảy nhôm luyện kim, hàn thuộc 76.03; bột nhão nhôm (aluminium paste) xét nhóm 32.12 — chỉ bột nhôm dùng làm chất màu vô cơ mới thuộc nhóm 32.06 (TB-TCHQ số 554/TB-TCHQ).",
+   "candidates": [
+    {
+     "hs": "32064990",
+     "whenVi": "Bột nhôm dùng làm chất màu vô cơ / aluminum powder pigment — chất màu khác bằng vô cơ (3206.49.90).",
+     "confidence": "high"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "7601",
+     "whyVi": "7601 là nhôm chưa gia công (thỏi nhôm) — bột nhôm chất màu thuộc 32.06."
+    },
+    {
+     "prefix": "7603",
+     "whyVi": "7603 là bột và vảy nhôm dùng luyện kim/hàn — bột nhôm làm chất màu vô cơ thuộc nhóm 32.06 theo TB-TCHQ 554."
+    }
+   ],
+   "askVi": [
+    "Bột nhôm này dùng làm chất màu/sơn (nhóm 32.06) hay bột nhôm luyện kim/hàn (nhóm 76.03) hoặc nhôm thỏi (76.01)?"
+   ],
+   "gir": "GIR 1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "TB-TCHQ số 554/TB-TCHQ: Aluminium powder (bột nhôm): chất màu vô cơ có thành phần là bột nhôm → 3206.49.90 (không phải 76.03 hoặc 76.01)."
+  },
+  {
+   "id": "industrial-vacuum-cleaner",
+   "titleVi": "Máy hút bụi công nghiệp / Industrial vacuum cleaner (Nilfisk / VHW series)",
+   "terms": [
+    "industrial vacuum cleaner",
+    "máy hút bụi công nghiệp",
+    "nilfisk vacuum",
+    "vhw310",
+    "vhw series",
+    "máy hút bụi nilfisk",
+    "máy hút bụi công nghiệp nilfisk"
+   ],
+   "excludeIfAny": [
+    "lõi lọc nước",
+    "màng lọc nước",
+    "water filter",
+    "ro membrane"
+   ],
+   "excludeReasonVi": "Thiết bị lọc nước thuộc 84.21 — máy hút bụi hoàn chỉnh thuộc nhóm 85.08.",
+   "candidates": [
+    {
+     "hs": "85081100",
+     "whenVi": "Máy hút bụi có động cơ điện gắn liền, công suất không quá 1.500W và đồ chứa không quá 20 lít (8508.11.00 — TB-TCHQ 1864/TCHQ-TXNK).",
+     "confidence": "high"
+    },
+    {
+     "hs": "85081910",
+     "whenVi": "Máy hút bụi gia dụng loại khác có động cơ điện gắn liền (8508.19.10).",
+     "confidence": "medium"
+    },
+    {
+     "hs": "85081990",
+     "whenVi": "Máy hút bụi công nghiệp/loại khác có động cơ điện gắn liền (8508.19.90).",
+     "confidence": "medium"
+    },
+    {
+     "hs": "85086000",
+     "whenVi": "Máy hút bụi loại khác (không phải động cơ gắn liền trực tiếp trên thân) (8508.60.00).",
+     "confidence": "low"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "842121",
+     "whyVi": "8421.21 là thiết bị lọc nước — đo A1 16/11 API thô trả 8421.21 là nhiễu từ từ khóa 'thùng lọc/chứa rác'; máy hút bụi hoàn chỉnh thuộc nhóm 85.08."
+    },
+    {
+     "prefix": "842139",
+     "whyVi": "8421.39 là thiết bị lọc khí khác — không phải máy hút bụi."
+    }
+   ],
+   "askVi": [
+    "Đây là máy hút bụi hoàn chỉnh (có động cơ gắn liền, nhóm 85.08) hay bộ phận/thiết bị lọc khác?"
+   ],
+   "gir": "GIR 1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "TB-TCHQ số 1864/TCHQ-TXNK: Động cơ là một phần gắn liền của máy hút bụi hoàn chỉnh → loại máy hút bụi có động cơ điện gắn liền, công suất không quá 1.500 W và đồ chứa không quá 20 lít → nhóm 85.08, mã 8508.11.00 (hoặc 8508.19 tùy công suất/thùng chứa). Tránh nhiễu 8421 từ từ khóa thùng lọc."
   }
  ],
  "updatedAt": "2026-11-17"
