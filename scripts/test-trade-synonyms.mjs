@@ -535,6 +535,9 @@ console.log('\n== Từ điển không được lan sang câu không liên quan =
     check('máy phun socola ưu tiên 84382010', (m?.candidates || []).some((c) => (c.hsCode || c.hs) === '84382010'));
     check('máy phun socola tránh 8424', (m?.avoid || []).some((a) => String(a.prefix) === '8424'));
     check('máy phun socola tránh máy gia nhiệt 8419 (OZV-1324)', (m?.avoid || []).some((a) => String(a.prefix) === '8419'));
+    check('máy phun socola tránh khuôn phun 8480 (OZV-1330)', (m?.avoid || []).some((a) => String(a.prefix) === '8480'));
+    check('máy phun socola tránh máy thực phẩm loại khác 843880 (OZV-1330)', (m?.avoid || []).some((a) => String(a.prefix) === '843880'));
+    check('máy phun socola chotSom (OZV-1330)', m?.chotSom === true);
     check('máy phun socola tránh máy giấy 8439', (m?.avoid || []).some((a) => String(a.prefix) === '8439'));
     check('máy phun socola tránh nhiễu 8543', (m?.avoid || []).some((a) => String(a.prefix) === '8543'));
     check('máy phun socola tránh nhiễu 8479', (m?.avoid || []).some((a) => String(a.prefix) === '8479'));
@@ -571,6 +574,12 @@ console.log('\n== Từ điển không được lan sang câu không liên quan =
     );
     check('search máy phun socola không lẫn máy giấy 8439', !top3.some((hs) => String(hs).startsWith('8439')));
     check('search máy phun socola không lẫn 8419/8543/8479', !top3.some((hs) => /^(8419|8543|8479)/.test(String(hs))));
+    check('search máy phun socola top1 84382010 (OZV-1330)', top3[0] === '84382010', `top3=${top3.join(',')}`);
+    check(
+      'search máy phun socola không lẫn khuôn 8480 / 843880 (OZV-1330)',
+      !top3.some((hs) => /^(8480|843880)/.test(String(hs))),
+      `top3=${top3.join(',')}`,
+    );
   }
   // OZV-1325 — đầu lắc xilanh FD1016 ≠ nối ống 7307 / quy lát 8409 / xi lanh nguyên chiếc 841231
   for (const q of [
