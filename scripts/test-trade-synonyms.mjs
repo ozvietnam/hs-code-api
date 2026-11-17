@@ -839,6 +839,50 @@ console.log('\n== Ứng viên cấp nhóm: cộng điểm cho lá khớp lời v
   check('vẫn dẫn về nhóm 8481.80', r.length > 0 && r[0].hsCode.startsWith('8481'));
 }
 
+// OZV-1336 — cốc giữ nhiệt chân không → 96170010, hết NEED_FACTS dừng 961700
+{
+  const TEN = 'cốc giữ nhiệt chân không (bình chân không hoàn c';
+  check(
+    'OZV-1336 cốc giữ nhiệt chân không khớp mục coc-giu-nhiet-chan-khong',
+    lookupTradeTerms(TEN).matches.some((m) => m.entryId === 'coc-giu-nhiet-chan-khong'),
+  );
+  check(
+    'OZV-1336 không dấu coc giu nhiet chan khong vẫn khớp',
+    lookupTradeTerms('coc giu nhiet chan khong').matches.some((m) => m.entryId === 'coc-giu-nhiet-chan-khong'),
+  );
+  for (const q of [
+    'ruột thủy tinh bình chân không',
+    'bộ phận bình chân không',
+    'spare part vacuum flask',
+  ]) {
+    check(
+      `OZV-1336 «${q}» không kích hoạt mục coc-giu-nhiet-chan-khong`,
+      !(lookupTradeTerms(q).matches || []).some((m) => m.entryId === 'coc-giu-nhiet-chan-khong'),
+    );
+  }
+  {
+    const m = lookupTradeTerms(TEN).matches.find((x) => x.entryId === 'coc-giu-nhiet-chan-khong');
+    check(
+      'OZV-1336 ưu tiên 96170010 high + chotSom',
+      (m?.candidates || []).some((c) => (c.hsCode || c.hs) === '96170010' && c.confidence === 'high')
+        && m?.chotSom === true,
+    );
+    check(
+      'OZV-1336 tránh 7323 (đồ inox nhà bếp) / 8516 (giữ nhiệt điện)',
+      (m?.avoid || []).some((a) => String(a.prefix) === '7323')
+        && (m?.avoid || []).some((a) => String(a.prefix) === '8516'),
+    );
+  }
+  {
+    const r = searchCandidates(TEN, { topCandidates: 5 });
+    check(
+      'OZV-1336 search top có 96170010',
+      r.some((c) => c.hsCode === '96170010'),
+      r.map((c) => c.hsCode).join(','),
+    );
+  }
+}
+
 // OZV-1334 — máy bơm nước ly tâm gia đình → 84137042, hết NEED_FACTS dừng 841370
 {
   const TEN = 'máy bơm nước ly tâm gia đình';
