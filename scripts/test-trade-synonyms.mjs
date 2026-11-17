@@ -501,6 +501,7 @@ console.log('\n== Từ điển không được lan sang câu không liên quan =
     const m = lookupTradeTerms('máy phun socola 5 tầng').matches.find((x) => x.entryId === 'may-phun-socola');
     check('máy phun socola ưu tiên 84382010', (m?.candidates || []).some((c) => (c.hsCode || c.hs) === '84382010'));
     check('máy phun socola tránh 8424', (m?.avoid || []).some((a) => String(a.prefix) === '8424'));
+    check('máy phun socola tránh máy gia nhiệt 8419 (OZV-1324)', (m?.avoid || []).some((a) => String(a.prefix) === '8419'));
     check('máy phun socola tránh máy giấy 8439', (m?.avoid || []).some((a) => String(a.prefix) === '8439'));
     check('máy phun socola tránh nhiễu 8543', (m?.avoid || []).some((a) => String(a.prefix) === '8543'));
     check('máy phun socola tránh nhiễu 8479', (m?.avoid || []).some((a) => String(a.prefix) === '8479'));
@@ -536,7 +537,7 @@ console.log('\n== Từ điển không được lan sang câu không liên quan =
       `top3=${top3.join(',')}`
     );
     check('search máy phun socola không lẫn máy giấy 8439', !top3.some((hs) => String(hs).startsWith('8439')));
-    check('search máy phun socola không lẫn 8543/8479', !top3.some((hs) => /^(8543|8479)/.test(String(hs))));
+    check('search máy phun socola không lẫn 8419/8543/8479', !top3.some((hs) => /^(8419|8543|8479)/.test(String(hs))));
   }
 }
 

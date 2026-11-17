@@ -3445,6 +3445,10 @@
      "whyVi": "8424 là máy/thiết bị phun–xịt–phun bắn (cát, sơn, thuốc, tia) — chữ «phun» trong «máy phun socola» dễ kéo sang 8424.30/8424.89; hàng này là máy chế biến thực phẩm nhóm 84.38.20 theo đúng dòng biểu thuế confectionery/cocoa/chocolate."
     },
     {
+     "prefix": "8419",
+     "whyVi": "8419 là máy gia nhiệt/nấu/làm nóng đồ uống–thực phẩm (8419.81) và phụ tùng (8419.90) — đài/phun socola 5 tầng dễ bị vòng 1 kéo sang «máy nấu socola» rồi earlyExit NEED_FACTS 841990 (đo prod OZV-1324 17/11: 1/3 lượt). Hàng này là máy chế biến/phủ bánh kẹo–cacao–socola nhóm 84.38.20, không phải 84.19."
+    },
+    {
      "prefix": "8439",
      "whyVi": "8439 là máy sản xuất giấy/bìa — chữ «máy» + điểm tìm kiếm yếu dễ đẩy 84392000 vào top3 cạnh 8438.20; không phải máy phủ/phun socola."
     },
@@ -3474,7 +3478,7 @@
    ],
    "gir": "1",
    "basis": "RULE_TABLE",
-   "sourceVi": "Biểu thuế 2026 phân nhóm 8438.20 «Máy dùng để sản xuất bánh kẹo, cacao hoặc sôcôla» (EN: Machinery; industrial, for the manufacture of confectionery, cocoa or chocolate): 84382010 hoạt động bằng điện; 84382020 không hoạt động bằng điện. OZV-1285 kéo khỏi bẫy 8424; OZV-1297 loại hẳn nhiễu 8439/8543/8479 khỏi top3 và bổ sung fountain/đài phun để search ra đủ mã 8 số nhóm 8438."
+   "sourceVi": "Biểu thuế 2026 phân nhóm 8438.20 «Máy dùng để sản xuất bánh kẹo, cacao hoặc sôcôla» (EN: Machinery; industrial, for the manufacture of confectionery, cocoa or chocolate): 84382010 hoạt động bằng điện; 84382020 không hoạt động bằng điện. OZV-1285 kéo khỏi bẫy 8424; OZV-1297 loại hẳn nhiễu 8439/8543/8479 khỏi top3 và bổ sung fountain/đài phun để search ra đủ mã 8 số nhóm 8438. OZV-1324: thêm avoid 8419 — earlyExitHoi lệch 841990 (phụ tùng máy gia nhiệt) không biCam nên không đôn 84382010."
   },
   {
    "id": "den-led-cam-tuong",
