@@ -34,6 +34,8 @@ const CA = [
   { ten: 'cốc giữ nhiệt chân không (bình chân không)', hs: '96170010', id: 'coc-giu-nhiet-chan-khong' },
   { ten: 'máy bơm nước ly tâm dùng trong gia đình', hs: '84137042', id: 'may-bom-nuoc-ly-tam' },
   { ten: 'vỏ chụp loa bằng nhựa tổng hợp (nón loa)', hs: '85189090', id: 'vo-chup-loa-non-loa' },
+  // OZV-1346: câu khách «đèn LED hình gấu» — trước đây 0 match term (chỉ có «đèn tường hình gấu») → LLM NEED_FACTS ~37s.
+  { ten: 'đèn LED hình gấu', hs: '94054290', id: 'den-led-cam-tuong' },
 ];
 
 for (const c of CA) {
