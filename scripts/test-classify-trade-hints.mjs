@@ -489,5 +489,73 @@ const R1_AR_SAI_8421 = {
   );
 }
 
+// ── OZV-1315: STT 26 strip CRC khổ hẹp — R2 lệch 72091610 → đôn 72112390 (avoid 7209) ──
+{
+  const TEN_26 =
+    'Thép không hợp kim cán phẳng dạng cuộn cán nguội (cold rolled steel strip in coil, SPCC-4B), hàm lượng carbon dưới 0,25%, chiều dày 1 mm, chiều rộng 450 mm (dưới 600 mm), chưa phủ, mạ hoặc tráng, không gia công quá mức cán nguội';
+  const R1_SAI_7209 = {
+    product: {
+      nameVi: 'thép cán nguội dạng cuộn SPCC-4B',
+      purpose: 'cán phẳng',
+      mechanism: 'cán nguội',
+      material: 'thép không hợp kim',
+      form: 'cuộn / dải',
+      evidence: { widthMm: 450, thicknessMm: 1 },
+    },
+    hypotheses: [
+      {
+        chapter: '72',
+        heading4: '7209',
+        subheading6: '720916',
+        why: 'cán nguội dạng cuộn',
+        confidence: 70,
+      },
+    ],
+    verify: {
+      searchVi: ['thép cán nguội', 'spcc', 'cuộn'],
+      codes8: ['72091610', '72091710', '72112390'],
+      micQuery: null,
+      unknowns: [],
+    },
+  };
+  const saved = llmTier.callLLMJson;
+  const queue = [
+    R1_SAI_7209,
+    {
+      decision: 'HOI',
+      hs: '720916',
+      confidence: 62,
+      reason: 'Cần xác nhận chiều rộng ≥600 mm hay <600 mm',
+      basis: [{ stream: 'SUY_LUAN', claim: '7209.16', evidence: 'cán nguội cuộn' }],
+      conditions: [],
+      alternatives: [
+        { hs: '72091610', whyNot: 'rộng ≤1250 mm' },
+        { hs: '72112390', whyNot: 'có thể khổ hẹp' },
+      ],
+      questions: [
+        { fact: 'chieuRong', question: 'Chiều rộng ≥ 600 mm hay dưới 600 mm?', whereToFind: 'catalogue' },
+      ],
+    },
+  ];
+  llmTier.callLLMJson = async () => {
+    const next = queue.shift();
+    if (!next) throw new Error('hết stub LLM STT26');
+    return { json: next };
+  };
+  const out = await classifyLoop({ tenHang: TEN_26 }, { mic: false, crossCheck: false, timeoutMs: 5000 });
+  llmTier.callLLMJson = saved;
+  const top3 = (out.results || []).map((r) => r.hs);
+  check(
+    'OZV-1315 STT26: đôn top1 72112390 (không kẹt 720916*)',
+    out.status !== 'NEED_FACTS' && top3[0] === '72112390',
+    { status: out.status, top3, next: out.nextAction },
+  );
+  check(
+    'OZV-1315 STT26: top3 không còn 7209*',
+    top3.every((h) => !String(h).startsWith('7209')),
+    top3,
+  );
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
