@@ -27,6 +27,7 @@ const require = createRequire(import.meta.url);
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const { lookupTradeTerms, tradeTermStats } = require(join(ROOT, 'lib', 'trade-synonyms.js'));
 const { searchCandidates } = require(join(ROOT, 'lib', 'search-utils.js'));
+const { tradeClassifyHints, biCamTrade, tradePreferredHs } = require(join(ROOT, 'lib', 'trade-classify-hints.js'));
 const { breadcrumbOf, contextOf } = require(join(ROOT, 'lib', 'hs-breadcrumb.js'));
 const { vatReductionOf, vatWarningTextOf } = require(join(ROOT, 'lib', 'vat-reduction.js'));
 const taxData = require(join(ROOT, 'data', 'tax.json'));
@@ -349,6 +350,41 @@ console.log('\n== Từ điển không được lan sang câu không liên quan =
       'OZV-1304 top2 không phải nhựa 39269053',
       t10Top[1]?.hsCode !== '39269053',
       `nhận ${t10Top.slice(0, 2).map((c) => c.hsCode).join(',')}`
+    );
+  }
+  // OZV-1257 — classify/suggest lệch băng tải 401012 (dừng 6 số) / nhựa 39269053:
+  // avoid phải loại HẲN để trade-synonyms-promote (biCam) đôn sang 401035/401036.
+  {
+    const q = 'dây đai dẹt t10-259-e, truyền lực';
+    const t10All = searchCandidates(q, { topCandidates: 50 });
+    check(
+      'OZV-1257 không còn 401012* (băng tải dệt) trong kết quả',
+      t10All.every((c) => !c.hsCode.startsWith('401012')),
+      `nhận ${(t10All || []).filter((c) => c.hsCode.startsWith('401012')).map((c) => c.hsCode).join(',') || '—'}`
+    );
+    check(
+      'OZV-1257 không còn 39269053 (đai nhựa) trong kết quả',
+      t10All.every((c) => c.hsCode !== '39269053')
+    );
+    check(
+      'OZV-1257 avoidedByTradeRules ghi 401012 hoặc 39269053',
+      (t10All.avoidedByTradeRules || []).some((a) =>
+        String(a.prefix) === '401012'
+        || String(a.prefix) === '39269053'
+        || String(a.hsCode || '').startsWith('401012')
+        || String(a.hsCode || '') === '39269053'
+      ),
+      `avoided=${(t10All.avoidedByTradeRules || []).map((a) => a.prefix || a.hsCode).join(',')}`
+    );
+    const hints = tradeClassifyHints(q);
+    check('OZV-1257 hints avoid có 401012', hints.avoidPrefixes.includes('401012'));
+    check('OZV-1257 biCam 401012 (dừng 6 số)', biCamTrade('401012', hints.avoidPrefixes));
+    check('OZV-1257 biCam 40101200', biCamTrade('40101200', hints.avoidPrefixes));
+    const pref = tradePreferredHs(hints);
+    check(
+      'OZV-1257 prefer high ∈ {40103500,40103600}',
+      pref && (pref.hs === '40103500' || pref.hs === '40103600'),
+      `nhận ${pref?.hs}`
     );
   }
   // OZV-1277 — câu có «giàn phơi/drying rack» nhưng là máy sấy / tủ / kệ kho → tắt mục
