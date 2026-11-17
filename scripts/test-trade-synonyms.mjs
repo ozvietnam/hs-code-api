@@ -201,6 +201,11 @@ console.log('\n== Mã bẫy phải bị loại HẲN, không phải tụt hạng
     (arEntry?.avoid || []).some((a) => String(a.prefix) === '8421'),
     (arEntry?.avoid || []).map((a) => a.prefix),
   );
+  check(
+    'OZV-1307 AR avoid residual 84812090 (classify không CHOT .90)',
+    (arEntry?.avoid || []).some((a) => String(a.prefix) === '84812090'),
+    (arEntry?.avoid || []).map((a) => a.prefix),
+  );
 
   const pad = searchCandidates('giác hút chân không smc zp-905-08eu', { topCandidates: 50 });
   check('giác hút SMC không lẫn phụ tùng bơm/máy nén 841490', pad.every((c) => !c.hsCode.startsWith('841490')));

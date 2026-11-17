@@ -2857,6 +2857,10 @@
    ],
    "avoid": [
     {
+     "prefix": "84812090",
+     "whyVi": "8481.20.90 residual «Loại khác» — khi khách chỉ ghi model AR/Zonye, không đẩy residual lên top; ưu tiên 8481.20.11 (thân sắt/thép phổ biến). Classify R2 từng CHOT 84812090 dù search đã 84812011 (OZV-1307)."
+    },
+    {
      "prefix": "8405",
      "whyVi": "8405.10 máy sản xuất chất khí (có/không kèm bộ lọc) — chữ «bộ lọc khí» của khách AR không đổi bản chất điều áp 8481.20; đo prod từng top-3 84051000 (OZV-1305)."
     },
@@ -2890,11 +2894,12 @@
     }
    ],
    "askVi": [
-    "Xác nhận đây là van/điều áp model AR trên mạch khí nén công nghiệp (không phải máy lọc không khí phòng)?"
+    "Xác nhận đây là van/điều áp model AR trên mạch khí nén công nghiệp (không phải máy lọc không khí phòng)?",
+    "Thân van/điều áp bằng sắt hoặc thép, đồng/plastic (kèm Ø trong), hay chất liệu khác?"
    ],
    "gir": "GIR 1",
    "basis": "RULE_TABLE",
-   "sourceVi": "Biểu thuế VN 8481.20 van dùng cho truyền động oleohydraulic/pneumatic. Series Airtac/Zonye: AR=regulator. OZV-1286 tách AR khỏi AF; OZV-1300 mở avoid 8421/842199 vì classify còn dừng 6 số NEED_FACTS phụ tùng lọc; OZV-1305: search «zonye ar2000» không top residual 84812090 / 84051000 — inject high 84812011 + avoid 8405."
+   "sourceVi": "Biểu thuế VN 8481.20 van dùng cho truyền động oleohydraulic/pneumatic. Series Airtac/Zonye: AR=regulator. OZV-1286 tách AR khỏi AF; OZV-1300 mở avoid 8421/842199; OZV-1305 inject high 84812011 + avoid 8405; OZV-1307 avoid residual 84812090 để classify đôn .11 khi R2 CHOT .90."
   },
   {
    "id": "bo-loc-khi-nen-af-frl",
