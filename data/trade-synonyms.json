@@ -4157,6 +4157,74 @@
    "gir": "GIR 1",
    "basis": "RULE_TABLE",
    "sourceVi": "Biểu thuế XNK nhóm 84.13 phân nhóm 8413.70 (bơm ly tâm cho chất lỏng). Yêu cầu OZV-1334: máy bơm nước ly tâm gia đình tránh dừng sớm ở NEED_FACTS hoặc kẹt 6 số 841370, chotSom về 8 số 84137042."
+  },
+  {
+    "id": "cam-bien-quang-ft-s13",
+    "titleVi": "Cảm biến quang điện FT-S13 24V (photoelectric switch) — 8536.50.51",
+    "terms": [
+      "cảm biến quang điện FT-S13",
+      "cam bien quang dien FT-S13",
+      "cảm biến quang FT-S13",
+      "cam bien quang FT-S13",
+      "cảm biến quang điện ft-s13",
+      "cam bien quang dien ft-s13",
+      "cảm biến quang ft-s13",
+      "cam bien quang ft-s13",
+      "FT-S13 24V",
+      "ft-s13 24v",
+      "FT-S13 24v",
+      "photoelectric sensor FT-S13",
+      "photoelectric FT-S13",
+      "cảm biến quang điện ft s13",
+      "cam bien quang dien ft s13"
+    ],
+    "excludeIfAny": [
+      "dây cáp cảm biến",
+      "day cap cam bien",
+      "cáp nối cảm biến",
+      "cap noi cam bien",
+      "phụ kiện cáp",
+      "phu kien cap",
+      "fiber optic cable",
+      "cáp quang cảm biến chỉ là cáp",
+      "bóng đèn led",
+      "bong den led",
+      "đuôi e27",
+      "duoi e27"
+    ],
+    "excludeReasonVi": "Dây/cáp nối cảm biến quang (không phải đầu cảm biến hoàn chỉnh) thuộc nhóm 85.44 theo tiền lệ phụ kiện cáp — không gom vào công tắc quang 85.36. Không đụng bóng LED (OZV-1346).",
+    "candidates": [
+      {
+        "hs": "85365051",
+        "whenVi": "Cảm biến quang điện (photoelectric sensor) dạng công tắc bán dẫn, điện áp công nghiệp 24V, model FT-S13 — dòng điện thường <<16A → lá 8536.50.51. TB 18181/TB-CHQ (Panasonic PM-U25 slot photoelectric) cùng bản chất công tắc quang điện tử; bảng quyết định 8536 đã duyệt (electronicOrSnap <16A).",
+        "confidence": "high"
+      }
+    ],
+    "avoid": [
+      {
+        "prefix": "9031",
+        "whyVi": "9031 là dụng cụ đo/kiểm (prod từng dừng NEED_FACTS 903180 / 90314990). Cảm biến quang dạng đóng-ngắt mạch 24V thuộc 85.36 theo TB 18181, không phải máy đo quang 90.31."
+      },
+      {
+        "prefix": "8541",
+        "whyVi": "8541.40/49 là phần tử cảm quang bán dẫn thuần. Cảm biến quang hoàn chỉnh có mạch đóng ngắt → 85.36 (TB 18181), không khai linh kiện 85.41."
+      },
+      {
+        "prefix": "8544",
+        "whyVi": "8544 là dây/cáp điện — chỉ khi hàng là cáp nối phụ kiện, không phải đầu cảm biến FT-S13."
+      },
+      {
+        "prefix": "8537",
+        "whyVi": "8537 là bảng/tủ điều khiển đã lắp — khác công tắc cảm biến đơn lẻ nhóm 85.36."
+      }
+    ],
+    "askVi": [
+      "Hàng là cảm biến quang điện (photoelectric) model FT-S13 dùng 24V dạng đóng ngắt, không phải chỉ dây cáp nối?"
+    ],
+    "chotSom": true,
+    "gir": "GIR 1",
+    "basis": "RULE_TABLE",
+    "sourceVi": "TB 18181/TB-CHQ (2026): cảm biến quang Panasonic PM-U25 slot photoelectric → 8536.50.51 (công tắc điện tử bán dẫn, dòng <16A). data/decision-tables/8536.json rule r-sw-snap-lt16 (CEO duyệt): photoelectric sensor → 85365051. Biểu thuế 85365051 «Dòng điện dưới 16 A». OZV-1349: câu khách «cảm biến quang FT-S13 24V» / «cảm biến quang điện FT-S13 24V» — prod NEED_FACTS dừng 853650/903180; chotSom đôn 8 số, bỏ vòng LLM."
   }
  ],
  "updatedAt": "2026-11-17"

@@ -919,6 +919,54 @@ console.log('\n== Ứng viên cấp nhóm: cộng điểm cho lá khớp lời v
   }
 }
 
+// OZV-1349 — cảm biến quang FT-S13 24V → 85365051, hết NEED_FACTS dừng 853650/903180
+{
+  const TEN = 'cảm biến quang FT-S13 24V';
+  check(
+    'OZV-1349 cảm biến quang FT-S13 24V khớp mục cam-bien-quang-ft-s13',
+    lookupTradeTerms(TEN).matches.some((m) => m.entryId === 'cam-bien-quang-ft-s13'),
+  );
+  check(
+    'OZV-1349 cảm biến quang điện FT-S13 24V khớp',
+    lookupTradeTerms('cảm biến quang điện FT-S13 24V').matches.some((m) => m.entryId === 'cam-bien-quang-ft-s13'),
+  );
+  check(
+    'OZV-1349 không dấu cam bien quang ft-s13 24v vẫn khớp',
+    lookupTradeTerms('cam bien quang ft-s13 24v').matches.some((m) => m.entryId === 'cam-bien-quang-ft-s13'),
+  );
+  for (const q of [
+    'dây cáp cảm biến FT-S13',
+    'fiber optic cable FT-S13',
+    'bóng đèn led đuôi e27',
+  ]) {
+    check(
+      `OZV-1349 «${q}» không kích hoạt mục cam-bien-quang-ft-s13`,
+      !(lookupTradeTerms(q).matches || []).some((m) => m.entryId === 'cam-bien-quang-ft-s13'),
+    );
+  }
+  {
+    const m = lookupTradeTerms(TEN).matches.find((x) => x.entryId === 'cam-bien-quang-ft-s13');
+    check(
+      'OZV-1349 ưu tiên 85365051 high + chotSom',
+      (m?.candidates || []).some((c) => (c.hsCode || c.hs) === '85365051' && c.confidence === 'high')
+        && m?.chotSom === true,
+    );
+    check(
+      'OZV-1349 tránh 9031 (đo/kiểm) / 8541 (cảm quang thuần)',
+      (m?.avoid || []).some((a) => String(a.prefix) === '9031')
+        && (m?.avoid || []).some((a) => String(a.prefix) === '8541'),
+    );
+  }
+  {
+    const r = searchCandidates(TEN, { topCandidates: 5 });
+    check(
+      'OZV-1349 search top có 85365051',
+      r.some((c) => c.hsCode === '85365051'),
+      r.map((c) => c.hsCode).join(','),
+    );
+  }
+}
+
 console.log('\n== Thống kê ==');
 {
   const s = tradeTermStats();
