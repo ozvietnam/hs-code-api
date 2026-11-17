@@ -130,7 +130,8 @@ check(
     && diverseRun.replay1211.tomTat.top3SoSongSot === 6
     && diverseRun.replay1211.tomTat.khongRaMa === 0
     && diverseRun.searchCandidates.tomTat.tong === 6
-    && diverseRun.searchCandidates.tomTat.top1Nhom4 === 1
+    // OZV-1316: synonym nhãn nhựa tự dính → search STT10 top-1 39199092 (top1Nhom4 1→2).
+    && diverseRun.searchCandidates.tomTat.top1Nhom4 === 2
     && diverseRun.searchPrecedents.tomTat.top1 === 6,
   JSON.stringify({ replay: diverseRun.replay1211.tomTat, search: diverseRun.searchCandidates?.tomTat }),
 );
