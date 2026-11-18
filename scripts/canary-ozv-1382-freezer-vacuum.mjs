@@ -4,6 +4,8 @@
  * và máy hút bụi công suất+đồ chứa (8508.11↔8508.19).
  * Không gọi LLM: stub R1 chọn nhầm phân nhóm anh em như đo A1 18/11, kỳ vọng
  * earlyExitChotTuConflict CHOT đúng mã trước earlyExitHoi.
+ * GĐ #1438 lần 2: dung tích tủ đông; 850819 gia dụng/công nghiệp; không detect số rời;
+ * top-1 nghiêm; ≥2 dung tích → null.
  */
 import './test-isolate-data.mjs';
 import { createRequire } from 'module';
@@ -30,6 +32,7 @@ const {
   extractPowerWatts,
   extractVolumeLiters,
   resolveConflict,
+  enrichAttrsFromTable,
 } = require('../lib/conflict-resolver.js');
 const { classifyLoop, earlyExitChotTuConflict } = require('../lib/engine-loop.js');
 const attributes = require('../data/attributes.json').attributes;
@@ -39,10 +42,18 @@ const deps = { conflictsDb, tablesDb, registry: attributes };
 
 const CA33 = 'Tủ lạnh âm sâu để chứa mẫu tế bào (super freezer / ultra-low freezer) dùng trong y tế, môi chất lạnh R-507, dung tích 310 lít, nhiệt độ làm lạnh từ -30 độ C đến -40 độ C, loại cửa trước';
 const CA33_DOI = 'tủ đông nằm, cửa trên, 300 lít';
+const CA33_LE200_FRONT = 'tủ đông kiểu đứng cửa trước dung tích 180 lít';
+const CA33_LE200_TOP = 'tủ đông nằm cửa trên 150 lít';
+const CA33_THIEU_VOL = 'tủ đông âm sâu loại cửa trước, chưa nêu dung tích';
+const CA33_OVER = 'tủ đông cửa trên dung tích 950 lít';
 const CA40 = 'Máy hút bụi công nghiệp có động cơ điện gắn liền (industrial vacuum cleaner) Nilfisk model VHW310, dung tích thùng 15 lít, điện 3 pha 400V/50Hz, công suất 1,5 kW; động cơ gắn liền cánh quạt tạo lực hút, lắp chung trên đế cùng khối thùng lọc/chứa rác';
 const CA40_OVER_BOTH = 'máy hút bụi 2,2 kW thùng 30 lít';
+const CA40_OVER_BOTH_IND = 'máy hút bụi công nghiệp 2,2 kW thùng 30 lít';
 const CA40_OVER_VOL = 'máy hút bụi công nghiệp 1,5 kW thùng 25 lít';
+const CA40_DOM_OVER = 'máy hút bụi gia đình 1.800 W thùng 10 lít';
 const CA40_THIEU = 'máy hút bụi công nghiệp Nilfisk, chưa rõ công suất và dung tích thùng';
+// Thùng ≤20 l: nếu khớp nhầm "2 kw"→gt1500 sẽ chốt 850819; đúng là null vì ≥2 công suất.
+const CA40_AMBIG_PWR = 'máy hút bụi công nghiệp động cơ 1,2 kW, công suất hút 250 W thùng 15 lít';
 
 const R1_FREEZER_SAI = {
   product: {
@@ -97,47 +108,85 @@ check(
 );
 check('extractVolumeLiters 15 lít', extractVolumeLiters('dung tích thùng 15 lít') === 15);
 check('extractVolumeLiters thùng 30 lít', extractVolumeLiters('thùng 30 lít') === 30);
+check(
+  'extractVolumeLiters ≥2 dung tích khác nhau → null',
+  extractVolumeLiters('dung tích thùng 15 lít, bình phụ 30 lít') === null,
+);
 
-// --- earlyExitChotTuConflict ---
+// --- earlyExitChotTuConflict: tủ đông ---
 const chot33 = earlyExitChotTuConflict(CA33, R1_FREEZER_SAI);
-check('ca33 cửa trước → CHOT 84184090', chot33?.decision === 'CHOT' && chot33?.hs === '84184090', JSON.stringify(chot33));
+check('ca33 cửa trước 310L → CHOT 84184090', chot33?.decision === 'CHOT' && chot33?.hs === '84184090', JSON.stringify(chot33));
 
 const chot33d = earlyExitChotTuConflict(CA33_DOI, {
   ...R1_FREEZER_SAI,
   hypotheses: [{ ...R1_FREEZER_SAI.hypotheses[0], subheading6: '841840', confidence: 90 }],
 });
-check('đối chứng cửa trên → CHOT 84183090', chot33d?.decision === 'CHOT' && chot33d?.hs === '84183090', JSON.stringify(chot33d));
+check('đối chứng cửa trên 300L → CHOT 84183090', chot33d?.decision === 'CHOT' && chot33d?.hs === '84183090', JSON.stringify(chot33d));
 
+const chotFront200 = earlyExitChotTuConflict(CA33_LE200_FRONT, R1_FREEZER_SAI);
+check('cửa trước ≤200L → CHOT 84184010', chotFront200?.decision === 'CHOT' && chotFront200?.hs === '84184010', JSON.stringify(chotFront200));
+
+const chotTop200 = earlyExitChotTuConflict(CA33_LE200_TOP, R1_FREEZER_SAI);
+check('cửa trên ≤200L → CHOT 84183010', chotTop200?.decision === 'CHOT' && chotTop200?.hs === '84183010', JSON.stringify(chotTop200));
+
+const chotThieuVol = earlyExitChotTuConflict(CA33_THIEU_VOL, R1_FREEZER_SAI);
+check('tủ đông thiếu dung tích → null', chotThieuVol === null, JSON.stringify(chotThieuVol));
+
+const chotOver = earlyExitChotTuConflict(CA33_OVER, R1_FREEZER_SAI);
+check('cửa trên >800L → null (không chốt bảng)', chotOver === null, JSON.stringify(chotOver));
+
+// --- hút bụi ---
 const chot40 = earlyExitChotTuConflict(CA40, R1_VACUUM_SAI);
 check('ca40 1,5 kW 15 l → CHOT 85081100', chot40?.decision === 'CHOT' && chot40?.hs === '85081100', JSON.stringify(chot40));
 
 const chot40b = earlyExitChotTuConflict(CA40_OVER_BOTH, R1_VACUUM_SAI);
-check('đối chứng 2,2 kW 30 l → CHOT 85081990', chot40b?.decision === 'CHOT' && String(chot40b?.hs || '').startsWith('850819'), JSON.stringify(chot40b));
+check('2,2 kW 30 l thiếu công dụng → null', chot40b === null, JSON.stringify(chot40b));
+
+const chot40bInd = earlyExitChotTuConflict(CA40_OVER_BOTH_IND, R1_VACUUM_SAI);
+check('công nghiệp 2,2 kW 30 l → CHOT 85081990', chot40bInd?.decision === 'CHOT' && chot40bInd?.hs === '85081990', JSON.stringify(chot40bInd));
 
 const chot40c = earlyExitChotTuConflict(CA40_OVER_VOL, R1_VACUUM_SAI);
-check('1,5 kW thùng 25 l → CHOT 850819xx', chot40c?.decision === 'CHOT' && String(chot40c?.hs || '').startsWith('850819'), JSON.stringify(chot40c));
+check('công nghiệp 1,5 kW thùng 25 l → CHOT 85081990', chot40c?.decision === 'CHOT' && chot40c?.hs === '85081990', JSON.stringify(chot40c));
+
+const chotDom = earlyExitChotTuConflict(CA40_DOM_OVER, R1_VACUUM_SAI);
+check('gia đình 1.800 W → CHOT 85081910', chotDom?.decision === 'CHOT' && chotDom?.hs === '85081910', JSON.stringify(chotDom));
 
 const chotThieu = earlyExitChotTuConflict(CA40_THIEU, R1_VACUUM_SAI);
 check('thiếu công suất/dung tích → null (không đoán)', chotThieu === null, JSON.stringify(chotThieu));
 
-// Số không nằm trong detect (1.400 W / 14 lít) → enrichAttrsFromTable trước cổng attrs rỗng
+const chotAmbig = earlyExitChotTuConflict(CA40_AMBIG_PWR, R1_VACUUM_SAI);
+check(
+  '1,2 kW + 250 W thùng 15 l (≥2 công suất) → null, không khớp nhầm "2 kw"',
+  chotAmbig === null,
+  JSON.stringify(chotAmbig),
+);
+
+// Số không nằm trong detect cũ (1.400 W / 14 lít) → fromText
 const CA40_FROMTEXT = 'máy hút bụi gia đình 1.400 W, thùng 14 lít';
 const chotFromText = earlyExitChotTuConflict(CA40_FROMTEXT, R1_VACUUM_SAI);
 check(
-  'fromText 1.400 W + 14 l (không trúng detect) → CHOT 85081100',
+  'fromText 1.400 W + 14 l → CHOT 85081100',
   chotFromText?.decision === 'CHOT' && chotFromText?.hs === '85081100',
   JSON.stringify(chotFromText),
-);
-const CA40_GD1400 = 'máy hút bụi gia đình 1.400 W, thùng 15 lít';
-const chotGd1400 = earlyExitChotTuConflict(CA40_GD1400, R1_VACUUM_SAI);
-check(
-  'GĐ ví dụ 1.400 W thùng 15 l → CHOT 85081100',
-  chotGd1400?.decision === 'CHOT' && chotGd1400?.hs === '85081100',
-  JSON.stringify(chotGd1400),
 );
 
 const khong = earlyExitChotTuConflict('máy bơm nước ly tâm 1.5HP', R1_FREEZER_SAI);
 check('hàng khác → null', khong === null, JSON.stringify(khong));
+
+// enrichAttrsFromTable không ghi đè attrs đã có
+{
+  const table = tablesDb.tables['CF-vacuum-power-container'];
+  const out = enrichAttrsFromTable(
+    { vacuumPowerClass: 'gt1500' },
+    table,
+    'máy hút bụi công nghiệp 800 W đồ chứa 10 lít',
+  );
+  check(
+    'enrichAttrsFromTable không ghi đè vacuumPowerClass sẵn có',
+    out.vacuumPowerClass === 'gt1500',
+    JSON.stringify(out),
+  );
+}
 
 // resolveConflict + productText (đường phụ)
 {
@@ -146,7 +195,7 @@ check('hàng khác → null', khong === null, JSON.stringify(khong));
   check('resolveConflict productText 800W/10L → 85081100', r.status === 'RESOLVED' && r.decidedHs === '85081100', JSON.stringify(r));
 }
 
-// Hai lần liên tiếp: lần 2 không được dùng số của lần 1 (hết biến chung _lastProduct)
+// Hai lần liên tiếp: lần 2 không được dùng số của lần 1
 {
   const top = { hs: '85081990', confidence: 70, reason: 'seed' };
   const r1 = resolveConflict(top, [top], {}, {
@@ -159,11 +208,10 @@ check('hàng khác → null', khong === null, JSON.stringify(khong));
   });
   check('lần 1 800W/10L → 85081100', r1.status === 'RESOLVED' && r1.decidedHs === '85081100', JSON.stringify(r1));
   check(
-    'lần 2 2,2 kW/30L → 85081990 (không lẫn lần 1)',
+    'lần 2 công nghiệp 2,2 kW/30L → 85081990 (không lẫn lần 1)',
     r2.status === 'RESOLVED' && r2.decidedHs === '85081990',
     JSON.stringify(r2),
   );
-  // Không truyền productText → không chốt từ mô tả lần trước
   const r3 = resolveConflict(top, [top], {}, deps);
   check(
     'không productText → không kế thừa mô tả cũ',
@@ -172,12 +220,12 @@ check('hàng khác → null', khong === null, JSON.stringify(khong));
   );
 }
 
-// classifyLoop stub: R1 sai vẫn CHOT nhờ bảng
+// classifyLoop stub: R1 sai vẫn CHOT nhờ bảng — chỉ kiểm top-1
 script = [R1_FREEZER_SAI];
 const out33 = await classifyLoop({ tenHang: CA33 }, {});
 check(
-  'classifyLoop ca33 stub: top 84184090',
-  (out33.results || [])[0]?.hs === '84184090' || (out33.results || []).some((r) => r.hs === '84184090'),
+  'classifyLoop ca33 stub: top-1 84184090',
+  (out33.results || [])[0]?.hs === '84184090',
   JSON.stringify({ status: out33.status, results: out33.results, gates: (out33.engine?.gates || []).slice(-3) }),
 );
 check(
@@ -190,8 +238,8 @@ check(
 script = [R1_VACUUM_SAI];
 const out40 = await classifyLoop({ tenHang: CA40 }, {});
 check(
-  'classifyLoop ca40 stub: top 85081100',
-  (out40.results || [])[0]?.hs === '85081100' || (out40.results || []).some((r) => r.hs === '85081100'),
+  'classifyLoop ca40 stub: top-1 85081100',
+  (out40.results || [])[0]?.hs === '85081100',
   JSON.stringify({ status: out40.status, results: out40.results, gates: (out40.engine?.gates || []).slice(-3) }),
 );
 

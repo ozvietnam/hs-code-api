@@ -257,15 +257,17 @@
       ]
     },
     "CF-freezer-door": {
-      "titleVi": "Tủ kết đông cửa trên (8418.30) vs cửa trước (8418.40)",
+      "titleVi": "Tủ kết đông cửa trên (8418.30) vs cửa trước (8418.40) theo dung tích",
       "verified": true,
       "verifiedBy": "ozvietnam",
       "verifiedAt": "2026-11",
       "members": [
+        "84183010",
         "84183090",
+        "84184010",
         "84184090"
       ],
-      "essenceTestVi": "Tủ kết đông kiểu nằm/cửa trên hay kiểu đứng/cửa trước?",
+      "essenceTestVi": "Tủ kết đông kiểu nằm/cửa trên hay kiểu đứng/cửa trước, và dung tích thuộc ngưỡng nào của biểu thuế?",
       "requireAny": [
         "tủ đông",
         "tủ kết đông",
@@ -300,46 +302,100 @@
               "cửa nắp"
             ]
           }
+        },
+        {
+          "attribute": "freezerVolumeClass",
+          "fromText": {
+            "kind": "volumeL",
+            "bands": [
+              { "le": 200, "domain": "le200" },
+              { "gt": 200, "le": 800, "domain": "mid800" },
+              { "gt": 800, "le": 900, "domain": "mid900" },
+              { "gt": 900, "domain": "over900" }
+            ]
+          }
         }
       ],
       "hitPolicy": "PRIORITY",
       "rules": [
         {
           "id": "fd1",
-          "priority": 20,
+          "priority": 40,
           "when": {
-            "freezerDoorType": "frontDoor"
+            "freezerDoorType": "frontDoor",
+            "freezerVolumeClass": "le200"
+          },
+          "hs": "84184010",
+          "gir": "GIR 1+6",
+          "evidence": "hard",
+          "reasonVi": "Tủ kết đông loại cửa trước, dung tích không quá 200 lít → 8418.40.10.",
+          "source": "Biểu thuế XNK — 8418.40.10"
+        },
+        {
+          "id": "fd2",
+          "priority": 30,
+          "when": {
+            "freezerDoorType": "frontDoor",
+            "freezerVolumeClass": "mid800"
           },
           "hs": "84184090",
           "gir": "GIR 1+6",
           "evidence": "hard",
-          "reasonVi": "Tủ kết đông loại cửa trước, dung tích không quá 900 lít → phân nhóm 8418.40 (mã 8418.40.90 Loại khác khi dung tích >200 lít).",
+          "reasonVi": "Tủ kết đông loại cửa trước, dung tích trên 200 đến 900 lít → 8418.40.90 (Loại khác trong 8418.40).",
           "source": "Biểu thuế XNK — tiêu đề 8418.40; TB 5039/TCHQ-TXNK"
         },
         {
-          "id": "fd2",
+          "id": "fd3",
+          "priority": 25,
+          "when": {
+            "freezerDoorType": "frontDoor",
+            "freezerVolumeClass": "mid900"
+          },
+          "hs": "84184090",
+          "gir": "GIR 1+6",
+          "evidence": "hard",
+          "reasonVi": "Tủ kết đông loại cửa trước, dung tích trên 800 đến 900 lít vẫn thuộc 8418.40 (≤900 lít) → 8418.40.90.",
+          "source": "Biểu thuế XNK — tiêu đề 8418.40"
+        },
+        {
+          "id": "fd4",
+          "priority": 20,
+          "when": {
+            "freezerDoorType": "topDoor",
+            "freezerVolumeClass": "le200"
+          },
+          "hs": "84183010",
+          "gir": "GIR 1+6",
+          "evidence": "hard",
+          "reasonVi": "Tủ kết đông loại cửa trên, dung tích không quá 200 lít → 8418.30.10.",
+          "source": "Biểu thuế XNK — 8418.30.10"
+        },
+        {
+          "id": "fd5",
           "priority": 10,
           "when": {
-            "freezerDoorType": "topDoor"
+            "freezerDoorType": "topDoor",
+            "freezerVolumeClass": "mid800"
           },
           "hs": "84183090",
           "gir": "GIR 1+6",
           "evidence": "hard",
-          "reasonVi": "Tủ kết đông loại cửa trên, dung tích không quá 800 lít → phân nhóm 8418.30 (mã 8418.30.90 Loại khác khi dung tích >200 lít).",
-          "source": "Biểu thuế XNK — tiêu đề 8418.30; TB-TCHQ tủ đông cửa trên"
+          "reasonVi": "Tủ kết đông loại cửa trên, dung tích trên 200 đến 800 lít → 8418.30.90 (Loại khác trong 8418.30).",
+          "source": "Biểu thuế XNK — tiêu đề 8418.30"
         }
       ]
     },
     "CF-vacuum-power-container": {
-      "titleVi": "Máy hút bụi ≤1.500 W và đồ chứa ≤20 l (8508.11) vs loại khác (8508.19)",
+      "titleVi": "Máy hút bụi ≤1.500 W và đồ chứa ≤20 l (8508.11) vs 8508.19 gia dụng/loại khác",
       "verified": true,
       "verifiedBy": "ozvietnam",
       "verifiedAt": "2026-11",
       "members": [
         "85081100",
+        "85081910",
         "85081990"
       ],
-      "essenceTestVi": "Công suất ≤1.500 W VÀ đồ chứa/túi ≤20 lít hay vượt một trong hai ngưỡng?",
+      "essenceTestVi": "Công suất ≤1.500 W VÀ đồ chứa/túi ≤20 lít; nếu vượt ngưỡng thì gia dụng hay công nghiệp?",
       "requireAny": [
         "máy hút bụi",
         "hut bui",
@@ -354,33 +410,6 @@
             "le": 1500,
             "domainLe": "le1500",
             "domainGt": "gt1500"
-          },
-          "detect": {
-            "gt1500": [
-              "2,2 kw",
-              "2.2 kw",
-              "2 kw",
-              "2,0 kw",
-              "2.0 kw",
-              "3 kw",
-              "2200 w",
-              "1800 w",
-              "2000 w",
-              "1600 w"
-            ],
-            "le1500": [
-              "1,5 kw",
-              "1.5 kw",
-              "1,2 kw",
-              "1.2 kw",
-              "1 kw",
-              "1500 w",
-              "1.500 w",
-              "1200 w",
-              "1000 w",
-              "800 w",
-              "750 w"
-            ]
           }
         },
         {
@@ -390,29 +419,28 @@
             "le": 20,
             "domainLe": "le20",
             "domainGt": "gt20"
-          },
+          }
+        },
+        {
+          "attribute": "vacuumUseType",
           "detect": {
-            "gt20": [
-              "25 lit",
-              "30 lit",
-              "40 lit",
-              "50 lit",
-              "thung 25",
-              "thung 30",
-              "thùng 25",
-              "thùng 30"
+            "domestic": [
+              "gia dụng",
+              "gia đình",
+              "dùng trong nhà",
+              "household",
+              "domestic",
+              "home use"
             ],
-            "le20": [
-              "15 lit",
-              "10 lit",
-              "12 lit",
-              "16 lit",
-              "18 lit",
-              "20 lit",
-              "5 lit",
-              "8 lit",
-              "thung 15",
-              "thùng 15"
+            "industrial": [
+              "công nghiệp",
+              "nhà xưởng",
+              "nhà máy",
+              "3 pha",
+              "ba pha",
+              "industrial",
+              "industrial vacuum",
+              "workshop"
             ]
           }
         }
@@ -421,7 +449,7 @@
       "rules": [
         {
           "id": "vac1",
-          "priority": 30,
+          "priority": 40,
           "when": {
             "vacuumPowerClass": "le1500",
             "vacuumContainerClass": "le20"
@@ -434,27 +462,55 @@
         },
         {
           "id": "vac2",
-          "priority": 20,
+          "priority": 30,
           "when": {
-            "vacuumPowerClass": "gt1500"
+            "vacuumPowerClass": "gt1500",
+            "vacuumUseType": "industrial"
           },
           "hs": "85081990",
           "gir": "GIR 1+6",
           "evidence": "hard",
-          "reasonVi": "Công suất trên 1.500 W → không thuộc 8508.11 → phân nhóm 8508.19 (Loại khác).",
-          "source": "Biểu thuế XNK — tiêu đề 8508.11 vs 8508.19"
+          "reasonVi": "Công suất trên 1.500 W, loại công nghiệp/nhà xưởng → 8508.19.90 (Loại khác).",
+          "source": "Biểu thuế XNK — 8508.19.10 vs 8508.19.90"
         },
         {
           "id": "vac3",
-          "priority": 10,
+          "priority": 25,
           "when": {
-            "vacuumContainerClass": "gt20"
+            "vacuumPowerClass": "gt1500",
+            "vacuumUseType": "domestic"
+          },
+          "hs": "85081910",
+          "gir": "GIR 1+6",
+          "evidence": "hard",
+          "reasonVi": "Công suất trên 1.500 W, loại phù hợp dùng cho mục đích gia dụng → 8508.19.10.",
+          "source": "Biểu thuế XNK — 8508.19.10"
+        },
+        {
+          "id": "vac4",
+          "priority": 20,
+          "when": {
+            "vacuumContainerClass": "gt20",
+            "vacuumUseType": "industrial"
           },
           "hs": "85081990",
           "gir": "GIR 1+6",
           "evidence": "hard",
-          "reasonVi": "Đồ chứa/túi trên 20 lít → không thuộc 8508.11 → phân nhóm 8508.19 (Loại khác).",
-          "source": "Biểu thuế XNK — tiêu đề 8508.11 vs 8508.19"
+          "reasonVi": "Đồ chứa/túi trên 20 lít, loại công nghiệp/nhà xưởng → 8508.19.90.",
+          "source": "Biểu thuế XNK — 8508.19.10 vs 8508.19.90"
+        },
+        {
+          "id": "vac5",
+          "priority": 10,
+          "when": {
+            "vacuumContainerClass": "gt20",
+            "vacuumUseType": "domestic"
+          },
+          "hs": "85081910",
+          "gir": "GIR 1+6",
+          "evidence": "hard",
+          "reasonVi": "Đồ chứa/túi trên 20 lít, loại gia dụng → 8508.19.10.",
+          "source": "Biểu thuế XNK — 8508.19.10"
         }
       ]
     }
