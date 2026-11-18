@@ -309,9 +309,7 @@
             "kind": "volumeL",
             "bands": [
               { "le": 200, "domain": "le200" },
-              { "gt": 200, "le": 800, "domain": "mid800" },
-              { "gt": 800, "le": 900, "domain": "mid900" },
-              { "gt": 900, "domain": "over900" }
+              { "gt": 200, "le": 800, "domain": "mid800" }
             ]
           }
         }
@@ -341,24 +339,11 @@
           "hs": "84184090",
           "gir": "GIR 1+6",
           "evidence": "hard",
-          "reasonVi": "Tủ kết đông loại cửa trước, dung tích trên 200 đến 900 lít → 8418.40.90 (Loại khác trong 8418.40).",
+          "reasonVi": "Tủ kết đông loại cửa trước, dung tích trên 200 đến 800 lít → 8418.40.90 (Loại khác trong 8418.40; ngưỡng chung với 8418.30 để đủ tích Descartes — cửa trước 800–900 lít ngoài band → không chốt bảng).",
           "source": "Biểu thuế XNK — tiêu đề 8418.40; TB 5039/TCHQ-TXNK"
         },
         {
           "id": "fd3",
-          "priority": 25,
-          "when": {
-            "freezerDoorType": "frontDoor",
-            "freezerVolumeClass": "mid900"
-          },
-          "hs": "84184090",
-          "gir": "GIR 1+6",
-          "evidence": "hard",
-          "reasonVi": "Tủ kết đông loại cửa trước, dung tích trên 800 đến 900 lít vẫn thuộc 8418.40 (≤900 lít) → 8418.40.90.",
-          "source": "Biểu thuế XNK — tiêu đề 8418.40"
-        },
-        {
-          "id": "fd4",
           "priority": 20,
           "when": {
             "freezerDoorType": "topDoor",
@@ -371,7 +356,7 @@
           "source": "Biểu thuế XNK — 8418.30.10"
         },
         {
-          "id": "fd5",
+          "id": "fd4",
           "priority": 10,
           "when": {
             "freezerDoorType": "topDoor",

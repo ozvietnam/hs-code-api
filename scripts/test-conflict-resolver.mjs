@@ -203,6 +203,33 @@ function run(topHs, attrs, expect) {
     'extractVolumeLiters ≥2 dung tích khác nhau → null',
     evl('thùng 15 lít và bình 30 lít') === null,
   );
+  assert(
+    'extractVolumeLiters 1.200 lít → 1200',
+    evl('tủ đông cửa trước dung tích 1.200 lít') === 1200,
+  );
+}
+
+// OZV-1382 GĐ #1438 lần 3 — ≥2 miền detect → không gán; "tủ đông"≠"tự động"
+{
+  const {
+    resolveConflict: rc, enrichAttrsFromTable: enrich, phraseHits: ph,
+    foldProductText: fold, originalProductText: orig,
+  } = require('../lib/conflict-resolver.js');
+  const folded = fold('Máy giặt tự động cửa trước dung tích 65 lít');
+  const original = orig('Máy giặt tự động cửa trước dung tích 65 lít');
+  assert('phraseHits "tủ đông" không khớp "tự động"', ph(folded, 'tủ đông', original) === false);
+  assert('phraseHits "freezer" ASCII vẫn khớp folded', ph(fold('chest freezer 300 l'), 'freezer', orig('chest freezer 300 l')) === true);
+  const dual = enrich({}, tablesDb.tables['CF-vacuum-power-container'], 'máy hút bụi gia đình và nhà xưởng 2,2 kW 30 lít');
+  assert('≥2 miền vacuumUseType → không gán', dual.vacuumUseType == null, JSON.stringify(dual));
+  const dualDoor = enrich({}, tablesDb.tables['CF-freezer-door'], 'tủ đông cửa trên và cửa trước 300 lít');
+  assert('≥2 miền freezerDoorType → không gán', dualDoor.freezerDoorType == null, JSON.stringify(dualDoor));
+  const top = { hs: '84184090', confidence: 70, reason: 'seed' };
+  const r1200 = rc(top, [top], {}, { ...deps, productText: 'tủ đông cửa trước dung tích 1.200 lít' });
+  assert(
+    '1.200 lít không chốt 84184010/90',
+    r1200.status !== 'RESOLVED' || !['84184010', '84184090'].includes(r1200.decidedHs),
+    JSON.stringify(r1200),
+  );
 }
 
 // OZV-1382 GĐ #1438 mục 4 — hai lần resolveConflict (cùng kiểu productText như classify.js) không lẫn mô tả

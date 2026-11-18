@@ -6,6 +6,7 @@
  * earlyExitChotTuConflict CHOT đúng mã trước earlyExitHoi.
  * GĐ #1438 lần 2: dung tích tủ đông; 850819 gia dụng/công nghiệp; không detect số rời;
  * top-1 nghiêm; ≥2 dung tích → null.
+ * GĐ #1438 lần 3: "tủ đông"≠"tự động"; 1.200 lít; ≥2 miền detect → không chốt.
  */
 import './test-isolate-data.mjs';
 import { createRequire } from 'module';
@@ -109,6 +110,10 @@ check(
 check('extractVolumeLiters 15 lít', extractVolumeLiters('dung tích thùng 15 lít') === 15);
 check('extractVolumeLiters thùng 30 lít', extractVolumeLiters('thùng 30 lít') === 30);
 check(
+  'extractVolumeLiters 1.200 lít → 1200 (không cắt đuôi 200)',
+  extractVolumeLiters('tủ đông cửa trước dung tích 1.200 lít') === 1200,
+);
+check(
   'extractVolumeLiters ≥2 dung tích khác nhau → null',
   extractVolumeLiters('dung tích thùng 15 lít, bình phụ 30 lít') === null,
 );
@@ -135,12 +140,39 @@ check('tủ đông thiếu dung tích → null', chotThieuVol === null, JSON.str
 const chotOver = earlyExitChotTuConflict(CA33_OVER, R1_FREEZER_SAI);
 check('cửa trên >800L → null (không chốt bảng)', chotOver === null, JSON.stringify(chotOver));
 
+const chot1200 = earlyExitChotTuConflict('tủ đông cửa trước dung tích 1.200 lít', R1_FREEZER_SAI);
+check(
+  '1.200 lít → null (không chốt 84184010/90 vì cắt nhầm 200)',
+  chot1200 === null,
+  JSON.stringify(chot1200),
+);
+
+const chotMayGiat = earlyExitChotTuConflict('Máy giặt tự động cửa trước dung tích 65 lít', {
+  hypotheses: [{ chapter: '84', heading4: '8450', subheading6: '845011', why: 'máy giặt', confidence: 90 }],
+});
+check('máy giặt tự động → null (không chốt tủ đông 8418)', chotMayGiat === null, JSON.stringify(chotMayGiat));
+
+const chotTuLanhTuDong = earlyExitChotTuConflict('Tủ lạnh xả đá tự động cửa trước 350 lít', {
+  hypotheses: [{ chapter: '84', heading4: '8418', subheading6: '841821', why: 'tủ lạnh', confidence: 90 }],
+});
+check('tủ lạnh xả đá tự động → null (không ≡ tủ đông)', chotTuLanhTuDong === null, JSON.stringify(chotTuLanhTuDong));
+
 // --- hút bụi ---
 const chot40 = earlyExitChotTuConflict(CA40, R1_VACUUM_SAI);
 check('ca40 1,5 kW 15 l → CHOT 85081100', chot40?.decision === 'CHOT' && chot40?.hs === '85081100', JSON.stringify(chot40));
 
 const chot40b = earlyExitChotTuConflict(CA40_OVER_BOTH, R1_VACUUM_SAI);
 check('2,2 kW 30 l thiếu công dụng → null', chot40b === null, JSON.stringify(chot40b));
+
+const chotDualUse = earlyExitChotTuConflict(
+  'máy hút bụi gia đình và nhà xưởng 2,2 kW 30 lít',
+  R1_VACUUM_SAI,
+);
+check(
+  'gia đình + nhà xưởng (≥2 miền) → null, không chốt bừa',
+  chotDualUse === null,
+  JSON.stringify(chotDualUse),
+);
 
 const chot40bInd = earlyExitChotTuConflict(CA40_OVER_BOTH_IND, R1_VACUUM_SAI);
 check('công nghiệp 2,2 kW 30 l → CHOT 85081990', chot40bInd?.decision === 'CHOT' && chot40bInd?.hs === '85081990', JSON.stringify(chot40bInd));
