@@ -4,13 +4,19 @@
   "nhom": "8549",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-854914",
     "ngay": "2026-11-04"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:duyet-OZV1407-20261118#soat-854914",
+    "ngay": "2026-11-18",
+    "ghiChu": "Sửa 85491420: bỏ BO_VE 'Của ắc qui điện' (lyDo sai, soat-L29), thêm tenLoai 'ắc qui điện' + dungCho 'máy bay' — hết chồng lấn với 85491410 'Của pin và bộ pin'.",
+    "bam": "791c131244535b4bdce8bc220c29c1e41012de63bd2e46c93cd93c59343be839"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -27,7 +33,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85491420",
@@ -35,19 +41,24 @@
       "trich": "85491420 - - - Của ắc qui điện loại dùng cho máy bay",
       "dieuKienSo": [
         {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "ắc qui điện"
+        },
+        {
           "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": "máy bay"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85491490",
       "nguon": "tax.85491490",
       "trich": "85491490 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -59,13 +70,7 @@
     {
       "ma": "85491420",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85491420: \"Của ắc qui điện loại dùng cho máy bay\" ⇒ dungCho \"máy bay\""
-    },
-    {
-      "ma": "85491420",
-      "loai": "BO_VE",
-      "ve": "Của ắc qui điện",
-      "lyDo": "Cụm danh từ đầu chỉ loại phế liệu ắc qui điện thuộc phạm vi nhóm 8549"
+      "ghiChu": "tax.85491420: \"Của ắc qui điện loại dùng cho máy bay\" ⇒ tenLoai \"ắc qui điện\" + dungCho \"máy bay\" (bỏ BO_VE \"Của ắc qui điện\" — vế này là chỗ .20 khác .10 \"Của pin và bộ pin\"; soat-L29, OZV-1407)"
     }
   ],
   "traVe": [

@@ -4,13 +4,19 @@
   "nhom": "8549",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-854912",
     "ngay": "2026-11-04"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:duyet-OZV1407-20261118#soat-854912",
+    "ngay": "2026-11-18",
+    "ghiChu": "Sửa 85491220: bỏ BO_VE 'Của ắc qui điện' (lyDo sai, soat-L29), thêm tenLoai 'ắc qui điện' + dungCho 'máy bay' — hết chồng lấn với 85491210 'Của pin và bộ pin'.",
+    "bam": "76ebf740c7581e3949d5c7c9d0604eba1f1881a61870548b3eeb3f393f3c9644"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -27,7 +33,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85491220",
@@ -35,19 +41,24 @@
       "trich": "85491220 - - - Của ắc qui điện loại dùng cho máy bay",
       "dieuKienSo": [
         {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "ắc qui điện"
+        },
+        {
           "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": "máy bay"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85491290",
       "nguon": "tax.85491290",
       "trich": "85491290 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -59,13 +70,7 @@
     {
       "ma": "85491220",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85491220: \"Của ắc qui điện loại dùng cho máy bay\" ⇒ dungCho \"máy bay\""
-    },
-    {
-      "ma": "85491220",
-      "loai": "BO_VE",
-      "ve": "Của ắc qui điện",
-      "lyDo": "Cụm danh từ đầu chỉ loại phế liệu ắc qui điện thuộc phạm vi nhóm 8549"
+      "ghiChu": "tax.85491220: \"Của ắc qui điện loại dùng cho máy bay\" ⇒ tenLoai \"ắc qui điện\" + dungCho \"máy bay\" (bỏ BO_VE \"Của ắc qui điện\" — vế này là chỗ .20 khác .10 \"Của pin và bộ pin\"; soat-L29, OZV-1407)"
     }
   ]
 }
