@@ -83,9 +83,9 @@ const that = chayCaDoiChungVatLieu(['8546', '8547']);
   const stubTat = () => ({ ketQua: 'KHONG_THE_CHOT', hs: null, lyDo: 'gia-suat-ngung-chot' });
   const cd = chayCaDoiChungVatLieu(['8546', '8547'], stubTat);
   // Cổng cũ: DAT 36 (bẫy). Cổng siết: mọi ca coSo=CHOT mất chốt + KHONG_NEU lệch coSo ⇒ DOI_HANH_VI
-  // (4 TRAI-CHOT + 3 DUNG-CHOT + 1 KHONG_NEU-CHOT + 1 KHONG_NEU-THIEU_SO_LIEU) — KHÔNG thể toàn xanh.
+  // (4 TRAI-CHOT + 3 DUNG-CHOT + 2 KHONG_NEU-CHOT + 2 KHONG_NEU-THIEU_SO_LIEU) — KHÔNG thể toàn xanh.
   check('C1 máy ngừng chốt hoàn toàn: KHÔNG toàn DAT (bẫy bản vá rỗng đã sập)', cd.dat < 36 && cd.doiHanhVi > 0, bang(cd));
-  check('C2 đúng 9 ca DOI_HANH_VI (8 ca coSo=CHOT + 1 KHONG_NEU lệch THIEU_SO_LIEU)', cd.doiHanhVi === 9 && cd.dat === 27 && cd.do === 0, bang(cd));
+  check('C2 đúng 11 ca DOI_HANH_VI (9 ca coSo=CHOT + 2 KHONG_NEU lệch THIEU_SO_LIEU)', cd.doiHanhVi === 11 && cd.dat === 25 && cd.do === 0, bang(cd));
 }
 
 // ── D. Vá ĐÚNG ca đỏ còn lại: đỏ 1→0, ca được vá thành DAT, không phát sinh đổi hành vi ───────────
