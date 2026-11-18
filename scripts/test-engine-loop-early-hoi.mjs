@@ -176,7 +176,7 @@ check('OZV-1380 earlyExitHoiTuR1: chỉ có chương 2 số → null (không rơ
   r1BoMach({ chapter: '85', heading4: '853', subheading6: '8534', confidence: 60 }),
 ].every((r1) => earlyExitHoiTuR1(r1) === null));
 
-check('OZV-1380 earlyExitHoiTuR1: chỉ có nhóm 4 số → HOI 4 số', earlyExitHoiTuR1(r1BoMach({ chapter: '85', heading4: '8534', confidence: 60 }))?.hs === '8534');
+check('OZV-1380 earlyExitHoiTuR1: chỉ có nhóm 4 số (nhóm nhiều phân nhóm) → HOI 4 số (cổng G1 sẽ chặn → R2)', earlyExitHoiTuR1(r1BoMach({ chapter: '84', heading4: '8471', confidence: 60 }))?.hs === '8471');
 
 // Ca R1 có thật trên prod: giả thuyết dẫn đầu không khai heading4 (chỉ subheading6) còn codes8 trỏ nhóm khác → hồ sơ vụ việc
 // vòng 1 chưa có nhóm 8534 → cổng NHOM_CHUA_KIEM chặn earlyExitHoi → trước OZV-1380 tốn R2 (81–118 s thực địa).
@@ -203,6 +203,55 @@ const quat = await runCa(QUAT, R1_QUAT, { r2: { ...CHOT, hs: '84796000', reason:
 check('OZV-1380 không lách cổng: nhóm gather không nạp được → vẫn gọi R2, không earlyExitHoi=true',
   quat.girCalls === 1 && !quat.gates.some((g) => g.earlyExitHoi === true),
   JSON.stringify({ gir: quat.girCalls, gates: quat.gates.filter((g) => g.round) }));
+
+// ── OZV-1384: earlyExitHoi không leo R2 vì MA_KHONG_TON_TAI khi giả thuyết R1 chỉ đúng tới nhóm 4 số ──
+// Đo A3 18/11 (docs/a3-do-lai-sau-1431-2026-11-18.md ca 5, minimax): `earlyExitHoi false (MA_KHONG_TON_TAI)` → R2 ~32 s llmMs.
+// Biểu: 8534 chỉ có MỘT phân nhóm 853400 (85340010/20/30/90); 853410 không có; 8471 có 8 phân nhóm, 847199 không có;
+// 8599 không là nhóm có thật. Tầng sau (validateClassifyResults, lib/classify.js) loại mã 4 số (BAD_LENGTH) → không trả HOI 4 số.
+const eeMot = (hyp) => earlyExitHoiTuR1(r1BoMach(hyp))?.hs;
+check('OZV-1384 earlyExitHoiTuR1: subheading6 không có trong biểu + nhóm chỉ có 1 phân nhóm → dùng phân nhóm duy nhất 853400',
+  eeMot({ chapter: '85', heading4: '8534', subheading6: '853410', confidence: 70 }) === '853400',
+  eeMot({ chapter: '85', heading4: '8534', subheading6: '853410', confidence: 70 }));
+check('OZV-1384 earlyExitHoiTuR1: chỉ heading4 8534 (subheading6 rỗng) → 853400',
+  eeMot({ chapter: '85', heading4: '8534', subheading6: '', confidence: 70 }) === '853400');
+check('OZV-1384 earlyExitHoiTuR1: subheading6 có thật → giữ nguyên (không đổi)', earlyExitHoiTuR1(R1_BO_MACH_THAT)?.hs === '853400');
+check('OZV-1384 earlyExitHoiTuR1: nhóm nhiều phân nhóm + subheading6 sai → giữ hành vi cũ (847199, cổng chặn → R2)',
+  eeMot({ chapter: '84', heading4: '8471', subheading6: '847199', confidence: 70 }) === '847199');
+check('OZV-1384 earlyExitHoiTuR1: nhóm + phân nhóm đều không có trong biểu → giữ hành vi cũ (859910)',
+  eeMot({ chapter: '85', heading4: '8599', subheading6: '859910', confidence: 70 }) === '859910');
+
+// (a) chạy cả vòng: R1 MiniMax chỉ đúng tới nhóm 8534 → NEED_FACTS ở R1, rounds = 1, không gọi R2.
+for (const [ten, hyp] of [
+  ['subheading6 sai (853410), heading4 8534', { chapter: '85', heading4: '8534', subheading6: '853410', why: 'mạch in', confidence: 70 }],
+  ['chỉ heading4 8534 (subheading6 rỗng)', { chapter: '85', heading4: '8534', subheading6: '', why: 'mạch in', confidence: 70 }],
+]) {
+  const ca = await runCa(BO_MACH, r1BoMach(hyp));
+  check(`OZV-1384 (a) ${ten} → NEED_FACTS, không gọi R2`, ca.girCalls === 0 && ca.out.status === 'NEED_FACTS',
+    JSON.stringify({ gir: ca.girCalls, status: ca.out.status, gates: ca.gates.filter((g) => g.round) }));
+  check(`OZV-1384 (a) ${ten} → rounds = 1, earlyExitHoi=true, results[0].hs 853400, có câu hỏi`,
+    ca.out.engine?.rounds === 1 && ca.gates.some((g) => g.earlyExitHoi === true && g.hs === '853400')
+      && ca.out.results?.[0]?.hs === '853400' && (ca.out.nextAction?.questions || []).length >= 1,
+    JSON.stringify({ rounds: ca.out.engine?.rounds, hs: ca.out.results?.[0]?.hs, gates: ca.gates.filter((g) => g.round), na: ca.out.nextAction }));
+}
+
+// (b) nhóm không có trong biểu, hoặc nhóm nhiều phân nhóm mà phân nhóm R1 sai → vẫn leo R2 như cũ.
+for (const [ten, hyp] of [
+  ['heading4 8599 không có trong biểu', { chapter: '85', heading4: '8599', subheading6: '859910', why: 'bịa', confidence: 70 }],
+  ['8471 nhiều phân nhóm, subheading6 847199 sai', { chapter: '84', heading4: '8471', subheading6: '847199', why: 'máy tính', confidence: 70 }],
+]) {
+  const caB = await runCa(BO_MACH, r1BoMach(hyp));
+  check(`OZV-1384 (b) ${ten} → vẫn gọi R2, earlyExitHoi=false MA_KHONG_TON_TAI`,
+    caB.girCalls === 1 && caB.gates.some((g) => g.earlyExitHoi === false && /MA_KHONG_TON_TAI/.test(g.lyDo || '')),
+    JSON.stringify({ gir: caB.girCalls, gates: caB.gates.filter((g) => g.round) }));
+}
+
+// (c) G1 không đổi: mã 4 số bị chặn ở cả CHỐT lẫn HOI (gates() không có ngoại lệ mới).
+const { gates: gatesFn } = require('../lib/engine-loop.js');
+const gCtx = { source: BO_MACH.tenHang, productText: BO_MACH.tenHang, gathered: { headings: ['8534'] }, machinery: false, round: 2 };
+for (const decision of ['CHOT', 'HOI']) {
+  const g4 = gatesFn({ decision, hs: '8534', basis: [] }, gCtx);
+  check(`OZV-1384 (c) ${decision} hs 4 số → G1 vẫn chặn MA_KHONG_TON_TAI`, g4.blocks.some((b) => b.gate === 'MA_KHONG_TON_TAI'), JSON.stringify(g4.blocks));
+}
 
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
