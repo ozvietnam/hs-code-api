@@ -15,7 +15,7 @@
     "phien": "claude-agent:duyet-L10-20261111#soat-L10",
     "ngay": "2026-11-11",
     "ghiChu": "Đối chiếu .10 điện ảnh + .30 \"Loại khác, chiều dài từ 120 m trở lên\" (EN of a length of 120 m or more): đối chiếu tay biên (cảnh báo cong3-bien-khong-doc-duoc) — \"từ … trở lên\" = >= 120 m đúng.",
-    "bam": "3a0e02e95fb124cc47027148519709860540b9990faf7a48e53945bda6efdb93"
+    "bam": "d1aba43fd4d2377482072183d0c1bf9d0c19c78416498c212730622ae13aaa6a"
   },
   "dieuKienNut": [],
   "dong8": [
@@ -25,8 +25,9 @@
       "trich": "37029810 - - - Loại phù hợp dùng cho điện ảnh",
       "dieuKienSo": [
         {
-          "fact": "dungChoDienAnh",
-          "op": "CO"
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "điện ảnh"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -57,7 +58,7 @@
     {
       "ma": "37029830",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.37029810 \"Loại phù hợp dùng cho điện ảnh\" ⇒ dungChoDienAnh CO. tax.37029830 \"Loại khác, chiều dài từ 120 m trở lên\" ⇒ chieuDaiCuon >= 120 m (\"từ … trở lên\" = >=; dòng \"Loại khác,\" có vế nên ghi điều kiện của vế, khác dòng \"Loại khác\" trần .90 ⇒ không ghi điều kiện). Dòng .90 là \"Loại khác\" trần ⇒ không ghi điều kiện."
+      "ghiChu": "tax.37029810 \"Loại phù hợp dùng cho điện ảnh\" ⇒ congDung CONG_DUNG \"điện ảnh\" (vế \"dùng cho điện ảnh\"). tax.37029830 \"Loại khác, chiều dài từ 120 m trở lên\" ⇒ chieuDaiCuon >= 120 m (\"từ … trở lên\" = >=; dòng \"Loại khác,\" có vế nên ghi điều kiện của vế, khác dòng \"Loại khác\" trần .90 ⇒ không ghi điều kiện). Dòng .90 là \"Loại khác\" trần ⇒ không ghi điều kiện."
     }
   ]
 }
