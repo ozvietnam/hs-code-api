@@ -336,6 +336,35 @@ check('trangThaiDong8.veMoHinh: 73181510 chấm trọn nhãn "Đường kính ng
   check('#1180(3b) phân nhóm chưa có ranh-gioi.json (853932) lùi về tên biểu thuế → CHOT 85393200',
     kqLuiBieu.ketQua === 'CHOT' && kqLuiBieu.hs === '85393200', JSON.stringify(kqLuiBieu));
 
+  // OZV-1381 (A1 ca 5, ca 40): phân nhóm 6 số chỉ có MỘT dòng 8 số, chưa có ranh-gioi.json — tên dòng (lùi về biểu thuế)
+  // so chữ không tất định không được chặn chốt: chọn đúng 6 số là chọn luôn dòng duy nhất (GIR 6, không còn anh em cùng cấp).
+  const bo50 = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'tests', 'bo-50-ca-tb-tchq.json'), 'utf8'));
+  const ca50 = (stt) => (bo50.cases || bo50).find((c) => c.stt === stt);
+  const kqCa5 = chotDong8({ hs: '320419', productText: ca50(5).cauKhach });
+  check('OZV-1381 ca 5 (320419 một dòng, tên "Loại khác, kể cả hỗn hợp…") → CHOT 32041900',
+    kqCa5.ketQua === 'CHOT' && kqCa5.hs === '32041900' && kqCa5.lyDo === 'dong-8-duy-nhat-cua-phan-nhom', JSON.stringify(kqCa5));
+  // Ca 40 (850811, tên dòng DƯƠNG chứa ngưỡng 1.500 W / 20 lít) KHÔNG nới ở đây: tên dương giữ lưới an toàn OZV-590/630
+  // (giàn phơi trên 830250, SEM trên 901110). Đường đúng là số hoá ranh giới 850811 / bảng CF-vacuum-power-container.
+  const kqCa40 = chotDong8({ hs: '850811', productText: ca50(40).cauKhach });
+  check('OZV-1381 ca 40 (850811 tên dòng dương) → giữ hành vi cũ, không CHOT mã khác 85081100',
+    kqCa40.ketQua !== 'CHOT' || kqCa40.hs === '85081100', JSON.stringify(kqCa40));
+  // Đối chứng: phân nhóm một dòng CÓ điều kiện số riêng (200710: khối lượng tịnh ≤ 250 g) — số TRÁI vẫn không chốt,
+  // thiếu số vẫn hỏi (THIEU_SO_LIEU) như cũ.
+  const kqTrai = chotDong8({ hs: '200710', productText: 'Chế phẩm đồng nhất từ trái cây cho trẻ em, hộp 500 g' });
+  check('OZV-1381 đối chứng 200710 điều kiện ≤250 g, mô tả 500 g (TRÁI) → không CHOT',
+    kqTrai.ketQua !== 'CHOT', JSON.stringify(kqTrai));
+  const kqThieu = chotDong8({ hs: '200710', productText: 'Chế phẩm đồng nhất từ trái cây cho trẻ em' });
+  check('OZV-1381 đối chứng 200710 không nêu khối lượng → vẫn THIEU_SO_LIEU (không chốt bừa)',
+    kqThieu.ketQua === 'THIEU_SO_LIEU', JSON.stringify(kqThieu));
+  // Đối chứng: 854690 (một dòng "Loại khác" mượn tên cha — nhánh giữ lưới an toàn OZV-630) và 854710 (tên dòng dương
+  // "bằng gốm sứ") KHÔNG áp ngoại lệ — giữ nguyên hành vi cũ, không chốt.
+  const kqVlCo = chotDong8({ hs: '854690', productText: 'Vật cách điện bằng nhựa dùng cho đường dây tải điện' });
+  const kqVlKhong = chotDong8({ hs: '854690', productText: 'Cách điện xuyên của máy biến điện' });
+  const kqTenDuong = chotDong8({ hs: '854710', productText: 'Đế kẹp thanh dẫn bằng nhựa cách điện, dùng trong tủ điện trung thế' });
+  check('OZV-1381 đối chứng 854690 không nêu vật liệu và 854710 tên dương + nhựa → không CHOT',
+    kqVlKhong.ketQua !== 'CHOT' && kqTenDuong.ketQua !== 'CHOT',
+    JSON.stringify({ kqVlCo: [kqVlCo.ketQua, kqVlCo.hs], kqVlKhong: kqVlKhong.ketQua, kqTenDuong: kqTenDuong.ketQua }));
+
   // 3(e) 13 phân nhóm từng ném lỗi cauHoiCho(undefined) nay không ném lỗi nữa
   const PN6_13 = ['380899', '630790', '640690', '732690', '840991', '845290', '848120', '851762', '853180', '853190', '871410', '940541', '940542'];
   const loi13 = [];
