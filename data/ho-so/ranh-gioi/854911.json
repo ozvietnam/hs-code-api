@@ -4,13 +4,19 @@
   "nhom": "8549",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T1003#soan-854911",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:duyet-OZV1446-20261118#soat-854911",
+    "ngay": "2026-11-18",
+    "ghiChu": "Sửa 8549111: bỏ 'ắc qui axit chì' rời trùng phạm vi 854911/8549119, dùng tenLoai 'Phế thải pin' + 'tháo dung dịch axit'; sửa 85491120/.30: tách tenLoai ['Phế liệu', 'phế thải'] + chatLieu sắt thép/đồng.",
+    "bam": "8a04cc30c1e592d0c73daab67024cfc21259045b55ef5de64795e0937dd42cf2"
+  },
   "dieuKienNut": [
     {
       "id": "8549111",
@@ -20,13 +26,15 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": [
-            "Phế thải pin",
-            "ắc qui axit chì"
-          ]
+          "value": "Phế thải pin"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "tháo dung dịch axit"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -41,7 +49,7 @@
           "value": "máy bay"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85491112",
@@ -54,14 +62,14 @@
           "value": "phân nhóm 8507.10.92, 8507.10.95, 8507.20.94 hoặc 8507.20.95"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85491119",
       "nguon": "tax.85491119",
       "trich": "85491119 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85491120",
@@ -71,7 +79,10 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Phế liệu và phế thải"
+          "value": [
+            "Phế liệu",
+            "phế thải"
+          ]
         },
         {
           "fact": "chatLieu",
@@ -79,7 +90,7 @@
           "value": "sắt thép"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85491130",
@@ -89,7 +100,10 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Phế liệu và phế thải"
+          "value": [
+            "Phế liệu",
+            "phế thải"
+          ]
         },
         {
           "fact": "chatLieu",
@@ -97,7 +111,7 @@
           "value": "đồng"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85491191",
@@ -110,7 +124,7 @@
           "value": "máy bay"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85491192",
@@ -123,21 +137,21 @@
           "value": "phân nhóm 8507.10.92, 8507.10.95, 8507.20.94 hoặc 8507.20.95"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85491199",
       "nguon": "tax.85491199",
       "trich": "85491199 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "8549111",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.8549111 \"Phế thải pin, ắc qui axit chì, đã hoặc chưa tháo dung dịch axit\" ⇒ tenLoai mảng [\"Phế thải pin\",\"ắc qui axit chì\"] (\"pin, ắc qui axit chì\" liệt kê); \"đã hoặc chưa tháo dung dịch axit\" — máy không đòi vế, mọi phế thải ắc qui axit chì đều hoặc đã hoặc chưa tháo (mệnh đề phủ toàn miền)."
+      "ghiChu": "tieuDe.8549111 \"Phế thải pin, ắc qui axit chì, đã hoặc chưa tháo dung dịch axit\" ⇒ tenLoai \"Phế thải pin\" + tenLoai \"tháo dung dịch axit\" (bỏ \"ắc qui axit chì\" rời trùng phạm vi 854911/8549119; giữ cụm đặc trưng của tầng 8549111)."
     },
     {
       "ma": "85491111",
@@ -152,7 +166,7 @@
     {
       "ma": "85491120",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85491120 \"Phế liệu và phế thải chủ yếu chứa sắt\" ⇒ tenLoai \"Phế liệu và phế thải\" (tên đầu, phân khoá với tầng .1 \"Phế thải pin, ắc qui axit chì\") + chatLieu LA \"sắt thép\" (giá trị tu-vung@2 đọc \"sắt\", vế \"chứa sắt\"; không viTri — \"chủ yếu chứa\" = thành phần chính); tax.85491130 \"… chứa đồng\" ⇒ tenLoai \"Phế liệu và phế thải\" + chatLieu LA \"đồng\". Tầng 8549119 \"Loại khác\" trần — không ghi điều kiện (máy phủ định .1/.20/.30)."
+      "ghiChu": "tax.85491120 \"Phế liệu và phế thải chủ yếu chứa sắt\" ⇒ tenLoai [\"Phế liệu\", \"phế thải\"] (tách mảng HOẶC để không đòi cả hai chữ \"phế liệu\" và \"phế thải\", giữ cùng trục tên loại với 8549111) + chatLieu LA \"sắt thép\"; tax.85491130 \"… chứa đồng\" ⇒ tenLoai [\"Phế liệu\", \"phế thải\"] + chatLieu LA \"đồng\". Tầng 8549119 \"Loại khác\" trần — không ghi điều kiện (máy phủ định .1/.20/.30)."
     }
   ],
   "traVe": [

@@ -26,7 +26,10 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Phế liệu và phế thải"
+          "value": [
+            "Phế liệu",
+            "phế thải"
+          ]
         },
         {
           "fact": "chatLieu",
@@ -40,7 +43,10 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Phế liệu và phế thải"
+          "value": [
+            "Phế liệu",
+            "phế thải"
+          ]
         },
         {
           "fact": "chatLieu",
@@ -74,10 +80,12 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": [
-            "Phế thải pin",
-            "ắc qui axit chì"
-          ]
+          "value": "Phế thải pin"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "tháo dung dịch axit"
         }
       ]
     }
@@ -86,7 +94,7 @@
     {
       "ma": "8549111",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.8549111 \"Phế thải pin, ắc qui axit chì, đã hoặc chưa tháo dung dịch axit\" ⇒ tenLoai mảng [\"Phế thải pin\",\"ắc qui axit chì\"] (\"pin, ắc qui axit chì\" liệt kê); \"đã hoặc chưa tháo dung dịch axit\" — máy không đòi vế, mọi phế thải ắc qui axit chì đều hoặc đã hoặc chưa tháo (mệnh đề phủ toàn miền)."
+      "ghiChu": "tieuDe.8549111 \"Phế thải pin, ắc qui axit chì, đã hoặc chưa tháo dung dịch axit\" ⇒ tenLoai \"Phế thải pin\" + tenLoai \"tháo dung dịch axit\" (bỏ \"ắc qui axit chì\" rời trùng phạm vi 854911/8549119; giữ cụm đặc trưng của tầng 8549111)."
     },
     {
       "ma": "85491111",
@@ -101,7 +109,7 @@
     {
       "ma": "85491120",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85491120 \"Phế liệu và phế thải chủ yếu chứa sắt\" ⇒ tenLoai \"Phế liệu và phế thải\" (tên đầu, phân khoá với tầng .1 \"Phế thải pin, ắc qui axit chì\") + chatLieu LA \"sắt thép\" (giá trị tu-vung@2 đọc \"sắt\", vế \"chứa sắt\"; không viTri — \"chủ yếu chứa\" = thành phần chính); tax.85491130 \"… chứa đồng\" ⇒ tenLoai \"Phế liệu và phế thải\" + chatLieu LA \"đồng\". Tầng 8549119 \"Loại khác\" trần — không ghi điều kiện (máy phủ định .1/.20/.30)."
+      "ghiChu": "tax.85491120 \"Phế liệu và phế thải chủ yếu chứa sắt\" ⇒ tenLoai [\"Phế liệu\", \"phế thải\"] (tách mảng HOẶC để không đòi cả hai chữ \"phế liệu\" và \"phế thải\", giữ cùng trục tên loại với 8549111) + chatLieu LA \"sắt thép\"; tax.85491130 \"… chứa đồng\" ⇒ tenLoai [\"Phế liệu\", \"phế thải\"] + chatLieu LA \"đồng\". Tầng 8549119 \"Loại khác\" trần — không ghi điều kiện (máy phủ định .1/.20/.30)."
     }
   ]
 }
