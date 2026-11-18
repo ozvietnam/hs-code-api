@@ -253,5 +253,44 @@ for (const decision of ['CHOT', 'HOI']) {
   check(`OZV-1384 (c) ${decision} hs 4 số → G1 vẫn chặn MA_KHONG_TON_TAI`, g4.blocks.some((b) => b.gate === 'MA_KHONG_TON_TAI'), JSON.stringify(g4.blocks));
 }
 
+// ── OZV-1389: cổng G6 made-in-china (NHA_SAN_XUAT_KHAC_NHOM) không đẩy ca HOI earlyExit lên R2 ──
+// Đo bản thật 08:41 18/11: bo mạch → log `{round:2, earlyExitHoi:false, lyDo:'NHA_SAN_XUAT_KHAC_NHOM'}`, R2 thừa 23,9 s.
+// gathered.mic.consensus = 8537 (2 shop, query "Partially assembled electronic circuit board" — cả hai là tủ điện: nhiễu chữ "board").
+{
+  const micMod = require('../lib/mic-lookup.js');
+  const savedMic = micMod.micLookup;
+  const PG = (shop, hsCode, name) => ({ shop, url: `https://${shop}.en.made-in-china.com/product/x/y.html`, name, hsCode, props: {} });
+  micMod.micLookup = async (q) => ({ query: q, searched: true, pages: [PG('swgear1', '8537109000', 'Electrical Switchgear Board'), PG('swgear2', '8537101000', 'Distribution Board Cabinet')], consensus: null });
+  const r1Mic = { ...R1_BO_MACH_THAT, product: { ...R1_BO_MACH_THAT.product, nameEn: 'Partially assembled electronic circuit board' } };
+  try {
+    // (a) HOI earlyExit + MIC khác nhóm → vẫn earlyExitHoi, rounds 1, không gọi R2; cảnh báo MIC vẫn được ghi.
+    const caMic = await runCa(BO_MACH, r1Mic);
+    const micDaChay = caMic.out.dossier?.mic?.consensus?.heading4 === '8537' || JSON.stringify(caMic.out).includes('8537');
+    check('OZV-1389 (a) tiền đề: stub made-in-china tạo đồng thuận nhóm 8537', micDaChay, JSON.stringify(caMic.out.dossier?.mic || null).slice(0, 300));
+    check('OZV-1389 (a) HOI + MIC khác nhóm → earlyExitHoi=true, rounds 1, không gọi R2, NEED_FACTS',
+      caMic.girCalls === 0 && caMic.out.engine?.rounds === 1 && caMic.out.status === 'NEED_FACTS'
+        && caMic.gates.some((g) => g.earlyExitHoi === true && g.hs === '853400')
+        && !caMic.gates.some((g) => /NHA_SAN_XUAT_KHAC_NHOM/.test(g.lyDo || '')),
+      JSON.stringify({ gir: caMic.girCalls, rounds: caMic.out.engine?.rounds, status: caMic.out.status, gates: caMic.gates.filter((g) => g.round) }));
+  } finally { micMod.micLookup = savedMic; }
+
+  // (b) Đường CHỐT 8 số + MIC khác nhóm chưa giải trình → vẫn chặn NHA_SAN_XUAT_KHAC_NHOM (kể cả khi lỡ mang cờ earlyHoi).
+  const micGathered = { headings: ['8534'], mic: { consensus: { heading4: '8537', shops: 2 } } };
+  const gMicCtx = { source: BO_MACH.tenHang, productText: BO_MACH.tenHang, gathered: micGathered, machinery: true, round: 2 };
+  const CHOT_BO_MACH = { decision: 'CHOT', hs: '85340020', confidence: 80, reason: 'mạch in hai mặt', basis: [], conditions: [], alternatives: [], questions: [] };
+  for (const [ten, ctx, ans] of [
+    ['CHỐT 85340020, round 2', gMicCtx, CHOT_BO_MACH],
+    ['CHỐT 85340020 mang cờ earlyHoi', { ...gMicCtx, earlyHoi: true }, CHOT_BO_MACH],
+    ['HOI 853400 KHÔNG qua earlyExitHoi (vòng R2 thường)', gMicCtx, { ...R2_HOI_BO_MACH }],
+  ]) {
+    const gB = gatesFn(ans, ctx);
+    check(`OZV-1389 (b) ${ten} → vẫn chặn NHA_SAN_XUAT_KHAC_NHOM`, gB.blocks.some((b) => b.gate === 'NHA_SAN_XUAT_KHAC_NHOM'), JSON.stringify(gB.blocks.map((b) => b.gate)));
+  }
+  const gHoi = gatesFn({ ...R2_HOI_BO_MACH }, { ...gMicCtx, earlyHoi: true });
+  check('OZV-1389 (b) HOI 853400 + earlyHoi → không chặn G6, có cảnh báo made-in-china 8537',
+    !gHoi.blocks.some((b) => b.gate === 'NHA_SAN_XUAT_KHAC_NHOM') && gHoi.warnings.some((w) => /made-in-china.*8537/.test(w)),
+    JSON.stringify({ blocks: gHoi.blocks.map((b) => b.gate), warnings: gHoi.warnings }));
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
