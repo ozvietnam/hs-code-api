@@ -131,5 +131,78 @@ check('OZV-1320 Zonye: sổ tay chặn earlyExit → vẫn gọi GIR', zonye.gir
 check('OZV-1320 Zonye: không earlyExitHoi=true', !(zonye.out.engine?.gates || []).some((g) => g.earlyExitHoi === true), JSON.stringify(zonye.out.engine?.gates?.slice(-3)));
 check('OZV-1320 Zonye: chốt 84812011 (không NEED_FACTS 848190)', zonye.out.status !== 'NEED_FACTS' && (zonye.out.results?.[0]?.hs || '') === '84812011', JSON.stringify({ status: zonye.out.status, hs: zonye.out.results?.[0]?.hs }));
 
+// ── OZV-1380: earlyExitHoi bỏ R2 khi R1 đủ câu hỏi, chỉ vướng NHOM_CHUA_KIEM ──
+// Mẫu R1 THẬT (prod /api/classify?debug=1 18/11, gemini-free, dossier.hypotheses + dossier.unknowns): unknowns là CHUỖI.
+const BO_MACH = { tenHang: 'bo mạch điện tử chưa lắp ráp đầy đủ linh kiện' };
+const UNK_BO_MACH = [
+  'Thành phần vật liệu chính của mạch in (một mặt, hai mặt hay nhiều lớp)',
+  'Đã được gắn các linh kiện chưa hay chỉ mới là mạch in cơ bản',
+];
+const r1BoMach = (hyp, codes8 = ['85340010']) => ({
+  product: { nameVi: BO_MACH.tenHang, purpose: '', mechanism: '', material: '', evidence: {} },
+  hypotheses: [hyp],
+  verify: { searchVi: ['bo mạch'], notesChapters: [], codes8, unknowns: UNK_BO_MACH },
+});
+const R1_BO_MACH_THAT = r1BoMach({ chapter: '85', heading4: '8534', subheading6: '853400', why: 'mạch in nhóm 8534', confidence: 95 });
+const R2_HOI_BO_MACH = {
+  decision: 'HOI', hs: '853400', confidence: 50, reason: 'thiếu dữ kiện', basis: [], conditions: [], alternatives: [],
+  questions: [{ fact: 'linh kiện', question: 'Đã gắn linh kiện chưa?', whereToFind: 'ảnh' }],
+};
+async function runCa(raw, r1, { env = {}, r2 = R2_HOI_BO_MACH } = {}) {
+  for (const [k, v] of Object.entries(env)) process.env[k] = v;
+  script = [r1, r2];
+  llmCalls = [];
+  let out;
+  try { out = await classifyLoop(raw, { debug: true }); }
+  finally { for (const k of Object.keys(env)) delete process.env[k]; }
+  return { out, girCalls: llmCalls.filter((c) => !c.r1).length, gates: out.engine?.gates || [] };
+}
+
+check('OZV-1380 earlyExitHoiTuR1: unknowns dạng chuỗi (R1 thật bo mạch) → HOI 853400, 2 câu hỏi', (() => {
+  const ee = earlyExitHoiTuR1(R1_BO_MACH_THAT);
+  return ee && ee.decision === 'HOI' && ee.hs === '853400' && ee.questions.length === 2 && ee.questions[0].question === UNK_BO_MACH[0];
+})(), JSON.stringify(earlyExitHoiTuR1(R1_BO_MACH_THAT)));
+
+check('OZV-1380 earlyExitHoiTuR1: unknowns dạng object {fact|question} → câu hỏi đúng chữ, không "[object Object]"', (() => {
+  const r1 = { ...R1_BO_MACH_THAT, verify: { ...R1_BO_MACH_THAT.verify, unknowns: [{ fact: UNK_BO_MACH[0] }, { question: UNK_BO_MACH[1] }, {}] } };
+  const ee = earlyExitHoiTuR1(r1);
+  return ee && ee.questions.length === 2 && ee.questions[0].fact === UNK_BO_MACH[0] && ee.questions[1].fact === UNK_BO_MACH[1]
+    && !JSON.stringify(ee).includes('[object Object]');
+})(), JSON.stringify(earlyExitHoiTuR1({ ...R1_BO_MACH_THAT, verify: { unknowns: [{ fact: 'a' }, {}] } })));
+
+check('OZV-1380 earlyExitHoiTuR1: chỉ có chương 2 số → null (không rơi về mã 2 số)', [
+  r1BoMach({ chapter: '85', heading4: '85', subheading6: '', confidence: 60 }),
+  r1BoMach({ chapter: '85', confidence: 60 }),
+  r1BoMach({ chapter: '85', heading4: '853', subheading6: '8534', confidence: 60 }),
+].every((r1) => earlyExitHoiTuR1(r1) === null));
+
+check('OZV-1380 earlyExitHoiTuR1: chỉ có nhóm 4 số → HOI 4 số', earlyExitHoiTuR1(r1BoMach({ chapter: '85', heading4: '8534', confidence: 60 }))?.hs === '8534');
+
+// Ca R1 có thật trên prod: giả thuyết dẫn đầu không khai heading4 (chỉ subheading6) còn codes8 trỏ nhóm khác → hồ sơ vụ việc
+// vòng 1 chưa có nhóm 8534 → cổng NHOM_CHUA_KIEM chặn earlyExitHoi → trước OZV-1380 tốn R2 (81–118 s thực địa).
+const R1_BO_MACH_LECH = r1BoMach({ chapter: '85', subheading6: '853400', why: 'mạch in', confidence: 70 }, ['84733010']);
+const lech = await runCa(BO_MACH, R1_BO_MACH_LECH);
+check('OZV-1380 bo mạch: NHOM_CHUA_KIEM → máy nạp nhóm tất định, KHÔNG gọi R2', lech.girCalls === 0 && lech.out.status === 'NEED_FACTS',
+  JSON.stringify({ gir: lech.girCalls, status: lech.out.status, gates: lech.gates.filter((g) => g.round) }));
+check('OZV-1380 bo mạch: log có bước nạp nhóm 8534 (gather thật) rồi earlyExitHoi=true',
+  lech.gates.some((g) => g.tatDinh === 'NHOM_CHUA_KIEM' && g.buoc === 'earlyExitHoi' && g.nhom === '8534' && g.blocks.length === 0)
+  && lech.gates.some((g) => g.earlyExitHoi === true && g.hs === '853400'),
+  JSON.stringify(lech.gates.filter((g) => g.round)));
+check('OZV-1380 bo mạch: rounds = 1 (chỉ R1), hs 853400', lech.out.engine?.rounds === 1 && (lech.out.results?.[0]?.hs || '').startsWith('8534'),
+  JSON.stringify({ rounds: lech.out.engine?.rounds, hs: lech.out.results?.[0]?.hs }));
+
+// Cổng NHOM_CHUA_KIEM KHÔNG bị lách: nhóm 8415 bị từ điển thương mại loại hẳn (may-lam-mat-bay-hoi avoid 8415) → gather
+// không nạp được 8415 dù đã vào usedHeadings → cổng vẫn chặn → leo R2 như cũ (bản #1435 chèn tay headings sẽ lọt).
+const QUAT = { tenHang: 'quạt điều hòa hơi nước' };
+const R1_QUAT = {
+  product: { nameVi: 'quạt điều hòa hơi nước', purpose: 'làm mát', mechanism: 'bay hơi', material: '', evidence: {} },
+  hypotheses: [{ chapter: '84', heading4: '8415', subheading6: '841510', why: 'điều hòa', confidence: 60 }],
+  verify: { searchVi: ['quạt điều hòa'], notesChapters: [], codes8: [], unknowns: ['có máy nén và gas lạnh không'] },
+};
+const quat = await runCa(QUAT, R1_QUAT, { r2: { ...CHOT, hs: '84796000', reason: 'máy làm mát bay hơi', basis: [{ stream: 'SAN_PHAM', claim: 'bay hơi', evidence: 'quạt hơi nước' }] } });
+check('OZV-1380 không lách cổng: nhóm gather không nạp được → vẫn gọi R2, không earlyExitHoi=true',
+  quat.girCalls === 1 && !quat.gates.some((g) => g.earlyExitHoi === true),
+  JSON.stringify({ gir: quat.girCalls, gates: quat.gates.filter((g) => g.round) }));
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
