@@ -71,19 +71,34 @@
   "dong8": [
     {
       "hs": "85491111",
-      "dieuKien": "Phế liệu và phế thải của ắc qui chì hoặc ắc qui chì đã sử dụng hết, có chứa chì, cadmi hoặc thủy ngân, của loại dùng cho máy bay",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): máy bay",
       "loaiKhac": false,
       "nguon": "tax.85491111",
       "trich": "85491111 - - - - Của loại dùng cho máy bay",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy bay"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-OZV1446-20261118#soat-854911",
+          "ngay": "2026-11-18",
+          "bam": "8a04cc30c1e592d0c73daab67024cfc21259045b55ef5de64795e0937dd42cf2"
+        }
+      }
     },
     {
       "hs": "85491112",
-      "dieuKien": "Phế liệu và phế thải của ắc qui chì hoặc ắc qui chì đã sử dụng hết, có chứa chì, cadmi hoặc thủy ngân, loại khác, của phân nhóm 8507.10.92, 8507.10.95, 8507.20.94 hoặc 8507.20.95",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): phân nhóm 8507.10.92, 8507.10.95, 8507.20.94 hoặc 8507.20.95",
       "loaiKhac": true,
       "nguon": "tax.85491112",
       "trich": "85491112 - - - - Loại khác, của phân nhóm 8507.10.92, 8507.10.95, 8507.20.94 hoặc 8507.20.95",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phamViLoaiKhac": {
         "nguonLoai": "MAY_SUY",
         "cha": "8549111",
@@ -95,6 +110,21 @@
         ],
         "toTienCoTen": "854911",
         "dinhNghiaDuoc": true
+      },
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "phân nhóm 8507.10.92, 8507.10.95, 8507.20.94 hoặc 8507.20.95"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-OZV1446-20261118#soat-854911",
+          "ngay": "2026-11-18",
+          "bam": "8a04cc30c1e592d0c73daab67024cfc21259045b55ef5de64795e0937dd42cf2"
+        }
       }
     },
     {
@@ -121,35 +151,96 @@
     },
     {
       "hs": "85491120",
-      "dieuKien": "Phế liệu và phế thải của ắc qui chì hoặc ắc qui chì đã sử dụng hết, chủ yếu chứa sắt",
+      "dieuKien": "tên loại hàng: Phế liệu hoặc phế thải; chất liệu (theo vị trí): sắt thép",
       "loaiKhac": false,
       "nguon": "tax.85491120",
       "trich": "85491120 - - - Phế liệu và phế thải chủ yếu chứa sắt",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Phế liệu",
+            "phế thải"
+          ]
+        },
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "sắt thép"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-OZV1446-20261118#soat-854911",
+          "ngay": "2026-11-18",
+          "bam": "8a04cc30c1e592d0c73daab67024cfc21259045b55ef5de64795e0937dd42cf2"
+        }
+      }
     },
     {
       "hs": "85491130",
-      "dieuKien": "Phế liệu và phế thải của ắc qui chì hoặc ắc qui chì đã sử dụng hết, chủ yếu chứa đồng",
+      "dieuKien": "tên loại hàng: Phế liệu hoặc phế thải; chất liệu (theo vị trí): đồng",
       "loaiKhac": false,
       "nguon": "tax.85491130",
       "trich": "85491130 - - - Phế liệu và phế thải chủ yếu chứa đồng",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Phế liệu",
+            "phế thải"
+          ]
+        },
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "đồng"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-OZV1446-20261118#soat-854911",
+          "ngay": "2026-11-18",
+          "bam": "8a04cc30c1e592d0c73daab67024cfc21259045b55ef5de64795e0937dd42cf2"
+        }
+      }
     },
     {
       "hs": "85491191",
-      "dieuKien": "Phế liệu và phế thải của ắc qui chì hoặc ắc qui chì đã sử dụng hết, loại khác không chứa chì, cadmi, thủy ngân, sắt, đồng, của loại dùng cho máy bay",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): máy bay",
       "loaiKhac": false,
       "nguon": "tax.85491191",
       "trich": "85491191 - - - - Của loại dùng cho máy bay",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy bay"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-OZV1446-20261118#soat-854911",
+          "ngay": "2026-11-18",
+          "bam": "8a04cc30c1e592d0c73daab67024cfc21259045b55ef5de64795e0937dd42cf2"
+        }
+      }
     },
     {
       "hs": "85491192",
-      "dieuKien": "Phế liệu và phế thải của ắc qui chì hoặc ắc qui chì đã sử dụng hết, loại khác không chứa chì, cadmi, thủy ngân, sắt, đồng, của phân nhóm 8507.10.92, 8507.10.95, 8507.20.94 hoặc 8507.20.95",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): phân nhóm 8507.10.92, 8507.10.95, 8507.20.94 hoặc 8507.20.95",
       "loaiKhac": true,
       "nguon": "tax.85491192",
       "trich": "85491192 - - - - Loại khác, của phân nhóm 8507.10.92, 8507.10.95, 8507.20.94 hoặc 8507.20.95",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phamViLoaiKhac": {
         "nguonLoai": "MAY_SUY",
         "cha": "8549119",
@@ -164,6 +255,21 @@
         ],
         "toTienCoTen": "854911",
         "dinhNghiaDuoc": true
+      },
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "phân nhóm 8507.10.92, 8507.10.95, 8507.20.94 hoặc 8507.20.95"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-OZV1446-20261118#soat-854911",
+          "ngay": "2026-11-18",
+          "bam": "8a04cc30c1e592d0c73daab67024cfc21259045b55ef5de64795e0937dd42cf2"
+        }
       }
     },
     {
@@ -1010,5 +1116,33 @@
     "dat": 34,
     "loai": 0,
     "nguonBiCat": []
-  }
+  },
+  "dieuKienNut": [
+    {
+      "id": "8549111",
+      "nguon": "tieuDe.8549111",
+      "trich": "8549111 Phế thải pin, ắc qui axit chì, đã hoặc chưa tháo dung dịch axit",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Phế thải pin"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "tháo dung dịch axit"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-OZV1446-20261118#soat-854911",
+          "ngay": "2026-11-18",
+          "bam": "8a04cc30c1e592d0c73daab67024cfc21259045b55ef5de64795e0937dd42cf2"
+        }
+      }
+    }
+  ]
 }
