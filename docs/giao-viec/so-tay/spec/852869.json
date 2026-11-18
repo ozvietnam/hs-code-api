@@ -6,10 +6,9 @@
     "85286910": {
       "dieuKienSo": [
         {
-          "fact": "duongCheoNgoai",
-          "op": ">=",
-          "value": 300,
-          "donVi": "inch"
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "Công suất chiếu lên màn ảnh có đường chéo từ 300 inch trở lên"
         }
       ]
     }
@@ -19,7 +18,7 @@
     {
       "ma": "85286910",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85286910: \"Công suất chiếu lên màn ảnh có đường chéo từ 300 inch trở lên\" ⇒ duongCheoNgoai >= 300 inch"
+      "ghiChu": "tax.85286910: \"Công suất chiếu lên màn ảnh có đường chéo từ 300 inch trở lên\" ⇒ congDung CONG_DUNG nguyên văn vế chữ biểu. Bỏ duongCheoNgoai >= 300 inch: probe toàn bộ 343 khoá tu-vung@2 cho thấy KHÔNG khoá số nào đọc được \"300 inch\" từ mô tả (khoá duongCheoNgoai canNguCanh 'đường chéo' theo cửa sổ trước số không khớp chữ biểu) ⇒ giữ fact số chỉ ra THIEU_SO_LIEU vĩnh viễn. Cách làm theo tiền lệ 22df8ea9 (370298): vế chữ trở thành điều kiện CONG_DUNG tất định (OZV-1474)"
     }
   ]
 }
