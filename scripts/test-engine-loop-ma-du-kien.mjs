@@ -108,5 +108,16 @@ check('OZV-1388 do-a1-ban-that ca 5: trước (6 số 320419) khongRaMa=true, to
     && chamSau.khongRaMa === false && chamSau.top1 === true && chamSau.needFacts === true && chamSau.maDau === '32041900',
   JSON.stringify({ chamTruoc, chamSau }));
 
+// ── Chống hồi quy thứ tự khoá JSON results[0] (hs → confidence → reason → [duKien] → basis) + HS_GON_DAU_RA=off giữ nguyên 6 số
+check('OZV-1388 thứ tự khoá results[0]: hs → confidence → reason (tránh lệch snapshot byte-for-byte)',
+  JSON.stringify(Object.keys(mcf.out.results?.[0] || {}).slice(0, 4)) === JSON.stringify(['hs', 'confidence', 'reason', 'duKien'])
+    && JSON.stringify(Object.keys(bm.out.results?.[0] || {}).slice(0, 3)) === JSON.stringify(['hs', 'confidence', 'reason']),
+  JSON.stringify({ mcfKeys: Object.keys(mcf.out.results?.[0] || {}), bmKeys: Object.keys(bm.out.results?.[0] || {}) }));
+process.env.HS_GON_DAU_RA = 'off';
+const mcfOff = await runCa(MCF18, R1_MCF18, R2_HOI('320419'));
+delete process.env.HS_GON_DAU_RA;
+check('OZV-1388 khi HS_GON_DAU_RA=off: giữ nguyên results[0].hs = 320419 (trùng snapshot gốc)',
+  (mcfOff.out.results?.[0]?.hs || '') === '320419' && mcfOff.out.results?.[0]?.duKien === undefined, tom(mcfOff));
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
