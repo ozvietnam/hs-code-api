@@ -4,7 +4,9 @@
 // OZV-590/630 (`chotDong8` giữ KHONG_THE_CHOT với 820890 S45C) giữ nguyên.
 import './test-isolate-data.mjs';
 import { createRequire } from 'module';
+import { rutMaTuPhanHoi, chamBanGhi } from './do-a1-ban-that.mjs';
 const require = createRequire(import.meta.url);
+const { chotDong8 } = require('../lib/so-tay-gates.js');
 process.env.MIC_OFF = '1';
 process.env.HS_EVAL_EXCLUDE_HOLDOUT = '1';
 for (const k of ['ZAI_WEB_FACTS', 'HS_GON_DAU_RA', 'HS_MAX_VONG_SUA', 'HS_SO_TAY', 'HS_CLASSIFY_FAST_FIRST', 'R1_MAX_TOKENS', 'GIR_MAX_TOKENS']) {
@@ -94,6 +96,17 @@ const R1_S45C = {
 const s45 = await runCa(S45C, R1_S45C, R2_HOI('820890'));
 check('OZV-1388 đối chứng 820890 S45C: status NEED_FACTS như cũ (không CHOT)', s45.out.status === 'NEED_FACTS', tom(s45));
 check('OZV-1388 đối chứng 820890 S45C: câu hỏi còn', (s45.out.nextAction?.questions || []).length >= 1, tom(s45));
+const cdS45 = chotDong8({ hs: '820890', productText: S45C.tenHang });
+check('OZV-1388 đối chứng 820890 S45C: chotDong8 giữ nguyên KHONG_THE_CHOT (không nới lưới an toàn OZV-590/630)',
+  cdS45.ketQua === 'KHONG_THE_CHOT' && !cdS45.hs, JSON.stringify(cdS45));
+
+// ── Kiểm trực tiếp bộ chấm do-a1-ban-that.mjs trên ca 5 MCF18 (trước: 320419 → dsMa=[], khongRaMa=true; sau: 32041900 → top1=true, needFacts=true)
+const chamTruoc = chamBanGhi({ stt: 5, ma: '32041900', maLan: ['32041700'], status: 'NEED_FACTS', dsMa: rutMaTuPhanHoi({ results: [{ hs: '320419' }] }) });
+const chamSau = chamBanGhi({ stt: 5, ma: '32041900', maLan: ['32041700'], status: mcf.out.status, dsMa: rutMaTuPhanHoi(mcf.out) });
+check('OZV-1388 do-a1-ban-that ca 5: trước (6 số 320419) khongRaMa=true, top1=false → sau (32041900 duKien=true) khongRaMa=false, top1=true, needFacts=true',
+  chamTruoc.khongRaMa === true && chamTruoc.top1 === false
+    && chamSau.khongRaMa === false && chamSau.top1 === true && chamSau.needFacts === true && chamSau.maDau === '32041900',
+  JSON.stringify({ chamTruoc, chamSau }));
 
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
