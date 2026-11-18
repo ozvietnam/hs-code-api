@@ -87,6 +87,14 @@ check('extractPowerWatts 1,5 kW → 1500', extractPowerWatts('công suất 1,5 k
 check('extractPowerWatts 1.5 kW → 1500', extractPowerWatts('power 1.5 kW') === 1500);
 check('extractPowerWatts 1.500 W → 1500', extractPowerWatts('công suất không quá 1.500 W') === 1500);
 check('extractPowerWatts 2,2 kW → 2200', extractPowerWatts('2,2 kW') === 2200);
+check(
+  'extractPowerWatts ≥2 số khác nhau → null',
+  extractPowerWatts('động cơ 1.200 W, công suất hút 250 W') === null,
+);
+check(
+  'extractPowerWatts cùng số lặp (1,5 kW + 1500 W) → 1500',
+  extractPowerWatts('1,5 kW tương đương 1500 W') === 1500,
+);
 check('extractVolumeLiters 15 lít', extractVolumeLiters('dung tích thùng 15 lít') === 15);
 check('extractVolumeLiters thùng 30 lít', extractVolumeLiters('thùng 30 lít') === 30);
 
@@ -112,6 +120,22 @@ check('1,5 kW thùng 25 l → CHOT 850819xx', chot40c?.decision === 'CHOT' && St
 const chotThieu = earlyExitChotTuConflict(CA40_THIEU, R1_VACUUM_SAI);
 check('thiếu công suất/dung tích → null (không đoán)', chotThieu === null, JSON.stringify(chotThieu));
 
+// Số không nằm trong detect (1.400 W / 14 lít) → enrichAttrsFromTable trước cổng attrs rỗng
+const CA40_FROMTEXT = 'máy hút bụi gia đình 1.400 W, thùng 14 lít';
+const chotFromText = earlyExitChotTuConflict(CA40_FROMTEXT, R1_VACUUM_SAI);
+check(
+  'fromText 1.400 W + 14 l (không trúng detect) → CHOT 85081100',
+  chotFromText?.decision === 'CHOT' && chotFromText?.hs === '85081100',
+  JSON.stringify(chotFromText),
+);
+const CA40_GD1400 = 'máy hút bụi gia đình 1.400 W, thùng 15 lít';
+const chotGd1400 = earlyExitChotTuConflict(CA40_GD1400, R1_VACUUM_SAI);
+check(
+  'GĐ ví dụ 1.400 W thùng 15 l → CHOT 85081100',
+  chotGd1400?.decision === 'CHOT' && chotGd1400?.hs === '85081100',
+  JSON.stringify(chotGd1400),
+);
+
 const khong = earlyExitChotTuConflict('máy bơm nước ly tâm 1.5HP', R1_FREEZER_SAI);
 check('hàng khác → null', khong === null, JSON.stringify(khong));
 
@@ -120,6 +144,32 @@ check('hàng khác → null', khong === null, JSON.stringify(khong));
   const top = { hs: '85081990', confidence: 70, reason: 'seed' };
   const r = resolveConflict(top, [top], {}, { ...deps, productText: 'máy hút bụi công nghiệp công suất 800 W đồ chứa 10 lít' });
   check('resolveConflict productText 800W/10L → 85081100', r.status === 'RESOLVED' && r.decidedHs === '85081100', JSON.stringify(r));
+}
+
+// Hai lần liên tiếp: lần 2 không được dùng số của lần 1 (hết biến chung _lastProduct)
+{
+  const top = { hs: '85081990', confidence: 70, reason: 'seed' };
+  const r1 = resolveConflict(top, [top], {}, {
+    ...deps,
+    productText: 'máy hút bụi công nghiệp công suất 800 W đồ chứa 10 lít',
+  });
+  const r2 = resolveConflict(top, [top], {}, {
+    ...deps,
+    productText: 'máy hút bụi công nghiệp 2,2 kW thùng 30 lít',
+  });
+  check('lần 1 800W/10L → 85081100', r1.status === 'RESOLVED' && r1.decidedHs === '85081100', JSON.stringify(r1));
+  check(
+    'lần 2 2,2 kW/30L → 85081990 (không lẫn lần 1)',
+    r2.status === 'RESOLVED' && r2.decidedHs === '85081990',
+    JSON.stringify(r2),
+  );
+  // Không truyền productText → không chốt từ mô tả lần trước
+  const r3 = resolveConflict(top, [top], {}, deps);
+  check(
+    'không productText → không kế thừa mô tả cũ',
+    r3.status === 'INSUFFICIENT' || r3.status === 'NARROWED' || r3.status === 'SKIP',
+    JSON.stringify(r3),
+  );
 }
 
 // classifyLoop stub: R1 sai vẫn CHOT nhờ bảng

@@ -172,9 +172,35 @@ function run(topHs, attrs, expect) {
 }
 {
   const top = { hs: '85081990', confidence: 70, reason: 'seed' };
-  const { resolveConflict: rc } = require('../lib/conflict-resolver.js');
+  const { resolveConflict: rc, extractPowerWatts: epw } = require('../lib/conflict-resolver.js');
   const r = rc(top, [top], {}, { ...deps, productText: 'máy hút bụi công nghiệp 1,5 kW dung tích thùng 15 lít' });
   assert('productText 1,5 kW 15 lít → 85081100', r.status === 'RESOLVED' && r.decidedHs === '85081100', JSON.stringify(r));
+  assert(
+    'extractPowerWatts ≥2 số khác nhau → null',
+    epw('động cơ 1.200 W, công suất hút 250 W') === null,
+  );
+}
+
+// OZV-1382 GĐ #1438 mục 4 — hai lần resolveConflict (cùng kiểu productText như classify.js) không lẫn mô tả
+{
+  const { resolveConflict: rc } = require('../lib/conflict-resolver.js');
+  const mkText = (attrs) => [
+    attrs.tenHang, attrs.nameZh, attrs.chatLieu, attrs.congDung,
+    typeof attrs.specs === 'string' ? attrs.specs : '',
+  ].filter(Boolean).join(' ');
+  const top = { hs: '85081990', confidence: 70, reason: 'seed' };
+  const a1 = { tenHang: 'Máy hút bụi', specs: 'công suất 800 W đồ chứa 10 lít' };
+  const a2 = { tenHang: 'Máy hút bụi', specs: '2,2 kW thùng 30 lít' };
+  const r1 = rc(top, [top], {}, { ...deps, productText: mkText(a1) });
+  const r2 = rc(top, [top], {}, { ...deps, productText: mkText(a2) });
+  assert('classify-path lần 1 800W → 85081100', r1.status === 'RESOLVED' && r1.decidedHs === '85081100', JSON.stringify(r1));
+  assert('classify-path lần 2 2,2kW → 85081990 không lẫn lần 1', r2.status === 'RESOLVED' && r2.decidedHs === '85081990', JSON.stringify(r2));
+  const rEmpty = rc(top, [top], {}, deps);
+  assert(
+    'classify-path thiếu productText không kế thừa lần trước',
+    rEmpty.status === 'INSUFFICIENT' || rEmpty.status === 'NARROWED' || rEmpty.status === 'SKIP',
+    JSON.stringify(rEmpty),
+  );
 }
 
 console.log(`\n${passed}/${passed + failed} passed`);
