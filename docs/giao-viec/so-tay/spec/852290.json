@@ -50,20 +50,43 @@
     "85229040": {
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "ghi",
-            "đọc"
-          ]
-        },
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "băng video",
-            "audio",
-            "đĩa compact"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Cơ cấu"
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "ghi",
+                  "đọc"
+                ]
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "băng video",
+                  "audio"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Cơ cấu"
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "đĩa compact"
+              }
+            ]
           ]
         }
       ]
@@ -86,9 +109,22 @@
                   "hình",
                   "âm thanh"
                 ]
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "kiểu từ tính"
               }
             ],
             [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "đầu",
+                  "thanh"
+                ]
+              },
               {
                 "fact": "tenLoai",
                 "op": "TEN_LOAI",
@@ -167,12 +203,12 @@
     {
       "ma": "85229040",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85229040 \"Cơ cấu ghi hoặc đọc băng video hoặc audio và đĩa compact\" ⇒ tenLoai \"Cơ cấu\" + [ghi, đọc] + [băng video, audio, đĩa compact] (cổng 5 không tách vế cho dòng này)"
+      "ghiChu": "tax.85229040 \"Cơ cấu ghi hoặc đọc băng video hoặc audio và đĩa compact\" (EN \"Audio or video tapedecks and compact disc mechanisms\") ⇒ HOAC: (a) tenLoai \"Cơ cấu\" + [ghi, đọc] + [băng video, audio]; (b) tenLoai \"Cơ cấu\" + \"đĩa compact\""
     },
     {
       "ma": "85229050",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85229050 hai hàng nối \";\" ⇒ HOAC: (a) Đầu đọc hình/âm thanh kiểu từ tính, (b) đầu và thanh xoá từ (định ngữ chung \"xoá từ\" điều kiện riêng)"
+      "ghiChu": "tax.85229050 hai hàng nối \";\" ⇒ HOAC: (a) tenLoai \"Đầu đọc\" + [hình, âm thanh] + \"kiểu từ tính\", (b) tenLoai [đầu, thanh] + \"xoá từ\" (định ngữ chung \"xoá từ\" điều kiện riêng)"
     },
     {
       "ma": "85229091",
