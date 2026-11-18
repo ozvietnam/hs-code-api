@@ -26,7 +26,7 @@ process.env.HS_CLASSIFY_ENGINE = 'loop';
 process.env.MIC_OFF = '1';
 process.env.HS_EVAL_EXCLUDE_HOLDOUT = '1';
 
-const { precedentsData } = require('../lib/data.js');
+const { precedentsData, taxData } = require('../lib/data.js');
 const llmTier = require('../lib/llm-tier.js');
 const { classifyLoop } = require('../lib/engine-loop.js');
 const K = require('../lib/kiem-truoc-chot.js');
@@ -362,7 +362,14 @@ ok(
 
   // D2 âm đối chứng: bột nhôm nguyên chất dùng trong luyện kim (không phải chất màu vô cơ nhão của 554/TB-TCHQ) → giữ nguyên NEED_FACTS ở 760310
   const out6Am = await chayCa6('Bột nhôm nguyên chất 99,7% dùng trong luyện kim và hàn nhiệt nhôm, chưa rõ cấu trúc lớp hay không');
-  ok('D2 âm đối chứng: bột nhôm luyện kim không khớp tiền lệ 554/TB-TCHQ → giữ nguyên NEED_FACTS, mã đầu 760310', out6Am.status === 'NEED_FACTS' && out6Am.results?.[0]?.hs === '760310' && !(out6Am.results || []).some((r) => r.xepHang === 'TIEN_LE_TB_TCHQ'));
+  // OZV-1388: phân nhóm 7603.10 chỉ có đúng 1 dòng 8 số trong biểu → engine được trả kèm mã 8 số DỰ KIẾN
+  // (duKien: true) mà vẫn giữ NEED_FACTS. Chấp nhận 760310 HOẶC đúng dòng 8 số duy nhất đó có cờ duKien;
+  // ý chính của ca âm không đổi: KHÔNG đôn 32064990 bằng tiền lệ.
+  const dong8Cua760310 = Object.keys(taxData).filter((k) => k.length === 8 && k.startsWith('760310'));
+  const dau6Am = out6Am.results?.[0];
+  const maDauAmHopLe = dau6Am?.hs === '760310'
+    || (dong8Cua760310.length === 1 && dau6Am?.hs === dong8Cua760310[0] && dau6Am?.duKien === true);
+  ok('D2 âm đối chứng: bột nhôm luyện kim không khớp tiền lệ 554/TB-TCHQ → giữ nguyên NEED_FACTS, mã đầu 760310 (hoặc dòng 8 số duy nhất của nó, duKien)', out6Am.status === 'NEED_FACTS' && maDauAmHopLe && !(out6Am.results || []).some((r) => r.xepHang === 'TIEN_LE_TB_TCHQ'));
 }
 
 // D3 — Ca stt 4 (27101990, 4935/TB-TCHQ): Vòng 1 đã khoanh đúng nhóm 2710 (codes8: 27101980, 27101990), nhưng Vòng 2 & 3 trả hs="" (MA_KHONG_TON_TAI).
