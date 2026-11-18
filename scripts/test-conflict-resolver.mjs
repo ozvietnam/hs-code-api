@@ -145,5 +145,37 @@ function run(topHs, attrs, expect) {
   assert('cánh quạt tháp thiếu dữ kiện → hỏi coolingTowerFanImport', r.status === 'INSUFFICIENT' && (r.ask || []).some((a) => a.attribute === 'coolingTowerFanImport'));
 }
 
+// OZV-1382 — tủ đông cửa / hút bụi công suất+đồ chứa
+{
+  const r = run('84183090', { freezerDoorType: 'frontDoor' }, {});
+  assert('tủ đông cửa trước → 84184090', r.status === 'RESOLVED' && r.decidedHs === '84184090' && r.overrodeLlm === true);
+}
+{
+  const r = run('84184090', { freezerDoorType: 'topDoor' }, {});
+  assert('tủ đông cửa trên → 84183090', r.status === 'RESOLVED' && r.decidedHs === '84183090' && r.overrodeLlm === true);
+}
+{
+  const r = run('84183090', {}, {});
+  assert('tủ đông thiếu kiểu cửa → hỏi freezerDoorType', r.status === 'INSUFFICIENT' && (r.ask || []).some((a) => a.attribute === 'freezerDoorType'));
+}
+{
+  const r = run('85081990', { vacuumPowerClass: 'le1500', vacuumContainerClass: 'le20' }, {});
+  assert('hút bụi ≤1500W ≤20L → 85081100', r.status === 'RESOLVED' && r.decidedHs === '85081100' && r.overrodeLlm === true);
+}
+{
+  const r = run('85081100', { vacuumPowerClass: 'gt1500' }, {});
+  assert('hút bụi >1500W → 85081990', r.status === 'RESOLVED' && r.decidedHs === '85081990' && r.overrodeLlm === true);
+}
+{
+  const r = run('85081100', { vacuumPowerClass: 'le1500', vacuumContainerClass: 'gt20' }, {});
+  assert('hút bụi ≤1500W >20L → 85081990', r.status === 'RESOLVED' && r.decidedHs === '85081990' && r.overrodeLlm === true);
+}
+{
+  const top = { hs: '85081990', confidence: 70, reason: 'seed' };
+  const { resolveConflict: rc } = require('../lib/conflict-resolver.js');
+  const r = rc(top, [top], {}, { ...deps, productText: 'máy hút bụi công nghiệp 1,5 kW dung tích thùng 15 lít' });
+  assert('productText 1,5 kW 15 lít → 85081100', r.status === 'RESOLVED' && r.decidedHs === '85081100', JSON.stringify(r));
+}
+
 console.log(`\n${passed}/${passed + failed} passed`);
 process.exit(failed ? 1 : 0);

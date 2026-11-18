@@ -724,6 +724,67 @@
         "thap lam mat",
         "canh quat"
       ]
+    },
+    "freezerDoorType": {
+      "canonical": "freezerDoorType",
+      "aliasVi": "kieuCuaTuDong",
+      "domain": [
+        "frontDoor",
+        "topDoor"
+      ],
+      "questionVi": "Tủ kết đông loại cửa trước (kiểu đứng) hay cửa trên (kiểu nằm)?",
+      "labelsVi": {
+        "frontDoor": "Cửa trước / kiểu đứng (8418.40)",
+        "topDoor": "Cửa trên / kiểu nằm (8418.30)"
+      },
+      "detect": [
+        "cua truoc",
+        "cua tren",
+        "tu dong",
+        "freezer",
+        "chest freezer",
+        "upright"
+      ]
+    },
+    "vacuumPowerClass": {
+      "canonical": "vacuumPowerClass",
+      "aliasVi": "congSuatHutBui",
+      "domain": [
+        "le1500",
+        "gt1500"
+      ],
+      "questionVi": "Công suất máy hút bụi không quá 1.500 W hay trên 1.500 W?",
+      "labelsVi": {
+        "le1500": "Công suất ≤ 1.500 W",
+        "gt1500": "Công suất > 1.500 W"
+      },
+      "detect": [
+        "hut bui",
+        "vacuum",
+        "cong suat",
+        "kw",
+        "watt"
+      ]
+    },
+    "vacuumContainerClass": {
+      "canonical": "vacuumContainerClass",
+      "aliasVi": "dungTichDoChuaHutBui",
+      "domain": [
+        "le20",
+        "gt20"
+      ],
+      "questionVi": "Túi hứng bụi / đồ chứa không quá 20 lít hay trên 20 lít?",
+      "labelsVi": {
+        "le20": "Đồ chứa ≤ 20 lít",
+        "gt20": "Đồ chứa > 20 lít"
+      },
+      "detect": [
+        "thung",
+        "tui",
+        "do chua",
+        "lit",
+        "lít"
+      ]
     }
   }
 }

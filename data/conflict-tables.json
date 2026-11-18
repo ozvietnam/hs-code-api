@@ -255,6 +255,208 @@
           "source": "TB 2943/TCHQ-TXNK (2020); GIR 2(a)"
         }
       ]
+    },
+    "CF-freezer-door": {
+      "titleVi": "Tủ kết đông cửa trên (8418.30) vs cửa trước (8418.40)",
+      "verified": true,
+      "verifiedBy": "ozvietnam",
+      "verifiedAt": "2026-11",
+      "members": [
+        "84183090",
+        "84184090"
+      ],
+      "essenceTestVi": "Tủ kết đông kiểu nằm/cửa trên hay kiểu đứng/cửa trước?",
+      "requireAny": [
+        "tủ đông",
+        "tủ kết đông",
+        "tủ lạnh âm sâu",
+        "freezer",
+        "âm sâu",
+        "ultra-low freezer",
+        "super freezer"
+      ],
+      "inputs": [
+        {
+          "attribute": "freezerDoorType",
+          "detect": {
+            "frontDoor": [
+              "cửa trước",
+              "loại cửa trước",
+              "kiểu đứng",
+              "upright",
+              "upright type",
+              "front door",
+              "door on the front"
+            ],
+            "topDoor": [
+              "cửa trên",
+              "loại cửa trên",
+              "kiểu nằm",
+              "tủ đông nằm",
+              "chest freezer",
+              "chest type",
+              "top door",
+              "nắp trên",
+              "cửa nắp"
+            ]
+          }
+        }
+      ],
+      "hitPolicy": "PRIORITY",
+      "rules": [
+        {
+          "id": "fd1",
+          "priority": 20,
+          "when": {
+            "freezerDoorType": "frontDoor"
+          },
+          "hs": "84184090",
+          "gir": "GIR 1+6",
+          "evidence": "hard",
+          "reasonVi": "Tủ kết đông loại cửa trước, dung tích không quá 900 lít → phân nhóm 8418.40 (mã 8418.40.90 Loại khác khi dung tích >200 lít).",
+          "source": "Biểu thuế XNK — tiêu đề 8418.40; TB 5039/TCHQ-TXNK"
+        },
+        {
+          "id": "fd2",
+          "priority": 10,
+          "when": {
+            "freezerDoorType": "topDoor"
+          },
+          "hs": "84183090",
+          "gir": "GIR 1+6",
+          "evidence": "hard",
+          "reasonVi": "Tủ kết đông loại cửa trên, dung tích không quá 800 lít → phân nhóm 8418.30 (mã 8418.30.90 Loại khác khi dung tích >200 lít).",
+          "source": "Biểu thuế XNK — tiêu đề 8418.30; TB-TCHQ tủ đông cửa trên"
+        }
+      ]
+    },
+    "CF-vacuum-power-container": {
+      "titleVi": "Máy hút bụi ≤1.500 W và đồ chứa ≤20 l (8508.11) vs loại khác (8508.19)",
+      "verified": true,
+      "verifiedBy": "ozvietnam",
+      "verifiedAt": "2026-11",
+      "members": [
+        "85081100",
+        "85081990"
+      ],
+      "essenceTestVi": "Công suất ≤1.500 W VÀ đồ chứa/túi ≤20 lít hay vượt một trong hai ngưỡng?",
+      "requireAny": [
+        "máy hút bụi",
+        "hut bui",
+        "vacuum cleaner",
+        "industrial vacuum"
+      ],
+      "inputs": [
+        {
+          "attribute": "vacuumPowerClass",
+          "fromText": {
+            "kind": "powerW",
+            "le": 1500,
+            "domainLe": "le1500",
+            "domainGt": "gt1500"
+          },
+          "detect": {
+            "gt1500": [
+              "2,2 kw",
+              "2.2 kw",
+              "2 kw",
+              "2,0 kw",
+              "2.0 kw",
+              "3 kw",
+              "2200 w",
+              "1800 w",
+              "2000 w",
+              "1600 w"
+            ],
+            "le1500": [
+              "1,5 kw",
+              "1.5 kw",
+              "1,2 kw",
+              "1.2 kw",
+              "1 kw",
+              "1500 w",
+              "1.500 w",
+              "1200 w",
+              "1000 w",
+              "800 w",
+              "750 w"
+            ]
+          }
+        },
+        {
+          "attribute": "vacuumContainerClass",
+          "fromText": {
+            "kind": "volumeL",
+            "le": 20,
+            "domainLe": "le20",
+            "domainGt": "gt20"
+          },
+          "detect": {
+            "gt20": [
+              "25 lit",
+              "30 lit",
+              "40 lit",
+              "50 lit",
+              "thung 25",
+              "thung 30",
+              "thùng 25",
+              "thùng 30"
+            ],
+            "le20": [
+              "15 lit",
+              "10 lit",
+              "12 lit",
+              "16 lit",
+              "18 lit",
+              "20 lit",
+              "5 lit",
+              "8 lit",
+              "thung 15",
+              "thùng 15"
+            ]
+          }
+        }
+      ],
+      "hitPolicy": "PRIORITY",
+      "rules": [
+        {
+          "id": "vac1",
+          "priority": 30,
+          "when": {
+            "vacuumPowerClass": "le1500",
+            "vacuumContainerClass": "le20"
+          },
+          "hs": "85081100",
+          "gir": "GIR 1+6",
+          "evidence": "hard",
+          "reasonVi": "Máy hút bụi có động cơ điện gắn liền, công suất không quá 1.500 W và túi/đồ chứa không quá 20 lít → 8508.11.00.",
+          "source": "Biểu thuế XNK — 8508.11.00; TB 1864/TCHQ-TXNK; TB 6538/TCHQ-TXNK"
+        },
+        {
+          "id": "vac2",
+          "priority": 20,
+          "when": {
+            "vacuumPowerClass": "gt1500"
+          },
+          "hs": "85081990",
+          "gir": "GIR 1+6",
+          "evidence": "hard",
+          "reasonVi": "Công suất trên 1.500 W → không thuộc 8508.11 → phân nhóm 8508.19 (Loại khác).",
+          "source": "Biểu thuế XNK — tiêu đề 8508.11 vs 8508.19"
+        },
+        {
+          "id": "vac3",
+          "priority": 10,
+          "when": {
+            "vacuumContainerClass": "gt20"
+          },
+          "hs": "85081990",
+          "gir": "GIR 1+6",
+          "evidence": "hard",
+          "reasonVi": "Đồ chứa/túi trên 20 lít → không thuộc 8508.11 → phân nhóm 8508.19 (Loại khác).",
+          "source": "Biểu thuế XNK — tiêu đề 8508.11 vs 8508.19"
+        }
+      ]
     }
   }
 }
