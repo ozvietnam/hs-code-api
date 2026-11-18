@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L34-20261114#soat-L34",
-    "ngay": "2026-11-14",
-    "ghiChu": "Sửa 85479010: tenLoai ['Ống dẫn dây điện','khớp nối'] (danh từ đầu nguyên văn); BO_VE 'bằng kim loại cơ bản' lặp lại tiêu đề nhóm 85.47 để không phủ định oan ca trái vật liệu (8547-009/010/013) sang 85479090 và không hỏi thừa ở 8547-016.",
-    "bam": "4701beda65b196716b2c0cda227337b638eb8942d8d4841601f005b7009b71cc"
+    "phien": "claude-agent:duyet-OZV1398-20261118#soat-854790",
+    "ngay": "2026-11-18",
+    "ghiChu": "Sửa 85479010: thêm duocLotHoacCachNhiet CO phủ vế 'được lót' để coDieuKienPhanBietCungDong chốt tất định DONG_CO_TEN mà không phủ định oan ca trái vật liệu.",
+    "bam": "39264dd437899bd14d39da4fbb3260f0e3d0adfce38b79805fe6a10f33d04744"
   },
   "dieuKienNut": [],
   "dong8": [
@@ -31,6 +31,10 @@
             "Ống dẫn dây điện",
             "khớp nối"
           ]
+        },
+        {
+          "fact": "duocLotHoacCachNhiet",
+          "op": "CO"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -47,19 +51,13 @@
     {
       "ma": "85479010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85479010: \"Ống dẫn dây điện và các khớp nối của chúng, làm bằng kim loại cơ bản được lót bằng vật liệu cách điện\" ⇒ tenLoai [\"Ống dẫn dây điện\", \"khớp nối\"] (danh từ đầu nguyên văn; EN \"joints therefor\" — \"của chúng\" là luật liên kết, âm tiết \"chúng\" không phải hư từ, TRA_VE L29); các vế vật liệu/lót lặp lại tiêu đề nhóm 85.47"
+      "ghiChu": "tax.85479010: \"Ống dẫn dây điện và các khớp nối của chúng, làm bằng kim loại cơ bản được lót bằng vật liệu cách điện\" ⇒ tenLoai [\"Ống dẫn dây điện\", \"khớp nối\"] + duocLotHoacCachNhiet CO; các vế vật liệu lặp lại tiêu đề nhóm 85.47"
     },
     {
       "ma": "85479010",
       "loai": "BO_VE",
       "ve": "bằng kim loại cơ bản",
       "lyDo": "Lặp lại tiêu đề nhóm 8547 (ống dẫn dây điện và các khớp nối của chúng, bằng kim loại cơ bản được lót lớp vật liệu cách điện)"
-    },
-    {
-      "ma": "85479010",
-      "loai": "BO_VE",
-      "ve": "được lót",
-      "lyDo": "Phương thức gia công lót lớp cách điện bên trong ống kim loại"
     },
     {
       "ma": "85479010",

@@ -4,13 +4,19 @@
   "nhom": "8522",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261105T1055#soan-852290",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:duyet-OZV1447-20261118#soat-852290",
+    "ngay": "2026-11-18",
+    "ghiChu": "Sửa 85229040 (dùng HOAC cho Cơ cấu ghi/đọc băng video/audio và Cơ cấu đĩa compact) và 85229050 (thêm kiểu từ tính ở nhánh 1, [đầu, thanh] + xoá từ ở nhánh 2) theo phản hồi soat-L28.",
+    "bam": "96b7724137a43340a276b10d19111a18b935f504df0d4ca7a0c60acc79d606b6"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -33,7 +39,7 @@
           "value": "máy trả lời điện thoại"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85229030",
@@ -63,7 +69,7 @@
           "value": "điện ảnh"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85229040",
@@ -71,24 +77,47 @@
       "trich": "85229040 - - Cơ cấu ghi hoặc đọc băng video hoặc audio và đĩa compact",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "ghi",
-            "đọc"
-          ]
-        },
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "băng video",
-            "audio",
-            "đĩa compact"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Cơ cấu"
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "ghi",
+                  "đọc"
+                ]
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "băng video",
+                  "audio"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Cơ cấu"
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "đĩa compact"
+              }
+            ]
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85229050",
@@ -111,9 +140,22 @@
                   "hình",
                   "âm thanh"
                 ]
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "kiểu từ tính"
               }
             ],
             [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "đầu",
+                  "thanh"
+                ]
+              },
               {
                 "fact": "tenLoai",
                 "op": "TEN_LOAI",
@@ -123,7 +165,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85229091",
@@ -148,7 +190,7 @@
           "value": "điện ảnh"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85229092",
@@ -165,7 +207,7 @@
           "value": "máy trả lời điện thoại"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85229093",
@@ -185,14 +227,14 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85229099",
       "nguon": "tax.85229099",
       "trich": "85229099 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "chongLanVanBan": [
@@ -218,12 +260,12 @@
     {
       "ma": "85229040",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85229040 \"Cơ cấu ghi hoặc đọc băng video hoặc audio và đĩa compact\" ⇒ tenLoai \"Cơ cấu\" + [ghi, đọc] + [băng video, audio, đĩa compact] (cổng 5 không tách vế cho dòng này)"
+      "ghiChu": "tax.85229040 \"Cơ cấu ghi hoặc đọc băng video hoặc audio và đĩa compact\" (EN \"Audio or video tapedecks and compact disc mechanisms\") ⇒ HOAC: (a) tenLoai \"Cơ cấu\" + [ghi, đọc] + [băng video, audio]; (b) tenLoai \"Cơ cấu\" + \"đĩa compact\""
     },
     {
       "ma": "85229050",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85229050 hai hàng nối \";\" ⇒ HOAC: (a) Đầu đọc hình/âm thanh kiểu từ tính, (b) đầu và thanh xoá từ (định ngữ chung \"xoá từ\" điều kiện riêng)"
+      "ghiChu": "tax.85229050 hai hàng nối \";\" ⇒ HOAC: (a) tenLoai \"Đầu đọc\" + [hình, âm thanh] + \"kiểu từ tính\", (b) tenLoai [đầu, thanh] + \"xoá từ\" (định ngữ chung \"xoá từ\" điều kiện riêng)"
     },
     {
       "ma": "85229091",

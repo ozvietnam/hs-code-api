@@ -4,13 +4,19 @@
   "nhom": "8546",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-854620",
     "ngay": "2026-11-04"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:duyet-OZV1398-20261118#soat-854620",
+    "ngay": "2026-11-18",
+    "ghiChu": "Sửa 85462010: dùng HOAC [[tenLoai 'Cách điện xuyên' + dungCho ['máy biến điện','máy biến áp','máy biến dòng']], [dungCho 'thiết bị ngắt mạch']], bỏ BO_VE thừa.",
+    "bam": "2f7119604d62cf373a943f88de49cd8a478b817da837193889de82775ed04655"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -19,35 +25,49 @@
       "trich": "85462010 - - Cách điện xuyên của máy biến điện (máy biến áp và máy biến dòng) và cách điện của thiết bị ngắt mạch",
       "dieuKienSo": [
         {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": [
-            "máy biến điện",
-            "thiết bị ngắt mạch"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Cách điện xuyên"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "máy biến điện",
+                  "máy biến áp",
+                  "máy biến dòng"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "thiết bị ngắt mạch"
+              }
+            ]
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85462090",
       "nguon": "tax.85462090",
       "trich": "85462090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "85462010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85462010: \"Cách điện xuyên của máy biến điện (máy biến áp và máy biến dòng) và cách điện của thiết bị ngắt mạch\" ⇒ dungCho [\"máy biến điện\",\"thiết bị ngắt mạch\"]"
-    },
-    {
-      "ma": "85462010",
-      "loai": "BO_VE",
-      "ve": "của máy biến điện (máy biến áp và máy biến dòng) và cách điện của thiết bị ngắt mạch",
-      "lyDo": "Đã đưa máy biến điện và thiết bị ngắt mạch vào mảng dungCho"
+      "ghiChu": "tax.85462010: \"Cách điện xuyên của máy biến điện (máy biến áp và máy biến dòng) và cách điện của thiết bị ngắt mạch\" ⇒ HOAC [[tenLoai \"Cách điện xuyên\" + dungCho [\"máy biến điện\", \"máy biến áp\", \"máy biến dòng\"]], [dungCho \"thiết bị ngắt mạch\"]]"
     }
   ],
   "traVe": [
