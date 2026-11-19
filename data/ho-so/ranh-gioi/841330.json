@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L24-20261111#soat-L24",
-    "ngay": "2026-11-11",
-    "ghiChu": "Tầng 'Other, centrifugal type' ⇒ kieuBom LY_TAM; biên cửa hút 'not exceeding 200 mm' (<=) / 'exceeding 200 mm' (>) đối chiếu tay (cảnh báo cong3-bien-khong-doc-duoc); .30/.40 tenLoai + dungCho 87.02/87.03/87.04 khớp; giữ ngưỡng 200 mm của sổ tay.",
-    "bam": "d966571063e174b6266249e399b05099e22240a1d89ef72c8f83b1e90d69d559"
+    "phien": "pc-tho-hs-01:OZV-1493#soat-ci-8413",
+    "ngay": "2026-11-19",
+    "ghiChu": "OZV-1493: nội dung không đổi, tính lại bam cho khớp bamRanhGioi (bam cũ lệch từ commit gốc)",
+    "bam": "67e042830329832d7a894b386348feced43c259d5bbec45d37df43f507f1274f"
   },
   "dieuKienNut": [
     {
@@ -24,11 +24,9 @@
       "trich": "8413305 Loại khác, loại ly tâm",
       "dieuKienSo": [
         {
-          "fact": "kieuBom",
-          "op": "TRONG",
-          "value": [
-            "LY_TAM"
-          ]
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "ly tâm"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -140,6 +138,13 @@
       "ma": "84133052",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.84133052: \"Với đường kính cửa hút trên 200 mm\" ⇒ duongKinhTrong > 200 mm"
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "pc-tho-hs-01:OZV-1493#soat-ci-8413",
+      "ngay": "2026-11-19",
+      "lyDo": "CI PR #1455 đỏ: cong0-sua-sau-duyet — bam commit gốc lệch bamRanhGioi, nội dung không đổi"
     }
   ]
 }

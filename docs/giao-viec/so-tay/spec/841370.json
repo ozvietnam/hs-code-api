@@ -32,8 +32,9 @@
           "donVi": "mm"
         },
         {
-          "fact": "hoatDongBangDien",
-          "op": "CO"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "200 mm, hoạt động bằng điện"
         }
       ]
     },
@@ -46,8 +47,9 @@
           "donVi": "mm"
         },
         {
-          "fact": "hoatDongBangDien",
-          "op": "KHONG"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "không hoạt động bằng điện"
         }
       ]
     },
@@ -76,40 +78,32 @@
     "8413701": {
       "dieuKienSo": [
         {
-          "fact": "soTangBom",
-          "op": "TRONG",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "một tầng"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "một chiều hút"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "trục ngang"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
           "value": [
-            "MOT_TANG"
+            "được truyền động bằng dây đai",
+            "khớp nối trực tiếp"
           ]
         },
         {
-          "fact": "kieuHutBom",
-          "op": "TRONG",
-          "value": [
-            "MOT_CHIEU"
-          ]
-        },
-        {
-          "fact": "huongTrucBom",
-          "op": "TRONG",
-          "value": [
-            "NGANG"
-          ]
-        },
-        {
-          "fact": "kieuTruyenDong",
-          "op": "TRONG",
-          "value": [
-            "DAY_DAI",
-            "KHOP_NOI_TRUC_TIEP"
-          ]
-        },
-        {
-          "fact": "kieuTruyenDong",
-          "op": "TRONG",
-          "value": [
-            "DONG_TRUC_DONG_CO"
-          ],
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "đồng trục với động cơ",
           "chieu": "PHAI_KHONG"
         },
         {
@@ -122,13 +116,14 @@
     "8413703": {
       "dieuKienSo": [
         {
-          "fact": "datChim",
-          "op": "CO"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bơm nước"
         },
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Bơm nước"
+          "value": "đặt chìm dưới nước"
         }
       ]
     },
@@ -137,13 +132,7 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Bơm nước"
-        },
-        {
-          "fact": "luuLuong",
-          "op": "<=",
-          "value": 8000,
-          "donVi": "m³/h"
+          "value": "với lưu lượng không quá 8.000 m³/h"
         }
       ],
       "phanConLai": [
@@ -156,24 +145,27 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Bơm nước"
-        },
-        {
-          "fact": "luuLuong",
-          "op": ">",
-          "value": 8000,
-          "donVi": "m³/h"
-        },
-        {
-          "fact": "luuLuong",
-          "op": "<=",
-          "value": 13000,
-          "donVi": "m³/h"
+          "value": "lưu lượng trên 8.000 m³/h nhưng không quá 13.000 m³/h"
         }
       ],
       "phanConLai": [
         "8413701",
         "8413703"
+      ]
+    },
+    "8413709": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "đường kính cửa hút"
+        }
+      ],
+      "phanConLai": [
+        "8413701",
+        "8413703",
+        "8413704",
+        "8413705"
       ]
     }
   },

@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "pc-tho-hs-01:OZV-924#soat-841370",
-    "ngay": "2026-11-14",
-    "ghiChu": "OZV-924: bổ sung soTangBom MOT_TANG, kieuHutBom MOT_CHIEU, huongTrucBom NGANG cho 8413701 theo SEN 84137011; giữ duongKinhTrong <= 200 mm và chongLanVanBan .11/.31, .19/.39.",
-    "bam": "b575377f417acebe8e67cec1dc42a84ba4446c03c213916cdc3073f41cd5cd49"
+    "phien": "pc-tho-hs-01:OZV-1493#soat-ci-8413",
+    "ngay": "2026-11-19",
+    "ghiChu": "OZV-1493 sau CI đỏ: xoá dieuKienNut 8413709 (\"Loại khác\" trần không mang điều kiện, lib/so-tay.js:372) + xoá chongLanVanBan .11/.31 .19/.39 (máy không thấy chồng lấn); tính lại bam",
+    "bam": "3cd9ba6583d2e091d04f71b0988a877508f42ef5ec183c56bafcc1a4604c8827"
   },
   "dieuKienNut": [
     {
@@ -24,40 +24,32 @@
       "trich": "8413701 Bơm nước một tầng, một chiều hút, trục ngang được truyền động bằng dây đai hoặc khớp nối trực tiếp, trừ loại bơm đồng trục với động cơ",
       "dieuKienSo": [
         {
-          "fact": "soTangBom",
-          "op": "TRONG",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "một tầng"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "một chiều hút"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "trục ngang"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
           "value": [
-            "MOT_TANG"
+            "được truyền động bằng dây đai",
+            "khớp nối trực tiếp"
           ]
         },
         {
-          "fact": "kieuHutBom",
-          "op": "TRONG",
-          "value": [
-            "MOT_CHIEU"
-          ]
-        },
-        {
-          "fact": "huongTrucBom",
-          "op": "TRONG",
-          "value": [
-            "NGANG"
-          ]
-        },
-        {
-          "fact": "kieuTruyenDong",
-          "op": "TRONG",
-          "value": [
-            "DAY_DAI",
-            "KHOP_NOI_TRUC_TIEP"
-          ]
-        },
-        {
-          "fact": "kieuTruyenDong",
-          "op": "TRONG",
-          "value": [
-            "DONG_TRUC_DONG_CO"
-          ],
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "đồng trục với động cơ",
           "chieu": "PHAI_KHONG"
         },
         {
@@ -74,13 +66,14 @@
       "trich": "8413703 Bơm nước được thiết kế đặt chìm dưới nước",
       "dieuKienSo": [
         {
-          "fact": "datChim",
-          "op": "CO"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bơm nước"
         },
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Bơm nước"
+          "value": "đặt chìm dưới nước"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -93,13 +86,7 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Bơm nước"
-        },
-        {
-          "fact": "luuLuong",
-          "op": "<=",
-          "value": 8000,
-          "donVi": "m³/h"
+          "value": "với lưu lượng không quá 8.000 m³/h"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET",
@@ -116,19 +103,7 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Bơm nước"
-        },
-        {
-          "fact": "luuLuong",
-          "op": ">",
-          "value": 8000,
-          "donVi": "m³/h"
-        },
-        {
-          "fact": "luuLuong",
-          "op": "<=",
-          "value": 13000,
-          "donVi": "m³/h"
+          "value": "lưu lượng trên 8.000 m³/h nhưng không quá 13.000 m³/h"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET",
@@ -193,8 +168,9 @@
           "donVi": "mm"
         },
         {
-          "fact": "hoatDongBangDien",
-          "op": "CO"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "200 mm, hoạt động bằng điện"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -211,8 +187,9 @@
           "donVi": "mm"
         },
         {
-          "fact": "hoatDongBangDien",
-          "op": "KHONG"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "không hoạt động bằng điện"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -267,22 +244,6 @@
       "nguonLoai": "CLAUDE_DUYET"
     }
   ],
-  "chongLanVanBan": [
-    {
-      "cap": [
-        "84137011",
-        "84137031"
-      ],
-      "lyDo": "Tiêu đề 8413701 \"Bơm nước một tầng, một chiều hút, trục ngang được truyền động bằng dây đai hoặc khớp nối trực tiếp, trừ loại bơm đồng trục với động cơ\" chia theo cách truyền động, tiêu đề 8413703 \"Bơm nước được thiết kế đặt chìm dưới nước\" chia theo đặc điểm đặt chìm — hai đặc điểm khác nhau, chữ biểu không loại trừ nhau (bơm đặt chìm truyền động bằng khớp nối trực tiếp thoả cả hai); dòng .11 \"Với đường kính cửa hút không quá 200 mm\" và .31 \"Với đường kính cửa hút không quá 200 mm\" cùng chữ; không có căn cứ thứ tự."
-    },
-    {
-      "cap": [
-        "84137019",
-        "84137039"
-      ],
-      "lyDo": "Cùng cặp tiêu đề: 8413701 \"Bơm nước một tầng, một chiều hút, trục ngang được truyền động bằng dây đai hoặc khớp nối trực tiếp, trừ loại bơm đồng trục với động cơ\" ↔ 8413703 \"Bơm nước được thiết kế đặt chìm dưới nước\" không loại trừ nhau; dòng .19 \"Loại khác (SEN)\" và .39 \"Loại khác\" là phần còn lại (đường kính cửa hút trên 200 mm) của hai tiêu đề đó; không có căn cứ thứ tự."
-    }
-  ],
   "ghiChuSoan": [
     {
       "ma": "8413701",
@@ -320,6 +281,11 @@
       "phien": "claude-agent:duyet-L24-20261111#soat-L24",
       "ngay": "2026-11-11",
       "lyDo": "(A) 841370:8413701 SUY RỘNG: tiêu đề 'Bơm nước một tầng, một chiều hút, trục ngang được truyền động bằng dây đai hoặc khớp nối trực tiếp…' / 'Single stage, single suction horizontal shaft water pumps suitable for belt drive or direct coupling…' — điều kiện chỉ còn tenLoai 'Bơm nước' + kieuTruyenDong DAY_DAI/KHOP_NOI_TRUC_TIEP + không đồng trục; bỏ mất ba giới hạn 'một tầng', 'một chiều hút', 'trục ngang' (SEN 84137011 nhấn mạnh đúng ba đặc điểm này). Hệ quả: bơm ly tâm nhiều tầng / hút hai phía / trục đứng truyền động đai hoặc khớp nối lấn vào .11/.19 (MFN 20) thay vì .42/.43/.49 (MFN 10). Máy tách sai: cổng 5 coi cả cụm 'Bơm nước một tầng, một chiều hút, trục ngang' là DAU nên không báo vế chưa phủ."
+    },
+    {
+      "phien": "pc-tho-hs-01:OZV-1493#soat-ci-8413",
+      "ngay": "2026-11-19",
+      "lyDo": "CI PR #1455 đỏ: cong0-sua-sau-duyet + cong0-phan-con-lai-thua:8413709 + cong3-muc:dieu-kien-nut-tren-tieu-de-loai-khac + 2×cong2-chong-lan-van-ban-thua — bỏ dieuKienNut 8413709 (tiêu đề \"Loại khác\" trần không mang điều kiện) và bỏ khai chongLanVanBan .11/.31, .19/.39 (máy không thấy chồng lấn), tính lại bam"
     }
   ]
 }
