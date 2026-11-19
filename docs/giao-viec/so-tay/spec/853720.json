@@ -6,6 +6,11 @@
     "85372011": {
       "dieuKienSo": [
         {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bảng chuyển mạch"
+        },
+        {
           "fact": "dienAp",
           "op": ">=",
           "value": 66,
@@ -16,6 +21,11 @@
     "85372021": {
       "dieuKienSo": [
         {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bảng điều khiển"
+        },
+        {
           "fact": "dienAp",
           "op": ">=",
           "value": 66,
@@ -24,26 +34,7 @@
       ]
     }
   },
-  "dieuKienNut": {
-    "8537201": {
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Bảng chuyển mạch"
-        }
-      ]
-    },
-    "8537202": {
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Bảng điều khiển"
-        }
-      ]
-    }
-  },
+  "dieuKienNut": {},
   "ghiChuSoan": [
     {
       "ma": "8537201",
@@ -76,6 +67,11 @@
       "loai": "BO_VE",
       "ve": "để ngắt, nối hoặc bảo vệ mạch điện",
       "lyDo": "Chức năng ngắt nối bảo vệ lặp lại tính chất phân phối/điều khiển điện của nhóm 8537"
+    },
+    {
+      "ma": "8537201",
+      "loai": "DUNG",
+      "ghiChu": "OZV-1552 (19/11, GĐ lượt 2 chỉ đạo): bỏ điều kiện nút 8537201/8537202 (dieuKienNut rỗng, chặn fallback sổ tay) — dgNut CHUA_BIET của 2 nút demotion cả hai dòng .11/.21 về KHONG_THE_CHOT. tenLoai xuống dòng: .11 \"Bảng chuyển mạch\", .21 \"Bảng điều khiển\" (nguon tieuDe.8537201/.8537202). Giữ trangThai DUYET theo chỉ đạo GĐ, bam tính lại."
     }
   ]
 }

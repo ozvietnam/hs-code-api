@@ -15,42 +15,20 @@
     "phien": "claude-agent:duyet-L29-20261111#soat-L29",
     "ngay": "2026-11-11",
     "ghiChu": "Đối chiếu VI+EN: tiêu đề Switchboards/Control panels; .11/.21 '>= 66 kV' ('từ … trở lên', biên đối chiếu tay); BO_VE 'để ngắt, nối hoặc bảo vệ mạch điện' chấp nhận — nhóm 85.37 tự định nghĩa bảng gắn >=2 thiết bị nhóm 85.35/85.36 (ngắt/nối/bảo vệ).",
-    "bam": "1b6afb3fe7e21e94179e79d1a2ed8883bac62528a15d517bbe5d3390809a2cbb"
+    "bam": "01b60a18315aa470d35e553471a669775377a27cbd3ae312dc46112ac434d4d0"
   },
-  "dieuKienNut": [
-    {
-      "id": "8537201",
-      "nguon": "tieuDe.8537201",
-      "trich": "8537201 Bảng chuyển mạch",
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Bảng chuyển mạch"
-        }
-      ],
-      "nguonLoai": "CLAUDE_DUYET"
-    },
-    {
-      "id": "8537202",
-      "nguon": "tieuDe.8537202",
-      "trich": "8537202 Bảng điều khiển",
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Bảng điều khiển"
-        }
-      ],
-      "nguonLoai": "CLAUDE_DUYET"
-    }
-  ],
+  "dieuKienNut": [],
   "dong8": [
     {
       "hs": "85372011",
       "nguon": "tax.85372011",
       "trich": "85372011 - - - Gắn với thiết bị điện để ngắt, nối hoặc bảo vệ mạch điện có điện áp từ 66 kV trở lên",
       "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bảng chuyển mạch"
+        },
         {
           "fact": "dienAp",
           "op": ">=",
@@ -72,6 +50,11 @@
       "nguon": "tax.85372021",
       "trich": "85372021 - - - Gắn với thiết bị điện để ngắt, nối hoặc bảo vệ mạch điện có điện áp từ 66 kV trở lên",
       "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bảng điều khiển"
+        },
         {
           "fact": "dienAp",
           "op": ">=",
@@ -128,6 +111,11 @@
       "loai": "BO_VE",
       "ve": "để ngắt, nối hoặc bảo vệ mạch điện",
       "lyDo": "Chức năng ngắt nối bảo vệ lặp lại tính chất phân phối/điều khiển điện của nhóm 8537"
+    },
+    {
+      "ma": "8537201",
+      "loai": "DUNG",
+      "ghiChu": "OZV-1552 (19/11, GĐ lượt 2 chỉ đạo): bỏ điều kiện nút 8537201/8537202 (dieuKienNut rỗng, chặn fallback sổ tay) — dgNut CHUA_BIET của 2 nút demotion cả hai dòng .11/.21 về KHONG_THE_CHOT 'ranh-gioi-so-chu-khong-tat-dinh'. tenLoai xuống dòng: .11 'Bảng chuyển mạch', .21 'Bảng điều khiển' (nguon tieuDe.8537201/.8537202) — tenLoai dòng-level phân biệt 2 ca bench (text ca .2011 có 'Bảng chuyển mạch' không có 'bảng điều khiển', ca .2021 ngược lại). Giữ trangThai DUYET theo chỉ đạo GĐ, bam tính lại."
     }
   ]
 }
