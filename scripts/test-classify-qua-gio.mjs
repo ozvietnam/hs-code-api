@@ -220,6 +220,47 @@ check('F4 lượt B (chặn CPU 1500 ms > trần 1000 ms) ⇒ 503 QUA_GIO', rFb.
 
 process.env.HS_CLASSIFY_TRAN_MS = '85000';
 
+// ═════════ I. OZV-1520 — QUA_GIO + debug=true ⇒ 503 VẪN kèm số đo sống engine.phases/engine.llm ═════════
+// Trước giờ: hết giờ thì số đo chỉ nằm trong closure động cơ (lượt vẫn chạy nền) — bị vứt đúng lúc chậm nhất,
+// mất đúng dữ liệu cần định vị mắt xích >10 s của A3. Hợp đồng mới: api/classify.js truyền `doTienTrinh` (object
+// rỗng) xuống động cơ; engine-loop gắn `chup()`; cửa QUA_GIO gọi chup() CHỈ khi debug. Ở đây giả lập động cơ
+// bằng chayGia đúng hợp đồng (nhóm test-engine-loop kiểm chup() thật của engine-loop).
+{
+  process.env.HS_CLASSIFY_TRAN_MS = '150';
+  const SO_DO = {
+    name: 'loop', rounds: 1, providers: ['stub'], gates: [],
+    phases: { r1Ms: 40, gatherMs: 30, llmMs: 0, llmTungVong: [] },
+    dangChay: { buoc: 'vong2', ms: 80 },
+    ms: 150,
+    llm: { timeoutMs: { understand: 30000, gir: 20000 }, ngatMach: {}, ngatSuyNghi: {} },
+  };
+  let nhanOpts = null;
+  chayGia = (attrs, opts) => new Promise((r) => {
+    nhanOpts = opts;
+    if (opts && typeof opts.doTienTrinh === 'object') opts.doTienTrinh.chup = () => SO_DO;
+    const h = setTimeout(() => r(KQ_BT), 600); if (h.unref) h.unref();
+  });
+  const rI = await goi({ tenHang: 'ổ cắm gne-2z10-085695 màu đen pdu 1u,3*1- 1.8m,', debug: true });
+  check('I1 QUA_GIO + debug=true ⇒ 503 QUA_GIO như thường', rI._s === 503 && rI._j?.trangThai === 'QUA_GIO', JSON.stringify({ s: rI._s, t: rI._j?.trangThai }));
+  check('I2 503 CÓ engine.phases (r1Ms/gatherMs/llmMs) — số đo không bị vứt lúc chậm nhất', rI._j?.engine?.phases && Number.isFinite(rI._j.engine.phases.r1Ms) && Number.isFinite(rI._j.engine.phases.gatherMs) && Number.isFinite(rI._j.engine.phases.llmMs), JSON.stringify(rI._j?.engine?.phases));
+  check('I3 503 CÓ engine.llm (timeoutMs từng bước understand/gir + mạch ngắt)', rI._j?.engine?.llm?.timeoutMs && 'understand' in rI._j.engine.llm.timeoutMs && 'gir' in rI._j.engine.llm.timeoutMs, JSON.stringify(rI._j?.engine?.llm).slice(0, 160));
+  check('I4 engine.dangChay cho biết mắt xích đang chạy khi bị cắt', rI._j?.engine?.dangChay?.buoc === 'vong2' && Number.isFinite(rI._j.engine.dangChay.ms), JSON.stringify(rI._j?.engine?.dangChay));
+  check('I5 KHÔNG bịa results khi chưa chốt (giữ luật A8)', rI._j?.results === undefined, JSON.stringify(rI._j?.results));
+  check('I6 tranMs không đổi vì debug (không nâng trần để lấy số đo)', rI._j?.tranMs === 150, JSON.stringify({ tranMs: rI._j?.tranMs }));
+  check('I7 api truyền doTienTrinh xuống classify (động cơ nhận được hộp chup)', nhanOpts && typeof nhanOpts.doTienTrinh === 'object', JSON.stringify(nhanOpts && Object.keys(nhanOpts)));
+
+  // I8–I9: lượt KHÔNG debug ⇒ thân 503 y hệt bản trước (không có khoá engine).
+  const rI8 = await goi({ tenHang: 'ổ cắm gne-2z10-085695 màu đen pdu 1u,3*1- 1.8m,' });
+  check('I8 QUA_GIO không debug ⇒ KHÔNG có khoá engine', rI8._s === 503 && rI8._j?.trangThai === 'QUA_GIO' && rI8._j?.engine === undefined, JSON.stringify(Object.keys(rI8._j || {})));
+  check('I9 thân 503 không debug đúng 5 khoá cũ, đúng thứ tự (diff 0 byte với main)', JSON.stringify(Object.keys(rI8._j)) === JSON.stringify(['trangThai', 'thongDiep', 'ms', 'tranMs', 'attrs']), JSON.stringify(Object.keys(rI8._j)));
+
+  // I10: động cơ không gắn chup (bản cũ / đường không qua engine-loop) + debug ⇒ vẫn 503 sạch, không crash.
+  chayGia = () => new Promise((r) => { const h = setTimeout(() => r(KQ_BT), 600); if (h.unref) h.unref(); });
+  const rI10 = await goi({ tenHang: 'ổ cắm pdu không gắn chup', debug: true });
+  check('I10 động cơ không có chup ⇒ 503 QUA_GIO không engine, không lỗi (hợp đồng lỏng)', rI10._s === 503 && rI10._j?.trangThai === 'QUA_GIO' && rI10._j?.engine === undefined, JSON.stringify({ s: rI10._s, t: rI10._j?.trangThai }));
+  process.env.HS_CLASSIFY_TRAN_MS = '85000';
+}
+
 clearInterval(giuSong);
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);

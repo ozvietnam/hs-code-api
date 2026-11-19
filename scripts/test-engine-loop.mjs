@@ -423,6 +423,38 @@ check('vòng 1 lỗi tạm thời → nextAction RETRY', r.nextAction?.type === 
     JSON.stringify({ nonVerbatim, redosMs, len: redosOut.length }));
 }
 
+// ── OZV-1520: chup() số đo sống gắn vào opts.doTienTrinh — QUA_GIO + debug không vứt số đo lúc chậm nhất ──
+// Cửa 503 ở api/classify.js cần ĐÚNG số đo tại giây bị cắt: engine-loop gắn hàm chụp vào object bên gọi truyền
+// xuống. Ở đây chạy classifyLoop THẬT (LLM stub): chụp NGAY TRONG LÒNG vòng 2 — thời điểm điển hình lượt bị cắt.
+{
+  const tienTrinh = {};
+  const CHOT2 = { decision: 'CHOT', hs: '82019000', confidence: 88, reason: 'dụng cụ cầm tay nông nghiệp, cơ-tay', gir: 'GIR 1', basis: [{ stream: 'SAN_PHAM', claim: 'dùng hái cau', evidence: '用于摘取槟榔' }], conditions: [], alternatives: [], questions: [] };
+  let chupGiuaVong2 = null;
+  script = [R1_KNIFE, (user) => {
+    if (typeof tienTrinh.chup === 'function') chupGiuaVong2 = tienTrinh.chup(); // đúng khoảnh khắc cửa QUA_GIO sẽ bắn
+    return CHOT2;
+  }];
+  calls = [];
+  const r = await classify(KNIFE, { doTienTrinh: tienTrinh });
+  check('OZV-1520: classifyLoop gắn chup() vào opts.doTienTrinh của bên gọi', typeof tienTrinh.chup === 'function', typeof tienTrinh.chup);
+  check('OZV-1520: chup() giữa vòng 2 có phases sống (r1Ms/gatherMs đã xong) + dangChay=vong2',
+    chupGiuaVong2 && Number.isFinite(chupGiuaVong2.phases?.r1Ms) && Number.isFinite(chupGiuaVong2.phases?.gatherMs) && chupGiuaVong2.dangChay?.buoc === 'vong2',
+    JSON.stringify(chupGiuaVong2 && { ph: chupGiuaVong2.phases, dangChay: chupGiuaVong2.dangChay }));
+  check('OZV-1520: chup() có llm.timeoutMs từng bước + rounds/providers như khối debug của phản hồi',
+    chupGiuaVong2?.llm?.timeoutMs && 'understand' in chupGiuaVong2.llm.timeoutMs && 'gir' in chupGiuaVong2.llm.timeoutMs && chupGiuaVong2.rounds === 1 && Array.isArray(chupGiuaVong2.providers),
+    JSON.stringify(chupGiuaVong2 && { rounds: chupGiuaVong2.rounds, providers: chupGiuaVong2.providers }));
+  const chupCuoi = tienTrinh.chup();
+  check('OZV-1520: chup() SAU khi chạy xong khớp số đo phản hồi (llmMs) — không lệch trạng thái',
+    Math.abs((chupCuoi.phases?.llmMs || 0) - (r.engine?.phases?.llmMs || 0)) <= 2,
+    JSON.stringify([chupCuoi.phases?.llmMs, r.engine?.phases?.llmMs]));
+  check('OZV-1520: truyền doTienTrinh KHÔNG đổi shape phản hồi (vẫn engine.phases, không thêm khoá lạ)',
+    r.engine && r.engine.phases && !('doTienTrinh' in r) && !('chup' in r.engine),
+    JSON.stringify({ respKeys: Object.keys(r), engineKeys: Object.keys(r.engine || {}) }));
+  // Không truyền doTienTrinh (đường cũ / động cơ khác) ⇒ engine-loop không ném, phản hồi y cũ.
+  const rKhongTruyen = await run(KNIFE, [R1_KNIFE, CHOT2]);
+  check('OZV-1520: KHÔNG truyền doTienTrinh ⇒ vẫn chạy bình thường, mã như cũ', rKhongTruyen.results?.[0]?.hs === r.results?.[0]?.hs, JSON.stringify([rKhongTruyen.results?.[0]?.hs, r.results?.[0]?.hs]));
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
 
