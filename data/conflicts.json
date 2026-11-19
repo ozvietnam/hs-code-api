@@ -1432,5 +1432,125 @@
     ],
     "group": "CF-cooling-tower-fan-blade",
     "sourceFile": "conflict_resolver_seed"
+  },
+  "84183010": {
+    "hsCode": "84183010",
+    "riskLevel": "ORANGE",
+    "confusedWith": [
+      "84183090",
+      "84184010",
+      "84184090"
+    ],
+    "reasonsVi": [
+      "8418.30.10: tủ kết đông cửa trên, dung tích ≤200 lít.",
+      "Cửa trước → 8418.40; dung tích trong 8418.30 trên 200 đến 800 lít → 8418.30.90."
+    ],
+    "precedents": [],
+    "group": "CF-freezer-door",
+    "sourceFile": "conflict_resolver_seed"
+  },
+  "84183090": {
+    "hsCode": "84183090",
+    "riskLevel": "ORANGE",
+    "confusedWith": [
+      "84183010",
+      "84184090",
+      "84184010"
+    ],
+    "reasonsVi": [
+      "8418.30 là tủ kết đông loại cửa trên (≤800 lít); cửa trước thuộc 8418.40.",
+      "Trong 8418.30: dung tích ≤200 lít → 8418.30.10; còn lại → 8418.30.90. Thiếu dung tích hoặc >800 lít → không chốt bảng."
+    ],
+    "precedents": [
+      "5039/TCHQ-TXNK"
+    ],
+    "group": "CF-freezer-door",
+    "sourceFile": "conflict_resolver_seed"
+  },
+  "84184010": {
+    "hsCode": "84184010",
+    "riskLevel": "ORANGE",
+    "confusedWith": [
+      "84184090",
+      "84183010",
+      "84183090"
+    ],
+    "reasonsVi": [
+      "8418.40.10: tủ kết đông cửa trước, dung tích ≤200 lít.",
+      "Cửa trên → 8418.30; dung tích trong 8418.40 trên 200 đến 900 lít → 8418.40.90."
+    ],
+    "precedents": [],
+    "group": "CF-freezer-door",
+    "sourceFile": "conflict_resolver_seed"
+  },
+  "84184090": {
+    "hsCode": "84184090",
+    "riskLevel": "ORANGE",
+    "confusedWith": [
+      "84184010",
+      "84183090",
+      "84183010"
+    ],
+    "reasonsVi": [
+      "8418.40 là tủ kết đông loại cửa trước (≤900 lít); cửa trên thuộc 8418.30.",
+      "Trong 8418.40: dung tích ≤200 lít → 8418.40.10; còn lại → 8418.40.90 (TB 5039/TCHQ-TXNK). Thiếu dung tích hoặc >900 lít → không chốt bảng."
+    ],
+    "precedents": [
+      "5039/TCHQ-TXNK"
+    ],
+    "group": "CF-freezer-door",
+    "sourceFile": "conflict_resolver_seed"
+  },
+  "85081100": {
+    "hsCode": "85081100",
+    "riskLevel": "ORANGE",
+    "confusedWith": [
+      "85081990",
+      "85081910"
+    ],
+    "reasonsVi": [
+      "8508.11.00 chỉ khi công suất ≤1.500 W VÀ túi/đồ chứa ≤20 lít; vượt một ngưỡng → 8508.19.",
+      "Robot/máy hút bụi gia dụng vẫn có thể vào 8508.11 nếu đủ hai ngưỡng (TB 6538/TCHQ-TXNK)."
+    ],
+    "precedents": [
+      "1864/TCHQ-TXNK",
+      "6538/TCHQ-TXNK"
+    ],
+    "group": "CF-vacuum-power-container",
+    "sourceFile": "conflict_resolver_seed"
+  },
+  "85081910": {
+    "hsCode": "85081910",
+    "riskLevel": "ORANGE",
+    "confusedWith": [
+      "85081100",
+      "85081990"
+    ],
+    "reasonsVi": [
+      "8508.19.10: máy hút bụi vượt ngưỡng 8508.11 và phù hợp mục đích gia dụng.",
+      "Loại công nghiệp/nhà xưởng trong 8508.19 → 8508.19.90."
+    ],
+    "precedents": [
+      "6538/TCHQ-TXNK"
+    ],
+    "group": "CF-vacuum-power-container",
+    "sourceFile": "conflict_resolver_seed"
+  },
+  "85081990": {
+    "hsCode": "85081990",
+    "riskLevel": "ORANGE",
+    "confusedWith": [
+      "85081100",
+      "85081910"
+    ],
+    "reasonsVi": [
+      "8508.19 khi không thỏa đồng thời ≤1.500 W và đồ chứa ≤20 lít của 8508.11.",
+      "8508.19.10 là loại gia dụng; còn lại → 8508.19.90. Thiếu dấu hiệu gia dụng/công nghiệp → không chốt bảng."
+    ],
+    "precedents": [
+      "1864/TCHQ-TXNK"
+    ],
+    "group": "CF-vacuum-power-container",
+    "sourceFile": "conflict_resolver_seed"
   }
 }

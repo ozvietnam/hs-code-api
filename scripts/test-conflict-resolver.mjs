@@ -145,5 +145,114 @@ function run(topHs, attrs, expect) {
   assert('cánh quạt tháp thiếu dữ kiện → hỏi coolingTowerFanImport', r.status === 'INSUFFICIENT' && (r.ask || []).some((a) => a.attribute === 'coolingTowerFanImport'));
 }
 
+// OZV-1382 — tủ đông cửa / hút bụi công suất+đồ chứa (GĐ #1438 lần 2: kèm dung tích + công dụng)
+{
+  const r = run('84183090', { freezerDoorType: 'frontDoor', freezerVolumeClass: 'mid800' }, {});
+  assert('tủ đông cửa trước mid800 → 84184090', r.status === 'RESOLVED' && r.decidedHs === '84184090' && r.overrodeLlm === true);
+}
+{
+  const r = run('84184090', { freezerDoorType: 'topDoor', freezerVolumeClass: 'mid800' }, {});
+  assert('tủ đông cửa trên mid800 → 84183090', r.status === 'RESOLVED' && r.decidedHs === '84183090' && r.overrodeLlm === true);
+}
+{
+  const r = run('84183090', { freezerDoorType: 'frontDoor', freezerVolumeClass: 'le200' }, {});
+  assert('tủ đông cửa trước ≤200L → 84184010', r.status === 'RESOLVED' && r.decidedHs === '84184010');
+}
+{
+  const r = run('84184090', { freezerDoorType: 'topDoor', freezerVolumeClass: 'le200' }, {});
+  assert('tủ đông cửa trên ≤200L → 84183010', r.status === 'RESOLVED' && r.decidedHs === '84183010');
+}
+{
+  const r = run('84183090', { freezerDoorType: 'frontDoor' }, {});
+  assert('tủ đông thiếu dung tích → hỏi freezerVolumeClass', r.status === 'INSUFFICIENT' && (r.ask || []).some((a) => a.attribute === 'freezerVolumeClass'));
+}
+{
+  const r = run('84183090', {}, {});
+  assert('tủ đông thiếu kiểu cửa → hỏi freezerDoorType', r.status === 'INSUFFICIENT' && (r.ask || []).some((a) => a.attribute === 'freezerDoorType'));
+}
+{
+  const r = run('85081990', { vacuumPowerClass: 'le1500', vacuumContainerClass: 'le20' }, {});
+  assert('hút bụi ≤1500W ≤20L → 85081100', r.status === 'RESOLVED' && r.decidedHs === '85081100' && r.overrodeLlm === true);
+}
+{
+  const r = run('85081100', { vacuumPowerClass: 'gt1500', vacuumUseType: 'industrial' }, {});
+  assert('hút bụi >1500W công nghiệp → 85081990', r.status === 'RESOLVED' && r.decidedHs === '85081990' && r.overrodeLlm === true);
+}
+{
+  const r = run('85081100', { vacuumPowerClass: 'gt1500', vacuumUseType: 'domestic' }, {});
+  assert('hút bụi >1500W gia dụng → 85081910', r.status === 'RESOLVED' && r.decidedHs === '85081910');
+}
+{
+  const r = run('85081100', { vacuumPowerClass: 'le1500', vacuumContainerClass: 'gt20', vacuumUseType: 'industrial' }, {});
+  assert('hút bụi ≤1500W >20L công nghiệp → 85081990', r.status === 'RESOLVED' && r.decidedHs === '85081990' && r.overrodeLlm === true);
+}
+{
+  const r = run('85081100', { vacuumPowerClass: 'gt1500' }, {});
+  assert('hút bụi >1500W thiếu công dụng → hỏi vacuumUseType', r.status === 'INSUFFICIENT' && (r.ask || []).some((a) => a.attribute === 'vacuumUseType'));
+}
+{
+  const top = { hs: '85081990', confidence: 70, reason: 'seed' };
+  const { resolveConflict: rc, extractPowerWatts: epw, extractVolumeLiters: evl } = require('../lib/conflict-resolver.js');
+  const r = rc(top, [top], {}, { ...deps, productText: 'máy hút bụi công nghiệp 1,5 kW dung tích thùng 15 lít' });
+  assert('productText 1,5 kW 15 lít → 85081100', r.status === 'RESOLVED' && r.decidedHs === '85081100', JSON.stringify(r));
+  assert(
+    'extractPowerWatts ≥2 số khác nhau → null',
+    epw('động cơ 1.200 W, công suất hút 250 W') === null,
+  );
+  assert(
+    'extractVolumeLiters ≥2 dung tích khác nhau → null',
+    evl('thùng 15 lít và bình 30 lít') === null,
+  );
+  assert(
+    'extractVolumeLiters 1.200 lít → 1200',
+    evl('tủ đông cửa trước dung tích 1.200 lít') === 1200,
+  );
+}
+
+// OZV-1382 GĐ #1438 lần 3 — ≥2 miền detect → không gán; "tủ đông"≠"tự động"
+{
+  const {
+    resolveConflict: rc, enrichAttrsFromTable: enrich, phraseHits: ph,
+    foldProductText: fold, originalProductText: orig,
+  } = require('../lib/conflict-resolver.js');
+  const folded = fold('Máy giặt tự động cửa trước dung tích 65 lít');
+  const original = orig('Máy giặt tự động cửa trước dung tích 65 lít');
+  assert('phraseHits "tủ đông" không khớp "tự động"', ph(folded, 'tủ đông', original) === false);
+  assert('phraseHits "freezer" ASCII vẫn khớp folded', ph(fold('chest freezer 300 l'), 'freezer', orig('chest freezer 300 l')) === true);
+  const dual = enrich({}, tablesDb.tables['CF-vacuum-power-container'], 'máy hút bụi gia đình và nhà xưởng 2,2 kW 30 lít');
+  assert('≥2 miền vacuumUseType → không gán', dual.vacuumUseType == null, JSON.stringify(dual));
+  const dualDoor = enrich({}, tablesDb.tables['CF-freezer-door'], 'tủ đông cửa trên và cửa trước 300 lít');
+  assert('≥2 miền freezerDoorType → không gán', dualDoor.freezerDoorType == null, JSON.stringify(dualDoor));
+  const top = { hs: '84184090', confidence: 70, reason: 'seed' };
+  const r1200 = rc(top, [top], {}, { ...deps, productText: 'tủ đông cửa trước dung tích 1.200 lít' });
+  assert(
+    '1.200 lít không chốt 84184010/90',
+    r1200.status !== 'RESOLVED' || !['84184010', '84184090'].includes(r1200.decidedHs),
+    JSON.stringify(r1200),
+  );
+}
+
+// OZV-1382 GĐ #1438 mục 4 — hai lần resolveConflict (cùng kiểu productText như classify.js) không lẫn mô tả
+{
+  const { resolveConflict: rc } = require('../lib/conflict-resolver.js');
+  const mkText = (attrs) => [
+    attrs.tenHang, attrs.nameZh, attrs.chatLieu, attrs.congDung,
+    typeof attrs.specs === 'string' ? attrs.specs : '',
+  ].filter(Boolean).join(' ');
+  const top = { hs: '85081990', confidence: 70, reason: 'seed' };
+  const a1 = { tenHang: 'Máy hút bụi', specs: 'công suất 800 W đồ chứa 10 lít' };
+  const a2 = { tenHang: 'Máy hút bụi công nghiệp', specs: '2,2 kW thùng 30 lít' };
+  const r1 = rc(top, [top], {}, { ...deps, productText: mkText(a1) });
+  const r2 = rc(top, [top], {}, { ...deps, productText: mkText(a2) });
+  assert('classify-path lần 1 800W → 85081100', r1.status === 'RESOLVED' && r1.decidedHs === '85081100', JSON.stringify(r1));
+  assert('classify-path lần 2 công nghiệp 2,2kW → 85081990 không lẫn lần 1', r2.status === 'RESOLVED' && r2.decidedHs === '85081990', JSON.stringify(r2));
+  const rEmpty = rc(top, [top], {}, deps);
+  assert(
+    'classify-path thiếu productText không kế thừa lần trước',
+    rEmpty.status === 'INSUFFICIENT' || rEmpty.status === 'NARROWED' || rEmpty.status === 'SKIP',
+    JSON.stringify(rEmpty),
+  );
+}
+
 console.log(`\n${passed}/${passed + failed} passed`);
 process.exit(failed ? 1 : 0);

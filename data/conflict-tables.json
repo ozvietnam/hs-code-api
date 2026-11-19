@@ -255,6 +255,249 @@
           "source": "TB 2943/TCHQ-TXNK (2020); GIR 2(a)"
         }
       ]
+    },
+    "CF-freezer-door": {
+      "titleVi": "Tủ kết đông cửa trên (8418.30) vs cửa trước (8418.40) theo dung tích",
+      "verified": true,
+      "verifiedBy": "ozvietnam",
+      "verifiedAt": "2026-11",
+      "members": [
+        "84183010",
+        "84183090",
+        "84184010",
+        "84184090"
+      ],
+      "essenceTestVi": "Tủ kết đông kiểu nằm/cửa trên hay kiểu đứng/cửa trước, và dung tích thuộc ngưỡng nào của biểu thuế?",
+      "requireAny": [
+        "tủ đông",
+        "tủ kết đông",
+        "tủ lạnh âm sâu",
+        "freezer",
+        "âm sâu",
+        "ultra-low freezer",
+        "super freezer"
+      ],
+      "inputs": [
+        {
+          "attribute": "freezerDoorType",
+          "detect": {
+            "frontDoor": [
+              "cửa trước",
+              "loại cửa trước",
+              "kiểu đứng",
+              "upright",
+              "upright type",
+              "front door",
+              "door on the front"
+            ],
+            "topDoor": [
+              "cửa trên",
+              "loại cửa trên",
+              "kiểu nằm",
+              "tủ đông nằm",
+              "chest freezer",
+              "chest type",
+              "top door",
+              "nắp trên",
+              "cửa nắp"
+            ]
+          }
+        },
+        {
+          "attribute": "freezerVolumeClass",
+          "fromText": {
+            "kind": "volumeL",
+            "bands": [
+              { "le": 200, "domain": "le200" },
+              { "gt": 200, "le": 800, "domain": "mid800" }
+            ]
+          }
+        }
+      ],
+      "hitPolicy": "PRIORITY",
+      "rules": [
+        {
+          "id": "fd1",
+          "priority": 40,
+          "when": {
+            "freezerDoorType": "frontDoor",
+            "freezerVolumeClass": "le200"
+          },
+          "hs": "84184010",
+          "gir": "GIR 1+6",
+          "evidence": "hard",
+          "reasonVi": "Tủ kết đông loại cửa trước, dung tích không quá 200 lít → 8418.40.10.",
+          "source": "Biểu thuế XNK — 8418.40.10"
+        },
+        {
+          "id": "fd2",
+          "priority": 30,
+          "when": {
+            "freezerDoorType": "frontDoor",
+            "freezerVolumeClass": "mid800"
+          },
+          "hs": "84184090",
+          "gir": "GIR 1+6",
+          "evidence": "hard",
+          "reasonVi": "Tủ kết đông loại cửa trước, dung tích trên 200 đến 800 lít → 8418.40.90 (Loại khác trong 8418.40; ngưỡng chung với 8418.30 để đủ tích Descartes — cửa trước 800–900 lít ngoài band → không chốt bảng).",
+          "source": "Biểu thuế XNK — tiêu đề 8418.40; TB 5039/TCHQ-TXNK"
+        },
+        {
+          "id": "fd3",
+          "priority": 20,
+          "when": {
+            "freezerDoorType": "topDoor",
+            "freezerVolumeClass": "le200"
+          },
+          "hs": "84183010",
+          "gir": "GIR 1+6",
+          "evidence": "hard",
+          "reasonVi": "Tủ kết đông loại cửa trên, dung tích không quá 200 lít → 8418.30.10.",
+          "source": "Biểu thuế XNK — 8418.30.10"
+        },
+        {
+          "id": "fd4",
+          "priority": 10,
+          "when": {
+            "freezerDoorType": "topDoor",
+            "freezerVolumeClass": "mid800"
+          },
+          "hs": "84183090",
+          "gir": "GIR 1+6",
+          "evidence": "hard",
+          "reasonVi": "Tủ kết đông loại cửa trên, dung tích trên 200 đến 800 lít → 8418.30.90 (Loại khác trong 8418.30).",
+          "source": "Biểu thuế XNK — tiêu đề 8418.30"
+        }
+      ]
+    },
+    "CF-vacuum-power-container": {
+      "titleVi": "Máy hút bụi ≤1.500 W và đồ chứa ≤20 l (8508.11) vs 8508.19 gia dụng/loại khác",
+      "verified": true,
+      "verifiedBy": "ozvietnam",
+      "verifiedAt": "2026-11",
+      "members": [
+        "85081100",
+        "85081910",
+        "85081990"
+      ],
+      "essenceTestVi": "Công suất ≤1.500 W VÀ đồ chứa/túi ≤20 lít; nếu vượt ngưỡng thì gia dụng hay công nghiệp?",
+      "requireAny": [
+        "máy hút bụi",
+        "hut bui",
+        "vacuum cleaner",
+        "industrial vacuum"
+      ],
+      "inputs": [
+        {
+          "attribute": "vacuumPowerClass",
+          "fromText": {
+            "kind": "powerW",
+            "le": 1500,
+            "domainLe": "le1500",
+            "domainGt": "gt1500"
+          }
+        },
+        {
+          "attribute": "vacuumContainerClass",
+          "fromText": {
+            "kind": "volumeL",
+            "le": 20,
+            "domainLe": "le20",
+            "domainGt": "gt20"
+          }
+        },
+        {
+          "attribute": "vacuumUseType",
+          "detect": {
+            "domestic": [
+              "gia dụng",
+              "gia đình",
+              "dùng trong nhà",
+              "household",
+              "domestic",
+              "home use"
+            ],
+            "industrial": [
+              "công nghiệp",
+              "nhà xưởng",
+              "nhà máy",
+              "3 pha",
+              "ba pha",
+              "industrial",
+              "industrial vacuum",
+              "workshop"
+            ]
+          }
+        }
+      ],
+      "hitPolicy": "PRIORITY",
+      "rules": [
+        {
+          "id": "vac1",
+          "priority": 40,
+          "when": {
+            "vacuumPowerClass": "le1500",
+            "vacuumContainerClass": "le20"
+          },
+          "hs": "85081100",
+          "gir": "GIR 1+6",
+          "evidence": "hard",
+          "reasonVi": "Máy hút bụi có động cơ điện gắn liền, công suất không quá 1.500 W và túi/đồ chứa không quá 20 lít → 8508.11.00.",
+          "source": "Biểu thuế XNK — 8508.11.00; TB 1864/TCHQ-TXNK; TB 6538/TCHQ-TXNK"
+        },
+        {
+          "id": "vac2",
+          "priority": 30,
+          "when": {
+            "vacuumPowerClass": "gt1500",
+            "vacuumUseType": "industrial"
+          },
+          "hs": "85081990",
+          "gir": "GIR 1+6",
+          "evidence": "hard",
+          "reasonVi": "Công suất trên 1.500 W, loại công nghiệp/nhà xưởng → 8508.19.90 (Loại khác).",
+          "source": "Biểu thuế XNK — 8508.19.10 vs 8508.19.90"
+        },
+        {
+          "id": "vac3",
+          "priority": 25,
+          "when": {
+            "vacuumPowerClass": "gt1500",
+            "vacuumUseType": "domestic"
+          },
+          "hs": "85081910",
+          "gir": "GIR 1+6",
+          "evidence": "hard",
+          "reasonVi": "Công suất trên 1.500 W, loại phù hợp dùng cho mục đích gia dụng → 8508.19.10.",
+          "source": "Biểu thuế XNK — 8508.19.10"
+        },
+        {
+          "id": "vac4",
+          "priority": 20,
+          "when": {
+            "vacuumContainerClass": "gt20",
+            "vacuumUseType": "industrial"
+          },
+          "hs": "85081990",
+          "gir": "GIR 1+6",
+          "evidence": "hard",
+          "reasonVi": "Đồ chứa/túi trên 20 lít, loại công nghiệp/nhà xưởng → 8508.19.90.",
+          "source": "Biểu thuế XNK — 8508.19.10 vs 8508.19.90"
+        },
+        {
+          "id": "vac5",
+          "priority": 10,
+          "when": {
+            "vacuumContainerClass": "gt20",
+            "vacuumUseType": "domestic"
+          },
+          "hs": "85081910",
+          "gir": "GIR 1+6",
+          "evidence": "hard",
+          "reasonVi": "Đồ chứa/túi trên 20 lít, loại gia dụng → 8508.19.10.",
+          "source": "Biểu thuế XNK — 8508.19.10"
+        }
+      ]
     }
   }
 }
