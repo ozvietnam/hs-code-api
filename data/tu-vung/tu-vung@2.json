@@ -2998,20 +2998,22 @@
      }
     },
     "NGAT_SOC_DONG": {
-     "nhanVi": "ngắt khi sốc dòng cao; đảo mạch bếp; công tắc micro; công tắc nguồn TV/radio, quạt, điều hòa",
-     "nhanEn": "high inrush current cut-out; cooker change-over; micro switch; power switch for TV/radio, fan, air-conditioner",
-     "nhanZh": "大冲击电流断路器；灶具转换开关；微动开关；电视/收音机、风扇、空调电源开关",
+     "nhanVi": "ngắt khi sốc dòng cao; đảo mạch bếp; công tắc cho micro (microphone switches); công tắc nguồn TV/radio, quạt, điều hòa",
+     "nhanEn": "high inrush current cut-out; cooker change-over; microphone switches; power switch for TV/radio, fan, air-conditioner",
+     "nhanZh": "大冲击电流断路器；灶具转换开关；麦克风开关；电视/收音机、风扇、空调电源开关",
      "cachDoc": {
       "vi": [
        "công tắc micro",
-       "sốc dòng"
+       "sốc dòng",
+       "đảo mạch"
       ],
       "en": [
-       "micro\\s?switch",
+       "microphone\\s?switch(?:es)?",
        "inrush"
       ],
       "zh": [
-       "微动开关"
+       "冲击电流",
+       "麦克风"
       ]
      },
      "cachViet": null
@@ -3022,16 +3024,16 @@
      "nhanZh": "电饭煲/烤箱用微型开关",
      "cachDoc": {
       "vi": [
-       "nồi cơm",
-       "lò nướng"
+       "công tắc\\s+mini[^.;\\n]{0,50}?(?:nồi cơm|lò nướng)",
+       "miniature[^.;\\n]{0,50}?(?:nồi cơm|lò nướng)"
       ],
       "en": [
-       "rice cooker",
-       "toaster oven"
+       "mini(?:ature)?\\s+switch[^.;\\n]{0,60}?(?:rice\\s?cooker|toaster)",
+       "(?:rice\\s?cooker|toaster)[^.;\\n]{0,60}?mini(?:ature)?\\s+switch"
       ],
       "zh": [
-       "电饭煲",
-       "烤箱"
+       "微型开关[^.;\\n]{0,30}?(?:电饭煲|烤箱)",
+       "(?:电饭煲|烤箱)[^.;\\n]{0,30}?微型开关"
       ]
      },
      "cachViet": null
@@ -23331,7 +23333,8 @@
   "loaiCongTac": [
    "công\\s+tắc\\s+micro\\s*\\(?\\s*micro\\s*-?\\s*switch\\s*\\)?",
    "micro\\s*-?\\s*switch(?:es)?",
-   "công\\s+tắc\\s+hành\\s+trình"
+   "công\\s+tắc\\s+hành\\s+trình",
+   "微动开关"
   ]
  },
  "tenKhac": {
