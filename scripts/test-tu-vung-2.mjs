@@ -829,5 +829,18 @@ check('vietCum đơn vị @1 KHÔNG đổi ("CS: 75000W" — không cách)', T.v
   check('#680 docGiaTri("tenLoai") không đổi (@1): "Bình giữ nhiệt chân không" ⇒ "bình giữ nhiệt chân"', T.docGiaTri('tenLoai', 'Bình giữ nhiệt chân không').giaTri === 'bình giữ nhiệt chân');
 }
 
+// OZV-1514 — chặn hồi quy hiệu năng: boGiaPhuDinh từng replace TOÀN CHUỖI cho mỗi match (biPhuDinh gọi từ
+// phuDinhCaDoan + truocTrongMenhDeBo) ⇒ docGiaTri trên chữ nhiều match là O(n²): 2000 từ lặp 2,3 s, 4000 từ 9,5 s
+// trên main 17/11. Sau cache 1 phần tử: 4000 từ ~63 ms. Ngưỡng 300 ms là khuôn thẻ (sau vá dư ~5 lần; main trước
+// vá vượt 30 lần ⇒ đỏ đúng chỗ). Máy đo phải nhàn (CLAUDE.md quy tắc 9: loadavg > số lõi thì số đo vô nghĩa).
+{
+  const text = Array(4000).fill('công tắc micro').join(', ');
+  T.docGiaTri('loaiCongTac', text); // vòng làm nóng JIT/nạp từ vựng — không tính vào số đo
+  const t0 = process.hrtime.bigint();
+  const r = T.docGiaTri('loaiCongTac', text);
+  const ms = Number(process.hrtime.bigint() - t0) / 1e6;
+  check(`OZV-1514 docGiaTri('loaiCongTac') 4000 từ lặp < 300 ms (thực tế ${ms.toFixed(0)} ms)`, r.trangThai === 'DA_CO' && r.giaTri === 'NGAT_SOC_DONG' && ms < 300, { ms, trangThai: r.trangThai, giaTri: r.giaTri });
+}
+
 console.log(`\n${pass} pass, ${fail} fail`);
 process.exit(fail ? 1 : 0);
