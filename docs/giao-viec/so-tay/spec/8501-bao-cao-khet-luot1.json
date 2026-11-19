@@ -1,0 +1,38 @@
+{
+  "phienBan": "bao-cao-khet@1",
+  "loai": "Ghi chú đo lượt 1 OZV-1555 (khép SẠCH V1 nhóm 8501) — KHÔNG phải spec ranh giới",
+  "ngay": "2026-11-19",
+  "ketQua": {
+    "baseline": { "chotDung": 38, "tongSoCa": 75, "chotSai": 0, "chotLoaiKhacSai": 0, "nemLoi": 0, "dongCoTen": "30/47=63.8%" },
+    "bienThe1": {
+      "ghiChu": "farm /tmp: r14830[MC], 8501102[BUOC+MC], 8501105[BUOC+XC], 85011030[HT+MC], 85011060[HT+XC], 8501104~PC[MC], 8501109~PC[XC]",
+      "ketQua": ".21/.22 CHOT đúng; .41/.51/.60/.91 vẫn THIEU_SO_LIEU"
+    },
+    "bienThe2": {
+      "ghiChu": "bienThe1 + r14830 thêm BUOC + 8501104 thêm vế XC0 (PHAI_KHONG XOAY_CHIEU)",
+      "chotDung": 39, "chotSai": 1, "nemLoi": 0,
+      "chiTietChotSai": "ca 85011030 ('Động cơ … 37,5 W: Động cơ một chiều: Động cơ hướng trục (SEN)') máy CHOT nhầm 85011060 — đo trực tiếp chotDong8: hs=85011060, baseline cùng ca CHOT đúng 85011030"
+    },
+    "bienThe3": {
+      "ghiChu": "tối giản: CHỈ 8501102[BUOC+MC] + 8501105[BUOC+XC], không đụng 85011030/85011060/r14830/8501104/8501109",
+      "chotDung": 39, "chotSai": 1, "chotLoaiKhacSai": 0, "nemLoi": 0,
+      "chiTietChotSai": "ca 85011041 (đã hết THIEU_SO_LIEU nhưng) máy CHOT nhầm dòng — cần debug r.hs"
+    }
+  },
+  "ketLuan": {
+    "chotSai0": "CẢ 3 biến thể siết điều kiện khoa vào 8501102/8501105/85011030/85011060 đều sinh chotSai=1 ở ca lân cận ⇒ KHÔNG ghi data thật lượt này. Cổng chotSai=0 là bắt buộc.",
+    "tuongBuocAbsence": "Ca .41/.51/.91 cần fact kieuDongCoDien vắng 'bước' ⇒ LIET_KE trả CHUA_BIET (hỏi được) ⇒ 8501102 CHUA_BIET ⇒ contagion (so-tay-gates.js ~L915) hạ nút phanConLai 8501104 thành CHUA_BIET ⇒ dòng thừa kế rơi đường 'xác nhận qua so chữ' (~L1015-1017) đòi vế riêng tất định PHI TÊN (duChamDinhPhiTen: THOA && !khongTatDinh && op không thuộc TEN_LOAI/CONG_DUNG/TUONG_TU) mà .41/.91 chỉ có dungCho (CONG_DUNG) ⇒ KHÔNG thể khép bằng data-thuần trong phạm vi cho phép (CẤM sửa lib). Cần quyết kiến trúc từ GĐ.",
+    "conLai": [
+      "850131/850132: 9 ca KHONG_THE_CHOT (chưa đọc data/ho-so/ranh-gioi/850131.json, 850132.json)",
+      "85015219/85015229: KHONG_THE_CHOT",
+      "850134/850163/850164: ranh giới chưa có + fact 'cong_suat' gạch dưới không resolve (fact đúng: congSuat)",
+      "debug r.hs cho ca chotSai của bienThe3 (85011041) và bienThe2 (85011030)"
+    ]
+  },
+  "lenhTiep": [
+    "Farm cách ly: HS_DATA_DIR=/tmp/hs8501-19666 node scripts/bo-kiem-luat.mjs --nhom=8501 --json",
+    "Debug ca: HS_DATA_DIR=<farm> node -e \"const{chotDong8}=require('./lib/so-tay-gates.js');console.log(chotDong8({hs:'850110',productText:'<text ca>'}))\"",
+    "Đo nhóm: node scripts/dem-nhom-sach.mjs --nhom=8501",
+    "Khi ghi thật: giữ hình dạng mục cũ (nguon/trich), nguonLoai CLAUDE_DUYET, tính lại duyet.bam=bamRanhGioi(ban) (cong-ranh-gioi.js:161), thêm nhatKy dòng DUNG ghi KẾT QUẢ ĐO, chạy kiemRanhGioi('850110',ban)"
+  ]
+}

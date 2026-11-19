@@ -1,0 +1,52 @@
+{
+  "phienBan": "bao-cao-khet@2",
+  "loai": "Báo cáo đo lượt 2 OZV-1555 — KHÔNG phải spec ranh giới",
+  "ngay": "2026-11-19",
+  "canh": "PR #1466 (dgNut demotion, OZV-1553) đã MERGED vào main d9b0abba. Nhánh đo ozv-1555-sach-8501-v2 đứng trên main mới, cherry-pick báo cáo lượt 1. Farm /tmp/hs8501-19666 giữ nguyên trạng thái bienThe3 (8501102[BUOC+MC], 8501105[BUOC+XC]).",
+  "ketQuaDo": {
+    "lenh": "HS_DATA_DIR=/tmp/hs8501-19666 node scripts/bo-kiem-luat.mjs --nhom=8501 --json",
+    "mainCu": { "chotDung": 39, "tongSoCa": 75, "chotSai": 1, "chotLoaiKhacSai": 0, "nemLoi": 0, "khongTheChot": 21 },
+    "mainMoi1466": { "chotDung": 39, "tongSoCa": 75, "chotSai": 1, "chotLoaiKhacSai": 0, "nemLoi": 0, "khongTheChot": 21 },
+    "nhanXet": "Fix #1466 KHÔNG đổi kết quả ca 85011041: lý do — #1466 chỉ ngừng hạ dòng khi dgNut CHUA_BIET do VẾ SO CHỮ; ở đây nút 8501102 CHUA_BIET do VẾ TẤT ĐỊNH fact 'kieuDongCoDien' vắng 'BUOP' (fact không đọc được từ text, không phải so chữ) ⇒ demotion vẫn chạy như cũ. Cơ chế tường bất biến với fix mới."
+  },
+  "coCheChotSai85011041": {
+    "ca": "productText 'Động cơ một chiều: Loại dùng cho hàng hóa thuộc nhóm 84.15…' (kyVong 85011041)",
+    "buoc": [
+      "1. r14830 (nút tầng 'Động cơ một chiều') THOA — đọc MOT_CHIEU từ chữ 'một chiều' trong text",
+      "2. Đánh giá RIÊNG từng dòng: 85011041 THOA (vế dungCho CONG_DUNG so chữ khớp 'nhóm 84.15…'), 85011091 cũng THOA (cùng vế dungCho)",
+      "3. 85011041 thừa kế điều kiện qua cha 8501104 (không trong nutMap) ⇒ _traiKhiNutThoa=[8501102]",
+      "4. 8501102 (Động cơ bước MC) = CHUA_BIET vì vế tất định kieuDongCoDien TRONG ['BUOP'] không đọc được từ text ⇒ so-tay-gates.js ~L1021-1027 hạ 85011041 THOA→CHUA_BIET",
+      "5. 85011091 có sib-nút 8501105 (Động cơ bước XC) = TRAI dứt khoát (XOAY_CHIEU trái 'một chiều') ⇒ KHÔNG bị hạ, giữ THOA",
+      "6. thoa=[85011091] duy nhất ⇒ CHOT 85011091 (SAI, kỳ vọng .41)"
+    ],
+    "batDoiXung": "Nhánh MC (.41): sib-nút 8501102 kẹt fact 'bước' phụ thuộc BUOP-absence ⇒ CHUA_BIET ⇒ hạ dòng. Nhánh XC (.91): sib-nút 8501105 TRAI cứng ⇒ dòng sống sót. Bất đối xứng này là gốc chotSai; mọi biến thể siết điều kiện (lượt 1) chỉ đổi VỊ TRÍ chotSai chứ không bỏ được."
+  },
+  "bang16CaChuaDung": [
+    { "nhom": "850110", "ca": ["85011041"], "hienTuong": "CHOT sai dòng (.91)", "nguyenNhan": "Tường sib-nút BUOP-absence (xem coCheChotSai85011041)", "suaTrongTrang": "KHÔNG — cần quyết kiến trúc" },
+    { "nhom": "850110", "ca": ["85011051", "85011060", "85011091"], "hienTuong": "THIEU_SO_LIEU (kieuDongCoDien/loaiDongDien/congSuat)", "nguyenNhan": "Tường BUOP-absence: fact 'bước' không đọc được ⇒ 8501102 CHUA_BIET ⇒ contagion hạ cả cụm ⇒ rơi đường hỏi lại", "suaTrongTrang": "KHÔNG — cần quyết kiến trúc" },
+    { "nhom": "850110", "ca": ["85011029", "85011049", "85011059", "85011099"], "hienTuong": "THIEU_SO_LIEU, missingFacts rỗng", "nguyenNhan": "Chưa debug xong — 4 dòng 'Loại khác'; nghiêng đường so-chu/thiếu phủ định, cần truy vết lượt sau", "suaTrongTrang": "CHƯA RÕ (ranh-gioi 850110 trong trắng)" },
+    { "nhom": "850152", "ca": ["85015219", "85015229"], "hienTuong": "KHONG_THE_CHOT lyDo 'nhieu-dong-loai-khac'", "nguyenNhan": "8501.52 có 2 dòng 'loại khác' (.19/.29) — máy không chọn được giữa 2 dòng loaiKhac; phân biệt cần phamViLoaiKhac trong data/so-tay/8501.json (NGOÀI danh sách trắng của thẻ)", "suaTrongTrang": "KHÔNG (trừ khi GĐ mở trắng thêm data/so-tay/8501.json)" },
+    { "nhom": "850131", "ca": ["85013170", "85013180"], "hienTuong": "KHONG_THE_CHOT lyDo 'ranh-gioi-so-chu-khong-tat-dinh'", "nguyenNhan": "Cả 4 dòng 850131 chỉ phân biệt bằng TEN_LOAI/CONG_DUNG (so chữ, không tất định) — ranh-gioi/850131.json đã DUYET với đúng hình dạng biểu thuế; không còn đặc điểm số nào để số hóa", "suaTrongTrang": "KHÔNG — tường thiết kế (so chữ không chốt)" },
+    { "nhom": "850132", "ca": ["85013221", "85013224", "85013225", "85013226", "85013231", "85013232", "85013233"], "hienTuong": "KHONG_THE_CHOT lyDo 'phu-dinh-chua-hoan-chinh'", "nguyenNhan": "dieuKienNut 850132 chỉ phủ 750W < côngSuat ≤ 75kW, thiếu vế cho vùng ≤750W ⇒ phủ định chưa kín; ranh-gioi/850132.json TRONG trắng, có thể bổ dieuKienNut/phanConLai — cần debug kỹ lượt sau", "suaTrongTrang": "CÓ THỂ (7 ca — nhóm tiềm năng lớn nhất trong trắng)" },
+    { "nhom": "850134/850163/850164", "ca": ["85013400", "85016300", "85016400"], "hienTuong": "THIEU_SO_LIEU missing fact 'cong_suat'", "nguyenNhan": "data/so-tay/8501.json đang ghi fact 'cong_suat' (gạch dưới) — fact chuẩn là 'congSuat'; máy hỏi lại fact không tồn tại. Sửa 1 dòng trong data/so-tay/8501.json (NGOÀI trắng)", "suaTrongTrang": "KHÔNG (trừ khi GĐ mở trắng thêm data/so-tay/8501.json) — sửa xong probable +3 ca" }
+  ],
+  "tranSoHoc": {
+    "hienTai": "DONG_CO_TEN 31/47 = 66.0% (bench bienThe3, không đổi giữa main cũ và main #1466)",
+    "mucTieu": "≥95% tức ≥ 45/47",
+    "khaNang": {
+      "chiTrongTrangHienCo": "tối đa 31 + 7 (850132) + tối đa 4 (850110 loại khác, chưa chắc) = ≤ 42/47 = 89.4% < 95%",
+      "neuGdMoThemSoTay8501": "thêm 3 (cong_suat) + 2 (850152 phamViLoaiKhac, nếu phân biệt được) = ≤ 47/47 về số ca nhưng cả 6 ca tường (.41/.51/.60/.91 + 850131×2) vẫn KHÔNG giải được bằng data — muốn hết phải đổi lib/so-tay-gates.js (CẤM trong thẻ này)"
+    },
+    "ketLuan": "SẠCH V1 nhóm 8501 KHÔNG ĐẠT được trong phạm vi ĐƯỢC PHÉP của thẻ (chỉ data/ho-so/ranh-gioi/8501*.json + data/tu-vung/ten-khac-8501.json + docs). Cần GĐ quyết ít nhất 1 trong: (a) tường BUOP-absence và tường so-chu 850131 — vấn đề kiến trúc lib, thuộc thẻ khác; (b) mở rộng danh sách trắng thêm data/so-tay/8501.json; (c) chấp nhận mục tiêu riêng cho 8501 khác công thức chung."
+  },
+  "tuongCanGdQuyet": [
+    "TƯỜNG 1 (BUOP-absence): ca 85011041/.51/.60/.91 — hàng KHÔNG phải động cơ bước nhưng text không chứa chữ 'không phải bước' ⇒ fact kieuDongCoDien trả CHUA_BIET thay vì loại trừ ⇒ sib-nút CHUA_BIET ⇒ demotion/cóntagion. Câu hỏi kiến trúc: LIET_KE có nên trả TRAI-éo-implicit khi từ khóa tích cực ('một chiều', 'hướng trục') đã xuất hiện và 'bước' vắng? Đây là hành vi lib/so-tay-gates.js + dieu-kien-so — CẤM sửa trong thẻ.",
+    "TƯỜNG 2 (danh sách trắng): data/so-tay/8501.json chứa fact lỗi 'cong_suat' (3 ca) và phamViLoaiKhac 850152 (2 ca). Thẻ chỉ cho đụng ranh-gioi/8501* + tu-vung. Xin phép sửa trực tiếp data/so-tay/8501.json hay giao thẻ riêng?"
+  ],
+  "lenhTiep": [
+    "Bench farm: HS_DATA_DIR=/tmp/hs8501-19666 node scripts/bo-kiem-luat.mjs --nhom=8501 --json",
+    "Debug ca .29/.49/.59/.99 (missingFacts rỗng nhưng THIEU_SO_LIEU) và 850132 phu-dinh-chua-hoan-chinh: HS_DATA_DIR=<farm> node -e \"const{chotDong8}=require('./lib/so-tay-gates.js');console.log(JSON.stringify(chotDong8({hs:'850132',productText:'<text ca>'}),null,1))\"",
+    "Khi ghi thật 850132 (nếu GĐ duyệt hướng): giữ hình dạng mục cũ, nguonLoai CLAUDE_DUYET, tính duyet.bam=bamRanhGioi(ban), kiemRanhGioi('850132',ban)",
+    "Đo nhóm sau ghi: node scripts/dem-nhom-sach.mjs --nhom=8501"
+  ]
+}
