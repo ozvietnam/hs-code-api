@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "pc-tho-hs-01:OZV-1493#soat-ci-8413",
+    "phien": "pc-tho-hs-01:OZV-1493#soat-841370-v2",
     "ngay": "2026-11-19",
-    "ghiChu": "OZV-1493 sau CI đỏ: xoá dieuKienNut 8413709 (\"Loại khác\" trần không mang điều kiện, lib/so-tay.js:372) + xoá chongLanVanBan .11/.31 .19/.39 (máy không thấy chồng lấn); tính lại bam",
-    "bam": "3cd9ba6583d2e091d04f71b0988a877508f42ef5ec183c56bafcc1a4604c8827"
+    "ghiChu": "OZV-1493 v2: đổi vế phủ định đồng trục với động cơ ở 8413701 sang congDung để không sinh soChu=THOA giả chặn nhánh 84137091",
+    "bam": "4c285b8fe6f1373972666772b486b5b9bd91f2c39e1d2f21d28b6015090423b4"
   },
   "dieuKienNut": [
     {
@@ -47,8 +47,8 @@
           ]
         },
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
+          "fact": "congDung",
+          "op": "CONG_DUNG",
           "value": "đồng trục với động cơ",
           "chieu": "PHAI_KHONG"
         },
@@ -248,7 +248,7 @@
     {
       "ma": "8413701",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.8413701 \"Bơm nước một tầng, một chiều hút, trục ngang được truyền động bằng dây đai hoặc khớp nối trực tiếp, trừ loại bơm đồng trục với động cơ\" ⇒ tenLoai \"Bơm nước\" (cùng khoá, cùng giá trị với anh em .3/.4/.5) + soTangBom TRONG [MOT_TANG] + kieuHutBom TRONG [MOT_CHIEU] + huongTrucBom TRONG [NGANG] + kieuTruyenDong TRONG [DAY_DAI, KHOP_NOI_TRUC_TIEP] + kieuTruyenDong TRONG [DONG_TRUC_DONG_CO] chieu PHAI_KHONG (vế \"trừ loại bơm đồng trục với động cơ\"; cùng khoá — liệt kê loại trừ nhau nên điều kiện này thừa về nghĩa nhưng phủ vế). Sửa TRA_VE (OZV-924): bổ sung đủ 3 khoá soTangBom / kieuHutBom / huongTrucBom để không suy rộng sang bơm nhiều tầng / hút hai phía / trục đứng."
+      "ghiChu": "tieuDe.8413701 \"Bơm nước một tầng, một chiều hút, trục ngang được truyền động bằng dây đai hoặc khớp nối trực tiếp, trừ loại bơm đồng trục với động cơ\" ⇒ tenLoai \"một tầng\" + \"một chiều hút\" + \"trục ngang\" + [\"được truyền động bằng dây đai\", \"khớp nối trực tiếp\"] + \"Bơm nước\" + congDung \"đồng trục với động cơ\" chieu PHAI_KHONG (dùng khoá congDung cho vế phủ định \"trừ loại bơm đồng trục với động cơ\" để không sinh soChu=THOA giả trên mô tả của nhánh 8413709)."
     },
     {
       "ma": "8413703",
@@ -269,11 +269,6 @@
       "ma": "84137011",
       "loai": "QUYET_DINH",
       "ghiChu": "\"Với đường kính cửa hút không quá 200 mm\" (.11/.31/.42/.43/.51/.91) ⇒ duongKinhTrong <= 200 mm (khuôn 841330 .51); .42/.43 thêm hoatDongBangDien CO/KHONG theo chữ \"hoạt động bằng điện\"/\"không hoạt động bằng điện\". Cảnh báo cong3-bien-khong-doc-duoc (.11/.31/.42/.43/.51/.91): đã đối chiếu tay — chữ \"không quá 200 mm\" ⇒ op <= 200 mm, đúng biên."
-    },
-    {
-      "ma": "8413701",
-      "loai": "CHONG_LAN",
-      "ghiChu": "Cổng 2 thấy .11↔.31 và .19↔.39 cùng CO trên vector (datChim CO + kieuTruyenDong DAY_DAI + tenLoai Bơm nước): chữ biểu hai tiêu đề không loại trừ nhau ⇒ khai chongLanVanBan (không bịa điều kiện tách; lúc chạy không tự chốt)."
     }
   ],
   "traVe": [
@@ -286,6 +281,11 @@
       "phien": "pc-tho-hs-01:OZV-1493#soat-ci-8413",
       "ngay": "2026-11-19",
       "lyDo": "CI PR #1455 đỏ: cong0-sua-sau-duyet + cong0-phan-con-lai-thua:8413709 + cong3-muc:dieu-kien-nut-tren-tieu-de-loai-khac + 2×cong2-chong-lan-van-ban-thua — bỏ dieuKienNut 8413709 (tiêu đề \"Loại khác\" trần không mang điều kiện) và bỏ khai chongLanVanBan .11/.31, .19/.39 (máy không thấy chồng lấn), tính lại bam"
+    },
+    {
+      "phien": "pc-tho-hs-01:OZV-1493#soat-841370-v2",
+      "ngay": "2026-11-19",
+      "lyDo": "OZV-1493 v2: đổi vế phủ định đồng trục với động cơ ở 8413701 từ tenLoai sang congDung để không sinh soChu=THOA giả chặn nhánh 84137091"
     }
   ]
 }
