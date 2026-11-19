@@ -6,6 +6,11 @@
     "85372011": {
       "dieuKienSo": [
         {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bảng chuyển mạch"
+        },
+        {
           "fact": "dienAp",
           "op": ">=",
           "value": 66,
@@ -16,6 +21,16 @@
     "85372021": {
       "dieuKienSo": [
         {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bảng điều khiển"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Gắn với thiết bị điện để ngắt, nối hoặc bảo vệ mạch điện"
+        },
+        {
           "fact": "dienAp",
           "op": ">=",
           "value": 66,
@@ -24,26 +39,7 @@
       ]
     }
   },
-  "dieuKienNut": {
-    "8537201": {
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Bảng chuyển mạch"
-        }
-      ]
-    },
-    "8537202": {
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Bảng điều khiển"
-        }
-      ]
-    }
-  },
+  "dieuKienNut": {},
   "ghiChuSoan": [
     {
       "ma": "8537201",
@@ -73,9 +69,13 @@
     },
     {
       "ma": "85372021",
-      "loai": "BO_VE",
-      "ve": "để ngắt, nối hoặc bảo vệ mạch điện",
-      "lyDo": "Chức năng ngắt nối bảo vệ lặp lại tính chất phân phối/điều khiển điện của nhóm 8537"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85372021 (nguyên văn đầu tên dòng): \"Gắn với thiết bị điện để ngắt, nối hoặc bảo vệ mạch điện\" ⇒ tenLoai vế thứ hai của dòng — phần đuôi \"có điện áp từ 66 kV trở lên\" đã là vế dienAp. Vì sao cần: cụm \"Bảng điều khiển\" không phân biệt được với cha (bảng/điều/khiển đều nằm trong tên nhóm 85.37) trong khi \"Bảng chuyển mạch\" của .11 phân biệt được nhờ mệnh đề trừ — vế nguyên văn này có token phân biệt (gắn/ngắt/nối/bảo/vệ/mạch) nên kích đường tất định cùng dòng (coTenLoaiPhanBiet), KHÔNG nới rào: điều kiện VÀ chỉ THẮT thêm"
+    },
+    {
+      "ma": "8537201",
+      "loai": "DUNG",
+      "ghiChu": "OZV-1552 (19/11, GĐ lượt 2 chỉ đạo): bỏ điều kiện nút 8537201/8537202 (dieuKienNut rỗng, chặn fallback sổ tay) — dgNut CHUA_BIET của 2 nút demotion cả hai dòng .11/.21 về KHONG_THE_CHOT. tenLoai xuống dòng: .11 \"Bảng chuyển mạch\", .21 \"Bảng điều khiển\" (nguon tieuDe.8537201/.8537202). Giữ trangThai DUYET theo chỉ đạo GĐ, bam tính lại."
     }
   ]
 }

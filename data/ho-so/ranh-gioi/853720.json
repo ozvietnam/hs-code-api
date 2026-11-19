@@ -13,9 +13,9 @@
   "duyet": {
     "boi": "CLAUDE_DUYET",
     "phien": "claude-agent:duyet-L29-20261111#soat-L29",
-    "ngay": "2026-11-11",
+    "ngay": "2026-11-19",
     "ghiChu": "Đối chiếu VI+EN: tiêu đề Switchboards/Control panels; .11/.21 '>= 66 kV' ('từ … trở lên', biên đối chiếu tay); BO_VE 'để ngắt, nối hoặc bảo vệ mạch điện' chấp nhận — nhóm 85.37 tự định nghĩa bảng gắn >=2 thiết bị nhóm 85.35/85.36 (ngắt/nối/bảo vệ).",
-    "bam": "1b6afb3fe7e21e94179e79d1a2ed8883bac62528a15d517bbe5d3390809a2cbb"
+    "bam": "cd8c9fdc3f8258c39fdd5e75e18a9689f0b5ee573e35b42d08470a8c5a975f50"
   },
   "dieuKienNut": [
     {
@@ -52,6 +52,11 @@
       "trich": "85372011 - - - Gắn với thiết bị điện để ngắt, nối hoặc bảo vệ mạch điện có điện áp từ 66 kV trở lên",
       "dieuKienSo": [
         {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Gắn với thiết bị điện để ngắt"
+        },
+        {
           "fact": "dienAp",
           "op": ">=",
           "value": 66,
@@ -72,6 +77,11 @@
       "nguon": "tax.85372021",
       "trich": "85372021 - - - Gắn với thiết bị điện để ngắt, nối hoặc bảo vệ mạch điện có điện áp từ 66 kV trở lên",
       "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Gắn với thiết bị điện để ngắt"
+        },
         {
           "fact": "dienAp",
           "op": ">=",
@@ -125,9 +135,18 @@
     },
     {
       "ma": "85372021",
-      "loai": "BO_VE",
-      "ve": "để ngắt, nối hoặc bảo vệ mạch điện",
-      "lyDo": "Chức năng ngắt nối bảo vệ lặp lại tính chất phân phối/điều khiển điện của nhóm 8537"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85372021 (nguyên văn đầu tên dòng): \"Gắn với thiết bị điện để ngắt, nối hoặc bảo vệ mạch điện\" ⇒ tenLoai vế thứ hai của dòng — phần đuôi \"có điện áp từ 66 kV trở lên\" đã là vế dienAp. Vì sao cần: cụm \"Bảng điều khiển\" không phân biệt được với cha (bảng/điều/khiển đều nằm trong tên nhóm 85.37) trong khi \"Bảng chuyển mạch\" của .11 phân biệt được nhờ mệnh đề trừ — vế nguyên văn này có token phân biệt (gắn/ngắt/nối/bảo/vệ/mạch) nên kích đường tất định cùng dòng (coTenLoaiPhanBiet), KHÔNG nới rào: điều kiện VÀ chỉ THẮT thêm"
+    },
+    {
+      "ma": "8537201",
+      "loai": "DUNG",
+      "ghiChu": "OZV-1552 (19/11, GĐ lượt 2 chỉ đạo): bỏ điều kiện nút 8537201/8537202 (dieuKienNut rỗng, chặn fallback sổ tay) — dgNut CHUA_BIET của 2 nút demotion cả hai dòng .11/.21 về KHONG_THE_CHOT 'ranh-gioi-so-chu-khong-tat-dinh'. tenLoai xuống dòng: .11 'Bảng chuyển mạch', .21 'Bảng điều khiển' (nguon tieuDe.8537201/.8537202) — tenLoai dòng-level phân biệt 2 ca bench (text ca .2011 có 'Bảng chuyển mạch' không có 'bảng điều khiển', ca .2021 ngược lại). Giữ trangThai DUYET theo chỉ đạo GĐ, bam tính lại."
+    },
+    {
+      "ma": "853720",
+      "loai": "DUNG",
+      "ghiChu": "OZV-1552 lượt 3 (19/11, 4 hướng GĐ 20:13Z): dòng .11/.21 = tenLoai 'Gắn với thiết bị điện để ngắt' (chuỗi con NGUYÊN VĂN đầu trích dòng, không 'hoặc'/';'/',') + dienAp>=66kV; giữ dieuKienNut .201/.202 tenLoai nguyên văn tiêu đề (dừng cong1-chua-so-hoa 5 dòng). KẾT QUẢ ĐO: cổng sạch nhưng bench DUNG 8/10 — 2 ca .11/.21 KHONG_THE_CHOT 'ranh-gioi-so-chu-khong-tat-dinh': nút có điều kiện ⇒ dgNut CHUA_BIET ('Bảng điều khiển' toàn token chung tên nhóm 85.37, không tất định được) ⇒ demotion hạ cả 2 dòng bất kể điều kiện dòng. Đã đo 2 biến thể dòng (có vế tenLoai / chỉ dienAp) — cùng 8/10. Đối xứng .11↔.21 chỉ nằm ở tên nút (midText bench, trích dòng 2 bên TRÙNG nhau); cong3-mum cấm giá trị nút ở tầng dòng. Kết luận: bế tắc dữ liệu-thuần — cần GĐ quyết hướng lib (thẻ 19/11)."
     }
   ]
 }
