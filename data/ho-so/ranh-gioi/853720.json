@@ -15,7 +15,7 @@
     "phien": "claude-agent:duyet-L29-20261111#soat-L29",
     "ngay": "2026-11-11",
     "ghiChu": "Đối chiếu VI+EN: tiêu đề Switchboards/Control panels; .11/.21 '>= 66 kV' ('từ … trở lên', biên đối chiếu tay); BO_VE 'để ngắt, nối hoặc bảo vệ mạch điện' chấp nhận — nhóm 85.37 tự định nghĩa bảng gắn >=2 thiết bị nhóm 85.35/85.36 (ngắt/nối/bảo vệ).",
-    "bam": "01b60a18315aa470d35e553471a669775377a27cbd3ae312dc46112ac434d4d0"
+    "bam": "5a726c9bab12a2ba036553932c0f38d2154feed602b3695e00529f38cda6c8b2"
   },
   "dieuKienNut": [],
   "dong8": [
@@ -54,6 +54,11 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Bảng điều khiển"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Gắn với thiết bị điện để ngắt, nối hoặc bảo vệ mạch điện"
         },
         {
           "fact": "dienAp",
@@ -108,9 +113,8 @@
     },
     {
       "ma": "85372021",
-      "loai": "BO_VE",
-      "ve": "để ngắt, nối hoặc bảo vệ mạch điện",
-      "lyDo": "Chức năng ngắt nối bảo vệ lặp lại tính chất phân phối/điều khiển điện của nhóm 8537"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85372021 (nguyên văn đầu tên dòng): \"Gắn với thiết bị điện để ngắt, nối hoặc bảo vệ mạch điện\" ⇒ tenLoai vế thứ hai của dòng — phần đuôi \"có điện áp từ 66 kV trở lên\" đã là vế dienAp. Vì sao cần: cụm \"Bảng điều khiển\" không phân biệt được với cha (bảng/điều/khiển đều nằm trong tên nhóm 85.37) trong khi \"Bảng chuyển mạch\" của .11 phân biệt được nhờ mệnh đề trừ — vế nguyên văn này có token phân biệt (gắn/ngắt/nối/bảo/vệ/mạch) nên kích đường tất định cùng dòng (coTenLoaiPhanBiet), KHÔNG nới rào: điều kiện VÀ chỉ THẮT thêm"
     },
     {
       "ma": "8537201",
