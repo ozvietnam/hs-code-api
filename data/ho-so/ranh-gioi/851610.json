@@ -4,19 +4,13 @@
   "nhom": "8516",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "DUYET",
+  "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-851610",
     "ngay": "2026-11-02"
   },
-  "duyet": {
-    "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L28-20261111#soat-L28",
-    "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu VI+EN: tầng tức thời/có dự trữ, .11 bình thủy điện gia dụng, .30 kiểu nhúng; khớp.",
-    "bam": "c79a05f749816a78285ec8563125c90d31c9937c2bb7f66d6ed357e2b1c21e5d"
-  },
+  "duyet": null,
   "dieuKienNut": [
     {
       "id": "8516101",
@@ -32,7 +26,7 @@
           ]
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "dong8": [
@@ -54,14 +48,14 @@
           ]
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "85161019",
       "nguon": "tax.85161019",
       "trich": "85161019 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "85161030",
@@ -74,24 +68,26 @@
           "value": "kiểu nhúng"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "ghiChuSoan": [
     {
-      "ma": "8516101",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.8516101: \"Loại đun nước nóng tức thời hoặc đun nước nóng có dự trữ\" ⇒ congDung CONG_DUNG [\"tức thời\", \"có dự trữ\"] cùng khoá congDung với 85161030 tránh xung đột khoá tenLoai với 85161011"
-    },
-    {
-      "ma": "85161011",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.85161011: \"Bình thủy điện ... loại gia dụng\" ⇒ tenLoai TEN_LOAI \"Bình thủy điện\" + phamViSuDung TRONG [\"GIA_DINH\"]"
-    },
-    {
       "ma": "85161030",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85161030: \"Loại đun nước nóng kiểu nhúng\" ⇒ congDung CONG_DUNG \"kiểu nhúng\" cùng khoá congDung với tiêu đề 8516101"
+      "ghiChu": "tax.85161030: \"Loại đun nước nóng kiểu nhúng\" ⇒ congDung CONG_DUNG \"kiểu nhúng\" — cum tự phân biệt với tên cha khi so dòng 8 số (vế cha trùng tên dòng bị boVeRiengCuaDong bỏ)"
+    },
+    {
+      "ma": "8516101",
+      "loai": "DUNG",
+      "ghiChu": "OZV-1474 (19/11): nút 8516101 KHÔNG thể có đk TEN_LOAI tất định: cổng 3 đòi value ⊆ trich nút (nguon tieuDe.8516101 = vế 1 tên cha 851610), còn coCumPhanBiet bỏ âm tiết có trong tên cha nên mọi cum ⊆ trich đều không phân biệt ⇒ dgNut luôn CHUA_BIET, dòng 85161011 bị ép CHUA_BIET (so-tay-gates.js:952). Đã thử + bị cong3-muc chặn: tenLoai 'Bình thủy điện' (thực nghiệm node -e: mọi value hợp cổng — 'tức thời'/'có dự trữ'/nguyên vế/HOAC — đều tatDinh=false). Hướng cần GĐ quyết: sen.85161011 làm nguon nút (nguonDungNut chấp nhận id.startsWith(ma) nhưng SAI ngữ nghĩa — .1 gồm cả máy đun dự trữ không phải bình), hoặc ten-khac-8516.json (ngoài phạm vi thẻ)."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "pc-tho-hs-02:OZV-1474#soat-851610",
+      "ngay": "2026-11-19",
+      "lyDo": "Sửa theo chỉ đạo giám đốc (OZV-1474): bỏ điều kiện nút 8516101 — tiêu đề nút là vế nguyên văn của tên cha 851610 đa vẽ nên không tạo cum phân biệt, điều kiện nút không tất định và chặn ca DONG_CO_TEN .11 ở KHONG_THE_CHOT"
     }
   ]
 }
