@@ -40,6 +40,20 @@ check('chế độ pool+phrase: nhóm đích không có trong hồ sơ vụ vi�
 r = soTayGates({ hs: '85098090', productName: 'Quạt thông gió gia dụng', pool: [{ h4: '8414', from: 'gia-thuyet' }] }, { loaiTruRequire: 'pool+phrase' });
 check('chế độ pool+phrase: có cả hai → nghi, ghi nguồn pool', r.challenges.some((c) => c.gate === 'SO_TAY_LOAI_TRU' && c.poolFrom.includes('gia-thuyet')));
 
+// OZV-1473: chặn SO_TAY_LOAI_TRU bắn oan chính tên phân nhóm/dòng của nhóm h4 khi mô tả không có định ngữ loại trừ
+r = soTayGates({ hs: '85366992', productName: 'ổ cắm gne-2z10-085695 màu đen pdu 1u,3*1- 1.8m', productText: 'ổ cắm gne-2z10-085695 màu đen pdu 1u,3*1- 1.8m' });
+check('OZV-1473 85366992 ổ cắm PDU không có định ngữ "dây dẫn" → không bắn oan SO_TAY_LOAI_TRU:8544',
+  !r.challenges.some((c) => c.gate === 'SO_TAY_LOAI_TRU'), JSON.stringify(gatesOf(r)));
+r = soTayGates({ hs: '85366992', productName: 'phích cắm công nghiệp 3 pha 16A', productText: 'phích cắm công nghiệp 3 pha 16A' });
+check('OZV-1473 85366992 phích cắm không kèm dây dẫn → không bắn oan SO_TAY_LOAI_TRU:8544',
+  !r.challenges.some((c) => c.gate === 'SO_TAY_LOAI_TRU'), JSON.stringify(gatesOf(r)));
+r = soTayGates({ hs: '85366992', productName: 'ổ cắm đi kèm dây dẫn 3m', productText: 'ổ cắm đi kèm dây dẫn 3m' });
+check('OZV-1473 85366992 ổ cắm đi kèm dây dẫn → vẫn bật SO_TAY_LOAI_TRU:8544',
+  gatesOf(r).includes('SO_TAY_LOAI_TRU:8544'), JSON.stringify(gatesOf(r)));
+r = soTayGates({ hs: '85098090', productName: 'quạt thông gió âm trần', productText: 'quạt thông gió âm trần 25W' });
+check('OZV-1473 85098090 quạt thông gió (không thuộc tên nút/dòng 8509) → vẫn bật SO_TAY_LOAI_TRU:8414',
+  gatesOf(r).includes('SO_TAY_LOAI_TRU:8414'), JSON.stringify(gatesOf(r)));
+
 // 2. Ngưỡng số
 r = soTayGates({ hs: '85098090', productName: 'Máy khuếch tán tinh dầu', productText: 'Máy khuếch tán tinh dầu, trọng lượng 25 kg' });
 check('khối lượng 25 kg trái ngưỡng ≤ 20 kg của 85.09 → nghi', gatesOf(r).includes('SO_TAY_NGUONG:'), JSON.stringify(gatesOf(r)));
