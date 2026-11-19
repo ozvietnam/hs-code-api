@@ -45,19 +45,14 @@
   },
   "ghiChuSoan": [
     {
-      "ma": "8516101",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.8516101: \"Loại đun nước nóng tức thời hoặc đun nước nóng có dự trữ\" ⇒ congDung CONG_DUNG [\"tức thời\", \"có dự trữ\"] cùng khoá congDung với 85161030 tránh xung đột khoá tenLoai với 85161011"
-    },
-    {
-      "ma": "85161011",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.85161011: \"Bình thủy điện ... loại gia dụng\" ⇒ tenLoai TEN_LOAI \"Bình thủy điện\" + phamViSuDung TRONG [\"GIA_DINH\"]"
-    },
-    {
       "ma": "85161030",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85161030: \"Loại đun nước nóng kiểu nhúng\" ⇒ congDung CONG_DUNG \"kiểu nhúng\" cùng khoá congDung với tiêu đề 8516101"
+      "ghiChu": "tax.85161030: \"Loại đun nước nóng kiểu nhúng\" ⇒ congDung CONG_DUNG \"kiểu nhúng\" — cum tự phân biệt với tên cha khi so dòng 8 số (vế cha trùng tên dòng bị boVeRiengCuaDong bỏ)"
+    },
+    {
+      "ma": "8516101",
+      "loai": "DUNG",
+      "ghiChu": "OZV-1474 (19/11): nút 8516101 KHÔNG thể có đk TEN_LOAI tất định: cổng 3 đòi value ⊆ trich nút (nguon tieuDe.8516101 = vế 1 tên cha 851610), còn coCumPhanBiet bỏ âm tiết có trong tên cha nên mọi cum ⊆ trich đều không phân biệt ⇒ dgNut luôn CHUA_BIET, dòng 85161011 bị ép CHUA_BIET (so-tay-gates.js:952). Đã thử + bị cong3-muc chặn: tenLoai 'Bình thủy điện' (thực nghiệm node -e: mọi value hợp cổng — 'tức thời'/'có dự trữ'/nguyên vế/HOAC — đều tatDinh=false). Hướng cần GĐ quyết: sen.85161011 làm nguon nút (nguonDungNut chấp nhận id.startsWith(ma) nhưng SAI ngữ nghĩa — .1 gồm cả máy đun dự trữ không phải bình), hoặc ten-khac-8516.json (ngoài phạm vi thẻ)."
     }
   ]
 }
