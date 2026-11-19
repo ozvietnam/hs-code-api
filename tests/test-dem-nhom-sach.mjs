@@ -32,9 +32,15 @@ test('2. Nhóm chưa có sổ tay (nhomChuaCoSoTay) bị chấm CHƯA SẠCH v�
   assert.ok(kq.lyDo.includes('chua-co-so-tay'), `Kỳ vọng chua-co-so-tay, nhận: ${kq.lyDo.join(', ')}`);
 });
 
+// Kì vọng đổi 19/11/2026 (OZV-1554, nguyên tắc 5 OZV-310 — không chỉnh số cho khớp):
+// nhóm 0101 từng bẩn (thiếu ranh giới DUYET) nhưng đã được làm SẠCH bởi OZV-1019/PR #1338
+// (commit 3a76732b "duyệt và áp 010130, 010290…" vào sổ tay 0101; hiện 4/4 DONG_CO_TEN
+// đúng + ranh-gioi/010130.json đã DUYET) nên không còn là fixture "chưa sạch".
+// Thay bằng 1101 — đo trên main fecf1735: bẩn đúng 2 cổng V1 đang kiểm,
+// chua-duyet-ranh-gioi(1 pn6) và dong-co-ten(0/2=0%<95%).
 test('3. Nhóm có sổ tay nhưng dòng có tên chốt đúng < 95% hoặc thiếu ranh giới DUYET bị chấm CHƯA SẠCH', () => {
-  const kq = danhGiaNhomV1('0101');
-  assert.equal(kq.nhom, '0101');
+  const kq = danhGiaNhomV1('1101');
+  assert.equal(kq.nhom, '1101');
   assert.equal(kq.sach, false);
   assert.ok(kq.lyDo.length > 0);
   assert.ok(
@@ -66,19 +72,19 @@ test('4. Phát hiện bản ghi dong8 trùng mã trong sổ tay (mục 3c công 
 
 test('5. demNhomSach tổng hợp đúng tongNhom, nhomSach, tyLe và danh sách chuaSach', async () => {
   const { h4: chuaCo } = nhomChuaCoSoTay();
-  const kq = await demNhomSach({ nhoms: ['8539', '8541', '0101', chuaCo], useWorkers: false });
+  const kq = await demNhomSach({ nhoms: ['8539', '8541', '1101', chuaCo], useWorkers: false });
   assert.equal(kq.tongNhom, 4);
   assert.equal(kq.nhomSach, 2);
   assert.equal(kq.tyLe, 50);
   assert.equal(kq.chuaSach.length, 2);
   assert.deepEqual(
     kq.chuaSach.map((x) => x.nhom),
-    ['0101', chuaCo].sort(),
+    ['1101', chuaCo].sort(),
   );
 });
 
 test('6. CLI --json in đúng một dòng JSON {tongNhom, nhomSach, tyLe}', () => {
-  const out = execFileSync(process.execPath, [SCRIPT, '--nhom=8539,8541,0101', '--json'], {
+  const out = execFileSync(process.execPath, [SCRIPT, '--nhom=8539,8541,1101', '--json'], {
     cwd: ROOT,
     encoding: 'utf8',
   }).trim();
@@ -91,11 +97,11 @@ test('6. CLI --json in đúng một dòng JSON {tongNhom, nhomSach, tyLe}', () =
 });
 
 test('7. CLI mặc định in tổng số nhóm, số nhóm SẠCH, phần trăm và danh sách tối đa 20 nhóm chưa sạch', () => {
-  const out = execFileSync(process.execPath, [SCRIPT, '--nhom=8539,8541,0101'], {
+  const out = execFileSync(process.execPath, [SCRIPT, '--nhom=8539,8541,1101'], {
     cwd: ROOT,
     encoding: 'utf8',
   });
   assert.match(out, /Tổng số nhóm 4 số:\s*3/);
   assert.match(out, /Số nhóm SẠCH \(V1\):\s*2\s*\(66\.7%\)/);
-  assert.match(out, /0101:/);
+  assert.match(out, /1101:/);
 });
