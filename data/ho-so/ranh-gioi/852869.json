@@ -12,9 +12,9 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "pc-tho-hs-01:OZV-950#soat-852869",
-    "ngay": "2026-11-14",
-    "bam": "305a8511bb30020865f792222e34fb3e16861b62763ea7c2e21450819c25a449"
+    "phien": "pc-tho-hs-02:OZV-1474#soat-852869",
+    "ngay": "2026-11-19",
+    "bam": "c557a4a642a11a32b9bc68ac1945df2358127aab00a0257ac8a1352e628a5800"
   },
   "dieuKienNut": [],
   "dong8": [
@@ -24,10 +24,9 @@
       "trich": "85286910 - - - Công suất chiếu lên màn ảnh có đường chéo từ 300 inch trở lên",
       "dieuKienSo": [
         {
-          "fact": "duongCheoNgoai",
-          "op": ">=",
-          "value": 300,
-          "donVi": "inch"
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "Công suất chiếu lên màn ảnh có đường chéo từ 300 inch trở lên"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -44,7 +43,14 @@
     {
       "ma": "85286910",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85286910: \"Công suất chiếu lên màn ảnh có đường chéo từ 300 inch trở lên\" ⇒ duongCheoNgoai >= 300 inch"
+      "ghiChu": "tax.85286910: \"Công suất chiếu lên màn ảnh có đường chéo từ 300 inch trở lên\" ⇒ congDung CONG_DUNG nguyên văn vế chữ biểu. Bỏ duongCheoNgoai >= 300 inch: probe toàn bộ 343 khoá tu-vung@2 cho thấy KHÔNG khoá số nào đọc được \"300 inch\" từ mô tả (khoá duongCheoNgoai canNguCanh 'đường chéo' theo cửa sổ trước số không khớp chữ biểu) ⇒ giữ fact số chỉ ra THIEU_SO_LIEU vĩnh viễn. Cách làm theo tiền lệ 22df8ea9 (370298): vế chữ trở thành điều kiện CONG_DUNG tất định (OZV-1474)"
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "pc-tho-hs-02:OZV-1474#soat-852869",
+      "ngay": "2026-11-19",
+      "lyDo": "Thay duongCheoNgoai>=300 bằng congDung CONG_DUNG nguyên văn vế chữ biểu: probe 343 khoá tu-vung@2 không khoá số nào đọc được \"300 inch\" ⇒ giữ fact số ra THIEU_SO_LIEU vĩnh viễn (OZV-1474, tiền lệ 22df8ea9)"
     }
   ]
 }
