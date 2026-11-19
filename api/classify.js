@@ -92,15 +92,27 @@ async function trongHan(p, ms) {
     return kq;
   } finally { clearTimeout(hen); }
 }
-/** Thân JSON thật cho lượt quá giờ — 503 + trangThai QUA_GIO. Không có `results`: chưa chốt được mã nào. */
-function traLoiQuaGio(res, { ms, tranMs: tran, attrs }) {
+/** Thân JSON thật cho lượt quá giờ — 503 + trangThai QUA_GIO. Không có `results`: chưa chốt được mã nào.
+ * OZV-1520: khi debug=true, đính kèm `engine` = chụp số đo SỐNG của động cơ (phases r1/gather/llm/embed,
+ * llm: timeoutMs từng bước + mạch đang mở, dangChay: mắt xích đang chạy kèm ms) — trước giờ số đo chỉ nằm
+ * trong closure động cơ và bị vứt đúng lúc chậm nhất, mất đúng dữ liệu cần để định vị mắt xích >10 s của A3.
+ * Không debug ⇒ không có khoá `engine`, thân JSON byte-for-byte như bản trước. */
+function traLoiQuaGio(res, { ms, tranMs: tran, attrs, engine }) {
   return res.status(503).json({
     trangThai: 'QUA_GIO',
     thongDiep: 'Chưa chốt được mã trong thời gian cho phép, mời thử lại hoặc mô tả rõ hơn (thêm chất liệu, công dụng).',
     ms,
     tranMs: tran,
     attrs,
+    ...(engine ? { engine } : {}),
   });
+}
+
+/** OZV-1520: lấy chụp số đo sống khi QUA_GIO — chỉ khi debug; động cơ (engine-loop) gắn doTienTrinh.chup.
+ * Động cơ cũ/chưa kịp gắn/lượt không qua engine ⇒ undefined ⇒ phản hồi giữ shape như cũ. Lỗi chụp ⇒ undefined, không làm hỏng 503. */
+function chupSoDo(debug, tienTrinh) {
+  if (!debug || !tienTrinh || typeof tienTrinh.chup !== 'function') return undefined;
+  try { return tienTrinh.chup(); } catch { return undefined; }
 }
 
 async function handler(req, res) {
@@ -188,9 +200,12 @@ async function handler(req, res) {
     // AI và dừng lặp sớm để trả cái nó đã có, thay vì tự cho mình 285 s rồi chạy tiếp sau khi cửa đã trả 503.
     // OZV-1363: bấm giờ classify vs ganHoSo — gắn vào phases khi trả JSON (đo khe ngoài engine).
     const mocPhases = { classifyMs: null, ganHoSoMs: null };
+    // OZV-1520: hộp chứa cho động cơ gắn hàm chụp số đo sống (doTienTrinh.chup) — dùng khi QUA_GIO + debug.
+    // Object rỗng vô hại với mọi động cơ không biết đến nó; không đổi opts nào khác, không đổi đáp án.
+    const tienTrinh = {};
     const chay = async (quyen) => {
       const t0 = Date.now();
-      const kq = await classify(attrs, { tier, debug, kenhGoi, hanChotMs: started + tran });
+      const kq = await classify(attrs, { tier, debug, kenhGoi, hanChotMs: started + tran, doTienTrinh: tienTrinh });
       const t1 = Date.now();
       const out = await ganHoSoClassify(kq, attrsHoSo, quyen);
       const t2 = Date.now();
@@ -248,14 +263,14 @@ async function handler(req, res) {
           return kq2;
         });
       const kq = await trongHan(chayCoCache, tran - (Date.now() - started));
-      if (kq.quaGio) return traLoiQuaGio(res, { ms: Date.now() - started, tranMs: tran, attrs });
+      if (kq.quaGio) return traLoiQuaGio(res, { ms: Date.now() - started, tranMs: tran, attrs, engine: chupSoDo(debug, tienTrinh) });
       const { result, usage } = kq.v;
       return res.status(200).json({ ...kemPhasesNgoaiEngine(result, started, mocPhases), attrs, usage });
     }
     // Lượt công khai / HS_API_TOKEN: đếm chi phí LLM (L0j, #547 — chỉ đếm, không chặn). Shape phản hồi không đổi.
     // OZV-1363: thêm phases ngoài engine (classifyMs/ganHoSoMs/afterEngineMs) — không đổi mã/status.
     const kq = await trongHan(run(() => demLuotCongKhai('classify', () => chay({ noiBo: false }), { req })), tran - (Date.now() - started));
-    if (kq.quaGio) return traLoiQuaGio(res, { ms: Date.now() - started, tranMs: tran, attrs });
+    if (kq.quaGio) return traLoiQuaGio(res, { ms: Date.now() - started, tranMs: tran, attrs, engine: chupSoDo(debug, tienTrinh) });
     return res.status(200).json({ ...kemPhasesNgoaiEngine(kq.v, started, mocPhases), attrs });
   } catch (e) {
     return res.status(502).json({ error: 'Classify failed', detail: String(e.message).slice(0, 240) });
