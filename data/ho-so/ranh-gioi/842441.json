@@ -14,8 +14,8 @@
     "boi": "CLAUDE_DUYET",
     "phien": "claude-agent:duyet-L25-20261111#soat-L25",
     "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu VI/EN \"Hand-operated insecticide sprayers\" (congDung trừ sâu + BANG_TAY) và \"Other, not electrically operated\" đúng; bộ tách cắt \"trừ sâu hoạt động\" thành một vế (ghi máy tách sai, không đổi kết quả).",
-    "bam": "a7522bbac055429747f2959220a2b2292002ddeed75dbd12c6a38d4296905ebf"
+    "ghiChu": "Đối chiếu VI/EN \"Hand-operated insecticide sprayers\" (tenLoai nguyên văn Thiết bị phun thuốc trừ sâu hoạt động bằng tay) và \"Other, not electrically operated\" đúng; bộ tách cắt \"trừ sâu hoạt động\" thành một vế (ghi máy tách sai, không đổi kết quả).",
+    "bam": "8171276471681ec7f435cde5d6e8673fc6f8575bbd8c0ff1c1fee85d922ea41c"
   },
   "dieuKienNut": [],
   "dong8": [
@@ -25,16 +25,9 @@
       "trich": "84244110 - - - Thiết bị phun thuốc trừ sâu hoạt động bằng tay",
       "dieuKienSo": [
         {
-          "fact": "congDung",
-          "op": "CONG_DUNG",
-          "value": "trừ sâu"
-        },
-        {
-          "fact": "cachDieuKhien",
-          "op": "TRONG",
-          "value": [
-            "BANG_TAY"
-          ]
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thiết bị phun thuốc trừ sâu hoạt động bằng tay"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -63,7 +56,7 @@
     {
       "ma": "84244110",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.84244110: \"Thiết bị phun thuốc trừ sâu hoạt động bằng tay\" ⇒ congDung CONG_DUNG \"trừ sâu\", cachDieuKhien BANG_TAY"
+      "ghiChu": "tax.84244110: \"Thiết bị phun thuốc trừ sâu hoạt động bằng tay\" ⇒ tenLoai \"Thiết bị phun thuốc trừ sâu hoạt động bằng tay\""
     },
     {
       "ma": "84244120",
