@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L28-20261111#soat-L28",
-    "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu VI+EN: tầng 6V/12V ≤200Ah + ba mốc chiều cao 13/23 cm khớp chữ biểu, giữ đủ ngưỡng số của sổ tay; BO_VE '(không bao gồm đầu cực và tay cầm)' là cách đo chung, không đổi mã.",
-    "bam": "906a3d4dfcd0724f7517123d00279d2003a0d56e6422ddbb525ce41ad6c0ded5"
+    "phien": "claude:tho-hs-01:20261119#soat-850720",
+    "ngay": "2026-11-19",
+    "ghiChu": "Neo nút 6V/12V ≤200Ah bằng 2 vế tenLoai nguyên văn của tieuDe (đơn vị Ah máy không tách được số; vế số kéo hỏi chéo 6 ca chiều cao .97-.99) — mô hình #1461; ba mốc chiều cao 13/23 cm giữ nguyên.",
+    "bam": "e991ce15d6285968b527c9ba40ed2834d4fe6c7056aa8772dce6865d9bca7454"
   },
   "dieuKienNut": [
     {
@@ -24,43 +24,14 @@
       "trich": "850720~r15104 Điện áp danh định 6 V hoặc 12 V, có dung lượng phóng điện không quá 200 Ah",
       "dieuKienSo": [
         {
-          "op": "HOAC",
-          "phuongAn": [
-            [
-              {
-                "fact": "dienAp",
-                "op": ">=",
-                "value": 6,
-                "donVi": "V"
-              },
-              {
-                "fact": "dienAp",
-                "op": "<=",
-                "value": 6,
-                "donVi": "V"
-              }
-            ],
-            [
-              {
-                "fact": "dienAp",
-                "op": ">=",
-                "value": 12,
-                "donVi": "V"
-              },
-              {
-                "fact": "dienAp",
-                "op": "<=",
-                "value": 12,
-                "donVi": "V"
-              }
-            ]
-          ]
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Điện áp danh định 6 V hoặc 12 V"
         },
         {
-          "fact": "dungLuong",
-          "op": "<=",
-          "value": 200,
-          "donVi": "Ah"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "có dung lượng phóng điện không quá 200 Ah"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -186,7 +157,7 @@
     {
       "ma": "850720~r15104",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.850720~r15104 \"Điện áp danh định 6 V hoặc 12 V, có dung lượng phóng điện không quá 200 Ah\" ⇒ HOAC hai phương án dienAp = 6 V / dienAp = 12 V (biểu đạt bằng cặp >= <= vì SO không có op =) + dungLuong <= 200 Ah; tầng Loại khác còn lại không điều kiện"
+      "ghiChu": "tieuDe.850720~r15104 \"Điện áp danh định 6 V hoặc 12 V, có dung lượng phóng điện không quá 200 Ah\" ⇒ neo 2 vế tenLoai NGUYÊN VĂN thay cho HOAC dienAp 6/12 V + dungLuong <= 200 Ah: đơn vị Ah không có trong bảng trích số nên máy không tách '200 Ah' ra fact được (6 ca .94/.95/.96 kẹt THIEU_SO_LIEU), còn vế số còn lại kéo demotion 6 ca .97/.98/.99 dưới tầng Loại khác; theo mô hình neo chữ #1461 (8424, 168f4e4a)"
     },
     {
       "ma": "85072094",
