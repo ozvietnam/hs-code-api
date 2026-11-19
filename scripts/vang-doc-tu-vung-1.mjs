@@ -77,6 +77,6 @@ if (process.argv[1] && process.argv[1].endsWith('vang-doc-tu-vung-1.mjs') && pro
   const chu = boChu();
   const t0 = Date.now();
   const vt = vanTay(T, khoa, chu);
-  fs.writeFileSync(TEP_VANG, `${JSON.stringify({ ghiChu: 'Vân tay đọc 53 khoá tu-vung@1 — ghi bằng lib/tu-vung.js TRƯỚC khi lên tu-vung@2 (origin/main c312140). Không sửa tay.', soChu: chu.length, sha256Chu: crypto.createHash('sha256').update(chu.join('\n')).digest('hex'), vanTay: vt }, null, 2)}\n`);
+  fs.writeFileSync(TEP_VANG, `${JSON.stringify({ ghiChu: 'Vân tay đọc 53 khoá tu-vung@1 — bản gốc ghi bằng lib/tu-vung.js TRƯỚC khi lên tu-vung@2 (origin/main c312140). Ghi lại 19/11/2026 (PR #1453, #1109): đính chính có kiểm soát cumChanDoc.loaiCongTac — che «micro switch»/«công tắc hành trình»/«微动开关» (không đọc thành NGAT_SOC_DONG) và chữ đồ gia dụng (nồi cơm/lò nướng/rice cooker/toaster oven/电饭煲/烤箱) khi KHÔNG gần «mini/微型» (TRA_VE 853650 A/B) ⇒ cách đọc loaiCongTac đổi CỐ Ý, lý do ghi ở PR. Không sửa tay.', soChu: chu.length, sha256Chu: crypto.createHash('sha256').update(chu.join('\n')).digest('hex'), vanTay: vt }, null, 2)}\n`);
   console.log(`ghi ${TEP_VANG}: ${chu.length} chữ × ${khoa.length} khoá (${Date.now() - t0} ms)`);
 }
