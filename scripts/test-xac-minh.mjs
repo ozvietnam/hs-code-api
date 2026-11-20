@@ -122,6 +122,14 @@ check('nguồn C (không trích, không model match) → xacMinhOk=false', nhieu
   const fetchPdfLon = async () => ({ ok: true, status: 200, arrayBuffer: async () => pdfLon });
   const xPdf = await xacMinh({ url: 'https://lenntech.example.com/grundfos-cr.pdf', trich: 'Grundfos CR 10-5 vertical multistage' }, 'CR 10-5', fetchPdfLon);
   check('OZV-1670 mục 5: PDF >512KB nén FlateDecode vẫn giải nén 512KB đầu và khớp model + trích', xPdf.moDuoc === true && xPdf.catNgan === true && xPdf.trichCoMat === true && xPdf.modelChuanCoMat === true, JSON.stringify(xPdf));
+
+  // Kiểm tra giaiNenDau với stream gzip và brotli lớn (>1MB giải nén) bị cắt ngang
+  const rawBig = Buffer.from(`Siemens 6ES7214-1AG40-0XB0 ${'ABCD1234 '.repeat(150000)}`);
+  const gzBig = zlib.gzipSync(rawBig);
+  const brBig = zlib.brotliCompressSync(rawBig);
+  const outGz = await U.giaiNenDau(gzBig.subarray(0, Math.min(gzBig.length, 4096)), 'gzip', 512 * 1024);
+  const outBr = await U.giaiNenDau(brBig, 'br', 512 * 1024);
+  check('OZV-1670 mục 5 · giaiNenDau: stream gzip bị cắt ngang và brotli >1MB đều trả về phần đầu chứa model, không trả 0 byte', outGz.toString('utf8').includes('6ES7214-1AG40-0XB0') && outBr.length === 512 * 1024 + 1 && outBr.toString('utf8').includes('6ES7214-1AG40-0XB0'), JSON.stringify([outGz.length, outBr.length]));
 }
 
 clearInterval(keepAlive);

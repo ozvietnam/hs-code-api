@@ -347,10 +347,11 @@ delete process.env.HS_SERVICE_TOKENS;
   const rThieu = await identify({ tenHang: 'Máy bơm nước ly tâm công nghiệp' }, { fetchImpl: FETCH_MOCK_OK });
   check('OZV-1670 mục 3 · hàng có công suất khi thiếu trường: mỗi câu hỏi đều có whereToFind không rỗng và questionVi chỉ rõ nơi tìm', rThieu.questions.length >= 2 && rThieu.questions.every((q) => typeof q.whereToFind === 'string' && q.whereToFind.length > 15 && q.questionVi.includes('— xem tại:')), JSON.stringify(rThieu.questions));
 
-  // 11d. Mục 4 — Đoán chương: Biến tần (có chữ "động cơ" ở bổ ngữ) và PLC (có chữ "thiết bị"/"máy") luôn ra Chương 85 đứng đầu, kể cả khi LLM trả nhầm 84.
+  // 11d. Mục 4 — Đoán chương: Biến tần (có chữ "động cơ" ở bổ ngữ, kể cả câu ngắn 27 ký tự "Biến tần điều khiển động cơ") và PLC luôn ra Chương 85 đứng đầu.
   const dcBtFull = doanChuong('Biến tần điều khiển tốc độ động cơ Mitsubishi FR-D720-0.75K');
+  const dcBtShort = doanChuong('Biến tần điều khiển động cơ');
   const dcPlcFull = doanChuong('Thiết bị bộ lập trình PLC điều khiển máy Siemens SIMATIC S7-1200 CPU 1214C 6ES7214-1AG40-0XB0');
-  check('OZV-1670 mục 4 · doanChuong: "Biến tần điều khiển tốc độ động cơ..." và "Thiết bị bộ lập trình PLC..." đều xếp Chương 85 đứng SỐ 1', dcBtFull[0]?.chuong === '85' && dcPlcFull[0]?.chuong === '85', JSON.stringify([dcBtFull, dcPlcFull]));
+  check('OZV-1670 mục 4 · doanChuong: "Biến tần điều khiển động cơ" (ngắn & dài) và "Thiết bị bộ lập trình PLC..." đều xếp Chương 85 đứng SỐ 1', dcBtFull[0]?.chuong === '85' && dcBtShort[0]?.chuong === '85' && dcPlcFull[0]?.chuong === '85', JSON.stringify([dcBtFull, dcBtShort, dcPlcFull]));
 
   script = [{ chuong: '84', model: 'FR-D720-0.75K', thuongHieu: 'Mitsubishi Electric', truong: { power: '0.75 kW', voltage: '3 pha 380-480V AC', nguyenLyHoatDong: 'chỉnh lưu AC-DC + nghịch lưu IGBT PWM', chucNangChinh: 'biến đổi tần số điều khiển tốc độ động cơ' }, nguon: [] }];
   const rBtFix = await identify({ tenHang: 'Biến tần điều khiển tốc độ động cơ Mitsubishi FR-D720-0.75K', model: 'FR-D720-0.75K' }, { fetchImpl: FETCH_MOCK_OK });
