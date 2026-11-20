@@ -4,13 +4,19 @@
   "nhom": "8504",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261105T1000#soan-850490",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-02-20261120#soat-850490-v1",
+    "ngay": "2026-11-20",
+    "ghiChu": "OZV-1622: đã sửa lỗi SUY RỘNG 85049031 và 85049041 theo biên bản trả về 11/11 (bỏ 'cụm tấm' đứng riêng ở phương án 2 của HOAC để mọi phương án giữ điều kiện 'tản nhiệt'); cổng --kiem XANH 0 lỗi 0 DỪNG",
+    "bam": "0a6d84f819646f898033821a0aa72486593bc05593b9bf5e92d15e932220a36e"
+  },
   "dieuKienNut": [
     {
       "id": "8504903",
@@ -29,7 +35,7 @@
           "donVi": "kVA"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "8504904",
@@ -48,7 +54,7 @@
           "donVi": "kVA"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -63,7 +69,7 @@
           "value": "8504.10"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85049020",
@@ -89,7 +95,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85049031",
@@ -118,10 +124,7 @@
               {
                 "fact": "tenLoai",
                 "op": "TEN_LOAI",
-                "value": [
-                  "ống tản nhiệt",
-                  "cụm tấm"
-                ]
+                "value": "ống tản nhiệt"
               }
             ]
           ]
@@ -135,14 +138,14 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85049039",
       "nguon": "tax.85049039",
       "trich": "85049039 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85049041",
@@ -171,10 +174,7 @@
               {
                 "fact": "tenLoai",
                 "op": "TEN_LOAI",
-                "value": [
-                  "ống tản nhiệt",
-                  "cụm tấm"
-                ]
+                "value": "ống tản nhiệt"
               }
             ]
           ]
@@ -188,21 +188,21 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85049049",
       "nguon": "tax.85049049",
       "trich": "85049049 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85049090",
       "nguon": "tax.85049090",
       "trich": "85049090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -224,7 +224,7 @@
     {
       "ma": "85049031",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85049031 hai hàng nối \";\" ⇒ HOAC: (a) Tấm/cụm tấm + định ngữ chung \"tản nhiệt\" (điều kiện riêng), (b) ống tản nhiệt đã lắp ráp thành dạng tấm phẳng/cụm tấm; vế \"dùng cho biến áp phân phối và biến áp nguồn\" ⇒ dungCho mảng (hai đích)"
+      "ghiChu": "tax.85049031 hai hàng nối \";\" ⇒ HOAC: (a) Tấm/cụm tấm + định ngữ chung \"tản nhiệt\" (điều kiện riêng), (b) ống tản nhiệt (đã lắp ráp thành dạng tấm phẳng/cụm tấm — bỏ \"cụm tấm\" đứng riêng ở phương án 2 theo biên bản trả về 11/11 để mọi phương án đều giữ \"tản nhiệt\"); vế \"dùng cho biến áp phân phối và biến áp nguồn\" ⇒ dungCho mảng (hai đích)"
     },
     {
       "ma": "85049041",

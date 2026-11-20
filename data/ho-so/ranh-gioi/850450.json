@@ -4,13 +4,19 @@
   "nhom": "8504",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T1800#soan-850450",
     "ngay": "2026-11-07"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-02-20261120#soat-850450-v1",
+    "ngay": "2026-11-20",
+    "ghiChu": "OZV-1622: đã sửa lỗi SUY RỘNG 85045010 theo biên bản trả về 11/11 (giữ nguyên định ngữ 'của các thiết bị xử lý dữ liệu tự động' trong dungCho); cổng --kiem XANH 0 lỗi 0 DỪNG",
+    "bam": "cd4c1a785b6a0a54f318a3f210a2e3fddf38b652d2e34083dcf46d0527c3c7a1"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -27,12 +33,12 @@
           "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": [
-            "bộ nguồn cấp điện",
+            "bộ nguồn cấp điện của các thiết bị xử lý dữ liệu tự động",
             "thiết bị viễn thông"
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85045020",
@@ -50,7 +56,7 @@
           "value": "hạn chế dòng điện"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85045093",
@@ -64,7 +70,7 @@
           "donVi": "kVA"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85045094",
@@ -84,7 +90,7 @@
           "donVi": "kVA"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85045095",
@@ -98,7 +104,7 @@
           "donVi": "kVA"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "chongLanVanBan": [
@@ -114,7 +120,7 @@
     {
       "ma": "85045010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85045010 \"Cuộn cảm dùng cho bộ nguồn cấp điện của các thiết bị xử lý dữ liệu tự động và các khối chức năng của chúng, và thiết bị viễn thông\" ⇒ tenLoai \"Cuộn cảm\" + dungCho mảng [bộ nguồn cấp điện, thiết bị viễn thông] (đích \"bộ nguồn cấp điện\" của máy xử lý dữ liệu/khối chức năng, và \"thiết bị viễn thông\")"
+      "ghiChu": "tax.85045010 \"Cuộn cảm dùng cho bộ nguồn cấp điện của các thiết bị xử lý dữ liệu tự động và các khối chức năng của chúng, và thiết bị viễn thông\" ⇒ tenLoai \"Cuộn cảm\" + dungCho mảng [\"bộ nguồn cấp điện của các thiết bị xử lý dữ liệu tự động\", \"thiết bị viễn thông\"] (giữ nguyên định ngữ \"của các thiết bị xử lý dữ liệu tự động\" gắn với \"bộ nguồn cấp điện\" theo biên bản trả về 11/11 để không suy rộng sang bộ nguồn thiết bị khác)"
     },
     {
       "ma": "85045093",
