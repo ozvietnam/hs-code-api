@@ -1,6 +1,7 @@
 // POST /api/classify — áp mã HS theo phương pháp hs-code-vn (Pha 2).
 // POST /api/declaration-check (rewrite → ?mode=check, #338): soát tờ khai — KÍN, xem lib/declaration-check.js.
-// Body: { tenHang|name, chatLieu|material, congDung|purpose, chucNang?, nameZh?, specs?, facts?, supplierHs?{code,source,url} }
+// Body: { tenHang|name, chatLieu|material, congDung|purpose, chucNang?, nameZh?, specs?, facts?, supplierHs?{code,source,url},
+//         dinhDanh?{frame,xacMinh} — kết quả /api/identify bên gọi ĐÃ có (chỉ nhận từ khoá dịch vụ; sai hình ⇒ bỏ qua) }
 //   (đến từ OrderItem ERP: name, customerDescription→congDung, nameZh, ...)
 // Trả: { results:[{hs, confidence, reason, tbTchq?}], girRulesApplied:[], missing:[], candidates, ms }
 
@@ -15,7 +16,7 @@ const { classify } = require('../lib/classify');
 const { extractSpecs } = require('../lib/extract-specs');
 const { runDeclarationCheck, validateDeclarationCheckInput } = require('../lib/declaration-check');
 const { acquireServiceSlot } = require('../lib/service-rate-limit');
-const { ganHoSoClassify } = require('../lib/ho-so/api');
+const { ganHoSoClassify, chuanDinhDanh, cheDoHieuLuc: cheDoHoSoHieuLuc } = require('../lib/ho-so/api');
 // OZV-507 việc 1 — cache theo hash hồ sơ cho LƯỢT KHOÁ DỊCH VỤ (Postgres kín; lượt công khai không đụng).
 const { cacheBat, khoaCache, docCache, ghiCache, donPhienBanCu, phienBanDuLieu } = require('../lib/classify-cache');
 // OZV-1144 / OZV-1211 (G5 · OZV-760) — kho đáp án: HS_KHO_DAP_AN=off|shadow|on (mặc định off; on chỉ trả bản DUYET).
@@ -196,6 +197,11 @@ async function handler(req, res) {
     const attrsHoSo = { ...attrs, loaiToKhai: body?.loaiToKhai, manufacturer: body?.manufacturer, dimensions: body?.dimensions, condition: body?.condition, packaging: body?.packaging, brand: body?.brand, model: body?.model, duKien: body?.duKien };
     // #725-45: kenhGoi = tên khoá dịch vụ (null = công khai/HS_API_TOKEN) — chỉ ERP (có nút "Áp mã") nhận câu "bấm Áp mã lại".
     const kenhGoi = serviceCaller(req);
+    // Định danh bên gọi đã có sẵn (Cổng OZ gọi /api/identify trước): dùng lại ở bước nghiên cứu của hồ sơ thay vì định danh
+    // lại từ đầu. CHỈ nhận từ khoá dịch vụ — trường này chứa URL để máy mở lại, không nhận từ lượt công khai/HS_API_TOKEN.
+    // Sai hình ⇒ null ⇒ hành vi cũ. Chỉ đi vào động cơ hồ sơ (attrsHoSo); KHÔNG vào `attrs`, KHÔNG vào động cơ phân loại.
+    const dinhDanh = kenhGoi !== null ? chuanDinhDanh(body?.dinhDanh) : null;
+    if (dinhDanh) attrsHoSo.dinhDanh = dinhDanh;
     // OZV-771: nói cho động cơ biết hạn chót THẬT của lượt HTTP này (= trần trả lời). Động cơ tự co hạn từng bước
     // AI và dừng lặp sớm để trả cái nó đã có, thay vì tự cho mình 285 s rồi chạy tiếp sau khi cửa đã trả 503.
     // OZV-1363: bấm giờ classify vs ganHoSo — gắn vào phases khi trả JSON (đo khe ngoài engine).
@@ -242,8 +248,11 @@ async function handler(req, res) {
           });
         }
       }
+      // dinhDanh chỉ đổi được phản hồi khi hồ sơ ở chế độ 'on' cho lượt này (khối hoSo/ecus). off/shadow: phản hồi y hệt
+      // dù có hay không ⇒ dùng chung dòng cache (không làm rớt tỉ lệ trúng); 'on': vào khoá ⇒ hai kết quả không đè nhau.
+      const dinhDanhVaoKhoa = dinhDanh && cheDoHoSoHieuLuc({ noiBo: laNoiBoOz(req), caller: kenhGoi }) === 'on' ? dinhDanh : undefined;
       const khoa = dungCache
-        ? khoaCache(attrs, attrsHoSo, { tier, kenhGoi, noiBo: laNoiBoOz(req) })
+        ? khoaCache(attrs, { ...attrsHoSo, dinhDanh: dinhDanhVaoKhoa }, { tier, kenhGoi, noiBo: laNoiBoOz(req) })
         : null;
       if (dungCache) {
         const tram = await docCache(khoa, pb);

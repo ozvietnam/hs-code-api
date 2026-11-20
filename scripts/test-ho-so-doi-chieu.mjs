@@ -390,6 +390,67 @@ const IDENT_HYPO = { frame: {}, xacMinh: { muc: 'HYPOTHESIS', nguon: [] }, xacMi
   check('nghienCuu khi không còn dữ kiện quyết định CHUA_BIET ⇒ không gọi identify/web', identDu.goi.length === 0 && webDu.goi.length === 0);
 }
 
+// ── 9b. nghienCuu + định danh bên gọi đã có (`opts.dinhDanh`) — không gọi identify() lần hai, không tin nhãn bên gọi ────────────────
+{
+  const { chuanDinhDanh } = require('../lib/ho-so/dinh-danh-san.js');
+  const NGUON_DD = [
+    { url: 'https://pump-maker.example/xyz-900', trich: 'Lưu lượng 10.000 m³/h, cột áp 30 m', loai: 'phu', retrievedAt: '2026-11-20' },
+    { url: 'https://catalog.other.example/datasheet/xyz-900.pdf', trich: 'XYZ-900 lưu lượng 10.000 m³/h', loai: 'phu' },
+  ];
+  const DD = { frame: { chuong: '84', titleVi: 'Máy', truong: { machineFunction: 'bơm ly tâm', nguyenLyHoatDong: 'cánh quay tạo lực ly tâm' }, model: 'XYZ-900', thuongHieu: 'Ebara' }, xacMinh: { muc: 'CORROBORATED', mien: ['pump-maker.example', 'other.example'], nguon: NGUON_DD } };
+  const TRANG_CO = 'Bơm XYZ-900. Lưu lượng 10.000 m³/h, cột áp 30 m. XYZ-900 lưu lượng 10.000 m³/h';
+  const RONG = { tinHieuDanhMuc: async () => [], tienLeMaKhac: async () => [], demKhoOz: khongGoiKhoOz };
+  const fetchDem = (noiDung) => { const goi = []; const fn = async (url) => { goi.push(String(url)); return { ok: true, status: 200, arrayBuffer: async () => Buffer.from(`<html><body>${noiDung}</body></html>`) }; }; fn.goi = goi; return fn; };
+  const { hoSo } = await dung('84135040', { moTa: MO_TA_KHONG_LL_HIEU });
+
+  // (a) hình dạng
+  const sach = chuanDinhDanh(DD);
+  check('chuanDinhDanh: {frame, xacMinh} hợp lệ ⇒ bản sao đã cắt gọn, bỏ khoá lạ', sach && sach.frame.chuong === '84' && sach.frame.model === 'XYZ-900' && !('titleVi' in sach.frame) && !('mien' in sach.xacMinh) && sach.xacMinh.nguon.length === 2 && sach !== DD && sach.frame.truong !== DD.frame.truong, sach);
+  const SAI = [null, undefined, 'chuỗi', 42, [], {}, { frame: DD.frame }, { xacMinh: DD.xacMinh }, { frame: [], xacMinh: DD.xacMinh }, { frame: { ...DD.frame, chuong: 'tám tư' }, xacMinh: DD.xacMinh }, { frame: { ...DD.frame, chuong: '99' }, xacMinh: DD.xacMinh }, { frame: { ...DD.frame, truong: 'x' }, xacMinh: DD.xacMinh }, { frame: DD.frame, xacMinh: { muc: 'CHAC_CHAN', nguon: [] } }, { frame: DD.frame, xacMinh: { muc: 'VERIFIED', nguon: 'x' } }, { degraded: true, llmError: { code: 'X' } }];
+  check('chuanDinhDanh: 15 hình sai (kể cả phản hồi identify degraded) ⇒ null, không ném', SAI.every((v) => chuanDinhDanh(v) === null), SAI.map((v) => chuanDinhDanh(v)));
+  const ban = chuanDinhDanh({ frame: { chuong: 7, truong: { 'khoá lạ!': 'x', ok_1: 'y'.repeat(900), so: 12, obj: { a: 1 } }, model: 'M'.repeat(500) }, xacMinh: { muc: 'HYPOTHESIS', nguon: [{ url: 'http://192.168.1.5/a', trich: 'nội bộ' }, { url: 'javascript:alert(1)' }, { url: 'https://a.example/x', trich: 't'.repeat(2000), loai: 'NSX', laKhoa: 1 }, { url: 'https://a.example/x' }, 'rác', null, ...Array.from({ length: 30 }, (_, i) => ({ url: `https://m${i}.example/p` }))] } });
+  check('chuanDinhDanh: chương số ⇒ "07"; khoá/kiểu lạ bị bỏ; chuỗi bị cắt', ban && ban.frame.chuong === '07' && Object.keys(ban.frame.truong).join() === 'ok_1,so' && ban.frame.truong.ok_1.length === 400 && ban.frame.model.length === 120, ban && ban.frame);
+  check('chuanDinhDanh: URL mạng nội bộ / không phải http(s) / trùng bị loại; ≤10 nguồn; trich ≤600; loai chuẩn hoá', ban && ban.xacMinh.nguon.length === 10 && ban.xacMinh.nguon[0].url === 'https://a.example/x' && ban.xacMinh.nguon[0].trich.length === 600 && ban.xacMinh.nguon[0].loai === 'nsx' && !('laKhoa' in ban.xacMinh.nguon[0]) && !JSON.stringify(ban).includes('192.168'), ban && ban.xacMinh.nguon.slice(0, 2));
+
+  // (b) hợp lệ ⇒ KHÔNG gọi identify; máy mở lại nguồn; kết quả BẰNG đường identify nội bộ cho cùng nguồn
+  const ident = identifyStub(IDENT_HYPO); const fOk = fetchDem(TRANG_CO);
+  const kq = await nghienCuu(hoSo, { congKhai: true, moTa: MO_TA_KHONG_LL_HIEU, dinhDanh: DD, deps: { identify: ident, webGoi: webGoiStub({ content: [] }), fetchImpl: fOk }, ...RONG });
+  const ll = kq.duKien.find((d) => d.fact === 'luuLuong' && d.trangThai === 'DA_CO');
+  check('dinhDanh hợp lệ ⇒ identify() KHÔNG được gọi lại', ident.goi.length === 0, ident.goi);
+  check('dinhDanh hợp lệ ⇒ máy mở lại đúng 2 nguồn bên gọi gửi', fOk.goi.length === 2 && NGUON_DD.every((n) => fOk.goi.includes(n.url)), fOk.goi);
+  check('dinhDanh hợp lệ ⇒ luuLuong DA_CO nguồn NSX, mức do MÁY tính lại (CORROBORATED), DU_CAN_CU', ll && ll.nguon === 'NSX' && ll.giaTri === 10000 && ll.xacMinh.muc === 'CORROBORATED' && ll.xacMinh.nguon === 'identify' && kq.ketLuan.trangThai === 'DU_CAN_CU', { ll, kl: kq.ketLuan });
+  const identTuong = identifyStub({ frame: { model: 'XYZ-900' }, xacMinh: { muc: 'CORROBORATED', nguon: NGUON_DD }, xacMinhKetQua: NGUON_DD.map((n) => ({ url: n.url, moDuoc: true, trichCoMat: true, xacMinhOk: true })) });
+  const kqNoiBo = await nghienCuu(hoSo, { congKhai: true, moTa: MO_TA_KHONG_LL_HIEU, deps: { identify: identTuong, webGoi: webGoiStub({ content: [] }), fetchImpl: trangCo('') }, ...RONG });
+  const boNgay = (h) => { const c = clone(h); delete c.hoSoId; delete c.taoLuc; delete c.ngayTao; return c; };
+  check('dinhDanh hợp lệ ⇒ duKien + ketLuan + tài liệu nên kèm BẰNG đường identify nội bộ cho cùng nguồn', JSON.stringify(boNgay(kq).duKien) === JSON.stringify(boNgay(kqNoiBo).duKien) && JSON.stringify(kq.ketLuan) === JSON.stringify(kqNoiBo.ketLuan) && JSON.stringify(kq.taiLieuKyThuatNenKem) === JSON.stringify(kqNoiBo.taiLieuKyThuatNenKem), { a: kq.ketLuan, b: kqNoiBo.ketLuan });
+  check('dinhDanh không lọt vào hồ sơ trả ra / không sửa đầu vào', !JSON.stringify(kq).includes('dinhDanh') && !hoSo.duKien.some((d) => d.fact === 'luuLuong' && d.trangThai === 'DA_CO') && DD.xacMinh.nguon.length === 2);
+
+  // (c) KHÔNG tin nhãn bên gọi: tự khai VERIFIED/nsx nhưng trang không có câu trích ⇒ không vào duKien
+  const DD_DOI = { frame: DD.frame, xacMinh: { muc: 'VERIFIED', nguon: NGUON_DD.map((n) => ({ ...n, loai: 'nsx' })) } };
+  const fKhong = fetchDem('trang không nói gì về lưu lượng, chỉ có chữ XYZ-900');
+  const identC = identifyStub(IDENT_HYPO);
+  const kqDoi = await nghienCuu(hoSo, { congKhai: true, moTa: MO_TA_KHONG_LL_HIEU, dinhDanh: DD_DOI, deps: { identify: identC, webGoi: webGoiStub({ content: [] }), fetchImpl: fKhong }, ...RONG });
+  check('bên gọi tự khai VERIFIED nhưng trang không có câu trích ⇒ KHÔNG vào duKien, còn cauHoi, vẫn không gọi identify', !kqDoi.duKien.some((d) => d.fact === 'luuLuong' && d.trangThai === 'DA_CO') && kqDoi.ketLuan.cauHoi.some((q) => q.fact === 'luuLuong') && identC.goi.length === 0 && fKhong.goi.length === 2, kqDoi.ketLuan);
+  // một nguồn qua ⇒ HYPOTHESIS ⇒ không nhận (cùng ngưỡng với đường nội bộ)
+  const kq1 = await nghienCuu(hoSo, { congKhai: true, moTa: MO_TA_KHONG_LL_HIEU, dinhDanh: { frame: DD.frame, xacMinh: { muc: 'VERIFIED', nguon: [NGUON_DD[0]] } }, deps: { identify: identifyStub(IDENT_HYPO), webGoi: webGoiStub({ content: [] }), fetchImpl: fetchDem(TRANG_CO) }, ...RONG });
+  check('dinhDanh một nguồn ⇒ máy tính HYPOTHESIS ⇒ không vào duKien dù bên gọi khai VERIFIED', !kq1.duKien.some((d) => d.fact === 'luuLuong' && d.trangThai === 'DA_CO'));
+  // nguồn bên gọi đã đánh dấu CHUA_XAC_MINH ⇒ không mở lại
+  const fBo = fetchDem(TRANG_CO);
+  await nghienCuu(hoSo, { congKhai: true, moTa: MO_TA_KHONG_LL_HIEU, dinhDanh: { frame: DD.frame, xacMinh: { muc: 'KHONG_NGUON', nguon: NGUON_DD.map((n) => ({ ...n, xacMinh: 'CHUA_XAC_MINH' })) } }, deps: { identify: identifyStub(IDENT_HYPO), webGoi: webGoiStub({ content: [] }), fetchImpl: fBo }, ...RONG });
+  check('dinhDanh: nguồn mang nhãn CHUA_XAC_MINH ⇒ không mở lại, không gọi identify', fBo.goi.length === 0);
+
+  // (d) vắng / sai hình ⇒ hành vi cũ: identify() được gọi đúng 1 lần
+  for (const [ten, dd] of [['vắng', undefined], ['null', null], ['sai hình', { frame: 'x' }], ['degraded', { degraded: true }]]) {
+    const id = identifyStub(IDENT_HYPO);
+    await nghienCuu(hoSo, { congKhai: true, moTa: MO_TA_KHONG_LL_HIEU, ...(dd === undefined ? {} : { dinhDanh: dd }), deps: { identify: id, webGoi: webGoiStub({ content: [] }), fetchImpl: trangCo('') }, ...RONG });
+    check(`dinhDanh ${ten} ⇒ đường cũ: identify() gọi đúng 1 lần`, id.goi.length === 1, id.goi.length);
+  }
+  // (e) riêng tư: vẫn chạy trong withPrivateData, vẫn không gọi identify
+  const idR = identifyStub(IDENT_HYPO); const xmR = [];
+  await nghienCuu(hoSo, { congKhai: false, moTa: MO_TA_KHONG_LL_HIEU, dinhDanh: DD, deps: { identify: idR, webGoi: webGoiStub({ content: [] }), xacMinhNhieu: async (ds, m) => { xmR.push({ rieng: isPrivate(), m, n: ds.length }); return []; } }, ...RONG });
+  check('dinhDanh + lượt riêng tư ⇒ xác minh chạy trong withPrivateData, model lấy từ frame, identify không gọi', idR.goi.length === 0 && xmR.length === 1 && xmR[0].rieng === true && xmR[0].m === 'XYZ-900' && xmR[0].n === 2, xmR);
+}
+
 // ── 10. Cửa vào lib/ho-so/index.js ─────────────────────────────────────────────────────────────────────────────────────
 check('index.js xuất docDuKien/doiChieu/nghienCuu/locTheoQuyen/khungHoSo', HS.docDuKien === docDuKien && HS.doiChieu === doiChieu && HS.nghienCuu === nghienCuu && HS.locTheoQuyen === locTheoQuyen && typeof HS.khungHoSo === 'function');
 // L1-5d (#648) nối endpoint: api/ chỉ được nạp động cơ qua lib/ho-so/api.js (nơi locTheoQuyen chạy trước khi trả), không nạp thẳng module con.

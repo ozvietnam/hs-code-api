@@ -287,6 +287,35 @@ if (API) {
   check('classify on: ecus giữ shape {description, level, score, missing} + sáu khối, sinh bằng vietMoTa', kqOn.ecus && typeof kqOn.ecus.description === 'string' && 'level' in kqOn.ecus && 'score' in kqOn.ecus && Array.isArray(kqOn.ecus.missing) && 'moTaEcus' in kqOn.ecus && kqOn.ecus.description === (kqOn.ecus.moTaEcus ?? kqOn.ecus.moTaBanNhap));
   check('classify on: mã thay thế (results[1..]) vào loaiTru nguồn ma-thay-the', coChuoi(kqOn.hoSo.loaiTru, 'ma-thay-the') || (kqOn.hoSo.loaiTru || []).length >= 0);
   check('classify on: công khai ⇒ không MO_TA_GIONG_MA_KHAC', !coChuoi(kqOn, 'MO_TA_GIONG_MA_KHAC'));
+  // ── classify + định danh bên gọi đã có (attrs.dinhDanh) ⇒ bước nghiên cứu KHÔNG gọi identify() lần hai ──
+  {
+    const DD = { frame: { chuong: '84', truong: { machineFunction: 'bơm ly tâm' }, model: 'XYZ-900', thuongHieu: 'Ebara' }, xacMinh: { muc: 'CORROBORATED', nguon: [{ url: 'https://pump-maker.example/xyz-900', trich: 'Lưu lượng 10.000 m³/h', loai: 'phu' }, { url: 'https://catalog.other.example/xyz-900.pdf', trich: 'XYZ-900 lưu lượng 10.000 m³/h', loai: 'phu' }] } };
+    const kqBom = { status: 'REVIEW', results: [{ hs: '84135040', confidence: 80 }], ecus: { description: 'mô tả cũ', level: 'GOOD', score: 80, missing: [] }, girRulesApplied: [] };
+    const attrsBom = { tenHang: 'Bơm nước ly tâm', congDung: 'Bơm nước ly tâm trục ngang dùng tưới tiêu nông nghiệp, mới 100%', brand: 'Ebara', model: 'XYZ-900' };
+    const depsCu = { ...API.layDeps() };
+    const moLai = [];
+    API._datDeps({ ...depsCu, xacMinhNhieu: async (ds) => { moLai.push(ds.map((n) => n.url)); return []; } });
+    for (const che of ['shadow', 'on']) {
+      process.env.HS_HO_SO = che;
+      let n0 = goiNguon.identify;
+      const khong = await API.ganHoSoClassify(structuredClone(kqBom), attrsBom, { noiBo: false });
+      const goiKhong = goiNguon.identify - n0; n0 = goiNguon.identify; const m0 = moLai.length;
+      const co = await API.ganHoSoClassify(structuredClone(kqBom), { ...attrsBom, dinhDanh: structuredClone(DD) }, { noiBo: false });
+      const goiCo = goiNguon.identify - n0; n0 = goiNguon.identify;
+      check(`classify ${che}: không dinhDanh ⇒ identify() gọi 1 lần (đường cũ)`, goiKhong === 1, goiKhong);
+      check(`classify ${che}: có dinhDanh ⇒ identify() gọi 0 lần, máy mở lại đúng nguồn bên gọi gửi`, goiCo === 0 && moLai.length - m0 === 1 && moLai.at(-1).length === 2, { goiCo, moLai: moLai.slice(m0) });
+      const sai = await API.ganHoSoClassify(structuredClone(kqBom), { ...attrsBom, dinhDanh: { frame: 'x', xacMinh: null } }, { noiBo: false });
+      check(`classify ${che}: dinhDanh sai hình ⇒ đường cũ (identify() gọi 1 lần)`, goiNguon.identify - n0 === 1, goiNguon.identify - n0);
+      if (che === 'shadow') {
+        check('classify shadow + dinhDanh: phản hồi cho khách KHÔNG đổi (bằng sâu, cả 3 biến thể)', bangSau(khong, kqBom) && bangSau(co, kqBom) && bangSau(sai, kqBom));
+      } else {
+        check('classify on + dinhDanh: vẫn có hoSo, dinhDanh không lộ ra phản hồi', co.hoSo && co.hoSo.maHs === '84135040' && !coChuoi(co, 'dinhDanh') && !coChuoi(co, 'pump-maker.example'), co.hoSoMeta);
+        check('classify on: nguồn không qua xác minh ⇒ hoSo có/không dinhDanh cùng kết luận', bangSau(co.hoSo.ketLuan, khong.hoSo.ketLuan), { co: co.hoSo.ketLuan, khong: khong.hoSo.ketLuan });
+      }
+    }
+    API._datDeps(depsCu);
+    process.env.HS_HO_SO = 'on';
+  }
 
   const sheetCu = { fields: [{ key: 'material', status: 'HAVE', valueVi: 'thép không gỉ' }], description: { customsDescription: 'mô tả phiếu cũ', composedFrom: 'SHEET', declaration: {}, descriptionMeta: { length: 14, maxLength: 200, truncated: false, dropped: [] }, compliance: null, degraded: false, llmModel: null } };
   const dvSheet = { hs: PHICH, tenHang: 'Vỏ ngoài phích giữ nhiệt', thongSo: ['chất liệu: thép không gỉ', 'kích thước: 80x80x250 mm'], moTa: 'là bộ phận của phích, chưa có ruột, không nhãn hiệu, mới 100%' };
