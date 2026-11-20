@@ -1,26 +1,44 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "851779",
-  "phien": "zcode-sub:glm-5.3:20261105T1025#soan-851779",
+  "phien": "claude-agent:tho-hs-01-20261120#soan-851779",
   "dieuKienNut": {
     "8517792": {
       "dieuKienSo": [
         {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": "thiết bị truyền dẫn"
-        },
-        {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": [
-            "phát thanh sóng vô tuyến",
-            "thiết bị phát truyền hình",
-            "thiết bị thu xách tay",
-            "thiết bị cảnh báo bằng tin nhắn",
-            "máy nhắn tin"
-          ],
-          "chieu": "PHAI_KHONG"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "thiết bị truyền dẫn"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "phát thanh sóng vô tuyến",
+                  "thiết bị phát truyền hình"
+                ],
+                "chieu": "PHAI_KHONG"
+              }
+            ],
+            [
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "thiết bị thu xách tay",
+                  "gọi",
+                  "báo hiệu",
+                  "nhắn tin",
+                  "thiết bị cảnh báo bằng tin nhắn",
+                  "máy nhắn tin"
+                ]
+              }
+            ]
+          ]
         }
       ]
     },
@@ -186,7 +204,7 @@
     {
       "ma": "8517792",
       "loai": "QUYET_DINH",
-      "ghiChu": "Claude (#1109): vế giới hạn \"trừ loại dùng cho phát thanh sóng vô tuyến hoặc thiết bị phát truyền hình, hoặc của loại thiết bị thu xách tay để gọi, báo hiệu hoặc nhắn tin và thiết bị cảnh báo bằng tin nhắn, kể cả máy nhắn tin\" ⇒ dungCho PHAI_KHONG các đích nêu nguyên văn (\"kể cả máy nhắn tin\" thuộc nhóm bị trừ)."
+      "ghiChu": "Sửa theo traVe #1109 (claude-agent:duyet-L28-20261111): tiêu đề 8517792 là HOAC hai nhánh công dụng đích dungCho (vì toàn bộ phân nhóm 8517.79 là 'Bộ phận: - - Loại khác', chữ 'Của ...' đều chỉ thiết bị đích): (1) 'Của thiết bị truyền dẫn, trừ loại dùng cho phát thanh sóng vô tuyến hoặc thiết bị phát truyền hình' ⇒ dungCho 'thiết bị truyền dẫn' & PHAI_KHONG [phát thanh sóng vô tuyến, thiết bị phát truyền hình]; (2) 'hoặc của loại thiết bị thu xách tay để gọi, báo hiệu hoặc nhắn tin và thiết bị cảnh báo bằng tin nhắn, kể cả máy nhắn tin' ⇒ dungCho mảng [thiết bị thu xách tay, gọi, báo hiệu, nhắn tin, thiết bị cảnh báo bằng tin nhắn, máy nhắn tin]."
     }
   ]
 }
