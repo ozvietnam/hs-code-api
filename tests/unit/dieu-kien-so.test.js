@@ -152,3 +152,101 @@ describe('lib/dieu-kien-so.js — khopCumTrongChu: PHU_DINH chỉ đè khi KHÔN
     assert.notEqual(r.trangThai, 'TRAI');
   });
 });
+
+describe('lib/dieu-kien-so.js — khopCumTrongChu & boVeRiengCuaDong cho 8511, 2904, 8421, 8474 (OZV-1672)', () => {
+  const cha8511403 =
+    'Động cơ khởi động và máy phát điện kiêm khởi động: Động cơ khởi động đã lắp ráp sử dụng cho động cơ của xe thuộc các nhóm từ 87.01 đến 87.05';
+
+  test('85114031..33 (2 chiều): dải mã "từ 87.01 đến 87.05" ở tiêu đề cha không khớp nhầm đầu mút 87.01 / 87.05, nhưng nêu rõ dòng 8 số thì chốt đúng', () => {
+    assert.equal(DK.khopCumTrongChu(cha8511403, '87.01'), null);
+    assert.equal(DK.khopCumTrongChu(cha8511403, '87.05'), null);
+    const rThieu = chotDong8({ hs: '851140', productText: cha8511403 });
+    assert.notEqual(rThieu.ketQua, 'CHOT', JSON.stringify(rThieu));
+    assert.ok(['THIEU_SO_LIEU', 'KHONG_THE_CHOT'].includes(rThieu.ketQua), JSON.stringify(rThieu));
+    assert.notEqual(rThieu.lyDo, 'tranh-cap', JSON.stringify(rThieu));
+
+    const r31 = chotDong8({
+      hs: '851140',
+      productText: `${cha8511403}: Sử dụng cho động cơ của xe thuộc nhóm 87.01`,
+    });
+    assert.equal(r31.ketQua, 'CHOT', JSON.stringify(r31));
+    assert.equal(r31.hs, '85114031');
+
+    const r32 = chotDong8({
+      hs: '851140',
+      productText: `${cha8511403}: Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03 hoặc 87.04`,
+    });
+    assert.equal(r32.ketQua, 'CHOT', JSON.stringify(r32));
+    assert.equal(r32.hs, '85114032');
+
+    const r33 = chotDong8({
+      hs: '851140',
+      productText: `${cha8511403}: Sử dụng cho động cơ của xe thuộc nhóm 87.05`,
+    });
+    assert.equal(r33.ketQua, 'CHOT', JSON.stringify(r33));
+    assert.equal(r33.hs, '85114033');
+  });
+
+  test('29041000 (2 chiều): khopCumTrongChu khớp khoảng trắng kép "muối  và" trong data/tax.json và không bắt nhầm dòng khác', () => {
+    const p29041000 = 'Các dẫn xuất chỉ chứa các nhóm sulpho, muối và etyl este của chúng';
+    const textCoKhoangTrangKep =
+      'Các dẫn xuất sulphonat hóa, nitro hóa hoặc nitroso hóa của các hydrocarbon, đã hoặc chưa halogen hóa. - Các dẫn xuất chỉ chứa các nhóm sulpho, muối  và etyl este của chúng';
+    const hit = DK.khopCumTrongChu(textCoKhoangTrangKep, p29041000);
+    assert.equal(hit?.trangThai, 'KHANG_DINH', JSON.stringify(hit));
+
+    const rChot = chotDong8({ hs: '290410', productText: textCoKhoangTrangKep });
+    assert.equal(rChot.ketQua, 'CHOT', JSON.stringify(rChot));
+    assert.equal(rChot.hs, '29041000');
+
+    const textKhac = 'Các dẫn xuất chỉ chứa nhóm nitro hoặc chỉ chứa nhóm nitroso: Trinitrotoluen';
+    assert.equal(DK.khopCumTrongChu(textKhac, p29041000), null);
+  });
+
+  test('84212311 & 84742011 (2 chiều): boVeRiengCuaDong chỉ gom anh em cùng nút cha trực tiếp nên giữ được từ phân biệt "dầu" và "đá"', () => {
+    assert.equal(DK.coCumPhanBiet('Bộ lọc dầu', '84212311'), true);
+    assert.equal(DK.coCumPhanBiet('đá', '84742011'), true);
+
+    const r8421 = DK.danhGiaTuChu(
+      { fact: 'tenLoai', op: 'TEN_LOAI', value: 'Bộ lọc dầu' },
+      'Máy lọc dầu hoặc lọc xăng dùng cho động cơ đốt trong: Dùng cho máy thuộc nhóm 84.29 hoặc 84.30: Bộ lọc dầu',
+      '84212311',
+    );
+    assert.equal(r8421.trangThai, 'THOA', JSON.stringify(r8421));
+    assert.equal(r8421.tatDinh, true);
+
+    const r8421Thieu = DK.danhGiaTuChu(
+      { fact: 'tenLoai', op: 'TEN_LOAI', value: 'Bộ lọc dầu' },
+      'Máy lọc hoặc tinh chế chất lỏng: Dùng cho máy thuộc nhóm 84.29 hoặc 84.30',
+      '84212311',
+    );
+    assert.notEqual(r8421Thieu.trangThai, 'THOA');
+
+    const r8474 = DK.danhGiaTuChu(
+      { fact: 'dungCho', op: 'CONG_DUNG', value: 'đá' },
+      'Máy nghiền hoặc xay đất, đá, quặng hoặc các chất khoáng khác: Hoạt động bằng điện: Dùng cho đá',
+      '84742011',
+    );
+    assert.equal(r8474.trangThai, 'THOA', JSON.stringify(r8474));
+    assert.equal(r8474.tatDinh, true);
+
+    const r8474Thieu = DK.danhGiaTuChu(
+      { fact: 'dungCho', op: 'CONG_DUNG', value: 'đá' },
+      'Máy nghiền hoặc xay chất khoáng: Hoạt động bằng điện',
+      '84742011',
+    );
+    assert.notEqual(r8474Thieu.trangThai, 'THOA');
+  });
+
+  test('ReDoS guard (OZV-1672): chuỗi ~40.000 từ lặp có dải mã "87.01 đến 87.05" và khoảng trắng kép chạy dưới 2 giây', () => {
+    const longText = `${'thuộc các nhóm từ 87.02 đến 87.04, dẫn xuất sulpho '.repeat(4500)}thuộc các nhóm từ 87.01 đến 87.05, muối  và etyl este của chúng: Sử dụng cho động cơ của xe thuộc nhóm 87.01`;
+    const t0 = Date.now();
+    const r1 = DK.khopCumTrongChu(longText, '87.01');
+    const r2 = DK.khopCumTrongChu(longText, '87.05');
+    const r3 = DK.khopCumTrongChu(longText, 'muối và etyl este của chúng');
+    const elapsed = Date.now() - t0;
+    assert.equal(r1?.trangThai, 'KHANG_DINH');
+    assert.equal(r2, null);
+    assert.equal(r3?.trangThai, 'KHANG_DINH');
+    assert.ok(elapsed < 2000, `ReDoS check took ${elapsed}ms (>= 2000ms)`);
+  });
+});
