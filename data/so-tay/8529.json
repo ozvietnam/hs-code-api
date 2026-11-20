@@ -129,17 +129,32 @@
   "dong8": [
     {
       "hs": "85291021",
-      "dieuKien": "Dùng cho máy thu truyền hình, thuộc tiêu đề quốc gia 8529102 — Chảo phản xạ của ăng ten parabol sử dụng cho hệ phát trực tiếp đa phương tiện và các bộ phận của chúng (tên tiêu đề lấy từ cây máy theo biểu thuế, không có câu nào trong nguồn nêu)",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): máy thu truyền hình",
+      "nguon": "tax.85291021",
+      "trich": "85291021 - - - Dùng cho máy thu truyền hình",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy thu truyền hình"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1638-20261120#soat-852910",
+          "ngay": "2026-11-20",
+          "bam": "32a4e7b25143911b746c35d72dcdd53929a6fa8940322989f7415db06916cec7"
+        }
+      },
       "tieuChi": {
         "fact": "dung_cho_may_thu_truyen_hinh",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "nguon": "tax.85291021",
-      "trich": "85291021 - - - Dùng cho máy thu truyền hình",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      }
     },
     {
       "hs": "85291029",
@@ -155,79 +170,185 @@
         "truAnhEm": [
           "85291021"
         ],
+        "truDayDu": [
+          "85291021"
+        ],
         "toTienCoTen": "852910",
         "dinhNghiaDuoc": true
       }
     },
     {
       "hs": "85291030",
-      "dieuKien": "Ăng ten vệ tinh, ăng ten lưỡng cực và các loại ăng ten roi (rabbit antennae) sử dụng cho máy thu hình hoặc máy thu thanh",
+      "dieuKien": "tên loại hàng: Ăng ten vệ tinh hoặc ăng ten lưỡng cực hoặc ăng ten roi; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): máy thu hình hoặc máy thu thanh",
+      "nguon": "tax.85291030",
+      "trich": "85291030 - - Ăng ten vệ tinh, ăng ten lưỡng cực và các loại ăng ten roi (rabbit antennae) sử dụng cho máy thu hình hoặc máy thu thanh",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Ăng ten vệ tinh",
+            "ăng ten lưỡng cực",
+            "ăng ten roi"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "máy thu hình",
+            "máy thu thanh"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1638-20261120#soat-852910",
+          "ngay": "2026-11-20",
+          "bam": "32a4e7b25143911b746c35d72dcdd53929a6fa8940322989f7415db06916cec7"
+        }
+      },
       "tieuChi": {
         "fact": "la_ang_ten_ve_tinh_luong_cuc_hoac_ang_ten_roi",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "nguon": "tax.85291030",
-      "trich": "85291030 - - Ăng ten vệ tinh, ăng ten lưỡng cực và các loại ăng ten roi (rabbit antennae) sử dụng cho máy thu hình hoặc máy thu thanh",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      }
     },
     {
       "hs": "85291040",
-      "dieuKien": "Bộ lọc và tách tín hiệu ăng ten",
+      "dieuKien": "tên loại hàng: Bộ lọc hoặc tách tín hiệu; tên loại hàng: ăng ten",
+      "nguon": "tax.85291040",
+      "trich": "85291040 - - Bộ lọc và tách tín hiệu ăng ten",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Bộ lọc",
+            "tách tín hiệu"
+          ]
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "ăng ten"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1638-20261120#soat-852910",
+          "ngay": "2026-11-20",
+          "bam": "32a4e7b25143911b746c35d72dcdd53929a6fa8940322989f7415db06916cec7"
+        }
+      },
       "tieuChi": {
         "fact": "la_bo_loc_va_tach_tin_hieu_ang_ten",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "nguon": "tax.85291040",
-      "trich": "85291040 - - Bộ lọc và tách tín hiệu ăng ten",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      }
     },
     {
       "hs": "85291060",
-      "dieuKien": "Loa hoặc phễu tiếp sóng (ống dẫn sóng) — nguồn ghi “tiếp sóng”, giữ nguyên",
+      "dieuKien": "tên loại hàng: Loa hoặc phễu; tên loại hàng: tiếp sóng",
+      "nguon": "tax.85291060",
+      "trich": "85291060 - - Loa hoặc phễu tiếp sóng (ống dẫn sóng)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Loa",
+            "phễu"
+          ]
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "tiếp sóng"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1638-20261120#soat-852910",
+          "ngay": "2026-11-20",
+          "bam": "32a4e7b25143911b746c35d72dcdd53929a6fa8940322989f7415db06916cec7"
+        }
+      },
       "tieuChi": {
         "fact": "la_loa_hoac_phieu_tiep_song",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "nguon": "tax.85291060",
-      "trich": "85291060 - - Loa hoặc phễu tiếp sóng (ống dẫn sóng)",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      }
     },
     {
       "hs": "85291093",
-      "dieuKien": "Bộ phận dùng với thiết bị truyền dẫn để phát sóng vô tuyến, thuộc tiêu đề quốc gia 8529109 (tên tiêu đề không có trong nguồn — đối chiếu biểu thuế)",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): thiết bị truyền dẫn để phát sóng vô tuyến",
+      "nguon": "tax.85291093",
+      "trich": "85291093 - - - Loại dùng với thiết bị truyền dẫn để phát sóng vô tuyến",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "thiết bị truyền dẫn để phát sóng vô tuyến"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1638-20261120#soat-852910",
+          "ngay": "2026-11-20",
+          "bam": "32a4e7b25143911b746c35d72dcdd53929a6fa8940322989f7415db06916cec7"
+        }
+      },
       "tieuChi": {
         "fact": "dung_cho_thiet_bi_truyen_dan_de_phat_song_v_o_tuyen",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "nguon": "tax.85291093",
-      "trich": "85291093 - - - Loại dùng với thiết bị truyền dẫn để phát sóng vô tuyến",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      }
     },
     {
       "hs": "85291094",
-      "dieuKien": "Bộ phận dùng với thiết bị truyền dẫn truyền hình, thuộc tiêu đề quốc gia 8529109 (tên tiêu đề không có trong nguồn — đối chiếu biểu thuế)",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): thiết bị truyền dẫn truyền hình",
+      "nguon": "tax.85291094",
+      "trich": "85291094 - - - Loại dùng với thiết bị truyền dẫn truyền hình ",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "thiết bị truyền dẫn truyền hình"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1638-20261120#soat-852910",
+          "ngay": "2026-11-20",
+          "bam": "32a4e7b25143911b746c35d72dcdd53929a6fa8940322989f7415db06916cec7"
+        }
+      },
       "tieuChi": {
         "fact": "dung_cho_thiet_bi_truyen_dan_truyen_hinh",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "nguon": "tax.85291094",
-      "trich": "85291094 - - - Loại dùng với thiết bị truyền dẫn truyền hình ",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      }
     },
     {
       "hs": "85291099",
@@ -243,6 +364,14 @@
         "truAnhEm": [
           "85291093",
           "85291094"
+        ],
+        "truDayDu": [
+          "85291093",
+          "85291094",
+          "8529102",
+          "85291030",
+          "85291040",
+          "85291060"
         ],
         "toTienCoTen": "852910",
         "dinhNghiaDuoc": true
@@ -405,11 +534,15 @@
       "loaiKhac": true,
       "phamViLoaiKhac": {
         "nguonLoai": "MAY_SUY",
-        "cha": "8529905",
+        "cha": "852990~r15684",
         "truAnhEm": [
-          "85299051",
-          "85299052",
           "85299053"
+        ],
+        "truDayDu": [
+          "85299053",
+          "85299020",
+          "85299040",
+          "8529909"
         ],
         "toTienCoTen": "852990",
         "dinhNghiaDuoc": true
@@ -446,12 +579,17 @@
       "loaiKhac": true,
       "phamViLoaiKhac": {
         "nguonLoai": "MAY_SUY",
-        "cha": "8529905",
+        "cha": "852990~r15684",
         "truAnhEm": [
-          "85299051",
-          "85299052",
           "85299053",
           "85299054"
+        ],
+        "truDayDu": [
+          "85299053",
+          "85299054",
+          "85299020",
+          "85299040",
+          "8529909"
         ],
         "toTienCoTen": "852990",
         "dinhNghiaDuoc": false
@@ -471,11 +609,18 @@
         "truAnhEm": [
           "85299051",
           "85299052",
-          "85299053",
-          "85299054"
+          "852990~r15684"
+        ],
+        "truDayDu": [
+          "85299051",
+          "85299052",
+          "852990~r15684",
+          "85299020",
+          "85299040",
+          "8529909"
         ],
         "toTienCoTen": "852990",
-        "dinhNghiaDuoc": false
+        "dinhNghiaDuoc": true
       }
     },
     {
@@ -520,6 +665,12 @@
         "truAnhEm": [
           "85299091"
         ],
+        "truDayDu": [
+          "85299091",
+          "85299020",
+          "85299040",
+          "8529905"
+        ],
         "toTienCoTen": "852990",
         "dinhNghiaDuoc": true
       },
@@ -559,6 +710,13 @@
         "truAnhEm": [
           "85299091",
           "85299094"
+        ],
+        "truDayDu": [
+          "85299091",
+          "85299094",
+          "85299020",
+          "85299040",
+          "8529905"
         ],
         "toTienCoTen": "852990",
         "dinhNghiaDuoc": false
@@ -832,6 +990,50 @@
     "nguonBiCat": []
   },
   "dieuKienNut": [
+    {
+      "id": "8529102",
+      "nguon": "tieuDe.8529102",
+      "trich": "8529102 Chảo phản xạ của ăng ten parabol sử dụng cho hệ phát trực tiếp đa phương tiện và các bộ phận của chúng",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Chảo phản xạ"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "ăng ten parabol sử dụng cho hệ phát trực tiếp đa phương tiện"
+              }
+            ],
+            [
+              {
+                "fact": "laBoPhan",
+                "op": "CO"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "Chảo phản xạ"
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1638-20261120#soat-852910",
+          "ngay": "2026-11-20",
+          "bam": "32a4e7b25143911b746c35d72dcdd53929a6fa8940322989f7415db06916cec7"
+        }
+      }
+    },
     {
       "id": "852990~r15684",
       "nguon": "tieuDe.852990~r15684",
