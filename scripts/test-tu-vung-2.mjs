@@ -320,6 +320,9 @@ const KHOA_MOI = {
   dangSanPhamNhom1518: 'LIET_KE',
   toHopChucNangMayIn: 'LIET_KE',
   maHsTuongUng: 'CONG_DUNG',
+  // 20/11/2026 (OZV-1610): vế «có bộ phận khuếch đại và một hoặc nhiều loa» — giải DỪNG 8519.81.20
+  coBoPhanKhuachDai: 'CO_KHONG',
+  coLoa: 'CO_KHONG',
 };
 
 // ── 1. Nạp theo phiên bản ─────────────────────────────────────────────────────────────────────────────────────────
@@ -671,6 +674,25 @@ la('kiểu hút bơm', 'kieuHutBom', 'Bơm nước một tầng, một chiều h
 la('hướng trục bơm', 'huongTrucBom', 'Bơm nước một tầng, một chiều hút, trục ngang', 'NGANG');
 la('chỉ số iốt không cần chữ IV', 'chiSoIot', 'Có chỉ số iốt từ 30 trở lên, nhưng dưới 40', 30, { op: '>=', bc: '30 trở lên' });
 la('chỉ số iốt 55 không cần chữ IV', 'chiSoIot', 'Loại khác, có chỉ số iốt từ 55 trở lên, nhưng dưới 60', 55, { op: '>=', bc: '55 trở lên' });
+
+// ── Lô 24 (OZV-1610, 20/11/2026) — vế «có bộ phận khuếch đại và một hoặc nhiều loa» 8519.81.20 ────────────────
+la('khuếch đại (chữ biểu 8519.81.20)', 'coBoPhanKhuachDai', 'Máy ghi âm cassette, có bộ phận khuếch đại và một hoặc nhiều loa, hoạt động chỉ bằng nguồn điện ngoài', true, { bc: 'có bộ phận khuếch đại' });
+la('khuếch đại — ampli rời', 'coBoPhanKhuachDai', 'Đầu cassette kèm theo bộ khuếch đại âm thanh và 2 loa', true);
+la('khuếch đại En', 'coBoPhanKhuachDai', 'Cassette recorder incorporating an amplifier', true);
+la('khuếch đại Zh', 'coBoPhanKhuachDai', '卡带式录音机，装有放大器', true);
+la('khuếch đại En rút gọn', 'coBoPhanKhuachDai', 'Cassette deck with built-in ampli', true);
+la('khuếch đại KHÔNG', 'coBoPhanKhuachDai', 'Máy ghi âm cassette, không có bộ phận khuếch đại', false);
+la('khuếch đại KHÔNG En', 'coBoPhanKhuachDai', 'Cassette recorder without an amplifier', false);
+la('loa (chữ biểu 8519.81.20)', 'coLoa', 'Máy ghi âm cassette, có bộ phận khuếch đại và một hoặc nhiều loa, hoạt động chỉ bằng nguồn điện ngoài', true, { bc: 'một hoặc nhiều loa' });
+la('loa — gắn 2 loa', 'coLoa', 'Đầu cassette gắn hai loa tích hợp', true);
+la('loa En', 'coLoa', 'Cassette player with built-in speakers', true);
+la('loa Zh', 'coLoa', '带扬声器的录音机', true);
+la('loa KHÔNG', 'coLoa', 'Máy ghi âm cassette loại nhỏ, không kèm loa rời', false);
+// canh «loai/loại» không dính «loa»: "loại nhỏ" phải CHUA_BIET chứ không phải DA_CO
+chuaBiet('canh «loai» ASCII không dính «loa»', 'coLoa', 'Máy ghi âm cassette có loai bỏ túi dùng pin');
+chuaBiet('canh «loai» ASCII giữa câu — «một hoặc nhiều loai»', 'coLoa', 'máy có một hoặc nhiều loai cảm biến');
+// «loại» có dấu — kí tự ạ (U+1EA1) khác a nên "loa" thuần không xuất hiện trong chuỗi
+chuaBiet('canh «loại» có dấu không dính «loa»', 'coLoa', 'Máy ghi âm cassette loại bỏ túi');
 
 // ── 5. Viết + kiểm giá trị ───────────────────────────────────────────────────────────────────────────────────────────
 const viet = (khoa, v) => { try { return T.vietCum(khoa, v); } catch (e) { return `LOI ${e.message}`; } };
