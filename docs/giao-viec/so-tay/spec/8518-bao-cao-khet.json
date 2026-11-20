@@ -1,0 +1,92 @@
+{
+  "phienBan": "bao-cao-khet@2",
+  "loai": "Báo cáo khet nhóm 8518 — OZV-1563 (sau khi duyệt và áp dụng 851850)",
+  "ngay": "2026-11-20",
+  "canh": "Nhánh ozv-sach-8518-v1 đứng trên origin/main 4c490809 (đã có khoá coLoa trong tu-vung@2 từ PR #1482 / OZV-1610). Đã gắn {fact:'coLoa',op:'CO'} vào 85185020, bỏ BO_VE vế 'có loa', qua cổng --ap-spec, --kiem XANH (0 lỗi, 0 DỪNG), nâng 851850 lên DUYET và --ap-dung vào data/so-tay/8518.json. Cả 8/8 phân nhóm 8518*.json đều đã DUYET (chua-duyet-ranh-gioi = 0); chotDung tăng từ 23/36 lên 26/36 (+3 ca: 85185010, 85185020 ở DONG_CO_TEN và 85185090 ở LOAI_TRU_LOAI_KHAC); LOAI_TRU_LOAI_KHAC đạt 9/9 = 100%; DONG_CO_TEN đạt 17/18 = 94.4% < 95% (mẫu số 18 đòi 18/18 = 100% mới ≥ 95%). Còn duy nhất 1 ca 85184040 vướng tường kiến trúc 'Loại khác, <điều kiện>' ở lib/so-tay-gates.js:1031-1047.",
+  "ketQuaChot": {
+    "demNhomSachTruoc": "node scripts/dem-nhom-sach.mjs --nhom=8518 → 8518: chua-duyet-ranh-gioi(1 pn6), dong-co-ten(15/18=83.3%<95%) (baseline main 4c490809)",
+    "demNhomSachSau": "node scripts/dem-nhom-sach.mjs --nhom=8518 → 8518: dong-co-ten(17/18=94.4%<95%) (sau khi DUYET + ap-dung 851850)",
+    "baselineMain": {
+      "chotDung": 23,
+      "tongSoCa": 36,
+      "chotSai": 0,
+      "chotLoaiKhacSai": 0,
+      "hoi": 6,
+      "khongTheChot": 7,
+      "nemLoi": 0,
+      "DONG_CO_TEN": "15/18 = 83.3% (hụt 3 ca: 85184040 THIEU_SO_LIEU, 85185010 và 85185020 KHONG_THE_CHOT ranh-gioi-chua-so-hoa)",
+      "LOAI_TRU_LOAI_KHAC": "8/9 = 88.9% (hụt 85185090 KHONG_THE_CHOT ranh-gioi-chua-so-hoa)",
+      "THIEU_DU_KIEN": "9/9 = 100.0%"
+    },
+    "sauKhiDuyet851850": {
+      "chotDung": 26,
+      "tongSoCa": 36,
+      "chotSai": 0,
+      "chotLoaiKhacSai": 0,
+      "hoi": 7,
+      "khongTheChot": 3,
+      "nemLoi": 0,
+      "DONG_CO_TEN": "17/18 = 94.4% < 95% (85185010 và 85185020 đều chuyển sang CHOT đúng; chỉ còn 1 ca 85184040 THIEU_SO_LIEU missingFacts=[choDienThoaiHuuTuyen])",
+      "LOAI_TRU_LOAI_KHAC": "9/9 = 100.0% (85185090 chuyển sang LOAI_KHAC đúng)",
+      "THIEU_DU_KIEN": "9/9 = 100.0%"
+    }
+  },
+  "ketQuaDo": {
+    "bienThe1_duyetVaApDung851850": {
+      "moTa": "Gắn {fact:'coLoa',op:'CO'} vào 85185020, bỏ BO_VE vế 'có loa', chạy --ap-spec, --kiem (XANH, 0 lỗi), --duyet và --ap-dung cho 851850",
+      "lenh": "node scripts/bo-kiem-luat.mjs --nhom=8518 --json && node scripts/dem-nhom-sach.mjs --nhom=8518",
+      "boKiemLuat": {
+        "tongSoCa": 36,
+        "chotDung": 26,
+        "chotSai": 0,
+        "chotLoaiKhacSai": 0,
+        "hoi": 7,
+        "khongTheChot": 3,
+        "nemLoi": 0,
+        "DONG_CO_TEN": "17/18 = 94.4% < 95%",
+        "LOAI_TRU_LOAI_KHAC": "9/9 = 100.0%"
+      },
+      "ketLuan": "85185020 dù là dòng 'Loại khác, <điều kiện>' nhưng có vế {fact:'congDung',op:'CONG_DUNG',value:'phát sóng'} chấm THOA (coTenThoaRieng=true ở lib/so-tay-gates.js:1034-1035, và chiTiet.length=4) nên không bị hạ về CHUA_BIET và CHOT đúng. Chỉ còn duy nhất 85184040 bị hạ về THIEU_SO_LIEU."
+    },
+    "bienThe2a_phaiKhongCongDungBoLap85184040": {
+      "moTa": "Trên farm /tmp/hs8518-farm, thử thêm vế phủ định {fact:'congDung',op:'CONG_DUNG',value:'bộ lặp',chieu:'PHAI_KHONG'} vào 85184040 để tách khỏi 85184020/85184030",
+      "lenh": "HS_DATA_DIR=/tmp/hs8518-farm node scripts/so-hoa-ranh-gioi.mjs --kiem --pn6=851840",
+      "congCLI": "ĐỎ: cong3-muc:85184040:dieu-kien-so-cong-dung-khong-co-trong-trich:bộ lặp — Giá trị CONG_DUNG không phải chuỗi con của câu trích",
+      "ketLuan": "Cổng 3 (lib/dieu-kien-so.js:223) bắt buộc giá trị CONG_DUNG phải xuất hiện nguyên văn trong câu trích của chính dòng 85184040; trích 85184040 không có chữ 'bộ lặp'."
+    },
+    "bienThe2b_themCongDungKhuechDaiCongSuat85184040": {
+      "moTa": "Trên farm /tmp/hs8518-farm, thử thêm {fact:'congDung',op:'CONG_DUNG',value:'khuếch đại công suất'} vào 85184040 để kích hoạt coTenThoaRieng=true (và tăng chiTiet.length lên 2)",
+      "lenh": "HS_DATA_DIR=/tmp/hs8518-farm node scripts/so-hoa-ranh-gioi.mjs --kiem --pn6=851840",
+      "congCLI": "Vi phạm luật số hoá vế tuỳ chọn ('có hoặc không kết hợp với phần tử dùng cho khuếch đại công suất' / EN 'with or without elements for capacity amplifiers')",
+      "ketLuan": "Cụm 'có hoặc không kết hợp với phần tử dùng cho khuếch đại công suất' là mệnh đề tuỳ chọn (cả có và không đều thuộc 85184040). Biến thành điều kiện bắt buộc CONG_DUNG làm hàng thật có ≥6 đường tín hiệu đầu vào nhưng không nêu phần tử khuếch đại công suất bị trượt sang 85184090 (lỗi SUY HẸP, bị cấm theo QUY-TRINH-SO-HOA)."
+    },
+    "bienThe3_doiChungCoCheDemotionLoaiKhac": {
+      "moTa": "Trên farm /tmp/hs8518-farm, thử đặt tạm loaiKhac:false trên 85184040 trong so-tay/8518.json để kiểm chứng điểm chặn tại lib/so-tay-gates.js:1033",
+      "lenh": "HS_DATA_DIR=/tmp/hs8518-farm node scripts/bo-kiem-luat.mjs --nhom=8518 --json",
+      "ketQua": "chotDung=27/36, DONG_CO_TEN=18/18 (100%), LOAI_TRU_LOAI_KHAC=9/9 (100%), chotSai=0, chiTietLoi=[]",
+      "ketLuan": "Chứng minh điểm chặn duy nhất của 85184040 là nhánh demotion dòng loaiKhac có 1 điều kiện ở lib/so-tay-gates.js:1031-1047. Tuy nhiên trong dữ liệu thật, loaiKhac là trường MAY_SUY do lib/so-tay.js:208-211,562 (isLoaiKhac('85184040')===true) sinh tự động từ tiền tố 'Loại khác' của biểu thuế (0/1243 tệp so-tay lệch isLoaiKhac; test canh tại scripts/test-so-tay.mjs:44-47), không được sửa tay thành false."
+    }
+  },
+  "tranSoHoc": {
+    "hienTaiMain": "DONG_CO_TEN 15/18 = 83.3% (trên main 4c490809 khi 851850 đang TRA_VE)",
+    "tranDataOnlySauKhiDuyet851850": "DONG_CO_TEN tối đa 17/18 = 94.4% < 95% (với mẫu số 18, cần 18/18 = 100.0% mới đạt ngưỡng ≥ 95%)",
+    "caChanTran": [
+      "85184040: THIEU_SO_LIEU (missingFacts: choDienThoaiHuuTuyen) — dòng 'Loại khác, có từ 6 đường tín hiệu đầu vào trở lên...' chỉ có 1 điều kiện số tất định bị nhánh demotion ở lib/so-tay-gates.js:1031-1047 hạ xuống CHUA_BIET do 2 anh em 85184020/85184030 có fact tất định choDienThoaiHuuTuyen đang CHUA_BIET"
+    ]
+  },
+  "coCheTuongTungCa": [
+    {
+      "ma": "85184040",
+      "trich": "85184040 - - Loại khác, có từ 6 đường tín hiệu đầu vào trở lên, có hoặc không kết hợp với phần tử dùng cho khuếch đại công suất",
+      "hienTuong": "THIEU_SO_LIEU (lyDo: 'hoi-thieu-so-lieu', missingFacts: [{fact: 'choDienThoaiHuuTuyen'}])",
+      "tepChan": "lib/so-tay-gates.js:1031-1047 (bước hạ dòng loaiKhac có 1 điều kiện khi anh em có fact tất định CHUA_BIET) và scripts/bo-kiem-luat.mjs (sinhCaNhom)",
+      "coChe": "1) Dòng 85184040 mở đầu bằng 'Loại khác, ...' nên isLoaiKhac('85184040') === true (meta.loaiKhac = true), và chỉ có đúng 1 điều kiện giới hạn tất định {fact:'soDuongTinHieuDauVao',op:'>=',value:6,donVi:'đường tín hiệu đầu vào'} (dg.chiTiet.length === 1, coTenThoaRieng === false) chấm THOA trên productText của ca 85184040. 2) Hai dòng anh em có tên cùng cha 851840 là 85184020 (congDung='bộ lặp' + choDienThoaiHuuTuyen=CO) và 85184030 (congDung='bộ lặp' + dungCho='điện thoại' + choDienThoaiHuuTuyen=KHONG): trên productText của 85184040, vế so chữ congDung='bộ lặp' là khongTatDinh:true nên danhGiaDong (lib/so-tay-gates.js:720) chấm trangThai='CHUA_BIET' (dù soChu='TRAI'), còn vế tất định choDienThoaiHuuTuyen chấm trangThai='CHUA_BIET' (!c.khongTatDinh). 3) Tại lib/so-tay-gates.js:1040-1043, điều kiện (dg.chiTiet.length === 1 && s.chiTiet.some((c) => c.trangThai === 'CHUA_BIET' && !c.khongTatDinh)) khớp 85184020/85184030 vì không loại trừ sibling s đã có vế so chữ soChu==='TRAI', khiến 85184040 bị hạ từ THOA xuống CHUA_BIET và hỏi lại choDienThoaiHuuTuyen."
+    }
+  ],
+  "lenhTaiHien": [
+    "node scripts/so-hoa-ranh-gioi.mjs --kiem --pn6=851850   # XANH (1/1 phân nhóm qua cổng, 0 lỗi, 0 DỪNG)",
+    "node scripts/test-cong-cu-vong-4.mjs                    # 121 pass, 0 fail (xanh ca 4d kiemSieuTap)",
+    "node scripts/dem-nhom-sach.mjs --nhom=8518              # 8518: dong-co-ten(17/18=94.4%<95%) (0 chua-duyet-ranh-gioi)",
+    "node scripts/bo-kiem-luat.mjs --nhom=8518 --json        # chotDung 26/36 (tăng từ 23), chotSai 0, chotLoaiKhacSai 0, nemLoi 0; DONG_CO_TEN 17/18, LOAI_TRU_LOAI_KHAC 9/9"
+  ]
+}

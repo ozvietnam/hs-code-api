@@ -16,6 +16,10 @@
     "85185020": {
       "dieuKienSo": [
         {
+          "fact": "coLoa",
+          "op": "CO"
+        },
+        {
           "fact": "dienAp",
           "op": ">=",
           "value": 50,
@@ -45,19 +49,7 @@
     {
       "ma": "85185020",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85185020: \"Loại khác, có loa, loại thích hợp cho phát sóng, có giải điện áp từ 50 V trở lên nhưng không quá 100 V\" ⇒ dienAp >= 50 V, <= 100 V, congDung \"phát sóng\""
-    },
-    {
-      "ma": "85185020",
-      "loai": "BO_VE",
-      "ve": "có loa, loại",
-      "lyDo": "Bộ tăng âm kết hợp loa, không có khoá riêng trong tu-vung@2"
-    },
-    {
-      "ma": "85185020",
-      "loai": "BO_VE",
-      "ve": "thích hợp cho phát sóng, có giải",
-      "lyDo": "Đã phủ công dụng phát sóng trong congDung"
+      "ghiChu": "tax.85185020: \"Loại khác, có loa, loại thích hợp cho phát sóng, có giải điện áp từ 50 V trở lên nhưng không quá 100 V\" ⇒ coLoa CO, dienAp >= 50 V, <= 100 V, congDung \"phát sóng\" (bỏ BO_VE vế 'có loa' theo biên bản trả về 11/11)"
     }
   ]
 }
