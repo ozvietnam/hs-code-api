@@ -239,5 +239,46 @@ delete process.env.HS_SERVICE_TOKENS;
   if (envCu.ms === undefined) delete process.env.HS_DINH_DANH_TIM_WEB_MS; else process.env.HS_DINH_DANH_TIM_WEB_MS = envCu.ms;
 }
 
+// ── 10. OZV-1667: doanChuong() khớp ranh giới từ (\bpp\b) + từ khoá và khung Chương 84+85 cho máy móc có model ──
+{
+  const { doanChuong } = require('../lib/attribute-frames.js');
+
+  // 10a. Ranh giới từ: "PPVA" trong model xi lanh Festo không dính từ khoá "PP" của Chương 39 mà ra Chương 84.
+  const dcFesto = doanChuong('Xi lanh khí nén tác động kép Festo DSBC-32-100-PPVA-N3');
+  check('OZV-1667 · doanChuong: model "PPVA" không dính Chương 39, khớp "xi lanh"/"khí nén" ra Chương 84', dcFesto[0]?.chuong === '84' && !dcFesto.some((x) => x.chuong === '39') && doanChuong('DSBC-32-100-PPVA-N3').length === 0 && doanChuong('bình giữ nhiệt nhựa PP')[0]?.chuong === '39', JSON.stringify(dcFesto));
+
+  script = [{ chuong: '84', model: 'DSBC-32-100-PPVA-N3', thuongHieu: 'Festo', truong: { machineFunction: 'xi lanh khí nén tác động kép', power: 'khí nén 0.6–12 bar', nguyenLyHoatDong: 'piston khí nén tác động kép có giảm chấn PPVA', chucNangChinh: 'truyền động tịnh tiến trong máy công nghiệp' }, nguon: [] }];
+  const rFesto = await identify({ tenHang: 'Xi lanh khí nén tác động kép Festo DSBC-32-100-PPVA-N3', model: 'DSBC-32-100-PPVA-N3' }, { fetchImpl: FETCH_MOCK_OK });
+  const pFesto = calls.at(-1).user;
+  check('OZV-1667 · identify #8 Festo: prompt gửi khung Chương 84+85 (không gửi Chương 39), giữ đủ 4 trường bắt buộc Chương 84', pFesto.includes('CHƯƠNG 84') && pFesto.includes('CHƯƠNG 85') && !pFesto.includes('CHƯƠNG 39') && rFesto.frame?.chuong === '84' && (rFesto.thieuTruong || []).length === 0, JSON.stringify([rFesto.frame?.truong, rFesto.thieuTruong]));
+
+  // 10b. Từ khoá Chương 85: "Biến tần" và "PLC" / "Bộ lập trình" ra Chương 85, kèm khung 84+85 trong identify().
+  const dcBienTan = doanChuong('Biến tần Mitsubishi FR-D720-0.75K');
+  const dcPlc = doanChuong('Bộ lập trình PLC Siemens SIMATIC S7-1200 CPU 1214C 6ES7214-1AG40-0XB0');
+  check('OZV-1667 · doanChuong: "Biến tần" và "Bộ lập trình PLC" đều ra Chương 85 đứng đầu', dcBienTan[0]?.chuong === '85' && dcPlc[0]?.chuong === '85' && doanChuong('PLC Siemens S7-1200')[0]?.chuong === '85', JSON.stringify([dcBienTan, dcPlc]));
+
+  script = [{ chuong: '85', model: 'FR-D720-0.75K', thuongHieu: 'Mitsubishi Electric', truong: { power: '0.75 kW', voltage: '3 pha 380–480V AC', nguyenLyHoatDong: 'chỉnh lưu AC-DC + nghịch lưu IGBT PWM', chucNangChinh: 'biến đổi tần số điều khiển tốc độ động cơ không đồng bộ' }, nguon: [] }];
+  const rBienTan = await identify({ tenHang: 'Biến tần điều khiển tốc độ động cơ Mitsubishi FR-D720-0.75K', model: 'FR-D720-0.75K' }, { fetchImpl: FETCH_MOCK_OK });
+  const pBienTan = calls.at(-1).user;
+  check('OZV-1667 · identify #7 Biến tần: prompt có cả khung 84 và 85, không mất power/voltage khi LLM trả chương 85', pBienTan.includes('CHƯƠNG 84') && pBienTan.includes('CHƯƠNG 85') && rBienTan.frame?.chuong === '85' && (rBienTan.thieuTruong || []).length === 0, JSON.stringify([rBienTan.frame?.truong, rBienTan.thieuTruong]));
+
+  script = [{ chuong: '85', model: '6ES7214-1AG40-0XB0', thuongHieu: 'Siemens', truong: { power: '12W', voltage: '24V DC', nguyenLyHoatDong: 'vi xử lý quét chu kỳ chương trình logic, đọc DI/AI và xuất DO', chucNangChinh: 'điều khiển tự động hoá dây chuyền công nghiệp' }, nguon: [] }];
+  const rPlc = await identify({ tenHang: 'PLC Siemens S7-1200', model: '6ES7214-1AG40-0XB0' }, { fetchImpl: FETCH_MOCK_OK });
+  const pPlc = calls.at(-1).user;
+  check('OZV-1667 · identify #9 PLC: đoán ra Chương 85 vẫn nạp kèm Chương 84, giữ đủ trường bắt buộc Chương 85', pPlc.includes('CHƯƠNG 85') && pPlc.includes('CHƯƠNG 84') && rPlc.frame?.chuong === '85' && (rPlc.thieuTruong || []).length === 0, JSON.stringify([rPlc.frame?.truong, rPlc.thieuTruong]));
+
+  // 10c. Fallback khi không đoán ra chương nào (!khungUngVien.length): luôn cung cấp cả khung Chương 84 và Chương 85.
+  script = [{ chuong: '85', model: 'XYZ-9000', truong: { power: '50W', voltage: '24V DC', nguyenLyHoatDong: 'cuộn dây điện từ truyền động lõi sắt', chucNangChinh: 'đóng cắt cơ cấu tự động' }, nguon: [] }];
+  const rFallback = await identify({ tenHang: 'Cụm cơ cấu chuyên dụng XYZ-9000', model: 'XYZ-9000' }, { fetchImpl: FETCH_MOCK_OK });
+  const pFallback = calls.at(-1).user;
+  check('OZV-1667 · identify fallback: không khớp từ khoá nào vẫn nạp cả khung Chương 84 và Chương 85 cho LLM', pFallback.includes('CHƯƠNG 84') && pFallback.includes('CHƯƠNG 85') && rFallback.frame?.chuong === '85' && (rFallback.thieuTruong || []).length === 0, JSON.stringify([rFallback.frame?.truong, rFallback.thieuTruong]));
+
+  // 10d. ReDoS guard (CLAUDE.md quy tắc 6b): ~40.000 từ lặp < 2 giây.
+  const t0Redos = Date.now();
+  const kqRedos = doanChuong('PPVA '.repeat(40000));
+  const msRedos = Date.now() - t0Redos;
+  check('OZV-1667 · ReDoS: 40.000 từ lặp "PPVA" chạy dưới 2 giây và không khớp nhầm Chương 39', msRedos < 2000 && kqRedos.length === 0, `ms=${msRedos}`);
+}
+
 log(`${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
