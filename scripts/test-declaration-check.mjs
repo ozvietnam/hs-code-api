@@ -31,6 +31,7 @@ const check = (name, ok, extra) => {
 };
 
 process.env.HS_API_TOKEN = 'test-token';
+process.env.HS_K2_DOC_LAP = 'off'; // bài này khoá K2 ĐƯỜNG CŨ (đếm lượt classify, nguyên văn classify); K2 độc lập có bài riêng: scripts/test-k2-doc-lap.mjs
 process.env.HS_SERVICE_TOKENS = 'cong-oz:svc-key';
 delete process.env.HS_PUBLIC_LLM; // chế độ mở của classify đang BẬT mặc định — mode=check vẫn phải kín
 delete process.env.HS_LLM_PRIVATE_ALL;

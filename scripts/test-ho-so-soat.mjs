@@ -24,6 +24,7 @@ const ANH_CHUP = path.join(ROOT, 'tests', 'ho-so-soat-anh-chup.json');
 process.env.HS_API_TOKEN = 'test-token';
 process.env.HS_SERVICE_TOKENS = 'cong-oz:k-cong,erp:k-erp,oz-noi-bo:k-noi';
 for (const k of ['HS_INTERNAL_CALLERS', 'HS_HO_SO', 'HS_HO_SO_THU_CALLERS', 'HS_K2_LOI', 'HS_PUBLIC_LLM', 'HS_LLM_PRIVATE_ALL', 'HS_DECL_CHECK_RPM']) delete process.env[k];
+process.env.HS_K2_DOC_LAP = 'off'; // bài này giữ K2 ĐƯỜNG CŨ y nguyên (ảnh chụp / đếm lượt classify); K2 độc lập có bài riêng: scripts/test-k2-doc-lap.mjs
 process.env.HS_HO_SO_VIET = 'MAY'; // viết tất định (nhánh LLM của bộ viết đã có test riêng ở test-ho-so-viet-mo-ta)
 process.env.HS_CLASSIFY_CROSSCHECK = '0';
 process.env.HS_ACCESS_LOG = '0';

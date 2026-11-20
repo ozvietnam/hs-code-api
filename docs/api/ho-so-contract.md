@@ -253,3 +253,39 @@ chỉ ở `hoSo.canCu` (lib/gir.js) và cấp dòng khi classify chạy; không 
 **Không nghiên cứu web** trong soát: dữ kiện câu khai thiếu phải hiện là `THIEU`. LLM (đọc dữ kiện, viết) luôn trong
 `withPrivateData`; chi phí vào `usage`.
 
+### 8.4 K2 độc lập (HS_K2_DOC_LAP, mặc định bật) — sửa lỗi "máy tự chấm bài của mình"
+
+Mã: `lib/declaration-check.js` (`kiemK2DocLap`, `kiemK2CoDocLap`), `lib/ho-so/soat.js` (`soat(…, { chiLuat: true })`,
+`maCanhTranhCua`). Số đo trước/sau: `docs/bench/soat-nen-2026-11-21.md`. Chỉ **thêm** trường tuỳ chọn; mọi trường cũ giữ nguyên.
+
+Trước đây K2 kiểm mã bằng cách gọi lại đúng bộ phân loại (`/api/classify`): mã do chính bộ đó đề xuất thì K2 gần như luôn
+"khớp". Nay, ở mọi nhánh **không** phải K2 hồ sơ của 8.3 (tức chế độ `off`, `shadow`, mã ngoài lát 1, hoặc không `kiemMa`), K2
+chấm trước bằng nguồn tất định sẵn có, **không LLM, không bộ phân loại**:
+
+| Nguồn | Mục `ma` (`nhom: 'K2'`, `docLap: true`) | `trangThai` / `basis` |
+|---|---|---|
+| Hồ sơ ranh giới đã duyệt, đọc dữ kiện chỉ bằng luật (mã lát 1 + phân nhóm đã duyệt, **bất kể** cờ `HS_HO_SO`) | `HO_SO_MAU_THUAN` · `HO_SO_DU_CAN_CU` (đủ trường của 8.3, `hoSoMeta.chiLuat: true`) | `CANH_BAO` · `DAT` / `RULE_TABLE` khi `coCanCuTatDinh`, còn lại `HEURISTIC` |
+| Bảng điều kiện dòng 8 số của sổ tay (`chotDong8`) | `DOC_LAP_SO_TAY_CHOT_DONG_KHAC` · `DOC_LAP_SO_TAY_CHOT_DUNG_DONG` | `CANH_BAO` · `DAT` / `RULE_TABLE` |
+| Cổng sổ tay (`soTayGates`) | `DOC_LAP_SO_TAY_LOAI_TRU` · `DOC_LAP_SO_TAY_NGUONG` · `DOC_LAP_SO_TAY_BO_PHAN` · `DOC_LAP_SO_TAY_DONG8` | `CANH_BAO` / `HEURISTIC` (`NGUONG`: `RULE_TABLE`) |
+| Tiền lệ TB-TCHQ cùng loại hàng kết luận mã khác (`tienLeNguoc`) | `DOC_LAP_TIEN_LE_CUNG_LOAI_HANG_MA_KHAC` | `CANH_BAO` / `HEURISTIC` |
+
+Mục độc lập **tối đa `CANH_BAO`** (kể cả `HS_K2_LOI=on`), không gắn nhãn GIR, không tự gõ điều khoản.
+
+| Tình huống | K2 của dòng | Cấp dòng |
+|---|---|---|
+| `kiemMa` + có nguồn tất định **kết luận** (ủng hộ hoặc phản đối) | chỉ các mục `docLap: true`; **không gọi bộ phân loại**, `usage` rỗng | `k2DocLap: true` |
+| `kiemMa` + không nguồn nào kết luận | đường cũ; mục có nguồn `/api/classify` thêm `docLap: false` + `ghiChuDocLap` ("Không độc lập: …") | `k2DocLap: false` |
+| không `kiemMa` (miễn phí) | `CHUA_KIEM_MA` như cũ **+** các mục `docLap: true` nếu có; vẫn 0 lượt LLM | `k2DocLap: true\|false` |
+| `HS_K2_DOC_LAP=off` | y như trước mục này, không trường mới nào | — |
+
+Trường tuỳ chọn mới:
+
+| Trường | Ở đâu | Kiểu |
+|---|---|---|
+| `docLap` | mục K2 | `true` = chấm bằng nguồn tất định; `false` = do bộ phân loại chấm lại (kèm `ghiChuDocLap`) |
+| `maCanhTranh[]` | mục K2 cảnh báo (cả `HO_SO_MAU_THUAN` của 8.3) | `{maHs (4–8 số), tenDong, thueMfn, chenhMfn (mã cạnh tranh − mã khai, điểm %, có dấu — hiện cả hai chiều), duKienLat: {fact, nhanVi, neuLa, hienLa\|null, trangThai: DANG_TRAI\|CHUA_BIET, nguonHienTai}}`. `duKienLat` = dữ kiện mà khi đúng thì mã là mã cạnh tranh; `DANG_TRAI` = mô tả hiện đã khớp mã đó |
+| `k2DocLap` | dòng | xem bảng trên |
+| `duKienCanHoi` | dòng, khi hồ sơ chỉ-luật ra `THIEU_DU_KIEN` | `{maCanhTranh[] (duKienLat.trangThai = CHUA_BIET), cauHoi[] {fact, vi, zh?}}` — không thành cảnh báo, vì bộ đọc chỉ-luật chưa kết luận được |
+
+`soat()` (mọi chế độ) trả thêm `maCanhTranh[]` — lấy từ `ketLuan.maTroToi` / `maCoTheTroToi` và các ranh giới còn thiếu, không
+tính thêm gì. `/api/classify`, `/api/describe` và những gì khách nhận từ `phan_loai_hs` **không đổi**.
