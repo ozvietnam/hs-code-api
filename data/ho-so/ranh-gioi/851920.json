@@ -7,8 +7,8 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-851920",
-    "ngay": "2026-11-06"
+    "phien": "claude-agent:tho-hs-03-20261120#soan-851920-v2",
+    "ngay": "2026-11-20"
   },
   "duyet": null,
   "dieuKienNut": [],
@@ -22,10 +22,6 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Máy ghi"
-        },
-        {
-          "fact": "hoatDongBangDongXu",
-          "op": "CO"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -42,12 +38,18 @@
     {
       "ma": "85192010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85192010 \"Máy ghi hoạt động bằng đồng xu, token hoặc đĩa\": tên ⇒ tenLoai \"Máy ghi\"; \"hoạt động bằng đồng xu, token hoặc đĩa\" ⇒ hoatDongBangDongXu CO (khoá lô 20, cách đọc CÓ chính là cụm này)"
+      "ghiChu": "tax.85192010 \"Máy ghi hoạt động bằng đồng xu, token hoặc đĩa\": trong pn6 851920 (tiêu đề đã ép \"hoạt động bằng tiền xu, tiền giấy, thẻ ngân hàng, token hoặc bằng phương tiện thanh toán khác\") từ phân biệt .10 ↔ .90(LK) chỉ còn \"Máy ghi\" ⇒ tenLoai \"Máy ghi\"; bỏ fact cũ hoatDongBangDongXu (không có trong tu-vung@2)"
+    },
+    {
+      "ma": "85192010",
+      "loai": "BO_VE",
+      "ve": "hoạt động bằng đồng xu, token hoặc đĩa",
+      "lyDo": "tu-vung@2 không có khoá phương tiện thanh toán/nguồn cấp (đồng xu, token, đĩa, thẻ). Vế phần lớn trùng danh từ chung của tiêu đề pn6 851920 (tiền xu/token/thẻ) nhưng \"hoặc đĩa\" hẹp hơn tiêu đề — chưa phủ được bằng từ vựng hiện có, không tự bịia khoá. Chờ khoá mới ở tu-vung (lib) rồi bổ sung."
     },
     {
       "ma": "85192090",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85192090 \"Loại khác\" trần ⇒ không điều kiện"
+      "ghiChu": "tax.85192090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
     }
   ]
 }
