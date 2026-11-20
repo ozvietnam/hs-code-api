@@ -241,17 +241,35 @@
     "85232961": {
       "dieuKienSo": [
         {
-          "fact": "ghiMaNhiPhanTuongTac",
-          "op": "CO"
-        },
-        {
-          "fact": "daGhi",
-          "op": "CO"
-        },
-        {
-          "fact": "congDung",
-          "op": "CONG_DUNG",
-          "value": "tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "ghiMaNhiPhanTuongTac",
+                "op": "CO"
+              },
+              {
+                "fact": "daGhi",
+                "op": "CO"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "phương tiện lưu trữ được định dạng riêng"
+              },
+              {
+                "fact": "daGhi",
+                "op": "CO"
+              }
+            ]
+          ]
         }
       ]
     },
@@ -312,17 +330,35 @@
     "85232983": {
       "dieuKienSo": [
         {
-          "fact": "ghiMaNhiPhanTuongTac",
-          "op": "CO"
-        },
-        {
-          "fact": "daGhi",
-          "op": "CO"
-        },
-        {
-          "fact": "congDung",
-          "op": "CONG_DUNG",
-          "value": "tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "ghiMaNhiPhanTuongTac",
+                "op": "CO"
+              },
+              {
+                "fact": "daGhi",
+                "op": "CO"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "phương tiện lưu trữ được định dạng riêng"
+              },
+              {
+                "fact": "daGhi",
+                "op": "CO"
+              }
+            ]
+          ]
         }
       ],
       "trich": "Loại khác, loại sử dụng để tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh, được ghi ở dạng mã nhị phân để máy có thể đọc được, và có thể thao tác hoặc có thể tương tác với người sử dụng, thông qua một máy xử lý dữ liệu tự động; phương tiện lưu trữ được định dạng riêng (đã ghi)"
@@ -374,17 +410,35 @@
     "85232995": {
       "dieuKienSo": [
         {
-          "fact": "ghiMaNhiPhanTuongTac",
-          "op": "CO"
-        },
-        {
-          "fact": "daGhi",
-          "op": "CO"
-        },
-        {
-          "fact": "congDung",
-          "op": "CONG_DUNG",
-          "value": "tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "ghiMaNhiPhanTuongTac",
+                "op": "CO"
+              },
+              {
+                "fact": "daGhi",
+                "op": "CO"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "phương tiện lưu trữ được định dạng riêng"
+              },
+              {
+                "fact": "daGhi",
+                "op": "CO"
+              }
+            ]
+          ]
         }
       ],
       "trich": "Loại khác, loại sử dụng để tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh, được ghi ở dạng mã nhị phân để máy có thể đọc được, và có thể thao tác hoặc có thể tương tác với người sử dụng, thông qua một máy xử lý dữ liệu tự động; phương tiện lưu trữ được định dạng riêng (đã ghi)"
@@ -402,12 +456,12 @@
     {
       "ma": "85232983",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85232983 / tax.85232995 \"Loại khác, loại sử dụng để tái tạo …\": chỉ điều kiện của vế, cùng ba điều kiện với .61: ghiMaNhiPhanTuongTac CO + daGhi CO (\"(đã ghi)\") + congDung \"tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh\"; chữ dài 301 ký tự ⇒ trich lược đầu \"- - - - - \" của biểu"
+      "ghiChu": "tax.85232983 / tax.85232995 \"Loại khác, loại sử dụng để tái tạo …; phương tiện lưu trữ được định dạng riêng (đã ghi)\": chỉ điều kiện của vế, hai nhánh cách nhau bằng \";\" ⇒ HOAC giống .61 (vế 1: ghiMaNhiPhanTuongTac CO + daGhi CO + congDung \"tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh\"; vế 2: tenLoai \"phương tiện lưu trữ được định dạng riêng\" + daGhi CO); chữ dài 301 ký tự ⇒ trich lược đầu \"- - - - - \" của biểu"
     },
     {
       "ma": "85232961",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85232961 \"Loại sử dụng để tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh, được ghi ở dạng mã nhị phân để máy có thể đọc được, và có thể thao tác hoặc có thể tương tác với người sử dụng, thông qua một máy xử lý dữ liệu tự động; …\" ⇒ ghiMaNhiPhanTuongTac CO (khoá lô 20, cách đọc CÓ là đúng cụm \"ghi ở dạng mã nhị phân … tương tác với người sử dụng\"). Cùng khoá cho .83 \"Loại khác, loại sử dụng …\" và .95 (chỉ vế)"
+      "ghiChu": "tax.85232961 \"Loại sử dụng để tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh, được ghi ở dạng mã nhị phân để máy có thể đọc được, và có thể thao tác hoặc có thể tương tác với người sử dụng, thông qua một máy xử lý dữ liệu tự động; phương tiện lưu trữ được định dạng riêng (đã ghi)\": hai vế cách nhau bằng \";\" ⇒ HOAC. Vế 1 ⇒ ghiMaNhiPhanTuongTac CO (khoá lô 20) + daGhi CO + congDung \"tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh\". Vế 2 ⇒ tenLoai \"phương tiện lưu trữ được định dạng riêng\" + daGhi CO (\"(đã ghi)\"). Cùng cấu trúc cho .83 và .95"
     },
     {
       "ma": "85232985",
