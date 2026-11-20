@@ -218,6 +218,49 @@ for (const mon of MON) {
   check('X-OZ-Eval-Holdout ⇒ bỏ qua cache (0 câu SQL)', callsDb.length === demTruoc && rHold.json.cached === undefined, `+${callsDb.length - demTruoc}`);
 }
 
+// (f) body.dinhDanh — định danh bên gọi đã có: khoá cache không đè nhau, lượt công khai bị bỏ qua, không lộ ra `attrs`
+{
+  const NGU = { tier: 'standard', kenhGoi: 'cong-oz', noiBo: false };
+  const DD = { frame: { chuong: '84', truong: { machineFunction: 'kẹp' }, model: 'KG-01' }, xacMinh: { muc: 'HYPOTHESIS', nguon: [{ url: 'https://a.example/kg-01', trich: 'KG-01 kẹp giấy', loai: 'phu' }] } };
+  check('khoaCache: dinhDanh vắng/undefined/null ⇒ khoá Y NHƯ TRƯỚC (dòng cache cũ còn dùng được)', cc.khoaCache(hoSoA, { dinhDanh: undefined }, NGU) === kA && cc.khoaCache(hoSoA, { dinhDanh: null }, NGU) === kA);
+  const kDD = cc.khoaCache(hoSoA, { dinhDanh: DD }, NGU);
+  check('khoaCache: có dinhDanh ⇒ KHÁC khoá; cùng dinhDanh ⇒ cùng khoá; đổi nguồn ⇒ khác khoá', kDD !== kA && kDD === cc.khoaCache(hoSoA, { dinhDanh: structuredClone(DD) }, NGU) && kDD !== cc.khoaCache(hoSoA, { dinhDanh: { ...DD, xacMinh: { muc: 'HYPOTHESIS', nguon: [] } } }, NGU));
+
+  const hoSoCu = process.env.HS_HO_SO;
+  cc.ganDbChoTest(dbThu);
+  girHienTai = MON[0].gir;
+  // HS_HO_SO=shadow (đang chạy ở prod): dinhDanh không đổi được phản hồi ⇒ DÙNG CHUNG dòng cache với lượt không có dinhDanh.
+  process.env.HS_HO_SO = 'shadow';
+  const bodyS = { ...MON[0].body, tenHang: `${MON[0].body.tenHang} hộp 12 cái` };
+  const s1 = await goi(bodyS);
+  let truoc = prompts.length;
+  const s2 = await goi({ ...bodyS, dinhDanh: DD });
+  check('shadow: lượt có dinhDanh trúng dòng cache của lượt không có (cached:true, không gọi LLM)', s1.status === 200 && s1.json.cached === undefined && s2.json.cached === true && prompts.length === truoc, JSON.stringify([s1.json.cached, s2.json.cached, prompts.length - truoc]));
+  check('dinhDanh KHÔNG lộ ra `attrs` của phản hồi', !JSON.stringify(s2.json.attrs).includes('dinhDanh') && !JSON.stringify(s2.json).includes('a.example/kg-01'));
+  const sa = boSoSanh(s1.json); const sb = boSoSanh(s2.json);
+  for (const o of [sa, sb]) { delete o.cached; delete o.phienBanDuLieu; delete o.usage; }
+  check('shadow: phản hồi cho khách có/không dinhDanh GIỐNG NHAU', JSON.stringify(sa) === JSON.stringify(sb), Object.keys({ ...sa, ...sb }).filter((k) => JSON.stringify(sa[k]) !== JSON.stringify(sb[k])));
+
+  // HS_HO_SO=on: dinhDanh đổi được khối hoSo ⇒ vào khoá ⇒ hai kết quả KHÔNG đè nhau.
+  process.env.HS_HO_SO = 'on';
+  const bodyO = { ...MON[0].body, tenHang: `${MON[0].body.tenHang} hộp 24 cái` };
+  const o1 = await goi(bodyO);
+  truoc = prompts.length;
+  const o2 = await goi({ ...bodyO, dinhDanh: DD });
+  check('on: lượt có dinhDanh KHÔNG trúng dòng cache của lượt không có (chạy động cơ lại)', o1.json.cached === undefined && o2.status === 200 && o2.json.cached === undefined && prompts.length > truoc, JSON.stringify([o1.json.cached, o2.json.cached]));
+  const o3 = await goi({ ...bodyO, dinhDanh: structuredClone(DD) });
+  const o4 = await goi(bodyO);
+  check('on: cùng dinhDanh ⇒ trúng dòng của chính nó; không dinhDanh ⇒ vẫn trúng dòng cũ', o3.json.cached === true && o4.json.cached === true);
+  truoc = prompts.length;
+  const o5 = await goi({ ...bodyO, dinhDanh: { frame: 'sai hình', xacMinh: 7 } });
+  check('on: dinhDanh sai hình ⇒ coi như vắng (trúng dòng cache không-dinhDanh, không lỗi)', o5.status === 200 && o5.json.cached === true && prompts.length === truoc, JSON.stringify([o5.status, o5.json.cached]));
+  // Lượt công khai: dinhDanh bị bỏ qua hẳn (trường này chứa URL để máy mở lại — chỉ nhận từ khoá dịch vụ).
+  const demDb = callsDb.length;
+  const pub = await goi({ ...bodyO, dinhDanh: DD }, { token: null });
+  check('công khai + dinhDanh ⇒ 200, không đụng cache, dinhDanh không lộ ra phản hồi', pub.status === 200 && callsDb.length === demDb && !JSON.stringify(pub.json).includes('a.example/kg-01'), JSON.stringify([pub.status, callsDb.length - demDb]));
+  if (hoSoCu === undefined) delete process.env.HS_HO_SO; else process.env.HS_HO_SO = hoSoCu;
+}
+
 // (e) Đổi phiên bản dữ liệu ⇒ dòng cũ hết hiệu lực (lib-level, mô phỏng tariff-versions đổi current)
 {
   const dem = await pglite.query('SELECT count(*)::int AS n FROM classify_cache');

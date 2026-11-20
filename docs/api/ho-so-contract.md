@@ -55,6 +55,13 @@ Bên gọi khai = sự thật **nguồn `KHACH`** (bằng chứng = chính chu�
 
 `/api/classify` đọc các trường trên ở body (cùng tên); chúng chỉ vào động cơ hồ sơ, không vào `attrs` của phản hồi.
 
+**`dinhDanh` (chỉ `/api/classify`, chỉ khoá dịch vụ):** bên gọi đã chạy `/api/identify` thì gửi kèm nguyên kết quả
+`{ frame: {chuong, truong, model?, thuongHieu?}, xacMinh: {muc, nguon[]} }`. Bước nghiên cứu của hồ sơ dùng lại nó thay vì
+định danh lại từ đầu (bớt một lượt LLM). Nhãn `muc` của bên gọi **không được tin**: máy mở lại từng `nguon[].url` (tối đa 5,
+bỏ URL mạng nội bộ và nguồn mang `xacMinh: "CHUA_XAC_MINH"`) rồi tự tính lại mức kiểm chứng; chỉ câu trích có thật trên
+trang và mức `CORROBORATED`/`VERIFIED` mới thành `duKien` nguồn `NSX` — đúng điều kiện của định danh nội bộ. Sai hình /
+vắng / lượt công khai ⇒ bỏ qua, chạy như cũ. `HS_HO_SO=off|shadow`: phản hồi không đổi; `on`: `dinhDanh` vào khoá cache.
+
 ## 2. `POST /api/describe` khi `on` + mã áp dụng
 
 **Giữ** mọi trường cũ: `declaration`, `customsDescription`, `descriptionMeta`, `compliance{score, level, warnings[]}`,
