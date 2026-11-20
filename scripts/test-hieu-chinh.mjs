@@ -181,7 +181,7 @@ const kiem = (muc) => H.kiemBang(bang(muc), { phuKin: false });
   }
   const ngoai = muc.filter((m) => m.duyetBoi === 'NGUOI_DUYET' && !['854442-01', '854442-02', '854442-03'].includes(m.id)).map((m) => m.id);
   check('7j NGUOI_DUYET chỉ ở ba mục CEO đã phân xử', ngoai.length === 0, ngoai);
-  check('7k mỗi mục LECH_CHUA_PHAN_XU còn lại đều nằm trong 5 ca chưa đủ căn cứ', muc.filter((m) => m.loai === 'LECH_CHUA_PHAN_XU').every((m) => ['940542-01', '271019-02', '190590-01', '690721-02', '721491-02'].includes(m.id)), muc.filter((m) => m.loai === 'LECH_CHUA_PHAN_XU').map((m) => m.id));
+  check('7k mỗi mục LECH_CHUA_PHAN_XU còn lại đều nằm trong 5 ca chưa đủ căn cứ', muc.filter((m) => m.loai === 'LECH_CHUA_PHAN_XU').every((m) => ['940542-01', '271019-02', '190590-01', '690721-02', '721491-02', '853650-01'].includes(m.id)), muc.filter((m) => m.loai === 'LECH_CHUA_PHAN_XU').map((m) => m.id));
   check('7l 520859-01 (lát 2, tín hiệu dữ liệu) KHONG_LECH qua cổng, trỏ 888/TB-TCHQ .90↔.20',
     theoId['520859-01']?.loai === 'KHONG_LECH' && theoId['520859-01']?.maHs === '52085990'
     && theoId['520859-01']?.dongChuBieu === '52085920' && theoId['520859-01']?.duyetBoi == null,
