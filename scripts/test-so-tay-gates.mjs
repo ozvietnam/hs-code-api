@@ -123,9 +123,16 @@ check('8481.10: plastic 2cm → TRANH_CAP .21/.91 (nhánh plastic cụ thể hơ
 cd = chotDong8({ hs: '84051099', productText: 'máy phát acetylen' });
 check('phân nhóm chưa số hóa ranh giới → KHONG_THE_CHOT (điểm mù)', cd.checked === false || cd.ketQua === 'KHONG_THE_CHOT', JSON.stringify(cd.ketQua));
 
-// #195 chốt dòng — 3 hành vi sau đọc tay 18 ca oan (13/10):
+// #195 chốt dòng — 3 hành vi sau đọc tay 18 ca oan (13/10); OZV-1660 cập nhật sau PR #1495 duyệt ranh giới 850440:
 cd = chotDong8({ hs: '85044090', productText: 'Bộ nguồn 260W, đầu vào AC100-240V' });
-check('8504.40 có 2 dòng Loại khác → KHONG_THE_CHOT (không lấy dòng đầu)', cd.ketQua === 'KHONG_THE_CHOT' && ['nhieu-dong-loai-khac', 'phu-dinh-chua-hoan-chinh'].includes(cd.lyDo), JSON.stringify(cd));
+const cd85044090Trai = chotDong8({
+  hs: '85044090',
+  productText: 'Bộ nguồn 260W, công suất biểu kiến 1 kVA, không phải bộ nguồn cấp điện liên tục, không phải bộ chỉnh lưu, không phải bộ nghịch lưu',
+});
+check('8504.40 có 2 dòng Loại khác → thiếu dữ kiện thì THIEU_SO_LIEU (không tự chốt .19/.90); bác bỏ 4 dòng có tên vẫn KHONG_THE_CHOT (nhieu-dong-loai-khac)',
+  cd.ketQua === 'THIEU_SO_LIEU' && !cd.hs
+  && cd85044090Trai.ketQua === 'KHONG_THE_CHOT' && ['nhieu-dong-loai-khac', 'phu-dinh-chua-hoan-chinh'].includes(cd85044090Trai.lyDo),
+  JSON.stringify({ cd, cd85044090Trai }));
 cd = chotDong8({ hs: '85444299', productText: 'Dây cáp mạng USB, đường kính lõi 0.0625mm, vỏ nhựa cách điện' });
 // L1-4c đợt 3: 854442 đã duyệt + áp vào sổ tay (chatLieu CACH_DIEN, soSoi có kiểu) ⇒ máy hỏi thêm dữ kiện (THIEU_SO_LIEU)
 // thay vì bỏ cuộc; ý của ca vẫn giữ: không tự chốt .94 cho cáp mạng USB (CEO 30/10/2026: cáp dữ liệu theo TB-TCHQ .99).
@@ -133,7 +140,13 @@ check('8544.42.94 → không chốt .94 cho cáp mạng USB (bảo thủ: KHONG_
 cd = chotDong8({ hs: '40118011', productText: 'Lốp máy xúc lật 14.00-24, đường kính 788mm' });
 check('4011 ngưỡng VÀNH không lấy đường kính ngoài → KHONG_THE_CHOT', cd.ketQua === 'KHONG_THE_CHOT', JSON.stringify(cd));
 cd = chotDong8({ hs: '85044019', productText: 'Bộ đổi nguồn 30W dùng cho tủ điện' });
-check('8504.40 chọn .19 (LK trong) cũng không chốt được — phủ định chưa hoàn chỉnh', cd.ketQua === 'KHONG_THE_CHOT', JSON.stringify(cd));
+const cd85044019Trai = chotDong8({
+  hs: '85044019',
+  productText: 'Bộ đổi nguồn 30W dùng cho tủ điện, công suất biểu kiến 1 kVA, không phải bộ nguồn cấp điện liên tục, không phải bộ chỉnh lưu, không phải bộ nghịch lưu',
+});
+check('8504.40 chọn .19 (LK trong) cũng không tự chốt — thiếu dữ kiện trả THIEU_SO_LIEU, bác bỏ 4 dòng có tên trả KHONG_THE_CHOT',
+  cd.ketQua === 'THIEU_SO_LIEU' && !cd.hs && cd85044019Trai.ketQua === 'KHONG_THE_CHOT',
+  JSON.stringify({ cd, cd85044019Trai }));
 
 // ── OZV-518 / PR #1247 vòng 3: 8543.70.60 phương án 2 phải bắt buộc hành động "kết nối" (traVe L29 11/11) ──
 // Biểu .60 loại 2: "các sản phẩm được thiết kế đặc biệt ĐỂ KẾT NỐI VỚI thiết bị hoặc dụng cụ điện tín hoặc điện
