@@ -2,8 +2,8 @@
   "version": "2026-07-08",
   "generatedBy": "scripts/mine-hs-declaration-overrides.mjs",
   "stats": {
-    "total": 130,
-    "expert": 130,
+    "total": 131,
+    "expert": 131,
     "auto": 0,
     "topNOz": 100,
     "ozGoldRecords": 5156
@@ -1214,6 +1214,20 @@
       "noteVi": "Rơ le trung gian — điện áp cuộn, dòng, model",
       "ozPriority": 2,
       "ozCount": 13,
+      "source": "expert"
+    },
+    "853650": {
+      "heading": "8536",
+      "titleVi": "Công tắc đóng cắt mạch điện, dòng điện không quá 1.000 V",
+      "replace": true,
+      "required": [
+        "currentRating"
+      ],
+      "recommended": [
+        "modelNumber"
+      ],
+      "noteVi": "853650 — mã 8 số chỉ chia theo loại công tắc + dòng <16A; điện áp (8536 đã ≤1000V) và số cực không chia mã, không hỏi ở cổng NEED_FACTS (OZV-1617)",
+      "ozPriority": 2,
       "source": "expert"
     },
     "85365096": {

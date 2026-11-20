@@ -1,0 +1,232 @@
+{
+ "phienBan": "ranh-gioi-spec@1",
+ "pn6": "851981",
+ "phien": "claude-agent:tho-hs-03-20261120#soan-851981-v3",
+ "dieuKienNut": {
+  "8519814": {
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Máy sao âm"
+    }
+   ]
+  },
+  "8519816": {
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Máy ghi băng từ có gắn với thiết bị tái tạo âm thanh, loại âm thanh số"
+    }
+   ]
+  },
+  "8519817": {
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Thiết bị tái tạo âm thanh"
+    },
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "kiểu cassette"
+    }
+   ],
+   "phanConLai": true
+  }
+ },
+ "dong8": {
+  "85198110": {
+   "dieuKienSo": []
+  },
+  "85198120": {
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Máy ghi âm cassette"
+    },
+    {
+     "fact": "coBoPhanKhuachDai",
+     "op": "CO"
+    },
+    {
+     "fact": "coLoa",
+     "op": "CO"
+    },
+    {
+     "fact": "chiDungNguonDienNgoai",
+     "op": "CO"
+    }
+   ]
+  },
+  "85198130": {
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Đầu đĩa compact"
+    }
+   ]
+  },
+  "85198141": {
+   "dieuKienSo": [
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": [
+      "điện ảnh",
+      "phát thanh"
+     ]
+    }
+   ]
+  },
+  "85198149": {
+   "dieuKienSo": []
+  },
+  "85198150": {
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Máy ghi điều lọc"
+    },
+    {
+     "fact": "chiDungNguonDienNgoai",
+     "op": "CO"
+    }
+   ]
+  },
+  "85198161": {
+   "dieuKienSo": [
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": [
+      "điện ảnh",
+      "phát thanh"
+     ]
+    }
+   ]
+  },
+  "85198162": {
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Máy trả lời điện thoại"
+    }
+   ]
+  },
+  "85198169": {
+   "dieuKienSo": []
+  },
+  "85198171": {
+   "dieuKienSo": [
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": [
+      "điện ảnh",
+      "phát thanh"
+     ]
+    }
+   ]
+  },
+  "85198179": {
+   "dieuKienSo": []
+  },
+  "85198191": {
+   "dieuKienSo": [
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": [
+      "điện ảnh",
+      "phát thanh"
+     ]
+    }
+   ]
+  },
+  "85198199": {
+   "dieuKienSo": []
+  }
+ },
+ "ghiChuSoan": [
+  {
+   "ma": "85198150",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.85198150 \"Máy ghi điều lọc (dictating machines), loại chỉ hoạt động bằng nguồn điện ngoài\": tên ⇒ tenLoai \"Máy ghi điều lọc\"; \"chỉ hoạt động bằng nguồn điện ngoài\" ⇒ chiDungNguonDienNgoai CO (khoá lô 20); ngoặc \"(dictating machines)\" là PHU"
+  },
+  {
+   "ma": "85198130",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.85198130 \"Đầu đĩa compact\" ⇒ tenLoai \"Đầu đĩa compact\""
+  },
+  {
+   "ma": "8519814",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tieuDe.8519814 \"Máy sao âm\" ⇒ tenLoai; .41 \"Loại dùng cho điện ảnh hoặc phát thanh\" ⇒ dungCho mảng (giống .61/.71/.91); .49/.69/.79/.99 \"Loại khác\" trần ⇒ không điều kiện"
+  },
+  {
+   "ma": "8519816",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tieuDe.8519816 \"Máy ghi băng từ có gắn với thiết bị tái tạo âm thanh, loại âm thanh số\" ⇒ MỘT tenLoai nguyên tên tiêu đề (cụm \"có gắn với thiết bị tái tạo âm thanh, loại âm thanh số\" là phần của tên hàng, không phải ba tên rời); tách ba giá trị tenLoai ở tầng + một tenLoai ở dòng con làm .61/.62/.69 không tới được (cong2-dong-khong-toi-duoc)"
+  },
+  {
+   "ma": "85198162",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.85198162 \"Máy trả lời điện thoại\" ⇒ tenLoai"
+  },
+  {
+   "ma": "8519817",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tieuDe.8519817 \"Thiết bị tái tạo âm thanh khác, kiểu cassette\" ⇒ tenLoai [\"Thiết bị tái tạo âm thanh\",\"kiểu cassette\"] + phanConLai: true (\"khác\" — phần còn lại có tên)"
+  },
+  {
+   "ma": "851981",
+   "loai": "QUYET_DINH",
+   "ghiChu": "Claude 07/11/2026 (Q1, #1109): các cặp nhánh khác trục không có hàng thật thoả cả hai ⇒ chongLanTruc + khongCoHangThat (lý do từng cặp trong viDuHang). Lúc chạy hàng thoả cả hai ⇒ hỏi câu phân biệt."
+  },
+  {
+   "ma": "85198110",
+   "loai": "THIEU_KHOA_TU_VUNG",
+   "khoaDeXuat": "kichThuocTungChieu",
+   "ghiChu": "tax.85198110 \"Máy ghi âm cassette bỏ túi, kích thước không quá 170 mm x 100 mm x 45 mm\": TRA_VE lỗi (B) — điều kiện kichThuoc chỉ nhận MỘT số (lib/dieu-kien-so.js:192 chặn value mảng) nên v1 chỉ mã hoá ngưỡng 170 mm; dữ kiện 3 chiều bị gộp khoảng [min,max] (khoangDuKien, lib/dieu-kien-so.js:285) ⇒ máy 160x120x50 mm (vượt 100 và 45) vẫn lọt .10 — SUY RỘNG. Khoá kichThuoc có soChieu [2,3] phía dữ liệu nhưng phía điều kiện không có chỗ cho từng chiều ⇒ không mã hoá đúng 3 ngưỡng, để trống dieuKienSo + đề xuất khoá từng chiều (170/100/45) rồi đối chiếu lại."
+  },
+  {
+   "ma": "85198120",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.85198120 «Máy ghi âm cassette, có bộ phận khuếch đại và một hoặc nhiều loa, hoạt động chỉ bằng nguồn điện ngoài»: tên ⇒ tenLoai «Máy ghi âm cassette»; «có bộ phận khuếch đại» ⇒ coBoPhanKhuachDai CO; «một hoặc nhiều loa» ⇒ coLoa CO (chữ «một hoặc nhiều» = có mặt, không cần đếm); đuôi «hoạt động chỉ bằng nguồn điện ngoài» ⇒ chiDungNguonDienNgoai CO (khoá lô 20). GIẢI DỪNG v2: hai khoá đã thêm ở tu-vung@2 (OZV-1610)."
+  }
+ ],
+ "chongLanTruc": [
+  {
+   "nhanh": [
+    "85198161",
+    "85198162"
+   ],
+   "truc": {
+    "85198161": "CONG_DUNG",
+    "85198162": "TEN_LOAI"
+   },
+   "cauHoiPhanBiet": "Hàng này thuộc nhánh nào: «Loại dùng cho điện ảnh hoặc phát thanh» (85198161), «Máy trả lời điện thoại» (85198162)?",
+   "trich": {
+    "85198161": "Loại dùng cho điện ảnh hoặc phát thanh",
+    "85198162": "Máy trả lời điện thoại"
+   },
+   "viDuHang": [
+    {
+     "cap": [
+      "85198161",
+      "85198162"
+     ],
+     "khongCoHangThat": "Máy trả lời điện thoại là thiết bị điện thoại gia dụng/văn phòng, không phải thiết bị ghi âm dùng cho điện ảnh hoặc phát thanh."
+    }
+   ],
+   "phanXu": null
+  }
+ ]
+}

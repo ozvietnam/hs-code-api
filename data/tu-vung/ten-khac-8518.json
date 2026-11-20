@@ -1,0 +1,50 @@
+{
+  "phienBan": "ten-khac@1",
+  "nhom": "8518",
+  "tuVung": "tu-vung@2",
+  "ngay": "2026-11-20",
+  "chuaCoNguon": [],
+  "muc": [
+    {
+      "kieu": "TEN_LOAI",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "ma": "851810",
+      "giaTri": "Micro",
+      "cachDoc": {
+        "vi": [
+          "Micro khác, đã hoặc chưa lắp ráp cùng với giá đỡ micro"
+        ],
+        "en": [],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz#85181019",
+        "trich": "Micro khác, đã hoặc chưa lắp ráp cùng với giá đỡ micro",
+        "nhan": "NGUYEN_VAN"
+      },
+      "ghiChu": "Mục gắn ở nút 851810 (Micro và giá đỡ micro), theo khuôn ten-khac-8537 (muc nút 8537101): cụm tenDung NGUYÊN VĂN của dòng 85181019. Điều kiện dòng 85181019 tenLoai 'Micro' lấy cụm này qua khopMuc (giaTri trùng value) ⇒ hit KHANG_DINH trên chính tên dòng .19 là tất định, trong khi token 'Micro' trơn trùng tên cha 851810 không đủ phân biệt (coCumPhanBiet=false) nên không làm anh em 85181011 THOA oan — text .11 không chứa cụm dài này."
+    },
+    {
+      "kieu": "CONG_DUNG",
+      "loai": "DONG_NGHIA",
+      "capNguon": "L1",
+      "ma": "851840",
+      "giaTri": "bộ lặp",
+      "cachDoc": {
+        "vi": [
+          "Sử dụng như bộ lặp (nhắc lại) trong điện thoại hữu tuyến",
+          "Sử dụng như bộ lặp (nhắc lại) trong điện thoại, trừ điện thoại hữu tuyến"
+        ],
+        "en": [],
+        "zh": []
+      },
+      "nguon": {
+        "tap": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz#85184030",
+        "trich": "Sử dụng như bộ lặp (nhắc lại) trong điện thoại, trừ điện thoại hữu tuyến",
+        "nhan": "NGUYEN_VAN"
+      },
+      "ghiChu": "Mục gắn ở nút 851840 (Thiết bị điện khuyếch đại âm tần): cụm NGUYÊN VĂN của 85184020 và 85184030. Cụm .20 chỉ khớp text .20 (đuôi 'trong điện thoại hữu tuyến'), cụm .30 chỉ khớp text .30 (có 'trừ điện thoại hữu tuyến') ⇒ hit là KHANG_DINH tất định đúng dòng; vế choDienThoaiHuuTuyen CO/KHONG giữ ở dòng như hiện trạng. Lưu ý cụm .30 chứa 'trừ' nhưng RE_PHU_DINH_VE chỉ xét vế TRƯỚC cụm ⇒ vẫn KHANG_DINH."
+    }
+  ]
+}

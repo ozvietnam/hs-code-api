@@ -132,3 +132,23 @@ describe('lib/dieu-kien-so.js — tuChaCua / coCumPhanBiet & chotDong8 (OZV-911)
     assert.ok(elapsed < 2000, `ReDoS check took ${elapsed}ms (>= 2000ms)`);
   });
 });
+
+describe('lib/dieu-kien-so.js — khopCumTrongChu: PHU_DINH chỉ đè khi KHÔNG có lần KHANG_DINH nào (OZV-1592)', () => {
+  const t30 = 'Thiết bị điện khuyếch đại âm tần: Sử dụng như bộ lặp (nhắc lại) trong điện thoại, trừ điện thoại hữu tuyến';
+
+  test('cùng cụm có cả lần khẳng định ("trong điện thoại") và lần phủ định ("trừ điện thoại hữu tuyến") → KHANG_DINH thắng', () => {
+    const r = DK.khopCumTrongChu(t30, 'điện thoại');
+    assert.equal(r?.trangThai, 'KHANG_DINH', JSON.stringify(r));
+  });
+
+  test('chỉ có lần phủ định, không có lần khẳng định → vẫn PHU_DINH', () => {
+    const r = DK.khopCumTrongChu('Bộ khuếch đại dùng cho mạng vô tuyến, không dùng cho điện thoại hữu tuyến', 'điện thoại hữu tuyến');
+    assert.equal(r?.trangThai, 'PHU_DINH', JSON.stringify(r));
+  });
+
+  test('ca bench 85184030: điều kiện CONG_DUNG "điện thoại" hết TRAI oan vì vế "trừ điện thoại hữu tuyến"', () => {
+    const r = DK.danhGiaTuChu({ fact: 'dungCho', op: 'CONG_DUNG', value: 'điện thoại' }, t30, '85184030');
+    assert.equal(r.trangThai, 'THOA', JSON.stringify(r));
+    assert.notEqual(r.trangThai, 'TRAI');
+  });
+});
