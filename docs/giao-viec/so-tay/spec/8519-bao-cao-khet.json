@@ -1,0 +1,95 @@
+{
+  "phienBan": "bao-cao-khet@2",
+  "loai": "Báo cáo khet nhóm 8519 — OZV-1588 (sau PR #1478, #1479, #1481, #1482)",
+  "ngay": "2026-11-20",
+  "canh": "Nhánh ozv-1588-8519-bao-cao-khet đứng trên origin/main 4c490809. Đã hoàn tất 4 PR dữ liệu trước đó: #1478 + #1481 (ranh-giới 851920 DUYET), #1479 (spec 851981-v2 chốt DỪNG .10/.20 tránh SUY RỘNG), #1482 (thêm khoá coBoPhanKhuachDai + coLoa ở tu-vung@2, giải DỪNG 85198120 ở spec 851981-v3). Trên main 4c490809 còn 85198110 (THIEU_KHOA_TU_VUNG: kichThuocTungChieu) và 2 ca của 851989 (85198910 TRANH_CAP, 85198940 KHONG_THE_CHOT). Đã thử ≥3 biến thể data-only trên farm cách ly (/tmp/hs8519-farm); mọi biến thể đều < 95% và vướng tường ở tệp CẤM với thợ (lib/dieu-kien-so.js, lib/so-tay-gates.js, lib/ho-so/cong-ranh-gioi.js). PR chỉ thêm báo cáo khet, KHÔNG đụng data/lib.",
+  "ketQuaChot": {
+    "demNhomSach": "node scripts/dem-nhom-sach.mjs --nhom=8519 → 8519: chua-duyet-ranh-gioi(1 pn6), dong-co-ten(4/15=26.7%<95%) (baseline main 4c490809)",
+    "baseline": {
+      "chotDung": 6,
+      "tongSoCa": 27,
+      "chotSai": 0,
+      "chotLoaiKhacSai": 0,
+      "hoi": 0,
+      "khongTheChot": 21,
+      "nemLoi": 0,
+      "DONG_CO_TEN": "4/15 = 26.7% (chotDung 4: 85192010, 85193000, 85198920, 85198930; khongTheChot 11: 9 ca 851981 ranh-gioi-chua-so-hoa + 85198910 TRANH_CAP + 85198940 ranh-gioi-so-chu-khong-tat-dinh)",
+      "LOAI_TRU_LOAI_KHAC": "2/6 = 33.3% (chotDung 2: 85192020, 85198990; khongTheChot 4: 85198149, 85198169, 85198179, 85198199 ranh-gioi-chua-so-hoa)",
+      "THIEU_DU_KIEN": "6/6 = 100.0%"
+    }
+  },
+  "ketQuaDo": {
+    "bienThe1_giaDinh851981Duyet": {
+      "moTa": "Trên farm /tmp/hs8519-farm, giả định 85198110 gán dieuKienSo=[{fact:'tenLoai',op:'TEN_LOAI',value:'Máy ghi âm cassette bỏ túi'},{fact:'kichThuoc',op:'<=',value:170,donVi:'mm'}] và chuyển 851981 sang CLAUDE_DUYET để đo trần số học khi mở khóa 851981",
+      "lenh": "HS_DATA_DIR=/tmp/hs8519-farm node scripts/bo-kiem-luat.mjs --nhom=8519 --json",
+      "boKiemLuat": {
+        "tongSoCa": 27,
+        "chotDung": 18,
+        "chotSai": 0,
+        "chotLoaiKhacSai": 0,
+        "hoi": 5,
+        "khongTheChot": 4,
+        "nemLoi": 0,
+        "DONG_CO_TEN": "12/15 = 80.0% < 95% (8/9 ca 851981 chuyển sang chốt đúng; vẫn hụt 3 ca: 85198110 THIEU_SO_LIEU, 85198910 TRANH_CAP, 85198940 KHONG_THE_CHOT)",
+        "LOAI_TRU_LOAI_KHAC": "6/6 = 100.0%"
+      },
+      "ketLuan": "Kể cả khi 851981 được duyệt giả định, DONG_CO_TEN chỉ đạt tối đa 12/15 = 80.0% < 95%; bản thân 85198110 với kichThuoc<=170mm vừa bị TRA_VE lỗi (B) SUY RỘNG (máy 160x120x50 mm lọt .10) vừa không đọc được số từ chữ biểu 'không quá 170 mm x 100 mm x 45 mm' (TV.docGiaTri('kichThuoc') trả CHUA_BIET)."
+    },
+    "bienThe2a_phanConLai85198930": {
+      "moTa": "Thử đặt phanConLai:true trên 85198930 ('Loại dùng cho điện ảnh hoặc phát thanh') để 85198910 ('Máy tái tạo âm thanh dùng trong điện ảnh') ưu tiên hơn khi cả hai cùng THOA",
+      "lenh": "HS_DATA_DIR=/tmp/hs8519-farm node scripts/so-hoa-ranh-gioi.mjs --kiem --pn6=851989",
+      "congCLI": "ĐỎ (EXIT=3): cong3-phan-con-lai-khong-co-chu-khac:85198930 — phanConLai trên mục mà câu trích không có chữ 'khác'",
+      "ketLuan": "Cổng 3 chặn cứng: chữ biểu 85198930 không có từ 'khác' nên không được gắn phanConLai."
+    },
+    "bienThe2b_phaiKhongTenLoai85198930": {
+      "moTa": "Thử thêm vế phủ định {fact:'tenLoai',op:'TEN_LOAI',value:'Máy tái tạo âm thanh',chieu:'PHAI_KHONG'} vào 85198930 để tách khỏi 85198910",
+      "lenh": "HS_DATA_DIR=/tmp/hs8519-farm node scripts/so-hoa-ranh-gioi.mjs --kiem --pn6=851989",
+      "congCLI": "ĐỎ (EXIT=3): cong3-muc:85198930:dieu-kien-so-ten-loai-khong-co-trong-trich:Máy tái tạo âm thanh",
+      "ketLuan": "Cổng 3 (lib/dieu-kien-so.js:223) bắt buộc chuỗi TEN_LOAI phải là chuỗi con nguyên văn của câu trích dòng đó; trích 85198930 không chứa 'Máy tái tạo âm thanh'."
+    },
+    "bienThe3_tenKhac8519Cho85198940": {
+      "moTa": "Thử bổ sung data/tu-vung/ten-khac-8519.json cho 85198940 ('Thiết bị tái tạo âm thanh' / 'Thiết bị tái tạo âm thanh khác')",
+      "lenh": "node -e 'const DK=require(\"./lib/dieu-kien-so.js\"); console.log(DK.coCumPhanBiet(\"Thiết bị tái tạo âm thanh\",\"85198940\"), DK.coCumPhanBiet(\"Thiết bị tái tạo âm thanh khác\",\"85198940\"))'",
+      "ketQua": "false, false (DONG_CO_TEN giữ nguyên, 0 ca cải thiện)",
+      "ketLuan": "Trong lib/dieu-kien-so.js:1024,1179 mọi mục ten-khac đều phải qua coCumPhanBiet(p, maHsGoc); do mọi âm tiết của 'Thiết bị tái tạo âm thanh khác' đều nằm trong tuChaCua('85198940') (tên nhóm 8519 'Thiết bị ghi hoặc tái tạo âm thanh (+).' + 'khác' ở TU_CHUNG_TEN_LOAI), coCumPhanBiet luôn trả false."
+    }
+  },
+  "tranSoHoc": {
+    "hienTaiMain": "DONG_CO_TEN 4/15 = 26.7% (trên main 4c490809, khi 851981 giữ NHAP vì DỪNG THIEU_KHOA_TU_VUNG:85198110:kichThuocTungChieu)",
+    "tranDataOnlyKhiMo851981": "DONG_CO_TEN tối đa 12/15 = 80.0% < 95% (cần ≥ 15/15 = 100% mới đạt ngưỡng ≥ 95% trên mẫu số 15)",
+    "baCaChanTran": [
+      "85198110: THIEU_KHOA_TU_VUNG kichThuocTungChieu (chặn duyệt 851981) + TV.docGiaTri('kichThuoc') trả CHUA_BIET trên 'không quá 170 mm x 100 mm x 45 mm'",
+      "85198910: TRANH_CAP giữa 85198910 (tenLoai + dungCho) và 85198930 (dungCho thuần)",
+      "85198940: KHONG_THE_CHOT (ranh-gioi-so-chu-khong-tat-dinh) vì tên dòng trùng 100% tập âm tiết tên nhóm 8519"
+    ]
+  },
+  "coCheTuongTungCa": [
+    {
+      "ma": "85198110",
+      "trich": "85198110 - - - Máy ghi âm cassette bỏ túi, kích thước không quá 170 mm x 100 mm x 45 mm",
+      "hienTuong": "DỪNG THIEU_KHOA_TU_VUNG:kichThuocTungChieu ở cổng so-hoa-ranh-gioi (làm cả phân nhóm 851981 giữ NHAP, 9 ca DONG_CO_TEN + 4 ca LOAI_TRU trả ranh-gioi-chua-so-hoa); nếu ép duyệt kichThuoc<=170mm trên farm thì ca 85198110 vẫn rơi THIEU_SO_LIEU",
+      "tepChan": "lib/dieu-kien-so.js:192,285-291 và lib/tu-vung.js (docGiaTri cho khoá kichThuoc)",
+      "coChe": "1) kiemDieuKien (lib/dieu-kien-so.js:192) bắt buộc k.kieu==='SO' có typeof c.value==='number' (1 ngưỡng đơn), còn khoangDuKien (lib/dieu-kien-so.js:285-291) gộp mảng f.cacGiaTri 3 chiều thành 1 khoảng vô hướng [min,max] ⇒ mã hoá kichThuoc<=170mm bị TRA_VE lỗi (B) SUY RỘNG (máy 160x120x50 mm vượt 100 và 45 vẫn lọt .10). 2) Ngay cả với 1 ngưỡng, TV.docGiaTri('kichThuoc', productText) không tách được phép so sánh 'không quá' đứng trước chuỗi 3 chiều '170 mm x 100 mm x 45 mm' ⇒ trả CHUA_BIET."
+    },
+    {
+      "ma": "85198910",
+      "trich": "85198910 - - - Máy tái tạo âm thanh dùng trong điện ảnh",
+      "hienTuong": "TRANH_CAP (dongThoa: ['85198910', '85198930'])",
+      "tepChan": "lib/so-tay-gates.js:1050-1075,1184 và lib/ho-so/cong-ranh-gioi.js (cổng 3)",
+      "coChe": "Trên productText 'Thiết bị khác - Loại khác: Máy tái tạo âm thanh dùng trong điện ảnh', dòng 85198910 (tenLoai='Máy tái tạo âm thanh' + dungCho='điện ảnh') chấm THOA tất định (nhờ âm tiết 'máy' không nằm trong tuChaCua('85198910')), đồng thời dòng 85198930 (dungCho=['điện ảnh','phát thanh']) cũng chấm THOA tất định (coCumPhanBiet('điện ảnh','85198930')===true). Bước khử dòng đồng thoả ở lib/so-tay-gates.js:1050-1075 chỉ lọc phanConLai, loaiKhac, _ancNut và không đọc chongLanTruc, không ưu tiên dòng cụ thể hơn có cả TEN_LOAI + CONG_DUNG so với dòng chỉ có CONG_DUNG. Hai hướng sửa data-only trên 85198930 (thêm phanConLai:true hoặc thêm PHAI_KHONG tenLoai) đều bị cổng 3 bác bỏ."
+    },
+    {
+      "ma": "85198940",
+      "trich": "85198940 - - - Thiết bị tái tạo âm thanh khác",
+      "hienTuong": "KHONG_THE_CHOT (lyDo: 'ranh-gioi-so-chu-khong-tat-dinh')",
+      "tepChan": "lib/dieu-kien-so.js:841-864,1178-1192 và lib/so-tay-gates.js:720,1242",
+      "coChe": "tuChaCua('85198940') (lib/dieu-kien-so.js:841-848) nạp toàn bộ âm tiết của tên nhóm 4 số 8519 ('Thiết bị ghi hoặc tái tạo âm thanh (+).') vào tập cha. Mọi âm tiết có nghĩa của 'Thiết bị tái tạo âm thanh' đều thuộc tập cha (còn 'khác' thuộc TU_CHUNG_TEN_LOAI), nên cumPhanBiet('Thiết bị tái tạo âm thanh', '85198940') trả [] (coCumPhanBiet===false). Dòng 85198940 không có điều kiện phi-tên đi kèm ⇒ danhGiaTuChu trả tatDinh:false ⇒ danhGiaDong hạ về CHUA_BIET ⇒ chotDong8 trả KHONG_THE_CHOT (ranh-gioi-so-chu-khong-tat-dinh)."
+    }
+  ],
+  "lenhTaiHien": [
+    "node scripts/dem-nhom-sach.mjs --nhom=8519          # 8519: chua-duyet-ranh-gioi(1 pn6), dong-co-ten(4/15=26.7%<95%)",
+    "node scripts/bo-kiem-luat.mjs --nhom=8519 --json    # baseline main 4c490809: chotDung 6/27, chotSai 0, chotLoaiKhacSai 0, nemLoi 0; DONG_CO_TEN 4/15",
+    "node scripts/so-hoa-ranh-gioi.mjs --kiem --pn6=851920 && node scripts/so-hoa-ranh-gioi.mjs --kiem --pn6=851989   # 2 pn6 đã DUYET xanh trên main",
+    "node scripts/so-hoa-ranh-gioi.mjs --kiem --pn6=851981   # ĐỎ đúng chỗ: DỪNG THIEU_KHOA_TU_VUNG:85198110:kichThuocTungChieu"
+  ]
+}
