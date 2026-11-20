@@ -607,6 +607,26 @@ check('trangThaiDong8.veMoHinh: 73181510 chấm trọn nhãn "Đường kính ng
   cd = chotDong8({ hs: '848110', productText: 'Van giảm áp: Bằng đồng hoặc hợp kim đồng: Có đường kính trong trên 2,5 cm — 2,6 cm' });
   check('OZV-1090 84811022: ngưỡng một đầu "trên 2,5 cm" không bị giaTriCua đọc thành 2,5 → không chốt nhầm 84811021',
     cd.hs !== '84811021' && giaTriCua('duong_kinh', 'Có đường kính trong trên 2,5 cm').length === 0, JSON.stringify([cd.ketQua, cd.hs]));
+
+  // ── OZV-1648: Dòng "Loại khác, <1 điều kiện>" (85184040) không bị hạ oan bởi anh em đã có vế soChu === 'TRAI' ──
+  cd = chotDong8({
+    hs: '851840',
+    productText: 'Thiết bị điện khuếch đại âm tần: Loại khác, có từ 6 đường tín hiệu đầu vào trở lên, có hoặc không kết hợp với phần tử dùng cho khuếch đại công suất',
+  });
+  check('OZV-1648 85184040: ≥ 6 đường tín hiệu đầu vào, không phải bộ lặp (85184020/30 soChu=TRAI) → CHOT 85184040',
+    cd.ketQua === 'CHOT' && cd.hs === '85184040', JSON.stringify([cd.ketQua, cd.hs, cd.missingFacts]));
+
+  cd = chotDong8({
+    hs: '851840',
+    productText: 'Thiết bị điện khuếch đại âm tần sử dụng như bộ lặp, có từ 6 đường tín hiệu đầu vào trở lên',
+  });
+  check('OZV-1648 851840 rào ngược: mô tả có "bộ lặp" (85184020/30 soChu=THOA) chưa rõ hữu tuyến → vẫn hạ về THIEU_SO_LIEU hỏi choDienThoaiHuuTuyen, không chốt vội 85184040',
+    cd.ketQua === 'THIEU_SO_LIEU' && cd.hs !== '85184040' && (cd.missingFacts || []).some((m) => m.fact === 'choDienThoaiHuuTuyen'),
+    JSON.stringify([cd.ketQua, cd.hs, cd.missingFacts]));
+
+  cd = chotDong8({ hs: '851840', productText: 'Thiết bị điện khuếch đại âm tần' });
+  check('OZV-1648 851840 THIEU_DU_KIEN: chỉ có tên phân nhóm 6 số → THIEU_SO_LIEU (không tự chốt)',
+    cd.ketQua === 'THIEU_SO_LIEU' && !cd.hs, JSON.stringify([cd.ketQua, cd.hs]));
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);
