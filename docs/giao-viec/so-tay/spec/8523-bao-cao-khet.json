@@ -1,0 +1,120 @@
+{
+  "phienBan": "bao-cao-khet@2",
+  "loai": "Báo cáo khet nhóm 8523 — OZV-1643 (sau khi sửa TRA_VE, duyệt và áp dụng 852349 + 852351)",
+  "ngay": "2026-11-20",
+  "canh": "Nhánh ozv-8523-p2-49-51 đứng trên origin/main 394cee8c (sau khi PR #1490 / OZV-1642 đã duyệt 852341 + 852329). Đã sửa TRA_VE của 852349 (.14/.93 dùng ghiMaNhiPhanTuongTac CO, .15 dùng chuaPhimDienAnh CO, .16 dùng dungChoDienAnh CO) và 852351 (.30 dùng ghiMaNhiPhanTuongTac CO khắc phục lỗi THU HẸP tách 3 congDung, .91 dùng chuaPhimDienAnh CO, .92 dùng dungChoDienAnh CO), qua cổng --ap-spec, --kiem XANH (0 lỗi, 0 CHƯA PHỦ), nâng 852349 và 852351 lên DUYET và --ap-dung vào data/so-tay/8523.json. Toàn bộ 7/7 phân nhóm có ≥2 dòng của 8523 đều đã DUYET (chua-duyet-ranh-gioi = 0); chotDung tăng từ 14/92 lên 27/92 (+13 ca), DONG_CO_TEN tăng từ 10/44 (22.7%) lên 22/44 (50.0%, trong đó 852351 đạt 5/5 = 100%, 852349 đạt 7/8 = 87.5%), LOAI_TRU_LOAI_KHAC tăng từ 4/24 lên 5/24, chotSai=0, chotLoaiKhacSai=0, nemLoi=0. Còn 22 ca DONG_CO_TEN (11 TRANH_CAP của 852329 + 11 THIEU_SO_LIEU dưới tầng loaiKhacTran) chạm trần kiến trúc tại lib/so-tay-gates.js và scripts/bo-kiem-luat.mjs.",
+  "ketQuaChot": {
+    "demNhomSachTruoc": "node scripts/dem-nhom-sach.mjs --nhom=8523 → 8523: chua-duyet-ranh-gioi(2 pn6), thieu-tru-anh-em(10), dong-co-ten(10/44=22.7%<95%) (baseline main 394cee8c)",
+    "demNhomSachSau": "node scripts/dem-nhom-sach.mjs --nhom=8523 → 8523: thieu-tru-anh-em(10), dong-co-ten(22/44=50.0%<95%) (0 chua-duyet-ranh-gioi sau khi DUYET + ap-dung 852349, 852351)",
+    "baselineMain": {
+      "chotDung": 14,
+      "tongSoCa": 92,
+      "chotSai": 0,
+      "chotLoaiKhacSai": 0,
+      "hoi": 41,
+      "khongTheChot": 37,
+      "nemLoi": 0,
+      "DONG_CO_TEN": "10/44 = 22.7% (852349 và 852351 đang TRA_VE ⇒ 13 ca KHONG_THE_CHOT ranh-gioi-chua-so-hoa)",
+      "LOAI_TRU_LOAI_KHAC": "4/24 = 16.7%",
+      "THIEU_DU_KIEN": "24/24 = 100.0%"
+    },
+    "sauKhiDuyet852349Va852351": {
+      "chotDung": 27,
+      "tongSoCa": 92,
+      "chotSai": 0,
+      "chotLoaiKhacSai": 0,
+      "hoi": 53,
+      "khongTheChot": 12,
+      "nemLoi": 0,
+      "DONG_CO_TEN": "22/44 = 50.0% < 95% (+12 ca chốt đúng: 7 ca của 852349 gồm .11/.12/.14/.15/.16/.91/.92 và 5/5 ca của 852351 gồm .11/.21/.30/.91/.92)",
+      "LOAI_TRU_LOAI_KHAC": "5/24 = 20.8% (+1 ca chốt đúng: 85234913)",
+      "THIEU_DU_KIEN": "24/24 = 100.0%"
+    }
+  },
+  "ketQuaDo": {
+    "bienThe0_duyetBanCuKhongSuaSpec": {
+      "moTa": "Trên farm /tmp/hs8523-farm, thử duyệt thẳng 852349.json và 852351.json bản TRA_VE cũ trên main (khi .15/.91 dùng congDung PHAI_KHONG so chữ tự do và 852351.30 tách 3 congDung riêng)",
+      "lenh": "HS_DATA_DIR=/tmp/hs8523-farm node scripts/bo-kiem-luat.mjs --nhom=8523 --json",
+      "boKiemLuat": {
+        "tongSoCa": 92,
+        "chotDung": 27,
+        "chotSai": 2,
+        "chotLoaiKhacSai": 0,
+        "hoi": 50,
+        "khongTheChot": 13,
+        "nemLoi": 0,
+        "DONG_CO_TEN": "20/44 = 45.5% (2 ca chotSai: 85234915 chốt nhầm sang 85234916; 85235191 chốt nhầm sang 85235192)"
+      },
+      "ketLuan": "Bản nháp cũ dùng congDung so chữ tự do cho 85234915 và 85235191 khiến vế PHAI_KHONG không tất định (CHUA_BIET), trong khi chữ 'điện ảnh' trong 'chứa phim điện ảnh' khớp so chữ dungCho='điện ảnh' của 85234916 và 85235192, sinh 2 ca chotSai (đúng nguyên nhân từng bị trả về)."
+    },
+    "bienThe1_ghiMaNhiPhanVaChuaPhimDienAnh_giuDungChoSoChu": {
+      "moTa": "Đổi 852349 (.14/.93) và 852351 (.30) sang ghiMaNhiPhanTuongTac CO (tu-vung@2 lô 20, giống 852329.61); đổi 85234915 và 85235191 sang chuaPhimDienAnh CO kèm BO_VE vế loại trừ (giống 852329.85); giữ 85234916 và 85235192 là dungCho 'điện ảnh'",
+      "lenh": "HS_DATA_DIR=/tmp/hs8523-farm node scripts/bo-kiem-luat.mjs --nhom=8523 --json",
+      "boKiemLuat": {
+        "tongSoCa": 92,
+        "chotDung": 25,
+        "chotSai": 0,
+        "chotLoaiKhacSai": 0,
+        "hoi": 53,
+        "khongTheChot": 14,
+        "nemLoi": 0,
+        "DONG_CO_TEN": "20/44 = 45.5% (chotSai giảm về 0, nhưng 85234915 và 85235191 bị TRANH_CAP với .16/.92)"
+      },
+      "ketLuan": "Triệt tiêu hoàn toàn 2 ca chotSai, nhưng do 85234916 và 85235192 dùng dungCho='điện ảnh' (so chữ âm tiết) nên vẫn khớp chữ 'điện ảnh' trong 'chứa phim điện ảnh' của ca .15/.91 gây TRANH_CAP."
+    },
+    "bienThe2_banChotPR_themDungChoDienAnhCoKhong": {
+      "moTa": "Bản chốt trong PR: đổi thêm 85234916 và 85235192 ('Loại khác, dùng cho điện ảnh') sang khoá tất định {fact:'dungChoDienAnh',op:'CO'} của tu-vung@2 (cachDoc chỉ khớp 'dùng cho điện ảnh', không khớp 'chứa phim điện ảnh'), chạy --ap-spec, --kiem (XANH, 0 lỗi, 0 CHƯA PHỦ), --duyet và --ap-dung cho 852349 và 852351",
+      "lenh": "node scripts/bo-kiem-luat.mjs --nhom=8523 --json && node scripts/dem-nhom-sach.mjs --nhom=8523",
+      "boKiemLuat": {
+        "tongSoCa": 92,
+        "chotDung": 27,
+        "chotSai": 0,
+        "chotLoaiKhacSai": 0,
+        "hoi": 53,
+        "khongTheChot": 12,
+        "nemLoi": 0,
+        "DONG_CO_TEN": "22/44 = 50.0% (85234915, 85234916, 85235191, 85235192 đều CHOT đúng; 852351 đạt 5/5 = 100%, 852349 đạt 7/8 = 87.5%)",
+        "LOAI_TRU_LOAI_KHAC": "5/24 = 20.8%"
+      },
+      "ketLuan": "Gỡ hoàn toàn TRANH_CAP giữa .15↔.16 của 852349 và .91↔.92 của 852351, đưa 852351 đạt 100% DONG_CO_TEN và giữ chotSai=0, chotLoaiKhacSai=0, nemLoi=0."
+    },
+    "bienThe3_nangCapPhamViLoaiKhacTrenFarm": {
+      "moTa": "Trên farm /tmp/hs8523-farm, chạy thêm verifySoTay (lib/so-tay.js) để đồng bộ lại phamViLoaiKhac.truAnhEm của 10 dòng dưới các nút tiêu đề không mã 852329~r15503, 852329~r15515, 852349~r15527",
+      "lenh": "HS_DATA_DIR=/tmp/hs8523-farm node scripts/dem-nhom-sach.mjs --nhom=8523",
+      "ketQua": "8523: dong-co-ten(22/44=50.0%<95%) (hết thieu-tru-anh-em(10), chỉ còn đúng ngưỡng dong-co-ten)",
+      "ketLuan": "Chứng minh trần số học thật của nhóm 8523 nằm ở 22/44 (50.0%) ca DONG_CO_TEN."
+    }
+  },
+  "tranSoHoc": {
+    "hienTaiMain": "DONG_CO_TEN 10/44 = 22.7% (trên main 394cee8c khi 852349 và 852351 đang TRA_VE)",
+    "tranDataOnlySauKhiDuyet852349Va852351": "DONG_CO_TEN tối đa 22/44 = 50.0% < 95% (cần ≥ 42/44 mới đạt ngưỡng ≥ 95%)",
+    "caChanTran": [
+      "11 ca TRANH_CAP của 852329 (85232911, 85232931, 85232933, 85232951, 85232952, 85232961, 85232971, 85232981, 85232983, 85232993, 85232995) — các dòng trùng tên ở các nhánh tầng chiều rộng băng từ / đĩa từ / loại khác cùng chấm THOA khi chotDong8 chưa nhân dieuKienNut của nút tổ tiên vào dòng lá",
+      "8 ca THIEU_SO_LIEU của 852329 (85232921, 85232941, 85232942, 85232943, 85232962, 85232963, 85232985, 85232986) — nằm dưới tiêu đề tầng 'Loại khác:' (loaiKhacTran) bị sinhCaNhom lược chữ tầng, thiếu fact daGhi/ghiMaNhiPhanTuongTac",
+      "1 ca THIEU_SO_LIEU của 852349 (85234993) — nằm dưới tầng 8523499 'Loại khác:' (loaiKhacTran) trùng tên dòng với 85234914, thiếu fact chiHoacChuYeu/chuaPhimDienAnh/dungChoDienAnh của anh em",
+      "1 ca THIEU_SO_LIEU của 852359 (85235930) và 1 ca THIEU_SO_LIEU của 852380 (85238091) — nằm dưới tầng 'Loại khác:' đối lập với 'Loại khác, chưa ghi' (daGhi=KHONG), productText không có chữ 'đã ghi' nên hỏi missingFacts=[daGhi]"
+    ]
+  },
+  "coCheTuongTungCa": [
+    {
+      "ma": "85232911, 85232931, 85232933, 85232951, 85232952, 85232961, 85232971, 85232981, 85232983, 85232993, 85232995",
+      "trich": "11 dòng có tên thuộc 852329 nằm dưới các nút tầng chiều rộng băng từ (≤4 mm, 4–6,5 mm, >6,5 mm), Đĩa từ và Loại khác",
+      "hienTuong": "TRANH_CAP (nhiều dòng 8 số trùng tên ở các tầng khác nhau cùng chấm THOA)",
+      "tepChan": "lib/so-tay-gates.js (chotDong8 / danhGiaDong chỉ chấm dieuKienSo trên bản ghi dong8, chưa kết hợp dieuKienNut của các nút tổ tiên trong cây phân nhóm)",
+      "coChe": "Trong 852329, điều kiện phân tách tầng (tenLoai='Băng từ' + chieuRong <= 4 mm ở ~r15471; 4 < chieuRong <= 6,5 mm ở ~r15478; chieuRong > 6,5 mm ở ~r15488; tenLoai='Đĩa từ' ở ~r15498; daGhi=KHONG ở 8523291/3/5/7/~r15511) nằm ở dieuKienNut theo đúng luật Cổng 5 (cấm lặp điều kiện tổ tiên xuống dong8: cong5-lap-to-tien). Tuy nhiên lúc chạy chotDong8 (lib/so-tay-gates.js) chỉ đọc dong8[].dieuKienSo nên các dòng trùng tên giữa các tầng (.11/.31/.41/.51 'Băng máy tính'; .21/.33/.52 'Băng video'; .81/.91/.93 'Loại dùng cho máy vi tính'; .61/.83/.95 'Loại sử dụng để tái tạo các tập lệnh...') cùng thoả trên một productText và rơi vào TRANH_CAP."
+    },
+    {
+      "ma": "85232921, 85232941, 85232942, 85232943, 85232962, 85232963, 85232985, 85232986, 85234993, 85235930, 85238091",
+      "trich": "11 dòng có tên nằm dưới nút tiêu đề trung gian 'Loại khác:' (loaiKhacTran = true)",
+      "hienTuong": "THIEU_SO_LIEU (lyDo: 'hoi-thieu-so-lieu', missingFacts: daGhi / ghiMaNhiPhanTuongTac / chiHoacChuYeu / chuaPhimDienAnh / dungChoDienAnh)",
+      "tepChan": "scripts/bo-kiem-luat.mjs (sinhCaNhom lược tiêu đề tầng loaiKhacTran) và lib/so-tay-gates.js:1031-1047 (demotion khi anh em hoặc nút đối lập có fact tất định CHUA_BIET)",
+      "coChe": "1) Hàm sinhCaNhom trong scripts/bo-kiem-luat.mjs bỏ qua các nút trung gian có loaiKhacTran=true ('Loại khác:') khi ghép productText, nên productText của các dòng dưới tầng 'Loại khác:' (nghĩa pháp lý là 'Đã ghi' đối lập với 'Loại chưa ghi', hoặc ở 85234993 là 'không dùng cho hệ thống đọc bằng laser') không mang từ khoá khẳng định trạng thái đã ghi / loại trừ nút anh em. 2) Tại lib/so-tay-gates.js, các nút/dòng anh em có khoá tất định (daGhi, ghiMaNhiPhanTuongTac, chiHoacChuYeu, chuaPhimDienAnh, dungChoDienAnh) chấm CHUA_BIET trên productText đó, kích hoạt cơ chế hạ về CHUA_BIET và trả THIEU_SO_LIEU để hỏi lại người dùng."
+    }
+  ],
+  "lenhTaiHien": [
+    "node scripts/so-hoa-ranh-gioi.mjs --kiem --pn6=852349   # XANH (1/1 phân nhóm qua cổng, 0 lỗi, 0 CHƯA PHỦ)",
+    "node scripts/so-hoa-ranh-gioi.mjs --kiem --pn6=852351   # XANH (1/1 phân nhóm qua cổng, 0 lỗi, 0 CHƯA PHỦ)",
+    "node scripts/dem-nhom-sach.mjs --nhom=8523              # 8523: thieu-tru-anh-em(10), dong-co-ten(22/44=50.0%<95%) (0 chua-duyet-ranh-gioi)",
+    "node scripts/bo-kiem-luat.mjs --nhom=8523 --json        # chotDung 27/92 (tăng từ 14), chotSai 0, chotLoaiKhacSai 0, nemLoi 0; DONG_CO_TEN 22/44 (50.0%), LOAI_TRU_LOAI_KHAC 5/24"
+  ]
+}

@@ -4,13 +4,19 @@
   "nhom": "8523",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-852351",
     "ngay": "2026-11-01"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-02-20261120#soat-852351-v1",
+    "ngay": "2026-11-20",
+    "ghiChu": "Đối chiếu VI+EN: 852351 (Solid-state non-volatile storage devices) sửa TRA_VE .30 đổi sang ghiMaNhiPhanTuongTac CO, .91 sang chuaPhimDienAnh CO và .92 sang dungChoDienAnh CO (tu-vung@2); khớp.",
+    "bam": "68535c9781a4bd493f40dc86a71f3f1babab79de7b871c91f38ef84e3e9a83e1"
+  },
   "dieuKienNut": [
     {
       "id": "8523511",
@@ -22,7 +28,7 @@
           "op": "KHONG"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "8523512",
@@ -44,7 +50,7 @@
           "chieu": "PHAI_KHONG"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -59,14 +65,14 @@
           "value": "máy vi tính"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85235119",
       "nguon": "tax.85235119",
       "trich": "85235119 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85235121",
@@ -79,14 +85,14 @@
           "value": "máy vi tính"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85235129",
       "nguon": "tax.85235129",
       "trich": "85235129 - - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85235130",
@@ -98,22 +104,13 @@
           "phuongAn": [
             [
               {
+                "fact": "ghiMaNhiPhanTuongTac",
+                "op": "CO"
+              },
+              {
                 "fact": "congDung",
                 "op": "CONG_DUNG",
                 "value": "tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh"
-              },
-              {
-                "fact": "congDung",
-                "op": "CONG_DUNG",
-                "value": [
-                  "có thể thao tác",
-                  "có thể tương tác với người sử dụng"
-                ]
-              },
-              {
-                "fact": "congDung",
-                "op": "CONG_DUNG",
-                "value": "máy xử lý dữ liệu tự động"
               }
             ],
             [
@@ -126,7 +123,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85235191",
@@ -134,24 +131,11 @@
       "trich": "85235191 - - - - - Loại khác, chứa phim điện ảnh trừ phim thời sự, phim du lịch, phim kỹ thuật, phim khoa học, và phim tài liệu khác",
       "dieuKienSo": [
         {
-          "fact": "congDung",
-          "op": "CONG_DUNG",
-          "value": "chứa phim điện ảnh"
-        },
-        {
-          "fact": "congDung",
-          "op": "CONG_DUNG",
-          "value": [
-            "phim thời sự",
-            "phim du lịch",
-            "phim kỹ thuật",
-            "phim khoa học",
-            "phim tài liệu"
-          ],
-          "chieu": "PHAI_KHONG"
+          "fact": "chuaPhimDienAnh",
+          "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85235192",
@@ -159,19 +143,18 @@
       "trich": "85235192 - - - - - Loại khác, dùng cho điện ảnh",
       "dieuKienSo": [
         {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": "điện ảnh"
+          "fact": "dungChoDienAnh",
+          "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85235199",
       "nguon": "tax.85235199",
       "trich": "85235199 - - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -193,18 +176,18 @@
     {
       "ma": "85235130",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85235130 \"Loại khác, <vế>\": hai vế cách nhau bằng \";\" ⇒ HOAC. Vế 1 (EN \"of a kind used for reproducing representations of instructions, data, sound and image, recorded in a machine readable binary form, and capable of being manipulated or providing interactivity to a user, by means of an automatic data processing machine\") ⇒ congDung \"tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh\" + congDung [\"có thể thao tác\",\"có thể tương tác với người sử dụng\"] (\"hoặc\" ⇒ mảng) + congDung \"máy xử lý dữ liệu tự động\" (\"thông qua một máy xử lý dữ liệu tự động\" — định ngữ chung của cả \"thao tác\" lẫn \"tương tác\" theo chữ Anh, nên là điều kiện riêng; ghi congDung, KHÔNG phải dungCho: \"thông qua\" là một phần định nghĩa hàng, không phải đích dùng — trả về #717). Tiêu chí tương tác là tiêu chí phân biệt .30 với .91/.92/.99 (trả về #663: bỏ nó thì phương tiện chứa phim/âm thanh thuần thoả .30). tu-vung@2 không có khoá có/không cho \"tương tác qua máy xử lý dữ liệu\" ⇒ chuỗi con nguyên văn (cách người soát #663 cho phép); so chữ tự do, lúc chạy thường CHƯA BIẾT ⇒ hỏi. Vế 2 ⇒ tenLoai \"phương tiện lưu trữ được định dạng riêng\" (giữ nguyên). \"(đã ghi)\" đã được tầng r15544 (phủ định \"Loại chưa ghi\") bao."
+      "ghiChu": "tax.85235130 \"Loại khác, <vế>\": hai vế cách nhau bằng \";\" ⇒ HOAC. Vế 1 ⇒ ghiMaNhiPhanTuongTac CO (khoá lô 20, phủ cả vế nhị phân máy đọc được và thao tác/tương tác qua máy xử lý dữ liệu tự động — khắc phục lỗi THU HẸP khi tách 3 congDung riêng) + congDung \"tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh\" (giống 852329.61). Vế 2 ⇒ tenLoai \"phương tiện lưu trữ được định dạng riêng\". \"(đã ghi)\" đã được tầng r15544 (phủ định \"Loại chưa ghi\") bao."
     },
     {
       "ma": "85235191",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85235191 \"Loại khác, chứa phim điện ảnh trừ phim thời sự, phim du lịch, phim kỹ thuật, phim khoa học, và phim tài liệu khác\" ⇒ congDung \"chứa phim điện ảnh\" + congDung PHAI_KHONG [5 loại phim bị trừ; \"phim tài liệu khác\" ghi \"phim tài liệu\" vì \"khác\" là \"other\" của \"and other documentary movies\" (bảng luật chung dòng 4: không giá trị chứa \"khác\") — trả về #717]. tax.85235192 \"Loại khác, dùng cho điện ảnh\" ⇒ dungCho \"điện ảnh\" (chữ \"dùng cho\"). Hai dòng đều \"Loại khác, <vế>\" nên luật đi phủ định lẫn nhau; khoá khác nhau vì chữ khác nghĩa (chứa nội dung ↔ dùng cho) — ghi cùng khoá congDung thì bộ so âm tiết bỏ \"dùng cho\" và \"điện ảnh\" ⊂ \"chứa phim điện ảnh\" làm .91 không bao giờ tới được (cong2-dong-khong-toi-duoc)."
+      "ghiChu": "tax.85235191 \"Loại khác, chứa phim điện ảnh trừ phim thời sự, phim du lịch, phim kỹ thuật, phim khoa học, và phim tài liệu khác\": chỉ điều kiện của vế ⇒ chuaPhimDienAnh CO (khoá lô 20, nhãn gồm cả vế loại trừ \"trừ phim thời sự, du lịch, kỹ thuật, khoa học, tài liệu\"), giống 852329.85. tax.85235192 \"Loại khác, dùng cho điện ảnh\" ⇒ dungChoDienAnh CO (khoá tu-vung@2 đọc đúng \"dùng cho điện ảnh\", tách biệt hoàn toàn với \"chứa phim điện ảnh\" của .91)."
     },
     {
-      "ma": "85235130",
+      "ma": "85235191",
       "loai": "BO_VE",
-      "ve": "được ghi ở dạng mã nhị phân để máy có thể đọc được",
-      "lyDo": "Vế mô tả DẠNG GHI của nội dung (EN \"recorded in a machine readable binary form\"), không tách hàng nào của phân nhóm 852351 \"Các thiết bị lưu trữ bền vững, thể rắn\" (EN \"Solid-state non-volatile storage devices\") khỏi .30: nội dung đã ghi trên thiết bị lưu trữ thể rắn luôn ở dạng số máy đọc được, kể cả phim/âm thanh thuần của .91/.92/.99. Tiêu chí phân biệt thật của vế 1 là \"có thể thao tác hoặc có thể tương tác … thông qua một máy xử lý dữ liệu tự động\" — đã phủ bằng điều kiện riêng; \"đã ghi\" do tầng r15544 bao."
+      "ve": "trừ phim thời sự, phim du lịch, phim kỹ thuật, phim khoa học, và phim tài liệu khác",
+      "lyDo": "Nhãn của khoá chuaPhimDienAnh (tu-vung@2, lô 20) được định nghĩa đúng bằng cụm này: \"chứa phim điện ảnh (trừ phim thời sự, du lịch, kỹ thuật, khoa học, tài liệu khác)\"; vế loại trừ nằm trong định nghĩa của giá trị CO, không phải điều kiện riêng"
     }
   ],
   "traVe": [
