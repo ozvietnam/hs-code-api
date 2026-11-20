@@ -1,0 +1,113 @@
+{
+  "phienBan": "bao-cao-khet@2",
+  "loai": "Báo cáo khet nhóm 8529 — OZV-1651 / OZV-1638 (sau khi sửa TRA_VE 85291060, duyệt và áp dụng 852910)",
+  "ngay": "2026-11-20",
+  "canh": "Nhánh ozv-8529-sach-v1 đứng trên origin/main 4c490809. Đã sửa lỗi TRA_VE ở 85291060 ('Loa hoặc phễu tiếp sóng (ống dẫn sóng)' / EN 'Feed horns (wave guide)') bằng cách tách định ngữ chung 'tiếp sóng' thành điều kiện tenLoai riêng đi kèm ['Loa','phễu'] (VÀ) để tránh tách 'Loa' trơ khớp nhầm loa phát thanh; qua cổng --ap-spec, --kiem XANH (852910 DUYET, phủ 8/8 vế, CHƯA PHỦ 0), --duyet và --ap-dung vào data/so-tay/8529.json. Cả 2/2 phân nhóm 852910 và 852990 đều đã DUYET (chua-duyet-ranh-gioi = 0, thieu-tru-anh-em = 0); chotDung tăng từ 8/24 lên 14/24 (+6 ca: 85291021, 85291030, 85291040, 85291060 ở DONG_CO_TEN và 85291029, 85291099 ở LOAI_TRU_LOAI_KHAC); DONG_CO_TEN tăng từ 6/14 (42.9%) lên 10/14 (71.4% < 95%). Còn 4 ca DONG_CO_TEN (85291093, 85291094 dưới nút 8529109 và 85299091, 85299094 dưới nút 8529909) dừng ở THIEU_SO_LIEU do cơ chế _traiKhiNutThoa tại lib/so-tay-gates.js:933-937,1024-1027 khi nút tầng anh em đứng trước (8529102 có laBoPhan:CO trong HOAC; 8529905 có daLapRap:CO trong VÀ) chứa vế tất định CHUA_BIET trên câu sinh tự động của sinhCaNhom.",
+  "ketQuaChot": {
+    "demNhomSachTruoc": "node scripts/dem-nhom-sach.mjs --nhom=8529 → 8529: chua-duyet-ranh-gioi(1 pn6), thieu-tru-anh-em(1), dong-co-ten(6/14=42.9%<95%) (baseline main 4c490809)",
+    "demNhomSachSau": "node scripts/dem-nhom-sach.mjs --nhom=8529 → 8529: dong-co-ten(10/14=71.4%<95%) (sau khi DUYET + ap-dung 852910; 0 chua-duyet-ranh-gioi, 0 thieu-tru-anh-em)",
+    "baselineMain": {
+      "chotDung": 8,
+      "tongSoCa": 24,
+      "chotSai": 0,
+      "chotLoaiKhacSai": 0,
+      "hoi": 3,
+      "khongTheChot": 13,
+      "nemLoi": 0,
+      "DONG_CO_TEN": "6/14 = 42.9% (6 ca 852910 KHONG_THE_CHOT ranh-gioi-chua-so-hoa; 2 ca 85299091, 85299094 THIEU_SO_LIEU)",
+      "LOAI_TRU_LOAI_KHAC": "2/5 = 40.0% (2 ca 85291029, 85291099 KHONG_THE_CHOT ranh-gioi-chua-so-hoa; 1 ca 85299099 KHONG_THE_CHOT nhieu-dong-loai-khac)",
+      "THIEU_DU_KIEN": "5/5 = 100.0%"
+    },
+    "sauKhiDuyet852910": {
+      "chotDung": 14,
+      "tongSoCa": 24,
+      "chotSai": 0,
+      "chotLoaiKhacSai": 0,
+      "hoi": 6,
+      "khongTheChot": 4,
+      "nemLoi": 0,
+      "DONG_CO_TEN": "10/14 = 71.4% < 95% (85291021, 85291030, 85291040, 85291060 chuyển sang CHOT đúng; còn 4 ca THIEU_SO_LIEU: 85291093, 85291094, 85299091, 85299094)",
+      "LOAI_TRU_LOAI_KHAC": "4/5 = 80.0% (85291029 và 85291099 chuyển sang LOAI_KHAC đúng; còn 85299099 nhieu-dong-loai-khac)",
+      "THIEU_DU_KIEN": "5/5 = 100.0%"
+    }
+  },
+  "ketQuaDo": {
+    "bienThe1_duyetVaApDung852910": {
+      "moTa": "Tách định ngữ chung 'tiếp sóng' ở 85291060 thành [{fact:'tenLoai',op:'TEN_LOAI',value:['Loa','phễu']},{fact:'tenLoai',op:'TEN_LOAI',value:'tiếp sóng'}], chạy --ap-spec, --kiem (XANH, phủ 8/8 vế, CHƯA PHỦ 0), --duyet và --ap-dung cho 852910",
+      "lenh": "node scripts/so-hoa-ranh-gioi.mjs --kiem --pn6=852910 && node scripts/bo-kiem-luat.mjs --nhom=8529 --json && node scripts/dem-nhom-sach.mjs --nhom=8529",
+      "boKiemLuat": {
+        "tongSoCa": 24,
+        "chotDung": 14,
+        "chotSai": 0,
+        "chotLoaiKhacSai": 0,
+        "hoi": 6,
+        "khongTheChot": 4,
+        "nemLoi": 0,
+        "DONG_CO_TEN": "10/14 = 71.4% < 95%",
+        "LOAI_TRU_LOAI_KHAC": "4/5 = 80.0%"
+      },
+      "ketLuan": "4/6 dòng có tên của 852910 (85291021, 85291030, 85291040, 85291060) và 2/2 dòng Loại khác (85291029, 85291099) chốt đúng. Còn 2 dòng dưới nút 8529109 (85291093, 85291094) và 2 dòng dưới nút 8529909 (85299091, 85299094) bị nhánh _traiKhiNutThoa hạ về CHUA_BIET."
+    },
+    "bienThe2_thuBoNhanhLaBoPhanONut8529102": {
+      "moTa": "Trên farm cách ly /tmp/hs8529-farm, thử bỏ phương án 2 [{fact:'laBoPhan',op:'CO'},{fact:'dungCho',op:'CONG_DUNG',value:'Chảo phản xạ'}] khỏi HOAC của nút 8529102 để kiểm chứng điểm chặn _traiKhiNutThoa trên 85291093 và 85291094",
+      "lenh": "HS_DATA_DIR=/tmp/hs8529-farm node scripts/so-hoa-ranh-gioi.mjs --kiem --pn6=852910 && HS_DATA_DIR=/tmp/hs8529-farm node scripts/bo-kiem-luat.mjs --nhom=8529 --json",
+      "congCLI": "ĐỎ: cong5-ve-mo-bi-bo:8529102:và các bộ phận của chúng — Vế MỞ 'và các bộ phận của chúng' bị bỏ (lỗi SUY HẸP)",
+      "boKiemLuatKhiEpChay": "chotDung=16/24, DONG_CO_TEN=12/14 (85.7% < 95%), chotSai=0; 85291093 và 85291094 đều chuyển sang CHOT đúng",
+      "ketLuan": "Chứng minh điểm chặn duy nhất của 85291093 và 85291094 là vế tất định {fact:'laBoPhan',op:'CO'} trong nhánh HOAC của nút anh em 8529102 kích hoạt _traiKhiNutThoa tại lib/so-tay-gates.js:1024-1027. Không thể bỏ nhánh này bằng data-only vì vi phạm Cổng 5 (bỏ vế mở 'và các bộ phận của chúng')."
+    },
+    "bienThe3_thuBoVeDaLapRapONut8529905": {
+      "moTa": "Trên farm cách ly /tmp/hs8529-farm, thử bỏ vế tất định {fact:'daLapRap',op:'CO'} khỏi nút 8529905 ('Tấm mạch in khác, đã lắp ráp') để kiểm chứng điểm chặn _traiKhiNutThoa trên 85299091 và 85299094",
+      "lenh": "HS_DATA_DIR=/tmp/hs8529-farm node scripts/so-hoa-ranh-gioi.mjs --kiem --pn6=852990 && HS_DATA_DIR=/tmp/hs8529-farm node scripts/bo-kiem-luat.mjs --nhom=8529 --json",
+      "congCLI": "ĐỎ: cong5-ve-gioi-han-bi-bo:8529905:đã lắp ráp — Vế giới hạn 'đã lắp ráp' không có điều kiện đọc tới (lỗi SUY RỘNG)",
+      "boKiemLuatKhiEpChay": "chotDung=16/24, DONG_CO_TEN=12/14 (85.7% < 95%), chotSai=0; 85299091 và 85299094 đều chuyển sang CHOT đúng",
+      "ketLuan": "Chứng minh điểm chặn duy nhất của 85299091 và 85299094 là vế tất định {fact:'daLapRap',op:'CO'} của nút anh em 8529905 kích hoạt _traiKhiNutThoa tại lib/so-tay-gates.js:1024-1027. Không thể bỏ vế 'đã lắp ráp' bằng data-only vì vi phạm Cổng 5 và làm tấm mạch in chưa lắp ráp lọt sai vào nhánh 8529905x."
+    }
+  },
+  "tranSoHoc": {
+    "hienTaiMain": "DONG_CO_TEN 6/14 = 42.9% (trên main 4c490809 khi 852910 đang TRA_VE)",
+    "tranDataOnlySauKhiDuyet852910": "DONG_CO_TEN tối đa 10/14 = 71.4% < 95% (với mẫu số 14, cần 14/14 = 100.0% mới đạt ngưỡng ≥ 95%)",
+    "bonCaChanTran": [
+      "85291093: THIEU_SO_LIEU (missingFacts: tenLoai, dungCho, laBoPhan từ nút anh em 8529102)",
+      "85291094: THIEU_SO_LIEU (missingFacts: tenLoai, dungCho, laBoPhan từ nút anh em 8529102)",
+      "85299091: THIEU_SO_LIEU (missingFacts: daLapRap từ nút anh em 8529905)",
+      "85299094: THIEU_SO_LIEU (missingFacts: daLapRap từ nút anh em 8529905)"
+    ]
+  },
+  "coCheTuongTungCa": [
+    {
+      "ma": "85291093",
+      "trich": "85291093 - - - Loại dùng với thiết bị truyền dẫn để phát sóng vô tuyến",
+      "hienTuong": "THIEU_SO_LIEU (lyDo: 'hoi-thieu-so-lieu', missingFacts: [tenLoai, dungCho, laBoPhan])",
+      "tepChan": "lib/so-tay-gates.js:933-937,1024-1027 (_traiKhiNutThoa) và lib/so-tay-gates.js:682-708 (danhGiaDong nhánh HOAC)",
+      "coChe": "1) Dòng 85291093 nằm dưới nút tiêu đề quốc gia 8529109 ('- - Loại khác', không có điều kiện riêng trong nutMap). Tại lib/so-tay-gates.js:933-937, máy gán _traiKhiNutThoa = ['8529102'] (nút anh em cùng cha 852910). 2) Nút 8529102 ('Chảo phản xạ của ăng ten parabol sử dụng cho hệ phát trực tiếp đa phương tiện và các bộ phận của chúng') có điều kiện HOAC gồm phương án 1 [tenLoai='Chảo phản xạ', dungCho='ăng ten parabol...'] và phương án 2 [laBoPhan=CO, dungCho='Chảo phản xạ']. 3) Trên productText của 85291093, các vế so chữ tenLoai/dungCho của cả 2 phương án đều có soChu='TRAI' (khongTatDinh=true ⇒ trangThai='CHUA_BIET'), còn vế tất định laBoPhan=CO ở phương án 2 chấm trangThai='CHUA_BIET' (khongTatDinh=false). Do nhánh HOAC có ít nhất 1 vế con !khongTatDinh, danhGiaDong tổng hợp mục HOAC với trangThai='CHUA_BIET', khongTatDinh=false. 4) Tại lib/so-tay-gates.js:1024-1026, điều kiện (!c.khongTatDinh) trên dgNut.get('8529102') khớp mà không xét rằng mỗi phương án của HOAC đều đã có vế so chữ soChu==='TRAI', nên hạ 85291093 từ THOA xuống CHUA_BIET."
+    },
+    {
+      "ma": "85291094",
+      "trich": "85291094 - - - Loại dùng với thiết bị truyền dẫn truyền hình",
+      "hienTuong": "THIEU_SO_LIEU (lyDo: 'hoi-thieu-so-lieu', missingFacts: [tenLoai, dungCho, laBoPhan])",
+      "tepChan": "lib/so-tay-gates.js:933-937,1024-1027 (_traiKhiNutThoa) và lib/so-tay-gates.js:682-708 (danhGiaDong nhánh HOAC)",
+      "coChe": "Cùng cơ chế như 85291093: dòng 85291094 nằm dưới nút 8529109 ('- - Loại khác'), điều kiện riêng dungCho='thiết bị truyền dẫn truyền hình' chấm THOA nhưng bị _traiKhiNutThoa=['8529102'] hạ xuống CHUA_BIET tại lib/so-tay-gates.js:1024-1026 do nút anh em 8529102 chứa vế tất định laBoPhan=CO đang CHUA_BIET."
+    },
+    {
+      "ma": "85299091",
+      "trich": "85299091 - - - Dùng cho máy thu truyền hình",
+      "hienTuong": "THIEU_SO_LIEU (lyDo: 'hoi-thieu-so-lieu', missingFacts: [{fact: 'daLapRap'}])",
+      "tepChan": "lib/so-tay-gates.js:933-937,1024-1027 (_traiKhiNutThoa) và scripts/bo-kiem-luat.mjs (sinhCaNhom)",
+      "coChe": "1) Dòng 85299091 nằm dưới nút tiêu đề quốc gia 8529909 ('- - Loại khác', không có trong nutMap), nên tại lib/so-tay-gates.js:933-937 được gán _traiKhiNutThoa = ['8529905'] (nút anh em cùng cha 852990). 2) Nút 8529905 ('Tấm mạch in khác, đã lắp ráp') có 2 điều kiện VÀ: {fact:'tenLoai',op:'TEN_LOAI',value:'Tấm mạch in'} và {fact:'daLapRap',op:'CO'}. 3) Trên productText sinh tự động cho 85299091 ('Bộ phận chỉ dùng hoặc chủ yếu dùng với các thiết bị thuộc các nhóm từ 85.25 đến 85.28. - Loại khác: Dùng cho máy thu truyền hình'), vế tenLoai='Tấm mạch in' chấm trangThai='CHUA_BIET' với khongTatDinh=true, soChu='TRAI', còn vế tất định daLapRap=CO chấm trangThai='CHUA_BIET' với khongTatDinh=false. 4) Tại lib/so-tay-gates.js:1024-1026, nhánh _traiKhiNutThoa kiểm tra (dgNut.get(nid)?.chiTiet || []).some(c => c.trangThai === 'CHUA_BIET' && !c.khongTatDinh) mà không loại trừ nút anh em nid đã có vế VÀ khác chấm soChu==='TRAI' (khác với chuKhopMaChuaChac ở dòng 1108-1110 có kiểm !(dg.chiTiet || []).some(c => c.khongTatDinh && c.soChu === 'TRAI')), đồng thời 85299054 dưới 8529905 cũng có cùng đích dungCho='máy thu truyền hình', khiến 85299091 bị hạ từ THOA xuống CHUA_BIET và hỏi lại daLapRap."
+    },
+    {
+      "ma": "85299094",
+      "trich": "85299094 - - - Loại khác, dùng cho màn hình dẹt",
+      "hienTuong": "THIEU_SO_LIEU (lyDo: 'hoi-thieu-so-lieu', missingFacts: [{fact: 'daLapRap'}])",
+      "tepChan": "lib/so-tay-gates.js:933-937,1024-1027 (_traiKhiNutThoa) và scripts/bo-kiem-luat.mjs (sinhCaNhom)",
+      "coChe": "Cùng cơ chế như 85299091: dòng 85299094 nằm dưới nút 8529909 ('- - Loại khác'), điều kiện riêng dungCho='màn hình dẹt' chấm THOA nhưng bị _traiKhiNutThoa=['8529905'] hạ xuống CHUA_BIET tại lib/so-tay-gates.js:1024-1026 do nút anh em 8529905 có vế tất định daLapRap=CO đang CHUA_BIET (cạnh tranh trực tiếp với 85299053 'Dùng cho màn hình dẹt' nằm dưới 8529905)."
+    }
+  ],
+  "lenhTaiHien": [
+    "node scripts/so-hoa-ranh-gioi.mjs --kiem --pn6=852910   # XANH (852910 DUYET, phủ 8/8 vế, CHƯA PHỦ 0, EXIT=0)",
+    "node scripts/so-hoa-ranh-gioi.mjs --kiem --pn6=852990   # XANH (852990 DUYET, phủ 10/10 vế, CHƯA PHỦ 0, EXIT=0)",
+    "node scripts/dem-nhom-sach.mjs --nhom=8529              # 8529: dong-co-ten(10/14=71.4%<95%) (0 chua-duyet-ranh-gioi, 0 thieu-tru-anh-em)",
+    "node scripts/bo-kiem-luat.mjs --nhom=8529 --json        # chotDung 14/24 (tăng từ 8/24), chotSai 0, chotLoaiKhacSai 0, nemLoi 0; DONG_CO_TEN 10/14, LOAI_TRU_LOAI_KHAC 4/5",
+    "node scripts/test-so-tay.mjs                            # XANH (EXIT=0)"
+  ]
+}

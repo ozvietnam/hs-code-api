@@ -4,13 +4,19 @@
   "nhom": "8529",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T1003#soan-852910",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1638-20261120#soat-852910",
+    "ngay": "2026-11-20",
+    "ghiChu": "Đối chiếu VI+EN: 85291060 tách định ngữ chung 'tiếp sóng' thành điều kiện tenLoai riêng đi kèm ['Loa','phễu'] (EN 'Feed horns (wave guide)') tránh tách 'Loa' trơ; các dòng khác khớp chữ biểu.",
+    "bam": "32a4e7b25143911b746c35d72dcdd53929a6fa8940322989f7415db06916cec7"
+  },
   "dieuKienNut": [
     {
       "id": "8529102",
@@ -46,7 +52,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -61,14 +67,14 @@
           "value": "máy thu truyền hình"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85291029",
       "nguon": "tax.85291029",
       "trich": "85291029 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85291030",
@@ -93,7 +99,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85291040",
@@ -114,7 +120,7 @@
           "value": "ăng ten"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85291060",
@@ -126,11 +132,16 @@
           "op": "TEN_LOAI",
           "value": [
             "Loa",
-            "phễu tiếp sóng"
+            "phễu"
           ]
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "tiếp sóng"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85291093",
@@ -143,7 +154,7 @@
           "value": "thiết bị truyền dẫn để phát sóng vô tuyến"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85291094",
@@ -156,14 +167,14 @@
           "value": "thiết bị truyền dẫn truyền hình"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85291099",
       "nguon": "tax.85291099",
       "trich": "85291099 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -190,7 +201,7 @@
     {
       "ma": "85291060",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85291060 \"Loa hoặc phễu tiếp sóng (ống dẫn sóng)\" ⇒ tenLoai mảng [\"Loa\",\"phễu tiếp sóng\"] (\"hoặc\" ⇒ mảng); \"(ống dẫn sóng)\" ngoặc chú thích."
+      "ghiChu": "tax.85291060 \"Loa hoặc phễu tiếp sóng (ống dẫn sóng)\" (EN \"Feed horns (wave guide)\") ⇒ tenLoai mảng [\"Loa\",\"phễu\"] + định ngữ chung \"tiếp sóng\" tách thành điều kiện tenLoai riêng (VÀ) để không tách \"Loa\" trơ khớp nhầm loa phát thanh; \"(ống dẫn sóng)\" ngoặc chú thích."
     },
     {
       "ma": "85291093",
