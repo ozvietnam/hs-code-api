@@ -339,7 +339,9 @@
    "toHopChucNangMayIn",
    "maHsTuongUng",
    "moDunDanHoi",
-   "soLoaiVitamin"
+   "soLoaiVitamin",
+   "coBoPhanKhuachDai",
+   "coLoa"
   ],
   "tuVung1": {
    "trangThai": "DA_CHAM",
@@ -23106,6 +23108,140 @@
     "zh": "弹性模量是多少（psi/MPa）？"
    },
    "ghiChu": "Mô-đun đàn hồi uốn/kéo — chữ biểu 8 số chỉ ghi \"Loại cứng\" (không mang số), số nằm trong câu SEN của nhóm: neo vào (3920.10.11) với định nghĩa \"Plastic cứng dạng tấm và phiến có modul đàn hồi uốn hoặc module đàn hồi kéo lớn hơn 100,000 psi ở 23°C và có độ ẩm tương đối là 50% khi thử nghiệm theo tiêu chuẩn ASTM D747 hoặc ASTM D790\" (khoá lô 24, #1139). nghinAnh: \"100,000\" kiểu Anh = 100000 psi; MPa/GPa quy về psi (1 MPa = 145,038 psi).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "kieu": "CO_KHONG",
+   "khoa": "coBoPhanKhuachDai",
+   "nhanVi": "có bộ phận khuếch đại (âm thanh)",
+   "nhanEn": "incorporating an amplifier",
+   "nhanZh": "装有放大器（功放）",
+   "cachDoc": {
+    "vi": [
+     "có\\s+(?:bộ\\s+phận\\s+)?khuếch\\s+đại",
+     "(?:kèm\\s+theo|gắn|lắp|tích\\s+hợp)[^.;]{0,30}?khuếch\\s+đại",
+     "bộ\\s+khuếch\\s+đại",
+     "khuếch\\s+đại\\s+âm",
+     "(?:ampli|âm\\s+li)"
+    ],
+    "en": [
+     "incorporat(?:es|ing|ed)?\\s+(?:an?\\s+)?amplifier",
+     "(?:with|having|equipped\\s+with)\\s+(?:an?\\s+)?amplifier",
+     "\\bamplifiers?\\b",
+     "\\bampli\\b"
+    ],
+    "zh": [
+     "装有放大器",
+     "内置放大器",
+     "带功放",
+     "放大器"
+    ],
+    "phuDinh": [
+     "không phải",
+     "không có",
+     "không",
+     "chưa",
+     "ko",
+     "chẳng",
+     "non-?",
+     "without",
+     "no",
+     "not",
+     "无",
+     "非",
+     "不",
+     "没有",
+     "未"
+    ]
+   },
+   "cachDocKhong": {
+    "vi": [
+     "không\\s+(?:có\\s+)?(?:bộ\\s+phận\\s+)?khuếch\\s+đại",
+     "không\\s+có\\s+(?:ampli|âm\\s+li)"
+    ],
+    "en": [
+     "without\\s+(?:an?\\s+)?amplifier",
+     "amplifier[- ]?less"
+    ],
+    "zh": [
+     "无放大器",
+     "不带功放"
+    ]
+   },
+   "cachViet": {
+    "vi": "có bộ phận khuếch đại",
+    "viPhuDinh": "không có bộ phận khuếch đại"
+   },
+   "cauHoi": {
+    "vi": "Thiết bị có bộ phận khuếch đại âm thanh (ampli/âm li) không?",
+    "zh": "该设备是否装有放大器（功放）？"
+   },
+   "ghiChu": "Chữ biểu 8519.81.20 «Máy ghi âm cassette, có bộ phận khuếch đại và một hoặc nhiều loa…» (CÓ). Vế «và» ⇒ tách HAI khoá rời coBoPhanKhuachDai + coLoa rồi AND ở dieuKienSo (không gộp khoá kép — mô tả thật có thể nhắc loa và ampli cách nhau). Đọc cả tên thường dụng ampli/âm li; không đọc «khuếch tán», «khuếch trương». OZV-1610.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "kieu": "CO_KHONG",
+   "khoa": "coLoa",
+   "nhanVi": "có (một hoặc nhiều) loa",
+   "nhanEn": "with one or more loudspeakers",
+   "nhanZh": "装有一个或多个扬声器",
+   "cachDoc": {
+    "vi": [
+     "một\\s+hoặc\\s+nhiều\\s+loa(?![a-z])",
+     "(?:gắn|lắp|tích\\s+hợp|kèm\\s+theo)\\s+(?:(?:một|hai|nhiều)\\s+)?loa(?![a-z])",
+     "có\\s+(?:(?:một|hai|nhiều)\\s+)?loa(?![a-z])",
+     "loa(?![a-z])\\s+(?:tích\\s+hợp|rời)"
+    ],
+    "en": [
+     "loudspeakers?",
+     "(?:one\\s+or\\s+more\\s+)?speakers?",
+     "(?:with|incorporating)\\s+speakers?"
+    ],
+    "zh": [
+     "扬声器",
+     "喇叭"
+    ],
+    "phuDinh": [
+     "không phải",
+     "không có",
+     "không",
+     "chưa",
+     "ko",
+     "chẳng",
+     "non-?",
+     "without",
+     "no",
+     "not",
+     "无",
+     "非",
+     "不",
+     "没有",
+     "未"
+    ]
+   },
+   "cachDocKhong": {
+    "vi": [
+     "không\\s+(?:có\\s+)?(?:(?:một|hai|nhiều)\\s+)?loa(?![a-z])"
+    ],
+    "en": [
+     "without\\s+(?:loud)?speakers?",
+     "speaker[- ]?less"
+    ],
+    "zh": [
+     "无扬声器",
+     "不带喇叭",
+     "无喇叭"
+    ]
+   },
+   "cachViet": {
+    "vi": "có loa",
+    "viPhuDinh": "không có loa"
+   },
+   "cauHoi": {
+    "vi": "Thiết bị có loa (một hoặc nhiều) không?",
+    "zh": "该设备是否装有（一个或多个）扬声器？"
+   },
+   "ghiChu": "Chữ biểu 8519.81.20 «…và một hoặc nhiều loa» (CÓ); 8519.89.20 «Máy quay đĩa (record players) có hoặc không có loa» — khoá chỉ nhận diện «có loa», vế «hoặc không» xử lý ở dieuKienSo. «một hoặc nhiều» = có mặt, không cần đếm. Canh (?![a-z]) chặn «loai/loan» viết ASCII không dấu; «loại» có dấu (ạ ≠ a) không chứa chuỗi «loa». OZV-1610.",
    "nguonLoai": "AI_DA_KIEM"
   }
  ],

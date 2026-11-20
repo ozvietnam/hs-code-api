@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "claude-agent:tho-hs-03-20261120#soan-851981-v2",
+    "phien": "claude-agent:tho-hs-03-20261120#soan-851981-v3",
     "ngay": "2026-11-20"
   },
   "duyet": null,
@@ -70,7 +70,25 @@
       "hs": "85198120",
       "nguon": "tax.85198120",
       "trich": "85198120 - - - Máy ghi âm cassette, có bộ phận khuếch đại và một hoặc nhiều loa, hoạt động chỉ bằng nguồn điện ngoài ",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy ghi âm cassette"
+        },
+        {
+          "fact": "coBoPhanKhuachDai",
+          "op": "CO"
+        },
+        {
+          "fact": "coLoa",
+          "op": "CO"
+        },
+        {
+          "fact": "chiDungNguonDienNgoai",
+          "op": "CO"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -280,9 +298,8 @@
     },
     {
       "ma": "85198120",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "coBoPhanKhuachDaiVaLoa",
-      "ghiChu": "tax.85198120 \"Máy ghi âm cassette, có bộ phận khuếch đại và một hoặc nhiều loa, hoạt động chỉ bằng nguồn điện ngoài\": TRA_VE lỗi (A) — vế \"có bộ phận khuếch đại và một hoặc nhiều loa\" không có khoá tu-vung (không coBoPhanKhuachDai/coLoa); v1 chỉ giữ tenLoai + chiDungNguonDienNgoai ⇒ máy cassette dùng điện ngoài nhưng KHÔNG khuếch đại/loa theo chữ vào .99 (MFN 20) bị lọt .20 (MFN 25) — SUY RỘNG. BO_VE bị cấm (bỏ vế làm đổi mã .99→.20, QUY-TRINH-SO-HOA) ⇒ để trống dieuKienSo, chờ khoá mới rồi bổ sung."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85198120 «Máy ghi âm cassette, có bộ phận khuếch đại và một hoặc nhiều loa, hoạt động chỉ bằng nguồn điện ngoài»: tên ⇒ tenLoai «Máy ghi âm cassette»; «có bộ phận khuếch đại» ⇒ coBoPhanKhuachDai CO; «một hoặc nhiều loa» ⇒ coLoa CO (chữ «một hoặc nhiều» = có mặt, không cần đếm); đuôi «hoạt động chỉ bằng nguồn điện ngoài» ⇒ chiDungNguonDienNgoai CO (khoá lô 20). GIẢI DỪNG v2: hai khoá đã thêm ở tu-vung@2 (OZV-1610)."
     }
   ],
   "traVe": [
