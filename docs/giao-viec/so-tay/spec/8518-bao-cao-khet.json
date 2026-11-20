@@ -1,7 +1,31 @@
 {
   "phienBan": "bao-cao-khet@2",
-  "loai": "Báo cáo khet nhóm 8518 — OZV-1563 (sau khi duyệt và áp dụng 851850)",
+  "trangThai": "DA_KHEP_SACH_V1",
+  "loai": "Báo cáo khet nhóm 8518 — OZV-1563 (đã khép SẠCH V1 18/18 tại OZV-1648 sau khi vá demotion dòng Loại khác 1 điều kiện ở lib/so-tay-gates.js:1040-1044)",
   "ngay": "2026-11-20",
+  "ketQuaSauOzv1648": {
+    "demNhomSach": "node scripts/dem-nhom-sach.mjs --nhom=8518 → Số nhóm SẠCH (V1): 1 (100.0%), Số nhóm chưa sạch: 0",
+    "boKiemLuatNhom8518": {
+      "tongSoCa": 36,
+      "chotDung": 27,
+      "chotSai": 0,
+      "chotLoaiKhacSai": 0,
+      "hoi": 6,
+      "khongTheChot": 3,
+      "nemLoi": 0,
+      "DONG_CO_TEN": "18/18 = 100.0% (85184040 chuyển từ THIEU_SO_LIEU sang CHOT đúng)",
+      "LOAI_TRU_LOAI_KHAC": "9/9 = 100.0%",
+      "THIEU_DU_KIEN": "9/9 = 100.0%"
+    },
+    "boKiemLuatToanBieu": {
+      "tongSoCa": 14506,
+      "chotDungTruoc": 8217,
+      "chotDungSau": 8218,
+      "chotSai": 0,
+      "chotLoaiKhacSai": 0,
+      "nemLoi": 0
+    }
+  },
   "canh": "Nhánh ozv-sach-8518-v1 đứng trên origin/main 4c490809 (đã có khoá coLoa trong tu-vung@2 từ PR #1482 / OZV-1610). Đã gắn {fact:'coLoa',op:'CO'} vào 85185020, bỏ BO_VE vế 'có loa', qua cổng --ap-spec, --kiem XANH (0 lỗi, 0 DỪNG), nâng 851850 lên DUYET và --ap-dung vào data/so-tay/8518.json. Cả 8/8 phân nhóm 8518*.json đều đã DUYET (chua-duyet-ranh-gioi = 0); chotDung tăng từ 23/36 lên 26/36 (+3 ca: 85185010, 85185020 ở DONG_CO_TEN và 85185090 ở LOAI_TRU_LOAI_KHAC); LOAI_TRU_LOAI_KHAC đạt 9/9 = 100%; DONG_CO_TEN đạt 17/18 = 94.4% < 95% (mẫu số 18 đòi 18/18 = 100% mới ≥ 95%). Còn duy nhất 1 ca 85184040 vướng tường kiến trúc 'Loại khác, <điều kiện>' ở lib/so-tay-gates.js:1031-1047.",
   "ketQuaChot": {
     "demNhomSachTruoc": "node scripts/dem-nhom-sach.mjs --nhom=8518 → 8518: chua-duyet-ranh-gioi(1 pn6), dong-co-ten(15/18=83.3%<95%) (baseline main 4c490809)",
