@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:tho-hs-03-20261119#soat-850431-v1",
-    "ngay": "2026-11-19",
-    "ghiChu": "OZV-1556 lượt 1: soát lại theo lệnh trả về 2026-11-11 (chốt-sai-mới khi gộp thử) — đo lại trên main d9b0abba sau #1466 (dgNut CHUA_BIET): cổng --kiem XANH 0 lỗi 0 DỪNG; bench nhóm 8504 không sinh chotSai/chotLoaiKhacSai mới (số trong commit)",
-    "bam": "3219683af9e86a5833db8ab27388edff2855d284ce6f14f1ff990a1d69dccd29"
+    "phien": "claude-agent:tho-hs-01-20261120#soat-850431-v2",
+    "ngay": "2026-11-20",
+    "ghiChu": "OZV-1556 lượt 2: neo 85043130/.92/.93 bằng tenLoai nguyên văn chữ biểu (tax.85043130/.92/.93, bỏ vế congDung/cachDieuKhien SEN theo mô hình #1461) — gỡ 3 ca hoi-thieu-so-lieu DONG_CO_TEN",
+    "bam": "6c169641a04a0a3df5a96df6abba855a38066bceb6f863b90d5d2f9c6a8c12e2"
   },
   "dieuKienNut": [
     {
@@ -206,22 +206,13 @@
     },
     {
       "hs": "85043130",
-      "nguon": "sen.85043130",
-      "trich": "Biến áp quét về được sử dụng trong thiết bị thu truyền hình để cung cấp điện áp hồi lưu theo chiều ngang, mức điện áp cao hơn cho điện cực dương thứ hai của đèn hình, và điện áp mảnh cho chỉnh lưu cao áp. Biến áp quét về cũng được gọi là biến áp đầu ra ngang hay biến áp quét ngang",
+      "nguon": "tax.85043130",
+      "trich": "85043130 - - - Máy biến áp quét về (biến áp tần số quét ngược) (SEN)",
       "dieuKienSo": [
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": [
-            "Biến áp quét về",
-            "biến áp đầu ra ngang",
-            "biến áp quét ngang"
-          ]
-        },
-        {
-          "fact": "congDung",
-          "op": "CONG_DUNG",
-          "value": "hồi lưu"
+          "value": "Máy biến áp quét về"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -258,18 +249,13 @@
     },
     {
       "hs": "85043192",
-      "nguon": "sen.85043192",
-      "trich": "Máy biến áp đôi khi được sử dụng để phối hợp trở kháng của mạch điện. Máy biến áp biến đổi điện xoay chiều ở một điện áp này sang điện áp khác ở cùng dạng sóng… máy biến áp thích ứng có tỷ số vòng dây là 2",
+      "nguon": "tax.85043192",
+      "trich": "85043192 - - - - Biến áp thích ứng khác (SEN)",
       "dieuKienSo": [
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Biến áp thích ứng"
-        },
-        {
-          "fact": "congDung",
-          "op": "CONG_DUNG",
-          "value": "phối hợp trở kháng"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET",
@@ -277,8 +263,8 @@
     },
     {
       "hs": "85043193",
-      "nguon": "sen.85043193",
-      "trich": "Máy biến áp tăng/giảm từng nấc và máy điều chỉnh điện áp trượt là các máy biến áp có đầu vào không ổn định trong các dải điện áp nhất định và có đầu ra là các điện áp nhất định mà có thể được điều chỉnh bằng tay",
+      "nguon": "tax.85043193",
+      "trich": "85043193 - - - - Máy biến áp tăng/giảm từng nấc (Step up/down transformers); máy điều chỉnh điện áp trượt (slide regulators) (SEN)",
       "dieuKienSo": [
         {
           "op": "HOAC",
@@ -297,13 +283,6 @@
                 "value": "máy điều chỉnh điện áp trượt"
               }
             ]
-          ]
-        },
-        {
-          "fact": "cachDieuKhien",
-          "op": "TRONG",
-          "value": [
-            "BANG_TAY"
           ]
         }
       ],
@@ -338,7 +317,7 @@
             "85043191",
             "85043193"
           ],
-          "hang": "Máy biến áp tăng giảm từng nấc dùng cho đồ chơi, điều chỉnh bằng tay"
+          "hang": "Máy biến áp tăng giảm từng nấc dùng cho đồ chơi"
         }
       ],
       "phanXu": null
@@ -361,34 +340,29 @@
       "ghiChu": "tax.85043121 \"Máy biến dòng dạng vòng dùng cho đường dây có điện áp không quá 220 kV (SEN)\" ⇒ tenLoai + dungCho \"đường dây\" + dienAp <= 220 kV; ngoặc \"(SEN)\" là nguồn chú giải, không thành điều kiện"
     },
     {
+      "ma": "85043130",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85043130 \"Máy biến áp quét về (biến áp tần số quét ngược) (SEN)\" ⇒ tenLoai \"Máy biến áp quét về\" nguyên văn chữ biểu; bỏ vế congDung \"hồi lưu\" của SEN để không chặn ca tên dòng hợp pháp (mô hình #1461)"
+    },
+    {
       "ma": "85043191",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.85043191 \"Sử dụng cho đồ chơi, mô hình thu nhỏ hoặc các mô hình giải trí tương tự\" ⇒ dungCho mảng [đồ chơi, mô hình thu nhỏ, mô hình giải trí] (\"hoặc\" ⇒ mảng); cổng 5 tách cả cụm là MỘT vế GIỚI HẠN"
     },
     {
-      "ma": "85043111",
-      "loai": "QUYET_DINH",
-      "ghiChu": "Đã đối chiếu tay biên dienAp của .11/.12/.13/.23/.24 và tầng r14985 với chữ biểu: \">= 110 kV\" = \"từ 110 kV trở lên\"; \">= 66 và < 110 kV\" = \"từ 66 kV trở lên, nhưng dưới 110 kV\"; \">= 1 và < 66 kV\" = \"từ 1 kV trở lên, nhưng dưới 66 kV\" (mẫu 850433 cùng kiểu)"
-    },
-    {
-      "ma": "85043130",
-      "loai": "QUYET_DINH",
-      "ghiChu": "Nghĩa hẹp theo SEN: sen.85043130 \"được sử dụng trong thiết bị thu truyền hình để cung cấp điện áp hồi lưu theo chiều ngang … biến áp đầu ra ngang hay biến áp quét ngang\" ⇒ tenLoai 3 tên chữ SEN + congDung \"hồi lưu\" (bộ đọc congDung cắt tại \" điện áp \" nên không dùng cụm dài)."
-    },
-    {
       "ma": "85043192",
       "loai": "QUYET_DINH",
-      "ghiChu": "Nghĩa hẹp theo SEN: sen.85043192 ⇒ thêm congDung \"phối hợp trở kháng\" — biến áp thích ứng theo SEN dùng phối hợp trở kháng mạch điện."
+      "ghiChu": "tax.85043192 \"Biến áp thích ứng khác (SEN)\" ⇒ tenLoai \"Biến áp thích ứng\" + phanConLai: true; bỏ vế congDung \"phối hợp trở kháng\" của SEN để không chặn ca tên dòng hợp pháp (mô hình #1461)"
     },
     {
       "ma": "85043193",
       "loai": "QUYET_DINH",
-      "ghiChu": "Nghĩa hẹp theo SEN: sen.85043193 ⇒ thêm cachDieuKhien BANG_TAY — đầu ra điều chỉnh bằng tay."
+      "ghiChu": "tax.85043193 hai hàng nối \";\" ⇒ HOAC [tenLoai \"Máy biến áp tăng/giảm từng nấc\"] / [tenLoai \"máy điều chỉnh điện áp trượt\"]; bỏ cachDieuKhien BANG_TAY của SEN để không hỏi chéo và không chặn ca tên dòng hợp pháp (mô hình #1461)"
     },
     {
-      "ma": "850431",
+      "ma": "85043111",
       "loai": "QUYET_DINH",
-      "ghiChu": "Cập nhật chongLanTruc[0].viDuHang.hang thêm \", điều chỉnh bằng tay\" cho khớp điều kiện cachDieuKhien BANG_TAY mới của 85043193 (sen.85043193: đầu ra điều chỉnh bằng tay)."
+      "ghiChu": "Đã đối chiếu tay biên dienAp của .11/.12/.13/.23/.24 và tầng r14985 với chữ biểu: \">= 110 kV\" = \"từ 110 kV trở lên\"; \">= 66 và < 110 kV\" = \"từ 66 kV trở lên, nhưng dưới 110 kV\"; \">= 1 và < 66 kV\" = \"từ 1 kV trở lên, nhưng dưới 66 kV\" (mẫu 850433 cùng kiểu)"
     }
   ],
   "traVe": [
