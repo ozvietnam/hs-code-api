@@ -64,8 +64,9 @@ describe('lib/engine-loop.js — giuDanhTuKhach (OZV-1613)', () => {
       { shop: 'jungongpneumatic', hsCode: '8481100090', name: 'Pneumatic Foot Switch Fv420' },
     ];
     const r2Prompt = [];
+    const ozQueries = [];
     try {
-      ozMod.searchOzByKeyword = async () => ({ items: [] });
+      ozMod.searchOzByKeyword = async (q) => { ozQueries.push(q); return { items: [] }; };
       webMod.webFacts = async () => null;
       micMod.micLookup = async () => ({ pages, cached: false });
       llmTier.callLLMJson = async (system, user, opts = {}) => {
@@ -83,6 +84,15 @@ describe('lib/engine-loop.js — giuDanhTuKhach (OZV-1613)', () => {
       assert.ok(r2Prompt.length >= 1, 'phải có lời gọi vòng 2');
       assert.match(r2Prompt[0], /8481/, 'gói vòng 2 phải nhắc nhóm 8481');
       assert.ok(JSON.stringify(out.candidates && out.candidates.headings || []).includes('8481'), `candidates.headings phải có 8481: ${JSON.stringify(out.candidates && out.candidates.headings)}`);
+      // (3) OZV-1630: gather(r1, raw) phải nhận r1.product.nameVi đã qua giuDanhTuKhach.
+      assert.ok(
+        ozQueries.includes('van camera giám sát FV420'),
+        `ozMod.searchOzByKeyword phải được gọi với "van camera giám sát FV420": ${JSON.stringify(ozQueries)}`,
+      );
+      assert.ok(
+        r2Prompt[0].includes('"nameVi":"van camera giám sát FV420"'),
+        'HỒ SƠ BẢN CHẤT trong r2Prompt[0] phải có "nameVi":"van camera giám sát FV420"',
+      );
     } finally {
       micMod.micLookup = micThat; ozMod.searchOzByKeyword = ozThat; webMod.webFacts = webThat; llmTier.callLLMJson = llmThat;
     }
