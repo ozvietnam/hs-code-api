@@ -981,19 +981,64 @@
     },
     {
       "hs": "85234911",
-      "dieuKien": "Phương tiện quang học đã ghi, trừ sản phẩm của Chương 37: Loại sử dụng để tái tạo các hiện tượng trừ âm thanh hoặc hình ảnh — dòng cha trung gian không có trong nguồn — đối chiếu biểu thuế",
+      "dieuKien": "công dụng / mục đích: tái tạo các hiện tượng; không công dụng / mục đích: âm thanh hoặc hình ảnh",
       "loaiKhac": false,
       "nguon": "tax.85234911",
       "trich": "85234911 - - - - Loại sử dụng để tái tạo các hiện tượng trừ âm thanh hoặc hình ảnh",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "tái tạo các hiện tượng"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "âm thanh",
+            "hình ảnh"
+          ],
+          "chieu": "PHAI_KHONG"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-02-20261120#soat-852349-v1",
+          "ngay": "2026-11-20",
+          "bam": "e5abbd0301b4ee6225c9ad82fafdf31fbf212a5a3f68b0b92cb024426ca91dfd"
+        }
+      }
     },
     {
       "hs": "85234912",
-      "dieuKien": "Phương tiện quang học đã ghi, trừ sản phẩm của Chương 37: Đĩa chứa nội dung giáo dục, kỹ thuật, khoa học, lịch sử hoặc văn hóa — dòng cha trung gian không có trong nguồn — đối chiếu biểu thuế",
+      "dieuKien": "công dụng / mục đích: giáo dục hoặc kỹ thuật hoặc khoa học hoặc lịch sử hoặc văn hóa",
       "loaiKhac": false,
       "nguon": "tax.85234912",
       "trich": "85234912 - - - - - Đĩa chứa nội dung giáo dục, kỹ thuật, khoa học, lịch sử hoặc văn hóa",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "giáo dục",
+            "kỹ thuật",
+            "khoa học",
+            "lịch sử",
+            "văn hóa"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-02-20261120#soat-852349-v1",
+          "ngay": "2026-11-20",
+          "bam": "e5abbd0301b4ee6225c9ad82fafdf31fbf212a5a3f68b0b92cb024426ca91dfd"
+        }
+      }
     },
     {
       "hs": "85234913",
@@ -1018,11 +1063,11 @@
     },
     {
       "hs": "85234914",
-      "dieuKien": "Phương tiện quang học đã ghi, trừ sản phẩm của Chương 37 — dòng gom \"Loại khác\": Loại khác, loại sử dụng để tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh, được ghi ở dạng mã nhị phân để máy có thể đọc được, và có thể thao tác hoặc có thể tương tác với người sử dụng, thông qua một máy xử lý dữ liệu tự động; phương tiện lưu trữ được định dạng riêng (đã ghi) — dòng cha trung gian không có trong nguồn — đối chiếu biểu thuế",
+      "dieuKien": "(ghi dạng mã nhị phân máy đọc được, có thể thao tác hoặc tương tác qua máy xử lý dữ liệu tự động và công dụng / mục đích: tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh) hoặc (tên loại hàng: phương tiện lưu trữ được định dạng riêng)",
       "loaiKhac": true,
       "nguon": "tax.85234914",
       "trich": "85234914 - - - - Loại khác, loại sử dụng để tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh, được ghi ở dạng mã nhị phân để máy có thể đọc được, và có thể thao tác hoặc có thể tương tác với người sử dụng, thông qua một máy xử lý dữ liệu tự động; phương tiện lưu trữ được định dạng riêng (đã ghi)",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phamViLoaiKhac": {
         "nguonLoai": "MAY_SUY",
         "cha": "8523491",
@@ -1034,15 +1079,48 @@
         ],
         "toTienCoTen": "852349",
         "dinhNghiaDuoc": false
+      },
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "ghiMaNhiPhanTuongTac",
+                "op": "CO"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "phương tiện lưu trữ được định dạng riêng"
+              }
+            ]
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-02-20261120#soat-852349-v1",
+          "ngay": "2026-11-20",
+          "bam": "e5abbd0301b4ee6225c9ad82fafdf31fbf212a5a3f68b0b92cb024426ca91dfd"
+        }
       }
     },
     {
       "hs": "85234915",
-      "dieuKien": "Phương tiện quang học đã ghi, trừ sản phẩm của Chương 37 — dòng gom \"Loại khác\": Loại khác, chứa phim điện ảnh trừ phim thời sự, phim du lịch, phim kỹ thuật, phim khoa học, và phim tài liệu khác — dòng cha trung gian không có trong nguồn — đối chiếu biểu thuế",
+      "dieuKien": "chứa phim điện ảnh (trừ phim thời sự, du lịch, kỹ thuật, khoa học, tài liệu khác)",
       "loaiKhac": true,
       "nguon": "tax.85234915",
       "trich": "85234915 - - - - Loại khác, chứa phim điện ảnh trừ phim thời sự, phim du lịch, phim kỹ thuật, phim khoa học, và phim tài liệu khác",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phamViLoaiKhac": {
         "nguonLoai": "MAY_SUY",
         "cha": "8523491",
@@ -1054,15 +1132,29 @@
         ],
         "toTienCoTen": "852349",
         "dinhNghiaDuoc": false
+      },
+      "dieuKienSo": [
+        {
+          "fact": "chuaPhimDienAnh",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-02-20261120#soat-852349-v1",
+          "ngay": "2026-11-20",
+          "bam": "e5abbd0301b4ee6225c9ad82fafdf31fbf212a5a3f68b0b92cb024426ca91dfd"
+        }
       }
     },
     {
       "hs": "85234916",
-      "dieuKien": "Phương tiện quang học đã ghi, trừ sản phẩm của Chương 37 — dòng gom \"Loại khác\": Loại khác, dùng cho điện ảnh — dòng cha trung gian không có trong nguồn — đối chiếu biểu thuế",
+      "dieuKien": "phù hợp dùng cho điện ảnh",
       "loaiKhac": true,
       "nguon": "tax.85234916",
       "trich": "85234916 - - - - Loại khác, dùng cho điện ảnh",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phamViLoaiKhac": {
         "nguonLoai": "MAY_SUY",
         "cha": "8523491",
@@ -1074,6 +1166,20 @@
         ],
         "toTienCoTen": "852349",
         "dinhNghiaDuoc": false
+      },
+      "dieuKienSo": [
+        {
+          "fact": "dungChoDienAnh",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-02-20261120#soat-852349-v1",
+          "ngay": "2026-11-20",
+          "bam": "e5abbd0301b4ee6225c9ad82fafdf31fbf212a5a3f68b0b92cb024426ca91dfd"
+        }
       }
     },
     {
@@ -1099,27 +1205,70 @@
     },
     {
       "hs": "85234991",
-      "dieuKien": "Phương tiện quang học đã ghi, trừ sản phẩm của Chương 37: Loại sử dụng để tái tạo các hiện tượng trừ âm thanh hoặc hình ảnh — dòng cha trung gian không có trong nguồn — đối chiếu biểu thuế",
+      "dieuKien": "công dụng / mục đích: tái tạo các hiện tượng; không công dụng / mục đích: âm thanh hoặc hình ảnh",
       "loaiKhac": false,
       "nguon": "tax.85234991",
       "trich": "85234991 - - - - Loại sử dụng để tái tạo các hiện tượng trừ âm thanh hoặc hình ảnh",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "tái tạo các hiện tượng"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "âm thanh",
+            "hình ảnh"
+          ],
+          "chieu": "PHAI_KHONG"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-02-20261120#soat-852349-v1",
+          "ngay": "2026-11-20",
+          "bam": "e5abbd0301b4ee6225c9ad82fafdf31fbf212a5a3f68b0b92cb024426ca91dfd"
+        }
+      }
     },
     {
       "hs": "85234992",
-      "dieuKien": "Phương tiện quang học đã ghi, trừ sản phẩm của Chương 37: Loại chỉ sử dụng để tái tạo âm thanh — dòng cha trung gian không có trong nguồn — đối chiếu biểu thuế",
+      "dieuKien": "chỉ hoặc chủ yếu dùng cho (mức ràng buộc công dụng); công dụng / mục đích: tái tạo âm thanh",
       "loaiKhac": false,
       "nguon": "tax.85234992",
       "trich": "85234992 - - - - Loại chỉ sử dụng để tái tạo âm thanh",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "chiHoacChuYeu",
+          "op": "CO"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "tái tạo âm thanh"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-02-20261120#soat-852349-v1",
+          "ngay": "2026-11-20",
+          "bam": "e5abbd0301b4ee6225c9ad82fafdf31fbf212a5a3f68b0b92cb024426ca91dfd"
+        }
+      }
     },
     {
       "hs": "85234993",
-      "dieuKien": "Phương tiện quang học đã ghi, trừ sản phẩm của Chương 37 — dòng gom \"Loại khác\": Loại khác, loại sử dụng để tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh, được ghi ở dạng mã nhị phân để máy có thể đọc được, và có thể thao tác hoặc có thể tương tác với người sử dụng, thông qua một máy xử lý dữ liệu tự động; phương tiện lưu trữ được định dạng riêng (đã ghi) — dòng cha trung gian không có trong nguồn — đối chiếu biểu thuế",
+      "dieuKien": "(ghi dạng mã nhị phân máy đọc được, có thể thao tác hoặc tương tác qua máy xử lý dữ liệu tự động và công dụng / mục đích: tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh) hoặc (tên loại hàng: phương tiện lưu trữ được định dạng riêng)",
       "loaiKhac": true,
       "nguon": "tax.85234993",
       "trich": "85234993 - - - - Loại khác, loại sử dụng để tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh, được ghi ở dạng mã nhị phân để máy có thể đọc được, và có thể thao tác hoặc có thể tương tác với người sử dụng, thông qua một máy xử lý dữ liệu tự động; phương tiện lưu trữ được định dạng riêng (đã ghi)",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phamViLoaiKhac": {
         "nguonLoai": "MAY_SUY",
         "cha": "8523499",
@@ -1129,6 +1278,39 @@
         ],
         "toTienCoTen": "852349",
         "dinhNghiaDuoc": true
+      },
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "ghiMaNhiPhanTuongTac",
+                "op": "CO"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "phương tiện lưu trữ được định dạng riêng"
+              }
+            ]
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-02-20261120#soat-852349-v1",
+          "ngay": "2026-11-20",
+          "bam": "e5abbd0301b4ee6225c9ad82fafdf31fbf212a5a3f68b0b92cb024426ca91dfd"
+        }
       }
     },
     {
@@ -1152,11 +1334,26 @@
     },
     {
       "hs": "85235111",
-      "dieuKien": "Phương tiện bán dẫn: thiết bị lưu trữ thể rắn không xóa, đã hoặc chưa ghi, trừ sản phẩm của Chương 37: Loại dùng cho máy vi tính — dòng cha trung gian không có trong nguồn — đối chiếu biểu thuế",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): máy vi tính",
       "loaiKhac": false,
       "nguon": "tax.85235111",
       "trich": "85235111 - - - - Loại dùng cho máy vi tính",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy vi tính"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-02-20261120#soat-852351-v1",
+          "ngay": "2026-11-20",
+          "bam": "68535c9781a4bd493f40dc86a71f3f1babab79de7b871c91f38ef84e3e9a83e1"
+        }
+      }
     },
     {
       "hs": "85235119",
@@ -1177,11 +1374,26 @@
     },
     {
       "hs": "85235121",
-      "dieuKien": "Phương tiện bán dẫn: thiết bị lưu trữ thể rắn không xóa, đã hoặc chưa ghi, trừ sản phẩm của Chương 37: Loại dùng cho máy vi tính — dòng cha trung gian không có trong nguồn — đối chiếu biểu thuế",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): máy vi tính",
       "loaiKhac": false,
       "nguon": "tax.85235121",
       "trich": "85235121 - - - - - Loại dùng cho máy vi tính",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy vi tính"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-02-20261120#soat-852351-v1",
+          "ngay": "2026-11-20",
+          "bam": "68535c9781a4bd493f40dc86a71f3f1babab79de7b871c91f38ef84e3e9a83e1"
+        }
+      }
     },
     {
       "hs": "85235129",
@@ -1202,11 +1414,11 @@
     },
     {
       "hs": "85235130",
-      "dieuKien": "Phương tiện bán dẫn: thiết bị lưu trữ thể rắn không xóa, đã hoặc chưa ghi, trừ sản phẩm của Chương 37 — dòng gom \"Loại khác\": Loại khác, loại sử dụng để tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh, được ghi ở dạng mã nhị phân để máy có thể đọc được, và có thể thao tác hoặc có thể tương tác với người sử dụng, thông qua một máy xử lý dữ liệu tự động; phương tiện lưu trữ được định dạng riêng (đã ghi) — dòng cha trung gian không có trong nguồn — đối chiếu biểu thuế",
+      "dieuKien": "(ghi dạng mã nhị phân máy đọc được, có thể thao tác hoặc tương tác qua máy xử lý dữ liệu tự động và công dụng / mục đích: tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh) hoặc (tên loại hàng: phương tiện lưu trữ được định dạng riêng)",
       "loaiKhac": true,
       "nguon": "tax.85235130",
       "trich": "85235130 - - - - Loại khác, loại sử dụng để tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh, được ghi ở dạng mã nhị phân để máy có thể đọc được, và có thể thao tác hoặc có thể tương tác với người sử dụng, thông qua một máy xử lý dữ liệu tự động; phương tiện lưu trữ được định dạng riêng (đã ghi)",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phamViLoaiKhac": {
         "nguonLoai": "MAY_SUY",
         "cha": "852351",
@@ -1217,15 +1429,48 @@
         ],
         "toTienCoTen": "852351",
         "dinhNghiaDuoc": true
+      },
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "ghiMaNhiPhanTuongTac",
+                "op": "CO"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "phương tiện lưu trữ được định dạng riêng"
+              }
+            ]
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-02-20261120#soat-852351-v1",
+          "ngay": "2026-11-20",
+          "bam": "68535c9781a4bd493f40dc86a71f3f1babab79de7b871c91f38ef84e3e9a83e1"
+        }
       }
     },
     {
       "hs": "85235191",
-      "dieuKien": "Phương tiện bán dẫn: thiết bị lưu trữ thể rắn không xóa, đã hoặc chưa ghi, trừ sản phẩm của Chương 37 — dòng gom \"Loại khác\": Loại khác, chứa phim điện ảnh trừ phim thời sự, phim du lịch, phim kỹ thuật, phim khoa học, và phim tài liệu khác — dòng cha trung gian không có trong nguồn — đối chiếu biểu thuế",
+      "dieuKien": "chứa phim điện ảnh (trừ phim thời sự, du lịch, kỹ thuật, khoa học, tài liệu khác)",
       "loaiKhac": true,
       "nguon": "tax.85235191",
       "trich": "85235191 - - - - - Loại khác, chứa phim điện ảnh trừ phim thời sự, phim du lịch, phim kỹ thuật, phim khoa học, và phim tài liệu khác",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phamViLoaiKhac": {
         "nguonLoai": "MAY_SUY",
         "cha": "8523519",
@@ -1234,15 +1479,29 @@
         ],
         "toTienCoTen": "852351",
         "dinhNghiaDuoc": false
+      },
+      "dieuKienSo": [
+        {
+          "fact": "chuaPhimDienAnh",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-02-20261120#soat-852351-v1",
+          "ngay": "2026-11-20",
+          "bam": "68535c9781a4bd493f40dc86a71f3f1babab79de7b871c91f38ef84e3e9a83e1"
+        }
       }
     },
     {
       "hs": "85235192",
-      "dieuKien": "Phương tiện bán dẫn: thiết bị lưu trữ thể rắn không xóa, đã hoặc chưa ghi, trừ sản phẩm của Chương 37 — dòng gom \"Loại khác\": Loại khác, dùng cho điện ảnh — dòng cha trung gian không có trong nguồn — đối chiếu biểu thuế",
+      "dieuKien": "phù hợp dùng cho điện ảnh",
       "loaiKhac": true,
       "nguon": "tax.85235192",
       "trich": "85235192 - - - - - Loại khác, dùng cho điện ảnh",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phamViLoaiKhac": {
         "nguonLoai": "MAY_SUY",
         "cha": "8523519",
@@ -1251,6 +1510,20 @@
         ],
         "toTienCoTen": "852351",
         "dinhNghiaDuoc": false
+      },
+      "dieuKienSo": [
+        {
+          "fact": "dungChoDienAnh",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-02-20261120#soat-852351-v1",
+          "ngay": "2026-11-20",
+          "bam": "68535c9781a4bd493f40dc86a71f3f1babab79de7b871c91f38ef84e3e9a83e1"
+        }
       }
     },
     {
@@ -2857,6 +3130,102 @@
           "phien": "claude-agent:tho-hs-02-20261120#soat-852329-v1",
           "ngay": "2026-11-20",
           "bam": "c0e1a24b0b15504e577e695e6cace15b1cf79361abc54dcc2861e0d00cd22002"
+        }
+      }
+    },
+    {
+      "id": "852349~r15527",
+      "nguon": "tieuDe.852349~r15527",
+      "trich": "852349~r15527 Loại chỉ sử dụng để tái tạo âm thanh",
+      "dieuKienSo": [
+        {
+          "fact": "chiHoacChuYeu",
+          "op": "CO"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "tái tạo âm thanh"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-02-20261120#soat-852349-v1",
+          "ngay": "2026-11-20",
+          "bam": "e5abbd0301b4ee6225c9ad82fafdf31fbf212a5a3f68b0b92cb024426ca91dfd"
+        }
+      }
+    },
+    {
+      "id": "8523491",
+      "nguon": "tieuDe.8523491",
+      "trich": "8523491 Đĩa dùng cho hệ thống đọc bằng laser",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "hệ thống đọc bằng laser"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-02-20261120#soat-852349-v1",
+          "ngay": "2026-11-20",
+          "bam": "e5abbd0301b4ee6225c9ad82fafdf31fbf212a5a3f68b0b92cb024426ca91dfd"
+        }
+      }
+    },
+    {
+      "id": "8523511",
+      "nguon": "tieuDe.8523511",
+      "trich": "8523511 Loại chưa ghi",
+      "dieuKienSo": [
+        {
+          "fact": "daGhi",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-02-20261120#soat-852351-v1",
+          "ngay": "2026-11-20",
+          "bam": "68535c9781a4bd493f40dc86a71f3f1babab79de7b871c91f38ef84e3e9a83e1"
+        }
+      }
+    },
+    {
+      "id": "8523512",
+      "nguon": "tieuDe.8523512",
+      "trich": "8523512 Loại để tái tạo các hiện tượng trừ âm thanh hoặc hình ảnh",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "tái tạo các hiện tượng"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "âm thanh",
+            "hình ảnh"
+          ],
+          "chieu": "PHAI_KHONG"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-02-20261120#soat-852351-v1",
+          "ngay": "2026-11-20",
+          "bam": "68535c9781a4bd493f40dc86a71f3f1babab79de7b871c91f38ef84e3e9a83e1"
         }
       }
     },
