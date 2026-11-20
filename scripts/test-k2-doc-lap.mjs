@@ -11,7 +11,7 @@ import './test-isolate-data.mjs';
  *  - Lượt không kiemMa vẫn 0 lượt LLM, CHUA_KIEM_MA giữ nguyên, chỉ thêm mục K2 tất định.
  *  - Hợp đồng lùi tương thích: chỉ THÊM trường tuỳ chọn (docLap, ghiChuDocLap, maCanhTranh, k2DocLap, duKienCanHoi); đủ 7 nhóm.
  *  - Mục độc lập tối đa CANH_BAO (kể cả HS_K2_LOI=on), không gắn nhãn GIR; mã cạnh tranh hiện cả hai chiều thuế.
- *  - HS_K2_DOC_LAP=off ⇒ y như trước (không trường mới nào).
+ *  - MẶC ĐỊNH TẮT: không đặt HS_K2_DOC_LAP (hoặc off) ⇒ y như trước, không trường mới nào; mọi ca còn lại chạy với HS_K2_DOC_LAP=on.
  * Ca lấy từ dữ liệu CÔNG KHAI của repo (bộ đề lát 1, ví dụ của test sổ tay). Bộ phân loại là bản GIẢ đếm lượt — không mạng, không LLM.
  */
 import { createRequire } from 'module';
@@ -47,11 +47,11 @@ const INVERTER = 'Bộ nghịch lưu (inverter) hòa lưới điện mặt trờ
 const MAY_XAY = 'Máy xay sinh tố cầm tay dùng trong gia đình, 300W, 220V, hiệu ABC, mới 100%';
 
 // ── 1. Lỗi tự chấm: mã sai mà bộ phân loại "đồng ý" ─────────────────────────────────────────────────────────────────────
-process.env.HS_K2_DOC_LAP = 'off';
+delete process.env.HS_K2_DOC_LAP; // mặc định (không đặt cờ) = TẮT
 let r = await soat('39269099', NUT_VAN);
-check('TRƯỚC (HS_K2_DOC_LAP=off): mã sai 3926.90.99, bộ phân loại chọn lại đúng mã đó ⇒ K2 "MA_KHOP" DAT, gọi bộ phân loại 1 lượt', r.goi === 1 && muc(r, 'MA_KHOP')?.trangThai === 'DAT', tom(r));
+check('TRƯỚC (mặc định, không đặt HS_K2_DOC_LAP): mã sai 3926.90.99, bộ phân loại chọn lại đúng mã đó ⇒ K2 "MA_KHOP" DAT, gọi bộ phân loại 1 lượt', r.goi === 1 && muc(r, 'MA_KHOP')?.trangThai === 'DAT', tom(r));
 check('TRƯỚC: không mục nào mang trường mới (docLap, ghiChuDocLap, maCanhTranh), dòng không có k2DocLap', r.d.kiem.every((m) => !('docLap' in m) && !('ghiChuDocLap' in m) && !('maCanhTranh' in m)) && !('k2DocLap' in r.d) && !('duKienCanHoi' in r.d));
-delete process.env.HS_K2_DOC_LAP;
+process.env.HS_K2_DOC_LAP = 'on';
 r = await soat('39269099', NUT_VAN);
 const tl = muc(r, 'DOC_LAP_TIEN_LE_CUNG_LOAI_HANG_MA_KHAC');
 check('SAU: cùng dòng đó ⇒ K2 cảnh báo bằng tiền lệ TB-TCHQ, KHÔNG gọi bộ phân loại, không còn "MA_KHOP"', r.goi === 0 && tl?.trangThai === 'CANH_BAO' && tl.docLap === true && !muc(r, 'MA_KHOP') && r.d.k2DocLap === true, tom(r));

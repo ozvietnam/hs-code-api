@@ -13,8 +13,8 @@
  * Chọn ngẫu nhiên bằng hạt giống cố định theo (seed, id ca, loại lỗi) ⇒ chạy lại ra đúng bộ ca cấy.
  *
  * Mỗi dòng soát bằng `runDeclarationCheck({ kiemMa: true })` ở hai chế độ, để so TRƯỚC / SAU bản sửa K2 độc lập:
- *   truoc  HS_K2_DOC_LAP=off — K2 như cũ: gọi lại bộ phân loại cho MỌI dòng
- *   sau    HS_K2_DOC_LAP bật (mặc định) — K2 chấm bằng nguồn tất định trước, chỉ gọi bộ phân loại khi không nguồn nào kết luận
+ *   truoc  không đặt HS_K2_DOC_LAP (mặc định hiện nay) — K2 như cũ: gọi lại bộ phân loại cho MỌI dòng
+ *   sau    HS_K2_DOC_LAP=on — K2 chấm bằng nguồn tất định trước, chỉ gọi bộ phân loại khi không nguồn nào kết luận
  * Bộ phân loại (lib/classify.js) bị thay bằng bản GIẢ không trả lời (ngoại tuyến): bộ đo chỉ ĐẾM số lượt K2 phải nhờ tới nó.
  * Vì vậy số "bắt" ở đây là phần hệ thống tự bắt được mà KHÔNG dựa vào việc bộ phân loại chấm lại bài của chính nó.
  * "Cảnh báo K2 mới" = bản cấy lỗi có ít nhất một mục K2 CANH_BAO/LOI (mã mục + mã cạnh tranh) mà bản đúng của chính ca đó không có.
@@ -124,7 +124,7 @@ function cay(c, loai) {
 // ── chạy một dòng qua đường soát sẵn có ──────────────────────────────────────────────────────────────────────────────────
 const CHE = NHANH ? ['sau'] : ['truoc', 'sau'];
 async function soat1(ma, moTa, che) {
-  if (che === 'truoc') process.env.HS_K2_DOC_LAP = 'off'; else delete process.env.HS_K2_DOC_LAP;
+  if (che === 'truoc') delete process.env.HS_K2_DOC_LAP; else process.env.HS_K2_DOC_LAP = 'on';
   const truocGoi = goiPhanLoai;
   const kq = await runDeclarationCheck({ dongHang: [{ stt: 1, maHs: ma, moTa: String(moTa).slice(0, 2000), xuatXu: 'CN' }], kiemMa: true }, {});
   const kiem = kq.dong[0].kiem;

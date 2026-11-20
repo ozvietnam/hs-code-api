@@ -253,13 +253,13 @@ chỉ ở `hoSo.canCu` (lib/gir.js) và cấp dòng khi classify chạy; không 
 **Không nghiên cứu web** trong soát: dữ kiện câu khai thiếu phải hiện là `THIEU`. LLM (đọc dữ kiện, viết) luôn trong
 `withPrivateData`; chi phí vào `usage`.
 
-### 8.4 K2 độc lập (HS_K2_DOC_LAP, mặc định bật) — sửa lỗi "máy tự chấm bài của mình"
+### 8.4 K2 độc lập (chỉ khi `HS_K2_DOC_LAP=on`; mặc định TẮT) — sửa lỗi "máy tự chấm bài của mình"
 
 Mã: `lib/declaration-check.js` (`kiemK2DocLap`, `kiemK2CoDocLap`), `lib/ho-so/soat.js` (`soat(…, { chiLuat: true })`,
 `maCanhTranhCua`). Số đo trước/sau: `docs/bench/soat-nen-2026-11-21.md`. Chỉ **thêm** trường tuỳ chọn; mọi trường cũ giữ nguyên.
 
 Trước đây K2 kiểm mã bằng cách gọi lại đúng bộ phân loại (`/api/classify`): mã do chính bộ đó đề xuất thì K2 gần như luôn
-"khớp". Nay, ở mọi nhánh **không** phải K2 hồ sơ của 8.3 (tức chế độ `off`, `shadow`, mã ngoài lát 1, hoặc không `kiemMa`), K2
+"khớp". Khi `HS_K2_DOC_LAP=on`, ở mọi nhánh **không** phải K2 hồ sơ của 8.3 (tức chế độ `off`, `shadow`, mã ngoài lát 1, hoặc không `kiemMa`), K2
 chấm trước bằng nguồn tất định sẵn có, **không LLM, không bộ phân loại**:
 
 | Nguồn | Mục `ma` (`nhom: 'K2'`, `docLap: true`) | `trangThai` / `basis` |
@@ -276,7 +276,7 @@ Mục độc lập **tối đa `CANH_BAO`** (kể cả `HS_K2_LOI=on`), không g
 | `kiemMa` + có nguồn tất định **kết luận** (ủng hộ hoặc phản đối) | chỉ các mục `docLap: true`; **không gọi bộ phân loại**, `usage` rỗng | `k2DocLap: true` |
 | `kiemMa` + không nguồn nào kết luận | đường cũ; mục có nguồn `/api/classify` thêm `docLap: false` + `ghiChuDocLap` ("Không độc lập: …") | `k2DocLap: false` |
 | không `kiemMa` (miễn phí) | `CHUA_KIEM_MA` như cũ **+** các mục `docLap: true` nếu có; vẫn 0 lượt LLM | `k2DocLap: true\|false` |
-| `HS_K2_DOC_LAP=off` | y như trước mục này, không trường mới nào | — |
+| không đặt `HS_K2_DOC_LAP` (mặc định) hoặc `off` | y như trước mục này, không trường mới nào | — |
 
 Trường tuỳ chọn mới:
 
