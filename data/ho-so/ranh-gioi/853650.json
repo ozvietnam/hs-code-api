@@ -299,12 +299,6 @@
     {
       "ma": "8536503",
       "loai": "BO_VE",
-      "ve": "đảo mạch dùng cho bếp và bếp có lò nướng",
-      "lyDo": "Giá trị NGAT_SOC_DONG của loaiCongTac được định nghĩa (nhanVi tu-vung@2: \"ngắt khi sốc dòng cao; đảo mạch bếp; công tắc micro; công tắc nguồn TV/radio, quạt, điều hòa\") đúng bằng sáu vế của tiêu đề 8536503, gồm vế này; máy chỉ neo được chữ đọc \"công tắc micro\" của giá trị (quyết định GĐ vòng 4)."
-    },
-    {
-      "ma": "8536503",
-      "loai": "BO_VE",
       "ve": "cho máy thu truyền hình hoặc thu sóng vô tuyến",
       "lyDo": "Giá trị NGAT_SOC_DONG của loaiCongTac được định nghĩa (nhanVi tu-vung@2: \"ngắt khi sốc dòng cao; đảo mạch bếp; công tắc micro; công tắc nguồn TV/radio, quạt, điều hòa\") đúng bằng sáu vế của tiêu đề 8536503, gồm vế này; máy chỉ neo được chữ đọc \"công tắc micro\" của giá trị (quyết định GĐ vòng 4)."
     },
@@ -369,6 +363,11 @@
       "ma": "853650",
       "loai": "QUYET_DINH",
       "ghiChu": "Claude (#1109): hết DỪNG (10/11, lô 11). Từ vựng @2 thêm cumChanDoc.loaiCongTac (lib/tu-vung.js#cheCumChan): trước khi đọc giá trị loaiCongTac, che các cụm «công tắc micro (micro switch)», «micro switch», «công tắc hành trình» — đó là công tắc hành trình (TB 4012/TB-TCHQ xếp 8536.50.5x), không phải «microphone switches» (EN của tầng 8536503). Hàng ghi các cụm này giờ là CHƯA BIẾT với NGAT_SOC_DONG (lúc chạy hỏi), không còn đọc nhầm vào 8536503; «công tắc micro cho bộ đàm» vẫn đọc NGAT_SOC_DONG. Khoá @1 không đổi, chỉ thêm khối che ở @2."
+    },
+    {
+      "ma": "853650",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Lượt 3 (OZV-1562): (A) #1453 cumChanDoc đã che vi/en/zh micro-switch + «nồi cơm»/«lò nướng» đòi chữ mini (bounded 50 ký tự) ⇒ «công tắc cỡ thường dùng cho nồi cơm» CHUA_BIET, không vào .40; vế 2 «loại đảo mạch dùng cho bếp và bếp có lò nướng» giờ MÁY ĐỌC ĐƯỢC qua 2 mẫu bounded «đảo mạch…bếp»/«bếp…đảo mạch» mới ở cachDoc NGAT_SOC_DONG ⇒ XOÁ BO_VE vế này (3 vế TV/radio, quạt, điều hòa còn BO_VE). (B) nhanEn micro switch→microphone switches, nhanZh 微动开关→麦克风开关; cachDoc en thêm microphone switch, zh 微动开关→麦克风开关 (EN biểu: microphone switches). (C) tiền lệ 3387/TB-TCHQ đã có mục 853650-01 trong hieu-chinh-tien-le.json (#1474, LECH_CHUA_PHAN_XU) — bản duyệt theo CHỮ BIỂU, .96 giữ dongDien < 16 A, không đè tiền lệ. (D) THỬ --kiem (XANH, 5 cảnh báo không chặn) → --duyet → --ap-dung: bench --nhom=8536 ra 52 chotDung / 22 hoi / 8 khongTheChot / **3 chotSai MỚI** (vi phạm cổng chotSai 0) nên THÁO về TRA_VE, giữ traVe làm lịch sử: (1) ca .33 — tiêu đề CHA 8536503 (6 vế, có chữ «quạt điện») khớp CONG_DUNG «quạt điện» của .32 ⇒ máy chốt .32 thay vì .33; (2)(3) ca .39/.59 THIEU_DU_KIEN kỳ vọng HOI nhưng máy «tu-chot-dong-co-ten-khi-thieu-du-kien» chốt .32/.51. Cần siết .32 (đo hai chiều) + soi cơ chế tu-chot ở tầng 3 trước khi duyệt lại."
     }
   ],
   "traVe": [
