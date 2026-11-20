@@ -640,6 +640,56 @@ check('trangThaiDong8.veMoHinh: 73181510 chấm trọn nhãn "Đường kính ng
   cd = chotDong8({ hs: '851840', productText: 'Thiết bị điện khuếch đại âm tần' });
   check('OZV-1648 851840 THIEU_DU_KIEN: chỉ có tên phân nhóm 6 số → THIEU_SO_LIEU (không tự chốt)',
     cd.ketQua === 'THIEU_SO_LIEU' && !cd.hs, JSON.stringify([cd.ketQua, cd.hs]));
+
+  // ── OZV-1668: _traiKhiNutThoa không hạ oan khi nút anh em không khớp vế so chữ (8529) + phủ định tuHutHoiDoc cho kệ pallet (9403) ──
+  cd = chotDong8({
+    hs: '852910',
+    productText: 'Ăng ten và bộ phản xạ ăng ten các loại; các bộ phận phù hợp sử dụng cho các thiết bị trên: Loại khác: Loại dùng với thiết bị truyền dẫn để phát sóng vô tuyến',
+  });
+  check('OZV-1668 85291093: nút 8529102 (HOAC Chảo phản xạ) không có phương án nào khớp vế so chữ → CHOT 85291093',
+    cd.ketQua === 'CHOT' && cd.hs === '85291093', JSON.stringify([cd.ketQua, cd.hs, cd.missingFacts]));
+
+  cd = chotDong8({
+    hs: '852910',
+    productText: 'Ăng ten và bộ phản xạ ăng ten các loại: Dùng cho chảo phản xạ, loại dùng với thiết bị truyền dẫn để phát sóng vô tuyến',
+  });
+  check('OZV-1668 852910 rào ngược: mô tả khớp vế so chữ "Chảo phản xạ" của phương án 2 nút 8529102 nhưng chưa rõ laBoPhan → không chốt vội 85291093',
+    cd.hs !== '85291093' && cd.ketQua !== 'CHOT', JSON.stringify([cd.ketQua, cd.hs, cd.missingFacts]));
+
+  cd = chotDong8({
+    hs: '852990',
+    productText: 'Bộ phận chỉ dùng hoặc chủ yếu dùng với các thiết bị thuộc các nhóm từ 85.24 đến 85.28 - Loại khác: Loại khác: Dùng cho máy thu truyền hình',
+  });
+  check('OZV-1668 85299091: nút 8529905 (Tấm mạch in, đã lắp ráp) có tenLoai soChu=TRAI → CHOT 85299091',
+    cd.ketQua === 'CHOT' && cd.hs === '85299091', JSON.stringify([cd.ketQua, cd.hs, cd.missingFacts]));
+
+  cd = chotDong8({
+    hs: '852990',
+    productText: 'Bộ phận dùng với thiết bị nhóm 85.28 - Loại khác: Tấm mạch in dùng cho máy thu truyền hình',
+  });
+  check('OZV-1668 852990 rào ngược: mô tả có "Tấm mạch in" (nút 8529905 soChu=THOA) chưa rõ đã lắp ráp → THIEU_SO_LIEU hỏi daLapRap, không chốt vội 85299091',
+    cd.ketQua === 'THIEU_SO_LIEU' && cd.hs !== '85299091' && (cd.missingFacts || []).some((m) => m.fact === 'daLapRap'),
+    JSON.stringify([cd.ketQua, cd.hs, cd.missingFacts]));
+
+  cd = chotDong8({
+    hs: '940320',
+    productText: 'Đồ nội thất bằng kim loại khác: kệ chứa hàng pallet',
+  });
+  check('OZV-1668 94032090: "kệ chứa hàng pallet" phủ định tuHutHoiDoc → LOAI_KHAC 94032090',
+    cd.ketQua === 'LOAI_KHAC' && cd.hs === '94032090', JSON.stringify([cd.ketQua, cd.hs]));
+
+  cd = chotDong8({
+    hs: '940320',
+    productText: 'Đồ nội thất bằng kim loại khác',
+  });
+  check('OZV-1668 940320 rào ngược: mô tả chỉ có "Đồ nội thất bằng kim loại khác" → vẫn hỏi tuHutHoiDoc (THIEU_SO_LIEU)',
+    cd.ketQua === 'THIEU_SO_LIEU' && (cd.missingFacts || []).some((m) => m.fact === 'tuHutHoiDoc'),
+    JSON.stringify([cd.ketQua, cd.hs, cd.missingFacts]));
+
+  const t0RedosPallet = Date.now();
+  DK.danhGiaTuChu({ fact: 'tuHutHoiDoc', op: 'CO' }, `${'kệ chứa hàng '.repeat(40000)}bằng thép`, '94032010');
+  const dtRedosPallet = Date.now() - t0RedosPallet;
+  check('OZV-1668 ReDoS tuHutHoiDoc: câu ~40.000 từ lặp chạy < 2 giây', dtRedosPallet < 2000, `${dtRedosPallet}ms`);
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);
