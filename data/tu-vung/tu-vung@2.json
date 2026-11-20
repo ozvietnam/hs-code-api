@@ -2999,19 +2999,22 @@
     },
     "NGAT_SOC_DONG": {
      "nhanVi": "ngắt khi sốc dòng cao; đảo mạch bếp; công tắc micro; công tắc nguồn TV/radio, quạt, điều hòa",
-     "nhanEn": "high inrush current cut-out; cooker change-over; micro switch; power switch for TV/radio, fan, air-conditioner",
-     "nhanZh": "大冲击电流断路器；灶具转换开关；微动开关；电视/收音机、风扇、空调电源开关",
+     "nhanEn": "high inrush current cut-off; cooker change-over; microphone switches; power switch for TV/radio, fan, air-conditioner",
+     "nhanZh": "大冲击电流断路器；灶具转换开关；麦克风开关；电视/收音机、风扇、空调电源开关",
      "cachDoc": {
       "vi": [
        "công tắc micro",
-       "sốc dòng"
+       "sốc dòng",
+       "đảo mạch[^.;,\\n]{0,50}bếp",
+       "bếp[^.;,\\n]{0,50}đảo mạch"
       ],
       "en": [
        "micro\\s?switch",
-       "inrush"
+       "inrush",
+       "microphone\\s?switch"
       ],
       "zh": [
-       "微动开关"
+       "麦克风开关"
       ]
      },
      "cachViet": null
