@@ -713,7 +713,12 @@
         "nguonLoai": "MAY_SUY",
         "cha": "8504312",
         "truAnhEm": [
-          "85043121",
+          "850431~r14985",
+          "85043123",
+          "85043124"
+        ],
+        "truDayDu": [
+          "850431~r14985",
           "85043123",
           "85043124"
         ],
@@ -1372,11 +1377,28 @@
     },
     {
       "hs": "85044011",
-      "dieuKien": "Phân nhóm 8504.40 [Electrical static converters]: Bộ nguồn cấp điện liên tục (UPS) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế) — SEN: UPS là bộ biến đổi điện gồm biến điện, ắc quy chì-axit gắn kín với đầu ra hoặc tấm mạch in kèm điện trở, tụ, rơ le; bảo vệ nguồn, chống sốc điện, lọc nhiễu, nạp ắc quy tức thời",
+      "dieuKien": "loại bộ biến đổi tĩnh điện: bộ nguồn cấp điện liên tục (UPS)",
       "loaiKhac": false,
-      "nguon": "sen.85044011",
-      "trich": "Bộ nguồn cấp điện liên tục là bộ biến đổi điện bao gồm các biến điện, các ắc quy chì-axit được gắn kín với đầu ra, hoặc các tấm mạch in lắp cùng với các điện trở, tụ điện, rơ le,...",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguon": "tax.85044011",
+      "trich": "85044011 - - - Bộ nguồn cấp điện liên tục (UPS) (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "loaiBienDoiTinhDien",
+          "op": "TRONG",
+          "value": [
+            "UPS"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01-20261120#soat-850440-v1",
+          "ngay": "2026-11-20",
+          "bam": "8ec35889347df204fe674adf67c245928325beed8581653c2e017e85ae88de4c"
+        }
+      }
     },
     {
       "hs": "85044019",
@@ -1397,35 +1419,144 @@
     },
     {
       "hs": "85044020",
-      "dieuKien": "Phân nhóm 8504.40 [Electrical static converters]: Máy nạp ắc qui, pin có công suất danh định trên 100 kVA",
+      "dieuKien": "tên loại hàng: Máy nạp ắc qui; công suất biểu kiến > 100 kVA",
       "loaiKhac": false,
       "nguon": "tax.85044020",
-      "trich": "Máy nạp ắc qui, pin có công suất danh định trên 100 kVA",
-      "nguonLoai": "AI_DA_KIEM",
+      "trich": "85044020 - - Máy nạp ắc qui, pin có công suất danh định trên 100 kVA",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "cong_suat",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy nạp ắc qui"
+        },
+        {
+          "fact": "congSuatBieuKien",
           "op": ">",
           "value": 100,
           "donVi": "kVA"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01-20261120#soat-850440-v1",
+          "ngay": "2026-11-20",
+          "bam": "8ec35889347df204fe674adf67c245928325beed8581653c2e017e85ae88de4c"
+        }
+      },
+      "chongLanTruc": {
+        "pn6": "850440",
+        "nhanh": [
+          "8504401",
+          "85044020",
+          "85044040"
+        ],
+        "truc": {
+          "8504401": "CONG_DUNG",
+          "85044020": "TEN_LOAI",
+          "85044040": "DAC_DIEM"
+        },
+        "cauHoiPhanBiet": "Hàng này dùng cho máy xử lý dữ liệu tự động hoặc thiết bị viễn thông (tầng 8504401), hay là máy nạp ắc qui trên 100 kVA (85044020), hay là bộ nghịch lưu (85044040)?",
+        "trich": {
+          "8504401": "Dùng cho các máy xử lý dữ liệu tự động và các khối chức năng của chúng, và thiết bị viễn thông",
+          "85044020": "Máy nạp ắc qui, pin có công suất danh định trên 100 kVA",
+          "85044040": "Bộ nghịch lưu"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:tho-hs-01-20261120#soat-850440-v1",
+            "ngay": "2026-11-20",
+            "bam": "8ec35889347df204fe674adf67c245928325beed8581653c2e017e85ae88de4c"
+          }
+        }
+      }
     },
     {
       "hs": "85044030",
-      "dieuKien": "Phân nhóm 8504.40 [Electrical static converters]: Bộ chỉnh lưu khác",
+      "dieuKien": "tên loại hàng: Bộ chỉnh lưu; loại bộ biến đổi tĩnh điện: bộ chỉnh lưu",
       "loaiKhac": false,
       "nguon": "tax.85044030",
-      "trich": "Bộ chỉnh lưu khác",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "85044030 - - Bộ chỉnh lưu khác",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bộ chỉnh lưu"
+        },
+        {
+          "fact": "loaiBienDoiTinhDien",
+          "op": "TRONG",
+          "value": [
+            "CHINH_LUU"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01-20261120#soat-850440-v1",
+          "ngay": "2026-11-20",
+          "bam": "8ec35889347df204fe674adf67c245928325beed8581653c2e017e85ae88de4c"
+        }
+      },
+      "phanConLai": true
     },
     {
       "hs": "85044040",
-      "dieuKien": "Phân nhóm 8504.40 [Electrical static converters]: Bộ nghịch lưu",
+      "dieuKien": "loại bộ biến đổi tĩnh điện: bộ nghịch lưu",
       "loaiKhac": false,
       "nguon": "tax.85044040",
-      "trich": "Bộ nghịch lưu",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "85044040 - - Bộ nghịch lưu",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "loaiBienDoiTinhDien",
+          "op": "TRONG",
+          "value": [
+            "NGHICH_LUU"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01-20261120#soat-850440-v1",
+          "ngay": "2026-11-20",
+          "bam": "8ec35889347df204fe674adf67c245928325beed8581653c2e017e85ae88de4c"
+        }
+      },
+      "chongLanTruc": {
+        "pn6": "850440",
+        "nhanh": [
+          "8504401",
+          "85044020",
+          "85044040"
+        ],
+        "truc": {
+          "8504401": "CONG_DUNG",
+          "85044020": "TEN_LOAI",
+          "85044040": "DAC_DIEM"
+        },
+        "cauHoiPhanBiet": "Hàng này dùng cho máy xử lý dữ liệu tự động hoặc thiết bị viễn thông (tầng 8504401), hay là máy nạp ắc qui trên 100 kVA (85044020), hay là bộ nghịch lưu (85044040)?",
+        "trich": {
+          "8504401": "Dùng cho các máy xử lý dữ liệu tự động và các khối chức năng của chúng, và thiết bị viễn thông",
+          "85044020": "Máy nạp ắc qui, pin có công suất danh định trên 100 kVA",
+          "85044040": "Bộ nghịch lưu"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:tho-hs-01-20261120#soat-850440-v1",
+            "ngay": "2026-11-20",
+            "bam": "8ec35889347df204fe674adf67c245928325beed8581653c2e017e85ae88de4c"
+          }
+        }
+      }
     },
     {
       "hs": "85044090",
@@ -2827,6 +2958,59 @@
           "phien": "claude-agent:duyet-L27-20261111#soat-L27",
           "ngay": "2026-11-11",
           "bam": "19f6b4d6f83b0612b5942d39a2d1d9d113157fd80f0df85547ffab9837cdfb30"
+        }
+      }
+    },
+    {
+      "id": "8504401",
+      "nguon": "tieuDe.8504401",
+      "trich": "8504401 Dùng cho các máy xử lý dữ liệu tự động và các khối chức năng của chúng, và thiết bị viễn thông",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "máy xử lý dữ liệu tự động",
+            "khối chức năng",
+            "thiết bị viễn thông"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01-20261120#soat-850440-v1",
+          "ngay": "2026-11-20",
+          "bam": "8ec35889347df204fe674adf67c245928325beed8581653c2e017e85ae88de4c"
+        }
+      },
+      "chongLanTruc": {
+        "pn6": "850440",
+        "nhanh": [
+          "8504401",
+          "85044020",
+          "85044040"
+        ],
+        "truc": {
+          "8504401": "CONG_DUNG",
+          "85044020": "TEN_LOAI",
+          "85044040": "DAC_DIEM"
+        },
+        "cauHoiPhanBiet": "Hàng này dùng cho máy xử lý dữ liệu tự động hoặc thiết bị viễn thông (tầng 8504401), hay là máy nạp ắc qui trên 100 kVA (85044020), hay là bộ nghịch lưu (85044040)?",
+        "trich": {
+          "8504401": "Dùng cho các máy xử lý dữ liệu tự động và các khối chức năng của chúng, và thiết bị viễn thông",
+          "85044020": "Máy nạp ắc qui, pin có công suất danh định trên 100 kVA",
+          "85044040": "Bộ nghịch lưu"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:tho-hs-01-20261120#soat-850440-v1",
+            "ngay": "2026-11-20",
+            "bam": "8ec35889347df204fe674adf67c245928325beed8581653c2e017e85ae88de4c"
+          }
         }
       }
     }

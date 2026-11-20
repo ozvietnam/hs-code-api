@@ -1,0 +1,103 @@
+{
+  "phienBan": "bao-cao-khet@2",
+  "loai": "Báo cáo khet nhóm 8504 — OZV-1652 (sau khi gỡ TRA_VE, duyệt và áp dụng 850440 để hoàn tất 10/10 phân nhóm DUYET)",
+  "ngay": "2026-11-20",
+  "canh": "Nhánh ozv-850440-sach-v1 đứng trên origin/main 22f94d5d (đã có PR #1491 duyệt 850431 và PR #1492 vá demotion dòng 1 điều kiện). Đã bổ sung {fact:'tenLoai',op:'TEN_LOAI',value:'Bộ chỉnh lưu'} đi kèm {fact:'loaiBienDoiTinhDien',op:'TRONG',value:['CHINH_LUU']} trên 85044030 ('Bộ chỉnh lưu khác', phanConLai:true), qua cổng --ap-spec, --kiem XANH (1/1 phân nhóm qua cổng, phủ 2/2 vế, CHƯA PHỦ 0, 0 lỗi, 0 DỪNG), nâng 850440 lên DUYET và --ap-dung vào data/so-tay/8504.json; đồng thời đồng bộ phamViLoaiKhac.truAnhEm của 85043129 theo lib/so-tay.js#phamViLoaiKhac để gỡ thieu-tru-anh-em(1). Cả 10/10 phân nhóm của nhóm 8504 đều đã DUYET (chua-duyet-ranh-gioi = 0, thieu-tru-anh-em = 0). Riêng phân nhóm 850440 đạt 100% trên toàn bộ bộ kiểm luật (4/4 ca DONG_CO_TEN: 85044011, 85044020, 85044030, 85044040; 2/2 ca LOAI_TRU_LOAI_KHAC: 85044019, 85044090; 2/2 ca THIEU_DU_KIEN). Toàn nhóm 8504 tăng chotDung từ 48/95 lên 54/95 (+6 ca), DONG_CO_TEN tăng từ 32/49 (65.3%) lên 36/49 (73.5% < 95%), LOAI_TRU_LOAI_KHAC tăng từ 16/23 (69.6%) lên 18/23 (78.3%), chotSai=0, chotLoaiKhacSai=0, nemLoi=0. Còn 13 ca DONG_CO_TEN nằm ở 4 phân nhóm ngoài phạm vi sửa của thẻ OZV-1652 (850432×3, 850433×2, 850434×7, 850450×1) và vướng cơ chế thừa kế nút tổ tiên 2 tầng ở lib/so-tay-gates.js:928-937.",
+  "ketQuaChot": {
+    "demNhomSachTruoc": "node scripts/dem-nhom-sach.mjs --nhom=8504 → 8504: chua-duyet-ranh-gioi(1 pn6), thieu-tru-anh-em(1), dong-co-ten(32/49=65.3%<95%) (baseline main 22f94d5d)",
+    "demNhomSachSau": "node scripts/dem-nhom-sach.mjs --nhom=8504 → 8504: dong-co-ten(36/49=73.5%<95%) (sau khi DUYET + ap-dung 850440 và đồng bộ phamViLoaiKhac 85043129; 0 chua-duyet-ranh-gioi, 0 thieu-tru-anh-em)",
+    "baselineMain": {
+      "chotDung": 48,
+      "tongSoCa": 95,
+      "chotSai": 0,
+      "chotLoaiKhacSai": 0,
+      "hoi": 24,
+      "khongTheChot": 23,
+      "nemLoi": 0,
+      "DONG_CO_TEN": "32/49 = 65.3% (4 ca 85044011/20/30/40 bị KHONG_THE_CHOT phu-dinh-chua-hoan-chinh do 850440 đang TRA_VE)",
+      "LOAI_TRU_LOAI_KHAC": "16/23 = 69.6% (2 ca 85044019/90 bị KHONG_THE_CHOT phu-dinh-chua-hoan-chinh)",
+      "THIEU_DU_KIEN": "23/23 = 100.0%"
+    },
+    "sauKhiDuyet850440": {
+      "chotDung": 54,
+      "tongSoCa": 95,
+      "chotSai": 0,
+      "chotLoaiKhacSai": 0,
+      "hoi": 26,
+      "khongTheChot": 15,
+      "nemLoi": 0,
+      "DONG_CO_TEN": "36/49 = 73.5% < 95% (cả 4/4 ca của 850440 chuyển sang CHOT đúng; còn 13 ca ở 850432/33/34/50)",
+      "LOAI_TRU_LOAI_KHAC": "18/23 = 78.3% (cả 2/2 ca 85044019 và 85044090 chuyển sang LOAI_KHAC đúng)",
+      "THIEU_DU_KIEN": "23/23 = 100.0%"
+    }
+  },
+  "ketQuaDo": {
+    "bienThe1_duyet850440GiuNguyen30ChiCoLietKe": {
+      "moTa": "Thử duyệt 850440 với 85044030 chỉ có [{fact:'loaiBienDoiTinhDien',op:'TRONG',value:['CHINH_LUU']}] (không có tenLoai 'Bộ chỉnh lưu')",
+      "lenh": "node scripts/bo-kiem-luat.mjs --nhom=8504 --json",
+      "boKiemLuat": {
+        "tongSoCa": 95,
+        "chotDung": 53,
+        "chotSai": 0,
+        "chotLoaiKhacSai": 0,
+        "DONG_CO_TEN": "36/49 = 73.5% (trên main có OZV-1648 #1492, 85044030 không còn bị 85044020 hạ oan)",
+        "LOAI_TRU_LOAI_KHAC": "17/23 = 73.9% (hụt 85044090 do TV.docGiaTri('loaiBienDoiTinhDien', 'không phải bộ chỉnh lưu') trả CHUA_BIET và headPhrases('Bộ chỉnh lưu khác') không khớp 'không phải bộ chỉnh lưu')"
+      },
+      "ketLuan": "Thiếu tenLoai 'Bộ chỉnh lưu' trên 85044030 làm ca loại trừ 85044090 dừng ở THIEU_SO_LIEU."
+    },
+    "bienThe2_boSungTenLoaiBoChinhLuuVao85044030": {
+      "moTa": "Bổ sung {fact:'tenLoai',op:'TEN_LOAI',value:'Bộ chỉnh lưu'} cùng {fact:'loaiBienDoiTinhDien',op:'TRONG',value:['CHINH_LUU']} vào 85044030 trong docs/giao-viec/so-tay/spec/850440.json, chạy --ap-spec, --kiem, --duyet, --ap-dung",
+      "lenh": "node scripts/so-hoa-ranh-gioi.mjs --kiem --pn6=850440 && node scripts/bo-kiem-luat.mjs --nhom=8504 --json",
+      "congCLI": "XANH 850440 DUYET dòng=6 có-đk=4 tiêu-đề=1/1 vector=1651 vế=2 (phủ 2, CHƯA PHỦ 0) — 1/1 phân nhóm qua cổng (EXIT=0)",
+      "boKiemLuat": {
+        "tongSoCa": 95,
+        "chotDung": 54,
+        "chotSai": 0,
+        "chotLoaiKhacSai": 0,
+        "hoi": 26,
+        "khongTheChot": 15,
+        "nemLoi": 0,
+        "DONG_CO_TEN": "36/49 = 73.5% (4/4 ca của 850440 đạt 100%)",
+        "LOAI_TRU_LOAI_KHAC": "18/23 = 78.3% (2/2 ca của 850440 đạt 100%)"
+      },
+      "ketLuan": "Phân nhóm 850440 sạch 100% ở mọi loại ca."
+    }
+  },
+  "tranSoHoc": {
+    "hienTaiMain": "DONG_CO_TEN 32/49 = 65.3% (trên main 22f94d5d khi 850440 đang TRA_VE)",
+    "tranDataOnlyTrongPhamViOzv1652": "DONG_CO_TEN tối đa 36/49 = 73.5% < 95% (đã lấy trọn 4/4 ca DONG_CO_TEN và 2/2 ca LOAI_TRU_LOAI_KHAC của 850440)",
+    "muoiBaCaChanTranNgoai850440": [
+      "85043211, 85043241, 85043251 (pn6 850432): THIEU_SO_LIEU — 3 dòng 'Biến áp thích ứng (SEN)' gắn thêm vế congDung='phối hợp trở kháng' từ sen.* không xuất hiện trong chữ biểu tax.* và bị các dòng/tầng 'Loại khác, <ngưỡng số>' (85043230 tanSo>=3MHz, 8504321 <=5kVA) hỏi thêm dữ kiện số",
+      "85043311, 85043391 (pn6 850433): KHONG_THE_CHOT (ranh-gioi-so-chu-khong-tat-dinh) — 2 dòng 'Biến áp thích ứng (SEN)' gắn thêm vế congDung='phối hợp trở kháng' từ sen.* không có trong productText của sinhCaNhom",
+      "85043411, 85043414, 85043422, 85043425 (pn6 850434): THIEU_SO_LIEU / KHONG_THE_CHOT — 4 dòng 'Biến áp thích ứng (SEN)' gắn vế congDung='phối hợp trở kháng' từ sen.* kết hợp cây 2 tầng nút trung gian (8504341 -> 850434~r15019, 8504342 -> 850434~r15028)",
+      "85043412, 85043423, 85043426 (pn6 850434): KHONG_THE_CHOT (ranh-gioi-tang-to-tien-chua-thoa) / TRANH_CAP — cây 850434 có 2 tầng nút trung gian lồng nhau (8504341/8504342 -> 850434~r15019/r15023/r15028/r15032), trong khi lib/so-tay-gates.js:928-937 chỉ nối 1 cha trực tiếp T.chaTang(d.hs) vào _ancNut và _traiKhiNutThoa",
+      "85045020 (pn6 850450): THIEU_SO_LIEU (missingFacts: congSuatBieuKien <= 2500 kVA từ 85045093) — dòng 'Cuộn cảm cố định kiểu con chip (SEN)' gắn thêm vế congDung='hạn chế dòng điện' từ sen.85045020 không có trong productText của sinhCaNhom"
+    ],
+    "ghiChuCanhTestSoTayGates": "Tại scripts/test-so-tay-gates.mjs dòng 127-128 và 135-136 có 2 ca snapshot từ #195 (13/10/2026) kiểm trạng thái cũ của 8504.40 khi mới bóc ngưỡng số .20 (>100 kVA) còn .11/.30/.40 chưa có dieuKienSo (kỳ vọng ketQua === 'KHONG_THE_CHOT' với lyDo 'phu-dinh-chua-hoan-chinh'). Khi 850440 được nâng lên DUYET và áp đủ dieuKienSo cho cả 4 dòng có tên (.11/.20/.30/.40), phuDinhHoanChinh = true nên chotDong8 trả THIEU_SO_LIEU (hỏi loaiBienDoiTinhDien / congSuatBieuKien, vẫn bảo thủ không tự chốt nhầm .19 hay .90) — hoàn toàn giống ca 8544.42.94 ngay dòng 130-132 đã được cập nhật ở commit f457a19b5c (L1-4c đợt 3) sang ['KHONG_THE_CHOT', 'THIEU_SO_LIEU'].includes(cd.ketQua). Do thẻ OZV-1652 cấm đụng scripts/** nên PR này giữ nguyên scripts/test-so-tay-gates.mjs và báo rõ để GĐ hoặc thẻ code cập nhật 2 dòng assert đó."
+  },
+  "coCheTuongTungCa": [
+    {
+      "ma": "85043211, 85043241, 85043251, 85043311, 85043391, 85043411, 85043414, 85043422, 85043425, 85045020",
+      "trich": "Các dòng 'Biến áp thích ứng (SEN)' ở 850432/850433/850434 và 'Cuộn cảm cố định kiểu con chip (SEN)' ở 850450",
+      "hienTuong": "THIEU_SO_LIEU hoặc KHONG_THE_CHOT (ranh-gioi-so-chu-khong-tat-dinh)",
+      "tepChan": "data/ho-so/ranh-gioi/850432.json, 850433.json, 850434.json, 850450.json (ngoài phạm vi sửa của OZV-1652) và scripts/bo-kiem-luat.mjs (sinhCaNhom)",
+      "coChe": "Trong 4 phân nhóm đã DUYET trước đó (850432, 850433, 850434, 850450), các dòng '(SEN)' này đang trích nguồn sen.* kèm vế thứ hai {fact:'congDung',op:'CONG_DUNG',value:'phối hợp trở kháng'} (hoặc 'hạn chế dòng điện' ở 85045020). Khi sinhCaNhom (scripts/bo-kiem-luat.mjs) dựng productText từ tên dòng trong biểu thuế tax.*, chuỗi mô tả không chứa cụm 'phối hợp trở kháng' / 'hạn chế dòng điện' của SEN ⇒ vế thứ hai luôn chấm CHUA_BIET (khongTatDinh:true) ⇒ dòng không bao giờ chấm THOA trên ca DONG_CO_TEN (cùng nguyên nhân đã được gỡ cho 85043130/.92/.93 ở commit a7cfc2b6 / PR #1491)."
+    },
+    {
+      "ma": "85043412, 85043423, 85043426",
+      "trich": "85043412 / 85043423 / 85043426 - - - - - Máy biến áp loại khô phòng nổ",
+      "hienTuong": "KHONG_THE_CHOT (ranh-gioi-tang-to-tien-chua-thoa) ở 85043412; TRANH_CAP ở 85043423 và 85043426",
+      "tepChan": "lib/so-tay-gates.js:927-938,1050-1075 (chỉ nối 1 tầng cha trực tiếp T.chaTang(d.hs) thay vì chuỗi nutToTien(d.hs))",
+      "coChe": "Cây 850434 có 2 tầng tiêu đề trung gian lồng nhau dưới 850434: tầng 7 số (8504341 <=15.000 kVA; 8504342 >15.000 kVA) rồi đến tầng không mã ~r (850434~r15019 '>10.000 kVA và >=66 kV', 850434~r15023 'Loại khác', 850434~r15028 '>=66 kV', 850434~r15032 'Loại khác'). Tại lib/so-tay-gates.js:928-937, máy chỉ lấy 1 cha trực tiếp ancId = T.chaTang(d.hs) nên: (1) dòng dưới 850434~r15019 / r15028 mất điều kiện công suất của ông nội 8504341 / 8504342; (2) trên ca 85043423 ('>15.000 kVA - >=66 kV: Máy biến áp loại khô phòng nổ'), cả 85043423 và 85043426 (dưới r15032 'Loại khác') đều chấm THOA hoặc không loại trừ nhau qua 2 tầng ⇒ sinh TRANH_CAP."
+    }
+  ],
+  "lenhTaiHien": [
+    "node scripts/so-hoa-ranh-gioi.mjs --kiem --pn6=850440   # XANH (850440 DUYET, phủ 2/2 vế, CHƯA PHỦ 0, EXIT=0)",
+    "node scripts/dem-nhom-sach.mjs --nhom=8504              # 8504: dong-co-ten(36/49=73.5%<95%) (0 chua-duyet-ranh-gioi, 0 thieu-tru-anh-em)",
+    "node scripts/bo-kiem-luat.mjs --nhom=8504 --json        # chotDung 54/95 (tăng từ 48/95), chotSai 0, chotLoaiKhacSai 0, nemLoi 0; DONG_CO_TEN 36/49, LOAI_TRU_LOAI_KHAC 18/23",
+    "node scripts/check-cay.mjs --nhom=8504                  # 1 nhóm, 0 lỗi lệch cây (EXIT=0)",
+    "node scripts/check-so-tay.mjs --nhom=8504               # 0 mục không kiểm được nguồn (EXIT=0)",
+    "node scripts/test-so-tay.mjs                            # XANH (EXIT=0)",
+    "node scripts/test-so-tay-questions.mjs                  # XANH (EXIT=0)"
+  ]
+}
