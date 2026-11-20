@@ -234,11 +234,101 @@ export function loiVeSo(fact, value, donVi, duPhong) {
   } catch { return cu; }
 }
 
-/** Sinh cụm chữ KHẲNG ĐỊNH một điều kiện đơn (dùng cho nút trung gian PHAI_CO). */
+/**
+ * Sinh cụm chữ KHẲNG ĐỊNH cho một tập vế số cùng fact trên một đường đi PHAI_CO (OZV-1623):
+ * khi chồng nhiều tầng số cùng fact (ví dụ r15019 `> 10000 kVA` và 8504341 `<= 15000 kVA`),
+ * gom thành một khoảng (min, max] và lấy điểm giữa (ví dụ 12500 kVA) để sinh 1 cụm số duy nhất
+ * thoả đồng thời mọi cận trên đường đi thay vì 2 giá trị mâu thuẫn (15001 và 7500).
+ */
+export function cumKhangDinhKhoangSo(dsConds) {
+  const ds = (Array.isArray(dsConds) ? dsConds : [dsConds]).filter(
+    (c) => c && ['<=', '<', '>=', '>'].includes(c.op) && Number.isFinite(Number(c.value)),
+  );
+  if (!ds.length) return '';
+  const c0 = ds[0];
+  const fact = c0.fact;
+  const k = (() => { try { return TV.layKhoa(fact); } catch { return null; } })();
+  const duPhong = k?.cachDoc?.vi?.[0] || k?.nhanVi || String(fact).replace(/_/g, ' ');
+  if (ds.length === 1) {
+    const v = c0.op === '<=' || c0.op === '<'
+      ? Number((Number(c0.value) * 0.5).toFixed(3))
+      : Number((Number(c0.value) * 1.5 + 1).toFixed(3));
+    return loiVeSo(fact, v, c0.donVi, duPhong);
+  }
+  const donVi0 = c0.donVi || k?.donViChuan || '';
+  const cungDonVi = ds.every((x) => (x.donVi || k?.donViChuan || '') === donVi0);
+  const donVi = cungDonVi ? c0.donVi : (k?.donViChuan || donVi0);
+  const norm = ds.map((x) => {
+    if (cungDonVi) return { ...x, val: Number(x.value) };
+    const q = (() => { try { return TV.quyDoi(fact, x.value, x.donVi); } catch { return null; } })();
+    return { ...x, val: q != null ? Number(q) : Number(x.value) };
+  });
+  const thoa = (val, c) => {
+    if (c.op === '<=') return val <= c.val;
+    if (c.op === '<') return val < c.val;
+    if (c.op === '>=') return val >= c.val;
+    if (c.op === '>') return val > c.val;
+    return false;
+  };
+  const lowers = norm.filter((x) => x.op === '>' || x.op === '>=').map((x) => x.val);
+  const uppers = norm.filter((x) => x.op === '<' || x.op === '<=').map((x) => x.val);
+  const moc = [...new Set(norm.map((x) => x.val))].sort((a, b) => a - b);
+  const giua = moc.slice(1).map((v, i) => Number(((moc[i] + v) / 2).toFixed(3)));
+  const cands = [];
+  if (lowers.length && uppers.length) {
+    const lo = Math.max(...lowers);
+    const hi = Math.min(...uppers);
+    if (lo < hi) cands.push(Number(((lo + hi) / 2).toFixed(3)));
+  }
+  cands.push(...giua);
+  if (lowers.length) {
+    const loMax = Math.max(...lowers);
+    cands.push(Number((loMax * 1.5 + 1).toFixed(3)));
+  }
+  if (uppers.length) {
+    const upMin = Math.min(...uppers);
+    cands.push(Number((upMin * 0.5).toFixed(3)));
+  }
+  const chosen = cands.find((cand) => norm.every((c) => thoa(cand, c))) ?? cands[0];
+  return loiVeSo(fact, chosen, donVi, duPhong);
+}
+
+/** Sinh cụm chữ KHẲNG ĐỊNH một điều kiện đơn (hoặc mảng vế điều kiện / vế số cùng fact trên đường đi PHAI_CO). */
 export function cumKhangDinh(c) {
   if (!c) return '';
+  if (Array.isArray(c)) {
+    if (!c.length) return '';
+    if (c.length === 1) return cumKhangDinh(c[0]);
+    if (c.every((x) => x && ['<=', '<', '>=', '>'].includes(x.op) && x.fact === c[0].fact)) {
+      return cumKhangDinhKhoangSo(c);
+    }
+    const soTheoFact = new Map();
+    for (const x of c) {
+      if (x && ['<=', '<', '>=', '>'].includes(x.op)) {
+        const list = soTheoFact.get(x.fact) || [];
+        list.push(x);
+        soTheoFact.set(x.fact, list);
+      }
+    }
+    const daSinh = new Set();
+    const out = [];
+    for (const x of c) {
+      if (!x) continue;
+      if (['<=', '<', '>=', '>'].includes(x.op)) {
+        if (daSinh.has(x.fact)) continue;
+        daSinh.add(x.fact);
+        const ds = soTheoFact.get(x.fact) || [x];
+        const s = ds.length > 1 ? cumKhangDinhKhoangSo(ds) : cumKhangDinh(x);
+        if (s) out.push(s);
+      } else {
+        const s = cumKhangDinh(x);
+        if (s) out.push(s);
+      }
+    }
+    return out.join(', ');
+  }
   if (c.op === 'HOAC' && Array.isArray(c.phuongAn) && c.phuongAn[0]) {
-    return c.phuongAn[0].map(cumKhangDinh).filter(Boolean).join(', ');
+    return cumKhangDinh(c.phuongAn[0]);
   }
   const k = (() => { try { return TV.layKhoa(c.fact); } catch { return null; } })();
   if (c.op === 'TEN_LOAI') {
@@ -338,6 +428,7 @@ function sinhMoTaLoaiTru(hs8, pn6, st) {
   const parts = [ten6];
   const soRanhGioi = new Map();
   const soPhaiCo = new Map();
+  const phaiCoSoTheoFact = new Map();
   for (const g of dd.nhom || []) {
     if (!Array.isArray(g.dieuKien) || !g.dieuKien.length) continue;
     if (g.chieu === 'PHAI_KHONG' && g.dieuKien.every((c) => ['<=', '<', '>=', '>'].includes(c.op))) {
@@ -345,6 +436,14 @@ function sinhMoTaLoaiTru(hs8, pn6, st) {
       const list = soRanhGioi.get(c0.fact) || [];
       list.push(g.dieuKien);
       soRanhGioi.set(c0.fact, list);
+    } else if (g.chieu === 'PHAI_CO') {
+      for (const c of g.dieuKien) {
+        if (c && ['<=', '<', '>=', '>'].includes(c.op)) {
+          const list = phaiCoSoTheoFact.get(c.fact) || [];
+          list.push(c);
+          phaiCoSoTheoFact.set(c.fact, list);
+        }
+      }
     }
   }
   // OZV-1182: CHỈ 6201/6202 — khoá LIET_KE chỉ ở PHAI_KHONG TRONG (Loại khác dưới tiêu đề chia vật liệu)
@@ -355,14 +454,23 @@ function sinhMoTaLoaiTru(hs8, pn6, st) {
   const lietKePhaiKhong = new Map(); // fact → Set giá trị bị loại
   const lietKePhaiCo = new Set();
   const phuDinhParts = [];
+  const daSinhPhaiCoSo = new Set();
   for (const g of dd.nhom || []) {
     if (!Array.isArray(g.dieuKien) || !g.dieuKien.length) continue;
     if (g.chieu === 'PHAI_CO') {
       for (const c of g.dieuKien) {
-        if (['<=', '<', '>=', '>'].includes(c.op) && soRanhGioi.has(c.fact)) {
-          const list = soPhaiCo.get(c.fact) || [];
-          list.push(c);
-          soPhaiCo.set(c.fact, list);
+        if (['<=', '<', '>=', '>'].includes(c.op)) {
+          if (soRanhGioi.has(c.fact)) {
+            const list = soPhaiCo.get(c.fact) || [];
+            list.push(c);
+            soPhaiCo.set(c.fact, list);
+            continue;
+          }
+          if (daSinhPhaiCoSo.has(c.fact)) continue;
+          daSinhPhaiCoSo.add(c.fact);
+          const ds = phaiCoSoTheoFact.get(c.fact) || [c];
+          const s = cumKhangDinh(ds.length > 1 ? ds : c);
+          if (s && !parts.includes(s)) parts.push(s);
           continue;
         }
         if (siet620x && c.op === 'TRONG') lietKePhaiCo.add(c.fact);
