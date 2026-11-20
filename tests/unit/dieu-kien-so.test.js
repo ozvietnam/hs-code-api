@@ -250,3 +250,84 @@ describe('lib/dieu-kien-so.js — khopCumTrongChu & boVeRiengCuaDong cho 8511, 2
     assert.ok(elapsed < 2000, `ReDoS check took ${elapsed}ms (>= 2000ms)`);
   });
 });
+
+describe('lib/dieu-kien-so.js — boVeRiengCuaDong bỏ qua dòng anh em là tập cha nghiêm ngặt khi gom sibToks (OZV-1678)', () => {
+  test('90229020 (2 chiều): bỏ qua dòng anh em hẹp hơn 90229010 (strict superset) nên giữ được từ phân biệt "sử dụng tia X"', () => {
+    assert.equal(DK.coCumPhanBiet('sử dụng tia X', '90229020'), true);
+
+    const rChot = chotDong8({
+      hs: '902290',
+      productText: 'Thiết bị khác, bao gồm các bộ phận và phụ kiện: Bộ phận và phụ kiện của thiết bị khác sử dụng tia X',
+    });
+    assert.equal(rChot.ketQua, 'CHOT', JSON.stringify(rChot));
+    assert.equal(rChot.hs, '90229020');
+
+    const r10 = chotDong8({
+      hs: '902290',
+      productText:
+        'Thiết bị khác, bao gồm các bộ phận và phụ kiện: Bộ phận và phụ kiện của thiết bị sử dụng tia X để kiểm tra vật lý các điểm hàn nối trên mạch in đã lắp ráp',
+    });
+    assert.equal(r10.ketQua, 'CHOT', JSON.stringify(r10));
+    assert.equal(r10.hs, '90229010');
+
+    const rThieu = chotDong8({
+      hs: '902290',
+      productText: 'Loại khác, kể cả bộ phận và phụ kiện',
+    });
+    assert.notEqual(rThieu.ketQua, 'CHOT', JSON.stringify(rThieu));
+    assert.notEqual(rThieu.hs, '90229020', JSON.stringify(rThieu));
+  });
+
+  test('90303340 (2 chiều): bỏ qua dòng anh em hẹp hơn 90303310 (strict superset) nên giữ được từ phân biệt "Dụng cụ đo điện trở"', () => {
+    assert.equal(DK.coCumPhanBiet('Dụng cụ đo điện trở', '90303340'), true);
+
+    const rChot = chotDong8({
+      hs: '903033',
+      productText:
+        'Dụng cụ và thiết bị khác, để đo hoặc kiểm tra điện áp, dòng điện, điện trở hoặc công suất: Loại khác, không có bộ phận ghi: Dụng cụ đo điện trở khác',
+    });
+    assert.equal(rChot.ketQua, 'CHOT', JSON.stringify(rChot));
+    assert.equal(rChot.hs, '90303340');
+
+    const r10 = chotDong8({
+      hs: '903033',
+      productText:
+        'Dụng cụ và thiết bị để đo hoặc kiểm tra điện áp, dòng điện, điện trở hoặc công suất của tấm mạch in/tấm dây in hoặc mạch in đã lắp ráp',
+    });
+    assert.equal(r10.ketQua, 'CHOT', JSON.stringify(r10));
+    assert.equal(r10.hs, '90303310');
+
+    const rThieu = chotDong8({
+      hs: '903033',
+      productText:
+        'Dụng cụ và thiết bị khác, để đo hoặc kiểm tra điện áp, dòng điện, điện trở hoặc công suất: Loại khác, không có bộ phận ghi',
+    });
+    assert.notEqual(rThieu.ketQua, 'CHOT', JSON.stringify(rThieu));
+    assert.notEqual(rThieu.hs, '90303340');
+  });
+
+  test('Ca bảo vệ 010599 & 340290: cặp dòng mục đích "để nhân giống" (01059910/20) đối xứng nhưng không làm 34029012 cướp ca 34029013', () => {
+    const r010510 = chotDong8({
+      hs: '010599',
+      productText: 'Loại khác - Loại khác: Vịt, ngan để nhân giống (SEN)',
+    });
+    assert.equal(r010510.ketQua, 'CHOT', JSON.stringify(r010510));
+    assert.equal(r010510.hs, '01059910');
+
+    const r010520 = chotDong8({
+      hs: '010599',
+      productText: 'Loại khác - Loại khác: Vịt, ngan loại khác',
+    });
+    assert.equal(r010520.ketQua, 'CHOT', JSON.stringify(r010520));
+    assert.equal(r010520.hs, '01059920');
+
+    const r340213 = chotDong8({
+      hs: '340290',
+      productText:
+        'Chất hữu cơ hoạt động bề mặt (trừ xà phòng); các chế phẩm hoạt động bề mặt, các chế phẩm dùng để giặt, rửa (kể cả các chế phẩm dùng để giặt, rửa phụ trợ) và các chế phẩm làm sạch, có hoặc không chứa xà phòng, trừ các loại thuộc nhóm 34.01. - Loại khác: Dạng lỏng: Chế phẩm giặt, rửa hoặc chế phẩm làm sạch khác, kể cả các chế phẩm tẩy trắng, làm sạch hoặc tẩy nhờn',
+    });
+    assert.equal(r340213.ketQua, 'CHOT', JSON.stringify(r340213));
+    assert.equal(r340213.hs, '34029013');
+  });
+});
+
