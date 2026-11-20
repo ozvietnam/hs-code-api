@@ -591,19 +591,35 @@
     },
     {
       "hs": "85185010",
-      "dieuKien": "Bộ tăng âm điện có dải công suất từ 240 W trở lên",
+      "dieuKien": "công suất >= 240 W",
       "loaiKhac": false,
       "nguon": "tax.85185010",
       "trich": "85185010 - - Có dải công suất từ 240 W trở lên",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": ">=",
+          "value": 240,
+          "donVi": "W"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-02-20261120#soat-851850-v1",
+          "ngay": "2026-11-20",
+          "bam": "03a4e4c752d4df362ee50674bdec8d8c345fb4c9da189ec651a5e534540a6565"
+        }
+      }
     },
     {
       "hs": "85185020",
-      "dieuKien": "Bộ tăng âm điện khác, có loa, thích hợp cho phát sóng, điện áp từ 50 V đến 100 V",
+      "dieuKien": "có (một hoặc nhiều) loa; điện áp >= 50 V; điện áp <= 100 V; công dụng / mục đích: phát sóng",
       "loaiKhac": true,
       "nguon": "tax.85185020",
       "trich": "85185020 - - Loại khác, có loa, loại thích hợp cho phát sóng, có giải điện áp từ 50 V trở lên nhưng không quá 100 V",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phamViLoaiKhac": {
         "nguonLoai": "MAY_SUY",
         "cha": "851850",
@@ -612,6 +628,37 @@
         ],
         "toTienCoTen": "851850",
         "dinhNghiaDuoc": true
+      },
+      "dieuKienSo": [
+        {
+          "fact": "coLoa",
+          "op": "CO"
+        },
+        {
+          "fact": "dienAp",
+          "op": ">=",
+          "value": 50,
+          "donVi": "V"
+        },
+        {
+          "fact": "dienAp",
+          "op": "<=",
+          "value": 100,
+          "donVi": "V"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "phát sóng"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-02-20261120#soat-851850-v1",
+          "ngay": "2026-11-20",
+          "bam": "03a4e4c752d4df362ee50674bdec8d8c345fb4c9da189ec651a5e534540a6565"
+        }
       }
     },
     {

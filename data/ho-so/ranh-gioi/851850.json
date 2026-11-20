@@ -4,13 +4,19 @@
   "nhom": "8518",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-851850",
     "ngay": "2026-11-04"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-02-20261120#soat-851850-v1",
+    "ngay": "2026-11-20",
+    "ghiChu": "OZV-1563: đã sửa lỗi SUY RỘNG 85185020 theo biên bản trả về 11/11 (gắn coLoa CO và bỏ BO_VE vế có loa); cổng --kiem XANH 0 lỗi 0 DỪNG",
+    "bam": "03a4e4c752d4df362ee50674bdec8d8c345fb4c9da189ec651a5e534540a6565"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -25,13 +31,17 @@
           "donVi": "W"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85185020",
       "nguon": "tax.85185020",
       "trich": "85185020 - - Loại khác, có loa, loại thích hợp cho phát sóng, có giải điện áp từ 50 V trở lên nhưng không quá 100 V",
       "dieuKienSo": [
+        {
+          "fact": "coLoa",
+          "op": "CO"
+        },
         {
           "fact": "dienAp",
           "op": ">=",
@@ -50,14 +60,14 @@
           "value": "phát sóng"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85185090",
       "nguon": "tax.85185090",
       "trich": "85185090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -69,19 +79,7 @@
     {
       "ma": "85185020",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85185020: \"Loại khác, có loa, loại thích hợp cho phát sóng, có giải điện áp từ 50 V trở lên nhưng không quá 100 V\" ⇒ dienAp >= 50 V, <= 100 V, congDung \"phát sóng\""
-    },
-    {
-      "ma": "85185020",
-      "loai": "BO_VE",
-      "ve": "có loa, loại",
-      "lyDo": "Bộ tăng âm kết hợp loa, không có khoá riêng trong tu-vung@2"
-    },
-    {
-      "ma": "85185020",
-      "loai": "BO_VE",
-      "ve": "thích hợp cho phát sóng, có giải",
-      "lyDo": "Đã phủ công dụng phát sóng trong congDung"
+      "ghiChu": "tax.85185020: \"Loại khác, có loa, loại thích hợp cho phát sóng, có giải điện áp từ 50 V trở lên nhưng không quá 100 V\" ⇒ coLoa CO, dienAp >= 50 V, <= 100 V, congDung \"phát sóng\" (bỏ BO_VE vế 'có loa' theo biên bản trả về 11/11)"
     }
   ],
   "traVe": [
