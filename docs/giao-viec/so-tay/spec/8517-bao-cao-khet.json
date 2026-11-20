@@ -1,0 +1,45 @@
+{
+  "phienBan": "bao-cao-khet@2",
+  "loai": "Báo cáo khet nhóm 8517 — OZV-1559 lượt 1",
+  "ngay": "2026-11-20",
+  "canh": "Nhánh ozv-sach-8517-v1 đứng trên main f49aca70. 851762 đã DUYET (bam ec96e31c) từ trước; 851779 đang TRA_VE (nháp cũ đưa vế 'thiết bị thu xách tay' vào mảng PHAI_KHONG sai — trả về sửa). Lượt này soạn lại 851779 theo mô hình 851762.91: cong3 XANH (HOAC 3 phuongAn đúng traVe) NHƯNG cong2 ĐỎ (vector lai chéo nhánh) ⇒ REVERT bảng về main; PR chỉ mang spec `851779-sua-8517792.json` + báo cáo khet này. KHÔNG đụng lib, KHÔNG đụng bo-kiem-luat.mjs / dem-nhom-sach.mjs.",
+  "ketQuaChot": {
+    "demNhomSach": "node scripts/dem-nhom-sach.mjs --nhom=8517 → 8517: chua-duyet-ranh-gioi(1 pn6: 851779) + dong-co-ten(13/24=54.2%<95%) (baseline main f49aca70)",
+    "baseline": {
+      "chotDung": 15,
+      "tongSoCa": 38,
+      "chotSai": 0,
+      "chotLoaiKhacSai": 0,
+      "nemLoi": 0,
+      "DONG_CO_TEN": "13/24 = 54.2% (6 ca KHONG_THE_CHOT ranh-gioi-chua-so-hoa của 851779 + 5 ca THIEU_SO_LIEU của 851762)",
+      "phanNhom": {
+        "851762": "DUYET, 24 dong8 có dieuKienSo đã ap-dung; 5 ca fail: .10/.53/.61/.91/.92 THIEU_SO_LIEU — missingFacts phuongThucTruyenDan + chiHoacChuYeu dù productText có chữ 'sóng vô tuyến'",
+        "851779": "TRA_VE (chưa duyệt được) ⇒ 6 ca .10/.21/.31/.32/.91/.92 KHONG_THE_CHOT ranh-gioi-chua-so-hoa; 3 ca .29/.39/.99 LOAI_TRU"
+      }
+    },
+    "thuNeo_851779": {
+      "moTa": "Soạn lại node 8517792 theo traVe claude-agent:duyet-L28-20261111#soat-L28: HOAC [(dungCho 'thiết bị truyền dẫn' & PHAI_KHONG [phát thanh sóng vô tuyến, thiết bị phát truyền hình]) | (tenLoai 'Thiết bị thu xách tay' + congDung [gọi, báo hiệu, nhắn tin]) | (tenLoai [thiết bị cảnh báo bằng tin nhắn, máy nhắn tin])] — tách theo mô hình 851762.91 đã duyệt",
+      "cong3CLI": "XANH (hết cong3-liet-ke-trong-mot-chuoi của bản nháp cũ)",
+      "cong2CLI": "ĐỎ: cong2-chong-lan:85177910+85177929:congDung=gọi,dungCho=bộ điều khiển,tenLoai=Thiết bị thu xách tay:khong-tat-dinh — vector ghép GIÁ TRỊ CHÉO NHÁNH: congDung/tenLoai lấy từ phuongAn B của node 8517792, dungCho 'bộ điều khiển' lấy từ dòng 85177910; vector đó làm .10 (điều kiện đơn dungCho) và .29 (trống) cùng THOẢ",
+      "thuBienThe": [
+        "phanConLai:true cho .29/.39/.99 ⇒ cong0-phan-con-lai-thừa (dòng 'Loại khác' KHÔNG tên bị cấm khai phanConLai; đối chiếu 851762 .49/.59/.69/.99 đều không khai)",
+        "mảng tenLoai gộp nhánh C [thiết bị cảnh báo bằng tin nhắn, máy nhắn tin] ⇒ vẫn cong2 đỏ cùng vector"
+      ],
+      "ketLuan": "Khác 851762 (nơi .10 có ĐA điều kiện tất định nên không dòng nào bị vector lai nuốt), 851779.10 chỉ có MỘT vế so-chữ-tu-do (dungCho) ⇒ mọi vector chứa giá trị đó đều làm .10 thoả, cộng .29 trống luôn thoả ⇒ chồng. CLI tự dặn cho trường này: 'Do bộ so chữ / khác trục ⇒ để đỏ, báo lại'."
+    }
+  },
+  "tranSoHoc": {
+    "tyLe": "Trần data-only = 19/24 = 79.2% < 95% (cần ≥ 23/24). Kể cả 851779 duyệt + ap-dung thành công (hết 6 ca KHONG_THE_CHOT) thì 5 ca THIEU_SO_LIEU của 851762 vẫn đứng — không chạm được 95% trong phạm vi thợ."
+  },
+  "viSaoKhongThe": [
+    "1. 5 ca 851762 (.10/.53/.61/.91/.92) THIEU_SO_LIEU: bảng ranh giới ĐÃ DUYET và productText CÓ chữ 'sóng vô tuyến' nhưng máy chotDong8 vẫn đòi fact phuongThucTruyenDan + chiHoacChuYeu chưa có — cùng họ tường sibling-disambiguation như .91 nhóm 8501 (OZV-1555) và 8511 (OZV-1558): dòng .91/.92 TRÙNG đích 'điện thoại/điện báo' với .31/.32, chỉ khác HUU_TUYEN/VO_TUYEN mà sinh ca không nhét факт đó vào productText.",
+    "2. 6 ca 851779 KHONG_THE_CHOT ranh-gioi-chua-so-hoa: bảng chưa duyệt được vì cong2-chong-lan vector lai (mục thuNeo_851779) — thoát cong2 cần chongLanTruc (trục tên↔công dụng, vòng 8 đòi viDuHang hàng thật thoả CẢ HAI nhánh) — không kịp làm đúng trong 1 nhịp, để lại spec + hướng dẫn trong 851779-sua-8517792.json.",
+    "3. Bài học chéo nhóm: neo cụm-dài nguyên văn bị cong1 chặn (8511, OZV-1558); tách mảng ngắn đúng mô hình duyệt thì bị cong2 vector lai (8517, lượt này) — hai cổng CLI kẹp chặt vùng soạn data-only; mọi đường tới 95% đều đi qua đổi SINH CA (bo-kiem-luat.mjs) hoặc đổi CỔNG CLI (lib/ho-so/cong-ranh-gioi.js) — cả hai CẤM sửa trong phạm vi thợ. Đề xuất GĐ quyết."
+  ],
+  "lenhTaiHien": [
+    "node scripts/bo-kiem-luat.mjs --nhom=8517 --json   # baseline main: chotDung 15/38, chotSai 0, nemLoi 0; DONG_CO_TEN 13/24",
+    "node scripts/dem-nhom-sach.mjs --nhom=8517          # chua-duyet-ranh-gioi(1) + dong-co-ten(13/24=54.2%<95%)",
+    "node scripts/so-hoa-ranh-gioi.mjs --kiem --pn6=851762   # xanh trên main (bảng đã duyệt)",
+    "cp docs/giao-viec/so-tay/spec/851779-sua-8517792.json /tmp/ && node scripts/so-hoa-ranh-gioi.mjs --ap-spec=/tmp/851779-sua-8517792.json   # tái hiện cong3 xanh + cong2 đỏ vector lai"
+  ]
+}
