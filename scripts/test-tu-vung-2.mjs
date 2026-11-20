@@ -689,7 +689,8 @@ la('loa En', 'coLoa', 'Cassette player with built-in speakers', true);
 la('loa Zh', 'coLoa', '带扬声器的录音机', true);
 la('loa KHÔNG', 'coLoa', 'Máy ghi âm cassette loại nhỏ, không kèm loa rời', false);
 // canh «loai/loại» không dính «loa»: "loại nhỏ" phải CHUA_BIET chứ không phải DA_CO
-chuaBiet('canh «loai» ASCII không dính «loa»', 'coLoa', 'Máy ghi âm cassette loại bỏ túi dùng pin');
+chuaBiet('canh «loai» ASCII không dính «loa»', 'coLoa', 'Máy ghi âm cassette có loai bỏ túi dùng pin');
+chuaBiet('canh «loai» ASCII giữa câu — «một hoặc nhiều loai»', 'coLoa', 'máy có một hoặc nhiều loai cảm biến');
 // «loại» có dấu — kí tự ạ (U+1EA1) khác a nên "loa" thuần không xuất hiện trong chuỗi
 chuaBiet('canh «loại» có dấu không dính «loa»', 'coLoa', 'Máy ghi âm cassette loại bỏ túi');
 
