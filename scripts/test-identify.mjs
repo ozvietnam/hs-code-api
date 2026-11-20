@@ -280,5 +280,85 @@ delete process.env.HS_SERVICE_TOKENS;
   check('OZV-1667 · ReDoS: 40.000 từ lặp "PPVA" chạy dưới 2 giây và không khớp nhầm Chương 39', msRedos < 2000 && kqRedos.length === 0, `ms=${msRedos}`);
 }
 
+// ── 11. OZV-1670: sửa 5 lỗi lộ ra khi đo 10 mẫu qua Cổng thật ──
+{
+  const { doanChuong } = require('../lib/attribute-frames.js');
+  const { laMienRac, coHangHoacChucNang } = require('../lib/dinh-danh-tim-web.js');
+
+  // 11a. Mục 1 — Model ngắn (GA22): lọc miền rác (ga22.games) + loại nguồn phụ sai chủ đề (wikipedia BAE_Systems_GA22 khí cầu).
+  check('OZV-1670 mục 1 · laMienRac: chặn ga22.games, slot.bet, xoso.casino; giữ wikipedia.org, atlascopco.com', laMienRac('https://ga22.games/play') === true && laMienRac('https://win.bet/ga22') === true && laMienRac('https://en.wikipedia.org/wiki/BAE_Systems_GA22') === false && laMienRac('https://www.atlascopco.com/ga22') === false);
+  const pGa22 = { tenHang: 'Máy nén khí trục vít Atlas Copco GA22', model: 'GA22' };
+  check('OZV-1670 mục 1 · coHangHoacChucNang: loại khí cầu BAE Systems GA22, giữ máy nén khí Atlas Copco GA22', coHangHoacChucNang(pGa22, 'BAE Systems GA22 - Wikipedia', 'The BAE Systems GA22 is a British non-rigid airship') === false && coHangHoacChucNang(pGa22, 'Atlas Copco GA22', 'Rotary screw air compressor 22 kW') === true);
+
+  const kqWebGa22 = [
+    { tieuDe: 'BAE Systems GA22 - Wikipedia', url: 'https://en.wikipedia.org/wiki/BAE_Systems_GA22', doanTrich: 'The BAE Systems GA22 is a British non-rigid airship built in 1990' },
+    { tieuDe: 'GA22 Games Online Casino', url: 'https://ga22.games/slot', doanTrich: 'Play GA22 slot machine online gambling and win big jackpot' },
+    { tieuDe: 'Atlas Copco GA22 rotary screw compressor', url: 'https://www.atlascopco.com/compressors/ga22', doanTrich: 'Atlas Copco GA22 oil-injected rotary screw air compressor 22 kW 10 bar' },
+    { tieuDe: 'Atlas Copco GA22 specs', url: 'https://aircompressorworks.example.com/ga22', doanTrich: 'Atlas Copco GA22 rotary screw compressor capacity and power 22kW' },
+  ];
+  const trangGa22 = {
+    'https://en.wikipedia.org/wiki/BAE_Systems_GA22': 'BAE Systems GA22 British non-rigid airship',
+    'https://ga22.games/slot': 'GA22 online casino slot machine',
+    'https://www.atlascopco.com/compressors/ga22': 'Atlas Copco GA22 oil-injected rotary screw air compressor 22 kW',
+    'https://aircompressorworks.example.com/ga22': 'Atlas Copco GA22 rotary screw compressor 22 kW',
+  };
+  const fetchGa22 = async (url) => (trangGa22[url] ? { ok: true, status: 200, arrayBuffer: async () => Buffer.from(trangGa22[url]) } : { ok: false, status: 404, arrayBuffer: async () => Buffer.from('') });
+  script = [{
+    chuong: '84', model: 'GA22', thuongHieu: 'Atlas Copco',
+    truong: { machineFunction: 'máy nén khí trục vít', power: '22 kW', nguyenLyHoatDong: 'trục vít đôi ngâm dầu nén khí', chucNangChinh: 'cung cấp khí nén công nghiệp' },
+    nguon: [
+      { loai: 'nsx', url: 'https://www.atlascopco.com/compressors/ga22', trich: 'Atlas Copco GA22 oil-injected rotary screw air compressor 22 kW' },
+      { loai: 'phu', url: 'https://en.wikipedia.org/wiki/BAE_Systems_GA22', trich: 'BAE Systems GA22 is a British non-rigid airship' },
+      { loai: 'phu', url: 'https://ga22.games/slot', trich: 'GA22 slot machine' },
+    ],
+  }];
+  const rGa22 = await identify(pGa22, { fetchImpl: fetchGa22, timWeb: async () => kqWebGa22 });
+  check('OZV-1670 mục 1 · identify GA22: 0 nguồn rác trong mien (loại sạch wikipedia khí cầu và ga22.games)', !rGa22.xacMinh.mien.includes('wikipedia.org') && !rGa22.xacMinh.mien.includes('ga22.games') && rGa22.xacMinh.mien.includes('atlascopco.com'), JSON.stringify(rGa22.xacMinh));
+
+  // 11b. Mục 2 — Festo DSBC-32-100-PPVA-N3: nguồn đã xác minh nhưng LLM trả truong rỗng ⇒ máy rút đủ ≥5 trường từ nguồn + hồ sơ, 0 câu hỏi.
+  const trangFesto = {
+    'https://www.festo.com/cat/dsbc-32-100': 'Festo DSBC-32-100-PPVA-N3 double-acting pneumatic cylinder, piston 32 mm, stroke 100 mm, operating pressure 0.6 - 12 bar',
+  };
+  script = [{
+    chuong: '84', model: 'DSBC-32-100-PPVA-N3', thuongHieu: 'Festo',
+    truong: {},
+    nguon: [{ loai: 'nsx', url: 'https://www.festo.com/cat/dsbc-32-100', trich: 'Festo DSBC-32-100-PPVA-N3 double-acting pneumatic cylinder, piston 32 mm, stroke 100 mm, operating pressure 0.6 - 12 bar' }],
+  }];
+  const rFesto2 = await identify({ tenHang: 'Xi lanh khí nén tác động kép Festo DSBC-32-100-PPVA-N3', model: 'DSBC-32-100-PPVA-N3' }, {
+    fetchImpl: async (url) => (trangFesto[url] ? { ok: true, status: 200, arrayBuffer: async () => Buffer.from(trangFesto[url]) } : FETCH_MOCK_404()),
+  });
+  const festoKeys = Object.keys(rFesto2.frame?.truong || {});
+  check('OZV-1670 mục 2 · Festo DSBC-32-100-PPVA-N3: rút ≥5 trường vào frame.truong (boreDiameter=32 mm, strokeLength=100 mm, pressureRating, machineFunction, nguyenLyHoatDong, chucNangChinh) và 0 câu hỏi', rFesto2.xacMinh?.muc === 'VERIFIED' && festoKeys.length >= 5 && rFesto2.frame.truong.boreDiameter === '32 mm' && rFesto2.frame.truong.strokeLength === '100 mm' && rFesto2.thieuTruong.length === 0 && rFesto2.questions.length === 0, JSON.stringify([rFesto2.frame?.truong, rFesto2.thieuTruong]));
+
+  // 11c. Mục 3 — Không bắt buộc "Công suất" (power) cho glovebox, cảm biến, giác hút, bơm khí nén; xoá "Không áp dụng"; câu hỏi thiếu trường có whereToFind rõ ràng.
+  script = [{ chuong: '84', model: 'ZP2-B10MTS', thuongHieu: 'SMC', truong: { machineFunction: 'giác hút chân không', power: 'Không áp dụng', nguyenLyHoatDong: 'tạo chênh lệch áp suất chân không bám giữ bề mặt phôi', chucNangChinh: 'gắp giữ chi tiết phẳng trong tay máy tự động' }, nguon: [] }];
+  const rSmc = await identify({ tenHang: 'Giác hút chân không SMC ZP2-B10MTS', model: 'ZP2-B10MTS' }, { fetchImpl: FETCH_MOCK_OK });
+  check('OZV-1670 mục 3 · SMC ZP2-B10MTS: xoá power="Không áp dụng" và không đòi hỏi Công suất', !('power' in (rSmc.frame?.truong || {})) && !rSmc.thieuTruong.includes('power') && rSmc.questions.length === 0, JSON.stringify([rSmc.frame?.truong, rSmc.thieuTruong]));
+
+  script = [{ chuong: '85', model: 'E2E-X5ME1', thuongHieu: 'Omron', truong: { voltage: '12-24V DC', nguyenLyHoatDong: 'tạo từ trường tần số cao phát hiện kim loại qua dòng điện xoáy', chucNangChinh: 'phát hiện vật thể kim loại không tiếp xúc khoảng cách 5 mm' }, nguon: [] }];
+  const rOmron = await identify({ tenHang: 'Cảm biến tiệm cận từ Omron E2E-X5ME1', model: 'E2E-X5ME1' }, { fetchImpl: FETCH_MOCK_OK });
+  check('OZV-1670 mục 3 · Omron E2E-X5ME1: cảm biến không đòi hỏi Công suất (thieuTruong rỗng)', !rOmron.thieuTruong.includes('power') && rOmron.thieuTruong.length === 0 && rOmron.questions.length === 0, JSON.stringify(rOmron.thieuTruong));
+
+  script = [{ chuong: '84', model: 'FP6308U', thuongHieu: 'FORWELL', truong: { machineFunction: 'bơm khí nén - thuỷ lực kẹp nhanh thay khuôn', nguyenLyHoatDong: 'dùng áp suất khí nén dẫn động piston tạo áp suất dầu thuỷ lực cao', chucNangChinh: 'cấp áp suất dầu thuỷ lực cho kẹp khuôn máy dập' }, nguon: [] }];
+  const rForwell = await identify({ tenHang: 'Bơm dầu FP6308U', model: 'FP6308U' }, { fetchImpl: FETCH_MOCK_OK });
+  check('OZV-1670 mục 3 · FORWELL FP6308U (bơm khí nén-thuỷ lực): không bắt buộc Công suất điện', !rForwell.thieuTruong.includes('power') && rForwell.thieuTruong.length === 0, JSON.stringify(rForwell.thieuTruong));
+
+  script = [{ chuong: '84', truong: { machineFunction: 'máy bơm ly tâm' }, nguon: [] }];
+  const rThieu = await identify({ tenHang: 'Máy bơm nước ly tâm công nghiệp' }, { fetchImpl: FETCH_MOCK_OK });
+  check('OZV-1670 mục 3 · hàng có công suất khi thiếu trường: mỗi câu hỏi đều có whereToFind không rỗng và questionVi chỉ rõ nơi tìm', rThieu.questions.length >= 2 && rThieu.questions.every((q) => typeof q.whereToFind === 'string' && q.whereToFind.length > 15 && q.questionVi.includes('— xem tại:')), JSON.stringify(rThieu.questions));
+
+  // 11d. Mục 4 — Đoán chương: Biến tần (có chữ "động cơ" ở bổ ngữ, kể cả câu ngắn 27 ký tự "Biến tần điều khiển động cơ") và PLC luôn ra Chương 85 đứng đầu.
+  const dcBtFull = doanChuong('Biến tần điều khiển tốc độ động cơ Mitsubishi FR-D720-0.75K');
+  const dcBtShort = doanChuong('Biến tần điều khiển động cơ');
+  const dcPlcFull = doanChuong('Thiết bị bộ lập trình PLC điều khiển máy Siemens SIMATIC S7-1200 CPU 1214C 6ES7214-1AG40-0XB0');
+  check('OZV-1670 mục 4 · doanChuong: "Biến tần điều khiển động cơ" (ngắn & dài) và "Thiết bị bộ lập trình PLC..." đều xếp Chương 85 đứng SỐ 1', dcBtFull[0]?.chuong === '85' && dcBtShort[0]?.chuong === '85' && dcPlcFull[0]?.chuong === '85', JSON.stringify([dcBtFull, dcBtShort, dcPlcFull]));
+
+  script = [{ chuong: '84', model: 'FR-D720-0.75K', thuongHieu: 'Mitsubishi Electric', truong: { power: '0.75 kW', voltage: '3 pha 380-480V AC', nguyenLyHoatDong: 'chỉnh lưu AC-DC + nghịch lưu IGBT PWM', chucNangChinh: 'biến đổi tần số điều khiển tốc độ động cơ' }, nguon: [] }];
+  const rBtFix = await identify({ tenHang: 'Biến tần điều khiển tốc độ động cơ Mitsubishi FR-D720-0.75K', model: 'FR-D720-0.75K' }, { fetchImpl: FETCH_MOCK_OK });
+  script = [{ chuong: '84', model: '6ES7214-1AG40-0XB0', thuongHieu: 'Siemens', truong: { voltage: '24V DC', nguyenLyHoatDong: 'vi xử lý quét chu kỳ chương trình logic, đọc DI/AI và xuất DO', chucNangChinh: 'điều khiển tự động hoá dây chuyền công nghiệp' }, nguon: [] }];
+  const rPlcFix = await identify({ tenHang: 'Bộ lập trình PLC Siemens SIMATIC S7-1200 CPU 1214C 6ES7214-1AG40-0XB0', model: '6ES7214-1AG40-0XB0' }, { fetchImpl: FETCH_MOCK_OK });
+  check('OZV-1670 mục 4 · identify: Biến tần FR-D720 và PLC S7-1200 luôn về đúng khung Chương 85 và thieuTruong rỗng', rBtFix.frame?.chuong === '85' && rBtFix.thieuTruong.length === 0 && rPlcFix.frame?.chuong === '85' && rPlcFix.thieuTruong.length === 0, JSON.stringify([rBtFix.frame?.chuong, rBtFix.thieuTruong, rPlcFix.frame?.chuong, rPlcFix.thieuTruong]));
+}
+
 log(`${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
