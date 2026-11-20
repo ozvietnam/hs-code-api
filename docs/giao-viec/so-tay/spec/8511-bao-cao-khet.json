@@ -1,0 +1,39 @@
+{
+  "phienBan": "bao-cao-khet@2",
+  "loai": "Báo cáo khet nhóm 8511 — OZV-1558 lượt 1",
+  "ngay": "2026-11-20",
+  "canh": "Nhánh ozv-sach-8511-v1 đứng trên main f49aca70. ĐÃ THỬ neo tenLoai NGUYÊN VĂN (mô hình #1461 / fd439894) cho .31/.32/.33 của 851140 + 851150: bench thắng (33/46, DONG_CO_TEN 22/24, 0 sai) NHƯNG cổng 1 CLI so-hoa-ranh-gioi từ chối duyet (cong1-khong-phu-kin vector nghèo) ⇒ REVERT toàn bộ về main; PR chỉ mang báo cáo khet. KHÔNG đụng lib, KHÔNG đụng bo-kiem-luat.mjs.",
+  "ketQuaChot": {
+    "demNhomSach": "node scripts/dem-nhom-sach.mjs --nhom=8511 → 8511: dong-co-ten(16/24=66.7%<95%) (baseline main f49aca70)",
+    "baseline": {
+      "chotDung": 27,
+      "tongSoCa": 46,
+      "chotSai": 0,
+      "chotLoaiKhacSai": 0,
+      "nemLoi": 0,
+      "DONG_CO_TEN": "16/24 (chotDung 16, hoi 2, khongTheChot 6 — tranh .31/.32/.33 vs .91/.21)",
+      "LOAI_TRU": "11/11"
+    },
+    "thuNeo_benchThang": {
+      "moTa": "Thêm vế tenLoai TEN_LOAI nguyên văn tên dòng cho .31/.32/.33 (giữ vế dungCho cũ)",
+      "boKiemLuat": "46 ca: chotDung 33, chotSai 0, chotLoaiKhacSai 0, nemLoi 0; DONG_CO_TEN 22/24 (hoi 2 ca .91); LOAI_TRU 11/11; dem-nhom-sach vẫn dong-co-ten(22/24=91.7%<95%)",
+      "cong1CLI": "TỪ CHỐI duyet: cong1-khong-phu-kin:8511403:daLapRap=true,dungCho=87.02,tenLoai=Động cơ khởi động (và 8511503 tương tự) — cổng 1 sinh vector theo BẢNG GIÁ TRỊ fact đơn (tenLoai=Động cơ khởi động), vector nghèo đó không gán được cụm dài 'Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03 hoặc 87.04' ⇒ vế neo AND biến .32 thành TRAI, không con nào nhận vector hợp lệ ⇒ lỗ giả. Cơ chế break sau lỗi đầu ⇒ .31/.33 cũng vướng vector của mình.",
+      "ketLuan": "Hướng neo tên-dòng nguyên văn THẮNG bench nhưng BẤT TƯƠNG THÍCH cổng 1 (vector nghèo) — không áp dụng được trong phạm vi data-only."
+    }
+  },
+  "tranSoHoc": {
+    "tyLe": "22/24 = 91.7% < 95% — cần ≥ 23/24, chỉ thiếu đúng 2 ca: 85114091 + 85115091",
+    "haiCa": "Cả 2 ca rơi THIEU_SO_LIEU hoi-thieu-so-lieu, missingFacts=[{fact: 'daLapRap', canThoa: 'không: đã lắp ráp', cauHoi: 'Hàng đã được lắp ráp hoàn chỉnh hay ở dạng chưa lắp ráp (rời kiện)?'}]"
+  },
+  "viSaoKhongThe": [
+    "1. sinCaNhom (bo-kiem-luat.mjs) LƯỢT tiêu đề tầng loaiKhacTran khi sinh productText cho ca dưới tầng 'Loại khác:' ⇒ ca .91 không chứa chữ tầng; .21 và .91 TRÙNG TÊN dòng y hệt (r15191≡r15198, r15203≡r15210) ⇒ 2 ca .91 (85114091, 85115091) rơi THIEU_SO_LIEU hỏi daLapRap — tường đúng nghĩa như .91 nhóm 8501 (OZV-1555).",
+    "2. Neo tenLoai nguyên văn cho .31/.32/.33 thắng bench (16→22/24) nhưng cổng 1 CLI từ chối (cong1-khong-phu-kin vector nghèo — mục thuNeo_benchThang) ⇒ không thể duyệt.",
+    "3. Neo .21 theo TÊN TẦNG (đã thử, /tmp bench riêng): cụm khớp substring trong câu phủ định của ca .29 ⇒ .29 KHONG_THE_CHOT (LOAI_TRU 11→9); bỏ thêm vế dungCho thì ca THIEU_DU_KIEN của .21 đủ cụm neo ⇒ CHOT sai kỳ vọng (chotSai=2).",
+    "4. Trần số học khả thi bằng data-only = 16/24=66.7% (baseline). Để đạt ≥95% cần đổi SINH CA (bo-kiem-luat.mjs giữ chữ tầng cho ca dưới loaiKhacTran) hoặc đổi CỔNG 1 (vector cho phép giá trị cụm-dài) — cả hai đều ngoài phạm vi thợ (CẤM sửa 2 file đó). Đề xuất GĐ quyết."
+  ],
+  "lenhTaiHien": [
+    "node scripts/bo-kiem-luat.mjs --nhom=8511 --json   # baseline main: chotDung 27/46; DONG_CO_TEN 16/24",
+    "node scripts/dem-nhom-sach.mjs --nhom=8511          # dong-co-ten(16/24=66.7%<95%)",
+    "node scripts/so-hoa-ranh-gioi.mjs --kiem --pn6=851140 && node scripts/so-hoa-ranh-gioi.mjs --kiem --pn6=851150   # xanh trên main"
+  ]
+}
