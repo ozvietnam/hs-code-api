@@ -26,3 +26,6 @@ né cổng; khai `chongLanVanBan`/`chongLanTruc` để ép xanh; trích nguồn 
 
 **Còn ngoài bảng (lát 1 để DỪNG, không mở vòng công cụ):** cặp tên ↔ công dụng mà máy không chứng minh rời được nhưng không có hàng
 thật (392690, 848180, 401699) — lúc chạy các mã này đi đường cũ ("chưa số hoá").
+
+**Nhóm khet (trần số học < 95%, cấp nhóm 4 số):** đã ĐÓNG — đọc [`KHET.md`](KHET.md). Không nhận thẻ thử lại; chỉ mở khi có ca 6 số
+trích được từ nguồn thật hoặc GĐ quyết đổi cổng.
