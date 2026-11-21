@@ -161,6 +161,37 @@ const ketQuaGia = (hs = '848180', raw = VAN, them = {}) => ({
   check('đầu vào rỗng → không ném lỗi', (await voi('on', () => H.apDung(null, {}))) === null);
 }
 
+// 6b) PR tiếp: nhãn "khong-can-hoi-dong", câu có/không cho dòng tên loại, đường lùi chọn dòng theo chữ biểu thuế.
+{
+  const gia = (hs, ten) => { const o = ketQuaGia(hs, { tenHang: ten }); o.dossier.product = {}; o.nextAction.questions = [{ attribute: null, questionVi: 'Điện áp cuộn dây?', whereToFind: 'x' }, { attribute: null, questionVi: 'Hãng sản xuất?', whereToFind: 'x' }]; o.missing = ['Điện áp cuộn dây?', 'Hãng sản xuất?']; return o; };
+  const chay = (hs, ten) => voi('on', () => H.apDung(gia(hs, ten), { rawAttrs: { tenHang: ten } }));
+  // (1) phân nhóm chỉ có MỘT dòng 8 số (3926.10.00), không có câu phân nhóm để hỏi → không phải "rơi về LLM"
+  check('tiền đề: 392610 chỉ có 1 dòng 8 số; 830140 phẳng 3 dòng; 853650 lồng nhiều cấp', H.dong8Cua('392610').n8 === 1 && H.dong8Cua('830140').n8 === 3 && H.dong8Cua('830140').phang && !H.dong8Cua('853650').phang, [H.dong8Cua('392610'), H.dong8Cua('830140').n8, H.dong8Cua('853650').phang]);
+  const mot = await chay('392610', 'kẹp giấy nhựa');
+  check('1 dòng 8 số: canCuCauHoi "khong-can-hoi-dong" (lyDo mot-dong), không còn câu LLM trong câu hỏi', mot.nextAction.canCuCauHoi === 'khong-can-hoi-dong' && mot.hoiTheoSoTay.lyDo === 'mot-dong' && mot.nextAction.questions.length >= 1 && mot.nextAction.questions.every((q) => q.canCu === 'truong-khai-nhom') && mot.nextAction.ghiChuThem.includes('Điện áp cuộn dây?'), { na: mot.nextAction, st: mot.hoiTheoSoTay });
+  const motRong = gia('392610', 'kẹp giấy nhựa'); motRong.missingStructured = [];
+  const kqRong = await voi('on', () => H.apDung(motRong, { rawAttrs: { tenHang: 'kẹp giấy nhựa' } }));
+  check('1 dòng 8 số + không thiếu trường khai nào: KHÔNG trả ASK_USER rỗng — giữ câu LLM, nhãn vẫn "khong-can-hoi-dong"', kqRong.nextAction.canCuCauHoi === 'khong-can-hoi-dong' && kqRong.hoiTheoSoTay.giuCauLlm === true && JSON.stringify(kqRong.nextAction.questions) === JSON.stringify(motRong.nextAction.questions), kqRong.nextAction);
+  // (2) dữ kiện TÊN LOẠI chỉ ở MỘT dòng vẫn hỏi được: Có → dòng đó, Không → phần còn lại
+  const khoa = await chay('830140', 'ổ khoá');
+  const qKhoa = khoa.nextAction.questions.filter((q) => q.loai === 'DONG_8');
+  check('8301.40 (sổ DUYET, tên loại mỗi dòng một kiểu): hỏi "Hàng có phải là …" cho Còng/xích tay và Khóa cửa', khoa.nextAction.canCuCauHoi === 'so-tay' && qKhoa.length === 2 && /Còng, xích tay/.test(qKhoa[0].questionVi) && /8301\.40\.10/.test(qKhoa[0].questionVi) && /Khóa cửa/.test(qKhoa[1].questionVi) && qKhoa.every((q) => q.canCu === 'ranh-gioi-pn6' && /^tax\.830140/.test(q.nguon) && q.options.includes('Chưa rõ') && /Không → các dòng còn lại/.test(q.questionVi)), khoa.nextAction.questions);
+  const cua = await chay('830140', 'Khóa cửa tay gạt bằng hợp kim kẽm');
+  check('8301.40: mô tả đã ghi "Khóa cửa" → máy tự chốt dòng, không hỏi lại "có phải khóa cửa"', !cua.nextAction.questions.some((q) => /có phải là "Khóa cửa"/.test(q.questionVi)), { cc: cua.nextAction.canCuCauHoi, st: cua.hoiTheoSoTay, qs: cua.nextAction.questions.map((q) => q.questionVi) });
+  // (3) đường lùi: sổ ranh giới chưa DUYET, phân nhóm phẳng ≤ 6 dòng → MỘT câu chọn dòng theo chữ biểu thuế
+  check('tiền đề: sổ ranh giới 902620 CHƯA duyệt', loadRanhGioiDuyet('902620') === null);
+  const ap = await chay('902620', 'đồng hồ đo áp suất');
+  const qAp = ap.nextAction.questions[0];
+  check('9026.20 (sổ chưa DUYET, 2 dòng phẳng): một câu chọn dòng, canCu "bieu-thue", nhãn "bieu-thue"', ap.nextAction.canCuCauHoi === 'bieu-thue' && qAp.loai === 'CHON_DONG_8' && qAp.canCu === 'bieu-thue' && ap.nextAction.questions.filter((q) => q.loai === 'CHON_DONG_8').length === 1 && /^tax\.90262050\|tax\.90262090$/.test(qAp.nguon) && /Máy đo áp suất sử dụng cho xe có động cơ/.test(qAp.trich), qAp);
+  check('9026.20: "Loại khác" đặt CUỐI, ghi "không thuộc các loại trên"; có lựa chọn "Chưa rõ"', qAp.options.length === 3 && /^9026\.20\.90 – Loại khác \(không thuộc các loại trên\)$/.test(qAp.options[1]) && qAp.options[2] === 'Chưa rõ' && ap.nextAction.questions.length <= 4, qAp.options);
+  const mach = await chay('853400', 'bo mạch');
+  check('8534.00 (≥ 3 dòng tên loại, phẳng 4 dòng): một câu chọn dòng thay cho ba câu có/không', mach.nextAction.questions.filter((q) => q.loai === 'CHON_DONG_8').length === 1 && !mach.nextAction.questions.some((q) => q.loai === 'DONG_8') && /Loại khác \(không thuộc các loại trên\)$/.test(mach.nextAction.questions[0].options.at(-2)), mach.nextAction.questions.map((q) => [q.loai, q.options]));
+  const ct = gia('853650', 'công tắc');
+  const kqCt = await voi('on', () => H.apDung(ct, { rawAttrs: { tenHang: 'công tắc' } }));
+  check('8536.50 (lồng nhiều cấp gạch, 12 dòng): KHÔNG liệt kê — giữ câu LLM, nhãn "llm"', kqCt.nextAction.canCuCauHoi === 'llm' && kqCt.hoiTheoSoTay.lyDo === 'long-nhieu-cap' && JSON.stringify(kqCt.nextAction.questions) === JSON.stringify(ct.nextAction.questions), kqCt.hoiTheoSoTay);
+  check('mọi ca trên: tối đa 4 câu, status/mã không đổi', [mot, khoa, ap, mach, kqCt].every((k) => k.nextAction.questions.length <= 4 && k.status === 'NEED_FACTS' && k.results[0].confidence === 60));
+}
+
 // 7) Qua ĐỘNG CƠ thật (LLM giả): nhánh earlyExitHoi — bật/tắt công tắc cho CÙNG mã, cùng status, cùng số lời LLM.
 {
   const R1 = {
