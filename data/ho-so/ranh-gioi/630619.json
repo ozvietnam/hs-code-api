@@ -14,8 +14,8 @@
     "boi": "CLAUDE_DUYET",
     "phien": "claude-agent:tho-hs-03#soat-lo-6c",
     "ngay": "2026-11-21",
-    "ghiChu": "Đã chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1756)",
-    "bam": "474ac5a1df38204ce8b9feab95d7058a662d87e7fac7081e45ea32a6cd17dcc7"
+    "ghiChu": "Đã chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1756, OZV-1769)",
+    "bam": "49c077fae89c53a6f335839bc08abba44763aa62d2c0c666303674391723d38e"
   },
   "dieuKienNut": [],
   "dong8": [
@@ -28,7 +28,8 @@
           "fact": "loaiSoiDet",
           "op": "TRONG",
           "value": [
-            "SOI_THUC_VAT_KHAC"
+            "SOI_THUC_VAT_KHAC",
+            "RAMIE"
           ]
         },
         {
@@ -65,7 +66,7 @@
     {
       "ma": "63061910",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.63061910: \"Từ sợi dệt thực vật thuộc nhóm 53.05\" (EN \"Of vegetable textile fibres of heading 53.05\") ⇒ tuSoiDetThucVatNhom5305 CO (chỉ gồm xơ dừa, abaca, ramie, sisal… thuộc nhóm 53.05; phân biệt với lanh 53.01, gai dầu 53.02, đay 53.03 rơi vào .90)"
+      "ghiChu": "tax.63061910: \"Từ sợi dệt thực vật thuộc nhóm 53.05\" (EN \"Of vegetable textile fibres of heading 53.05\") ⇒ loaiSoiDet TRONG [SOI_THUC_VAT_KHAC, RAMIE] + tuSoiDetThucVatNhom5305 CO (nhận cả gai ramie lẫn xơ dừa, abaca, sisal… thuộc nhóm 53.05; phân biệt với lanh 53.01, gai dầu 53.02, đay 53.03 rơi vào .90)"
     },
     {
       "ma": "63061920",

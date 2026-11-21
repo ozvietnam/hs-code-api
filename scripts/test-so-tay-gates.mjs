@@ -750,6 +750,13 @@ check('trangThaiDong8.veMoHinh: 73181510 chấm trọn nhãn "Đường kính ng
   });
   check('OZV-1677 98493447 rào ngược: chữ "Bộ phận" của chính nút 984934~r19749 giữ nguyên → CHOT 98493447',
     cd.ketQua === 'CHOT' && cd.hs === '98493447', JSON.stringify([cd.ketQua, cd.hs]));
+
+  cd = chotDong8({
+    hs: '630619',
+    productText: 'Tấm bạt, mái hiên và tấm che nắng từ gai ramie',
+  });
+  check('OZV-1769 63061910: loaiSoiDet TRONG [SOI_THUC_VAT_KHAC, RAMIE] + tuSoiDetThucVatNhom5305 CO nhận hàng từ gai ramie → CHOT 63061910 (không rơi 63061990)',
+    cd.ketQua === 'CHOT' && cd.hs === '63061910', JSON.stringify([cd.ketQua, cd.hs]));
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);
