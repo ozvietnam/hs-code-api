@@ -4,13 +4,19 @@
   "nhom": "0505",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261105T1607#soan-050590",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1771#soat-050590",
+    "ngay": "2026-11-21",
+    "ghiChu": "Chuẩn hoá ranh giới theo traVe.lyDo và duyệt+áp khép SẠCH V1 (OZV-1771)",
+    "bam": "b05e1c80b93072fdbbd61144e030757a5eeb05c31b60d130be497e260d5db071"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -21,27 +27,32 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
+          "value": "Lông vũ"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
           "value": [
-            "Lông vũ của vịt",
+            "vịt",
             "ngan"
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "05059090",
       "nguon": "tax.05059090",
       "trich": "05059090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "05059010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.05059010 \"Lông vũ của vịt, ngan\" — \"vịt, ngan\" là liệt kê phẩy (chữ Anh: of ducks, geese) ⇒ tách mảng [\"Lông vũ của vịt\", \"ngan\"], một phần tử một hàng"
+      "ghiChu": "tax.05059010 \"Lông vũ của vịt, ngan\" (EN \"Duck feathers\") ⇒ tenLoai \"Lông vũ\" + tenLoai [\"vịt\", \"ngan\"] (tách danh từ đầu \"Lông vũ\" với định ngữ \"vịt, ngan\" để 'ngan' không đứng một mình)"
     },
     {
       "ma": "05059090",

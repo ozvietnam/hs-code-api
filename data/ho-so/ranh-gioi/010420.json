@@ -4,13 +4,19 @@
   "nhom": "0104",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-010420",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1771#soat-010420",
+    "ngay": "2026-11-21",
+    "ghiChu": "Chuẩn hoá ranh giới theo traVe.lyDo và duyệt+áp khép SẠCH V1 (OZV-1771)",
+    "bam": "dd96f7db38a4bc448c5a11745a0d344201eef7238d7cca0900cc90590e3d5e42"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -19,25 +25,29 @@
       "trich": "01042010 - - Loại thuần chủng để nhân giống",
       "dieuKienSo": [
         {
+          "fact": "laThuanChung",
+          "op": "CO"
+        },
+        {
           "fact": "dungLamGiong",
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "01042090",
       "nguon": "tax.01042090",
       "trich": "01042090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "01042010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.01042010 \"Loại thuần chủng để nhân giống\" ⇒ dungLamGiong CO"
+      "ghiChu": "tax.01042010 \"Loại thuần chủng để nhân giống\" ⇒ laThuanChung CO + dungLamGiong CO"
     }
   ],
   "traVe": [

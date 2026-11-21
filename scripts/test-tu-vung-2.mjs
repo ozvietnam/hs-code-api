@@ -351,6 +351,9 @@ const KHOA_MOI = {
   loaiDungCuThietBiYTeKhac: 'LIET_KE',
   laThietBiPhauThuatHoacYHocDienTu: 'CO_KHONG',
   laOngThong: 'CO_KHONG',
+  // 22/11/2026 (OZV-1771): giống thuần chủng 0104.10.10/.20.10 & hình dạng bên trong lòng bồn tắm 3922.10.11
+  laThuanChung: 'CO_KHONG',
+  coHinhDangBenTrongChuNhatHoacThuon: 'CO_KHONG',
 };
 
 // ── 1. Nạp theo phiên bản ─────────────────────────────────────────────────────────────────────────────────────────
@@ -1118,6 +1121,39 @@ check('vietCum đơn vị @1 KHÔNG đổi ("CS: 75000W" — không cách)', T.v
   }
   const ms = Number(process.hrtime.bigint() - t0) / 1e6;
   check(`OZV-1760 ReDoS ~40.000 từ lặp trên 6 khoá < 2000 ms (thực tế ${ms.toFixed(0)} ms)`, ms < 2000, { ms });
+}
+
+// OZV-1771 — kiểm chứng laThuanChung (0104.10.10/.20.10), coHinhDangBenTrongChuNhatHoacThuon (3922.10.11), kieuDet.NOI_VONG (5801.37) + ReDoS < 2 giây.
+{
+  // 1. laThuanChung (0104.10.10, 0104.20.10)
+  la('chữ biểu 0104.10.10 (Loại thuần chủng để nhân giống)', 'laThuanChung', 'Cừu: Loại thuần chủng để nhân giống', true);
+  la('En Pure-bred breeding animals', 'laThuanChung', 'Pure-bred breeding animals', true);
+  la('Zh 纯种', 'laThuanChung', '改良种用纯种绵羊', true);
+  la('phủ định không phải loại thuần chủng ⇒ false', 'laThuanChung', 'Cừu, không phải loại thuần chủng', false);
+  la('giống lai ⇒ false', 'laThuanChung', 'Dê giống lai nuôi lấy thịt', false);
+  chuaBiet('chỉ ghi để nhân giống không nói thuần chủng ⇒ CHUA_BIET', 'laThuanChung', 'Cừu sống nuôi để nhân giống');
+
+  // 2. coHinhDangBenTrongChuNhatHoacThuon (3922.10.11)
+  la('chữ biểu 3922.10.11', 'coHinhDangBenTrongChuNhatHoacThuon', 'Bồn tắm có hình dạng bên trong là hình chữ nhật hoặc hình thuôn (oblong)', true);
+  la('mô tả hàng thật lòng bồn hình chữ nhật', 'coHinhDangBenTrongChuNhatHoacThuon', 'Bồn tắm bằng nhựa acrylic, lòng bồn hình chữ nhật', true);
+  la('En rectangular or oblong interior shape', 'coHinhDangBenTrongChuNhatHoacThuon', 'Bathtubs having rectangular or oblong interior shape', true);
+  la('Zh 内部形状为长方形或长圆形', 'coHinhDangBenTrongChuNhatHoacThuon', '塑料浴缸，内部形状为长方形或长圆形', true);
+  la('phủ định lòng bồn hình tròn ⇒ false', 'coHinhDangBenTrongChuNhatHoacThuon', 'Bồn tắm plastic, lòng bồn hình tròn', false);
+  chuaBiet('chỉ ghi bồn tắm bằng plastic ⇒ CHUA_BIET', 'coHinhDangBenTrongChuNhatHoacThuon', 'Bồn tắm bằng plastic');
+
+  // 3. kieuDet.NOI_VONG (5801.37) & laBoPhan trên 3922.90.12
+  la('kieuDet đọc tiêu đề 5801.37 Vải có sợi dọc nổi vòng ⇒ NOI_VONG', 'kieuDet', 'Vải có sợi dọc nổi vòng', 'NOI_VONG');
+  la('laBoPhan đọc 3922.90.12 Bình xả nước đã lắp sẵn các bộ phận ⇒ false', 'laBoPhan', 'Bình xả nước đã lắp sẵn các bộ phận(SEN)', false);
+  la('laBoPhan đọc 3922.90.11 Bộ phận của bình xả nước ⇒ true', 'laBoPhan', 'Bộ phận của bình xả nước(SEN)', true);
+
+  // 4. ReDoS ~40.000 từ lặp < 2 giây (CLAUDE.md quy tắc 6b)
+  const redosText1771 = Array(5000).fill('bồn tắm có hình dạng bên trong loại thuần chủng đã lắp sẵn').join(' ');
+  const t0 = process.hrtime.bigint();
+  for (const fk of ['laThuanChung', 'coHinhDangBenTrongChuNhatHoacThuon', 'kieuDet', 'loaiSoiDet', 'laBoPhan']) {
+    T.docGiaTri(fk, redosText1771);
+  }
+  const ms = Number(process.hrtime.bigint() - t0) / 1e6;
+  check(`OZV-1771 ReDoS ~40.000 từ lặp trên 5 khoá < 2000 ms (thực tế ${ms.toFixed(0)} ms)`, ms < 2000, { ms });
 }
 
 console.log(`\n${pass} pass, ${fail} fail`);
