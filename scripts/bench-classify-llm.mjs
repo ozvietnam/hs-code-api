@@ -209,7 +209,7 @@ const sum = {
   soTay: (() => {
     const st = ok.filter((o) => o.soTay);
     if (!st.length) return null;
-    const fired = st.filter((o) => o.soTay.outcome !== 'NONE');
+    const fired = st.filter((o) => !/^(NONE|CHUA_TRA|DA_TRA_KHONG_NGHI)$/.test(String(o.soTay.outcome || '')));
     const changed = fired.filter((o) => o.soTay.outcome === 'CHANGED');
     return {
       items: st.length, fired: fired.length,

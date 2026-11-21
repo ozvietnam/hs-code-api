@@ -292,5 +292,86 @@ for (const decision of ['CHOT', 'HOI']) {
     JSON.stringify({ blocks: gHoi.blocks.map((b) => b.gate), warnings: gHoi.warnings }));
 }
 
+// ── OZV-1707: kiểm phân nhóm 6 số trên nhánh earlyExitHoi (tất định trước, LLM sau) + soTay.outcome CHUA_TRA / DA_TRA_KHONG_NGHI ──
+{
+  const { kiemPhanNhomEarlyHoi } = require('../lib/engine-loop.js');
+  const { doGiongTenHang } = require('../lib/giong-ten-hang.js');
+  const { precedentsData } = require('../lib/data.js');
+  const { missingStructured } = require('../lib/declaration-fields.js');
+  const VAN_52 = { tenHang: 'Van điện từ khí nén 5/2 thân nhôm, cổng ren 1/4 inch, dùng điều khiển xi lanh khí nén' };
+  const R1_VAN_52 = {
+    product: {
+      nameVi: 'van điện từ khí nén 5/2',
+      nameEn: '5/2 pneumatic solenoid valve',
+      purpose: 'điều khiển xi lanh khí nén',
+      mechanism: 'điện từ - khí nén',
+      material: 'nhôm',
+      form: 'hoàn chỉnh',
+      evidence: {},
+    },
+    hypotheses: [
+      { chapter: '84', heading4: '8481', subheading6: '848180', why: 'van điện từ thuộc thiết bị khác', confidence: 90 },
+      { chapter: '84', heading4: '8412', subheading6: '841239', why: 'bộ truyền động khí nén', confidence: 10 },
+    ],
+    verify: {
+      searchVi: ['van điện từ khí nén 5/2'],
+      notesChapters: ['84'],
+      codes8: ['84818099'],
+      unknowns: [
+        'Nguồn điện và điện áp cuộn dây',
+        'Áp suất vận hành và lưu lượng',
+        'Số cuộn dây: đơn hay kép',
+      ],
+    },
+  };
+  const caVan = await runCa(VAN_52, R1_VAN_52, { env: { HS_SO_TAY: 'full' } });
+  check('OZV-1707 van khí nén 5/2: R1 đoán 848180 + unknowns → kiemPhanNhomEarlyHoi đổi tất định sang 848120',
+    caVan.girCalls === 0
+      && caVan.gates.some((g) => g.kiemPhanNhomEarlyHoi === 'DOI_PHAN_NHOM' && g.tu === '848180' && g.den === '848120')
+      && (caVan.out.results?.[0]?.hs || '').startsWith('848120'),
+    JSON.stringify({ gir: caVan.girCalls, hs: caVan.out.results?.[0]?.hs, gates: caVan.gates.filter((g) => g.round) }));
+  check('OZV-1707 soTay.outcome: đã tra sổ tay nhóm 8481 và không nghi → DA_TRA_KHONG_NGHI (không còn NONE mập mờ)',
+    caVan.out.soTay?.outcome === 'DA_TRA_KHONG_NGHI',
+    JSON.stringify(caVan.out.soTay));
+
+  // Kiểm riêng đường sổ tay phân nhóm 6 số + đường tiền lệ TB-TCHQ 851/852 khi không có tradeHints:
+  const kpnSoTay = kiemPhanNhomEarlyHoi({
+    ee: { hs: '848180' },
+    r1: R1_VAN_52,
+    raw: VAN_52,
+    gathered: { headings: ['8481'], tradeHints: null, ozPrecedents: [] },
+    product: R1_VAN_52.product,
+    productText: VAN_52.tenHang,
+  });
+  check('OZV-1707 kiemPhanNhomEarlyHoi (không tradeHints): sổ tay / tiêu đề phân nhóm 6 số đổi 848180 → 848120',
+    kpnSoTay.ok === true && kpnSoTay.hs6 === '848120' && kpnSoTay.nguon === 'so-tay-phan-nhom-6',
+    JSON.stringify(kpnSoTay));
+
+  const tb852 = (precedentsData['84812090'] || []).find((e) => /^852\b/.test(String(e.tbTchqNumber || '')));
+  const g852 = tb852 ? doGiongTenHang({ tenHang: VAN_52.tenHang, moTa: VAN_52.tenHang }, tb852.productName) : null;
+  check('OZV-1707 TB 852/TB-TCHQ (84812090): doGiongTenHang khớp giong=true với van điện từ khí nén 5/2',
+    Boolean(g852 && g852.giong === true && g852.khopDanhTu === true && g852.diem >= 0.6),
+    JSON.stringify(g852));
+
+  // Khi hai phân nhóm cụ thể cùng nhóm 4 số tranh chấp (không chốt tất định được 1 phân nhóm) → trả ok=false để leo vòng 2 (LLM):
+  const kpnTranhChap = kiemPhanNhomEarlyHoi({
+    ee: { hs: '848180' },
+    r1: R1_VAN_52,
+    raw: { tenHang: 'Van giảm áp tích hợp van an toàn dùng cho nồi hơi' },
+    gathered: { headings: ['8481'], tradeHints: null, ozPrecedents: [] },
+    product: { nameVi: 'Van giảm áp tích hợp van an toàn', form: 'hoàn chỉnh' },
+    productText: 'Van giảm áp tích hợp van an toàn dùng cho nồi hơi',
+  });
+  check('OZV-1707 kiemPhanNhomEarlyHoi: ≥2 phân nhóm cụ thể cùng khớp → ok=false (SO_TAY_PHAN_NHOM_6_TRANH_CHAP) để leo vòng 2 LLM',
+    kpnTranhChap.ok === false && kpnTranhChap.lyDo === 'SO_TAY_PHAN_NHOM_6_TRANH_CHAP',
+    JSON.stringify(kpnTranhChap));
+
+  // Danh mục trường khai 8479: hộp găng tay không bị đòi bắt buộc công suất/điện áp.
+  const ms8479 = missingStructured('847989', { tenHang: 'Hộp găng tay thí nghiệm (glove box)' });
+  check('OZV-1707 8479 declaration fields: hộp găng tay không còn bị đòi bắt buộc power/voltage',
+    !ms8479.some((f) => f.key === 'power' || f.key === 'voltage'),
+    JSON.stringify(ms8479.map((f) => f.key)));
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
