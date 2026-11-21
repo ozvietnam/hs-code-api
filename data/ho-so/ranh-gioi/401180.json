@@ -4,13 +4,19 @@
   "nhom": "4011",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-401180",
     "ngay": "2026-11-02"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-03#soat-lo-6c",
+    "ngay": "2026-11-21",
+    "ghiChu": "Đã chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1756)",
+    "bam": "e8a72da332c5bc1b0258e1366a888665061cd652db9a8968c226e9322b972a4c"
+  },
   "dieuKienNut": [
     {
       "id": "4011801",
@@ -18,13 +24,13 @@
       "trich": "4011801 Lắp vành có đường kính không quá 24 inch",
       "dieuKienSo": [
         {
-          "fact": "duongKinh",
+          "fact": "duongKinhVanh",
           "op": "<=",
           "value": 24,
           "donVi": "inch"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "4011803",
@@ -32,23 +38,18 @@
       "trich": "4011803 Lắp vành có đường kính trên 24 inch, loại dùng cho xe kéo, máy thuộc nhóm 84.29 hoặc 84.30, xe nâng hàng hoặc xe và máy xếp dỡ công nghiệp khác",
       "dieuKienSo": [
         {
-          "fact": "duongKinh",
+          "fact": "duongKinhVanh",
           "op": ">",
           "value": 24,
           "donVi": "inch"
         },
         {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": [
-            "xe kéo",
-            "máy thuộc nhóm 84.29 hoặc 84.30",
-            "xe nâng hàng",
-            "xe và máy xếp dỡ công nghiệp khác"
-          ]
+          "fact": "dungChoXeKeoMay8429Hoac8430XeNangHoacXepDo",
+          "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "phanConLai": false
     }
   ],
   "dong8": [
@@ -65,18 +66,19 @@
             "máy thuộc nhóm 84.29 hoặc 84.30",
             "xe nâng hàng",
             "xe cút kít",
-            "xe và máy xếp dỡ công nghiệp khác"
+            "xe và máy xếp dỡ công nghiệp"
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "phanConLai": false
     },
     {
       "hs": "40118019",
       "nguon": "tax.40118019",
       "trich": "40118019 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "40118031",
@@ -89,14 +91,14 @@
           "value": "máy thuộc nhóm 84.29 hoặc 84.30"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "40118039",
       "nguon": "tax.40118039",
       "trich": "40118039 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "40118040",
@@ -104,13 +106,17 @@
       "trich": "40118040 - - Lắp vành có đường kính trên 24 inch, loại khác",
       "dieuKienSo": [
         {
-          "fact": "duongKinh",
+          "fact": "duongKinhVanh",
           "op": ">",
           "value": 24,
           "donVi": "inch"
+        },
+        {
+          "fact": "dungChoXeKeoMay8429Hoac8430XeNangHoacXepDo",
+          "op": "KHONG"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": true
     }
   ],
@@ -118,17 +124,17 @@
     {
       "ma": "4011801",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.4011801 \"Lắp vành có đường kính không quá 24 inch\" ⇒ duongKinh <= 24 inch"
+      "ghiChu": "tieuDe.4011801 \"Lắp vành có đường kính không quá 24 inch\" ⇒ duongKinhVanh <= 24 inch"
     },
     {
       "ma": "40118011",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.40118011 \"Loại dùng cho xe kéo, máy thuộc nhóm 84.29 hoặc 84.30, xe nâng hàng, xe cút kít hoặc xe và máy xếp dỡ công nghiệp khác\" ⇒ dungCho mảng các loại xe/máy"
+      "ghiChu": "tax.40118011 \"Loại dùng cho xe kéo, máy thuộc nhóm 84.29 hoặc 84.30, xe nâng hàng, xe cút kít hoặc xe và máy xếp dỡ công nghiệp khác\" ⇒ dungCho mảng các loại xe/máy (bỏ chữ \"khác\" ở cuối để không thành giá trị chết); phanConLai: false vì chữ \"khác\" chỉ mở rộng danh sách xe/máy xếp dỡ công nghiệp, không phải phần còn lại của tầng"
     },
     {
       "ma": "4011803",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.4011803 \"Lắp vành có đường kính trên 24 inch, loại dùng cho xe kéo, máy thuộc nhóm 84.29 hoặc 84.30, xe nâng hàng hoặc xe và máy xếp dỡ công nghiệp khác\" ⇒ duongKinh > 24 inch VÀ dungCho mảng các xe/máy"
+      "ghiChu": "tieuDe.4011803 \"Lắp vành có đường kính trên 24 inch, loại dùng cho xe kéo, máy thuộc nhóm 84.29 hoặc 84.30, xe nâng hàng hoặc xe và máy xếp dỡ công nghiệp khác\" ⇒ duongKinhVanh > 24 inch VÀ dungCho mảng các xe/máy (bỏ chữ \"khác\" cuối); phanConLai: false vì không phải phần còn lại của tầng"
     },
     {
       "ma": "40118031",
@@ -138,7 +144,7 @@
     {
       "ma": "40118040",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.40118040 \"Lắp vành có đường kính trên 24 inch, loại khác\" ⇒ duongKinh > 24 inch, phanConLai: true phủ định 4011803"
+      "ghiChu": "tax.40118040 \"Lắp vành có đường kính trên 24 inch, loại khác\" ⇒ duongKinhVanh > 24 inch, phanConLai: true phủ định 4011803"
     }
   ],
   "traVe": [
@@ -146,6 +152,11 @@
       "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx-soat3#soat-401180",
       "ngay": "2026-11-02",
       "lyDo": "(A) 4011801/4011803/40118040 SAI TRỤC (suy rộng/lệch): \"Lắp vành có đường kính không quá/trên 24 inch\" (EN \"Fitting a rim of a diameter …\") ⇒ duongKinh <=/> 24 inch — khoá duongKinh = \"đường kính (ngoài)\" của HÀNG (lốp), còn chữ biểu là đường kính VÀNH lắp lốp; lốp đường kính ngoài 1.200 mm lắp vành 20 inch bị đọc > 24 inch ⇒ rơi 4011803x/.40 thay vì 4011801x. Thiếu khoá đường kính vành ⇒ THIEU_KHOA_TU_VUNG (khoaDeXuat duongKinhLapVanh, cùng cách #848 401120)/DỪNG. (B) 40118011/4011803 giá trị dungCho \"xe và máy xếp dỡ công nghiệp khác\" chứa \"khác\" (giá trị chết — mô tả hàng thật không có \"khác\"); cảnh báo nghi-phan-con-lai ×2 chưa quyết (thiếu phanConLai: false + QUYET_DINH)."
+    },
+    {
+      "phien": "claude-agent:tho-hs-03#soat-lo-6c",
+      "ngay": "2026-11-21",
+      "lyDo": "Chuẩn hoá 4011803/40118040 với dungChoXeKeoMay8429Hoac8430XeNangHoacXepDo"
     }
   ]
 }

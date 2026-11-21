@@ -336,6 +336,15 @@ const KHOA_MOI = {
   // 21/11/2026 (OZV-1751): bình hình trụ bằng thép đúc liền (seamless) 7311.00.2 & khả năng cân tối đa 8423.82.3/4
   ducLienKhongNoi: 'CO_KHONG',
   mucCanToiDa: 'SO',
+  // 21/11/2026 (OZV-1756): lô 6c (1602.90.20, 1905.32, 1905.40.10, 1905.90.60, 4011.80, 6306.19.10, 9303.90.10)
+  laChePhamTuTiet: 'CO_KHONG',
+  daThemDuongMatOngTrungChatBeoPhoMatHoacTraiCay: 'CO_KHONG',
+  loaiBanhWaffleWafer: 'LIET_KE',
+  dungTrongDuocPham: 'CO_KHONG',
+  dungChoXeKeoMay8429Hoac8430XeNangHoacXepDo: 'CO_KHONG',
+  tuSoiDetThucVatNhom5305: 'CO_KHONG',
+  chiDePhongPhaoHieu: 'CO_KHONG',
+  coNong23Hoac265mm: 'CO_KHONG',
 };
 
 // ── 1. Nạp theo phiên bản ─────────────────────────────────────────────────────────────────────────────────────────
@@ -759,6 +768,61 @@ la('mucDoTinhCheDau DA_TINH_CHE không nuốt RBD', 'mucDoTinhCheDau', 'Dầu h�
   const r2 = T.docGiaTri('mucCanToiDa', big2);
   const ms = Number(process.hrtime.bigint() - t0) / 1e6;
   check(`OZV-1751 ReDoS ~40.000 từ lặp cho ducLienKhongNoi & mucCanToiDa < 2000 ms (thực tế ${ms.toFixed(0)} ms)`, r1.trangThai === 'CHUA_BIET' && r2.trangThai === 'CHUA_BIET' && ms < 2000, { ms });
+}
+
+// ── Lô 26 (OZV-1756, 21/11/2026) — 7 khoá lô 6c (1602.90.20, 1905.32, 1905.40.10, 1905.90.60, 6306.19.10, 9303.90.10) ──
+la('laChePhamTuTiet (chữ biểu 1602.90.20)', 'laChePhamTuTiet', 'Các chế phẩm từ tiết', true, { bc: 'Các chế phẩm từ tiết' });
+la('laChePhamTuTiet — huyết lợn đóng khối', 'laChePhamTuTiet', 'Huyết lợn đóng khối đã luộc chín', true);
+la('laChePhamTuTiet En', 'laChePhamTuTiet', 'Preparations of blood', true);
+la('laChePhamTuTiet Zh', 'laChePhamTuTiet', '动物血制品', true);
+la('laChePhamTuTiet KHÔNG', 'laChePhamTuTiet', 'Chế phẩm thịt dạng nhão không chứa tiết', false);
+chuaBiet('laChePhamTuTiet không bắt nhầm ca-ri cừu 16029010', 'laChePhamTuTiet', 'Ca-ri cừu, đóng bao bì kín khí để bán lẻ');
+la('daThemDuongMatOngTrungChatBeoPhoMatHoacTraiCay KHÔNG (chữ biểu 1905.40.10)', 'daThemDuongMatOngTrungChatBeoPhoMatHoacTraiCay', 'Chưa thêm đường, mật ong, trứng, chất béo, pho mát hoặc trái cây', false, { bc: 'Chưa thêm đường, mật ong, trứng, chất béo, pho mát hoặc trái cây' });
+la('daThemDuongMatOngTrungChatBeoPhoMatHoacTraiCay CÓ — thêm trứng/bơ', 'daThemDuongMatOngTrungChatBeoPhoMatHoacTraiCay', 'Bánh mì nướng có thêm trứng và bơ', true);
+la('daThemDuongMatOngTrungChatBeoPhoMatHoacTraiCay En KHÔNG', 'daThemDuongMatOngTrungChatBeoPhoMatHoacTraiCay', 'Not containing added sugar, honey, eggs, fats, cheese or fruit', false);
+la('daThemDuongMatOngTrungChatBeoPhoMatHoacTraiCay Zh CÓ', 'daThemDuongMatOngTrungChatBeoPhoMatHoacTraiCay', '已添加蜂蜜的烤面包', true);
+chuaBiet('daThemDuongMatOngTrungChatBeoPhoMatHoacTraiCay chỉ nói không thêm đường (chưa rõ trứng/bơ/pho mát/trái cây)', 'daThemDuongMatOngTrungChatBeoPhoMatHoacTraiCay', 'Bánh mì nướng không thêm đường');
+la('loaiBanhWaffleWafer BANH_WAFFLES (chữ biểu 1905.32.10)', 'loaiBanhWaffleWafer', 'Bánh waffles (SEN)', 'BANH_WAFFLES');
+la('loaiBanhWaffleWafer BANH_XOP_WAFERS (chữ biểu 1905.32.20)', 'loaiBanhWaffleWafer', 'Bánh xốp wafers (SEN)', 'BANH_XOP_WAFERS');
+la('loaiBanhWaffleWafer En', 'loaiBanhWaffleWafer', 'Crispy chocolate wafers', 'BANH_XOP_WAFERS');
+la('loaiBanhWaffleWafer Zh', 'loaiBanhWaffleWafer', '比利时华夫饼', 'BANH_WAFFLES');
+chuaBiet('loaiBanhWaffleWafer không bắt cụm tiêu đề cha "Bánh waffles và bánh xốp wafers"', 'loaiBanhWaffleWafer', 'Bánh waffles và bánh xốp wafers');
+chuaBiet('loaiBanhWaffleWafer không bắt bánh xốp sealing wafers 19059070', 'loaiBanhWaffleWafer', 'Bánh thánh, bánh xốp sealing wafers, bánh đa');
+la('dungTrongDuocPham (chữ biểu 1905.90.60)', 'dungTrongDuocPham', 'Vỏ viên nhộng và sản phẩm tương tự dùng trong dược phẩm', true, { bc: 'dùng trong dược phẩm' });
+la('dungTrongDuocPham En', 'dungTrongDuocPham', 'Empty cachets of a kind suitable for pharmaceutical use', true);
+la('dungTrongDuocPham Zh', 'dungTrongDuocPham', '供药用的空囊', true);
+la('dungTrongDuocPham KHÔNG', 'dungTrongDuocPham', 'Vỏ bánh không dùng trong dược phẩm', false);
+la('dungChoXeKeoMay8429Hoac8430XeNangHoacXepDo CÓ (tiêu đề 4011.80.3)', 'dungChoXeKeoMay8429Hoac8430XeNangHoacXepDo', 'Lắp vành có đường kính trên 24 inch, loại dùng cho xe kéo, máy thuộc nhóm 84.29 hoặc 84.30, xe nâng hàng hoặc xe và máy xếp dỡ công nghiệp khác', true);
+la('dungChoXeKeoMay8429Hoac8430XeNangHoacXepDo CÓ — dùng cho xe kéo', 'dungChoXeKeoMay8429Hoac8430XeNangHoacXepDo', 'Lốp cao su dùng cho xe kéo công nghiệp', true);
+la('dungChoXeKeoMay8429Hoac8430XeNangHoacXepDo KHÔNG (chữ biểu 4011.80.40)', 'dungChoXeKeoMay8429Hoac8430XeNangHoacXepDo', 'Lắp vành có đường kính trên 24 inch, loại khác', false);
+la('dungChoXeKeoMay8429Hoac8430XeNangHoacXepDo En CÓ', 'dungChoXeKeoMay8429Hoac8430XeNangHoacXepDo', 'Tyres used on tractors or forklifts', true);
+la('dungChoXeKeoMay8429Hoac8430XeNangHoacXepDo Zh CÓ', 'dungChoXeKeoMay8429Hoac8430XeNangHoacXepDo', '用于叉车的轮胎', true);
+la('tuSoiDetThucVatNhom5305 (chữ biểu 6306.19.10)', 'tuSoiDetThucVatNhom5305', 'Từ sợi dệt thực vật thuộc nhóm 53.05', true, { bc: 'Từ sợi dệt thực vật thuộc nhóm 53.05' });
+la('tuSoiDetThucVatNhom5305 — từ xơ dừa / sisal', 'tuSoiDetThucVatNhom5305', 'Tấm bạt từ xơ dừa', true);
+la('tuSoiDetThucVatNhom5305 En', 'tuSoiDetThucVatNhom5305', 'Of vegetable textile fibres of heading 53.05', true);
+la('tuSoiDetThucVatNhom5305 Zh', 'tuSoiDetThucVatNhom5305', '税目53.05的植物纺织纤维制', true);
+la('tuSoiDetThucVatNhom5305 KHÔNG — tấm bạt đay (53.03)', 'tuSoiDetThucVatNhom5305', 'Tấm bạt bằng sợi đay', false);
+la('tuSoiDetThucVatNhom5305 KHÔNG — vải lanh (53.01)', 'tuSoiDetThucVatNhom5305', 'Tấm che nắng bằng vải lanh', false);
+la('chiDePhongPhaoHieu (chữ biểu 9303.90.10)', 'chiDePhongPhaoHieu', 'Súng lục bắn pháo hiệu và các loại khác được thiết kế chỉ để phóng pháo hiệu có cỡ nòng từ 20 mm trở lên nhưng trừ cỡ 23 mm và 26,5 mm', true);
+la('chiDePhongPhaoHieu — thiết bị phóng pháo hiệu', 'chiDePhongPhaoHieu', 'Thiết bị phóng pháo hiệu cứu sinh trên biển', true);
+la('chiDePhongPhaoHieu En', 'chiDePhongPhaoHieu', 'Very pistols and other devices designed to project only signal flares', true);
+la('chiDePhongPhaoHieu Zh', 'chiDePhongPhaoHieu', '信号枪及专门设计仅用于发射信号弹的其他装置', true);
+la('chiDePhongPhaoHieu KHÔNG', 'chiDePhongPhaoHieu', 'Súng hơi không phải thiết kế chỉ để phóng pháo hiệu', false);
+la('coNong23Hoac265mm KHÔNG (chữ biểu 9303.90.10)', 'coNong23Hoac265mm', 'Súng lục bắn pháo hiệu và các loại khác được thiết kế chỉ để phóng pháo hiệu có cỡ nòng từ 20 mm trở lên nhưng trừ cỡ 23 mm và 26,5 mm', false, { bc: 'trừ cỡ 23 mm và 26,5 mm' });
+la('coNong23Hoac265mm CÓ — cỡ nòng 26,5 mm', 'coNong23Hoac265mm', 'Súng bắn pháo hiệu cỡ nòng 26,5 mm', true);
+la('coNong23Hoac265mm CÓ — cỡ 23 mm', 'coNong23Hoac265mm', 'Súng pháo hiệu cỡ 23 mm', true);
+la('coNong23Hoac265mm KHÔNG — cỡ nòng 25 mm', 'coNong23Hoac265mm', 'Thiết bị phóng pháo hiệu cỡ nòng 25 mm', false);
+la('coNong23Hoac265mm En CÓ', 'coNong23Hoac265mm', 'Signal flare pistol calibre 26.5 mm', true);
+la('coNong23Hoac265mm Zh CÓ', 'coNong23Hoac265mm', '口径26.5毫米信号枪', true);
+{
+  const big = Array(8000).fill('bánh mì nướng giòn đóng gói bán lẻ').join(' ');
+  const t0 = process.hrtime.bigint();
+  for (const k of ['laChePhamTuTiet', 'daThemDuongMatOngTrungChatBeoPhoMatHoacTraiCay', 'loaiBanhWaffleWafer', 'dungTrongDuocPham', 'dungChoXeKeoMay8429Hoac8430XeNangHoacXepDo', 'tuSoiDetThucVatNhom5305', 'chiDePhongPhaoHieu', 'coNong23Hoac265mm']) {
+    const r = T.docGiaTri(k, big);
+    if (r.trangThai !== 'CHUA_BIET') throw new Error(`Expected CHUA_BIET for ${k}`);
+  }
+  const ms = Number(process.hrtime.bigint() - t0) / 1e6;
+  check(`OZV-1756 ReDoS ~40.000 từ lặp cho 8 khoá mới < 2000 ms (thực tế ${ms.toFixed(0)} ms)`, ms < 2000, { ms });
 }
 
 // ── 5. Viết + kiểm giá trị ───────────────────────────────────────────────────────────────────────────────────────────

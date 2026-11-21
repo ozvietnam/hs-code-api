@@ -181,58 +181,75 @@
     },
     {
       "hs": "19053210",
-      "dieuKien": "tên loại hàng: Bánh waffles",
+      "dieuKien": "loại bánh waffles hoặc bánh xốp wafers (phân nhóm 1905.32): bánh waffles",
       "nguon": "tax.19053210",
       "trich": "19053210 - - - Bánh waffles (SEN)",
       "nguonLoai": "CLAUDE_DUYET",
       "loaiKhac": false,
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Bánh waffles"
+          "fact": "loaiBanhWaffleWafer",
+          "op": "TRONG",
+          "value": [
+            "BANH_WAFFLES"
+          ]
         }
       ],
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L6-20261111#soat-L6",
-          "ngay": "2026-11-11",
-          "bam": "cf2d9b52c9ce7815e44be17068823f8bee8889f673b21812a9d238af3b18ec16"
+          "phien": "claude-agent:tho-hs-03#soat-lo-6c",
+          "ngay": "2026-11-21",
+          "bam": "c8f8aa28c35cb1e5fb0f422891be24e31d836eb7570bde5834eab3ba866383d5"
         }
       }
     },
     {
       "hs": "19053220",
-      "dieuKien": "tên loại hàng: Bánh xốp wafers",
+      "dieuKien": "loại bánh waffles hoặc bánh xốp wafers (phân nhóm 1905.32): bánh xốp wafers",
       "nguon": "tax.19053220",
       "trich": "19053220 - - - Bánh xốp wafers (SEN)",
       "nguonLoai": "CLAUDE_DUYET",
       "loaiKhac": false,
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Bánh xốp wafers"
+          "fact": "loaiBanhWaffleWafer",
+          "op": "TRONG",
+          "value": [
+            "BANH_XOP_WAFERS"
+          ]
         }
       ],
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L6-20261111#soat-L6",
-          "ngay": "2026-11-11",
-          "bam": "cf2d9b52c9ce7815e44be17068823f8bee8889f673b21812a9d238af3b18ec16"
+          "phien": "claude-agent:tho-hs-03#soat-lo-6c",
+          "ngay": "2026-11-21",
+          "bam": "c8f8aa28c35cb1e5fb0f422891be24e31d836eb7570bde5834eab3ba866383d5"
         }
       }
     },
     {
       "hs": "19054010",
-      "dieuKien": "Chưa thêm đường, mật ong, trứng, chất béo, pho mát hoặc trái cây",
-      "tieuChi": null,
+      "dieuKien": "không: đã thêm đường, mật ong, trứng, chất béo, pho mát hoặc trái cây",
       "nguon": "tax.19054010",
       "trich": "19054010 - - Chưa thêm đường, mật ong, trứng, chất béo, pho mát hoặc trái cây",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "daThemDuongMatOngTrungChatBeoPhoMatHoacTraiCay",
+          "op": "KHONG"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-03#soat-lo-6c",
+          "ngay": "2026-11-21",
+          "bam": "0469ecbe0711d2518aa51e248bc6d6be1acd9093b81b104d8d83c3c694f5876b"
+        }
+      }
     },
     {
       "hs": "19054090",
@@ -281,9 +298,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L6-20261111#soat-L6",
-          "ngay": "2026-11-11",
-          "bam": "a7c4f5342586105f631d617c6251f0baccf5fd8a42a4637f83806aa526a849ef"
+          "phien": "claude-agent:tho-hs-03#soat-lo-6c",
+          "ngay": "2026-11-21",
+          "bam": "8602ea626504936e221486e5b399c3514e9bb796773060220aa40ba32b8b2652"
         }
       }
     },
@@ -308,9 +325,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L6-20261111#soat-L6",
-          "ngay": "2026-11-11",
-          "bam": "a7c4f5342586105f631d617c6251f0baccf5fd8a42a4637f83806aa526a849ef"
+          "phien": "claude-agent:tho-hs-03#soat-lo-6c",
+          "ngay": "2026-11-21",
+          "bam": "8602ea626504936e221486e5b399c3514e9bb796773060220aa40ba32b8b2652"
         }
       },
       "phanConLai": true
@@ -332,9 +349,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L6-20261111#soat-L6",
-          "ngay": "2026-11-11",
-          "bam": "a7c4f5342586105f631d617c6251f0baccf5fd8a42a4637f83806aa526a849ef"
+          "phien": "claude-agent:tho-hs-03#soat-lo-6c",
+          "ngay": "2026-11-21",
+          "bam": "8602ea626504936e221486e5b399c3514e9bb796773060220aa40ba32b8b2652"
         }
       }
     },
@@ -355,9 +372,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L6-20261111#soat-L6",
-          "ngay": "2026-11-11",
-          "bam": "a7c4f5342586105f631d617c6251f0baccf5fd8a42a4637f83806aa526a849ef"
+          "phien": "claude-agent:tho-hs-03#soat-lo-6c",
+          "ngay": "2026-11-21",
+          "bam": "8602ea626504936e221486e5b399c3514e9bb796773060220aa40ba32b8b2652"
         }
       }
     },
@@ -382,15 +399,15 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L6-20261111#soat-L6",
-          "ngay": "2026-11-11",
-          "bam": "a7c4f5342586105f631d617c6251f0baccf5fd8a42a4637f83806aa526a849ef"
+          "phien": "claude-agent:tho-hs-03#soat-lo-6c",
+          "ngay": "2026-11-21",
+          "bam": "8602ea626504936e221486e5b399c3514e9bb796773060220aa40ba32b8b2652"
         }
       }
     },
     {
       "hs": "19059060",
-      "dieuKien": "tên loại hàng: Vỏ viên nhộng hoặc loại tương tự; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): dược phẩm",
+      "dieuKien": "tên loại hàng: Vỏ viên nhộng hoặc loại tương tự; dùng trong dược phẩm / ngành dược",
       "nguon": "tax.19059060",
       "trich": "19059060 - - Vỏ viên nhộng và sản phẩm tương tự dùng trong dược phẩm",
       "nguonLoai": "CLAUDE_DUYET",
@@ -404,17 +421,16 @@
           ]
         },
         {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": "dược phẩm"
+          "fact": "dungTrongDuocPham",
+          "op": "CO"
         }
       ],
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L6-20261111#soat-L6",
-          "ngay": "2026-11-11",
-          "bam": "a7c4f5342586105f631d617c6251f0baccf5fd8a42a4637f83806aa526a849ef"
+          "phien": "claude-agent:tho-hs-03#soat-lo-6c",
+          "ngay": "2026-11-21",
+          "bam": "8602ea626504936e221486e5b399c3514e9bb796773060220aa40ba32b8b2652"
         }
       }
     },
@@ -439,9 +455,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L6-20261111#soat-L6",
-          "ngay": "2026-11-11",
-          "bam": "a7c4f5342586105f631d617c6251f0baccf5fd8a42a4637f83806aa526a849ef"
+          "phien": "claude-agent:tho-hs-03#soat-lo-6c",
+          "ngay": "2026-11-21",
+          "bam": "8602ea626504936e221486e5b399c3514e9bb796773060220aa40ba32b8b2652"
         }
       }
     },
@@ -462,9 +478,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L6-20261111#soat-L6",
-          "ngay": "2026-11-11",
-          "bam": "a7c4f5342586105f631d617c6251f0baccf5fd8a42a4637f83806aa526a849ef"
+          "phien": "claude-agent:tho-hs-03#soat-lo-6c",
+          "ngay": "2026-11-21",
+          "bam": "8602ea626504936e221486e5b399c3514e9bb796773060220aa40ba32b8b2652"
         }
       },
       "phanConLai": true
