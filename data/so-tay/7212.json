@@ -41,19 +41,65 @@
   "dong8": [
     {
       "hs": "72121011",
-      "dieuKien": "Dạng đai và dải(SEN), có chiều rộng không quá 25 mm",
+      "dieuKien": "dạng đai, dải hoặc tấm phổ dụng: dạng đai và dải; chiều rộng <= 25 mm",
       "loaiKhac": false,
       "nguon": "tax.72121011",
       "trich": "72121011 - - - Dạng đai và dải(SEN), có chiều rộng không quá 25 mm",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dangDaiDaiTamPhoDung",
+          "op": "TRONG",
+          "value": [
+            "DAI_VA_DAI"
+          ]
+        },
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 25,
+          "donVi": "mm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1782#soat-721210",
+          "ngay": "2026-11-21",
+          "bam": "dbe171158a37626c1678115a3081c0c99505341f1f20a5b6ac885f05fac71ede"
+        }
+      }
     },
     {
       "hs": "72121014",
-      "dieuKien": "Dạng đai và dải(SEN), có chiều rộng trên 400 mm",
+      "dieuKien": "dạng đai, dải hoặc tấm phổ dụng: dạng đai và dải; chiều rộng > 400 mm",
       "loaiKhac": false,
       "nguon": "tax.72121014",
       "trich": "72121014 - - - Dạng đai và dải(SEN), có chiều rộng trên 400 mm",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dangDaiDaiTamPhoDung",
+          "op": "TRONG",
+          "value": [
+            "DAI_VA_DAI"
+          ]
+        },
+        {
+          "fact": "chieuRong",
+          "op": ">",
+          "value": 400,
+          "donVi": "mm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1782#soat-721210",
+          "ngay": "2026-11-21",
+          "bam": "dbe171158a37626c1678115a3081c0c99505341f1f20a5b6ac885f05fac71ede"
+        }
+      }
     },
     {
       "hs": "72121019",
@@ -79,11 +125,34 @@
     },
     {
       "hs": "72121094",
-      "dieuKien": "Dạng đai và dải(SEN), chiều rộng không quá 400 mm",
+      "dieuKien": "dạng đai, dải hoặc tấm phổ dụng: dạng đai và dải; chiều rộng <= 400 mm",
       "loaiKhac": false,
       "nguon": "tax.72121094",
       "trich": "72121094 - - - Dạng đai và dải(SEN), chiều rộng không quá 400 mm",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dangDaiDaiTamPhoDung",
+          "op": "TRONG",
+          "value": [
+            "DAI_VA_DAI"
+          ]
+        },
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 400,
+          "donVi": "mm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1782#soat-721210",
+          "ngay": "2026-11-21",
+          "bam": "dbe171158a37626c1678115a3081c0c99505341f1f20a5b6ac885f05fac71ede"
+        }
+      }
     },
     {
       "hs": "72121099",
@@ -226,9 +295,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
-          "ngay": "2026-11-11",
-          "bam": "f8f9a87749df0b466ecc0cbb77e4ea002c5907e77e75b300851fa288c1e1f560"
+          "phien": "claude-agent:ozv-1782#soat-721230",
+          "ngay": "2026-11-21",
+          "bam": "0c583610424bdc14fc80c09cee40ecff63930baa4e33da22bb1ff5649f92c935"
         }
       }
     },
@@ -263,15 +332,15 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
-          "ngay": "2026-11-11",
-          "bam": "f8f9a87749df0b466ecc0cbb77e4ea002c5907e77e75b300851fa288c1e1f560"
+          "phien": "claude-agent:ozv-1782#soat-721230",
+          "ngay": "2026-11-21",
+          "bam": "0c583610424bdc14fc80c09cee40ecff63930baa4e33da22bb1ff5649f92c935"
         }
       }
     },
     {
       "hs": "72123013",
-      "dieuKien": "độ dày <= 1.5 mm",
+      "dieuKien": "độ dày <= 1.5 mm; tên loại hàng: chiều dày",
       "loaiKhac": true,
       "nguon": "tax.72123013",
       "trich": "72123013 - - - Loại khác, chiều dày không quá 1,5 mm",
@@ -298,14 +367,19 @@
           "op": "<=",
           "value": 1.5,
           "donVi": "mm"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "chiều dày"
         }
       ],
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
-          "ngay": "2026-11-11",
-          "bam": "f8f9a87749df0b466ecc0cbb77e4ea002c5907e77e75b300851fa288c1e1f560"
+          "phien": "claude-agent:ozv-1782#soat-721230",
+          "ngay": "2026-11-21",
+          "bam": "0c583610424bdc14fc80c09cee40ecff63930baa4e33da22bb1ff5649f92c935"
         }
       }
     },
@@ -348,9 +422,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
-          "ngay": "2026-11-11",
-          "bam": "f8f9a87749df0b466ecc0cbb77e4ea002c5907e77e75b300851fa288c1e1f560"
+          "phien": "claude-agent:ozv-1782#soat-721230",
+          "ngay": "2026-11-21",
+          "bam": "0c583610424bdc14fc80c09cee40ecff63930baa4e33da22bb1ff5649f92c935"
         }
       }
     },
@@ -425,9 +499,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
-          "ngay": "2026-11-11",
-          "bam": "b32cee024389d966419bea1e2baf92b238c6465e1499378760fff06ca4ef9367"
+          "phien": "claude-agent:ozv-1782#soat-721240",
+          "ngay": "2026-11-21",
+          "bam": "c5b4d0dbc73571a8699b3f04d162688ae5be0a5503fadad156effd070170c635"
         }
       }
     },
@@ -450,9 +524,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
-          "ngay": "2026-11-11",
-          "bam": "b32cee024389d966419bea1e2baf92b238c6465e1499378760fff06ca4ef9367"
+          "phien": "claude-agent:ozv-1782#soat-721240",
+          "ngay": "2026-11-21",
+          "bam": "c5b4d0dbc73571a8699b3f04d162688ae5be0a5503fadad156effd070170c635"
         }
       },
       "phanConLai": [
@@ -461,7 +535,7 @@
     },
     {
       "hs": "72124013",
-      "dieuKien": "lớp mạ hoặc tráng phủ bề mặt: được sơn sau khi phủ, mạ kẽm",
+      "dieuKien": "lớp mạ hoặc tráng phủ bề mặt: được sơn sau khi phủ, mạ kẽm; tên loại hàng: mạ kẽm",
       "loaiKhac": true,
       "nguon": "tax.72124013",
       "trich": "72124013 - - - Loại khác, được sơn sau khi phủ, mạ kẽm",
@@ -489,20 +563,25 @@
           "value": [
             "SON_SAU_MA_KEM"
           ]
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "mạ kẽm"
         }
       ],
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
-          "ngay": "2026-11-11",
-          "bam": "b32cee024389d966419bea1e2baf92b238c6465e1499378760fff06ca4ef9367"
+          "phien": "claude-agent:ozv-1782#soat-721240",
+          "ngay": "2026-11-21",
+          "bam": "c5b4d0dbc73571a8699b3f04d162688ae5be0a5503fadad156effd070170c635"
         }
       }
     },
     {
       "hs": "72124014",
-      "dieuKien": "tên loại hàng: được sơn sau khi phủ; tên loại hàng: mạ hợp kim nhôm - kẽm",
+      "dieuKien": "lớp mạ hoặc tráng phủ bề mặt: được sơn sau khi phủ, mạ hợp kim nhôm - kẽm; tên loại hàng: được sơn sau khi phủ; tên loại hàng: mạ hợp kim nhôm - kẽm",
       "loaiKhac": true,
       "nguon": "tax.72124014",
       "trich": "72124014 - - - Loại khác, được sơn sau khi phủ, mạ hợp kim nhôm - kẽm",
@@ -525,6 +604,13 @@
       },
       "dieuKienSo": [
         {
+          "fact": "lopMaPhu",
+          "op": "TRONG",
+          "value": [
+            "SON_SAU_MA_NHOM_KEM"
+          ]
+        },
+        {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "được sơn sau khi phủ"
@@ -538,9 +624,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
-          "ngay": "2026-11-11",
-          "bam": "b32cee024389d966419bea1e2baf92b238c6465e1499378760fff06ca4ef9367"
+          "phien": "claude-agent:ozv-1782#soat-721240",
+          "ngay": "2026-11-21",
+          "bam": "c5b4d0dbc73571a8699b3f04d162688ae5be0a5503fadad156effd070170c635"
         }
       }
     },
@@ -595,9 +681,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
-          "ngay": "2026-11-11",
-          "bam": "b32cee024389d966419bea1e2baf92b238c6465e1499378760fff06ca4ef9367"
+          "phien": "claude-agent:ozv-1782#soat-721240",
+          "ngay": "2026-11-21",
+          "bam": "c5b4d0dbc73571a8699b3f04d162688ae5be0a5503fadad156effd070170c635"
         }
       }
     },
@@ -624,11 +710,50 @@
     },
     {
       "hs": "72125014",
-      "dieuKien": "Dạng đai và dải(SEN), chiều rộng trên 25 mm; tấm phổ dụng (SEN)",
+      "dieuKien": "(dạng đai, dải hoặc tấm phổ dụng: dạng đai và dải và chiều rộng > 25 mm) hoặc (dạng đai, dải hoặc tấm phổ dụng: tấm phổ dụng)",
       "loaiKhac": false,
       "nguon": "tax.72125014",
-      "trich": "72125014 - - - Dạng đai và dải(SEN), chiều rộng trên 25 mm; tấm phổ dụng (SEN)",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "72125014 - - - Dạng đai và dải(SEN), chiều rộng trên 25 mm … tấm phổ dụng (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "dangDaiDaiTamPhoDung",
+                "op": "TRONG",
+                "value": [
+                  "DAI_VA_DAI"
+                ]
+              },
+              {
+                "fact": "chieuRong",
+                "op": ">",
+                "value": 25,
+                "donVi": "mm"
+              }
+            ],
+            [
+              {
+                "fact": "dangDaiDaiTamPhoDung",
+                "op": "TRONG",
+                "value": [
+                  "TAM_PHO_DUNG"
+                ]
+              }
+            ]
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1782#soat-721250",
+          "ngay": "2026-11-21",
+          "bam": "3eee59da99abc4256b7c39b17b0da6c8ea6b0944dfc33394bf073d1874104da9"
+        }
+      }
     },
     {
       "hs": "72125019",
@@ -652,19 +777,62 @@
     },
     {
       "hs": "72125023",
-      "dieuKien": "Dạng đai và dải(SEN), có chiều rộng không quá 25 mm",
+      "dieuKien": "dạng đai, dải hoặc tấm phổ dụng: dạng đai và dải; chiều rộng <= 25 mm",
       "loaiKhac": false,
       "nguon": "tax.72125023",
       "trich": "72125023 - - - Dạng đai và dải(SEN), có chiều rộng không quá 25 mm",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dangDaiDaiTamPhoDung",
+          "op": "TRONG",
+          "value": [
+            "DAI_VA_DAI"
+          ]
+        },
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 25,
+          "donVi": "mm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1782#soat-721250",
+          "ngay": "2026-11-21",
+          "bam": "3eee59da99abc4256b7c39b17b0da6c8ea6b0944dfc33394bf073d1874104da9"
+        }
+      }
     },
     {
       "hs": "72125024",
-      "dieuKien": "Dạng đai và dải khác; tấm phổ dụng(SEN)",
+      "dieuKien": "dạng đai, dải hoặc tấm phổ dụng: dạng đai và dải hoặc tấm phổ dụng",
       "loaiKhac": false,
       "nguon": "tax.72125024",
       "trich": "72125024 - - - Dạng đai và dải khác; tấm phổ dụng(SEN)",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dangDaiDaiTamPhoDung",
+          "op": "TRONG",
+          "value": [
+            "DAI_DAI_HOAC_PHO_DUNG"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1782#soat-721250",
+          "ngay": "2026-11-21",
+          "bam": "3eee59da99abc4256b7c39b17b0da6c8ea6b0944dfc33394bf073d1874104da9"
+        }
+      },
+      "phanConLai": [
+        "72125023"
+      ]
     },
     {
       "hs": "72125029",
@@ -690,19 +858,62 @@
     },
     {
       "hs": "72125093",
-      "dieuKien": "Dạng đai và dải(SEN), có chiều rộng không quá 25 mm",
+      "dieuKien": "dạng đai, dải hoặc tấm phổ dụng: dạng đai và dải; chiều rộng <= 25 mm",
       "loaiKhac": false,
       "nguon": "tax.72125093",
       "trich": "72125093 - - - Dạng đai và dải(SEN), có chiều rộng không quá 25 mm",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dangDaiDaiTamPhoDung",
+          "op": "TRONG",
+          "value": [
+            "DAI_VA_DAI"
+          ]
+        },
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 25,
+          "donVi": "mm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1782#soat-721250",
+          "ngay": "2026-11-21",
+          "bam": "3eee59da99abc4256b7c39b17b0da6c8ea6b0944dfc33394bf073d1874104da9"
+        }
+      }
     },
     {
       "hs": "72125094",
-      "dieuKien": "Dạng đai và dải khác; tấm phổ dụng(SEN)",
+      "dieuKien": "dạng đai, dải hoặc tấm phổ dụng: dạng đai và dải hoặc tấm phổ dụng",
       "loaiKhac": false,
       "nguon": "tax.72125094",
       "trich": "72125094 - - - Dạng đai và dải khác; tấm phổ dụng(SEN)",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dangDaiDaiTamPhoDung",
+          "op": "TRONG",
+          "value": [
+            "DAI_DAI_HOAC_PHO_DUNG"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1782#soat-721250",
+          "ngay": "2026-11-21",
+          "bam": "3eee59da99abc4256b7c39b17b0da6c8ea6b0944dfc33394bf073d1874104da9"
+        }
+      },
+      "phanConLai": [
+        "72125093"
+      ]
     },
     {
       "hs": "72125099",
@@ -747,15 +958,15 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
-          "ngay": "2026-11-11",
-          "bam": "14292279dea60c40fa1ab969c39e326221884e96bdedbdb79d63f374518f6c11"
+          "phien": "claude-agent:ozv-1782#soat-721260",
+          "ngay": "2026-11-21",
+          "bam": "253b434d9fc8a72c99d9758eba09a5b77cc48b3f19484712c366ba5d774dc7eb"
         }
       }
     },
     {
       "hs": "72126012",
-      "dieuKien": "độ dày <= 1.5 mm",
+      "dieuKien": "độ dày <= 1.5 mm; tên loại hàng: chiều dày",
       "loaiKhac": true,
       "nguon": "tax.72126012",
       "trich": "72126012 - - - Loại khác, chiều dày không quá 1,5 mm",
@@ -778,14 +989,19 @@
           "op": "<=",
           "value": 1.5,
           "donVi": "mm"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "chiều dày"
         }
       ],
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
-          "ngay": "2026-11-11",
-          "bam": "14292279dea60c40fa1ab969c39e326221884e96bdedbdb79d63f374518f6c11"
+          "phien": "claude-agent:ozv-1782#soat-721260",
+          "ngay": "2026-11-21",
+          "bam": "253b434d9fc8a72c99d9758eba09a5b77cc48b3f19484712c366ba5d774dc7eb"
         }
       }
     },
@@ -830,9 +1046,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
-          "ngay": "2026-11-11",
-          "bam": "14292279dea60c40fa1ab969c39e326221884e96bdedbdb79d63f374518f6c11"
+          "phien": "claude-agent:ozv-1782#soat-721260",
+          "ngay": "2026-11-21",
+          "bam": "253b434d9fc8a72c99d9758eba09a5b77cc48b3f19484712c366ba5d774dc7eb"
         }
       }
     },
@@ -1343,6 +1559,28 @@
   },
   "dieuKienNut": [
     {
+      "id": "7212101",
+      "nguon": "tieuDe.7212101",
+      "trich": "7212101 Có hàm lượng carbon dưới 0,6% tính theo khối lượng",
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1782#soat-721210",
+          "ngay": "2026-11-21",
+          "bam": "dbe171158a37626c1678115a3081c0c99505341f1f20a5b6ac885f05fac71ede"
+        }
+      }
+    },
+    {
       "id": "7212301",
       "nguon": "tieuDe.7212301",
       "trich": "7212301 Có hàm lượng carbon dưới 0,6% tính theo khối lượng",
@@ -1358,9 +1596,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
-          "ngay": "2026-11-11",
-          "bam": "f8f9a87749df0b466ecc0cbb77e4ea002c5907e77e75b300851fa288c1e1f560"
+          "phien": "claude-agent:ozv-1782#soat-721230",
+          "ngay": "2026-11-21",
+          "bam": "0c583610424bdc14fc80c09cee40ecff63930baa4e33da22bb1ff5649f92c935"
         }
       }
     },
@@ -1380,9 +1618,58 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
-          "ngay": "2026-11-11",
-          "bam": "b32cee024389d966419bea1e2baf92b238c6465e1499378760fff06ca4ef9367"
+          "phien": "claude-agent:ozv-1782#soat-721240",
+          "ngay": "2026-11-21",
+          "bam": "c5b4d0dbc73571a8699b3f04d162688ae5be0a5503fadad156effd070170c635"
+        }
+      }
+    },
+    {
+      "id": "7212501",
+      "nguon": "tieuDe.7212501",
+      "trich": "7212501 Được phủ, mạ hoặc tráng bằng oxit crôm hoặc bằng crôm và oxit crôm",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "oxit crôm"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1782#soat-721250",
+          "ngay": "2026-11-21",
+          "bam": "3eee59da99abc4256b7c39b17b0da6c8ea6b0944dfc33394bf073d1874104da9"
+        }
+      }
+    },
+    {
+      "id": "7212502",
+      "nguon": "tieuDe.7212502",
+      "trich": "7212502 Được phủ, mạ hoặc tráng hợp kim nhôm - kẽm",
+      "dieuKienSo": [
+        {
+          "fact": "lopMaPhu",
+          "op": "TRONG",
+          "value": [
+            "NHOM_KEM"
+          ]
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "nhôm - kẽm"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1782#soat-721250",
+          "ngay": "2026-11-21",
+          "bam": "3eee59da99abc4256b7c39b17b0da6c8ea6b0944dfc33394bf073d1874104da9"
         }
       }
     },
@@ -1402,9 +1689,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
-          "ngay": "2026-11-11",
-          "bam": "14292279dea60c40fa1ab969c39e326221884e96bdedbdb79d63f374518f6c11"
+          "phien": "claude-agent:ozv-1782#soat-721260",
+          "ngay": "2026-11-21",
+          "bam": "253b434d9fc8a72c99d9758eba09a5b77cc48b3f19484712c366ba5d774dc7eb"
         }
       }
     }

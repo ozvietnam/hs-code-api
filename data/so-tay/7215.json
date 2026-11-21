@@ -86,11 +86,28 @@
   "dong8": [
     {
       "hs": "72151010",
-      "dieuKien": "Có mặt cắt ngang hình tròn",
+      "dieuKien": "hình dạng mặt cắt ngang: mặt cắt ngang hình tròn",
       "loaiKhac": false,
       "nguon": "tax.72151010",
       "trich": "72151010 - - Có mặt cắt ngang hình tròn",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "hinhDangMatCatNgang",
+          "op": "TRONG",
+          "value": [
+            "TRON"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1782#soat-721510",
+          "ngay": "2026-11-21",
+          "bam": "321aeabeafb7f812ab19e9bce2b9e539802657975bc0c3c97e162c5a6b7169b4"
+        }
+      }
     },
     {
       "hs": "72151090",
@@ -114,7 +131,7 @@
     },
     {
       "hs": "72155010",
-      "dieuKien": "hàm lượng carbon >= 0.6 %; không hình dạng mặt cắt ngang: mặt cắt ngang hình tròn",
+      "dieuKien": "hàm lượng carbon >= 0.6 %; (không hình dạng mặt cắt ngang: mặt cắt ngang hình tròn) hoặc (tên loại hàng: trừ dạng mặt cắt ngang hình tròn)",
       "loaiKhac": false,
       "nguon": "tax.72155010",
       "trich": "72155010 - - Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng, trừ dạng mặt cắt ngang hình tròn ",
@@ -127,20 +144,34 @@
           "donVi": "%"
         },
         {
-          "fact": "hinhDangMatCatNgang",
-          "op": "TRONG",
-          "value": [
-            "TRON"
-          ],
-          "chieu": "PHAI_KHONG"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "hinhDangMatCatNgang",
+                "op": "TRONG",
+                "value": [
+                  "TRON"
+                ],
+                "chieu": "PHAI_KHONG"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "trừ dạng mặt cắt ngang hình tròn"
+              }
+            ]
+          ]
         }
       ],
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
-          "ngay": "2026-11-11",
-          "bam": "210ddf07ff727f3585d848597080f29753cb63017ff58e12ee914035101434be"
+          "phien": "claude-agent:ozv-1782#soat-721550",
+          "ngay": "2026-11-21",
+          "bam": "814c0c58ad9d832de34fe01096e1c91b4251dc484264c0f69aaa2ce8bb44ee50"
         }
       }
     },
@@ -161,9 +192,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
-          "ngay": "2026-11-11",
-          "bam": "210ddf07ff727f3585d848597080f29753cb63017ff58e12ee914035101434be"
+          "phien": "claude-agent:ozv-1782#soat-721550",
+          "ngay": "2026-11-21",
+          "bam": "814c0c58ad9d832de34fe01096e1c91b4251dc484264c0f69aaa2ce8bb44ee50"
         }
       }
     },
@@ -190,19 +221,51 @@
     },
     {
       "hs": "72159010",
-      "dieuKien": "Thép cốt bê tông",
+      "dieuKien": "tên loại hàng: Thép cốt bê tông",
       "loaiKhac": false,
       "nguon": "tax.72159010",
       "trich": "72159010 - - Thép cốt bê tông",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thép cốt bê tông"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1782#soat-721590",
+          "ngay": "2026-11-21",
+          "bam": "4e61f1904a7fc3d8e9430c164eb9f1bd394a094096524ddaea3a10ffd101126c"
+        }
+      }
     },
     {
       "hs": "72159091",
-      "dieuKien": "Có mặt cắt ngang hình tròn",
+      "dieuKien": "hình dạng mặt cắt ngang: mặt cắt ngang hình tròn",
       "loaiKhac": false,
       "nguon": "tax.72159091",
       "trich": "72159091 - - - Có mặt cắt ngang hình tròn",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "hinhDangMatCatNgang",
+          "op": "TRONG",
+          "value": [
+            "TRON"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1782#soat-721590",
+          "ngay": "2026-11-21",
+          "bam": "4e61f1904a7fc3d8e9430c164eb9f1bd394a094096524ddaea3a10ffd101126c"
+        }
+      }
     },
     {
       "hs": "72159099",

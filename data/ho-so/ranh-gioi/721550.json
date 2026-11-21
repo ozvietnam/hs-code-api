@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L21-20261111#soat-L21",
-    "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu .10 'C≥0,6%, trừ dạng mặt cắt ngang hình tròn' ⇒ C≥0,6 & hinhDangMatCatNgang PHAI_KHONG TRON (đúng khoá); nhánh Loại khác .91 'Thép cốt bê tông'/EN 'rebars' ⇒ TEN_LOAI.",
-    "bam": "210ddf07ff727f3585d848597080f29753cb63017ff58e12ee914035101434be"
+    "phien": "claude-agent:ozv-1782#soat-721550",
+    "ngay": "2026-11-21",
+    "ghiChu": "Chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1782)",
+    "bam": "814c0c58ad9d832de34fe01096e1c91b4251dc484264c0f69aaa2ce8bb44ee50"
   },
   "dieuKienNut": [],
   "dong8": [
@@ -31,12 +31,26 @@
           "donVi": "%"
         },
         {
-          "fact": "hinhDangMatCatNgang",
-          "op": "TRONG",
-          "value": [
-            "TRON"
-          ],
-          "chieu": "PHAI_KHONG"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "hinhDangMatCatNgang",
+                "op": "TRONG",
+                "value": [
+                  "TRON"
+                ],
+                "chieu": "PHAI_KHONG"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "trừ dạng mặt cắt ngang hình tròn"
+              }
+            ]
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -88,6 +102,13 @@
       "ma": "72155010",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.72155010 \"Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng, trừ dạng mặt cắt ngang hình tròn\" — vế \"trừ dạng mặt cắt ngang hình tròn\" ⇒ hinhDangMatCatNgang TRONG [TRON] chieu PHAI_KHONG (khoá tu-vung@2 mở rộng, đọc đúng \"mặt cắt ngang hình tròn\"; \"trừ\" = phải KHÔNG, như 721499); thay ghi chú THIEU_KHOA matCatNgangHinhTron cũ."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:ozv-1782#soat-721550",
+      "ngay": "2026-11-21",
+      "lyDo": "Chuẩn hoá dieuKienSo để chốt DONG_CO_TEN (OZV-1782)"
     }
   ]
 }
