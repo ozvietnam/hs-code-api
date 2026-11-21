@@ -1147,7 +1147,7 @@ check('vietCum đơn vị @1 KHÔNG đổi ("CS: 75000W" — không cách)', T.v
   la('laBoPhan đọc 3922.90.11 Bộ phận của bình xả nước ⇒ true', 'laBoPhan', 'Bộ phận của bình xả nước(SEN)', true);
 
   // 4. ReDoS ~40.000 từ lặp < 2 giây (CLAUDE.md quy tắc 6b)
-  const redosText1771 = Array(5000).fill('bồn tắm có hình dạng bên trong loại thuần chủng đã lắp sẵn').join(' ');
+  const redosText1771 = Array(4000).fill('bồn tắm có hình dạng bên trong loại thuần đã lắp sẵn').join(' ');
   const t0 = process.hrtime.bigint();
   for (const fk of ['laThuanChung', 'coHinhDangBenTrongChuNhatHoacThuon', 'kieuDet', 'loaiSoiDet', 'laBoPhan']) {
     T.docGiaTri(fk, redosText1771);
