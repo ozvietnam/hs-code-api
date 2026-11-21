@@ -23,6 +23,7 @@ tự đỏ khi phạm; luật nào ghi "người soát" thì người soát PR p
 | L8 | Tài liệu nêu giá trị cờ phải khớp mã | cổng máy |
 | L9 | Đo có tra web ở dev: tối đa một vòng | người soát |
 | L10 | PR xếp chồng: ghi thứ tự gộp | người soát |
+| L11 | Nhánh tối ưu không được bỏ bước đọc tri thức khi có tín hiệu trái; bỏ bước nào phải ghi bước đó CHƯA chạy | cổng máy (phần khai nhánh) + người soát |
 
 ---
 
@@ -64,6 +65,7 @@ Mọi câu hỏi gửi khách phải lấy từ một trong các nguồn có că
 | `so-tay` | Sổ tay nhóm 4 số `data/so-tay/` | `lib/so-tay-cau-hoi.js` (lõi tất định), `lib/hoi-theo-so-tay.js` (dựng lại câu hỏi của `/api/classify`, sau cờ `HS_HOI_THEO_SO_TAY`) |
 | `ranh-gioi-pn6` | Sổ ranh giới PN6 `data/ho-so/ranh-gioi/` | như trên, đọc qua `lib/so-tay-gates.js` |
 | `truong-khai-nhom` | Trường khai bắt buộc theo nhóm | `lib/declaration-fields.js` |
+| `bieu-thue` | Chữ nguyên văn các dòng 8 số của biểu thuế (chọn dòng khi sổ chưa có điều kiện) | `lib/hoi-theo-so-tay.js` |
 | bảng quyết định | `data/conflict-tables.json` (người soạn, dẫn văn bản gốc) | `lib/decision-tables.js`, `lib/conflict-resolver.js` |
 
 Cấm:
@@ -93,6 +95,22 @@ về van). Một bản khác đoán nhóm bằng tìm từ khoá, test xanh vì 
 
 **Kiểm bằng:** người soát. Hỏi "nhóm ở dòng này lấy từ đâu" và "ca ngược đâu". Bảng đấu nối (L4) ghi rõ
 `/api/identify` không tự suy nhóm.
+
+### L3 bổ sung — Câu hỏi theo sổ chỉ đúng khi nhóm đúng
+
+Lõi câu hỏi (L2) hỏi theo sổ của **nhóm mà động cơ đưa ra**. Nhóm sai thì câu hỏi có căn cứ đầy đủ mà vẫn sai hàng.
+
+- Trước khi bật một tính năng hỏi theo sổ trên máy thật: đo **tỉ lệ đúng nhóm 4 số của chính nhánh sinh ra câu hỏi**
+  (nhánh dừng sớm, nhánh hỏi) trên bộ mẫu thật, qua Cổng thật. Chưa có số này thì chưa bật.
+- Câu hỏi sai hàng trên máy thật: **tắt công tắc trước** (L1), rồi sửa ở chỗ quyết nhóm. Cấm vá ở lõi câu hỏi (lọc
+  câu, thêm ngoại lệ theo mặt hàng) để che nhóm sai.
+- `HS_HOI_THEO_SO_TAY` chỉ bật lại sau khi nhánh dừng sớm đã sửa (OZV-1707) và ca van khí nén 5/2 ra đúng nhóm 84.81.
+
+**Vì sao:** trưa 21/11 QT bật `HS_HOI_THEO_SO_TAY` trên máy thật. Ca van điện từ khí nén 5/2: động cơ dừng sớm ở
+`8412.21`, nên khách bị hỏi "van trượt cho động cơ hơi nước" theo đúng sổ của nhóm 84.12. QT phải tắt.
+
+**Kiểm bằng:** người soát + QT khi bật. Bảng cờ ghi điều kiện bật lại ở `HS_HOI_THEO_SO_TAY`; nhánh dừng sớm khai ở
+`data/luat/dau-noi.json` mục `nhanhBoQua`.
 
 ## L4 — Bảng đấu nối là nguồn sự thật
 
@@ -183,6 +201,29 @@ Người gộp theo đúng thứ tự đó, cập nhật nhánh sau mỗi lần 
 **Vì sao:** PR xếp chồng gộp sai thứ tự gây xung đột, mất một vòng CI 27 phút.
 
 **Kiểm bằng:** người soát (mẫu PR có dòng "Thứ tự gộp").
+
+## L11 — Nhánh tối ưu không được bỏ bước đọc tri thức
+
+Nhánh tối ưu = mọi nhánh rút ngắn đường đi vì tốc độ hay chi phí: dừng sớm, trả từ cache / kho đáp án, bỏ vòng 2, bỏ
+lượt GIR, chốt sớm theo từ khoá.
+
+1. Trước khi rẽ vào nhánh tối ưu, chạy các phép kiểm **tất định, rẻ** trên kết luận sắp trả: cổng sổ tay, tiền lệ trùng
+   khít, mệnh đề loại trừ của chú giải. Có **tín hiệu tất định trái với kết luận** (vd có TB-TCHQ trùng khít ra mã
+   khác, sổ tay loại trừ nhóm đang chọn) thì **không được rẽ**: đi đường đầy đủ.
+2. Nhánh nào bỏ một bước đọc tri thức (sổ tay, sổ PN6, chú giải, tiền lệ) thì **kết quả trả về phải ghi rõ bước đó
+   CHƯA chạy** (`CHUA_CHAY` kèm tên nhánh), không để trống, không để giá trị khởi tạo (L6).
+3. Thêm nhánh tối ưu mới: khai vào `data/luat/dau-noi.json` mục `nhanhBoQua` (bỏ kho nào, vì sao, thẻ) trong cùng PR.
+4. Số đo tốc độ / chi phí của nhánh tối ưu phải đi kèm số đo **đúng nhóm** của chính nhánh đó (L7). Nhanh hơn mà sai
+   nhóm nhiều hơn là không đạt.
+
+**Vì sao:** nhánh `earlyExitHoiTuR1` (thêm để rút ~21 giây) bỏ vòng 2 nên bỏ luôn sổ tay và tiền lệ. Van khí nén 5/2 có
+2 TB-TCHQ trùng khít ra `848120`, nhánh này vẫn dừng ở `848180` (sáng 21/11) rồi `8412.21` (trưa 21/11). Kết quả ghi
+`soTay.outcome: "NONE"` nên người đọc tưởng sổ đã được tra.
+
+**Kiểm bằng:** cổng máy `scripts/test-dau-noi.mjs` giữ danh sách `nhanhBoQua` khớp mã (nhánh đã khai phải còn trong
+mã, có thẻ, có kho bị bỏ). Việc "có tín hiệu trái thì không rẽ" và "ghi CHUA_CHAY" chưa dò tĩnh được: người soát kiểm,
+và PR thêm nhánh tối ưu phải có ca test "có tiền lệ trùng khít trái kết luận ⇒ không dừng sớm". Tồn đã biết:
+`earlyExitHoiTuR1` (OZV-1707).
 
 ---
 

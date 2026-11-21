@@ -9,7 +9,7 @@ kho tri thức ở đây thay vì đoán từ trí nhớ.
 >
 > **Bạn sắp SỬA MÃ?** Đọc theo thứ tự, trước khi sửa:
 > 1. [`docs/activeContext.md`](docs/activeContext.md) — việc đang dở, hạn sắp tới.
-> 2. [`docs/luat-duong-khach.md`](docs/luat-duong-khach.md) — 10 luật khi sửa `api/`, `lib/` (đổi hành vi LLM, câu
+> 2. [`docs/luat-duong-khach.md`](docs/luat-duong-khach.md) — 11 luật khi sửa `api/`, `lib/` (đổi hành vi LLM, câu
 >    hỏi gửi khách, cờ `HS_*`, chạy bóng). Có cổng máy trong `npm test`; phạm là đỏ.
 > 3. [`CLAUDE.md`](CLAUDE.md) — quy ước sửa code, cách chạy test, cổng gộp PR.
 > 4. [`docs/decisions/`](docs/decisions/) — quyết định đã chốt. Có quyết định mới thì ghi một ADR.

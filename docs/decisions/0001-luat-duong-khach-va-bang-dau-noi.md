@@ -44,7 +44,7 @@ Soát luật hiện có trước khi viết thêm:
 
 ## Quyết định
 
-1. **Mười luật L1–L10** ở [`docs/luat-duong-khach.md`](../luat-duong-khach.md). `AGENTS.md` và `CLAUDE.md` chỉ trỏ tới,
+1. **Mười một luật L1–L11** ở [`docs/luat-duong-khach.md`](../luat-duong-khach.md). `AGENTS.md` và `CLAUDE.md` chỉ trỏ tới,
    không chép lại.
 2. **Hai bảng là nguồn sự thật, sửa trong cùng PR với mã:**
    - `data/luat/dau-noi.json` — đường vào nào đọc kho tri thức nào, qua module nào, sau cờ nào; nhánh nào bỏ qua; tệp
@@ -96,6 +96,16 @@ Soát luật hiện có trước khi viết thêm:
   `HS_HOI_THEO_SO_TAY` chưa khai; `/api/classify` đã nạp lõi câu hỏi mà bảng còn ghi "khong"; `api/so-tay-questions.js`
   không còn dựng câu hỏi. Đã sửa bảng trong cùng PR — đây là lần chạy thật đầu tiên của cổng.
 - Ngày 27/11/2026: `HS_HO_SO` tới ngày xét. Chưa quyết thì `npm test` đỏ.
+
+## Bổ sung trong ngày (lượt đo trưa 21/11)
+
+QT bật `HS_HOI_THEO_SO_TAY` trên máy thật: ca van khí nén 5/2 động cơ dừng sớm ở `8412.21`, khách bị hỏi "van trượt cho
+động cơ hơi nước"; QT tắt. Rút thêm: **L3 bổ sung** (câu hỏi theo sổ chỉ đúng khi nhóm đúng; sửa gốc ở nhánh dừng sớm
+trước khi bật lại) và **L11** (nhánh tối ưu không được bỏ bước đọc tri thức khi có tín hiệu tất định trái kết luận; bỏ
+bước nào phải ghi bước đó chưa chạy). Cả hai chưa dò tĩnh được ngoài danh sách `nhanhBoQua`.
+
+`/api/identify` từ PR #1520 nạp `lib/so-tay-gates.js` chỉ để mượn `productHead`: bảng đấu nối thêm mục `napMuonHam`
+(khai đích danh tệp + tên hàm; cổng đỏ nếu tệp đó lấy thêm hàm khác).
 
 ## Việc tiếp theo
 

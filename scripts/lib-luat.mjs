@@ -43,11 +43,27 @@ const _dong = new Map();
 /** Bao đóng nạp: mọi tệp mà `tep` nạp được, trực tiếp hay gián tiếp (gồm chính nó). */
 export function baoDong(tep) {
   if (_dong.has(tep)) return _dong.get(tep);
-  const thay = new Set([tep]);
-  const hang = [tep];
-  while (hang.length) for (const d of napTrucTiep(hang.pop())) if (!thay.has(d)) { thay.add(d); hang.push(d); }
+  const thay = baoDongBo(tep, () => false);
   _dong.set(tep, thay);
   return thay;
+}
+
+/** Bao đóng nạp nhưng bỏ các cạnh mà `boCanh(tu, den)` trả true (dùng cho "nạp mượn hàm, không đọc kho"). */
+export function baoDongBo(tep, boCanh) {
+  const thay = new Set([tep]);
+  const hang = [tep];
+  while (hang.length) { const tu = hang.pop(); for (const d of napTrucTiep(tu)) if (!thay.has(d) && !boCanh(tu, d)) { thay.add(d); hang.push(d); } }
+  return thay;
+}
+
+/** Tên các hàm mà `tep` lấy ra khi require `moDun` kiểu `const { a, b } = require(...)`; null nếu có chỗ nạp không phải kiểu đó. */
+export function tenLayTu(tep, moDun) {
+  const goc = moDun.replace(/^.*\//, "").replace(/\.js$/, "");
+  const s = doc(tep);
+  const moi = [...s.matchAll(new RegExp(`require\\(\\s*[\x27"][^\x27"]*/${goc}(?:\\.js)?[\x27"]\\s*\\)`, "g"))];
+  const co = [...s.matchAll(new RegExp(`\\{([^{}]*)\\}\\s*=\\s*require\\(\\s*[\x27"][^\x27"]*/${goc}(?:\\.js)?[\x27"]\\s*\\)`, "g"))];
+  if (!moi.length || moi.length !== co.length) return null;
+  return [...new Set(co.flatMap((m) => m[1].split(",").map((x) => x.split(":")[0].trim()).filter(Boolean)))];
 }
 
 /** Bộ in PASS/FAIL theo khuôn scripts/dem-ca-test.mjs đếm được. */

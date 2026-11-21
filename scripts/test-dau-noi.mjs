@@ -10,7 +10,7 @@
  * ĐỎ khi: route chưa khai · khai "co" mà mã không nạp module đọc kho · khai "khong" mà mã đã nạp · cờ ghi trong bảng
  * không có trong mã · có tệp mới đọc kho mà chưa khai là module đọc · nhánh bỏ qua đã biến mất khỏi mã.
  */
-import { doc, docJson, co, tepMa, baoDong, boKiem, coTrongDoan } from './lib-luat.mjs';
+import { doc, docJson, co, tepMa, baoDong, baoDongBo, tenLayTu, boKiem, coTrongDoan } from './lib-luat.mjs';
 
 const { kiem, xong } = boKiem('test-dau-noi');
 const bang = docJson('data/luat/dau-noi.json');
@@ -82,7 +82,21 @@ for (const d of duong.filter((x) => x.loai === 'phan-loai')) {
       kiem(`${d.duong} · ${k}: cờ chặn có trong bảng cờ và trong mã của đường này`, coLa.length === 0, coLa.join(', '));
     } else {
       kiem(`${d.duong} · ${k}: khai "khong" có lý do`, typeof e.lyDo === 'string' && e.lyDo.length >= 10);
-      if (!d.mode) kiem(`${d.duong} · ${k}: khai "khong" và mã đúng là không nạp module đọc kho`, napDuoc.length === 0, `mã đã nạp ${napDuoc.join(', ')} — sửa bảng thành "co" (kèm "qua" + cờ) hoặc gỡ nạp`);
+      // "Nạp mượn hàm": một tệp nạp module đọc kho chỉ để lấy hàm KHÔNG đọc kho (vd productHead). Phải khai đích danh
+      // tệp + tên hàm; cổng kiểm tệp đó chỉ lấy đúng các hàm đã khai, hàm đó được kho cho phép, và bỏ cạnh ấy đi thì
+      // đường này không còn lối nào tới kho.
+      const muon = e.napMuonHam;
+      let conNap = napDuoc;
+      if (muon) {
+        const choPhep = bang.kho[k].hamKhongDocKho || [];
+        const khoNap = bang.kho[k].moDun.filter((m) => co(muon.tep) && doc(muon.tep).includes(m.replace(/^.*\//, '').replace(/\.js$/, '')));
+        const lay = khoNap.map((m) => tenLayTu(muon.tep, m)).filter((x) => x !== undefined);
+        const dung = lay.length > 0 && lay.every((ds) => Array.isArray(ds) && ds.every((t) => (muon.chiDung || []).includes(t) && choPhep.includes(t)));
+        kiem(`${d.duong} · ${k}: ${muon.tep} chỉ mượn đúng hàm không đọc kho đã khai (${(muon.chiDung || []).join(', ')})`, dung && (muon.lyDo || '').length >= 10,
+          `tệp lấy: ${JSON.stringify(lay)}; kho cho phép: ${choPhep.join(', ')} — nếu đã gọi hàm đọc sổ thì sửa bảng thành "co"`);
+        conNap = bang.kho[k].moDun.filter((m) => baoDongBo(d.tep, (tu, den) => tu === muon.tep && bang.kho[k].moDun.includes(den)).has(m));
+      }
+      if (!d.mode) kiem(`${d.duong} · ${k}: khai "khong" và mã đúng là không nạp module đọc kho`, conNap.length === 0, `mã đã nạp ${conNap.join(', ')} — sửa bảng thành "co" (kèm "qua" + cờ), gỡ nạp, hoặc nếu chỉ mượn hàm không đọc kho thì khai "napMuonHam"`);
       if (d.congGoi && (k === 'soTayNhom' || k === 'soPn6')) kiem(`${d.duong} · ${k}: Cổng gọi mà chưa đọc sổ ⇒ có số thẻ theo dõi`, RE_THE.test(e.the || ''), 'thiếu "the": "OZV-…"');
     }
   }

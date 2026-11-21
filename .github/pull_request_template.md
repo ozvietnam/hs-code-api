@@ -37,6 +37,7 @@ Công tắc: <!-- `HS_TEN_CO` (mặc định tắt), đã khai ở data/luat/ban
 - [ ] **L6** — Trường trạng thái mới phân biệt "chưa kiểm" với "đã kiểm, không có".
 - [ ] **L7** — Mỗi con số trong PR ghi phép đo, mô hình, số mẫu; mẫu số đã tách "không cần" khỏi "thiếu".
 - [ ] **L8** — Thêm / đổi cờ `HS_*`: đã sửa `data/luat/bang-co.json` (`node scripts/test-bang-co.mjs` xanh).
+- [ ] **L11** — Thêm / sửa nhánh tối ưu (dừng sớm, cache, bỏ vòng): không rẽ khi có tín hiệu tất định trái kết luận; kết quả ghi bước CHƯA chạy; đã khai `nhanhBoQua`; có số đúng nhóm của chính nhánh đó.
 
 <!-- Ô không liên quan: đánh dấu và ghi "không áp dụng". -->
 
