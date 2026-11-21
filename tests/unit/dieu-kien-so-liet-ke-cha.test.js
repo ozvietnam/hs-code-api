@@ -215,4 +215,202 @@ describe('lib/dieu-kien-so.js — gỡ tiêu đề cha đa vế cho LIET_KE & t�
     assert.ok((r85011091.missingFacts || []).some((m) => m.fact === 'kieuDongCoDien'));
     assert.ok(!(r85011091.missingFacts || []).some((m) => m.fact === 'loaiDongDien'));
   });
+
+  test('OZV-1708: đọc "sức chứa ... kg" cho khoiLuong ở nhóm 8450 (2 chiều + ReDoS < 2 giây)', () => {
+    const dk6kg = { fact: 'khoiLuong', op: '<=', value: 6, donVi: 'kg' };
+    const rThoa = DK.danhGiaTuChu(
+      dk6kg,
+      'Máy giặt, có sức chứa không quá 10 kg vải khô một lần giặt - Máy tự động hoàn toàn: Loại có sức chứa không quá 6 kg vải khô một lần giặt',
+      '84501110',
+    );
+    assert.equal(rThoa.trangThai, 'THOA');
+    assert.equal(rThoa.tatDinh, true);
+
+    const rTrai = DK.danhGiaTuChu(
+      dk6kg,
+      'Máy giặt, có sức chứa không quá 10 kg vải khô một lần giặt - Máy tự động hoàn toàn: Loại có sức chứa 7,5 kg vải khô một lần giặt',
+      '84501110',
+    );
+    assert.equal(rTrai.trangThai, 'TRAI');
+    assert.equal(rTrai.tatDinh, true);
+
+    const rChuaBiet = DK.danhGiaTuChu(
+      dk6kg,
+      'Máy giặt, có sức chứa không quá 10 kg vải khô một lần giặt - Máy tự động hoàn toàn',
+      '84501110',
+    );
+    assert.equal(rChuaBiet.trangThai, 'CHUA_BIET');
+
+    assert.equal(
+      chotDong8({
+        hs: '845011',
+        productText:
+          'Máy giặt, có sức chứa không quá 10 kg vải khô một lần giặt - Máy tự động hoàn toàn: Loại có sức chứa không quá 6 kg vải khô một lần giặt',
+      }).hs,
+      '84501110',
+    );
+    assert.equal(
+      chotDong8({
+        hs: '845012',
+        productText:
+          'Máy giặt, có sức chứa không quá 10 kg vải khô một lần giặt - Máy giặt khác, có chức năng sấy ly tâm: Loại có sức chứa không quá 6 kg vải khô một lần giặt',
+      }).hs,
+      '84501210',
+    );
+    assert.equal(
+      chotDong8({
+        hs: '845019',
+        productText:
+          'Máy giặt, có sức chứa không quá 10 kg vải khô một lần giặt - Loại khác: Hoạt động bằng điện: Loại có sức chứa không quá 6 kg vải khô một lần giặt',
+      }).hs,
+      '84501911',
+    );
+
+    const longText = `${Array(40000).fill('sức chứa').join(' ')} - Loại có sức chứa không quá 6 kg vải khô một lần giặt`;
+    const t0 = Date.now();
+    const rLong = DK.danhGiaTuChu(dk6kg, longText, '84501110');
+    const dt = Date.now() - t0;
+    assert.equal(rLong.trangThai, 'THOA');
+    assert.ok(dt < 2000, `Thời gian chạy ${dt}ms phải < 2000ms`);
+  });
+
+  test('OZV-1708: phân nhóm xx00 (1603, 2709, 3210, 4405, 5908) và dòng phanConLai có tên riêng (5802, 5907)', () => {
+    assert.equal(
+      chotDong8({ hs: '440500', productText: 'Sợi gỗ; bột gỗ.: Sợi gỗ' }).hs,
+      '44050010',
+    );
+    assert.equal(
+      chotDong8({ hs: '440500', productText: 'Sợi gỗ; bột gỗ.: Bột gỗ' }).hs,
+      '44050020',
+    );
+    assert.notEqual(
+      chotDong8({ hs: '440500', productText: 'Sợi gỗ; bột gỗ.' }).ketQua,
+      'CHOT',
+    );
+
+    assert.equal(
+      chotDong8({
+        hs: '160300',
+        productText:
+          'Sản phẩm chiết xuất và nước ép từ thịt, cá hoặc từ động vật giáp xác, động vật thân mềm hoặc động vật thuỷ sinh không xương sống khác.: Từ thịt',
+      }).hs,
+      '16030010',
+    );
+    assert.equal(
+      chotDong8({
+        hs: '270900',
+        productText: 'Dầu mỏ và các loại dầu thu được từ các khoáng bi-tum, ở dạng thô.: Dầu mỏ thô',
+      }).hs,
+      '27090010',
+    );
+    assert.equal(
+      chotDong8({
+        hs: '321000',
+        productText:
+          'Sơn và vecni khác (kể cả các loại men tráng (enamels), dầu bóng và màu keo); các loại thuốc màu nước đã pha chế dùng để hoàn thiện da.: Vecni (kể cả dầu bóng)',
+      }).hs,
+      '32100010',
+    );
+    assert.equal(
+      chotDong8({
+        hs: '590800',
+        productText:
+          'Các loại bấc dệt thoi, kết, tết hoặc dệt kim, dùng cho đèn, bếp dầu, bật lửa, nến hoặc loại tương tự; mạng đèn măng xông và các loại vải dệt kim hình ống dùng làm mạng đèn măng xông, đã hoặc chưa ngâm tẩm.: Bấc; mạng đèn măng xông',
+      }).hs,
+      '59080010',
+    );
+
+    assert.equal(
+      chotDong8({
+        hs: '580230',
+        productText: 'Các loại vải dệt tạo búi: Dệt thoi, từ vật liệu khác',
+      }).hs,
+      '58023030',
+    );
+    assert.notEqual(
+      chotDong8({
+        hs: '580230',
+        productText: 'Các loại vải dệt tạo búi',
+      }).ketQua,
+      'CHOT',
+    );
+
+    assert.equal(
+      chotDong8({
+        hs: '590700',
+        productText:
+          'Các loại vải dệt được ngâm tẩm, tráng hoặc phủ bằng cách khác; vải canvas được vẽ làm phông cảnh cho rạp hát, phông trường quay hoặc loại tương tự.: Các loại vải được ngâm tẩm, tráng hoặc phủ bằng các vật liệu khác',
+      }).hs,
+      '59070060',
+    );
+    assert.notEqual(
+      chotDong8({
+        hs: '590700',
+        productText:
+          'Các loại vải dệt được ngâm tẩm, tráng hoặc phủ bằng cách khác; vải canvas được vẽ làm phông cảnh cho rạp hát, phông trường quay hoặc loại tương tự.',
+      }).ketQua,
+      'CHOT',
+    );
+  });
+
+  test('OZV-1708: giữ âm tiết "đồ" cho "Gạo đồ" (1006), gỡ mệnh đề tùy chọn ở cha (2523, 3307), đồng bộ epsomit/epsomite (2530) và tách vế "và" (7407, 7603, 7604, 8428)', () => {
+    assert.equal(
+      chotDong8({
+        hs: '100630',
+        productText: 'Gạo đã xát toàn bộ hoặc sơ bộ, đã hoặc chưa được đánh bóng hoặc hồ (glazed): Gạo đồ (1)',
+      }).hs,
+      '10063091',
+    );
+    assert.equal(
+      chotDong8({
+        hs: '252329',
+        productText: 'Xi măng poóc lăng (1) - Loại khác: Xi măng màu',
+      }).hs,
+      '25232910',
+    );
+    assert.equal(
+      chotDong8({
+        hs: '253020',
+        productText: 'Kiezerit, epsomit (magiê sulphat tự nhiên): Epsomite (magiê sulphat tự nhiên)',
+      }).hs,
+      '25302020',
+    );
+    assert.equal(
+      chotDong8({
+        hs: '330749',
+        productText:
+          'Các chế phẩm dùng để làm thơm hoặc khử mùi phòng, kể cả các chế phẩm có mùi thơm dùng trong nghi lễ tôn giáo - Loại khác: Các chế phẩm làm thơm phòng, có hoặc không có đặc tính khử trùng',
+      }).hs,
+      '33074910',
+    );
+    assert.equal(
+      chotDong8({
+        hs: '740710',
+        productText: 'Bằng đồng tinh luyện: Dạng hình',
+      }).hs,
+      '74071030',
+    );
+    assert.equal(
+      chotDong8({
+        hs: '760320',
+        productText: 'Bột có cấu trúc lớp; vảy nhôm: Vảy nhôm',
+      }).hs,
+      '76032010',
+    );
+    assert.equal(
+      chotDong8({
+        hs: '760410',
+        productText: 'Bằng nhôm, không hợp kim: Dạng thanh và que',
+      }).hs,
+      '76041010',
+    );
+    assert.equal(
+      chotDong8({
+        hs: '842810',
+        productText:
+          'Thang máy (lift) và tời nâng kiểu gầu nâng (trục tải thùng kíp): Tời nâng kiểu gầu nâng (trục tải thùng kíp)',
+      }).hs,
+      '84281040',
+    );
+  });
 });
