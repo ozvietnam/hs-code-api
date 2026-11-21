@@ -4,13 +4,19 @@
   "nhom": "8429",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T1118#soan-842940",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-03#soat-842940",
+    "ngay": "2026-11-21",
+    "ghiChu": "Đã chuẩn hoá dieuKienSo bám chữ biểu thuế",
+    "bam": "a6f4effbda9b245a0c812416db938f36467ea5efb705a1f6f2b223defb80f215"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -22,9 +28,16 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Máy đầm"
+        },
+        {
+          "fact": "nguyenLyXuLy",
+          "op": "TRONG",
+          "value": [
+            "MAY_DAM"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84294040",
@@ -37,13 +50,12 @@
           "value": "Xe lu rung"
         },
         {
-          "fact": "khoiLuong",
-          "op": "<=",
-          "value": 20,
-          "donVi": "tấn"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "với lực rung của trống không quá 20 tấn tính theo khối lượng"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84294050",
@@ -56,7 +68,7 @@
           "value": "xe lu rung lăn đường"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": true
     },
     {
@@ -64,31 +76,24 @@
       "nguon": "tax.84294090",
       "trich": "84294090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "84294030",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.84294030 \"Máy đầm\" ⇒ tenLoai \"Máy đầm\"."
+      "ghiChu": "tax.84294030 \"Máy đầm\" (EN \"Tamping machines\") ⇒ tenLoai \"Máy đầm\" + nguyenLyXuLy TRONG [MAY_DAM]."
     },
     {
       "ma": "84294040",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.84294040 \"Xe lu rung, với lực rung của trống không quá 20 tấn tính theo khối lượng\" ⇒ tenLoai \"Xe lu rung\" + khoiLuong <= 20 tấn (\"không quá\" = <=; tu-vung@2 khoiLuong nhận đơn vị tấn; khối lượng của trống là khối lượng hàng mô tả)."
+      "ghiChu": "tax.84294040 \"Xe lu rung, với lực rung của trống không quá 20 tấn tính theo khối lượng\" (EN \"Vibratory smooth drum rollers, with a centrifugal force drum not exceeding 20 t by weight\") ⇒ tenLoai \"Xe lu rung\" + tenLoai \"với lực rung của trống không quá 20 tấn tính theo khối lượng\" (bỏ khoiLuong <= 20 tấn vì ngưỡng biểu là lực ly tâm của trống, không phải khối lượng máy)."
     },
     {
       "ma": "84294050",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.84294050 \"Các loại xe lu rung lăn đường khác\" ⇒ tenLoai \"xe lu rung lăn đường\" + phanConLai true (\"khác\" — phủ định .30/.40 đứng trước)."
-    }
-  ],
-  "traVe": [
-    {
-      "phien": "claude-agent:duyet-L25-20261111#soat-L25",
-      "ngay": "2026-11-11",
-      "lyDo": "(A) 84294040 SAI ĐẠI LƯỢNG / SUY RỘNG-THU HẸP: chữ biểu \"Xe lu rung, với lực rung của trống không quá 20 tấn tính theo khối lượng\" (EN \"Vibratory smooth drum rollers, with a centrifugal force drum not exceeding 20 t by weight\") — ngưỡng là LỰC LY TÂM (lực rung) của trống, không phải khối lượng máy; bản nháp ghi khoiLuong <= 20 tấn (ghi chú \"khối lượng của trống là khối lượng hàng mô tả\" là đọc sai). Xe lu 22 tấn có lực rung 18 t rơi .50 (0%) thay vì .40 (5%); xe lu 12 tấn lực rung 25 t rơi .40 thay vì .50. Không có khoá lực rung trong tu-vung@2 ⇒ phải THIEU_KHOA_TU_VUNG (DỪNG), không ép vào khoiLuong. Máy tách vế cũng cắt \"Xe lu rung, với lực rung\" làm danh từ đầu (tách sai)."
     }
   ]
 }

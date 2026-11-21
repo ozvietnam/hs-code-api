@@ -16472,11 +16472,13 @@
    "nhanZh": "粉末状",
    "cachDoc": {
     "vi": [
-     "(?<!hoặc\\s+(?:ở\\s+)?)(?:ở\\s+)?dạng\\s+bột(?!\\s+(?:nhão|hoặc|và)|\\s*,\\s*(?:hạt|vẩy|vảy|mảnh|viên|cục|thỏi|tinh\\s+thể))"
+     "(?<!hoặc\\s+(?:ở\\s+)?)(?:ở\\s+)?dạng\\s+bột(?!\\s+(?:nhão|hoặc|và)|\\s*,\\s*(?:hạt|vẩy|vảy|mảnh|viên|cục|thỏi|tinh\\s+thể))",
+     "bột\\s+cà\\s+chua(?!\\s+dạng\\s+sệt)"
     ],
     "en": [
      "in\\s+powder(?:\\s+form)?",
-     "powder(?:ed)?\\s+form"
+     "powder(?:ed)?\\s+form",
+     "tomato\\s+powder"
     ],
     "zh": [
      "粉末状",
@@ -16502,10 +16504,12 @@
    },
    "cachDocKhong": {
     "vi": [
-     "không\\s+(?:ở\\s+)?dạng\\s+bột"
+     "không\\s+(?:ở\\s+)?dạng\\s+bột",
+     "bột\\s+cà\\s+chua\\s+dạng\\s+sệt"
     ],
     "en": [
-     "not\\s+in\\s+powder\\s+form"
+     "not\\s+in\\s+powder\\s+form",
+     "tomato\\s+paste"
     ],
     "zh": [
      "非粉末状"
@@ -20345,7 +20349,8 @@
     "QUAY",
     "PHUN_PHU",
     "TIA_LASER_HOAC_TIA_SANG_KHAC",
-    "CHUM_TIA_ION_HOI_TU"
+    "CHUM_TIA_ION_HOI_TU",
+    "MAY_DAM"
    ],
    "moTaGiaTri": {
     "QUAY": {
@@ -20420,6 +20425,23 @@
       ]
      },
      "cachViet": "bằng chùm tia ion hội tụ"
+    },
+    "MAY_DAM": {
+     "nhanVi": "đầm nén (máy đầm)",
+     "nhanEn": "tamping (tamping machine)",
+     "nhanZh": "捣固（捣固机）",
+     "cachDoc": {
+      "vi": [
+       "máy\\s+đầm(?!\\s+và\\s+xe\\s+lu)"
+      ],
+      "en": [
+       "tamping\\s+machines?(?!\\s+and\\s+road\\s+rollers?)"
+      ],
+      "zh": [
+       "捣固机"
+      ]
+     },
+     "cachViet": "máy đầm"
     }
    },
    "cachDoc": {
@@ -21185,7 +21207,9 @@
     "VANG_HOAC_MA_VANG",
     "VAT_LIEU_DET",
     "GIAY_XENLULO",
-    "CARBON_GRAPHIT"
+    "CARBON_GRAPHIT",
+    "VANG_HOAC_BAC",
+    "KIM_LOAI_DAT_PHU_VANG_HOAC_BAC"
    ],
    "moTaGiaTri": {
     "TITAN": {
@@ -21390,6 +21414,42 @@
       ]
      },
      "cachViet": "bằng carbon và graphit"
+    },
+    "VANG_HOAC_BAC": {
+     "nhanVi": "vàng hoặc bạc",
+     "nhanEn": "gold or silver",
+     "nhanZh": "金或银",
+     "cachDoc": {
+      "vi": [
+       "(?<!(?:dát\\s+phủ|phủ|mạ|tráng)\\s+)(?:bằng\\s+)?vàng\\s+hoặc\\s+bạc"
+      ],
+      "en": [
+       "(?<!(?:clad|plated|coated)\\s+with\\s+)(?:of\\s+)?gold\\s+or\\s+silver"
+      ],
+      "zh": [
+       "金或银制",
+       "纯金或纯银"
+      ]
+     },
+     "cachViet": "bằng vàng hoặc bạc"
+    },
+    "KIM_LOAI_DAT_PHU_VANG_HOAC_BAC": {
+     "nhanVi": "kim loại dát phủ vàng hoặc bạc",
+     "nhanEn": "metal clad with gold or silver",
+     "nhanZh": "包金或包银金属",
+     "cachDoc": {
+      "vi": [
+       "(?:bằng\\s+)?kim\\s+loại\\s+dát\\s+phủ\\s+vàng\\s+hoặc\\s+bạc"
+      ],
+      "en": [
+       "(?:of\\s+)?metal\\s+clad\\s+with\\s+gold\\s+or\\s+silver"
+      ],
+      "zh": [
+       "包金或包银金属",
+       "包金或包银的金属"
+      ]
+     },
+     "cachViet": "bằng kim loại dát phủ vàng hoặc bạc"
     }
    },
    "cachDoc": {

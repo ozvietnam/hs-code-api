@@ -111,35 +111,57 @@
     },
     {
       "hs": "20029010",
-      "dieuKien": "Bột cà chua dạng sệt: cà chua nguyên chất cô đặc, từ 25% đến 40% chất rắn không chứa muối",
-      "tieuChi": null,
+      "dieuKien": "tên loại hàng: Bột cà chua dạng sệt; không: ở dạng bột",
+      "nguon": "tax.20029010",
+      "trich": "20029010 - - Bột cà chua dạng sệt (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
       "dieuKienSo": [
         {
-          "fact": "han_luong_chat_ran_khong_chua_muoi",
-          "op": ">=",
-          "value": 25,
-          "donVi": "%"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bột cà chua dạng sệt"
         },
         {
-          "fact": "han_luong_chat_ran_khong_chua_muoi",
-          "op": "<=",
-          "value": 40,
-          "donVi": "%"
+          "fact": "dangBot",
+          "op": "KHONG"
         }
       ],
-      "nguon": "sen.20029010",
-      "trich": "Bột cà chua dạng sệt là cà chua nguyên chất cô đặc, có từ 25% đến 40% hàm lượng là chất rắn không chứa muối.",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-03#soat-200290",
+          "ngay": "2026-11-21",
+          "bam": "a521ebe52c488522f7c28527d646a33f096f55b42de31686f8507e99165fb6f0"
+        }
+      }
     },
     {
       "hs": "20029020",
-      "dieuKien": "Bột cà chua",
-      "tieuChi": null,
+      "dieuKien": "tên loại hàng: Bột cà chua; ở dạng bột",
       "nguon": "tax.20029020",
       "trich": "20029020 - - Bột cà chua",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bột cà chua"
+        },
+        {
+          "fact": "dangBot",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-03#soat-200290",
+          "ngay": "2026-11-21",
+          "bam": "a521ebe52c488522f7c28527d646a33f096f55b42de31686f8507e99165fb6f0"
+        }
+      }
     },
     {
       "hs": "20029090",
