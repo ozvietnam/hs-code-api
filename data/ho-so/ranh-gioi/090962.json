@@ -4,13 +4,19 @@
   "nhom": "0909",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-090962",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv#soat-090962",
+    "ngay": "2026-11-21",
+    "ghiChu": "Chuẩn hoá theo traVe",
+    "bam": "ed01654d464c4ea09bed298d0a668918ccbaaae97c7eb0e76c7416d17c8841f6"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -19,12 +25,12 @@
       "trich": "09096210 - - - Của hoa hồi anise (tiểu hồi)",
       "dieuKienSo": [
         {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
           "value": "hoa hồi anise"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "09096220",
@@ -32,12 +38,12 @@
       "trich": "09096220 - - - Của hoa hồi badian (đại hồi)",
       "dieuKienSo": [
         {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
           "value": "hoa hồi badian"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "09096230",
@@ -45,43 +51,36 @@
       "trich": "09096230 - - - Của cây ca-rum (caraway)",
       "dieuKienSo": [
         {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
           "value": "cây ca-rum"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "09096290",
       "nguon": "tax.09096290",
       "trich": "09096290 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "09096210",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.09096210 \"Của hoa hồi anise (tiểu hồi)\" ⇒ dungCho hoa hồi anise"
+      "ghiChu": "tax.09096210 \"Của hoa hồi anise (tiểu hồi)\" ⇒ tenLoai hoa hồi anise"
     },
     {
       "ma": "09096220",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.09096220 \"Của hoa hồi badian (đại hồi)\" ⇒ dungCho hoa hồi badian"
+      "ghiChu": "tax.09096220 \"Của hoa hồi badian (đại hồi)\" ⇒ tenLoai hoa hồi badian"
     },
     {
       "ma": "09096230",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.09096230 \"Của cây ca-rum (caraway)\" ⇒ dungCho cây ca-rum"
-    }
-  ],
-  "traVe": [
-    {
-      "phien": "claude-agent:duyet-L4-20261111#soat-L4",
-      "ngay": "2026-11-11",
-      "lyDo": "(A) 090962:09096210/20/30 SAI TRỤC: như 090961 — \"Của hoa hồi anise\"/\"Of anise\", \"Của hoa hồi badian\"/\"Of badian\", \"Của cây ca-rum\"/\"Of caraway\" là loài cây của hạt, không phải \"dùng cho\"; ghi tenLoai, không dungCho."
+      "ghiChu": "tax.09096230 \"Của cây ca-rum (caraway)\" ⇒ tenLoai cây ca-rum"
     }
   ]
 }

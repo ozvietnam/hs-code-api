@@ -4,13 +4,19 @@
   "nhom": "6113",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-mm:loop:20261106T1442#soan-611300",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv#soat-611300",
+    "ngay": "2026-11-21",
+    "ghiChu": "Chuẩn hoá theo traVe",
+    "bam": "5a4e5efaaa2eee3bdd1b2a33ff5c1161b76f91a54c97d15fcf5107cf7d6c2e9b"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -22,25 +28,15 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Bộ đồ của thợ lặn"
-        },
-        {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": "hoạt động lặn scuba"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "61130030",
       "nguon": "tax.61130030",
       "trich": "61130030 - Quần áo chống cháy (SEN)",
       "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Quần áo chống cháy"
-        },
         {
           "fact": "tinhNangBaoHo",
           "op": "TRONG",
@@ -49,7 +45,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "61130040",
@@ -62,7 +58,7 @@
           "value": "Quần áo bảo hộ"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": true
     },
     {
@@ -70,19 +66,19 @@
       "nguon": "tax.61130090",
       "trich": "61130090 - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "61130010",
       "loai": "QUYET_DINH",
-      "ghiChu": "sen.61130010: \"Bộ đồ của thợ lặn là bộ áo liền quần chống nước được sử dụng cho hoạt động lặn scuba\" ⇒ tenLoai \"Bộ đồ của thợ lặn\" + dungCho \"hoạt động lặn scuba\". \"chống nước\" và \"đã ngâm, tẩm cao su neoprene\" không có khoá tu-vung đọc được (CHONG_NO là \"chống nổ\"; daTrangPhuEpLop đọc \"đã ngâm tẩm, tráng hoặc phủ\") ⇒ mô tả của SEN, không thành điều kiện."
+      "ghiChu": "sen.61130010: \"Bộ đồ của thợ lặn\" ⇒ tenLoai \"Bộ đồ của thợ lặn\"."
     },
     {
       "ma": "61130030",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.61130030: \"Quần áo chống cháy\" ⇒ tenLoai \"Quần áo chống cháy\" + tinhNangBaoHo CHONG_CHAY. sen.61130030: \"thường được làm từ một số loại vải đặc biệt như\" là ví dụ minh hoạ (có cả sợi bông, vải dệt tráng) ⇒ không thành điều kiện; \"không chứa amiăng\" không có khoá tu-vung (chatLieu không có \"amiăng\") và chữ biểu biểu thuế không nói ⇒ không đưa vào điều kiện."
+      "ghiChu": "tax.61130030: \"Quần áo chống cháy\" ⇒ tinhNangBaoHo CHONG_CHAY."
     },
     {
       "ma": "61130040",
@@ -90,11 +86,31 @@
       "ghiChu": "tax.61130040: \"Quần áo bảo hộ khác\" ⇒ tenLoai \"Quần áo bảo hộ\" + phanConLai: true (phần còn lại có tên — phủ định 61130010 và 61130030 đứng trước). 61130090 \"Loại khác\" trần ⇒ không đưa vào spec (máy phủ định anh em)."
     }
   ],
-  "traVe": [
+  "chongLanTruc": [
     {
-      "phien": "claude-agent:duyet-L17-20261111#soat-L17",
-      "ngay": "2026-11-11",
-      "lyDo": "(A) 61130030 THU HẸP: chữ biểu 'Quần áo chống cháy (SEN)' (MFN 5 %); bản nháp ghi CẢ tinhNangBaoHo CHONG_CHAY LẪN tenLoai 'Quần áo chống cháy' (so chữ tự do đòi đủ âm tiết 'quần','áo') ⇒ 'bộ đồ chống cháy', 'bộ đồ chữa cháy' bị TRÁI ở tenLoai và rơi sang .40 (MFN 20 %). Khoá tinhNangBaoHo một mình đã đủ (như 611430 .20). (B) 61130010 THU HẸP: chữ biểu 'Bộ đồ của thợ lặn' / EN 'Divers' suits (wetsuits)'; bản nháp thêm dungCho 'hoạt động lặn scuba' lấy từ câu mô tả SEN ⇒ wetsuit lặn tự do/lặn ống thở bị TRÁI, rơi sang .40/.90."
+      "nhanh": [
+        "61130010",
+        "61130030"
+      ],
+      "truc": {
+        "61130010": "TEN_LOAI",
+        "61130030": "DAC_DIEM"
+      },
+      "cauHoiPhanBiet": "Hàng này thuộc nhánh nào: «Bộ đồ của thợ lặn (SEN)» (61130010), «Quần áo chống cháy (SEN)» (61130030)?",
+      "trich": {
+        "61130010": "Bộ đồ của thợ lặn (SEN)",
+        "61130030": "Quần áo chống cháy (SEN)"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "61130010",
+            "61130030"
+          ],
+          "khongCoHangThat": "Bộ đồ của thợ lặn (wetsuit neoprene giữ nhiệt dưới nước) và quần áo chống cháy (bảo hộ chịu lửa/nhiệt độ cao) có công dụng và môi trường sử dụng tách biệt, không có mặt hàng vừa là đồ lặn dưới nước vừa là quần áo chống cháy."
+        }
+      ],
+      "phanXu": null
     }
   ]
 }

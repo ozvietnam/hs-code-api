@@ -4,13 +4,19 @@
   "nhom": "6307",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T0856#soan-630710",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv#soat-630710",
+    "ngay": "2026-11-21",
+    "ghiChu": "Chuẩn hoá theo traVe",
+    "bam": "df05bac229e8b643a19c8caceab13faa39678e934f8def2774cd5c01032b4f34"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -22,9 +28,15 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "vải không dệt"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "phớt",
+          "chieu": "PHAI_KHONG"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "63071020",
@@ -37,27 +49,21 @@
           "value": "phớt"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "63071090",
       "nguon": "tax.63071090",
       "trich": "63071090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "63071010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.63071010 \"Từ vải không dệt trừ phớt\" ⇒ tenLoai \"vải không dệt\""
-    },
-    {
-      "ma": "63071010",
-      "loai": "BO_VE",
-      "ve": "trừ phớt",
-      "lyDo": "tu-vung@2 không có op phủ định cho tên (KHONG chỉ dùng cho CO_KHONG); hàng phớt đã bị 63071020 chặn bằng tenLoai \"phớt\" (tên đầu nguyên văn của chính dòng đó) nên vế loại trừ chỉ tái khẳng định ranh giới .10/.20 đã có — bỏ vế không đổi mã: khăn không dệt (không phải phớt) vẫn chỉ khớp .10, khăn phớt khớp .20; hàng lai chứa cả hai tên sẽ thành CHƯA CHỐT hỏi người khai chứ máy không tự chốt sai"
+      "ghiChu": "tax.63071010 \"Từ vải không dệt trừ phớt\" ⇒ tenLoai \"vải không dệt\" + tenLoai PHAI_KHONG \"phớt\""
     },
     {
       "ma": "63071020",
@@ -68,13 +74,6 @@
       "ma": "63071090",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.63071090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
-    }
-  ],
-  "traVe": [
-    {
-      "phien": "claude-agent:duyet-L19-20261111#soat-L19",
-      "ngay": "2026-11-11",
-      "lyDo": "(A) 63071010 BO_VE sai lý do: \"Từ vải không dệt trừ phớt\" (EN \"Nonwoven other than felt\") — BO_VE \"trừ phớt\" vì \"tu-vung@2 không có op phủ định cho tên\"; sai: TEN_LOAI nhận chieu PHAI_KHONG (đã DUYET ở 200799). Khăn lau \"phớt không dệt\" (needle felt) thoả cả .10 và .20 ⇒ thành chưa chốt thay vì .20 như chữ biểu chốt. Sửa: thêm tenLoai PHAI_KHONG \"phớt\"."
     }
   ]
 }

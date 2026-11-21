@@ -4,13 +4,19 @@
   "nhom": "2515",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261105T1542#soan-251512",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv#soat-251512",
+    "ngay": "2026-11-21",
+    "ghiChu": "Chuẩn hoá theo traVe",
+    "bam": "2a7cca624dd5620170904e46d8bcbe680f2520ffbcf26d71807a0683a278daae"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -19,12 +25,14 @@
       "trich": "25151210 - - - Dạng khối (SEN)",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Dạng khối"
+          "fact": "dangKhoiHoacTamDa",
+          "op": "TRONG",
+          "value": [
+            "DANG_KHOI"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "25151220",
@@ -32,31 +40,26 @@
       "trich": "25151220 - - - Dạng tấm (SEN)",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Dạng tấm"
+          "fact": "dangKhoiHoacTamDa",
+          "op": "TRONG",
+          "value": [
+            "DANG_TAM"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "25151210",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.25151210 \"Dạng khối (SEN)\" — tên dạng nguyên văn ⇒ tenLoai \"Dạng khối\"; \"(SEN)\" là ngoặc chú thích"
+      "ghiChu": "tax.25151210 \"Dạng khối (SEN)\" ⇒ dangKhoiHoacTamDa TRONG [DANG_KHOI]; \"(SEN)\" là ngoặc chú thích"
     },
     {
       "ma": "25151220",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.25151220 \"Dạng tấm (SEN)\" — tên dạng nguyên văn ⇒ tenLoai \"Dạng tấm\"; \"(SEN)\" là ngoặc chú thích"
-    }
-  ],
-  "traVe": [
-    {
-      "phien": "claude-agent:duyet-L7-20261111#soat-L7",
-      "ngay": "2026-11-11",
-      "lyDo": "(A) 251512:25151210/.20 SAI KHOÁ: 'Dạng khối (SEN)' / 'Dạng tấm (SEN)' (EN 'Blocks' / 'Slabs') ghi tenLoai TEN_LOAI 'Dạng khối'/'Dạng tấm' (không tất định, phân nhóm KHÔNG có dòng Loại khác ⇒ lúc chạy không bao giờ chốt được), trong khi tu-vung@2 có khoá LIET_KE dangKhoiHoacTamDa [DANG_KHOI, DANG_TAM] dựng RIÊNG cho đúng 2515.12.10/.20 và 2516.12.10/.20 (ghiChu khoá). Sửa: dangKhoiHoacTamDa TRONG [DANG_KHOI] / [DANG_TAM]."
+      "ghiChu": "tax.25151220 \"Dạng tấm (SEN)\" ⇒ dangKhoiHoacTamDa TRONG [DANG_TAM]; \"(SEN)\" là ngoặc chú thích"
     }
   ]
 }
