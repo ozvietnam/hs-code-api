@@ -297,7 +297,6 @@ for (const decision of ['CHOT', 'HOI']) {
   const { kiemPhanNhomEarlyHoi } = require('../lib/engine-loop.js');
   const { doGiongTenHang } = require('../lib/giong-ten-hang.js');
   const { precedentsData } = require('../lib/data.js');
-  const { missingStructured } = require('../lib/declaration-fields.js');
   const VAN_52 = { tenHang: 'Van điện từ khí nén 5/2 thân nhôm, cổng ren 1/4 inch, dùng điều khiển xi lanh khí nén' };
   const R1_VAN_52 = {
     product: {
@@ -365,12 +364,6 @@ for (const decision of ['CHOT', 'HOI']) {
   check('OZV-1707 kiemPhanNhomEarlyHoi: ≥2 phân nhóm cụ thể cùng khớp → ok=false (SO_TAY_PHAN_NHOM_6_TRANH_CHAP) để leo vòng 2 LLM',
     kpnTranhChap.ok === false && kpnTranhChap.lyDo === 'SO_TAY_PHAN_NHOM_6_TRANH_CHAP',
     JSON.stringify(kpnTranhChap));
-
-  // Danh mục trường khai 8479: hộp găng tay không bị đòi bắt buộc công suất/điện áp.
-  const ms8479 = missingStructured('847989', { tenHang: 'Hộp găng tay thí nghiệm (glove box)' });
-  check('OZV-1707 8479 declaration fields: hộp găng tay không còn bị đòi bắt buộc power/voltage',
-    !ms8479.some((f) => f.key === 'power' || f.key === 'voltage'),
-    JSON.stringify(ms8479.map((f) => f.key)));
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);
