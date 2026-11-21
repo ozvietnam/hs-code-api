@@ -12,12 +12,32 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L2-20261111#soat-L2",
-    "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu VI/EN 5 dòng Sống / Tươi hoặc ướp lạnh / Đông lạnh / Khô, muối… / Hun khói (sứa) ⇒ tenLoai nguyên văn, phủ đủ chữ phân nhóm.",
-    "bam": "a22755fb507dca2ca7e76c6451e0c890e1738561940c0801d7710aa730f42826"
+    "phien": "claude-agent:tho-hs-02#soat-lo-6b",
+    "ngay": "2026-11-21",
+    "ghiChu": "Đã chuẩn hoá dieuKienSo bám chữ biểu thuế",
+    "bam": "73eabd9141493938aed15a4cd6a7293dc0ce175f6b24ab6679c549c977fc3b4b"
   },
-  "dieuKienNut": [],
+  "dieuKienNut": [
+    {
+      "id": "030830",
+      "nguon": "wco.030830",
+      "trich": "030830 Aquatic invertebrates; jellyfish (Rhopilema spp.), live, fresh, chilled, frozen, dried, salted or in brine, smoked, whether or not cooked before or during smoking",
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "SONG",
+            "TUOI_UOP_LANH",
+            "DONG_LANH",
+            "KHO_MUOI",
+            "HUN_KHOI"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    }
+  ],
   "dong8": [
     {
       "hs": "03083010",
@@ -25,9 +45,11 @@
       "trich": "03083010 - - Sống",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Sống"
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "SONG"
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -38,11 +60,10 @@
       "trich": "03083020 - - Tươi hoặc ướp lạnh",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
           "value": [
-            "Tươi",
-            "ướp lạnh"
+            "TUOI_UOP_LANH"
           ]
         }
       ],
@@ -54,9 +75,11 @@
       "trich": "03083030 - - Đông lạnh",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Đông lạnh"
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "DONG_LANH"
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -67,12 +90,10 @@
       "trich": "03083040 - - Khô, muối hoặc ngâm nước muối",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
           "value": [
-            "Khô",
-            "muối",
-            "ngâm nước muối"
+            "KHO_MUOI"
           ]
         }
       ],
@@ -84,9 +105,11 @@
       "trich": "03083050 - - Hun khói",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Hun khói"
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "HUN_KHOI"
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -94,29 +117,9 @@
   ],
   "ghiChuSoan": [
     {
-      "ma": "03083010",
+      "ma": "030830",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.03083010 \"Sống\" ⇒ tenLoai \"Sống\" nguyên văn (không dùng phuongPhapBaoQuan, lý do như 030711)"
-    },
-    {
-      "ma": "03083020",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.03083020 \"Tươi hoặc ướp lạnh\" ⇒ tenLoai [\"Tươi\",\"ướp lạnh\"] — mảng = hoặc (LUAT-CHUNG bảng 1)"
-    },
-    {
-      "ma": "03083030",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.03083030 \"Đông lạnh\" ⇒ tenLoai \"Đông lạnh\" nguyên văn"
-    },
-    {
-      "ma": "03083040",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.03083040 \"Khô, muối hoặc ngâm nước muối\" ⇒ tenLoai [\"Khô\",\"muối\",\"ngâm nước muối\"] như 030719"
-    },
-    {
-      "ma": "03083050",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.03083050 \"Hun khói\" ⇒ tenLoai \"Hun khói\" nguyên văn"
+      "ghiChu": "Phạm vi phân nhóm dieuKienNut[030830] [SONG, TUOI_UOP_LANH, DONG_LANH, KHO_MUOI, HUN_KHOI] từ wco.030830 (theo #1109); 5 dòng .10–.50 chia kín theo phuongPhapBaoQuan"
     }
   ]
 }

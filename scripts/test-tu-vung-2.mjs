@@ -331,6 +331,8 @@ const KHOA_MOI = {
   laPhanChimDoi: 'CO_KHONG',
   laSanPhamCaoSuCung: 'CO_KHONG',
   lucRungTrong: 'SO',
+  // 22/11/2026 (OZV-1757): khoá cho 1207.10.30 (Nhân hạt cọ)
+  laNhanHatCo: 'CO_KHONG',
 };
 
 // ── 1. Nạp theo phiên bản ─────────────────────────────────────────────────────────────────────────────────────────
@@ -943,6 +945,31 @@ check('vietCum đơn vị @1 KHÔNG đổi ("CS: 75000W" — không cách)', T.v
   }
   const ms = Number(process.hrtime.bigint() - t0) / 1e6;
   check(`OZV-1753 ReDoS ~40.000 từ lặp trên 5 khoá < 2000 ms (thực tế ${ms.toFixed(0)} ms)`, ms < 2000, { ms });
+}
+
+// OZV-1757 — kiểm chứng khoá laNhanHatCo (1207.10.30) và mở rộng thichHopDungChoNguoi + ReDoS 40.000 từ lặp < 2 giây (quy tắc 6b).
+{
+  // 1. laNhanHatCo (1207.10.30)
+  la('chữ biểu 1207.10.30 (Nhân hạt cọ)', 'laNhanHatCo', 'Hạt cọ và nhân hạt cọ: Nhân hạt cọ', true);
+  la('mô tả hàng thật nhân hạt cọ', 'laNhanHatCo', 'Nhân hạt cọ dùng ép dầu', true);
+  la('En Kernels', 'laNhanHatCo', 'Palm kernels, broken', true);
+  la('Zh 棕榈仁', 'laNhanHatCo', '棕榈仁', true);
+  la('phủ định không phải nhân hạt cọ ⇒ false', 'laNhanHatCo', 'Hạt cọ và nhân hạt cọ, không phải nhân hạt cọ', false);
+  la('chữ biểu 1207.10.10 hạt cọ phù hợp để gieo trồng ⇒ false', 'laNhanHatCo', 'Hạt cọ và nhân hạt cọ: Hạt cọ phù hợp để gieo/trồng (SEN)', false);
+  chuaBiet('chỉ ghi tiêu đề phân nhóm Hạt cọ và nhân hạt cọ ⇒ CHUA_BIET', 'laNhanHatCo', 'Hạt cọ và nhân hạt cọ');
+
+  // 2. thichHopDungChoNguoi — mở rộng đọc cả "thích hợp dùng cho người" và "không thích hợp dùng cho người"
+  la('thichHopDungChoNguoi đọc thích hợp dùng cho người ⇒ true', 'thichHopDungChoNguoi', 'Whey, thích hợp dùng cho người', true);
+  la('thichHopDungChoNguoi đọc không thích hợp dùng cho người ⇒ false', 'thichHopDungChoNguoi', 'Hạt vừng, không thích hợp dùng cho người', false);
+
+  // 3. ReDoS ~40.000 từ lặp < 2 giây (CLAUDE.md quy tắc 6b)
+  const redosText1757 = Array(8000).fill('hạt cọ và nhân hạt cọ không thích hợp sử dụng').join(' ');
+  const t0 = process.hrtime.bigint();
+  for (const fk of ['laNhanHatCo', 'thichHopDungChoNguoi']) {
+    T.docGiaTri(fk, redosText1757);
+  }
+  const ms = Number(process.hrtime.bigint() - t0) / 1e6;
+  check(`OZV-1757 ReDoS ~40.000 từ lặp trên laNhanHatCo + thichHopDungChoNguoi < 2000 ms (thực tế ${ms.toFixed(0)} ms)`, ms < 2000, { ms });
 }
 
 console.log(`\n${pass} pass, ${fail} fail`);

@@ -347,7 +347,8 @@
    "hamLuongChatRanKhongChuaMuoi",
    "laPhanChimDoi",
    "laSanPhamCaoSuCung",
-   "lucRungTrong"
+   "lucRungTrong",
+   "laNhanHatCo"
   ],
   "tuVung1": {
    "trangThai": "DA_CHAM",
@@ -11392,7 +11393,7 @@
    "nhanZh": "适于供人食用/食用级",
    "cachDoc": {
     "vi": [
-     "thích\\s+hợp\\s+sử\\s+dụng\\s+cho\\s+người(?:\\s*\\(SEN\\))?",
+     "thích\\s+hợp\\s+(?:sử\\s+dụng|dùng)\\s+cho\\s+người(?:\\s*\\(SEN\\))?",
      "(?:loại\\s+)?ăn\\s+được"
     ],
     "en": [
@@ -11418,7 +11419,7 @@
    "cachDocKhong": {
     "vi": [
      "không\\s+ăn\\s+được",
-     "không\\s+thích\\s+hợp\\s+(?:sử\\s+dụng\\s+)?cho\\s+người"
+     "không\\s+thích\\s+hợp\\s+(?:(?:sử\\s+dụng|dùng)\\s+)?cho\\s+người"
     ],
     "en": [
      "inedible",
@@ -23622,6 +23623,56 @@
     "zh": "压路机滚筒的激振力（离心力）是多少吨（t）？"
    },
    "ghiChu": "Chữ biểu 8429.40.40 \"Xe lu rung, với lực rung của trống không quá 20 tấn tính theo khối lượng\" (đọc 20 op <=; EN \"Vibratory smooth drum rollers, with a centrifugal force drum not exceeding 20 t by weight\").",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "khoa": "laNhanHatCo",
+   "kieu": "CO_KHONG",
+   "nhanVi": "nhân hạt cọ",
+   "nhanEn": "palm kernels",
+   "nhanZh": "棕榈仁",
+   "cachDoc": {
+    "vi": [
+     "(?<!hạt\\s+cọ\\s+và\\s+)nhân\\s+hạt\\s+cọ"
+    ],
+    "en": [
+     "(?<!palm\\s+nuts\\s+and\\s+)(?:palm\\s+)?kernels\\b"
+    ],
+    "zh": [
+     "(?<!棕榈果及)棕榈仁"
+    ],
+    "phuDinh": [
+     "không phải",
+     "không",
+     "trừ",
+     "other than",
+     "not",
+     "非",
+     "不"
+    ]
+   },
+   "cachDocKhong": {
+    "vi": [
+     "không\\s+phải\\s+nhân\\s+hạt\\s+cọ",
+     "(?<!nhân\\s+)hạt\\s+cọ\\s+phù\\s+hợp"
+    ],
+    "en": [
+     "not\\s+(?:palm\\s+)?kernels",
+     "palm\\s+nuts\\s+suitable"
+    ],
+    "zh": [
+     "非棕榈仁"
+    ]
+   },
+   "cachViet": {
+    "vi": "nhân hạt cọ",
+    "viPhuDinh": "không phải nhân hạt cọ"
+   },
+   "cauHoi": {
+    "vi": "Hàng có phải là nhân hạt cọ (đã tách vỏ cứng của hạt cọ) không?",
+    "zh": "该货物是否为棕榈仁（去壳棕榈核仁）？"
+   },
+   "ghiChu": "Chữ biểu 1207.10.30 \"Nhân hạt cọ\" / EN \"Kernels\" (phân biệt với hạt cọ 1207.10.10 / 1207.10.90 trong phân nhóm 1207.10 \"Hạt cọ và nhân hạt cọ\").",
    "nguonLoai": "AI_DA_KIEM"
   }
  ],

@@ -152,16 +152,20 @@
   "dong8": [
     {
       "hs": "12071010",
-      "dieuKien": "tên loại hàng: Hạt cọ phù hợp; để nhân giống / làm giống / gieo trồng",
-      "nguon": "sen.12071010",
-      "trich": "Hạt cọ phù hợp để gieo/trồng phải có giấy xác nhận của các cơ quan chức năng có liên quan thuộc nước xuất khẩu về chất lượng của loại hạt này phù hợp để gieo/trồng.",
+      "dieuKien": "tên loại hàng: Hạt cọ; không: nhân hạt cọ; để nhân giống / làm giống / gieo trồng",
+      "nguon": "tax.12071010",
+      "trich": "12071010 - - Hạt cọ phù hợp để gieo/trồng (SEN)",
       "nguonLoai": "CLAUDE_DUYET",
       "loaiKhac": false,
       "dieuKienSo": [
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Hạt cọ phù hợp"
+          "value": "Hạt cọ"
+        },
+        {
+          "fact": "laNhanHatCo",
+          "op": "KHONG"
         },
         {
           "fact": "dungLamGiong",
@@ -171,32 +175,31 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:ozv-1721#soat-120710",
+          "phien": "claude-agent:tho-hs-02#soat-lo-6b",
           "ngay": "2026-11-21",
-          "bam": "4143e0eb530c4ff379451fdc1446f7925fe27690a87f0d0e4a33ff624ad41f6b"
+          "bam": "21e521ee35834de1156a10a07766c77a8b0e3dfbb5bafbe5dc1d5ac20c1cb7e8"
         }
       }
     },
     {
       "hs": "12071030",
-      "dieuKien": "tên loại hàng: Nhân hạt cọ",
+      "dieuKien": "nhân hạt cọ",
       "nguon": "tax.12071030",
       "trich": "12071030 - - Nhân hạt cọ",
       "nguonLoai": "CLAUDE_DUYET",
       "loaiKhac": false,
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Nhân hạt cọ"
+          "fact": "laNhanHatCo",
+          "op": "CO"
         }
       ],
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:ozv-1721#soat-120710",
+          "phien": "claude-agent:tho-hs-02#soat-lo-6b",
           "ngay": "2026-11-21",
-          "bam": "4143e0eb530c4ff379451fdc1446f7925fe27690a87f0d0e4a33ff624ad41f6b"
+          "bam": "21e521ee35834de1156a10a07766c77a8b0e3dfbb5bafbe5dc1d5ac20c1cb7e8"
         }
       }
     },

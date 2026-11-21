@@ -12,22 +12,26 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:ozv-1721#soat-120710",
+    "phien": "claude-agent:tho-hs-02#soat-lo-6b",
     "ngay": "2026-11-21",
-    "ghiChu": "Chuẩn hoá theo traVe",
-    "bam": "4143e0eb530c4ff379451fdc1446f7925fe27690a87f0d0e4a33ff624ad41f6b"
+    "ghiChu": "Đã chuẩn hoá dieuKienSo bám chữ biểu thuế",
+    "bam": "21e521ee35834de1156a10a07766c77a8b0e3dfbb5bafbe5dc1d5ac20c1cb7e8"
   },
   "dieuKienNut": [],
   "dong8": [
     {
       "hs": "12071010",
-      "nguon": "sen.12071010",
-      "trich": "Hạt cọ phù hợp để gieo/trồng phải có giấy xác nhận của các cơ quan chức năng có liên quan thuộc nước xuất khẩu về chất lượng của loại hạt này phù hợp để gieo/trồng.",
+      "nguon": "tax.12071010",
+      "trich": "12071010 - - Hạt cọ phù hợp để gieo/trồng (SEN)",
       "dieuKienSo": [
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Hạt cọ phù hợp"
+          "value": "Hạt cọ"
+        },
+        {
+          "fact": "laNhanHatCo",
+          "op": "KHONG"
         },
         {
           "fact": "dungLamGiong",
@@ -42,9 +46,8 @@
       "trich": "12071030 - - Nhân hạt cọ",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Nhân hạt cọ"
+          "fact": "laNhanHatCo",
+          "op": "CO"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -61,12 +64,12 @@
     {
       "ma": "12071010",
       "loai": "QUYET_DINH",
-      "ghiChu": "Nghĩa hẹp theo SEN (sen.12071010): \"Hạt cọ phù hợp để gieo/trồng phải có giấy xác nhận của các cơ quan chức năng có liên quan thuộc nước xuất khẩu về chất lượng của loại hạt này phù hợp để gieo/trồng\" ⇒ tenLoai \"Hạt cọ phù hợp\" + dungLamGiong CO (\"phù hợp để gieo/trồng\"). VẾ TÊN PHẢI RÚT NGẮN: bộ đọc tên (gates.productHead) cắt tại giới từ \"để\" nên đọc \"Hạt cọ phù hợp\", không đọc \"Hạt cọ phù hợp để gieo/trồng\" — điều kiện tên cũ KHÔNG BAO GIỜ khớp (dòng chết: mọi hàng đều ra THIEU). Giữ \"Hạt cọ phù hợp\" (KHÔNG rút còn \"Hạt cọ\") để không chồng lấn với 12071030 \"Nhân hạt cọ\" (chuỗi con \"Hạt cọ\" nằm trong \"Nhân hạt cọ\"). VẾ \"có giấy xác nhận\" của SEN không có khoá riêng trong tu-vung@2 nên không ghi riêng được."
+      "ghiChu": "tax.12071010 \"Hạt cọ phù hợp để gieo/trồng (SEN)\" ⇒ tenLoai \"Hạt cọ\" (theo traVe) + laNhanHatCo KHONG + dungLamGiong CO"
     },
     {
       "ma": "12071030",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.12071030 \"Nhân hạt cọ\" ⇒ tenLoai \"Nhân hạt cọ\" (chuỗi con nguyên văn). Cùng khoá tenLoai với dòng 12071010."
+      "ghiChu": "tax.12071030 \"Nhân hạt cọ\" ⇒ laNhanHatCo CO (tách tất định với hạt cọ trong phân nhóm 1207.10 \"Hạt cọ và nhân hạt cọ\")"
     },
     {
       "ma": "12071090",
