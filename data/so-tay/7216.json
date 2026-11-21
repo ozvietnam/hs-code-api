@@ -494,11 +494,27 @@
     },
     {
       "hs": "72169110",
-      "dieuKien": "Dạng góc, trừ góc đục lỗ, rãnh, có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng",
+      "dieuKien": "hàm lượng carbon >= 0.6 %",
       "loaiKhac": false,
       "nguon": "tax.72169110",
       "trich": "72169110 - - - Dạng góc, trừ góc đục lỗ, rãnh, có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": ">=",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1721#soat-721691",
+          "ngay": "2026-11-21",
+          "bam": "4ec45239a1317e9657c2258f9840b6b08b97296da33ef27a804fcba7f10264c0"
+        }
+      }
     },
     {
       "hs": "72169190",
