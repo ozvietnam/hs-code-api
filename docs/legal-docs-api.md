@@ -7,7 +7,7 @@
 ```
 data/tax.json (cột cs)  ─┐
                           ├─►  scripts/extract-legal-refs.mjs  ──►  data/legal-docs.json  ──►  lib/legal-docs.js  ──►  /api/legal-docs
-data/tax-enriched.json  ─┘        (extract, chuẩn hoá)            (index 108 văn bản)       (loader + tra cứu)     (HTTP API)
+data/tax-enriched.json  ─┘        (extract, chuẩn hoá)            (index 109 văn bản)       (loader + tra cứu)     (HTTP API)
    (warnings.legalDocs)                    ▲
                                            │
                     data/legal-doc-titles.json  ──►  scripts/apply-verified-titles.mjs
@@ -17,11 +17,11 @@ data/tax-enriched.json  ─┘        (extract, chuẩn hoá)            (index 
 **Thêm/sửa tiêu đề:** cập nhật `data/legal-doc-titles.json` rồi chạy `node scripts/apply-verified-titles.mjs`.
 `legal-doc-titles.json` là single source of truth cho tiêu đề đã verify — index có thể rebuild lại từ `tax-enriched.json` mà không mất tiêu đề (chỉ cần chạy lại apply).
 
-Hiện trạng: **108 văn bản** trong index, **30 đã verify tiêu đề thật** (phủ ~99% lượt trích dẫn). Còn lại đang là placeholder `"Văn bản <mã> (cần bổ sung tiêu đề)"` chờ verify dần.
+Hiện trạng: **109 văn bản** trong index, **107 đã verify tiêu đề thật**. Chỉ còn 2/109 văn bản chưa verify tiêu đề, đang là placeholder `"Văn bản <mã> (cần bổ sung tiêu đề)"` chờ verify.
 
 ## Auth & CORS
 
-Mọi endpoint yêu cầu Bearer token (`Authorization: Bearer $HS_API_TOKEN`). CORS bật sẵn. Base URL production: `https://hs-kb.uythacnhapkhau.com`.
+Các endpoint tra cứu `GET /api/legal-docs` và `GET /api/legal-docs/:code` **mở đọc công khai** — không cần token (theo `lib/public-access.js`, trừ khi đặt `HS_PUBLIC_READ=false`; gửi `Authorization: Bearer $HS_API_TOKEN` vẫn được chấp nhận). CORS bật sẵn. Base URL production: `https://hs-kb.uythacnhapkhau.com`.
 
 ---
 
@@ -36,8 +36,7 @@ Query params (tuỳ chọn, kết hợp được):
 | `issuer` | Mã bộ ngành: `CP` `TTg` `BCT` `BTC` `BYT` `BTTTT` `BKHCN` `BCA` `BQP` `BXD`... | `?issuer=BCT` |
 
 ```bash
-curl -H "Authorization: Bearer $HS_API_TOKEN" \
-  "https://hs-kb.uythacnhapkhau.com/api/legal-docs?issuer=BCT&status=ACTIVE"
+curl "https://hs-kb.uythacnhapkhau.com/api/legal-docs?issuer=BCT&status=ACTIVE"
 ```
 
 Response:
@@ -60,8 +59,7 @@ Mã văn bản chứa dấu `/` (VD `08/2023/TT-BCT`) nên khi đặt trong path
 
 ```bash
 # 08/2023/TT-BCT  →  08%2F2023%2FTT-BCT
-curl -H "Authorization: Bearer $HS_API_TOKEN" \
-  "https://hs-kb.uythacnhapkhau.com/api/legal-docs/08%2F2023%2FTT-BCT"
+curl "https://hs-kb.uythacnhapkhau.com/api/legal-docs/08%2F2023%2FTT-BCT"
 ```
 
 Chấp nhận mã có/không dấu tiếng Việt (`QĐ`≡`QD`, `NĐ`≡`ND`).
