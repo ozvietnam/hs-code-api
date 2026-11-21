@@ -1,0 +1,37 @@
+{
+ "phienBan": 1,
+ "mucDich": "Danh sách CHẶN nguồn rác cho bước định danh hàng (/api/identify). Tên miền ở đây không được dùng làm bằng chứng: bị bỏ ở vòng gộp kết quả tìm kiếm (lib/dinh-danh-tim-web.js) và bị bỏ khỏi nguồn do AI đề xuất trước khi máy mở lại xác minh (lib/identify.js). Khớp theo tên miền đăng ký, mọi tên miền con, và theo đuôi tên miền.",
+ "cachBoSung": "Thêm tên miền (không www, chữ thường) vào `mien` của nhóm phù hợp, hoặc đuôi (không dấu chấm) vào `duoi`. Mỗi nhóm phải có `lyDo`. Không chặn sàn thương mại, trang nhà sản xuất, nhà phân phối: đó là nguồn hợp lệ của định danh.",
+ "nhom": [
+  {
+   "ten": "ca-cuoc-game",
+   "lyDo": "Trang cá cược, casino, game: hay trùng mã model ngắn (vd 'GA22') trong tên miền hoặc tên trò chơi, không nói về hàng hoá.",
+   "mien": ["bet365.com", "1xbet.com", "188bet.com", "w88.com", "fun88.com", "m88.com", "12bet.com", "bk8.com", "fb88.com", "kubet.com", "8xbet.com", "sv388.com", "go88.com", "sunwin.com", "roblox.com", "steampowered.com", "steamcommunity.com", "epicgames.com", "twitch.tv", "poki.com", "crazygames.com", "y8.com", "miniclip.com", "itch.io"],
+   "duoi": ["games", "game", "bet", "casino", "poker", "bingo", "lotto", "vegas", "porn", "xxx", "sex", "adult"]
+  },
+  {
+   "ten": "bach-khoa-chung",
+   "lyDo": "Bách khoa và từ điển chung: một mã model ngắn thường trùng tên một thứ khác hẳn (vd 'GA22' là khí cầu trên Wikipedia). Không phải nguồn về model hàng cụ thể.",
+   "mien": ["wikipedia.org", "wiktionary.org", "wikimedia.org", "wikidata.org", "wikibooks.org", "wikiquote.org", "wikisource.org", "wikiwand.com", "fandom.com", "wikia.com", "wikia.org", "britannica.com", "baike.baidu.com", "baike.com", "zhihu.com", "quora.com", "dictionary.com", "merriam-webster.com", "thefreedictionary.com", "urbandictionary.com", "acronymfinder.com", "abbreviations.com"],
+   "duoi": []
+  },
+  {
+   "ten": "mang-xa-hoi-video",
+   "lyDo": "Mạng xã hội và video: nội dung do người dùng đăng, máy không đọc được thông số, không có trách nhiệm nguồn.",
+   "mien": ["facebook.com", "fb.com", "fb.watch", "messenger.com", "tiktok.com", "douyin.com", "youtube.com", "youtu.be", "pinterest.com", "pinimg.com", "instagram.com", "threads.net", "x.com", "twitter.com", "t.co", "reddit.com", "redd.it", "tumblr.com", "snapchat.com", "vk.com", "weibo.com", "bilibili.com", "dailymotion.com", "vimeo.com", "linkedin.com", "discord.com", "telegram.org", "t.me", "zalo.me"],
+   "duoi": []
+  },
+  {
+   "ten": "rut-gon-link",
+   "lyDo": "Dịch vụ rút gọn link: không biết đích thật, không dùng làm nguồn dẫn được.",
+   "mien": ["bit.ly", "tinyurl.com", "goo.gl", "ow.ly", "is.gd", "buff.ly", "rebrand.ly", "cutt.ly", "shorturl.at", "tiny.cc", "rb.gy", "s.id", "lnkd.in", "shope.ee", "adf.ly", "linktr.ee"],
+   "duoi": []
+  },
+  {
+   "ten": "tai-lau-tong-hop-rac",
+   "lyDo": "Trang tải lậu, kho tài liệu sao chép và trang tổng hợp tự sinh: nội dung chép lại không rõ gốc, hay nhồi mã model để câu tìm kiếm.",
+   "mien": ["scribd.com", "pdfcoffee.com", "vdocuments.mx", "vdocuments.net", "vdocument.in", "dokumen.tips", "dokumen.pub", "fdocuments.in", "fdocuments.net", "idoc.pub", "pdfslide.net", "pdfslide.us", "docplayer.net", "docplayer.vn", "studylib.net", "coursehero.com", "slideshare.net", "123doc.net", "123docz.net", "tailieu.vn", "xemtailieu.net", "thepiratebay.org", "1337x.to", "rarbg.to", "libgen.is", "z-lib.org", "sci-hub.se", "softonic.com", "uptodown.com", "apkpure.com", "apkcombo.com", "filehippo.com", "getintopc.com"],
+   "duoi": ["torrent", "download", "click", "loan"]
+  }
+ ]
+}
