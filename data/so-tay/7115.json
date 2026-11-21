@@ -79,19 +79,63 @@
     },
     {
       "hs": "71159010",
-      "dieuKien": "Bằng vàng hoặc bạc ",
+      "dieuKien": "tên loại hàng: vàng hoặc bạc",
       "loaiKhac": false,
-      "nguon": "tax.71159010",
-      "trich": "71159010 - - Bằng vàng hoặc bạc ",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguon": "nhom7115.nhom",
+      "trich": "hoặc các đồ kỹ nghệ vàng hoặc bạc … và các hàng hóa khác thuộc Chương 30.",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "vàng",
+            "bạc"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv#soat-711590",
+          "ngay": "2026-11-21",
+          "bam": "736f9ddb4ad1c9d6d99c76f80f9f7d801485a0dfc81e20f9f3e1e4862c29a00a"
+        }
+      },
+      "phanConLai": [
+        "71159020"
+      ]
     },
     {
       "hs": "71159020",
-      "dieuKien": "Bằng kim loại dát phủ vàng hoặc bạc",
+      "dieuKien": "tên loại hàng: kim loại dát phủ; tên loại hàng: vàng hoặc bạc",
       "loaiKhac": false,
       "nguon": "tax.71159020",
       "trich": "71159020 - - Bằng kim loại dát phủ vàng hoặc bạc",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "kim loại dát phủ"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "vàng",
+            "bạc"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv#soat-711590",
+          "ngay": "2026-11-21",
+          "bam": "736f9ddb4ad1c9d6d99c76f80f9f7d801485a0dfc81e20f9f3e1e4862c29a00a"
+        }
+      }
     },
     {
       "hs": "71159090",

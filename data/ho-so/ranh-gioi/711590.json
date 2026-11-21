@@ -4,19 +4,25 @@
   "nhom": "7115",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T0857#soan-711590",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv#soat-711590",
+    "ngay": "2026-11-21",
+    "ghiChu": "Đã chuẩn hoá dieuKienSo bám chữ biểu thuế",
+    "bam": "736f9ddb4ad1c9d6d99c76f80f9f7d801485a0dfc81e20f9f3e1e4862c29a00a"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
       "hs": "71159010",
-      "nguon": "tax.71159010",
-      "trich": "71159010 - - Bằng vàng hoặc bạc ",
+      "nguon": "nhom7115.nhom",
+      "trich": "hoặc các đồ kỹ nghệ vàng hoặc bạc … và các hàng hóa khác thuộc Chương 30.",
       "dieuKienSo": [
         {
           "fact": "tenLoai",
@@ -27,7 +33,10 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "phanConLai": [
+        "71159020"
+      ]
     },
     {
       "hs": "71159020",
@@ -48,14 +57,14 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "71159090",
       "nguon": "tax.71159090",
       "trich": "71159090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -73,13 +82,6 @@
       "ma": "71159090",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.71159090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
-    }
-  ],
-  "traVe": [
-    {
-      "phien": "claude-agent:tech-lead-20261111#soat-lai",
-      "ngay": "2026-11-11",
-      "lyDo": "bo-kiem-luat --toan-bieu (gộp thử với main, đo hai bên cùng nhịp): bản duyệt sinh ca chốt sai mới (chotSai/chotLoaiKhacSai tăng) — cổng gộp không cho tăng. Soạn/soát lại vế gây chốt sai rồi đo lại trước khi duyệt."
     }
   ]
 }

@@ -133,19 +133,63 @@
   "dong8": [
     {
       "hs": "31010010",
-      "dieuKien": "Nguồn gốc chỉ từ thực vật",
+      "dieuKien": "nguồn gốc sinh vật của hàng (từ cá / từ động vật / chỉ từ thực vật): nguồn gốc chỉ từ thực vật",
       "loaiKhac": false,
       "nguon": "tax.31010010",
       "trich": "31010010 - Nguồn gốc chỉ từ thực vật",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "nguonGocSinhVat",
+          "op": "TRONG",
+          "value": [
+            "CHI_TU_THUC_VAT"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv#soat-310100",
+          "ngay": "2026-11-21",
+          "bam": "ab7a4af469406a81798572f999aac3271a53aa299b766a766f9fbeeae9ed121f"
+        }
+      }
     },
     {
       "hs": "31010092",
-      "dieuKien": "Nguồn gốc từ động vật (trừ phân chim, dơi), đã qua xử lý hóa học",
+      "dieuKien": "nguồn gốc sinh vật của hàng (từ cá / từ động vật / chỉ từ thực vật): nguồn gốc từ động vật; không tên loại hàng: phân chim, dơi; đã qua xử lý hóa học",
       "loaiKhac": false,
       "nguon": "tax.31010092",
       "trich": "31010092 - - Nguồn gốc từ động vật (trừ phân chim, dơi), đã qua xử lý hóa học",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "nguonGocSinhVat",
+          "op": "TRONG",
+          "value": [
+            "TU_DONG_VAT"
+          ]
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "phân chim, dơi",
+          "chieu": "PHAI_KHONG"
+        },
+        {
+          "fact": "daXuLyHoaHoc",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv#soat-310100",
+          "ngay": "2026-11-21",
+          "bam": "ab7a4af469406a81798572f999aac3271a53aa299b766a766f9fbeeae9ed121f"
+        }
+      }
     },
     {
       "hs": "31010099",

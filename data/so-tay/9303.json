@@ -151,11 +151,39 @@
     },
     {
       "hs": "93039010",
-      "dieuKien": "Súng lục bắn pháo hiệu và các loại khác được thiết kế chỉ để phóng pháo hiệu có cỡ nòng từ 20 mm trở lên nhưng trừ cỡ 23 mm và 26,5 mm",
+      "dieuKien": "công dụng / mục đích: phóng pháo hiệu; cỡ nòng súng / cỡ đạn >= 20 mm; không tên loại hàng: cỡ 23 mm và 26,5 mm",
       "loaiKhac": false,
       "nguon": "tax.93039010",
       "trich": "93039010 - - Súng lục bắn pháo hiệu và các loại khác được thiết kế chỉ để phóng pháo hiệu có cỡ nòng từ 20 mm trở lên nhưng trừ cỡ 23 mm và 26,5 mm",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "phóng pháo hiệu"
+        },
+        {
+          "fact": "coNong",
+          "op": ">=",
+          "value": 20,
+          "donVi": "mm"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "cỡ 23 mm và 26,5 mm",
+          "chieu": "PHAI_KHONG"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv#soat-930390",
+          "ngay": "2026-11-21",
+          "bam": "519833d9e08a0d6fd112f047e3f9ecb1606131189f28d8d053ae8be3b14b2099"
+        }
+      },
+      "phanConLai": false
     },
     {
       "hs": "93039090",
