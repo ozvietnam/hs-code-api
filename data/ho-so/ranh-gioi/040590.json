@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L3-20261111#soat-L3",
-    "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu VI/EN: .10 Anhydrous butterfat, .20 Butteroil, .30 Ghee — tenLoai đúng tên nguyên văn từng dòng, ba tên không chứa nhau; .90 phần còn lại (Ghee MFN 15 khác các dòng 5).",
-    "bam": "716466a2d8a03965ae83e4e7b1bb7805e8395672c5a39fa64888c136d5b0864f"
+    "phien": "claude-agent:tho-hs-02#soat-lo-6b",
+    "ngay": "2026-11-21",
+    "ghiChu": "Đã chuẩn hoá dieuKienSo bám chữ biểu thuế",
+    "bam": "945b14fd939c3b9f3eeb722b0204b0d1536936e4a0d94ed55884db52ec04bc0c"
   },
   "dieuKienNut": [],
   "dong8": [
@@ -40,7 +40,11 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Dầu bơ"
+          "value": [
+            "Dầu bơ (butteroil)",
+            "Dầu bơ",
+            "butteroil"
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -70,7 +74,7 @@
     {
       "ma": "04059020",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.04059020 \"Dầu bơ (butteroil)\" — \"(butteroil)\" là ngoặc chú thích (PHU), không thành điều kiện; điều kiện chỉ tenLoai \"Dầu bơ\""
+      "ghiChu": "tax.04059020 \"Dầu bơ (butteroil)\" ⇒ tenLoai [\"Dầu bơ (butteroil)\", \"Dầu bơ\", \"butteroil\"] (kèm tên tiếng Anh butteroil trong ngoặc để có từ phân biệt không trùng chữ \"bơ\" và \"dầu\" ở tiêu đề nhóm 0405)"
     },
     {
       "ma": "04059090",

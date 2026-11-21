@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:ozv-1721#soat-040410",
+    "phien": "claude-agent:tho-hs-02#soat-lo-6b",
     "ngay": "2026-11-21",
-    "ghiChu": "Chuẩn hoá theo traVe",
-    "bam": "585bddc6cc03446c2ec54637429b367987c9fd9621495799e37faaa8223f0600"
+    "ghiChu": "Đã chuẩn hoá dieuKienSo bám chữ biểu thuế",
+    "bam": "a240bf016902fcb63cf2e2295ed215ef55ae79bccd81ba0ee0286f4f4b440435"
   },
   "dieuKienNut": [
     {
@@ -24,8 +24,13 @@
       "trich": "0404101 Dạng bột",
       "dieuKienSo": [
         {
-          "fact": "dangLong",
-          "op": "KHONG"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dạng bột"
+        },
+        {
+          "fact": "dangBot",
+          "op": "CO"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -37,11 +42,6 @@
       "nguon": "tax.04041011",
       "trich": "04041011 - - - Whey, thích hợp sử dụng cho người (SEN)",
       "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Whey"
-        },
         {
           "fact": "thichHopDungChoNguoi",
           "op": "CO"
@@ -62,11 +62,6 @@
       "trich": "04041091 - - - Whey, thích hợp sử dụng cho người (SEN)",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Whey"
-        },
-        {
           "fact": "thichHopDungChoNguoi",
           "op": "CO"
         }
@@ -85,17 +80,17 @@
     {
       "ma": "0404101",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.0404101 \"Dạng bột\" ⇒ dangLong KHONG (đọc KHÔNG chứa dạng bột)"
+      "ghiChu": "tieuDe.0404101 \"Dạng bột\" ⇒ tenLoai \"Dạng bột\" + dangBot CO (theo traVe, không dùng dangLong KHONG)"
     },
     {
       "ma": "04041011",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.04041011 \"Whey, thích hợp sử dụng cho người (SEN)\" ⇒ tenLoai Whey, thichHopDungChoNguoi CO"
+      "ghiChu": "tax.04041011 \"Whey, thích hợp sử dụng cho người (SEN)\" ⇒ thichHopDungChoNguoi CO (Whey lặp tổ tiên 040410)"
     },
     {
       "ma": "04041091",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.04041091 \"Whey, thích hợp sử dụng cho người (SEN)\" ⇒ tenLoai Whey, thichHopDungChoNguoi CO"
+      "ghiChu": "tax.04041091 \"Whey, thích hợp sử dụng cho người (SEN)\" ⇒ thichHopDungChoNguoi CO (Whey lặp tổ tiên 040410)"
     }
   ],
   "traVe": [

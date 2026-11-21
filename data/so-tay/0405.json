@@ -144,32 +144,6 @@
       "dieuKien": "Bơ (phân nhóm 0405.10) — phải được tách hoàn toàn từ sữa, hàm lượng chất béo sữa từ 80% đến không quá 95%, hàm lượng chất khô không có chất béo tối đa 2%, hàm lượng nước tối đa 16%",
       "nguon": "nhom0405.nhom",
       "trich": "Bơ phải được tách hoàn toàn từ sữa và phải có hàm lượng chất béo sữa từ 80% trở lên nhưng không quá 95% tính theo trọng lượng, có hàm lượng chất khô không có chất béo tối đa là 2% và hàm lượng nước tối đa là 16% tính theo trọng lượng.",
-      "dieuKienSo": [
-        {
-          "fact": "ham_luong_chat_beo_sua",
-          "op": ">=",
-          "value": 80,
-          "donVi": "%"
-        },
-        {
-          "fact": "ham_luong_chat_beo_sua",
-          "op": "<=",
-          "value": 95,
-          "donVi": "%"
-        },
-        {
-          "fact": "ham_luong_chat_kho_khong_co_chat_beo",
-          "op": "<=",
-          "value": 2,
-          "donVi": "%"
-        },
-        {
-          "fact": "ham_luong_nuoc",
-          "op": "<=",
-          "value": 16,
-          "donVi": "%"
-        }
-      ],
       "nguonLoai": "AI_DA_KIEM",
       "loaiKhac": false
     },
@@ -178,20 +152,6 @@
       "dieuKien": "Chất phết từ bơ sữa (phân nhóm 0405.20) — chất ở dạng nhũ tương nước trong dầu có thể phết lên bánh, chất béo sữa là chất béo duy nhất trong sản phẩm, hàm lượng chất béo sữa từ 39% đến dưới 80%",
       "nguon": "nhom0405.nhom",
       "trich": "Nhóm này gồm chất phết từ bơ sữa, tức là chất ở dạng nhũ tương nước trong dầu có thể phết lên bánh, chứa chất béo sữa như là chất béo duy nhất trong sản phẩm, với hàm lượng chất béo sữa từ 39% trở lên nhưng dưới 80% tính theo trọng lượng (xem Chú giải 2 (b) của Chương này).",
-      "dieuKienSo": [
-        {
-          "fact": "ham_luong_chat_beo_sua",
-          "op": ">=",
-          "value": 39,
-          "donVi": "%"
-        },
-        {
-          "fact": "ham_luong_chat_beo_sua",
-          "op": "<",
-          "value": 80,
-          "donVi": "%"
-        }
-      ],
       "nguonLoai": "AI_DA_KIEM",
       "loaiKhac": false
     },
@@ -212,15 +172,15 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L3-20261111#soat-L3",
-          "ngay": "2026-11-11",
-          "bam": "716466a2d8a03965ae83e4e7b1bb7805e8395672c5a39fa64888c136d5b0864f"
+          "phien": "claude-agent:tho-hs-02#soat-lo-6b",
+          "ngay": "2026-11-21",
+          "bam": "945b14fd939c3b9f3eeb722b0204b0d1536936e4a0d94ed55884db52ec04bc0c"
         }
       }
     },
     {
       "hs": "04059020",
-      "dieuKien": "tên loại hàng: Dầu bơ",
+      "dieuKien": "tên loại hàng: Dầu bơ (butteroil) hoặc Dầu bơ hoặc butteroil",
       "nguon": "tax.04059020",
       "trich": "04059020 - - Dầu bơ (butteroil)",
       "nguonLoai": "CLAUDE_DUYET",
@@ -229,15 +189,19 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Dầu bơ"
+          "value": [
+            "Dầu bơ (butteroil)",
+            "Dầu bơ",
+            "butteroil"
+          ]
         }
       ],
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L3-20261111#soat-L3",
-          "ngay": "2026-11-11",
-          "bam": "716466a2d8a03965ae83e4e7b1bb7805e8395672c5a39fa64888c136d5b0864f"
+          "phien": "claude-agent:tho-hs-02#soat-lo-6b",
+          "ngay": "2026-11-21",
+          "bam": "945b14fd939c3b9f3eeb722b0204b0d1536936e4a0d94ed55884db52ec04bc0c"
         }
       }
     },
@@ -258,9 +222,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L3-20261111#soat-L3",
-          "ngay": "2026-11-11",
-          "bam": "716466a2d8a03965ae83e4e7b1bb7805e8395672c5a39fa64888c136d5b0864f"
+          "phien": "claude-agent:tho-hs-02#soat-lo-6b",
+          "ngay": "2026-11-21",
+          "bam": "945b14fd939c3b9f3eeb722b0204b0d1536936e4a0d94ed55884db52ec04bc0c"
         }
       }
     },

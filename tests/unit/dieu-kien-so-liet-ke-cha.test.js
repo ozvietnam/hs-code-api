@@ -856,4 +856,40 @@ describe('lib/dieu-kien-so.js — gỡ tiêu đề cha đa vế cho LIET_KE & t�
     assert.equal(rLong.trangThai, 'THOA');
     assert.ok(dt < 2000, `Thời gian chạy ${dt}ms phải < 2000ms`);
   });
+
+  test('OZV-1752: tách vế "và củ cải" / "and turnips" + lọc "củ cải ri" cho nhóm 0706 (070610) — kiểm 2 chiều + ReDoS < 2 giây', () => {
+    assert.equal(
+      chotDong8({
+        hs: '070610',
+        productText: 'Cà rốt và củ cải: Cà rốt',
+      }).hs,
+      '07061010',
+    );
+    assert.equal(
+      chotDong8({
+        hs: '070610',
+        productText: 'Cà rốt và củ cải: Củ cải',
+      }).hs,
+      '07061020',
+    );
+    assert.notEqual(
+      chotDong8({
+        hs: '070610',
+        productText: 'Cà rốt và củ cải',
+      }).ketQua,
+      'CHOT',
+    );
+
+    const longText = `${Array(40000).fill('cà rốt').join(' ')} - Cà rốt và củ cải: Củ cải`;
+    const t0 = Date.now();
+    const rLong = DK.danhGiaTuChu(
+      { fact: 'tenLoai', op: 'TEN_LOAI', value: 'Củ cải' },
+      longText,
+      '07061020',
+    );
+    const dt = Date.now() - t0;
+    assert.equal(rLong.trangThai, 'THOA');
+    assert.equal(rLong.tatDinh, true);
+    assert.ok(dt < 2000, `Thời gian chạy ${dt}ms phải < 2000ms`);
+  });
 });

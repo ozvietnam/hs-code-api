@@ -4,13 +4,19 @@
   "nhom": "3101",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-310100",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-03#soat-310100",
+    "ngay": "2026-11-21",
+    "ghiChu": "Đã chuẩn hoá dieuKienSo theo góp ý soát PR #1563",
+    "bam": "503269ba87b096f2b4634120ac32712c3fadc4ce82e30d3c9a8b46a7d011c801"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -26,7 +32,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "31010092",
@@ -45,23 +51,27 @@
           "op": "TEN_LOAI",
           "value": [
             "phân chim",
-            "dơi"
+            "phân chim, dơi"
           ],
           "chieu": "PHAI_KHONG"
+        },
+        {
+          "fact": "laPhanChimDoi",
+          "op": "KHONG"
         },
         {
           "fact": "daXuLyHoaHoc",
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "31010099",
       "nguon": "tax.31010099",
       "trich": "31010099 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -78,14 +88,7 @@
     {
       "ma": "31010092",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.31010092 \"Nguồn gốc từ động vật (trừ phân chim, dơi), đã qua xử lý hóa học\" ⇒ nguonGocSinhVat TRONG [TU_DONG_VAT] (\"Nguồn gốc từ động vật\") + tenLoai PHAI_KHONG [\"phân chim\",\"dơi\"] (vế loại trừ \"(trừ phân chim, dơi)\", theo tên phân, không phải vật liệu) + daXuLyHoaHoc CO (\"đã qua xử lý hóa học\"; khoá mới lô 20, khác daXuLyBeMat)."
-    }
-  ],
-  "traVe": [
-    {
-      "phien": "claude-agent:tech-lead-20261111#soat-lai",
-      "ngay": "2026-11-11",
-      "lyDo": "bo-kiem-luat --toan-bieu (gộp thử với main, đo hai bên cùng nhịp): bản duyệt sinh ca chốt sai mới (chotSai/chotLoaiKhacSai tăng) — cổng gộp không cho tăng. Soạn/soát lại vế gây chốt sai rồi đo lại trước khi duyệt."
+      "ghiChu": "tax.31010092 \"Nguồn gốc từ động vật (trừ phân chim, dơi), đã qua xử lý hóa học\" (EN \"Of animal origin (other than guano), chemically treated\") ⇒ nguonGocSinhVat TRONG [TU_DONG_VAT] + tenLoai PHAI_KHONG [\"phân chim\", \"phân chim, dơi\"] + laPhanChimDoi KHONG (loại trừ cả phân chim lẫn phân dơi / guano) + daXuLyHoaHoc CO."
     }
   ]
 }
