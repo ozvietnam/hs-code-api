@@ -137,11 +137,13 @@ async function run(r1, { env = {}, r2 = R2_VAN, oz = OZ_VAN, hang = VAN } = {}) 
 }
 const tom = (r) => JSON.stringify({ status: r.out.status, hs: r.out.results?.[0]?.hs, gir: r.girCalls, gates: r.gates, review: r.out.review, soTay: r.out.soTay && { outcome: r.out.soTay.outcome, daTra: r.out.soTay.daTra, lyDoChuaTra: r.out.soTay.lyDoChuaTra } });
 
-// 3a. TẮT (mặc định): tái hiện lỗi — dừng sớm trên 8412, không vòng 2, tín hiệu trái nhóm chỉ ra cờ review sau khi đã bỏ vòng 2
+// 3a. TẮT (mặc định). Từ PR #1527 (f05859fd, OZV-1707) ca van KHÔNG còn dừng sớm trên 841221 kể cả khi công tắc tắt: phép kiểm
+// phân nhóm 6 số trước earlyExitHoi thấy bảng quyết định nhóm 84.12 chỉ sang phân nhóm khác (cổng ghi lyDo
+// BANG_QUYET_DINH_KHAC_PHAN_NHOM) nên động cơ đi vòng 2 và ra 84812090. QT chốt 22/11: đó là hành vi đúng, giữ.
+// Tác dụng RIÊNG của HS_CHOT_SOM_CO_KIEM được kiểm ở mục 3f bằng kịch bản giả (không cổng nào khác chặn).
 const tat = await run(R1_VAN(), { env: { HS_SO_TAY: 'full' } });
-check('TẮT: ca van dừng sớm (earlyExitHoi) trên 841221, KHÔNG gọi vòng 2', tat.girCalls === 0 && tat.gates.some((g) => g.earlyExitHoi === true && g.hs === '841221'), tom(tat));
-check('TẮT: kết quả đứng đầu thuộc nhóm 8412 (lỗi gốc)', String(tat.out.results?.[0]?.hs || '').startsWith('8412'), tom(tat));
-check('TẮT: cờ review "Tiền lệ Oz … xếp nhóm 8481" có sẵn mà không chặn được gì', (tat.out.review?.reasons || []).some((r) => /Tiền lệ Oz/.test(r) && /8481/.test(r)), tom(tat));
+check('TẮT: ca van KHÔNG dừng sớm trên 841221 — cổng kiểm phân nhóm chặn (BANG_QUYET_DINH_KHAC_PHAN_NHOM), có một lượt vòng 2', tat.girCalls === 1 && !tat.gates.some((g) => g.earlyExitHoi === true) && tat.gates.some((g) => g.earlyExitHoi === false && g.lyDo === 'BANG_QUYET_DINH_KHAC_PHAN_NHOM' && g.hs === '841221'), tom(tat));
+check('TẮT: kết quả đứng đầu 84812090 (mã vòng 2 chọn), không còn 8412', tat.out.results?.[0]?.hs === '84812090', tom(tat));
 check('TẮT: không có trường mới (soTay.daTra, chanChotSom)', !('daTra' in (tat.out.soTay || {})) && !tat.gates.some((g) => 'chanChotSom' in g), tom(tat));
 
 // 3b. BẬT: cùng đầu vào, cùng LLM giả → KHÔNG dừng sớm, có vòng 2, ghi lý do
@@ -160,9 +162,11 @@ check('BẬT + HS_SO_TAY=full: soTay.daTra = true (vòng 2 đã chạy, cổng s
 // 3c. CA NGƯỢC qua động cơ: đổi MỘT dữ kiện → vẫn dừng sớm như cũ
 const cungNhom = await run(R1_VAN('8481'), { env: { HS_SO_TAY: 'full', HS_CHOT_SOM_CO_KIEM: 'on' } });
 check('BẬT, CA NGƯỢC: vòng 1 đứng đầu 8481 (cùng nhóm tiền lệ Oz) → vẫn dừng sớm, 0 lượt vòng 2', cungNhom.girCalls === 0 && cungNhom.gates.some((g) => g.earlyExitHoi === true) && !cungNhom.gates.some((g) => 'chanChotSom' in g), tom(cungNhom));
-check('BẬT, CA NGƯỢC: soTay.daTra = false, lyDoChuaTra "dung-som-hoi", outcome cũ giữ "NONE"', cungNhom.out.soTay?.daTra === false && cungNhom.out.soTay?.lyDoChuaTra === 'dung-som-hoi' && cungNhom.out.soTay?.outcome === 'NONE', tom(cungNhom));
+// soTay.outcome theo main hiện tại (#1527): nhánh dừng sớm ghi "DA_TRA_KHONG_NGHI" thay cho giá trị khởi tạo "NONE"; người đọc
+// phải xem daTra / lyDoChuaTra để biết khối sổ tay của vòng 2 CHƯA chạy.
+check('BẬT, CA NGƯỢC: soTay.daTra = false, lyDoChuaTra "dung-som-hoi", outcome "DA_TRA_KHONG_NGHI" (theo #1527)', cungNhom.out.soTay?.daTra === false && cungNhom.out.soTay?.lyDoChuaTra === 'dung-som-hoi' && cungNhom.out.soTay?.outcome === 'DA_TRA_KHONG_NGHI', tom(cungNhom));
 const khongTienLe = await run(R1_VAN(), { env: { HS_SO_TAY: 'full', HS_CHOT_SOM_CO_KIEM: 'on' }, oz: [] });
-check('BẬT, CA NGƯỢC: vòng 1 đứng đầu 8412 nhưng KHÔNG có tín hiệu trái nhóm → vẫn dừng sớm, 0 lượt vòng 2', khongTienLe.girCalls === 0 && khongTienLe.gates.some((g) => g.earlyExitHoi === true), tom(khongTienLe));
+check('BẬT, không tiền lệ Oz: ca van vẫn không dừng sớm nhưng do cổng KHÁC (BANG_QUYET_DINH_KHAC_PHAN_NHOM, #1527) — không ghi chanChotSom', khongTienLe.girCalls === 1 && khongTienLe.gates.some((g) => g.earlyExitHoi === false && g.lyDo === 'BANG_QUYET_DINH_KHAC_PHAN_NHOM') && !khongTienLe.gates.some((g) => 'chanChotSom' in g), tom(khongTienLe));
 const tatSoTay = await run(R1_VAN(), { env: { HS_CHOT_SOM_CO_KIEM: 'on' } });
 check('BẬT, HS_SO_TAY tắt: tiền lệ Oz vẫn chặn dừng sớm (không phụ thuộc sổ tay); không có khối soTay của động cơ', tatSoTay.girCalls === 1 && tatSoTay.gates.some((g) => (g.chanChotSom || []).includes('tien-le-oz')) && !('daTra' in (tatSoTay.out.soTay || {})), tom(tatSoTay));
 
@@ -181,6 +185,32 @@ const R1_SMC = {
 const smcTat = await run(R1_SMC, { hang: SMC, oz: [] });
 const smcBat = await run(R1_SMC, { hang: SMC, oz: [], env: { HS_CHOT_SOM_CO_KIEM: 'on' } });
 check('giác hút SMC: bật = tắt (dừng sớm, 0 lượt vòng 2, cùng status + mã)', smcTat.girCalls === 0 && smcBat.girCalls === 0 && smcBat.out.status === smcTat.out.status && smcBat.out.results?.[0]?.hs === smcTat.out.results?.[0]?.hs && smcBat.gates.some((g) => g.earlyExitHoi === true), tom(smcBat));
+
+// 3f. KỊCH BẢN GIẢ — kiểm RIÊNG tác dụng của công tắc. Tên hàng bịa (không kho nào khớp: không từ điển, không bảng quyết định,
+// không TB-TCHQ), vòng 1 do LLM giả trả, tiền lệ Oz tiêm qua searchOzByKeyword giả ở đầu tệp. Không khoá vào một mặt hàng thật
+// mà PR khác có thể đổi hành vi (ca van ở trên đã bị #1527 đổi). Tiền đề: không cổng nào khác chặn dừng sớm ⇒ TẮT phải dừng sớm.
+{
+  const GIA = { tenHang: 'vật phẩm thử nghiệm zzq-17 kiểu qx' };
+  const R1_GIA = {
+    product: { nameVi: 'vật phẩm thử nghiệm zzq-17', nameEn: 'test article zzq-17', purpose: 'thử nghiệm', mechanism: 'không', material: 'không rõ', evidence: {} },
+    hypotheses: [{ chapter: '40', heading4: '4016', subheading6: '401699', why: 'giả thuyết của LLM giả', confidence: 80 }],
+    verify: { searchVi: ['vật phẩm zzq'], codes8: [], unknowns: ['chất liệu', 'công dụng'] },
+  };
+  const ozGia = (hs) => [{ hsCode: hs, tenHang: 'vật phẩm thử nghiệm zzq-17', ozCount: 9, matchCoverage: 100 }, { hsCode: hs, tenHang: 'vật phẩm zzq', ozCount: 5, matchCoverage: 100 }];
+  const R2_GIA = { ...R2_VAN, hs: '39269099' };
+  const chay = (env, oz) => run(R1_GIA, { hang: GIA, oz, env, r2: R2_GIA });
+  const gTat = await chay({ HS_SO_TAY: 'full' }, ozGia('39269099'));
+  check('GIẢ, TẮT: tiền lệ trái nhóm (3926 vs 4016) có sẵn mà vẫn dừng sớm trên 401699, 0 lượt vòng 2; chỉ ra cờ review', gTat.girCalls === 0 && gTat.gates.some((g) => g.earlyExitHoi === true && g.hs === '401699') && !gTat.gates.some((g) => 'chanChotSom' in g) && (gTat.out.review?.reasons || []).some((r) => /Tiền lệ Oz/.test(r) && /3926/.test(r)), tom(gTat));
+  const gBat = await chay({ HS_SO_TAY: 'full', HS_CHOT_SOM_CO_KIEM: 'on' }, ozGia('39269099'));
+  const gc = gBat.gates.find((g) => Array.isArray(g.chanChotSom));
+  check('GIẢ, BẬT: cùng đầu vào → KHÔNG dừng sớm, có vòng 2, chanChotSom ["tien-le-oz"] kèm lý do TIN_HIEU_TRAI_NHOM + nhomTrai ["3926"]', gBat.girCalls >= 1 && !gBat.gates.some((g) => g.earlyExitHoi === true) && gc && gc.earlyExitHoi === false && gc.lyDo === 'TIN_HIEU_TRAI_NHOM' && gc.chanChotSom.join() === 'tien-le-oz' && gc.nhomTrai.join() === '3926' && (gc.chiTiet || []).length > 0, tom(gBat));
+  const gCung = await chay({ HS_SO_TAY: 'full', HS_CHOT_SOM_CO_KIEM: 'on' }, ozGia('40169999'));
+  check('GIẢ, BẬT, CA NGƯỢC: tiền lệ CÙNG nhóm 4016 → vẫn dừng sớm, 0 lượt vòng 2, soTay.daTra false + lyDoChuaTra "dung-som-hoi"', gCung.girCalls === 0 && gCung.gates.some((g) => g.earlyExitHoi === true) && !gCung.gates.some((g) => 'chanChotSom' in g) && gCung.out.soTay?.daTra === false && gCung.out.soTay?.lyDoChuaTra === 'dung-som-hoi', tom(gCung));
+  const gKhong = await chay({ HS_SO_TAY: 'full', HS_CHOT_SOM_CO_KIEM: 'on' }, []);
+  check('GIẢ, BẬT, CA NGƯỢC: KHÔNG có tiền lệ → vẫn dừng sớm, 0 lượt vòng 2', gKhong.girCalls === 0 && gKhong.gates.some((g) => g.earlyExitHoi === true) && !gKhong.gates.some((g) => 'chanChotSom' in g), tom(gKhong));
+  const gYeu = await chay({ HS_SO_TAY: 'full', HS_CHOT_SOM_CO_KIEM: 'on' }, ozGia('39269099').map((o) => ({ ...o, matchCoverage: 60 })));
+  check('GIẢ, BẬT, CA NGƯỢC: tiền lệ trái nhóm nhưng chỉ khớp 60% → không đủ ngưỡng, vẫn dừng sớm', gYeu.girCalls === 0 && gYeu.gates.some((g) => g.earlyExitHoi === true), tom(gYeu));
+}
 
 console.log(`\n${fail ? `${fail} failed | ` : ''}${pass} passed`);
 if (fail) process.exit(1);
