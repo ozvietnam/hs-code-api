@@ -236,7 +236,7 @@ if (CHUA_DUYET) {
   const cdSh = gon((await goi(bodyCd, { token: 'k-erp' }))._j);
   const dCd = docShadow();
   check('mã lát 1 chưa duyệt (shadow) ⇒ phản hồi như off', bangSau(cdSh, cdOff));
-  check('mã lát 1 chưa duyệt (shadow) ⇒ một dòng apDung false, chỉ khoá gọn', dCd.length === 1 && dCd[0].apDung === false && dCd[0].maHs === CHUA_DUYET && Object.keys(dCd[0]).every((k) => ['ts', 'endpoint', 'maHs', 'noiBo', 'cheDo', 'apDung'].includes(k)), dCd);
+  check('mã lát 1 chưa duyệt (shadow) ⇒ một dòng apDung false, chỉ khoá gọn', dCd.length === 1 && dCd[0].apDung === false && dCd[0].maHs === CHUA_DUYET && Object.keys(dCd[0]).every((k) => ['ts', 'endpoint', 'maHs', 'noiBo', 'cheDo', 'apDung', 'benGoi'].includes(k)) && dCd[0].benGoi === 'erp', dCd);
 }
 xoaShadow();
 const { taxData } = require('../lib/data');

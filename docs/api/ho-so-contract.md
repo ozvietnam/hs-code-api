@@ -27,7 +27,20 @@ caHai}` (số dữ kiện quyết định có trong chuỗi mới / mô tả cũ
 soThieu, soMauThuan, coCanCuTatDinh, canPhanLoai, cauSuaBanNhap, cauSuaMaTroToi}` (chỉ số / boolean) — không tên hàng, không mô
 tả, không câu chữ.
 Mã 8 số thuộc lát 1 nhưng phân nhóm chưa có ranh giới duyệt ⇒ (shadow) một dòng gọn `{ts, endpoint, maHs, noiBo, cheDo,
-apDung: false}`. Tổng hợp: `node scripts/bao-cao-shadow.mjs [--json]` hoặc `GET /api/admin/ho-so-shadow?tu=&den=` (KÍN, Bearer).
+apDung: false, benGoi}`. Tổng hợp: `node scripts/bao-cao-shadow.mjs [--json] [--ben-goi=…]` hoặc
+`GET /api/admin/ho-so-shadow?tu=&den=&benGoi=` (KÍN, Bearer).
+
+Mọi dòng số đo có thêm `benGoi` — bên gọi ĐÃ CHUẨN HOÁ (`chuanBenGoi`): tên khoá dịch vụ đang cấu hình (`cong-oz`, `erp`,
+`oz-noi-bo`…), `cong-khai` khi lượt không có tên khoá (công khai / `HS_API_TOKEN`), `khac` cho mọi chuỗi lạ. Không bao giờ là
+giá trị khoá hay tên khách. Dòng cũ chưa có trường này được báo cáo xếp vào `khong-ro`.
+
+Lượt `/api/classify` ra mã lát 1 nhưng KHÔNG dựng hồ sơ khi chạy bóng ⇒ một dòng gọn `{ts, endpoint, maHs, noiBo, cheDo, boQua,
+benGoi}` với `boQua` = `chot-som` (động cơ chốt sớm, OZV-1368) | `cache` (trúng cache kết quả) | `kho-dap-an` (trả từ kho đáp
+án). Dòng này chỉ để mẫu số không hụt âm thầm: không vào tỉ lệ áp dụng hay trạng thái.
+
+Báo cáo tách thêm `theoNgay`, `boQua`, `theoBenGoi` và `theoPhanNhom` (6 số đầu của mã); mỗi nhóm có `soLuot, boQua, khongApDung,
+apDung, loi, soLuotDung, trangThai, tiLeTrangThai, banNhap, tiLeBanNhap`. `llm.rotVeMay` gộp cả bản nháp (bản nháp không gọi LLM
+viết); số "LLM viết hỏng" thật là `llm.rotVeMayKhongBanNhap / llm.yeuCauLlmKhongBanNhap`.
 
 **Chạy thử nội bộ (L1-5f):** `HS_HO_SO_THU_CALLERS` = danh sách tên khoá dịch vụ (cùng tên ở `HS_SERVICE_TOKENS`, vd
 `oz-noi-bo`). Khi `HS_HO_SO=shadow`, lượt của các khoá đó chạy như `on` (phản hồi có trường mới, `hoSoMeta.cheDo = 'on'`,

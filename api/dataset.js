@@ -536,7 +536,8 @@ module.exports = async function handler(req, res) {
       return res.status(200).json(tongHopNgay(ngay));
     }
 
-    // GET /api/admin/ho-so-shadow?tu=YYYY-MM-DD&den=YYYY-MM-DD (L1-5f): tổng hợp số đo chạy bóng hồ sơ phân loại (chỉ số).
+    // GET /api/admin/ho-so-shadow?tu=YYYY-MM-DD&den=YYYY-MM-DD&benGoi=cong-oz,erp (L1-5f): tổng hợp số đo chạy bóng hồ sơ phân loại
+    // (chỉ số). `benGoi` (tuỳ chọn, CSV tên bên gọi đã chuẩn hoá) lọc trước khi tổng hợp — để xem riêng lượt khách thật.
     // KÍN — không nằm trong allowlist lib/public-access.js (requireAuthUnlessPublic ở đầu handler đã đòi Bearer).
     if (resource === 'ho_so_shadow') {
       const { baoCaoShadow, NGAY_BAO_CAO: NGAY } = require('../lib/ho-so/api');
@@ -546,7 +547,11 @@ module.exports = async function handler(req, res) {
         return res.status(400).json({ error: 'DAU_VAO_SAI', chiTiet: ['tu/den phải dạng YYYY-MM-DD (ngày UTC).'] });
       }
       res.setHeader('Cache-Control', 'no-store');
-      return res.status(200).json(baoCaoShadow({ tu, den }));
+      const benGoi = String(req.query.benGoi || '').trim() || null;
+      if (benGoi && !/^[a-z0-9_,-]{1,200}$/.test(benGoi)) {
+        return res.status(400).json({ error: 'DAU_VAO_SAI', chiTiet: ['benGoi phải là danh sách tên bên gọi cách nhau dấu phẩy (chữ thường, số, gạch).'] });
+      }
+      return res.status(200).json(baoCaoShadow({ tu, den, ...(benGoi ? { benGoi } : {}) }));
     }
 
     if (resource === 'kpi') {
