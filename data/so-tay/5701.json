@@ -83,11 +83,25 @@
     },
     {
       "hs": "57019011",
-      "dieuKien": "Thảm cầu nguyện (SEN)",
+      "dieuKien": "thảm cầu nguyện",
       "loaiKhac": false,
       "nguon": "tax.57019011",
       "trich": "57019011 - - - Thảm cầu nguyện (SEN)",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "thamCauNguyen",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01#soat-lo-5f",
+          "ngay": "2026-11-21",
+          "bam": "0c2334b9171d07421e43d000593dfaaf038ce00241806b6337891a1e29aa69f7"
+        }
+      }
     },
     {
       "hs": "57019019",
@@ -111,19 +125,51 @@
     },
     {
       "hs": "57019020",
-      "dieuKien": "Từ xơ đay",
+      "dieuKien": "tên loại hàng: đay hoặc xơ đay",
       "loaiKhac": false,
       "nguon": "tax.57019020",
       "trich": "57019020 - - Từ xơ đay",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "đay",
+            "xơ đay"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01#soat-lo-5f",
+          "ngay": "2026-11-21",
+          "bam": "0c2334b9171d07421e43d000593dfaaf038ce00241806b6337891a1e29aa69f7"
+        }
+      }
     },
     {
       "hs": "57019091",
-      "dieuKien": "Thảm cầu nguyện (SEN)",
+      "dieuKien": "thảm cầu nguyện",
       "loaiKhac": false,
       "nguon": "tax.57019091",
       "trich": "57019091 - - - Thảm cầu nguyện (SEN)",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "thamCauNguyen",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01#soat-lo-5f",
+          "ngay": "2026-11-21",
+          "bam": "0c2334b9171d07421e43d000593dfaaf038ce00241806b6337891a1e29aa69f7"
+        }
+      }
     },
     {
       "hs": "57019099",
@@ -278,5 +324,28 @@
     "nguonBiCat": [
       "phan57.phan (46130→25000)"
     ]
-  }
+  },
+  "dieuKienNut": [
+    {
+      "id": "5701901",
+      "nguon": "tieuDe.5701901",
+      "trich": "5701901 Từ bông",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "bông"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01#soat-lo-5f",
+          "ngay": "2026-11-21",
+          "bam": "0c2334b9171d07421e43d000593dfaaf038ce00241806b6337891a1e29aa69f7"
+        }
+      }
+    }
+  ]
 }

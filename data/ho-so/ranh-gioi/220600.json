@@ -4,13 +4,19 @@
   "nhom": "2206",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261105T1630#soan-220600",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-01#soat-lo-5f",
+    "ngay": "2026-11-21",
+    "ghiChu": "Đã chuẩn hoá dieuKienSo bám chữ biểu thuế",
+    "bam": "4f92238f796ba327afe46113eb526271ebfb35abd2f50c954371f6d70c02ce65"
+  },
   "dieuKienNut": [
     {
       "id": "2206003",
@@ -23,7 +29,7 @@
           "value": "Toddy cọ dừa"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "2206004",
@@ -36,7 +42,7 @@
           "value": "Shandy"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -54,7 +60,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "22060020",
@@ -67,7 +73,7 @@
           "value": "Rượu sa kê"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "22060031",
@@ -75,20 +81,34 @@
       "trich": "22060031 - - Loại trong đồ đựng không quá 2 lít (SEN)",
       "dieuKienSo": [
         {
-          "fact": "dungTich",
-          "op": "<=",
-          "value": 2,
-          "donVi": "lít"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "dungTich",
+                "op": "<=",
+                "value": 2,
+                "donVi": "lít"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "trong đồ đựng không quá 2 lít"
+              }
+            ]
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "22060039",
       "nguon": "tax.22060039",
       "trich": "22060039 - - Loại khác (SEN)",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "22060041",
@@ -102,14 +122,14 @@
           "donVi": "%"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "22060049",
       "nguon": "tax.22060049",
       "trich": "22060049 - - Loại khác (SEN)",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "22060050",
@@ -122,7 +142,7 @@
           "value": "Vang mật ong"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "22060060",
@@ -132,7 +152,7 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Rượu thu"
+          "value": "Rượu"
         },
         {
           "fact": "tenLoai",
@@ -143,7 +163,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "22060091",
@@ -156,7 +176,7 @@
           "value": "Rượu gạo"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": false
     },
     {
@@ -164,7 +184,7 @@
       "nguon": "tax.22060099",
       "trich": "22060099 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -176,13 +196,7 @@
     {
       "ma": "22060031",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.22060031 \"Loại trong đồ đựng không quá 2 lít (SEN)\" ⇒ dungTich <= 2 lít — đã đối chiếu tay: 'không quá 2 lít' = <= 2, đơn vị nguyên văn 'lít'; cảnh báo cong3-bien-khong-doc-duoc là máy không đọc lại được biên từ chữ nguồn"
-    },
-    {
-      "ma": "22060031",
-      "loai": "BO_VE",
-      "ve": "trong đồ đựng",
-      "lyDo": "Vế là nửa đầu của cụm \"trong đồ đựng không quá 2 lít\"; ý chứa trong đồ đựng là chính định nghĩa của khoá dungTich (dung tích chứa) — vế đo đã phủ bằng dungTich <= 2 lít, bỏ nửa dẫn không đổi mã 8 số"
+      "ghiChu": "tax.22060031 \"Loại trong đồ đựng không quá 2 lít (SEN)\" ⇒ HOAC(dungTich <= 2 lít, tenLoai \"trong đồ đựng không quá 2 lít\") — đã đối chiếu tay: 'không quá 2 lít' = <= 2, đơn vị nguyên văn 'lít'; cảnh báo cong3-bien-khong-doc-duoc là máy không đọc lại được biên từ chữ nguồn"
     },
     {
       "ma": "22060041",
@@ -193,7 +207,7 @@
     {
       "ma": "22060060",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.22060060 \"Rượu thu được từ việc lên men nước ép rau hoặc nước ép quả, trừ nước ép nho tươi (SEN)\" — danh từ đầu \"Rượu thu\" + hai hàng nối \"hoặc\" trong vế ⇒ tenLoai \"Rượu thu\" VÀ tenLoai [\"nước ép rau\",\"nước ép quả\"] (định ngữ chung, điều kiện riêng cùng khoá, mẫu 392620 .20)"
+      "ghiChu": "tax.22060060 \"Rượu thu được từ việc lên men nước ép rau hoặc nước ép quả, trừ nước ép nho tươi (SEN)\" (EN \"Wines obtained by the fermentation of vegetables juices or of fruit juices\") — danh từ đầu \"Rượu\" + hai nguồn lên men nối \"hoặc\" trong vế ⇒ tenLoai \"Rượu\" VÀ tenLoai [\"nước ép rau\",\"nước ép quả\"]"
     },
     {
       "ma": "22060060",
@@ -220,13 +234,6 @@
       "ma": "22060099",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.22060099 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
-    }
-  ],
-  "traVe": [
-    {
-      "phien": "claude-agent:duyet-L6-20261111#soat-L6",
-      "ngay": "2026-11-11",
-      "lyDo": "(A) 22060060 THU HẸP: chữ biểu \"Rượu thu được từ việc lên men nước ép rau hoặc nước ép quả, trừ nước ép nho tươi\" / EN \"Wines obtained by the fermentation of vegetables juices or of fruit juices\" — tenLoai \"Rượu thu\" là mảnh do máy tách cắt \"thu | được\" (cụm \"thu được\" = obtained), không phải tên hàng; kèm tenLoai [\"nước ép rau\",\"nước ép quả\"] bắt buộc VÀ ⇒ rượu vang trái cây (vd \"rượu vang vải\") bị TRÁI .60 và rơi về .99 (cùng MFN 55, sai mã). Sửa: danh từ đầu \"Rượu\" + điều kiện nguồn lên men. (B) máy tách sai \"Rượu thu | được từ việc…\" (ghi cho Claude)."
     }
   ]
 }

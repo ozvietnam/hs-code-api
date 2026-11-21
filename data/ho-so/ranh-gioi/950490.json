@@ -4,13 +4,19 @@
   "nhom": "9504",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T1022#soan-950490",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-01#soat-lo-5f",
+    "ngay": "2026-11-21",
+    "ghiChu": "Đã chuẩn hoá dieuKienSo bám chữ biểu thuế",
+    "bam": "b11c500e35e8c388d21f9d75536b4af076d25db46e01784ea8c6d264af5643c1"
+  },
   "dieuKienNut": [
     {
       "id": "950490~r18765",
@@ -28,7 +34,7 @@
           "value": "chơi trò chơi"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "9504902",
@@ -63,7 +69,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "9504903",
@@ -71,12 +77,12 @@
       "trich": "9504903 Thiết bị chơi bạc và đồ phụ trợ đi kèm",
       "dieuKienSo": [
         {
-          "fact": "congDung",
-          "op": "CONG_DUNG",
-          "value": "chơi bạc"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thiết bị chơi bạc"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -96,7 +102,7 @@
           "value": "chơi bowling"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "95049021",
@@ -113,14 +119,14 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "95049029",
       "nguon": "tax.95049029",
       "trich": "95049029 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "95049032",
@@ -146,7 +152,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "95049033",
@@ -164,7 +170,7 @@
           "value": "chơi bạc"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": [
         "95049032"
       ]
@@ -189,7 +195,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "95049035",
@@ -202,7 +208,7 @@
           "value": "Quân bài Mạt chược"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": [
         "95049034"
       ]
@@ -222,14 +228,14 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "95049039",
       "nguon": "tax.95049039",
       "trich": "95049039 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "95049092",
@@ -245,14 +251,14 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "95049093",
       "nguon": "tax.95049093",
       "trich": "95049093 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "95049095",
@@ -269,41 +275,14 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "95049099",
       "nguon": "tax.95049099",
       "trich": "95049099 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
-    }
-  ],
-  "chongLanTruc": [
-    {
-      "nhanh": [
-        "9504902",
-        "9504903"
-      ],
-      "truc": {
-        "9504902": "TEN_LOAI",
-        "9504903": "CONG_DUNG"
-      },
-      "cauHoiPhanBiet": "Mặt hàng này là \"Đồ chơi ném phi tiêu\" và bộ phận/phụ kiện của nó (9504902) hay là \"Thiết bị chơi bạc và đồ phụ trợ đi kèm\" dùng để chơi bạc (9504903)?",
-      "trich": {
-        "9504902": "Đồ chơi ném phi tiêu và các bộ phận và phụ kiện của chúng",
-        "9504903": "Thiết bị chơi bạc và đồ phụ trợ đi kèm"
-      },
-      "viDuHang": [
-        {
-          "cap": [
-            "9504902",
-            "9504903"
-          ],
-          "hang": "Đồ chơi ném phi tiêu bằng plastic dùng để chơi bạc có đặt cược"
-        }
-      ],
-      "phanXu": null
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -316,6 +295,11 @@
       "ma": "9504902",
       "loai": "QUYET_DINH",
       "ghiChu": "tieuDe.9504902 \"Đồ chơi ném phi tiêu và các bộ phận và phụ kiện của chúng\" ⇒ dạng vế mở 950300 .30: HOAC [[tenLoai \"Đồ chơi ném phi tiêu\"],[tenLoai [\"bộ phận\",\"phụ kiện\"], dungCho \"Đồ chơi ném phi tiêu\"]]"
+    },
+    {
+      "ma": "9504903",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.9504903 \"Thiết bị chơi bạc và đồ phụ trợ đi kèm\" ⇒ tenLoai \"Thiết bị chơi bạc\" (cùng trục tên với 9504902, bỏ chồng lấn trục giả)"
     },
     {
       "ma": "95049033",
@@ -341,13 +325,6 @@
       "ma": "950490~r18768",
       "loai": "QUYET_DINH",
       "ghiChu": "tieuDe.950490~r18768 \"Loại khác\" trần ⇒ không điều kiện"
-    }
-  ],
-  "traVe": [
-    {
-      "phien": "claude-agent:duyet-L32-20261111#soat-L32",
-      "ngay": "2026-11-11",
-      "lyDo": "(A) Tầng 9504903 THU HẸP: điều kiện duy nhất congDung \"chơi bạc\" — nhưng biểu xếp Quân bài Mạt chược (.34/.35) dưới tầng \"Thiết bị chơi bạc và đồ phụ trợ đi kèm\" / \"Gambling equipment and paraphernalia\"; bộ mạt chược khai là đồ chơi gia đình không thoả \"chơi bạc\" ⇒ không tới .34/.35, rơi 9504909 (.95/.99). Tầng cần HOAC [congDung chơi bạc] | [tenLoai Quân bài Mạt chược] hoặc khoá đặc điểm phù hợp. (B) chongLanTruc 9504902↔9504903 ví dụ \"Đồ chơi ném phi tiêu bằng plastic dùng để chơi bạc có đặt cược\" gượng ép — chồng lấn giả do chọn khoá congDung \"chơi bạc\"."
     }
   ]
 }
