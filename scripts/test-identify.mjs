@@ -280,5 +280,55 @@ delete process.env.HS_SERVICE_TOKENS;
   check('OZV-1667 · ReDoS: 40.000 từ lặp "PPVA" chạy dưới 2 giây và không khớp nhầm Chương 39', msRedos < 2000 && kqRedos.length === 0, `ms=${msRedos}`);
 }
 
+// ── 12. OZV-1656 (PR B): câu hỏi của định danh — hậu xử lý tất định, không đổi prompt, không thêm lượt LLM, không trả nhóm ──
+{
+  const soLuot0 = calls.length; const promptHeThong = calls[0].system;
+  const BUOC12 = { nguyenLyHoatDong: 'x', chucNangChinh: 'y' };
+  const chay = async (p, truong, chuong) => { script = [{ chuong, truong, nguon: [] }]; return identify(p, { fetchImpl: FETCH_MOCK_404 }); };
+
+  // 12a. Câu hỏi tự nhiên có đơn vị; bỏ hẳn khuôn "Cần '<nhãn>' để định danh hàng (khung chương …)".
+  let r = await chay({ tenHang: 'Máy nén khí trục vít Atlas Copco GA22' }, { machineFunction: 'máy nén khí' }, '84');
+  const qPower = r.questions.find((q) => q.key === 'power');
+  check('câu hỏi tự nhiên có đơn vị: "Công suất của hàng là bao nhiêu? (W, kW, HP)"', qPower?.questionVi === 'Công suất của hàng là bao nhiêu? (W, kW, HP)', JSON.stringify(r.questions));
+  check('không còn khuôn "Cần \'…\' để định danh hàng (khung chương …)"; trường định danh hỏi "… là gì?"', r.questions.every((q) => !/^Cần '|khung chương/.test(q.questionVi)) && r.questions.find((q) => q.key === 'nguyenLyHoatDong')?.questionVi.startsWith('Nguyên lý hoạt động của hàng là gì?'), JSON.stringify(r.questions.map((q) => q.questionVi)));
+  check('máy nén (nhóm đầu tìm từ khoá 8414 ĐÒI công suất) ⇒ vẫn hỏi công suất; canCuCauHoi = danh-muc-nhom', Boolean(qPower) && r.thieuTruong.includes('power') && r.canCuCauHoi === 'danh-muc-nhom' && qPower.canCu === 'danh-muc-nhom');
+
+  // 12b. Tối đa 3 câu, trường định danh trước trường khai; thieuTruong vẫn đủ.
+  r = await chay({ tenHang: 'Máy nén khí trục vít Atlas Copco GA22' }, {}, '84');
+  check('tối đa 3 câu; nguyên lý + chức năng đứng trước trường khai; thieuTruong giữ đủ các trường còn thiếu', r.questions.length === 3 && r.questions[0].key === 'nguyenLyHoatDong' && r.questions[1].key === 'chucNangChinh' && r.thieuTruong.length >= 3 && r.thieuTruong.includes('power'), JSON.stringify([r.questions.map((q) => q.key), r.thieuTruong]));
+
+  // 12c. Cảm biến tiệm cận (chương 85): nhóm đầu của tìm kiếm từ khoá không đòi công suất ⇒ không hỏi, không nằm trong thieuTruong.
+  r = await chay({ tenHang: 'Cảm biến tiệm cận từ Omron E2E-X5ME1', model: 'E2E-X5ME1' }, { ...BUOC12, voltage: '12–24 V DC' }, '85');
+  check('cảm biến tiệm cận · KHÔNG bị hỏi công suất; thieuTruong rỗng ⇒ không NEED_FACTS; canCuCauHoi = danh-muc-nhom', !r.questions.some((q) => q.key === 'power') && !r.thieuTruong.includes('power') && r.questions.length === 0 && r.canCuCauHoi === 'danh-muc-nhom', JSON.stringify([r.questions, r.thieuTruong, r.canCuCauHoi]));
+  // 12d. Hộp găng tay (chương 84 đòi machineFunction + power): danh mục nhóm đầu không đòi ⇒ không hỏi công suất / điện áp.
+  r = await chay({ tenHang: 'Hộp thao tác khí trơ Glovebox MBraun MB-200MOD', model: 'MB-200MOD' }, { ...BUOC12, machineFunction: 'buồng thao tác khí trơ' }, '84');
+  check('hộp găng tay · KHÔNG bị hỏi công suất / điện áp', !r.questions.some((q) => q.key === 'power' || q.key === 'voltage') && !r.thieuTruong.includes('power'), JSON.stringify([r.questions, r.thieuTruong]));
+
+  // 12e. "không áp dụng" = đã trả lời.
+  r = await chay({ tenHang: 'Máy nén khí trục vít Atlas Copco GA22' }, { ...BUOC12, machineFunction: 'máy nén', power: 'không áp dụng' }, '84');
+  check('trường LLM ghi "không áp dụng" ⇒ không hỏi, không thiếu; không câu hỏi nào ⇒ canCuCauHoi = khong-hoi', r.questions.length === 0 && r.thieuTruong.length === 0 && r.canCuCauHoi === 'khong-hoi');
+
+  // 12f. Không lộ key thô: mọi trường bước 12 có nhãn tiếng Việt; trường không nhãn thì không hỏi.
+  r = await chay({ tenHang: 'Cân phân tích điện tử Sartorius Quintix224-1S' }, { ...BUOC12, application: 'cân mẫu', modelNumber: 'Quintix224-1S' }, '90');
+  check('doChinhXac có nhãn "Độ chính xác" — không còn câu "Cần \'doChinhXac\'…"', r.questions.find((q) => q.key === 'doChinhXac')?.questionVi.startsWith('Độ chính xác của hàng là bao nhiêu?') && r.questions.every((q) => !q.questionVi.includes(q.key)), JSON.stringify(r.questions));
+  {
+    const { frameFor } = require('../lib/attribute-frames.js');
+    const thieuNhan = ['39', '84', '85', '90', '94'].flatMap((c) => frameFor(c).truong.filter((t) => t.batBuoc && (!t.labelVi || t.labelVi === t.key)).map((t) => `${c}.${t.key}`));
+    check('mọi trường BẮT BUỘC của 5 khung chương đều có nhãn tiếng Việt', thieuNhan.length === 0, thieuNhan.join(','));
+  }
+
+  // 12g. Bên gọi truyền nhóm (đã có mã từ phan_loai_hs) ⇒ dùng danh mục nhóm đó; nhóm không trả ra ngoài, không vào prompt.
+  script = [{ chuong: '85', truong: { ...BUOC12, voltage: '24 V DC' }, nguon: [] }];
+  r = await identify({ tenHang: 'Thiết bị điện XYZ', nhom: '8537' }, { fetchImpl: FETCH_MOCK_404 });
+  check('nhom bên gọi = 8537 (không đòi công suất) ⇒ không hỏi công suất; đầu ra KHÔNG có nhóm; prompt không chứa "8537"', !r.questions.some((q) => q.key === 'power') && r.canCuCauHoi === 'danh-muc-nhom' && !JSON.stringify(r).includes('8537') && !calls.at(-1).user.includes('8537') && !('nhom' in r.frame));
+  // 12h. Đường lùi: tìm từ khoá không ra nhóm có danh mục ⇒ hỏi theo bảng chương như main.
+  script = [{ chuong: '85', truong: { ...BUOC12, voltage: '24 V DC' }, nguon: [] }];
+  r = await identify({ tenHang: 'Qwrtz zxcvb' }, { fetchImpl: FETCH_MOCK_404 });
+  check('không lấy được nhóm ⇒ canCuCauHoi = bang-chuong, vẫn hỏi công suất theo bảng chương', r.canCuCauHoi === 'bang-chuong' && r.questions.some((q) => q.key === 'power' && q.canCu === 'bang-chuong') && r.thieuTruong.includes('power'), JSON.stringify([r.canCuCauHoi, r.questions]));
+
+  // 12i. Không đổi prompt, không thêm lượt LLM: mỗi lượt identify đúng 1 lời gọi; system prompt y như lượt đầu của tệp test.
+  check('mỗi lượt định danh vẫn đúng 1 lượt LLM; system prompt không đổi', calls.length - soLuot0 === 8 && calls.slice(soLuot0).every((c) => c.system === promptHeThong), String(calls.length - soLuot0));
+}
+
 log(`${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
