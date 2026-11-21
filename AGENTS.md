@@ -13,6 +13,7 @@ kho tri thức ở đây thay vì đoán từ trí nhớ.
 >    hỏi gửi khách, cờ `HS_*`, chạy bóng) + **Sơ đồ Mermaid luồng đường khách & cổng máy** (tự sinh bằng `npm run gen:diagrams`, chống lệch bằng `test-so-do-mermaid.mjs`). Có cổng máy trong `npm test`; phạm là đỏ.
 > 3. [`CLAUDE.md`](CLAUDE.md) — quy ước sửa code, cách chạy test, cổng gộp PR.
 > 4. [`docs/decisions/`](docs/decisions/) — quyết định đã chốt. Có quyết định mới thì ghi một ADR.
+> 5. [`docs/ke-hoach-do-thi-tri-thuc-hs.md`](docs/ke-hoach-do-thi-tri-thuc-hs.md) — kế hoạch đồ thị tri thức (ADR-0002, CEO duyệt 21/11/2026): bảng cạnh `lib/do-thi/`, cổng `scripts/test-bang-canh.mjs`. Giai đoạn 1 chưa nối đường khách nào.
 >
 > Hai bảng trả lời thay cho việc đọc lại mã: `data/luat/dau-noi.json` (đường nào đọc sổ tay / sổ PN6 / tiền lệ,
 > sau cờ nào) và `data/luat/bang-co.json` (mọi cờ `HS_*`, mặc định, chủ).

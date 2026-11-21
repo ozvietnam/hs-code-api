@@ -5,6 +5,26 @@ ADR, thẻ. Lộ trình dài hạn: `docs/backlog/README.md` và bảng việc P
 
 ---
 
+## 21/11/2026 — Đồ thị tri thức, giai đoạn 1: bảng cạnh máy sinh (ADR-0002)
+
+**Kế hoạch CEO duyệt 21/11:** [`docs/ke-hoach-do-thi-tri-thuc-hs.md`](ke-hoach-do-thi-tri-thuc-hs.md). Quyết định:
+[`docs/decisions/0002-do-thi-tri-thuc-tim-chon-nhom-di-canh-xuong-ma.md`](decisions/0002-do-thi-tri-thuc-tim-chon-nhom-di-canh-xuong-ma.md).
+
+**Đã làm (PR nhánh `qt/do-thi-gd1-bang-canh`):** `lib/do-thi/` dựng bảng cạnh trong RAM từ tệp gốc (không LLM, không sửa
+tệp gốc): C5 5.196 · C6 5.196 (đảo C5, 3.947 chiều sổ bên kia chưa ghi) · C7 3.267 · C8 1.609 · C11 18.951 (8.914 mức 6 số,
+10.037 mức 8 số) · chỉ mục C1 gộp 21.269 cụm · hàm C14 `tienLeUngHo()`. Lệnh `node scripts/dung-bang-canh.mjs`; cổng
+`scripts/test-bang-canh.mjs` trong `npm test`. Số đếm: `data/do-thi/thong-ke.json`; xếp hạng lượng hàng:
+`data/do-thi/xep-hang-luong-hang.json` (93 nhóm chiếm 80% số dòng tờ khai mẫu).
+
+**CHƯA nối đường khách nào.** `data/luat/dau-noi.json` kho `bangCanh`: mọi đường khai `khong`. Không thêm cờ `HS_*` (mốc 75 cờ).
+
+**Việc kế:** giai đoạn 0 (số nền trên máy thật, QT) → giai đoạn 2 (tìm ứng viên đủ nguồn, mọi hàm tìm đọc bảng C1 gộp).
+Trước khi nối: quyết cách nạp bảng lúc khởi động (dựng ~7,5 giây, ~100 MB RAM); đo tỉ lệ kéo oan của `moRongUngVien()`;
+xử 17 cụm mâu thuẫn nhóm giữa các kho cụm từ. Nối `tienLeUngHo()` vào cả bốn nhánh dừng sớm (`nhanhBoQua`).
+**Một vào – một ra:** giai đoạn nào bật thật phải kèm danh sách gỡ (kế hoạch mục 6.1).
+
+---
+
 ## 21/11/2026 — Tìm trước, đoán sau (`HS_TIM_TRUOC`, mặc định TẮT)
 
 **Đã làm (PR nhánh `qt/tim-truoc-doan-sau`):** `lib/tim-truoc.js` — trước vòng 1 của động cơ hai vòng, máy tìm tất định
