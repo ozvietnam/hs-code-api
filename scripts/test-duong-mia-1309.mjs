@@ -52,14 +52,15 @@ const cp = classifyPolicy(taxData['17019910'].cs);
 const lineCBPG = (cp.policyLines || []).find((l) => /chống bán phá giá/i.test(l.text));
 check('policyLines: dòng CBPG vẫn NOTICE (TRADE_REMEDY_OR_QUOTA)', lineCBPG?.level === 'NOTICE' && lineCBPG?.rule === 'TRADE_REMEDY_OR_QUOTA', lineCBPG);
 
-// 5. Phiên bản biểu thuế: v3-2026-11-12-duong-1309 là current, snapshot trùng byte tax.json
+// 5. Phiên bản biểu thuế: v3-2026-11-12-duong-1309 còn trong sổ phiên bản, snapshot khớp checksum.
+// (Từ v4-2026-11-21-pvtm, v3 không còn là bản current — phép kiểm "current trùng tax.json" chuyển sang
+//  scripts/test-pvtm-2026-11-21.mjs.)
 const idx = loadIndex();
-const cur = idx.versions.find((v) => v.id === idx.current);
-check('versions: current = v3-2026-11-12-duong-1309, 11.871 dòng', cur?.id === 'v3-2026-11-12-duong-1309' && cur?.rowCount === 11871, cur);
 const duongV3 = idx.versions.find((v) => v.id === 'v3-2026-11-12-duong-1309');
+check('versions: còn v3-2026-11-12-duong-1309, 11.871 dòng', duongV3?.rowCount === 11871, duongV3);
 const sha = (p) => crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
 if (duongV3 && fs.existsSync(`data/versions/${duongV3.file}`)) {
-  check('snapshot v3 khớp checksum + trùng nội dung tax.json', duongV3.checksum === `sha256:${sha(`data/versions/${duongV3.file}`)}` && sha(`data/versions/${duongV3.file}`) === sha('data/tax.json'));
+  check('snapshot v3 khớp checksum', duongV3.checksum === `sha256:${sha(`data/versions/${duongV3.file}`)}`);
 } else {
   check('snapshot v3 tồn tại trong data/versions/', false);
 }
