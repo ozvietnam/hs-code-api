@@ -198,20 +198,21 @@ describe('lib/dieu-kien-so.js — gỡ tiêu đề cha đa vế cho LIET_KE & t�
     assert.equal(rRonKhongQua.trangThai, 'THOA');
     assert.equal(rRonKhongQua.tatDinh, true);
 
-    const r85011041 = chotDong8({
+    const r85011051 = chotDong8({
       hs: '850110',
       productText:
-        'Động cơ điện và máy phát điện (trừ tổ máy phát điện) - Động cơ có công suất không quá 37,5 W - Động cơ một chiều - Loại khác: Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16',
+        'Động cơ điện và máy phát điện (trừ tổ máy phát điện) - Động cơ có công suất không quá 37,5 W - Động cơ khác, kể cả động cơ vạn năng (một chiều/xoay chiều) - Động cơ bước: Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16',
     });
-    assert.equal(r85011041.ketQua, 'CHOT');
-    assert.equal(r85011041.hs, '85011041');
+    assert.equal(r85011051.ketQua, 'CHOT');
+    assert.equal(r85011051.hs, '85011051');
 
     const r85011091 = chotDong8({
       hs: '850110',
       productText:
         'Động cơ điện và máy phát điện (trừ tổ máy phát điện) - Động cơ có công suất không quá 37,5 W - Động cơ khác, kể cả động cơ vạn năng (một chiều/xoay chiều) - Loại khác: Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16',
     });
-    assert.equal(r85011091.ketQua, 'CHOT');
-    assert.equal(r85011091.hs, '85011091');
+    assert.equal(r85011091.ketQua, 'THIEU_SO_LIEU');
+    assert.ok((r85011091.missingFacts || []).some((m) => m.fact === 'kieuDongCoDien'));
+    assert.ok(!(r85011091.missingFacts || []).some((m) => m.fact === 'loaiDongDien'));
   });
 });
