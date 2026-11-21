@@ -388,39 +388,66 @@
     },
     {
       "hs": "40122010",
-      "dieuKien": "Lốp bơm hơi đã qua sử dụng (phân nhóm 401220) loại sử dụng cho ô tô con (motor car), kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô đua",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): ô tô con hoặc ô tô chở người có khoang chở hành lý chung hoặc ô tô đua",
+      "loaiKhac": false,
+      "nguon": "tax.40122010",
+      "trich": "40122010 - - Loại sử dụng cho ô tô con (motor car) (kể cả loại ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô đua)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "ô tô con",
+            "ô tô chở người có khoang chở hành lý chung",
+            "ô tô đua"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01#soat-lo-5e",
+          "ngay": "2026-11-21",
+          "bam": "38360c78e44e0885dad71e3092df8fa172f2277fbd9a1d51484eaafaf45bd9c6"
+        }
+      },
       "tieuChi": {
         "fact": "loai_phuong_tien_su_dung",
         "op": "=",
         "value": "ô tô con (kể cả station wagons và ô tô đua)",
         "donVi": null
-      },
-      "loaiKhac": false,
-      "nguon": "tax.40122010",
-      "trich": "Loại sử dụng cho ô tô con (motor car) (kể cả loại ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô đua)",
-      "nguonLoai": "AI_DA_KIEM"
+      }
     },
     {
       "hs": "40122021",
-      "dieuKien": "Lốp bơm hơi đã qua sử dụng (phân nhóm 401220) thuộc tiêu đề quốc gia 4012202 (tên tiêu đề bị lược, không có trong nguồn — đối chiếu biểu thuế), chiều rộng không quá 450 mm",
+      "dieuKien": "chiều rộng <= 450 mm",
+      "loaiKhac": false,
+      "nguon": "tax.40122021",
+      "trich": "40122021 - - - Chiều rộng không quá 450 mm",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 450,
+          "donVi": "mm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01#soat-lo-5e",
+          "ngay": "2026-11-21",
+          "bam": "38360c78e44e0885dad71e3092df8fa172f2277fbd9a1d51484eaafaf45bd9c6"
+        }
+      },
       "tieuChi": {
         "fact": "chieu_rong",
         "op": "<=",
         "value": 450,
         "donVi": "mm"
-      },
-      "loaiKhac": false,
-      "nguon": "tax.40122021",
-      "trich": "Chiều rộng không quá 450 mm",
-      "nguonLoai": "AI_DA_KIEM",
-      "dieuKienSo": [
-        {
-          "fact": "chieu_rong",
-          "op": "<=",
-          "value": 450,
-          "donVi": "mm"
-        }
-      ]
+      }
     },
     {
       "hs": "40122029",
@@ -442,73 +469,156 @@
     },
     {
       "hs": "40122030",
-      "dieuKien": "Lốp bơm hơi đã qua sử dụng (phân nhóm 401220) loại sử dụng cho phương tiện bay",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): phương tiện bay",
+      "loaiKhac": false,
+      "nguon": "tax.40122030",
+      "trich": "40122030 - - Loại sử dụng cho phương tiện bay",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "phương tiện bay"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01#soat-lo-5e",
+          "ngay": "2026-11-21",
+          "bam": "38360c78e44e0885dad71e3092df8fa172f2277fbd9a1d51484eaafaf45bd9c6"
+        }
+      },
       "tieuChi": {
         "fact": "loai_phuong_tien_su_dung",
         "op": "=",
         "value": "phương tiện bay",
         "donVi": null
-      },
-      "loaiKhac": false,
-      "nguon": "tax.40122030",
-      "trich": "Loại sử dụng cho phương tiện bay",
-      "nguonLoai": "AI_DA_KIEM"
+      }
     },
     {
       "hs": "40122040",
-      "dieuKien": "Lốp bơm hơi đã qua sử dụng (phân nhóm 401220) loại dùng cho xe môtô",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): xe môtô",
+      "loaiKhac": false,
+      "nguon": "tax.40122040",
+      "trich": "40122040 - - Loại dùng cho xe môtô",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe môtô"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01#soat-lo-5e",
+          "ngay": "2026-11-21",
+          "bam": "38360c78e44e0885dad71e3092df8fa172f2277fbd9a1d51484eaafaf45bd9c6"
+        }
+      },
       "tieuChi": {
         "fact": "loai_phuong_tien_su_dung",
         "op": "=",
         "value": "xe môtô",
         "donVi": null
-      },
-      "loaiKhac": false,
-      "nguon": "tax.40122040",
-      "trich": "Loại dùng cho xe môtô",
-      "nguonLoai": "AI_DA_KIEM"
+      }
     },
     {
       "hs": "40122050",
-      "dieuKien": "Lốp bơm hơi đã qua sử dụng (phân nhóm 401220) loại dùng cho xe đạp",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): xe đạp",
+      "loaiKhac": false,
+      "nguon": "tax.40122050",
+      "trich": "40122050 - - Loại dùng cho xe đạp",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe đạp"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01#soat-lo-5e",
+          "ngay": "2026-11-21",
+          "bam": "38360c78e44e0885dad71e3092df8fa172f2277fbd9a1d51484eaafaf45bd9c6"
+        }
+      },
       "tieuChi": {
         "fact": "loai_phuong_tien_su_dung",
         "op": "=",
         "value": "xe đạp",
         "donVi": null
-      },
-      "loaiKhac": false,
-      "nguon": "tax.40122050",
-      "trich": "Loại dùng cho xe đạp",
-      "nguonLoai": "AI_DA_KIEM"
+      }
     },
     {
       "hs": "40122060",
-      "dieuKien": "Lốp bơm hơi đã qua sử dụng (phân nhóm 401220) loại dùng cho máy thuộc nhóm 84.29 hoặc 84.30",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): máy thuộc nhóm 84.29 hoặc 84.30",
+      "loaiKhac": false,
+      "nguon": "tax.40122060",
+      "trich": "40122060 - - Loại dùng cho máy thuộc nhóm 84.29 hoặc 84.30",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy thuộc nhóm 84.29 hoặc 84.30"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01#soat-lo-5e",
+          "ngay": "2026-11-21",
+          "bam": "38360c78e44e0885dad71e3092df8fa172f2277fbd9a1d51484eaafaf45bd9c6"
+        }
+      },
       "tieuChi": {
         "fact": "may_su_dung_thuoc_nhom",
         "op": "in",
         "value": "84.29|84.30",
         "donVi": null
-      },
-      "loaiKhac": false,
-      "nguon": "tax.40122060",
-      "trich": "Loại dùng cho máy thuộc nhóm 84.29 hoặc 84.30",
-      "nguonLoai": "AI_DA_KIEM"
+      }
     },
     {
       "hs": "40122071",
-      "dieuKien": "Lốp bơm hơi đã qua sử dụng (phân nhóm 401220) thuộc tiêu đề quốc gia 4012207 (tên tiêu đề bị lược, không có trong nguồn — đối chiếu biểu thuế), loại dùng cho máy kéo nông nghiệp hoặc lâm nghiệp",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): máy kéo; công dụng / mục đích: nông nghiệp hoặc lâm nghiệp",
+      "loaiKhac": false,
+      "nguon": "tax.40122071",
+      "trich": "40122071 - - - Loại dùng cho máy kéo nông nghiệp hoặc lâm nghiệp",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy kéo"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "nông nghiệp",
+            "lâm nghiệp"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01#soat-lo-5e",
+          "ngay": "2026-11-21",
+          "bam": "38360c78e44e0885dad71e3092df8fa172f2277fbd9a1d51484eaafaf45bd9c6"
+        }
+      },
       "tieuChi": {
         "fact": "loai_phuong_tien_su_dung",
         "op": "=",
         "value": "máy kéo nông nghiệp hoặc lâm nghiệp",
         "donVi": null
-      },
-      "loaiKhac": false,
-      "nguon": "tax.40122071",
-      "trich": "Loại dùng cho máy kéo nông nghiệp hoặc lâm nghiệp",
-      "nguonLoai": "AI_DA_KIEM"
+      }
     },
     {
       "hs": "40122079",
@@ -530,31 +640,61 @@
     },
     {
       "hs": "40122080",
-      "dieuKien": "Lốp bơm hơi đã qua sử dụng (phân nhóm 401220) loại dùng cho máy thuộc nhóm 84.27",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): máy thuộc nhóm 84.27",
+      "loaiKhac": false,
+      "nguon": "tax.40122080",
+      "trich": "40122080 - - Loại dùng cho máy thuộc nhóm 84.27",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy thuộc nhóm 84.27"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01#soat-lo-5e",
+          "ngay": "2026-11-21",
+          "bam": "38360c78e44e0885dad71e3092df8fa172f2277fbd9a1d51484eaafaf45bd9c6"
+        }
+      },
       "tieuChi": {
         "fact": "may_su_dung_thuoc_nhom",
         "op": "=",
         "value": "84.27",
         "donVi": null
-      },
-      "loaiKhac": false,
-      "nguon": "tax.40122080",
-      "trich": "Loại dùng cho máy thuộc nhóm 84.27",
-      "nguonLoai": "AI_DA_KIEM"
+      }
     },
     {
       "hs": "40122091",
-      "dieuKien": "Lốp trơn (SEN): lốp mà các hoa lốp mòn đã được tách khỏi lớp vỏ lốp bằng cách mài nhẵn, tạo thành bề mặt lốp phù hợp về hình dạng, kích thước và cấu trúc để đắp lớp hoa lốp mới; thuộc tiêu đề quốc gia 4012209 (tên bị lược) của phân nhóm 401220",
+      "dieuKien": "tên loại hàng: Lốp trơn",
+      "loaiKhac": false,
+      "nguon": "tax.40122091",
+      "trich": "40122091 - - - Lốp trơn (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Lốp trơn"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01#soat-lo-5e",
+          "ngay": "2026-11-21",
+          "bam": "38360c78e44e0885dad71e3092df8fa172f2277fbd9a1d51484eaafaf45bd9c6"
+        }
+      },
       "tieuChi": {
         "fact": "hoa_lop_mon_da_mai_nhan_khoi_vo_lop",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "loaiKhac": false,
-      "nguon": "sen.40122091",
-      "trich": "LỐP TRƠN Các hoa lốp mòn được tách khỏi lớp vỏ lốp bằng cách mài nhẵn. … các giũa gia công sẽ mài đi các hoa lốp bị mòn tạo thành bề mặt lốp phù hợp với hình dạng, kích thước và cấu trúc để đắp lớp hoa lốp mới.",
-      "nguonLoai": "AI_DA_KIEM"
+      }
     },
     {
       "hs": "40122099",
@@ -613,7 +753,8 @@
         "op": "<=",
         "value": 450,
         "donVi": "mm"
-      }
+      },
+      "phanConLai": []
     },
     {
       "hs": "40129017",
@@ -654,7 +795,8 @@
         "op": ">",
         "value": 450,
         "donVi": "mm"
-      }
+      },
+      "phanConLai": []
     },
     {
       "hs": "40129019",
@@ -1281,6 +1423,52 @@
           "bam": "98ab974f1ee02cb422af20cc67a478c6f2d5eaf15ee4a3d77f4669120a96909c"
         }
       }
+    },
+    {
+      "id": "4012202",
+      "nguon": "tieuDe.4012202",
+      "trich": "4012202 Loại dùng cho ô tô khách (buses) (1) hoặc ô tô chở hàng (lorries)",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "ô tô khách",
+            "ô tô chở hàng"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01#soat-lo-5e",
+          "ngay": "2026-11-21",
+          "bam": "38360c78e44e0885dad71e3092df8fa172f2277fbd9a1d51484eaafaf45bd9c6"
+        }
+      }
+    },
+    {
+      "id": "4012207",
+      "nguon": "tieuDe.4012207",
+      "trich": "4012207 Loại dùng cho các xe khác thuộc Chương 87",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "các xe khác thuộc Chương 87"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01#soat-lo-5e",
+          "ngay": "2026-11-21",
+          "bam": "38360c78e44e0885dad71e3092df8fa172f2277fbd9a1d51484eaafaf45bd9c6"
+        }
+      },
+      "phanConLai": true
     },
     {
       "id": "4012901",
