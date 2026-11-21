@@ -63,6 +63,7 @@ const attrs = { tenHang: 'cốc giữ nhiệt chân không (bình chân không)'
 goiLlm.length = 0;
 const t0 = Date.now();
 const out = await API.ganHoSoClassify(structuredClone(kqEarly), attrs, { noiBo: false });
+await API.choNenXong();
 const ms = Date.now() - t0;
 
 check('shadow + earlyExitTradeChotSom: phản hồi không đổi (bằng sâu)', bangSau(out, kqEarly));
@@ -85,6 +86,7 @@ llmTier.callLLMJson = async (_s, _u, opts = {}) => {
   return { json: {}, model: 'stub' };
 };
 const outThuong = await API.ganHoSoClassify(structuredClone(kqThuong), attrs, { noiBo: false });
+await API.choNenXong();
 check('shadow không earlyExit: vẫn bằng sâu (không gắn hoSo)', bangSau(outThuong, kqThuong));
 check(
   'shadow không earlyExit: vẫn gọi đường hồ sơ (bước ho-so-*)',
@@ -104,6 +106,7 @@ llmTier.callLLMJson = async (_s, _u, opts = {}) => {
   return { json: {}, model: 'stub' };
 };
 const outOn = await API.ganHoSoClassify(structuredClone(kqEarly), attrs, { noiBo: false });
+await API.choNenXong();
 check('on + earlyExit: vẫn gắn hoSo (cần hồ sơ)', Boolean(outOn.hoSo) && outOn.hoSo.maHs === HS, outOn.hoSoMeta || outOn.hoSo);
 check('on + earlyExit: mã kết quả không đổi', outOn.results?.[0]?.hs === HS);
 

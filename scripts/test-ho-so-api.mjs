@@ -181,6 +181,7 @@ try { fs.rmSync(SHADOW, { force: true }); } catch { /* chưa có */ }
 process.env.HS_HO_SO = 'shadow';
 const rSh = await goi({ ...BODY_PHICH, ...MOI }, { token: 'test-token' });
 check('shadow: phản hồi bằng sâu ảnh chụp (như off)', bangSau(boMs(rSh._j), anh.phichToken));
+await API.choNenXong();
 const dongSh = fs.existsSync(SHADOW) ? fs.readFileSync(SHADOW, 'utf8').split('\n').filter(Boolean) : [];
 check('shadow: đúng MỘT dòng ho-so-shadow.jsonl', dongSh.length === 1, dongSh.length);
 const KHOA = API ? API.KHOA_SHADOW : [];
@@ -283,6 +284,7 @@ if (API) {
   const kqNgoai = { ...structuredClone(kqCu), results: [{ hs: NGOAI }] };
   check('classify on + ngoài lát 1: không đổi', bangSau(await API.ganHoSoClassify(structuredClone(kqNgoai), attrs, { noiBo: false }), kqNgoai));
   const kqOn = await API.ganHoSoClassify(structuredClone(kqCu), attrs, { noiBo: false });
+  await API.choNenXong();
   check('classify on: thêm hoSo, giữ results/girRulesApplied', kqOn.hoSo && kqOn.hoSo.maHs === PHICH && bangSau(kqOn.results, kqCu.results) && bangSau(kqOn.girRulesApplied, kqCu.girRulesApplied));
   check('classify on: ecus giữ shape {description, level, score, missing} + sáu khối, sinh bằng vietMoTa', kqOn.ecus && typeof kqOn.ecus.description === 'string' && 'level' in kqOn.ecus && 'score' in kqOn.ecus && Array.isArray(kqOn.ecus.missing) && 'moTaEcus' in kqOn.ecus && kqOn.ecus.description === (kqOn.ecus.moTaEcus ?? kqOn.ecus.moTaBanNhap));
   check('classify on: mã thay thế (results[1..]) vào loaiTru nguồn ma-thay-the', coChuoi(kqOn.hoSo.loaiTru, 'ma-thay-the') || (kqOn.hoSo.loaiTru || []).length >= 0);
@@ -299,12 +301,15 @@ if (API) {
       process.env.HS_HO_SO = che;
       let n0 = goiNguon.identify;
       const khong = await API.ganHoSoClassify(structuredClone(kqBom), attrsBom, { noiBo: false });
+      await API.choNenXong();
       const goiKhong = goiNguon.identify - n0; n0 = goiNguon.identify; const m0 = moLai.length;
       const co = await API.ganHoSoClassify(structuredClone(kqBom), { ...attrsBom, dinhDanh: structuredClone(DD) }, { noiBo: false });
+      await API.choNenXong();
       const goiCo = goiNguon.identify - n0; n0 = goiNguon.identify;
       check(`classify ${che}: không dinhDanh ⇒ identify() gọi 1 lần (đường cũ)`, goiKhong === 1, goiKhong);
       check(`classify ${che}: có dinhDanh ⇒ identify() gọi 0 lần, máy mở lại đúng nguồn bên gọi gửi`, goiCo === 0 && moLai.length - m0 === 1 && moLai.at(-1).length === 2, { goiCo, moLai: moLai.slice(m0) });
       const sai = await API.ganHoSoClassify(structuredClone(kqBom), { ...attrsBom, dinhDanh: { frame: 'x', xacMinh: null } }, { noiBo: false });
+      await API.choNenXong();
       check(`classify ${che}: dinhDanh sai hình ⇒ đường cũ (identify() gọi 1 lần)`, goiNguon.identify - n0 === 1, goiNguon.identify - n0);
       if (che === 'shadow') {
         check('classify shadow + dinhDanh: phản hồi cho khách KHÔNG đổi (bằng sâu, cả 3 biến thể)', bangSau(khong, kqBom) && bangSau(co, kqBom) && bangSau(sai, kqBom));
