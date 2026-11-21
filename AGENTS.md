@@ -81,7 +81,7 @@ dashboard) mới cần Bearer token.
 | Tiền lệ TB-TCHQ (1.099 mã trong biểu hiện hành) | `data/precedents.json` — trích thêm/bổ sung theo [`docs/huong-dan-trich-tb-tchq.md`](docs/huong-dan-trich-tb-tchq.md) |
 | Cảnh báo mã dễ nhầm (79) | `data/conflicts.json` |
 | **Bảng quyết định phân giải** | `data/conflict-tables.json` |
-| Văn bản pháp luật (109) | `data/legal-docs.json` |
+| Văn bản pháp luật (112) | `data/legal-docs.json` |
 | Mã loại hình XNK | `data/customs-types.json` |
 | Sản phẩm ví dụ cho mã "Loại khác" | `data/loai-khac-products.jsonl` |
 | **Nguồn gốc từng tệp dữ liệu** | `data/SOURCES.json` |
@@ -129,6 +129,8 @@ Viết cho mọi agent, kể cả mô hình nhỏ. Làm **đúng thứ tự**, �
    Người dùng chọn một mã.
 5. `GET /api/tax?hs=<mã>&origin=<ISO-2 nước xuất xứ, mặc định CN>`. Báo:
    - thuế NK: `acfta.forOrigin` (`eligible: false` → dùng `taxNkPreferential` MFN)
+   - có `mfnTemporary` → mức MFN **đang áp** là `mfnTemporary.rate` (không phải `taxNkPreferential`, đó là mức nền) đến hết
+     `mfnTemporary.validUntil`; đọc `mfnTemporary.noteVi` + `legalBasis` (vd xăng dầu 0% đến 31/12/2026). Có `mfnTemporaryNote` → mức tạm thời đã hết/chưa áp
    - VAT: `vatReduction` (có `noteVi` thì đọc nguyên văn)
    - chính sách: `policyByHs`; nếu `policyStatus: "NOT_RECORDED"` → đọc `policyNoteVi`
    - `tariff.noteVi` nếu có (dữ liệu có thể cũ)
@@ -264,7 +266,7 @@ trên 763 tờ khai giữ riêng (`npm run bench:matrix`, 2026-09-25): đúng nh
 
 - **Đừng khẳng định mã HS 8 số là chắc chắn.** Tỷ lệ đúng thật là 24,6%.
 - **Đừng bịa số hiệu văn bản pháp luật.** Chỉ trích những văn bản có trong
-  `data/legal-docs.json`; trong đó 107/109 được verify tiêu đề thật.
+  `data/legal-docs.json`; trong đó 110/112 được verify tiêu đề thật.
 - **Đừng dùng cảnh báo nhãn hiệu như kết luận** — mới 1/53 nhãn được xác minh.
 - **Đừng đọc `data/oz-export/`** — dữ liệu riêng tư, đã gitignore.
 - **Đừng đưa thông tin khách hàng vào bất kỳ tệp nào sẽ commit.**
