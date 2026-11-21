@@ -505,19 +505,61 @@
     },
     {
       "hs": "48043910",
-      "dieuKien": "Có độ bền ướt từ 40 g đến 60 g, dùng để sản xuất băng dán gỗ dán(SEN)",
+      "dieuKien": "độ bền ướt >= 40 g; độ bền ướt <= 60 g; công dụng / mục đích: sản xuất băng dán gỗ dán",
       "loaiKhac": false,
       "nguon": "tax.48043910",
       "trich": "48043910 - - - Có độ bền ướt từ 40 g đến 60 g, dùng để sản xuất băng dán gỗ dán(SEN)",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "doBenUot",
+          "op": ">=",
+          "value": 40,
+          "donVi": "g"
+        },
+        {
+          "fact": "doBenUot",
+          "op": "<=",
+          "value": 60,
+          "donVi": "g"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "sản xuất băng dán gỗ dán"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1777#soat-480439",
+          "ngay": "2026-11-21",
+          "bam": "c55f6ab4db9297693a02476951b97ee0c8b9000dc1e7360c2cf153325bb4680e"
+        }
+      }
     },
     {
       "hs": "48043920",
-      "dieuKien": "Giấy và bìa dùng để làm bao bì thực phẩm (SEN)",
+      "dieuKien": "công dụng / mục đích: làm bao bì thực phẩm",
       "loaiKhac": false,
       "nguon": "tax.48043920",
       "trich": "48043920 - - - Giấy và bìa dùng để làm bao bì thực phẩm (SEN)",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "làm bao bì thực phẩm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1777#soat-480439",
+          "ngay": "2026-11-21",
+          "bam": "c55f6ab4db9297693a02476951b97ee0c8b9000dc1e7360c2cf153325bb4680e"
+        }
+      }
     },
     {
       "hs": "48043990",
@@ -672,27 +714,174 @@
     },
     {
       "hs": "48045110",
-      "dieuKien": "Giấy kraft cách điện (SEN)",
+      "dieuKien": "tên loại hàng: Giấy kraft cách điện",
       "loaiKhac": false,
       "nguon": "tax.48045110",
       "trich": "48045110 - - - Giấy kraft cách điện (SEN)",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Giấy kraft cách điện"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1777#soat-480451",
+          "ngay": "2026-11-21",
+          "bam": "d47c3982d2015555e511791b8e91aa9494d47a6587b5cbdebba4c3039dba828f"
+        }
+      },
+      "chongLanTruc": {
+        "pn6": "480451",
+        "nhanh": [
+          "48045110",
+          "48045120",
+          "48045130"
+        ],
+        "truc": {
+          "48045110": "TEN_LOAI",
+          "48045120": "TEN_LOAI",
+          "48045130": "CONG_DUNG"
+        },
+        "cauHoiPhanBiet": "Hàng hóa là giấy kraft cách điện, bìa ép hay giấy dùng để sản xuất băng dán gỗ dán?",
+        "trich": {
+          "48045110": "Giấy kraft cách điện (SEN)",
+          "48045120": "Bìa ép có định lượng từ 600g/m2 trở lên",
+          "48045130": "Có độ bền ướt từ 40 g đến 60 g, dùng để sản xuất băng dán gỗ dán(SEN)"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:ozv-1777#soat-480451",
+            "ngay": "2026-11-21",
+            "bam": "d47c3982d2015555e511791b8e91aa9494d47a6587b5cbdebba4c3039dba828f"
+          }
+        }
+      }
     },
     {
       "hs": "48045120",
-      "dieuKien": "Bìa ép có định lượng từ 600g/m2 trở lên",
+      "dieuKien": "tên loại hàng: Bìa ép; định lượng giấy hoặc bìa >= 600 g/m2",
       "loaiKhac": false,
       "nguon": "tax.48045120",
       "trich": "48045120 - - - Bìa ép có định lượng từ 600g/m2 trở lên",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bìa ép"
+        },
+        {
+          "fact": "dinhLuong",
+          "op": ">=",
+          "value": 600,
+          "donVi": "g/m2"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1777#soat-480451",
+          "ngay": "2026-11-21",
+          "bam": "d47c3982d2015555e511791b8e91aa9494d47a6587b5cbdebba4c3039dba828f"
+        }
+      },
+      "chongLanTruc": {
+        "pn6": "480451",
+        "nhanh": [
+          "48045110",
+          "48045120",
+          "48045130"
+        ],
+        "truc": {
+          "48045110": "TEN_LOAI",
+          "48045120": "TEN_LOAI",
+          "48045130": "CONG_DUNG"
+        },
+        "cauHoiPhanBiet": "Hàng hóa là giấy kraft cách điện, bìa ép hay giấy dùng để sản xuất băng dán gỗ dán?",
+        "trich": {
+          "48045110": "Giấy kraft cách điện (SEN)",
+          "48045120": "Bìa ép có định lượng từ 600g/m2 trở lên",
+          "48045130": "Có độ bền ướt từ 40 g đến 60 g, dùng để sản xuất băng dán gỗ dán(SEN)"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:ozv-1777#soat-480451",
+            "ngay": "2026-11-21",
+            "bam": "d47c3982d2015555e511791b8e91aa9494d47a6587b5cbdebba4c3039dba828f"
+          }
+        }
+      }
     },
     {
       "hs": "48045130",
-      "dieuKien": "Có độ bền ướt từ 40 g đến 60 g, dùng để sản xuất băng dán gỗ dán(SEN)",
+      "dieuKien": "độ bền ướt >= 40 g; độ bền ướt <= 60 g; công dụng / mục đích: sản xuất băng dán gỗ dán",
       "loaiKhac": false,
       "nguon": "tax.48045130",
       "trich": "48045130 - - - Có độ bền ướt từ 40 g đến 60 g, dùng để sản xuất băng dán gỗ dán(SEN)",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "doBenUot",
+          "op": ">=",
+          "value": 40,
+          "donVi": "g"
+        },
+        {
+          "fact": "doBenUot",
+          "op": "<=",
+          "value": 60,
+          "donVi": "g"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "sản xuất băng dán gỗ dán"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1777#soat-480451",
+          "ngay": "2026-11-21",
+          "bam": "d47c3982d2015555e511791b8e91aa9494d47a6587b5cbdebba4c3039dba828f"
+        }
+      },
+      "chongLanTruc": {
+        "pn6": "480451",
+        "nhanh": [
+          "48045110",
+          "48045120",
+          "48045130"
+        ],
+        "truc": {
+          "48045110": "TEN_LOAI",
+          "48045120": "TEN_LOAI",
+          "48045130": "CONG_DUNG"
+        },
+        "cauHoiPhanBiet": "Hàng hóa là giấy kraft cách điện, bìa ép hay giấy dùng để sản xuất băng dán gỗ dán?",
+        "trich": {
+          "48045110": "Giấy kraft cách điện (SEN)",
+          "48045120": "Bìa ép có định lượng từ 600g/m2 trở lên",
+          "48045130": "Có độ bền ướt từ 40 g đến 60 g, dùng để sản xuất băng dán gỗ dán(SEN)"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:ozv-1777#soat-480451",
+            "ngay": "2026-11-21",
+            "bam": "d47c3982d2015555e511791b8e91aa9494d47a6587b5cbdebba4c3039dba828f"
+          }
+        }
+      }
     },
     {
       "hs": "48045190",

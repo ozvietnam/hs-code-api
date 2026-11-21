@@ -4,13 +4,19 @@
   "nhom": "1806",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-180620",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1777#soat-180620",
+    "ngay": "2026-11-21",
+    "ghiChu": "Chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1777)",
+    "bam": "bb736294d4d87c4cf29b423c655e671c3436c32f86b186b23aa1013ecbbb2b3f"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -22,23 +28,32 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Kẹo sô cô la"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "khối",
+            "miếng",
+            "thanh"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "18062090",
       "nguon": "tax.18062090",
       "trich": "18062090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "18062010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.18062010 \"Kẹo sô cô la ở dạng khối, miếng hoặc thanh\" ⇒ tenLoai Kẹo sô cô la"
+      "ghiChu": "tax.18062010 \"Kẹo sô cô la ở dạng khối, miếng hoặc thanh\" ⇒ tenLoai \"Kẹo sô cô la\" + tenLoai mảng [\"khối\", \"miếng\", \"thanh\"] (tách định ngữ chung \"Kẹo sô cô la\" và 3 dạng thay thế nhau của vế \"ở dạng khối, miếng hoặc thanh\" tương tự 18069010)"
     }
   ],
   "traVe": [

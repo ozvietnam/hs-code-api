@@ -4,13 +4,19 @@
   "nhom": "4911",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-mm:loop:20261106T0959#soan-491199",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1777#soat-491199",
+    "ngay": "2026-11-21",
+    "ghiChu": "Chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1777)",
+    "bam": "3444bdd214f3a52a69756292762e673ce936bbaf5c4419ee87dad7425f33d268"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -24,16 +30,38 @@
           "value": "Thẻ in sẵn"
         },
         {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": [
-            "đồ trang sức",
-            "các đồ tư trang nhỏ trang điểm cá nhân",
-            "đồ dùng cá nhân"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "đồ trang sức",
+                  "các đồ tư trang nhỏ trang điểm cá nhân"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "đồ dùng cá nhân"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "được mang theo trong ví",
+                  "túi sách tay",
+                  "mang theo người"
+                ]
+              }
+            ]
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "49119920",
@@ -51,7 +79,7 @@
           "value": "báo nguy hiểm dễ nổ"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "49119930",
@@ -75,7 +103,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "49119940",
@@ -102,7 +130,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": false
     },
     {
@@ -110,20 +138,14 @@
       "nguon": "tax.49119990",
       "trich": "49119990 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "49119910",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.49119910 \"Thẻ in sẵn cho đồ trang sức hoặc cho các đồ tư trang nhỏ trang điểm cá nhân hoặc đồ dùng cá nhân thường được mang theo trong ví, túi sách tay hoặc mang theo người (SEN)\" ⇒ tenLoai TEN_LOAI \"Thẻ in sẵn\" (tên dòng) + dungCho CONG_DUNG mảng [\"đồ trang sức\", \"các đồ tư trang nhỏ trang điểm cá nhân\", \"đồ dùng cá nhân\"] — mảng = \"hoặc\", phủ vế \"cho đồ trang sức / cho các đồ tư trang nhỏ trang điểm cá nhân / đồ dùng cá nhân\"."
-    },
-    {
-      "ma": "49119910",
-      "loai": "BO_VE",
-      "ve": "thường được mang theo trong ví, túi sách tay hoặc mang theo người",
-      "lyDo": "Vế này chỉ nói nơi mang của đồ dùng cá nhân (trong ví, túi sách tay hoặc mang theo người), không phải công dụng tách riêng; phần vật dụng đã phủ bằng giá trị \"đồ dùng cá nhân\" — không gộp vào một giá trị chữ tự do được vì giá trị chứa \" hoặc \" bị cổng 3 chặn."
+      "ghiChu": "tax.49119910 \"Thẻ in sẵn cho đồ trang sức hoặc cho các đồ tư trang nhỏ trang điểm cá nhân hoặc đồ dùng cá nhân thường được mang theo trong ví, túi sách tay hoặc mang theo người (SEN)\" ⇒ tenLoai TEN_LOAI \"Thẻ in sẵn\" + HOAC hai phương án: (1) dungCho [\"đồ trang sức\", \"các đồ tư trang nhỏ trang điểm cá nhân\"]; (2) dungCho \"đồ dùng cá nhân\" VÀ dungCho [\"được mang theo trong ví\", \"túi sách tay\", \"mang theo người\"] (giữ đủ vế giới hạn của đồ dùng cá nhân)."
     },
     {
       "ma": "49119920",

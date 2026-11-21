@@ -4,13 +4,19 @@
   "nhom": "4804",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-480439",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1777#soat-480439",
+    "ngay": "2026-11-21",
+    "ghiChu": "Chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1777)",
+    "bam": "c55f6ab4db9297693a02476951b97ee0c8b9000dc1e7360c2cf153325bb4680e"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -19,12 +25,24 @@
       "trich": "48043910 - - - Có độ bền ướt từ 40 g đến 60 g, dùng để sản xuất băng dán gỗ dán(SEN)",
       "dieuKienSo": [
         {
+          "fact": "doBenUot",
+          "op": ">=",
+          "value": 40,
+          "donVi": "g"
+        },
+        {
+          "fact": "doBenUot",
+          "op": "<=",
+          "value": 60,
+          "donVi": "g"
+        },
+        {
           "fact": "congDung",
           "op": "CONG_DUNG",
           "value": "sản xuất băng dán gỗ dán"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "48043920",
@@ -37,22 +55,21 @@
           "value": "làm bao bì thực phẩm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "48043990",
       "nguon": "tax.48043990",
       "trich": "48043990 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "48043910",
-      "loai": "BO_VE",
-      "ve": "Có độ bền ướt từ 40 g đến 60 g",
-      "lyDo": "Chưa có khoá tu-vung cho tiêu chí độ bền ướt (g), định danh phân loại chủ yếu theo công dụng sản xuất băng dán gỗ dán"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48043910 \"Có độ bền ướt từ 40 g đến 60 g, dùng để sản xuất băng dán gỗ dán(SEN)\" ⇒ doBenUot >= 40 g và doBenUot <= 60 g (\"từ 40 g đến 60 g\" gồm cả hai đầu, đã đối chiếu tay) + congDung \"sản xuất băng dán gỗ dán\""
     }
   ],
   "traVe": [

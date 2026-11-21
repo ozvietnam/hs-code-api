@@ -4,13 +4,19 @@
   "nhom": "4911",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-mm:loop:20261106T0953#soan-491191",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1777#soat-491191",
+    "ngay": "2026-11-21",
+    "ghiChu": "Chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1777)",
+    "bam": "cb56354a2a3366fdbfa6a08817673932acfa46dce58999726be66bde6284dff7"
+  },
   "dieuKienNut": [
     {
       "id": "4911912",
@@ -28,7 +34,7 @@
           "value": "dùng cho mục đích hướng dẫn"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -43,7 +49,7 @@
           "value": "Bản thiết kế"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "49119121",
@@ -53,17 +59,20 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Giải phẫu học và thực vật học"
+          "value": [
+            "Giải phẫu học",
+            "thực vật học"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "49119129",
       "nguon": "tax.49119129",
       "trich": "49119129 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "49119191",
@@ -73,17 +82,20 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Giải phẫu học và thực vật học"
+          "value": [
+            "Giải phẫu học",
+            "thực vật học"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "49119199",
       "nguon": "tax.49119199",
       "trich": "49119199 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -105,12 +117,12 @@
     {
       "ma": "49119121",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.49119121 \"49119121 - - - - Giải phẫu học và thực vật học\" ⇒ tenLoai TEN_LOAI \"Giải phẫu học và thực vật học\" — chuỗi con nguyên văn của tên dòng (một danh xưng ghép bằng \"và\", như \"mô hình giải trí tương tự\" ở mẫu 950300 ⇒ giữ một chuỗi, không tách thành mảng 2). Dòng KHÔNG phải \"Loại khác\" ⇒ cần điều kiện. Chữ biểu trùng hệt dòng 49119191 ⇒ hai dòng chỉ phân biệt được bằng điều kiện tiêu đề cha (4911912 có điều kiện, 4911919 \"Loại khác\" trần) — nguồn không phân biệt được thêm ⇒ ghi đúng điều kiện của chính dòng (mẫu 84529091/84529011). Sổ tay nhà (data/so-tay/4911.json) đã trích \"(5) Sơ đồ và biểu đồ giảng dạy giải phẫu, thực vật…\" (nguon nhom4911.nhom) cho cả .21 và .91 — gói soạn không kèm câu chữ chú giải nên không trích lại ở đây."
+      "ghiChu": "tax.49119121 \"49119121 - - - - Giải phẫu học và thực vật học\" (EN \"Anatomical and botanical\") ⇒ tenLoai TEN_LOAI mảng [\"Giải phẫu học\", \"thực vật học\"] (hai chủ đề thay thế nối bằng \"và\", tách mảng để hàng chỉ thuộc giải phẫu học hoặc chỉ thực vật học vẫn khớp)."
     },
     {
       "ma": "49119191",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.49119191 \"49119191 - - - - Giải phẫu học và thực vật học\" ⇒ tenLoai TEN_LOAI \"Giải phẫu học và thực vật học\" — cùng khoá, cùng giá trị với dòng 49119121 (chữ biểu trùng hệt, nguồn không phân biệt được thêm); dòng này là phần \"giải phẫu học và thực vật học\" KHÔNG thuộc loại để gắn, dùng cho mục đích hướng dẫn (tiêu đề cha 4911919 là \"Loại khác\" trần, không khai điều kiện)."
+      "ghiChu": "tax.49119191 \"49119191 - - - - Giải phẫu học và thực vật học\" (EN \"Anatomical and botanical\") ⇒ tenLoai TEN_LOAI mảng [\"Giải phẫu học\", \"thực vật học\"] — cùng khoá, cùng giá trị với dòng 49119121 (phân biệt bằng điều kiện tiêu đề cha 4911912)."
     },
     {
       "ma": "49119129",

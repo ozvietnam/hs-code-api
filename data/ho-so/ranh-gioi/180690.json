@@ -4,13 +4,19 @@
   "nhom": "1806",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-180690",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1777#soat-180690",
+    "ngay": "2026-11-21",
+    "ghiChu": "Chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1777)",
+    "bam": "5ca9517cbf0079916e9d1735cbd8ec2a438cddf4417dbc7867c72d102297044c"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -32,7 +38,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "18069030",
@@ -43,6 +49,16 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Các chế phẩm thực phẩm"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "bột",
+            "bột thô",
+            "tinh bột",
+            "chiết xuất malt"
+          ]
         },
         {
           "fact": "hamLuongCaCaoKhuBeo",
@@ -57,7 +73,7 @@
           "donVi": "%"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "18069040",
@@ -99,14 +115,14 @@
           "op": "KHONG"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "18069090",
       "nguon": "tax.18069090",
       "trich": "18069090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -118,7 +134,7 @@
     {
       "ma": "18069030",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.18069030 \"…có chứa từ 40% trở lên nhưng không quá 50% tính theo khối lượng là ca cao đã khử toàn bộ chất béo\" ⇒ hai điều kiện cùng khoá hamLuongCaCaoKhuBeo (>= 40 % và <= 50 %); đã đối chiếu tay hai cận (cận đầu \"từ … trở lên\" = >=, cận sau \"không quá\" = <=). Tên đầu \"Các chế phẩm thực phẩm\" ⇒ tenLoai (cùng khoá với anh em .10 \"Kẹo sô cô la\" để máy coi tên rời nhau); cụm \"từ bột, bột thô, tinh bột hoặc chiết xuất malt\" là nguyên liệu nền của chế phẩm, không có khoá và cổng 5 không liệt kê thành vế — không ghi điều kiện"
+      "ghiChu": "tax.18069030 \"Các chế phẩm thực phẩm từ bột, bột thô, tinh bột hoặc chiết xuất malt, có chứa từ 40% trở lên nhưng không quá 50% tính theo khối lượng là ca cao đã khử toàn bộ chất béo\" ⇒ tenLoai \"Các chế phẩm thực phẩm\"; dungCho [\"bột\", \"bột thô\", \"tinh bột\", \"chiết xuất malt\"] (giữ vế nguyên liệu nền bằng mảng như .40 cùng phân nhóm); hamLuongCaCaoKhuBeo >= 40 % và <= 50 % (đã đối chiếu tay hai cận)"
     },
     {
       "ma": "18069040",
