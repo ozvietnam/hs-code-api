@@ -14,8 +14,8 @@
     "boi": "CLAUDE_DUYET",
     "phien": "claude-agent:tho-hs-01#soat-lo-5f",
     "ngay": "2026-11-21",
-    "ghiChu": "Đã chuẩn hoá dieuKienSo bám chữ biểu thuế",
-    "bam": "b11c500e35e8c388d21f9d75536b4af076d25db46e01784ea8c6d264af5643c1"
+    "ghiChu": "Chuẩn hoá dieuKienSo và chongLanTruc bám chữ biểu thuế",
+    "bam": "797c395dee3a5b9f2f2aa49e3e035c4fb188d915753a704e6e8ed86ae4ec20a8"
   },
   "dieuKienNut": [
     {
@@ -77,9 +77,26 @@
       "trich": "9504903 Thiết bị chơi bạc và đồ phụ trợ đi kèm",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Thiết bị chơi bạc"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "chơi bạc"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "Thiết bị chơi bạc",
+                  "đồ phụ trợ"
+                ]
+              }
+            ]
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -285,6 +302,43 @@
       "nguonLoai": "CLAUDE_DUYET"
     }
   ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "95049010",
+        "9504902",
+        "9504903"
+      ],
+      "truc": {
+        "9504902": "TEN_LOAI",
+        "9504903": "CONG_DUNG",
+        "95049010": "TEN_LOAI"
+      },
+      "cauHoiPhanBiet": "Mặt hàng này là đồ phụ trợ để chơi bowling (95049010), đồ chơi ném phi tiêu và bộ phận/phụ kiện (9504902), hay thiết bị chơi bạc và đồ phụ trợ đi kèm (9504903)?",
+      "trich": {
+        "9504902": "Đồ chơi ném phi tiêu và các bộ phận và phụ kiện của chúng",
+        "9504903": "Thiết bị chơi bạc và đồ phụ trợ đi kèm",
+        "95049010": "Các loại đồ phụ trợ để chơi bowling"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "95049010",
+            "9504903"
+          ],
+          "khongCoHangThat": "Đồ phụ trợ chơi bowling dùng cho đường chạy bowling (95049010), tách biệt với thiết bị chơi bạc và đồ phụ trợ đi kèm sòng bạc (9504903); không có hàng thật đồng thời thuộc cả hai nhóm."
+        },
+        {
+          "cap": [
+            "9504902",
+            "9504903"
+          ],
+          "khongCoHangThat": "Đồ chơi ném phi tiêu và bộ phận/phụ kiện của chúng có phân nhóm định danh riêng 9504902, tách biệt với thiết bị chơi bạc và đồ phụ trợ sòng bạc/mạt chược ở 9504903; không có hàng thật đồng thời thuộc cả hai nhóm."
+        }
+      ],
+      "phanXu": null
+    }
+  ],
   "ghiChuSoan": [
     {
       "ma": "95049010",
@@ -299,7 +353,7 @@
     {
       "ma": "9504903",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.9504903 \"Thiết bị chơi bạc và đồ phụ trợ đi kèm\" ⇒ tenLoai \"Thiết bị chơi bạc\" (cùng trục tên với 9504902, bỏ chồng lấn trục giả)"
+      "ghiChu": "tieuDe.9504903 \"Thiết bị chơi bạc và đồ phụ trợ đi kèm\" ⇒ HOAC [[congDung \"chơi bạc\"],[tenLoai [\"Thiết bị chơi bạc\",\"đồ phụ trợ\"]]] bám đúng chuỗi con nguyên văn của tiêu đề (cổng 3), phủ bàn chơi bạc (.32/.33), thiết bị chơi bạc và đồ phụ trợ; khai chongLanTruc với 95049010 và 9504902 theo Q1 (khongCoHangThat)."
     },
     {
       "ma": "95049033",
