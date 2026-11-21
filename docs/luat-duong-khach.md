@@ -77,6 +77,7 @@ flowchart TD
         TestKiemPr["test-kiem-pr-l1.mjs (L1: Kiểm PR gọi LLM)"]
         TestMermaid["test-so-do-mermaid.mjs (Chống lệch sơ đồ)"]
         TestBangCanh["test-bang-canh.mjs (ADR-0002: Bảng cạnh đồ thị tri thức)"]
+        TestTieuChi6["kiem-tieu-chi-6.mjs + test-tieu-chi-6.mjs (G6: tiêu chí phân nhóm 6 số, cạnh C10)"]
     end
 ```
 <!-- AUTO_MERMAID_DUONG_KHACH_END -->
@@ -128,6 +129,7 @@ Cấm:
 - Thêm bảng câu hỏi cứng theo chương hay theo mặt hàng ở module khác.
 - Để LLM tự nghĩ câu hỏi rồi gửi khách. Câu của LLM chỉ được đi vào ghi chú (`ghiChuThem`), không vào danh sách hỏi.
 - Viết lõi thứ hai. Cần câu hỏi mới thì bổ sung sổ tay / sổ PN6 / danh mục trường khai rồi để lõi sinh câu.
+- (CEO duyệt 21/11/2026) Hỏi khách mục đích / tên gọi tự nhận ("Là đai chuyên dụng cho tập gym?"): câu phân biệt và tiêu chí do máy / AI soạn từ nay phải hỏi ĐẶC TÍNH quan sát hoặc kiểm chứng được trên hàng (cấu tạo, kích thước, chất liệu, cơ cấu, thông số); chỉ hỏi công dụng khi chính chữ luật trích định nghĩa bằng công dụng, và kèm một câu đặc tính kiểm chứng. Phép kiểm: `kiemCauHoiMucDich` / mã `CHI_HOI_MUC_DICH` trong `lib/do-thi/tieu-chi-6.js`; câu đã có trong sổ tay chưa sửa (số đo ở PR #1549).
 
 **Vì sao:** van điện từ khí nén 5/2 qua Cổng ngày 21/11 bị hỏi 6 câu do LLM tự nghĩ (điện áp cuộn dây, model, hãng…),
 không câu nào là điều kiện phân biệt của nhóm 84.81. Câu hỏi theo sổ khi đó chỉ có ở `/api/so-tay-questions`; PR #1523 đưa
@@ -297,6 +299,15 @@ không ra kết quả giống hệt; có cạnh thiếu trích / nguồn; có c�
 `data/luat/dau-noi.json` (kho `bangCanh`) chưa khai `co`. Sửa nhiều sổ tay làm cổng đỏ thì chạy
 `node scripts/dung-bang-canh.mjs --ghi` và commit `data/do-thi/` cùng PR. Nối bảng cạnh vào một đường khách là thay đổi
 thuộc L1 và L4: sau công tắc mặc định tắt, sửa bảng đấu nối trong cùng PR.
+
+## Cổng tiêu chí 6 số (ADR-0003)
+
+`tieuChi6` khuôn g6@1 của sổ tay nhóm (cạnh C10 / C13) chỉ được ghi bằng `node scripts/goi-soan-tieu-chi-6.mjs --ap=<tệp>`,
+sau khi qua cổng `scripts/kiem-tieu-chi-6.mjs`: trích nguyên văn, đúng nguồn, phủ kín mọi phân nhóm, không chữ nào trong điều
+kiện / từ khoá nằm ngoài câu trích, phân nhóm dư không mang điều kiện, thứ tự do máy xếp. `npm test` chạy cổng trên mọi sổ tay
+mang `kiemTra.tieuChi6.khuon` và chạy `scripts/test-tieu-chi-6.mjs` (mỗi mã lỗi một ca tiêm). Hướng dẫn soạn:
+[`docs/giao-viec/do-thi/SOAN-TIEU-CHI-6-SO.md`](giao-viec/do-thi/SOAN-TIEU-CHI-6-SO.md). Cổng và gói soạn không nằm trên đường
+khách. Qua cổng chưa phải là đã duyệt: mục mang nhãn `AI_DA_KIEM`.
 
 ## Thêm cờ `HS_*` mới: làm gì
 
