@@ -7,5 +7,6 @@ Mỗi quyết định thật (chọn kiến trúc, bỏ / hoãn tính năng, đ�
 | Số | Quyết định | Ngày |
 |---|---|---|
 | [0001](0001-luat-duong-khach-va-bang-dau-noi.md) | Luật đường khách và bảng đấu nối | 21/11/2026 |
+| [0002](0002-do-thi-tri-thuc-tim-chon-nhom-di-canh-xuong-ma.md) | Đồ thị tri thức: tìm kiếm chọn nhóm, đi cạnh xuống mã | 21/11/2026 |
 
 Quyết định cấp công ty (văn phòng OZ) nằm ở Gitea `ozvietnam/oz-infra-codex`, không chép về đây.

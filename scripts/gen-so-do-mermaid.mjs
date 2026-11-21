@@ -75,6 +75,7 @@ flowchart TD
         TestBangCo["test-bang-co.mjs (L1, L5, L8: Kỷ luật cờ)"]
         TestKiemPr["test-kiem-pr-l1.mjs (L1: Kiểm PR gọi LLM)"]
         TestMermaid["test-so-do-mermaid.mjs (Chống lệch sơ đồ)"]
+        TestBangCanh["test-bang-canh.mjs (ADR-0002: Bảng cạnh đồ thị tri thức)"]
     end
 \`\`\``;
 
