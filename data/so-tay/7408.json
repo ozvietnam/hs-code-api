@@ -250,17 +250,42 @@
     },
     {
       "hs": "74081910",
-      "dieuKien": "Dây đồng được tinh chế (tức là phù hợp với Chú giải 1 (a) của Chương 74), kích thước mặt cắt ngang tối đa không quá 6mm, và được phủ, mạ/tráng bạc hoặc vàng bằng điện phân, bay hơi lắng đọng, phun hoặc ngâm trong dung dịch muối của kim loại quý.",
+      "dieuKien": "kích thước mặt cắt ngang (lớn nhất) của dây/thanh <= 6 mm; tên loại hàng: tráng vàng hoặc mạ vàng hoặc mạ/tráng bạc",
+      "nguon": "sen.74081910",
+      "trich": "DÂY ĐỒNG ĐƯỢC PHỦ, MẠ HOẶC TRÁNG VÀNG HOẶC BẠC…với kích thước mặt cắt ngang tối đa không quá 6mm và được phủ, mạ/tráng bạc hoặc vàng…Ví dụ của sản phẩm: Dây đồng mạ vàng hoặc bạc",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "kichThuocMatCatNgang",
+          "op": "<=",
+          "value": 6,
+          "donVi": "mm"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "tráng vàng",
+            "mạ vàng",
+            "mạ/tráng bạc"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01#soat-740819",
+          "ngay": "2026-11-21",
+          "bam": "1cf33e464f458b2b45a97df3215e521920c7bd858324ed7799cbcbf2c5356b13"
+        }
+      },
       "tieuChi": {
         "fact": "kich_thuoc_mat_cat_toi_da",
         "op": "<=",
         "value": 6,
         "donVi": "mm"
-      },
-      "nguon": "sen.74081910",
-      "trich": "Để được phân loại tại phân nhóm này, dây đồng phải được tinh chế (tức là phù hợp với Chú giải 1 (a) của Chương 74), với kích thước mặt cắt ngang tối đa không quá 6mm và được phủ, mạ/tráng bạc hoặc vàng bằng điện phân, bay hơi lắng đọng, phun hoặc ngâm trong dung dịch muối của kim loại quý",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      }
     },
     {
       "hs": "74081990",

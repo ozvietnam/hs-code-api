@@ -165,19 +165,53 @@
   "dong8": [
     {
       "hs": "08051010",
-      "dieuKien": "Tươi",
+      "dieuKien": "phương pháp bảo quản / trạng thái bảo quản: tươi hoặc ướp lạnh",
       "nguon": "tax.08051010",
       "trich": "08051010 - - Tươi",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "TUOI_UOP_LANH"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01#soat-080510",
+          "ngay": "2026-11-21",
+          "bam": "a766b58ea4728ec1e2d9b02786bf25fd20111d50e50d58e7aabb7e1e60044061"
+        }
+      }
     },
     {
       "hs": "08051020",
-      "dieuKien": "Khô",
+      "dieuKien": "phương pháp bảo quản / trạng thái bảo quản: khô, muối hoặc ngâm nước muối",
       "nguon": "tax.08051020",
       "trich": "08051020 - - Khô",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "KHO_MUOI"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01#soat-080510",
+          "ngay": "2026-11-21",
+          "bam": "a766b58ea4728ec1e2d9b02786bf25fd20111d50e50d58e7aabb7e1e60044061"
+        }
+      }
     },
     {
       "hs": "08052100",
@@ -262,9 +296,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L4-20261111#soat-L4",
-          "ngay": "2026-11-11",
-          "bam": "f7b43286fbc127f97eae58cd058cf82dfb1bf1763d8f3aa2eb735c4729db78ee"
+          "phien": "claude-agent:tho-hs-01#soat-080550",
+          "ngay": "2026-11-21",
+          "bam": "1a5c9c4bcd79e76d3599c9957026a58fc44b9ec843767ece176fb1fa6f00221b"
         }
       },
       "tieuChi": {
@@ -276,7 +310,7 @@
     },
     {
       "hs": "08055020",
-      "dieuKien": "tên loại hàng: Quả chanh xanh",
+      "dieuKien": "tên loại hàng: Quả chanh xanh hoặc chanh ta hoặc chanh không hạt",
       "nguon": "tax.08055020",
       "trich": "08055020 - - Quả chanh xanh (chanh ta Citrus aurantifolia, chanh không hạt Citrus latifolia)(SEN)",
       "nguonLoai": "CLAUDE_DUYET",
@@ -285,15 +319,19 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Quả chanh xanh"
+          "value": [
+            "Quả chanh xanh",
+            "chanh ta",
+            "chanh không hạt"
+          ]
         }
       ],
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L4-20261111#soat-L4",
-          "ngay": "2026-11-11",
-          "bam": "f7b43286fbc127f97eae58cd058cf82dfb1bf1763d8f3aa2eb735c4729db78ee"
+          "phien": "claude-agent:tho-hs-01#soat-080550",
+          "ngay": "2026-11-21",
+          "bam": "1a5c9c4bcd79e76d3599c9957026a58fc44b9ec843767ece176fb1fa6f00221b"
         }
       },
       "tieuChi": {
@@ -301,7 +339,8 @@
         "op": "=",
         "value": true,
         "donVi": null
-      }
+      },
+      "phanConLai": true
     },
     {
       "hs": "08059000",
