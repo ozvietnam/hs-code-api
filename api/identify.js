@@ -2,11 +2,6 @@
 // Body: { tenHang, model?, thuongHieu?, moTa?, anhUrl[]?, chuong? }
 // Trả: { frame: {chuong, truong, model?, thuongHieu?}, xacMinh: {muc: VERIFIED|CORROBORATED|HYPOTHESIS|KHONG_NGUON, nguon[]},
 //        thieuTruong[], questions[], anh?, anhBoVi[], ms } — KHÔNG trả mã HS (việc của phan_loai_hs).
-//        Thêm (OZV-1656, chỉ thêm — hình cũ giữ nguyên, frame.truong vẫn là đối tượng key→giá trị):
-//        frame.nhom?/pn6? (nhóm 4 số ứng viên có sổ tay, phân nhóm 6 số khi chắc); questions[].canCu
-//        ("so-tay" | "ranh-gioi-pn6" | "truong-khai-nhom" | "khung-dinh-danh" | "bang-chuong" | "chua-xac-dinh") kèm nguon/trich/nhom;
-//        canCuCauHoi ("so-tay" | "bang-chuong" | "chua-xac-dinh" — đo tỉ lệ rơi về bảng chương); nhomUngVien?{nhom,pn6?,nguonSoTay,kiemRanhGioi?};
-//        chuaXacDinh? (frame.chuong=null: không còn mặc định chương 84); nguonBiChan?[] (nguồn rác bị bỏ: {mien, loai}).
 // LLM lỗi → degraded:true + llmError (không fail-silent). Bearer bắt buộc (rule 2: endpoint sinh nội dung bằng LLM).
 const { requireAuth, serviceCaller } = require('../lib/auth');
 const { withHangHoa } = require('../lib/llm-privacy');
