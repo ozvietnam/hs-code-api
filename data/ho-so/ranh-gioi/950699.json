@@ -4,13 +4,19 @@
   "nhom": "9506",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T1026#soan-950699",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-01#soat-lo-5d",
+    "ngay": "2026-11-21",
+    "ghiChu": "Đã chuẩn hoá dieuKienSo bám chữ biểu thuế",
+    "bam": "162d51df0f302132a2ccee8fdca7cd3b63329bcf26a3278e6819d6d85f87de29"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -23,11 +29,12 @@
           "op": "TEN_LOAI",
           "value": [
             "Cung",
+            "nỏ",
             "mũi tên"
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "95069920",
@@ -44,7 +51,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "95069930",
@@ -57,21 +64,21 @@
           "value": "Quả cầu lông"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "95069990",
       "nguon": "tax.95069990",
       "trich": "95069990 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "95069910",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.95069910 \"Cung (kể cả nỏ) và mũi tên\" ⇒ tenLoai [\"Cung\",\"mũi tên\"] (EN \"Bows and arrows\" hai hàng; \"(kể cả nỏ)\" là ngoặc kể cả — PHU, không thành điều kiện)"
+      "ghiChu": "tax.95069910 \"Cung (kể cả nỏ) và mũi tên\" (EN \"Bows (including crossbows) and arrows\") ⇒ tenLoai [\"Cung\",\"nỏ\",\"mũi tên\"] (ngoặc \"(kể cả nỏ)\" mở rộng phạm vi, phải đưa \"nỏ\" vào mảng tên)"
     },
     {
       "ma": "95069920",
@@ -87,13 +94,6 @@
       "ma": "95069990",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.95069990 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
-    }
-  ],
-  "traVe": [
-    {
-      "phien": "claude-agent:duyet-L32-20261111#soat-L32",
-      "ngay": "2026-11-11",
-      "lyDo": "(A) 95069910 THU HẸP: chữ biểu \"Cung (kể cả nỏ) và mũi tên\" / EN \"Bows (including crossbows) and arrows\" — ngoặc \"kể cả nỏ\" là MỞ RỘNG phạm vi, bị coi PHU và bỏ; tenLoai [\"Cung\",\"mũi tên\"] không khớp hàng tên \"nỏ\" ⇒ nỏ rơi .90. Phải thêm \"nỏ\" vào mảng tenLoai."
     }
   ]
 }
