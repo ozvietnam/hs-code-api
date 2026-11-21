@@ -87,7 +87,7 @@ curl -X POST https://.../api/suggest \
 **`canCuPhapLy` — căn cứ pháp lý (TT 85/2026/TT-BTC, hiệu lực 15/09/2026).** Có trong `/api/suggest` và `/api/classify`.
 - Bước 1 = Điều 4 (Danh mục VN + Biểu thuế + 6 quy tắc tổng quát; chi tiết quy tắc ở `girRulesApplied[]`). Bước 2 = Điều 6.1, **chỉ khi bước 1 chưa ra mã duy nhất**; `canDung` cho biết có cần dùng không. Điều 6.1 chỉ *liệt kê* a→d (Chú giải chi tiết HS, ý kiến phân loại WCO, SEN AHTN, CSDL Danh mục VN); văn bản **không** ghi "theo thứ tự" hay "ưu tiên", nên API không khẳng định thứ tự pháp lý.
 - `6.1.a` dựa **nguyên văn chú giải nhóm** (toàn văn HS 2022 trong kệ sách; kèm `nhom`, `toanVan`), không dựa `explanatoryNote` — trường đó là chữ AI chưa kiểm (`nguonLoai: AI_CHUA_KIEM`, có `ghiChu`), chỉ gợi ý. Nhãn loại nguồn dùng chung: `NGUYEN_VAN` / `MAY_SUY` / `AI_DA_KIEM` / `NGUOI_DUYET` / `AI_CHUA_KIEM` (`lib/nguon-loai.js`); mọi mục sổ tay trong `soTay` mang `nguonLoai`, mục `AI_CHUA_KIEM` không bao giờ được trích.
-- Trạng thái từng tài liệu nói đúng điều hệ thống biết: `CO_NOI_DUNG` (kệ sách có nội dung cho mã này), `KHONG_CO_DU_LIEU_CHO_MA_NAY`, `CHUA_TRA_CUU` (kho chưa nạp, hiện là ý kiến phân loại WCO), `CHUA_TRA_CUU_TRONG_LUOT_NAY`, `CO_TIEN_LE_KHOP`/`KHONG_CO_TIEN_LE_KHOP`. Phản hồi suggest/classify chỉ trả **con trỏ** tới ý kiến phân loại WCO (kèm `xemToanVan`); toàn văn xem ở `/api/wco-opinions` bên dưới.
+- Trạng thái từng tài liệu nói đúng điều hệ thống biết: `CO_NOI_DUNG` (kệ sách có nội dung cho mã này), `KHONG_CO_DU_LIEU_CHO_MA_NAY`, `CHUA_TRA_CUU` (khi kho chưa nạp), `CHUA_TRA_CUU_TRONG_LUOT_NAY`, `CO_TIEN_LE_KHOP`/`KHONG_CO_TIEN_LE_KHOP`. Phản hồi suggest/classify chỉ trả **con trỏ** tới ý kiến phân loại WCO (kèm `xemToanVan`); toàn văn xem ở `/api/wco-opinions` bên dưới.
 - `dieuKhoan` chứa nguyên văn từng điều được dẫn (mỗi điều một lần); các bước chỉ nêu id. Đây là điều luật để tham khảo, **không phải quyết định phân loại**; người khai chịu trách nhiệm về mã số khai.
 
 **`GET /api/wco-opinions` — ý kiến phân loại WCO (Compendium 2022), công khai, không cần token.**
@@ -97,7 +97,7 @@ curl -X POST https://.../api/suggest \
 - **Bản quyền:** nội dung thuộc WCO; Oz tuyên bố đã trả phí bản quyền để sử dụng và công bố; nội dung này không thuộc CC BY-SA (xem `NOTICE.md`). Mọi phản hồi kèm `banQuyen`.
 - `nguyenVanEn` là OCR từ bản scan, `daSoatAnh:false` = chưa đối chiếu ảnh trang gốc: đối chiếu bản gốc trước khi dẫn trong hồ sơ Hải quan.
 
-**`soTay` — sổ tay chú giải, chế độ cố vấn.** Có trong `/api/suggest` và `/api/classify` khi nhóm của mã đã chọn có sổ tay (152 nhóm; nhóm chưa có → `trangThai: CHUA_CO_SO_TAY_CHO_NHOM`).
+**`soTay` — sổ tay chú giải, chế độ cố vấn.** Có trong `/api/suggest` và `/api/classify` khi nhóm của mã đã chọn có sổ tay (1.243 nhóm; nhóm chưa có → `trangThai: CHUA_CO_SO_TAY_CHO_NHOM`).
 - **Không đổi** mã đã chọn, trạng thái, cờ hay prompt: chỉ đính thêm thông tin. Hệ thống ERP cứ xử lý như cũ; hiển thị `soTay` cho chuyên viên nếu muốn.
 - `canGiaiTrinh[]` = máy **nghi**, chưa kết luận: sổ tay nhóm đã chọn loại trừ đích danh một nhóm khác mà nhóm đó cũng đang là ứng viên. Chưa đo tỉ lệ báo oan — đừng dùng làm cổng chặn tự động.
 - `yKienWco[]` = tóm tắt **tự viết** của ý kiến phân loại WCO cho đúng mã (6 số), kèm số thứ tự in, năm thông qua, `doTinCay` (`CHAC` | `SUY_LUAN`). Không phải nguyên văn; `daSoatAnh:false` = chưa đối chiếu ảnh trang gốc; `yKienWcoDayDu:false` = danh sách có thể chưa đủ.

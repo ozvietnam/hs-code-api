@@ -194,7 +194,7 @@ Response:
 ## Ví dụ curl
 
 ```bash
-BASE="https://hs-code-api.vercel.app"
+BASE="https://hs-kb.uythacnhapkhau.com"
 TOKEN="<HS_API_TOKEN>"
 
 # Tra 1 mã
