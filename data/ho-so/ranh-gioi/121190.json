@@ -4,13 +4,19 @@
   "nhom": "1211",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1529#soan-121190",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1760#soat-121190",
+    "ngay": "2026-11-21",
+    "ghiChu": "Chuẩn hoá 12119011/.12/.17/.18/.91/.92/.98 sang daCatNghienHoacDangBot; khớp 3 tiền lệ 5818, 1258, 2232/TB-TCHQ.",
+    "bam": "cdf7309e3a7edd59623e0d0be063720d8cb7d37d0dc2fe18c5b4a6da749e8ab8"
+  },
   "dieuKienNut": [
     {
       "id": "1211901",
@@ -27,7 +33,7 @@
           "value": "dược liệu"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -42,16 +48,11 @@
           "value": "Cây gai dầu"
         },
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "đã cắt",
-            "nghiền",
-            "dạng bột"
-          ]
+          "fact": "daCatNghienHoacDangBot",
+          "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "12119012",
@@ -62,10 +63,13 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Cây gai dầu"
+        },
+        {
+          "fact": "daCatNghienHoacDangBot",
+          "op": "KHONG"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
-      "phanConLai": true
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "12119013",
@@ -78,7 +82,7 @@
           "value": "Rễ cây ba gạc hoa đỏ"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "12119015",
@@ -91,7 +95,7 @@
           "value": "Rễ cây cam thảo"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "12119017",
@@ -105,9 +109,22 @@
             "TUOI_UOP_LANH",
             "KHO_MUOI"
           ]
+        },
+        {
+          "fact": "daCatNghienHoacDangBot",
+          "op": "CO"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "tươi",
+            "khô"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "phanConLai": true
     },
     {
       "hs": "12119018",
@@ -115,23 +132,19 @@
       "trich": "12119018 - - - Loại khác, đã cắt, nghiền hoặc dạng bột",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "đã cắt",
-            "nghiền",
-            "dạng bột"
-          ]
+          "fact": "daCatNghienHoacDangBot",
+          "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "phanConLai": true
     },
     {
       "hs": "12119019",
       "nguon": "tax.12119019",
       "trich": "12119019 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "12119091",
@@ -144,16 +157,11 @@
           "value": "Cây kim cúc"
         },
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "đã cắt",
-            "nghiền",
-            "dạng bột"
-          ]
+          "fact": "daCatNghienHoacDangBot",
+          "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "12119092",
@@ -164,10 +172,13 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Cây kim cúc"
+        },
+        {
+          "fact": "daCatNghienHoacDangBot",
+          "op": "KHONG"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
-      "phanConLai": true
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "12119094",
@@ -180,7 +191,7 @@
           "value": "Mảnh gỗ đàn hương"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "12119095",
@@ -193,7 +204,7 @@
           "value": "Mảnh gỗ trầm hương"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "12119097",
@@ -206,7 +217,7 @@
           "value": "Vỏ cây persea"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "12119098",
@@ -214,23 +225,19 @@
       "trich": "12119098 - - - Loại khác, đã cắt, nghiền hoặc dạng bột",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "đã cắt",
-            "nghiền",
-            "dạng bột"
-          ]
+          "fact": "daCatNghienHoacDangBot",
+          "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "phanConLai": true
     },
     {
       "hs": "12119099",
       "nguon": "tax.12119099",
       "trich": "12119099 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -242,17 +249,17 @@
     {
       "ma": "12119011",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.12119011 \"Cây gai dầu, đã cắt, nghiền hoặc dạng bột\" (EN \"Cannabis, in cut, crushed or powdered form\") ⇒ tenLoai \"Cây gai dầu\" (tên hàng) + tenLoai [\"đã cắt\",\"nghiền\",\"dạng bột\"] (dạng: cắt HOẶC nghiền HOẶC dạng bột — mảng = hoặc; khuôn 390410 dùng tenLoai cho dạng hàng). Hai điều kiện cùng khoá = VÀ, tách riêng để 12119012 (phanConLai) phủ định được điều kiện DẠNG mà không phủ định tên. So chữ tự do — không tất định."
+      "ghiChu": "tax.12119011 \"Cây gai dầu, đã cắt, nghiền hoặc dạng bột\" (EN \"Cannabis, in cut, crushed or powdered form\") ⇒ tenLoai \"Cây gai dầu\" + daCatNghienHoacDangBot CO."
     },
     {
       "ma": "12119012",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.12119012 \"Cây gai dầu, ở dạng khác\" (EN \"Cannabis, in other forms\") ⇒ tenLoai \"Cây gai dầu\" + phanConLai: true (phần còn lại có tên: \"ở dạng khác\" phủ định 12119011 đứng trước)."
+      "ghiChu": "tax.12119012 \"Cây gai dầu, ở dạng khác\" (EN \"Cannabis, in other forms\") ⇒ tenLoai \"Cây gai dầu\" + daCatNghienHoacDangBot KHONG."
     },
     {
       "ma": "12119013",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.12119013 \"Rễ cây ba gạc hoa đỏ (SEN)\" ⇒ tenLoai \"Rễ cây ba gạc hoa đỏ\" (tên hàng; nguồn sen.12119013 là mô tả chú giải, không trích vì chỉ cần tên)."
+      "ghiChu": "tax.12119013 \"Rễ cây ba gạc hoa đỏ (SEN)\" ⇒ tenLoai \"Rễ cây ba gạc hoa đỏ\"."
     },
     {
       "ma": "12119015",
@@ -262,22 +269,22 @@
     {
       "ma": "12119017",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.12119017 \"Loại khác, tươi hoặc khô, đã cắt, nghiền hoặc dạng bột\" (EN \"Other, fresh or dried, in cut, crushed or powdered form\") — dòng \"Loại khác, <vế>\". CHỈ ghi vế \"tươi hoặc khô\": phuongPhapBaoQuan TRONG [\"TUOI_UOP_LANH\",\"KHO_MUOI\"] (\"tươi\" đọc được ở TUOI_UOP_LANH, \"khô\" đọc được ở KHO_MUOI). Vế \"đã cắt, nghiền hoặc dạng bột\" dùng chung với 12119018: máy phủ định ĐỐI XỨNG hai dòng \"Loại khác, <vế>\" liên tiếp (mỗi dòng phủ định điều kiện của anh em kia), nên nếu cả hai cùng mang điều kiện dạng thì 12119017 không tới được (cong2-dong-khong-toi-duoc: cần thỏa điều kiện dạng MÀ cũng phải trái điều kiện dạng của anh em). Vì vậy mỗi dòng mang điều kiện riêng theo vế KHÁC NHAU: .17 = trạng thái (tươi hoặc khô), .18 = dạng (đã cắt, nghiền hoặc dạng bột). Hệ quả đã biết (chấp nhận theo quy ước 392690, cần người soát kiểm lại): máy tự phủ định vế còn lại của mỗi dòng — .17 = tươi/khô và KHÔNG ở dạng đã cắt/nghiền/dạng bột; .18 = ở dạng đã cắt/nghiền/dạng bột và KHÔNG tươi/khô."
+      "ghiChu": "tax.12119017 \"Loại khác, tươi hoặc khô, đã cắt, nghiền hoặc dạng bột\" (EN \"Other, fresh or dried, in cut, crushed or powdered form\") ⇒ phuongPhapBaoQuan TRONG [\"TUOI_UOP_LANH\",\"KHO_MUOI\"] + daCatNghienHoacDangBot CO + phanConLai: true."
     },
     {
       "ma": "12119018",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.12119018 \"Loại khác, đã cắt, nghiền hoặc dạng bột\" (EN \"Other, in cut, crushed or powdered form\") ⇒ tenLoai [\"đã cắt\",\"nghiền\",\"dạng bột\"] (dạng); máy tự phủ định anh em đứng trước."
+      "ghiChu": "tax.12119018 \"Loại khác, đã cắt, nghiền hoặc dạng bột\" (EN \"Other, in cut, crushed or powdered form\") ⇒ daCatNghienHoacDangBot CO + phanConLai: true (phần còn lại của các dòng đứng trước trong nhánh 1211901, kể cả 12119017 tươi hoặc khô)."
     },
     {
       "ma": "12119091",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.12119091 \"Cây kim cúc, đã cắt, nghiền hoặc dạng bột\" (EN \"Pyrethrum, in cut, crushed or powdered form\") ⇒ tenLoai \"Cây kim cúc\" + tenLoai [\"đã cắt\",\"nghiền\",\"dạng bột\"]."
+      "ghiChu": "tax.12119091 \"Cây kim cúc, đã cắt, nghiền hoặc dạng bột\" (EN \"Pyrethrum, in cut, crushed or powdered form\") ⇒ tenLoai \"Cây kim cúc\" + daCatNghienHoacDangBot CO."
     },
     {
       "ma": "12119092",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.12119092 \"Cây kim cúc, ở dạng khác\" (EN \"Pyrethrum, in other forms\") ⇒ tenLoai \"Cây kim cúc\" + phanConLai: true (phần còn lại có tên)."
+      "ghiChu": "tax.12119092 \"Cây kim cúc, ở dạng khác\" (EN \"Pyrethrum, in other forms\") ⇒ tenLoai \"Cây kim cúc\" + daCatNghienHoacDangBot KHONG."
     },
     {
       "ma": "12119094",
@@ -297,7 +304,7 @@
     {
       "ma": "12119098",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.12119098 \"Loại khác, đã cắt, nghiền hoặc dạng bột\" (EN \"Other, in cut, crushed or powdered form\") ⇒ tenLoai [\"đã cắt\",\"nghiền\",\"dạng bột\"] (dạng)."
+      "ghiChu": "tax.12119098 \"Loại khác, đã cắt, nghiền hoặc dạng bột\" (EN \"Other, in cut, crushed or powdered form\") ⇒ daCatNghienHoacDangBot CO + phanConLai: true (khớp 3 tiền lệ 5818, 1258, 2232/TB-TCHQ)."
     }
   ],
   "traVe": [

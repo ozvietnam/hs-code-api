@@ -358,7 +358,12 @@
    "tuSoiDetThucVatNhom5305",
    "chiDePhongPhaoHieu",
    "coNong23Hoac265mm",
-   "dungChoXeKeoMay8429Hoac8430XeNangHoacXepDo"
+   "dungChoXeKeoMay8429Hoac8430XeNangHoacXepDo",
+   "thanhPhanChiemDaSoKhoiLuong",
+   "daCatNghienHoacDangBot",
+   "loaiDungCuThietBiYTeKhac",
+   "laThietBiPhauThuatHoacYHocDienTu",
+   "laOngThong"
   ],
   "tuVung1": {
    "trangThai": "DA_CHAM",
@@ -6226,6 +6231,12 @@
      "碳"
     ]
    },
+   "docThem": [
+    {
+     "mau": "(\\d+(?:[.,]\\d+)?)\\s*%\\s*(?:of\\s+)?(?:carbon|cacbon)",
+     "donVi": "%"
+    }
+   ],
    "cachViet": {
     "vi": "hàm lượng carbon {giaTri}"
    },
@@ -24327,6 +24338,360 @@
     "zh": "该轮胎是否用于拖拉机、税目84.29或84.30的机械、叉车或其他工业搬运车辆及机器？"
    },
    "ghiChu": "Tiêu đề 4011.80.3 \"Lắp vành có đường kính trên 24 inch, loại dùng cho xe kéo, máy thuộc nhóm 84.29 hoặc 84.30, xe nâng hàng hoặc xe và máy xếp dỡ công nghiệp khác\" và chữ biểu 4011.80.40 \"Lắp vành có đường kính trên 24 inch, loại khác\".",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "khoa": "thanhPhanChiemDaSoKhoiLuong",
+   "kieu": "LIET_KE",
+   "nhanVi": "thành phần chiếm đa số về khối lượng (hỗn hợp quả hạch hoặc quả khô)",
+   "nhanEn": "predominating component by weight (mixtures of nuts or dried fruits)",
+   "nhanZh": "按重量计占多数的成分（坚果或干果什锦）",
+   "cumDaiThang": true,
+   "giaTriHopLe": [
+    "HAT_DIEU_HOAC_QUA_HACH_BRAZIL",
+    "QUA_HACH_KHAC",
+    "QUA_CHA_LA",
+    "BO_CAM_QUYT"
+   ],
+   "moTaGiaTri": {
+    "HAT_DIEU_HOAC_QUA_HACH_BRAZIL": {
+     "nhanVi": "hạt điều hoặc quả hạch Brazil (Brazil nuts) chiếm đa số về khối lượng",
+     "nhanEn": "cashew nuts or Brazil nuts predominate by weight",
+     "nhanZh": "按重量计腰果或巴西果占多数",
+     "cachDoc": {
+      "vi": [
+       "(?:hạt\\s+điều\\s+hoặc\\s+quả\\s+hạch\\s+brazil(?:\\s*\\(brazil\\s+nuts\\))?|hạt\\s+điều|quả\\s+hạch\\s+brazil(?:\\s*\\(brazil\\s+nuts\\))?)\\s+chiếm\\s+(?:đa\\s+số|tỷ\\s+trọng\\s+lớn\\s+nhất|chủ\\s+yếu)(?:\\s+về\\s+khối\\s+lượng)?"
+      ],
+      "en": [
+       "(?:cashew\\s+nuts?\\s+or\\s+brazil\\s+nuts?|cashew\\s+nuts?|brazil\\s+nuts?)\\s+predominat(?:e|es|ing)(?:\\s+by\\s+weight)?"
+      ],
+      "zh": [
+       "腰果或巴西果占多数",
+       "腰果占多数",
+       "巴西果占多数"
+      ]
+     },
+     "cachViet": "hạt điều hoặc quả hạch Brazil chiếm đa số về khối lượng"
+    },
+    "QUA_HACH_KHAC": {
+     "nhanVi": "quả hạch (nuts) khác chiếm đa số về khối lượng",
+     "nhanEn": "other nuts predominate by weight",
+     "nhanZh": "按重量计其他坚果占多数",
+     "cachDoc": {
+      "vi": [
+       "quả\\s+hạch(?:\\s*\\(nuts\\))?\\s+khác\\s+chiếm\\s+(?:đa\\s+số|tỷ\\s+trọng\\s+lớn\\s+nhất|chủ\\s+yếu)(?:\\s+về\\s+khối\\s+lượng)?"
+      ],
+      "en": [
+       "other\\s+nuts\\s+predominat(?:e|es|ing)(?:\\s+by\\s+weight)?"
+      ],
+      "zh": [
+       "其他坚果占多数"
+      ]
+     },
+     "cachViet": "quả hạch khác chiếm đa số về khối lượng"
+    },
+    "QUA_CHA_LA": {
+     "nhanVi": "quả chà là chiếm đa số về khối lượng",
+     "nhanEn": "dates predominate by weight",
+     "nhanZh": "按重量计海枣（椰枣）占多数",
+     "cachDoc": {
+      "vi": [
+       "(?:quả\\s+)?chà\\s+là\\s+chiếm\\s+(?:đa\\s+số|tỷ\\s+trọng\\s+lớn\\s+nhất|chủ\\s+yếu)(?:\\s+về\\s+khối\\s+lượng)?"
+      ],
+      "en": [
+       "dates\\s+predominat(?:e|es|ing)(?:\\s+by\\s+weight)?"
+      ],
+      "zh": [
+       "海枣占多数",
+       "椰枣占多数"
+      ]
+     },
+     "cachViet": "quả chà là chiếm đa số về khối lượng"
+    },
+    "BO_CAM_QUYT": {
+     "nhanVi": "quả bơ hoặc quả cam hoặc quả quýt các loại (kể cả quất) chiếm đa số về khối lượng",
+     "nhanEn": "avocados or oranges or mandarins (including tangerines and satsumas) predominate by weight",
+     "nhanZh": "按重量计鳄梨、橙或柑橘占多数",
+     "cachDoc": {
+      "vi": [
+       "(?:quả\\s+bơ\\s+hoặc\\s+quả\\s+cam\\s+hoặc\\s+quả\\s+quýt(?:\\s+các\\s+loại)?(?:\\s*\\(kể\\s+cả\\s+quất\\))?|quả\\s+bơ|quả\\s+cam|quả\\s+quýt(?:\\s+các\\s+loại)?|quả\\s+quất)\\s+chiếm\\s+(?:đa\\s+số|tỷ\\s+trọng\\s+lớn\\s+nhất|chủ\\s+yếu)(?:\\s+về\\s+khối\\s+lượng)?"
+      ],
+      "en": [
+       "(?:avocados?\\s+or\\s+oranges?\\s+or\\s+mandarins?(?:\\s*\\(including\\s+tangerines\\s+and\\s+satsumas\\))?|avocados?|oranges?|mandarins?|tangerines?|satsumas?)\\s+predominat(?:e|es|ing)(?:\\s+by\\s+weight)?"
+      ],
+      "zh": [
+       "鳄梨、橙或柑橘占多数",
+       "鳄梨占多数",
+       "橙或柑橘占多数"
+      ]
+     },
+     "cachViet": "quả bơ, quả cam hoặc quả quýt chiếm đa số về khối lượng"
+    }
+   },
+   "cachDoc": {
+    "vi": [],
+    "en": [],
+    "zh": []
+   },
+   "cachViet": {
+    "vi": "{giaTri}"
+   },
+   "cauHoi": {
+    "vi": "Trong hỗn hợp quả hạch hoặc quả khô, loại quả/hạt nào chiếm đa số về khối lượng (hạt điều/quả hạch Brazil; quả hạch khác; quả chà là; quả bơ/cam/quýt/quất; hay loại quả khô khác)?",
+    "zh": "在该坚果或干果什锦中，按重量计哪种果实/坚果占多数（腰果/巴西果；其他坚果；海枣；鳄梨/橙/柑橘；还是其他干果）？"
+   },
+   "ghiChu": "Chữ biểu 0813.50.10, 0813.50.20, 0813.50.30, 0813.50.40 \"... chiếm đa số về khối lượng\" (EN \"... predominate by weight\").",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "khoa": "daCatNghienHoacDangBot",
+   "kieu": "CO_KHONG",
+   "nhanVi": "đã cắt, nghiền hoặc ở dạng bột",
+   "nhanEn": "in cut, crushed or powdered form",
+   "nhanZh": "已切、已碎或呈粉状",
+   "cachDoc": {
+    "vi": [
+     "(?<!đã\\s+hoặc\\s+chưa\\s+)(?:đã\\s+)?cắt,\\s*(?:đã\\s+)?nghiền\\s+hoặc\\s+(?:ở\\s+)?dạng\\s+bột",
+     "(?<!đã\\s+hoặc\\s+chưa\\s+)đã\\s+(?:cắt|nghiền)\\b",
+     "(?<!hoặc\\s+)(?:ở\\s+)?dạng\\s+bột(?!\\s+nhão)",
+     "\\bbột\\s+(?:làm\\s+nhang|vỏ\\s+cây|hoa\\s+đậu\\s+biếc|dược\\s+liệu|thảo\\s+dược)"
+    ],
+    "en": [
+     "(?<!whether\\s+or\\s+not\\s+)(?:in\\s+)?cut,\\s*crushed\\s+or\\s+powdered\\s+form",
+     "(?<!whether\\s+or\\s+not\\s+)\\b(?:in\\s+powder(?:ed)?\\s+form|sterilized\\s+powder|powdered\\s+herbs?)\\b"
+    ],
+    "zh": [
+     "已切、已碎或呈粉状",
+     "切碎或粉状"
+    ],
+    "phuDinh": [
+     "không phải",
+     "không",
+     "chưa",
+     "not",
+     "non-?",
+     "非",
+     "不",
+     "未"
+    ]
+   },
+   "cachDocKhong": {
+    "vi": [
+     "ở\\s+dạng\\s+khác",
+     "(?<!đã\\s+hoặc\\s+)chưa\\s+cắt(?:,\\s*chưa\\s+nghiền)?(?:\\s+và\\s+không\\s+(?:ở\\s+)?dạng\\s+bột)?",
+     "không\\s+(?:ở\\s+)?dạng\\s+đã\\s+cắt,\\s*nghiền\\s+hoặc\\s+dạng\\s+bột"
+    ],
+    "en": [
+     "in\\s+other\\s+forms",
+     "not\\s+in\\s+cut,\\s*crushed\\s+or\\s+powdered\\s+form"
+    ],
+    "zh": [
+     "其他形状",
+     "非切碎或粉状"
+    ]
+   },
+   "cachViet": {
+    "vi": "đã cắt, nghiền hoặc dạng bột",
+    "viPhuDinh": "ở dạng khác"
+   },
+   "cauHoi": {
+    "vi": "Dược liệu / bộ phận cây ở dạng đã cắt, nghiền hoặc dạng bột, hay ở dạng khác (nguyên cây/lá/rễ chưa cắt nghiền)?",
+    "zh": "该药材/植物部分是已切、已碎或呈粉状，还是其他形状（未切碎的整株/整叶/整根）？"
+   },
+   "ghiChu": "Chữ biểu 1211.90.11, 1211.90.91 \"đã cắt, nghiền hoặc dạng bột\" (CÓ) đối với 1211.90.12, 1211.90.92 \"ở dạng khác\" (KHÔNG); (1211.90.17, 1211.90.18, 1211.90.98).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "khoa": "loaiDungCuThietBiYTeKhac",
+   "kieu": "LIET_KE",
+   "nhanVi": "loại thiết bị, dụng cụ y tế thuộc phân nhóm 9018.90",
+   "nhanEn": "kind of medical instrument or appliance of subheading 9018.90",
+   "nhanZh": "9018.90子目的医疗仪器及器具类别",
+   "cumDaiThang": true,
+   "giaTriHopLe": [
+    "DEN_SOI_QUANG_DEO_DAU_Y_HOC",
+    "BO_THEO_DOI_TINH_MACH",
+    "DUNG_CU_THIET_BI_DIEN_TU"
+   ],
+   "moTaGiaTri": {
+    "DEN_SOI_QUANG_DEO_DAU_Y_HOC": {
+     "nhanVi": "đèn sợi quang loại dùng đeo trên đầu, được thiết kế dùng trong y học",
+     "nhanEn": "fibre optics headband lamps of a kind designed for medical use",
+     "nhanZh": "医疗用光纤头灯",
+     "cachDoc": {
+      "vi": [
+       "đèn\\s+sợi\\s+quang\\s+loại\\s+dùng\\s+đeo\\s+trên\\s+đầu,\\s*được\\s+thiết\\s+kế\\s+dùng\\s+trong\\s+y\\s+học",
+       "đèn\\s+sợi\\s+quang\\s+(?:loại\\s+)?(?:dùng\\s+)?đeo\\s+(?:trên\\s+)?đầu[^.;\\n]{0,40}\\by\\s+(?:học|tế|khoa)\\b"
+      ],
+      "en": [
+       "fib(?:re|er)\\s+optics?\\s+headband\\s+lamps?\\s+of\\s+a\\s+kind\\s+designed\\s+for\\s+medical\\s+use",
+       "medical\\s+fib(?:re|er)\\s+optics?\\s+headband\\s+lamps?"
+      ],
+      "zh": [
+       "医疗用光纤头灯",
+       "医用光纤头戴灯"
+      ]
+     },
+     "cachViet": "đèn sợi quang loại dùng đeo trên đầu, được thiết kế dùng trong y học"
+    },
+    "BO_THEO_DOI_TINH_MACH": {
+     "nhanVi": "bộ theo dõi tĩnh mạch",
+     "nhanEn": "venous blood pressure manometers / intravenous administration sets",
+     "nhanZh": "静脉监测器（静脉压计/静脉输液器）",
+     "cachDoc": {
+      "vi": [
+       "bộ\\s+theo\\s+dõi\\s+tĩnh\\s+mạch"
+      ],
+      "en": [
+       "venous\\s+blood\\s+pressure\\s+manometers?",
+       "intravenous\\s+administration\\s+sets?"
+      ],
+      "zh": [
+       "静脉监测器",
+       "静脉压计"
+      ]
+     },
+     "cachViet": "bộ theo dõi tĩnh mạch"
+    },
+    "DUNG_CU_THIET_BI_DIEN_TU": {
+     "nhanVi": "dụng cụ và thiết bị điện tử",
+     "nhanEn": "electronic instruments and appliances",
+     "nhanZh": "电子仪器及器具",
+     "cachDoc": {
+      "vi": [
+       "dụng\\s+cụ\\s+và\\s+thiết\\s+bị\\s+(?:phẫu\\s+thuật\\s+điện\\s+tử\\s+hoặc\\s+y\\s+học\\s+)?điện\\s+tử",
+       "(?:dụng\\s+cụ|thiết\\s+bị|máy)\\s+(?:phẫu\\s+thuật|y\\s+học|y\\s+tế)\\s+điện\\s+tử",
+       "máy\\s+(?:phát\\s+tia\\s+)?plasma\\s+lạnh"
+      ],
+      "en": [
+       "electronic\\s+instruments?\\s+and\\s+appliances?",
+       "electro-?surgical\\s+or\\s+electro-?medical\\s+instruments?\\s+and\\s+appliances?",
+       "(?:electro-?surgical|electro-?medical)\\s+(?:instruments?|appliances?|apparatus)"
+      ],
+      "zh": [
+       "电子仪器及器具",
+       "电外科或电医学仪器及器具",
+       "电子医疗仪器"
+      ]
+     },
+     "cachViet": "dụng cụ và thiết bị điện tử"
+    }
+   },
+   "cachDoc": {
+    "vi": [],
+    "en": [],
+    "zh": []
+   },
+   "cachViet": {
+    "vi": "{giaTri}"
+   },
+   "cauHoi": {
+    "vi": "Thiết bị, dụng cụ y tế thuộc phân nhóm 9018.90 này là đèn sợi quang loại dùng đeo trên đầu được thiết kế dùng trong y học, bộ theo dõi tĩnh mạch, dụng cụ và thiết bị điện tử, hay loại khác?",
+    "zh": "该9018.90子目的医疗器械是医用光纤头灯、静脉监测器、电子仪器及器具，还是其他？"
+   },
+   "ghiChu": "Chữ biểu 9018.90.10 \"Đèn sợi quang loại dùng đeo trên đầu, được thiết kế dùng trong y học(SEN)\", 9018.90.20 \"Bộ theo dõi tĩnh mạch\", và tiêu đề trung gian (9018.90.3) \"Dụng cụ và thiết bị điện tử\" (kèm dòng con 9018.90.31 \"Dụng cụ và thiết bị phẫu thuật điện tử hoặc y học điện tử\" và tiền lệ 13727/TB-CHQ máy plasma lạnh).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "khoa": "laThietBiPhauThuatHoacYHocDienTu",
+   "kieu": "CO_KHONG",
+   "nhanVi": "dụng cụ và thiết bị phẫu thuật điện tử hoặc y học điện tử",
+   "nhanEn": "electro-surgical or electro-medical instruments and appliances",
+   "nhanZh": "电外科或电医学仪器及器具",
+   "cachDoc": {
+    "vi": [
+     "dụng\\s+cụ\\s+và\\s+thiết\\s+bị\\s+phẫu\\s+thuật\\s+điện\\s+tử\\s+hoặc\\s+y\\s+học\\s+điện\\s+tử",
+     "(?:dụng\\s+cụ|thiết\\s+bị|máy)\\s+(?:phẫu\\s+thuật\\s+điện\\s+tử|y\\s+học\\s+điện\\s+tử)",
+     "máy\\s+(?:phát\\s+tia\\s+)?plasma\\s+lạnh"
+    ],
+    "en": [
+     "electro-?surgical\\s+or\\s+electro-?medical\\s+instruments?\\s+and\\s+appliances?",
+     "(?:electro-?surgical|electro-?medical)\\s+(?:instruments?|appliances?|apparatus)"
+    ],
+    "zh": [
+     "电外科或电医学仪器及器具",
+     "电外科仪器",
+     "电医学仪器"
+    ],
+    "phuDinh": [
+     "không phải",
+     "không",
+     "not",
+     "non-?",
+     "非",
+     "不"
+    ]
+   },
+   "cachDocKhong": {
+    "vi": [
+     "không\\s+phải\\s+dụng\\s+cụ\\s+và\\s+thiết\\s+bị\\s+phẫu\\s+thuật\\s+điện\\s+tử\\s+hoặc\\s+y\\s+học\\s+điện\\s+tử"
+    ],
+    "en": [
+     "not\\s+electro-?surgical\\s+or\\s+electro-?medical\\s+instruments?"
+    ],
+    "zh": [
+     "非电外科或电医学仪器"
+    ]
+   },
+   "cachViet": {
+    "vi": "dụng cụ và thiết bị phẫu thuật điện tử hoặc y học điện tử",
+    "viPhuDinh": "không phải dụng cụ và thiết bị phẫu thuật điện tử hoặc y học điện tử"
+   },
+   "cauHoi": {
+    "vi": "Thiết bị điện tử y tế này có phải là dụng cụ, thiết bị phẫu thuật điện tử hoặc y học điện tử (như dao mổ điện, máy đốt điện, máy plasma lạnh điều trị vết thương…) không?",
+    "zh": "该电子医疗设备是否为电外科或电医学仪器及器具（如高频电刀、电凝器、冷等离子体治疗仪等）？"
+   },
+   "ghiChu": "Chữ biểu 9018.90.31 \"Dụng cụ và thiết bị phẫu thuật điện tử hoặc y học điện tử\" (EN \"Electro-surgical or electro-medical instruments and appliances\"; TB 13727/TB-CHQ máy plasma lạnh điều trị vết thương).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "khoa": "laOngThong",
+   "kieu": "CO_KHONG",
+   "nhanVi": "ống thông (catheter)",
+   "nhanEn": "catheter",
+   "nhanZh": "导管",
+   "cachDoc": {
+    "vi": [
+     "(?<!kim\\s+tiêm,\\s*)ống\\s+thông(?!\\s*,?\\s*ống\\s+dẫn)"
+    ],
+    "en": [
+     "\\bcatheters?\\b"
+    ],
+    "zh": [
+     "导管"
+    ],
+    "phuDinh": [
+     "không phải",
+     "không",
+     "trừ",
+     "other than",
+     "not",
+     "非",
+     "不"
+    ]
+   },
+   "cachDocKhong": {
+    "vi": [
+     "không\\s+phải\\s+ống\\s+thông",
+     "ống\\s+tiêm\\s+dùng\\s+một\\s+lần"
+    ],
+    "en": [
+     "not\\s+catheters?",
+     "disposable\\s+tubes\\s+for\\s+intravenous\\s+fluids"
+    ],
+    "zh": [
+     "非导管"
+    ]
+   },
+   "cachViet": {
+    "vi": "ống thông",
+    "viPhuDinh": "không phải ống thông"
+   },
+   "cauHoi": {
+    "vi": "Dụng cụ y tế này có phải là ống thông (catheter) không?",
+    "zh": "该医疗器械是否为导管（catheter）？"
+   },
+   "ghiChu": "Chữ biểu 9018.39.10 \"Ống thông\" (EN \"Catheters\") — tách riêng vì chữ \"ống\" trùng tiêu đề 9018.3 và chữ \"thông\" nằm trong TU_CHUNG_TEN_LOAI nên tenLoai bị coi là không tất định.",
    "nguonLoai": "AI_DA_KIEM"
   }
  ],

@@ -345,6 +345,12 @@ const KHOA_MOI = {
   tuSoiDetThucVatNhom5305: 'CO_KHONG',
   chiDePhongPhaoHieu: 'CO_KHONG',
   coNong23Hoac265mm: 'CO_KHONG',
+  // 22/11/2026 (OZV-1760): khoá cho 0813.50, 1211.90, 9018.90, 9018.39
+  thanhPhanChiemDaSoKhoiLuong: 'LIET_KE',
+  daCatNghienHoacDangBot: 'CO_KHONG',
+  loaiDungCuThietBiYTeKhac: 'LIET_KE',
+  laThietBiPhauThuatHoacYHocDienTu: 'CO_KHONG',
+  laOngThong: 'CO_KHONG',
 };
 
 // ── 1. Nạp theo phiên bản ─────────────────────────────────────────────────────────────────────────────────────────
@@ -1065,6 +1071,53 @@ check('vietCum đơn vị @1 KHÔNG đổi ("CS: 75000W" — không cách)', T.v
   }
   const ms = Number(process.hrtime.bigint() - t0) / 1e6;
   check(`OZV-1757 ReDoS ~40.000 từ lặp trên laNhanHatCo + thichHopDungChoNguoi < 2000 ms (thực tế ${ms.toFixed(0)} ms)`, ms < 2000, { ms });
+}
+
+// OZV-1760 — kiểm chứng 5 khoá mới (thanhPhanChiemDaSoKhoiLuong, daCatNghienHoacDangBot, loaiDungCuThietBiYTeKhac,
+// laThietBiPhauThuatHoacYHocDienTu, laOngThong) và mở rộng hamLuongCarbon + ReDoS 40.000 từ lặp < 2 giây (quy tắc 6b).
+{
+  // 1. thanhPhanChiemDaSoKhoiLuong (0813.50.10..40)
+  la('chữ biểu 0813.50.10', 'thanhPhanChiemDaSoKhoiLuong', 'Hạt điều hoặc quả hạch Brazil (Brazil nuts) chiếm đa số về khối lượng', 'HAT_DIEU_HOAC_QUA_HACH_BRAZIL');
+  la('chữ biểu 0813.50.20', 'thanhPhanChiemDaSoKhoiLuong', 'Quả hạch (nuts) khác chiếm đa số về khối lượng', 'QUA_HACH_KHAC');
+  la('chữ biểu 0813.50.30', 'thanhPhanChiemDaSoKhoiLuong', 'Quả chà là chiếm đa số về khối lượng', 'QUA_CHA_LA');
+  la('chữ biểu 0813.50.40', 'thanhPhanChiemDaSoKhoiLuong', 'Quả bơ hoặc quả cam hoặc quả quýt các loại (kể cả quất) chiếm đa số về khối lượng', 'BO_CAM_QUYT');
+  la('En cashew nuts predominate by weight', 'thanhPhanChiemDaSoKhoiLuong', 'Mixtures of which cashew nuts or Brazil nuts predominate by weight', 'HAT_DIEU_HOAC_QUA_HACH_BRAZIL');
+  chuaBiet('hỗn hợp có hạt điều nhưng không nói chiếm đa số ⇒ CHUA_BIET', 'thanhPhanChiemDaSoKhoiLuong', 'Hỗn hợp quả khô có hạt điều và nho khô');
+
+  // 2. daCatNghienHoacDangBot (1211.90.11, .12, .17, .18, .91, .92, .98)
+  la('chữ biểu 1211.90.11 (đã cắt, nghiền hoặc dạng bột)', 'daCatNghienHoacDangBot', 'Cây gai dầu, đã cắt, nghiền hoặc dạng bột', true);
+  la('chữ biểu 1211.90.12 (ở dạng khác)', 'daCatNghienHoacDangBot', 'Cây gai dầu, ở dạng khác', false);
+  la('tiền lệ 5818/TB-TCHQ bột vỏ cây bời lời', 'daCatNghienHoacDangBot', 'Bột làm nhang làm từ vỏ cây bời lời', true);
+  la('tiền lệ 1258/TB-TCHQ hoa đậu biếc dạng bột', 'daCatNghienHoacDangBot', 'Hoa đậu biếc (dạng bột, màu xanh)', true);
+  la('tiền lệ 2232/TB-TCHQ Butterfly Pea Sterilized Powder', 'daCatNghienHoacDangBot', 'BUTTERFLY PEA STERILIZED POWDER', true);
+  chuaBiet('tiêu đề nhóm 12.11 đã hoặc chưa cắt, nghiền hoặc xay thành bột ⇒ CHUA_BIET', 'daCatNghienHoacDangBot', 'Các loại cây dùng làm dược phẩm, đã hoặc chưa cắt, nghiền hoặc xay thành bột');
+
+  // 3. loaiDungCuThietBiYTeKhac & laThietBiPhauThuatHoacYHocDienTu (9018.90.10 / .20 / .3 / .31)
+  la('chữ biểu 9018.90.10', 'loaiDungCuThietBiYTeKhac', 'Đèn sợi quang loại dùng đeo trên đầu, được thiết kế dùng trong y học(SEN)', 'DEN_SOI_QUANG_DEO_DAU_Y_HOC');
+  la('chữ biểu 9018.90.20', 'loaiDungCuThietBiYTeKhac', 'Bộ theo dõi tĩnh mạch', 'BO_THEO_DOI_TINH_MACH');
+  la('tiêu đề 9018.90.3', 'loaiDungCuThietBiYTeKhac', 'Dụng cụ và thiết bị điện tử', 'DUNG_CU_THIET_BI_DIEN_TU');
+  la('chữ biểu 9018.90.31', 'laThietBiPhauThuatHoacYHocDienTu', 'Dụng cụ và thiết bị phẫu thuật điện tử hoặc y học điện tử', true);
+  la('tiền lệ 13727/TB-CHQ máy plasma lạnh (tầng 9018.90.3)', 'loaiDungCuThietBiYTeKhac', 'Máy plasma lạnh PlasmaMED-GAP điều trị vết thương', 'DUNG_CU_THIET_BI_DIEN_TU');
+  la('tiền lệ 13727/TB-CHQ máy plasma lạnh (dòng 9018.90.31)', 'laThietBiPhauThuatHoacYHocDienTu', 'Máy plasma lạnh PlasmaMED-GAP điều trị vết thương', true);
+  chuaBiet('đèn sợi quang y tế không đeo đầu ⇒ CHUA_BIET', 'loaiDungCuThietBiYTeKhac', 'Nguồn sáng đèn sợi quang dùng trong nội soi y học');
+
+  // 4. laOngThong (9018.39.10)
+  la('chữ biểu 9018.39.10 (Ống thông)', 'laOngThong', 'Ống thông', true);
+  la('En Catheters', 'laOngThong', 'Catheters for medical use', true);
+  la('phủ định không phải ống thông ⇒ false', 'laOngThong', 'Ống dẫn dịch không phải ống thông', false);
+  chuaBiet('câu trích tiêu đề 9018.3 trong 4842/TB-TCHQ ⇒ CHUA_BIET', 'laOngThong', 'phân nhóm "- Bơm tiêm, kim tiêm, ống thông ống dẫn lưu và loại tương tự:"');
+
+  // 5. hamLuongCarbon mở rộng đọc "chứa dưới 0,45% carbon" (7306.90.97)
+  la('chữ biểu 7306.90.97 (chứa dưới 0,45% carbon)', 'hamLuongCarbon', 'Loại khác, có đường kính trong trên 12,5 mm, đường kính ngoài nhỏ hơn 140 mm và chứa dưới 0,45% carbon tính theo khối lượng', 0.45, { op: '<' });
+
+  // 6. ReDoS ~40.000 từ lặp < 2 giây (CLAUDE.md quy tắc 6b)
+  const redosText1760 = Array(8000).fill('quả hạch hoặc quả khô dụng cụ và thiết bị').join(' ');
+  const t0 = process.hrtime.bigint();
+  for (const fk of ['thanhPhanChiemDaSoKhoiLuong', 'daCatNghienHoacDangBot', 'loaiDungCuThietBiYTeKhac', 'laThietBiPhauThuatHoacYHocDienTu', 'laOngThong', 'hamLuongCarbon']) {
+    T.docGiaTri(fk, redosText1760);
+  }
+  const ms = Number(process.hrtime.bigint() - t0) / 1e6;
+  check(`OZV-1760 ReDoS ~40.000 từ lặp trên 6 khoá < 2000 ms (thực tế ${ms.toFixed(0)} ms)`, ms < 2000, { ms });
 }
 
 console.log(`\n${pass} pass, ${fail} fail`);
