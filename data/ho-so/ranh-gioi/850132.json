@@ -14,9 +14,19 @@
     "boi": "CLAUDE_DUYET",
     "phien": "claude-agent:duyet-L27-20261111#soat-L27",
     "ngay": "2026-11-11",
-    "ghiChu": "Tiêu đề 750 W–37,5 kW / 37,5–75 kW ↔ congSuat biên đúng; động cơ dùng cho nhóm 84.15/84.18/84.50(/85.09/85.16) và 'dùng cho xe của Chương 87' (không có chữ 'động cơ xe' — đúng dungCho Chương 87); 'Động cơ khác' là phần còn lại trừ máy phát (phanConLai), 'Máy phát điện' tenLoai.",
-    "bam": "a4488af3e6352b3059388a304a62216935930c7eb95cfdb7f0961d9459f1afbd"
+    "ghiChu": "Tiêu đề 750 W–37,5 kW / 37,5–75 kW ↔ congSuat biên đúng; động cơ dùng cho nhóm 84.15/84.18/84.50(/85.09/85.16) và 'dùng cho xe của Chương 87' (không có chữ 'động cơ xe' — đúng dungCho Chương 87); 'Động cơ khác' là tenLoai Động cơ + phần còn lại trừ anh em (phanConLai), 'Máy phát điện' tenLoai.",
+    "bam": "4ede0110098793c3663872840fbb7654adf428627ac98d7aacdbff6cb9fb92da"
   },
+  "loBieu": [
+    {
+      "tang": "8501322",
+      "lyDo": "Tầng 8501322 «Công suất trên 750 W nhưng không quá 37,5 kW» (dưới 85013 «Động cơ một chiều khác; máy phát điện một chiều») chia kín thành động cơ (.21, .24, .25 «Động cơ khác» phanConLai) và máy phát điện (.26); vector tenLoai ngoài «Động cơ»/«Máy phát điện» thuộc ngoài phân nhóm."
+    },
+    {
+      "tang": "8501323",
+      "lyDo": "Tầng 8501323 «Công suất trên 37,5 kW nhưng không quá 75 kW» (dưới 85013 «Động cơ một chiều khác; máy phát điện một chiều») chia kín thành động cơ (.31, .32 «Động cơ khác» phanConLai) và máy phát điện (.33); vector tenLoai ngoài «Động cơ»/«Máy phát điện» thuộc ngoài phân nhóm."
+    }
+  ],
   "dieuKienNut": [
     {
       "id": "850132",
@@ -126,7 +136,13 @@
       "hs": "85013225",
       "nguon": "tax.85013225",
       "trich": "85013225 - - - - Động cơ khác",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Động cơ"
+        }
+      ],
       "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": [
         "85013221",
@@ -173,7 +189,13 @@
       "hs": "85013232",
       "nguon": "tax.85013232",
       "trich": "85013232 - - - - Động cơ khác",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Động cơ"
+        }
+      ],
       "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": [
         "85013231",
@@ -213,7 +235,7 @@
     {
       "ma": "85013225",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85013225 \"Động cơ khác\" ⇒ tenLoai \"Động cơ\" + phanConLai: true (phần còn lại có tên, mẫu 850131 .70) — dieuKienSo trống + phanConLai (vòng 8b: hàng thoả tầng mà không vào con nào rơi về phần còn lại)"
+      "ghiChu": "tax.85013225 \"Động cơ khác\" ⇒ tenLoai \"Động cơ\" + phanConLai (phần còn lại có tên, mẫu 850131 .70)"
     },
     {
       "ma": "85013226",
@@ -228,7 +250,7 @@
     {
       "ma": "85013232",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85013232 \"Động cơ khác\" ⇒ tenLoai \"Động cơ\" + phanConLai: true — dieuKienSo trống + phanConLai (vòng 8b: hàng thoả tầng mà không vào con nào rơi về phần còn lại)"
+      "ghiChu": "tax.85013232 \"Động cơ khác\" ⇒ tenLoai \"Động cơ\" + phanConLai (phần còn lại có tên, mẫu 850131 .70)"
     },
     {
       "ma": "85013233",
