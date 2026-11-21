@@ -130,4 +130,89 @@ describe('lib/dieu-kien-so.js — gỡ tiêu đề cha đa vế cho LIET_KE & t�
     assert.equal(caDu.ketQua, 'CHOT');
     assert.equal(caDu.hs, '21039013');
   });
+
+  test('OZV-1698: boVeRiengCuaDong lọc ký hiệu (SEN) ở 36049040 và tách vế "và máy phát điện" với commonAllSibs ở 8501', () => {
+    const r3604 = chotDong8({
+      hs: '360490',
+      productText:
+        'Pháo hoa, pháo hiệu, pháo chống mưa đá, pháo hiệu sương mù và các sản phẩm pháo khác - Loại khác: Pháo hiệu (SEN)',
+    });
+    assert.equal(r3604.ketQua, 'CHOT');
+    assert.equal(r3604.hs, '36049040');
+
+    assert.equal(DK.coCumPhanBiet('Động cơ', '85013170'), true);
+    assert.equal(DK.coCumPhanBiet('Động cơ', '85013225'), true);
+  });
+
+  test('OZV-1698: danhGiaTuChu với op TUONG_TU trả THOA tất định khi khớp khẳng định đích danh và giữ CHUA_BIET khi không khớp', () => {
+    const dk38253010 = {
+      fact: 'tenLoai',
+      op: 'TUONG_TU',
+      value: ['Bơm tiêm', 'kim tiêm', 'ống dẫn lưu'],
+    };
+    const rKhop = DK.danhGiaTuChu(
+      dk38253010,
+      'Rác thải bệnh viện: Bơm tiêm, kim tiêm, ống dẫn lưu và các loại tương tự',
+      '38253010',
+    );
+    assert.equal(rKhop.trangThai, 'THOA');
+    assert.equal(rKhop.tatDinh, true);
+
+    const rKhongKhop = DK.danhGiaTuChu(
+      dk38253010,
+      'Rác thải bệnh viện: Bông băng gạc y tế đã qua sử dụng',
+      '38253010',
+    );
+    assert.equal(rKhongKhop.trangThai, 'CHUA_BIET');
+
+    const rChot3825 = chotDong8({
+      hs: '382530',
+      productText: 'Rác thải bệnh viện: Bơm tiêm, kim tiêm, ống dẫn lưu và các loại tương tự',
+    });
+    assert.equal(rChot3825.ketQua, 'CHOT');
+    assert.equal(rChot3825.hs, '38253010');
+  });
+
+  test('OZV-1698: nutConTranhChap kiểm chuTuMoTaHang để tên tổ tiên chung 0714 không chặn oan 07149091', () => {
+    const r0714 = chotDong8({
+      hs: '071490',
+      productText:
+        'Sắn, củ dong, củ lan, a-ti-sô Jerusalem, khoai lang và các loại củ và rễ tương tự có hàm lượng tinh bột hoặc inulin cao, tươi, ướp lạnh, đông lạnh hoặc khô, đã hoặc chưa thái lát hoặc làm thành dạng viên; lõi cây cọ sago. - Loại khác - Loại khác: Đông lạnh',
+    });
+    assert.equal(r0714.ketQua, 'CHOT');
+    assert.equal(r0714.hs, '07149091');
+
+    const r27101212 = chotDong8({
+      hs: '271012',
+      productText:
+        'Dầu có nguồn gốc từ dầu mỏ - Dầu nhẹ và các chế phẩm: Xăng động cơ, có pha chì: RON 90 và cao hơn nhưng dưới RON 97',
+    });
+    assert.equal(r27101212.ketQua, 'CHOT');
+    assert.equal(r27101212.hs, '27101212');
+
+    const rRonKhongQua = DK.danhGiaTuChu(
+      { fact: 'triSoOctan', op: '<=', value: 95, donVi: 'RON' },
+      'Xăng động cơ: từ RON 90 nhưng không quá RON 95',
+      '27101212',
+    );
+    assert.equal(rRonKhongQua.trangThai, 'THOA');
+    assert.equal(rRonKhongQua.tatDinh, true);
+
+    const r85011051 = chotDong8({
+      hs: '850110',
+      productText:
+        'Động cơ điện và máy phát điện (trừ tổ máy phát điện) - Động cơ có công suất không quá 37,5 W - Động cơ khác, kể cả động cơ vạn năng (một chiều/xoay chiều) - Động cơ bước: Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16',
+    });
+    assert.equal(r85011051.ketQua, 'CHOT');
+    assert.equal(r85011051.hs, '85011051');
+
+    const r85011091 = chotDong8({
+      hs: '850110',
+      productText:
+        'Động cơ điện và máy phát điện (trừ tổ máy phát điện) - Động cơ có công suất không quá 37,5 W - Động cơ khác, kể cả động cơ vạn năng (một chiều/xoay chiều) - Loại khác: Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16',
+    });
+    assert.equal(r85011091.ketQua, 'THIEU_SO_LIEU');
+    assert.ok((r85011091.missingFacts || []).some((m) => m.fact === 'kieuDongCoDien'));
+    assert.ok(!(r85011091.missingFacts || []).some((m) => m.fact === 'loaiDongDien'));
+  });
 });
