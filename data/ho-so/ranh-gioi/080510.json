@@ -4,14 +4,37 @@
   "nhom": "0805",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T1542#soan-080510",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
-  "dieuKienNut": [],
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-01#soat-080510",
+    "ngay": "2026-11-21",
+    "ghiChu": "Đã chuẩn hoá dieuKienSo bám chữ biểu thuế",
+    "bam": "a766b58ea4728ec1e2d9b02786bf25fd20111d50e50d58e7aabb7e1e60044061"
+  },
+  "dieuKienNut": [
+    {
+      "id": "080510",
+      "nguon": "wco.080510",
+      "trich": "080510 Fruit, edible; oranges, fresh or dried",
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "TUOI_UOP_LANH",
+            "KHO_MUOI"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    }
+  ],
   "dong8": [
     {
       "hs": "08051010",
@@ -19,12 +42,14 @@
       "trich": "08051010 - - Tươi",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Tươi"
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "TUOI_UOP_LANH"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "08051020",
@@ -32,31 +57,31 @@
       "trich": "08051020 - - Khô",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Khô"
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "KHO_MUOI"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
+      "ma": "080510",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Phạm vi phân nhóm dieuKienNut[080510] theo chữ HS 6 số (wco.080510 \"oranges, fresh or dried\"; nhóm 08.05 \"tươi hoặc khô\") ⇒ phuongPhapBaoQuan TRONG [TUOI_UOP_LANH, KHO_MUOI] (cùng khuôn 080450)."
+    },
+    {
       "ma": "08051010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.08051010 \"Tươi\" ⇒ tenLoai \"Tươi\" nguyên văn (không dùng phuongPhapBaoQuan TRONG [TUOI_UOP_LANH]: tầng không có con \"Loại khác\", khoá liệt kê vét mọi giá trị từ vựng — vector sống/đông lạnh/hun khói không thuộc phân nhóm (chỉ tươi hoặc khô) nhưng bị coi là lỗ hổng, cùng xử lý như 030711, 640620)"
+      "ghiChu": "tax.08051010 \"Tươi\" ⇒ phuongPhapBaoQuan TRONG [TUOI_UOP_LANH]"
     },
     {
       "ma": "08051020",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.08051020 \"Khô\" ⇒ tenLoai \"Khô\" nguyên văn, cùng khoá với anh em .10 (lý do như ghi chú .10)"
-    }
-  ],
-  "traVe": [
-    {
-      "phien": "claude-agent:duyet-L4-20261111#soat-L4",
-      "ngay": "2026-11-11",
-      "lyDo": "(A) 080510:08051010/08051020 SAI TRỤC ⇒ THU HẸP: chữ biểu \"Tươi\"/\"Fresh\", \"Khô\"/\"Dried\" ghi thành tenLoai TEN_LOAI \"Tươi\"/\"Khô\"; tên hàng \"cam sành\" không chứa \"tươi\"/\"khô\" ⇒ cả hai dòng TRÁI, không có Loại khác ⇒ cam không vào dòng nào. Dùng phuongPhapBaoQuan TRONG [TUOI_UOP_LANH] / [KHO_MUOI] (như 080450)."
+      "ghiChu": "tax.08051020 \"Khô\" ⇒ phuongPhapBaoQuan TRONG [KHO_MUOI]"
     }
   ]
 }

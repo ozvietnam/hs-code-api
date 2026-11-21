@@ -5,6 +5,23 @@ ADR, thẻ. Lộ trình dài hạn: `docs/backlog/README.md` và bảng việc P
 
 ---
 
+## 21/11/2026 — Mẫu tiêu chí 6 số (G6-0 / G6-1): 8481, 8412 + cổng máy (ADR-0003)
+
+**Đã làm (PR nhánh `qt/G6-0-mau-tieu-chi-6-so`, PR #1549, trên main sau #1539):** `tieuChi6` khuôn g6@1 cho 8481 (6 mục) và 8412
+(12 mục), áp bằng `node scripts/goi-soan-tieu-chi-6.mjs --ap`. Bảng cạnh thêm loại C10 (3.186 cạnh từ 511 nhóm; 14 cạnh mang
+khoá dữ kiện C13). Cổng `scripts/kiem-tieu-chi-6.mjs` (30 mã lỗi, 3 cảnh báo; vòng 2 thêm phủ vế; 21/11 thêm luật hỏi đặc tính CHI_HOI_MUC_DICH) + `scripts/test-tieu-chi-6.mjs` trong `npm test`.
+Hướng dẫn cho AI soạn: [`docs/giao-viec/do-thi/SOAN-TIEU-CHI-6-SO.md`](giao-viec/do-thi/SOAN-TIEU-CHI-6-SO.md).
+
+**CHƯA đổi đầu vào LLM nào.** `soTayBlock()` (khối sổ tay vòng 2) không đọc `tieuChi6`. `HS_HOI_THEO_SO_TAY` (đang tắt) khi bật
+sẽ lấy căn cứ câu hỏi phân nhóm của 8481 / 8412 từ `tieuChi6`. Mục mới mang nhãn `AI_DA_KIEM`: động cơ hồ sơ chưa đọc.
+
+**Thử nhân bản bằng `ag/gemini-3-flash`:** lần 1 (3 nhóm, [báo cáo](giao-viec/do-thi/thu-nhan-ban-1/BAO-CAO.md)); lần 2 (5 nhóm ×
+3 lần × 5 vòng, 223 lượt gọi, [báo cáo](giao-viec/do-thi/thu-nhan-ban-2/BAO-CAO.md)): vòng cuối 3/5/4 nhóm qua, chấm lại bằng cổng
+cuối 1/5/3. **Chưa đạt tiêu chí chạy loạt** (≥ 4/5 ở cả 3 lần, 0 lỗi lọt). Không có mô hình pro miễn phí trên 9Router. Việc kế:
+bổ sung tu-vung `chatLieu` "da thuộc" + khoá "dạng tấm"; chạy lại 5 × 3 với cổng cuối; nhóm tiêu đề ghép để mô hình mạnh / người soát.
+
+---
+
 ## 21/11/2026 — Đồ thị tri thức, giai đoạn 1: bảng cạnh máy sinh (ADR-0002)
 
 **Kế hoạch CEO duyệt 21/11:** [`docs/ke-hoach-do-thi-tri-thuc-hs.md`](ke-hoach-do-thi-tri-thuc-hs.md). Quyết định:

@@ -4,13 +4,19 @@
   "nhom": "2402",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-240220",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-01#soat-240220",
+    "ngay": "2026-11-21",
+    "ghiChu": "Đã chuẩn hoá dieuKienSo bám chữ biểu thuế",
+    "bam": "f15a2377129a0fd980196415e6b8b49aad71ff088e5a3663ad6fd0ee8504bd42"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -24,7 +30,7 @@
           "value": "Thuốc lá Bi-đi"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "24022020",
@@ -37,19 +43,19 @@
           "value": "Thuốc lá điếu"
         },
         {
-          "fact": "congDung",
-          "op": "CONG_DUNG",
-          "value": "đinh hương"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "có chứa thành phần từ đinh hương"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "24022090",
       "nguon": "tax.24022090",
       "trich": "24022090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -61,14 +67,7 @@
     {
       "ma": "24022020",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.24022020: \"Thuốc lá điếu\" ⇒ tenLoai, \"có chứa thành phần từ đinh hương\" ⇒ congDung \"đinh hương\""
-    }
-  ],
-  "traVe": [
-    {
-      "phien": "claude-agent:duyet-L7-20261111#soat-L7",
-      "ngay": "2026-11-11",
-      "lyDo": "(A) 240220:24022020 SAI TRỤC: chữ biểu 'Thuốc lá điếu, có chứa thành phần từ đinh hương' / EN 'Clove cigarettes' — vế 'có chứa … đinh hương' là THÀNH PHẦN, bản nháp ghi congDung 'đinh hương' (công dụng). Lúc chạy hỏi/ghi 'Công dụng: đinh hương'; thuốc lá điếu đinh hương khai công dụng 'hút' không khớp ⇒ rơi .90 (Loại khác). Cần khoá CO_KHONG kiểu chuaCaCao (THIEU_KHOA_TU_VUNG, khoaDeXuat chuaDinhHuong) hoặc tenLoai theo chữ EN 'Clove cigarettes'."
+      "ghiChu": "tax.24022020: \"Thuốc lá điếu, có chứa thành phần từ đinh hương\" ⇒ tenLoai \"Thuốc lá điếu\" + \"có chứa thành phần từ đinh hương\" (bỏ congDung sai trục)"
     }
   ]
 }

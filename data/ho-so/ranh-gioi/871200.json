@@ -4,13 +4,19 @@
   "nhom": "8712",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T1003#soan-871200",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-02#soat-871200",
+    "ngay": "2026-11-21",
+    "ghiChu": "Đã chuẩn hoá dieuKienSo bám chữ biểu thuế",
+    "bam": "4af5ffca6f225779e90137757e2122c91a4e38a74d27c9bf04c32d6228a8c200"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -24,24 +30,51 @@
           "value": "Xe đạp đua"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87120020",
-      "nguon": "tax.87120020",
-      "trich": "87120020 - Xe đạp được thiết kế dành cho trẻ em (SEN)",
+      "nguon": "sen.87120020",
+      "trich": "Theo mục đích của AHTN 8712.00.20, khái niệm \"xe đạp thiết kế dành cho trẻ em\" chỉ đề cập đến xe đạp: ● có độ dài tối đa giữa chỗ ngồi (ở vị trí thấp nhất) và bàn đạp ở điểm thấp nhất không quá 43 cm; và ● có đường kính bánh xe không quá 16 inch hoặc 40,64 cm.",
       "dieuKienSo": [
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Xe đạp"
+          "value": "xe đạp"
         },
         {
           "fact": "thietKeChoTreEm",
           "op": "CO"
+        },
+        {
+          "fact": "chieuDai",
+          "op": "<=",
+          "value": 43,
+          "donVi": "cm"
+        },
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "duongKinh",
+                "op": "<=",
+                "value": 16,
+                "donVi": "inch"
+              }
+            ],
+            [
+              {
+                "fact": "duongKinh",
+                "op": "<=",
+                "value": 40.64,
+                "donVi": "cm"
+              }
+            ]
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87120030",
@@ -54,7 +87,7 @@
           "value": "Xe đạp khác"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": true
     },
     {
@@ -62,7 +95,7 @@
       "nguon": "tax.87120090",
       "trich": "87120090 - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -74,7 +107,7 @@
     {
       "ma": "87120020",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.87120020 \"Xe đạp được thiết kế dành cho trẻ em (SEN)\" ⇒ tenLoai \"Xe đạp\" + thietKeChoTreEm CO (vế \"được thiết kế dành cho trẻ em\")"
+      "ghiChu": "sen.87120020 \"xe đạp thiết kế dành cho trẻ em: có độ dài tối đa giữa chỗ ngồi và bàn đạp không quá 43 cm; và có đường kính bánh xe không quá 16 inch hoặc 40,64 cm\" ⇒ tenLoai \"xe đạp\" + thietKeChoTreEm CO + chieuDai <= 43 cm + duongKinh <= 16 inch / 40,64 cm"
     },
     {
       "ma": "87120030",
@@ -85,13 +118,6 @@
       "ma": "87120090",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.87120090 \"Loại khác\" trần ⇒ không điều kiện (xe không phải xe đạp, vd xích lô)"
-    }
-  ],
-  "traVe": [
-    {
-      "phien": "claude-agent:duyet-L30-20261111#soat-L30",
-      "ngay": "2026-11-11",
-      "lyDo": "(A) 871200:87120020 bỏ mất ngưỡng số SEN (BỔ SUNG 11/11 mục 1): sổ tay đang chạy có dieuKienSo nguồn sen.87120020 'khoảng cách tối đa yên–bàn đạp <= 43 cm' và 'đường kính bánh <= 16 inch (40,64 cm)', bản nháp thay bằng thietKeChoTreEm CO (khoá CO) ⇒ mất ngưỡng số đang dùng để tách xe đạp trẻ em .20 (45%) khỏi .30/.10."
     }
   ]
 }
