@@ -343,7 +343,11 @@
    "coBoPhanKhuachDai",
    "coLoa",
    "lenMenTuNuocEpRauQua",
-   "laThietBiChoiBacHoacMatChuoc"
+   "laThietBiChoiBacHoacMatChuoc",
+   "hamLuongChatRanKhongChuaMuoi",
+   "laPhanChimDoi",
+   "laSanPhamCaoSuCung",
+   "lucRungTrong"
   ],
   "tuVung1": {
    "trangThai": "DA_CHAM",
@@ -16474,11 +16478,13 @@
    "nhanZh": "粉末状",
    "cachDoc": {
     "vi": [
-     "(?<!hoặc\\s+(?:ở\\s+)?)(?:ở\\s+)?dạng\\s+bột(?!\\s+(?:nhão|hoặc|và)|\\s*,\\s*(?:hạt|vẩy|vảy|mảnh|viên|cục|thỏi|tinh\\s+thể))"
+     "(?<!hoặc\\s+(?:ở\\s+)?)(?:ở\\s+)?dạng\\s+bột(?!\\s+(?:nhão|hoặc|và)|\\s*,\\s*(?:hạt|vẩy|vảy|mảnh|viên|cục|thỏi|tinh\\s+thể))",
+     "bột\\s+cà\\s+chua(?!\\s+dạng\\s+sệt)"
     ],
     "en": [
      "in\\s+powder(?:\\s+form)?",
-     "powder(?:ed)?\\s+form"
+     "powder(?:ed)?\\s+form",
+     "tomato\\s+powder"
     ],
     "zh": [
      "粉末状",
@@ -16504,10 +16510,12 @@
    },
    "cachDocKhong": {
     "vi": [
-     "không\\s+(?:ở\\s+)?dạng\\s+bột"
+     "không\\s+(?:ở\\s+)?dạng\\s+bột",
+     "bột\\s+cà\\s+chua\\s+dạng\\s+sệt"
     ],
     "en": [
-     "not\\s+in\\s+powder\\s+form"
+     "not\\s+in\\s+powder\\s+form",
+     "tomato\\s+paste"
     ],
     "zh": [
      "非粉末状"
@@ -20347,7 +20355,8 @@
     "QUAY",
     "PHUN_PHU",
     "TIA_LASER_HOAC_TIA_SANG_KHAC",
-    "CHUM_TIA_ION_HOI_TU"
+    "CHUM_TIA_ION_HOI_TU",
+    "MAY_DAM"
    ],
    "moTaGiaTri": {
     "QUAY": {
@@ -20422,6 +20431,23 @@
       ]
      },
      "cachViet": "bằng chùm tia ion hội tụ"
+    },
+    "MAY_DAM": {
+     "nhanVi": "đầm nén (máy đầm)",
+     "nhanEn": "tamping (tamping machine)",
+     "nhanZh": "捣固（捣固机）",
+     "cachDoc": {
+      "vi": [
+       "máy\\s+đầm(?!\\s+và\\s+xe\\s+lu)"
+      ],
+      "en": [
+       "tamping\\s+machines?(?!\\s+and\\s+road\\s+rollers?)"
+      ],
+      "zh": [
+       "捣固机"
+      ]
+     },
+     "cachViet": "máy đầm"
     }
    },
    "cachDoc": {
@@ -21187,7 +21213,9 @@
     "VANG_HOAC_MA_VANG",
     "VAT_LIEU_DET",
     "GIAY_XENLULO",
-    "CARBON_GRAPHIT"
+    "CARBON_GRAPHIT",
+    "VANG_HOAC_BAC",
+    "KIM_LOAI_DAT_PHU_VANG_HOAC_BAC"
    ],
    "moTaGiaTri": {
     "TITAN": {
@@ -21392,6 +21420,49 @@
       ]
      },
      "cachViet": "bằng carbon và graphit"
+    },
+    "VANG_HOAC_BAC": {
+     "nhanVi": "vàng hoặc bạc",
+     "nhanEn": "gold or silver",
+     "nhanZh": "金或银",
+     "cachDoc": {
+      "vi": [
+       "(?<!(?:dát\\s+phủ|phủ|mạ|tráng)\\s+)(?:bằng\\s+)?vàng\\s+hoặc\\s+bạc",
+       "(?<!(?:dát\\s+phủ|phủ|mạ|tráng)\\s+)bằng\\s+(?:vàng|bạc)(?!\\s+hoặc\\s+(?:mạ|tráng|phủ))"
+      ],
+      "en": [
+       "(?<!(?:clad|plated|coated)\\s+with\\s+)(?:of\\s+)?gold\\s+or\\s+silver",
+       "(?<!(?:clad|plated|coated)\\s+with\\s+)of\\s+(?:gold|silver)(?!\\s+or\\s+gold[- ]plated)"
+      ],
+      "zh": [
+       "金或银制",
+       "纯金或纯银",
+       "(?<!包)银制"
+      ]
+     },
+     "cachViet": "bằng vàng hoặc bạc"
+    },
+    "KIM_LOAI_DAT_PHU_VANG_HOAC_BAC": {
+     "nhanVi": "kim loại dát phủ vàng hoặc bạc",
+     "nhanEn": "metal clad with gold or silver",
+     "nhanZh": "包金或包银金属",
+     "cachDoc": {
+      "vi": [
+       "(?:bằng\\s+)?kim\\s+loại\\s+dát\\s+phủ\\s+vàng\\s+hoặc\\s+bạc",
+       "(?:bằng\\s+)?kim\\s+loại\\s+dát\\s+phủ\\s+(?:vàng|bạc)"
+      ],
+      "en": [
+       "(?:of\\s+)?metal\\s+clad\\s+with\\s+gold\\s+or\\s+silver",
+       "(?:of\\s+)?metal\\s+clad\\s+with\\s+(?:gold|silver)"
+      ],
+      "zh": [
+       "包金或包银金属",
+       "包金或包银的金属",
+       "包金金属",
+       "包银金属"
+      ]
+     },
+     "cachViet": "bằng kim loại dát phủ vàng hoặc bạc"
     }
    },
    "cachDoc": {
@@ -23370,6 +23441,187 @@
     "zh": "该商品是否为赌博设备（及附带赌具）或麻将？"
    },
    "ghiChu": "Tiêu đề trung gian 9504.90.3 «Thiết bị chơi bạc và đồ phụ trợ đi kèm» và dòng con 9504.90.34, 9504.90.35 «Quân bài Mạt chược…» (CÓ). Không khớp đồ phụ trợ để chơi bowling (9504.90.10) hay đồ chơi ném phi tiêu (9504.90.2). OZV-1742.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "khoa": "hamLuongChatRanKhongChuaMuoi",
+   "kieu": "SO",
+   "nhanVi": "hàm lượng chất rắn không chứa muối",
+   "nhanEn": "salt-free tomato solids content",
+   "nhanZh": "无盐固形物含量",
+   "heDonVi": "phanTram",
+   "donViChuan": "%",
+   "canNguCanh": true,
+   "docMoRong": true,
+   "cachDoc": {
+    "vi": [
+     "hàm\\s+lượng(?:\\s+là)?\\s+chất\\s+rắn\\s+không\\s+chứa\\s+muối",
+     "chất\\s+rắn(?:\\s+cà\\s+chua)?\\s+không\\s+chứa\\s+muối"
+    ],
+    "en": [
+     "salt[-\\s]free\\s+(?:tomato\\s+)?solids?(?:\\s+content)?"
+    ],
+    "zh": [
+     "无盐固形物(?:含量)?"
+    ]
+   },
+   "docThem": [
+    {
+     "mau": "(\\d+(?:[.,]\\d+)?)\\s*%(?:\\s*(?:đến|-|–|~)\\s*\\d+(?:[.,]\\d+)?\\s*%)?\\s*(?:hàm\\s+lượng\\s+(?:là\\s+)?)?chất\\s+rắn(?:\\s+cà\\s+chua)?\\s+không\\s+chứa\\s+muối",
+     "donVi": "%"
+    }
+   ],
+   "cachViet": {
+    "vi": "hàm lượng chất rắn không chứa muối {giaTri}"
+   },
+   "cauHoi": {
+    "vi": "Hàm lượng chất rắn không chứa muối của bột cà chua dạng sệt là bao nhiêu %?",
+    "zh": "该番茄膏的无盐固形物含量是多少百分比（%）？"
+   },
+   "ghiChu": "SEN (2002.90.10) \"Bột cà chua dạng sệt là cà chua nguyên chất cô đặc, có từ 25% đến 40% hàm lượng là chất rắn không chứa muối\".",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "khoa": "laPhanChimDoi",
+   "kieu": "CO_KHONG",
+   "nhanVi": "phân chim, dơi (guano)",
+   "nhanEn": "guano (bird or bat droppings)",
+   "nhanZh": "鸟粪、蝙蝠粪（海鸟粪）",
+   "cachDoc": {
+    "vi": [
+     "phân\\s+chim(?:\\s*,\\s*dơi)?",
+     "phân\\s+dơi"
+    ],
+    "en": [
+     "guano",
+     "bird\\s+or\\s+bat\\s+droppings"
+    ],
+    "zh": [
+     "海鸟粪",
+     "鸟粪",
+     "蝙蝠粪"
+    ],
+    "phuDinh": [
+     "không phải",
+     "không",
+     "trừ",
+     "other than",
+     "not",
+     "非",
+     "不",
+     "除"
+    ]
+   },
+   "cachDocKhong": {
+    "vi": [
+     "trừ\\s+phân\\s+chim,\\s*dơi",
+     "không\\s+phải\\s+phân\\s+(?:chim(?:\\s*,\\s*dơi)?|dơi)"
+    ],
+    "en": [
+     "other\\s+than\\s+guano",
+     "not\\s+guano"
+    ],
+    "zh": [
+     "海鸟粪除外",
+     "非海鸟粪"
+    ]
+   },
+   "cachViet": {
+    "vi": "phân chim, dơi",
+    "viPhuDinh": "không phải phân chim, dơi"
+   },
+   "cauHoi": {
+    "vi": "Hàng có phải là phân chim hoặc phân dơi (guano) không?",
+    "zh": "该货物是鸟粪或蝙蝠粪（海鸟粪 / guano）吗？"
+   },
+   "ghiChu": "Chữ biểu 3101.00.92 \"Nguồn gốc từ động vật (trừ phân chim, dơi), đã qua xử lý hóa học\" (đọc KHÔNG; EN \"other than guano\").",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "khoa": "laSanPhamCaoSuCung",
+   "kieu": "CO_KHONG",
+   "nhanVi": "là sản phẩm bằng cao su cứng (khác dạng thô hoặc phế liệu, phế thải)",
+   "nhanEn": "is an article of hard rubber (other than bulk forms, waste and scrap)",
+   "nhanZh": "硬质橡胶制品（非初级形状或废碎料）",
+   "cachDoc": {
+    "vi": [
+     "(?<!phế\\s+liệu\\s+và\\s+phế\\s+thải;\\s*)(?:các\\s+)?sản\\s+phẩm\\s+bằng\\s+cao\\s+su\\s+cứng(?:\\s+khác)?",
+     "(?<!phế\\s+liệu\\s+và\\s+phế\\s+thải;\\s*(?:các\\s+)?sản\\s+phẩm\\s+)(?<!(?:phế\\s+liệu|phế\\s+thải|mảnh\\s+vụn|dạng\\s+khối|dạng\\s+tấm|dạng\\s+phiến|dạng\\s+thanh|dạng\\s+que|dạng\\s+bột|dạng\\s+nhão)\\s+)bằng\\s+cao\\s+su\\s+cứng(?:\\s+khác)?"
+    ],
+    "en": [
+     "(?:other\\s+)?articles?\\s+of\\s+hard\\s+rubber"
+    ],
+    "zh": [
+     "硬质橡胶制品",
+     "其他硬质橡胶制品"
+    ],
+    "phuDinh": [
+     "không phải",
+     "không",
+     "non-?",
+     "not",
+     "非",
+     "不"
+    ]
+   },
+   "cachDocKhong": {
+    "vi": [
+     "(?:phế\\s+liệu|phế\\s+thải|mảnh\\s+vụn)(?:\\s+và\\s+(?:phế\\s+thải|mảnh\\s+vụn))?[^,;\\n]{0,40}?cao\\s+su\\s+cứng",
+     "cao\\s+su\\s+cứng[^,;\\n]{0,40}?ở\\s+dạng\\s+(?:khối|tấm|phiến|thanh|que|bột|nhão)",
+     "không\\s+phải\\s+sản\\s+phẩm\\s+bằng\\s+cao\\s+su\\s+cứng"
+    ],
+    "en": [
+     "(?:waste|scrap|powder|sheets?|rods?|profile\\s+shapes?)\\s+of\\s+hard\\s+rubber",
+     "not\\s+articles?\\s+of\\s+hard\\s+rubber"
+    ],
+    "zh": [
+     "硬质橡胶废碎料",
+     "非硬质橡胶制品"
+    ]
+   },
+   "cachViet": {
+    "vi": "sản phẩm bằng cao su cứng",
+    "viPhuDinh": "không phải sản phẩm bằng cao su cứng"
+   },
+   "cauHoi": {
+    "vi": "Hàng là sản phẩm hoàn chỉnh bằng cao su cứng (tay cầm, vỏ ắc quy, thùng chứa…) hay là cao su cứng ở dạng thô (khối, tấm, thanh, que, bột) / phế liệu, phế thải?",
+    "zh": "该货物是硬质橡胶制成品（手柄、蓄电池壳、容器等），还是初级形状（块、板、杆、粉）或废碎料？"
+   },
+   "ghiChu": "Chữ biểu 4017.00.20 \"Các sản phẩm bằng cao su cứng khác\" (EN \"Other articles of hard rubber\").",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "khoa": "lucRungTrong",
+   "kieu": "SO",
+   "nhanVi": "lực rung của trống",
+   "nhanEn": "centrifugal force of drum",
+   "nhanZh": "滚筒激振力",
+   "heDonVi": "khoiLuong",
+   "donViChuan": "tấn",
+   "canNguCanh": true,
+   "docMoRong": true,
+   "cachDoc": {
+    "vi": [
+     "lực\\s+rung(?:\\s+của\\s+trống)?",
+     "lực\\s+ly\\s+tâm(?:\\s+của\\s+trống)?"
+    ],
+    "en": [
+     "centrifugal\\s+force(?:\\s+drum)?",
+     "vibratory\\s+force"
+    ],
+    "zh": [
+     "激振力",
+     "滚筒激振力"
+    ]
+   },
+   "cachViet": {
+    "vi": "lực rung của trống {giaTri}"
+   },
+   "cauHoi": {
+    "vi": "Lực rung (lực ly tâm) của trống xe lu là bao nhiêu tấn?",
+    "zh": "压路机滚筒的激振力（离心力）是多少吨（t）？"
+   },
+   "ghiChu": "Chữ biểu 8429.40.40 \"Xe lu rung, với lực rung của trống không quá 20 tấn tính theo khối lượng\" (đọc 20 op <=; EN \"Vibratory smooth drum rollers, with a centrifugal force drum not exceeding 20 t by weight\").",
    "nguonLoai": "AI_DA_KIEM"
   }
  ],
