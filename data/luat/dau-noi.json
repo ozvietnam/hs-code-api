@@ -44,7 +44,8 @@
       "duLieu": "dựng trong RAM từ data/so-tay/, data/confusion-pairs.json, data/precedents.json, cây biểu thuế và các kho cụm từ; số đếm ở data/do-thi/thong-ke.json",
       "dauVet": [],
       "ghiChu": "ADR-0002, kế hoạch docs/ke-hoach-do-thi-tri-thuc-hs.md. GIAI ĐOẠN 1: chỉ dựng + cổng máy scripts/test-bang-canh.mjs. HIỆN CHƯA đường nào đọc: mọi đường phân loại khai 'khong'; giai đoạn 2–4 mới nối, mỗi lần nối sửa bảng này trong cùng PR. lib/do-thi/dung-bang-canh.js đọc thẳng data/so-tay/ nên cũng là module đọc kho soTayNhom. Cổng test-bang-canh đỏ khi có tệp ngoài lib/do-thi/ nạp bảng cạnh mà đường của nó chưa khai 'co'.",
-      "moDun": ["lib/do-thi/dung-bang-canh.js", "lib/do-thi/index.js", "lib/do-thi/tien-le-ung-ho.js", "lib/do-thi/tu-khoa.js"]
+      "moDun": ["lib/do-thi/dung-bang-canh.js", "lib/do-thi/index.js", "lib/do-thi/tien-le-ung-ho.js", "lib/do-thi/tu-khoa.js"],
+      "hamKhongDocKho": ["tuKhoa", "khopDieuKien", "tapTuMoTa", "khongDau"]
     }
   },
   "loiCauHoi": {
@@ -73,7 +74,7 @@
         },
         "tienLe": { "trangThai": "co", "qua": ["lib/precedent-search.js", "lib/oz-precedent-search.js"], "co": [], "ghiChu": "Mặc định: tiền lệ chỉ được tìm SAU vòng 1 (gather) và vào gói vòng 2; nhóm của TB-TCHQ chỉ được thêm khi độ giống ≥ 0,6 và tên hàng khớp, tờ khai Oz không thêm nhóm. Sau cờ HS_TIM_TRUOC (mặc định TẮT): lib/tim-truoc.js tìm TB-TCHQ + tờ khai Oz + biểu thuế + từ điển tên thương mại + cặp dễ nhầm theo mô tả TRƯỚC vòng 1, đưa top 5 nhóm kèm bằng chứng vào đầu vào vòng 1; chỉ khi HS_TIM_TRUOC_NAP > 0 (mặc định 0) mới nạp thêm các nhóm đó vào gather (không qua cổng 0,6). Tên hàng có chữ Hán thì bỏ qua (engine.timTruoc.trangThai ghi lý do)." },
         "chuGiai": { "trangThai": "co", "qua": ["lib/gir-notes.js", "lib/classify.js"], "co": [] },
-        "bangCanh": { "trangThai": "khong", "lyDo": "Giai đoạn 1 của ADR-0002 chỉ dựng bảng cạnh và cổng máy; chưa nối vào đường nào. Giai đoạn 2–4 mới nối, sau công tắc mặc định tắt." }
+        "bangCanh": { "trangThai": "khong", "lyDo": "Giai đoạn 1 của ADR-0002 chỉ dựng bảng cạnh và cổng máy; chưa nối vào đường nào. Giai đoạn 2–4 mới nối, sau công tắc mặc định tắt.", "napMuonHam": { "tep": "lib/hoi-theo-so-tay.js", "chiDung": ["tuKhoa", "khopDieuKien", "tapTuMoTa", "khongDau"], "lyDo": "Sau cờ HS_HOI_THEO_SO_TAY: mượn hàm rút / khớp từ khoá (thuần, không dựng bảng cạnh, không đọc kho) để chỉ hỏi câu loại trừ / phân biệt nhóm khi điều kiện của chính dòng đó khớp mô tả hàng — cùng hàm sinh tuKhoaDieuKien của C5/C6 và luật khớp của moRongUngVien." } }
       },
       "loiCauHoi": {
         "trangThai": "co",
