@@ -333,6 +333,9 @@ const KHOA_MOI = {
   lucRungTrong: 'SO',
   // 22/11/2026 (OZV-1757): khoá cho 1207.10.30 (Nhân hạt cọ)
   laNhanHatCo: 'CO_KHONG',
+  // 21/11/2026 (OZV-1751): bình hình trụ bằng thép đúc liền (seamless) 7311.00.2 & khả năng cân tối đa 8423.82.3/4
+  ducLienKhongNoi: 'CO_KHONG',
+  mucCanToiDa: 'SO',
 };
 
 // ── 1. Nạp theo phiên bản ─────────────────────────────────────────────────────────────────────────────────────────
@@ -728,6 +731,34 @@ chuaBiet('laThietBiChoiBacHoacMatChuoc không bắt nhầm đồ chơi ném phi 
   const r2 = T.docGiaTri('laThietBiChoiBacHoacMatChuoc', big2);
   const ms = Number(process.hrtime.bigint() - t0) / 1e6;
   check(`OZV-1742 ReDoS ~40.000 từ lặp cho 2 khoá mới < 2000 ms (thực tế ${ms.toFixed(0)} ms)`, r1.trangThai === 'CHUA_BIET' && r2.trangThai === 'CHUA_BIET' && ms < 2000, { ms });
+}
+
+// ── Lô 26 (OZV-1751, 21/11/2026) — ducLienKhongNoi (7311.00.2), mucCanToiDa (8423.82.3/4), mucDoTinhCheDau RBD_NBD (1516.20/1518.00), daCatThanhHinh cắt dập (4823.90.30) ──
+la('ducLienKhongNoi (tiêu đề 7311.00.2)', 'ducLienKhongNoi', '7311002 Dạng hình trụ bằng thép đúc liền', true, { bc: 'đúc liền' });
+la('ducLienKhongNoi — không mối hàn', 'ducLienKhongNoi', 'Bình chứa khí nén bằng thép không mối hàn dung tích 40 lít', true);
+la('ducLienKhongNoi En', 'ducLienKhongNoi', 'Seamless steel cylinders for compressed gas', true);
+la('ducLienKhongNoi Zh', 'ducLienKhongNoi', '无缝钢气瓶', true);
+la('ducLienKhongNoi KHÔNG — bình hàn thân', 'ducLienKhongNoi', 'Bình LPG 12 kg hàn thân, dung tích 26 lít', false);
+la('ducLienKhongNoi KHÔNG — welded', 'ducLienKhongNoi', 'Welded steel gas cylinder 50L', false);
+chuaBiet('ducLienKhongNoi không bắt nhầm tai nghe không nối với micro 98343500', 'ducLienKhongNoi', 'Tai nghe có hoặc không nối với một bộ micro');
+chuaBiet('ducLienKhongNoi không bắt nhầm thùng chứa thép thường 73110094', 'ducLienKhongNoi', 'Các loại thùng chứa khí nén hoặc khí hóa lỏng, bằng sắt hoặc thép.: Có dung tích từ 30 lít trở lên nhưng dưới 110 lít');
+la('mucCanToiDa (tiêu đề 8423.82.3)', 'mucCanToiDa', '8423823 Có khả năng cân tối đa không quá 1.000 kg', 1000, { op: '<=', bc: 'không quá 1.000 kg' });
+la('mucCanToiDa (tiêu đề 8423.82.4)', 'mucCanToiDa', '8423824 Có khả năng cân tối đa trên 1.000 kg', 1000, { op: '>', bc: 'trên 1.000 kg' });
+la('mucCanToiDa — quy đổi tấn', 'mucCanToiDa', 'Cân sàn điện tử mức cân tối đa 2 tấn', 2000);
+la('mucCanToiDa En', 'mucCanToiDa', 'Having a maximum weighing capacity not exceeding 1000 kg', 1000, { op: '<=' });
+la('mucCanToiDa Zh', 'mucCanToiDa', '最大称量不超过1000千克', 1000, { op: '<=' });
+chuaBiet('mucCanToiDa không bắt nhầm khối lượng tịnh của cân', 'mucCanToiDa', 'Cân bàn điện tử có khối lượng tịnh 60 kg');
+la('mucDoTinhCheDau RBD_NBD (1516.20.24)', 'mucDoTinhCheDau', 'Của hạt cọ, đã tinh chế, tẩy và khử mùi (RBD)', 'RBD_NBD');
+la('mucDoTinhCheDau RBD_NBD (1518.00.32)', 'mucDoTinhCheDau', 'Của dầu cọ hoặc olein hạt cọ, đã trung hòa hóa, tẩy và khử mùi (NBD) hoặc đã tinh chế, tẩy và khử mùi (RBD)', 'RBD_NBD');
+la('mucDoTinhCheDau DA_TINH_CHE không nuốt RBD', 'mucDoTinhCheDau', 'Dầu hạt cọ đã tinh chế', 'DA_TINH_CHE');
+{
+  const big1 = Array(8000).fill('dạng hình trụ bằng thép có hoặc không nối với van').join(' ');
+  const big2 = Array(8000).fill('cân bàn điện tử có khối lượng tịnh 60 kg').join(' ');
+  const t0 = process.hrtime.bigint();
+  const r1 = T.docGiaTri('ducLienKhongNoi', big1);
+  const r2 = T.docGiaTri('mucCanToiDa', big2);
+  const ms = Number(process.hrtime.bigint() - t0) / 1e6;
+  check(`OZV-1751 ReDoS ~40.000 từ lặp cho ducLienKhongNoi & mucCanToiDa < 2000 ms (thực tế ${ms.toFixed(0)} ms)`, r1.trangThai === 'CHUA_BIET' && r2.trangThai === 'CHUA_BIET' && ms < 2000, { ms });
 }
 
 // ── 5. Viết + kiểm giá trị ───────────────────────────────────────────────────────────────────────────────────────────

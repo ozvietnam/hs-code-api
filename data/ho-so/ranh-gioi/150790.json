@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:ozv-1721#soat-150790",
+    "phien": "claude-agent:ozv-1751#soat-150790",
     "ngay": "2026-11-21",
-    "ghiChu": "Chuẩn hoá theo traVe",
-    "bam": "09d12c0bf3843c6cce0b4af9b633c526c5258d1be316e06275b70b6cce11b2af"
+    "ghiChu": "Chuẩn hoá 15079020 sang RBD_NBD",
+    "bam": "b3f92079c7c80d6dc0962abbdfc2aa63c7791d97a44d4cb71a8b7a8eabaab8d6"
   },
   "dieuKienNut": [],
   "dong8": [
@@ -51,7 +51,7 @@
           "fact": "mucDoTinhCheDau",
           "op": "TRONG",
           "value": [
-            "DA_TINH_CHE"
+            "RBD_NBD"
           ]
         }
       ],
@@ -74,19 +74,12 @@
     {
       "ma": "15079020",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.15079020 \"Dầu đậu tương đã tinh chế, tẩy và khử mùi (RBD)\" (EN \"Refined, bleached and deodorised (RBD) soya-bean oil\") ⇒ tenLoai \"Dầu đậu tương\" (tên hàng) + mucDoTinhCheDau TRONG [DA_TINH_CHE] (khoá đọc được cụm \"tinh chế, tẩy và khử mùi\" và \"RBD\")."
+      "ghiChu": "tax.15079020 \"Dầu đậu tương đã tinh chế, tẩy và khử mùi (RBD)\" (EN \"Refined, bleached and deodorised (RBD) soya-bean oil\") ⇒ tenLoai \"Dầu đậu tương\" (tên hàng) + mucDoTinhCheDau TRONG [RBD_NBD] (khoá đọc được cụm \"tinh chế, tẩy và khử mùi\" và \"RBD\")."
     },
     {
       "ma": "15079090",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.15079090 \"Loại khác\" trần ⇒ không ghi điều kiện (máy phủ định anh em đứng trước)."
-    }
-  ],
-  "traVe": [
-    {
-      "phien": "claude-agent:duyet-L5-20261111#soat-L5",
-      "ngay": "2026-11-11",
-      "lyDo": "(A) 150790:15079020 SUY RỘNG: chữ biểu \"Dầu đậu tương đã tinh chế, tẩy và khử mùi (RBD)\" / EN \"Refined, bleached and deodorised (RBD) soya-bean oil\" ⇒ mucDoTinhCheDau DA_TINH_CHE, nhưng giá trị này đọc cả \"đã tinh chế\"/\"refined\"/\"other than crude\" trơn ⇒ dầu đậu tương chỉ tinh chế (chưa tẩy, khử mùi) và phân đoạn của dầu đã tinh chế lọt .20 thay vì .90 (cùng MFN 15, sai mã). Vế \"tẩy và khử mùi\" bị bỏ mà không ghi THIEU_KHOA_TU_VUNG — cần giá trị RBD riêng trong tu-vung. Máy tách để cả câu là đầu ngữ nên cổng 5 không thấy."
     }
   ]
 }
