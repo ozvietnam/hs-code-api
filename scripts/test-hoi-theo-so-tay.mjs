@@ -179,17 +179,39 @@ const ketQuaGia = (hs = '848180', raw = VAN, them = {}) => ({
   const cua = await chay('830140', 'Khóa cửa tay gạt bằng hợp kim kẽm');
   check('8301.40: mô tả đã ghi "Khóa cửa" → máy tự chốt dòng, không hỏi lại "có phải khóa cửa"', !cua.nextAction.questions.some((q) => /có phải là "Khóa cửa"/.test(q.questionVi)), { cc: cua.nextAction.canCuCauHoi, st: cua.hoiTheoSoTay, qs: cua.nextAction.questions.map((q) => q.questionVi) });
   // (3) đường lùi: sổ ranh giới chưa DUYET, phân nhóm phẳng ≤ 6 dòng → MỘT câu chọn dòng theo chữ biểu thuế
-  check('tiền đề: sổ ranh giới 902620 CHƯA duyệt', loadRanhGioiDuyet('902620') === null);
-  const ap = await chay('902620', 'đồng hồ đo áp suất');
-  const qAp = ap.nextAction.questions[0];
-  check('9026.20 (sổ chưa DUYET, 2 dòng phẳng): một câu chọn dòng, canCu "bieu-thue", nhãn "bieu-thue"', ap.nextAction.canCuCauHoi === 'bieu-thue' && qAp.loai === 'CHON_DONG_8' && qAp.canCu === 'bieu-thue' && ap.nextAction.questions.filter((q) => q.loai === 'CHON_DONG_8').length === 1 && /^tax\.90262050\|tax\.90262090$/.test(qAp.nguon) && /Máy đo áp suất sử dụng cho xe có động cơ/.test(qAp.trich), qAp);
-  check('9026.20: "Loại khác" đặt CUỐI, ghi "không thuộc các loại trên"; có lựa chọn "Chưa rõ"', qAp.options.length === 3 && /^9026\.20\.90 – Loại khác \(không thuộc các loại trên\)$/.test(qAp.options[1]) && qAp.options[2] === 'Chưa rõ' && ap.nextAction.questions.length <= 4, qAp.options);
+  // KHÔNG khoá vào một sổ cụ thể: trạng thái duyệt của sổ ranh giới là dữ liệu SỐNG (22/11: #1531 duyệt 902620 làm ca cũ đỏ
+  // trên chính main). Tự chọn lúc chạy một phân nhóm phẳng 2–6 dòng, có đúng một dòng "Loại khác" trần, sổ chưa DUYET.
+  // Kho không còn phân nhóm nào như vậy ⇒ BỎ QUA có lý do. Còn ứng viên mà không ứng viên nào ra đường lùi ⇒ ĐỎ (lõi hỏng).
+  const laLoaiKhacTran = (t) => /^lo[aạ]i kh[aá]c\s*(\(SEN\))?$/i.test(String(t || '').trim());
+  const ungVienLui = [...new Set(Object.keys(require('../lib/data').taxData).filter((c) => /^\d{8}$/.test(c)).map((c) => c.slice(0, 6)))].sort().filter((pn6) => {
+    if (loadRanhGioiDuyet(pn6) !== null) return false;
+    const d = H.dong8Cua(pn6);
+    return d.phang && d.n8 >= 2 && d.n8 <= 6 && d.dong.filter((x) => laLoaiKhacTran(x.tenVi)).length === 1 && d.dong.every((x) => x.tenVi);
+  });
+  let ap = null; let pnLui = null;
+  for (const pn6 of ungVienLui.slice(0, 40)) {
+    const k = await chay(pn6, 'hàng thử nghiệm');
+    if (k.nextAction.canCuCauHoi === 'bieu-thue' && k.nextAction.questions[0] && k.nextAction.questions[0].loai === 'CHON_DONG_8') { ap = k; pnLui = pn6; break; }
+  }
+  if (!ungVienLui.length) {
+    console.log('SKIP đường lùi "bieu-thue": kho không còn phân nhóm phẳng 2–6 dòng nào có sổ ranh giới chưa DUYET — không có dữ liệu thật để thử (không phải lỗi)');
+  } else {
+    check(`đường lùi: trong ${Math.min(40, ungVienLui.length)} phân nhóm phẳng sổ chưa DUYET (tự chọn lúc chạy, kho có ${ungVienLui.length}) có ít nhất một ra câu chọn dòng canCu "bieu-thue"`, Boolean(ap), ungVienLui.slice(0, 5));
+  }
+  if (ap) {
+    const qAp = ap.nextAction.questions[0];
+    const dong = H.dong8Cua(pnLui).dong;
+    const cham = (hs) => `${hs.slice(0, 4)}.${hs.slice(4, 6)}.${hs.slice(6)}`;
+    const lk = dong.find((x) => laLoaiKhacTran(x.tenVi));
+    check(`${pnLui} (sổ chưa DUYET, ${dong.length} dòng phẳng): một câu chọn dòng, canCu "bieu-thue", nguồn + trích đủ mọi dòng của biểu thuế`, qAp.canCu === 'bieu-thue' && ap.nextAction.questions.filter((q) => q.loai === 'CHON_DONG_8').length === 1 && qAp.nguon.split('|').sort().join('|') === dong.map((x) => `tax.${x.hs}`).sort().join('|') && dong.every((x) => qAp.trich.includes(`${x.hs} ${x.tenVi}`)), qAp);
+    check(`${pnLui}: "Loại khác" đặt CUỐI, ghi "không thuộc các loại trên"; có lựa chọn "Chưa rõ"`, qAp.options.length === dong.length + 1 && qAp.options.at(-2) === `${cham(lk.hs)} – Loại khác (không thuộc các loại trên)` && qAp.options.at(-1) === 'Chưa rõ' && ap.nextAction.questions.length <= 4, qAp.options);
+  }
   const mach = await chay('853400', 'bo mạch');
   check('8534.00 (≥ 3 dòng tên loại, phẳng 4 dòng): một câu chọn dòng thay cho ba câu có/không', mach.nextAction.questions.filter((q) => q.loai === 'CHON_DONG_8').length === 1 && !mach.nextAction.questions.some((q) => q.loai === 'DONG_8') && /Loại khác \(không thuộc các loại trên\)$/.test(mach.nextAction.questions[0].options.at(-2)), mach.nextAction.questions.map((q) => [q.loai, q.options]));
   const ct = gia('853650', 'công tắc');
   const kqCt = await voi('on', () => H.apDung(ct, { rawAttrs: { tenHang: 'công tắc' } }));
   check('8536.50 (lồng nhiều cấp gạch, 12 dòng): KHÔNG liệt kê — giữ câu LLM, nhãn "llm"', kqCt.nextAction.canCuCauHoi === 'llm' && kqCt.hoiTheoSoTay.lyDo === 'long-nhieu-cap' && JSON.stringify(kqCt.nextAction.questions) === JSON.stringify(ct.nextAction.questions), kqCt.hoiTheoSoTay);
-  check('mọi ca trên: tối đa 4 câu, status/mã không đổi', [mot, khoa, ap, mach, kqCt].every((k) => k.nextAction.questions.length <= 4 && k.status === 'NEED_FACTS' && k.results[0].confidence === 60));
+  check('mọi ca trên: tối đa 4 câu, status/mã không đổi', [mot, khoa, ap, mach, kqCt].filter(Boolean).every((k) => k.nextAction.questions.length <= 4 && k.status === 'NEED_FACTS' && k.results[0].confidence === 60));
 }
 
 // 7) Qua ĐỘNG CƠ thật (LLM giả): nhánh earlyExitHoi — bật/tắt công tắc cho CÙNG mã, cùng status, cùng số lời LLM.

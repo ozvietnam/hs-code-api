@@ -149,6 +149,11 @@ Luật qua test "nhờ may" là không đạt. Ca test phải **chứng minh cơ
 **Vì sao:** một bản cho LLM tự đoán nhóm 4 số rồi kéo sổ tay nhóm đó ra hỏi; đoán sai là cả bộ câu hỏi sai (PLC bị hỏi
 về van). Một bản khác đoán nhóm bằng tìm từ khoá, test xanh vì tình cờ trúng.
 
+Ca test không được khoá vào **trạng thái sống của dữ liệu đang được người khác soạn** (trạng thái duyệt của một sổ cụ thể, số
+đếm đang tăng): dùng dữ liệu giả, hoặc tự chọn lúc chạy một mục thoả tiền đề; kho không còn mục nào thì ca báo BỎ QUA có
+lý do, không đỏ. *Vì sao:* 22/11 PR dữ liệu #1531 duyệt sổ `902620`, ca "sổ 902620 CHƯA duyệt" của
+`test-hoi-theo-so-tay.mjs` đỏ trên chính `main` và chặn mọi PR.
+
 **Kiểm bằng:** người soát. Hỏi "nhóm ở dòng này lấy từ đâu" và "ca ngược đâu". Bảng đấu nối (L4) ghi rõ
 `/api/identify` không tự suy nhóm.
 
