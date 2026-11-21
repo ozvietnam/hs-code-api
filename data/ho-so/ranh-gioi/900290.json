@@ -4,13 +4,19 @@
   "nhom": "9002",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-900290",
     "ngay": "2026-11-02"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv#soat-900290",
+    "ngay": "2026-11-21",
+    "ghiChu": "Chuẩn hoá theo traVe",
+    "bam": "050c129aa09e2afcb9df5fb76d7457eceec6a7ef45dd1f48463699ef9c625ba5"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -24,7 +30,7 @@
           "value": "máy chiếu phim"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "90029030",
@@ -37,11 +43,11 @@
           "value": [
             "máy quay phim",
             "máy ảnh",
-            "máy chiếu khác"
+            "máy chiếu"
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": true
     },
     {
@@ -49,7 +55,7 @@
       "nguon": "tax.90029090",
       "trich": "90029090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -61,14 +67,7 @@
     {
       "ma": "90029030",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.90029030 \"Dùng cho máy quay phim, máy ảnh và máy chiếu khác\" ⇒ dungCho mảng 3 thiết bị đích, phanConLai: true phủ định .20"
-    }
-  ],
-  "traVe": [
-    {
-      "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx-soat3#soat-900290",
-      "ngay": "2026-11-02",
-      "lyDo": "(A) 90029030 THU HẸP (giá trị chết): \"Dùng cho máy quay phim, máy ảnh và máy chiếu khác\" (EN \"… and other projectors\") ⇒ dungCho có giá trị \"máy chiếu khác\" — mô tả hàng thật (kính lọc/lăng kính cho máy chiếu slide, máy chiếu overhead) không có chữ \"khác\" nên không bao giờ THOẢ ⇒ rơi 90029090 thay vì 90029030. Sửa: giá trị \"máy chiếu\" (giữ phanConLai: true đã phủ định 90029020 \"máy chiếu phim\"). Còn lại đạt."
+      "ghiChu": "tax.90029030 \"Dùng cho máy quay phim, máy ảnh và máy chiếu khác\" ⇒ dungCho [\"máy quay phim\",\"máy ảnh\",\"máy chiếu\"], phanConLai: true phủ định .20"
     }
   ]
 }

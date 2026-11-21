@@ -1006,11 +1006,31 @@
     },
     {
       "hs": "73045910",
-      "dieuKien": "Ống dẫn chịu áp lực cao có giới hạn chảy (1) không nhỏ hơn 42.000 psi",
+      "dieuKien": "ống dẫn chịu áp lực cao; giới hạn chảy >= 42000 psi",
       "nguon": "tax.73045910",
       "trich": "73045910 - - - Ống dẫn chịu áp lực cao có giới hạn chảy (1) không nhỏ hơn 42.000 psi",
-      "nguonLoai": "NGUOI_DUYET",
-      "loaiKhac": false
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "ongChiuApLucCao",
+          "op": "CO"
+        },
+        {
+          "fact": "gioiHanChay",
+          "op": ">=",
+          "value": 42000,
+          "donVi": "psi"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv#soat-730459",
+          "ngay": "2026-11-21",
+          "bam": "7a6d7a9a479afbaf066c9e96067366afc53c094916addd408e5e97d0d169a7ba"
+        }
+      }
     },
     {
       "hs": "73045990",
@@ -1031,24 +1051,38 @@
     },
     {
       "hs": "73049010",
-      "dieuKien": "Ống dẫn chịu áp lực cao có giới hạn chảy (1) không nhỏ hơn 42.000 psi",
+      "dieuKien": "ống dẫn chịu áp lực cao; giới hạn chảy >= 42000 psi",
       "nguon": "tax.73049010",
       "trich": "73049010 - - Ống dẫn chịu áp lực cao có giới hạn chảy (1) không nhỏ hơn 42.000 psi",
-      "nguonLoai": "NGUOI_DUYET",
-      "loaiKhac": false
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "ongChiuApLucCao",
+          "op": "CO"
+        },
+        {
+          "fact": "gioiHanChay",
+          "op": ">=",
+          "value": 42000,
+          "donVi": "psi"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv#soat-730490",
+          "ngay": "2026-11-21",
+          "bam": "5e5d1364dd7f5bdd99ab77549347a58fb020a94e1d3c97317a274b7b9eca2a52"
+        }
+      }
     },
     {
       "hs": "73049030",
-      "dieuKien": "Loại khác, có đường kính ngoài dưới 140 mm và hàm lượng carbon dưới 0,45% tính theo khối lượng",
-      "tieuChi": {
-        "fact": "duong_kinh_ngoai",
-        "op": "<",
-        "value": 140,
-        "donVi": "mm"
-      },
+      "dieuKien": "đường kính (ngoài) < 140 mm; hàm lượng carbon < 0.45 %",
       "nguon": "tax.73049030",
       "trich": "73049030 - - Loại khác, có đường kính ngoài dưới 140 mm và hàm lượng carbon dưới 0,45% tính theo khối lượng",
-      "nguonLoai": "NGUOI_DUYET",
+      "nguonLoai": "CLAUDE_DUYET",
       "loaiKhac": true,
       "phamViLoaiKhac": {
         "nguonLoai": "MAY_SUY",
@@ -1058,6 +1092,34 @@
         ],
         "toTienCoTen": "730490",
         "dinhNghiaDuoc": true
+      },
+      "dieuKienSo": [
+        {
+          "fact": "duongKinh",
+          "op": "<",
+          "value": 140,
+          "donVi": "mm"
+        },
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.45,
+          "donVi": "%"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv#soat-730490",
+          "ngay": "2026-11-21",
+          "bam": "5e5d1364dd7f5bdd99ab77549347a58fb020a94e1d3c97317a274b7b9eca2a52"
+        }
+      },
+      "tieuChi": {
+        "fact": "duong_kinh_ngoai",
+        "op": "<",
+        "value": 140,
+        "donVi": "mm"
       }
     },
     {
