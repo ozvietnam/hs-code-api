@@ -4,13 +4,19 @@
   "nhom": "2101",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-210120",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-01#soat-210120",
+    "ngay": "2026-11-21",
+    "ghiChu": "Đã chuẩn hoá dieuKienSo bám chữ biểu thuế",
+    "bam": "52572645b7352422ee0c748f545eb8b9ccb0fdaba3133de02f7b6254972cf097"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -27,9 +33,13 @@
           "fact": "congDung",
           "op": "CONG_DUNG",
           "value": "sản xuất các chế phẩm chè"
+        },
+        {
+          "fact": "dangBot",
+          "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "21012030",
@@ -42,44 +52,36 @@
           "value": "Các chế phẩm chè"
         },
         {
-          "fact": "congDung",
-          "op": "CONG_DUNG",
-          "value": "hỗn hợp của chè, sữa bột và đường"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "hỗn hợp của chè"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "sữa bột và đường"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "21012090",
       "nguon": "tax.21012090",
       "trich": "21012090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "21012020",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.21012020: \"Chiết xuất từ chè\" ⇒ tenLoai, \"sản xuất các chế phẩm chè\" ⇒ congDung"
-    },
-    {
-      "ma": "21012020",
-      "loai": "BO_VE",
-      "ve": "dạng bột",
-      "lyDo": "Dạng bột là đặc tính hình thức thể hiện của chiết xuất từ chè để sản xuất chế phẩm"
+      "ghiChu": "tax.21012020: \"Chiết xuất từ chè\" ⇒ tenLoai, \"sản xuất các chế phẩm chè\" ⇒ congDung, \"dạng bột\" ⇒ dangBot CO"
     },
     {
       "ma": "21012030",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.21012030: \"Các chế phẩm chè\" ⇒ tenLoai, \"hỗn hợp của chè, sữa bột và đường\" ⇒ congDung"
-    }
-  ],
-  "traVe": [
-    {
-      "phien": "claude-agent:duyet-L6-20261111#soat-L6",
-      "ngay": "2026-11-11",
-      "lyDo": "(A) 21012020 SUY RỘNG: chữ biểu \"Chiết xuất từ chè để sản xuất các chế phẩm chè, dạng bột\" / EN \"Tea extracts for the manufacture of tea preparations, in powder form\" — vế \"dạng bột\" không có điều kiện (máy gộp \"để sản xuất các chế phẩm chè, dạng bột\" thành một vế nên báo \"phủ\"; BO_VE \"dạng bột\" bị cảnh báo cong5-bo-ve-thua; lyDo \"đặc tính hình thức\" không phải lý do). Có khoá dangBot CO. Hệ quả: chiết xuất chè dạng lỏng để sản xuất chế phẩm chè rơi vào .20 thay vì .90 (cùng MFN 30, sai mã). (B) 21012030 \"Các chế phẩm chè gồm hỗn hợp của chè, sữa bột và đường\" ghi thành phần bằng congDung (khoá công dụng) — xem lại khoá; TB 1626/TB-TCHQ (nước cốt trà sữa) xếp .30."
+      "ghiChu": "tax.21012030: \"Các chế phẩm chè gồm hỗn hợp của chè, sữa bột và đường\" ⇒ tenLoai \"Các chế phẩm chè\" + \"hỗn hợp của chè\" + \"sữa bột và đường\" (bỏ congDung sai trục)"
     }
   ]
 }

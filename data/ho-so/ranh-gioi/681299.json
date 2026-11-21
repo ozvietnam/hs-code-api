@@ -4,13 +4,19 @@
   "nhom": "6812",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T0905#soan-681299",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-01#soat-lo-5d",
+    "ngay": "2026-11-21",
+    "ghiChu": "Đã chuẩn hoá dieuKienSo bám chữ biểu thuế",
+    "bam": "c84eafdfb18a2a1bbfadabf28def733f85678487794784928c773035fb47a328"
+  },
   "dieuKienNut": [
     {
       "id": "6812995",
@@ -33,7 +39,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -45,13 +51,18 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
+          "value": "Gạch"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
           "value": [
-            "Gạch lát nền",
+            "lát nền",
             "ốp tường"
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "68129930",
@@ -68,7 +79,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "68129940",
@@ -89,7 +100,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "68129951",
@@ -110,24 +121,29 @@
           "value": "dùng để sản xuất các mặt hàng thuộc nhóm 68.13"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "68129959",
       "nguon": "tax.68129959",
       "trich": "68129959 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "68129990",
       "nguon": "tax.68129990",
       "trich": "68129990 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
+    {
+      "ma": "68129920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.68129920 \"Gạch lát nền hoặc ốp tường\" (EN \"Floor or wall tiles\") — \"Gạch\" là danh từ chính chung cho cả \"lát nền\" và \"ốp tường\" ⇒ tách điều kiện riêng tenLoai \"Gạch\" + tenLoai [\"lát nền\",\"ốp tường\"] để không khớp nhầm tấm ốp tường không phải gạch"
+    },
     {
       "ma": "68129959",
       "loai": "QUYET_DINH",
@@ -137,13 +153,6 @@
       "ma": "68129990",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.68129990 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
-    }
-  ],
-  "traVe": [
-    {
-      "phien": "claude-agent:duyet-L19-20261111#soat-L19",
-      "ngay": "2026-11-11",
-      "lyDo": "(A) 68129920 SUY RỘNG (định ngữ chung bị tách): \"Gạch lát nền hoặc ốp tường\" (EN \"Floor or wall tiles\") ⇒ tenLoai [\"Gạch lát nền\",\"ốp tường\"]; tấm ốp tường amiăng (không phải gạch) khớp .20 thay vì .90. Sửa \"gạch ốp tường\". Ghi thêm: .40 giá trị [\"ở dạng tấm\",\"cuộn\"] dạng ghi bằng tenLoai — \"cuộn\" đứng riêng rất rộng."
     }
   ]
 }

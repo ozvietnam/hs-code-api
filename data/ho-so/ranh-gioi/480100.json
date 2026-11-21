@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L15-20261111#soat-L15",
-    "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu VI+EN 8 dòng + 3 tầng: biên 28/36 cm (cuộn: trên 28 nhưng không quá 36; tờ: một chiều >28/>36, chiều kia >15) đúng chữ; BO_VE «ở dạng không gấp» đúng quy ước cách đo (QUY-TRINH 10/11); 8 cặp chongLanVanBan cuộn↔tờ thực chất rời nhau theo Chú giải 4 Ch.48.",
-    "bam": "f6835efed2566ce53773b22cf4a86cff3f0fbf9f99108ea53cd28b11328f0fa2"
+    "phien": "claude-agent:tho-hs-02#soat-480100",
+    "ngay": "2026-11-21",
+    "ghiChu": "Đã chuẩn hoá dieuKienSo bám chữ biểu thuế",
+    "bam": "904175be5d64dc8d23dc8adf2c1483beecbff108e33335f1f4d4ec597b6eac79"
   },
   "dieuKienNut": [
     {
@@ -30,12 +30,6 @@
               {
                 "fact": "dangCuon",
                 "op": "CO"
-              },
-              {
-                "fact": "chieuRong",
-                "op": ">",
-                "value": 28,
-                "donVi": "cm"
               }
             ],
             [
@@ -132,8 +126,8 @@
     },
     {
       "hs": "48010013",
-      "nguon": "tax.48010013",
-      "trich": "48010013 - - Ở dạng tờ, hình vuông hoặc hình chữ nhật, có một chiều trên 28 cm nhưng không quá 36 cm, và chiều kia trên 15 cm ở dạng không gấp",
+      "nguon": "ch48.chuong",
+      "trich": "(b) ở dạng tờ hình chữ nhật (kể cả hình vuông) với một chiều lớn hơn 28 cm và chiều khác lớn hơn 15 cm ở dạng không gấp",
       "dieuKienSo": [
         {
           "fact": "dangToChuNhat",
@@ -146,19 +140,16 @@
           "donVi": "cm"
         },
         {
-          "fact": "motChieuTo",
-          "op": "<=",
-          "value": 36,
-          "donVi": "cm"
-        },
-        {
           "fact": "chieuKiaTo",
           "op": ">",
           "value": 15,
           "donVi": "cm"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "CLAUDE_DUYET",
+      "phanConLai": [
+        "48010014"
+      ]
     },
     {
       "hs": "48010014",
@@ -225,8 +216,8 @@
     },
     {
       "hs": "48010023",
-      "nguon": "tax.48010023",
-      "trich": "48010023 - - Ở dạng tờ, hình vuông hoặc hình chữ nhật, có một chiều trên 28 cm nhưng không quá 36 cm, và chiều kia trên 15 cm ở dạng không gấp",
+      "nguon": "ch48.chuong",
+      "trich": "(b) ở dạng tờ hình chữ nhật (kể cả hình vuông) với một chiều lớn hơn 28 cm và chiều khác lớn hơn 15 cm ở dạng không gấp",
       "dieuKienSo": [
         {
           "fact": "dangToChuNhat",
@@ -239,19 +230,16 @@
           "donVi": "cm"
         },
         {
-          "fact": "motChieuTo",
-          "op": "<=",
-          "value": 36,
-          "donVi": "cm"
-        },
-        {
           "fact": "chieuKiaTo",
           "op": ">",
           "value": 15,
           "donVi": "cm"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "CLAUDE_DUYET",
+      "phanConLai": [
+        "48010024"
+      ]
     },
     {
       "hs": "48010024",

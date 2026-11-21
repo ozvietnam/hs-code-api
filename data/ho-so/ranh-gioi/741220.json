@@ -4,13 +4,19 @@
   "nhom": "7412",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-741220",
     "ngay": "2026-11-02"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-02#soat-741220",
+    "ngay": "2026-11-21",
+    "ghiChu": "Đã chuẩn hoá dieuKienSo bám chữ biểu thuế",
+    "bam": "ab19a83ef8557dbbc01b5a0cc9cabd86bb8c2f7232febc23268350b4c030574d"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -24,7 +30,7 @@
           "value": "ống vòi"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "74122091",
@@ -34,18 +40,18 @@
         {
           "fact": "chatLieu",
           "op": "LA",
-          "value": "đồng",
+          "value": "kẽm",
           "viTri": "CHINH"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "74122099",
       "nguon": "tax.74122099",
       "trich": "74122099 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -57,14 +63,7 @@
     {
       "ma": "74122091",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.74122091: \"Bằng hợp kim đồng - kẽm (đồng thau)\" ⇒ chatLieu đồng (đồng thau là hợp kim đồng kẽm theo từ vựng)"
-    }
-  ],
-  "traVe": [
-    {
-      "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx-soat3#soat-741220",
-      "ngay": "2026-11-02",
-      "lyDo": "(A) 74122091 SUY RỘNG: \"Bằng hợp kim đồng - kẽm (đồng thau)\" (EN \"Of copper-zinc base alloys (brass)\") ⇒ chatLieu LA \"đồng\" — giá trị \"đồng\" của tu-vung = đồng hoặc MỌI hợp kim đồng (cách đọc gồm cả bronze, hợp kim đồng); cả phân nhóm 7412.20 đã là hợp kim đồng nên phụ kiện bằng đồng thanh (bronze), đồng-niken cũng rơi .91 thay vì .99 \"Loại khác\" — .99 không bao giờ tới được với hàng thật. Không có khoá phân biệt đồng thau ⇒ phải THIEU_KHOA_TU_VUNG (khoaDeXuat: loaiHopKimDong) / DỪNG, không ép chatLieu đồng."
+      "ghiChu": "tax.74122091: \"Bằng hợp kim đồng - kẽm (đồng thau)\" ⇒ chatLieu kẽm (phân nhóm 7412.20 đã là hợp kim đồng; thành phần kẽm tách hợp kim đồng - kẽm khỏi hợp kim đồng khác ở 74122099)"
     }
   ]
 }

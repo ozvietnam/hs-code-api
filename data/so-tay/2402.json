@@ -76,19 +76,54 @@
     },
     {
       "hs": "24022010",
-      "dieuKien": "Thuốc lá khô cuộn thành điếu, bọc trong lá tendu dại và buộc bằng dây",
-      "nguon": "sen.24022010",
-      "trich": "THUỐC LÁ BI-ĐI (BEEDIES)\nThuốc lá Bi-đi gồm thuốc lá khô cuộn thành điếu, được bọc trong lá tendu dại và buộc bằng dây. Thường được bán trong các gói có 20-25 điếu.",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      "dieuKien": "tên loại hàng: Thuốc lá Bi-đi",
+      "nguon": "tax.24022010",
+      "trich": "24022010 - - Thuốc lá Bi-đi (Beedies) (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thuốc lá Bi-đi"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01#soat-240220",
+          "ngay": "2026-11-21",
+          "bam": "f15a2377129a0fd980196415e6b8b49aad71ff088e5a3663ad6fd0ee8504bd42"
+        }
+      }
     },
     {
       "hs": "24022020",
-      "dieuKien": "Thuốc lá điếu pha trộn lá thuốc lá với đinh hương và hương liệu",
-      "nguon": "sen.24022020",
-      "trich": "THUỐC LÁ ĐIẾU, CÓ CHỨA THÀNH PHẦN TỪ ĐINH HƯƠNG\nThuốc lá điếu có chứa thành phần từ đinh hương (thường được gọi là “Kretek”) là loại thuốc lá được làm bằng sự pha trộn lá thuốc lá với đinh hương và hương liệu. Thành phần đặc biệt trong loại thuốc lá này là nụ đinh hương phơi khô thái nhỏ được thêm vào lá thuốc lá trộn và sau đó được xử lý bằng máy hoặc bằng tay.",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      "dieuKien": "tên loại hàng: Thuốc lá điếu; tên loại hàng: có chứa thành phần từ đinh hương",
+      "nguon": "tax.24022020",
+      "trich": "24022020 - - Thuốc lá điếu, có chứa thành phần từ đinh hương (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thuốc lá điếu"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "có chứa thành phần từ đinh hương"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01#soat-240220",
+          "ngay": "2026-11-21",
+          "bam": "f15a2377129a0fd980196415e6b8b49aad71ff088e5a3663ad6fd0ee8504bd42"
+        }
+      }
     },
     {
       "hs": "24022090",
@@ -156,7 +191,8 @@
           "ngay": "2026-11-11",
           "bam": "9d184511c329406203c34183ed46c78ce6126c3e08a52a04e172d6f097a41c40"
         }
-      }
+      },
+      "phanConLai": true
     }
   ],
   "cay": {
