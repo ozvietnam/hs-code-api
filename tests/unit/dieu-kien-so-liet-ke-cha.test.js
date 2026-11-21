@@ -130,4 +130,56 @@ describe('lib/dieu-kien-so.js — gỡ tiêu đề cha đa vế cho LIET_KE & t�
     assert.equal(caDu.ketQua, 'CHOT');
     assert.equal(caDu.hs, '21039013');
   });
+
+  test('OZV-1698: boVeRiengCuaDong lọc ký hiệu (SEN) ở 36049040 và tách vế "và máy phát điện" với commonAllSibs ở 8501', () => {
+    const r3604 = chotDong8({
+      hs: '360490',
+      productText:
+        'Pháo hoa, pháo hiệu, pháo chống mưa đá, pháo hiệu sương mù và các sản phẩm pháo khác - Loại khác: Pháo hiệu (SEN)',
+    });
+    assert.equal(r3604.ketQua, 'CHOT');
+    assert.equal(r3604.hs, '36049040');
+
+    assert.equal(DK.coCumPhanBiet('Động cơ', '85013170'), true);
+    assert.equal(DK.coCumPhanBiet('Động cơ', '85013225'), true);
+  });
+
+  test('OZV-1698: danhGiaTuChu với op TUONG_TU trả THOA tất định khi khớp khẳng định đích danh và giữ CHUA_BIET khi không khớp', () => {
+    const dk38253010 = {
+      fact: 'tenLoai',
+      op: 'TUONG_TU',
+      value: ['Bơm tiêm', 'kim tiêm', 'ống dẫn lưu'],
+    };
+    const rKhop = DK.danhGiaTuChu(
+      dk38253010,
+      'Rác thải bệnh viện: Bơm tiêm, kim tiêm, ống dẫn lưu và các loại tương tự',
+      '38253010',
+    );
+    assert.equal(rKhop.trangThai, 'THOA');
+    assert.equal(rKhop.tatDinh, true);
+
+    const rKhongKhop = DK.danhGiaTuChu(
+      dk38253010,
+      'Rác thải bệnh viện: Bông băng gạc y tế đã qua sử dụng',
+      '38253010',
+    );
+    assert.equal(rKhongKhop.trangThai, 'CHUA_BIET');
+
+    const rChot3825 = chotDong8({
+      hs: '382530',
+      productText: 'Rác thải bệnh viện: Bơm tiêm, kim tiêm, ống dẫn lưu và các loại tương tự',
+    });
+    assert.equal(rChot3825.ketQua, 'CHOT');
+    assert.equal(rChot3825.hs, '38253010');
+  });
+
+  test('OZV-1698: nutConTranhChap kiểm chuTuMoTaHang để tên tổ tiên chung 0714 không chặn oan 07149091', () => {
+    const r0714 = chotDong8({
+      hs: '071490',
+      productText:
+        'Sắn, củ dong, củ lan, a-ti-sô Jerusalem, khoai lang và các loại củ và rễ tương tự có hàm lượng tinh bột hoặc inulin cao, tươi, ướp lạnh, đông lạnh hoặc khô, đã hoặc chưa thái lát hoặc làm thành dạng viên; lõi cây cọ sago. - Loại khác - Loại khác: Đông lạnh',
+    });
+    assert.equal(r0714.ketQua, 'CHOT');
+    assert.equal(r0714.hs, '07149091');
+  });
 });
