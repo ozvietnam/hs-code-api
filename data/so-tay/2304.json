@@ -28,89 +28,78 @@
   "dong8": [
     {
       "hs": "23040010",
-      "dieuKien": "Bột đậu tương đã được khử chất béo, thích hợp dùng làm thức ăn cho người",
+      "dieuKien": "tên loại hàng: Bột đậu tương đã được khử chất béo; công dụng / mục đích: làm thức ăn cho người; hàm lượng protein (theo khối lượng) >= 50 %",
       "nguon": "sen.23040010",
       "trich": "BỘT ĐẬU TƯƠNG ĐÃ ĐƯỢC KHỬ CHẤT BÉO, THÍCH HỢP DÙNG LÀM THỨC ĂN CHO NGƯỜI…Bột đậu tương đã được khử chất béo, thích hợp dùng làm thức ăn cho người, là một sản phẩm đã chế biến có độ ẩm dưới 8%, protein từ 50% trở lên, chất béo dưới 1%, và chất xơ dưới 1%.",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bột đậu tương đã được khử chất béo"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "làm thức ăn cho người"
+        },
+        {
+          "fact": "hamLuongProtein",
+          "op": ">=",
+          "value": 50,
+          "donVi": "%"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-02#soat-230400",
+          "ngay": "2026-11-21",
+          "bam": "fdd243c915801ad37abafd45abb01f6be87f327cfe54d7a046f8d09c3b2aeb35"
+        }
+      },
       "tieuChi": {
         "fact": "do_am",
         "op": "<",
         "value": 8,
         "donVi": "%"
-      },
-      "dieuKienSo": [
-        {
-          "fact": "do_am",
-          "op": "<",
-          "value": 8,
-          "donVi": "%"
-        },
-        {
-          "fact": "ham_luong_protein",
-          "op": ">=",
-          "value": 50,
-          "donVi": "%"
-        },
-        {
-          "fact": "ham_luong_chat_beo",
-          "op": "<",
-          "value": 1,
-          "donVi": "%"
-        },
-        {
-          "fact": "ham_luong_chat_xo",
-          "op": "<",
-          "value": 1,
-          "donVi": "%"
-        }
-      ],
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      }
     },
     {
       "hs": "23040021",
-      "dieuKien": "Bột đậu tương thô, thích hợp dùng làm thức ăn cho người",
+      "dieuKien": "công dụng / mục đích: làm thức ăn cho người; hàm lượng protein (theo khối lượng) >= 46 %",
       "nguon": "sen.23040021",
       "trich": "BỘT ĐẬU TƯƠNG THÔ, THÍCH HỢP DÙNG LÀM THỨC ĂN CHO NGƯỜI…Sản phẩm thường chứa độ ẩm không quá 12%, protein không ít hơn 46%, chất béo dưới 1,5%, chất xơ không quá 7% và tro không quá 6,5%.",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "làm thức ăn cho người"
+        },
+        {
+          "fact": "hamLuongProtein",
+          "op": ">=",
+          "value": 46,
+          "donVi": "%"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-02#soat-230400",
+          "ngay": "2026-11-21",
+          "bam": "fdd243c915801ad37abafd45abb01f6be87f327cfe54d7a046f8d09c3b2aeb35"
+        }
+      },
       "tieuChi": {
         "fact": "do_am",
         "op": "<=",
         "value": 12,
         "donVi": "%"
-      },
-      "dieuKienSo": [
-        {
-          "fact": "do_am",
-          "op": "<=",
-          "value": 12,
-          "donVi": "%"
-        },
-        {
-          "fact": "ham_luong_protein",
-          "op": ">=",
-          "value": 46,
-          "donVi": "%"
-        },
-        {
-          "fact": "ham_luong_chat_beo",
-          "op": "<",
-          "value": 1.5,
-          "donVi": "%"
-        },
-        {
-          "fact": "ham_luong_chat_xo",
-          "op": "<=",
-          "value": 7,
-          "donVi": "%"
-        },
-        {
-          "fact": "tro",
-          "op": "<=",
-          "value": 6.5,
-          "donVi": "%"
-        }
-      ],
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      }
     },
     {
       "hs": "23040029",
@@ -241,9 +230,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L7-20261111#soat-L7",
-          "ngay": "2026-11-11",
-          "bam": "eac733baf574ead2e5e47a070c642cca4726b8e49f60bffbbb30212994324cfd"
+          "phien": "claude-agent:tho-hs-02#soat-230400",
+          "ngay": "2026-11-21",
+          "bam": "fdd243c915801ad37abafd45abb01f6be87f327cfe54d7a046f8d09c3b2aeb35"
         }
       }
     }

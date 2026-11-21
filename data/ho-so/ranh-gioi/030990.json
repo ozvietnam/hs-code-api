@@ -4,13 +4,19 @@
   "nhom": "0309",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-030990",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-02#soat-030990",
+    "ngay": "2026-11-21",
+    "ghiChu": "Đã chuẩn hoá dieuKienSo bám chữ biểu thuế",
+    "bam": "cd4d8181e5bfb8b0ac3c21bad530f1656409cdb7669370d3a9ea3ff86f27c5f1"
+  },
   "dieuKienNut": [
     {
       "id": "0309901",
@@ -18,12 +24,12 @@
       "trich": "0309901 Của động vật giáp xác",
       "dieuKienSo": [
         {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": "động vật giáp xác"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Của động vật giáp xác"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "0309902",
@@ -31,12 +37,12 @@
       "trich": "0309902 Của động vật thân mềm",
       "dieuKienSo": [
         {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": "động vật thân mềm"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Của động vật thân mềm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -53,7 +59,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "03099012",
@@ -68,14 +74,14 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "03099019",
       "nguon": "tax.03099019",
       "trich": "03099019 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "03099021",
@@ -90,7 +96,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "03099022",
@@ -105,14 +111,14 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "03099029",
       "nguon": "tax.03099029",
       "trich": "03099029 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "03099090",
@@ -120,12 +126,12 @@
       "trich": "03099090 - - Của động vật thủy sinh không xương sống khác",
       "dieuKienSo": [
         {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": "động vật thủy sinh không xương sống"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Của động vật thủy sinh không xương sống khác"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": true
     }
   ],
@@ -133,7 +139,7 @@
     {
       "ma": "0309901",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.0309901 \"Của động vật giáp xác\" ⇒ dungCho động vật giáp xác"
+      "ghiChu": "tieuDe.0309901 \"Của động vật giáp xác\" ⇒ tenLoai \"Của động vật giáp xác\" (bỏ dungCho sai trục)"
     },
     {
       "ma": "03099011",
@@ -148,7 +154,7 @@
     {
       "ma": "0309902",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.0309902 \"Của động vật thân mềm\" ⇒ dungCho động vật thân mềm"
+      "ghiChu": "tieuDe.0309902 \"Của động vật thân mềm\" ⇒ tenLoai \"Của động vật thân mềm\" (bỏ dungCho sai trục)"
     },
     {
       "ma": "03099021",
@@ -163,14 +169,7 @@
     {
       "ma": "03099090",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.03099090 \"Của động vật thủy sinh không xương sống khác\" ⇒ dungCho động vật thủy sinh không xương sống, phanConLai true"
-    }
-  ],
-  "traVe": [
-    {
-      "phien": "claude-agent:duyet-L2-20261111#soat-L2",
-      "ngay": "2026-11-11",
-      "lyDo": "(A) ranh-gioi/030990.json:0309901/0309902/03099090 SAI KHOÁ: \"Của động vật giáp xác\" / \"Của động vật thân mềm\" / \"Của động vật thủy sinh không xương sống khác\" (EN \"Of crustaceans\"/\"Of molluscs\"/\"Of other aquatic invertebrates\") khai dungCho CONG_DUNG (khoá \"dùng cho\" — hàng lắp vào/đi cùng) ⇒ \"Bột tôm khô\" TRAI ở cả 0309901 lẫn 03099090, \"Bột mực đông lạnh\" TRAI ở 0309902: không mô tả thực tế nào tới được dòng đúng. Nhóm loài động vật không có khoá ⇒ để trống + THIEU_KHOA_TU_VUNG (khoaDeXuat), không ép dungCho."
+      "ghiChu": "tax.03099090 \"Của động vật thủy sinh không xương sống khác\" ⇒ tenLoai \"Của động vật thủy sinh không xương sống khác\", phanConLai true (bỏ dungCho sai trục)"
     }
   ]
 }
