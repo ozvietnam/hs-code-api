@@ -12,12 +12,29 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L2-20261111#soat-L2",
-    "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu VI/EN Sống / Tươi hoặc ướp lạnh (cầu gai) ⇒ như 030711.",
-    "bam": "3ab2dd3d9051074db85ceaf5ead2c36bfedfdb5a45334f2f7188ecae8e82eab2"
+    "phien": "claude-agent:tho-hs-02#soat-lo-6b",
+    "ngay": "2026-11-21",
+    "ghiChu": "Đã chuẩn hoá dieuKienSo bám chữ biểu thuế",
+    "bam": "59158d3f909874f64ad0cdde433bc8a0e7533f3de8297e35abb3eedca2a7ffaa"
   },
-  "dieuKienNut": [],
+  "dieuKienNut": [
+    {
+      "id": "030821",
+      "nguon": "wco.030821",
+      "trich": "030821 Aquatic invertebrates; sea urchins (Strongylocentrotus spp., Paracentrotus lividus, Loxechinus albus, Echinus esculentus), live, fresh or chilled",
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "SONG",
+            "TUOI_UOP_LANH"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    }
+  ],
   "dong8": [
     {
       "hs": "03082110",
@@ -25,9 +42,11 @@
       "trich": "03082110 - - - Sống",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Sống"
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "SONG"
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -38,11 +57,10 @@
       "trich": "03082120 - - - Tươi hoặc ướp lạnh",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
           "value": [
-            "Tươi",
-            "ướp lạnh"
+            "TUOI_UOP_LANH"
           ]
         }
       ],
@@ -51,14 +69,9 @@
   ],
   "ghiChuSoan": [
     {
-      "ma": "03082110",
+      "ma": "030821",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.03082110 \"Sống\" ⇒ tenLoai \"Sống\" nguyên văn (không dùng phuongPhapBaoQuan TRONG [SONG]: tầng không có con \"Loại khác\", khoá liệt kê vét mọi giá trị từ vựng sinh lỗ hổng giả — cùng xử lý 640620, 030711)"
-    },
-    {
-      "ma": "03082120",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.03082120 \"Tươi hoặc ướp lạnh\" ⇒ tenLoai [\"Tươi\",\"ướp lạnh\"] — chữ Anh \"fresh or chilled\" là hai hàng, mảng = hoặc (LUAT-CHUNG bảng 1)"
+      "ghiChu": "Phạm vi phân nhóm dieuKienNut[030821] [SONG, TUOI_UOP_LANH] từ wco.030821 (theo #1109, đồng bộ 030639); .10 Sống ⇒ phuongPhapBaoQuan TRONG [SONG], .20 Tươi hoặc ướp lạnh ⇒ phuongPhapBaoQuan TRONG [TUOI_UOP_LANH]"
     }
   ]
 }

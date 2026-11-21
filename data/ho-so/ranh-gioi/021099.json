@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L1-20261121#soat-021099",
+    "phien": "claude-agent:tho-hs-02#soat-lo-6b",
     "ngay": "2026-11-21",
     "ghiChu": "Đã chuẩn hoá dieuKienSo bám chữ biểu thuế",
-    "bam": "8fe941c8bd167d94c957dcc877d54b561ab10d4e4e461e6bea2cce94f1728fb4"
+    "bam": "575182eef3b62ed6f36c9c32b9cd90c8fb96d10223b5e93cf7ba679ebfff6b1a"
   },
   "dieuKienNut": [],
   "dong8": [
@@ -27,14 +27,7 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Thịt gà thái miếng"
-        },
-        {
-          "fact": "phuongPhapBaoQuan",
-          "op": "TRONG",
-          "value": [
-            "KHO_MUOI"
-          ]
+          "value": "Thịt gà thái miếng đã được làm khô đông lạnh"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -47,14 +40,7 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Da lợn"
-        },
-        {
-          "fact": "phuongPhapBaoQuan",
-          "op": "TRONG",
-          "value": [
-            "KHO_MUOI"
-          ]
+          "value": "Da lợn khô"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -71,12 +57,12 @@
     {
       "ma": "02109910",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.02109910 \"Thịt gà thái miếng đã được làm khô đông lạnh (SEN)\" ⇒ tenLoai Thịt gà thái miếng, phuongPhapBaoQuan KHO_MUOI (làm khô)"
+      "ghiChu": "tax.02109910 \"Thịt gà thái miếng đã được làm khô đông lạnh (SEN)\" ⇒ tenLoai nguyên văn \"Thịt gà thái miếng đã được làm khô đông lạnh\" (không dùng phuongPhapBaoQuan KHO_MUOI vì KHO_MUOI suy rộng sang muối/ngâm nước muối và chữ biểu chứa cả \"làm khô\" + \"đông lạnh\")"
     },
     {
       "ma": "02109920",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.02109920 \"Da lợn khô\" ⇒ tenLoai Da lợn, phuongPhapBaoQuan KHO_MUOI (khô)"
+      "ghiChu": "tax.02109920 \"Da lợn khô\" ⇒ tenLoai nguyên văn \"Da lợn khô\" (không dùng phuongPhapBaoQuan KHO_MUOI để tránh suy rộng sang da lợn muối/ngâm nước muối chưa làm khô)"
     }
   ],
   "traVe": [
