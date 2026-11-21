@@ -4,13 +4,19 @@
   "nhom": "8407",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-840734",
     "ngay": "2026-11-02"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-01#soat-lo-5e",
+    "ngay": "2026-11-21",
+    "ghiChu": "Đã chuẩn hoá dieuKienSo bám chữ biểu thuế và traVe.lyDo",
+    "bam": "cf6f1f29f0458737412b2ab6dba71e63b513a256e8f7328780436dc13d7bfc90"
+  },
   "dieuKienNut": [
     {
       "id": "840734~r12893",
@@ -18,11 +24,16 @@
       "trich": "840734~r12893 Đã lắp ráp hoàn chỉnh",
       "dieuKienSo": [
         {
-          "fact": "laBoPhan",
-          "op": "KHONG"
+          "fact": "daLapRap",
+          "op": "CO"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Đã lắp ráp hoàn chỉnh"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -43,7 +54,7 @@
           "donVi": "cc"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84073450",
@@ -56,7 +67,7 @@
           "value": "87.01"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": [
         "84073440"
       ]
@@ -72,7 +83,7 @@
           "value": "87.11"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84073471",
@@ -86,7 +97,7 @@
           "donVi": "cc"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84073472",
@@ -106,7 +117,7 @@
           "donVi": "cc"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84073473",
@@ -120,7 +131,7 @@
           "donVi": "cc"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84073491",
@@ -139,7 +150,7 @@
           "donVi": "cc"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84073492",
@@ -152,7 +163,7 @@
           "value": "87.01"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": [
         "84073491"
       ]
@@ -168,7 +179,7 @@
           "value": "87.11"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84073494",
@@ -182,7 +193,7 @@
           "donVi": "cc"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84073495",
@@ -202,7 +213,7 @@
           "donVi": "cc"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84073499",
@@ -216,14 +227,14 @@
           "donVi": "cc"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "840734~r12893",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.840734~r12893: \"Đã lắp ráp hoàn chỉnh\" ⇒ laBoPhan KHONG (hoàn chỉnh)"
+      "ghiChu": "tieuDe.840734~r12893: \"Đã lắp ráp hoàn chỉnh\" (EN \"Fully assembled:\") ⇒ daLapRap CO + tenLoai \"Đã lắp ráp hoàn chỉnh\" (phân biệt với động cơ dạng chưa lắp ráp ở nhánh \"Loại khác\" 8407349)."
     },
     {
       "ma": "84073440",
@@ -233,7 +244,7 @@
     {
       "ma": "84073450",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.84073450: \"Dùng cho xe khác thuộc nhóm 87.01\" ⇒ dungCho \"87.01\", phanConLai [\"84073440\"]"
+      "ghiChu": "tax.84073450: \"Dùng cho xe khác thuộc nhóm 87.01\" ⇒ dungCho \"87.01\", phanConLai [\"84073440\"] (phủ định máy kéo cầm tay ≤ 1.100 cc ở .40)."
     },
     {
       "ma": "84073460",
@@ -263,7 +274,7 @@
     {
       "ma": "84073492",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.84073492: \"Dùng cho xe khác thuộc nhóm 87.01\" ⇒ dungCho \"87.01\", phanConLai [\"84073491\"]"
+      "ghiChu": "tax.84073492: \"Dùng cho xe khác thuộc nhóm 87.01\" ⇒ dungCho \"87.01\", phanConLai [\"84073491\"] (phủ định máy kéo cầm tay ≤ 1.100 cc ở .91)."
     },
     {
       "ma": "84073493",
@@ -284,13 +295,6 @@
       "ma": "84073499",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.84073499: \"Dung tích xi lanh trên 3.000 cc\" ⇒ dungTichXiLanh > 3000 cc"
-    }
-  ],
-  "traVe": [
-    {
-      "phien": "claude-agent:duyet-L24-20261111#soat-L24",
-      "ngay": "2026-11-11",
-      "lyDo": "(A) 840734~r12893 SAI KHOÁ: tiêu đề 'Đã lắp ráp hoàn chỉnh:' / 'Fully assembled:' ghi laBoPhan KHONG (= hàng hoàn chỉnh, không phải bộ phận) thay vì daLapRap CO. Động cơ chưa lắp ráp (CKD, nhánh 'Loại khác:' r12901) vẫn là hàng hoàn chỉnh theo GIR 2(a) ⇒ laBoPhan KHONG đúng ⇒ bị lấn sang nhánh đã lắp ráp: .71/.72 MFN 20 thay cho .94/.95 18, .73 MFN 10 thay cho .99 18. (B) lưu ý: .50/.92 'Dùng cho xe KHÁC thuộc nhóm 87.01' / 'For other vehicles of heading 87.01' bỏ chữ 'khác' ⇒ động cơ máy kéo cầm tay ≤1.100 cc thoả cả .40 và .50 (cùng MFN 25 nên không đổi thuế, nhưng nên ghi chongLanVanBan hoặc phủ định)."
     }
   ]
 }

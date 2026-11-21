@@ -364,21 +364,86 @@
     },
     {
       "hs": "95049010",
-      "dieuKien": "Các loại đồ phụ trợ để chơi bowling",
-      "tieuChi": null,
+      "dieuKien": "tên loại hàng: đồ phụ trợ; công dụng / mục đích: chơi bowling",
       "loaiKhac": false,
       "nguon": "tax.95049010",
       "trich": "95049010 - - Các loại đồ phụ trợ để chơi bowling",
-      "nguonLoai": "NGUOI_DUYET"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "đồ phụ trợ"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "chơi bowling"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01#soat-lo-5f",
+          "ngay": "2026-11-21",
+          "bam": "c3afb480ddd5505360041a86817434a8a3e44b12f797a23ff3610c221fd944b4"
+        }
+      },
+      "chongLanTruc": {
+        "pn6": "950490",
+        "nhanh": [
+          "95049010",
+          "9504902",
+          "9504903"
+        ],
+        "truc": {
+          "9504902": "TEN_LOAI",
+          "9504903": "CONG_DUNG",
+          "95049010": "TEN_LOAI"
+        },
+        "cauHoiPhanBiet": "Mặt hàng này là đồ phụ trợ để chơi bowling (95049010), đồ chơi ném phi tiêu và bộ phận/phụ kiện (9504902), hay thiết bị chơi bạc và đồ phụ trợ đi kèm (9504903)?",
+        "trich": {
+          "9504902": "Đồ chơi ném phi tiêu và các bộ phận và phụ kiện của chúng",
+          "9504903": "Thiết bị chơi bạc và đồ phụ trợ đi kèm",
+          "95049010": "Các loại đồ phụ trợ để chơi bowling"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:tho-hs-01#soat-lo-5f",
+            "ngay": "2026-11-21",
+            "bam": "c3afb480ddd5505360041a86817434a8a3e44b12f797a23ff3610c221fd944b4"
+          }
+        }
+      }
     },
     {
       "hs": "95049021",
-      "dieuKien": "Loại đồ phụ trợ chơi bowling: bằng gỗ, giấy hoặc plastic",
-      "tieuChi": null,
+      "dieuKien": "chất liệu (theo vị trí): gỗ hoặc giấy hoặc plastic",
       "loaiKhac": false,
       "nguon": "tax.95049021",
       "trich": "95049021 - - - Bằng gỗ, giấy hoặc plastic",
-      "nguonLoai": "NGUOI_DUYET"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": [
+            "gỗ",
+            "giấy",
+            "plastic"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01#soat-lo-5f",
+          "ngay": "2026-11-21",
+          "bam": "c3afb480ddd5505360041a86817434a8a3e44b12f797a23ff3610c221fd944b4"
+        }
+      }
     },
     {
       "hs": "95049029",
@@ -400,48 +465,136 @@
     },
     {
       "hs": "95049032",
-      "dieuKien": "Bàn thiết kế để chơi bạc bằng gỗ hoặc plastic",
-      "tieuChi": null,
+      "dieuKien": "tên loại hàng: Bàn; công dụng / mục đích: chơi bạc; chất liệu (theo vị trí): gỗ hoặc plastic",
       "loaiKhac": false,
       "nguon": "tax.95049032",
       "trich": "95049032 - - - Bàn thiết kế để chơi bạc bằng gỗ hoặc plastic",
-      "nguonLoai": "NGUOI_DUYET"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bàn"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "chơi bạc"
+        },
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": [
+            "gỗ",
+            "plastic"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01#soat-lo-5f",
+          "ngay": "2026-11-21",
+          "bam": "c3afb480ddd5505360041a86817434a8a3e44b12f797a23ff3610c221fd944b4"
+        }
+      }
     },
     {
       "hs": "95049033",
-      "dieuKien": "Loại bàn khác thiết kế để chơi bạc",
-      "tieuChi": null,
+      "dieuKien": "tên loại hàng: Bàn; công dụng / mục đích: chơi bạc",
       "loaiKhac": false,
       "nguon": "tax.95049033",
       "trich": "95049033 - - - Loại bàn khác thiết kế để chơi bạc",
-      "nguonLoai": "NGUOI_DUYET"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bàn"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "chơi bạc"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01#soat-lo-5f",
+          "ngay": "2026-11-21",
+          "bam": "c3afb480ddd5505360041a86817434a8a3e44b12f797a23ff3610c221fd944b4"
+        }
+      },
+      "phanConLai": [
+        "95049032"
+      ]
     },
     {
       "hs": "95049034",
-      "dieuKien": "Quân bài Mạt chược bằng gỗ, giấy hoặc plastic",
-      "tieuChi": null,
+      "dieuKien": "tên loại hàng: Quân bài Mạt chược; chất liệu (theo vị trí): gỗ hoặc giấy hoặc plastic",
       "loaiKhac": false,
       "nguon": "tax.95049034",
       "trich": "95049034 - - - Quân bài Mạt chược bằng gỗ, giấy hoặc plastic",
-      "nguonLoai": "NGUOI_DUYET"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Quân bài Mạt chược"
+        },
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": [
+            "gỗ",
+            "giấy",
+            "plastic"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01#soat-lo-5f",
+          "ngay": "2026-11-21",
+          "bam": "c3afb480ddd5505360041a86817434a8a3e44b12f797a23ff3610c221fd944b4"
+        }
+      }
     },
     {
       "hs": "95049035",
-      "dieuKien": "Quân bài Mạt chược khác",
-      "tieuChi": null,
+      "dieuKien": "tên loại hàng: Quân bài Mạt chược",
       "loaiKhac": false,
       "nguon": "tax.95049035",
       "trich": "95049035 - - - Quân bài Mạt chược khác",
-      "nguonLoai": "NGUOI_DUYET"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Quân bài Mạt chược"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01#soat-lo-5f",
+          "ngay": "2026-11-21",
+          "bam": "c3afb480ddd5505360041a86817434a8a3e44b12f797a23ff3610c221fd944b4"
+        }
+      },
+      "phanConLai": [
+        "95049034"
+      ]
     },
     {
       "hs": "95049036",
-      "dieuKien": "Loại khác, bằng gỗ, giấy hoặc plastic",
-      "tieuChi": null,
+      "dieuKien": "chất liệu (theo vị trí): gỗ hoặc giấy hoặc plastic",
       "loaiKhac": true,
       "nguon": "tax.95049036",
       "trich": "95049036 - - - Loại khác, bằng gỗ, giấy hoặc plastic",
-      "nguonLoai": "NGUOI_DUYET",
+      "nguonLoai": "CLAUDE_DUYET",
       "phamViLoaiKhac": {
         "nguonLoai": "MAY_SUY",
         "cha": "9504903",
@@ -453,6 +606,25 @@
         ],
         "toTienCoTen": "950490",
         "dinhNghiaDuoc": true
+      },
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": [
+            "gỗ",
+            "giấy",
+            "plastic"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01#soat-lo-5f",
+          "ngay": "2026-11-21",
+          "bam": "c3afb480ddd5505360041a86817434a8a3e44b12f797a23ff3610c221fd944b4"
+        }
       }
     },
     {
@@ -479,12 +651,29 @@
     },
     {
       "hs": "95049092",
-      "dieuKien": "Bằng gỗ hoặc bằng plastic",
-      "tieuChi": null,
+      "dieuKien": "chất liệu (theo vị trí): gỗ hoặc plastic",
       "loaiKhac": false,
       "nguon": "tax.95049092",
       "trich": "95049092 - - - - Bằng gỗ hoặc bằng plastic",
-      "nguonLoai": "NGUOI_DUYET"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": [
+            "gỗ",
+            "plastic"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01#soat-lo-5f",
+          "ngay": "2026-11-21",
+          "bam": "c3afb480ddd5505360041a86817434a8a3e44b12f797a23ff3610c221fd944b4"
+        }
+      }
     },
     {
       "hs": "95049093",
@@ -507,12 +696,30 @@
     },
     {
       "hs": "95049095",
-      "dieuKien": "Bằng gỗ, giấy hoặc plastic",
-      "tieuChi": null,
+      "dieuKien": "chất liệu (theo vị trí): gỗ hoặc giấy hoặc plastic",
       "loaiKhac": false,
       "nguon": "tax.95049095",
       "trich": "95049095 - - - - Bằng gỗ, giấy hoặc plastic",
-      "nguonLoai": "NGUOI_DUYET"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": [
+            "gỗ",
+            "giấy",
+            "plastic"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01#soat-lo-5f",
+          "ngay": "2026-11-21",
+          "bam": "c3afb480ddd5505360041a86817434a8a3e44b12f797a23ff3610c221fd944b4"
+        }
+      }
     },
     {
       "hs": "95049099",
@@ -849,5 +1056,166 @@
     "dat": 37,
     "loai": 0,
     "nguonBiCat": []
-  }
+  },
+  "dieuKienNut": [
+    {
+      "id": "950490~r18765",
+      "nguon": "tieuDe.950490~r18765",
+      "trich": "950490~r18765 Bàn thiết kế để chơi trò chơi",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bàn"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "chơi trò chơi"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01#soat-lo-5f",
+          "ngay": "2026-11-21",
+          "bam": "c3afb480ddd5505360041a86817434a8a3e44b12f797a23ff3610c221fd944b4"
+        }
+      }
+    },
+    {
+      "id": "9504902",
+      "nguon": "tieuDe.9504902",
+      "trich": "9504902 Đồ chơi ném phi tiêu và các bộ phận và phụ kiện của chúng",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Đồ chơi ném phi tiêu"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "bộ phận",
+                  "phụ kiện"
+                ]
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "Đồ chơi ném phi tiêu"
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01#soat-lo-5f",
+          "ngay": "2026-11-21",
+          "bam": "c3afb480ddd5505360041a86817434a8a3e44b12f797a23ff3610c221fd944b4"
+        }
+      },
+      "chongLanTruc": {
+        "pn6": "950490",
+        "nhanh": [
+          "95049010",
+          "9504902",
+          "9504903"
+        ],
+        "truc": {
+          "9504902": "TEN_LOAI",
+          "9504903": "CONG_DUNG",
+          "95049010": "TEN_LOAI"
+        },
+        "cauHoiPhanBiet": "Mặt hàng này là đồ phụ trợ để chơi bowling (95049010), đồ chơi ném phi tiêu và bộ phận/phụ kiện (9504902), hay thiết bị chơi bạc và đồ phụ trợ đi kèm (9504903)?",
+        "trich": {
+          "9504902": "Đồ chơi ném phi tiêu và các bộ phận và phụ kiện của chúng",
+          "9504903": "Thiết bị chơi bạc và đồ phụ trợ đi kèm",
+          "95049010": "Các loại đồ phụ trợ để chơi bowling"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:tho-hs-01#soat-lo-5f",
+            "ngay": "2026-11-21",
+            "bam": "c3afb480ddd5505360041a86817434a8a3e44b12f797a23ff3610c221fd944b4"
+          }
+        }
+      }
+    },
+    {
+      "id": "9504903",
+      "nguon": "tieuDe.9504903",
+      "trich": "9504903 Thiết bị chơi bạc và đồ phụ trợ đi kèm",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "chơi bạc"
+              }
+            ],
+            [
+              {
+                "fact": "laThietBiChoiBacHoacMatChuoc",
+                "op": "CO"
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01#soat-lo-5f",
+          "ngay": "2026-11-21",
+          "bam": "c3afb480ddd5505360041a86817434a8a3e44b12f797a23ff3610c221fd944b4"
+        }
+      },
+      "chongLanTruc": {
+        "pn6": "950490",
+        "nhanh": [
+          "95049010",
+          "9504902",
+          "9504903"
+        ],
+        "truc": {
+          "9504902": "TEN_LOAI",
+          "9504903": "CONG_DUNG",
+          "95049010": "TEN_LOAI"
+        },
+        "cauHoiPhanBiet": "Mặt hàng này là đồ phụ trợ để chơi bowling (95049010), đồ chơi ném phi tiêu và bộ phận/phụ kiện (9504902), hay thiết bị chơi bạc và đồ phụ trợ đi kèm (9504903)?",
+        "trich": {
+          "9504902": "Đồ chơi ném phi tiêu và các bộ phận và phụ kiện của chúng",
+          "9504903": "Thiết bị chơi bạc và đồ phụ trợ đi kèm",
+          "95049010": "Các loại đồ phụ trợ để chơi bowling"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:tho-hs-01#soat-lo-5f",
+            "ngay": "2026-11-21",
+            "bam": "c3afb480ddd5505360041a86817434a8a3e44b12f797a23ff3610c221fd944b4"
+          }
+        }
+      }
+    }
+  ]
 }
