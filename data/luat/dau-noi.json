@@ -1,7 +1,7 @@
 {
   "phienBan": 1,
   "moTa": "Bảng đấu nối — nguồn sự thật: đường vào nào đọc kho tri thức nào, sau cờ nào, câu hỏi gửi khách dựng ở đâu (docs/luat-duong-khach.md L2, L4). Cổng máy: scripts/test-dau-noi.mjs, scripts/test-cau-hoi-co-can-cu.mjs.",
-  "capNhat": "2026-11-21, theo origin/main b1f98437 (đã có PR #1520, #1523, #1524)",
+  "capNhat": "2026-11-21, theo origin/main f258816d (đã có PR #1520, #1523, #1524, #1528; thêm HS_TIM_TRUOC)",
   "cachDoc": {
     "napMuonHam": "Tệp nạp module đọc kho chỉ để mượn một hàm KHÔNG đọc kho. Khai đích danh tệp + tên hàm; tên hàm phải nằm trong kho.<tên>.hamKhongDocKho. Cổng đỏ nếu tệp đó lấy thêm hàm khác.",
     "loai": "phan-loai = ra mã HS hoặc hỏi khách về hàng (bắt buộc khai đủ 4 kho + loiCauHoi). soan-thao = viết mô tả / hồ sơ / soát trên mã đã có. tra-cuu = chỉ đọc dữ liệu, không LLM quyết định.",
@@ -56,7 +56,7 @@
           "trangThai": "co",
           "qua": ["lib/so-tay-gates.js", "lib/so-tay-runtime.js"],
           "co": ["HS_CLASSIFY_ENGINE", "HS_SO_TAY", "HS_SOTAY_RUNTIME"],
-          "ghiChu": "Động cơ hai vòng: cổng nghi (gates) + khối sổ tay trong gói vòng 2 (full). Khối soTay cố vấn trong phản hồi qua so-tay-runtime. Sổ tay vào câu hỏi gửi khách chỉ khi bật HS_HOI_THEO_SO_TAY (xem loiCauHoi)."
+          "ghiChu": "Động cơ hai vòng: cổng nghi (gates) + khối sổ tay trong gói vòng 2 (full). Khối soTay cố vấn trong phản hồi qua so-tay-runtime. Sổ tay vào câu hỏi gửi khách chỉ khi bật HS_HOI_THEO_SO_TAY (xem loiCauHoi). Sau cờ HS_TIM_TRUOC (mặc định TẮT): lib/tim-truoc.js đọc thêm cạnh nhóm↔nhóm hai chiều của sổ tay (loaiTru / phanBiet, so-tay-gates.js nhomLienQuanSoTay) TRƯỚC vòng 1 để nạp tối đa 2 nhóm dễ nhầm vào gather(); chỉ khi HS_SO_TAY khác off."
         },
         "soPn6": {
           "trangThai": "co",
@@ -64,7 +64,7 @@
           "co": ["HS_SO_TAY", "HS_SO_TAY_DONG"],
           "ghiChu": "Chỉ qua bảng dòng 8 số của cổng sổ tay (dong8HieuLuc). Máy chốt dòng sau HS_SO_TAY_DONG đang tắt. Sổ PN6 vào câu hỏi gửi khách chỉ khi bật HS_HOI_THEO_SO_TAY (xem loiCauHoi)."
         },
-        "tienLe": { "trangThai": "co", "qua": ["lib/precedent-search.js", "lib/oz-precedent-search.js"], "co": [] },
+        "tienLe": { "trangThai": "co", "qua": ["lib/precedent-search.js", "lib/oz-precedent-search.js"], "co": [], "ghiChu": "Mặc định: tiền lệ chỉ được tìm SAU vòng 1 (gather) và vào gói vòng 2; nhóm của TB-TCHQ chỉ được thêm khi độ giống ≥ 0,6 và tên hàng khớp, tờ khai Oz không thêm nhóm. Sau cờ HS_TIM_TRUOC (mặc định TẮT): lib/tim-truoc.js tìm TB-TCHQ + tờ khai Oz + biểu thuế + từ điển tên thương mại + cặp dễ nhầm theo mô tả TRƯỚC vòng 1, đưa top 5 nhóm kèm bằng chứng vào đầu vào vòng 1 và nạp các nhóm đó vào gather (không qua cổng 0,6). Tên hàng có chữ Hán thì bỏ qua (engine.timTruoc.trangThai ghi lý do)." },
         "chuGiai": { "trangThai": "co", "qua": ["lib/gir-notes.js", "lib/classify.js"], "co": [] }
       },
       "loiCauHoi": {
