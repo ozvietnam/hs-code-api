@@ -4,19 +4,13 @@
   "nhom": "2915",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "DUYET",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-291590",
     "ngay": "2026-11-06"
   },
-  "duyet": {
-    "boi": "CLAUDE_DUYET",
-    "phien": "claude:tho-hs-01:20261121#soat-291590",
-    "ngay": "2026-11-21",
-    "ghiChu": "Duyệt chuẩn hoá ranh giới theo traVe",
-    "bam": "7f16167eaf696f6c5ae4c9fdca0fd552fbdd5616b493e10e5a0083c67f5d66b9"
-  },
+  "duyet": null,
   "dieuKienNut": [],
   "dong8": [
     {
@@ -25,40 +19,15 @@
       "trich": "29159020 - - Axit lauric, axit myristic, muối và este của chúng",
       "dieuKienSo": [
         {
-          "op": "HOAC",
-          "phuongAn": [
-            [
-              {
-                "fact": "tenLoai",
-                "op": "TEN_LOAI",
-                "value": [
-                  "Axit lauric",
-                  "axit myristic"
-                ]
-              }
-            ],
-            [
-              {
-                "fact": "tenLoai",
-                "op": "TEN_LOAI",
-                "value": [
-                  "muối",
-                  "este"
-                ]
-              },
-              {
-                "fact": "dungCho",
-                "op": "CONG_DUNG",
-                "value": [
-                  "Axit lauric",
-                  "axit myristic"
-                ]
-              }
-            ]
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Axit lauric",
+            "axit myristic"
           ]
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "29159030",
@@ -66,34 +35,14 @@
       "trich": "29159030 - - Axit caprylic, muối và este của nó",
       "dieuKienSo": [
         {
-          "op": "HOAC",
-          "phuongAn": [
-            [
-              {
-                "fact": "tenLoai",
-                "op": "TEN_LOAI",
-                "value": "Axit caprylic"
-              }
-            ],
-            [
-              {
-                "fact": "tenLoai",
-                "op": "TEN_LOAI",
-                "value": [
-                  "muối",
-                  "este"
-                ]
-              },
-              {
-                "fact": "dungCho",
-                "op": "CONG_DUNG",
-                "value": "Axit caprylic"
-              }
-            ]
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Axit caprylic"
           ]
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "29159040",
@@ -101,58 +50,28 @@
       "trich": "29159040 - - Axit capric, muối và este của nó",
       "dieuKienSo": [
         {
-          "op": "HOAC",
-          "phuongAn": [
-            [
-              {
-                "fact": "tenLoai",
-                "op": "TEN_LOAI",
-                "value": "Axit capric"
-              }
-            ],
-            [
-              {
-                "fact": "tenLoai",
-                "op": "TEN_LOAI",
-                "value": [
-                  "muối",
-                  "este"
-                ]
-              },
-              {
-                "fact": "dungCho",
-                "op": "CONG_DUNG",
-                "value": "Axit capric"
-              }
-            ]
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Axit capric"
           ]
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "29159090",
       "nguon": "tax.29159090",
       "trich": "29159090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "29159020",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.29159020 \"Axit lauric, axit myristic, muối và este của chúng\" ⇒ HOAC [[tenLoai [\"Axit lauric\",\"axit myristic\"]],[tenLoai [\"muối\",\"este\"] + dungCho [\"Axit lauric\",\"axit myristic\"]]]"
-    },
-    {
-      "ma": "29159030",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.29159030 \"Axit caprylic, muối và este của nó\" ⇒ HOAC [[tenLoai \"Axit caprylic\"],[tenLoai [\"muối\",\"este\"] + dungCho \"Axit caprylic\"]]"
-    },
-    {
-      "ma": "29159040",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.29159040 \"Axit capric, muối và este của nó\" ⇒ HOAC [[tenLoai \"Axit capric\"],[tenLoai [\"muối\",\"este\"] + dungCho \"Axit capric\"]]"
+      "ghiChu": "tax.29159020 \"Axit lauric, axit myristic, muối và este của chúng\" ⇒ tenLoai [\"Axit lauric\",\"axit myristic\"]; vế \"muối và este của chúng\" là đính kèm của cả hai axit (chữ Anh \"and their salts and esters\"), không tách thành tên riêng"
     },
     {
       "ma": "291590",
