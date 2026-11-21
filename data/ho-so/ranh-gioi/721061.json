@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L21-20261111#soat-L21",
-    "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu tiêu đề 7210611 'C dưới 0,6%'; .11 ≤1,2, .12 >1,2–≤1,5; nhánh Loại khác .91 ≤1,2, .92 'Loại khác, dạng lượn sóng' ⇒ dangLuonSong (sau .91 theo thứ tự) khớp.",
-    "bam": "0d613a9bcc06d78613661e12ff251551c5edd9af5fee597cd625309152f54563"
+    "phien": "claude-agent:ozv-1760#soat-721061",
+    "ngay": "2026-11-21",
+    "ghiChu": "Bổ sung tenLoai dạng lượn sóng cho 72106192 cùng dangLuonSong để phân biệt với 72106191.",
+    "bam": "c2e442eda516016d10472b778f104d480d3524eede0364819ee4f383e7218bd6"
   },
   "dieuKienNut": [
     {
@@ -97,6 +97,11 @@
         {
           "fact": "dangLuonSong",
           "op": "CO"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "dạng lượn sóng"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"

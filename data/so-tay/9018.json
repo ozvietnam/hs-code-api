@@ -374,24 +374,23 @@
     },
     {
       "hs": "90183910",
-      "dieuKien": "tên loại hàng: Ống thông",
+      "dieuKien": "ống thông (catheter)",
       "loaiKhac": false,
       "nguon": "tax.90183910",
       "trich": "90183910 - - - Ống thông",
       "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Ống thông"
+          "fact": "laOngThong",
+          "op": "CO"
         }
       ],
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L31-20261111#soat-L31",
-          "ngay": "2026-11-11",
-          "bam": "9629bd0670726510c403cd67fc904932bf65d616da37d83cfecf02e5943b1c50"
+          "phien": "claude-agent:ozv-1760#soat-901839",
+          "ngay": "2026-11-21",
+          "bam": "68bde96a98460c5ba7352eb3dc3597572461464958b9c1b168bf2965de048f44"
         }
       }
     },
@@ -458,27 +457,75 @@
     },
     {
       "hs": "90189010",
-      "dieuKien": "Đèn sợi quang loại dùng đeo trên đầu, được thiết kế dùng trong y học(SEN)",
+      "dieuKien": "loại thiết bị, dụng cụ y tế thuộc phân nhóm 9018.90: đèn sợi quang loại dùng đeo trên đầu, được thiết kế dùng trong y học",
       "loaiKhac": false,
       "nguon": "tax.90189010",
       "trich": "90189010 - - Đèn sợi quang loại dùng đeo trên đầu, được thiết kế dùng trong y học(SEN)",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "loaiDungCuThietBiYTeKhac",
+          "op": "TRONG",
+          "value": [
+            "DEN_SOI_QUANG_DEO_DAU_Y_HOC"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1760#soat-901890",
+          "ngay": "2026-11-21",
+          "bam": "43a7e2780bf20272413059f427ec11d8e610cab32ce06d76d4eeedd9e9789c57"
+        }
+      }
     },
     {
       "hs": "90189020",
-      "dieuKien": "Bộ theo dõi tĩnh mạch ",
+      "dieuKien": "loại thiết bị, dụng cụ y tế thuộc phân nhóm 9018.90: bộ theo dõi tĩnh mạch",
       "loaiKhac": false,
       "nguon": "tax.90189020",
       "trich": "90189020 - - Bộ theo dõi tĩnh mạch ",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "loaiDungCuThietBiYTeKhac",
+          "op": "TRONG",
+          "value": [
+            "BO_THEO_DOI_TINH_MACH"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1760#soat-901890",
+          "ngay": "2026-11-21",
+          "bam": "43a7e2780bf20272413059f427ec11d8e610cab32ce06d76d4eeedd9e9789c57"
+        }
+      }
     },
     {
       "hs": "90189031",
-      "dieuKien": "Dụng cụ và thiết bị phẫu thuật điện tử hoặc y học điện tử",
+      "dieuKien": "dụng cụ và thiết bị phẫu thuật điện tử hoặc y học điện tử",
       "loaiKhac": false,
       "nguon": "tax.90189031",
       "trich": "90189031 - - - Dụng cụ và thiết bị phẫu thuật điện tử hoặc y học điện tử",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "laThietBiPhauThuatHoacYHocDienTu",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1760#soat-901890",
+          "ngay": "2026-11-21",
+          "bam": "43a7e2780bf20272413059f427ec11d8e610cab32ce06d76d4eeedd9e9789c57"
+        }
+      }
     },
     {
       "hs": "90189039",
@@ -798,5 +845,30 @@
     "dat": 52,
     "loai": 1,
     "nguonBiCat": []
-  }
+  },
+  "dieuKienNut": [
+    {
+      "id": "9018903",
+      "nguon": "tieuDe.9018903",
+      "trich": "9018903 Dụng cụ và thiết bị điện tử",
+      "dieuKienSo": [
+        {
+          "fact": "loaiDungCuThietBiYTeKhac",
+          "op": "TRONG",
+          "value": [
+            "DUNG_CU_THIET_BI_DIEN_TU"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1760#soat-901890",
+          "ngay": "2026-11-21",
+          "bam": "43a7e2780bf20272413059f427ec11d8e610cab32ce06d76d4eeedd9e9789c57"
+        }
+      }
+    }
+  ]
 }

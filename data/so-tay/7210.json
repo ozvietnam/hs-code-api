@@ -763,9 +763,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
-          "ngay": "2026-11-11",
-          "bam": "0d613a9bcc06d78613661e12ff251551c5edd9af5fee597cd625309152f54563"
+          "phien": "claude-agent:ozv-1760#soat-721061",
+          "ngay": "2026-11-21",
+          "bam": "c2e442eda516016d10472b778f104d480d3524eede0364819ee4f383e7218bd6"
         }
       }
     },
@@ -793,9 +793,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
-          "ngay": "2026-11-11",
-          "bam": "0d613a9bcc06d78613661e12ff251551c5edd9af5fee597cd625309152f54563"
+          "phien": "claude-agent:ozv-1760#soat-721061",
+          "ngay": "2026-11-21",
+          "bam": "c2e442eda516016d10472b778f104d480d3524eede0364819ee4f383e7218bd6"
         }
       }
     },
@@ -839,15 +839,15 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
-          "ngay": "2026-11-11",
-          "bam": "0d613a9bcc06d78613661e12ff251551c5edd9af5fee597cd625309152f54563"
+          "phien": "claude-agent:ozv-1760#soat-721061",
+          "ngay": "2026-11-21",
+          "bam": "c2e442eda516016d10472b778f104d480d3524eede0364819ee4f383e7218bd6"
         }
       }
     },
     {
       "hs": "72106192",
-      "dieuKien": "dạng lượn sóng",
+      "dieuKien": "dạng lượn sóng; tên loại hàng: dạng lượn sóng",
       "loaiKhac": true,
       "nguon": "tax.72106192",
       "trich": "72106192 - - - - Loại khác, dạng lượn sóng",
@@ -869,14 +869,19 @@
         {
           "fact": "dangLuonSong",
           "op": "CO"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "dạng lượn sóng"
         }
       ],
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
-          "ngay": "2026-11-11",
-          "bam": "0d613a9bcc06d78613661e12ff251551c5edd9af5fee597cd625309152f54563"
+          "phien": "claude-agent:ozv-1760#soat-721061",
+          "ngay": "2026-11-21",
+          "bam": "c2e442eda516016d10472b778f104d480d3524eede0364819ee4f383e7218bd6"
         }
       }
     },
@@ -994,19 +999,53 @@
     },
     {
       "hs": "72107012",
-      "dieuKien": "Được sơn sau khi phủ, mạ kẽm",
+      "dieuKien": "lớp mạ hoặc tráng phủ bề mặt: được sơn sau khi phủ, mạ kẽm",
       "loaiKhac": false,
       "nguon": "tax.72107012",
       "trich": "72107012 - - - Được sơn sau khi phủ, mạ kẽm",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "lopMaPhu",
+          "op": "TRONG",
+          "value": [
+            "SON_SAU_MA_KEM"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1760#soat-721070",
+          "ngay": "2026-11-21",
+          "bam": "cabcc2ea6c1100e6660195ad1ceafebdf29bc4df37155190dfb132622b6c8fd8"
+        }
+      }
     },
     {
       "hs": "72107013",
-      "dieuKien": "Được sơn sau khi phủ, mạ bằng hợp kim nhôm - kẽm",
+      "dieuKien": "lớp mạ hoặc tráng phủ bề mặt: được sơn sau khi phủ, mạ hợp kim nhôm - kẽm",
       "loaiKhac": false,
       "nguon": "tax.72107013",
       "trich": "72107013 - - - Được sơn sau khi phủ, mạ bằng hợp kim nhôm - kẽm",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "lopMaPhu",
+          "op": "TRONG",
+          "value": [
+            "SON_SAU_MA_NHOM_KEM"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1760#soat-721070",
+          "ngay": "2026-11-21",
+          "bam": "cabcc2ea6c1100e6660195ad1ceafebdf29bc4df37155190dfb132622b6c8fd8"
+        }
+      }
     },
     {
       "hs": "72107019",
@@ -1032,11 +1071,25 @@
     },
     {
       "hs": "72107021",
-      "dieuKien": "Được sơn",
+      "dieuKien": "đã được sơn (bề mặt phủ sơn)",
       "loaiKhac": false,
       "nguon": "tax.72107021",
       "trich": "72107021 - - - Được sơn",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "daSon",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1760#soat-721070",
+          "ngay": "2026-11-21",
+          "bam": "cabcc2ea6c1100e6660195ad1ceafebdf29bc4df37155190dfb132622b6c8fd8"
+        }
+      }
     },
     {
       "hs": "72107029",
@@ -1062,11 +1115,25 @@
     },
     {
       "hs": "72107091",
-      "dieuKien": "Được sơn",
+      "dieuKien": "đã được sơn (bề mặt phủ sơn)",
       "loaiKhac": false,
       "nguon": "tax.72107091",
       "trich": "72107091 - - - Được sơn",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "daSon",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1760#soat-721070",
+          "ngay": "2026-11-21",
+          "bam": "cabcc2ea6c1100e6660195ad1ceafebdf29bc4df37155190dfb132622b6c8fd8"
+        }
+      }
     },
     {
       "hs": "72107099",
@@ -1891,9 +1958,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L21-20261111#soat-L21",
-          "ngay": "2026-11-11",
-          "bam": "0d613a9bcc06d78613661e12ff251551c5edd9af5fee597cd625309152f54563"
+          "phien": "claude-agent:ozv-1760#soat-721061",
+          "ngay": "2026-11-21",
+          "bam": "c2e442eda516016d10472b778f104d480d3524eede0364819ee4f383e7218bd6"
         }
       }
     },
@@ -1918,6 +1985,57 @@
           "bam": "c7b43bc277e5dba77f3875383850782d12f06d763772ef70db288533f0531055"
         }
       }
+    },
+    {
+      "id": "7210701",
+      "nguon": "tieuDe.7210701",
+      "trich": "7210701 Có hàm lượng carbon dưới 0,6% tính theo khối lượng và chiều dày không quá 1,5 mm",
+      "dieuKienSo": [
+        {
+          "fact": "doDay",
+          "op": "<=",
+          "value": 1.5,
+          "donVi": "mm"
+        },
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1760#soat-721070",
+          "ngay": "2026-11-21",
+          "bam": "cabcc2ea6c1100e6660195ad1ceafebdf29bc4df37155190dfb132622b6c8fd8"
+        }
+      }
+    },
+    {
+      "id": "7210702",
+      "nguon": "tieuDe.7210702",
+      "trich": "7210702 Loại khác, có hàm lượng carbon dưới 0,6% tính theo khối lượng",
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1760#soat-721070",
+          "ngay": "2026-11-21",
+          "bam": "cabcc2ea6c1100e6660195ad1ceafebdf29bc4df37155190dfb132622b6c8fd8"
+        }
+      },
+      "phanConLai": true
     }
   ]
 }
