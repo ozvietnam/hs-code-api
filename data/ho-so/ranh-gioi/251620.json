@@ -4,13 +4,19 @@
   "nhom": "2516",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261105T1542#soan-251620",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1771#soat-251620",
+    "ngay": "2026-11-21",
+    "ghiChu": "Chuẩn hoá ranh giới theo traVe.lyDo và duyệt+áp khép SẠCH V1 (OZV-1771)",
+    "bam": "d190312e3956a5453b7b2e4877b454c9d332e809dec26a0602c8f2799885c5af"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -27,7 +33,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "25162020",
@@ -38,12 +44,12 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": [
-            "khối",
+            "Mới chỉ cắt",
             "tấm hình chữ nhật"
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": false
     }
   ],
@@ -56,7 +62,7 @@
     {
       "ma": "25162020",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.25162020 \"Mới chỉ cắt, bằng cưa hoặc cách khác, thành khối hoặc tấm hình chữ nhật (kể cả hình vuông)\" — vế GIỚI HẠN \"bằng cưa hoặc cách khác, thành khối hoặc tấm hình chữ nhật (kể cả hình vuông)\": \"khối hoặc tấm hình chữ nhật\" là hai dạng ⇒ mảng; \"(kể cả hình vuông)\" là ngoặc kể cả ⇒ PHU; phanConLai: false vì dòng có tên riêng (\"Mới chỉ cắt…\"), không phải \"loại khác\""
+      "ghiChu": "tax.25162020 \"Mới chỉ cắt, bằng cưa hoặc cách khác, thành khối hoặc tấm hình chữ nhật (kể cả hình vuông)\" ⇒ tenLoai [\"Mới chỉ cắt\", \"tấm hình chữ nhật\"] (không để chữ \"khối\" trần làm lấn .10; \"(kể cả hình vuông)\" là ngoặc kể cả ⇒ PHU; phanConLai: false)"
     }
   ],
   "traVe": [

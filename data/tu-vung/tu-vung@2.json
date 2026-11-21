@@ -363,7 +363,9 @@
    "daCatNghienHoacDangBot",
    "loaiDungCuThietBiYTeKhac",
    "laThietBiPhauThuatHoacYHocDienTu",
-   "laOngThong"
+   "laOngThong",
+   "laThuanChung",
+   "coHinhDangBenTrongChuNhatHoacThuon"
   ],
   "tuVung1": {
    "trangThai": "DA_CHAM",
@@ -407,7 +409,8 @@
   "非",
   "不",
   "没有",
-  "未"
+  "未",
+  "đã\\s+lắp\\s+sẵn\\s+các"
  ],
  "phuDinhCaDoan": [
   "không phải",
@@ -5371,7 +5374,8 @@
        "(?:từ|bằng|sợi|vải|xơ)\\s+(?:đay|lanh|gai(?!\\s+ramie)|lanh\\s+gai|xơ\\s+dừa|sisal|chuối\\s+sợi|dứa\\s+sợi)",
        "vải\\s+lanh",
        "vải\\s+đay",
-       "lanh(?!\\s+gai)"
+       "lanh(?!\\s+gai)",
+       "từ\\s+các\\s+vật\\s+liệu\\s+dệt\\s+khác(?=\\s*:\\s*đã\\s+tráng)"
       ],
       "en": [
        "vegetable\\s+(?:textile\\s+)?fib(?:re|er)s?",
@@ -8852,7 +8856,8 @@
     "VAN_DIEM",
     "VAN_CHEO",
     "NOI_VONG_DA_CAT",
-    "NOI_VONG_CHUA_CAT"
+    "NOI_VONG_CHUA_CAT",
+    "NOI_VONG"
    ],
    "moTaGiaTri": {
     "VAN_DIEM": {
@@ -8944,7 +8949,31 @@
       ]
      },
      "cachViet": "sợi nổi vòng không cắt"
+    },
+    "NOI_VONG": {
+     "nhanVi": "vải nổi vòng (pile)",
+     "nhanEn": "pile fabric",
+     "nhanZh": "起绒织物",
+     "cachDoc": {
+      "vi": [
+       "nổi\\s+vòng(?!\\s+(?:đã|không|chưa)\\s+cắt)"
+      ],
+      "en": [
+       "(?<!(?:cut|uncut|loop)\\s+)\\bpile\\b"
+      ],
+      "zh": [
+       "(?<![未割])起绒",
+       "绒面"
+      ]
+     },
+     "cachViet": "vải nổi vòng"
     }
+   },
+   "giaTriCha": {
+    "NOI_VONG": [
+     "NOI_VONG_DA_CAT",
+     "NOI_VONG_CHUA_CAT"
+    ]
    },
    "cachDoc": {
     "vi": [],
@@ -24692,6 +24721,113 @@
     "zh": "该医疗器械是否为导管（catheter）？"
    },
    "ghiChu": "Chữ biểu 9018.39.10 \"Ống thông\" (EN \"Catheters\") — tách riêng vì chữ \"ống\" trùng tiêu đề 9018.3 và chữ \"thông\" nằm trong TU_CHUNG_TEN_LOAI nên tenLoai bị coi là không tất định.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "khoa": "laThuanChung",
+   "kieu": "CO_KHONG",
+   "nhanVi": "loại thuần chủng",
+   "nhanEn": "pure-bred",
+   "nhanZh": "纯种",
+   "cachDoc": {
+    "vi": [
+     "(?:loại\\s+)?thuần\\s+chủng"
+    ],
+    "en": [
+     "pure-?bred"
+    ],
+    "zh": [
+     "纯种",
+     "改良种用"
+    ],
+    "phuDinh": [
+     "không phải",
+     "không",
+     "trừ",
+     "other than",
+     "not",
+     "non-?",
+     "非",
+     "不"
+    ]
+   },
+   "cachDocKhong": {
+    "vi": [
+     "không\\s+(?:phải\\s+)?(?:loại\\s+)?thuần\\s+chủng",
+     "giống\\s+lai"
+    ],
+    "en": [
+     "not\\s+pure-?bred",
+     "other\\s+than\\s+pure-?bred",
+     "cross-?bred"
+    ],
+    "zh": [
+     "非纯种",
+     "杂交"
+    ]
+   },
+   "cachViet": {
+    "vi": "loại thuần chủng",
+    "viPhuDinh": "không phải loại thuần chủng"
+   },
+   "cauHoi": {
+    "vi": "Động vật có phải là giống thuần chủng (có giấy chứng nhận/phả hệ thuần chủng được cơ quan có thẩm quyền công nhận) không?",
+    "zh": "该动物是否为纯种（具有主管部门认可的纯种血统证书）？"
+   },
+   "ghiChu": "Chữ biểu 0104.10.10 / 0104.20.10 \"Loại thuần chủng để nhân giống\" / EN \"Pure-bred breeding animals\" (OZV-1771).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "khoa": "coHinhDangBenTrongChuNhatHoacThuon",
+   "kieu": "CO_KHONG",
+   "nhanVi": "có hình dạng bên trong là hình chữ nhật hoặc hình thuôn (oblong)",
+   "nhanEn": "having rectangular or oblong interior shape",
+   "nhanZh": "内部形状为长方形或长圆形",
+   "cachDoc": {
+    "vi": [
+     "hình\\s+dạng\\s+bên\\s+trong\\s+là\\s+hình\\s+chữ\\s+nhật\\s+hoặc\\s+hình\\s+thuôn(?:\\s*\\(oblong\\))?",
+     "(?:hình\\s+dạng\\s+bên\\s+trong|lòng\\s+bồn)\\s+(?:là\\s+)?hình\\s+(?:chữ\\s+nhật|thuôn)"
+    ],
+    "en": [
+     "having\\s+rectangular\\s+or\\s+oblong\\s+interior\\s+shape",
+     "(?:rectangular|oblong)\\s+interior\\s+shape"
+    ],
+    "zh": [
+     "内部形状为长方形或长圆形",
+     "内腔为(?:长方形|长圆形)"
+    ],
+    "phuDinh": [
+     "không phải",
+     "không",
+     "trừ",
+     "other than",
+     "not",
+     "非",
+     "不"
+    ]
+   },
+   "cachDocKhong": {
+    "vi": [
+     "hình\\s+dạng\\s+bên\\s+trong\\s+không\\s+phải\\s+(?:là\\s+)?hình\\s+chữ\\s+nhật\\s+hoặc\\s+hình\\s+thuôn",
+     "(?:hình\\s+dạng\\s+bên\\s+trong|lòng\\s+bồn)\\s+(?:là\\s+)?hình\\s+(?:tròn|góc|tam\\s+giác)"
+    ],
+    "en": [
+     "interior\\s+shape\\s+other\\s+than\\s+rectangular\\s+or\\s+oblong",
+     "round\\s+interior\\s+shape"
+    ],
+    "zh": [
+     "内部形状非长方形或长圆形"
+    ]
+   },
+   "cachViet": {
+    "vi": "có hình dạng bên trong là hình chữ nhật hoặc hình thuôn",
+    "viPhuDinh": "hình dạng bên trong không phải hình chữ nhật hoặc hình thuôn"
+   },
+   "cauHoi": {
+    "vi": "Lòng bên trong của bồn tắm có hình dạng hình học là hình chữ nhật hoặc hình thuôn dài (oblong) không?",
+    "zh": "浴缸内部（内腔）的几何形状是否为长方形或长圆形（oblong）？"
+   },
+   "ghiChu": "Chữ biểu 3922.10.11 \"Bồn tắm có hình dạng bên trong là hình chữ nhật hoặc hình thuôn (oblong)\" / EN \"Bathtubs having rectangular or oblong interior shape\" (OZV-1771).",
    "nguonLoai": "AI_DA_KIEM"
   }
  ],

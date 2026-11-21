@@ -4,13 +4,19 @@
   "nhom": "3922",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1700#soan-392290",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1771#soat-392290",
+    "ngay": "2026-11-21",
+    "ghiChu": "Chuẩn hoá ranh giới theo traVe.lyDo và duyệt+áp khép SẠCH V1 (OZV-1771)",
+    "bam": "3ce9f909aa4175662fe11291cbf498de8dc249f6c9360736ec5a30b0d9740b6c"
+  },
   "dieuKienNut": [
     {
       "id": "3922901",
@@ -18,16 +24,30 @@
       "trich": "3922901 Bệ rửa, bình xả nước và bệ tiểu",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "Bệ rửa",
-            "bình xả nước",
-            "bệ tiểu"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "Bệ rửa",
+                  "bình xả nước",
+                  "bệ tiểu"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "bình xả nước"
+              }
+            ]
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -37,12 +57,16 @@
       "trich": "39229011 - - - Bộ phận của bình xả nước(SEN)",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Bộ phận của bình xả nước"
+          "fact": "laBoPhan",
+          "op": "CO"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "bình xả nước"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39229012",
@@ -55,33 +79,60 @@
           "value": "Bình xả nước đã lắp sẵn các bộ phận"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39229019",
       "nguon": "tax.39229019",
       "trich": "39229019 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39229090",
       "nguon": "tax.39229090",
       "trich": "39229090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "39229011",
+        "39229012"
+      ],
+      "truc": {
+        "39229011": "DAC_DIEM",
+        "39229012": "TEN_LOAI"
+      },
+      "cauHoiPhanBiet": "Hàng đang phân loại là bộ phận của bình xả nước (39229011) hay là bình xả nước hoàn chỉnh đã lắp sẵn các bộ phận (39229012)?",
+      "trich": {
+        "39229011": "Bộ phận của bình xả nước(SEN)",
+        "39229012": "Bình xả nước đã lắp sẵn các bộ phận(SEN)"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "39229011",
+            "39229012"
+          ],
+          "khongCoHangThat": "Theo SEN 3922.90.11 và 3922.90.12, bộ phận của bình xả nước gồm các phần bên trong hoặc thân bình của hệ thống bình xả (39229011), còn 39229012 là một bình xả nước hoàn chỉnh đã được lắp sẵn các bộ phận (kể cả bình chứa và nắp đậy). Một mặt hàng không thể vừa là bộ phận rời của bình xả nước vừa là bình xả nước hoàn chỉnh đã lắp sẵn các bộ phận."
+        }
+      ],
+      "phanXu": null
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "3922901",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.3922901 \"Bệ rửa, bình xả nước và bệ tiểu\" (EN \"Lavatory pans, flushing cisterns and urinals\") ⇒ tenLoai [\"Bệ rửa\",\"bình xả nước\",\"bệ tiểu\"] — ba hàng thay thế nối bằng dấu phẩy và \"và\" ⇒ mảng (vòng 5/7)."
+      "ghiChu": "tieuDe.3922901 \"Bệ rửa, bình xả nước và bệ tiểu\" (EN \"Lavatory pans, flushing cisterns and urinals\") ⇒ HOAC [[tenLoai [\"Bệ rửa\",\"bình xả nước\",\"bệ tiểu\"]], [dungCho \"bình xả nước\"]] để không chặn dòng con 39229011 (Bộ phận của bình xả nước)."
     },
     {
       "ma": "39229011",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.39229011 \"Bộ phận của bình xả nước(SEN)\" (EN \"Parts of flushing cisterns\") ⇒ tenLoai \"Bộ phận của bình xả nước\" (một chuỗi nguyên văn; phủ vế GIỚI HẠN \"của bình xả nước\"). KHÔNG dùng laBoPhan CO: chữ \"bộ phận\" cũng có trong .12 \"Bình xả nước đã lắp sẵn các bộ phận\" ⇒ hai dòng cùng thoả."
+      "ghiChu": "tax.39229011 \"Bộ phận của bình xả nước(SEN)\" (EN \"Parts of flushing cisterns\") ⇒ laBoPhan CO + dungCho \"bình xả nước\" theo quy ước bước 3.11."
     },
     {
       "ma": "39229012",

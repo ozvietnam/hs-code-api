@@ -4,13 +4,19 @@
   "nhom": "2516",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261105T1542#soan-251612",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1771#soat-251612",
+    "ngay": "2026-11-21",
+    "ghiChu": "Chuẩn hoá ranh giới theo traVe.lyDo và duyệt+áp khép SẠCH V1 (OZV-1771)",
+    "bam": "e0af87fd24ed56c78ee97bd9164eee5379300282fce8f1220c204c245f616211"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -19,12 +25,14 @@
       "trich": "25161210 - - - Dạng khối (SEN)",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Dạng khối"
+          "fact": "dangKhoiHoacTamDa",
+          "op": "TRONG",
+          "value": [
+            "DANG_KHOI"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "25161220",
@@ -32,24 +40,26 @@
       "trich": "25161220 - - - Dạng tấm (SEN)",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Dạng tấm"
+          "fact": "dangKhoiHoacTamDa",
+          "op": "TRONG",
+          "value": [
+            "DANG_TAM"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "25161210",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.25161210 \"Dạng khối (SEN)\" — tên dạng nguyên văn ⇒ tenLoai \"Dạng khối\"; \"(SEN)\" là ngoặc chú thích"
+      "ghiChu": "tax.25161210 \"Dạng khối (SEN)\" ⇒ dangKhoiHoacTamDa TRONG [DANG_KHOI]; \"(SEN)\" là ngoặc chú thích"
     },
     {
       "ma": "25161220",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.25161220 \"Dạng tấm (SEN)\" — tên dạng nguyên văn ⇒ tenLoai \"Dạng tấm\"; \"(SEN)\" là ngoặc chú thích"
+      "ghiChu": "tax.25161220 \"Dạng tấm (SEN)\" ⇒ dangKhoiHoacTamDa TRONG [DANG_TAM]; \"(SEN)\" là ngoặc chú thích"
     }
   ],
   "traVe": [
