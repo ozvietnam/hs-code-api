@@ -1,0 +1,29 @@
+name: Luat L1 - PR dung LLM
+
+# Nhắc luật L1 (docs/luat-duong-khach.md): PR sửa tệp gọi LLM / prompt / chuỗi mô hình thì thân PR phải ghi
+# "Không đổi hành vi LLM: <lý do>" hoặc "Công tắc: `HS_…`" + mục "Đo bằng chuỗi mô hình máy thật".
+# Vì sao: PR #1517 đo ở dev bằng mô hình khác máy thật, lên máy thật sai nhóm 5/10, phải hoàn nguyên (#1519).
+# Chạy ~20 giây, không cài gói. `edited` để sửa thân PR là cổng tự chạy lại, không cần đẩy commit.
+on:
+  pull_request:
+    types: [opened, edited, reopened, synchronize]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  luat-l1:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/kiem-pr-l1.mjs
+        env:
+          GH_TOKEN: ${{ github.token }}

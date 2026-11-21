@@ -71,7 +71,8 @@ Không cần đặt thêm biến nào. Các biến tuỳ chọn (để mặc đ�
 | `HS_HO_SO_HAN_DOC_MS` / `_DOI_CHIEU_MS` / `_NGHIEN_CUU_MS` / `_VIET_MS` | 35000 / 15000 / 30000 / 35000 | Hạn từng bước (ms); quá hạn thì bước đó rơi về phần máy |
 
 **Chi phí:** ở chế độ `shadow`, mỗi lượt `describe`/`classify`/`declaration-sheet` có mã lát 1 tốn thêm vài lời gọi LLM (đọc dữ
-kiện + viết) chạy song song với đường cũ. Lượt khoá dịch vụ vẫn đi `withPrivateData` (chỉ nhà cung cấp không huấn luyện).
+kiện + viết). Từ PR #1516 hồ sơ bóng dựng ở **hàng chạy nền, sau khi đã trả khách**; chạy bóng không được chặn đường trả
+lời (luật L5, `docs/luat-duong-khach.md`). Lượt khoá dịch vụ vẫn đi `withPrivateData` (chỉ nhà cung cấp không huấn luyện).
 
 ## 3. Tạo lại container
 
@@ -186,4 +187,7 @@ Thu hồi khoá `oz-noi-bo`: xoá mục `,oz-noi-bo:<khoá>` khỏi `HS_SERVICE_
 - [ ] Đã thử rollback một lần trên giờ vắng (đặt `off` → 503 `HO_SO_TAT` → đặt lại `shadow`), hoặc ghi rõ "chưa thử".
 - [ ] Gửi GĐ: giờ bật, kết quả `bao-cao-shadow.mjs` sau 24 giờ (chỉ số, không khoá).
 
-Chạy bóng tối thiểu **5 ngày làm việc** trước khi GĐ trình CEO bật `on` (plan L1-5f). Không tự đổi sang `HS_HO_SO=on`.
+Chạy bóng tối thiểu **5 ngày làm việc** trước khi GĐ trình bật `on` (plan L1-5f). Không tự đổi sang `HS_HO_SO=on`.
+
+**Chủ, ngày xét, tiêu chí bật / tắt, nơi lấy số: `data/luat/bang-co.json`, mục `HS_HO_SO` → `bong`** (luật L5). Tới ngày
+xét mà chủ chưa quyết (bật, tắt, hoặc gia hạn có lý do) thì `npm test` đỏ.

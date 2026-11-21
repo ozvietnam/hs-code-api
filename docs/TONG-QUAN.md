@@ -40,7 +40,8 @@ Ngoài ra còn: chú giải chi tiết (explanatory notes), mã loại hình XNK
 
 ## 3. Gọi API thế nào?
 
-**Xác thực:** mọi endpoint (trừ `/api/health`) cần header:
+**Xác thực:** nhóm tra cứu chỉ đọc và 4 đường AI (`suggest`, `describe`, `classify`, `match`) mở công khai, không cần
+token (CEO chốt 09/10/2026 — xem `AGENTS.md` mục 2). Nhóm quản trị và ghi dữ liệu cần header:
 ```
 Authorization: Bearer <HS_API_TOKEN>
 ```

@@ -13,7 +13,7 @@
 | 1b. 1.076 nhóm còn lại — 180 lô xếp theo ưu tiên ([so-tay-lo.csv](../giao-viec/so-tay-lo.csv)); lô 8 đạt phủ 95 % | ⬜ |
 | 2. Chạy khô các cổng (không AI) | ✅ 09/10 — trên 763 tờ khai giữ riêng thay cho 113 kết quả lưu trên .120; 4 cổng bật oan ≤ 3,2 % với 152 nhóm (mục "Trạng thái 09/10") |
 | 3a. Nối sổ tay vào phản hồi ở **chế độ cố vấn** (`lib/so-tay-runtime.js`: `soTay.canGiaiTrinh` = kết cục C kiểu *nghi*, `soTay.yKienWco`; không đổi mã/trạng thái/prompt; tắt bằng `HS_SOTAY_RUNTIME=false`) | ✅ 10/10/2026 |
-| 3b. Nối vào *quyết định* sau công tắc `HS_SO_TAY` (mặc định tắt; 4 cổng máy nghi + một lượt giải trình AI, kết cục CHANGED/EXPLAINED/UNRESOLVED/NO_TIME) | ✅ đo #193 đạt 13/10 (mục "Trạng thái 13/10") — **đã bật `gates` trên prod** |
+| 3b. Nối vào *quyết định* sau công tắc `HS_SO_TAY` (mặc định tắt; 4 cổng máy nghi + một lượt giải trình AI, kết cục CHANGED/EXPLAINED/UNRESOLVED/NO_TIME) | ✅ đo #193 đạt 13/10 (mục "Trạng thái 13/10") — bật `gates` ngày 13/10; **từ 20/10 máy thật chạy `full`** (`Dockerfile`, PR #361). Giá trị hiện hành của cờ: `data/luat/bang-co.json` |
 | 4. Dựng đủ 1.269 nhóm | ⬜ |
 | 5. Vòng sửa | ⬜ |
 

@@ -1,11 +1,13 @@
 # CLAUDE.md — Rules cho Claude Code khi work trên `hs-code-api`
 
-File này được Claude Code load mỗi khi mở repo. CEO là **solo dev** với Claude.
+File này được Claude Code load mỗi khi mở repo. Nhiều agent và người cùng sửa repo này; mọi thay đổi đi qua PR
+(luật 9). **Sắp sửa mã trên đường khách (`api/`, `lib/` mà Cổng OZ, ERP, bot Zalo gọi)? Đọc
+[`docs/luat-duong-khach.md`](docs/luat-duong-khach.md) trước** (luật 10).
 
 ## Mục tiêu service
 
 Service HTTP API cho ERP `erp-xnk` gọi sang để:
-1. **Xác định mã HS code** (`POST /api/suggest` — AI Gemini + GIR ranking)
+1. **Xác định mã HS code** (`POST /api/classify`, `POST /api/suggest` — chuỗi LLM + GIR; `POST /api/identify` định danh hàng)
 2. **Tra thuế** (`GET /api/tax?hs=X`)
 3. **Sinh mô tả khai báo Hải quan** (`POST /api/describe` — chuẩn TT 39/2018)
 
@@ -47,7 +49,7 @@ Service HTTP API cho ERP `erp-xnk` gọi sang để:
 ## Cấu trúc dự án
 
 ```
-api/               # 12 file handler.
+api/               # 15 file handler.
                    # Nhiều URL "logic" khác được gộp vào dataset.js/tariff.js
                    # qua rewrite trong routes.json — KHÔNG có file riêng.
   health.js          # Public — health check
@@ -55,7 +57,10 @@ api/               # 12 file handler.
   search.js          # GET mở; /api/match (?mode=match) cũng mở (không token)
   suggest.js         # Mở (không token) — AI suggest
   describe.js        # Mở (không token) — AI describe
-  classify.js        # Mở (không token) — phân loại có decision tree + conflict resolver
+  classify.js        # Mở (không token) — phân loại; máy thật chạy động cơ hai vòng lib/engine-loop.js (HS_CLASSIFY_ENGINE=loop)
+  identify.js        # Bearer — định danh hàng (hàng là gì), không ra mã, không tự suy nhóm
+  so-tay-questions.js # Câu hỏi tất định theo sổ tay nhóm + sổ ranh giới PN6 (lõi câu hỏi)
+  destination-facts.js # Tra cứu dữ kiện tham chiếu theo điểm đến (data/destination-facts.json)
   feedback.js        # Bearer — capture director feedback
   notes.js           # Bearer — chú giải chương
   kg_chapter.js      # Bearer — liệt kê HS trong chương
@@ -103,11 +108,12 @@ tests/             # Test fixtures
 
 1. **Đọc context** — check Issue link, related files trong `lib/` + `data/`
 2. **Brainstorm ngắn** (skill `superpowers:brainstorming`) — nếu phức tạp
-3. **Code thẳng** — anh code direct main (không có PR review, solo)
-4. **Test local** — `node server.js` (cổng 3000) rồi test endpoint qua `curl`
-5. **Commit incremental** — mỗi feature 1 commit có message rõ
-6. **Push origin main** — server riêng tự kéo bản mới (Coolify) — xem docs/deploy-coolify.md
-7. **Verify** — curl production endpoint check OK
+3. **Làm trên nhánh, mở PR** — không đẩy thẳng `main`. Thân PR theo `.github/pull_request_template.md`
+4. **Test** — chạy bộ test liên quan thay đổi (luật 9); sửa endpoint thì `node server.js` (cổng 3000) + `curl`
+5. **Commit incremental** — mỗi việc 1 commit có message rõ
+6. **Gộp** — không tự gộp PR mình viết: người thứ hai soát, giám đốc dự án gộp (luật 9). `main` tự lên máy thật
+   (Coolify) — xem docs/deploy-coolify.md
+7. **Verify** — curl production endpoint; thay đổi thuộc L1 thì đo ngay qua Cổng thật (luật 10)
 
 ## Tư duy tiếp cận (CEO chốt 11/10/2026)
 
@@ -126,10 +132,11 @@ chỉ chặn vì **độ chính xác** (trích sai mã tệ hơn không trích),
 5. **Compliance TT 39/2018** — `/api/describe` phải trả structured `declaration` + `compliance.score` + `level` + `warnings[]`.
 6. **GIR audit trail** — `/api/suggest` response phải có `girRulesApplied[]` (Issue #24), và **mọi trích dẫn GIR phải đi qua `lib/gir.js`**. Không nơi nào khác được tự gắn nhãn `GIR-*`. Mỗi mục bắt buộc có `basis` (`RULE_TABLE` > `DETERMINISTIC` > `HEURISTIC` > `LLM_ASSERTED`) + `evidence` + `source`. Trích sai điều luật tệ hơn không trích: đây là bằng chứng người khai đưa cho Hải quan. Tín hiệu heuristic đi vào `rankingSignals[]`, checklist theo chương đi vào `chapterGuidance[]` — tuyệt đối không gọi chúng là GIR.
 7a. **Căn cứ pháp lý TT 85/2026** — `canCuPhapLy` trong phản hồi `/api/suggest`, `/api/classify` (và vòng hai) ghi điều/khoản/điểm của TT 85/2026/TT-BTC (hiệu lực 15/09/2026). **Mọi trích dẫn điều luật đi qua `lib/legal-basis.js`** (như `lib/gir.js` với GIR); điều khoản mới thêm vào `CLAUSES` và chạy `node scripts/check-legal-basis.mjs --text=<văn bản trích từ PDF Công báo>`. Không khẳng định điều văn bản không nói (Điều 6.1 chỉ *liệt kê* a→d, không ghi "ưu tiên"); không khẳng định đã tra nguồn mà lượt đó không tra (dùng `CHUA_TRA_CUU*`). Phản hồi `/api/suggest`/`/api/classify` trả CON TRỎ tới ý kiến WCO (kèm `xemToanVan`); toàn văn + bản dịch ở `/api/wco-opinions` (công khai, kèm `banQuyen`). **Danh mục rủi ro phân loại QĐ 2079/QĐ-TCHQ** (`DANH_MUC_RUI_RO`, nhãn `QD_2079_BAC_C`) là **tín hiệu cảnh báo, công khai cho mọi caller** (CEO chốt 30/10/2026, #655) — KHÔNG BAO GIỜ là `canCuPhapLy`, không là trích dẫn GIR, không là nguồn loại trừ `DA_KIEM` (không ghi vào `conflicts.json`). Số đếm từ tờ khai Oz (`MO_TA_GIONG_MA_KHAC`) vẫn chỉ nội bộ.
-7b. **Sổ tay lúc chạy = CỐ VẤN** — `soTay` trong phản hồi `/api/suggest`, `/api/classify` (`lib/so-tay-runtime.js`) chỉ đính thêm thông tin: không đổi mã đã chọn, trạng thái, cờ hay prompt LLM; lỗi bất kỳ → bỏ khối này, endpoint chạy như cũ; tắt khẩn cấp `HS_SOTAY_RUNTIME=false`. `canGiaiTrinh` là máy *nghi* (chưa đo tỉ lệ báo oan), không dùng làm cổng chặn. Nối vào *quyết định* (kết cục A–D, rút gọn prompt) chỉ sau khi chạy khô bước 2 và đo bench. `yKienWco` trong sổ tay là tóm tắt tự viết + `xemToanVan`; nguyên văn nằm ở `data/wco-op/`, không chép vào `data/so-tay/`. **Nhãn loại nguồn** (`lib/nguon-loai.js`, 11/10/2026): mọi mục sổ tay mang `nguonLoai` (`AI_DA_KIEM`/`NGUOI_DUYET`; khối máy sinh `MAY_SUY`); tệp AI cũ (`explanatory-notes`, `legal-notes-enriched`, `loai-khac-index`, `hs-context`, `tax-enriched`) là `AI_CHUA_KIEM` — lộ ra phản hồi phải kèm nhãn, không làm căn cứ, không trích vào sổ tay. Khối `cay` của sổ tay do máy sinh từ `lib/hs-tree.js`; `scripts/check-cay.mjs` đỏ khi sổ tay lệch cây.
+7b. **Sổ tay lúc chạy = CỐ VẤN** — `soTay` trong phản hồi `/api/suggest`, `/api/classify` (`lib/so-tay-runtime.js`) chỉ đính thêm thông tin: không đổi mã đã chọn, trạng thái, cờ hay prompt LLM; lỗi bất kỳ → bỏ khối này, endpoint chạy như cũ; tắt khẩn cấp `HS_SOTAY_RUNTIME=false`. `canGiaiTrinh` là máy *nghi* (chưa đo tỉ lệ báo oan), không dùng làm cổng chặn. **7b chỉ nói về khối `soTay` của `lib/so-tay-runtime.js`.** Sổ tay trong *động cơ hai vòng* là chuyện khác: sau cờ `HS_SO_TAY` (máy thật chạy `full`, đặt ở `Dockerfile`) nó có cổng nghi + một lượt giải trình và thay chú giải trong gói vòng 2, tức CÓ đổi prompt và có thể đổi mã. Đường nào đọc sổ tay, sau cờ nào: `data/luat/dau-noi.json`. `yKienWco` trong sổ tay là tóm tắt tự viết + `xemToanVan`; nguyên văn nằm ở `data/wco-op/`, không chép vào `data/so-tay/`. **Nhãn loại nguồn** (`lib/nguon-loai.js`, 11/10/2026): mọi mục sổ tay mang `nguonLoai` (`AI_DA_KIEM`/`NGUOI_DUYET`; khối máy sinh `MAY_SUY`); tệp AI cũ (`explanatory-notes`, `legal-notes-enriched`, `loai-khac-index`, `hs-context`, `tax-enriched`) là `AI_CHUA_KIEM` — lộ ra phản hồi phải kèm nhãn, không làm căn cứ, không trích vào sổ tay. Khối `cay` của sổ tay do máy sinh từ `lib/hs-tree.js`; `scripts/check-cay.mjs` đỏ khi sổ tay lệch cây.
 7. **Định tuyến gộp** — `server.js` đọc `routes.json`; giữ pattern gộp route qua rewrites (`dataset.js`/`tariff.js`) vì repo gọn; request chạy được tới 300s. Chỉ tách function khi thật sự cần.
 8. **Test KHÔNG được ghi vào `data/` thật** — mọi lib có ghi (`feedback-store`, `admin-update`, `tariff-mutations`, `access-log`, `error-monitor`, `ml-log`) phải lấy đường dẫn qua `lib/data-paths.js` (`dataPath` để ghi, `dataReadPath` để đọc), và test phải `import './test-isolate-data.mjs'` ở dòng đầu để ghi vào thư mục tạm. Trước đây `npm test` làm bẩn repo, có lần commit lẫn snapshot `v-api-test` thành phiên bản biểu thuế "đang hiệu lực".
 9. **Chạy test cho ĐÚNG rồi hãy nói "xanh"** (Phòng họp GĐ 11/11/2026, OZV-271/272/290 — chi tiết ở `docs/van-hanh/cong-gop-chay-test.md`, chuẩn chung toàn công ty ở `ozplugin/docs/cong-gop-pr.md`): môi trường agent có `NODE_ENV=production` nên npm tự bật `omit=dev` ⇒ `npm ci` **bỏ hết devDependencies** (`xlsx`, `pdf-parse`, `@electric-sql/pglite`) mà vẫn thoát 0; `Cannot find module 'xlsx'` KHÔNG phải "máy thiếu gói" mà là lệnh cài sai — luôn `npm ci --include=dev`. Worktree mới thì cài hoặc `ln -s` `node_modules` TRƯỚC khi chạy lệnh kiểm. Chỉ tin lệnh kiểm khi log có **đủ cả** số ca test và `EXIT=0` của chính lần chạy đó: `npm test > /tmp/log 2>&1; echo "EXIT=$?" >> /tmp/log; node scripts/dem-ca-test.mjs /tmp/log`. Bình luận soát PR phải dán **tổng số ca chạy thật**, không chỉ ghi chữ "xanh"; đừng grep `=== ALL TESTS PASSED ===` làm bằng chứng. **Trọn bộ `npm test` = 26 phút > giới hạn ~10 phút của lệnh chạy nền ⇒ KHÔNG BAO GIỜ chạy xong trên máy agent** (đứt với `EXIT=143` giữa chuỗi, bất kể PR nào, không phải test đỏ): số ca trọn bộ **lấy ở CI** (job `test` in sẵn dòng `dem-ca-test.mjs`), cục bộ chỉ chạy bộ liên quan thay đổi. Trước khi tin số đo thời gian, xem `cat /proc/loadavg` — số đầu > 32 (số lõi) thì số đo vô nghĩa; và đừng chạy hai lệnh kiểm nặng trùng nội dung cùng lúc (máy dùng chung với thợ). **Quy tắc 4 (OZV-290) — xác nhận cây CÓ PR trước khi tin số test:** gộp thử bằng **ref có tên**, KHÔNG dùng `FETCH_HEAD` (`git fetch origin main` xen giữa sẽ **ghi đè `FETCH_HEAD`** ⇒ `git merge FETCH_HEAD` báo `Already up to date`, cổng chạy trên `main` thuần không có dòng nào của PR mà log vẫn đủ số ca + `EXIT=0`): `git fetch origin pull/<số>/head:refs/pr<số>-head --force` → `git merge --no-edit refs/pr<số>-head` → `git diff --stat origin/main HEAD` **phải khớp đúng số tệp + số dòng của PR**. Bình luận soát ghi **SHA bản gộp thử** + dòng `git diff --stat` bên cạnh số ca + `EXIT`; hai mốc `bo-kiem-luat` phải đo tại chỗ cả hai bên trong cùng nhịp, không dùng mốc lưu sẵn. Bình luận biên bản **đi trước** `gh pr merge`; CI phải xanh **trên commit cuối** (kiểm `head_sha` khớp). **Không tự gộp PR do chính mình viết** — người thứ hai soát độc lập, giám đốc dự án bấm gộp (OZV-283). **Quy tắc 5 (OZV-310) — cổng xanh / delta 0 KHÔNG chứng minh bản vá có tác dụng:** PR *sửa lỗi* mà cổng ra delta 0 toàn bảng thì bản vá **rỗng** cũng ra đúng số đó ⇒ phải **đo trực tiếp hành vi trước/sau** trên dữ liệu thật và dán lệnh + số, không có số ⇒ **CHẶN**; PR *thêm dữ liệu* mà chỉ số của chính nhóm mới delta 0 là **bất thường** (dữ liệu mồ côi, chưa nối vào đường chạy). Chỉ nhận là "đỏ đúng chỗ" khi log có `N failed | M passed` **kèm tên ca** (runner in `failed` nhưng 0 ca chạy là bằng chứng rỗng). **Quy tắc 6 (OZV-337) — biên bản `TRẢ THỢ` phải chặn được tay người gộp** (một biên bản chặn chỉ sống 7–12 phút nếu không có chốt; #1210 chặn `15:57Z` → vẫn gộp `16:09Z`). *6a:* kết luận `TRẢ THỢ` ⇒ gắn nhãn bằng **REST** `gh api -X POST repos/ozvietnam/hs-code-api/issues/<số>/labels -f "labels[]=tra-tho" -q '[.[].name]'` rồi **đọc lại** (đừng dùng `gh pr edit --add-label`: chết vì GraphQL `projectCards`, hỏng im lặng); **bước đầu tiên** mọi lần gộp là `gh pr view <số> -R ozvietnam/hs-code-api --json labels,comments` — còn nhãn `tra-tho` hoặc bình luận soát cuối là `TRẢ THỢ` mà chưa có commit sửa mới + biên bản gỡ nhãn **sau** commit đó ⇒ **dừng, cấm gộp**. *6b:* PR sửa regex ăn dữ liệu thật/chữ khách/đầu ra LLM ⇒ rã mẫu từng nhánh và `grep` trong `data/tax.json` (`nhung` trùng vải nhung `59070040`, nấm Tùng Nhung `07095500`; `ma` trùng ma hoàng `12115000`, ma tít `32141000`), **đo hai chiều** trên cùng bộ ca (bắt lỗi cũ VÀ không bắt nhầm), và 1 ca **ReDoS ~40.000 từ lặp phải < 2 giây**. *6b-bis:* PR sửa **chính tệp đo điểm** (`scripts/bo-kiem-luat.mjs`, `eval:*`) phải **đo BA CHIỀU** — nền `origin/main`, *chỉ dữ liệu* (`git checkout refs/pr<n>-head -- <tệp data/>`, giữ gate của main), đầy đủ — và soi dấu hiệu **nới thước** (`không thể chốt`/`nemLoi` giảm bất thường). *6c:* chép mẫu từ repo khác ⇒ ghi 1 dòng trong PR *"mẫu gốc chịu được ngữ cảnh mới vì…"*.
+10. **Luật đường khách** — [`docs/luat-duong-khach.md`](docs/luat-duong-khach.md) (ADR `docs/decisions/0001-luat-duong-khach-va-bang-dau-noi.md`): 10 luật L1–L10 rút từ chuỗi lỗi 21/11/2026, đọc trước khi sửa `api/` hay `lib/`. Tóm tắt: (L1) đổi prompt / số lượt LLM / chuỗi mô hình phải sau công tắc `HS_*` **mặc định TẮT**, tắt = như `main`, và số đo để nhận phải lấy **bằng chuỗi mô hình máy thật qua Cổng thật** — số đo bằng mô hình khác không dùng để gộp; sai thì tắt / hoàn nguyên trước, sửa sau. (L2) câu hỏi gửi khách chỉ lấy từ lõi sổ tay / sổ PN6 / trường khai theo nhóm / bảng quyết định, có `canCu` + `nguon`; không để LLM tự nghĩ câu hỏi, không thêm bảng câu hỏi theo chương. (L3) chỉ động cơ phân loại quyết nhóm. (L4, L8) hai bảng là nguồn sự thật, **sửa trong cùng PR với mã**: `data/luat/dau-noi.json` (đường nào đọc kho tri thức nào, sau cờ nào) và `data/luat/bang-co.json` (mọi cờ `HS_*`: mặc định, chủ; cờ `shadow` có ngày xét). (L5) chạy bóng không chặn đường trả lời. Cổng máy trong `npm test`: `test-dau-noi.mjs`, `test-cau-hoi-co-can-cu.mjs`, `test-bang-co.mjs`, `test-kiem-pr-l1.mjs`; CI `Luat L1` đọc thân PR. Ngoại lệ đang đỏ có số thẻ nằm trong hai bảng và chỉ được ngắn đi.
 
 ## Tham chiếu pháp luật quan trọng
 
@@ -150,19 +157,20 @@ chỉ chặn vì **độ chính xác** (trích sai mã tệ hơn không trích),
 Đọc theo thứ tự:
 1. `README.md` — picture tổng
 2. `CLAUDE.md` — file này
+2b. `docs/activeContext.md` (việc đang dở) · `docs/luat-duong-khach.md` (trước khi sửa `api/`, `lib/`) · `docs/decisions/`
 3. GitHub Issue đang work (link CEO paste hoặc đọc `gh issue list`)
 4. `data/*.json` (skim sample 3 row)
 5. `api/<endpoint-quan-tâm>.js` + `lib/<helper-liên-quan>.js`
 
 ## Khi CEO hỏi
 
-**"Làm tiếp issue #X giúp anh"** → `gh issue view X` → đọc spec → code thẳng.
+**"Làm tiếp issue #X giúp anh"** → `gh issue view X` → đọc spec → làm trên nhánh, mở PR.
 
-**"Review code/PR"** → `git diff` → check 7 rule bất biến + compliance.
+**"Review code/PR"** → `git diff` → check các rule bất biến (1–10) + các ô trong mẫu PR + compliance.
 
 **"Service đang OK không?"** → `curl /api/health` + xem trạng thái ở Coolify.
 
-**"Đẩy lên server"** → `git push origin main` (Coolify tự kéo) + verify production.
+**"Đẩy lên server"** → gộp PR vào `main` theo luật 9 (Coolify tự kéo) + verify production.
 
 ## Commit message format
 
@@ -178,7 +186,7 @@ chỉ chặn vì **độ chính xác** (trích sai mã tệ hơn không trích),
 ## ⚠️ Tránh
 
 - ❌ Code 10h liên tục — sleep đủ
-- ❌ Push main mà chưa test local
+- ❌ Đẩy thẳng `main`, hoặc tự gộp PR do chính mình viết
 - ❌ Commit `.env`, `data/oz-export/*`, hoặc bất kỳ thông tin khách hàng nào
 - ❌ Xây mới khi GitHub đã có repo cũ tương tự — luôn `gh repo list ozvietnam --limit 100` trước
 - ❌ Promise compliance nhưng không validate structured (TT 39/2018)

@@ -5,8 +5,17 @@ HS / thuế nhập khẩu / khai báo hải quan Việt Nam. File này giúp b�
 kho tri thức ở đây thay vì đoán từ trí nhớ.
 
 > Áp dụng cho mọi agent (Claude Code, Cursor, Codex, Copilot, agent tự viết…).
-> `CLAUDE.md` là quy ước riêng khi **sửa code** trong repo; file này nói về **dùng
-> tri thức** trong repo.
+> File này nói về **dùng tri thức** trong repo.
+>
+> **Bạn sắp SỬA MÃ?** Đọc theo thứ tự, trước khi sửa:
+> 1. [`docs/activeContext.md`](docs/activeContext.md) — việc đang dở, hạn sắp tới.
+> 2. [`docs/luat-duong-khach.md`](docs/luat-duong-khach.md) — 10 luật khi sửa `api/`, `lib/` (đổi hành vi LLM, câu
+>    hỏi gửi khách, cờ `HS_*`, chạy bóng). Có cổng máy trong `npm test`; phạm là đỏ.
+> 3. [`CLAUDE.md`](CLAUDE.md) — quy ước sửa code, cách chạy test, cổng gộp PR.
+> 4. [`docs/decisions/`](docs/decisions/) — quyết định đã chốt. Có quyết định mới thì ghi một ADR.
+>
+> Hai bảng trả lời thay cho việc đọc lại mã: `data/luat/dau-noi.json` (đường nào đọc sổ tay / sổ PN6 / tiền lệ,
+> sau cờ nào) và `data/luat/bang-co.json` (mọi cờ `HS_*`, mặc định, chủ).
 
 ---
 
@@ -144,8 +153,8 @@ Agent hỏi người dùng → "chở người"
 
 ## 3. Quy trình xác định mã HS cho đúng phương pháp
 
-Đừng nhảy thẳng tới đáp án. Đi theo thứ tự này — cũng chính là thứ tự
-`lib/classify.js` thực hiện:
+Đừng nhảy thẳng tới đáp án. Đi theo thứ tự này — cũng là thứ tự động cơ phân loại
+thực hiện (`lib/engine-loop.js` trên máy thật; `lib/classify.js` là động cơ cũ):
 
 **Bước 1 — Thu đủ dữ kiện trước khi phân loại.** Thiếu dữ kiện thì hỏi lại người
 dùng, đừng đoán. Mỗi chương cần dữ kiện khác nhau
