@@ -298,3 +298,44 @@ trong khi máy xếp 8481.80 — đó là việc của động cơ/GIR 6, xem th
   giữ câu LLM (`llm`, `lyDo: long-nhieu-cap | qua-6-dong`).
 - Số đo (quét 5.750 phân nhóm; 5.734 dòng `oz-gold-final.jsonl` chạy bằng mô tả thật): nhãn `llm` còn 132 phân nhóm,
   2,4 % số dòng tờ khai (trước: 3.652 phân nhóm, ~40 % số dòng).
+
+## Trạng thái 21/11/2026 — DỪNG SỚM CÓ KIỂM (`HS_CHOT_SOM_CO_KIEM`, mặc định TẮT)
+
+**Ca gốc (qua Cổng, 21/11, MiniMax):** cùng mặt hàng van điện từ khí nén 5/2 ở trên, lượt thứ hai vòng 1 đặt giả
+thuyết đứng đầu `8412.21` (94) / `8481.80` (15) → nhánh `earlyExitHoi` dựng HOI trên `841221` và BỎ vòng 2 → khách
+nhận `84122100` (xi lanh thuỷ lực) dạng dự kiến. Chính phản hồi đó mang tín hiệu trái nhóm mà không được dùng để
+chặn: cờ review "Tiền lệ Oz … xếp nhóm 8481", `mic.consensus` 3 shop nhóm 8481. Mã đúng: `84812090` (TB 851, 852/TB-TCHQ).
+
+**Gốc:** `earlyExitHoiTuR1` lấy thẳng phân nhóm của giả thuyết vòng 1. Trước lúc quyết định dừng sớm, `gather()` đã có
+đủ tiền lệ Oz, tiền lệ TB-TCHQ theo mô tả và đồng thuận made-in-china, nhưng các tín hiệu này chỉ được đem ra dựng cờ
+review / cảnh báo ở khối KẾT QUẢ, tức SAU khi đã bỏ vòng 2 — nơi duy nhất AI đọc chú giải, dòng biểu thuế và sổ tay
+(`HS_SO_TAY=full` chỉ chèn sổ tay vào gói vòng 2). Cổng made-in-china (G6) còn bị hạ thành cảnh báo trên đường này
+(OZV-1389).
+
+**Đã xây:** `lib/chot-som-co-kiem.js` — tất định, không LLM, không đổi prompt. Có ÍT NHẤT MỘT tín hiệu trái NHÓM 4 SỐ
+với giả thuyết đứng đầu thì KHÔNG dừng sớm, đi tiếp vòng 2 như đường thường:
+
+| `chanChotSom` | Điều kiện (dùng lại ngưỡng mã nguồn đang có) |
+|---|---|
+| `tien-le-oz` | cùng ngưỡng cờ review: tờ khai khớp ≥75% từ khoá, nhóm dẫn đầu ≥3 tờ khai và ≥60% trọng số |
+| `tb-tchq` | cùng phép kiểm `gather()` (OZV-517): top 4, độ giống ≥0,6 và tên hàng khớp (`lib/giong-ten-hang.js`) |
+| `made-in-china` | ≥3 shop cùng ghi nhóm khác (2 shop vẫn chỉ cảnh báo như OZV-1389), trừ nhóm từ điển đã loại |
+| `so-tay-loai-tru` | sổ tay nhóm đứng đầu có `loaiTru` khớp cụm tên hàng, trỏ sang nhóm khác (chỉ khi `HS_SO_TAY` ≠ off) |
+
+Tín hiệu tới vòng 2 qua gói vòng 2 vốn có (mục TIỀN LỆ OZ / TIỀN LỆ TB-TCHQ / bảng shop / chú giải + sổ tay). Nhóm
+trái chiều chưa có trong hồ sơ được nạp bằng `gather()` thật trước vòng 2 (tối đa 2 nhóm). Module không chọn mã.
+
+**Trường mới (chỉ khi công tắc bật):** `engine.gates[]` có dòng `{ earlyExitHoi: false, lyDo: "TIN_HIEU_TRAI_NHOM",
+chanChotSom: [...], nhomTrai: [...] }`; `soTay.daTra: true|false` (+ `lyDoChuaTra`: `dung-som-hoi` |
+`dung-som-bang-xung-dot` | `fast-first` | `chot-som-tu-dien` | `ma-duoi-6-so` | `bi-chan-hoac-loi`) — phân biệt "chưa
+tra sổ ở vòng 2" với "đã tra, không nghi" mà không đổi giá trị `soTay.outcome` cũ (`NONE` vẫn là `NONE`).
+
+**Bật / đo:** `HS_CHOT_SOM_CO_KIEM=on` (chỉ `on|1|true`). Đo qua Cổng thật: ca van 5/2, bộ van khí nén, 50 ca
+TB-TCHQ; đếm tỉ lệ lượt có `chanChotSom` trên tổng lượt đủ điều kiện dừng sớm và độ trễ thêm (mỗi lượt bị chặn thêm
+ít nhất một lượt LLM vòng 2). Số đo bằng LLM giả trong test chỉ chứng minh cơ chế.
+
+**Chưa làm:** (1) truy hồi TB-TCHQ theo mô tả chưa khớp chữ khách "van điện từ …" với tên thông báo "van truyền động
+bằng khí nén … cuộn solenoid" (TB 851/852 đứng hạng 12, độ giống 0,27, ngoài top 4) nên `tb-tchq` không bắn cho ca
+van — ca van được chặn nhờ `tien-le-oz` và `made-in-china`; (2) `results[].tbTchq` vẫn tra theo MÃ đã chọn
+(`tbTchqGate`), không theo mô tả; (3) ba đường dừng sớm khác (`earlyExitChotTuConflict`, fast-first,
+`earlyExitChotTuTrade`) chưa có phép kiểm này.

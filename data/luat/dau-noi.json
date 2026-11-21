@@ -178,7 +178,34 @@
       "dauVet": "function earlyExitHoiTuR1(",
       "boQua": ["soTayNhom", "soPn6"],
       "the": "OZV-1707",
-      "lyDo": "Vòng 1 khai unknowns thì động cơ dừng, hỏi khách, bỏ vòng 2. Khối sổ tay của vòng 2 không được đọc dù HS_SO_TAY=full; câu hỏi là unknowns của LLM, trừ khi bật HS_HOI_THEO_SO_TAY (hậu xử lý dựng lại câu hỏi theo sổ, không đổi mã). Ca thật 21/11: van khí nén 5/2 có 2 TB-TCHQ trùng khít ra 848120, nhánh này dừng ở 848180 (sáng) rồi 8412.21 (trưa, khi bật HS_HOI_THEO_SO_TAY khách bị hỏi theo sổ nhóm 84.12 — QT tắt cờ). Phạm L11: bỏ bước đọc tri thức dù có tín hiệu tất định trái kết luận. soTay.outcome ở nhánh này còn nguyên giá trị khởi tạo 'NONE' — đọc là CHƯA TRA, không phải 'đã tra, không có' (L6)."
+      "lyDo": "Vòng 1 khai unknowns thì động cơ dừng, hỏi khách, bỏ vòng 2. Khối sổ tay của vòng 2 không được đọc dù HS_SO_TAY=full; câu hỏi là unknowns của LLM, trừ khi bật HS_HOI_THEO_SO_TAY (hậu xử lý dựng lại câu hỏi theo sổ, không đổi mã). Ca thật 21/11: van khí nén 5/2 có 2 TB-TCHQ trùng khít ra 848120, nhánh này dừng ở 848180 (sáng) rồi 8412.21 (trưa, khi bật HS_HOI_THEO_SO_TAY khách bị hỏi theo sổ nhóm 84.12 — QT tắt cờ). Phạm L11: bỏ bước đọc tri thức dù có tín hiệu tất định trái kết luận. soTay.outcome ở nhánh này còn nguyên giá trị khởi tạo 'NONE' — đọc là CHƯA TRA, không phải 'đã tra, không có' (L6). Từ PR #1528: sau cờ HS_CHOT_SOM_CO_KIEM (mặc định TẮT) nhánh này KHÔNG rẽ khi hồ sơ vụ việc có tín hiệu tất định trái nhóm 4 số (lib/chot-som-co-kiem.js: tien-le-oz, tb-tchq, made-in-china, so-tay-loai-tru) — đi vòng 2 như đường thường; còn rẽ thì kết quả ghi soTay.daTra:false + lyDoChuaTra 'dung-som-hoi'. Cờ tắt thì vẫn bỏ qua như cũ. Giới hạn: truy hồi TB-TCHQ theo mô tả chưa khớp chữ khách 'van điện từ' với tên thông báo 'van truyền động bằng khí nén … solenoid', nên tín hiệu tb-tchq chưa bắn cho chính ca van."
+    },
+    {
+      "ten": "earlyExitChotTuConflict",
+      "duong": "/api/classify",
+      "tep": "lib/engine-loop.js",
+      "dauVet": "function earlyExitChotTuConflict(",
+      "boQua": ["soTayNhom", "soPn6"],
+      "the": "OZV-1707",
+      "lyDo": "Bảng xung đột đã duyệt chốt được từ văn bản thì động cơ CHOT tất định và bỏ vòng 2 (OZV-1317). Khối sổ tay của vòng 2 không được đọc; cổng máy G8 có chạy trên đáp án dựng sẵn. CHƯA có phép kiểm tín hiệu tất định trái kết luận trước khi rẽ (L11): HS_CHOT_SOM_CO_KIEM chỉ phủ earlyExitHoiTuR1. Khi cờ đó bật, kết quả ghi soTay.daTra:false + lyDoChuaTra 'dung-som-bang-xung-dot'."
+    },
+    {
+      "ten": "fastFirstUngVien",
+      "duong": "/api/classify",
+      "tep": "lib/engine-loop.js",
+      "dauVet": "function fastFirstUngVien(",
+      "boQua": ["soTayNhom", "soPn6"],
+      "the": "OZV-1707",
+      "lyDo": "Fast-first (HS_CLASSIFY_FAST_FIRST, OZV-570): vòng 1 tắt suy nghĩ + một nguồn độc lập xác nhận thì dựng đáp án CHOT và bỏ lời GIR vòng 2. Khối sổ tay của vòng 2 không được đọc; cổng máy G8 có chạy. CHƯA có phép kiểm tín hiệu tất định trái kết luận trước khi rẽ (L11): HS_CHOT_SOM_CO_KIEM chỉ phủ earlyExitHoiTuR1. Khi cờ đó bật, kết quả ghi soTay.daTra:false + lyDoChuaTra 'fast-first'."
+    },
+    {
+      "ten": "earlyExitChotTuTrade",
+      "duong": "/api/classify",
+      "tep": "lib/engine-loop.js",
+      "dauVet": "function earlyExitChotTuTrade(",
+      "boQua": ["soTayNhom", "soPn6", "tienLe", "chuGiai"],
+      "the": "OZV-1707",
+      "lyDo": "Chốt sớm theo từ điển tên thương mại (mục high + chotSom, OZV-1356): bỏ cả vòng 1, gather đầy đủ và vòng 2 — không đọc sổ tay, không tra tiền lệ theo mô tả. CHƯA có phép kiểm tín hiệu tất định trái kết luận trước khi rẽ (L11): HS_CHOT_SOM_CO_KIEM chỉ phủ earlyExitHoiTuR1. Khi cờ đó bật, kết quả ghi soTay.daTra:false + lyDoChuaTra 'chot-som-tu-dien'."
     }
   ],
   "noiDungCauHoi": {
