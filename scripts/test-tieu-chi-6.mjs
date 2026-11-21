@@ -94,12 +94,36 @@ const CA = [
   ['TIEN_LE_SAI', 'tiền lệ bịa số thông báo', '8481', (ds) => { cua(ds, '848120').tienLe.push({ so: '9999/TB-TCHQ', ma: '84812090' }); }],
   ['TIEN_LE_SAI', 'gắn thông báo của 848120 làm ví dụ cho 848110', '8481', (ds) => { cua(ds, '848110').tienLe = [{ so: '851/TB-TCHQ', ma: '84812090' }]; }],
   ['KHUON_SAI', 'trường lạ (ghiChu) và thiếu dieuKien', '8481', (ds) => { const x = cua(ds, '848110'); x.ghiChu = 'van điều áp cũng vào đây'; delete x.dieuKien; }],
+  // Luật 21/11/2026: hỏi đặc tính kiểm chứng được, không hỏi mục đích / tên gọi tự nhận.
+  ['CHI_HOI_MUC_DICH', '848110 thêm mục dungCho "giảm áp" ("Van dùng để giảm áp") — tiêu đề "Van giảm áp" không định nghĩa bằng công dụng', '8481', (ds) => { ds.push({ hs6: '848110', thuTu: cua(ds, '848110').thuTu, dieuKien: 'Van dùng để giảm áp', fact: 'dungCho', op: 'CONG_DUNG', value: 'giảm áp', tuKhoa: ['giảm áp'], nguon: 'tieuDe.848110', trich: 'Van giảm áp' }); }],
+  ['CHI_HOI_MUC_DICH', '848140 đổi điều kiện thành "Van an toàn chuyên dụng" (chỉ thêm lời tự nhận, không đặc tính)', '8481', (ds) => { cua(ds, '848140').dieuKien = 'Van an toàn chuyên dụng'; }],
+  ['CHI_HOI_MUC_DICH', 'kiemChung của 848120 chỉ hỏi lại công dụng ("Van có dùng trong truyền động khí nén không?")', '8481', (ds) => { cua(ds, '848120').kiemChung = [{ hoi: 'Van có dùng trong truyền động khí nén không?', nguon: 'ch84.chuong', trich: 'trong hệ thủy lực hoặc khí nén mà từ đó nguồn năng lượng được cung cấp dưới dạng chất lưu nén (chất lỏng hoặc khí)' }]; }],
+  ['SUY_RONG', 'kiemChung của 848120 hỏi đặc tính không có trong câu trích ("áp suất trên 10 bar")', '8481', (ds) => { cua(ds, '848120').kiemChung[0].hoi = 'Van chịu áp suất trên 10 bar không?'; }],
+  ['TRICH_KHONG_NGUYEN_VAN', 'kiemChung của 848120 trích tự viết lại', '8481', (ds) => { cua(ds, '848120').kiemChung[0].trich = 'van làm việc với chất lưu nén'; }],
+  ['DU_MANG_DIEU_KIEN', 'phân nhóm dư 848180 mang kiemChung', '8481', (ds) => { cua(ds, '848180').kiemChung = sao(cua(ds, '848120').kiemChung); }],
 ];
 for (const [maLoi, moTa, h4, sua] of CA) {
   const kq = tiem(h4, sua);
   kiem(`tiêm lỗi → ${maLoi}: ${moTa}`, kq.loi.some((l) => l.ma === maLoi), `cổng trả: ${ma(kq).join(', ') || '(0 lỗi)'}`);
 }
 kiem('mọi mã lỗi của cổng (trừ không) đều có ca tiêm', Object.keys(G6.MA_LOI).every((m) => CA.some((c) => c[0] === m)), Object.keys(G6.MA_LOI).filter((m) => !CA.some((c) => c[0] === m)).join(', '));
+// Câu hỏi gửi khách (phanBiet[].hoi…): đỏ khi chỉ hỏi mục đích / tên gọi; ngoại lệ khi chính chữ luật trích định nghĩa bằng công dụng.
+const MD = (hoi, t) => G6.kiemCauHoiMucDich(hoi, t).ma;
+const L9506 = '95069100 - - Các mặt hàng và thiết bị cho tập luyện thể chất nói chung, thể dục hoặc điền kinh';
+const L848120 = 'Van dùng trong truyền động dầu thủy lực hoặc khí nén';
+kiem('câu hỏi đỏ CHI_HOI_MUC_DICH: "Là đai chuyên dụng cho tập gym?" (kể cả khi đưa chữ luật 9506.91: "gym" không có trong luật)', MD('Là đai chuyên dụng cho tập gym?') === 'CHI_HOI_MUC_DICH' && MD('Là đai chuyên dụng cho tập gym?', { chuLuat: L9506 }) === 'CHI_HOI_MUC_DICH');
+kiem('câu hỏi đỏ CHI_HOI_MUC_DICH: câu sổ 9506 "Là các mặt hàng và thiết bị cho tập luyện thể chất…?" khi không có chữ luật làm căn cứ', MD('Là các mặt hàng và thiết bị cho tập luyện thể chất nói chung, thể dục hoặc điền kinh?') === 'CHI_HOI_MUC_DICH');
+kiem('câu hỏi đỏ CHI_HOI_MUC_DICH: hỏi tên gọi tự nhận ("Hàng có tên gọi là đai tập gym?"), hỏi phục vụ ("Hàng phục vụ phòng tập?")', MD('Hàng có tên gọi là đai tập gym?') === 'CHI_HOI_MUC_DICH' && MD('Hàng phục vụ phòng tập?') === 'CHI_HOI_MUC_DICH');
+kiem('câu hỏi không đỏ: hỏi đặc tính ("Đai có bản rộng đỡ lưng, khoá chịu lực và đệm lót không?"), có công dụng kèm thông số ("… cuộn coil 24VDC")', MD('Đai có bản rộng đỡ lưng, khoá chịu lực và đệm lót không?') === null && MD('Van điện từ dùng cho khí nén, cuộn coil 24VDC?') === null);
+kiem('ngoại lệ không đỏ: chữ luật 8481.20 định nghĩa bằng công dụng ⇒ chỉ cảnh báo CONG_DUNG_THIEU_DAC_TINH_KIEM_CHUNG khi thiếu câu đặc tính; có câu đặc tính đi kèm ⇒ sạch', MD('Van có dùng trong truyền động dầu thủy lực hoặc khí nén không?', { chuLuat: L848120 }) === 'CONG_DUNG_THIEU_DAC_TINH_KIEM_CHUNG' && MD('Van có dùng trong truyền động dầu thủy lực hoặc khí nén không?', { chuLuat: L848120, cauPhu: ['Van làm việc với chất lưu nén (chất lỏng hoặc khí)?'] }) === null);
+kiem('ngoại lệ không đỏ: câu sổ 9506 với chính chữ luật 9506.91 làm căn cứ ⇒ cảnh báo (cần câu đặc tính đồ tập), không phải lỗi', MD('Là các mặt hàng và thiết bị cho tập luyện thể chất nói chung, thể dục hoặc điền kinh?', { chuLuat: L9506 }) === 'CONG_DUNG_THIEU_DAC_TINH_KIEM_CHUNG');
+{
+  const kq = tiem('8481', () => {});
+  const boKc = tiem('8481', (ds) => { delete cua(ds, '848120').kiemChung; });
+  kiem('ngoại lệ trong cổng: mẫu 8481.20 (mục dungCho, chữ luật định nghĩa bằng công dụng) không đỏ CHI_HOI_MUC_DICH; có kiemChung ⇒ 0 cảnh báo; bỏ kiemChung ⇒ 0 lỗi + cảnh báo CONG_DUNG_THIEU_DAC_TINH_KIEM_CHUNG',
+    !kq.loi.some((l) => l.ma === 'CHI_HOI_MUC_DICH') && !kq.canhBao.some((c) => c.ma === 'CONG_DUNG_THIEU_DAC_TINH_KIEM_CHUNG') && boKc.loi.length === 0 && boKc.canhBao.some((c) => c.ma === 'CONG_DUNG_THIEU_DAC_TINH_KIEM_CHUNG' && c.hs6 === '848120'), JSON.stringify([kq.loi, boKc.loi, boKc.canhBao.map((c) => c.ma)]));
+  kiem('ngoại lệ trong cổng: tenLoai "Động cơ và mô tơ dùng khí nén" (8412, tên hàng của chữ luật) không đỏ CHI_HOI_MUC_DICH', !tiem('8412', () => {}).loi.some((l) => l.ma === 'CHI_HOI_MUC_DICH'));
+}
 kiem('ca ngược: mẫu không sửa gì ⇒ 0 lỗi (cổng không đỏ oan) — cả bản soạn không thuTu lẫn bản đã xếp', ['8481', '8412'].every((h) => tiem(h, () => {}).loi.length === 0 && tiem(h, () => {}, { [h]: MAU[h].tieuChi6 }).loi.length === 0));
 // Khoá hợp có sẵn ⇒ chuaSoHoa là lỗi; chỉ khi không khoá nào đọc được vế mới là cảnh báo THIEU_KHOA_TU_VUNG.
 kiem('khoaPhuHop: tên hàng → tenLoai; "dùng cho …" → dungCho; "Bằng gang đúc" → chatLieu; "đã tráng men" (7323) → daTrangMen; "với hai vị trí" → null; "Mặt ngoài bằng da thuộc…" → null (tu-vung chưa có da thuộc); "Phụ kiện lắp vào …" → dungCho', G6.khoaPhuHop('8412', 'Chuyển động tịnh tiến (xi lanh)') === 'tenLoai' && G6.khoaPhuHop('8536', 'Dùng cho điện áp không quá 60 V') === 'dungCho' && G6.khoaPhuHop('7323', 'Bằng gang đúc') === 'chatLieu' && G6.khoaPhuHop('7323', '73239200 - - đã tráng men') === 'daTrangMen' && G6.khoaPhuHop('8481', 'với hai vị trí') === null && G6.khoaPhuHop('4202', '420211 Mặt ngoài bằng da thuộc hoặc da thuộc tổng hợp') === null && G6.khoaPhuHop('3926', 'Phụ kiện lắp vào đồ nội thất') === 'dungCho', JSON.stringify(['8412', '8536', '7323'].map((h) => G6.khoaPhuHop(h, 'đã tráng men'))));

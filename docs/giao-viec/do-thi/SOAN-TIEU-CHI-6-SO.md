@@ -43,6 +43,7 @@ Mỗi mục là MỘT điều kiện của MỘT phân nhóm. Một phân nhóm 
 | `chuaSoHoa` | mục thiếu khoá | Một câu nói thiếu khoá gì. Mục này chỉ có `hs6`, `chuaSoHoa`, `nguon`, `trich` |
 | `uuTien` | không | `{ "nguon", "trich" }`: câu luật nói phân nhóm này được ưu tiên / xem xét trước |
 | `tienLe` | không | `[{ "so", "ma" }]` chép từ `thongBaoPhanLoai[]`. Là ví dụ, không phải điều kiện |
+| `kiemChung` | có ở mục công dụng (L15) | `[{ "hoi", "nguon", "trich" }]`: câu hỏi MỘT đặc tính quan sát / đo được giúp kiểm chứng công dụng mà chữ luật nêu; `trich` nguyên văn từ `nguon{}`, đặc tính được hỏi phải nằm trong `trich` |
 
 | `kieu` của khoá | `op` | `value` |
 |---|---|---|
@@ -120,6 +121,10 @@ Ví dụ lấy từ hai bản mẫu đã qua cổng: [`mau/8481.json`](mau/8481.
 - ĐÚNG: 7323.94 → mục `chatLieu` "sắt / thép" + mục `daTrangMen` `CO` + mục `chieu: "PHAI_KHONG"` "gang". 841221 → mục tầng "Động cơ và mô tơ thủy lực" + mục "xi lanh".
 - SAI: 7323.94 chỉ có `chatLieu` (thiếu "đã tráng men"); 841221 chỉ có mục tầng (thiếu "Chuyển động tịnh tiến (xi lanh)").
 
+**L15. Hỏi đặc tính kiểm chứng được, không hỏi mục đích hay tên gọi khách tự nhận.** Điều kiện và câu hỏi phải nhắm vào thứ nhìn thấy, đo được trên hàng (cấu tạo, kích thước, chất liệu, cơ cấu, thông số); chỉ được dùng công dụng khi chính chữ luật trích định nghĩa phân nhóm bằng công dụng, và khi đó phải kèm `kiemChung` hỏi một đặc tính có trong chữ luật.
+- ĐÚNG: 848120 (chữ luật: "van dùng trong truyền động dầu thủy lực hoặc truyền động khí nén") → mục `dungCho` + `"kiemChung": [{ "hoi": "Van có làm việc trong hệ thủy lực hoặc khí nén mà nguồn năng lượng được cung cấp dưới dạng chất lưu nén (chất lỏng hoặc khí) không?", "nguon": "ch84.chuong", "trich": "trong hệ thủy lực hoặc khí nén mà từ đó nguồn năng lượng được cung cấp dưới dạng chất lưu nén (chất lỏng hoặc khí)" }]`. Đai lưng muốn vào 9506.91: hỏi "Đai có bản rộng đỡ lưng, khoá chịu lực, đệm lót không?".
+- SAI: "Là đai chuyên dụng cho tập gym?", hay "Là các mặt hàng và thiết bị cho tập luyện thể chất nói chung, thể dục hoặc điền kinh?" (khách gọi hàng là "đai tập gym" sẽ tự trả lời "có", dù hàng chỉ là một thắt lưng có chốt khoá như thắt lưng da: "đai lưng" là chủ thể, "tập gym" là bối cảnh; tờ khai mẫu OZ "Đai lưng" khai 4 lần 6307.90.90, 1 lần 9506.91.00). Thêm "Van dùng để giảm áp" cho 848110 trong khi tiêu đề chỉ là "Van giảm áp".
+
 Không chắc một điều thì KHÔNG ghi. Thiếu một `tuKhoa` không sao; thừa một chữ ngoài luật là bị trả về.
 
 ## 4. Cổng máy sẽ trả về những lỗi này
@@ -146,8 +151,9 @@ Chạy: `node scripts/kiem-tieu-chi-6.mjs --tep=<tệp của bạn>`. Danh sách
 | `THIEU_VE_GIOI_HAN` | Một vế của tiêu đề / tầng không có mục nào mang | L14 |
 | `CHUA_SO_HOA_CO_KHOA` | Khai `chuaSoHoa` trong khi có khoá hợp | L9 |
 | `THU_TU_SAI` / `DU_KHONG_CUOI` | Ghi `thuTu` bằng tay và ghi sai | Bỏ `thuTu` |
+| `CHI_HOI_MUC_DICH` | Điều kiện / `kiemChung.hoi` chỉ có lời mục đích, công dụng tự nhận, tên gọi ("dùng cho", "chuyên dụng", "cho tập", "phục vụ"…) mà không có đặc tính kiểm chứng được, và câu trích không định nghĩa bằng công dụng đó | L15 |
 
-Cảnh báo (không chặn, người soát đọc): `LECH_TO_KHAI_CAO` (dò `tuKhoa` trên tờ khai mẫu chỉ sai quá 10% số dòng, hoặc quá 25% số dòng có kết luận: `tuKhoa` quá rộng thì thu hẹp; KHÔNG sửa tiêu chí cho khớp tờ khai khi chữ luật nói khác), `THIEU_KHOA_TU_VUNG` (mục `chuaSoHoa` mà máy không thấy khoá hợp: người soát xem có cần thêm khoá từ vựng).
+Cảnh báo (không chặn, người soát đọc): `CONG_DUNG_THIEU_DAC_TINH_KIEM_CHUNG` (chữ luật định nghĩa bằng công dụng, được phép, nhưng phân nhóm chưa có `kiemChung` hay mục đặc tính nào: thêm theo L15), `LECH_TO_KHAI_CAO` (dò `tuKhoa` trên tờ khai mẫu chỉ sai quá 10% số dòng, hoặc quá 25% số dòng có kết luận: `tuKhoa` quá rộng thì thu hẹp; KHÔNG sửa tiêu chí cho khớp tờ khai khi chữ luật nói khác), `THIEU_KHOA_TU_VUNG` (mục `chuaSoHoa` mà máy không thấy khoá hợp: người soát xem có cần thêm khoá từ vựng).
 
 Nhận lại danh sách lỗi thì sửa đúng mục bị nêu và trả lại TOÀN BỘ khối JSON.
 

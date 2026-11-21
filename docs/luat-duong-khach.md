@@ -129,6 +129,7 @@ Cấm:
 - Thêm bảng câu hỏi cứng theo chương hay theo mặt hàng ở module khác.
 - Để LLM tự nghĩ câu hỏi rồi gửi khách. Câu của LLM chỉ được đi vào ghi chú (`ghiChuThem`), không vào danh sách hỏi.
 - Viết lõi thứ hai. Cần câu hỏi mới thì bổ sung sổ tay / sổ PN6 / danh mục trường khai rồi để lõi sinh câu.
+- (CEO duyệt 21/11/2026) Hỏi khách mục đích / tên gọi tự nhận ("Là đai chuyên dụng cho tập gym?"): câu phân biệt và tiêu chí do máy / AI soạn từ nay phải hỏi ĐẶC TÍNH quan sát hoặc kiểm chứng được trên hàng (cấu tạo, kích thước, chất liệu, cơ cấu, thông số); chỉ hỏi công dụng khi chính chữ luật trích định nghĩa bằng công dụng, và kèm một câu đặc tính kiểm chứng. Phép kiểm: `kiemCauHoiMucDich` / mã `CHI_HOI_MUC_DICH` trong `lib/do-thi/tieu-chi-6.js`; câu đã có trong sổ tay chưa sửa (số đo ở PR #1549).
 
 **Vì sao:** van điện từ khí nén 5/2 qua Cổng ngày 21/11 bị hỏi 6 câu do LLM tự nghĩ (điện áp cuộn dây, model, hãng…),
 không câu nào là điều kiện phân biệt của nhóm 84.81. Câu hỏi theo sổ khi đó chỉ có ở `/api/so-tay-questions`; PR #1523 đưa
