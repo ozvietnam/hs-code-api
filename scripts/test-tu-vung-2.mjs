@@ -326,6 +326,8 @@ const KHOA_MOI = {
   // 21/11/2026 (OZV-1742): nguồn lên men nước ép rau/quả 2206.00.60 và tầng thiết bị chơi bạc/mạt chược 9504.90.3
   lenMenTuNuocEpRauQua: 'CO_KHONG',
   laThietBiChoiBacHoacMatChuoc: 'CO_KHONG',
+  // 21/11/2026 (OZV-1751): bình hình trụ bằng thép đúc liền (seamless) 7311.00.2
+  ducLienKhongNoi: 'CO_KHONG',
 };
 
 // ── 1. Nạp theo phiên bản ─────────────────────────────────────────────────────────────────────────────────────────
@@ -721,6 +723,28 @@ chuaBiet('laThietBiChoiBacHoacMatChuoc không bắt nhầm đồ chơi ném phi 
   const r2 = T.docGiaTri('laThietBiChoiBacHoacMatChuoc', big2);
   const ms = Number(process.hrtime.bigint() - t0) / 1e6;
   check(`OZV-1742 ReDoS ~40.000 từ lặp cho 2 khoá mới < 2000 ms (thực tế ${ms.toFixed(0)} ms)`, r1.trangThai === 'CHUA_BIET' && r2.trangThai === 'CHUA_BIET' && ms < 2000, { ms });
+}
+
+// ── Lô 26 (OZV-1751, 21/11/2026) — ducLienKhongNoi (7311.00.2) & loaiSoiDet 6212.20.90/30.90 ──
+la('ducLienKhongNoi (tiêu đề 7311.00.2)', 'ducLienKhongNoi', '7311002 Dạng hình trụ bằng thép đúc liền', true, { bc: 'đúc liền' });
+la('ducLienKhongNoi — không mối hàn', 'ducLienKhongNoi', 'Bình chứa khí nén bằng thép không mối hàn dung tích 40 lít', true);
+la('ducLienKhongNoi En', 'ducLienKhongNoi', 'Seamless steel cylinders for compressed gas', true);
+la('ducLienKhongNoi Zh', 'ducLienKhongNoi', '无缝钢气瓶', true);
+la('ducLienKhongNoi KHÔNG — bình hàn thân', 'ducLienKhongNoi', 'Bình LPG 12 kg hàn thân, dung tích 26 lít', false);
+la('ducLienKhongNoi KHÔNG — welded', 'ducLienKhongNoi', 'Welded steel gas cylinder 50L', false);
+chuaBiet('ducLienKhongNoi không bắt nhầm tai nghe không nối với micro 98343500', 'ducLienKhongNoi', 'Tai nghe có hoặc không nối với một bộ micro');
+chuaBiet('ducLienKhongNoi không bắt nhầm thùng chứa thép thường 73110094', 'ducLienKhongNoi', 'Các loại thùng chứa khí nén hoặc khí hóa lỏng, bằng sắt hoặc thép.: Có dung tích từ 30 lít trở lên nhưng dưới 110 lít');
+la('loaiSoiDet 62122090 Từ các vật liệu dệt khác', 'loaiSoiDet', 'Gen và quần gen: Từ các vật liệu dệt khác', 'NHAN_TAO');
+la('loaiSoiDet 62123090 Từ các vật liệu dệt khác', 'loaiSoiDet', 'Áo nịt toàn thân (corselette): Từ các vật liệu dệt khác', 'NHAN_TAO');
+chuaBiet('loaiSoiDet không bắt nhầm 570190 Từ các vật liệu dệt khác', 'loaiSoiDet', 'Từ các vật liệu dệt khác: Thảm cầu nguyện (SEN)');
+{
+  const big1 = Array(8000).fill('dạng hình trụ bằng thép có hoặc không nối với van').join(' ');
+  const big2 = Array(8000).fill('từ các vật liệu dệt khác dùng cho may mặc').join(' ');
+  const t0 = process.hrtime.bigint();
+  const r1 = T.docGiaTri('ducLienKhongNoi', big1);
+  const r2 = T.docGiaTri('loaiSoiDet', big2);
+  const ms = Number(process.hrtime.bigint() - t0) / 1e6;
+  check(`OZV-1751 ReDoS ~40.000 từ lặp cho ducLienKhongNoi & loaiSoiDet < 2000 ms (thực tế ${ms.toFixed(0)} ms)`, r1.trangThai === 'CHUA_BIET' && r2.trangThai === 'CHUA_BIET' && ms < 2000, { ms });
 }
 
 // ── 5. Viết + kiểm giá trị ───────────────────────────────────────────────────────────────────────────────────────────

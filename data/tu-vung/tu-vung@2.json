@@ -343,7 +343,8 @@
    "coBoPhanKhuachDai",
    "coLoa",
    "lenMenTuNuocEpRauQua",
-   "laThietBiChoiBacHoacMatChuoc"
+   "laThietBiChoiBacHoacMatChuoc",
+   "ducLienKhongNoi"
   ],
   "tuVung1": {
    "trangThai": "DA_CHAM",
@@ -5542,7 +5543,8 @@
      "nhanZh": "化学纤维（合成或再生）",
      "cachDoc": {
       "vi": [
-       "(?:sợi|xơ|vật\\s+liệu\\s+dệt)\\s+nhân\\s+tạo"
+       "(?:sợi|xơ|vật\\s+liệu\\s+dệt)\\s+nhân\\s+tạo",
+       "(?:Gen\\s+và\\s+quần\\s+gen|Áo\\s+nịt\\s+toàn\\s+thân(?:\\s*\\(corselette\\))?)\\s*:\\s*Từ\\s+các\\s+vật\\s+liệu\\s+dệt\\s+khác"
       ],
       "en": [
        "man-made\\s+(?:fib(?:re|er)s?|filaments?|textile\\s+materials?)"
@@ -23370,6 +23372,66 @@
     "zh": "该商品是否为赌博设备（及附带赌具）或麻将？"
    },
    "ghiChu": "Tiêu đề trung gian 9504.90.3 «Thiết bị chơi bạc và đồ phụ trợ đi kèm» và dòng con 9504.90.34, 9504.90.35 «Quân bài Mạt chược…» (CÓ). Không khớp đồ phụ trợ để chơi bowling (9504.90.10) hay đồ chơi ném phi tiêu (9504.90.2). OZV-1742.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "kieu": "CO_KHONG",
+   "khoa": "ducLienKhongNoi",
+   "nhanVi": "đúc liền (không mối nối / không hàn)",
+   "nhanEn": "seamless (weldless)",
+   "nhanZh": "无缝（非焊接）",
+   "cachDoc": {
+    "vi": [
+     "đúc\\s+liền",
+     "không\\s+mối\\s+(?:nối|hàn)",
+     "không\\s+hàn"
+    ],
+    "en": [
+     "seamless",
+     "weldless"
+    ],
+    "zh": [
+     "无缝"
+    ],
+    "phuDinh": [
+     "không phải",
+     "không có",
+     "không",
+     "chưa",
+     "ko",
+     "chẳng",
+     "non-?",
+     "without",
+     "no",
+     "not",
+     "无",
+     "非",
+     "不",
+     "没有",
+     "未"
+    ]
+   },
+   "cachDocKhong": {
+    "vi": [
+     "(?:có\\s+(?:mối\\s+)?hàn|hàn\\s+thân)"
+    ],
+    "en": [
+     "welded"
+    ],
+    "zh": [
+     "焊接",
+     "有缝"
+    ]
+   },
+   "cachViet": {
+    "vi": "đúc liền",
+    "viPhuDinh": "không phải đúc liền"
+   },
+   "cauHoi": {
+    "vi": "Thùng/bình chứa có phải loại bằng thép đúc liền (không mối nối / không hàn - seamless) không?",
+    "zh": "该容器/气瓶是否为无缝（非焊接）钢制？"
+   },
+   "ghiChu": "Tiêu đề trung gian 7311.00.2 «Dạng hình trụ bằng thép đúc liền» / EN «Seamless steel cylinders» (CÓ). Bình hàn thân (có mối hàn, welded) đọc ra KHÔNG để rẽ sang 7311.00.9x. Không dùng «không nối» trần để tránh khớp «tai nghe có hoặc không nối với một bộ micro» (9834.35.00). OZV-1751.",
    "nguonLoai": "AI_DA_KIEM"
   }
  ],
