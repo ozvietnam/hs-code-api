@@ -327,17 +327,39 @@
     },
     {
       "hs": "40118011",
-      "dieuKien": "Lốp của phân nhóm 4011.80 (WCO: used on construction, mining or industrial handling vehicles and machines), thuộc tiêu đề quốc gia 4011801 (tên bị lược — đối chiếu biểu thuế): loại dùng cho xe kéo, máy thuộc nhóm 84.29 hoặc 84.30, xe nâng hàng, xe cút kít hoặc xe và máy xếp dỡ công nghiệp khác.",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): xe kéo hoặc máy thuộc nhóm 84.29 hoặc 84.30 hoặc xe nâng hàng hoặc xe cút kít hoặc xe và máy xếp dỡ công nghiệp",
+      "nguon": "tax.40118011",
+      "trich": "40118011 - - - Loại dùng cho xe kéo, máy thuộc nhóm 84.29 hoặc 84.30, xe nâng hàng, xe cút kít hoặc xe và máy xếp dỡ công nghiệp khác",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "xe kéo",
+            "máy thuộc nhóm 84.29 hoặc 84.30",
+            "xe nâng hàng",
+            "xe cút kít",
+            "xe và máy xếp dỡ công nghiệp"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-03#soat-lo-6c",
+          "ngay": "2026-11-21",
+          "bam": "e8a72da332c5bc1b0258e1366a888665061cd652db9a8968c226e9322b972a4c"
+        }
+      },
+      "phanConLai": false,
       "tieuChi": {
         "fact": "dung_cho_xe_keo_may_8429_8430_xe_nang_hang_xe_cut_kit_hoac_xe_may_xep_do_cong_nghiep_khac",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "nguon": "tax.40118011",
-      "trich": "40118011 - - - Loại dùng cho xe kéo, máy thuộc nhóm 84.29 hoặc 84.30, xe nâng hàng, xe cút kít hoặc xe và máy xếp dỡ công nghiệp khác",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      }
     },
     {
       "hs": "40118019",
@@ -359,17 +381,32 @@
     },
     {
       "hs": "40118031",
-      "dieuKien": "Lốp của phân nhóm 4011.80, thuộc tiêu đề quốc gia 4011803 (tên bị lược — đối chiếu biểu thuế): loại dùng cho máy thuộc nhóm 84.29 hoặc 84.30.",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): máy thuộc nhóm 84.29 hoặc 84.30",
+      "nguon": "tax.40118031",
+      "trich": "40118031 - - - Loại dùng cho máy thuộc nhóm 84.29 hoặc 84.30",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy thuộc nhóm 84.29 hoặc 84.30"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-03#soat-lo-6c",
+          "ngay": "2026-11-21",
+          "bam": "e8a72da332c5bc1b0258e1366a888665061cd652db9a8968c226e9322b972a4c"
+        }
+      },
       "tieuChi": {
         "fact": "dung_cho_may_nhom_8429_hoac_8430",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "nguon": "tax.40118031",
-      "trich": "40118031 - - - Loại dùng cho máy thuộc nhóm 84.29 hoặc 84.30",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      }
     },
     {
       "hs": "40118039",
@@ -391,17 +428,38 @@
     },
     {
       "hs": "40118040",
-      "dieuKien": "Lốp của phân nhóm 4011.80 lắp vành có đường kính trên 24 inch, loại khác — tức không thuộc hai tiêu đề quốc gia 4011801 và 4011803 (tên hai tiêu đề này bị lược, đối chiếu biểu thuế để biết ranh giới).",
+      "dieuKien": "đường kính vành bánh xe (mâm xe lắp lốp) > 24 inch; không: dùng cho xe kéo, máy thuộc nhóm 84.29 hoặc 84.30, xe nâng hàng hoặc xe và máy xếp dỡ công nghiệp",
+      "nguon": "tax.40118040",
+      "trich": "40118040 - - Lắp vành có đường kính trên 24 inch, loại khác",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "duongKinhVanh",
+          "op": ">",
+          "value": 24,
+          "donVi": "inch"
+        },
+        {
+          "fact": "dungChoXeKeoMay8429Hoac8430XeNangHoacXepDo",
+          "op": "KHONG"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-03#soat-lo-6c",
+          "ngay": "2026-11-21",
+          "bam": "e8a72da332c5bc1b0258e1366a888665061cd652db9a8968c226e9322b972a4c"
+        }
+      },
+      "phanConLai": true,
       "tieuChi": {
         "fact": "duong_kinh_lap_vanh",
         "op": ">",
         "value": 24,
         "donVi": "inch"
-      },
-      "nguon": "tax.40118040",
-      "trich": "40118040 - - Lắp vành có đường kính trên 24 inch, loại khác",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      }
     },
     {
       "hs": "40119010",
@@ -763,6 +821,55 @@
           "bam": "db6d06842457576fe2282fa478782201533d2466cdd09ca2f04bb511394614f9"
         }
       }
+    },
+    {
+      "id": "4011801",
+      "nguon": "tieuDe.4011801",
+      "trich": "4011801 Lắp vành có đường kính không quá 24 inch",
+      "dieuKienSo": [
+        {
+          "fact": "duongKinhVanh",
+          "op": "<=",
+          "value": 24,
+          "donVi": "inch"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-03#soat-lo-6c",
+          "ngay": "2026-11-21",
+          "bam": "e8a72da332c5bc1b0258e1366a888665061cd652db9a8968c226e9322b972a4c"
+        }
+      }
+    },
+    {
+      "id": "4011803",
+      "nguon": "tieuDe.4011803",
+      "trich": "4011803 Lắp vành có đường kính trên 24 inch, loại dùng cho xe kéo, máy thuộc nhóm 84.29 hoặc 84.30, xe nâng hàng hoặc xe và máy xếp dỡ công nghiệp khác",
+      "dieuKienSo": [
+        {
+          "fact": "duongKinhVanh",
+          "op": ">",
+          "value": 24,
+          "donVi": "inch"
+        },
+        {
+          "fact": "dungChoXeKeoMay8429Hoac8430XeNangHoacXepDo",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-03#soat-lo-6c",
+          "ngay": "2026-11-21",
+          "bam": "e8a72da332c5bc1b0258e1366a888665061cd652db9a8968c226e9322b972a4c"
+        }
+      },
+      "phanConLai": false
     }
   ]
 }

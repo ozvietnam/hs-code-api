@@ -4,13 +4,19 @@
   "nhom": "1602",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261105T0910#soan-160290",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-03#soat-lo-6c",
+    "ngay": "2026-11-21",
+    "ghiChu": "Đã chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1756)",
+    "bam": "60ffe6f3cc051d2d32827dc9a879211e0adfbbfcb39f63dcd36f9c2f76dac871"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -28,41 +34,60 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "16029020",
-      "nguon": "sen.16029020",
-      "trich": "Chế phẩm chủ yếu từ tiết thu được từ giết mổ các động vật nuôi … Tiết động vật thường được bán dưới dạng nhão, nghiền có chứa tiết, muối và nước",
+      "nguon": "tax.16029020",
+      "trich": "16029020 - - Các chế phẩm từ tiết",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "chế phẩm"
-        },
-        {
-          "fact": "dangNguyenSinh",
-          "op": "TRONG",
-          "value": [
-            "LONG_HOAC_NHAO"
-          ]
+          "fact": "laChePhamTuTiet",
+          "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "16029090",
       "nguon": "tax.16029090",
       "trich": "16029090 - - Loại khác (SEN)",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "16029010",
+        "16029020"
+      ],
+      "truc": {
+        "16029010": "TEN_LOAI",
+        "16029020": "DAC_DIEM"
+      },
+      "cauHoiPhanBiet": "Sản phẩm là ca-ri cừu đóng bao bì kín khí để bán lẻ (16029010) hay là chế phẩm từ tiết động vật (16029020)?",
+      "trich": {
+        "16029010": "Ca-ri cừu, đóng bao bì kín khí để bán lẻ",
+        "16029020": "Các chế phẩm từ tiết"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "16029010",
+            "16029020"
+          ],
+          "khongCoHangThat": "Ca-ri cừu đóng bao bì kín khí để bán lẻ là món ăn chế biến từ thịt cừu (16029010), tách biệt với các chế phẩm chủ yếu từ tiết động vật (16029020); không có hàng thật đồng thời thuộc cả hai dòng."
+        }
+      ],
+      "phanXu": null
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "16029020",
       "loai": "QUYET_DINH",
-      "ghiChu": "Nghĩa hẹp theo SEN (sen.16029020): \"Chế phẩm chủ yếu từ tiết thu được từ giết mổ các động vật nuôi … Tiết động vật thường được bán dưới dạng nhão, nghiền có chứa tiết, muối và nước\" ⇒ tenLoai \"chế phẩm\" + dangNguyenSinh TRONG [\"LONG_HOAC_NHAO\"] (dạng lỏng hoặc dạng nhão). Đặc điểm DẠNG là điều kiện phân biệt được của SEN. TÊN PHẢI RÚT: bộ đọc tên cắt tại \"từ\" nên đọc \"chế phẩm\", không đọc \"Các chế phẩm từ tiết\" — điều kiện tên cũ KHÔNG BAO GIỜ khớp (dòng chết: mọi hàng đều ra THIEU). LƯU Ý CHO NGƯỜI SOÁT: SEN viết \"thường được bán dưới dạng nhão, nghiền\" (dạng thị trường thông thường, không phải điều kiện định nghĩa tuyệt đối) — dùng làm điều kiện là hẹp hơn chữ; hàng không nêu dạng sẽ không khớp dòng này."
+      "ghiChu": "tax.16029020 \"Các chế phẩm từ tiết\" (EN \"Preparations of blood\") ⇒ laChePhamTuTiet CO."
     }
   ],
   "traVe": [

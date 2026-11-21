@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L6-20261111#soat-L6",
-    "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu VI/EN \"Waffles\"/\"Wafers\": tenLoai nguyên văn, \"(SEN)\" là ngoặc chú thích; hai tên không chứa nhau.",
-    "bam": "cf2d9b52c9ce7815e44be17068823f8bee8889f673b21812a9d238af3b18ec16"
+    "phien": "claude-agent:tho-hs-03#soat-lo-6c",
+    "ngay": "2026-11-21",
+    "ghiChu": "Đã chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1756)",
+    "bam": "c8f8aa28c35cb1e5fb0f422891be24e31d836eb7570bde5834eab3ba866383d5"
   },
   "dieuKienNut": [],
   "dong8": [
@@ -25,9 +25,11 @@
       "trich": "19053210 - - - Bánh waffles (SEN)",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Bánh waffles"
+          "fact": "loaiBanhWaffleWafer",
+          "op": "TRONG",
+          "value": [
+            "BANH_WAFFLES"
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -38,9 +40,11 @@
       "trich": "19053220 - - - Bánh xốp wafers (SEN)",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Bánh xốp wafers"
+          "fact": "loaiBanhWaffleWafer",
+          "op": "TRONG",
+          "value": [
+            "BANH_XOP_WAFERS"
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -50,12 +54,19 @@
     {
       "ma": "19053210",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.19053210 \"Bánh waffles (SEN)\": \"(SEN)\" là dấu có chú giải ⇒ PHU, chỉ dùng tên \"Bánh waffles\""
+      "ghiChu": "tax.19053210 \"Bánh waffles (SEN)\" ⇒ loaiBanhWaffleWafer TRONG [BANH_WAFFLES]"
     },
     {
       "ma": "19053220",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.19053220 \"Bánh xốp wafers (SEN)\": \"(SEN)\" là dấu có chú giải ⇒ PHU, chỉ dùng tên \"Bánh xốp wafers\""
+      "ghiChu": "tax.19053220 \"Bánh xốp wafers (SEN)\" ⇒ loaiBanhWaffleWafer TRONG [BANH_XOP_WAFERS]"
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:tho-hs-03#soat-lo-6c",
+      "ngay": "2026-11-21",
+      "lyDo": "Chuẩn hoá dieuKienSo để chốt DONG_CO_TEN (OZV-1756)"
     }
   ]
 }

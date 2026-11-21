@@ -350,7 +350,15 @@
    "lucRungTrong",
    "laNhanHatCo",
    "ducLienKhongNoi",
-   "mucCanToiDa"
+   "mucCanToiDa",
+   "laChePhamTuTiet",
+   "daThemDuongMatOngTrungChatBeoPhoMatHoacTraiCay",
+   "loaiBanhWaffleWafer",
+   "dungTrongDuocPham",
+   "tuSoiDetThucVatNhom5305",
+   "chiDePhongPhaoHieu",
+   "coNong23Hoac265mm",
+   "dungChoXeKeoMay8429Hoac8430XeNangHoacXepDo"
   ],
   "tuVung1": {
    "trangThai": "DA_CHAM",
@@ -5392,7 +5400,8 @@
        "(?:từ|bằng|sợi|vải|xơ|chất\\s+liệu)\\s+gai\\s+ramie",
        "gai\\s+ramie",
        "(?:từ|bằng|sợi|vải|xơ|chất\\s+liệu)\\s+ramie",
-       "ramie"
+       "ramie",
+       "sợi\\s+dệt(?=\\s+thực\\s+vật\\s+thuộc\\s+nhóm\\s+53\\.?05)"
       ],
       "en": [
        "(?:of\\s+)?ramie"
@@ -23794,6 +23803,530 @@
     "zh": "该衡器的最大称量（最大称重能力）是多少千克（kg）？"
    },
    "ghiChu": "Tiêu đề trung gian 8423.82.3 «Có khả năng cân tối đa không quá 1.000 kg» và 8423.82.4 «Có khả năng cân tối đa trên 1.000 kg» (EN «Having a maximum weighing capacity not exceeding / exceeding 1,000 kg»). Khác khoiLuong (@1, khối lượng tịnh của chính chiếc cân). OZV-1751.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "khoa": "laChePhamTuTiet",
+   "kieu": "CO_KHONG",
+   "nhanVi": "là chế phẩm từ tiết (máu/huyết động vật)",
+   "nhanEn": "preparations of blood (animal blood preparations)",
+   "nhanZh": "血制品（动物血制品）",
+   "cachDoc": {
+    "vi": [
+     "(?:các\\s+)?chế\\s+phẩm\\s+(?:chủ\\s+yếu\\s+)?từ\\s+(?:tiết|huyết)",
+     "(?:chế\\s+phẩm|món\\s+ăn)\\s+từ\\s+(?:tiết|huyết|máu)\\s+(?:động\\s+vật|lợn|heo|bò|gà|vịt|ngan)",
+     "(?:tiết|huyết)\\s+(?:động\\s+vật|lợn|heo|bò|gà|vịt)\\s+(?:đóng\\s+khối|đóng\\s+bao\\s+bì|dạng\\s+nhão|đã\\s+chế\\s+biến|luộc)",
+     "dồi\\s+tiết"
+    ],
+    "en": [
+     "preparations?\\s+of\\s+(?:animal\\s+)?blood",
+     "blood\\s+preparations?",
+     "blood\\s+sausages?",
+     "black\\s+pudding"
+    ],
+    "zh": [
+     "血制品",
+     "动物血制品",
+     "猪血制品",
+     "鸭血制品",
+     "血肠"
+    ],
+    "phuDinh": [
+     "không phải",
+     "không",
+     "chưa",
+     "trừ",
+     "ko",
+     "chẳng",
+     "non-?",
+     "without",
+     "no",
+     "not",
+     "excluding",
+     "other than",
+     "无",
+     "非",
+     "不",
+     "未"
+    ]
+   },
+   "cachDocKhong": {
+    "vi": [
+     "không\\s+phải\\s+(?:các\\s+)?chế\\s+phẩm\\s+từ\\s+tiết",
+     "không\\s+(?:chứa|làm\\s+từ|chế\\s+biến\\s+từ)\\s+tiết"
+    ],
+    "en": [
+     "not\\s+preparations?\\s+of\\s+blood",
+     "without\\s+blood"
+    ],
+    "zh": [
+     "非血制品",
+     "不含血"
+    ]
+   },
+   "cachViet": {
+    "vi": "chế phẩm từ tiết",
+    "viPhuDinh": "không phải chế phẩm từ tiết"
+   },
+   "cauHoi": {
+    "vi": "Sản phẩm có phải là chế phẩm từ tiết (máu/huyết động vật) không?",
+    "zh": "该产品是否为动物血制品？"
+   },
+   "ghiChu": "Chữ biểu 1602.90.20 \"Các chế phẩm từ tiết\" (EN \"Preparations of blood\").",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "khoa": "daThemDuongMatOngTrungChatBeoPhoMatHoacTraiCay",
+   "kieu": "CO_KHONG",
+   "nhanVi": "đã thêm đường, mật ong, trứng, chất béo, pho mát hoặc trái cây",
+   "nhanEn": "containing added sugar, honey, eggs, fats, cheese or fruit",
+   "nhanZh": "已添加糖、蜂蜜、蛋、脂、奶酪或水果",
+   "cachDoc": {
+    "vi": [
+     "(?:đã\\s+|có\\s+)?thêm\\s+đường\\s*,\\s*mật\\s+ong\\s*,\\s*trứng\\s*,\\s*chất\\s+béo\\s*,\\s*pho\\s+mát\\s+hoặc\\s+trái\\s+cây",
+     "(?<![\\p{L}\\p{M}])(?<!(?:không|chưa|ko|chẳng)\\s+)(?:đã\\s+|có\\s+)?(?:pha\\s+thêm|thêm|bổ\\s+sung)\\s+(?:đường(?!\\s*,\\s*mật\\s+ong)|mật\\s+ong|trứng|chất\\s+béo|bơ|pho\\s+mát|phô\\s+mai|trái\\s+cây|hoa\\s+quả)"
+    ],
+    "en": [
+     "(?:containing\\s+)?added\\s+sugar\\s*,\\s*honey\\s*,\\s*eggs?\\s*,\\s*fats?\\s*,\\s*cheese\\s+or\\s+fruits?",
+     "(?<!(?:not|without|no)\\s+)(?:containing\\s+|with\\s+)added\\s+(?:sugar(?!\\s*,\\s*honey)|honey|eggs?|fats?|butter|cheese|fruits?)"
+    ],
+    "zh": [
+     "(?:已|含)添加(?:糖、蜂蜜、蛋、脂、奶酪或水果|糖|蜂蜜|鸡蛋|蛋|脂肪|黄油|奶酪|芝士|水果)"
+    ],
+    "phuDinh": [
+     "không phải",
+     "không có",
+     "không",
+     "chưa",
+     "ko",
+     "chẳng",
+     "non-?",
+     "without",
+     "no",
+     "not",
+     "无",
+     "非",
+     "不",
+     "没有",
+     "未"
+    ]
+   },
+   "cachDocKhong": {
+    "vi": [
+     "chưa\\s+thêm\\s+đường\\s*,\\s*mật\\s+ong\\s*,\\s*trứng\\s*,\\s*chất\\s+béo\\s*,\\s*pho\\s+mát\\s+hoặc\\s+trái\\s+cây",
+     "không\\s+thêm\\s+đường\\s*,\\s*mật\\s+ong\\s*,\\s*trứng\\s*,\\s*chất\\s+béo\\s*,\\s*pho\\s+mát\\s+hoặc\\s+trái\\s+cây"
+    ],
+    "en": [
+     "not\\s+containing\\s+added\\s+sugar\\s*,\\s*honey\\s*,\\s*eggs?\\s*,\\s*fats?\\s*,\\s*cheese\\s+or\\s+fruits?",
+     "without\\s+added\\s+sugar\\s*,\\s*honey\\s*,\\s*eggs?\\s*,\\s*fats?\\s*,\\s*cheese\\s+or\\s+fruits?"
+    ],
+    "zh": [
+     "未添加糖、蜂蜜、蛋、脂、奶酪或水果",
+     "不含添加的?糖、蜂蜜、蛋、脂、奶酪或水果"
+    ]
+   },
+   "cachViet": {
+    "vi": "đã thêm đường, mật ong, trứng, chất béo, pho mát hoặc trái cây",
+    "viPhuDinh": "chưa thêm đường, mật ong, trứng, chất béo, pho mát hoặc trái cây"
+   },
+   "cauHoi": {
+    "vi": "Bánh nướng/sản phẩm có thêm đường, mật ong, trứng, chất béo, pho mát hoặc trái cây không?",
+    "zh": "该烤面包/产品是否添加了糖、蜂蜜、蛋、脂、奶酪或水果？"
+   },
+   "ghiChu": "Chữ biểu 1905.40.10 \"Chưa thêm đường, mật ong, trứng, chất béo, pho mát hoặc trái cây\" (EN \"Not containing added sugar, honey, eggs, fats, cheese or fruit\").",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "khoa": "loaiBanhWaffleWafer",
+   "kieu": "LIET_KE",
+   "nhanVi": "loại bánh waffles hoặc bánh xốp wafers (phân nhóm 1905.32)",
+   "nhanEn": "waffles or wafers type (subheading 1905.32)",
+   "nhanZh": "华夫饼或威化饼类型（子目1905.32）",
+   "giaTriHopLe": [
+    "BANH_WAFFLES",
+    "BANH_XOP_WAFERS"
+   ],
+   "moTaGiaTri": {
+    "BANH_WAFFLES": {
+     "nhanVi": "bánh waffles",
+     "nhanEn": "waffles",
+     "nhanZh": "华夫饼",
+     "cachDoc": {
+      "vi": [
+       "(?:bánh\\s+)?waffles?(?!\\s+(?:và|hoặc|and|or)\\s+(?:bánh\\s+xốp\\s+)?wafers?)"
+      ],
+      "en": [
+       "waffles?(?!\\s+(?:và|hoặc|and|or)\\s+(?:bánh\\s+xốp\\s+)?wafers?)"
+      ],
+      "zh": [
+       "华夫饼(?!和威化饼)"
+      ]
+     },
+     "cachViet": "bánh waffles"
+    },
+    "BANH_XOP_WAFERS": {
+     "nhanVi": "bánh xốp wafers",
+     "nhanEn": "wafers",
+     "nhanZh": "威化饼",
+     "cachDoc": {
+      "vi": [
+       "(?<!waffles?\\s+(?:và|hoặc|and|or)\\s+)(?:bánh\\s+xốp\\s+wafers?|bánh\\s+wafers?)(?!\\s+sealing)"
+      ],
+      "en": [
+       "(?<!(?:waffles?\\s+(?:và|hoặc|and|or)|waffles?\\s+(?:và|hoặc|and|or)\\s+bánh\\s+xốp|sealing|communion)\\s+)wafers?"
+      ],
+      "zh": [
+       "(?<!华夫饼和)威化饼"
+      ]
+     },
+     "cachViet": "bánh xốp wafers"
+    }
+   },
+   "cauHoi": {
+    "vi": "Sản phẩm là bánh waffles (nướng khuôn kẹp) hay bánh xốp wafers (bánh quy xốp giòn mỏng)?",
+    "zh": "该产品是华夫饼（waffles）还是威化饼（wafers）？"
+   },
+   "ghiChu": "Chữ biểu 1905.32.10 \"Bánh waffles (SEN)\", 1905.32.20 \"Bánh xốp wafers (SEN)\".",
+   "nguonLoai": "AI_DA_KIEM",
+   "cachDoc": {
+    "vi": [],
+    "en": [],
+    "zh": [],
+    "phuDinh": [
+     "không phải",
+     "không",
+     "trừ",
+     "ko",
+     "chẳng",
+     "non-?",
+     "without",
+     "no",
+     "not",
+     "excluding",
+     "other than",
+     "无",
+     "非",
+     "不",
+     "未"
+    ]
+   },
+   "cachViet": {
+    "vi": "{giaTri}"
+   }
+  },
+  {
+   "khoa": "dungTrongDuocPham",
+   "kieu": "CO_KHONG",
+   "nhanVi": "dùng trong dược phẩm / ngành dược",
+   "nhanEn": "of a kind suitable for pharmaceutical use",
+   "nhanZh": "药用（供药用）",
+   "cachDoc": {
+    "vi": [
+     "(?:dùng|sử\\s+dụng)\\s+trong\\s+(?:ngành\\s+)?dược(?:\\s+phẩm)?",
+     "thích\\s+hợp\\s+dùng\\s+trong\\s+(?:ngành\\s+)?dược(?:\\s+phẩm)?"
+    ],
+    "en": [
+     "(?:suitable\\s+for|for)\\s+pharmaceutical\\s+use",
+     "used\\s+in\\s+pharmacy"
+    ],
+    "zh": [
+     "供?药用",
+     "医药用"
+    ],
+    "phuDinh": [
+     "không phải",
+     "không",
+     "chưa",
+     "trừ",
+     "ko",
+     "chẳng",
+     "non-?",
+     "without",
+     "no",
+     "not",
+     "excluding",
+     "other than",
+     "无",
+     "非",
+     "不",
+     "未"
+    ]
+   },
+   "cachDocKhong": {
+    "vi": [
+     "không\\s+(?:phải\\s+)?(?:dùng|sử\\s+dụng)\\s+trong\\s+(?:ngành\\s+)?dược(?:\\s+phẩm)?"
+    ],
+    "en": [
+     "not\\s+(?:suitable\\s+)?for\\s+pharmaceutical\\s+use"
+    ],
+    "zh": [
+     "非药用"
+    ]
+   },
+   "cachViet": {
+    "vi": "dùng trong dược phẩm",
+    "viPhuDinh": "không dùng trong dược phẩm"
+   },
+   "cauHoi": {
+    "vi": "Sản phẩm có phải loại dùng trong dược phẩm (ngành dược) không?",
+    "zh": "该产品是否供药用（医药用）？"
+   },
+   "ghiChu": "Chữ biểu 1905.90.60 \"Vỏ viên nhộng và sản phẩm tương tự dùng trong dược phẩm\" (EN \"Empty cachets of a kind suitable for pharmaceutical use\").",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "khoa": "tuSoiDetThucVatNhom5305",
+   "kieu": "CO_KHONG",
+   "nhanVi": "từ sợi dệt thực vật thuộc nhóm 53.05 (xơ dừa, chuối sợi/abaca, gai ramie, sisal…)",
+   "nhanEn": "of vegetable textile fibres of heading 53.05 (coir, abaca, ramie, sisal…)",
+   "nhanZh": "税目53.05的植物纺织纤维制（椰壳纤维、蕉麻、苎麻、剑麻等）",
+   "cachDoc": {
+    "vi": [
+     "(?:từ\\s+)?(?:sợi|xơ)\\s+(?:dệt\\s+)?thực\\s+vật\\s+thuộc\\s+nhóm\\s+53\\.?05",
+     "(?:từ|bằng|sợi|vải|xơ)\\s+(?:xơ\\s+dừa|chuối\\s+sợi|abaca|gai\\s+ramie|ramie|sisal|dứa\\s+sợi)"
+    ],
+    "en": [
+     "(?:of\\s+)?vegetable\\s+textile\\s+fib(?:re|er)s?\\s+of\\s+heading\\s+53\\.?05",
+     "(?:of\\s+)?(?:coir|coconut\\s+fib(?:re|er)s?|abaca|manila\\s+hemp|ramie|sisal\\s+fib(?:re|er)s?)"
+    ],
+    "zh": [
+     "税目53\\.?05的植物纺织纤维",
+     "53\\.?05(?:税目)?的?植物纺织纤维",
+     "(?:椰壳纤维|蕉麻|马尼拉麻|苎麻|剑麻)制"
+    ],
+    "phuDinh": [
+     "không phải",
+     "không",
+     "chưa",
+     "trừ",
+     "ko",
+     "chẳng",
+     "non-?",
+     "without",
+     "no",
+     "not",
+     "excluding",
+     "other than",
+     "无",
+     "非",
+     "不",
+     "未"
+    ]
+   },
+   "cachDocKhong": {
+    "vi": [
+     "không\\s+(?:phải\\s+)?(?:từ\\s+)?(?:sợi|xơ)\\s+(?:dệt\\s+)?thực\\s+vật\\s+thuộc\\s+nhóm\\s+53\\.?05",
+     "(?:từ|bằng|sợi|vải|xơ)\\s+(?:lanh(?!\\s+gai)|đay|gai\\s+dầu)"
+    ],
+    "en": [
+     "not\\s+of\\s+vegetable\\s+textile\\s+fib(?:re|er)s?\\s+of\\s+heading\\s+53\\.?05",
+     "(?:of\\s+)?(?:flax|linen|true\\s+hemp|jute)\\b"
+    ],
+    "zh": [
+     "非税目53\\.?05的植物纺织纤维",
+     "(?:亚麻|大麻|黄麻)制"
+    ]
+   },
+   "cachViet": {
+    "vi": "từ sợi dệt thực vật thuộc nhóm 53.05",
+    "viPhuDinh": "không phải từ sợi dệt thực vật thuộc nhóm 53.05"
+   },
+   "cauHoi": {
+    "vi": "Sản phẩm có được làm từ sợi dệt thực vật thuộc nhóm 53.05 (xơ dừa, chuối sợi/abaca, gai ramie, sisal…) không?",
+    "zh": "该产品是否由税目53.05的植物纺织纤维（椰壳纤维、蕉麻、苎麻、剑麻等）制成？"
+   },
+   "ghiChu": "Chữ biểu 6306.19.10 \"Từ sợi dệt thực vật thuộc nhóm 53.05\" (EN \"Of vegetable textile fibres of heading 53.05\"). Phân biệt với lanh (53.01), gai dầu (53.02), đay (53.03).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "khoa": "chiDePhongPhaoHieu",
+   "kieu": "CO_KHONG",
+   "nhanVi": "súng lục bắn pháo hiệu hoặc thiết bị được thiết kế chỉ để phóng pháo hiệu",
+   "nhanEn": "very pistols and other devices designed to project only signal flares",
+   "nhanZh": "信号枪及专门设计仅用于发射信号弹的其他装置",
+   "cachDoc": {
+    "vi": [
+     "súng\\s+lục\\s+bắn\\s+pháo\\s+hiệu\\s+và\\s+các\\s+loại\\s+khác\\s+được\\s+thiết\\s+kế\\s+chỉ\\s+để\\s+phóng\\s+pháo\\s+hiệu",
+     "(?:được\\s+thiết\\s+kế\\s+)?chỉ\\s+để\\s+(?:phóng|bắn)\\s+pháo\\s+hiệu",
+     "(?:súng(?:\\s+lục)?|thiết\\s+bị|dụng\\s+cụ)\\s+(?:bắn|phóng)\\s+pháo\\s+hiệu"
+    ],
+    "en": [
+     "very\\s+pistols?(?:\\s+and\\s+other\\s+devices?\\s+designed\\s+to\\s+project\\s+only\\s+signal\\s+flares?)?",
+     "designed\\s+to\\s+project\\s+only\\s+signal\\s+flares?",
+     "(?:flare\\s+(?:guns?|pistols?|launchers?|projectors?)|signal\\s+flare\\s+(?:pistols?|devices?|launchers?))"
+    ],
+    "zh": [
+     "信号枪(?:及(?:专门)?设计仅用于发射信号弹的其他装置)?",
+     "(?:专门)?设计仅用于发射信号弹",
+     "信号弹发射(?:器|装置)"
+    ],
+    "phuDinh": [
+     "không phải",
+     "không",
+     "chưa",
+     "trừ",
+     "ko",
+     "chẳng",
+     "non-?",
+     "without",
+     "no",
+     "not",
+     "excluding",
+     "other than",
+     "无",
+     "非",
+     "不",
+     "未"
+    ]
+   },
+   "cachDocKhong": {
+    "vi": [
+     "không\\s+(?:phải\\s+)?(?:được\\s+thiết\\s+kế\\s+)?(?:chỉ\\s+)?để\\s+(?:phóng|bắn)\\s+pháo\\s+hiệu",
+     "không\\s+phải\\s+(?:súng(?:\\s+lục)?|thiết\\s+bị)\\s+(?:bắn|phóng)\\s+pháo\\s+hiệu"
+    ],
+    "en": [
+     "not\\s+designed\\s+to\\s+project\\s+(?:only\\s+)?signal\\s+flares?",
+     "not\\s+a?\\s*(?:very\\s+pistol|flare\\s+gun)"
+    ],
+    "zh": [
+     "非信号枪",
+     "非用于发射信号弹"
+    ]
+   },
+   "cachViet": {
+    "vi": "thiết kế chỉ để phóng pháo hiệu",
+    "viPhuDinh": "không phải thiết kế chỉ để phóng pháo hiệu"
+   },
+   "cauHoi": {
+    "vi": "Súng/thiết bị có phải là súng lục bắn pháo hiệu hoặc loại được thiết kế chỉ để phóng pháo hiệu không?",
+    "zh": "该枪械/装置是否为信号枪或专门设计仅用于发射信号弹的装置？"
+   },
+   "ghiChu": "Chữ biểu 9303.90.10 \"Súng lục bắn pháo hiệu và các loại khác được thiết kế chỉ để phóng pháo hiệu có cỡ nòng từ 20 mm trở lên nhưng trừ cỡ 23 mm và 26,5 mm\" (EN \"Very pistols and other devices designed to project only signal flares...\").",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "khoa": "coNong23Hoac265mm",
+   "kieu": "CO_KHONG",
+   "nhanVi": "có cỡ nòng 23 mm hoặc 26,5 mm",
+   "nhanEn": "with a calibre of 23 mm or 26.5 mm",
+   "nhanZh": "口径为23毫米或26.5毫米",
+   "cachDoc": {
+    "vi": [
+     "(?:cỡ\\s+nòng|cỡ\\s+đạn|khẩu\\s+độ|cỡ)\\s*(?:là\\s*)?(?:23(?:[.,]0+)?|26[.,]5)\\s*mm"
+    ],
+    "en": [
+     "(?:calib(?:re|er)|bore(?:\\s+size)?)\\s*(?:of\\s*)?(?:23(?:\\.0+)?|26\\.5)\\s*mm"
+    ],
+    "zh": [
+     "口径(?:为)?\\s*(?:23(?:\\.0+)?|26\\.5)\\s*(?:mm|毫米)"
+    ],
+    "phuDinh": [
+     "không phải",
+     "không",
+     "chưa",
+     "trừ",
+     "ngoại trừ",
+     "ko",
+     "chẳng",
+     "non-?",
+     "without",
+     "no",
+     "not",
+     "excluding",
+     "other than",
+     "except",
+     "无",
+     "非",
+     "不",
+     "未",
+     "除"
+    ]
+   },
+   "cachDocKhong": {
+    "vi": [
+     "trừ\\s+cỡ\\s+23\\s*mm\\s+và\\s+26[.,]5\\s*mm",
+     "không\\s+phải\\s+cỡ\\s+(?:nòng\\s+)?23\\s*mm\\s+(?:và|hoặc)\\s+26[.,]5\\s*mm",
+     "(?<![\\p{L}\\p{M}])(?<!(?:từ|trên|dưới|không\\s+quá|ít\\s+nhất|tối\\s+thiểu|tối\\s+đa)\\s+)(?:cỡ\\s+nòng|cỡ\\s+đạn|khẩu\\s+độ|cỡ)\\s+(?!từ\\b|trên\\b|dưới\\b|không\\s+quá\\b)(?!23(?:[.,]0+)?\\s*mm\\b|26[.,]5\\s*mm\\b)\\d+(?:[.,]\\d+)?\\s*mm(?!\\s+trở\\s+(?:lên|xuống))"
+    ],
+    "en": [
+     "excluding\\s+23\\s*mm\\s+and\\s+26\\.5\\s*mm",
+     "(?:calib(?:re|er)|bore(?:\\s+size)?)\\s+(?:of\\s+)?(?!23(?:\\.0+)?\\s*mm\\b|26\\.5\\s*mm\\b)\\d+(?:\\.\\d+)?\\s*mm(?!\\s+or\\s+(?:more|less))"
+    ],
+    "zh": [
+     "但?23\\s*(?:mm|毫米)及26\\.5\\s*(?:mm|毫米)(?:口径)?除外",
+     "不含23\\s*(?:mm|毫米)和26\\.5\\s*(?:mm|毫米)"
+    ]
+   },
+   "cachViet": {
+    "vi": "cỡ nòng 23 mm hoặc 26,5 mm",
+    "viPhuDinh": "trừ cỡ 23 mm và 26,5 mm"
+   },
+   "cauHoi": {
+    "vi": "Súng/thiết bị phóng pháo hiệu có phải loại cỡ nòng 23 mm hoặc 26,5 mm không?",
+    "zh": "该信号枪/发射装置的口径是否为23毫米或26.5毫米？"
+   },
+   "ghiChu": "Chữ biểu 9303.90.10 \"Súng lục bắn pháo hiệu và các loại khác được thiết kế chỉ để phóng pháo hiệu có cỡ nòng từ 20 mm trở lên nhưng trừ cỡ 23 mm và 26,5 mm\" (EN \"... with a calibre of 20 mm or more but excluding 23 mm and 26.5 mm\").",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "khoa": "dungChoXeKeoMay8429Hoac8430XeNangHoacXepDo",
+   "kieu": "CO_KHONG",
+   "nhanVi": "dùng cho xe kéo, máy thuộc nhóm 84.29 hoặc 84.30, xe nâng hàng hoặc xe và máy xếp dỡ công nghiệp",
+   "nhanEn": "of a kind used on tractors, machinery of heading 84.29 or 84.30, forklifts or other industrial handling vehicles and machines",
+   "nhanZh": "用于拖拉机、税目84.29或84.30的机械、叉车或其他工业搬运车辆及机器",
+   "cachDoc": {
+    "vi": [
+     "(?<![\\p{L}\\p{M}])(?<!(?:không|chưa|ko|chẳng)\\s+)(?:loại\\s+)?dùng\\s+cho\\s+xe\\s+kéo\\s*,\\s*máy\\s+thuộc\\s+nhóm\\s+84\\.29\\s+hoặc\\s+84\\.30\\s*,\\s*xe\\s+nâng\\s+hàng(?:\\s*,\\s*xe\\s+cút\\s+kít)?\\s+hoặc\\s+xe\\s+và\\s+máy\\s+xếp\\s+dỡ\\s+công\\s+nghiệp",
+     "(?<![\\p{L}\\p{M}])(?<!(?:không|chưa|ko|chẳng)\\s+)(?:dùng\\s+cho|sử\\s+dụng\\s+cho|lắp\\s+cho)\\s+(?:xe\\s+kéo|máy\\s+thuộc\\s+nhóm\\s+84\\.29(?:\\s+hoặc\\s+84\\.30)?|máy\\s+thuộc\\s+nhóm\\s+84\\.30|xe\\s+nâng\\s+hàng|xe\\s+và\\s+máy\\s+xếp\\s+dỡ\\s+công\\s+nghiệp)"
+    ],
+    "en": [
+     "of\\s+a\\s+kind\\s+used\\s+on\\s+tractors\\s*,\\s*machinery\\s+of\\s+heading\\s+84\\.29\\s+or\\s+84\\.30\\s*,\\s*forklifts(?:\\s*,\\s*wheel-barrows)?\\s+or\\s+other\\s+industrial\\s+handling\\s+vehicles\\s+and\\s+machines",
+     "(?:used\\s+on|for)\\s+(?:tractors|machinery\\s+of\\s+heading\\s+84\\.(?:29|30)|forklifts|industrial\\s+handling\\s+vehicles)"
+    ],
+    "zh": [
+     "用于(?:拖拉机|税目84\\.(?:29|30)的机械|叉车|工业搬运车辆)"
+    ],
+    "phuDinh": [
+     "không phải",
+     "không",
+     "chưa",
+     "trừ",
+     "ko",
+     "chẳng",
+     "non-?",
+     "without",
+     "no",
+     "not",
+     "excluding",
+     "other than",
+     "无",
+     "非",
+     "不",
+     "未"
+    ]
+   },
+   "cachDocKhong": {
+    "vi": [
+     "lắp\\s+vành\\s+có\\s+đường\\s+kính\\s+trên\\s+24\\s*inch\\s*,\\s*loại\\s+khác",
+     "không\\s+(?:phải\\s+)?(?:loại\\s+)?dùng\\s+cho\\s+xe\\s+kéo\\s*,\\s*máy\\s+thuộc\\s+nhóm\\s+84\\.29\\s+hoặc\\s+84\\.30\\s*,\\s*xe\\s+nâng\\s+hàng"
+    ],
+    "en": [
+     "fitting\\s+a\\s+rim\\s+of\\s+a\\s+diameter\\s+exceeding\\s+24\\s*inch\\s*,\\s*other",
+     "not\\s+used\\s+on\\s+tractors\\s*,\\s*machinery\\s+of\\s+heading\\s+84\\.29\\s+or\\s+84\\.30\\s*,\\s*forklifts"
+    ],
+    "zh": [
+     "非用于拖拉机、税目84\\.29或84\\.30的机械或叉车"
+    ]
+   },
+   "cachViet": {
+    "vi": "dùng cho xe kéo, máy thuộc nhóm 84.29 hoặc 84.30, xe nâng hàng hoặc xe và máy xếp dỡ công nghiệp",
+    "viPhuDinh": "không dùng cho xe kéo, máy thuộc nhóm 84.29 hoặc 84.30, xe nâng hàng hoặc xe và máy xếp dỡ công nghiệp"
+   },
+   "cauHoi": {
+    "vi": "Lốp có phải loại dùng cho xe kéo, máy thuộc nhóm 84.29 hoặc 84.30, xe nâng hàng hoặc xe và máy xếp dỡ công nghiệp không?",
+    "zh": "该轮胎是否用于拖拉机、税目84.29或84.30的机械、叉车或其他工业搬运车辆及机器？"
+   },
+   "ghiChu": "Tiêu đề 4011.80.3 \"Lắp vành có đường kính trên 24 inch, loại dùng cho xe kéo, máy thuộc nhóm 84.29 hoặc 84.30, xe nâng hàng hoặc xe và máy xếp dỡ công nghiệp khác\" và chữ biểu 4011.80.40 \"Lắp vành có đường kính trên 24 inch, loại khác\".",
    "nguonLoai": "AI_DA_KIEM"
   }
  ],

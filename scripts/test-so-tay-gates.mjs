@@ -138,7 +138,9 @@ cd = chotDong8({ hs: '85444299', productText: 'Dây cáp mạng USB, đường k
 // thay vì bỏ cuộc; ý của ca vẫn giữ: không tự chốt .94 cho cáp mạng USB (CEO 30/10/2026: cáp dữ liệu theo TB-TCHQ .99).
 check('8544.42.94 → không chốt .94 cho cáp mạng USB (bảo thủ: KHONG_THE_CHOT hoặc THIEU_SO_LIEU)', ['KHONG_THE_CHOT', 'THIEU_SO_LIEU'].includes(cd.ketQua) && cd.hs !== '85444294', JSON.stringify(cd));
 cd = chotDong8({ hs: '40118011', productText: 'Lốp máy xúc lật 14.00-24, đường kính 788mm' });
-check('4011 ngưỡng VÀNH không lấy đường kính ngoài → KHONG_THE_CHOT', cd.ketQua === 'KHONG_THE_CHOT', JSON.stringify(cd));
+check('4011 ngưỡng VÀNH không lấy đường kính ngoài → không tự chốt (KHONG_THE_CHOT hoặc THIEU_SO_LIEU hỏi duongKinhVanh)',
+  ['KHONG_THE_CHOT', 'THIEU_SO_LIEU'].includes(cd.ketQua) && !cd.hs && (cd.ketQua === 'KHONG_THE_CHOT' || (cd.missingFacts || []).some((m) => m.fact === 'duongKinhVanh')),
+  JSON.stringify(cd));
 cd = chotDong8({ hs: '85044019', productText: 'Bộ đổi nguồn 30W dùng cho tủ điện' });
 const cd85044019Trai = chotDong8({
   hs: '85044019',
@@ -748,6 +750,13 @@ check('trangThaiDong8.veMoHinh: 73181510 chấm trọn nhãn "Đường kính ng
   });
   check('OZV-1677 98493447 rào ngược: chữ "Bộ phận" của chính nút 984934~r19749 giữ nguyên → CHOT 98493447',
     cd.ketQua === 'CHOT' && cd.hs === '98493447', JSON.stringify([cd.ketQua, cd.hs]));
+
+  cd = chotDong8({
+    hs: '630619',
+    productText: 'Tấm bạt, mái hiên và tấm che nắng từ gai ramie',
+  });
+  check('OZV-1769 63061910: loaiSoiDet TRONG [SOI_THUC_VAT_KHAC, RAMIE] + tuSoiDetThucVatNhom5305 CO nhận hàng từ gai ramie → CHOT 63061910 (không rơi 63061990)',
+    cd.ketQua === 'CHOT' && cd.hs === '63061910', JSON.stringify([cd.ketQua, cd.hs]));
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);

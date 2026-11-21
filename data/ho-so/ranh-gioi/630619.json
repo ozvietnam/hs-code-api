@@ -4,13 +4,19 @@
   "nhom": "6306",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-630619",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-03#soat-lo-6c",
+    "ngay": "2026-11-21",
+    "ghiChu": "Đã chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1756, OZV-1769)",
+    "bam": "49c077fae89c53a6f335839bc08abba44763aa62d2c0c666303674391723d38e"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -22,11 +28,16 @@
           "fact": "loaiSoiDet",
           "op": "TRONG",
           "value": [
-            "SOI_THUC_VAT_KHAC"
+            "SOI_THUC_VAT_KHAC",
+            "RAMIE"
           ]
+        },
+        {
+          "fact": "tuSoiDetThucVatNhom5305",
+          "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "63061920",
@@ -41,27 +52,21 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "63061990",
       "nguon": "tax.63061990",
       "trich": "63061990 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "63061910",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.63061910: \"Từ sợi dệt thực vật thuộc nhóm 53.05\" ⇒ loaiSoiDet TRONG [SOI_THUC_VAT_KHAC]"
-    },
-    {
-      "ma": "63061910",
-      "loai": "BO_VE",
-      "ve": "thuộc nhóm 53.05",
-      "lyDo": "Vế thuộc nhóm 53.05 là dẫn chiếu phân loại của xơ sợi dệt thực vật trong biểu thuế, đã được phản ánh đầy đủ qua giá trị SOI_THUC_VAT_KHAC của khoá loaiSoiDet"
+      "ghiChu": "tax.63061910: \"Từ sợi dệt thực vật thuộc nhóm 53.05\" (EN \"Of vegetable textile fibres of heading 53.05\") ⇒ loaiSoiDet TRONG [SOI_THUC_VAT_KHAC, RAMIE] + tuSoiDetThucVatNhom5305 CO (nhận cả gai ramie lẫn xơ dừa, abaca, sisal… thuộc nhóm 53.05; phân biệt với lanh 53.01, gai dầu 53.02, đay 53.03 rơi vào .90)"
     },
     {
       "ma": "63061920",

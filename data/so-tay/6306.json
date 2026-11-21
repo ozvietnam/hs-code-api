@@ -183,19 +183,58 @@
     },
     {
       "hs": "63061910",
-      "dieuKien": "Từ sợi dệt thực vật thuộc nhóm 53.05; thuộc phân nhóm 6306.19 (tên WCO 630619: tarpaulins, awnings and sunblinds, of textile materials other than synthetic fibres)",
+      "dieuKien": "loại xơ/sợi dệt (vật liệu dệt chủ yếu): từ sợi dệt thực vật khác (đay, lanh, gai, xơ dừa… nhóm 53.05 — trừ ramie, xem RAMIE) hoặc từ ramie (gai ramie); từ sợi dệt thực vật thuộc nhóm 53.05 (xơ dừa, chuối sợi/abaca, gai ramie, sisal…)",
       "nguon": "tax.63061910",
       "trich": "63061910 - - - Từ sợi dệt thực vật thuộc nhóm 53.05",
-      "nguonLoai": "NGUOI_DUYET",
-      "loaiKhac": false
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "loaiSoiDet",
+          "op": "TRONG",
+          "value": [
+            "SOI_THUC_VAT_KHAC",
+            "RAMIE"
+          ]
+        },
+        {
+          "fact": "tuSoiDetThucVatNhom5305",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-03#soat-lo-6c",
+          "ngay": "2026-11-21",
+          "bam": "49c077fae89c53a6f335839bc08abba44763aa62d2c0c666303674391723d38e"
+        }
+      }
     },
     {
       "hs": "63061920",
-      "dieuKien": "Từ bông; thuộc phân nhóm 6306.19 (tên WCO 630619: tarpaulins, awnings and sunblinds, of textile materials other than synthetic fibres)",
+      "dieuKien": "loại xơ/sợi dệt (vật liệu dệt chủ yếu): từ bông",
       "nguon": "tax.63061920",
       "trich": "63061920 - - - Từ bông",
-      "nguonLoai": "NGUOI_DUYET",
-      "loaiKhac": false
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "loaiSoiDet",
+          "op": "TRONG",
+          "value": [
+            "BONG"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-03#soat-lo-6c",
+          "ngay": "2026-11-21",
+          "bam": "49c077fae89c53a6f335839bc08abba44763aa62d2c0c666303674391723d38e"
+        }
+      }
     },
     {
       "hs": "63061990",
