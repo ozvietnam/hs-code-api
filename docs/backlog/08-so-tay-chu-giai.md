@@ -285,3 +285,16 @@ nằm trong bộ nhớ đệm phân loại trước lúc bật vẫn mang câu h
 
 **Chưa làm:** không tự đổi phân nhóm khi mô tả khớp chữ phân nhóm anh em (ca van: `phanNhomKhopMoTa` chỉ 8481.20
 trong khi máy xếp 8481.80 — đó là việc của động cơ/GIR 6, xem thẻ riêng); chưa đọc ảnh (`imgText`) khi lọc dữ kiện đã có.
+
+### Bổ sung 21/11 (PR tiếp, vẫn sau `HS_HOI_THEO_SO_TAY`)
+
+- Nhãn `canCuCauHoi` nay có 4 giá trị: `so-tay` · `bieu-thue` · `khong-can-hoi-dong` · `llm`. `khong-can-hoi-dong` =
+  phân nhóm chỉ có MỘT dòng 8 số (`lyDo: mot-dong`) hoặc máy tự chốt được dòng từ mô tả (`may-chot-duoc-dong`) và không
+  còn câu phân nhóm nào để hỏi — không tính là rơi về LLM.
+- Dòng/nút mang điều kiện TÊN LOẠI / CÔNG DỤNG hỏi được cả khi chỉ một dòng mang nó: "Hàng có phải là <chữ dòng>
+  không?" (Có → dòng đó; Không → các dòng còn lại). Từ 3 dòng kiểu này trong phân nhóm phẳng ≤ 6 dòng → một câu chọn dòng.
+- Đường lùi `canCu: "bieu-thue"`: sổ ranh giới chưa DUYET (hoặc DUYET mà không ra câu), phân nhóm phẳng ≤ 6 dòng → MỘT
+  câu chọn dòng liệt kê nguyên văn chữ biểu thuế, "Loại khác" đặt cuối, có "Chưa rõ". Lồng nhiều cấp gạch hoặc > 6 dòng →
+  giữ câu LLM (`llm`, `lyDo: long-nhieu-cap | qua-6-dong`).
+- Số đo (quét 5.750 phân nhóm; 5.734 dòng `oz-gold-final.jsonl` chạy bằng mô tả thật): nhãn `llm` còn 132 phân nhóm,
+  2,4 % số dòng tờ khai (trước: 3.652 phân nhóm, ~40 % số dòng).
