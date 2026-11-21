@@ -76,6 +76,7 @@ flowchart TD
         TestKiemPr["test-kiem-pr-l1.mjs (L1: Kiểm PR gọi LLM)"]
         TestMermaid["test-so-do-mermaid.mjs (Chống lệch sơ đồ)"]
         TestBangCanh["test-bang-canh.mjs (ADR-0002: Bảng cạnh đồ thị tri thức)"]
+        TestTieuChi6["kiem-tieu-chi-6.mjs + test-tieu-chi-6.mjs (G6: tiêu chí phân nhóm 6 số, cạnh C10)"]
     end
 \`\`\``;
 

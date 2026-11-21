@@ -77,6 +77,7 @@ flowchart TD
         TestKiemPr["test-kiem-pr-l1.mjs (L1: Kiểm PR gọi LLM)"]
         TestMermaid["test-so-do-mermaid.mjs (Chống lệch sơ đồ)"]
         TestBangCanh["test-bang-canh.mjs (ADR-0002: Bảng cạnh đồ thị tri thức)"]
+        TestTieuChi6["kiem-tieu-chi-6.mjs + test-tieu-chi-6.mjs (G6: tiêu chí phân nhóm 6 số, cạnh C10)"]
     end
 ```
 <!-- AUTO_MERMAID_DUONG_KHACH_END -->
@@ -297,6 +298,15 @@ không ra kết quả giống hệt; có cạnh thiếu trích / nguồn; có c�
 `data/luat/dau-noi.json` (kho `bangCanh`) chưa khai `co`. Sửa nhiều sổ tay làm cổng đỏ thì chạy
 `node scripts/dung-bang-canh.mjs --ghi` và commit `data/do-thi/` cùng PR. Nối bảng cạnh vào một đường khách là thay đổi
 thuộc L1 và L4: sau công tắc mặc định tắt, sửa bảng đấu nối trong cùng PR.
+
+## Cổng tiêu chí 6 số (ADR-0003)
+
+`tieuChi6` khuôn g6@1 của sổ tay nhóm (cạnh C10 / C13) chỉ được ghi bằng `node scripts/goi-soan-tieu-chi-6.mjs --ap=<tệp>`,
+sau khi qua cổng `scripts/kiem-tieu-chi-6.mjs`: trích nguyên văn, đúng nguồn, phủ kín mọi phân nhóm, không chữ nào trong điều
+kiện / từ khoá nằm ngoài câu trích, phân nhóm dư không mang điều kiện, thứ tự do máy xếp. `npm test` chạy cổng trên mọi sổ tay
+mang `kiemTra.tieuChi6.khuon` và chạy `scripts/test-tieu-chi-6.mjs` (mỗi mã lỗi một ca tiêm). Hướng dẫn soạn:
+[`docs/giao-viec/do-thi/SOAN-TIEU-CHI-6-SO.md`](giao-viec/do-thi/SOAN-TIEU-CHI-6-SO.md). Cổng và gói soạn không nằm trên đường
+khách. Qua cổng chưa phải là đã duyệt: mục mang nhãn `AI_DA_KIEM`.
 
 ## Thêm cờ `HS_*` mới: làm gì
 
