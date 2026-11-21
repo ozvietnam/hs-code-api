@@ -336,5 +336,86 @@ delete process.env.HS_SERVICE_TOKENS;
   check('mỗi lượt định danh vẫn đúng 1 lượt LLM; system prompt không đổi', calls.length - soLuot0 === 9 && calls.slice(soLuot0).every((c) => c.system === promptHeThong), String(calls.length - soLuot0));
 }
 
+// ── 11. OZV-1656 (PR A): chặn nguồn rác + khớp model ngắn chặt + luật 2 tên miền cho model ngắn. Prompt/hình đầu ra không đổi. ──
+{
+  const { nguonBiChan, khopModel, tuNguCanh, dungCauTim, timBangChungWeb } = require('../lib/dinh-danh-tim-web.js');
+  const { xacMinh } = require('../lib/xac-minh-nguon.js');
+  const envCu = process.env.HS_DINH_DANH_TIM_WEB; delete process.env.HS_DINH_DANH_TIM_WEB;
+
+  // 11a. Danh sách chặn.
+  const chan = (u) => nguonBiChan(u)?.loai || null;
+  check('chặn · bách khoa chung (kể cả tên miền con)', chan('https://en.wikipedia.org/wiki/GA22') === 'bach-khoa-chung' && chan('https://vi.m.wikipedia.org/wiki/X') === 'bach-khoa-chung' && chan('https://pokemon.fandom.com/wiki/A') === 'bach-khoa-chung' && chan('https://en.wiktionary.org/wiki/a') === 'bach-khoa-chung');
+  check('chặn · đuôi tên miền *.games / *.bet / *.casino', chan('https://ga22.games/') === 'ca-cuoc-game' && chan('https://www.lucky.bet/x') === 'ca-cuoc-game' && chan('http://abc.casino/y') === 'ca-cuoc-game');
+  check('chặn · mạng xã hội/video + rút gọn link + tải lậu', ['https://www.facebook.com/p/1', 'https://m.tiktok.com/@a', 'https://youtu.be/abc', 'https://www.youtube.com/watch?v=1', 'https://www.pinterest.com/pin/1', 'https://instagram.com/a', 'https://x.com/a', 'https://twitter.com/a', 'https://old.reddit.com/r/a'].every((u) => chan(u) === 'mang-xa-hoi-video') && chan('https://bit.ly/3abc') === 'rut-gon-link' && chan('https://www.scribd.com/doc/1') === 'tai-lau-tong-hop-rac');
+  check('chặn · KHÔNG chặn nhà sản xuất / sàn / nhà phân phối / tên miền chỉ có chữ "games" ở tên con', ['https://www.atlascopco.com/vi-vn/compressors/products/ga22', 'https://mall.industry.siemens.com/x', 'https://www.alibaba.com/p/1', 'https://games.example.com/a', 'https://betonviet.vn/a', 'https://taxi.com.vn'].every((u) => nguonBiChan(u) === null) && nguonBiChan('không phải url') === null);
+
+  // 11b. Khớp model ngắn: ranh giới từ + ngữ cảnh; không xét URL.
+  const NC = tuNguCanh({ tenHang: 'Máy nén khí trục vít Atlas Copco GA22', thuongHieu: 'Atlas Copco', model: 'GA22' });
+  check('GA22 · ngữ cảnh = hãng + danh từ chính của tên hàng', NC.includes('atlas copco') && NC.includes('máy nén'), JSON.stringify(NC));
+  check('GA22 · trang bách khoa về khí cầu KHÔNG khớp', khopModel('GA22', ['GA22 – Wikipedia', 'GA22 là một khí cầu trinh sát do Goodyear chế tạo năm 1930'], NC) === false);
+  check('GA22 · trang trò chơi KHÔNG khớp', khopModel('GA22', ['GA22 Games - chơi game online', 'ga22.games cổng game đổi thưởng GA22 uy tín'], NC) === false);
+  check('GA22 · trang atlascopco có "GA22" + "máy nén" ĐƯỢC tính (kể cả "GA 22", "GA-22")', khopModel('GA22', ['Atlas Copco', 'Máy nén khí trục vít GA22 công suất 22 kW'], NC) === true && khopModel('GA22', ['GA 22 oil-injected screw compressor – Atlas Copco'], NC) === true && khopModel('GA22', ['máy nén khí GA-22'], tuNguCanh({ tenHang: 'Máy nén khí GA22', model: 'GA22' })) === true);
+  check('GA22 · dính liền chữ/số khác ("GA22FF", "XGA22") không phải ranh giới từ', khopModel('GA22', ['máy nén Atlas Copco GA22FF'], NC) === false && khopModel('GA22', ['máy nén Atlas Copco XGA22'], NC) === false);
+  check('GA22 · không có ngữ cảnh nào ⇒ model ngắn không khớp; một âm tiết Việt rời ("khí cầu") và từ rỗng tiếng Anh không đủ', khopModel('GA22', ['GA22 máy nén khí'], tuNguCanh({ tenHang: 'GA22', model: 'GA22' })) === false && khopModel('GA22', ['GA22 là một khí cầu trinh sát'], tuNguCanh({ tenHang: 'Máy nén khí trục vít GA22', model: 'GA22' })) === false && khopModel('GA22', ['the GA22 for sale'], ['the for']) === false);
+  check('model dài giữ luật cũ (chuẩn hoá chữ-số, không cần ngữ cảnh)', khopModel('FP6308U', ['bơm FP-6308 U chính hãng'], []) === true && khopModel('FP6308U', ['bơm FP-63'], []) === false);
+  check('model ngắn · ngữ cảnh khớp theo TỪNG từ Latin: khopModel("1214C", "Siemens SIMATIC S7-1200 CPU 1214C DC/DC/DC", ["plc cpu"]) = true', khopModel('1214C', 'Siemens SIMATIC S7-1200 CPU 1214C DC/DC/DC', ['plc cpu']) === true);
+  const NC_PLC = tuNguCanh({ tenHang: 'Bộ lập trình PLC Siemens SIMATIC S7-1200 CPU 1214C', model: '1214C', thuongHieu: 'Siemens', tenKhac: ['programmable logic controller'] });
+  check('model ngắn · ngữ cảnh gồm hãng + từ khoá Latin của tên hàng + tên tiếng Anh; trang chỉ có tên dòng sản phẩm vẫn khớp', ['siemens', 'plc', 'cpu', 'simatic', 'controller'].every((w) => NC_PLC.includes(w)) && !NC_PLC.includes('1214c') && khopModel('1214C', 'SIMATIC S7-1200, 1214C compact unit', NC_PLC) === true && khopModel('1214C', 'Part number 1214C in stock, ships today', NC_PLC) === false, JSON.stringify(NC_PLC));
+  check('câu tìm KHÔNG đổi so với main', JSON.stringify(dungCauTim({ tenHang: 'Máy nén khí trục vít', model: 'GA22' })) === JSON.stringify(['GA22', 'Máy nén khí trục vít GA22', 'GA22 specifications']));
+
+  // 11c. Vòng gộp kết quả tìm kiếm.
+  const KQ_GA22 = [
+    { tieuDe: 'GA22 – Wikipedia', url: 'https://en.wikipedia.org/wiki/GA22', doanTrich: 'GA22 là một khí cầu trinh sát của Hải quân Mỹ, máy nén khí không liên quan' },
+    { tieuDe: 'GA22 Games', url: 'https://ga22.games/', doanTrich: 'GA22 cổng game đổi thưởng, tải máy nén dữ liệu về điện thoại' },
+    { tieuDe: 'GA 22 – Atlas Copco Việt Nam', url: 'https://www.atlascopco.com/vi-vn/compressors/products/ga22', doanTrich: 'Máy nén khí trục vít ngâm dầu GA22, công suất 22 kW, lưu lượng 3,7 m3/phút' },
+    { tieuDe: 'Máy nén khí Atlas Copco GA22', url: 'https://daily-khinen.example.vn/ga22', doanTrich: 'Máy nén khí trục vít Atlas Copco GA22 chính hãng, áp suất 7,5 bar' },
+  ];
+  const wGa = await timBangChungWeb({ tenHang: 'Máy nén khí trục vít GA22', model: 'GA22' }, { timWeb: async () => KQ_GA22 });
+  check('vòng gộp · Wikipedia + ga22.games bị bỏ, chỉ còn 2 nguồn thật', wGa?.ketQua.length === 2 && wGa.ketQua.every((k) => !/wikipedia|ga22\.games/.test(k.url)), JSON.stringify(wGa?.ketQua.map((k) => k.url)));
+
+  // 11d. Máy mở lại trang.
+  const NC2 = tuNguCanh({ tenHang: 'Máy nén khí trục vít GA22', model: 'GA22' });
+  const trang = (chu) => async () => ({ ok: true, status: 200, arrayBuffer: async () => Buffer.from(chu) });
+  const trangRac = await xacMinh({ url: 'https://tro-choi.example.org/ga22', trich: 'không có câu này' }, 'GA22', trang('<a href="/ga22">GA22</a> game bài đổi thưởng ga22 tải ngay'), { nguCanh: NC2 });
+  const trangNsx = await xacMinh({ url: 'https://www.atlascopco.com/ga22', trich: 'không có câu này' }, 'GA22', trang('<h1>GA22</h1><p>Máy nén khí trục vít ngâm dầu</p>'), { nguCanh: NC2 });
+  const trangCu = await xacMinh({ url: 'https://tro-choi.example.org/ga22', trich: 'không có câu này' }, 'GA22', trang('ga22 game bài'));
+  check('mở lại trang · có nguCanh: trang rác ⇒ false, trang có "GA22" + "máy nén" ⇒ true', trangRac.modelCoMat === false && trangRac.modelChuanCoMat === false && trangNsx.modelCoMat === true && trangNsx.modelChuanCoMat === true);
+  check('mở lại trang · KHÔNG truyền nguCanh (tầng hồ sơ) ⇒ đúng luật CŨ: chứa chuỗi là tính', trangCu.modelCoMat === true && trangCu.modelChuanCoMat === true);
+
+  // 11e. identify GA22 đầu-cuối.
+  const TRANG_GA = {
+    'https://en.wikipedia.org/wiki/GA22': 'GA22 là một khí cầu trinh sát',
+    'https://ga22.games/': 'GA22 cổng game',
+    'https://www.atlascopco.com/vi-vn/compressors/products/ga22': 'Atlas Copco GA22 máy nén khí trục vít ngâm dầu 22 kW',
+    'https://daily-khinen.example.vn/ga22': 'Máy nén khí trục vít Atlas Copco GA22 chính hãng',
+    'https://lich-su.example.org/ga22': 'GA22 was a non-rigid airship built in 1930',
+    'https://blog.example.net/ga22': 'GA22 was a non-rigid airship built in 1930, a blog copy',
+  };
+  const daMo = [];
+  const fetchGa = async (url) => { daMo.push(url); return TRANG_GA[url] != null ? { ok: true, status: 200, arrayBuffer: async () => Buffer.from(TRANG_GA[url]) } : { ok: false, status: 404, arrayBuffer: async () => Buffer.from('') }; };
+  const KHUNG_NEN = { machineFunction: 'máy nén khí trục vít', power: '22 kW', nguyenLyHoatDong: 'nén khí bằng cặp trục vít ngâm dầu', chucNangChinh: 'cấp khí nén công nghiệp' };
+  script = [{ chuong: '84', model: 'GA22', truong: KHUNG_NEN, nguon: [{ loai: 'phu', url: 'https://en.wikipedia.org/wiki/GA22', trich: 'GA22 là một khí cầu trinh sát' }, { loai: 'nsx', url: 'https://ga22.games/', trich: 'GA22 cổng game' }] }];
+  let rGa = await identify({ tenHang: 'Máy nén khí trục vít GA22', model: 'GA22' }, { fetchImpl: fetchGa, timWeb: async () => KQ_GA22 });
+  check('identify GA22 · Wikipedia và ga22.games (AI đề xuất, kể cả gắn nhãn nsx) không được tính, không bị mở, không VERIFIED', !rGa.xacMinh.nguon.some((n) => /wikipedia|ga22\.games/.test(n.url)) && !daMo.some((u) => /wikipedia|ga22\.games/.test(u)) && rGa.xacMinh.muc !== 'VERIFIED', JSON.stringify([rGa.xacMinh.muc, rGa.xacMinh.nguon.map((n) => n.url)]));
+  check('identify GA22 · 2 trang thật có "GA22" + "máy nén" ⇒ CORROBORATED', rGa.xacMinh.muc === 'CORROBORATED' && rGa.xacMinh.mien.length === 2 && rGa.xacMinh.mien.includes('atlascopco.com'), JSON.stringify([rGa.xacMinh.muc, rGa.xacMinh.mien]));
+  script = [{ chuong: '84', model: 'GA22', truong: KHUNG_NEN, nguon: [{ loai: 'phu', url: 'https://lich-su.example.org/ga22', trich: 'GA22 was a non-rigid airship' }, { loai: 'phu', url: 'https://blog.example.net/ga22', trich: 'GA22 was a non-rigid airship' }] }];
+  rGa = await identify({ tenHang: 'Máy nén khí trục vít GA22', model: 'GA22' }, { fetchImpl: fetchGa });
+  check('identify GA22 · 2 tên miền chỉ có câu trích về khí cầu ⇒ KHÔNG CORROBORATED (HYPOTHESIS)', rGa.xacMinh.muc === 'HYPOTHESIS', rGa.xacMinh.muc);
+  script = [{ chuong: '84', model: 'FP6308U', truong: KHUNG_NEN, nguon: [] }];
+  const rUrl = await identify({ tenHang: 'Bơm dầu FP6308U', model: 'FP6308U' }, { fetchImpl: trang('FP6308U'), timWeb: async () => [{ tieuDe: 'Trang chủ cửa hàng', url: 'https://shop-a.example.com/p/fp6308u', doanTrich: 'Chào mừng quý khách đến với cửa hàng thiết bị thuỷ lực' }] });
+  check('model chỉ nằm trong URL (tiêu đề + đoạn trích không nhắc) ⇒ KHÔNG được tính', rUrl.xacMinh.muc === 'KHONG_NGUON' && rUrl.xacMinh.nguon.length === 0);
+  // Hình đầu ra không đổi: đúng tập khoá của main.
+  check('hình đầu ra KHÔNG đổi so với main (đã có canCuCauHoi của #1521): không thêm trường mới ở cấp trên / frame / timWeb', Object.keys(rGa).sort().join() === ['anh', 'anhBoVi', 'canCuCauHoi', 'frame', 'goiYChuong', 'loi', 'ms', 'questions', 'thieuTruong', 'xacMinh', 'xacMinhKetQua'].sort().join() && Object.keys(rUrl.timWeb).sort().join() === ['ms', 'quaHan', 'soCau', 'soKetQua', 'soNguonThem'].sort().join() && !('nhom' in rGa.frame), JSON.stringify([Object.keys(rGa), Object.keys(rUrl.timWeb || {})]));
+
+  // 11f. ReDoS (CLAUDE.md quy tắc 6b).
+  const tRe = Date.now();
+  const lapTrung = khopModel('GA22', ['máy nén GA22 '.repeat(40000)], NC);
+  const lapTruot = khopModel('GA22', ['XGA22FF may-nen '.repeat(40000)], NC);
+  const ncDai = tuNguCanh({ tenHang: 'máy nén khí '.repeat(40000), model: 'GA22', thuongHieu: 'Atlas Copco' });
+  check('ReDoS · khopModel/tuNguCanh trên 40.000 từ lặp < 2 giây; bắt đúng và không bắt nhầm', Date.now() - tRe < 2000 && lapTrung === true && lapTruot === false && ncDai.includes('máy nén'), `ms=${Date.now() - tRe}`);
+
+  if (envCu === undefined) delete process.env.HS_DINH_DANH_TIM_WEB; else process.env.HS_DINH_DANH_TIM_WEB = envCu;
+}
+
 log(`${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
