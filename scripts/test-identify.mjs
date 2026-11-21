@@ -5,7 +5,7 @@ const require = createRequire(import.meta.url);
 const llmTier = require('../lib/llm-tier.js');
 const { isPrivate } = require('../lib/llm-privacy.js');
 let script = []; let calls = []; let thayRiengTu = null;
-llmTier.callLLMJson = async (system, user) => { thayRiengTu = isPrivate(); calls.push({ system: String(system).slice(0, 60), user }); const n = script.shift(); if (n instanceof Error) throw n; return { json: typeof n === 'function' ? n(user) : n, provider: 'stub', model: 'stub' }; };
+llmTier.callLLMJson = async (system, user, llmOpts) => { thayRiengTu = isPrivate(); calls.push({ system: String(system), user, opts: llmOpts || {} }); const n = script.shift(); if (n instanceof Error) throw n; return { json: typeof n === 'function' ? n(user) : n, provider: 'stub', model: 'stub' }; };
 console.error = () => {};
 
 // #334: identify giờ xác minh nguồn bằng fetch — test cần fetch giả
@@ -278,6 +278,249 @@ delete process.env.HS_SERVICE_TOKENS;
   const kqRedos = doanChuong('PPVA '.repeat(40000));
   const msRedos = Date.now() - t0Redos;
   check('OZV-1667 · ReDoS: 40.000 từ lặp "PPVA" chạy dưới 2 giây và không khớp nhầm Chương 39', msRedos < 2000 && kqRedos.length === 0, `ms=${msRedos}`);
+}
+
+// ── 11. OZV-1656: chặn nguồn rác + khớp model chặt + câu hỏi theo sổ tay/PN6 + hết mặc định chương 84 ──
+{
+  const { nguonBiChan, khopModel, tuNguCanh, dungCauTim, timBangChungWeb } = require('../lib/dinh-danh-tim-web.js');
+  const { xacMinh } = require('../lib/xac-minh-nguon.js');
+  const { doanChuong, frameForNhom } = require('../lib/attribute-frames.js');
+  const envCu = { web: process.env.HS_DINH_DANH_TIM_WEB, st: process.env.HS_DINH_DANH_SO_TAY };
+  delete process.env.HS_DINH_DANH_TIM_WEB; delete process.env.HS_DINH_DANH_SO_TAY;
+
+  // 11a. Danh sách chặn: tên miền đăng ký, tên miền con, đuôi tên miền; nguồn hợp lệ không bị chặn.
+  const chan = (u) => nguonBiChan(u)?.loai || null;
+  check('chặn · bách khoa chung (kể cả tên miền con)', chan('https://en.wikipedia.org/wiki/GA22') === 'bach-khoa-chung' && chan('https://vi.m.wikipedia.org/wiki/X') === 'bach-khoa-chung' && chan('https://pokemon.fandom.com/wiki/A') === 'bach-khoa-chung' && chan('https://en.wiktionary.org/wiki/a') === 'bach-khoa-chung');
+  check('chặn · đuôi tên miền *.games / *.bet / *.casino', chan('https://ga22.games/') === 'ca-cuoc-game' && chan('https://www.lucky.bet/x') === 'ca-cuoc-game' && chan('http://abc.casino/y') === 'ca-cuoc-game', JSON.stringify([chan('https://ga22.games/'), chan('https://www.lucky.bet/x')]));
+  check('chặn · mạng xã hội/video + rút gọn link + tải lậu', ['https://www.facebook.com/p/1', 'https://m.tiktok.com/@a', 'https://youtu.be/abc', 'https://www.youtube.com/watch?v=1', 'https://www.pinterest.com/pin/1', 'https://instagram.com/a', 'https://x.com/a', 'https://twitter.com/a', 'https://old.reddit.com/r/a'].every((u) => chan(u) === 'mang-xa-hoi-video') && chan('https://bit.ly/3abc') === 'rut-gon-link' && chan('https://www.scribd.com/doc/1') === 'tai-lau-tong-hop-rac');
+  check('chặn · KHÔNG chặn nhà sản xuất / sàn / nhà phân phối / tên miền chỉ có chữ "games" ở tên con', ['https://www.atlascopco.com/vi-vn/compressors/products/ga22', 'https://mall.industry.siemens.com/x', 'https://www.alibaba.com/p/1', 'https://games.example.com/a', 'https://betonviet.vn/a', 'https://taxi.com.vn'].every((u) => nguonBiChan(u) === null) && nguonBiChan('không phải url') === null);
+
+  // 11b. GA22: khớp model ngắn cần RANH GIỚI TỪ + NGỮ CẢNH (hãng / danh từ chính); không bao giờ xét URL.
+  const NC = tuNguCanh({ tenHang: 'Máy nén khí trục vít Atlas Copco GA22', thuongHieu: 'Atlas Copco', model: 'GA22' });
+  check('GA22 · ngữ cảnh = hãng + danh từ chính của tên hàng', NC.includes('atlas copco') && NC.includes('máy nén'), JSON.stringify(NC));
+  check('GA22 · trang bách khoa về khí cầu KHÔNG khớp (có "GA22" nhưng không có hãng/danh từ chính)', khopModel('GA22', ['GA22 – Wikipedia', 'GA22 là một khí cầu trinh sát do Goodyear chế tạo năm 1930'], NC) === false);
+  check('GA22 · trang trò chơi KHÔNG khớp', khopModel('GA22', ['GA22 Games - chơi game online', 'ga22.games cổng game đổi thưởng GA22 uy tín'], NC) === false);
+  check('GA22 · trang atlascopco có "GA22" + "máy nén" ĐƯỢC tính (kể cả viết "GA 22")', khopModel('GA22', ['Atlas Copco', 'Máy nén khí trục vít GA22 công suất 22 kW'], NC) === true && khopModel('GA22', ['GA 22 oil-injected screw compressor – Atlas Copco'], NC) === true && khopModel('GA22', ['máy nén khí GA-22'], tuNguCanh({ tenHang: 'Máy nén khí GA22', model: 'GA22' })) === true);
+  check('GA22 · dính liền chữ/số khác ("GA22FF", "XGA22") không phải ranh giới từ', khopModel('GA22', ['máy nén Atlas Copco GA22FF'], NC) === false && khopModel('GA22', ['máy nén Atlas Copco XGA22'], NC) === false);
+  check('GA22 · không có ngữ cảnh nào (không hãng, tên hàng chỉ là mã) ⇒ model ngắn không bao giờ khớp', khopModel('GA22', ['GA22 máy nén khí'], tuNguCanh({ tenHang: 'GA22', model: 'GA22' })) === false);
+  check('model dài giữ luật cũ (chuẩn hoá chữ-số, không cần ngữ cảnh)', khopModel('FP6308U', ['bơm FP-6308 U chính hãng'], []) === true && khopModel('FP6308U', ['bơm FP-63'], []) === false);
+  check('câu tìm · model ngắn KHÔNG có hãng ⇒ mọi câu đều ghép tên hàng; có hãng ⇒ như cũ', dungCauTim({ tenHang: 'Máy nén khí trục vít', model: 'GA22' }).every((c) => c.includes('Máy nén khí trục vít') && c.includes('GA22')) && dungCauTim({ tenHang: 'Máy nén khí trục vít', model: 'GA22' }).length === 3 && dungCauTim({ tenHang: 'Máy nén khí trục vít', model: 'GA22', thuongHieu: 'Atlas Copco' })[0] === 'Atlas Copco GA22', JSON.stringify(dungCauTim({ tenHang: 'Máy nén khí trục vít', model: 'GA22' })));
+
+  // 11c. Vòng gộp kết quả tìm kiếm: nguồn rác bị bỏ trước khi vào prompt / hàng xác minh.
+  const KQ_GA22 = [
+    { tieuDe: 'GA22 – Wikipedia', url: 'https://en.wikipedia.org/wiki/GA22', doanTrich: 'GA22 là một khí cầu trinh sát của Hải quân Mỹ, máy nén khí không liên quan' },
+    { tieuDe: 'GA22 Games', url: 'https://ga22.games/', doanTrich: 'GA22 cổng game đổi thưởng, tải máy nén dữ liệu về điện thoại' },
+    { tieuDe: 'GA 22 – Atlas Copco Việt Nam', url: 'https://www.atlascopco.com/vi-vn/compressors/products/ga22', doanTrich: 'Máy nén khí trục vít ngâm dầu GA22, công suất 22 kW, lưu lượng 3,7 m3/phút' },
+    { tieuDe: 'Máy nén khí Atlas Copco GA22', url: 'https://daily-khinen.example.vn/ga22', doanTrich: 'Máy nén khí trục vít Atlas Copco GA22 chính hãng, áp suất 7,5 bar' },
+  ];
+  const wGa = await timBangChungWeb({ tenHang: 'Máy nén khí trục vít GA22', model: 'GA22' }, { timWeb: async () => KQ_GA22 });
+  check('vòng gộp · Wikipedia + ga22.games bị bỏ, chỉ còn 2 nguồn thật; soBiChan = 2', wGa?.ketQua.length === 2 && wGa.ketQua.every((k) => !/wikipedia|ga22\.games/.test(k.url)) && wGa.soBiChan === 2, JSON.stringify([wGa?.ketQua.map((k) => k.url), wGa?.soBiChan]));
+
+  // 11d. Máy mở lại trang: model ngắn nằm trong trang trò chơi không còn tính; trang NSX có ngữ cảnh thì tính.
+  const NC2 = tuNguCanh({ tenHang: 'Máy nén khí trục vít GA22', model: 'GA22' });
+  const trangRac = await xacMinh({ url: 'https://tro-choi.example.org/ga22', trich: 'không có câu này' }, 'GA22', async () => ({ ok: true, status: 200, arrayBuffer: async () => Buffer.from('<a href="/ga22">GA22</a> game bài đổi thưởng ga22 tải ngay') }), { nguCanh: NC2 });
+  const trangNsx = await xacMinh({ url: 'https://www.atlascopco.com/ga22', trich: 'không có câu này' }, 'GA22', async () => ({ ok: true, status: 200, arrayBuffer: async () => Buffer.from('<h1>GA22</h1><p>Máy nén khí trục vít ngâm dầu</p>') }), { nguCanh: NC2 });
+  check('mở lại trang · trang rác có "ga22" ⇒ modelCoMat=false, modelChuanCoMat=false; trang có "GA22" + "máy nén" ⇒ true', trangRac.modelCoMat === false && trangRac.modelChuanCoMat === false && trangNsx.modelCoMat === true && trangNsx.modelChuanCoMat === true, JSON.stringify([trangRac.modelCoMat, trangRac.modelChuanCoMat, trangNsx.modelCoMat, trangNsx.modelChuanCoMat]));
+
+  // 11e. identify GA22 đầu-cuối: LLM còn đề xuất Wikipedia + ga22.games ⇒ bị bỏ TRƯỚC khi mở; nhãn chỉ tính 2 trang thật.
+  const TRANG_GA = {
+    'https://en.wikipedia.org/wiki/GA22': 'GA22 là một khí cầu trinh sát',
+    'https://ga22.games/': 'GA22 cổng game',
+    'https://www.atlascopco.com/vi-vn/compressors/products/ga22': 'Atlas Copco GA22 máy nén khí trục vít ngâm dầu 22 kW',
+    'https://daily-khinen.example.vn/ga22': 'Máy nén khí trục vít Atlas Copco GA22 chính hãng',
+    'https://lich-su.example.org/ga22': 'GA22 was a non-rigid airship built in 1930',
+    'https://blog.example.net/ga22': 'GA22 was a non-rigid airship built in 1930, a blog copy',
+  };
+  const daMo = [];
+  const fetchGa = async (url) => { daMo.push(url); return TRANG_GA[url] != null ? { ok: true, status: 200, arrayBuffer: async () => Buffer.from(TRANG_GA[url]) } : { ok: false, status: 404, arrayBuffer: async () => Buffer.from('') }; };
+  const KHUNG_NEN = { machineFunction: 'máy nén khí trục vít', power: '22 kW', nguyenLyHoatDong: 'nén khí bằng cặp trục vít ngâm dầu', chucNangChinh: 'cấp khí nén công nghiệp' };
+  script = [{ chuong: '84', model: 'GA22', truong: KHUNG_NEN, nguon: [{ loai: 'phu', url: 'https://en.wikipedia.org/wiki/GA22', trich: 'GA22 là một khí cầu trinh sát' }, { loai: 'nsx', url: 'https://ga22.games/', trich: 'GA22 cổng game' }] }];
+  let rGa = await identify({ tenHang: 'Máy nén khí trục vít GA22', model: 'GA22' }, { fetchImpl: fetchGa, timWeb: async () => KQ_GA22 });
+  check('identify GA22 · Wikipedia và ga22.games không được tính, không bị mở, có báo nguonBiChan', !rGa.xacMinh.nguon.some((n) => /wikipedia|ga22\.games/.test(n.url)) && !daMo.some((u) => /wikipedia|ga22\.games/.test(u)) && rGa.nguonBiChan?.length === 2 && rGa.xacMinh.muc !== 'VERIFIED', JSON.stringify([rGa.xacMinh.muc, rGa.xacMinh.nguon.map((n) => n.url), rGa.nguonBiChan]));
+  check('identify GA22 · 2 trang thật (atlascopco + đại lý) có "GA22" + "máy nén" ⇒ CORROBORATED', rGa.xacMinh.muc === 'CORROBORATED' && rGa.xacMinh.mien.length === 2 && rGa.xacMinh.mien.includes('atlascopco.com'), JSON.stringify([rGa.xacMinh.muc, rGa.xacMinh.mien]));
+  // LLM tự đề xuất 2 nguồn KHÔNG nằm trong danh sách chặn, câu trích khớp thật, nhưng trang nói về thứ khác trùng mã ⇒ không còn CORROBORATED.
+  script = [{ chuong: '84', model: 'GA22', truong: KHUNG_NEN, nguon: [{ loai: 'phu', url: 'https://lich-su.example.org/ga22', trich: 'GA22 was a non-rigid airship' }, { loai: 'phu', url: 'https://blog.example.net/ga22', trich: 'GA22 was a non-rigid airship' }] }];
+  rGa = await identify({ tenHang: 'Máy nén khí trục vít GA22', model: 'GA22' }, { fetchImpl: fetchGa });
+  check('identify GA22 · 2 tên miền chỉ có câu trích về khí cầu (không qua luật khớp mới) ⇒ KHÔNG CORROBORATED', rGa.xacMinh.muc === 'HYPOTHESIS', rGa.xacMinh.muc);
+  // URL chứa model nhưng tiêu đề/đoạn trích không nhắc ⇒ không thành ứng viên.
+  script = [{ chuong: '84', model: 'FP6308U', truong: KHUNG_NEN, nguon: [] }];
+  const rUrl = await identify({ tenHang: 'Bơm dầu FP6308U', model: 'FP6308U' }, { fetchImpl: async () => ({ ok: true, status: 200, arrayBuffer: async () => Buffer.from('FP6308U') }), timWeb: async () => [{ tieuDe: 'Trang chủ cửa hàng', url: 'https://shop-a.example.com/p/fp6308u', doanTrich: 'Chào mừng quý khách đến với cửa hàng thiết bị thuỷ lực' }] });
+  check('model chỉ nằm trong URL (tiêu đề + đoạn trích không nhắc) ⇒ KHÔNG được tính', rUrl.xacMinh.muc === 'KHONG_NGUON' && rUrl.xacMinh.nguon.length === 0, JSON.stringify([rUrl.xacMinh.muc, rUrl.xacMinh.nguon]));
+
+  // 11f. Nhóm 8537 (PLC): trường bắt buộc theo NHÓM, không còn "Công suất" của bảng chương 85; câu hỏi mang căn cứ sổ tay.
+  check('khung nhóm 8537 · bắt buộc lấy từ danh mục theo nhóm, KHÔNG có power', frameForNhom('8537')?.truong.some((t) => t.key === 'currentRating' && t.batBuoc && t.goc === 'NHOM') && !frameForNhom('8537').truong.some((t) => t.key === 'power') && frameForNhom('0000') === null);
+  const PLC = { tenHang: 'Bộ lập trình PLC Siemens SIMATIC S7-1200 CPU 1214C', model: '6ES7214-1AG40-0XB0', thuongHieu: 'Siemens' };
+  const TRUONG_PLC = { machineFunction: 'bộ điều khiển lập trình (PLC) cho tự động hoá', modelNumber: '6ES7214-1AG40-0XB0', nguyenLyHoatDong: 'vi xử lý quét chu kỳ chương trình logic, đọc DI/AI và xuất DO', chucNangChinh: 'điều khiển tự động hoá dây chuyền' };
+  const LUOT1 = { chuong: '85', nhom4: '8537', model: '6ES7214-1AG40-0XB0', thuongHieu: 'Siemens', truong: TRUONG_PLC, nguon: [] };
+  let soLuot = calls.length;
+  script = [LUOT1, { nhom4: '8537', lyDo: 'bảng điều khiển có bộ xử lý lập trình', phanBiet: [{ i: 3, traLoi: 'khong', canCu: 'Bộ lập trình PLC' }, { i: 1, traLoi: 'chua_ro', canCu: '' }] }];
+  let rP = await identify(PLC, { fetchImpl: FETCH_MOCK_404 });
+  const pKiem = calls.at(-1);
+  check('8537 · có nhóm ⇒ 2 lượt LLM; lượt 2 nhận SỔ TAY nhóm (phạm vi + LOẠI TRỪ có nhóm đích) để tự kiểm ranh giới', calls.length - soLuot === 2 && pKiem.user.includes('SỔ TAY nhóm 8537') && pKiem.user.includes('LOẠI TRỪ') && pKiem.user.includes('CÂU HỎI PHÂN BIỆT'), pKiem.user.slice(0, 300));
+  check('8537 · KHÔNG sinh câu "Công suất", power không nằm trong thieuTruong', !rP.questions.some((q) => q.key === 'power' || /công suất/i.test(q.questionVi)) && !rP.thieuTruong.includes('power'), JSON.stringify([rP.thieuTruong, rP.questions.map((q) => q.key)]));
+  const qPb = rP.questions.filter((q) => q.key.startsWith('phanBiet_8537_'));
+  check('8537 · câu hỏi lấy từ phanBiet[].hoi của sổ tay, mỗi câu kèm căn cứ (canCu, nguon, trich, nhom)', qPb.length >= 3 && qPb.every((q) => q.canCu === 'so-tay' && q.nhom === '8537' && q.nguon && q.trich && q.questionVi.endsWith('?')) && rP.canCuCauHoi === 'so-tay', JSON.stringify(qPb.slice(0, 2)));
+  check('8537 · câu phân biệt mà hồ sơ đã trả lời "ở lại nhóm" (câu 3) KHÔNG hỏi lại; câu chua_ro vẫn hỏi', !qPb.some((q) => q.key === 'phanBiet_8537_3') && qPb.some((q) => q.key === 'phanBiet_8537_1'), JSON.stringify(qPb.map((q) => q.key)));
+  check('8537 · thiếu điện áp / dòng điện ⇒ hỏi theo danh mục trường của NHÓM (canCu truong-khai-nhom)', ['voltage', 'currentRating'].every((k) => rP.questions.find((q) => q.key === k)?.canCu === 'truong-khai-nhom' && rP.thieuTruong.includes(k)), JSON.stringify(rP.questions.filter((q) => q.canCu === 'truong-khai-nhom')));
+  check('8537 · mọi câu hỏi đều có canCu; không câu nào canCu bang-chuong', rP.questions.length > 0 && rP.questions.every((q) => q.canCu && q.canCu !== 'bang-chuong'), JSON.stringify(rP.questions.map((q) => q.canCu)));
+  check('8537 · tương thích ngược: frame.truong vẫn là đối tượng key→giá trị; frame.chuong 85; thêm frame.nhom + nhomUngVien', rP.frame.chuong === '85' && rP.frame.nhom === '8537' && !Array.isArray(rP.frame.truong) && rP.frame.truong.machineFunction === TRUONG_PLC.machineFunction && rP.nhomUngVien?.nhom === '8537' && rP.nhomUngVien.kiemRanhGioi?.ketQua === 'GIU' && Array.isArray(rP.thieuTruong) && Array.isArray(rP.questions), JSON.stringify([rP.frame.chuong, rP.frame.nhom, rP.nhomUngVien]));
+
+  // Lượt kiểm ranh giới được hỏi luôn trường khai của NHÓM còn trống: điền / "không áp dụng" ⇒ không đem ra hỏi khách.
+  check('8537 · lượt 2 thấy danh sách trường khai của nhóm còn trống (voltage, currentRating), không thấy power', pKiem.user.includes('TRƯỜNG KHAI CỦA NHÓM CÒN TRỐNG') && pKiem.user.includes('- voltage:') && pKiem.user.includes('- currentRating:') && !pKiem.user.includes('- power:'));
+  script = [LUOT1, { nhom4: '8537', phanBiet: [], truong: { voltage: '24 V DC', currentRating: 'không áp dụng', power: '12 W', keyLa: 'x' } }];
+  rP = await identify(PLC, { fetchImpl: FETCH_MOCK_404 });
+  check('8537 · lượt 2 điền trường của nhóm (kể cả "không áp dụng") ⇒ không hỏi nữa; key ngoài danh sách còn trống bị bỏ', rP.frame.truong.voltage === '24 V DC' && rP.frame.truong.currentRating === 'không áp dụng' && !('power' in rP.frame.truong) && !('keyLa' in rP.frame.truong) && !rP.questions.some((q) => q.key === 'voltage' || q.key === 'currentRating') && !rP.thieuTruong.includes('voltage'), JSON.stringify([rP.frame.truong, rP.thieuTruong]));
+
+  // Có phân nhóm 6 số và sổ ranh giới đã DUYET ⇒ thêm câu điều kiện dòng, căn cứ là dòng biểu của sổ ranh giới.
+  script = [{ ...LUOT1, pn6: '853710', truong: { ...TRUONG_PLC, voltage: '24 V DC', currentRating: '0,5 A' } }, { nhom4: '8537', phanBiet: [1, 2, 3, 4, 5].map((i) => ({ i, traLoi: 'khong', canCu: 'PLC' })) }];
+  rP = await identify(PLC, { fetchImpl: FETCH_MOCK_404 });
+  const qPn6 = rP.questions.filter((q) => q.canCu === 'ranh-gioi-pn6');
+  check('8537.10 · sổ ranh giới PN6 đã DUYET ⇒ câu điều kiện dòng kèm căn cứ (nguon tax./tieuDe. + trich), frame.pn6 có mặt', rP.frame.pn6 === '853710' && qPn6.length >= 1 && qPn6.every((q) => /^(tax|tieuDe)\./.test(q.nguon) && q.trich && q.pn6 === '853710' && q.questionVi), JSON.stringify(qPn6));
+  check('8537.10 · 5 câu phân biệt đều đã có dữ kiện ⇒ không hỏi câu phân biệt nào; điện áp/dòng đã có ⇒ không hỏi', !rP.questions.some((q) => q.key.startsWith('phanBiet_')) && !rP.questions.some((q) => q.key === 'voltage' || q.key === 'currentRating'), JSON.stringify(rP.questions.map((q) => q.key)));
+  // pn6 không thuộc nhóm / không có trong sổ tay ⇒ bỏ.
+  script = [{ ...LUOT1, pn6: '847130' }, { nhom4: '8537', phanBiet: [] }];
+  rP = await identify(PLC, { fetchImpl: FETCH_MOCK_404 });
+  check('pn6 không thuộc nhóm ứng viên ⇒ bị bỏ (không có frame.pn6, không câu ranh-gioi-pn6)', !('pn6' in rP.frame) && !rP.questions.some((q) => q.canCu === 'ranh-gioi-pn6'));
+
+  // Lượt kiểm ranh giới đổi nhóm: chỉ nhận nhóm mà sổ tay ghi là ĐÍCH.
+  script = [LUOT1, { nhom4: '9032', lyDo: 'thiết bị điều khiển tự động thuộc 90.32', phanBiet: [] }];
+  rP = await identify(PLC, { fetchImpl: FETCH_MOCK_404 });
+  check('kiểm ranh giới · đổi sang nhóm ĐÍCH của sổ tay (8537 → 9032) ⇒ nhận, chương theo nhóm mới, ghi kiemRanhGioi DOI', rP.frame.nhom === '9032' && rP.frame.chuong === '90' && rP.nhomUngVien.kiemRanhGioi.ketQua === 'DOI' && rP.nhomUngVien.kiemRanhGioi.tu === '8537' && rP.questions.some((q) => q.key.startsWith('phanBiet_9032_')), JSON.stringify([rP.frame.nhom, rP.nhomUngVien]));
+  script = [LUOT1, { nhom4: '8471', lyDo: 'tự nghĩ', phanBiet: [] }];
+  rP = await identify(PLC, { fetchImpl: FETCH_MOCK_404 });
+  check('kiểm ranh giới · đổi sang nhóm KHÔNG phải đích trong sổ tay (8471) ⇒ không nhận, giữ 8537', rP.frame.nhom === '8537' && rP.nhomUngVien.kiemRanhGioi.ketQua === 'GIU');
+  script = [LUOT1, Object.assign(new Error('hết lượt'), { code: 'LLM_FAILED' })];
+  rP = await identify(PLC, { fetchImpl: FETCH_MOCK_404 });
+  check('kiểm ranh giới · lượt 2 lỗi ⇒ KHÔNG degraded: giữ nhóm, hỏi đủ câu phân biệt, ghi LOI', !rP.degraded && rP.frame.nhom === '8537' && rP.nhomUngVien.kiemRanhGioi.ketQua === 'LOI' && rP.questions.filter((q) => q.key.startsWith('phanBiet_8537_')).length === 5, JSON.stringify(rP.nhomUngVien));
+  // Nhóm không có sổ tay ⇒ coi như không có nhóm (đường lùi bảng chương), 1 lượt LLM.
+  soLuot = calls.length;
+  script = [{ ...LUOT1, nhom4: '9999', truong: { ...TRUONG_PLC, voltage: '24 V DC' } }];
+  rP = await identify(PLC, { fetchImpl: FETCH_MOCK_404 });
+  check('nhóm không có sổ tay ⇒ đường lùi bảng chương: 1 lượt LLM, canCuCauHoi="bang-chuong", câu TT39 ghi canCu bang-chuong, không có frame.nhom', calls.length - soLuot === 1 && rP.canCuCauHoi === 'bang-chuong' && !('nhom' in rP.frame) && !('nhomUngVien' in rP) && rP.questions.find((q) => q.key === 'power')?.canCu === 'bang-chuong', JSON.stringify([rP.canCuCauHoi, rP.questions]));
+  // Công tắc tắt.
+  process.env.HS_DINH_DANH_SO_TAY = '0';
+  soLuot = calls.length;
+  script = [LUOT1];
+  rP = await identify(PLC, { fetchImpl: FETCH_MOCK_404 });
+  check('công tắc HS_DINH_DANH_SO_TAY=0 ⇒ bỏ nhánh sổ tay: 1 lượt LLM, hỏi theo bảng chương (có ghi canCu)', calls.length - soLuot === 1 && rP.canCuCauHoi === 'bang-chuong' && !('nhom' in rP.frame) && rP.questions.every((q) => q.canCu));
+  delete process.env.HS_DINH_DANH_SO_TAY;
+  // Đường lùi: trường bắt buộc không áp dụng mà LLM ghi "không áp dụng" ⇒ không hỏi.
+  script = [{ chuong: '85', truong: { power: 'không áp dụng', voltage: '24 V DC', nguyenLyHoatDong: 'tiếp điểm cơ khí', chucNangChinh: 'đấu nối dây' }, nguon: [] }];
+  rP = await identify({ tenHang: 'Cầu đấu dây điện 12 cực' }, { fetchImpl: FETCH_MOCK_404 });
+  check('đường lùi bảng chương · "Công suất" ghi "không áp dụng" ⇒ không hỏi công suất', rP.canCuCauHoi === 'bang-chuong' && !rP.questions.some((q) => q.key === 'power') && calls.at(-1).system.includes('không áp dụng'), JSON.stringify(rP.questions));
+
+  // Key bước 12 riêng của chương (doChinhXac của 90, chatLieuCuThe của 39) vẫn hợp lệ sau khi nới bộ lọc key.
+  script = [{ chuong: '90', truong: { measurementType: 'khối lượng', principle: 'bù lực điện từ', nguyenLyHoatDong: 'cảm biến bù lực điện từ', chucNangChinh: 'cân phân tích', doChinhXac: '0,1 mg' }, nguon: [] }];
+  rP = await identify({ tenHang: 'Cân phân tích điện tử Quintix224-1S' }, { fetchImpl: FETCH_MOCK_404 });
+  check('bộ lọc key · doChinhXac (chương 90) được giữ, không bị hỏi lại', rP.frame.chuong === '90' && rP.frame.truong.doChinhXac === '0,1 mg' && !rP.thieuTruong.includes('doChinhXac'), JSON.stringify([rP.frame.truong, rP.thieuTruong]));
+  script = [{ chuong: '39', truong: { polymerType: 'PP', form: 'vỏ', chatLieuCuThe: 'PP nguyên sinh' }, nguon: [] }];
+  rP = await identify({ tenHang: 'vỏ bình nhựa' }, { fetchImpl: FETCH_MOCK_404 });
+  check('bộ lọc key · chatLieuCuThe (chương 39) được giữ', rP.frame.truong.chatLieuCuThe === 'PP nguyên sinh' && !rP.thieuTruong.includes('chatLieuCuThe'), JSON.stringify(rP.thieuTruong));
+
+  // 11g. 84/85: không còn mặc định chương 84.
+  script = [{ chuong: '', truong: {}, nguon: [] }];
+  let r84 = await identify({ tenHang: '6ES7214-1AG40-0XB0' }, { fetchImpl: FETCH_MOCK_404 });
+  check('tên hàng chỉ là mã "6ES7214-1AG40-0XB0", LLM không chọn chương ⇒ KHÔNG điền 84: frame.chuong=null + chuaXacDinh', r84.frame.chuong === null && r84.chuaXacDinh === true && r84.canCuCauHoi === 'chua-xac-dinh' && r84.questions.length === 1 && r84.questions[0].canCu === 'chua-xac-dinh' && r84.goiYChuong.length === 0 && !JSON.stringify(r84.frame).includes('84'), JSON.stringify([r84.frame, r84.questions]));
+  check('không có tín hiệu chương ⇒ prompt nói rõ hai khung chỉ để tham khảo key, không phải ưu tiên', calls.at(-1).user.includes('CHƯA CÓ TÍN HIỆU CHƯƠNG') && calls.at(-1).user.includes('CHƯƠNG 84') && calls.at(-1).user.includes('CHƯƠNG 85'));
+  script = [{ truong: {}, nguon: [] }];
+  r84 = await identify({ tenHang: '6ES7214-1AG40-0XB0' }, { fetchImpl: FETCH_MOCK_404 });
+  check('LLM bỏ hẳn trường chuong ⇒ vẫn chưa xác định, không rơi về 84', r84.frame.chuong === null && r84.chuaXacDinh === true);
+  script = [{ chuong: '85', nhom4: '8537', truong: TRUONG_PLC, nguon: [] }, { nhom4: '8537', phanBiet: [] }];
+  r84 = await identify({ tenHang: '6ES7214-1AG40-0XB0' }, { fetchImpl: FETCH_MOCK_404 });
+  check('cùng mã đó, LLM nhận ra là PLC ⇒ chương 85 / nhóm 8537 (không bị ép về 84)', r84.frame.chuong === '85' && r84.frame.nhom === '8537' && !r84.chuaXacDinh);
+  const dcBt = doanChuong('máy biến tần FR-D720-0.75K');
+  check('doanChuong "máy biến tần FR-D720-0.75K" ⇒ chỉ ra chương 85 (chữ "máy"/"thiết bị" không còn kéo về 84)', dcBt[0]?.chuong === '85' && !dcBt.some((x) => x.chuong === '84') && doanChuong('thiết bị điện tử').every((x) => x.chuong !== '84') && doanChuong('máy nén khí')[0]?.chuong === '84', JSON.stringify(dcBt));
+  script = [{ truong: { power: '0,75 kW', voltage: '3 pha 200–240 V', nguyenLyHoatDong: 'chỉnh lưu AC-DC + nghịch lưu IGBT PWM', chucNangChinh: 'điều khiển tốc độ động cơ' }, nguon: [] }];
+  r84 = await identify({ tenHang: 'máy biến tần FR-D720-0.75K' }, { fetchImpl: FETCH_MOCK_404 });
+  check('identify "máy biến tần FR-D720-0.75K", LLM không nêu chương ⇒ chương 85 (theo từ khoá đặc thù), không phải 84', r84.frame.chuong === '85' && r84.goiYChuong[0] === '85', JSON.stringify([r84.frame.chuong, r84.goiYChuong]));
+  script = [{ chuong: '85', nhom4: '8504', truong: { power: '0,75 kW', voltagePrimary: '200–240 V', voltageSecondary: '0–240 V', frequency: '0,2–400 Hz', nguyenLyHoatDong: 'chỉnh lưu + nghịch lưu IGBT', chucNangChinh: 'điều khiển tốc độ động cơ' }, nguon: [] }, { nhom4: '8504', phanBiet: [] }];
+  r84 = await identify({ tenHang: 'máy biến tần FR-D720-0.75K', model: 'FR-D720-0.75K' }, { fetchImpl: FETCH_MOCK_404 });
+  check('biến tần · nhóm 8504 ⇒ lượt kiểm ranh giới nhận sổ tay 8504, câu hỏi theo sổ tay', r84.frame.chuong === '85' && r84.frame.nhom === '8504' && calls.at(-1).user.includes('SỔ TAY nhóm 8504') && r84.canCuCauHoi === 'so-tay' && r84.questions.every((q) => q.canCu), JSON.stringify(r84.questions.map((q) => [q.key, q.canCu])));
+
+  // ── 12. Soát độc lập PR #1517 ──
+  // 12.1 HẠN TỔNG: mọi lượt LLM nhận hanChotMs tuyệt đối; lượt 2 tối đa 15 giây và chỉ dùng phần còn lại; hết hạn ⇒ bỏ lượt 2, rơi êm.
+  let tBd = Date.now();
+  script = [LUOT1, { nhom4: '8537', phanBiet: [] }];
+  rP = await identify(PLC, { fetchImpl: FETCH_MOCK_404 });
+  const [o1, o2] = [calls.at(-2).opts, calls.at(-1).opts];
+  check('hạn tổng · lượt 1 có hanChotMs ≈ bắt đầu + 70 giây (80 − 10 dành cho xác minh), timeoutMs ≤ 45 giây', o1.hanChotMs >= tBd + 69000 && o1.hanChotMs <= Date.now() + 70000 && o1.timeoutMs <= 45000, JSON.stringify([o1.hanChotMs - tBd, o1.timeoutMs]));
+  check('hạn tổng · lượt 2 timeoutMs ≤ 15 giây và hanChotMs của riêng nó ≤ hạn lượt 1', o2.timeoutMs <= 15000 && o2.timeoutMs >= 3000 && o2.hanChotMs <= o1.hanChotMs && o2.hanChotMs <= Date.now() + 15000, JSON.stringify([o2.timeoutMs, o2.hanChotMs - tBd]));
+  soLuot = calls.length;
+  script = [LUOT1, { nhom4: '9032', phanBiet: [] }];
+  rP = await identify(PLC, { fetchImpl: FETCH_MOCK_404, hanTongMs: 10500 }); // còn 0,5 giây cho LLM sau khi trừ phần xác minh
+  check('hạn tổng · không còn đủ thời gian ⇒ KHÔNG gọi lượt 2, giữ nhóm, ghi BO_QUA, vẫn hỏi đủ câu phân biệt', calls.length - soLuot === 1 && rP.frame.nhom === '8537' && rP.nhomUngVien.kiemRanhGioi.ketQua === 'BO_QUA' && !rP.degraded && rP.questions.filter((q) => q.key.startsWith('phanBiet_8537_')).length === 5, JSON.stringify([calls.length - soLuot, rP.nhomUngVien]));
+  script = [];
+
+  // 12.2 TẦNG HỒ SƠ: opts.boSoTay ⇒ bỏ lượt LLM thứ hai + nhánh sổ tay; lib/ho-so/nghien-cuu.js truyền cờ này.
+  soLuot = calls.length;
+  script = [LUOT1];
+  rP = await identify(PLC, { fetchImpl: FETCH_MOCK_404, boSoTay: true });
+  check('boSoTay · 1 lượt LLM, không frame.nhom, không nhomUngVien, câu hỏi theo bảng chương', calls.length - soLuot === 1 && !('nhom' in rP.frame) && !('nhomUngVien' in rP) && rP.canCuCauHoi === 'bang-chuong');
+  {
+    const fs = require('fs');
+    const { nghienCuu } = require('../lib/ho-so/nghien-cuu.js');
+    const nguonTep = fs.readFileSync(new URL('../lib/ho-so/nghien-cuu.js', import.meta.url), 'utf8');
+    check('boSoTay · lib/ho-so/nghien-cuu.js gọi identify với boSoTay: true', typeof nghienCuu === 'function' && /identify\(\{[^\n]*\}, \{ boSoTay: true,/.test(nguonTep));
+  }
+
+  // 12.3 MODEL NGẮN: ngữ cảnh khớp theo TỪNG từ Latin (không cần liền nhau); cụm tiếng Việt có dấu vẫn phải đủ cụm.
+  check('model ngắn · khopModel("1214C", "Siemens SIMATIC S7-1200 CPU 1214C DC/DC/DC", ["plc cpu"]) = true', khopModel('1214C', 'Siemens SIMATIC S7-1200 CPU 1214C DC/DC/DC', ['plc cpu']) === true);
+  const NC_PLC = tuNguCanh({ tenHang: 'Bộ lập trình PLC Siemens SIMATIC S7-1200 CPU 1214C', model: '1214C', thuongHieu: 'Siemens', tenKhac: ['programmable logic controller'] });
+  check('model ngắn · ngữ cảnh gồm hãng + từ khoá Latin của tên hàng + tên tiếng Anh lượt 1 (plc, cpu, simatic, controller)', ['siemens', 'plc', 'cpu', 'simatic', 'controller'].every((w) => NC_PLC.includes(w)) && !NC_PLC.includes('1214c'), JSON.stringify(NC_PLC));
+  check('model ngắn · trang tiếng Anh chỉ có tên dòng sản phẩm vẫn khớp; trang không có từ ngữ cảnh nào thì không', khopModel('1214C', 'SIMATIC S7-1200, 1214C compact unit', NC_PLC) === true && khopModel('1214C', 'Part number 1214C in stock, ships today', NC_PLC) === false);
+  check('model ngắn · một âm tiết Việt rời ("khí" trong "khí cầu") KHÔNG đủ làm ngữ cảnh; từ rỗng tiếng Anh ("the", "for") không tính', khopModel('GA22', ['GA22 là một khí cầu trinh sát'], tuNguCanh({ tenHang: 'Máy nén khí trục vít GA22', model: 'GA22' })) === false && khopModel('GA22', ['the GA22 for sale'], ['the for']) === false);
+  const trangKhongNc = await xacMinh({ url: 'https://tro-choi.example.org/ga22', trich: 'không có câu này' }, 'GA22', async () => ({ ok: true, status: 200, arrayBuffer: async () => Buffer.from('ga22 game bài') }));
+  check('model ngắn · bên gọi KHÔNG truyền nguCanh (tầng hồ sơ) ⇒ đúng luật CŨ: chứa chuỗi là tính', trangKhongNc.modelCoMat === true && trangKhongNc.modelChuanCoMat === true && trangRac.modelCoMat === false, JSON.stringify([trangKhongNc.modelCoMat, trangKhongNc.modelChuanCoMat]));
+
+  // 12.4 CHƯƠNG KHÔNG CÓ KHUNG: giữ chương LLM chọn (01–97), khung rỗng, không hỏi câu "chưa xác định".
+  script = [{ chuong: '87', truong: { modelNumber: 'X1' }, nguon: [] }];
+  rP = await identify({ tenHang: 'Xe nâng tay 2,5 tấn X1' }, { fetchImpl: FETCH_MOCK_404 });
+  const { frameFor: ff } = require('../lib/attribute-frames.js');
+  check('chương không có khung (87) · giữ frame.chuong="87", không chuaXacDinh, không câu hỏi gây hiểu nhầm', ff('87') === null ? (rP.frame.chuong === '87' && !rP.chuaXacDinh && rP.questions.length === 0 && rP.thieuTruong.length === 0 && rP.canCuCauHoi === 'khong-co-khung' && rP.frame.truong.modelNumber === 'X1') : rP.frame.chuong === '87', JSON.stringify([ff('87') === null, rP.frame, rP.questions, rP.canCuCauHoi]));
+  script = [{ chuong: '99', truong: {}, nguon: [] }];
+  rP = await identify({ tenHang: 'ABC-123456-XYZ' }, { fetchImpl: FETCH_MOCK_404 });
+  check('chương ngoài 01–97 (99) ⇒ vẫn là chưa xác định', rP.frame.chuong === null && rP.chuaXacDinh === true);
+
+  // 12.6 + 12.7: sổ tay hỏng ⇒ frame không còn nhóm; câu PN6 chỉ khi còn ≥2 dòng khả dĩ; câu askStaff không phải câu hỏi khách.
+  {
+    const G = require('../lib/so-tay-gates.js');
+    const goc = { cauHoiSoTay: G.cauHoiSoTay, dongConKhaDi: G.dongConKhaDi };
+    const LUOT_PN6 = { ...LUOT1, pn6: '853710' };
+    const kd = G.dongConKhaDi('853710', '');
+    check('dongConKhaDi(853710) · chưa có dữ kiện ⇒ ≥2 dòng khả dĩ và có fact còn mở', kd.khaDi.length >= 2 && kd.factConMo.size >= 1 && kd.khaDi.every((h) => /^853710\d\d$/.test(h)), JSON.stringify([kd.khaDi.length, [...kd.factConMo]]));
+    script = [LUOT_PN6, { nhom4: '8537', phanBiet: [] }];
+    rP = await identify(PLC, { fetchImpl: FETCH_MOCK_404 });
+    const nPn6 = rP.questions.filter((q) => q.canCu === 'ranh-gioi-pn6');
+    check('câu PN6 · tối đa 2 câu, fact nào cũng còn mở trên một dòng khả dĩ', nPn6.length >= 1 && nPn6.length <= 2 && nPn6.every((q) => kd.factConMo.has(q.key)), JSON.stringify(nPn6.map((q) => q.key)));
+    G.dongConKhaDi = () => ({ khaDi: ['85371019'], factConMo: new Set(['chiHoacChuYeu', 'dongDien']) });
+    script = [LUOT_PN6, { nhom4: '8537', phanBiet: [] }];
+    rP = await identify(PLC, { fetchImpl: FETCH_MOCK_404 });
+    check('câu PN6 · chỉ còn 1 dòng khả dĩ ⇒ KHÔNG hỏi câu điều kiện dòng nào', !rP.questions.some((q) => q.canCu === 'ranh-gioi-pn6') && rP.frame.pn6 === '853710', JSON.stringify(rP.questions.map((q) => q.key)));
+    G.dongConKhaDi = goc.dongConKhaDi;
+    G.cauHoiSoTay = (a) => { const k = goc.cauHoiSoTay(a); return { ...k, questions: [...k.questions, { key: 'gate_loaiTru_9032', questionVi: 'Hàng có thuộc loại trừ sang 90.32 không?', type: 'choice', options: ['Có', 'Không', 'Chưa rõ'], required: false, askStaff: true, loai: 'CONG', nguon: 'nhom8537.nhom', trich: 'x' }] }; };
+    script = [LUOT_PN6, { nhom4: '8537', phanBiet: [] }];
+    rP = await identify(PLC, { fetchImpl: FETCH_MOCK_404 });
+    check('câu cổng sổ tay (askStaff) · KHÔNG nằm trong questions của khách, trả riêng ở cauHoiChuyenVien', !rP.questions.some((q) => q.askStaff || q.key.startsWith('gate_')) && rP.cauHoiChuyenVien?.length === 1 && rP.cauHoiChuyenVien[0].key === 'gate_loaiTru_9032', JSON.stringify([rP.questions.map((q) => q.key), rP.cauHoiChuyenVien]));
+    G.cauHoiSoTay = () => { throw new Error('sổ tay hỏng'); };
+    script = [LUOT_PN6, { nhom4: '8537', phanBiet: [] }];
+    rP = await identify(PLC, { fetchImpl: FETCH_MOCK_404 });
+    check('sổ tay hỏng lúc sinh câu hỏi ⇒ rơi về bảng chương VÀ frame không còn nhom/pn6, không nhomUngVien', !rP.degraded && rP.canCuCauHoi === 'bang-chuong' && !('nhom' in rP.frame) && !('pn6' in rP.frame) && !('nhomUngVien' in rP) && rP.frame.chuong === '85', JSON.stringify([rP.canCuCauHoi, rP.frame]));
+    G.cauHoiSoTay = goc.cauHoiSoTay;
+  }
+  // 12.7b frame.truong đã trả lời (điện áp) ⇒ không hỏi câu điều kiện dòng trùng ý.
+  script = [{ ...LUOT1, pn6: '853710', truong: { ...TRUONG_PLC, voltage: '24 V DC', currentRating: '0,5 A' } }, { nhom4: '8537', phanBiet: [] }];
+  rP = await identify(PLC, { fetchImpl: FETCH_MOCK_404 });
+  check('frame.truong đã có điện áp / dòng định mức ⇒ không hỏi dienAp / dongDien của PN6', !rP.questions.some((q) => ['dienAp', 'dongDien', 'voltage', 'currentRating'].includes(q.key)), JSON.stringify(rP.questions.map((q) => q.key)));
+
+  // 11h. ReDoS (CLAUDE.md quy tắc 6b): biểu thức khớp model ngắn + ngữ cảnh trên ~40.000 từ lặp < 2 giây, hai chiều.
+  const tRe = Date.now();
+  const lapTrung = khopModel('GA22', ['máy nén GA22 '.repeat(40000)], NC);
+  const lapTruot = khopModel('GA22', ['XGA22FF may-nen '.repeat(40000)], NC);
+  const ncDai = tuNguCanh({ tenHang: 'máy nén khí '.repeat(40000), model: 'GA22', thuongHieu: 'Atlas Copco' });
+  check('ReDoS · khopModel/tuNguCanh trên 40.000 từ lặp < 2 giây; bắt đúng và không bắt nhầm', Date.now() - tRe < 2000 && lapTrung === true && lapTruot === false && ncDai.includes('máy nén'), `ms=${Date.now() - tRe}`);
+
+  if (envCu.web === undefined) delete process.env.HS_DINH_DANH_TIM_WEB; else process.env.HS_DINH_DANH_TIM_WEB = envCu.web;
+  if (envCu.st === undefined) delete process.env.HS_DINH_DANH_SO_TAY; else process.env.HS_DINH_DANH_SO_TAY = envCu.st;
 }
 
 log(`${pass} passed, ${fail} failed`);
