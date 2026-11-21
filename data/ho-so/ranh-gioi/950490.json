@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:tho-hs-01#soat-lo-6a",
+    "phien": "claude-agent:tho-hs-01#soat-lo-5f",
     "ngay": "2026-11-21",
-    "ghiChu": "Chuẩn hoá dieuKienSo khép SẠCH V1 lô 6a",
-    "bam": "03b1395ba19de8a123c3cbeab9dcc1f16a340a14935ddd135cbddc2296ced158"
+    "ghiChu": "Chuẩn hoá dieuKienSo với khoá laThietBiChoiBacHoacMatChuoc",
+    "bam": "c3afb480ddd5505360041a86817434a8a3e44b12f797a23ff3610c221fd944b4"
   },
   "dieuKienNut": [
     {
@@ -88,12 +88,8 @@
             ],
             [
               {
-                "fact": "tenLoai",
-                "op": "TEN_LOAI",
-                "value": [
-                  "Thiết bị chơi bạc",
-                  "đồ phụ trợ đi kèm"
-                ]
+                "fact": "laThietBiChoiBacHoacMatChuoc",
+                "op": "CO"
               }
             ]
           ]
@@ -353,7 +349,7 @@
     {
       "ma": "9504903",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.9504903 \"Thiết bị chơi bạc và đồ phụ trợ đi kèm\" ⇒ HOAC [[congDung \"chơi bạc\"],[tenLoai [\"Thiết bị chơi bạc\",\"đồ phụ trợ đi kèm\"]]] để phủ các dòng con và không chặn tất định lên nhánh 9504909 (.92/.95); khai chongLanTruc với 95049010 và 9504902 theo Q1 (khongCoHangThat)."
+      "ghiChu": "tieuDe.9504903 \"Thiết bị chơi bạc và đồ phụ trợ đi kèm\" ⇒ HOAC [[congDung \"chơi bạc\"],[laThietBiChoiBacHoacMatChuoc CO]] để phủ cả bàn chơi bạc (.32/.33), quân bài mạt chược (.34/.35) và thiết bị chơi bạc/đồ phụ trợ đi kèm (.36/.39) mà không trùng với đồ phụ trợ chơi bowling (95049010); khai chongLanTruc với 95049010 và 9504902 theo Q1 (khongCoHangThat)."
     },
     {
       "ma": "95049033",

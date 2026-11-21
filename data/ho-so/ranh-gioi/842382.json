@@ -4,13 +4,19 @@
   "nhom": "8423",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-842382",
     "ngay": "2026-11-02"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1751#soat-842382",
+    "ngay": "2026-11-21",
+    "ghiChu": "Chuẩn hoá theo traVe (OZV-1751)",
+    "bam": "734f010b302fae6a22cc14b79c258b852fa9264af28b43219bfba465c0601a51"
+  },
   "dieuKienNut": [
     {
       "id": "8423823",
@@ -18,13 +24,13 @@
       "trich": "8423823 Có khả năng cân tối đa không quá 1.000 kg",
       "dieuKienSo": [
         {
-          "fact": "khoiLuong",
+          "fact": "mucCanToiDa",
           "op": "<=",
           "value": 1000,
           "donVi": "kg"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "8423824",
@@ -32,13 +38,13 @@
       "trich": "8423824 Có khả năng cân tối đa trên 1.000 kg",
       "dieuKienSo": [
         {
-          "fact": "khoiLuong",
+          "fact": "mucCanToiDa",
           "op": ">",
           "value": 1000,
           "donVi": "kg"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -58,7 +64,7 @@
           "value": "xe có động cơ"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84238232",
@@ -71,7 +77,7 @@
           "value": "Cân điện tử"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": true
     },
     {
@@ -79,7 +85,7 @@
       "nguon": "tax.84238239",
       "trich": "84238239 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84238241",
@@ -97,7 +103,7 @@
           "value": "xe có động cơ"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84238242",
@@ -110,7 +116,7 @@
           "value": "Cân điện tử"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": true
     },
     {
@@ -118,14 +124,14 @@
       "nguon": "tax.84238249",
       "trich": "84238249 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "8423823",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.8423823: \"không quá 1.000 kg\" ⇒ khoiLuong <= 1000 kg"
+      "ghiChu": "tieuDe.8423823: \"Có khả năng cân tối đa không quá 1.000 kg\" ⇒ mucCanToiDa <= 1000 kg"
     },
     {
       "ma": "84238231",
@@ -140,7 +146,7 @@
     {
       "ma": "8423824",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.8423824: \"trên 1.000 kg\" ⇒ khoiLuong > 1000 kg"
+      "ghiChu": "tieuDe.8423824: \"Có khả năng cân tối đa trên 1.000 kg\" ⇒ mucCanToiDa > 1000 kg"
     },
     {
       "ma": "84238241",
@@ -151,13 +157,6 @@
       "ma": "84238242",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.84238242: \"Cân điện tử khác\" ⇒ tenLoai \"Cân điện tử\", phanConLai true"
-    }
-  ],
-  "traVe": [
-    {
-      "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx-soat3#soat-842382",
-      "ngay": "2026-11-02",
-      "lyDo": "(A) 8423823/8423824 SAI TRỤC: \"Có khả năng cân tối đa không quá/trên 1.000 kg\" (EN \"Having a maximum weighing capacity …\") ⇒ khoiLuong <=/> 1000 kg — khoá khoiLuong (tu-vung@2) là KHỐI LƯỢNG TỊNH của chính hàng (\"Khối lượng tịnh của một chiếc là bao nhiêu kg?\"), không phải mức cân tối đa; cân sàn nặng 60 kg mức cân 2.000 kg bị xếp 8423823x thay vì 8423824x. Cảnh báo cong3-bien-khong-doc-duoc ×2 chính là dấu hiệu khoá không có cách đọc \"khả năng cân tối đa\", người soạn cũng không ghi QUYET_DINH đối chiếu tay. Thiếu khoá ⇒ THIEU_KHOA_TU_VUNG (khoaDeXuat mucCanToiDa)/DỪNG. Các dòng .31/.32/.41/.42 (tenLoai + dungCho, phanConLai) đạt."
     }
   ]
 }

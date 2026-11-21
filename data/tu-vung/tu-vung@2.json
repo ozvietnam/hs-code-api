@@ -344,7 +344,8 @@
    "coLoa",
    "lenMenTuNuocEpRauQua",
    "laThietBiChoiBacHoacMatChuoc",
-   "ducLienKhongNoi"
+   "ducLienKhongNoi",
+   "mucCanToiDa"
   ],
   "tuVung1": {
    "trangThai": "DA_CHAM",
@@ -5543,8 +5544,7 @@
      "nhanZh": "化学纤维（合成或再生）",
      "cachDoc": {
       "vi": [
-       "(?:sợi|xơ|vật\\s+liệu\\s+dệt)\\s+nhân\\s+tạo",
-       "(?:Gen\\s+và\\s+quần\\s+gen|Áo\\s+nịt\\s+toàn\\s+thân(?:\\s*\\(corselette\\))?)\\s*:\\s*Từ\\s+các\\s+vật\\s+liệu\\s+dệt\\s+khác"
+       "(?:sợi|xơ|vật\\s+liệu\\s+dệt)\\s+nhân\\s+tạo"
       ],
       "en": [
        "man-made\\s+(?:fib(?:re|er)s?|filaments?|textile\\s+materials?)"
@@ -7369,7 +7369,8 @@
    "nhanZh": "油脂精炼程度",
    "giaTriHopLe": [
     "DANG_THO",
-    "DA_TINH_CHE"
+    "DA_TINH_CHE",
+    "RBD_NBD"
    ],
    "moTaGiaTri": {
     "DANG_THO": {
@@ -7400,35 +7401,51 @@
      "cachViet": "dạng thô hoặc chưa tinh chế"
     },
     "DA_TINH_CHE": {
-     "nhanVi": "đã tinh chế / RBD",
-     "nhanEn": "refined / RBD (refined, bleached and deodorised)",
-     "nhanZh": "精炼/RBD（经精炼、脱色和脱臭）",
+     "nhanVi": "đã tinh chế (trừ dạng thô)",
+     "nhanEn": "refined (other than crude)",
+     "nhanZh": "精炼（非初榨）",
      "cachDoc": {
       "vi": [
-       "đã\\s+tinh\\s+chế",
+       "đã\\s+tinh\\s+chế(?!,\\s*tẩy\\s+và\\s+khử\\s+mùi)",
        "dầu\\s+tinh\\s+chế",
-       "tinh\\s+chế,\\s*tẩy\\s+và\\s+khử\\s+mùi",
-       "\\brbd\\b",
-       "trung\\s+hòa\\s+hóa,\\s*tẩy\\s+và\\s+khử\\s+mùi",
-       "\\bnbd\\b",
        "trừ\\s+dạng\\s+thô"
       ],
       "en": [
-       "refined(?:\\s+oil)?",
-       "rbd",
-       "refined,\\s*bleached\\s+and\\s+deodori[sz]ed",
-       "neutrali[sz]ed,\\s*bleached\\s+and\\s+deodori[sz]ed",
+       "refined(?!,\\s*bleached\\s+and\\s+deodori[sz]ed)(?:\\s+oil)?",
        "other\\s+than\\s+crude"
       ],
       "zh": [
-       "精炼",
+       "精炼(?!.*脱色)",
        "精制",
-       "rbd",
-       "脱色及脱臭",
        "非初榨"
       ]
      },
      "cachViet": "đã tinh chế"
+    },
+    "RBD_NBD": {
+     "nhanVi": "đã tinh chế, tẩy và khử mùi (RBD) hoặc đã trung hòa hóa, tẩy và khử mùi (NBD)",
+     "nhanEn": "refined, bleached and deodorised (RBD) or neutralised, bleached and deodorised (NBD)",
+     "nhanZh": "经精炼、脱色和脱臭（RBD）或经中和、脱色和脱臭（NBD）",
+     "cachDoc": {
+      "vi": [
+       "tinh\\s+chế,\\s*tẩy\\s+và\\s+khử\\s+mùi",
+       "\\brbd\\b",
+       "trung\\s+hòa\\s+hóa,\\s*tẩy\\s+và\\s+khử\\s+mùi",
+       "\\bnbd\\b"
+      ],
+      "en": [
+       "refined,\\s*bleached\\s+and\\s+deodori[sz]ed",
+       "neutrali[sz]ed,\\s*bleached\\s+and\\s+deodori[sz]ed",
+       "\\brbd\\b",
+       "\\bnbd\\b"
+      ],
+      "zh": [
+       "\\brbd\\b",
+       "\\bnbd\\b",
+       "脱色(?:及|和)脱臭"
+      ]
+     },
+     "cachViet": "đã tinh chế, tẩy và khử mùi"
     }
    },
    "cachDoc": {
@@ -7443,8 +7460,13 @@
     "vi": "Dầu hoặc chất béo ở dạng thô/chưa tinh chế, đã tinh chế (RBD) hay phần phân đoạn?",
     "zh": "该油脂属于初榨/原油、经精炼（RBD）还是分馏馏分？"
    },
-   "ghiChu": "Chữ biểu 1510.90.10 \"Dầu thô\", 1512.19.20 \"Đã tinh chế\", 1507.90.10 \"Các phần phân đoạn của dầu đậu tương chưa tinh chế\", 1513.29.94 \"đã tinh chế, tẩy và khử mùi (RBD)\". Giá trị PHAN_DOAN tách thành khoá laPhanDoan (03/11): \"Các phần phân đoạn … chưa tinh chế\" vừa là phân đoạn vừa là thô — hai trục.",
-   "nguonLoai": "AI_DA_KIEM"
+   "ghiChu": "Chữ biểu 1510.90.10 \"Dầu thô\", 1512.19.20 \"Đã tinh chế\", 1507.90.10 \"Các phần phân đoạn của dầu đậu tương chưa tinh chế\", 1513.29.94 \"đã tinh chế, tẩy và khử mùi (RBD)\". Giá trị PHAN_DOAN tách thành khoá laPhanDoan (03/11): \"Các phần phân đoạn … chưa tinh chế\" vừa là phân đoạn vừa là thô — hai trục. + RBD_NBD (21/11, OZV-1751): tách riêng giá trị RBD/NBD (1516.20.24/26/62/96, 1518.00.32) và khai giaTriCha DA_TINH_CHE ⊃ RBD_NBD để dòng RBD không nhận dầu chỉ mới tinh chế, trong khi dòng «Đã tinh chế / trừ dạng thô» vẫn nhận cả RBD.",
+   "nguonLoai": "AI_DA_KIEM",
+   "giaTriCha": {
+    "DA_TINH_CHE": [
+     "RBD_NBD"
+    ]
+   }
   },
   {
    "khoa": "chiSoIot",
@@ -23432,6 +23454,43 @@
     "zh": "该容器/气瓶是否为无缝（非焊接）钢制？"
    },
    "ghiChu": "Tiêu đề trung gian 7311.00.2 «Dạng hình trụ bằng thép đúc liền» / EN «Seamless steel cylinders» (CÓ). Bình hàn thân (có mối hàn, welded) đọc ra KHÔNG để rẽ sang 7311.00.9x. Không dùng «không nối» trần để tránh khớp «tai nghe có hoặc không nối với một bộ micro» (9834.35.00). OZV-1751.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "khoa": "mucCanToiDa",
+   "kieu": "SO",
+   "nhanVi": "khả năng cân tối đa (mức cân tối đa)",
+   "nhanEn": "maximum weighing capacity",
+   "nhanZh": "最大称量（最大称重能力）",
+   "heDonVi": "khoiLuong",
+   "donViChuan": "kg",
+   "canNguCanh": true,
+   "docMoRong": true,
+   "cachDoc": {
+    "vi": [
+     "khả\\s+năng\\s+cân\\s+tối\\s+đa",
+     "mức\\s+cân\\s+tối\\s+đa",
+     "tải\\s+trọng\\s+cân\\s+tối\\s+đa"
+    ],
+    "en": [
+     "maximum\\s+weighing\\s+capacity",
+     "max(?:\\.|imum)?\\s+weighing\\s+capacity",
+     "weighing\\s+capacity"
+    ],
+    "zh": [
+     "最大称量",
+     "最大称重(?:能力|量)?",
+     "称量上限"
+    ]
+   },
+   "cachViet": {
+    "vi": "khả năng cân tối đa {giaTri}"
+   },
+   "cauHoi": {
+    "vi": "Khả năng cân tối đa (mức cân tối đa) của cân là bao nhiêu kg?",
+    "zh": "该衡器的最大称量（最大称重能力）是多少千克（kg）？"
+   },
+   "ghiChu": "Tiêu đề trung gian 8423.82.3 «Có khả năng cân tối đa không quá 1.000 kg» và 8423.82.4 «Có khả năng cân tối đa trên 1.000 kg» (EN «Having a maximum weighing capacity not exceeding / exceeding 1,000 kg»). Khác khoiLuong (@1, khối lượng tịnh của chính chiếc cân). OZV-1751.",
    "nguonLoai": "AI_DA_KIEM"
   }
  ],

@@ -4,19 +4,30 @@
   "nhom": "4823",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-482390",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1751#soat-482390",
+    "ngay": "2026-11-21",
+    "ghiChu": "Chuẩn hoá theo traVe (OZV-1751)",
+    "bam": "8a67acca4975cea2e6cc1a9900f8c28ec1a5916c324e97b48a69f1c413f0c1a5"
+  },
   "dieuKienNut": [
     {
       "id": "4823905",
       "nguon": "tieuDe.4823905",
       "trich": "4823905 Giấy kraft ở dạng cuộn có chiều rộng 209 mm, loại sử dụng làm bao gói cho thỏi dynamit",
       "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Giấy kraft"
+        },
         {
           "fact": "dangCuon",
           "op": "CO"
@@ -39,7 +50,7 @@
           "value": "bao gói cho thỏi dynamit"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -54,7 +65,7 @@
           "value": "Khung kén tằm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "48239020",
@@ -67,7 +78,7 @@
           "value": "Thẻ trưng bày đồ trang sức"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "48239030",
@@ -75,12 +86,22 @@
       "trich": "48239030 - - Bìa tráng polyetylen đã cắt dập thành hình để sản xuất cốc giấy",
       "dieuKienSo": [
         {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bìa tráng polyetylen"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "đã cắt dập thành hình"
+        },
+        {
           "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": "sản xuất cốc giấy"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "48239040",
@@ -93,7 +114,7 @@
           "value": "sản xuất pháo hoa"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "48239051",
@@ -107,14 +128,14 @@
           "donVi": "g/m2"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "48239059",
       "nguon": "tax.48239059",
       "trich": "48239059 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "48239060",
@@ -127,7 +148,7 @@
           "value": "Thẻ jacquard"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "48239070",
@@ -161,7 +182,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "48239091",
@@ -174,7 +195,7 @@
           "value": "Giấy silicon"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "48239092",
@@ -187,7 +208,7 @@
           "value": "Giấy vàng mã"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "48239094",
@@ -207,7 +228,7 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "48239095",
@@ -215,11 +236,16 @@
       "trich": "48239095 - - - Tấm phủ sàn",
       "dieuKienSo": [
         {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Tấm phủ sàn"
+        },
+        {
           "fact": "tamPhuSan",
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "48239096",
@@ -231,14 +257,14 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "48239099",
       "nguon": "tax.48239099",
       "trich": "48239099 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "chongLanTruc": [
@@ -246,39 +272,26 @@
       "nhanh": [
         "48239010",
         "48239020",
-        "48239030",
         "48239040",
-        "4823905",
         "48239060",
         "48239070"
       ],
       "truc": {
-        "4823905": "CONG_DUNG",
         "48239010": "TEN_LOAI",
         "48239020": "TEN_LOAI",
-        "48239030": "CONG_DUNG",
         "48239040": "CONG_DUNG",
         "48239060": "TEN_LOAI",
         "48239070": "TEN_LOAI"
       },
-      "cauHoiPhanBiet": "Hàng này thuộc nhánh nào: «Khung kén tằm» (48239010), «Thẻ trưng bày đồ trang sức, kể cả loại cho đồ trang sức cá n» (48239020), «Bìa tráng polyetylen đã cắt dập thành hình để sản xuất cốc g» (48239030), «Bộ ống giấy để sản xuất pháo hoa(SEN)» (48239040), «Giấy kraft ở dạng cuộn có chiều rộng 209 mm, loại sử dụng là» (4823905), «Thẻ jacquard đã đục lỗ» (48239060), «Quạt và màn che kéo bằng tay» (48239070)?",
+      "cauHoiPhanBiet": "Hàng này thuộc nhánh nào: «Khung kén tằm» (48239010), «Thẻ trưng bày đồ trang sức, kể cả loại cho đồ trang sức cá n» (48239020), «Bộ ống giấy để sản xuất pháo hoa(SEN)» (48239040), «Thẻ jacquard đã đục lỗ» (48239060), «Quạt và màn che kéo bằng tay» (48239070)?",
       "trich": {
-        "4823905": "Giấy kraft ở dạng cuộn có chiều rộng 209 mm, loại sử dụng làm bao gói cho thỏi dynamit",
         "48239010": "Khung kén tằm",
         "48239020": "Thẻ trưng bày đồ trang sức, kể cả loại cho đồ trang sức cá nhân hoặc các vật dụng cá nhân được để trong ví, túi xách hoặc mang trên người",
-        "48239030": "Bìa tráng polyetylen đã cắt dập thành hình để sản xuất cốc giấy",
         "48239040": "Bộ ống giấy để sản xuất pháo hoa(SEN)",
         "48239060": "Thẻ jacquard đã đục lỗ",
         "48239070": "Quạt và màn che kéo bằng tay"
       },
       "viDuHang": [
-        {
-          "cap": [
-            "48239010",
-            "48239030"
-          ],
-          "khongCoHangThat": "«Khung kén tằm (dụng cụ nuôi tằm)» và «Bìa tráng polyetylen cắt dập để sản xuất cốc giấy» là hai mặt hàng khác hẳn nhau về bản chất và công dụng; không có hàng nào vừa là cái này vừa là cái kia."
-        },
         {
           "cap": [
             "48239010",
@@ -288,45 +301,10 @@
         },
         {
           "cap": [
-            "48239010",
-            "4823905"
-          ],
-          "khongCoHangThat": "«Khung kén tằm (dụng cụ nuôi tằm)» và «Giấy kraft cuộn rộng 209 mm dùng bao gói thỏi dynamit» là hai mặt hàng khác hẳn nhau về bản chất và công dụng; không có hàng nào vừa là cái này vừa là cái kia."
-        },
-        {
-          "cap": [
-            "48239020",
-            "48239030"
-          ],
-          "khongCoHangThat": "«Thẻ trưng bày đồ trang sức» và «Bìa tráng polyetylen cắt dập để sản xuất cốc giấy» là hai mặt hàng khác hẳn nhau về bản chất và công dụng; không có hàng nào vừa là cái này vừa là cái kia."
-        },
-        {
-          "cap": [
             "48239020",
             "48239040"
           ],
           "khongCoHangThat": "«Thẻ trưng bày đồ trang sức» và «Bộ ống giấy để sản xuất pháo hoa» là hai mặt hàng khác hẳn nhau về bản chất và công dụng; không có hàng nào vừa là cái này vừa là cái kia."
-        },
-        {
-          "cap": [
-            "48239020",
-            "4823905"
-          ],
-          "khongCoHangThat": "«Thẻ trưng bày đồ trang sức» và «Giấy kraft cuộn rộng 209 mm dùng bao gói thỏi dynamit» là hai mặt hàng khác hẳn nhau về bản chất và công dụng; không có hàng nào vừa là cái này vừa là cái kia."
-        },
-        {
-          "cap": [
-            "48239030",
-            "48239060"
-          ],
-          "khongCoHangThat": "«Bìa tráng polyetylen cắt dập để sản xuất cốc giấy» và «Thẻ jacquard đã đục lỗ (thẻ điều khiển máy dệt)» là hai mặt hàng khác hẳn nhau về bản chất và công dụng; không có hàng nào vừa là cái này vừa là cái kia."
-        },
-        {
-          "cap": [
-            "48239030",
-            "48239070"
-          ],
-          "khongCoHangThat": "«Bìa tráng polyetylen cắt dập để sản xuất cốc giấy» và «Quạt và màn che kéo bằng tay» là hai mặt hàng khác hẳn nhau về bản chất và công dụng; không có hàng nào vừa là cái này vừa là cái kia."
         },
         {
           "cap": [
@@ -341,65 +319,6 @@
             "48239070"
           ],
           "khongCoHangThat": "«Bộ ống giấy để sản xuất pháo hoa» và «Quạt và màn che kéo bằng tay» là hai mặt hàng khác hẳn nhau về bản chất và công dụng; không có hàng nào vừa là cái này vừa là cái kia."
-        },
-        {
-          "cap": [
-            "4823905",
-            "48239060"
-          ],
-          "khongCoHangThat": "«Giấy kraft cuộn rộng 209 mm dùng bao gói thỏi dynamit» và «Thẻ jacquard đã đục lỗ (thẻ điều khiển máy dệt)» là hai mặt hàng khác hẳn nhau về bản chất và công dụng; không có hàng nào vừa là cái này vừa là cái kia."
-        },
-        {
-          "cap": [
-            "4823905",
-            "48239070"
-          ],
-          "khongCoHangThat": "«Giấy kraft cuộn rộng 209 mm dùng bao gói thỏi dynamit» và «Quạt và màn che kéo bằng tay» là hai mặt hàng khác hẳn nhau về bản chất và công dụng; không có hàng nào vừa là cái này vừa là cái kia."
-        }
-      ],
-      "phanXu": null
-    },
-    {
-      "nhanh": [
-        "48239091",
-        "48239092",
-        "48239094",
-        "48239095"
-      ],
-      "truc": {
-        "48239091": "TEN_LOAI",
-        "48239092": "TEN_LOAI",
-        "48239094": "TEN_LOAI",
-        "48239095": "DAC_DIEM"
-      },
-      "cauHoiPhanBiet": "Hàng này thuộc nhánh nào: «Giấy silicon(SEN)» (48239091), «Giấy vàng mã(SEN)» (48239092), «Tấm xenlulo và màng xơ sợi xenlulo, được tạo màu hoặc tạo vâ» (48239094), «Tấm phủ sàn» (48239095)?",
-      "trich": {
-        "48239091": "Giấy silicon(SEN)",
-        "48239092": "Giấy vàng mã(SEN)",
-        "48239094": "Tấm xenlulo và màng xơ sợi xenlulo, được tạo màu hoặc tạo vân toàn bộ",
-        "48239095": "Tấm phủ sàn"
-      },
-      "viDuHang": [
-        {
-          "cap": [
-            "48239091",
-            "48239095"
-          ],
-          "khongCoHangThat": "«Giấy silicon» và «Tấm phủ sàn» là hai mặt hàng khác hẳn nhau về bản chất và công dụng; không có hàng nào vừa là cái này vừa là cái kia."
-        },
-        {
-          "cap": [
-            "48239092",
-            "48239095"
-          ],
-          "khongCoHangThat": "«Giấy vàng mã» và «Tấm phủ sàn» là hai mặt hàng khác hẳn nhau về bản chất và công dụng; không có hàng nào vừa là cái này vừa là cái kia."
-        },
-        {
-          "cap": [
-            "48239094",
-            "48239095"
-          ],
-          "khongCoHangThat": "«Tấm xenlulo và màng xơ sợi xenlulo tạo màu/tạo vân» và «Tấm phủ sàn» là hai mặt hàng khác hẳn nhau về bản chất và công dụng; không có hàng nào vừa là cái này vừa là cái kia."
         }
       ],
       "phanXu": null
@@ -426,7 +345,7 @@
     {
       "ma": "48239030",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.48239030 \"Bìa tráng polyetylen đã cắt dập thành hình để sản xuất cốc giấy\" ⇒ dungCho \"sản xuất cốc giấy\"; phần tên đầu (tráng PE, cắt dập) không nằm trong vế phải phủ."
+      "ghiChu": "tax.48239030 \"Bìa tráng polyetylen đã cắt dập thành hình để sản xuất cốc giấy\" ⇒ tenLoai \"Bìa tráng polyetylen\" + tenLoai \"đã cắt dập thành hình\" + dungCho \"sản xuất cốc giấy\"."
     },
     {
       "ma": "48239040",
@@ -436,7 +355,7 @@
     {
       "ma": "4823905",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.4823905 \"Giấy kraft ở dạng cuộn có chiều rộng 209 mm, loại sử dụng làm bao gói cho thỏi dynamit\" ⇒ dangCuon CO + chieuRong = 209 mm (viết thành >= và <= vì tu-vung@2 không có op bằng) + dungCho \"bao gói cho thỏi dynamit\"."
+      "ghiChu": "tieuDe.4823905 \"Giấy kraft ở dạng cuộn có chiều rộng 209 mm, loại sử dụng làm bao gói cho thỏi dynamit\" ⇒ tenLoai \"Giấy kraft\" + dangCuon CO + chieuRong = 209 mm (viết thành >= và <= vì tu-vung@2 không có op bằng) + dungCho \"bao gói cho thỏi dynamit\"."
     },
     {
       "ma": "48239051",
@@ -483,13 +402,6 @@
       "ma": "482390",
       "loai": "QUYET_DINH",
       "ghiChu": "Claude 07/11/2026 (Q1, #1109): các cặp nhánh khác trục không có hàng thật thoả cả hai ⇒ chongLanTruc + khongCoHangThat (lý do từng cặp trong viDuHang). Lúc chạy hàng thoả cả hai ⇒ hỏi câu phân biệt."
-    }
-  ],
-  "traVe": [
-    {
-      "phien": "claude-agent:duyet-L15-20261111#soat-L15",
-      "ngay": "2026-11-11",
-      "lyDo": "(A) 48239030 SUY RỘNG: «Bìa tráng polyetylen đã cắt dập thành hình để sản xuất cốc giấy» / EN «Die-cut polyethylene coated paperboard of a kind used for the manufacture of paper cups» — chỉ ghi dungCho «sản xuất cốc giấy»; bỏ «tráng polyetylen» và «đã cắt dập thành hình». Hệ quả: phôi cốc tráng PLA hoặc không tráng vào .30 thay vì .96/.99. Máy tách gộp hai định ngữ giới hạn vào DAU «Bìa tráng polyetylen đã cắt dập thành hình» nên cổng 5 không đòi phủ (máy tách sai). (B) tầng 4823905 «Giấy kraft ở dạng cuộn có chiều rộng 209 mm…» / EN «Kraft paper, in rolls…»: bỏ «kraft» (DAU «Giấy kraft ở dạng cuộn» nuốt định ngữ) — giấy không phải kraft bọc thỏi dynamit vào .51/.59 thay vì .99; cần xét có khoá loại giấy hay DỪNG. Phần còn lại (.70 «kéo bằng tay» chỉ gắn màn che; .94; .96 BO_VE theo định nghĩa daCatThanhHinh; .20 BO_VE vế kể cả) đã đối chiếu, đúng."
     }
   ]
 }

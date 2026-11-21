@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:tho-hs-01#soat-lo-6a",
+    "phien": "claude-agent:tho-hs-01#soat-lo-5f",
     "ngay": "2026-11-21",
-    "ghiChu": "Chuẩn hoá dieuKienSo khép SẠCH V1 lô 6a",
-    "bam": "09421a8aef8a2caec420dc9ed98bc0fe65f35f66af32aad84ea85abe79904e29"
+    "ghiChu": "Chuẩn hoá dieuKienSo và chongLanTruc bám chữ biểu thuế",
+    "bam": "bb23ec887ba29c8700c4833287a9e16419fd75e4f789d645782c48185b1fcb74"
   },
   "dieuKienNut": [
     {
@@ -24,9 +24,11 @@
       "trich": "5703901 Từ bông",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Từ bông"
+          "fact": "loaiSoiDet",
+          "op": "TRONG",
+          "value": [
+            "BONG"
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -169,16 +171,43 @@
       "nguonLoai": "CLAUDE_DUYET"
     }
   ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "5703901",
+        "5703902"
+      ],
+      "truc": {
+        "5703901": "DAC_DIEM",
+        "5703902": "TEN_LOAI"
+      },
+      "cauHoiPhanBiet": "Thảm chần này làm từ bông (5703901) hay từ xơ đay (5703902)?",
+      "trich": {
+        "5703901": "Từ bông",
+        "5703902": "Từ xơ đay"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "5703901",
+            "5703902"
+          ],
+          "khongCoHangThat": "Thảm phân loại theo một vật liệu dệt chủ yếu: hoặc từ bông, hoặc từ xơ đay, không có hàng thật đồng thời vừa từ bông vừa từ xơ đay."
+        }
+      ],
+      "phanXu": null
+    }
+  ],
   "ghiChuSoan": [
     {
       "ma": "5703901",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.5703901: \"Từ bông\" (EN \"Of cotton\") ⇒ tenLoai \"Từ bông\" (đồng bộ trục TEN_LOAI với 5703902 để dòng có tên 57039092 dưới nút Loại khác 5703909 không bị hỏi loaiSoiDet)."
+      "ghiChu": "tieuDe.5703901: \"Từ bông\" (EN \"Of cotton\") ⇒ loaiSoiDet TRONG [\"BONG\"]."
     },
     {
       "ma": "5703902",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.5703902: \"Từ xơ đay\" (EN \"Of jute fibres\") ⇒ tenLoai [\"đay\",\"xơ đay\"]; không dùng loaiSoiDet SOI_THUC_VAT_KHAC vì bao gồm cả sisal/lanh/gai rộng hơn chữ biểu."
+      "ghiChu": "tieuDe.5703902: \"Từ xơ đay\" (EN \"Of jute fibres\") ⇒ tenLoai [\"đay\",\"xơ đay\"]; không dùng loaiSoiDet SOI_THUC_VAT_KHAC vì bao gồm cả sisal/lanh/gai rộng hơn chữ biểu; khai chongLanTruc với 5703901 theo Q1 (khongCoHangThat)."
     }
   ]
 }
