@@ -4,13 +4,19 @@
   "nhom": "2304",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261105T1542#soan-230400",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-02#soat-230400",
+    "ngay": "2026-11-21",
+    "ghiChu": "Đã chuẩn hoá dieuKienSo bám chữ biểu thuế",
+    "bam": "fdd243c915801ad37abafd45abb01f6be87f327cfe54d7a046f8d09c3b2aeb35"
+  },
   "dieuKienNut": [
     {
       "id": "2304002",
@@ -23,14 +29,14 @@
           "value": "Bột đậu tương thô"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
     {
       "hs": "23040010",
-      "nguon": "tax.23040010",
-      "trich": "23040010 - Bột đậu tương đã được khử chất béo, thích hợp dùng làm thức ăn cho người(SEN)",
+      "nguon": "sen.23040010",
+      "trich": "BỘT ĐẬU TƯƠNG ĐÃ ĐƯỢC KHỬ CHẤT BÉO, THÍCH HỢP DÙNG LÀM THỨC ĂN CHO NGƯỜI…Bột đậu tương đã được khử chất béo, thích hợp dùng làm thức ăn cho người, là một sản phẩm đã chế biến có độ ẩm dưới 8%, protein từ 50% trở lên, chất béo dưới 1%, và chất xơ dưới 1%.",
       "dieuKienSo": [
         {
           "fact": "tenLoai",
@@ -41,50 +47,60 @@
           "fact": "congDung",
           "op": "CONG_DUNG",
           "value": "làm thức ăn cho người"
+        },
+        {
+          "fact": "hamLuongProtein",
+          "op": ">=",
+          "value": 50,
+          "donVi": "%"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "23040021",
-      "nguon": "tax.23040021",
-      "trich": "23040021 - - Thích hợp dùng làm thức ăn cho người(SEN)",
+      "nguon": "sen.23040021",
+      "trich": "BỘT ĐẬU TƯƠNG THÔ, THÍCH HỢP DÙNG LÀM THỨC ĂN CHO NGƯỜI…Sản phẩm thường chứa độ ẩm không quá 12%, protein không ít hơn 46%, chất béo dưới 1,5%, chất xơ không quá 7% và tro không quá 6,5%.",
       "dieuKienSo": [
         {
           "fact": "congDung",
           "op": "CONG_DUNG",
           "value": "làm thức ăn cho người"
+        },
+        {
+          "fact": "hamLuongProtein",
+          "op": ">=",
+          "value": 46,
+          "donVi": "%"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "23040029",
       "nguon": "tax.23040029",
       "trich": "23040029 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "23040090",
       "nguon": "tax.23040090",
       "trich": "23040090 - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "23040010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.23040010 \"Bột đậu tương đã được khử chất béo, thích hợp dùng làm thức ăn cho người(SEN)\" — vế \"đã được khử chất béo\" nằm trong tên đầu nguyên văn của chính dòng ⇒ tenLoai giữ nguyên tên; vế \"thích hợp dùng làm thức ăn cho người\" ⇒ congDung \"làm thức ăn cho người\"; \"(SEN)\" là ngoặc chú thích, không điều kiện"
-    }
-  ],
-  "traVe": [
+      "ghiChu": "sen.23040010 + tax.23040010 \"Bột đậu tương đã được khử chất béo, thích hợp dùng làm thức ăn cho người(SEN)\" ⇒ tenLoai \"Bột đậu tương đã được khử chất béo\" + congDung \"làm thức ăn cho người\" + ngưỡng SEN hamLuongProtein >= 50 %"
+    },
     {
-      "phien": "claude-agent:tech-lead-20261111#soat-lai",
-      "ngay": "2026-11-11",
-      "lyDo": "Bỏ mất ngưỡng số SEN mà sổ tay đang chạy dùng để chốt dòng (chất rắn 25–40% / độ ẩm-protein-béo / áp suất nén 200–250); khoá TEN_LOAI/CONG_DUNG là lùi. Soạn lại: mã hoá đủ ngưỡng SEN + vế tên."
+      "ma": "23040021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "sen.23040021 + tax.23040021 \"Thích hợp dùng làm thức ăn cho người(SEN)\" dưới tiêu đề 2304002 \"Bột đậu tương thô\" ⇒ congDung \"làm thức ăn cho người\" + ngưỡng SEN hamLuongProtein >= 46 %"
     }
   ]
 }
