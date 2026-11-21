@@ -354,6 +354,12 @@ const KHOA_MOI = {
   // 22/11/2026 (OZV-1771): giống thuần chủng 0104.10.10/.20.10 & hình dạng bên trong lòng bồn tắm 3922.10.11
   laThuanChung: 'CO_KHONG',
   coHinhDangBenTrongChuNhatHoacThuon: 'CO_KHONG',
+  // 22/11/2026 (OZV-1778): khoá cho 4008.11.10/4008.21.10, 4412.41.10/4412.91.10, 4805.91.10, 5808.10.10/5808.90.10, 1513.29
+  lotVaiDetMotMat: 'CO_KHONG',
+  chatLieuLopNgoai: 'LIET_KE',
+  hamLuongNhua: 'SO',
+  ketHopVoiSoiCaoSu: 'CO_KHONG',
+  loaiDauHatCoBabassu: 'LIET_KE',
 };
 
 // ── 1. Nạp theo phiên bản ─────────────────────────────────────────────────────────────────────────────────────────
@@ -1154,6 +1160,63 @@ check('vietCum đơn vị @1 KHÔNG đổi ("CS: 75000W" — không cách)', T.v
   }
   const ms = Number(process.hrtime.bigint() - t0) / 1e6;
   check(`OZV-1771 ReDoS ~40.000 từ lặp trên 5 khoá < 2000 ms (thực tế ${ms.toFixed(0)} ms)`, ms < 2000, { ms });
+}
+
+// OZV-1778 — kiểm chứng 4 khoá mới (lotVaiDetMotMat, chatLieuLopNgoai, hamLuongNhua, ketHopVoiSoiCaoSu)
+// và giá trị NGUYEN_CHAT_VIRGIN trong mucDoTinhCheDau + ReDoS 40.000 từ lặp < 2 giây (quy tắc 6b).
+{
+  // 1. mucDoTinhCheDau — NGUYEN_CHAT_VIRGIN (1513.11.10) tách khỏi DANG_THO
+  la('chữ biểu 1513.11.10 (Dầu dừa nguyên chất)', 'mucDoTinhCheDau', 'Dầu dừa nguyên chất (SEN)', 'NGUYEN_CHAT_VIRGIN');
+  la('En Virgin coconut oil', 'mucDoTinhCheDau', 'Virgin coconut oil', 'NGUYEN_CHAT_VIRGIN');
+  la('Zh 初榨椰子油', 'mucDoTinhCheDau', '初榨椰子油', 'NGUYEN_CHAT_VIRGIN');
+  la('Dầu thô vẫn đọc DANG_THO, không nhảy sang NGUYEN_CHAT_VIRGIN', 'mucDoTinhCheDau', 'Dầu dừa dạng thô chưa tinh chế', 'DANG_THO');
+
+  // 2. lotVaiDetMotMat (4008.11.10 / 4008.21.10)
+  la('chữ biểu 4008.11.10 / 4008.21.10 (có một mặt được lót vải dệt)', 'lotVaiDetMotMat', 'Chiều dày trên 5 mm, có một mặt được lót vải dệt', true);
+  la('En lined with textile fabric on one side', 'lotVaiDetMotMat', 'Exceeding 5 mm in thickness, lined with textile fabric on one side', true);
+  la('Zh 单面衬有纺织物', 'lotVaiDetMotMat', '厚度超过5毫米，单面衬有纺织物', true);
+  la('tấm cao su lót vải cả hai mặt ⇒ false', 'lotVaiDetMotMat', 'Tấm cao su xốp dày 8 mm, có hai mặt được lót vải dệt', false);
+  la('En lined with textile fabric on both sides ⇒ false', 'lotVaiDetMotMat', 'Cellular rubber sheet lined with textile fabric on both sides', false);
+  la('phủ định không được lót vải dệt ⇒ false', 'lotVaiDetMotMat', 'Tấm cao su lưu hóa dày 10 mm, không được lót vải dệt', false);
+  chuaBiet('chỉ ghi tấm cao su dày 6 mm ⇒ CHUA_BIET', 'lotVaiDetMotMat', 'Tấm cao su lưu hóa dày 6 mm');
+
+  // 3. chatLieuLopNgoai (4412.41.10 / 4412.91.10 / 4412.92.00 / 4412.99.00)
+  la('chữ biểu 4412.41.10 / 4412.91.10 (lớp ngoài bằng gỗ tếch)', 'chatLieuLopNgoai', 'Với ít nhất một lớp ngoài bằng gỗ tếch', 'GO_TECH');
+  la('En With at least one outer ply of teak', 'chatLieuLopNgoai', 'With at least one outer ply of teak', 'GO_TECH');
+  la('Zh 至少有一表层是柚木', 'chatLieuLopNgoai', '至少有一表层是柚木', 'GO_TECH');
+  la('chữ biểu 4412.92.00 (lớp mặt ngoài từ gỗ không thuộc loài cây lá kim)', 'chatLieuLopNgoai', 'Loại khác, với ít nhất một lớp mặt ngoài từ gỗ không thuộc loài cây lá kim', 'GO_KHONG_LA_KIM');
+  la('chữ biểu 4412.99.00 (cả hai lớp mặt ngoài từ gỗ thuộc loài cây lá kim)', 'chatLieuLopNgoai', 'Loại khác, với cả hai lớp mặt ngoài từ gỗ thuộc loài cây lá kim', 'CA_HAI_LOP_GO_LA_KIM');
+  chuaBiet('gỗ tếch ở lớp lõi trong, không phải lớp ngoài ⇒ CHUA_BIET', 'chatLieuLopNgoai', 'Gỗ dán có lớp lõi trong bằng gỗ tếch');
+
+  // 4. hamLuongNhua (4805.91.10)
+  la('chữ biểu 4805.91.10 (hàm lượng nhựa không quá 0,6%)', 'hamLuongNhua', 'Giấy dùng để lót vào giữa các sản phẩm thủy tinh phẳng khi đóng gói, có hàm lượng nhựa không quá 0,6% tính theo khối lượng', 0.6, { op: '<=' });
+  la('hàng thật hàm lượng nhựa 0,4%', 'hamLuongNhua', 'Giấy lót kính phẳng khi đóng gói, hàm lượng nhựa 0,4% tính theo khối lượng', 0.4, { op: null });
+  la('En resin content by weight of not more than 0.6%', 'hamLuongNhua', 'Paper with a resin content by weight of not more than 0.6%', 0.6, { op: '<=' });
+  la('Zh 按重量计树脂含量0.5%', 'hamLuongNhua', '按重量计树脂含量0.5%的衬纸', 0.5, { op: null });
+  chuaBiet('chỉ ghi định lượng giấy, không ghi hàm lượng nhựa ⇒ CHUA_BIET', 'hamLuongNhua', 'Giấy lót kính phẳng định lượng 50 g/m2');
+
+  // 5. ketHopVoiSoiCaoSu (5808.10.10 / 5808.90.10)
+  la('chữ biểu 5808.10.10 / 5808.90.10 (Kết hợp với sợi cao su)', 'ketHopVoiSoiCaoSu', 'Kết hợp với sợi cao su', true);
+  la('En Combined with rubber thread', 'ketHopVoiSoiCaoSu', 'Combined with rubber thread', true);
+  la('Zh 夹有橡胶线', 'ketHopVoiSoiCaoSu', '夹有橡胶线的编带', true);
+  la('phủ định không kết hợp với sợi cao su ⇒ false', 'ketHopVoiSoiCaoSu', 'Dải bện dạng chiếc không kết hợp với sợi cao su', false);
+  chuaBiet('dải bện chứa sợi đàn hồi spandex/elastane/lycra ⇒ CHUA_BIET (không bắt nhầm sợi cao su)', 'ketHopVoiSoiCaoSu', 'Dải bện dạng chiếc chứa sợi đàn hồi spandex (elastane / lycra)');
+
+  // 6. loaiDauHatCoBabassu (1513.29)
+  la('chữ biểu 1513.29.95 (Dầu hạt cọ RBD)', 'loaiDauHatCoBabassu', 'Dầu hạt cọ, đã tinh chế, tẩy và khử mùi (RBD) (SEN)', 'DAU_HAT_CO');
+  la('chữ biểu 1513.29.94 (Olein hạt cọ RBD)', 'loaiDauHatCoBabassu', 'Olein hạt cọ, đã tinh chế, tẩy và khử mùi (RBD)', 'DAU_HAT_CO');
+  la('chữ biểu 1513.29.13 ngoặc (olein hạt cọ) vẫn đọc DAU_HAT_CO', 'loaiDauHatCoBabassu', 'Loại khác, của dầu hạt cọ chưa tinh chế (olein hạt cọ) (SEN)', 'DAU_HAT_CO');
+  la('chữ biểu 1513.29.14 (dầu cọ ba-ba-su)', 'loaiDauHatCoBabassu', 'Loại khác, của dầu cọ ba-ba-su chưa tinh chế', 'DAU_CO_BA_BA_SU');
+  chuaBiet('dầu dừa không thuộc loaiDauHatCoBabassu ⇒ CHUA_BIET', 'loaiDauHatCoBabassu', 'Dầu dừa nguyên chất');
+
+  // 7. ReDoS ~40.000 từ lặp < 2 giây (CLAUDE.md quy tắc 6b)
+  const redosText1778 = Array(8000).fill('tấm cao su hoặc gỗ dán hoặc giấy hoặc dải bện').join(' ');
+  const t0 = process.hrtime.bigint();
+  for (const fk of ['mucDoTinhCheDau', 'lotVaiDetMotMat', 'chatLieuLopNgoai', 'hamLuongNhua', 'ketHopVoiSoiCaoSu', 'loaiDauHatCoBabassu']) {
+    T.docGiaTri(fk, redosText1778);
+  }
+  const ms = Number(process.hrtime.bigint() - t0) / 1e6;
+  check(`OZV-1778 ReDoS ~40.000 từ lặp trên 6 khoá < 2000 ms (thực tế ${ms.toFixed(0)} ms)`, ms < 2000, { ms });
 }
 
 console.log(`\n${pass} pass, ${fail} fail`);

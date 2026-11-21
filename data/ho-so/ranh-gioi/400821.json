@@ -4,13 +4,19 @@
   "nhom": "4008",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
-    "phien": "mm:minimax-m3:20261105T1707#soan-400821",
-    "ngay": "2026-11-05"
+    "phien": "tho-hs-03:20261122#soan-400821",
+    "ngay": "2026-11-21"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1778#soat-400821",
+    "ngay": "2026-11-21",
+    "ghiChu": "Chuẩn hoá ranh giới theo traVe.lyDo, duyệt và áp sổ tay (OZV-1778)",
+    "bam": "7e61d5a8276d1b8954406e9e741668aa3aedf0ce9695692a28d48109b529b6da"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -25,12 +31,11 @@
           "donVi": "mm"
         },
         {
-          "fact": "chatLieu",
-          "op": "LA",
-          "value": "vải dệt"
+          "fact": "lotVaiDetMotMat",
+          "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "40082120",
@@ -40,9 +45,14 @@
         {
           "fact": "tamMiengGhepLatNenOpTuong",
           "op": "CO"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "lát nền và ốp tường"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "40082130",
@@ -55,7 +65,7 @@
           "value": "Băng chắn nước"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "40082140",
@@ -73,14 +83,14 @@
           "value": "đế giày"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "40082190",
       "nguon": "tax.40082190",
       "trich": "40082190 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "chongLanVanBan": [
@@ -103,27 +113,27 @@
     {
       "ma": "40082110",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.40082110 \"Chiều dày trên 5 mm, có một mặt được lót vải dệt\" (EN \"Exceeding 5 mm in thickness, lined with textile fabric on one side\") => doDay > 5 mm cho vế biên số \"Chiều dày trên 5 mm\" + chatLieu LA \"vải dệt\" cho vế GIỚI_HẠN \"có một mặt được lót vải dệt\" (bộ đọc đọc được \"vải\" ở vị trí CHINH; từ vựng chưa có vị trí \"lót\")."
+      "ghiChu": "tax.40082110 \"Chiều dày trên 5 mm, có một mặt được lót vải dệt\" (EN \"Exceeding 5 mm in thickness, lined with textile fabric on one side\") ⇒ doDay > 5 mm + lotVaiDetMotMat CO (biểu diễn đúng giới hạn có một mặt được lót vải dệt, tránh khớp tấm lót vải 2 mặt)."
     },
     {
       "ma": "40082120",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.40082120 \"Loại khác, miếng, tấm ghép với nhau để lát nền và ốp tường\" (EN \"Other, floor tiles and wall tiles\") là dòng \"Loại khác, <vế>\" nên chỉ ghi điều kiện của vế \"Loại khác, miếng, tấm ghép với nhau để lát nền và ốp tường\" => tamMiengGhepLatNenOpTuong CO (khoá đọc đúng cụm \"miếng, tấm ghép với nhau để lát nền và ốp tường\")."
+      "ghiChu": "tax.40082120 \"Loại khác, miếng, tấm ghép với nhau để lát nền và ốp tường\" (EN \"Other, floor tiles and wall tiles\") ⇒ tamMiengGhepLatNenOpTuong CO + congDung \"lát nền và ốp tường\"."
     },
     {
       "ma": "40082130",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.40082130 \"Băng chắn nước (SEN)\" (EN \"Water stop\") => tenLoai \"Băng chắn nước\"; ngoặc \"(SEN)\" là ngoặc chú thích. Chữ biểu không có khoá tu-vung riêng cho \"băng chắn nước\" nên ghi nguyên văn dạng tên loại hàng; so chữ tự do, không tất định."
+      "ghiChu": "tax.40082130 \"Băng chắn nước (SEN)\" (EN \"Water stop\") ⇒ tenLoai \"Băng chắn nước\"."
     },
     {
       "ma": "40082140",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.40082140 \"Tờ cao su dùng làm đế giày\" (EN \"Rubber soling sheet\") => tenLoai \"Tờ cao su\" cho danh từ đầu + dungCho \"đế giày\" cho vế GIỚI_HẠN \"dùng làm …\" (đích là hàng đế giày, bỏ hư từ \"dùng làm\")."
+      "ghiChu": "tax.40082140 \"Tờ cao su dùng làm đế giày\" (EN \"Rubber soling sheet\") ⇒ tenLoai \"Tờ cao su\" + dungCho \"đế giày\"."
     },
     {
       "ma": "40082190",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.40082190 \"Loại khác\" trần => không ghi điều kiện (máy tự phủ định anh em đứng trước)."
+      "ghiChu": "tax.40082190 \"Loại khác\" trần ⇒ không ghi điều kiện (máy tự phủ định anh em đứng trước)."
     }
   ],
   "traVe": [

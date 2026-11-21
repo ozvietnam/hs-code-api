@@ -4,13 +4,19 @@
   "nhom": "1513",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
-    "phien": "mm:minimax-m3:20261105T1530#soan-151311",
-    "ngay": "2026-11-05"
+    "phien": "tho-hs-03:20261122#soan-151311",
+    "ngay": "2026-11-21"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1778#soat-151311",
+    "ngay": "2026-11-21",
+    "ghiChu": "Chuẩn hoá ranh giới theo traVe.lyDo, duyệt và áp sổ tay (OZV-1778)",
+    "bam": "3e105e45ac5a106db72120ce0effcaa06ccf9aefd98d5a6a81ebdd385ad4d58f"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -27,25 +33,25 @@
           "fact": "mucDoTinhCheDau",
           "op": "TRONG",
           "value": [
-            "DANG_THO"
+            "NGUYEN_CHAT_VIRGIN"
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "15131190",
       "nguon": "tax.15131190",
       "trich": "15131190 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "15131110",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.15131110 \"15131110 - - - Dầu dừa nguyên chất (SEN)\" ⇒ tenLoai \"Dầu dừa\" (tên hàng) + mucDoTinhCheDau DANG_THO (\"nguyên chất\"). Dòng 15131190 \"Loại khác\" trần ⇒ không ghi điều kiện."
+      "ghiChu": "tax.15131110 \"15131110 - - - Dầu dừa nguyên chất (SEN)\" (EN \"Virgin coconut oil\") ⇒ tenLoai \"Dầu dừa\" (tên hàng) + mucDoTinhCheDau TRONG [NGUYEN_CHAT_VIRGIN] (\"nguyên chất\", tách khỏi DANG_THO của phân nhóm 1513.11 để không nuốt dầu dừa thô khác). Dòng 15131190 \"Loại khác\" trần ⇒ không ghi điều kiện."
     }
   ],
   "traVe": [
