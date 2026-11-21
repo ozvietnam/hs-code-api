@@ -9,12 +9,12 @@ ADR, thẻ. Lộ trình dài hạn: `docs/backlog/README.md` và bảng việc P
 
 **Đã làm (PR nhánh `qt/tim-truoc-doan-sau`):** `lib/tim-truoc.js` — trước vòng 1 của động cơ hai vòng, máy tìm tất định
 trong kho bằng mô tả + tên ngắn (5 hàm tìm sẵn có, gộp bằng bỏ phiếu theo thứ hạng), đưa top 5 nhóm kèm bằng chứng vào
-đầu vào vòng 1 (≤ 1.500 ký tự, lời dặn hệ thống không đổi) và nạp các nhóm đó + tối đa 2 nhóm dễ nhầm theo cạnh sổ tay
-hai chiều vào `gather()`. Công cụ đo trong container: `scripts/do-phan-loai-tom-tat.mjs` + 3 tệp ca `scripts/ca-do/`.
+đầu vào vòng 1 (≤ 1.500 ký tự, lời dặn hệ thống không đổi). Nạp thêm các nhóm đó + tối đa 2 nhóm dễ nhầm theo cạnh sổ
+tay hai chiều vào `gather()` là tuỳ chọn `HS_TIM_TRUOC_NAP` (mặc định 0 = không nạp, CEO 21/11). Công cụ đo trong container: `scripts/do-phan-loai-tom-tat.mjs` + 3 tệp ca `scripts/ca-do/`.
 
 **Số đã có (không LLM, 2.000 dòng gold bỏ-một-dòng, bản chặt: tắt alias, bỏ dòng trùng tên):** nhóm đúng nằm trong khối
 vòng 1 ở 82,8–84,0%; bộ van khí nén 8481: 74/74. Chi phí (LLM giả, 98 dòng): tìm trước ~1,3 giây; vòng 1 thêm ~1.160 ký
-tự; gói vòng 2 từ ~5,5 nghìn lên ~22 nghìn ký tự (chỉnh bằng `HS_TIM_TRUOC_NAP`).
+tự; gói vòng 2 không đổi ở mặc định `HS_TIM_TRUOC_NAP=0` (với 5: từ ~5,5 nghìn lên ~22 nghìn ký tự).
 
 **CHƯA đo bằng LLM thật.** QT bật trên máy thật rồi chạy `scripts/do-phan-loai-tom-tat.mjs` với 3 tệp ca, so trước / sau
 (L1). Xấu hơn thì tắt trước, sửa sau.

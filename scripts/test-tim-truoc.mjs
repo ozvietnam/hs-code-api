@@ -112,7 +112,10 @@ check('kho tờ khai Oz lỗi → các nguồn còn lại vẫn chạy (8481 v�
   ozItems = OZ_VAN;
   const k = await tt.timTruoc({ tenHang: VAN });
   check('HS_SO_TAY=full: nhóm dễ nhầm tối đa 2, không trùng top 5, đều nối sổ tay với một ứng viên', k.tomTat.deNham.length <= tt.TRAN_DE_NHAM && k.tomTat.deNham.every((b) => !k.tomTat.nhom.includes(b) && k.tomTat.nhom.some((a) => nhomLienQuanSoTay(a).includes(b))), JSON.stringify(k.tomTat));
-  check('HS_SO_TAY=full: nhóm nạp vào gather = top 5 + nhóm dễ nhầm', JSON.stringify(k.nhomNap) === JSON.stringify([...k.tomTat.nhom, ...k.tomTat.deNham]) && k.nhomNap.length <= tt.TOP_NHOM + tt.TRAN_DE_NHAM);
+  check('MẶC ĐỊNH (HS_TIM_TRUOC_NAP trống): không nạp nhóm nào vào gather, khối vòng 1 vẫn có đủ ứng viên + nhóm dễ nhầm', k.nhomNap.length === 0 && k.tomTat.nap.length === 0 && k.tomTat.nhom.length > 0 && k.khoi.includes('Nhóm 8481'));
+  process.env.HS_TIM_TRUOC_NAP = '5';
+  const k5 = await tt.timTruoc({ tenHang: VAN });
+  check('HS_TIM_TRUOC_NAP=5 + HS_SO_TAY=full: nhóm nạp vào gather = top 5 + nhóm dễ nhầm', k5.khoi === k.khoi && JSON.stringify(k5.nhomNap) === JSON.stringify([...k.tomTat.nhom, ...k.tomTat.deNham]) && k.nhomNap.length <= tt.TOP_NHOM + tt.TRAN_DE_NHAM);
   // HS_TIM_TRUOC_NAP: chỉnh số nhóm nạp vào gather (gói vòng 2), không đụng khối vòng 1.
   process.env.HS_TIM_TRUOC_NAP = '2';
   const k2 = await tt.timTruoc({ tenHang: VAN });
@@ -121,7 +124,7 @@ check('kho tờ khai Oz lỗi → các nguồn còn lại vẫn chạy (8481 v�
   const k0 = await tt.timTruoc({ tenHang: VAN });
   check('HS_TIM_TRUOC_NAP=0: không nạp nhóm nào vào gather, khối vòng 1 giữ nguyên', k0.nhomNap.length === 0 && k0.khoi === k.khoi);
   process.env.HS_TIM_TRUOC_NAP = 'abc';
-  check('CA NGƯỢC: HS_TIM_TRUOC_NAP không phải số → mặc định 5; lớn hơn 5 → 5', tt.soNhomNap() === 5 && ((process.env.HS_TIM_TRUOC_NAP = '9'), tt.soNhomNap()) === 5);
+  check('CA NGƯỢC: HS_TIM_TRUOC_NAP không phải số → mặc định 0; lớn hơn 5 → 5', tt.soNhomNap() === 0 && ((process.env.HS_TIM_TRUOC_NAP = '9'), tt.soNhomNap()) === 5);
   delete process.env.HS_TIM_TRUOC_NAP;
   delete process.env.HS_SO_TAY;
 }
@@ -149,33 +152,37 @@ const chay = async (hang, llm, oz, env = {}) => {
 };
 
 const tat = await chay(VAN, [R1_VAN_8412, R2_VAN], OZ_VAN);
-const bat = await chay(VAN, [R1_VAN_8412, R2_VAN], OZ_VAN, { HS_TIM_TRUOC: 'on' });
+const bat = await chay(VAN, [R1_VAN_8412, R2_VAN], OZ_VAN, { HS_TIM_TRUOC: 'on', HS_TIM_TRUOC_NAP: '5' });
+// Biến thể tối thiểu (mặc định HS_TIM_TRUOC_NAP=0): chỉ khối ứng viên ở vòng 1, gói vòng 2 không đổi.
+const toiThieu = await chay(VAN, [R1_VAN_8412, R2_VAN], OZ_VAN, { HS_TIM_TRUOC: 'on' });
+check('BẬT mặc định (NAP=0): đầu vào vòng 1 có khối ứng viên 8481, engine.timTruoc.nap rỗng', /\n1\. Nhóm 8481/.test(toiThieu.calls[0].user) && toiThieu.out.engine.timTruoc.nhom[0] === '8481' && toiThieu.out.engine.timTruoc.nap.length === 0, JSON.stringify(toiThieu.out.engine.timTruoc));
+check('BẬT mặc định (NAP=0): gói vòng 2 TRÙNG TỪNG BYTE với lượt tắt (LLM giả trả cùng vòng 1) — không nạp thêm nhóm nào', toiThieu.calls[1].user === tat.calls[1].user && JSON.stringify(toiThieu.out.candidates.headings) === JSON.stringify(tat.out.candidates.headings), `${toiThieu.calls[1].user.length} vs ${tat.calls[1].user.length}`);
 check('TẮT: đầu vào vòng 1 không có khối ứng viên; phản hồi không có engine.timTruoc / phases.timTruocMs', !tat.calls[0].user.includes(tt.NHAN_KHOI) && !('timTruoc' in tat.out.engine) && !('timTruocMs' in (tat.out.engine.phases || {})), tat.calls[0].user.slice(0, 300));
 check('BẬT: đầu vào vòng 1 CHỨA khối ứng viên có nhóm 8481 (đứng đầu) cho ca van', bat.calls[0].step === 'understand' && bat.calls[0].user.includes(tt.NHAN_KHOI) && /\n1\. Nhóm 8481/.test(bat.calls[0].user), bat.calls[0].user.slice(-900));
 check('BẬT: phần hồ sơ gốc của đầu vào vòng 1 giữ nguyên từng byte — khối chỉ NỐI THÊM phía sau', bat.calls[0].user.startsWith(`${tat.calls[0].user}\n\n${tt.NHAN_KHOI}`));
 check('BẬT: lời dặn hệ thống vòng 1 KHÔNG đổi (trùng băm với lượt tắt, và bắt đầu bằng SYS_R1)', sha(bat.calls[0].system) === sha(tat.calls[0].system) && bat.calls[0].system.startsWith(SYS_R1));
 check('BẬT: lời dặn hệ thống vòng 2 KHÔNG đổi', bat.calls[1] && tat.calls[1] && sha(bat.calls[1].system) === sha(tat.calls[1].system));
-check('BẬT: headings của gather có 8481 dù LLM giả chỉ đoán 8412', bat.out.candidates.headings.includes('8481') && bat.out.candidates.headings.includes('8412'), JSON.stringify(bat.out.candidates.headings));
-check('BẬT: gói vòng 2 có chú giải + dòng biểu thuế nhóm 8481', /■ NHÓM 8481/.test(bat.calls[1].user) && /84812090/.test(bat.calls[1].user));
+check('BẬT + NAP=5: headings của gather có 8481 dù LLM giả chỉ đoán 8412', bat.out.candidates.headings.includes('8481') && bat.out.candidates.headings.includes('8412'), JSON.stringify(bat.out.candidates.headings));
+check('BẬT + NAP=5: gói vòng 2 có chú giải + dòng biểu thuế nhóm 8481', /■ NHÓM 8481/.test(bat.calls[1].user) && /84812090/.test(bat.calls[1].user));
 check('BẬT: khối ứng viên KHÔNG lọt vào mục "HỒ SƠ GỐC (nguyên văn…)" của gói vòng 2 (không thành nguồn trích)', !bat.calls[1].user.includes(tt.NHAN_KHOI));
 check('BẬT: engine.timTruoc {trangThai, nhom, nguon, ms} + phases.timTruocMs để đo', bat.out.engine.timTruoc?.trangThai === 'CO_UNG_VIEN' && bat.out.engine.timTruoc.nhom[0] === '8481' && typeof bat.out.engine.timTruoc.ms === 'number' && bat.out.engine.timTruoc.nguon['8481'].length > 0 && typeof bat.out.engine.phases.timTruocMs === 'number', JSON.stringify(bat.out.engine.timTruoc));
-check('BẬT: mọi nhóm ứng viên đều được nạp vào gather (không qua cổng độ giống 0,6)', bat.out.engine.timTruoc.nhom.every((h) => bat.out.candidates.headings.includes(h)), `${bat.out.engine.timTruoc.nhom} | ${bat.out.candidates.headings}`);
+check('BẬT + NAP=5: mọi nhóm ứng viên đều được nạp vào gather (không qua cổng độ giống 0,6)', bat.out.engine.timTruoc.nhom.every((h) => bat.out.candidates.headings.includes(h)), `${bat.out.engine.timTruoc.nhom} | ${bat.out.candidates.headings}`);
 check('BẬT: module không chọn mã — mã cuối vẫn là mã vòng 2 đưa ra', bat.out.results?.[0]?.hs === '84812090', bat.out.results?.[0]?.hs);
 
 // Ca chứng minh CƠ CHẾ nạp nhóm: kính mắt — không từ điển nào, vòng 1 giả đoán 3926 ⇒ TẮT thì hồ sơ vụ việc KHÔNG có 9004.
 const kTat = await chay(KINH, [R1_KINH_3926, R2_KINH], OZ_KINH);
-const kBat = await chay(KINH, [R1_KINH_3926, R2_KINH], OZ_KINH, { HS_TIM_TRUOC: 'on' });
+const kBat = await chay(KINH, [R1_KINH_3926, R2_KINH], OZ_KINH, { HS_TIM_TRUOC: 'on', HS_TIM_TRUOC_NAP: '5' });
 // (Đo ở gói của LƯỢT VÒNG 2 ĐẦU TIÊN: sau khi vòng 2 giả chốt 9004, chốt chặn "nhóm chưa kiểm" tự nạp 9004 ở cả hai lượt.)
 check('kính mắt TẮT: gói vòng 2 đầu tiên KHÔNG có chú giải nhóm 9004 (vòng 1 đoán 3926; tờ khai Oz chỉ vào codePool, không thêm nhóm)', /■ NHÓM 3926/.test(kTat.calls[1].user) && !/■ NHÓM 9004/.test(kTat.calls[1].user));
-check('kính mắt BẬT: gói vòng 2 đầu tiên CÓ chú giải nhóm 9004', /■ NHÓM 9004/.test(kBat.calls[1].user) && /■ NHÓM 3926/.test(kBat.calls[1].user), JSON.stringify(kBat.out.candidates.headings));
+check('kính mắt BẬT + NAP=5: gói vòng 2 đầu tiên CÓ chú giải nhóm 9004', /■ NHÓM 9004/.test(kBat.calls[1].user) && /■ NHÓM 3926/.test(kBat.calls[1].user), JSON.stringify(kBat.out.candidates.headings));
 check('CA NGƯỢC: ca kính mắt BẬT không bị nạp nhóm 8481 của ca van', !kBat.out.candidates.headings.includes('8481') && !/Nhóm 8481/.test(kBat.calls[0].user));
 const hBat = await chay('气动电磁阀 4V210-08', [R1_VAN_8412, R2_VAN], [], { HS_TIM_TRUOC: 'on' });
 const hTat = await chay('气动电磁阀 4V210-08', [R1_VAN_8412, R2_VAN], []);
 check('CA NGƯỢC: tên chữ Hán BẬT → đầu vào vòng 1 trùng từng byte với lượt TẮT, engine.timTruoc ghi BO_QUA_TEN_CHU_HAN', hBat.calls[0].user === hTat.calls[0].user && hBat.out.engine.timTruoc?.trangThai === 'BO_QUA_TEN_CHU_HAN');
 
 // Chi phí thêm vào vòng 1 / vòng 2 của ca van (in ra để dán vào PR — không phải phép kiểm).
-console.log(`CHI_PHI ca van: vòng 1 +${bat.calls[0].user.length - tat.calls[0].user.length} ký tự (${tat.calls[0].user.length} → ${bat.calls[0].user.length}); gói vòng 2 +${bat.calls[1].user.length - tat.calls[1].user.length} ký tự (${tat.calls[1].user.length} → ${bat.calls[1].user.length}); nhóm trong gather ${tat.out.candidates.headings.length} → ${bat.out.candidates.headings.length}; tìm trước ${bat.out.engine.timTruoc.ms} ms`);
-console.log(`CHI_PHI ca kính: vòng 1 +${kBat.calls[0].user.length - kTat.calls[0].user.length} ký tự; gói vòng 2 +${kBat.calls[1].user.length - kTat.calls[1].user.length} ký tự (${kTat.calls[1].user.length} → ${kBat.calls[1].user.length}); nhóm trong gather ${kTat.out.candidates.headings.length} → ${kBat.out.candidates.headings.length}; tìm trước ${kBat.out.engine.timTruoc.ms} ms`);
+console.log(`CHI_PHI (NAP=5) ca van: vòng 1 +${bat.calls[0].user.length - tat.calls[0].user.length} ký tự (${tat.calls[0].user.length} → ${bat.calls[0].user.length}); gói vòng 2 +${bat.calls[1].user.length - tat.calls[1].user.length} ký tự (${tat.calls[1].user.length} → ${bat.calls[1].user.length}); nhóm trong gather ${tat.out.candidates.headings.length} → ${bat.out.candidates.headings.length}; tìm trước ${bat.out.engine.timTruoc.ms} ms`);
+console.log(`CHI_PHI (NAP=5) ca kính: vòng 1 +${kBat.calls[0].user.length - kTat.calls[0].user.length} ký tự; gói vòng 2 +${kBat.calls[1].user.length - kTat.calls[1].user.length} ký tự (${kTat.calls[1].user.length} → ${kBat.calls[1].user.length}); nhóm trong gather ${kTat.out.candidates.headings.length} → ${kBat.out.candidates.headings.length}; tìm trước ${kBat.out.engine.timTruoc.ms} ms`);
 
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);

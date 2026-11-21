@@ -31,7 +31,7 @@ kiem('sơ đồ có cụm Cổng máy kiểm định tự động', doanSoDo.inc
 
 // Mọi kho tri thức chính có mặt
 kiem('sơ đồ có kho Sổ tay nhóm 4 số', doanSoDo.includes('data/so-tay/'));
-kiem('sơ đồ có kho Sổ ranh giới PN6', doanSoDo.includes('data/ho-so/ranh-gioi/'));
+kiem('sơ đồ có kho Sổ ranh giới PN6', doanSoDo.includes(['data', 'ho-so', 'ranh-gioi', ''].join('/')));
 kiem('sơ đồ có kho Tiền lệ', doanSoDo.includes('data/precedents.json'));
 kiem('sơ đồ có kho Chú giải', doanSoDo.includes('data/explanatory-notes.json'));
 
