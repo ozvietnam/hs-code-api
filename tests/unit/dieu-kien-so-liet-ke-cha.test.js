@@ -609,4 +609,251 @@ describe('lib/dieu-kien-so.js — gỡ tiêu đề cha đa vế cho LIET_KE & t�
       'CHOT',
     );
   });
+
+  test('OZV-1717: gỡ 11 nhóm vướng tiêu đề cha đa vế và giá trị cha-con LIET_KE/CHAT_LIEU (0804, 0809, 1401, 2916, 2922, 2931, 4818, 6001, 6105, 6406, 9615) — kiểm 2 chiều + ReDoS < 2 giây', () => {
+    // 1. Tách vế cha nối bằng "và" / "and" (0804, 0809, 2916, 2922, 2931, 4818)
+    assert.equal(
+      chotDong8({
+        hs: '080450',
+        productText: 'Quả ổi, xoài và măng cụt: Quả măng cụt',
+      }).hs,
+      '08045030',
+    );
+    assert.notEqual(
+      chotDong8({
+        hs: '080450',
+        productText: 'Quả ổi, xoài và măng cụt',
+      }).ketQua,
+      'CHOT',
+    );
+
+    // 0809: "Quả mận" không khớp tiền tố "Quả mận gai"
+    assert.equal(
+      chotDong8({
+        hs: '080940',
+        productText: 'Quả mận và quả mận gai: Quả mận',
+      }).hs,
+      '08094010',
+    );
+    assert.equal(
+      chotDong8({
+        hs: '080940',
+        productText: 'Quả mận và quả mận gai: Quả mận gai',
+      }).hs,
+      '08094020',
+    );
+    assert.notEqual(
+      chotDong8({
+        hs: '080940',
+        productText: 'Quả mận và quả mận gai',
+      }).ketQua,
+      'CHOT',
+    );
+
+    assert.equal(
+      chotDong8({
+        hs: '291632',
+        productText:
+          'Axit carboxylic thơm đơn chức, các anhydrit, halogenua, peroxit, peroxyaxit của chúng và các dẫn xuất của các chất trên - Benzoyl peroxit và benzoyl clorua: Benzoyl peroxit',
+      }).hs,
+      '29163210',
+    );
+    assert.equal(
+      chotDong8({
+        hs: '291632',
+        productText:
+          'Axit carboxylic thơm đơn chức, các anhydrit, halogenua, peroxit, peroxyaxit của chúng và các dẫn xuất của các chất trên - Benzoyl peroxit và benzoyl clorua: Benzoyl clorua',
+      }).hs,
+      '29163220',
+    );
+    assert.notEqual(
+      chotDong8({
+        hs: '291632',
+        productText:
+          'Axit carboxylic thơm đơn chức, các anhydrit, halogenua, peroxit, peroxyaxit của chúng và các dẫn xuất của các chất trên - Benzoyl peroxit và benzoyl clorua',
+      }).ketQua,
+      'CHOT',
+    );
+
+    assert.equal(
+      chotDong8({
+        hs: '292242',
+        productText:
+          'Axit - amino, trừ loại chứa 2 chức oxy trở lên, và este của chúng; muối của chúng - Axit glutamic và muối của nó: Axit glutamic',
+      }).hs,
+      '29224210',
+    );
+    assert.equal(
+      chotDong8({
+        hs: '292242',
+        productText:
+          'Axit - amino, trừ loại chứa 2 chức oxy trở lên, và este của chúng; muối của chúng - Axit glutamic và muối của nó: Muối khác',
+      }).hs,
+      '29224290',
+    );
+    assert.notEqual(
+      chotDong8({
+        hs: '292242',
+        productText:
+          'Axit - amino, trừ loại chứa 2 chức oxy trở lên, và este của chúng; muối của chúng - Axit glutamic và muối của nó',
+      }).ketQua,
+      'CHOT',
+    );
+
+    assert.equal(
+      chotDong8({
+        hs: '293110',
+        productText: 'Chì tetrametyl và chì tetraetyl: Chì tetrametyl',
+      }).hs,
+      '29311010',
+    );
+    assert.equal(
+      chotDong8({
+        hs: '293110',
+        productText: 'Chì tetrametyl và chì tetraetyl: Chì tetraetyl',
+      }).hs,
+      '29311020',
+    );
+    assert.notEqual(
+      chotDong8({
+        hs: '293110',
+        productText: 'Chì tetrametyl và chì tetraetyl',
+      }).ketQua,
+      'CHOT',
+    );
+
+    assert.equal(
+      chotDong8({
+        hs: '481830',
+        productText: 'Khăn trải bàn và khăn ăn: Khăn trải bàn',
+      }).hs,
+      '48183010',
+    );
+    assert.equal(
+      chotDong8({
+        hs: '481830',
+        productText: 'Khăn trải bàn và khăn ăn: Khăn ăn (serviettes)',
+      }).hs,
+      '48183020',
+    );
+    assert.notEqual(
+      chotDong8({
+        hs: '481830',
+        productText: 'Khăn trải bàn và khăn ăn',
+      }).ketQua,
+      'CHOT',
+    );
+
+    // 2. Từ ghép khác nghĩa "nguyên cây" vs "nguyên liệu" (1401)
+    assert.equal(
+      chotDong8({
+        hs: '140120',
+        productText: 'Song, mây: Nguyên cây',
+      }).hs,
+      '14012010',
+    );
+    assert.notEqual(
+      chotDong8({
+        hs: '140120',
+        productText: 'Song, mây',
+      }).ketQua,
+      'CHOT',
+    );
+
+    // 3. Thu gọn ứng viên LIET_KE có quan hệ cha-con trong giaTriCha (6001, 6105)
+    assert.equal(
+      chotDong8({
+        hs: '600192',
+        productText:
+          'Loại khác - Từ xơ nhân tạo: Vải nổi vòng (pile) từ xơ staple 100% polyeste, có chiều rộng không nhỏ hơn 63,5 mm nhưng không quá 76,2 mm, phù hợp để sử dụng trong sản xuất con lăn sơn',
+      }).hs,
+      '60019220',
+    );
+    assert.notEqual(
+      chotDong8({
+        hs: '600192',
+        productText: 'Loại khác - Từ xơ nhân tạo',
+      }).ketQua,
+      'CHOT',
+    );
+
+    assert.equal(
+      chotDong8({
+        hs: '610520',
+        productText: 'Từ sợi nhân tạo: Từ sợi tổng hợp',
+      }).hs,
+      '61052010',
+    );
+    assert.equal(
+      chotDong8({
+        hs: '610520',
+        productText: 'Từ sợi nhân tạo: Từ sợi tái tạo',
+      }).hs,
+      '61052020',
+    );
+    assert.notEqual(
+      chotDong8({
+        hs: '610520',
+        productText: 'Từ sợi nhân tạo',
+      }).ketQua,
+      'CHOT',
+    );
+
+    // 4. Gỡ tiêu đề cha đa vế cho CHAT_LIEU_THEO_VI_TRI (6406, 9615)
+    assert.equal(
+      chotDong8({
+        hs: '640620',
+        productText: 'Đế ngoài và gót giày, bằng cao su hoặc plastic: Bằng cao su',
+      }).hs,
+      '64062010',
+    );
+    assert.equal(
+      chotDong8({
+        hs: '640620',
+        productText: 'Đế ngoài và gót giày, bằng cao su hoặc plastic: Bằng plastic',
+      }).hs,
+      '64062020',
+    );
+    assert.notEqual(
+      chotDong8({
+        hs: '640620',
+        productText: 'Đế ngoài và gót giày, bằng cao su hoặc plastic',
+      }).ketQua,
+      'CHOT',
+    );
+
+    assert.equal(
+      chotDong8({
+        hs: '961511',
+        productText: 'Lược, trâm cài tóc và loại tương tự - Bằng cao su cứng hoặc plastic: Bằng cao su cứng',
+      }).hs,
+      '96151120',
+    );
+    assert.equal(
+      chotDong8({
+        hs: '961511',
+        productText: 'Lược, trâm cài tóc và loại tương tự - Bằng cao su cứng hoặc plastic: Bằng plastic',
+      }).hs,
+      '96151130',
+    );
+    assert.notEqual(
+      chotDong8({
+        hs: '961511',
+        productText: 'Lược, trâm cài tóc và loại tương tự - Bằng cao su cứng hoặc plastic',
+      }).ketQua,
+      'CHOT',
+    );
+
+    // 5. Kiểm ReDoS ~40.000 từ lặp < 2 giây
+    const longText = `${Array(40000).fill('quả mận').join(' ')} - Quả mận và quả mận gai: Quả mận gai`;
+    const t0 = Date.now();
+    const rLong = DK.danhGiaTuChu(
+      { fact: 'tenLoai', op: 'TEN_LOAI', value: 'Quả mận gai' },
+      longText,
+      '08094020',
+    );
+    const dt = Date.now() - t0;
+    assert.equal(rLong.trangThai, 'THOA');
+    assert.ok(dt < 2000, `Thời gian chạy ${dt}ms phải < 2000ms`);
+  });
 });
