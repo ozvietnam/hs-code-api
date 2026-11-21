@@ -3,14 +3,18 @@
 // Ghi (áp vào sổ tay) chỉ vào thư mục tạm của test-isolate-data.
 import './test-isolate-data.mjs';
 import fs from 'fs';
+import os from 'os';
 import path from 'path';
 import { execFileSync } from 'child_process';
 import { createRequire } from 'module';
+import { Worker } from 'worker_threads';
 import { TEST_DATA_DIR } from './test-isolate-data.mjs';
 const require = createRequire(import.meta.url);
 const C = require('../lib/ho-so/cong-ranh-gioi.js');
 const S = require('../lib/so-tay.js');
 const { nhanCuaTep } = require('../lib/nguon-loai.js');
+const SO_LUONG = Math.max(1, Number(process.env.TEST_RG_WORKERS) || Math.min(8, os.cpus().length || 1));
+const ketQua12i = new Map();
 
 let pass = 0; let fail = 0;
 const check = (n, c, x = '') => { if (c) { pass += 1; console.log(`PASS ${n}`); } else { fail += 1; console.log(`FAIL ${n} ${typeof x === 'string' ? x : JSON.stringify(x)}`); } };
@@ -207,17 +211,109 @@ function nhap853641() {
   const dir = path.join(process.cwd(), 'data/ho-so/ranh-gioi');
   const tep = fs.existsSync(dir) ? fs.readdirSync(dir).filter((f) => /^\d{6}\.json$/.test(f)) : [];
   check('8a có bản nháp thí điểm đã commit', tep.length >= 3, tep);
-  for (const f of tep) {
+  const kiemMotTep = (f) => {
     const b = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8'));
-    // #653: chỉ cổng 0 + 3 (không sinh vector) — 840991 (~6 triệu vector) từng thêm ~20 s CI cho một kiểm chỉ cần hai cổng này.
-    const r = C.kiemRanhGioi(b.pn6, b, { cong: [0, 3] });
+    const isDuyet = b.trangThai === 'DUYET';
+    // Bản DUYET đã chạy đủ cổng nên dùng ngay kết quả cổng 0 + 3 từ lượt kiểm đầy đủ (#1554).
+    const res0 = isDuyet ? C.kiemRanhGioi(b.pn6, b) : C.kiemRanhGioi(b.pn6, b, { cong: [0, 3] });
     // cong3-liet-ke-trong-mot-chuoi (vòng 5) là kiểm CHẤT LƯỢNG điều kiện (liệt kê HOẶC gói một chuỗi), không phải trích bịa —
     // bản NHAP/TRA_VE được đỏ vì nó như cổng 2/5; bản DUYET vẫn phải xanh đủ cổng (8d).
-    const loi03 = r.loi.filter((l) => /^cong[03]-/.test(l) && !l.startsWith('cong3-liet-ke-trong-mot-chuoi:'));
-    check(`8b ${f}: cổng 0 + cổng 3 xanh (không trích bịa, nhãn đúng)`, loi03.length === 0, loi03);
-    check(`8c ${f}: chưa ai duyệt → mọi mục AI_DA_KIEM`, b.trangThai !== 'DUYET' ? [...b.dong8, ...(b.dieuKienNut || [])].every((m) => m.nguonLoai === 'AI_DA_KIEM') : true);
+    const loi03 = res0.loi.filter((l) => /^cong[03]-/.test(l) && !l.startsWith('cong3-liet-ke-trong-mot-chuoi:'));
+    const ok8c = !isDuyet ? [...b.dong8, ...(b.dieuKienNut || [])].every((m) => m.nguonLoai === 'AI_DA_KIEM') : true;
+    const ok8d = isDuyet ? res0.hopLe === true : true;
+    const loi8d = isDuyet ? res0.loi : null;
+    let boVeTrung = false; let voBam = false;
+    const pn6 = b?.pn6 || f.replace('.json', '');
+    if (b?.trangThai === 'DUYET' && b?.duyet?.bam) {
+      const dem = {};
+      for (const g of b.ghiChuSoan || []) {
+        if (g && g.loai === 'BO_VE') { const k = String(g.ma); dem[k] = (dem[k] || 0) + 1; }
+      }
+      if (Object.values(dem).some((n) => n > 1)) {
+        boVeTrung = true;
+        if (C.bamRanhGioi(b) !== b.duyet.bam) voBam = true;
+      }
+    }
+    return { loi03, ok8c, isDuyet, ok8d, loi8d, boVeTrung, voBam, pn6 };
+  };
+  const WORKER_CODE = `
+    const fs = require('fs');
+    const path = require('path');
+    const { parentPort, workerData } = require('worker_threads');
+    const CMod = require(workerData.modPath);
+    const { dir, tep } = workerData;
+    parentPort.on('message', (idx) => {
+      if (idx == null) return;
+      const f = tep[idx];
+      try {
+        const b = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8'));
+        const isDuyet = b.trangThai === 'DUYET';
+        const res0 = isDuyet ? CMod.kiemRanhGioi(b.pn6, b) : CMod.kiemRanhGioi(b.pn6, b, { cong: [0, 3] });
+        const loi03 = res0.loi.filter((l) => /^cong[03]-/.test(l) && !l.startsWith('cong3-liet-ke-trong-mot-chuoi:'));
+        const ok8c = !isDuyet ? [...b.dong8, ...(b.dieuKienNut || [])].every((m) => m.nguonLoai === 'AI_DA_KIEM') : true;
+        const ok8d = isDuyet ? res0.hopLe === true : true;
+        const loi8d = isDuyet ? res0.loi : null;
+        let boVeTrung = false; let voBam = false;
+        const pn6 = b?.pn6 || f.replace('.json', '');
+        if (b?.trangThai === 'DUYET' && b?.duyet?.bam) {
+          const dem = {};
+          for (const g of b.ghiChuSoan || []) {
+            if (g && g.loai === 'BO_VE') { const k = String(g.ma); dem[k] = (dem[k] || 0) + 1; }
+          }
+          if (Object.values(dem).some((n) => n > 1)) {
+            boVeTrung = true;
+            if (CMod.bamRanhGioi(b) !== b.duyet.bam) voBam = true;
+          }
+        }
+        parentPort.postMessage({ idx, out: { loi03, ok8c, isDuyet, ok8d, loi8d, boVeTrung, voBam, pn6 } });
+      } catch (err) {
+        parentPort.postMessage({ idx, err: err && err.stack ? err.stack : String(err) });
+      }
+    });
+  `;
+  const queue = tep
+    .map((f, idx) => ({ idx, size: fs.statSync(path.join(dir, f)).size }))
+    .sort((a, b) => b.size - a.size)
+    .map((x) => x.idx);
+  const results = new Array(tep.length);
+  if (SO_LUONG <= 1 || tep.length <= 1) {
+    for (const idx of queue) results[idx] = kiemMotTep(tep[idx]);
+  } else {
+    let cursor = 0;
+    const nW = Math.min(SO_LUONG, tep.length);
+    const workers = [];
+    try {
+      await new Promise((resolve, reject) => {
+        let done = 0;
+        let settled = false;
+        for (let i = 0; i < nW; i += 1) {
+          const w = new Worker(WORKER_CODE, { eval: true, workerData: { dir, tep, modPath: require.resolve('../lib/ho-so/cong-ranh-gioi.js') } });
+          workers.push(w);
+          w.on('error', (err) => { if (!settled) { settled = true; reject(err); } });
+          w.on('exit', (code) => { if (!settled && code !== 0) { settled = true; reject(new Error(`Worker exited with code ${code}`)); } });
+          w.on('message', (msg) => {
+            if (settled) return;
+            if (msg.err) { settled = true; reject(new Error(msg.err)); return; }
+            results[msg.idx] = msg.out;
+            done += 1;
+            if (cursor < queue.length) w.postMessage(queue[cursor++]);
+            else if (done === tep.length) { settled = true; resolve(); }
+          });
+          if (cursor < queue.length) w.postMessage(queue[cursor++]);
+        }
+      });
+    } finally {
+      await Promise.all(workers.map((w) => w.terminate()));
+    }
+  }
+  for (let i = 0; i < tep.length; i += 1) {
+    const f = tep[i];
+    const out = results[i];
+    ketQua12i.set(f, out);
+    check(`8b ${f}: cổng 0 + cổng 3 xanh (không trích bịa, nhãn đúng)`, out.loi03.length === 0, out.loi03);
+    check(`8c ${f}: chưa ai duyệt → mọi mục AI_DA_KIEM`, out.ok8c);
     // Bản đã DUYET phải xanh đủ 4 cổng (sửa công cụ làm đỏ bản đã duyệt = phát hiện, không sửa điều kiện đã duyệt).
-    if (b.trangThai === 'DUYET') { const du = C.kiemRanhGioi(b.pn6, b); check(`8d ${f}: bản DUYET xanh đủ 4 cổng`, du.hopLe === true, du.loi); }
+    if (out.isDuyet) check(`8d ${f}: bản DUYET xanh đủ 4 cổng`, out.ok8d, out.loi8d);
   }
 }
 
@@ -377,6 +473,13 @@ function nhap853641() {
   const dirRg = path.join(process.cwd(), 'data/ho-so/ranh-gioi');
   const vo = []; let xet = 0;
   for (const f of fs.readdirSync(dirRg).filter((x) => x.endsWith('.json'))) {
+    const cached = ketQua12i.get(f);
+    if (cached) {
+      if (!cached.boVeTrung) continue;
+      xet += 1;
+      if (cached.voBam) vo.push(cached.pn6);
+      continue;
+    }
     let b; try { b = JSON.parse(fs.readFileSync(path.join(dirRg, f), 'utf8')); } catch { continue; }
     if (b?.trangThai !== 'DUYET' || !b?.duyet?.bam) continue;
     const dem = (b.ghiChuSoan || []).filter((g) => g && g.loai === 'BO_VE')
