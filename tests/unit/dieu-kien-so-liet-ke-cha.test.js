@@ -189,5 +189,29 @@ describe('lib/dieu-kien-so.js — gỡ tiêu đề cha đa vế cho LIET_KE & t�
     });
     assert.equal(r27101212.ketQua, 'CHOT');
     assert.equal(r27101212.hs, '27101212');
+
+    const rRonKhongQua = DK.danhGiaTuChu(
+      { fact: 'triSoOctan', op: '<=', value: 95, donVi: 'RON' },
+      'Xăng động cơ: từ RON 90 nhưng không quá RON 95',
+      '27101212',
+    );
+    assert.equal(rRonKhongQua.trangThai, 'THOA');
+    assert.equal(rRonKhongQua.tatDinh, true);
+
+    const r85011041 = chotDong8({
+      hs: '850110',
+      productText:
+        'Động cơ điện và máy phát điện (trừ tổ máy phát điện) - Động cơ có công suất không quá 37,5 W - Động cơ một chiều - Loại khác: Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16',
+    });
+    assert.equal(r85011041.ketQua, 'CHOT');
+    assert.equal(r85011041.hs, '85011041');
+
+    const r85011091 = chotDong8({
+      hs: '850110',
+      productText:
+        'Động cơ điện và máy phát điện (trừ tổ máy phát điện) - Động cơ có công suất không quá 37,5 W - Động cơ khác, kể cả động cơ vạn năng (một chiều/xoay chiều) - Loại khác: Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16',
+    });
+    assert.equal(r85011091.ketQua, 'CHOT');
+    assert.equal(r85011091.hs, '85011091');
   });
 });
