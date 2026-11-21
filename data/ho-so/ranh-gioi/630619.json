@@ -4,19 +4,13 @@
   "nhom": "6306",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "DUYET",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-630619",
     "ngay": "2026-11-05"
   },
-  "duyet": {
-    "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:ozv#soat-630619",
-    "ngay": "2026-11-21",
-    "ghiChu": "Đã chuẩn hoá dieuKienSo bám chữ biểu thuế",
-    "bam": "12e33c107a0997e0eb6278dd445a8015d219d09df8dd14d6745e41a3092c82ad"
-  },
+  "duyet": null,
   "dieuKienNut": [],
   "dong8": [
     {
@@ -30,14 +24,9 @@
           "value": [
             "SOI_THUC_VAT_KHAC"
           ]
-        },
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "thuộc nhóm 53.05"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "63061920",
@@ -52,26 +41,39 @@
           ]
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "63061990",
       "nguon": "tax.63061990",
       "trich": "63061990 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "63061910",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.63061910: \"Từ sợi dệt thực vật thuộc nhóm 53.05\" ⇒ loaiSoiDet TRONG [SOI_THUC_VAT_KHAC] + tenLoai \"thuộc nhóm 53.05\""
+      "ghiChu": "tax.63061910: \"Từ sợi dệt thực vật thuộc nhóm 53.05\" ⇒ loaiSoiDet TRONG [SOI_THUC_VAT_KHAC]"
+    },
+    {
+      "ma": "63061910",
+      "loai": "BO_VE",
+      "ve": "thuộc nhóm 53.05",
+      "lyDo": "Vế thuộc nhóm 53.05 là dẫn chiếu phân loại của xơ sợi dệt thực vật trong biểu thuế, đã được phản ánh đầy đủ qua giá trị SOI_THUC_VAT_KHAC của khoá loaiSoiDet"
     },
     {
       "ma": "63061920",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.63061920: \"Từ bông\" ⇒ loaiSoiDet TRONG [BONG]"
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:duyet-L19-20261111#soat-L19",
+      "ngay": "2026-11-11",
+      "lyDo": "(A) 63061910 SUY RỘNG + BO_VE sai: \"Từ sợi dệt thực vật thuộc nhóm 53.05\" (EN \"Of vegetable textile fibres of heading 53.05\") ⇒ loaiSoiDet SOI_THUC_VAT_KHAC và BO_VE vế \"thuộc nhóm 53.05\" với lý do \"đã phản ánh qua SOI_THUC_VAT_KHAC\" — sai: giá trị này gồm lanh (53.01), gai dầu (53.02), đay (53.03). Tấm bạt đay rơi 63061910 thay vì 63061990. Bỏ vế làm đổi mã ⇒ phải DỪNG / THIEU_KHOA_TU_VUNG."
     }
   ]
 }

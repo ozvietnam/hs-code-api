@@ -111,52 +111,35 @@
     },
     {
       "hs": "20029010",
-      "dieuKien": "tên loại hàng: Bột cà chua dạng sệt",
-      "nguon": "tax.20029010",
-      "trich": "20029010 - - Bột cà chua dạng sệt (SEN)",
-      "nguonLoai": "CLAUDE_DUYET",
-      "loaiKhac": false,
+      "dieuKien": "Bột cà chua dạng sệt: cà chua nguyên chất cô đặc, từ 25% đến 40% chất rắn không chứa muối",
+      "tieuChi": null,
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Bột cà chua dạng sệt"
+          "fact": "han_luong_chat_ran_khong_chua_muoi",
+          "op": ">=",
+          "value": 25,
+          "donVi": "%"
+        },
+        {
+          "fact": "han_luong_chat_ran_khong_chua_muoi",
+          "op": "<=",
+          "value": 40,
+          "donVi": "%"
         }
       ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:ozv#soat-200290",
-          "ngay": "2026-11-21",
-          "bam": "e8a265e3cf6c7231f1a5b3c2012f683498dd2212a54cd9e85714494a285039ae"
-        }
-      }
+      "nguon": "sen.20029010",
+      "trich": "Bột cà chua dạng sệt là cà chua nguyên chất cô đặc, có từ 25% đến 40% hàm lượng là chất rắn không chứa muối.",
+      "nguonLoai": "AI_DA_KIEM",
+      "loaiKhac": false
     },
     {
       "hs": "20029020",
-      "dieuKien": "tên loại hàng: bột cà chua",
-      "nguon": "nhom2002.nhom",
-      "trich": "bột cà chua dạng sệt, cà chua cô đặc) … và các loại xốt cà chua khác (nhóm 21.03)",
-      "nguonLoai": "CLAUDE_DUYET",
-      "loaiKhac": false,
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "bột cà chua"
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude-agent:ozv#soat-200290",
-          "ngay": "2026-11-21",
-          "bam": "e8a265e3cf6c7231f1a5b3c2012f683498dd2212a54cd9e85714494a285039ae"
-        }
-      },
-      "phanConLai": [
-        "20029010"
-      ]
+      "dieuKien": "Bột cà chua",
+      "tieuChi": null,
+      "nguon": "tax.20029020",
+      "trich": "20029020 - - Bột cà chua",
+      "nguonLoai": "AI_DA_KIEM",
+      "loaiKhac": false
     },
     {
       "hs": "20029090",
