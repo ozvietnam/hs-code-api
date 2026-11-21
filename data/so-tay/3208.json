@@ -146,11 +146,30 @@
   "dong8": [
     {
       "hs": "32081011",
-      "dieuKien": "Phân nhóm 3208.10 (gốc polyeste): vecni (kể cả dầu bóng) dùng trong nha khoa, kể cả vecni fluorua",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): nha khoa; dùng trong nha khoa",
       "loaiKhac": false,
-      "nguon": "sen.32081011",
-      "trich": "Vecni sử dụng trong nha khoa, kể cả vecni fluorua được làm từ polyester, polyme acrylic, polyme vinyl, hoặc polymer khác. Vecni có chức năng như một lớp bảo vệ giữa men răng và các vật liệu nha khoa giúp phục hồi răng.",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguon": "tax.32081011",
+      "trich": "32081011 - - - Dùng trong nha khoa (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "nha khoa"
+        },
+        {
+          "fact": "dungTrongNhaKhoa",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude:tho-hs-01:20261121#soat-320810",
+          "ngay": "2026-11-21",
+          "bam": "9a2adcd19c2c8807573958b99a1bb15498547d986e5b2940501518cd98640a88"
+        }
+      }
     },
     {
       "hs": "32081019",
@@ -171,11 +190,35 @@
     },
     {
       "hs": "32081020",
-      "dieuKien": "Phân nhóm 3208.10 (gốc polyeste): sơn chống hà và/hoặc chống ăn mòn chuyên dùng sơn vỏ tàu thuỷ",
+      "dieuKien": "tên loại hàng: Sơn; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): vỏ tàu thủy; sơn chống hà hoặc chống ăn mòn dùng sơn vỏ tàu thủy",
       "loaiKhac": false,
-      "nguon": "sen.32081020",
-      "trich": "Loại sơn này chuyên dùng để sơn phủ bề mặt vỏ tàu viễn dương và thuyền (và các bề mặt của các kết cấu chìm dưới nước) nhằm ức chế sự sinh trưởng của các thủy sinh vật (ví dụ như hà và tảo)",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguon": "tax.32081020",
+      "trich": "32081020 - - Sơn chống hà và/hoặc chống ăn mòn dùng để sơn vỏ tàu thủy (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Sơn"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "vỏ tàu thủy"
+        },
+        {
+          "fact": "sonChongHaHoacChongAnMonVoTau",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude:tho-hs-01:20261121#soat-320810",
+          "ngay": "2026-11-21",
+          "bam": "9a2adcd19c2c8807573958b99a1bb15498547d986e5b2940501518cd98640a88"
+        }
+      }
     },
     {
       "hs": "32081090",
@@ -672,6 +715,27 @@
   },
   "yKienWcoDayDu": false,
   "dieuKienNut": [
+    {
+      "id": "3208101",
+      "nguon": "tieuDe.3208101",
+      "trich": "3208101 Vecni (kể cả dầu bóng)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Vecni (kể cả dầu bóng)"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude:tho-hs-01:20261121#soat-320810",
+          "ngay": "2026-11-21",
+          "bam": "9a2adcd19c2c8807573958b99a1bb15498547d986e5b2940501518cd98640a88"
+        }
+      }
+    },
     {
       "id": "3208901",
       "nguon": "tieuDe.3208901",

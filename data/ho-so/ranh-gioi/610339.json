@@ -4,13 +4,19 @@
   "nhom": "6103",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-610339",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude:tho-hs-01:20261121#soat-610339",
+    "ngay": "2026-11-21",
+    "ghiChu": "Duyệt chuẩn hoá ranh giới",
+    "bam": "1f22b72e9b8b8542b3895b9a0966e6600b9c97947c221f277324bb3c3f104765"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -19,37 +25,23 @@
       "trich": "61033910 - - - Từ ramie, sợi lanh hoặc tơ tằm",
       "dieuKienSo": [
         {
-          "op": "HOAC",
-          "phuongAn": [
-            [
-              {
-                "fact": "loaiSoiDet",
-                "op": "TRONG",
-                "value": [
-                  "SOI_THUC_VAT_KHAC"
-                ]
-              }
-            ],
-            [
-              {
-                "fact": "loaiSoiDet",
-                "op": "TRONG",
-                "value": [
-                  "TO_TAM"
-                ]
-              }
-            ]
+          "fact": "loaiSoiDet",
+          "op": "TRONG",
+          "value": [
+            "RAMIE",
+            "SOI_THUC_VAT_KHAC",
+            "TO_TAM"
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "61033990",
       "nguon": "tax.61033990",
       "trich": "61033990 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [

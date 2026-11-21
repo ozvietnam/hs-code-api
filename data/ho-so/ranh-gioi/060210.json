@@ -4,13 +4,19 @@
   "nhom": "0602",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-060210",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude:tho-hs-01:20261121#soat-060210",
+    "ngay": "2026-11-21",
+    "ghiChu": "Duyệt chuẩn hoá ranh giới theo traVe",
+    "bam": "00281e21fb8a413d631e775e23ac8c9b3de7de49aae12cb73490d1cc8e796277"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -19,12 +25,12 @@
       "trich": "06021010 - - Của cây phong lan",
       "dieuKienSo": [
         {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": "cây phong lan"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Của cây phong lan"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "06021020",
@@ -32,31 +38,31 @@
       "trich": "06021020 - - Của cây cao su",
       "dieuKienSo": [
         {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": "cây cao su"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Của cây cao su"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "06021090",
       "nguon": "tax.06021090",
       "trich": "06021090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "06021010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.06021010 \"Của cây phong lan\" ⇒ dungCho cây phong lan"
+      "ghiChu": "tax.06021010 \"Của cây phong lan\" ⇒ tenLoai \"Của cây phong lan\""
     },
     {
       "ma": "06021020",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.06021020 \"Của cây cao su\" ⇒ dungCho cây cao su"
+      "ghiChu": "tax.06021020 \"Của cây cao su\" ⇒ tenLoai \"Của cây cao su\""
     }
   ],
   "traVe": [

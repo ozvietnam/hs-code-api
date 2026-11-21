@@ -4,13 +4,19 @@
   "nhom": "7207",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-720720",
     "ngay": "2026-11-04"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude:tho-hs-01:20261121#soat-720720",
+    "ngay": "2026-11-21",
+    "ghiChu": "Duyệt chuẩn hoá ranh giới theo traVe",
+    "bam": "687cabd79769d5d36f99b7fc2b05e3151eba87bbe3c60a5540e215b707754230"
+  },
   "dieuKienNut": [
     {
       "id": "720720~r10997",
@@ -24,7 +30,7 @@
           "donVi": "%"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -38,7 +44,7 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "72072021",
@@ -46,21 +52,35 @@
       "trich": "72072021 - - - - Dạng khối được tạo hình thô bằng cách rèn; phôi dạng tấm",
       "dieuKienSo": [
         {
-          "fact": "phuongPhapCheTao",
-          "op": "TRONG",
-          "value": [
-            "REN"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "phuongPhapCheTao",
+                "op": "TRONG",
+                "value": [
+                  "REN"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "phôi dạng tấm"
+              }
+            ]
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "72072029",
       "nguon": "tax.72072029",
       "trich": "72072029 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "72072091",
@@ -72,7 +92,7 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "72072092",
@@ -80,21 +100,35 @@
       "trich": "72072092 - - - - Dạng khối được tạo hình thô bằng cách rèn; phôi dạng tấm",
       "dieuKienSo": [
         {
-          "fact": "phuongPhapCheTao",
-          "op": "TRONG",
-          "value": [
-            "REN"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "phuongPhapCheTao",
+                "op": "TRONG",
+                "value": [
+                  "REN"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "phôi dạng tấm"
+              }
+            ]
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "72072099",
       "nguon": "tax.72072099",
       "trich": "72072099 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -110,12 +144,6 @@
       "lyDo": "Cụm danh từ đầu chỉ thuộc tính hàm lượng carbon"
     },
     {
-      "ma": "720720~r10997",
-      "loai": "BO_VE",
-      "ve": "dưới 0,6% tính theo khối lượng",
-      "lyDo": "Đã được lượng hóa qua hamLuongCarbon < 0.6 %"
-    },
-    {
       "ma": "72072010",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.72072010: \"Phôi dẹt (dạng phiến) (SEN)\" ⇒ phoiDetDangPhien CO"
@@ -126,12 +154,6 @@
       "ghiChu": "tax.72072021: \"Dạng khối được tạo hình thô bằng cách rèn; phôi dạng tấm\" ⇒ phuongPhapCheTao REN"
     },
     {
-      "ma": "72072021",
-      "loai": "BO_VE",
-      "ve": "được tạo hình thô bằng cách rèn",
-      "lyDo": "Đã được lượng hóa qua phuongPhapCheTao REN"
-    },
-    {
       "ma": "72072091",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.72072091: \"Phôi dẹt (dạng phiến) (SEN)\" ⇒ phoiDetDangPhien CO"
@@ -140,12 +162,6 @@
       "ma": "72072092",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.72072092: \"Dạng khối được tạo hình thô bằng cách rèn; phôi dạng tấm\" ⇒ phuongPhapCheTao REN"
-    },
-    {
-      "ma": "72072092",
-      "loai": "BO_VE",
-      "ve": "được tạo hình thô bằng cách rèn",
-      "lyDo": "Đã được lượng hóa qua phuongPhapCheTao REN"
     }
   ],
   "traVe": [
