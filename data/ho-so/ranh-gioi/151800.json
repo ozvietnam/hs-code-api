@@ -15,7 +15,7 @@
     "phien": "claude-agent:ozv-1751#soat-151800",
     "ngay": "2026-11-21",
     "ghiChu": "Chuẩn hoá theo traVe (OZV-1751)",
-    "bam": "139d54632c8d8bc182a027d3128a9898f716d67b3d615f536ca162a9e22d8cf2"
+    "bam": "6ba469f25fb55700d84394bb349a5b561d5a6a1062d0a61619957cbc87e1a9d0"
   },
   "dieuKienNut": [
     {
@@ -151,19 +151,16 @@
           "op": "TEN_LOAI",
           "value": [
             "mỡ",
-            "dầu động vật"
-          ]
-        },
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
+            "dầu động vật",
             "các phần phân đoạn của các loại mỡ",
             "dầu động vật khác nhau"
           ]
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "CLAUDE_DUYET",
+      "phanConLai": [
+        "15180060"
+      ]
     },
     {
       "hs": "15180032",
@@ -348,7 +345,7 @@
     {
       "ma": "15180020",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.15180020 \"15180020 - Các hỗn hợp hoặc các chế phẩm không ăn được từ mỡ hoặc dầu động vật hoặc từ các phần phân đoạn của các loại mỡ hoặc dầu động vật khác nhau\" ⇒ dangSanPhamNhom1518 HON_HOP_KHONG_AN_DUOC + tenLoai [\"mỡ\",\"dầu động vật\",\"các phần phân đoạn của các loại mỡ\",\"dầu động vật khác nhau\"] (vế giới hạn của dòng). phanConLai: false — đây là MỘT LOẠI HÀNG (hỗn hợp từ mỡ/dầu động vật), không phải phần còn lại của anh em."
+      "ghiChu": "tax.15180020 \"15180020 - Các hỗn hợp hoặc các chế phẩm không ăn được từ mỡ hoặc dầu động vật hoặc từ các phần phân đoạn của các loại mỡ hoặc dầu động vật khác nhau\" ⇒ dangSanPhamNhom1518 HON_HOP_KHONG_AN_DUOC + tenLoai [\"mỡ\",\"dầu động vật\",\"các phần phân đoạn của các loại mỡ\",\"dầu động vật khác nhau\"] (vế giới hạn của dòng, quan hệ HOẶC). phanConLai: [\"15180060\"] — chữ biểu có \"khác nhau\", dòng .20 chỉ gồm hỗn hợp thuần mỡ/dầu động vật, nhường .60 khi hỗn hợp gồm CẢ mỡ/dầu động vật lẫn chất béo/dầu thực vật."
     },
     {
       "ma": "1518003",
@@ -398,7 +395,7 @@
     {
       "ma": "151800",
       "loai": "QUYET_DINH",
-      "ghiChu": "Claude 07/11/2026 (#1109): nhóm 15.18 chia hai vế — tieuDe.1518001 \"… đã đun sôi, oxy hóa, khử nước, sulphua hóa, thổi khô, polyme hóa …\" ↔ .20, tầng 1518003, .60 \"Các hỗn hợp hoặc các chế phẩm không ăn được …\" ⇒ khoá mới dangSanPhamNhom1518 (lúc chạy hỏi hàng thuộc vế nào). .60 «từ mỡ hoặc dầu động vật … và chất béo hoặc dầu thực vật» ghi HAI điều kiện tên (VÀ). Cặp .20/.39 khai chongLanVanBan: hỗn hợp động vật + thực vật vào .60."
+      "ghiChu": "Claude 07/11/2026 (#1109): nhóm 15.18 chia hai vế — tieuDe.1518001 \"… đã đun sôi, oxy hóa, khử nước, sulphua hóa, thổi khô, polyme hóa …\" ↔ .20, tầng 1518003, .60 \"Các hỗn hợp hoặc các chế phẩm không ăn được …\" ⇒ khoá mới dangSanPhamNhom1518 (lúc chạy hỏi hàng thuộc vế nào). .60 «từ mỡ hoặc dầu động vật … và chất béo hoặc dầu thực vật» ghi HAI điều kiện tên (VÀ). .20 khai phanConLai: [\"15180060\"] để nhường .60 khi hỗn hợp gồm cả động vật lẫn thực vật."
     }
   ]
 }
