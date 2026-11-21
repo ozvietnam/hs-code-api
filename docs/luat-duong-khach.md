@@ -76,6 +76,7 @@ flowchart TD
         TestBangCo["test-bang-co.mjs (L1, L5, L8: Kỷ luật cờ)"]
         TestKiemPr["test-kiem-pr-l1.mjs (L1: Kiểm PR gọi LLM)"]
         TestMermaid["test-so-do-mermaid.mjs (Chống lệch sơ đồ)"]
+        TestBangCanh["test-bang-canh.mjs (ADR-0002: Bảng cạnh đồ thị tri thức)"]
     end
 ```
 <!-- AUTO_MERMAID_DUONG_KHACH_END -->
@@ -281,6 +282,16 @@ và PR thêm nhánh tối ưu phải có ca test "có tiền lệ trùng khít t
 `earlyExitHoiTuR1` (OZV-1707).
 
 ---
+
+## Cổng bảng cạnh (ADR-0002)
+
+Bảng cạnh của đồ thị tri thức (`lib/do-thi/`, kế hoạch [`docs/ke-hoach-do-thi-tri-thuc-hs.md`](ke-hoach-do-thi-tri-thuc-hs.md)) do máy
+dựng từ sổ tay, từ điển cặp dễ nhầm, tiền lệ và cây biểu thuế. Cổng máy `scripts/test-bang-canh.mjs` đỏ khi: dựng lại
+không ra kết quả giống hệt; có cạnh thiếu trích / nguồn; có cạnh trỏ tới mã không còn trong biểu thuế; số cạnh lệch
+`data/do-thi/thong-ke.json` quá ngưỡng; C6 không khớp 1-1 với C5; có tệp ngoài `lib/do-thi/` nạp bảng cạnh mà
+`data/luat/dau-noi.json` (kho `bangCanh`) chưa khai `co`. Sửa nhiều sổ tay làm cổng đỏ thì chạy
+`node scripts/dung-bang-canh.mjs --ghi` và commit `data/do-thi/` cùng PR. Nối bảng cạnh vào một đường khách là thay đổi
+thuộc L1 và L4: sau công tắc mặc định tắt, sửa bảng đấu nối trong cùng PR.
 
 ## Thêm cờ `HS_*` mới: làm gì
 
