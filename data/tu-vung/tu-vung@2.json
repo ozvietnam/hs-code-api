@@ -341,7 +341,9 @@
    "moDunDanHoi",
    "soLoaiVitamin",
    "coBoPhanKhuachDai",
-   "coLoa"
+   "coLoa",
+   "lenMenTuNuocEpRauQua",
+   "laThietBiChoiBacHoacMatChuoc"
   ],
   "tuVung1": {
    "trangThai": "DA_CHAM",
@@ -23244,6 +23246,130 @@
     "zh": "该设备是否装有（一个或多个）扬声器？"
    },
    "ghiChu": "Chữ biểu 8519.81.20 «…và một hoặc nhiều loa» (CÓ); 8519.89.20 «Máy quay đĩa (record players) có hoặc không có loa» — khoá chỉ nhận diện «có loa», vế «hoặc không» xử lý ở dieuKienSo. «một hoặc nhiều» = có mặt, không cần đếm. Canh (?![a-z]) chặn «loai/loan» viết ASCII không dấu; «loại» có dấu (ạ ≠ a) không chứa chuỗi «loa». OZV-1610.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "kieu": "CO_KHONG",
+   "khoa": "lenMenTuNuocEpRauQua",
+   "nhanVi": "lên men từ nước ép rau hoặc nước ép quả",
+   "nhanEn": "obtained by the fermentation of vegetables juices or of fruit juices",
+   "nhanZh": "蔬菜汁或水果汁发酵所得",
+   "cachDoc": {
+    "vi": [
+     "lên\\s+men\\s+(?:từ\\s+)?nước\\s+ép\\s+rau\\s+hoặc\\s+nước\\s+ép\\s+quả",
+     "lên\\s+men\\s+(?:từ\\s+)?nước\\s+ép\\s+(?:rau|quả|trái\\s+cây)",
+     "rượu\\s+vang\\s+(?:quả|trái\\s+cây|vải|dâu|mơ|mận|nhãn|dứa)"
+    ],
+    "en": [
+     "fermentation\\s+of\\s+vegetables?\\s+juices?\\s+or\\s+of\\s+fruit\\s+juices?",
+     "fruit\\s+wines?"
+    ],
+    "zh": [
+     "蔬菜汁或水果汁发酵",
+     "果酒"
+    ],
+    "phuDinh": [
+     "không phải",
+     "không có",
+     "không",
+     "chưa",
+     "ko",
+     "chẳng",
+     "non-?",
+     "without",
+     "no",
+     "not",
+     "无",
+     "非",
+     "不",
+     "没有",
+     "未"
+    ]
+   },
+   "cachDocKhong": {
+    "vi": [
+     "không\\s+(?:phải\\s+)?lên\\s+men\\s+(?:từ\\s+)?nước\\s+ép\\s+(?:rau|quả|trái\\s+cây)"
+    ],
+    "en": [
+     "not\\s+obtained\\s+by\\s+(?:the\\s+)?fermentation\\s+of\\s+(?:vegetables?\\s+juices?\\s+or\\s+of\\s+)?fruit\\s+juices?"
+    ],
+    "zh": [
+     "非果酒",
+     "非蔬菜汁或水果汁发酵"
+    ]
+   },
+   "cachViet": {
+    "vi": "lên men từ nước ép rau hoặc nước ép quả",
+    "viPhuDinh": "không phải lên men từ nước ép rau hoặc nước ép quả"
+   },
+   "cauHoi": {
+    "vi": "Đồ uống có phải thu được từ việc lên men nước ép rau hoặc nước ép quả (trừ nho tươi) không?",
+    "zh": "该酒是否由蔬菜汁或水果汁（鲜葡萄汁除外）发酵所得？"
+   },
+   "ghiChu": "Chữ biểu 2206.00.60 «Rượu thu được từ việc lên men nước ép rau hoặc nước ép quả, trừ nước ép nho tươi (SEN)» (CÓ). TV.docTenLoaiDayDu cắt tại chữ «được» nên tách khoá CO_KHONG riêng cho nguồn lên men nước ép rau hoặc nước ép quả (không khớp vang táo/lê 2206.00.10 hay rượu gạo 2206.00.91). OZV-1742.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "kieu": "CO_KHONG",
+   "khoa": "laThietBiChoiBacHoacMatChuoc",
+   "nhanVi": "là thiết bị chơi bạc, đồ phụ trợ đi kèm hoặc quân bài mạt chược",
+   "nhanEn": "gambling equipment and paraphernalia or mah-jong",
+   "nhanZh": "赌博设备及附带赌具或麻将",
+   "cachDoc": {
+    "vi": [
+     "thiết\\s+bị\\s+chơi\\s+bạc(?:\\s+và\\s+đồ\\s+phụ\\s+trợ\\s+đi\\s+kèm)?",
+     "quân\\s+bài\\s+mạt\\s+chược",
+     "mạt\\s+chược"
+    ],
+    "en": [
+     "gambling\\s+equipment(?:\\s+and\\s+paraphernalia)?",
+     "mah[-\\s]?jong(?:g)?"
+    ],
+    "zh": [
+     "赌博设备",
+     "赌具",
+     "麻将"
+    ],
+    "phuDinh": [
+     "không phải",
+     "không có",
+     "không",
+     "chưa",
+     "ko",
+     "chẳng",
+     "non-?",
+     "without",
+     "no",
+     "not",
+     "无",
+     "非",
+     "不",
+     "没有",
+     "未"
+    ]
+   },
+   "cachDocKhong": {
+    "vi": [
+     "không\\s+phải\\s+(?:thiết\\s+bị\\s+chơi\\s+bạc|quân\\s+bài\\s+mạt\\s+chược|mạt\\s+chược)"
+    ],
+    "en": [
+     "non-?gambling\\s+equipment",
+     "not\\s+(?:gambling\\s+equipment|mah[-\\s]?jong(?:g)?)"
+    ],
+    "zh": [
+     "非赌博设备",
+     "非赌具"
+    ]
+   },
+   "cachViet": {
+    "vi": "thiết bị chơi bạc hoặc quân bài mạt chược",
+    "viPhuDinh": "không phải thiết bị chơi bạc hoặc quân bài mạt chược"
+   },
+   "cauHoi": {
+    "vi": "Mặt hàng có phải là thiết bị chơi bạc (và đồ phụ trợ đi kèm) hoặc quân bài mạt chược không?",
+    "zh": "该商品是否为赌博设备（及附带赌具）或麻将？"
+   },
+   "ghiChu": "Tiêu đề trung gian 9504.90.3 «Thiết bị chơi bạc và đồ phụ trợ đi kèm» và dòng con 9504.90.34, 9504.90.35 «Quân bài Mạt chược…» (CÓ). Không khớp đồ phụ trợ để chơi bowling (9504.90.10) hay đồ chơi ném phi tiêu (9504.90.2). OZV-1742.",
    "nguonLoai": "AI_DA_KIEM"
   }
  ],

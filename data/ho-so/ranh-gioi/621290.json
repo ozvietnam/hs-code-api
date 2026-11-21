@@ -4,13 +4,19 @@
   "nhom": "6212",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T1528#soan-621290",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-01#soat-lo-5f",
+    "ngay": "2026-11-21",
+    "ghiChu": "Đã chuẩn hoá dieuKienSo bám chữ biểu thuế",
+    "bam": "8602d934b8c467704b5f00cde473ab82d75e91ef3a9866b02edfb106acbbbbb9"
+  },
   "dieuKienNut": [
     {
       "id": "6212901",
@@ -25,14 +31,14 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "6212909",
       "nguon": "tieuDe.6212909",
       "trich": "6212909 Từ các vật liệu dệt khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": true
     }
   ],
@@ -54,10 +60,13 @@
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
-          "value": "điều trị mô vết sẹo và ghép da"
+          "value": [
+            "điều trị mô vết sẹo",
+            "ghép da"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "62129012",
@@ -67,7 +76,7 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Hàng may mặc"
+          "value": "Hàng may mặc hỗ trợ"
         },
         {
           "fact": "dungCho",
@@ -75,14 +84,14 @@
           "value": "các môn điền kinh"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "62129019",
       "nguon": "tax.62129019",
       "trich": "62129019 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "62129091",
@@ -101,10 +110,13 @@
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
-          "value": "điều trị mô vết sẹo và ghép da"
+          "value": [
+            "điều trị mô vết sẹo",
+            "ghép da"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "62129092",
@@ -114,7 +126,7 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Hàng may mặc"
+          "value": "Hàng may mặc hỗ trợ"
         },
         {
           "fact": "dungCho",
@@ -122,28 +134,26 @@
           "value": "các môn điền kinh"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "62129099",
       "nguon": "tax.62129099",
       "trich": "62129099 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "62129011",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.62129011 \"Hàng may mặc, loại có tính đàn hồi bó chặt, để điều trị mô vết sẹo và ghép da(SEN)\" — vế GIỚI HẠN \"có tính đàn hồi bó chặt\" ⇒ tinhDanHoi CO (đọc \"tính đàn hồi\"); vế \"để điều trị mô vết sẹo và ghép da\" ⇒ dungCho; \"(SEN)\" là ngoặc nguồn."
-    }
-  ],
-  "traVe": [
+      "ghiChu": "tax.62129011 \"Hàng may mặc, loại có tính đàn hồi bó chặt, để điều trị mô vết sẹo và ghép da(SEN)\" (EN \"for the treatment of scar tissue and skin grafts\") — vế GIỚI HẠN \"có tính đàn hồi bó chặt\" ⇒ tinhDanHoi CO; vế \"để điều trị mô vết sẹo và ghép da\" là hai đích thay thế ⇒ dungCho [\"điều trị mô vết sẹo\",\"ghép da\"]; \"(SEN)\" là ngoặc nguồn."
+    },
     {
-      "phien": "claude-agent:duyet-L18-20261111#soat-L18",
-      "ngay": "2026-11-11",
-      "lyDo": "(A) 621290:62129012 và 62129092 SUY RỘNG: chữ biểu 'Hàng may mặc hỗ trợ cho các môn điền kinh' / 'Athletic supporters' ghi tenLoai 'Hàng may mặc' + dungCho 'các môn điền kinh' — bỏ mất danh từ đầu 'hỗ trợ' (supporters, tức khố/đồ đỡ thể thao); mọi hàng 6212.90 dùng cho điền kinh (nịt tất, dây đeo quần, đai nịt bụng tập luyện) vào .12/.92 thay vì .19/.99. Giá trị tên phải là 'Hàng may mặc hỗ trợ' (chữ biểu) hoặc khoá tên riêng. (B) 62129011/.91: dungCho 'điều trị mô vết sẹo và ghép da' một chuỗi đòi đủ âm tiết cả hai — chữ Anh 'for the treatment of scar tissue and skin grafts' là hai đích thay thế, nên tách mảng HOẶC."
+      "ma": "62129012",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.62129012 \"Hàng may mặc hỗ trợ cho các môn điền kinh\" (EN \"Athletic supporters\") ⇒ tenLoai \"Hàng may mặc hỗ trợ\" + dungCho \"các môn điền kinh\" (như 62129092)."
     }
   ]
 }

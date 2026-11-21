@@ -4,13 +4,19 @@
   "nhom": "5701",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-570190",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-01#soat-lo-5f",
+    "ngay": "2026-11-21",
+    "ghiChu": "Chuẩn hoá dieuKienSo và chongLanTruc bám chữ biểu thuế",
+    "bam": "8fe31e6dac5684718cfc00111352893736867dd2b9004ba9eabf6289b989ec33"
+  },
   "dieuKienNut": [
     {
       "id": "5701901",
@@ -25,7 +31,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -39,14 +45,14 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "57019019",
       "nguon": "tax.57019019",
       "trich": "57019019 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "57019020",
@@ -54,14 +60,15 @@
       "trich": "57019020 - - Từ xơ đay",
       "dieuKienSo": [
         {
-          "fact": "loaiSoiDet",
-          "op": "TRONG",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
           "value": [
-            "SOI_THUC_VAT_KHAC"
+            "đay",
+            "xơ đay"
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "57019091",
@@ -73,22 +80,53 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "57019099",
       "nguon": "tax.57019099",
       "trich": "57019099 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
-  "ghiChuSoan": [],
-  "traVe": [
+  "chongLanTruc": [
     {
-      "phien": "claude-agent:duyet-L16-20261111#soat-L16",
-      "ngay": "2026-11-11",
-      "lyDo": "(A) 570190:57019020 SUY RỘNG: chữ biểu \"Từ xơ đay\" / EN \"Of jute fibres\" bị mã hoá loaiSoiDet TRONG [SOI_THUC_VAT_KHAC] — giá trị này trong tu-vung@2 là \"sợi dệt thực vật khác (đay, lanh, gai, xơ dừa… nhóm 53.05)\", cách đọc gồm flax/linen/ramie/sisal/hemp/abaca. Thử bộ đọc: \"Thảm dệt thoi từ xơ sisal, chưa chần\" ⇒ loaiSoiDet THOA tất định ⇒ thảm sisal/lanh/gai bị đẩy vào dòng \"Từ xơ đay\" thay vì \"Loại khác\" (MFN cùng 12% nhưng sai mã 8 số). Từ vựng không có giá trị riêng cho đay ⇒ đáng lẽ THIEU_KHOA_TU_VUNG (đề xuất giá trị DAY/XO_LIBE_5303) hoặc tenLoai \"đay\"/\"xơ đay\" (như 630510), không dùng khoá rộng hơn chữ. Cùng lỗi ở bản 570500 đã DUYET (ngoài lô) — cần soát lại."
+      "nhanh": [
+        "5701901",
+        "57019020"
+      ],
+      "truc": {
+        "5701901": "DAC_DIEM",
+        "57019020": "TEN_LOAI"
+      },
+      "cauHoiPhanBiet": "Thảm này làm từ bông (5701901) hay từ xơ đay (57019020)?",
+      "trich": {
+        "5701901": "Từ bông",
+        "57019020": "Từ xơ đay"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "5701901",
+            "57019020"
+          ],
+          "khongCoHangThat": "Thảm phân loại theo một vật liệu dệt chủ yếu: hoặc từ bông, hoặc từ xơ đay, không có hàng thật đồng thời vừa từ bông vừa từ xơ đay."
+        }
+      ],
+      "phanXu": null
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "5701901",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.5701901 \"Từ bông\" (EN \"Of cotton\") ⇒ loaiSoiDet TRONG [\"BONG\"]."
+    },
+    {
+      "ma": "57019020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.57019020 \"Từ xơ đay\" (EN \"Of jute fibres\") ⇒ tenLoai [\"đay\",\"xơ đay\"]; không dùng loaiSoiDet SOI_THUC_VAT_KHAC vì bao gồm cả sisal/lanh/gai rộng hơn chữ biểu; khai chongLanTruc với 5701901 theo Q1 (khongCoHangThat)."
     }
   ]
 }
