@@ -1,0 +1,985 @@
+{
+  "phienBan": 1,
+  "moTa": "Bảng cờ HS_* — nguồn sự thật về cờ của hs-code-api (docs/luat-duong-khach.md L1, L5, L8). Cổng máy: scripts/test-bang-co.mjs.",
+  "cachDoc": {
+    "macDinh": "Giá trị có hiệu lực khi KHÔNG đặt biến.",
+    "macDinhBat": "true = không đặt biến thì tính năng đang chạy. Chỉ có ở cờ kiểu công tắc / chế độ.",
+    "dockerfile": "Giá trị Dockerfile đặt sẵn bằng ENV (máy thật chạy giá trị này trừ khi hs.env ghi đè).",
+    "doiQuyetDinhLLM": "true = cờ làm LLM quyết định khác đi trên đường khách (đổi prompt, số lượt, chuỗi mô hình). Cờ mới loại này phải mặc định TẮT (L1).",
+    "chungCu": "Đoạn mã NGUYÊN VĂN trong tệp, chứng minh cách đọc cờ và mặc định. Sửa dòng đó thì cổng đỏ: xem lại macDinh rồi cập nhật đoạn này.",
+    "chu": "Vai trả lời câu \"bật hay tắt\". Phân tạm 21/11/2026; QT phân lại nếu sai.",
+    "bong": "Bắt buộc với cờ có chế độ shadow (L5)."
+  },
+  "doiQuyetDinhLLMDangBatSan": {
+    "ghiChu": "Cờ cũ đổi quyết định LLM mà đang bật sẵn (mặc định bật, hoặc Dockerfile bật). Có từ trước luật L1. Danh sách chỉ được NGẮN đi; trần cứng nằm trong scripts/test-bang-co.mjs.",
+    "ten": [
+      "HS_CLASSIFY_CROSSCHECK",
+      "HS_CLASSIFY_ENGINE",
+      "HS_DINH_DANH_TIM_WEB",
+      "HS_GON_DAU_RA",
+      "HS_HO_SO_NGHIEN_CUU",
+      "HS_HO_SO_VIET",
+      "HS_MAX_VONG_SUA",
+      "HS_SHEET_VISION",
+      "HS_SO_TAY"
+    ]
+  },
+  "tenNgoaiMa": {
+    "ghiChu": "Tên HS_* có trong tài liệu vận hành nhưng lib/, api/, server.js không đọc (script đọc, hoặc chỉ là ví dụ). Mỗi tên ghi tệp đọc nó; cổng kiểm tệp đó còn nhắc tên.",
+    "ten": {
+      "HS_LLM_COST_RETENTION_DAYS": "scripts/prune-runtime-logs.mjs",
+      "HS_QD2079_FILE": "scripts/nap-qd2079.mjs"
+    }
+  },
+  "co": [
+    {
+      "ten": "HS_ACCESS_LOG",
+      "macDinh": "bật",
+      "macDinhBat": true,
+      "loai": "cong-tac",
+      "doiQuyetDinhLLM": false,
+      "chu": "QT (quản trị server)",
+      "mucDich": "Ghi nhật ký truy cập. Đặt \"0\" để tắt.",
+      "chungCu": {
+        "tep": "server.js",
+        "doan": "process.env.HS_ACCESS_LOG !== '0') {"
+      }
+    },
+    {
+      "ten": "HS_ADMIN_TOKEN",
+      "macDinh": "(trống)",
+      "loai": "bi-mat",
+      "doiQuyetDinhLLM": false,
+      "chu": "QT (quản trị server)",
+      "mucDich": "Khoá quản trị (ghi biểu thuế, hoàn nguyên).",
+      "chungCu": {
+        "tep": "lib/auth.js",
+        "doan": "process.env.HS_ADMIN_TOKEN;"
+      }
+    },
+    {
+      "ten": "HS_ALIAS_SEARCH",
+      "macDinh": "bật",
+      "macDinhBat": true,
+      "loai": "cong-tac",
+      "doiQuyetDinhLLM": false,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Tìm kiếm theo bí danh mã HS. Đặt \"off\" để tắt.",
+      "chungCu": {
+        "tep": "lib/hs-aliases.js",
+        "doan": "process.env.HS_ALIAS_SEARCH ?? 'on').toLowerCase() !== 'off';"
+      }
+    },
+    {
+      "ten": "HS_API_TOKEN",
+      "macDinh": "(trống)",
+      "loai": "bi-mat",
+      "doiQuyetDinhLLM": false,
+      "chu": "QT (quản trị server)",
+      "mucDich": "Khoá API chung.",
+      "chungCu": {
+        "tep": "lib/auth.js",
+        "doan": "process.env.HS_API_TOKEN;"
+      }
+    },
+    {
+      "ten": "HS_B1B_WEB_MS",
+      "macDinh": "hằng B1B_WEB_TRAN_MS trong mã",
+      "loai": "so",
+      "doiQuyetDinhLLM": false,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Trần thời gian tra web B1b của động cơ (ms).",
+      "chungCu": {
+        "tep": "lib/b1b-web.js",
+        "doan": "process.env.HS_B1B_WEB_MS) > 0 ? Number(process.env.HS_B1B_WEB_MS) : B1B"
+      }
+    },
+    {
+      "ten": "HS_B1B_ZAI_MS",
+      "macDinh": "15000",
+      "loai": "so",
+      "doiQuyetDinhLLM": false,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Trần thời gian nhánh z.ai của tra web B1b (ms).",
+      "chungCu": {
+        "tep": "lib/b1b-web.js",
+        "doan": "process.env.HS_B1B_ZAI_MS) > 0 ? Number(process.env.HS_B1B_ZAI_MS) : 150"
+      }
+    },
+    {
+      "ten": "HS_BENCH_ONLY_9ROUTER",
+      "macDinh": "tắt",
+      "macDinhBat": false,
+      "loai": "cong-tac",
+      "doiQuyetDinhLLM": false,
+      "chu": "QT (quản trị server)",
+      "mucDich": "Máy đo: chỉ gọi 9Router, chặn cứng khoá bản thật. Không đặt trên máy thật.",
+      "chungCu": {
+        "tep": "lib/llm-tier.js",
+        "doan": "'HS_BENCH_ONLY_9ROUTER').toLowerCase();"
+      }
+    },
+    {
+      "ten": "HS_BUILD_TIME",
+      "macDinh": "(trống)",
+      "loai": "thong-tin",
+      "doiQuyetDinhLLM": false,
+      "chu": "QT (quản trị server)",
+      "mucDich": "Thời điểm dựng bản, in ở /api/health.",
+      "chungCu": {
+        "tep": "lib/ban-dung.js",
+        "doan": "'HS_BUILD_TIME'];"
+      }
+    },
+    {
+      "ten": "HS_CLASSIFY_CACHE",
+      "macDinh": "bật",
+      "macDinhBat": true,
+      "loai": "cong-tac",
+      "doiQuyetDinhLLM": false,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Bộ nhớ đệm kết quả /api/classify. Đặt \"false\" để tắt.",
+      "chungCu": {
+        "tep": "lib/classify-cache.js",
+        "doan": "process.env.HS_CLASSIFY_CACHE || 'on').toLowerCase() !== 'false';"
+      }
+    },
+    {
+      "ten": "HS_CLASSIFY_CROSSCHECK",
+      "macDinh": "bật",
+      "macDinhBat": true,
+      "loai": "cong-tac",
+      "doiQuyetDinhLLM": true,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Lượt kiểm chéo của động cơ cũ (không chạy khi HS_CLASSIFY_ENGINE=loop). Đặt \"0\" để tắt.",
+      "chungCu": {
+        "tep": "lib/classify.js",
+        "doan": "process.env.HS_CLASSIFY_CROSSCHECK === '0';"
+      }
+    },
+    {
+      "ten": "HS_CLASSIFY_ENGINE",
+      "macDinh": "(trống) = động cơ cũ lib/classify.js",
+      "macDinhBat": false,
+      "loai": "che-do",
+      "cheDo": [
+        "(trống)",
+        "loop"
+      ],
+      "dockerfile": "loop",
+      "doiQuyetDinhLLM": true,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Chọn động cơ phân loại. \"loop\" = động cơ hai vòng lib/engine-loop.js (máy thật).",
+      "chungCu": {
+        "tep": "lib/classify.js",
+        "doan": "process.env.HS_CLASSIFY_ENGINE) === 'loop') return require('./engine-loo"
+      }
+    },
+    {
+      "ten": "HS_CLASSIFY_FAST_FIRST",
+      "macDinh": "tắt",
+      "macDinhBat": false,
+      "loai": "cong-tac",
+      "doiQuyetDinhLLM": true,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Thử mô hình nhanh trước ở vòng 1.",
+      "chungCu": {
+        "tep": "lib/engine-loop.js",
+        "doan": "process.env.HS_CLASSIFY_FAST_FIRST ?? '').trim().toLowerCase());"
+      }
+    },
+    {
+      "ten": "HS_CLASSIFY_TRAN_MS",
+      "macDinh": "hằng TRAN_MS_MAC_DINH trong mã",
+      "loai": "so",
+      "doiQuyetDinhLLM": false,
+      "chu": "QT (quản trị server)",
+      "mucDich": "Trần thời gian một lượt /api/classify (ms), kẹp dưới hạn Cloudflare.",
+      "chungCu": {
+        "tep": "api/classify.js",
+        "doan": "process.env.HS_CLASSIFY_TRAN_MS);"
+      }
+    },
+    {
+      "ten": "HS_COMMIT",
+      "macDinh": "(trống)",
+      "loai": "thong-tin",
+      "doiQuyetDinhLLM": false,
+      "chu": "QT (quản trị server)",
+      "mucDich": "Mã commit của bản đang chạy, in ở /api/health.",
+      "chungCu": {
+        "tep": "lib/ban-dung.js",
+        "doan": "'HS_COMMIT'];"
+      }
+    },
+    {
+      "ten": "HS_CONTEXT_SEARCH",
+      "macDinh": "bật",
+      "macDinhBat": true,
+      "loai": "cong-tac",
+      "doiQuyetDinhLLM": false,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Tìm kiếm có ngữ cảnh đường dẫn cây HS. Đặt \"off\" để tắt.",
+      "chungCu": {
+        "tep": "lib/hs-breadcrumb.js",
+        "doan": "process.env.HS_CONTEXT_SEARCH ?? 'on').toLowerCase() !== 'off';"
+      }
+    },
+    {
+      "ten": "HS_DATABASE_POOL_MAX",
+      "macDinh": "5",
+      "loai": "so",
+      "doiQuyetDinhLLM": false,
+      "chu": "QT (quản trị server)",
+      "mucDich": "Số kết nối Postgres tối đa.",
+      "chungCu": {
+        "tep": "lib/db.js",
+        "doan": "process.env.HS_DATABASE_POOL_MAX) || 5),"
+      }
+    },
+    {
+      "ten": "HS_DATABASE_URL",
+      "macDinh": "(trống) = không dùng DB",
+      "loai": "bi-mat",
+      "doiQuyetDinhLLM": false,
+      "chu": "QT (quản trị server)",
+      "mucDich": "Chuỗi kết nối Postgres.",
+      "chungCu": {
+        "tep": "lib/db.js",
+        "doan": "process.env.HS_DATABASE_URL || '').trim();"
+      }
+    },
+    {
+      "ten": "HS_DATA_DIR",
+      "macDinh": "(trống) = thư mục data/ của repo",
+      "loai": "duong-dan",
+      "dockerfile": "/data",
+      "doiQuyetDinhLLM": false,
+      "chu": "QT (quản trị server)",
+      "mucDich": "Thư mục ghi dữ liệu lúc chạy.",
+      "chungCu": {
+        "tep": "lib/data-paths.js",
+        "doan": "process.env.HS_DATA_DIR"
+      }
+    },
+    {
+      "ten": "HS_DECL_CHECK",
+      "macDinh": "(tiền tố)",
+      "loai": "tien-to",
+      "doiQuyetDinhLLM": false,
+      "chu": "QT (quản trị server)",
+      "mucDich": "Tiền tố các biến giới hạn lượt của /api/declaration-check (đọc ở lib/service-rate-limit.js).",
+      "chungCu": {
+        "tep": "api/classify.js",
+        "doan": "'HS_DECL_CHECK', perMinute: 300, maxConcurrent: 8 });"
+      }
+    },
+    {
+      "ten": "HS_DECL_CHECK_K2_PARALLEL",
+      "macDinh": "3",
+      "loai": "so",
+      "doiQuyetDinhLLM": false,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Số lượt K2 chạy song song khi soát tờ khai.",
+      "chungCu": {
+        "tep": "lib/declaration-check.js",
+        "doan": "process.env.HS_DECL_CHECK_K2_PARALLEL) || 3);"
+      }
+    },
+    {
+      "ten": "HS_DEMAND_OFF",
+      "macDinh": "tắt (tức là có ghi tín hiệu nhu cầu)",
+      "macDinhBat": false,
+      "loai": "cong-tac",
+      "doiQuyetDinhLLM": false,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Đặt \"1\" để ngừng ghi tín hiệu nhu cầu.",
+      "chungCu": {
+        "tep": "lib/demand-signals.js",
+        "doan": "process.env.HS_DEMAND_OFF === '1') return 0;"
+      }
+    },
+    {
+      "ten": "HS_DESCRIBE_REFS",
+      "macDinh": "bật",
+      "macDinhBat": true,
+      "loai": "cong-tac",
+      "doiQuyetDinhLLM": false,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Gắn tham chiếu khi viết mô tả. Đặt \"false\" để tắt.",
+      "chungCu": {
+        "tep": "lib/ho-so/tham-chieu.js",
+        "doan": "process.env.HS_DESCRIBE_REFS || '').toLowerCase() === 'false') return ro"
+      }
+    },
+    {
+      "ten": "HS_DESCRIBE_REF_TIMEOUT_MS",
+      "macDinh": "3000",
+      "loai": "so",
+      "doiQuyetDinhLLM": false,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Hạn lấy tham chiếu khi viết mô tả (ms).",
+      "chungCu": {
+        "tep": "lib/ho-so/tham-chieu.js",
+        "doan": "process.env.HS_DESCRIBE_REF_TIMEOUT_MS) || 3000;"
+      }
+    },
+    {
+      "ten": "HS_DINH_DANH_TIM_WEB",
+      "macDinh": "bật",
+      "macDinhBat": true,
+      "loai": "cong-tac",
+      "doiQuyetDinhLLM": true,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Định danh: tra máy tìm kiếm nội bộ trước khi hỏi LLM. Đặt \"off\" để tắt. Ở dev xem L9.",
+      "chungCu": {
+        "tep": "lib/dinh-danh-tim-web.js",
+        "doan": "process.env.HS_DINH_DANH_TIM_WEB ?? '').trim().toLowerCase();"
+      }
+    },
+    {
+      "ten": "HS_DINH_DANH_TIM_WEB_MS",
+      "macDinh": "hằng HAN_MS_MAC_DINH trong mã (kẹp 500–6000)",
+      "loai": "so",
+      "doiQuyetDinhLLM": false,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Hạn tra web của định danh (ms).",
+      "chungCu": {
+        "tep": "lib/dinh-danh-tim-web.js",
+        "doan": "process.env.HS_DINH_DANH_TIM_WEB_MS);"
+      }
+    },
+    {
+      "ten": "HS_DRAIN_MS",
+      "macDinh": "330000",
+      "loai": "so",
+      "doiQuyetDinhLLM": false,
+      "chu": "QT (quản trị server)",
+      "mucDich": "Thời gian xả lượt đang chạy khi dừng container (ms).",
+      "chungCu": {
+        "tep": "lib/inflight.js",
+        "doan": "process.env.HS_DRAIN_MS) || 330000, buocMs = 500, now = Date.now } = {})"
+      }
+    },
+    {
+      "ten": "HS_EMBED_INDEX",
+      "macDinh": "(trống) = data/gd0/index-e5-small.json",
+      "loai": "duong-dan",
+      "doiQuyetDinhLLM": false,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Tệp chỉ mục embedding.",
+      "chungCu": {
+        "tep": "lib/embed-pool.js",
+        "doan": "process.env.HS_EMBED_INDEX || dataReadPath('gd0/index-e5-small.json');"
+      }
+    },
+    {
+      "ten": "HS_EMBED_POOL",
+      "macDinh": "tắt",
+      "macDinhBat": false,
+      "loai": "cong-tac",
+      "doiQuyetDinhLLM": true,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Thêm ứng viên từ tìm kiếm embedding vào gói vòng 2. Chỉ \"on\" mới bật.",
+      "chungCu": {
+        "tep": "lib/embed-pool.js",
+        "doan": "process.env.HS_EMBED_POOL !== 'on') return null;"
+      }
+    },
+    {
+      "ten": "HS_EVAL_EXCLUDE_HOLDOUT",
+      "macDinh": "tắt",
+      "macDinhBat": false,
+      "loai": "cong-tac",
+      "doiQuyetDinhLLM": false,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Máy đo: loại mẫu giữ riêng khỏi kho tờ khai Oz. Không đặt trên máy thật.",
+      "chungCu": {
+        "tep": "lib/holdout.js",
+        "doan": "process.env.HS_EVAL_EXCLUDE_HOLDOUT === '1' || Boolean(als.getStore()?.e"
+      }
+    },
+    {
+      "ten": "HS_GEMINI_FREE_CHO_KHACH",
+      "macDinh": "tắt",
+      "macDinhBat": false,
+      "loai": "cong-tac",
+      "doiQuyetDinhLLM": true,
+      "chu": "QT (quản trị server)",
+      "mucDich": "Cho lượt khách rơi về Gemini miễn phí làm lưới chốt cuối (OZV-726).",
+      "chungCu": {
+        "tep": "lib/llm-privacy.js",
+        "doan": "process.env.HS_GEMINI_FREE_CHO_KHACH ?? '').trim().toLowerCase();"
+      }
+    },
+    {
+      "ten": "HS_GIR_FAILFAST_MS",
+      "macDinh": "(trống) = theo LLM_TIMEOUT_MS_GIR hoặc hằng trong mã",
+      "loai": "so",
+      "doiQuyetDinhLLM": false,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Hạn bỏ sớm lượt GIR (ms).",
+      "chungCu": {
+        "tep": "lib/engine-loop.js",
+        "doan": "process.env.HS_GIR_FAILFAST_MS || process.env.LLM_TIMEOUT_MS_GIR);"
+      }
+    },
+    {
+      "ten": "HS_GON_DAU_RA",
+      "macDinh": "bật",
+      "macDinhBat": true,
+      "loai": "cong-tac",
+      "doiQuyetDinhLLM": true,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Khuôn đầu ra gọn của động cơ hai vòng (đổi prompt). Đặt \"off\" để về khuôn cũ.",
+      "chungCu": {
+        "tep": "lib/engine-loop.js",
+        "doan": "process.env.HS_GON_DAU_RA ?? '').trim().toLowerCase());"
+      }
+    },
+    {
+      "ten": "HS_HOI_THEO_SO_TAY",
+      "macDinh": "tắt",
+      "macDinhBat": false,
+      "loai": "cong-tac",
+      "doiQuyetDinhLLM": false,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Dựng lại câu hỏi gửi khách của /api/classify theo sổ tay nhóm + sổ ranh giới PN6 + chữ biểu thuế (tất định, không LLM; câu của LLM xuống ghi chú). Chỉ on / 1 / true mới bật (PR #1523, #1524, OZV-1707).",
+      "chungCu": {
+        "tep": "lib/hoi-theo-so-tay.js",
+        "doan": "process.env.HS_HOI_THEO_SO_TAY || '').trim());"
+      },
+      "dieuKienBat": "ĐANG TẮT trên máy thật. Trưa 21/11 QT bật thử rồi tắt: ca van khí nén 5/2 động cơ dừng sớm ở 8412.21, khách bị hỏi theo sổ nhóm 84.12. Chỉ bật lại sau khi nhánh dừng sớm sửa xong (OZV-1707), ca này ra đúng nhóm 84.81, và có số đúng nhóm 4 số của nhánh hỏi đo qua Cổng thật (L3 bổ sung, L11)."
+    },
+    {
+      "ten": "HS_HO_SO",
+      "macDinh": "off",
+      "macDinhBat": false,
+      "loai": "che-do",
+      "cheDo": [
+        "off",
+        "shadow",
+        "on"
+      ],
+      "doiQuyetDinhLLM": true,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Động cơ hồ sơ phân loại. shadow = tính ngầm, chỉ ghi số đo; on = khách nhận bản mới.",
+      "chungCu": {
+        "tep": "lib/ho-so/index.js",
+        "doan": "process.env.HS_HO_SO || '').trim().toLowerCase();"
+      },
+      "bong": {
+        "dangChayMayThat": true,
+        "batTu": "2026-11-16",
+        "chu": "GĐ hs-code-api",
+        "ngayXet": "2026-11-27",
+        "the": "OZV-1238",
+        "laySoODau": "GET /api/admin/ho-so-shadow hoặc `docker exec hs-code-api node scripts/bao-cao-shadow.mjs --ben-goi=cong-oz,erp` (docs/van-hanh/bat-ho-so-shadow.md mục 4.6)",
+        "tieuChiBat": "Đủ 5 ngày làm việc số đo sạch tính từ 21/11 (sau #1514, #1516). Trên lượt khách thật (cong-oz, erp), theo từng phân nhóm: tỉ lệ dựng được và tỉ lệ bản nháp do chủ chốt ngưỡng trước ngày xét; chi phí LLM mỗi lượt đã ghi. Chủ trình QT, QT quyết bật on theo phân nhóm.",
+        "tieuChiTat": "Đường trả lời khách chậm thêm, lỗi tăng, hoặc tới ngày xét mà số lượt khách thật quá ít để kết luận.",
+        "ghiChu": "Ngày xét và ngưỡng là tạm (QT đặt 21/11). Số đo trước 21/11 không dùng: thiếu bên gọi, thiếu lượt bỏ qua, và chạy bóng còn chặn đường trả lời."
+      }
+    },
+    {
+      "ten": "HS_HO_SO_HAN_DOC_MS",
+      "macDinh": "35000",
+      "loai": "so",
+      "doiQuyetDinhLLM": false,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Hồ sơ: hạn bước đọc dữ kiện (ms).",
+      "chungCu": {
+        "tep": "lib/ho-so/api.js",
+        "doan": "'HS_HO_SO_HAN_DOC_MS', 35000));"
+      }
+    },
+    {
+      "ten": "HS_HO_SO_HAN_DOI_CHIEU_MS",
+      "macDinh": "15000",
+      "loai": "so",
+      "doiQuyetDinhLLM": false,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Hồ sơ: hạn bước đối chiếu (ms).",
+      "chungCu": {
+        "tep": "lib/ho-so/api.js",
+        "doan": "'HS_HO_SO_HAN_DOI_CHIEU_MS', 15000));"
+      }
+    },
+    {
+      "ten": "HS_HO_SO_HAN_NGHIEN_CUU_MS",
+      "macDinh": "30000",
+      "loai": "so",
+      "doiQuyetDinhLLM": false,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Hồ sơ: hạn bước nghiên cứu (ms).",
+      "chungCu": {
+        "tep": "lib/ho-so/api.js",
+        "doan": "'HS_HO_SO_HAN_NGHIEN_CUU_MS', 30000));"
+      }
+    },
+    {
+      "ten": "HS_HO_SO_HAN_VIET_MS",
+      "macDinh": "35000",
+      "loai": "so",
+      "doiQuyetDinhLLM": false,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Hồ sơ: hạn bước viết mô tả (ms).",
+      "chungCu": {
+        "tep": "lib/ho-so/api.js",
+        "doan": "'HS_HO_SO_HAN_VIET_MS', 35000));"
+      }
+    },
+    {
+      "ten": "HS_HO_SO_NGHIEN_CUU",
+      "macDinh": "bật",
+      "macDinhBat": true,
+      "loai": "cong-tac",
+      "doiQuyetDinhLLM": true,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Hồ sơ: bước nghiên cứu (tra web, định danh). Đặt \"false\" để tắt. Ở dev xem L9.",
+      "chungCu": {
+        "tep": "lib/ho-so/api.js",
+        "doan": "process.env.HS_HO_SO_NGHIEN_CUU || '').toLowerCase() !== 'false' && (hoS"
+      }
+    },
+    {
+      "ten": "HS_HO_SO_THU_CALLERS",
+      "macDinh": "(trống)",
+      "loai": "danh-sach",
+      "doiQuyetDinhLLM": false,
+      "chu": "QT (quản trị server)",
+      "mucDich": "Khoá dịch vụ được nhận bản hồ sơ mới để xem thử. Cấm ghi erp, cong-oz.",
+      "chungCu": {
+        "tep": "lib/ho-so/api.js",
+        "doan": "process.env.HS_HO_SO_THU_CALLERS || '').split(',').map((s) => s.trim())."
+      }
+    },
+    {
+      "ten": "HS_HO_SO_VIET",
+      "macDinh": "LLM",
+      "macDinhBat": true,
+      "loai": "che-do",
+      "cheDo": [
+        "LLM",
+        "MAY"
+      ],
+      "doiQuyetDinhLLM": true,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Hồ sơ: bộ viết mô tả. MAY = không gọi LLM.",
+      "chungCu": {
+        "tep": "lib/ho-so/api.js",
+        "doan": "process.env.HS_HO_SO_VIET || 'LLM').toUpperCase() === 'MAY' ? 'MAY' : 'L"
+      }
+    },
+    {
+      "ten": "HS_INTERNAL_CALLERS",
+      "macDinh": "erp",
+      "loai": "danh-sach",
+      "doiQuyetDinhLLM": false,
+      "chu": "QT (quản trị server)",
+      "mucDich": "Khoá dịch vụ được nhận số đếm từ kho tờ khai Oz.",
+      "chungCu": {
+        "tep": "lib/auth.js",
+        "doan": "process.env.HS_INTERNAL_CALLERS ?? 'erp').split(',').map((s) => s.trim()"
+      }
+    },
+    {
+      "ten": "HS_K2_DOC_LAP",
+      "macDinh": "tắt",
+      "macDinhBat": false,
+      "loai": "cong-tac",
+      "doiQuyetDinhLLM": true,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Soát tờ khai: lượt K2 độc lập.",
+      "chungCu": {
+        "tep": "lib/declaration-check.js",
+        "doan": "process.env.HS_K2_DOC_LAP || '').trim().toLowerCase());"
+      }
+    },
+    {
+      "ten": "HS_K2_LOI",
+      "macDinh": "tắt",
+      "macDinhBat": false,
+      "loai": "cong-tac",
+      "doiQuyetDinhLLM": true,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Soát tờ khai: K2 dùng lõi mới.",
+      "chungCu": {
+        "tep": "lib/declaration-check.js",
+        "doan": "process.env.HS_K2_LOI || '').trim().toLowerCase());"
+      }
+    },
+    {
+      "ten": "HS_KHACH_MO_CHUOI_AI",
+      "macDinh": "tắt",
+      "macDinhBat": false,
+      "loai": "cong-tac",
+      "doiQuyetDinhLLM": true,
+      "chu": "QT (quản trị server)",
+      "mucDich": "Lượt chỉ mang thông tin hàng đi đủ chuỗi mô hình dự phòng (trả tiền theo lượt) và mở tra web B1b (OZV-754).",
+      "chungCu": {
+        "tep": "lib/llm-privacy.js",
+        "doan": "process.env.HS_KHACH_MO_CHUOI_AI ?? '').trim().toLowerCase();"
+      }
+    },
+    {
+      "ten": "HS_KHO_DAP_AN",
+      "macDinh": "off",
+      "macDinhBat": false,
+      "loai": "che-do",
+      "cheDo": [
+        "off",
+        "shadow",
+        "on"
+      ],
+      "doiQuyetDinhLLM": false,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Kho đáp án phân loại (G5, OZV-760). shadow = chỉ soi và ghi; on = trả đáp án đã duyệt.",
+      "chungCu": {
+        "tep": "lib/kho-dap-an.js",
+        "doan": "process.env.HS_KHO_DAP_AN || 'off').trim().toLowerCase();"
+      },
+      "bong": {
+        "dangChayMayThat": false,
+        "chu": "GĐ hs-code-api",
+        "the": "OZV-760",
+        "ghiChu": "docs/viec/yeu-cau-2026-11-16-tat-gemini-402-va-kho-dap-an.md yêu cầu bật on ngày 16/11; giá trị trên máy thật do QT xác nhận. Khi nào đặt lại shadow thì điền đủ ngayXet + tieuChiBat + tieuChiTat + laySoODau."
+      }
+    },
+    {
+      "ten": "HS_KHO_DAP_AN_TIMEOUT_MS",
+      "macDinh": "150",
+      "loai": "so",
+      "doiQuyetDinhLLM": false,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Trần đọc kho đáp án (ms).",
+      "chungCu": {
+        "tep": "lib/kho-dap-an.js",
+        "doan": "process.env.HS_KHO_DAP_AN_TIMEOUT_MS);"
+      }
+    },
+    {
+      "ten": "HS_LEGACY_MAPPING_DIR",
+      "macDinh": "(trống) = data/legacy-hs-mapping",
+      "loai": "duong-dan",
+      "doiQuyetDinhLLM": false,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Thư mục bảng chuyển mã biểu cũ.",
+      "chungCu": {
+        "tep": "lib/legacy-hs-mapping.js",
+        "doan": "process.env.HS_LEGACY_MAPPING_DIR || dataReadPath(THU_MUC);"
+      }
+    },
+    {
+      "ten": "HS_LLM_PRIVATE_ALL",
+      "macDinh": "tắt",
+      "macDinhBat": false,
+      "loai": "cong-tac",
+      "doiQuyetDinhLLM": true,
+      "chu": "QT (quản trị server)",
+      "mucDich": "Coi mọi lượt là dữ liệu khách: chỉ đi nhà cung cấp không huấn luyện. Script chạy trên tờ khai Oz phải đặt \"true\".",
+      "chungCu": {
+        "tep": "lib/llm-privacy.js",
+        "doan": "process.env.HS_LLM_PRIVATE_ALL || '').toLowerCase() === 'true';"
+      }
+    },
+    {
+      "ten": "HS_LOC_TB_THAY_THE",
+      "macDinh": "bật",
+      "macDinhBat": true,
+      "loai": "cong-tac",
+      "doiQuyetDinhLLM": false,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Lọc TB-TCHQ đã bị thay thế. Đặt \"false\" để tắt.",
+      "chungCu": {
+        "tep": "lib/tien-le-thay-the.js",
+        "doan": "process.env.HS_LOC_TB_THAY_THE === 'false' || !ds.length) {"
+      }
+    },
+    {
+      "ten": "HS_MATCH_PUBLIC",
+      "macDinh": "tắt",
+      "macDinhBat": false,
+      "loai": "cong-tac",
+      "doiQuyetDinhLLM": false,
+      "chu": "QT (quản trị server)",
+      "mucDich": "Hành vi cũ: mở riêng /api/match không cần khoá.",
+      "chungCu": {
+        "tep": "lib/auth.js",
+        "doan": "process.env.HS_MATCH_PUBLIC === 'true') {"
+      }
+    },
+    {
+      "ten": "HS_MAX_VONG_SUA",
+      "macDinh": "1",
+      "macDinhBat": true,
+      "loai": "so",
+      "doiQuyetDinhLLM": true,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Số vòng sửa tối đa của động cơ (0–2). \"off\" = luồng cũ, không vòng sửa.",
+      "chungCu": {
+        "tep": "lib/engine-loop.js",
+        "doan": "process.env.HS_MAX_VONG_SUA ?? '').trim().toLowerCase();"
+      }
+    },
+    {
+      "ten": "HS_MKT_SOURCING",
+      "macDinh": "bật",
+      "macDinhBat": true,
+      "loai": "cong-tac",
+      "doiQuyetDinhLLM": false,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Đường /api/mkt/sourcing-assist. Đặt \"false\" để đóng.",
+      "chungCu": {
+        "tep": "api/describe.js",
+        "doan": "process.env.HS_MKT_SOURCING || '').toLowerCase() === 'false') {"
+      }
+    },
+    {
+      "ten": "HS_OZ_MATCH",
+      "macDinh": "(trống) = cách khớp hiện hành",
+      "loai": "che-do",
+      "cheDo": [
+        "(trống)",
+        "legacy"
+      ],
+      "doiQuyetDinhLLM": false,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Khớp tiền lệ Oz. \"legacy\" = cách cũ.",
+      "chungCu": {
+        "tep": "lib/oz-precedent-search.js",
+        "doan": "process.env.HS_OZ_MATCH === 'legacy';"
+      }
+    },
+    {
+      "ten": "HS_PRE_CLOSE_MS",
+      "macDinh": "0",
+      "loai": "so",
+      "doiQuyetDinhLLM": false,
+      "chu": "QT (quản trị server)",
+      "mucDich": "Thời gian chờ trước khi đóng cổng lúc dừng container (ms).",
+      "chungCu": {
+        "tep": "server.js",
+        "doan": "process.env.HS_PRE_CLOSE_MS) || 0);"
+      }
+    },
+    {
+      "ten": "HS_PUBLIC_LLM",
+      "macDinh": "bật",
+      "macDinhBat": true,
+      "loai": "cong-tac",
+      "doiQuyetDinhLLM": false,
+      "chu": "QT (quản trị server)",
+      "mucDich": "Mở công khai 4 đường LLM (CEO chốt 09/10/2026). Đặt \"false\" để đóng khẩn cấp.",
+      "chungCu": {
+        "tep": "lib/public-llm.js",
+        "doan": "process.env.HS_PUBLIC_LLM ?? 'true').toLowerCase() !== 'false';"
+      }
+    },
+    {
+      "ten": "HS_PUBLIC_READ",
+      "macDinh": "bật",
+      "macDinhBat": true,
+      "loai": "cong-tac",
+      "doiQuyetDinhLLM": false,
+      "chu": "QT (quản trị server)",
+      "mucDich": "Mở công khai nhóm tra cứu chỉ đọc. Đặt \"false\" để đóng.",
+      "chungCu": {
+        "tep": "lib/public-access.js",
+        "doan": "process.env.HS_PUBLIC_READ ?? 'true').toLowerCase() !== 'false';"
+      }
+    },
+    {
+      "ten": "HS_REQUEST_TIMEOUT_MS",
+      "macDinh": "300000",
+      "loai": "so",
+      "doiQuyetDinhLLM": false,
+      "chu": "QT (quản trị server)",
+      "mucDich": "Hạn một request ở server.js (ms).",
+      "chungCu": {
+        "tep": "server.js",
+        "doan": "process.env.HS_REQUEST_TIMEOUT_MS) || 300000; // = maxDuration cũ (300 s"
+      }
+    },
+    {
+      "ten": "HS_SERVICE_TOKENS",
+      "macDinh": "(trống)",
+      "loai": "bi-mat",
+      "doiQuyetDinhLLM": false,
+      "chu": "QT (quản trị server)",
+      "mucDich": "Khoá dịch vụ, dạng tên:khoá cách nhau bằng dấu phẩy.",
+      "chungCu": {
+        "tep": "lib/auth.js",
+        "doan": "process.env.HS_SERVICE_TOKENS || '')"
+      }
+    },
+    {
+      "ten": "HS_SHEET_VISION",
+      "macDinh": "(trống) = bật khi có GEMINI_API_KEY",
+      "macDinhBat": true,
+      "loai": "cong-tac",
+      "doiQuyetDinhLLM": true,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Phiếu khai: đọc ảnh bằng mô hình thị giác.",
+      "chungCu": {
+        "tep": "lib/declaration-sheet.js",
+        "doan": "process.env.HS_SHEET_VISION || '').trim();"
+      }
+    },
+    {
+      "ten": "HS_SOTAY_RUNTIME",
+      "macDinh": "bật",
+      "macDinhBat": true,
+      "loai": "cong-tac",
+      "doiQuyetDinhLLM": false,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Khối soTay cố vấn trong phản hồi (không đổi mã, không LLM). Đặt \"false\" để tắt.",
+      "chungCu": {
+        "tep": "lib/so-tay-runtime.js",
+        "doan": "process.env.HS_SOTAY_RUNTIME !== 'false';"
+      }
+    },
+    {
+      "ten": "HS_SOURCE_FILTER",
+      "macDinh": "bật",
+      "macDinhBat": true,
+      "loai": "cong-tac",
+      "doiQuyetDinhLLM": false,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Lọc nguồn tra web kém tin cậy. Đặt \"0\" để tắt.",
+      "chungCu": {
+        "tep": "lib/source-filter.js",
+        "doan": "process.env.HS_SOURCE_FILTER !== '0';"
+      }
+    },
+    {
+      "ten": "HS_SO_TAY",
+      "macDinh": "off",
+      "macDinhBat": false,
+      "loai": "che-do",
+      "cheDo": [
+        "off",
+        "gates",
+        "full"
+      ],
+      "dockerfile": "full",
+      "doiQuyetDinhLLM": true,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Sổ tay trong động cơ hai vòng. gates = cổng nghi + một lượt giải trình; full = thêm khối sổ tay vào gói vòng 2.",
+      "chungCu": {
+        "tep": "lib/so-tay-gates.js",
+        "doan": "process.env.HS_SO_TAY || '').trim().toLowerCase();"
+      }
+    },
+    {
+      "ten": "HS_SO_TAY_DONG",
+      "macDinh": "tắt",
+      "macDinhBat": false,
+      "loai": "cong-tac",
+      "doiQuyetDinhLLM": true,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Máy chốt dòng 8 số theo sổ tay. Chỉ \"on\" mới bật; giữ tắt trên máy thật (đo 13/10 chưa đạt).",
+      "chungCu": {
+        "tep": "lib/engine-loop.js",
+        "doan": "process.env.HS_SO_TAY_DONG || '') === 'on' && finalHs.length >= 6 && !bl"
+      }
+    },
+    {
+      "ten": "HS_SO_TAY_LOAI_TRU",
+      "macDinh": "phrase",
+      "loai": "che-do",
+      "doiQuyetDinhLLM": false,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Mức đòi hỏi của cổng loại trừ sổ tay.",
+      "chungCu": {
+        "tep": "lib/so-tay-gates.js",
+        "doan": "process.env.HS_SO_TAY_LOAI_TRU || 'phrase', dong8: true };"
+      }
+    },
+    {
+      "ten": "HS_TIM_KIEM_URL",
+      "macDinh": "(trống) = không có máy tìm kiếm nội bộ",
+      "loai": "duong-dan",
+      "doiQuyetDinhLLM": false,
+      "chu": "QT (quản trị server)",
+      "mucDich": "Địa chỉ máy tìm kiếm nội bộ (SearXNG).",
+      "chungCu": {
+        "tep": "lib/tim-web.js",
+        "doan": "process.env.HS_TIM_KIEM_URL || '').trim();"
+      }
+    },
+    {
+      "ten": "HS_TRADE_SYNONYMS",
+      "macDinh": "bật",
+      "macDinhBat": true,
+      "loai": "cong-tac",
+      "doiQuyetDinhLLM": false,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Từ đồng nghĩa thương mại trong tìm kiếm. Đặt \"off\" để tắt.",
+      "chungCu": {
+        "tep": "lib/trade-synonyms.js",
+        "doan": "process.env.HS_TRADE_SYNONYMS ?? 'on').toLowerCase() !== 'off';"
+      }
+    },
+    {
+      "ten": "HS_TRA_TIEN_LE_TRUNG",
+      "macDinh": "tắt",
+      "macDinhBat": false,
+      "loai": "cong-tac",
+      "doiQuyetDinhLLM": false,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Gắn tiền lệ Trung Quốc vào phản hồi classify (tất định).",
+      "chungCu": {
+        "tep": "lib/classify.js",
+        "doan": "process.env.HS_TRA_TIEN_LE_TRUNG;"
+      }
+    },
+    {
+      "ten": "HS_UNDERSTAND_FAILFAST_MS",
+      "macDinh": "(trống) = theo LLM_TIMEOUT_MS_UNDERSTAND hoặc hằng trong mã",
+      "loai": "so",
+      "doiQuyetDinhLLM": false,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Hạn bỏ sớm lượt hiểu hàng (ms).",
+      "chungCu": {
+        "tep": "lib/engine-loop.js",
+        "doan": "process.env.HS_UNDERSTAND_FAILFAST_MS || process.env.LLM_TIMEOUT_MS_UNDE"
+      }
+    },
+    {
+      "ten": "HS_WCO_OP_FILE",
+      "macDinh": "(trống) = data/wco-op/opinions.json",
+      "loai": "duong-dan",
+      "doiQuyetDinhLLM": false,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Tệp ý kiến phân loại WCO (test cách ly).",
+      "chungCu": {
+        "tep": "lib/wco-op.js",
+        "doan": "process.env.HS_WCO_OP_FILE || dataReadPath('wco-op', 'opinions.json'), '"
+      }
+    },
+    {
+      "ten": "HS_WCO_TRICH_FILE",
+      "macDinh": "(trống) = data/wco-op/so-tay-trich.json",
+      "loai": "duong-dan",
+      "doiQuyetDinhLLM": false,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Tệp trích WCO cho sổ tay (test cách ly).",
+      "chungCu": {
+        "tep": "lib/so-tay.js",
+        "doan": "process.env.HS_WCO_TRICH_FILE || dataReadPath('wco-op', 'so-tay-trich.js"
+      }
+    },
+    {
+      "ten": "HS_WCO_VI_FILE",
+      "macDinh": "(trống) = data/wco-op/vi.json",
+      "loai": "duong-dan",
+      "doiQuyetDinhLLM": false,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Tệp bản dịch ý kiến WCO (test cách ly).",
+      "chungCu": {
+        "tep": "lib/wco-op.js",
+        "doan": "process.env.HS_WCO_VI_FILE || dataReadPath('wco-op', 'vi.json'), 'utf8')"
+      }
+    }
+  ]
+}
