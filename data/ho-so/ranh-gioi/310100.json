@@ -14,8 +14,8 @@
     "boi": "CLAUDE_DUYET",
     "phien": "claude-agent:tho-hs-03#soat-310100",
     "ngay": "2026-11-21",
-    "ghiChu": "Đã chuẩn hoá dieuKienSo bám chữ biểu thuế",
-    "bam": "ab7a4af469406a81798572f999aac3271a53aa299b766a766f9fbeeae9ed121f"
+    "ghiChu": "Đã chuẩn hoá dieuKienSo theo góp ý soát PR #1563",
+    "bam": "503269ba87b096f2b4634120ac32712c3fadc4ce82e30d3c9a8b46a7d011c801"
   },
   "dieuKienNut": [],
   "dong8": [
@@ -49,8 +49,15 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "phân chim, dơi",
+          "value": [
+            "phân chim",
+            "phân chim, dơi"
+          ],
           "chieu": "PHAI_KHONG"
+        },
+        {
+          "fact": "laPhanChimDoi",
+          "op": "KHONG"
         },
         {
           "fact": "daXuLyHoaHoc",
@@ -81,7 +88,7 @@
     {
       "ma": "31010092",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.31010092 \"Nguồn gốc từ động vật (trừ phân chim, dơi), đã qua xử lý hóa học\" (EN \"Of animal origin (other than guano), chemically treated\") ⇒ nguonGocSinhVat TRONG [TU_DONG_VAT] + tenLoai PHAI_KHONG \"phân chim, dơi\" (nguyên cụm tiếng Việt của guano) + daXuLyHoaHoc CO."
+      "ghiChu": "tax.31010092 \"Nguồn gốc từ động vật (trừ phân chim, dơi), đã qua xử lý hóa học\" (EN \"Of animal origin (other than guano), chemically treated\") ⇒ nguonGocSinhVat TRONG [TU_DONG_VAT] + tenLoai PHAI_KHONG [\"phân chim\", \"phân chim, dơi\"] + laPhanChimDoi KHONG (loại trừ cả phân chim lẫn phân dơi / guano) + daXuLyHoaHoc CO."
     }
   ]
 }

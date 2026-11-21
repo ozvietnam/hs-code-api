@@ -14,15 +14,15 @@
     "boi": "CLAUDE_DUYET",
     "phien": "claude-agent:tho-hs-03#soat-200290",
     "ngay": "2026-11-21",
-    "ghiChu": "Đã chuẩn hoá dieuKienSo bám chữ biểu thuế",
-    "bam": "a521ebe52c488522f7c28527d646a33f096f55b42de31686f8507e99165fb6f0"
+    "ghiChu": "Đã chuẩn hoá dieuKienSo theo góp ý soát PR #1563",
+    "bam": "de86df409f3533d102f700bf9a1e9fb983d3c886b0cf04f6dc76769e582e8338"
   },
   "dieuKienNut": [],
   "dong8": [
     {
       "hs": "20029010",
-      "nguon": "tax.20029010",
-      "trich": "20029010 - - Bột cà chua dạng sệt (SEN)",
+      "nguon": "sen.20029010",
+      "trich": "BỘT CÀ CHUA DẠNG SỆT\nBột cà chua dạng sệt là cà chua nguyên chất cô đặc, có từ 25% đến 40% hàm lượng là chất rắn không chứa muối.",
       "dieuKienSo": [
         {
           "fact": "tenLoai",
@@ -32,6 +32,18 @@
         {
           "fact": "dangBot",
           "op": "KHONG"
+        },
+        {
+          "fact": "hamLuongChatRanKhongChuaMuoi",
+          "op": ">=",
+          "value": 25,
+          "donVi": "%"
+        },
+        {
+          "fact": "hamLuongChatRanKhongChuaMuoi",
+          "op": "<=",
+          "value": 40,
+          "donVi": "%"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -65,7 +77,7 @@
     {
       "ma": "20029010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.20029010 \"Bột cà chua dạng sệt (SEN)\" (EN \"Tomato paste\") ⇒ tenLoai \"Bột cà chua dạng sệt\" + dangBot KHONG; .20 \"Bột cà chua\" (EN \"Tomato powder\") ⇒ tenLoai \"Bột cà chua\" + dangBot CO để tách bột cà chua dạng bột (.20) khỏi dạng sệt (.10)"
+      "ghiChu": "sen.20029010 \"Bột cà chua dạng sệt là cà chua nguyên chất cô đặc, có từ 25% đến 40% hàm lượng là chất rắn không chứa muối\" (EN \"Tomato paste\") ⇒ tenLoai \"Bột cà chua dạng sệt\" + dangBot KHONG + hamLuongChatRanKhongChuaMuoi >= 25% & <= 40%; .20 \"Bột cà chua\" (EN \"Tomato powder\") ⇒ tenLoai \"Bột cà chua\" + dangBot CO."
     }
   ]
 }

@@ -14,8 +14,8 @@
     "boi": "CLAUDE_DUYET",
     "phien": "claude-agent:tho-hs-03#soat-401700",
     "ngay": "2026-11-21",
-    "ghiChu": "Đã chuẩn hoá dieuKienSo bám chữ biểu thuế",
-    "bam": "1069d227b63edcce2621667a0e117ed9c9bfbdb0b6102c19f87ec77c09e6c4ae"
+    "ghiChu": "Đã chuẩn hoá dieuKienSo theo góp ý soát PR #1563",
+    "bam": "10e6cd3a2179bb436347065d892fa50b5fa278628b84c44466f1716d845551c6"
   },
   "dieuKienNut": [],
   "dong8": [
@@ -37,14 +37,8 @@
       "trich": "40170020 - Các sản phẩm bằng cao su cứng khác",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Các sản phẩm"
-        },
-        {
-          "fact": "chatLieu",
-          "op": "LA",
-          "value": "cao su"
+          "fact": "laSanPhamCaoSuCung",
+          "op": "CO"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET",
@@ -67,7 +61,14 @@
     {
       "ma": "40170020",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.40170020 \"Các sản phẩm bằng cao su cứng khác\" (EN \"Other articles of hard rubber\") ⇒ tenLoai \"Các sản phẩm\" + chatLieu \"cao su\" + phanConLai: true (chữ \"khác\" = phần còn lại có tên, phủ định anh em .10 đứng trước)."
+      "ghiChu": "tax.40170020 \"Các sản phẩm bằng cao su cứng khác\" (EN \"Other articles of hard rubber\") ⇒ laSanPhamCaoSuCung CO + phanConLai: true (phân biệt thành phẩm/sản phẩm bằng cao su cứng với dạng thô khối/tấm/thanh/que/bột hoặc phế liệu, phế thải ở .90 và tấm lát nền/ốp tường ở .10)."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:tho-hs-03#soat-401700",
+      "ngay": "2026-11-21",
+      "lyDo": "Chuẩn hoá 40170020 dùng laSanPhamCaoSuCung CO theo phản hồi soát PR #1563"
     }
   ]
 }

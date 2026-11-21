@@ -120,13 +120,13 @@
         "duyet": {
           "phien": "claude-agent:tho-hs-03#soat-842940",
           "ngay": "2026-11-21",
-          "bam": "a6f4effbda9b245a0c812416db938f36467ea5efb705a1f6f2b223defb80f215"
+          "bam": "7b34b173ac9a6f956e1cc243874e0ae9b0e4cec2429c9848f28f6646d54c90fd"
         }
       }
     },
     {
       "hs": "84294040",
-      "dieuKien": "tên loại hàng: Xe lu rung; tên loại hàng: với lực rung của trống không quá 20 tấn tính theo khối lượng",
+      "dieuKien": "tên loại hàng: Xe lu rung; lực rung của trống <= 20 tấn",
       "loaiKhac": false,
       "nguon": "tax.84294040",
       "trich": "84294040 - - Xe lu rung, với lực rung của trống không quá 20 tấn tính theo khối lượng",
@@ -138,9 +138,10 @@
           "value": "Xe lu rung"
         },
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "với lực rung của trống không quá 20 tấn tính theo khối lượng"
+          "fact": "lucRungTrong",
+          "op": "<=",
+          "value": 20,
+          "donVi": "tấn"
         }
       ],
       "ranhGioi": {
@@ -148,7 +149,7 @@
         "duyet": {
           "phien": "claude-agent:tho-hs-03#soat-842940",
           "ngay": "2026-11-21",
-          "bam": "a6f4effbda9b245a0c812416db938f36467ea5efb705a1f6f2b223defb80f215"
+          "bam": "7b34b173ac9a6f956e1cc243874e0ae9b0e4cec2429c9848f28f6646d54c90fd"
         }
       }
     },
@@ -171,7 +172,7 @@
         "duyet": {
           "phien": "claude-agent:tho-hs-03#soat-842940",
           "ngay": "2026-11-21",
-          "bam": "a6f4effbda9b245a0c812416db938f36467ea5efb705a1f6f2b223defb80f215"
+          "bam": "7b34b173ac9a6f956e1cc243874e0ae9b0e4cec2429c9848f28f6646d54c90fd"
         }
       },
       "phanConLai": true

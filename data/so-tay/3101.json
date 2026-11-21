@@ -152,13 +152,13 @@
         "duyet": {
           "phien": "claude-agent:tho-hs-03#soat-310100",
           "ngay": "2026-11-21",
-          "bam": "ab7a4af469406a81798572f999aac3271a53aa299b766a766f9fbeeae9ed121f"
+          "bam": "503269ba87b096f2b4634120ac32712c3fadc4ce82e30d3c9a8b46a7d011c801"
         }
       }
     },
     {
       "hs": "31010092",
-      "dieuKien": "nguồn gốc sinh vật của hàng (từ cá / từ động vật / chỉ từ thực vật): nguồn gốc từ động vật; không tên loại hàng: phân chim, dơi; đã qua xử lý hóa học",
+      "dieuKien": "nguồn gốc sinh vật của hàng (từ cá / từ động vật / chỉ từ thực vật): nguồn gốc từ động vật; không tên loại hàng: phân chim hoặc phân chim, dơi; không: phân chim, dơi (guano); đã qua xử lý hóa học",
       "loaiKhac": false,
       "nguon": "tax.31010092",
       "trich": "31010092 - - Nguồn gốc từ động vật (trừ phân chim, dơi), đã qua xử lý hóa học",
@@ -174,8 +174,15 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "phân chim, dơi",
+          "value": [
+            "phân chim",
+            "phân chim, dơi"
+          ],
           "chieu": "PHAI_KHONG"
+        },
+        {
+          "fact": "laPhanChimDoi",
+          "op": "KHONG"
         },
         {
           "fact": "daXuLyHoaHoc",
@@ -187,7 +194,7 @@
         "duyet": {
           "phien": "claude-agent:tho-hs-03#soat-310100",
           "ngay": "2026-11-21",
-          "bam": "ab7a4af469406a81798572f999aac3271a53aa299b766a766f9fbeeae9ed121f"
+          "bam": "503269ba87b096f2b4634120ac32712c3fadc4ce82e30d3c9a8b46a7d011c801"
         }
       }
     },

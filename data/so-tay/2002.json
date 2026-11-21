@@ -111,9 +111,9 @@
     },
     {
       "hs": "20029010",
-      "dieuKien": "tên loại hàng: Bột cà chua dạng sệt; không: ở dạng bột",
-      "nguon": "tax.20029010",
-      "trich": "20029010 - - Bột cà chua dạng sệt (SEN)",
+      "dieuKien": "tên loại hàng: Bột cà chua dạng sệt; không: ở dạng bột; hàm lượng chất rắn không chứa muối >= 25 %; hàm lượng chất rắn không chứa muối <= 40 %",
+      "nguon": "sen.20029010",
+      "trich": "BỘT CÀ CHUA DẠNG SỆT\nBột cà chua dạng sệt là cà chua nguyên chất cô đặc, có từ 25% đến 40% hàm lượng là chất rắn không chứa muối.",
       "nguonLoai": "CLAUDE_DUYET",
       "loaiKhac": false,
       "dieuKienSo": [
@@ -125,6 +125,18 @@
         {
           "fact": "dangBot",
           "op": "KHONG"
+        },
+        {
+          "fact": "hamLuongChatRanKhongChuaMuoi",
+          "op": ">=",
+          "value": 25,
+          "donVi": "%"
+        },
+        {
+          "fact": "hamLuongChatRanKhongChuaMuoi",
+          "op": "<=",
+          "value": 40,
+          "donVi": "%"
         }
       ],
       "ranhGioi": {
@@ -132,7 +144,7 @@
         "duyet": {
           "phien": "claude-agent:tho-hs-03#soat-200290",
           "ngay": "2026-11-21",
-          "bam": "a521ebe52c488522f7c28527d646a33f096f55b42de31686f8507e99165fb6f0"
+          "bam": "de86df409f3533d102f700bf9a1e9fb983d3c886b0cf04f6dc76769e582e8338"
         }
       }
     },
@@ -159,7 +171,7 @@
         "duyet": {
           "phien": "claude-agent:tho-hs-03#soat-200290",
           "ngay": "2026-11-21",
-          "bam": "a521ebe52c488522f7c28527d646a33f096f55b42de31686f8507e99165fb6f0"
+          "bam": "de86df409f3533d102f700bf9a1e9fb983d3c886b0cf04f6dc76769e582e8338"
         }
       }
     },

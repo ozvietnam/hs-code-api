@@ -326,6 +326,11 @@ const KHOA_MOI = {
   // 21/11/2026 (OZV-1742): nguồn lên men nước ép rau/quả 2206.00.60 và tầng thiết bị chơi bạc/mạt chược 9504.90.3
   lenMenTuNuocEpRauQua: 'CO_KHONG',
   laThietBiChoiBacHoacMatChuoc: 'CO_KHONG',
+  // 21/11/2026 (OZV-1738 / OZV-1753): khoá cho 2002.90.10 (SEN), 3101.00.92, 4017.00.20, 8429.40.40
+  hamLuongChatRanKhongChuaMuoi: 'SO',
+  laPhanChimDoi: 'CO_KHONG',
+  laSanPhamCaoSuCung: 'CO_KHONG',
+  lucRungTrong: 'SO',
 };
 
 // ── 1. Nạp theo phiên bản ─────────────────────────────────────────────────────────────────────────────────────────
@@ -891,6 +896,53 @@ check('vietCum đơn vị @1 KHÔNG đổi ("CS: 75000W" — không cách)', T.v
   const r = T.docGiaTri('loaiCongTac', text);
   const ms = Number(process.hrtime.bigint() - t0) / 1e6;
   check(`OZV-1514 docGiaTri('loaiCongTac') 4000 từ lặp < 300 ms (thực tế ${ms.toFixed(0)} ms)`, r.trangThai === 'DA_CO' && r.giaTri === 'NGAT_SOC_DONG' && ms < 300, { ms, trangThai: r.trangThai, giaTri: r.giaTri });
+}
+
+// OZV-1753 — kiểm chứng 4 khoá mới (lucRungTrong, hamLuongChatRanKhongChuaMuoi, laPhanChimDoi, laSanPhamCaoSuCung)
+// và mở rộng vatLieuKhac (VANG_HOAC_BAC, KIM_LOAI_DAT_PHU_VANG_HOAC_BAC) + ReDoS 40.000 từ lặp < 2 giây (quy tắc 6b).
+{
+  // 1. lucRungTrong (8429.40.40)
+  la('chữ biểu 8429.40.40', 'lucRungTrong', 'Xe lu rung, với lực rung của trống không quá 20 tấn tính theo khối lượng', 20, { op: '<=' });
+  la('mô tả hàng thật 15 tấn', 'lucRungTrong', 'Xe lu rung tự hành, lực rung của trống 15 tấn', 15, { op: null });
+  la('En centrifugal force drum (quy đổi kg → tấn)', 'lucRungTrong', 'Vibratory smooth drum rollers, with a centrifugal force drum not exceeding 20000 kg', 20, { op: '<=' });
+  la('Zh 滚筒激振力 (quy đổi 公斤 → tấn)', 'lucRungTrong', '压路机，滚筒激振力 18000公斤', 18, { op: null });
+  chuaBiet('chỉ ghi khối lượng máy, không ghi lực rung', 'lucRungTrong', 'Xe lu rung tự hành khối lượng bản thân 12 tấn');
+
+  // 2. vatLieuKhac — VANG_HOAC_BAC & KIM_LOAI_DAT_PHU_VANG_HOAC_BAC (7115.90.10 / 7115.90.20)
+  la('chữ biểu 7115.90.10 (bằng vàng hoặc bạc)', 'vatLieuKhac', 'Bằng vàng hoặc bạc', 'VANG_HOAC_BAC');
+  la('hàng thật khai đơn chất bằng vàng', 'vatLieuKhac', 'Chén nung phòng thí nghiệm bằng vàng', 'VANG_HOAC_BAC');
+  la('hàng thật khai đơn chất bằng bạc', 'vatLieuKhac', 'Nồi nấu kim loại bằng bạc nguyên chất', 'VANG_HOAC_BAC');
+  la('En of gold', 'vatLieuKhac', 'Crucibles of gold for laboratory use', 'VANG_HOAC_BAC');
+  la('En of silver', 'vatLieuKhac', 'Articles of silver', 'VANG_HOAC_BAC');
+  la('chữ biểu 7115.90.20 (kim loại dát phủ vàng hoặc bạc)', 'vatLieuKhac', 'Bằng kim loại dát phủ vàng hoặc bạc', 'KIM_LOAI_DAT_PHU_VANG_HOAC_BAC');
+  la('hàng thật kim loại dát phủ vàng', 'vatLieuKhac', 'Sản phẩm bằng kim loại dát phủ vàng', 'KIM_LOAI_DAT_PHU_VANG_HOAC_BAC');
+  la('hàng thật kim loại dát phủ bạc', 'vatLieuKhac', 'Sản phẩm kim loại dát phủ bạc', 'KIM_LOAI_DAT_PHU_VANG_HOAC_BAC');
+  la('En metal clad with gold', 'vatLieuKhac', 'Articles of metal clad with gold', 'KIM_LOAI_DAT_PHU_VANG_HOAC_BAC');
+  la('kim loại thường mạ vàng khớp VANG_HOAC_MA_VANG, không khớp nhầm VANG_HOAC_BAC', 'vatLieuKhac', 'Đồ trang sức mỹ ký bằng đồng mạ vàng', 'VANG_HOAC_MA_VANG');
+
+  // 3. laSanPhamCaoSuCung (4017.00.20)
+  la('chữ biểu 4017.00.20', 'laSanPhamCaoSuCung', 'Các sản phẩm bằng cao su cứng khác', true);
+  la('hàng thật khai tên riêng bằng cao su cứng', 'laSanPhamCaoSuCung', 'Vỏ bình ắc quy bằng cao su cứng (ebonit)', true);
+  la('phế liệu cao su cứng ⇒ false', 'laSanPhamCaoSuCung', 'Phế liệu và phế thải cao su cứng', false);
+  la('cao su cứng dạng tấm thô ⇒ false', 'laSanPhamCaoSuCung', 'Cao su cứng ở dạng tấm', false);
+
+  // 4. laPhanChimDoi (3101.00.92)
+  la('chữ biểu 3101.00.92 (trừ phân chim, dơi)', 'laPhanChimDoi', 'Nguồn gốc từ động vật (trừ phân chim, dơi), đã qua xử lý hóa học', false);
+  la('khai riêng phân chim', 'laPhanChimDoi', 'Phân chim tự nhiên đóng bao', true);
+  la('khai riêng phân dơi', 'laPhanChimDoi', 'Phân dơi nguyên chất đã xử lý', true);
+
+  // 5. hamLuongChatRanKhongChuaMuoi (2002.90.10 SEN)
+  la('chữ SEN 2002.90.10 (25% đến 40%)', 'hamLuongChatRanKhongChuaMuoi', 'Bột cà chua dạng sệt là cà chua nguyên chất cô đặc, có từ 25% đến 40% hàm lượng là chất rắn không chứa muối', 25);
+  la('hàng thật 30% chất rắn không chứa muối', 'hamLuongChatRanKhongChuaMuoi', 'Bột cà chua dạng sệt cô đặc, hàm lượng chất rắn không chứa muối 30%', 30);
+
+  // 6. ReDoS ~40.000 từ lặp < 2 giây (CLAUDE.md quy tắc 6b)
+  const redosText = Array(10000).fill('sản phẩm bằng kim loại dát phủ hoặc bằng cao su').join(' ');
+  const t0 = process.hrtime.bigint();
+  for (const fk of ['vatLieuKhac', 'laSanPhamCaoSuCung', 'laPhanChimDoi', 'lucRungTrong', 'hamLuongChatRanKhongChuaMuoi']) {
+    T.docGiaTri(fk, redosText);
+  }
+  const ms = Number(process.hrtime.bigint() - t0) / 1e6;
+  check(`OZV-1753 ReDoS ~40.000 từ lặp trên 5 khoá < 2000 ms (thực tế ${ms.toFixed(0)} ms)`, ms < 2000, { ms });
 }
 
 console.log(`\n${pass} pass, ${fail} fail`);
