@@ -382,6 +382,28 @@ if (kq12?.dong) {
   allResults.push(a._j, b._j, c._j);
 }
 
+// ═══ 14. S-2: K1 tách lời khuyên (DAT, loiKhuyen) và CHUA_KIEM khi vắng donViTinh ═══
+{
+  resetServiceRate();
+  const rK1 = await call({ dongHang: [
+    { stt: 1, maHs: '85166090', moTa: 'Nồi chiên không dầu 5L, 1500W, điện áp 220V, dùng chiên thực phẩm gia dụng, nhãn hiệu Lock&Lock', xuatXu: 'CN' },
+    dongMau({ stt: 2, maHs: '96170010', moTa: 'Bình thủy tinh giữ nhiệt có vỏ bọc bằng nhựa và thép không gỉ, có tay cầm, nút vặn, dung tích 1 lít, hiệu Rạng Đông, mới 100%', donViTinh: 'chiếc' }),
+    dongMau({ stt: 3, maHs: '84213990', moTa: 'Hộp găng tay cách khí phòng thí nghiệm (glovebox) MBraun MB-200MOD', donViTinh: 'bộ' }),
+    dongMau({ stt: 4, maHs: '85166090', moTa: 'a '.repeat(110).trim(), donViTinh: 'chiếc' }),
+  ] });
+  const k1NoUnit = items(rK1._j, 1, 'K1');
+  const um = k1NoUnit.find((m) => m.ma === 'UNIT_MISSING');
+  check('S-2 K1: vắng donViTinh → UNIT_MISSING là CHUA_KIEM (không CANH_BAO), không ép NEN_SUA', um && um.trangThai === 'CHUA_KIEM' && Boolean(um.lyDoChuaKiem) && !k1NoUnit.some((m) => m.trangThai === 'CANH_BAO' || m.trangThai === 'LOI'), k1NoUnit);
+  const k1Thieu = items(rK1._j, 2, 'K1');
+  const loiKhuyen = k1Thieu.find((m) => m.ma === 'THIEU_THONG_SO_THEO_NHOM');
+  check('S-2 K1: THIEU_THONG_SO_THEO_NHOM là DAT (loiKhuyen: true), giữ goiYSua + evidence, không CANH_BAO', loiKhuyen && loiKhuyen.trangThai === 'DAT' && loiKhuyen.loiKhuyen === true && Boolean(loiKhuyen.goiYSua) && loiKhuyen.evidence.length > 0 && !k1Thieu.some((m) => m.trangThai === 'CANH_BAO' || m.trangThai === 'LOI'), k1Thieu);
+  const k1Spec = items(rK1._j, 3, 'K1');
+  check('S-2 K1: lỗi thật MISSING_SPEC vẫn CANH_BAO', k1Spec.some((m) => m.ma === 'MISSING_SPEC' && m.trangThai === 'CANH_BAO'), k1Spec);
+  const k1Dai = items(rK1._j, 4, 'K1');
+  check('S-2 K1: mô tả > 200 ký tự VUOT_DO_DAI_ECUS vẫn CANH_BAO', k1Dai.some((m) => m.ma === 'VUOT_DO_DAI_ECUS' && m.trangThai === 'CANH_BAO'), k1Dai);
+  allResults.push(rK1._j);
+}
+
 const tong = allResults.filter(Boolean).flatMap((kq) => problems(kq));
 check(`bất biến trên mọi kết quả (${allResults.filter(Boolean).length} lượt): không LOI dựa HEURISTIC/LLM, CHUA_KIEM luôn có lý do, đủ 7 nhóm`, tong.length === 0, tong);
 

@@ -36,7 +36,7 @@ Trên đơn hàng → tab **Khai báo HQ** → bấm **Gợi ý HS** → nhập 
 ```
 
 **Lưu ý quan trọng:**
-- `confidence` là độ tin cậy của AI, **không phải** xác nhận của hải quan
+- **`confidence` % không phải xác suất đúng** (chưa hiệu chuẩn — đừng coi "92%" là chắc chắn) và **không phải** xác nhận của hải quan. Khi gọi API trực tiếp, ưu tiên `POST /api/classify` và đọc `status` + `nextAction` trước khi dùng mã.
 - Luôn đối chiếu với biểu thuế NK hiện hành trước khi chốt mã
 - Nếu có cảnh báo đỏ (chính sách, giấy phép) — đọc kỹ phần policy
 
@@ -78,16 +78,20 @@ Cảnh báo chính sách:
 Nếu cần tra nhanh không qua ERP:
 
 ```bash
-# 1. Lấy token từ CEO
-export TOKEN="your_token_here"
-export BASE="https://hs-code-api-thangs-projects-4472c6e9.vercel.app"
+# Các endpoint tra cứu đọc và AI (/api/tax, /api/suggest, /api/classify) mở công khai,
+# KHÔNG cần Bearer token (token chỉ dùng cho admin / ghi dữ liệu / endpoint kín)
+export BASE="https://hs-kb.uythacnhapkhau.com"
 
-# 2. Tra thuế
-curl -s -H "Authorization: Bearer $TOKEN" "$BASE/api/tax?hs=85171300"
+# 1. Tra thuế (không cần token)
+curl -s "$BASE/api/tax?hs=85171300"
 
-# 3. Gợi ý HS code
+# 2. Phân loại HS (ưu tiên /api/classify, đọc status + nextAction — không cần token)
+curl -s -X POST "$BASE/api/classify" \
+  -H "Content-Type: application/json" \
+  -d '{"tenHang": "iPhone 15 Pro Max 256GB"}'
+
+# 3. Gợi ý HS nhanh (/api/suggest — không cần token)
 curl -s -X POST "$BASE/api/suggest" \
-  -H "Authorization: Bearer $TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"description": "iPhone 15 Pro Max 256GB"}'
 
@@ -134,13 +138,13 @@ Trả về các cặp HS bị sửa nhiều lần (≥3 lần) — đây là g�
 A: Kiểm tra mô tả hàng có đủ đặc điểm khu biệt không (chất liệu, công dụng, thương hiệu). Mô tả mơ hồ → AI không phân loại được chính xác. Gửi feedback để hệ thống học.
 
 **Q: Có thể tin vào `confidence` 90% không?**
-A: Confidence phản ánh độ tương đồng với tiền lệ của Oz và GIR rules — **không phải** xác nhận hải quan. Luôn cần NV xem xét trước khi chốt.
+A: Không — `confidence` % **không phải xác suất đúng** (chưa hiệu chuẩn) và **không phải** xác nhận hải quan. Ưu tiên gọi `/api/classify`, đọc `status` + `nextAction` và kiểm mức `basis` trước khi chốt; luôn cần NV xem xét trước khi khai.
 
 **Q: Mã HS có cảnh báo [HIGH] thì làm gì?**
 A: Đọc phần `policyProcedures` trong response để biết: cần giấy phép gì, nộp ở đâu, mất bao nhiêu ngày, chi phí ước tính. Chuẩn bị hồ sơ trước khi hàng về.
 
 **Q: Biểu thuế update thế nào?**
-A: Admin chạy `npm run data:upload-xlsx` cục bộ → commit → push → Vercel auto-deploy. Xem `/admin/tariff.html` để diff 2 phiên bản.
+A: Admin chạy `npm run data:upload-xlsx` cục bộ → commit → push → Coolify tự triển khai lên server riêng (`docs/deploy-coolify.md`). Xem `/admin/tariff.html` để diff 2 phiên bản.
 
 **Q: Service down thì làm gì?**
 A: Gọi `GET /api/health` kiểm tra. Nếu 503 → liên hệ CEO. Trong thời gian chờ, tra biểu thuế thủ công tại `ecus.customs.gov.vn`.
