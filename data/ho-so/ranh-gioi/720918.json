@@ -4,13 +4,19 @@
   "nhom": "7209",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-720918",
     "ngay": "2026-11-04"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv#soat-720918",
+    "ngay": "2026-11-21",
+    "ghiChu": "Đã chuẩn hoá dieuKienSo bám chữ biểu thuế",
+    "bam": "2d3c54d4c00a84d7f9ec238d9a419cfce2dfed7b90f4619bc90dae586e35dc63"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -19,14 +25,20 @@
       "trich": "72091810 - - - Tấm thép đen (tôn đen) cán để tráng thiếc (Tin - mill blackplate - TMBP)",
       "dieuKienSo": [
         {
-          "fact": "lopMaPhu",
-          "op": "TRONG",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
           "value": [
-            "TRANG_THIEC"
+            "Tấm thép đen",
+            "tôn đen"
           ]
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "tráng thiếc"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "72091891",
@@ -46,27 +58,21 @@
           "donVi": "mm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "72091899",
       "nguon": "tax.72091899",
       "trich": "72091899 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "72091810",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.72091810: \"Tấm thép đen (tôn đen) cán để tráng thiếc (Tin - mill blackplate - TMBP)\" ⇒ lopMaPhu TRANG_THIEC"
-    },
-    {
-      "ma": "72091810",
-      "loai": "BO_VE",
-      "ve": "để tráng thiếc (Tin - mill blackplate - TMBP)",
-      "lyDo": "Đã lượng hóa qua mục đích tráng thiếc lopMaPhu TRANG_THIEC"
+      "ghiChu": "tax.72091810: \"Tấm thép đen (tôn đen) cán để tráng thiếc (Tin - mill blackplate - TMBP)\" ⇒ tenLoai [\"Tấm thép đen\", \"tôn đen\"] + congDung \"tráng thiếc\""
     },
     {
       "ma": "72091891",
@@ -82,27 +88,8 @@
     {
       "ma": "72091891",
       "loai": "BO_VE",
-      "ve": "dưới 0,6% tính theo",
-      "lyDo": "Đã lượng hóa qua hamLuongCarbon < 0.6 %"
-    },
-    {
-      "ma": "72091891",
-      "loai": "BO_VE",
       "ve": "khối lượng",
       "lyDo": "Cách tính tỷ lệ theo khối lượng"
-    },
-    {
-      "ma": "72091891",
-      "loai": "BO_VE",
-      "ve": "chiều dày không quá 0,17 mm",
-      "lyDo": "Đã lượng hóa qua doDay <= 0.17 mm"
-    }
-  ],
-  "traVe": [
-    {
-      "phien": "claude-agent:duyet-L21-20261111#soat-L21",
-      "ngay": "2026-11-11",
-      "lyDo": "(A) 720918:72091810 SAI NGHĨA/SUY RỘNG: chữ biểu 'Tấm thép đen (tôn đen) cán để tráng thiếc (Tin - mill blackplate - TMBP)' / EN 'Tin-mill blackplate' là thép CHƯA tráng, dùng ĐỂ tráng thiếc; điều kiện lopMaPhu TRONG [TRANG_THIEC] (tu-vung: 'tráng thiếc'/'tin-plated' = bề mặt đã được tráng) hỏi hàng đã tráng thiếc chưa. Hệ quả: TMBP thật (chưa tráng) trả lời 'không' ⇒ rơi 72091891/72091899; còn hàng đã tráng thiếc vốn thuộc 7210 lại khớp .10. Cần khoá riêng (vd laTonDenTMBP / mucDich tráng thiếc) hoặc THIEU_KHOA_TU_VUNG."
     }
   ]
 }

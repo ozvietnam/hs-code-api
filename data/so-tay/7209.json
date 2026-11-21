@@ -116,33 +116,64 @@
     },
     {
       "hs": "72091810",
-      "dieuKien": "Tấm thép đen (tôn đen) cán để tráng thiếc (Tin - mill blackplate - TMBP)",
+      "dieuKien": "tên loại hàng: Tấm thép đen hoặc tôn đen; công dụng / mục đích: tráng thiếc",
       "loaiKhac": false,
       "nguon": "tax.72091810",
       "trich": "72091810 - - - Tấm thép đen (tôn đen) cán để tráng thiếc (Tin - mill blackplate - TMBP)",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Tấm thép đen",
+            "tôn đen"
+          ]
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "tráng thiếc"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv#soat-720918",
+          "ngay": "2026-11-21",
+          "bam": "2d3c54d4c00a84d7f9ec238d9a419cfce2dfed7b90f4619bc90dae586e35dc63"
+        }
+      }
     },
     {
       "hs": "72091891",
-      "dieuKien": "Có hàm lượng carbon dưới 0,6% tính theo khối lượng và chiều dày không quá 0,17 mm",
+      "dieuKien": "hàm lượng carbon < 0.6 %; độ dày <= 0.17 mm",
       "loaiKhac": false,
       "nguon": "tax.72091891",
       "trich": "72091891 - - - - Có hàm lượng carbon dưới 0,6% tính theo khối lượng và chiều dày không quá 0,17 mm",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "khoi_luong",
+          "fact": "hamLuongCarbon",
           "op": "<",
           "value": 0.6,
           "donVi": "%"
         },
         {
-          "fact": "khoi_luong",
+          "fact": "doDay",
           "op": "<=",
           "value": 0.17,
           "donVi": "mm"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv#soat-720918",
+          "ngay": "2026-11-21",
+          "bam": "2d3c54d4c00a84d7f9ec238d9a419cfce2dfed7b90f4619bc90dae586e35dc63"
+        }
+      }
     },
     {
       "hs": "72091899",
