@@ -4,13 +4,19 @@
   "nhom": "5305",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-mm:loop:20261106T0903#soan-530500",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-02#soat-530500",
+    "ngay": "2026-11-21",
+    "ghiChu": "Đã chuẩn hoá dieuKienSo bám chữ biểu thuế",
+    "bam": "26b6bf9cbed59707bb8fcb7ba3d5e8fee12573124402f268a5e84ad4822d1643"
+  },
   "dieuKienNut": [
     {
       "id": "5305002",
@@ -26,7 +32,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -36,15 +42,41 @@
       "trich": "53050010 - Xơ xidan (sisal) và xơ dệt khác của các cây thuộc chi cây thùa (Agave); tô (tow) và phế liệu của các loại xơ này (kể cả phế liệu sợi và sợi tái chế)",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "Xơ xidan (sisal) và xơ dệt khác của các cây thuộc chi cây thùa (Agave)",
-            "tô (tow) và phế liệu của các loại xơ này (kể cả phế liệu sợi và sợi tái chế)"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Xơ xidan (sisal)"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "xơ dệt khác của các cây thuộc chi cây thùa (Agave)"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "tô (tow)",
+                  "phế liệu"
+                ]
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "của các loại xơ này (kể cả phế liệu sợi và sợi tái chế)"
+              }
+            ]
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": false
     },
     {
@@ -63,7 +95,7 @@
           "value": "loại thô"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "53050022",
@@ -76,7 +108,7 @@
           "value": "Xơ dừa"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": true
     },
     {
@@ -90,14 +122,14 @@
           "value": "Xơ chuối abaca"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "53050090",
       "nguon": "tax.53050090",
       "trich": "53050090 - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -109,7 +141,7 @@
     {
       "ma": "53050010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.53050010 \"Xơ xidan (sisal) và xơ dệt khác của các cây thuộc chi cây thùa (Agave); tô (tow) và phế liệu của các loại xơ này (kể cả phế liệu sợi và sợi tái chế)\" ⇒ tenLoai TEN_LOAI 2 giá trị nguyên văn; định ngữ chung \"của các cây thuộc chi cây thùa (Agave)\" (chữ Anh: \"of the genus Agave\") phủ chung hai danh từ đầu nên phải gộp chung một giá trị (tách riêng ⇒ cong5-dinh-ngu-tach); \"khác\" trong \"xơ dệt khác\" là khác XƠ XIDAN trong chi Agave, KHÔNG phải phần còn lại của tầng 5305 ⇒ phanConLai: false (phần còn lại của tầng là dòng 53050090 \"Loại khác\" trần)."
+      "ghiChu": "tax.53050010 \"Xơ xidan (sisal) và xơ dệt khác của các cây thuộc chi cây thùa (Agave); tô (tow) và phế liệu của các loại xơ này (kể cả phế liệu sợi và sợi tái chế)\" ⇒ HOAC 3 nhánh: (1) tenLoai \"Xơ xidan (sisal)\"; (2) tenLoai \"xơ dệt khác của các cây thuộc chi cây thùa (Agave)\"; (3) tenLoai [\"tô (tow)\", \"phế liệu\"] + tenLoai \"của các loại xơ này (kể cả phế liệu sợi và sợi tái chế)\"; phanConLai: false."
     },
     {
       "ma": "53050021",
@@ -130,13 +162,6 @@
       "ma": "53050090",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.53050090 \"Loại khác\" trần ⇒ không ghi điều kiện, không đưa vào spec (máy phủ định anh em)."
-    }
-  ],
-  "traVe": [
-    {
-      "phien": "claude-agent:duyet-L16-20261111#soat-L16",
-      "ngay": "2026-11-11",
-      "lyDo": "(A) 530500:53050010 THU HẸP (máy tách/giá trị gói): chữ biểu \"Xơ xidan (sisal) và xơ dệt khác của các cây thuộc chi cây thùa (Agave); tô (tow) và phế liệu của các loại xơ này (kể cả phế liệu sợi và sợi tái chế)\" / EN \"Sisal and other textile fibres of the genus Agave; tow and waste of these fibres\" được ghi thành tenLoai 2 chuỗi dài, mỗi chuỗi gói 2 hàng nối \"và\" + định ngữ. Thử bộ đọc: \"Xơ sisal thô, dạng bó\" ⇒ TRAI ⇒ xơ sisal — đúng hàng nêu tên đầu tiên của dòng — bị loại khỏi .10 và rơi về .90 \"Loại khác\". Sửa: tách mảng tên đầu [\"Xơ xidan (sisal)\", \"xơ sisal\", \"xơ dệt khác của các cây thuộc chi cây thùa (Agave)\", \"tô (tow)\", \"phế liệu\"] và giữ giới hạn \"của các loại xơ này\" (Agave) thành điều kiện riêng. (B) 53050021 tenLoai \"loại thô\" (EN \"raw\") là trạng thái chứ không phải tên loại; bộ đọc chịu được nhờ bỏ tiền tố \"loại\" nhưng nên dùng khoá trạng thái gia công nếu từ vựng có."
     }
   ]
 }
