@@ -13,7 +13,8 @@ import os from 'node:os';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { createRequire } from 'node:module';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+import { chuanTen, chuanChu, khoaNoiDung, taiDanhSachLoai, laCaKin, locCaKin } from './dung-bo-thu-de-rieng.mjs';
 
 const require = createRequire(import.meta.url);
 const { holdoutKey } = require('../lib/holdout.js');
@@ -24,14 +25,6 @@ const SCRIPT = path.join(ROOT, 'scripts', 'dung-bo-thu-de-rieng.mjs');
 
 const text = (v) => String(v == null ? '' : v).replace(/\s+/g, ' ').trim();
 const nz = (v) => String(v || '').replace(/\D/g, '');
-const chuanTen = (s) => String(s || '')
-  .normalize('NFD')
-  .replace(/[\u0300-\u036f]/g, '')
-  .replace(/đ/gi, 'd')
-  .toLowerCase()
-  .replace(/[^a-z\s]/g, ' ')
-  .replace(/\s+/g, ' ')
-  .trim();
 
 let passed = 0;
 let failed = 0;
@@ -162,6 +155,140 @@ const payloadsOk = [...rows300, ...rows100].every((c) => {
   return typeof body.tenHang === 'string' && body.tenHang.trim().length >= 2 && /^\d{8}$/.test(nz(c.maDung));
 });
 check('cả 400 dòng hợp lệ khuôn payload của scripts/do-phan-loai-tom-tat.mjs', payloadsOk);
+
+// ── 6. S-7: Khoá nội dung + hàm dùng chung laCaKin/locCaKin bất biến khi xáo dòng ────────
+const khoaNoiDungSet = new Set(Array.isArray(danhSachLoai.khoaNoiDung) ? danhSachLoai.khoaNoiDung : []);
+check(
+  'S-7 danh sách loại có đủ khoaLoaiChinh, khoaNoiDung, soKhoaNoiDungLoai, ghiChuDongOzGold',
+  Array.isArray(danhSachLoai.khoaLoaiChinh)
+    && danhSachLoai.khoaLoaiChinh.includes('tenChuan')
+    && danhSachLoai.khoaLoaiChinh.includes('khoaNoiDung')
+    && Array.isArray(danhSachLoai.khoaNoiDung)
+    && danhSachLoai.khoaNoiDung.length === danhSachLoai.soKhoaNoiDungLoai
+    && khoaNoiDungSet.size === danhSachLoai.soKhoaNoiDungLoai
+    && danhSachLoai.soKhoaNoiDungLoai > 0
+    && typeof danhSachLoai.ghiChuDongOzGold === 'string'
+    && danhSachLoai.ghiChuDongOzGold.length > 0,
+  {
+    khoaLoaiChinh: danhSachLoai.khoaLoaiChinh,
+    soKhoaNoiDungLoai: danhSachLoai.soKhoaNoiDungLoai,
+    len: danhSachLoai.khoaNoiDung?.length,
+  },
+);
+
+const dsTai = taiDanhSachLoai();
+check(
+  'S-7 taiDanhSachLoai() cache đường dẫn mặc định và laCaKin/locCaKin xử lý đầu vào rỗng an toàn',
+  dsTai === taiDanhSachLoai()
+    && dsTai.tenChuanSet.size === danhSachLoai.tenChuan.length
+    && dsTai.khoaNoiDungSet.size === danhSachLoai.khoaNoiDung.length
+    && chuanChu('  Nước   Ép  ') === 'nước ép'
+    && laCaKin(null) === false
+    && locCaKin(null).length === 0,
+);
+
+const mauThu = rows300[0];
+check(
+  'S-7 laCaKin khớp cả khi chỉ có tenChuanSet hoặc chỉ có khoaNoiDungSet',
+  laCaKin(mauThu, { tenChuanSet: dsTai.tenChuanSet, khoaNoiDungSet: new Set() })
+    && laCaKin(mauThu, { tenChuanSet: new Set(), khoaNoiDungSet: dsTai.khoaNoiDungSet })
+    && !laCaKin({ tenHang: 'hang chua tung ton tai xyz 9999', maDung: '99999999' }, dsTai),
+);
+
+const ozRawRows = ozRecords.map((x) => x.r);
+const khoa300 = new Set(rows300.map((r) => khoaNoiDung(r)));
+const ozConLaiMoi = locCaKin(ozRawRows);
+const soLoaiMoi = ozRawRows.length - ozConLaiMoi.length;
+const soLoaiCu = ozRecords.filter((x) => dongLoaiSet.has(x.dong)).length;
+const roRiTenMoi = ozConLaiMoi.filter((r) => norm300.has(chuanTen(text(r.tenHang || r.productName || r.name)))).length;
+const roRiKhoaMoi = ozConLaiMoi.filter((r) => khoa300.has(khoaNoiDung(r))).length;
+const caKinNhanDu300 = rows300.every((r) => laCaKin(r));
+
+check(
+  `S-7 (a) locCaKin trên oz-gold gốc: loại ${soLoaiMoi} dòng (khoá cũ dongOzGold: ${soLoaiCu}), 0/300 tên chuẩn sót, 0 khoaNoiDung sót, 300/300 khớp laCaKin`,
+  roRiTenMoi === 0 && roRiKhoaMoi === 0 && caKinNhanDu300 && soLoaiMoi === danhSachLoai.soDongLoai,
+  { soLoaiMoi, soLoaiCu, roRiTenMoi, roRiKhoaMoi, caKinNhanDu300 },
+);
+
+const xaoTatDinh = (arr, seed = 20261121) => {
+  const out = [...arr];
+  let a = seed >>> 0;
+  const rng = () => {
+    a = (a + 0x6D2B79F5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+  for (let i = out.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(rng() * (i + 1));
+    [out[i], out[j]] = [out[j], out[i]];
+  }
+  return out;
+};
+
+const khoaBiLoaiGoc = new Set(ozRawRows.filter((r) => laCaKin(r)).map((r) => khoaNoiDung(r)));
+const tmpShuffle = fs.mkdtempSync(path.join(os.tmpdir(), 's7-shuffle-'));
+try {
+  const tmpImport = path.join(tmpShuffle, 'import-only');
+  fs.mkdirSync(tmpImport, { recursive: true });
+  const probeScript = path.join(tmpShuffle, 'probe-import.mjs');
+  fs.writeFileSync(
+    probeScript,
+    `import { locCaKin } from ${JSON.stringify(pathToFileURL(SCRIPT).href)};\nconsole.log(typeof locCaKin);\n`,
+  );
+  const outImport = execFileSync(
+    'node',
+    [probeScript, `--ra=${tmpImport}`],
+    { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] },
+  ).trim();
+  check(
+    'S-7 import dung-bo-thu-de-rieng.mjs không kích hoạt CLI dựng/ghi tệp',
+    outImport === 'function' && fs.readdirSync(tmpImport).length === 0,
+    { outImport, files: fs.readdirSync(tmpImport) },
+  );
+
+  const shuffledLines = xaoTatDinh(ozLines);
+  const daDoiThuTu = shuffledLines.some((l, idx) => l !== ozLines[idx]);
+  check('S-7 (b) bản sao tạm oz-gold-final.jsonl đã đổi thứ tự dòng', daDoiThuTu && shuffledLines.length === ozLines.length);
+
+  const shuffledPath = path.join(tmpShuffle, 'oz-gold-final-shuffled.jsonl');
+  fs.writeFileSync(shuffledPath, `${shuffledLines.join('\n')}\n`);
+
+  const shuffledRecords = fs.readFileSync(shuffledPath, 'utf8')
+    .split('\n')
+    .filter((l) => l.trim().length > 0)
+    .map((l, idx) => {
+      const r = JSON.parse(l);
+      const nt = chuanTen(text(r.tenHang || r.productName || r.name));
+      return { dong: idx + 1, r, nt };
+    });
+
+  const shuffledRawRows = shuffledRecords.map((x) => x.r);
+  const shuffledConLaiMoi = locCaKin(shuffledRawRows);
+  const soLoaiXaoMoi = shuffledRawRows.length - shuffledConLaiMoi.length;
+  const khoaBiLoaiXao = new Set(shuffledRawRows.filter((r) => laCaKin(r)).map((r) => khoaNoiDung(r)));
+  const cungTapKhoa = khoaBiLoaiXao.size === khoaBiLoaiGoc.size && [...khoaBiLoaiGoc].every((k) => khoaBiLoaiXao.has(k));
+  const roRiTenXaoMoi = shuffledConLaiMoi.filter((r) => norm300.has(chuanTen(text(r.tenHang || r.productName || r.name)))).length;
+  const roRiKhoaXaoMoi = shuffledConLaiMoi.filter((r) => khoa300.has(khoaNoiDung(r))).length;
+
+  check(
+    `S-7 (b) xáo dòng oz-gold: locCaKin loại đúng ${soLoaiXaoMoi} dòng (khớp ${soLoaiMoi}), cùng tập khoaNoiDung, 0/300 tên chuẩn sót`,
+    soLoaiXaoMoi === soLoaiMoi && cungTapKhoa && roRiTenXaoMoi === 0 && roRiKhoaXaoMoi === 0,
+    { soLoaiXaoMoi, soLoaiMoi, cungTapKhoa, roRiTenXaoMoi, roRiKhoaXaoMoi },
+  );
+
+  // Ca âm tính: lọc theo số dòng cũ dongOzGold trên bản sao đã xáo → lộ > 200 ca giữ riêng
+  const shuffledConLaiCu = shuffledRecords.filter((x) => !dongLoaiSet.has(x.dong));
+  const roRiCuKhiXao = shuffledConLaiCu.filter((x) => x.nt && norm300.has(x.nt)).length;
+  const tenBiLoCuKhiXao = new Set(shuffledConLaiCu.filter((x) => x.nt && norm300.has(x.nt)).map((x) => x.nt)).size;
+  check(
+    `S-7 (b âm tính) lọc theo số dòng cũ dongOzGold khi xáo dòng bị rò ${roRiCuKhiXao} dòng (${tenBiLoCuKhiXao}/300 tên chuẩn) > 200`,
+    roRiCuKhiXao > 200,
+    { roRiCuKhiXao, tenBiLoCuKhiXao },
+  );
+} finally {
+  fs.rmSync(tmpShuffle, { recursive: true, force: true });
+}
 
 console.log(`\n${passed} passed, ${failed} failed`);
 process.exit(failed ? 1 : 0);

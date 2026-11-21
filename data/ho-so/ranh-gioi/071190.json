@@ -4,13 +4,19 @@
   "nhom": "0711",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-071190",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-01#soat-lo-5e",
+    "ngay": "2026-11-21",
+    "ghiChu": "Đã chuẩn hoá dieuKienSo bám chữ biểu thuế và traVe.lyDo",
+    "bam": "accafb0acd45783a2b8163bbeaa871d354a8d5f5a514e808aaf769483fc3493c"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -24,7 +30,7 @@
           "value": "Ngô ngọt"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "07119020",
@@ -34,10 +40,10 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Quả ớt"
+          "value": "Quả ớt (chillies)"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "07119030",
@@ -50,7 +56,7 @@
           "value": "Nụ bạch hoa"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "07119040",
@@ -67,7 +73,7 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "07119050",
@@ -84,7 +90,7 @@
           "op": "KHONG"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "07119060",
@@ -96,14 +102,14 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "07119090",
       "nguon": "tax.07119090",
       "trich": "07119090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -115,7 +121,7 @@
     {
       "ma": "07119020",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.07119020 \"Quả ớt (chillies) (quả thuộc chi Capsicum)\" ⇒ tenLoai \"Quả ớt\"; ngoặc là tên tiếng Anh/chi khoa học, không thành điều kiện."
+      "ghiChu": "tax.07119020 \"Quả ớt (chillies) (quả thuộc chi Capsicum)\" (EN \"Chillies (fruits of genus Capsicum)\") ⇒ tenLoai \"Quả ớt (chillies)\" để giữ giới hạn ớt cay (chillies), phân biệt với ớt chuông/ớt ngọt thuộc .60/.90."
     },
     {
       "ma": "07119030",
@@ -125,12 +131,12 @@
     {
       "ma": "07119040",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.07119040 \"Hành tây, đã được bảo quản bằng khí sunphurơ\" ⇒ tenLoai \"Hành tây\" + baoQuanBangKhiSunphuro CO (khoá lô 20, cachDoc khớp \"đã được bảo quản bằng khí sunphurơ\"); thay phuongPhapBaoQuan BAO_QUAN_BANG_KHI_SUNPHURO (khoá đó đọc nhầm \"trừ loại … khí sunphurơ\" của .50)."
+      "ghiChu": "tax.07119040 \"Hành tây, đã được bảo quản bằng khí sunphurơ\" ⇒ tenLoai \"Hành tây\" + baoQuanBangKhiSunphuro CO; thống nhất dùng khoá baoQuanBangKhiSunphuro CO/KHONG cho cả ba dòng .40/.50/.60 vì .50 có vế phủ định \"trừ loại được bảo quản bằng khí sunphurơ\" (khoá phuongPhapBaoQuan không có op phủ định và đọc nhầm vế \"trừ loại…\" thành dương tính)."
     },
     {
       "ma": "07119050",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.07119050 \"Hành tây, đã được bảo quản trừ loại được bảo quản bằng khí sunphurơ\" ⇒ tenLoai \"Hành tây\" + baoQuanBangKhiSunphuro KHONG (cachDocKhong khớp \"trừ loại được bảo quản bằng khí sunphurơ\"); thay ghi chú THIEU_KHOA phuongPhapBaoQuan."
+      "ghiChu": "tax.07119050 \"Hành tây, đã được bảo quản trừ loại được bảo quản bằng khí sunphurơ\" ⇒ tenLoai \"Hành tây\" + baoQuanBangKhiSunphuro KHONG (cachDocKhong khớp \"trừ loại được bảo quản bằng khí sunphurơ\")."
     },
     {
       "ma": "07119060",
@@ -141,13 +147,6 @@
       "ma": "07119090",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.07119090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
-    }
-  ],
-  "traVe": [
-    {
-      "phien": "claude-agent:duyet-L3-20261111#soat-L3",
-      "ngay": "2026-11-11",
-      "lyDo": "(A) 071190:07119020 SUY RỘNG: chữ biểu 'Quả ớt (chillies) (quả thuộc chi Capsicum)' / 'Chillies (fruits of genus Capsicum)' bị rút còn tenLoai 'Quả ớt' — 'ớt' tiếng Việt gồm ớt chuông/ớt ngọt (sweet peppers) vốn rơi vào .60/.90; chữ Anh 'Chillies' là giới hạn. (B) ghi chú: dòng .40/.50/.60 dùng khoá baoQuanBangKhiSunphuro CO_KHONG trong khi 071120/071140/071151/071159 dùng phuongPhapBaoQuan TRONG [BAO_QUAN_BANG_KHI_SUNPHURO] — hai khoá cho cùng một vế, nên thống nhất khi sửa."
     }
   ]
 }
