@@ -323,6 +323,9 @@ const KHOA_MOI = {
   // 20/11/2026 (OZV-1610): vế «có bộ phận khuếch đại và một hoặc nhiều loa» — giải DỪNG 8519.81.20
   coBoPhanKhuachDai: 'CO_KHONG',
   coLoa: 'CO_KHONG',
+  // 21/11/2026 (OZV-1742): nguồn lên men nước ép rau/quả 2206.00.60 và tầng thiết bị chơi bạc/mạt chược 9504.90.3
+  lenMenTuNuocEpRauQua: 'CO_KHONG',
+  laThietBiChoiBacHoacMatChuoc: 'CO_KHONG',
 };
 
 // ── 1. Nạp theo phiên bản ─────────────────────────────────────────────────────────────────────────────────────────
@@ -693,6 +696,32 @@ chuaBiet('canh «loai» ASCII không dính «loa»', 'coLoa', 'Máy ghi âm cass
 chuaBiet('canh «loai» ASCII giữa câu — «một hoặc nhiều loai»', 'coLoa', 'máy có một hoặc nhiều loai cảm biến');
 // «loại» có dấu — kí tự ạ (U+1EA1) khác a nên "loa" thuần không xuất hiện trong chuỗi
 chuaBiet('canh «loại» có dấu không dính «loa»', 'coLoa', 'Máy ghi âm cassette loại bỏ túi');
+
+// ── Lô 25 (OZV-1742, 21/11/2026) — lenMenTuNuocEpRauQua (2206.00.60) & laThietBiChoiBacHoacMatChuoc (9504.90.3) ──
+la('lenMenTuNuocEpRauQua (chữ biểu 2206.00.60)', 'lenMenTuNuocEpRauQua', 'Rượu thu được từ việc lên men nước ép rau hoặc nước ép quả, trừ nước ép nho tươi (SEN)', true, { bc: 'lên men nước ép rau hoặc nước ép quả' });
+la('lenMenTuNuocEpRauQua — rượu vang trái cây', 'lenMenTuNuocEpRauQua', 'Rượu vang trái cây đóng chai 750ml', true);
+la('lenMenTuNuocEpRauQua En', 'lenMenTuNuocEpRauQua', 'Wines obtained by the fermentation of vegetables juices or of fruit juices', true);
+la('lenMenTuNuocEpRauQua Zh', 'lenMenTuNuocEpRauQua', '蔬菜汁或水果汁发酵所得的酒', true);
+la('lenMenTuNuocEpRauQua KHÔNG', 'lenMenTuNuocEpRauQua', 'Đồ uống không phải lên men từ nước ép quả', false);
+chuaBiet('lenMenTuNuocEpRauQua không bắt nhầm vang táo/lê 22060010', 'lenMenTuNuocEpRauQua', 'Vang táo hoặc vang lê');
+chuaBiet('lenMenTuNuocEpRauQua không bắt nhầm rượu gạo 22060091', 'lenMenTuNuocEpRauQua', 'Rượu gạo khác (kể cả rượu gạo bổ)');
+chuaBiet('lenMenTuNuocEpRauQua không bắt nhầm nước ép rau quả chưa lên men 2009', 'lenMenTuNuocEpRauQua', 'Nước ép quả hoặc nước ép rau chưa lên men');
+la('laThietBiChoiBacHoacMatChuoc (tiêu đề 9504.90.3)', 'laThietBiChoiBacHoacMatChuoc', 'Thiết bị chơi bạc và đồ phụ trợ đi kèm', true, { bc: 'Thiết bị chơi bạc và đồ phụ trợ đi kèm' });
+la('laThietBiChoiBacHoacMatChuoc (chữ biểu 9504.90.34)', 'laThietBiChoiBacHoacMatChuoc', 'Quân bài Mạt chược bằng gỗ, giấy hoặc plastic', true, { bc: 'Quân bài Mạt chược' });
+la('laThietBiChoiBacHoacMatChuoc En', 'laThietBiChoiBacHoacMatChuoc', 'Gambling equipment and paraphernalia; mah-jong tiles', true);
+la('laThietBiChoiBacHoacMatChuoc Zh', 'laThietBiChoiBacHoacMatChuoc', '麻将及赌博设备', true);
+la('laThietBiChoiBacHoacMatChuoc KHÔNG', 'laThietBiChoiBacHoacMatChuoc', 'Trò chơi bàn không phải thiết bị chơi bạc', false);
+chuaBiet('laThietBiChoiBacHoacMatChuoc không bắt nhầm đồ phụ trợ bowling 95049010', 'laThietBiChoiBacHoacMatChuoc', 'Các loại đồ phụ trợ để chơi bowling bằng plastic');
+chuaBiet('laThietBiChoiBacHoacMatChuoc không bắt nhầm đồ chơi ném phi tiêu 9504902', 'laThietBiChoiBacHoacMatChuoc', 'Đồ chơi ném phi tiêu và các bộ phận và phụ kiện của chúng');
+{
+  const big1 = Array(8000).fill('nước ép rau quả tươi nguyên chất').join(' ');
+  const big2 = Array(8000).fill('thiết bị chơi bowling và đồ phụ trợ').join(' ');
+  const t0 = process.hrtime.bigint();
+  const r1 = T.docGiaTri('lenMenTuNuocEpRauQua', big1);
+  const r2 = T.docGiaTri('laThietBiChoiBacHoacMatChuoc', big2);
+  const ms = Number(process.hrtime.bigint() - t0) / 1e6;
+  check(`OZV-1742 ReDoS ~40.000 từ lặp cho 2 khoá mới < 2000 ms (thực tế ${ms.toFixed(0)} ms)`, r1.trangThai === 'CHUA_BIET' && r2.trangThai === 'CHUA_BIET' && ms < 2000, { ms });
+}
 
 // ── 5. Viết + kiểm giá trị ───────────────────────────────────────────────────────────────────────────────────────────
 const viet = (khoa, v) => { try { return T.vietCum(khoa, v); } catch (e) { return `LOI ${e.message}`; } };

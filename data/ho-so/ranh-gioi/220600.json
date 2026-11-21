@@ -14,8 +14,8 @@
     "boi": "CLAUDE_DUYET",
     "phien": "claude-agent:tho-hs-01#soat-lo-5f",
     "ngay": "2026-11-21",
-    "ghiChu": "Đã chuẩn hoá dieuKienSo bám chữ biểu thuế",
-    "bam": "4f92238f796ba327afe46113eb526271ebfb35abd2f50c954371f6d70c02ce65"
+    "ghiChu": "Chuẩn hoá dieuKienSo với khoá lenMenTuNuocEpRauQua",
+    "bam": "b8d17f56a2c41723c2089f099b8ef93dc08aec18472ad266ad5b92497510a414"
   },
   "dieuKienNut": [
     {
@@ -155,12 +155,8 @@
           "value": "Rượu"
         },
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "nước ép rau",
-            "nước ép quả"
-          ]
+          "fact": "lenMenTuNuocEpRauQua",
+          "op": "CO"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -207,7 +203,7 @@
     {
       "ma": "22060060",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.22060060 \"Rượu thu được từ việc lên men nước ép rau hoặc nước ép quả, trừ nước ép nho tươi (SEN)\" (EN \"Wines obtained by the fermentation of vegetables juices or of fruit juices\") — danh từ đầu \"Rượu\" + hai nguồn lên men nối \"hoặc\" trong vế ⇒ tenLoai \"Rượu\" VÀ tenLoai [\"nước ép rau\",\"nước ép quả\"]"
+      "ghiChu": "tax.22060060 \"Rượu thu được từ việc lên men nước ép rau hoặc nước ép quả, trừ nước ép nho tươi (SEN)\" (EN \"Wines obtained by the fermentation of vegetables juices or of fruit juices\") — danh từ đầu \"Rượu\" + khoá lenMenTuNuocEpRauQua CO (vì docTenLoaiDayDu cắt tại chữ \"được\" nên dùng khoá CO_KHONG cho nguồn lên men nước ép rau hoặc nước ép quả)"
     },
     {
       "ma": "22060060",
