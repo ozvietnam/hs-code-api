@@ -138,7 +138,9 @@ cd = chotDong8({ hs: '85444299', productText: 'Dây cáp mạng USB, đường k
 // thay vì bỏ cuộc; ý của ca vẫn giữ: không tự chốt .94 cho cáp mạng USB (CEO 30/10/2026: cáp dữ liệu theo TB-TCHQ .99).
 check('8544.42.94 → không chốt .94 cho cáp mạng USB (bảo thủ: KHONG_THE_CHOT hoặc THIEU_SO_LIEU)', ['KHONG_THE_CHOT', 'THIEU_SO_LIEU'].includes(cd.ketQua) && cd.hs !== '85444294', JSON.stringify(cd));
 cd = chotDong8({ hs: '40118011', productText: 'Lốp máy xúc lật 14.00-24, đường kính 788mm' });
-check('4011 ngưỡng VÀNH không lấy đường kính ngoài → KHONG_THE_CHOT', cd.ketQua === 'KHONG_THE_CHOT', JSON.stringify(cd));
+check('4011 ngưỡng VÀNH không lấy đường kính ngoài → không tự chốt (KHONG_THE_CHOT hoặc THIEU_SO_LIEU hỏi duongKinhVanh)',
+  ['KHONG_THE_CHOT', 'THIEU_SO_LIEU'].includes(cd.ketQua) && !cd.hs && (cd.ketQua === 'KHONG_THE_CHOT' || (cd.missingFacts || []).some((m) => m.fact === 'duongKinhVanh')),
+  JSON.stringify(cd));
 cd = chotDong8({ hs: '85044019', productText: 'Bộ đổi nguồn 30W dùng cho tủ điện' });
 const cd85044019Trai = chotDong8({
   hs: '85044019',
