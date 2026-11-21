@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L21-20261111#soat-L21",
-    "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu tiêu đề 7229902 'Mặt cắt ngang không quá 5,5 mm' (biên ≤ đối chiếu tay); .21/.91 'Crôm từ 0,5% trở lên' ⇒ ≥0,5; .30 'Loại khác, bằng thép gió' ⇒ TEN_LOAI; bảng 722990-01 KHONG_LECH khớp. Lưu ý: tiêu đề dùng duongKinh — nên đổi sang kichThuocMatCatNgang (như 722300) để dây dẹt/không tròn đọc được; không đổi ranh giới với dây tròn.",
-    "bam": "aa97eedd67a76bd1f2b81daa995705540c249fba6e84216d80b3f0ff643ee965"
+    "phien": "claude:tho-hs-01:ozv-1699#soat-722990",
+    "ngay": "2026-11-21",
+    "ghiChu": "Đổi duongKinh sang kichThuocMatCatNgang theo nguyên văn Mặt cắt ngang không quá 5,5 mm",
+    "bam": "cb122b2a54974ed0ac664a2204d207d693edd2dde901f271a36bb14789cd606d"
   },
   "dieuKienNut": [
     {
@@ -24,7 +24,7 @@
       "trich": "7229902 Mặt cắt ngang không quá 5,5 mm",
       "dieuKienSo": [
         {
-          "fact": "duongKinh",
+          "fact": "kichThuocMatCatNgang",
           "op": "<=",
           "value": 5.5,
           "donVi": "mm"

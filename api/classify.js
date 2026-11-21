@@ -16,7 +16,7 @@ const { classify } = require('../lib/classify');
 const { extractSpecs } = require('../lib/extract-specs');
 const { runDeclarationCheck, validateDeclarationCheckInput } = require('../lib/declaration-check');
 const { acquireServiceSlot } = require('../lib/service-rate-limit');
-const { ganHoSoClassify, chuanDinhDanh, cheDoHieuLuc: cheDoHoSoHieuLuc } = require('../lib/ho-so/api');
+const { ganHoSoClassify, chuanDinhDanh, cheDoHieuLuc: cheDoHoSoHieuLuc, ghiBoQua: ghiBoQuaHoSo } = require('../lib/ho-so/api');
 // OZV-507 việc 1 — cache theo hash hồ sơ cho LƯỢT KHOÁ DỊCH VỤ (Postgres kín; lượt công khai không đụng).
 const { cacheBat, khoaCache, docCache, ghiCache, donPhienBanCu, phienBanDuLieu } = require('../lib/classify-cache');
 // OZV-1144 / OZV-1211 (G5 · OZV-760) — kho đáp án: HS_KHO_DAP_AN=off|shadow|on (mặc định off; on chỉ trả bản DUYET).
@@ -242,6 +242,8 @@ async function handler(req, res) {
       if (dungKhoOn && dauVaoKho) {
         const tra = await traTuKho(dauVaoKho, { tier, phienBan: pb, debug, holdout: wantsEvalHoldout(req) });
         if (tra.hit && tra.phanHoi) {
+          // Chạy bóng hồ sơ: lượt trả từ kho đáp án không dựng hồ sơ ⇒ để lại một dòng `boQua` (chỉ số đo, không đổi phản hồi).
+          ghiBoQuaHoSo('classify', tra.phanHoi.results?.[0]?.hs, { noiBo: laNoiBoOz(req), caller: kenhGoi }, 'kho-dap-an');
           return res.status(200).json({
             ...tra.phanHoi, attrs, usage: [], ms: Date.now() - started,
             khoDapAn: true, phienBanDuLieu: pb,
@@ -258,6 +260,8 @@ async function handler(req, res) {
         const tram = await docCache(khoa, pb);
         if (tram) {
           chayBong(tram, 0);
+          // Chạy bóng hồ sơ: lượt trúng cache không dựng hồ sơ ⇒ để lại một dòng `boQua` (chỉ số đo, không đổi phản hồi).
+          ghiBoQuaHoSo('classify', tram.results?.[0]?.hs, { noiBo: laNoiBoOz(req), caller: kenhGoi }, 'cache');
           // Trúng cache: không có lượt LLM nào ⇒ usage rỗng (không tính phí token cho lượt này).
           return res.status(200).json({ ...tram, attrs, usage: [], ms: Date.now() - started, cached: true, phienBanDuLieu: pb });
         }

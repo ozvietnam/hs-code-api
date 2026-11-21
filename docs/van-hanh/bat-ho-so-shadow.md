@@ -146,7 +146,12 @@ API=https://hs-kb.uythacnhapkhau.com
    docker exec hs-code-api node scripts/bao-cao-shadow.mjs           # bảng chữ
    docker exec hs-code-api node scripts/bao-cao-shadow.mjs --json    # JSON
    docker exec hs-code-api node scripts/bao-cao-shadow.mjs --tu=2026-11-02 --den=2026-11-06   # lọc ngày (UTC)
+   docker exec hs-code-api node scripts/bao-cao-shadow.mjs --ben-goi=cong-oz,erp              # chỉ lượt của các bên gọi này
    ```
+
+   Cuối bảng có hai khối **Theo bên gọi** và **Theo phân nhóm 6 số** (lượt, bỏ qua, chưa duyệt, dựng được, tỉ lệ từng trạng
+   thái, bản nháp) — dùng để quyết bật theo từng phân nhóm và tách lượt thử nội bộ khỏi lượt khách. Dòng `boQua` là lượt mã
+   lát 1 không dựng hồ sơ (động cơ chốt sớm / trúng cache / kho đáp án): có trong số lượt, không vào tỉ lệ.
 
    Tệp số đo nằm ở `/data/ho-so-shadow.jsonl` trong container (thư mục `HS_DATA_DIR`). Mỗi dòng chỉ có số và mã HS, không có
    tên hàng hay mô tả. Khoảng 0,5 KB/lượt.
