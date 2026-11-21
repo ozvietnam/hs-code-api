@@ -181,5 +181,13 @@ describe('lib/dieu-kien-so.js — gỡ tiêu đề cha đa vế cho LIET_KE & t�
     });
     assert.equal(r0714.ketQua, 'CHOT');
     assert.equal(r0714.hs, '07149091');
+
+    const r27101212 = chotDong8({
+      hs: '271012',
+      productText:
+        'Dầu có nguồn gốc từ dầu mỏ - Dầu nhẹ và các chế phẩm: Xăng động cơ, có pha chì: RON 90 và cao hơn nhưng dưới RON 97',
+    });
+    assert.equal(r27101212.ketQua, 'CHOT');
+    assert.equal(r27101212.hs, '27101212');
   });
 });
