@@ -11,6 +11,7 @@
  *   4. Tắt êm: lượt nền không tính vào lib/inflight.js (không giữ container); đang tắt ⇒ không nhận việc mới, bỏ việc đang chờ.
  *   5. `on` và lượt chạy thử vẫn chờ hồ sơ như cũ (phản hồi cần nó).
  *   6. Ngữ cảnh riêng tư của lượt gọi đi theo việc nền.
+ *   7. Chi phí LLM của lượt bóng (không còn về `usage` của bên gọi) được ghi vào dòng số đo và cộng trong báo cáo.
  *
  * Không gọi mạng/LLM thật.
  */
@@ -223,6 +224,89 @@ await cho(() => API.trangThaiNen().dangChay === 2);
 moCong(); await API.choNenXong();
 const m = Object.fromEntries(thay);
 check('việc xếp trong withPrivateData chạy nền vẫn ở chế độ riêng tư dù được khởi chạy từ lượt công khai; việc công khai không bị lây', m['rieng-tu'] === true && m['cong-khai-1'] === false && m['cong-khai-2'] === false && m['cong-khai-3'] === false, thay);
+
+// ── 7. Chi phí LLM của lượt bóng chạy nền: ghi vào dòng số đo, cộng trong báo cáo ──────────────────────────────────────
+const { recordUsage, withUsage } = require("../lib/usage-context");
+const tt = API.tomTatUsage([
+  { provider: "minimax", model: "MiniMax-M2.7-highspeed", inputTokens: 1000, outputTokens: 200 },
+  { provider: "minimax", model: "MiniMax-M2.7-highspeed", inputTokens: 500, outputTokens: 100 },
+  { provider: "openrouter", model: "google/gemma-3-27b-it:free", inputTokens: -1, outputTokens: -1 },
+  { provider: "sk-khoa bi mat!!", model: "ten la <b>", inputTokens: 10, outputTokens: 1 },
+  null,
+]);
+check("tomTatUsage: cộng lượt + token, token -1 không cộng mà đếm khongRoToken", tt.soLuot === 4 && tt.tokenVao === 1510 && tt.tokenRa === 301 && tt.khongRoToken === 1, tt);
+check("tomTatUsage: USD theo bảng giá lib/llm-cost.js (1500 vào × 0,30 + 300 ra × 1,20 mỗi triệu), lượt không có giá đếm khongRoGia", Math.abs(tt.usd - (1500 * 0.30 + 300 * 1.20) / 1e6) < 1e-9 && tt.khongRoGia === 2, tt);
+check("tomTatUsage: khoá kênh \"<nhà cung cấp>/<model>\", tên sai khuôn ⇒ khac (không chép chuỗi lạ)", tt.kenh["minimax/MiniMax-M2.7-highspeed"]?.soLuot === 2 && tt.kenh["openrouter/google:gemma-3-27b-it:free"]?.soLuot === 1 && tt.kenh["khac/khac"]?.soLuot === 1 && !JSON.stringify(tt).includes("bi mat"), Object.keys(tt.kenh));
+check("tomTatUsage: đầu vào rỗng / sai kiểu ⇒ toàn số 0", API.tomTatUsage(undefined).soLuot === 0 && API.tomTatUsage("x").usd === 0);
+check("KHOA_SHADOW có chiPhiLlm", API.KHOA_SHADOW.includes("chiPhiLlm"));
+
+llmTier.callLLMJson = async (_s, user, opts = {}) => {
+  const step = String(opts.step || "");
+  goiLlm.push(step);
+  recordUsage({ provider: "minimax", model: "MiniMax-M2.7-highspeed", inputTokens: 1000, outputTokens: 200 });
+  if (cong) await cong;
+  if (step === "ho-so-doc-du-kien") return { json: { duKien: [] }, model: "stub" };
+  const m2 = /BẢN MÁY GHÉP:\n([^\n]*)/.exec(String(user));
+  return { json: { moTaEcus: m2 ? m2[1] : "" }, model: "stub" };
+};
+xoa(); goiLlm.length = 0; dongCong();
+const ngoai = await withUsage(() => API.ganHoSoClassify(kq(), attrs, { noiBo: false, caller: "cong-oz" }));
+check("classify shadow: usage của lượt HTTP KHÔNG chứa lượt LLM hồ sơ lúc trả về", bangSau(ngoai.result, kq()) && ngoai.usage.length === 0, ngoai.usage);
+moCong(); await API.choNenXong();
+d = doc();
+const nLlm = hoSoLlm();
+const cpD = d[0]?.chiPhiLlm;
+check("classify shadow: dòng số đo mang chiPhiLlm = đúng số lượt LLM hồ sơ đã gọi ở nền, token và USD khớp", d.length === 1 && nLlm >= 1 && cpD && cpD.soLuot === nLlm && cpD.tokenVao === 1000 * nLlm && cpD.tokenRa === 200 * nLlm && Math.abs(cpD.usd - nLlm * (1000 * 0.30 + 200 * 1.20) / 1e6) < 1e-9 && cpD.kenh["minimax/MiniMax-M2.7-highspeed"].soLuot === nLlm, { nLlm, cpD });
+check("classify shadow: dòng vẫn chỉ có khoá trong KHOA_SHADOW; chiPhiLlm chỉ gồm số + tên kênh", Object.keys(d[0]).every((k) => API.KHOA_SHADOW.includes(k)) && bangSau(Object.keys(cpD).sort(), ["kenh", "khongRoGia", "khongRoToken", "soLuot", "tokenRa", "tokenVao", "usd"]), Object.keys(cpD || {}));
+check("classify shadow: kho usage của lượt HTTP vẫn rỗng SAU khi việc nền xong (việc nền dùng kho riêng)", ngoai.usage.length === 0, ngoai.usage);
+
+xoa();
+await API.describeTheoCo({ hsCode: HS, productName: "cốc giữ nhiệt bằng thép không gỉ" }, { noiBo: false, caller: "erp" }, async () => structuredClone(cuJ));
+await API.ganHoSoSheet(phieu(), { hs: HS, tenHang: "cốc giữ nhiệt" }, { noiBo: true, caller: "erp" });
+await API.choNenXong();
+d = doc();
+check("describe + sheet shadow: cả hai dòng đều có chiPhiLlm (lượt không gọi LLM ghi soLuot 0), token khớp số lượt", d.length === 2 && d.every((r) => r.chiPhiLlm && Number.isInteger(r.chiPhiLlm.soLuot) && r.chiPhiLlm.tokenVao === 1000 * r.chiPhiLlm.soLuot) && d.some((r) => r.chiPhiLlm.soLuot >= 1), d.map((r) => [r.endpoint, r.chiPhiLlm]));
+
+const loiSauKhiGoi = await API.chayDoChiPhi(async () => { recordUsage({ provider: "minimax", model: "MiniMax-M2.7-highspeed", inputTokens: 7, outputTokens: 3 }); throw new Error("sập sau khi đã tốn 1 lượt"); });
+check("chayDoChiPhi: việc ném lỗi ⇒ kq.loi, chi phí đã tiêu trước lỗi vẫn được tính", loiSauKhiGoi.kq.loi instanceof Error && loiSauKhiGoi.chiPhiLlm.soLuot === 1 && loiSauKhiGoi.chiPhiLlm.tokenVao === 7, loiSauKhiGoi.chiPhiLlm);
+xoa();
+const dLoi = API.dongShadow("classify", null, { maHs: HS, loi: "HO_SO_LOI", benGoi: "cong-oz", chiPhiLlm: loiSauKhiGoi.chiPhiLlm });
+check("dòng lỗi vẫn mang chiPhiLlm", dLoi.loi === "HO_SO_LOI" && dLoi.chiPhiLlm.soLuot === 1, dLoi);
+
+xoa();
+API.ghiShadowSoat("shadow", { caller: "cong-oz" }, { loi: new Error("x") }, HS, [{ provider: "gemini", model: "gemini-2.5-flash", inputTokens: 2000, outputTokens: 100 }]);
+API.ghiShadowSoat("shadow", { caller: "cong-oz" }, { loi: new Error("x") }, HS);
+d = doc();
+check("ghiShadowSoat: có usage ⇒ dòng mang chiPhiLlm (gemini 2000/100, USD 0,00085); không truyền ⇒ không có khoá", d.length === 2 && d[0].chiPhiLlm?.kenh["gemini/gemini-2.5-flash"]?.tokenVao === 2000 && Math.abs(d[0].chiPhiLlm.usd - (2000 * 0.30 + 100 * 2.50) / 1e6) < 1e-9 && !("chiPhiLlm" in d[1]), d);
+check("declaration-check: việc nền truyền moi.usage vào ghiShadowSoat (không bỏ đi)", /HSAPI\.ghiShadowSoat\(che, ctx\.quyen, [^\n]*, d\.maHs, moi\.usage \|\| \[\]\)/.test(nhanhShadow), nhanhShadow.slice(-300));
+
+xoa(); process.env.HS_HO_SO_THU_CALLERS = "oz-noi-bo";
+const thu = await withUsage(() => API.ganHoSoClassify(kq(), attrs, { noiBo: false, caller: "oz-noi-bo" }));
+d = doc();
+check("lượt chạy thử: usage vẫn về phản hồi như cũ, dòng số đo KHÔNG lặp lại chiPhiLlm", thu.usage.length >= 1 && d.length === 1 && d[0].cheDo === "thu" && !("chiPhiLlm" in d[0]), [thu.usage.length, d]);
+delete process.env.HS_HO_SO_THU_CALLERS;
+
+const CP = (soLuot, vao, ra, usd, kenh) => ({ soLuot, tokenVao: vao, tokenRa: ra, khongRoToken: 0, usd, khongRoGia: 0, kenh });
+const DCP = [
+  { ts: "2026-11-21T01:00:00.000Z", endpoint: "classify", maHs: HS, cheDo: "shadow", apDung: true, trangThai: "DU_CAN_CU", benGoi: "cong-oz", chiPhiLlm: CP(2, 2000, 400, 0.001, { "minimax/MiniMax-M2.7-highspeed": { soLuot: 2, tokenVao: 2000, tokenRa: 400, usd: 0.001 } }) },
+  { ts: "2026-11-21T02:00:00.000Z", endpoint: "classify", maHs: HS, cheDo: "shadow", apDung: true, loi: "HO_SO_LOI", benGoi: "cong-oz", chiPhiLlm: CP(1, 500, 50, 0.0005, { "gemini/gemini-2.5-flash": { soLuot: 1, tokenVao: 500, tokenRa: 50, usd: 0.0005 } }) },
+  { ts: "2026-11-22T01:00:00.000Z", endpoint: "describe", maHs: HS, cheDo: "shadow", apDung: true, trangThai: "THIEU_DU_KIEN", benGoi: "erp", chiPhiLlm: { ...CP(3, 3000, 600, 0.002, { "minimax/MiniMax-M2.7-highspeed": { soLuot: 2, tokenVao: 2000, tokenRa: 400, usd: 0.001 }, "gemini/gemini-2.5-flash": { soLuot: 1, tokenVao: 1000, tokenRa: 200, usd: 0.001 }, "kenh rac <b>/x": { soLuot: 9, tokenVao: 9, tokenRa: 9, usd: 9 } }), khongRoGia: 1, khongRoToken: 1 } },
+  { ts: "2026-11-22T02:00:00.000Z", endpoint: "classify", maHs: HS, cheDo: "thu", apDung: true, trangThai: "DU_CAN_CU", benGoi: "oz-noi-bo" },
+  { ts: "2026-11-22T03:00:00.000Z", endpoint: "classify", maHs: HS, cheDo: "shadow", boQua: "qua-tai", benGoi: "cong-oz" },
+  { ts: "2026-11-22T04:00:00.000Z", endpoint: "classify", maHs: "39269099", cheDo: "shadow", apDung: false, benGoi: "cong-oz" },
+];
+const bcp = BC.tongHopShadow(DCP).chiPhiLlm;
+check("báo cáo chiPhiLlm: tổng 3 lượt đo (kể cả dòng lỗi), 6 lượt LLM, 5500 vào / 1050 ra, USD 0,0035; 1 dòng dựng hồ sơ không có số đo", bcp.soLuotDo === 3 && bcp.soLuotLlm === 6 && bcp.tokenVao === 5500 && bcp.tokenRa === 1050 && Math.abs(bcp.usd - 0.0035) < 1e-9 && bcp.khongCoSoDo === 1 && bcp.khongRoGia === 1 && bcp.khongRoToken === 1, bcp);
+check("báo cáo chiPhiLlm.theoNgay (UTC): 21/11 = 3 lượt LLM, 22/11 = 3 lượt LLM", bangSau(Object.keys(bcp.theoNgay), ["2026-11-21", "2026-11-22"]) && bcp.theoNgay["2026-11-21"].soLuotLlm === 3 && bcp.theoNgay["2026-11-21"].tokenVao === 2500 && bcp.theoNgay["2026-11-22"].soLuotLlm === 3 && Math.abs(bcp.theoNgay["2026-11-22"].usd - 0.002) < 1e-9, bcp.theoNgay);
+check("báo cáo chiPhiLlm.theoNhaCungCap: minimax 4 lượt / 4000 vào, gemini 2 lượt / 1500 vào; khoá kênh rác bị bỏ", bangSau(Object.keys(bcp.theoNhaCungCap).sort(), ["gemini", "minimax"]) && bcp.theoNhaCungCap.minimax.soLuotLlm === 4 && bcp.theoNhaCungCap.minimax.tokenVao === 4000 && bcp.theoNhaCungCap.gemini.soLuotLlm === 2 && bcp.theoNhaCungCap.gemini.tokenVao === 1500 && Math.abs(bcp.theoNhaCungCap.gemini.usd - 0.0015) < 1e-9 && !JSON.stringify(bcp).includes("rac"), bcp.theoNhaCungCap);
+const bcLoc = BC.tongHopShadow(DCP, { benGoi: "erp" }).chiPhiLlm;
+check("báo cáo chiPhiLlm theo lọc benGoi=erp: chỉ còn 3 lượt LLM", bcLoc.soLuotLlm === 3 && bcLoc.soLuotDo === 1, bcLoc);
+check("báo cáo rỗng: chiPhiLlm toàn 0, các bảng rỗng", BC.tongHopShadow([]).chiPhiLlm.soLuotLlm === 0 && bangSau(BC.tongHopShadow([]).chiPhiLlm.theoNgay, {}));
+xoa(); fs.mkdirSync(path.dirname(SHADOW), { recursive: true }); fs.writeFileSync(SHADOW, `${DCP.map((x) => JSON.stringify(x)).join("\n")}\n`);
+const { execFileSync } = await import("child_process");
+let bang = ""; try { bang = execFileSync(process.execPath, [path.join(ROOT, "scripts", "bao-cao-shadow.mjs")], { env: process.env, encoding: "utf8" }); } catch (e) { bang = String(e.stdout || e.message); }
+check("scripts/bao-cao-shadow.mjs in khối chi phí LLM theo ngày + nhà cung cấp", /Chi phí LLM của lượt bóng/.test(bang) && /ngày 2026-11-21/.test(bang) && /nhà cung cấp minimax\s+4 lượt LLM/.test(bang) && /0\.0035 USD/.test(bang), bang.slice(-900));
+xoa();
 
 await tick();
 check('cả bài: không có unhandledRejection nào', rejRoi.length === 0, rejRoi);
