@@ -690,6 +690,64 @@ check('trangThaiDong8.veMoHinh: 73181510 chấm trọn nhãn "Đường kính ng
   DK.danhGiaTuChu({ fact: 'tuHutHoiDoc', op: 'CO' }, `${'kệ chứa hàng '.repeat(40000)}bằng thép`, '94032010');
   const dtRedosPallet = Date.now() - t0RedosPallet;
   check('OZV-1668 ReDoS tuHutHoiDoc: câu ~40.000 từ lặp chạy < 2 giây', dtRedosPallet < 2000, `${dtRedosPallet}ms`);
+
+  // ── OZV-1677: Nút tổ tiên đa tầng (852329) + _traiKhiNutThoa khi không có dòng con cùng tên dưới nút anh em (852329/852359/852380) ──
+  cd = chotDong8({
+    hs: '852329',
+    productText: 'Phương tiện lưu trữ thông tin từ tính - Loại khác: Băng từ, có chiều rộng không quá 4 mm - Loại chưa ghi: Băng máy tính',
+  });
+  check('OZV-1677 85232911: kế thừa 2 tầng nút tổ tiên (852329~r15471 <= 4 mm + 8523291 chưa ghi) → CHOT 85232911 (không TRANH_CAP .31/.51)',
+    cd.ketQua === 'CHOT' && cd.hs === '85232911', JSON.stringify([cd.ketQua, cd.hs, cd.dongThoa]));
+
+  cd = chotDong8({
+    hs: '852329',
+    productText: 'Phương tiện lưu trữ thông tin từ tính - Loại khác: Băng từ, có chiều rộng không quá 4 mm: Băng video',
+  });
+  check('OZV-1677 85232921: nút anh em 8523291 (chưa ghi) chỉ có dòng con Băng máy tính → CHOT 85232921',
+    cd.ketQua === 'CHOT' && cd.hs === '85232921', JSON.stringify([cd.ketQua, cd.hs, cd.missingFacts]));
+
+  cd = chotDong8({
+    hs: '852329',
+    productText: 'Phương tiện lưu trữ thông tin từ tính - Loại khác: Băng từ, có chiều rộng trên 4 mm nhưng không quá 6,5 mm: Băng máy tính',
+  });
+  check('OZV-1677 85232941 rào ngược: nút anh em 8523293 (chưa ghi) cũng có dòng con Băng máy tính (85232931) → THIEU_SO_LIEU hỏi daGhi, không chốt vội 85232941',
+    cd.ketQua === 'THIEU_SO_LIEU' && cd.hs !== '85232941' && (cd.missingFacts || []).some((m) => m.fact === 'daGhi'),
+    JSON.stringify([cd.ketQua, cd.hs, cd.missingFacts]));
+
+  cd = chotDong8({
+    hs: '852329',
+    productText: 'Phương tiện lưu trữ thông tin từ tính - Loại khác: Đĩa từ: Loại khác, dùng cho điện ảnh',
+  });
+  check('OZV-1677 85232986: anh em 85232983 có HOAC không khớp vế so chữ → CHOT 85232986',
+    cd.ketQua === 'CHOT' && cd.hs === '85232986', JSON.stringify([cd.ketQua, cd.hs, cd.missingFacts]));
+
+  cd = chotDong8({
+    hs: '852359',
+    productText: 'Đĩa, băng, các thiết bị lưu trữ bền vững, thể rắn, “thẻ thông minh” và các phương tiện lưu trữ thông tin khác để ghi âm thanh hoặc các nội dung, hình thức thể hiện khác, đã hoặc chưa ghi, kể cả bản khuôn mẫu và bản gốc để sản xuất băng đĩa, nhưng không bao gồm các sản phẩm của Chương 37. - Loại khác: Loại sử dụng để tái tạo các hiện tượng trừ âm thanh hoặc hình ảnh',
+  });
+  check('OZV-1677 85235930: gỡ chữ "âm thanh" của tiêu đề nhóm 85.23 trước khi chấm PHAI_KHONG + nút anh em 8523592 không có dòng con khớp → CHOT 85235930',
+    cd.ketQua === 'CHOT' && cd.hs === '85235930', JSON.stringify([cd.ketQua, cd.hs, cd.missingFacts]));
+
+  cd = chotDong8({
+    hs: '984925',
+    productText: 'Máy điều hòa không khí, gồm có một quạt chạy bằng mô tơ và các bộ phận làm thay đổi nhiệt độ và độ ẩm, kể cả loại máy không điều chỉnh độ ẩm một cách riêng biệt: Kèm theo một bộ phận làm lạnh và một van đảo chiều chu trình nóng/lạnh (bơm nhiệt có đảo chiều) - Sử dụng cho xe có động cơ (trừ loại thuộc phân nhóm 8415.20): Công suất làm mát không quá 26,38 kW',
+  });
+  check('OZV-1677 98492521: nút Loại khác 984925~r19577 chỉ loại trừ anh em đứng trước (9849251), không bị nút Bộ phận đứng sau đè TRAI → CHOT 98492521',
+    cd.ketQua === 'CHOT' && cd.hs === '98492521', JSON.stringify([cd.ketQua, cd.hs]));
+
+  cd = chotDong8({
+    hs: '984934',
+    productText: 'Bộ phận và phụ kiện của xe có động cơ thuộc các nhóm từ 87.01 đến 87.05: Hộp số và bộ phận của chúng - Hộp số, chưa lắp hoàn chỉnh: Dùng cho xe thuộc nhóm 87.03',
+  });
+  check('OZV-1677 98493441: gỡ chữ "Bộ phận" ở tiêu đề tổ tiên trước khi chấm laBoPhan → không nhảy sai sang 98493447',
+    cd.ketQua !== 'CHOT' && cd.hs !== '98493447', JSON.stringify([cd.ketQua, cd.hs]));
+
+  cd = chotDong8({
+    hs: '984934',
+    productText: 'Bộ phận và phụ kiện của xe có động cơ thuộc các nhóm từ 87.01 đến 87.05: Hộp số và bộ phận của chúng - Bộ phận: Dùng cho xe thuộc nhóm 87.03',
+  });
+  check('OZV-1677 98493447 rào ngược: chữ "Bộ phận" của chính nút 984934~r19749 giữ nguyên → CHOT 98493447',
+    cd.ketQua === 'CHOT' && cd.hs === '98493447', JSON.stringify([cd.ketQua, cd.hs]));
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);
