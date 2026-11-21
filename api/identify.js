@@ -1,7 +1,7 @@
 // POST /api/identify — định danh hàng hoá TRƯỚC khi tra mã HS (bước 12 — A-2, #299).
-// Body: { tenHang, model?, thuongHieu?, moTa?, anhUrl[]?, chuong? }
+// Body: { tenHang, model?, thuongHieu?, moTa?, anhUrl[]?, chuong?, nhom? }
 // Trả: { frame: {chuong, truong, model?, thuongHieu?}, xacMinh: {muc: VERIFIED|CORROBORATED|HYPOTHESIS|KHONG_NGUON, nguon[]},
-//        thieuTruong[], questions[], anh?, anhBoVi[], ms } — KHÔNG trả mã HS (việc của phan_loai_hs).
+//        thieuTruong[], questions[] (≤3 câu, {key, questionVi, canCu}), canCuCauHoi, anh?, anhBoVi[], ms } — KHÔNG trả mã HS (việc của phan_loai_hs).
 // LLM lỗi → degraded:true + llmError (không fail-silent). Bearer bắt buộc (rule 2: endpoint sinh nội dung bằng LLM).
 const { requireAuth, serviceCaller } = require('../lib/auth');
 const { withHangHoa } = require('../lib/llm-privacy');
@@ -32,6 +32,7 @@ module.exports = async function handler(req, res) {
       moTa: body?.moTa || body?.description || null,
       anhUrl: Array.isArray(body?.anhUrl) ? body.anhUrl.slice(0, 4) : [],
       chuong: body?.chuong || null,
+      nhom: body?.nhom || null, // nhóm 4 số bên gọi đã có (tuỳ chọn) — chỉ để chọn danh mục trường khai
     }));
     if (out?.loi && !out.frame) return res.status(400).json({ error: out.loi });
     return res.status(200).json(out);
