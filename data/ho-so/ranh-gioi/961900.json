@@ -4,13 +4,19 @@
   "nhom": "9619",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-961900",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-02#soat-961900",
+    "ngay": "2026-11-21",
+    "ghiChu": "Đã chuẩn hoá dieuKienSo bám chữ biểu thuế",
+    "bam": "72883fc971faf8605881f873a05dc2a439cdb31e23a71a2a7fba9071ca79ee62"
+  },
   "dieuKienNut": [
     {
       "id": "9619001",
@@ -22,7 +28,7 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -32,19 +38,13 @@
       "trich": "96190011 - - Lõi thấm hút bằng vật liệu dệt",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Lõi thấm hút"
-        },
-        {
-          "fact": "vatLieuKhac",
-          "op": "TRONG",
-          "value": [
-            "VAT_LIEU_DET"
-          ]
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "vải dệt",
+          "viTri": "LOI"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "96190012",
@@ -67,7 +67,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "96190013",
@@ -75,22 +75,40 @@
       "trich": "96190013 - - Bỉm và miếng lót vệ sinh trẻ em từ giấy, bột giấy, tấm xơ sợi xenlulo hoặc màng xơ sợi xenlulo",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "Bỉm",
-            "miếng lót vệ sinh trẻ em"
-          ]
-        },
-        {
-          "fact": "vatLieuKhac",
-          "op": "TRONG",
-          "value": [
-            "GIAY_XENLULO"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Bỉm"
+              },
+              {
+                "fact": "vatLieuKhac",
+                "op": "TRONG",
+                "value": [
+                  "GIAY_XENLULO"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "miếng lót vệ sinh trẻ em"
+              },
+              {
+                "fact": "vatLieuKhac",
+                "op": "TRONG",
+                "value": [
+                  "GIAY_XENLULO"
+                ]
+              }
+            ]
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "96190014",
@@ -98,21 +116,42 @@
       "trich": "96190014 - - Loại khác, từ giấy, bột giấy, tấm xơ sợi xenlulo hoặc màng xơ sợi xenlulo",
       "dieuKienSo": [
         {
-          "fact": "vatLieuKhac",
-          "op": "TRONG",
-          "value": [
-            "GIAY_XENLULO"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "vatLieuKhac",
+                "op": "TRONG",
+                "value": [
+                  "GIAY_XENLULO"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "chatLieu",
+                "op": "LA",
+                "value": "giấy"
+              },
+              {
+                "fact": "vatLieuKhac",
+                "op": "TRONG",
+                "value": [
+                  "GIAY_XENLULO"
+                ]
+              }
+            ]
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "96190019",
       "nguon": "tax.96190019",
       "trich": "96190019 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "96190092",
@@ -125,7 +164,7 @@
           "value": "Băng vệ sinh (miếng)"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "96190093",
@@ -137,14 +176,14 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "96190099",
       "nguon": "tax.96190099",
       "trich": "96190099 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -166,7 +205,7 @@
     {
       "ma": "96190011",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.96190011 \"Lõi thấm hút bằng vật liệu dệt\" ⇒ tenLoai \"Lõi thấm hút\" + vatLieuKhac TRONG [VAT_LIEU_DET] (khoá mới; vế \"bằng vật liệu dệt\" là chữ biểu chính của dòng)."
+      "ghiChu": "tax.96190011 \"Lõi thấm hút bằng vật liệu dệt\" ⇒ chatLieu LA \"vải dệt\" viTri LOI + vatLieuKhac TRONG [VAT_LIEU_DET] (đặc điểm có lõi thấm hút bằng vật liệu dệt, không dùng tenLoai)."
     },
     {
       "ma": "96190012",
@@ -182,13 +221,6 @@
       "ma": "96190093",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.96190093 \"Loại khác, dệt kim hoặc móc\" ⇒ chỉ ghi điều kiện của vế sau \"Loại khác,\": detKimHoacMoc CO (khoá lô 22, đọc \"dệt kim hoặc móc\" / EN \"knitted or crocheted\")."
-    }
-  ],
-  "traVe": [
-    {
-      "phien": "claude-agent:duyet-L32-20261111#soat-L32",
-      "ngay": "2026-11-11",
-      "lyDo": "(A) 96190011 THU HẸP: EN \"With an absorbent core of wadding of textile materials\" (VI \"Lõi thấm hút bằng vật liệu dệt\") — đây là ĐẶC ĐIỂM của sản phẩm dùng một lần (có lõi thấm hút bằng mền xơ dệt), không phải tên hàng; khai tenLoai \"Lõi thấm hút\" ⇒ bỉm/băng vệ sinh có lõi dệt (tên hàng là \"bỉm\", \"băng vệ sinh\") không khớp, rơi .19 — MFN .11 5 % ↔ .19 15 %. Cần khoá đặc điểm lõi thấm hút + vật liệu dệt (hoặc DỪNG THIEU_KHOA_TU_VUNG)."
     }
   ]
 }
