@@ -31,9 +31,10 @@ tự đỏ khi phạm; luật nào ghi "người soát" thì người soát PR p
 
 Sơ đồ trực quan luồng đi của một yêu cầu từ khách qua các trạm gác và cổng kiểm định tự động:
 
+<!-- AUTO_MERMAID_DUONG_KHACH_START -->
 ```mermaid
 flowchart TD
-    Client["Khách gọi: Cổng OZ / ERP / Zalo Bot"] --> Route["Route API (api/classify, api/identify, api/suggest...)"]
+    Client["Khách gọi: Cổng OZ / ERP / Zalo Bot"] --> Route["Route API (api/classify, api/identify, api/so-tay-questions, api/declaration-check...)"]
 
     subgraph SG1 ["Trạm 1: Tiếp nhận & Kiểm tra cờ (bang-co.json)"]
         Route --> GateL1{"L1: Đổi quyết định LLM?"}
@@ -44,10 +45,10 @@ flowchart TD
 
     subgraph SG2 ["Trạm 2: Đấu nối tri thức (dau-noi.json)"]
         EngineInit --> EngineLoop["lib/engine-loop.js (L3: Động cơ duy nhất)"]
-        EngineLoop --> ReadSoTay["data/so-tay/ (Sổ tay 4 số - Lõi tất định)"]
-        EngineLoop --> ReadPn6["data/ho-so/ranh-gioi/ (Sổ ranh giới PN6)"]
-        EngineLoop --> ReadTienLe["data/precedents.json (Tiền lệ TB-TCHQ)"]
-        EngineLoop --> ReadChuGiai["data/explanatory-notes.json (Chú giải pháp lý)"]
+        EngineLoop --> ReadSoTay["data/so-tay/ (Sổ tay nhóm 4 số - Lõi tất định)"]
+        EngineLoop --> ReadPn6["data/ho-so/ranh-gioi/ (Sổ ranh giới phân nhóm 6 số (đã DUYET))"]
+        EngineLoop --> ReadTienLe["data/precedents.json (Tiền lệ (TB-TCHQ, tờ khai Oz, tiền lệ Trung Quốc))"]
+        EngineLoop --> ReadChuGiai["data/explanatory-notes.json (Chú giải chương / nhóm đưa vào lập luận)"]
     end
 
     subgraph SG3 ["Trạm 3: Phân loại & Chốt mã"]
@@ -69,13 +70,15 @@ flowchart TD
         ReturnClient -. "L5: Fire & Forget (Sau khi trả)" .-> ShadowRun["Chạy bóng ghi kho_dap_an / đối soát"]
     end
 
-    subgraph SG_Gates ["4 Cổng máy kiểm định tự động (npm test)"]
+    subgraph SG_Gates ["Cổng máy kiểm định tự động (npm test)"]
         TestDauNoi["test-dau-noi.mjs (L4: Bảng đấu nối)"]
         TestCauHoi["test-cau-hoi-co-can-cu.mjs (L2: Câu hỏi có căn cứ)"]
         TestBangCo["test-bang-co.mjs (L1, L5, L8: Kỷ luật cờ)"]
         TestKiemPr["test-kiem-pr-l1.mjs (L1: Kiểm PR gọi LLM)"]
+        TestMermaid["test-so-do-mermaid.mjs (Chống lệch sơ đồ)"]
     end
 ```
+<!-- AUTO_MERMAID_DUONG_KHACH_END -->
 
 ---
 
