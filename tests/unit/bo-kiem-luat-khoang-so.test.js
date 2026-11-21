@@ -77,4 +77,38 @@ describe('scripts/bo-kiem-luat.mjs — gom khoảng số cùng fact cho PHAI_CO 
     assert.equal(kq.ketQua, 'LOAI_KHAC', JSON.stringify(kq));
     assert.equal(kq.hs, '85043413', JSON.stringify(kq));
   });
+
+  test('cumKhangDinh: vế có chieu PHAI_KHONG (và trong HOAC phuongAn của 8517792) sinh cụm phủ định, ca LOAI_TRU_LOAI_KHAC 85177929 chốt đúng (OZV-1683)', async () => {
+    const { cumKhangDinh, sinhCaNhom } = await import('../../scripts/bo-kiem-luat.mjs');
+    const vePhaiKhong = {
+      fact: 'dungCho',
+      op: 'CONG_DUNG',
+      value: ['phát thanh sóng vô tuyến', 'thiết bị phát truyền hình'],
+      chieu: 'PHAI_KHONG',
+    };
+    assert.equal(
+      cumKhangDinh(vePhaiKhong),
+      'không dùng cho phát thanh sóng vô tuyến, không dùng cho thiết bị phát truyền hình',
+    );
+
+    const { caLoaiTruLK } = sinhCaNhom('8517');
+    const ca29 = caLoaiTruLK.find((c) => c.hs8 === '85177929');
+    assert.ok(ca29, 'phải có ca LOAI_TRU_LOAI_KHAC cho 85177929');
+    assert.match(ca29.productText, /không dùng cho phát thanh sóng vô tuyến/);
+
+    const kq = chotDong8({ hs: '851779', productText: ca29.productText });
+    assert.equal(kq.ketQua, 'LOAI_KHAC', JSON.stringify(kq));
+    assert.equal(kq.hs, '85177929', JSON.stringify(kq));
+  });
+
+  test('sinhCaNhom: dòng có nguon sen.<hs8> nối điều kiện SEN vào productText của DONG_CO_TEN và chốt đúng (OZV-1683)', async () => {
+    const { sinhCaNhom } = await import('../../scripts/bo-kiem-luat.mjs');
+    const { caDongCoTen } = sinhCaNhom('0102');
+    const caSen = caDongCoTen.find((c) => c.hs8 === '01022911');
+    assert.ok(caSen, 'phải có ca DONG_CO_TEN cho 01022911');
+
+    const kq = chotDong8({ hs: '010229', productText: caSen.productText });
+    assert.equal(kq.ketQua, 'CHOT', JSON.stringify(kq));
+    assert.equal(kq.hs, '01022911', JSON.stringify(kq));
+  });
 });
