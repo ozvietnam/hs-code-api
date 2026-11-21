@@ -63,7 +63,8 @@ Soát luật hiện có trước khi viết thêm:
    Các cổng đều tĩnh (đọc tệp, đồ thị `require`), không LLM, không mạng, mỗi cổng dưới 1 giây.
 4. **Ngoại lệ đang đỏ được khai có số thẻ, và chỉ được ngắn đi** (trần cứng trong tệp test):
    - `/api/identify` chưa đọc sổ tay, câu hỏi theo bảng chương — OZV-1670.
-   - `/api/classify`: câu hỏi do LLM viết; nhánh `earlyExitHoiTuR1` bỏ sổ tay — OZV-1707 (PR #1523 nối sau cờ).
+   - `/api/classify`: câu hỏi do LLM viết khi cờ `HS_HOI_THEO_SO_TAY` còn tắt (mặc định; PR #1523 đã nối lõi sau cờ
+     này); nhánh `earlyExitHoiTuR1` bỏ sổ tay — OZV-1707.
    - `lib/classify-guards.js` (động cơ cũ) đổ chuỗi `missing` của LLM thành câu hỏi — OZV-1707.
    - 9 cờ cũ đổi quyết định LLM mà bật sẵn (`doiQuyetDinhLLMDangBatSan`).
 5. **Bảng quyết định (`data/conflict-tables.json`) được tính là nguồn câu hỏi có căn cứ** bên cạnh sổ tay, sổ PN6 và
@@ -91,9 +92,9 @@ Soát luật hiện có trước khi viết thêm:
 
 - PR nào thêm route, thêm cờ `HS_*`, thêm nơi dựng câu hỏi, hay nối kho tri thức mà không sửa bảng thì `npm test` đỏ.
 - PR đang mở mà đụng tệp gọi LLM sẽ có thêm dấu đỏ `Luat L1` cho tới khi thân PR ghi một dòng trả lời.
-- PR #1523 (gộp sau PR này) phải: khai cờ `HS_HOI_THEO_SO_TAY` vào bảng cờ; đổi `loiCauHoi` của `/api/classify` thành
-  `"co"` kèm `"co": ["HS_HOI_THEO_SO_TAY"]`; bỏ `choGop` ở hai tệp lõi mới và chuyển `api/so-tay-questions.js` khỏi
-  danh sách dựng câu hỏi. Ba chỗ đó cổng báo đích danh.
+- PR #1523 vào `main` trong lúc PR luật đang mở. Gộp `main` về nhánh, ba cổng đỏ đúng ba chỗ: cờ
+  `HS_HOI_THEO_SO_TAY` chưa khai; `/api/classify` đã nạp lõi câu hỏi mà bảng còn ghi "khong"; `api/so-tay-questions.js`
+  không còn dựng câu hỏi. Đã sửa bảng trong cùng PR — đây là lần chạy thật đầu tiên của cổng.
 - Ngày 27/11/2026: `HS_HO_SO` tới ngày xét. Chưa quyết thì `npm test` đỏ.
 
 ## Việc tiếp theo

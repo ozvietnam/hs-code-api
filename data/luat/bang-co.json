@@ -438,6 +438,19 @@
       }
     },
     {
+      "ten": "HS_HOI_THEO_SO_TAY",
+      "macDinh": "tắt",
+      "macDinhBat": false,
+      "loai": "cong-tac",
+      "doiQuyetDinhLLM": false,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Dựng lại câu hỏi gửi khách của /api/classify theo sổ tay nhóm + sổ ranh giới PN6 (tất định, không LLM; câu của LLM xuống ghi chú). Chỉ on / 1 / true mới bật. QT bật trên máy thật rồi đo qua Cổng (PR #1523, OZV-1707).",
+      "chungCu": {
+        "tep": "lib/hoi-theo-so-tay.js",
+        "doan": "process.env.HS_HOI_THEO_SO_TAY || '').trim());"
+      }
+    },
+    {
       "ten": "HS_HO_SO",
       "macDinh": "off",
       "macDinhBat": false,

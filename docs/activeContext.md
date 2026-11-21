@@ -16,7 +16,7 @@ ADR, thẻ. Lộ trình dài hạn: `docs/backlog/README.md` và bảng việc P
 | Chỗ | Thẻ |
 |---|---|
 | `/api/identify` chưa đọc sổ tay nhóm / sổ PN6; câu hỏi theo bảng chương | OZV-1670 |
-| `/api/classify`: câu hỏi do LLM viết; nhánh `earlyExitHoiTuR1` bỏ sổ tay | OZV-1707 (PR #1523) |
+| `/api/classify`: câu hỏi do LLM viết khi `HS_HOI_THEO_SO_TAY` còn tắt (mặc định); nhánh `earlyExitHoiTuR1` bỏ sổ tay | OZV-1707 |
 | `lib/classify-guards.js` (động cơ cũ) đổ chuỗi của LLM thành câu hỏi | OZV-1707 |
 | `soTay.outcome` khởi tạo bằng `"NONE"` (L6) | OZV-1707 |
 
@@ -27,7 +27,8 @@ ADR, thẻ. Lộ trình dài hạn: `docs/backlog/README.md` và bảng việc P
 
 **Người gộp PR kế tiếp cần biết:**
 
-- PR #1523 gộp sau PR luật: phải khai cờ `HS_HOI_THEO_SO_TAY` và sửa ba chỗ trong `dau-noi.json` (cổng báo đích danh).
+- `HS_HOI_THEO_SO_TAY` (PR #1523) đã ở `main`, đang TẮT. QT bật trên máy thật rồi đo qua Cổng thật (L1): tỉ lệ
+  `nextAction.canCuCauHoi` = `so-tay` so với `llm`. Đo đạt thì gỡ ngoại lệ `lib/engine-loop.js` và hạ trần trong test.
 - PR đang mở đụng tệp gọi LLM (`lib/identify.js`, `lib/engine-loop.js`…): thêm vào thân PR một dòng trả lời L1.
 
 **Chưa làm, ghi ở ADR-0001 mục "Việc tiếp theo":** cờ `LLM_*` chưa vào bảng cờ; khung "tắt = như main" dùng chung;

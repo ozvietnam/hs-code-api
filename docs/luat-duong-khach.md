@@ -61,7 +61,7 @@ Mọi câu hỏi gửi khách phải lấy từ một trong các nguồn có că
 
 | `canCu` | Nguồn | Module |
 |---|---|---|
-| `so-tay` | Sổ tay nhóm 4 số `data/so-tay/` | `lib/so-tay-cau-hoi.js` (lõi), `lib/hoi-theo-so-tay.js` — có từ PR #1523; trước đó lõi nằm trong `api/so-tay-questions.js` |
+| `so-tay` | Sổ tay nhóm 4 số `data/so-tay/` | `lib/so-tay-cau-hoi.js` (lõi tất định), `lib/hoi-theo-so-tay.js` (dựng lại câu hỏi của `/api/classify`, sau cờ `HS_HOI_THEO_SO_TAY`) |
 | `ranh-gioi-pn6` | Sổ ranh giới PN6 `data/ho-so/ranh-gioi/` | như trên, đọc qua `lib/so-tay-gates.js` |
 | `truong-khai-nhom` | Trường khai bắt buộc theo nhóm | `lib/declaration-fields.js` |
 | bảng quyết định | `data/conflict-tables.json` (người soạn, dẫn văn bản gốc) | `lib/decision-tables.js`, `lib/conflict-resolver.js` |
@@ -72,7 +72,8 @@ Cấm:
 - Viết lõi thứ hai. Cần câu hỏi mới thì bổ sung sổ tay / sổ PN6 / danh mục trường khai rồi để lõi sinh câu.
 
 **Vì sao:** van điện từ khí nén 5/2 qua Cổng ngày 21/11 bị hỏi 6 câu do LLM tự nghĩ (điện áp cuộn dây, model, hãng…),
-không câu nào là điều kiện phân biệt của nhóm 84.81. Câu hỏi theo sổ chỉ có ở `/api/so-tay-questions`.
+không câu nào là điều kiện phân biệt của nhóm 84.81. Câu hỏi theo sổ khi đó chỉ có ở `/api/so-tay-questions`; PR #1523 đưa
+lõi đó vào `/api/classify` sau cờ `HS_HOI_THEO_SO_TAY`.
 
 **Kiểm bằng:** cổng máy `scripts/test-cau-hoi-co-can-cu.mjs`. Mọi tệp trong `lib/`, `api/` có dựng câu hỏi
 (`questionVi:`) phải được khai ở `data/luat/dau-noi.json` mục `noiDungCauHoi`: là lõi, là nơi chuyển tiếp, hoặc là
