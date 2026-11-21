@@ -146,11 +146,30 @@
   "dong8": [
     {
       "hs": "32081011",
-      "dieuKien": "Phân nhóm 3208.10 (gốc polyeste): vecni (kể cả dầu bóng) dùng trong nha khoa, kể cả vecni fluorua",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): nha khoa; dùng trong nha khoa",
       "loaiKhac": false,
-      "nguon": "sen.32081011",
-      "trich": "Vecni sử dụng trong nha khoa, kể cả vecni fluorua được làm từ polyester, polyme acrylic, polyme vinyl, hoặc polymer khác. Vecni có chức năng như một lớp bảo vệ giữa men răng và các vật liệu nha khoa giúp phục hồi răng.",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguon": "tax.32081011",
+      "trich": "32081011 - - - Dùng trong nha khoa (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "nha khoa"
+        },
+        {
+          "fact": "dungTrongNhaKhoa",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude:tho-hs-01:20261121#soat-320810",
+          "ngay": "2026-11-21",
+          "bam": "1b9fb82f55e4ea58f47bc3d3c8172dd52da7fd6c12ee0944e1fec069f59d5543"
+        }
+      }
     },
     {
       "hs": "32081019",
@@ -167,15 +186,46 @@
         ],
         "toTienCoTen": "320810",
         "dinhNghiaDuoc": true
-      }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "32081020",
+          "lyDo": "Chữ biểu chồng lấn THẬT: .19 \"Loại khác\" (dòng trong tầng 3208101 \"Vecni (kể cả dầu bóng)\") chỉ loại trừ anh em .11 (\"Dùng trong nha khoa\"), KHÔNG loại trừ .20 \"Sơn chống hà và/hoặc chống ăn mòn dùng để sơn vỏ tàu thủy (SEN)\"; một sơn chống hà dạng vecni thỏa cả hai dòng. 3208.10 không có SEN; chú giải nhóm 32.08 không nói thứ tự ⇒ không có căn cứ ưu tiên, lúc chạy hỏi người khai."
+        }
+      ]
     },
     {
       "hs": "32081020",
-      "dieuKien": "Phân nhóm 3208.10 (gốc polyeste): sơn chống hà và/hoặc chống ăn mòn chuyên dùng sơn vỏ tàu thuỷ",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): vỏ tàu thủy; sơn chống hà hoặc chống ăn mòn dùng sơn vỏ tàu thủy",
       "loaiKhac": false,
-      "nguon": "sen.32081020",
-      "trich": "Loại sơn này chuyên dùng để sơn phủ bề mặt vỏ tàu viễn dương và thuyền (và các bề mặt của các kết cấu chìm dưới nước) nhằm ức chế sự sinh trưởng của các thủy sinh vật (ví dụ như hà và tảo)",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguon": "tax.32081020",
+      "trich": "32081020 - - Sơn chống hà và/hoặc chống ăn mòn dùng để sơn vỏ tàu thủy (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "vỏ tàu thủy"
+        },
+        {
+          "fact": "sonChongHaHoacChongAnMonVoTau",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude:tho-hs-01:20261121#soat-320810",
+          "ngay": "2026-11-21",
+          "bam": "1b9fb82f55e4ea58f47bc3d3c8172dd52da7fd6c12ee0944e1fec069f59d5543"
+        }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "32081019",
+          "lyDo": "Chữ biểu chồng lấn THẬT: .19 \"Loại khác\" (dòng trong tầng 3208101 \"Vecni (kể cả dầu bóng)\") chỉ loại trừ anh em .11 (\"Dùng trong nha khoa\"), KHÔNG loại trừ .20 \"Sơn chống hà và/hoặc chống ăn mòn dùng để sơn vỏ tàu thủy (SEN)\"; một sơn chống hà dạng vecni thỏa cả hai dòng. 3208.10 không có SEN; chú giải nhóm 32.08 không nói thứ tự ⇒ không có căn cứ ưu tiên, lúc chạy hỏi người khai."
+        }
+      ]
     },
     {
       "hs": "32081090",
@@ -672,6 +722,27 @@
   },
   "yKienWcoDayDu": false,
   "dieuKienNut": [
+    {
+      "id": "3208101",
+      "nguon": "tieuDe.3208101",
+      "trich": "3208101 Vecni (kể cả dầu bóng)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Vecni (kể cả dầu bóng)"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude:tho-hs-01:20261121#soat-320810",
+          "ngay": "2026-11-21",
+          "bam": "1b9fb82f55e4ea58f47bc3d3c8172dd52da7fd6c12ee0944e1fec069f59d5543"
+        }
+      }
+    },
     {
       "id": "3208901",
       "nguon": "tieuDe.3208901",
