@@ -413,4 +413,200 @@ describe('lib/dieu-kien-so.js — gỡ tiêu đề cha đa vế cho LIET_KE & t�
       '84281040',
     );
   });
+
+  test('OZV-1712: gỡ 10 nhóm vướng 1 dòng DONG_CO_TEN (0406, 0703, 2208, 3005, 6209, 7415, 7616, 8308, 9603, 9609) — kiểm 2 chiều + ReDoS < 2 giây', () => {
+    // 1. Nhóm 2208 (22083010): đọc "đựng trong đồ chứa ... lít" (kể cả NFD) cho dungTich
+    const dk5l = { fact: 'dungTich', op: '>', value: 5, donVi: 'lít' };
+    const r2208Thoa = DK.danhGiaTuChu(
+      dk5l,
+      'Rượu whisky: Được đựng trong đồ chứa trên 5 lít',
+      '22083010',
+    );
+    assert.equal(r2208Thoa.trangThai, 'THOA');
+    assert.equal(r2208Thoa.tatDinh, true);
+
+    const r2208Trai = DK.danhGiaTuChu(
+      dk5l,
+      'Rượu whisky: Được đựng trong đồ chứa 2 lít',
+      '22083010',
+    );
+    assert.equal(r2208Trai.trangThai, 'TRAI');
+    assert.equal(r2208Trai.tatDinh, true);
+
+    assert.equal(
+      chotDong8({
+        hs: '220830',
+        productText: 'Rượu whisky: Được đựng trong đồ chứa trên 5 lít',
+      }).hs,
+      '22083010',
+    );
+    assert.notEqual(
+      chotDong8({
+        hs: '220830',
+        productText: 'Rượu whisky',
+      }).ketQua,
+      'CHOT',
+    );
+
+    const long2208 = `${Array(40000).fill('đồ chứa').join(' ')} - Được đựng trong đồ chứa trên 5 lít`;
+    const t0 = Date.now();
+    const rLong2208 = DK.danhGiaTuChu(dk5l, long2208, '22083010');
+    const dt = Date.now() - t0;
+    assert.equal(rLong2208.trangThai, 'THOA');
+    assert.ok(dt < 2000, `Thời gian chạy ${dt}ms phải < 2000ms`);
+
+    // 2. Nhóm 0703 (07031011 vs 07031021): "Hành" không khớp tiền tố "Hành tây"
+    assert.equal(
+      chotDong8({
+        hs: '070310',
+        productText: 'Hành tây và hành, hẹ: Hành tây: Củ giống',
+      }).hs,
+      '07031011',
+    );
+    assert.equal(
+      chotDong8({
+        hs: '070310',
+        productText: 'Hành tây và hành, hẹ: Hành, hẹ: Củ giống',
+      }).hs,
+      '07031021',
+    );
+    assert.notEqual(
+      chotDong8({
+        hs: '070310',
+        productText: 'Hành tây và hành, hẹ',
+      }).ketQua,
+      'CHOT',
+    );
+
+    // 3. 8 nhóm TEN_LOAI tách vế riêng khỏi tiêu đề cha (0406, 3005, 6209, 7415, 7616, 8308, 9603, 9609)
+    assert.equal(
+      chotDong8({
+        hs: '040610',
+        productText: 'Pho mát tươi (chưa ủ chín hoặc chưa xử lý), kể cả pho mát whey, và curd: Curd',
+      }).hs,
+      '04061020',
+    );
+    assert.notEqual(
+      chotDong8({
+        hs: '040610',
+        productText: 'Pho mát tươi (chưa ủ chín hoặc chưa xử lý), kể cả pho mát whey, và curd',
+      }).ketQua,
+      'CHOT',
+    );
+
+    assert.equal(
+      chotDong8({
+        hs: '300590',
+        productText:
+          'Bông, gạc, băng và các sản phẩm tương tự (ví dụ, băng để băng bó, cao dán, thuốc đắp), đã thấm tẩm hoặc tráng phủ dược chất hoặc làm thành dạng nhất định hoặc đóng gói để bán lẻ dùng cho y tế, phẫu thuật, nha khoa hoặc thú y. - Loại khác: Băng (SEN)',
+      }).hs,
+      '30059010',
+    );
+    assert.notEqual(
+      chotDong8({
+        hs: '300590',
+        productText:
+          'Bông, gạc, băng và các sản phẩm tương tự (ví dụ, băng để băng bó, cao dán, thuốc đắp), đã thấm tẩm hoặc tráng phủ dược chất hoặc làm thành dạng nhất định hoặc đóng gói để bán lẻ dùng cho y tế, phẫu thuật, nha khoa hoặc thú y. - Loại khác',
+      }).ketQua,
+      'CHOT',
+    );
+
+    assert.equal(
+      chotDong8({
+        hs: '620930',
+        productText: 'Quần áo may sẵn và phụ kiện may mặc cho trẻ em. - Từ sợi tổng hợp: Phụ kiện may mặc',
+      }).hs,
+      '62093040',
+    );
+    assert.notEqual(
+      chotDong8({
+        hs: '620930',
+        productText: 'Quần áo may sẵn và phụ kiện may mặc cho trẻ em. - Từ sợi tổng hợp',
+      }).ketQua,
+      'CHOT',
+    );
+
+    assert.equal(
+      chotDong8({
+        hs: '741510',
+        productText: 'Đinh và đinh bấm, đinh ấn, ghim dập và các sản phẩm tương tự: Đinh',
+      }).hs,
+      '74151010',
+    );
+    assert.notEqual(
+      chotDong8({
+        hs: '741510',
+        productText: 'Đinh và đinh bấm, đinh ấn, ghim dập và các sản phẩm tương tự',
+      }).ketQua,
+      'CHOT',
+    );
+
+    assert.equal(
+      chotDong8({
+        hs: '761610',
+        productText:
+          'Đinh, đinh bấm, ghim dập (trừ các loại thuộc nhóm 83.05), đinh vít, bu lông, đai ốc, đinh móc, đinh tán, chốt hãm, chốt định vị, vòng đệm và các sản phẩm tương tự: Đinh',
+      }).hs,
+      '76161010',
+    );
+    assert.notEqual(
+      chotDong8({
+        hs: '761610',
+        productText:
+          'Đinh, đinh bấm, ghim dập (trừ các loại thuộc nhóm 83.05), đinh vít, bu lông, đai ốc, đinh móc, đinh tán, chốt hãm, chốt định vị, vòng đệm và các sản phẩm tương tự',
+      }).ketQua,
+      'CHOT',
+    );
+
+    assert.equal(
+      chotDong8({
+        hs: '830890',
+        productText:
+          'Móc cào, khóa móc cài, khóa thắt lưng, cài thắt lưng, khóa có chốt, mắt cài khóa, khoen và các loại tương tự, bằng kim loại cơ bản, dùng cho quần áo hoặc phụ kiện quần áo, giày dép, trang sức, đồng hồ đeo tay, sách, bạt che, đồ da, hàng du lịch hoặc yên cương hoặc cho các sản phẩm hoàn thiện khác; đinh tán hình ống hoặc đinh tán có chân xòe, bằng kim loại cơ bản; hạt trang trí và trang kim, bằng kim loại cơ bản. - Loại khác, kể cả các bộ phận: Trang kim',
+      }).hs,
+      '83089020',
+    );
+    assert.notEqual(
+      chotDong8({
+        hs: '830890',
+        productText:
+          'Móc cào, khóa móc cài, khóa thắt lưng, cài thắt lưng, khóa có chốt, mắt cài khóa, khoen và các loại tương tự, bằng kim loại cơ bản, dùng cho quần áo hoặc phụ kiện quần áo, giày dép, trang sức, đồng hồ đeo tay, sách, bạt che, đồ da, hàng du lịch hoặc yên cương hoặc cho các sản phẩm hoàn thiện khác; đinh tán hình ống hoặc đinh tán có chân xòe, bằng kim loại cơ bản; hạt trang trí và trang kim, bằng kim loại cơ bản. - Loại khác, kể cả các bộ phận',
+      }).ketQua,
+      'CHOT',
+    );
+
+    assert.equal(
+      chotDong8({
+        hs: '960310',
+        productText:
+          'Chổi và bàn chải, gồm các cành nhỏ hoặc các chất liệu từ thực vật khác buộc lại với nhau, có hoặc không có cán: Chổi',
+      }).hs,
+      '96031020',
+    );
+    assert.notEqual(
+      chotDong8({
+        hs: '960310',
+        productText:
+          'Chổi và bàn chải, gồm các cành nhỏ hoặc các chất liệu từ thực vật khác buộc lại với nhau, có hoặc không có cán',
+      }).ketQua,
+      'CHOT',
+    );
+
+    assert.equal(
+      chotDong8({
+        hs: '960990',
+        productText:
+          'Bút chì (trừ các loại bút chì thuộc nhóm 96.08), bút màu, ruột chì, phấn màu, than vẽ, phấn vẽ hoặc viết và phấn thợ may. - Loại khác - Loại khác: Phấn vẽ hoặc phấn viết',
+      }).hs,
+      '96099091',
+    );
+    assert.notEqual(
+      chotDong8({
+        hs: '960990',
+        productText:
+          'Bút chì (trừ các loại bút chì thuộc nhóm 96.08), bút màu, ruột chì, phấn màu, than vẽ, phấn vẽ hoặc viết và phấn thợ may. - Loại khác - Loại khác',
+      }).ketQua,
+      'CHOT',
+    );
+  });
 });
