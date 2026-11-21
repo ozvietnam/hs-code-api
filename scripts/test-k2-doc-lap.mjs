@@ -58,6 +58,12 @@ check('SAU: cùng dòng đó ⇒ K2 cảnh báo bằng tiền lệ TB-TCHQ, KHÔ
 check('SAU: mục tiền lệ nêu số thông báo, mã cạnh tranh 3926.90.93 + dữ kiện lật', /6317\/TB-TCHQ/.test(tl.evidence.join(' ')) && tl.maCanhTranh[0].maHs === '39269093' && tl.maCanhTranh[0].duKienLat.fact === 'tenLoai' && tl.maCanhTranh[0].duKienLat.trangThai === 'DANG_TRAI' && tl.maDeNghiXem.includes('39269093'), tl.maCanhTranh);
 r = await soat('39269093', NUT_VAN);
 check('SAU: mã ĐÚNG theo chính các thông báo đó ⇒ không có cảnh báo tiền lệ', !muc(r, 'DOC_LAP_TIEN_LE_CUNG_LOAI_HANG_MA_KHAC'), tom(r));
+const BOT_DAU_NANH = 'Bột đậu nành (roasted soy bean powder) đậu tương chưa khử béo, dạng bột đã rang màu vàng, không có vị đắng, qua xử lý nhiệt không thay đổi tính đặc trưng tự nhiên của hạt, nguyên liệu sản xuất bánh kẹo';
+r = await soat('21061000', BOT_DAU_NANH);
+const tlKhacNhom = muc(r, 'DOC_LAP_TIEN_LE_CUNG_LOAI_HANG_MA_KHAC');
+check('S-2: tiền lệ khác nhóm (2342/TB-TCHQ → 12081000) bắt được qua finalHsCode khi khai 21061000', r.goi === 0 && tlKhacNhom?.trangThai === 'CANH_BAO' && tlKhacNhom.docLap === true && tlKhacNhom.maCanhTranh?.[0]?.maHs === '12081000', tom(r));
+r = await soat('12081000', BOT_DAU_NANH);
+check('S-2 âm tính: khai đúng 12081000 không bị DOC_LAP_TIEN_LE_CUNG_LOAI_HANG_MA_KHAC', !muc(r, 'DOC_LAP_TIEN_LE_CUNG_LOAI_HANG_MA_KHAC'), tom(r));
 
 // ── 2. Không nguồn tất định nào kết luận ⇒ đường cũ, gắn nhãn "không độc lập" ────────────────────────────────────────────
 r = await soat('85094000', MAY_XAY);
