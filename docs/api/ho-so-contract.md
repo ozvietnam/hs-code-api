@@ -36,7 +36,16 @@ giá trị khoá hay tên khách. Dòng cũ chưa có trường này được b�
 
 Lượt `/api/classify` ra mã lát 1 nhưng KHÔNG dựng hồ sơ khi chạy bóng ⇒ một dòng gọn `{ts, endpoint, maHs, noiBo, cheDo, boQua,
 benGoi}` với `boQua` = `chot-som` (động cơ chốt sớm, OZV-1368) | `cache` (trúng cache kết quả) | `kho-dap-an` (trả từ kho đáp
-án). Dòng này chỉ để mẫu số không hụt âm thầm: không vào tỉ lệ áp dụng hay trạng thái.
+án) | `qua-tai` (hàng chạy nền đầy) | `dang-tat` (tiến trình đang tắt êm). Dòng này chỉ để mẫu số không hụt âm thầm: không vào
+tỉ lệ áp dụng hay trạng thái.
+
+**Chạy bóng không nằm trên đường trả lời.** Ở `shadow`, describe / classify / declaration-sheet / declaration-check trả phản hồi
+đường cũ ngay; hồ sơ được dựng ở hàng chạy nền của tiến trình (tối đa 2 lượt cùng lúc, 20 lượt chờ) rồi mới ghi dòng số đo —
+dòng số đo vì thế xuất hiện SAU phản hồi vài giây tới vài chục giây. Lượt LLM của hồ sơ bóng không nằm trong `usage` của phản hồi
+và không vào sổ chi phí lượt công khai; thay vào đó dòng số đo mang `chiPhiLlm {soLuot, tokenVao, tokenRa, khongRoToken, usd,
+khongRoGia, kenh: {"<nhà cung cấp>/<model>": {soLuot, tokenVao, tokenRa, usd}}}` (chỉ số + tên kênh), và báo cáo cộng thành
+`chiPhiLlm` tổng + `theoNgay` + `theoNhaCungCap` + `theoKenh`.
+Lượt chạy thử (`HS_HO_SO_THU_CALLERS`) và `on` không đổi: vẫn chờ hồ sơ vì phản hồi cần nó.
 
 Báo cáo tách thêm `theoNgay`, `boQua`, `theoBenGoi` và `theoPhanNhom` (6 số đầu của mã); mỗi nhóm có `soLuot, boQua, khongApDung,
 apDung, loi, soLuotDung, trangThai, tiLeTrangThai, banNhap, tiLeBanNhap`. `llm.rotVeMay` gộp cả bản nháp (bản nháp không gọi LLM

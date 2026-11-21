@@ -63,6 +63,15 @@ console.log('\nQuá hạn từng bước');
 dong('Số lượt', JSON.stringify(t.quaHan));
 dong('Tỉ lệ', JSON.stringify(Object.fromEntries(Object.entries(t.tiLeQuaHan).map(([k, v]) => [k, pct(v)]))));
 dong('Lỗi tầng hồ sơ (đã rơi về đường cũ)', JSON.stringify(t.loi));
+console.log('\nChi phí LLM của lượt bóng chạy nền (token; USD theo bảng giá lib/llm-cost.js)');
+const cp = t.chiPhiLlm;
+const usd = (x) => `${Number(x || 0).toFixed(4)} USD`;
+dong('Lượt có số đo / không có', `${cp.soLuotDo} / ${cp.khongCoSoDo}`);
+dong('Lượt LLM | token vào | token ra | USD', `${cp.soLuotLlm} | ${cp.tokenVao} | ${cp.tokenRa} | ${usd(cp.usd)}`);
+dong('Lượt LLM không rõ token / không rõ giá', `${cp.khongRoToken} / ${cp.khongRoGia}`);
+for (const [k, v] of Object.entries(cp.theoNgay)) dong(`  ngày ${k}`, `${v.soLuotLlm} lượt LLM | ${v.tokenVao} | ${v.tokenRa} | ${usd(v.usd)}`);
+for (const [k, v] of Object.entries(cp.theoNhaCungCap)) dong(`  nhà cung cấp ${k}`, `${v.soLuotLlm} lượt LLM | ${v.tokenVao} | ${v.tokenRa} | ${usd(v.usd)}`);
+for (const [k, v] of Object.entries(cp.theoKenh)) dong(`  kênh ${k}`, `${v.soLuotLlm} lượt LLM | ${v.tokenVao} | ${v.tokenRa} | ${usd(v.usd)}`);
 const bangNhom = (ten, nhom) => {
   console.log(`\n${ten}  (lượt | bỏ qua | chưa duyệt | dựng được | ĐỦ CĂN CỨ | THIẾU DỮ KIỆN | MÂU THUẪN | bản nháp)`);
   for (const [k, v] of Object.entries(nhom).sort((a, b) => b[1].soLuot - a[1].soLuot || a[0].localeCompare(b[0]))) {

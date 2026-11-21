@@ -72,16 +72,19 @@ const kqThuong = () => ({
 const attrs = { tenHang: 'cốc giữ nhiệt chân không bằng thép không gỉ' };
 xoa();
 const o1 = await API.ganHoSoClassify(kqThuong(), attrs, { noiBo: false, caller: 'cong-oz' });
+await API.choNenXong();
 let d = doc();
 check('shadow, lượt thường: phản hồi không đổi', bangSau(o1, kqThuong()));
 check('shadow, lượt thường: MỘT dòng, benGoi = cong-oz, apDung true', d.length === 1 && d[0].benGoi === 'cong-oz' && d[0].apDung === true && !d[0].boQua, d);
 check('shadow, lượt thường: chỉ khoá trong KHOA_SHADOW', d.length === 1 && Object.keys(d[0]).every((k) => API.KHOA_SHADOW.includes(k)), d[0] && Object.keys(d[0]));
 xoa();
 await API.ganHoSoClassify(kqThuong(), attrs, { noiBo: false });
+await API.choNenXong();
 d = doc();
 check('shadow, lượt công khai: benGoi = cong-khai', d.length === 1 && d[0].benGoi === 'cong-khai', d);
 xoa();
 await API.ganHoSoClassify(kqThuong(), attrs, { noiBo: false, caller: 'k-erp-bi-mat' });
+await API.choNenXong();
 check('shadow, caller là giá trị khoá: tệp KHÔNG chứa chuỗi đó, benGoi = khac', !tho().includes('bi-mat') && doc()[0]?.benGoi === 'khac', tho().slice(0, 200));
 
 // ── 3. Chốt sớm (OZV-1368): không dựng hồ sơ nhưng để lại dòng boQua ───────────────────────────────────────────────
@@ -92,6 +95,7 @@ const kqSom = (hs = HS) => ({
 });
 xoa(); goiLlm.length = 0;
 const o3 = await API.ganHoSoClassify(kqSom(), attrs, { noiBo: false, caller: 'cong-oz' });
+await API.choNenXong();
 d = doc();
 check('chốt sớm + shadow: phản hồi không đổi, không gọi LLM hồ sơ', bangSau(o3, kqSom()) && goiLlm.filter((s) => String(s).startsWith('ho-so')).length === 0, goiLlm);
 check('chốt sớm + shadow: MỘT dòng boQua = chot-som, có benGoi + maHs', d.length === 1 && d[0].boQua === 'chot-som' && d[0].benGoi === 'cong-oz' && d[0].maHs === HS && d[0].endpoint === 'classify', d);
@@ -99,10 +103,12 @@ check('chốt sớm + shadow: dòng boQua chỉ có khoá trong KHOA_BO_QUA (kh�
 const NGOAI = ['01012100', '02011000', '10063099'].find((m) => !H.laMaLat1(m));
 xoa();
 await API.ganHoSoClassify(kqSom(NGOAI), attrs, { noiBo: false, caller: 'cong-oz' });
+await API.choNenXong();
 check('chốt sớm + mã NGOÀI lát 1: không ghi dòng nào (như cũ)', doc().length === 0, [NGOAI, doc()]);
 xoa();
 process.env.HS_HO_SO = 'off';
 await API.ganHoSoClassify(kqSom(), attrs, { noiBo: false, caller: 'cong-oz' });
+await API.choNenXong();
 API.ghiBoQua('classify', HS, { caller: 'cong-oz' }, 'cache');
 check('HS_HO_SO=off: không ghi dòng boQua nào', doc().length === 0, doc());
 process.env.HS_HO_SO = 'on';

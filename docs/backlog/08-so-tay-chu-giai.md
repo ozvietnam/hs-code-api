@@ -201,6 +201,9 @@ cổng **nghi đúng hướng** — hệ đang chọn dòng "Loại khác" trong
 (bộ xúc xắc 9503.00.60, bộ điều khiển DMX512 8537.10) — AI không giải trình được nên lên cờ chuyên viên,
 đúng triết lý "máy nghi, không chặn". Không mục sổ tay nào sai nghĩa → không phải sửa `data/so-tay/`.
 
+> **Cập nhật 21/11/2026:** quyết định `gates` dưới đây là của ngày 13/10. Từ 20/10 máy chủ chạy `HS_SO_TAY=full`
+> (`Dockerfile`: `ENV HS_SO_TAY=full`, PR #361 "bật sổ tay full"). Đoạn dưới giữ nguyên làm lịch sử.
+
 **Quyết định: bật `HS_SO_TAY=gates`** (full không tốt hơn rõ rệt và vướng điều gói). File đo gốc
 `/opt/hs-bench/so-tay-{off,gates,full}-r{1,2}.json` giữ trên .120 (không commit — theo chuẩn không
 ghi dữ liệu đo vào repo).

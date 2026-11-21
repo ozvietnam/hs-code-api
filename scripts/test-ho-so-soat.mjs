@@ -161,11 +161,12 @@ function batBien(kq) {
 }
 
 // ═══ 1. Cờ tắt (mặc định) ⇒ bằng sâu ảnh chụp, không gọi động cơ hồ sơ ═══
-reset();
+await API.choNenXong(); reset();
 const rOff = await goi(BODY);
 check('off: 200', rOff._s === 200, rOff._s);
 check('off: dong/tongQuan/goiY BẰNG SÂU ảnh chụp đường cũ (kiemMa)', bangSau(gon(rOff._j), ANH.kiemMa));
 check('off: classify gọi mỗi dòng một lượt như cũ (5 dòng ⇒ 5 lượt)', goiClassify.length === 5, goiClassify.length);
+await API.choNenXong();
 check('off: không ghi dòng số đo', docShadow().length === 0);
 check('off: không mục K2 nào mang trường hồ sơ', !JSON.stringify(rOff._j?.dong || []).includes('duKienQuyetDinh'));
 process.env.HS_K2_LOI = 'on';
@@ -177,9 +178,10 @@ check('HS_HO_SO giá trị lạ ⇒ như off', bangSau(gon((await goi(BODY))._j)
 
 // ═══ 2. shadow ⇒ bằng sâu ảnh chụp + một dòng số đo mỗi dòng lát 1 (chỉ số đếm) ═══
 process.env.HS_HO_SO = 'shadow';
-reset();
+await API.choNenXong(); reset();
 const rSh = await goi(BODY);
 check('shadow: dong/tongQuan/goiY BẰNG SÂU ảnh chụp đường cũ', bangSau(gon(rSh._j), ANH.kiemMa));
+await API.choNenXong();
 const dsSh = docShadow();
 const shK2 = dsSh.filter((r) => r.endpoint === 'declaration-check' && r.apDung !== false);
 check('shadow: 3 dòng số đo declaration-check cho 3 dòng mã lát 1 áp dụng', shK2.length === 3, dsSh);
@@ -192,6 +194,7 @@ const k2Mt = shK2.find((r) => r.trangThai === 'MAU_THUAN');
 check('shadow: dòng MÂU THUẪN đếm soMauThuan ≥ 1, coCanCuTatDinh true, canPhanLoai true', k2Mt && k2Mt.k2.soMauThuan >= 1 && k2Mt.k2.coCanCuTatDinh === true && k2Mt.k2.canPhanLoai === true, k2Mt);
 const k2Th = shK2.find((r) => r.trangThai === 'THIEU_DU_KIEN');
 check('shadow: dòng THIẾU đếm soThieu ≥ 1, canPhanLoai false', k2Th && k2Th.k2.soThieu >= 1 && k2Th.k2.canPhanLoai === false, k2Th);
+await API.choNenXong();
 const rawSh = fs.existsSync(SHADOW) ? fs.readFileSync(SHADOW, 'utf8') : '';
 check('shadow: tệp số đo KHÔNG chứa chữ khách (mô tả, cụm trích)', rawSh.length > 0 && !['Vỏ ngoài', 'thép không gỉ', 'giữ nhiệt', 'Nồi chiên', 'nắp nhựa'].some((s) => rawSh.includes(s)));
 check('shadow: dòng có cheDo shadow', shK2.every((r) => r.cheDo === 'shadow'));
@@ -201,12 +204,13 @@ check('báo cáo shadow: khối k2 cộng số đếm của 3 lượt soát (1 l
 
 // ═══ 3. on + mã ngoài lát 1 / lát 1 chưa duyệt ⇒ dòng đó bằng sâu ảnh chụp ═══
 process.env.HS_HO_SO = 'on';
-reset();
+await API.choNenXong(); reset();
 const rOn = await goi(BODY);
 check('on: 200', rOn._s === 200, [rOn._s, rOn._j]);
 check('on: dòng mã NGOÀI lát 1 bằng sâu ảnh chụp', bangSau(lineOf(rOn._j, 4), ANH.kiemMa.dong.find((d) => d.stt === 4)), lineOf(rOn._j, 4));
 check('on: dòng mã lát 1 CHƯA duyệt bằng sâu ảnh chụp', bangSau(lineOf(rOn._j, 5), ANH.kiemMa.dong.find((d) => d.stt === 5)));
 check('on: bất biến KetQuaSoat (đủ 7 nhóm, không LOI dựa HEURISTIC/LLM, mucSanSang khớp)', batBien(rOn._j).length === 0, batBien(rOn._j));
+await API.choNenXong();
 check('on: global on không ghi dòng số đo', docShadow().filter((r) => r.apDung !== false).length === 0, docShadow());
 
 // ═══ 4. on + lát 1: K2 mới ═══
@@ -258,14 +262,14 @@ check('mô tả mẫu: cauSuaDeXuat là bản đạt (moTaEcus, không bản nh�
 check('cong-oz: không chuỗi MO_TA_GIONG_MA_KHAC / KHO_TO_KHAI_OZ ở bất kỳ độ sâu nào', !/MO_TA_GIONG_MA_KHAC|KHO_TO_KHAI_OZ|NOI_BO_OZ|demKhoOz/.test(JSON.stringify(rOn._j)));
 check('cong-oz: không gọi kho Oz', goiNguon.demKhoOz === 0, goiNguon);
 check('khoá dịch vụ: có usage (mảng)', Array.isArray(rOn._j?.usage), rOn._j?.usage);
-reset();
+await API.choNenXong(); reset();
 const rErp = await goi(BODY, { token: 'k-erp' });
 check('erp (nội bộ): có mục K2 MO_TA_GIONG_MA_KHAC (chỉ số đếm) — HEURISTIC CANH_BAO', k2Of(rErp._j, 2).some((m) => m.ma === 'MO_TA_GIONG_MA_KHAC' && m.basis === 'HEURISTIC' && m.trangThai === 'CANH_BAO'), k2Of(rErp._j, 2).map((m) => m.ma));
 const rApi = await goi(BODY, { token: 'test-token' });
 check('HS_API_TOKEN: không tín hiệu kho Oz, không usage', !/MO_TA_GIONG_MA_KHAC|KHO_TO_KHAI_OZ/.test(JSON.stringify(rApi._j)) && !('usage' in (rApi._j || {})), rApi._s);
 
 // ═══ 5. HS_K2_LOI ═══
-reset();
+await API.choNenXong(); reset();
 process.env.HS_K2_LOI = 'on';
 const rLoi = await goi(BODY);
 const k2Loi = (rLoi._j?.dong || []).flatMap((d) => d.kiem.filter((m) => m.nhom === 'K2').map((m) => ({ ...m, stt: d.stt })));
@@ -280,7 +284,7 @@ const rKhongLoi = await goi(BODY);
 check('HS_K2_LOI tắt: KHÔNG mục K2 nào LOI', !(rKhongLoi._j?.dong || []).some((d) => d.kiem.some((m) => m.nhom === 'K2' && m.trangThai === 'LOI')));
 
 // ═══ 6. on không kiemMa ⇒ K2 CHUA_KIEM như cũ, không LLM, không classify ═══
-reset();
+await API.choNenXong(); reset();
 const rKhong = await goi({ ...BODY, kiemMa: undefined });
 check('on không kiemMa: bằng sâu ảnh chụp không kiemMa', bangSau(gon(rKhong._j), ANH.khongKiemMa));
 check('on không kiemMa: không LLM, không classify', goiLlm.length === 0 && goiClassify.length === 0, { goiLlm, goiClassify });
@@ -288,11 +292,12 @@ check('on không kiemMa: không LLM, không classify', goiLlm.length === 0 && go
 // ═══ 7. Chạy thử nội bộ: shadow + HS_HO_SO_THU_CALLERS ═══
 process.env.HS_HO_SO = 'shadow';
 process.env.HS_HO_SO_THU_CALLERS = 'oz-noi-bo';
-reset();
+await API.choNenXong(); reset();
 check('shadow + cong-oz không trong danh sách ⇒ bằng sâu ảnh chụp', bangSau(gon((await goi(BODY))._j), ANH.kiemMa));
-reset();
+await API.choNenXong(); reset();
 const rThu = await goi(BODY, { token: 'k-noi' });
 check('shadow + oz-noi-bo trong danh sách ⇒ K2 mới (chạy như on)', mucChinh(rThu._j, 2)?.coCanCuTatDinh === true && mucChinh(rThu._j, 2)?.hoSoMeta?.cheDo === 'on' && mucChinh(rThu._j, 2)?.hoSoMeta?.thuNoiBo === true, mucChinh(rThu._j, 2)?.hoSoMeta);
+await API.choNenXong();
 check('chạy thử: ghi dòng số đo cheDo "thu"', docShadow().filter((r) => r.endpoint === 'declaration-check' && r.apDung !== false).every((r) => r.cheDo === 'thu') && docShadow().some((r) => r.cheDo === 'thu'), docShadow());
 process.env.HS_HO_SO = 'off';
 check('off + oz-noi-bo trong danh sách ⇒ như off', bangSau(gon((await goi(BODY, { token: 'k-noi' }))._j), ANH.kiemMa));
@@ -304,7 +309,7 @@ if (SOAT) {
   const goc = SOAT._datLoiThu;
   if (typeof goc === 'function') {
     SOAT._datLoiThu(new Error('loi thu'));
-    reset();
+    await API.choNenXong(); reset();
     const rL = await goi(BODY);
     SOAT._datLoiThu(null);
     check('lỗi soát (on) ⇒ dòng lát 1 trả đường cũ (bằng sâu ảnh chụp, trừ hoSoMeta lỗi)', [1, 2, 3].every((s) => { const l = structuredClone(lineOf(rL._j, s)); const hm = l && l.hoSoMeta; if (l) delete l.hoSoMeta; return hm && hm.loi === 'HO_SO_LOI' && bangSau(l, ANH.kiemMa.dong.find((d) => d.stt === s)); }), lineOf(rL._j, 2));
@@ -313,7 +318,7 @@ if (SOAT) {
 
 // ═══ 9. soat() trực tiếp — hợp đồng hàm ═══
 if (SOAT) {
-  reset();
+  await API.choNenXong(); reset();
   const s = await SOAT.soat({ maHs: MA, moTa: MO_TA_DOI }, { noiBo: false });
   check('soat(): trả hoSo, duKienQuyetDinh[], cauSuaDeXuat, coCanCuTatDinh, khungNghiNgo, canPhanLoai', s && s.hoSo && Array.isArray(s.duKienQuyetDinh) && s.cauSuaDeXuat && typeof s.coCanCuTatDinh === 'boolean' && 'khungNghiNgo' in s && typeof s.canPhanLoai === 'boolean', s && Object.keys(s));
   check('soat(): tự nó không gọi classify (việc của declaration-check)', goiClassify.length === 0, goiClassify);
@@ -327,7 +332,7 @@ if (SOAT) {
 }
 
 // ═══ 10. Đầu vào: dòng nhận hoSoId + duKien (Cổng L1-6c gửi theo maLuotPhanLoai) ═══
-reset();
+await API.choNenXong(); reset();
 const HSID = '3f1c2d4e-5a6b-4c7d-8e9f-0a1b2c3d4e5f';
 const rId = await goi({ ngayDuKienDangKy: '2026-10-30', kiemMa: true, dongHang: [dong(1, MA, MO_TA_BO, { hoSoId: HSID, duKien: [{ fact: 'laBoPhan', giaTri: false, nguon: 'KHACH', bangChung: 'hàng hoàn chỉnh' }] })] });
 const mId = mucChinh(rId._j, 1);

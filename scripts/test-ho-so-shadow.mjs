@@ -135,6 +135,7 @@ const jThu = rThu._j || {};
 check('shadow + oz-noi-bo trong danh sách ⇒ 200 có hoSo + sáu khối', rThu._s === 200 && 'hoSo' in jThu && 'moTaEcus' in jThu, Object.keys(jThu));
 check('shadow + chạy thử ⇒ hoSoMeta.cheDo = "on" (chế độ hiệu lực) + thuNoiBo', jThu.hoSoMeta?.cheDo === 'on' && jThu.hoSoMeta?.thuNoiBo === true, jThu.hoSoMeta);
 check('shadow + chạy thử ⇒ customsDescription = chuỗi của bộ viết', jThu.customsDescription === (jThu.moTaEcus ?? jThu.moTaBanNhap));
+await API.choNenXong();
 const dThu = docShadow();
 check('chạy thử ⇒ đúng một dòng số đo, cheDo "thu"', dThu.length === 1 && dThu[0].cheDo === 'thu' && dThu[0].endpoint === 'describe', dThu);
 
@@ -143,6 +144,7 @@ check('shadow + công khai ⇒ bằng sâu như off', bangSau(gon((await goi(BOD
 check('shadow + HS_API_TOKEN ⇒ bằng sâu như off', bangSau(gon((await goi(BODY_PHICH, { token: 'test-token' }))._j), cuApi));
 check('shadow + erp KHÔNG trong danh sách ⇒ bằng sâu như off', bangSau(gon((await goi(BODY_PHICH, { token: 'k-erp' }))._j), cuErp));
 check('shadow + cong-oz KHÔNG trong danh sách ⇒ bằng sâu như off', bangSau(gon((await goi(BODY_PHICH, { token: 'k-cong' }))._j), cuCong));
+await API.choNenXong();
 const dSh = docShadow();
 check('4 lượt chạy bóng ⇒ 4 dòng cheDo "shadow"', dSh.length === 4 && dSh.every((d) => d.cheDo === 'shadow'), dSh.map((d) => d.cheDo));
 
@@ -155,6 +157,7 @@ process.env.HS_HO_SO = 'on'; process.env.HS_HO_SO_THU_CALLERS = 'oz-noi-bo';
 xoaShadow();
 const rOn = await goi(BODY_PHICH, { token: 'k-noi' });
 check('on (toàn cục) ⇒ hoSoMeta.cheDo "on", KHÔNG gắn thuNoiBo', rOn._j?.hoSoMeta?.cheDo === 'on' && !('thuNoiBo' in (rOn._j?.hoSoMeta || {})), rOn._j?.hoSoMeta);
+await API.choNenXong();
 check('on (toàn cục) ⇒ không ghi dòng số đo (như trước)', docShadow().length === 0);
 
 // ── 3. POST /api/ho-so ────────────────────────────────────────────────────────────────────────────────────────
@@ -165,6 +168,7 @@ const hThu = await goi(BODY_HS, { mode: 'ho_so', token: 'k-noi' });
 check('/api/ho-so shadow + chạy thử ⇒ 200, hoSoMeta.cheDo "on" + thuNoiBo', hThu._s === 200 && hThu._j?.hoSoMeta?.cheDo === 'on' && hThu._j?.hoSoMeta?.thuNoiBo === true, hThu._j?.hoSoMeta);
 const hErp = await goi(BODY_HS, { mode: 'ho_so', token: 'k-erp' });
 check('/api/ho-so shadow + erp ngoài danh sách ⇒ hoSoMeta.cheDo "shadow"', hErp._s === 200 && hErp._j?.hoSoMeta?.cheDo === 'shadow', hErp._j?.hoSoMeta);
+await API.choNenXong();
 const dHs = docShadow();
 check('/api/ho-so: một dòng "thu" + một dòng "shadow"', dHs.length === 2 && dHs[0].cheDo === 'thu' && dHs[1].cheDo === 'shadow' && dHs.every((d) => d.endpoint === 'ho-so'), dHs.map((d) => [d.endpoint, d.cheDo]));
 
@@ -181,6 +185,7 @@ const dvSheet = { hs: PHICH, tenHang: 'Vỏ ngoài phích giữ nhiệt', thongS
 const sThu = await API.ganHoSoSheet(structuredClone(sheetCu), dvSheet, { noiBo: false, caller: 'oz-noi-bo' });
 check('sheet shadow + chạy thử ⇒ composedFrom HO_SO, hoSoMeta.cheDo "on"', sThu.description?.composedFrom === 'HO_SO' && sThu.description?.hoSoMeta?.cheDo === 'on', sThu.description?.hoSoMeta);
 check('sheet shadow + caller ngoài danh sách ⇒ không đổi', bangSau(await API.ganHoSoSheet(structuredClone(sheetCu), dvSheet, { noiBo: true, caller: 'erp' }), sheetCu));
+await API.choNenXong();
 const dKs = docShadow();
 check('classify/sheet: dòng số đo đúng endpoint + cheDo', dKs.some((d) => d.endpoint === 'classify' && d.cheDo === 'thu') && dKs.some((d) => d.endpoint === 'classify' && d.cheDo === 'shadow') && dKs.some((d) => d.endpoint === 'declaration-sheet' && d.cheDo === 'thu') && dKs.some((d) => d.endpoint === 'declaration-sheet' && d.cheDo === 'shadow'), dKs.map((d) => [d.endpoint, d.cheDo]));
 const srcClassify = fs.readFileSync(path.join(ROOT, 'api', 'classify.js'), 'utf8');
@@ -194,12 +199,14 @@ check('KHOA_SHADOW có thêm trường §10', MOI_KHOA.every((k) => API.KHOA_SHA
 process.env.HS_HO_SO = 'shadow'; delete process.env.HS_HO_SO_THU_CALLERS;
 xoaShadow();
 const rM = await goi(BODY_PHICH, { token: 'k-erp' });
+await API.choNenXong();
 const dM = docShadow()[0] || {};
 check('dòng: chỉ khoá trong KHOA_SHADOW', Object.keys(dM).length > 0 && Object.keys(dM).every((k) => API.KHOA_SHADOW.includes(k)), Object.keys(dM));
 check('dòng: msBuoc có duongDi/docDuKien/doiChieu/viet là số ms', ['duongDi', 'docDuKien', 'doiChieu', 'viet'].every((k) => Number.isFinite(dM.msBuoc?.[k]) && dM.msBuoc[k] >= 0), dM.msBuoc);
 check('dòng: apDung true, cheDoVietYeuCau LLM, llmBiLoai false', dM.apDung === true && dM.cheDoVietYeuCau === 'LLM' && dM.llmBiLoai === false, [dM.apDung, dM.cheDoVietYeuCau, dM.llmBiLoai]);
 const q = dM.duKienQD || {};
 check('dòng: duKienQD {tong, moi, cu, caHai} là số nguyên, moi/cu/caHai ≤ tong', ['tong', 'moi', 'cu', 'caHai'].every((k) => Number.isInteger(q[k]) && q[k] >= 0) && q.moi <= q.tong && q.cu <= q.tong && q.caHai <= Math.min(q.moi, q.cu), q);
+await API.choNenXong();
 const raw = fs.readFileSync(SHADOW, 'utf8');
 check('dòng: không chứa nội dung khách (tên hàng, mô tả, mô tả cũ)', !/phích|Phích|thép|ruột|Trung Quốc/.test(raw), raw.slice(0, 300));
 check('shadow vẫn trả bằng sâu như off (erp)', bangSau(gon(rM._j), cuErp));
@@ -207,6 +214,7 @@ check('shadow vẫn trả bằng sâu như off (erp)', bangSau(gon(rM._j), cuErp
 chenGiaTriLa = true;
 xoaShadow();
 await goi(BODY_PHICH, { token: 'k-erp' });
+await API.choNenXong();
 const dL = docShadow()[0] || {};
 check('LLM chèn giá trị lạ ⇒ dòng llmBiLoai true, cheDoViet MAY, cheDoVietYeuCau LLM', dL.llmBiLoai === true && dL.cheDoViet === 'MAY' && dL.cheDoVietYeuCau === 'LLM', [dL.llmBiLoai, dL.cheDoViet, dL.cheDoVietYeuCau]);
 chenGiaTriLa = false;
@@ -234,6 +242,7 @@ if (CHUA_DUYET) {
   const cdOff = gon((await goi(bodyCd, { token: 'k-erp' }))._j);
   process.env.HS_HO_SO = 'shadow';
   const cdSh = gon((await goi(bodyCd, { token: 'k-erp' }))._j);
+  await API.choNenXong();
   const dCd = docShadow();
   check('mã lát 1 chưa duyệt (shadow) ⇒ phản hồi như off', bangSau(cdSh, cdOff));
   check('mã lát 1 chưa duyệt (shadow) ⇒ một dòng apDung false, chỉ khoá gọn', dCd.length === 1 && dCd[0].apDung === false && dCd[0].maHs === CHUA_DUYET && Object.keys(dCd[0]).every((k) => ['ts', 'endpoint', 'maHs', 'noiBo', 'cheDo', 'apDung', 'benGoi'].includes(k)) && dCd[0].benGoi === 'erp', dCd);
@@ -242,6 +251,7 @@ xoaShadow();
 const { taxData } = require('../lib/data');
 const NGOAI = Object.keys(taxData).find((k) => k.length === 8 && !HS.laMaLat1(k));
 await goi({ hsCode: NGOAI, productName: 'Hàng thử ngoài lát 1', customerDescription: 'mô tả thử' }, { token: 'k-erp' });
+await API.choNenXong();
 check('mã ngoài lát 1 (shadow) ⇒ không ghi dòng', docShadow().length === 0);
 
 // soKhopDuKien: chỉ đếm, cụm nhóm 2 (dữ kiện quyết định), bỏ chỗ trống
