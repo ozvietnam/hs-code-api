@@ -14,7 +14,7 @@
 import { execFileSync } from 'node:child_process';
 import path from 'node:path';
 import { createRequire } from 'node:module';
-import { GOC, docJson, co, tepMa, baoDong, boKiem } from './lib-luat.mjs';
+import { GOC, docJson, co, tepMa, baoDong, baoDongBo, boKiem } from './lib-luat.mjs';
 
 process.chdir(GOC);
 const require = createRequire(import.meta.url);
@@ -130,7 +130,10 @@ const kho = dauNoi.kho.bangCanh;
 if (kiem('bảng đấu nối có mục kho "bangCanh"', Boolean(kho && Array.isArray(kho.moDun)))) {
   const moDunDoThi = tepMa('lib/do-thi');
   kiem('kho.bangCanh.moDun khai đủ mọi tệp trong lib/do-thi/', moDunDoThi.every((m) => kho.moDun.includes(m)) && kho.moDun.every((m) => co(m)), moDunDoThi.filter((m) => !kho.moDun.includes(m)).join(', '));
-  const napNgoai = [...tepMa('lib'), ...tepMa('api'), 'server.js'].filter((t) => !t.startsWith('lib/do-thi/') && [...baoDong(t)].some((x) => x.startsWith('lib/do-thi/')));
+  // "Nạp mượn hàm" (cùng cơ chế test-dau-noi: napMuonHam + kho.bangCanh.hamKhongDocKho): tệp chỉ lấy hàm thuần (rút / khớp từ
+  // khoá) thì không tính là nạp bảng cạnh; test-dau-noi kiểm tệp đó chỉ lấy đúng các hàm đã khai.
+  const muonHam = new Set(dauNoi.duong.map((d) => d.doc && d.doc.bangCanh && d.doc.bangCanh.napMuonHam && d.doc.bangCanh.napMuonHam.tep).filter(Boolean));
+  const napNgoai = [...tepMa('lib'), ...tepMa('api'), 'server.js'].filter((t) => !t.startsWith('lib/do-thi/') && [...baoDongBo(t, (tu, den) => muonHam.has(tu) && den.startsWith('lib/do-thi/'))].some((x) => x.startsWith('lib/do-thi/')));
   const khaiCo = dauNoi.duong.filter((d) => d.doc && d.doc.bangCanh && d.doc.bangCanh.trangThai === 'co').map((d) => d.tep);
   kiem('tệp ngoài lib/do-thi/ nạp bảng cạnh ⇔ đường của nó khai "co" trong bảng đấu nối (giai đoạn 1: không tệp nào)', napNgoai.filter((t) => t.startsWith('api/')).every((t) => khaiCo.includes(t)) && khaiCo.every((t) => napNgoai.includes(t)), `nạp: ${napNgoai.join(', ') || '(không)'} · khai "co": ${khaiCo.join(', ') || '(không)'}`);
 }
