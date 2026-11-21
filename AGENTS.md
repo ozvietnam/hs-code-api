@@ -10,7 +10,7 @@ kho tri thức ở đây thay vì đoán từ trí nhớ.
 > **Bạn sắp SỬA MÃ?** Đọc theo thứ tự, trước khi sửa:
 > 1. [`docs/activeContext.md`](docs/activeContext.md) — việc đang dở, hạn sắp tới.
 > 2. [`docs/luat-duong-khach.md`](docs/luat-duong-khach.md) — 11 luật khi sửa `api/`, `lib/` (đổi hành vi LLM, câu
->    hỏi gửi khách, cờ `HS_*`, chạy bóng) + **Sơ đồ Mermaid luồng đường khách & 4 cổng máy**. Có cổng máy trong `npm test`; phạm là đỏ.
+>    hỏi gửi khách, cờ `HS_*`, chạy bóng) + **Sơ đồ Mermaid luồng đường khách & cổng máy** (tự sinh bằng `npm run gen:diagrams`, chống lệch bằng `test-so-do-mermaid.mjs`). Có cổng máy trong `npm test`; phạm là đỏ.
 > 3. [`CLAUDE.md`](CLAUDE.md) — quy ước sửa code, cách chạy test, cổng gộp PR.
 > 4. [`docs/decisions/`](docs/decisions/) — quyết định đã chốt. Có quyết định mới thì ghi một ADR.
 >
