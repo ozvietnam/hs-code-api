@@ -286,7 +286,8 @@
         "op": "=",
         "value": true,
         "donVi": null
-      }
+      },
+      "phanConLai": []
     },
     {
       "hs": "13021190",
@@ -518,45 +519,98 @@
     },
     {
       "hs": "13023911",
-      "dieuKien": "Dạng bột, tinh chế một phần",
+      "dieuKien": "ở dạng bột; tên loại hàng: tinh chế một phần",
+      "loaiKhac": false,
+      "nguon": "tax.13023911",
+      "trich": "13023911 - - - - Dạng bột, tinh chế một phần (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dangBot",
+          "op": "CO"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "tinh chế một phần"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01#soat-lo-5e",
+          "ngay": "2026-11-21",
+          "bam": "2d323c221d27661372a37025d3a5139dc886af5acc371aa651ffb79744b08ab8"
+        }
+      },
       "tieuChi": {
         "fact": "la_bot_tinh_che_mot_phan",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "loaiKhac": false,
-      "nguon": "tax.13023911",
-      "trich": "13023911 - - - - Dạng bột, tinh chế một phần (SEN)",
-      "nguonLoai": "AI_DA_KIEM"
+      }
     },
     {
       "hs": "13023912",
-      "dieuKien": "Dạng bột, đã tinh chế",
+      "dieuKien": "ở dạng bột; tên loại hàng: đã tinh chế",
+      "loaiKhac": false,
+      "nguon": "tax.13023912",
+      "trich": "13023912 - - - - Dạng bột, đã tinh chế (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dangBot",
+          "op": "CO"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "đã tinh chế"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01#soat-lo-5e",
+          "ngay": "2026-11-21",
+          "bam": "2d323c221d27661372a37025d3a5139dc886af5acc371aa651ffb79744b08ab8"
+        }
+      },
       "tieuChi": {
         "fact": "la_bot_da_tinh_che",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "loaiKhac": false,
-      "nguon": "tax.13023912",
-      "trich": "13023912 - - - - Dạng bột, đã tinh chế (SEN)",
-      "nguonLoai": "AI_DA_KIEM"
+      }
     },
     {
       "hs": "13023913",
-      "dieuKien": "Carrageen dạng mảnh đã xử lý kiềm (ATCC)",
+      "dieuKien": "tên loại hàng: Carrageen dạng mảnh đã xử lý kiềm",
+      "loaiKhac": false,
+      "nguon": "tax.13023913",
+      "trich": "13023913 - - - - Carrageen dạng mảnh đã xử lý kiềm (ATCC) (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Carrageen dạng mảnh đã xử lý kiềm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01#soat-lo-5e",
+          "ngay": "2026-11-21",
+          "bam": "2d323c221d27661372a37025d3a5139dc886af5acc371aa651ffb79744b08ab8"
+        }
+      },
       "tieuChi": {
         "fact": "la_carrageen_dang_manh_da_xu_ly_kiem",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "loaiKhac": false,
-      "nguon": "tax.13023913",
-      "trich": "13023913 - - - - Carrageen dạng mảnh đã xử lý kiềm (ATCC) (SEN)",
-      "nguonLoai": "AI_DA_KIEM"
+      }
     },
     {
       "hs": "13023919",
@@ -861,5 +915,28 @@
     "dat": 52,
     "loai": 0,
     "nguonBiCat": []
-  }
+  },
+  "dieuKienNut": [
+    {
+      "id": "1302391",
+      "nguon": "tieuDe.1302391",
+      "trich": "1302391 Làm từ tảo carrageen (carrageenan)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "carrageenan"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01#soat-lo-5e",
+          "ngay": "2026-11-21",
+          "bam": "2d323c221d27661372a37025d3a5139dc886af5acc371aa651ffb79744b08ab8"
+        }
+      }
+    }
+  ]
 }

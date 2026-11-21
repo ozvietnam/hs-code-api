@@ -4,13 +4,19 @@
   "nhom": "4012",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1705#soan-401220",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-01#soat-lo-5e",
+    "ngay": "2026-11-21",
+    "ghiChu": "Đã chuẩn hoá dieuKienSo bám chữ biểu thuế và traVe.lyDo",
+    "bam": "38360c78e44e0885dad71e3092df8fa172f2277fbd9a1d51484eaafaf45bd9c6"
+  },
   "dieuKienNut": [
     {
       "id": "4012202",
@@ -21,12 +27,12 @@
           "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": [
-            "ô tô khách (buses)",
-            "ô tô chở hàng (lorries)"
+            "ô tô khách",
+            "ô tô chở hàng"
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "4012207",
@@ -39,7 +45,7 @@
           "value": "các xe khác thuộc Chương 87"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": true
     }
   ],
@@ -52,10 +58,14 @@
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
-          "value": "ô tô con (motor car)"
+          "value": [
+            "ô tô con",
+            "ô tô chở người có khoang chở hành lý chung",
+            "ô tô đua"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "40122021",
@@ -69,14 +79,14 @@
           "donVi": "mm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "40122029",
       "nguon": "tax.40122029",
       "trich": "40122029 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "40122030",
@@ -89,7 +99,7 @@
           "value": "phương tiện bay"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "40122040",
@@ -102,7 +112,7 @@
           "value": "xe môtô"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "40122050",
@@ -115,7 +125,7 @@
           "value": "xe đạp"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "40122060",
@@ -128,7 +138,7 @@
           "value": "máy thuộc nhóm 84.29 hoặc 84.30"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "40122071",
@@ -149,14 +159,14 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "40122079",
       "nguon": "tax.40122079",
       "trich": "40122079 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "40122080",
@@ -169,7 +179,7 @@
           "value": "máy thuộc nhóm 84.27"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "40122091",
@@ -182,26 +192,26 @@
           "value": "Lốp trơn"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "40122099",
       "nguon": "tax.40122099",
       "trich": "40122099 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "40122010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.40122010 \"Loại sử dụng cho ô tô con (motor car) (kể cả loại ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô đua)\" ⇒ dungCho \"ô tô con (motor car)\" phủ vế [GIỚI HẠN] \"sử dụng cho ô tô con (motor car) …\". Vế \"kể cả …\" là ngoặc chú thích mở rộng, không thành điều kiện."
+      "ghiChu": "tax.40122010 \"Loại sử dụng cho ô tô con (motor car) (kể cả loại ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô đua)\" (EN \"Of a kind used on motor cars (including station wagons, racing cars)\") ⇒ dungCho [\"ô tô con\",\"ô tô chở người có khoang chở hành lý chung\",\"ô tô đua\"] (tách đủ các phương tiện trong vế mở rộng \"kể cả…\" và bỏ ngoặc tiếng Anh chú thích)."
     },
     {
       "ma": "4012202",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.4012202 \"Loại dùng cho ô tô khách (buses) (1) hoặc ô tô chở hàng (lorries)\" ⇒ dungCho [\"ô tô khách (buses)\",\"ô tô chở hàng (lorries)\"] (mảng = hoặc); dấu \"(1)\" là chú thích chân trang, không thành điều kiện."
+      "ghiChu": "tieuDe.4012202 \"Loại dùng cho ô tô khách (buses) (1) hoặc ô tô chở hàng (lorries)\" ⇒ dungCho [\"ô tô khách\",\"ô tô chở hàng\"] (bỏ ngoặc tiếng Anh chú thích và dấu chú thích chân trang \"(1)\")."
     },
     {
       "ma": "4012207",
@@ -212,13 +222,6 @@
       "ma": "40122091",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.40122091 \"Lốp trơn (SEN)\" ⇒ tenLoai \"Lốp trơn\"; cụm \"(SEN)\" là ngoặc chú thích nguồn kỹ thuật, không phải điều kiện."
-    }
-  ],
-  "traVe": [
-    {
-      "phien": "claude-agent:duyet-L13-20261111#soat-L13",
-      "ngay": "2026-11-11",
-      "lyDo": "(A) 40122010 THU HẸP: \"Loại sử dụng cho ô tô con (motor car) (kể cả loại ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô đua)\" (EN \"motor cars (including station wagons, racing cars)\") ghi dungCho \"ô tô con (motor car)\" — bỏ vế \"kể cả … station wagons và ô tô đua\" và nhét chữ Anh \"(motor car)\" vào giá trị ⇒ 'Lốp cũ dùng cho ô tô đua' TRAI .10, rơi tầng 4012207 → 40122079 (MFN 20% thay vì 25%); 'Lốp cũ dùng cho ô tô con' chỉ ra CHUA_BIET vì thiếu âm tiết \"motor car\". Phải là mảng [\"ô tô con\",\"ô tô chở người có khoang chở hành lý chung\",\"ô tô đua\"]. (B) tầng 4012202 cùng lỗi nhét \"(buses)\"/\"(lorries)\" vào giá trị."
     }
   ]
 }
