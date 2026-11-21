@@ -262,3 +262,26 @@ thành câu sắc có trích để tăng "câu có căn cứ" (hiện 29/131 nh�
   tiên tuyệt đối, sổ tay tự động không ghi đè.
 - #159 báo cáo độ đầy đủ chú giải; #162 toàn văn chú giải 5 tập.
 - Động cơ hai vòng + chốt chặn: bước 7 đợt 2, `lib/engine-loop.js`.
+
+## Trạng thái 21/11/2026 — CÂU HỎI GỬI KHÁCH THEO SỔ (`HS_HOI_THEO_SO_TAY`, mặc định TẮT)
+
+**Ca gốc (qua Cổng, 21/11):** "Van điện từ khí nén 5/2 thân nhôm, cổng ren 1/4 inch (13 mm), dùng điều khiển xi
+lanh khí nén" → động cơ dừng `848180` theo nhánh `earlyExitHoi` và hỏi khách 6 câu do LLM tự nghĩ (điện áp cuộn
+dây, model, hãng…). Nguyên nhân: `earlyExitHoiTuR1` (`lib/engine-loop.js`) chép thẳng `verify.unknowns` của vòng 1
+thành `questions`; sổ tay chỉ vào được câu hỏi qua `chotDong8` — nằm sau công tắc `HS_SO_TAY_DONG` (prod TẮT);
+`missingStructured` là trường song song, không nối vào `nextAction`.
+
+**Đã xây:** `lib/hoi-theo-so-tay.js` — hậu xử lý TẤT ĐỊNH ở cửa `classifyLoop` (sau B1b). Không LLM, không đổi
+prompt / mã HS / độ tự tin / status. Khi động cơ hỏi và mới dừng ở 4–6 số, dựng lại `nextAction.questions` (≤ 4 câu):
+phân biệt nhóm 4 số (`phanBiet[]`/`loaiTru[]`, chỉ khi nhóm kia là ứng viên) → phân nhóm 6 số (tiêu đề phân nhóm anh
+em + `tieuChi6`) → điều kiện dòng 8 số (lõi `lib/so-tay-cau-hoi.js` = lõi của `/api/so-tay-questions`, trên phân
+nhóm đứng đầu + một phân nhóm ứng viên thứ hai; sổ ranh giới DUYET → `canCu: "ranh-gioi-pn6"`) → trường khai theo
+nhóm (`missingStructured`). Câu LLM không khớp dữ kiện nào của sổ → `nextAction.ghiChuThem`. Mỗi câu mang
+`canCu` / `nguon` / `trich`. Sổ không ra câu nào (hoặc nhóm chưa có sổ tay) → giữ câu LLM, `canCuCauHoi: "llm"`.
+
+**Bật / đo:** `HS_HOI_THEO_SO_TAY=on` (chỉ `on|1|true`). Đo qua Cổng: tỉ lệ `nextAction.canCuCauHoi` = `so-tay` so
+với `llm` (kèm `hoiTheoSoTay.lyDo`), `hoiTheoSoTay.llm.sangGhiChu`, và tỉ lệ khách trả lời được câu hỏi. Kết quả đã
+nằm trong bộ nhớ đệm phân loại trước lúc bật vẫn mang câu hỏi cũ cho tới khi hết hạn đệm.
+
+**Chưa làm:** không tự đổi phân nhóm khi mô tả khớp chữ phân nhóm anh em (ca van: `phanNhomKhopMoTa` chỉ 8481.20
+trong khi máy xếp 8481.80 — đó là việc của động cơ/GIR 6, xem thẻ riêng); chưa đọc ảnh (`imgText`) khi lọc dữ kiện đã có.
