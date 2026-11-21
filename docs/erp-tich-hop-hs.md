@@ -179,6 +179,6 @@ POST /api/feedback
 
 ## 5. Việc phía hạ tầng
 
-- **Kho lưu bền cho feedback** trên prod (Vercel Blob hoặc KV). Chưa có thì vòng học từ
+- **Kho lưu bền cho feedback** trên prod (Postgres / ổ lưu bền trên server riêng — đã gỡ Vercel 09/10/2026). Chưa có thì vòng học từ
   sửa sai không chạy được.
 - Sau khi có feedback thật: nightly J3 trên VPS đo thêm bộ đầu vào ERP, báo Telegram khi giảm.

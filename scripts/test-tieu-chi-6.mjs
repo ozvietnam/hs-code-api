@@ -162,13 +162,19 @@ const c10 = D.bangCanh().canh.filter((e) => e.loai === 'C10');
 kiem(`mọi cạnh C10 (${c10.length}): bậc 1, từ nhóm 4 số tới phân nhóm 6 số của chính nhóm đó, không sinhTuDong`, c10.length > 0 && c10.every((e) => e.bac === 1 && e.tu.length === 4 && e.toi.length === 6 && e.toi.startsWith(e.tu) && e.sinhTuDong === false));
 kiem('cạnh C10 khuôn cũ (fact tự do) không mang khoá dữ kiện C13 — không giả vờ có kiểu', c10.filter((e) => !Number.isInteger(e.thuTu)).every((e) => e.khoaDuKien === null));
 
-// ── 6. (b) Lõi câu hỏi: ca van 5/2, động cơ giả dừng ở 848180 ───────────────────────────────────────────────────
+// ── 6. (b) Lõi câu hỏi: ca van 5/2 ──────────────────────────────────────────────────────────────────────────────
+// Từ #1551 (L3): động cơ đã ra 6 số mà KẾT QUẢ không còn phân nhóm anh em thì không hỏi lại phân nhóm, kể cả khi đứng ở
+// phân nhóm "… khác". Nên ca van 5/2 xét ở hai thế còn được hỏi: động cơ dừng ở 4 số, hoặc ra 848180 mà còn giữ 848120.
 const H = require('../lib/hoi-theo-so-tay.js');
 const VAN = 'Van điện từ khí nén 5/2 thân nhôm, cổng ren 1/4 inch, cuộn coil 24VDC';
-const q = H.cauPhanNhom6({ h4: '8481', top: '848180', ungVien6: [], text: VAN });
-kiem('ca van 5/2 dừng ở 848180: câu phân nhóm đưa 8481.20 lên đầu, căn cứ là Chú giải phân nhóm 3 Chương 84 (nguyên văn)', Boolean(q) && /^8481\.20/.test(q.options[0]) && q.canCu === 'so-tay' && q.nguon === 'ch84.chuong' && /khái niệm "van dùng trong truyền động dầu thủy lực hoặc truyền động khí nén"/.test(q.trich), JSON.stringify(q || null).slice(0, 400));
-const qNguoc = H.cauPhanNhom6({ h4: '8481', top: '848180', ungVien6: [], text: 'Vòi nước bằng đồng lắp cho chậu rửa' });
-kiem('ca ngược: vòi nước bằng đồng dừng ở 848180 ⇒ câu hỏi không gợi ý 848120 theo mô tả', Boolean(qNguoc) && !qNguoc.phanNhomKhopMoTa.some((x) => x.hs6 === '848120'));
+const dungCanCu = (q) => Boolean(q) && /^8481\.20/.test(q.options[0]) && q.canCu === 'so-tay' && q.nguon === 'ch84.chuong' && /khái niệm "van dùng trong truyền động dầu thủy lực hoặc truyền động khí nén"/.test(q.trich);
+const q4 = H.cauPhanNhom6({ h4: '8481', top: '8481', ungVien6: [], text: VAN });
+kiem('ca van 5/2 động cơ dừng ở 4 số: câu phân nhóm đưa 8481.20 lên đầu, căn cứ là Chú giải phân nhóm 3 Chương 84 (nguyên văn)', dungCanCu(q4), JSON.stringify(q4 || null).slice(0, 400));
+const q = H.cauPhanNhom6({ h4: '8481', top: '848180', ungVien6: ['848120'], text: VAN });
+kiem('ca van 5/2 động cơ ra 848180 còn giữ 848120: câu phân nhóm đưa 8481.20 lên đầu, cùng căn cứ', dungCanCu(q), JSON.stringify(q || null).slice(0, 400));
+kiem('ca van 5/2 động cơ đã chốt 848180, không còn phân nhóm anh em: không hỏi lại phân nhóm (L3, #1551)', H.cauPhanNhom6({ h4: '8481', top: '848180', ungVien6: [], text: VAN }) === null);
+const qNguoc = H.cauPhanNhom6({ h4: '8481', top: '8481', ungVien6: [], text: 'Vòi nước bằng đồng lắp cho chậu rửa' });
+kiem('ca ngược: vòi nước bằng đồng dừng ở 4 số ⇒ câu hỏi không gợi ý 848120 theo mô tả', Boolean(qNguoc) && !qNguoc.phanNhomKhopMoTa.some((x) => x.hs6 === '848120'));
 
 // ── 7. Gói soạn: tất định, đủ thứ một AI không có bối cảnh cần ──────────────────────────────────────────────────
 const g1 = G6.goiSoan('8481'); const g2 = G6.goiSoan('8481');

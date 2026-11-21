@@ -318,3 +318,9 @@ Trường tuỳ chọn mới:
 
 `soat()` (mọi chế độ) trả thêm `maCanhTranh[]` — lấy từ `ketLuan.maTroToi` / `maCoTheTroToi` và các ranh giới còn thiếu, không
 tính thêm gì. `/api/classify`, `/api/describe` và những gì khách nhận từ `phan_loai_hs` **không đổi**.
+
+### 8.5 Giảm báo oan ở K1 và K2 tiền lệ (S-2)
+
+- **K1 `THIEU_THONG_SO_THEO_NHOM`:** là lời khuyên viết mô tả (không phải lỗi tờ khai) nên mang `trangThai: 'DAT'` và trường tuỳ chọn `loiKhuyen: true`, vẫn giữ nguyên `goiYSua` và `evidence[]`. Không đẩy `mucSanSang` lên `NEN_SUA`.
+- **K1 `UNIT_MISSING`:** khi dòng hàng không gửi `donViTinh`, mang `trangThai: 'CHUA_KIEM'` kèm `lyDoChuaKiem` (đồng bộ với K3 `KHONG_KHAI_THUE_SUAT` và K6 `KHONG_CO_TRI_GIA`), không báo `CANH_BAO`.
+- **K2 `TIEN_LE_MO_TA_TUONG_TU_MA_KHAC`:** `lib/evidence-pack.js#tienLeOf` chỉ đưa vào `tienLeMaKhac` các thông báo phân loại Việt Nam (`VN` TB-TCHQ) đã qua đối chiếu cùng loại hàng (`lib/kiem-truoc-chot.js#tienLeNguoc`), loại bỏ nhiễu cầu nối quốc tế; mục K2 kèm trường tuỳ chọn `maDeNghiXem[]`.

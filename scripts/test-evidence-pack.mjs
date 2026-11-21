@@ -204,5 +204,17 @@ const tbCa = ca.filter((c) => c.loaiNguon === 'TB_TCHQ');
 const tbCo = tbCa.filter((c) => one({ maHs: [c.maDung], moTa: c.moTa }).tienLe.trangThai === 'CO_TIEN_LE_KHOP');
 check('ca TB-TCHQ: gói tìm thấy tiền lệ của chính mã đó', tbCo.length === tbCa.length, tbCa.filter((c) => !tbCo.includes(c)).map((c) => c.id));
 
+// ═══ 9. S-2: tienLeMaKhac chỉ lấy TB-TCHQ Việt Nam qua tienLeNguoc, loại nhiễu quốc tế ═══
+const nutVanMoTa = 'Nút vặn điều chỉnh dây giày bằng nhựa, xoay để siết/nới dây, model Li2 L Eyestay Dial A, mới 100%';
+const tlkSai = one({ maHs: ['39269099'], moTa: nutVanMoTa }).tienLe;
+check('S-2 dương tính: mã sai 39269099 có tienLeMaKhac 6317/TB-TCHQ → 39269093', Array.isArray(tlkSai?.tienLeMaKhac) && tlkSai.tienLeMaKhac.some((x) => x.soHieu === '6317/TB-TCHQ' && x.maKetLuan === '39269093'), tlkSai);
+const tlkDung = one({ maHs: ['39269093'], moTa: nutVanMoTa }).tienLe;
+check('S-2 âm tính: mã đúng 39269093 không bật tienLeMaKhac', !tlkDung?.tienLeMaKhac?.length, tlkDung);
+check('S-2 âm tính: ca đúng 84271000 / 85166090 / 12112010 không dính CBP-CROSS-RULING / ABF-TCO ở tienLeMaKhac', [
+  ['84271000', 'Xe nâng người tự hành dạng cần gập, chiều cao làm việc 22 m, động cơ điện chạy ắc quy'],
+  ['85166090', 'Nồi chiên không dầu 5L, 1500W, dùng điện, gia dụng'],
+  ['12112010', 'Rễ cây nhân sâm đã sấy khô được xay ra, đóng gói dạng túi lọc (2 gram/túi, 20 túi/ hộp'],
+].every(([ma, moTa]) => (one({ maHs: [ma], moTa }).tienLe?.tienLeMaKhac || []).every((x) => (!x.quocGia || x.quocGia === 'VN') && !/CBP-CROSS-RULING|ABF-TCO/.test(String(x.loaiNguon || '')))));
+
 console.log(`\n${passed}/${passed + failed} passed`);
 process.exit(failed ? 1 : 0);

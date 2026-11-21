@@ -60,7 +60,7 @@ Bảng này gom mọi việc định kỳ từ các file con, để dựng lịc
 | Khi WCO cập nhật HS (kế tiếp HS 2028) | Rà `GIR_RULES` + chú giải phần/chương | [02](02-gir.md) |
 | **Khi biểu thuế đổi (TT mới)** | Cập nhật `tax.json` + `generatedAt` NGAY, báo ở `llms.txt` — AI ngoài đang tra thẳng, dữ liệu sai lan không thu hồi được | [03](03-ai-entrypoint.md) |
 | Mỗi lần thêm/sửa endpoint | `npm run build` sinh lại `openapi.json`; cập nhật `AGENTS.md` + `llms.txt` | [03](03-ai-entrypoint.md) |
-| Hằng tuần | Xem băng thông + lượt gọi công khai trên Vercel (phát hiện lạm dụng) | [03](03-ai-entrypoint.md) |
+| Hằng tuần | Xem băng thông + lượt gọi công khai trên server riêng (Coolify / Cloudflare) (phát hiện lạm dụng) | [03](03-ai-entrypoint.md) |
 | Hằng tháng | Cập nhật số liệu trong `AGENTS.md` mục 5 + `llms.txt` (benchmark, số verified) | [03](03-ai-entrypoint.md) |
 | Hằng quý | Rà allowlist công khai theo độ chín của dữ liệu | [03](03-ai-entrypoint.md) |
 | **Hằng tuần** | Rà PR + Issue đóng góp mới, trả lời trong 7 ngày — im lặng giết dự án cộng đồng nhanh nhất | [04](04-contribution.md) |

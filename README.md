@@ -41,29 +41,36 @@ openssl rand -hex 32
 | Endpoint | Method | Auth | Description |
 |---|---|---|---|
 | `/api/health` | GET | No | Service health + config checks |
-| `/api/tax?hs=` | GET | Yes | Tariff lookup (camelCase) |
-| `/api/search?q=` | GET | Yes | Keyword / HS search |
-| `/api/match` | POST | No | **[DEPRECATED]** keyword-only match → top-K HS (OZSource ERP). Use `/api/classify` or `/api/suggest` instead — see note below the table |
-| `/api/notes?chapter=` | GET | Yes | Chapter notes |
-| `/api/conflicts?hs=` | GET | Yes | HS conflict/risk details |
-| `/api/precedents?hs=` | GET | Yes | TB-TCHQ precedent list by HS |
+| `/api/tax?hs=` | GET | No (open) | Tariff lookup (camelCase; per `lib/public-access.js`) |
+| `/api/search?q=` | GET | No (open) | Keyword / HS search |
+| `/api/classify` | POST | No (open) | AI HS classification (động cơ hai vòng `lib/engine-loop.js`, trả `status`, `nextAction`, `canCuPhapLy`, `girRulesApplied[]`) |
+| `/api/identify` | POST | Yes | Định danh hàng hoá (hàng là gì), không ra mã HS, không tự suy nhóm |
+| `/api/match` | POST | No (open) | **[DEPRECATED]** keyword-only match → top-K HS (OZSource ERP). Use `/api/classify` or `/api/suggest` instead — see note below the table |
+| `/api/notes?chapter=` | GET | No (open) | Chapter notes |
+| `/api/conflicts?hs=` | GET | No (open) | HS conflict/risk details |
+| `/api/precedents?hs=` | GET | No (open) | TB-TCHQ precedent list by HS |
+| `/api/legal-docs` | GET | No (open) | Thư viện văn bản pháp luật (`?chapter=&status=&issuer=` hoặc `/api/legal-docs/:code`; rewrite → `/api/dataset?resource=legal_docs`) |
+| `/api/wco-opinions` | GET | No (open) | Ý kiến phân loại WCO Compendium 2022 (`?hs=` hoặc `&n=`, kèm `banQuyen`; rewrite → `/api/dataset?resource=wco_opinions`) |
 | `/api/confusion-pairs?q=\|hs=\|id=` | GET | Yes | Từ điển mâu thuẫn HS: mặt hàng DN hay khai mã A, HQ hay ấn định mã B + tiêu chí phân biệt (rewrite → `/api/dataset?resource=confusion_pairs`); `/api/suggest` và `/api/search` trả `confusionAlerts[]` |
-| `/api/suggest` | POST | No (open) | AI HS suggestions (Gemini) |
-| `/api/describe` | POST | No (open) | AI customs description (Gemini) — auto-fit 200 ký tự ECUS, xuất xứ + tình trạng luôn ở cuối; trả `descriptionMeta {length, truncated, dropped, fullText}`. Khi LLM lỗi: **không fail-silent** — trả `degraded:true` + `llmError {code,message,retryable}` + warning `DESCRIPTION_DEGRADED` (mô tả là fallback context thô) |
+| `/api/suggest` | POST | No (open) | AI HS suggestions (chuỗi LLM — MiniMax chính, xem CLAUDE.md) |
+| `/api/describe` | POST | No (open) | AI customs description (chuỗi LLM — MiniMax chính, xem CLAUDE.md) — auto-fit 200 ký tự ECUS, xuất xứ + tình trạng luôn ở cuối; trả `descriptionMeta {length, truncated, dropped, fullText}`. Khi LLM lỗi: **không fail-silent** — trả `degraded:true` + `llmError {code,message,retryable}` + warning `DESCRIPTION_DEGRADED` (mô tả là fallback context thô) |
+| `/api/evidence-pack` | POST | Yes | Gói căn cứ soát/giải trình cho 1–2 mã HS, không gọi LLM (rewrite → `/api/dataset?resource=evidence_pack`) |
+| `/api/declaration-check` | POST | Yes | Soát tờ khai K1–K7, không gọi LLM trừ khi `kiemMa: true` (rewrite → `/api/classify?mode=check`) |
+| `/api/dispute-draft` | POST | Yes | Soạn hồ sơ giải trình tranh chấp mã HS, luôn `withPrivateData` (rewrite → `/api/describe?mode=dispute`) |
 | `/api/feedback` | POST | Yes | Capture director override feedback |
 | `/api/so-tay-questions` | POST | No (open) | Câu hỏi phân loại **tất định** (không AI, chỉ đọc sổ tay tĩnh) cho bước "Oz rà soát" của ERP/Cổng OZ: body `{hs, productText?, facts?}`. Mỗi câu có `loai` — `DONG_BIEU` (đặc điểm chốt đuôi 8 số, có `trich` dòng biểu + `tacDongThue {mfnMin, mfnMax, chenh, acftaKhac, dong[]}` = chênh MFN giữa các dòng mà câu quyết định) · `CONG` (cổng sổ tay, `askStaff`) · `TT39` (trường khai chung). Máy **tự đọc `productText` trước khi hỏi** (#411, 24/10/2026): câu đã có trong mô tả ("PN16", "inox 304", "25 mm", "380V", "3 pha"…) không trả về, câu TT39 còn lại `required:false`; không gửi `productText` → như cũ. Nhóm chưa có sổ tay → `coSoTay:false` |
-| `/api/kg_chapter?chapter=` | GET | Yes | List HS codes in chapter |
-| `/api/kg_stats` | GET | Yes | Dataset overview (rewrite → `/api/dataset?resource=kg_stats`) |
+| `/api/kg_chapter?chapter=` | GET | No (open) | List HS codes in chapter |
+| `/api/kg_stats` | GET | No (open) | Dataset overview (rewrite → `/api/dataset?resource=kg_stats`) |
 | `/api/versions` | GET | Yes | Tariff snapshot index (rewrite → `/api/tariff?op=versions`) |
 | `/api/version?id=` | GET | Yes | Snapshot metadata (rewrite → `/api/tariff?op=detail`) |
 | `/api/version/diff?from=&to=` | GET | Yes | Diff snapshots (rewrite → `/api/tariff?op=diff`) |
 | `/api/admin/overview` | GET | Yes | Admin KPI JSON (rewrite → `/api/dataset?resource=admin_overview`) |
 | `/api/oz-precedents?hs=` | GET | Yes | Oz historical declarations by HS code |
 | `/api/oz-precedents?q=` | GET | Yes | Oz precedents semantic search (needs GEMINI_API_KEY) |
-| `/api/products?hs=` | GET | Yes | Sản phẩm ví dụ (Shopee/Taobao) cho mã HS Loại khác — 11,072 sản phẩm / 3,383 mã |
-| `/api/products?hs=A,B` | GET | Yes | Batch tra nhiều mã cùng lúc |
-| `/api/products?stats=1` | GET | Yes | Tổng quan corpus + priority queue đào sâu |
-| `/api/data-quality` | GET | Yes | Data quality report — anomaly tax.json + enriched (`?category=missingVat` lọc 1 nhóm; regen: `npm run data:quality-report`) |
+| `/api/products?hs=` | GET | No (open) | Sản phẩm ví dụ (Shopee/Taobao) cho mã HS Loại khác — 11,072 sản phẩm / 3,383 mã |
+| `/api/products?hs=A,B` | GET | No (open) | Batch tra nhiều mã cùng lúc |
+| `/api/products?stats=1` | GET | No (open) | Tổng quan corpus + priority queue đào sâu |
+| `/api/data-quality` | GET | No (open) | Data quality report — anomaly tax.json + enriched (`?category=missingVat` lọc 1 nhóm; regen: `npm run data:quality-report`) |
 | `/api/trademark?q=` | GET | Yes | Trademark Watch — cảnh báo nhãn hiệu (VN nhập + TQ xuất); `&origin=CN` bật trục GACC (rewrite → `/api/dataset?resource=trademark`) |
 
 > **`/api/match` is deprecated** (responses carry `Deprecation: true` and `Link: </api/classify>; rel="successor-version"`). It only matches keywords and reports a fixed confidence of ~0.94 even when wrong (e.g. a query containing "người" returns foods and swimwear). Do not use it to choose an HS code: use `POST /api/classify` (decision tree, returns `status` + `nextAction`) or `POST /api/suggest` (AI rerank with GIR audit trail). It stays open only so existing callers do not break (issues #170, #174).
@@ -89,7 +96,7 @@ Data & ingest:
 - Admin UI: `/admin/trademark.html` (cột rủi ro VN + cột xuất khẩu TQ, ô nhập Xuất xứ).
 - ⚠️ Tư vấn tham khảo, **không phải phán quyết hải quan**; entry `verified:false` là seed cần xác minh tại iplib.noip.gov.vn / WIPO / danh sách GACC.
 
-This project runs as a plain Node process (`server.js`) on Oz's own server; a request may run up to 300s. Several “logical” endpoints are still consolidated into **`/api/dataset`** and **`/api/tariff`** with `resource` / `op` query params — an intentional choice for fewer cold starts and a tidier repo; `vercel.json` rewrites preserve the public URLs above.
+This project runs as a plain Node process (`server.js`) on Oz's own server; a request may run up to 300s. Several “logical” endpoints are still consolidated into **`/api/dataset`** and **`/api/tariff`** with `resource` / `op` query params — an intentional choice for fewer cold starts and a tidier repo; `routes.json` rewrites preserve the public URLs above.
 
 ## Admin dashboard
 
@@ -100,19 +107,19 @@ This project runs as a plain Node process (`server.js`) on Oz's own server; a re
 ## Examples
 
 ```bash
-TOKEN=your_token
-
+# Public read & AI endpoints (no Bearer token required)
 curl https://hs-kb.uythacnhapkhau.com/api/health
 
-curl -H "Authorization: Bearer $TOKEN" \
-  "https://hs-kb.uythacnhapkhau.com/api/tax?hs=85171300"
+curl "https://hs-kb.uythacnhapkhau.com/api/tax?hs=85171300"
 
-curl -H "Authorization: Bearer $TOKEN" \
-  "https://hs-kb.uythacnhapkhau.com/api/search?q=điện+thoại&limit=5"
+curl "https://hs-kb.uythacnhapkhau.com/api/search?q=điện+thoại&limit=5"
 
-curl -X POST -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
+curl -X POST -H "Content-Type: application/json" \
   -d '{"description":"iPhone 15 Pro Max 256GB"}' \
   https://hs-kb.uythacnhapkhau.com/api/suggest
+
+# Bearer token is only required for admin / write / private endpoints:
+# curl -H "Authorization: Bearer $HS_API_TOKEN" https://hs-kb.uythacnhapkhau.com/api/admin/overview
 ```
 
 ## Response shape (ERP contract)
@@ -130,9 +137,9 @@ Tax/search responses use camelCase fields expected by `erp-xnk` client:
 - `data/notes.json` — chapter notes
 - `data/tax-enriched.json` — optional Gemini-enriched policy structure (see below)
 - `data/explanatory-notes.json` — Level 2 explanatory notes by HS (from legacy import)
-- `data/precedents.json` — TB-TCHQ precedents by HS: 3.033 notices / 1.081 codes (legacy import + `data/community/tb-tchq/` merged via `npm run data:merge-community`; audit with `node scripts/audit-community-precedents.mjs`)
+- `data/precedents.json` — TB-TCHQ precedents by HS: 4.908 records / 1.250 code keys (1.099 codes in current tariff) (legacy import + `data/community/tb-tchq/` merged via `npm run data:merge-community`; audit with `node scripts/audit-community-precedents.mjs`)
 - `data/conflicts.json` — Level 5 conflict/risk hints by HS (from legacy import)
-- `data/feedback.jsonl` — feedback events (append-only; may not persist on serverless cold paths)
+- `data/feedback.jsonl` — feedback events (append-only; runs on Oz's own `server.js`, Postgres optional)
 - `data/versions/index.json` — tariff version catalog (`current` + metadata)
 - `data/versions/tax-v2026-01-01-base.json` — baseline snapshot (same row set as `tax.json` at import)
 

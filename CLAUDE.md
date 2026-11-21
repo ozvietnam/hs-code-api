@@ -19,7 +19,7 @@ Service HTTP API cho ERP `erp-xnk` gọi sang để:
 
 - Node.js handler kiểu serverless (`api/*.js`) chạy bằng `server.js` trên server riêng — KHÔNG dùng Next.js framework
 - Data: bảng tra **TĨNH** (tax.json, notes, precedents… — chỉ đọc) giữ dạng JSON files trong `data/` (nạp nhanh, versioned bằng git). **Dữ liệu GHI LÚC CHẠY** (kho tiền lệ, feedback, log) **ĐƯỢC dùng database** (Postgres) — rào "no DB" cũ chỉ áp cho thời Vercel serverless (tránh cold start chậm); nay chạy `server.js` server riêng nên DB thường trú OK. CEO chốt 12/10/2026 (#237, #255-B3). Ngoại lệ chỉ đọc: Danh mục rủi ro phân loại QĐ 2079/QĐ-TCHQ nằm ở `data/rui-ro-phan-loai/qd-2079.json` (tĩnh, công khai) và có thể có thêm bảng Postgres chỉ đọc (#655).
-- AI: rerank + sinh mô tả qua chuỗi LLM (xem dòng dưới; MiniMax chính). Semantic search bằng embedding **chưa bật ở runtime** — ghi "Gemini Embedding 001" trước đây là SAI; #237 sẽ đưa bge-m3 cục bộ vào, khi đó cập nhật lại.
+- AI: rerank + sinh mô tả qua chuỗi LLM (xem dòng dưới; MiniMax chính). Semantic search bằng embedding **chưa bật ở runtime** — ghi "Gemini Embedding 001" trước đây là SAI; tầng ứng viên embedding cục bộ (`lib/embed-pool.js`, `Xenova/multilingual-e5-small`, index `data/gd0/index-e5-small.json`) đi sau cờ `HS_EMBED_POOL` (mặc định TẮT, xem `data/luat/bang-co.json`).
 - Chuỗi LLM (`lib/llm-tier.js` → `lib/llm.mjs`, CEO chốt 04/10/2026, thêm DeepSeek 17/10/2026): **MiniMax gọi thẳng
   (gói trả phí, `MiniMax-M2.7-highspeed`)** → DeepSeek gọi thẳng (`DEEPSEEK_API_KEY`, chỉ lượt công khai) → Hermes → OpenRouter → Gemini miễn phí
   (`GEMINI_FREE_KEYS`, chỉ dự phòng) → khóa Gemini trả phí khi tier premium, và (tạm thời, CEO chốt 30/10/2026, #578,
@@ -53,23 +53,23 @@ api/               # 15 file handler.
                    # Nhiều URL "logic" khác được gộp vào dataset.js/tariff.js
                    # qua rewrite trong routes.json — KHÔNG có file riêng.
   health.js          # Public — health check
-  tax.js             # Bearer — tra thuế
+  tax.js             # Mở đọc (lib/public-access.js) — tra thuế
   search.js          # GET mở; /api/match (?mode=match) cũng mở (không token)
   suggest.js         # Mở (không token) — AI suggest
-  describe.js        # Mở (không token) — AI describe
-  classify.js        # Mở (không token) — phân loại; máy thật chạy động cơ hai vòng lib/engine-loop.js (HS_CLASSIFY_ENGINE=loop)
+  describe.js        # Mở (không token) — AI describe; cũng phục vụ /api/dispute-draft (?mode=dispute, Bearer)
+  classify.js        # Mở (không token) — phân loại; máy thật chạy động cơ hai vòng lib/engine-loop.js (HS_CLASSIFY_ENGINE=loop); cũng phục vụ /api/declaration-check (?mode=check, Bearer)
   identify.js        # Bearer — định danh hàng (hàng là gì), không ra mã, không tự suy nhóm
   so-tay-questions.js # Câu hỏi tất định theo sổ tay nhóm + sổ ranh giới PN6 (lõi câu hỏi)
   destination-facts.js # Tra cứu dữ kiện tham chiếu theo điểm đến (data/destination-facts.json)
   feedback.js        # Bearer — capture director feedback
-  notes.js           # Bearer — chú giải chương
-  kg_chapter.js      # Bearer — liệt kê HS trong chương
-  customs-types.js   # Bearer — mã loại hình XNK
+  notes.js           # Mở đọc (lib/public-access.js) — chú giải chương
+  kg_chapter.js      # Mở đọc (lib/public-access.js) — liệt kê HS trong chương
+  customs-types.js   # Mở đọc (lib/public-access.js) — mã loại hình XNK
   dataset.js         # Bearer (trừ allowlist công khai) — gộp: conflicts, precedents, ministries, products, rui-ro-phan-loai,
-                     #   legal-docs, trademark, admin/overview, kpi, data-quality...
+                     #   legal-docs, wco-opinions, evidence-pack (?resource=evidence_pack, Bearer), trademark, admin/overview, kpi, data-quality...
   tariff.js          # Bearer — gộp: versions, version/diff, admin/update, admin/revert
 
-lib/               # Business logic (~50 module)
+lib/               # Business logic (191 tệp JS, gồm lib/ho-so/, ...)
   data.js, auth.js, cors.js, gemini.js, llm-tier.js, llm.mjs
   data-paths.js           # phân giải đường dẫn data/ — HS_DATA_DIR để test cách ly
   hs-tree.js              # LÕI: cây HS theo CHỮ SỐ của mã (phần→chương→nhóm→phân nhóm→tiêu đề QG→lá), #236
