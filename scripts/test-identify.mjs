@@ -5,7 +5,7 @@ const require = createRequire(import.meta.url);
 const llmTier = require('../lib/llm-tier.js');
 const { isPrivate } = require('../lib/llm-privacy.js');
 let script = []; let calls = []; let thayRiengTu = null;
-llmTier.callLLMJson = async (system, user) => { thayRiengTu = isPrivate(); calls.push({ system: String(system), user }); const n = script.shift(); if (n instanceof Error) throw n; return { json: typeof n === 'function' ? n(user) : n, provider: 'stub', model: 'stub' }; };
+llmTier.callLLMJson = async (system, user, llmOpts) => { thayRiengTu = isPrivate(); calls.push({ system: String(system), user, opts: llmOpts || {} }); const n = script.shift(); if (n instanceof Error) throw n; return { json: typeof n === 'function' ? n(user) : n, provider: 'stub', model: 'stub' }; };
 console.error = () => {};
 
 // #334: identify giờ xác minh nguồn bằng fetch — test cần fetch giả
@@ -297,7 +297,7 @@ delete process.env.HS_SERVICE_TOKENS;
 
   // 11b. GA22: khớp model ngắn cần RANH GIỚI TỪ + NGỮ CẢNH (hãng / danh từ chính); không bao giờ xét URL.
   const NC = tuNguCanh({ tenHang: 'Máy nén khí trục vít Atlas Copco GA22', thuongHieu: 'Atlas Copco', model: 'GA22' });
-  check('GA22 · ngữ cảnh = hãng + danh từ chính của tên hàng', NC.includes('atlas copco') && NC.includes('may nen'), JSON.stringify(NC));
+  check('GA22 · ngữ cảnh = hãng + danh từ chính của tên hàng', NC.includes('atlas copco') && NC.includes('máy nén'), JSON.stringify(NC));
   check('GA22 · trang bách khoa về khí cầu KHÔNG khớp (có "GA22" nhưng không có hãng/danh từ chính)', khopModel('GA22', ['GA22 – Wikipedia', 'GA22 là một khí cầu trinh sát do Goodyear chế tạo năm 1930'], NC) === false);
   check('GA22 · trang trò chơi KHÔNG khớp', khopModel('GA22', ['GA22 Games - chơi game online', 'ga22.games cổng game đổi thưởng GA22 uy tín'], NC) === false);
   check('GA22 · trang atlascopco có "GA22" + "máy nén" ĐƯỢC tính (kể cả viết "GA 22")', khopModel('GA22', ['Atlas Copco', 'Máy nén khí trục vít GA22 công suất 22 kW'], NC) === true && khopModel('GA22', ['GA 22 oil-injected screw compressor – Atlas Copco'], NC) === true && khopModel('GA22', ['máy nén khí GA-22'], tuNguCanh({ tenHang: 'Máy nén khí GA22', model: 'GA22' })) === true);
@@ -437,12 +437,87 @@ delete process.env.HS_SERVICE_TOKENS;
   r84 = await identify({ tenHang: 'máy biến tần FR-D720-0.75K', model: 'FR-D720-0.75K' }, { fetchImpl: FETCH_MOCK_404 });
   check('biến tần · nhóm 8504 ⇒ lượt kiểm ranh giới nhận sổ tay 8504, câu hỏi theo sổ tay', r84.frame.chuong === '85' && r84.frame.nhom === '8504' && calls.at(-1).user.includes('SỔ TAY nhóm 8504') && r84.canCuCauHoi === 'so-tay' && r84.questions.every((q) => q.canCu), JSON.stringify(r84.questions.map((q) => [q.key, q.canCu])));
 
+  // ── 12. Soát độc lập PR #1517 ──
+  // 12.1 HẠN TỔNG: mọi lượt LLM nhận hanChotMs tuyệt đối; lượt 2 tối đa 15 giây và chỉ dùng phần còn lại; hết hạn ⇒ bỏ lượt 2, rơi êm.
+  let tBd = Date.now();
+  script = [LUOT1, { nhom4: '8537', phanBiet: [] }];
+  rP = await identify(PLC, { fetchImpl: FETCH_MOCK_404 });
+  const [o1, o2] = [calls.at(-2).opts, calls.at(-1).opts];
+  check('hạn tổng · lượt 1 có hanChotMs ≈ bắt đầu + 70 giây (80 − 10 dành cho xác minh), timeoutMs ≤ 45 giây', o1.hanChotMs >= tBd + 69000 && o1.hanChotMs <= Date.now() + 70000 && o1.timeoutMs <= 45000, JSON.stringify([o1.hanChotMs - tBd, o1.timeoutMs]));
+  check('hạn tổng · lượt 2 timeoutMs ≤ 15 giây và hanChotMs của riêng nó ≤ hạn lượt 1', o2.timeoutMs <= 15000 && o2.timeoutMs >= 3000 && o2.hanChotMs <= o1.hanChotMs && o2.hanChotMs <= Date.now() + 15000, JSON.stringify([o2.timeoutMs, o2.hanChotMs - tBd]));
+  soLuot = calls.length;
+  script = [LUOT1, { nhom4: '9032', phanBiet: [] }];
+  rP = await identify(PLC, { fetchImpl: FETCH_MOCK_404, hanTongMs: 10500 }); // còn 0,5 giây cho LLM sau khi trừ phần xác minh
+  check('hạn tổng · không còn đủ thời gian ⇒ KHÔNG gọi lượt 2, giữ nhóm, ghi BO_QUA, vẫn hỏi đủ câu phân biệt', calls.length - soLuot === 1 && rP.frame.nhom === '8537' && rP.nhomUngVien.kiemRanhGioi.ketQua === 'BO_QUA' && !rP.degraded && rP.questions.filter((q) => q.key.startsWith('phanBiet_8537_')).length === 5, JSON.stringify([calls.length - soLuot, rP.nhomUngVien]));
+  script = [];
+
+  // 12.2 TẦNG HỒ SƠ: opts.boSoTay ⇒ bỏ lượt LLM thứ hai + nhánh sổ tay; lib/ho-so/nghien-cuu.js truyền cờ này.
+  soLuot = calls.length;
+  script = [LUOT1];
+  rP = await identify(PLC, { fetchImpl: FETCH_MOCK_404, boSoTay: true });
+  check('boSoTay · 1 lượt LLM, không frame.nhom, không nhomUngVien, câu hỏi theo bảng chương', calls.length - soLuot === 1 && !('nhom' in rP.frame) && !('nhomUngVien' in rP) && rP.canCuCauHoi === 'bang-chuong');
+  {
+    const fs = require('fs');
+    const { nghienCuu } = require('../lib/ho-so/nghien-cuu.js');
+    const nguonTep = fs.readFileSync(new URL('../lib/ho-so/nghien-cuu.js', import.meta.url), 'utf8');
+    check('boSoTay · lib/ho-so/nghien-cuu.js gọi identify với boSoTay: true', typeof nghienCuu === 'function' && /identify\(\{[^\n]*\}, \{ boSoTay: true,/.test(nguonTep));
+  }
+
+  // 12.3 MODEL NGẮN: ngữ cảnh khớp theo TỪNG từ Latin (không cần liền nhau); cụm tiếng Việt có dấu vẫn phải đủ cụm.
+  check('model ngắn · khopModel("1214C", "Siemens SIMATIC S7-1200 CPU 1214C DC/DC/DC", ["plc cpu"]) = true', khopModel('1214C', 'Siemens SIMATIC S7-1200 CPU 1214C DC/DC/DC', ['plc cpu']) === true);
+  const NC_PLC = tuNguCanh({ tenHang: 'Bộ lập trình PLC Siemens SIMATIC S7-1200 CPU 1214C', model: '1214C', thuongHieu: 'Siemens', tenKhac: ['programmable logic controller'] });
+  check('model ngắn · ngữ cảnh gồm hãng + từ khoá Latin của tên hàng + tên tiếng Anh lượt 1 (plc, cpu, simatic, controller)', ['siemens', 'plc', 'cpu', 'simatic', 'controller'].every((w) => NC_PLC.includes(w)) && !NC_PLC.includes('1214c'), JSON.stringify(NC_PLC));
+  check('model ngắn · trang tiếng Anh chỉ có tên dòng sản phẩm vẫn khớp; trang không có từ ngữ cảnh nào thì không', khopModel('1214C', 'SIMATIC S7-1200, 1214C compact unit', NC_PLC) === true && khopModel('1214C', 'Part number 1214C in stock, ships today', NC_PLC) === false);
+  check('model ngắn · một âm tiết Việt rời ("khí" trong "khí cầu") KHÔNG đủ làm ngữ cảnh; từ rỗng tiếng Anh ("the", "for") không tính', khopModel('GA22', ['GA22 là một khí cầu trinh sát'], tuNguCanh({ tenHang: 'Máy nén khí trục vít GA22', model: 'GA22' })) === false && khopModel('GA22', ['the GA22 for sale'], ['the for']) === false);
+  const trangKhongNc = await xacMinh({ url: 'https://tro-choi.example.org/ga22', trich: 'không có câu này' }, 'GA22', async () => ({ ok: true, status: 200, arrayBuffer: async () => Buffer.from('ga22 game bài') }));
+  check('model ngắn · bên gọi KHÔNG truyền nguCanh (tầng hồ sơ) ⇒ đúng luật CŨ: chứa chuỗi là tính', trangKhongNc.modelCoMat === true && trangKhongNc.modelChuanCoMat === true && trangRac.modelCoMat === false, JSON.stringify([trangKhongNc.modelCoMat, trangKhongNc.modelChuanCoMat]));
+
+  // 12.4 CHƯƠNG KHÔNG CÓ KHUNG: giữ chương LLM chọn (01–97), khung rỗng, không hỏi câu "chưa xác định".
+  script = [{ chuong: '87', truong: { modelNumber: 'X1' }, nguon: [] }];
+  rP = await identify({ tenHang: 'Xe nâng tay 2,5 tấn X1' }, { fetchImpl: FETCH_MOCK_404 });
+  const { frameFor: ff } = require('../lib/attribute-frames.js');
+  check('chương không có khung (87) · giữ frame.chuong="87", không chuaXacDinh, không câu hỏi gây hiểu nhầm', ff('87') === null ? (rP.frame.chuong === '87' && !rP.chuaXacDinh && rP.questions.length === 0 && rP.thieuTruong.length === 0 && rP.canCuCauHoi === 'khong-co-khung' && rP.frame.truong.modelNumber === 'X1') : rP.frame.chuong === '87', JSON.stringify([ff('87') === null, rP.frame, rP.questions, rP.canCuCauHoi]));
+  script = [{ chuong: '99', truong: {}, nguon: [] }];
+  rP = await identify({ tenHang: 'ABC-123456-XYZ' }, { fetchImpl: FETCH_MOCK_404 });
+  check('chương ngoài 01–97 (99) ⇒ vẫn là chưa xác định', rP.frame.chuong === null && rP.chuaXacDinh === true);
+
+  // 12.6 + 12.7: sổ tay hỏng ⇒ frame không còn nhóm; câu PN6 chỉ khi còn ≥2 dòng khả dĩ; câu askStaff không phải câu hỏi khách.
+  {
+    const G = require('../lib/so-tay-gates.js');
+    const goc = { cauHoiSoTay: G.cauHoiSoTay, dongConKhaDi: G.dongConKhaDi };
+    const LUOT_PN6 = { ...LUOT1, pn6: '853710' };
+    const kd = G.dongConKhaDi('853710', '');
+    check('dongConKhaDi(853710) · chưa có dữ kiện ⇒ ≥2 dòng khả dĩ và có fact còn mở', kd.khaDi.length >= 2 && kd.factConMo.size >= 1 && kd.khaDi.every((h) => /^853710\d\d$/.test(h)), JSON.stringify([kd.khaDi.length, [...kd.factConMo]]));
+    script = [LUOT_PN6, { nhom4: '8537', phanBiet: [] }];
+    rP = await identify(PLC, { fetchImpl: FETCH_MOCK_404 });
+    const nPn6 = rP.questions.filter((q) => q.canCu === 'ranh-gioi-pn6');
+    check('câu PN6 · tối đa 2 câu, fact nào cũng còn mở trên một dòng khả dĩ', nPn6.length >= 1 && nPn6.length <= 2 && nPn6.every((q) => kd.factConMo.has(q.key)), JSON.stringify(nPn6.map((q) => q.key)));
+    G.dongConKhaDi = () => ({ khaDi: ['85371019'], factConMo: new Set(['chiHoacChuYeu', 'dongDien']) });
+    script = [LUOT_PN6, { nhom4: '8537', phanBiet: [] }];
+    rP = await identify(PLC, { fetchImpl: FETCH_MOCK_404 });
+    check('câu PN6 · chỉ còn 1 dòng khả dĩ ⇒ KHÔNG hỏi câu điều kiện dòng nào', !rP.questions.some((q) => q.canCu === 'ranh-gioi-pn6') && rP.frame.pn6 === '853710', JSON.stringify(rP.questions.map((q) => q.key)));
+    G.dongConKhaDi = goc.dongConKhaDi;
+    G.cauHoiSoTay = (a) => { const k = goc.cauHoiSoTay(a); return { ...k, questions: [...k.questions, { key: 'gate_loaiTru_9032', questionVi: 'Hàng có thuộc loại trừ sang 90.32 không?', type: 'choice', options: ['Có', 'Không', 'Chưa rõ'], required: false, askStaff: true, loai: 'CONG', nguon: 'nhom8537.nhom', trich: 'x' }] }; };
+    script = [LUOT_PN6, { nhom4: '8537', phanBiet: [] }];
+    rP = await identify(PLC, { fetchImpl: FETCH_MOCK_404 });
+    check('câu cổng sổ tay (askStaff) · KHÔNG nằm trong questions của khách, trả riêng ở cauHoiChuyenVien', !rP.questions.some((q) => q.askStaff || q.key.startsWith('gate_')) && rP.cauHoiChuyenVien?.length === 1 && rP.cauHoiChuyenVien[0].key === 'gate_loaiTru_9032', JSON.stringify([rP.questions.map((q) => q.key), rP.cauHoiChuyenVien]));
+    G.cauHoiSoTay = () => { throw new Error('sổ tay hỏng'); };
+    script = [LUOT_PN6, { nhom4: '8537', phanBiet: [] }];
+    rP = await identify(PLC, { fetchImpl: FETCH_MOCK_404 });
+    check('sổ tay hỏng lúc sinh câu hỏi ⇒ rơi về bảng chương VÀ frame không còn nhom/pn6, không nhomUngVien', !rP.degraded && rP.canCuCauHoi === 'bang-chuong' && !('nhom' in rP.frame) && !('pn6' in rP.frame) && !('nhomUngVien' in rP) && rP.frame.chuong === '85', JSON.stringify([rP.canCuCauHoi, rP.frame]));
+    G.cauHoiSoTay = goc.cauHoiSoTay;
+  }
+  // 12.7b frame.truong đã trả lời (điện áp) ⇒ không hỏi câu điều kiện dòng trùng ý.
+  script = [{ ...LUOT1, pn6: '853710', truong: { ...TRUONG_PLC, voltage: '24 V DC', currentRating: '0,5 A' } }, { nhom4: '8537', phanBiet: [] }];
+  rP = await identify(PLC, { fetchImpl: FETCH_MOCK_404 });
+  check('frame.truong đã có điện áp / dòng định mức ⇒ không hỏi dienAp / dongDien của PN6', !rP.questions.some((q) => ['dienAp', 'dongDien', 'voltage', 'currentRating'].includes(q.key)), JSON.stringify(rP.questions.map((q) => q.key)));
+
   // 11h. ReDoS (CLAUDE.md quy tắc 6b): biểu thức khớp model ngắn + ngữ cảnh trên ~40.000 từ lặp < 2 giây, hai chiều.
   const tRe = Date.now();
   const lapTrung = khopModel('GA22', ['máy nén GA22 '.repeat(40000)], NC);
   const lapTruot = khopModel('GA22', ['XGA22FF may-nen '.repeat(40000)], NC);
   const ncDai = tuNguCanh({ tenHang: 'máy nén khí '.repeat(40000), model: 'GA22', thuongHieu: 'Atlas Copco' });
-  check('ReDoS · khopModel/tuNguCanh trên 40.000 từ lặp < 2 giây; bắt đúng và không bắt nhầm', Date.now() - tRe < 2000 && lapTrung === true && lapTruot === false && ncDai.includes('may nen'), `ms=${Date.now() - tRe}`);
+  check('ReDoS · khopModel/tuNguCanh trên 40.000 từ lặp < 2 giây; bắt đúng và không bắt nhầm', Date.now() - tRe < 2000 && lapTrung === true && lapTruot === false && ncDai.includes('máy nén'), `ms=${Date.now() - tRe}`);
 
   if (envCu.web === undefined) delete process.env.HS_DINH_DANH_TIM_WEB; else process.env.HS_DINH_DANH_TIM_WEB = envCu.web;
   if (envCu.st === undefined) delete process.env.HS_DINH_DANH_SO_TAY; else process.env.HS_DINH_DANH_SO_TAY = envCu.st;
