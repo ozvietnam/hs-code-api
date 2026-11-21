@@ -254,32 +254,17 @@
     },
     {
       "hs": "82119321",
-      "dieuKien": "chất liệu (theo vị trí): kim loại",
-      "nguon": "tax.82119321",
-      "trich": "82119321 - - - - Có cán bằng kim loại cơ bản",
-      "nguonLoai": "CLAUDE_DUYET",
-      "loaiKhac": false,
-      "dieuKienSo": [
-        {
-          "fact": "chatLieu",
-          "op": "LA",
-          "value": "kim loại"
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude:tho-hs-01:20261121#soat-821193",
-          "ngay": "2026-11-21",
-          "bam": "53d307a9c0e43bd15d088e9b4772fd694667e5a5ab86cb0838b41512d666859e"
-        }
-      },
+      "dieuKien": "Có cán bằng kim loại cơ bản",
       "tieuChi": {
         "fact": "can_dao_bang_kim_loai_co_ban",
         "op": "=",
         "value": true,
         "donVi": null
-      }
+      },
+      "nguon": "tax.82119321",
+      "trich": "82119321 - - - - Có cán bằng kim loại cơ bản",
+      "nguonLoai": "AI_DA_KIEM",
+      "loaiKhac": false
     },
     {
       "hs": "82119329",
@@ -306,74 +291,12 @@
     },
     {
       "hs": "82119330",
-      "dieuKien": "(tên loại hàng: Dao bấm tự động hoặc dao gấp) hoặc (tên loại hàng: dao nhíp và kích thước (dài x rộng x cao) >= 15 cm)",
+      "dieuKien": "Dao bấm tự động hoặc dao gấp; dao nhíp có lưỡi dao dài 15 cm trở lên",
+      "tieuChi": null,
       "nguon": "tax.82119330",
       "trich": "82119330 - - - Dao bấm tự động hoặc dao gấp; dao nhíp có lưỡi dao dài 15 cm trở lên ",
-      "nguonLoai": "CLAUDE_DUYET",
-      "loaiKhac": false,
-      "dieuKienSo": [
-        {
-          "op": "HOAC",
-          "phuongAn": [
-            [
-              {
-                "fact": "tenLoai",
-                "op": "TEN_LOAI",
-                "value": [
-                  "Dao bấm tự động",
-                  "dao gấp"
-                ]
-              }
-            ],
-            [
-              {
-                "fact": "tenLoai",
-                "op": "TEN_LOAI",
-                "value": "dao nhíp"
-              },
-              {
-                "fact": "kichThuoc",
-                "op": ">=",
-                "value": 15,
-                "donVi": "cm"
-              }
-            ]
-          ]
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude:tho-hs-01:20261121#soat-821193",
-          "ngay": "2026-11-21",
-          "bam": "53d307a9c0e43bd15d088e9b4772fd694667e5a5ab86cb0838b41512d666859e"
-        }
-      },
-      "chongLanTruc": {
-        "pn6": "821193",
-        "nhanh": [
-          "8211932",
-          "82119330"
-        ],
-        "truc": {
-          "8211932": "DAC_DIEM",
-          "82119330": "TEN_LOAI"
-        },
-        "cauHoiPhanBiet": "Dao này là loại sử dụng trong nông nghiệp, làm vườn hoặc lâm nghiệp (8211932) hay là dao bấm tự động, dao gấp hoặc dao nhíp có lưỡi dao dài 15 cm trở lên (82119330)?",
-        "trich": {
-          "8211932": "Loại sử dụng trong nông nghiệp, làm vườn hoặc lâm nghiệp",
-          "82119330": "Dao bấm tự động hoặc dao gấp; dao nhíp có lưỡi dao dài 15 cm trở lên"
-        },
-        "phanXu": null,
-        "ranhGioi": {
-          "phienBan": "ranh-gioi@1",
-          "duyet": {
-            "phien": "claude:tho-hs-01:20261121#soat-821193",
-            "ngay": "2026-11-21",
-            "bam": "53d307a9c0e43bd15d088e9b4772fd694667e5a5ab86cb0838b41512d666859e"
-          }
-        }
-      }
+      "nguonLoai": "AI_DA_KIEM",
+      "loaiKhac": false
     },
     {
       "hs": "82119390",
@@ -679,52 +602,5 @@
     "dat": 32,
     "loai": 0,
     "nguonBiCat": []
-  },
-  "dieuKienNut": [
-    {
-      "id": "8211932",
-      "nguon": "tieuDe.8211932",
-      "trich": "8211932 Loại sử dụng trong nông nghiệp, làm vườn hoặc lâm nghiệp",
-      "dieuKienSo": [
-        {
-          "fact": "dungTrongNongNghiep",
-          "op": "CO"
-        }
-      ],
-      "nguonLoai": "CLAUDE_DUYET",
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "claude:tho-hs-01:20261121#soat-821193",
-          "ngay": "2026-11-21",
-          "bam": "53d307a9c0e43bd15d088e9b4772fd694667e5a5ab86cb0838b41512d666859e"
-        }
-      },
-      "chongLanTruc": {
-        "pn6": "821193",
-        "nhanh": [
-          "8211932",
-          "82119330"
-        ],
-        "truc": {
-          "8211932": "DAC_DIEM",
-          "82119330": "TEN_LOAI"
-        },
-        "cauHoiPhanBiet": "Dao này là loại sử dụng trong nông nghiệp, làm vườn hoặc lâm nghiệp (8211932) hay là dao bấm tự động, dao gấp hoặc dao nhíp có lưỡi dao dài 15 cm trở lên (82119330)?",
-        "trich": {
-          "8211932": "Loại sử dụng trong nông nghiệp, làm vườn hoặc lâm nghiệp",
-          "82119330": "Dao bấm tự động hoặc dao gấp; dao nhíp có lưỡi dao dài 15 cm trở lên"
-        },
-        "phanXu": null,
-        "ranhGioi": {
-          "phienBan": "ranh-gioi@1",
-          "duyet": {
-            "phien": "claude:tho-hs-01:20261121#soat-821193",
-            "ngay": "2026-11-21",
-            "bam": "53d307a9c0e43bd15d088e9b4772fd694667e5a5ab86cb0838b41512d666859e"
-          }
-        }
-      }
-    }
-  ]
+  }
 }

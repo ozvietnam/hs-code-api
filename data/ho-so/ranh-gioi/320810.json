@@ -14,8 +14,8 @@
     "boi": "CLAUDE_DUYET",
     "phien": "claude:tho-hs-01:20261121#soat-320810",
     "ngay": "2026-11-21",
-    "ghiChu": "Duyệt chuẩn hoá ranh giới",
-    "bam": "1b9fb82f55e4ea58f47bc3d3c8172dd52da7fd6c12ee0944e1fec069f59d5543"
+    "ghiChu": "Duyệt chuẩn hoá ranh giới theo traVe",
+    "bam": "9a2adcd19c2c8807573958b99a1bb15498547d986e5b2940501518cd98640a88"
   },
   "dieuKienNut": [
     {
@@ -63,6 +63,11 @@
       "trich": "32081020 - - Sơn chống hà và/hoặc chống ăn mòn dùng để sơn vỏ tàu thủy (SEN)",
       "dieuKienSo": [
         {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Sơn"
+        },
+        {
           "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": "vỏ tàu thủy"
@@ -82,15 +87,6 @@
       "nguonLoai": "CLAUDE_DUYET"
     }
   ],
-  "chongLanVanBan": [
-    {
-      "cap": [
-        "32081019",
-        "32081020"
-      ],
-      "lyDo": "Chữ biểu chồng lấn THẬT: .19 \"Loại khác\" (dòng trong tầng 3208101 \"Vecni (kể cả dầu bóng)\") chỉ loại trừ anh em .11 (\"Dùng trong nha khoa\"), KHÔNG loại trừ .20 \"Sơn chống hà và/hoặc chống ăn mòn dùng để sơn vỏ tàu thủy (SEN)\"; một sơn chống hà dạng vecni thỏa cả hai dòng. 3208.10 không có SEN; chú giải nhóm 32.08 không nói thứ tự ⇒ không có căn cứ ưu tiên, lúc chạy hỏi người khai."
-    }
-  ],
   "ghiChuSoan": [
     {
       "ma": "3208101",
@@ -105,7 +101,7 @@
     {
       "ma": "32081020",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.32081020 \"Sơn chống hà và/hoặc chống ăn mòn dùng để sơn vỏ tàu thủy (SEN)\" (EN \"Anti-fouling and/or anti-corrosive paints for ships' hulls\") ⇒ dungCho CONG_DUNG \"vỏ tàu thủy\" + sonChongHaHoacChongAnMonVoTau CO."
+      "ghiChu": "tax.32081020 \"Sơn chống hà và/hoặc chống ăn mòn dùng để sơn vỏ tàu thủy (SEN)\" (EN \"Anti-fouling and/or anti-corrosive paints for ships' hulls\") ⇒ tenLoai \"Sơn\" + dungCho CONG_DUNG \"vỏ tàu thủy\" + sonChongHaHoacChongAnMonVoTau CO."
     }
   ],
   "traVe": [

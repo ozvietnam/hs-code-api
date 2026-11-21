@@ -96,19 +96,64 @@
     },
     {
       "hs": "72072010",
-      "dieuKien": "Phôi dẹt (dạng phiến) (SEN)",
+      "dieuKien": "phôi dẹt dạng phiến (slabs)",
       "loaiKhac": false,
       "nguon": "tax.72072010",
       "trich": "72072010 - - - Phôi dẹt (dạng phiến) (SEN)",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "phoiDetDangPhien",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude:tho-hs-01:20261121#soat-720720",
+          "ngay": "2026-11-21",
+          "bam": "dd6679b966aa0ba5c73aeaf8be33e1c74a585e9447b141c14e7b60c174cfc30d"
+        }
+      }
     },
     {
       "hs": "72072021",
-      "dieuKien": "Dạng khối được tạo hình thô bằng cách rèn; phôi dạng tấm",
+      "dieuKien": "(phương pháp chế tạo: rèn) hoặc (tên loại hàng: phôi dạng tấm)",
       "loaiKhac": false,
       "nguon": "tax.72072021",
       "trich": "72072021 - - - - Dạng khối được tạo hình thô bằng cách rèn; phôi dạng tấm",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "phuongPhapCheTao",
+                "op": "TRONG",
+                "value": [
+                  "REN"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "phôi dạng tấm"
+              }
+            ]
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude:tho-hs-01:20261121#soat-720720",
+          "ngay": "2026-11-21",
+          "bam": "dd6679b966aa0ba5c73aeaf8be33e1c74a585e9447b141c14e7b60c174cfc30d"
+        }
+      }
     },
     {
       "hs": "72072029",
@@ -133,19 +178,64 @@
     },
     {
       "hs": "72072091",
-      "dieuKien": "Phôi dẹt (dạng phiến) (SEN)",
+      "dieuKien": "phôi dẹt dạng phiến (slabs)",
       "loaiKhac": false,
       "nguon": "tax.72072091",
       "trich": "72072091 - - - Phôi dẹt (dạng phiến) (SEN)",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "phoiDetDangPhien",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude:tho-hs-01:20261121#soat-720720",
+          "ngay": "2026-11-21",
+          "bam": "dd6679b966aa0ba5c73aeaf8be33e1c74a585e9447b141c14e7b60c174cfc30d"
+        }
+      }
     },
     {
       "hs": "72072092",
-      "dieuKien": "Dạng khối được tạo hình thô bằng cách rèn; phôi dạng tấm",
+      "dieuKien": "(phương pháp chế tạo: rèn) hoặc (tên loại hàng: phôi dạng tấm)",
       "loaiKhac": false,
       "nguon": "tax.72072092",
       "trich": "72072092 - - - - Dạng khối được tạo hình thô bằng cách rèn; phôi dạng tấm",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "phuongPhapCheTao",
+                "op": "TRONG",
+                "value": [
+                  "REN"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "phôi dạng tấm"
+              }
+            ]
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude:tho-hs-01:20261121#soat-720720",
+          "ngay": "2026-11-21",
+          "bam": "dd6679b966aa0ba5c73aeaf8be33e1c74a585e9447b141c14e7b60c174cfc30d"
+        }
+      }
     },
     {
       "hs": "72072099",
@@ -337,5 +427,29 @@
     "dat": 12,
     "loai": 1,
     "nguonBiCat": []
-  }
+  },
+  "dieuKienNut": [
+    {
+      "id": "720720~r10997",
+      "nguon": "tieuDe.720720~r10997",
+      "trich": "720720~r10997 Có hàm lượng carbon dưới 0,6% tính theo khối lượng",
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude:tho-hs-01:20261121#soat-720720",
+          "ngay": "2026-11-21",
+          "bam": "dd6679b966aa0ba5c73aeaf8be33e1c74a585e9447b141c14e7b60c174cfc30d"
+        }
+      }
+    }
+  ]
 }
