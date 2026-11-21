@@ -4,6 +4,15 @@
 // Ca gốc (qua Cổng 21/11): "Van điện từ khí nén 5/2 thân nhôm, cổng ren 1/4 inch (13 mm), dùng điều khiển xi lanh khí nén"
 // → động cơ dừng 848180 (earlyExitHoi) và hỏi 6 câu LLM (điện áp cuộn dây, model, hãng…).
 import './test-isolate-data.mjs';
+import { TEST_DATA_DIR } from './test-isolate-data.mjs';
+import fs from 'node:fs';
+import path from 'node:path';
+{
+  fs.mkdirSync(path.join(TEST_DATA_DIR, 'so-tay'), { recursive: true });
+  const st9026 = JSON.parse(fs.readFileSync('data/so-tay/9026.json', 'utf8'));
+  st9026.dong8 = (st9026.dong8 || []).map((d) => (d.hs === '90262050' ? { ...d, dieuKienSo: [] } : d));
+  fs.writeFileSync(path.join(TEST_DATA_DIR, 'so-tay/9026.json'), JSON.stringify(st9026));
+}
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 process.env.MIC_OFF = '1';
