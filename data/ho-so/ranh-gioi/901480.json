@@ -4,13 +4,19 @@
   "nhom": "9014",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T1001#soan-901480",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv#soat-901480",
+    "ngay": "2026-11-21",
+    "ghiChu": "Chuẩn hoá theo traVe",
+    "bam": "ae51e7db575350952331831ee058ad1f990bfadc144e47bb897efaacd35fb080"
+  },
   "dieuKienNut": [
     {
       "id": "9014801",
@@ -20,13 +26,15 @@
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
-          "value": [
-            "tàu thuyền",
-            "máy xử lý dữ liệu tự động"
-          ]
+          "value": "tàu thuyền"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy xử lý dữ liệu tự động"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -44,21 +52,21 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "90148019",
       "nguon": "tax.90148019",
       "trich": "90148019 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "90148090",
       "nguon": "tax.90148090",
       "trich": "90148090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -71,13 +79,6 @@
       "ma": "90148011",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.90148011: \"Máy dò siêu âm (Sonar) hoặc máy đo sâu hồi âm\" ⇒ tenLoai mảng [\"Máy dò siêu âm\",\"máy đo sâu hồi âm\"]"
-    }
-  ],
-  "traVe": [
-    {
-      "phien": "claude-agent:duyet-L31-20261111#soat-L31",
-      "ngay": "2026-11-11",
-      "lyDo": "(A) tầng 9014801 SUY RỘNG — VÀ thành HOẶC: chữ biểu 'Loại dùng trên tàu thuyền, kết hợp hoặc hoạt động cùng với máy xử lý dữ liệu tự động' / 'Of a kind used on ships, incorporating or working in conjunction with an automatic data processing machine' là HAI điều kiện cùng lúc; bản nháp dungCho ['tàu thuyền','máy xử lý dữ liệu tự động'] (mảng = hoặc) ⇒ sonar/thiết bị dẫn đường tàu thuyền KHÔNG kết hợp máy xử lý dữ liệu (90148090) lấn 90148011/19."
     }
   ]
 }

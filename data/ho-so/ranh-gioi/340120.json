@@ -4,13 +4,19 @@
   "nhom": "3401",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1545#soan-340120",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv#soat-340120",
+    "ngay": "2026-11-21",
+    "ghiChu": "Chuẩn hoá theo traVe",
+    "bam": "03820ec0c377cbf34e2ec26e4d9ca1a19c9bf6779684316fd7b9cc7aade9fd41"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -24,7 +30,7 @@
           "value": "Phôi xà phòng"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "34012091",
@@ -34,20 +40,17 @@
         {
           "fact": "congDung",
           "op": "CONG_DUNG",
-          "value": [
-            "tẩy mực",
-            "khử mực giấy tái chế"
-          ]
+          "value": "khử mực giấy tái chế"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "34012099",
       "nguon": "tax.34012099",
       "trich": "34012099 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -70,13 +73,6 @@
       "ma": "34012099",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.34012099 \"Loại khác\" — dòng \"Loại khác\" TRẦN ⇒ không ghi điều kiện, không đưa vào spec (máy tự phủ định anh em)."
-    }
-  ],
-  "traVe": [
-    {
-      "phien": "claude-agent:duyet-L10-20261111#soat-L10",
-      "ngay": "2026-11-11",
-      "lyDo": "(A) 340120.json:34012091 SUY RỘNG: chữ biểu \"Dùng để tẩy mực, khử mực giấy tái chế\" (EN \"Of a kind used for flotation de-inking of recycled paper\") là MỘT công dụng (khử mực giấy tái chế), nhưng điều kiện là mảng HOẶC congDung [\"tẩy mực\",\"khử mực giấy tái chế\"] ⇒ nhánh \"tẩy mực\" đứng một mình bắt cả xà phòng tẩy vết mực (giặt/rửa tay) vào .91 thay vì .99 (cùng MFN 22% nhưng sai mã 8 số). Ghi chú soạn đã thừa nhận \"hai cụm là CÙNG một công dụng\". Sửa: congDung một chuỗi \"khử mực giấy tái chế\" (không có dấu phẩy nên không vướng cong3-liet-ke-trong-mot-chuoi)."
     }
   ]
 }
