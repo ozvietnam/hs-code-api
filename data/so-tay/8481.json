@@ -168,7 +168,113 @@
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
-  "tieuChi6": [],
+  "tieuChi6": [
+    {
+      "hs6": "848120",
+      "thuTu": 1,
+      "dieuKien": "Van dùng trong truyền động dầu thủy lực hoặc truyền động khí nén",
+      "fact": "dungCho",
+      "op": "CONG_DUNG",
+      "value": [
+        "truyền động dầu thủy lực",
+        "truyền động khí nén"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "thủy lực",
+        "khí nén"
+      ],
+      "uuTien": {
+        "nguon": "ch84.chuong",
+        "trich": "Phân nhóm 8481.20 được ưu tiên xem xét trước trong các phân nhóm thuộc nhóm 84.81."
+      },
+      "tienLe": [
+        {
+          "so": "851/TB-TCHQ",
+          "ma": "84812090"
+        },
+        {
+          "so": "852/TB-TCHQ",
+          "ma": "84812090"
+        }
+      ],
+      "nguon": "ch84.chuong",
+      "trich": "Theo mục đích của phân nhóm 8481.20, khái niệm \"van dùng trong truyền động dầu thủy lực hoặc truyền động khí nén\" là van chuyên dụng truyền động \"thủy lực/khí nén\"",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "848110",
+      "thuTu": 2,
+      "dieuKien": "Van giảm áp",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Van giảm áp",
+      "donVi": null,
+      "tuKhoa": [
+        "van giảm áp"
+      ],
+      "nguon": "tieuDe.848110",
+      "trich": "Van giảm áp",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "848130",
+      "thuTu": 3,
+      "dieuKien": "Van kiểm tra (van một chiều)",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": [
+        "Van kiểm tra",
+        "van một chiều"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "van kiểm tra",
+        "van một chiều"
+      ],
+      "nguon": "tieuDe.848130",
+      "trich": "Van kiểm tra (van một chiều)",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "848140",
+      "thuTu": 4,
+      "dieuKien": "Van an toàn hoặc van xả",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": [
+        "Van an toàn",
+        "van xả"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "van an toàn",
+        "van xả"
+      ],
+      "nguon": "tieuDe.848140",
+      "trich": "Van an toàn hoặc van xả",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "848190",
+      "thuTu": 5,
+      "dieuKien": "Bộ phận",
+      "fact": "laBoPhan",
+      "op": "CO",
+      "donVi": null,
+      "nguon": "tieuDe.848190",
+      "trich": "848190 Bộ phận",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "848180",
+      "thuTu": 6,
+      "phanConLai": true,
+      "nguon": "tieuDe.848180",
+      "trich": "848180 Thiết bị khác",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
   "dong8": [
     {
       "hs": "84811011",
@@ -2245,6 +2351,7 @@
     }
   ],
   "dungTuNguon": [
+    "ch84.chuong",
     "nhom8481.nhom",
     "sen.84818064",
     "sen.84818065",
@@ -2309,6 +2416,11 @@
     "tax.84819041",
     "tax.84819049",
     "tax.84819090",
+    "tieuDe.848110",
+    "tieuDe.848130",
+    "tieuDe.848140",
+    "tieuDe.848180",
+    "tieuDe.848190",
     "wco-op.848180.1",
     "wco-op.848180.2",
     "wco-op.848180.3",
@@ -2322,8 +2434,8 @@
     "ms": 19
   },
   "kiemTra": {
-    "tong": 94,
-    "dat": 94,
+    "tong": 100,
+    "dat": 100,
     "loai": 0,
     "nguonBiCat": [],
     "nangCap": {
@@ -2334,6 +2446,12 @@
         "tieuChi6",
         "phamViLoaiKhac"
       ]
+    },
+    "tieuChi6": {
+      "khuon": "g6@1",
+      "soMuc": 6,
+      "soPhanNhom": 6,
+      "cong": "scripts/kiem-tieu-chi-6.mjs"
     }
   },
   "yKienWcoDayDu": false,
