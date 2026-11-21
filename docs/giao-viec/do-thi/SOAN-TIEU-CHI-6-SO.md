@@ -18,9 +18,9 @@
 
 | `kieu` | Nghĩa | Bạn viết |
 |---|---|---|
-| `CO_TEN` | Có tên riêng ("Van giảm áp") | Điều kiện lấy từ tên |
+| `CO_TEN` | Có tên riêng ("Van giảm áp"), kể cả "X và các Y khác" ("Tượng nhỏ và các đồ trang trí khác") | Điều kiện lấy từ tên. Không `phanConLai` |
 | `DU` | Phần còn lại trần ("Loại khác", "Thiết bị khác") | Đúng một mục `phanConLai: true`. Không điều kiện |
-| `DU_CO_PHAM_VI` | Kết thúc bằng "… khác" nhưng có nội dung ("Thiết bị bảo vệ mạch điện khác") | Điều kiện lấy từ phần nội dung của tên, BỎ chữ "khác" (`value`: "Thiết bị bảo vệ mạch điện"); thêm một mục `phanConLai: true` nếu nó là phần còn lại của các phân nhóm đứng trước |
+| `DU_CO_PHAM_VI` | Kết thúc bằng "… khác" nhưng có nội dung ("Thiết bị bảo vệ mạch điện khác") | Điều kiện lấy từ phần nội dung của tên, BỎ chữ "khác" (`value`: "Thiết bị bảo vệ mạch điện"), VÀ đúng một mục `phanConLai: true` |
 
 ## 2. Đầu ra: đúng một khối JSON
 
@@ -50,7 +50,7 @@ Mỗi mục là MỘT điều kiện của MỘT phân nhóm. Một phân nhóm 
 | `CONG_DUNG` (khoá `dungCho`, `congDung`) | `"CONG_DUNG"` | cụm công dụng chép nguyên từ `trich`; nhiều cụm thì dùng mảng |
 | `CO_KHONG` (vd `laBoPhan`) | `"CO"` hoặc `"KHONG"` | bỏ trống |
 | `LIET_KE` | `"TRONG"` | mảng giá trị trong `giaTriHopLe` |
-| `SO` (vd `dienAp`) | `"<"`, `"<="`, `">"`, `">="` | SỐ có trong `trich` (vd `60`), kèm `"donVi"` có trong `trich` (vd `"V"`) |
+| `SO` (vd `dienAp`) | `"<"`, `"<="`, `">"`, `">="` | SỐ có trong `trich`, đơn vị ở trường RIÊNG: `"fact": "dienAp", "op": "<=", "value": 60, "donVi": "V"`. Không viết `"60 V"`, không viết `{"so": 60}` |
 | `CHAT_LIEU_THEO_VI_TRI` (khoá `chatLieu`) | `"LA"` | chất liệu có trong `trich` |
 
 KHÔNG ghi `thuTu`: máy tự xếp thứ tự xét (theo mã; phân nhóm dư cuối tầng; phân nhóm có `uuTien` lên đầu).
@@ -92,11 +92,15 @@ Ví dụ lấy từ hai bản mẫu đã qua cổng: [`mau/8481.json`](mau/8481.
 - ĐÚNG: 841221, tiêu đề "Chuyển động tịnh tiến (xi lanh)" → `"fact": "tenLoai", "value": "xi lanh"`. 848120 "Van dùng trong truyền động dầu thủy lực hoặc khí nén" → `"fact": "dungCho", "value": ["truyền động dầu thủy lực", "truyền động khí nén"]`. 848190 → `"fact": "laBoPhan", "op": "CO"`.
 - SAI: 841231 ghi `"fact": "tenLoai", "value": "dùng khí nén"`; 848120 ghi `"fact": "tenLoai", "value": "truyền động khí nén"` (đó là thứ van dùng cho, không phải tên van); tự đặt `"fact": "cong_dung_truyen_dong"`.
 
-**L9. Thiếu khoá thì nói thiếu.** Gói không có khoá hợp với tiêu chí thì viết mục `chuaSoHoa`, không ép vào `tenLoai`, không mượn khoá gần nghĩa.
-- ĐÚNG: `{ "hs6": "841221", "chuaSoHoa": "thiếu khoá kiểu chuyển động (tịnh tiến / quay)", "nguon": "tax.84122100", "trich": "Chuyển động tịnh tiến (xi lanh)" }`.
-- SAI: dùng `cachDieuKhien: KHI_NEN` cho "Động cơ và mô tơ dùng khí nén" (khoá đó là cách điều khiển, không phải nguồn động lực).
+**L9. Thiếu khoá thì nói thiếu, nhưng chỉ khi thật sự thiếu.** Vế là tên hàng thì dùng `tenLoai`; "dùng cho / lắp vào …" dùng `dungCho`; "bằng …" dùng `chatLieu`; vế mà một khoá trong `khoaGoiY` đọc được ("đã tráng men" → `daTrangMen`) thì dùng khoá đó. Chỉ khi không khoá nào hợp mới viết mục `chuaSoHoa` (vd `chatLieu` chưa có giá trị "da thuộc": vế "bằng da thuộc hoặc da thuộc tổng hợp" khai `chuaSoHoa`, `trich` là tiêu đề đó). Không mượn khoá gần nghĩa.
+- ĐÚNG: 841221 "Chuyển động tịnh tiến (xi lanh)" → `"fact": "tenLoai", "value": "xi lanh"`.
+- SAI: `{ "hs6": "841221", "chuaSoHoa": "thiếu khoá kiểu chuyển động", … }` (tenLoai dùng được); dùng `cachDieuKhien: KHI_NEN` cho "Động cơ và mô tơ dùng khí nén" (khoá đó là cách điều khiển, không phải nguồn động lực).
 
-**L10. Danh sách thì dùng mảng.** Tiêu đề liệt kê nhiều tên ("A, B và C", "A; B") thì `value` là mảng, mỗi phần tử một tên chép nguyên từ `trich`.
+**L10. Danh sách thì dùng mảng; "kể cả" và "tương tự" không phải điều kiện.** Các tên trong vế "(kể cả …)" gộp vào mảng `value` của mục chính, không viết mục riêng (hai mục khẳng định là hai điều kiện CÙNG phải thoả). "các loại tương tự", "loại khác" không bao giờ là phần tử của `value` / `tuKhoa`.
+- ĐÚNG: 3926.20 → MỘT mục `"value": ["Hàng may mặc", "đồ phụ trợ may mặc", "găng tay", "găng hở ngón", "găng bao tay"]`.
+- SAI: thêm mục thứ hai `"value": ["găng tay", …]`; tách 3926.40 thành mục "Tượng nhỏ" + mục "đồ trang trí" (thành điều kiện CÙNG phải thoả); hoặc `"value": ["đồ nội thất", "thân xe", "các loại tương tự"]`, `"găng tay và các loại tương tự"`.
+
+**L10b. Mỗi phần tử một tên.** Tiêu đề liệt kê nhiều tên ("A, B và C", "A; B") thì `value` là mảng, mỗi phần tử một tên chép nguyên từ `trich`.
 - ĐÚNG: 848140 "Van an toàn hoặc van xả" → `"value": ["Van an toàn", "van xả"]`.
 - SAI: `"value": "Van an toàn, van xả, v.v.., có hoặc không đi kèm với một còi báo"` (cả câu trong một chuỗi).
 
@@ -112,6 +116,10 @@ Ví dụ lấy từ hai bản mẫu đã qua cổng: [`mau/8481.json`](mau/8481.
 - ĐÚNG: 848120: `"uuTien": { "nguon": "ch84.chuong", "trich": "Phân nhóm 8481.20 được ưu tiên xem xét trước trong các phân nhóm thuộc nhóm 84.81." }`.
 - SAI: ghi `uuTien` vì "hay gặp nhất", hoặc trích một câu không có chữ ưu tiên.
 
+**L14. Phủ đủ vế.** Tiêu đề phân nhóm (và tầng có tên chứa nó) có mấy vế nội dung thì phải có mục mang đủ mấy vế đó. Vế nối bằng dấu phẩy là CỘNG DỒN: "Bằng sắt hoặc thép, đã tráng men" là hai vế, cần hai mục. Bỏ một vế làm tiêu chí rộng hơn luật. Vế phải nằm trong ĐIỀU KIỆN (`value` / khoá), `tuKhoa` không tính. Vế có nhiều phương án ("bằng da thuộc hoặc da thuộc tổng hợp", "văn phòng hoặc trường học") thì `value` mang đủ mọi phương án. Vế mở ("có hoặc không có …", "kể cả …") không phải vế giới hạn.
+- ĐÚNG: 7323.94 → mục `chatLieu` "sắt / thép" + mục `daTrangMen` `CO` + mục `chieu: "PHAI_KHONG"` "gang". 841221 → mục tầng "Động cơ và mô tơ thủy lực" + mục "xi lanh".
+- SAI: 7323.94 chỉ có `chatLieu` (thiếu "đã tráng men"); 841221 chỉ có mục tầng (thiếu "Chuyển động tịnh tiến (xi lanh)").
+
 Không chắc một điều thì KHÔNG ghi. Thiếu một `tuKhoa` không sao; thừa một chữ ngoài luật là bị trả về.
 
 ## 4. Cổng máy sẽ trả về những lỗi này
@@ -126,17 +134,20 @@ Chạy: `node scripts/kiem-tieu-chi-6.mjs --tep=<tệp của bạn>`. Danh sách
 | `NGUON_LAC_PHAN_NHOM` | Trích tên của phân nhóm khác | L3 |
 | `SUY_RONG` | `dieuKien` / `tuKhoa` / `value` có chữ ngoài `trich` | L4, L5 |
 | `TIEN_LE_SAI` | `tienLe` không có trong gói hoặc không ra phân nhóm này | L5 |
-| `DU_SAI_KHAI` / `DU_MANG_DIEU_KIEN` | Phân nhóm `DU` thiếu `phanConLai` hoặc mang điều kiện riêng | L6, L7 |
+| `DU_SAI_KHAI` / `DU_MANG_DIEU_KIEN` | Phân nhóm `DU` / `DU_CO_PHAM_VI` thiếu `phanConLai`, `CO_TEN` lại khai `phanConLai`, hoặc `DU` mang điều kiện riêng | L6, L7, bảng `kieu` |
 | `THIEU_DIEU_KIEN_TANG` | Phân nhóm trong một tầng có tên mà không có mục trích `tieuDe.<thuocTang>` | L7 |
 | `KHOA_DU_KIEN_LA` / `SAI_KHOA_THUOC_TINH` | `fact` tự đặt / `tenLoai` nhận một thuộc tính | L8, L9 |
 | `TEN_LOAI_SAU_GIOI_TU` / `TEN_CO_CHU_KHAC` | `tenLoai` nhận thứ đứng sau "dùng cho" / `value` còn chữ "khác" | L8 |
 | `LIET_KE_MOT_CHUOI` | Một chuỗi gói cả danh sách | L10 |
+| `GIA_TRI_RONG` / `KE_CA_LA_DIEU_KIEN` / `TACH_LIET_KE` | "các loại tương tự" trong value / tên trong "kể cả" thành mục riêng / các tên của một câu tách thành nhiều mục | L10 |
 | `THIEU_VE_TRU` / `TU_KHOA_TRONG_VE_TRU` | Bỏ vế "trừ …" / lấy thứ bị trừ làm dấu hiệu | L11 |
 | `TIEU_DE_CHI_LAC` / `TU_KHOA_QUA_CHUNG` / `TRUNG_DIEU_KIEN` | `tuKhoa` dùng chữ của phân nhóm khác / chữ chung / hai phân nhóm giống nhau | L12 |
 | `THU_TU_KHONG_CAN_CU` | `uuTien` không phải câu luật nói ưu tiên | L13 |
+| `THIEU_VE_GIOI_HAN` | Một vế của tiêu đề / tầng không có mục nào mang | L14 |
+| `CHUA_SO_HOA_CO_KHOA` | Khai `chuaSoHoa` trong khi có khoá hợp | L9 |
 | `THU_TU_SAI` / `DU_KHONG_CUOI` | Ghi `thuTu` bằng tay và ghi sai | Bỏ `thuTu` |
 
-Cảnh báo (không chặn, người soát đọc): `LECH_TO_KHAI_CAO` (dò `tuKhoa` trên tờ khai mẫu chỉ sai quá 10% số dòng, hoặc quá 25% số dòng có kết luận: `tuKhoa` quá rộng thì thu hẹp; KHÔNG sửa tiêu chí cho khớp tờ khai khi chữ luật nói khác), `DU_CAN_NGUOI_XEM` (phân nhóm `DU_CO_PHAM_VI`), `THIEU_KHOA_TU_VUNG` (mục `chuaSoHoa`).
+Cảnh báo (không chặn, người soát đọc): `LECH_TO_KHAI_CAO` (dò `tuKhoa` trên tờ khai mẫu chỉ sai quá 10% số dòng, hoặc quá 25% số dòng có kết luận: `tuKhoa` quá rộng thì thu hẹp; KHÔNG sửa tiêu chí cho khớp tờ khai khi chữ luật nói khác), `THIEU_KHOA_TU_VUNG` (mục `chuaSoHoa` mà máy không thấy khoá hợp: người soát xem có cần thêm khoá từ vựng).
 
 Nhận lại danh sách lỗi thì sửa đúng mục bị nêu và trả lại TOÀN BỘ khối JSON.
 

@@ -1,7 +1,7 @@
 # ADR-0003 — Khuôn g6@1 cho `tieuChi6` và cổng máy trước khi nhân bản
 
 - **Ngày:** 21/11/2026
-- **Trạng thái:** đề xuất trong PR mẫu G6-0 / G6-1 (xếp chồng trên PR giai đoạn 1 của ADR-0002). QT soát rồi mới có hiệu lực.
+- **Trạng thái:** đề xuất trong PR mẫu G6-0 / G6-1 (#1549). QT soát rồi mới có hiệu lực. Vòng 2 (21/11): thêm phủ vế, một hàm "phần còn lại" chung với C11.
 - **Người quyết:** QT; trợ lý soạn.
 - **Bổ sung:** ADR-0002 (cạnh C10, C13). Không thay ADR nào.
 
@@ -26,14 +26,19 @@ tên tiếng Anh của WCO. Nó không ghi thứ tự xét, không có chỗ cho
    khi dòng lá chính là phân nhóm. Dòng 8 số thường, tiêu đề 7 số, tầng không mã vẫn bị loại.
 4. **Thứ tự xét do máy xếp** (`thuTuMay`): theo mã; phân nhóm dư trần cuối tầng; phân nhóm có `uuTien` lên đầu. Người / AI soạn
    không ghi `thuTu`. Lý do: lần thử đầu, mô hình rẻ ghi sai `thuTu` ở cả 3 nhóm và không tự sửa được.
-5. **Một cổng máy trước khi ghi:** `scripts/kiem-tieu-chi-6.mjs` (lõi `lib/do-thi/tieu-chi-6.js`), 24 mã lỗi + 3 cảnh báo.
+5. **Một cổng máy trước khi ghi:** `scripts/kiem-tieu-chi-6.mjs` (lõi `lib/do-thi/tieu-chi-6.js`), 29 mã lỗi + 2 cảnh báo.
    `scripts/goi-soan-tieu-chi-6.mjs --ap` chỉ ghi `data/so-tay/` khi 0 lỗi. `npm test` chạy cổng trên mọi sổ tay mang khuôn g6@1
    và chạy `scripts/test-tieu-chi-6.mjs` (mỗi mã lỗi có ít nhất một ca tiêm).
 6. **Mục đã áp mang nhãn `AI_DA_KIEM`**, không phải nhãn duyệt. `lib/ho-so/duong-di.js` chỉ đọc `tieuChi6` đã duyệt, nên mục mới
    chưa vào động cơ hồ sơ cho tới khi có người / mô hình mạnh duyệt.
 7. **`tuKhoa` là gợi ý, không phải điều kiện.** Điều kiện là `fact` + `value`. Phép "áp tiêu chí bằng từ khoá" chỉ để đo trong
    cổng (cảnh báo `LECH_TO_KHAI_CAO`); không đường khách nào gọi.
-8. **Bảng cạnh dựng thêm C10** từ mọi `tieuChi6` (cũ và mới): nhóm → phân nhóm, bậc 1, kèm `khoaDuKien` (C13).
+8. **Phủ vế** (vòng 2): tiêu đề phân nhóm và tầng có tên được tách bằng luật thành vế cộng dồn (dấu phẩy, vế bắt đầu bằng
+   "đã / chưa / bằng / có / dùng cho / lắp vào / ngưỡng số …"); mỗi vế phải có mục mang (`THIEU_VE_GIOI_HAN`). Vế mở ("có hoặc
+   không có", "kể cả") và tiêu đề là danh sách nhiều tên hàng không bị đòi.
+9. **Một hàm "phần còn lại"** (`lib/do-thi/phan-con-lai.js`) dùng cho cả C11 và cổng: ba kiểu `DU` / `DU_CO_PHAM_VI` / `CO_TEN`;
+   "X và các Y khác" là tên riêng. C11 mức 6 số giảm 8.914 → 8.825 cạnh.
+10. **Bảng cạnh dựng thêm C10** từ mọi `tieuChi6` (cũ và mới): nhóm → phân nhóm, bậc 1, kèm `khoaDuKien` (C13).
 
 ## Phương án đã loại
 
@@ -56,15 +61,13 @@ tên tiếng Anh của WCO. Nó không ghi thứ tự xét, không có chỗ cho
 
 ## Giới hạn đã biết
 
-- Cổng kiểm từng mục và sự tự mâu thuẫn giữa các phân nhóm; CHƯA kiểm "mọi vế của tiêu đề đã có mục phủ". Bỏ một vế làm tiêu chí
-  rộng hơn luật mà vẫn qua cổng (7323.94, xem `docs/giao-viec/do-thi/thu-nhan-ban-1/BAO-CAO.md`).
+- Phủ vế so âm tiết (bỏ dấu thanh, giữ dấu chữ) và đọc điều kiện có kiểu từ chữ vế; chưa so CHIỀU ("chưa tráng men" mà khai
+  `daTrangMen: CO` vẫn được tính là phủ). Âm tiết lặp tên nhóm 4 số chỉ được bỏ ở vế đầu ngữ.
 - `value` hai vế nối "và" / "hoặc" không có dấu phẩy ("Động cơ và mô tơ thủy lực") được giữ một chuỗi; cổng chỉ chặn danh sách
   có dấu phẩy hoặc chấm phẩy.
 - tu-vung@2 thiếu khoá nguồn động lực và kiểu chuyển động; mẫu 8412 ghi bằng `tenLoai`.
-- `hangDu()` của cạnh C11 (giai đoạn 1) vẫn xếp "X và các Y khác" vào loại dư; cổng này dùng phân loại riêng `kieuTieuDe()`.
 
 ## Việc tiếp theo
 
-- Phép kiểm "phủ vế" cho tiêu đề phân nhóm, rồi mới chạy loạt.
 - QT đo ca van 5/2 trên máy thật sau khi gộp và khi bật lại `HS_HOI_THEO_SO_TAY` (điều kiện bật ở L3 bổ sung).
 - Duyệt 18 mục của 8481 / 8412 để `lib/ho-so/duong-di.js` đọc được.
