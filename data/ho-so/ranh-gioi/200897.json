@@ -4,13 +4,19 @@
   "nhom": "2008",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261105T1555#soan-200897",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1777#soat-200897",
+    "ngay": "2026-11-21",
+    "ghiChu": "Chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1777)",
+    "bam": "3bb2d9a29c802883f0fa40cce2584b744b608e9f5dc322556eb5ea2f7e538718"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -26,9 +32,32 @@
             "rễ cây",
             "các phần ăn được khác của cây"
           ]
+        },
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "quả",
+                  "quả hạch"
+                ],
+                "chieu": "PHAI_KHONG"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "không bao gồm quả"
+              }
+            ]
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": false
     },
     {
@@ -41,27 +70,21 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "20089790",
       "nguon": "tax.20089790",
       "trich": "20089790 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "20089710",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.20089710 \"Từ thân cây, rễ cây và các phần ăn được khác của cây…\" — chữ có \"khác\" trong \"các phần ăn được khác của cây\" nhưng là ý khẳng định nêu tên hàng, không phải phần còn lại ⇒ phanConLai: false"
-    },
-    {
-      "ma": "20089710",
-      "loai": "BO_VE",
-      "ve": "không bao gồm quả hoặc quả hạch (nuts) đã hoặc chưa pha thêm đường hoặc chất tạo ngọt khác hoặc rượu",
-      "lyDo": "Vế loại trừ nêu hàng KHÔNG thuộc dòng (quả, quả hạch — nằm ở 20089720/20089790); điều kiện tên của chính dòng đã giới hạn hàng là thân cây, rễ cây, các phần ăn được khác của cây — không phải quả hay quả hạch — nên bỏ vế không đổi mã 8 số; tu-vung@2 không có khoá đọc \"không bao gồm quả hoặc quả hạch\""
+      "ghiChu": "tax.20089710 \"Từ thân cây, rễ cây và các phần ăn được khác của cây, không bao gồm quả hoặc quả hạch (nuts) đã hoặc chưa pha thêm đường hoặc chất tạo ngọt khác hoặc rượu\" ⇒ HOAC 2 phương án (mẫu 85437021): (1) tenLoai [\"thân cây\", \"rễ cây\", \"các phần ăn được khác của cây\"] + tenLoai [\"quả\", \"quả hạch\"] chieu PHAI_KHONG (vế loại trừ giới hạn mục mở \"các phần ăn được khác của cây\"); (2) tenLoai [\"thân cây\", \"rễ cây\", \"các phần ăn được khác của cây\"] + tenLoai \"không bao gồm quả\" để mô tả trích nguyên văn chữ biểu không bị vế \"không bao gồm quả hoặc quả hạch\" đọc thành khẳng định; phanConLai: false vì chữ \"khác\" không phải phần còn lại"
     },
     {
       "ma": "20089720",

@@ -597,18 +597,61 @@
     },
     {
       "hs": "20089710",
-      "dieuKien": "Từ thân cây, rễ cây và các phần ăn được khác của cây, không bao gồm quả hoặc quả hạch (nuts) đã hoặc chưa pha thêm đường hoặc chất tạo ngọt khác hoặc rượu",
+      "dieuKien": "tên loại hàng: thân cây hoặc rễ cây hoặc các phần ăn được khác của cây; (không tên loại hàng: quả hoặc quả hạch) hoặc (tên loại hàng: không bao gồm quả)",
       "nguon": "tax.20089710",
       "trich": "20089710 - - - Từ thân cây, rễ cây và các phần ăn được khác của cây, không bao gồm quả hoặc quả hạch (nuts) đã hoặc chưa pha thêm đường hoặc chất tạo ngọt khác hoặc rượu",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "thân cây",
+            "rễ cây",
+            "các phần ăn được khác của cây"
+          ]
+        },
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "quả",
+                  "quả hạch"
+                ],
+                "chieu": "PHAI_KHONG"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "không bao gồm quả"
+              }
+            ]
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1777#soat-200897",
+          "ngay": "2026-11-21",
+          "bam": "3bb2d9a29c802883f0fa40cce2584b744b608e9f5dc322556eb5ea2f7e538718"
+        }
+      },
+      "phanConLai": false
     },
     {
       "hs": "20089720",
-      "dieuKien": "Loại khác, đã pha thêm đường hoặc chất tạo ngọt khác hoặc rượu",
+      "dieuKien": "đã pha thêm đường hoặc chất tạo ngọt khác hoặc rượu (rau quả chế biến)",
       "nguon": "tax.20089720",
       "trich": "20089720 - - - Loại khác, đã pha thêm đường hoặc chất tạo ngọt khác hoặc rượu",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "loaiKhac": true,
       "phamViLoaiKhac": {
         "nguonLoai": "MAY_SUY",
@@ -618,6 +661,20 @@
         ],
         "toTienCoTen": "200897",
         "dinhNghiaDuoc": true
+      },
+      "dieuKienSo": [
+        {
+          "fact": "daPhaThemDuongHoacRuou",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1777#soat-200897",
+          "ngay": "2026-11-21",
+          "bam": "3bb2d9a29c802883f0fa40cce2584b744b608e9f5dc322556eb5ea2f7e538718"
+        }
       }
     },
     {
@@ -640,34 +697,107 @@
     },
     {
       "hs": "20089910",
-      "dieuKien": "Quả vải",
+      "dieuKien": "tên loại hàng: Quả vải",
       "nguon": "tax.20089910",
       "trich": "20089910 - - - Quả vải",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Quả vải"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1777#soat-200899",
+          "ngay": "2026-11-21",
+          "bam": "ebded7276bf76b53a1201b5cec40738afc1c3ea79919ce525bab1f983525383d"
+        }
+      }
     },
     {
       "hs": "20089920",
-      "dieuKien": "Quả nhãn",
+      "dieuKien": "tên loại hàng: Quả nhãn",
       "nguon": "tax.20089920",
       "trich": "20089920 - - - Quả nhãn",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Quả nhãn"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1777#soat-200899",
+          "ngay": "2026-11-21",
+          "bam": "ebded7276bf76b53a1201b5cec40738afc1c3ea79919ce525bab1f983525383d"
+        }
+      }
     },
     {
       "hs": "20089930",
-      "dieuKien": "Từ thân cây, rễ cây và các phần ăn được khác của cây, không bao gồm quả hoặc quả hạch (nuts) đã hoặc chưa pha thêm đường hoặc chất tạo ngọt khác hoặc rượu",
+      "dieuKien": "tên loại hàng: thân cây hoặc rễ cây hoặc các phần ăn được khác của cây; (không tên loại hàng: quả hoặc quả hạch) hoặc (tên loại hàng: không bao gồm quả)",
       "nguon": "tax.20089930",
       "trich": "20089930 - - - Từ thân cây, rễ cây và các phần ăn được khác của cây, không bao gồm quả hoặc quả hạch (nuts) đã hoặc chưa pha thêm đường hoặc chất tạo ngọt khác hoặc rượu",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "thân cây",
+            "rễ cây",
+            "các phần ăn được khác của cây"
+          ]
+        },
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "quả",
+                  "quả hạch"
+                ],
+                "chieu": "PHAI_KHONG"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "không bao gồm quả"
+              }
+            ]
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1777#soat-200899",
+          "ngay": "2026-11-21",
+          "bam": "ebded7276bf76b53a1201b5cec40738afc1c3ea79919ce525bab1f983525383d"
+        }
+      },
+      "phanConLai": false
     },
     {
       "hs": "20089940",
-      "dieuKien": "Loại khác, đã pha thêm đường hoặc chất tạo ngọt khác hoặc rượu",
+      "dieuKien": "đã pha thêm đường hoặc chất tạo ngọt khác hoặc rượu (rau quả chế biến)",
       "nguon": "tax.20089940",
       "trich": "20089940 - - - Loại khác, đã pha thêm đường hoặc chất tạo ngọt khác hoặc rượu",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "loaiKhac": true,
       "phamViLoaiKhac": {
         "nguonLoai": "MAY_SUY",
@@ -679,6 +809,20 @@
         ],
         "toTienCoTen": "200899",
         "dinhNghiaDuoc": true
+      },
+      "dieuKienSo": [
+        {
+          "fact": "daPhaThemDuongHoacRuou",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1777#soat-200899",
+          "ngay": "2026-11-21",
+          "bam": "ebded7276bf76b53a1201b5cec40738afc1c3ea79919ce525bab1f983525383d"
+        }
       }
     },
     {

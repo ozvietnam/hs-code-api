@@ -4,13 +4,19 @@
   "nhom": "4821",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-mm:loop:20261106T0850#soan-482110",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1777#soat-482110",
+    "ngay": "2026-11-21",
+    "ghiChu": "Chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1777)",
+    "bam": "ddbd035c0e915389cf8668f2887205a31efdbcf527895a79090960455b4c9b09"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -19,35 +25,52 @@
       "trich": "48211010 - - Nhãn mác dùng cho đồ trang sức, kể cả loại cho đồ trang sức cá nhân hoặc các vật dụng cá nhân được để trong ví, túi xách hoặc mang trên người(SEN)",
       "dieuKienSo": [
         {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": [
-            "đồ trang sức",
-            "các vật dụng cá nhân"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "đồ trang sức",
+                  "đồ trang sức cá nhân"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "các vật dụng cá nhân"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "được để trong ví",
+                  "túi xách",
+                  "mang trên người"
+                ]
+              }
+            ]
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "48211090",
       "nguon": "tax.48211090",
       "trich": "48211090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "48211010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.48211010 \"Nhãn mác dùng cho đồ trang sức, kể cả loại cho đồ trang sức cá nhân hoặc các vật dụng cá nhân được để trong ví, túi xách hoặc mang trên người(SEN)\" ⇒ dungCho CONG_DUNG mảng [\"đồ trang sức\", \"các vật dụng cá nhân\"] — phủ vế \"dùng cho đồ trang sức\" và vế \"cho đồ trang sức cá nhân hoặc các vật dụng cá nhân\"; vế \"kể cả loại\" là PHU nên không thành điều kiện."
-    },
-    {
-      "ma": "48211010",
-      "loai": "BO_VE",
-      "ve": "được để trong ví, túi xách hoặc mang trên người",
-      "lyDo": "Vế này chỉ nói nơi để của các vật dụng cá nhân (trong ví, túi xách hoặc mang trên người), không phải công dụng tách riêng; không gộp vào một giá trị chữ tự do được vì giá trị chứa \" hoặc \" bị cổng 3 chặn (liệt kê gói trong một chuỗi) — phần vật dụng đã phủ bằng \"các vật dụng cá nhân\"."
+      "ghiChu": "tax.48211010 \"Nhãn mác dùng cho đồ trang sức, kể cả loại cho đồ trang sức cá nhân hoặc các vật dụng cá nhân được để trong ví, túi xách hoặc mang trên người(SEN)\" ⇒ HOAC hai phương án: (1) dungCho [\"đồ trang sức\", \"đồ trang sức cá nhân\"]; (2) dungCho \"các vật dụng cá nhân\" VÀ dungCho [\"được để trong ví\", \"túi xách\", \"mang trên người\"] (giữ đủ vế giới hạn của các vật dụng cá nhân)"
     },
     {
       "ma": "48211090",
