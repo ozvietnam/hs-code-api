@@ -37,6 +37,7 @@ const H = require('../lib/hoi-theo-so-tay.js');
 const { classifyLoop } = require('../lib/engine-loop.js');
 const { missingStructured } = require('../lib/declaration-fields');
 const { loadRanhGioiDuyet } = require('../lib/so-tay-gates');
+const { tuKhoa, khopDieuKien, tapTuMoTa } = require('../lib/do-thi/tu-khoa');
 
 let pass = 0;
 let fail = 0;
@@ -59,7 +60,7 @@ const CAU_LLM = [
   'Model, nhãn hiệu và hãng sản xuất',
   'Có phải van điện từ thông thường hay van điện từ có phản hồi vị trí',
 ];
-const ketQuaGia = (hs = '848180', raw = VAN, them = {}) => ({
+const ketQuaGia = (hs = '848180', raw = VAN, them = {}, alt = []) => ({
   status: 'NEED_FACTS',
   nextAction: { type: 'ASK_USER', questions: CAU_LLM.map((q) => ({ attribute: null, questionVi: q, whereToFind: 'ảnh tem/nhãn, thông số kỹ thuật / hỏi người bán' })), howToAnswerVi: 'Bổ sung dữ kiện (ảnh tem/nhãn, thông số) rồi gọi lại /api/classify.' },
   results: [{ hs, hsLevel: hs.length, confidence: 60, reason: 'Hồ sơ thiếu dữ kiện quyết định mã', duKien: hs.length < 8 }],
@@ -69,11 +70,13 @@ const ketQuaGia = (hs = '848180', raw = VAN, them = {}) => ({
   dossier: {
     product: { nameVi: 'van điện từ khí nén 5/2', purpose: 'điều khiển xi lanh khí nén', material: 'nhôm', keySpecs: [{ k: 'cổng ren', v: '1/4 inch (13 mm)' }] },
     hypotheses: [{ chapter: '84', heading4: hs.slice(0, 4), subheading6: hs.slice(0, 6), confidence: 82 }],
-    unknowns: [...CAU_LLM], decision: 'HOI', conditions: CAU_LLM.map((u) => ({ fact: u, status: 'UNKNOWN', evidence: '' })), alternatives: [],
+    unknowns: [...CAU_LLM], decision: 'HOI', conditions: CAU_LLM.map((u) => ({ fact: u, status: 'UNKNOWN', evidence: '' })), alternatives: alt.map((h) => ({ hs: h, whyNot: 'còn cân nhắc' })),
   },
   engine: { name: 'loop', provider: 'minimax', gates: [{ hs, round: 2, unknowns: 6, earlyExitHoi: true }] },
   ...them,
 });
+// Ca sáng 21/11 nhưng vòng 2 CÒN GIỮ 848120 làm phương án (dossier.alternatives) ⇒ phân nhóm chưa chốt, được hỏi lại.
+const ketQuaSong = (raw = VAN) => ketQuaGia('848180', raw, {}, ['848120']);
 
 // 1) Công tắc TẮT (mặc định) → trả đúng đối tượng cũ, không thêm trường.
 {
@@ -85,9 +88,9 @@ const ketQuaGia = (hs = '848180', raw = VAN, them = {}) => ({
   check('BẬT: chỉ "on"/"1"/"true"', (await voi('on', () => H.bat())) && (await voi('1', () => H.bat())) && (await voi('true', () => H.bat())));
 }
 
-// 2) Ca van 5/2 — BẬT.
+// 2) Ca van 5/2 — BẬT (động cơ ra 848180, vòng 2 còn giữ 848120 làm phương án).
 {
-  const out = ketQuaGia();
+  const out = ketQuaSong();
   const truoc = JSON.stringify(out);
   const kq = await voi('on', () => H.apDung(out, { rawAttrs: VAN }));
   const qs = kq.nextAction.questions;
@@ -105,7 +108,7 @@ const ketQuaGia = (hs = '848180', raw = VAN, them = {}) => ({
   check('van 5/2: sổ ranh giới 848120 đang DUYET (tiền đề của căn cứ ranh-gioi-pn6)', Boolean(loadRanhGioiDuyet('848120')));
   check('van 5/2: câu đường kính trong phủ CẢ phân nhóm ứng viên thứ hai 848120, kèm căn cứ sổ ranh giới PN6 đã DUYET', Boolean(dk) && dk.phanNhom.includes('848180') && dk.phanNhom.includes('848120') && (dk.canCuThem || []).some((c) => c.canCu === 'ranh-gioi-pn6' && c.phanNhom === '848120' && /8481/.test(c.nguon)), dk);
   // Chỉ có câu mô tả trần của khách (vòng 1 chưa tách công dụng/cơ chế) → máy chốt dòng của 848120 còn thiếu "cách điều khiển".
-  const tran = ketQuaGia();
+  const tran = ketQuaSong();
   tran.dossier.product = { nameVi: 'van điện từ khí nén 5/2' };
   const kqTran = await voi('on', () => H.apDung(tran, { rawAttrs: VAN }));
   const rg = kqTran.nextAction.questions.find((q) => q.canCu === 'ranh-gioi-pn6');
@@ -122,32 +125,84 @@ const ketQuaGia = (hs = '848180', raw = VAN, them = {}) => ({
   check('van 5/2: thống kê đo được (llm.tong=6, sangGhiChu≥3, theoCanCu)', kq.hoiTheoSoTay.nhom === '8481' && kq.hoiTheoSoTay.llm.tong === 6 && kq.hoiTheoSoTay.llm.sangGhiChu >= 3 && kq.hoiTheoSoTay.theoCanCu['so-tay'] >= 1, kq.hoiTheoSoTay);
   const lan2 = await voi('on', () => H.apDung(kq, { rawAttrs: VAN }));
   check('van 5/2: áp dụng lần hai là no-op (lượt chạy lại B1b đi qua hai lần)', lan2 === kq);
-  const lai = await voi('on', () => H.apDung(ketQuaGia(), { rawAttrs: VAN }));
+  const lai = await voi('on', () => H.apDung(ketQuaSong(), { rawAttrs: VAN }));
   check('van 5/2: tất định — chạy lại cho đúng kết quả cũ', JSON.stringify(lai) === JSON.stringify(kq));
 }
 
 // 3) Dữ kiện đã có trong hồ sơ → không hỏi lại.
 {
   const raw = { tenHang: `${VAN.tenHang}, đường kính trong cửa nạp 13 mm` };
-  const kq = await voi('on', () => H.apDung(ketQuaGia('848180', raw), { rawAttrs: raw }));
+  const kq = await voi('on', () => H.apDung(ketQuaSong(raw), { rawAttrs: raw }));
   check('đã nêu "đường kính trong cửa nạp 13 mm" → không còn câu đường kính', kq.nextAction.canCuCauHoi === 'so-tay' && !kq.nextAction.questions.some((q) => /[Đđ]ường kính/.test(q.questionVi)), kq.nextAction.questions.map((q) => q.questionVi));
   // keySpecs của vòng 1 cũng là hồ sơ
-  const out2 = ketQuaGia();
+  const out2 = ketQuaSong();
   out2.dossier.product.keySpecs = [{ k: 'đường kính trong cửa nạp', v: '13 mm' }];
   const kq2 = await voi('on', () => H.apDung(out2, { rawAttrs: VAN }));
   check('product.keySpecs đã có đường kính trong → không hỏi lại', !kq2.nextAction.questions.some((q) => /[Đđ]ường kính/.test(q.questionVi)), kq2.nextAction.questions.map((q) => q.questionVi));
 }
 
-// 4) Nhóm ứng viên thứ hai mà sổ tay có phân biệt/loại trừ trỏ tới → câu phân biệt NHÓM đứng đầu.
+// 4) Nhóm ứng viên thứ hai mà sổ tay có phân biệt/loại trừ trỏ tới → câu phân biệt NHÓM, CHỈ khi điều kiện khớp mô tả.
 {
-  const out = ketQuaGia();
+  // Mô tả không nhắc gì tới đo / kiểm tra / điều khiển (mô tả van khí nén "dùng điều khiển xi lanh" CÓ chạm vế "điều khiển
+  // tự động" của dòng loại trừ 90.26/90.32 — ranh giới thật van điện từ / bộ điều chỉnh tự động — nên không dùng làm ca lạc đề).
+  const rawBi = { tenHang: 'Van bi tay gạt inox 304, ren trong DN25' };
+  const out = ketQuaGia('848180', rawBi, {}, ['848120']);
+  out.dossier.product = { nameVi: 'van bi tay gạt inox' };
   out.dossier.hypotheses.push({ chapter: '90', heading4: '9026', subheading6: '902620', confidence: 30 });
-  const kq = await voi('on', () => H.apDung(out, { rawAttrs: VAN }));
-  const q0 = kq.nextAction.questions[0];
-  check('ứng viên thứ hai 9026: câu đầu là phân biệt nhóm theo phanBiet[] của sổ tay 8481 (→ 90.26)', q0.loai === 'PHAN_BIET_NHOM' && q0.canCu === 'so-tay' && /90\.26/.test(q0.questionVi) && q0.nguon && q0.trich, q0);
-  check('ứng viên thứ hai 9026: một cặp nhóm một câu; phân nhóm 6 số vẫn đứng trước câu dòng 8 số; tổng ≤ 4', kq.nextAction.questions.length <= 4 && kq.nextAction.questions.filter((q) => q.loai === 'PHAN_BIET_NHOM').length === 1 && kq.nextAction.questions.findIndex((q) => q.loai === 'PHAN_NHOM_6') === 1 && kq.nextAction.questions.findIndex((q) => q.loai === 'DONG_8') === 2, kq.nextAction.questions.map((q) => q.loai));
-  const khong = await voi('on', () => H.apDung(ketQuaGia(), { rawAttrs: VAN }));
+  const kq = await voi('on', () => H.apDung(out, { rawAttrs: rawBi }));
+  check('ứng viên thứ hai 9026, mô tả van bi tay gạt (không đo / kiểm tra / điều khiển) → câu phân biệt / loại trừ 84.81–90.26 bị lọc lạc đề', !kq.nextAction.questions.some((q) => q.loai === 'PHAN_BIET_NHOM') && kq.hoiTheoSoTay.boLoc.lacDe >= 1, { qs: kq.nextAction.questions.map((q) => q.loai), boLoc: kq.hoiTheoSoTay.boLoc });
+  const rawDo = { tenHang: 'Thiết bị kết hợp van với đồng hồ đo áp suất, gắn trực tiếp trên thân van, dùng cho đường ống khí nén' };
+  const out2 = ketQuaGia('848180', rawDo, {}, ['848120']);
+  out2.dossier.hypotheses.push({ chapter: '90', heading4: '9026', subheading6: '902620', confidence: 30 });
+  const kq2 = await voi('on', () => H.apDung(out2, { rawAttrs: rawDo }));
+  const q0 = kq2.nextAction.questions[0];
+  check('ca ngược: mô tả "thiết bị kết hợp van với đồng hồ đo… gắn trực tiếp" → câu đầu là phân biệt nhóm theo phanBiet[] của sổ tay 8481 (→ 90.26)', q0.loai === 'PHAN_BIET_NHOM' && q0.canCu === 'so-tay' && /90\.26/.test(q0.questionVi) && q0.nguon && q0.trich, q0);
+  check('ca ngược: một cặp nhóm một câu; phân nhóm 6 số đứng thứ hai; tổng ≤ 4', kq2.nextAction.questions.length <= 4 && kq2.nextAction.questions.filter((q) => q.loai === 'PHAN_BIET_NHOM').length === 1 && kq2.nextAction.questions.findIndex((q) => q.loai === 'PHAN_NHOM_6') === 1, kq2.nextAction.questions.map((q) => q.loai));
+  const khong = await voi('on', () => H.apDung(ketQuaSong(), { rawAttrs: VAN }));
   check('không có nhóm ứng viên khác → KHÔNG hỏi phanBiet (không hỏi "đầu phun sprinkler" cho cái van)', !khong.nextAction.questions.some((q) => q.loai === 'PHAN_BIET_NHOM'));
+}
+
+// 4b) Ca thật 21/11 18:27 (HS_HOI_THEO_SO_TAY=on + HS_TIM_TRUOC=on, MiniMax): động cơ ra 848120 — đúng phân nhóm — nhưng khách
+//     bị hỏi lại "phân nhóm nào của 84.81" (4/5 lượt) và "van trượt cho động cơ hơi nước" (2/5 lượt).
+{
+  const ra120 = (hyp, raw = VAN, alt = []) => { const o = ketQuaGia('848120', raw, {}, alt); o.dossier.hypotheses = hyp; return o; };
+  const H120 = { chapter: '84', heading4: '8481', subheading6: '848120', confidence: 80 };
+  const H180 = { chapter: '84', heading4: '8481', subheading6: '848180', confidence: 30 };
+  const H8412 = { chapter: '84', heading4: '8412', subheading6: '841221', confidence: 15 };
+  const coPn = (k) => k.nextAction.questions.some((q) => q.loai === 'PHAN_NHOM_6' || /phân nhóm nào của nhóm 84\.81/.test(q.questionVi));
+  const coVanTruot = (k) => k.nextAction.questions.some((q) => /Van trượt cho động cơ hơi nước/.test(q.questionVi));
+  const coDuongKinh = (k) => k.nextAction.questions.some((q) => q.loai === 'DONG_8' && /[Đđ]ường kính trong/.test(q.questionVi));
+  for (const [ten, hyp] of [['giả thuyết chỉ 8481/848120', [H120]], ['giả thuyết vòng 1 còn ghi 848180 + 8412 (dựng lại đúng lượt thật)', [H120, H180, H8412]]]) {
+    const kq = await voi('on', () => H.apDung(ra120(hyp), { rawAttrs: VAN }));
+    check(`ra 848120, ${ten}: KHÔNG hỏi phân nhóm 84.81, KHÔNG hỏi van trượt hơi nước, CÓ câu đường kính trong`, !coPn(kq) && !coVanTruot(kq) && coDuongKinh(kq) && kq.nextAction.canCuCauHoi === 'so-tay', kq.nextAction.questions.map((q) => q.questionVi));
+    check(`ra 848120, ${ten}: giữ câu tách dòng "Van cổng điều khiển bằng tay…" của sổ ranh giới 848120`, kq.nextAction.questions.some((q) => q.loai === 'DONG_8' && /Van cổng điều khiển bằng tay/.test(q.questionVi)), kq.nextAction.questions.map((q) => q.questionVi));
+  }
+  const that = await voi('on', () => H.apDung(ra120([H120, H180, H8412]), { rawAttrs: VAN }));
+  check('ra 848120 (lượt thật): đếm boLoc — 1 câu phân nhóm bỏ vì đã chốt 6 số, ≥ 1 câu lạc đề', that.hoiTheoSoTay.boLoc.daChot6So === 1 && that.hoiTheoSoTay.boLoc.lacDe >= 1, that.hoiTheoSoTay.boLoc);
+  const song = await voi('on', () => H.apDung(ra120([H120], VAN, ['848180']), { rawAttrs: VAN }));
+  check('ca ngược: vòng 2 còn giữ 848180 (alternatives) cùng 848120 → VẪN hỏi câu phân nhóm 84.81', coPn(song), song.nextAction.questions.map((q) => q.questionVi));
+  const out2 = ra120([H120]); out2.results.push({ hs: '84818099', confidence: 20, source: 'engine-loop:alt' });
+  const song2 = await voi('on', () => H.apDung(out2, { rawAttrs: VAN }));
+  check('ca ngược: results còn mã 8481.80.99 → VẪN hỏi câu phân nhóm 84.81', coPn(song2), song2.nextAction.questions.map((q) => q.questionVi));
+  const rawHoi = { tenHang: 'Van điều khiển hơi nước cho động cơ hơi nước, thân gang' };
+  const hoi = await voi('on', () => H.apDung(ra120([H120, H8412], rawHoi), { rawAttrs: rawHoi }));
+  check('ca ngược: mô tả có "hơi nước" → VẪN hỏi câu loại trừ "Van trượt cho động cơ hơi nước" (→ 84.12)', coVanTruot(hoi), hoi.nextAction.questions.map((q) => q.questionVi));
+  check('khopPhanBiet: "van" trùng tên nhóm 84.81 không đủ; cụm "hơi nước" là phần phân biệt', H.khopPhanBiet('Van trượt cho động cơ hơi nước', VAN.tenHang, '8481', '8412') === null && H.khopPhanBiet('Van trượt cho động cơ hơi nước', rawHoi.tenHang, '8481', '8412')?.phanBiet === 'hoi nuoc');
+  check('khopPhanBiet: điều kiện toàn chữ tiêu đề hai nhóm ("Các van điều chỉnh bằng nhiệt", 84.81 / 90.32) chỉ khớp khi mô tả có đủ cả', H.khopPhanBiet('Các van điều chỉnh bằng nhiệt', 'Van điện từ khí nén 5/2', '8481', '9032') === null && Boolean(H.khopPhanBiet('Các van điều chỉnh bằng nhiệt', 'Van điều chỉnh bằng nhiệt cho két nước', '8481', '9032')));
+  check('khopPhanBiet: "điều tốc li tâm" không khớp van thuỷ lực "điều khiển bằng tay" (âm tiết lẻ "điều" không đủ)', H.khopPhanBiet('Máy điều tốc li tâm dùng cho động cơ hơi nước', 'Van đóng ngắt dầu thủy lực điều khiển bằng tay', '8481', '8412') === null);
+  check('khopPhanBiet: luật khớp gốc của bảng cạnh (khopDieuKien) VẪN khớp câu van trượt với mô tả van khí nén — lý do phải thêm bước phân biệt', Boolean(khopDieuKien(tuKhoa('Van trượt cho động cơ hơi nước'), tapTuMoTa(VAN.tenHang))));
+}
+
+// 4c) Bộ lọc bỏ hết câu của sổ → KHÔNG rơi về câu LLM: còn trường khai theo nhóm thì hỏi trường khai.
+{
+  const raw = { tenHang: 'Công tắc hành trình dùng cho máy công nghiệp' };
+  const o = ketQuaGia('853650', raw);
+  o.dossier.hypotheses.push({ chapter: '85', heading4: '8504', subheading6: '850440', confidence: 10 });
+  const kq = await voi('on', () => H.apDung(o, { rawAttrs: raw }));
+  const o0 = ketQuaGia('853650', raw);
+  const kq0 = await voi('on', () => H.apDung(o0, { rawAttrs: raw }));
+  check('tiền đề: 853650 (lồng nhiều cấp) không ứng viên khác → nhãn "llm"', kq0.nextAction.canCuCauHoi === 'llm', kq0.hoiTheoSoTay);
+  check('8536.50 + ứng viên 8504 lạc đề ("Máy biến áp"): câu bị lọc, còn trường khai → nhãn "truong-khai-nhom", không giữ câu LLM', kq.nextAction.canCuCauHoi === 'truong-khai-nhom' && kq.hoiTheoSoTay.lyDo === 'loc-het-cau-so' && kq.hoiTheoSoTay.boLoc.lacDe >= 1 && kq.nextAction.questions.length > 0 && kq.nextAction.questions.every((q) => q.canCu === 'truong-khai-nhom') && kq.nextAction.ghiChuThem.includes(CAU_LLM[0]), { cc: kq.nextAction.canCuCauHoi, st: kq.hoiTheoSoTay, qs: kq.nextAction.questions.map((q) => q.questionVi) });
 }
 
 // 5) Động cơ mới dừng ở NHÓM 4 số → vẫn hỏi phân nhóm 6 số trước.
@@ -227,11 +282,11 @@ const ketQuaGia = (hs = '848180', raw = VAN, them = {}) => ({
 {
   const R1 = {
     product: { nameVi: 'van điện từ khí nén 5/2', nameEn: '5/2 pneumatic solenoid valve', purpose: 'điều khiển xi lanh khí nén', mechanism: 'điện từ', material: 'nhôm', form: 'hoàn chỉnh', evidence: {} },
-    hypotheses: [{ chapter: '84', heading4: '8481', subheading6: '848180', why: 'van điện từ', confidence: 82 }],
-    verify: { searchVi: ['van điện từ khí nén'], codes8: ['84818099'], unknowns: CAU_LLM },
+    hypotheses: [{ chapter: '84', heading4: '8481', subheading6: '848120', why: 'van truyền động khí nén', confidence: 80 }, { chapter: '84', heading4: '8481', subheading6: '848180', why: 'van khác', confidence: 30 }, { chapter: '84', heading4: '8412', subheading6: '841221', why: 'xi lanh', confidence: 15 }],
+    verify: { searchVi: ['van điện từ khí nén'], codes8: ['84812090'], unknowns: CAU_LLM },
   };
   const chay = async (co) => voi(co, async () => {
-    script = [JSON.parse(JSON.stringify(R1)), { decision: 'HOI', hs: '848180', confidence: 55, reason: 'thiếu dữ kiện', basis: [], conditions: [], alternatives: [], questions: CAU_LLM.map((q) => ({ fact: q, question: q, whereToFind: 'catalogue' })) }];
+    script = [JSON.parse(JSON.stringify(R1)), { decision: 'HOI', hs: '848120', confidence: 55, reason: 'thiếu dữ kiện', basis: [], conditions: [], alternatives: [], questions: CAU_LLM.map((q) => ({ fact: q, question: q, whereToFind: 'catalogue' })) }];
     llmCalls = 0;
     process.env.HS_SO_TAY = 'full';
     try { return { out: await classifyLoop({ ...VAN }, {}), llm: llmCalls }; } finally { delete process.env.HS_SO_TAY; }
@@ -243,7 +298,7 @@ const ketQuaGia = (hs = '848180', raw = VAN, them = {}) => ({
   check('động cơ: BẬT không đổi status / mã / độ tự tin / quyết định / nhật ký cổng', gon(tat.out) === gon(bat.out), `${gon(tat.out)}\n${gon(bat.out)}`);
   check('động cơ: BẬT không thêm lượt LLM', tat.llm === bat.llm && bat.llm >= 1, { tat: tat.llm, bat: bat.llm });
   const qs = bat.out.nextAction?.questions || [];
-  check('động cơ: BẬT → câu hỏi theo sổ (phân nhóm 8481.20/8481.80 đứng đầu, không còn "điện áp cuộn dây")', bat.out.nextAction?.canCuCauHoi === 'so-tay' && qs[0]?.loai === 'PHAN_NHOM_6' && /8481\.20/.test(qs[0].questionVi) && !qs.some((q) => /điện áp cuộn dây/i.test(q.questionVi)) && qs.length <= 4, { cc: bat.out.nextAction?.canCuCauHoi, qs: qs.map((q) => q.questionVi), ly: bat.out.hoiTheoSoTay });
+  check('động cơ (dựng lại lượt thật 21/11 18:27, ra 848120): BẬT → câu theo sổ, không hỏi phân nhóm 84.81, không hỏi van trượt hơi nước, có đường kính trong, không còn "điện áp cuộn dây"', bat.out.results?.[0]?.hs === '848120' && bat.out.nextAction?.canCuCauHoi === 'so-tay' && !qs.some((q) => q.loai === 'PHAN_NHOM_6' || q.loai === 'PHAN_BIET_NHOM') && qs.some((q) => /[Đđ]ường kính trong/.test(q.questionVi)) && !qs.some((q) => /điện áp cuộn dây|Van trượt/i.test(q.questionVi)) && qs.length <= 4, { hs: bat.out.results?.[0]?.hs, cc: bat.out.nextAction?.canCuCauHoi, qs: qs.map((q) => q.questionVi), ly: bat.out.hoiTheoSoTay });
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);
