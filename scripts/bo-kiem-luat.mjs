@@ -327,6 +327,9 @@ export function cumKhangDinh(c) {
     }
     return out.join(', ');
   }
+  if (c.chieu === 'PHAI_KHONG') {
+    return cumPhuDinhNhom([{ ...c, chieu: undefined }]);
+  }
   if (c.op === 'HOAC' && Array.isArray(c.phuongAn) && c.phuongAn[0]) {
     return cumKhangDinh(c.phuongAn[0]);
   }
@@ -651,6 +654,12 @@ export function sinhCaNhom(nhom4) {
               if (s) moTa += `, ${s}`;
             }
           }
+        }
+        const dRec = (st.dong8 || []).find((d) => nz(d?.hs) === hs8);
+        if (dRec && String(dRec.nguon || '').startsWith('sen.') && Array.isArray(dRec.dieuKienSo) && dRec.dieuKienSo.length) {
+          const veSen = dRec.dieuKienSo.filter((x) => x && x.op !== 'TEN_LOAI');
+          const sSen = cumKhangDinh(veSen.length ? veSen : dRec.dieuKienSo);
+          if (sSen) moTa += `, ${sSen}`;
         }
         caDongCoTen.push({
           loaiCa: 'DONG_CO_TEN',
