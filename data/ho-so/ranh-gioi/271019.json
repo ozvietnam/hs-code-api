@@ -4,13 +4,19 @@
   "nhom": "2710",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-271019",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1837#soat-271019",
+    "ngay": "2026-11-22",
+    "ghiChu": "Bổ sung chế phẩm vào tenLoai 27101989 và tách phanConLai 27101946 khỏi 27101944 (OZV-1837)",
+    "bam": "81487651da3d591e70196bd9ca9b8850e2fbb6b20134d00e9421bcd459aacf34"
+  },
   "dieuKienNut": [
     {
       "id": "2710194",
@@ -31,7 +37,7 @@
           "value": "bôi trơn"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "2710197",
@@ -47,7 +53,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -62,7 +68,7 @@
           "value": "Dầu thô đã tách phần nhẹ"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "27101930",
@@ -80,7 +86,7 @@
           "value": "sản xuất than đen"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "27101941",
@@ -98,7 +104,7 @@
           "value": "sản xuất dầu bôi trơn"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "27101942",
@@ -116,7 +122,7 @@
           "value": "động cơ máy bay"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "27101944",
@@ -129,7 +135,7 @@
           "value": "Mỡ bôi trơn"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "27101945",
@@ -147,15 +153,25 @@
           "value": "nguyên liệu dệt"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "27101946",
       "nguon": "tax.27101946",
       "trich": "27101946 - - - - Dầu bôi trơn khác",
-      "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM",
-      "phanConLai": true
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "bôi trơn"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "phanConLai": [
+        "27101941",
+        "27101942",
+        "27101945"
+      ]
     },
     {
       "hs": "27101950",
@@ -173,7 +189,7 @@
           "value": "bộ hãm thủy lực"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "27101960",
@@ -194,7 +210,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "27101971",
@@ -212,7 +228,7 @@
           "value": "ô tô"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "27101972",
@@ -225,7 +241,7 @@
           "value": "Nhiên liệu diesel"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": [
         "27101971"
       ]
@@ -241,7 +257,7 @@
           "value": "Dầu nhiên liệu"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "27101981",
@@ -260,7 +276,7 @@
           "donVi": "oC"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "27101982",
@@ -279,7 +295,7 @@
           "donVi": "oC"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "27101983",
@@ -292,7 +308,7 @@
           "value": "kerosine"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": true
     },
     {
@@ -303,10 +319,13 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Dầu trung"
+          "value": [
+            "Dầu trung",
+            "chế phẩm"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": true
     },
     {
@@ -314,7 +333,7 @@
       "nguon": "tax.27101990",
       "trich": "27101990 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "chongLanVanBan": [
@@ -457,7 +476,7 @@
     {
       "ma": "27101946",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.27101946 \"Dầu bôi trơn khác\" ⇒ phần còn lại có tên: tên \"Dầu bôi trơn\" đã nằm ở tiêu đề cha 2710194 nên chỉ phanConLai true, dieuKienSo rỗng."
+      "ghiChu": "tax.27101946 \"Dầu bôi trơn khác\" ⇒ congDung \"bôi trơn\" + phanConLai [\"27101941\",\"27101942\",\"27101945\"] (phần còn lại của các dòng dầu bôi trơn .41, .42, .45 dưới tiêu đề cha 2710194)."
     },
     {
       "ma": "27101950",
@@ -507,7 +526,7 @@
     {
       "ma": "27101989",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.27101989 \"Dầu trung khác và các chế phẩm (SEN)\" ⇒ tenLoai \"Dầu trung\" + phanConLai true. Vế \"và các chế phẩm\" chưa mã hoá thêm: chỉ nối tên hàng với chế phẩm của nó."
+      "ghiChu": "tax.27101989 \"Dầu trung khác và các chế phẩm (SEN)\" ⇒ tenLoai [\"Dầu trung\",\"chế phẩm\"] + phanConLai true (phủ cả hai đầu ngữ \"Dầu trung\" và \"chế phẩm\" theo EN \"Other medium oils and preparations\")."
     },
     {
       "ma": "27101990",

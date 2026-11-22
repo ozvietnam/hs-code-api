@@ -4,13 +4,19 @@
   "nhom": "1517",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1530#soan-151710",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1837#soat-151710",
+    "ngay": "2026-11-22",
+    "ghiChu": "Đổi 15171010 sang khoá dongBaoBiKinKhiDeBanLe CO theo traVe (OZV-1837)",
+    "bam": "db26f4ec7d67a207580fc93b4f3a80682aa737c1f962cd1d56368e71ed048376"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -19,26 +25,25 @@
       "trich": "15171010 - - Đóng bao bì kín khí để bán lẻ",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Đóng bao bì kín khí để bán lẻ"
+          "fact": "dongBaoBiKinKhiDeBanLe",
+          "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "15171090",
       "nguon": "tax.15171090",
       "trich": "15171090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "15171010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.15171010 \"15171010 - - Đóng bao bì kín khí để bán lẻ\" ⇒ tenLoai \"Đóng bao bì kín khí để bán lẻ\" (chữ biểu của dòng; từ vựng chưa có khoá cho \"đóng bao bì kín khí\" nên chép nguyên văn theo khoá tên hàng). Dòng 15171090 \"Loại khác\" trần ⇒ không ghi điều kiện."
+      "ghiChu": "tax.15171010 \"15171010 - - Đóng bao bì kín khí để bán lẻ\" ⇒ dongBaoBiKinKhiDeBanLe CO (chữ biểu của dòng). Dòng 15171090 \"Loại khác\" trần ⇒ không ghi điều kiện."
     }
   ],
   "traVe": [

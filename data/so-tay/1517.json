@@ -107,17 +107,31 @@
  "dong8": [
   {
    "hs": "15171010",
-   "dieuKien": "Đóng bao bì kín khí để bán lẻ",
+   "dieuKien": "đóng bao bì kín khí để bán lẻ",
+   "nguon": "tax.15171010",
+   "trich": "15171010 - - Đóng bao bì kín khí để bán lẻ",
+   "nguonLoai": "CLAUDE_DUYET",
+   "loaiKhac": false,
+   "dieuKienSo": [
+    {
+     "fact": "dongBaoBiKinKhiDeBanLe",
+     "op": "CO"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:ozv-1837#soat-151710",
+     "ngay": "2026-11-22",
+     "bam": "db26f4ec7d67a207580fc93b4f3a80682aa737c1f962cd1d56368e71ed048376"
+    }
+   },
    "tieuChi": {
     "fact": "la_margarin_dong_bao_bi_kin_khi_de_ban_le",
     "op": "=",
     "value": true,
     "donVi": null
-   },
-   "nguon": "tax.15171010",
-   "trich": "15171010 - - Đóng bao bì kín khí để bán lẻ",
-   "nguonLoai": "AI_DA_KIEM",
-   "loaiKhac": false
+   }
   },
   {
    "hs": "15171090",
@@ -133,205 +147,453 @@
     "truAnhEm": [
      "15171010"
     ],
+    "truDayDu": [
+     "15171010"
+    ],
     "toTienCoTen": "151710",
     "dinhNghiaDuoc": true
    }
   },
   {
    "hs": "15179010",
-   "dieuKien": "Chế phẩm giả ghee",
+   "dieuKien": "tên loại hàng: Chế phẩm giả ghee",
+   "nguon": "tax.15179010",
+   "trich": "15179010 - - Chế phẩm giả ghee",
+   "nguonLoai": "CLAUDE_DUYET",
+   "loaiKhac": false,
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Chế phẩm giả ghee"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:ozv-1837#soat-151790",
+     "ngay": "2026-11-22",
+     "bam": "d7a90b72cd50d984385f9d392b48d9202959eedeb32c7e550cfc1df830f6b410"
+    }
+   },
    "tieuChi": {
     "fact": "la_che_pham_gia_ghee",
     "op": "=",
     "value": true,
     "donVi": null
-   },
-   "nguon": "tax.15179010",
-   "trich": "15179010 - - Chế phẩm giả ghee",
-   "nguonLoai": "AI_DA_KIEM",
-   "loaiKhac": false
+   }
   },
   {
    "hs": "15179020",
-   "dieuKien": "Margarin lỏng",
+   "dieuKien": "tên loại hàng: Margarin lỏng",
+   "nguon": "tax.15179020",
+   "trich": "15179020 - - Margarin lỏng",
+   "nguonLoai": "CLAUDE_DUYET",
+   "loaiKhac": false,
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Margarin lỏng"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:ozv-1837#soat-151790",
+     "ngay": "2026-11-22",
+     "bam": "d7a90b72cd50d984385f9d392b48d9202959eedeb32c7e550cfc1df830f6b410"
+    }
+   },
    "tieuChi": {
     "fact": "la_margarin_long",
     "op": "=",
     "value": true,
     "donVi": null
-   },
-   "nguon": "tax.15179020",
-   "trich": "15179020 - - Margarin lỏng",
-   "nguonLoai": "AI_DA_KIEM",
-   "loaiKhac": false
+   }
   },
   {
    "hs": "15179030",
-   "dieuKien": "Của loại sử dụng như chế phẩm tách khuôn",
+   "dieuKien": "tên loại hàng: Của loại sử dụng như chế phẩm tách khuôn",
+   "nguon": "tax.15179030",
+   "trich": "15179030 - - Của loại sử dụng như chế phẩm tách khuôn",
+   "nguonLoai": "CLAUDE_DUYET",
+   "loaiKhac": false,
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Của loại sử dụng như chế phẩm tách khuôn"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:ozv-1837#soat-151790",
+     "ngay": "2026-11-22",
+     "bam": "d7a90b72cd50d984385f9d392b48d9202959eedeb32c7e550cfc1df830f6b410"
+    }
+   },
    "tieuChi": {
     "fact": "cua_loai_su_dung_nhu_che_pham_tach_khuon",
     "op": "=",
     "value": true,
     "donVi": null
-   },
-   "nguon": "tax.15179030",
-   "trich": "15179030 - - Của loại sử dụng như chế phẩm tách khuôn",
-   "nguonLoai": "AI_DA_KIEM",
-   "loaiKhac": false
+   }
   },
   {
    "hs": "15179043",
-   "dieuKien": "Shortening",
+   "dieuKien": "tên loại hàng: Shortening",
+   "nguon": "tax.15179043",
+   "trich": "15179043 - - - Shortening",
+   "nguonLoai": "CLAUDE_DUYET",
+   "loaiKhac": false,
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Shortening"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:ozv-1837#soat-151790",
+     "ngay": "2026-11-22",
+     "bam": "d7a90b72cd50d984385f9d392b48d9202959eedeb32c7e550cfc1df830f6b410"
+    }
+   },
    "tieuChi": {
     "fact": "la_shortening",
     "op": "=",
     "value": true,
     "donVi": null
-   },
-   "nguon": "tax.15179043",
-   "trich": "15179043 - - - Shortening",
-   "nguonLoai": "AI_DA_KIEM",
-   "loaiKhac": false
+   }
   },
   {
    "hs": "15179044",
-   "dieuKien": "Chế phẩm giả mỡ lợn",
+   "dieuKien": "tên loại hàng: Chế phẩm giả mỡ lợn",
+   "nguon": "tax.15179044",
+   "trich": "15179044 - - - Chế phẩm giả mỡ lợn",
+   "nguonLoai": "CLAUDE_DUYET",
+   "loaiKhac": false,
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Chế phẩm giả mỡ lợn"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:ozv-1837#soat-151790",
+     "ngay": "2026-11-22",
+     "bam": "d7a90b72cd50d984385f9d392b48d9202959eedeb32c7e550cfc1df830f6b410"
+    }
+   },
    "tieuChi": {
     "fact": "la_che_pham_gia_mo_lon",
     "op": "=",
     "value": true,
     "donVi": null
-   },
-   "nguon": "tax.15179044",
-   "trich": "15179044 - - - Chế phẩm giả mỡ lợn",
-   "nguonLoai": "AI_DA_KIEM",
-   "loaiKhac": false
+   }
   },
   {
    "hs": "15179050",
-   "dieuKien": "Hỗn hợp hoặc chế phẩm ở dạng rắn khác của chất béo, dầu thực vật hoặc các phần phân đoạn",
+   "dieuKien": "tên loại hàng: Hỗn hợp hoặc chế phẩm; không: ở dạng lỏng; tên loại hàng: thực vật",
+   "nguon": "tax.15179050",
+   "trich": "15179050 - - Hỗn hợp hoặc chế phẩm ở dạng rắn khác của chất béo hoặc dầu thực vật hoặc của các phần phân đoạn của chúng",
+   "nguonLoai": "CLAUDE_DUYET",
+   "loaiKhac": false,
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": [
+      "Hỗn hợp",
+      "chế phẩm"
+     ]
+    },
+    {
+     "fact": "dangLong",
+     "op": "KHONG"
+    },
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "thực vật"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:ozv-1837#soat-151790",
+     "ngay": "2026-11-22",
+     "bam": "d7a90b72cd50d984385f9d392b48d9202959eedeb32c7e550cfc1df830f6b410"
+    }
+   },
+   "phanConLai": false,
    "tieuChi": {
     "fact": "la_hon_hop_hoac_che_pham_o_dang_ran_khac_cua_chat_beo_hoac_dau_thuc_vat_hoac_cua_cac_phan_phan_doan_cua_chung",
     "op": "=",
     "value": true,
     "donVi": null
-   },
-   "nguon": "tax.15179050",
-   "trich": "15179050 - - Hỗn hợp hoặc chế phẩm ở dạng rắn khác của chất béo hoặc dầu thực vật hoặc của các phần phân đoạn của chúng",
-   "nguonLoai": "AI_DA_KIEM",
-   "loaiKhac": false
+   }
   },
   {
    "hs": "15179061",
-   "dieuKien": "Thành phần chủ yếu là dầu lạc",
+   "dieuKien": "tên loại hàng: Thành phần chủ yếu là dầu lạc",
+   "nguon": "tax.15179061",
+   "trich": "15179061 - - - Thành phần chủ yếu là dầu lạc",
+   "nguonLoai": "CLAUDE_DUYET",
+   "loaiKhac": false,
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Thành phần chủ yếu là dầu lạc"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:ozv-1837#soat-151790",
+     "ngay": "2026-11-22",
+     "bam": "d7a90b72cd50d984385f9d392b48d9202959eedeb32c7e550cfc1df830f6b410"
+    }
+   },
    "tieuChi": {
     "fact": "thanh_phan_chu_yeu_la_dau_lac",
     "op": "=",
     "value": true,
     "donVi": null
-   },
-   "nguon": "tax.15179061",
-   "trich": "15179061 - - - Thành phần chủ yếu là dầu lạc",
-   "nguonLoai": "AI_DA_KIEM",
-   "loaiKhac": false
+   }
   },
   {
    "hs": "15179062",
-   "dieuKien": "Thành phần chủ yếu là dầu cọ thô",
+   "dieuKien": "tên loại hàng: Thành phần chủ yếu là dầu cọ thô",
+   "nguon": "tax.15179062",
+   "trich": "15179062 - - - Thành phần chủ yếu là dầu cọ thô",
+   "nguonLoai": "CLAUDE_DUYET",
+   "loaiKhac": false,
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Thành phần chủ yếu là dầu cọ thô"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:ozv-1837#soat-151790",
+     "ngay": "2026-11-22",
+     "bam": "d7a90b72cd50d984385f9d392b48d9202959eedeb32c7e550cfc1df830f6b410"
+    }
+   },
    "tieuChi": {
     "fact": "thanh_phan_chu_yeu_la_dau_co_tho",
     "op": "=",
     "value": true,
     "donVi": null
-   },
-   "nguon": "tax.15179062",
-   "trich": "15179062 - - - Thành phần chủ yếu là dầu cọ thô",
-   "nguonLoai": "AI_DA_KIEM",
-   "loaiKhac": false
+   }
   },
   {
    "hs": "15179063",
-   "dieuKien": "Thành phần chủ yếu là dầu cọ khác, đóng gói với khối lượng tịnh không quá 25kg",
+   "dieuKien": "tên loại hàng: Thành phần chủ yếu là dầu cọ khác; khối lượng <= 25 kg",
+   "nguon": "tax.15179063",
+   "trich": "15179063 - - - Thành phần chủ yếu là dầu cọ khác, đóng gói với khối lượng tịnh không quá 25kg",
+   "nguonLoai": "CLAUDE_DUYET",
+   "loaiKhac": false,
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Thành phần chủ yếu là dầu cọ khác"
+    },
+    {
+     "fact": "khoiLuong",
+     "op": "<=",
+     "value": 25,
+     "donVi": "kg"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:ozv-1837#soat-151790",
+     "ngay": "2026-11-22",
+     "bam": "d7a90b72cd50d984385f9d392b48d9202959eedeb32c7e550cfc1df830f6b410"
+    }
+   },
+   "phanConLai": [
+    "15179062"
+   ],
    "tieuChi": {
     "fact": "thanh_phan_chu_yeu_la_dau_co_khac_dong_goi_voi_khoi_luong_tinh_khong_qua_25kg",
     "op": "=",
     "value": true,
     "donVi": null
-   },
-   "nguon": "tax.15179063",
-   "trich": "15179063 - - - Thành phần chủ yếu là dầu cọ khác, đóng gói với khối lượng tịnh không quá 25kg",
-   "nguonLoai": "AI_DA_KIEM",
-   "loaiKhac": false
+   }
   },
   {
    "hs": "15179064",
-   "dieuKien": "Thành phần chủ yếu là dầu cọ khác, đóng gói với khối lượng tịnh trên 25kg",
+   "dieuKien": "tên loại hàng: Thành phần chủ yếu là dầu cọ khác; khối lượng > 25 kg",
+   "nguon": "tax.15179064",
+   "trich": "15179064 - - - Thành phần chủ yếu là dầu cọ khác, đóng gói với khối lượng tịnh trên 25kg",
+   "nguonLoai": "CLAUDE_DUYET",
+   "loaiKhac": false,
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Thành phần chủ yếu là dầu cọ khác"
+    },
+    {
+     "fact": "khoiLuong",
+     "op": ">",
+     "value": 25,
+     "donVi": "kg"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:ozv-1837#soat-151790",
+     "ngay": "2026-11-22",
+     "bam": "d7a90b72cd50d984385f9d392b48d9202959eedeb32c7e550cfc1df830f6b410"
+    }
+   },
+   "phanConLai": [
+    "15179062",
+    "15179063"
+   ],
    "tieuChi": {
     "fact": "thanh_phan_chu_yeu_la_dau_co_khac_dong_goi_voi_khoi_luong_tinh_tren_25kg",
     "op": "=",
     "value": true,
     "donVi": null
-   },
-   "nguon": "tax.15179064",
-   "trich": "15179064 - - - Thành phần chủ yếu là dầu cọ khác, đóng gói với khối lượng tịnh trên 25kg",
-   "nguonLoai": "AI_DA_KIEM",
-   "loaiKhac": false
+   }
   },
   {
    "hs": "15179065",
-   "dieuKien": "Thành phần chủ yếu là dầu hạt cọ",
+   "dieuKien": "tên loại hàng: Thành phần chủ yếu là dầu hạt cọ",
+   "nguon": "tax.15179065",
+   "trich": "15179065 - - - Thành phần chủ yếu là dầu hạt cọ",
+   "nguonLoai": "CLAUDE_DUYET",
+   "loaiKhac": false,
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Thành phần chủ yếu là dầu hạt cọ"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:ozv-1837#soat-151790",
+     "ngay": "2026-11-22",
+     "bam": "d7a90b72cd50d984385f9d392b48d9202959eedeb32c7e550cfc1df830f6b410"
+    }
+   },
    "tieuChi": {
     "fact": "thanh_phan_chu_yeu_la_dau_hat_co",
     "op": "=",
     "value": true,
     "donVi": null
-   },
-   "nguon": "tax.15179065",
-   "trich": "15179065 - - - Thành phần chủ yếu là dầu hạt cọ",
-   "nguonLoai": "AI_DA_KIEM",
-   "loaiKhac": false
+   }
   },
   {
    "hs": "15179066",
-   "dieuKien": "Thành phần chủ yếu là olein hạt cọ",
+   "dieuKien": "tên loại hàng: Thành phần chủ yếu là olein hạt cọ",
+   "nguon": "tax.15179066",
+   "trich": "15179066 - - - Thành phần chủ yếu là olein hạt cọ",
+   "nguonLoai": "CLAUDE_DUYET",
+   "loaiKhac": false,
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Thành phần chủ yếu là olein hạt cọ"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:ozv-1837#soat-151790",
+     "ngay": "2026-11-22",
+     "bam": "d7a90b72cd50d984385f9d392b48d9202959eedeb32c7e550cfc1df830f6b410"
+    }
+   },
    "tieuChi": {
     "fact": "thanh_phan_chu_yeu_la_olein_hat_co",
     "op": "=",
     "value": true,
     "donVi": null
-   },
-   "nguon": "tax.15179066",
-   "trich": "15179066 - - - Thành phần chủ yếu là olein hạt cọ",
-   "nguonLoai": "AI_DA_KIEM",
-   "loaiKhac": false
+   }
   },
   {
    "hs": "15179067",
-   "dieuKien": "Thành phần chủ yếu là dầu đậu tương hoặc dầu dừa",
+   "dieuKien": "tên loại hàng: Thành phần chủ yếu là dầu đậu tương hoặc dầu dừa",
+   "nguon": "tax.15179067",
+   "trich": "15179067 - - - Thành phần chủ yếu là dầu đậu tương hoặc dầu dừa",
+   "nguonLoai": "CLAUDE_DUYET",
+   "loaiKhac": false,
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": [
+      "Thành phần chủ yếu là dầu đậu tương",
+      "dầu dừa"
+     ]
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:ozv-1837#soat-151790",
+     "ngay": "2026-11-22",
+     "bam": "d7a90b72cd50d984385f9d392b48d9202959eedeb32c7e550cfc1df830f6b410"
+    }
+   },
    "tieuChi": {
     "fact": "thanh_phan_chu_yeu_la_dau_dau_tuong_hoac_dau_dua",
     "op": "=",
     "value": true,
     "donVi": null
-   },
-   "nguon": "tax.15179067",
-   "trich": "15179067 - - - Thành phần chủ yếu là dầu đậu tương hoặc dầu dừa",
-   "nguonLoai": "AI_DA_KIEM",
-   "loaiKhac": false
+   }
   },
   {
    "hs": "15179068",
-   "dieuKien": "Thành phần chủ yếu là dầu hạt illipe",
+   "dieuKien": "tên loại hàng: Thành phần chủ yếu là dầu hạt illipe",
+   "nguon": "tax.15179068",
+   "trich": "15179068 - - - Thành phần chủ yếu là dầu hạt illipe",
+   "nguonLoai": "CLAUDE_DUYET",
+   "loaiKhac": false,
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Thành phần chủ yếu là dầu hạt illipe"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:ozv-1837#soat-151790",
+     "ngay": "2026-11-22",
+     "bam": "d7a90b72cd50d984385f9d392b48d9202959eedeb32c7e550cfc1df830f6b410"
+    }
+   },
    "tieuChi": {
     "fact": "thanh_phan_chu_yeu_la_dau_hat_illipe",
     "op": "=",
     "value": true,
     "donVi": null
-   },
-   "nguon": "tax.15179068",
-   "trich": "15179068 - - - Thành phần chủ yếu là dầu hạt illipe",
-   "nguonLoai": "AI_DA_KIEM",
-   "loaiKhac": false
+   }
   },
   {
    "hs": "15179069",
@@ -354,23 +616,62 @@
      "15179067",
      "15179068"
     ],
+    "truDayDu": [
+     "15179061",
+     "15179062",
+     "15179063",
+     "15179064",
+     "15179065",
+     "15179066",
+     "15179067",
+     "15179068",
+     "15179010",
+     "15179020",
+     "15179030",
+     "1517904",
+     "15179050",
+     "15179080"
+    ],
     "toTienCoTen": "151790",
     "dinhNghiaDuoc": true
    }
   },
   {
    "hs": "15179080",
-   "dieuKien": "Của hỗn hợp hoặc chế phẩm từ mỡ hoặc dầu động vật hoặc từ các phần phân đoạn của chúng",
+   "dieuKien": "tên loại hàng: hỗn hợp hoặc chế phẩm; tên loại hàng: động vật",
+   "nguon": "tax.15179080",
+   "trich": "15179080 - - Của hỗn hợp hoặc chế phẩm từ mỡ hoặc dầu động vật hoặc từ các phần phân đoạn của chúng",
+   "nguonLoai": "CLAUDE_DUYET",
+   "loaiKhac": false,
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": [
+      "hỗn hợp",
+      "chế phẩm"
+     ]
+    },
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "động vật"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:ozv-1837#soat-151790",
+     "ngay": "2026-11-22",
+     "bam": "d7a90b72cd50d984385f9d392b48d9202959eedeb32c7e550cfc1df830f6b410"
+    }
+   },
    "tieuChi": {
     "fact": "cua_hon_hop_hoac_che_pham_tu_mo_hoac_dau_dong_vat_hoac_tu_cac_phan_phan_doan_cua_chung",
     "op": "=",
     "value": true,
     "donVi": null
-   },
-   "nguon": "tax.15179080",
-   "trich": "15179080 - - Của hỗn hợp hoặc chế phẩm từ mỡ hoặc dầu động vật hoặc từ các phần phân đoạn của chúng",
-   "nguonLoai": "AI_DA_KIEM",
-   "loaiKhac": false
+   }
   },
   {
    "hs": "15179090",
@@ -384,6 +685,15 @@
     "nguonLoai": "MAY_SUY",
     "cha": "151790",
     "truAnhEm": [
+     "15179010",
+     "15179020",
+     "15179030",
+     "1517904",
+     "15179050",
+     "1517906",
+     "15179080"
+    ],
+    "truDayDu": [
      "15179010",
      "15179020",
      "15179030",
@@ -632,5 +942,65 @@
   "dat": 30,
   "loai": 0,
   "nguonBiCat": []
- }
+ },
+ "dieuKienNut": [
+  {
+   "id": "1517904",
+   "nguon": "tieuDe.1517904",
+   "trich": "1517904 Chế phẩm giả mỡ lợn; shortening",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": [
+      "Chế phẩm giả mỡ lợn",
+      "shortening"
+     ]
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:ozv-1837#soat-151790",
+     "ngay": "2026-11-22",
+     "bam": "d7a90b72cd50d984385f9d392b48d9202959eedeb32c7e550cfc1df830f6b410"
+    }
+   }
+  },
+  {
+   "id": "1517906",
+   "nguon": "tieuDe.1517906",
+   "trich": "1517906 Hỗn hợp hoặc chế phẩm ở dạng lỏng khác của chất béo hoặc dầu thực vật hoặc của các phần phân đoạn của chúng",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": [
+      "Hỗn hợp",
+      "chế phẩm"
+     ]
+    },
+    {
+     "fact": "dangLong",
+     "op": "CO"
+    },
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "thực vật"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:ozv-1837#soat-151790",
+     "ngay": "2026-11-22",
+     "bam": "d7a90b72cd50d984385f9d392b48d9202959eedeb32c7e550cfc1df830f6b410"
+    }
+   },
+   "phanConLai": false
+  }
+ ]
 }
