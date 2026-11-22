@@ -14,8 +14,8 @@
     "boi": "CLAUDE_DUYET",
     "phien": "claude:tho-hs-01:20261122#soat-950300",
     "ngay": "2026-11-22",
-    "ghiChu": "OZV-1836: chuẩn hoá 95030021 (tenLoai Búp bê + loaiDoChoi BUP_BE) và 95030050 (BO_VE vế trừ plastic)",
-    "bam": "535d21ec406450ab41abfb9ecc46f531e10b765f4a6010232b15a8adb603b081"
+    "ghiChu": "OZV-1836: chuẩn hoá 95030021 (tenLoai Búp bê + loaiDoChoi BUP_BE) và 95030050 (giữ chatLieu PHAI_KHONG plastic + cụm nguyên văn trừ plastic)",
+    "bam": "3301361b16aba7243b8eeddd9f5f285c85cf05f841dc3ce5edb7834ea904b490"
   },
   "dieuKienNut": [
     {
@@ -197,9 +197,34 @@
       "trich": "95030050 - Đồ chơi và bộ đồ chơi xây dựng khác, bằng mọi loại vật liệu trừ plastic",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "đồ chơi xây dựng"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "đồ chơi xây dựng"
+              },
+              {
+                "fact": "chatLieu",
+                "op": "LA",
+                "value": "plastic",
+                "chieu": "PHAI_KHONG"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "đồ chơi xây dựng"
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "bằng mọi loại vật liệu trừ plastic"
+              }
+            ]
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET",
@@ -369,7 +394,7 @@
     {
       "ma": "95030050",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.95030050 \"Đồ chơi và bộ đồ chơi xây dựng khác, bằng mọi loại vật liệu trừ plastic\" ⇒ tenLoai \"đồ chơi xây dựng\" + phanConLai: false; vế \"bằng mọi loại vật liệu trừ plastic\" miễn qua BO_VE (tương tự 392321) do bộ đọc chatLieu đọc chữ \"trừ plastic\" không kèm giới từ \"bằng\" thành khẳng định plastic."
+      "ghiChu": "tax.95030050 \"Đồ chơi và bộ đồ chơi xây dựng khác, bằng mọi loại vật liệu trừ plastic\" ⇒ HOAC [[tenLoai \"đồ chơi xây dựng\", chatLieu LA plastic PHAI_KHONG], [tenLoai \"đồ chơi xây dựng\", tenLoai \"bằng mọi loại vật liệu trừ plastic\"]]: giữ nguyên ranh giới loại trừ plastic cho hàng thật, đồng thời nhận nguyên văn cụm \"bằng mọi loại vật liệu trừ plastic\" của biểu thuế (tránh điểm mù mTruCl khi thiếu giới từ \"bằng\" sau \"trừ\")."
     },
     {
       "ma": "95030080",
@@ -405,12 +430,6 @@
       "ma": "95030022",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.95030022 \"Quần áo và phụ kiện quần áo; giầy và mũ\" ⇒ tenLoai [\"Quần áo\",\"phụ kiện quần áo\",\"giầy\",\"mũ\"] (giữ bản đã qua cổng; xem DUNG ở 9503002)."
-    },
-    {
-      "ma": "95030050",
-      "loai": "BO_VE",
-      "ve": "bằng mọi loại vật liệu trừ plastic",
-      "lyDo": "Bộ đọc chatLieu của tu-vung@2 đọc chữ \"trừ plastic\" (không có giới từ \"bằng/từ\" ngay sau \"trừ\") thành khẳng định chatLieu=plastic, làm điều kiện PHAI_KHONG plastic chấm TRAI ngược nghĩa chữ biểu; miễn vế tương tự 392321."
     }
   ],
   "traVe": [

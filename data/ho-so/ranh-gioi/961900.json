@@ -14,8 +14,8 @@
     "boi": "CLAUDE_DUYET",
     "phien": "claude:tho-hs-01:20261122#soat-961900",
     "ngay": "2026-11-22",
-    "ghiChu": "OZV-1836: chuẩn hoá điều kiện 96190014",
-    "bam": "98cc54464cc0d44cec8717d2004de7e8e93fae9f9b12a6b20a63eccedf8e5eb0"
+    "ghiChu": "OZV-1836: bổ sung vatLieuKhac TRONG [VAT_LIEU_DET] cho 96190011 đúng theo ghiChuSoan để loại trừ tất định với .12-.14 (GIAY_XENLULO)",
+    "bam": "4591e58073c6426ea02754e07070e8bdbaa76e70a22fe2d5a9c2a89439bebaa4"
   },
   "dieuKienNut": [
     {
@@ -42,6 +42,13 @@
           "op": "LA",
           "value": "vải dệt",
           "viTri": "LOI"
+        },
+        {
+          "fact": "vatLieuKhac",
+          "op": "TRONG",
+          "value": [
+            "VAT_LIEU_DET"
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -142,11 +149,6 @@
               }
             ]
           ]
-        },
-        {
-          "fact": "chatLieu",
-          "op": "LA",
-          "value": "giấy"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
