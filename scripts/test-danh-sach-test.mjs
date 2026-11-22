@@ -353,6 +353,12 @@ ca(
   idxBoThu >= 0 && idxTestDanhSach > idxBoThu,
   { idxBoThu, idxTestDanhSach, tong: lenhs.length },
 );
+const idxC4 = lenhs.indexOf('node scripts/test-c4-model-hang.mjs');
+ca(
+  'node scripts/test-c4-model-hang.mjs được đăng ký trong danh-sach-test.txt trước test-danh-sach-test.mjs',
+  idxC4 >= 0 && idxC4 < idxTestDanhSach,
+  { idxC4, idxTestDanhSach },
+);
 
 // Mọi tệp script + tệp --tep= được nhắc tới phải tồn tại trên đĩa
 const tepThieu = [];
