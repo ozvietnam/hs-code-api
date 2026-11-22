@@ -599,25 +599,34 @@ kiem('#1586 (7009.91/92 & phân nhóm không phải DU): 7009 qua cổng với 0
 
   // 8. Chương 39 (3920) & chưa no: tachVeTieuDe giữ nguyên 1 vế; mọi dòng polyme 3920.61/63/69/92/93/94 → loaiNhuaPolyme; 0 dòng Ch.39 rơi nhầm loaiSoiDet; giữ nguyên Ch.50–63 loaiSoiDet
   {
-    const ds39 = Object.keys(require('node:zlib').gunzipSync(fs.readFileSync('data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz')).toString('utf8').split('\n').filter(Boolean).reduce((acc, l) => {
-      const r = JSON.parse(l);
-      if (r.maChuan && r.maChuan.startsWith('39') && r.maChuan.length >= 4) acc[r.maChuan.slice(0, 4)] = true;
-      return acc;
-    }, {}));
+    const bieuRows = require('node:zlib').gunzipSync(fs.readFileSync('data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz')).toString('utf8').split('\n').filter(Boolean).map((l) => JSON.parse(l));
+    const ds39 = [...new Set(bieuRows.filter((r) => r.maChuan && r.maChuan.startsWith('39') && r.maChuan.length >= 4).map((r) => r.maChuan.slice(0, 4)))];
+    const ds5063 = [...new Set(bieuRows.filter((r) => r.maChuan && r.maChuan.length >= 4 && Number(r.maChuan.slice(0, 2)) >= 50 && Number(r.maChuan.slice(0, 2)) <= 63).map((r) => r.maChuan.slice(0, 4)))];
     const nhamCh39 = [];
     for (const h4 of ds39) {
       let pns; try { pns = G6.phanNhomCuaNhom(h4); } catch { continue; }
       for (const p of pns) if (G6.khoaPhuHop(h4, p.ten) === 'loaiSoiDet') nhamCh39.push([p.hs6, p.ten]);
     }
-    kiem('T-5 Chương 39: 0 phân nhóm rơi nhầm loaiSoiDet; 3920.61/63/69/92/93/94 → loaiNhuaPolyme; tachVe("Từ các polyeste chưa no") giữ 1 vế; Ch.54/60/61/62/63 giữ loaiSoiDet',
+    const nhamDetMay = [];
+    for (const h4 of ds5063) {
+      let pns; try { pns = G6.phanNhomCuaNhom(h4); } catch { continue; }
+      for (const p of pns) if (G6.khoaPhuHop(h4, p.ten) === 'loaiNhuaPolyme') nhamDetMay.push([p.hs6, p.ten]);
+    }
+    const p540710 = G6.phanNhomCuaNhom('5407').find((p) => p.hs6 === '540710');
+    const p540233 = G6.phanNhomCuaNhom('5402').find((p) => p.hs6 === '540233');
+    const p551311 = G6.phanNhomCuaNhom('5513').find((p) => p.hs6 === '551311');
+    const p590210 = G6.phanNhomCuaNhom('5902').find((p) => p.hs6 === '590210');
+    kiem('T-5 Chương 39 & Chương 50–63 ranh giới rạch ròi: 0 phân nhóm Ch.39 → loaiSoiDet; 0 phân nhóm Ch.50–63 → loaiNhuaPolyme; 540710/540233/551311/590210 giữ loaiSoiDet; 3920 giữ loaiNhuaPolyme',
       nhamCh39.length === 0
+      && nhamDetMay.length === 0
       && G6.tachVeTieuDe('Từ các polyeste chưa no', new Set()).map((v) => v.chu).join('|') === 'Từ các polyeste chưa no'
       && ['Từ các polycarbonat', 'Từ các polyeste chưa no', 'Từ các polyeste khác', 'Từ các polyamide', 'Từ nhựa amino', 'Từ nhựa phenolic']
         .every((ten) => G6.khoaPhuHop('3920', ten) === 'loaiNhuaPolyme')
-      && G6.khoaPhuHop('5407', 'Từ xơ sợi nhân tạo') === 'loaiSoiDet'
+      && G6.khoaPhuHop('5407', 'Vải dệt thoi từ sợi có độ bền cao bằng ni lông hoặc các polyamit hoặc các polyeste khác') === 'loaiSoiDet'
+      && [p540710, p540233, p551311, p590210].every((p) => p && G6.khoaPhuHop(p.hs6.slice(0, 4), p.ten) === 'loaiSoiDet')
       && G6.khoaPhuHop('6110', 'Từ bông') === 'loaiSoiDet'
       && G6.khoaPhuHop('6110', 'Của dê Ca-sơ-mia (len casơmia)') === 'loaiSoiDet',
-      JSON.stringify({ nhamCh39 }));
+      JSON.stringify({ nhamCh39, nhamDetMay }));
   }
 
   kiem('T-5 Lô 3 (3926, 8501, 7326, 8483, 4016) sạch 0 bẫy SAI_KHOA_THUOC_TINH & mở khoá chuẩn',
