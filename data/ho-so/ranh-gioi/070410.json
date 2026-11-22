@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L3-20261111#soat-L3",
-    "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu VI/EN: .10 Cauliflowers 'Súp lơ', .20 'Headed broccoli / Đầu súp lơ xanh', .90 'Other broccoli / Súp lơ xanh khác' ⇒ tenLoai 'Súp lơ xanh' (không phanConLai, tên cụ thể hơn thắng — đúng: phân nhóm không có dòng Loại khác trần).",
-    "bam": "c67010b930efe1b65a27f478b8fbfa4a1037210396dc65fdd99127a49a93e608"
+    "phien": "claude-agent:ozv-1809#soat-070410",
+    "ngay": "2026-11-22",
+    "ghiChu": "Đối chiếu VI/EN: .10 Cauliflowers tenLoai ['Súp lơ', 'Caulifower']; .20 'Đầu súp lơ xanh'; .90 'Súp lơ xanh khác' tenLoai ['Súp lơ xanh', 'Súp lơ xanh khác'] + phanConLai ['07041020'] (OZV-1809)",
+    "bam": "03d8b82dec1d51b55bbc74de42365072acf45b38cce60261af895ce2fc2aff0c"
   },
   "dieuKienNut": [],
   "dong8": [
@@ -27,7 +27,10 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Súp lơ"
+          "value": [
+            "Súp lơ",
+            "Caulifower"
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -53,18 +56,23 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Súp lơ xanh"
+          "value": [
+            "Súp lơ xanh",
+            "Súp lơ xanh khác"
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET",
-      "phanConLai": false
+      "phanConLai": [
+        "07041020"
+      ]
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "07041010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.07041010 \"Súp lơ (1) (Caulifower)\" ⇒ tenLoai \"Súp lơ\"; \"(1)\" là chân chú thích nhóm, \"(Caulifower)\" là tên tiếng Anh — không thành điều kiện."
+      "ghiChu": "tax.07041010 \"Súp lơ (1) (Caulifower)\" ⇒ tenLoai [\"Súp lơ\", \"Caulifower\"] (kèm tên tiếng Anh nguyên văn trong dòng biểu thuế); \"(1)\" là chân chú thích nhóm — không thành điều kiện."
     },
     {
       "ma": "07041020",
@@ -74,7 +82,7 @@
     {
       "ma": "07041090",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.07041090 \"Súp lơ xanh khác\" ⇒ tenLoai \"Súp lơ xanh\". Không dùng phanConLai: phủ .10 (\"Súp lơ\") vô nghĩa vì \"Súp lơ xanh\" chứa chuỗi \"Súp lơ\" (cong2-dong-khong-toi-duoc), phủ .20 (\"Đầu súp lơ xanh\") cho THIEU trên mọi vector biên (vector con chuỗi của giá trị bị phủ — không TRÁI được). Tách với .20/.10 nhờ tên cụ thể hơn thắng (cong2-ten-cu-the-hon): \"Đầu súp lơ xanh\" cụ thể hơn \"Súp lơ xanh\" thắng khi hàng là đầu súp lơ xanh; \"Súp lơ xanh\" cụ thể hơn \"Súp lơ\" thắng với súp lơ xanh không đầu."
+      "ghiChu": "tax.07041090 \"Súp lơ xanh khác\" ⇒ tenLoai [\"Súp lơ xanh\", \"Súp lơ xanh khác\"] + phanConLai [\"07041020\"] (phần còn lại của súp lơ xanh sau 07041020 \"Đầu súp lơ xanh\")."
     }
   ]
 }
