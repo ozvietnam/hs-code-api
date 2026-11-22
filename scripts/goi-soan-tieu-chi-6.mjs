@@ -24,7 +24,7 @@ const { inKetQua } = await import('./kiem-tieu-chi-6.mjs');
 
 const thamSo = (ten) => { const a = process.argv.find((x) => x.startsWith(`--${ten}=`)); return a ? a.slice(ten.length + 3) : null; };
 const co = (c) => process.argv.includes(c);
-const THU_TU_TRUONG = ['hs6', 'thuTu', 'dieuKien', 'fact', 'op', 'value', 'donVi', 'chieu', 'viTri', 'tuKhoa', 'kiemChung', 'phanConLai', 'chuaSoHoa', 'uuTien', 'tienLe', 'nguon', 'trich', 'nguonLoai'];
+const THU_TU_TRUONG = ['hs6', 'thuTu', 'dieuKien', 'fact', 'op', 'value', 'donVi', 'chieu', 'viTri', 'tuKhoa', 'dieuKienTru', 'kiemChung', 'phanConLai', 'chuaSoHoa', 'uuTien', 'tienLe', 'nguon', 'trich', 'nguonLoai'];
 
 /** Mục đã qua cổng → hình dạng lưu trong sổ tay: khoá theo thứ tự cố định, nhãn AI_DA_KIEM (máy đã kiểm trích; CHƯA ai duyệt). */
 export function chuanMuc(x) {
