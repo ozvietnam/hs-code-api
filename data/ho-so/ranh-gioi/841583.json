@@ -4,13 +4,19 @@
   "nhom": "8415",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-841583",
     "ngay": "2026-11-04"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1947#soat-841583",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1947)",
+    "bam": "51156f429110c85e974bc78b0bc10fb2d3ab108b598eee1512a8a8555753918c"
+  },
   "dieuKienNut": [
     {
       "id": "8415831",
@@ -23,7 +29,7 @@
           "value": "phương tiện bay"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "8415832",
@@ -36,7 +42,7 @@
           "value": "phương tiện giao thông đường sắt"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "8415833",
@@ -46,10 +52,10 @@
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
-          "value": "xe có động cơ (trừ loại thuộc phân nhóm 8415.20)"
+          "value": "xe có động cơ"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -71,14 +77,14 @@
           "donVi": "m3/phút"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84158319",
       "nguon": "tax.84158319",
       "trich": "84158319 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84158321",
@@ -92,14 +98,14 @@
           "donVi": "kW"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84158329",
       "nguon": "tax.84158329",
       "trich": "84158329 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84158331",
@@ -113,14 +119,14 @@
           "donVi": "kW"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84158339",
       "nguon": "tax.84158339",
       "trich": "84158339 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84158391",
@@ -134,14 +140,14 @@
           "donVi": "kW"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84158399",
       "nguon": "tax.84158399",
       "trich": "84158399 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -179,6 +185,12 @@
       "ma": "84158391",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.84158391: \"Công suất làm mát không quá 26,38 kW\" ⇒ congSuat <= 26.38 kW"
+    },
+    {
+      "ma": "8415833",
+      "loai": "BO_VE",
+      "ve": "(trừ loại thuộc phân nhóm 8415.20)",
+      "lyDo": "Phạm vi phân nhóm 8415.81/8415.82/8415.83 ở cấp 6 số đã tách khỏi 8415.20; vế ngoặc chỉ nhắc lại phân nhóm 6 số 8415.20, không phân biệt các dòng 8 số trong phân nhóm này."
     }
   ],
   "traVe": [
