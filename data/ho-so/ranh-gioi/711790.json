@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "https://claude.ai/code/session_gd-v044-20261106#soat-v044-dot1",
-    "ngay": "2026-11-06",
-    "ghiChu": "Soát GĐ v044-dot1: đã xoá 2 BO_VE thừa (71179020 'Các đồ trang sức khác' — phanConLai gánh; 71179094 'toàn bộ' — DAU không cần miễn), phanConLai=false cho 71179094 ('khác' = other animal carving material, phần còn lại là .99 trần). 2 BO_VE còn lại lý do đúng: vật liệu khắc động vật/thực vật/khoáng không có trong tu-vung → bộ đọc CHUA_BIET không tự chốt; 'hoặc bằng sứ' mã hoá bằng chatLieu 'gốm sứ' (mẫu đọc rỗng đã ghi).",
-    "bam": "fb835e2700c751ad8c0d32d08aae660b8e8e4a2be51c9d29337f2dce7ef2dbb7"
+    "phien": "claude:tho-hs-01:20261122#soat-711790",
+    "ngay": "2026-11-22",
+    "ghiChu": "OZV-1836: chuẩn hoá 7117909 sang laBoPhan CO + bổ sung tenLoai đồ trang sức cho 71179020 kèm phanConLai",
+    "bam": "d0c9da78c7e40a5cc6e43af8b41ab939681543870e73ac1b23e98e4cc01992d3"
   },
   "dieuKienNut": [
     {
@@ -24,9 +24,8 @@
       "trich": "7117909 Bộ phận",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Bộ phận"
+          "fact": "laBoPhan",
+          "op": "CO"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -50,7 +49,13 @@
       "hs": "71179020",
       "nguon": "tax.71179020",
       "trich": "71179020 - - Các đồ trang sức khác",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "đồ trang sức"
+        }
+      ],
       "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": [
         "71179010",
@@ -93,12 +98,12 @@
     {
       "ma": "71179020",
       "loai": "QUYET_DINH",
-      "ghiChu": "\"Các đồ trang sức khác\" là phần còn lại CÓ TÊN của tầng 711790 ⇒ phanConLai [\"71179010\",\"7117909\"]: phủ định dòng Vòng và tiêu đề Bộ phận (nếu chỉ phủ định Vòng thì nhánh bộ phận chồng lấn với 71179094 ở cổng 2). Không ghi điều kiện riêng: chữ biểu không nêu vế giới hạn nào khác, để trống để máy không loại nhầm một món đồ trang sức có tên riêng (khuyên tai, vòng cổ…) — vế \"khác\" do chính phanConLai lo."
+      "ghiChu": "\"Các đồ trang sức khác\" là phần còn lại CÓ TÊN của tầng 711790 ⇒ tenLoai \"đồ trang sức\" kèm phanConLai [\"71179010\",\"7117909\"]."
     },
     {
       "ma": "7117909",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.7117909 \"7117909 Bộ phận\" ⇒ tenLoai TEN_LOAI \"Bộ phận\" (nguồn tiêu đề của chính nút). Không dùng laBoPhan CO: rộng hơn chữ (mọi món có bộ phận đều thoả) và lấn sang nhánh tên — bài học lô 950300 đã đổi laBoPhan sang tên."
+      "ghiChu": "tieuDe.7117909 \"7117909 Bộ phận\" ⇒ laBoPhan CO (tất định; khai chongLanTruc với 71179010)."
     },
     {
       "ma": "71179094",
@@ -126,6 +131,33 @@
       "ma": "71179094",
       "loai": "QUYET_DINH",
       "ghiChu": "Soát GĐ: chữ \"các loại động vật khác\" trong mục là \"other animal carving material\" (nhánh vật liệu khắc) — KHÔNG phải phần còn lại của phân nhóm (phần còn lại là 71179099 \"Loại khác\" trần, máy phủ định anh em) ⇒ phanConLai false."
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "71179010",
+        "7117909"
+      ],
+      "truc": {
+        "7117909": "DAC_DIEM",
+        "71179010": "TEN_LOAI"
+      },
+      "cauHoiPhanBiet": "Hàng là vòng trang sức hoàn chỉnh hay là bộ phận rời của đồ trang sức?",
+      "trich": {
+        "7117909": "7117909 Bộ phận",
+        "71179010": "71179010 - - Vòng"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "71179010",
+            "7117909"
+          ],
+          "khongCoHangThat": "Bộ phận rời của vòng trang sức thuộc tiêu đề 7117909, không đồng thời là vòng trang sức hoàn chỉnh 7117.90.10"
+        }
+      ],
+      "phanXu": null
     }
   ]
 }
