@@ -4,13 +4,19 @@
   "nhom": "2844",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261105T1543#soan-284430",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-01#soat-ozv-1792-284430",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá ranh giới theo traVe.lyDo và duyệt+áp khép SẠCH V1 (OZV-1792)",
+    "bam": "69466eff4b377f8978f8a56eae9909439c4a71ad4b0fb6851e15575fc9f5c7b0"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -19,30 +25,25 @@
       "trich": "28443010 - - Urani đã làm giàu thành U 235 và hợp chất của nó; thori và hợp chất của nó",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "Urani đã làm giàu thành U 235",
-            "hợp chất của nó",
-            "thori"
-          ]
+          "fact": "laNguyenToHoacHopChatNhom2844",
+          "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "28443090",
       "nguon": "tax.28443090",
       "trich": "28443090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "28443010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.28443010 \"Urani đã làm giàu thành U 235 và hợp chất của nó; thori và hợp chất của nó\" — hai nhóm tên nối \";\", mỗi nhóm là \"<tên> và hợp chất của nó\" (một hàng ghép kiểu \"and its compounds\") ⇒ mảng: hai tên đầu + \"hợp chất của nó\" dùng chung (hoặc)"
+      "ghiChu": "tax.28443010 \"Urani đã làm giàu thành U 235 và hợp chất của nó; thori và hợp chất của nó\" (EN \"Uranium depleted in U 235 and its compounds; thorium and its compounds\", thuộc PN6 2844.30 \"Urani đã được làm nghèo thành U 235…\") ⇒ laNguyenToHoacHopChatNhom2844 CO (đọc cả urani làm nghèo thành U 235, thori và hợp chất của chúng lẫn câu chữ biểu; loại trừ hợp kim, chất phân tán, sản phẩm gốm và hỗn hợp ở .90)."
     },
     {
       "ma": "28443090",

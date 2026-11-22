@@ -360,6 +360,12 @@ const KHOA_MOI = {
   hamLuongNhua: 'SO',
   ketHopVoiSoiCaoSu: 'CO_KHONG',
   loaiDauHatCoBabassu: 'LIET_KE',
+  // 22/11/2026 (OZV-1792): lô 10a (2404.91.10, 2844.10/.20/.30, 4202.11.10, 6005.36/.38, 6302.59/.99)
+  chuaNicotin: 'CO_KHONG',
+  laNguyenToHoacHopChatNhom2844: 'CO_KHONG',
+  kichThuocToiDa56x45x25cm: 'CO_KHONG',
+  chuaPolybutylenTerephthalat: 'CO_KHONG',
+  tuLanh: 'CO_KHONG',
 };
 
 // ── 1. Nạp theo phiên bản ─────────────────────────────────────────────────────────────────────────────────────────
@@ -1217,6 +1223,65 @@ check('vietCum đơn vị @1 KHÔNG đổi ("CS: 75000W" — không cách)', T.v
   }
   const ms = Number(process.hrtime.bigint() - t0) / 1e6;
   check(`OZV-1778 ReDoS ~40.000 từ lặp trên 6 khoá < 2000 ms (thực tế ${ms.toFixed(0)} ms)`, ms < 2000, { ms });
+}
+
+// OZV-1792 — kiểm chứng 5 khoá mới lô 10a (chuaNicotin, laNguyenToHoacHopChatNhom2844, kichThuocToiDa56x45x25cm,
+// chuaPolybutylenTerephthalat, tuLanh) + ReDoS ~40.000 từ lặp < 2 giây (quy tắc 6b).
+{
+  // 1. chuaNicotin (2404.91.10)
+  la('chữ biểu 2404.91.10 (Kẹo cao su có nicotin)', 'chuaNicotin', 'Kẹo cao su có nicotin (SEN)', true);
+  la('mô tả hàng thật kẹo cao su nicotin', 'chuaNicotin', 'Kẹo cao su nicotin hỗ trợ cai thuốc lá', true);
+  la('En Nicotine chewing gum', 'chuaNicotin', 'Nicotine chewing gum 2mg', true);
+  la('Zh 含尼古丁', 'chuaNicotin', '含尼古丁口香糖', true);
+  la('phủ định không có nicotin ⇒ false', 'chuaNicotin', 'Kẹo cao su không có nicotin', false);
+  la('nguyên liệu thay thế nicotin (2404.19.20) ⇒ false', 'chuaNicotin', 'Chứa các nguyên liệu thay thế nicotin', false);
+  chuaBiet('chỉ ghi kẹo cao su bạc hà ⇒ CHUA_BIET', 'chuaNicotin', 'Kẹo cao su hương bạc hà');
+
+  // 2. laNguyenToHoacHopChatNhom2844 (2844.10.10, 2844.20.10, 2844.30.10)
+  la('chữ biểu 2844.10.10', 'laNguyenToHoacHopChatNhom2844', 'Urani tự nhiên và các hợp chất của nó', true);
+  la('chữ biểu 2844.20.10', 'laNguyenToHoacHopChatNhom2844', 'Urani đã làm giàu thành U 235 và hợp chất của nó; plutoni và hợp chất của nó', true);
+  la('mô tả urani làm nghèo thành U 235 (2844.30.10)', 'laNguyenToHoacHopChatNhom2844', 'Urani đã được làm nghèo thành U 235', true);
+  la('hợp chất của thori (2844.30.10)', 'laNguyenToHoacHopChatNhom2844', 'Hợp chất của thori (thori dioxit)', true);
+  la('En Uranium depleted in U 235', 'laNguyenToHoacHopChatNhom2844', 'Uranium depleted in U 235 and its compounds', true);
+  la('Zh 天然铀及其化合物', 'laNguyenToHoacHopChatNhom2844', '天然铀及其化合物', true);
+  la('hỗn hợp chứa hợp chất urani (.90) ⇒ false', 'laNguyenToHoacHopChatNhom2844', 'Hỗn hợp chứa hợp chất urani tự nhiên', false);
+  la('hợp kim chứa urani tự nhiên (.90) ⇒ false', 'laNguyenToHoacHopChatNhom2844', 'Hợp kim chứa urani tự nhiên', false);
+  chuaBiet('tiêu đề PN6 2844.10 đa vế ⇒ CHUA_BIET', 'laNguyenToHoacHopChatNhom2844', 'Urani tự nhiên và các hợp chất của nó; hợp kim, các chất phân tán (kể cả gốm kim loại), sản phẩm gốm và hỗn hợp có chứa urani tự nhiên hoặc các hợp chất urani tự nhiên');
+  chuaBiet('hợp chất hữu cơ khác không nêu urani/plutoni/thori ⇒ CHUA_BIET', 'laNguyenToHoacHopChatNhom2844', 'Các hợp chất vô cơ khác');
+
+  // 3. kichThuocToiDa56x45x25cm (4202.11.10)
+  la('chữ biểu 4202.11.10', 'kichThuocToiDa56x45x25cm', 'Vali hoặc túi, cặp có kích thước tối đa 56cm x 45cm x 25cm', true);
+  la('vali 50cm x 40cm x 20cm (cả 3 chiều trong biên) ⇒ true', 'kichThuocToiDa56x45x25cm', 'Vali mặt ngoài bằng da thuộc, kích thước 50cm x 40cm x 20cm', true);
+  la('En maximum dimensions of 56 cm x 45 cm x 25 cm', 'kichThuocToiDa56x45x25cm', 'Suit-case or brief-case with maximum dimensions of 56 cm x 45 cm x 25 cm', true);
+  la('Zh 最大尺寸不超过56厘米x45厘米x25厘米', 'kichThuocToiDa56x45x25cm', '最大尺寸不超过56厘米x45厘米x25厘米的皮箱', true);
+  la('vali 50cm x 50cm x 30cm (vượt biên 45/25 cm) ⇒ false', 'kichThuocToiDa56x45x25cm', 'Vali mặt ngoài bằng da thuộc, kích thước 50cm x 50cm x 30cm', false);
+  chuaBiet('vali da thuộc không nêu kích thước ⇒ CHUA_BIET', 'kichThuocToiDa56x45x25cm', 'Vali mặt ngoài bằng da thuộc');
+
+  // 4. chuaPolybutylenTerephthalat (6005.36.10, 6005.38.10)
+  la('chữ biểu 6005.36.10', 'chuaPolybutylenTerephthalat', 'Vải dệt kim làm từ polyeste và polybutylen terephthalat trong đó polyeste chiếm tỷ lệ lớn hơn tính theo khối lượng dùng để làm quần áo bơi', true);
+  la('En polybutylene terephthalate', 'chuaPolybutylenTerephthalat', 'Knitted swimwear fabrics of polyester and polybutylene terephthalate', true);
+  la('Zh 聚对苯二甲酸丁二酯', 'chuaPolybutylenTerephthalat', '由聚酯及聚对苯二甲酸丁二酯制成的针织泳衣面料', true);
+  la('phủ định không có polybutylen terephthalat ⇒ false', 'chuaPolybutylenTerephthalat', 'Vải bơi dệt kim polyeste pha spandex, không có polybutylen terephthalat', false);
+  la('100% polyeste ⇒ false', 'chuaPolybutylenTerephthalat', 'Vải dệt kim đan dọc 100% polyeste dùng may đồ bơi', false);
+  chuaBiet('vải bơi polyeste pha spandex không nhắc PBT ⇒ CHUA_BIET', 'chuaPolybutylenTerephthalat', 'Vải dệt kim 85% polyeste 15% spandex dùng làm quần áo bơi');
+
+  // 5. tuLanh (6302.59.10, 6302.99.10)
+  la('chữ biểu 6302.59.10 (Từ lanh)', 'tuLanh', 'Từ lanh', true);
+  la('mô tả hàng thật khăn trải bàn bằng vải lanh', 'tuLanh', 'Khăn trải bàn bằng vải lanh tự nhiên', true);
+  la('En Of flax', 'tuLanh', 'Table linen of flax', true);
+  la('Zh 亚麻制', 'tuLanh', '亚麻制桌布', true);
+  la('khăn trải bàn bằng đay ⇒ false', 'tuLanh', 'Khăn trải bàn bằng vải đay', false);
+  la('khăn trải bàn từ gai ramie ⇒ false', 'tuLanh', 'Khăn trải bàn từ gai ramie', false);
+  chuaBiet('chỉ ghi khăn trải bàn từ các vật liệu dệt khác ⇒ CHUA_BIET', 'tuLanh', 'Khăn trải bàn khác - Từ các vật liệu dệt khác');
+
+  // 6. ReDoS ~40.000 từ lặp < 2 giây (CLAUDE.md quy tắc 6b)
+  const redosText1792 = Array(5000).fill('kích thước tối đa hợp chất của urani vải dệt kim từ').join(' ');
+  const t0 = process.hrtime.bigint();
+  for (const fk of ['laNguyenToHoacHopChatNhom2844', 'kichThuocToiDa56x45x25cm']) {
+    T.docGiaTri(fk, redosText1792);
+  }
+  const ms = Number(process.hrtime.bigint() - t0) / 1e6;
+  check(`OZV-1792 ReDoS ~40.000 từ lặp trên 2 khoá mới < 2000 ms (thực tế ${ms.toFixed(0)} ms)`, ms < 2000, { ms });
 }
 
 console.log(`\n${pass} pass, ${fail} fail`);

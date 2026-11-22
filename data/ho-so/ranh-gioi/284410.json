@@ -4,13 +4,19 @@
   "nhom": "2844",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261105T1543#soan-284410",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-01#soat-ozv-1792-284410",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá ranh giới theo traVe.lyDo và duyệt+áp khép SẠCH V1 (OZV-1792)",
+    "bam": "7230747d728a745ee2f655186c3233d0f8749568f221011e5f4dca607ec6eeac"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -19,29 +25,25 @@
       "trich": "28441010 - - Urani tự nhiên và các hợp chất của nó",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "Urani tự nhiên",
-            "các hợp chất của nó"
-          ]
+          "fact": "laNguyenToHoacHopChatNhom2844",
+          "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "28441090",
       "nguon": "tax.28441090",
       "trich": "28441090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "28441010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.28441010 \"Urani tự nhiên và các hợp chất của nó\" — hai danh từ liên hợp (chữ Anh \"Natural uranium and its compounds\") ⇒ mảng tên nguyên văn"
+      "ghiChu": "tax.28441010 \"Urani tự nhiên và các hợp chất của nó\" (EN \"Natural uranium and its compounds\") ⇒ laNguyenToHoacHopChatNhom2844 CO (nhận urani tự nhiên và hợp chất của urani tự nhiên; loại trừ hợp kim, chất phân tán, sản phẩm gốm và hỗn hợp ở .90)."
     },
     {
       "ma": "28441090",

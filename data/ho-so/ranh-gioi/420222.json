@@ -4,14 +4,37 @@
   "nhom": "4202",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1705#soan-420222",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
-  "dieuKienNut": [],
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-01#soat-ozv-1792-420222",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá ranh giới theo traVe.lyDo và duyệt+áp khép SẠCH V1 (OZV-1792)",
+    "bam": "c6729863effed2ee750995b495a05b300a04e4d8b7d2645aabf1ce57c014c554"
+  },
+  "dieuKienNut": [
+    {
+      "id": "420222",
+      "nguon": "tieuDe.420222",
+      "trich": "420222 Mặt ngoài bằng tấm plastic hoặc vật liệu dệt",
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": [
+            "plastic",
+            "vải dệt"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    }
+  ],
   "dong8": [
     {
       "hs": "42022210",
@@ -19,12 +42,12 @@
       "trich": "42022210 - - - Mặt ngoài bằng tấm plastic",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "tấm plastic"
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "plastic"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "42022220",
@@ -32,24 +55,24 @@
       "trich": "42022220 - - - Mặt ngoài bằng vật liệu dệt",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "vật liệu dệt"
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "vải dệt"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "42022210",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.42022210 \"Mặt ngoài bằng tấm plastic\" (EN \"With outer surface of sheeting of plastics\") ⇒ tenLoai \"tấm plastic\". Dùng tenLoai chứ không dùng chatLieu \"plastic\": tầng gốc 420222 không có con \"Loại khác\" nên cổng 1 đòi mọi vector vật liệu rơi vào một con — vector \"chatLieu=cao su\" (vật liệu khác) sẽ không rơi vào con nào (lỗi cong1-khong-phu-kin); với tenLoai thì vector \"tên ngoài danh sách\" bị bỏ ở tầng gốc (đúng nghĩa: túi mặt ngoài vật liệu khác không thuộc phân nhóm này). Mẫu 39189013 \"bằng polyetylen\" ⇒ tenLoai \"polyetylen\"."
+      "ghiChu": "tax.42022210 \"Mặt ngoài bằng tấm plastic\" (EN \"With outer surface of sheeting of plastics\") ⇒ chatLieu LA \"plastic\"; phạm vi phân nhóm tieuDe.420222 khai chatLieu LA [\"plastic\",\"vải dệt\"]."
     },
     {
       "ma": "42022220",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.42022220 \"Mặt ngoài bằng vật liệu dệt\" (EN \"With outer surface of textile materials\") ⇒ tenLoai \"vật liệu dệt\" (cùng lý do như .10: không dùng chatLieu \"vải dệt\" vì tầng gốc không có con \"Loại khác\")."
+      "ghiChu": "tax.42022220 \"Mặt ngoài bằng vật liệu dệt\" (EN \"With outer surface of textile materials\") ⇒ chatLieu LA \"vải dệt\"."
     }
   ],
   "traVe": [
