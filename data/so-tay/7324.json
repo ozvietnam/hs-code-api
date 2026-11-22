@@ -134,12 +134,25 @@
     },
     {
       "hs": "73242110",
-      "dieuKien": "Bồn tắm có hình dạng bên trong là hình chữ nhật hoặc hình thuôn (oblong) — phân nhóm 732421 chưa có tên trong biểu thuế; đối chiếu WCO 7324.21 (bồn tắm bằng gang đúc, có hoặc không tráng men)",
-      "tieuChi": null,
+      "dieuKien": "có hình dạng bên trong là hình chữ nhật hoặc hình thuôn (oblong)",
       "loaiKhac": false,
       "nguon": "tax.73242110",
       "trich": "73242110 - - - Bồn tắm có hình dạng bên trong là hình chữ nhật hoặc hình thuôn (oblong)",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "coHinhDangBenTrongChuNhatHoacThuon",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1843#soat-732421",
+          "ngay": "2026-11-22",
+          "bam": "c5a8f70a1ca550b2766bedb671fd13ef275528a76038e756bbfebdf5f1b7d091"
+        }
+      }
     },
     {
       "hs": "73242190",
@@ -161,12 +174,25 @@
     },
     {
       "hs": "73242910",
-      "dieuKien": "Bồn tắm có hình dạng bên trong là hình chữ nhật hoặc hình thuôn (oblong) — phân nhóm 732429 chưa có tên trong biểu thuế; đối chiếu WCO 7324.29 (bồn tắm bằng sắt không phải gang đúc, hoặc bằng thép)",
-      "tieuChi": null,
+      "dieuKien": "có hình dạng bên trong là hình chữ nhật hoặc hình thuôn (oblong)",
       "loaiKhac": false,
       "nguon": "tax.73242910",
       "trich": "73242910 - - - Bồn tắm có hình dạng bên trong là hình chữ nhật hoặc hình thuôn (oblong)",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "coHinhDangBenTrongChuNhatHoacThuon",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1843#soat-732429",
+          "ngay": "2026-11-22",
+          "bam": "44e83267c9954fa2964ecfc1eb0c9dd14f1470cd87c527ab39eb25bfeca22936"
+        }
+      }
     },
     {
       "hs": "73242990",
@@ -188,30 +214,102 @@
     },
     {
       "hs": "73249010",
-      "dieuKien": "Dùng cho bệ xí hoặc bệ đi tiểu giật nước (loại cố định) — thuộc phân nhóm 732490: loại khác, kể cả các bộ phận (đối chiếu biểu thuế; WCO 7324.90)",
-      "tieuChi": null,
+      "dieuKien": "tên loại hàng: bệ xí hoặc bệ đi tiểu; tên loại hàng: giật nước",
       "loaiKhac": false,
       "nguon": "tax.73249010",
       "trich": "73249010 - - Dùng cho bệ xí hoặc bệ đi tiểu giật nước (loại cố định)",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "bệ xí",
+            "bệ đi tiểu"
+          ]
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "giật nước"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1843#soat-732490",
+          "ngay": "2026-11-22",
+          "bam": "3f5bf9018074fdb81b92ba101eb9cb703381244ea71abf11e881fa2d7a58669d"
+        }
+      },
+      "phanConLai": [
+        "73249093"
+      ]
     },
     {
       "hs": "73249091",
-      "dieuKien": "Bộ phận của bồn rửa nhà bếp hoặc bồn tắm — thuộc phân nhóm 732490 (đối chiếu biểu thuế; WCO 7324.90 gồm cả bộ phận)",
-      "tieuChi": null,
+      "dieuKien": "là bộ phận (không phải hàng hoàn chỉnh); dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): bồn rửa nhà bếp hoặc bồn tắm",
       "loaiKhac": false,
       "nguon": "tax.73249091",
       "trich": "73249091 - - - Bộ phận của bồn rửa nhà bếp hoặc bồn tắm",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "laBoPhan",
+          "op": "CO"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "bồn rửa nhà bếp",
+            "bồn tắm"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1843#soat-732490",
+          "ngay": "2026-11-22",
+          "bam": "3f5bf9018074fdb81b92ba101eb9cb703381244ea71abf11e881fa2d7a58669d"
+        }
+      }
     },
     {
       "hs": "73249093",
-      "dieuKien": "Bộ phận của bệ xí hoặc bệ đi tiểu giật nước (loại cố định) — thuộc phân nhóm 732490 (đối chiếu biểu thuế; WCO 7324.90 gồm cả bộ phận)",
-      "tieuChi": null,
+      "dieuKien": "là bộ phận (không phải hàng hoàn chỉnh); dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): bệ xí hoặc bệ đi tiểu; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): giật nước",
       "loaiKhac": false,
       "nguon": "tax.73249093",
       "trich": "73249093 - - - Bộ phận của bệ xí hoặc bệ đi tiểu giật nước (loại cố định)",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "laBoPhan",
+          "op": "CO"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "bệ xí",
+            "bệ đi tiểu"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "giật nước"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1843#soat-732490",
+          "ngay": "2026-11-22",
+          "bam": "3f5bf9018074fdb81b92ba101eb9cb703381244ea71abf11e881fa2d7a58669d"
+        }
+      }
     },
     {
       "hs": "73249099",

@@ -271,14 +271,13 @@
     },
     {
       "hs": "27112110",
-      "dieuKien": "Khí tự nhiên dùng cho nhiên liệu động cơ, áp suất 200-250 bar",
-      "tieuChi": {
-        "fact": "ap_suat_nen",
-        "op": ">=",
-        "value": 200,
-        "donVi": "bar"
-      },
+      "dieuKien": "công dụng / mục đích: sử dụng làm nhiên liệu động cơ; áp suất (làm việc) >= 200 bar; áp suất (làm việc) <= 250 bar",
       "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "sử dụng làm nhiên liệu động cơ"
+        },
         {
           "fact": "apSuat",
           "op": ">=",
@@ -293,9 +292,23 @@
         }
       ],
       "nguon": "sen.27112110",
-      "trich": "Khí tự nhiên loại dùng cho nhiên liệu động cơ được sử dụng cho động cơ đánh lửa của xe có động cơ và được biết phổ biến là khí nén tự nhiên hay CNG. Nó thường được coi là một giải pháp thay thế sạch hơn cho xăng dầu và đặc trưng hóa bởi áp suất 200-250 bar",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      "trich": "KHÍ TỰ NHIÊN, LOẠI SỬ DỤNG LÀM NHIÊN LIỆU ĐỘNG CƠ … đặc trưng hóa bởi áp suất 200-250 bar",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1843#soat-271121",
+          "ngay": "2026-11-22",
+          "bam": "169f71d69c9d5eeb9c1f26b6b98e03d56375ffdf29cbc2d2a5a75c1b509b9db0"
+        }
+      },
+      "tieuChi": {
+        "fact": "ap_suat_nen",
+        "op": ">=",
+        "value": 200,
+        "donVi": "bar"
+      }
     },
     {
       "hs": "27112190",

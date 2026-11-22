@@ -4,41 +4,59 @@
   "nhom": "2711",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261105T1542#soan-271121",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1843#soat-271121",
+    "ngay": "2026-11-22",
+    "ghiChu": "Mã hoá đủ ngưỡng áp suất SEN 200-250 bar và công dụng cho 27112110 (OZV-1843)",
+    "bam": "169f71d69c9d5eeb9c1f26b6b98e03d56375ffdf29cbc2d2a5a75c1b509b9db0"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
       "hs": "27112110",
-      "nguon": "tax.27112110",
-      "trich": "27112110 - - - Loại sử dụng làm nhiên liệu động cơ(SEN)",
+      "nguon": "sen.27112110",
+      "trich": "KHÍ TỰ NHIÊN, LOẠI SỬ DỤNG LÀM NHIÊN LIỆU ĐỘNG CƠ … đặc trưng hóa bởi áp suất 200-250 bar",
       "dieuKienSo": [
         {
           "fact": "congDung",
           "op": "CONG_DUNG",
           "value": "sử dụng làm nhiên liệu động cơ"
+        },
+        {
+          "fact": "apSuat",
+          "op": ">=",
+          "value": 200,
+          "donVi": "bar"
+        },
+        {
+          "fact": "apSuat",
+          "op": "<=",
+          "value": 250,
+          "donVi": "bar"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "27112190",
       "nguon": "tax.27112190",
       "trich": "27112190 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "27112110",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.27112110 \"Loại sử dụng làm nhiên liệu động cơ(SEN)\": danh từ đầu \"Loại\" là chỉ từ chung, không phải tên hàng; vế giới hạn \"sử dụng làm nhiên liệu động cơ\" là công dụng ⇒ congDung giữ nguyên vế."
+      "ghiChu": "sen.27112110 \"KHÍ TỰ NHIÊN, LOẠI SỬ DỤNG LÀM NHIÊN LIỆU ĐỘNG CƠ … đặc trưng hóa bởi áp suất 200-250 bar\" ⇒ congDung \"sử dụng làm nhiên liệu động cơ\" + apSuat >= 200 bar và <= 250 bar."
     }
   ],
   "traVe": [

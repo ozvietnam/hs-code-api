@@ -4,13 +4,19 @@
   "nhom": "8418",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-841850",
     "ngay": "2026-11-02"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1843#soat-841850",
+    "ngay": "2026-11-22",
+    "ghiChu": "Đổi 84185011/84185091 sang dungTrongYTeHoacThiNghiem CO và duyệt 841850 (OZV-1843)",
+    "bam": "88577fb12b3841a4c72d911738aa3b29597623be00141fd60c7d525e15a40d7d"
+  },
   "dieuKienNut": [
     {
       "id": "8418501",
@@ -32,7 +38,7 @@
           "donVi": "lít"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -42,23 +48,18 @@
       "trich": "84185011 - - - Loại phù hợp dùng trong y tế, phẫu thuật hoặc phòng thí nghiệm",
       "dieuKienSo": [
         {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": [
-            "y tế",
-            "phẫu thuật",
-            "phòng thí nghiệm"
-          ]
+          "fact": "dungTrongYTeHoacThiNghiem",
+          "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84185019",
       "nguon": "tax.84185019",
       "trich": "84185019 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84185091",
@@ -66,23 +67,18 @@
       "trich": "84185091 - - - Loại phù hợp dùng trong y tế, phẫu thuật hoặc phòng thí nghiệm",
       "dieuKienSo": [
         {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": [
-            "y tế",
-            "phẫu thuật",
-            "phòng thí nghiệm"
-          ]
+          "fact": "dungTrongYTeHoacThiNghiem",
+          "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84185099",
       "nguon": "tax.84185099",
       "trich": "84185099 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -95,17 +91,17 @@
       "ma": "8418501",
       "loai": "BO_VE",
       "ve": "có lắp thiết bị làm lạnh",
-      "lyDo": "Cả nhóm 841850 đã nêu rõ 'có lắp thiết bị làm lạnh hoặc kết đông', vế này lặp lại thuộc tính nhóm"
+      "lyDo": "Từ vựng tu-vung@2 chưa có khoá riêng phân biệt thiết bị làm lạnh với thiết bị kết đông ở cấp đồ nội thất 8418.50; giữ tenLoai TUONG_TU [Quầy hàng, tủ bày hàng] + dungTich > 200 lít"
     },
     {
       "ma": "84185011",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.84185011: \"Loại phù hợp dùng trong y tế, phẫu thuật hoặc phòng thí nghiệm\" ⇒ dungCho [y tế, phẫu thuật, phòng thí nghiệm]"
+      "ghiChu": "tax.84185011: \"Loại phù hợp dùng trong y tế, phẫu thuật hoặc phòng thí nghiệm\" ⇒ dungTrongYTeHoacThiNghiem CO"
     },
     {
       "ma": "84185091",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.84185091: \"Loại phù hợp dùng trong y tế, phẫu thuật hoặc phòng thí nghiệm\" ⇒ dungCho [y tế, phẫu thuật, phòng thí nghiệm]"
+      "ghiChu": "tax.84185091: \"Loại phù hợp dùng trong y tế, phẫu thuật hoặc phòng thí nghiệm\" ⇒ dungTrongYTeHoacThiNghiem CO"
     }
   ],
   "traVe": [

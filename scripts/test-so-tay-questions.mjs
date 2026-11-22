@@ -117,7 +117,7 @@ assert('#411(d) 70189010: duong_kinh DONG_BIEU, tacDongThue {mfnMin 0, mfnMax 30
   assert('#OZV-723 70189010 duongKinh: cùng tacDongThue như khoá cũ {mfnMin 0, mfnMax 30, chenh 30, acftaKhac false, dong 2 dòng}', Boolean(dkMoi) && JSON.stringify(dkMoi.tacDongThue) === JSON.stringify({ mfnMin: 0, mfnMax: 30, chenh: 30, acftaKhac: false, dong: ['70189010', '70189090'] }), dkMoi && dkMoi.tacDongThue);
 }
 r = await call({ hs: '84181039' }); // 8418.10: dung tích quyết định MFN 3 % ↔ 25 %, ACFTA 0 ↔ 15 (-KH, TH)
-const dt8418 = (r._j.questions || []).find((q) => q.key === 'dung_tich');
+const dt8418 = (r._j.questions || []).find((q) => q.key === 'dung_tich' || q.key === 'dungTich');
 assert('#411(d) 84181039: dung_tich chenh 22 (3 → 25) + acftaKhac true', Boolean(dt8418) && Boolean(dt8418.tacDongThue) && dt8418.tacDongThue.mfnMin === 3 && dt8418.tacDongThue.mfnMax === 25 && dt8418.tacDongThue.chenh === 22 && dt8418.tacDongThue.acftaKhac === true, dt8418);
 r = await call({ hs: '39204310' }); // 3920.43: be_day quyết định dòng nhưng hai dòng đều MFN 6 % → chenh 0
 const bd3920 = (r._j.questions || []).find((q) => q.key === 'be_day');
