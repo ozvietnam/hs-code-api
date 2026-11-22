@@ -4,13 +4,19 @@
   "nhom": "9031",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T1001#soan-903190",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1783#soat-903190",
+    "ngay": "2026-11-21",
+    "ghiChu": "Chuẩn hoá theo traVe (OZV-1783)",
+    "bam": "48c0a5e1b8705a544eb28e0929c94c72797e2647aba7609d25df006a7c58237f"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -38,8 +44,13 @@
               {
                 "fact": "congDung",
                 "op": "CONG_DUNG",
+                "value": "kiểm tra"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
                 "value": [
-                  "kiểm tra các vi mạch",
+                  "các vi mạch",
                   "linh kiện bán dẫn"
                 ]
               }
@@ -61,8 +72,13 @@
               {
                 "fact": "congDung",
                 "op": "CONG_DUNG",
+                "value": "kiểm tra"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
                 "value": [
-                  "kiểm tra mặt nạ",
+                  "mặt nạ",
                   "mặt nạ quang",
                   "lưới ca rô"
                 ]
@@ -83,7 +99,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "90319040",
@@ -103,10 +119,14 @@
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
-          "value": "tấm mạch in/tấm dây in và mạch in đã lắp ráp"
+          "value": [
+            "tấm mạch in",
+            "tấm dây in",
+            "mạch in đã lắp ráp"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "90319050",
@@ -137,10 +157,14 @@
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
-          "value": "tấm mạch in/tấm dây in và mạch in đã lắp ráp"
+          "value": [
+            "tấm mạch in",
+            "tấm dây in",
+            "mạch in đã lắp ráp"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": true
     },
     {
@@ -148,24 +172,24 @@
       "nguon": "tax.90319090",
       "trich": "90319090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "90319030",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.90319030 (324 ký tự, xem trich): ba nhóm đích tách HOAC — (1) dụng cụ/thiết bị quang học kiểm tra vi mạch hoặc linh kiện bán dẫn; (2) kiểm tra mặt nạ/mặt nạ quang/lưới ca rô sử dụng trong sản xuất linh kiện bán dẫn; (3) thiết bị đo độ nhiễm bẩn bề mặt vi mạch bán dẫn; \"kể cả mạch in đã lắp ráp\" là vế kể cả (PHU), không thành điều kiện"
+      "ghiChu": "tax.90319030 (324 ký tự, xem trich): ba nhóm đích tách HOAC — (1) dụng cụ/thiết bị quang học kiểm tra các vi mạch hoặc kiểm tra linh kiện bán dẫn; (2) kiểm tra mặt nạ/kiểm tra mặt nạ quang/kiểm tra lưới ca rô sử dụng trong sản xuất linh kiện bán dẫn; (3) thiết bị đo độ nhiễm bẩn bề mặt vi mạch bán dẫn; \"kể cả mạch in đã lắp ráp\" là vế kể cả (PHU), không thành điều kiện"
     },
     {
       "ma": "90319040",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.90319040: \"Của thiết bị quang học xác định và sửa lỗi cho tấm mạch in/tấm dây in và mạch in đã lắp ráp\" => dungCho \"thiết bị quang học\" + congDung \"xác định và sửa lỗi\" + dungCho đích \"tấm mạch in/tấm dây in và mạch in đã lắp ráp\""
+      "ghiChu": "tax.90319040: \"Của thiết bị quang học xác định và sửa lỗi cho tấm mạch in/tấm dây in và mạch in đã lắp ráp\" => dungCho \"thiết bị quang học\" + congDung \"xác định và sửa lỗi\" + dungCho mảng [\"tấm mạch in\",\"tấm dây in\",\"mạch in đã lắp ráp\"]"
     },
     {
       "ma": "90319050",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.90319050: \"Của dụng cụ và thiết bị quang học khác để đo hoặc kiểm tra tấm mạch in/tấm dây in và mạch in đã lắp ráp\" => dungCho mảng [\"dụng cụ\",\"thiết bị\"] + \"quang học\" + congDung mảng [\"đo\",\"kiểm tra\"] + dungCho đích; phanConLai true (\"khác\" phủ định 90319030, 90319040)"
+      "ghiChu": "tax.90319050: \"Của dụng cụ và thiết bị quang học khác để đo hoặc kiểm tra tấm mạch in/tấm dây in và mạch in đã lắp ráp\" => dungCho mảng [\"dụng cụ\",\"thiết bị\"] + \"quang học\" + congDung mảng [\"đo\",\"kiểm tra\"] + dungCho mảng [\"tấm mạch in\",\"tấm dây in\",\"mạch in đã lắp ráp\"]; phanConLai true (\"khác\" phủ định 90319030, 90319040)"
     }
   ],
   "traVe": [

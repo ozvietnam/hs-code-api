@@ -4,13 +4,19 @@
   "nhom": "8480",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T1000#soan-848079",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1783#soat-848079",
+    "ngay": "2026-11-21",
+    "ghiChu": "Chuẩn hoá theo traVe (OZV-1783)",
+    "bam": "68b597d0d385dc435973a9ba9e5e2f2e3aa01be5aab6d71dae27ad595f13d913"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -21,27 +27,32 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
+          "value": "Khuôn làm đế"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
           "value": [
-            "Khuôn làm đế giày",
+            "giày",
             "dép"
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84807990",
       "nguon": "tax.84807990",
       "trich": "84807990 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "84807910",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.84807910: \"Khuôn làm đế giày, dép\" (EN: \"Moulds for footwear soles\") — mệnh đề danh từ đầu duy nhất, máy tách liên hợp [\"Khuôn làm đế giày\",\"dép\"] ⇒ tenLoai mảng; phân biệt với 848071 là ở mức phân nhóm cha (loại phun/nén ⇔ loại khác), chữ dòng con giống nhau"
+      "ghiChu": "tax.84807910: \"Khuôn làm đế giày, dép\" (EN: \"Moulds for footwear soles\") — tách định ngữ chung tenLoai \"Khuôn làm đế\" + tenLoai [\"giày\", \"dép\"] để giữ \"Khuôn làm đế\" cho cả giày và dép"
     }
   ],
   "traVe": [

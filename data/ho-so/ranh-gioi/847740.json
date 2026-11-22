@@ -4,13 +4,19 @@
   "nhom": "8477",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T1000#soan-847740",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1783#soat-847740",
+    "ngay": "2026-11-21",
+    "ghiChu": "Chuẩn hoá theo traVe (OZV-1783)",
+    "bam": "cd2d110e9b290fc9df0d756e5bf0c568af11a8da76ce678312e802423471afcc"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -27,12 +33,12 @@
           ]
         },
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
           "value": "cao su"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84774020",
@@ -48,19 +54,24 @@
           ]
         },
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
           "value": "plastic"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "84774010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.84774010: \"Để đúc hoặc tạo hình cao su\" — 'đúc hoặc tạo hình' là liệt kê động từ ⇒ congDung mảng (HOẶC); 'cao su' là trục chia hai dòng, ghi nguyên văn bằng tenLoai (tiền lệ giá trị chất liệu trần đã duyệt: 401512 .90 tenLoai \"cao su\") — chatLieu LA không dùng vì enum mở của CHAT_LIEU_THEO_VI_TRI (giấy, gỗ…) sinh lỗ thủng cong1-khong-phu-kin"
+      "ghiChu": "tax.84774010: \"Để đúc hoặc tạo hình cao su\" — 'đúc hoặc tạo hình' là liệt kê động từ ⇒ congDung mảng (HOẶC); 'cao su' là vật liệu được gia công ⇒ dungCho \"cao su\" (như 847759, 847780)"
+    },
+    {
+      "ma": "84774020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84774020: \"Để đúc hoặc tạo hình plastic\" ⇒ congDung [\"đúc\", \"tạo hình\"] + dungCho \"plastic\""
     }
   ],
   "traVe": [
