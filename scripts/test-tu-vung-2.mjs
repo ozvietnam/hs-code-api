@@ -1667,5 +1667,32 @@ check('vietCum đơn vị @1 KHÔNG đổi ("CS: 75000W" — không cách)', T.v
   check(`T-3b ReDoS ~40.000 từ lặp cho soPha < 400 ms (thực tế ${ms.toFixed(0)} ms)`, rRedos.trangThai === 'CHUA_BIET' && ms < 400, { ms, rRedos });
 }
 
+// OZV-1820 — mở rộng cachDocKhong của daPhaThemDuongHoacRuou (0402.10.4) và thePhanDoan.THE_LONG (1511.90.42) + ReDoS < 2 giây (quy tắc 6b).
+{
+  la('OZV-1820 daPhaThemDuongHoacRuou (thuận): "Chưa pha thêm đường hoặc chất tạo ngọt khác" ⇒ false',
+    'daPhaThemDuongHoacRuou', 'Chưa pha thêm đường hoặc chất tạo ngọt khác', false);
+  la('OZV-1820 daPhaThemDuongHoacRuou (thuận viPhuDinh): "chưa pha thêm đường, chất tạo ngọt hoặc rượu" ⇒ false',
+    'daPhaThemDuongHoacRuou', 'chưa pha thêm đường, chất tạo ngọt hoặc rượu', false);
+  la('OZV-1820 daPhaThemDuongHoacRuou (nghịch khẳng định): "Đã pha thêm đường hoặc chất tạo ngọt khác" ⇒ true',
+    'daPhaThemDuongHoacRuou', 'Đã pha thêm đường hoặc chất tạo ngọt khác', true);
+  chuaBiet('OZV-1820 daPhaThemDuongHoacRuou (nghịch không nêu): "Sữa bột đóng gói với khối lượng tịnh 25 kg" ⇒ CHUA_BIET',
+    'daPhaThemDuongHoacRuou', 'Sữa bột đóng gói với khối lượng tịnh 25 kg');
+
+  la('OZV-1820 thePhanDoan (thuận 1511.90.42): "Các phần phân đoạn của dầu chưa tinh chế: Loại khác, đóng gói với khối lượng tịnh không quá 25kg (SEN)" ⇒ THE_LONG',
+    'thePhanDoan', 'Các phần phân đoạn của dầu chưa tinh chế: Loại khác, đóng gói với khối lượng tịnh không quá 25kg (SEN)', 'THE_LONG');
+  la('OZV-1820 thePhanDoan (nghịch 1511.90.41): "Các phần phân đoạn của dầu chưa tinh chế: Các phần phân đoạn thể rắn (SEN)" ⇒ THE_RAN',
+    'thePhanDoan', 'Các phần phân đoạn của dầu chưa tinh chế: Các phần phân đoạn thể rắn (SEN)', 'THE_RAN');
+  chuaBiet('OZV-1820 thePhanDoan (nghịch chỉ tiêu đề cha): "Các phần phân đoạn của dầu chưa tinh chế" ⇒ CHUA_BIET',
+    'thePhanDoan', 'Các phần phân đoạn của dầu chưa tinh chế');
+
+  const redos1820 = Array(5000).fill('chưa pha thêm đường các phần phân đoạn của dầu chưa tinh chế').join(' ');
+  for (const fk of ['daPhaThemDuongHoacRuou', 'thePhanDoan']) {
+    const t0 = process.hrtime.bigint();
+    T.docGiaTri(fk, redos1820);
+    const ms = Number(process.hrtime.bigint() - t0) / 1e6;
+    check(`OZV-1820 ReDoS ~40.000 từ lặp cho ${fk} < 2000 ms (thực tế ${ms.toFixed(0)} ms)`, ms < 2000, { fk, ms });
+  }
+}
+
 console.log(`\n${pass} pass, ${fail} fail`);
 process.exit(fail ? 1 : 0);

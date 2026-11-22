@@ -644,10 +644,12 @@ export function sinhCaNhom(nhom4) {
           const phuDinhParts = [];
           const lietKePhaiKhong = new Map();
           const lietKePhaiCo = new Set();
+          const chuanTenSoSanh = (s) => cleanText(s).replace(/\s*\(SEN\)\s*$/i, '').trim();
+          const tenDongSoSanh = chuanTenSoSanh(tenDong);
           if (
             mids.some((m) => m.loaiKhacTran)
-            && tenDong
-            && list8.some((o) => o !== hs8 && cleanText(T.nodeOf(o)?.tenVi || '') === tenDong)
+            && tenDongSoSanh
+            && list8.some((o) => o !== hs8 && chuanTenSoSanh(T.nodeOf(o)?.tenVi || '') === tenDongSoSanh)
           ) {
             const dd = DK.duongDiDong8(hs8, { soTay: st });
             for (const g of dd.nhom || []) {
@@ -658,20 +660,23 @@ export function sinhCaNhom(nhom4) {
               }
               if (g.chieu !== 'PHAI_KHONG' || !(g.tang > 0)) continue;
               if (!g.dieuKien.every((x) => ['<=', '<', '>=', '>', 'CO', 'KHONG', 'TRONG', 'LA'].includes(x.op))) continue;
-              for (const c of g.dieuKien) {
-                if (c.op === 'TRONG') {
+              const dkKhongTrong = g.dieuKien.filter((x) => x.op !== 'TRONG');
+              if (!dkKhongTrong.length) {
+                for (const c of g.dieuKien) {
                   const set = lietKePhaiKhong.get(c.fact) || new Set();
                   for (const v of (Array.isArray(c.value) ? c.value : [c.value])) if (v != null) set.add(String(v));
                   lietKePhaiKhong.set(c.fact, set);
                 }
+                continue;
               }
-              if (g.dieuKien.every((x) => x.op === 'TRONG')) continue;
-              const s = cumPhuDinhNhom(g.dieuKien);
+              const s = cumPhuDinhNhom(dkKhongTrong);
               if (s && !phuDinhParts.includes(s)) phuDinhParts.push(s);
             }
           }
           for (const [fact, biLoai] of lietKePhaiKhong.entries()) {
             if (lietKePhaiCo.has(fact) || !biLoai.size) continue;
+            const dHienCo = (() => { try { return TV.docGiaTri(fact, moTa); } catch { return null; } })();
+            if (dHienCo?.trangThai === 'DA_CO' && !biLoai.has(String(dHienCo.giaTri))) continue;
             const k = (() => { try { return TV.layKhoa(fact); } catch { return null; } })();
             if (!k || k.kieu !== 'LIET_KE') continue;
             const ngoai = (k.giaTriHopLe || []).find(

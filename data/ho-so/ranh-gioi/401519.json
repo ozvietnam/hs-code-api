@@ -12,10 +12,9 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "https://claude.ai/code/session_gd-v044-20261106#soat-v044-dot1",
-    "ngay": "2026-11-06",
-    "ghiChu": "Soát độc lập GĐ đợt v044-dot1: đối chiếu tay chữ biểu VI nguyên văn (--goi) từng mục; cổng 0–3+5 xanh; cảnh báo so-chu-tu-do là đúng thiết kế; 401519 BO_VE \"cao su lưu hóa\" lặp ý nhóm cha — đồng ý bỏ (phanConLai gánh phần khác); 401512/630690/732119 điều kiện khớp nguyên văn chuỗi con.",
-    "bam": "f9d5132a76693946ba3488a8e1abe022245727fc545da6b1fdcaf900820f332f"
+    "phien": "claude:tho-hs-01:20261122#soat-401519",
+    "ngay": "2026-11-22",
+    "bam": "7edcc57e733b6a9875c28a1b2f959a6250779fba0a140a33de32ec671a93ef13"
   },
   "dieuKienNut": [],
   "dong8": [
@@ -25,11 +24,9 @@
       "trich": "40151910 - - - Bằng cao su tự nhiên lưu hóa",
       "dieuKienSo": [
         {
-          "fact": "loaiCaoSu",
-          "op": "TRONG",
-          "value": [
-            "TU_NHIEN"
-          ]
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "cao su tự nhiên"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -38,7 +35,13 @@
       "hs": "40151990",
       "nguon": "tax.40151990",
       "trich": "40151990 - - - Bằng cao su lưu hóa khác",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "cao su"
+        }
+      ],
       "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": true
     }
@@ -47,18 +50,12 @@
     {
       "ma": "40151910",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.40151910 \"Bằng cao su tự nhiên lưu hóa\" ⇒ loaiCaoSu TRONG [TU_NHIEN] (đọc \"cao su tự nhiên\")"
+      "ghiChu": "tax.40151910 \"40151910 - - - Bằng cao su tự nhiên lưu hóa\" ⇒ tenLoai \"cao su tự nhiên\" (chuỗi con nguyên văn, đồng bộ với 40151210)."
     },
     {
       "ma": "40151990",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.40151990 \"Bằng cao su lưu hóa khác\" — \"khác\" trỏ anh em đứng trước .10 (cao su tự nhiên lưu hóa) ⇒ phanConLai true; không ghi loaiCaoSu TONG_HOP vì chữ biểu không nói \"tổng hợp\""
-    },
-    {
-      "ma": "40151990",
-      "loai": "BO_VE",
-      "ve": "Bằng cao su lưu hóa khác",
-      "lyDo": "\"cao su lưu hóa\" lặp ý nhóm 4015 (EN 401519 \"Rubber; vulcanised (other than hard rubber), gloves…\"): mọi hàng trong phân nhóm đều bằng cao su lưu hóa nên vế không tách dòng nào; phần \"khác\" (loại cao su không phải tự nhiên) do phanConLai phủ định .10 gánh, bỏ vế không đổi mã 8 số"
+      "ghiChu": "tax.40151990 \"40151990 - - - Bằng cao su lưu hóa khác\" — \"khác\" = phần còn lại của phân nhóm sau 40151910 ⇒ tenLoai \"cao su\" + phanConLai true (đồng bộ với 40151290)."
     }
   ]
 }
