@@ -161,11 +161,15 @@ kiem('ca ngược #1636: bạc trục ty máy khoan (trucQuay: false) → CHOT 8
   c4.trangThai === 'CHOT' && c4.nhomKetQua === '8431' && c4.buocDung === '2b_BO_PHAN_CHUYEN_DUNG' && moiTrichHopLe(c4),
   JSON.stringify({ trangThai: c4.trangThai, nhomKetQua: c4.nhomKetQua }));
 
-// Ca 5: con lăn vận thăng (8428) → 8431
+// Ca 5: con lăn vận thăng (8428) → 8431 (và KHÔNG bơm nhầm 8501.nhom)
 const c5 = xetChuGiai2PhanXVI({ tenHang: 'con lăn vận thăng', nhomMayMe: '8428' });
-kiem('ca #1636: con lăn vận thăng (nhomMayMe: 8428) → CHOT 8431 (2b)',
-  c5.trangThai === 'CHOT' && c5.nhomKetQua === '8431' && c5.buocDung === '2b_BO_PHAN_CHUYEN_DUNG' && moiTrichHopLe(c5),
-  JSON.stringify({ trangThai: c5.trangThai, nhomKetQua: c5.nhomKetQua }));
+kiem('ca #1636: con lăn vận thăng (nhomMayMe: 8428) → CHOT 8431 (2b) và KHÔNG chứa 8501.nhom',
+  c5.trangThai === 'CHOT'
+  && c5.nhomKetQua === '8431'
+  && c5.buocDung === '2b_BO_PHAN_CHUYEN_DUNG'
+  && !c5.trich.some((t) => t.khoa === '8501.nhom')
+  && moiTrichHopLe(c5),
+  JSON.stringify({ trangThai: c5.trangThai, nhomKetQua: c5.nhomKetQua, khoa: c5.trich.map((t) => t.khoa) }));
 
 // Ca 6: chổi than → 8545 (2a thắng 8503)
 const c6 = xetChuGiai2PhanXVI({ tenHang: 'chổi than', nhomMayMe: '8501' });
@@ -218,5 +222,73 @@ kiem('ca 2(c): nhiều loại máy không điện → 8487; nhiều loại máy 
   c14.nhomKetQua === '8487' && c14.buocDung === '2c_BO_PHAN_CON_LAI' && moiTrichHopLe(c14)
   && c15.nhomKetQua === '8548' && c15.buocDung === '2c_BO_PHAN_CON_LAI' && moiTrichHopLe(c15)
   && c16.trangThai === 'DUNG_HOI' && JSON.stringify(c16.ungVien) === JSON.stringify(['8487', '8548']) && moiTrichHopLe(c16));
+
+// ── 5. Ca đối kháng (bộ phận kèm tên máy mẹ sau, ngoại lệ 8501, cao su cứng, van 8481, giá đỡ có/chưa gắn chổi) ──
+const d1 = xetChuGiai2PhanXVI({ tenHang: 'động cơ điện 3 pha 5kW' });
+const d2 = xetChuGiai2PhanXVI({ tenHang: 'rô to động cơ điện', nhomMayMe: '8501' });
+const d3 = xetChuGiai2PhanXVI({ tenHang: 'stato động cơ điện', nhomMayMe: '8501' });
+const d4 = xetChuGiai2PhanXVI({ tenHang: 'chổi than động cơ điện', nhomMayMe: '8501' });
+kiem('đối kháng 8501 vs bộ phận động cơ: máy hoàn chỉnh → 8501; rô to/stato → 8503; chổi than → 8545',
+  d1.nhomKetQua === '8501' && d1.buocDung === '2a_DINH_DANH_RIENG' && moiTrichHopLe(d1)
+  && d2.nhomKetQua === '8503' && d2.buocDung === '2b_BO_PHAN_CHUYEN_DUNG' && moiTrichHopLe(d2)
+  && d3.nhomKetQua === '8503' && d3.buocDung === '2b_BO_PHAN_CHUYEN_DUNG' && moiTrichHopLe(d3)
+  && d4.nhomKetQua === '8545' && d4.buocDung === '2a_DINH_DANH_RIENG' && moiTrichHopLe(d4),
+  JSON.stringify({ d1: d1.nhomKetQua, d2: d2.nhomKetQua, d3: d3.nhomKetQua, d4: d4.nhomKetQua }));
+
+const d5 = xetChuGiai2PhanXVI({ tenHang: 'bơm dầu', nhomMayMe: '8501' });
+const d6 = xetChuGiai2PhanXVI({ tenHang: 'bộ lọc dầu máy phát điện', nhomMayMe: '8501' });
+const d7 = xetChuGiai2PhanXVI({ tenHang: 'vòng đệm máy phát điện', nhomMayMe: '8501' });
+const d8 = xetChuGiai2PhanXVI({ tenHang: 'tấm chắn máy phát điện', nhomMayMe: '8501' });
+const d9 = xetChuGiai2PhanXVI({ tenHang: 'piston động cơ xăng', nhomMayMe: '8407' });
+const d10 = xetChuGiai2PhanXVI({ tenHang: 'xéc măng động cơ diesel', nhomMayMe: '8408' });
+kiem('đối kháng bộ phận kèm tên máy mẹ sau: bơm dầu → 8413; bộ lọc dầu máy phát → 8421; vòng đệm/tấm chắn → 8503; piston/xéc măng → 8409',
+  d5.nhomKetQua === '8413' && d5.buocDung === '2a_DINH_DANH_RIENG' && moiTrichHopLe(d5)
+  && d6.nhomKetQua === '8421' && d6.buocDung === '2a_DINH_DANH_RIENG' && moiTrichHopLe(d6)
+  && d7.nhomKetQua === '8503' && d7.buocDung === '2b_BO_PHAN_CHUYEN_DUNG' && moiTrichHopLe(d7)
+  && d8.nhomKetQua === '8503' && d8.buocDung === '2b_BO_PHAN_CHUYEN_DUNG' && moiTrichHopLe(d8)
+  && d9.nhomKetQua === '8409' && d9.buocDung === '2b_BO_PHAN_CHUYEN_DUNG' && moiTrichHopLe(d9)
+  && d10.nhomKetQua === '8409' && d10.buocDung === '2b_BO_PHAN_CHUYEN_DUNG' && moiTrichHopLe(d10),
+  JSON.stringify({ d5: d5.nhomKetQua, d6: d6.nhomKetQua, d7: d7.nhomKetQua, d8: d8.nhomKetQua, d9: d9.nhomKetQua, d10: d10.nhomKetQua }));
+
+const d11 = xetChuGiai2PhanXVI({ tenHang: 'tấm dẫn bên trong băng tải', nhomMayMe: '8428' });
+const d12 = xetChuGiai2PhanXVI({ tenHang: 'con lăn gắn mô tơ điện dùng cho băng tải', nhomMayMe: '8428' });
+const d13 = xetChuGiai2PhanXVI({ tenHang: 'con lăn gắn mô tơ điện dùng cho băng tải' });
+kiem('đối kháng 8501(a) trống/con lăn băng tải: "bên trong băng tải" không trích 8501.nhom; chỉ con lăn gắn mô tơ điện mới trích 8501.nhom → 8431',
+  d11.nhomKetQua === '8431' && !d11.trich.some((t) => t.khoa === '8501.nhom') && moiTrichHopLe(d11)
+  && d12.nhomKetQua === '8431' && d12.trich.some((t) => t.khoa === '8501.nhom') && moiTrichHopLe(d12)
+  && d13.nhomKetQua === '8431' && d13.trich.some((t) => t.khoa === '8501.nhom') && moiTrichHopLe(d13),
+  JSON.stringify({ d11Khoa: d11.trich.map((t) => t.khoa), d12Khoa: d12.trich.map((t) => t.khoa), d13: d13.nhomKetQua }));
+
+const d14 = xetChuGiai2PhanXVI({ tenHang: 'vòng đệm bằng cao su lưu hóa cứng', nhomMayMe: '8413' });
+kiem('đối kháng Chú giải 1(a): vòng đệm cao su lưu hóa cứng không bị loại 4016 → 8413 (2b)',
+  d14.trangThai === 'CHOT' && d14.nhomKetQua === '8413' && d14.buocDung === '2b_BO_PHAN_CHUYEN_DUNG' && moiTrichHopLe(d14),
+  JSON.stringify({ buoc: d14.buocDung, nhom: d14.nhomKetQua }));
+
+const d15 = xetChuGiai2PhanXVI({ tenHang: 'van hút dùng cho máy nén khí', nhomMayMe: '8414' });
+const d16 = xetChuGiai2PhanXVI({ tenHang: 'van xả dùng cho động cơ đốt trong', nhomMayMe: '8407' });
+const d17 = xetChuGiai2PhanXVI({ tenHang: 'van bi dùng cho máy nén khí', nhomMayMe: '8414' });
+kiem('đối kháng 84.81: van hút máy nén → 8414 (trích 8481.nhom); van xả động cơ → 8409 (trích 8481.nhom); van bi hoàn chỉnh → 8481',
+  d15.nhomKetQua === '8414' && d15.buocDung === '2b_BO_PHAN_CHUYEN_DUNG' && d15.trich.some((t) => t.khoa === '8481.nhom') && moiTrichHopLe(d15)
+  && d16.nhomKetQua === '8409' && d16.buocDung === '2b_BO_PHAN_CHUYEN_DUNG' && d16.trich.some((t) => t.khoa === '8481.nhom') && moiTrichHopLe(d16)
+  && d17.nhomKetQua === '8481' && d17.buocDung === '2a_DINH_DANH_RIENG' && moiTrichHopLe(d17),
+  JSON.stringify({ d15: d15.nhomKetQua, d16: d16.nhomKetQua, d17: d17.nhomKetQua }));
+
+const d18 = xetChuGiai2PhanXVI({ tenHang: 'giá đỡ có gắn chổi than', nhomMayMe: '8501' });
+const d19 = xetChuGiai2PhanXVI({ tenHang: 'giá đỡ lắp chổi than', nhomMayMe: '8501' });
+const d20 = xetChuGiai2PhanXVI({ tenHang: 'giá đỡ chưa gắn chổi than', nhomMayMe: '8501' });
+const d21 = xetChuGiai2PhanXVI({ tenHang: 'tụ điện máy phát điện', nhomMayMe: '8501' });
+const d22 = xetChuGiai2PhanXVI({ tenHang: 'tủ điện điều khiển máy phát điện', nhomMayMe: '8501' });
+kiem('đối kháng 8545 & tủ/tụ điện: giá đỡ có/lắp/chưa gắn chổi than → 8503; tụ điện → 8532; tủ điện → 8537',
+  d18.nhomKetQua === '8503' && d18.trich.some((t) => t.khoa === '8545.nhom') && moiTrichHopLe(d18)
+  && d19.nhomKetQua === '8503' && d19.trich.some((t) => t.khoa === '8545.nhom') && moiTrichHopLe(d19)
+  && d20.nhomKetQua === '8503' && d20.trich.some((t) => t.khoa === '8545.nhom') && moiTrichHopLe(d20)
+  && d21.nhomKetQua === '8532' && moiTrichHopLe(d21)
+  && d22.nhomKetQua === '8537' && moiTrichHopLe(d22),
+  JSON.stringify({ d18: d18.nhomKetQua, d19: d19.nhomKetQua, d20: d20.nhomKetQua, d21: d21.nhomKetQua, d22: d22.nhomKetQua }));
+
+const d23 = xetChuGiai2PhanXVI({ tenHang: 'lò xo của máy ép nhựa', nhomMayMe: '8477' });
+kiem('đối kháng chất liệu máy mẹ: "lò xo của máy ép nhựa" không nhầm nhựa → 7320 (Chú giải 1(g))',
+  d23.nhomKetQua === '7320' && d23.buocDung === 'LOAI_TRU_CHU_GIAI_1' && moiTrichHopLe(d23),
+  JSON.stringify({ d23: d23.nhomKetQua }));
 
 xong();
