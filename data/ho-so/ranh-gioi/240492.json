@@ -4,46 +4,47 @@
   "nhom": "2404",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261105T1542#soan-240492",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-01#soat-ozv-1792-240492",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá ranh giới theo traVe.lyDo và duyệt+áp khép SẠCH V1 (OZV-1792)",
+    "bam": "0ccceafb1c4d315e5d06898ac58fe728aa0b8acdf93d345ba94bacf8922c2937"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
       "hs": "24049210",
-      "nguon": "sen.24049210",
-      "trich": "MIẾNG DÁN NICOTIN\nMiếng dán nicotin là một miếng dán thẩm thấu để giải phóng nicotin vào cơ thể qua da. Nó được sử dụng trong liệu pháp thay thế nicotine (NRT), một quy trình để cai thuốc lá.",
+      "nguon": "tax.24049210",
+      "trich": "24049210 - - - Miếng dán nicotin (SEN)",
       "dieuKienSo": [
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Miếng dán nicotin"
-        },
-        {
-          "fact": "congDung",
-          "op": "CONG_DUNG",
-          "value": "cai thuốc lá"
+          "value": "Miếng dán nicotin"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "24049290",
       "nguon": "tax.24049290",
       "trich": "24049290 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "24049210",
       "loai": "QUYET_DINH",
-      "ghiChu": "Nghĩa hẹp theo SEN (sen.24049210): \"MIẾNG DÁN NICOTIN\nMiếng dán nicotin là một miếng dán thẩm thấu để giải phóng nicotin vào cơ thể qua da. Nó được sử dụng trong liệu pháp thay thế nicotine (NRT), một quy trình để cai thuốc lá.\" ⇒ tenLoai \"Miếng dán nicotin\" + congDung \"cai thuốc lá\". tax.24049210 \"Miếng dán nicotin (SEN)\" — tên hàng nguyên văn ⇒ tenLoai \"Miếng dán nicotin\"; \"(SEN)\" là ngoặc chú thích"
+      "ghiChu": "tax.24049210 \"Miếng dán nicotin (SEN)\" (EN \"Nicotine patch\") ⇒ tenLoai \"Miếng dán nicotin\" theo đúng chữ biểu (không gắn thêm congDung từ câu mô tả SEN)."
     }
   ],
   "traVe": [

@@ -4,13 +4,19 @@
   "nhom": "2404",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261105T1542#soan-240412",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-01#soat-ozv-1792-240412",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá ranh giới theo traVe.lyDo và duyệt+áp khép SẠCH V1 (OZV-1792)",
+    "bam": "81edfac724dcbd6ddeffe4ae1a39967a35af2b7cf985312d7a47bd915c7df19a"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -19,45 +25,40 @@
       "trich": "24041210 - - - Dạng lỏng hoặc gel dùng cho thuốc lá điện tử (SEN)",
       "dieuKienSo": [
         {
-          "op": "HOAC",
-          "phuongAn": [
-            [
-              {
-                "fact": "tenLoai",
-                "op": "TEN_LOAI",
-                "value": "Dạng lỏng"
-              }
-            ],
-            [
-              {
-                "fact": "tenLoai",
-                "op": "TEN_LOAI",
-                "value": "gel"
-              },
-              {
-                "fact": "dungCho",
-                "op": "CONG_DUNG",
-                "value": "thuốc lá điện tử"
-              }
-            ]
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Dạng lỏng",
+            "gel"
           ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "thuốc lá điện tử"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "24041290",
       "nguon": "tax.24041290",
       "trich": "24041290 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "24041210",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.24041210 \"Dạng lỏng hoặc gel dùng cho thuốc lá điện tử (SEN)\" — cổng 5 đọc định ngữ \"dùng cho thuốc lá điện tử\" gắn danh từ cuối (gel) ⇒ HOAC [[Dạng lỏng], [gel + dungCho]] theo gợi ý máy; \"(SEN)\" là ngoặc chú thích"
+      "ghiChu": "tax.24041210 \"Dạng lỏng hoặc gel dùng cho thuốc lá điện tử (SEN)\" (EN \"E-cigarette liquid or gel\") ⇒ tenLoai [\"Dạng lỏng\",\"gel\"] + dungCho \"thuốc lá điện tử\" áp chung cho cả hai danh từ đầu theo chữ Anh; \"(SEN)\" là ngoặc chú thích."
+    },
+    {
+      "ma": "24041210",
+      "loai": "BO_VE",
+      "ve": "dùng cho thuốc lá điện tử",
+      "lyDo": "Chữ Anh cùng dòng (E-cigarette liquid or gel) đặt định ngữ ở TRƯỚC cụm danh từ nên máy đọc nhầm định ngữ Việt là của danh từ CUỐI (bắt cong5-dinh-ngu-tach kiểu B). Thực tế định ngữ này áp cho CẢ hai danh từ đầu (Dạng lỏng và gel) nên một điều kiện dungCho chung cho cả dòng là đúng; không tách thành HOAC vì nhánh Dạng lỏng không ràng buộc sẽ rộng hơn chữ."
     }
   ],
   "traVe": [
