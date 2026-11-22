@@ -391,6 +391,13 @@ const KHOA_MOI = {
   daNhoiDem: 'CO_KHONG',
   coGanOBi: 'CO_KHONG',
   loaiTuDong: 'CO_KHONG',
+  // 22/11/2026 (T-6): mở khoá cho Top-93 & Lô 3-5
+  hamLuongSoiFilamentTongHop: 'SO',
+  daGiaCo: 'CO_KHONG',
+  coDuTru: 'CO_KHONG',
+  coDieuChinhDoCao: 'CO_KHONG',
+  coTheChuyenThanhGiuong: 'CO_KHONG',
+  coKetNoiMayTinh: 'CO_KHONG',
 };
 
 // ── 1. Nạp theo phiên bản ─────────────────────────────────────────────────────────────────────────────────────────
@@ -1881,6 +1888,74 @@ check('vietCum đơn vị @1 KHÔNG đổi ("CS: 75000W" — không cách)', T.v
     T.docGiaTri(fk, redosT5);
     const ms = Number(process.hrtime.bigint() - t0) / 1e6;
     check(`T-5 ReDoS ~40.000 từ lặp cho ${fk} < 2000 ms (thực tế ${ms.toFixed(0)} ms)`, ms < 2000, { fk, ms });
+  }
+}
+
+// T-6 — vatLieuKhac (TRE/SONG_MAY), kieuBom.QUAY (cachDocThem), hamLuongSoiFilamentTongHop, daGiaCo, coDuTru, coDieuChinhDoCao, coTheChuyenThanhGiuong, coKetNoiMayTinh + ReDoS < 500 ms.
+{
+  // 1. vatLieuKhac TRE / SONG_MAY: 9401.5, 9403.8, 4601.21
+  check('T-6 vatLieuKhac 9401.5 "mây, liễu gai, tre" đủ 3 giá trị qua DK + 4601.21 "Của tre"',
+    DK.kiemDieuKien({ fact: 'vatLieuKhac', op: 'TRONG', value: ['SONG_MAY', 'LIEU_GAI', 'TRE'] }, '94015 Ghế bằng mây, liễu gai, tre hoặc các vật liệu tương tự') === null
+    && T.docGiaTri('vatLieuKhac', '460121 Của tre').giaTri === 'TRE'
+    && ['SONG_MAY', 'LIEU_GAI', 'TRE'].every((v) => (T.docGiaTri('vatLieuKhac', 'Đồ nội thất bằng vật liệu khác, kể cả mây, liễu gai, tre').ungVien || []).includes(v)));
+  chuaBiet('T-6 vatLieuKhac (nghịch): "Măng tre tươi / Đám mây lưu trữ / stress" ⇒ CHUA_BIET', 'vatLieuKhac', 'Măng tre tươi và đám mây lưu trữ stress');
+
+  // 2. kieuBom.QUAY qua cachDocThem ("piston quay" 8413.60)
+  check('T-6 cachDocThem kieuBom.QUAY: DK đọc được "Bơm hoạt động kiểu piston quay khác" & giữ nguyên "Bơm bánh răng" = QUAY, "Bơm piston tịnh tiến" = PISTON',
+    DK.kiemDieuKien({ fact: 'kieuBom', op: 'TRONG', value: ['QUAY'] }, '841360 Bơm hoạt động kiểu piston quay khác') === null
+    && T.cachDocGiaTri('kieuBom', 'QUAY').vi.includes('piston quay')
+    && T.docGiaTri('kieuBom', 'Bơm bánh răng').giaTri === 'QUAY'
+    && T.docGiaTri('kieuBom', 'Bơm piston chuyển động tịnh tiến').giaTri === 'PISTON'
+    && (T.docGiaTri('kieuBom', 'Bơm hoạt động kiểu piston quay').ungVien || []).includes('QUAY'));
+
+  // 3. hamLuongSoiFilamentTongHop (SO, %)
+  la('T-6 Vi 5407.7 >= 85%', 'hamLuongSoiFilamentTongHop', 'Vải dệt thoi khác, có hàm lượng sợi filament tổng hợp chiếm từ 85% trở lên tính theo khối lượng', 85, { op: '>=' });
+  la('T-6 Vi 5407.8 < 85%', 'hamLuongSoiFilamentTongHop', 'Vải dệt thoi khác, có hàm lượng sợi filament tổng hợp chiếm dưới 85% tính theo khối lượng', 85, { op: '<' });
+  la('T-6 En >= 85%', 'hamLuongSoiFilamentTongHop', 'Other woven fabrics, containing 85% or more by weight of synthetic filaments', 85, { op: '>=' });
+  la('T-6 En < 85%', 'hamLuongSoiFilamentTongHop', 'Containing less than 85% by weight of synthetic filaments', 85, { op: '<' });
+  la('T-6 Zh >= 85%', 'hamLuongSoiFilamentTongHop', '按重量计合成纤维长丝含量在85%及以上', 85, { op: '>=' });
+  chuaBiet('T-6 hamLuongSoiFilamentTongHop (nghịch): sợi filament tái tạo / 100% bông ⇒ CHUA_BIET', 'hamLuongSoiFilamentTongHop', 'Vải dệt thoi có hàm lượng sợi filament tái tạo chiếm 85%, 100% bông');
+  check('T-6 hamLuongSoiFilamentTongHop DK + vietCum không lặp %',
+    DK.kiemDieuKien({ fact: 'hamLuongSoiFilamentTongHop', op: '>=', value: 85, donVi: '%' }, 'có hàm lượng sợi filament tổng hợp chiếm từ 85% trở lên') === null
+    && T.vietCum('hamLuongSoiFilamentTongHop', 85) === 'hàm lượng sợi filament tổng hợp 85% tính theo khối lượng');
+
+  // 4. 5 khoá CO_KHONG mới
+  const CK_T6 = [
+    ['daGiaCo', '40092 Đã gia cố hoặc kết hợp duy nhất với kim loại', 'Rubber hoses reinforced with metal', '已加强橡胶管', '40091 Chưa gia cố hoặc kết hợp với các vật liệu khác', 'Unreinforced plastic hose', '未加强塑料软管', '39232910 Túi vô trùng đã hoặc chưa gia cố bằng lá nhôm'],
+    ['coDuTru', 'Thiết bị đun nước nóng có dự trữ (1), không dùng điện', 'Electric storage water heater 50L', '储水式电热水器', 'Máy nước nóng không có bình dự trữ', 'Instantaneous water heater without storage tank', '即热式热水器', 'Giá dự trữ hàng hóa và pin dự trữ 10000mAh'],
+    ['coDieuChinhDoCao', '94013 Ghế quay có điều chỉnh độ cao', 'Swivel seat with variable height adjustment', '可调高度的旋转坐具', 'Ghế quay cố định không điều chỉnh được độ cao', 'Fixed height office chair without height adjustment', '高度不可调办公椅', 'Camera tốc độ cao và bàn nâng hàng thủy lực'],
+    ['coTheChuyenThanhGiuong', '94014 Ghế có thể chuyển thành giường', 'Sofa convertible into a bed', '可转换作床的坐具', 'Ghế sofa cố định không thể chuyển thành giường', 'Seat not convertible into a bed', '不可转换作床的座椅', '9401 Ghế ngồi, có hoặc không chuyển được thành giường'],
+    ['coKetNoiMayTinh', '85284200 Có khả năng kết nối trực tiếp và được thiết kế để dùng cho máy xử lý dữ liệu tự động thuộc nhóm 84.71', 'Monitor capable of directly connecting to and designed for use with an automatic data processing machine', '可直接连接到自动数据处理设备的显示器', 'Máy in không có khả năng kết nối với máy xử lý dữ liệu tự động hoặc kết nối mạng', 'Printer not capable of connecting to a computer or a network', '不能连接到计算机或网络的打印机', 'Thiết bị kết nối mạng điện thoại và cáp sạc USB'],
+  ];
+  for (const [khoa, viCo, enCo, zhCo, viK, enK, zhK, neutral] of CK_T6) {
+    la(`T-6 ${khoa} Vi CO`, khoa, viCo, true);
+    la(`T-6 ${khoa} En CO`, khoa, enCo, true);
+    la(`T-6 ${khoa} Zh CO`, khoa, zhCo, true);
+    la(`T-6 ${khoa} Vi KHONG`, khoa, viK, false);
+    la(`T-6 ${khoa} En KHONG`, khoa, enK, false);
+    la(`T-6 ${khoa} Zh KHONG`, khoa, zhK, false);
+    chuaBiet(`T-6 ${khoa} (nghịch): "${neutral}" ⇒ CHUA_BIET`, khoa, neutral);
+    check(`T-6 ${khoa} DK CO/KHONG đạt`,
+      DK.kiemDieuKien({ fact: khoa, op: 'CO' }, viCo) === null && DK.kiemDieuKien({ fact: khoa, op: 'KHONG' }, viK) === null);
+  }
+  la('T-6 daGiaCo (3917.33 chưa được gia cố — không phủ định kép)', 'daGiaCo', '391733 Loại khác, chưa được gia cố hoặc kết hợp với các vật liệu khác', false, { bc: 'chưa được gia cố' });
+  la('T-6 daGiaCo (6809.11.00 được phủ mặt hoặc gia cố chỉ bằng giấy)', 'daGiaCo', '68091100 Được phủ mặt hoặc gia cố chỉ bằng giấy hoặc bìa', true);
+  chuaBiet('T-6 daGiaCo (nghịch 5407.41.10 vật liệu gia cố)', 'daGiaCo', 'Vải lưới ni lông thích hợp để sử dụng như vật liệu gia cố cho vải sơn dầu');
+  chuaBiet('T-6 daGiaCo (nghịch En whether or not internally reinforced)', 'daGiaCo', 'Composite paperboard, whether or not internally reinforced');
+  chuaBiet('T-6 coDuTru (nghịch En Instantaneous or storage water heaters)', 'coDuTru', 'Instantaneous or storage water heaters, non-electric');
+  chuaBiet('T-6 coTheChuyenThanhGiuong (nghịch En whether or not convertible into beds)', 'coTheChuyenThanhGiuong', 'Seats, whether or not convertible into beds');
+
+  // 5. ReDoS ~40.000 từ lặp cho tất cả khoá T-6 < 500 ms
+  const redosT6 = Array(1000).fill('có hàm lượng sợi filament tổng hợp chiếm từ 85% trở lên đã hoặc chưa gia cố bằng vật liệu dệt có dự trữ điều chỉnh độ cao chuyển thành giường kết nối trực tiếp với máy xử lý dữ liệu tự động hoặc kết nối mạng kiểu piston quay bằng mây, liễu gai, tre').join(' ');
+  const redosT6Neutral = Array(1000).fill('van điện từ khí nén thép không gỉ bọc nhựa PVC có hoặc không kèm phụ kiện dây điện đầu nối công nghiệp 220V').join(' ');
+  for (const fk of ['hamLuongSoiFilamentTongHop', 'daGiaCo', 'coDuTru', 'coDieuChinhDoCao', 'coTheChuyenThanhGiuong', 'coKetNoiMayTinh', 'vatLieuKhac', 'kieuBom']) {
+    const t0 = process.hrtime.bigint();
+    T.docGiaTri(fk, redosT6);
+    const ms1 = Number(process.hrtime.bigint() - t0) / 1e6;
+    const t1 = process.hrtime.bigint();
+    T.docGiaTri(fk, redosT6Neutral);
+    const ms2 = Number(process.hrtime.bigint() - t1) / 1e6;
+    check(`T-6 ReDoS ~40.000 từ lặp cho ${fk} < 500 ms (khớp ${ms1.toFixed(1)} ms, rỗng ${ms2.toFixed(1)} ms)`, ms1 < 500 && ms2 < 500, { fk, ms1, ms2 });
   }
 }
 

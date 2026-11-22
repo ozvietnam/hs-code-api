@@ -394,7 +394,13 @@
       "daLapVoLoa",
       "daNhoiDem",
       "coGanOBi",
-      "loaiTuDong"
+      "loaiTuDong",
+      "hamLuongSoiFilamentTongHop",
+      "daGiaCo",
+      "coDuTru",
+      "coDieuChinhDoCao",
+      "coTheChuyenThanhGiuong",
+      "coKetNoiMayTinh"
     ],
     "tuVung1": {
       "trangThai": "DA_CHAM",
@@ -21551,8 +21557,9 @@
           "nhanZh": "藤",
           "cachDoc": {
             "vi": [
-              "(?:(?:bằng|từ)\\s+)?(?:song\\s*,\\s*mây|song\\s+mây|mây\\s+song)",
-              "(?:bằng|từ)\\s+(?:song(?!\\s+song)|mây)"
+              "(?:(?:làm\\s+)?(?:bằng|từ|của)\\s+)?(?:song\\s*,\\s*mây|song\\s+mây|mây\\s+song)",
+              "(?:làm\\s+)?(?:bằng|từ|của)\\s+(?:song(?!\\s+song)|mây)",
+              "mây(?=\\s*,\\s*(?:liễu\\s+gai|tre))"
             ],
             "en": [
               "rattan",
@@ -21820,7 +21827,9 @@
           "nhanZh": "竹",
           "cachDoc": {
             "vi": [
-              "(?:làm\\s+)?(?:bằng|từ)\\s+tre"
+              "(?:làm\\s+)?(?:bằng|từ|của)\\s+tre",
+              "(?<=,\\s)tre(?!\\s+(?:tươi|non|ngâm|muối))",
+              "(?:hoặc|và)\\s+tre(?!\\s+(?:tươi|non|ngâm|muối))"
             ],
             "en": [
               "(?:of|made\\s+(?:of|from)|from)\\s+bamboo",
@@ -27350,6 +27359,369 @@
       },
       "ghiChu": "T-5 Top-93: Phân biệt loại tự động và không tự động / bán tự động; chắn cụm \"xử lý dữ liệu tự động\".",
       "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "kieu": "SO",
+      "khoa": "hamLuongSoiFilamentTongHop",
+      "nhanVi": "hàm lượng sợi filament tổng hợp (theo khối lượng)",
+      "nhanEn": "synthetic filament yarn content by weight",
+      "nhanZh": "合成纤维长丝含量（按重量计）",
+      "heDonVi": "phanTram",
+      "donViChuan": "%",
+      "canNguCanh": true,
+      "docMoRong": true,
+      "cachDoc": {
+        "vi": [
+          "(?:hàm\\s+lượng\\s+)?sợi\\s+filament\\s+tổng\\s+hợp(?:\\s+chiếm)?"
+        ],
+        "en": [
+          "synthetic\\s+filaments?(?:\\s+yarn)?"
+        ],
+        "zh": [
+          "合成纤维长丝(?:含量)?"
+        ]
+      },
+      "docThem": [
+        {
+          "mau": "(\\d+(?:[.,]\\d+)?)\\s*%(?=(?:\\s+or\\s+(?:more|less))?(?:\\s+by\\s+weight)?\\s+of\\s+synthetic\\s+filaments?(?:\\s+yarn)?)",
+          "donVi": "%"
+        }
+      ],
+      "cachViet": {
+        "vi": "hàm lượng sợi filament tổng hợp {giaTri} tính theo khối lượng"
+      },
+      "cauHoi": {
+        "vi": "Sợi filament tổng hợp chiếm bao nhiêu % tính theo khối lượng vải?",
+        "zh": "合成纤维长丝按重量计占织物的百分之几？"
+      },
+      "ghiChu": "T-6: Chữ biểu 5407.7 \"có hàm lượng sợi filament tổng hợp chiếm từ 85% trở lên tính theo khối lượng\" và 5407.8 \"có hàm lượng sợi filament tổng hợp chiếm dưới 85% tính theo khối lượng\".",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "kieu": "CO_KHONG",
+      "khoa": "daGiaCo",
+      "nhanVi": "đã được gia cố",
+      "nhanEn": "reinforced",
+      "nhanZh": "已加强",
+      "cachDoc": {
+        "vi": [
+          "(?:đã\\s+(?:được\\s+)?|được\\s+|có\\s+)gia\\s+cố",
+          "(?<!chưa\\s)(?<!không\\s)gia\\s+cố\\s+(?:chỉ\\s+)?(?:bằng|với|bên\\s+trong)"
+        ],
+        "en": [
+          "(?<!or\\snot\\s)(?<!or\\snot\\sinternally\\s)(?<!un)(?<!non-)reinforced"
+        ],
+        "zh": [
+          "(?<!未)(?<!不)已?加强(?:型|的)?",
+          "(?<!未)(?<!不)带加强层"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không có",
+          "không",
+          "chưa",
+          "ko",
+          "chẳng",
+          "non-?",
+          "without",
+          "no",
+          "not",
+          "un",
+          "无",
+          "非",
+          "不",
+          "没有",
+          "未"
+        ]
+      },
+      "cachDocKhong": {
+        "vi": [
+          "(?<!hoặc\\s)(?:chưa|không)\\s+(?:được\\s+)?gia\\s+cố"
+        ],
+        "en": [
+          "(?<!or\\s)not\\s+(?:internally\\s+)?reinforced",
+          "(?<!or\\s)unreinforced",
+          "(?<!or\\s)non-?reinforced"
+        ],
+        "zh": [
+          "未加强",
+          "未经加强",
+          "无加强层",
+          "非加强"
+        ]
+      },
+      "cachViet": {
+        "vi": "đã được gia cố",
+        "viPhuDinh": "chưa được gia cố"
+      },
+      "cauHoi": {
+        "vi": "Sản phẩm (ống, tấm, túi…) đã được gia cố (bằng kim loại, vật liệu dệt, sợi thủy tinh…) chưa?",
+        "zh": "该产品（管、板、袋等）是否经过加强（如金属、纺织材料、玻璃纤维等）？"
+      },
+      "ghiChu": "T-6: Chữ biểu 4009.1 \"Chưa gia cố…\", 4009.2–4009.4 \"Đã gia cố…\", 3917.32/.33 \"chưa (được) gia cố…\", 3923.21.91 \"không được gia cố\", 3923.30.20 \"được gia cố\", 4010.11.00, 4010.12.00, 6809.11.00 (trừ dạng tuỳ chọn 3923.29.10 \"đã hoặc chưa gia cố\").",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "kieu": "CO_KHONG",
+      "khoa": "coDuTru",
+      "nhanVi": "có bình dự trữ nước nóng",
+      "nhanEn": "storage water heater (with storage tank)",
+      "nhanZh": "储水式（带储水罐）",
+      "cachDoc": {
+        "vi": [
+          "(?<!hoặc\\s)có\\s+(?:(?:bình|bồn|bể|ngăn)\\s+(?:chứa\\s+)?)?dự\\s+trữ(?!\\s+(?:năng\\s+lượng|điện|pin|dữ\\s+liệu|tệp))",
+          "(?:bình|bồn|bể|ngăn)\\s+(?:chứa\\s+)?dự\\s+trữ(?:\\s+nước)?"
+        ],
+        "en": [
+          "(?<!or\\s)storage\\s+water\\s+heaters?",
+          "(?:with|has|having)\\s+(?:a\\s+)?(?:hot\\s+water\\s+)?storage\\s+tank"
+        ],
+        "zh": [
+          "(?<!或)储水式",
+          "带储水[罐箱]",
+          "有储水[罐箱]"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không có",
+          "không",
+          "chưa",
+          "ko",
+          "chẳng",
+          "non-?",
+          "without",
+          "no",
+          "not",
+          "tankless",
+          "无",
+          "非",
+          "不",
+          "没有",
+          "未"
+        ]
+      },
+      "cachDocKhong": {
+        "vi": [
+          "(?<!hoặc\\s)(?:không|chưa)\\s+(?:có\\s+)?(?:(?:bình|bồn|bể|ngăn)\\s+(?:chứa\\s+)?)?dự\\s+trữ",
+          "(?:đun\\s+nước\\s+nóng|máy\\s+nước\\s+nóng)\\s+(?:trực\\s+tiếp|nhanh|tức\\s+thời)(?!\\s+hoặc)"
+        ],
+        "en": [
+          "instantaneous\\s+water\\s+heaters?(?!\\s+or\\s+storage)",
+          "tankless\\s+water\\s+heaters?",
+          "without\\s+(?:a\\s+)?(?:hot\\s+water\\s+)?storage\\s+tank",
+          "non-?storage\\s+water\\s+heaters?"
+        ],
+        "zh": [
+          "即热式(?!或储水式)",
+          "无储水[罐箱]",
+          "不带储水"
+        ]
+      },
+      "cachViet": {
+        "vi": "có dự trữ nước nóng",
+        "viPhuDinh": "không có bình dự trữ"
+      },
+      "cauHoi": {
+        "vi": "Thiết bị đun nước nóng là loại có bình/bồn dự trữ nước nóng hay loại đun trực tiếp (tức thời, không bình dự trữ)?",
+        "zh": "该热水器是带储水罐的储水式，还是无储水罐的即热式？"
+      },
+      "ghiChu": "T-6: Chữ biểu 8419.1 \"Thiết bị đun nước nóng nhanh hoặc thiết bị đun nước nóng có dự trữ (1), không dùng điện\" và 8516.10 \"Dụng cụ điện đun nước nóng tức thời hoặc đun nước nóng có dự trữ và đun nước nóng kiểu nhúng\". Chặn \"dự trữ\" trần (giá dự trữ, van dự trữ, pin dự trữ).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "kieu": "CO_KHONG",
+      "khoa": "coDieuChinhDoCao",
+      "nhanVi": "có điều chỉnh độ cao",
+      "nhanEn": "with variable height adjustment",
+      "nhanZh": "可调节高度",
+      "cachDoc": {
+        "vi": [
+          "(?:có\\s+)?(?:điều\\s+chỉnh|thay\\s+đổi|nâng\\s+hạ)\\s+(?:được\\s+)?(?:độ|chiều)\\s+cao",
+          "(?:độ|chiều)\\s+cao\\s+(?:điều\\s+chỉnh|thay\\s+đổi)\\s+được"
+        ],
+        "en": [
+          "(?:with\\s+)?(?:variable\\s+)?height\\s+adjustment",
+          "height[- ]adjustable",
+          "adjustable\\s+height"
+        ],
+        "zh": [
+          "(?<!不)(?<!无)可调(?:节)?高度",
+          "(?<!不)高度可调",
+          "带高度调节"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không có",
+          "không",
+          "chưa",
+          "ko",
+          "chẳng",
+          "non-?",
+          "without",
+          "no",
+          "not",
+          "无",
+          "非",
+          "不",
+          "没有",
+          "未"
+        ]
+      },
+      "cachDocKhong": {
+        "vi": [
+          "(?:không|chưa)\\s+(?:có\\s+)?(?:điều\\s+chỉnh|chỉnh|thay\\s+đổi|nâng\\s+hạ)\\s+(?:được\\s+)?(?:độ|chiều)\\s+cao",
+          "(?:độ|chiều)\\s+cao\\s+cố\\s+định"
+        ],
+        "en": [
+          "without\\s+(?:variable\\s+)?height\\s+adjustment",
+          "non-?adjustable\\s+height",
+          "fixed\\s+height"
+        ],
+        "zh": [
+          "不可调(?:节)?高度",
+          "高度不可调",
+          "固定高度",
+          "无高度调节"
+        ]
+      },
+      "cachViet": {
+        "vi": "có điều chỉnh độ cao",
+        "viPhuDinh": "không điều chỉnh độ cao"
+      },
+      "cauHoi": {
+        "vi": "Ghế hoặc sản phẩm có cơ cấu điều chỉnh được độ cao không?",
+        "zh": "该座椅或产品是否带有高度调节机构？"
+      },
+      "ghiChu": "T-6: Chữ biểu 9401.3 \"Ghế quay có điều chỉnh độ cao\" (9401.31 / 9401.39).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "kieu": "CO_KHONG",
+      "khoa": "coTheChuyenThanhGiuong",
+      "nhanVi": "có thể chuyển thành giường",
+      "nhanEn": "convertible into beds",
+      "nhanZh": "可转换作床",
+      "cachDoc": {
+        "vi": [
+          "(?<!hoặc\\skhông\\s)(?:có\\s+thể\\s+)?chuyển(?:\\s+đổi)?(?:\\s+được)?\\s+thành\\s+giường",
+          "(?:gấp|mở|kéo|biến)\\s+(?:được\\s+)?thành\\s+giường",
+          "(?:ghế|sofa)\\s+giường"
+        ],
+        "en": [
+          "(?<!or\\snot\\s)(?<!or\\s)convertible\\s+into\\s+(?:a\\s+)?beds?",
+          "sofa[- ]beds?"
+        ],
+        "zh": [
+          "(?<!不论是否)(?<!不可)(?<!非)可转换作床",
+          "(?<!非)两用沙发床",
+          "折叠床椅"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không có",
+          "không",
+          "chưa",
+          "ko",
+          "chẳng",
+          "non-?",
+          "without",
+          "no",
+          "not",
+          "无",
+          "非",
+          "不",
+          "没有",
+          "未"
+        ]
+      },
+      "cachDocKhong": {
+        "vi": [
+          "(?<!hoặc\\s)(?:không|chưa)\\s+(?:thể\\s+)?chuyển(?:\\s+đổi)?(?:\\s+được)?\\s+thành\\s+giường"
+        ],
+        "en": [
+          "(?<!or\\s)not\\s+convertible\\s+into\\s+(?:a\\s+)?beds?",
+          "non-?convertible\\s+(?:into\\s+(?:a\\s+)?beds?|sofa)"
+        ],
+        "zh": [
+          "不可转换作床",
+          "非两用沙发床"
+        ]
+      },
+      "cachViet": {
+        "vi": "có thể chuyển thành giường",
+        "viPhuDinh": "không thể chuyển thành giường"
+      },
+      "cauHoi": {
+        "vi": "Ghế hoặc sofa có thể gập/mở chuyển đổi thành giường nằm được không?",
+        "zh": "该坐具或沙发是否可以展开转换作床使用？"
+      },
+      "ghiChu": "T-6: Chữ biểu 9401.4 \"Ghế có thể chuyển thành giường, trừ ghế trong vườn hoặc đồ cắm trại\" (9401.41 / 9401.49); giữ dạng tuỳ chọn nhóm 94.01 \"có hoặc không chuyển được thành giường\" là CHUA_BIET.",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "kieu": "CO_KHONG",
+      "khoa": "coKetNoiMayTinh",
+      "nhanVi": "có khả năng kết nối máy xử lý dữ liệu tự động hoặc kết nối mạng",
+      "nhanEn": "capable of connecting to an automatic data-processing machine or network",
+      "nhanZh": "可连接到自动数据处理设备或网络",
+      "cachDoc": {
+        "vi": [
+          "(?:có\\s+khả\\s+năng\\s+|được\\s+thiết\\s+kế\\s+(?:chỉ\\s+)?để\\s+)?kết\\s+nối(?:\\s+trực\\s+tiếp)?(?:\\s+và\\s+được\\s+thiết\\s+kế\\s+(?:chỉ\\s+)?(?:để\\s+)?(?:dùng|sử\\s+dụng))?\\s+(?:với|cho|đến|tới)\\s+(?:máy\\s+xử\\s+lý\\s+dữ\\s+liệu\\s+tự\\s+động|máy\\s+tính|PC)",
+          "(?:có\\s+khả\\s+năng\\s+)?kết\\s+nối\\s+mạng(?!\\s+(?:điện\\s+tín|điện\\s+thoại|viễn\\s+thông))"
+        ],
+        "en": [
+          "(?:capable\\s+of\\s+(?:directly\\s+)?)?connect(?:ing)?(?:\\s+directly)?\\s+to\\s+(?:and\\s+designed\\s+for\\s+use\\s+with\\s+)?(?:an?\\s+)?(?:automatic\\s+data[- ]processing\\s+machines?|computers?|PC|network)"
+        ],
+        "zh": [
+          "(?<!不能)可(?:直接)?连接(?:到)?自动数据处理设备",
+          "(?<!不能)可连接(?:到)?(?:计算机|电脑|网络)"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không có",
+          "không",
+          "chưa",
+          "ko",
+          "chẳng",
+          "non-?",
+          "without",
+          "no",
+          "not",
+          "cannot",
+          "can't",
+          "unable to",
+          "无",
+          "非",
+          "不",
+          "不能",
+          "没有",
+          "未"
+        ]
+      },
+      "cachDocKhong": {
+        "vi": [
+          "(?:không|chưa)\\s+(?:có\\s+)?(?:khả\\s+năng\\s+)?kết\\s+nối(?:\\s+trực\\s+tiếp)?\\s+(?:với|cho|đến|tới)\\s+(?:máy\\s+xử\\s+lý\\s+dữ\\s+liệu\\s+tự\\s+động|máy\\s+tính|PC)(?:\\s+(?:hoặc|hay)\\s+(?:kết\\s+nối\\s+)?mạng)?",
+          "(?:không|chưa)\\s+(?:có\\s+)?(?:khả\\s+năng\\s+)?kết\\s+nối\\s+mạng(?!\\s+(?:điện\\s+tín|điện\\s+thoại|viễn\\s+thông))"
+        ],
+        "en": [
+          "not\\s+capable\\s+of\\s+(?:directly\\s+)?connect(?:ing)?(?:\\s+directly)?\\s+to\\s+(?:and\\s+designed\\s+for\\s+use\\s+with\\s+)?(?:an?\\s+)?(?:automatic\\s+data[- ]processing\\s+machines?|computers?|PC|network)(?:\\s+or\\s+(?:an?\\s+)?network)?",
+          "cannot\\s+connect\\s+to\\s+(?:an?\\s+)?(?:automatic\\s+data[- ]processing\\s+machines?|computers?|PC|network)(?:\\s+or\\s+(?:an?\\s+)?network)?"
+        ],
+        "zh": [
+          "不能(?:直接)?连接(?:到)?(?:自动数据处理设备|计算机|电脑|网络)",
+          "不具备(?:联网|连接电脑)功能"
+        ]
+      },
+      "cachViet": {
+        "vi": "có khả năng kết nối máy tính hoặc mạng",
+        "viPhuDinh": "không kết nối máy tính hoặc mạng"
+      },
+      "cauHoi": {
+        "vi": "Thiết bị (màn hình, máy chiếu, máy in…) có khả năng kết nối với máy xử lý dữ liệu tự động (máy tính) hoặc kết nối mạng không?",
+        "zh": "该设备（显示器、投影仪、打印机等）是否可连接到自动数据处理设备（计算机）或网络？"
+      },
+      "ghiChu": "T-6: Chữ biểu 8528.42.00, 8528.52.00, 8528.62.00 \"Có khả năng kết nối trực tiếp và được thiết kế để dùng cho máy xử lý dữ liệu tự động thuộc nhóm 84.71\", 8517.62.43 \"được thiết kế chỉ để kết nối với máy xử lý dữ liệu tự động thuộc nhóm 84.71\", và 8443.31/8443.32 \"có khả năng kết nối với máy xử lý dữ liệu tự động hoặc kết nối mạng\".",
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "khongPhaiPhuDinh": [
@@ -27586,6 +27958,15 @@
       "NHIEU_PHA": {
         "vi": [
           "đa pha"
+        ]
+      }
+    },
+    "kieuBom": {
+      "QUAY": {
+        "vi": [
+          "bơm hoạt động kiểu piston quay",
+          "kiểu piston quay",
+          "piston quay"
         ]
       }
     }
