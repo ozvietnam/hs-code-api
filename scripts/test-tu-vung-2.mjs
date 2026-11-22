@@ -18,6 +18,7 @@ import { createRequire } from 'node:module';
 import { boChu, vanTay, TEP_VANG } from './vang-doc-tu-vung-1.mjs';
 const require = createRequire(import.meta.url);
 const T = require('../lib/tu-vung.js');
+const DK = require('../lib/dieu-kien-so.js');
 
 let pass = 0; let fail = 0;
 const check = (n, c, d) => { if (c) { pass += 1; console.log(`PASS ${n}`); } else { fail += 1; console.log(`FAIL ${n}`, d === undefined ? '' : JSON.stringify(d).slice(0, 700)); } };
@@ -1209,7 +1210,12 @@ check('vietCum đơn vị @1 KHÔNG đổi ("CS: 75000W" — không cách)', T.v
   chuaBiet('chỉ ghi được đúc rèn hoặc dập ⇒ CHUA_BIET', 'oDangTho', 'Thùng phuy thép được dập');
 
   // 4. vatLieuKhac.DA_THUOC (9305.91.10, 9305.99.11, 9305.99.91)
-  la('chữ biểu 9305.91.10 bằng da thuộc ⇒ DA_THUOC', 'vatLieuKhac', 'Bằng da thuộc hoặc vật liệu dệt (SEN)', 'DA_THUOC');
+  la('bằng da thuộc ⇒ DA_THUOC', 'vatLieuKhac', 'Bằng da thuộc (SEN)', 'DA_THUOC');
+  {
+    const r9305 = T.docGiaTri('vatLieuKhac', 'Bằng da thuộc hoặc vật liệu dệt (SEN)');
+    check('chữ biểu 9305.91.10 bằng da thuộc hoặc vật liệu dệt ⇒ đủ 2 ứng viên VAT_LIEU_DET & DA_THUOC',
+      r9305.trangThai === 'CHUA_BIET' && r9305.ungVien?.includes('DA_THUOC') && r9305.ungVien?.includes('VAT_LIEU_DET'), r9305);
+  }
   la('En of leather ⇒ DA_THUOC', 'vatLieuKhac', 'Parts and accessories of leather', 'DA_THUOC');
   chuaBiet('sơn cho da thuộc không phải vật liệu làm bằng da thuộc ⇒ CHUA_BIET', 'vatLieuKhac', 'Sơn cho da thuộc');
 
@@ -1692,6 +1698,41 @@ check('vietCum đơn vị @1 KHÔNG đổi ("CS: 75000W" — không cách)', T.v
     const ms = Number(process.hrtime.bigint() - t0) / 1e6;
     check(`OZV-1820 ReDoS ~40.000 từ lặp cho ${fk} < 2000 ms (thực tế ${ms.toFixed(0)} ms)`, ms < 2000, { fk, ms });
   }
+}
+
+// T-1 — mở rộng VAT_LIEU_DET (vải không dệt, vải nỉ, hoặc vật liệu dệt, 6109.90) + En/Zh + nghịch + ReDoS < 2 giây.
+{
+  const dkVld = { fact: 'vatLieuKhac', op: 'TRONG', value: ['VAT_LIEU_DET'] };
+  la('T-1 VAT_LIEU_DET (thuận Vi không cần "bằng"): túi vải không dệt PP', 'vatLieuKhac', 'túi vải không dệt PP', 'VAT_LIEU_DET');
+  la('T-1 VAT_LIEU_DET (thuận Vi): mặt ngoài bằng vải nỉ', 'vatLieuKhac', 'mặt ngoài bằng vải nỉ', 'VAT_LIEU_DET');
+  la('T-1 VAT_LIEU_DET (thuận Vi): Túi bằng nỉ', 'vatLieuKhac', 'Túi bằng nỉ', 'VAT_LIEU_DET');
+  la('T-1 VAT_LIEU_DET (thuận Vi 4202): Mặt ngoài bằng plastic hoặc vật liệu dệt', 'vatLieuKhac', 'Mặt ngoài bằng plastic hoặc vật liệu dệt', 'VAT_LIEU_DET');
+  la('T-1 VAT_LIEU_DET (thuận Vi 6109.90): Từ các vật liệu dệt khác', 'vatLieuKhac', '610990 Từ các vật liệu dệt khác', 'VAT_LIEU_DET');
+  la('T-1 VAT_LIEU_DET (thuận Vi 9612.10 / 9619.00): Lõi thấm hút bằng vật liệu dệt', 'vatLieuKhac', 'Lõi thấm hút bằng vật liệu dệt', 'VAT_LIEU_DET');
+
+  check('T-1 DK.kiemDieuKien vatLieuKhac VAT_LIEU_DET nhận cả "túi vải không dệt PP", 4202.12, 6109.90, 9612.10',
+    ['túi vải không dệt PP', '420212 Mặt ngoài bằng plastic hoặc vật liệu dệt', '610990 Từ các vật liệu dệt khác', '961210 Bằng vật liệu dệt', '961900 Lõi thấm hút bằng vật liệu dệt']
+      .every((s) => DK.kiemDieuKien(dkVld, s) === null));
+
+  la('T-1 VAT_LIEU_DET En textile materials', 'vatLieuKhac', 'Outer surface of textile materials', 'VAT_LIEU_DET');
+  la('T-1 VAT_LIEU_DET En non-woven fabric', 'vatLieuKhac', 'Non-woven fabric shopping bag', 'VAT_LIEU_DET');
+  la('T-1 VAT_LIEU_DET En wool felt', 'vatLieuKhac', 'Wool felt mat', 'VAT_LIEU_DET');
+  la('T-1 VAT_LIEU_DET Zh 纺织材料', 'vatLieuKhac', '纺织材料制旅行箱', 'VAT_LIEU_DET');
+  la('T-1 VAT_LIEU_DET Zh 无纺布', 'vatLieuKhac', '无纺布手提袋', 'VAT_LIEU_DET');
+  la('T-1 VAT_LIEU_DET Zh 毡', 'vatLieuKhac', '毡垫', 'VAT_LIEU_DET');
+
+  chuaBiet('T-1 VAT_LIEU_DET (nghịch): túi nhựa PP', 'vatLieuKhac', 'túi nhựa PP');
+  chuaBiet('T-1 VAT_LIEU_DET (nghịch ranh giới "bất kỳ")', 'vatLieuKhac', 'bất kỳ loại nào');
+  chuaBiet('T-1 VAT_LIEU_DET (nghịch ranh giới "nhỉ" / "vỉ")', 'vatLieuKhac', 'đẹp nhỉ, vỉ thuốc nhựa');
+  chuaBiet('T-1 VAT_LIEU_DET (nghịch En động từ "felt" / "was felt")', 'vatLieuKhac', 'I felt it was fine');
+  chuaBiet('T-1 VAT_LIEU_DET (nghịch En bị động "was felt")', 'vatLieuKhac', 'The vibration was felt strongly');
+  chuaBiet('T-1 VAT_LIEU_DET (nghịch 3403.91 "xử lý / bảo quản các vật liệu dệt")', 'vatLieuKhac', 'Chất liệu bảo quản các vật liệu dệt');
+
+  const redosVld = Array(5000).fill('túi vải không dệt mặt ngoài bằng vải nỉ hoặc vật liệu dệt').join(' ');
+  const t0Vld = process.hrtime.bigint();
+  T.docGiaTri('vatLieuKhac', redosVld);
+  const msVld = Number(process.hrtime.bigint() - t0Vld) / 1e6;
+  check(`T-1 ReDoS ~40.000 từ lặp cho vatLieuKhac VAT_LIEU_DET < 2000 ms (thực tế ${msVld.toFixed(0)} ms)`, msVld < 2000, { msVld });
 }
 
 console.log(`\n${pass} pass, ${fail} fail`);
