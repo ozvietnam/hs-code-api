@@ -15,7 +15,7 @@
     "phien": "claude-agent:ozv-1867#soat-848180",
     "ngay": "2026-11-22",
     "ghiChu": "Duyệt ranh giới PN6 848180 (OZV-1867)",
-    "bam": "336cf147d212114dcd828df8c4ed2e88017aecce82a7408460f6d31e732e3d3c"
+    "bam": "280053c60bbffa745c453700c1f218ddde6e395cc1c90a6fa7caa9c4accb0b2a"
   },
   "dieuKienNut": [
     {
@@ -23,6 +23,11 @@
       "nguon": "tieuDe.848180~r14535",
       "trich": "848180~r14535 Van dùng cho săm",
       "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Van dùng cho săm"
+        },
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
@@ -209,6 +214,11 @@
       "trich": "848180~r14579 Van plastic khác",
       "dieuKienSo": [
         {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Van plastic khác"
+        },
+        {
           "fact": "chatLieu",
           "op": "LA",
           "value": "plastic"
@@ -289,7 +299,13 @@
       "hs": "84818012",
       "nguon": "tax.84818012",
       "trich": "84818012 - - - Bằng vật liệu khác",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bằng vật liệu khác"
+        }
+      ],
       "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": true
     },
@@ -310,7 +326,13 @@
       "hs": "84818014",
       "nguon": "tax.84818014",
       "trich": "84818014 - - - Bằng vật liệu khác",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bằng vật liệu khác"
+        }
+      ],
       "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": true
     },
@@ -447,16 +469,30 @@
           ]
         },
         {
-          "fact": "duongKinhTrong",
-          "op": ">",
-          "value": 5,
-          "donVi": "cm"
-        },
-        {
-          "fact": "duongKinhTrong",
-          "op": "<=",
-          "value": 40,
-          "donVi": "cm"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "duongKinhTrong",
+                "op": ">",
+                "value": 5,
+                "donVi": "cm"
+              },
+              {
+                "fact": "duongKinhTrong",
+                "op": "<=",
+                "value": 40,
+                "donVi": "cm"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "trên 5 cm nhưng không quá 40 cm"
+              }
+            ]
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -1155,18 +1191,6 @@
       "ghiChu": "cong3-bien-khong-doc-duoc (duongKinhTrong) ở .41/.51/.64/.66/.71/.78/.81/.84/.95/.98 và r14552 — đã đối chiếu tay: \"từ 1 cm đến 2,5 cm\" / \"từ 1cm đến 2,5 cm\" ⇒ >= 1 và <= 2.5 cm; \"từ 2,5 cm trở xuống\" ⇒ <= 2.5 cm; \"từ 4 cm trở lên\" / \"từ 8 cm trở lên\" ⇒ >= 4 / >= 8 cm."
     },
     {
-      "ma": "84818012",
-      "loai": "BO_VE",
-      "ve": "Bằng vật liệu khác",
-      "lyDo": "Dòng .12 là phần còn lại của tầng r14535 sau .11 \"Bằng đồng hoặc hợp kim đồng\": phanConLai true phủ định đúng điều kiện chất liệu đồng của .11 — \"vật liệu khác\" chính là \"không phải đồng\", không cần điều kiện riêng."
-    },
-    {
-      "ma": "84818014",
-      "loai": "BO_VE",
-      "ve": "Bằng vật liệu khác",
-      "lyDo": "Dòng .14 là phần còn lại của tầng r14538 sau .13 \"Bằng đồng hoặc hợp kim đồng\": phanConLai true phủ định đúng điều kiện chất liệu đồng của .13 — \"vật liệu khác\" chính là \"không phải đồng\", không cần điều kiện riêng."
-    },
-    {
       "ma": "84818097",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.84818097 \"Loại khác, điều khiển bằng tay, khối lượng dưới 3 kg, đã được xử lý bề mặt hoặc làm bằng thép không gỉ hoặc niken\" (EN \"Other, manually operated, weighing less than 3 kg, surface treated or made of stainless steel or nickel\") ⇒ \"Loại khác\" (máy phủ định anh em đứng trước) + cachDieuKhien [BANG_TAY] + khoiLuong < 3 kg + HOAC [[daXuLyBeMat CO], [chatLieu [\"thép không gỉ\",\"niken\"]]]: hai vế nối \"hoặc\" sau các giới hạn chung (tay, < 3 kg) ⇒ HOAC chỉ cho hai vế đó. Khoá daXuLyBeMat (CO_KHONG) mới ở tu-vung@2 (#577) — trước là THIEU_KHOA_TU_VUNG."
@@ -1197,6 +1221,16 @@
       "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot5",
       "ngay": "2026-11-01",
       "lyDo": "(A) 848180.json:chongLanTruc[0] (cụm chín nhánh dưới 848180) GỘP CẶP KHÔNG CHỒNG THẬT — cùng kiểu lỗi đã trả 761699 (vòng 7 điểm 4: không dùng chongLanTruc để nuốt chồng lấn do cách biểu diễn; vòng 4: trục tên ↔ công dụng chỉ khi \"chồng lấn thật\"). Cổng phủ 53 cặp dòng của cụm; đọc từng cặp nhánh khác trục theo chữ biểu, phần lớn không có hàng thật nào thoả cả hai: r14535 \"Van dùng cho săm\" (EN \"Valves for inner tubes\") và r14538 \"Van dùng cho lốp không săm\" (EN \"Valves for tubeless tyres\") không chồng với 8481802 \"Van xi lanh khí dầu mỏ hóa lỏng (LPG) …\" (EN \"LPG cylinder valves\"), r14551 \"Van đường ống nước\" (EN \"Water pipeline valves\"), r14559 \"Van nối có núm\" (EN \"Nipple joint valves\") hay 8481805 \"Van và vòi có khoang pha trộn lưu chất\"; 84818030 (van bếp ga) và 8481804 (van chai chất lỏng có ga / rót bia) không chồng với r14551, r14559, 8481802; 8481805 không chồng với r14556 \"Núm uống nước dùng cho lợn\", r14559, 8481802, r14535/r14538. Hai nhánh r14535, r14538 nằm trong cụm CHỈ nhờ cặp giả (nếu không cổng đã báo cong2-chong-lan-truc-nhanh-thua). Vector cổng dùng (thử lại bằng doiChieuPhanNhom trên chính bản nháp): tenLoai \"Van đường ống nước\" + dungCho \"săm\" + đồng ⇒ .11 và .63 cùng CO; tenLoai \"Van xi lanh khí dầu mỏ hóa lỏng\" + dungCho \"lốp không săm\" ⇒ .13 và .21; tenLoai \"Van nối có núm\" + coKhoangPhaTron ⇒ .59 và .67; tenLoai \"Núm uống nước\" + dungCho \"lợn\" + coKhoangPhaTron ⇒ .59 và .65; tenLoai \"Van đường ống nước\" + dungCho \"chai chất lỏng có ga\" ⇒ .49 và .63 — không mô tả nào là hàng có thật; chồng lấn sinh ra vì anh em cùng ý (nêu ĐÍCH dùng của van) viết bằng hai khoá (tenLoai ↔ dungCho) mà máy gán độc lập. Cặp có hàng thật: 8481805 ↔ r14551 (van trộn/vòi nóng lạnh lắp đường ống nước) — chỉ cặp loại này mới được khai trục. Làm gì: (1) xét lại theo QUY-TRINH mục 4 Chồng lấn bước 2 + 3.3: 8481802 \"Van xi lanh khí … (LPG)\" và r14551 \"Van đường ống nước\" nêu đích dùng như \"Van dùng cho săm\" (chữ Anh cùng cấu trúc \"<đích> valves\"/\"Valves for <đích>\") — nếu chữ cho phép đọc cùng khoá dungCho (chuỗi con nguyên văn) thì các cặp công dụng ↔ công dụng tự rời, không cần trục; (2) cụm chongLanTruc chỉ gồm nhánh có cặp chồng thật, mỗi cặp ghi trong ghiChuSoan một hàng thật thoả cả hai; (3) cặp còn lại không gỡ được bằng cách trên (vd 8481805 DAC_DIEM ↔ mọi nhánh tên/công dụng mà vector \"<tên> + có khoang pha trộn\" làm cùng CO) ⇒ DỪNG, báo GĐ chốt luật chứng minh (như #692/#701), không khai trục. Không đổi khoá chỉ để né. Phần còn lại đã soát và ĐẠT, giữ nguyên: cụm thứ hai dưới r14562 (r14573 \"Van điều khiển bằng khí nén\" DAC_DIEM ↔ \"Van bi\", \"Van nhiều cửa\", \"Van ngắt nhiên liệu …\" — van bi khí nén, van nhiều cửa khí nén, van ngắt nhiên liệu khí nén cho xe là hàng thật; 5 cặp); .93 chatLieu PHAI_KHONG plastic theo anh em .83/.84 (vatLieuKhacTheoAnhEm); .97 BANG_TAY + < 3 kg + HOAC [daXuLyBeMat] / [thép không gỉ, niken] (EN \"surface treated or made of stainless steel or nickel\"); .30 nhienLieu GA (định ngữ chung \"bằng ga\" ↔ EN \"gas stoves or ranges\"); BO_VE .12/.14; biên ≤/< đối chiếu tay; 497 cặp lấy mẫu (cong2-lay-mau) đã phân loại: 319 cặp có một bên dưới r14562 \"Loại khác:\" (phủ định đúng điều kiện bên kia ⇒ loại trừ tất định); trong r14562 các cặp với r14579 (phanConLai), .97 và r14584 (\"Loại khác\"), r14566 BANG_TAY ↔ r14573 KHI_NEN đều tất định; còn lại là tên ↔ tên anh em (rời theo quy ước), cặp đã thuộc hai cụm trục, hoặc dòng cùng tầng chia biên — không thấy điểm mù; LECH_TIEN_LE 848180-01 khớp bảng."
+    }
+  ],
+  "loBieu": [
+    {
+      "tang": "848180~r14535",
+      "lyDo": "Dòng 84818012 \"Bằng vật liệu khác\" là phần còn lại sau 84818011 \"Bằng đồng hoặc hợp kim đồng\" (đã khai phanConLai true); vector tổng hợp tenLoai ngoài danh sách không khớp chữ \"Bằng vật liệu khác\"."
+    },
+    {
+      "tang": "848180~r14538",
+      "lyDo": "Dòng 84818014 \"Bằng vật liệu khác\" là phần còn lại sau 84818013 \"Bằng đồng hoặc hợp kim đồng\" (đã khai phanConLai true); vector tổng hợp tenLoai ngoài danh sách không khớp chữ \"Bằng vật liệu khác\"."
     }
   ]
 }
