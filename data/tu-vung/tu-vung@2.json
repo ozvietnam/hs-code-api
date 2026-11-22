@@ -21654,13 +21654,19 @@
           "nhanZh": "纺织材料",
           "cachDoc": {
             "vi": [
-              "(?:bằng|từ|làm\\s+từ)\\s+(?:các\\s+)?vật\\s+liệu\\s+dệt(?!\\s+(?:khác|nhân\\s+tạo))"
+              "(?<!cho\\s+)(?<!cho\\s+các\\s+)(?<!(?:xử\\s+lý|bảo\\s+quản|giặt|tẩy|nhuộm|làm\\s+sạch)\\s+(?:các\\s+)?)(?:(?:bằng|từ|làm\\s+từ|hoặc)\\s+)?(?:các\\s+)?vật\\s+liệu\\s+dệt",
+              "(?:(?:làm\\s+)?(?:bằng|từ)\\s+)?vải\\s+không\\s+dệt",
+              "(?:(?:làm\\s+)?(?:bằng|từ)|vải|túi|mũ|nón|tấm|lớp|mặt\\s+ngoài|chất\\s+liệu|ví|cặp|thảm)\\s+nỉ"
             ],
             "en": [
-              "textile\\s+materials?"
+              "(?<!for\\s+the\\s+treatment\\s+of\\s+)(?:(?:of|from|made\\s+(?:of|from))\\s+)?textile\\s+materials?",
+              "non[-\\s]?wovens?(?:\\s+(?:fabrics?|textiles?))?",
+              "(?<!(?:^|\\s)(?:I|we|they|you|he|she|it|who|that|which|was|were|is|are|been|be|being|had|has|have|wasn't|didn't)\\s+)felt(?![-\\s]+(?:tip(?:ped|s)?|paper|like|soft|smooth|warm|good|great|comfortable))"
             ],
             "zh": [
-              "纺织材料"
+              "纺织材料",
+              "无纺布",
+              "毡"
             ]
           },
           "cachViet": "bằng vật liệu dệt"

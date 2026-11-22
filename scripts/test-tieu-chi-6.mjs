@@ -77,7 +77,7 @@ const DS_6004_CHUAN = [
   },
   { hs6: '600490', phanConLai: true, nguon: 'tax.60049000', trich: '60049000 - Loại khác' },
 ];
-const GOC_TIEM = { ...XEP, 6704: DS_6704_CHUAN, 6913: DS_6913_CHUAN, 6004: DS_6004_CHUAN };
+const GOC_TIEM = { ...XEP, 4202: doc('data/so-tay/4202.json').tieuChi6, 6704: DS_6704_CHUAN, 6913: DS_6913_CHUAN, 6004: DS_6004_CHUAN };
 const tiem = (h4, sua, goc = GOC_TIEM) => { const ds = sao(goc[h4]); const ra = sua(ds) || ds; return G6.kiemTieuChi6(h4, ra, { toKhai: false }); };
 const cua = (ds, hs6, loc = () => true) => ds.find((x) => x.hs6 === hs6 && loc(x));
 const CA = [
@@ -138,6 +138,7 @@ const CA = [
   ['SUY_RONG', '6004.10 ghi dieuKienTru ["người"] không có trong trích', '6004', (ds) => { cua(ds, '600410').dieuKienTru = ['người']; }],
   ['SUY_RONG', '6004.10 ghi dieuKienTru ["sợi đàn hồi"] (có trong trích nhưng nằm ngoài vế loại trừ)', '6004', (ds) => { cua(ds, '600410').dieuKienTru = ['sợi đàn hồi']; }],
   ['KHUON_SAI', 'phân nhóm không phải DU dưới tầng có tên (8412.21) chỉ giữ mục tầng, thiếu điều kiện riêng của phân nhóm', '8412', (ds) => ds.filter((x) => !(x.hs6 === '841221' && x.nguon === 'tax.84122100'))],
+  ['KHOA_HEP_HON_LUAT', '4202.12 dùng chatLieu "vải dệt" cho "Mặt ngoài bằng plastic hoặc vật liệu dệt" (rơi vải không dệt / nỉ)', '4202', (ds) => { const x = cua(ds, '420212', (y) => y.fact === 'vatLieuKhac'); Object.assign(x, { dieuKien: 'Mặt ngoài bằng plastic hoặc vật liệu dệt', fact: 'chatLieu', op: 'LA', value: ['plastic', 'vải dệt'] }); }],
 ];
 for (const [maLoi, moTa, h4, sua] of CA) {
   const kq = tiem(h4, sua);
@@ -163,12 +164,20 @@ kiem('ngoại lệ không đỏ: câu sổ 9506 với chính chữ luật 9506.9
 }
 kiem('ca ngược: mẫu không sửa gì ⇒ 0 lỗi (cổng không đỏ oan) — cả bản soạn không thuTu lẫn bản đã xếp', ['8481', '8412'].every((h) => tiem(h, () => {}).loi.length === 0 && tiem(h, () => {}, { [h]: MAU[h].tieuChi6 }).loi.length === 0));
 // Khoá hợp có sẵn ⇒ chuaSoHoa là lỗi; chỉ khi không khoá nào đọc được vế mới là cảnh báo THIEU_KHOA_TU_VUNG.
-kiem('khoaPhuHop: tên hàng → tenLoai; "dùng cho …" → dungCho; "Bằng gang đúc" → chatLieu; "đã tráng men" (7323) → daTrangMen; "với hai vị trí" → null; "Mặt ngoài bằng da thuộc…" → null (tu-vung chưa có da thuộc); "Phụ kiện lắp vào …" → dungCho', G6.khoaPhuHop('8412', 'Chuyển động tịnh tiến (xi lanh)') === 'tenLoai' && G6.khoaPhuHop('8536', 'Dùng cho điện áp không quá 60 V') === 'dungCho' && G6.khoaPhuHop('7323', 'Bằng gang đúc') === 'chatLieu' && G6.khoaPhuHop('7323', '73239200 - - đã tráng men') === 'daTrangMen' && G6.khoaPhuHop('8481', 'với hai vị trí') === null && G6.khoaPhuHop('4202', '420211 Mặt ngoài bằng da thuộc hoặc da thuộc tổng hợp') === null && G6.khoaPhuHop('3926', 'Phụ kiện lắp vào đồ nội thất') === 'dungCho', JSON.stringify(['8412', '8536', '7323'].map((h) => G6.khoaPhuHop(h, 'đã tráng men'))));
+kiem('khoaPhuHop: tên hàng → tenLoai; "dùng cho …" → dungCho; "Bằng gang đúc" → chatLieu; "đã tráng men" (7323) → daTrangMen; "với hai vị trí" → null; "Mặt ngoài bằng da thuộc…" / "… plastic hoặc vật liệu dệt" → vatLieuKhac; "Phụ kiện lắp vào …" → dungCho', G6.khoaPhuHop('8412', 'Chuyển động tịnh tiến (xi lanh)') === 'tenLoai' && G6.khoaPhuHop('8536', 'Dùng cho điện áp không quá 60 V') === 'dungCho' && G6.khoaPhuHop('7323', 'Bằng gang đúc') === 'chatLieu' && G6.khoaPhuHop('7323', '73239200 - - đã tráng men') === 'daTrangMen' && G6.khoaPhuHop('8481', 'với hai vị trí') === null && G6.khoaPhuHop('4202', '420211 Mặt ngoài bằng da thuộc hoặc da thuộc tổng hợp') === 'vatLieuKhac' && G6.khoaPhuHop('4202', '420212 Mặt ngoài bằng plastic hoặc vật liệu dệt') === 'vatLieuKhac' && G6.khoaPhuHop('3926', 'Phụ kiện lắp vào đồ nội thất') === 'dungCho', JSON.stringify(['8412', '8536', '7323'].map((h) => G6.khoaPhuHop(h, 'đã tráng men'))));
 // Phủ vế: tách tiêu đề thật thành vế cộng dồn; danh sách nhiều tên hàng thì không tách.
 const ve = (h4, hs6) => G6.veCanPhu(h4, G6.phanNhomCuaNhom(h4).find((p) => p.hs6 === hs6)).map((v) => v.chu);
 kiem('tách vế: 7323.94 "Bằng sắt (trừ gang đúc) hoặc thép, đã tráng men" ⇒ "Bằng sắt hoặc thép" + "đã tráng men" (vế "trừ" tách riêng)', JSON.stringify(ve('7323', '732394')) === JSON.stringify(['Bằng sắt hoặc thép', 'đã tráng men']), JSON.stringify(ve('7323', '732394')));
 kiem('tách vế: 4202.11 ⇒ vế "bằng da thuộc …" (không bị xoá vì tên nhóm cũng liệt kê da thuộc; "Mặt ngoài" chỉ là vị trí); 8504.32 ⇒ một vế "Công suất danh định trên 1 kVA …"', ve('4202', '420211').some((v) => /da thuộc/.test(v)) && !ve('4202', '420211').includes('Mặt ngoài') && ve('8504', '850432').length === 1, JSON.stringify([ve('4202', '420211'), ve('8504', '850432')]));
-kiem('phủ vế: chất liệu đọc bằng mẫu dùng chung — chatLieu ["plastic", "vải dệt"] mang được vế "bằng tấm plastic hoặc vật liệu dệt" (4202.22)', G6.phuVe([{ fact: 'chatLieu', op: 'LA', value: ['plastic', 'vải dệt'], nguon: 'tieuDe.420222', trich: '420222 Mặt ngoài bằng tấm plastic hoặc vật liệu dệt' }], G6.veCanPhu('4202', G6.phanNhomCuaNhom('4202').find((p) => p.hs6 === '420222')).find((v) => /plastic/.test(v.chu))));
+kiem('phủ vế: chất liệu đọc chatLieu + vatLieuKhac — chatLieu "plastic" + vatLieuKhac ["VAT_LIEU_DET"] mang được 4202.22; chatLieu ["plastic", "vải dệt"] bị KHOA_HEP_HON_LUAT loại', (() => {
+  const v22 = G6.veCanPhu('4202', G6.phanNhomCuaNhom('4202').find((p) => p.hs6 === '420222')).find((v) => /plastic/.test(v.chu));
+  const dung = G6.phuVe([
+    { fact: 'chatLieu', op: 'LA', value: 'plastic', nguon: 'tieuDe.420222', trich: '420222 Mặt ngoài bằng tấm plastic hoặc vật liệu dệt' },
+    { fact: 'vatLieuKhac', op: 'TRONG', value: ['VAT_LIEU_DET'], nguon: 'tieuDe.420222', trich: '420222 Mặt ngoài bằng tấm plastic hoặc vật liệu dệt' },
+  ], v22);
+  const cu = G6.phuVe([{ fact: 'chatLieu', op: 'LA', value: ['plastic', 'vải dệt'], nguon: 'tieuDe.420222', trich: '420222 Mặt ngoài bằng tấm plastic hoặc vật liệu dệt' }], v22);
+  return dung && !cu;
+})());
 kiem('phủ vế: vế giới hạn "Đã lắp với đầu nối điện" (8544.42) phủ bằng daGanDauNoi; vế đầu ngữ "Dây đơn dạng cuộn" KHÔNG phủ chỉ bằng dangCuon; "Các vật dẫn điện khác" (phần còn lại có phạm vi) không bị đòi', (() => { const v42 = G6.veCanPhu('8544', G6.phanNhomCuaNhom('8544').find((p) => p.hs6 === '854442')); const v11 = G6.veCanPhu('8544', G6.phanNhomCuaNhom('8544').find((p) => p.hs6 === '854411')); return G6.phuVe([{ fact: 'daGanDauNoi', op: 'CO', nguon: 'tieuDe.854442', trich: '854442 Đã lắp với đầu nối điện' }], v42.find((v) => /đầu nối/.test(v.chu))) && !G6.phuVe([{ fact: 'dangCuon', op: 'CO', nguon: 'tieuDe.85441', trich: '85441 Dây đơn dạng cuộn' }], v11.find((v) => /Dây đơn/.test(v.chu))) && !v42.some((v) => /vật dẫn điện/.test(v.chu)); })(), JSON.stringify(G6.veCanPhu('8544', G6.phanNhomCuaNhom('8544').find((p) => p.hs6 === '854442')).map((v) => v.chu)));
 kiem('phủ vế: vế chất liệu nhiều phương án — chỉ khai "plastic" cho "bằng tấm plastic hoặc vật liệu dệt" (4202.22) ⇒ KHÔNG phủ', !G6.phuVe([{ fact: 'chatLieu', op: 'LA', value: 'plastic', nguon: 'tieuDe.420222', trich: '420222 Mặt ngoài bằng tấm plastic hoặc vật liệu dệt' }], G6.veCanPhu('4202', G6.phanNhomCuaNhom('4202').find((p) => p.hs6 === '420222')).find((v) => /plastic/.test(v.chu))));
 // Phủ vế tính theo ĐIỀU KIỆN, không theo từ khoá: tenLoai "Đầu nối" + tuKhoa "cáp quang" không mang vế "dùng cho … cáp quang".
@@ -394,6 +403,77 @@ kiem('#1586 (7009.91/92 & phân nhóm không phải DU): 7009 qua cổng với 0
     G6.goiSoan('8501').khoaGoiY.some((k) => k.khoa === 'soPha')
     && G6.phuVe([{ fact: 'soPha', op: 'TRONG', value: ['NHIEU_PHA'], nguon: 'tieuDe.85015', trich: 'Động cơ xoay chiều khác, đa pha' }], { chu: 'có đa pha', loai: 'GIOI_HAN', chinh: ['đa', 'pha'], phu: [], coSo: false })
     && !G6.phuVe([{ fact: 'soPha', op: 'TRONG', value: ['NHIEU_PHA'], nguon: 'tieuDe.85015', trich: 'Động cơ xoay chiều khác, đa pha' }], { chu: 'có một pha', loai: 'GIOI_HAN', chinh: ['môt', 'pha'], phu: [], coSo: false }));
+}
+
+// ── 11. T-1: KHOA_HEP_HON_LUAT, nhóm OR vật liệu + từ vựng trên apTieuChi, và sổ tay 4202 / 6109 ──
+{
+  kiem('T-1 KHOA_HEP_HON_LUAT (thuận): chatLieu "vải dệt" trên "vật liệu dệt" / "textile materials" / vế trừ ⇒ đỏ cả khi là mảng',
+    Boolean(G6.khoaHepHonLuat('chatLieu', 'vải dệt', '420212 Mặt ngoài bằng plastic hoặc vật liệu dệt'))
+    && Boolean(G6.khoaHepHonLuat('chatLieu', ['plastic', 'vải dệt'], '420292 Mặt ngoài bằng tấm plastic hoặc vật liệu dệt'))
+    && Boolean(G6.khoaHepHonLuat('chatLieu', 'vải dệt', '610990 Từ các vật liệu dệt khác'))
+    && Boolean(G6.khoaHepHonLuat('chatLieu', 'vải dệt', 'With outer surface of sheeting of plastics or of textile materials'))
+    && Boolean(G6.khoaHepHonLuat('chatLieu', 'vải dệt', 'Hàng hóa, trừ loại bằng vật liệu dệt', { laPhuDinh: true })));
+
+  kiem('T-1 KHOA_HEP_HON_LUAT (nghịch): "vải dệt" / "woven fabrics" hoặc vatLieuKhac ["VAT_LIEU_DET"] ⇒ null',
+    G6.khoaHepHonLuat('chatLieu', 'vải dệt', '630221 Khăn bàn bằng vải dệt cotton') === null
+    && G6.khoaHepHonLuat('chatLieu', 'vải dệt', 'Bằng vật liệu dệt (vải dệt)') === null
+    && G6.khoaHepHonLuat('chatLieu', 'vải dệt', 'Of woven fabrics') === null
+    && G6.khoaHepHonLuat('vatLieuKhac', ['VAT_LIEU_DET'], '420212 Mặt ngoài bằng plastic hoặc vật liệu dệt') === null);
+
+  kiem('T-1 KHOA_HEP_HON_LUAT (kim loại cơ bản): đỏ khi chọn kim loại hẹp / kimLoaiCoBanKhac; sạch khi chọn "kim loại", luật nêu "bằng thép", hoặc liệt kê kèm sắt/thép',
+    Boolean(G6.khoaHepHonLuat('chatLieu', 'sắt thép', '830210 Bản lề bằng kim loại cơ bản'))
+    && Boolean(G6.khoaHepHonLuat('chatLieu', 'đồng', 'Of base metal'))
+    && Boolean(G6.khoaHepHonLuat('kimLoaiCoBanKhac', 'CHI', '830250 Giá, móc treo bằng kim loại cơ bản'))
+    && G6.khoaHepHonLuat('chatLieu', 'kim loại', '830210 Bản lề bằng kim loại cơ bản') === null
+    && G6.khoaHepHonLuat('chatLieu', 'sắt thép', '732310 Bằng sắt hoặc thép') === null
+    && G6.khoaHepHonLuat('chatLieu', 'sắt thép', 'Bằng sắt, thép hoặc kim loại cơ bản khác') === null
+    && G6.khoaHepHonLuat('chatLieu', 'nhôm', 'Bằng kim loại cơ bản dùng cho đồng hồ') === 'chatLieu (nhôm) hẹp hơn chữ luật ("kim loại cơ bản"). Dùng chatLieu: "kim loại"');
+
+  kiem('T-1 KHOA_HEP_HON_LUAT (plastic chung): đỏ khi chọn lamTuPVC / nhomPolyme / PLASTIC_XOP trên plastic chung; sạch khi chọn chatLieu "plastic" hoặc luật nêu PVC / xốp',
+    Boolean(G6.khoaHepHonLuat('lamTuPVC', true, '420212 Mặt ngoài bằng plastic hoặc vật liệu dệt'))
+    && Boolean(G6.khoaHepHonLuat('nhomPolyme', ['TRUNG_HOP'], '940592 Bằng plastic'))
+    && Boolean(G6.khoaHepHonLuat('vatLieuKhac', ['PLASTIC_XOP'], 'Of plastics'))
+    && G6.khoaHepHonLuat('chatLieu', 'plastic', '940592 Bằng plastic') === null
+    && G6.khoaHepHonLuat('lamTuPVC', true, 'Bằng PVC (polyvinyl clorua)') === null
+    && G6.khoaHepHonLuat('vatLieuKhac', ['PLASTIC_XOP'], 'Bằng plastic xốp') === null);
+
+  kiem('T-1 KHOA_RONG_HON_LUAT trên vatLieuKhac: "VAT_LIEU_DET" rơi "tổng hợp" (6704.1) bị chặn; 6109.90 / 4202.11 / 4202.22 sạch',
+    Boolean(G6.khoaRongHonLuat('vatLieuKhac', ['VAT_LIEU_DET'], '67041 Bằng vật liệu dệt tổng hợp'))
+    && G6.khoaRongHonLuat('vatLieuKhac', ['VAT_LIEU_DET'], '610990 Từ các vật liệu dệt khác') === null
+    && G6.khoaRongHonLuat('vatLieuKhac', ['DA_THUOC', 'DA_THUOC_TONG_HOP'], '420211 Mặt ngoài bằng da thuộc hoặc da thuộc tổng hợp') === null
+    && G6.khoaRongHonLuat('vatLieuKhac', ['VAT_LIEU_DET'], '420222 Mặt ngoài bằng tấm plastic hoặc vật liệu dệt') === null);
+
+  const ap4202 = (moTa) => G6.apTieuChi(GOC_TIEM['4202'], moTa, { h4: '4202' }).hs6;
+  kiem('T-1 apTieuChi 4202 (thuận + nghịch): vải không dệt PP & nhựa & da thật & phủ định',
+    ap4202('túi vải không dệt PP') === '420292'
+    && ap4202('túi xách tay vải không dệt PP') === '420222'
+    && ap4202('vali kéo bằng nhựa') === '420212'
+    && ap4202('vali mặt ngoài nhựa ABS') === '420212'
+    && ap4202('vali mặt ngoài plastic') === '420212'
+    && ap4202('túi xách tay bằng da thật') !== '420222'
+    && ap4202('vali kéo không phải bằng nhựa') !== '420212',
+    JSON.stringify({
+      tui: ap4202('túi vải không dệt PP'),
+      xachTay: ap4202('túi xách tay vải không dệt PP'),
+      nhua: ap4202('vali kéo bằng nhựa'),
+      abs: ap4202('vali mặt ngoài nhựa ABS'),
+      plastic: ap4202('vali mặt ngoài plastic'),
+      daThat: ap4202('túi xách tay bằng da thật'),
+      phuDinh: ap4202('vali kéo không phải bằng nhựa'),
+    }));
+
+  const dsOrVaAnd = [
+    { hs6: '999910', thuTu: 1, fact: 'tenLoai', op: 'TEN_LOAI', value: 'hộp', tuKhoa: ['hộp'], nguon: 'tieuDe.999910', trich: '999910 Hộp bằng plastic hoặc vật liệu dệt' },
+    { hs6: '999910', thuTu: 1, fact: 'chatLieu', op: 'LA', value: 'plastic', tuKhoa: ['plastic'], nguon: 'tieuDe.999910', trich: '999910 Hộp bằng plastic hoặc vật liệu dệt' },
+    { hs6: '999910', thuTu: 1, fact: 'vatLieuKhac', op: 'TRONG', value: ['VAT_LIEU_DET'], tuKhoa: ['vật liệu dệt'], nguon: 'tieuDe.999910', trich: '999910 Hộp bằng plastic hoặc vật liệu dệt' },
+    { hs6: '999920', thuTu: 2, fact: 'chatLieu', op: 'LA', value: 'gỗ', tuKhoa: ['gỗ'], nguon: 'tieuDe.999920', trich: '999920 Loại khác bằng gỗ và vật liệu dệt' },
+    { hs6: '999920', thuTu: 2, fact: 'vatLieuKhac', op: 'TRONG', value: ['VAT_LIEU_DET'], tuKhoa: ['vật liệu dệt'], nguon: 'tieuDe.999920', trich: '999920 Loại khác bằng gỗ và vật liệu dệt' },
+  ];
+  kiem('T-1 apTieuChi phân biệt OR (cùng nguồn có "hoặc" vẫn giữ điều kiện tenLoai AND) với AND (không có "hoặc")',
+    G6.apTieuChi(dsOrVaAnd, 'hộp vải không dệt').hs6 === '999910'
+    && G6.apTieuChi(dsOrVaAnd, 'vải không dệt').hs6 === null
+    && G6.apTieuChi(dsOrVaAnd, 'khay bằng gỗ').hs6 === null
+    && G6.apTieuChi(dsOrVaAnd, 'khay bằng gỗ bọc vải không dệt').hs6 === '999920');
 }
 void os;
 xong();
