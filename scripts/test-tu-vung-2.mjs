@@ -1456,14 +1456,14 @@ check('vietCum đơn vị @1 KHÔNG đổi ("CS: 75000W" — không cách)', T.v
   // 4. ReDoS ~40.000 từ lặp < 2 giây (CLAUDE.md quy tắc 6b) — gồm cả chuỗi tiền tố/hậu tố cận khớp
   const redos1584 = Array(4000).fill('túi vải giả da dạng hộp hoặc ống bằng động cơ điện xoay chiều').join(' ');
   const redos1584GanKhop = Array(3000).fill('giả da thuộc faux-leather dầu thủy lực bình tích áp khí nén ngũ cốc dạng tấm').join(' ');
-  const t0 = process.hrtime.bigint();
   for (const fk of ['vatLieuKhac', 'dangTam', 'nguonDongLuc']) {
+    const t0 = process.hrtime.bigint();
     const r = T.docGiaTri(fk, redos1584);
     const r2 = T.docGiaTri(fk, redos1584GanKhop);
     if (r.trangThai !== 'CHUA_BIET' || r2.trangThai !== 'CHUA_BIET') throw new Error(`Expected CHUA_BIET for ${fk}`);
+    const ms = Number(process.hrtime.bigint() - t0) / 1e6;
+    check(`#1584 ReDoS ~40.000 từ lặp (+ cận khớp) cho ${fk} < 2000 ms (thực tế ${ms.toFixed(0)} ms)`, ms < 2000, { fk, ms });
   }
-  const ms = Number(process.hrtime.bigint() - t0) / 1e6;
-  check(`#1584 ReDoS ~40.000 từ lặp (+ cận khớp) cho vatLieuKhac, dangTam, nguonDongLuc < 2000 ms (thực tế ${ms.toFixed(0)} ms)`, ms < 2000, { ms });
 }
 
 // OZV-1796 — kiểm chứng 4 khoá mới (daHapChinHoacLuocChin, khoiLuongHangChuyenCho, tyLeLotQuaLuoiLoc1mm, tyLeLotQuaLuoiLoc5mm)
