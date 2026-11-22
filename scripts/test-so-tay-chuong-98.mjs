@@ -147,7 +147,8 @@ check('4c lượt đầu ghi, lượt sau GIỮ khi thiếu --force', /9808: 2\/
 // ── 5. Tính lại với --luc phải ra ĐÚNG BYTE bản đã commit (dữ liệu KHÔNG mồ côi, quy tắc 5) ─────────────────────
 // Năm nhóm khung đã commit trong repo. Sinh lại vào thư mục ghi cách ly với đúng `taoBoi.luc` của bản commit rồi
 // so byte: lệch một byte nào cũng là bằng chứng tệp trong repo không còn do script này sinh ra.
-const DA_COMMIT = ['9811', '9812', '9817', '9821', '9846'];
+// 9821 đã áp bản ranh giới DUYET 982130.json (có dieuKienNut) ở OZV-1866; dùng 9805 làm nhóm khung thuần thứ 5.
+const DA_COMMIT = ['9805', '9811', '9812', '9817', '9846'];
 const lech = [];
 const thieu = [];
 for (const h4 of DA_COMMIT) {
