@@ -475,5 +475,125 @@ kiem('#1586 (7009.91/92 & phân nhóm không phải DU): 7009 qua cổng với 0
     && G6.apTieuChi(dsOrVaAnd, 'khay bằng gỗ').hs6 === null
     && G6.apTieuChi(dsOrVaAnd, 'khay bằng gỗ bọc vải không dệt').hs6 === '999920');
 }
+
+// T-5 — kiểm chứng toàn bộ 8 nâng cấp từ vựng + cổng cho Top-93 & Lô 3 (3926, 8501, 7326, 8483, 4016).
+{
+  // 1. phan-con-lai.js: tiêu đề có dấu phẩy ("Dụng cụ, thiết bị và máy khác", "Giày, dép khác")
+  kiem('T-5 kieuTieuDe dấu phẩy + hangDu: 9031.80 & 6401–6403 = DU; 6403.40 = DU_CO_PHAM_VI; 3926.40 giữ CO_TEN',
+    G6.kieuTieuDe('Dụng cụ, thiết bị và máy khác') === 'DU'
+    && G6.kieuTieuDe('Giày, dép khác') === 'DU'
+    && G6.kieuTieuDe('Giày, dép khác, có mũi gắn kim loại bảo vệ') === 'DU_CO_PHAM_VI'
+    && G6.kieuTieuDe('Tượng nhỏ và các đồ trang trí khác') === 'CO_TEN'
+    && G6.kieuTieuDe('Thiết bị bảo vệ mạch điện khác') === 'DU_CO_PHAM_VI'
+    && hangDu('Loại khác') === 2
+    && hangDu('Dụng cụ, thiết bị và máy khác') === 1
+    && hangDu('Giày, dép khác') === 1);
+
+  // 2. Quét SO trên câu gốc trước cắt giới hạn (8501 đủ 13 PN6 công suất, 3925.10, 8504.32, giữ 8536.41 = dungCho)
+  const pn8501 = G6.phanNhomCuaNhom('8501');
+  const pn8501PowerW = pn8501.filter((p) => /^(?:850110|850120|85013\d|85015\d|85017\d)$/.test(p.hs6));
+  const pn8501PowerKva = pn8501.filter((p) => /^85016\d$/.test(p.hs6));
+  kiem('T-5 khoaPhuHop SO trước cắt: đủ 13 PN6 8501 (W/kW → congSuat, kVA → congSuatBieuKien) + 8501.40 daPha + 3925.10 dungTich + 8504.32 + 8536.41 dungCho',
+    pn8501PowerW.length === 11
+    && pn8501PowerKva.length === 4
+    && pn8501PowerW.every((p) => G6.khoaPhuHop('8501', p.ten) === 'congSuat')
+    && pn8501PowerKva.every((p) => G6.khoaPhuHop('8501', p.ten) === 'congSuatBieuKien')
+    && G6.khoaPhuHop('8501', 'Động cơ xoay chiều khác, một pha') === 'daPha'
+    && G6.khoaPhuHop('3925', 'Thùng chứa, bể và các loại đồ chứa đựng tương tự, dung tích trên 300 lít') === 'dungTich'
+    && G6.khoaPhuHop('8504', 'Công suất danh định trên 1 kVA nhưng không quá 16 kVA') === 'congSuatBieuKien'
+    && G6.khoaPhuHop('8536', 'Dùng cho điện áp không quá 60 V') === 'dungCho',
+    JSON.stringify({ w: pn8501PowerW.map((p) => [p.hs6, G6.khoaPhuHop('8501', p.ten)]), kva: pn8501PowerKva.map((p) => [p.hs6, G6.khoaPhuHop('8501', p.ten)]) }));
+
+  // 3. Chắn danh từ ghép trong RE_GIOI_HAN_GIUA
+  kiem('T-5 RE_GIOI_HAN_GIUA không cắt nhầm cụm ghép (chân không, không khí, có hoặc không, đã hoặc chưa, không kết hợp, kiểu phun)',
+    G6.khoaPhuHop('8414', 'Bơm hút chân không') === 'tenLoai'
+    && G6.khoaPhuHop('8414', 'Bơm không khí') === 'tenLoai'
+    && G6.khoaPhuHop('4016', 'Đệm chống va cho tàu thuyền hoặc ụ tàu, có hoặc không thể bơm hơi') === 'tenLoai'
+    && G6.khoaPhuHop('8518', 'Loa, đã hoặc chưa lắp vào vỏ loa') === 'tenLoai'
+    && G6.khoaPhuHop('9001', 'Lăng kính, không kết hợp') === 'tenLoai'
+    && G6.khoaPhuHop('8443', 'Đầu in kiểu phun mực') === 'tenLoai');
+
+  // 4. Chặn bẫy SAI_KHOA_THUOC_TINH (Từ/Loại/Của/Để không bao giờ trả về tenLoai) + mở rộng Bằng → @2 (giữ 6704 & 6913 = null)
+  kiem('T-5 không trả tenLoai khi RE_THUOC_TINH: 3920.10/51/62/91 → loaiNhuaPolyme; 3920.99 / 6401.92 / 8525.81 / 8525.82 → null',
+    G6.khoaPhuHop('3920', 'Từ các polyme từ etylen') === 'loaiNhuaPolyme'
+    && G6.khoaPhuHop('3920', 'Từ poly(metyl metacrylat)') === 'loaiNhuaPolyme'
+    && G6.khoaPhuHop('3920', 'Từ poly(etylen terephtalat)') === 'loaiNhuaPolyme'
+    && G6.khoaPhuHop('3920', 'Từ poly(vinyl butyral)') === 'loaiNhuaPolyme'
+    && G6.khoaPhuHop('3920', 'Từ plastic khác') === null
+    && G6.khoaPhuHop('6401', 'Loại cổ cao quá mắt cá chân nhưng không qua đầu gối') === null
+    && G6.khoaPhuHop('8525', 'Loại tốc độ cao nêu tại Chú giải Phân nhóm 1 của Chương này') === null
+    && G6.khoaPhuHop('8525', 'Loại khác, được làm cứng bức xạ hoặc chịu bức xạ nêu tại Chú giải Phân nhóm 2 của Chương này') === null);
+
+  kiem('T-5 "bằng …" rơi sang @2 (9401.52/53, 9403.82/83, 9615.11, 9404.21 → vatLieuKhac), nhưng 6704 & 6913 VẪN trả null',
+    G6.khoaPhuHop('6704', 'Bằng vật liệu dệt tổng hợp') === null
+    && G6.khoaPhuHop('6913', 'Bằng sứ') === null
+    && G6.khoaPhuHop('9401', 'Bằng tre') === 'vatLieuKhac'
+    && G6.khoaPhuHop('9401', 'Bằng song, mây') === 'vatLieuKhac'
+    && G6.khoaPhuHop('9403', 'Bằng tre') === 'vatLieuKhac'
+    && G6.khoaPhuHop('9403', 'Bằng song, mây') === 'vatLieuKhac'
+    && G6.khoaPhuHop('9615', 'Bằng cao su cứng hoặc plastic') === 'vatLieuKhac'
+    && G6.khoaPhuHop('9404', 'Bằng cao su xốp hoặc bằng plastic xốp, đã hoặc chưa bọc') === 'vatLieuKhac');
+
+  // 5. Rào chuỗi con @1 chỉ trong khoaPhuHop (không đụng tu-vung@1)
+  kiem('T-5 khoaPhuHop rào @1 sai ngữ cảnh: hieuChinhThiLuc (có độ mảnh/bền), loaiRoLe (bán dẫn/mạng che quang), loaiCongTac (bếp đun/lò nướng/vỉ nướng)',
+    G6.khoaPhuHop('5402', 'Sợi có độ mảnh cao bằng polyeste') !== 'hieuChinhThiLuc'
+    && G6.khoaPhuHop('7214', 'Có độ bền kéo cao') !== 'hieuChinhThiLuc'
+    && G6.khoaPhuHop('9031', 'Kiểm tra linh kiện bán dẫn hoặc kiểm tra mạng che quang') !== 'loaiRoLe'
+    && G6.khoaPhuHop('8516', 'Các loại lò khác; bếp đun dạng tấm đun, thiết bị kiểu vỉ nướng và lò nướng') !== 'loaiCongTac');
+
+  // 6. RE_LUAT_CONG_DUNG & khoaPhuHop cho Của / Phù hợp với / Để + bảo toàn CHI_HOI_MUC_DICH
+  kiem('T-5 Của/Phù hợp với/Để: 8413/8421/8431/8467/8714/8208/9026/9031/7007 → dungCho; 6110.12 giữ loaiSoiDet',
+    G6.khoaPhuHop('8413', 'Của bơm') === 'dungCho'
+    && G6.khoaPhuHop('8421', 'Của máy ly tâm, kể cả máy làm khô bằng ly tâm') === 'dungCho'
+    && G6.khoaPhuHop('8431', 'Bộ phận của máy khoan hoặc máy đào sâu thuộc phân nhóm 8430.41 hoặc 8430.49') === 'dungCho'
+    && G6.khoaPhuHop('8467', 'Của dụng cụ hoạt động bằng khí nén') === 'dungCho'
+    && G6.khoaPhuHop('8714', 'Của mô tô (kể cả xe gắn máy có bàn đạp (moped))') === 'dungCho'
+    && G6.khoaPhuHop('8208', 'Để gia công kim loại') === 'dungCho'
+    && G6.khoaPhuHop('9026', 'Để đo hoặc kiểm tra lưu lượng hoặc mức của chất lỏng') === 'dungCho'
+    && G6.khoaPhuHop('9031', 'Để kiểm tra các vi mạch hoặc linh kiện bán dẫn (kể cả mạch tích hợp) hoặc kiểm tra mạng che quang') === 'dungCho'
+    && G6.khoaPhuHop('7007', 'Có kích cỡ và hình dạng phù hợp với từng loại xe, phương tiện bay, tàu vũ trụ hoặc tàu thuyền') === 'dungCho'
+    && G6.khoaPhuHop('6110', 'Của dê Ca-sơ-mia (len casơmia)') === 'loaiSoiDet');
+
+  const L8413 = '84139100 - - Của bơm';
+  const L7007 = '700711 Có kích cỡ và hình dạng phù hợp với từng loại xe, phương tiện bay, tàu vũ trụ hoặc tàu thuyền';
+  kiem('T-5 kiemCauHoiMucDich + mucDichCuaMuc ngoại lệ Của/Phù hợp với + KHÔNG hạ rào CHI_HOI_MUC_DICH với "của" giữa câu hay khách tự nhận',
+    MD('Hàng dùng cho bơm?', { chuLuat: L8413 }) === 'CONG_DUNG_THIEU_DAC_TINH_KIEM_CHUNG'
+    && G6.mucDichCuaMuc({ fact: 'dungCho', op: 'CONG_DUNG', value: 'bơm', dieuKien: 'Của bơm', trich: L8413 })?.ngoaiLe === true
+    && MD('Kính dùng cho từng loại xe?', { chuLuat: L7007 }) === 'CONG_DUNG_THIEU_DAC_TINH_KIEM_CHUNG'
+    && G6.mucDichCuaMuc({ fact: 'dungCho', op: 'CONG_DUNG', value: 'từng loại xe', dieuKien: 'phù hợp với từng loại xe', trich: L7007 })?.ngoaiLe === true
+    && MD('Kính dùng cho từng loại xe?', { chuLuat: L7007, cauPhu: ['Kính có kích cỡ và hình dạng uốn cong cho kính chắn gió ô tô?'] }) === null
+    && MD('Là hàng dùng cho tập gym?', { chuLuat: 'Chú giải Phân nhóm 1 của Chương này' }) === 'CHI_HOI_MUC_DICH'
+    && MD('Là đai chuyên dụng cho tập gym?', { chuLuat: L9506 }) === 'CHI_HOI_MUC_DICH');
+
+  // 7. BO_NGU_CHAT_LIEU xốp / tế bào + DU_CO_PHAM_VI rỗng tachVeTieuDe + Lô 3 0 bẫy
+  kiem('T-5 BO_NGU_CHAT_LIEU: chatLieu cao su/plastic trên "cao su xốp" & "cao su tế bào" bị chặn KHOA_RONG_HON_LUAT',
+    Boolean(G6.khoaRongHonLuat('chatLieu', 'cao su', '401610 Từ cao su xốp'))
+    && Boolean(G6.khoaRongHonLuat('chatLieu', 'cao su', 'Bằng cao su tế bào'))
+    && Boolean(G6.khoaRongHonLuat('chatLieu', 'plastic', 'Bằng plastic tế bào')));
+
+  kiem('T-5 tachVeTieuDe(boKhac) xử lý "Giày, dép khác, có mũi gắn kim loại bảo vệ" (6403.40) vẫn giữ vế giới hạn',
+    JSON.stringify(G6.tachVeTieuDe('Giày, dép khác, có mũi gắn kim loại bảo vệ', new Set(), { boKhac: true }).map((v) => v.chu)) === JSON.stringify(['có mũi gắn kim loại bảo vệ']));
+
+  {
+    const ds6110 = G6.phanNhomCuaNhom('6110').map((p) => {
+      if (p.hs6 === '611090') return { hs6: '611090', phanConLai: true, nguon: 'tieuDe.611090', trich: '611090 Từ các vật liệu dệt khác' };
+      return { hs6: p.hs6, chuaSoHoa: 'ca kiem T-5', nguon: p.nguonTen, trich: `${p.hs6} ${p.ten}` };
+    });
+    const kq6110 = G6.kiemTieuChi6('6110', ds6110, { toKhai: false });
+    kiem('T-5 DU_CO_PHAM_VI rỗng tachVe (6110.90 "Từ các vật liệu dệt khác") với phanConLai: true không bị KHUON_SAI',
+      !kq6110.loi.some((l) => l.hs6 === '611090' && l.ma === 'KHUON_SAI'), kq6110.loi);
+  }
+
+  kiem('T-5 Lô 3 (3926, 8501, 7326, 8483, 4016) sạch 0 bẫy SAI_KHOA_THUOC_TINH & mở khoá chuẩn',
+    ['3926', '8501', '7326', '8483', '4016'].every((h4) => G6.phanNhomCuaNhom(h4).every((p) => {
+      if (p.kieu === 'DU') return true;
+      const k = G6.khoaPhuHop(h4, p.ten);
+      return !(k === 'tenLoai' && /^(?:bằng|có|không|chưa|đã|dùng|loại|của|với|trên|dưới|từ|được|để|cho|trong|ngoài)\s/iu.test((p.ten || '').trim()));
+    }))
+    && G6.khoaPhuHop('8483', 'Thân ổ, lắp ổ bi hoặc ổ đũa') === 'coGanOBi'
+    && G6.khoaPhuHop('8483', 'Thân ổ, không lắp ổ bi hoặc ổ đũa; gối đỡ trục dùng ổ trượt') === 'coGanOBi'
+    && G6.khoaPhuHop('4016', 'Từ cao su xốp') === 'vatLieuKhac'
+    && G6.khoaPhuHop('4016', 'Các sản phẩm có thể bơm hơi khác') === 'coTheBomHoi');
+}
 void os;
 xong();
