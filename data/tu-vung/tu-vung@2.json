@@ -6585,7 +6585,9 @@
         "SON_SAU_MA_NHOM_KEM",
         "NHOM_KEM",
         "KEM_NHOM_MAGIE",
-        "KEM"
+        "KEM",
+        "OXIT_CROM",
+        "PHU_MA_KHAC"
       ],
       "moTaGiaTri": {
         "MA_DONG": {
@@ -6813,6 +6815,46 @@
             ]
           },
           "cachViet": "phủ, mạ hoặc tráng kẽm"
+        },
+        "OXIT_CROM": {
+          "nhanVi": "phủ, mạ hoặc tráng bằng oxit crôm hoặc bằng crôm và oxit crôm",
+          "nhanEn": "plated or coated with chromium oxides or with chromium and chromium oxides",
+          "nhanZh": "镀（涂）氧化铬或铬及氧化铬",
+          "cachDoc": {
+            "vi": [
+              "(?:(?:phủ|mạ|tráng)(?:\\s*,\\s*(?:phủ|mạ|tráng))*(?:\\s+hoặc\\s+(?:phủ|mạ|tráng))?\\s+)?(?:bằng\\s+)?(?:crôm\\s+và\\s+)?oxit\\s+crôm"
+            ],
+            "en": [
+              "(?:plated|coated)\\s+(?:or\\s+(?:plated|coated)\\s+)?with\\s+(?:chromium\\s+and\\s+)?chromium\\s+oxides?",
+              "(?:with\\s+)?(?:chromium\\s+and\\s+)?chromium\\s+oxides?"
+            ],
+            "zh": [
+              "镀氧化铬",
+              "涂氧化铬",
+              "镀铬及氧化铬"
+            ]
+          },
+          "cachViet": "phủ, mạ hoặc tráng bằng oxit crôm"
+        },
+        "PHU_MA_KHAC": {
+          "nhanVi": "phủ, mạ hoặc tráng bằng kim loại hoặc hợp kim khác",
+          "nhanEn": "plated or coated with other metals or alloys",
+          "nhanZh": "镀（涂）其他金属或合金",
+          "cachDoc": {
+            "vi": [
+              "không\\s+phải\\s+phủ,\\s*mạ\\s+hoặc\\s+tráng",
+              "được\\s+phủ,\\s*mạ\\s+hoặc\\s+tráng\\s+bằng\\s+phương\\s+pháp\\s+khác:\\s*dạng\\s+đai\\s+và\\s+dải",
+              "(?:phủ|mạ|tráng)\\s+(?:bằng\\s+)?(?:niken|chì|nhôm\\s*[-–]\\s*silic)"
+            ],
+            "en": [
+              "(?:plated|coated)\\s+with\\s+(?:nickel|lead|alumini?um-silicon)"
+            ],
+            "zh": [
+              "镀镍",
+              "镀铅"
+            ]
+          },
+          "cachViet": "mạ niken"
         }
       },
       "cachDoc": {
@@ -12832,7 +12874,8 @@
       "giaTriHopLe": [
         "DAI_VA_DAI",
         "TAM_PHO_DUNG",
-        "DAI_DAI_HOAC_PHO_DUNG"
+        "DAI_DAI_HOAC_PHO_DUNG",
+        "DANG_CAN_PHANG_KHAC"
       ],
       "moTaGiaTri": {
         "DAI_VA_DAI": {
@@ -12841,7 +12884,7 @@
           "nhanZh": "带材及窄条",
           "cachDoc": {
             "vi": [
-              "dạng\\s+đai\\s+và\\s+dải(?:\\s+khác)?(?:\\s*\\(SEN\\))?(?!;)"
+              "dạng\\s+đai\\s+và\\s+dải(?:\\s+khác)?(?:\\s*\\(SEN\\))?(?:,\\s*chiều\\s+rộng\\s+trên\\s+25\\s*mm;\\s*tấm\\s+phổ\\s+dụng(?:\\s*\\(SEN\\))?)?(?!;)"
             ],
             "en": [
               "(?:other\\s+)?hoop\\s+and\\s+strip"
@@ -12859,7 +12902,7 @@
           "nhanZh": "通用中厚板",
           "cachDoc": {
             "vi": [
-              "(?<!;\\s*)tấm\\s+phổ\\s+dụng(?:\\s*\\(SEN\\))?"
+              "(?<!dải(?:\\s+khác)?;\\s*)tấm\\s+phổ\\s+dụng(?:\\s*\\(SEN\\))?"
             ],
             "en": [
               "universal\\s+plates?"
@@ -12888,6 +12931,29 @@
             ]
           },
           "cachViet": "dạng đai và dải hoặc tấm phổ dụng"
+        },
+        "DANG_CAN_PHANG_KHAC": {
+          "nhanVi": "dạng cán phẳng khác (không phải đai, dải hay tấm phổ dụng)",
+          "nhanEn": "other flat-rolled form (other than hoop, strip or universal plates)",
+          "nhanZh": "其他扁轧形态（非带材、窄条或通用中厚板）",
+          "cachDoc": {
+            "vi": [
+              "không\\s+phải\\s+dạng\\s+đai\\s+và\\s+dải(?:\\s+hoặc\\s+tấm\\s+phổ\\s+dụng)?",
+              "dạng\\s+tấm\\s+cắt\\s+sẵn",
+              "loại\\s+khác,\\s*chiều\\s+dày\\s+không\\s+quá\\s+1,5\\s*mm",
+              "loại\\s+khác,\\s*được\\s+sơn\\s+sau\\s+khi\\s+phủ,\\s*mạ\\s+kẽm",
+              "loại\\s+khác:\\s*được\\s+phủ,\\s*mạ\\s+hoặc\\s+tráng\\s+kẽm"
+            ],
+            "en": [
+              "other\\s+than\\s+hoop\\s+and\\s+strip",
+              "cut-to-length\\s+sheets?"
+            ],
+            "zh": [
+              "非带材及窄条",
+              "定尺剪切板"
+            ]
+          },
+          "cachViet": "dạng tấm cắt sẵn"
         }
       },
       "cachDoc": {
@@ -14439,7 +14505,8 @@
       "giaTriHopLe": [
         "TRON",
         "VUONG_HOAC_CHU_NHAT",
-        "HINH_THANG"
+        "HINH_THANG",
+        "KHAC_TRON"
       ],
       "moTaGiaTri": {
         "TRON": {
@@ -14495,6 +14562,28 @@
             ]
           },
           "cachViet": "mặt cắt ngang hình thang"
+        },
+        "KHAC_TRON": {
+          "nhanVi": "mặt cắt ngang hình dạng khác (không phải hình tròn)",
+          "nhanEn": "other than of circular cross-section",
+          "nhanZh": "非圆形截面",
+          "cachDoc": {
+            "vi": [
+              "(?:trừ|không\\s+phải)(?:\\s+dạng)?\\s+mặt\\s+cắt\\s+ngang\\s+hình\\s+tròn",
+              "mặt\\s+cắt\\s+ngang\\s+(?:hình\\s+)?(?:lục\\s+giác|bát\\s+giác|dẹt|đa\\s+giác)"
+            ],
+            "en": [
+              "(?:other\\s+than|not|excluding)\\s+(?:of\\s+)?circular\\s+cross-section",
+              "(?:hexagonal|octagonal|flat)\\s+cross-section"
+            ],
+            "zh": [
+              "非圆形截面",
+              "六角形截面",
+              "八角形截面",
+              "扁钢截面"
+            ]
+          },
+          "cachViet": "mặt cắt ngang khác hình tròn"
         }
       },
       "cachDoc": {
