@@ -1369,6 +1369,41 @@ check('vietCum đơn vị @1 KHÔNG đổi ("CS: 75000W" — không cách)', T.v
   }
   const ms = Number(process.hrtime.bigint() - t0) / 1e6;
   check(`OZV-1796 ReDoS ~40.000 từ lặp trên 5 khoá < 500 ms (thực tế ${ms.toFixed(0)} ms)`, ms < 500, { ms });
+
+}
+
+// OZV-1799 — kiểm chứng mở rộng lopMaPhu (OXIT_CROM, PHU_MA_KHAC), dangDaiDaiTamPhoDung (DANG_CAN_PHANG_KHAC,
+// TAM_PHO_DUNG trên 7212.50.14), hinhDangMatCatNgang (KHAC_TRON) + ReDoS ~40.000 từ lặp < 2 giây (quy tắc 6b).
+{
+  // 1. lopMaPhu — OXIT_CROM (7212.50.1) & PHU_MA_KHAC (7212.50.93/.94)
+  la('tiêu đề 7212.50.1 (oxit crôm)', 'lopMaPhu', '7212501 Được phủ, mạ hoặc tráng bằng oxit crôm hoặc bằng crôm và oxit crôm', 'OXIT_CROM');
+  la('En chromium oxides', 'lopMaPhu', 'Plated or coated with chromium oxides or with chromium and chromium oxides', 'OXIT_CROM');
+  la('Zh 镀氧化铬', 'lopMaPhu', '镀氧化铬钢板', 'OXIT_CROM');
+  la('mạ niken ⇒ PHU_MA_KHAC', 'lopMaPhu', 'Thép đai cán phẳng được mạ niken', 'PHU_MA_KHAC');
+  la('En plated with nickel ⇒ PHU_MA_KHAC', 'lopMaPhu', 'Flat-rolled steel strip plated with nickel', 'PHU_MA_KHAC');
+  chuaBiet('chỉ ghi được phủ, mạ hoặc tráng bằng phương pháp khác trần ⇒ CHUA_BIET', 'lopMaPhu', 'Được phủ, mạ hoặc tráng bằng phương pháp khác');
+
+  // 2. dangDaiDaiTamPhoDung — 7212.50.14 & DANG_CAN_PHANG_KHAC
+  la('chữ biểu 7212.50.14 (Dạng đai và dải(SEN), chiều rộng trên 25 mm; tấm phổ dụng (SEN)) ⇒ DAI_VA_DAI (cumDaiThang)', 'dangDaiDaiTamPhoDung', 'Dạng đai và dải(SEN), chiều rộng trên 25 mm; tấm phổ dụng (SEN)', 'DAI_VA_DAI');
+  la('tấm phổ dụng độc lập ⇒ TAM_PHO_DUNG', 'dangDaiDaiTamPhoDung', 'Tấm phổ dụng (SEN)', 'TAM_PHO_DUNG');
+  la('dạng đai và dải khác; tấm phổ dụng ⇒ DAI_DAI_HOAC_PHO_DUNG', 'dangDaiDaiTamPhoDung', 'Dạng đai và dải khác; tấm phổ dụng(SEN)', 'DAI_DAI_HOAC_PHO_DUNG');
+  la('dạng tấm cắt sẵn ⇒ DANG_CAN_PHANG_KHAC', 'dangDaiDaiTamPhoDung', 'Thép cán phẳng dạng tấm cắt sẵn', 'DANG_CAN_PHANG_KHAC');
+  la('En cut-to-length sheets ⇒ DANG_CAN_PHANG_KHAC', 'dangDaiDaiTamPhoDung', 'Flat-rolled steel cut-to-length sheets', 'DANG_CAN_PHANG_KHAC');
+
+  // 3. hinhDangMatCatNgang — KHAC_TRON (7215.50.10)
+  la('chữ biểu 7215.50.10 (trừ dạng mặt cắt ngang hình tròn) ⇒ KHAC_TRON', 'hinhDangMatCatNgang', 'Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng, trừ dạng mặt cắt ngang hình tròn', 'KHAC_TRON');
+  la('mặt cắt ngang hình lục giác ⇒ KHAC_TRON', 'hinhDangMatCatNgang', 'Thanh thép kéo nguội mặt cắt ngang hình lục giác', 'KHAC_TRON');
+  la('En hexagonal cross-section ⇒ KHAC_TRON', 'hinhDangMatCatNgang', 'Cold-finished steel bar of hexagonal cross-section', 'KHAC_TRON');
+  la('mặt cắt ngang hình tròn vẫn ⇒ TRON', 'hinhDangMatCatNgang', 'Có mặt cắt ngang hình tròn', 'TRON');
+
+  // 4. ReDoS ~40.000 từ lặp < 2 giây (CLAUDE.md quy tắc 6b)
+  const redosText1799 = Array(5000).fill('được phủ mạ hoặc tráng bằng dạng đai và dải mặt cắt ngang').join(' ');
+  const t0 = process.hrtime.bigint();
+  for (const fk of ['lopMaPhu', 'dangDaiDaiTamPhoDung', 'hinhDangMatCatNgang']) {
+    T.docGiaTri(fk, redosText1799);
+  }
+  const ms = Number(process.hrtime.bigint() - t0) / 1e6;
+  check(`OZV-1799 ReDoS ~40.000 từ lặp trên 3 khoá mở rộng < 2000 ms (thực tế ${ms.toFixed(0)} ms)`, ms < 2000, { ms });
 }
 
 console.log(`\n${pass} pass, ${fail} fail`);

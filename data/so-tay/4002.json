@@ -49,11 +49,56 @@
     },
     {
       "hs": "40021910",
-      "dieuKien": "Dạng nguyên sinh hoặc dạng tấm, tờ hoặc dải chưa lưu hóa, chưa pha trộn",
+      "dieuKien": "(tên loại hàng: Dạng nguyên sinh) hoặc (tên loại hàng: tấm hoặc tờ hoặc dải và không tên loại hàng: lưu hóa và không tên loại hàng: pha trộn)",
       "loaiKhac": false,
       "nguon": "tax.40021910",
       "trich": "40021910 - - - Dạng nguyên sinh hoặc dạng tấm, tờ hoặc dải chưa lưu hóa, chưa pha trộn",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Dạng nguyên sinh"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "tấm",
+                  "tờ",
+                  "dải"
+                ]
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "lưu hóa",
+                "chieu": "PHAI_KHONG"
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "pha trộn",
+                "chieu": "PHAI_KHONG"
+              }
+            ]
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "tho-hs-01:ozv-1799-20261122#soat-400219",
+          "ngay": "2026-11-22",
+          "bam": "175f71b159d5518a9c372e340b818d53b47e7818a16ef0f502712a4f69819495"
+        }
+      }
     },
     {
       "hs": "40021990",
@@ -120,11 +165,42 @@
     },
     {
       "hs": "40023110",
-      "dieuKien": "Dạng tấm, tờ hoặc dải chưa lưu hóa, chưa pha trộn",
+      "dieuKien": "tên loại hàng: tấm hoặc tờ hoặc dải; không tên loại hàng: lưu hóa; không tên loại hàng: pha trộn",
       "loaiKhac": false,
       "nguon": "tax.40023110",
       "trich": "40023110 - - - Dạng tấm, tờ hoặc dải chưa lưu hóa, chưa pha trộn",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "tấm",
+            "tờ",
+            "dải"
+          ]
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "lưu hóa",
+          "chieu": "PHAI_KHONG"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "pha trộn",
+          "chieu": "PHAI_KHONG"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "tho-hs-01:ozv-1799-20261122#soat-400231",
+          "ngay": "2026-11-22",
+          "bam": "b61ee58b9b71bfad4cce33d46220666f5c5bbbf8b039ec5a884d1c8ad0186f43"
+        }
+      }
     },
     {
       "hs": "40023190",
@@ -148,11 +224,42 @@
     },
     {
       "hs": "40023910",
-      "dieuKien": "Dạng tấm, tờ hoặc dải chưa lưu hóa, chưa pha trộn",
+      "dieuKien": "tên loại hàng: tấm hoặc tờ hoặc dải; không tên loại hàng: lưu hóa; không tên loại hàng: pha trộn",
       "loaiKhac": false,
       "nguon": "tax.40023910",
       "trich": "40023910 - - - Dạng tấm, tờ hoặc dải chưa lưu hóa, chưa pha trộn",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "tấm",
+            "tờ",
+            "dải"
+          ]
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "lưu hóa",
+          "chieu": "PHAI_KHONG"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "pha trộn",
+          "chieu": "PHAI_KHONG"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "tho-hs-01:ozv-1799-20261122#soat-400239",
+          "ngay": "2026-11-22",
+          "bam": "ee0cd300393a772c8b2eac40683f27c5c4830088f4ecd9bc68970a2943ab760a"
+        }
+      }
     },
     {
       "hs": "40023990",
@@ -415,19 +522,39 @@
     },
     {
       "hs": "40029930",
-      "dieuKien": "Cao su tự nhiên đã epoxy hóa (ENR)",
+      "dieuKien": "chất liệu (theo vị trí): cao su; tên loại hàng: Cao su tự nhiên đã epoxy hóa",
       "loaiKhac": false,
       "nguon": "tax.40029930",
       "trich": "40029930 - - - Cao su tự nhiên đã epoxy hóa (ENR)",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "cao su"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Cao su tự nhiên đã epoxy hóa"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "tho-hs-01:ozv-1799-20261122#soat-400299",
+          "ngay": "2026-11-22",
+          "bam": "852b3686a64b8bf88f1e2bdf58b84a3e6c03ed8c444a0f59964db1086714d0c1"
+        }
+      }
     },
     {
       "hs": "40029940",
-      "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+      "dieuKien": "(tên loại hàng: dạng nguyên sinh) hoặc (tên loại hàng: tấm hoặc tờ hoặc dải và không tên loại hàng: lưu hóa và không tên loại hàng: pha trộn)",
       "loaiKhac": true,
       "nguon": "tax.40029940",
       "trich": "40029940 - - - Loại khác, dạng nguyên sinh hoặc dạng tấm, tờ hoặc dải chưa lưu hóa, chưa pha trộn",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phamViLoaiKhac": {
         "nguonLoai": "MAY_SUY",
         "cha": "400299",
@@ -439,6 +566,51 @@
         ],
         "toTienCoTen": "400299",
         "dinhNghiaDuoc": true
+      },
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "dạng nguyên sinh"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "tấm",
+                  "tờ",
+                  "dải"
+                ]
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "lưu hóa",
+                "chieu": "PHAI_KHONG"
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "pha trộn",
+                "chieu": "PHAI_KHONG"
+              }
+            ]
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "tho-hs-01:ozv-1799-20261122#soat-400299",
+          "ngay": "2026-11-22",
+          "bam": "852b3686a64b8bf88f1e2bdf58b84a3e6c03ed8c444a0f59964db1086714d0c1"
+        }
       }
     },
     {

@@ -4,13 +4,19 @@
   "nhom": "7226",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-722692",
     "ngay": "2026-11-04"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "tho-hs-01:ozv-1799-20261122#soat-722692",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá ranh giới theo traVe.lyDo và khép SẠCH V1 lô 11a (OZV-1799).",
+    "bam": "9d9a3b5db932aefa7ba697620ba7eee6e1d64103760dea55ae6705d88346c35a"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -19,27 +25,34 @@
       "trich": "72269210 - - - Dạng đai và dải(SEN), chiều rộng không quá 400 mm",
       "dieuKienSo": [
         {
+          "fact": "dangDaiDaiTamPhoDung",
+          "op": "TRONG",
+          "value": [
+            "DAI_VA_DAI"
+          ]
+        },
+        {
           "fact": "chieuRong",
           "op": "<=",
           "value": 400,
           "donVi": "mm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "72269290",
       "nguon": "tax.72269290",
       "trich": "72269290 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "72269210",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.72269210: \"Dạng đai và dải(SEN), chiều rộng không quá 400 mm\" ⇒ chieuRong <= 400 mm"
+      "ghiChu": "tax.72269210: \"Dạng đai và dải(SEN), chiều rộng không quá 400 mm\" ⇒ dangDaiDaiTamPhoDung [DAI_VA_DAI] + chieuRong <= 400 mm"
     },
     {
       "ma": "72269210",
