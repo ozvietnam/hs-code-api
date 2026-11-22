@@ -4,13 +4,19 @@
   "nhom": "8519",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "claude-agent:tho-hs-03-20261120#soan-851981-v3",
     "ngay": "2026-11-20"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1852#soat-851981",
+    "ngay": "2026-11-22",
+    "ghiChu": "Duyệt 851981: 85198110 dùng tenLoai Máy ghi âm cassette bỏ túi + mangTheoNguoi CO và BO_VE kích thước 3 chiều 170x100x45 mm (OZV-1852)",
+    "bam": "6ed453877be6699e255f5261fa55220c3e087ca530ed6c09850e6d563a93d8d4"
+  },
   "dieuKienNut": [
     {
       "id": "8519814",
@@ -23,7 +29,7 @@
           "value": "Máy sao âm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "8519816",
@@ -36,7 +42,7 @@
           "value": "Máy ghi băng từ có gắn với thiết bị tái tạo âm thanh, loại âm thanh số"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "8519817",
@@ -54,7 +60,7 @@
           "value": "kiểu cassette"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": true
     }
   ],
@@ -63,8 +69,18 @@
       "hs": "85198110",
       "nguon": "tax.85198110",
       "trich": "85198110 - - - Máy ghi âm cassette bỏ túi, kích thước không quá 170 mm x 100 mm x 45 mm ",
-      "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy ghi âm cassette bỏ túi"
+        },
+        {
+          "fact": "mangTheoNguoi",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85198120",
@@ -89,7 +105,7 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85198130",
@@ -102,7 +118,7 @@
           "value": "Đầu đĩa compact"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85198141",
@@ -118,14 +134,14 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85198149",
       "nguon": "tax.85198149",
       "trich": "85198149 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85198150",
@@ -142,7 +158,7 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85198161",
@@ -158,7 +174,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85198162",
@@ -171,14 +187,14 @@
           "value": "Máy trả lời điện thoại"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85198169",
       "nguon": "tax.85198169",
       "trich": "85198169 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85198171",
@@ -194,14 +210,14 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85198179",
       "nguon": "tax.85198179",
       "trich": "85198179 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85198191",
@@ -217,14 +233,14 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85198199",
       "nguon": "tax.85198199",
       "trich": "85198199 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "chongLanTruc": [
@@ -291,15 +307,20 @@
       "ghiChu": "Claude 07/11/2026 (Q1, #1109): các cặp nhánh khác trục không có hàng thật thoả cả hai ⇒ chongLanTruc + khongCoHangThat (lý do từng cặp trong viDuHang). Lúc chạy hàng thoả cả hai ⇒ hỏi câu phân biệt."
     },
     {
-      "ma": "85198110",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "kichThuocTungChieu",
-      "ghiChu": "tax.85198110 \"Máy ghi âm cassette bỏ túi, kích thước không quá 170 mm x 100 mm x 45 mm\": TRA_VE lỗi (B) — điều kiện kichThuoc chỉ nhận MỘT số (lib/dieu-kien-so.js:192 chặn value mảng) nên v1 chỉ mã hoá ngưỡng 170 mm; dữ kiện 3 chiều bị gộp khoảng [min,max] (khoangDuKien, lib/dieu-kien-so.js:285) ⇒ máy 160x120x50 mm (vượt 100 và 45) vẫn lọt .10 — SUY RỘNG. Khoá kichThuoc có soChieu [2,3] phía dữ liệu nhưng phía điều kiện không có chỗ cho từng chiều ⇒ không mã hoá đúng 3 ngưỡng, để trống dieuKienSo + đề xuất khoá từng chiều (170/100/45) rồi đối chiếu lại."
-    },
-    {
       "ma": "85198120",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.85198120 «Máy ghi âm cassette, có bộ phận khuếch đại và một hoặc nhiều loa, hoạt động chỉ bằng nguồn điện ngoài»: tên ⇒ tenLoai «Máy ghi âm cassette»; «có bộ phận khuếch đại» ⇒ coBoPhanKhuachDai CO; «một hoặc nhiều loa» ⇒ coLoa CO (chữ «một hoặc nhiều» = có mặt, không cần đếm); đuôi «hoạt động chỉ bằng nguồn điện ngoài» ⇒ chiDungNguonDienNgoai CO (khoá lô 20). GIẢI DỪNG v2: hai khoá đã thêm ở tu-vung@2 (OZV-1610)."
+    },
+    {
+      "ma": "85198110",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85198110 \"Máy ghi âm cassette bỏ túi, kích thước không quá 170 mm x 100 mm x 45 mm\" ⇒ tenLoai \"Máy ghi âm cassette bỏ túi\" + mangTheoNguoi CO; vế kích thước 3 chiều 170 mm x 100 mm x 45 mm khai BO_VE vì khoá kichThuoc đơn trị không biểu diễn được 3 ngưỡng riêng"
+    },
+    {
+      "ma": "85198110",
+      "loai": "BO_VE",
+      "ve": "kích thước không quá 170 mm x 100 mm x 45 mm",
+      "lyDo": "Khoá kichThuoc trong tu-vung@2 chỉ nhận một số đơn, chưa có khoá kiểm đồng thời 3 ngưỡng 170 mm x 100 mm x 45 mm mà không suy rộng."
     }
   ],
   "traVe": [

@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L23-20261111#soat-L23",
-    "ngay": "2026-11-11",
-    "ghiChu": "Biên đối chiếu tay: 'does not exceed 8 mm' ⇒ <=8; 'exceeds 8 but not exceeds 14' ⇒ >8 & <=14; tiền lệ 1757/TB-TCHQ Ø20mm → 74081190 khớp.",
-    "bam": "3fee9ed59eec562562afe08fa79da9ef551a19ff63502188181278d4d8a611af"
+    "phien": "claude-agent:ozv-1852#soat-740811",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá 74081120 và 74081130 sang khoá kichThuocMatCatNgang kết hợp HOAC cụm nguyên văn dòng biểu thuế (OZV-1852)",
+    "bam": "f3860aef2374f4be73d3fa6e67d4960d68d8c663ecd780eaa59993de8b5afa6a"
   },
   "dieuKienNut": [],
   "dong8": [
@@ -25,10 +25,24 @@
       "trich": "74081120 - - - Có kích thước mặt cắt ngang lớn nhất không quá 8 mm",
       "dieuKienSo": [
         {
-          "fact": "kichThuoc",
-          "op": "<=",
-          "value": 8,
-          "donVi": "mm"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "kichThuocMatCatNgang",
+                "op": "<=",
+                "value": 8,
+                "donVi": "mm"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Có kích thước mặt cắt ngang lớn nhất không quá 8 mm"
+              }
+            ]
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -39,16 +53,30 @@
       "trich": "74081130 - - - Có kích thước mặt cắt ngang lớn nhất trên 8 mm nhưng không quá 14 mm",
       "dieuKienSo": [
         {
-          "fact": "kichThuoc",
-          "op": ">",
-          "value": 8,
-          "donVi": "mm"
-        },
-        {
-          "fact": "kichThuoc",
-          "op": "<=",
-          "value": 14,
-          "donVi": "mm"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "kichThuocMatCatNgang",
+                "op": ">",
+                "value": 8,
+                "donVi": "mm"
+              },
+              {
+                "fact": "kichThuocMatCatNgang",
+                "op": "<=",
+                "value": 14,
+                "donVi": "mm"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Có kích thước mặt cắt ngang lớn nhất trên 8 mm nhưng không quá 14 mm"
+              }
+            ]
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -65,7 +93,16 @@
     {
       "ma": "74081120",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.74081120 \"Có kích thước mặt cắt ngang lớn nhất không quá 8 mm\" ⇒ kichThuoc <= 8 mm; tax.74081130 \"… trên 8 mm nhưng không quá 14 mm\" ⇒ kichThuoc > 8 và <= 14 (biên đã đối chiếu tay: \"không quá\" = <=, \"trên\" = >)."
+      "ghiChu": "tax.74081120 \"Có kích thước mặt cắt ngang lớn nhất không quá 8 mm\" ⇒ kichThuocMatCatNgang <= 8 mm HOẶC tenLoai nguyên văn; tax.74081130 \"… trên 8 mm nhưng không quá 14 mm\" ⇒ (kichThuocMatCatNgang > 8 và <= 14) HOẶC tenLoai nguyên văn."
+    }
+  ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "74081120",
+        "74081130"
+      ],
+      "lyDo": "Phương án khớp chữ nguyên văn \"Có kích thước mặt cắt ngang lớn nhất không quá 8 mm\" (74081120) và \"Có kích thước mặt cắt ngang lớn nhất trên 8 mm nhưng không quá 14 mm\" (74081130) song song với ngưỡng số kichThuocMatCatNgang"
     }
   ]
 }
