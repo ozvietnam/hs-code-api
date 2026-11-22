@@ -21579,10 +21579,10 @@
           "nhanZh": "皮革",
           "cachDoc": {
             "vi": [
-              "(?<!giả\\s+)(?<!cơ\\s+bản\\s+là\\s+)(?<!sợi\\s+)(?<!sơn\\s+cho\\s+)(?<!giày\\s+dép\\s+hoặc\\s+)da\\s+thuộc(?!\\s+(?:tổng\\s+hợp|nhân\\s+tạo))"
+              "(?<!giả\\s+)(?<!cơ\\s+bản\\s+là\\s+)(?<!sợi\\s+)(?<!da\\s+sống\\s+hoặc\\s+)(?<!vật\\s+liệu\\s+dệt,\\s+)(?<!cho\\s+)(?<!cho\\s+các\\s+)(?<!cho\\s+(?:gi[àầ]y(?:\\s+dép)?|dép)\\s+(?:hoặc|và)\\s+)(?<!(?:đánh\\s+bóng|dưỡng|làm\\s+sạch|vệ\\s+sinh|bảo\\s+dưỡng|tẩy|nhuộm|hoàn\\s+thiện|xử\\s+lý|thuộc|chế\\s+biến|sơ\\s+chế)\\s+)da\\s+thuộc(?!\\s+(?:tổng\\s+hợp|nhân\\s+tạo))"
             ],
             "en": [
-              "(?<!(?:composition|reconstituted|artificial|synthetic|imitation|faux|pu|pvc|vegan|basis\\s+of)\\s+)leather(?!\\s+(?:fib(?:re|er)s?|substitute|imitation))"
+              "(?<!(?:composition|reconstituted|artificial|synthetic|imitation|faux|pu|pvc|vegan|eco|bonded|simulated|man-made|manmade|microfib(?:er|re)|pseudo)[\\s-]+)(?<!basis\\s+of\\s+)(?<!materials\\s*\\()(?<!\\bfor\\s+(?:the\\s+|(?:footwear|shoes)\\s+or\\s+)?)(?<!(?:finishing|treating|polishing|cleaning|dyeing|tanning|working|curing|softening|conditioning|protecting|textile\\s+materials,|skins?\\s+or)\\s+)leather(?!\\s+(?:fib(?:re|er)s?|substitute|imitation|paints?|pigments?|cleaners?|conditioners?|creams?|polish(?:es)?|dyes?|finish(?:es|ing)?|care|wax(?:es)?|balms?|soaps?|protectors?|treatments?|trims?|trimmed|etc\\s+industr(?:y|ies)|industr(?:y|ies)|or\\s+like\\b))"
             ],
             "zh": [
               "(?<!再生|合成|人造|仿)皮革",
@@ -25602,10 +25602,10 @@
           "nhanZh": "液压",
           "cachDoc": {
             "vi": [
-              "(?<!(?:vôi|xi\\s+măng|bộ\\s+hãm|chất\\s+lỏng)\\s+)th(?:ủy|uỷ)\\s+lực"
+              "(?<!sự\\s+truyền\\s+động\\s+)(?<!(?<!truyền\\s+động\\s+)dầu\\s+)(?<!(?:vôi|xi\\s+măng|đóng\\s+rắn|bộ\\s+hãm|chất\\s+lỏng|dung\\s+dịch|nhớt|dầu\\s+phanh|nước|làm\\s+kín|phốt|phớt|gioăng|của\\s+hệ\\s+thống)\\s+)th(?:ủy|uỷ)\\s+lực"
             ],
             "en": [
-              "(?<!(?:brake|transmission)\\s+)(?:oleo)?hydraulic(?:ally)?(?!\\s+(?:lime|cements?|fluids?|oils?|brakes?))"
+              "(?<!(?:brake|transmission)\\s+)(?<!for\\s+(?=hydraulic\\s+transmission))(?:oleo)?hydraulic(?:ally)?(?!\\s+(?:lime|cements?|kinds?|fluids?|oils?|liquids?|brakes?|brake\\s+fluids?|control\\s+fluids?))"
             ],
             "zh": [
               "液压",
@@ -25620,11 +25620,11 @@
           "nhanZh": "气动",
           "cachDoc": {
             "vi": [
-              "(?<!(?:bình|thùng|chai|xi\\s+lanh)\\s+(?:chứa|đựng)\\s+)(?<!chứa\\s+)khí\\s+nén(?!\\s+(?:hoặc|hay)\\s+khí\\s+(?:hóa|hoá)\\s+lỏng)"
+              "(?<!;\\s*(?=khí\\s+nén\\s*;))(?<!(?:bình|thùng|chai)\\s+)(?<!(?:chứa|đựng|tích\\s+áp)\\s+)khí\\s+nén(?!\\s+(?:hoặc|hay)\\s+khí\\s+(?:hóa|hoá)\\s+lỏng)"
             ],
             "en": [
               "pneumatic(?:ally)?(?!\\s+(?:tyres?|tires?|mattress(?:es)?|cushion|rubber))",
-              "(?<!for\\s+)compressed\\s+air(?!\\s+(?:or\\s+liquefied|tanks?|containers?|cylinders?\\s+for\\s+storing))"
+              "(?<!;\\s*(?=compressed\\s+air\\s*;))(?<!for\\s+)compressed\\s+air(?!\\s+(?:or\\s+liquefied|tanks?|containers?|bottles?|cylinders?\\s+for\\s+storing|hoses?|pipes?|filters?|dryers?|receivers?))"
             ],
             "zh": [
               "气动",

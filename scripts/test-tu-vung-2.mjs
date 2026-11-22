@@ -1296,6 +1296,8 @@ check('vietCum đơn vị @1 KHÔNG đổi ("CS: 75000W" — không cách)', T.v
   la('chữ biểu 4112.00.00 (da thuộc)', 'vatLieuKhac', 'Da thuộc đã được gia công thêm sau khi thuộc hoặc làm mộc, kể cả da giấy, của cừu hoặc cừu non, không có lông, đã hoặc chưa xẻ, trừ da thuộc nhóm 41.14', 'DA_THUOC');
   la('chữ biểu 6403.20.00 (đế ngoài bằng da thuộc)', 'vatLieuKhac', 'Giày, dép có đế ngoài bằng da thuộc, và mũ giày có đai vòng qua mu bàn chân và quai xỏ ngón chân cái', 'DA_THUOC');
   la('Mặt ngoài bằng da thuộc ⇒ DA_THUOC', 'vatLieuKhac', 'Mặt ngoài bằng da thuộc', 'DA_THUOC');
+  la('Bằng da thuộc ⇒ DA_THUOC', 'vatLieuKhac', 'Bằng da thuộc', 'DA_THUOC');
+  la('áo khoác da thuộc ⇒ DA_THUOC', 'vatLieuKhac', 'áo khoác da thuộc', 'DA_THUOC');
   la('En genuine leather', 'vatLieuKhac', 'Briefcase of genuine leather', 'DA_THUOC');
   la('Zh 真皮', 'vatLieuKhac', '牛皮真皮手提包', 'DA_THUOC');
   la('Zh 皮革', 'vatLieuKhac', '天然皮革钱包', 'DA_THUOC');
@@ -1308,9 +1310,25 @@ check('vietCum đơn vị @1 KHÔNG đổi ("CS: 75000W" — không cách)', T.v
   la('Zh 合成皮革', 'vatLieuKhac', '合成皮革包', 'DA_THUOC_TONG_HOP');
   chuaBiet('bằng vải dệt ⇒ CHUA_BIET trên vatLieuKhac', 'vatLieuKhac', 'Túi xách bằng vải dệt');
   chuaBiet('giả da / PU leather ⇒ CHUA_BIET', 'vatLieuKhac', 'Túi xách giả da (PU leather)');
+  chuaBiet('faux-leather gạch nối ⇒ CHUA_BIET', 'vatLieuKhac', 'Handbag of faux-leather');
+  chuaBiet('PU-leather gạch nối ⇒ CHUA_BIET', 'vatLieuKhac', 'PU-leather jacket');
+  chuaBiet('synthetic-leather / artificial-leather / imitation-leather / vegan-leather ⇒ CHUA_BIET', 'vatLieuKhac', 'synthetic-leather, artificial-leather, imitation-leather, vegan-leather');
+  chuaBiet('eco leather / eco-leather / bonded leather ⇒ CHUA_BIET', 'vatLieuKhac', 'Sofa covered with eco leather, eco-leather and bonded leather');
   chuaBiet('synthetic leather En ⇒ CHUA_BIET', 'vatLieuKhac', 'Synthetic leather handbag');
   chuaBiet('人造皮革 Zh ⇒ CHUA_BIET', 'vatLieuKhac', '人造皮革包');
   chuaBiet('Sơn cho da thuộc 3209.10.40 ⇒ CHUA_BIET', 'vatLieuKhac', 'Sơn cho da thuộc (SEN)');
+  chuaBiet('sơn (chất phủ) cho da thuộc ⇒ CHUA_BIET', 'vatLieuKhac', 'Chế phẩm thuốc màu dùng để sản xuất sơn (chất phủ) cho da thuộc');
+  chuaBiet('giầy dép dùng cho da thuộc ⇒ CHUA_BIET', 'vatLieuKhac', 'giầy dép dùng cho da thuộc');
+  chuaBiet('giày dép dùng cho da thuộc ⇒ CHUA_BIET', 'vatLieuKhac', 'giày dép dùng cho da thuộc');
+  chuaBiet('chất đánh bóng cho giầy dép hoặc da thuộc ⇒ CHUA_BIET', 'vatLieuKhac', 'Chất đánh bóng cho giầy dép hoặc da thuộc');
+  chuaBiet('chữ biểu 3405.10.00 (dùng cho giày dép hoặc da thuộc) ⇒ CHUA_BIET', 'vatLieuKhac', 'Chất đánh bóng, kem và các chế phẩm tương tự dùng cho giày dép hoặc da thuộc');
+  chuaBiet('chữ biểu 3403.91 (xử lý vật liệu dệt, da thuộc) ⇒ CHUA_BIET', 'vatLieuKhac', 'Chế phẩm dùng để xử lý bằng dầu hoặc mỡ cho các vật liệu dệt, da thuộc, da lông hoặc các vật liệu khác');
+  chuaBiet('En Leather paints (3209.10.40) ⇒ CHUA_BIET', 'vatLieuKhac', 'Leather paints');
+  chuaBiet('En for footwear or leather (3405.10.00) ⇒ CHUA_BIET', 'vatLieuKhac', 'Polishes, creams and similar preparations for footwear or leather');
+  chuaBiet('En used in the leather or like industries (3809.93.00) ⇒ CHUA_BIET', 'vatLieuKhac', 'Of a kind used in the leather or like industries');
+  chuaBiet('En preparations / cleaner / conditioner / polish / dye / finish for leather ⇒ CHUA_BIET', 'vatLieuKhac', 'preparations for leather, leather cleaner, leather conditioner, leather cream, leather polish, leather dye, leather finish');
+  chuaBiet('En treatment of textile and similar materials (leather, furskins) ⇒ CHUA_BIET', 'vatLieuKhac', 'Lubricating preparations for the treatment of textile and similar materials (leather, furskins etc)');
+  chuaBiet('En machinery for hides, skin or leather (8453.90.00) ⇒ CHUA_BIET', 'vatLieuKhac', 'Machinery; parts of those for preparing, tanning or working hides, skins or leather, for making or repairing footwear or other articles of hides, skin or leather, other than sewing machines');
   chuaBiet('phủ định không phải da thuộc ⇒ CHUA_BIET', 'vatLieuKhac', 'Túi xách không phải bằng da thuộc');
   {
     const r = chuaBiet('hai giá trị 4202.11 / 4202.21.00 ("da thuộc hoặc da thuộc tổng hợp") ⇒ CHUA_BIET', 'vatLieuKhac', 'Mặt ngoài bằng da thuộc hoặc da thuộc tổng hợp');
@@ -1352,6 +1370,8 @@ check('vietCum đơn vị @1 KHÔNG đổi ("CS: 75000W" — không cách)', T.v
   la('Zh 液压', 'nguonDongLuc', '液压机', 'THUY_LUC');
   la('Zh 水力', 'nguonDongLuc', '水力涡轮机', 'THUY_LUC');
   la('Vi khí nén (8412.3)', 'nguonDongLuc', 'Động cơ và mô tơ dùng khí nén', 'KHI_NEN');
+  la('Xi lanh khí nén MXQ8-50 ⇒ KHI_NEN', 'nguonDongLuc', 'Xi lanh khí nén MXQ8-50', 'KHI_NEN');
+  la('Van dùng trong truyền động dầu thủy lực ⇒ THUY_LUC', 'nguonDongLuc', 'Van dùng trong truyền động dầu thủy lực', 'THUY_LUC');
   la('chữ biểu 8467.92.00 (Của dụng cụ hoạt động bằng khí nén)', 'nguonDongLuc', 'Của dụng cụ hoạt động bằng khí nén', 'KHI_NEN');
   la('En pneumatic', 'nguonDongLuc', 'Pneumatic elevators and conveyors', 'KHI_NEN');
   la('En compressed air', 'nguonDongLuc', 'Impact wrench powered by compressed air', 'KHI_NEN');
@@ -1361,24 +1381,40 @@ check('vietCum đơn vị @1 KHÔNG đổi ("CS: 75000W" — không cách)', T.v
   chuaBiet('không bắt nhầm vôi thủy lực 2522.30.00', 'nguonDongLuc', 'Vôi thủy lực');
   chuaBiet('không bắt nhầm xi măng thủy lực 2523.90.00', 'nguonDongLuc', 'Xi măng thủy lực khác');
   chuaBiet('không bắt nhầm dầu phanh thủy lực 2710.19.50', 'nguonDongLuc', 'Dầu dùng trong bộ hãm thủy lực (dầu phanh)');
+  chuaBiet('không bắt nhầm dầu phanh thủy lực ngắn', 'nguonDongLuc', 'dầu phanh thủy lực');
+  chuaBiet('không bắt nhầm dầu thủy lực AW 46', 'nguonDongLuc', 'dầu thủy lực AW 46');
+  chuaBiet('không bắt nhầm dầu thuỷ lực', 'nguonDongLuc', 'dầu thuỷ lực');
+  chuaBiet('không bắt nhầm nhớt thủy lực / dung dịch thủy lực / chất lỏng thủy lực', 'nguonDongLuc', 'nhớt thủy lực, dung dịch thủy lực, chất lỏng thủy lực');
+  chuaBiet('không bắt nhầm 3819.00.00 VI (chất lỏng truyền động thủy lực)', 'nguonDongLuc', 'Chất lỏng dùng trong bộ hãm thủy lực và các chất lỏng đã được điều chế khác dùng cho sự truyền động thủy lực, không chứa hoặc chứa dưới 70% tính theo trọng lượng dầu có nguồn gốc từ dầu mỏ hoặc các loại dầu thu được từ khoáng bi-tum');
+  chuaBiet('không bắt nhầm 3819.00.00 EN (hydraulic brake fluids / for hydraulic transmission)', 'nguonDongLuc', 'Hydraulic brake fluids and other prepared liquids for hydraulic transmission, not containing or containing less than 70% by weight of petroleum oils or oils obtained from bituminous minerals');
+  chuaBiet('không bắt nhầm hydraulic oil / hydraulic brake fluid', 'nguonDongLuc', 'hydraulic oil, hydraulic brake fluid');
+  chuaBiet('không bắt nhầm phốt làm kín thủy lực / bộ phận chuyển động của hệ thống thủy lực', 'nguonDongLuc', 'Phốt làm kín thủy lực, ngăn chặn sự rò rỉ chất lỏng thủy lực giữa các bộ phận chuyển động của hệ thống thủy lực');
+  chuaBiet('không bắt nhầm bình tích áp khí nén / bình chứa khí nén', 'nguonDongLuc', 'bình tích áp khí nén và bình chứa khí nén');
   chuaBiet('không bắt nhầm thùng chứa khí nén 7613.00.00', 'nguonDongLuc', 'Các loại thùng chứa khí nén hoặc khí hóa lỏng bằng nhôm');
+  chuaBiet('không bắt nhầm khí nén thương phẩm 2853 VI & EN', 'nguonDongLuc', 'khí hóa lỏng (đã hoặc chưa loại bỏ khí hiếm); khí nén; hỗn hống; liquid air; compressed air; amalgams');
   chuaBiet('không bắt nhầm pneumatic tyres 4011', 'nguonDongLuc', 'New pneumatic tyres, of rubber');
   chuaBiet('động cơ điện ⇒ CHUA_BIET', 'nguonDongLuc', 'Động cơ điện xoay chiều 3 pha công suất 5 kW');
   {
     const r = chuaBiet('8481.20 hai nguồn ("dầu thủy lực hoặc khí nén") ⇒ CHUA_BIET', 'nguonDongLuc', 'Van dùng trong truyền động dầu thủy lực hoặc khí nén');
     check('nguonDongLuc 8481.20 ⇒ ungVien [KHI_NEN, THUY_LUC] và kiemDieuKien đạt', JSON.stringify((r.ungVien || []).slice().sort()) === JSON.stringify(['KHI_NEN', 'THUY_LUC']) && DK.kiemDieuKien({ fact: 'nguonDongLuc', op: 'TRONG', value: ['THUY_LUC', 'KHI_NEN'] }, 'Van dùng trong truyền động dầu thủy lực hoặc khí nén') === null, r);
   }
+  {
+    const r = chuaBiet('8481.20 ("truyền động dầu thủy lực hoặc truyền động khí nén") ⇒ CHUA_BIET', 'nguonDongLuc', 'Van dùng trong truyền động dầu thủy lực hoặc truyền động khí nén');
+    check('nguonDongLuc 8481.20 đầy đủ ⇒ ungVien [KHI_NEN, THUY_LUC] và kiemDieuKien đạt', JSON.stringify((r.ungVien || []).slice().sort()) === JSON.stringify(['KHI_NEN', 'THUY_LUC']) && DK.kiemDieuKien({ fact: 'nguonDongLuc', op: 'TRONG', value: ['THUY_LUC', 'KHI_NEN'] }, 'Van dùng trong truyền động dầu thủy lực hoặc truyền động khí nén') === null, r);
+  }
   check('vietCum nguonDongLuc THUY_LUC / KHI_NEN', viet('nguonDongLuc', 'THUY_LUC') === 'dùng thủy lực' && viet('nguonDongLuc', 'KHI_NEN') === 'dùng khí nén', [viet('nguonDongLuc', 'THUY_LUC'), viet('nguonDongLuc', 'KHI_NEN')]);
 
-  // 4. ReDoS ~40.000 từ lặp < 2 giây (CLAUDE.md quy tắc 6b)
+  // 4. ReDoS ~40.000 từ lặp < 2 giây (CLAUDE.md quy tắc 6b) — gồm cả chuỗi tiền tố/hậu tố cận khớp
   const redos1584 = Array(4000).fill('túi vải giả da dạng hộp hoặc ống bằng động cơ điện xoay chiều').join(' ');
+  const redos1584GanKhop = Array(3000).fill('giả da thuộc faux-leather dầu thủy lực bình tích áp khí nén ngũ cốc dạng tấm').join(' ');
   const t0 = process.hrtime.bigint();
   for (const fk of ['vatLieuKhac', 'dangTam', 'nguonDongLuc']) {
     const r = T.docGiaTri(fk, redos1584);
-    if (r.trangThai !== 'CHUA_BIET') throw new Error(`Expected CHUA_BIET for ${fk}`);
+    const r2 = T.docGiaTri(fk, redos1584GanKhop);
+    if (r.trangThai !== 'CHUA_BIET' || r2.trangThai !== 'CHUA_BIET') throw new Error(`Expected CHUA_BIET for ${fk}`);
   }
   const ms = Number(process.hrtime.bigint() - t0) / 1e6;
-  check(`#1584 ReDoS ~40.000 từ lặp cho vatLieuKhac, dangTam, nguonDongLuc < 2000 ms (thực tế ${ms.toFixed(0)} ms)`, ms < 2000, { ms });
+  check(`#1584 ReDoS ~40.000 từ lặp (+ cận khớp) cho vatLieuKhac, dangTam, nguonDongLuc < 2000 ms (thực tế ${ms.toFixed(0)} ms)`, ms < 2000, { ms });
 }
 
 console.log(`\n${pass} pass, ${fail} fail`);
