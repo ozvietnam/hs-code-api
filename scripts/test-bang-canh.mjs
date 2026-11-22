@@ -114,6 +114,35 @@ const xl = D.timCum('Xi lanh KHÍ NÉN');
 kiem('C1 gộp: tra "Xi lanh KHÍ NÉN" (khác dấu / hoa thường) ra nhóm 8412', Boolean(xl) && xl.dich.some((d) => d.ma.startsWith('8412')));
 kiem('C1 gộp: cụm không có trong kho ⇒ null', D.timCum('cụm chắc chắn không có trong kho zzqq') === null);
 kiem('C1 gộp: trùng / mâu thuẫn giữa các kho được đếm, không tự xử', Number.isInteger(c1.thongKe.cumNhieuKho) && Number.isInteger(c1.thongKe.cumMauThuanNhom) && c1.mauThuan.length === c1.thongKe.cumMauThuanNhom);
+// Hồi quy #1611 (theo #1602): loại TRAI_NGHIA khỏi C1 + sửa 8 đích sai có căn cứ + thu hẹp "từ điển" 85437030, giữ nguyên danh sách chờ
+const dichNhom = (q) => (D.timCum(q)?.dich || []).map((d) => d.ma);
+kiem('C1 hồi quy #1611: bỏ toàn bộ 10 mục TRAI_NGHIA khỏi C1 (chốt cài không trỏ 8539; 26K-Plate terminal / đui lưỡi lê = null)',
+  c1.thongKe.boQua['ten-khac']?.traiNghia === 10
+  && !dichNhom('chốt cài').some((m) => m.startsWith('8539'))
+  && dichNhom('chốt cài').some((m) => m.startsWith('8308'))
+  && D.timCum('26K-Plate terminal') === null
+  && D.timCum('đui lưỡi lê') === null,
+  JSON.stringify({ boQua: c1.thongKe.boQua['ten-khac'], chotCai: dichNhom('chốt cài') }));
+kiem('C1 hồi quy #1611: 8 cụm có căn cứ pháp lý không còn trỏ đích sai',
+  dichNhom('bình thủy').every((m) => m.startsWith('9617')) && dichNhom('bình thủy').length > 0
+  && dichNhom('bình thủy tinh').some((m) => m.startsWith('7013'))
+  && dichNhom('ray trượt').every((m) => m.startsWith('8302')) && dichNhom('ray trượt').length > 0
+  && dichNhom('máy in 3d').every((m) => m.startsWith('8485')) && dichNhom('máy in 3d').length > 0
+  && dichNhom('gối đỡ vòng bi').every((m) => m.startsWith('8483')) && dichNhom('gối đỡ vòng bi').length > 0
+  && dichNhom('hạt nhựa pvc').every((m) => m.startsWith('3904')) && dichNhom('hạt nhựa pvc').length > 0
+  && dichNhom('Copper wire').every((m) => m.startsWith('7408')) && dichNhom('Copper wire').length > 0
+  && dichNhom('insulated copper wire').some((m) => m.startsWith('8544'))
+  && dichNhom('printed circuit board').every((m) => m.startsWith('8534')) && dichNhom('printed circuit board').length > 0,
+  JSON.stringify({ bt: dichNhom('bình thủy'), rt: dichNhom('ray trượt'), in3d: dichNhom('máy in 3d'), gd: dichNhom('gối đỡ vòng bi'), pvc: dichNhom('hạt nhựa pvc'), cw: dichNhom('Copper wire'), pcb: dichNhom('printed circuit board') }));
+kiem('C1 hồi quy #1611: ten-khac-8543 thu hẹp "từ điển" sang "chức năng từ điển" / "máy từ điển" (85437030), tách khỏi 85439030 và "tụ điện"/"tủ điện"',
+  dichNhom('chức năng từ điển').includes('85437030')
+  && dichNhom('máy từ điển').includes('85437030')
+  && !dichNhom('từ điển').some((m) => m.startsWith('8543'))
+  && dichNhom('từ điển').some((m) => m.startsWith('8532'))
+  && dichNhom('từ điển').some((m) => m.startsWith('8537')));
+kiem('C1 hồi quy #1611: c1.mauThuan chỉ còn đúng 8 cụm danh sách chờ (mơ hồ thật + #4 thanh truot chưa đủ căn cứ)',
+  JSON.stringify(c1.mauThuan.map((m) => m.khoa).sort()) === JSON.stringify(['dep quai ngang', 'giay', 'guong soi', 'man hinh hmi', 'quan jean nu', 'robot cong nghiep', 'tham trai san', 'thanh truot']),
+  JSON.stringify(c1.mauThuan.map((m) => m.khoa)));
 
 // ── 8. C14: hàm tất định, không cạnh tĩnh ──────────────────────────────────────────────────────────────────────
 const t1 = await tienLeUngHo('van điện từ khí nén 5/2', '84812090');
