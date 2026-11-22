@@ -4,13 +4,19 @@
   "nhom": "1515",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1530#soan-151550",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1800#soat-151550",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá ranh giới theo traVe.lyDo và duyệt áp sổ tay (OZV-1800)",
+    "bam": "9eb1424984c7d7183117ea5852f1311d98398a777d7db4f89b79dea0b55ed3ce"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -22,19 +28,6 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Dầu thô"
-        }
-      ],
-      "nguonLoai": "AI_DA_KIEM"
-    },
-    {
-      "hs": "15155020",
-      "nguon": "tax.15155020",
-      "trich": "15155020 - - Các phần phân đoạn của dầu chưa tinh chế",
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Các phần phân đoạn"
         },
         {
           "fact": "mucDoTinhCheDau",
@@ -44,14 +37,37 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "hs": "15155020",
+      "nguon": "tax.15155020",
+      "trich": "15155020 - - Các phần phân đoạn của dầu chưa tinh chế",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Các phần phân đoạn",
+            "Các phần phân đoạn của dầu chưa tinh chế"
+          ]
+        },
+        {
+          "fact": "mucDoTinhCheDau",
+          "op": "TRONG",
+          "value": [
+            "DANG_THO"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "15155090",
       "nguon": "tax.15155090",
       "trich": "15155090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [

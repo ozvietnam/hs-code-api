@@ -4,13 +4,19 @@
   "nhom": "1515",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1530#soan-151530",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1800#soat-151530",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá ranh giới theo traVe.lyDo và duyệt áp sổ tay (OZV-1800)",
+    "bam": "3b8b3529e962134188481578ac789d79e7d03b8850837044f10a85741d007c2f"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -19,26 +25,28 @@
       "trich": "15153010 - - Dầu thô",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Dầu thô"
+          "fact": "mucDoTinhCheDau",
+          "op": "TRONG",
+          "value": [
+            "DANG_THO"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "15153090",
       "nguon": "tax.15153090",
       "trich": "15153090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "15153010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.15153010 \"15153010 - - Dầu thô\" ⇒ tenLoai \"Dầu thô\" (tên hàng; \"thô\" là đặc tính của chính tên hàng nên không tách thêm điều kiện). Dòng 15153090 \"Loại khác\" trần ⇒ không ghi điều kiện."
+      "ghiChu": "tax.15153010 \"15153010 - - Dầu thô\" ⇒ mucDoTinhCheDau TRONG [\"DANG_THO\"]. Dòng 15153090 \"Loại khác\" trần ⇒ không ghi điều kiện."
     }
   ],
   "traVe": [

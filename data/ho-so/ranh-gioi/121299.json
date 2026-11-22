@@ -4,13 +4,19 @@
   "nhom": "1212",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1529#soan-121299",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1800#soat-121299",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá ranh giới theo traVe.lyDo và duyệt áp sổ tay (OZV-1800)",
+    "bam": "a4e536bc03fa20864d6ad21bfe469626cc84b182ab7253118f5e23b267fa345d"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -27,8 +33,8 @@
           ]
         },
         {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
           "value": [
             "quả mơ",
             "đào",
@@ -36,21 +42,21 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "12129990",
       "nguon": "tax.12129990",
       "trich": "12129990 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "12129910",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.12129910 \"Hạt và nhân hạt của quả mơ, đào (kể cả xuân đào) hoặc mận (SEN)\" (EN \"Seeds and kernels of apricots, peaches (including nectarines) or plums\") ⇒ tenLoai [\"Hạt\",\"nhân hạt\"] (hai tên hàng nối \"và\", chữ Anh nối \"and\" với hai danh từ đầu số nhiều ⇒ mảng = hoặc) + dungCho [\"quả mơ\",\"đào\",\"mận\"] (vế GIỚI HẠN \"của quả mơ, đào (kể cả xuân đào) hoặc mận\": định ngữ chung \"của …\" đặt ở điều kiện riêng cho CẢ hai danh từ đầu, khuôn 848190 \"Vỏ của van cổng hoặc van cống\"). Vế \"kể cả xuân đào\" là ngoặc chú thích (PHU, quy trình 3.8) nên không thành điều kiện; nó thuộc vế \"đào\" (xuân đào là một giống đào) — ghi chú cho người soát."
+      "ghiChu": "tax.12129910 \"Hạt và nhân hạt của quả mơ, đào (kể cả xuân đào) hoặc mận (SEN)\" (EN \"Stones and kernels of apricot, peach (including nectarine) or plum\") ⇒ tenLoai [\"Hạt\",\"nhân hạt\"] + tenLoai [\"quả mơ\",\"đào\",\"mận\"] (vế GIỚI HẠN \"của quả mơ, đào (kể cả xuân đào) hoặc mận\" đưa tên loài quả vào tenLoai)."
     },
     {
       "ma": "12129990",

@@ -4,19 +4,50 @@
   "nhom": "1212",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1529#soan-121229",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1800#soat-121229",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá ranh giới theo traVe.lyDo và duyệt áp sổ tay (OZV-1800)",
+    "bam": "df5ebe881782e8153f9e7b1c188fedebc2dd6b48f46ed86918efbae11e487077"
+  },
   "dieuKienNut": [
+    {
+      "id": "121229",
+      "nguon": "nhom1212.nhom",
+      "trich": "Chúng có thể ở dạng tươi, ướp lạnh, đông lạnh, làm khô hoặc nghiền.",
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "TUOI_UOP_LANH",
+            "DONG_LANH",
+            "KHO_MUOI"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
     {
       "id": "1212291",
       "nguon": "tieuDe.1212291",
       "trich": "1212291 Tươi, ướp lạnh hoặc khô, dùng cho công nghệ nhuộm, thuộc da, làm nước hoa, làm dược phẩm, hoặc làm thuốc trừ sâu, thuốc diệt nấm hoặc các mục đích tương tự",
       "dieuKienSo": [
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "TUOI_UOP_LANH",
+            "KHO_MUOI"
+          ]
+        },
         {
           "fact": "congDung",
           "op": "CONG_DUNG",
@@ -30,7 +61,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -45,14 +76,14 @@
           "value": "làm dược phẩm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "12122919",
       "nguon": "tax.12122919",
       "trich": "12122919 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "12122920",
@@ -68,7 +99,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "12122930",
@@ -83,7 +114,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
