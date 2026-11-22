@@ -12,10 +12,9 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L18-20261111#soat-L18",
-    "ngay": "2026-11-11",
-    "ghiChu": ".10 'Of cotton' ⇒ BONG; .90 'Of other textile materials' ⇒ phanConLai.",
-    "bam": "29740a586579f0d2896c08ef758aaeb8acd74330b11c79adf9a60ffef6092292"
+    "phien": "claude:tho-hs-01:20261122#soat-621220",
+    "ngay": "2026-11-22",
+    "bam": "de41691fb18eb11eb544655659913798d42d8c8e9314197b3a028bcb7f8b229b"
   },
   "dieuKienNut": [],
   "dong8": [
@@ -38,7 +37,13 @@
       "hs": "62122090",
       "nguon": "tax.62122090",
       "trich": "62122090 - - Từ các vật liệu dệt khác",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "vật liệu dệt"
+        }
+      ],
       "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": true
     }
@@ -52,7 +57,7 @@
     {
       "ma": "62122090",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.62122090: \"Từ các vật liệu dệt khác\" ⇒ phanConLai: true"
+      "ghiChu": "tax.62122090: \"Từ các vật liệu dệt khác\" ⇒ tenLoai \"vật liệu dệt\" + phanConLai: true"
     }
   ]
 }
