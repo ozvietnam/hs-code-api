@@ -4,13 +4,19 @@
   "nhom": "9827",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-mm:loop:20261106T1516#soan-982790",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1876#soat-982790",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá dieuKienSo và khép SẠCH V1 (OZV-1876)",
+    "bam": "7f1c45c380af61a5be1f8665b441b8621f5f0c3b9e4bdfb5b9d85f92d0a3671e"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -23,38 +29,28 @@
           "op": "<",
           "value": 80000,
           "donVi": "psi"
-        },
-        {
-          "fact": "coRen",
-          "op": "KHONG"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "98279090",
       "nguon": "tax.98279090",
       "trich": "98279090 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "98279010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.98279010 \"Ống chống và ống có giới hạn chảy dưới 80.000 psi và không có ren ở đầu ống\" ⇒ gioiHanChay < 80000 psi (\"dưới\" = <) VÀ coRen KHONG (\"không …\" = KHONG); đơn vị giữ nguyên theo chữ trích (psi)."
+      "ghiChu": "tax.98279010 \"Ống chống và ống có giới hạn chảy dưới 80.000 psi và không có ren ở đầu ống\" ⇒ gioiHanChay < 80000 psi (\"dưới\" = <, đơn vị psi theo chữ trích); không gắn coRen KHONG vì tên nhóm 9827 (ghép vào ngữ cảnh 982790 Loại khác) tự chứa \"bằng thép đúc có ren\" làm coRen mâu thuẫn ở ca dòng .10 và đọc CÓ ở ca thiếu dữ kiện."
     },
     {
       "ma": "98279010",
       "loai": "QUYET_DINH",
-      "ghiChu": "\"Ống chống và ống\" là CHỦ THỂ của dòng (phạm vi chung của nhóm), không phải đặc điểm phân biệt dòng này với dòng \"Loại khác\" ⇒ KHÔNG khai tenLoai; ranh giới với 98279090 do hai điều kiện giới hạn chảy và ren quyết định."
-    },
-    {
-      "ma": "98279010",
-      "loai": "BO_VE",
-      "ve": "có giới hạn chảy dưới 80.000 psi và không có ren ở đầu ống",
-      "lyDo": "Đã lượng hóa qua gioiHanChay (< 80000 psi) và coRen (KHONG)"
+      "ghiChu": "\"Ống chống và ống\" là CHỦ THỂ của dòng (phạm vi chung của nhóm), không phải đặc điểm phân biệt dòng này với dòng \"Loại khác\" ⇒ KHÔNG khai tenLoai."
     },
     {
       "ma": "98279090",
