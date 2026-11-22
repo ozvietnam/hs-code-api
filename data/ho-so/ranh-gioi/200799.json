@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:ozv-1808#soat-200799",
-    "ngay": "2026-11-22",
-    "ghiChu": "Chuẩn hoá vế loại trừ xoài của 2007.99.10 (OZV-1808)",
-    "bam": "b405439a4d41bf5c647ebb6e9c1159ebff274a0a602f7468b938519208e51170"
+    "phien": "claude-agent:duyet-L6-20261111#soat-L6",
+    "ngay": "2026-11-11",
+    "ghiChu": "Đối chiếu VI/EN: .10 \"Fruit pastes other than of mangoes, pineapples or strawberries\" — vế trừ ghi tenLoai PHAI_KHONG mảng 3 quả (đúng phạm vi), .20 \"Jams and fruit jellies\" mảng, .30 \"Mango purée\"; bảng tiền lệ có mục 200799-01.",
+    "bam": "23828ccfc43b4b9895ee8a671d189078ea6dc51b319240bb42d23594af5e978e"
   },
   "dieuKienNut": [],
   "dong8": [
@@ -32,7 +32,11 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "xoài",
+          "value": [
+            "xoài",
+            "dứa",
+            "dâu tây"
+          ],
           "chieu": "PHAI_KHONG"
         }
       ],
