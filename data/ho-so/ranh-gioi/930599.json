@@ -4,13 +4,19 @@
   "nhom": "9305",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-930599",
     "ngay": "2026-11-04"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1794#soat-930599",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá theo traVe (OZV-1794)",
+    "bam": "8be17b8c1b6688c8c5743439fd3126a78e49054ac3baa3f883335d5662516ff9"
+  },
   "dieuKienNut": [
     {
       "id": "9305991",
@@ -23,7 +29,7 @@
           "value": "9304.00.90"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -33,19 +39,35 @@
       "trich": "93059911 - - - - Bằng da thuộc hoặc vật liệu dệt (SEN)",
       "dieuKienSo": [
         {
-          "fact": "chatLieu",
-          "op": "LA",
-          "value": "vải dệt"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "vatLieuKhac",
+                "op": "TRONG",
+                "value": [
+                  "DA_THUOC"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "chatLieu",
+                "op": "LA",
+                "value": "vải dệt"
+              }
+            ]
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "93059919",
       "nguon": "tax.93059919",
       "trich": "93059919 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "93059991",
@@ -53,19 +75,35 @@
       "trich": "93059991 - - - - Bằng da thuộc hoặc vật liệu dệt (SEN)",
       "dieuKienSo": [
         {
-          "fact": "chatLieu",
-          "op": "LA",
-          "value": "vải dệt"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "vatLieuKhac",
+                "op": "TRONG",
+                "value": [
+                  "DA_THUOC"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "chatLieu",
+                "op": "LA",
+                "value": "vải dệt"
+              }
+            ]
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "93059999",
       "nguon": "tax.93059999",
       "trich": "93059999 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -77,12 +115,12 @@
     {
       "ma": "93059911",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.93059911: \"Bằng da thuộc hoặc vật liệu dệt (SEN)\" ⇒ chatLieu \"vải dệt\""
+      "ghiChu": "tax.93059911: \"Bằng da thuộc hoặc vật liệu dệt (SEN)\" (EN \"Of leather or of textile material\") ⇒ HOAC [[vatLieuKhac TRONG [DA_THUOC]], [chatLieu LA \"vải dệt\"]]"
     },
     {
       "ma": "93059991",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.93059991: \"Bằng da thuộc hoặc vật liệu dệt (SEN)\" ⇒ chatLieu \"vải dệt\""
+      "ghiChu": "tax.93059991: \"Bằng da thuộc hoặc vật liệu dệt (SEN)\" (EN \"Of leather or of textile material\") ⇒ HOAC [[vatLieuKhac TRONG [DA_THUOC]], [chatLieu LA \"vải dệt\"]]"
     }
   ],
   "traVe": [

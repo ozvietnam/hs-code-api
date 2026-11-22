@@ -4,13 +4,19 @@
   "nhom": "8437",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-843710",
     "ngay": "2026-11-04"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1782#soat-843710",
+    "ngay": "2026-11-21",
+    "ghiChu": "Chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1782)",
+    "bam": "167a6620bc1f3041eb795fa15644872a0139afafd38f3e19a934c4b50dca8caf"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -19,16 +25,36 @@
       "trich": "84371010 - - Dùng cho các loại hạt, hoạt động bằng điện; máy sàng sảy hạt và các loại máy làm sạch tương tự, hoạt động bằng điện",
       "dieuKienSo": [
         {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": "các loại hạt"
-        },
-        {
-          "fact": "hoatDongBangDien",
-          "op": "CO"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "các loại hạt"
+              },
+              {
+                "fact": "hoatDongBangDien",
+                "op": "CO"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TUONG_TU",
+                "value": [
+                  "máy sàng sảy hạt"
+                ]
+              },
+              {
+                "fact": "hoatDongBangDien",
+                "op": "CO"
+              }
+            ]
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84371020",
@@ -36,16 +62,36 @@
       "trich": "84371020 - - Dùng cho các loại hạt, không hoạt động bằng điện; máy sàng sảy hạt và các loại máy làm sạch tương tự, không hoạt động bằng điện",
       "dieuKienSo": [
         {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": "các loại hạt"
-        },
-        {
-          "fact": "hoatDongBangDien",
-          "op": "KHONG"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "các loại hạt"
+              },
+              {
+                "fact": "hoatDongBangDien",
+                "op": "KHONG"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TUONG_TU",
+                "value": [
+                  "máy sàng sảy hạt"
+                ]
+              },
+              {
+                "fact": "hoatDongBangDien",
+                "op": "KHONG"
+              }
+            ]
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84371030",
@@ -57,7 +103,7 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84371040",
@@ -69,19 +115,19 @@
           "op": "KHONG"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "84371010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.84371010: \"Dùng cho các loại hạt, hoạt động bằng điện; máy sàng sảy hạt và các loại máy làm sạch tương tự, hoạt động bằng điện\" ⇒ dungCho \"các loại hạt\", hoatDongBangDien CO"
+      "ghiChu": "tax.84371010: \"Dùng cho các loại hạt, hoạt động bằng điện; máy sàng sảy hạt và các loại máy làm sạch tương tự, hoạt động bằng điện\" ⇒ HOAC [[dungCho \"các loại hạt\", hoatDongBangDien CO], [tenLoai TUONG_TU [\"máy sàng sảy hạt\"], hoatDongBangDien CO]] (biểu diễn đủ 2 vế nối \";\"; \"các loại hạt\" ↔ EN \"grains\" hạt ngũ cốc, phân biệt với hạt giống \"seed\" và rau đậu khô \"dried leguminous vegetables\" ở tiêu đề phân nhóm 8437.10)"
     },
     {
       "ma": "84371020",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.84371020: \"Dùng cho các loại hạt, không hoạt động bằng điện; máy sàng sảy hạt và các loại máy làm sạch tương tự, không hoạt động bằng điện\" ⇒ dungCho \"các loại hạt\", hoatDongBangDien KHONG"
+      "ghiChu": "tax.84371020: \"Dùng cho các loại hạt, không hoạt động bằng điện; máy sàng sảy hạt và các loại máy làm sạch tương tự, không hoạt động bằng điện\" ⇒ HOAC [[dungCho \"các loại hạt\", hoatDongBangDien KHONG], [tenLoai TUONG_TU [\"máy sàng sảy hạt\"], hoatDongBangDien KHONG]] (biểu diễn đủ 2 vế nối \";\"; \"các loại hạt\" ↔ EN \"grains\" hạt ngũ cốc)"
     },
     {
       "ma": "84371030",

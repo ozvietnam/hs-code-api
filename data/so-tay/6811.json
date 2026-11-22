@@ -24,27 +24,89 @@
   "dong8": [
     {
       "hs": "68114010",
-      "dieuKien": "Tấm làn sóng",
+      "dieuKien": "tên loại hàng: Tấm làn sóng",
       "loaiKhac": false,
       "nguon": "tax.68114010",
       "trich": "68114010 - - Tấm làn sóng",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Tấm làn sóng"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1782#soat-681140",
+          "ngay": "2026-11-21",
+          "bam": "e0baebc9ef7ca6c0e8f4a793e77bd8aa63c9246733347cd2af6b1a29aee08685"
+        }
+      }
     },
     {
       "hs": "68114021",
-      "dieuKien": "Gạch lát nền hoặc ốp tường chứa plastic",
+      "dieuKien": "tên loại hàng: Gạch; tên loại hàng: lát nền hoặc ốp tường; chất liệu (theo vị trí): plastic",
       "loaiKhac": false,
       "nguon": "tax.68114021",
       "trich": "68114021 - - - Gạch lát nền hoặc ốp tường chứa plastic",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Gạch"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "lát nền",
+            "ốp tường"
+          ]
+        },
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "plastic"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1782#soat-681140",
+          "ngay": "2026-11-21",
+          "bam": "e0baebc9ef7ca6c0e8f4a793e77bd8aa63c9246733347cd2af6b1a29aee08685"
+        }
+      }
     },
     {
       "hs": "68114022",
-      "dieuKien": "Dùng để lợp mái, ốp bề mặt hoặc làm vách ngăn",
+      "dieuKien": "công dụng / mục đích: lợp mái hoặc ốp bề mặt hoặc làm vách ngăn",
       "loaiKhac": false,
       "nguon": "tax.68114022",
       "trich": "68114022 - - - Dùng để lợp mái, ốp bề mặt hoặc làm vách ngăn",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "lợp mái",
+            "ốp bề mặt",
+            "làm vách ngăn"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1782#soat-681140",
+          "ngay": "2026-11-21",
+          "bam": "e0baebc9ef7ca6c0e8f4a793e77bd8aa63c9246733347cd2af6b1a29aee08685"
+        }
+      }
     },
     {
       "hs": "68114029",
@@ -74,27 +136,103 @@
     },
     {
       "hs": "68114030",
-      "dieuKien": "Ống hoặc ống dẫn",
+      "dieuKien": "loại sản phẩm xi măng sợi: ống hoặc ống dẫn; tên loại hàng: Ống hoặc ống dẫn",
       "loaiKhac": false,
       "nguon": "tax.68114030",
       "trich": "68114030 - - Ống hoặc ống dẫn",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "loaiSanPhamXiMangSoi",
+          "op": "TRONG",
+          "value": [
+            "ONG_HOAC_ONG_DAN"
+          ]
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Ống",
+            "ống dẫn"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1782#soat-681140",
+          "ngay": "2026-11-21",
+          "bam": "e0baebc9ef7ca6c0e8f4a793e77bd8aa63c9246733347cd2af6b1a29aee08685"
+        }
+      }
     },
     {
       "hs": "68114040",
-      "dieuKien": "Các phụ kiện để ghép nối ống hoặc ống dẫn",
+      "dieuKien": "loại sản phẩm xi măng sợi: phụ kiện ghép nối ống hoặc ống dẫn; tên loại hàng: phụ kiện; công dụng / mục đích: ghép nối; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): ống hoặc ống dẫn",
       "loaiKhac": false,
       "nguon": "tax.68114040",
       "trich": "68114040 - - Các phụ kiện để ghép nối ống hoặc ống dẫn",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "loaiSanPhamXiMangSoi",
+          "op": "TRONG",
+          "value": [
+            "PHU_KIEN_GHEP_NOI"
+          ]
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "phụ kiện"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "ghép nối"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "ống",
+            "ống dẫn"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1782#soat-681140",
+          "ngay": "2026-11-21",
+          "bam": "e0baebc9ef7ca6c0e8f4a793e77bd8aa63c9246733347cd2af6b1a29aee08685"
+        }
+      }
     },
     {
       "hs": "68114050",
-      "dieuKien": "Các sản phẩm khác, của loại sử dụng cho xây dựng ",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): xây dựng",
       "loaiKhac": false,
       "nguon": "tax.68114050",
       "trich": "68114050 - - Các sản phẩm khác, của loại sử dụng cho xây dựng ",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xây dựng"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1782#soat-681140",
+          "ngay": "2026-11-21",
+          "bam": "e0baebc9ef7ca6c0e8f4a793e77bd8aa63c9246733347cd2af6b1a29aee08685"
+        }
+      },
+      "phanConLai": true
     },
     {
       "hs": "68114090",
@@ -134,19 +272,116 @@
     },
     {
       "hs": "68118210",
-      "dieuKien": "Gạch lát nền hoặc ốp tường chứa plastic",
+      "dieuKien": "tên loại hàng: Gạch; tên loại hàng: lát nền hoặc ốp tường; chất liệu (theo vị trí): plastic",
       "loaiKhac": false,
       "nguon": "tax.68118210",
       "trich": "68118210 - - - Gạch lát nền hoặc ốp tường chứa plastic",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Gạch"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "lát nền",
+            "ốp tường"
+          ]
+        },
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "plastic"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1782#soat-681182",
+          "ngay": "2026-11-21",
+          "bam": "3c91895a9464ead15af9cf4e7871e2313ac4bd7fc9a819800e7c5f7f17e6366e"
+        }
+      },
+      "chongLanTruc": {
+        "pn6": "681182",
+        "nhanh": [
+          "68118210",
+          "68118220"
+        ],
+        "truc": {
+          "68118210": "TEN_LOAI",
+          "68118220": "CONG_DUNG"
+        },
+        "cauHoiPhanBiet": "Sản phẩm này là \"Gạch lát nền hoặc ốp tường chứa plastic\" (68118210) hay là loại \"Dùng để lợp mái, ốp bề mặt hoặc làm vách ngăn\" (68118220)?",
+        "trich": {
+          "68118210": "Gạch lát nền hoặc ốp tường chứa plastic",
+          "68118220": "Dùng để lợp mái, ốp bề mặt hoặc làm vách ngăn"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:ozv-1782#soat-681182",
+            "ngay": "2026-11-21",
+            "bam": "3c91895a9464ead15af9cf4e7871e2313ac4bd7fc9a819800e7c5f7f17e6366e"
+          }
+        }
+      }
     },
     {
       "hs": "68118220",
-      "dieuKien": "Dùng để lợp mái, ốp bề mặt hoặc làm vách ngăn",
+      "dieuKien": "công dụng / mục đích: lợp mái hoặc ốp bề mặt hoặc làm vách ngăn",
       "loaiKhac": false,
       "nguon": "tax.68118220",
       "trich": "68118220 - - - Dùng để lợp mái, ốp bề mặt hoặc làm vách ngăn",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "lợp mái",
+            "ốp bề mặt",
+            "làm vách ngăn"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1782#soat-681182",
+          "ngay": "2026-11-21",
+          "bam": "3c91895a9464ead15af9cf4e7871e2313ac4bd7fc9a819800e7c5f7f17e6366e"
+        }
+      },
+      "chongLanTruc": {
+        "pn6": "681182",
+        "nhanh": [
+          "68118210",
+          "68118220"
+        ],
+        "truc": {
+          "68118210": "TEN_LOAI",
+          "68118220": "CONG_DUNG"
+        },
+        "cauHoiPhanBiet": "Sản phẩm này là \"Gạch lát nền hoặc ốp tường chứa plastic\" (68118210) hay là loại \"Dùng để lợp mái, ốp bề mặt hoặc làm vách ngăn\" (68118220)?",
+        "trich": {
+          "68118210": "Gạch lát nền hoặc ốp tường chứa plastic",
+          "68118220": "Dùng để lợp mái, ốp bề mặt hoặc làm vách ngăn"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:ozv-1782#soat-681182",
+            "ngay": "2026-11-21",
+            "bam": "3c91895a9464ead15af9cf4e7871e2313ac4bd7fc9a819800e7c5f7f17e6366e"
+          }
+        }
+      }
     },
     {
       "hs": "68118290",
@@ -490,5 +725,35 @@
     "dat": 18,
     "loai": 0,
     "nguonBiCat": []
-  }
+  },
+  "dieuKienNut": [
+    {
+      "id": "6811402",
+      "nguon": "tieuDe.6811402",
+      "trich": "6811402 Tấm, panel, tấm lát (tiles) và các sản phẩm tương tự khác",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TUONG_TU",
+          "value": [
+            "Tấm",
+            "panel",
+            "tấm lát"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1782#soat-681140",
+          "ngay": "2026-11-21",
+          "bam": "e0baebc9ef7ca6c0e8f4a793e77bd8aa63c9246733347cd2af6b1a29aee08685"
+        }
+      },
+      "phanConLai": [
+        "68114010"
+      ]
+    }
+  ]
 }

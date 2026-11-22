@@ -4,13 +4,19 @@
   "nhom": "6302",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-630299",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-01#soat-ozv-1792-630299",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá ranh giới theo traVe.lyDo và duyệt+áp khép SẠCH V1 (OZV-1792)",
+    "bam": "ecc8cdac81106aec43879d2e00714496cbeb5552179ea95d91949cc68a79bf84"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -24,23 +30,27 @@
           "value": [
             "SOI_THUC_VAT_KHAC"
           ]
+        },
+        {
+          "fact": "tuLanh",
+          "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "63029990",
       "nguon": "tax.63029990",
       "trich": "63029990 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "63029910",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.63029910: \"Từ lanh\" ⇒ loaiSoiDet TRONG [SOI_THUC_VAT_KHAC]"
+      "ghiChu": "tax.63029910: \"Từ lanh\" (EN \"Of flax\") ⇒ loaiSoiDet TRONG [\"SOI_THUC_VAT_KHAC\"] + tuLanh CO (phân biệt với đay, gai ramie, xơ dừa… rơi vào .90)."
     }
   ],
   "traVe": [

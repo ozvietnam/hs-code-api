@@ -4,13 +4,19 @@
   "nhom": "2404",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-240491",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-01#soat-ozv-1792-240491",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá ranh giới theo traVe.lyDo và duyệt+áp khép SẠCH V1 (OZV-1792)",
+    "bam": "ac64569a348fa776fa61c76c6a2bfde446d7cdd8f908997900a9813ad167ea95"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -24,26 +30,25 @@
           "value": "Kẹo cao su"
         },
         {
-          "fact": "congDung",
-          "op": "CONG_DUNG",
-          "value": "nicotin"
+          "fact": "chuaNicotin",
+          "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "24049190",
       "nguon": "tax.24049190",
       "trich": "24049190 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "24049110",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.24049110: \"Kẹo cao su\" ⇒ tenLoai, \"có nicotin\" ⇒ congDung \"nicotin\""
+      "ghiChu": "tax.24049110: \"Kẹo cao su có nicotin (SEN)\" (EN \"Nicotine chewing gum\") ⇒ tenLoai \"Kẹo cao su\" + chuaNicotin CO (phủ vế thành phần \"có nicotin\", không ghi vào congDung)."
     }
   ],
   "traVe": [

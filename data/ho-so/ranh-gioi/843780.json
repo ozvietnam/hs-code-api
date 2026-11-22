@@ -4,13 +4,19 @@
   "nhom": "8437",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T1000#soan-843780",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1785#soat-843780",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1785)",
+    "bam": "c91b8034bf6d292920ef4df25e2eccab00522325f0b300d059e588782509f564"
+  },
   "dieuKienNut": [
     {
       "id": "8437805",
@@ -22,7 +28,7 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "8437806",
@@ -34,7 +40,7 @@
           "op": "KHONG"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -56,7 +62,7 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84378020",
@@ -76,7 +82,7 @@
           "op": "KHONG"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84378030",
@@ -86,14 +92,27 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Máy nghiền cà phê và ngô dạng công nghiệp"
+          "value": "Máy nghiền"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "cà phê",
+            "ngô"
+          ]
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "dạng công nghiệp"
         },
         {
           "fact": "hoatDongBangDien",
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84378040",
@@ -103,14 +122,27 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Máy nghiền cà phê và ngô dạng công nghiệp"
+          "value": "Máy nghiền"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "cà phê",
+            "ngô"
+          ]
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "dạng công nghiệp"
         },
         {
           "fact": "hoatDongBangDien",
           "op": "KHONG"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84378051",
@@ -130,14 +162,14 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84378059",
       "nguon": "tax.84378059",
       "trich": "84378059 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84378061",
@@ -157,14 +189,14 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84378069",
       "nguon": "tax.84378069",
       "trich": "84378069 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -173,6 +205,22 @@
       "loai": "BO_VE",
       "ve": "bằng điện",
       "lyDo": "Máy đọc sai cấu trúc: chữ Anh cùng dòng \"Rice hullers and cone type rice mills, electrically operated\" — \"electrically operated\" đứng sau dấu phẩy bổ nghĩa cho CẢ hai danh từ đầu liên hợp (định ngữ chung), không phải chỉ danh từ cuối; điều kiện hoatDongBangDien CO đã phủ đúng cho cả hai danh từ"
+    },
+    {
+      "ma": "84378030",
+      "loai": "BO_VE",
+      "ve": "bằng điện",
+      "lyDo": "Máy đọc sai cấu trúc: chữ Anh cùng dòng \"Industrial type coffee and corn mills, electrically operated\" — \"electrically operated\" đứng sau dấu phẩy bổ nghĩa cho CẢ hai danh từ đầu liên hợp (định ngữ chung), không phải chỉ danh từ cuối; điều kiện hoatDongBangDien CO đã phủ đúng cho cả hai danh từ"
+    },
+    {
+      "ma": "84378030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84378030 \"Máy nghiền cà phê và ngô dạng công nghiệp, hoạt động bằng điện\" (EN \"Industrial type coffee and corn mills, electrically operated\") ⇒ tenLoai \"Máy nghiền\" (danh từ đầu chung) + tenLoai [\"cà phê\",\"ngô\"] + tenLoai \"dạng công nghiệp\" (định ngữ chung) + hoatDongBangDien CO"
+    },
+    {
+      "ma": "84378040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84378040 \"Máy nghiền cà phê và ngô dạng công nghiệp, không hoạt động bằng điện\" (EN \"Industrial type coffee and corn mills, not electrically operated\") ⇒ tenLoai \"Máy nghiền\" (danh từ đầu chung) + tenLoai [\"cà phê\",\"ngô\"] + tenLoai \"dạng công nghiệp\" (định ngữ chung) + hoatDongBangDien KHONG"
     },
     {
       "ma": "84378059",

@@ -371,10 +371,22 @@
       "hamLuongNhua",
       "ketHopVoiSoiCaoSu",
       "loaiDauHatCoBabassu",
+<<<<<<< HEAD
       "daHapChinHoacLuocChin",
       "khoiLuongHangChuyenCho",
       "tyLeLotQuaLuoiLoc1mm",
       "tyLeLotQuaLuoiLoc5mm"
+=======
+      "chuaNicotin",
+      "laNguyenToHoacHopChatNhom2844",
+      "kichThuocToiDa56x45x25cm",
+      "chuaPolybutylenTerephthalat",
+      "tuLanh",
+      "daXuLyResorcinolFormaldehyde",
+      "coLotDeBenTrong",
+      "coMuiKimLoaiBaoVe",
+      "oDangTho"
+>>>>>>> origin/main
     ],
     "tuVung1": {
       "trangThai": "DA_CHAM",
@@ -21325,7 +21337,8 @@
         "GIAY_XENLULO",
         "CARBON_GRAPHIT",
         "VANG_HOAC_BAC",
-        "KIM_LOAI_DAT_PHU_VANG_HOAC_BAC"
+        "KIM_LOAI_DAT_PHU_VANG_HOAC_BAC",
+        "DA_THUOC"
       ],
       "moTaGiaTri": {
         "TITAN": {
@@ -21573,6 +21586,24 @@
             ]
           },
           "cachViet": "bằng kim loại dát phủ vàng hoặc bạc"
+        },
+        "DA_THUOC": {
+          "nhanVi": "da thuộc",
+          "nhanEn": "leather",
+          "nhanZh": "皮革",
+          "cachDoc": {
+            "vi": [
+              "(?<!(?:mặt\\s+ngoài|đế\\s+ngoài|mũ\\s+giày|phế\\s+liệu\\s+khác)\\s+)(?:bằng|từ|làm\\s+từ)\\s+da\\s+thuộc"
+            ],
+            "en": [
+              "(?<!(?:outer\\s+soles?|uppers?)\\s+)(?:of|made\\s+of|from)\\s+leather"
+            ],
+            "zh": [
+              "皮革制",
+              "皮制"
+            ]
+          },
+          "cachViet": "bằng da thuộc"
         }
       },
       "cachDoc": {
@@ -25177,6 +25208,7 @@
       "nguonLoai": "AI_DA_KIEM"
     },
     {
+<<<<<<< HEAD
       "khoa": "daHapChinHoacLuocChin",
       "kieu": "CO_KHONG",
       "nhanVi": "đã hấp chín hoặc luộc chín trong nước",
@@ -25192,6 +25224,25 @@
         ],
         "zh": [
           "(?<!(?:未|非|不))(?:经蒸煮或水煮|水煮或蒸熟|已蒸熟|已煮熟)"
+=======
+      "khoa": "chuaNicotin",
+      "kieu": "CO_KHONG",
+      "nhanVi": "có nicotin",
+      "nhanEn": "containing nicotine",
+      "nhanZh": "含尼古丁",
+      "cachDoc": {
+        "vi": [
+          "(?:có|chứa)\\s+nicotin(?:e)?",
+          "kẹo\\s+cao\\s+su\\s+nicotin(?:e)?"
+        ],
+        "en": [
+          "(?:with|containing)\\s+nicotine",
+          "nicotine\\s+chewing\\s+gum"
+        ],
+        "zh": [
+          "含尼古丁",
+          "尼古丁口香糖"
+>>>>>>> origin/main
         ],
         "phuDinh": [
           "không phải",
@@ -25204,8 +25255,13 @@
           "without",
           "no",
           "not",
+<<<<<<< HEAD
           "uncooked",
           "raw",
+=======
+          "excluding",
+          "other than",
+>>>>>>> origin/main
           "无",
           "非",
           "不",
@@ -25214,6 +25270,7 @@
       },
       "cachDocKhong": {
         "vi": [
+<<<<<<< HEAD
           "(?:chưa|không)\\s+(?:được\\s+)?(?:hấp\\s+chín\\s+hoặc\\s+luộc\\s+chín|hấp\\s+hoặc\\s+luộc\\s+chín|hấp\\s+chín|luộc\\s+chín|hấp\\s+hoặc\\s+luộc)(?:\\s+trong\\s+nước)?",
           "chưa\\s+qua\\s+(?:hấp|luộc)\\s+chín"
         ],
@@ -25351,6 +25408,499 @@
         "zh": "通过孔径为5毫米筛网的产品重量比例是多少百分比（%）？"
       },
       "ghiChu": "SEN (39.07) \"DẠNG HẠT VÀ CÁC DẠNG TƯƠNG TỰ: Sản phẩm dạng rắn ở dạng nguyên sinh trừ dạng bột, có ít hơn 10% khối lượng lọt qua lưới lọc có đường kính mắt lọc là 1mm và sản phẩm có 90% khối lượng trở lên lọt qua lưới lọc có đường kính mắt lọc là 5mm\".",
+=======
+          "không\\s+(?:có|chứa)\\s+nicotin(?:e)?",
+          "chứa\\s+(?:các\\s+)?nguyên\\s+liệu\\s+thay\\s+thế\\s+nicotin(?:e)?"
+        ],
+        "en": [
+          "nicotine[- ]free",
+          "without\\s+nicotine",
+          "not\\s+containing\\s+nicotine",
+          "containing\\s+nicotine\\s+substitutes?"
+        ],
+        "zh": [
+          "不含尼古丁",
+          "无尼古丁"
+        ]
+      },
+      "cachViet": {
+        "vi": "có nicotin",
+        "viPhuDinh": "không có nicotin"
+      },
+      "cauHoi": {
+        "vi": "Sản phẩm có chứa nicotin không?",
+        "zh": "该产品是否含有尼古丁？"
+      },
+      "ghiChu": "Chữ biểu 2404.91.10 \"Kẹo cao su có nicotin (SEN)\" / EN \"Nicotine chewing gum\" (OZV-1792).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "laNguyenToHoacHopChatNhom2844",
+      "kieu": "CO_KHONG",
+      "nhanVi": "ở dạng nguyên tố hoặc hợp chất hóa học của nó (urani, plutoni, thori)",
+      "nhanEn": "in the form of the element or its compounds (uranium, plutonium, thorium)",
+      "nhanZh": "元素或其化合物形态（铀、钚、钍）",
+      "cachDoc": {
+        "vi": [
+          "(?<!(?:hợp\\s+kim|chất\\s+phân\\s+tán|gốm\\s+kim\\s+loại|sản\\s+phẩm\\s+gốm(?:\\s+kim\\s+loại)?|hỗn\\s+hợp)(?:\\s*\\([^)]*\\))?(?:\\s*,\\s*(?:các\\s+)?(?:chất\\s+phân\\s+tán|sản\\s+phẩm\\s+gốm(?:\\s+kim\\s+loại)?|hỗn\\s+hợp)(?:\\s*\\([^)]*\\))?)*(?:\\s+và\\s+(?:các\\s+)?hỗn\\s+hợp)?(?:\\s+có)?\\s+chứa\\s+)(?:urani\\s+(?:tự\\s+nhiên|đã\\s+(?:được\\s+)?làm\\s+(?:giàu|nghèo)(?:\\s+thành\\s+u\\s*235)?)|plutoni|thori)(?:\\s+và\\s+(?:các\\s+)?hợp\\s+chất\\s+của\\s+nó)?(?!\\s*;\\s*hợp\\s+kim)(?!\\s*(?:,|hoặc)\\s*(?:plutoni|thori)?(?:\\s*,)?\\s*hoặc\\s+(?:các\\s+)?hợp\\s+chất\\s+của\\s+các\\s+sản\\s+phẩm)",
+          "(?<!(?:hợp\\s+kim|chất\\s+phân\\s+tán|gốm\\s+kim\\s+loại|sản\\s+phẩm\\s+gốm|hỗn\\s+hợp)(?:\\s+có)?\\s+chứa\\s+)hợp\\s+chất\\s+(?:của\\s+)?(?:urani(?:\\s+tự\\s+nhiên|\\s+(?:đã\\s+(?:được\\s+)?)?làm\\s+(?:giàu|nghèo)(?:\\s+thành\\s+u\\s*235)?)?|plutoni|thori)(?!\\s*;\\s*hợp\\s+kim)"
+        ],
+        "en": [
+          "(?<!(?:alloys|dispersions|cermets|ceramic\\s+products|mixtures)\\s+containing\\s+)(?:natural\\s+uranium|uranium\\s+(?:enriched|depleted)\\s+in\\s+u\\s*235|plutonium|thorium)(?:\\s+and\\s+its\\s+compounds)?(?!\\s*[;,]\\s*(?:plutonium,\\s+their\\s+compounds,\\s+)?alloys)"
+        ],
+        "zh": [
+          "(?:天然铀|浓缩铀|贫化铀|钚|钍)及其化合物"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không",
+          "trừ",
+          "other than",
+          "not",
+          "非",
+          "不"
+        ]
+      },
+      "cachDocKhong": {
+        "vi": [
+          "không\\s+phải\\s+(?:ở\\s+dạng\\s+)?nguyên\\s+tố\\s+hoặc\\s+hợp\\s+chất",
+          "(?<!của\\s+nó\\s*;\\s*)(?:hợp\\s+kim|chất\\s+phân\\s+tán|gốm\\s+kim\\s+loại|sản\\s+phẩm\\s+gốm(?:\\s+kim\\s+loại)?|hỗn\\s+hợp)\\s+(?:có\\s+)?chứa\\s+(?:hợp\\s+chất\\s+(?:của\\s+)?)?(?:urani|plutoni|thori)"
+        ],
+        "en": [
+          "not\\s+in\\s+the\\s+form\\s+of\\s+the\\s+element\\s+or\\s+its\\s+compounds",
+          "(?<!compounds[,;]\\s*)(?:alloys?|dispersions?|cermets?|ceramic\\s+products?|mixtures?)\\s+containing\\s+(?:natural\\s+uranium|uranium|plutonium|thorium)"
+        ],
+        "zh": [
+          "非元素或其化合物",
+          "含有?(?:天然铀|铀|钚|钍)的?(?:合金|分散体|金属陶瓷|陶瓷产品|混合物)"
+        ]
+      },
+      "cachViet": {
+        "vi": "ở dạng nguyên tố hoặc hợp chất của nó",
+        "viPhuDinh": "không phải ở dạng nguyên tố hoặc hợp chất"
+      },
+      "cauHoi": {
+        "vi": "Hàng là chính nguyên tố đó hoặc hợp chất hóa học của nó (hay là hợp kim, chất phân tán/gốm kim loại, sản phẩm gốm hoặc hỗn hợp chứa nguyên tố/hợp chất đó)?",
+        "zh": "该货物是该元素本身或其化合物（还是含有该元素/化合物的合金、分散体/金属陶瓷、陶瓷产品或混合物）？"
+      },
+      "ghiChu": "Chữ biểu 2844.10.10, 2844.20.10, 2844.30.10 \"<Nguyên tố> và (các) hợp chất của nó\" (phân biệt với .90 hợp kim, chất phân tán, sản phẩm gốm và hỗn hợp; đồng thời xử lý lỗi dịch VI của 2844.30.10 ghi làm giàu cho depleted uranium) (OZV-1792).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "kichThuocToiDa56x45x25cm",
+      "kieu": "CO_KHONG",
+      "nhanVi": "có kích thước tối đa 56 cm x 45 cm x 25 cm",
+      "nhanEn": "with maximum dimensions of 56 cm x 45 cm x 25 cm",
+      "nhanZh": "最大尺寸不超过56厘米x45厘米x25厘米",
+      "cachDoc": {
+        "vi": [
+          "kích\\s+thước\\s+(?:tối\\s+đa|không\\s+quá)\\s*56\\s*cm\\s*[x×*]\\s*45\\s*cm\\s*[x×*]\\s*25\\s*cm",
+          "kích\\s+thước\\s+(?:[1-4]?\\d|5[0-6])\\s*(?:cm\\s*)?[x×*]\\s*(?:[1-3]?\\d|4[0-5])\\s*(?:cm\\s*)?[x×*]\\s*(?:1?\\d|2[0-5])\\s*cm\\b"
+        ],
+        "en": [
+          "maximum\\s+dimensions\\s+of\\s+56\\s*cm\\s*[x×*]\\s*45\\s*cm\\s*[x×*]\\s*25\\s*cm"
+        ],
+        "zh": [
+          "最大尺寸(?:为|不超过)?\\s*56\\s*(?:厘米|cm)\\s*[x×*]\\s*45\\s*(?:厘米|cm)\\s*[x×*]\\s*25\\s*(?:厘米|cm)"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không",
+          "trừ",
+          "vượt quá",
+          "trên",
+          "other than",
+          "not",
+          "exceeding",
+          "非",
+          "不",
+          "超过"
+        ]
+      },
+      "cachDocKhong": {
+        "vi": [
+          "không\\s+(?:phải\\s+)?(?:có\\s+)?kích\\s+thước\\s+tối\\s+đa\\s*56\\s*cm\\s*[x×*]\\s*45\\s*cm\\s*[x×*]\\s*25\\s*cm",
+          "kích\\s+thước\\s+vượt\\s+quá\\s*56\\s*cm\\s*[x×*]\\s*45\\s*cm\\s*[x×*]\\s*25\\s*cm",
+          "kích\\s+thước\\s+(?:(?:5[7-9]|[6-9]\\d|\\d{3})\\s*(?:cm\\s*)?[x×*]\\s*\\d+\\s*(?:cm\\s*)?[x×*]\\s*\\d+|\\d+\\s*(?:cm\\s*)?[x×*]\\s*(?:4[6-9]|[5-9]\\d|\\d{3})\\s*(?:cm\\s*)?[x×*]\\s*\\d+|\\d+\\s*(?:cm\\s*)?[x×*]\\s*\\d+\\s*(?:cm\\s*)?[x×*]\\s*(?:2[6-9]|[3-9]\\d|\\d{3}))\\s*cm\\b"
+        ],
+        "en": [
+          "dimensions\\s+exceeding\\s+56\\s*cm\\s*[x×*]\\s*45\\s*cm\\s*[x×*]\\s*25\\s*cm"
+        ],
+        "zh": [
+          "尺寸超过\\s*56\\s*(?:厘米|cm)\\s*[x×*]\\s*45\\s*(?:厘米|cm)\\s*[x×*]\\s*25\\s*(?:厘米|cm)"
+        ]
+      },
+      "cachViet": {
+        "vi": "có kích thước tối đa 56cm x 45cm x 25cm",
+        "viPhuDinh": "không phải có kích thước tối đa 56cm x 45cm x 25cm"
+      },
+      "cauHoi": {
+        "vi": "Vali/túi/cặp có kích thước ba chiều tối đa không vượt quá 56 cm x 45 cm x 25 cm không?",
+        "zh": "该箱包的三维最大尺寸是否不超过56厘米 x 45厘米 x 25厘米？"
+      },
+      "ghiChu": "Chữ biểu 4202.11.10 \"Vali hoặc túi, cặp có kích thước tối đa 56cm x 45cm x 25cm\" / EN \"Suit-case or brief-case with maximum dimensions of 56 cm x 45 cm x 25 cm\" — kiểm đủ cả 3 chiều (OZV-1792).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "chuaPolybutylenTerephthalat",
+      "kieu": "CO_KHONG",
+      "nhanVi": "làm từ polyeste và polybutylen terephthalat (có thành phần PBT)",
+      "nhanEn": "of polyester and polybutylene terephthalate (containing PBT)",
+      "nhanZh": "由聚酯及聚对苯二甲酸丁二酯制成（含PBT）",
+      "cachDoc": {
+        "vi": [
+          "polybutylen(?:e)?\\s+terephthalat(?:e)?",
+          "(?:vải|sợi|xơ|pha)\\s+pbt\\b"
+        ],
+        "en": [
+          "polybutylene\\s+terephthalate",
+          "\\bpbt\\s+(?:fib(?:re|er)s?|yarns?|fabrics?)\\b"
+        ],
+        "zh": [
+          "聚对苯二甲酸丁二酯",
+          "PBT(?:纤维|织物)"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không",
+          "chưa",
+          "trừ",
+          "ko",
+          "chẳng",
+          "non-?",
+          "without",
+          "no",
+          "not",
+          "excluding",
+          "other than",
+          "无",
+          "非",
+          "不",
+          "未"
+        ]
+      },
+      "cachDocKhong": {
+        "vi": [
+          "không\\s+(?:có|chứa|pha)\\s+polybutylen(?:e)?\\s+terephthalat(?:e)?",
+          "100\\s*%\\s*polyeste(?:r)?(?!\\s+và\\s+polybutylen)"
+        ],
+        "en": [
+          "without\\s+polybutylene\\s+terephthalate",
+          "100\\s*%\\s*polyester(?!\\s+and\\s+polybutylene)"
+        ],
+        "zh": [
+          "不含聚对苯二甲酸丁二酯"
+        ]
+      },
+      "cachViet": {
+        "vi": "làm từ polyeste và polybutylen terephthalat",
+        "viPhuDinh": "không có polybutylen terephthalat"
+      },
+      "cauHoi": {
+        "vi": "Vải có được làm từ hỗn hợp polyeste và polybutylen terephthalat (PBT) không?",
+        "zh": "该织物是否由聚酯与聚对苯二甲酸丁二酯（PBT）制成？"
+      },
+      "ghiChu": "Chữ biểu 6005.36.10, 6005.37.10, 6005.38.10, 6005.39.10 \"Vải dệt kim làm từ polyeste và polybutylen terephthalat trong đó polyeste chiếm tỷ lệ lớn hơn tính theo khối lượng dùng để làm quần áo bơi\" (OZV-1792).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "tuLanh",
+      "kieu": "CO_KHONG",
+      "nhanVi": "từ lanh (flax/linen)",
+      "nhanEn": "of flax (linen)",
+      "nhanZh": "亚麻制",
+      "cachDoc": {
+        "vi": [
+          "(?:từ|bằng|sợi|vải|xơ|chất\\s+liệu)\\s+lanh(?!\\s+gai)"
+        ],
+        "en": [
+          "(?:of\\s+)?(?:flax|linen)\\b"
+        ],
+        "zh": [
+          "亚麻制?"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không",
+          "chưa",
+          "trừ",
+          "ko",
+          "chẳng",
+          "non-?",
+          "without",
+          "no",
+          "not",
+          "excluding",
+          "other than",
+          "无",
+          "非",
+          "不",
+          "未"
+        ]
+      },
+      "cachDocKhong": {
+        "vi": [
+          "không\\s+(?:phải\\s+)?(?:từ|bằng|sợi|vải|xơ)\\s+lanh(?!\\s+gai)",
+          "(?:từ|bằng|sợi|vải|xơ)\\s+(?:đay|gai(?:\\s+ramie|\\s+dầu)?|ramie|xơ\\s+dừa|sisal|chuối\\s+sợi|abaca)"
+        ],
+        "en": [
+          "not\\s+(?:of\\s+)?(?:flax|linen)\\b",
+          "(?:of\\s+)?(?:jute|ramie|true\\s+hemp|coir|sisal|abaca)\\b"
+        ],
+        "zh": [
+          "非亚麻",
+          "(?:黄麻|苎麻|大麻|剑麻|椰壳纤维|蕉麻)制"
+        ]
+      },
+      "cachViet": {
+        "vi": "từ lanh",
+        "viPhuDinh": "không phải từ lanh"
+      },
+      "cauHoi": {
+        "vi": "Sản phẩm có được làm từ lanh (flax/linen, nhóm 53.01) không?",
+        "zh": "该产品是否由亚麻（税目53.01）制成？"
+      },
+      "ghiChu": "Chữ biểu 6302.59.10 / 6302.99.10 \"Từ lanh\" / EN \"Of flax\" (phân biệt với đay, gai ramie, xơ dừa… trong cùng nhóm vật liệu dệt thực vật khác) (OZV-1792).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "daXuLyResorcinolFormaldehyde",
+      "kieu": "CO_KHONG",
+      "nhanVi": "đã xử lý bằng resorcinol formaldehyde",
+      "nhanEn": "treated with resorcinol formaldehyde",
+      "nhanZh": "经间苯二酚甲醛处理",
+      "cachDoc": {
+        "vi": [
+          "(?:đã\\s+)?xử\\s+lý\\s+(?:bằng\\s+)?resorcinol[-\\s]+formaldehyd(?:e)?"
+        ],
+        "en": [
+          "treated\\s+with\\s+resorcinol[-\\s]+formaldehyde"
+        ],
+        "zh": [
+          "经?间苯二酚[-\\s]*甲醛处理"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không",
+          "chưa",
+          "ko",
+          "chẳng",
+          "non-?",
+          "without",
+          "not",
+          "untreated",
+          "无",
+          "非",
+          "不",
+          "未"
+        ]
+      },
+      "cachDocKhong": {
+        "vi": [
+          "(?:chưa|không)\\s+xử\\s+lý\\s+(?:bằng\\s+)?resorcinol[-\\s]+formaldehyd(?:e)?"
+        ],
+        "en": [
+          "not\\s+treated\\s+with\\s+resorcinol[-\\s]+formaldehyde",
+          "untreated\\s+with\\s+resorcinol[-\\s]+formaldehyde"
+        ],
+        "zh": [
+          "未经间苯二酚[-\\s]*甲醛处理"
+        ]
+      },
+      "cachViet": {
+        "vi": "đã xử lý bằng resorcinol formaldehyde",
+        "viPhuDinh": "chưa xử lý bằng resorcinol formaldehyde"
+      },
+      "cauHoi": {
+        "vi": "Sợi bện đã được xử lý bằng resorcinol formaldehyde chưa?",
+        "zh": "该帘线是否经间苯二酚甲醛处理？"
+      },
+      "ghiChu": "Chữ biểu 5607.50.10 \"Sợi bện (cord) cho dây đai chữ V làm từ xơ nhân tạo đã xử lý bằng resorcinol formaldehyde\" / EN \"V-belt cord of man-made fibres treated with resorcinol formaldehyde\" (OZV-1794).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "coLotDeBenTrong",
+      "kieu": "CO_KHONG",
+      "nhanVi": "có lót đế bên trong",
+      "nhanEn": "having an inner sole",
+      "nhanZh": "有内底",
+      "cachDoc": {
+        "vi": [
+          "(?:có\\s+)?lót\\s+đế\\s+bên\\s+trong",
+          "có\\s+lót\\s+đế\\s+trong"
+        ],
+        "en": [
+          "(?:having\\s+an?\\s+)?inner\\s+soles?"
+        ],
+        "zh": [
+          "有内底",
+          "带内底"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không có",
+          "không",
+          "chưa",
+          "ko",
+          "chẳng",
+          "non-?",
+          "without",
+          "no",
+          "not",
+          "not having",
+          "not having an",
+          "无",
+          "非",
+          "不",
+          "没有",
+          "未"
+        ]
+      },
+      "cachDocKhong": {
+        "vi": [
+          "không\\s+có\\s+lót\\s+đế\\s+(?:bên\\s+)?trong"
+        ],
+        "en": [
+          "not\\s+having\\s+an?\\s+inner\\s+soles?",
+          "without\\s+(?:an?\\s+)?inner\\s+soles?"
+        ],
+        "zh": [
+          "无内底",
+          "没有内底"
+        ]
+      },
+      "cachViet": {
+        "vi": "có lót đế bên trong",
+        "viPhuDinh": "không có lót đế bên trong"
+      },
+      "cauHoi": {
+        "vi": "Giày, dép có lót đế bên trong (inner sole) không?",
+        "zh": "该鞋靴是否有内底？"
+      },
+      "ghiChu": "Chữ biểu 6403.91.10, 6403.99.10 \"Giày, dép có đế bằng gỗ, không có lót đế bên trong hoặc mũi gắn kim loại bảo vệ\" / EN \"Footwear made on a base or platform of wood, not having an inner sole or protective metal toe cap\" (đọc KHÔNG, OZV-1794).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "coMuiKimLoaiBaoVe",
+      "kieu": "CO_KHONG",
+      "nhanVi": "có mũi gắn kim loại bảo vệ",
+      "nhanEn": "having a protective metal toe cap",
+      "nhanZh": "有金属保护包头",
+      "cachDoc": {
+        "vi": [
+          "(?<!không\\s+có\\s+lót\\s+đế\\s+bên\\s+trong\\s+hoặc\\s+)(?:có\\s+)?mũi\\s+(?:giày\\s+)?(?:được\\s+)?gắn\\s+kim\\s+loại(?:\\s+để)?\\s+bảo\\s+vệ",
+          "(?<!không\\s+có\\s+)mũi\\s+thép\\s+bảo\\s+vệ"
+        ],
+        "en": [
+          "(?<!not\\s+having\\s+an\\s+inner\\s+sole\\s+or\\s+)(?:having\\s+a\\s+)?protective\\s+metal\\s+toe[- ]?caps?"
+        ],
+        "zh": [
+          "(?<!无内底或)金属保护包头",
+          "带钢头"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không có",
+          "không",
+          "chưa",
+          "ko",
+          "chẳng",
+          "non-?",
+          "without",
+          "no",
+          "not",
+          "not having",
+          "无",
+          "非",
+          "不",
+          "没有",
+          "未"
+        ]
+      },
+      "cachDocKhong": {
+        "vi": [
+          "không\\s+có\\s+(?:lót\\s+đế\\s+bên\\s+trong\\s+hoặc\\s+)?mũi\\s+(?:giày\\s+)?(?:được\\s+)?gắn\\s+kim\\s+loại(?:\\s+để)?\\s+bảo\\s+vệ",
+          "không\\s+có\\s+mũi\\s+(?:kim\\s+loại|thép)(?:\\s+bảo\\s+vệ)?"
+        ],
+        "en": [
+          "not\\s+having\\s+(?:an\\s+inner\\s+sole\\s+or\\s+)?(?:a\\s+)?protective\\s+metal\\s+toe[- ]?caps?",
+          "without\\s+(?:a\\s+)?protective\\s+metal\\s+toe[- ]?caps?"
+        ],
+        "zh": [
+          "无(?:内底或)?金属保护包头",
+          "无钢头"
+        ]
+      },
+      "cachViet": {
+        "vi": "có mũi gắn kim loại bảo vệ",
+        "viPhuDinh": "không có mũi gắn kim loại bảo vệ"
+      },
+      "cauHoi": {
+        "vi": "Giày, dép có mũi gắn kim loại bảo vệ không?",
+        "zh": "该鞋靴是否有金属保护包头？"
+      },
+      "ghiChu": "Chữ biểu 6403.91.10, 6403.99.10 \"Giày, dép có đế bằng gỗ, không có lót đế bên trong hoặc mũi gắn kim loại bảo vệ\" / EN \"Footwear made on a base or platform of wood, not having an inner sole or protective metal toe cap\" (đọc KHÔNG, OZV-1794).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "oDangTho",
+      "kieu": "CO_KHONG",
+      "nhanVi": "ở dạng thô (chưa gia công hoàn thiện)",
+      "nhanEn": "in the rough state",
+      "nhanZh": "处于粗坯状态",
+      "cachDoc": {
+        "vi": [
+          "ở\\s+dạng\\s+thô",
+          "dạng\\s+thô\\s+chưa\\s+gia\\s+công"
+        ],
+        "en": [
+          "in\\s+the\\s+rough\\s+state",
+          "in\\s+rough\\s+state"
+        ],
+        "zh": [
+          "处于粗坯状态",
+          "粗坯状态",
+          "毛坯状态"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không",
+          "chưa",
+          "ko",
+          "chẳng",
+          "non-?",
+          "without",
+          "not",
+          "无",
+          "非",
+          "不",
+          "未"
+        ]
+      },
+      "cachDocKhong": {
+        "vi": [
+          "không\\s+(?:phải\\s+)?ở\\s+dạng\\s+thô",
+          "đã\\s+gia\\s+công\\s+hoàn\\s+thiện"
+        ],
+        "en": [
+          "not\\s+in\\s+the\\s+rough\\s+state",
+          "finished\\s+state"
+        ],
+        "zh": [
+          "非粗坯状态",
+          "已完工"
+        ]
+      },
+      "cachViet": {
+        "vi": "ở dạng thô",
+        "viPhuDinh": "không phải ở dạng thô"
+      },
+      "cauHoi": {
+        "vi": "Sản phẩm đang ở dạng thô (phôi đúc, rèn, dập chưa gia công hoàn thiện) hay đã gia công hoàn thiện?",
+        "zh": "该产品是处于粗坯状态还是已加工完成？"
+      },
+      "ghiChu": "Chữ biểu 7310.10.91 \"Được đúc, rèn hoặc dập, ở dạng thô\" / EN \"Casting, forging or stamping, in the rough state\", 7310.29.92 \"Được đúc, rèn hoặc dập khác, ở dạng thô\" (OZV-1794).",
+>>>>>>> origin/main
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
