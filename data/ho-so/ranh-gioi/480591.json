@@ -4,13 +4,19 @@
   "nhom": "4805",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
-    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-480591",
-    "ngay": "2026-11-06"
+    "phien": "tho-hs-03:20261122#soan-480591",
+    "ngay": "2026-11-21"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1778#soat-480591",
+    "ngay": "2026-11-21",
+    "ghiChu": "Chuẩn hoá ranh giới theo traVe.lyDo, duyệt và áp sổ tay (OZV-1778)",
+    "bam": "8340821a8160dcec99c98947264d850fdca5f89fb954f85cb32db1bb3ec52b90"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -22,9 +28,15 @@
           "fact": "congDung",
           "op": "CONG_DUNG",
           "value": "lót vào giữa các sản phẩm thủy tinh phẳng khi đóng gói"
+        },
+        {
+          "fact": "hamLuongNhua",
+          "op": "<=",
+          "value": 0.6,
+          "donVi": "%"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "48059120",
@@ -37,22 +49,31 @@
           "value": "sản xuất giấy vàng mã"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "48059190",
       "nguon": "tax.48059190",
       "trich": "48059190 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "48059110",
-      "loai": "BO_VE",
-      "ve": "không quá 0,6% tính theo khối lượng",
-      "lyDo": "Chưa có khoá tu-vung cho hàm lượng nhựa trong giấy, phân loại theo công dụng chuyên dùng lót giữa các sản phẩm thủy tinh phẳng khi đóng gói"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48059110 \"Giấy dùng để lót vào giữa các sản phẩm thủy tinh phẳng khi đóng gói, có hàm lượng nhựa không quá 0,6% tính theo khối lượng\" ⇒ congDung \"lót vào giữa các sản phẩm thủy tinh phẳng khi đóng gói\" + hamLuongNhua <= 0.6 %."
+    },
+    {
+      "ma": "48059120",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48059120 \"Loại dùng để sản xuất giấy vàng mã(SEN)\" ⇒ congDung \"sản xuất giấy vàng mã\"."
+    },
+    {
+      "ma": "48059190",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48059190 \"Loại khác\" trần ⇒ không ghi điều kiện."
     }
   ],
   "traVe": [

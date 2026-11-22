@@ -202,11 +202,30 @@
     },
     {
       "hs": "48053010",
-      "dieuKien": "Giấy đã nhuộm màu dùng để bao quanh hộp diêm bằng gỗ(SEN)",
+      "dieuKien": "có màu trừ màu trắng (sợi dệt hoặc xơ dệt); dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): bao quanh hộp diêm bằng gỗ",
       "loaiKhac": false,
       "nguon": "tax.48053010",
       "trich": "48053010 - - Giấy đã nhuộm màu dùng để bao quanh hộp diêm bằng gỗ(SEN)",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "coMauTruTrang",
+          "op": "CO"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "bao quanh hộp diêm bằng gỗ"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1778#soat-480530",
+          "ngay": "2026-11-21",
+          "bam": "ae5f37d768e1d413c121792b39b3e6d6b27f425abb2cad59b508f9ae8b894844"
+        }
+      }
     },
     {
       "hs": "48053090",
@@ -246,19 +265,55 @@
     },
     {
       "hs": "48059110",
-      "dieuKien": "Giấy dùng để lót vào giữa các sản phẩm thủy tinh phẳng khi đóng gói, có hàm lượng nhựa không quá 0,6% tính theo khối lượng",
+      "dieuKien": "công dụng / mục đích: lót vào giữa các sản phẩm thủy tinh phẳng khi đóng gói; hàm lượng nhựa tính theo khối lượng <= 0.6 %",
       "loaiKhac": false,
       "nguon": "tax.48059110",
       "trich": "48059110 - - - Giấy dùng để lót vào giữa các sản phẩm thủy tinh phẳng khi đóng gói, có hàm lượng nhựa không quá 0,6% tính theo khối lượng",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "lót vào giữa các sản phẩm thủy tinh phẳng khi đóng gói"
+        },
+        {
+          "fact": "hamLuongNhua",
+          "op": "<=",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1778#soat-480591",
+          "ngay": "2026-11-21",
+          "bam": "8340821a8160dcec99c98947264d850fdca5f89fb954f85cb32db1bb3ec52b90"
+        }
+      }
     },
     {
       "hs": "48059120",
-      "dieuKien": "Loại dùng để sản xuất giấy vàng mã(SEN)",
+      "dieuKien": "công dụng / mục đích: sản xuất giấy vàng mã",
       "loaiKhac": false,
       "nguon": "tax.48059120",
       "trich": "48059120 - - - Loại dùng để sản xuất giấy vàng mã(SEN)",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "sản xuất giấy vàng mã"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1778#soat-480591",
+          "ngay": "2026-11-21",
+          "bam": "8340821a8160dcec99c98947264d850fdca5f89fb954f85cb32db1bb3ec52b90"
+        }
+      }
     },
     {
       "hs": "48059190",
