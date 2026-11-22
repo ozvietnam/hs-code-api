@@ -14,7 +14,7 @@
     "boi": "CLAUDE_DUYET",
     "phien": "paperclip:ozv-1863#soat-16c",
     "ngay": "2026-11-22",
-    "bam": "698c6cd3605e956f3766cab54b208fa05906809ad3fce8c9a9d7911fb41b361e"
+    "bam": "8eb217e45996c382c3b6a7d043613f992a984aaabe825e537d38b55caaface2d"
   },
   "dieuKienNut": [
     {
@@ -69,29 +69,10 @@
           "donVi": "GT"
         },
         {
-          "op": "HOAC",
-          "phuongAn": [
-            [
-              {
-                "fact": "tongDungTichTau",
-                "op": "<=",
-                "value": 500,
-                "donVi": "GT"
-              }
-            ],
-            [
-              {
-                "fact": "tenLoai",
-                "op": "TEN_LOAI",
-                "value": "Tổng dung tích (gross tonnage)"
-              },
-              {
-                "fact": "tenLoai",
-                "op": "TEN_LOAI",
-                "value": "trên 26 nhưng không quá 500"
-              }
-            ]
-          ]
+          "fact": "tongDungTichTau",
+          "op": "<=",
+          "value": 500,
+          "donVi": "GT"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -136,29 +117,10 @@
           "donVi": "GT"
         },
         {
-          "op": "HOAC",
-          "phuongAn": [
-            [
-              {
-                "fact": "tongDungTichTau",
-                "op": "<=",
-                "value": 500,
-                "donVi": "GT"
-              }
-            ],
-            [
-              {
-                "fact": "tenLoai",
-                "op": "TEN_LOAI",
-                "value": "Tổng dung tích (gross tonnage)"
-              },
-              {
-                "fact": "tenLoai",
-                "op": "TEN_LOAI",
-                "value": "trên 26 nhưng không quá 500"
-              }
-            ]
-          ]
+          "fact": "tongDungTichTau",
+          "op": "<=",
+          "value": 500,
+          "donVi": "GT"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"

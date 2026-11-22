@@ -15,7 +15,7 @@
     "phien": "paperclip:ozv-1863#soat-16c",
     "ngay": "2026-11-22",
     "ghiChu": "Đối chiếu 6 dòng tổng dung tích GT: biên ≤26 / >26–≤500 / >500–≤1.000 / >1.000–≤4.000 / >4.000–≤5.000 / >5.000 khớp 'không quá'/'trên' VI+EN; liền mạch không hở; sổ tay cũ không có ngưỡng số.",
-    "bam": "dc25012efe30b09c9dc714d32f1635a79982c1bfd553c81e32aaaeea73e0c0a1"
+    "bam": "705219ac92b0459c19df5f9f1062d6f76d9074610c19655a60279c5e592f6a03"
   },
   "dieuKienNut": [],
   "dong8": [
@@ -45,29 +45,10 @@
           "donVi": "GT"
         },
         {
-          "op": "HOAC",
-          "phuongAn": [
-            [
-              {
-                "fact": "tongDungTichTau",
-                "op": "<=",
-                "value": 500,
-                "donVi": "GT"
-              }
-            ],
-            [
-              {
-                "fact": "tenLoai",
-                "op": "TEN_LOAI",
-                "value": "Tổng dung tích (gross tonnage)"
-              },
-              {
-                "fact": "tenLoai",
-                "op": "TEN_LOAI",
-                "value": "trên 26 nhưng không quá 500"
-              }
-            ]
-          ]
+          "fact": "tongDungTichTau",
+          "op": "<=",
+          "value": 500,
+          "donVi": "GT"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
