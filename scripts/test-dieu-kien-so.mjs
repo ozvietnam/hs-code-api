@@ -296,5 +296,48 @@ const ST8544 = {
   check('10e 85479010: không tách vế cha khi dòng 8 số có ", làm bằng..." để giữ BO_VE vật liệu → không chốt sai 85479010', kq8547.hs !== '85479010', j(kq8547));
 }
 
+// 11. OZV-1810: tách vế cha nối bằng "và" (220110, 280920, 32061) + cumPhanBiet cho dòng nguyên văn "Các chế phẩm" / "Các sản phẩm" (320641/42/50, 400690)
+{
+  const { chotDong8 } = require('../lib/so-tay-gates.js');
+  // 220110: Nước khoáng và nước có ga (2 chiều)
+  const kq2201a = chotDong8({ hs: '220110', productText: 'Nước khoáng và nước có ga: Nước khoáng' });
+  const kq2201b = chotDong8({ hs: '220110', productText: 'Nước khoáng và nước có ga: Nước có ga' });
+  const kq2201Thieu = chotDong8({ hs: '220110', productText: 'Nước khoáng và nước có ga' });
+  check('11a 22011010/22011020: tách vế cha "Nước khoáng và nước có ga" → chốt đúng từng dòng', kq2201a.ketQua === 'CHOT' && kq2201a.hs === '22011010' && kq2201b.ketQua === 'CHOT' && kq2201b.hs === '22011020', j([kq2201a, kq2201b]));
+  check('11a-ngược 220110: chỉ có tiêu đề cha "Nước khoáng và nước có ga" → không tự chốt', kq2201Thieu.ketQua !== 'CHOT' && kq2201Thieu.ketQua !== 'LOAI_KHAC', j(kq2201Thieu));
+
+  // 280920: Axit phosphoric và axit polyphosphoric (2 chiều)
+  const kq2809 = chotDong8({ hs: '280920', productText: 'Axit phosphoric và axit polyphosphoric: Loại dùng cho thực phẩm: Axit phosphoric' });
+  const kq2809Thieu = chotDong8({ hs: '280920', productText: 'Axit phosphoric và axit polyphosphoric: Loại dùng cho thực phẩm' });
+  check('11b 28092032: tách vế cha "Axit phosphoric và axit polyphosphoric" → chốt 28092032', kq2809.ketQua === 'CHOT' && kq2809.hs === '28092032', j(kq2809));
+  check('11b-ngược 280920: chỉ có tiêu đề cha + tiêu đề trung gian → không tự chốt', kq2809Thieu.ketQua !== 'CHOT' && kq2809Thieu.ketQua !== 'LOAI_KHAC', j(kq2809Thieu));
+
+  // 320611: Thuốc màu và các chế phẩm từ dioxit titan (2 chiều)
+  const kq320611 = chotDong8({ hs: '320611', productText: 'Thuốc màu và các chế phẩm từ dioxit titan - Chứa hàm lượng dioxit titan từ 80% trở lên tính theo trọng lượng khô: Thuốc màu' });
+  const kq320611Thieu = chotDong8({ hs: '320611', productText: 'Thuốc màu và các chế phẩm từ dioxit titan - Chứa hàm lượng dioxit titan từ 80% trở lên tính theo trọng lượng khô' });
+  check('11c 32061110: tách vế cha 5 số "Thuốc màu và các chế phẩm từ dioxit titan" → chốt 32061110', kq320611.ketQua === 'CHOT' && kq320611.hs === '32061110', j(kq320611));
+  check('11c-ngược 320611: chỉ có tiêu đề 5 số + 6 số → không tự chốt', kq320611Thieu.ketQua !== 'CHOT' && kq320611Thieu.ketQua !== 'LOAI_KHAC', j(kq320611Thieu));
+
+  // 32064110 ("Các chế phẩm") & 40069011 ("Các sản phẩm") (2 chiều + chặn dòng có điều kiện phụ 34031911)
+  const kq320641 = chotDong8({ hs: '320641', productText: 'Chất màu xanh nước biển và các chế phẩm từ chúng: Các chế phẩm' });
+  const kq320641Thieu = chotDong8({ hs: '320641', productText: 'Chất màu xanh nước biển và các chế phẩm từ chúng' });
+  const kq400690 = chotDong8({ hs: '400690', productText: 'Loại khác: Của nhựa tự nhiên: Các sản phẩm' });
+  const kq400690Thieu = chotDong8({ hs: '400690', productText: 'Loại khác: Của nhựa tự nhiên' });
+  const kq340319 = chotDong8({ hs: '340319', productText: 'Loại khác: Các chế phẩm' });
+  check('11d 32064110 & 40069011: dòng có tên nguyên văn "Các chế phẩm" / "Các sản phẩm" → chốt đúng', kq320641.ketQua === 'CHOT' && kq320641.hs === '32064110' && kq400690.ketQua === 'CHOT' && kq400690.hs === '40069011', j([kq320641, kq400690]));
+  check('11d-ngược 320641 & 400690 & 340319: chỉ có tiêu đề cha hoặc dòng tên dài hơn ("Chế phẩm dùng cho động cơ...") → không tự chốt',
+    kq320641Thieu.ketQua !== 'CHOT' && kq320641Thieu.ketQua !== 'LOAI_KHAC'
+    && kq400690Thieu.ketQua !== 'CHOT' && kq400690Thieu.ketQua !== 'LOAI_KHAC'
+    && kq340319.hs !== '34031911',
+    j([kq320641Thieu, kq400690Thieu, kq340319]));
+
+  // ReDoS ~40.000 từ lặp < 2 giây (quy tắc 6b)
+  const t0 = Date.now();
+  const chuoiDai = `${Array.from({ length: 10000 }, () => 'và nước có').join(' ')}: Các chế phẩm`;
+  const kqReDoS = chotDong8({ hs: '320641', productText: chuoiDai });
+  const dt = Date.now() - t0;
+  check(`11e ReDoS ~40.000 từ lặp chạy dưới 2000ms (thực tế ${dt}ms)`, dt < 2000 && kqReDoS.hs === '32064110', `${dt}ms`);
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
