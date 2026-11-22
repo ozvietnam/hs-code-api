@@ -4,13 +4,19 @@
   "nhom": "8465",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-846591",
     "ngay": "2026-11-04"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1796#soat-846591",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1796)",
+    "bam": "e254f00b4c2a33297553d3f50e0369004b792d26e4680966953a0230d41ffcbf"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -21,29 +27,34 @@
         {
           "fact": "congDung",
           "op": "CONG_DUNG",
+          "value": "khắc vạch"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
           "value": [
-            "khắc vạch lên các tấm mạch in",
+            "các tấm mạch in",
             "tấm dây in",
             "tấm nền của tấm mạch in",
             "tấm nền của tấm dây in"
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84659190",
       "nguon": "tax.84659190",
       "trich": "84659190 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "84659110",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.84659110: \"Để khắc vạch lên các tấm mạch in hoặc tấm dây in hoặc tấm nền của tấm mạch in hoặc tấm nền của tấm dây in\" ⇒ congDung mảng 4 chuỗi con"
+      "ghiChu": "tax.84659110: \"Để khắc vạch lên các tấm mạch in hoặc tấm dây in hoặc tấm nền của tấm mạch in hoặc tấm nền của tấm dây in\" ⇒ congDung \"khắc vạch\" + congDung mảng 4 đối tượng nguyên văn"
     }
   ],
   "traVe": [

@@ -4,13 +4,19 @@
   "nhom": "8465",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-846592",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1796#soat-846592",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1796)",
+    "bam": "687ff74cda2a262588070cdde137bf63c48a60942287b6faec80c163592a089c"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -21,33 +27,40 @@
         {
           "fact": "congDung",
           "op": "CONG_DUNG",
+          "value": "khắc vạch"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
           "value": [
-            "khắc vạch lên các tấm mạch in",
+            "các tấm mạch in",
             "tấm dây in",
             "tấm nền của tấm mạch in",
             "tấm nền của tấm dây in"
           ]
         },
         {
-          "fact": "chuoiMuiKhongQua3175",
-          "op": "CO"
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 3.175,
+          "donVi": "mm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84659290",
       "nguon": "tax.84659290",
       "trich": "84659290 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "84659210",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.84659210 (301 ký tự, lược bằng …): \"Để khắc vạch lên các tấm mạch in hoặc tấm dây in hoặc tấm nền của …\" ⇒ congDung mảng 4 đích; \"có thể lắp vừa được mũi khắc có đường kính chuôi không quá 3,175 mm\" ⇒ chuoiMuiKhongQua3175 CO (khoá lô 20, đọc \"đường kính chuôi không quá 3,175 mm\"); thay THIEU_KHOA_TU_VUNG coTheLapVuaMuiKhac."
+      "ghiChu": "tax.84659210 (301 ký tự, lược bằng …): \"Để khắc vạch lên các tấm mạch in hoặc tấm dây in hoặc tấm nền của …\" ⇒ congDung \"khắc vạch\" + congDung mảng 4 đối tượng nguyên văn + duongKinh <= 3.175 mm (giữ ngưỡng số đường kính chuôi <= 3,175 mm như 846595)."
     },
     {
       "ma": "84659290",

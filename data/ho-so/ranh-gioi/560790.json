@@ -4,13 +4,19 @@
   "nhom": "5607",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T1541#soan-560790",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1794#soat-560790",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá theo traVe (OZV-1794)",
+    "bam": "0f306602f73f3bd2cd42fc7e3cfc06aaaec991a4ee775e1b3bebb972c5f1d19b"
+  },
   "dieuKienNut": [
     {
       "id": "5607902",
@@ -26,7 +32,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": false
     }
   ],
@@ -42,7 +48,7 @@
           "value": "xơ tái tạo"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "56079021",
@@ -55,7 +61,7 @@
           "value": "xơ chuối abaca"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "56079022",
@@ -68,7 +74,7 @@
           "value": "xơ (lá thực vật) cứng"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": [
         "56079021"
       ]
@@ -83,16 +89,11 @@
           "op": "TEN_LOAI",
           "value": [
             "đay",
-            "xơ libe dệt"
+            "xơ libe dệt khác thuộc nhóm 53.03"
           ]
-        },
-        {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": "nhóm 53.03"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": false
     },
     {
@@ -100,7 +101,7 @@
       "nguon": "tax.56079090",
       "trich": "56079090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -122,7 +123,7 @@
     {
       "ma": "56079030",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.56079030 \"Từ đay hoặc các loại xơ libe dệt khác thuộc nhóm 53.03\" ⇒ tenLoai [\"đay\",\"xơ libe dệt\"] (\"hoặc\" ⇒ mảng; cụm \"các loại … khác\" không phải cụm mở \"tương tự\" nên không dùng TUONG_TU — cong3 hướng dẫn dùng TEN_LOAI mảng) + dungCho giữ nguyên chuỗi mã \"nhóm 53.03\" (đay và xơ libe đều thuộc 53.03, giới hạn chung; máy tự nở dải)."
+      "ghiChu": "tax.56079030 \"Từ đay hoặc các loại xơ libe dệt khác thuộc nhóm 53.03\" (EN \"Of jute or other textile bast fibres of heading 53.03\") ⇒ tenLoai [\"đay\",\"xơ libe dệt khác thuộc nhóm 53.03\"] (\"thuộc nhóm 53.03\" là định ngữ phân loại của xơ libe dệt, không phải công dụng dungCho)."
     },
     {
       "ma": "56079090",

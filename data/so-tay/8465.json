@@ -261,17 +261,42 @@
     },
     {
       "hs": "84659110",
-      "dieuKien": "Máy cưa để khắc vạch lên các tấm mạch in hoặc tấm dây in hoặc tấm nền của tấm mạch in hoặc tấm nền của tấm dây in (phân nhóm 8465.91, tên WCO: sawing machines)",
+      "dieuKien": "công dụng / mục đích: khắc vạch; công dụng / mục đích: các tấm mạch in hoặc tấm dây in hoặc tấm nền của tấm mạch in hoặc tấm nền của tấm dây in",
+      "nguon": "tax.84659110",
+      "trich": "84659110 - - - Để khắc vạch lên các tấm mạch in hoặc tấm dây in hoặc tấm nền của tấm mạch in hoặc tấm nền của tấm dây in",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "khắc vạch"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "các tấm mạch in",
+            "tấm dây in",
+            "tấm nền của tấm mạch in",
+            "tấm nền của tấm dây in"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1796#soat-846591",
+          "ngay": "2026-11-22",
+          "bam": "e254f00b4c2a33297553d3f50e0369004b792d26e4680966953a0230d41ffcbf"
+        }
+      },
       "tieuChi": {
         "fact": "dung_khac_vach_len_tam_mach_in_hoac_tam_day_in",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "nguon": "tax.84659110",
-      "trich": "84659110 - - - Để khắc vạch lên các tấm mạch in hoặc tấm dây in hoặc tấm nền của tấm mạch in hoặc tấm nền của tấm dây in",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      }
     },
     {
       "hs": "84659190",
@@ -293,25 +318,48 @@
     },
     {
       "hs": "84659210",
-      "dieuKien": "Máy bào/phay/làm khuôn bằng cách cắt để khắc vạch lên tấm mạch in hoặc tấm dây in, lắp vừa mũi khắc có đường kính chuôi không quá 3,175 mm (phân nhóm 8465.92, tên WCO: planing, milling or moulding (by cutting) machines)",
-      "tieuChi": {
-        "fact": "duong_kin_chuoi_mui_khac",
-        "op": "<=",
-        "value": 3.175,
-        "donVi": "mm"
-      },
+      "dieuKien": "công dụng / mục đích: khắc vạch; công dụng / mục đích: các tấm mạch in hoặc tấm dây in hoặc tấm nền của tấm mạch in hoặc tấm nền của tấm dây in; đường kính (ngoài) <= 3.175 mm",
       "dieuKienSo": [
         {
-          "fact": "duong_kin_chuoi_mui_khac",
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "khắc vạch"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "các tấm mạch in",
+            "tấm dây in",
+            "tấm nền của tấm mạch in",
+            "tấm nền của tấm dây in"
+          ]
+        },
+        {
+          "fact": "duongKinh",
           "op": "<=",
           "value": 3.175,
           "donVi": "mm"
         }
       ],
       "nguon": "tax.84659210",
-      "trich": "84659210 - - - Để khắc vạch lên các tấm mạch in hoặc tấm dây in hoặc tấm nền của tấm mạch in hoặc tấm nền của tấm dây in, có thể lắp vừa được mũi khắc có đường kính chuôi không quá 3,175 mm, dùng để khắc vạch lên các tấm mạch in hoặc tấm dây in hoặc tấm nền của tấm mạch in hoặc tấm nền của tấm dây in",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      "trich": "84659210 - - - Để khắc vạch lên các tấm mạch in hoặc tấm dây in hoặc tấm nền của tấm mạch in hoặc tấm nền của tấm dây in, có thể lắp vừa được mũi khắc có đường kính chuôi không quá 3,175 mm, dùng để khắc vạch lên …",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1796#soat-846592",
+          "ngay": "2026-11-22",
+          "bam": "687ff74cda2a262588070cdde137bf63c48a60942287b6faec80c163592a089c"
+        }
+      },
+      "tieuChi": {
+        "fact": "duong_kin_chuoi_mui_khac",
+        "op": "<=",
+        "value": 3.175,
+        "donVi": "mm"
+      }
     },
     {
       "hs": "84659290",
@@ -479,44 +527,125 @@
     },
     {
       "hs": "84659910",
-      "dieuKien": "Máy tiện (phân nhóm 8465.99, tên WCO: n.e.c. in heading no. 8465)",
+      "dieuKien": "tên loại hàng: Máy tiện",
+      "nguon": "tax.84659910",
+      "trich": "84659910 - - - Máy tiện",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy tiện"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1796#soat-846599",
+          "ngay": "2026-11-22",
+          "bam": "23a2b78a653c7e2bd1e4d340a4850cda513ad9e0d2742ec41a2dcbaa8ebba215"
+        }
+      },
       "tieuChi": {
         "fact": "la_may_tien",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "nguon": "tax.84659910",
-      "trich": "84659910 - - - Máy tiện",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      }
     },
     {
       "hs": "84659950",
-      "dieuKien": "Máy để đẽo bavia bề mặt của tấm mạch in hoặc tấm dây in trong quá trình sản xuất; máy để khắc vạch lên tấm mạch in hoặc tấm dây in hoặc tấm nền của tấm mạch in hoặc tấm nền của tấm dây in; máy ép lớp mỏng để sản xuất tấm mạch in hoặc tấm dây in (phân nhóm 8465.99, tên WCO: n.e.c. in heading no. 8465)",
+      "dieuKien": "(tên loại hàng: Máy và công dụng / mục đích: đẽo bavia bề mặt và công dụng / mục đích: tấm mạch in hoặc tấm dây in) hoặc (tên loại hàng: máy và công dụng / mục đích: khắc vạch và công dụng / mục đích: tấm mạch in hoặc tấm dây in hoặc tấm nền của tấm mạch in hoặc tấm nền của tấm dây in) hoặc (tên loại hàng: máy ép lớp mỏng và công dụng / mục đích: tấm mạch in hoặc tấm dây in)",
+      "nguon": "tax.84659950",
+      "trich": "84659950 - - - Máy để đẽo bavia bề mặt của tấm mạch in hoặc tấm dây in trong quá trình sản xuất; máy để khắc vạch lên tấm mạch in hoặc tấm dây in hoặc tấm nền của tấm mạch in hoặc tấm nền của tấm dây in; máy ép lớp mỏng để sản xuất tấm mạch in hoặc tấm dây in",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Máy"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "đẽo bavia bề mặt"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": [
+                  "tấm mạch in",
+                  "tấm dây in"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "máy"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "khắc vạch"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": [
+                  "tấm mạch in",
+                  "tấm dây in",
+                  "tấm nền của tấm mạch in",
+                  "tấm nền của tấm dây in"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "máy ép lớp mỏng"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": [
+                  "tấm mạch in",
+                  "tấm dây in"
+                ]
+              }
+            ]
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1796#soat-846599",
+          "ngay": "2026-11-22",
+          "bam": "23a2b78a653c7e2bd1e4d340a4850cda513ad9e0d2742ec41a2dcbaa8ebba215"
+        }
+      },
       "tieuChi": {
         "fact": "dung_cho_san_xuat_tam_mach_in_hoac_tam_day_in",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "nguon": "tax.84659950",
-      "trich": "84659950 - - - Máy để đẽo bavia bề mặt của tấm mạch in hoặc tấm dây in trong quá trình sản xuất; máy để khắc vạch lên tấm mạch in hoặc tấm dây in hoặc tấm nền của tấm mạch in hoặc tấm nền của tấm dây in; máy ép lớp mỏng để sản xuất tấm mạch in hoặc tấm dây in",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      }
     },
     {
       "hs": "84659960",
-      "dieuKien": "Loại khác, hoạt động bằng điện (phân nhóm 8465.99, tên WCO: n.e.c. in heading no. 8465)",
-      "tieuChi": {
-        "fact": "hoat_dong_bang_dien",
-        "op": "=",
-        "value": true,
-        "donVi": null
-      },
+      "dieuKien": "hoạt động bằng điện",
       "nguon": "tax.84659960",
       "trich": "84659960 - - - Loại khác, hoạt động bằng điện",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "loaiKhac": true,
       "phamViLoaiKhac": {
         "nguonLoai": "MAY_SUY",
@@ -527,6 +656,26 @@
         ],
         "toTienCoTen": "846599",
         "dinhNghiaDuoc": true
+      },
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1796#soat-846599",
+          "ngay": "2026-11-22",
+          "bam": "23a2b78a653c7e2bd1e4d340a4850cda513ad9e0d2742ec41a2dcbaa8ebba215"
+        }
+      },
+      "tieuChi": {
+        "fact": "hoat_dong_bang_dien",
+        "op": "=",
+        "value": true,
+        "donVi": null
       }
     },
     {

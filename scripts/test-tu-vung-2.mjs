@@ -366,6 +366,16 @@ const KHOA_MOI = {
   kichThuocToiDa56x45x25cm: 'CO_KHONG',
   chuaPolybutylenTerephthalat: 'CO_KHONG',
   tuLanh: 'CO_KHONG',
+  // 22/11/2026 (OZV-1794): xử lý RF 5607.50.10, lót đế & mũi kim loại bảo vệ 6403.91.10/.99.10, ở dạng thô 7310.10.91/.29.92
+  daXuLyResorcinolFormaldehyde: 'CO_KHONG',
+  coLotDeBenTrong: 'CO_KHONG',
+  coMuiKimLoaiBaoVe: 'CO_KHONG',
+  oDangTho: 'CO_KHONG',
+  // 22/11/2026 (OZV-1796): khoá cho 9804.28.11, 8716.39.91, 3907.69.10/3907.91.20 (SEN)
+  daHapChinHoacLuocChin: 'CO_KHONG',
+  khoiLuongHangChuyenCho: 'SO',
+  tyLeLotQuaLuoiLoc1mm: 'SO',
+  tyLeLotQuaLuoiLoc5mm: 'SO',
   // 22/11/2026 (#1584): bổ sung dangTam, nguonDongLuc (và mở rộng vatLieuKhac: DA_THUOC, DA_THUOC_TONG_HOP)
   dangTam: 'CO_KHONG',
   nguonDongLuc: 'LIET_KE',
@@ -1171,6 +1181,45 @@ check('vietCum đơn vị @1 KHÔNG đổi ("CS: 75000W" — không cách)', T.v
   check(`OZV-1771 ReDoS ~40.000 từ lặp trên 5 khoá < 2000 ms (thực tế ${ms.toFixed(0)} ms)`, ms < 2000, { ms });
 }
 
+// OZV-1794 — kiểm chứng daXuLyResorcinolFormaldehyde (5607.50.10), coLotDeBenTrong & coMuiKimLoaiBaoVe (6403.91.10/.99.10), oDangTho (7310.10.91/.29.92), vatLieuKhac.DA_THUOC (9305.91.10/.99.11/.99.91) + ReDoS < 500 ms.
+{
+  // 1. daXuLyResorcinolFormaldehyde (5607.50.10)
+  la('chữ biểu 5607.50.10 (đã xử lý bằng resorcinol formaldehyde)', 'daXuLyResorcinolFormaldehyde', 'Sợi bện (cord) cho dây đai chữ V làm từ xơ nhân tạo đã xử lý bằng resorcinol formaldehyde', true);
+  la('En treated with resorcinol formaldehyde', 'daXuLyResorcinolFormaldehyde', 'V-belt cord of man-made fibres treated with resorcinol formaldehyde', true);
+  la('Zh 经间苯二酚甲醛处理', 'daXuLyResorcinolFormaldehyde', '经间苯二酚甲醛处理的化学纤维三角带帘线', true);
+  la('phủ định chưa xử lý bằng resorcinol formaldehyde ⇒ false', 'daXuLyResorcinolFormaldehyde', 'Sợi bện chưa xử lý bằng resorcinol formaldehyde', false);
+  chuaBiet('sợi bện không nêu xử lý ⇒ CHUA_BIET', 'daXuLyResorcinolFormaldehyde', 'Sợi bện từ polyeste dùng cho dây đai chữ V');
+
+  // 2. coLotDeBenTrong & coMuiKimLoaiBaoVe (6403.91.10, 6403.99.10)
+  la('chữ biểu 6403.91.10 không có lót đế bên trong ⇒ false', 'coLotDeBenTrong', 'Giày, dép có đế bằng gỗ, không có lót đế bên trong hoặc mũi gắn kim loại bảo vệ', false);
+  la('En not having an inner sole ⇒ false', 'coLotDeBenTrong', 'Footwear made on a base or platform of wood, not having an inner sole or protective metal toe cap', false);
+  la('có lót đế bên trong ⇒ true', 'coLotDeBenTrong', 'Giày đế gỗ có lót đế bên trong', true);
+  la('chữ biểu 6403.91.10 không có ... hoặc mũi gắn kim loại bảo vệ ⇒ false', 'coMuiKimLoaiBaoVe', 'Giày, dép có đế bằng gỗ, không có lót đế bên trong hoặc mũi gắn kim loại bảo vệ', false);
+  la('En not having ... or protective metal toe cap ⇒ false', 'coMuiKimLoaiBaoVe', 'Footwear made on a base or platform of wood, not having an inner sole or protective metal toe cap', false);
+  la('có mũi gắn kim loại bảo vệ ⇒ true', 'coMuiKimLoaiBaoVe', 'Giày có mũi gắn kim loại bảo vệ', true);
+
+  // 3. oDangTho (7310.10.91, 7310.29.92)
+  la('chữ biểu 7310.10.91 ở dạng thô ⇒ true', 'oDangTho', 'Được đúc, rèn hoặc dập, ở dạng thô', true);
+  la('En in the rough state ⇒ true', 'oDangTho', 'Casting, forging or stamping, in the rough state', true);
+  la('Zh 处于粗坯状态 ⇒ true', 'oDangTho', '处于粗坯状态的铸件', true);
+  la('phủ định không phải ở dạng thô ⇒ false', 'oDangTho', 'Thùng thép dập, không phải ở dạng thô', false);
+  chuaBiet('chỉ ghi được đúc rèn hoặc dập ⇒ CHUA_BIET', 'oDangTho', 'Thùng phuy thép được dập');
+
+  // 4. vatLieuKhac.DA_THUOC (9305.91.10, 9305.99.11, 9305.99.91)
+  la('chữ biểu 9305.91.10 bằng da thuộc ⇒ DA_THUOC', 'vatLieuKhac', 'Bằng da thuộc hoặc vật liệu dệt (SEN)', 'DA_THUOC');
+  la('En of leather ⇒ DA_THUOC', 'vatLieuKhac', 'Parts and accessories of leather', 'DA_THUOC');
+  chuaBiet('sơn cho da thuộc không phải vật liệu làm bằng da thuộc ⇒ CHUA_BIET', 'vatLieuKhac', 'Sơn cho da thuộc');
+
+  // 5. ReDoS ~40.000 từ lặp < 500 ms (OZV-1794)
+  const redosText1794 = Array(4000).fill('không có lót đế bên hoặc mũi gắn kim đã xử lý bằng ở dạng').join(' ');
+  const t0 = process.hrtime.bigint();
+  for (const fk of ['daXuLyResorcinolFormaldehyde', 'coLotDeBenTrong', 'coMuiKimLoaiBaoVe', 'oDangTho']) {
+    T.docGiaTri(fk, redosText1794);
+  }
+  const ms = Number(process.hrtime.bigint() - t0) / 1e6;
+  check(`OZV-1794 ReDoS ~40.000 từ lặp trên 4 khoá mới < 500 ms (thực tế ${ms.toFixed(0)} ms)`, ms < 500, { ms });
+}
+
 // OZV-1778 — kiểm chứng 4 khoá mới (lotVaiDetMotMat, chatLieuLopNgoai, hamLuongNhua, ketHopVoiSoiCaoSu)
 // và giá trị NGUYEN_CHAT_VIRGIN trong mucDoTinhCheDau + ReDoS 40.000 từ lặp < 2 giây (quy tắc 6b).
 {
@@ -1415,6 +1464,44 @@ check('vietCum đơn vị @1 KHÔNG đổi ("CS: 75000W" — không cách)', T.v
   }
   const ms = Number(process.hrtime.bigint() - t0) / 1e6;
   check(`#1584 ReDoS ~40.000 từ lặp (+ cận khớp) cho vatLieuKhac, dangTam, nguonDongLuc < 2000 ms (thực tế ${ms.toFixed(0)} ms)`, ms < 2000, { ms });
+}
+
+// OZV-1796 — kiểm chứng 4 khoá mới (daHapChinHoacLuocChin, khoiLuongHangChuyenCho, tyLeLotQuaLuoiLoc1mm, tyLeLotQuaLuoiLoc5mm)
+// và giaTriCha DA_BO_DAU trong soCheTom + ReDoS 40.000 từ lặp < 500 ms (quy tắc 6b).
+{
+  // 1. daHapChinHoacLuocChin (9804.28.11)
+  la('chữ biểu 9804.28.11 (Còn vỏ, đã hấp chín hoặc luộc chín trong nước)', 'daHapChinHoacLuocChin', 'Còn vỏ, đã hấp chín hoặc luộc chín trong nước', true);
+  la('En cooked by steaming or by boiling in water', 'daHapChinHoacLuocChin', 'In shell, cooked by steaming or by boiling in water', true);
+  la('Zh 经蒸煮或水煮', 'daHapChinHoacLuocChin', '带壳，经蒸煮或水煮', true);
+  la('phủ định chưa hấp chín hoặc luộc chín trong nước ⇒ false', 'daHapChinHoacLuocChin', 'Tôm hun khói còn vỏ, chưa hấp chín hoặc luộc chín trong nước', false);
+  chuaBiet('tiêu đề nhóm 98.04 đã hoặc chưa luộc chín trước hoặc trong quá trình hun khói ⇒ CHUA_BIET', 'daHapChinHoacLuocChin', 'Động vật giáp xác, đã được hun khói, đã hoặc chưa bóc vỏ, đã hoặc chưa luộc chín trước hoặc trong quá trình hun khói');
+
+  // 2. khoiLuongHangChuyenCho (8716.39.91)
+  la('chữ biểu 8716.39.91 (payload trên 200 tấn)', 'khoiLuongHangChuyenCho', 'Có khối lượng hàng chuyên chở theo thiết kế (payload) trên 200 tấn', 200000, { op: '>' });
+  la('En carrying capacity (payload) exceeding 200000 kg', 'khoiLuongHangChuyenCho', 'Having a carrying capacity (payload) exceeding 200000 kg', 200000, { op: '>' });
+  la('Zh 设计载重量250000千克', 'khoiLuongHangChuyenCho', '设计载重量250000千克', 250000, { op: null });
+  chuaBiet('chỉ ghi khối lượng toàn bộ GVW không ghi tải trọng chuyên chở ⇒ CHUA_BIET', 'khoiLuongHangChuyenCho', 'Rơ-moóc có khối lượng toàn bộ theo thiết kế 220 tấn');
+
+  // 3. tyLeLotQuaLuoiLoc1mm & tyLeLotQuaLuoiLoc5mm (sen.3907 — 3907.69.10 / 3907.91.20)
+  const sen3907 = 'DẠNG HẠT VÀ CÁC DẠNG TƯƠNG TỰ\nSản phẩm dạng rắn ở dạng nguyên sinh trừ dạng bột, có ít hơn 10% khối lượng lọt qua lưới lọc có đường kính mắt lọc là 1mm và sản phẩm có 90% khối lượng trở lên lọt qua lưới lọc có đường kính mắt lọc là 5mm.';
+  la('sen.3907 đọc tyLeLotQuaLuoiLoc1mm < 10%', 'tyLeLotQuaLuoiLoc1mm', sen3907, 10, { op: '<' });
+  la('sen.3907 đọc tyLeLotQuaLuoiLoc5mm >= 90%', 'tyLeLotQuaLuoiLoc5mm', sen3907, 90, { op: '>=' });
+  la('cachViet đọc lại tyLeLotQuaLuoiLoc1mm 5%', 'tyLeLotQuaLuoiLoc1mm', 'khối lượng lọt qua lưới lọc mắt lọc 1 mm 5%', 5, { op: null });
+  la('cachViet đọc lại tyLeLotQuaLuoiLoc5mm 95%', 'tyLeLotQuaLuoiLoc5mm', 'khối lượng lọt qua lưới lọc mắt lọc 5 mm 95%', 95, { op: null });
+  chuaBiet('tyLeLotQuaLuoiLoc1mm không bắt nhầm lưới 5mm ⇒ CHUA_BIET', 'tyLeLotQuaLuoiLoc1mm', 'khối lượng lọt qua lưới lọc mắt lọc 5 mm 95%');
+
+  // 4. soCheTom giaTriCha DA_BO_DAU ⊃ [DA_BO_DAU_CON_DUOI, DA_BO_DAU_BO_DUOI] (9804.17.11)
+  const kTom = T.layKhoa('soCheTom');
+  check('soCheTom có giaTriCha DA_BO_DAU ⊃ DA_BO_DAU_CON_DUOI, DA_BO_DAU_BO_DUOI', JSON.stringify(kTom?.giaTriCha?.DA_BO_DAU) === JSON.stringify(['DA_BO_DAU_CON_DUOI', 'DA_BO_DAU_BO_DUOI']), kTom?.giaTriCha);
+
+  // 5. ReDoS ~40.000 từ lặp < 500 ms (CLAUDE.md quy tắc 6b + OZV-1796)
+  const redosText1796 = Array(8000).fill('tôm còn vỏ khối lượng hàng chuyên chở lưới lọc').join(' ');
+  const t0 = process.hrtime.bigint();
+  for (const fk of ['daHapChinHoacLuocChin', 'khoiLuongHangChuyenCho', 'tyLeLotQuaLuoiLoc1mm', 'tyLeLotQuaLuoiLoc5mm', 'soCheTom']) {
+    T.docGiaTri(fk, redosText1796);
+  }
+  const ms = Number(process.hrtime.bigint() - t0) / 1e6;
+  check(`OZV-1796 ReDoS ~40.000 từ lặp trên 5 khoá < 500 ms (thực tế ${ms.toFixed(0)} ms)`, ms < 500, { ms });
 }
 
 console.log(`\n${pass} pass, ${fail} fail`);
