@@ -180,15 +180,20 @@ function ca(ten, dieuKien) {
   ca(`ReDoS: log ~40.000 từ lặp xong dưới 2 giây (đo ${ms}ms)`, ms < 2000);
 }
 
-// 15) Khoá chuỗi `scripts.test` trong package.json (OZV-815): không có `&&node` thiếu khoảng trắng
-//     làm mọi nơi `split(' && ')` đếm hụt bộ test.
+// 15) Khoá cấu trúc `scripts.test` trong package.json + `scripts/danh-sach-test.txt` (OZV-815, S-8 #1567):
+//     `package.json` trỏ tới runner; `danh-sach-test.txt` mỗi dòng một lệnh, không gộp `&&`, không trùng.
 {
   const pkg = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'));
-  const chuoiTest = String(pkg?.scripts?.test ?? '');
-  const tachChuan = chuoiTest.split(' && ');
-  const tachLong = chuoiTest.split(/\s*&&\s*/);
-  ca('package.json scripts.test: không có `&&` dính liền thiếu khoảng trắng (`&&node`)', !/(?:^|\S)&&|&&(?:\S|$)/.test(chuoiTest));
-  ca('package.json scripts.test: split(" && ") khớp đúng split(/\\s*&&\\s*/)', tachChuan.length === tachLong.length && tachChuan.length >= 230);
+  const chuoiTest = String(pkg?.scripts?.test ?? '').trim();
+  const dsRaw = readFileSync(new URL('./danh-sach-test.txt', import.meta.url), 'utf8');
+  const dsLenh = dsRaw
+    .split(/\r?\n/)
+    .map((l) => l.trim())
+    .filter((l) => l && !l.startsWith('#'));
+  const khongNoi = dsLenh.every((l) => !/&&/.test(l));
+  const khongTrung = new Set(dsLenh).size === dsLenh.length;
+  ca('package.json scripts.test trỏ tới node scripts/chay-danh-sach-test.mjs', chuoiTest === 'node scripts/chay-danh-sach-test.mjs');
+  ca('scripts/danh-sach-test.txt: >= 230 lệnh, không gộp `&&`, không trùng dòng', dsLenh.length >= 230 && khongNoi && khongTrung);
 }
 
 console.log(`\n${xanh} passed, ${do_} failed`);

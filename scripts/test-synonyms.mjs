@@ -242,7 +242,12 @@ if (tco) {
 // ---------------------------------------------------------------- chuỗi npm test
 console.log('\n-- gắn chuỗi --');
 const pkg = JSON.parse(fs.readFileSync(path.join(ROOT, 'package.json'), 'utf8'));
-check('test-synonyms.mjs có trong chuỗi npm test', String(pkg.scripts?.test || '').includes('test-synonyms.mjs'));
+const dsTest = fs.readFileSync(path.join(ROOT, 'scripts', 'danh-sach-test.txt'), 'utf8');
+check(
+  'test-synonyms.mjs có trong chuỗi npm test',
+  String(pkg.scripts?.test || '').trim() === 'node scripts/chay-danh-sach-test.mjs'
+    && /^\s*node\s+scripts\/test-synonyms\.mjs\s*$/m.test(dsTest),
+);
 
 console.log(`\nKết quả: ${checks - failed}/${checks} check đạt`);
 if (failed) {

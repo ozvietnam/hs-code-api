@@ -17,6 +17,7 @@ kho tri thức ở đây thay vì đoán từ trí nhớ.
 >
 > Hai bảng trả lời thay cho việc đọc lại mã: `data/luat/dau-noi.json` (đường nào đọc sổ tay / sổ PN6 / tiền lệ,
 > sau cờ nào) và `data/luat/bang-co.json` (mọi cờ `HS_*`, mặc định, chủ).
+> Thêm test mới = thêm một dòng vào `scripts/danh-sach-test.txt`, không sửa `package.json`.
 
 ---
 
