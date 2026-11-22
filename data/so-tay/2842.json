@@ -91,6 +91,22 @@
    "nguon": "nhom2842.nhom",
    "trich": "Nhóm này không bao gồm: … (e) Clorua của amoni với thủy ngân (amoni thủy ngân II clorua hoặc amoni cloromercurat) và đồng thủy ngân iodua (nhóm 28.52).",
    "nguonLoai": "NGUOI_DUYET"
+  },
+  {
+   "loai": "LOAI_TRU",
+   "dieuKien": "Acetoarsenites",
+   "sangNhom": "29",
+   "nguon": "nhom2842.nhom",
+   "trich": "(c) Acetoarsenites (Chương 29).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "loai": "LOAI_TRU",
+   "dieuKien": "Magie kali sunphat, tinh khiết hoặc không tinh khiết (Chương 31). PHÂN CHƯƠNG VI: LOẠI KHÁC",
+   "sangNhom": "31",
+   "nguon": "nhom2842.nhom",
+   "trich": "(f) Magie kali sunphat, tinh khiết hoặc không tinh khiết (Chương 31).\nPHÂN CHƯƠNG VI: LOẠI KHÁC",
+   "nguonLoai": "AI_DA_KIEM"
   }
  ],
  "phanBiet": [
@@ -222,9 +238,88 @@
    "nguonLoai": "AI_DA_KIEM",
    "loaiKhac": false
   },
-  {"hs":"28429010","dieuKien":"tên loại hàng: Natri arsenit","nguon":"tax.28429010","trich":"28429010 - - Natri arsenit ","nguonLoai":"CLAUDE_DUYET","loaiKhac":false,"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Natri arsenit"}],"ranhGioi":{"phienBan":"ranh-gioi@1","duyet":{"phien":"claude-agent:tho-hs-01-20261115#soat-284290","ngay":"2026-11-15","bam":"878a7bc534a033c8d488154deafddd88bc6b7bfb0a3725093c06a78e5b5904a3"}}},
-  {"hs":"28429020","dieuKien":"tên loại hàng: Muối; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): đồng hoặc crom","nguon":"tax.28429020","trich":"28429020 - - Muối của đồng hoặc crom","nguonLoai":"CLAUDE_DUYET","loaiKhac":false,"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Muối"},{"fact":"dungCho","op":"CONG_DUNG","value":["đồng","crom"]}],"ranhGioi":{"phienBan":"ranh-gioi@1","duyet":{"phien":"claude-agent:tho-hs-01-20261115#soat-284290","ngay":"2026-11-15","bam":"878a7bc534a033c8d488154deafddd88bc6b7bfb0a3725093c06a78e5b5904a3"}}},
-  {"hs":"28429030","dieuKien":"tên loại hàng: Fulminat hoặc xyanat hoặc thioxyanat","nguon":"tax.28429030","trich":"28429030 - - Fulminat, xyanat và thioxyanat khác","nguonLoai":"CLAUDE_DUYET","loaiKhac":false,"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["Fulminat","xyanat","thioxyanat"]}],"ranhGioi":{"phienBan":"ranh-gioi@1","duyet":{"phien":"claude-agent:tho-hs-01-20261115#soat-284290","ngay":"2026-11-15","bam":"878a7bc534a033c8d488154deafddd88bc6b7bfb0a3725093c06a78e5b5904a3"}},"phanConLai":true},
+  {
+   "hs": "28429010",
+   "dieuKien": "tên loại hàng: Natri arsenit",
+   "nguon": "tax.28429010",
+   "trich": "28429010 - - Natri arsenit ",
+   "nguonLoai": "CLAUDE_DUYET",
+   "loaiKhac": false,
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Natri arsenit"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-01-20261115#soat-284290",
+     "ngay": "2026-11-15",
+     "bam": "878a7bc534a033c8d488154deafddd88bc6b7bfb0a3725093c06a78e5b5904a3"
+    }
+   }
+  },
+  {
+   "hs": "28429020",
+   "dieuKien": "tên loại hàng: Muối; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): đồng hoặc crom",
+   "nguon": "tax.28429020",
+   "trich": "28429020 - - Muối của đồng hoặc crom",
+   "nguonLoai": "CLAUDE_DUYET",
+   "loaiKhac": false,
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Muối"
+    },
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": [
+      "đồng",
+      "crom"
+     ]
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-01-20261115#soat-284290",
+     "ngay": "2026-11-15",
+     "bam": "878a7bc534a033c8d488154deafddd88bc6b7bfb0a3725093c06a78e5b5904a3"
+    }
+   }
+  },
+  {
+   "hs": "28429030",
+   "dieuKien": "tên loại hàng: Fulminat hoặc xyanat hoặc thioxyanat",
+   "nguon": "tax.28429030",
+   "trich": "28429030 - - Fulminat, xyanat và thioxyanat khác",
+   "nguonLoai": "CLAUDE_DUYET",
+   "loaiKhac": false,
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": [
+      "Fulminat",
+      "xyanat",
+      "thioxyanat"
+     ]
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-01-20261115#soat-284290",
+     "ngay": "2026-11-15",
+     "bam": "878a7bc534a033c8d488154deafddd88bc6b7bfb0a3725093c06a78e5b5904a3"
+    }
+   },
+   "phanConLai": true
+  },
   {
    "hs": "28429090",
    "dieuKien": "Loại khác: muối của axit vô cơ hoặc peroxoaxit khác, trừ muối kép hoặc phức silicat",
@@ -338,8 +433,8 @@
   "ms": 5
  },
  "kiemTra": {
-  "tong": 32,
-  "dat": 32,
+  "tong": 34,
+  "dat": 34,
   "loai": 0,
   "nguonBiCat": []
  }

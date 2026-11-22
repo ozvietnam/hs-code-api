@@ -39,6 +39,14 @@
    "nguon": "nhom9208.nhom",
    "trich": "(a) Chuông cửa, chuông để bàn, chuông xe đạp, vv... (nhóm 83.06 hay 85.31).",
    "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "loai": "LOAI_TRU",
+   "dieuKien": "Chuông cửa, chuông để bàn, chuông xe đạp, vv",
+   "sangNhom": "8306|8531",
+   "nguon": "nhom9208.nhom",
+   "trich": "(a) Chuông cửa, chuông để bàn, chuông xe đạp, vv... (nhóm 83.06 hay 85.31).",
+   "nguonLoai": "AI_DA_KIEM"
   }
  ],
  "phanBiet": [
@@ -85,7 +93,61 @@
    "trich": "92081000 - Hộp nhạc",
    "nguonLoai": "AI_DA_KIEM"
   },
-  {"hs":"92089010","dieuKien":"(tên loại hàng: Dụng cụ tạo âm thanh và công dụng / mục đích: nhử mồi) hoặc (tên loại hàng: tù và) hoặc (tên loại hàng: các dụng cụ thổi bằng miệng và công dụng / mục đích: tạo âm thanh)","loaiKhac":false,"nguon":"tax.92089010","trich":"92089010 - - Dụng cụ tạo âm thanh để nhử mồi, tù và và các dụng cụ thổi bằng miệng khác để tạo âm thanh","nguonLoai":"CLAUDE_DUYET","dieuKienSo":[{"op":"HOAC","phuongAn":[[{"fact":"tenLoai","op":"TEN_LOAI","value":"Dụng cụ tạo âm thanh"},{"fact":"congDung","op":"CONG_DUNG","value":"nhử mồi"}],[{"fact":"tenLoai","op":"TEN_LOAI","value":"tù và"}],[{"fact":"tenLoai","op":"TEN_LOAI","value":"các dụng cụ thổi bằng miệng"},{"fact":"congDung","op":"CONG_DUNG","value":"tạo âm thanh"}]]}],"ranhGioi":{"phienBan":"ranh-gioi@1","duyet":{"phien":"claude-agent:tho-hs-01-20261115#soat-920890","ngay":"2026-11-15","bam":"3f394ab2ceb8035424e5305494c51a875adb84db2455e4e2a311d64f4df818e5"}},"phanConLai":false},
+  {
+   "hs": "92089010",
+   "dieuKien": "(tên loại hàng: Dụng cụ tạo âm thanh và công dụng / mục đích: nhử mồi) hoặc (tên loại hàng: tù và) hoặc (tên loại hàng: các dụng cụ thổi bằng miệng và công dụng / mục đích: tạo âm thanh)",
+   "loaiKhac": false,
+   "nguon": "tax.92089010",
+   "trich": "92089010 - - Dụng cụ tạo âm thanh để nhử mồi, tù và và các dụng cụ thổi bằng miệng khác để tạo âm thanh",
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "op": "HOAC",
+     "phuongAn": [
+      [
+       {
+        "fact": "tenLoai",
+        "op": "TEN_LOAI",
+        "value": "Dụng cụ tạo âm thanh"
+       },
+       {
+        "fact": "congDung",
+        "op": "CONG_DUNG",
+        "value": "nhử mồi"
+       }
+      ],
+      [
+       {
+        "fact": "tenLoai",
+        "op": "TEN_LOAI",
+        "value": "tù và"
+       }
+      ],
+      [
+       {
+        "fact": "tenLoai",
+        "op": "TEN_LOAI",
+        "value": "các dụng cụ thổi bằng miệng"
+       },
+       {
+        "fact": "congDung",
+        "op": "CONG_DUNG",
+        "value": "tạo âm thanh"
+       }
+      ]
+     ]
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-01-20261115#soat-920890",
+     "ngay": "2026-11-15",
+     "bam": "3f394ab2ceb8035424e5305494c51a875adb84db2455e4e2a311d64f4df818e5"
+    }
+   },
+   "phanConLai": false
+  },
   {
    "hs": "92089090",
    "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
@@ -171,7 +233,7 @@
  },
  "kiemTra": {
   "tong": 13,
-  "dat": 12,
+  "dat": 13,
   "loai": 1,
   "nguonBiCat": []
  }

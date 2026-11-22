@@ -60,6 +60,38 @@
       "nguon": "nhom1211.nhom",
       "trich": "Nhóm này cũng không bao gồm: … (b) các sản phẩm liệt kê dưới đây dùng trực tiếp để tạo mùi thơm đồ uống hoặc để điều chế các chiết xuất nhằm sản xuất đồ uống: … (i) các hỗn hợp bao gồm các loài cây khác nhau hoặc các phần của cây trong nhóm này (nhóm 21.06)",
       "nguonLoai": "NGUOI_DUYET"
+    },
+    {
+      "loai": "LOAI_TRU",
+      "dieuKien": "các hỗn hợp cây hoặc phần cây của nhóm này với các loại nông sản khác thuộc các Chương khác (ví dụ, Chương 7, Chương 9, Chương 11) (Chương 9 hoặc nhóm 21.06)…",
+      "sangNhom": "2106|07|09|11",
+      "nguon": "nhom1211.nhom",
+      "trich": "(ii) các hỗn hợp cây hoặc phần cây của nhóm này với các loại nông sản khác thuộc các Chương khác (ví dụ, Chương 7, Chương 9, Chương 11) (Chương 9 hoặc nhóm 21.06).\nCác sản phẩm sau đây thuộc nhóm này:",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "loai": "LOAI_TRU",
+      "dieuKien": "- Cây muồng (Casia fistula): hạt và cùi chưa tinh chế. (Cùi cây đã tinh chế (rút nước) được phân loại vào nhóm 13.02)",
+      "sangNhom": "1302",
+      "nguon": "nhom1211.nhom",
+      "trich": "- Cây muồng (Casia fistula): hạt và cùi chưa tinh chế. (Cùi cây đã tinh chế (rút nước) được phân loại vào nhóm 13.02).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "loai": "LOAI_TRU",
+      "dieuKien": "- Cây kinh giới ô dại (Origanum vulgare); cây kinh giới ô ngọt (Majorana hortensis hoặc Origanum majorana)",
+      "sangNhom": "07",
+      "nguon": "nhom1211.nhom",
+      "trich": "- Cây kinh giới ô dại (Origanum vulgare); cây kinh giới ô ngọt (Majorana hortensis hoặc Origanum majorana) bị loại trừ (Chương 7).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "loai": "LOAI_TRU",
+      "dieuKien": "- Yohimba (Corynanthe johimbe) : vỏ. Tên thực vật trong bảng tên nêu trên (không toàn diện) được đưa ra để giúp việc xác định cây một cách dễ dàng hơn. Các t…",
+      "sangNhom": "29",
+      "nguon": "nhom1211.nhom",
+      "trich": "- Yohimba (Corynanthe johimbe) : vỏ.\nTên thực vật trong bảng tên nêu trên (không toàn diện) được đưa ra để giúp việc xác định cây một cách dễ dàng hơn. Các tên thực vật nêu trên của các loài cụ thể không có nghĩa là các loài khác cùng họ cây không được phân loại vào nhóm này.\nMột số sản phẩm của nhóm này, theo các văn bản quốc tế được coi như là chất gây nghiện, được nêu trong danh sách ở cuối Chương 29.",
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "phanBiet": [
@@ -861,9 +893,6 @@
   },
   "dungTuNguon": [
     "nhom1211.nhom",
-    "sen.12119013",
-    "sen.12119095",
-    "sen.12119097",
     "tax.12112010",
     "tax.12113000",
     "tax.12114000",
@@ -871,6 +900,7 @@
     "tax.12116000",
     "tax.12119011",
     "tax.12119012",
+    "tax.12119013",
     "tax.12119015",
     "tax.12119017",
     "tax.12119018",
@@ -878,8 +908,11 @@
     "tax.12119091",
     "tax.12119092",
     "tax.12119094",
+    "tax.12119095",
+    "tax.12119097",
     "tax.12119098",
     "tax.12119099",
+    "tieuDe.1211901",
     "wco.121120",
     "wco.121130",
     "wco.121140",
@@ -887,7 +920,7 @@
     "wco.121160",
     "wco.121190"
   ],
-  "phienBan": "HS2022+SEN2022",
+  "phienBan": "HS2022",
   "taoBoi": {
     "provider": "dev-zcode-mm",
     "model": null,
@@ -895,8 +928,8 @@
     "ms": 2
   },
   "kiemTra": {
-    "tong": 40,
-    "dat": 40,
+    "tong": 45,
+    "dat": 45,
     "loai": 0,
     "nguonBiCat": []
   },

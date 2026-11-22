@@ -70,6 +70,22 @@
    "nguon": "nhom1704.nhom",
    "trich": "bột nhão từ đường, có thêm chất béo với tỉ lệ tương đối lớn và, đôi khi, có sữa hoặc quả hạch (nut) không dùng trực tiếp làm mứt, kẹo (nhóm 21.06).",
    "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "loai": "LOAI_TRU",
+   "dieuKien": "Các chế phẩm dùng làm thức ăn được làm ngọt như rau, quả, vỏ trái cây... được bảo quản bằng đường (nhóm 20.06) và mứt, thạch trái cây",
+   "sangNhom": "2006|2007",
+   "nguon": "nhom1704.nhom",
+   "trich": "(c) Các chế phẩm dùng làm thức ăn được làm ngọt như rau, quả, vỏ trái cây... được bảo quản bằng đường (nhóm 20.06) và mứt, thạch trái cây... (nhóm 20.07).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "loai": "LOAI_TRU",
+   "dieuKien": "Dược phẩm thuộc Chương 30",
+   "sangNhom": "30",
+   "nguon": "nhom1704.nhom",
+   "trich": "(e) Dược phẩm thuộc Chương 30.",
+   "nguonLoai": "AI_DA_KIEM"
   }
  ],
  "phanBiet": [
@@ -137,9 +153,77 @@
    "nguonLoai": "AI_DA_KIEM",
    "loaiKhac": false
   },
-  {"hs":"17049010","dieuKien":"tên loại hàng: Kẹo hoặc viên ngậm ho","nguon":"tax.17049010","trich":"17049010 - - Kẹo và viên ngậm ho ","nguonLoai":"CLAUDE_DUYET","loaiKhac":false,"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["Kẹo","viên ngậm ho"]}],"ranhGioi":{"phienBan":"ranh-gioi@1","duyet":{"phien":"claude-agent:tho-hs-01-20261115#soat-170490","ngay":"2026-11-15","bam":"f7254a73becf14a6825197f1def51a14c07832535422990be0423918b6b3611b"}}},
-  {"hs":"17049020","dieuKien":"tên loại hàng: Sô cô la trắng","nguon":"tax.17049020","trich":"17049020 - - Sô cô la trắng","nguonLoai":"CLAUDE_DUYET","loaiKhac":false,"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Sô cô la trắng"}],"ranhGioi":{"phienBan":"ranh-gioi@1","duyet":{"phien":"claude-agent:tho-hs-01-20261115#soat-170490","ngay":"2026-11-15","bam":"f7254a73becf14a6825197f1def51a14c07832535422990be0423918b6b3611b"}}},
-  {"hs":"17049091","dieuKien":"có chứa gelatin","nguon":"tax.17049091","trich":"17049091 - - - Dẻo, có chứa gelatin (SEN)","nguonLoai":"CLAUDE_DUYET","loaiKhac":false,"dieuKienSo":[{"fact":"coGelatin","op":"CO"}],"ranhGioi":{"phienBan":"ranh-gioi@1","duyet":{"phien":"claude-agent:tho-hs-01-20261115#soat-170490","ngay":"2026-11-15","bam":"f7254a73becf14a6825197f1def51a14c07832535422990be0423918b6b3611b"}}},
+  {
+   "hs": "17049010",
+   "dieuKien": "tên loại hàng: Kẹo hoặc viên ngậm ho",
+   "nguon": "tax.17049010",
+   "trich": "17049010 - - Kẹo và viên ngậm ho ",
+   "nguonLoai": "CLAUDE_DUYET",
+   "loaiKhac": false,
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": [
+      "Kẹo",
+      "viên ngậm ho"
+     ]
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-01-20261115#soat-170490",
+     "ngay": "2026-11-15",
+     "bam": "f7254a73becf14a6825197f1def51a14c07832535422990be0423918b6b3611b"
+    }
+   }
+  },
+  {
+   "hs": "17049020",
+   "dieuKien": "tên loại hàng: Sô cô la trắng",
+   "nguon": "tax.17049020",
+   "trich": "17049020 - - Sô cô la trắng",
+   "nguonLoai": "CLAUDE_DUYET",
+   "loaiKhac": false,
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Sô cô la trắng"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-01-20261115#soat-170490",
+     "ngay": "2026-11-15",
+     "bam": "f7254a73becf14a6825197f1def51a14c07832535422990be0423918b6b3611b"
+    }
+   }
+  },
+  {
+   "hs": "17049091",
+   "dieuKien": "có chứa gelatin",
+   "nguon": "tax.17049091",
+   "trich": "17049091 - - - Dẻo, có chứa gelatin (SEN)",
+   "nguonLoai": "CLAUDE_DUYET",
+   "loaiKhac": false,
+   "dieuKienSo": [
+    {
+     "fact": "coGelatin",
+     "op": "CO"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-01-20261115#soat-170490",
+     "ngay": "2026-11-15",
+     "bam": "f7254a73becf14a6825197f1def51a14c07832535422990be0423918b6b3611b"
+    }
+   }
+  },
   {
    "hs": "17049099",
    "dieuKien": "Loại khác",
@@ -233,13 +317,13 @@
  },
  "dungTuNguon": [
   "nhom1704.nhom",
-  "sen.17049091",
   "tax.17041000",
   "tax.17049010",
   "tax.17049020",
+  "tax.17049091",
   "tax.17049099"
  ],
- "phienBan": "HS2022+SEN2022",
+ "phienBan": "HS2022",
  "taoBoi": {
   "provider": "dev-zcode-mm",
   "model": null,
@@ -247,8 +331,8 @@
   "ms": 0
  },
  "kiemTra": {
-  "tong": 20,
-  "dat": 20,
+  "tong": 22,
+  "dat": 22,
   "loai": 0,
   "nguonBiCat": []
  }
