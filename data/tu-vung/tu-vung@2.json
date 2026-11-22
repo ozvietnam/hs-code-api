@@ -375,7 +375,9 @@
       "laNguyenToHoacHopChatNhom2844",
       "kichThuocToiDa56x45x25cm",
       "chuaPolybutylenTerephthalat",
-      "tuLanh"
+      "tuLanh",
+      "dangTam",
+      "nguonDongLuc"
     ],
     "tuVung1": {
       "trangThai": "DA_CHAM",
@@ -21320,7 +21322,9 @@
         "GIAY_XENLULO",
         "CARBON_GRAPHIT",
         "VANG_HOAC_BAC",
-        "KIM_LOAI_DAT_PHU_VANG_HOAC_BAC"
+        "KIM_LOAI_DAT_PHU_VANG_HOAC_BAC",
+        "DA_THUOC",
+        "DA_THUOC_TONG_HOP"
       ],
       "moTaGiaTri": {
         "TITAN": {
@@ -21568,6 +21572,42 @@
             ]
           },
           "cachViet": "bằng kim loại dát phủ vàng hoặc bạc"
+        },
+        "DA_THUOC": {
+          "nhanVi": "da thuộc",
+          "nhanEn": "leather",
+          "nhanZh": "皮革",
+          "cachDoc": {
+            "vi": [
+              "(?<!giả\\s+)(?<!cơ\\s+bản\\s+là\\s+)(?<!sợi\\s+)(?<!sơn\\s+cho\\s+)(?<!giày\\s+dép\\s+hoặc\\s+)da\\s+thuộc(?!\\s+(?:tổng\\s+hợp|nhân\\s+tạo))"
+            ],
+            "en": [
+              "(?<!(?:composition|reconstituted|artificial|synthetic|imitation|faux|pu|pvc|vegan|basis\\s+of)\\s+)leather(?!\\s+(?:fib(?:re|er)s?|substitute|imitation))"
+            ],
+            "zh": [
+              "(?<!再生|合成|人造|仿)皮革",
+              "真皮"
+            ]
+          },
+          "cachViet": "bằng da thuộc"
+        },
+        "DA_THUOC_TONG_HOP": {
+          "nhanVi": "da thuộc tổng hợp",
+          "nhanEn": "composition leather",
+          "nhanZh": "再生皮革",
+          "cachDoc": {
+            "vi": [
+              "da\\s+(?:thuộc\\s+)?tổng\\s+hợp"
+            ],
+            "en": [
+              "(?:composition|reconstituted)\\s+leather"
+            ],
+            "zh": [
+              "再生皮革",
+              "合成皮革"
+            ]
+          },
+          "cachViet": "bằng da thuộc tổng hợp"
         }
       },
       "cachDoc": {
@@ -21585,7 +21625,7 @@
         "vi": "Hàng làm bằng vật liệu nào: titan, song/mây, xi măng/bê tông/đá nhân tạo, xà cừ/đồi mồi, vỏ điệp giấy, gelatin, vàng hoặc mạ vàng, vật liệu dệt, giấy/bột giấy/xơ sợi xenlulo hay carbon và graphit?",
         "zh": "该货物由哪种材料制成：钛、藤、水泥／混凝土／人造石、珍珠母／玳瑁、海月壳、明胶、金或镀金、纺织材料、纸／纸浆／纤维素纤维，还是碳和石墨？"
       },
-      "ghiChu": "Chữ biểu 9021.29.20 \"Bằng titan\", 9401.69.10 \"Có tựa lưng và/hoặc phần để ngồi làm bằng song, mây (SEN)\", 9401.79.10 \"Có tựa lưng và/hoặc phần để ngồi làm bằng song, mây (SEN)\", 9406.90.40 \"Loại khác, bằng xi măng, bằng bê tông hoặc đá nhân tạo\", 9602.00.10 \"Vỏ viên nhộng bằng gelatin dùng cho dược phẩm\", 9608.91.10 \"Bằng vàng hoặc mạ vàng\", 9405.99.10 \"Chụp đèn bằng vật liệu dệt\", 9612.10.10 \"Bằng vật liệu dệt\", 9619.00.11 \"Lõi thấm hút bằng vật liệu dệt\", 9619.00.12 \"Băng vệ sinh (miếng) và băng vệ sinh dạng ống (tampons) từ giấy, bột giấy, tấm xơ sợi xenlulo hoặc màng xơ sợi xenlulo\", 9620.00.20 \"Bằng carbon và graphit\". Tiêu đề (9601901) \"Xà cừ hoặc đồi mồi đã gia công và các sản phẩm làm từ chúng\" (XA_CU_HOAC_DOI_MOI), (9601902) \"Vỏ điệp giấy đã gia công và các sản phẩm làm từ chúng\" (VO_DIEP_GIAY; EN \"Worked capiz shells\"). chatLieu @1 đóng băng nên các vật liệu này là khoá @2 riêng; mỗi giá trị là MỘT cụm vật liệu đúng như chữ biểu nêu (nhóm \"A, B hoặc C\" là một giá trị). Không đọc \"vải dệt\" (chatLieu), không đọc \"gelatin\" trần hay \"titan\" trần (chất chứa gelatin, hợp kim chứa titan, titan oxit), không đọc \"bằng vàng\" trần (\"bằng vàng hoặc bạc\" 7115.90.10 sẽ đọc nhầm), không đọc \"vật liệu dệt khác/nhân tạo\" (tầng loại khác / loaiSoiDet). Khoá KHÔNG mang vị trí (chatLieu có viTri): \"mặt ngoài bằng vật liệu dệt\" cũng đọc VAT_LIEU_DET — người soạn spec chỉ dùng ở dòng mà chữ biểu chính là \"bằng <vật liệu>\". Đề xuất chatLieu thêm giá trị titan/song-mây/xi măng/xà cừ/gelatin/vàng/vật liệu dệt/bột giấy-xơ xenlulo/carbon-graphit (11 ghi chú, 9 PN6).",
+      "ghiChu": "Chữ biểu 9021.29.20 \"Bằng titan\", 9401.69.10 \"Có tựa lưng và/hoặc phần để ngồi làm bằng song, mây (SEN)\", 9401.79.10 \"Có tựa lưng và/hoặc phần để ngồi làm bằng song, mây (SEN)\", 9406.90.40 \"Loại khác, bằng xi măng, bằng bê tông hoặc đá nhân tạo\", 9602.00.10 \"Vỏ viên nhộng bằng gelatin dùng cho dược phẩm\", 9608.91.10 \"Bằng vàng hoặc mạ vàng\", 9405.99.10 \"Chụp đèn bằng vật liệu dệt\", 9612.10.10 \"Bằng vật liệu dệt\", 9619.00.11 \"Lõi thấm hút bằng vật liệu dệt\", 9619.00.12 \"Băng vệ sinh (miếng) và băng vệ sinh dạng ống (tampons) từ giấy, bột giấy, tấm xơ sợi xenlulo hoặc màng xơ sợi xenlulo\", 9620.00.20 \"Bằng carbon và graphit\". Tiêu đề (9601901) \"Xà cừ hoặc đồi mồi đã gia công và các sản phẩm làm từ chúng\" (XA_CU_HOAC_DOI_MOI), (9601902) \"Vỏ điệp giấy đã gia công và các sản phẩm làm từ chúng\" (VO_DIEP_GIAY; EN \"Worked capiz shells\"). chatLieu @1 đóng băng nên các vật liệu này là khoá @2 riêng; mỗi giá trị là MỘT cụm vật liệu đúng như chữ biểu nêu (nhóm \"A, B hoặc C\" là một giá trị). Không đọc \"vải dệt\" (chatLieu), không đọc \"gelatin\" trần hay \"titan\" trần (chất chứa gelatin, hợp kim chứa titan, titan oxit), không đọc \"bằng vàng\" trần (\"bằng vàng hoặc bạc\" 7115.90.10 sẽ đọc nhầm), không đọc \"vật liệu dệt khác/nhân tạo\" (tầng loại khác / loaiSoiDet). Khoá KHÔNG mang vị trí (chatLieu có viTri): \"mặt ngoài bằng vật liệu dệt\" cũng đọc VAT_LIEU_DET — người soạn spec chỉ dùng ở dòng mà chữ biểu chính là \"bằng <vật liệu>\". Đề xuất chatLieu thêm giá trị titan/song-mây/xi măng/xà cừ/gelatin/vàng/vật liệu dệt/bột giấy-xơ xenlulo/carbon-graphit (11 ghi chú, 9 PN6). + DA_THUOC & DA_THUOC_TONG_HOP (#1584): 4112.00.00 \"Da thuộc đã được gia công thêm...\", 4114.10.00 \"Da thuộc dầu...\", 4205.00.30 \"Dây hoặc dây tết bằng da thuộc...\", 6403.20.00 \"Giày, dép có đế ngoài bằng da thuộc...\", 4115.10.00 \"Da thuộc tổng hợp với thành phần cơ bản là da thuộc hoặc sợi da thuộc...\" (các nhóm/dòng hai giá trị để trong ngoặc: 4115.20.00, 4202.11, 4202.21.00, 4202.31.00, 4202.91, 42.03, 6404.20.00, 6405.10.00, 9305.91.10; \"da thuộc tổng hợp\" không khớp nhầm DA_THUOC).",
       "cachViet": {
         "vi": "{giaTri}"
       },
@@ -25463,6 +25503,180 @@
         "zh": "该产品是否由亚麻（税目53.01）制成？"
       },
       "ghiChu": "Chữ biểu 6302.59.10 / 6302.99.10 \"Từ lanh\" / EN \"Of flax\" (phân biệt với đay, gai ramie, xơ dừa… trong cùng nhóm vật liệu dệt thực vật khác) (OZV-1792).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "dangTam",
+      "kieu": "CO_KHONG",
+      "nhanVi": "dạng tấm",
+      "nhanEn": "in sheets / slabs",
+      "nhanZh": "板状／片状",
+      "cachDoc": {
+        "vi": [
+          "(?<!ngũ\\s+cốc\\s+)(?:ở\\s+)?dạng\\s+tấm(?!\\s+(?:đun|rời\\s+để\\s+ghép|đan))",
+          "(?:dạng\\s+)?tấm\\s+và\\s+phiến",
+          "tấm\\s+(?:mỏng|phẳng|lớn|plastic|nhựa|cao\\s+su|gỗ|kim\\s+loại|thép|nhôm|đồng|đá|da|thủy\\s+tinh|kính|mica|xenlulo)"
+        ],
+        "en": [
+          "in\\s+(?:the\\s+form\\s+of\\s+)?(?:plates?\\s+and\\s+)?sheets?",
+          "sheet\\s+form",
+          "slabs?",
+          "plates?\\s+and\\s+sheets?",
+          "sheeting\\s+of\\s+(?:plastics?|rubber)",
+          "(?:plastic|rubber|metal|steel|alumini?um|wood|glass|stone|leather)\\s+sheets?"
+        ],
+        "zh": [
+          "板状",
+          "片状",
+          "呈板状",
+          "成张",
+          "成板",
+          "(?:塑料|橡胶|金属|钢|铝|玻璃)板材?"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không có",
+          "không",
+          "chưa",
+          "trừ",
+          "ko",
+          "chẳng",
+          "non-?",
+          "without",
+          "no",
+          "not",
+          "excluding",
+          "other than",
+          "无",
+          "非",
+          "不",
+          "没有",
+          "未"
+        ]
+      },
+      "cachDocKhong": {
+        "vi": [
+          "không\\s+(?:phải\\s+)?(?:ở\\s+)?dạng\\s+tấm",
+          "(?:ở\\s+)?dạng\\s+(?:khối|thanh|que|cuộn|ống|sợi)(?!\\s*,?\\s*(?:tấm|phiến))"
+        ],
+        "en": [
+          "not\\s+in\\s+(?:the\\s+form\\s+of\\s+)?sheets?",
+          "not\\s+in\\s+sheet\\s+form",
+          "in\\s+(?:blocks?|coils?|rolls?|rods?|tubes?|pipes?)"
+        ],
+        "zh": [
+          "非板状",
+          "非片状",
+          "不是板状",
+          "块状",
+          "成卷",
+          "卷状",
+          "棒状"
+        ]
+      },
+      "cachViet": {
+        "vi": "dạng tấm",
+        "viPhuDinh": "không phải dạng tấm"
+      },
+      "cauHoi": {
+        "vi": "Hàng hóa có ở dạng tấm (hoặc có lớp bề mặt bằng tấm vật liệu) không?",
+        "zh": "该货物是否呈板状/片状（或表面为板材/片材）？"
+      },
+      "ghiChu": "Chữ biểu 2515.12.20 \"Dạng tấm (SEN)\", 2516.12.20 \"Dạng tấm (SEN)\", 3920.20.91 \"Dạng tấm và phiến (SEN)\", 3920.94.10 \"Dạng tấm phenol formaldehyt (bakelit)\", 4202.22.10 \"Mặt ngoài bằng tấm plastic\", 4202.92.10 \"Túi đựng đồ vệ sinh cá nhân, bằng tấm plastic\", 6802.93.10 \"Dạng tấm đã được đánh bóng\", 9001.20.00 \"Vật liệu phân cực dạng tấm và lá\", 2515.12.10 \"Dạng khối (SEN)\" (đọc false). Phân biệt với dangKhoiHoacTamDa (chỉ đá khối/tấm), dangTamPhienMang (nhựa bán thành phẩm), dangDaiDaiTamPhoDung (thép); tránh bắt nhầm ngũ cốc dạng tấm (11.03), dạng tấm rời để ghép (3918.10.11), tấm ảnh, tấm bưu thiếp, tấm thảm, tấm nệm (#1584).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "nguonDongLuc",
+      "kieu": "LIET_KE",
+      "nhanVi": "nguồn động lực (thủy lực / khí nén)",
+      "nhanEn": "power source (hydraulic / pneumatic)",
+      "nhanZh": "动力源（液压／气动）",
+      "giaTriHopLe": [
+        "THUY_LUC",
+        "KHI_NEN"
+      ],
+      "moTaGiaTri": {
+        "THUY_LUC": {
+          "nhanVi": "thủy lực",
+          "nhanEn": "hydraulic",
+          "nhanZh": "液压",
+          "cachDoc": {
+            "vi": [
+              "(?<!(?:vôi|xi\\s+măng|bộ\\s+hãm|chất\\s+lỏng)\\s+)th(?:ủy|uỷ)\\s+lực"
+            ],
+            "en": [
+              "(?<!(?:brake|transmission)\\s+)(?:oleo)?hydraulic(?:ally)?(?!\\s+(?:lime|cements?|fluids?|oils?|brakes?))"
+            ],
+            "zh": [
+              "液压",
+              "水力(?!石灰|水泥)"
+            ]
+          },
+          "cachViet": "dùng thủy lực"
+        },
+        "KHI_NEN": {
+          "nhanVi": "khí nén",
+          "nhanEn": "pneumatic",
+          "nhanZh": "气动",
+          "cachDoc": {
+            "vi": [
+              "(?<!(?:bình|thùng|chai|xi\\s+lanh)\\s+(?:chứa|đựng)\\s+)(?<!chứa\\s+)khí\\s+nén(?!\\s+(?:hoặc|hay)\\s+khí\\s+(?:hóa|hoá)\\s+lỏng)"
+            ],
+            "en": [
+              "pneumatic(?:ally)?(?!\\s+(?:tyres?|tires?|mattress(?:es)?|cushion|rubber))",
+              "(?<!for\\s+)compressed\\s+air(?!\\s+(?:or\\s+liquefied|tanks?|containers?|cylinders?\\s+for\\s+storing))"
+            ],
+            "zh": [
+              "气动",
+              "(?<!大|胎|低|高)气压(?!计|表|传感器)"
+            ]
+          },
+          "cachViet": "dùng khí nén"
+        }
+      },
+      "cachDoc": {
+        "vi": [
+          "nguồn\\s+động\\s+lực",
+          "động\\s+lực"
+        ],
+        "en": [
+          "power\\s+source",
+          "motive\\s+power"
+        ],
+        "zh": [
+          "动力源",
+          "动力"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không có",
+          "không",
+          "chưa",
+          "trừ",
+          "ko",
+          "chẳng",
+          "non-?",
+          "without",
+          "no",
+          "not",
+          "excluding",
+          "other than",
+          "无",
+          "非",
+          "不",
+          "没有",
+          "未",
+          "除"
+        ]
+      },
+      "cachViet": {
+        "vi": "{giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Nguồn động lực / dẫn động chính của thiết bị là thủy lực hay khí nén?",
+        "zh": "该设备的主要动力源是液压还是气动？"
+      },
+      "ghiChu": "Chữ biểu 8467.92.00 \"Của dụng cụ hoạt động bằng khí nén\", 9822.20.00 \"Máy ép thủy lực\" (tiêu đề tầng/phân nhóm hai nguồn hoặc cấp 5–6 số: 8412.2 \"Động cơ và mô tơ thủy lực\", 8412.3 \"Động cơ và mô tơ dùng khí nén\", 8425.42 \"Loại kích và tời khác, dùng thủy lực\", 8428.20 \"Máy nâng hạ và băng tải dùng khí nén\", 8462.61 \"Máy ép thuỷ lực\", 8481.20 \"Van dùng trong truyền động dầu thủy lực hoặc khí nén\", 9032.81.00 \"Loại dùng thủy lực hoặc khí nén\"). Phân biệt với cachDieuKhien (cách điều khiển van/thiết bị, không dùng cho nguồn động lực của động cơ/máy theo SOAN-TIEU-CHI-6-SO.md L9). Hỗ trợ cả hai cách bỏ dấu \"thủy lực\" và \"thuỷ lực\"; không bắt nhầm vôi/xi măng thủy lực, dầu/chất lỏng thủy lực, bình chứa khí nén, lốp hơi pneumatic tyres (#1584).",
       "nguonLoai": "AI_DA_KIEM"
     }
   ],

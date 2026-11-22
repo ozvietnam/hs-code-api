@@ -366,6 +366,9 @@ const KHOA_MOI = {
   kichThuocToiDa56x45x25cm: 'CO_KHONG',
   chuaPolybutylenTerephthalat: 'CO_KHONG',
   tuLanh: 'CO_KHONG',
+  // 22/11/2026 (#1584): bổ sung dangTam, nguonDongLuc (và mở rộng vatLieuKhac: DA_THUOC, DA_THUOC_TONG_HOP)
+  dangTam: 'CO_KHONG',
+  nguonDongLuc: 'LIET_KE',
 };
 
 // ── 1. Nạp theo phiên bản ─────────────────────────────────────────────────────────────────────────────────────────
@@ -1282,6 +1285,100 @@ check('vietCum đơn vị @1 KHÔNG đổi ("CS: 75000W" — không cách)', T.v
   }
   const ms = Number(process.hrtime.bigint() - t0) / 1e6;
   check(`OZV-1792 ReDoS ~40.000 từ lặp trên 2 khoá mới < 2000 ms (thực tế ${ms.toFixed(0)} ms)`, ms < 2000, { ms });
+}
+
+// #1584 — mở rộng vatLieuKhac (DA_THUOC, DA_THUOC_TONG_HOP) + 2 khoá mới (dangTam, nguonDongLuc) + ReDoS ~40.000 từ lặp < 2 giây
+{
+  const DK = require('../lib/dieu-kien-so.js');
+
+  // 1. vatLieuKhac — DA_THUOC & DA_THUOC_TONG_HOP (không chạm chatLieu @1)
+  la('chữ biểu 4205.00.30 (bằng da thuộc)', 'vatLieuKhac', 'Dây hoặc dây tết bằng da thuộc dùng cho đồ trang sức hoặc sản phẩm trang điểm cá nhân', 'DA_THUOC', { bc: 'da thuộc' });
+  la('chữ biểu 4112.00.00 (da thuộc)', 'vatLieuKhac', 'Da thuộc đã được gia công thêm sau khi thuộc hoặc làm mộc, kể cả da giấy, của cừu hoặc cừu non, không có lông, đã hoặc chưa xẻ, trừ da thuộc nhóm 41.14', 'DA_THUOC');
+  la('chữ biểu 6403.20.00 (đế ngoài bằng da thuộc)', 'vatLieuKhac', 'Giày, dép có đế ngoài bằng da thuộc, và mũ giày có đai vòng qua mu bàn chân và quai xỏ ngón chân cái', 'DA_THUOC');
+  la('Mặt ngoài bằng da thuộc ⇒ DA_THUOC', 'vatLieuKhac', 'Mặt ngoài bằng da thuộc', 'DA_THUOC');
+  la('En genuine leather', 'vatLieuKhac', 'Briefcase of genuine leather', 'DA_THUOC');
+  la('Zh 真皮', 'vatLieuKhac', '牛皮真皮手提包', 'DA_THUOC');
+  la('Zh 皮革', 'vatLieuKhac', '天然皮革钱包', 'DA_THUOC');
+  la('da thuộc tổng hợp ⇒ DA_THUOC_TONG_HOP (không đụng DA_THUOC)', 'vatLieuKhac', 'Mặt ngoài bằng da thuộc tổng hợp', 'DA_THUOC_TONG_HOP', { bc: 'da thuộc tổng hợp' });
+  la('da tổng hợp ⇒ DA_THUOC_TONG_HOP', 'vatLieuKhac', 'Giày có đế ngoài bằng da tổng hợp', 'DA_THUOC_TONG_HOP');
+  la('chữ biểu 4115.10.00 (da thuộc tổng hợp với thành phần cơ bản là da thuộc hoặc sợi da thuộc) ⇒ DA_THUOC_TONG_HOP', 'vatLieuKhac', 'Da thuộc tổng hợp với thành phần cơ bản là da thuộc hoặc sợi da thuộc, dạng tấm, tấm mỏng hoặc dạng dải, có hoặc không ở dạng cuộn', 'DA_THUOC_TONG_HOP');
+  la('En composition leather with basis of leather', 'vatLieuKhac', 'Composition leather with a basis of leather or leather fibre', 'DA_THUOC_TONG_HOP');
+  la('En reconstituted leather', 'vatLieuKhac', 'Reconstituted leather sheet', 'DA_THUOC_TONG_HOP');
+  la('Zh 再生皮革', 'vatLieuKhac', '再生皮革制品', 'DA_THUOC_TONG_HOP');
+  la('Zh 合成皮革', 'vatLieuKhac', '合成皮革包', 'DA_THUOC_TONG_HOP');
+  chuaBiet('bằng vải dệt ⇒ CHUA_BIET trên vatLieuKhac', 'vatLieuKhac', 'Túi xách bằng vải dệt');
+  chuaBiet('giả da / PU leather ⇒ CHUA_BIET', 'vatLieuKhac', 'Túi xách giả da (PU leather)');
+  chuaBiet('synthetic leather En ⇒ CHUA_BIET', 'vatLieuKhac', 'Synthetic leather handbag');
+  chuaBiet('人造皮革 Zh ⇒ CHUA_BIET', 'vatLieuKhac', '人造皮革包');
+  chuaBiet('Sơn cho da thuộc 3209.10.40 ⇒ CHUA_BIET', 'vatLieuKhac', 'Sơn cho da thuộc (SEN)');
+  chuaBiet('phủ định không phải da thuộc ⇒ CHUA_BIET', 'vatLieuKhac', 'Túi xách không phải bằng da thuộc');
+  {
+    const r = chuaBiet('hai giá trị 4202.11 / 4202.21.00 ("da thuộc hoặc da thuộc tổng hợp") ⇒ CHUA_BIET', 'vatLieuKhac', 'Mặt ngoài bằng da thuộc hoặc da thuộc tổng hợp');
+    check('vatLieuKhac 4202.11 ⇒ ungVien [DA_THUOC, DA_THUOC_TONG_HOP] và kiemDieuKien đạt', JSON.stringify((r.ungVien || []).slice().sort()) === JSON.stringify(['DA_THUOC', 'DA_THUOC_TONG_HOP']) && DK.kiemDieuKien({ fact: 'vatLieuKhac', op: 'TRONG', value: ['DA_THUOC', 'DA_THUOC_TONG_HOP'] }, 'Mặt ngoài bằng da thuộc hoặc da thuộc tổng hợp') === null, r);
+  }
+  check('vietCum vatLieuKhac DA_THUOC / DA_THUOC_TONG_HOP', viet('vatLieuKhac', 'DA_THUOC') === 'bằng da thuộc' && viet('vatLieuKhac', 'DA_THUOC_TONG_HOP') === 'bằng da thuộc tổng hợp', [viet('vatLieuKhac', 'DA_THUOC'), viet('vatLieuKhac', 'DA_THUOC_TONG_HOP')]);
+
+  // 2. dangTam — CO_KHONG
+  la('chữ biểu 2515.12.20 ("Dạng tấm (SEN)")', 'dangTam', 'Dạng tấm (SEN)', true);
+  la('chữ biểu 3920.20.91 ("Dạng tấm và phiến (SEN)")', 'dangTam', 'Dạng tấm và phiến (SEN)', true);
+  la('chữ biểu 4202.22.10 ("Mặt ngoài bằng tấm plastic")', 'dangTam', 'Mặt ngoài bằng tấm plastic', true, { bc: 'tấm plastic' });
+  la('mô tả tấm cao su', 'dangTam', 'Tấm cao su lưu hóa dày 5 mm', true);
+  la('En slabs', 'dangTam', 'Polished slabs of granite', true);
+  la('En plates and sheets', 'dangTam', 'Plates and sheets of plastics', true);
+  la('En sheeting of plastics (4202.22.10)', 'dangTam', 'With outer surface of sheeting of plastics', true);
+  la('En in sheets', 'dangTam', 'Float glass in sheets', true);
+  la('Zh 板状', 'dangTam', '板状大理石', true);
+  la('Zh 塑料板材', 'dangTam', '塑料板材', true);
+  la('chữ biểu 2515.12.10 ("Dạng khối (SEN)") ⇒ false', 'dangTam', 'Dạng khối (SEN)', false);
+  la('phủ định không phải dạng tấm ⇒ false', 'dangTam', 'Hàng không phải dạng tấm', false);
+  la('En not in sheets ⇒ false', 'dangTam', 'Not in sheets', false);
+  la('Zh 非板状 ⇒ false', 'dangTam', '非板状', false);
+  chuaBiet('không bắt nhầm tấm ảnh', 'dangTam', 'Tấm ảnh gia đình đóng khung');
+  chuaBiet('không bắt nhầm tấm bưu thiếp', 'dangTam', 'Tấm bưu thiếp chúc mừng');
+  chuaBiet('không bắt nhầm tấm thảm', 'dangTam', 'Tấm thảm trải sàn dệt kim');
+  chuaBiet('không bắt nhầm tấm nệm', 'dangTam', 'Tấm nệm cao su thiên nhiên');
+  chuaBiet('không bắt nhầm ngũ cốc dạng tấm (11.03)', 'dangTam', 'Ngũ cốc dạng tấm, dạng bột thô và viên');
+  chuaBiet('không bắt nhầm dạng tấm rời để ghép (3918.10.11)', 'dangTam', 'Dạng tấm rời để ghép');
+  chuaBiet('không bắt nhầm dạng tấm hoặc dạng cuộn (6806.10.00)', 'dangTam', 'Bông len đá ở dạng rời, dạng tấm hoặc dạng cuộn');
+  chuaBiet('không có chữ dạng tấm ⇒ CHUA_BIET', 'dangTam', 'Ống thép tròn hàn nối đường kính 50 mm');
+  check('vietCum dangTam true/false', viet('dangTam', true) === 'dạng tấm' && viet('dangTam', false) === 'không phải dạng tấm', [viet('dangTam', true), viet('dangTam', false)]);
+
+  // 3. nguonDongLuc — LIET_KE THUY_LUC | KHI_NEN
+  la('Vi thủy lực (dấu ở ủ)', 'nguonDongLuc', 'Động cơ và mô tơ thủy lực', 'THUY_LUC');
+  la('Vi thuỷ lực (dấu ở ỷ — chữ biểu 8462.61)', 'nguonDongLuc', 'Máy ép thuỷ lực', 'THUY_LUC');
+  la('chữ biểu 9822.20.00 (Máy ép thủy lực)', 'nguonDongLuc', 'Máy ép thủy lực', 'THUY_LUC');
+  la('En hydraulic', 'nguonDongLuc', 'Hydraulic presses for metal working', 'THUY_LUC');
+  la('En hydraulically', 'nguonDongLuc', 'Hydraulically operated lifting jack', 'THUY_LUC');
+  la('Zh 液压', 'nguonDongLuc', '液压机', 'THUY_LUC');
+  la('Zh 水力', 'nguonDongLuc', '水力涡轮机', 'THUY_LUC');
+  la('Vi khí nén (8412.3)', 'nguonDongLuc', 'Động cơ và mô tơ dùng khí nén', 'KHI_NEN');
+  la('chữ biểu 8467.92.00 (Của dụng cụ hoạt động bằng khí nén)', 'nguonDongLuc', 'Của dụng cụ hoạt động bằng khí nén', 'KHI_NEN');
+  la('En pneumatic', 'nguonDongLuc', 'Pneumatic elevators and conveyors', 'KHI_NEN');
+  la('En compressed air', 'nguonDongLuc', 'Impact wrench powered by compressed air', 'KHI_NEN');
+  la('Zh 气动', 'nguonDongLuc', '气动扳手', 'KHI_NEN');
+  la('Zh 气压', 'nguonDongLuc', '气压驱动工具', 'KHI_NEN');
+  la('phủ định vế khí nén ⇒ chỉ còn THUY_LUC', 'nguonDongLuc', 'Động cơ thủy lực, không dùng khí nén', 'THUY_LUC');
+  chuaBiet('không bắt nhầm vôi thủy lực 2522.30.00', 'nguonDongLuc', 'Vôi thủy lực');
+  chuaBiet('không bắt nhầm xi măng thủy lực 2523.90.00', 'nguonDongLuc', 'Xi măng thủy lực khác');
+  chuaBiet('không bắt nhầm dầu phanh thủy lực 2710.19.50', 'nguonDongLuc', 'Dầu dùng trong bộ hãm thủy lực (dầu phanh)');
+  chuaBiet('không bắt nhầm thùng chứa khí nén 7613.00.00', 'nguonDongLuc', 'Các loại thùng chứa khí nén hoặc khí hóa lỏng bằng nhôm');
+  chuaBiet('không bắt nhầm pneumatic tyres 4011', 'nguonDongLuc', 'New pneumatic tyres, of rubber');
+  chuaBiet('động cơ điện ⇒ CHUA_BIET', 'nguonDongLuc', 'Động cơ điện xoay chiều 3 pha công suất 5 kW');
+  {
+    const r = chuaBiet('8481.20 hai nguồn ("dầu thủy lực hoặc khí nén") ⇒ CHUA_BIET', 'nguonDongLuc', 'Van dùng trong truyền động dầu thủy lực hoặc khí nén');
+    check('nguonDongLuc 8481.20 ⇒ ungVien [KHI_NEN, THUY_LUC] và kiemDieuKien đạt', JSON.stringify((r.ungVien || []).slice().sort()) === JSON.stringify(['KHI_NEN', 'THUY_LUC']) && DK.kiemDieuKien({ fact: 'nguonDongLuc', op: 'TRONG', value: ['THUY_LUC', 'KHI_NEN'] }, 'Van dùng trong truyền động dầu thủy lực hoặc khí nén') === null, r);
+  }
+  check('vietCum nguonDongLuc THUY_LUC / KHI_NEN', viet('nguonDongLuc', 'THUY_LUC') === 'dùng thủy lực' && viet('nguonDongLuc', 'KHI_NEN') === 'dùng khí nén', [viet('nguonDongLuc', 'THUY_LUC'), viet('nguonDongLuc', 'KHI_NEN')]);
+
+  // 4. ReDoS ~40.000 từ lặp < 2 giây (CLAUDE.md quy tắc 6b)
+  const redos1584 = Array(4000).fill('túi vải giả da dạng hộp hoặc ống bằng động cơ điện xoay chiều').join(' ');
+  const t0 = process.hrtime.bigint();
+  for (const fk of ['vatLieuKhac', 'dangTam', 'nguonDongLuc']) {
+    const r = T.docGiaTri(fk, redos1584);
+    if (r.trangThai !== 'CHUA_BIET') throw new Error(`Expected CHUA_BIET for ${fk}`);
+  }
+  const ms = Number(process.hrtime.bigint() - t0) / 1e6;
+  check(`#1584 ReDoS ~40.000 từ lặp cho vatLieuKhac, dangTam, nguonDongLuc < 2000 ms (thực tế ${ms.toFixed(0)} ms)`, ms < 2000, { ms });
 }
 
 console.log(`\n${pass} pass, ${fail} fail`);
