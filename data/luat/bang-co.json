@@ -963,6 +963,20 @@
       "dieuKienBat": "ĐANG TẮT trên máy thật (L1). Số đo không AI trên bộ để riêng S-7 đạt cổng không dấu/gõ sai >= +5pp, nhưng đổi dữ liệu đưa vào vòng 1 nên QT BẮT BUỘC phải đo trực tiếp qua Cổng thật (chuỗi mô hình máy thật) trước khi bật sản xuất; xấu hơn hoặc quá độ trễ thì tắt ngay."
     },
     {
+      "ten": "HS_TIM_CGCT",
+      "macDinh": "tắt",
+      "macDinhBat": false,
+      "loai": "cong-tac",
+      "doiQuyetDinhLLM": true,
+      "chu": "QT",
+      "mucDich": "Mở rộng tìm trước sang tên nhóm, chú giải chi tiết (chu-giai-heading.json, explanatory-notes.json), dòng biểu thuế Việt/Anh và đồ thị phân biệt qua lib/tim-cgct.js; tăng trần ứng viên TOP_NHOM từ 5 lên 10 khi bật. Chỉ ảnh hưởng khi HS_TIM_TRUOC bật. Chỉ on / 1 / true mới bật (lib/tim-truoc.js).",
+      "chungCu": {
+        "tep": "lib/tim-truoc.js",
+        "doan": "process.env.HS_TIM_CGCT || '').trim());"
+      },
+      "dieuKienBat": "ĐANG TẮT trên máy thật (L1). Số đo không AI trên bộ chuẩn 4 số cho recall 100/100 với độ trễ tăng ≤ 200 ms, nhưng vì đổi danh sách ứng viên ở vòng 1 nên QT cần đo qua Cổng thật trước khi bật sản xuất."
+    },
+    {
       "ten": "HS_TIM_KIEM_URL",
       "macDinh": "(trống) = không có máy tìm kiếm nội bộ",
       "loai": "duong-dan",

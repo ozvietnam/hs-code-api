@@ -9,7 +9,7 @@ import { readFileSync } from 'fs';
 const require = createRequire(import.meta.url);
 process.env.MIC_OFF = '1';
 process.env.HS_EVAL_EXCLUDE_HOLDOUT = '1';
-for (const k of ['ZAI_WEB_FACTS', 'HS_GON_DAU_RA', 'HS_MAX_VONG_SUA', 'HS_SO_TAY', 'HS_CLASSIFY_FAST_FIRST', 'R1_MAX_TOKENS', 'GIR_MAX_TOKENS', 'HS_CHOT_SOM_CO_KIEM', 'HS_HOI_THEO_SO_TAY', 'HS_EMBED_POOL', 'HS_TIM_TRUOC', 'HS_TIM_TRUOC_NAP', 'HS_ALIAS_SEARCH']) {
+for (const k of ['ZAI_WEB_FACTS', 'HS_GON_DAU_RA', 'HS_MAX_VONG_SUA', 'HS_SO_TAY', 'HS_CLASSIFY_FAST_FIRST', 'R1_MAX_TOKENS', 'GIR_MAX_TOKENS', 'HS_CHOT_SOM_CO_KIEM', 'HS_HOI_THEO_SO_TAY', 'HS_EMBED_POOL', 'HS_TIM_TRUOC', 'HS_TIM_TRUOC_NAP', 'HS_TIM_CGCT', 'HS_ALIAS_SEARCH']) {
   delete process.env[k];
 }
 process.env.CLASSIFY_BUDGET_MS = '285000';
