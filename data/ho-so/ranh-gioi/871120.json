@@ -4,13 +4,19 @@
   "nhom": "8711",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T1800#soan-871120",
     "ngay": "2026-11-07"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1837#soat-871120",
+    "ngay": "2026-11-22",
+    "ghiChu": "Bỏ điều kiện thu hẹp SEN ở 87112011/91 và 87112013/93 theo traVe (OZV-1837)",
+    "bam": "7157df6256cd919018e787d1780c9371a331c00c0395c8516e5684536aad7918"
+  },
   "dieuKienNut": [
     {
       "id": "871120~r17604",
@@ -23,7 +29,7 @@
           "value": "Xe mô tô"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": false
     },
     {
@@ -37,7 +43,7 @@
           "value": "Xe mô tô"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": false
     },
     {
@@ -50,27 +56,22 @@
           "op": "KHONG"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
     {
       "hs": "87112011",
-      "nguon": "sen.87112011",
-      "trich": "Xe mô tô địa hình là một loại hình mô tô thể thao hoặc xe đua mọi địa hình được dùng trong cung đường có địa hình phức tạp",
+      "nguon": "tax.87112011",
+      "trich": "87112011 - - - Xe mô tô địa hình (SEN)",
       "dieuKienSo": [
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Xe mô tô địa hình"
-        },
-        {
-          "fact": "congDung",
-          "op": "CONG_DUNG",
-          "value": "đua mọi địa hình"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87112012",
@@ -86,26 +87,20 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87112013",
-      "nguon": "sen.87112013",
-      "trich": "Xe “pocket motorcycle” là mô tô loại nhỏ. Nó có chiều cao thông thường dưới 50 cm (20 in), và chiều dài lên đến 1 m (3 ft 3 in). Dung tích xi lanh của nó chủ yếu nằm trong khoảng từ 40 đến 50 cc nhưng có thể lên đến 150 cc",
+      "nguon": "tax.87112013",
+      "trich": "87112013 - - - Xe “pocket motorcycle” (SEN)",
       "dieuKienSo": [
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "xe “pocket motorcycle”"
-        },
-        {
-          "fact": "chieuCao",
-          "op": "<",
-          "value": 50,
-          "donVi": "cm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87112014",
@@ -125,7 +120,7 @@
           "donVi": "cc"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87112015",
@@ -145,39 +140,34 @@
           "donVi": "cc"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87112016",
       "nguon": "tax.87112016",
       "trich": "87112016 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87112019",
       "nguon": "tax.87112019",
       "trich": "87112019 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87112091",
-      "nguon": "sen.87112091",
-      "trich": "Xe mô tô địa hình là một loại hình mô tô thể thao hoặc xe đua mọi địa hình được dùng trong cung đường có địa hình phức tạp",
+      "nguon": "tax.87112091",
+      "trich": "87112091 - - - Xe mô tô địa hình (SEN)",
       "dieuKienSo": [
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Xe mô tô địa hình"
-        },
-        {
-          "fact": "congDung",
-          "op": "CONG_DUNG",
-          "value": "đua mọi địa hình"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87112092",
@@ -193,26 +183,20 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87112093",
-      "nguon": "sen.87112093",
-      "trich": "Xe “pocket motorcycle” là mô tô loại nhỏ. Nó có chiều cao thông thường dưới 50 cm (20 in), và chiều dài lên đến 1 m (3 ft 3 in). Dung tích xi lanh của nó chủ yếu nằm trong khoảng từ 40 đến 50 cc nhưng có thể lên đến 150 cc",
+      "nguon": "tax.87112093",
+      "trich": "87112093 - - - Xe “pocket motorcycle” (SEN)",
       "dieuKienSo": [
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "xe “pocket motorcycle”"
-        },
-        {
-          "fact": "chieuCao",
-          "op": "<",
-          "value": 50,
-          "donVi": "cm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87112094",
@@ -232,7 +216,7 @@
           "donVi": "cc"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87112095",
@@ -252,21 +236,21 @@
           "donVi": "cc"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87112096",
       "nguon": "tax.87112096",
       "trich": "87112096 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87112099",
       "nguon": "tax.87112099",
       "trich": "87112099 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -349,26 +333,6 @@
       "ma": "87112099",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.87112099 \"Loại khác\" trần ⇒ không điều kiện"
-    },
-    {
-      "ma": "87112011",
-      "loai": "QUYET_DINH",
-      "ghiChu": "Nghĩa hẹp theo SEN: sen.87112011 \"một loại hình mô tô thể thao hoặc xe đua mọi địa hình được dùng trong cung đường có địa hình phức tạp\" ⇒ thêm congDung \"đua mọi địa hình\" — xe mô tô địa hình theo SEN là xe đua mọi địa hình."
-    },
-    {
-      "ma": "87112091",
-      "loai": "QUYET_DINH",
-      "ghiChu": "Nghĩa hẹp theo SEN: sen.87112091 \"một loại hình mô tô thể thao hoặc xe đua mọi địa hình được dùng trong cung đường có địa hình phức tạp\" ⇒ thêm congDung \"đua mọi địa hình\" — xe mô tô địa hình theo SEN là xe đua mọi địa hình."
-    },
-    {
-      "ma": "87112013",
-      "loai": "QUYET_DINH",
-      "ghiChu": "Nghĩa hẹp theo SEN: sen.87112013 \"chiều cao thông thường dưới 50 cm (20 in), và chiều dài lên đến 1 m\" ⇒ thêm chieuCao < 50 cm — pocket motorcycle theo SEN là mô tô nhỏ cao dưới 50 cm."
-    },
-    {
-      "ma": "87112093",
-      "loai": "QUYET_DINH",
-      "ghiChu": "Nghĩa hẹp theo SEN: sen.87112093 \"chiều cao thông thường dưới 50 cm (20 in), và chiều dài lên đến 1 m\" ⇒ thêm chieuCao < 50 cm — pocket motorcycle theo SEN là mô tô nhỏ cao dưới 50 cm."
     }
   ],
   "traVe": [

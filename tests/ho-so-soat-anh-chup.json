@@ -937,19 +937,19 @@
    },
    {
     "stt": 5,
-    "maHs": "40169911",
+    "maHs": "84818011",
     "mucSanSang": "NEN_SUA",
     "kiem": [
      {
       "nhom": "K1",
       "trangThai": "CANH_BAO",
       "ma": "MISSING_MATERIAL",
-      "noiDung": "Chương 40 khuyến nghị ghi thành phần/vật liệu",
-      "goiYSua": "Ghi rõ chất liệu/thành phần.",
+      "noiDung": "Nhóm 8481 — thiếu Vật liệu chính trong mô tả ECUS",
+      "goiYSua": "nhôm, thép, nhựa",
       "basis": "HEURISTIC",
       "evidence": [
-       "Câu khai (48 ký tự) — MISSING_MATERIAL ở thanhPhanCauTao",
-       "điểm bộ chấm 56/100 (WEAK); trừ: MISSING_MATERIAL −10, MISSING_RUBBERTYPE −8, MISSING_FORM −8, MISSING_APPLICATION −8, MISMATCH_HS −10"
+       "Câu khai (48 ký tự) — MISSING_MATERIAL ở chapterSpecific.material",
+       "điểm bộ chấm 52/100 (WEAK); trừ: MISSING_VALVETYPE −8, MISSING_MATERIAL −8, MISSING_PRESSURERATING −8, MISSING_DIMENSIONS −8, RECOMMENDED_MODELNUMBER −3, RECOMMENDED_VOLTAGE −3, MISMATCH_HS −10"
       ],
       "nguon": [
        {
@@ -958,20 +958,20 @@
         "phienBan": "Chỉ tiêu 1.78 điểm (1) mẫu số 01 Phụ lục II Thông tư 38/2015/TT-BTC (sửa đổi bởi TT 39/2018/TT-BTC, TT 121/2025/TT-BTC); CV 5189/TCHQ-GSQL (2019); CV 755/TCHQ-GSQL (2020)"
        }
       ],
-      "diem": 56,
+      "diem": 52,
       "mucDiem": "WEAK"
      },
      {
       "nhom": "K1",
       "trangThai": "DAT",
       "ma": "THIEU_THONG_SO_THEO_NHOM",
-      "noiDung": "Gợi ý bổ sung thông số đặc thù của nhóm hàng (lời khuyên viết mô tả, không phải lỗi): Loại cao su trong mô tả ECUS; Dạng hàng trong mô tả ECUS; Công dụng cụ thể trong mô tả ECUS.",
-      "goiYSua": "NR, SBR, NBR… | tấm, ống, hạt… | dùng cho…",
+      "noiDung": "Gợi ý bổ sung thông số đặc thù của nhóm hàng (lời khuyên viết mô tả, không phải lỗi): Loại van trong mô tả ECUS; Áp suất làm việc trong mô tả ECUS; Kích thước trong mô tả ECUS.",
+      "goiYSua": "cầu, bi, điện từ | bar, PN | DxRxC mm/m",
       "basis": "HEURISTIC",
       "evidence": [
-       "MISSING_RUBBERTYPE: Nhóm 4016 — thiếu Loại cao su trong mô tả ECUS",
-       "MISSING_FORM: Nhóm 4016 — thiếu Dạng hàng trong mô tả ECUS",
-       "MISSING_APPLICATION: Nhóm 4016 — thiếu Công dụng cụ thể trong mô tả ECUS"
+       "MISSING_VALVETYPE: Nhóm 8481 — thiếu Loại van trong mô tả ECUS",
+       "MISSING_PRESSURERATING: Nhóm 8481 — thiếu Áp suất làm việc trong mô tả ECUS",
+       "MISSING_DIMENSIONS: Nhóm 8481 — thiếu Kích thước trong mô tả ECUS"
       ],
       "nguon": [
        {
@@ -989,18 +989,18 @@
        }
       ],
       "loiKhuyen": true,
-      "diem": 56,
+      "diem": 52,
       "mucDiem": "WEAK"
      },
      {
       "nhom": "K2",
       "trangThai": "CANH_BAO",
       "ma": "KHAC_NHOM",
-      "noiDung": "Mã khai 40169911 khác nhóm 4 số so với mã hệ thống chọn 96170020. Xem lại mã trước khi truyền, hoặc chuẩn bị giải trình.",
-      "goiYSua": "Đối chiếu chú giải và tiền lệ của 40169911 và 96170020 (gói căn cứ /api/evidence-pack).",
+      "noiDung": "Mã khai 84818011 khác nhóm 4 số so với mã hệ thống chọn 96170020. Xem lại mã trước khi truyền, hoặc chuẩn bị giải trình.",
+      "goiYSua": "Đối chiếu chú giải và tiền lệ của 84818011 và 96170020 (gói căn cứ /api/evidence-pack).",
       "basis": "LLM_ASSERTED",
       "evidence": [
-       "mã khai 40169911",
+       "mã khai 84818011",
        "mã hệ thống chọn 96170020 (trạng thái RESOLVED_BY_LLM, độ tin 70)",
        "lý do (AI): stub"
       ],
@@ -1027,7 +1027,7 @@
       "nguon": [
        {
         "backend": "hs-code-api",
-        "duongDan": "data/tax.json#40169911",
+        "duongDan": "data/tax.json#84818011",
         "phienBan": "2026-01-01"
        }
       ],
@@ -1036,19 +1036,20 @@
      {
       "nhom": "K4",
       "trangThai": "DAT",
-      "ma": "KHONG_KHAI_ACFTA",
-      "noiDung": "Dòng không khai ưu đãi ACFTA / C/O mẫu E.",
+      "ma": "CO_THE_HUONG_ACFTA",
+      "noiDung": "Dòng không khai ACFTA. Biểu có ưu đãi ACFTA 0% (MFN 5%) cho xuất xứ CN nếu có C/O mẫu E hợp lệ.",
+      "goiYSua": "Cân nhắc xin C/O mẫu E để hưởng ACFTA.",
       "basis": "RULE_TABLE",
       "evidence": [
-       "ACFTA trong biểu: \"50\"",
+       "ACFTA trong biểu: \"0 (-KH, PH)\"",
        "xuất xứ khai CN",
-       "MFN 10",
-       "ACFTA 50% CAO HƠN MFN 10% — nên khai MFN, không dùng C/O mẫu E."
+       "MFN 5",
+       "ACFTA 0% khi có C/O mẫu E hợp lệ."
       ],
       "nguon": [
        {
         "backend": "hs-code-api",
-        "duongDan": "data/tax.json#40169911",
+        "duongDan": "data/tax.json#84818011",
         "phienBan": "2026-01-01"
        },
        {
@@ -1060,19 +1061,16 @@
      {
       "nhom": "K5",
       "trangThai": "DAT",
-      "ma": "CO_LUU_Y_CHINH_SACH",
-      "noiDung": "Không thấy nghĩa vụ bắt buộc theo mã; có lưu ý chính sách cần đọc (evidence).",
+      "ma": "CHUA_GHI_NHAN_CHINH_SACH",
+      "noiDung": "Dữ liệu CHƯA ghi nhận chính sách quản lý cho mã này — không có nghĩa là không có. Kiểm tra văn bản quản lý chuyên ngành nếu hàng có tính chất đặc thù.",
       "basis": "DETERMINISTIC",
       "evidence": [
-       "NOTICE: Có thể: cấm nhập khẩu — 08/2023/TT-BCT",
-       "NOTICE: Hàng tiêu dùng QSD cấp NK (08/2023/TT-BCT - PL1.I) — ghi chú: chỉ áp với hàng đã qua sử dụng; dòng khai mới 100%",
-       "NOTICE: HH tạm ngừng KD TNTX CK (08/2023/TT-BCT - PL2)",
-       "NOTICE: DM HH mua bán, trao đổi qua cửa khẩu phụ, lối mở biên giới của thương nhân (42/2019/TT-BCT, 33/2025/TT-BCT)"
+       "policyStatus NOT_RECORDED"
       ],
       "nguon": [
        {
         "backend": "hs-code-api",
-        "duongDan": "/api/tax?hs=40169911",
+        "duongDan": "/api/tax?hs=84818011",
         "phienBan": "2026-01-01"
        }
       ]
@@ -1135,7 +1133,7 @@
       "noiDung": "Không thấy dấu hiệu máy móc chưa lắp ráp/tháo rời trong mô tả (nhận bằng từ khoá).",
       "basis": "HEURISTIC",
       "evidence": [
-       "chương 40"
+       "chương 84"
       ],
       "nguon": [
        {
@@ -1204,7 +1202,7 @@
     "Dòng 4: mã khai khác nhóm 4 số với mã hệ thống chọn.",
     "Dòng 4: chênh lệch thuế MFN giữa mã khai (20%) và mã hệ thống chọn (25%) ≥ 5 điểm phần trăm.",
     "Dòng 5: mã khai khác nhóm 4 số với mã hệ thống chọn.",
-    "Dòng 5: chênh lệch thuế MFN giữa mã khai (10%) và mã hệ thống chọn (25%) ≥ 5 điểm phần trăm."
+    "Dòng 5: chênh lệch thuế MFN giữa mã khai (5%) và mã hệ thống chọn (25%) ≥ 5 điểm phần trăm."
    ]
   }
  },
@@ -2065,19 +2063,19 @@
    },
    {
     "stt": 5,
-    "maHs": "40169911",
+    "maHs": "84818011",
     "mucSanSang": "NEN_SUA",
     "kiem": [
      {
       "nhom": "K1",
       "trangThai": "CANH_BAO",
       "ma": "MISSING_MATERIAL",
-      "noiDung": "Chương 40 khuyến nghị ghi thành phần/vật liệu",
-      "goiYSua": "Ghi rõ chất liệu/thành phần.",
+      "noiDung": "Nhóm 8481 — thiếu Vật liệu chính trong mô tả ECUS",
+      "goiYSua": "nhôm, thép, nhựa",
       "basis": "HEURISTIC",
       "evidence": [
-       "Câu khai (48 ký tự) — MISSING_MATERIAL ở thanhPhanCauTao",
-       "điểm bộ chấm 56/100 (WEAK); trừ: MISSING_MATERIAL −10, MISSING_RUBBERTYPE −8, MISSING_FORM −8, MISSING_APPLICATION −8, MISMATCH_HS −10"
+       "Câu khai (48 ký tự) — MISSING_MATERIAL ở chapterSpecific.material",
+       "điểm bộ chấm 52/100 (WEAK); trừ: MISSING_VALVETYPE −8, MISSING_MATERIAL −8, MISSING_PRESSURERATING −8, MISSING_DIMENSIONS −8, RECOMMENDED_MODELNUMBER −3, RECOMMENDED_VOLTAGE −3, MISMATCH_HS −10"
       ],
       "nguon": [
        {
@@ -2086,20 +2084,20 @@
         "phienBan": "Chỉ tiêu 1.78 điểm (1) mẫu số 01 Phụ lục II Thông tư 38/2015/TT-BTC (sửa đổi bởi TT 39/2018/TT-BTC, TT 121/2025/TT-BTC); CV 5189/TCHQ-GSQL (2019); CV 755/TCHQ-GSQL (2020)"
        }
       ],
-      "diem": 56,
+      "diem": 52,
       "mucDiem": "WEAK"
      },
      {
       "nhom": "K1",
       "trangThai": "DAT",
       "ma": "THIEU_THONG_SO_THEO_NHOM",
-      "noiDung": "Gợi ý bổ sung thông số đặc thù của nhóm hàng (lời khuyên viết mô tả, không phải lỗi): Loại cao su trong mô tả ECUS; Dạng hàng trong mô tả ECUS; Công dụng cụ thể trong mô tả ECUS.",
-      "goiYSua": "NR, SBR, NBR… | tấm, ống, hạt… | dùng cho…",
+      "noiDung": "Gợi ý bổ sung thông số đặc thù của nhóm hàng (lời khuyên viết mô tả, không phải lỗi): Loại van trong mô tả ECUS; Áp suất làm việc trong mô tả ECUS; Kích thước trong mô tả ECUS.",
+      "goiYSua": "cầu, bi, điện từ | bar, PN | DxRxC mm/m",
       "basis": "HEURISTIC",
       "evidence": [
-       "MISSING_RUBBERTYPE: Nhóm 4016 — thiếu Loại cao su trong mô tả ECUS",
-       "MISSING_FORM: Nhóm 4016 — thiếu Dạng hàng trong mô tả ECUS",
-       "MISSING_APPLICATION: Nhóm 4016 — thiếu Công dụng cụ thể trong mô tả ECUS"
+       "MISSING_VALVETYPE: Nhóm 8481 — thiếu Loại van trong mô tả ECUS",
+       "MISSING_PRESSURERATING: Nhóm 8481 — thiếu Áp suất làm việc trong mô tả ECUS",
+       "MISSING_DIMENSIONS: Nhóm 8481 — thiếu Kích thước trong mô tả ECUS"
       ],
       "nguon": [
        {
@@ -2117,7 +2115,7 @@
        }
       ],
       "loiKhuyen": true,
-      "diem": 56,
+      "diem": 52,
       "mucDiem": "WEAK"
      },
      {
@@ -2146,7 +2144,7 @@
       "nguon": [
        {
         "backend": "hs-code-api",
-        "duongDan": "data/tax.json#40169911",
+        "duongDan": "data/tax.json#84818011",
         "phienBan": "2026-01-01"
        }
       ],
@@ -2155,19 +2153,20 @@
      {
       "nhom": "K4",
       "trangThai": "DAT",
-      "ma": "KHONG_KHAI_ACFTA",
-      "noiDung": "Dòng không khai ưu đãi ACFTA / C/O mẫu E.",
+      "ma": "CO_THE_HUONG_ACFTA",
+      "noiDung": "Dòng không khai ACFTA. Biểu có ưu đãi ACFTA 0% (MFN 5%) cho xuất xứ CN nếu có C/O mẫu E hợp lệ.",
+      "goiYSua": "Cân nhắc xin C/O mẫu E để hưởng ACFTA.",
       "basis": "RULE_TABLE",
       "evidence": [
-       "ACFTA trong biểu: \"50\"",
+       "ACFTA trong biểu: \"0 (-KH, PH)\"",
        "xuất xứ khai CN",
-       "MFN 10",
-       "ACFTA 50% CAO HƠN MFN 10% — nên khai MFN, không dùng C/O mẫu E."
+       "MFN 5",
+       "ACFTA 0% khi có C/O mẫu E hợp lệ."
       ],
       "nguon": [
        {
         "backend": "hs-code-api",
-        "duongDan": "data/tax.json#40169911",
+        "duongDan": "data/tax.json#84818011",
         "phienBan": "2026-01-01"
        },
        {
@@ -2179,19 +2178,16 @@
      {
       "nhom": "K5",
       "trangThai": "DAT",
-      "ma": "CO_LUU_Y_CHINH_SACH",
-      "noiDung": "Không thấy nghĩa vụ bắt buộc theo mã; có lưu ý chính sách cần đọc (evidence).",
+      "ma": "CHUA_GHI_NHAN_CHINH_SACH",
+      "noiDung": "Dữ liệu CHƯA ghi nhận chính sách quản lý cho mã này — không có nghĩa là không có. Kiểm tra văn bản quản lý chuyên ngành nếu hàng có tính chất đặc thù.",
       "basis": "DETERMINISTIC",
       "evidence": [
-       "NOTICE: Có thể: cấm nhập khẩu — 08/2023/TT-BCT",
-       "NOTICE: Hàng tiêu dùng QSD cấp NK (08/2023/TT-BCT - PL1.I) — ghi chú: chỉ áp với hàng đã qua sử dụng; dòng khai mới 100%",
-       "NOTICE: HH tạm ngừng KD TNTX CK (08/2023/TT-BCT - PL2)",
-       "NOTICE: DM HH mua bán, trao đổi qua cửa khẩu phụ, lối mở biên giới của thương nhân (42/2019/TT-BCT, 33/2025/TT-BCT)"
+       "policyStatus NOT_RECORDED"
       ],
       "nguon": [
        {
         "backend": "hs-code-api",
-        "duongDan": "/api/tax?hs=40169911",
+        "duongDan": "/api/tax?hs=84818011",
         "phienBan": "2026-01-01"
        }
       ]
@@ -2254,7 +2250,7 @@
       "noiDung": "Không thấy dấu hiệu máy móc chưa lắp ráp/tháo rời trong mô tả (nhận bằng từ khoá).",
       "basis": "HEURISTIC",
       "evidence": [
-       "chương 40"
+       "chương 84"
       ],
       "nguon": [
        {

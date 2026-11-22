@@ -324,43 +324,135 @@
     },
     {
       "hs": "87112011",
-      "dieuKien": "Xe mô tô địa hình (SEN)",
+      "dieuKien": "tên loại hàng: Xe mô tô địa hình",
       "loaiKhac": false,
       "nguon": "tax.87112011",
       "trich": "87112011 - - - Xe mô tô địa hình (SEN)",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xe mô tô địa hình"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1837#soat-871120",
+          "ngay": "2026-11-22",
+          "bam": "7157df6256cd919018e787d1780c9371a331c00c0395c8516e5684536aad7918"
+        }
+      }
     },
     {
       "hs": "87112012",
-      "dieuKien": "Xe gắn máy có bàn đạp (moped) hoặc xe đạp có động cơ",
+      "dieuKien": "tên loại hàng: Xe gắn máy có bàn đạp hoặc xe đạp có động cơ",
       "loaiKhac": false,
       "nguon": "tax.87112012",
       "trich": "87112012 - - - Xe gắn máy có bàn đạp (moped) hoặc xe đạp có động cơ",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Xe gắn máy có bàn đạp",
+            "xe đạp có động cơ"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1837#soat-871120",
+          "ngay": "2026-11-22",
+          "bam": "7157df6256cd919018e787d1780c9371a331c00c0395c8516e5684536aad7918"
+        }
+      }
     },
     {
       "hs": "87112013",
-      "dieuKien": "Xe “pocket motorcycle” (SEN)",
+      "dieuKien": "tên loại hàng: xe “pocket motorcycle”",
       "loaiKhac": false,
       "nguon": "tax.87112013",
       "trich": "87112013 - - - Xe “pocket motorcycle” (SEN)",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "xe “pocket motorcycle”"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1837#soat-871120",
+          "ngay": "2026-11-22",
+          "bam": "7157df6256cd919018e787d1780c9371a331c00c0395c8516e5684536aad7918"
+        }
+      }
     },
     {
       "hs": "87112014",
-      "dieuKien": "Dung tích xi lanh trên 150 cc nhưng không quá 200 cc ",
+      "dieuKien": "dung tích xi lanh > 150 cc; dung tích xi lanh <= 200 cc",
       "loaiKhac": false,
       "nguon": "tax.87112014",
       "trich": "87112014 - - - - Dung tích xi lanh trên 150 cc nhưng không quá 200 cc ",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 150,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 200,
+          "donVi": "cc"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1837#soat-871120",
+          "ngay": "2026-11-22",
+          "bam": "7157df6256cd919018e787d1780c9371a331c00c0395c8516e5684536aad7918"
+        }
+      }
     },
     {
       "hs": "87112015",
-      "dieuKien": "Dung tích xi lanh trên 200 cc nhưng không quá 250 cc ",
+      "dieuKien": "dung tích xi lanh > 200 cc; dung tích xi lanh <= 250 cc",
       "loaiKhac": false,
       "nguon": "tax.87112015",
       "trich": "87112015 - - - - Dung tích xi lanh trên 200 cc nhưng không quá 250 cc ",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 200,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 250,
+          "donVi": "cc"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1837#soat-871120",
+          "ngay": "2026-11-22",
+          "bam": "7157df6256cd919018e787d1780c9371a331c00c0395c8516e5684536aad7918"
+        }
+      }
     },
     {
       "hs": "87112016",
@@ -415,43 +507,135 @@
     },
     {
       "hs": "87112091",
-      "dieuKien": "Xe mô tô địa hình (SEN)",
+      "dieuKien": "tên loại hàng: Xe mô tô địa hình",
       "loaiKhac": false,
       "nguon": "tax.87112091",
       "trich": "87112091 - - - Xe mô tô địa hình (SEN)",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xe mô tô địa hình"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1837#soat-871120",
+          "ngay": "2026-11-22",
+          "bam": "7157df6256cd919018e787d1780c9371a331c00c0395c8516e5684536aad7918"
+        }
+      }
     },
     {
       "hs": "87112092",
-      "dieuKien": "Xe gắn máy có bàn đạp (moped) hoặc xe đạp có động cơ",
+      "dieuKien": "tên loại hàng: Xe gắn máy có bàn đạp hoặc xe đạp có động cơ",
       "loaiKhac": false,
       "nguon": "tax.87112092",
       "trich": "87112092 - - - Xe gắn máy có bàn đạp (moped) hoặc xe đạp có động cơ",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Xe gắn máy có bàn đạp",
+            "xe đạp có động cơ"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1837#soat-871120",
+          "ngay": "2026-11-22",
+          "bam": "7157df6256cd919018e787d1780c9371a331c00c0395c8516e5684536aad7918"
+        }
+      }
     },
     {
       "hs": "87112093",
-      "dieuKien": "Xe “pocket motorcycle” (SEN)",
+      "dieuKien": "tên loại hàng: xe “pocket motorcycle”",
       "loaiKhac": false,
       "nguon": "tax.87112093",
       "trich": "87112093 - - - Xe “pocket motorcycle” (SEN)",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "xe “pocket motorcycle”"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1837#soat-871120",
+          "ngay": "2026-11-22",
+          "bam": "7157df6256cd919018e787d1780c9371a331c00c0395c8516e5684536aad7918"
+        }
+      }
     },
     {
       "hs": "87112094",
-      "dieuKien": "Dung tích xi lanh trên 150 cc nhưng không quá 200 cc ",
+      "dieuKien": "dung tích xi lanh > 150 cc; dung tích xi lanh <= 200 cc",
       "loaiKhac": false,
       "nguon": "tax.87112094",
       "trich": "87112094 - - - - Dung tích xi lanh trên 150 cc nhưng không quá 200 cc ",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 150,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 200,
+          "donVi": "cc"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1837#soat-871120",
+          "ngay": "2026-11-22",
+          "bam": "7157df6256cd919018e787d1780c9371a331c00c0395c8516e5684536aad7918"
+        }
+      }
     },
     {
       "hs": "87112095",
-      "dieuKien": "Dung tích xi lanh trên 200 cc nhưng không quá 250 cc ",
+      "dieuKien": "dung tích xi lanh > 200 cc; dung tích xi lanh <= 250 cc",
       "loaiKhac": false,
       "nguon": "tax.87112095",
       "trich": "87112095 - - - - Dung tích xi lanh trên 200 cc nhưng không quá 250 cc ",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 200,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 250,
+          "donVi": "cc"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1837#soat-871120",
+          "ngay": "2026-11-22",
+          "bam": "7157df6256cd919018e787d1780c9371a331c00c0395c8516e5684536aad7918"
+        }
+      }
     },
     {
       "hs": "87112096",
@@ -704,11 +888,25 @@
     },
     {
       "hs": "87115020",
-      "dieuKien": "Dạng CKD (SEN)",
+      "dieuKien": "không: đã lắp ráp",
       "loaiKhac": false,
       "nguon": "tax.87115020",
       "trich": "87115020 - - Dạng CKD (SEN)",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "daLapRap",
+          "op": "KHONG"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1837#soat-871150",
+          "ngay": "2026-11-22",
+          "bam": "43b52abcdafb7fb975da2cd2caf10a63335e765ec7de1d3607239c80e0fc9efe"
+        }
+      }
     },
     {
       "hs": "87115090",
@@ -1632,6 +1830,70 @@
           "phien": "claude-agent:duyet-L30-20261111#soat-L30",
           "ngay": "2026-11-11",
           "bam": "019a0efc4327f869d729c9a4f188dd6d14219d0e04c27c990f5bbf3e3e51bb28"
+        }
+      }
+    },
+    {
+      "id": "871120~r17604",
+      "nguon": "tieuDe.871120~r17604",
+      "trich": "871120~r17604 Xe mô tô khác (có hoặc không có thùng xe bên cạnh), kể cả xe scooter",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xe mô tô"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1837#soat-871120",
+          "ngay": "2026-11-22",
+          "bam": "7157df6256cd919018e787d1780c9371a331c00c0395c8516e5684536aad7918"
+        }
+      },
+      "phanConLai": false
+    },
+    {
+      "id": "871120~r17613",
+      "nguon": "tieuDe.871120~r17613",
+      "trich": "871120~r17613 Xe mô tô khác (có hoặc không có thùng xe bên cạnh), kể cả xe scooter",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xe mô tô"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1837#soat-871120",
+          "ngay": "2026-11-22",
+          "bam": "7157df6256cd919018e787d1780c9371a331c00c0395c8516e5684536aad7918"
+        }
+      },
+      "phanConLai": false
+    },
+    {
+      "id": "8711201",
+      "nguon": "tieuDe.8711201",
+      "trich": "8711201 Dạng CKD (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "daLapRap",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1837#soat-871120",
+          "ngay": "2026-11-22",
+          "bam": "7157df6256cd919018e787d1780c9371a331c00c0395c8516e5684536aad7918"
         }
       }
     },
