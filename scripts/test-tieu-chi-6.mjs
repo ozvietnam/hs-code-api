@@ -77,7 +77,7 @@ const DS_6004_CHUAN = [
   },
   { hs6: '600490', phanConLai: true, nguon: 'tax.60049000', trich: '60049000 - Loại khác' },
 ];
-const GOC_TIEM = { ...XEP, 4202: doc('data/so-tay/4202.json').tieuChi6, 6704: DS_6704_CHUAN, 6913: DS_6913_CHUAN, 6004: DS_6004_CHUAN };
+const GOC_TIEM = { ...XEP, 4202: doc('data/so-tay/4202.json').tieuChi6, 8501: doc('data/so-tay/8501.json').tieuChi6, 6704: DS_6704_CHUAN, 6913: DS_6913_CHUAN, 6004: DS_6004_CHUAN };
 const tiem = (h4, sua, goc = GOC_TIEM) => { const ds = sao(goc[h4]); const ra = sua(ds) || ds; return G6.kiemTieuChi6(h4, ra, { toKhai: false }); };
 const cua = (ds, hs6, loc = () => true) => ds.find((x) => x.hs6 === hs6 && loc(x));
 const CA = [
@@ -139,6 +139,7 @@ const CA = [
   ['SUY_RONG', '6004.10 ghi dieuKienTru ["sợi đàn hồi"] (có trong trích nhưng nằm ngoài vế loại trừ)', '6004', (ds) => { cua(ds, '600410').dieuKienTru = ['sợi đàn hồi']; }],
   ['KHUON_SAI', 'phân nhóm không phải DU dưới tầng có tên (8412.21) chỉ giữ mục tầng, thiếu điều kiện riêng của phân nhóm', '8412', (ds) => ds.filter((x) => !(x.hs6 === '841221' && x.nguon === 'tax.84122100'))],
   ['KHOA_HEP_HON_LUAT', '4202.12 dùng chatLieu "vải dệt" cho "Mặt ngoài bằng plastic hoặc vật liệu dệt" (rơi vải không dệt / nỉ)', '4202', (ds) => { const x = cua(ds, '420212', (y) => y.fact === 'vatLieuKhac'); Object.assign(x, { dieuKien: 'Mặt ngoài bằng plastic hoặc vật liệu dệt', fact: 'chatLieu', op: 'LA', value: ['plastic', 'vải dệt'] }); }],
+  ['KHOA_NGUOC_VE_TRU', '#1630 8501.31 dùng mục khẳng định nguonNangLuong TRONG ["QUANG_DIEN"] trích "trừ máy phát quang điện"', '8501', (ds) => { ds.push({ hs6: '850131', thuTu: 3, dieuKien: 'máy phát quang điện', fact: 'nguonNangLuong', op: 'TRONG', value: ['QUANG_DIEN'], nguon: 'tieuDe.85013', trich: '85013 Động cơ một chiều khác; máy phát điện một chiều, trừ máy phát quang điện' }); }],
 ];
 for (const [maLoi, moTa, h4, sua] of CA) {
   const kq = tiem(h4, sua);
@@ -833,6 +834,47 @@ kiem('#1586 (7009.91/92 & phân nhóm không phải DU): 7009 qua cổng với 0
       && kqWcoInc.loi.some((l) => l.ma === 'KE_CA_LA_DIEU_KIEN' && l.hs6 === '848280')
       && kqCumRong.loi.some((l) => l.ma === 'GIA_TRI_RONG' && l.hs6 === '848210'),
       `8482=${JSON.stringify(kq8482.loi)}`);
+
+    // #1630: KHOA_NGUOC_VE_TRU hai chiều + 850131 ca thật + quét sạch toàn kho tieuChi6.
+    const kqNguoc8501 = G6.laKhoaNguocVeTru({
+      hs6: '850131',
+      fact: 'nguonNangLuong',
+      op: 'TRONG',
+      value: ['QUANG_DIEN'],
+      trich: '85013 Động cơ một chiều khác; máy phát điện một chiều, trừ máy phát quang điện',
+    });
+    const kqKhongNhungQua = G6.laKhoaNguocVeTru({
+      hs6: '850432',
+      fact: 'congSuatBieuKien',
+      op: 'CO',
+      trich: '850432 Công suất danh định trên 1 kVA nhưng không quá 16 kVA',
+    });
+    const kq8504Sach = G6.kiemTieuChi6('8504', doc('data/so-tay/8504.json').tieuChi6, { toKhai: false });
+    kiem('#1630 KHOA_NGUOC_VE_TRU hai chiều: bắt 8501 khẳng định QUANG_DIEN từ vế "trừ …"; không bắt nhầm 8504.32 "… nhưng không quá"',
+      kqNguoc8501 === 'máy phát quang điện'
+      && kqKhongNhungQua === null
+      && !kq8504Sach.loi.some((l) => l.ma === 'KHOA_NGUOC_VE_TRU'),
+      JSON.stringify({ kqNguoc8501, kqKhongNhungQua, loi8504: kq8504Sach.loi }));
+
+    const st8501 = doc('data/so-tay/8501.json');
+    const dcMotor = G6.diXuong6('8501', st8501.tieuChi6, 'Động cơ điện một chiều 24V 500W');
+    const solarPanel = G6.diXuong6('8501', st8501.tieuChi6, 'Tấm pin mặt trời 40W');
+    const solarGen = G6.diXuong6('8501', st8501.tieuChi6, 'Máy phát quang điện một chiều 500W');
+    kiem('#1630 8501.31 ca thật: "Động cơ điện một chiều 24V 500W" → 850131; "Tấm pin mặt trời 40W" ≠ 850131; "Máy phát quang điện một chiều 500W" → 850172 (≠ 850131)',
+      dcMotor.trangThai === 'DUNG_CHOT' && dcMotor.hs6 === '850131'
+      && solarPanel.hs6 !== '850131'
+      && solarGen.trangThai === 'DUNG_CHOT' && solarGen.hs6 === '850172',
+      JSON.stringify({ dcMotor, solarPanel, solarGen }));
+
+    const viPhamToanKho = [];
+    for (const f of fs.readdirSync(path.join(GOC, 'data', 'so-tay')).filter((x) => /^\d{4}\.json$/.test(x)).sort()) {
+      const s = doc(`data/so-tay/${f}`);
+      for (const m of s.tieuChi6 || []) {
+        const vt = G6.laKhoaNguocVeTru(m);
+        if (vt) viPhamToanKho.push({ nhom: s.nhom, hs6: m.hs6, fact: m.fact, vt });
+      }
+    }
+    kiem('#1630 quét toàn bộ kho so-tay có tieuChi6 bằng KHOA_NGUOC_VE_TRU = 0 vi phạm', viPhamToanKho.length === 0, JSON.stringify(viPhamToanKho));
   }
 }
 void os;
