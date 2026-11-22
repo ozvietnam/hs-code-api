@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:tho-hs-02#soat-961900",
-    "ngay": "2026-11-21",
-    "ghiChu": "Đã chuẩn hoá dieuKienSo bám chữ biểu thuế",
-    "bam": "72883fc971faf8605881f873a05dc2a439cdb31e23a71a2a7fba9071ca79ee62"
+    "phien": "claude:tho-hs-01:20261122#soat-961900",
+    "ngay": "2026-11-22",
+    "ghiChu": "OZV-1836: bổ sung vatLieuKhac TRONG [VAT_LIEU_DET] cho 96190011 đúng theo ghiChuSoan để loại trừ tất định với .12-.14 (GIAY_XENLULO)",
+    "bam": "4591e58073c6426ea02754e07070e8bdbaa76e70a22fe2d5a9c2a89439bebaa4"
   },
   "dieuKienNut": [
     {
@@ -42,6 +42,13 @@
           "op": "LA",
           "value": "vải dệt",
           "viTri": "LOI"
+        },
+        {
+          "fact": "vatLieuKhac",
+          "op": "TRONG",
+          "value": [
+            "VAT_LIEU_DET"
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"

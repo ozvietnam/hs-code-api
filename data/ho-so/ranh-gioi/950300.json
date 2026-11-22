@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "paperclip:cuon-chieu-soat:20261114T1800#soat-950300",
-    "ngay": "2026-11-14",
-    "ghiChu": "OZV-899: đối chiếu VI+EN + cổng máy xanh; 39231010 congDung; 392321 theo trả về L12 (Túi vô trùng/chieuDai/ganNapDemKin); 950300 giữ bản đã qua 6 vòng — dungCho đích búp bê thử rồi ĐỎ cổng.",
-    "bam": "04e13e65570973326507e47a7be19baec41622d105fe085f1cb01aff496c9b5e"
+    "phien": "claude:tho-hs-01:20261122#soat-950300",
+    "ngay": "2026-11-22",
+    "ghiChu": "OZV-1836: chuẩn hoá 95030021 (tenLoai Búp bê + loaiDoChoi BUP_BE) và 95030050 (giữ chatLieu PHAI_KHONG plastic + cụm nguyên văn trừ plastic)",
+    "bam": "3301361b16aba7243b8eeddd9f5f285c85cf05f841dc3ce5edb7834ea904b490"
   },
   "dieuKienNut": [
     {
@@ -104,6 +104,13 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Búp bê"
+        },
+        {
+          "fact": "loaiDoChoi",
+          "op": "TRONG",
+          "value": [
+            "BUP_BE"
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -190,15 +197,34 @@
       "trich": "95030050 - Đồ chơi và bộ đồ chơi xây dựng khác, bằng mọi loại vật liệu trừ plastic",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "đồ chơi xây dựng"
-        },
-        {
-          "fact": "chatLieu",
-          "op": "LA",
-          "value": "plastic",
-          "chieu": "PHAI_KHONG"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "đồ chơi xây dựng"
+              },
+              {
+                "fact": "chatLieu",
+                "op": "LA",
+                "value": "plastic",
+                "chieu": "PHAI_KHONG"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "đồ chơi xây dựng"
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "bằng mọi loại vật liệu trừ plastic"
+              }
+            ]
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET",
@@ -368,7 +394,7 @@
     {
       "ma": "95030050",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.95030050 \"Đồ chơi và bộ đồ chơi xây dựng khác, bằng mọi loại vật liệu trừ plastic\" (EN \"Other construction sets and constructional toys\") ⇒ tenLoai \"đồ chơi xây dựng\" (chuỗi con nguyên văn nằm trong \"bộ đồ chơi xây dựng\", phủ cả đồ chơi xây dựng lẻ lẫn bộ — soát đợt 3 #696: \"bộ đồ chơi xây dựng\" hẹp hơn chữ) + chatLieu LA plastic chieu PHAI_KHONG. \"khác\" (other constructional toys) không trỏ anh em đứng trước trong phân nhóm (không anh em nào là đồ chơi xây dựng) ⇒ phanConLai: false (khai rõ, tắt nghi-phan-con-lai)."
+      "ghiChu": "tax.95030050 \"Đồ chơi và bộ đồ chơi xây dựng khác, bằng mọi loại vật liệu trừ plastic\" ⇒ HOAC [[tenLoai \"đồ chơi xây dựng\", chatLieu LA plastic PHAI_KHONG], [tenLoai \"đồ chơi xây dựng\", tenLoai \"bằng mọi loại vật liệu trừ plastic\"]]: giữ nguyên ranh giới loại trừ plastic cho hàng thật, đồng thời nhận nguyên văn cụm \"bằng mọi loại vật liệu trừ plastic\" của biểu thuế (tránh điểm mù mTruCl khi thiếu giới từ \"bằng\" sau \"trừ\")."
     },
     {
       "ma": "95030080",
@@ -426,6 +452,12 @@
       "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot7",
       "ngay": "2026-11-01",
       "lyDo": "950300.json:dieuKienNut[9503002]+[950300~r18723]+dong8[95030022] THU HẸP: .22/.29 (10%) chỉ với được hàng có tên đầu chứa đủ \"búp bê\" + \"bộ phận|phụ kiện\"; quần áo búp bê mô tả tự nhiên (\"Quần áo cho búp bê\", tenLoai \"quần áo\") MAU_THUAN ở 9503002 (tenLoai \"Búp bê\") và r18723 (tenLoai [Bộ phận, phụ kiện]) ⇒ doiChieuPhanNhom: .22/.29 TRÁI, .99 (20%) còn THIEU và thành CO sau khi trả lời .10/.40/.94 (10% -> 20%). \"Quần áo búp bê\" chỉ tới .21. Làm gì: đưa đích búp bê vào đường tiêu đề theo bảng luật chung dòng 5/9 (đích dungCho) hoặc DUNG nếu không diễn đạt được; không đổi khoá để né. Phần còn lại đạt: .10 (xe chòi chân ⇒ THIEU, hỏi), .40 (mô hình máy bay ⇒ THIEU, hỏi), .30, .91, .50."
+    }
+  ],
+  "loBieu": [
+    {
+      "tang": "9503002",
+      "lyDo": "Tầng 9503002 chỉ gồm dòng 95030021 (búp bê hoàn chỉnh, có hoặc không có trang phục) và tầng r18723 (bộ phận và phụ kiện); vector tổng hợp ghép tên \"xe của búp bê\" (.10) với loaiDoChoi khác BUP_BE thuộc dòng 95030010 ngoài tầng 9503002."
     }
   ]
 }

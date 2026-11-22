@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx-soat#soat-711719",
-    "ngay": "2026-11-02",
-    "ghiChu": "soát L1-4c: 3 dòng nêu tên, cùng khoá tenLoai nguyên văn (Vòng / đồ trang sức + phanConLai phủ .10 / Bộ phận); không rộng/hẹp hơn chữ, không bịa, không BO_VE/DE_TRONG; 3 dòng cùng MFN 25%. Ghi nhận: .90 \"Bộ phận\" dùng tenLoai thay laBoPhan CO (711711/961700 dùng laBoPhan) — chữ tự do không tất định nên không đổi mã; cần quy ước chung cho dòng \"Bộ phận\" trần.",
-    "bam": "8b04e50458334afaf36eef40f4b408a07cae6346e57825cb378c94e6fb4d9d87"
+    "phien": "claude:tho-hs-01:20261122#soat-711719",
+    "ngay": "2026-11-22",
+    "ghiChu": "OZV-1836: chuẩn hoá 71171990 Bộ phận sang laBoPhan CO + khai chongLanTruc với .10/.20",
+    "bam": "571a243c33ac40c84895b64dff5814afce49f158c44fa1827cd94b5be45782b1"
   },
   "dieuKienNut": [],
   "dong8": [
@@ -52,9 +52,8 @@
       "trich": "71171990 - - - Bộ phận",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Bộ phận"
+          "fact": "laBoPhan",
+          "op": "CO"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -74,7 +73,44 @@
     {
       "ma": "71171990",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.71171990 \"71171990 - - - Bộ phận\" ⇒ tenLoai \"Bộ phận\" (chuỗi con nguyên văn, danh từ trần như \"Vòng\" của 71171910 — BANG-LUAT dòng 10: ba anh em cùng nêu tên ⇒ cùng khoá tenLoai; không dùng laBoPhan CO vì tạo chồng lấn giả tên ↔ đặc điểm). Tiền lệ 40169917 dùng tenLoai \"Bộ phận\"."
+      "ghiChu": "tax.71171990 \"71171990 - - - Bộ phận\" ⇒ laBoPhan CO (tất định; khai chongLanTruc giữa nhánh tên loại .10/.20 và đặc điểm bộ phận .90)."
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "71171910",
+        "71171920",
+        "71171990"
+      ],
+      "truc": {
+        "71171910": "TEN_LOAI",
+        "71171920": "TEN_LOAI",
+        "71171990": "DAC_DIEM"
+      },
+      "cauHoiPhanBiet": "Hàng là đồ trang sức hoàn chỉnh (vòng hoặc đồ trang sức khác) hay là bộ phận rời của đồ trang sức?",
+      "trich": {
+        "71171910": "71171910 - - - Vòng",
+        "71171920": "71171920 - - - Các đồ trang sức khác",
+        "71171990": "71171990 - - - Bộ phận"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "71171910",
+            "71171990"
+          ],
+          "khongCoHangThat": "Bộ phận rời của vòng trang sức thuộc 7117.19.90, không đồng thời là vòng trang sức hoàn chỉnh 7117.19.10"
+        },
+        {
+          "cap": [
+            "71171920",
+            "71171990"
+          ],
+          "khongCoHangThat": "Bộ phận rời của đồ trang sức thuộc 7117.19.90, không đồng thời là đồ trang sức hoàn chỉnh 7117.19.20"
+        }
+      ],
+      "phanXu": null
     }
   ]
 }

@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L30-20261111#soat-L30",
-    "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu VI/EN: .11/.91 danh sách tay lái…phụ kiện khác (tách 'giá hoặc vấu bắt đèn' đúng); .12/.94 'bộ phận khác' là phần còn lại phanConLai; .93 ốc bắt đầu nan hoa.",
-    "bam": "aaa0ed0c31387372187df8db2d64261e57b1224ebc3bc54a9867647de9b17c38"
+    "phien": "claude:tho-hs-01:20261122#soat-871499",
+    "ngay": "2026-11-22",
+    "ghiChu": "OZV-1836: bổ sung tenLoai [Bánh xích, trục khuỷu] bên cạnh phanConLai cho 87149912 và 87149994",
+    "bam": "0540d4dec17f748c9ad74945e39d6434b69fd723bcb04dff1a17a227217c3f54"
   },
   "dieuKienNut": [
     {
@@ -61,7 +61,16 @@
       "hs": "87149912",
       "nguon": "tax.87149912",
       "trich": "87149912 - - - - Bánh xích và trục khuỷu; bộ phận khác (SEN)",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Bánh xích",
+            "trục khuỷu"
+          ]
+        }
+      ],
       "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": [
         "87149911"
@@ -108,7 +117,16 @@
       "hs": "87149994",
       "nguon": "tax.87149994",
       "trich": "87149994 - - - - Bánh xích và trục khuỷu; bộ phận khác (SEN)",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Bánh xích",
+            "trục khuỷu"
+          ]
+        }
+      ],
       "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": [
         "87149991",
@@ -130,7 +148,7 @@
     {
       "ma": "87149912",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.87149912 \"Bánh xích và trục khuỷu; bộ phận khác (SEN)\" ⇒ phanConLai [87149911] đứng một mình: tập hợp của dòng = mọi hàng dưới 8714991 không thuộc .11 (bánh xích, trục khuỷu và các bộ phận khác đều nằm trong phần còn lại này); đặt tenLoai \"Bánh xích\"/\"trục khuỷu\" gây không-til-được vì phủ định .11 bằng tên CHƯA BIẾT"
+      "ghiChu": "tax.87149912 \"Bánh xích và trục khuỷu; bộ phận khác (SEN)\" ⇒ tenLoai [\"Bánh xích\", \"trục khuỷu\"] kèm phanConLai [\"87149911\"]."
     },
     {
       "ma": "8714999",
@@ -150,7 +168,17 @@
     {
       "ma": "87149994",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.87149994 ⇒ phanConLai [87149991, 87149993] đứng một mình như 87149912"
+      "ghiChu": "tax.87149994 \"Bánh xích và trục khuỷu; bộ phận khác (SEN)\" ⇒ tenLoai [\"Bánh xích\", \"trục khuỷu\"] kèm phanConLai [\"87149991\", \"87149993\"]."
+    }
+  ],
+  "loBieu": [
+    {
+      "tang": "8714991",
+      "lyDo": "Dòng 87149912 gộp tên cụ thể \"Bánh xích và trục khuỷu\" với phần còn lại \"; bộ phận khác (SEN)\" (đã khai phanConLai [\"87149911\"]); vector tổng hợp tenLoai ngoài danh sách không khớp vế tên cụ thể."
+    },
+    {
+      "tang": "8714999",
+      "lyDo": "Dòng 87149994 gộp tên cụ thể \"Bánh xích và trục khuỷu\" với phần còn lại \"; bộ phận khác (SEN)\" (đã khai phanConLai [\"87149991\", \"87149993\"]); vector tổng hợp tenLoai ngoài danh sách không khớp vế tên cụ thể."
     }
   ]
 }

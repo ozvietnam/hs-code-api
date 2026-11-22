@@ -334,15 +334,15 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "paperclip:cuon-chieu-soat:20261114T1800#soat-950300",
-          "ngay": "2026-11-14",
-          "bam": "04e13e65570973326507e47a7be19baec41622d105fe085f1cb01aff496c9b5e"
+          "phien": "claude:tho-hs-01:20261122#soat-950300",
+          "ngay": "2026-11-22",
+          "bam": "3301361b16aba7243b8eeddd9f5f285c85cf05f841dc3ce5edb7834ea904b490"
         }
       }
     },
     {
       "hs": "95030021",
-      "dieuKien": "tên loại hàng: Búp bê",
+      "dieuKien": "tên loại hàng: Búp bê; loại đồ chơi thuộc nhóm 9503: búp bê có hoặc không có trang phục",
       "loaiKhac": false,
       "nguon": "tax.95030021",
       "trich": "95030021 - - Búp bê, có hoặc không có trang phục",
@@ -352,14 +352,21 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Búp bê"
+        },
+        {
+          "fact": "loaiDoChoi",
+          "op": "TRONG",
+          "value": [
+            "BUP_BE"
+          ]
         }
       ],
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "paperclip:cuon-chieu-soat:20261114T1800#soat-950300",
-          "ngay": "2026-11-14",
-          "bam": "04e13e65570973326507e47a7be19baec41622d105fe085f1cb01aff496c9b5e"
+          "phien": "claude:tho-hs-01:20261122#soat-950300",
+          "ngay": "2026-11-22",
+          "bam": "3301361b16aba7243b8eeddd9f5f285c85cf05f841dc3ce5edb7834ea904b490"
         }
       }
     },
@@ -385,9 +392,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "paperclip:cuon-chieu-soat:20261114T1800#soat-950300",
-          "ngay": "2026-11-14",
-          "bam": "04e13e65570973326507e47a7be19baec41622d105fe085f1cb01aff496c9b5e"
+          "phien": "claude:tho-hs-01:20261122#soat-950300",
+          "ngay": "2026-11-22",
+          "bam": "3301361b16aba7243b8eeddd9f5f285c85cf05f841dc3ce5edb7834ea904b490"
         }
       }
     },
@@ -449,9 +456,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "paperclip:cuon-chieu-soat:20261114T1800#soat-950300",
-          "ngay": "2026-11-14",
-          "bam": "04e13e65570973326507e47a7be19baec41622d105fe085f1cb01aff496c9b5e"
+          "phien": "claude:tho-hs-01:20261122#soat-950300",
+          "ngay": "2026-11-22",
+          "bam": "3301361b16aba7243b8eeddd9f5f285c85cf05f841dc3ce5edb7834ea904b490"
         }
       }
     },
@@ -474,38 +481,57 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "paperclip:cuon-chieu-soat:20261114T1800#soat-950300",
-          "ngay": "2026-11-14",
-          "bam": "04e13e65570973326507e47a7be19baec41622d105fe085f1cb01aff496c9b5e"
+          "phien": "claude:tho-hs-01:20261122#soat-950300",
+          "ngay": "2026-11-22",
+          "bam": "3301361b16aba7243b8eeddd9f5f285c85cf05f841dc3ce5edb7834ea904b490"
         }
       }
     },
     {
       "hs": "95030050",
-      "dieuKien": "tên loại hàng: đồ chơi xây dựng; không chất liệu (theo vị trí): plastic",
+      "dieuKien": "(tên loại hàng: đồ chơi xây dựng và không chất liệu (theo vị trí): plastic) hoặc (tên loại hàng: đồ chơi xây dựng và tên loại hàng: bằng mọi loại vật liệu trừ plastic)",
       "loaiKhac": false,
       "nguon": "tax.95030050",
       "trich": "95030050 - Đồ chơi và bộ đồ chơi xây dựng khác, bằng mọi loại vật liệu trừ plastic",
       "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "đồ chơi xây dựng"
-        },
-        {
-          "fact": "chatLieu",
-          "op": "LA",
-          "value": "plastic",
-          "chieu": "PHAI_KHONG"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "đồ chơi xây dựng"
+              },
+              {
+                "fact": "chatLieu",
+                "op": "LA",
+                "value": "plastic",
+                "chieu": "PHAI_KHONG"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "đồ chơi xây dựng"
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "bằng mọi loại vật liệu trừ plastic"
+              }
+            ]
+          ]
         }
       ],
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "paperclip:cuon-chieu-soat:20261114T1800#soat-950300",
-          "ngay": "2026-11-14",
-          "bam": "04e13e65570973326507e47a7be19baec41622d105fe085f1cb01aff496c9b5e"
+          "phien": "claude:tho-hs-01:20261122#soat-950300",
+          "ngay": "2026-11-22",
+          "bam": "3301361b16aba7243b8eeddd9f5f285c85cf05f841dc3ce5edb7834ea904b490"
         }
       },
       "phanConLai": false
@@ -530,9 +556,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "paperclip:cuon-chieu-soat:20261114T1800#soat-950300",
-          "ngay": "2026-11-14",
-          "bam": "04e13e65570973326507e47a7be19baec41622d105fe085f1cb01aff496c9b5e"
+          "phien": "claude:tho-hs-01:20261122#soat-950300",
+          "ngay": "2026-11-22",
+          "bam": "3301361b16aba7243b8eeddd9f5f285c85cf05f841dc3ce5edb7834ea904b490"
         }
       }
     },
@@ -553,9 +579,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "paperclip:cuon-chieu-soat:20261114T1800#soat-950300",
-          "ngay": "2026-11-14",
-          "bam": "04e13e65570973326507e47a7be19baec41622d105fe085f1cb01aff496c9b5e"
+          "phien": "claude:tho-hs-01:20261122#soat-950300",
+          "ngay": "2026-11-22",
+          "bam": "3301361b16aba7243b8eeddd9f5f285c85cf05f841dc3ce5edb7834ea904b490"
         }
       }
     },
@@ -580,9 +606,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "paperclip:cuon-chieu-soat:20261114T1800#soat-950300",
-          "ngay": "2026-11-14",
-          "bam": "04e13e65570973326507e47a7be19baec41622d105fe085f1cb01aff496c9b5e"
+          "phien": "claude:tho-hs-01:20261122#soat-950300",
+          "ngay": "2026-11-22",
+          "bam": "3301361b16aba7243b8eeddd9f5f285c85cf05f841dc3ce5edb7834ea904b490"
         }
       }
     },
@@ -636,9 +662,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "paperclip:cuon-chieu-soat:20261114T1800#soat-950300",
-          "ngay": "2026-11-14",
-          "bam": "04e13e65570973326507e47a7be19baec41622d105fe085f1cb01aff496c9b5e"
+          "phien": "claude:tho-hs-01:20261122#soat-950300",
+          "ngay": "2026-11-22",
+          "bam": "3301361b16aba7243b8eeddd9f5f285c85cf05f841dc3ce5edb7834ea904b490"
         }
       }
     },
@@ -659,9 +685,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "paperclip:cuon-chieu-soat:20261114T1800#soat-950300",
-          "ngay": "2026-11-14",
-          "bam": "04e13e65570973326507e47a7be19baec41622d105fe085f1cb01aff496c9b5e"
+          "phien": "claude:tho-hs-01:20261122#soat-950300",
+          "ngay": "2026-11-22",
+          "bam": "3301361b16aba7243b8eeddd9f5f285c85cf05f841dc3ce5edb7834ea904b490"
         }
       }
     },
@@ -682,9 +708,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "paperclip:cuon-chieu-soat:20261114T1800#soat-950300",
-          "ngay": "2026-11-14",
-          "bam": "04e13e65570973326507e47a7be19baec41622d105fe085f1cb01aff496c9b5e"
+          "phien": "claude:tho-hs-01:20261122#soat-950300",
+          "ngay": "2026-11-22",
+          "bam": "3301361b16aba7243b8eeddd9f5f285c85cf05f841dc3ce5edb7834ea904b490"
         }
       }
     },
@@ -705,9 +731,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "paperclip:cuon-chieu-soat:20261114T1800#soat-950300",
-          "ngay": "2026-11-14",
-          "bam": "04e13e65570973326507e47a7be19baec41622d105fe085f1cb01aff496c9b5e"
+          "phien": "claude:tho-hs-01:20261122#soat-950300",
+          "ngay": "2026-11-22",
+          "bam": "3301361b16aba7243b8eeddd9f5f285c85cf05f841dc3ce5edb7834ea904b490"
         }
       },
       "phanConLai": true
@@ -1088,9 +1114,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "paperclip:cuon-chieu-soat:20261114T1800#soat-950300",
-          "ngay": "2026-11-14",
-          "bam": "04e13e65570973326507e47a7be19baec41622d105fe085f1cb01aff496c9b5e"
+          "phien": "claude:tho-hs-01:20261122#soat-950300",
+          "ngay": "2026-11-22",
+          "bam": "3301361b16aba7243b8eeddd9f5f285c85cf05f841dc3ce5edb7834ea904b490"
         }
       }
     },
@@ -1109,9 +1135,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "paperclip:cuon-chieu-soat:20261114T1800#soat-950300",
-          "ngay": "2026-11-14",
-          "bam": "04e13e65570973326507e47a7be19baec41622d105fe085f1cb01aff496c9b5e"
+          "phien": "claude:tho-hs-01:20261122#soat-950300",
+          "ngay": "2026-11-22",
+          "bam": "3301361b16aba7243b8eeddd9f5f285c85cf05f841dc3ce5edb7834ea904b490"
         }
       }
     }
