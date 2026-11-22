@@ -4,13 +4,19 @@
   "nhom": "8477",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-847780",
     "ngay": "2026-11-04"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1783#soat-847780",
+    "ngay": "2026-11-21",
+    "ghiChu": "Chuẩn hoá theo traVe (OZV-1783)",
+    "bam": "8788c391ec5d4bbd9d7e03c43aa6593afd2fe61d64bc0b8f6c11ce332eb9025b"
+  },
   "dieuKienNut": [
     {
       "id": "8477803",
@@ -27,7 +33,7 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -46,7 +52,7 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84778020",
@@ -63,7 +69,7 @@
           "op": "KHONG"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84778031",
@@ -71,22 +77,32 @@
       "trich": "84778031 - - - Máy ép lớp mỏng dùng để sản xuất tấm mạch in hoặc tấm dây in",
       "dieuKienSo": [
         {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy ép lớp mỏng"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "sản xuất"
+        },
+        {
           "fact": "congDung",
           "op": "CONG_DUNG",
           "value": [
-            "sản xuất tấm mạch in",
+            "tấm mạch in",
             "tấm dây in"
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84778039",
       "nguon": "tax.84778039",
       "trich": "84778039 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84778040",
@@ -103,7 +119,7 @@
           "op": "KHONG"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -125,7 +141,7 @@
     {
       "ma": "84778031",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.84778031: \"Máy ép lớp mỏng dùng để sản xuất tấm mạch in hoặc tấm dây in\" ⇒ congDung [\"sản xuất tấm mạch in\",\"tấm dây in\"]"
+      "ghiChu": "tax.84778031: \"Máy ép lớp mỏng dùng để sản xuất tấm mạch in hoặc tấm dây in\" ⇒ tenLoai \"Máy ép lớp mỏng\" + congDung [\"sản xuất tấm mạch in\",\"sản xuất tấm dây in\"]"
     },
     {
       "ma": "84778040",

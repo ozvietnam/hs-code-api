@@ -4,13 +4,19 @@
   "nhom": "9306",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T1001#soan-930630",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1783#soat-930630",
+    "ngay": "2026-11-21",
+    "ghiChu": "Chuẩn hoá theo traVe (OZV-1783)",
+    "bam": "74080985304a2567249d757911bc36fa8c546770fa101fd583e22408e17a4592"
+  },
   "dieuKienNut": [
     {
       "id": "9306301",
@@ -31,7 +37,7 @@
           "value": "nhóm 93.02"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -46,20 +52,28 @@
           "value": "Đạn cỡ .22"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "93063019",
       "nguon": "tax.93063019",
       "trich": "93063019 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "93063020",
       "nguon": "tax.93063020",
       "trich": "93063020 - - Đạn dùng cho súng bắn đinh hoặc dụng cụ tương tự hoặc cho súng bắn gia súc giết mổ và các bộ phận của chúng",
       "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "súng bắn đinh",
+            "súng bắn gia súc giết mổ"
+          ]
+        },
         {
           "op": "HOAC",
           "phuongAn": [
@@ -68,23 +82,6 @@
                 "fact": "tenLoai",
                 "op": "TEN_LOAI",
                 "value": "Đạn"
-              },
-              {
-                "fact": "dungCho",
-                "op": "CONG_DUNG",
-                "value": "súng bắn đinh"
-              }
-            ],
-            [
-              {
-                "fact": "tenLoai",
-                "op": "TEN_LOAI",
-                "value": "Đạn"
-              },
-              {
-                "fact": "dungCho",
-                "op": "CONG_DUNG",
-                "value": "súng bắn gia súc giết mổ"
               }
             ],
             [
@@ -101,7 +98,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "93063030",
@@ -126,7 +123,7 @@
           "chieu": "PHAI_KHONG"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "93063091",
@@ -139,14 +136,14 @@
           "value": "Đạn cỡ 22"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "93063099",
       "nguon": "tax.93063099",
       "trich": "93063099 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -163,7 +160,7 @@
     {
       "ma": "93063020",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.93063020: \"Đạn dùng cho súng bắn đinh hoặc dụng cụ tương tự hoặc cho súng bắn gia súc giết mổ và các bộ phận của chúng\" => HOAC [[tenLoai \"Đạn\" + dungCho \"súng bắn đinh\"], [tenLoai \"Đạn\" + dungCho \"súng bắn gia súc giết mổ\"], [laBoPhan CO + dungCho \"Đạn\" — vế mở \"và các bộ phận của chúng\", X = tên đầu nguyên văn \"Đạn\"]"
+      "ghiChu": "tax.93063020: \"Đạn dùng cho súng bắn đinh hoặc dụng cụ tương tự hoặc cho súng bắn gia súc giết mổ và các bộ phận của chúng\" => HOAC [[tenLoai \"Đạn\" + dungCho [\"súng bắn đinh\", \"súng bắn gia súc giết mổ\"]], [laBoPhan CO + dungCho \"Đạn\" + dungCho [\"súng bắn đinh\", \"súng bắn gia súc giết mổ\"]]] (nhánh bộ phận kèm đủ định ngữ đích để không kéo bộ phận đạn súng lục/súng thể thao vào .20)"
     },
     {
       "ma": "93063030",
@@ -179,7 +176,7 @@
       "ma": "93063020",
       "loai": "BO_VE",
       "ve": "hoặc dụng cụ tương tự",
-      "lyDo": "Vế mở của ĐÍCH (dụng cụ tương tự với súng bắn đinh); tu-vung@2 chỉ có op TUONG_TU cho tenLoai, không có cho dungCho — không liệt kê đóng danh sách (hẹp hơn chữ); hàng đạn cho dụng cụ tương tự lúc chạy không khớp giá trị nào sẽ được hỏi, không tự chốt"
+      "lyDo": "Vế mở của ĐÍCH (dụng cụ tương tự với súng bắn đinh); tu-vung@2 chỉ có op TUONG_TU cho tenLoai, không có cho dungCho và cổng 5 cấm giá trị chữ tự do chứa 'tương tự' (cong5-gia-tri-tuong-tu) — không liệt kê đóng danh sách (hẹp hơn chữ); hàng đạn cho dụng cụ tương tự lúc chạy không khớp giá trị nào sẽ được hỏi, không tự chốt"
     }
   ],
   "traVe": [

@@ -892,4 +892,62 @@ describe('lib/dieu-kien-so.js — gỡ tiêu đề cha đa vế cho LIET_KE & t�
     assert.equal(rLong.tatDinh, true);
     assert.ok(dt < 2000, `Thời gian chạy ${dt}ms phải < 2000ms`);
   });
+
+  test('OZV-1783: tách tiền tố "máy dùng để gia công" / "for working" và hỗ trợ TIEU_DE_QG trong boVeRiengCuaDong cho nhóm 8477 — kiểm 2 chiều + ReDoS < 2 giây', () => {
+    assert.equal(
+      chotDong8({
+        hs: '847710',
+        productText: 'Máy đúc phun: Để đúc cao su',
+      }).hs,
+      '84771010',
+    );
+    assert.equal(
+      chotDong8({
+        hs: '847710',
+        productText: 'Máy đúc phun: Để đúc plastic: Máy đúc phun sản phẩm poly(vinyl chloride) (PVC)',
+      }).hs,
+      '84771031',
+    );
+    assert.notEqual(
+      chotDong8({
+        hs: '847710',
+        productText: 'Máy đúc phun',
+      }).ketQua,
+      'CHOT',
+    );
+
+    assert.equal(
+      chotDong8({
+        hs: '847780',
+        productText: 'Máy khác: Để gia công cao su hoặc sản xuất các sản phẩm từ cao su, không hoạt động bằng điện',
+      }).hs,
+      '84778020',
+    );
+    assert.equal(
+      chotDong8({
+        hs: '847790',
+        productText: 'Bộ phận: Của máy để gia công cao su hoặc sản xuất các sản phẩm từ cao su không hoạt động bằng điện',
+      }).hs,
+      '84779020',
+    );
+    assert.notEqual(
+      chotDong8({
+        hs: '847780',
+        productText: 'Máy khác',
+      }).ketQua,
+      'CHOT',
+    );
+
+    const longText = `${Array(40000).fill('máy dùng để gia công').join(' ')} - Máy đúc phun: Để đúc cao su`;
+    const t0 = Date.now();
+    const rLong = DK.danhGiaTuChu(
+      { fact: 'congDung', op: 'CONG_DUNG', value: 'đúc cao su' },
+      longText,
+      '84771010',
+    );
+    const dt = Date.now() - t0;
+    assert.equal(rLong.trangThai, 'THOA');
+    assert.equal(rLong.tatDinh, true);
+    assert.ok(dt < 2000, `Thời gian chạy ${dt}ms phải < 2000ms`);
+  });
 });
