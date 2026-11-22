@@ -692,6 +692,14 @@ export function sinhCaNhom(nhom4) {
             const sSen = cumKhangDinh(veSen.length ? veSen : dRec.dieuKienSo);
             if (sSen) moTa += `, ${sSen}`;
           }
+          if (dRec && !(Array.isArray(dRec.dieuKienSo) && dRec.dieuKienSo.length) && Array.isArray(dRec.phanConLai) && dRec.phanConLai.length) {
+            const dd = DK.duongDiDong8(hs8, { soTay: st });
+            for (const g of dd.nhom || []) {
+              if (g.chieu !== 'PHAI_KHONG' || g.tang !== 0 || !Array.isArray(g.dieuKien) || !g.dieuKien.length) continue;
+              const s = cumPhuDinhNhom(g.dieuKien);
+              if (s && !phuDinhParts.includes(s)) phuDinhParts.push(s);
+            }
+          }
           for (const s of phuDinhParts) moTa += `, ${s}`;
         }
         if (chi8544) {
