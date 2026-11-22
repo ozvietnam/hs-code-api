@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:ozv-1829#soat-481190",
+    "phien": "claude-agent:ozv-1866#soat-481190",
     "ngay": "2026-11-22",
-    "ghiChu": "Sửa 5 lỗi soat-khac trên PR #1604 và khép SẠCH V1 (OZV-1829)",
-    "bam": "49295278cf5106f92cbda583feb820ec187c6e1f5e1c8baf2255773c9cd51bd6"
+    "ghiChu": "Duyệt và khép SẠCH V1 lô 17a (OZV-1866)",
+    "bam": "725ee6d40f1f6da9ef812711617d0050bc6cc98ac879d86ea7940eae3c1d7388"
   },
   "dieuKienNut": [
     {
@@ -57,6 +57,11 @@
               }
             ]
           ]
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "ở dạng không gấp"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -165,12 +170,6 @@
       "ma": "4811904",
       "loai": "QUYET_DINH",
       "ghiChu": "tieuDe.4811904 \"Dạng cuộn có chiều rộng không quá 15 cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp\" ⇒ chữ \"hoặc\" tách HAI nhánh: phương án A = \"Dạng cuộn\" (dangCuon CO) + \"có chiều rộng không quá 15 cm\" (chieuRong <= 15 cm); phương án B = \"ở dạng tờ hình chữ nhật (kể cả hình vuông)\" (dangToChuNhat CO) + \"không có chiều nào trên 36 cm\" (motChieuTo <= 36 cm, chieuKiaTo <= 36 cm, đồng bộ với 4811513/4811594)."
-    },
-    {
-      "ma": "4811904",
-      "loai": "BO_VE",
-      "ve": "ở dạng không gấp",
-      "lyDo": "Vế nêu cách đo kích thước (trải phẳng, Chú giải 4 Chương 48 «ở dạng không gấp», EN «in the unfolded state»), không phải đặc điểm phân biệt hàng; kích thước đã số hoá ở motChieuTo/chieuKiaTo."
     },
     {
       "ma": "48119041",
