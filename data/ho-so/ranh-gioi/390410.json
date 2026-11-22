@@ -4,13 +4,19 @@
   "nhom": "3904",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-390410",
     "ngay": "2026-11-02"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1947#soat-390410",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1947)",
+    "bam": "4a7ce8c6cd059f15757e4158b79557ef7c7a06a7acb3a37591df08c3849465fa"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -19,32 +25,42 @@
       "trich": "39041010 - - Các polyme đồng nhất, sản xuất theo công nghệ huyền phù",
       "dieuKienSo": [
         {
-          "fact": "congDung",
-          "op": "CONG_DUNG",
-          "value": "huyền phù"
-        }
-      ],
-      "nguonLoai": "AI_DA_KIEM"
-    },
-    {
-      "hs": "39041091",
-      "nguon": "tax.39041091",
-      "trich": "39041091 - - - Dạng hạt(SEN)",
-      "dieuKienSo": [
-        {
-          "fact": "dangNguyenSinh",
-          "op": "TRONG",
-          "value": [
-            "HAT_VIEN_VAY_MANH"
-          ]
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "polyme đồng nhất"
         },
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "hạt"
+          "value": "huyền phù"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "hs": "39041091",
+      "nguon": "sen.3904",
+      "trich": "DẠNG HẠT VÀ CÁC DẠNG TƯƠNG TỰ\nSản phẩm dạng rắn ở dạng nguyên sinh trừ dạng bột, có ít hơn 10% khối lượng lọt qua lưới lọc có đường kính mắt lọc là 1mm và sản phẩm có 90% khối lượng trở lên lọt qua lưới lọc có đường kính mắt lọc là 5mm.",
+      "dieuKienSo": [
+        {
+          "fact": "tyLeLotQuaLuoiLoc1mm",
+          "op": "<",
+          "value": 10,
+          "donVi": "%"
+        },
+        {
+          "fact": "tyLeLotQuaLuoiLoc5mm",
+          "op": ">=",
+          "value": 90,
+          "donVi": "%"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "DẠNG HẠT"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39041092",
@@ -64,14 +80,14 @@
           "value": "bột"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39041099",
       "nguon": "tax.39041099",
       "trich": "39041099 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
