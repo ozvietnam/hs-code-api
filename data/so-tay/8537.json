@@ -111,7 +111,46 @@
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
-  "tieuChi6": [],
+  "tieuChi6": [
+    {
+      "hs6": "853710",
+      "thuTu": 1,
+      "dieuKien": "Dùng cho điện áp không quá 1.000 V",
+      "fact": "dienAp",
+      "op": "<=",
+      "value": 1000,
+      "donVi": "V",
+      "tienLe": [
+        {
+          "so": "103/TB-TCHQ",
+          "ma": "85371012"
+        },
+        {
+          "so": "488/TB-TCHQ",
+          "ma": "85371012"
+        },
+        {
+          "so": "489/TB-TCHQ",
+          "ma": "85371012"
+        }
+      ],
+      "nguon": "tieuDe.853710",
+      "trich": "853710 Dùng cho điện áp không quá 1.000 V",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "853720",
+      "thuTu": 2,
+      "dieuKien": "Dùng cho điện áp trên 1.000 V",
+      "fact": "dienAp",
+      "op": ">",
+      "value": 1000,
+      "donVi": "V",
+      "nguon": "tieuDe.853720",
+      "trich": "853720 Dùng cho điện áp trên 1.000 V",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
   "dong8": [
     {
       "hs": "85371011",
@@ -746,6 +785,8 @@
     "tax.85372021",
     "tax.85372029",
     "tax.85372090",
+    "tieuDe.853710",
+    "tieuDe.853720",
     "wco-op.853710.1"
   ],
   "phienBan": "HS2022+SEN2022",
@@ -757,8 +798,8 @@
     "ms": 19
   },
   "kiemTra": {
-    "tong": 32,
-    "dat": 32,
+    "tong": 36,
+    "dat": 36,
     "loai": 0,
     "nguonBiCat": [],
     "nangCap": {
@@ -769,6 +810,12 @@
         "tieuChi6",
         "phamViLoaiKhac"
       ]
+    },
+    "tieuChi6": {
+      "khuon": "g6@1",
+      "soMuc": 2,
+      "soPhanNhom": 2,
+      "cong": "scripts/kiem-tieu-chi-6.mjs"
     }
   },
   "yKienWcoDayDu": false,

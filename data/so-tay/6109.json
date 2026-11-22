@@ -87,7 +87,45 @@
     }
   ],
   "phanBiet": [],
-  "tieuChi6": [],
+  "tieuChi6": [
+    {
+      "hs6": "610910",
+      "thuTu": 1,
+      "dieuKien": "Từ bông",
+      "fact": "loaiSoiDet",
+      "op": "TRONG",
+      "value": [
+        "BONG"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "bông"
+      ],
+      "nguon": "tieuDe.610910",
+      "trich": "610910 Từ bông",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "610990",
+      "thuTu": 2,
+      "dieuKien": "Từ các vật liệu dệt",
+      "fact": "chatLieu",
+      "op": "LA",
+      "value": "vải dệt",
+      "donVi": null,
+      "nguon": "tieuDe.610990",
+      "trich": "610990 Từ các vật liệu dệt khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "610990",
+      "thuTu": 2,
+      "phanConLai": true,
+      "nguon": "tieuDe.610990",
+      "trich": "610990 Từ các vật liệu dệt khác",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
   "dong8": [
     {
       "hs": "61091010",
@@ -350,6 +388,8 @@
     "tax.61099010",
     "tax.61099020",
     "tax.61099030",
+    "tieuDe.610910",
+    "tieuDe.610990",
     "wco-op.610910.1",
     "wco-op.610990.1",
     "wco-op.610990.2"
@@ -376,6 +416,12 @@
         "tieuChi6",
         "phamViLoaiKhac"
       ]
+    },
+    "tieuChi6": {
+      "khuon": "g6@1",
+      "soMuc": 3,
+      "soPhanNhom": 2,
+      "cong": "scripts/kiem-tieu-chi-6.mjs"
     }
   },
   "yKienWcoDayDu": false

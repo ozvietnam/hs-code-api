@@ -54,7 +54,49 @@
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
-  "tieuChi6": [],
+  "tieuChi6": [
+    {
+      "hs6": "391910",
+      "thuTu": 1,
+      "dieuKien": "Ở dạng cuộn",
+      "fact": "dangCuon",
+      "op": "CO",
+      "donVi": null,
+      "tienLe": [
+        {
+          "so": "4923/TB-TCHQ",
+          "ma": "39191092"
+        },
+        {
+          "so": "5293/TB-TCHQ",
+          "ma": "39191092"
+        }
+      ],
+      "nguon": "tieuDe.391910",
+      "trich": "391910 Ở dạng cuộn có chiều rộng không quá 20 cm",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "391910",
+      "thuTu": 1,
+      "dieuKien": "chiều rộng không quá 20 cm",
+      "fact": "chieuRong",
+      "op": "<=",
+      "value": 20,
+      "donVi": "cm",
+      "nguon": "tieuDe.391910",
+      "trich": "391910 Ở dạng cuộn có chiều rộng không quá 20 cm",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "391990",
+      "thuTu": 2,
+      "phanConLai": true,
+      "nguon": "tieuDe.391990",
+      "trich": "391990 Loại khác",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
   "dong8": [
     {
       "hs": "39191010",
@@ -496,6 +538,8 @@
     "tax.39199091",
     "tax.39199092",
     "tax.39199099",
+    "tieuDe.391910",
+    "tieuDe.391990",
     "wco-op.391910.1",
     "wco-op.391990.1"
   ],
@@ -507,8 +551,8 @@
     "ms": 4
   },
   "kiemTra": {
-    "tong": 20,
-    "dat": 20,
+    "tong": 21,
+    "dat": 21,
     "loai": 0,
     "nguonBiCat": [
       "ch39.chuong (44853→40000)"
@@ -521,6 +565,12 @@
         "tieuChi6",
         "phamViLoaiKhac"
       ]
+    },
+    "tieuChi6": {
+      "khuon": "g6@1",
+      "soMuc": 3,
+      "soPhanNhom": 2,
+      "cong": "scripts/kiem-tieu-chi-6.mjs"
     }
   },
   "yKienWcoDayDu": false
