@@ -4,13 +4,19 @@
   "nhom": "7310",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-731029",
     "ngay": "2026-11-04"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1794#soat-731029",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá theo traVe (OZV-1794)",
+    "bam": "175e542b0874dac91255c0d9bd7003e1d8a057357539ab3303eca182673addc1"
+  },
   "dieuKienNut": [
     {
       "id": "7310291",
@@ -24,7 +30,7 @@
           "donVi": "lít"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -41,14 +47,14 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "73102919",
       "nguon": "tax.73102919",
       "trich": "73102919 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "73102991",
@@ -63,7 +69,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "73102992",
@@ -78,9 +84,13 @@
             "REN",
             "DAP"
           ]
+        },
+        {
+          "fact": "oDangTho",
+          "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": [
         "73102991"
       ]
@@ -90,7 +100,7 @@
       "nguon": "tax.73102999",
       "trich": "73102999 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -100,21 +110,9 @@
       "ghiChu": "tieuDe.7310291: \"Có dung tích dưới 1 lít\" ⇒ dungTich < 1 lít"
     },
     {
-      "ma": "7310291",
-      "loai": "BO_VE",
-      "ve": "Có dung tích dưới 1 lít",
-      "lyDo": "Đã lượng hóa qua dungTich < 1 lít"
-    },
-    {
       "ma": "73102911",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.73102911: \"Được tráng thiếc\" ⇒ lopMaPhu TRANG_THIEC"
-    },
-    {
-      "ma": "73102911",
-      "loai": "BO_VE",
-      "ve": "Được tráng thiếc",
-      "lyDo": "Đã lượng hóa qua lopMaPhu TRANG_THIEC"
     },
     {
       "ma": "73102991",
@@ -122,21 +120,9 @@
       "ghiChu": "tax.73102991: \"Được tráng thiếc\" ⇒ lopMaPhu TRANG_THIEC"
     },
     {
-      "ma": "73102991",
-      "loai": "BO_VE",
-      "ve": "Được tráng thiếc",
-      "lyDo": "Đã lượng hóa qua lopMaPhu TRANG_THIEC"
-    },
-    {
       "ma": "73102992",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.73102992: \"Được đúc, rèn hoặc dập khác, ở dạng thô\" ⇒ phuongPhapCheTao [DUC, REN, DAP] + phanConLai [73102991]"
-    },
-    {
-      "ma": "73102992",
-      "loai": "BO_VE",
-      "ve": "Được đúc, rèn hoặc dập khác, ở dạng thô",
-      "lyDo": "Đã lượng hóa qua phuongPhapCheTao"
+      "ghiChu": "tax.73102992: \"Được đúc, rèn hoặc dập khác, ở dạng thô\" (EN \"Other casting, forging or stamping, in the rough state\") ⇒ phuongPhapCheTao [DUC, REN, DAP] + oDangTho CO + phanConLai [73102991]"
     }
   ],
   "traVe": [
