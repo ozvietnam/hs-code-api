@@ -4,13 +4,19 @@
   "nhom": "7310",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-731010",
     "ngay": "2026-11-04"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1794#soat-731010",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá theo traVe (OZV-1794)",
+    "bam": "59b457673644ba4ce71a1d389199a982551b39fcff0aa1c06ffd976a63451b4a"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -26,7 +32,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "73101091",
@@ -41,16 +47,20 @@
             "REN",
             "DAP"
           ]
+        },
+        {
+          "fact": "oDangTho",
+          "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "73101099",
       "nguon": "tax.73101099",
       "trich": "73101099 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -60,21 +70,9 @@
       "ghiChu": "tax.73101010: \"Được tráng thiếc\" ⇒ lopMaPhu TRANG_THIEC"
     },
     {
-      "ma": "73101010",
-      "loai": "BO_VE",
-      "ve": "Được tráng thiếc",
-      "lyDo": "Đã lượng hóa qua lopMaPhu TRANG_THIEC"
-    },
-    {
       "ma": "73101091",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.73101091: \"Được đúc, rèn hoặc dập, ở dạng thô\" ⇒ phuongPhapCheTao [DUC, REN, DAP]"
-    },
-    {
-      "ma": "73101091",
-      "loai": "BO_VE",
-      "ve": "Được đúc, rèn hoặc dập, ở dạng thô",
-      "lyDo": "Đã lượng hóa qua phuongPhapCheTao"
+      "ghiChu": "tax.73101091: \"Được đúc, rèn hoặc dập, ở dạng thô\" (EN \"Casting, forging or stamping, in the rough state\") ⇒ phuongPhapCheTao [DUC, REN, DAP] + oDangTho CO"
     }
   ],
   "traVe": [

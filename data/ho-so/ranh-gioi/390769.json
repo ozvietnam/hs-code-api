@@ -4,20 +4,38 @@
   "nhom": "3907",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-390769",
     "ngay": "2026-11-02"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1796#soat-390769",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1796)",
+    "bam": "1bdf91fb2365c0583988c63ffbb7f910019e727d656aa3d17f886c3c4a092031"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
       "hs": "39076910",
-      "nguon": "tax.39076910",
-      "trich": "39076910 - - - Dạng hạt và các dạng tương tự (SEN)",
+      "nguon": "sen.3907",
+      "trich": "DẠNG HẠT VÀ CÁC DẠNG TƯƠNG TỰ\nSản phẩm dạng rắn ở dạng nguyên sinh trừ dạng bột, có ít hơn 10% khối lượng lọt qua lưới lọc có đường kính mắt lọc là 1mm và sản phẩm có 90% khối lượng trở lên lọt qua lưới lọc có đường kính mắt lọc là 5mm.",
       "dieuKienSo": [
+        {
+          "fact": "tyLeLotQuaLuoiLoc1mm",
+          "op": "<",
+          "value": 10,
+          "donVi": "%"
+        },
+        {
+          "fact": "tyLeLotQuaLuoiLoc5mm",
+          "op": ">=",
+          "value": 90,
+          "donVi": "%"
+        },
         {
           "fact": "dangNguyenSinh",
           "op": "TRONG",
@@ -26,21 +44,21 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39076990",
       "nguon": "tax.39076990",
       "trich": "39076990 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "39076910",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.39076910 \"Dạng hạt và các dạng tương tự\" ⇒ dangNguyenSinh TRONG [HAT_VIEN_VAY_MANH]"
+      "ghiChu": "sen.3907 + tax.39076910 \"Dạng hạt và các dạng tương tự (SEN)\" ⇒ tyLeLotQuaLuoiLoc1mm < 10 % + tyLeLotQuaLuoiLoc5mm >= 90 % + dangNguyenSinh TRONG [HAT_VIEN_VAY_MANH] (giữ đủ ngưỡng số SEN của sổ tay)"
     },
     {
       "ma": "39076910",

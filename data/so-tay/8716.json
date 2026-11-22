@@ -183,27 +183,49 @@
     },
     {
       "hs": "87163940",
-      "dieuKien": "Rơ-moóc và sơ mi rơ-moóc dùng trong nông nghiệp (thuộc phân nhóm 8716.39: không phải loại gắn xi téc — WCO 871639)",
+      "dieuKien": "dùng trong nông nghiệp hoặc làm vườn",
       "loaiKhac": false,
       "nguon": "tax.87163940",
-      "trich": "Rơ-moóc và sơ mi rơ-moóc dùng trong nông nghiệp",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "87163940 - - - Rơ-moóc và sơ mi rơ-moóc dùng trong nông nghiệp",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungTrongNongNghiep",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1796#soat-871639",
+          "ngay": "2026-11-22",
+          "bam": "f5ab435ff57c63a3813d28600e24297701c5829c80d469e3d6c8dd640c00dac6"
+        }
+      }
     },
     {
       "hs": "87163991",
-      "dieuKien": "Có khối lượng hàng chuyên chở theo thiết kế (payload) trên 200 tấn (thuộc phân nhóm 8716.39: rơ-moóc, sơ mi rơ-moóc không phải loại gắn xi téc — WCO 871639)",
+      "dieuKien": "khối lượng hàng chuyên chở theo thiết kế (tải trọng / payload) > 200 tấn",
       "loaiKhac": false,
       "nguon": "tax.87163991",
-      "trich": "Có khối lượng hàng chuyên chở theo thiết kế (payload) trên 200 tấn",
-      "nguonLoai": "AI_DA_KIEM",
+      "trich": "87163991 - - - - Có khối lượng hàng chuyên chở theo thiết kế (payload) trên 200 tấn",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "khoi_luong",
+          "fact": "khoiLuongHangChuyenCho",
           "op": ">",
           "value": 200,
           "donVi": "tấn"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1796#soat-871639",
+          "ngay": "2026-11-22",
+          "bam": "f5ab435ff57c63a3813d28600e24297701c5829c80d469e3d6c8dd640c00dac6"
+        }
+      }
     },
     {
       "hs": "87163999",
@@ -232,19 +254,110 @@
     },
     {
       "hs": "87168010",
-      "dieuKien": "Xe kéo và xe đẩy, xe kéo, xe đẩy bằng tay để chở hàng và các loại xe tương tự được vận hành bằng tay sử dụng trong các nhà máy hoặc phân xưởng, trừ xe cút kít",
+      "dieuKien": "(tên loại hàng: Xe kéo hoặc xe đẩy và cách điều khiển / vận hành: điều khiển bằng tay và công dụng / mục đích: chở hàng và dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): các nhà máy hoặc phân xưởng) hoặc (tên loại hàng: Xe kéo, xe đẩy hoặc loại tương tự và cách điều khiển / vận hành: điều khiển bằng tay và dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): các nhà máy hoặc phân xưởng); không tên loại hàng: xe cút kít",
       "loaiKhac": false,
       "nguon": "tax.87168010",
-      "trich": "Xe kéo và xe đẩy, xe kéo, xe đẩy bằng tay để chở hàng và các loại xe tương tự được vận hành bằng tay sử dụng trong các nhà máy hoặc phân xưởng, trừ xe cút kít",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "87168010 - - Xe kéo và xe đẩy, xe kéo, xe đẩy bằng tay để chở hàng và các loại xe tương tự được vận hành bằng tay sử dụng trong các nhà máy hoặc phân xưởng, trừ xe cút kít",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "Xe kéo",
+                  "xe đẩy"
+                ]
+              },
+              {
+                "fact": "cachDieuKhien",
+                "op": "TRONG",
+                "value": [
+                  "BANG_TAY"
+                ]
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "chở hàng"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "các nhà máy",
+                  "phân xưởng"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TUONG_TU",
+                "value": [
+                  "Xe kéo",
+                  "xe đẩy"
+                ]
+              },
+              {
+                "fact": "cachDieuKhien",
+                "op": "TRONG",
+                "value": [
+                  "BANG_TAY"
+                ]
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "các nhà máy",
+                  "phân xưởng"
+                ]
+              }
+            ]
+          ]
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "xe cút kít",
+          "chieu": "PHAI_KHONG"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1796#soat-871680",
+          "ngay": "2026-11-22",
+          "bam": "9649df74cc418e171343224dc4f183462d853be8952ebec7dc0609c0488df2f4"
+        }
+      }
     },
     {
       "hs": "87168020",
-      "dieuKien": "Xe cút kít",
+      "dieuKien": "tên loại hàng: Xe cút kít",
       "loaiKhac": false,
       "nguon": "tax.87168020",
-      "trich": "Xe cút kít",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "87168020 - - Xe cút kít",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xe cút kít"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1796#soat-871680",
+          "ngay": "2026-11-22",
+          "bam": "9649df74cc418e171343224dc4f183462d853be8952ebec7dc0609c0488df2f4"
+        }
+      }
     },
     {
       "hs": "87168090",

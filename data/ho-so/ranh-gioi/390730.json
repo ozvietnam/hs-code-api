@@ -4,13 +4,19 @@
   "nhom": "3907",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-390730",
     "ngay": "2026-11-02"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1796#soat-390730",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1796)",
+    "bam": "4f740abf35b39b9170aa8e0bb4d00f04983af73b93f366b40d0513eeb70bd1dd"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -29,9 +35,13 @@
           "value": [
             "HAT_VIEN_VAY_MANH"
           ]
+        },
+        {
+          "fact": "dangBot",
+          "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39073030",
@@ -46,21 +56,21 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39073090",
       "nguon": "tax.39073090",
       "trich": "39073090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "39073020",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.39073020 \"Loại dùng để phủ, dạng bột\" ⇒ congDung \"phủ\", dangNguyenSinh HAT_VIEN_VAY_MANH"
+      "ghiChu": "tax.39073020 \"Loại dùng để phủ, dạng bột\" ⇒ congDung \"phủ\" + dangNguyenSinh TRONG [HAT_VIEN_VAY_MANH] (loại trừ .30 LONG_HOAC_NHAO) + dangBot CO (tách riêng dạng bột khỏi hạt/viên/vẩy/mảnh)"
     },
     {
       "ma": "39073030",

@@ -1,41 +1,44 @@
 #!/usr/bin/env node
 // Đồng bộ sổ đăng ký văn bản từ kho cộng đồng oz-wiki-plhq → data/plhq-registry.json (bản chụp).
 // Kho cộng đồng là nguồn sự thật về HIỆU LỰC văn bản; hs-code-api chỉ đọc, không sửa ngược.
-//   node scripts/sync-plhq.mjs                    # tải dist/registry.json từ GitHub (nhánh main)
-//   node scripts/sync-plhq.mjs --from <đường dẫn>  # đọc bản cục bộ (vd clone oz-wiki-plhq)
-//   node scripts/sync-plhq.mjs --check             # chỉ kiểm, không ghi
+//   node scripts/sync-plhq.mjs                      # tải dist/registry.json từ GitHub (nhánh main)
+//   node scripts/sync-plhq.mjs --from <đường dẫn>    # đọc bản cục bộ (vd clone oz-wiki-plhq)
+//   node scripts/sync-plhq.mjs --check               # chỉ kiểm, không ghi
 //   node scripts/sync-plhq.mjs --hs-index-from <tệp> # đọc dist/hs-index.json cục bộ (bảng mã HS ↔ văn bản)
+//   node scripts/sync-plhq.mjs --with-dieu-khoan     # (opt-in, mặc định TẮT) tải dist/dieu-khoan.json (CHỈ NGUYEN_VAN_NGUON_A)
+//   node scripts/sync-plhq.mjs --dieu-khoan-from <tệp> # (opt-in) đọc dist/dieu-khoan.json cục bộ (CHỈ NGUYEN_VAN_NGUON_A)
 // Kèm dist/hs-index.json (lớp mã HS ↔ văn bản, docs/luoc-do-danh-muc-hs.md của kho) → data/plhq-hs-index.json.
-//   node scripts/sync-plhq.mjs --summary <tệp.md>  # ghi tóm tắt thay đổi (cho workflow plhq-sync)
-//   node scripts/sync-plhq.mjs --touch-freshness   # đã đối chiếu xong với nguồn → cập nhật lastCheckedAt của
-//                                                  # plhqRegistry trong data/data-freshness.json nếu đã cũ ≥ 6 ngày
+//   node scripts/sync-plhq.mjs --summary <tệp.md>    # ghi tóm tắt thay đổi (cho workflow plhq-sync)
+//   node scripts/sync-plhq.mjs --touch-freshness     # đã đối chiếu xong với nguồn → cập nhật lastCheckedAt của
+//                                                    # plhqRegistry trong data/data-freshness.json nếu đã cũ ≥ 6 ngày
 // Không ghi tệp khi chỉ ngày đồng bộ đổi. Mã thoát 0; workflow đọc dòng "CHANGED=" / "LARGE=" trên stdout.
 import { existsSync, readFileSync, writeFileSync } from 'fs';
-import { dirname, join } from 'path';
+import { dirname, join, resolve } from 'path';
 import { fileURLToPath } from 'url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(ROOT, 'data', 'plhq-registry.json');
 const OUT_HS = join(ROOT, 'data', 'plhq-hs-index.json');
+const OUT_DK = join(ROOT, 'data', 'plhq-dieu-khoan.json');
 const URL_HS = 'https://raw.githubusercontent.com/ozvietnam/oz-wiki-plhq/main/dist/hs-index.json';
+const URL_DK = 'https://raw.githubusercontent.com/ozvietnam/oz-wiki-plhq/main/dist/dieu-khoan.json';
 const URL_MAC_DINH = 'https://raw.githubusercontent.com/ozvietnam/oz-wiki-plhq/main/dist/registry.json';
 const TINH_TRANG = new Set(['CON_HIEU_LUC', 'HET_HIEU_LUC', 'HET_HIEU_LUC_MOT_PHAN', 'TAM_NGUNG_HIEU_LUC', 'CHUA_CO_HIEU_LUC', 'CHUA_XAC_MINH']);
-
-const args = process.argv.slice(2);
-const fromIdx = args.indexOf('--from');
-const from = fromIdx >= 0 ? args[fromIdx + 1] : null;
-const checkOnly = args.includes('--check');
-const hsIdx = args.indexOf('--hs-index-from');
-const hsFrom = hsIdx >= 0 ? args[hsIdx + 1] : null;
-const sumIdx = args.indexOf('--summary');
-const summaryFile = sumIdx >= 0 ? args[sumIdx + 1] : null;
 // Thay đổi lớn (bớt văn bản, hoặc nhiều văn bản đổi tình trạng cùng lúc) → workflow mở PR cho người duyệt
 // thay vì tự đẩy thẳng main.
 const NGUONG_DOI_TINH_TRANG = 10;
-const touchFreshness = args.includes('--touch-freshness');
 const FRESHNESS = join(ROOT, 'data', 'data-freshness.json');
+export const GHI_NGUON_CC_BY = 'Nguồn: oz-wiki-plhq — https://github.com/ozvietnam/oz-wiki-plhq (CC BY 4.0)';
 
-async function load() {
+function docThamSo(args, co) {
+  const idx = args.indexOf(co);
+  if (idx < 0) return null;
+  const val = args[idx + 1];
+  if (!val || val.startsWith('--')) throw new Error(`Thiếu giá trị cho tuỳ chọn ${co}`);
+  return val;
+}
+
+async function load(from) {
   if (from) return { raw: JSON.parse(readFileSync(from, 'utf8')), source: from };
   const res = await fetch(URL_MAC_DINH);
   if (!res.ok) throw new Error(`HTTP ${res.status} khi tải ${URL_MAC_DINH}`);
@@ -74,20 +77,6 @@ export function rutGon(raw) {
   return docs;
 }
 
-const { raw, source } = await load();
-const docs = rutGon(raw);
-const out = {
-  _comment: 'Bản chụp sổ đăng ký văn bản của kho cộng đồng oz-wiki-plhq (CC BY 4.0). KHÔNG sửa tay — chạy node scripts/sync-plhq.mjs. lib/plhq-registry.js đọc tệp này.',
-  source,
-  repo: 'https://github.com/ozvietnam/oz-wiki-plhq',
-  license: raw.giay_phep || 'CC BY 4.0',
-  registryVersion: raw.phien_ban || null,
-  syncedAt: new Date().toISOString().slice(0, 10),
-  total: docs.length,
-  documents: docs,
-};
-console.log(`${docs.length} văn bản · phiên bản ${out.registryVersion} · ${docs.filter((d) => d.xacMinh.hieuLucDaDoiChieu).length} đã đối chiếu hiệu lực`);
-
 /** So bản chụp cũ với bản mới — bỏ qua syncedAt/source. */
 export function soSanh(cu, moi) {
   const theoSo = (ds) => new Map((ds || []).map((d) => [d.soHieu, d]));
@@ -100,11 +89,6 @@ export function soSanh(cu, moi) {
   const doiKhac = [...b.keys()].filter((k) => a.has(k) && JSON.stringify(a.get(k)) !== JSON.stringify(b.get(k))).length;
   return { them, bot, doiTinhTrang, doiKhac, coDoi: them.length + bot.length + doiKhac > 0 || cu?.registryVersion !== moi.registryVersion };
 }
-
-const cu = existsSync(OUT) ? JSON.parse(readFileSync(OUT, 'utf8')) : null;
-const ss = soSanh(cu, out);
-const lon = ss.bot.length > 0 || ss.doiTinhTrang.length > NGUONG_DOI_TINH_TRANG;
-console.log(`Thay đổi: +${ss.them.length} −${ss.bot.length} văn bản · ${ss.doiTinhTrang.length} đổi tình trạng · ${ss.doiKhac} văn bản sửa`);
 
 /** Bảng mã HS ↔ văn bản: giữ trường hs-code-api dùng, camelCase. */
 export function rutGonHsIndex(raw) {
@@ -125,68 +109,182 @@ export function rutGonHsIndex(raw) {
   }));
 }
 
-let hsDoi = false;
-try {
-  let hsRaw;
-  if (hsFrom) hsRaw = JSON.parse(readFileSync(hsFrom, 'utf8'));
-  else if (!from) {
-    const res = await fetch(URL_HS);
-    if (res.status === 404) console.log('Kho chưa có dist/hs-index.json — bỏ qua bảng mã HS.');
-    else if (!res.ok) throw new Error(`HTTP ${res.status} khi tải ${URL_HS}`);
-    else hsRaw = await res.json();
+/**
+ * Rút gọn dist/dieu-khoan.json (luoc_do_phien_ban: '1.5.0'):
+ * CHỈ trích xuất tầng NGUYEN_VAN_NGUON_A; tuyệt đối KHÔNG trộn TOM_TAT_NHAP thành căn cứ pháp lý.
+ */
+export function rutGonDieuKhoan(raw) {
+  if (!raw || !Array.isArray(raw.nguyen_van_nguon_a)) {
+    throw new Error('dieu-khoan.json không có nguyen_van_nguon_a[]');
   }
-  if (hsRaw) {
-    const docsHs = rutGonHsIndex(hsRaw);
-    const cuHs = existsSync(OUT_HS) ? JSON.parse(readFileSync(OUT_HS, 'utf8')) : null;
-    hsDoi = JSON.stringify(cuHs?.documents || null) !== JSON.stringify(docsHs);
-    const soDong = docsHs.reduce((n, d) => n + d.rows.length, 0);
-    console.log(`Bảng mã HS: ${docsHs.length} văn bản · ${soDong} dòng${hsDoi ? ' (có đổi)' : ''}`);
-    if (!checkOnly && hsDoi) {
-      writeFileSync(OUT_HS, JSON.stringify({
-        _comment: 'Bản chụp bảng mã HS ↔ văn bản của kho cộng đồng oz-wiki-plhq (CC BY 4.0). KHÔNG sửa tay — chạy node scripts/sync-plhq.mjs. lib/plhq-registry.js đọc tệp này.',
-        source: hsFrom || URL_HS, repo: 'https://github.com/ozvietnam/oz-wiki-plhq', schema: 'docs/luoc-do-danh-muc-hs.md',
-        registryVersion: hsRaw.phien_ban || null, syncedAt: new Date().toISOString().slice(0, 10), documents: docsHs,
-      }, null, 1) + '\n');
-      console.log(`Đã ghi ${OUT_HS.slice(ROOT.length + 1)}`);
-    }
+  if (raw.luoc_do_phien_ban && !String(raw.luoc_do_phien_ban).startsWith('1.')) {
+    throw new Error(`dieu-khoan.json luoc_do_phien_ban không tương thích: ${raw.luoc_do_phien_ban}`);
   }
-} catch (e) {
-  console.error(`Bảng mã HS: ${e.message}`);
-  process.exitCode = 1;
-}
-console.log(`CHANGED=${ss.coDoi || hsDoi}`);
-console.log(`LARGE=${lon}`);
-if (summaryFile) {
-  writeFileSync(summaryFile, [
-    `Đồng bộ sổ đăng ký văn bản từ [oz-wiki-plhq](${out.repo}) — phiên bản ${out.registryVersion}, ${docs.length} văn bản.`,
-    '',
-    `- Văn bản mới: ${ss.them.join(', ') || 'không'}`,
-    `- Văn bản bị bớt: ${ss.bot.join(', ') || 'không'}`,
-    `- Đổi tình trạng (${ss.doiTinhTrang.length}): ${ss.doiTinhTrang.map((x) => `${x.soHieu} ${x.tu} → ${x.thanh}`).join('; ') || 'không'}`,
-    `- Văn bản sửa trường khác: ${ss.doiKhac}`,
-    `- Bảng mã HS ↔ văn bản: ${hsDoi ? 'có cập nhật' : 'không đổi'}`,
-    lon ? `\n**Thay đổi lớn** (bớt văn bản hoặc trên ${NGUONG_DOI_TINH_TRANG} văn bản đổi tình trạng) — cần người duyệt.` : '',
-  ].join('\n') + '\n');
-}
-if (!checkOnly && ss.coDoi) {
-  writeFileSync(OUT, JSON.stringify(out, null, 1) + '\n');
-  console.log(`Đã ghi ${OUT.slice(ROOT.length + 1)}`);
-} else if (!ss.coDoi) {
-  console.log('Không đổi so với bản chụp hiện có — không ghi.');
+  return raw.nguyen_van_nguon_a
+    .filter((d) => d && d.tang_tin_cay === 'NGUYEN_VAN_NGUON_A')
+    .map((d) => ({
+      soHieu: d.so_hieu,
+      slug: d.slug,
+      ten: d.ten,
+      tinhTrang: d.tinh_trang || null,
+      hieuLucTu: d.hieu_luc_tu || null,
+      hetHieuLucTu: d.het_hieu_luc_tu || null,
+      hieuLucDaDoiChieu: d.hieu_luc_da_doi_chieu === true,
+      nguonA: d.nguon_a || null,
+      tangTinCay: 'NGUYEN_VAN_NGUON_A',
+      dieuKhoan: (Array.isArray(d.dieu_khoan) ? d.dieu_khoan : []).map((k) => ({
+        dieu: k.dieu,
+        khoan: k.khoan ?? null,
+        diem: k.diem ?? null,
+        noiDung: k.noi_dung,
+        trangPdf: k.trang_pdf ?? null,
+        sha256Pdf: k.sha256_pdf || null,
+      })),
+    }));
 }
 
-// Lần đồng bộ này là một lần đối chiếu thật với nguồn (tải từ kho cộng đồng) → được phép ghi ngày kiểm.
-// Chỉ ghi khi đã cũ ≥ 6 ngày để không sinh commit mỗi ngày.
-let touched = false;
-if (touchFreshness && !checkOnly) {
-  const fr = JSON.parse(readFileSync(FRESHNESS, 'utf8'));
-  const src = fr.sources?.plhqRegistry;
-  const homNay = new Date(Date.now() + 7 * 3600 * 1000).toISOString().slice(0, 10);
-  if (src && (!src.lastCheckedAt || (Date.parse(homNay) - Date.parse(src.lastCheckedAt)) / 864e5 >= 6)) {
-    src.lastCheckedAt = homNay;
-    src.checkedBy = 'scripts/sync-plhq.mjs (workflow plhq-sync)';
-    writeFileSync(FRESHNESS, JSON.stringify(fr, null, 2) + '\n');
-    touched = true;
+export async function main(args = process.argv.slice(2)) {
+  const from = docThamSo(args, '--from');
+  const checkOnly = args.includes('--check');
+  const hsFrom = docThamSo(args, '--hs-index-from');
+  const withDieuKhoan = args.includes('--with-dieu-khoan');
+  const dkFrom = docThamSo(args, '--dieu-khoan-from');
+  const summaryFile = docThamSo(args, '--summary');
+  const touchFreshness = args.includes('--touch-freshness');
+
+  const { raw, source } = await load(from);
+  const docs = rutGon(raw);
+  const out = {
+    _comment: `Bản chụp sổ đăng ký văn bản của kho cộng đồng oz-wiki-plhq. KHÔNG sửa tay — chạy node scripts/sync-plhq.mjs. lib/plhq-registry.js đọc tệp này. ${GHI_NGUON_CC_BY}.`,
+    attribution: GHI_NGUON_CC_BY,
+    source,
+    repo: 'https://github.com/ozvietnam/oz-wiki-plhq',
+    license: raw.giay_phep || 'CC BY 4.0',
+    registryVersion: raw.phien_ban || null,
+    syncedAt: new Date().toISOString().slice(0, 10),
+    total: docs.length,
+    documents: docs,
+  };
+  console.log(`${docs.length} văn bản · phiên bản ${out.registryVersion} · ${docs.filter((d) => d.xacMinh.hieuLucDaDoiChieu).length} đã đối chiếu hiệu lực`);
+
+  const cu = existsSync(OUT) ? JSON.parse(readFileSync(OUT, 'utf8')) : null;
+  const ss = soSanh(cu, out);
+  const lon = ss.bot.length > 0 || ss.doiTinhTrang.length > NGUONG_DOI_TINH_TRANG;
+  console.log(`Thay đổi: +${ss.them.length} −${ss.bot.length} văn bản · ${ss.doiTinhTrang.length} đổi tình trạng · ${ss.doiKhac} văn bản sửa`);
+
+  let hsDoi = false;
+  try {
+    let hsRaw;
+    if (hsFrom) hsRaw = JSON.parse(readFileSync(hsFrom, 'utf8'));
+    else if (!from) {
+      const res = await fetch(URL_HS);
+      if (res.status === 404) console.log('Kho chưa có dist/hs-index.json — bỏ qua bảng mã HS.');
+      else if (!res.ok) throw new Error(`HTTP ${res.status} khi tải ${URL_HS}`);
+      else hsRaw = await res.json();
+    }
+    if (hsRaw) {
+      const docsHs = rutGonHsIndex(hsRaw);
+      const cuHs = existsSync(OUT_HS) ? JSON.parse(readFileSync(OUT_HS, 'utf8')) : null;
+      hsDoi = JSON.stringify(cuHs?.documents || null) !== JSON.stringify(docsHs);
+      const soDong = docsHs.reduce((n, d) => n + d.rows.length, 0);
+      console.log(`Bảng mã HS: ${docsHs.length} văn bản · ${soDong} dòng${hsDoi ? ' (có đổi)' : ''}`);
+      if (!checkOnly && hsDoi) {
+        writeFileSync(OUT_HS, JSON.stringify({
+          _comment: `Bản chụp bảng mã HS ↔ văn bản của kho cộng đồng oz-wiki-plhq. KHÔNG sửa tay — chạy node scripts/sync-plhq.mjs. lib/plhq-registry.js đọc tệp này. ${GHI_NGUON_CC_BY}.`,
+          attribution: GHI_NGUON_CC_BY,
+          source: hsFrom || URL_HS, repo: 'https://github.com/ozvietnam/oz-wiki-plhq', schema: 'docs/luoc-do-danh-muc-hs.md',
+          registryVersion: hsRaw.phien_ban || null, syncedAt: new Date().toISOString().slice(0, 10), documents: docsHs,
+        }, null, 1) + '\n');
+        console.log(`Đã ghi ${OUT_HS.slice(ROOT.length + 1)}`);
+      }
+    }
+  } catch (e) {
+    console.error(`Bảng mã HS: ${e.message}`);
+    process.exitCode = 1;
   }
+
+  // Tuỳ chọn opt-in điều khoản nguồn A — mặc định TẮT để workflow plhq-sync hằng ngày không đổi.
+  let dkDoi = false;
+  if (withDieuKhoan || dkFrom) {
+    try {
+      let dkRaw;
+      if (dkFrom) dkRaw = JSON.parse(readFileSync(dkFrom, 'utf8'));
+      else if (withDieuKhoan) {
+        const res = await fetch(URL_DK);
+        if (res.status === 404) console.log('Kho chưa có dist/dieu-khoan.json — bỏ qua điều khoản.');
+        else if (!res.ok) throw new Error(`HTTP ${res.status} khi tải ${URL_DK}`);
+        else dkRaw = await res.json();
+      }
+      if (dkRaw) {
+        const docsDk = rutGonDieuKhoan(dkRaw);
+        const cuDk = existsSync(OUT_DK) ? JSON.parse(readFileSync(OUT_DK, 'utf8')) : null;
+        dkDoi = JSON.stringify(cuDk?.documents || null) !== JSON.stringify(docsDk);
+        const soDieu = docsDk.reduce((n, d) => n + d.dieuKhoan.length, 0);
+        console.log(`Điều khoản nguồn A: ${docsDk.length} văn bản · ${soDieu} điều khoản${dkDoi ? ' (có đổi)' : ''}`);
+        if (!checkOnly && dkDoi) {
+          writeFileSync(OUT_DK, JSON.stringify({
+            _comment: `Bản chụp điều khoản NGUYEN_VAN_NGUON_A của kho cộng đồng oz-wiki-plhq (KHÔNG trộn TOM_TAT_NHAP). KHÔNG sửa tay — chạy node scripts/sync-plhq.mjs --with-dieu-khoan. ${GHI_NGUON_CC_BY}.`,
+            attribution: GHI_NGUON_CC_BY,
+            source: dkFrom || URL_DK,
+            repo: 'https://github.com/ozvietnam/oz-wiki-plhq',
+            license: dkRaw.giay_phep || 'CC BY 4.0',
+            schemaVersion: dkRaw.luoc_do_phien_ban || '1.5.0',
+            registryVersion: dkRaw.phien_ban || null,
+            syncedAt: new Date().toISOString().slice(0, 10),
+            total: docsDk.length,
+            documents: docsDk,
+          }, null, 1) + '\n');
+          console.log(`Đã ghi ${OUT_DK.slice(ROOT.length + 1)}`);
+        }
+      }
+    } catch (e) {
+      console.error(`Điều khoản nguồn A: ${e.message}`);
+      process.exitCode = 1;
+    }
+  }
+
+  console.log(`CHANGED=${ss.coDoi || hsDoi || dkDoi}`);
+  console.log(`LARGE=${lon}`);
+  if (summaryFile) {
+    const dongTomTat = [
+      `Đồng bộ sổ đăng ký văn bản từ [oz-wiki-plhq](${out.repo}) — phiên bản ${out.registryVersion}, ${docs.length} văn bản (${GHI_NGUON_CC_BY}).`,
+      '',
+      `- Văn bản mới: ${ss.them.join(', ') || 'không'}`,
+      `- Văn bản bị bớt: ${ss.bot.join(', ') || 'không'}`,
+      `- Đổi tình trạng (${ss.doiTinhTrang.length}): ${ss.doiTinhTrang.map((x) => `${x.soHieu} ${x.tu} → ${x.thanh}`).join('; ') || 'không'}`,
+      `- Văn bản sửa trường khác: ${ss.doiKhac}`,
+      `- Bảng mã HS ↔ văn bản: ${hsDoi ? 'có cập nhật' : 'không đổi'}`,
+    ];
+    if (withDieuKhoan || dkFrom) {
+      dongTomTat.push(`- Điều khoản nguồn A: ${dkDoi ? 'có cập nhật' : 'không đổi'}`);
+    }
+    dongTomTat.push(lon ? `\n**Thay đổi lớn** (bớt văn bản hoặc trên ${NGUONG_DOI_TINH_TRANG} văn bản đổi tình trạng) — cần người duyệt.` : '');
+    writeFileSync(summaryFile, dongTomTat.join('\n') + '\n');
+  }
+  if (!checkOnly && ss.coDoi) {
+    writeFileSync(OUT, JSON.stringify(out, null, 1) + '\n');
+    console.log(`Đã ghi ${OUT.slice(ROOT.length + 1)}`);
+  } else if (!ss.coDoi) {
+    console.log('Không đổi so với bản chụp hiện có — không ghi.');
+  }
+
+  // Lần đồng bộ này là một lần đối chiếu thật với nguồn (tải từ kho cộng đồng) → được phép ghi ngày kiểm.
+  // Chỉ ghi khi đã cũ ≥ 6 ngày để không sinh commit mỗi ngày.
+  let touched = false;
+  if (touchFreshness && !checkOnly) {
+    const fr = JSON.parse(readFileSync(FRESHNESS, 'utf8'));
+    const src = fr.sources?.plhqRegistry;
+    const homNay = new Date(Date.now() + 7 * 3600 * 1000).toISOString().slice(0, 10);
+    if (src && (!src.lastCheckedAt || (Date.parse(homNay) - Date.parse(src.lastCheckedAt)) / 864e5 >= 6)) {
+      src.lastCheckedAt = homNay;
+      src.checkedBy = 'scripts/sync-plhq.mjs (workflow plhq-sync)';
+      writeFileSync(FRESHNESS, JSON.stringify(fr, null, 2) + '\n');
+      touched = true;
+    }
+  }
+  console.log(`TOUCHED=${touched}`);
 }
-console.log(`TOUCHED=${touched}`);
+
+if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  await main();
+}
