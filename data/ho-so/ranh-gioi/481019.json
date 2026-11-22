@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L15-20261111#soat-L15",
-    "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu VI+EN: .10 đã in + máy ghi tự động + kichThuoc <= 360 mm; «ở dạng không gấp» không thành daGap (đúng quy ước cách đo).",
-    "bam": "83f00dd2c3a7a34e1ffe365fe8efc632f67edc9b42dd283bca8b906ef6d74cf1"
+    "phien": "claude-agent:ozv-1842#soat-481019",
+    "ngay": "2026-11-22",
+    "ghiChu": "Đối chiếu VI+EN: giữ kichThuoc <= 360 mm kết hợp HOAC cụm nguyên văn \"không có chiều nào trên 360 mm\" ở 48101910 để tránh điểm mù bộ đọc kích thước nhiều chiều trên chữ biểu thuế (OZV-1842).",
+    "bam": "d5376732e2e7719debfd6506af97f95b1a116b5597a2a5ca5a6af0d480c7aa44"
   },
   "dieuKienNut": [],
   "dong8": [
@@ -34,10 +34,24 @@
           "value": "máy ghi tự động"
         },
         {
-          "fact": "kichThuoc",
-          "op": "<=",
-          "value": 360,
-          "donVi": "mm"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "kichThuoc",
+                "op": "<=",
+                "value": 360,
+                "donVi": "mm"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "không có chiều nào trên 360 mm"
+              }
+            ]
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"

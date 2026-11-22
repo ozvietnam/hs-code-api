@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:tho-hs-02#soat-530500",
-    "ngay": "2026-11-21",
-    "ghiChu": "Đã chuẩn hoá dieuKienSo bám chữ biểu thuế",
-    "bam": "26b6bf9cbed59707bb8fcb7ba3d5e8fee12573124402f268a5e84ad4822d1643"
+    "phien": "claude-agent:ozv-1842#soat-530500",
+    "ngay": "2026-11-22",
+    "ghiChu": "Đối chiếu VI+EN: dưới tiêu đề 5305002 \"Xơ dừa và xơ chuối abaca\", 53050021 giữ vế định ngữ riêng \"loại thô\", 53050022 \"Xơ dừa khác\" là phần còn lại phanConLai [53050021, 53050023] của tầng 5305002 (OZV-1842).",
+    "bam": "8ff210abde7223b78554274c9409f7ebef45d55470b96859ab31e60af46c80cb"
   },
   "dieuKienNut": [
     {
@@ -87,11 +87,6 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Xơ dừa"
-        },
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
           "value": "loại thô"
         }
       ],
@@ -101,15 +96,12 @@
       "hs": "53050022",
       "nguon": "tax.53050022",
       "trich": "53050022 - - Xơ dừa khác",
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Xơ dừa"
-        }
-      ],
+      "dieuKienSo": [],
       "nguonLoai": "CLAUDE_DUYET",
-      "phanConLai": true
+      "phanConLai": [
+        "53050021",
+        "53050023"
+      ]
     },
     {
       "hs": "53050023",
@@ -146,12 +138,12 @@
     {
       "ma": "53050021",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.53050021 \"Xơ dừa, loại thô\" (EN \"Coconut fibres, raw\") ⇒ tenLoai TEN_LOAI \"Xơ dừa\" + tenLoai TEN_LOAI \"loại thô\" — tách vế định ngữ \"loại thô\" khỏi danh từ \"Xơ dừa\" để phân biệt với 53050022; gộp thành một giá trị \"Xơ dừa, loại thô\" thì phủ định 53050021 của 53050022 không chứng minh được (so chữ tự do: CHUA_BIET) ⇒ 53050022 không tới được (cong2-dong-khong-toi-duoc)."
+      "ghiChu": "tax.53050021 \"Xơ dừa, loại thô\" (EN \"Coconut fibres, raw\") ⇒ tenLoai TEN_LOAI \"loại thô\" (danh từ \"Xơ dừa\" đã thuộc phạm vi tiêu đề cha 5305002 và phần còn lại 53050022; giữ vế định ngữ \"loại thô\" để loại trừ tất định khi đối chiếu các nhánh anh em trong tầng 5305002)."
     },
     {
       "ma": "53050022",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.53050022 \"Xơ dừa khác\" (EN \"Other coconut fibres\") ⇒ tenLoai TEN_LOAI \"Xơ dừa\" + phanConLai: true — \"khác\" là phần còn lại có tên: xơ dừa loại khác loại thô (anh em đứng trước 53050021) trong tầng 5305002; 53050023 (xơ chuối abaca) đứng sau nên không bị phủ định; chữ \"khác\" do phanConLai giữ, không nhân bản vào giá trị tên."
+      "ghiChu": "tax.53050022 \"Xơ dừa khác\" (EN \"Other coconut fibres\") ⇒ dieuKienSo: [] + phanConLai: [\"53050021\", \"53050023\"] — phần còn lại của tầng 5305002 sau khi trừ xơ dừa loại thô (.21) và xơ chuối abaca (.23)."
     },
     {
       "ma": "53050023",
