@@ -8,7 +8,7 @@
 
 1. Chỉ trích từ các nguồn trong tệp `<nhom>.txt`: `nhom<4>.nhom`, `ch<2>.chuong`, `phan<2>.phan`, `sen.*`, `tax.*`, `wco.*`.
 2. `trich` là câu chép **nguyên văn** từ đúng nguồn ghi ở `nguon`, ≤ 300 ký tự. Được lược bằng "…". Giữ nguyên lỗi chính tả gốc.
-3. `loaiTru` chỉ ghi khi nguồn **nêu đích danh** nhóm đích, và số nhóm phải có trong câu trích. Không tính số nhóm chỉ là ví dụ linh kiện, dải "từ X đến Y" hay "Chương N".
+3. `loaiTru` chỉ ghi khi nguồn **nêu đích danh** nhóm đích (và số nhóm có trong câu trích), HOẶC theo **quy tắc vật liệu → sản phẩm hoàn chỉnh** dùng cặp trích hai vế nguyên văn: `nguon`/`trich` nêu điều loại trừ của nhóm/chương/phần nguồn + `canCuLoaiTru: { nguon, trich }` định danh nhóm sản phẩm hoàn chỉnh ở phía đích. Không tính số nhóm chỉ là ví dụ linh kiện hay dải "từ X đến Y".
 4. `phanBiet`: mã ngoài nhóm phải có trong câu trích.
 5. `dieuKienVao` dạng số: số đó phải có trong câu trích.
 6. `dong8`: đủ mọi dòng `tax.*` của nhóm. `loaiKhac` máy tự điền theo biểu thuế (tên dòng bắt đầu bằng "Loại khác" → `true`), không cần cân nhắc. Có SEN thì ưu tiên điều kiện từ SEN. Dòng trùng chữ mà nguồn không phân biệt được thì ghi rõ, không đoán.
@@ -25,6 +25,14 @@
 ## Quyết định đã đúc từ các vòng trước (không mở lại)
 
 - **Không lô nào được gộp nếu chưa qua bước soát độc lập** — máy kiểm chỉ chứng minh câu trích có thật trong nguồn, không chứng minh nó nói đúng điều mục khẳng định (vòng 2 xoá 325 + sửa 95 trên ~1.300 mục; vòng 1 soát lại xoá 262 + sửa 281).
+
+## Quy tắc loại trừ vật liệu → sản phẩm hoàn chỉnh (#1645)
+
+- **Sổ tay của nhóm "vật liệu" / "sản phẩm chung theo chất liệu"** (`3923–3926`, `5903`, `5808`, `3919`…) **bắt buộc** phải có câu `loaiTru` trỏ sang các nhóm **"sản phẩm hoàn chỉnh" có tên riêng** (`42.02`, `61–63`, `84.24`, `40.16`, `82.12`…), không để hàng hoàn chỉnh kẹt ở nhóm vật liệu hay nhóm chung.
+- Khi chú giải nhóm/chương/phần nguồn chỉ loại trừ theo **Chương**, **Phần** hoặc **trạng thái đã hoàn thiện** mà không viết sẵn mã 4 số của nhóm đích, dùng cấu trúc 2 vế bắt buộc (`lib/so-tay.js#checkItem`):
+  1. `nguon` + `trich` thuộc nguồn pháp lý nguyên văn của chính nhóm đang soạn (`sourcesFor(nhom)`), mang neo loại trừ / giới hạn / Chương / Phần hợp lệ;
+  2. `canCuLoaiTru: { nguon, trich }` trỏ đúng nguồn cấp nhóm/phân nhóm của nhóm đích (`nhom<sangNhom>.nhom` hoặc `wco/sen/tax.<sangNhom>`), trích nguyên văn câu định danh sản phẩm hoàn chỉnh ở nhóm đích.
+- Tên hàng trong `dieuKien` đặt cụ thể (tránh từ chung mơ hồ) và phải có ca test hai chiều (`C5`/`C6`, `nhomLienQuanSoTay`, `soTayGates`) kèm **ca ngược** chứng minh hàng thuộc đúng nhóm nguồn không bị kích hoạt oan.
 
 ## `dieuKienSo` có kiểu theo `tu-vung@1` (30/10/2026, #573 — plan L1-3b)
 
