@@ -4,13 +4,19 @@
   "nhom": "0407",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-040719",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "tho-hs-03:ozv-1804-20261122#soat-040719",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá ranh giới theo traVe.lyDo và khép SẠCH V1 lô 12b (OZV-1804).",
+    "bam": "b4647fef01909940d0f00b9ae635eff5f0648a24d0e84c009ab15ce4d19e3568"
+  },
   "dieuKienNut": [
     {
       "id": "0407191",
@@ -18,15 +24,14 @@
       "trich": "0407191 Của vịt, ngan",
       "dieuKienSo": [
         {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
+          "fact": "cuaLoaiGiaCam",
+          "op": "TRONG",
           "value": [
-            "vịt",
-            "ngan"
+            "VIT_NGAN"
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -40,14 +45,14 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "04071919",
       "nguon": "tax.04071919",
       "trich": "04071919 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "04071991",
@@ -59,21 +64,21 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "04071999",
       "nguon": "tax.04071999",
       "trich": "04071999 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "0407191",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.0407191 \"Của vịt, ngan\" ⇒ dungCho mảng vịt, ngan"
+      "ghiChu": "tieuDe.0407191 \"Của vịt, ngan\" ⇒ cuaLoaiGiaCam TRONG [VIT_NGAN]"
     },
     {
       "ma": "04071911",

@@ -385,7 +385,9 @@
       "tyLeLotQuaLuoiLoc1mm",
       "tyLeLotQuaLuoiLoc5mm",
       "dangTam",
-      "nguonDongLuc"
+      "nguonDongLuc",
+      "cuaLoaiGiaCam",
+      "tuXoDay"
     ],
     "tuVung1": {
       "trangThai": "DA_CHAM",
@@ -5395,7 +5397,7 @@
               "vải\\s+lanh",
               "vải\\s+đay",
               "lanh(?!\\s+gai)",
-              "từ\\s+các\\s+vật\\s+liệu\\s+dệt\\s+khác(?=\\s*:\\s*đã\\s+tráng)"
+              "từ\\s+các\\s+vật\\s+liệu\\s+dệt\\s+khác(?=\\s*:\\s*(?:đã\\s+tráng|thảm\\s+cầu\\s+nguyện))"
             ],
             "en": [
               "vegetable\\s+(?:textile\\s+)?fib(?:re|er)s?",
@@ -5678,7 +5680,13 @@
         "zh": "产品（板、片、门、壁）的厚度是多少毫米（mm）？"
       },
       "ghiChu": "Độ dày tấm/lá/que/cửa — chữ biểu 7308.30.10 \"Cửa ra vào, có độ dày từ 6 mm đến 8 mm\" (lát 2, đề xuất de-xuat-khoa-lat-2.md: quét + studio-loop). Khoảng \"dày 6-8 mm\" ⇒ giaTri 6, cacGiaTri [6, 8] — người dùng ngưỡng xét cacGiaTri (như chieuCao); \"từ 6 mm đến 8 mm\" (đơn vị sau cả hai số) đọc số đầu 6 — spec dùng cặp điều kiện >= 6 và <= 8. Cần ngữ cảnh \"dày/thickness/厚\" trong 30 ký tự trước số (canNguCanh) — \"8 mm\" trần không đọc. Độ dày theo tỉ lệ (\"không quá 1/10 đường kính\") là khoá tiLe. + đơn vị micron/µm (06/11, lô 4; hệ daiMicron = hệ dai + micron): chữ biểu 8421.29.60 \"… màng lọc hoặc màng tinh chế với độ dày không quá 140 micron\" (đề xuất 842129).",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "AI_DA_KIEM",
+      "docThem": [
+        {
+          "mau": "(?:độ\\s+|bề\\s+|chiều\\s+)?dày\\s+([1-9]\\d{0,2},\\d{2})\\d\\s*mm",
+          "donVi": "mm"
+        }
+      ]
     },
     {
       "khoa": "congSuatBieuKien",
@@ -6319,6 +6327,7 @@
       "canNguCanh": true,
       "cachDoc": {
         "vi": [
+          "(?:dùng\\s+cho\\s+)?loại\\s+lốp\\s+có\\s+chiều\\s+rộng",
           "chiều\\s+rộng",
           "bề\\s+rộng",
           "khổ\\s+rộng",
@@ -6327,12 +6336,14 @@
           "chiều\\s+ngang"
         ],
         "en": [
+          "(?:suitable\\s+for\\s+)?fitting\\s+to\\s+tyres?\\s+of\\s+a\\s+width",
           "width",
           "wide",
           "maximum\\s+horizontal\\s+dimension",
           "horizontal\\s+dimension"
         ],
         "zh": [
+          "适配轮胎宽度",
           "宽度",
           "宽",
           "板宽",
@@ -6347,7 +6358,7 @@
         "vi": "Chiều rộng của sản phẩm cán phẳng là bao nhiêu mm?",
         "zh": "平板轧材的宽度是多少毫米（mm）？"
       },
-      "ghiChu": "Trích chữ biểu 7209.16.10, 7209.27.10 \"Chiều rộng không quá 1.250 mm\" và 7211.23.20 \"chiều rộng không quá 400 mm\". + mẫu \"kích thước chiều ngang\" (8428, Studio lô 11).",
+      "ghiChu": "Trích chữ biểu 7209.16.10, 7209.27.10 \"Chiều rộng không quá 1.250 mm\" và 7211.23.20 \"chiều rộng không quá 400 mm\". + mẫu \"kích thước chiều ngang\" (8428, Studio lô 11). + mẫu \"Dùng cho loại lốp có chiều rộng không quá/trên 450 mm\" (4013.10, 4013.90, OZV-1803).",
       "nguonLoai": "AI_DA_KIEM",
       "docMoRong": true
     },
@@ -8795,7 +8806,10 @@
       "nhanZh": "漂白状态（纤维、纱线或织物）",
       "giaTriHopLe": [
         "CHUA_TAY_TRANG",
-        "DA_TAY_TRANG"
+        "DA_TAY_TRANG",
+        "DA_NHUOM",
+        "TU_SOI_MAU",
+        "DA_IN"
       ],
       "moTaGiaTri": {
         "CHUA_TAY_TRANG": {
@@ -8843,6 +8857,65 @@
             ]
           },
           "cachViet": "đã tẩy trắng"
+        },
+        "DA_NHUOM": {
+          "nhanVi": "đã nhuộm",
+          "nhanEn": "dyed",
+          "nhanZh": "已染色",
+          "cachDoc": {
+            "vi": [
+              "đã\\s+nhuộm",
+              "vải\\s+nhuộm"
+            ],
+            "en": [
+              "(?<!batik[- ])dyed"
+            ],
+            "zh": [
+              "已染色",
+              "染色"
+            ]
+          },
+          "cachViet": "đã nhuộm"
+        },
+        "TU_SOI_MAU": {
+          "nhanVi": "từ các sợi có màu khác nhau",
+          "nhanEn": "of yarns of different colours",
+          "nhanZh": "色织",
+          "cachDoc": {
+            "vi": [
+              "từ\\s+(?:các\\s+)?sợi\\s+có\\s+màu\\s+khác\\s+nhau",
+              "từ\\s+(?:các\\s+)?sợi\\s+(?:nhiều\\s+)?màu",
+              "dệt\\s+từ\\s+sợi\\s+màu"
+            ],
+            "en": [
+              "of\\s+yarns?\\s+of\\s+different\\s+colou?rs?"
+            ],
+            "zh": [
+              "色织",
+              "不同颜色纱线"
+            ]
+          },
+          "cachViet": "từ các sợi có màu khác nhau"
+        },
+        "DA_IN": {
+          "nhanVi": "đã in",
+          "nhanEn": "printed",
+          "nhanZh": "已印花",
+          "cachDoc": {
+            "vi": [
+              "(?:đã|được)\\s+in(?:\\s+bằng\\s+phương\\s+pháp\\s+batik(?:\\s+truyền\\s+thống)?)?"
+            ],
+            "en": [
+              "printed(?:\\s+by\\s+the\\s+traditional\\s+batik\\s+process)?",
+              "batik[- ]printed"
+            ],
+            "zh": [
+              "已印花",
+              "印花",
+              "蜡染"
+            ]
+          },
+          "cachViet": "đã in"
         }
       },
       "cachDoc": {
@@ -8854,10 +8927,10 @@
         "vi": "{giaTri}"
       },
       "cauHoi": {
-        "vi": "Hàng dệt (xơ, sợi, vải) ở tình trạng chưa tẩy trắng hay đã tẩy trắng?",
-        "zh": "纺织品（纤维、纱线、面料）是未漂白还是已漂白状态？"
+        "vi": "Hàng dệt (xơ, sợi, vải) ở tình trạng nào (chưa tẩy trắng, đã tẩy trắng, đã nhuộm, từ các sợi có màu khác nhau, hay đã in)?",
+        "zh": "纺织品（纤维、纱线、面料）处于何种状态（未漂白、已漂白、已染色、色织或已印花）？"
       },
-      "ghiChu": "Chữ biểu 5204.11.10, 5407.10.91, 5408.10.10 \"Chưa tẩy trắng\". (5007.10.20 \"Chưa tẩy trắng hoặc đã tẩy trắng\" gộp cả hai giá trị — không đọc được, đúng ý.)",
+      "ghiChu": "Chữ biểu 5204.11.10, 5407.10.91, 5408.10.10 \"Chưa tẩy trắng\". (5007.10.20, 5007.20.20, 5007.90.20 \"Chưa tẩy trắng hoặc đã tẩy trắng\" gộp cả hai giá trị CHUA_TAY_TRANG/DA_TAY_TRANG trong 5 trạng thái của Chú giải phân nhóm 1 Phần XI — không đọc đơn giá trị, đúng ý; OZV-1803.)",
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -12956,7 +13029,7 @@
             "vi": [
               "không\\s+phải\\s+dạng\\s+đai\\s+và\\s+dải(?:\\s+hoặc\\s+tấm\\s+phổ\\s+dụng)?",
               "dạng\\s+tấm\\s+cắt\\s+sẵn",
-              "loại\\s+khác,\\s*chiều\\s+dày\\s+không\\s+quá\\s+1,5\\s*mm",
+              "loại\\s+khác,\\s*chiều\\s+dày\\s+không\\s+quá\\s+(?:1,5|0,17)\\s*mm",
               "loại\\s+khác,\\s*được\\s+sơn\\s+sau\\s+khi\\s+phủ,\\s*mạ\\s+kẽm",
               "loại\\s+khác:\\s*được\\s+phủ,\\s*mạ\\s+hoặc\\s+tráng\\s+kẽm"
             ],
@@ -13019,7 +13092,8 @@
         "vi": [
           "không\\s+lượn\\s+sóng",
           "dạng\\s+phẳng",
-          "dạng\\s+cuộn"
+          "dạng\\s+cuộn",
+          "loại\\s+khác,\\s*chiều\\s+dày\\s+không\\s+quá\\s+0,17\\s*mm"
         ],
         "en": [
           "non-?corrugated",
@@ -14586,7 +14660,8 @@
           "cachDoc": {
             "vi": [
               "(?:trừ|không\\s+phải)(?:\\s+dạng)?\\s+mặt\\s+cắt\\s+ngang\\s+hình\\s+tròn",
-              "mặt\\s+cắt\\s+ngang\\s+(?:hình\\s+)?(?:lục\\s+giác|bát\\s+giác|dẹt|đa\\s+giác)"
+              "mặt\\s+cắt\\s+ngang\\s+(?:hình\\s+)?(?:lục\\s+giác|bát\\s+giác|dẹt|đa\\s+giác)",
+              "xoắn\\s+sau\\s+khi\\s+cán(?::\\s*có\\s+hàm\\s+lượng\\s+carbon\\s+dưới\\s+0,6%\\s+tính\\s+theo\\s+khối\\s+lượng)?:\\s*thép\\s+cốt\\s+bê\\s+tông"
             ],
             "en": [
               "(?:other\\s+than|not|excluding)\\s+(?:of\\s+)?circular\\s+cross-section",
@@ -26197,6 +26272,155 @@
       },
       "ghiChu": "Chữ biểu 8467.92.00 \"Của dụng cụ hoạt động bằng khí nén\", 9822.20.00 \"Máy ép thủy lực\" (tiêu đề tầng/phân nhóm hai nguồn hoặc cấp 5–6 số: 8412.2 \"Động cơ và mô tơ thủy lực\", 8412.3 \"Động cơ và mô tơ dùng khí nén\", 8425.42 \"Loại kích và tời khác, dùng thủy lực\", 8428.20 \"Máy nâng hạ và băng tải dùng khí nén\", 8462.61 \"Máy ép thuỷ lực\", 8481.20 \"Van dùng trong truyền động dầu thủy lực hoặc khí nén\", 9032.81.00 \"Loại dùng thủy lực hoặc khí nén\"). Phân biệt với cachDieuKhien (cách điều khiển van/thiết bị, không dùng cho nguồn động lực của động cơ/máy theo SOAN-TIEU-CHI-6-SO.md L9). Hỗ trợ cả hai cách bỏ dấu \"thủy lực\" và \"thuỷ lực\"; không bắt nhầm vôi/xi măng thủy lực, dầu/chất lỏng thủy lực, bình chứa khí nén, lốp hơi pneumatic tyres (#1584).",
       "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "cuaLoaiGiaCam",
+      "kieu": "LIET_KE",
+      "nhanVi": "của loài gia cầm (loài gia cầm/chim đẻ trứng)",
+      "nhanEn": "of poultry/bird species (egg-laying species)",
+      "nhanZh": "禽类物种（产卵禽鸟种类）",
+      "giaTriHopLe": [
+        "GA_GALLUS_DOMESTICUS",
+        "VIT_NGAN",
+        "GIA_CAM_CHIM_KHAC"
+      ],
+      "moTaGiaTri": {
+        "GA_GALLUS_DOMESTICUS": {
+          "nhanVi": "của gà thuộc loài Gallus domesticus",
+          "nhanEn": "of fowls of the species Gallus domesticus",
+          "nhanZh": "家鸡（Gallus domesticus）",
+          "cachDoc": {
+            "vi": [
+              "(?:của\\s+|trứng\\s+)?gà\\s+thuộc\\s+loài\\s+gallus\\s+domesticus",
+              "(?:của\\s+|trứng\\s+)?gà\\s+gallus\\s+domesticus"
+            ],
+            "en": [
+              "(?:of\\s+)?fowls?\\s+of\\s+the\\s+species\\s+gallus\\s+domesticus"
+            ],
+            "zh": [
+              "家鸡（?gallus\\s*domesticus）?"
+            ]
+          },
+          "cachViet": "của gà thuộc loài Gallus domesticus"
+        },
+        "VIT_NGAN": {
+          "nhanVi": "của vịt, ngan",
+          "nhanEn": "of ducks",
+          "nhanZh": "鸭（含番鸭）",
+          "cachDoc": {
+            "vi": [
+              "của\\s+(?:vịt\\s*,\\s*ngan|vịt|ngan)",
+              "trứng\\s+(?:vịt|ngan)"
+            ],
+            "en": [
+              "of\\s+ducks?",
+              "duck\\s+eggs?"
+            ],
+            "zh": [
+              "鸭蛋"
+            ]
+          },
+          "cachViet": "của vịt, ngan"
+        },
+        "GIA_CAM_CHIM_KHAC": {
+          "nhanVi": "của loài chim hoặc gia cầm khác (ngỗng, chim cút, gà tây, đà điểu…)",
+          "nhanEn": "of other birds or poultry (geese, quail, turkeys, ostriches…)",
+          "nhanZh": "其他禽鸟（鹅、鹌鹑、火鸡、鸵鸟等）",
+          "cachDoc": {
+            "vi": [
+              "không\\s+phải\\s+của\\s+(?:vịt|gà)",
+              "(?:của\\s+|trứng\\s+)(?:ngỗng|chim\\s+cút|gà\\s+tây|đà\\s+điểu)",
+              "trứng\\s+đã\\s+thụ\\s+tinh\\s+để\\s+ấp\\s*-\\s*loại\\s+khác:\\s*để\\s+nhân\\s+giống"
+            ],
+            "en": [
+              "(?:of\\s+)?(?:geese|goose|quails?|turkeys?|ostrich(?:es)?)\\s+eggs?",
+              "eggs?\\s+of\\s+(?:geese|quails?|turkeys?|ostriches)"
+            ],
+            "zh": [
+              "鹅蛋",
+              "鹌鹑蛋",
+              "火鸡蛋",
+              "鸵鸟蛋"
+            ]
+          },
+          "cachViet": "của chim cút"
+        }
+      },
+      "cachDoc": {
+        "vi": [],
+        "en": [],
+        "zh": []
+      },
+      "cachViet": {
+        "vi": "{giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Trứng này là của gà thuộc loài Gallus domesticus, của vịt/ngan, hay của loài chim/gia cầm khác?",
+        "zh": "该禽蛋属于家鸡（Gallus domesticus）、鸭（含番鸭），还是其他禽鸟？"
+      },
+      "ghiChu": "Chữ biểu 0407.19.1 / 0407.29.10 / 0407.90.20 \"Của vịt, ngan\" (EN \"Of ducks\") và 0407.90.10 \"Của gà thuộc loài Gallus domesticus\" (EN \"Of fowls of the species Gallus domesticus\") (OZV-1804).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "tuXoDay",
+      "kieu": "CO_KHONG",
+      "nhanVi": "từ xơ đay (jute fibres)",
+      "nhanEn": "of jute fibres",
+      "nhanZh": "黄麻纤维制",
+      "cachDoc": {
+        "vi": [
+          "(?:từ|bằng|sợi|vải|xơ|chất\\s+liệu)\\s+(?:xơ\\s+)?đay\\b"
+        ],
+        "en": [
+          "(?:of\\s+)?jute(?:\\s+fib(?:re|er)s?)?\\b"
+        ],
+        "zh": [
+          "黄麻(?:纤维)?制?"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không",
+          "chưa",
+          "trừ",
+          "ko",
+          "chẳng",
+          "non-?",
+          "without",
+          "no",
+          "not",
+          "excluding",
+          "other than",
+          "无",
+          "非",
+          "不",
+          "未"
+        ]
+      },
+      "cachDocKhong": {
+        "vi": [
+          "không\\s+(?:phải\\s+)?(?:từ|bằng|sợi|vải|xơ)\\s+(?:xơ\\s+)?đay\\b",
+          "(?:từ|bằng|sợi|vải|xơ)\\s+(?:lanh(?!\\s+gai)|gai(?:\\s+ramie|\\s+dầu)?|ramie|xơ\\s+dừa|sisal|chuối\\s+sợi|abaca)",
+          "từ\\s+các\\s+vật\\s+liệu\\s+dệt\\s+khác(?=\\s*:\\s*thảm\\s+cầu\\s+nguyện)"
+        ],
+        "en": [
+          "not\\s+(?:of\\s+)?jute(?:\\s+fib(?:re|er)s?)?\\b",
+          "(?:of\\s+)?(?:flax|linen|ramie|true\\s+hemp|coir|sisal|abaca)\\b"
+        ],
+        "zh": [
+          "非黄麻",
+          "(?:亚麻|苎麻|大麻|剑麻|椰壳纤维|蕉麻)制"
+        ]
+      },
+      "cachViet": {
+        "vi": "từ xơ đay",
+        "viPhuDinh": "không phải từ xơ đay"
+      },
+      "cauHoi": {
+        "vi": "Sản phẩm có được làm từ xơ đay (jute fibres, nhóm 53.03) không?",
+        "zh": "该产品是否由黄麻纤维（税目53.03）制成？"
+      },
+      "ghiChu": "Chữ biểu 5702.39.20 / 5702.49.20 / 5702.50.20 / 5702.99.20 \"Từ xơ đay\" / EN \"Of jute fibres\" (phân biệt với sisal, lanh, gai ramie, xơ dừa… trong cùng nhóm vật liệu dệt thực vật khác) (OZV-1804).",
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "khongPhaiPhuDinh": [
@@ -26427,6 +26651,15 @@
       "(?<!mini(?:ature)?[^.;\\n]{0,60})(?![^.;\\n]{0,60}mini(?:ature)?)(?:rice\\s?cookers?|toaster\\s?ovens?)",
       "(?<!微型[^。;\\n]{0,30})(?![^。;\\n]{0,30}微型)(?:电饭煲|烤箱)"
     ]
+  },
+  "cachDocThem": {
+    "soPha": {
+      "NHIEU_PHA": {
+        "vi": [
+          "đa pha"
+        ]
+      }
+    }
   },
   "tenKhac": {
     "1513": [

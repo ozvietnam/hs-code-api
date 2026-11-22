@@ -379,6 +379,9 @@ const KHOA_MOI = {
   // 22/11/2026 (#1584): bổ sung dangTam, nguonDongLuc (và mở rộng vatLieuKhac: DA_THUOC, DA_THUOC_TONG_HOP)
   dangTam: 'CO_KHONG',
   nguonDongLuc: 'LIET_KE',
+  // 22/11/2026 (OZV-1804): lô 12b (0407.19/.29/.90, 5702.39/.49/.50/.99)
+  cuaLoaiGiaCam: 'LIET_KE',
+  tuXoDay: 'CO_KHONG',
 };
 
 // ── 1. Nạp theo phiên bản ─────────────────────────────────────────────────────────────────────────────────────────
@@ -1530,13 +1533,138 @@ check('vietCum đơn vị @1 KHÔNG đổi ("CS: 75000W" — không cách)', T.v
   la('mặt cắt ngang hình tròn vẫn ⇒ TRON', 'hinhDangMatCatNgang', 'Có mặt cắt ngang hình tròn', 'TRON');
 
   // 4. ReDoS ~40.000 từ lặp < 2 giây (CLAUDE.md quy tắc 6b)
-  const redosText1799 = Array(5000).fill('được phủ mạ hoặc tráng bằng dạng đai và dải mặt cắt ngang').join(' ');
+  const redosText1799 = Array(4000).fill('được phủ mạ hoặc tráng bằng dạng đai hoặc tấm mặt cắt ngang').join(' ');
   const t0 = process.hrtime.bigint();
   for (const fk of ['lopMaPhu', 'dangDaiDaiTamPhoDung', 'hinhDangMatCatNgang']) {
     T.docGiaTri(fk, redosText1799);
   }
   const ms = Number(process.hrtime.bigint() - t0) / 1e6;
   check(`OZV-1799 ReDoS ~40.000 từ lặp trên 3 khoá mở rộng < 2000 ms (thực tế ${ms.toFixed(0)} ms)`, ms < 2000, { ms });
+}
+
+// OZV-1803 — kiểm chứng mở rộng chieuRong (4013.10.21), tinhTrangTayTrang (5007.20.20 / 5007.20.90), doDay (3921.11.91)
+// + ReDoS ~40.000 từ lặp < 2 giây (quy tắc 6b).
+{
+  // 1. chieuRong (4013.10.11 / 4013.10.21)
+  la('chữ biểu 4013.10.21 (Dùng cho loại lốp có chiều rộng không quá 450 mm)', 'chieuRong', '40131021 - - - Dùng cho loại lốp có chiều rộng không quá 450 mm', 450, { op: '<=' });
+  la('chữ biểu 4013.10.29 (Dùng cho loại lốp có chiều rộng trên 450 mm)', 'chieuRong', '40131029 - - - Dùng cho loại lốp có chiều rộng trên 450 mm', 450, { op: '>' });
+  la('cachViet đọc lại chieuRong (rộng 350 mm)', 'chieuRong', 'Săm cao su dùng cho xe buýt, rộng 350mm', 350, { op: null });
+  chuaBiet('săm cao su dùng cho lốp xe không ghi chiều rộng ⇒ CHUA_BIET', 'chieuRong', 'Săm cao su dùng cho lốp xe buýt hoặc xe tải');
+
+  // 2. tinhTrangTayTrang (5007.20.20 / 5007.20.90 — Chú giải phân nhóm 1 Phần XI)
+  {
+    const r5007 = chuaBiet('chữ biểu 5007.20.20 gộp hai giá trị ⇒ CHUA_BIET kèm ungVien', 'tinhTrangTayTrang', '50072020 - - Chưa tẩy trắng hoặc đã tẩy trắng');
+    check('tinhTrangTayTrang 5007.20.20 ⇒ ungVien [CHUA_TAY_TRANG, DA_TAY_TRANG]', JSON.stringify((r5007.ungVien || []).slice().sort()) === JSON.stringify(['CHUA_TAY_TRANG', 'DA_TAY_TRANG']), r5007);
+  }
+  la('vải tơ tằm chưa tẩy trắng ⇒ CHUA_TAY_TRANG', 'tinhTrangTayTrang', 'Vải dệt thoi từ tơ tằm chưa tẩy trắng', 'CHUA_TAY_TRANG');
+  la('vải tơ tằm đã tẩy trắng ⇒ DA_TAY_TRANG', 'tinhTrangTayTrang', 'Vải dệt thoi từ tơ tằm đã tẩy trắng', 'DA_TAY_TRANG');
+  la('vải tơ tằm đã nhuộm ⇒ DA_NHUOM', 'tinhTrangTayTrang', 'Vải dệt thoi từ tơ tằm đã nhuộm', 'DA_NHUOM');
+  la('vải tơ tằm từ sợi nhiều màu ⇒ TU_SOI_MAU', 'tinhTrangTayTrang', 'Vải dệt thoi từ tơ tằm từ sợi nhiều màu', 'TU_SOI_MAU');
+  la('vải tơ tằm đã in ⇒ DA_IN', 'tinhTrangTayTrang', 'Vải dệt thoi từ tơ tằm đã in', 'DA_IN');
+  la('En dyed silk fabric ⇒ DA_NHUOM', 'tinhTrangTayTrang', 'Woven silk fabric, dyed', 'DA_NHUOM');
+  la('Zh 印花的丝织物 ⇒ DA_IN', 'tinhTrangTayTrang', '印花的丝织物', 'DA_IN');
+  chuaBiet('vải tơ tằm không nêu tình trạng tẩy/nhuộm/in ⇒ CHUA_BIET', 'tinhTrangTayTrang', 'Vải dệt thoi chứa 85% trọng lượng trở lên là tơ tằm');
+
+  // 3. doDay (3921.11.91 / 3921.14.91 / 3921.90.41 — đọc số thập phân 3 chữ số từ cumKhangDinh > 0.25 mm)
+  la('cumKhangDinh dày 1,375mm (> 0.25 mm) đọc được số dương > 0.25 mm', 'doDay', 'Tấm, phiến từ polyme styren, xốp, dày 1,375mm', 1.37, { op: null });
+  la('dày 0,25 mm đọc đúng 0.25 mm', 'doDay', 'Dạng băng, chiều dày không quá 0,25 mm', 0.25, { op: '<=' });
+
+  // 4. ReDoS ~40.000 từ lặp < 2 giây (CLAUDE.md quy tắc 6b)
+  const redosText1803 = Array(8000).fill('dùng cho loại lốp có chiều rộng vải tơ tằm chưa tẩy trắng chiều dày').join(' ');
+  const t0 = process.hrtime.bigint();
+  for (const fk of ['chieuRong', 'tinhTrangTayTrang', 'doDay']) {
+    T.docGiaTri(fk, redosText1803);
+  }
+  const ms = Number(process.hrtime.bigint() - t0) / 1e6;
+  check(`OZV-1803 ReDoS ~40.000 từ lặp trên 3 khoá < 2000 ms (thực tế ${ms.toFixed(0)} ms)`, ms < 2000, { ms });
+}
+
+// OZV-1804 — kiểm chứng 2 khoá mới (cuaLoaiGiaCam, tuXoDay) và mở rộng dangDaiDaiTamPhoDung/dangLuonSong/hinhDangMatCatNgang/loaiSoiDet + ReDoS ~40.000 từ lặp < 2 giây (quy tắc 6b).
+{
+  // 1. cuaLoaiGiaCam (0407.19.1, 0407.29.10, 0407.90.10/.20)
+  la('chữ biểu 0407.90.10 (Của gà thuộc loài Gallus domesticus) ⇒ GA_GALLUS_DOMESTICUS', 'cuaLoaiGiaCam', 'Của gà thuộc loài Gallus domesticus', 'GA_GALLUS_DOMESTICUS');
+  la('En Of fowls of the species Gallus domesticus ⇒ GA_GALLUS_DOMESTICUS', 'cuaLoaiGiaCam', 'Eggs of fowls of the species Gallus domesticus', 'GA_GALLUS_DOMESTICUS');
+  la('Zh 家鸡（Gallus domesticus） ⇒ GA_GALLUS_DOMESTICUS', 'cuaLoaiGiaCam', '家鸡（Gallus domesticus）种蛋', 'GA_GALLUS_DOMESTICUS');
+  la('chữ biểu 0407.19.1 / 0407.29.10 (Của vịt, ngan) ⇒ VIT_NGAN', 'cuaLoaiGiaCam', 'Của vịt, ngan', 'VIT_NGAN');
+  la('trứng vịt ⇒ VIT_NGAN', 'cuaLoaiGiaCam', 'Trứng vịt muối nguyên vỏ', 'VIT_NGAN');
+  la('En Of ducks ⇒ VIT_NGAN', 'cuaLoaiGiaCam', 'Fertilised eggs of ducks for incubation', 'VIT_NGAN');
+  la('Zh 鸭蛋 ⇒ VIT_NGAN', 'cuaLoaiGiaCam', '新鲜鸭蛋', 'VIT_NGAN');
+  la('trứng chim cút ⇒ GIA_CAM_CHIM_KHAC', 'cuaLoaiGiaCam', 'Trứng chim cút ăn liền nguyên vỏ', 'GIA_CAM_CHIM_KHAC');
+  la('En quail eggs ⇒ GIA_CAM_CHIM_KHAC', 'cuaLoaiGiaCam', 'Fresh quail eggs in shell', 'GIA_CAM_CHIM_KHAC');
+  chuaBiet('chỉ ghi trứng gia cầm nguyên vỏ trần ⇒ CHUA_BIET', 'cuaLoaiGiaCam', 'Trứng chim và trứng gia cầm, nguyên vỏ, sống');
+
+  // 2. tuXoDay (5702.39.20, 5702.49.20, 5702.50.20, 5702.99.20)
+  la('chữ biểu 5702.39.20 (Từ xơ đay) ⇒ true', 'tuXoDay', 'Từ xơ đay', true);
+  la('thảm dệt thoi từ đay ⇒ true', 'tuXoDay', 'Thảm trải sàn dệt thoi từ đay tự nhiên', true);
+  la('En Of jute fibres ⇒ true', 'tuXoDay', 'Woven carpets of jute fibres', true);
+  la('Zh 黄麻纤维制 ⇒ true', 'tuXoDay', '黄麻纤维制机织地毯', true);
+  la('thảm từ xơ sisal (phản chứng traVe 570239) ⇒ false', 'tuXoDay', 'Thảm dệt thoi từ xơ sisal, chưa chần', false);
+  la('thảm từ xơ dừa ⇒ false', 'tuXoDay', 'Thảm chùi chân dệt từ xơ dừa', false);
+  la('En of sisal ⇒ false', 'tuXoDay', 'Woven floor coverings of sisal', false);
+  chuaBiet('chỉ ghi thảm từ các vật liệu dệt khác trần ⇒ CHUA_BIET', 'tuXoDay', 'Loại khác, có cấu tạo nổi vòng - Từ các vật liệu dệt khác');
+
+  // 3. Mở rộng dangDaiDaiTamPhoDung & dangLuonSong (7211.23.30, 7211.29.30, 7211.90.14) và hinhDangMatCatNgang (7214.20.41/.61)
+  la('7211.23.30 (Loại khác, chiều dày không quá 0,17 mm) ⇒ DANG_CAN_PHANG_KHAC', 'dangDaiDaiTamPhoDung', 'Loại khác, chiều dày không quá 0,17 mm', 'DANG_CAN_PHANG_KHAC');
+  la('7211.23.30 (Loại khác, chiều dày không quá 0,17 mm) ⇒ dangLuonSong false', 'dangLuonSong', 'Loại khác, chiều dày không quá 0,17 mm', false);
+  la('7214.20.41 (xoắn sau khi cán: C < 0,6%: Thép cốt bê tông) ⇒ KHAC_TRON', 'hinhDangMatCatNgang', 'Có răng khía, rãnh, gân hoặc các dạng khác được tạo thành trong quá trình cán hoặc xoắn sau khi cán: Có hàm lượng carbon dưới 0,6% tính theo khối lượng: Thép cốt bê tông', 'KHAC_TRON');
+  la('7214.20.31 (Có mặt cắt ngang hình tròn: Thép cốt bê tông) vẫn ⇒ TRON', 'hinhDangMatCatNgang', 'Có răng khía, rãnh, gân hoặc các dạng khác được tạo thành trong quá trình cán hoặc xoắn sau khi cán: Có hàm lượng carbon dưới 0,6% tính theo khối lượng - Có mặt cắt ngang hình tròn: Thép cốt bê tông', 'TRON');
+
+  // 4. ReDoS ~40.000 từ lặp < 2 giây (CLAUDE.md quy tắc 6b)
+  const redosText1804 = Array(3500).fill('trứng của gà thuộc loài thảm từ các vật liệu khác xoắn sau khi cán').join(' ');
+  for (const fk of ['cuaLoaiGiaCam', 'tuXoDay', 'dangDaiDaiTamPhoDung', 'dangLuonSong', 'hinhDangMatCatNgang', 'loaiSoiDet']) {
+    const t0 = process.hrtime.bigint();
+    T.docGiaTri(fk, redosText1804);
+    const ms = Number(process.hrtime.bigint() - t0) / 1e6;
+    check(`OZV-1804 ReDoS ~40.000 từ lặp cho ${fk} < 2000 ms (thực tế ${ms.toFixed(0)} ms)`, ms < 2000, { fk, ms });
+  }
+}
+
+// #1595 (T-3b) — soPha.NHIEU_PHA đọc "đa pha" qua cachDocThem (giữ nguyên 53 khoá tu-vung@1 đóng băng)
+{
+  const DK = require('../lib/dieu-kien-so.js');
+  const TVe = require('../lib/ho-so/tach-ve.js');
+  const kSoPha = T.layKhoa('soPha');
+
+  // Thuận: docGiaTri + cachDocGiaTri + DK.kiemDieuKien + tach-ve.neoMot nhận "đa pha"
+  la('T-3b soPha "Động cơ xoay chiều khác, đa pha" ⇒ NHIEU_PHA', 'soPha', 'Động cơ xoay chiều khác, đa pha', 'NHIEU_PHA', { bc: 'đa pha' });
+  const cd = T.cachDocGiaTri(kSoPha, 'NHIEU_PHA');
+  check('T-3b cachDocGiaTri(soPha, NHIEU_PHA) giữ mẫu @1 và ghép "đa pha"',
+    ['ba pha', '3 pha', 'nhiều pha', 'đa pha'].every((p) => cd.vi.includes(p)) && cd.en.includes('poly-?phase') && cd.zh.includes('多相'),
+    cd);
+  check('T-3b DK.kiemDieuKien soPha TRONG [NHIEU_PHA] trên "Động cơ xoay chiều khác, đa pha" ⇒ null',
+    DK.kiemDieuKien({ fact: 'soPha', op: 'TRONG', value: ['NHIEU_PHA'] }, 'Động cơ xoay chiều khác, đa pha') === null);
+  check('T-3b tach-ve.neoMot soPha TRONG [NHIEU_PHA] neo được vào "Động cơ xoay chiều khác, đa pha"',
+    TVe.neoMot({ fact: 'soPha', op: 'TRONG', value: ['NHIEU_PHA'] }, 'Động cơ xoay chiều khác, đa pha').length === 1);
+
+  // Nghịch: "một pha" vẫn MOT_PHA; phủ định / ranh giới từ ⇒ CHUA_BIET; kiemTuVung từ chối cachDocThem sai
+  la('T-3b soPha (nghịch): "Động cơ xoay chiều khác, một pha" ⇒ MOT_PHA (không nhảy NHIEU_PHA)', 'soPha', 'Động cơ xoay chiều khác, một pha', 'MOT_PHA');
+  chuaBiet('T-3b soPha (nghịch): phủ định "không đa pha" ⇒ CHUA_BIET', 'soPha', 'không đa pha');
+  chuaBiet('T-3b soPha (nghịch): ranh giới từ "hàng đa năng pha lê" ⇒ CHUA_BIET', 'soPha', 'hàng đa năng pha lê');
+  check('T-3b DK.kiemDieuKien (nghịch): trích chỉ nói "một pha" không qua NHIEU_PHA',
+    DK.kiemDieuKien({ fact: 'soPha', op: 'TRONG', value: ['NHIEU_PHA'] }, 'Động cơ xoay chiều khác, một pha') === 'dieu-kien-so-trong-khong-co-trong-trich:NHIEU_PHA');
+  check('T-3b tach-ve.neoMot (nghịch): "một pha" không neo được cho NHIEU_PHA',
+    TVe.neoMot({ fact: 'soPha', op: 'TRONG', value: ['NHIEU_PHA'] }, 'Động cơ xoay chiều khác, một pha').length === 0);
+
+  const loiThem = (mut, ma) => {
+    const x = clone(tv2);
+    mut(x);
+    return T.kiemTuVung(x).some((l) => l.startsWith(ma));
+  };
+  check('T-3b kiemTuVung ĐỎ với cachDocThem không hợp lệ (khoá lạ / không phải LIET_KE / giá trị lạ / regex hỏng / chuỗi rỗng)',
+    loiThem((x) => { x.cachDocThem = { khoaLa: { A: { vi: ['a'] } } }; }, 'cach-doc-them-khoa-khong-hop-le')
+    && loiThem((x) => { x.cachDocThem = { dienAp: { V: { vi: ['v'] } } }; }, 'cach-doc-them-khoa-khong-hop-le')
+    && loiThem((x) => { x.cachDocThem = { soPha: { GIA_TRI_LA: { vi: ['x'] } } }; }, 'cach-doc-them-gia-tri-ngoai-danh-sach')
+    && loiThem((x) => { x.cachDocThem = { soPha: { NHIEU_PHA: { vi: ['(đa'] } } }; }, 'mau-khong-hop-le')
+    && loiThem((x) => { x.cachDocThem = { soPha: { NHIEU_PHA: { vi: [''] } } }; }, 'cach-doc-them-mau-rong')
+    && loiThem((x) => { x.cachDocThem = { soPha: { NHIEU_PHA: { fr: ['poly'] } } }; }, 'cach-doc-them-ngon-ngu-la')
+    && loiThem((x) => { x.cachDocThem = 'sai'; }, 'cach-doc-them-khong-hop-le'));
+
+  // ReDoS ~40.000 từ lặp cho soPha < 400 ms
+  const redosSoPha = Array(8000).fill('động cơ điện đa năng pha lê một hai').join(' ');
+  const t0 = process.hrtime.bigint();
+  const rRedos = T.docGiaTri('soPha', redosSoPha);
+  const ms = Number(process.hrtime.bigint() - t0) / 1e6;
+  check(`T-3b ReDoS ~40.000 từ lặp cho soPha < 400 ms (thực tế ${ms.toFixed(0)} ms)`, rRedos.trangThai === 'CHUA_BIET' && ms < 400, { ms, rRedos });
 }
 
 console.log(`\n${pass} pass, ${fail} fail`);

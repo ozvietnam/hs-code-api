@@ -641,6 +641,9 @@ export function sinhCaNhom(nhom4) {
         } else {
           // nếp cũ của main: midText vốn nối " - " bên trong, các phần trên nối ": "
           moTa = [ten6, midText, hs8 === n?.laPhanNhom ? '' : tenDong].filter(Boolean).join(': ');
+          const phuDinhParts = [];
+          const lietKePhaiKhong = new Map();
+          const lietKePhaiCo = new Set();
           if (
             mids.some((m) => m.loaiKhacTran)
             && tenDong
@@ -648,18 +651,51 @@ export function sinhCaNhom(nhom4) {
           ) {
             const dd = DK.duongDiDong8(hs8, { soTay: st });
             for (const g of dd.nhom || []) {
-              if (g.chieu !== 'PHAI_KHONG' || !(g.tang > 0) || !Array.isArray(g.dieuKien) || !g.dieuKien.length) continue;
-              if (!g.dieuKien.every((x) => ['<=', '<', '>=', '>'].includes(x.op))) continue;
+              if (!Array.isArray(g.dieuKien) || !g.dieuKien.length) continue;
+              if (g.chieu === 'PHAI_CO') {
+                for (const c of g.dieuKien) if (c?.op === 'TRONG') lietKePhaiCo.add(c.fact);
+                continue;
+              }
+              if (g.chieu !== 'PHAI_KHONG' || !(g.tang > 0)) continue;
+              if (!g.dieuKien.every((x) => ['<=', '<', '>=', '>', 'CO', 'KHONG', 'TRONG', 'LA'].includes(x.op))) continue;
+              for (const c of g.dieuKien) {
+                if (c.op === 'TRONG') {
+                  const set = lietKePhaiKhong.get(c.fact) || new Set();
+                  for (const v of (Array.isArray(c.value) ? c.value : [c.value])) if (v != null) set.add(String(v));
+                  lietKePhaiKhong.set(c.fact, set);
+                }
+              }
+              if (g.dieuKien.every((x) => x.op === 'TRONG')) continue;
               const s = cumPhuDinhNhom(g.dieuKien);
-              if (s) moTa += `, ${s}`;
+              if (s && !phuDinhParts.includes(s)) phuDinhParts.push(s);
             }
           }
+          for (const [fact, biLoai] of lietKePhaiKhong.entries()) {
+            if (lietKePhaiCo.has(fact) || !biLoai.size) continue;
+            const k = (() => { try { return TV.layKhoa(fact); } catch { return null; } })();
+            if (!k || k.kieu !== 'LIET_KE') continue;
+            const ngoai = (k.giaTriHopLe || []).find(
+              (v) => !biLoai.has(String(v)) && ![...biLoai].some((b) => (k.giaTriCha?.[b] || []).includes(v)),
+            );
+            if (!ngoai) continue;
+            const s = cumKhangDinh({ fact, op: 'TRONG', value: [ngoai] });
+            if (s) moTa += `, ${s}`;
+          }
+          const dRec = (st.dong8 || []).find((d) => nz(d?.hs) === hs8);
+          if (dRec && String(dRec.nguon || '').startsWith('sen.') && Array.isArray(dRec.dieuKienSo) && dRec.dieuKienSo.length) {
+            const veSen = dRec.dieuKienSo.filter((x) => x && x.op !== 'TEN_LOAI');
+            const sSen = cumKhangDinh(veSen.length ? veSen : dRec.dieuKienSo);
+            if (sSen) moTa += `, ${sSen}`;
+          }
+          for (const s of phuDinhParts) moTa += `, ${s}`;
         }
-        const dRec = (st.dong8 || []).find((d) => nz(d?.hs) === hs8);
-        if (dRec && String(dRec.nguon || '').startsWith('sen.') && Array.isArray(dRec.dieuKienSo) && dRec.dieuKienSo.length) {
-          const veSen = dRec.dieuKienSo.filter((x) => x && x.op !== 'TEN_LOAI');
-          const sSen = cumKhangDinh(veSen.length ? veSen : dRec.dieuKienSo);
-          if (sSen) moTa += `, ${sSen}`;
+        if (chi8544) {
+          const dRec = (st.dong8 || []).find((d) => nz(d?.hs) === hs8);
+          if (dRec && String(dRec.nguon || '').startsWith('sen.') && Array.isArray(dRec.dieuKienSo) && dRec.dieuKienSo.length) {
+            const veSen = dRec.dieuKienSo.filter((x) => x && x.op !== 'TEN_LOAI');
+            const sSen = cumKhangDinh(veSen.length ? veSen : dRec.dieuKienSo);
+            if (sSen) moTa += `, ${sSen}`;
+          }
         }
         caDongCoTen.push({
           loaiCa: 'DONG_CO_TEN',

@@ -95,7 +95,45 @@
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
-  "tieuChi6": [],
+  "tieuChi6": [
+    {
+      "hs6": "392410",
+      "thuTu": 1,
+      "dieuKien": "Bộ đồ ăn và bộ đồ dùng nhà bếp",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": [
+        "Bộ đồ ăn",
+        "bộ đồ dùng nhà bếp"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "bộ đồ ăn",
+        "đồ dùng nhà bếp"
+      ],
+      "nguon": "tieuDe.392410",
+      "trich": "392410 Bộ đồ ăn và bộ đồ dùng nhà bếp",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "392490",
+      "thuTu": 2,
+      "phanConLai": true,
+      "tienLe": [
+        {
+          "so": "604/TB-TCHQ",
+          "ma": "39249090"
+        },
+        {
+          "so": "712/TB-TCHQ",
+          "ma": "39249090"
+        }
+      ],
+      "nguon": "tieuDe.392490",
+      "trich": "392490 Loại khác",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
   "dong8": [
     {
       "hs": "39241010",
@@ -370,7 +408,9 @@
     "tax.39241099",
     "tax.39249010",
     "tax.39249030",
-    "tax.39249090"
+    "tax.39249090",
+    "tieuDe.392410",
+    "tieuDe.392490"
   ],
   "phienBan": "HS2022+SEN2022",
   "taoBoi": {
@@ -380,8 +420,8 @@
     "ms": 4
   },
   "kiemTra": {
-    "tong": 18,
-    "dat": 18,
+    "tong": 20,
+    "dat": 20,
     "loai": 0,
     "nguonBiCat": [
       "ch39.chuong (44853→40000)"
@@ -394,6 +434,12 @@
         "tieuChi6",
         "phamViLoaiKhac"
       ]
+    },
+    "tieuChi6": {
+      "khuon": "g6@1",
+      "soMuc": 2,
+      "soPhanNhom": 2,
+      "cong": "scripts/kiem-tieu-chi-6.mjs"
     }
   }
 }

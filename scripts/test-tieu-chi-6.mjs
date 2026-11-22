@@ -22,7 +22,7 @@ const { kiem, xong } = boKiem('test-tieu-chi-6');
 const G6 = require('../lib/do-thi/tieu-chi-6.js');
 const D = require('../lib/do-thi/index.js');
 const { nhomKhuonG6 } = await import('./kiem-tieu-chi-6.mjs');
-const { mucLuu, apVaoSoTay } = await import('./goi-soan-tieu-chi-6.mjs');
+const { chuanMuc, mucLuu, apVaoSoTay } = await import('./goi-soan-tieu-chi-6.mjs');
 
 const doc = (p) => JSON.parse(fs.readFileSync(path.join(GOC, p), 'utf8'));
 const sao = (o) => JSON.parse(JSON.stringify(o));
@@ -319,5 +319,81 @@ kiem('#1586 (7009.91/92 & phân nhóm không phải DU): 7009 qua cổng với 0
     && kq7009.canhBao.some((c) => c.ma === 'THIEU_KHOA_TU_VUNG' && c.hs6 === '700992')
     && kqHong7009.loi.some((l) => l.ma === 'KHUON_SAI' && l.hs6 === '700991');
 })());
+
+// ── 10. #1595 (T-3): sửa cổng nhỏ — RE_LUAT_CONG_DUNG "lắp vào" (3926.30), THU_TU_TRUONG dieuKienTru, tachVeTieuDe "hàng hóa tương tự" (7326.11), soPha "đa pha" ──
+{
+  // (a) RE_LUAT_CONG_DUNG: "lắp vào" (3926.30)
+  const T392630 = 'Phụ kiện lắp vào đồ nội thất, trên thân xe (coachwork) hoặc các loại tương tự';
+  const kc3926 = [{ hoi: 'Sản phẩm bằng plastic phải không?', nguon: 'nhom3926.nhom', trich: 'Nhóm này bao gồm các sản phẩm, chưa được chi tiết hoặc ghi ở nơi khác, bằng plastic' }];
+  const DS_3926 = [
+    { hs6: '392610', dieuKien: 'Đồ dùng', fact: 'tenLoai', op: 'TEN_LOAI', value: 'Đồ dùng', tuKhoa: ['đồ dùng trong văn phòng'], nguon: 'tax.39261000', trich: 'Đồ dùng trong văn phòng hoặc trường học' },
+    { hs6: '392610', dieuKien: 'Dùng trong văn phòng hoặc trường học', fact: 'dungCho', op: 'CONG_DUNG', value: ['văn phòng', 'trường học'], tuKhoa: ['văn phòng', 'trường học'], nguon: 'tax.39261000', trich: 'Đồ dùng trong văn phòng hoặc trường học', kiemChung: kc3926 },
+    { hs6: '392620', dieuKien: 'Hàng may mặc và đồ phụ trợ may mặc', fact: 'tenLoai', op: 'TEN_LOAI', value: ['Hàng may mặc', 'đồ phụ trợ may mặc', 'găng tay', 'găng hở ngón', 'găng bao tay'], tuKhoa: ['hàng may mặc', 'găng tay'], nguon: 'tieuDe.392620', trich: 'Hàng may mặc và đồ phụ trợ may mặc (kể cả găng tay, găng hở ngón và găng bao tay)' },
+    { hs6: '392630', dieuKien: 'Phụ kiện', fact: 'tenLoai', op: 'TEN_LOAI', value: 'Phụ kiện', tuKhoa: ['phụ kiện lắp vào đồ nội thất'], nguon: 'tax.39263000', trich: T392630 },
+    { hs6: '392630', dieuKien: 'Lắp vào đồ nội thất, trên thân xe', fact: 'dungCho', op: 'CONG_DUNG', value: ['đồ nội thất', 'thân xe'], tuKhoa: ['đồ nội thất', 'thân xe'], nguon: 'tax.39263000', trich: T392630, kiemChung: kc3926 },
+    { hs6: '392640', dieuKien: 'Tượng nhỏ và đồ trang trí', fact: 'tenLoai', op: 'TEN_LOAI', value: ['Tượng nhỏ', 'đồ trang trí'], tuKhoa: ['tượng nhỏ', 'đồ trang trí'], nguon: 'tax.39264000', trich: 'Tượng nhỏ và các đồ trang trí khác' },
+    { hs6: '392690', phanConLai: true, nguon: 'tieuDe.392690', trich: '392690 Loại khác' },
+  ];
+  const kq3926 = G6.kiemTieuChi6('3926', DS_3926, { toKhai: false });
+  const boKc3926 = G6.kiemTieuChi6('3926', DS_3926.map((x) => (x.hs6 === '392630' && x.fact === 'dungCho' ? (({ kiemChung, ...rest }) => rest)(x) : x)), { toKhai: false });
+  const tuNhan3926 = G6.kiemTieuChi6('3926', DS_3926.map((x) => (x.hs6 === '392630' && x.fact === 'dungCho'
+    ? { ...x, dieuKien: 'Dùng cho đồ nội thất', value: 'đồ nội thất', tuKhoa: ['đồ nội thất'], nguon: 'nhom3926.nhom', trich: 'chân đệm đặt dưới đồ nội thất' }
+    : x)), { toKhai: false });
+  kiem('T-3a RE_LUAT_CONG_DUNG "lắp vào" (3926.30 thuận): mục dungCho trích lời "lắp vào" + kiemChung ⇒ 0 lỗi, không CHI_HOI_MUC_DICH; bỏ kiemChung ⇒ cảnh báo CONG_DUNG_THIEU_DAC_TINH_KIEM_CHUNG (không đỏ)',
+    kq3926.loi.length === 0
+    && !kq3926.canhBao.some((c) => c.ma === 'CONG_DUNG_THIEU_DAC_TINH_KIEM_CHUNG')
+    && boKc3926.loi.length === 0
+    && boKc3926.canhBao.some((c) => c.ma === 'CONG_DUNG_THIEU_DAC_TINH_KIEM_CHUNG' && c.hs6 === '392630')
+    && MD('Phụ kiện dùng cho đồ nội thất, trên thân xe?', { chuLuat: T392630 }) === 'CONG_DUNG_THIEU_DAC_TINH_KIEM_CHUNG'
+    && MD('Phụ kiện dùng cho đồ nội thất, trên thân xe?', { chuLuat: T392630, cauPhu: ['Sản phẩm bằng plastic phải không?'] }) === null,
+    JSON.stringify([kq3926.loi, boKc3926.loi, boKc3926.canhBao]));
+  kiem('T-3a RE_LUAT_CONG_DUNG (3926.30 nghịch): trích không có lời công dụng (không dùng/cho/để/sử dụng/lắp vào) ⇒ vẫn đỏ CHI_HOI_MUC_DICH',
+    tuNhan3926.loi.some((l) => l.ma === 'CHI_HOI_MUC_DICH' && l.hs6 === '392630')
+    && MD('Phụ kiện dùng cho đồ nội thất, trên thân xe?', { chuLuat: 'Phụ kiện đồ nội thất, trên thân xe' }) === 'CHI_HOI_MUC_DICH',
+    JSON.stringify(tuNhan3926.loi));
+
+  // (c) THU_TU_TRUONG giữ dieuKienTru trong chuanMuc & mucLuu
+  const mauCoTru = { ...sao(DS_6004_CHUAN)[0], dieuKienTru: 'cầu chì nhiệt' };
+  const cCoTru = chuanMuc(mauCoTru);
+  const mCoTru = mucLuu('6004', [mauCoTru, sao(DS_6004_CHUAN)[1]]).find((x) => x.hs6 === '600410');
+  const mChuan6004 = mucLuu('6004', sao(DS_6004_CHUAN)).find((x) => x.hs6 === '600410');
+  kiem('T-3c THU_TU_TRUONG (thuận): chuanMuc & mucLuu giữ nguyên dieuKienTru',
+    cCoTru.dieuKienTru === 'cầu chì nhiệt'
+    && mCoTru?.dieuKienTru === 'cầu chì nhiệt'
+    && JSON.stringify(mChuan6004?.dieuKienTru) === JSON.stringify(['sợi cao su']),
+    JSON.stringify({ cCoTru, mCoTru, mChuan6004 }));
+  const mauKhongTru = { ...sao(DS_6004_CHUAN)[0], truongLa: 1 };
+  delete mauKhongTru.dieuKienTru;
+  const cKhongTru = chuanMuc(mauKhongTru);
+  const mKhongTru = mucLuu('6004', [mauKhongTru, sao(DS_6004_CHUAN)[1]]).find((x) => x.hs6 === '600410');
+  kiem('T-3c THU_TU_TRUONG (nghịch): mục không mang dieuKienTru không bị chèn trường rỗng và truongLa bị loại',
+    !('dieuKienTru' in cKhongTru) && cKhongTru.dieuKienTru === undefined && !('truongLa' in cKhongTru)
+    && !('dieuKienTru' in mKhongTru) && mKhongTru.dieuKienTru === undefined && !('truongLa' in mKhongTru),
+    JSON.stringify({ cKhongTru, mKhongTru }));
+
+  // (d) tachVeTieuDe bỏ "hàng hóa tương tự" / "hàng hoá tương tự" (7326.11)
+  const v7326A = G6.tachVeTieuDe('Bi nghiền và các hàng hóa tương tự dùng cho máy nghiền', new Set());
+  const v7326B = G6.tachVeTieuDe('Bi nghiền và các hàng hoá tương tự dùng cho máy nghiền', new Set());
+  const pn732611 = G6.phanNhomCuaNhom('7326').find((p) => p.hs6 === '732611');
+  const ve732611Dau = G6.veCanPhu('7326', pn732611).find((v) => v.loai === 'DAU');
+  kiem('T-3d tachVeTieuDe 7326.11 (thuận): bỏ "và các hàng hóa/hoá tương tự", chỉ giữ bi/nghiền + dùng/cho/máy/nghiền và phuVe TUONG_TU đạt',
+    JSON.stringify(v7326A.map((v) => [v.loai, v.chinh])) === JSON.stringify([['DAU', ['bi', 'nghiên']], ['GIOI_HAN', ['may', 'nghiên']]])
+    && JSON.stringify(v7326B.map((v) => [v.loai, v.chinh])) === JSON.stringify([['DAU', ['bi', 'nghiên']], ['GIOI_HAN', ['may', 'nghiên']]])
+    && Boolean(ve732611Dau) && JSON.stringify(ve732611Dau.chinh) === JSON.stringify(['bi', 'nghiên'])
+    && G6.phuVe([{ fact: 'tenLoai', op: 'TUONG_TU', value: 'Bi nghiền', nguon: 'tax.73261100', trich: 'Bi nghiền và các hàng hóa tương tự dùng cho máy nghiền' }], ve732611Dau),
+    JSON.stringify({ v7326A, v7326B, ve732611Dau }));
+  const vTrucThep = G6.tachVeTieuDe('Bi nghiền và trục thép dùng cho máy nghiền', new Set());
+  const vHangHoa = G6.tachVeTieuDe('Hàng hóa bằng sắt hoặc thép', new Set());
+  kiem('T-3d tachVeTieuDe (nghịch): không cắt "trục thép" hay "Hàng hóa" khi không đi với "tương tự"',
+    JSON.stringify(vTrucThep.map((v) => v.chinh)) === JSON.stringify([['bi', 'nghiên', 'truc', 'thep'], ['may', 'nghiên']])
+    && JSON.stringify(vHangHoa.map((v) => v.chinh)) === JSON.stringify([['hang', 'hoa'], ['săt', 'thep']]),
+    JSON.stringify({ vTrucThep, vHangHoa }));
+
+  // (b) kiểm chéo tieu-chi-6 đọc cachDocThem "đa pha" của soPha.NHIEU_PHA
+  kiem('T-3b tieu-chi-6 đọc cachDocThem: phuVe nhận "đa pha" qua soPha.NHIEU_PHA và không phủ nhầm "một pha"; 8501 gợi ý soPha',
+    G6.goiSoan('8501').khoaGoiY.some((k) => k.khoa === 'soPha')
+    && G6.phuVe([{ fact: 'soPha', op: 'TRONG', value: ['NHIEU_PHA'], nguon: 'tieuDe.85015', trich: 'Động cơ xoay chiều khác, đa pha' }], { chu: 'có đa pha', loai: 'GIOI_HAN', chinh: ['đa', 'pha'], phu: [], coSo: false })
+    && !G6.phuVe([{ fact: 'soPha', op: 'TRONG', value: ['NHIEU_PHA'], nguon: 'tieuDe.85015', trich: 'Động cơ xoay chiều khác, đa pha' }], { chu: 'có một pha', loai: 'GIOI_HAN', chinh: ['môt', 'pha'], phu: [], coSo: false }));
+}
 void os;
 xong();

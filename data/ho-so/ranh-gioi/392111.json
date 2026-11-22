@@ -4,13 +4,19 @@
   "nhom": "3921",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1700#soan-392111",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1803#soat-392111",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1803)",
+    "bam": "1575a022fb25467296a9773cb3e178671da94647200a348c6135e3832bccb194"
+  },
   "dieuKienNut": [
     {
       "id": "3921112",
@@ -22,7 +28,7 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -46,19 +52,19 @@
           "donVi": "psi"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39211129",
       "nguon": "tax.39211129",
       "trich": "39211129 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39211191",
-      "nguon": "tax.39211191",
-      "trich": "39211191 - - - - Dạng tấm và phiến (SEN)",
+      "nguon": "sen.3921",
+      "trich": "Theo mục đích của các phân nhóm ASEAN trong các nhóm này, \"tấm và phiến\" dùng để chỉ các sản phẩm đáp ứng các yêu cầu của Chú giải 10 của Chương 39, có hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25 mm.",
       "dieuKienSo": [
         {
           "fact": "tenLoai",
@@ -67,9 +73,15 @@
             "tấm",
             "phiến"
           ]
+        },
+        {
+          "fact": "doDay",
+          "op": ">",
+          "value": 0.25,
+          "donVi": "mm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39211192",
@@ -82,14 +94,14 @@
           "value": "màng"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39211199",
       "nguon": "tax.39211199",
       "trich": "39211199 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
