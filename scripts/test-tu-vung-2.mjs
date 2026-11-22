@@ -1539,5 +1539,42 @@ check('vietCum đơn vị @1 KHÔNG đổi ("CS: 75000W" — không cách)', T.v
   check(`OZV-1799 ReDoS ~40.000 từ lặp trên 3 khoá mở rộng < 2000 ms (thực tế ${ms.toFixed(0)} ms)`, ms < 2000, { ms });
 }
 
+// OZV-1803 — kiểm chứng mở rộng chieuRong (4013.10.21), tinhTrangTayTrang (5007.20.20 / 5007.20.90), doDay (3921.11.91)
+// + ReDoS ~40.000 từ lặp < 2 giây (quy tắc 6b).
+{
+  // 1. chieuRong (4013.10.11 / 4013.10.21)
+  la('chữ biểu 4013.10.21 (Dùng cho loại lốp có chiều rộng không quá 450 mm)', 'chieuRong', '40131021 - - - Dùng cho loại lốp có chiều rộng không quá 450 mm', 450, { op: '<=' });
+  la('chữ biểu 4013.10.29 (Dùng cho loại lốp có chiều rộng trên 450 mm)', 'chieuRong', '40131029 - - - Dùng cho loại lốp có chiều rộng trên 450 mm', 450, { op: '>' });
+  la('cachViet đọc lại chieuRong (rộng 350 mm)', 'chieuRong', 'Săm cao su dùng cho xe buýt, rộng 350mm', 350, { op: null });
+  chuaBiet('săm cao su dùng cho lốp xe không ghi chiều rộng ⇒ CHUA_BIET', 'chieuRong', 'Săm cao su dùng cho lốp xe buýt hoặc xe tải');
+
+  // 2. tinhTrangTayTrang (5007.20.20 / 5007.20.90 — Chú giải phân nhóm 1 Phần XI)
+  {
+    const r5007 = chuaBiet('chữ biểu 5007.20.20 gộp hai giá trị ⇒ CHUA_BIET kèm ungVien', 'tinhTrangTayTrang', '50072020 - - Chưa tẩy trắng hoặc đã tẩy trắng');
+    check('tinhTrangTayTrang 5007.20.20 ⇒ ungVien [CHUA_TAY_TRANG, DA_TAY_TRANG]', JSON.stringify((r5007.ungVien || []).slice().sort()) === JSON.stringify(['CHUA_TAY_TRANG', 'DA_TAY_TRANG']), r5007);
+  }
+  la('vải tơ tằm chưa tẩy trắng ⇒ CHUA_TAY_TRANG', 'tinhTrangTayTrang', 'Vải dệt thoi từ tơ tằm chưa tẩy trắng', 'CHUA_TAY_TRANG');
+  la('vải tơ tằm đã tẩy trắng ⇒ DA_TAY_TRANG', 'tinhTrangTayTrang', 'Vải dệt thoi từ tơ tằm đã tẩy trắng', 'DA_TAY_TRANG');
+  la('vải tơ tằm đã nhuộm ⇒ DA_NHUOM', 'tinhTrangTayTrang', 'Vải dệt thoi từ tơ tằm đã nhuộm', 'DA_NHUOM');
+  la('vải tơ tằm từ sợi nhiều màu ⇒ TU_SOI_MAU', 'tinhTrangTayTrang', 'Vải dệt thoi từ tơ tằm từ sợi nhiều màu', 'TU_SOI_MAU');
+  la('vải tơ tằm đã in ⇒ DA_IN', 'tinhTrangTayTrang', 'Vải dệt thoi từ tơ tằm đã in', 'DA_IN');
+  la('En dyed silk fabric ⇒ DA_NHUOM', 'tinhTrangTayTrang', 'Woven silk fabric, dyed', 'DA_NHUOM');
+  la('Zh 印花的丝织物 ⇒ DA_IN', 'tinhTrangTayTrang', '印花的丝织物', 'DA_IN');
+  chuaBiet('vải tơ tằm không nêu tình trạng tẩy/nhuộm/in ⇒ CHUA_BIET', 'tinhTrangTayTrang', 'Vải dệt thoi chứa 85% trọng lượng trở lên là tơ tằm');
+
+  // 3. doDay (3921.11.91 / 3921.14.91 / 3921.90.41 — đọc số thập phân 3 chữ số từ cumKhangDinh > 0.25 mm)
+  la('cumKhangDinh dày 1,375mm (> 0.25 mm) đọc được số dương > 0.25 mm', 'doDay', 'Tấm, phiến từ polyme styren, xốp, dày 1,375mm', 1.37, { op: null });
+  la('dày 0,25 mm đọc đúng 0.25 mm', 'doDay', 'Dạng băng, chiều dày không quá 0,25 mm', 0.25, { op: '<=' });
+
+  // 4. ReDoS ~40.000 từ lặp < 2 giây (CLAUDE.md quy tắc 6b)
+  const redosText1803 = Array(8000).fill('dùng cho loại lốp có chiều rộng vải tơ tằm chưa tẩy trắng chiều dày').join(' ');
+  const t0 = process.hrtime.bigint();
+  for (const fk of ['chieuRong', 'tinhTrangTayTrang', 'doDay']) {
+    T.docGiaTri(fk, redosText1803);
+  }
+  const ms = Number(process.hrtime.bigint() - t0) / 1e6;
+  check(`OZV-1803 ReDoS ~40.000 từ lặp trên 3 khoá < 2000 ms (thực tế ${ms.toFixed(0)} ms)`, ms < 2000, { ms });
+}
+
 console.log(`\n${pass} pass, ${fail} fail`);
 process.exit(fail ? 1 : 0);
