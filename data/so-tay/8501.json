@@ -239,7 +239,1081 @@
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
-  "tieuChi6": [],
+  "tieuChi6": [
+    {
+      "hs6": "850110",
+      "thuTu": 1,
+      "dieuKien": "Động cơ",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Động cơ",
+      "donVi": null,
+      "tuKhoa": [
+        "động cơ"
+      ],
+      "tienLe": [
+        {
+          "so": "1962/TB-TCHQ",
+          "ma": "85011099"
+        }
+      ],
+      "nguon": "tieuDe.850110",
+      "trich": "850110 Động cơ có công suất không quá 37,5 W",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850110",
+      "thuTu": 1,
+      "dieuKien": "có công suất không quá 37,5 W",
+      "fact": "congSuat",
+      "op": "<=",
+      "value": 37.5,
+      "donVi": "W",
+      "nguon": "tieuDe.850110",
+      "trich": "850110 Động cơ có công suất không quá 37,5 W",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850120",
+      "thuTu": 2,
+      "dieuKien": "Động cơ vạn năng một chiều/xoay chiều",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Động cơ vạn năng một chiều/xoay chiều",
+      "donVi": null,
+      "tuKhoa": [
+        "vạn năng"
+      ],
+      "nguon": "tieuDe.850120",
+      "trich": "850120 Động cơ vạn năng một chiều/xoay chiều có công suất trên 37,5 W",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850120",
+      "thuTu": 2,
+      "dieuKien": "có công suất trên 37,5 W",
+      "fact": "congSuat",
+      "op": ">",
+      "value": 37.5,
+      "donVi": "W",
+      "nguon": "tieuDe.850120",
+      "trich": "850120 Động cơ vạn năng một chiều/xoay chiều có công suất trên 37,5 W",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850131",
+      "thuTu": 3,
+      "dieuKien": "Động cơ; máy phát điện",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": [
+        "Động cơ",
+        "máy phát điện"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "động cơ",
+        "máy phát điện"
+      ],
+      "nguon": "tieuDe.85013",
+      "trich": "85013 Động cơ một chiều khác; máy phát điện một chiều, trừ máy phát quang điện",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850131",
+      "thuTu": 3,
+      "dieuKien": "một chiều",
+      "fact": "loaiDongDien",
+      "op": "TRONG",
+      "value": [
+        "MOT_CHIEU"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "một chiều"
+      ],
+      "nguon": "tieuDe.85013",
+      "trich": "85013 Động cơ một chiều khác; máy phát điện một chiều, trừ máy phát quang điện",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850131",
+      "thuTu": 3,
+      "dieuKien": "trừ máy phát quang điện",
+      "fact": "nguonNangLuong",
+      "op": "TRONG",
+      "value": [
+        "QUANG_DIEN"
+      ],
+      "donVi": null,
+      "chieu": "PHAI_KHONG",
+      "tuKhoa": [
+        "quang điện"
+      ],
+      "nguon": "tieuDe.85013",
+      "trich": "85013 Động cơ một chiều khác; máy phát điện một chiều, trừ máy phát quang điện",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850131",
+      "thuTu": 3,
+      "dieuKien": "Công suất không quá 750 W",
+      "fact": "congSuat",
+      "op": "<=",
+      "value": 750,
+      "donVi": "W",
+      "tienLe": [
+        {
+          "so": "7396/TB-TCHQ",
+          "ma": "85013130"
+        },
+        {
+          "so": "7396/TB-TCHQ",
+          "ma": "85013140"
+        },
+        {
+          "so": "3609/TB-TCHQ",
+          "ma": "85013170"
+        }
+      ],
+      "nguon": "tieuDe.850131",
+      "trich": "850131 Công suất không quá 750 W",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850132",
+      "thuTu": 4,
+      "dieuKien": "Động cơ; máy phát điện",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": [
+        "Động cơ",
+        "máy phát điện"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "động cơ",
+        "máy phát điện"
+      ],
+      "nguon": "tieuDe.85013",
+      "trich": "85013 Động cơ một chiều khác; máy phát điện một chiều, trừ máy phát quang điện",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850132",
+      "thuTu": 4,
+      "dieuKien": "một chiều",
+      "fact": "loaiDongDien",
+      "op": "TRONG",
+      "value": [
+        "MOT_CHIEU"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "một chiều"
+      ],
+      "nguon": "tieuDe.85013",
+      "trich": "85013 Động cơ một chiều khác; máy phát điện một chiều, trừ máy phát quang điện",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850132",
+      "thuTu": 4,
+      "dieuKien": "trừ máy phát quang điện",
+      "fact": "nguonNangLuong",
+      "op": "TRONG",
+      "value": [
+        "QUANG_DIEN"
+      ],
+      "donVi": null,
+      "chieu": "PHAI_KHONG",
+      "tuKhoa": [
+        "quang điện"
+      ],
+      "nguon": "tieuDe.85013",
+      "trich": "85013 Động cơ một chiều khác; máy phát điện một chiều, trừ máy phát quang điện",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850132",
+      "thuTu": 4,
+      "dieuKien": "Công suất trên 750 W",
+      "fact": "congSuat",
+      "op": ">",
+      "value": 750,
+      "donVi": "W",
+      "nguon": "tieuDe.850132",
+      "trich": "850132 Công suất trên 750 W nhưng không quá 75 kW",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850132",
+      "thuTu": 4,
+      "dieuKien": "Công suất không quá 75 kW",
+      "fact": "congSuat",
+      "op": "<=",
+      "value": 75,
+      "donVi": "kW",
+      "nguon": "tieuDe.850132",
+      "trich": "850132 Công suất trên 750 W nhưng không quá 75 kW",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850133",
+      "thuTu": 5,
+      "dieuKien": "Động cơ; máy phát điện",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": [
+        "Động cơ",
+        "máy phát điện"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "động cơ",
+        "máy phát điện"
+      ],
+      "nguon": "tieuDe.85013",
+      "trich": "85013 Động cơ một chiều khác; máy phát điện một chiều, trừ máy phát quang điện",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850133",
+      "thuTu": 5,
+      "dieuKien": "một chiều",
+      "fact": "loaiDongDien",
+      "op": "TRONG",
+      "value": [
+        "MOT_CHIEU"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "một chiều"
+      ],
+      "nguon": "tieuDe.85013",
+      "trich": "85013 Động cơ một chiều khác; máy phát điện một chiều, trừ máy phát quang điện",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850133",
+      "thuTu": 5,
+      "dieuKien": "trừ máy phát quang điện",
+      "fact": "nguonNangLuong",
+      "op": "TRONG",
+      "value": [
+        "QUANG_DIEN"
+      ],
+      "donVi": null,
+      "chieu": "PHAI_KHONG",
+      "tuKhoa": [
+        "quang điện"
+      ],
+      "nguon": "tieuDe.85013",
+      "trich": "85013 Động cơ một chiều khác; máy phát điện một chiều, trừ máy phát quang điện",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850133",
+      "thuTu": 5,
+      "dieuKien": "Công suất trên 75 kW",
+      "fact": "congSuat",
+      "op": ">",
+      "value": 75,
+      "donVi": "kW",
+      "nguon": "tieuDe.850133",
+      "trich": "850133 Công suất trên 75 kW nhưng không quá 375 kW",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850133",
+      "thuTu": 5,
+      "dieuKien": "Công suất không quá 375 kW",
+      "fact": "congSuat",
+      "op": "<=",
+      "value": 375,
+      "donVi": "kW",
+      "nguon": "tieuDe.850133",
+      "trich": "850133 Công suất trên 75 kW nhưng không quá 375 kW",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850134",
+      "thuTu": 6,
+      "dieuKien": "Động cơ; máy phát điện",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": [
+        "Động cơ",
+        "máy phát điện"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "động cơ",
+        "máy phát điện"
+      ],
+      "nguon": "tieuDe.85013",
+      "trich": "85013 Động cơ một chiều khác; máy phát điện một chiều, trừ máy phát quang điện",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850134",
+      "thuTu": 6,
+      "dieuKien": "một chiều",
+      "fact": "loaiDongDien",
+      "op": "TRONG",
+      "value": [
+        "MOT_CHIEU"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "một chiều"
+      ],
+      "nguon": "tieuDe.85013",
+      "trich": "85013 Động cơ một chiều khác; máy phát điện một chiều, trừ máy phát quang điện",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850134",
+      "thuTu": 6,
+      "dieuKien": "trừ máy phát quang điện",
+      "fact": "nguonNangLuong",
+      "op": "TRONG",
+      "value": [
+        "QUANG_DIEN"
+      ],
+      "donVi": null,
+      "chieu": "PHAI_KHONG",
+      "tuKhoa": [
+        "quang điện"
+      ],
+      "nguon": "tieuDe.85013",
+      "trich": "85013 Động cơ một chiều khác; máy phát điện một chiều, trừ máy phát quang điện",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850134",
+      "thuTu": 6,
+      "dieuKien": "Công suất trên 375 kW",
+      "fact": "congSuat",
+      "op": ">",
+      "value": 375,
+      "donVi": "kW",
+      "nguon": "tax.85013400",
+      "trich": "85013400 - - Công suất trên 375 kW",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850140",
+      "thuTu": 7,
+      "dieuKien": "Động cơ",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Động cơ",
+      "donVi": null,
+      "tuKhoa": [
+        "động cơ"
+      ],
+      "nguon": "tieuDe.850140",
+      "trich": "850140 Động cơ xoay chiều khác, một pha",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850140",
+      "thuTu": 7,
+      "dieuKien": "xoay chiều",
+      "fact": "loaiDongDien",
+      "op": "TRONG",
+      "value": [
+        "XOAY_CHIEU"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "xoay chiều"
+      ],
+      "nguon": "tieuDe.850140",
+      "trich": "850140 Động cơ xoay chiều khác, một pha",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850140",
+      "thuTu": 7,
+      "dieuKien": "một pha",
+      "fact": "soPha",
+      "op": "TRONG",
+      "value": [
+        "MOT_PHA"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "một pha"
+      ],
+      "nguon": "tieuDe.850140",
+      "trich": "850140 Động cơ xoay chiều khác, một pha",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850140",
+      "thuTu": 7,
+      "phanConLai": true,
+      "nguon": "tieuDe.850140",
+      "trich": "850140 Động cơ xoay chiều khác, một pha",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850151",
+      "thuTu": 8,
+      "dieuKien": "Động cơ",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Động cơ",
+      "donVi": null,
+      "tuKhoa": [
+        "động cơ"
+      ],
+      "nguon": "tieuDe.85015",
+      "trich": "85015 Động cơ xoay chiều khác, đa pha",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850151",
+      "thuTu": 8,
+      "dieuKien": "xoay chiều",
+      "fact": "loaiDongDien",
+      "op": "TRONG",
+      "value": [
+        "XOAY_CHIEU"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "xoay chiều"
+      ],
+      "nguon": "tieuDe.85015",
+      "trich": "85015 Động cơ xoay chiều khác, đa pha",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850151",
+      "thuTu": 8,
+      "dieuKien": "đa pha",
+      "fact": "soPha",
+      "op": "TRONG",
+      "value": [
+        "NHIEU_PHA"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "đa pha"
+      ],
+      "nguon": "tieuDe.85015",
+      "trich": "85015 Động cơ xoay chiều khác, đa pha",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850151",
+      "thuTu": 8,
+      "dieuKien": "Công suất không quá 750 W",
+      "fact": "congSuat",
+      "op": "<=",
+      "value": 750,
+      "donVi": "W",
+      "nguon": "tieuDe.850151",
+      "trich": "850151 Công suất không quá 750 W",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850152",
+      "thuTu": 9,
+      "dieuKien": "Động cơ",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Động cơ",
+      "donVi": null,
+      "tuKhoa": [
+        "động cơ"
+      ],
+      "nguon": "tieuDe.85015",
+      "trich": "85015 Động cơ xoay chiều khác, đa pha",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850152",
+      "thuTu": 9,
+      "dieuKien": "xoay chiều",
+      "fact": "loaiDongDien",
+      "op": "TRONG",
+      "value": [
+        "XOAY_CHIEU"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "xoay chiều"
+      ],
+      "nguon": "tieuDe.85015",
+      "trich": "85015 Động cơ xoay chiều khác, đa pha",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850152",
+      "thuTu": 9,
+      "dieuKien": "đa pha",
+      "fact": "soPha",
+      "op": "TRONG",
+      "value": [
+        "NHIEU_PHA"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "đa pha"
+      ],
+      "nguon": "tieuDe.85015",
+      "trich": "85015 Động cơ xoay chiều khác, đa pha",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850152",
+      "thuTu": 9,
+      "dieuKien": "Công suất trên 750 W",
+      "fact": "congSuat",
+      "op": ">",
+      "value": 750,
+      "donVi": "W",
+      "nguon": "tieuDe.850152",
+      "trich": "850152 Công suất trên 750 W nhưng không quá 75 kW",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850152",
+      "thuTu": 9,
+      "dieuKien": "Công suất không quá 75 kW",
+      "fact": "congSuat",
+      "op": "<=",
+      "value": 75,
+      "donVi": "kW",
+      "nguon": "tieuDe.850152",
+      "trich": "850152 Công suất trên 750 W nhưng không quá 75 kW",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850153",
+      "thuTu": 10,
+      "dieuKien": "Động cơ",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Động cơ",
+      "donVi": null,
+      "tuKhoa": [
+        "động cơ"
+      ],
+      "nguon": "tieuDe.85015",
+      "trich": "85015 Động cơ xoay chiều khác, đa pha",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850153",
+      "thuTu": 10,
+      "dieuKien": "xoay chiều",
+      "fact": "loaiDongDien",
+      "op": "TRONG",
+      "value": [
+        "XOAY_CHIEU"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "xoay chiều"
+      ],
+      "nguon": "tieuDe.85015",
+      "trich": "85015 Động cơ xoay chiều khác, đa pha",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850153",
+      "thuTu": 10,
+      "dieuKien": "đa pha",
+      "fact": "soPha",
+      "op": "TRONG",
+      "value": [
+        "NHIEU_PHA"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "đa pha"
+      ],
+      "nguon": "tieuDe.85015",
+      "trich": "85015 Động cơ xoay chiều khác, đa pha",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850153",
+      "thuTu": 10,
+      "dieuKien": "Công suất trên 75 kW",
+      "fact": "congSuat",
+      "op": ">",
+      "value": 75,
+      "donVi": "kW",
+      "nguon": "tieuDe.850153",
+      "trich": "850153 Công suất trên 75 kW",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850161",
+      "thuTu": 11,
+      "dieuKien": "Máy phát điện, máy dao điện",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": [
+        "Máy phát điện",
+        "máy dao điện"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "máy phát điện",
+        "máy dao điện"
+      ],
+      "nguon": "tieuDe.85016",
+      "trich": "85016 Máy phát điện xoay chiều (máy dao điện), trừ máy phát quang điện",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850161",
+      "thuTu": 11,
+      "dieuKien": "xoay chiều",
+      "fact": "loaiDongDien",
+      "op": "TRONG",
+      "value": [
+        "XOAY_CHIEU"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "xoay chiều"
+      ],
+      "nguon": "tieuDe.85016",
+      "trich": "85016 Máy phát điện xoay chiều (máy dao điện), trừ máy phát quang điện",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850161",
+      "thuTu": 11,
+      "dieuKien": "trừ máy phát quang điện",
+      "fact": "nguonNangLuong",
+      "op": "TRONG",
+      "value": [
+        "QUANG_DIEN"
+      ],
+      "donVi": null,
+      "chieu": "PHAI_KHONG",
+      "tuKhoa": [
+        "quang điện"
+      ],
+      "nguon": "tieuDe.85016",
+      "trich": "85016 Máy phát điện xoay chiều (máy dao điện), trừ máy phát quang điện",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850161",
+      "thuTu": 11,
+      "dieuKien": "Công suất không quá 75 kVA",
+      "fact": "congSuatBieuKien",
+      "op": "<=",
+      "value": 75,
+      "donVi": "kVA",
+      "nguon": "tieuDe.850161",
+      "trich": "850161 Công suất không quá 75 kVA",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850162",
+      "thuTu": 12,
+      "dieuKien": "Máy phát điện, máy dao điện",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": [
+        "Máy phát điện",
+        "máy dao điện"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "máy phát điện",
+        "máy dao điện"
+      ],
+      "nguon": "tieuDe.85016",
+      "trich": "85016 Máy phát điện xoay chiều (máy dao điện), trừ máy phát quang điện",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850162",
+      "thuTu": 12,
+      "dieuKien": "xoay chiều",
+      "fact": "loaiDongDien",
+      "op": "TRONG",
+      "value": [
+        "XOAY_CHIEU"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "xoay chiều"
+      ],
+      "nguon": "tieuDe.85016",
+      "trich": "85016 Máy phát điện xoay chiều (máy dao điện), trừ máy phát quang điện",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850162",
+      "thuTu": 12,
+      "dieuKien": "trừ máy phát quang điện",
+      "fact": "nguonNangLuong",
+      "op": "TRONG",
+      "value": [
+        "QUANG_DIEN"
+      ],
+      "donVi": null,
+      "chieu": "PHAI_KHONG",
+      "tuKhoa": [
+        "quang điện"
+      ],
+      "nguon": "tieuDe.85016",
+      "trich": "85016 Máy phát điện xoay chiều (máy dao điện), trừ máy phát quang điện",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850162",
+      "thuTu": 12,
+      "dieuKien": "Công suất trên 75 kVA",
+      "fact": "congSuatBieuKien",
+      "op": ">",
+      "value": 75,
+      "donVi": "kVA",
+      "nguon": "tieuDe.850162",
+      "trich": "850162 Công suất trên 75 kVA nhưng không quá 375 kVA",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850162",
+      "thuTu": 12,
+      "dieuKien": "Công suất không quá 375 kVA",
+      "fact": "congSuatBieuKien",
+      "op": "<=",
+      "value": 375,
+      "donVi": "kVA",
+      "nguon": "tieuDe.850162",
+      "trich": "850162 Công suất trên 75 kVA nhưng không quá 375 kVA",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850163",
+      "thuTu": 13,
+      "dieuKien": "Máy phát điện, máy dao điện",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": [
+        "Máy phát điện",
+        "máy dao điện"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "máy phát điện",
+        "máy dao điện"
+      ],
+      "nguon": "tieuDe.85016",
+      "trich": "85016 Máy phát điện xoay chiều (máy dao điện), trừ máy phát quang điện",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850163",
+      "thuTu": 13,
+      "dieuKien": "xoay chiều",
+      "fact": "loaiDongDien",
+      "op": "TRONG",
+      "value": [
+        "XOAY_CHIEU"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "xoay chiều"
+      ],
+      "nguon": "tieuDe.85016",
+      "trich": "85016 Máy phát điện xoay chiều (máy dao điện), trừ máy phát quang điện",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850163",
+      "thuTu": 13,
+      "dieuKien": "trừ máy phát quang điện",
+      "fact": "nguonNangLuong",
+      "op": "TRONG",
+      "value": [
+        "QUANG_DIEN"
+      ],
+      "donVi": null,
+      "chieu": "PHAI_KHONG",
+      "tuKhoa": [
+        "quang điện"
+      ],
+      "nguon": "tieuDe.85016",
+      "trich": "85016 Máy phát điện xoay chiều (máy dao điện), trừ máy phát quang điện",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850163",
+      "thuTu": 13,
+      "dieuKien": "Công suất trên 375 kVA",
+      "fact": "congSuatBieuKien",
+      "op": ">",
+      "value": 375,
+      "donVi": "kVA",
+      "nguon": "tax.85016300",
+      "trich": "85016300 - - Công suất trên 375 kVA nhưng không quá 750 kVA",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850163",
+      "thuTu": 13,
+      "dieuKien": "Công suất không quá 750 kVA",
+      "fact": "congSuatBieuKien",
+      "op": "<=",
+      "value": 750,
+      "donVi": "kVA",
+      "nguon": "tax.85016300",
+      "trich": "85016300 - - Công suất trên 375 kVA nhưng không quá 750 kVA",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850164",
+      "thuTu": 14,
+      "dieuKien": "Máy phát điện, máy dao điện",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": [
+        "Máy phát điện",
+        "máy dao điện"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "máy phát điện",
+        "máy dao điện"
+      ],
+      "nguon": "tieuDe.85016",
+      "trich": "85016 Máy phát điện xoay chiều (máy dao điện), trừ máy phát quang điện",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850164",
+      "thuTu": 14,
+      "dieuKien": "xoay chiều",
+      "fact": "loaiDongDien",
+      "op": "TRONG",
+      "value": [
+        "XOAY_CHIEU"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "xoay chiều"
+      ],
+      "nguon": "tieuDe.85016",
+      "trich": "85016 Máy phát điện xoay chiều (máy dao điện), trừ máy phát quang điện",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850164",
+      "thuTu": 14,
+      "dieuKien": "trừ máy phát quang điện",
+      "fact": "nguonNangLuong",
+      "op": "TRONG",
+      "value": [
+        "QUANG_DIEN"
+      ],
+      "donVi": null,
+      "chieu": "PHAI_KHONG",
+      "tuKhoa": [
+        "quang điện"
+      ],
+      "nguon": "tieuDe.85016",
+      "trich": "85016 Máy phát điện xoay chiều (máy dao điện), trừ máy phát quang điện",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850164",
+      "thuTu": 14,
+      "dieuKien": "Công suất trên 750 kVA",
+      "fact": "congSuatBieuKien",
+      "op": ">",
+      "value": 750,
+      "donVi": "kVA",
+      "nguon": "tax.85016400",
+      "trich": "85016400 - - Công suất trên 750 kVA",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850171",
+      "thuTu": 15,
+      "dieuKien": "Máy phát quang điện",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Máy phát quang điện",
+      "donVi": null,
+      "tuKhoa": [
+        "máy phát quang điện"
+      ],
+      "nguon": "tieuDe.85017",
+      "trich": "85017 Máy phát quang điện một chiều",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850171",
+      "thuTu": 15,
+      "dieuKien": "quang điện",
+      "fact": "nguonNangLuong",
+      "op": "TRONG",
+      "value": [
+        "QUANG_DIEN"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "quang điện"
+      ],
+      "nguon": "tieuDe.85017",
+      "trich": "85017 Máy phát quang điện một chiều",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850171",
+      "thuTu": 15,
+      "dieuKien": "một chiều",
+      "fact": "loaiDongDien",
+      "op": "TRONG",
+      "value": [
+        "MOT_CHIEU"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "một chiều"
+      ],
+      "nguon": "tieuDe.85017",
+      "trich": "85017 Máy phát quang điện một chiều",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850171",
+      "thuTu": 15,
+      "dieuKien": "Công suất không quá 50 W",
+      "fact": "congSuat",
+      "op": "<=",
+      "value": 50,
+      "donVi": "W",
+      "nguon": "tax.85017100",
+      "trich": "85017100 - - Công suất không quá 50 W",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850172",
+      "thuTu": 16,
+      "dieuKien": "Máy phát quang điện",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Máy phát quang điện",
+      "donVi": null,
+      "tuKhoa": [
+        "máy phát quang điện"
+      ],
+      "nguon": "tieuDe.85017",
+      "trich": "85017 Máy phát quang điện một chiều",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850172",
+      "thuTu": 16,
+      "dieuKien": "quang điện",
+      "fact": "nguonNangLuong",
+      "op": "TRONG",
+      "value": [
+        "QUANG_DIEN"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "quang điện"
+      ],
+      "nguon": "tieuDe.85017",
+      "trich": "85017 Máy phát quang điện một chiều",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850172",
+      "thuTu": 16,
+      "dieuKien": "một chiều",
+      "fact": "loaiDongDien",
+      "op": "TRONG",
+      "value": [
+        "MOT_CHIEU"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "một chiều"
+      ],
+      "nguon": "tieuDe.85017",
+      "trich": "85017 Máy phát quang điện một chiều",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850172",
+      "thuTu": 16,
+      "dieuKien": "Công suất trên 50 W",
+      "fact": "congSuat",
+      "op": ">",
+      "value": 50,
+      "donVi": "W",
+      "nguon": "tieuDe.850172",
+      "trich": "850172 Công suất trên 50 W",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850180",
+      "thuTu": 17,
+      "dieuKien": "Máy phát quang điện",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Máy phát quang điện",
+      "donVi": null,
+      "tuKhoa": [
+        "máy phát quang điện"
+      ],
+      "nguon": "tieuDe.850180",
+      "trich": "850180 Máy phát quang điện xoay chiều",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850180",
+      "thuTu": 17,
+      "dieuKien": "quang điện",
+      "fact": "nguonNangLuong",
+      "op": "TRONG",
+      "value": [
+        "QUANG_DIEN"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "quang điện"
+      ],
+      "nguon": "tieuDe.850180",
+      "trich": "850180 Máy phát quang điện xoay chiều",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850180",
+      "thuTu": 17,
+      "dieuKien": "xoay chiều",
+      "fact": "loaiDongDien",
+      "op": "TRONG",
+      "value": [
+        "XOAY_CHIEU"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "xoay chiều"
+      ],
+      "nguon": "tieuDe.850180",
+      "trich": "850180 Máy phát quang điện xoay chiều",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
   "dong8": [
     {
       "hs": "85011021",
@@ -2567,6 +3641,23 @@
     "tax.85018020",
     "tax.85018030",
     "tax.85018040",
+    "tieuDe.850110",
+    "tieuDe.850120",
+    "tieuDe.85013",
+    "tieuDe.850131",
+    "tieuDe.850132",
+    "tieuDe.850133",
+    "tieuDe.850140",
+    "tieuDe.85015",
+    "tieuDe.850151",
+    "tieuDe.850152",
+    "tieuDe.850153",
+    "tieuDe.85016",
+    "tieuDe.850161",
+    "tieuDe.850162",
+    "tieuDe.85017",
+    "tieuDe.850172",
+    "tieuDe.850180",
     "wco-op.850162.1"
   ],
   "phienBan": "HS2022+SEN2022",
@@ -2577,9 +3668,9 @@
     "ms": 23
   },
   "kiemTra": {
-    "tong": 96,
-    "dat": 94,
-    "loai": 2,
+    "tong": 174,
+    "dat": 174,
+    "loai": 0,
     "nguonBiCat": [],
     "nangCap": {
       "luc": "2026-10-11",
@@ -2589,6 +3680,12 @@
         "tieuChi6",
         "phamViLoaiKhac"
       ]
+    },
+    "tieuChi6": {
+      "khuon": "g6@1",
+      "soMuc": 68,
+      "soPhanNhom": 17,
+      "cong": "scripts/kiem-tieu-chi-6.mjs"
     }
   },
   "yKienWcoDayDu": false,
