@@ -354,6 +354,18 @@ const KHOA_MOI = {
   // 22/11/2026 (OZV-1771): giống thuần chủng 0104.10.10/.20.10 & hình dạng bên trong lòng bồn tắm 3922.10.11
   laThuanChung: 'CO_KHONG',
   coHinhDangBenTrongChuNhatHoacThuon: 'CO_KHONG',
+  // 22/11/2026 (OZV-1778): khoá cho 4008.11.10/4008.21.10, 4412.41.10/4412.91.10, 4805.91.10, 5808.10.10/5808.90.10, 1513.29
+  lotVaiDetMotMat: 'CO_KHONG',
+  chatLieuLopNgoai: 'LIET_KE',
+  hamLuongNhua: 'SO',
+  ketHopVoiSoiCaoSu: 'CO_KHONG',
+  loaiDauHatCoBabassu: 'LIET_KE',
+  // 22/11/2026 (OZV-1792): lô 10a (2404.91.10, 2844.10/.20/.30, 4202.11.10, 6005.36/.38, 6302.59/.99)
+  chuaNicotin: 'CO_KHONG',
+  laNguyenToHoacHopChatNhom2844: 'CO_KHONG',
+  kichThuocToiDa56x45x25cm: 'CO_KHONG',
+  chuaPolybutylenTerephthalat: 'CO_KHONG',
+  tuLanh: 'CO_KHONG',
   // 22/11/2026 (OZV-1794): xử lý RF 5607.50.10, lót đế & mũi kim loại bảo vệ 6403.91.10/.99.10, ở dạng thô 7310.10.91/.29.92
   daXuLyResorcinolFormaldehyde: 'CO_KHONG',
   coLotDeBenTrong: 'CO_KHONG',
@@ -1198,6 +1210,122 @@ check('vietCum đơn vị @1 KHÔNG đổi ("CS: 75000W" — không cách)', T.v
   }
   const ms = Number(process.hrtime.bigint() - t0) / 1e6;
   check(`OZV-1794 ReDoS ~40.000 từ lặp trên 4 khoá mới < 500 ms (thực tế ${ms.toFixed(0)} ms)`, ms < 500, { ms });
+}
+
+// OZV-1778 — kiểm chứng 4 khoá mới (lotVaiDetMotMat, chatLieuLopNgoai, hamLuongNhua, ketHopVoiSoiCaoSu)
+// và giá trị NGUYEN_CHAT_VIRGIN trong mucDoTinhCheDau + ReDoS 40.000 từ lặp < 2 giây (quy tắc 6b).
+{
+  // 1. mucDoTinhCheDau — NGUYEN_CHAT_VIRGIN (1513.11.10) tách khỏi DANG_THO
+  la('chữ biểu 1513.11.10 (Dầu dừa nguyên chất)', 'mucDoTinhCheDau', 'Dầu dừa nguyên chất (SEN)', 'NGUYEN_CHAT_VIRGIN');
+  la('En Virgin coconut oil', 'mucDoTinhCheDau', 'Virgin coconut oil', 'NGUYEN_CHAT_VIRGIN');
+  la('Zh 初榨椰子油', 'mucDoTinhCheDau', '初榨椰子油', 'NGUYEN_CHAT_VIRGIN');
+  la('Dầu thô vẫn đọc DANG_THO, không nhảy sang NGUYEN_CHAT_VIRGIN', 'mucDoTinhCheDau', 'Dầu dừa dạng thô chưa tinh chế', 'DANG_THO');
+
+  // 2. lotVaiDetMotMat (4008.11.10 / 4008.21.10)
+  la('chữ biểu 4008.11.10 / 4008.21.10 (có một mặt được lót vải dệt)', 'lotVaiDetMotMat', 'Chiều dày trên 5 mm, có một mặt được lót vải dệt', true);
+  la('En lined with textile fabric on one side', 'lotVaiDetMotMat', 'Exceeding 5 mm in thickness, lined with textile fabric on one side', true);
+  la('Zh 单面衬有纺织物', 'lotVaiDetMotMat', '厚度超过5毫米，单面衬有纺织物', true);
+  la('tấm cao su lót vải cả hai mặt ⇒ false', 'lotVaiDetMotMat', 'Tấm cao su xốp dày 8 mm, có hai mặt được lót vải dệt', false);
+  la('En lined with textile fabric on both sides ⇒ false', 'lotVaiDetMotMat', 'Cellular rubber sheet lined with textile fabric on both sides', false);
+  la('phủ định không được lót vải dệt ⇒ false', 'lotVaiDetMotMat', 'Tấm cao su lưu hóa dày 10 mm, không được lót vải dệt', false);
+  chuaBiet('chỉ ghi tấm cao su dày 6 mm ⇒ CHUA_BIET', 'lotVaiDetMotMat', 'Tấm cao su lưu hóa dày 6 mm');
+
+  // 3. chatLieuLopNgoai (4412.41.10 / 4412.91.10 / 4412.92.00 / 4412.99.00)
+  la('chữ biểu 4412.41.10 / 4412.91.10 (lớp ngoài bằng gỗ tếch)', 'chatLieuLopNgoai', 'Với ít nhất một lớp ngoài bằng gỗ tếch', 'GO_TECH');
+  la('En With at least one outer ply of teak', 'chatLieuLopNgoai', 'With at least one outer ply of teak', 'GO_TECH');
+  la('Zh 至少有一表层是柚木', 'chatLieuLopNgoai', '至少有一表层是柚木', 'GO_TECH');
+  la('chữ biểu 4412.92.00 (lớp mặt ngoài từ gỗ không thuộc loài cây lá kim)', 'chatLieuLopNgoai', 'Loại khác, với ít nhất một lớp mặt ngoài từ gỗ không thuộc loài cây lá kim', 'GO_KHONG_LA_KIM');
+  la('chữ biểu 4412.99.00 (cả hai lớp mặt ngoài từ gỗ thuộc loài cây lá kim)', 'chatLieuLopNgoai', 'Loại khác, với cả hai lớp mặt ngoài từ gỗ thuộc loài cây lá kim', 'CA_HAI_LOP_GO_LA_KIM');
+  chuaBiet('gỗ tếch ở lớp lõi trong, không phải lớp ngoài ⇒ CHUA_BIET', 'chatLieuLopNgoai', 'Gỗ dán có lớp lõi trong bằng gỗ tếch');
+
+  // 4. hamLuongNhua (4805.91.10)
+  la('chữ biểu 4805.91.10 (hàm lượng nhựa không quá 0,6%)', 'hamLuongNhua', 'Giấy dùng để lót vào giữa các sản phẩm thủy tinh phẳng khi đóng gói, có hàm lượng nhựa không quá 0,6% tính theo khối lượng', 0.6, { op: '<=' });
+  la('hàng thật hàm lượng nhựa 0,4%', 'hamLuongNhua', 'Giấy lót kính phẳng khi đóng gói, hàm lượng nhựa 0,4% tính theo khối lượng', 0.4, { op: null });
+  la('En resin content by weight of not more than 0.6%', 'hamLuongNhua', 'Paper with a resin content by weight of not more than 0.6%', 0.6, { op: '<=' });
+  la('Zh 按重量计树脂含量0.5%', 'hamLuongNhua', '按重量计树脂含量0.5%的衬纸', 0.5, { op: null });
+  chuaBiet('chỉ ghi định lượng giấy, không ghi hàm lượng nhựa ⇒ CHUA_BIET', 'hamLuongNhua', 'Giấy lót kính phẳng định lượng 50 g/m2');
+
+  // 5. ketHopVoiSoiCaoSu (5808.10.10 / 5808.90.10)
+  la('chữ biểu 5808.10.10 / 5808.90.10 (Kết hợp với sợi cao su)', 'ketHopVoiSoiCaoSu', 'Kết hợp với sợi cao su', true);
+  la('En Combined with rubber thread', 'ketHopVoiSoiCaoSu', 'Combined with rubber thread', true);
+  la('Zh 夹有橡胶线', 'ketHopVoiSoiCaoSu', '夹有橡胶线的编带', true);
+  la('phủ định không kết hợp với sợi cao su ⇒ false', 'ketHopVoiSoiCaoSu', 'Dải bện dạng chiếc không kết hợp với sợi cao su', false);
+  chuaBiet('dải bện chứa sợi đàn hồi spandex/elastane/lycra ⇒ CHUA_BIET (không bắt nhầm sợi cao su)', 'ketHopVoiSoiCaoSu', 'Dải bện dạng chiếc chứa sợi đàn hồi spandex (elastane / lycra)');
+
+  // 6. loaiDauHatCoBabassu (1513.29)
+  la('chữ biểu 1513.29.95 (Dầu hạt cọ RBD)', 'loaiDauHatCoBabassu', 'Dầu hạt cọ, đã tinh chế, tẩy và khử mùi (RBD) (SEN)', 'DAU_HAT_CO');
+  la('chữ biểu 1513.29.94 (Olein hạt cọ RBD)', 'loaiDauHatCoBabassu', 'Olein hạt cọ, đã tinh chế, tẩy và khử mùi (RBD)', 'DAU_HAT_CO');
+  la('chữ biểu 1513.29.13 ngoặc (olein hạt cọ) vẫn đọc DAU_HAT_CO', 'loaiDauHatCoBabassu', 'Loại khác, của dầu hạt cọ chưa tinh chế (olein hạt cọ) (SEN)', 'DAU_HAT_CO');
+  la('chữ biểu 1513.29.14 (dầu cọ ba-ba-su)', 'loaiDauHatCoBabassu', 'Loại khác, của dầu cọ ba-ba-su chưa tinh chế', 'DAU_CO_BA_BA_SU');
+  chuaBiet('dầu dừa không thuộc loaiDauHatCoBabassu ⇒ CHUA_BIET', 'loaiDauHatCoBabassu', 'Dầu dừa nguyên chất');
+
+  // 7. ReDoS ~40.000 từ lặp < 2 giây (CLAUDE.md quy tắc 6b)
+  const redosText1778 = Array(8000).fill('tấm cao su hoặc gỗ dán hoặc giấy hoặc dải bện').join(' ');
+  const t0 = process.hrtime.bigint();
+  for (const fk of ['mucDoTinhCheDau', 'lotVaiDetMotMat', 'chatLieuLopNgoai', 'hamLuongNhua', 'ketHopVoiSoiCaoSu', 'loaiDauHatCoBabassu']) {
+    T.docGiaTri(fk, redosText1778);
+  }
+  const ms = Number(process.hrtime.bigint() - t0) / 1e6;
+  check(`OZV-1778 ReDoS ~40.000 từ lặp trên 6 khoá < 2000 ms (thực tế ${ms.toFixed(0)} ms)`, ms < 2000, { ms });
+}
+
+// OZV-1792 — kiểm chứng 5 khoá mới lô 10a (chuaNicotin, laNguyenToHoacHopChatNhom2844, kichThuocToiDa56x45x25cm,
+// chuaPolybutylenTerephthalat, tuLanh) + ReDoS ~40.000 từ lặp < 2 giây (quy tắc 6b).
+{
+  // 1. chuaNicotin (2404.91.10)
+  la('chữ biểu 2404.91.10 (Kẹo cao su có nicotin)', 'chuaNicotin', 'Kẹo cao su có nicotin (SEN)', true);
+  la('mô tả hàng thật kẹo cao su nicotin', 'chuaNicotin', 'Kẹo cao su nicotin hỗ trợ cai thuốc lá', true);
+  la('En Nicotine chewing gum', 'chuaNicotin', 'Nicotine chewing gum 2mg', true);
+  la('Zh 含尼古丁', 'chuaNicotin', '含尼古丁口香糖', true);
+  la('phủ định không có nicotin ⇒ false', 'chuaNicotin', 'Kẹo cao su không có nicotin', false);
+  la('nguyên liệu thay thế nicotin (2404.19.20) ⇒ false', 'chuaNicotin', 'Chứa các nguyên liệu thay thế nicotin', false);
+  chuaBiet('chỉ ghi kẹo cao su bạc hà ⇒ CHUA_BIET', 'chuaNicotin', 'Kẹo cao su hương bạc hà');
+
+  // 2. laNguyenToHoacHopChatNhom2844 (2844.10.10, 2844.20.10, 2844.30.10)
+  la('chữ biểu 2844.10.10', 'laNguyenToHoacHopChatNhom2844', 'Urani tự nhiên và các hợp chất của nó', true);
+  la('chữ biểu 2844.20.10', 'laNguyenToHoacHopChatNhom2844', 'Urani đã làm giàu thành U 235 và hợp chất của nó; plutoni và hợp chất của nó', true);
+  la('mô tả urani làm nghèo thành U 235 (2844.30.10)', 'laNguyenToHoacHopChatNhom2844', 'Urani đã được làm nghèo thành U 235', true);
+  la('hợp chất của thori (2844.30.10)', 'laNguyenToHoacHopChatNhom2844', 'Hợp chất của thori (thori dioxit)', true);
+  la('En Uranium depleted in U 235', 'laNguyenToHoacHopChatNhom2844', 'Uranium depleted in U 235 and its compounds', true);
+  la('Zh 天然铀及其化合物', 'laNguyenToHoacHopChatNhom2844', '天然铀及其化合物', true);
+  la('hỗn hợp chứa hợp chất urani (.90) ⇒ false', 'laNguyenToHoacHopChatNhom2844', 'Hỗn hợp chứa hợp chất urani tự nhiên', false);
+  la('hợp kim chứa urani tự nhiên (.90) ⇒ false', 'laNguyenToHoacHopChatNhom2844', 'Hợp kim chứa urani tự nhiên', false);
+  chuaBiet('tiêu đề PN6 2844.10 đa vế ⇒ CHUA_BIET', 'laNguyenToHoacHopChatNhom2844', 'Urani tự nhiên và các hợp chất của nó; hợp kim, các chất phân tán (kể cả gốm kim loại), sản phẩm gốm và hỗn hợp có chứa urani tự nhiên hoặc các hợp chất urani tự nhiên');
+  chuaBiet('hợp chất hữu cơ khác không nêu urani/plutoni/thori ⇒ CHUA_BIET', 'laNguyenToHoacHopChatNhom2844', 'Các hợp chất vô cơ khác');
+
+  // 3. kichThuocToiDa56x45x25cm (4202.11.10)
+  la('chữ biểu 4202.11.10', 'kichThuocToiDa56x45x25cm', 'Vali hoặc túi, cặp có kích thước tối đa 56cm x 45cm x 25cm', true);
+  la('vali 50cm x 40cm x 20cm (cả 3 chiều trong biên) ⇒ true', 'kichThuocToiDa56x45x25cm', 'Vali mặt ngoài bằng da thuộc, kích thước 50cm x 40cm x 20cm', true);
+  la('En maximum dimensions of 56 cm x 45 cm x 25 cm', 'kichThuocToiDa56x45x25cm', 'Suit-case or brief-case with maximum dimensions of 56 cm x 45 cm x 25 cm', true);
+  la('Zh 最大尺寸不超过56厘米x45厘米x25厘米', 'kichThuocToiDa56x45x25cm', '最大尺寸不超过56厘米x45厘米x25厘米的皮箱', true);
+  la('vali 50cm x 50cm x 30cm (vượt biên 45/25 cm) ⇒ false', 'kichThuocToiDa56x45x25cm', 'Vali mặt ngoài bằng da thuộc, kích thước 50cm x 50cm x 30cm', false);
+  chuaBiet('vali da thuộc không nêu kích thước ⇒ CHUA_BIET', 'kichThuocToiDa56x45x25cm', 'Vali mặt ngoài bằng da thuộc');
+
+  // 4. chuaPolybutylenTerephthalat (6005.36.10, 6005.38.10)
+  la('chữ biểu 6005.36.10', 'chuaPolybutylenTerephthalat', 'Vải dệt kim làm từ polyeste và polybutylen terephthalat trong đó polyeste chiếm tỷ lệ lớn hơn tính theo khối lượng dùng để làm quần áo bơi', true);
+  la('En polybutylene terephthalate', 'chuaPolybutylenTerephthalat', 'Knitted swimwear fabrics of polyester and polybutylene terephthalate', true);
+  la('Zh 聚对苯二甲酸丁二酯', 'chuaPolybutylenTerephthalat', '由聚酯及聚对苯二甲酸丁二酯制成的针织泳衣面料', true);
+  la('phủ định không có polybutylen terephthalat ⇒ false', 'chuaPolybutylenTerephthalat', 'Vải bơi dệt kim polyeste pha spandex, không có polybutylen terephthalat', false);
+  la('100% polyeste ⇒ false', 'chuaPolybutylenTerephthalat', 'Vải dệt kim đan dọc 100% polyeste dùng may đồ bơi', false);
+  chuaBiet('vải bơi polyeste pha spandex không nhắc PBT ⇒ CHUA_BIET', 'chuaPolybutylenTerephthalat', 'Vải dệt kim 85% polyeste 15% spandex dùng làm quần áo bơi');
+
+  // 5. tuLanh (6302.59.10, 6302.99.10)
+  la('chữ biểu 6302.59.10 (Từ lanh)', 'tuLanh', 'Từ lanh', true);
+  la('mô tả hàng thật khăn trải bàn bằng vải lanh', 'tuLanh', 'Khăn trải bàn bằng vải lanh tự nhiên', true);
+  la('En Of flax', 'tuLanh', 'Table linen of flax', true);
+  la('Zh 亚麻制', 'tuLanh', '亚麻制桌布', true);
+  la('khăn trải bàn bằng đay ⇒ false', 'tuLanh', 'Khăn trải bàn bằng vải đay', false);
+  la('khăn trải bàn từ gai ramie ⇒ false', 'tuLanh', 'Khăn trải bàn từ gai ramie', false);
+  chuaBiet('chỉ ghi khăn trải bàn từ các vật liệu dệt khác ⇒ CHUA_BIET', 'tuLanh', 'Khăn trải bàn khác - Từ các vật liệu dệt khác');
+
+  // 6. ReDoS ~40.000 từ lặp < 2 giây (CLAUDE.md quy tắc 6b)
+  const redosText1792 = Array(5000).fill('kích thước tối đa hợp chất của urani vải dệt kim từ').join(' ');
+  const t0 = process.hrtime.bigint();
+  for (const fk of ['laNguyenToHoacHopChatNhom2844', 'kichThuocToiDa56x45x25cm']) {
+    T.docGiaTri(fk, redosText1792);
+  }
+  const ms = Number(process.hrtime.bigint() - t0) / 1e6;
+  check(`OZV-1792 ReDoS ~40.000 từ lặp trên 2 khoá mới < 2000 ms (thực tế ${ms.toFixed(0)} ms)`, ms < 2000, { ms });
 }
 
 console.log(`\n${pass} pass, ${fail} fail`);

@@ -4,13 +4,19 @@
   "nhom": "4412",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T1558#soan-441241",
-    "ngay": "2026-11-06"
+    "phien": "tho-hs-03:20261122#soan-441241",
+    "ngay": "2026-11-21"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1778#soat-441241",
+    "ngay": "2026-11-21",
+    "ghiChu": "Chuẩn hoá ranh giới theo traVe.lyDo, duyệt và áp sổ tay (OZV-1778)",
+    "bam": "6ffc5d136fed40365e81dff3322d64c65fb1ffb17c812100f77713113691f43a"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -19,26 +25,28 @@
       "trich": "44124110 - - - Với ít nhất một lớp ngoài bằng gỗ tếch ",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "gỗ tếch"
+          "fact": "chatLieuLopNgoai",
+          "op": "TRONG",
+          "value": [
+            "GO_TECH"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "44124190",
       "nguon": "tax.44124190",
       "trich": "44124190 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "44124110",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.44124110 \"Với ít nhất một lớp ngoài bằng gỗ tếch \" (EN: With at least one outer ply of teak) ⇒ tenLoai \"gỗ tếch\" nguyên văn (chuỗi con của chính dòng; cùng cách xử lý vật liệu-loại như 391890 .11 tenLoai \"polyetylen\") — chatLieu tu-vung@2 chỉ có \"gỗ\" chung chung không tách được loài; \"lớp ngoài\" là vị trí của chất liệu, bộ đọc mô tả hàng plywood lớp ngoài gỗ tếch có chứa \"gỗ tếch\""
+      "ghiChu": "tax.44124110 \"Với ít nhất một lớp ngoài bằng gỗ tếch \" (EN \"With at least one outer ply of teak\") ⇒ chatLieuLopNgoai TRONG [GO_TECH] (phủ đúng chất liệu gỗ tếch ở vị trí lớp ngoài, không khớp gỗ tếch ở lớp lõi trong). Dòng 44124190 \"Loại khác\" trần ⇒ không ghi điều kiện."
     }
   ],
   "traVe": [

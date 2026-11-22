@@ -4,13 +4,19 @@
   "nhom": "1513",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1530#soan-151329",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1778#soat-151329",
+    "ngay": "2026-11-21",
+    "ghiChu": "Chuẩn hoá ranh giới theo traVe.lyDo, duyệt và áp sổ tay (OZV-1778)",
+    "bam": "5c56fccc469b3b3f748589ab80b12fb2f67b0ebc918301250180ad285089f057"
+  },
   "dieuKienNut": [
     {
       "id": "151329",
@@ -18,26 +24,21 @@
       "trich": "Dầu hạt cọ hoặc dầu cọ ba-ba-su và các phần phân đoạn của chúng",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
+          "fact": "loaiDauHatCoBabassu",
+          "op": "TRONG",
           "value": [
-            "hạt cọ",
-            "cọ ba-ba-su"
+            "DAU_HAT_CO",
+            "DAU_CO_BA_BA_SU"
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "1513291",
       "nguon": "tieuDe.1513291",
       "trich": "1513291 Các phần phân đoạn của dầu hạt cọ hoặc dầu cọ ba-ba-su chưa tinh chế",
       "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Các phần phân đoạn"
-        },
         {
           "fact": "mucDoTinhCheDau",
           "op": "TRONG",
@@ -46,7 +47,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -61,9 +62,11 @@
           "value": "Các phần phân đoạn thể rắn"
         },
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "hạt cọ"
+          "fact": "loaiDauHatCoBabassu",
+          "op": "TRONG",
+          "value": [
+            "DAU_HAT_CO"
+          ]
         },
         {
           "fact": "mucDoTinhCheDau",
@@ -73,7 +76,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "15132912",
@@ -86,9 +89,11 @@
           "value": "Các phần phân đoạn thể rắn"
         },
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "cọ ba-ba-su"
+          "fact": "loaiDauHatCoBabassu",
+          "op": "TRONG",
+          "value": [
+            "DAU_CO_BA_BA_SU"
+          ]
         },
         {
           "fact": "mucDoTinhCheDau",
@@ -98,7 +103,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "15132913",
@@ -106,9 +111,11 @@
       "trich": "15132913 - - - - Loại khác, của dầu hạt cọ chưa tinh chế (olein hạt cọ) (SEN)",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "hạt cọ"
+          "fact": "loaiDauHatCoBabassu",
+          "op": "TRONG",
+          "value": [
+            "DAU_HAT_CO"
+          ]
         },
         {
           "fact": "mucDoTinhCheDau",
@@ -118,7 +125,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": true
     },
     {
@@ -127,9 +134,11 @@
       "trich": "15132914 - - - - Loại khác, của dầu cọ ba-ba-su chưa tinh chế ",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "cọ ba-ba-su"
+          "fact": "loaiDauHatCoBabassu",
+          "op": "TRONG",
+          "value": [
+            "DAU_CO_BA_BA_SU"
+          ]
         },
         {
           "fact": "mucDoTinhCheDau",
@@ -139,7 +148,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "15132991",
@@ -152,12 +161,14 @@
           "value": "Các phần phân đoạn thể rắn"
         },
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "của dầu hạt cọ"
+          "fact": "loaiDauHatCoBabassu",
+          "op": "TRONG",
+          "value": [
+            "DAU_HAT_CO"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "15132992",
@@ -170,12 +181,14 @@
           "value": "Các phần phân đoạn thể rắn"
         },
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "của dầu cọ ba-ba-su"
+          "fact": "loaiDauHatCoBabassu",
+          "op": "TRONG",
+          "value": [
+            "DAU_CO_BA_BA_SU"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "15132994",
@@ -188,6 +201,13 @@
           "value": "Olein hạt cọ"
         },
         {
+          "fact": "loaiDauHatCoBabassu",
+          "op": "TRONG",
+          "value": [
+            "DAU_HAT_CO"
+          ]
+        },
+        {
           "fact": "mucDoTinhCheDau",
           "op": "TRONG",
           "value": [
@@ -195,7 +215,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "15132995",
@@ -208,6 +228,13 @@
           "value": "Dầu hạt cọ"
         },
         {
+          "fact": "loaiDauHatCoBabassu",
+          "op": "TRONG",
+          "value": [
+            "DAU_HAT_CO"
+          ]
+        },
+        {
           "fact": "mucDoTinhCheDau",
           "op": "TRONG",
           "value": [
@@ -215,7 +242,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "15132996",
@@ -223,12 +250,14 @@
       "trich": "15132996 - - - - Loại khác, của dầu hạt cọ (SEN)",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "hạt cọ"
+          "fact": "loaiDauHatCoBabassu",
+          "op": "TRONG",
+          "value": [
+            "DAU_HAT_CO"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": true
     },
     {
@@ -237,69 +266,71 @@
       "trich": "15132997 - - - - Loại khác, của dầu cọ ba-ba-su",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "cọ ba-ba-su"
+          "fact": "loaiDauHatCoBabassu",
+          "op": "TRONG",
+          "value": [
+            "DAU_CO_BA_BA_SU"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "15132911",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.15132911 \"15132911 - - - - Các phần phân đoạn thể rắn của dầu hạt cọ chưa tinh chế (SEN)\" ⇒ tenLoai \"Các phần phân đoạn thể rắn\" + tenLoai \"hạt cọ\" (loại dầu) + mucDoTinhCheDau DANG_THO (\"chưa tinh chế\"). Ghi \"hạt cọ\" (không phải \"dầu hạt cọ\") để dòng 15132913 (Loại khác, của dầu hạt cọ) còn phủ định được anh em 15132911."
+      "ghiChu": "tax.15132911 \"15132911 - - - - Các phần phân đoạn thể rắn của dầu hạt cọ chưa tinh chế (SEN)\" ⇒ tenLoai \"Các phần phân đoạn thể rắn\" + loaiDauHatCoBabassu DAU_HAT_CO (\"của dầu hạt cọ\") + mucDoTinhCheDau DANG_THO (\"chưa tinh chế\")."
     },
     {
       "ma": "15132912",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.15132912 \"15132912 - - - - Các phần phân đoạn thể rắn của dầu cọ ba-ba-su chưa tinh chế\" ⇒ tenLoai \"Các phần phân đoạn thể rắn\" + tenLoai \"cọ ba-ba-su\" + mucDoTinhCheDau DANG_THO (cùng cách chia dùng 15132911)."
+      "ghiChu": "tax.15132912 \"15132912 - - - - Các phần phân đoạn thể rắn của dầu cọ ba-ba-su chưa tinh chế\" ⇒ tenLoai \"Các phần phân đoạn thể rắn\" + loaiDauHatCoBabassu DAU_CO_BA_BA_SU (\"của dầu cọ ba-ba-su\") + mucDoTinhCheDau DANG_THO."
     },
     {
       "ma": "15132913",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.15132913 \"15132913 - - - - Loại khác, của dầu hạt cọ chưa tinh chế (olein hạt cọ) (SEN)\" ⇒ dòng \"Loại khác, <vế>\" ⇒ chỉ ghi điều kiện của vế: tenLoai \"Dầu hạt cọ\" + mucDoTinhCheDau DANG_THO; máy tự phủ định anh em 15132911/15132912/15132914."
+      "ghiChu": "tax.15132913 \"15132913 - - - - Loại khác, của dầu hạt cọ chưa tinh chế (olein hạt cọ) (SEN)\" ⇒ dòng \"Loại khác, <vế>\" ⇒ loaiDauHatCoBabassu DAU_HAT_CO + mucDoTinhCheDau DANG_THO + phanConLai (phần còn lại của dầu hạt cọ chưa tinh chế sau 15132911)."
     },
     {
       "ma": "15132914",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.15132914 \"15132914 - - - - Loại khác, của dầu cọ ba-ba-su chưa tinh chế \" ⇒ dòng \"Loại khác, <vế>\" ⇒ tenLoai \"Dầu cọ ba-ba-su\" + mucDoTinhCheDau DANG_THO; máy tự phủ định anh em."
+      "ghiChu": "tax.15132914 \"15132914 - - - - Loại khác, của dầu cọ ba-ba-su chưa tinh chế \" ⇒ dòng \"Loại khác, <vế>\" ⇒ loaiDauHatCoBabassu DAU_CO_BA_BA_SU + mucDoTinhCheDau DANG_THO + phanConLai (phần còn lại của dầu cọ ba-ba-su chưa tinh chế sau 15132912)."
     },
     {
       "ma": "15132991",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.15132991 \"15132991 - - - - Các phần phân đoạn thể rắn của dầu hạt cọ (SEN)\" ⇒ tenLoai \"Các phần phân đoạn thể rắn\" + tenLoai \"của dầu hạt cọ\"; dòng nằm dưới tiêu đề \"Loại khác\" (1513299, trần) nên không có mức tinh chế trong chữ dòng — phân biệt với 15132911 (chưa tinh chế) do máy phủ định tiêu đề 1513291."
+      "ghiChu": "tax.15132991 \"15132991 - - - - Các phần phân đoạn thể rắn của dầu hạt cọ (SEN)\" ⇒ tenLoai \"Các phần phân đoạn thể rắn\" + loaiDauHatCoBabassu DAU_HAT_CO; dòng nằm dưới tiêu đề \"Loại khác\" (1513299, trần) nên phân biệt với 15132911 (chưa tinh chế) do máy phủ định tiêu đề 1513291."
     },
     {
       "ma": "15132992",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.15132992 \"15132992 - - - - Các phần phân đoạn thể rắn của dầu cọ ba-ba-su\" ⇒ tenLoai \"Các phần phân đoạn thể rắn\" + tenLoai \"của dầu cọ ba-ba-su\" (cùng cách chia dùng 15132991)."
+      "ghiChu": "tax.15132992 \"15132992 - - - - Các phần phân đoạn thể rắn của dầu cọ ba-ba-su\" ⇒ tenLoai \"Các phần phân đoạn thể rắn\" + loaiDauHatCoBabassu DAU_CO_BA_BA_SU (cùng cách chia với 15132991)."
     },
     {
       "ma": "15132994",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.15132994 \"15132994 - - - - Olein hạt cọ, đã tinh chế, tẩy và khử mùi (RBD)\" ⇒ tenLoai \"Olein hạt cọ\" + mucDoTinhCheDau RBD_NBD (\"đã tinh chế … tẩy và khử mùi (RBD)\")."
+      "ghiChu": "tax.15132994 \"15132994 - - - - Olein hạt cọ, đã tinh chế, tẩy và khử mùi (RBD)\" ⇒ tenLoai \"Olein hạt cọ\" + loaiDauHatCoBabassu DAU_HAT_CO + mucDoTinhCheDau RBD_NBD (\"đã tinh chế, tẩy và khử mùi (RBD)\")."
     },
     {
       "ma": "15132995",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.15132995 \"15132995 - - - - Dầu hạt cọ, đã tinh chế, tẩy và khử mùi (RBD) (SEN)\" ⇒ tenLoai \"Dầu hạt cọ\" + mucDoTinhCheDau RBD_NBD."
+      "ghiChu": "tax.15132995 \"15132995 - - - - Dầu hạt cọ, đã tinh chế, tẩy và khử mùi (RBD) (SEN)\" ⇒ tenLoai \"Dầu hạt cọ\" + loaiDauHatCoBabassu DAU_HAT_CO + mucDoTinhCheDau RBD_NBD."
     },
     {
       "ma": "15132996",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.15132996 \"15132996 - - - - Loại khác, của dầu hạt cọ (SEN)\" ⇒ dòng \"Loại khác, <vế>\" ⇒ tenLoai \"Dầu hạt cọ\"; máy tự phủ định anh em (15132991/15132994/15132995)."
+      "ghiChu": "tax.15132996 \"15132996 - - - - Loại khác, của dầu hạt cọ (SEN)\" ⇒ dòng \"Loại khác, <vế>\" ⇒ loaiDauHatCoBabassu DAU_HAT_CO + phanConLai (phần còn lại của dầu hạt cọ sau 15132991/15132994/15132995)."
     },
     {
       "ma": "15132997",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.15132997 \"15132997 - - - - Loại khác, của dầu cọ ba-ba-su\" ⇒ dòng \"Loại khác, <vế>\" ⇒ tenLoai \"Dầu cọ ba-ba-su\"; máy tự phủ định anh em."
+      "ghiChu": "tax.15132997 \"15132997 - - - - Loại khác, của dầu cọ ba-ba-su\" ⇒ dòng \"Loại khác, <vế>\" ⇒ loaiDauHatCoBabassu DAU_CO_BA_BA_SU + phanConLai (phần còn lại của dầu cọ ba-ba-su sau 15132992)."
     },
     {
       "ma": "151329",
       "loai": "QUYET_DINH",
-      "ghiChu": "Claude 07/11/2026 (#1109): vướng cũ không phải thiếu khoá rắn/lỏng mà là: (1) phạm vi phân nhóm chưa khai — dieuKienNut[151329] lấy loại dầu từ tieuDe.15132 \"Dầu hạt cọ hoặc dầu cọ ba-ba-su và các phần phân đoạn của chúng\"; (2) các dòng «Loại khác, của dầu hạt cọ …» / «… của dầu cọ ba-ba-su» ghi tên «Dầu hạt cọ» nên hàng «olein hạt cọ» không khớp — «của dầu hạt cọ» là LOẠI DẦU ⇒ tenLoai «hạt cọ» / «cọ ba-ba-su», .13 và .96 phanConLai (phần còn lại sau dòng thể rắn của cùng loại dầu)."
+      "ghiChu": "OZV-1778: đồng nhất trục loại dầu bằng khoá LIET_KE loaiDauHatCoBabassu (DAU_HAT_CO / DAU_CO_BA_BA_SU) và mức tinh chế RBD bằng mucDoTinhCheDau RBD_NBD."
     }
   ],
   "traVe": [

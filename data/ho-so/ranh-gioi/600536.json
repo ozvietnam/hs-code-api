@@ -4,13 +4,19 @@
   "nhom": "6005",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-600536",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-01#soat-ozv-1792-600536",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá ranh giới theo traVe.lyDo và duyệt+áp khép SẠCH V1 (OZV-1792)",
+    "bam": "7f2e62d15517a36c4d040af3b7c8bfe10237757daab1706f372771022dc26d30"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -22,6 +28,10 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Vải dệt kim"
+        },
+        {
+          "fact": "chuaPolybutylenTerephthalat",
+          "op": "CO"
         },
         {
           "fact": "soiChiemTiLeLonHon",
@@ -36,21 +46,21 @@
           "value": "quần áo bơi"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "60053690",
       "nguon": "tax.60053690",
       "trich": "60053690 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "60053610",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.60053610 \"Vải dệt kim làm từ polyeste và polybutylen terephthalat trong đó polyeste chiếm tỷ lệ lớn hơn tính theo khối lượng dùng để làm quần áo bơi\" ⇒ tenLoai \"Vải dệt kim\" + soiChiemTiLeLonHon TRONG [POLYESTE] (đọc \"polyeste chiếm tỷ lệ lớn hơn\") + dungCho \"quần áo bơi\" (vế \"dùng để làm quần áo bơi\"). Đã bỏ loaiSoiDet SOI_TONG_HOP của bản cũ: chữ biểu không nói \"tổng hợp\"; vế polyeste/polybutylen đã do soiChiemTiLeLonHon phủ."
+      "ghiChu": "tax.60053610 \"Vải dệt kim làm từ polyeste và polybutylen terephthalat trong đó polyeste chiếm tỷ lệ lớn hơn tính theo khối lượng dùng để làm quần áo bơi\" ⇒ tenLoai \"Vải dệt kim\" + chuaPolybutylenTerephthalat CO + soiChiemTiLeLonHon TRONG [\"POLYESTE\"] + dungCho \"quần áo bơi\"."
     },
     {
       "ma": "60053690",

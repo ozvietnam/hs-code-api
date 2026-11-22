@@ -99,11 +99,34 @@
   "dong8": [
     {
       "hs": "42021110",
-      "dieuKien": "Vali hoặc túi, cặp kích thước tối đa 56cm x 45cm x 25cm",
+      "dieuKien": "tên loại hàng: Vali hoặc túi hoặc cặp; có kích thước tối đa 56 cm x 45 cm x 25 cm",
       "loaiKhac": false,
       "nguon": "tax.42021110",
-      "trich": "Vali hoặc túi, cặp có kích thước tối đa 56cm x 45cm x 25cm",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "42021110 - - - Vali hoặc túi, cặp có kích thước tối đa 56cm x 45cm x 25cm",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Vali",
+            "túi",
+            "cặp"
+          ]
+        },
+        {
+          "fact": "kichThuocToiDa56x45x25cm",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01#soat-ozv-1792-420211",
+          "ngay": "2026-11-22",
+          "bam": "fd88993a642d650b1d5663129a34714bdd6ac064e9f359aa2559cd6fa38c96a0"
+        }
+      }
     },
     {
       "hs": "42021190",
@@ -252,19 +275,49 @@
     },
     {
       "hs": "42022210",
-      "dieuKien": "Mặt ngoài bằng tấm plastic",
+      "dieuKien": "chất liệu (theo vị trí): plastic",
       "loaiKhac": false,
       "nguon": "tax.42022210",
       "trich": "42022210 - - - Mặt ngoài bằng tấm plastic",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "plastic"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01#soat-ozv-1792-420222",
+          "ngay": "2026-11-22",
+          "bam": "c6729863effed2ee750995b495a05b300a04e4d8b7d2645aabf1ce57c014c554"
+        }
+      }
     },
     {
       "hs": "42022220",
-      "dieuKien": "Mặt ngoài bằng vật liệu dệt",
+      "dieuKien": "chất liệu (theo vị trí): vải dệt",
       "loaiKhac": false,
       "nguon": "tax.42022220",
       "trich": "42022220 - - - Mặt ngoài bằng vật liệu dệt",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "vải dệt"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01#soat-ozv-1792-420222",
+          "ngay": "2026-11-22",
+          "bam": "c6729863effed2ee750995b495a05b300a04e4d8b7d2645aabf1ce57c014c554"
+        }
+      }
     },
     {
       "hs": "42022900",
