@@ -4,19 +4,13 @@
   "nhom": "7215",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "DUYET",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-721510",
     "ngay": "2026-11-04"
   },
-  "duyet": {
-    "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:ozv-1782#soat-721510",
-    "ngay": "2026-11-21",
-    "ghiChu": "Chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1782)",
-    "bam": "321aeabeafb7f812ab19e9bce2b9e539802657975bc0c3c97e162c5a6b7169b4"
-  },
+  "duyet": null,
   "dieuKienNut": [],
   "dong8": [
     {
@@ -25,28 +19,31 @@
       "trich": "72151010 - - Có mặt cắt ngang hình tròn",
       "dieuKienSo": [
         {
-          "fact": "hinhDangMatCatNgang",
-          "op": "TRONG",
-          "value": [
-            "TRON"
-          ]
+          "fact": "hinhDangCatGocKinh",
+          "op": "KHONG"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "72151090",
       "nguon": "tax.72151090",
       "trich": "72151090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "72151010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.72151010: \"Có mặt cắt ngang hình tròn\" ⇒ hinhDangMatCatNgang TRONG [\"TRON\"]"
+      "ghiChu": "tax.72151010: \"Có mặt cắt ngang hình tròn\" ⇒ hinhDangCatGocKinh KHONG"
+    },
+    {
+      "ma": "72151010",
+      "loai": "BO_VE",
+      "ve": "Có mặt cắt ngang hình tròn",
+      "lyDo": "Đã phản ánh qua mặt cắt ngang hình tròn"
     }
   ],
   "traVe": [

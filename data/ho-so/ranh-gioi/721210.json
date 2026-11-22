@@ -4,19 +4,13 @@
   "nhom": "7212",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "DUYET",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-721210",
     "ngay": "2026-11-04"
   },
-  "duyet": {
-    "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:ozv-1782#soat-721210",
-    "ngay": "2026-11-21",
-    "ghiChu": "Chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1782)",
-    "bam": "dbe171158a37626c1678115a3081c0c99505341f1f20a5b6ac885f05fac71ede"
-  },
+  "duyet": null,
   "dieuKienNut": [
     {
       "id": "7212101",
@@ -30,7 +24,7 @@
           "donVi": "%"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "dong8": [
@@ -40,20 +34,13 @@
       "trich": "72121011 - - - Dạng đai và dải(SEN), có chiều rộng không quá 25 mm",
       "dieuKienSo": [
         {
-          "fact": "dangDaiDaiTamPhoDung",
-          "op": "TRONG",
-          "value": [
-            "DAI_VA_DAI"
-          ]
-        },
-        {
           "fact": "chieuRong",
           "op": "<=",
           "value": 25,
           "donVi": "mm"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "72121014",
@@ -61,27 +48,20 @@
       "trich": "72121014 - - - Dạng đai và dải(SEN), có chiều rộng trên 400 mm",
       "dieuKienSo": [
         {
-          "fact": "dangDaiDaiTamPhoDung",
-          "op": "TRONG",
-          "value": [
-            "DAI_VA_DAI"
-          ]
-        },
-        {
           "fact": "chieuRong",
           "op": ">",
           "value": 400,
           "donVi": "mm"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "72121019",
       "nguon": "tax.72121019",
       "trich": "72121019 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "72121094",
@@ -89,27 +69,20 @@
       "trich": "72121094 - - - Dạng đai và dải(SEN), chiều rộng không quá 400 mm",
       "dieuKienSo": [
         {
-          "fact": "dangDaiDaiTamPhoDung",
-          "op": "TRONG",
-          "value": [
-            "DAI_VA_DAI"
-          ]
-        },
-        {
           "fact": "chieuRong",
           "op": "<=",
           "value": 400,
           "donVi": "mm"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "72121099",
       "nguon": "tax.72121099",
       "trich": "72121099 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "ghiChuSoan": [
@@ -122,22 +95,46 @@
       "ma": "7212101",
       "loai": "BO_VE",
       "ve": "Có hàm lượng carbon",
-      "lyDo": "Cụm danh từ chỉ thuộc tính, đã lượng hóa qua hamLuongCarbon < 0.6 %"
+      "lyDo": "Cụm danh từ chỉ thuộc tính"
+    },
+    {
+      "ma": "7212101",
+      "loai": "BO_VE",
+      "ve": "dưới 0,6% tính theo khối lượng",
+      "lyDo": "Đã lượng hóa qua hamLuongCarbon < 0.6 %"
     },
     {
       "ma": "72121011",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.72121011: \"Dạng đai và dải(SEN), có chiều rộng không quá 25 mm\" ⇒ dangDaiDaiTamPhoDung TRONG [\"DAI_VA_DAI\"] + chieuRong <= 25 mm"
+      "ghiChu": "tax.72121011: \"Dạng đai và dải(SEN), có chiều rộng không quá 25 mm\" ⇒ chieuRong <= 25 mm"
+    },
+    {
+      "ma": "72121011",
+      "loai": "BO_VE",
+      "ve": "có chiều rộng không quá 25 mm",
+      "lyDo": "Đã lượng hóa qua chieuRong <= 25 mm"
     },
     {
       "ma": "72121014",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.72121014: \"Dạng đai và dải(SEN), có chiều rộng trên 400 mm\" ⇒ dangDaiDaiTamPhoDung TRONG [\"DAI_VA_DAI\"] + chieuRong > 400 mm"
+      "ghiChu": "tax.72121014: \"Dạng đai và dải(SEN), có chiều rộng trên 400 mm\" ⇒ chieuRong > 400 mm"
+    },
+    {
+      "ma": "72121014",
+      "loai": "BO_VE",
+      "ve": "có chiều rộng trên 400 mm",
+      "lyDo": "Đã lượng hóa qua chieuRong > 400 mm"
     },
     {
       "ma": "72121094",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.72121094: \"Dạng đai và dải(SEN), chiều rộng không quá 400 mm\" ⇒ dangDaiDaiTamPhoDung TRONG [\"DAI_VA_DAI\"] + chieuRong <= 400 mm"
+      "ghiChu": "tax.72121094: \"Dạng đai và dải(SEN), chiều rộng không quá 400 mm\" ⇒ chieuRong <= 400 mm"
+    },
+    {
+      "ma": "72121094",
+      "loai": "BO_VE",
+      "ve": "chiều rộng không quá 400 mm",
+      "lyDo": "Đã lượng hóa qua chieuRong <= 400 mm"
     }
   ],
   "traVe": [

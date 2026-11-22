@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:ozv-1782#soat-721240",
-    "ngay": "2026-11-21",
-    "ghiChu": "Chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1782)",
-    "bam": "c5b4d0dbc73571a8699b3f04d162688ae5be0a5503fadad156effd070170c635"
+    "phien": "claude-agent:duyet-L21-20261111#soat-L21",
+    "ngay": "2026-11-11",
+    "ghiChu": "Đối chiếu tiêu đề 7212401 'C dưới 0,6%'; .11 đai/dải ≤400 mm, .12 'Dạng đai và dải khác' (phanConLai .11), .13 sơn sau mạ kẽm (lopMaPhu), .14 sơn sau mạ hợp kim nhôm-kẽm (TEN_LOAI tự do — nên chuyển lopMaPhu SON_SAU_MA_NHOM_KEM); .91 đai/dải ≤400; đã đọc 721240-01/-02 (02 LECH_CHUA_PHAN_XU, soạn theo chữ biểu).",
+    "bam": "b32cee024389d966419bea1e2baf92b238c6465e1499378760fff06ca4ef9367"
   },
   "dieuKienNut": [
     {
@@ -84,11 +84,6 @@
           "value": [
             "SON_SAU_MA_KEM"
           ]
-        },
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "mạ kẽm"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -98,13 +93,6 @@
       "nguon": "tax.72124014",
       "trich": "72124014 - - - Loại khác, được sơn sau khi phủ, mạ hợp kim nhôm - kẽm",
       "dieuKienSo": [
-        {
-          "fact": "lopMaPhu",
-          "op": "TRONG",
-          "value": [
-            "SON_SAU_MA_NHOM_KEM"
-          ]
-        },
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
@@ -210,13 +198,6 @@
       "ma": "721240",
       "loai": "LECH_TIEN_LE",
       "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 721240-01 KHONG_LECH (1762, 1763, 1983, 1984 ↔ 1606, 1641/TB-TCHQ: khác chiều rộng) và 721240-02 LECH_CHUA_PHAN_XU (1606, 1641/TB-TCHQ thép EGI PCM rộng 510 mm xếp 7212.40.19 thay vì .13 \"được sơn sau khi phủ, mạ kẽm\"; chưa ai phân xử, không chọn bên): soạn theo chữ biểu, khớp bảng — người soát đọc mục 721240-02."
-    }
-  ],
-  "traVe": [
-    {
-      "phien": "claude-agent:ozv-1782#soat-721240",
-      "ngay": "2026-11-21",
-      "lyDo": "Chuẩn hoá dieuKienSo để chốt DONG_CO_TEN (OZV-1782)"
     }
   ]
 }
