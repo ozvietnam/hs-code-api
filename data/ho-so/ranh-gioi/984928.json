@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L33-20261111#soat-L33",
-    "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu biểu + 8483: tầng trục/thân ổ/bánh răng; .20/.30 cùng chữ tách bằng maHsTuongUng 8483.20.30/8483.30.30, .91/.99 bằng 8483.90.15/.95 đúng quy ước Chương 98; dải cc .11–.13 đúng biên. BO_VE r19624 chấp nhận vì nhánh anh em 9849289 giữ mã tương ứng.",
-    "bam": "cbf87ea8f7d57188434c36d6f090b76bc306451cc8b0c77446987dc5106a9999"
+    "phien": "claude-code:ozv-1926#soat-984928",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá điều kiện ranh giới và khép SẠCH V1 nhóm 9849 (OZV-1926)",
+    "bam": "c15c1ec9c08a1b73cec3e7edb665c5d4ebb91978c0105dde9ff189356313c83c"
   },
   "dieuKienNut": [
     {
@@ -66,6 +66,14 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Thân ổ"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "ổ bi",
+            "ổ đũa"
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -82,6 +90,15 @@
             "Thân ổ",
             "gối đỡ trục dùng ổ trượt"
           ]
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "ổ bi",
+            "ổ đũa"
+          ],
+          "chieu": "PHAI_KHONG"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -152,18 +169,12 @@
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
-          "value": "xe"
+          "value": "xe có dung tích xi lanh trên 2.000 cc đến 3.000 cc"
         },
         {
           "fact": "dungTichXiLanh",
           "op": ">",
           "value": 2000,
-          "donVi": "cc"
-        },
-        {
-          "fact": "dungTichXiLanh",
-          "op": "<=",
-          "value": 3000,
           "donVi": "cc"
         }
       ],
@@ -190,40 +201,26 @@
     },
     {
       "hs": "98492820",
-      "nguon": "tuongUng.98492820",
-      "trich": "Dùng cho động cơ xe của Chương 87 — mã hàng tương ứng: 8483.20.30",
+      "nguon": "tax.98492820",
+      "trich": "98492820 - - - Dùng cho động cơ xe của Chương 87",
       "dieuKienSo": [
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": "động cơ xe của Chương 87"
-        },
-        {
-          "fact": "maHsTuongUng",
-          "op": "CONG_DUNG",
-          "value": [
-            "8483.20.30"
-          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "98492830",
-      "nguon": "tuongUng.98492830",
-      "trich": "Dùng cho động cơ xe của Chương 87 — mã hàng tương ứng: 8483.30.30",
+      "nguon": "tax.98492830",
+      "trich": "98492830 - - - Dùng cho động cơ xe của Chương 87",
       "dieuKienSo": [
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": "động cơ xe của Chương 87"
-        },
-        {
-          "fact": "maHsTuongUng",
-          "op": "CONG_DUNG",
-          "value": [
-            "8483.30.30"
-          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -347,12 +344,6 @@
       "ma": "98492891",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.98492891 \"hàng hóa khác thuộc Chương 87\" — \"khác\" là định ngữ của đích (hàng hóa khác ngoài các loại đã nêu ở nhánh trước), không phải phần còn lại so với anh em 98492899 (trùng chữ) ⇒ phanConLai: false; khai chongLanVanBan"
-    },
-    {
-      "ma": "984928~r19622",
-      "loai": "BO_VE",
-      "ve": "không lắp ổ bi hay ổ đũa",
-      "lyDo": "Vế phân tầng này với tầng anh em \"Thân ổ, lắp ổ bi hoặc ổ đũa\"; từ vựng chưa có khoá lắp ổ bi. Hai dòng dưới hai tầng (.20 / .30, cùng chữ \"Dùng cho động cơ xe của Chương 87\") đã rời nhau tất định bằng mã hàng tương ứng 8483.20.30 / 8483.30.30 (tuongUng) — tức đúng ranh giới 8483.20 (thân ổ lắp ổ bi) ↔ 8483.30 (thân ổ không lắp ổ bi)."
     },
     {
       "ma": "984928",

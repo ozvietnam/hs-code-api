@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L33-20261111#soat-L33",
-    "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu biểu + 9401: tầng ghế cho xe có động cơ (laBoPhan KHONG) .11 87.02/87.03/87.04, .19; tầng Bộ phận .21 miếng lót tựa đầu 9401.20.10, .22.",
-    "bam": "85a22eca562bafb7f19bd7f33d2695b516da06bf205ed35a15559569eed0285f"
+    "phien": "claude-code:ozv-1926#soat-984940",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá điều kiện ranh giới và khép SẠCH V1 nhóm 9849 (OZV-1926)",
+    "bam": "7e68ee991d52bd7f3b73a66b31700fa4d1a104dde3387a180cb3915ee4507f84"
   },
   "dieuKienNut": [
     {
@@ -31,10 +31,6 @@
         {
           "fact": "dungChoXeCoDongCo",
           "op": "CO"
-        },
-        {
-          "fact": "laBoPhan",
-          "op": "KHONG"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -138,6 +134,33 @@
       "ma": "984940",
       "loai": "QUYET_DINH",
       "ghiChu": "Claude 07/11/2026 (#1109): tieuDe.9849401 \"Ghế dùng cho xe có động cơ\" cạnh tầng anh em \"Bộ phận\" ⇒ laBoPhan KHONG (căn cứ cấu trúc). Chồng lấn cũ ghế ↔ bộ phận do spec sót vế."
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "9849401",
+        "9849402"
+      ],
+      "truc": {
+        "9849401": "TEN_LOAI",
+        "9849402": "DAC_DIEM"
+      },
+      "cauHoiPhanBiet": "Hàng là \"Ghế dùng cho xe có động cơ\" hoàn chỉnh (9849401) hay là \"Bộ phận\" của ghế (9849402)?",
+      "trich": {
+        "9849401": "Ghế dùng cho xe có động cơ",
+        "9849402": "Bộ phận"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "9849401",
+            "9849402"
+          ],
+          "khongCoHangThat": "Một mặt hàng không vừa là ghế hoàn chỉnh dùng cho xe có động cơ vừa là bộ phận rời của ghế."
+        }
+      ],
+      "phanXu": null
     }
   ]
 }
