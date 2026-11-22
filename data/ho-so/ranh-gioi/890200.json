@@ -14,7 +14,7 @@
     "boi": "CLAUDE_DUYET",
     "phien": "pc-tho-hs-01:OZV-973#soat-890200",
     "ngay": "2026-11-14",
-    "bam": "7ecea56040d271ed56d0b79923f7a32671e5cdabcf75bf386d3ad91580b8556d"
+    "bam": "e951f2aa0792369dcd03cb543926751b34f50405b92d218042b02e1563633248"
   },
   "dieuKienNut": [
     {
@@ -58,10 +58,29 @@
           "donVi": "GT"
         },
         {
-          "fact": "tongDungTichTau",
-          "op": "<",
-          "value": 40,
-          "donVi": "GT"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tongDungTichTau",
+                "op": "<",
+                "value": 40,
+                "donVi": "GT"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Tổng dung tích (gross tonnage)"
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "trên 26 nhưng dưới 40"
+              }
+            ]
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -78,10 +97,29 @@
           "donVi": "GT"
         },
         {
-          "fact": "tongDungTichTau",
-          "op": "<=",
-          "value": 101,
-          "donVi": "GT"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tongDungTichTau",
+                "op": "<=",
+                "value": 101,
+                "donVi": "GT"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Tổng dung tích (gross tonnage)"
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "từ 40 trở lên nhưng không quá 101"
+              }
+            ]
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -98,10 +136,29 @@
           "donVi": "GT"
         },
         {
-          "fact": "tongDungTichTau",
-          "op": "<=",
-          "value": 250,
-          "donVi": "GT"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tongDungTichTau",
+                "op": "<=",
+                "value": 250,
+                "donVi": "GT"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Tổng dung tích (gross tonnage)"
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "trên 101 nhưng không quá 250"
+              }
+            ]
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -118,10 +175,29 @@
           "donVi": "GT"
         },
         {
-          "fact": "tongDungTichTau",
-          "op": "<=",
-          "value": 1000,
-          "donVi": "GT"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tongDungTichTau",
+                "op": "<=",
+                "value": 1000,
+                "donVi": "GT"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Tổng dung tích (gross tonnage)"
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "trên 250 nhưng không quá 1.000"
+              }
+            ]
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -138,10 +214,29 @@
           "donVi": "GT"
         },
         {
-          "fact": "tongDungTichTau",
-          "op": "<=",
-          "value": 4000,
-          "donVi": "GT"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tongDungTichTau",
+                "op": "<=",
+                "value": 4000,
+                "donVi": "GT"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Tổng dung tích (gross tonnage)"
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "trên 1.000 nhưng không quá 4.000"
+              }
+            ]
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -186,10 +281,29 @@
           "donVi": "GT"
         },
         {
-          "fact": "tongDungTichTau",
-          "op": "<",
-          "value": 40,
-          "donVi": "GT"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tongDungTichTau",
+                "op": "<",
+                "value": 40,
+                "donVi": "GT"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Tổng dung tích (gross tonnage)"
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "trên 26 nhưng dưới 40"
+              }
+            ]
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -206,10 +320,29 @@
           "donVi": "GT"
         },
         {
-          "fact": "tongDungTichTau",
-          "op": "<=",
-          "value": 101,
-          "donVi": "GT"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tongDungTichTau",
+                "op": "<=",
+                "value": 101,
+                "donVi": "GT"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Tổng dung tích (gross tonnage)"
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "từ 40 trở lên nhưng không quá 101"
+              }
+            ]
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -226,10 +359,29 @@
           "donVi": "GT"
         },
         {
-          "fact": "tongDungTichTau",
-          "op": "<=",
-          "value": 250,
-          "donVi": "GT"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tongDungTichTau",
+                "op": "<=",
+                "value": 250,
+                "donVi": "GT"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Tổng dung tích (gross tonnage)"
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "trên 101 nhưng không quá 250"
+              }
+            ]
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -246,10 +398,29 @@
           "donVi": "GT"
         },
         {
-          "fact": "tongDungTichTau",
-          "op": "<=",
-          "value": 1000,
-          "donVi": "GT"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tongDungTichTau",
+                "op": "<=",
+                "value": 1000,
+                "donVi": "GT"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Tổng dung tích (gross tonnage)"
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "trên 250 nhưng không quá 1.000"
+              }
+            ]
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -266,10 +437,29 @@
           "donVi": "GT"
         },
         {
-          "fact": "tongDungTichTau",
-          "op": "<=",
-          "value": 4000,
-          "donVi": "GT"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tongDungTichTau",
+                "op": "<=",
+                "value": 4000,
+                "donVi": "GT"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Tổng dung tích (gross tonnage)"
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "trên 1.000 nhưng không quá 4.000"
+              }
+            ]
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"

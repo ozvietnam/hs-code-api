@@ -144,7 +144,7 @@
     },
     {
       "hs": "90292010",
-      "dieuKien": "tên loại hàng: Đồng hồ tốc độ; dùng cho xe có động cơ (ô tô hoặc xe thuộc Chương 87)",
+      "dieuKien": "tên loại hàng: Đồng hồ tốc độ; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): xe có động cơ",
       "nguon": "tax.90292010",
       "trich": "90292010 - - Đồng hồ tốc độ dùng cho xe có động cơ",
       "nguonLoai": "CLAUDE_DUYET",
@@ -156,8 +156,9 @@
           "value": "Đồng hồ tốc độ"
         },
         {
-          "fact": "dungChoXeCoDongCo",
-          "op": "CO"
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe có động cơ"
         }
       ],
       "ranhGioi": {
@@ -165,7 +166,7 @@
         "duyet": {
           "phien": "claude-agent:duyet-L31-20261111#soat-L31",
           "ngay": "2026-11-11",
-          "bam": "e688797bcef538bf8fa7992f4191f217ece49708d971faf35c0b16b63da87b6b"
+          "bam": "cef119ffa83aa38d518aa4dee90f805f562604913ffc7d91f53814269caf9afb"
         }
       }
     },
@@ -192,7 +193,7 @@
         "duyet": {
           "phien": "claude-agent:duyet-L31-20261111#soat-L31",
           "ngay": "2026-11-11",
-          "bam": "e688797bcef538bf8fa7992f4191f217ece49708d971faf35c0b16b63da87b6b"
+          "bam": "cef119ffa83aa38d518aa4dee90f805f562604913ffc7d91f53814269caf9afb"
         }
       }
     },
@@ -213,7 +214,8 @@
         ],
         "toTienCoTen": "902920",
         "dinhNghiaDuoc": true
-      }
+      },
+      "dieuKienSo": []
     },
     {
       "hs": "90299010",

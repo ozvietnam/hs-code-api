@@ -15,7 +15,7 @@
     "phien": "claude-agent:duyet-L31-20261111#soat-L31",
     "ngay": "2026-11-11",
     "ghiChu": "Đối chiếu tay biên (cảnh báo cong3-bien-khong-doc-duoc): .10 'Của loại từ 300 inch trở lên'/'Of 300 inches or more' = duongCheoNgoai >= 300 inch — đúng ≥.",
-    "bam": "b66eff2752150a20ef7486ce52896023e975ada4bdf2fa95ef327a75329895d5"
+    "bam": "711f87c45fc3d96e03584b0cdf0ca9e3e08b766a34575ed0423eac843c2b834b"
   },
   "dieuKienNut": [],
   "dong8": [
@@ -25,10 +25,24 @@
       "trich": "90106010 - - Của loại từ 300 inch trở lên",
       "dieuKienSo": [
         {
-          "fact": "duongCheoNgoai",
-          "op": ">=",
-          "value": 300,
-          "donVi": "inch"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "duongCheoNgoai",
+                "op": ">=",
+                "value": 300,
+                "donVi": "inch"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "từ 300 inch trở lên"
+              }
+            ]
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
