@@ -56,6 +56,14 @@
       "nguon": "nhom8413.nhom",
       "trich": "Tuy nhiên, nhóm này không bao gồm các xe chuyên dụng được gắn cố định với bơm bê tông (nhóm 87.05).",
       "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "loai": "LOAI_TRU",
+      "dieuKien": "Bình bơm dầu và súng phun dầu mỡ hoạt động bằng tay (nhóm 82.05) và súng phun dầu mỡ bằng khí nén",
+      "sangNhom": "8205|8467",
+      "nguon": "nhom8413.nhom",
+      "trich": "(b) Bình bơm dầu và súng phun dầu mỡ hoạt động bằng tay (nhóm 82.05) và súng phun dầu mỡ bằng khí nén (nhóm 84.67).",
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "phanBiet": [
@@ -76,7 +84,369 @@
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
-  "tieuChi6": [],
+  "tieuChi6": [
+    {
+      "hs6": "841311",
+      "thuTu": 1,
+      "chuaSoHoa": "thiếu khoá có–không cho trạng thái có lắp hoặc thiết kế để lắp thiết bị đo",
+      "nguon": "tieuDe.84131",
+      "trich": "84131 Bơm có lắp hoặc thiết kế để lắp thiết bị đo",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "841311",
+      "thuTu": 1,
+      "dieuKien": "Bơm phân phối nhiên liệu hoặc dầu bôi trơn",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Bơm phân phối nhiên liệu hoặc dầu bôi trơn",
+      "donVi": null,
+      "tuKhoa": [
+        "phân phối nhiên liệu",
+        "dầu bôi trơn"
+      ],
+      "nguon": "tax.84131100",
+      "trich": "84131100 - - Bơm phân phối nhiên liệu hoặc dầu bôi trơn, loại dùng cho trạm đổ xăng hoặc cho gara",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "841311",
+      "thuTu": 1,
+      "dieuKien": "dùng cho trạm đổ xăng hoặc cho gara",
+      "fact": "dungCho",
+      "op": "CONG_DUNG",
+      "value": [
+        "trạm đổ xăng",
+        "gara"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "trạm đổ xăng",
+        "gara"
+      ],
+      "kiemChung": [
+        {
+          "hoi": "Bơm có bộ phận kiểm soát lượng chất lỏng xả ra như một xi lanh đã hiệu chuẩn (xi lanh đo đạc) hoặc bộ phận tính tổng khối lượng sử dụng không?",
+          "nguon": "nhom8413.nhom",
+          "trich": "bộ phận cho phép kiểm soát lượng chất lỏng được xả ra, dù thiết bị này được hiện diện đồng thời với bơm hoặc không. Bộ phận kiểm soát này có thể rất đơn giản (ví dụ như: thiết bị đã hiệu chuẩn) hay, mặt khác, gồm nhiều cơ chế phức tạp để tự động kiểm soát việc ngắt bơm khi đã xả ra tổng lượng lưu chất định sẵn (chẳng hạn như, loại bơm phân phát bao gồm một xi lanh đã hiệu chuẩn (xi lanh đo đạc) … (ví dụ, bơm có tích hợp bộ phận tính tổng khối lượng sử dụng, bơm thanh toán trước, bơm có tính giá tiền, bơm lấy mẫu, bơm điều chỉnh hỗn hợp pha trộn tự động và bơm liều lượng tự động"
+        }
+      ],
+      "nguon": "tax.84131100",
+      "trich": "84131100 - - Bơm phân phối nhiên liệu hoặc dầu bôi trơn, loại dùng cho trạm đổ xăng hoặc cho gara",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "841319",
+      "thuTu": 2,
+      "chuaSoHoa": "thiếu khoá có–không cho trạng thái có lắp hoặc thiết kế để lắp thiết bị đo",
+      "nguon": "tieuDe.84131",
+      "trich": "84131 Bơm có lắp hoặc thiết kế để lắp thiết bị đo",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "841319",
+      "thuTu": 2,
+      "phanConLai": true,
+      "nguon": "tieuDe.841319",
+      "trich": "841319 Loại khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "841320",
+      "thuTu": 3,
+      "dieuKien": "Bơm tay",
+      "fact": "kieuBom",
+      "op": "TRONG",
+      "value": [
+        "TAY"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "bơm tay"
+      ],
+      "dieuKienTru": [
+        "loại thuộc phân nhóm 8413.11 hoặc 8413.19"
+      ],
+      "nguon": "tieuDe.841320",
+      "trich": "841320 Bơm tay, trừ loại thuộc phân nhóm 8413.11 hoặc 8413.19",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "841330",
+      "thuTu": 4,
+      "dieuKien": "Bơm nhiên liệu, dầu bôi trơn hoặc bơm chất làm mát",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": [
+        "Bơm nhiên liệu",
+        "dầu bôi trơn",
+        "bơm chất làm mát"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "bơm nhiên liệu",
+        "bơm chất làm mát"
+      ],
+      "nguon": "tieuDe.841330",
+      "trich": "841330 Bơm nhiên liệu, dầu bôi trơn hoặc bơm chất làm mát, dùng cho động cơ đốt trong kiểu piston",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "841330",
+      "thuTu": 4,
+      "dieuKien": "dùng cho động cơ đốt trong kiểu piston",
+      "fact": "dungCho",
+      "op": "CONG_DUNG",
+      "value": "động cơ đốt trong kiểu piston",
+      "donVi": null,
+      "tuKhoa": [
+        "động cơ đốt trong"
+      ],
+      "nguon": "tieuDe.841330",
+      "trich": "841330 Bơm nhiên liệu, dầu bôi trơn hoặc bơm chất làm mát, dùng cho động cơ đốt trong kiểu piston",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "841340",
+      "thuTu": 5,
+      "dieuKien": "Bơm bê tông",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Bơm bê tông",
+      "donVi": null,
+      "tuKhoa": [
+        "bơm bê tông"
+      ],
+      "nguon": "tax.84134000",
+      "trich": "84134000 - Bơm bê tông",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "841350",
+      "thuTu": 6,
+      "dieuKien": "Bơm hoạt động kiểu piston chuyển động tịnh tiến",
+      "fact": "kieuBom",
+      "op": "TRONG",
+      "value": [
+        "PISTON"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "piston chuyển động tịnh tiến",
+        "tịnh tiến"
+      ],
+      "nguon": "tieuDe.841350",
+      "trich": "841350 Bơm hoạt động kiểu piston chuyển động tịnh tiến khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "841350",
+      "thuTu": 6,
+      "phanConLai": true,
+      "nguon": "tieuDe.841350",
+      "trich": "841350 Bơm hoạt động kiểu piston chuyển động tịnh tiến khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "841360",
+      "thuTu": 7,
+      "dieuKien": "Bơm hoạt động kiểu piston quay",
+      "fact": "kieuBom",
+      "op": "TRONG",
+      "value": [
+        "QUAY"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "piston quay"
+      ],
+      "nguon": "tieuDe.841360",
+      "trich": "841360 Bơm hoạt động kiểu piston quay khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "841360",
+      "thuTu": 7,
+      "phanConLai": true,
+      "nguon": "tieuDe.841360",
+      "trich": "841360 Bơm hoạt động kiểu piston quay khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "841370",
+      "thuTu": 8,
+      "dieuKien": "Bơm ly tâm",
+      "fact": "kieuBom",
+      "op": "TRONG",
+      "value": [
+        "LY_TAM"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "bơm ly tâm",
+        "ly tâm"
+      ],
+      "nguon": "tieuDe.841370",
+      "trich": "841370 Bơm ly tâm khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "841370",
+      "thuTu": 8,
+      "phanConLai": true,
+      "nguon": "tieuDe.841370",
+      "trich": "841370 Bơm ly tâm khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "841381",
+      "thuTu": 9,
+      "dieuKien": "Bơm hoặc máy đẩy chất lỏng",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": [
+        "Bơm",
+        "máy đẩy chất lỏng"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "bơm",
+        "máy đẩy chất lỏng"
+      ],
+      "nguon": "tieuDe.84138",
+      "trich": "84138 Bơm khác; máy đẩy chất lỏng",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "841381",
+      "thuTu": 9,
+      "dieuKien": "Bơm",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Bơm",
+      "donVi": null,
+      "tuKhoa": [
+        "bơm"
+      ],
+      "nguon": "tieuDe.841381",
+      "trich": "841381 Bơm",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "841381",
+      "thuTu": 9,
+      "phanConLai": true,
+      "nguon": "tieuDe.841381",
+      "trich": "841381 Bơm",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "841382",
+      "thuTu": 10,
+      "dieuKien": "Bơm hoặc máy đẩy chất lỏng",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": [
+        "Bơm",
+        "máy đẩy chất lỏng"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "bơm",
+        "máy đẩy chất lỏng"
+      ],
+      "nguon": "tieuDe.84138",
+      "trich": "84138 Bơm khác; máy đẩy chất lỏng",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "841382",
+      "thuTu": 10,
+      "dieuKien": "Máy đẩy chất lỏng",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Máy đẩy chất lỏng",
+      "donVi": null,
+      "tuKhoa": [
+        "máy đẩy chất lỏng"
+      ],
+      "nguon": "tieuDe.841382",
+      "trich": "841382 Máy đẩy chất lỏng",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "841391",
+      "thuTu": 11,
+      "dieuKien": "Bộ phận",
+      "fact": "laBoPhan",
+      "op": "CO",
+      "donVi": null,
+      "nguon": "tieuDe.84139",
+      "trich": "84139 Bộ phận",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "841391",
+      "thuTu": 11,
+      "dieuKien": "Của bơm",
+      "fact": "dungCho",
+      "op": "CONG_DUNG",
+      "value": "bơm",
+      "donVi": null,
+      "tuKhoa": [
+        "của bơm"
+      ],
+      "kiemChung": [
+        {
+          "hoi": "Bộ phận có là vỏ hoặc thân máy bơm, piston, cánh quạt, trục cam hoặc bánh công tác của bơm không?",
+          "nguon": "nhom8413.nhom",
+          "trich": "bộ phận của các loại bơm thuộc nhóm này, ví dụ như: vỏ hoặc thân máy bơm; thanh truyền động được thiết kế đặc biệt để nối và dẫn động piston trong bơm được đặt khá xa so với nguồn động cơ chính (ví dụ: thanh truyền động, “cần bơm”), piston, thoi đẩy, cánh quạt; trục cam; vít xoắn, bánh công tác, cánh quay khuếch tán; gầu và xích có gắn gầu múc; băng đai của máy đẩy chất lỏng; buồng áp suất."
+        }
+      ],
+      "tienLe": [
+        {
+          "so": "780/TCHQ-GSQL",
+          "ma": "841391"
+        }
+      ],
+      "nguon": "tieuDe.841391",
+      "trich": "841391 Của bơm",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "841392",
+      "thuTu": 12,
+      "dieuKien": "Bộ phận",
+      "fact": "laBoPhan",
+      "op": "CO",
+      "donVi": null,
+      "nguon": "tieuDe.84139",
+      "trich": "84139 Bộ phận",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "841392",
+      "thuTu": 12,
+      "dieuKien": "Của máy đẩy chất lỏng",
+      "fact": "dungCho",
+      "op": "CONG_DUNG",
+      "value": "máy đẩy chất lỏng",
+      "donVi": null,
+      "tuKhoa": [
+        "máy đẩy chất lỏng"
+      ],
+      "kiemChung": [
+        {
+          "hoi": "Bộ phận có gắn gầu, xích có gắn gầu múc hoặc băng đai của máy đẩy chất lỏng không?",
+          "nguon": "nhom8413.nhom",
+          "trich": "gầu và xích có gắn gầu múc; băng đai của máy đẩy chất lỏng; buồng áp suất."
+        }
+      ],
+      "nguon": "tax.84139200",
+      "trich": "84139200 - - Của máy đẩy chất lỏng",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
   "dong8": [
     {
       "hs": "84131100",
@@ -1633,8 +2003,6 @@
   },
   "dungTuNguon": [
     "nhom8413.nhom",
-    "sen.84133040",
-    "sen.84137011",
     "sen.84137019",
     "tax.84131100",
     "tax.84131910",
@@ -1643,6 +2011,7 @@
     "tax.84132020",
     "tax.84132090",
     "tax.84133030",
+    "tax.84133040",
     "tax.84133051",
     "tax.84133052",
     "tax.84133090",
@@ -1655,6 +2024,7 @@
     "tax.84136032",
     "tax.84136040",
     "tax.84136090",
+    "tax.84137011",
     "tax.84137031",
     "tax.84137039",
     "tax.84137042",
@@ -1675,7 +2045,26 @@
     "tax.84139130",
     "tax.84139140",
     "tax.84139190",
-    "tax.84139200"
+    "tax.84139200",
+    "tieuDe.84131",
+    "tieuDe.841319",
+    "tieuDe.841320",
+    "tieuDe.841330",
+    "tieuDe.8413305",
+    "tieuDe.841350",
+    "tieuDe.8413503",
+    "tieuDe.841360",
+    "tieuDe.8413603",
+    "tieuDe.841370",
+    "tieuDe.8413701",
+    "tieuDe.8413703",
+    "tieuDe.8413704",
+    "tieuDe.8413705",
+    "tieuDe.84138",
+    "tieuDe.841381",
+    "tieuDe.841382",
+    "tieuDe.84139",
+    "tieuDe.841391"
   ],
   "phienBan": "HS2022+SEN2022",
   "taoBoi": {
@@ -1685,8 +2074,8 @@
     "ms": 13
   },
   "kiemTra": {
-    "tong": 54,
-    "dat": 54,
+    "tong": 86,
+    "dat": 86,
     "loai": 0,
     "nguonBiCat": [],
     "nangCap": {
@@ -1697,6 +2086,12 @@
         "tieuChi6",
         "phamViLoaiKhac"
       ]
+    },
+    "tieuChi6": {
+      "khuon": "g6@1",
+      "soMuc": 24,
+      "soPhanNhom": 12,
+      "cong": "scripts/kiem-tieu-chi-6.mjs"
     }
   },
   "dieuKienNut": [

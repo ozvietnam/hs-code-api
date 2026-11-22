@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L4-20261111#soat-L4",
-    "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu VI+EN: chanh vàng (lemon) / chanh xanh (lime), không có Loại khác; tên Latin trong ngoặc là đồng nghĩa.",
-    "bam": "f7b43286fbc127f97eae58cd058cf82dfb1bf1763d8f3aa2eb735c4729db78ee"
+    "phien": "claude-agent:ozv-1842#soat-080550",
+    "ngay": "2026-11-22",
+    "ghiChu": "Đối chiếu VI+EN: bổ sung tên khoa học và tên đồng nghĩa nguyên văn trong ngoặc đơn cho 08055010 (Citrus limon, Citrus limonum) và 08055020 (chanh ta, chanh không hạt) để phân biệt tất định với tiêu đề 0805.50 (OZV-1842).",
+    "bam": "962afee94db58ce53712c15ac76a62cbacde15df3daa046d805aad1f385cc6f7"
   },
   "dieuKienNut": [],
   "dong8": [
@@ -27,7 +27,11 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Quả chanh vàng"
+          "value": [
+            "Quả chanh vàng",
+            "Citrus limon",
+            "Citrus limonum"
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -40,7 +44,11 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Quả chanh xanh"
+          "value": [
+            "Quả chanh xanh",
+            "chanh ta",
+            "chanh không hạt"
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -50,12 +58,12 @@
     {
       "ma": "08055010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.08055010 \"Quả chanh vàng (lemon) (Citrus limon, Citrus limonum) (SEN)\" ⇒ tenLoai TEN_LOAI \"Quả chanh vàng\"; ngoặc tên khoa học/SEN là chú giải"
+      "ghiChu": "tax.08055010 \"Quả chanh vàng (lemon) (Citrus limon, Citrus limonum) (SEN)\" ⇒ tenLoai [\"Quả chanh vàng\", \"Citrus limon\", \"Citrus limonum\"] (kèm tên khoa học nguyên văn để tách khỏi tiêu đề 0805.50)"
     },
     {
       "ma": "08055020",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.08055020 \"Quả chanh xanh (…) (SEN)\" ⇒ tenLoai TEN_LOAI \"Quả chanh xanh\"; ngoặc tên khoa học/SEN là chú giải"
+      "ghiChu": "tax.08055020 \"Quả chanh xanh (chanh ta Citrus aurantifolia, chanh không hạt Citrus latifolia)(SEN)\" ⇒ tenLoai [\"Quả chanh xanh\", \"chanh ta\", \"chanh không hạt\"]"
     }
   ]
 }

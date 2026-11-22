@@ -135,7 +135,397 @@
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
-  "tieuChi6": [],
+  "tieuChi6": [
+    {
+      "hs6": "940110",
+      "thuTu": 1,
+      "dieuKien": "Ghế dùng cho phương tiện bay",
+      "fact": "dungCho",
+      "op": "CONG_DUNG",
+      "value": "phương tiện bay",
+      "donVi": null,
+      "tuKhoa": [
+        "phương tiện bay"
+      ],
+      "nguon": "tax.94011000",
+      "trich": "94011000 - Ghế dùng cho phương tiện bay",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "940120",
+      "thuTu": 2,
+      "dieuKien": "Ghế dùng cho xe có động cơ",
+      "fact": "dungChoXeCoDongCo",
+      "op": "CO",
+      "donVi": null,
+      "nguon": "tieuDe.940120",
+      "trich": "940120 Ghế dùng cho xe có động cơ",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "940131",
+      "thuTu": 3,
+      "dieuKien": "Ghế quay",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Ghế quay",
+      "donVi": null,
+      "tuKhoa": [
+        "ghế quay"
+      ],
+      "nguon": "tieuDe.94013",
+      "trich": "94013 Ghế quay có điều chỉnh độ cao",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "940131",
+      "thuTu": 3,
+      "dieuKien": "Có điều chỉnh độ cao",
+      "fact": "coDieuChinhDoCao",
+      "op": "CO",
+      "donVi": null,
+      "nguon": "tieuDe.94013",
+      "trich": "94013 Ghế quay có điều chỉnh độ cao",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "940131",
+      "thuTu": 3,
+      "dieuKien": "Bằng gỗ",
+      "fact": "chatLieu",
+      "op": "LA",
+      "value": "gỗ",
+      "donVi": null,
+      "nguon": "tax.94013100",
+      "trich": "94013100 - - Bằng gỗ",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "940139",
+      "thuTu": 4,
+      "dieuKien": "Ghế quay",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Ghế quay",
+      "donVi": null,
+      "tuKhoa": [
+        "ghế quay"
+      ],
+      "nguon": "tieuDe.94013",
+      "trich": "94013 Ghế quay có điều chỉnh độ cao",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "940139",
+      "thuTu": 4,
+      "dieuKien": "Có điều chỉnh độ cao",
+      "fact": "coDieuChinhDoCao",
+      "op": "CO",
+      "donVi": null,
+      "nguon": "tieuDe.94013",
+      "trich": "94013 Ghế quay có điều chỉnh độ cao",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "940139",
+      "thuTu": 4,
+      "phanConLai": true,
+      "nguon": "tax.94013900",
+      "trich": "94013900 - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "940141",
+      "thuTu": 5,
+      "dieuKien": "Ghế có thể chuyển thành giường",
+      "fact": "coTheChuyenThanhGiuong",
+      "op": "CO",
+      "donVi": null,
+      "dieuKienTru": [
+        "ghế trong vườn",
+        "đồ cắm trại"
+      ],
+      "nguon": "tieuDe.94014",
+      "trich": "94014 Ghế có thể chuyển thành giường, trừ ghế trong vườn hoặc đồ cắm trại",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "940141",
+      "thuTu": 5,
+      "dieuKien": "Bằng gỗ",
+      "fact": "chatLieu",
+      "op": "LA",
+      "value": "gỗ",
+      "donVi": null,
+      "nguon": "tax.94014100",
+      "trich": "94014100 - - Bằng gỗ",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "940149",
+      "thuTu": 6,
+      "dieuKien": "Ghế có thể chuyển thành giường",
+      "fact": "coTheChuyenThanhGiuong",
+      "op": "CO",
+      "donVi": null,
+      "dieuKienTru": [
+        "ghế trong vườn",
+        "đồ cắm trại"
+      ],
+      "nguon": "tieuDe.94014",
+      "trich": "94014 Ghế có thể chuyển thành giường, trừ ghế trong vườn hoặc đồ cắm trại",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "940149",
+      "thuTu": 6,
+      "phanConLai": true,
+      "nguon": "tax.94014900",
+      "trich": "94014900 - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "940152",
+      "thuTu": 7,
+      "dieuKien": "Bằng mây, liễu gai, tre",
+      "fact": "vatLieuKhac",
+      "op": "TRONG",
+      "value": [
+        "SONG_MAY",
+        "LIEU_GAI",
+        "TRE"
+      ],
+      "donVi": null,
+      "nguon": "tieuDe.94015",
+      "trich": "94015 Ghế bằng mây, liễu gai, tre hoặc các vật liệu tương tự",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "940152",
+      "thuTu": 7,
+      "dieuKien": "Bằng tre",
+      "fact": "vatLieuKhac",
+      "op": "TRONG",
+      "value": [
+        "TRE"
+      ],
+      "donVi": null,
+      "nguon": "tax.94015200",
+      "trich": "94015200 - - Bằng tre",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "940153",
+      "thuTu": 8,
+      "dieuKien": "Bằng mây, liễu gai, tre",
+      "fact": "vatLieuKhac",
+      "op": "TRONG",
+      "value": [
+        "SONG_MAY",
+        "LIEU_GAI",
+        "TRE"
+      ],
+      "donVi": null,
+      "nguon": "tieuDe.94015",
+      "trich": "94015 Ghế bằng mây, liễu gai, tre hoặc các vật liệu tương tự",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "940153",
+      "thuTu": 8,
+      "dieuKien": "Bằng song, mây",
+      "fact": "vatLieuKhac",
+      "op": "TRONG",
+      "value": [
+        "SONG_MAY"
+      ],
+      "donVi": null,
+      "nguon": "tax.94015300",
+      "trich": "94015300 - - Bằng song, mây",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "940159",
+      "thuTu": 9,
+      "dieuKien": "Bằng mây, liễu gai, tre",
+      "fact": "vatLieuKhac",
+      "op": "TRONG",
+      "value": [
+        "SONG_MAY",
+        "LIEU_GAI",
+        "TRE"
+      ],
+      "donVi": null,
+      "nguon": "tieuDe.94015",
+      "trich": "94015 Ghế bằng mây, liễu gai, tre hoặc các vật liệu tương tự",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "940159",
+      "thuTu": 9,
+      "phanConLai": true,
+      "nguon": "tax.94015900",
+      "trich": "94015900 - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "940161",
+      "thuTu": 10,
+      "dieuKien": "Có khung bằng gỗ",
+      "fact": "chatLieu",
+      "op": "LA",
+      "value": "gỗ",
+      "donVi": null,
+      "nguon": "tieuDe.94016",
+      "trich": "94016 Ghế khác, có khung bằng gỗ",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "940161",
+      "thuTu": 10,
+      "dieuKien": "Đã nhồi đệm",
+      "fact": "daNhoiDem",
+      "op": "CO",
+      "donVi": null,
+      "nguon": "tax.94016100",
+      "trich": "94016100 - - Đã nhồi đệm",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "940169",
+      "thuTu": 11,
+      "dieuKien": "Có khung bằng gỗ",
+      "fact": "chatLieu",
+      "op": "LA",
+      "value": "gỗ",
+      "donVi": null,
+      "nguon": "tieuDe.94016",
+      "trich": "94016 Ghế khác, có khung bằng gỗ",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "940169",
+      "thuTu": 11,
+      "phanConLai": true,
+      "nguon": "tieuDe.940169",
+      "trich": "940169 Loại khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "940171",
+      "thuTu": 12,
+      "dieuKien": "Có khung bằng kim loại",
+      "fact": "chatLieu",
+      "op": "LA",
+      "value": "kim loại",
+      "donVi": null,
+      "nguon": "tieuDe.94017",
+      "trich": "94017 Ghế khác, có khung bằng kim loại",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "940171",
+      "thuTu": 12,
+      "dieuKien": "Đã nhồi đệm",
+      "fact": "daNhoiDem",
+      "op": "CO",
+      "donVi": null,
+      "tienLe": [
+        {
+          "so": "382/TB-CHQ",
+          "ma": "94017100"
+        }
+      ],
+      "nguon": "tax.94017100",
+      "trich": "94017100 - - Đã nhồi đệm",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "940179",
+      "thuTu": 13,
+      "dieuKien": "Có khung bằng kim loại",
+      "fact": "chatLieu",
+      "op": "LA",
+      "value": "kim loại",
+      "donVi": null,
+      "nguon": "tieuDe.94017",
+      "trich": "94017 Ghế khác, có khung bằng kim loại",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "940179",
+      "thuTu": 13,
+      "phanConLai": true,
+      "nguon": "tieuDe.940179",
+      "trich": "940179 Loại khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "940180",
+      "thuTu": 14,
+      "dieuKien": "Ghế",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Ghế",
+      "donVi": null,
+      "tuKhoa": [
+        "ghế"
+      ],
+      "nguon": "tax.94018000",
+      "trich": "94018000 - Ghế khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "940180",
+      "thuTu": 14,
+      "phanConLai": true,
+      "nguon": "tax.94018000",
+      "trich": "94018000 - Ghế khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "940191",
+      "thuTu": 15,
+      "dieuKien": "Bộ phận",
+      "fact": "laBoPhan",
+      "op": "CO",
+      "donVi": null,
+      "nguon": "tieuDe.94019",
+      "trich": "94019 Bộ phận",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "940191",
+      "thuTu": 15,
+      "dieuKien": "Bằng gỗ",
+      "fact": "chatLieu",
+      "op": "LA",
+      "value": "gỗ",
+      "donVi": null,
+      "nguon": "tax.94019100",
+      "trich": "94019100 - - Bằng gỗ",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "940199",
+      "thuTu": 16,
+      "dieuKien": "Bộ phận",
+      "fact": "laBoPhan",
+      "op": "CO",
+      "donVi": null,
+      "nguon": "tieuDe.94019",
+      "trich": "94019 Bộ phận",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "940199",
+      "thuTu": 16,
+      "phanConLai": true,
+      "nguon": "tieuDe.940199",
+      "trich": "940199 Loại khác",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
   "dong8": [
     {
       "hs": "94011000",
@@ -938,6 +1328,16 @@
     "tax.94019930",
     "tax.94019991",
     "tax.94019999",
+    "tieuDe.940120",
+    "tieuDe.94013",
+    "tieuDe.94014",
+    "tieuDe.94015",
+    "tieuDe.94016",
+    "tieuDe.940169",
+    "tieuDe.94017",
+    "tieuDe.940179",
+    "tieuDe.94019",
+    "tieuDe.940199",
     "wco-op.940161.1",
     "wco-op.940171.1",
     "wco-op.940171.2",
@@ -954,9 +1354,9 @@
     "ms": 9
   },
   "kiemTra": {
-    "tong": 56,
-    "dat": 55,
-    "loai": 1,
+    "tong": 81,
+    "dat": 81,
+    "loai": 0,
     "nguonBiCat": [],
     "nangCap": {
       "luc": "2026-10-11",
@@ -966,6 +1366,12 @@
         "tieuChi6",
         "phamViLoaiKhac"
       ]
+    },
+    "tieuChi6": {
+      "khuon": "g6@1",
+      "soMuc": 32,
+      "soPhanNhom": 16,
+      "cong": "scripts/kiem-tieu-chi-6.mjs"
     }
   },
   "yKienWcoDayDu": false,

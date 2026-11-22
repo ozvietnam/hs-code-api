@@ -140,6 +140,14 @@
       "nguon": "nhom8421.nhom",
       "trich": "các khối lọc làm bằng bột giấy thuộc nhóm 48.12 và các bộ phận lọc bằng các chất liệu khác (ví dụ: bằng chất liệu gốm sứ, sợi dệt, vải dạ,…) được phân loại theo chất liệu của chúng.",
       "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "loai": "LOAI_TRU",
+      "dieuKien": "Máy điều hoà không khí thuộc nhóm 84.15 hoặc máy hút ẩm không khí thuộc nhóm 84.79",
+      "sangNhom": "8415|8479",
+      "nguon": "nhom8421.nhom",
+      "trich": "(b) Máy điều hoà không khí thuộc nhóm 84.15 hoặc máy hút ẩm không khí thuộc nhóm 84.79.",
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "phanBiet": [
@@ -2351,8 +2359,6 @@
   ],
   "dungTuNguon": [
     "nhom8421.nhom",
-    "sen.84212960",
-    "sen.84219921",
     "tax.84211100",
     "tax.84211200",
     "tax.84211910",
@@ -2374,6 +2380,7 @@
     "tax.84212930",
     "tax.84212940",
     "tax.84212950",
+    "tax.84212960",
     "tax.84212990",
     "tax.84213110",
     "tax.84213120",
@@ -2385,6 +2392,7 @@
     "tax.84219110",
     "tax.84219120",
     "tax.84219190",
+    "tax.84219921",
     "tax.84219929",
     "tax.84219930",
     "tax.84219940",
@@ -2400,8 +2408,12 @@
     "tieuDe.842119",
     "tieuDe.84212",
     "tieuDe.842121",
+    "tieuDe.8421211",
+    "tieuDe.8421212",
     "tieuDe.842122",
     "tieuDe.842123",
+    "tieuDe.8421231",
+    "tieuDe.8421232",
     "tieuDe.842129",
     "tieuDe.84213",
     "tieuDe.842131",
@@ -2409,6 +2421,7 @@
     "tieuDe.84219",
     "tieuDe.842191",
     "tieuDe.842199",
+    "tieuDe.8421992",
     "wco-op.842121.1",
     "wco-op.842121.2",
     "wco-op.842129.1",
@@ -2417,7 +2430,7 @@
     "wco-op.842199.1",
     "wco.842139"
   ],
-  "phienBan": "HS2022+SEN2022",
+  "phienBan": "HS2022",
   "taoBoi": {
     "provider": "phiên Claude quản lý (10 agent soạn + 6 agent soát độc lập, 07-09/10/2026)",
     "model": null,
@@ -2425,8 +2438,8 @@
     "ms": 14
   },
   "kiemTra": {
-    "tong": 104,
-    "dat": 104,
+    "tong": 105,
+    "dat": 105,
     "loai": 0,
     "nguonBiCat": [],
     "nangCap": {

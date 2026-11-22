@@ -4,13 +4,19 @@
   "nhom": "9849",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "claude-agent:ozv-682-sua-9849-3pn-20261113#soan-984926",
     "ngay": "2026-11-13"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-code:ozv-1892#soat-984926",
+    "ngay": "2026-11-22",
+    "ghiChu": "Duyệt 984926 (OZV-1892)",
+    "bam": "6883fb5ea7efbd7855db6058ec4a6d6347cb34082ff0042c6a647ef25599ebea"
+  },
   "dieuKienNut": [
     {
       "id": "984926~r19594",
@@ -20,19 +26,15 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Máy và thiết bị lọc"
+          "value": "chất lỏng"
         },
         {
           "fact": "congDung",
           "op": "CONG_DUNG",
           "value": "chất lỏng"
-        },
-        {
-          "fact": "laBoPhan",
-          "op": "KHONG"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "984926~r19595",
@@ -53,7 +55,7 @@
           "value": "động cơ đốt trong"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "984926~r19602",
@@ -63,19 +65,15 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Máy và thiết bị lọc"
+          "value": "các loại khí"
         },
         {
           "fact": "congDung",
           "op": "CONG_DUNG",
           "value": "các loại khí"
-        },
-        {
-          "fact": "laBoPhan",
-          "op": "KHONG"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "984926~r19603",
@@ -93,7 +91,7 @@
           "value": "động cơ đốt trong"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "984926~r19605",
@@ -105,7 +103,7 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "9849261",
@@ -118,7 +116,7 @@
           "value": "xe có động cơ thuộc Chương 87"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -133,14 +131,14 @@
           "value": "Bộ lọc dầu"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "98492619",
       "nguon": "tax.98492619",
       "trich": "98492619 - - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "98492621",
@@ -153,7 +151,7 @@
           "value": "thiết bị lọc xăng"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "98492629",
@@ -166,7 +164,7 @@
           "value": "thiết bị lọc dầu"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "98492630",
@@ -179,7 +177,7 @@
           "value": "xe có động cơ thuộc Chương 87"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "98492640",
@@ -192,14 +190,14 @@
           "value": "hàng hóa thuộc phân nhóm 8421.31"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "98492690",
       "nguon": "tax.98492690",
       "trich": "98492690 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -244,6 +242,43 @@
       "phien": "claude-agent:ozv-682-9849-3pn-20261113#do-bo-kiem-luat",
       "ngay": "2026-11-13",
       "lyDo": "OZV-682 13/11/2026 — ĐO ĐƯỢC: áp bản duyệt này làm bộ kiểm luật 9849 CHỐT SAI ca 98492619→98492611 (loaiCa THIEU_DU_KIEN, kyVong HOI_HOAC_KHONG_CHOT, lyDo tu-chot-dong-co-ten-khi-thieu-du-kien), mốc main là 0 — máy TỰ CHỐT ở chỗ đáng lẽ phải hỏi. Cách soạn r19595 giữ hai giá trị nguyên văn [\"Bộ lọc dầu\",\"xăng\"] đã gỡ được phần suy rộng của lần trả về L33, nhưng chưa đủ dữ kiện để tách 98492611 với 98492619 \"Loại khác\" khi tờ khai không nói rõ chất lọc; chưa có căn cứ nguyên văn nào trong biểu để thêm, nên để TRA_VE chứ không đoán (OZV-420)."
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "984926~r19594",
+        "984926~r19602",
+        "984926~r19605"
+      ],
+      "truc": {
+        "984926~r19594": "TEN_LOAI",
+        "984926~r19602": "TEN_LOAI",
+        "984926~r19605": "DAC_DIEM"
+      },
+      "cauHoiPhanBiet": "Hàng là \"Máy và thiết bị lọc hoặc tinh chế chất lỏng\" (984926~r19594), \"Máy và thiết bị lọc hoặc tinh chế các loại khí\" (984926~r19602), hay là \"Bộ phận\" của chúng (984926~r19605)?",
+      "trich": {
+        "984926~r19594": "Máy và thiết bị lọc hoặc tinh chế chất lỏng",
+        "984926~r19602": "Máy và thiết bị lọc hoặc tinh chế các loại khí",
+        "984926~r19605": "Bộ phận"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "984926~r19594",
+            "984926~r19605"
+          ],
+          "khongCoHangThat": "Một mặt hàng không vừa là máy/thiết bị lọc chất lỏng hoàn chỉnh vừa là bộ phận rời của thiết bị lọc."
+        },
+        {
+          "cap": [
+            "984926~r19602",
+            "984926~r19605"
+          ],
+          "khongCoHangThat": "Một mặt hàng không vừa là máy/thiết bị lọc khí hoàn chỉnh vừa là bộ phận rời của thiết bị lọc."
+        }
+      ],
+      "phanXu": null
     }
   ]
 }

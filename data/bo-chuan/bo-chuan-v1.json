@@ -1,0 +1,610 @@
+{
+  "phienBan": "v1",
+  "canCu": "docs/decisions/0004-quy-trinh-phan-loai-chuan-6-quy-tac.md",
+  "moTa": "Bộ chuẩn gắn nhãn theo luật (bản 1) gồm 6 ca mẫu trong ADR-0004 §5; mọi tầng ghi quy tắc quyết và trích dẫn nguyên văn trỏ tới tệp + khoá có thật.",
+  "ca": [
+    {
+      "id": "BC-01",
+      "tenHang": "Con lăn vận thăng, thép",
+      "ketQua": {
+        "trangThai": "DUNG_HOI",
+        "maUngVien": [
+          "84313110",
+          "84313120"
+        ],
+        "nhom": "8431",
+        "phanNhom": "843131",
+        "cauHoi": "Vận thăng (máy chủ nhóm 8428.10) có thiết kế để chở người (8428.10.31 → 84313120) hay chỉ chở hàng / tời nâng kiểu gầu nâng (8428.10.39 hoặc 8428.10.40 → 84313110)?"
+      },
+      "maToKhaiThamChieu": {
+        "trangThai": "đúng có điều kiện",
+        "lyDoHeCuSai": "không xác định máy chủ là thang 8428.10"
+      },
+      "cacTang": [
+        {
+          "tang": "B0",
+          "quyTac": "B0 — Xác định bản chất hàng & máy chủ (bộ phận bằng thép của vận thăng thuộc nhóm 84.28 / phân nhóm 8428.10)",
+          "ketLuan": "Bộ phận chuyên dùng cho vận thăng (nhóm 84.28, phân nhóm 8428.10); cần biết vận thăng có chở người không để tách cấp 8 số",
+          "trich": [
+            {
+              "tep": "data/chu-giai-heading.json",
+              "khoa": "8428.ten_nhom",
+              "nguyenVan": "84.28 -Máy nâng hạ, giữ, xếp hoặc dỡ hàng khác (ví dụ, thang máy (lift), thang cuốn, băng tải, thùng cáp treo)."
+            },
+            {
+              "tep": "data/tax.json",
+              "khoa": "84281031.vn",
+              "nguyenVan": "- - - Để chở người"
+            },
+            {
+              "tep": "data/tax.json",
+              "khoa": "84281039.vn",
+              "nguyenVan": "- - - Loại khác"
+            }
+          ]
+        },
+        {
+          "tang": "B1",
+          "quyTac": "GIR 1 + Chú giải 2(b) Phần XVI (không phải bộ phận công dụng chung Chú giải 1(g), không có nhóm định danh riêng theo 2(a))",
+          "ketLuan": "8431",
+          "trich": [
+            {
+              "tep": "data/chu-giai-chuong.json",
+              "khoa": "84.phan",
+              "nguyenVan": "(b) Các bộ phận khác, nếu phù hợp để chỉ sử dụng hoặc chủ yếu sử dụng cho các loại\nmáy cụ thể, hoặc cho một số loại máy cùng nhóm (kể cả máy thuộc nhóm 84.79\nhoặc 85.43) được phân loại theo nhóm của các máy cụ thể đó hoặc vào nhóm thích\nhợp như 84.09, 84.31, 84.48, 84.66, 84.73, 85.03, 85.22, 85.29 hoặc 85.38."
+            },
+            {
+              "tep": "data/chu-giai-heading.json",
+              "khoa": "8431.ten_nhom",
+              "nguyenVan": "84.31 - Các bộ phận chỉ sử dụng hoặc chủ yếu sử dụng cho các loại máy thuộc các nhóm từ 84.25 đến 84.30."
+            },
+            {
+              "tep": "data/chu-giai-heading.json",
+              "khoa": "8431.nhom",
+              "nguyenVan": "nhóm này bao gồm những bộ phận chỉ dùng hoặc chủ yếu dùng cho các loại máy và thiết bị thuộc các nhóm từ 84.25 đến 84.30."
+            }
+          ]
+        },
+        {
+          "tang": "B6_6SO",
+          "quyTac": "GIR 6 (chọn phân nhóm của thang máy / tời nâng 8428.10 trong nhóm 84.31)",
+          "ketLuan": "843131",
+          "trich": [
+            {
+              "tep": "data/wco-hs-international.csv",
+              "khoa": "843131",
+              "nguyenVan": "Lifts, skip hoists or escalators; parts thereof"
+            }
+          ]
+        },
+        {
+          "tang": "B6_8SO",
+          "quyTac": "GIR 6 (phân loại theo phân nhóm máy chủ 8428.10.31 vs 8428.10.39/40 — thiếu dữ kiện → DUNG_HOI)",
+          "ketLuan": "DUNG_HOI",
+          "cauHoi": "Vận thăng (máy chủ nhóm 8428.10) có thiết kế để chở người (8428.10.31 → 84313120) hay chỉ chở hàng / tời nâng kiểu gầu nâng (8428.10.39 hoặc 8428.10.40 → 84313110)?",
+          "trich": [
+            {
+              "tep": "data/tax.json",
+              "khoa": "84313110.vn",
+              "nguyenVan": "- - - Của hàng hóa thuộc phân nhóm 8428.10.39 hoặc 8428.10.40"
+            },
+            {
+              "tep": "data/tax.json",
+              "khoa": "84313120.vn",
+              "nguyenVan": "- - - Của hàng hóa thuộc phân nhóm 8428.10.31 hoặc 8428.40.00"
+            },
+            {
+              "tep": "data/tax.json",
+              "khoa": "84281031.vn",
+              "nguyenVan": "- - - Để chở người"
+            },
+            {
+              "tep": "data/tax.json",
+              "khoa": "84281039.vn",
+              "nguyenVan": "- - - Loại khác"
+            },
+            {
+              "tep": "data/tax.json",
+              "khoa": "84281040.vn",
+              "nguyenVan": "- - Tời nâng kiểu gầu nâng (trục tải thùng kíp)"
+            }
+          ]
+        }
+      ],
+      "ghiChuPhapLy": "Cần phân loại máy chủ ở 8428.10 trước khi xuống mã 8 số 84313110 hay 84313120 (ADR-0004 §1 B6 & §5)."
+    },
+    {
+      "id": "BC-02",
+      "tenHang": "Bát sen nhựa ABS",
+      "ketQua": {
+        "trangThai": "CHOT",
+        "ma": "39249090",
+        "nhom": "3924",
+        "phanNhom": "392490",
+        "dieuKienKemTheo": "Chỉ áp dụng cho đầu/bát sen không kèm van điều chỉnh lưu chất; nếu có van/bộ trộn pha nước thì xét nhóm 84.81 (8481.80)."
+      },
+      "maToKhaiThamChieu": {
+        "trangThai": "sai",
+        "lyDoHeCuSai": "không tách đầu sen khỏi bộ sen có van; chép theo tờ khai"
+      },
+      "cacTang": [
+        {
+          "tang": "B0",
+          "quyTac": "B0 — Xác định bản chất hàng (đầu sen tắm bằng plastic ABS phục vụ vệ sinh, tách biệt với thiết bị có van nhóm 84.81)",
+          "ketLuan": "Sản phẩm vệ sinh bằng plastic không gắn van điều chỉnh dòng chảy",
+          "trich": [
+            {
+              "tep": "data/chu-giai-chuong.json",
+              "khoa": "39.chuong",
+              "nguyenVan": "(s) Các mặt hàng thuộc Phần XVI (máy và các thiết bị cơ khí hay điện);"
+            },
+            {
+              "tep": "data/chu-giai-heading.json",
+              "khoa": "8481.ten_nhom",
+              "nguyenVan": "84.81. - Vòi, van và các thiết bị tương tự dùng cho đường ống, thân nồi hơi, bể chứa hoặc các loại tương tự, kể cả van giảm áp và van điều chỉnh bằng nhiệt."
+            }
+          ]
+        },
+        {
+          "tang": "B1",
+          "quyTac": "GIR 1 + Chú giải chi tiết 39.24 mục (D) + ý kiến WCO 3924.90/4 (chỉ gồm nhóm 39.24 khi không phải thiết bị lắp cố định 39.25 và không phải van 84.81)",
+          "ketLuan": "3924",
+          "trich": [
+            {
+              "tep": "data/chu-giai-heading.json",
+              "khoa": "3924.ten_nhom",
+              "nguyenVan": "39.24- Bộ đồ ăn, bộ đồ dùng nhà bếp, các sản phẩm gia dụng khác và các sản phẩm phục vụ vệ sinh, bằng plastic.."
+            },
+            {
+              "tep": "data/chu-giai-heading.json",
+              "khoa": "3924.nhom",
+              "nguyenVan": "(D) Sản phẩm vệ sinh và các sản phẩm phục vụ vệ sinh (dù được sử dụng trong nhà hoặc không sử dụng trong nhà) chẳng hạn như các bộ vệ sinh (bình đựng nước, bát...), các loại thùng, xô vệ sinh, bô để giường bệnh, bô đi tiểu, bô để phòng ngủ, các loại ống nhổ, bình đựng nước dùng để vệ sinh (có vòi rửa), chén để rửa mắt; núm vú của bình trẻ em (nursing nipple) và bao ngón tay; đĩa đựng xà phòng, thanh để khăn tắm, hộp đựng bàn chải đánh răng, hộp đựng giấy trong phòng vệ sinh, móc treo khăn tắm và các sản phẩm tương tự cho phòng tắm, phòng vệ sinh hoặc nhà bếp, không lắp cố định bên trong hoặc trên tường. Tuy nhiên, các sản phẩm trên dùng để lắp cố định bên trong hoặc trên tường hoặc các vị trí"
+            },
+            {
+              "tep": "data/wco-op/opinions.json",
+              "khoa": "392490/4.text",
+              "nguyenVan": "Shower set (pipes, hand shower, shower head, round soap support, washer with filter, chromed hose, water divert and all the parts needed for the functioning of the shower) put up together in the same packaging for retail sale. Some of these parts are made of plastics and others are made of metal. The plastic shower head imparts the essential character to the set"
+            }
+          ]
+        },
+        {
+          "tang": "B6_6SO",
+          "quyTac": "GIR 6 (tách bộ đồ ăn/nhà bếp 3924.10 với sản phẩm vệ sinh/gia dụng khác 3924.90)",
+          "ketLuan": "392490",
+          "trich": [
+            {
+              "tep": "data/wco-hs-international.csv",
+              "khoa": "392490",
+              "nguyenVan": "Plastics; household articles and hygienic or toilet articles"
+            },
+            {
+              "tep": "data/wco-hs-international.csv",
+              "khoa": "392410",
+              "nguyenVan": "Plastics; tableware and kitchenware"
+            }
+          ]
+        },
+        {
+          "tang": "B6_8SO",
+          "quyTac": "GIR 6 (không thuộc bô/miếng trợ ti/bộ câu sữa nên vào 39249090 Loại khác)",
+          "ketLuan": "39249090",
+          "trich": [
+            {
+              "tep": "data/tax.json",
+              "khoa": "39249010.vn",
+              "nguyenVan": "- - Bô để giường bệnh, bô đi tiểu (loại xách tay được) hoặc bô để phòng ngủ(SEN)"
+            },
+            {
+              "tep": "data/tax.json",
+              "khoa": "39249020.vn",
+              "nguyenVan": "- - Miếng tạo dáng núm vú, miếng bảo vệ đầu ngực, núm trợ ti, phễu vắt sữa bằng tay(SEN)"
+            },
+            {
+              "tep": "data/tax.json",
+              "khoa": "39249030.vn",
+              "nguyenVan": "- - Bộ câu sữa"
+            },
+            {
+              "tep": "data/tax.json",
+              "khoa": "39249090.vn",
+              "nguyenVan": "- - Loại khác"
+            }
+          ]
+        }
+      ],
+      "ghiChuPhapLy": "Đầu sen nhựa đơn lẻ thuộc 39249090; nếu có van/bộ trộn đi kèm thì Chú giải 2(s) Chương 39 đẩy sang 8481.80. Lưu ý dữ liệu OCR data/wco-op/opinions.json đang đánh dấu headingSuspect=true (số in 6 vs ord 4, headingContinued=true) trên 392490/4 cần giữ nguyên cờ minh bạch ở đồ thị."
+    },
+    {
+      "id": "BC-03",
+      "tenHang": "Dép xốp trong nhà",
+      "ketQua": {
+        "trangThai": "DUNG_HOI",
+        "maTam": "64029990",
+        "maUngVien": [
+          "64029990",
+          "64022000"
+        ],
+        "nhom": "6402",
+        "phanNhomTam": "640299",
+        "cauHoi": "Kiểu quai dép có đai hoặc dây gắn mũ giày với đế bằng chốt cài (6402.20.00) hay dép xốp đúc/dán mép không dùng chốt cài (tạm xếp 6402.99.90)?"
+      },
+      "maToKhaiThamChieu": {
+        "trangThai": "sai",
+        "lyDoHeCuSai": "nhảy xuống phân nhóm 6402.20 khi không có dữ kiện"
+      },
+      "cacTang": [
+        {
+          "tang": "B0",
+          "quyTac": "B0 — Xác định bản chất hàng (dép đế và mũ bằng plastic xốp đi trong nhà; thiếu dữ kiện kiểu quai/chốt cài để phân định phân nhóm 6402.20 hay 6402.99)",
+          "ketLuan": "Giày dép nhẹ bằng plastic xốp, chưa đủ dữ kiện về kiểu quai có gắn bằng chốt cài hay không",
+          "trich": [
+            {
+              "tep": "data/wco-op/opinions.json",
+              "khoa": "640299/1.text",
+              "nguyenVan": "1. Light-weight shoes, the outer sole and the upper of which are made of pads of cellular plastics bonded together along the outside edges. This type of footwear is worn on the beach, at the pool, in the home, etc.\n\nAdoption: 1986"
+            },
+            {
+              "tep": "data/tax.json",
+              "khoa": "64022000.vn",
+              "nguyenVan": "- Giày, dép có đai hoặc dây gắn mũ giày với đế bằng chốt cài"
+            }
+          ]
+        },
+        {
+          "tang": "B1",
+          "quyTac": "GIR 1 + Chú giải 3, 4 Chương 64 + ý kiến WCO 6402.99/1 (giày, dép có đế ngoài và mũ bằng cao su hoặc plastic, không phải loại 64.01)",
+          "ketLuan": "6402",
+          "trich": [
+            {
+              "tep": "data/chu-giai-heading.json",
+              "khoa": "6402.ten_nhom",
+              "nguyenVan": "64.02 - Các loại giày, dép khác có đế ngoài và mũ giày bằng cao su hoặc plastic"
+            },
+            {
+              "tep": "data/chu-giai-chuong.json",
+              "khoa": "64.chuong",
+              "nguyenVan": "3. Theo mục đích của Chương này:\n\n(a) thuật ngữ “cao su” và “plastic” kể cả vải dệt thoi hoặc các sản phẩm dệt khác có lớp ngoài bằng cao su hoặc plastic có thể nhìn thấy được bằng mắt thường; theo mục đích của phần này, không tính đến sự thay đổi về màu sắc; và\n\n(b) thuật ngữ “da thuộc” liên quan đến các mặ"
+            },
+            {
+              "tep": "data/chu-giai-chuong.json",
+              "khoa": "64.chuong",
+              "nguyenVan": "4. Theo Chú giải 3 của Chương này:\n\n(a) vật liệu làm mũ giày được xếp theo loại vật liệu cấu thành có diện tích mặt ngoài lớn nhất, không tính đến các phụ kiện hoặc đồ phụ trợ như những mảng ở mắt cá chân, mép viền, vật trang trí, khoá cài, mác nhãn, khoen xỏ dây giày hoặc các vật gắn lắp tương tự;\n\n(b) vật liệu cấu thành của đế ngoài được tính là vật liệu có bề mặt rộng nhất trong việc tiếp xúc với đất, không tính đến phụ tùng hoặc các vật phụ trợ n"
+            },
+            {
+              "tep": "data/wco-op/opinions.json",
+              "khoa": "640299/1.text",
+              "nguyenVan": "1. Light-weight shoes, the outer sole and the upper of which are made of pads of cellular plastics bonded together along the outside edges. This type of footwear is worn on the beach, at the pool, in the home, etc."
+            }
+          ]
+        },
+        {
+          "tang": "B6_6SO",
+          "quyTac": "GIR 6 (so phân nhóm cấp 1 gạch: 6402.20 quai gắn chốt cài vs 6402.99 loại khác — thiếu dữ kiện kiểu quai → DUNG_HOI)",
+          "ketLuan": "DUNG_HOI",
+          "cauHoi": "Kiểu quai dép có đai hoặc dây gắn mũ giày với đế bằng chốt cài (6402.20.00) hay dép xốp đúc/dán mép không dùng chốt cài (tạm xếp 6402.99.90)?",
+          "trich": [
+            {
+              "tep": "data/wco-hs-international.csv",
+              "khoa": "640220",
+              "nguyenVan": "Footwear; with outer soles and uppers of rubber or plastics, upper straps or thongs assembled to the sole by plugs"
+            },
+            {
+              "tep": "data/wco-hs-international.csv",
+              "khoa": "640299",
+              "nguyenVan": "Footwear; n.e.c. in heading no. 6402, (other than just covering the ankle), with outer soles and uppers of rubber or plastics"
+            }
+          ]
+        },
+        {
+          "tang": "B6_8SO",
+          "quyTac": "GIR 6 (mã tạm 64029990 nếu không thuộc 6402.20 và không có mũi bảo vệ; vẫn giữ trạng thái DUNG_HOI để hỏi kiểu quai)",
+          "ketLuan": "DUNG_HOI",
+          "cauHoi": "Kiểu quai dép có đai hoặc dây gắn mũ giày với đế bằng chốt cài (6402.20.00) hay dép xốp đúc/dán mép không dùng chốt cài (tạm xếp 6402.99.90)?",
+          "trich": [
+            {
+              "tep": "data/tax.json",
+              "khoa": "64022000.vn",
+              "nguyenVan": "- Giày, dép có đai hoặc dây gắn mũ giày với đế bằng chốt cài"
+            },
+            {
+              "tep": "data/tax.json",
+              "khoa": "64029910.vn",
+              "nguyenVan": "- - - Loại có mũi giày được gắn kim loại để bảo vệ"
+            },
+            {
+              "tep": "data/tax.json",
+              "khoa": "64029920.vn",
+              "nguyenVan": "- - - Loại có mũi giày được gắn bảo vệ không phải kim loại (SEN)"
+            },
+            {
+              "tep": "data/tax.json",
+              "khoa": "64029990.vn",
+              "nguyenVan": "- - - Loại khác"
+            }
+          ]
+        }
+      ],
+      "ghiChuPhapLy": "ADR-0004 §5 ghi `64029990 (tạm, hỏi kiểu quai)`: WCO 6402.99/1 ủng hộ dép xốp đi trong nhà dán mép vào 6402.99, nhưng theo đúng GIR 6 không được bỏ qua câu hỏi phân biệt quai gắn chốt cài (6402.20.00)."
+    },
+    {
+      "id": "BC-04",
+      "tenHang": "Bạc trục ty máy khoan",
+      "ketQua": {
+        "trangThai": "DUNG_HOI",
+        "maUngVien": [
+          "84833090",
+          "84314300"
+        ],
+        "nhomUngVien": [
+          "8483",
+          "8431"
+        ],
+        "cauHoi": "Trục ty chạy trong bạc có chuyển động quay (ổ trượt định danh riêng theo Chú giải 2(a) Phần XVI → 84833090) hay chỉ chuyển động tịnh tiến thẳng (bộ phận chuyên dùng của máy khoan 84.30 theo Chú giải 2(b) → 84314300)?"
+      },
+      "maToKhaiThamChieu": {
+        "trangThai": "đúng có điều kiện",
+        "lyDoHeCuSai": "không hỏi thanh quay hay chạy thẳng"
+      },
+      "cacTang": [
+        {
+          "tang": "B0",
+          "quyTac": "B0 — Xác định bản chất hàng & máy chủ (bạc dẫn hướng trên cụm trục ty của máy khoan nhóm 84.30; thiếu dữ kiện trục quay hay tịnh tiến thẳng)",
+          "ketLuan": "Bộ phận bạc/ống lót dùng cho máy khoan nhóm 84.30; thiếu dữ kiện kiểu chuyển động (trục quay vs chạy thẳng)",
+          "trich": [
+            {
+              "tep": "data/chu-giai-heading.json",
+              "khoa": "8430.ten_nhom",
+              "nguyenVan": "84.30 - Các máy ủi xúc dọn, cào, san, cạp, đào, đầm, nén, bóc tách hoặc khoan khác dùng trong công việc về đất, khoáng hoặc quặng; máy đóng cọc và nhổ cọc; máy xới tuyết và dọn tuyết (+)"
+            },
+            {
+              "tep": "data/tax.json",
+              "khoa": "84304100.vn",
+              "nguyenVan": "- - Loại tự hành"
+            },
+            {
+              "tep": "data/tax.json",
+              "khoa": "84304990.vn",
+              "nguyenVan": "- - - Loại khác"
+            }
+          ]
+        },
+        {
+          "tang": "B1",
+          "quyTac": "GIR 1 + Chú giải 2(a) vs Chú giải 2(b) Phần XVI (nhóm 84.83 ổ trượt thắng 84.31 KHI có trục/trục quay; thiếu dữ kiện → DUNG_HOI)",
+          "ketLuan": "DUNG_HOI",
+          "cauHoi": "Trục ty chạy trong bạc có chuyển động quay (ổ trượt định danh riêng theo Chú giải 2(a) Phần XVI → 84833090) hay chỉ chuyển động tịnh tiến thẳng (bộ phận chuyên dùng của máy khoan 84.30 theo Chú giải 2(b) → 84314300)?",
+          "trich": [
+            {
+              "tep": "data/chu-giai-chuong.json",
+              "khoa": "84.phan",
+              "nguyenVan": "(a) Các bộ phận đã được định danh tại nhóm nào đó của Chương 84 hoặc 85 (trừ các\nnhóm 84.09, 84.31, 84.48, 84.66, 84.73, 84.87, 85.03, 85.22, 85.29, 85.38 và 85.48)\nđược phân loại vào nhóm đó trong mọi trường hợp;\n(b) Các bộ phận khác, nếu phù hợp để chỉ sử dụng hoặc chủ yếu sử dụng cho các loại\nmáy cụ thể, hoặc cho một số loại máy cùng nhóm (kể cả máy thuộc nhóm 84.79\nhoặc 85.43) được phân loại theo nhóm của các máy cụ thể đó hoặc vào nhóm thích\nhợp như 84.09, 84.31,"
+            },
+            {
+              "tep": "data/chu-giai-heading.json",
+              "khoa": "8483.ten_nhom",
+              "nguyenVan": "84.83 - Trục truyền động (kể cả trục cam và trục khuỷu) và tay biên; thân ổ và gối đỡ trục dùng ổ trượt; bánh răng và cụm bánh răng; vít bi hoặc vít đũa; hộp số và các cơ cấu điều tốc khác, kể cả bộ biến đổi mô men xoắn; bánh đà và ròng rọc, kể cả khối puli; ly hợp và khớp nối trục (kể cả khớp nối vạn năng)."
+            },
+            {
+              "tep": "data/chu-giai-heading.json",
+              "khoa": "8483.nhom",
+              "nguyenVan": "gối đỡ trục dùng ổ trượt được phân loại vào nhóm này ngay cả khi chúng hiện diện mà không có gối đỡ (thân ổ). Chúng bao gồm những vòng kim loại chống ma sát hoặc các vật liệu khác chống ma sát (ví dụ kim loại thiêu kết hoặc plastics). Chúng có thể ở dạng một cục hoặc nhiều cặp lại với nhau, và tạo ra một ổ trục trơn trong đó có một trục hoặc trục quay."
+            },
+            {
+              "tep": "data/chu-giai-heading.json",
+              "khoa": "8431.ten_nhom",
+              "nguyenVan": "84.31 - Các bộ phận chỉ sử dụng hoặc chủ yếu sử dụng cho các loại máy thuộc các nhóm từ 84.25 đến 84.30."
+            }
+          ]
+        },
+        {
+          "tang": "B6_6SO",
+          "quyTac": "GIR 6 (hai nhánh phân nhóm 8483.30 hoặc 8431.43 phụ thuộc kết quả B1)",
+          "ketLuan": "DUNG_HOI",
+          "cauHoi": "Trục ty chạy trong bạc có chuyển động quay (ổ trượt định danh riêng theo Chú giải 2(a) Phần XVI → 84833090) hay chỉ chuyển động tịnh tiến thẳng (bộ phận chuyên dùng của máy khoan 84.30 theo Chú giải 2(b) → 84314300)?",
+          "trich": [
+            {
+              "tep": "data/wco-hs-international.csv",
+              "khoa": "848330",
+              "nguyenVan": "Bearing housings, not incorporating ball or roller bearings and plain shaft bearings"
+            },
+            {
+              "tep": "data/wco-hs-international.csv",
+              "khoa": "843143",
+              "nguyenVan": "Boring or sinking machinery; parts for boring or sinking machinery of subheading 8430.41 or 8430.49"
+            }
+          ]
+        },
+        {
+          "tang": "B6_8SO",
+          "quyTac": "GIR 6 (84833090 Loại khác không dùng cho xe Ch.87 vs 84314300 Bộ phận máy khoan 8430.41/49)",
+          "ketLuan": "DUNG_HOI",
+          "cauHoi": "Trục ty chạy trong bạc có chuyển động quay (ổ trượt định danh riêng theo Chú giải 2(a) Phần XVI → 84833090) hay chỉ chuyển động tịnh tiến thẳng (bộ phận chuyên dùng của máy khoan 84.30 theo Chú giải 2(b) → 84314300)?",
+          "trich": [
+            {
+              "tep": "data/tax.json",
+              "khoa": "84833030.vn",
+              "nguyenVan": "- - Dùng cho động cơ xe của Chương 87"
+            },
+            {
+              "tep": "data/tax.json",
+              "khoa": "84833090.vn",
+              "nguyenVan": "- - Loại khác"
+            },
+            {
+              "tep": "data/tax.json",
+              "khoa": "84314300.vn",
+              "nguyenVan": "- - Bộ phận của máy khoan hoặc máy đào sâu thuộc phân nhóm 8430.41 hoặc 8430.49"
+            }
+          ]
+        }
+      ],
+      "ghiChuPhapLy": "Cạnh tranh điển hình giữa Chú giải 2(a) Phần XVI (84.83 nếu là ổ trượt chứa trục quay) và Chú giải 2(b) (84.31 nếu là bạc dẫn hướng chuyển động thẳng chuyên cho máy khoan)."
+    },
+    {
+      "id": "BC-05",
+      "tenHang": "Giá đỡ chổi than",
+      "ketQua": {
+        "trangThai": "CHOT",
+        "ma": "85030090",
+        "nhom": "8503",
+        "phanNhom": "850300"
+      },
+      "maToKhaiThamChieu": {
+        "trangThai": "sai",
+        "lyDoHeCuSai": "(hệ đúng; bộ chuẩn sai)"
+      },
+      "cacTang": [
+        {
+          "tang": "B0",
+          "quyTac": "B0 — Xác định bản chất hàng & máy chủ (bộ phận cơ-điện giữ chổi than lắp trên động cơ/máy phát điện 85.01–85.02, không phải bản thân chổi than)",
+          "ketLuan": "Bộ phận giữ chổi than của máy thuộc nhóm 85.01 hoặc 85.02",
+          "trich": [
+            {
+              "tep": "data/chu-giai-heading.json",
+              "khoa": "8503.ten_nhom",
+              "nguyenVan": "85.03 - Các bộ phận chỉ dùng hoặc chủ yếu dùng cho các loại máy thuộc nhóm 85.01 hoặc 85.02."
+            },
+            {
+              "tep": "data/chu-giai-heading.json",
+              "khoa": "8545.nhom",
+              "nguyenVan": "Bộ phận giữ chổi than (đã hoặc chưa phù hợp với chổi than) được phân loại như các bộ phận của máy (ví dụ nhóm 85.03)."
+            }
+          ]
+        },
+        {
+          "tang": "B1",
+          "quyTac": "GIR 1 + Chú giải chi tiết 85.45 mục (D) (loại trừ bộ phận giữ chổi than khỏi 85.45) + Chú giải 2(b) Phần XVI (nhóm 85.03)",
+          "ketLuan": "8503",
+          "trich": [
+            {
+              "tep": "data/chu-giai-heading.json",
+              "khoa": "8545.nhom",
+              "nguyenVan": "Bộ phận giữ chổi than (đã hoặc chưa phù hợp với chổi than) được phân loại như các bộ phận của máy (ví dụ nhóm 85.03)."
+            },
+            {
+              "tep": "data/chu-giai-chuong.json",
+              "khoa": "84.phan",
+              "nguyenVan": "(b) Các bộ phận khác, nếu phù hợp để chỉ sử dụng hoặc chủ yếu sử dụng cho các loại\nmáy cụ thể, hoặc cho một số loại máy cùng nhóm (kể cả máy thuộc nhóm 84.79\nhoặc 85.43) được phân loại theo nhóm của các máy cụ thể đó hoặc vào nhóm thích\nhợp như 84.09, 84.31, 84.48, 84.66, 84.73, 85.03, 85.22, 85.29 hoặc 85.38."
+            },
+            {
+              "tep": "data/chu-giai-heading.json",
+              "khoa": "8503.nhom",
+              "nguyenVan": "(1) Khung và hộp, sta-to, rô-to, các vành góp, các phiến đổi chiều, các giá đỡ chổi than, các cuộn kích từ."
+            }
+          ]
+        },
+        {
+          "tang": "B6_6SO",
+          "quyTac": "GIR 6 (nhóm 85.03 chỉ có duy nhất phân nhóm 8503.00)",
+          "ketLuan": "850300",
+          "trich": [
+            {
+              "tep": "data/wco-hs-international.csv",
+              "khoa": "850300",
+              "nguyenVan": "Electric motors and generators; parts suitable for use solely or principally with the machines of heading no. 8501 or 8502"
+            }
+          ]
+        },
+        {
+          "tang": "B6_8SO",
+          "quyTac": "GIR 6 (vào 85030090 Loại khác trừ dòng riêng cho máy phát ≥ 12.500 kVA ở 85030020)",
+          "ketLuan": "85030090",
+          "trich": [
+            {
+              "tep": "data/tax.json",
+              "khoa": "85030020.vn",
+              "nguyenVan": "- Bộ phận của máy phát điện (kể cả tổ máy phát điện) thuộc nhóm 85.01 hoặc 85.02, công suất từ 12.500 kVA trở lên"
+            },
+            {
+              "tep": "data/tax.json",
+              "khoa": "85030090.vn",
+              "nguyenVan": "- Loại khác"
+            }
+          ]
+        }
+      ],
+      "ghiChuPhapLy": "Ca chuẩn chứng minh tầm quan trọng của việc đọc câu loại trừ ở chú giải chi tiết 85.45 mục (D) trước khi dừng ở nhóm định danh riêng 2(a)."
+    },
+    {
+      "id": "BC-06",
+      "tenHang": "Bột nhão nhôm",
+      "ketQua": {
+        "trangThai": "CHOT",
+        "ma": "32129011",
+        "nhom": "3212",
+        "phanNhom": "321290",
+        "dieuKienKemTheo": "Áp dụng cho bột/vảy nhôm phân tán ở dạng nhão trong môi trường không có nước, dùng để sản xuất sơn (nếu là bột/vảy khô không pha chế chất màu → 76.03)."
+      },
+      "maToKhaiThamChieu": {
+        "trangThai": "—",
+        "lyDoHeCuSai": "không soát điều loại trừ"
+      },
+      "cacTang": [
+        {
+          "tang": "B0",
+          "quyTac": "B0 — Xác định bản chất hàng (chế phẩm thuốc màu bột/vảy nhôm phân tán dạng nhão trong môi trường không có nước để sản xuất sơn)",
+          "ketLuan": "Chế phẩm bột nhão nhôm dùng sản xuất sơn (bị loại khỏi Phần XV / 76.03)",
+          "trich": [
+            {
+              "tep": "data/chu-giai-heading.json",
+              "khoa": "7603.nhom",
+              "nguyenVan": "(a) Bột hoặc vảy, được dùng như là chất tạo màu, sơn hoặc các chất tương tự khác (ví dụ, được tạo thành cùng với chất màu khác hoặc đóng gói như là các chất keo tụ, chất phân tán, hoặc bột nhão với một chất gắn hoặc dung môi (Chương 32)."
+            }
+          ]
+        },
+        {
+          "tang": "B1",
+          "quyTac": "GIR 1 + Chú giải 1(a) Phần XV + chú giải chi tiết 76.03 mục (a) + nhóm 32.12",
+          "ketLuan": "3212",
+          "trich": [
+            {
+              "tep": "data/chu-giai-chuong.json",
+              "khoa": "76.phan",
+              "nguyenVan": "1. Phần này không bao gồm:\n(a) Sơn, mực hoặc các sản phẩm khác đã được pha chế với chất cơ bản là vảy hoặc bột kim\nloại (các nhóm từ 32.07 đến 32.10, 32.12, 32.13 hoặc 32.15);"
+            },
+            {
+              "tep": "data/chu-giai-heading.json",
+              "khoa": "7603.nhom",
+              "nguyenVan": "(a) Bột hoặc vảy, được dùng như là chất tạo màu, sơn hoặc các chất tương tự khác (ví dụ, được tạo thành cùng với chất màu khác hoặc đóng gói như là các chất keo tụ, chất phân tán, hoặc bột nhão với một chất gắn hoặc dung môi (Chương 32)."
+            },
+            {
+              "tep": "data/chu-giai-heading.json",
+              "khoa": "3212.ten_nhom",
+              "nguyenVan": "32.12- Thuốc màu (pigments) (kể cả bột và vẩy kim loại) được phân tán trong môi trường không có nước, ở dạng lỏng hay dạng nhão, dùng để sản xuất sơn (kể cả men tráng); lá phôi dập; thuốc nhuộm và các chất màu khác đã làm thành dạng nhất định hoặc đã đóng gói để bán lẻ."
+            },
+            {
+              "tep": "data/chu-giai-heading.json",
+              "khoa": "3212.nhom",
+              "nguyenVan": "Phần này gồm hệ phân tán nồng độ cao của các thuốc màu (bao gồm bột và vảy nhôm hoặc của các kim loại khác) phân tán trong môi trường không có nước (ví dụ dầu làm khô, xăng trắng, gôm, gỗ hoặc sulphate turpentine hoặc vecni), ở dạng lỏng hoặc nhão, được sử dụng để sản xuất sơn hoặc men tráng."
+            }
+          ]
+        },
+        {
+          "tang": "B6_6SO",
+          "quyTac": "GIR 6 (tách lá phôi dập 3212.10 với thuốc màu dạng lỏng/nhão khác 3212.90)",
+          "ketLuan": "321290",
+          "trich": [
+            {
+              "tep": "data/wco-hs-international.csv",
+              "khoa": "321290",
+              "nguyenVan": "Pigments; of a kind used in the manufacture of paints, other than stamping foils"
+            }
+          ]
+        },
+        {
+          "tang": "B6_8SO",
+          "quyTac": "GIR 6 (định danh đích danh 32129011 Bột nhão nhôm trong biểu thuế VN)",
+          "ketLuan": "32129011",
+          "trich": [
+            {
+              "tep": "data/tax.json",
+              "khoa": "32129011.vn",
+              "nguyenVan": "- - - Bột nhão nhôm"
+            }
+          ]
+        }
+      ],
+      "ghiChuPhapLy": "Đồng thời đã gỡ chuỗi \"Bột nhão nhôm ... (ALUMINUM PASTE)\" bị ghép nhầm vào mục 1097/TB-TCHQ năm 2020 (819UV, 29313900) trong data/precedents.json và data/community/tb-tchq/legal-customs-2026-10-13-goi-032.json."
+    }
+  ]
+}

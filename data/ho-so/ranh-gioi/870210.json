@@ -4,13 +4,19 @@
   "nhom": "8702",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T1003#soan-870210",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:tho-hs-03-20261122#soat-870210",
+    "ngay": "2026-11-22",
+    "ghiChu": "OZV-1891",
+    "bam": "10b52edf9979f2fe2bb4ab9621030e6a8e369489535aaff34c1efd25b9f927b1"
+  },
   "dieuKienNut": [
     {
       "id": "870210~r16314",
@@ -22,7 +28,7 @@
           "op": "KHONG"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "8702104",
@@ -35,7 +41,7 @@
           "value": "Ô tô khách"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "8702107",
@@ -51,9 +57,14 @@
           "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": "sân bay"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "chở từ 30 người trở lên"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "8702108",
@@ -66,7 +77,7 @@
           "value": "Ô tô khách"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": [
         "8702107"
       ]
@@ -82,9 +93,20 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Ô tô"
+        },
+        {
+          "fact": "kieuXeChoNguoi",
+          "op": "TRONG",
+          "value": [
+            "LIMOUSINE_KEO_DAI"
+          ]
+        },
+        {
+          "fact": "laOtoVan",
+          "op": "KHONG"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87021041",
@@ -104,7 +126,7 @@
           "donVi": "tấn"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87021042",
@@ -118,21 +140,21 @@
           "donVi": "tấn"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87021049",
       "nguon": "tax.87021049",
       "trich": "87021049 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87021050",
       "nguon": "tax.87021050",
       "trich": "87021050 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87021060",
@@ -143,9 +165,20 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Ô tô"
+        },
+        {
+          "fact": "kieuXeChoNguoi",
+          "op": "TRONG",
+          "value": [
+            "LIMOUSINE_KEO_DAI"
+          ]
+        },
+        {
+          "fact": "laOtoVan",
+          "op": "KHONG"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87021071",
@@ -165,7 +198,7 @@
           "donVi": "tấn"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87021072",
@@ -179,14 +212,14 @@
           "donVi": "tấn"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87021079",
       "nguon": "tax.87021079",
       "trich": "87021079 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87021081",
@@ -206,7 +239,7 @@
           "donVi": "tấn"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87021082",
@@ -220,14 +253,14 @@
           "donVi": "tấn"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87021089",
       "nguon": "tax.87021089",
       "trich": "87021089 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87021091",
@@ -241,14 +274,14 @@
           "donVi": "tấn"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87021099",
       "nguon": "tax.87021099",
       "trich": "87021099 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [

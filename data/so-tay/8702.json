@@ -167,27 +167,91 @@
  "dong8": [
   {
    "hs": "87021010",
-   "dieuKien": "Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)",
+   "dieuKien": "tên loại hàng: Ô tô; kiểu ô tô chở người: ô tô bao gồm cả ô tô limousine kéo dài; không: là ô tô van",
    "loaiKhac": false,
    "nguon": "tax.87021010",
    "trich": "87021010 - - - Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Ô tô"
+    },
+    {
+     "fact": "kieuXeChoNguoi",
+     "op": "TRONG",
+     "value": [
+      "LIMOUSINE_KEO_DAI"
+     ]
+    },
+    {
+     "fact": "laOtoVan",
+     "op": "KHONG"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870210",
+     "ngay": "2026-11-22",
+     "bam": "10b52edf9979f2fe2bb4ab9621030e6a8e369489535aaff34c1efd25b9f927b1"
+    }
+   }
   },
   {
    "hs": "87021041",
-   "dieuKien": "Khối lượng toàn bộ theo thiết kế (SEN) từ 6 tấn trở lên nhưng không quá 18 tấn",
+   "dieuKien": "khối lượng toàn bộ theo thiết kế (GVW) / khối lượng hàng chuyên chở / lượng giãn nước >= 6 tấn; khối lượng toàn bộ theo thiết kế (GVW) / khối lượng hàng chuyên chở / lượng giãn nước <= 18 tấn",
    "loaiKhac": false,
    "nguon": "tax.87021041",
    "trich": "87021041 - - - - Khối lượng toàn bộ theo thiết kế (SEN) từ 6 tấn trở lên nhưng không quá 18 tấn",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "khoiLuongToanBo",
+     "op": ">=",
+     "value": 6,
+     "donVi": "tấn"
+    },
+    {
+     "fact": "khoiLuongToanBo",
+     "op": "<=",
+     "value": 18,
+     "donVi": "tấn"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870210",
+     "ngay": "2026-11-22",
+     "bam": "10b52edf9979f2fe2bb4ab9621030e6a8e369489535aaff34c1efd25b9f927b1"
+    }
+   }
   },
   {
    "hs": "87021042",
-   "dieuKien": "Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
+   "dieuKien": "khối lượng toàn bộ theo thiết kế (GVW) / khối lượng hàng chuyên chở / lượng giãn nước > 24 tấn",
    "loaiKhac": false,
    "nguon": "tax.87021042",
    "trich": "87021042 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "khoiLuongToanBo",
+     "op": ">",
+     "value": 24,
+     "donVi": "tấn"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870210",
+     "ngay": "2026-11-22",
+     "bam": "10b52edf9979f2fe2bb4ab9621030e6a8e369489535aaff34c1efd25b9f927b1"
+    }
+   }
   },
   {
    "hs": "87021049",
@@ -235,27 +299,91 @@
   },
   {
    "hs": "87021060",
-   "dieuKien": "Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)",
+   "dieuKien": "tên loại hàng: Ô tô; kiểu ô tô chở người: ô tô bao gồm cả ô tô limousine kéo dài; không: là ô tô van",
    "loaiKhac": false,
    "nguon": "tax.87021060",
    "trich": "87021060 - - - Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Ô tô"
+    },
+    {
+     "fact": "kieuXeChoNguoi",
+     "op": "TRONG",
+     "value": [
+      "LIMOUSINE_KEO_DAI"
+     ]
+    },
+    {
+     "fact": "laOtoVan",
+     "op": "KHONG"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870210",
+     "ngay": "2026-11-22",
+     "bam": "10b52edf9979f2fe2bb4ab9621030e6a8e369489535aaff34c1efd25b9f927b1"
+    }
+   }
   },
   {
    "hs": "87021071",
-   "dieuKien": "Khối lượng toàn bộ theo thiết kế (SEN) từ 6 tấn trở lên nhưng không quá 18 tấn",
+   "dieuKien": "khối lượng toàn bộ theo thiết kế (GVW) / khối lượng hàng chuyên chở / lượng giãn nước >= 6 tấn; khối lượng toàn bộ theo thiết kế (GVW) / khối lượng hàng chuyên chở / lượng giãn nước <= 18 tấn",
    "loaiKhac": false,
    "nguon": "tax.87021071",
    "trich": "87021071 - - - - Khối lượng toàn bộ theo thiết kế (SEN) từ 6 tấn trở lên nhưng không quá 18 tấn",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "khoiLuongToanBo",
+     "op": ">=",
+     "value": 6,
+     "donVi": "tấn"
+    },
+    {
+     "fact": "khoiLuongToanBo",
+     "op": "<=",
+     "value": 18,
+     "donVi": "tấn"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870210",
+     "ngay": "2026-11-22",
+     "bam": "10b52edf9979f2fe2bb4ab9621030e6a8e369489535aaff34c1efd25b9f927b1"
+    }
+   }
   },
   {
    "hs": "87021072",
-   "dieuKien": "Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
+   "dieuKien": "khối lượng toàn bộ theo thiết kế (GVW) / khối lượng hàng chuyên chở / lượng giãn nước > 24 tấn",
    "loaiKhac": false,
    "nguon": "tax.87021072",
    "trich": "87021072 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "khoiLuongToanBo",
+     "op": ">",
+     "value": 24,
+     "donVi": "tấn"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870210",
+     "ngay": "2026-11-22",
+     "bam": "10b52edf9979f2fe2bb4ab9621030e6a8e369489535aaff34c1efd25b9f927b1"
+    }
+   }
   },
   {
    "hs": "87021079",
@@ -285,19 +413,57 @@
   },
   {
    "hs": "87021081",
-   "dieuKien": "Khối lượng toàn bộ theo thiết kế (SEN) từ 6 tấn trở lên nhưng không quá 18 tấn",
+   "dieuKien": "khối lượng toàn bộ theo thiết kế (GVW) / khối lượng hàng chuyên chở / lượng giãn nước >= 6 tấn; khối lượng toàn bộ theo thiết kế (GVW) / khối lượng hàng chuyên chở / lượng giãn nước <= 18 tấn",
    "loaiKhac": false,
    "nguon": "tax.87021081",
    "trich": "87021081 - - - - Khối lượng toàn bộ theo thiết kế (SEN) từ 6 tấn trở lên nhưng không quá 18 tấn",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "khoiLuongToanBo",
+     "op": ">=",
+     "value": 6,
+     "donVi": "tấn"
+    },
+    {
+     "fact": "khoiLuongToanBo",
+     "op": "<=",
+     "value": 18,
+     "donVi": "tấn"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870210",
+     "ngay": "2026-11-22",
+     "bam": "10b52edf9979f2fe2bb4ab9621030e6a8e369489535aaff34c1efd25b9f927b1"
+    }
+   }
   },
   {
    "hs": "87021082",
-   "dieuKien": "Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
+   "dieuKien": "khối lượng toàn bộ theo thiết kế (GVW) / khối lượng hàng chuyên chở / lượng giãn nước > 24 tấn",
    "loaiKhac": false,
    "nguon": "tax.87021082",
    "trich": "87021082 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "khoiLuongToanBo",
+     "op": ">",
+     "value": 24,
+     "donVi": "tấn"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870210",
+     "ngay": "2026-11-22",
+     "bam": "10b52edf9979f2fe2bb4ab9621030e6a8e369489535aaff34c1efd25b9f927b1"
+    }
+   }
   },
   {
    "hs": "87021089",
@@ -327,11 +493,27 @@
   },
   {
    "hs": "87021091",
-   "dieuKien": "Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
+   "dieuKien": "khối lượng toàn bộ theo thiết kế (GVW) / khối lượng hàng chuyên chở / lượng giãn nước > 24 tấn",
    "loaiKhac": false,
    "nguon": "tax.87021091",
    "trich": "87021091 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "khoiLuongToanBo",
+     "op": ">",
+     "value": 24,
+     "donVi": "tấn"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870210",
+     "ngay": "2026-11-22",
+     "bam": "10b52edf9979f2fe2bb4ab9621030e6a8e369489535aaff34c1efd25b9f927b1"
+    }
+   }
   },
   {
    "hs": "87021099",
@@ -359,27 +541,91 @@
   },
   {
    "hs": "87022010",
-   "dieuKien": "Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)",
+   "dieuKien": "tên loại hàng: Ô tô; kiểu ô tô chở người: ô tô bao gồm cả ô tô limousine kéo dài; không: là ô tô van",
    "loaiKhac": false,
    "nguon": "tax.87022010",
    "trich": "87022010 - - - Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Ô tô"
+    },
+    {
+     "fact": "kieuXeChoNguoi",
+     "op": "TRONG",
+     "value": [
+      "LIMOUSINE_KEO_DAI"
+     ]
+    },
+    {
+     "fact": "laOtoVan",
+     "op": "KHONG"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870220",
+     "ngay": "2026-11-22",
+     "bam": "e5ea705a4869a3c7bda0b98cdf14021db03eac416d5e0f9eba3936afd5dd2a0d"
+    }
+   }
   },
   {
    "hs": "87022022",
-   "dieuKien": "Khối lượng toàn bộ theo thiết kế (SEN) từ 6 tấn trở lên nhưng không quá 18 tấn",
+   "dieuKien": "khối lượng toàn bộ theo thiết kế (GVW) / khối lượng hàng chuyên chở / lượng giãn nước >= 6 tấn; khối lượng toàn bộ theo thiết kế (GVW) / khối lượng hàng chuyên chở / lượng giãn nước <= 18 tấn",
    "loaiKhac": false,
    "nguon": "tax.87022022",
    "trich": "87022022 - - - - Khối lượng toàn bộ theo thiết kế (SEN) từ 6 tấn trở lên nhưng không quá 18 tấn",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "khoiLuongToanBo",
+     "op": ">=",
+     "value": 6,
+     "donVi": "tấn"
+    },
+    {
+     "fact": "khoiLuongToanBo",
+     "op": "<=",
+     "value": 18,
+     "donVi": "tấn"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870220",
+     "ngay": "2026-11-22",
+     "bam": "e5ea705a4869a3c7bda0b98cdf14021db03eac416d5e0f9eba3936afd5dd2a0d"
+    }
+   }
   },
   {
    "hs": "87022023",
-   "dieuKien": "Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
+   "dieuKien": "khối lượng toàn bộ theo thiết kế (GVW) / khối lượng hàng chuyên chở / lượng giãn nước > 24 tấn",
    "loaiKhac": false,
    "nguon": "tax.87022023",
    "trich": "87022023 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "khoiLuongToanBo",
+     "op": ">",
+     "value": 24,
+     "donVi": "tấn"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870220",
+     "ngay": "2026-11-22",
+     "bam": "e5ea705a4869a3c7bda0b98cdf14021db03eac416d5e0f9eba3936afd5dd2a0d"
+    }
+   }
   },
   {
    "hs": "87022029",
@@ -408,19 +654,57 @@
   },
   {
    "hs": "87022031",
-   "dieuKien": "Khối lượng toàn bộ theo thiết kế (SEN) từ 6 tấn trở lên nhưng không quá 18 tấn",
+   "dieuKien": "khối lượng toàn bộ theo thiết kế (GVW) / khối lượng hàng chuyên chở / lượng giãn nước >= 6 tấn; khối lượng toàn bộ theo thiết kế (GVW) / khối lượng hàng chuyên chở / lượng giãn nước <= 18 tấn",
    "loaiKhac": false,
    "nguon": "tax.87022031",
    "trich": "87022031 - - - - Khối lượng toàn bộ theo thiết kế (SEN) từ 6 tấn trở lên nhưng không quá 18 tấn",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "khoiLuongToanBo",
+     "op": ">=",
+     "value": 6,
+     "donVi": "tấn"
+    },
+    {
+     "fact": "khoiLuongToanBo",
+     "op": "<=",
+     "value": 18,
+     "donVi": "tấn"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870220",
+     "ngay": "2026-11-22",
+     "bam": "e5ea705a4869a3c7bda0b98cdf14021db03eac416d5e0f9eba3936afd5dd2a0d"
+    }
+   }
   },
   {
    "hs": "87022032",
-   "dieuKien": "Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
+   "dieuKien": "khối lượng toàn bộ theo thiết kế (GVW) / khối lượng hàng chuyên chở / lượng giãn nước > 24 tấn",
    "loaiKhac": false,
    "nguon": "tax.87022032",
    "trich": "87022032 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "khoiLuongToanBo",
+     "op": ">",
+     "value": 24,
+     "donVi": "tấn"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870220",
+     "ngay": "2026-11-22",
+     "bam": "e5ea705a4869a3c7bda0b98cdf14021db03eac416d5e0f9eba3936afd5dd2a0d"
+    }
+   }
   },
   {
    "hs": "87022039",
@@ -449,11 +733,27 @@
   },
   {
    "hs": "87022041",
-   "dieuKien": "Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
+   "dieuKien": "khối lượng toàn bộ theo thiết kế (GVW) / khối lượng hàng chuyên chở / lượng giãn nước > 24 tấn",
    "loaiKhac": false,
    "nguon": "tax.87022041",
    "trich": "87022041 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "khoiLuongToanBo",
+     "op": ">",
+     "value": 24,
+     "donVi": "tấn"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870220",
+     "ngay": "2026-11-22",
+     "bam": "e5ea705a4869a3c7bda0b98cdf14021db03eac416d5e0f9eba3936afd5dd2a0d"
+    }
+   }
   },
   {
    "hs": "87022049",
@@ -480,27 +780,91 @@
   },
   {
    "hs": "87022050",
-   "dieuKien": "Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)",
+   "dieuKien": "tên loại hàng: Ô tô; kiểu ô tô chở người: ô tô bao gồm cả ô tô limousine kéo dài; không: là ô tô van",
    "loaiKhac": false,
    "nguon": "tax.87022050",
    "trich": "87022050 - - - Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Ô tô"
+    },
+    {
+     "fact": "kieuXeChoNguoi",
+     "op": "TRONG",
+     "value": [
+      "LIMOUSINE_KEO_DAI"
+     ]
+    },
+    {
+     "fact": "laOtoVan",
+     "op": "KHONG"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870220",
+     "ngay": "2026-11-22",
+     "bam": "e5ea705a4869a3c7bda0b98cdf14021db03eac416d5e0f9eba3936afd5dd2a0d"
+    }
+   }
   },
   {
    "hs": "87022061",
-   "dieuKien": "Khối lượng toàn bộ theo thiết kế (SEN) từ 6 tấn trở lên nhưng không quá 18 tấn",
+   "dieuKien": "khối lượng toàn bộ theo thiết kế (GVW) / khối lượng hàng chuyên chở / lượng giãn nước >= 6 tấn; khối lượng toàn bộ theo thiết kế (GVW) / khối lượng hàng chuyên chở / lượng giãn nước <= 18 tấn",
    "loaiKhac": false,
    "nguon": "tax.87022061",
    "trich": "87022061 - - - - Khối lượng toàn bộ theo thiết kế (SEN) từ 6 tấn trở lên nhưng không quá 18 tấn",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "khoiLuongToanBo",
+     "op": ">=",
+     "value": 6,
+     "donVi": "tấn"
+    },
+    {
+     "fact": "khoiLuongToanBo",
+     "op": "<=",
+     "value": 18,
+     "donVi": "tấn"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870220",
+     "ngay": "2026-11-22",
+     "bam": "e5ea705a4869a3c7bda0b98cdf14021db03eac416d5e0f9eba3936afd5dd2a0d"
+    }
+   }
   },
   {
    "hs": "87022062",
-   "dieuKien": "Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
+   "dieuKien": "khối lượng toàn bộ theo thiết kế (GVW) / khối lượng hàng chuyên chở / lượng giãn nước > 24 tấn",
    "loaiKhac": false,
    "nguon": "tax.87022062",
    "trich": "87022062 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "khoiLuongToanBo",
+     "op": ">",
+     "value": 24,
+     "donVi": "tấn"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870220",
+     "ngay": "2026-11-22",
+     "bam": "e5ea705a4869a3c7bda0b98cdf14021db03eac416d5e0f9eba3936afd5dd2a0d"
+    }
+   }
   },
   {
    "hs": "87022069",
@@ -530,19 +894,57 @@
   },
   {
    "hs": "87022071",
-   "dieuKien": "Khối lượng toàn bộ theo thiết kế (SEN) từ 6 tấn trở lên nhưng không quá 18 tấn",
+   "dieuKien": "khối lượng toàn bộ theo thiết kế (GVW) / khối lượng hàng chuyên chở / lượng giãn nước >= 6 tấn; khối lượng toàn bộ theo thiết kế (GVW) / khối lượng hàng chuyên chở / lượng giãn nước <= 18 tấn",
    "loaiKhac": false,
    "nguon": "tax.87022071",
    "trich": "87022071 - - - - Khối lượng toàn bộ theo thiết kế (SEN) từ 6 tấn trở lên nhưng không quá 18 tấn",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "khoiLuongToanBo",
+     "op": ">=",
+     "value": 6,
+     "donVi": "tấn"
+    },
+    {
+     "fact": "khoiLuongToanBo",
+     "op": "<=",
+     "value": 18,
+     "donVi": "tấn"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870220",
+     "ngay": "2026-11-22",
+     "bam": "e5ea705a4869a3c7bda0b98cdf14021db03eac416d5e0f9eba3936afd5dd2a0d"
+    }
+   }
   },
   {
    "hs": "87022072",
-   "dieuKien": "Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
+   "dieuKien": "khối lượng toàn bộ theo thiết kế (GVW) / khối lượng hàng chuyên chở / lượng giãn nước > 24 tấn",
    "loaiKhac": false,
    "nguon": "tax.87022072",
    "trich": "87022072 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "khoiLuongToanBo",
+     "op": ">",
+     "value": 24,
+     "donVi": "tấn"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870220",
+     "ngay": "2026-11-22",
+     "bam": "e5ea705a4869a3c7bda0b98cdf14021db03eac416d5e0f9eba3936afd5dd2a0d"
+    }
+   }
   },
   {
    "hs": "87022079",
@@ -572,11 +974,27 @@
   },
   {
    "hs": "87022091",
-   "dieuKien": "Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
+   "dieuKien": "khối lượng toàn bộ theo thiết kế (GVW) / khối lượng hàng chuyên chở / lượng giãn nước > 24 tấn",
    "loaiKhac": false,
    "nguon": "tax.87022091",
    "trich": "87022091 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "khoiLuongToanBo",
+     "op": ">",
+     "value": 24,
+     "donVi": "tấn"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870220",
+     "ngay": "2026-11-22",
+     "bam": "e5ea705a4869a3c7bda0b98cdf14021db03eac416d5e0f9eba3936afd5dd2a0d"
+    }
+   }
   },
   {
    "hs": "87022099",
@@ -604,19 +1022,61 @@
   },
   {
    "hs": "87023010",
-   "dieuKien": "Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)",
+   "dieuKien": "tên loại hàng: Ô tô; kiểu ô tô chở người: ô tô bao gồm cả ô tô limousine kéo dài; không: là ô tô van",
    "loaiKhac": false,
    "nguon": "tax.87023010",
    "trich": "87023010 - - - Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Ô tô"
+    },
+    {
+     "fact": "kieuXeChoNguoi",
+     "op": "TRONG",
+     "value": [
+      "LIMOUSINE_KEO_DAI"
+     ]
+    },
+    {
+     "fact": "laOtoVan",
+     "op": "KHONG"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870230",
+     "ngay": "2026-11-22",
+     "bam": "6087e045be2e738f2dd5143e2128a30d46ca25e43ac47eca0417a08763c177ae"
+    }
+   }
   },
   {
    "hs": "87023021",
-   "dieuKien": "Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
+   "dieuKien": "khối lượng toàn bộ theo thiết kế (GVW) / khối lượng hàng chuyên chở / lượng giãn nước > 24 tấn",
    "loaiKhac": false,
    "nguon": "tax.87023021",
    "trich": "87023021 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "khoiLuongToanBo",
+     "op": ">",
+     "value": 24,
+     "donVi": "tấn"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870230",
+     "ngay": "2026-11-22",
+     "bam": "6087e045be2e738f2dd5143e2128a30d46ca25e43ac47eca0417a08763c177ae"
+    }
+   }
   },
   {
    "hs": "87023029",
@@ -643,11 +1103,27 @@
   },
   {
    "hs": "87023031",
-   "dieuKien": "Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
+   "dieuKien": "khối lượng toàn bộ theo thiết kế (GVW) / khối lượng hàng chuyên chở / lượng giãn nước > 24 tấn",
    "loaiKhac": false,
    "nguon": "tax.87023031",
    "trich": "87023031 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "khoiLuongToanBo",
+     "op": ">",
+     "value": 24,
+     "donVi": "tấn"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870230",
+     "ngay": "2026-11-22",
+     "bam": "6087e045be2e738f2dd5143e2128a30d46ca25e43ac47eca0417a08763c177ae"
+    }
+   }
   },
   {
    "hs": "87023039",
@@ -674,11 +1150,27 @@
   },
   {
    "hs": "87023041",
-   "dieuKien": "Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
+   "dieuKien": "khối lượng toàn bộ theo thiết kế (GVW) / khối lượng hàng chuyên chở / lượng giãn nước > 24 tấn",
    "loaiKhac": false,
    "nguon": "tax.87023041",
    "trich": "87023041 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "khoiLuongToanBo",
+     "op": ">",
+     "value": 24,
+     "donVi": "tấn"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870230",
+     "ngay": "2026-11-22",
+     "bam": "6087e045be2e738f2dd5143e2128a30d46ca25e43ac47eca0417a08763c177ae"
+    }
+   }
   },
   {
    "hs": "87023049",
@@ -705,19 +1197,61 @@
   },
   {
    "hs": "87023050",
-   "dieuKien": "Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)",
+   "dieuKien": "tên loại hàng: Ô tô; kiểu ô tô chở người: ô tô bao gồm cả ô tô limousine kéo dài; không: là ô tô van",
    "loaiKhac": false,
    "nguon": "tax.87023050",
    "trich": "87023050 - - - Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Ô tô"
+    },
+    {
+     "fact": "kieuXeChoNguoi",
+     "op": "TRONG",
+     "value": [
+      "LIMOUSINE_KEO_DAI"
+     ]
+    },
+    {
+     "fact": "laOtoVan",
+     "op": "KHONG"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870230",
+     "ngay": "2026-11-22",
+     "bam": "6087e045be2e738f2dd5143e2128a30d46ca25e43ac47eca0417a08763c177ae"
+    }
+   }
   },
   {
    "hs": "87023061",
-   "dieuKien": "Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
+   "dieuKien": "khối lượng toàn bộ theo thiết kế (GVW) / khối lượng hàng chuyên chở / lượng giãn nước > 24 tấn",
    "loaiKhac": false,
    "nguon": "tax.87023061",
    "trich": "87023061 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "khoiLuongToanBo",
+     "op": ">",
+     "value": 24,
+     "donVi": "tấn"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870230",
+     "ngay": "2026-11-22",
+     "bam": "6087e045be2e738f2dd5143e2128a30d46ca25e43ac47eca0417a08763c177ae"
+    }
+   }
   },
   {
    "hs": "87023069",
@@ -745,11 +1279,27 @@
   },
   {
    "hs": "87023071",
-   "dieuKien": "Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
+   "dieuKien": "khối lượng toàn bộ theo thiết kế (GVW) / khối lượng hàng chuyên chở / lượng giãn nước > 24 tấn",
    "loaiKhac": false,
    "nguon": "tax.87023071",
    "trich": "87023071 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "khoiLuongToanBo",
+     "op": ">",
+     "value": 24,
+     "donVi": "tấn"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870230",
+     "ngay": "2026-11-22",
+     "bam": "6087e045be2e738f2dd5143e2128a30d46ca25e43ac47eca0417a08763c177ae"
+    }
+   }
   },
   {
    "hs": "87023079",
@@ -777,11 +1327,27 @@
   },
   {
    "hs": "87023091",
-   "dieuKien": "Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
+   "dieuKien": "khối lượng toàn bộ theo thiết kế (GVW) / khối lượng hàng chuyên chở / lượng giãn nước > 24 tấn",
    "loaiKhac": false,
    "nguon": "tax.87023091",
    "trich": "87023091 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "khoiLuongToanBo",
+     "op": ">",
+     "value": 24,
+     "donVi": "tấn"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870230",
+     "ngay": "2026-11-22",
+     "bam": "6087e045be2e738f2dd5143e2128a30d46ca25e43ac47eca0417a08763c177ae"
+    }
+   }
   },
   {
    "hs": "87023099",
@@ -809,19 +1375,61 @@
   },
   {
    "hs": "87024010",
-   "dieuKien": "Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)",
+   "dieuKien": "tên loại hàng: Ô tô; kiểu ô tô chở người: ô tô bao gồm cả ô tô limousine kéo dài; không: là ô tô van",
    "loaiKhac": false,
    "nguon": "tax.87024010",
    "trich": "87024010 - - - Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Ô tô"
+    },
+    {
+     "fact": "kieuXeChoNguoi",
+     "op": "TRONG",
+     "value": [
+      "LIMOUSINE_KEO_DAI"
+     ]
+    },
+    {
+     "fact": "laOtoVan",
+     "op": "KHONG"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870240",
+     "ngay": "2026-11-22",
+     "bam": "bc536982949cb0cc8531b673b70da33a2b2c4c3a7731adc177eca09cbfd448ff"
+    }
+   }
   },
   {
    "hs": "87024021",
-   "dieuKien": "Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
+   "dieuKien": "khối lượng toàn bộ theo thiết kế (GVW) / khối lượng hàng chuyên chở / lượng giãn nước > 24 tấn",
    "loaiKhac": false,
    "nguon": "tax.87024021",
    "trich": "87024021 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "khoiLuongToanBo",
+     "op": ">",
+     "value": 24,
+     "donVi": "tấn"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870240",
+     "ngay": "2026-11-22",
+     "bam": "bc536982949cb0cc8531b673b70da33a2b2c4c3a7731adc177eca09cbfd448ff"
+    }
+   }
   },
   {
    "hs": "87024029",
@@ -848,11 +1456,27 @@
   },
   {
    "hs": "87024031",
-   "dieuKien": "Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
+   "dieuKien": "khối lượng toàn bộ theo thiết kế (GVW) / khối lượng hàng chuyên chở / lượng giãn nước > 24 tấn",
    "loaiKhac": false,
    "nguon": "tax.87024031",
    "trich": "87024031 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "khoiLuongToanBo",
+     "op": ">",
+     "value": 24,
+     "donVi": "tấn"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870240",
+     "ngay": "2026-11-22",
+     "bam": "bc536982949cb0cc8531b673b70da33a2b2c4c3a7731adc177eca09cbfd448ff"
+    }
+   }
   },
   {
    "hs": "87024039",
@@ -879,11 +1503,27 @@
   },
   {
    "hs": "87024041",
-   "dieuKien": "Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
+   "dieuKien": "khối lượng toàn bộ theo thiết kế (GVW) / khối lượng hàng chuyên chở / lượng giãn nước > 24 tấn",
    "loaiKhac": false,
    "nguon": "tax.87024041",
    "trich": "87024041 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "khoiLuongToanBo",
+     "op": ">",
+     "value": 24,
+     "donVi": "tấn"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870240",
+     "ngay": "2026-11-22",
+     "bam": "bc536982949cb0cc8531b673b70da33a2b2c4c3a7731adc177eca09cbfd448ff"
+    }
+   }
   },
   {
    "hs": "87024049",
@@ -910,19 +1550,61 @@
   },
   {
    "hs": "87024050",
-   "dieuKien": "Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)",
+   "dieuKien": "tên loại hàng: Ô tô; kiểu ô tô chở người: ô tô bao gồm cả ô tô limousine kéo dài; không: là ô tô van",
    "loaiKhac": false,
    "nguon": "tax.87024050",
    "trich": "87024050 - - - Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Ô tô"
+    },
+    {
+     "fact": "kieuXeChoNguoi",
+     "op": "TRONG",
+     "value": [
+      "LIMOUSINE_KEO_DAI"
+     ]
+    },
+    {
+     "fact": "laOtoVan",
+     "op": "KHONG"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870240",
+     "ngay": "2026-11-22",
+     "bam": "bc536982949cb0cc8531b673b70da33a2b2c4c3a7731adc177eca09cbfd448ff"
+    }
+   }
   },
   {
    "hs": "87024061",
-   "dieuKien": "Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
+   "dieuKien": "khối lượng toàn bộ theo thiết kế (GVW) / khối lượng hàng chuyên chở / lượng giãn nước > 24 tấn",
    "loaiKhac": false,
    "nguon": "tax.87024061",
    "trich": "87024061 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "khoiLuongToanBo",
+     "op": ">",
+     "value": 24,
+     "donVi": "tấn"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870240",
+     "ngay": "2026-11-22",
+     "bam": "bc536982949cb0cc8531b673b70da33a2b2c4c3a7731adc177eca09cbfd448ff"
+    }
+   }
   },
   {
    "hs": "87024069",
@@ -950,11 +1632,27 @@
   },
   {
    "hs": "87024071",
-   "dieuKien": "Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
+   "dieuKien": "khối lượng toàn bộ theo thiết kế (GVW) / khối lượng hàng chuyên chở / lượng giãn nước > 24 tấn",
    "loaiKhac": false,
    "nguon": "tax.87024071",
    "trich": "87024071 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "khoiLuongToanBo",
+     "op": ">",
+     "value": 24,
+     "donVi": "tấn"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870240",
+     "ngay": "2026-11-22",
+     "bam": "bc536982949cb0cc8531b673b70da33a2b2c4c3a7731adc177eca09cbfd448ff"
+    }
+   }
   },
   {
    "hs": "87024079",
@@ -982,11 +1680,27 @@
   },
   {
    "hs": "87024091",
-   "dieuKien": "Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
+   "dieuKien": "khối lượng toàn bộ theo thiết kế (GVW) / khối lượng hàng chuyên chở / lượng giãn nước > 24 tấn",
    "loaiKhac": false,
    "nguon": "tax.87024091",
    "trich": "87024091 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "khoiLuongToanBo",
+     "op": ">",
+     "value": 24,
+     "donVi": "tấn"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870240",
+     "ngay": "2026-11-22",
+     "bam": "bc536982949cb0cc8531b673b70da33a2b2c4c3a7731adc177eca09cbfd448ff"
+    }
+   }
   },
   {
    "hs": "87024099",
@@ -1014,19 +1728,61 @@
   },
   {
    "hs": "87029010",
-   "dieuKien": "Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)",
+   "dieuKien": "tên loại hàng: Ô tô; kiểu ô tô chở người: ô tô bao gồm cả ô tô limousine kéo dài; không: là ô tô van",
    "loaiKhac": false,
    "nguon": "tax.87029010",
    "trich": "87029010 - - - Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Ô tô"
+    },
+    {
+     "fact": "kieuXeChoNguoi",
+     "op": "TRONG",
+     "value": [
+      "LIMOUSINE_KEO_DAI"
+     ]
+    },
+    {
+     "fact": "laOtoVan",
+     "op": "KHONG"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870290",
+     "ngay": "2026-11-22",
+     "bam": "260e401f23f07f2dbe720929258dbd393bbf112ef41acfd678157430b4e1faa4"
+    }
+   }
   },
   {
    "hs": "87029021",
-   "dieuKien": "Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
+   "dieuKien": "khối lượng toàn bộ theo thiết kế (GVW) / khối lượng hàng chuyên chở / lượng giãn nước > 24 tấn",
    "loaiKhac": false,
    "nguon": "tax.87029021",
    "trich": "87029021 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "khoiLuongToanBo",
+     "op": ">",
+     "value": 24,
+     "donVi": "tấn"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870290",
+     "ngay": "2026-11-22",
+     "bam": "260e401f23f07f2dbe720929258dbd393bbf112ef41acfd678157430b4e1faa4"
+    }
+   }
   },
   {
    "hs": "87029029",
@@ -1050,11 +1806,30 @@
   },
   {
    "hs": "87029031",
-   "dieuKien": "Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
+   "dieuKien": "khối lượng toàn bộ theo thiết kế (GVW) / khối lượng hàng chuyên chở / lượng giãn nước > 24 tấn",
    "loaiKhac": false,
    "nguon": "tax.87029031",
    "trich": "87029031 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "khoiLuongToanBo",
+     "op": ">",
+     "value": 24,
+     "donVi": "tấn"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870290",
+     "ngay": "2026-11-22",
+     "bam": "260e401f23f07f2dbe720929258dbd393bbf112ef41acfd678157430b4e1faa4"
+    }
+   },
+   "phanConLai": [
+    "87029021"
+   ]
   },
   {
    "hs": "87029032",
@@ -1081,11 +1856,11 @@
   },
   {
    "hs": "87029033",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "dieuKien": "khối lượng toàn bộ theo thiết kế (GVW) / khối lượng hàng chuyên chở / lượng giãn nước > 24 tấn",
    "loaiKhac": true,
    "nguon": "tax.87029033",
    "trich": "87029033 - - - Loại khác, có khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
-   "nguonLoai": "AI_DA_KIEM",
+   "nguonLoai": "CLAUDE_DUYET",
    "phamViLoaiKhac": {
     "nguonLoai": "MAY_SUY",
     "cha": "870290~r16408",
@@ -1101,6 +1876,22 @@
     ],
     "toTienCoTen": "870290",
     "dinhNghiaDuoc": true
+   },
+   "dieuKienSo": [
+    {
+     "fact": "khoiLuongToanBo",
+     "op": ">",
+     "value": 24,
+     "donVi": "tấn"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870290",
+     "ngay": "2026-11-22",
+     "bam": "260e401f23f07f2dbe720929258dbd393bbf112ef41acfd678157430b4e1faa4"
+    }
    }
   },
   {
@@ -1131,19 +1922,61 @@
   },
   {
    "hs": "87029040",
-   "dieuKien": "Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)",
+   "dieuKien": "tên loại hàng: Ô tô; kiểu ô tô chở người: ô tô bao gồm cả ô tô limousine kéo dài; không: là ô tô van",
    "loaiKhac": false,
    "nguon": "tax.87029040",
    "trich": "87029040 - - - Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Ô tô"
+    },
+    {
+     "fact": "kieuXeChoNguoi",
+     "op": "TRONG",
+     "value": [
+      "LIMOUSINE_KEO_DAI"
+     ]
+    },
+    {
+     "fact": "laOtoVan",
+     "op": "KHONG"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870290",
+     "ngay": "2026-11-22",
+     "bam": "260e401f23f07f2dbe720929258dbd393bbf112ef41acfd678157430b4e1faa4"
+    }
+   }
   },
   {
    "hs": "87029051",
-   "dieuKien": "Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
+   "dieuKien": "khối lượng toàn bộ theo thiết kế (GVW) / khối lượng hàng chuyên chở / lượng giãn nước > 24 tấn",
    "loaiKhac": false,
    "nguon": "tax.87029051",
    "trich": "87029051 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "khoiLuongToanBo",
+     "op": ">",
+     "value": 24,
+     "donVi": "tấn"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870290",
+     "ngay": "2026-11-22",
+     "bam": "260e401f23f07f2dbe720929258dbd393bbf112ef41acfd678157430b4e1faa4"
+    }
+   }
   },
   {
    "hs": "87029059",
@@ -1168,11 +2001,30 @@
   },
   {
    "hs": "87029061",
-   "dieuKien": "Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
+   "dieuKien": "khối lượng toàn bộ theo thiết kế (GVW) / khối lượng hàng chuyên chở / lượng giãn nước > 24 tấn",
    "loaiKhac": false,
    "nguon": "tax.87029061",
    "trich": "87029061 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "khoiLuongToanBo",
+     "op": ">",
+     "value": 24,
+     "donVi": "tấn"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870290",
+     "ngay": "2026-11-22",
+     "bam": "260e401f23f07f2dbe720929258dbd393bbf112ef41acfd678157430b4e1faa4"
+    }
+   },
+   "phanConLai": [
+    "87029051"
+   ]
   },
   {
    "hs": "87029069",
@@ -1201,11 +2053,27 @@
   },
   {
    "hs": "87029071",
-   "dieuKien": "Khối lượng toàn bộ theo thiết kế (SEN) không quá 24 tấn",
+   "dieuKien": "khối lượng toàn bộ theo thiết kế (GVW) / khối lượng hàng chuyên chở / lượng giãn nước <= 24 tấn",
    "loaiKhac": false,
    "nguon": "tax.87029071",
    "trich": "87029071 - - - - Khối lượng toàn bộ theo thiết kế (SEN) không quá 24 tấn",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "khoiLuongToanBo",
+     "op": "<=",
+     "value": 24,
+     "donVi": "tấn"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870290",
+     "ngay": "2026-11-22",
+     "bam": "260e401f23f07f2dbe720929258dbd393bbf112ef41acfd678157430b4e1faa4"
+    }
+   }
   },
   {
    "hs": "87029079",
@@ -1234,11 +2102,11 @@
   },
   {
    "hs": "87029080",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "dieuKien": "khối lượng toàn bộ theo thiết kế (GVW) / khối lượng hàng chuyên chở / lượng giãn nước > 24 tấn",
    "loaiKhac": true,
    "nguon": "tax.87029080",
    "trich": "87029080 - - - Loại khác, có khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
-   "nguonLoai": "AI_DA_KIEM",
+   "nguonLoai": "CLAUDE_DUYET",
    "phamViLoaiKhac": {
     "nguonLoai": "MAY_SUY",
     "cha": "870290~r16418",
@@ -1257,6 +2125,22 @@
     ],
     "toTienCoTen": "870290",
     "dinhNghiaDuoc": true
+   },
+   "dieuKienSo": [
+    {
+     "fact": "khoiLuongToanBo",
+     "op": ">",
+     "value": 24,
+     "donVi": "tấn"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870290",
+     "ngay": "2026-11-22",
+     "bam": "260e401f23f07f2dbe720929258dbd393bbf112ef41acfd678157430b4e1faa4"
+    }
    }
   },
   {
@@ -2297,5 +3181,613 @@
   "dat": 95,
   "loai": 0,
   "nguonBiCat": []
- }
+ },
+ "dieuKienNut": [
+  {
+   "id": "870210~r16314",
+   "nguon": "tieuDe.870210~r16314",
+   "trich": "870210~r16314 Dạng CKD (SEN)",
+   "dieuKienSo": [
+    {
+     "fact": "daLapRap",
+     "op": "KHONG"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870210",
+     "ngay": "2026-11-22",
+     "bam": "10b52edf9979f2fe2bb4ab9621030e6a8e369489535aaff34c1efd25b9f927b1"
+    }
+   }
+  },
+  {
+   "id": "8702104",
+   "nguon": "tieuDe.8702104",
+   "trich": "8702104 Ô tô khách (1) (motor coaches, buses hoặc minibuses)",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Ô tô khách"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870210",
+     "ngay": "2026-11-22",
+     "bam": "10b52edf9979f2fe2bb4ab9621030e6a8e369489535aaff34c1efd25b9f927b1"
+    }
+   }
+  },
+  {
+   "id": "8702107",
+   "nguon": "tieuDe.8702107",
+   "trich": "8702107 Loại khác, chở từ 30 người trở lên và được thiết kế đặc biệt để sử dụng trong sân bay (SEN)",
+   "dieuKienSo": [
+    {
+     "fact": "congDung",
+     "op": "CONG_DUNG",
+     "value": "được thiết kế đặc biệt"
+    },
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": "sân bay"
+    },
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": "chở từ 30 người trở lên"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870210",
+     "ngay": "2026-11-22",
+     "bam": "10b52edf9979f2fe2bb4ab9621030e6a8e369489535aaff34c1efd25b9f927b1"
+    }
+   }
+  },
+  {
+   "id": "8702108",
+   "nguon": "tieuDe.8702108",
+   "trich": "8702108 Ô tô khách (1) (motor coaches, buses hoặc minibuses) khác",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Ô tô khách"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870210",
+     "ngay": "2026-11-22",
+     "bam": "10b52edf9979f2fe2bb4ab9621030e6a8e369489535aaff34c1efd25b9f927b1"
+    }
+   },
+   "phanConLai": [
+    "8702107"
+   ]
+  },
+  {
+   "id": "870220~r16335",
+   "nguon": "tieuDe.870220~r16335",
+   "trich": "870220~r16335 Dạng CKD (SEN)",
+   "dieuKienSo": [
+    {
+     "fact": "daLapRap",
+     "op": "KHONG"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870220",
+     "ngay": "2026-11-22",
+     "bam": "e5ea705a4869a3c7bda0b98cdf14021db03eac416d5e0f9eba3936afd5dd2a0d"
+    }
+   }
+  },
+  {
+   "id": "8702202",
+   "nguon": "tieuDe.8702202",
+   "trich": "8702202 Loại khác, chở từ 30 người trở lên",
+   "dieuKienSo": [
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": "chở từ 30 người trở lên"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870220",
+     "ngay": "2026-11-22",
+     "bam": "e5ea705a4869a3c7bda0b98cdf14021db03eac416d5e0f9eba3936afd5dd2a0d"
+    }
+   }
+  },
+  {
+   "id": "8702203",
+   "nguon": "tieuDe.8702203",
+   "trich": "8702203 Ô tô khách (1) (motor coaches, buses hoặc minibuses) khác",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Ô tô khách"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870220",
+     "ngay": "2026-11-22",
+     "bam": "e5ea705a4869a3c7bda0b98cdf14021db03eac416d5e0f9eba3936afd5dd2a0d"
+    }
+   },
+   "phanConLai": [
+    "8702202"
+   ]
+  },
+  {
+   "id": "8702206",
+   "nguon": "tieuDe.8702206",
+   "trich": "8702206 Loại khác, chở từ 30 người trở lên và được thiết kế đặc biệt để sử dụng trong sân bay (SEN)",
+   "dieuKienSo": [
+    {
+     "fact": "congDung",
+     "op": "CONG_DUNG",
+     "value": "được thiết kế đặc biệt"
+    },
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": "sân bay"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870220",
+     "ngay": "2026-11-22",
+     "bam": "e5ea705a4869a3c7bda0b98cdf14021db03eac416d5e0f9eba3936afd5dd2a0d"
+    }
+   }
+  },
+  {
+   "id": "8702207",
+   "nguon": "tieuDe.8702207",
+   "trich": "8702207 Ô tô khách (1) (motor coaches, buses hoặc minibuses) khác",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Ô tô khách"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870220",
+     "ngay": "2026-11-22",
+     "bam": "e5ea705a4869a3c7bda0b98cdf14021db03eac416d5e0f9eba3936afd5dd2a0d"
+    }
+   },
+   "phanConLai": [
+    "8702206"
+   ]
+  },
+  {
+   "id": "870230~r16362",
+   "nguon": "tieuDe.870230~r16362",
+   "trich": "870230~r16362 Dạng CKD (SEN)",
+   "dieuKienSo": [
+    {
+     "fact": "daLapRap",
+     "op": "KHONG"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870230",
+     "ngay": "2026-11-22",
+     "bam": "6087e045be2e738f2dd5143e2128a30d46ca25e43ac47eca0417a08763c177ae"
+    }
+   }
+  },
+  {
+   "id": "8702302",
+   "nguon": "tieuDe.8702302",
+   "trich": "8702302 Loại khác, chở từ 30 người trở lên",
+   "dieuKienSo": [
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": "chở từ 30 người trở lên"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870230",
+     "ngay": "2026-11-22",
+     "bam": "6087e045be2e738f2dd5143e2128a30d46ca25e43ac47eca0417a08763c177ae"
+    }
+   }
+  },
+  {
+   "id": "8702303",
+   "nguon": "tieuDe.8702303",
+   "trich": "8702303 Ô tô khách (1) (motor coaches, buses hoặc minibuses) khác",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Ô tô khách"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870230",
+     "ngay": "2026-11-22",
+     "bam": "6087e045be2e738f2dd5143e2128a30d46ca25e43ac47eca0417a08763c177ae"
+    }
+   },
+   "phanConLai": [
+    "8702302"
+   ]
+  },
+  {
+   "id": "8702306",
+   "nguon": "tieuDe.8702306",
+   "trich": "8702306 Loại khác, chở từ 30 người trở lên và được thiết kế đặc biệt để sử dụng trong sân bay (SEN)",
+   "dieuKienSo": [
+    {
+     "fact": "congDung",
+     "op": "CONG_DUNG",
+     "value": "được thiết kế đặc biệt"
+    },
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": "sân bay"
+    },
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": "chở từ 30 người trở lên"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870230",
+     "ngay": "2026-11-22",
+     "bam": "6087e045be2e738f2dd5143e2128a30d46ca25e43ac47eca0417a08763c177ae"
+    }
+   }
+  },
+  {
+   "id": "8702307",
+   "nguon": "tieuDe.8702307",
+   "trich": "8702307 Ô tô khách (1) (motor coaches, buses hoặc minibuses) khác",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Ô tô khách"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870230",
+     "ngay": "2026-11-22",
+     "bam": "6087e045be2e738f2dd5143e2128a30d46ca25e43ac47eca0417a08763c177ae"
+    }
+   },
+   "phanConLai": [
+    "8702306"
+   ]
+  },
+  {
+   "id": "870240~r16385",
+   "nguon": "tieuDe.870240~r16385",
+   "trich": "870240~r16385 Dạng CKD (SEN)",
+   "dieuKienSo": [
+    {
+     "fact": "daLapRap",
+     "op": "KHONG"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870240",
+     "ngay": "2026-11-22",
+     "bam": "bc536982949cb0cc8531b673b70da33a2b2c4c3a7731adc177eca09cbfd448ff"
+    }
+   }
+  },
+  {
+   "id": "8702402",
+   "nguon": "tieuDe.8702402",
+   "trich": "8702402 Loại khác, chở từ 30 người trở lên",
+   "dieuKienSo": [
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": "chở từ 30 người trở lên"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870240",
+     "ngay": "2026-11-22",
+     "bam": "bc536982949cb0cc8531b673b70da33a2b2c4c3a7731adc177eca09cbfd448ff"
+    }
+   }
+  },
+  {
+   "id": "8702403",
+   "nguon": "tieuDe.8702403",
+   "trich": "8702403 Ô tô khách (1) (motor coaches, buses hoặc minibuses) khác",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Ô tô khách"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870240",
+     "ngay": "2026-11-22",
+     "bam": "bc536982949cb0cc8531b673b70da33a2b2c4c3a7731adc177eca09cbfd448ff"
+    }
+   },
+   "phanConLai": [
+    "8702402"
+   ]
+  },
+  {
+   "id": "8702406",
+   "nguon": "tieuDe.8702406",
+   "trich": "8702406 Loại khác, chở từ 30 người trở lên và được thiết kế đặc biệt để sử dụng trong sân bay (SEN)",
+   "dieuKienSo": [
+    {
+     "fact": "congDung",
+     "op": "CONG_DUNG",
+     "value": "được thiết kế đặc biệt"
+    },
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": "sân bay"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870240",
+     "ngay": "2026-11-22",
+     "bam": "bc536982949cb0cc8531b673b70da33a2b2c4c3a7731adc177eca09cbfd448ff"
+    }
+   }
+  },
+  {
+   "id": "8702407",
+   "nguon": "tieuDe.8702407",
+   "trich": "8702407 Ô tô khách (1) (motor coaches, buses hoặc minibuses) khác",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Ô tô khách"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870240",
+     "ngay": "2026-11-22",
+     "bam": "bc536982949cb0cc8531b673b70da33a2b2c4c3a7731adc177eca09cbfd448ff"
+    }
+   },
+   "phanConLai": [
+    "8702406"
+   ]
+  },
+  {
+   "id": "870290~r16408",
+   "nguon": "tieuDe.870290~r16408",
+   "trich": "870290~r16408 Dạng CKD (SEN)",
+   "dieuKienSo": [
+    {
+     "fact": "daLapRap",
+     "op": "KHONG"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870290",
+     "ngay": "2026-11-22",
+     "bam": "260e401f23f07f2dbe720929258dbd393bbf112ef41acfd678157430b4e1faa4"
+    }
+   }
+  },
+  {
+   "id": "870290~r16413",
+   "nguon": "tieuDe.870290~r16413",
+   "trich": "870290~r16413 Ô tô khách (1) (motor coaches, buses hoặc minibuses) khác",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Ô tô khách"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870290",
+     "ngay": "2026-11-22",
+     "bam": "260e401f23f07f2dbe720929258dbd393bbf112ef41acfd678157430b4e1faa4"
+    }
+   },
+   "phanConLai": [
+    "8702902"
+   ]
+  },
+  {
+   "id": "8702902",
+   "nguon": "tieuDe.8702902",
+   "trich": "8702902 Ô tô khách (1) (motor coaches, buses hoặc minibuses), chở từ 30 người trở lên",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Ô tô khách"
+    },
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": "chở từ 30 người trở lên"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870290",
+     "ngay": "2026-11-22",
+     "bam": "260e401f23f07f2dbe720929258dbd393bbf112ef41acfd678157430b4e1faa4"
+    }
+   }
+  },
+  {
+   "id": "8702905",
+   "nguon": "tieuDe.8702905",
+   "trich": "8702905 Ô tô khách, chở từ 30 người trở lên và được thiết kế đặc biệt để sử dụng trong sân bay (SEN)",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Ô tô khách"
+    },
+    {
+     "fact": "congDung",
+     "op": "CONG_DUNG",
+     "value": "được thiết kế đặc biệt"
+    },
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": "sân bay"
+    },
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": "chở từ 30 người trở lên"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870290",
+     "ngay": "2026-11-22",
+     "bam": "260e401f23f07f2dbe720929258dbd393bbf112ef41acfd678157430b4e1faa4"
+    }
+   }
+  },
+  {
+   "id": "8702906",
+   "nguon": "tieuDe.8702906",
+   "trich": "8702906 Ô tô khách (1) (motor coaches, buses hoặc minibuses) khác, chở từ 30 người trở lên",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Ô tô khách"
+    },
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": "chở từ 30 người trở lên"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870290",
+     "ngay": "2026-11-22",
+     "bam": "260e401f23f07f2dbe720929258dbd393bbf112ef41acfd678157430b4e1faa4"
+    }
+   },
+   "phanConLai": [
+    "8702905"
+   ]
+  },
+  {
+   "id": "8702907",
+   "nguon": "tieuDe.8702907",
+   "trich": "8702907 Ô tô khách (1) (motor coaches, buses hoặc minibuses) khác",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Ô tô khách"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "claude-agent:tho-hs-03-20261122#soat-870290",
+     "ngay": "2026-11-22",
+     "bam": "260e401f23f07f2dbe720929258dbd393bbf112ef41acfd678157430b4e1faa4"
+    }
+   },
+   "phanConLai": [
+    "8702905",
+    "8702906"
+   ]
+  }
+ ]
 }

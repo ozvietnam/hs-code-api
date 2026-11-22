@@ -12,6 +12,10 @@ import path from 'node:path';
   const st9026 = JSON.parse(fs.readFileSync('data/so-tay/9026.json', 'utf8'));
   st9026.dong8 = (st9026.dong8 || []).map((d) => (d.hs === '90262050' ? { ...d, dieuKienSo: [] } : d));
   fs.writeFileSync(path.join(TEST_DATA_DIR, 'so-tay/9026.json'), JSON.stringify(st9026));
+  const st8536 = JSON.parse(fs.readFileSync('data/so-tay/8536.json', 'utf8'));
+  st8536.dong8 = (st8536.dong8 || []).map((d) => (String(d.hs || '').startsWith('853650') ? { ...d, dieuKienSo: [] } : d));
+  st8536.dieuKienNut = (st8536.dieuKienNut || []).filter((n) => !String(n.id || '').startsWith('853650'));
+  fs.writeFileSync(path.join(TEST_DATA_DIR, 'so-tay/8536.json'), JSON.stringify(st8536));
 }
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);

@@ -42,8 +42,8 @@ kiem('id cạnh không trùng', new Set(canh.map((e) => e.id)).size === canh.len
 const moCoi = canh.filter((e) => !D.coNut(e.tu) || !D.coNut(e.toi));
 kiem('0 cạnh mồ côi (hai đầu đều là nhóm / phân nhóm / dòng còn trong biểu thuế)', moCoi.length === 0, moCoi.slice(0, 5).map((e) => `${e.id}`).join(', '));
 kiem('không cạnh nào tự trỏ vào chính nó', !canh.some((e) => e.tu === e.toi));
-const bacSai = canh.filter((e) => (['C5', 'C6', 'C7', 'C9', 'C11'].includes(e.loai) && e.bac !== 1) || (e.loai === 'C8' && e.bac === 1));
-kiem('thứ bậc: C5/C6/C7/C9/C11 bậc 1; C8 không bao giờ bậc 1', bacSai.length === 0, bacSai.slice(0, 3).map((e) => e.id).join(', '));
+const bacSai = canh.filter((e) => (['C5', 'C6', 'C7', 'C9', 'C11', 'LOAI_TRU'].includes(e.loai) && e.bac !== 1) || (e.loai === 'C8' && e.bac === 1) || (e.loai === 'WCO' && e.bac !== (e.headingSuspect ? 2 : 1)));
+kiem('thứ bậc: C5/C6/C7/C9/C11/LOAI_TRU bậc 1; WCO sạch bậc 1 & nghi ngờ OCR bậc 2; C8 không bao giờ bậc 1', bacSai.length === 0, bacSai.slice(0, 3).map((e) => e.id).join(', '));
 const c8ChuaDuyet = canh.filter((e) => e.loai === 'C8' && e.nguonKho === 'confusion-pairs' && e.daDuyet !== true && e.bac !== 4);
 kiem('C8 từ từ điển chưa duyệt mang bậc 4 (chỉ gợi ý), không lẫn vào bậc thông báo phân loại', c8ChuaDuyet.length === 0);
 
@@ -58,7 +58,7 @@ const c6Sai = c6.filter((e) => {
   return !dung;
 });
 kiem(`C6 khớp 1-1 với C5 (${c5.length} ↔ ${c6.length}): đảo chiều, giữ nguyên trích + nguồn + điều kiện của cạnh gốc`, c5.length > 0 && c5.length === c6.length && c6Sai.length === 0 && gocDaDung.size === c5.length, c6Sai.slice(0, 3).map((e) => e.id).join(', '));
-kiem('C5 không sinhTuDong; C6, C9 và C11 sinhTuDong', c5.every((e) => e.sinhTuDong === false) && ['C6', 'C9', 'C11'].every((l) => canh.filter((e) => e.loai === l).every((e) => e.sinhTuDong === true)));
+kiem('C5 không sinhTuDong; C6, C9, C11, LOAI_TRU và WCO sinhTuDong', c5.every((e) => e.sinhTuDong === false) && ['C6', 'C9', 'C11', 'LOAI_TRU', 'WCO'].every((l) => canh.filter((e) => e.loai === l).every((e) => e.sinhTuDong === true)));
 const c6ThieuTuKhoa = c6.filter((e) => !Array.isArray(e.tuKhoaDieuKien));
 kiem('mọi cạnh C6 mang tuKhoaDieuKien (rút bằng luật từ dòng loại trừ gốc)', c6ThieuTuKhoa.length === 0 && c6.filter((e) => e.tuKhoaDieuKien.length > 0).length / c6.length > 0.95, `${c6.filter((e) => e.tuKhoaDieuKien.length === 0).length} cạnh rỗng từ khoá`);
 

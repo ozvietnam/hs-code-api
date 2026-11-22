@@ -12,9 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "mw-soatS2:20261107T0448#soat-690721",
-    "ngay": "2026-11-07",
-    "bam": "e06ec7e73a518c07516241a2047c887fb898a48c931d01e4b21a0c4b9905cc82"
+    "phien": "claude-agent:ozv-1842#soat-690721",
+    "ngay": "2026-11-22",
+    "bam": "9ed9869458b180cd29eae93b1a66144a158824e91380542d705ec0b31afbde46",
+    "ghiChu": "Đối chiếu VI+EN: tiêu đề 6907212 \"có mặt lớn nhất có thể nằm gọn trong một hình vuông có cạnh dưới 7 cm\" số hoá bằng tenLoai nguyên văn vì khoá kichThuoc trong tu-vung@2 yêu cầu 2–3 chiều (soChieu [2,3]), không đọc biên đơn 1 chiều \"cạnh dưới 7 cm\" (OZV-1862)."
   },
   "dieuKienNut": [
     {
@@ -23,10 +24,9 @@
       "trich": "6907212 Loại khác, có mặt lớn nhất có thể nằm gọn trong một hình vuông có cạnh dưới 7 cm",
       "dieuKienSo": [
         {
-          "fact": "kichThuoc",
-          "op": "<",
-          "value": 7,
-          "donVi": "cm"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "có mặt lớn nhất có thể nằm gọn trong một hình vuông có cạnh dưới 7 cm"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -228,13 +228,7 @@
     {
       "ma": "6907212",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.6907212 \"… có cạnh dưới 7 cm\" ⇒ kichThuoc < 7 cm (\"dưới\" = <; đã đối chiếu tay op/biên với chữ: biên 7, đơn vị cm như chữ trích)"
-    },
-    {
-      "ma": "6907212",
-      "loai": "BO_VE",
-      "ve": "có mặt lớn nhất có thể nằm gọn trong một hình vuông có cạnh",
-      "lyDo": "Vế này và biên \"dưới 7 cm\" là MỘT điều kiện kích thước: mặt lớn nhất nằm gọn trong hình vuông cạnh 7 cm ⟺ mọi chiều của hàng đều dưới 7 cm, đã phủ bằng kichThuoc < 7 cm nên bỏ vế diễn từ không làm đổi mã"
+      "ghiChu": "tieuDe.6907212 \"… có mặt lớn nhất có thể nằm gọn trong một hình vuông có cạnh dưới 7 cm\" ⇒ tenLoai TEN_LOAI \"có mặt lớn nhất có thể nằm gọn trong một hình vuông có cạnh dưới 7 cm\" (khoá kichThuoc trong tu-vung@2 có soChieu [2,3] không đọc biên 1 chiều \"cạnh dưới 7 cm\")."
     }
   ]
 }

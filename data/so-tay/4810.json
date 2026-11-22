@@ -67,6 +67,38 @@
       "nguon": "nhom4810.nhom",
       "trich": "(g) Giấy hoặc bìa ráp (nhóm 68.05) và mica (trừ bột mica) trên nền giấy hoặc bìa (nhóm 68.14).",
       "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "loai": "LOAI_TRU",
+      "dieuKien": "Giấy thơm hoặc giấy thấm tẩm hoặc tráng mỹ phẩm",
+      "sangNhom": "33",
+      "nguon": "nhom4810.nhom",
+      "trich": "(a) Giấy thơm hoặc giấy thấm tẩm hoặc tráng mỹ phẩm (Chương 33).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "loai": "LOAI_TRU",
+      "dieuKien": "Giấy và bìa phủ lớp chất nhạy thuộc các nhóm từ 37.01 đến 37.04",
+      "sangNhom": "3701|3704",
+      "nguon": "nhom4810.nhom",
+      "trich": "(b) Giấy và bìa phủ lớp chất nhạy thuộc các nhóm từ 37.01 đến 37.04.",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "loai": "LOAI_TRU",
+      "dieuKien": "Giấy sao chép của nhóm 48.09 hoặc 48.16",
+      "sangNhom": "4809|4816",
+      "nguon": "nhom4810.nhom",
+      "trich": "(d) Giấy sao chép của nhóm 48.09 hoặc 48.16.",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "loai": "LOAI_TRU",
+      "dieuKien": "Giấy hoặc bìa ráp (nhóm 68.05) và mica (trừ bột mica) trên nền giấy hoặc bìa",
+      "sangNhom": "6805|6814",
+      "nguon": "nhom4810.nhom",
+      "trich": "(g) Giấy hoặc bìa ráp (nhóm 68.05) và mica (trừ bột mica) trên nền giấy hoặc bìa (nhóm 68.14).",
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "phanBiet": [
@@ -235,7 +267,10 @@
           "ngay": "2026-11-11",
           "bam": "12d8a273812300dfb0fe5ee3c56c761708dd2e7611e1f864100b12931795f141"
         }
-      }
+      },
+      "phanConLai": [
+        "48101310"
+      ]
     },
     {
       "hs": "48101399",
@@ -260,7 +295,7 @@
     },
     {
       "hs": "48101410",
-      "dieuKien": "đã in (nội dung, họa tiết, vạch chia); dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): máy ghi tự động; kích thước (dài x rộng x cao) <= 360 mm",
+      "dieuKien": "đã in (nội dung, họa tiết, vạch chia); dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): máy ghi tự động; (kích thước (dài x rộng x cao) <= 360 mm) hoặc (tên loại hàng: không có chiều nào trên 360 mm)",
       "loaiKhac": false,
       "nguon": "tax.48101410",
       "trich": "48101410 - - - Đã in, dùng cho máy ghi tự động, không có chiều nào trên 360 mm (SEN)",
@@ -276,44 +311,75 @@
           "value": "máy ghi tự động"
         },
         {
-          "fact": "kichThuoc",
-          "op": "<=",
-          "value": 360,
-          "donVi": "mm"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "kichThuoc",
+                "op": "<=",
+                "value": 360,
+                "donVi": "mm"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "không có chiều nào trên 360 mm"
+              }
+            ]
+          ]
         }
       ],
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L15-20261111#soat-L15",
-          "ngay": "2026-11-11",
-          "bam": "8bc238d27d7c6726e94f46131a225bb447e19c7630d8a88996fc656374a64627"
+          "phien": "claude-agent:ozv-1842#soat-481014",
+          "ngay": "2026-11-22",
+          "bam": "215a029f256a73040216a4a6e4c49453f599951ae1c40ddecc7cc7daf8f7fae2"
         }
       }
     },
     {
       "hs": "48101491",
-      "dieuKien": "kích thước (dài x rộng x cao) <= 360 mm",
+      "dieuKien": "(kích thước (dài x rộng x cao) <= 360 mm) hoặc (tên loại hàng: Không có chiều nào trên 360 mm)",
       "loaiKhac": false,
       "nguon": "tax.48101491",
       "trich": "48101491 - - - - Không có chiều nào trên 360 mm",
       "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "kichThuoc",
-          "op": "<=",
-          "value": 360,
-          "donVi": "mm"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "kichThuoc",
+                "op": "<=",
+                "value": 360,
+                "donVi": "mm"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Không có chiều nào trên 360 mm"
+              }
+            ]
+          ]
         }
       ],
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L15-20261111#soat-L15",
-          "ngay": "2026-11-11",
-          "bam": "8bc238d27d7c6726e94f46131a225bb447e19c7630d8a88996fc656374a64627"
+          "phien": "claude-agent:ozv-1842#soat-481014",
+          "ngay": "2026-11-22",
+          "bam": "215a029f256a73040216a4a6e4c49453f599951ae1c40ddecc7cc7daf8f7fae2"
         }
-      }
+      },
+      "phanConLai": [
+        "48101410"
+      ]
     },
     {
       "hs": "48101499",
@@ -334,11 +400,12 @@
         ],
         "toTienCoTen": "481014",
         "dinhNghiaDuoc": true
-      }
+      },
+      "dieuKienSo": []
     },
     {
       "hs": "48101910",
-      "dieuKien": "đã in (nội dung, họa tiết, vạch chia); dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): máy ghi tự động; kích thước (dài x rộng x cao) <= 360 mm",
+      "dieuKien": "đã in (nội dung, họa tiết, vạch chia); dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): máy ghi tự động; (kích thước (dài x rộng x cao) <= 360 mm) hoặc (tên loại hàng: không có chiều nào trên 360 mm)",
       "loaiKhac": false,
       "nguon": "tax.48101910",
       "trich": "48101910 - - - Đã in, loại dùng cho máy ghi tự động, không có chiều nào trên 360 mm ở dạng không gấp(SEN)",
@@ -354,18 +421,32 @@
           "value": "máy ghi tự động"
         },
         {
-          "fact": "kichThuoc",
-          "op": "<=",
-          "value": 360,
-          "donVi": "mm"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "kichThuoc",
+                "op": "<=",
+                "value": 360,
+                "donVi": "mm"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "không có chiều nào trên 360 mm"
+              }
+            ]
+          ]
         }
       ],
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L15-20261111#soat-L15",
-          "ngay": "2026-11-11",
-          "bam": "83f00dd2c3a7a34e1ffe365fe8efc632f67edc9b42dd283bca8b906ef6d74cf1"
+          "phien": "claude-agent:ozv-1842#soat-481019",
+          "ngay": "2026-11-22",
+          "bam": "d5376732e2e7719debfd6506af97f95b1a116b5597a2a5ca5a6af0d480c7aa44"
         }
       }
     },
@@ -387,7 +468,8 @@
         ],
         "toTienCoTen": "481019",
         "dinhNghiaDuoc": true
-      }
+      },
+      "dieuKienSo": []
     },
     {
       "hs": "48102210",
@@ -554,7 +636,10 @@
           "ngay": "2026-11-11",
           "bam": "07d215e5d4c4ab87353abcad40701fe8596c956930ac0626b78d39a9b3eda3b5"
         }
-      }
+      },
+      "phanConLai": [
+        "48102910"
+      ]
     },
     {
       "hs": "48102999",
@@ -1275,8 +1360,8 @@
     "ms": 24
   },
   "kiemTra": {
-    "tong": 44,
-    "dat": 44,
+    "tong": 48,
+    "dat": 48,
     "loai": 0,
     "nguonBiCat": []
   }

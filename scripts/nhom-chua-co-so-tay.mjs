@@ -34,5 +34,11 @@ export function nhomChuaCoSoTay() {
     const h4 = hs.slice(0, 4);
     if (!coSoTay.has(h4)) return { h4, hs8: hs };
   }
+  // Khi toàn bộ 1.269/1.269 nhóm 4 số trong biểu thuế đều đã có sổ tay (OZV-1876),
+  // trả về mã nhóm giả lập chưa có tệp sổ tay để các test vẫn kiểm được nhánh "nhóm chưa có sổ tay".
+  for (let n = 9998; n >= 9900; n -= 1) {
+    const h4 = String(n);
+    if (!coSoTay.has(h4)) return { h4, hs8: `${h4}0000` };
+  }
   throw new Error('khong con nhom 4 so nao chua co so tay — bo sung du lieu truoc');
 }

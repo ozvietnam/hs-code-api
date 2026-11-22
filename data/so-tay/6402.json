@@ -115,7 +115,97 @@
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
-  "tieuChi6": [],
+  "tieuChi6": [
+    {
+      "hs6": "640212",
+      "thuTu": 1,
+      "dieuKien": "Giày, dép thể thao",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Giày, dép thể thao",
+      "donVi": null,
+      "tuKhoa": [
+        "giày, dép thể thao"
+      ],
+      "nguon": "tieuDe.64021",
+      "trich": "64021 Giày, dép thể thao",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "640212",
+      "thuTu": 1,
+      "dieuKien": "Giày ống trượt tuyết, giày trượt tuyết băng đồng và giày ống gắn ván trượt",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": [
+        "Giày ống trượt tuyết",
+        "giày trượt tuyết băng đồng",
+        "giày ống gắn ván trượt"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "trượt tuyết",
+        "ván trượt"
+      ],
+      "nguon": "tax.64021200",
+      "trich": "64021200 - - Giày ống trượt tuyết, giày trượt tuyết băng đồng và giày ống gắn ván trượt",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "640219",
+      "thuTu": 2,
+      "dieuKien": "Giày, dép thể thao",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Giày, dép thể thao",
+      "donVi": null,
+      "tuKhoa": [
+        "giày, dép thể thao"
+      ],
+      "nguon": "tieuDe.64021",
+      "trich": "64021 Giày, dép thể thao",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "640219",
+      "thuTu": 2,
+      "phanConLai": true,
+      "nguon": "tieuDe.640219",
+      "trich": "640219 Loại khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "640220",
+      "thuTu": 3,
+      "chuaSoHoa": "thiếu khoá cho đặc điểm có đai hoặc dây gắn mũ giày với đế bằng chốt cài",
+      "nguon": "tax.64022000",
+      "trich": "64022000 - Giày, dép có đai hoặc dây gắn mũ giày với đế bằng chốt cài",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "640291",
+      "thuTu": 4,
+      "dieuKien": "Giày cổ cao quá mắt cá chân",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Giày cổ cao quá mắt cá chân",
+      "donVi": null,
+      "tuKhoa": [
+        "cổ cao quá mắt cá chân"
+      ],
+      "nguon": "tieuDe.640291",
+      "trich": "640291 Giày cổ cao quá mắt cá chân",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "640299",
+      "thuTu": 5,
+      "phanConLai": true,
+      "nguon": "tieuDe.640299",
+      "trich": "640299 Loại khác",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
   "dong8": [
     {
       "hs": "64021200",
@@ -138,7 +228,14 @@
           "op": "CO"
         }
       ],
-      "ranhGioi": { "phienBan": "ranh-gioi@1", "duyet": { "phien": "claude-agent:tho-hs-01-20261115#soat-640219", "ngay": "2026-11-15", "bam": "71db7363b80d34c575655c634fac7efa5f9626cc958a0c900ef79c3ceeecffd9" } }
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01-20261115#soat-640219",
+          "ngay": "2026-11-15",
+          "bam": "71db7363b80d34c575655c634fac7efa5f9626cc958a0c900ef79c3ceeecffd9"
+        }
+      }
     },
     {
       "hs": "64021990",
@@ -525,6 +622,10 @@
     "tax.64029199",
     "tax.64029910",
     "tax.64029990",
+    "tieuDe.64021",
+    "tieuDe.640219",
+    "tieuDe.640291",
+    "tieuDe.640299",
     "wco-op.640299.1",
     "wco-op.640299.2",
     "wco-op.640299.3"
@@ -537,8 +638,8 @@
     "ms": 4
   },
   "kiemTra": {
-    "tong": 29,
-    "dat": 29,
+    "tong": 33,
+    "dat": 33,
     "loai": 0,
     "nguonBiCat": [],
     "nangCap": {
@@ -549,6 +650,12 @@
         "tieuChi6",
         "phamViLoaiKhac"
       ]
+    },
+    "tieuChi6": {
+      "khuon": "g6@1",
+      "soMuc": 7,
+      "soPhanNhom": 5,
+      "cong": "scripts/kiem-tieu-chi-6.mjs"
     }
   },
   "yKienWcoDayDu": false

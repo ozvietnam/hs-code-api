@@ -56,6 +56,14 @@
       "nguon": "nhom7318.nhom",
       "trich": "Nhóm này không bao gồm các loại đinh tán có dạng ống hoặc phân nhánh đôi dùng cho tất cả các mục đích (nhóm 83.08) nhưng những đinh tán mà chỉ rỗng từng phần vẫn được phân loại trong nhóm này.",
       "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "loai": "LOAI_TRU",
+      "dieuKien": "Các cơ cấu có ren, đôi khi được gọi là vít, được sử dụng để truyền chuyển động, hoặc nếu không thì được sử dụng để làm nhiệm vụ như một bộ phận hoạt động của…",
+      "sangNhom": "84",
+      "nguon": "nhom7318.nhom",
+      "trich": "(c) Các cơ cấu có ren, đôi khi được gọi là vít, được sử dụng để truyền chuyển động, hoặc nếu không thì được sử dụng để làm nhiệm vụ như một bộ phận hoạt động của một máy (ví dụ: bom guồng nuớc Acsimet (bom vít); cơ cấu trục vít và các trục có ren cho các máy dập; cơ cấu khoá van và vòi nuớc, ...) (Chương 84).",
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "phanBiet": [
@@ -100,7 +108,413 @@
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
-  "tieuChi6": [],
+  "tieuChi6": [
+    {
+      "hs6": "731811",
+      "thuTu": 1,
+      "dieuKien": "đã được ren",
+      "fact": "coRen",
+      "op": "CO",
+      "donVi": null,
+      "nguon": "tieuDe.73181",
+      "trich": "73181 Các sản phẩm đã được ren",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "731811",
+      "thuTu": 1,
+      "dieuKien": "Vít đầu vuông",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Vít đầu vuông",
+      "donVi": null,
+      "tuKhoa": [
+        "vít đầu vuông"
+      ],
+      "nguon": "tax.73181100",
+      "trich": "73181100 - - Vít đầu vuông",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "731812",
+      "thuTu": 2,
+      "dieuKien": "đã được ren",
+      "fact": "coRen",
+      "op": "CO",
+      "donVi": null,
+      "nguon": "tieuDe.73181",
+      "trich": "73181 Các sản phẩm đã được ren",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "731812",
+      "thuTu": 2,
+      "dieuKien": "Vít",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Vít",
+      "donVi": null,
+      "tuKhoa": [
+        "vít"
+      ],
+      "nguon": "tieuDe.731812",
+      "trich": "731812 Vít khác dùng cho gỗ",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "731812",
+      "thuTu": 2,
+      "dieuKien": "dùng cho gỗ",
+      "fact": "dungCho",
+      "op": "CONG_DUNG",
+      "value": "gỗ",
+      "donVi": null,
+      "tuKhoa": [
+        "dùng cho gỗ"
+      ],
+      "kiemChung": [
+        {
+          "hoi": "Vít có ren cắt dốc hơn và đầu xẻ rãnh hoặc đục rãnh (không sử dụng với đai ốc) không?",
+          "nguon": "nhom7318.nhom",
+          "trich": "Đinh vít dùng cho gỗ khác với bu lông và đinh vít kim loại ở chỗ chúng được ta rô và mài nhọn, và chúng có một ren cắt dốc hơn vì chúng phải ăn sâu đoạn thân của chính chúng vào vật liệu. Hơn nữa, các vít gỗ hầu như luôn có đầu xẻ rãnh hoặc đục rãnh và chúng không bao giờ được sử dụng với đai ốc."
+        }
+      ],
+      "nguon": "tieuDe.731812",
+      "trich": "731812 Vít khác dùng cho gỗ",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "731812",
+      "thuTu": 2,
+      "dieuKien": "không bao gồm các loại đinh móc và đinh vòng",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": [
+        "đinh móc",
+        "đinh vòng"
+      ],
+      "donVi": null,
+      "chieu": "PHAI_KHONG",
+      "tuKhoa": [
+        "đinh móc",
+        "đinh vòng"
+      ],
+      "nguon": "nhom7318.nhom",
+      "trich": "Phân nhóm 7318.12 Thuật ngữ \"đinh vít\" không bao gồm các loại đinh móc và đinh vòng; những loại này được phân loại trong phân nhóm 7318.13.",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "731813",
+      "thuTu": 3,
+      "dieuKien": "đã được ren",
+      "fact": "coRen",
+      "op": "CO",
+      "donVi": null,
+      "nguon": "tieuDe.73181",
+      "trich": "73181 Các sản phẩm đã được ren",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "731813",
+      "thuTu": 3,
+      "dieuKien": "Đinh móc và đinh vòng",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": [
+        "Đinh móc",
+        "đinh vòng"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "đinh móc",
+        "đinh vòng"
+      ],
+      "nguon": "tax.73181300",
+      "trich": "73181300 - - Đinh móc và đinh vòng",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "731814",
+      "thuTu": 4,
+      "dieuKien": "đã được ren",
+      "fact": "coRen",
+      "op": "CO",
+      "donVi": null,
+      "nguon": "tieuDe.73181",
+      "trich": "73181 Các sản phẩm đã được ren",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "731814",
+      "thuTu": 4,
+      "dieuKien": "Vít tự hãm",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Vít tự hãm",
+      "donVi": null,
+      "tuKhoa": [
+        "vít tự hãm",
+        "tự hãm"
+      ],
+      "nguon": "tieuDe.731814",
+      "trich": "731814 Vít tự hãm",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "731815",
+      "thuTu": 5,
+      "dieuKien": "đã được ren",
+      "fact": "coRen",
+      "op": "CO",
+      "donVi": null,
+      "nguon": "tieuDe.73181",
+      "trich": "73181 Các sản phẩm đã được ren",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "731815",
+      "thuTu": 5,
+      "dieuKien": "Đinh vít và bu lông",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": [
+        "Đinh vít",
+        "bu lông"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "đinh vít",
+        "bu lông"
+      ],
+      "tienLe": [
+        {
+          "so": "5194/TB-TCHQ",
+          "ma": "73181510"
+        }
+      ],
+      "nguon": "tieuDe.731815",
+      "trich": "731815 Đinh vít và bu lông khác, có hoặc không có đai ốc hoặc vòng đệm",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "731815",
+      "thuTu": 5,
+      "phanConLai": true,
+      "nguon": "tieuDe.731815",
+      "trich": "731815 Đinh vít và bu lông khác, có hoặc không có đai ốc hoặc vòng đệm",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "731816",
+      "thuTu": 6,
+      "dieuKien": "đã được ren",
+      "fact": "coRen",
+      "op": "CO",
+      "donVi": null,
+      "nguon": "tieuDe.73181",
+      "trich": "73181 Các sản phẩm đã được ren",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "731816",
+      "thuTu": 6,
+      "dieuKien": "Đai ốc",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Đai ốc",
+      "donVi": null,
+      "tuKhoa": [
+        "đai ốc"
+      ],
+      "tienLe": [
+        {
+          "so": "5195/TB-TCHQ",
+          "ma": "73181610"
+        }
+      ],
+      "nguon": "tieuDe.731816",
+      "trich": "731816 Đai ốc",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "731819",
+      "thuTu": 7,
+      "dieuKien": "đã được ren",
+      "fact": "coRen",
+      "op": "CO",
+      "donVi": null,
+      "nguon": "tieuDe.73181",
+      "trich": "73181 Các sản phẩm đã được ren",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "731819",
+      "thuTu": 7,
+      "phanConLai": true,
+      "tienLe": [
+        {
+          "so": "3857/TB-TCHQ",
+          "ma": "73181990"
+        }
+      ],
+      "nguon": "tieuDe.731819",
+      "trich": "731819 Loại khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "731821",
+      "thuTu": 8,
+      "dieuKien": "không có ren",
+      "fact": "coRen",
+      "op": "KHONG",
+      "donVi": null,
+      "nguon": "tieuDe.73182",
+      "trich": "73182 Các sản phẩm không có ren",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "731821",
+      "thuTu": 8,
+      "dieuKien": "Vòng đệm lò xo vênh và vòng đệm hãm",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": [
+        "Vòng đệm lò xo vênh",
+        "vòng đệm hãm"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "vòng đệm lò xo vênh",
+        "vòng đệm hãm"
+      ],
+      "nguon": "tax.73182100",
+      "trich": "73182100 - - Vòng đệm lò xo vênh và vòng đệm hãm khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "731821",
+      "thuTu": 8,
+      "phanConLai": true,
+      "nguon": "tax.73182100",
+      "trich": "73182100 - - Vòng đệm lò xo vênh và vòng đệm hãm khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "731822",
+      "thuTu": 9,
+      "dieuKien": "không có ren",
+      "fact": "coRen",
+      "op": "KHONG",
+      "donVi": null,
+      "nguon": "tieuDe.73182",
+      "trich": "73182 Các sản phẩm không có ren",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "731822",
+      "thuTu": 9,
+      "dieuKien": "Vòng đệm",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Vòng đệm",
+      "donVi": null,
+      "tuKhoa": [
+        "vòng đệm"
+      ],
+      "nguon": "tax.73182200",
+      "trich": "73182200 - - Vòng đệm khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "731822",
+      "thuTu": 9,
+      "phanConLai": true,
+      "nguon": "tax.73182200",
+      "trich": "73182200 - - Vòng đệm khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "731823",
+      "thuTu": 10,
+      "dieuKien": "không có ren",
+      "fact": "coRen",
+      "op": "KHONG",
+      "donVi": null,
+      "nguon": "tieuDe.73182",
+      "trich": "73182 Các sản phẩm không có ren",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "731823",
+      "thuTu": 10,
+      "dieuKien": "Đinh tán",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Đinh tán",
+      "donVi": null,
+      "tuKhoa": [
+        "đinh tán"
+      ],
+      "nguon": "tieuDe.731823",
+      "trich": "731823 Đinh tán",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "731824",
+      "thuTu": 11,
+      "dieuKien": "không có ren",
+      "fact": "coRen",
+      "op": "KHONG",
+      "donVi": null,
+      "nguon": "tieuDe.73182",
+      "trich": "73182 Các sản phẩm không có ren",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "731824",
+      "thuTu": 11,
+      "dieuKien": "Chốt hãm và chốt định vị",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": [
+        "Chốt hãm",
+        "chốt định vị"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "chốt hãm",
+        "chốt định vị"
+      ],
+      "nguon": "tax.73182400",
+      "trich": "73182400 - - Chốt hãm và chốt định vị",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "731829",
+      "thuTu": 12,
+      "dieuKien": "không có ren",
+      "fact": "coRen",
+      "op": "KHONG",
+      "donVi": null,
+      "nguon": "tieuDe.73182",
+      "trich": "73182 Các sản phẩm không có ren",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "731829",
+      "thuTu": 12,
+      "phanConLai": true,
+      "tienLe": [
+        {
+          "so": "6963/TB-TCHQ",
+          "ma": "73182900"
+        }
+      ],
+      "nguon": "tieuDe.731829",
+      "trich": "731829 Loại khác",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
   "dong8": [
     {
       "hs": "73181100",
@@ -680,6 +1094,15 @@
     "tax.73182400",
     "tax.73182910",
     "tax.73182990",
+    "tieuDe.73181",
+    "tieuDe.731812",
+    "tieuDe.731814",
+    "tieuDe.731815",
+    "tieuDe.731816",
+    "tieuDe.731819",
+    "tieuDe.73182",
+    "tieuDe.731823",
+    "tieuDe.731829",
     "wco-op.731819.1",
     "wco-op.731829.1"
   ],
@@ -691,8 +1114,8 @@
     "ms": 5
   },
   "kiemTra": {
-    "tong": 36,
-    "dat": 36,
+    "tong": 64,
+    "dat": 64,
     "loai": 0,
     "nguonBiCat": [],
     "nangCap": {
@@ -703,6 +1126,12 @@
         "tieuChi6",
         "phamViLoaiKhac"
       ]
+    },
+    "tieuChi6": {
+      "khuon": "g6@1",
+      "soMuc": 29,
+      "soPhanNhom": 12,
+      "cong": "scripts/kiem-tieu-chi-6.mjs"
     }
   },
   "yKienWcoDayDu": false

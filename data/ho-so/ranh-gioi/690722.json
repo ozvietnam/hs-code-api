@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L19-20261111#soat-L19",
-    "ngay": "2026-11-11",
-    "ghiChu": "daTrangMen CO/KHONG đúng từng dòng; BO_VE \"unglazed\" định ngữ chung (đúng EN); nút kichThuoc < 7 cm đúng \"dưới 7 cm\" (đã soát biên tay); khớp sổ tay hiện hành.",
-    "bam": "53a74ea20b81b96c4206666cb69023ceb585245341f9b742bed1e2ce6be251cf"
+    "phien": "claude-agent:ozv-1842#soat-690722",
+    "ngay": "2026-11-22",
+    "ghiChu": "Đối chiếu VI+EN: tiêu đề 6907221 \"Có mặt lớn nhất có thể nằm gọn trong một hình vuông có cạnh dưới 7 cm\" số hoá bằng tenLoai nguyên văn vì khoá kichThuoc trong tu-vung@2 yêu cầu 2–3 chiều (soChieu [2,3]), không đọc biên đơn 1 chiều \"cạnh dưới 7 cm\" (OZV-1862).",
+    "bam": "956a1f9d9183f21ef216ee9929d75df906e04840a28be242ad357ade8adfb0f5"
   },
   "dieuKienNut": [
     {
@@ -24,10 +24,9 @@
       "trich": "6907221 Có mặt lớn nhất có thể nằm gọn trong một hình vuông có cạnh dưới 7 cm",
       "dieuKienSo": [
         {
-          "fact": "kichThuoc",
-          "op": "<",
-          "value": 7,
-          "donVi": "cm"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Có mặt lớn nhất có thể nằm gọn trong một hình vuông có cạnh dưới 7 cm"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -207,13 +206,7 @@
     {
       "ma": "6907221",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.6907221 \"Có mặt lớn nhất có thể nằm gọn trong một hình vuông có cạnh dưới 7 cm\" ⇒ kichThuoc < 7 cm cho biên \"dưới 7 cm\" (\"dưới\" = <; đã đối chiếu tay op/biên với chữ: biên 7, đơn vị cm như chữ trích)"
-    },
-    {
-      "ma": "6907221",
-      "loai": "BO_VE",
-      "ve": "có mặt lớn nhất có thể nằm gọn trong một hình vuông có cạnh",
-      "lyDo": "Vế này và biên \"dưới 7 cm\" là MỘT điều kiện kích thước: mặt lớn nhất nằm gọn trong hình vuông cạnh 7 cm ⟺ mọi chiều của hàng đều dưới 7 cm, đã phủ bằng kichThuoc < 7 cm nên bỏ vế diễn từ không làm đổi mã"
+      "ghiChu": "tieuDe.6907221 \"… Có mặt lớn nhất có thể nằm gọn trong một hình vuông có cạnh dưới 7 cm\" ⇒ tenLoai TEN_LOAI \"Có mặt lớn nhất có thể nằm gọn trong một hình vuông có cạnh dưới 7 cm\" (khoá kichThuoc trong tu-vung@2 có soChieu [2,3] không đọc biên 1 chiều \"cạnh dưới 7 cm\")."
     }
   ]
 }
