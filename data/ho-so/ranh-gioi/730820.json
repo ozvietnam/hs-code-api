@@ -4,14 +4,36 @@
   "nhom": "7308",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-730820",
     "ngay": "2026-11-04"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1800#soat-730820",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá ranh giới theo traVe.lyDo và duyệt áp sổ tay (OZV-1800)",
+    "bam": "9555a977d6afcf55108b999d4aaedf056eb593132fc8867d196fa7fd5f11eb98"
+  },
   "dieuKienNut": [
+    {
+      "id": "730820",
+      "nguon": "tieuDe.730820",
+      "trich": "730820 Tháp và cột lưới (kết cấu giàn)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Tháp",
+            "cột lưới (kết cấu giàn)"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
     {
       "id": "7308201",
       "nguon": "tieuDe.7308201",
@@ -23,7 +45,7 @@
           "value": "Tháp"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "7308202",
@@ -36,7 +58,7 @@
           "value": "Cột lưới (kết cấu giàn)"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -46,18 +68,23 @@
       "trich": "73082011 - - - Dạng cấu kiện tiền chế được lắp ráp bằng các khớp nối (SEN)",
       "dieuKienSo": [
         {
-          "fact": "daLapRap",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "cấu kiện tiền chế"
+        },
+        {
+          "fact": "lapRapBangKhopNoi",
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "73082019",
       "nguon": "tax.73082019",
       "trich": "73082019 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "73082021",
@@ -65,18 +92,23 @@
       "trich": "73082021 - - - Dạng cấu kiện tiền chế được lắp ráp bằng các khớp nối (SEN)",
       "dieuKienSo": [
         {
-          "fact": "daLapRap",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "cấu kiện tiền chế"
+        },
+        {
+          "fact": "lapRapBangKhopNoi",
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "73082029",
       "nguon": "tax.73082029",
       "trich": "73082029 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -88,19 +120,7 @@
     {
       "ma": "73082011",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.73082011: \"Dạng cấu kiện tiền chế được lắp ráp bằng các khớp nối (SEN)\" ⇒ daLapRap CO"
-    },
-    {
-      "ma": "73082011",
-      "loai": "BO_VE",
-      "ve": "được lắp ráp",
-      "lyDo": "Đã được phủ bằng daLapRap CO"
-    },
-    {
-      "ma": "73082011",
-      "loai": "BO_VE",
-      "ve": "bằng các khớp nối",
-      "lyDo": "Phương thức liên kết của cấu kiện tiền chế"
+      "ghiChu": "tax.73082011: \"Dạng cấu kiện tiền chế được lắp ráp bằng các khớp nối (SEN)\" ⇒ tenLoai \"cấu kiện tiền chế\" + lapRapBangKhopNoi CO"
     },
     {
       "ma": "7308202",
@@ -110,19 +130,7 @@
     {
       "ma": "73082021",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.73082021: \"Dạng cấu kiện tiền chế được lắp ráp bằng các khớp nối (SEN)\" ⇒ daLapRap CO"
-    },
-    {
-      "ma": "73082021",
-      "loai": "BO_VE",
-      "ve": "được lắp ráp",
-      "lyDo": "Đã được phủ bằng daLapRap CO"
-    },
-    {
-      "ma": "73082021",
-      "loai": "BO_VE",
-      "ve": "bằng các khớp nối",
-      "lyDo": "Phương thức liên kết của cấu kiện tiền chế"
+      "ghiChu": "tax.73082021: \"Dạng cấu kiện tiền chế được lắp ráp bằng các khớp nối (SEN)\" ⇒ tenLoai \"cấu kiện tiền chế\" + lapRapBangKhopNoi CO"
     }
   ],
   "traVe": [

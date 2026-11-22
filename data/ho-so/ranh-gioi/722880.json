@@ -4,13 +4,19 @@
   "nhom": "7228",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-722880",
     "ngay": "2026-11-04"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1800#soat-722880",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá ranh giới theo traVe.lyDo và duyệt áp sổ tay (OZV-1800)",
+    "bam": "4b4e77aa66f1635ec895ca21ffa90bb223456dc39ca01f748f61917a33df4835"
+  },
   "dieuKienNut": [
     {
       "id": "7228801",
@@ -24,7 +30,7 @@
           "donVi": "%"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -34,32 +40,35 @@
       "trich": "72288011 - - - Có mặt cắt ngang hình tròn",
       "dieuKienSo": [
         {
-          "fact": "hinhDangCatGocKinh",
-          "op": "KHONG"
+          "fact": "hinhDangMatCatNgang",
+          "op": "TRONG",
+          "value": [
+            "TRON"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "72288019",
       "nguon": "tax.72288019",
       "trich": "72288019 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "72288090",
       "nguon": "tax.72288090",
       "trich": "72288090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "7228801",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.8704... 7228801: \"Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng\" ⇒ hamLuongCarbon >= 0.6 %"
+      "ghiChu": "tieuDe.7228801: \"Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng\" ⇒ hamLuongCarbon >= 0.6 %"
     },
     {
       "ma": "7228801",
@@ -68,21 +77,9 @@
       "lyDo": "Cụm danh từ chỉ thuộc tính"
     },
     {
-      "ma": "7228801",
-      "loai": "BO_VE",
-      "ve": "từ 0,6% trở lên tính theo khối lượng",
-      "lyDo": "Đã lượng hóa qua hamLuongCarbon >= 0.6 %"
-    },
-    {
       "ma": "72288011",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.72288011: \"Có mặt cắt ngang hình tròn\" ⇒ hinhDangCatGocKinh KHONG"
-    },
-    {
-      "ma": "72288011",
-      "loai": "BO_VE",
-      "ve": "Có mặt cắt ngang hình tròn",
-      "lyDo": "Đã phản ánh qua mặt cắt ngang hình tròn"
+      "ghiChu": "tax.72288011: \"Có mặt cắt ngang hình tròn\" ⇒ hinhDangMatCatNgang TRONG [\"TRON\"]"
     }
   ],
   "traVe": [

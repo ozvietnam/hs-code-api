@@ -4,34 +4,43 @@
   "nhom": "4005",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1707#soan-400510",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1800#soat-400510",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá ranh giới theo traVe.lyDo và duyệt áp sổ tay (OZV-1800)",
+    "bam": "6cc539068bf68f9df79b4e0310a5b4bf8854389a404e9bfc5637b8114435850f"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
       "hs": "40051010",
-      "nguon": "tax.40051010",
-      "trich": "40051010 - - Của nhựa tự nhiên",
+      "nguon": "nhom4005.nhom",
+      "trich": "cao su tự nhiên, nhựa balata, nhựa gutta-percha, nhựa guagule, nhựa chicle và nhựa tự nhiên tương tự",
       "dieuKienSo": [
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "nhựa tự nhiên"
+          "value": [
+            "cao su tự nhiên",
+            "nhựa tự nhiên"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "40051090",
       "nguon": "tax.40051090",
       "trich": "40051090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [

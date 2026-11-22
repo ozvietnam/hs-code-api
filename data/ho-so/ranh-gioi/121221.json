@@ -4,13 +4,19 @@
   "nhom": "1212",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1529#soan-121221",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1800#soat-121221",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá ranh giới theo traVe.lyDo và duyệt áp sổ tay (OZV-1800)",
+    "bam": "6c5202948c83921de58fd2ed5bc153f69fe4d3ce8996f26c37f25f50492161b8"
+  },
   "dieuKienNut": [
     {
       "id": "1212211",
@@ -25,12 +31,11 @@
           ]
         },
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "chưa nghiền"
+          "fact": "daXay",
+          "op": "KHONG"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -45,7 +50,7 @@
           "value": "Eucheuma spinosum"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "12122112",
@@ -58,7 +63,7 @@
           "value": "Eucheuma cottonii"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "12122113",
@@ -71,21 +76,21 @@
           "value": "Gracilaria spp."
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "12122119",
       "nguon": "tax.12122119",
       "trich": "12122119 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "12122190",
       "nguon": "tax.12122190",
       "trich": "12122190 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [

@@ -4,13 +4,19 @@
   "nhom": "4005",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1707#soan-400599",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1800#soat-400599",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá ranh giới theo traVe.lyDo và duyệt áp sổ tay (OZV-1800)",
+    "bam": "ac3377d82fd824a5ca67b79e1a794d9ad65f8745dcbfbcb817a9f6bcb4801ee5"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -21,10 +27,13 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Dạng latex"
+          "value": [
+            "latex",
+            "mủ cao su"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "40059920",
@@ -32,53 +41,43 @@
       "trich": "40059920 - - - Cao su tự nhiên được pha trộn với các chất trừ carbon hoặc silica",
       "dieuKienSo": [
         {
-          "fact": "chatLieu",
-          "op": "LA",
-          "value": "cao su"
-        },
-        {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Cao su tự nhiên"
-        },
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "được pha trộn với các chất"
-        },
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "carbon",
-          "chieu": "PHAI_KHONG"
-        },
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "silica",
-          "chieu": "PHAI_KHONG"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "40059990",
       "nguon": "tax.40059990",
       "trich": "40059990 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "40059910",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.40059910 \"Dạng latex (dạng mủ cao su)\" (EN \"Latex\") => tenLoai \"Dạng latex\"; ngoặc \"(dạng mủ cao su)\" là ngoặc chú thích, không đòi phủ. Chữ biểu không có khoá tu-vung cho \"dạng latex\" nên ghi nguyên văn dạng tên loại hàng; so chữ tự do, không tất định."
+      "ghiChu": "tax.40059910 \"Dạng latex (dạng mủ cao su)\" (EN \"Latex\") => tenLoai [\"latex\", \"mủ cao su\"]."
     },
     {
       "ma": "40059920",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.40059920 \"Cao su tự nhiên được pha trộn với các chất trừ carbon hoặc silica\" (EN \"Natural rubber compounded with substances other than carbon or silica\") => chatLieu LA \"cao su\" + tenLoai \"Cao su tự nhiên\" cho danh từ đầu, cộng hai tenLoai chieu PHAI_KHONG \"carbon\" và \"silica\" phủ vế GIỚI_HẠN \"được pha trộn với các chất trừ carbon hoặc silica\". Chữ biểu không có khoá tu-vung cho vế \"được pha trộn\" (EN \"compounded\") nên ghi bằng chữ tự do; so chữ tự do, không tất định."
+      "ghiChu": "tax.40059920 \"Cao su tự nhiên được pha trộn với các chất trừ carbon hoặc silica\" (EN \"Natural rubber compounded with substances other than carbon or silica\") => tenLoai \"Cao su tự nhiên\" (vế lặp phạm vi nhóm 40.05 và phân nhóm 4005.99 miễn qua BO_VE)."
+    },
+    {
+      "ma": "40059920",
+      "loai": "BO_VE",
+      "ve": "được pha trộn với các chất",
+      "lyDo": "Lặp phạm vi nhóm 40.05 (cao su hỗn hợp, chưa lưu hoá) và phân nhóm 4005.99"
+    },
+    {
+      "ma": "40059920",
+      "loai": "BO_VE",
+      "ve": "trừ carbon hoặc silica",
+      "lyDo": "Lặp phạm vi phân nhóm 4005.99 (trừ loại đã pha trộn với muội than hoặc silica ở 4005.10)"
     },
     {
       "ma": "40059990",

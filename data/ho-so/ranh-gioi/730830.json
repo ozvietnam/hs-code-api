@@ -4,13 +4,19 @@
   "nhom": "7308",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-730830",
     "ngay": "2026-11-04"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1800#soat-730830",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá ranh giới theo traVe.lyDo và duyệt áp sổ tay (OZV-1800)",
+    "bam": "9acecb6bf922b727bf83aa544db4b8dfbf3ef6f7971b5348d080fde3597e7b47"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -18,6 +24,11 @@
       "nguon": "tax.73083010",
       "trich": "73083010 - - Cửa ra vào, có độ dày từ 6 mm đến 8 mm",
       "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Cửa ra vào"
+        },
         {
           "fact": "doDay",
           "op": ">=",
@@ -31,27 +42,21 @@
           "donVi": "mm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "73083090",
       "nguon": "tax.73083090",
       "trich": "73083090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "73083010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.73083010: \"Cửa ra vào, có độ dày từ 6 mm đến 8 mm\" ⇒ doDay >= 6 mm, <= 8 mm"
-    },
-    {
-      "ma": "73083010",
-      "loai": "BO_VE",
-      "ve": "có độ dày từ 6 mm đến 8 mm",
-      "lyDo": "Đã lượng hóa qua doDay"
+      "ghiChu": "tax.73083010: \"Cửa ra vào, có độ dày từ 6 mm đến 8 mm\" ⇒ tenLoai \"Cửa ra vào\" + doDay >= 6 mm, <= 8 mm"
     }
   ],
   "traVe": [
