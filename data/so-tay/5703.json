@@ -25,6 +25,14 @@
       "nguon": "ch57.chuong",
       "trich": "(b) Vải sơn lót sàn và các loại trải sàn khác cấu tạo từ một tấm phủ hoặc tấm bọc được một lớp bồi bằng vật liệu dệt (nhóm 59.04)",
       "nguonLoai": "NGUOI_DUYET"
+    },
+    {
+      "loai": "LOAI_TRU",
+      "dieuKien": "các sản phẩm bằng plastic thuộc Chương 39",
+      "sangNhom": "39",
+      "nguon": "nhom5703.nhom",
+      "trich": "Nhóm này không bao gồm các sản phẩm bằng plastic thuộc Chương 39.",
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "phanBiet": [
@@ -770,21 +778,27 @@
   "dungTuNguon": [
     "ch57.chuong",
     "nhom5703.nhom",
-    "sen.5703",
-    "sen.57031010",
-    "sen.57031030",
-    "sen.57039021",
-    "sen.57039022",
-    "sen.57039091",
-    "sen.57039093",
+    "tax.57031010",
+    "tax.57031020",
+    "tax.57031030",
     "tax.57031090",
     "tax.57032100",
+    "tax.57032910",
     "tax.57032990",
     "tax.57033100",
+    "tax.57033910",
     "tax.57033990",
+    "tax.57039011",
     "tax.57039019",
+    "tax.57039021",
+    "tax.57039022",
     "tax.57039029",
+    "tax.57039091",
+    "tax.57039092",
+    "tax.57039093",
     "tax.57039099",
+    "tieuDe.5703901",
+    "tieuDe.5703902",
     "wco.570310",
     "wco.570321",
     "wco.570329",
@@ -792,7 +806,7 @@
     "wco.570339",
     "wco.570390"
   ],
-  "phienBan": "HS2022+SEN2022",
+  "phienBan": "HS2022",
   "taoBoi": {
     "provider": "dev-zcode-mm",
     "model": null,
@@ -800,8 +814,8 @@
     "ms": 3
   },
   "kiemTra": {
-    "tong": 30,
-    "dat": 30,
+    "tong": 33,
+    "dat": 33,
     "loai": 0,
     "nguonBiCat": [
       "phan57.phan (46130→25000)"

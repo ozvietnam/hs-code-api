@@ -128,6 +128,38 @@
       "nguon": "ch48.chuong",
       "trich": "(m) Bìa hoặc giấy ráp (nhóm 68.05) hoặc mica được bồi giấy hoặc bìa (nhóm 68.14) (tuy nhiên, bìa hoặc giấy tráng phủ với bột mica, được xếp vào Chương này);",
       "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "loai": "LOAI_TRU",
+      "dieuKien": "Giấy thơm và giấy thấm tẩm hoặc tráng mỹ phẩm",
+      "sangNhom": "33",
+      "nguon": "nhom4811.nhom",
+      "trich": "(b) Giấy thơm và giấy thấm tẩm hoặc tráng mỹ phẩm (Chương 33).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "loai": "LOAI_TRU",
+      "dieuKien": "Giấy và tấm xenlulo đã thấm tẩm, tráng hoặc phủ với xà phòng hoặc chất tẩy rửa (nhóm 34.01) hoặc với xi, kem, hoặc với các chế phẩm tương tự",
+      "sangNhom": "3401|3405",
+      "nguon": "nhom4811.nhom",
+      "trich": "(c) Giấy và tấm xenlulo đã thấm tẩm, tráng hoặc phủ với xà phòng hoặc chất tẩy rửa (nhóm 34.01) hoặc với xi, kem, hoặc với các chế phẩm tương tự (nhóm 34.05).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "loai": "LOAI_TRU",
+      "dieuKien": "Giấy và bìa đã phủ lớp chất nhạy thuộc nhóm 37.01 đến 37.04",
+      "sangNhom": "3701|3704",
+      "nguon": "nhom4811.nhom",
+      "trich": "(d) Giấy và bìa đã phủ lớp chất nhạy thuộc nhóm 37.01 đến 37.04.",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "loai": "LOAI_TRU",
+      "dieuKien": "Các sản phẩm tạo thành bởi một lớp giấy hoặc bìa được tráng hoặc được phủ bằng một lớp plastic, mà độ dày của plastic hơn 1/2 tổng độ dày",
+      "sangNhom": "39",
+      "nguon": "nhom4811.nhom",
+      "trich": "(f) Các sản phẩm tạo thành bởi một lớp giấy hoặc bìa được tráng hoặc được phủ bằng một lớp plastic, mà độ dày của plastic hơn 1/2 tổng độ dày (Chương 39).",
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "phanBiet": [],
@@ -1349,8 +1381,6 @@
   "dungTuNguon": [
     "ch48.chuong",
     "nhom4811.nhom",
-    "sen.48119042",
-    "sen.48119092",
     "tax.48111020",
     "tax.48114120",
     "tax.48115131",
@@ -1366,10 +1396,15 @@
     "tax.48116091",
     "tax.48116099",
     "tax.48119041",
+    "tax.48119042",
     "tax.48119049",
     "tax.48119091",
+    "tax.48119092",
     "tax.48119093",
     "tax.48119099",
+    "tieuDe.4811513",
+    "tieuDe.4811594",
+    "tieuDe.4811904",
     "wco.481110",
     "wco.481141",
     "wco.481149",
@@ -1378,7 +1413,7 @@
     "wco.481160",
     "wco.481190"
   ],
-  "phienBan": "HS2022+SEN2022",
+  "phienBan": "HS2022",
   "taoBoi": {
     "provider": "Claude (phiên soạn + soát độc lập, 11/10/2026)",
     "model": null,
@@ -1386,8 +1421,8 @@
     "ms": 9
   },
   "kiemTra": {
-    "tong": 52,
-    "dat": 52,
+    "tong": 59,
+    "dat": 59,
     "loai": 0,
     "nguonBiCat": []
   },

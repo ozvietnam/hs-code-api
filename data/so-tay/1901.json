@@ -181,6 +181,46 @@
       "nguon": "ch19.chuong",
       "trich": "Các sản phẩm được làm từ bột mịn hoặc từ tinh bột, được chế biến chuyên dùng làm thức ăn chăn nuôi (ví dụ: bánh quy cho chó) (nhóm 23.09).",
       "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "loai": "LOAI_TRU",
+      "dieuKien": "Bia và các đồ uống khác (ví dụ malton) được sản xuất từ malt",
+      "sangNhom": "22",
+      "nguon": "nhom1901.nhom",
+      "trich": "(b) Bia và các đồ uống khác (ví dụ malton) được sản xuất từ malt (Chương 22).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "loai": "LOAI_TRU",
+      "dieuKien": "Các sản phẩm có tên gọi “Knödel”, “Klösse”, “Nockerln” có chứa các thành phần như: bột hòn, bột ngũ cốc, bánh mì vụn, chất béo, đường, trứng, gia vị, men, mứ…",
+      "sangNhom": "20",
+      "nguon": "nhom1901.nhom",
+      "trich": "(6) Các sản phẩm có tên gọi “Knödel”, “Klösse”, “Nockerln” có chứa các thành phần như: bột hòn, bột ngũ cốc, bánh mì vụn, chất béo, đường, trứng, gia vị, men, mứt hoặc quả. Tuy nhiên, các sản phẩm loại này được chế biến từ bột khoai tây thì được phân loại ở Chương 20.",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "loai": "LOAI_TRU",
+      "dieuKien": "Bột ngũ cốc đã pha trộn (nhóm 11.01 hoặc 11.02), bột và bột thô từ rau đậu đã pha trộn và bột, bột thô hoặc bột mịn từ quả đã pha trộn (nhóm 11.06), chưa đượ…",
+      "sangNhom": "1101|1102|1106",
+      "nguon": "nhom1901.nhom",
+      "trich": "(b) Bột ngũ cốc đã pha trộn (nhóm 11.01 hoặc 11.02), bột và bột thô từ rau đậu đã pha trộn và bột, bột thô hoặc bột mịn từ quả đã pha trộn (nhóm 11.06), chưa được chế biến cách khác.",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "loai": "LOAI_TRU",
+      "dieuKien": "Đồ uống thuộc Chương 22",
+      "sangNhom": "22",
+      "nguon": "nhom1901.nhom",
+      "trich": "(ij) Đồ uống thuộc Chương 22.",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "loai": "LOAI_TRU",
+      "dieuKien": "Các chế phẩm thực phẩm thuộc các nhóm từ 04.01 đến 04.04, không chứa cacao hoặc chứa dưới 5% trọng lượng là cacao đã khử toàn bộ chất béo, chưa được chi tiết…",
+      "sangNhom": "0401|0404",
+      "nguon": "nhom1901.nhom",
+      "trich": "(III) Các chế phẩm thực phẩm thuộc các nhóm từ 04.01 đến 04.04, không chứa cacao hoặc chứa dưới 5% trọng lượng là cacao đã khử toàn bộ chất béo, chưa được chi tiết hoặc ghi ở nơi khác.\nCác chế phẩm thuộc nhóm này có thể được phân biệt với các sản phẩm thuộc các nhóm từ 04.01 đến 04.04 ở chỗ, trong đó ngoài các thành phần sữa tự nhiên chúng còn bao gồm cả các thành phần khác không được cho phép có trong các sản phẩm thuộc các nhóm đã nêu ở các nhóm trước. Vì vậy, nhóm 19.01 bao gồm, ví dụ:",
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "phanBiet": [
@@ -1033,26 +1073,29 @@
   "dungTuNguon": [
     "ch19.chuong",
     "nhom1901.nhom",
-    "sen.19011091",
-    "sen.19019011",
-    "sen.19019031",
-    "sen.19019091",
     "tax.19011010",
     "tax.19011020",
     "tax.19011030",
+    "tax.19011091",
     "tax.19011092",
     "tax.19011099",
     "tax.19012010",
     "tax.19012020",
     "tax.19012030",
     "tax.19012040",
+    "tax.19019011",
     "tax.19019019",
     "tax.19019020",
+    "tax.19019031",
     "tax.19019032",
     "tax.19019039",
     "tax.19019041",
     "tax.19019049",
+    "tax.19019091",
     "tax.19019099",
+    "tieuDe.1901901",
+    "tieuDe.1901903",
+    "tieuDe.1901904",
     "wco-op.190110.1",
     "wco-op.190110.2",
     "wco-op.190120.1",
@@ -1060,7 +1103,7 @@
     "wco-op.190190.2",
     "wco-op.190190.3"
   ],
-  "phienBan": "HS2022+SEN2022",
+  "phienBan": "HS2022",
   "taoBoi": {
     "provider": "phiên Claude quản lý (10 agent con soạn, 6 agent soát độc lập, 07-09/10/2026)",
     "model": null,
@@ -1068,8 +1111,8 @@
     "ms": 2
   },
   "kiemTra": {
-    "tong": 60,
-    "dat": 59,
+    "tong": 61,
+    "dat": 61,
     "loai": 1,
     "nguonBiCat": [],
     "nangCap": {
