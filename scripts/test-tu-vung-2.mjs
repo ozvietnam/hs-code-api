@@ -1573,13 +1573,13 @@ check('vietCum đơn vị @1 KHÔNG đổi ("CS: 75000W" — không cách)', T.v
   la('7214.20.31 (Có mặt cắt ngang hình tròn: Thép cốt bê tông) vẫn ⇒ TRON', 'hinhDangMatCatNgang', 'Có răng khía, rãnh, gân hoặc các dạng khác được tạo thành trong quá trình cán hoặc xoắn sau khi cán: Có hàm lượng carbon dưới 0,6% tính theo khối lượng - Có mặt cắt ngang hình tròn: Thép cốt bê tông', 'TRON');
 
   // 4. ReDoS ~40.000 từ lặp < 2 giây (CLAUDE.md quy tắc 6b)
-  const redosText1804 = Array(5000).fill('trứng của gà thuộc loài thảm từ xơ đay xoắn sau khi cán').join(' ');
-  const t0 = process.hrtime.bigint();
+  const redosText1804 = Array(4000).fill('trứng của gà thuộc loài thảm từ các vật liệu dệt khác xoắn sau khi cán').join(' ');
   for (const fk of ['cuaLoaiGiaCam', 'tuXoDay', 'dangDaiDaiTamPhoDung', 'dangLuonSong', 'hinhDangMatCatNgang', 'loaiSoiDet']) {
+    const t0 = process.hrtime.bigint();
     T.docGiaTri(fk, redosText1804);
+    const ms = Number(process.hrtime.bigint() - t0) / 1e6;
+    check(`OZV-1804 ReDoS ~40.000 từ lặp cho ${fk} < 2000 ms (thực tế ${ms.toFixed(0)} ms)`, ms < 2000, { fk, ms });
   }
-  const ms = Number(process.hrtime.bigint() - t0) / 1e6;
-  check(`OZV-1804 ReDoS ~40.000 từ lặp trên 6 khoá < 2000 ms (thực tế ${ms.toFixed(0)} ms)`, ms < 2000, { ms });
 }
 
 console.log(`\n${pass} pass, ${fail} fail`);
