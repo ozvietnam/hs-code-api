@@ -197,19 +197,62 @@
     },
     {
       "hs": "39073020",
-      "dieuKien": "Nhựa epoxit loại dùng để phủ, dạng bột — dựa trên nhựa epoxit được đóng rắn bằng chất làm rắn dicyandiamide hoặc phenol, phun và nung trong lò",
-      "nguon": "sen.39073020",
-      "trich": "Loại nhựa để phủ này dựa trên nhựa epoxit được đóng rắn lại bằng chất làm rắn dicyandiamide hoặc phenol. Chúng ở dạng bột và được dùng bằng cách phun và nung trong lò.",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      "dieuKien": "công dụng / mục đích: phủ; dạng vật lý nguyên sinh của polyme: dạng hạt, viên, hạt cườm, vẩy, mảnh và các dạng tương tự; ở dạng bột",
+      "nguon": "tax.39073020",
+      "trich": "39073020 - - Loại dùng để phủ, dạng bột(SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "phủ"
+        },
+        {
+          "fact": "dangNguyenSinh",
+          "op": "TRONG",
+          "value": [
+            "HAT_VIEN_VAY_MANH"
+          ]
+        },
+        {
+          "fact": "dangBot",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1796#soat-390730",
+          "ngay": "2026-11-22",
+          "bam": "4f740abf35b39b9170aa8e0bb4d00f04983af73b93f366b40d0513eeb70bd1dd"
+        }
+      }
     },
     {
       "hs": "39073030",
-      "dieuKien": "Dạng lỏng hoặc dạng nhão",
+      "dieuKien": "dạng vật lý nguyên sinh của polyme: dạng lỏng hoặc dạng nhão",
       "nguon": "tax.39073030",
       "trich": "39073030 - - Dạng lỏng hoặc dạng nhão",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "dangNguyenSinh",
+          "op": "TRONG",
+          "value": [
+            "LONG_HOAC_NHAO"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1796#soat-390730",
+          "ngay": "2026-11-22",
+          "bam": "4f740abf35b39b9170aa8e0bb4d00f04983af73b93f366b40d0513eeb70bd1dd"
+        }
+      }
     },
     {
       "hs": "39073090",
@@ -295,25 +338,40 @@
     },
     {
       "hs": "39076910",
-      "dieuKien": "Dạng hạt và các dạng tương tự: sản phẩm dạng rắn ở dạng nguyên sinh trừ dạng bột, có ít hơn 10% khối lượng lọt qua lưới lọc có đường kính mắt lọc là 1mm và có 90% khối lượng trở lên lọt qua lưới lọc có đường kính mắt lọc là 5mm",
+      "dieuKien": "tỷ lệ khối lượng lọt qua lưới lọc mắt lọc 1 mm < 10 %; tỷ lệ khối lượng lọt qua lưới lọc mắt lọc 5 mm >= 90 %; dạng vật lý nguyên sinh của polyme: dạng hạt, viên, hạt cườm, vẩy, mảnh và các dạng tương tự",
       "nguon": "sen.3907",
-      "trich": "Sản phẩm dạng rắn ở dạng nguyên sinh trừ dạng bột, có ít hơn 10% khối lượng lọt qua lưới lọc có đường kính mắt lọc là 1mm và sản phẩm có 90% khối lượng trở lên lọt qua lưới lọc có đường kính mắt lọc là 5mm.",
+      "trich": "DẠNG HẠT VÀ CÁC DẠNG TƯƠNG TỰ\nSản phẩm dạng rắn ở dạng nguyên sinh trừ dạng bột, có ít hơn 10% khối lượng lọt qua lưới lọc có đường kính mắt lọc là 1mm và sản phẩm có 90% khối lượng trở lên lọt qua lưới lọc có đường kính mắt lọc là 5mm.",
       "dieuKienSo": [
         {
-          "fact": "khoi_luong_lo_tqua_luoi_mat_loc_1mm",
+          "fact": "tyLeLotQuaLuoiLoc1mm",
           "op": "<",
           "value": 10,
           "donVi": "%"
         },
         {
-          "fact": "khoi_luong_lo_tqua_luoi_mat_loc_5mm",
+          "fact": "tyLeLotQuaLuoiLoc5mm",
           "op": ">=",
           "value": 90,
           "donVi": "%"
+        },
+        {
+          "fact": "dangNguyenSinh",
+          "op": "TRONG",
+          "value": [
+            "HAT_VIEN_VAY_MANH"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1796#soat-390769",
+          "ngay": "2026-11-22",
+          "bam": "1bdf91fb2365c0583988c63ffbb7f910019e727d656aa3d17f886c3c4a092031"
+        }
+      }
     },
     {
       "hs": "39076990",
@@ -342,33 +400,65 @@
     },
     {
       "hs": "39079120",
-      "dieuKien": "Dạng hạt và các dạng tương tự: sản phẩm dạng rắn ở dạng nguyên sinh trừ dạng bột, có ít hơn 10% khối lượng lọt qua lưới lọc có đường kính mắt lọc là 1mm và có 90% khối lượng trở lên lọt qua lưới lọc có đường kính mắt lọc là 5mm",
+      "dieuKien": "tỷ lệ khối lượng lọt qua lưới lọc mắt lọc 1 mm < 10 %; tỷ lệ khối lượng lọt qua lưới lọc mắt lọc 5 mm >= 90 %; dạng vật lý nguyên sinh của polyme: dạng hạt, viên, hạt cườm, vẩy, mảnh và các dạng tương tự",
       "nguon": "sen.3907",
-      "trich": "Sản phẩm dạng rắn ở dạng nguyên sinh trừ dạng bột, có ít hơn 10% khối lượng lọt qua lưới lọc có đường kính mắt lọc là 1mm và sản phẩm có 90% khối lượng trở lên lọt qua lưới lọc có đường kính mắt lọc là 5mm.",
+      "trich": "DẠNG HẠT VÀ CÁC DẠNG TƯƠNG TỰ\nSản phẩm dạng rắn ở dạng nguyên sinh trừ dạng bột, có ít hơn 10% khối lượng lọt qua lưới lọc có đường kính mắt lọc là 1mm và sản phẩm có 90% khối lượng trở lên lọt qua lưới lọc có đường kính mắt lọc là 5mm.",
       "dieuKienSo": [
         {
-          "fact": "khoi_luong_lo_tqua_luoi_mat_loc_1mm",
+          "fact": "tyLeLotQuaLuoiLoc1mm",
           "op": "<",
           "value": 10,
           "donVi": "%"
         },
         {
-          "fact": "khoi_luong_lo_tqua_luoi_mat_loc_5mm",
+          "fact": "tyLeLotQuaLuoiLoc5mm",
           "op": ">=",
           "value": 90,
           "donVi": "%"
+        },
+        {
+          "fact": "dangNguyenSinh",
+          "op": "TRONG",
+          "value": [
+            "HAT_VIEN_VAY_MANH"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1796#soat-390791",
+          "ngay": "2026-11-22",
+          "bam": "73b1567fbb20e3f9b657f808bf60c9affc99a90de4b445dbd8b3ba6ba4d49800"
+        }
+      }
     },
     {
       "hs": "39079130",
-      "dieuKien": "Dạng lỏng hoặc dạng nhão",
+      "dieuKien": "dạng vật lý nguyên sinh của polyme: dạng lỏng hoặc dạng nhão",
       "nguon": "tax.39079130",
       "trich": "39079130 - - - Dạng lỏng hoặc dạng nhão",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "dangNguyenSinh",
+          "op": "TRONG",
+          "value": [
+            "LONG_HOAC_NHAO"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1796#soat-390791",
+          "ngay": "2026-11-22",
+          "bam": "73b1567fbb20e3f9b657f808bf60c9affc99a90de4b445dbd8b3ba6ba4d49800"
+        }
+      }
     },
     {
       "hs": "39079190",

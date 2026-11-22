@@ -379,7 +379,11 @@
       "daXuLyResorcinolFormaldehyde",
       "coLotDeBenTrong",
       "coMuiKimLoaiBaoVe",
-      "oDangTho"
+      "oDangTho",
+      "daHapChinHoacLuocChin",
+      "khoiLuongHangChuyenCho",
+      "tyLeLotQuaLuoiLoc1mm",
+      "tyLeLotQuaLuoiLoc5mm"
     ],
     "tuVung1": {
       "trangThai": "DA_CHAM",
@@ -11784,7 +11788,13 @@
       },
       "ghiChu": "Trục sơ chế tôm đông lạnh tại 0306.17: 0306.17.11 'Đã bỏ đầu', 0306.17.21 'Đã bỏ đầu, còn đuôi', 0306.17.22 'Đã bỏ đầu, bỏ đuôi'.",
       "nguonLoai": "AI_DA_KIEM",
-      "cumDaiThang": true
+      "cumDaiThang": true,
+      "giaTriCha": {
+        "DA_BO_DAU": [
+          "DA_BO_DAU_CON_DUOI",
+          "DA_BO_DAU_BO_DUOI"
+        ]
+      }
     },
     {
       "khoa": "loaiThuocLaNguyenLieu",
@@ -25725,6 +25735,183 @@
         "zh": "该产品是处于粗坯状态还是已加工完成？"
       },
       "ghiChu": "Chữ biểu 7310.10.91 \"Được đúc, rèn hoặc dập, ở dạng thô\" / EN \"Casting, forging or stamping, in the rough state\", 7310.29.92 \"Được đúc, rèn hoặc dập khác, ở dạng thô\" (OZV-1794).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "daHapChinHoacLuocChin",
+      "kieu": "CO_KHONG",
+      "nhanVi": "đã hấp chín hoặc luộc chín trong nước",
+      "nhanEn": "cooked by steaming or by boiling in water",
+      "nhanZh": "经蒸煮或水煮",
+      "cachDoc": {
+        "vi": [
+          "(?<![\\p{L}\\p{M}])(?<!(?:không|chưa|ko|chẳng|đã\\s+hoặc\\s+chưa)\\s+)(?<!(?:chưa|không)\\s+(?:được\\s+)?hấp\\s+chín\\s+hoặc\\s+)(?:đã\\s+)?(?:được\\s+)?(?:hấp\\s+chín\\s+hoặc\\s+luộc\\s+chín|hấp\\s+hoặc\\s+luộc\\s+chín|hấp\\s+chín|luộc\\s+chín\\s+trong\\s+nước)(?:\\s+trong\\s+nước)?"
+        ],
+        "en": [
+          "(?<!(?:not|un)\\s+)cooked\\s+by\\s+steaming\\s+or\\s+(?:by\\s+)?boiling\\s+in\\s+water",
+          "(?<!(?:not|un)\\s+)(?:steamed\\s+or\\s+boiled|cooked\\s+by\\s+(?:steaming|boiling))(?:\\s+in\\s+water)?"
+        ],
+        "zh": [
+          "(?<!(?:未|非|不))(?:经蒸煮或水煮|水煮或蒸熟|已蒸熟|已煮熟)"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không",
+          "chưa",
+          "trừ",
+          "ko",
+          "chẳng",
+          "non-?",
+          "without",
+          "no",
+          "not",
+          "uncooked",
+          "raw",
+          "无",
+          "非",
+          "不",
+          "未"
+        ]
+      },
+      "cachDocKhong": {
+        "vi": [
+          "(?:chưa|không)\\s+(?:được\\s+)?(?:hấp\\s+chín\\s+hoặc\\s+luộc\\s+chín|hấp\\s+hoặc\\s+luộc\\s+chín|hấp\\s+chín|luộc\\s+chín|hấp\\s+hoặc\\s+luộc)(?:\\s+trong\\s+nước)?",
+          "chưa\\s+qua\\s+(?:hấp|luộc)\\s+chín"
+        ],
+        "en": [
+          "not\\s+cooked\\s+by\\s+steaming\\s+or\\s+(?:by\\s+)?boiling(?:\\s+in\\s+water)?",
+          "uncooked",
+          "not\\s+steamed\\s+or\\s+boiled"
+        ],
+        "zh": [
+          "未经蒸煮或水煮",
+          "未蒸煮"
+        ]
+      },
+      "cachViet": {
+        "vi": "đã hấp chín hoặc luộc chín trong nước",
+        "viPhuDinh": "chưa hấp chín hoặc luộc chín trong nước"
+      },
+      "cauHoi": {
+        "vi": "Tôm / giáp xác đã được hấp chín hoặc luộc chín trong nước chưa?",
+        "zh": "该虾/甲壳动物是否已经蒸煮或水煮？"
+      },
+      "ghiChu": "Chữ biểu 9804.28.11 (↔ 0306.95.21) \"Còn vỏ, đã hấp chín hoặc luộc chín trong nước\" — tách riêng trục hấp/luộc chín khỏi phuongPhapBaoQuan (nhóm 98.04 vốn đã hun khói).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "khoiLuongHangChuyenCho",
+      "kieu": "SO",
+      "nhanVi": "khối lượng hàng chuyên chở theo thiết kế (tải trọng / payload)",
+      "nhanEn": "carrying capacity (payload)",
+      "nhanZh": "设计载重量（有效载荷）",
+      "heDonVi": "khoiLuong",
+      "donViChuan": "kg",
+      "canNguCanh": true,
+      "docMoRong": true,
+      "cachDoc": {
+        "vi": [
+          "khối\\s+lượng\\s+hàng\\s+chuyên\\s+chở(?:\\s+theo\\s+thiết\\s+kế)?(?:\\s*\\(payload\\))?",
+          "tải\\s+trọng\\s+(?:hàng\\s+)?chuyên\\s+chở",
+          "khả\\s+năng\\s+chuyên\\s+chở(?:\\s*\\(payload\\))?",
+          "\\bpayload\\b"
+        ],
+        "en": [
+          "carrying\\s+capacity(?:\\s*\\(payload\\))?",
+          "\\bpayload(?:\\s+capacity)?\\b"
+        ],
+        "zh": [
+          "设计载重量",
+          "有效载荷",
+          "载货量"
+        ]
+      },
+      "cachViet": {
+        "vi": "khối lượng hàng chuyên chở theo thiết kế {giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Khối lượng hàng chuyên chở theo thiết kế (payload) của rơ-moóc / sơ mi rơ-moóc là bao nhiêu tấn (hoặc kg)?",
+        "zh": "该挂车/半挂车的设计载重量（有效载荷/payload）是多少吨（或千克）？"
+      },
+      "ghiChu": "Chữ biểu 8716.39.91 \"Có khối lượng hàng chuyên chở theo thiết kế (payload) trên 200 tấn\" (EN \"Having a carrying capacity (payload) exceeding 200 t\") — tách riêng tải trọng chuyên chở (payload) khỏi khối lượng toàn bộ GVW.",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "tyLeLotQuaLuoiLoc1mm",
+      "kieu": "SO",
+      "nhanVi": "tỷ lệ khối lượng lọt qua lưới lọc mắt lọc 1 mm",
+      "nhanEn": "proportion by weight passing through a 1 mm mesh sieve",
+      "nhanZh": "通过1毫米筛网的重量比例",
+      "heDonVi": "phanTram",
+      "donViChuan": "%",
+      "canNguCanh": true,
+      "docMoRong": true,
+      "cachDoc": {
+        "vi": [
+          "(?:tỷ\\s+lệ\\s+)?khối\\s+lượng\\s+lọt\\s+qua\\s+lưới\\s+lọc\\s+(?:có\\s+đường\\s+kính\\s+)?mắt\\s+lọc\\s+(?:là\\s+)?1\\s*mm",
+          "lọt\\s+qua\\s+lưới\\s+lọc\\s+(?:mắt\\s+lọc\\s+)?1\\s*mm"
+        ],
+        "en": [
+          "pass(?:ing)?\\s+through\\s+a\\s+sieve\\s+with\\s+a\\s+mesh\\s+aperture\\s+of\\s+1\\s*mm",
+          "pass(?:ing)?\\s+through\\s+(?:a\\s+)?1\\s*mm\\s+(?:mesh\\s+)?sieve"
+        ],
+        "zh": [
+          "通过(?:孔径为?)?1\\s*(?:毫米|mm)筛网(?:的重量比例)?"
+        ]
+      },
+      "docThem": [
+        {
+          "mau": "(\\d+(?:[.,]\\d+)?)\\s*%(?:\\s*khối\\s+lượng)?(?=\\s*(?:trở\\s+lên\\s+|trở\\s+xuống\\s+)?lọt\\s+qua\\s+lưới\\s+lọc\\s+(?:có\\s+đường\\s+kính\\s+)?mắt\\s+lọc\\s+(?:là\\s+)?1\\s*mm)",
+          "donVi": "%"
+        }
+      ],
+      "cachViet": {
+        "vi": "khối lượng lọt qua lưới lọc mắt lọc 1 mm {giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Tỷ lệ khối lượng sản phẩm lọt qua lưới lọc có đường kính mắt lọc 1 mm là bao nhiêu %?",
+        "zh": "通过孔径为1毫米筛网的产品重量比例是多少百分比（%）？"
+      },
+      "ghiChu": "SEN (39.07) \"DẠNG HẠT VÀ CÁC DẠNG TƯƠNG TỰ: Sản phẩm dạng rắn ở dạng nguyên sinh trừ dạng bột, có ít hơn 10% khối lượng lọt qua lưới lọc có đường kính mắt lọc là 1mm và sản phẩm có 90% khối lượng trở lên lọt qua lưới lọc có đường kính mắt lọc là 5mm\".",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "tyLeLotQuaLuoiLoc5mm",
+      "kieu": "SO",
+      "nhanVi": "tỷ lệ khối lượng lọt qua lưới lọc mắt lọc 5 mm",
+      "nhanEn": "proportion by weight passing through a 5 mm mesh sieve",
+      "nhanZh": "通过5毫米筛网的重量比例",
+      "heDonVi": "phanTram",
+      "donViChuan": "%",
+      "canNguCanh": true,
+      "docMoRong": true,
+      "cachDoc": {
+        "vi": [
+          "(?:tỷ\\s+lệ\\s+)?khối\\s+lượng\\s+lọt\\s+qua\\s+lưới\\s+lọc\\s+(?:có\\s+đường\\s+kính\\s+)?mắt\\s+lọc\\s+(?:là\\s+)?5\\s*mm",
+          "lọt\\s+qua\\s+lưới\\s+lọc\\s+(?:mắt\\s+lọc\\s+)?5\\s*mm"
+        ],
+        "en": [
+          "pass(?:ing)?\\s+through\\s+a\\s+sieve\\s+with\\s+a\\s+mesh\\s+aperture\\s+of\\s+5\\s*mm",
+          "pass(?:ing)?\\s+through\\s+(?:a\\s+)?5\\s*mm\\s+(?:mesh\\s+)?sieve"
+        ],
+        "zh": [
+          "通过(?:孔径为?)?5\\s*(?:毫米|mm)筛网(?:的重量比例)?"
+        ]
+      },
+      "docThem": [
+        {
+          "mau": "(\\d+(?:[.,]\\d+)?)\\s*%(?:\\s*khối\\s+lượng)?(?=\\s*(?:trở\\s+lên\\s+|trở\\s+xuống\\s+)?lọt\\s+qua\\s+lưới\\s+lọc\\s+(?:có\\s+đường\\s+kính\\s+)?mắt\\s+lọc\\s+(?:là\\s+)?5\\s*mm)",
+          "donVi": "%"
+        }
+      ],
+      "cachViet": {
+        "vi": "khối lượng lọt qua lưới lọc mắt lọc 5 mm {giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Tỷ lệ khối lượng sản phẩm lọt qua lưới lọc có đường kính mắt lọc 5 mm là bao nhiêu %?",
+        "zh": "通过孔径为5毫米筛网的产品重量比例是多少百分比（%）？"
+      },
+      "ghiChu": "SEN (39.07) \"DẠNG HẠT VÀ CÁC DẠNG TƯƠNG TỰ: Sản phẩm dạng rắn ở dạng nguyên sinh trừ dạng bột, có ít hơn 10% khối lượng lọt qua lưới lọc có đường kính mắt lọc là 1mm và sản phẩm có 90% khối lượng trở lên lọt qua lưới lọc có đường kính mắt lọc là 5mm\".",
       "nguonLoai": "AI_DA_KIEM"
     }
   ],

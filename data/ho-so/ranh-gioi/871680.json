@@ -4,13 +4,19 @@
   "nhom": "8716",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T1003#soan-871680",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1796#soat-871680",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1796)",
+    "bam": "9649df74cc418e171343224dc4f183462d853be8952ebec7dc0609c0488df2f4"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -41,6 +47,14 @@
                 "fact": "congDung",
                 "op": "CONG_DUNG",
                 "value": "chở hàng"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "các nhà máy",
+                  "phân xưởng"
+                ]
               }
             ],
             [
@@ -77,7 +91,7 @@
           "chieu": "PHAI_KHONG"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87168020",
@@ -90,14 +104,14 @@
           "value": "Xe cút kít"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87168090",
       "nguon": "tax.87168090",
       "trich": "87168090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [

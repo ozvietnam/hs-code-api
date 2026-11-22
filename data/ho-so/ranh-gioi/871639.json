@@ -4,13 +4,19 @@
   "nhom": "8716",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-871639",
     "ngay": "2026-11-04"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1796#soat-871639",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1796)",
+    "bam": "f5ab435ff57c63a3813d28600e24297701c5829c80d469e3d6c8dd640c00dac6"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -23,7 +29,7 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87163991",
@@ -31,20 +37,20 @@
       "trich": "87163991 - - - - Có khối lượng hàng chuyên chở theo thiết kế (payload) trên 200 tấn",
       "dieuKienSo": [
         {
-          "fact": "khoiLuongToanBo",
+          "fact": "khoiLuongHangChuyenCho",
           "op": ">",
           "value": 200,
           "donVi": "tấn"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87163999",
       "nguon": "tax.87163999",
       "trich": "87163999 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -56,7 +62,7 @@
     {
       "ma": "87163991",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.87163991: \"Có khối lượng hàng chuyên chở theo thiết kế (payload) trên 200 tấn\" ⇒ khoiLuongToanBo > 200 tấn"
+      "ghiChu": "tax.87163991: \"Có khối lượng hàng chuyên chở theo thiết kế (payload) trên 200 tấn\" ⇒ khoiLuongHangChuyenCho > 200 tấn (khoá riêng tải trọng chuyên chở payload)"
     }
   ],
   "traVe": [

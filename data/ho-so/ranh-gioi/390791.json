@@ -4,20 +4,38 @@
   "nhom": "3907",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-390791",
     "ngay": "2026-11-02"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1796#soat-390791",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1796)",
+    "bam": "73b1567fbb20e3f9b657f808bf60c9affc99a90de4b445dbd8b3ba6ba4d49800"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
       "hs": "39079120",
-      "nguon": "tax.39079120",
-      "trich": "39079120 - - - Dạng hạt và các dạng tương tự (SEN)",
+      "nguon": "sen.3907",
+      "trich": "DẠNG HẠT VÀ CÁC DẠNG TƯƠNG TỰ\nSản phẩm dạng rắn ở dạng nguyên sinh trừ dạng bột, có ít hơn 10% khối lượng lọt qua lưới lọc có đường kính mắt lọc là 1mm và sản phẩm có 90% khối lượng trở lên lọt qua lưới lọc có đường kính mắt lọc là 5mm.",
       "dieuKienSo": [
+        {
+          "fact": "tyLeLotQuaLuoiLoc1mm",
+          "op": "<",
+          "value": 10,
+          "donVi": "%"
+        },
+        {
+          "fact": "tyLeLotQuaLuoiLoc5mm",
+          "op": ">=",
+          "value": 90,
+          "donVi": "%"
+        },
         {
           "fact": "dangNguyenSinh",
           "op": "TRONG",
@@ -26,7 +44,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39079130",
@@ -41,21 +59,21 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39079190",
       "nguon": "tax.39079190",
       "trich": "39079190 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "39079120",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.39079120 \"Dạng hạt và các dạng tương tự\" ⇒ dangNguyenSinh TRONG [HAT_VIEN_VAY_MANH]"
+      "ghiChu": "sen.3907 + tax.39079120 \"Dạng hạt và các dạng tương tự (SEN)\" ⇒ tyLeLotQuaLuoiLoc1mm < 10 % + tyLeLotQuaLuoiLoc5mm >= 90 % + dangNguyenSinh TRONG [HAT_VIEN_VAY_MANH] (giữ đủ ngưỡng số SEN của sổ tay)"
     },
     {
       "ma": "39079120",

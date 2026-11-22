@@ -4,13 +4,19 @@
   "nhom": "9804",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-980428",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1796#soat-980428",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1796)",
+    "bam": "b21b198007999ab2e19437e6558ca4fe4a175cfbf23eb9d19d7d6892a9008cb7"
+  },
   "dieuKienNut": [
     {
       "id": "9804281",
@@ -22,7 +28,7 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -36,28 +42,25 @@
           "op": "CO"
         },
         {
-          "fact": "phuongPhapBaoQuan",
-          "op": "TRONG",
-          "value": [
-            "HAP_LUOC_CHIN"
-          ]
+          "fact": "daHapChinHoacLuocChin",
+          "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "98042819",
       "nguon": "tax.98042819",
       "trich": "98042819 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "98042890",
       "nguon": "tax.98042890",
       "trich": "98042890 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -69,7 +72,7 @@
     {
       "ma": "98042811",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.98042811 \"Còn vỏ, đã hấp chín hoặc luộc chín trong nước\" ⇒ conVo CO (\"Còn vỏ\") + phuongPhapBaoQuan TRONG [HAP_LUOC_CHIN] (\"đã hấp chín hoặc luộc chín trong nước\")."
+      "ghiChu": "tax.98042811 \"Còn vỏ, đã hấp chín hoặc luộc chín trong nước\" ⇒ conVo CO (\"Còn vỏ\") + daHapChinHoacLuocChin CO (\"đã hấp chín hoặc luộc chín trong nước\", tách riêng khỏi phuongPhapBaoQuan của nhóm 9804)."
     }
   ],
   "traVe": [
