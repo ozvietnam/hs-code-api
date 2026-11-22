@@ -281,7 +281,7 @@
     },
     {
       "hs": "08055010",
-      "dieuKien": "tên loại hàng: Quả chanh vàng",
+      "dieuKien": "tên loại hàng: Quả chanh vàng hoặc Citrus limon hoặc Citrus limonum",
       "nguon": "tax.08055010",
       "trich": "08055010 - - Quả chanh vàng (lemon) (Citrus limon, Citrus limonum) (SEN)",
       "nguonLoai": "CLAUDE_DUYET",
@@ -290,15 +290,19 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Quả chanh vàng"
+          "value": [
+            "Quả chanh vàng",
+            "Citrus limon",
+            "Citrus limonum"
+          ]
         }
       ],
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:tho-hs-01#soat-080550",
-          "ngay": "2026-11-21",
-          "bam": "1a5c9c4bcd79e76d3599c9957026a58fc44b9ec843767ece176fb1fa6f00221b"
+          "phien": "claude-agent:ozv-1842#soat-080550",
+          "ngay": "2026-11-22",
+          "bam": "962afee94db58ce53712c15ac76a62cbacde15df3daa046d805aad1f385cc6f7"
         }
       },
       "tieuChi": {
@@ -329,18 +333,18 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:tho-hs-01#soat-080550",
-          "ngay": "2026-11-21",
-          "bam": "1a5c9c4bcd79e76d3599c9957026a58fc44b9ec843767ece176fb1fa6f00221b"
+          "phien": "claude-agent:ozv-1842#soat-080550",
+          "ngay": "2026-11-22",
+          "bam": "962afee94db58ce53712c15ac76a62cbacde15df3daa046d805aad1f385cc6f7"
         }
       },
+      "phanConLai": true,
       "tieuChi": {
         "fact": "la_qua_chanh_xanh",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "phanConLai": true
+      }
     },
     {
       "hs": "08059000",
