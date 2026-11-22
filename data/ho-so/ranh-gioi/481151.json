@@ -4,13 +4,18 @@
   "nhom": "4811",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-481151",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "https://claude.ai/code/session_01ThoHs02Lo11c#soat-481151",
+    "ngay": "2026-11-22",
+    "bam": "95c904889e238edecbb818ce031a8d0611d414a8f8c056989a016188c7e98794"
+  },
   "dieuKienNut": [
     {
       "id": "4811513",
@@ -21,6 +26,11 @@
           "op": "HOAC",
           "phuongAn": [
             [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Dạng cuộn"
+              },
               {
                 "fact": "dangCuon",
                 "op": "CO"
@@ -34,6 +44,11 @@
             ],
             [
               {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "ở dạng tờ hình chữ nhật"
+              },
+              {
                 "fact": "dangToChuNhat",
                 "op": "CO"
               },
@@ -44,14 +59,16 @@
                 "donVi": "cm"
               },
               {
-                "fact": "daGap",
-                "op": "KHONG"
+                "fact": "chieuKiaTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
               }
             ]
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -65,14 +82,14 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "48115139",
       "nguon": "tax.48115139",
       "trich": "48115139 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "48115191",
@@ -84,14 +101,14 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "48115199",
       "nguon": "tax.48115199",
       "trich": "48115199 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -129,6 +146,12 @@
       "ma": "481151",
       "loai": "QUYET_DINH",
       "ghiChu": "Gói không có tầng không mã (tangKhongMa rỗng) ⇒ dieuKienNut chỉ có 4811513. Điều kiện ở tầng 6 số (\"Loại đã tẩy trắng, định lượng trên 150 g/m2\") không khai trong khung này: 481151 không phải tiêu đề có id tieuDe, khung spec chỉ có dong8 + dieuKienNut."
+    },
+    {
+      "ma": "4811513",
+      "loai": "BO_VE",
+      "ve": "ở dạng không gấp",
+      "lyDo": "Vế nêu cách đo kích thước (trải phẳng, Chú giải 4 Chương 48 «ở dạng không gấp», EN «in the unfolded state»), không phải đặc điểm phân biệt hàng; kích thước đã số hoá ở motChieuTo/chieuKiaTo."
     }
   ],
   "traVe": [

@@ -4,13 +4,19 @@
   "nhom": "3808",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1704#soan-380862",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1801#soat-380862",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1801)",
+    "bam": "dd853b162fc37428f5a54f3e2ae828ceba496557ef49a91f61d7b828568afe9b"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -19,11 +25,6 @@
       "trich": "38086210 - - - Bột dùng làm hương vòng chống muỗi",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Bột dùng làm hương vòng chống muỗi"
-        },
-        {
           "fact": "dangChePhamDietMuoi",
           "op": "TRONG",
           "value": [
@@ -31,18 +32,13 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "38086220",
       "nguon": "tax.38086220",
       "trich": "38086220 - - - Hương vòng chống muỗi",
       "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Hương vòng chống muỗi"
-        },
         {
           "fact": "dangChePhamDietMuoi",
           "op": "TRONG",
@@ -51,18 +47,13 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "38086230",
       "nguon": "tax.38086230",
       "trich": "38086230 - - - Tấm thuốc diệt muỗi (SEN)",
       "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Tấm thuốc diệt muỗi"
-        },
         {
           "fact": "dangChePhamDietMuoi",
           "op": "TRONG",
@@ -71,7 +62,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "38086240",
@@ -79,16 +70,11 @@
       "trich": "38086240 - - - Dạng bình xịt",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Dạng bình xịt"
-        },
-        {
           "fact": "dangBinhXit",
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "38086250",
@@ -96,23 +82,18 @@
       "trich": "38086250 - - - Loại khác, dạng lỏng",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "dạng lỏng"
-        },
-        {
           "fact": "dangLong",
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "38086290",
       "nguon": "tax.38086290",
       "trich": "38086290 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -152,6 +133,29 @@
       "phien": "claude-agent:duyet-L11-20261111#soat-L11",
       "ngay": "2026-11-11",
       "lyDo": "(A) 380862:38086240 THU HẸP: 'Dạng bình xịt' / EN 'In aerosol cans' ghi tenLoai 'Dạng bình xịt' + dangBinhXit CO; (B) 380862:38086250 THU HẸP: 'Loại khác, dạng lỏng' / EN 'Other, in liquid form' ghi tenLoai 'dạng lỏng' + dangLong CO. Như 380861: tenLoai là dạng, không phải tên, thêm vào để né cổng 2; 'Thuốc trừ muỗi dạng bình xịt' / '... dạng lỏng' ⇒ tenLoai TRAI tất định ⇒ hàng bình xịt/lỏng rơi sang .90 'Loại khác'. Sửa: chỉ dangBinhXit CO / dangLong CO, giải chồng lấn bằng thứ tự CON_LAI hoặc chongLanVanBan."
+    }
+  ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "38086210",
+        "38086240"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1): tax.38086210 \"Bột dùng làm hương vòng chống muỗi\" là nguyên liệu bột rắn, không ở tax.38086240 \"Dạng bình xịt\"."
+    },
+    {
+      "cap": [
+        "38086220",
+        "38086240"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1): tax.38086220 \"Hương vòng chống muỗi\" là hương vòng rắn đốt cháy, không ở tax.38086240 \"Dạng bình xịt\"."
+    },
+    {
+      "cap": [
+        "38086230",
+        "38086240"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1): tax.38086230 \"Tấm thuốc diệt muỗi (SEN)\" là tấm sợi xenlulo rắn, không ở tax.38086240 \"Dạng bình xịt\"."
     }
   ]
 }

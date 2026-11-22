@@ -246,20 +246,56 @@
   "dong8": [
     {
       "hs": "48111020",
-      "dieuKien": "Giấy và bìa tráng phủ hắc ín, bitum hoặc asphalt (phân nhóm 481110, tên WCO: tarred, bituminised or asphalted) ở dạng cuộn có chiều rộng không quá 15 cm, hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp",
-      "tieuChi": null,
+      "dieuKien": "(ở dạng cuộn (dây hàn, que hàn, tấm, dải) và chiều rộng <= 15 cm) hoặc (ở dạng tờ hình chữ nhật (kể cả hình vuông) và một chiều (cạnh) của tờ <= 36 cm và chiều (cạnh) kia của tờ <= 36 cm)",
       "loaiKhac": false,
       "nguon": "tax.48111020",
-      "trich": "Dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp",
-      "nguonLoai": "AI_DA_KIEM",
+      "trich": "48111020 - - Dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "chieu_rong",
-          "op": "<=",
-          "value": 15,
-          "donVi": "cm"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "dangCuon",
+                "op": "CO"
+              },
+              {
+                "fact": "chieuRong",
+                "op": "<=",
+                "value": 15,
+                "donVi": "cm"
+              }
+            ],
+            [
+              {
+                "fact": "dangToChuNhat",
+                "op": "CO"
+              },
+              {
+                "fact": "motChieuTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
+              },
+              {
+                "fact": "chieuKiaTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
+              }
+            ]
+          ]
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1801#soat-481110",
+          "ngay": "2026-11-22",
+          "bam": "50c77e0d93d66e8e044701e4c90cad4eb16a221dd028a148dee47fec78551960"
+        }
+      }
     },
     {
       "hs": "48111090",
@@ -281,20 +317,56 @@
     },
     {
       "hs": "48114120",
-      "dieuKien": "Giấy và bìa tự dính (phân nhóm 481141, tên WCO: self-adhesive) thuộc nhóm một gạch 48114 (tên bị lược, không có trong nguồn — đối chiếu biểu thuế), ở dạng cuộn có chiều rộng không quá 15 cm, hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp",
-      "tieuChi": null,
+      "dieuKien": "(ở dạng cuộn (dây hàn, que hàn, tấm, dải) và chiều rộng <= 15 cm) hoặc (ở dạng tờ hình chữ nhật (kể cả hình vuông) và một chiều (cạnh) của tờ <= 36 cm và chiều (cạnh) kia của tờ <= 36 cm)",
       "loaiKhac": false,
       "nguon": "tax.48114120",
-      "trich": "Dạng cuộn có chiều rộng không quá 15 cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp",
-      "nguonLoai": "AI_DA_KIEM",
+      "trich": "48114120 - - - Dạng cuộn có chiều rộng không quá 15 cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "chieu_rong",
-          "op": "<=",
-          "value": 15,
-          "donVi": "cm"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "dangCuon",
+                "op": "CO"
+              },
+              {
+                "fact": "chieuRong",
+                "op": "<=",
+                "value": 15,
+                "donVi": "cm"
+              }
+            ],
+            [
+              {
+                "fact": "dangToChuNhat",
+                "op": "CO"
+              },
+              {
+                "fact": "motChieuTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
+              },
+              {
+                "fact": "chieuKiaTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
+              }
+            ]
+          ]
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1801#soat-481141",
+          "ngay": "2026-11-22",
+          "bam": "124440b6026ce343ddd7cdd945f3fffe37043b5f0cc665be6ea3b8a05871c055"
+        }
+      }
     },
     {
       "hs": "48114190",
@@ -339,17 +411,31 @@
     },
     {
       "hs": "48115131",
-      "dieuKien": "Tấm phủ sàn thuộc tiêu đề quốc gia 4811513 (tên bị lược, dòng cha không có trong nguồn — đối chiếu biểu thuế) của phân nhóm 481151 (giấy và bìa tráng, thấm tẩm hoặc phủ plastic không phải keo dính, đã tẩy trắng, định lượng trên 150 g/m2 theo tên WCO)",
+      "dieuKien": "tấm phủ sàn",
+      "loaiKhac": false,
+      "nguon": "tax.48115131",
+      "trich": "48115131 - - - - Tấm phủ sàn",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tamPhuSan",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "https://claude.ai/code/session_01ThoHs02Lo11c#soat-481151",
+          "ngay": "2026-11-22",
+          "bam": "95c904889e238edecbb818ce031a8d0611d414a8f8c056989a016188c7e98794"
+        }
+      },
       "tieuChi": {
         "fact": "la_tam_phu_san",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "loaiKhac": false,
-      "nguon": "tax.48115131",
-      "trich": "48115131 - - - - Tấm phủ sàn",
-      "nguonLoai": "AI_DA_KIEM"
+      }
     },
     {
       "hs": "48115139",
@@ -376,17 +462,31 @@
     },
     {
       "hs": "48115191",
-      "dieuKien": "Tấm phủ sàn thuộc tiêu đề quốc gia 4811519 (tên bị lược, nghi là 'Loại khác:' của phân nhóm 481151; dòng cha không có trong nguồn, không phân biệt được với 4811513 từ nguồn — đối chiếu biểu thuế)",
+      "dieuKien": "tấm phủ sàn",
+      "loaiKhac": false,
+      "nguon": "tax.48115191",
+      "trich": "48115191 - - - - Tấm phủ sàn",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tamPhuSan",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "https://claude.ai/code/session_01ThoHs02Lo11c#soat-481151",
+          "ngay": "2026-11-22",
+          "bam": "95c904889e238edecbb818ce031a8d0611d414a8f8c056989a016188c7e98794"
+        }
+      },
       "tieuChi": {
         "fact": "la_tam_phu_san",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "loaiKhac": false,
-      "nguon": "tax.48115191",
-      "trich": "48115191 - - - - Tấm phủ sàn",
-      "nguonLoai": "AI_DA_KIEM"
+      }
     },
     {
       "hs": "48115199",
@@ -413,31 +513,92 @@
     },
     {
       "hs": "48115920",
-      "dieuKien": "Giấy và bìa của phân nhóm 481159 (tráng, thấm tẩm hoặc phủ plastic không phải keo dính, ngoài loại đã tẩy trắng và trên 150 g/m2 theo tên WCO) đã phủ cả hai mặt bằng màng plastic trong suốt và được lót trong bằng một lớp nhôm mỏng, sử dụng để đóng gói thực phẩm dạng lỏng",
+      "dieuKien": "đã phủ (giấy cuốn, giấy bao gói); phủ (tráng) cả hai mặt; phủ bằng màng plastic trong suốt; được lót trong bằng một lớp nhôm mỏng; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): đóng gói thực phẩm dạng lỏng",
+      "loaiKhac": false,
+      "nguon": "tax.48115920",
+      "trich": "48115920 - - - Giấy và bìa đã phủ cả hai mặt bằng màng plastic trong suốt và được lót trong bằng một lớp nhôm mỏng, sử dụng để đóng gói thực phẩm dạng lỏng",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "daPhu",
+          "op": "CO"
+        },
+        {
+          "fact": "phuCaHaiMat",
+          "op": "CO"
+        },
+        {
+          "fact": "phuMangPlasticTrongSuot",
+          "op": "CO"
+        },
+        {
+          "fact": "lotLopNhom",
+          "op": "CO"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "đóng gói thực phẩm dạng lỏng"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "https://claude.ai/code/session_01ThoHs02Lo11c#soat-481159",
+          "ngay": "2026-11-22",
+          "bam": "9c016cfb6e2ee79625b74fa720184be3d0b8e32753aca98430773e199f0c723b"
+        }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "48115941",
+          "lyDo": "Chữ biểu chồng lấn THẬT: .20 \"Giấy và bìa đã phủ cả hai mặt bằng màng plastic trong suốt và được lót trong bằng một lớp nhôm mỏng, sử dụng để đóng gói thực phẩm dạng lỏng\" và .41 (trong tiêu đề 4811594 \"Dạng cuộn có chiều rộng không quá 15 cm …\") \"Tấm phủ sàn\" là hai dòng anh em cùng cấp, không câu nào loại trừ câu kia (một tấm phủ sàn bằng giấy phủ nhựa trong suốt hai mặt, lót nhôm, dạng cuộn hẹp, thoả cả hai chữ); không có căn cứ thứ tự trích được, lúc chạy hỏi người khai."
+        },
+        {
+          "voi": "48115949",
+          "lyDo": "Chữ biểu chồng lấn THẬT: .49 \"Loại khác\" (dòng trong tiêu đề 4811594 \"Dạng cuộn có chiều rộng không quá 15 cm …\") chỉ loại trừ anh em .41 \"Tấm phủ sàn\", KHÔNG loại trừ .20 \"Giấy và bìa đã phủ cả hai mặt bằng màng plastic trong suốt và được lót trong bằng một lớp nhôm mỏng, sử dụng để đóng gói thực phẩm dạng lỏng\" đứng cùng cấp với tiêu đề 4811594; một cuộn giấy hẹp phủ nhựa trong suốt hai mặt lót nhôm dùng đóng gói thực phẩm lỏng thoả cả hai dòng; không có căn cứ ưu tiên trích được, lúc chạy hỏi người khai."
+        }
+      ],
       "tieuChi": {
         "fact": "phu_hai_mat_mang_plastic_trong_suot_lot_lop_nhom_mong_dong_goi_thuc_pham_long",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "loaiKhac": false,
-      "nguon": "tax.48115920",
-      "trich": "Giấy và bìa đã phủ cả hai mặt bằng màng plastic trong suốt và được lót trong bằng một lớp nhôm mỏng, sử dụng để đóng gói thực phẩm dạng lỏng",
-      "nguonLoai": "AI_DA_KIEM"
+      }
     },
     {
       "hs": "48115941",
-      "dieuKien": "Tấm phủ sàn thuộc tiêu đề quốc gia 4811594 (tên bị lược, dòng cha không có trong nguồn — đối chiếu biểu thuế) của phân nhóm 481159, không phải dòng 48115920 (phủ hai mặt màng plastic trong suốt lót nhôm, đóng gói thực phẩm lỏng)",
+      "dieuKien": "tấm phủ sàn",
+      "loaiKhac": false,
+      "nguon": "tax.48115941",
+      "trich": "48115941 - - - - Tấm phủ sàn",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tamPhuSan",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "https://claude.ai/code/session_01ThoHs02Lo11c#soat-481159",
+          "ngay": "2026-11-22",
+          "bam": "9c016cfb6e2ee79625b74fa720184be3d0b8e32753aca98430773e199f0c723b"
+        }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "48115920",
+          "lyDo": "Chữ biểu chồng lấn THẬT: .20 \"Giấy và bìa đã phủ cả hai mặt bằng màng plastic trong suốt và được lót trong bằng một lớp nhôm mỏng, sử dụng để đóng gói thực phẩm dạng lỏng\" và .41 (trong tiêu đề 4811594 \"Dạng cuộn có chiều rộng không quá 15 cm …\") \"Tấm phủ sàn\" là hai dòng anh em cùng cấp, không câu nào loại trừ câu kia (một tấm phủ sàn bằng giấy phủ nhựa trong suốt hai mặt, lót nhôm, dạng cuộn hẹp, thoả cả hai chữ); không có căn cứ thứ tự trích được, lúc chạy hỏi người khai."
+        }
+      ],
       "tieuChi": {
         "fact": "la_tam_phu_san",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "loaiKhac": false,
-      "nguon": "tax.48115941",
-      "trich": "48115941 - - - - Tấm phủ sàn",
-      "nguonLoai": "AI_DA_KIEM"
+      }
     },
     {
       "hs": "48115949",
@@ -460,21 +621,41 @@
         ],
         "toTienCoTen": "481159",
         "dinhNghiaDuoc": true
-      }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "48115920",
+          "lyDo": "Chữ biểu chồng lấn THẬT: .49 \"Loại khác\" (dòng trong tiêu đề 4811594 \"Dạng cuộn có chiều rộng không quá 15 cm …\") chỉ loại trừ anh em .41 \"Tấm phủ sàn\", KHÔNG loại trừ .20 \"Giấy và bìa đã phủ cả hai mặt bằng màng plastic trong suốt và được lót trong bằng một lớp nhôm mỏng, sử dụng để đóng gói thực phẩm dạng lỏng\" đứng cùng cấp với tiêu đề 4811594; một cuộn giấy hẹp phủ nhựa trong suốt hai mặt lót nhôm dùng đóng gói thực phẩm lỏng thoả cả hai dòng; không có căn cứ ưu tiên trích được, lúc chạy hỏi người khai."
+        }
+      ]
     },
     {
       "hs": "48115991",
-      "dieuKien": "Tấm phủ sàn thuộc tiêu đề quốc gia 4811599 (tên bị lược, nghi là 'Loại khác:' của phân nhóm 481159; dòng cha không có trong nguồn, không phân biệt được với 4811594 từ nguồn — đối chiếu biểu thuế)",
+      "dieuKien": "tấm phủ sàn",
+      "loaiKhac": false,
+      "nguon": "tax.48115991",
+      "trich": "48115991 - - - - Tấm phủ sàn",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tamPhuSan",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "https://claude.ai/code/session_01ThoHs02Lo11c#soat-481159",
+          "ngay": "2026-11-22",
+          "bam": "9c016cfb6e2ee79625b74fa720184be3d0b8e32753aca98430773e199f0c723b"
+        }
+      },
       "tieuChi": {
         "fact": "la_tam_phu_san",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "loaiKhac": false,
-      "nguon": "tax.48115991",
-      "trich": "48115991 - - - - Tấm phủ sàn",
-      "nguonLoai": "AI_DA_KIEM"
+      }
     },
     {
       "hs": "48115999",
@@ -501,34 +682,84 @@
     },
     {
       "hs": "48116020",
-      "dieuKien": "Giấy và bìa tráng, thấm tẩm hoặc phủ sáp, sáp parafin, stearin, dầu hoặc glycerol (phân nhóm 481160 theo tên WCO) ở dạng cuộn có chiều rộng không quá 15 cm, hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp",
-      "tieuChi": null,
+      "dieuKien": "(ở dạng cuộn (dây hàn, que hàn, tấm, dải) và chiều rộng <= 15 cm) hoặc (ở dạng tờ hình chữ nhật (kể cả hình vuông) và một chiều (cạnh) của tờ <= 36 cm và chiều (cạnh) kia của tờ <= 36 cm)",
       "loaiKhac": false,
       "nguon": "tax.48116020",
-      "trich": "Dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp",
-      "nguonLoai": "AI_DA_KIEM",
+      "trich": "48116020 - - Dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "chieu_rong",
-          "op": "<=",
-          "value": 15,
-          "donVi": "cm"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "dangCuon",
+                "op": "CO"
+              },
+              {
+                "fact": "chieuRong",
+                "op": "<=",
+                "value": 15,
+                "donVi": "cm"
+              }
+            ],
+            [
+              {
+                "fact": "dangToChuNhat",
+                "op": "CO"
+              },
+              {
+                "fact": "motChieuTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
+              },
+              {
+                "fact": "chieuKiaTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
+              }
+            ]
+          ]
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1801#soat-481160",
+          "ngay": "2026-11-22",
+          "bam": "f8c13c295cafb4d5033b808af0ed23d9b526355488b95e6b3197bdaa896d2619"
+        }
+      }
     },
     {
       "hs": "48116091",
-      "dieuKien": "Tấm phủ sàn thuộc tiêu đề quốc gia 4811609 (tên bị lược, nghi là 'Loại khác:' của phân nhóm 481160 ngoài 48116020; dòng cha không có trong nguồn — đối chiếu biểu thuế)",
+      "dieuKien": "tấm phủ sàn",
+      "loaiKhac": false,
+      "nguon": "tax.48116091",
+      "trich": "48116091 - - - Tấm phủ sàn",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tamPhuSan",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1801#soat-481160",
+          "ngay": "2026-11-22",
+          "bam": "f8c13c295cafb4d5033b808af0ed23d9b526355488b95e6b3197bdaa896d2619"
+        }
+      },
       "tieuChi": {
         "fact": "la_tam_phu_san",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "loaiKhac": false,
-      "nguon": "tax.48116091",
-      "trich": "48116091 - - - Tấm phủ sàn",
-      "nguonLoai": "AI_DA_KIEM"
+      }
     },
     {
       "hs": "48116099",
@@ -569,23 +800,23 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L15-20261111#soat-L15",
-          "ngay": "2026-11-11",
-          "bam": "2b6c22164753a75279a0191c4ec4ef4e321eeb6f1c5e8b658ff15777dbc5d6fc"
+          "phien": "claude-agent:ozv-1801#soat-481190",
+          "ngay": "2026-11-22",
+          "bam": "1741bc1d33a572b472fdc6d88c11d8e513e2cf8dd5820694fa857f35a92348de"
         }
-      },
-      "tieuChi": {
-        "fact": "la_tam_phu_san",
-        "op": "=",
-        "value": true,
-        "donVi": null
       },
       "chongLanVanBan": [
         {
           "voi": "48119042",
           "lyDo": "Không có hàng thật thoả cả hai (Q1, Claude 07/11/2026): \"Tấm phủ sàn\" ↔ \"Giấy tạo vân(SEN)\" — giấy tạo vân (SEN 4811.90.42) là giấy công nghệ tạo bề mặt giả da, phủ silicon/plastic, chịu nhiệt 150–220 °C; không dùng làm tấm phủ sàn."
         }
-      ]
+      ],
+      "tieuChi": {
+        "fact": "la_tam_phu_san",
+        "op": "=",
+        "value": true,
+        "donVi": null
+      }
     },
     {
       "hs": "48119042",
@@ -604,23 +835,23 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L15-20261111#soat-L15",
-          "ngay": "2026-11-11",
-          "bam": "2b6c22164753a75279a0191c4ec4ef4e321eeb6f1c5e8b658ff15777dbc5d6fc"
+          "phien": "claude-agent:ozv-1801#soat-481190",
+          "ngay": "2026-11-22",
+          "bam": "1741bc1d33a572b472fdc6d88c11d8e513e2cf8dd5820694fa857f35a92348de"
         }
-      },
-      "tieuChi": {
-        "fact": "lop_be_mat",
-        "op": "in",
-        "value": "màng silicon|màng plastic",
-        "donVi": null
       },
       "chongLanVanBan": [
         {
           "voi": "48119041",
           "lyDo": "Không có hàng thật thoả cả hai (Q1, Claude 07/11/2026): \"Tấm phủ sàn\" ↔ \"Giấy tạo vân(SEN)\" — giấy tạo vân (SEN 4811.90.42) là giấy công nghệ tạo bề mặt giả da, phủ silicon/plastic, chịu nhiệt 150–220 °C; không dùng làm tấm phủ sàn."
         }
-      ]
+      ],
+      "tieuChi": {
+        "fact": "lop_be_mat",
+        "op": "in",
+        "value": "màng silicon|màng plastic",
+        "donVi": null
+      }
     },
     {
       "hs": "48119049",
@@ -657,23 +888,24 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L15-20261111#soat-L15",
-          "ngay": "2026-11-11",
-          "bam": "2b6c22164753a75279a0191c4ec4ef4e321eeb6f1c5e8b658ff15777dbc5d6fc"
+          "phien": "claude-agent:ozv-1801#soat-481190",
+          "ngay": "2026-11-22",
+          "bam": "1741bc1d33a572b472fdc6d88c11d8e513e2cf8dd5820694fa857f35a92348de"
         }
-      },
-      "tieuChi": {
-        "fact": "la_tam_phu_san",
-        "op": "=",
-        "value": true,
-        "donVi": null
       },
       "chongLanVanBan": [
         {
           "voi": "48119092",
           "lyDo": "Không có hàng thật thoả cả hai (Q1, Claude 07/11/2026): \"Tấm phủ sàn\" ↔ \"Giấy tạo vân(SEN)\" — giấy tạo vân (SEN) là giấy công nghệ tạo bề mặt giả da; không dùng làm tấm phủ sàn."
         }
-      ]
+      ],
+      "phanConLai": [],
+      "tieuChi": {
+        "fact": "la_tam_phu_san",
+        "op": "=",
+        "value": true,
+        "donVi": null
+      }
     },
     {
       "hs": "48119092",
@@ -692,23 +924,24 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L15-20261111#soat-L15",
-          "ngay": "2026-11-11",
-          "bam": "2b6c22164753a75279a0191c4ec4ef4e321eeb6f1c5e8b658ff15777dbc5d6fc"
+          "phien": "claude-agent:ozv-1801#soat-481190",
+          "ngay": "2026-11-22",
+          "bam": "1741bc1d33a572b472fdc6d88c11d8e513e2cf8dd5820694fa857f35a92348de"
         }
-      },
-      "tieuChi": {
-        "fact": "lop_be_mat",
-        "op": "in",
-        "value": "màng silicon|màng plastic",
-        "donVi": null
       },
       "chongLanVanBan": [
         {
           "voi": "48119091",
           "lyDo": "Không có hàng thật thoả cả hai (Q1, Claude 07/11/2026): \"Tấm phủ sàn\" ↔ \"Giấy tạo vân(SEN)\" — giấy tạo vân (SEN) là giấy công nghệ tạo bề mặt giả da; không dùng làm tấm phủ sàn."
         }
-      ]
+      ],
+      "phanConLai": [],
+      "tieuChi": {
+        "fact": "lop_be_mat",
+        "op": "in",
+        "value": "màng silicon|màng plastic",
+        "donVi": null
+      }
     },
     {
       "hs": "48119093",
@@ -740,11 +973,12 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L15-20261111#soat-L15",
-          "ngay": "2026-11-11",
-          "bam": "2b6c22164753a75279a0191c4ec4ef4e321eeb6f1c5e8b658ff15777dbc5d6fc"
+          "phien": "claude-agent:ozv-1801#soat-481190",
+          "ngay": "2026-11-22",
+          "bam": "1741bc1d33a572b472fdc6d88c11d8e513e2cf8dd5820694fa857f35a92348de"
         }
       },
+      "phanConLai": [],
       "tieuChi": {
         "fact": "vat_lieu",
         "op": "in",
@@ -1159,14 +1393,19 @@
   },
   "dieuKienNut": [
     {
-      "id": "4811904",
-      "nguon": "tieuDe.4811904",
-      "trich": "4811904 Dạng cuộn có chiều rộng không quá 15 cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp",
+      "id": "4811513",
+      "nguon": "tieuDe.4811513",
+      "trich": "4811513 Dạng cuộn có chiều rộng không quá 15 cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp",
       "dieuKienSo": [
         {
           "op": "HOAC",
           "phuongAn": [
             [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Dạng cuộn"
+              },
               {
                 "fact": "dangCuon",
                 "op": "CO"
@@ -1179,6 +1418,133 @@
               }
             ],
             [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "ở dạng tờ hình chữ nhật"
+              },
+              {
+                "fact": "dangToChuNhat",
+                "op": "CO"
+              },
+              {
+                "fact": "motChieuTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
+              },
+              {
+                "fact": "chieuKiaTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "https://claude.ai/code/session_01ThoHs02Lo11c#soat-481151",
+          "ngay": "2026-11-22",
+          "bam": "95c904889e238edecbb818ce031a8d0611d414a8f8c056989a016188c7e98794"
+        }
+      }
+    },
+    {
+      "id": "4811594",
+      "nguon": "tieuDe.4811594",
+      "trich": "4811594 Dạng cuộn có chiều rộng không quá 15 cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Dạng cuộn"
+              },
+              {
+                "fact": "dangCuon",
+                "op": "CO"
+              },
+              {
+                "fact": "chieuRong",
+                "op": "<=",
+                "value": 15,
+                "donVi": "cm"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "ở dạng tờ hình chữ nhật"
+              },
+              {
+                "fact": "dangToChuNhat",
+                "op": "CO"
+              },
+              {
+                "fact": "motChieuTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
+              },
+              {
+                "fact": "chieuKiaTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "https://claude.ai/code/session_01ThoHs02Lo11c#soat-481159",
+          "ngay": "2026-11-22",
+          "bam": "9c016cfb6e2ee79625b74fa720184be3d0b8e32753aca98430773e199f0c723b"
+        }
+      }
+    },
+    {
+      "id": "4811904",
+      "nguon": "tieuDe.4811904",
+      "trich": "4811904 Dạng cuộn có chiều rộng không quá 15 cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Dạng cuộn"
+              },
+              {
+                "fact": "dangCuon",
+                "op": "CO"
+              },
+              {
+                "fact": "chieuRong",
+                "op": "<=",
+                "value": 15,
+                "donVi": "cm"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "ở dạng tờ hình chữ nhật"
+              },
               {
                 "fact": "kichThuoc",
                 "op": "<=",
@@ -1193,9 +1559,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L15-20261111#soat-L15",
-          "ngay": "2026-11-11",
-          "bam": "2b6c22164753a75279a0191c4ec4ef4e321eeb6f1c5e8b658ff15777dbc5d6fc"
+          "phien": "claude-agent:ozv-1801#soat-481190",
+          "ngay": "2026-11-22",
+          "bam": "1741bc1d33a572b472fdc6d88c11d8e513e2cf8dd5820694fa857f35a92348de"
         }
       }
     }

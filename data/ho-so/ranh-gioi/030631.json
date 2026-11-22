@@ -4,14 +4,36 @@
   "nhom": "0306",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261105T1529#soan-030631",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
-  "dieuKienNut": [],
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "https://claude.ai/code/session_01ThoHs02Lo11c#soat-030631",
+    "ngay": "2026-11-22",
+    "bam": "f08ad4e0dcb52e1d70771051a15c7463d5160d29767f57ace38099fe28b19548"
+  },
+  "dieuKienNut": [
+    {
+      "id": "030631",
+      "nguon": "tieuDe.03063",
+      "trich": "03063 Sống, tươi hoặc ướp lạnh",
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "SONG",
+            "TUOI_UOP_LANH"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    }
+  ],
   "dong8": [
     {
       "hs": "03063110",
@@ -19,12 +41,16 @@
       "trich": "03063110 - - - Để nhân giống",
       "dieuKienSo": [
         {
-          "fact": "dungCho",
+          "fact": "congDung",
           "op": "CONG_DUNG",
-          "value": "nhân giống"
+          "value": "Để nhân giống"
+        },
+        {
+          "fact": "dungLamGiong",
+          "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "03063120",
@@ -39,7 +65,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "03063130",
@@ -54,7 +80,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "chongLanVanBan": [
@@ -63,10 +89,21 @@
         "03063110",
         "03063130"
       ],
-      "lyDo": "tax.03063110 \"Để nhân giống\" không loại trừ tax.03063130 \"Tươi hoặc ướp lạnh\" — tôm hùm đá để nhân giống vẫn có thể ở trạng thái tươi hoặc ướp lạnh; không có căn cứ thứ tự"
+      "lyDo": "Không có hàng thật thoả cả hai (Q1): tax.03063110 \"Để nhân giống\" là con giống sống (tầng anh em 03063120 \"Loại khác, sống\"), không ở trạng thái tax.03063130 \"Tươi hoặc ướp lạnh\"."
     }
   ],
-  "ghiChuSoan": [],
+  "ghiChuSoan": [
+    {
+      "ma": "030631",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Phạm vi phân nhóm dieuKienNut[030631] lấy từ tầng một gạch cha 03063 \"Sống, tươi hoặc ướp lạnh\" (#1109)."
+    },
+    {
+      "ma": "03063110",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.03063110 \"Để nhân giống\" ⇒ dungLamGiong CO."
+    }
+  ],
   "traVe": [
     {
       "phien": "claude-agent:duyet-L2-20261111#soat-L2",

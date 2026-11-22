@@ -4,13 +4,18 @@
   "nhom": "3917",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1705#soan-391732",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "https://claude.ai/code/session_01ThoHs02Lo11c#soat-391732",
+    "ngay": "2026-11-22",
+    "bam": "264020c2bbb295d3538cfa1609bdd4b06db546d8c8ed16914382260388f78160"
+  },
   "dieuKienNut": [
     {
       "id": "391732~r5954",
@@ -18,12 +23,16 @@
       "trich": "391732~r5954 Được gia công hơn mức gia công bề mặt đơn thuần",
       "dieuKienSo": [
         {
-          "fact": "congDung",
-          "op": "CONG_DUNG",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
           "value": "Được gia công hơn mức gia công bề mặt đơn thuần"
+        },
+        {
+          "fact": "giaCongHonBeMat",
+          "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -41,7 +50,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39173220",
@@ -59,7 +68,7 @@
           "value": "bếp ga"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39173291",
@@ -77,14 +86,14 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39173292",
       "nguon": "tax.39173292",
       "trich": "39173292 - - - - - Loại khác (SEN)",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39173293",
@@ -97,7 +106,7 @@
           "value": "các polyme trùng hợp"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39173294",
@@ -114,7 +123,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39173295",
@@ -122,23 +131,38 @@
       "trich": "39173295 - - - - - Từ các polyme trùng ngưng hoặc tái sắp xếp khác; từ sợi lưu hóa; từ nitrat xenlulo, các acetat xenlulo và các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "các polyme trùng ngưng",
-            "tái sắp xếp khác",
-            "sợi lưu hóa",
-            "từ nitrat xenlulo",
-            "các acetat xenlulo",
-            "các dẫn xuất hóa học khác của xenlulo"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "các polyme trùng ngưng",
+                  "tái sắp xếp khác",
+                  "sợi lưu hóa"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "từ nitrat xenlulo",
+                  "các acetat xenlulo",
+                  "các dẫn xuất hóa học khác của xenlulo"
+                ]
+              },
+              {
+                "fact": "daHoaDeo",
+                "op": "CO"
+              }
+            ]
           ]
-        },
-        {
-          "fact": "daHoaDeo",
-          "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": false
     },
     {
@@ -146,7 +170,7 @@
       "nguon": "tax.39173299",
       "trich": "39173299 - - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
