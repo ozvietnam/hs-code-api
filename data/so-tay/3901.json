@@ -77,7 +77,7 @@
   "dong8": [
     {
       "hs": "39011012",
-      "dieuKien": "tên loại hàng: LLDPE; hàm lượng monomer alpha-olefin <= 5 %",
+      "dieuKien": "tên loại hàng: LLDPE hoặc Polyetylen chứa các monomer alpha-olefin; hàm lượng monomer alpha-olefin <= 5 %",
       "loaiKhac": false,
       "nguon": "sen.39011012",
       "trich": "Polyetylen chứa các monomer alpha-olefin từ 5% trở xuống (ít nhất một lượng nhỏ) dùng để chỉ Polyetylen cấu trúc thẳng có nhánh ngắn tỷ trọng thấp (LLDPE) với hàm lượng monomer alpha olefin từ 5% trở xuống tính theo khối lượng.",
@@ -86,7 +86,10 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "LLDPE"
+          "value": [
+            "LLDPE",
+            "Polyetylen chứa các monomer alpha-olefin"
+          ]
         },
         {
           "fact": "hamLuongMonomerAlphaOlefin",
@@ -98,9 +101,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "paperclip:tho-hs-03:20261114T1400#soat-cuon-chieu",
-          "ngay": "2026-11-14",
-          "bam": "792d76d931dc8e4fdeebf584c05f360931c53294f9bcaa20862431d81e84a908"
+          "phien": "claude-agent:ozv-1810#soat-390110",
+          "ngay": "2026-11-22",
+          "bam": "2ff6c0c769b3a3fe6bc59f0292e926150368f7cc5e930f5490b487388aeb6970"
         }
       }
     },
@@ -126,7 +129,7 @@
     },
     {
       "hs": "39011092",
-      "dieuKien": "tên loại hàng: LLDPE; hàm lượng monomer alpha-olefin <= 5 %",
+      "dieuKien": "tên loại hàng: LLDPE hoặc Polyetylen chứa các monomer alpha-olefin; hàm lượng monomer alpha-olefin <= 5 %",
       "loaiKhac": false,
       "nguon": "sen.39011092",
       "trich": "Polyetylen chứa các monomer alpha-olefin từ 5% trở xuống (ít nhất một lượng nhỏ) dùng để chỉ Polyetylen cấu trúc thẳng có nhánh ngắn tỷ trọng thấp (LLDPE) với hàm lượng monomer alpha olefin từ 5% trở xuống tính theo khối lượng.",
@@ -135,7 +138,10 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "LLDPE"
+          "value": [
+            "LLDPE",
+            "Polyetylen chứa các monomer alpha-olefin"
+          ]
         },
         {
           "fact": "hamLuongMonomerAlphaOlefin",
@@ -147,9 +153,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "paperclip:tho-hs-03:20261114T1400#soat-cuon-chieu",
-          "ngay": "2026-11-14",
-          "bam": "792d76d931dc8e4fdeebf584c05f360931c53294f9bcaa20862431d81e84a908"
+          "phien": "claude-agent:ozv-1810#soat-390110",
+          "ngay": "2026-11-22",
+          "bam": "2ff6c0c769b3a3fe6bc59f0292e926150368f7cc5e930f5490b487388aeb6970"
         }
       }
     },
@@ -409,15 +415,23 @@
           "value": [
             "LONG_HOAC_NHAO"
           ]
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Dạng lỏng",
+            "dạng nhão"
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET",
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "paperclip:tho-hs-03:20261114T1400#soat-cuon-chieu",
-          "ngay": "2026-11-14",
-          "bam": "792d76d931dc8e4fdeebf584c05f360931c53294f9bcaa20862431d81e84a908"
+          "phien": "claude-agent:ozv-1810#soat-390110",
+          "ngay": "2026-11-22",
+          "bam": "2ff6c0c769b3a3fe6bc59f0292e926150368f7cc5e930f5490b487388aeb6970"
         }
       }
     }

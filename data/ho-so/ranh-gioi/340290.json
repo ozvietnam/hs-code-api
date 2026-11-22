@@ -12,9 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "mw-soatS2:20261107T0448#soat-340290",
-    "ngay": "2026-11-07",
-    "bam": "b9fdb88480d2a3c837f0bd3a844533aad5ded5a40ff4bc8ab54b47113123d6b8"
+    "phien": "claude-agent:ozv-1810#soat-340290",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá điều kiện tiêu đề và tên SEN khép SẠCH V1 (OZV-1810)",
+    "bam": "7ad6d21d468732b67a9dab947d670789f99e623fb49cc3f9588fc06da321ae1e"
   },
   "dieuKienNut": [
     {
@@ -26,6 +27,11 @@
           "fact": "dangLong",
           "op": "CO",
           "value": true
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dạng lỏng"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -231,6 +237,13 @@
       "ma": "340290",
       "loai": "LECH_TIEN_LE",
       "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 340290-01 KHONG_LECH, 340290-02 KHONG_LECH (3828/TB-TCHQ, 1778/TB-TCHQ): soạn theo chữ biểu, khớp bảng."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "claude-agent:ozv-1810#soat-340290",
+      "ngay": "2026-11-22",
+      "lyDo": "Bổ sung tenLoai tiêu đề và đồng bộ tên SEN (OZV-1810)"
     }
   ]
 }
