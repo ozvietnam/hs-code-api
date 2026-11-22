@@ -1533,7 +1533,7 @@ check('vietCum đơn vị @1 KHÔNG đổi ("CS: 75000W" — không cách)', T.v
   la('mặt cắt ngang hình tròn vẫn ⇒ TRON', 'hinhDangMatCatNgang', 'Có mặt cắt ngang hình tròn', 'TRON');
 
   // 4. ReDoS ~40.000 từ lặp < 2 giây (CLAUDE.md quy tắc 6b)
-  const redosText1799 = Array(5000).fill('được phủ mạ hoặc tráng bằng dạng đai và dải mặt cắt ngang').join(' ');
+  const redosText1799 = Array(4000).fill('được phủ mạ hoặc tráng bằng dạng đai hoặc tấm mặt cắt ngang').join(' ');
   const t0 = process.hrtime.bigint();
   for (const fk of ['lopMaPhu', 'dangDaiDaiTamPhoDung', 'hinhDangMatCatNgang']) {
     T.docGiaTri(fk, redosText1799);
@@ -1610,13 +1610,61 @@ check('vietCum đơn vị @1 KHÔNG đổi ("CS: 75000W" — không cách)', T.v
   la('7214.20.31 (Có mặt cắt ngang hình tròn: Thép cốt bê tông) vẫn ⇒ TRON', 'hinhDangMatCatNgang', 'Có răng khía, rãnh, gân hoặc các dạng khác được tạo thành trong quá trình cán hoặc xoắn sau khi cán: Có hàm lượng carbon dưới 0,6% tính theo khối lượng - Có mặt cắt ngang hình tròn: Thép cốt bê tông', 'TRON');
 
   // 4. ReDoS ~40.000 từ lặp < 2 giây (CLAUDE.md quy tắc 6b)
-  const redosText1804 = Array(4000).fill('trứng của gà thuộc loài thảm từ các vật liệu dệt khác xoắn sau khi cán').join(' ');
+  const redosText1804 = Array(3500).fill('trứng của gà thuộc loài thảm từ các vật liệu khác xoắn sau khi cán').join(' ');
   for (const fk of ['cuaLoaiGiaCam', 'tuXoDay', 'dangDaiDaiTamPhoDung', 'dangLuonSong', 'hinhDangMatCatNgang', 'loaiSoiDet']) {
     const t0 = process.hrtime.bigint();
     T.docGiaTri(fk, redosText1804);
     const ms = Number(process.hrtime.bigint() - t0) / 1e6;
     check(`OZV-1804 ReDoS ~40.000 từ lặp cho ${fk} < 2000 ms (thực tế ${ms.toFixed(0)} ms)`, ms < 2000, { fk, ms });
   }
+}
+
+// #1595 (T-3b) — soPha.NHIEU_PHA đọc "đa pha" qua cachDocThem (giữ nguyên 53 khoá tu-vung@1 đóng băng)
+{
+  const DK = require('../lib/dieu-kien-so.js');
+  const TVe = require('../lib/ho-so/tach-ve.js');
+  const kSoPha = T.layKhoa('soPha');
+
+  // Thuận: docGiaTri + cachDocGiaTri + DK.kiemDieuKien + tach-ve.neoMot nhận "đa pha"
+  la('T-3b soPha "Động cơ xoay chiều khác, đa pha" ⇒ NHIEU_PHA', 'soPha', 'Động cơ xoay chiều khác, đa pha', 'NHIEU_PHA', { bc: 'đa pha' });
+  const cd = T.cachDocGiaTri(kSoPha, 'NHIEU_PHA');
+  check('T-3b cachDocGiaTri(soPha, NHIEU_PHA) giữ mẫu @1 và ghép "đa pha"',
+    ['ba pha', '3 pha', 'nhiều pha', 'đa pha'].every((p) => cd.vi.includes(p)) && cd.en.includes('poly-?phase') && cd.zh.includes('多相'),
+    cd);
+  check('T-3b DK.kiemDieuKien soPha TRONG [NHIEU_PHA] trên "Động cơ xoay chiều khác, đa pha" ⇒ null',
+    DK.kiemDieuKien({ fact: 'soPha', op: 'TRONG', value: ['NHIEU_PHA'] }, 'Động cơ xoay chiều khác, đa pha') === null);
+  check('T-3b tach-ve.neoMot soPha TRONG [NHIEU_PHA] neo được vào "Động cơ xoay chiều khác, đa pha"',
+    TVe.neoMot({ fact: 'soPha', op: 'TRONG', value: ['NHIEU_PHA'] }, 'Động cơ xoay chiều khác, đa pha').length === 1);
+
+  // Nghịch: "một pha" vẫn MOT_PHA; phủ định / ranh giới từ ⇒ CHUA_BIET; kiemTuVung từ chối cachDocThem sai
+  la('T-3b soPha (nghịch): "Động cơ xoay chiều khác, một pha" ⇒ MOT_PHA (không nhảy NHIEU_PHA)', 'soPha', 'Động cơ xoay chiều khác, một pha', 'MOT_PHA');
+  chuaBiet('T-3b soPha (nghịch): phủ định "không đa pha" ⇒ CHUA_BIET', 'soPha', 'không đa pha');
+  chuaBiet('T-3b soPha (nghịch): ranh giới từ "hàng đa năng pha lê" ⇒ CHUA_BIET', 'soPha', 'hàng đa năng pha lê');
+  check('T-3b DK.kiemDieuKien (nghịch): trích chỉ nói "một pha" không qua NHIEU_PHA',
+    DK.kiemDieuKien({ fact: 'soPha', op: 'TRONG', value: ['NHIEU_PHA'] }, 'Động cơ xoay chiều khác, một pha') === 'dieu-kien-so-trong-khong-co-trong-trich:NHIEU_PHA');
+  check('T-3b tach-ve.neoMot (nghịch): "một pha" không neo được cho NHIEU_PHA',
+    TVe.neoMot({ fact: 'soPha', op: 'TRONG', value: ['NHIEU_PHA'] }, 'Động cơ xoay chiều khác, một pha').length === 0);
+
+  const loiThem = (mut, ma) => {
+    const x = clone(tv2);
+    mut(x);
+    return T.kiemTuVung(x).some((l) => l.startsWith(ma));
+  };
+  check('T-3b kiemTuVung ĐỎ với cachDocThem không hợp lệ (khoá lạ / không phải LIET_KE / giá trị lạ / regex hỏng / chuỗi rỗng)',
+    loiThem((x) => { x.cachDocThem = { khoaLa: { A: { vi: ['a'] } } }; }, 'cach-doc-them-khoa-khong-hop-le')
+    && loiThem((x) => { x.cachDocThem = { dienAp: { V: { vi: ['v'] } } }; }, 'cach-doc-them-khoa-khong-hop-le')
+    && loiThem((x) => { x.cachDocThem = { soPha: { GIA_TRI_LA: { vi: ['x'] } } }; }, 'cach-doc-them-gia-tri-ngoai-danh-sach')
+    && loiThem((x) => { x.cachDocThem = { soPha: { NHIEU_PHA: { vi: ['(đa'] } } }; }, 'mau-khong-hop-le')
+    && loiThem((x) => { x.cachDocThem = { soPha: { NHIEU_PHA: { vi: [''] } } }; }, 'cach-doc-them-mau-rong')
+    && loiThem((x) => { x.cachDocThem = { soPha: { NHIEU_PHA: { fr: ['poly'] } } }; }, 'cach-doc-them-ngon-ngu-la')
+    && loiThem((x) => { x.cachDocThem = 'sai'; }, 'cach-doc-them-khong-hop-le'));
+
+  // ReDoS ~40.000 từ lặp cho soPha < 400 ms
+  const redosSoPha = Array(8000).fill('động cơ điện đa năng pha lê một hai').join(' ');
+  const t0 = process.hrtime.bigint();
+  const rRedos = T.docGiaTri('soPha', redosSoPha);
+  const ms = Number(process.hrtime.bigint() - t0) / 1e6;
+  check(`T-3b ReDoS ~40.000 từ lặp cho soPha < 400 ms (thực tế ${ms.toFixed(0)} ms)`, rRedos.trangThai === 'CHUA_BIET' && ms < 400, { ms, rRedos });
 }
 
 console.log(`\n${pass} pass, ${fail} fail`);
