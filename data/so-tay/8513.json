@@ -107,7 +107,34 @@
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
-  "tieuChi6": [],
+  "tieuChi6": [
+    {
+      "hs6": "851310",
+      "thuTu": 1,
+      "dieuKien": "Đèn",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Đèn",
+      "donVi": null,
+      "tuKhoa": [
+        "đèn"
+      ],
+      "nguon": "tieuDe.851310",
+      "trich": "851310 Đèn",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "851390",
+      "thuTu": 2,
+      "dieuKien": "Bộ phận",
+      "fact": "laBoPhan",
+      "op": "CO",
+      "donVi": null,
+      "nguon": "tieuDe.851390",
+      "trich": "851390 Bộ phận",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
   "dong8": [
     {
       "hs": "85131030",
@@ -348,6 +375,8 @@
     "tax.85139010",
     "tax.85139030",
     "tax.85139090",
+    "tieuDe.851310",
+    "tieuDe.851390",
     "wco-op.851310.1"
   ],
   "phienBan": "HS2022",
@@ -359,8 +388,8 @@
     "ms": 5
   },
   "kiemTra": {
-    "tong": 21,
-    "dat": 21,
+    "tong": 22,
+    "dat": 22,
     "loai": 0,
     "nguonBiCat": [],
     "nangCap": {
@@ -371,6 +400,12 @@
         "tieuChi6",
         "phamViLoaiKhac"
       ]
+    },
+    "tieuChi6": {
+      "khuon": "g6@1",
+      "soMuc": 2,
+      "soPhanNhom": 2,
+      "cong": "scripts/kiem-tieu-chi-6.mjs"
     }
   },
   "yKienWcoDayDu": false
