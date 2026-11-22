@@ -365,7 +365,11 @@
    "laThietBiPhauThuatHoacYHocDienTu",
    "laOngThong",
    "laThuanChung",
-   "coHinhDangBenTrongChuNhatHoacThuon"
+   "coHinhDangBenTrongChuNhatHoacThuon",
+   "daXuLyResorcinolFormaldehyde",
+   "coLotDeBenTrong",
+   "coMuiKimLoaiBaoVe",
+   "oDangTho"
   ],
   "tuVung1": {
    "trangThai": "DA_CHAM",
@@ -21289,7 +21293,8 @@
     "GIAY_XENLULO",
     "CARBON_GRAPHIT",
     "VANG_HOAC_BAC",
-    "KIM_LOAI_DAT_PHU_VANG_HOAC_BAC"
+    "KIM_LOAI_DAT_PHU_VANG_HOAC_BAC",
+    "DA_THUOC"
    ],
    "moTaGiaTri": {
     "TITAN": {
@@ -21537,6 +21542,24 @@
       ]
      },
      "cachViet": "bằng kim loại dát phủ vàng hoặc bạc"
+    },
+    "DA_THUOC": {
+     "nhanVi": "da thuộc",
+     "nhanEn": "leather",
+     "nhanZh": "皮革",
+     "cachDoc": {
+      "vi": [
+       "(?<!(?:mặt\\s+ngoài|đế\\s+ngoài|mũ\\s+giày|phế\\s+liệu\\s+khác)\\s+)(?:bằng|từ|làm\\s+từ)\\s+da\\s+thuộc"
+      ],
+      "en": [
+       "(?<!(?:outer\\s+soles?|uppers?)\\s+)(?:of|made\\s+of|from)\\s+leather"
+      ],
+      "zh": [
+       "皮革制",
+       "皮制"
+      ]
+     },
+     "cachViet": "bằng da thuộc"
     }
    },
    "cachDoc": {
@@ -24828,6 +24851,245 @@
     "zh": "浴缸内部（内腔）的几何形状是否为长方形或长圆形（oblong）？"
    },
    "ghiChu": "Chữ biểu 3922.10.11 \"Bồn tắm có hình dạng bên trong là hình chữ nhật hoặc hình thuôn (oblong)\" / EN \"Bathtubs having rectangular or oblong interior shape\" (OZV-1771).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "khoa": "daXuLyResorcinolFormaldehyde",
+   "kieu": "CO_KHONG",
+   "nhanVi": "đã xử lý bằng resorcinol formaldehyde",
+   "nhanEn": "treated with resorcinol formaldehyde",
+   "nhanZh": "经间苯二酚甲醛处理",
+   "cachDoc": {
+    "vi": [
+     "(?:đã\\s+)?xử\\s+lý\\s+(?:bằng\\s+)?resorcinol[-\\s]+formaldehyd(?:e)?"
+    ],
+    "en": [
+     "treated\\s+with\\s+resorcinol[-\\s]+formaldehyde"
+    ],
+    "zh": [
+     "经?间苯二酚[-\\s]*甲醛处理"
+    ],
+    "phuDinh": [
+     "không phải",
+     "không",
+     "chưa",
+     "ko",
+     "chẳng",
+     "non-?",
+     "without",
+     "not",
+     "untreated",
+     "无",
+     "非",
+     "不",
+     "未"
+    ]
+   },
+   "cachDocKhong": {
+    "vi": [
+     "(?:chưa|không)\\s+xử\\s+lý\\s+(?:bằng\\s+)?resorcinol[-\\s]+formaldehyd(?:e)?"
+    ],
+    "en": [
+     "not\\s+treated\\s+with\\s+resorcinol[-\\s]+formaldehyde",
+     "untreated\\s+with\\s+resorcinol[-\\s]+formaldehyde"
+    ],
+    "zh": [
+     "未经间苯二酚[-\\s]*甲醛处理"
+    ]
+   },
+   "cachViet": {
+    "vi": "đã xử lý bằng resorcinol formaldehyde",
+    "viPhuDinh": "chưa xử lý bằng resorcinol formaldehyde"
+   },
+   "cauHoi": {
+    "vi": "Sợi bện đã được xử lý bằng resorcinol formaldehyde chưa?",
+    "zh": "该帘线是否经间苯二酚甲醛处理？"
+   },
+   "ghiChu": "Chữ biểu 5607.50.10 \"Sợi bện (cord) cho dây đai chữ V làm từ xơ nhân tạo đã xử lý bằng resorcinol formaldehyde\" / EN \"V-belt cord of man-made fibres treated with resorcinol formaldehyde\" (OZV-1794).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "khoa": "coLotDeBenTrong",
+   "kieu": "CO_KHONG",
+   "nhanVi": "có lót đế bên trong",
+   "nhanEn": "having an inner sole",
+   "nhanZh": "有内底",
+   "cachDoc": {
+    "vi": [
+     "(?:có\\s+)?lót\\s+đế\\s+bên\\s+trong",
+     "có\\s+lót\\s+đế\\s+trong"
+    ],
+    "en": [
+     "(?:having\\s+an?\\s+)?inner\\s+soles?"
+    ],
+    "zh": [
+     "有内底",
+     "带内底"
+    ],
+    "phuDinh": [
+     "không phải",
+     "không có",
+     "không",
+     "chưa",
+     "ko",
+     "chẳng",
+     "non-?",
+     "without",
+     "no",
+     "not",
+     "not having",
+     "not having an",
+     "无",
+     "非",
+     "不",
+     "没有",
+     "未"
+    ]
+   },
+   "cachDocKhong": {
+    "vi": [
+     "không\\s+có\\s+lót\\s+đế\\s+(?:bên\\s+)?trong"
+    ],
+    "en": [
+     "not\\s+having\\s+an?\\s+inner\\s+soles?",
+     "without\\s+(?:an?\\s+)?inner\\s+soles?"
+    ],
+    "zh": [
+     "无内底",
+     "没有内底"
+    ]
+   },
+   "cachViet": {
+    "vi": "có lót đế bên trong",
+    "viPhuDinh": "không có lót đế bên trong"
+   },
+   "cauHoi": {
+    "vi": "Giày, dép có lót đế bên trong (inner sole) không?",
+    "zh": "该鞋靴是否有内底？"
+   },
+   "ghiChu": "Chữ biểu 6403.91.10, 6403.99.10 \"Giày, dép có đế bằng gỗ, không có lót đế bên trong hoặc mũi gắn kim loại bảo vệ\" / EN \"Footwear made on a base or platform of wood, not having an inner sole or protective metal toe cap\" (đọc KHÔNG, OZV-1794).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "khoa": "coMuiKimLoaiBaoVe",
+   "kieu": "CO_KHONG",
+   "nhanVi": "có mũi gắn kim loại bảo vệ",
+   "nhanEn": "having a protective metal toe cap",
+   "nhanZh": "有金属保护包头",
+   "cachDoc": {
+    "vi": [
+     "(?<!không\\s+có\\s+lót\\s+đế\\s+bên\\s+trong\\s+hoặc\\s+)(?:có\\s+)?mũi\\s+(?:giày\\s+)?(?:được\\s+)?gắn\\s+kim\\s+loại(?:\\s+để)?\\s+bảo\\s+vệ",
+     "(?<!không\\s+có\\s+)mũi\\s+thép\\s+bảo\\s+vệ"
+    ],
+    "en": [
+     "(?<!not\\s+having\\s+an\\s+inner\\s+sole\\s+or\\s+)(?:having\\s+a\\s+)?protective\\s+metal\\s+toe[- ]?caps?"
+    ],
+    "zh": [
+     "(?<!无内底或)金属保护包头",
+     "带钢头"
+    ],
+    "phuDinh": [
+     "không phải",
+     "không có",
+     "không",
+     "chưa",
+     "ko",
+     "chẳng",
+     "non-?",
+     "without",
+     "no",
+     "not",
+     "not having",
+     "无",
+     "非",
+     "不",
+     "没有",
+     "未"
+    ]
+   },
+   "cachDocKhong": {
+    "vi": [
+     "không\\s+có\\s+(?:lót\\s+đế\\s+bên\\s+trong\\s+hoặc\\s+)?mũi\\s+(?:giày\\s+)?(?:được\\s+)?gắn\\s+kim\\s+loại(?:\\s+để)?\\s+bảo\\s+vệ",
+     "không\\s+có\\s+mũi\\s+(?:kim\\s+loại|thép)(?:\\s+bảo\\s+vệ)?"
+    ],
+    "en": [
+     "not\\s+having\\s+(?:an\\s+inner\\s+sole\\s+or\\s+)?(?:a\\s+)?protective\\s+metal\\s+toe[- ]?caps?",
+     "without\\s+(?:a\\s+)?protective\\s+metal\\s+toe[- ]?caps?"
+    ],
+    "zh": [
+     "无(?:内底或)?金属保护包头",
+     "无钢头"
+    ]
+   },
+   "cachViet": {
+    "vi": "có mũi gắn kim loại bảo vệ",
+    "viPhuDinh": "không có mũi gắn kim loại bảo vệ"
+   },
+   "cauHoi": {
+    "vi": "Giày, dép có mũi gắn kim loại bảo vệ không?",
+    "zh": "该鞋靴是否有金属保护包头？"
+   },
+   "ghiChu": "Chữ biểu 6403.91.10, 6403.99.10 \"Giày, dép có đế bằng gỗ, không có lót đế bên trong hoặc mũi gắn kim loại bảo vệ\" / EN \"Footwear made on a base or platform of wood, not having an inner sole or protective metal toe cap\" (đọc KHÔNG, OZV-1794).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "khoa": "oDangTho",
+   "kieu": "CO_KHONG",
+   "nhanVi": "ở dạng thô (chưa gia công hoàn thiện)",
+   "nhanEn": "in the rough state",
+   "nhanZh": "处于粗坯状态",
+   "cachDoc": {
+    "vi": [
+     "ở\\s+dạng\\s+thô",
+     "dạng\\s+thô\\s+chưa\\s+gia\\s+công"
+    ],
+    "en": [
+     "in\\s+the\\s+rough\\s+state",
+     "in\\s+rough\\s+state"
+    ],
+    "zh": [
+     "处于粗坯状态",
+     "粗坯状态",
+     "毛坯状态"
+    ],
+    "phuDinh": [
+     "không phải",
+     "không",
+     "chưa",
+     "ko",
+     "chẳng",
+     "non-?",
+     "without",
+     "not",
+     "无",
+     "非",
+     "不",
+     "未"
+    ]
+   },
+   "cachDocKhong": {
+    "vi": [
+     "không\\s+(?:phải\\s+)?ở\\s+dạng\\s+thô",
+     "đã\\s+gia\\s+công\\s+hoàn\\s+thiện"
+    ],
+    "en": [
+     "not\\s+in\\s+the\\s+rough\\s+state",
+     "finished\\s+state"
+    ],
+    "zh": [
+     "非粗坯状态",
+     "已完工"
+    ]
+   },
+   "cachViet": {
+    "vi": "ở dạng thô",
+    "viPhuDinh": "không phải ở dạng thô"
+   },
+   "cauHoi": {
+    "vi": "Sản phẩm đang ở dạng thô (phôi đúc, rèn, dập chưa gia công hoàn thiện) hay đã gia công hoàn thiện?",
+    "zh": "该产品是处于粗坯状态还是已加工完成？"
+   },
+   "ghiChu": "Chữ biểu 7310.10.91 \"Được đúc, rèn hoặc dập, ở dạng thô\" / EN \"Casting, forging or stamping, in the rough state\", 7310.29.92 \"Được đúc, rèn hoặc dập khác, ở dạng thô\" (OZV-1794).",
    "nguonLoai": "AI_DA_KIEM"
   }
  ],

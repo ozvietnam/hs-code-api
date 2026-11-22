@@ -4,13 +4,19 @@
   "nhom": "5607",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-560750",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1794#soat-560750",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá theo traVe (OZV-1794)",
+    "bam": "6dda69db1a5643f8c1a33af77a318def9a89c845af1bcfa2d960115df522f6e2"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -30,7 +36,18 @@
               {
                 "fact": "dungCho",
                 "op": "CONG_DUNG",
-                "value": "dây đai chữ V làm từ xơ nhân tạo đã xử lý bằng resorcinol formaldehyde"
+                "value": "dây đai chữ V"
+              },
+              {
+                "fact": "loaiSoiDet",
+                "op": "TRONG",
+                "value": [
+                  "NHAN_TAO"
+                ]
+              },
+              {
+                "fact": "daXuLyResorcinolFormaldehyde",
+                "op": "CO"
               }
             ],
             [
@@ -57,21 +74,21 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "56075090",
       "nguon": "tax.56075090",
       "trich": "56075090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "56075010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.56075010: dấu chấm phẩy tách hai ý thay thế ⇒ HOAC. Ý A \"Sợi bện (cord) cho dây đai chữ V làm từ xơ nhân tạo đã xử lý bằng resorcinol formaldehyde\" ⇒ tenLoai \"Sợi bện\" + dungCho \"dây đai chữ V làm từ xơ nhân tạo đã xử lý bằng resorcinol formaldehyde\" (chuỗi con nguyên văn; chất liệu/xử lý thuộc về đích \"dây đai chữ V\", EN \"V-belt cord of man-made fibres treated with resorcinol formaldehyde\"; tu-vung@2 không có khoá riêng cho xử lý RF nên giữ trong chữ tự do thay vì bỏ vế). Ý B \"sợi polyamit và sợi polytetrafloro-ethylen có độ mảnh lớn hơn 10.000 decitex, dùng để làm kín các loại bơm, van và các sản phẩm tương tự\" ⇒ tenLoai [\"sợi polyamit\",\"sợi polytetrafloro-ethylen\"] (mảng, định ngữ chung thành điều kiện riêng) + doManh > 10000 decitex + congDung \"làm kín\" (đối chiếu tay: \"10.000\" kiểu Việt = mười nghìn)."
+      "ghiChu": "tax.56075010: dấu chấm phẩy tách hai ý thay thế ⇒ HOAC. Ý A \"Sợi bện (cord) cho dây đai chữ V làm từ xơ nhân tạo đã xử lý bằng resorcinol formaldehyde\" (EN \"V-belt cord of man-made fibres treated with resorcinol formaldehyde\") ⇒ tenLoai \"Sợi bện\" + dungCho \"dây đai chữ V\" + loaiSoiDet TRONG [NHAN_TAO] (giaTriCha bao gồm SOI_TONG_HOP và SOI_TAI_TAO) + daXuLyResorcinolFormaldehyde CO (chất liệu xơ nhân tạo và xử lý RF gắn vào sợi bện, không gắn vào dây đai). Ý B \"sợi polyamit và sợi polytetrafloro-ethylen có độ mảnh lớn hơn 10.000 decitex, dùng để làm kín các loại bơm, van và các sản phẩm tương tự\" ⇒ tenLoai [\"sợi polyamit\",\"sợi polytetrafloro-ethylen\"] + doManh > 10000 decitex + congDung \"làm kín\"."
     },
     {
       "ma": "56075010",
