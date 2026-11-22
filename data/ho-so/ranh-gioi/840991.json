@@ -15,7 +15,7 @@
     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot7",
     "ngay": "2026-11-01",
     "ghiChu": "Đối chiếu chữ biểu (--goi/--ve) từng tầng 84.29/84.30, 87.01, 87.11, xe khác Ch.87, tàu Ch.89 (.915/.916 theo công suất 22,38 kW), động cơ khác; HOAC [tenLoai X | laBoPhan+dungCho X] cho chế hòa khí; biên 50–155 mm >=/<=; mảng hai hàng; phanConLai tầng VÀ một con. doiChieuPhanNhom: bộ phận động cơ phụ tàu Ch.89 ⇒ .72 (8409917); máy thủy 15 kW ⇒ .51; piston máy thủy >22,38 kW ⇒ .64.",
-    "bam": "1371e23eecfbc3eb1dab04a24a0be19f967e2795acd6d06823277798a480e30b"
+    "bam": "f7d3f632e2c22a7922129d90e097175e0ce138ae3959dfdbc9a0ca5be948a040"
   },
   "dieuKienNut": [
     {
@@ -69,6 +69,11 @@
           "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": "87.11"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "nhóm 87.11"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -82,6 +87,11 @@
           "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": "Chương 87"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "xe khác thuộc Chương 87"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET",
@@ -274,7 +284,10 @@
         }
       ],
       "nguonLoai": "CLAUDE_DUYET",
-      "phanConLai": true
+      "phanConLai": [
+        "84099116",
+        "84099118"
+      ]
     },
     {
       "hs": "84099118",
@@ -684,7 +697,10 @@
         }
       ],
       "nguonLoai": "CLAUDE_DUYET",
-      "phanConLai": true
+      "phanConLai": [
+        "84099146",
+        "84099148"
+      ]
     },
     {
       "hs": "84099148",
@@ -801,7 +817,9 @@
         }
       ],
       "nguonLoai": "CLAUDE_DUYET",
-      "phanConLai": true
+      "phanConLai": [
+        "84099154"
+      ]
     },
     {
       "hs": "84099159",
@@ -1020,7 +1038,10 @@
         }
       ],
       "nguonLoai": "CLAUDE_DUYET",
-      "phanConLai": true
+      "phanConLai": [
+        "84099176",
+        "84099178"
+      ]
     },
     {
       "hs": "84099178",

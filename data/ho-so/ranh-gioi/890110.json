@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L31-20261111#soat-L31",
-    "ngay": "2026-11-11",
+    "phien": "paperclip:ozv-1863#soat-16c",
+    "ngay": "2026-11-22",
     "ghiChu": "Đối chiếu 6 dòng tổng dung tích GT: biên ≤26 / >26–≤500 / >500–≤1.000 / >1.000–≤4.000 / >4.000–≤5.000 / >5.000 khớp 'không quá'/'trên' VI+EN; liền mạch không hở; sổ tay cũ không có ngưỡng số.",
-    "bam": "104efa7d998ff2f928d9743c73202643686e201431565ab713e0618203bbfd9a"
+    "bam": "705219ac92b0459c19df5f9f1062d6f76d9074610c19655a60279c5e592f6a03"
   },
   "dieuKienNut": [],
   "dong8": [
@@ -65,10 +65,29 @@
           "donVi": "GT"
         },
         {
-          "fact": "tongDungTichTau",
-          "op": "<=",
-          "value": 1000,
-          "donVi": "GT"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tongDungTichTau",
+                "op": "<=",
+                "value": 1000,
+                "donVi": "GT"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Tổng dung tích (gross tonnage)"
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "trên 500 nhưng không quá 1.000"
+              }
+            ]
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -85,10 +104,29 @@
           "donVi": "GT"
         },
         {
-          "fact": "tongDungTichTau",
-          "op": "<=",
-          "value": 4000,
-          "donVi": "GT"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tongDungTichTau",
+                "op": "<=",
+                "value": 4000,
+                "donVi": "GT"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Tổng dung tích (gross tonnage)"
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "trên 1.000 nhưng không quá 4.000"
+              }
+            ]
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -105,10 +143,29 @@
           "donVi": "GT"
         },
         {
-          "fact": "tongDungTichTau",
-          "op": "<=",
-          "value": 5000,
-          "donVi": "GT"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tongDungTichTau",
+                "op": "<=",
+                "value": 5000,
+                "donVi": "GT"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Tổng dung tích (gross tonnage)"
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "trên 4.000 nhưng không quá 5.000"
+              }
+            ]
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
