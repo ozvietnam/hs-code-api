@@ -639,6 +639,201 @@ kiem('#1586 (7009.91/92 & phân nhóm không phải DU): 7009 qua cổng với 0
     && G6.khoaPhuHop('8483', 'Thân ổ, không lắp ổ bi hoặc ổ đũa; gối đỡ trục dùng ổ trượt') === 'coGanOBi'
     && G6.khoaPhuHop('4016', 'Từ cao su xốp') === 'vatLieuKhac'
     && G6.khoaPhuHop('4016', 'Các sản phẩm có thể bơm hơi khác') === 'coTheBomHoi');
+
+  // T-6: sửa vế/cổng G6 (vật liệu tương tự, khung gỗ/kim loại, tier Các sản phẩm, Bộ phận và phụ kiện, 8413.81 DU_CO_PHAM_VI, TIEU_DE_CHI_LAC "Của ...")
+  {
+    const pn = (h4, hs6) => G6.phanNhomCuaNhom(h4).find((p) => p.hs6 === hs6);
+    const v940152 = G6.veCanPhu('9401', pn('9401', '940152'));
+    kiem('T-6 tachVeTieuDe/veCanPhu 9401.52 bỏ "hoặc các vật liệu tương tự" & phuVe đòi đủ 3 vật liệu',
+      v940152.map((v) => v.chu).join('|') === 'bằng mây, liễu gai, tre|Bằng tre'
+      && G6.phuVe([
+        { fact: 'vatLieuKhac', op: 'TRONG', value: ['SONG_MAY', 'LIEU_GAI', 'TRE'], nguon: 'tieuDe.94015', trich: '94015 Ghế bằng mây, liễu gai, tre hoặc các vật liệu tương tự' },
+      ], v940152[0])
+      && !G6.phuVe([
+        { fact: 'vatLieuKhac', op: 'TRONG', value: ['SONG_MAY', 'TRE'], nguon: 'tieuDe.94015', trich: '94015 Ghế bằng mây, liễu gai, tre hoặc các vật liệu tương tự' },
+      ], v940152[0]));
+
+    const v901920 = G6.tachVeTieuDe('Máy trị liệu bằng ôzôn, bằng oxy, bằng xông, máy hô hấp nhân tạo hoặc máy hô hấp trị liệu khác', new Set());
+    const v731819 = G6.veCanPhu('7318', pn('7318', '731819'));
+    const v731829 = G6.veCanPhu('7318', pn('7318', '731829'));
+    const vHangHoaGiu = G6.tachVeTieuDe('Hàng hóa bằng sắt hoặc thép', new Set());
+    kiem('T-6 tachVeTieuDe 9019.20 danh sách nhiều máy = [], tier 7318 bỏ "Các sản phẩm", giữ "Hàng hóa" ở leaf',
+      v901920.length === 0
+      && JSON.stringify(v731819.map((v) => v.chu)) === JSON.stringify(['đã được ren'])
+      && JSON.stringify(v731829.map((v) => v.chu)) === JSON.stringify(['không có ren'])
+      && JSON.stringify(vHangHoaGiu[0]?.chinh) === JSON.stringify(['hang', 'hoa']));
+
+    kiem('T-6 khoaPhuHop mở khoá chuẩn + negative guard không bằng kim loại / 6704 / 6913 / 7009',
+      G6.khoaPhuHop('9401', 'Ghế khác, có khung bằng gỗ') === 'chatLieu'
+      && G6.khoaPhuHop('9401', 'Ghế khác, có khung bằng kim loại') === 'chatLieu'
+      && G6.khoaPhuHop('8207', 'Có bộ phận làm việc bằng gốm kim loại') === 'vatLieuKhac'
+      && G6.khoaPhuHop('8483', 'Bánh xe có răng, đĩa xích và các bộ phận truyền chuyển động riêng biệt; các bộ phận') === 'tenLoai'
+      && G6.khoaPhuHop('9019', 'Máy trị liệu bằng ôzôn, bằng oxy, bằng xông, máy hô hấp nhân tạo hoặc máy hô hấp trị liệu khác') === 'tenLoai'
+      && G6.khoaPhuHop('8516', 'Dụng cụ đun nước nóng tức thời hoặc có dự trữ (1)') === 'coDuTru'
+      && G6.khoaPhuHop('8528', 'Có khả năng kết nối trực tiếp và được thiết kế để sử dụng với máy xử lý dữ liệu tự động thuộc nhóm 84.71') === 'coKetNoiMayTinh'
+      && G6.khoaPhuHop('8443', 'Máy khác, có khả năng kết nối trực tiếp với máy xử lý dữ liệu tự động hoặc kết nối mạng') === 'coKetNoiMayTinh'
+      && G6.khoaPhuHop('5407', 'Vải dệt thoi khác, có hàm lượng sợi filament tổng hợp chiếm từ 85% trở lên tính theo trọng lượng') === 'hamLuongSoiFilamentTongHop'
+      && G6.khoaPhuHop('4009', 'Chưa được gia cố hoặc kết hợp cách khác với các vật liệu khác') === 'daGiaCo'
+      && G6.khoaPhuHop('9401', 'Ghế quay có điều chỉnh độ cao') === 'coDieuChinhDoCao'
+      && G6.khoaPhuHop('9401', 'Ghế có thể chuyển thành giường, trừ ghế trong vườn hoặc đồ cắm trại') === 'coTheChuyenThanhGiuong'
+      && G6.khoaPhuHop('8413', 'Bơm hoạt động kiểu piston quay khác') === 'kieuBom'
+      && G6.khoaPhuHop('9031', 'Bộ phận và phụ kiện') === 'laBoPhan'
+      && G6.khoaPhuHop('9205', 'Kèn không bằng kim loại') === null
+      && G6.khoaPhuHop('6704', 'Bằng vật liệu dệt tổng hợp') === null
+      && G6.khoaPhuHop('6913', 'Bằng sứ') === null
+      && G6.khoaPhuHop('7009', 'Chưa có khung') === null
+      && G6.khoaPhuHop('7009', 'Có khung') === null);
+
+    kiem('T-6 "Bộ phận và phụ kiện": 9031.90/9025.90/9026.90/8443.99 phủ bằng laBoPhan=CO; 8466.10 KHÔNG phủ chỉ bằng laBoPhan=CO',
+      ['9031', '9025', '9026', '8443'].every((h4) => {
+        const hs6 = h4 === '8443' ? '844399' : `${h4}90`;
+        const vs = G6.veCanPhu(h4, pn(h4, hs6));
+        return vs.some((v) => G6.phuVe([{ fact: 'laBoPhan', op: 'CO', nguon: `tieuDe.${hs6}`, trich: `${hs6} Bộ phận và phụ kiện` }], v));
+      })
+      && !G6.phuVe(
+        [{ fact: 'laBoPhan', op: 'CO', nguon: 'tax.84661010', trich: '84661010 - - Bộ phận kẹp dụng cụ' }],
+        G6.veCanPhu('8466', pn('8466', '846610'))[0]
+      ));
+
+    const n9401 = G6.nguonChoPhep('9401');
+    const ds9401 = [
+      { hs6: '940110', thuTu: 1, dieuKien: 'Ghế dùng cho phương tiện bay', fact: 'dungCho', op: 'CONG_DUNG', value: 'phương tiện bay', tuKhoa: ['phương tiện bay'], kiemChung: [{ hoi: 'Ghế có gắn bộ phận bổ trợ hoặc lắp lò xo dùng cho phương tiện bay hoặc xe cộ không?', nguon: 'nhom9401.nhom', trich: n9401['nhom9401.nhom'] }], nguon: 'tax.94011000', trich: '94011000 - Ghế dùng cho phương tiện bay' },
+      { hs6: '940120', thuTu: 2, dieuKien: 'Ghế dùng cho xe có động cơ', fact: 'dungChoXeCoDongCo', op: 'CO', nguon: 'tieuDe.940120', trich: '940120 Ghế dùng cho xe có động cơ' },
+      { hs6: '940131', thuTu: 3, dieuKien: 'Ghế quay', fact: 'tenLoai', op: 'TEN_LOAI', value: 'Ghế quay', tuKhoa: ['ghế quay'], nguon: 'tieuDe.94013', trich: '94013 Ghế quay có điều chỉnh độ cao' },
+      { hs6: '940131', thuTu: 3, dieuKien: 'Có điều chỉnh độ cao', fact: 'coDieuChinhDoCao', op: 'CO', nguon: 'tieuDe.94013', trich: '94013 Ghế quay có điều chỉnh độ cao' },
+      { hs6: '940131', thuTu: 3, dieuKien: 'Bằng gỗ', fact: 'chatLieu', op: 'LA', value: 'gỗ', nguon: 'tax.94013100', trich: '94013100 - - Bằng gỗ' },
+      { hs6: '940139', thuTu: 4, dieuKien: 'Ghế quay', fact: 'tenLoai', op: 'TEN_LOAI', value: 'Ghế quay', tuKhoa: ['ghế quay'], nguon: 'tieuDe.94013', trich: '94013 Ghế quay có điều chỉnh độ cao' },
+      { hs6: '940139', thuTu: 4, dieuKien: 'Có điều chỉnh độ cao', fact: 'coDieuChinhDoCao', op: 'CO', nguon: 'tieuDe.94013', trich: '94013 Ghế quay có điều chỉnh độ cao' },
+      { hs6: '940139', thuTu: 4, phanConLai: true, nguon: 'tax.94013900', trich: '94013900 - - Loại khác' },
+      { hs6: '940141', thuTu: 5, dieuKien: 'Ghế có thể chuyển thành giường', fact: 'coTheChuyenThanhGiuong', op: 'CO', dieuKienTru: ['ghế trong vườn', 'đồ cắm trại'], nguon: 'tieuDe.94014', trich: '94014 Ghế có thể chuyển thành giường, trừ ghế trong vườn hoặc đồ cắm trại' },
+      { hs6: '940141', thuTu: 5, dieuKien: 'Bằng gỗ', fact: 'chatLieu', op: 'LA', value: 'gỗ', nguon: 'tax.94014100', trich: '94014100 - - Bằng gỗ' },
+      { hs6: '940149', thuTu: 6, dieuKien: 'Ghế có thể chuyển thành giường', fact: 'coTheChuyenThanhGiuong', op: 'CO', dieuKienTru: ['ghế trong vườn', 'đồ cắm trại'], nguon: 'tieuDe.94014', trich: '94014 Ghế có thể chuyển thành giường, trừ ghế trong vườn hoặc đồ cắm trại' },
+      { hs6: '940149', thuTu: 6, phanConLai: true, nguon: 'tax.94014900', trich: '94014900 - - Loại khác' },
+      { hs6: '940152', thuTu: 7, dieuKien: 'Bằng mây, liễu gai, tre', fact: 'vatLieuKhac', op: 'TRONG', value: ['SONG_MAY', 'LIEU_GAI', 'TRE'], nguon: 'tieuDe.94015', trich: '94015 Ghế bằng mây, liễu gai, tre hoặc các vật liệu tương tự' },
+      { hs6: '940152', thuTu: 7, dieuKien: 'Bằng tre', fact: 'vatLieuKhac', op: 'TRONG', value: ['TRE'], nguon: 'tax.94015200', trich: '94015200 - - Bằng tre' },
+      { hs6: '940153', thuTu: 8, dieuKien: 'Bằng mây, liễu gai, tre', fact: 'vatLieuKhac', op: 'TRONG', value: ['SONG_MAY', 'LIEU_GAI', 'TRE'], nguon: 'tieuDe.94015', trich: '94015 Ghế bằng mây, liễu gai, tre hoặc các vật liệu tương tự' },
+      { hs6: '940153', thuTu: 8, dieuKien: 'Bằng song, mây', fact: 'vatLieuKhac', op: 'TRONG', value: ['SONG_MAY'], nguon: 'tax.94015300', trich: '94015300 - - Bằng song, mây' },
+      { hs6: '940159', thuTu: 9, dieuKien: 'Bằng mây, liễu gai, tre', fact: 'vatLieuKhac', op: 'TRONG', value: ['SONG_MAY', 'LIEU_GAI', 'TRE'], nguon: 'tieuDe.94015', trich: '94015 Ghế bằng mây, liễu gai, tre hoặc các vật liệu tương tự' },
+      { hs6: '940159', thuTu: 9, phanConLai: true, nguon: 'tax.94015900', trich: '94015900 - - Loại khác' },
+      { hs6: '940161', thuTu: 10, dieuKien: 'Có khung bằng gỗ', fact: 'chatLieu', op: 'LA', value: 'gỗ', nguon: 'tieuDe.94016', trich: '94016 Ghế khác, có khung bằng gỗ' },
+      { hs6: '940161', thuTu: 10, dieuKien: 'Đã nhồi đệm', fact: 'daNhoiDem', op: 'CO', nguon: 'tax.94016100', trich: '94016100 - - Đã nhồi đệm' },
+      { hs6: '940169', thuTu: 11, dieuKien: 'Có khung bằng gỗ', fact: 'chatLieu', op: 'LA', value: 'gỗ', nguon: 'tieuDe.94016', trich: '94016 Ghế khác, có khung bằng gỗ' },
+      { hs6: '940169', thuTu: 11, phanConLai: true, nguon: 'tieuDe.940169', trich: '940169 Loại khác' },
+      { hs6: '940171', thuTu: 12, dieuKien: 'Có khung bằng kim loại', fact: 'chatLieu', op: 'LA', value: 'kim loại', nguon: 'tieuDe.94017', trich: '94017 Ghế khác, có khung bằng kim loại' },
+      { hs6: '940171', thuTu: 12, dieuKien: 'Đã nhồi đệm', fact: 'daNhoiDem', op: 'CO', nguon: 'tax.94017100', trich: '94017100 - - Đã nhồi đệm' },
+      { hs6: '940179', thuTu: 13, dieuKien: 'Có khung bằng kim loại', fact: 'chatLieu', op: 'LA', value: 'kim loại', nguon: 'tieuDe.94017', trich: '94017 Ghế khác, có khung bằng kim loại' },
+      { hs6: '940179', thuTu: 13, phanConLai: true, nguon: 'tieuDe.940179', trich: '940179 Loại khác' },
+      { hs6: '940180', thuTu: 14, dieuKien: 'Ghế', fact: 'tenLoai', op: 'TEN_LOAI', value: 'Ghế', tuKhoa: ['ghế'], nguon: 'tax.94018000', trich: '94018000 - Ghế khác' },
+      { hs6: '940180', thuTu: 14, phanConLai: true, nguon: 'tax.94018000', trich: '94018000 - Ghế khác' },
+      { hs6: '940191', thuTu: 15, dieuKien: 'Là bộ phận', fact: 'laBoPhan', op: 'CO', nguon: 'tieuDe.94019', trich: '94019 Bộ phận' },
+      { hs6: '940191', thuTu: 15, dieuKien: 'Bằng gỗ', fact: 'chatLieu', op: 'LA', value: 'gỗ', nguon: 'tax.94019100', trich: '94019100 - - Bằng gỗ' },
+      { hs6: '940199', thuTu: 16, dieuKien: 'Là bộ phận', fact: 'laBoPhan', op: 'CO', nguon: 'tieuDe.94019', trich: '94019 Bộ phận' },
+      { hs6: '940199', thuTu: 16, phanConLai: true, nguon: 'tieuDe.940199', trich: '940199 Loại khác' },
+    ];
+    const kq9401 = G6.kiemTieuChi6('9401', ds9401, { toKhai: false });
+
+    const n9031 = G6.nguonChoPhep('9031');
+    const tr903141 = '90314100 - - Để kiểm tra các vi mạch hoặc linh kiện bán dẫn (kể cả mạch tích hợp) hoặc kiểm tra mạng che quang hoặc lưới carô sử dụng trong sản xuất các linh kiện bán dẫn (kể cả mạch tích hợp)';
+    const kc903141 = [{ hoi: 'Dụng cụ quang học có bộ phận quang học kiểm tra hay sử dụng trong sản xuất các linh kiện bán dẫn không?', nguon: 'nhom9031.nhom', trich: n9031['nhom9031.nhom'] }];
+    const ds9031 = [
+      { hs6: '903110', thuTu: 1, dieuKien: 'Máy đo để cân chỉnh các bộ phận cơ khí', fact: 'tenLoai', op: 'TEN_LOAI', value: 'Máy đo để cân chỉnh các bộ phận cơ khí', tuKhoa: ['máy đo để cân chỉnh các bộ phận cơ khí'], nguon: 'tax.90311000', trich: '90311000 - Máy đo để cân chỉnh các bộ phận cơ khí' },
+      { hs6: '903120', thuTu: 2, dieuKien: 'Bàn kiểm tra', fact: 'tenLoai', op: 'TEN_LOAI', value: 'Bàn kiểm tra', tuKhoa: ['bàn kiểm tra'], nguon: 'tax.90312000', trich: '90312000 - Bàn kiểm tra' },
+      { hs6: '903141', thuTu: 3, dieuKien: 'Thiết bị và dụng cụ quang học', fact: 'tenLoai', op: 'TEN_LOAI', value: 'Thiết bị và dụng cụ quang học', tuKhoa: ['quang học'], nguon: 'tieuDe.90314', trich: '90314 Các thiết bị và dụng cụ quang học khác' },
+      { hs6: '903141', thuTu: 3, dieuKien: 'Kiểm tra vi mạch, linh kiện bán dẫn hoặc mạng che quang, lưới carô sử dụng trong sản xuất linh kiện bán dẫn', fact: 'dungCho', op: 'CONG_DUNG', value: ['kiểm tra các vi mạch hoặc linh kiện bán dẫn', 'kiểm tra mạng che quang hoặc lưới carô', 'sử dụng trong sản xuất các linh kiện bán dẫn'], tuKhoa: ['vi mạch', 'linh kiện bán dẫn', 'mạng che quang', 'lưới carô'], kiemChung: kc903141, nguon: 'tax.90314100', trich: tr903141 },
+      { hs6: '903149', thuTu: 4, dieuKien: 'Thiết bị và dụng cụ quang học', fact: 'tenLoai', op: 'TEN_LOAI', value: 'Thiết bị và dụng cụ quang học', tuKhoa: ['quang học'], nguon: 'tieuDe.90314', trich: '90314 Các thiết bị và dụng cụ quang học khác' },
+      { hs6: '903149', thuTu: 4, phanConLai: true, nguon: 'tieuDe.903149', trich: '903149 Loại khác' },
+      { hs6: '903190', thuTu: 5, dieuKien: 'Bộ phận và phụ kiện', fact: 'laBoPhan', op: 'CO', nguon: 'tieuDe.903190', trich: '903190 Bộ phận và phụ kiện' },
+      { hs6: '903180', thuTu: 6, phanConLai: true, nguon: 'tieuDe.903180', trich: '903180 Dụng cụ, thiết bị và máy khác' },
+    ];
+    const kq9031 = G6.kiemTieuChi6('9031', ds9031, { toKhai: false });
+
+    const n8413 = G6.nguonChoPhep('8413');
+    const ds8413 = [
+      { hs6: '841311', thuTu: 1, chuaSoHoa: 'thiếu khoá thiết bị đo lường gắn kèm', nguon: 'tieuDe.84131', trich: '84131 Bơm có lắp hoặc thiết kế để lắp thiết bị đo' },
+      { hs6: '841311', thuTu: 1, dieuKien: 'Phân phối nhiên liệu hoặc dầu bôi trơn cho trạm đổ xăng hoặc gara', fact: 'dungCho', op: 'CONG_DUNG', value: 'trạm đổ xăng hoặc cho gara', tuKhoa: ['phân phối nhiên liệu', 'trạm đổ xăng', 'gara'], kiemChung: [{ hoi: 'Bơm có máy động lực hay thiết bị vận chuyển chất lỏng dùng cho trạm đổ xăng không?', nguon: 'nhom8413.nhom', trich: n8413['nhom8413.nhom'] }], nguon: 'tax.84131100', trich: '84131100 - - Bơm phân phối nhiên liệu hoặc dầu bôi trơn, loại dùng cho trạm đổ xăng hoặc cho gara' },
+      { hs6: '841319', thuTu: 2, chuaSoHoa: 'thiếu khoá thiết bị đo lường gắn kèm', nguon: 'tieuDe.84131', trich: '84131 Bơm có lắp hoặc thiết kế để lắp thiết bị đo' },
+      { hs6: '841319', thuTu: 2, phanConLai: true, nguon: 'tieuDe.841319', trich: '841319 Loại khác' },
+      { hs6: '841320', thuTu: 3, dieuKien: 'Bơm tay', fact: 'tenLoai', op: 'TEN_LOAI', value: 'Bơm tay', tuKhoa: ['bơm tay'], dieuKienTru: ['8413.11', '8413.19'], nguon: 'tieuDe.841320', trich: '841320 Bơm tay, trừ loại thuộc phân nhóm 8413.11 hoặc 8413.19' },
+      { hs6: '841330', thuTu: 4, dieuKien: 'Dùng cho động cơ đốt trong kiểu piston', fact: 'dungCho', op: 'CONG_DUNG', value: 'động cơ đốt trong kiểu piston', tuKhoa: ['động cơ đốt trong kiểu piston', 'bơm nhiên liệu', 'bơm chất làm mát'], kiemChung: [{ hoi: 'Bơm có trục trung tâm và cánh quạt quay nối vào động cơ không?', nguon: 'sen.84133040', trich: n8413['sen.84133040'] }], nguon: 'tieuDe.841330', trich: '841330 Bơm nhiên liệu, dầu bôi trơn hoặc bơm chất làm mát, dùng cho động cơ đốt trong kiểu piston' },
+      { hs6: '841340', thuTu: 5, dieuKien: 'Bơm bê tông', fact: 'tenLoai', op: 'TEN_LOAI', value: 'Bơm bê tông', tuKhoa: ['bơm bê tông'], nguon: 'tax.84134000', trich: '84134000 - Bơm bê tông' },
+      { hs6: '841350', thuTu: 6, dieuKien: 'Kiểu piston chuyển động tịnh tiến', fact: 'kieuBom', op: 'TRONG', value: ['PISTON'], nguon: 'tieuDe.841350', trich: '841350 Bơm hoạt động kiểu piston chuyển động tịnh tiến khác' },
+      { hs6: '841350', thuTu: 6, phanConLai: true, nguon: 'tieuDe.841350', trich: '841350 Bơm hoạt động kiểu piston chuyển động tịnh tiến khác' },
+      { hs6: '841360', thuTu: 7, dieuKien: 'Kiểu piston quay', fact: 'kieuBom', op: 'TRONG', value: ['QUAY'], nguon: 'tieuDe.841360', trich: '841360 Bơm hoạt động kiểu piston quay khác' },
+      { hs6: '841360', thuTu: 7, phanConLai: true, nguon: 'tieuDe.841360', trich: '841360 Bơm hoạt động kiểu piston quay khác' },
+      { hs6: '841370', thuTu: 8, dieuKien: 'Bơm ly tâm', fact: 'kieuBom', op: 'TRONG', value: ['LY_TAM'], nguon: 'tieuDe.841370', trich: '841370 Bơm ly tâm khác' },
+      { hs6: '841370', thuTu: 8, phanConLai: true, nguon: 'tieuDe.841370', trich: '841370 Bơm ly tâm khác' },
+      { hs6: '841381', thuTu: 9, dieuKien: 'Bơm khác', fact: 'tenLoai', op: 'TEN_LOAI', value: 'Bơm', tuKhoa: ['bơm'], nguon: 'tieuDe.84138', trich: '84138 Bơm khác; máy đẩy chất lỏng' },
+      { hs6: '841381', thuTu: 9, dieuKien: 'Bơm', fact: 'tenLoai', op: 'TEN_LOAI', value: 'Bơm', tuKhoa: ['bơm'], nguon: 'tieuDe.841381', trich: '841381 Bơm' },
+      { hs6: '841381', thuTu: 9, phanConLai: true, nguon: 'tieuDe.841381', trich: '841381 Bơm' },
+      { hs6: '841382', thuTu: 10, dieuKien: 'Máy đẩy chất lỏng', fact: 'tenLoai', op: 'TEN_LOAI', value: 'Máy đẩy chất lỏng', tuKhoa: ['máy đẩy chất lỏng'], nguon: 'tieuDe.84138', trich: '84138 Bơm khác; máy đẩy chất lỏng' },
+      { hs6: '841382', thuTu: 10, dieuKien: 'Máy đẩy chất lỏng', fact: 'tenLoai', op: 'TEN_LOAI', value: 'Máy đẩy chất lỏng', tuKhoa: ['máy đẩy chất lỏng'], nguon: 'tieuDe.841382', trich: '841382 Máy đẩy chất lỏng' },
+      { hs6: '841391', thuTu: 11, dieuKien: 'Là bộ phận', fact: 'laBoPhan', op: 'CO', nguon: 'tieuDe.84139', trich: '84139 Bộ phận' },
+      { hs6: '841391', thuTu: 11, dieuKien: 'Của bơm', fact: 'dungCho', op: 'CONG_DUNG', value: 'bơm', tuKhoa: ['của bơm'], kiemChung: [{ hoi: 'Bộ phận có mặt lắp và cơ cấu truyền chất lỏng chuyên dùng cho máy bơm không?', nguon: 'nhom8413.nhom', trich: n8413['nhom8413.nhom'] }], nguon: 'tieuDe.841391', trich: '841391 Của bơm' },
+      { hs6: '841392', thuTu: 12, dieuKien: 'Là bộ phận', fact: 'laBoPhan', op: 'CO', nguon: 'tieuDe.84139', trich: '84139 Bộ phận' },
+      { hs6: '841392', thuTu: 12, dieuKien: 'Của máy đẩy chất lỏng', fact: 'dungCho', op: 'CONG_DUNG', value: 'máy đẩy chất lỏng', tuKhoa: ['máy đẩy chất lỏng'], kiemChung: [{ hoi: 'Bộ phận có cơ cấu truyền hoặc vận chuyển chất lỏng dùng cho máy đẩy chất lỏng không?', nguon: 'nhom8413.nhom', trich: n8413['nhom8413.nhom'] }], nguon: 'tax.84139200', trich: '84139200 - - Của máy đẩy chất lỏng' },
+    ];
+    const t0 = Date.now();
+    const kq8413 = G6.kiemTieuChi6('8413', ds8413, { toKhai: false });
+    const dtKiem = Date.now() - t0;
+
+    const kq8431Guard = G6.kiemTieuChi6('8431', [
+      { hs6: '843110', thuTu: 1, dieuKien: 'Máy ủi đất', fact: 'tenLoai', op: 'TEN_LOAI', value: 'máy ủi đất', tuKhoa: ['máy ủi đất'], nguon: 'tieuDe.84311', trich: '84311 Của máy thuộc nhóm 84.25' },
+      { hs6: '843142', thuTu: 2, dieuKien: 'Lưỡi của máy ủi đất', fact: 'tenLoai', op: 'TEN_LOAI', value: 'Lưỡi của máy ủi đất', tuKhoa: ['lưỡi'], nguon: 'tax.84314200', trich: '84314200 - - Lưỡi của máy ủi đất lưỡi thẳng hoặc máy ủi đất lưỡi nghiêng' },
+    ], { toKhai: false });
+
+    const tTach0 = Date.now();
+    G6.tachVeTieuDe('sản phẩm bộ phận phụ kiện máy đẩy chất lỏng và các vật liệu tương tự '.repeat(4000), new Set(), { laTang: true });
+    const dtTach = Date.now() - tTach0;
+
+    kiem('T-6 kiemTieuChi6 9401 + 9031 + 8413 (8413.81 DU_CO_PHAM_VI, 8413.60 QUAY, 8413.91/92 sạch TIEU_DE_CHI_LAC)',
+      kq9401.loi.length === 0
+      && kq9031.loi.length === 0
+      && kq8413.loi.length === 0
+      && pn('8413', '841381').kieu === 'DU_CO_PHAM_VI'
+      && pn('8413', '841382').kieu === 'CO_TEN'
+      && ['850131', '850132', '850133', '850134'].every((c) => pn('8501', c).kieu === 'CO_TEN')
+      && G6.apTieuChi(ds8413, 'bơm màng công nghiệp', { h4: '8413' }).hs6 === null
+      && G6.apTieuChi(ds8413, 'máy đẩy chất lỏng', { h4: '8413' }).hs6 === '841382'
+      && kq8431Guard.loi.some((l) => l.ma === 'TIEU_DE_CHI_LAC'),
+      `9401=${JSON.stringify(kq9401.loi)} 9031=${JSON.stringify(kq9031.loi)} 8413=${JSON.stringify(kq8413.loi)}`);
+
+    kiem(`T-6 hiệu năng / ReDoS tachVeTieuDe(40k+ từ)=${dtTach}ms & kiemTieuChi6(8413)=${dtKiem}ms (< 500ms)`,
+      dtTach < 500 && dtKiem < 500);
+
+    const ds8482 = [
+      { hs6: '848210', thuTu: 1, dieuKien: 'Ổ bi', fact: 'tenLoai', op: 'TEN_LOAI', value: 'Ổ bi', tuKhoa: ['ổ bi'], nguon: 'tax.84821000', trich: '84821000 - Ổ bi' },
+      { hs6: '848220', thuTu: 2, dieuKien: 'Ổ đũa côn', fact: 'tenLoai', op: 'TEN_LOAI', value: ['Ổ đũa côn', 'cụm linh kiện vành côn và đũa côn'], tuKhoa: ['ổ đũa côn'], nguon: 'tax.84822000', trich: '84822000 - Ổ đũa côn, kể cả cụm linh kiện vành côn và đũa côn' },
+      { hs6: '848230', thuTu: 3, dieuKien: 'Ổ đũa cầu', fact: 'tenLoai', op: 'TEN_LOAI', value: 'Ổ đũa cầu', tuKhoa: ['ổ đũa cầu'], nguon: 'tax.84823000', trich: '84823000 - Ổ đũa cầu' },
+      { hs6: '848240', thuTu: 4, dieuKien: 'Ổ đũa kim', fact: 'tenLoai', op: 'TEN_LOAI', value: ['Ổ đũa kim', 'lồng (cage) và đũa kim đã lắp ráp'], tuKhoa: ['ổ đũa kim'], nguon: 'tax.84824000', trich: '84824000 - Ổ đũa kim, kể cả lồng (cage) và đũa kim đã lắp ráp' },
+      { hs6: '848250', thuTu: 5, dieuKien: 'Ổ đũa hình trụ', fact: 'tenLoai', op: 'TEN_LOAI', value: ['ổ đũa hình trụ', 'lồng (cage) và đũa đã lắp rắp'], tuKhoa: ['ổ đũa hình trụ'], nguon: 'tax.84825000', trich: '84825000 - Các loại ổ đũa hình trụ khác, kể cả lồng (cage) và đũa đã lắp rắp' },
+      { hs6: '848250', thuTu: 5, phanConLai: true, nguon: 'tax.84825000', trich: '84825000 - Các loại ổ đũa hình trụ khác, kể cả lồng (cage) và đũa đã lắp rắp' },
+      { hs6: '848280', thuTu: 6, phanConLai: true, nguon: 'tax.84828000', trich: '84828000 - Loại khác, kể cả ổ kết hợp bi cầu/bi đũa' },
+      { hs6: '848291', thuTu: 7, dieuKien: 'Là bộ phận', fact: 'laBoPhan', op: 'CO', nguon: 'tieuDe.84829', trich: '84829 Bộ phận' },
+      { hs6: '848291', thuTu: 7, dieuKien: 'Bi, kim và đũa', fact: 'tenLoai', op: 'TEN_LOAI', value: ['Bi', 'kim', 'đũa'], tuKhoa: ['bi, kim và đũa'], nguon: 'tax.84829100', trich: '84829100 - - Bi, kim và đũa' },
+      { hs6: '848299', thuTu: 8, dieuKien: 'Là bộ phận', fact: 'laBoPhan', op: 'CO', nguon: 'tieuDe.84829', trich: '84829 Bộ phận' },
+      { hs6: '848299', thuTu: 8, phanConLai: true, nguon: 'tax.84829900', trich: '84829900 - - Loại khác' },
+    ];
+    const kq8482 = G6.kiemTieuChi6('8482', ds8482, { toKhai: false });
+    const kqNegRongVe1 = G6.kiemTieuChi6('0206', [{ hs6: '020680', thuTu: 1, phanConLai: true, nguon: 'tax.02068000', trich: '02068000 - Loại khác, tươi hoặc ướp lạnh' }], { toKhai: false });
+    const kqNegRongVe2 = G6.kiemTieuChi6('8419', [{ hs6: '841934', thuTu: 1, phanConLai: true, nguon: 'tieuDe.841934', trich: '841934 Loại khác, dùng cho các sản phẩm nông nghiệp' }], { toKhai: false });
+    const kqWcoInc = G6.kiemTieuChi6('8482', [
+      ...ds8482.filter((x) => x.hs6 !== '848280'),
+      { hs6: '848280', thuTu: 6, dieuKien: 'Combined ball/roller', fact: 'tenLoai', op: 'TEN_LOAI', value: 'combined ball/roller', tuKhoa: ['combined ball/roller'], nguon: 'wco.848280', trich: '848280 Bearings; n.e.c. in heading no. 8482, including combined ball/roller' },
+      { hs6: '848280', thuTu: 6, phanConLai: true, nguon: 'tax.84828000', trich: '84828000 - Loại khác, kể cả ổ kết hợp bi cầu/bi đũa' },
+    ], { toKhai: false });
+    const kqCumRong = G6.kiemTieuChi6('8482', [
+      ...ds8482.filter((x) => x.hs6 !== '848210'),
+      { hs6: '848210', thuTu: 1, dieuKien: 'Ổ bi', fact: 'tenLoai', op: 'TEN_LOAI', value: 'Ổ bi', tuKhoa: ['các thiết bị tương tự'], nguon: 'tax.84821000', trich: '84821000 - Ổ bi' },
+    ], { toKhai: false });
+
+    kiem('T-6 rongVe 8482.80 ("Loại khác, kể cả…") = 0 lỗi; ca ngược 0206.80 & 8419.34 vẫn KHUON_SAI; chặn wco including & "các thiết bị tương tự"',
+      kq8482.loi.length === 0
+      && kqNegRongVe1.loi.some((l) => l.ma === 'KHUON_SAI' && l.hs6 === '020680')
+      && kqNegRongVe2.loi.some((l) => l.ma === 'KHUON_SAI' && l.hs6 === '841934')
+      && kqWcoInc.loi.some((l) => l.ma === 'KE_CA_LA_DIEU_KIEN' && l.hs6 === '848280')
+      && kqCumRong.loi.some((l) => l.ma === 'GIA_TRI_RONG' && l.hs6 === '848210'),
+      `8482=${JSON.stringify(kq8482.loi)}`);
+  }
 }
 void os;
 xong();
