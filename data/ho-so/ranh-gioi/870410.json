@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L30-20261111#soat-L30",
-    "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu VI/EN: 13 dòng khoiLuongToanBo khớp biên chữ (không quá/trên … nhưng không quá) kể cả mốc 38 tấn chỉ ở nhánh không CKD; CKD daLapRap KHONG.",
-    "bam": "a9a347212f5e0fe373b7f04ef9dc829694c3ff614bab1f49de6c08fe74527672"
+    "phien": "claude-agent:tho-hs-03-20261122#soat-870410",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá và duyệt ranh giới 870410 khép SẠCH V1 nhóm 8704 (OZV-1891)",
+    "bam": "1052a16ad95dae45b566009d302a35c7c1ce291c9f236de9df249ae3480bff43"
   },
   "dieuKienNut": [
     {
@@ -24,8 +24,27 @@
       "trich": "8704101 Dạng CKD (SEN)",
       "dieuKienSo": [
         {
-          "fact": "daLapRap",
-          "op": "KHONG"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "daLapRap",
+                "op": "KHONG"
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Dạng CKD"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "CKD"
+              }
+            ]
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
