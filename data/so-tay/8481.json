@@ -301,19 +301,45 @@
   "dong8": [
     {
       "hs": "84811011",
-      "dieuKien": "8481.10 – Van giảm áp › - - - Van cổng điều khiển bằng tay có đường kính trong cửa nạp hoặc cửa thoát trên 5 cm nhưng không quá 40 cm",
+      "dieuKien": "tên loại hàng: Van cổng; cách điều khiển / vận hành: điều khiển bằng tay; đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) > 5 cm; đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) <= 40 cm",
       "loaiKhac": false,
       "nguon": "tax.84811011",
       "trich": "84811011 - - - Van cổng điều khiển bằng tay có đường kính trong cửa nạp hoặc cửa thoát trên 5 cm nhưng không quá 40 cm",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "duong_kinh",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Van cổng"
+        },
+        {
+          "fact": "cachDieuKhien",
+          "op": "TRONG",
+          "value": [
+            "BANG_TAY"
+          ]
+        },
+        {
+          "fact": "duongKinhTrong",
           "op": ">",
           "value": 5,
           "donVi": "cm"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 40,
+          "donVi": "cm"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848110",
+          "ngay": "2026-11-22",
+          "bam": "474ac2478c33e70201090cfd8734b448cab640664b8b55a9ca914883b5be4e7f"
+        }
+      }
     },
     {
       "hs": "84811019",
@@ -334,62 +360,86 @@
     },
     {
       "hs": "84811021",
-      "dieuKien": "8481.10 – Van giảm áp › - - - Có đường kính trong không quá 2,5 cm",
+      "dieuKien": "đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) <= 2.5 cm",
       "loaiKhac": false,
       "nguon": "tax.84811021",
-      "trich": "84811021 - - - Có đường kính trong không quá 2,5 cm",
-      "nguonLoai": "AI_DA_KIEM",
+      "trich": "84811021 - - - Có đường kính trong không quá 2,5 cm ",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "duong_kinh",
+          "fact": "duongKinhTrong",
           "op": "<=",
           "value": 2.5,
           "donVi": "cm"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848110",
+          "ngay": "2026-11-22",
+          "bam": "474ac2478c33e70201090cfd8734b448cab640664b8b55a9ca914883b5be4e7f"
+        }
+      }
     },
     {
       "hs": "84811022",
-      "dieuKien": "8481.10 – Van giảm áp › - - - Có đường kính trong trên 2,5 cm",
+      "dieuKien": "đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) > 2.5 cm",
       "loaiKhac": false,
       "nguon": "tax.84811022",
       "trich": "84811022 - - - Có đường kính trong trên 2,5 cm",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "duong_kinh",
+          "fact": "duongKinhTrong",
           "op": ">",
           "value": 2.5,
           "donVi": "cm"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848110",
+          "ngay": "2026-11-22",
+          "bam": "474ac2478c33e70201090cfd8734b448cab640664b8b55a9ca914883b5be4e7f"
+        }
+      }
     },
     {
       "hs": "84811091",
-      "dieuKien": "8481.10 – Van giảm áp › - - - Bằng plastic, có đường kính trong từ 1cm đến 2,5 cm",
+      "dieuKien": "chất liệu (theo vị trí): plastic; đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) >= 1 cm; đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) <= 2.5 cm",
       "loaiKhac": false,
       "nguon": "tax.84811091",
       "trich": "84811091 - - - Bằng plastic, có đường kính trong từ 1cm đến 2,5 cm",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "chat_lieu",
+          "fact": "chatLieu",
           "op": "LA",
           "value": "plastic"
         },
         {
-          "fact": "duong_kinh",
+          "fact": "duongKinhTrong",
           "op": ">=",
           "value": 1,
           "donVi": "cm"
         },
         {
-          "fact": "duong_kinh",
+          "fact": "duongKinhTrong",
           "op": "<=",
           "value": 2.5,
           "donVi": "cm"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848110",
+          "ngay": "2026-11-22",
+          "bam": "474ac2478c33e70201090cfd8734b448cab640664b8b55a9ca914883b5be4e7f"
+        }
+      }
     },
     {
       "hs": "84811099",
@@ -646,46 +696,67 @@
     },
     {
       "hs": "84814010",
-      "dieuKien": "8481.40 – Van an toàn hoặc van xả › - - Bằng đồng hoặc hợp kim đồng, có đường kính trong từ 2,5 cm trở xuống",
+      "dieuKien": "chất liệu (theo vị trí): đồng; đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) <= 2.5 cm",
       "loaiKhac": false,
       "nguon": "tax.84814010",
       "trich": "84814010 - - Bằng đồng hoặc hợp kim đồng, có đường kính trong từ 2,5 cm trở xuống",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "duong_kinh",
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "đồng"
+        },
+        {
+          "fact": "duongKinhTrong",
           "op": "<=",
           "value": 2.5,
           "donVi": "cm"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848140",
+          "ngay": "2026-11-22",
+          "bam": "e45496abbd2fcaa2a3d53192f27f653d9c3f361414a8554c449354a4bcb880a3"
+        }
+      }
     },
     {
       "hs": "84814030",
-      "dieuKien": "8481.40 – Van an toàn hoặc van xả › - - Bằng plastic, có đường kính trong từ 1cm đến 2,5 cm",
+      "dieuKien": "chất liệu (theo vị trí): plastic; đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) >= 1 cm; đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) <= 2.5 cm",
       "loaiKhac": false,
       "nguon": "tax.84814030",
       "trich": "84814030 - - Bằng plastic, có đường kính trong từ 1cm đến 2,5 cm",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "chat_lieu",
+          "fact": "chatLieu",
           "op": "LA",
           "value": "plastic"
         },
         {
-          "fact": "duong_kinh",
+          "fact": "duongKinhTrong",
           "op": ">=",
           "value": 1,
           "donVi": "cm"
         },
         {
-          "fact": "duong_kinh",
+          "fact": "duongKinhTrong",
           "op": "<=",
           "value": 2.5,
           "donVi": "cm"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848140",
+          "ngay": "2026-11-22",
+          "bam": "e45496abbd2fcaa2a3d53192f27f653d9c3f361414a8554c449354a4bcb880a3"
+        }
+      }
     },
     {
       "hs": "84814090",
@@ -707,102 +778,251 @@
     },
     {
       "hs": "84818011",
-      "dieuKien": "8481.80 – Thiết bị khác › - - - Bằng đồng hoặc hợp kim đồng",
+      "dieuKien": "chất liệu (theo vị trí): đồng",
       "loaiKhac": false,
       "nguon": "tax.84818011",
       "trich": "84818011 - - - Bằng đồng hoặc hợp kim đồng",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "đồng"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+        }
+      }
     },
     {
       "hs": "84818012",
-      "dieuKien": "8481.80 – Thiết bị khác › - - - Bằng vật liệu khác",
+      "dieuKien": "phần còn lại có tên (phủ định anh em)",
       "loaiKhac": false,
       "nguon": "tax.84818012",
       "trich": "84818012 - - - Bằng vật liệu khác",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+        }
+      },
+      "phanConLai": [
+        "84818011"
+      ]
     },
     {
       "hs": "84818013",
-      "dieuKien": "8481.80 – Thiết bị khác › - - - Bằng đồng hoặc hợp kim đồng",
+      "dieuKien": "chất liệu (theo vị trí): đồng",
       "loaiKhac": false,
       "nguon": "tax.84818013",
       "trich": "84818013 - - - Bằng đồng hoặc hợp kim đồng",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "đồng"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+        }
+      }
     },
     {
       "hs": "84818014",
-      "dieuKien": "8481.80 – Thiết bị khác › - - - Bằng vật liệu khác",
+      "dieuKien": "phần còn lại có tên (phủ định anh em)",
       "loaiKhac": false,
       "nguon": "tax.84818014",
       "trich": "84818014 - - - Bằng vật liệu khác",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+        }
+      },
+      "phanConLai": [
+        "84818013"
+      ]
     },
     {
       "hs": "84818021",
-      "dieuKien": "8481.80 – Thiết bị khác › - - - Có đường kính cửa nạp hoặc cửa thoát không quá 2,5 cm",
+      "dieuKien": "đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) <= 2.5 cm",
       "loaiKhac": false,
       "nguon": "tax.84818021",
       "trich": "84818021 - - - Có đường kính cửa nạp hoặc cửa thoát không quá 2,5 cm",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "duong_kinh",
+          "fact": "duongKinhTrong",
           "op": "<=",
           "value": 2.5,
           "donVi": "cm"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+        }
+      }
     },
     {
       "hs": "84818022",
-      "dieuKien": "8481.80 – Thiết bị khác › - - - Có đường kính cửa nạp hoặc cửa thoát trên 2,5 cm",
+      "dieuKien": "đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) > 2.5 cm",
       "loaiKhac": false,
       "nguon": "tax.84818022",
       "trich": "84818022 - - - Có đường kính cửa nạp hoặc cửa thoát trên 2,5 cm",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "duong_kinh",
+          "fact": "duongKinhTrong",
           "op": ">",
           "value": 2.5,
           "donVi": "cm"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+        }
+      }
     },
     {
       "hs": "84818030",
-      "dieuKien": "8481.80 – Thiết bị khác › - - Van, đã hoặc chưa lắp bộ phận đánh lửa điện từ, dùng cho các bếp nấu hoặc bếp có lò nướng bằng ga",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): các bếp nấu hoặc bếp có lò nướng; nhiên liệu / nguồn nhiệt (bếp, lò, đèn, bật lửa): ga (khí đốt)",
       "loaiKhac": false,
       "nguon": "tax.84818030",
       "trich": "84818030 - - Van, đã hoặc chưa lắp bộ phận đánh lửa điện từ, dùng cho các bếp nấu hoặc bếp có lò nướng bằng ga",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "các bếp nấu",
+            "bếp có lò nướng"
+          ]
+        },
+        {
+          "fact": "nhienLieu",
+          "op": "TRONG",
+          "value": [
+            "GA"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+        }
+      },
+      "chongLanTruc": {
+        "pn6": "848180",
+        "nhanh": [
+          "848180~r14535",
+          "848180~r14538",
+          "8481802",
+          "84818030",
+          "8481804",
+          "8481805",
+          "848180~r14551",
+          "848180~r14556",
+          "848180~r14559"
+        ],
+        "truc": {
+          "8481802": "CONG_DUNG",
+          "8481804": "CONG_DUNG",
+          "8481805": "DAC_DIEM",
+          "84818030": "CONG_DUNG",
+          "848180~r14535": "CONG_DUNG",
+          "848180~r14538": "CONG_DUNG",
+          "848180~r14551": "CONG_DUNG",
+          "848180~r14556": "TEN_LOAI",
+          "848180~r14559": "TEN_LOAI"
+        },
+        "cauHoiPhanBiet": "Van này là loại nào: van săm, van lốp không săm, van xi lanh LPG bằng đồng, van bếp ga, van chai chất lỏng có ga / van rót bia, van và vòi có khoang pha trộn lưu chất, van đường ống nước, núm uống nước cho lợn, hay van nối có núm?",
+        "trich": {
+          "8481802": "Van xi lanh khí dầu mỏ hóa lỏng (LPG) bằng đồng hoặc hợp kim đồng",
+          "8481804": "Van cho chai chất lỏng có ga; van cho bộ phận rót bia hoạt động bằng ga",
+          "8481805": "Van và vòi có khoang pha trộn lưu chất",
+          "84818030": "Van, đã hoặc chưa lắp bộ phận đánh lửa điện từ, dùng cho các bếp nấu hoặc bếp có lò nướng bằng ga",
+          "848180~r14535": "Van dùng cho săm",
+          "848180~r14538": "Van dùng cho lốp không săm",
+          "848180~r14551": "Van đường ống nước",
+          "848180~r14556": "Núm uống nước dùng cho lợn",
+          "848180~r14559": "Van nối có núm"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:ozv-1867#soat-848180",
+            "ngay": "2026-11-22",
+            "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+          }
+        }
+      }
     },
     {
       "hs": "84818041",
-      "dieuKien": "8481.80 – Thiết bị khác › - - - Bằng plastic, có đường kính trong từ 1cm đến 2,5 cm",
+      "dieuKien": "chất liệu (theo vị trí): plastic; đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) >= 1 cm; đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) <= 2.5 cm",
       "loaiKhac": false,
       "nguon": "tax.84818041",
       "trich": "84818041 - - - Bằng plastic, có đường kính trong từ 1cm đến 2,5 cm",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "chat_lieu",
+          "fact": "chatLieu",
           "op": "LA",
           "value": "plastic"
         },
         {
-          "fact": "duong_kinh",
+          "fact": "duongKinhTrong",
           "op": ">=",
           "value": 1,
           "donVi": "cm"
         },
         {
-          "fact": "duong_kinh",
+          "fact": "duongKinhTrong",
           "op": "<=",
           "value": 2.5,
           "donVi": "cm"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+        }
+      }
     },
     {
       "hs": "84818049",
@@ -819,34 +1039,50 @@
         ],
         "toTienCoTen": "848180",
         "dinhNghiaDuoc": true
+      },
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "5fb4c9dd59f15dbd335ec7a3cbd3796beb16e27e8b793174feab51d0c9a09e96"
+        }
       }
     },
     {
       "hs": "84818051",
-      "dieuKien": "8481.80 – Thiết bị khác › - - - Bằng plastic, có đường kính trong từ 1cm đến 2,5 cm",
+      "dieuKien": "chất liệu (theo vị trí): plastic; đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) >= 1 cm; đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) <= 2.5 cm",
       "loaiKhac": false,
       "nguon": "tax.84818051",
       "trich": "84818051 - - - Bằng plastic, có đường kính trong từ 1cm đến 2,5 cm",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "chat_lieu",
+          "fact": "chatLieu",
           "op": "LA",
           "value": "plastic"
         },
         {
-          "fact": "duong_kinh",
+          "fact": "duongKinhTrong",
           "op": ">=",
           "value": 1,
           "donVi": "cm"
         },
         {
-          "fact": "duong_kinh",
+          "fact": "duongKinhTrong",
           "op": "<=",
           "value": 2.5,
           "donVi": "cm"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+        }
+      }
     },
     {
       "hs": "84818059",
@@ -863,29 +1099,57 @@
         ],
         "toTienCoTen": "848180",
         "dinhNghiaDuoc": true
+      },
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "5fb4c9dd59f15dbd335ec7a3cbd3796beb16e27e8b793174feab51d0c9a09e96"
+        }
       }
     },
     {
       "hs": "84818061",
-      "dieuKien": "8481.80 – Thiết bị khác › - - - - Van cổng điều khiển bằng tay có đường kính trong trên 5 cm nhưng không quá 40 cm",
+      "dieuKien": "tên loại hàng: Van cổng; cách điều khiển / vận hành: điều khiển bằng tay; đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) > 5 cm; đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) <= 40 cm",
       "loaiKhac": false,
       "nguon": "tax.84818061",
       "trich": "84818061 - - - - Van cổng điều khiển bằng tay có đường kính trong trên 5 cm nhưng không quá 40 cm",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "duong_kinh",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Van cổng"
+        },
+        {
+          "fact": "cachDieuKhien",
+          "op": "TRONG",
+          "value": [
+            "BANG_TAY"
+          ]
+        },
+        {
+          "fact": "duongKinhTrong",
           "op": ">",
           "value": 5,
           "donVi": "cm"
         },
         {
-          "fact": "duong_kinh",
+          "fact": "duongKinhTrong",
           "op": "<=",
           "value": 40,
           "donVi": "cm"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+        }
+      }
     },
     {
       "hs": "84818062",
@@ -904,6 +1168,14 @@
         ],
         "toTienCoTen": "848180",
         "dinhNghiaDuoc": true
+      },
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "5fb4c9dd59f15dbd335ec7a3cbd3796beb16e27e8b793174feab51d0c9a09e96"
+        }
       }
     },
     {
@@ -917,21 +1189,57 @@
         "nguonLoai": "MAY_SUY",
         "cha": "8481806",
         "truAnhEm": [
+          "848180~r14552",
           "84818061",
           "84818064",
           "84818066"
         ],
         "toTienCoTen": "848180",
         "dinhNghiaDuoc": true
+      },
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "5fb4c9dd59f15dbd335ec7a3cbd3796beb16e27e8b793174feab51d0c9a09e96"
+        }
       }
     },
     {
       "hs": "84818064",
-      "dieuKien": "8481.80 – Thiết bị khác › Núm uống nước dùng cho lợn (van dạng ống có lò xo, đòn bẩy, bộ phận lọc), bằng plastic, đường kính trong từ 1 cm đến 2,5 cm (SEN)",
+      "dieuKien": "chất liệu (theo vị trí): plastic; đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) >= 1 cm; đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) <= 2.5 cm",
       "loaiKhac": false,
-      "nguon": "sen.84818064",
-      "trich": "NÚM UỐNG NƯỚC DÙNG CHO LỢN Đây là các van để cho lợn uống nước. Chúng có dạng hình ống được trang bị một lò xo, đòn bẩy và bộ phận lọc.",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguon": "tax.84818064",
+      "trich": "84818064 - - - Bằng plastic và có đường kính trong từ 1 cm đến 2,5 cm (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "plastic"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": ">=",
+          "value": 1,
+          "donVi": "cm"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 2.5,
+          "donVi": "cm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+        }
+      }
     },
     {
       "hs": "84818065",
@@ -950,34 +1258,50 @@
         ],
         "toTienCoTen": "848180",
         "dinhNghiaDuoc": true
+      },
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "5fb4c9dd59f15dbd335ec7a3cbd3796beb16e27e8b793174feab51d0c9a09e96"
+        }
       }
     },
     {
       "hs": "84818066",
-      "dieuKien": "8481.80 – Thiết bị khác › - - - Bằng plastic và có đường kính trong từ 1 cm đến 2,5 cm",
+      "dieuKien": "chất liệu (theo vị trí): plastic; đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) >= 1 cm; đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) <= 2.5 cm",
       "loaiKhac": false,
       "nguon": "tax.84818066",
-      "trich": "84818066 - - - Bằng plastic và có đường kính trong từ 1 cm đến 2,5 cm",
-      "nguonLoai": "AI_DA_KIEM",
+      "trich": "84818066 - - - Bằng plastic và có đường kính trong từ 1 cm đến 2,5 cm ",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "chat_lieu",
+          "fact": "chatLieu",
           "op": "LA",
           "value": "plastic"
         },
         {
-          "fact": "duong_kinh",
+          "fact": "duongKinhTrong",
           "op": ">=",
           "value": 1,
           "donVi": "cm"
         },
         {
-          "fact": "duong_kinh",
+          "fact": "duongKinhTrong",
           "op": "<=",
           "value": 2.5,
           "donVi": "cm"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+        }
+      }
     },
     {
       "hs": "84818067",
@@ -996,34 +1320,50 @@
         ],
         "toTienCoTen": "848180",
         "dinhNghiaDuoc": true
+      },
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "5fb4c9dd59f15dbd335ec7a3cbd3796beb16e27e8b793174feab51d0c9a09e96"
+        }
       }
     },
     {
       "hs": "84818071",
-      "dieuKien": "8481.80 – Thiết bị khác › - - - - Bằng plastic và có đường kính trong từ 1 cm đến 2,5 cm",
+      "dieuKien": "chất liệu (theo vị trí): plastic; đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) >= 1 cm; đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) <= 2.5 cm",
       "loaiKhac": false,
       "nguon": "tax.84818071",
-      "trich": "84818071 - - - - Bằng plastic và có đường kính trong từ 1 cm đến 2,5 cm",
-      "nguonLoai": "AI_DA_KIEM",
+      "trich": "84818071 - - - - Bằng plastic và có đường kính trong từ 1 cm đến 2,5 cm ",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "chat_lieu",
+          "fact": "chatLieu",
           "op": "LA",
           "value": "plastic"
         },
         {
-          "fact": "duong_kinh",
+          "fact": "duongKinhTrong",
           "op": ">=",
           "value": 1,
           "donVi": "cm"
         },
         {
-          "fact": "duong_kinh",
+          "fact": "duongKinhTrong",
           "op": "<=",
           "value": 2.5,
           "donVi": "cm"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+        }
+      }
     },
     {
       "hs": "84818072",
@@ -1044,82 +1384,128 @@
         ],
         "toTienCoTen": "848180",
         "dinhNghiaDuoc": true
+      },
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "5fb4c9dd59f15dbd335ec7a3cbd3796beb16e27e8b793174feab51d0c9a09e96"
+        }
       }
     },
     {
       "hs": "84818073",
-      "dieuKien": "8481.80 – Thiết bị khác › - - - - Có đường kính trong cửa nạp và cửa thoát trên 5 cm nhưng không quá 40 cm",
+      "dieuKien": "đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) > 5 cm; đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) <= 40 cm",
       "loaiKhac": false,
       "nguon": "tax.84818073",
       "trich": "84818073 - - - - Có đường kính trong cửa nạp và cửa thoát trên 5 cm nhưng không quá 40 cm",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "duong_kinh",
+          "fact": "duongKinhTrong",
           "op": ">",
           "value": 5,
           "donVi": "cm"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 40,
+          "donVi": "cm"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+        }
+      }
     },
     {
       "hs": "84818074",
-      "dieuKien": "8481.80 – Thiết bị khác › - - - - Có đường kính trong cửa nạp và cửa thoát trên 40 cm",
+      "dieuKien": "đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) > 40 cm",
       "loaiKhac": false,
       "nguon": "tax.84818074",
       "trich": "84818074 - - - - Có đường kính trong cửa nạp và cửa thoát trên 40 cm",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "duong_kinh",
+          "fact": "duongKinhTrong",
           "op": ">",
           "value": 40,
           "donVi": "cm"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+        }
+      }
     },
     {
       "hs": "84818077",
-      "dieuKien": "8481.80 – Thiết bị khác › - - - - Có đường kính trong cửa nạp và cửa thoát không quá 5 cm",
+      "dieuKien": "đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) <= 5 cm",
       "loaiKhac": false,
       "nguon": "tax.84818077",
       "trich": "84818077 - - - - Có đường kính trong cửa nạp và cửa thoát không quá 5 cm",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "duong_kinh",
+          "fact": "duongKinhTrong",
           "op": "<=",
           "value": 5,
           "donVi": "cm"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+        }
+      }
     },
     {
       "hs": "84818078",
-      "dieuKien": "8481.80 – Thiết bị khác › - - - - Bằng plastic và có đường kính trong từ 1 cm đến 2,5 cm",
+      "dieuKien": "chất liệu (theo vị trí): plastic; đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) >= 1 cm; đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) <= 2.5 cm",
       "loaiKhac": false,
       "nguon": "tax.84818078",
-      "trich": "84818078 - - - - Bằng plastic và có đường kính trong từ 1 cm đến 2,5 cm",
-      "nguonLoai": "AI_DA_KIEM",
+      "trich": "84818078 - - - - Bằng plastic và có đường kính trong từ 1 cm đến 2,5 cm ",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "chat_lieu",
+          "fact": "chatLieu",
           "op": "LA",
           "value": "plastic"
         },
         {
-          "fact": "duong_kinh",
+          "fact": "duongKinhTrong",
           "op": ">=",
           "value": 1,
           "donVi": "cm"
         },
         {
-          "fact": "duong_kinh",
+          "fact": "duongKinhTrong",
           "op": "<=",
           "value": 2.5,
           "donVi": "cm"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+        }
+      }
     },
     {
       "hs": "84818079",
@@ -1140,34 +1526,50 @@
         ],
         "toTienCoTen": "848180",
         "dinhNghiaDuoc": true
+      },
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "5fb4c9dd59f15dbd335ec7a3cbd3796beb16e27e8b793174feab51d0c9a09e96"
+        }
       }
     },
     {
       "hs": "84818081",
-      "dieuKien": "8481.80 – Thiết bị khác › - - - - Bằng plastic và có đường kính trong từ 1 cm đến 2,5 cm",
+      "dieuKien": "chất liệu (theo vị trí): plastic; đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) >= 1 cm; đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) <= 2.5 cm",
       "loaiKhac": false,
       "nguon": "tax.84818081",
-      "trich": "84818081 - - - - Bằng plastic và có đường kính trong từ 1 cm đến 2,5 cm",
-      "nguonLoai": "AI_DA_KIEM",
+      "trich": "84818081 - - - - Bằng plastic và có đường kính trong từ 1 cm đến 2,5 cm ",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "chat_lieu",
+          "fact": "chatLieu",
           "op": "LA",
           "value": "plastic"
         },
         {
-          "fact": "duong_kinh",
+          "fact": "duongKinhTrong",
           "op": ">=",
           "value": 1,
           "donVi": "cm"
         },
         {
-          "fact": "duong_kinh",
+          "fact": "duongKinhTrong",
           "op": "<=",
           "value": 2.5,
           "donVi": "cm"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+        }
+      }
     },
     {
       "hs": "84818082",
@@ -1186,130 +1588,344 @@
         ],
         "toTienCoTen": "848180",
         "dinhNghiaDuoc": true
+      },
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "5fb4c9dd59f15dbd335ec7a3cbd3796beb16e27e8b793174feab51d0c9a09e96"
+        }
       }
     },
     {
       "hs": "84818083",
-      "dieuKien": "8481.80 – Thiết bị khác › - - - Van ngắt nhiên liệu bằng plastic dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04, với đường kính trong cửa nạp dưới 1cm",
+      "dieuKien": "tên loại hàng: Van ngắt nhiên liệu; chất liệu (theo vị trí): plastic; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): xe thuộc nhóm 87.02, 87.03 hoặc 87.04; đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) < 1 cm",
       "loaiKhac": false,
       "nguon": "tax.84818083",
       "trich": "84818083 - - - Van ngắt nhiên liệu bằng plastic dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04, với đường kính trong cửa nạp dưới 1cm",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "chat_lieu",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Van ngắt nhiên liệu"
+        },
+        {
+          "fact": "chatLieu",
           "op": "LA",
           "value": "plastic"
         },
         {
-          "fact": "duong_kinh",
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe thuộc nhóm 87.02, 87.03 hoặc 87.04"
+        },
+        {
+          "fact": "duongKinhTrong",
           "op": "<",
           "value": 1,
           "donVi": "cm"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+        }
+      },
+      "chongLanTruc": {
+        "pn6": "848180",
+        "nhanh": [
+          "848180~r14563",
+          "848180~r14570",
+          "848180~r14573",
+          "84818083",
+          "84818084",
+          "84818093"
+        ],
+        "truc": {
+          "84818083": "TEN_LOAI",
+          "84818084": "TEN_LOAI",
+          "84818093": "TEN_LOAI",
+          "848180~r14563": "TEN_LOAI",
+          "848180~r14570": "TEN_LOAI",
+          "848180~r14573": "DAC_DIEM"
+        },
+        "cauHoiPhanBiet": "Van này là \"Van điều khiển bằng khí nén\" (r14573) hay được gọi theo tên loại: \"Van bi\" (r14563), \"Van nhiều cửa\" (r14570), \"Van ngắt nhiên liệu\" bằng plastic hoặc bằng vật liệu khác dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04 (8481.80.83/.84/.93)? Van vừa thuộc một tên loại vừa điều khiển bằng khí nén (vd van bi khí nén): biểu thuế không nêu thứ tự — cần chuyên gia phân xử.",
+        "trich": {
+          "84818083": "Van ngắt nhiên liệu bằng plastic dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04, với đường kính trong cửa nạp dưới 1cm",
+          "84818084": "Van ngắt nhiên liệu bằng plastic dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04, với đường kính trong cửa nạp từ 1cm đến 2,5 cm",
+          "84818093": "Van ngắt nhiên liệu bằng vật liệu khác dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04",
+          "848180~r14563": "Van bi",
+          "848180~r14570": "Van nhiều cửa",
+          "848180~r14573": "Van điều khiển bằng khí nén"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:ozv-1867#soat-848180",
+            "ngay": "2026-11-22",
+            "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+          }
+        }
+      }
     },
     {
       "hs": "84818084",
-      "dieuKien": "8481.80 – Thiết bị khác › - - - Van ngắt nhiên liệu bằng plastic dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04, với đường kính trong cửa nạp từ 1cm đến 2,5 cm",
+      "dieuKien": "tên loại hàng: Van ngắt nhiên liệu; chất liệu (theo vị trí): plastic; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): xe thuộc nhóm 87.02, 87.03 hoặc 87.04; đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) >= 1 cm; đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) <= 2.5 cm",
       "loaiKhac": false,
       "nguon": "tax.84818084",
       "trich": "84818084 - - - Van ngắt nhiên liệu bằng plastic dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04, với đường kính trong cửa nạp từ 1cm đến 2,5 cm",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "chat_lieu",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Van ngắt nhiên liệu"
+        },
+        {
+          "fact": "chatLieu",
           "op": "LA",
           "value": "plastic"
         },
         {
-          "fact": "duong_kinh",
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe thuộc nhóm 87.02, 87.03 hoặc 87.04"
+        },
+        {
+          "fact": "duongKinhTrong",
           "op": ">=",
           "value": 1,
           "donVi": "cm"
         },
         {
-          "fact": "duong_kinh",
+          "fact": "duongKinhTrong",
           "op": "<=",
           "value": 2.5,
           "donVi": "cm"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+        }
+      },
+      "chongLanTruc": {
+        "pn6": "848180",
+        "nhanh": [
+          "848180~r14563",
+          "848180~r14570",
+          "848180~r14573",
+          "84818083",
+          "84818084",
+          "84818093"
+        ],
+        "truc": {
+          "84818083": "TEN_LOAI",
+          "84818084": "TEN_LOAI",
+          "84818093": "TEN_LOAI",
+          "848180~r14563": "TEN_LOAI",
+          "848180~r14570": "TEN_LOAI",
+          "848180~r14573": "DAC_DIEM"
+        },
+        "cauHoiPhanBiet": "Van này là \"Van điều khiển bằng khí nén\" (r14573) hay được gọi theo tên loại: \"Van bi\" (r14563), \"Van nhiều cửa\" (r14570), \"Van ngắt nhiên liệu\" bằng plastic hoặc bằng vật liệu khác dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04 (8481.80.83/.84/.93)? Van vừa thuộc một tên loại vừa điều khiển bằng khí nén (vd van bi khí nén): biểu thuế không nêu thứ tự — cần chuyên gia phân xử.",
+        "trich": {
+          "84818083": "Van ngắt nhiên liệu bằng plastic dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04, với đường kính trong cửa nạp dưới 1cm",
+          "84818084": "Van ngắt nhiên liệu bằng plastic dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04, với đường kính trong cửa nạp từ 1cm đến 2,5 cm",
+          "84818093": "Van ngắt nhiên liệu bằng vật liệu khác dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04",
+          "848180~r14563": "Van bi",
+          "848180~r14570": "Van nhiều cửa",
+          "848180~r14573": "Van điều khiển bằng khí nén"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:ozv-1867#soat-848180",
+            "ngay": "2026-11-22",
+            "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+          }
+        }
+      }
     },
     {
       "hs": "84818093",
-      "dieuKien": "8481.80 – Thiết bị khác › - - - Van ngắt nhiên liệu bằng vật liệu khác dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04",
+      "dieuKien": "tên loại hàng: Van ngắt nhiên liệu; không chất liệu (theo vị trí): plastic; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): xe thuộc nhóm 87.02, 87.03 hoặc 87.04",
       "loaiKhac": false,
       "nguon": "tax.84818093",
       "trich": "84818093 - - - Van ngắt nhiên liệu bằng vật liệu khác dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Van ngắt nhiên liệu"
+        },
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "chieu": "PHAI_KHONG",
+          "value": "plastic"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe thuộc nhóm 87.02, 87.03 hoặc 87.04"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+        }
+      },
+      "phanConLai": false,
+      "chongLanTruc": {
+        "pn6": "848180",
+        "nhanh": [
+          "848180~r14563",
+          "848180~r14570",
+          "848180~r14573",
+          "84818083",
+          "84818084",
+          "84818093"
+        ],
+        "truc": {
+          "84818083": "TEN_LOAI",
+          "84818084": "TEN_LOAI",
+          "84818093": "TEN_LOAI",
+          "848180~r14563": "TEN_LOAI",
+          "848180~r14570": "TEN_LOAI",
+          "848180~r14573": "DAC_DIEM"
+        },
+        "cauHoiPhanBiet": "Van này là \"Van điều khiển bằng khí nén\" (r14573) hay được gọi theo tên loại: \"Van bi\" (r14563), \"Van nhiều cửa\" (r14570), \"Van ngắt nhiên liệu\" bằng plastic hoặc bằng vật liệu khác dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04 (8481.80.83/.84/.93)? Van vừa thuộc một tên loại vừa điều khiển bằng khí nén (vd van bi khí nén): biểu thuế không nêu thứ tự — cần chuyên gia phân xử.",
+        "trich": {
+          "84818083": "Van ngắt nhiên liệu bằng plastic dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04, với đường kính trong cửa nạp dưới 1cm",
+          "84818084": "Van ngắt nhiên liệu bằng plastic dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04, với đường kính trong cửa nạp từ 1cm đến 2,5 cm",
+          "84818093": "Van ngắt nhiên liệu bằng vật liệu khác dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04",
+          "848180~r14563": "Van bi",
+          "848180~r14570": "Van nhiều cửa",
+          "848180~r14573": "Van điều khiển bằng khí nén"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:ozv-1867#soat-848180",
+            "ngay": "2026-11-22",
+            "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+          }
+        }
+      }
     },
     {
       "hs": "84818094",
-      "dieuKien": "8481.80 – Thiết bị khác › - - - - Có đường kính trong cửa nạp dưới 1 cm",
+      "dieuKien": "đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) < 1 cm",
       "loaiKhac": false,
       "nguon": "tax.84818094",
-      "trich": "84818094 - - - - Có đường kính trong cửa nạp dưới 1 cm",
-      "nguonLoai": "AI_DA_KIEM",
+      "trich": "84818094 - - - - Có đường kính trong cửa nạp dưới 1 cm ",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "duong_kinh",
+          "fact": "duongKinhTrong",
           "op": "<",
           "value": 1,
           "donVi": "cm"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+        }
+      }
     },
     {
       "hs": "84818095",
-      "dieuKien": "8481.80 – Thiết bị khác › - - - - Có đường kính trong cửa nạp từ 1 cm đến 2,5 cm",
+      "dieuKien": "đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) >= 1 cm; đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) <= 2.5 cm",
       "loaiKhac": false,
       "nguon": "tax.84818095",
       "trich": "84818095 - - - - Có đường kính trong cửa nạp từ 1 cm đến 2,5 cm",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "duong_kinh",
+          "fact": "duongKinhTrong",
           "op": ">=",
           "value": 1,
           "donVi": "cm"
         },
         {
-          "fact": "duong_kinh",
+          "fact": "duongKinhTrong",
           "op": "<=",
           "value": 2.5,
           "donVi": "cm"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+        }
+      }
     },
     {
       "hs": "84818096",
-      "dieuKien": "8481.80 – Thiết bị khác › - - - - Có đường kính trong cửa nạp trên 2,5 cm",
+      "dieuKien": "đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) > 2.5 cm",
       "loaiKhac": false,
       "nguon": "tax.84818096",
       "trich": "84818096 - - - - Có đường kính trong cửa nạp trên 2,5 cm",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "duong_kinh",
+          "fact": "duongKinhTrong",
           "op": ">",
           "value": 2.5,
           "donVi": "cm"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+        }
+      }
     },
     {
       "hs": "84818097",
-      "dieuKien": "8481.80 – Thiết bị khác › - - - Loại khác, điều khiển bằng tay, khối lượng dưới 3 kg, đã được xử lý bề mặt hoặc làm bằng thép không gỉ hoặc niken",
+      "dieuKien": "cách điều khiển / vận hành: điều khiển bằng tay; khối lượng < 3 kg; (đã được xử lý bề mặt) hoặc (chất liệu (theo vị trí): thép không gỉ hoặc niken)",
       "loaiKhac": true,
       "nguon": "tax.84818097",
       "trich": "84818097 - - - Loại khác, điều khiển bằng tay, khối lượng dưới 3 kg, đã được xử lý bề mặt hoặc làm bằng thép không gỉ hoặc niken",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phamViLoaiKhac": {
         "nguonLoai": "MAY_SUY",
         "cha": "8481809",
         "truAnhEm": [
+          "848180~r14563",
+          "848180~r14566",
+          "848180~r14570",
+          "848180~r14573",
+          "84818083",
+          "84818084",
           "84818093",
+          "848180~r14579",
+          "848180~r14584",
           "84818094",
           "84818095",
           "84818096",
@@ -1317,23 +1933,85 @@
         ],
         "toTienCoTen": "848180",
         "dinhNghiaDuoc": true
+      },
+      "dieuKienSo": [
+        {
+          "fact": "cachDieuKhien",
+          "op": "TRONG",
+          "value": [
+            "BANG_TAY"
+          ]
+        },
+        {
+          "fact": "khoiLuong",
+          "op": "<",
+          "value": 3,
+          "donVi": "kg"
+        },
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "daXuLyBeMat",
+                "op": "CO"
+              }
+            ],
+            [
+              {
+                "fact": "chatLieu",
+                "op": "LA",
+                "value": [
+                  "thép không gỉ",
+                  "niken"
+                ]
+              }
+            ]
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+        }
       }
     },
     {
       "hs": "84818098",
-      "dieuKien": "8481.80 – Thiết bị khác › - - - - Vòi nước bằng đồng hoặc hợp kim đồng, có đường kính trong từ 2,5 cm trở xuống",
+      "dieuKien": "tên loại hàng: Vòi nước; chất liệu (theo vị trí): đồng; đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) <= 2.5 cm",
       "loaiKhac": false,
       "nguon": "tax.84818098",
       "trich": "84818098 - - - - Vòi nước bằng đồng hoặc hợp kim đồng, có đường kính trong từ 2,5 cm trở xuống",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "duong_kinh",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Vòi nước"
+        },
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "đồng"
+        },
+        {
+          "fact": "duongKinhTrong",
           "op": "<=",
           "value": 2.5,
           "donVi": "cm"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+        }
+      }
     },
     {
       "hs": "84818099",
@@ -1355,11 +2033,19 @@
         ],
         "toTienCoTen": "848180",
         "dinhNghiaDuoc": false
+      },
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "5fb4c9dd59f15dbd335ec7a3cbd3796beb16e27e8b793174feab51d0c9a09e96"
+        }
       }
     },
     {
       "hs": "84819010",
-      "dieuKien": "tên loại hàng: Vỏ; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): van cổng hoặc van cống; đường kính trong (cửa nạp/cửa thoát, DN) > 50 mm; đường kính trong (cửa nạp/cửa thoát, DN) <= 400 mm",
+      "dieuKien": "tên loại hàng: Vỏ; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): van cổng hoặc van cống; đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) > 50 mm; đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) <= 400 mm",
       "loaiKhac": false,
       "nguon": "tax.84819010",
       "trich": "84819010 - - Vỏ của van cổng hoặc van cống có đường kính trong cửa nạp hoặc cửa thoát trên 50 mm nhưng không quá 400 mm",
@@ -1394,9 +2080,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot6",
-          "ngay": "2026-11-01",
-          "bam": "16dd74e91ee02b931c773354e808c4d0540c2a410323442c98ae8d1dd0e0db80"
+          "phien": "claude-agent:ozv-1923#soat-848190",
+          "ngay": "2026-11-22",
+          "bam": "74cb1b238d6480a4f49f07437f4879b3b3ccb280ca36bbabea9a2ce7d6fba7ef"
         }
       }
     },
@@ -1422,9 +2108,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot6",
-          "ngay": "2026-11-01",
-          "bam": "16dd74e91ee02b931c773354e808c4d0540c2a410323442c98ae8d1dd0e0db80"
+          "phien": "claude-agent:ozv-1923#soat-848190",
+          "ngay": "2026-11-22",
+          "bam": "74cb1b238d6480a4f49f07437f4879b3b3ccb280ca36bbabea9a2ce7d6fba7ef"
         }
       }
     },
@@ -1450,9 +2136,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot6",
-          "ngay": "2026-11-01",
-          "bam": "16dd74e91ee02b931c773354e808c4d0540c2a410323442c98ae8d1dd0e0db80"
+          "phien": "claude-agent:ozv-1923#soat-848190",
+          "ngay": "2026-11-22",
+          "bam": "74cb1b238d6480a4f49f07437f4879b3b3ccb280ca36bbabea9a2ce7d6fba7ef"
         }
       }
     },
@@ -1473,9 +2159,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot6",
-          "ngay": "2026-11-01",
-          "bam": "16dd74e91ee02b931c773354e808c4d0540c2a410323442c98ae8d1dd0e0db80"
+          "phien": "claude-agent:ozv-1923#soat-848190",
+          "ngay": "2026-11-22",
+          "bam": "74cb1b238d6480a4f49f07437f4879b3b3ccb280ca36bbabea9a2ce7d6fba7ef"
         }
       },
       "phanConLai": true
@@ -1516,9 +2202,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot6",
-          "ngay": "2026-11-01",
-          "bam": "16dd74e91ee02b931c773354e808c4d0540c2a410323442c98ae8d1dd0e0db80"
+          "phien": "claude-agent:ozv-1923#soat-848190",
+          "ngay": "2026-11-22",
+          "bam": "74cb1b238d6480a4f49f07437f4879b3b3ccb280ca36bbabea9a2ce7d6fba7ef"
         }
       }
     },
@@ -1556,9 +2242,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot6",
-          "ngay": "2026-11-01",
-          "bam": "16dd74e91ee02b931c773354e808c4d0540c2a410323442c98ae8d1dd0e0db80"
+          "phien": "claude-agent:ozv-1923#soat-848190",
+          "ngay": "2026-11-22",
+          "bam": "74cb1b238d6480a4f49f07437f4879b3b3ccb280ca36bbabea9a2ce7d6fba7ef"
         }
       }
     },
@@ -2484,6 +3170,48 @@
   "yKienWcoDayDu": false,
   "dieuKienNut": [
     {
+      "id": "8481101",
+      "nguon": "tieuDe.8481101",
+      "trich": "8481101 Bằng sắt hoặc thép",
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "sắt thép"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848110",
+          "ngay": "2026-11-22",
+          "bam": "474ac2478c33e70201090cfd8734b448cab640664b8b55a9ca914883b5be4e7f"
+        }
+      }
+    },
+    {
+      "id": "8481102",
+      "nguon": "tieuDe.8481102",
+      "trich": "8481102 Bằng đồng hoặc hợp kim đồng",
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "đồng"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848110",
+          "ngay": "2026-11-22",
+          "bam": "474ac2478c33e70201090cfd8734b448cab640664b8b55a9ca914883b5be4e7f"
+        }
+      }
+    },
+    {
       "id": "8481201",
       "nguon": "tieuDe.8481201",
       "trich": "8481201 Van cổng điều khiển bằng tay có đường kính trong cửa nạp hoặc cửa thoát trên 5 cm nhưng không quá 40 cm",
@@ -2524,6 +3252,869 @@
       }
     },
     {
+      "id": "848180~r14535",
+      "nguon": "tieuDe.848180~r14535",
+      "trich": "848180~r14535 Van dùng cho săm",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Van dùng cho săm"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "săm"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+        }
+      },
+      "chongLanTruc": {
+        "pn6": "848180",
+        "nhanh": [
+          "848180~r14535",
+          "848180~r14538",
+          "8481802",
+          "84818030",
+          "8481804",
+          "8481805",
+          "848180~r14551",
+          "848180~r14556",
+          "848180~r14559"
+        ],
+        "truc": {
+          "8481802": "CONG_DUNG",
+          "8481804": "CONG_DUNG",
+          "8481805": "DAC_DIEM",
+          "84818030": "CONG_DUNG",
+          "848180~r14535": "CONG_DUNG",
+          "848180~r14538": "CONG_DUNG",
+          "848180~r14551": "CONG_DUNG",
+          "848180~r14556": "TEN_LOAI",
+          "848180~r14559": "TEN_LOAI"
+        },
+        "cauHoiPhanBiet": "Van này là loại nào: van săm, van lốp không săm, van xi lanh LPG bằng đồng, van bếp ga, van chai chất lỏng có ga / van rót bia, van và vòi có khoang pha trộn lưu chất, van đường ống nước, núm uống nước cho lợn, hay van nối có núm?",
+        "trich": {
+          "8481802": "Van xi lanh khí dầu mỏ hóa lỏng (LPG) bằng đồng hoặc hợp kim đồng",
+          "8481804": "Van cho chai chất lỏng có ga; van cho bộ phận rót bia hoạt động bằng ga",
+          "8481805": "Van và vòi có khoang pha trộn lưu chất",
+          "84818030": "Van, đã hoặc chưa lắp bộ phận đánh lửa điện từ, dùng cho các bếp nấu hoặc bếp có lò nướng bằng ga",
+          "848180~r14535": "Van dùng cho săm",
+          "848180~r14538": "Van dùng cho lốp không săm",
+          "848180~r14551": "Van đường ống nước",
+          "848180~r14556": "Núm uống nước dùng cho lợn",
+          "848180~r14559": "Van nối có núm"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:ozv-1867#soat-848180",
+            "ngay": "2026-11-22",
+            "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+          }
+        }
+      }
+    },
+    {
+      "id": "848180~r14538",
+      "nguon": "tieuDe.848180~r14538",
+      "trich": "848180~r14538 Van dùng cho lốp không săm",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Van dùng cho lốp không săm"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "lốp không săm"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+        }
+      },
+      "chongLanTruc": {
+        "pn6": "848180",
+        "nhanh": [
+          "848180~r14535",
+          "848180~r14538",
+          "8481802",
+          "84818030",
+          "8481804",
+          "8481805",
+          "848180~r14551",
+          "848180~r14556",
+          "848180~r14559"
+        ],
+        "truc": {
+          "8481802": "CONG_DUNG",
+          "8481804": "CONG_DUNG",
+          "8481805": "DAC_DIEM",
+          "84818030": "CONG_DUNG",
+          "848180~r14535": "CONG_DUNG",
+          "848180~r14538": "CONG_DUNG",
+          "848180~r14551": "CONG_DUNG",
+          "848180~r14556": "TEN_LOAI",
+          "848180~r14559": "TEN_LOAI"
+        },
+        "cauHoiPhanBiet": "Van này là loại nào: van săm, van lốp không săm, van xi lanh LPG bằng đồng, van bếp ga, van chai chất lỏng có ga / van rót bia, van và vòi có khoang pha trộn lưu chất, van đường ống nước, núm uống nước cho lợn, hay van nối có núm?",
+        "trich": {
+          "8481802": "Van xi lanh khí dầu mỏ hóa lỏng (LPG) bằng đồng hoặc hợp kim đồng",
+          "8481804": "Van cho chai chất lỏng có ga; van cho bộ phận rót bia hoạt động bằng ga",
+          "8481805": "Van và vòi có khoang pha trộn lưu chất",
+          "84818030": "Van, đã hoặc chưa lắp bộ phận đánh lửa điện từ, dùng cho các bếp nấu hoặc bếp có lò nướng bằng ga",
+          "848180~r14535": "Van dùng cho săm",
+          "848180~r14538": "Van dùng cho lốp không săm",
+          "848180~r14551": "Van đường ống nước",
+          "848180~r14556": "Núm uống nước dùng cho lợn",
+          "848180~r14559": "Van nối có núm"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:ozv-1867#soat-848180",
+            "ngay": "2026-11-22",
+            "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+          }
+        }
+      }
+    },
+    {
+      "id": "848180~r14551",
+      "nguon": "tieuDe.848180~r14551",
+      "trich": "848180~r14551 Van đường ống nước",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "đường ống nước"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+        }
+      },
+      "chongLanTruc": {
+        "pn6": "848180",
+        "nhanh": [
+          "848180~r14535",
+          "848180~r14538",
+          "8481802",
+          "84818030",
+          "8481804",
+          "8481805",
+          "848180~r14551",
+          "848180~r14556",
+          "848180~r14559"
+        ],
+        "truc": {
+          "8481802": "CONG_DUNG",
+          "8481804": "CONG_DUNG",
+          "8481805": "DAC_DIEM",
+          "84818030": "CONG_DUNG",
+          "848180~r14535": "CONG_DUNG",
+          "848180~r14538": "CONG_DUNG",
+          "848180~r14551": "CONG_DUNG",
+          "848180~r14556": "TEN_LOAI",
+          "848180~r14559": "TEN_LOAI"
+        },
+        "cauHoiPhanBiet": "Van này là loại nào: van săm, van lốp không săm, van xi lanh LPG bằng đồng, van bếp ga, van chai chất lỏng có ga / van rót bia, van và vòi có khoang pha trộn lưu chất, van đường ống nước, núm uống nước cho lợn, hay van nối có núm?",
+        "trich": {
+          "8481802": "Van xi lanh khí dầu mỏ hóa lỏng (LPG) bằng đồng hoặc hợp kim đồng",
+          "8481804": "Van cho chai chất lỏng có ga; van cho bộ phận rót bia hoạt động bằng ga",
+          "8481805": "Van và vòi có khoang pha trộn lưu chất",
+          "84818030": "Van, đã hoặc chưa lắp bộ phận đánh lửa điện từ, dùng cho các bếp nấu hoặc bếp có lò nướng bằng ga",
+          "848180~r14535": "Van dùng cho săm",
+          "848180~r14538": "Van dùng cho lốp không săm",
+          "848180~r14551": "Van đường ống nước",
+          "848180~r14556": "Núm uống nước dùng cho lợn",
+          "848180~r14559": "Van nối có núm"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:ozv-1867#soat-848180",
+            "ngay": "2026-11-22",
+            "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+          }
+        }
+      }
+    },
+    {
+      "id": "848180~r14552",
+      "nguon": "tieuDe.848180~r14552",
+      "trich": "848180~r14552 Van cổng, bằng gang đúc, có đường kính trong từ 4 cm trở lên; van bướm, bằng gang đúc, có đường kính trong từ 8 cm trở lên",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Van"
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Van cổng"
+              },
+              {
+                "fact": "chatLieu",
+                "op": "LA",
+                "value": "gang"
+              },
+              {
+                "fact": "duongKinhTrong",
+                "op": ">=",
+                "value": 4,
+                "donVi": "cm"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "van bướm"
+              },
+              {
+                "fact": "chatLieu",
+                "op": "LA",
+                "value": "gang"
+              },
+              {
+                "fact": "duongKinhTrong",
+                "op": ">=",
+                "value": 8,
+                "donVi": "cm"
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+        }
+      }
+    },
+    {
+      "id": "848180~r14556",
+      "nguon": "tieuDe.848180~r14556",
+      "trich": "848180~r14556 Núm uống nước dùng cho lợn",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Núm uống nước"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "lợn"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+        }
+      },
+      "chongLanTruc": {
+        "pn6": "848180",
+        "nhanh": [
+          "848180~r14535",
+          "848180~r14538",
+          "8481802",
+          "84818030",
+          "8481804",
+          "8481805",
+          "848180~r14551",
+          "848180~r14556",
+          "848180~r14559"
+        ],
+        "truc": {
+          "8481802": "CONG_DUNG",
+          "8481804": "CONG_DUNG",
+          "8481805": "DAC_DIEM",
+          "84818030": "CONG_DUNG",
+          "848180~r14535": "CONG_DUNG",
+          "848180~r14538": "CONG_DUNG",
+          "848180~r14551": "CONG_DUNG",
+          "848180~r14556": "TEN_LOAI",
+          "848180~r14559": "TEN_LOAI"
+        },
+        "cauHoiPhanBiet": "Van này là loại nào: van săm, van lốp không săm, van xi lanh LPG bằng đồng, van bếp ga, van chai chất lỏng có ga / van rót bia, van và vòi có khoang pha trộn lưu chất, van đường ống nước, núm uống nước cho lợn, hay van nối có núm?",
+        "trich": {
+          "8481802": "Van xi lanh khí dầu mỏ hóa lỏng (LPG) bằng đồng hoặc hợp kim đồng",
+          "8481804": "Van cho chai chất lỏng có ga; van cho bộ phận rót bia hoạt động bằng ga",
+          "8481805": "Van và vòi có khoang pha trộn lưu chất",
+          "84818030": "Van, đã hoặc chưa lắp bộ phận đánh lửa điện từ, dùng cho các bếp nấu hoặc bếp có lò nướng bằng ga",
+          "848180~r14535": "Van dùng cho săm",
+          "848180~r14538": "Van dùng cho lốp không săm",
+          "848180~r14551": "Van đường ống nước",
+          "848180~r14556": "Núm uống nước dùng cho lợn",
+          "848180~r14559": "Van nối có núm"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:ozv-1867#soat-848180",
+            "ngay": "2026-11-22",
+            "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+          }
+        }
+      }
+    },
+    {
+      "id": "848180~r14559",
+      "nguon": "tieuDe.848180~r14559",
+      "trich": "848180~r14559 Van nối có núm",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Van nối có núm"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+        }
+      },
+      "chongLanTruc": {
+        "pn6": "848180",
+        "nhanh": [
+          "848180~r14535",
+          "848180~r14538",
+          "8481802",
+          "84818030",
+          "8481804",
+          "8481805",
+          "848180~r14551",
+          "848180~r14556",
+          "848180~r14559"
+        ],
+        "truc": {
+          "8481802": "CONG_DUNG",
+          "8481804": "CONG_DUNG",
+          "8481805": "DAC_DIEM",
+          "84818030": "CONG_DUNG",
+          "848180~r14535": "CONG_DUNG",
+          "848180~r14538": "CONG_DUNG",
+          "848180~r14551": "CONG_DUNG",
+          "848180~r14556": "TEN_LOAI",
+          "848180~r14559": "TEN_LOAI"
+        },
+        "cauHoiPhanBiet": "Van này là loại nào: van săm, van lốp không săm, van xi lanh LPG bằng đồng, van bếp ga, van chai chất lỏng có ga / van rót bia, van và vòi có khoang pha trộn lưu chất, van đường ống nước, núm uống nước cho lợn, hay van nối có núm?",
+        "trich": {
+          "8481802": "Van xi lanh khí dầu mỏ hóa lỏng (LPG) bằng đồng hoặc hợp kim đồng",
+          "8481804": "Van cho chai chất lỏng có ga; van cho bộ phận rót bia hoạt động bằng ga",
+          "8481805": "Van và vòi có khoang pha trộn lưu chất",
+          "84818030": "Van, đã hoặc chưa lắp bộ phận đánh lửa điện từ, dùng cho các bếp nấu hoặc bếp có lò nướng bằng ga",
+          "848180~r14535": "Van dùng cho săm",
+          "848180~r14538": "Van dùng cho lốp không săm",
+          "848180~r14551": "Van đường ống nước",
+          "848180~r14556": "Núm uống nước dùng cho lợn",
+          "848180~r14559": "Van nối có núm"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:ozv-1867#soat-848180",
+            "ngay": "2026-11-22",
+            "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+          }
+        }
+      }
+    },
+    {
+      "id": "848180~r14563",
+      "nguon": "tieuDe.848180~r14563",
+      "trich": "848180~r14563 Van bi",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Van bi"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+        }
+      },
+      "chongLanTruc": {
+        "pn6": "848180",
+        "nhanh": [
+          "848180~r14563",
+          "848180~r14570",
+          "848180~r14573",
+          "84818083",
+          "84818084",
+          "84818093"
+        ],
+        "truc": {
+          "84818083": "TEN_LOAI",
+          "84818084": "TEN_LOAI",
+          "84818093": "TEN_LOAI",
+          "848180~r14563": "TEN_LOAI",
+          "848180~r14570": "TEN_LOAI",
+          "848180~r14573": "DAC_DIEM"
+        },
+        "cauHoiPhanBiet": "Van này là \"Van điều khiển bằng khí nén\" (r14573) hay được gọi theo tên loại: \"Van bi\" (r14563), \"Van nhiều cửa\" (r14570), \"Van ngắt nhiên liệu\" bằng plastic hoặc bằng vật liệu khác dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04 (8481.80.83/.84/.93)? Van vừa thuộc một tên loại vừa điều khiển bằng khí nén (vd van bi khí nén): biểu thuế không nêu thứ tự — cần chuyên gia phân xử.",
+        "trich": {
+          "84818083": "Van ngắt nhiên liệu bằng plastic dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04, với đường kính trong cửa nạp dưới 1cm",
+          "84818084": "Van ngắt nhiên liệu bằng plastic dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04, với đường kính trong cửa nạp từ 1cm đến 2,5 cm",
+          "84818093": "Van ngắt nhiên liệu bằng vật liệu khác dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04",
+          "848180~r14563": "Van bi",
+          "848180~r14570": "Van nhiều cửa",
+          "848180~r14573": "Van điều khiển bằng khí nén"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:ozv-1867#soat-848180",
+            "ngay": "2026-11-22",
+            "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+          }
+        }
+      }
+    },
+    {
+      "id": "848180~r14566",
+      "nguon": "tieuDe.848180~r14566",
+      "trich": "848180~r14566 Van cổng, điều khiển bằng tay, bằng sắt hoặc thép",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Van cổng"
+        },
+        {
+          "fact": "cachDieuKhien",
+          "op": "TRONG",
+          "value": [
+            "BANG_TAY"
+          ]
+        },
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "sắt thép"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+        }
+      }
+    },
+    {
+      "id": "848180~r14570",
+      "nguon": "tieuDe.848180~r14570",
+      "trich": "848180~r14570 Van nhiều cửa",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Van nhiều cửa"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+        }
+      },
+      "chongLanTruc": {
+        "pn6": "848180",
+        "nhanh": [
+          "848180~r14563",
+          "848180~r14570",
+          "848180~r14573",
+          "84818083",
+          "84818084",
+          "84818093"
+        ],
+        "truc": {
+          "84818083": "TEN_LOAI",
+          "84818084": "TEN_LOAI",
+          "84818093": "TEN_LOAI",
+          "848180~r14563": "TEN_LOAI",
+          "848180~r14570": "TEN_LOAI",
+          "848180~r14573": "DAC_DIEM"
+        },
+        "cauHoiPhanBiet": "Van này là \"Van điều khiển bằng khí nén\" (r14573) hay được gọi theo tên loại: \"Van bi\" (r14563), \"Van nhiều cửa\" (r14570), \"Van ngắt nhiên liệu\" bằng plastic hoặc bằng vật liệu khác dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04 (8481.80.83/.84/.93)? Van vừa thuộc một tên loại vừa điều khiển bằng khí nén (vd van bi khí nén): biểu thuế không nêu thứ tự — cần chuyên gia phân xử.",
+        "trich": {
+          "84818083": "Van ngắt nhiên liệu bằng plastic dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04, với đường kính trong cửa nạp dưới 1cm",
+          "84818084": "Van ngắt nhiên liệu bằng plastic dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04, với đường kính trong cửa nạp từ 1cm đến 2,5 cm",
+          "84818093": "Van ngắt nhiên liệu bằng vật liệu khác dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04",
+          "848180~r14563": "Van bi",
+          "848180~r14570": "Van nhiều cửa",
+          "848180~r14573": "Van điều khiển bằng khí nén"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:ozv-1867#soat-848180",
+            "ngay": "2026-11-22",
+            "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+          }
+        }
+      }
+    },
+    {
+      "id": "848180~r14573",
+      "nguon": "tieuDe.848180~r14573",
+      "trich": "848180~r14573 Van điều khiển bằng khí nén",
+      "dieuKienSo": [
+        {
+          "fact": "cachDieuKhien",
+          "op": "TRONG",
+          "value": [
+            "KHI_NEN"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+        }
+      },
+      "chongLanTruc": {
+        "pn6": "848180",
+        "nhanh": [
+          "848180~r14563",
+          "848180~r14570",
+          "848180~r14573",
+          "84818083",
+          "84818084",
+          "84818093"
+        ],
+        "truc": {
+          "84818083": "TEN_LOAI",
+          "84818084": "TEN_LOAI",
+          "84818093": "TEN_LOAI",
+          "848180~r14563": "TEN_LOAI",
+          "848180~r14570": "TEN_LOAI",
+          "848180~r14573": "DAC_DIEM"
+        },
+        "cauHoiPhanBiet": "Van này là \"Van điều khiển bằng khí nén\" (r14573) hay được gọi theo tên loại: \"Van bi\" (r14563), \"Van nhiều cửa\" (r14570), \"Van ngắt nhiên liệu\" bằng plastic hoặc bằng vật liệu khác dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04 (8481.80.83/.84/.93)? Van vừa thuộc một tên loại vừa điều khiển bằng khí nén (vd van bi khí nén): biểu thuế không nêu thứ tự — cần chuyên gia phân xử.",
+        "trich": {
+          "84818083": "Van ngắt nhiên liệu bằng plastic dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04, với đường kính trong cửa nạp dưới 1cm",
+          "84818084": "Van ngắt nhiên liệu bằng plastic dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04, với đường kính trong cửa nạp từ 1cm đến 2,5 cm",
+          "84818093": "Van ngắt nhiên liệu bằng vật liệu khác dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04",
+          "848180~r14563": "Van bi",
+          "848180~r14570": "Van nhiều cửa",
+          "848180~r14573": "Van điều khiển bằng khí nén"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:ozv-1867#soat-848180",
+            "ngay": "2026-11-22",
+            "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+          }
+        }
+      }
+    },
+    {
+      "id": "848180~r14579",
+      "nguon": "tieuDe.848180~r14579",
+      "trich": "848180~r14579 Van plastic khác",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Van plastic khác"
+        },
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "plastic"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+        }
+      },
+      "phanConLai": [
+        "848180~r14563",
+        "848180~r14566",
+        "848180~r14570",
+        "848180~r14573",
+        "84818083",
+        "84818084"
+      ]
+    },
+    {
+      "id": "8481802",
+      "nguon": "tieuDe.8481802",
+      "trich": "8481802 Van xi lanh khí dầu mỏ hóa lỏng (LPG) bằng đồng hoặc hợp kim đồng",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xi lanh khí dầu mỏ hóa lỏng"
+        },
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "đồng"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+        }
+      },
+      "chongLanTruc": {
+        "pn6": "848180",
+        "nhanh": [
+          "848180~r14535",
+          "848180~r14538",
+          "8481802",
+          "84818030",
+          "8481804",
+          "8481805",
+          "848180~r14551",
+          "848180~r14556",
+          "848180~r14559"
+        ],
+        "truc": {
+          "8481802": "CONG_DUNG",
+          "8481804": "CONG_DUNG",
+          "8481805": "DAC_DIEM",
+          "84818030": "CONG_DUNG",
+          "848180~r14535": "CONG_DUNG",
+          "848180~r14538": "CONG_DUNG",
+          "848180~r14551": "CONG_DUNG",
+          "848180~r14556": "TEN_LOAI",
+          "848180~r14559": "TEN_LOAI"
+        },
+        "cauHoiPhanBiet": "Van này là loại nào: van săm, van lốp không săm, van xi lanh LPG bằng đồng, van bếp ga, van chai chất lỏng có ga / van rót bia, van và vòi có khoang pha trộn lưu chất, van đường ống nước, núm uống nước cho lợn, hay van nối có núm?",
+        "trich": {
+          "8481802": "Van xi lanh khí dầu mỏ hóa lỏng (LPG) bằng đồng hoặc hợp kim đồng",
+          "8481804": "Van cho chai chất lỏng có ga; van cho bộ phận rót bia hoạt động bằng ga",
+          "8481805": "Van và vòi có khoang pha trộn lưu chất",
+          "84818030": "Van, đã hoặc chưa lắp bộ phận đánh lửa điện từ, dùng cho các bếp nấu hoặc bếp có lò nướng bằng ga",
+          "848180~r14535": "Van dùng cho săm",
+          "848180~r14538": "Van dùng cho lốp không săm",
+          "848180~r14551": "Van đường ống nước",
+          "848180~r14556": "Núm uống nước dùng cho lợn",
+          "848180~r14559": "Van nối có núm"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:ozv-1867#soat-848180",
+            "ngay": "2026-11-22",
+            "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+          }
+        }
+      }
+    },
+    {
+      "id": "8481804",
+      "nguon": "tieuDe.8481804",
+      "trich": "8481804 Van cho chai chất lỏng có ga; van cho bộ phận rót bia hoạt động bằng ga",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "chai chất lỏng có ga",
+            "bộ phận rót bia hoạt động bằng ga"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+        }
+      },
+      "chongLanTruc": {
+        "pn6": "848180",
+        "nhanh": [
+          "848180~r14535",
+          "848180~r14538",
+          "8481802",
+          "84818030",
+          "8481804",
+          "8481805",
+          "848180~r14551",
+          "848180~r14556",
+          "848180~r14559"
+        ],
+        "truc": {
+          "8481802": "CONG_DUNG",
+          "8481804": "CONG_DUNG",
+          "8481805": "DAC_DIEM",
+          "84818030": "CONG_DUNG",
+          "848180~r14535": "CONG_DUNG",
+          "848180~r14538": "CONG_DUNG",
+          "848180~r14551": "CONG_DUNG",
+          "848180~r14556": "TEN_LOAI",
+          "848180~r14559": "TEN_LOAI"
+        },
+        "cauHoiPhanBiet": "Van này là loại nào: van săm, van lốp không săm, van xi lanh LPG bằng đồng, van bếp ga, van chai chất lỏng có ga / van rót bia, van và vòi có khoang pha trộn lưu chất, van đường ống nước, núm uống nước cho lợn, hay van nối có núm?",
+        "trich": {
+          "8481802": "Van xi lanh khí dầu mỏ hóa lỏng (LPG) bằng đồng hoặc hợp kim đồng",
+          "8481804": "Van cho chai chất lỏng có ga; van cho bộ phận rót bia hoạt động bằng ga",
+          "8481805": "Van và vòi có khoang pha trộn lưu chất",
+          "84818030": "Van, đã hoặc chưa lắp bộ phận đánh lửa điện từ, dùng cho các bếp nấu hoặc bếp có lò nướng bằng ga",
+          "848180~r14535": "Van dùng cho săm",
+          "848180~r14538": "Van dùng cho lốp không săm",
+          "848180~r14551": "Van đường ống nước",
+          "848180~r14556": "Núm uống nước dùng cho lợn",
+          "848180~r14559": "Van nối có núm"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:ozv-1867#soat-848180",
+            "ngay": "2026-11-22",
+            "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+          }
+        }
+      }
+    },
+    {
+      "id": "8481805",
+      "nguon": "tieuDe.8481805",
+      "trich": "8481805 Van và vòi có khoang pha trộn lưu chất",
+      "dieuKienSo": [
+        {
+          "fact": "coKhoangPhaTron",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848180",
+          "ngay": "2026-11-22",
+          "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+        }
+      },
+      "chongLanTruc": {
+        "pn6": "848180",
+        "nhanh": [
+          "848180~r14535",
+          "848180~r14538",
+          "8481802",
+          "84818030",
+          "8481804",
+          "8481805",
+          "848180~r14551",
+          "848180~r14556",
+          "848180~r14559"
+        ],
+        "truc": {
+          "8481802": "CONG_DUNG",
+          "8481804": "CONG_DUNG",
+          "8481805": "DAC_DIEM",
+          "84818030": "CONG_DUNG",
+          "848180~r14535": "CONG_DUNG",
+          "848180~r14538": "CONG_DUNG",
+          "848180~r14551": "CONG_DUNG",
+          "848180~r14556": "TEN_LOAI",
+          "848180~r14559": "TEN_LOAI"
+        },
+        "cauHoiPhanBiet": "Van này là loại nào: van săm, van lốp không săm, van xi lanh LPG bằng đồng, van bếp ga, van chai chất lỏng có ga / van rót bia, van và vòi có khoang pha trộn lưu chất, van đường ống nước, núm uống nước cho lợn, hay van nối có núm?",
+        "trich": {
+          "8481802": "Van xi lanh khí dầu mỏ hóa lỏng (LPG) bằng đồng hoặc hợp kim đồng",
+          "8481804": "Van cho chai chất lỏng có ga; van cho bộ phận rót bia hoạt động bằng ga",
+          "8481805": "Van và vòi có khoang pha trộn lưu chất",
+          "84818030": "Van, đã hoặc chưa lắp bộ phận đánh lửa điện từ, dùng cho các bếp nấu hoặc bếp có lò nướng bằng ga",
+          "848180~r14535": "Van dùng cho săm",
+          "848180~r14538": "Van dùng cho lốp không săm",
+          "848180~r14551": "Van đường ống nước",
+          "848180~r14556": "Núm uống nước dùng cho lợn",
+          "848180~r14559": "Van nối có núm"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:ozv-1867#soat-848180",
+            "ngay": "2026-11-22",
+            "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+          }
+        }
+      }
+    },
+    {
       "id": "8481902",
       "nguon": "tieuDe.8481902",
       "trich": "8481902 Dùng cho vòi, van các loại (trừ van dùng cho săm và lốp không săm) và các thiết bị tương tự có đường kính trong từ 25 mm trở xuống",
@@ -2532,8 +4123,16 @@
           "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": [
-            "săm",
-            "lốp không săm"
+            "vòi",
+            "van các loại"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "van dùng cho săm",
+            "săm và lốp không săm"
           ],
           "chieu": "PHAI_KHONG"
         },
@@ -2548,9 +4147,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot6",
-          "ngay": "2026-11-01",
-          "bam": "16dd74e91ee02b931c773354e808c4d0540c2a410323442c98ae8d1dd0e0db80"
+          "phien": "claude-agent:ozv-1923#soat-848190",
+          "ngay": "2026-11-22",
+          "bam": "74cb1b238d6480a4f49f07437f4879b3b3ccb280ca36bbabea9a2ce7d6fba7ef"
         }
       }
     },
@@ -2580,9 +4179,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot6",
-          "ngay": "2026-11-01",
-          "bam": "16dd74e91ee02b931c773354e808c4d0540c2a410323442c98ae8d1dd0e0db80"
+          "phien": "claude-agent:ozv-1923#soat-848190",
+          "ngay": "2026-11-22",
+          "bam": "74cb1b238d6480a4f49f07437f4879b3b3ccb280ca36bbabea9a2ce7d6fba7ef"
         }
       }
     },
@@ -2609,9 +4208,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot6",
-          "ngay": "2026-11-01",
-          "bam": "16dd74e91ee02b931c773354e808c4d0540c2a410323442c98ae8d1dd0e0db80"
+          "phien": "claude-agent:ozv-1923#soat-848190",
+          "ngay": "2026-11-22",
+          "bam": "74cb1b238d6480a4f49f07437f4879b3b3ccb280ca36bbabea9a2ce7d6fba7ef"
         }
       }
     }

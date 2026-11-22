@@ -1,5 +1,23 @@
 #!/usr/bin/env node
 import './test-isolate-data.mjs';
+import { TEST_DATA_DIR } from './test-isolate-data.mjs';
+import fs from 'node:fs';
+import path from 'node:path';
+{
+  fs.mkdirSync(path.join(TEST_DATA_DIR, 'so-tay'), { recursive: true });
+  const st8481 = JSON.parse(fs.readFileSync('data/so-tay/8481.json', 'utf8'));
+  const old848110 = {
+    '84811011': [{ fact: 'duong_kinh', op: '>', value: 5, donVi: 'cm' }],
+    '84811019': undefined,
+    '84811021': [{ fact: 'duong_kinh', op: '<=', value: 2.5, donVi: 'cm' }],
+    '84811022': [{ fact: 'duong_kinh', op: '>', value: 2.5, donVi: 'cm' }],
+    '84811091': [{ fact: 'chat_lieu', op: 'LA', value: 'plastic' }, { fact: 'duong_kinh', op: '>=', value: 1, donVi: 'cm' }, { fact: 'duong_kinh', op: '<=', value: 2.5, donVi: 'cm' }],
+    '84811099': undefined,
+  };
+  st8481.dong8 = (st8481.dong8 || []).map((d) => (d.hs in old848110 ? { ...d, dieuKienSo: old848110[d.hs] } : d));
+  st8481.dieuKienNut = (st8481.dieuKienNut || []).filter((n) => !String(n.id || '').startsWith('848110'));
+  fs.writeFileSync(path.join(TEST_DATA_DIR, 'so-tay/8481.json'), JSON.stringify(st8481));
+}
 /**
  * POST /api/so-tay-questions — câu hỏi phân loại TẤT ĐỊNH lấy từ sổ tay thật.
  * Khoá: không LLM / không engine-loop / không cờ HS_SO_TAY; nhóm có sổ tay → câu hỏi number

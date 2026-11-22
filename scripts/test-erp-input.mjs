@@ -3,6 +3,15 @@
 // bằng dữ kiện tiếng Việt, kiểm cấp 8 số, cửa chặn độ tin thấp, không cache kết
 // quả kém. Không mạng, không ghi data/.
 import './test-isolate-data.mjs';
+import { TEST_DATA_DIR } from './test-isolate-data.mjs';
+import fs from 'node:fs';
+import path from 'node:path';
+{
+  fs.mkdirSync(path.join(TEST_DATA_DIR, 'so-tay'), { recursive: true });
+  const st8481 = JSON.parse(fs.readFileSync('data/so-tay/8481.json', 'utf8'));
+  st8481.dong8 = (st8481.dong8 || []).map((d) => (d.hs === '84814010' ? { ...d, dieuKienSo: (d.dieuKienSo || []).filter((c) => c.fact !== 'chatLieu') } : d));
+  fs.writeFileSync(path.join(TEST_DATA_DIR, 'so-tay/8481.json'), JSON.stringify(st8481));
+}
 import { createRequire } from 'module';
 
 const require = createRequire(import.meta.url);
