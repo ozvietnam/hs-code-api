@@ -14,8 +14,8 @@
     "boi": "CLAUDE_DUYET",
     "phien": "claude-agent:ozv-1843#soat-841850",
     "ngay": "2026-11-22",
-    "ghiChu": "Bỏ BO_VE 8418501, mã hoá vế có lắp thiết bị làm lạnh và dungTrongYTeHoacThiNghiem CO (OZV-1843)",
-    "bam": "940366f2efbeff3f80c00a65712ce3cc4b282d97b6d15a93b9fccd12f2d7613d"
+    "ghiChu": "Đổi 84185011/84185091 sang dungTrongYTeHoacThiNghiem CO và duyệt 841850 (OZV-1843)",
+    "bam": "88577fb12b3841a4c72d911738aa3b29597623be00141fd60c7d525e15a40d7d"
   },
   "dieuKienNut": [
     {
@@ -30,11 +30,6 @@
             "Quầy hàng",
             "tủ bày hàng"
           ]
-        },
-        {
-          "fact": "congDung",
-          "op": "CONG_DUNG",
-          "value": "có lắp thiết bị làm lạnh"
         },
         {
           "fact": "dungTich",
@@ -90,7 +85,13 @@
     {
       "ma": "8418501",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.8418501: \"Quầy hàng, tủ bày hàng và các loại tương tự, có lắp thiết bị làm lạnh, dung tích trên 200 lít\" ⇒ tenLoai TUONG_TU [Quầy hàng, tủ bày hàng] + congDung \"có lắp thiết bị làm lạnh\" + dungTich > 200 lít"
+      "ghiChu": "tieuDe.8418501: \"Quầy hàng, tủ bày hàng và các loại tương tự, có lắp thiết bị làm lạnh, dung tích trên 200 lít\" ⇒ tenLoai TUONG_TU [Quầy hàng, tủ bày hàng] + dungTich > 200 lít"
+    },
+    {
+      "ma": "8418501",
+      "loai": "BO_VE",
+      "ve": "có lắp thiết bị làm lạnh",
+      "lyDo": "Từ vựng tu-vung@2 chưa có khoá riêng phân biệt thiết bị làm lạnh với thiết bị kết đông ở cấp đồ nội thất 8418.50; giữ tenLoai TUONG_TU [Quầy hàng, tủ bày hàng] + dungTich > 200 lít"
     },
     {
       "ma": "84185011",

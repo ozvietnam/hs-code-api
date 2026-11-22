@@ -14,8 +14,8 @@
     "boi": "CLAUDE_DUYET",
     "phien": "claude-agent:ozv-1843#soat-732490",
     "ngay": "2026-11-22",
-    "ghiChu": "Chuẩn hoá 73249010 phân biệt với nhánh bộ phận 73249093 (OZV-1843)",
-    "bam": "6d6b7a8567c1b23bad78c7948ed26cd2b019f6b449e41261dab6907ae3be41b9"
+    "ghiChu": "Đọc 73249010 theo EN (tenLoai bệ xí/bệ đi tiểu + giật nước) tách với bộ phận 73249093 (OZV-1843)",
+    "bam": "3f5bf9018074fdb81b92ba101eb9cb703381244ea71abf11e881fa2d7a58669d"
   },
   "dieuKienNut": [],
   "dong8": [
@@ -27,19 +27,14 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Dùng cho"
-        },
-        {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
           "value": [
             "bệ xí",
             "bệ đi tiểu"
           ]
         },
         {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
           "value": "giật nước"
         }
       ],
@@ -133,6 +128,11 @@
       "ma": "73249010",
       "loai": "QUYET_DINH",
       "ghiChu": "Claude (#1109, 11/11): tách liệt kê cong3-liet-ke-trong-mot-chuoi — .10/.93 \"bệ xí hoặc bệ đi tiểu giật nước\" ↔ EN \"Flushing water closets or urinals\": \"giật nước\"/\"flushing\" là định ngữ CHUNG ⇒ dungCho [\"bệ xí\",\"bệ đi tiểu\"] + dungCho \"giật nước\" (điều kiện riêng, cùng khoá = VÀ); .91 \"bồn rửa nhà bếp hoặc bồn tắm\" ↔ \"kitchen sinks or bathtubs\" ⇒ dungCho [\"bồn rửa nhà bếp\",\"bồn tắm\"]. \"(loại cố định)\" là PHU, không thành điều kiện."
+    },
+    {
+      "ma": "73249010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Đọc 73249010 theo bản gốc EN \"Flushing water closets or urinals (fixed type)\" (hàng hoàn chỉnh, lệch dịch VI thêm chữ \"Dùng cho\") ⇒ tenLoai [\"bệ xí\", \"bệ đi tiểu\"] + tenLoai \"giật nước\" để tách với nhánh bộ phận 73249093 (laBoPhan CO + dungCho)."
     }
   ]
 }
