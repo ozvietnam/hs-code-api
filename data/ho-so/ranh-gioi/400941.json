@@ -4,39 +4,56 @@
   "nhom": "4009",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1705#soan-400941",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "paperclip:ozv-1863#soat-16c",
+    "ngay": "2026-11-22",
+    "bam": "f133104910ce3d9bbc919ab825810aa60fb4ab423b038743306a68010fff393c"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
       "hs": "40094110",
-      "nguon": "tax.40094110",
-      "trich": "40094110 - - - Ống vòi cao su dùng cho bếp ga (SEN)",
+      "nguon": "sen.40094110",
+      "trich": "ỐNG VÒI CAO SU DÙNG CHO BẾP GA … Chiều dài mm Tối thiểu 1800 … Áp suất bục MPa Tối thiểu 3,0",
       "dieuKienSo": [
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Ống vòi cao su"
+          "value": "ỐNG VÒI CAO SU"
         },
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
-          "value": "bếp ga"
+          "value": "BẾP GA"
+        },
+        {
+          "fact": "chieuDai",
+          "op": ">=",
+          "value": 1800,
+          "donVi": "mm"
+        },
+        {
+          "fact": "apSuat",
+          "op": ">=",
+          "value": 3,
+          "donVi": "MPa"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "40094190",
       "nguon": "tax.40094190",
       "trich": "40094190 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [

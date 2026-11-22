@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot6",
-    "ngay": "2026-11-01",
-    "ghiChu": "Soát độc lập đợt 6: #662 đã sửa — 8481902 bỏ dungCho dương [\"vòi\",\"van\"] (vế mở không còn bị đóng), giữ dungCho PHAI_KHONG [\"săm\",\"lốp không săm\"] + duongKinhTrong <= 25 mm (\"từ 25 mm trở xuống\", đối chiếu tay). BO_VE \"và các thiết bị tương tự\": CHẤP NHẬN — không có điều kiện liệt kê đóng nào, máy báo chỉ vì neo PHAI_KHONG nằm trong cùng mệnh đề với danh sách (bộ tách đọc ngoặc \"(trừ …)\" như liệt kê). Loại trừ vẫn đủ: thử doiChieuPhanNhom — thân van săm xe đạp bằng đồng 8 mm ⇒ .31; thân van lốp không săm bằng nhôm ⇒ .39; lõi van lốp không săm bằng đồng ⇒ .41; màng van dùng cho van săm 6 mm ⇒ .90 (không lọt 8481902); thân van săm 30 mm ⇒ 8481903 (không giới hạn đường kính, đúng chữ); thân vòi nước 15 mm ⇒ .21; vỏ van cổng 100 mm ⇒ .10, 20 mm ⇒ .29. Biên .10 (> 50, <= 400) đúng chữ. Bảng 848190-01 LECH_CHUA_PHAN_XU giữ, ghi chú LECH_TIEN_LE có.",
-    "bam": "16dd74e91ee02b931c773354e808c4d0540c2a410323442c98ae8d1dd0e0db80"
+    "phien": "claude-agent:ozv-1923#soat-848190",
+    "ngay": "2026-11-22",
+    "bam": "74cb1b238d6480a4f49f07437f4879b3b3ccb280ca36bbabea9a2ce7d6fba7ef",
+    "ghiChu": "Duyệt ranh giới PN6 848190 (OZV-1923)"
   },
   "dieuKienNut": [
     {
@@ -27,8 +27,16 @@
           "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": [
-            "săm",
-            "lốp không săm"
+            "vòi",
+            "van các loại"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "van dùng cho săm",
+            "săm và lốp không săm"
           ],
           "chieu": "PHAI_KHONG"
         },

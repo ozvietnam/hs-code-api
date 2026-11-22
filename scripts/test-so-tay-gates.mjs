@@ -115,11 +115,11 @@ check('4009.21: 1.2cm trái mọi điều kiện → LOAI_KHAC 40092190 (phủ �
 cd = chotDong8({ hs: '40092190', productText: 'ống cao su có lắp phụ kiện cứng' });
 check('thiếu số liệu → THIEU_SO_LIEU + missingFacts duong_kinh', cd.ketQua === 'THIEU_SO_LIEU' && cd.missingFacts?.[0]?.fact === 'duong_kinh', JSON.stringify(cd.missingFacts));
 cd = chotDong8({ hs: '84811019', productText: 'van cổng điều khiển bằng tay, đường kính 30 cm' });
-check('8481.10: 30 cm → 2 dòng cùng thoả → TRANH_CAP (không đoán)', cd.ketQua === 'TRANH_CAP' && (cd.dongThoa || []).length === 2, JSON.stringify(cd.dongThoa));
-cd = chotDong8({ hs: '84811019', productText: 'van giảm áp kim loại, đường kính trong 2 cm' });
-check('8481.10 + op LA: kim loại 2cm → CHOT 84811021 (đúng luật, không cần AI chọn dòng)', cd.ketQua === 'CHOT' && cd.hs === '84811021', JSON.stringify([cd.ketQua, cd.hs]));
-cd = chotDong8({ hs: '84811019', productText: 'van giảm áp bằng plastic, đường kính 2 cm' });
-check('8481.10: plastic 2cm → TRANH_CAP .21/.91 (nhánh plastic cụ thể hơn — chuyên viên chốt)', cd.ketQua === 'TRANH_CAP' && (cd.dongThoa || []).includes('84811091'), JSON.stringify(cd.dongThoa));
+check('8481.10 (đã duyệt ranh giới 848110.json): chưa khai chất liệu + đường kính trong → THIEU_SO_LIEU (không đoán)', cd.ketQua === 'THIEU_SO_LIEU' && (cd.missingFacts || []).some((m) => m.fact === 'chatLieu'), JSON.stringify(cd.missingFacts));
+cd = chotDong8({ hs: '84811019', productText: 'van giảm áp bằng đồng, đường kính trong 2 cm' });
+check('8481.10 + op LA: đồng 2cm → CHOT 84811021 (đúng luật, không cần AI chọn dòng)', cd.ketQua === 'CHOT' && cd.hs === '84811021', JSON.stringify([cd.ketQua, cd.hs]));
+cd = chotDong8({ hs: '84811019', productText: 'van giảm áp bằng plastic, đường kính trong 2 cm' });
+check('8481.10: plastic 2cm → CHOT 84811091 (nút 8481102 đã khoá chất liệu đồng)', cd.ketQua === 'CHOT' && cd.hs === '84811091', JSON.stringify([cd.ketQua, cd.hs]));
 cd = chotDong8({ hs: '84051099', productText: 'máy phát acetylen' });
 check('phân nhóm chưa số hóa ranh giới → KHONG_THE_CHOT (điểm mù)', cd.checked === false || cd.ketQua === 'KHONG_THE_CHOT', JSON.stringify(cd.ketQua));
 
@@ -282,7 +282,7 @@ check('#OZV-581 composite: đọc "vật liệu tổng hợp" (chữ chú giải
 
 // ── Vế câu trích mà điều kiện sổ tay chấm được (veMoHinh) — rào "phủ hết chữ đặc trưng" của cổng cảnh báo ──
 const tv = trangThaiDong8({ hs: '84814010', productText: 'Van an toàn bằng thép DN40' });
-check('trangThaiDong8.veMoHinh: 84814010 chỉ chấm vế đường kính, vế "Bằng đồng hoặc hợp kim đồng" không nằm trong', Boolean(tv) && tv.veMoHinh.length === 1 && /đường kính trong từ 2,5 cm trở xuống/.test(tv.veMoHinh[0]) && !/đồng/.test(tv.veMoHinh.join(' ')), JSON.stringify(tv?.veMoHinh));
+check('trangThaiDong8.veMoHinh: 84814010 (đã duyệt 848140.json) chấm đủ cả hai vế chất liệu đồng và đường kính trong ≤ 2,5 cm', Boolean(tv) && tv.veMoHinh.length === 2 && /đồng/.test(tv.veMoHinh[0]) && /đường kính trong từ 2,5 cm trở xuống/.test(tv.veMoHinh[1]), JSON.stringify(tv?.veMoHinh));
 check('trangThaiDong8.veMoHinh: 73181510 chấm trọn nhãn "Đường kính ngoài của thân không quá 16 mm"', JSON.stringify(trangThaiDong8({ hs: '73181510', productText: BULONG })?.veMoHinh) === '["Đường kính ngoài của thân không quá 16 mm"]');
 
 // ── #573 (L1-3b): chotDong8 chấm op mới (CO/KHONG/TRONG/TEN_LOAI/CONG_DUNG) bằng docGiaTri của tu-vung@1 ──

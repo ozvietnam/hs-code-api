@@ -4,13 +4,19 @@
   "nhom": "8481",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-848180",
     "ngay": "2026-10-31"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1867#soat-848180",
+    "ngay": "2026-11-22",
+    "ghiChu": "Duyệt ranh giới PN6 848180 (OZV-1867)",
+    "bam": "8799f600897fdaef05246446b0a9d384f999091b665ec4049376bce43f37f666"
+  },
   "dieuKienNut": [
     {
       "id": "848180~r14535",
@@ -18,12 +24,17 @@
       "trich": "848180~r14535 Van dùng cho săm",
       "dieuKienSo": [
         {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Van dùng cho săm"
+        },
+        {
           "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": "săm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "848180~r14538",
@@ -31,12 +42,17 @@
       "trich": "848180~r14538 Van dùng cho lốp không săm",
       "dieuKienSo": [
         {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Van dùng cho lốp không săm"
+        },
+        {
           "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": "lốp không săm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "848180~r14551",
@@ -49,7 +65,7 @@
           "value": "đường ống nước"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "848180~r14552",
@@ -60,6 +76,11 @@
           "op": "HOAC",
           "phuongAn": [
             [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Van"
+              },
               {
                 "fact": "tenLoai",
                 "op": "TEN_LOAI",
@@ -98,7 +119,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "848180~r14556",
@@ -116,7 +137,7 @@
           "value": "lợn"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "848180~r14559",
@@ -129,7 +150,7 @@
           "value": "Van nối có núm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "848180~r14563",
@@ -142,7 +163,7 @@
           "value": "Van bi"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "848180~r14566",
@@ -167,7 +188,7 @@
           "value": "sắt thép"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "848180~r14570",
@@ -180,7 +201,7 @@
           "value": "Van nhiều cửa"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "848180~r14573",
@@ -195,7 +216,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "848180~r14579",
@@ -203,12 +224,17 @@
       "trich": "848180~r14579 Van plastic khác",
       "dieuKienSo": [
         {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Van plastic khác"
+        },
+        {
           "fact": "chatLieu",
           "op": "LA",
           "value": "plastic"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": [
         "848180~r14563",
         "848180~r14566",
@@ -234,7 +260,7 @@
           "value": "đồng"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "8481804",
@@ -250,7 +276,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "8481805",
@@ -262,7 +288,7 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -277,15 +303,17 @@
           "value": "đồng"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84818012",
       "nguon": "tax.84818012",
       "trich": "84818012 - - - Bằng vật liệu khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM",
-      "phanConLai": true
+      "nguonLoai": "CLAUDE_DUYET",
+      "phanConLai": [
+        "84818011"
+      ]
     },
     {
       "hs": "84818013",
@@ -298,15 +326,17 @@
           "value": "đồng"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84818014",
       "nguon": "tax.84818014",
       "trich": "84818014 - - - Bằng vật liệu khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM",
-      "phanConLai": true
+      "nguonLoai": "CLAUDE_DUYET",
+      "phanConLai": [
+        "84818013"
+      ]
     },
     {
       "hs": "84818021",
@@ -320,7 +350,7 @@
           "donVi": "cm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84818022",
@@ -334,7 +364,7 @@
           "donVi": "cm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84818030",
@@ -357,7 +387,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84818041",
@@ -382,14 +412,14 @@
           "donVi": "cm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84818049",
       "nguon": "tax.84818049",
       "trich": "84818049 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84818051",
@@ -414,14 +444,14 @@
           "donVi": "cm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84818059",
       "nguon": "tax.84818059",
       "trich": "84818059 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84818061",
@@ -453,21 +483,21 @@
           "donVi": "cm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84818062",
       "nguon": "tax.84818062",
       "trich": "84818062 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84818063",
       "nguon": "tax.84818063",
       "trich": "84818063 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84818064",
@@ -492,14 +522,14 @@
           "donVi": "cm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84818065",
       "nguon": "tax.84818065",
       "trich": "84818065 - - - Loại khác (SEN)",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84818066",
@@ -524,14 +554,14 @@
           "donVi": "cm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84818067",
       "nguon": "tax.84818067",
       "trich": "84818067 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84818071",
@@ -556,14 +586,14 @@
           "donVi": "cm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84818072",
       "nguon": "tax.84818072",
       "trich": "84818072 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84818073",
@@ -583,7 +613,7 @@
           "donVi": "cm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84818074",
@@ -597,7 +627,7 @@
           "donVi": "cm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84818077",
@@ -611,7 +641,7 @@
           "donVi": "cm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84818078",
@@ -636,14 +666,14 @@
           "donVi": "cm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84818079",
       "nguon": "tax.84818079",
       "trich": "84818079 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84818081",
@@ -668,14 +698,14 @@
           "donVi": "cm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84818082",
       "nguon": "tax.84818082",
       "trich": "84818082 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84818083",
@@ -704,7 +734,7 @@
           "donVi": "cm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84818084",
@@ -739,7 +769,7 @@
           "donVi": "cm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84818093",
@@ -763,7 +793,7 @@
           "value": "xe thuộc nhóm 87.02, 87.03 hoặc 87.04"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": false
     },
     {
@@ -778,7 +808,7 @@
           "donVi": "cm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84818095",
@@ -798,7 +828,7 @@
           "donVi": "cm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84818096",
@@ -812,7 +842,7 @@
           "donVi": "cm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84818097",
@@ -854,7 +884,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84818098",
@@ -878,14 +908,14 @@
           "donVi": "cm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84818099",
       "nguon": "tax.84818099",
       "trich": "84818099 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "chongLanTruc": [
@@ -1149,18 +1179,6 @@
       "ghiChu": "cong3-bien-khong-doc-duoc (duongKinhTrong) ở .41/.51/.64/.66/.71/.78/.81/.84/.95/.98 và r14552 — đã đối chiếu tay: \"từ 1 cm đến 2,5 cm\" / \"từ 1cm đến 2,5 cm\" ⇒ >= 1 và <= 2.5 cm; \"từ 2,5 cm trở xuống\" ⇒ <= 2.5 cm; \"từ 4 cm trở lên\" / \"từ 8 cm trở lên\" ⇒ >= 4 / >= 8 cm."
     },
     {
-      "ma": "84818012",
-      "loai": "BO_VE",
-      "ve": "Bằng vật liệu khác",
-      "lyDo": "Dòng .12 là phần còn lại của tầng r14535 sau .11 \"Bằng đồng hoặc hợp kim đồng\": phanConLai true phủ định đúng điều kiện chất liệu đồng của .11 — \"vật liệu khác\" chính là \"không phải đồng\", không cần điều kiện riêng."
-    },
-    {
-      "ma": "84818014",
-      "loai": "BO_VE",
-      "ve": "Bằng vật liệu khác",
-      "lyDo": "Dòng .14 là phần còn lại của tầng r14538 sau .13 \"Bằng đồng hoặc hợp kim đồng\": phanConLai true phủ định đúng điều kiện chất liệu đồng của .13 — \"vật liệu khác\" chính là \"không phải đồng\", không cần điều kiện riêng."
-    },
-    {
       "ma": "84818097",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.84818097 \"Loại khác, điều khiển bằng tay, khối lượng dưới 3 kg, đã được xử lý bề mặt hoặc làm bằng thép không gỉ hoặc niken\" (EN \"Other, manually operated, weighing less than 3 kg, surface treated or made of stainless steel or nickel\") ⇒ \"Loại khác\" (máy phủ định anh em đứng trước) + cachDieuKhien [BANG_TAY] + khoiLuong < 3 kg + HOAC [[daXuLyBeMat CO], [chatLieu [\"thép không gỉ\",\"niken\"]]]: hai vế nối \"hoặc\" sau các giới hạn chung (tay, < 3 kg) ⇒ HOAC chỉ cho hai vế đó. Khoá daXuLyBeMat (CO_KHONG) mới ở tu-vung@2 (#577) — trước là THIEU_KHOA_TU_VUNG."
@@ -1184,6 +1202,18 @@
       "ma": "848180",
       "loai": "QUYET_DINH",
       "ghiChu": "Claude 09/11/2026 (#1109, lô 9): hết DỪNG theo Q1 (anh chốt 07/11: Claude khai khongCoHangThat cho cặp không có hàng thật). Một cụm trục cho 9 nhánh anh em cấp gạch 2 (săm, lốp không săm, LPG, bếp ga, chai có ga/rót bia, đường ống nước = CÔNG DỤNG; «có khoang pha trộn» = ĐẶC ĐIỂM; «Núm uống nước cho lợn», «Van nối có núm» = TÊN). Cặp có hàng thật ghi hàng (van trộn nước nóng lạnh; van nối có núm cho đường ống nước / bếp ga); còn lại khongCoHangThat kèm lý do kỹ thuật. Từ vựng @2: thêm «van nối có núm» vào khongPhaiPhuDinh để bộ đọc tên không cắt ở «có». phanXu để trống (lúc chạy hàng thoả hai nhánh thì hỏi)."
+    },
+    {
+      "ma": "84818012",
+      "loai": "BO_VE",
+      "ve": "Bằng vật liệu khác",
+      "lyDo": "Vế là toàn bộ nội dung dòng, đã diễn đạt bằng phanConLai (phủ định anh em 84818011 \"Bằng đồng hoặc hợp kim đồng\"); không có tên vật liệu cụ thể để ghi chatLieu."
+    },
+    {
+      "ma": "84818014",
+      "loai": "BO_VE",
+      "ve": "Bằng vật liệu khác",
+      "lyDo": "Vế là toàn bộ nội dung dòng, đã diễn đạt bằng phanConLai (phủ định anh em 84818013 \"Bằng đồng hoặc hợp kim đồng\"); không có tên vật liệu cụ thể để ghi chatLieu."
     }
   ],
   "traVe": [

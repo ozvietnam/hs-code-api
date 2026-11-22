@@ -20,6 +20,12 @@ import { TEST_DATA_DIR } from './test-isolate-data.mjs';
 const require = createRequire(import.meta.url);
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const ANH_CHUP = path.join(ROOT, 'tests', 'ho-so-soat-anh-chup.json');
+{
+  fs.mkdirSync(path.join(TEST_DATA_DIR, 'so-tay'), { recursive: true });
+  const st8481 = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'so-tay', '8481.json'), 'utf8'));
+  st8481.dong8 = (st8481.dong8 || []).map((d) => (String(d.hs || '').startsWith('848180') ? { ...d, nguonLoai: 'AI_DA_KIEM' } : d));
+  fs.writeFileSync(path.join(TEST_DATA_DIR, 'so-tay', '8481.json'), JSON.stringify(st8481));
+}
 
 process.env.HS_API_TOKEN = 'test-token';
 process.env.HS_SERVICE_TOKENS = 'cong-oz:k-cong,erp:k-erp,oz-noi-bo:k-noi';

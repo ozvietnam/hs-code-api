@@ -134,11 +134,42 @@
     },
     {
       "hs": "84143040",
-      "dieuKien": "Máy nén dùng trong thiết bị làm lạnh (phân nhóm 841430) có công suất làm lạnh trên 21,10 kW, hoặc có dung tích làm việc trên một chu kỳ từ 220 cc trở lên",
+      "dieuKien": "(công suất > 21.1 kW) hoặc (thể tích ngoài / thể tích bên ngoài >= 220 cc)",
       "loaiKhac": false,
       "nguon": "tax.84143040",
       "trich": "84143040 - - Có công suất làm lạnh trên 21,10 kW, hoặc có dung tích làm việc trên một chu kỳ từ 220 cc trở lên",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "congSuat",
+                "op": ">",
+                "value": 21.1,
+                "donVi": "kW"
+              }
+            ],
+            [
+              {
+                "fact": "theTich",
+                "op": ">=",
+                "value": 220,
+                "donVi": "cc"
+              }
+            ]
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-841430",
+          "ngay": "2026-11-22",
+          "bam": "bf4a4321c523415e92ad7e1e16b7ce1dca32bfcca7f56d24d4340c4692249a23"
+        }
+      }
     },
     {
       "hs": "84143090",
@@ -512,11 +543,31 @@
     },
     {
       "hs": "84146011",
-      "dieuKien": "Tủ hút, lọc không khí sử dụng trong phòng thí nghiệm (tạo không khí không chứa bụi và vi khuẩn)",
+      "dieuKien": "tên loại hàng: Tủ hút; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): phòng thí nghiệm",
       "loaiKhac": false,
-      "nguon": "sen.84146011",
-      "trich": "Tủ hút, lọc không khí được thiết kế để tạo ra không khí không chứa bụi và vi khuẩn.",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguon": "tax.84146011",
+      "trich": "84146011 - - - Tủ hút, lọc không khí sử dụng trong phòng thí nghiệm (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Tủ hút"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "phòng thí nghiệm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-841460",
+          "ngay": "2026-11-22",
+          "bam": "08dffd708a0dfe5067e66ebeffc5227049693d39fcb76501723874f85be4817a"
+        }
+      }
     },
     {
       "hs": "84146019",
@@ -537,11 +588,28 @@
     },
     {
       "hs": "84146091",
-      "dieuKien": "Phù hợp dùng trong công nghiệp (phân nhóm 841460); dòng cha không có trong nguồn — đối chiếu biểu thuế (cùng chữ với dòng 84148021)",
+      "dieuKien": "phạm vi sử dụng: công nghiệp",
       "loaiKhac": false,
       "nguon": "tax.84146091",
       "trich": "84146091 - - - Phù hợp dùng trong công nghiệp",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "phamViSuDung",
+          "op": "TRONG",
+          "value": [
+            "CONG_NGHIEP"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-841460",
+          "ngay": "2026-11-22",
+          "bam": "08dffd708a0dfe5067e66ebeffc5227049693d39fcb76501723874f85be4817a"
+        }
+      }
     },
     {
       "hs": "84146099",
@@ -562,19 +630,14 @@
     },
     {
       "hs": "84147011",
-      "dieuKien": "tên loại hàng: nắp chụp hút; kích thước (dài x rộng x cao) <= 120 cm",
+      "dieuKien": "chiều rộng <= 120 cm",
       "loaiKhac": false,
       "nguon": "tax.84147011",
       "trich": "84147011 - - - Có nắp chụp hút với kích thước chiều ngang tối đa không quá 120 cm",
       "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "nắp chụp hút"
-        },
-        {
-          "fact": "kichThuoc",
+          "fact": "chieuRong",
           "op": "<=",
           "value": 120,
           "donVi": "cm"
@@ -583,9 +646,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L24-20261111#soat-L24",
-          "ngay": "2026-11-11",
-          "bam": "bb2cc807b70ce75793aab9e7ea2dde2955141bf0036f78cef69afe694a258883"
+          "phien": "claude-agent:ozv-1867#soat-841470",
+          "ngay": "2026-11-22",
+          "bam": "7a10910dca2a29dd9cbe0171fa9c73089173b5d7ef01f5a46c09d61656edd7d5"
         }
       }
     },
@@ -608,19 +671,14 @@
     },
     {
       "hs": "84147021",
-      "dieuKien": "tên loại hàng: nắp chụp hút; kích thước (dài x rộng x cao) <= 120 cm",
+      "dieuKien": "chiều rộng <= 120 cm",
       "loaiKhac": false,
       "nguon": "tax.84147021",
       "trich": "84147021 - - - Có nắp chụp hút với kích thước chiều ngang tối đa không quá 120 cm",
       "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "nắp chụp hút"
-        },
-        {
-          "fact": "kichThuoc",
+          "fact": "chieuRong",
           "op": "<=",
           "value": 120,
           "donVi": "cm"
@@ -629,9 +687,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L24-20261111#soat-L24",
-          "ngay": "2026-11-11",
-          "bam": "bb2cc807b70ce75793aab9e7ea2dde2955141bf0036f78cef69afe694a258883"
+          "phien": "claude-agent:ozv-1867#soat-841470",
+          "ngay": "2026-11-22",
+          "bam": "7a10910dca2a29dd9cbe0171fa9c73089173b5d7ef01f5a46c09d61656edd7d5"
         }
       }
     },
@@ -654,11 +712,31 @@
     },
     {
       "hs": "84148011",
-      "dieuKien": "Tủ hút, lọc không khí sử dụng trong phòng thí nghiệm (tạo không khí không chứa bụi và vi khuẩn)",
+      "dieuKien": "tên loại hàng: Tủ hút; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): phòng thí nghiệm",
       "loaiKhac": false,
-      "nguon": "sen.84148011",
-      "trich": "Tủ hút, lọc không khí được thiết kế để tạo ra không khí không chứa bụi và vi khuẩn.",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguon": "tax.84148011",
+      "trich": "84148011 - - - - Tủ hút, lọc không khí sử dụng trong phòng thí nghiệm (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Tủ hút"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "phòng thí nghiệm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-841480",
+          "ngay": "2026-11-22",
+          "bam": "13dc5d180d56168384f55878833b1de5bf2f311d835096f3d9427717646efe9f"
+        }
+      }
     },
     {
       "hs": "84148019",
@@ -679,11 +757,28 @@
     },
     {
       "hs": "84148021",
-      "dieuKien": "Phù hợp dùng trong công nghiệp (phân nhóm 841480); dòng cha không có trong nguồn — đối chiếu biểu thuế (cùng chữ với dòng 84146091)",
+      "dieuKien": "phạm vi sử dụng: công nghiệp",
       "loaiKhac": false,
       "nguon": "tax.84148021",
       "trich": "84148021 - - - - Phù hợp dùng trong công nghiệp",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "phamViSuDung",
+          "op": "TRONG",
+          "value": [
+            "CONG_NGHIEP"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-841480",
+          "ngay": "2026-11-22",
+          "bam": "13dc5d180d56168384f55878833b1de5bf2f311d835096f3d9427717646efe9f"
+        }
+      }
     },
     {
       "hs": "84148029",
@@ -704,35 +799,122 @@
     },
     {
       "hs": "84148030",
-      "dieuKien": "Thiết bị tạo gió có cơ cấu piston dịch chuyển tự do dùng cho tua bin khí",
+      "dieuKien": "tên loại hàng: Thiết bị tạo gió có cơ cấu piston dịch chuyển tự do; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): tua bin khí",
       "loaiKhac": false,
       "nguon": "tax.84148030",
       "trich": "84148030 - - Thiết bị tạo gió có cơ cấu piston dịch chuyển tự do dùng cho tua bin khí",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thiết bị tạo gió có cơ cấu piston dịch chuyển tự do"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "tua bin khí"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-841480",
+          "ngay": "2026-11-22",
+          "bam": "13dc5d180d56168384f55878833b1de5bf2f311d835096f3d9427717646efe9f"
+        }
+      }
     },
     {
       "hs": "84148041",
-      "dieuKien": "Mô-đun nén khí sử dụng trong khoan dầu mỏ",
+      "dieuKien": "tên loại hàng: Mô-đun nén khí; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): khoan dầu mỏ",
       "loaiKhac": false,
       "nguon": "tax.84148041",
       "trich": "84148041 - - - Mô-đun nén khí sử dụng trong khoan dầu mỏ",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Mô-đun nén khí"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "khoan dầu mỏ"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-841480",
+          "ngay": "2026-11-22",
+          "bam": "13dc5d180d56168384f55878833b1de5bf2f311d835096f3d9427717646efe9f"
+        }
+      }
     },
     {
       "hs": "84148042",
-      "dieuKien": "Máy nén dùng cho máy điều hòa không khí của ô tô",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): máy điều hòa không khí của ô tô",
       "loaiKhac": false,
-      "nguon": "sen.84148042",
-      "trich": "MÁY NÉN DÙNG CHO MÁY ĐIỀU HÒA KHÔNG KHÍ CỦA Ô TÔ",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguon": "tax.84148042",
+      "trich": "84148042 - - - Dùng cho máy điều hòa không khí của ô tô (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy điều hòa không khí của ô tô"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-841480",
+          "ngay": "2026-11-22",
+          "bam": "13dc5d180d56168384f55878833b1de5bf2f311d835096f3d9427717646efe9f"
+        }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "84148043",
+          "lyDo": "tax.84148042 \"Dùng cho máy điều hòa không khí của ô tô\" và tax.84148043 \"Dạng kín dùng cho máy điều hòa không khí\" chồng lấn văn bản khi máy nén dạng kín dùng cho máy điều hòa không khí của ô tô"
+        }
+      ]
     },
     {
       "hs": "84148043",
-      "dieuKien": "Máy nén dạng kín dùng cho máy điều hòa không khí (vỏ thép một mảnh hàn lại, không mở ra để sửa chữa)",
+      "dieuKien": "tên loại hàng: Dạng kín; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): máy điều hòa không khí",
       "loaiKhac": false,
-      "nguon": "sen.84148043",
-      "trich": "Điểm khác nhau giữa máy nén kín và bán kín là máy nén kín dùng một lớp vỏ thép một mảnh được hàn lại và không thể mở ra để sửa chữa",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguon": "tax.84148043",
+      "trich": "84148043 - - - Dạng kín dùng cho máy điều hòa không khí (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dạng kín"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy điều hòa không khí"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-841480",
+          "ngay": "2026-11-22",
+          "bam": "13dc5d180d56168384f55878833b1de5bf2f311d835096f3d9427717646efe9f"
+        }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "84148042",
+          "lyDo": "tax.84148042 \"Dùng cho máy điều hòa không khí của ô tô\" và tax.84148043 \"Dạng kín dùng cho máy điều hòa không khí\" chồng lấn văn bản khi máy nén dạng kín dùng cho máy điều hòa không khí của ô tô"
+        }
+      ]
     },
     {
       "hs": "84148049",
@@ -755,11 +937,26 @@
     },
     {
       "hs": "84148050",
-      "dieuKien": "Máy bơm không khí (phân nhóm 841480)",
+      "dieuKien": "tên loại hàng: Máy bơm không khí",
       "loaiKhac": false,
       "nguon": "tax.84148050",
       "trich": "84148050 - - Máy bơm không khí",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy bơm không khí"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-841480",
+          "ngay": "2026-11-22",
+          "bam": "13dc5d180d56168384f55878833b1de5bf2f311d835096f3d9427717646efe9f"
+        }
+      }
     },
     {
       "hs": "84148090",
@@ -772,6 +969,7 @@
         "nguonLoai": "MAY_SUY",
         "cha": "841480",
         "truAnhEm": [
+          "841480~r13208",
           "8414801",
           "8414802",
           "84148030",
@@ -784,19 +982,54 @@
     },
     {
       "hs": "84149021",
-      "dieuKien": "Bộ phận: của hàng hóa thuộc nhóm 84.15, 84.18, 85.09 hoặc 85.16",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): 84.15 hoặc 84.18 hoặc 85.09 hoặc 85.16",
       "loaiKhac": false,
       "nguon": "tax.84149021",
       "trich": "84149021 - - - Của hàng hóa thuộc nhóm 84.15, 84.18, 85.09 hoặc 85.16",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "84.15",
+            "84.18",
+            "85.09",
+            "85.16"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-841490",
+          "ngay": "2026-11-22",
+          "bam": "58a1cf8325b98790c6781b026466e9ba78ab52d1db89b94f0a47b1a8bfef542e"
+        }
+      }
     },
     {
       "hs": "84149022",
-      "dieuKien": "Bộ phận: của máy thổi khí",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): máy thổi khí",
       "loaiKhac": false,
       "nguon": "tax.84149022",
       "trich": "84149022 - - - Của máy thổi khí",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy thổi khí"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-841490",
+          "ngay": "2026-11-22",
+          "bam": "58a1cf8325b98790c6781b026466e9ba78ab52d1db89b94f0a47b1a8bfef542e"
+        }
+      }
     },
     {
       "hs": "84149029",
@@ -814,79 +1047,269 @@
         ],
         "toTienCoTen": "841490",
         "dinhNghiaDuoc": true
-      }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "84149041",
+          "lyDo": "tầng 8414902 \"Của quạt\" (dòng .29 \"Loại khác\" dưới tầng đó) ↔ tầng 8414904 \"Của hàng hóa thuộc phân nhóm 8414.10\", dòng .41 \"Dùng cho máy hoạt động bằng điện\": bơm chân không cánh gạt làm mát bằng gió chạy điện có quạt làm mát lắp trên trục; cánh quạt (fan wheel) thay thế của nó vừa là bộ phận của quạt vừa là bộ phận của hàng 8414.10 hoạt động bằng điện. Chữ biểu không tách bộ phận của quạt gắn trong máy khỏi bộ phận của máy; không có căn cứ thứ tự."
+        },
+        {
+          "voi": "84149042",
+          "lyDo": "tầng 8414902 \"Của quạt\" (dòng .29 \"Loại khác\" dưới tầng đó) ↔ tầng 8414904 \"Của hàng hóa thuộc phân nhóm 8414.10\", dòng .42 \"Dùng cho máy không hoạt động bằng điện\": bơm chân không làm mát bằng gió dẫn động bằng trục trích công suất (xe bồn hút) có quạt làm mát trên trục; cánh quạt thay thế của nó thoả cả hai chữ. Chữ biểu không tách; không có căn cứ thứ tự."
+        },
+        {
+          "voi": "84149050",
+          "lyDo": "Không có hàng thật thoả cả hai (Q1, Claude 11/11/2026): tầng 8414902 \"Của quạt\" (dòng .29 \"Loại khác\" dưới tầng đó) ↔ .50 \"Của hàng hóa thuộc phân nhóm 8414.20\" — 8414.20 là bơm không khí điều khiển bằng tay hoặc chân (bơm tay, bơm đạp chân), không có quạt nên không có bộ phận nào vừa là bộ phận của quạt vừa là bộ phận của bơm tay/chân. Máy chỉ thấy chồng vì ghép chuỗi đích \"quạt 8414.20\"."
+        },
+        {
+          "voi": "84149060",
+          "lyDo": "tầng 8414902 \"Của quạt\" (dòng .29 \"Loại khác\" dưới tầng đó) ↔ .60 \"Của hàng hóa thuộc phân nhóm 8414.30\": máy nén nửa kín dùng trong thiết bị lạnh có quạt làm mát thân máy nén (quạt phụ lắp trên máy nén); cánh quạt thay thế của quạt đó vừa là bộ phận của quạt vừa là bộ phận của hàng 8414.30. Chữ biểu không tách; không có căn cứ thứ tự."
+        },
+        {
+          "voi": "84149070",
+          "lyDo": "tầng 8414902 \"Của quạt\" (dòng .29 \"Loại khác\" dưới tầng đó) ↔ .70 \"Của hàng hóa thuộc phân nhóm 8414.40\": máy nén khí đặt trên khung có bánh xe di chuyển có quạt làm mát bộ làm mát dầu/khí; cánh quạt thay thế vừa là bộ phận của quạt vừa là bộ phận của hàng 8414.40. Chữ biểu không tách; không có căn cứ thứ tự."
+        },
+        {
+          "voi": "84149080",
+          "lyDo": "tầng 8414902 \"Của quạt\" (dòng .29 \"Loại khác\" dưới tầng đó) ↔ .80 \"Của hàng hóa thuộc phân nhóm 8414.70\": tủ an toàn sinh học kín khí có quạt hút/đẩy khí qua màng lọc HEPA; cánh quạt thay thế của quạt đó vừa là bộ phận của quạt vừa là bộ phận của hàng 8414.70. Chữ biểu không tách; không có căn cứ thứ tự."
+        }
+      ]
     },
     {
       "hs": "84149031",
-      "dieuKien": "Bộ phận: của hàng hóa thuộc phân nhóm 8414.60",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): 8414.60",
       "loaiKhac": false,
       "nguon": "tax.84149031",
       "trich": "84149031 - - - Của hàng hóa thuộc phân nhóm 8414.60",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8414.60"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-841490",
+          "ngay": "2026-11-22",
+          "bam": "58a1cf8325b98790c6781b026466e9ba78ab52d1db89b94f0a47b1a8bfef542e"
+        }
+      }
     },
     {
       "hs": "84149032",
-      "dieuKien": "Bộ phận: của hàng hóa thuộc phân nhóm 8414.80",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): 8414.80",
       "loaiKhac": false,
       "nguon": "tax.84149032",
       "trich": "84149032 - - - Của hàng hóa thuộc phân nhóm 8414.80",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8414.80"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-841490",
+          "ngay": "2026-11-22",
+          "bam": "58a1cf8325b98790c6781b026466e9ba78ab52d1db89b94f0a47b1a8bfef542e"
+        }
+      }
     },
     {
       "hs": "84149041",
-      "dieuKien": "Bộ phận: dùng cho máy hoạt động bằng điện",
+      "dieuKien": "hoạt động bằng điện",
       "loaiKhac": false,
       "nguon": "tax.84149041",
       "trich": "84149041 - - - Dùng cho máy hoạt động bằng điện",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-841490",
+          "ngay": "2026-11-22",
+          "bam": "58a1cf8325b98790c6781b026466e9ba78ab52d1db89b94f0a47b1a8bfef542e"
+        }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "84149029",
+          "lyDo": "tầng 8414902 \"Của quạt\" (dòng .29 \"Loại khác\" dưới tầng đó) ↔ tầng 8414904 \"Của hàng hóa thuộc phân nhóm 8414.10\", dòng .41 \"Dùng cho máy hoạt động bằng điện\": bơm chân không cánh gạt làm mát bằng gió chạy điện có quạt làm mát lắp trên trục; cánh quạt (fan wheel) thay thế của nó vừa là bộ phận của quạt vừa là bộ phận của hàng 8414.10 hoạt động bằng điện. Chữ biểu không tách bộ phận của quạt gắn trong máy khỏi bộ phận của máy; không có căn cứ thứ tự."
+        }
+      ]
     },
     {
       "hs": "84149042",
-      "dieuKien": "Bộ phận: dùng cho máy không hoạt động bằng điện",
+      "dieuKien": "không: hoạt động bằng điện",
       "loaiKhac": false,
       "nguon": "tax.84149042",
       "trich": "84149042 - - - Dùng cho máy không hoạt động bằng điện",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-841490",
+          "ngay": "2026-11-22",
+          "bam": "58a1cf8325b98790c6781b026466e9ba78ab52d1db89b94f0a47b1a8bfef542e"
+        }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "84149029",
+          "lyDo": "tầng 8414902 \"Của quạt\" (dòng .29 \"Loại khác\" dưới tầng đó) ↔ tầng 8414904 \"Của hàng hóa thuộc phân nhóm 8414.10\", dòng .42 \"Dùng cho máy không hoạt động bằng điện\": bơm chân không làm mát bằng gió dẫn động bằng trục trích công suất (xe bồn hút) có quạt làm mát trên trục; cánh quạt thay thế của nó thoả cả hai chữ. Chữ biểu không tách; không có căn cứ thứ tự."
+        }
+      ]
     },
     {
       "hs": "84149050",
-      "dieuKien": "Bộ phận: của hàng hóa thuộc phân nhóm 8414.20",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): 8414.20",
       "loaiKhac": false,
       "nguon": "tax.84149050",
       "trich": "84149050 - - Của hàng hóa thuộc phân nhóm 8414.20",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8414.20"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-841490",
+          "ngay": "2026-11-22",
+          "bam": "58a1cf8325b98790c6781b026466e9ba78ab52d1db89b94f0a47b1a8bfef542e"
+        }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "84149029",
+          "lyDo": "Không có hàng thật thoả cả hai (Q1, Claude 11/11/2026): tầng 8414902 \"Của quạt\" (dòng .29 \"Loại khác\" dưới tầng đó) ↔ .50 \"Của hàng hóa thuộc phân nhóm 8414.20\" — 8414.20 là bơm không khí điều khiển bằng tay hoặc chân (bơm tay, bơm đạp chân), không có quạt nên không có bộ phận nào vừa là bộ phận của quạt vừa là bộ phận của bơm tay/chân. Máy chỉ thấy chồng vì ghép chuỗi đích \"quạt 8414.20\"."
+        }
+      ]
     },
     {
       "hs": "84149060",
-      "dieuKien": "Bộ phận: của hàng hóa thuộc phân nhóm 8414.30",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): 8414.30",
       "loaiKhac": false,
       "nguon": "tax.84149060",
       "trich": "84149060 - - Của hàng hóa thuộc phân nhóm 8414.30",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8414.30"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-841490",
+          "ngay": "2026-11-22",
+          "bam": "58a1cf8325b98790c6781b026466e9ba78ab52d1db89b94f0a47b1a8bfef542e"
+        }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "84149029",
+          "lyDo": "tầng 8414902 \"Của quạt\" (dòng .29 \"Loại khác\" dưới tầng đó) ↔ .60 \"Của hàng hóa thuộc phân nhóm 8414.30\": máy nén nửa kín dùng trong thiết bị lạnh có quạt làm mát thân máy nén (quạt phụ lắp trên máy nén); cánh quạt thay thế của quạt đó vừa là bộ phận của quạt vừa là bộ phận của hàng 8414.30. Chữ biểu không tách; không có căn cứ thứ tự."
+        }
+      ]
     },
     {
       "hs": "84149070",
-      "dieuKien": "Bộ phận: của hàng hóa thuộc phân nhóm 8414.40",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): 8414.40",
       "loaiKhac": false,
       "nguon": "tax.84149070",
       "trich": "84149070 - - Của hàng hóa thuộc phân nhóm 8414.40",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8414.40"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-841490",
+          "ngay": "2026-11-22",
+          "bam": "58a1cf8325b98790c6781b026466e9ba78ab52d1db89b94f0a47b1a8bfef542e"
+        }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "84149029",
+          "lyDo": "tầng 8414902 \"Của quạt\" (dòng .29 \"Loại khác\" dưới tầng đó) ↔ .70 \"Của hàng hóa thuộc phân nhóm 8414.40\": máy nén khí đặt trên khung có bánh xe di chuyển có quạt làm mát bộ làm mát dầu/khí; cánh quạt thay thế vừa là bộ phận của quạt vừa là bộ phận của hàng 8414.40. Chữ biểu không tách; không có căn cứ thứ tự."
+        }
+      ]
     },
     {
       "hs": "84149080",
-      "dieuKien": "Bộ phận: của hàng hóa thuộc phân nhóm 8414.70",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): 8414.70",
       "loaiKhac": false,
       "nguon": "tax.84149080",
       "trich": "84149080 - - Của hàng hóa thuộc phân nhóm 8414.70",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8414.70"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-841490",
+          "ngay": "2026-11-22",
+          "bam": "58a1cf8325b98790c6781b026466e9ba78ab52d1db89b94f0a47b1a8bfef542e"
+        }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "84149029",
+          "lyDo": "tầng 8414902 \"Của quạt\" (dòng .29 \"Loại khác\" dưới tầng đó) ↔ .80 \"Của hàng hóa thuộc phân nhóm 8414.70\": tủ an toàn sinh học kín khí có quạt hút/đẩy khí qua màng lọc HEPA; cánh quạt thay thế của quạt đó vừa là bộ phận của quạt vừa là bộ phận của hàng 8414.70. Chữ biểu không tách; không có căn cứ thứ tự."
+        }
+      ]
     },
     {
       "hs": "84149090",
-      "dieuKien": "Bộ phận: của máy bơm hoặc máy nén khác",
+      "dieuKien": "phần còn lại có tên (phủ định anh em)",
       "loaiKhac": false,
       "nguon": "tax.84149090",
       "trich": "84149090 - - Của máy bơm hoặc máy nén khác",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-841490",
+          "ngay": "2026-11-22",
+          "bam": "58a1cf8325b98790c6781b026466e9ba78ab52d1db89b94f0a47b1a8bfef542e"
+        }
+      },
+      "phanConLai": true
     }
   ],
   "boPhan": {
@@ -1614,6 +2037,46 @@
       }
     },
     {
+      "id": "8414601",
+      "nguon": "tieuDe.8414601",
+      "trich": "8414601 Đã lắp bộ phận lọc",
+      "dieuKienSo": [
+        {
+          "fact": "coBoLoc",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-841460",
+          "ngay": "2026-11-22",
+          "bam": "08dffd708a0dfe5067e66ebeffc5227049693d39fcb76501723874f85be4817a"
+        }
+      }
+    },
+    {
+      "id": "8414609",
+      "nguon": "tieuDe.8414609",
+      "trich": "8414609 Chưa lắp bộ phận lọc",
+      "dieuKienSo": [
+        {
+          "fact": "coBoLoc",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-841460",
+          "ngay": "2026-11-22",
+          "bam": "08dffd708a0dfe5067e66ebeffc5227049693d39fcb76501723874f85be4817a"
+        }
+      }
+    },
+    {
       "id": "8414701",
       "nguon": "tieuDe.8414701",
       "trich": "8414701 Đã lắp bộ phận lọc",
@@ -1627,9 +2090,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L24-20261111#soat-L24",
-          "ngay": "2026-11-11",
-          "bam": "bb2cc807b70ce75793aab9e7ea2dde2955141bf0036f78cef69afe694a258883"
+          "phien": "claude-agent:ozv-1867#soat-841470",
+          "ngay": "2026-11-22",
+          "bam": "7a10910dca2a29dd9cbe0171fa9c73089173b5d7ef01f5a46c09d61656edd7d5"
         }
       }
     },
@@ -1647,9 +2110,160 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:duyet-L24-20261111#soat-L24",
-          "ngay": "2026-11-11",
-          "bam": "bb2cc807b70ce75793aab9e7ea2dde2955141bf0036f78cef69afe694a258883"
+          "phien": "claude-agent:ozv-1867#soat-841470",
+          "ngay": "2026-11-22",
+          "bam": "7a10910dca2a29dd9cbe0171fa9c73089173b5d7ef01f5a46c09d61656edd7d5"
+        }
+      }
+    },
+    {
+      "id": "841480~r13208",
+      "nguon": "tieuDe.841480~r13208",
+      "trich": "841480~r13208 Nắp chụp hút có kích thước chiều ngang tối đa trên 120 cm",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Nắp chụp hút"
+        },
+        {
+          "fact": "chieuRong",
+          "op": ">",
+          "value": 120,
+          "donVi": "cm"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-841480",
+          "ngay": "2026-11-22",
+          "bam": "13dc5d180d56168384f55878833b1de5bf2f311d835096f3d9427717646efe9f"
+        }
+      }
+    },
+    {
+      "id": "8414801",
+      "nguon": "tieuDe.8414801",
+      "trich": "8414801 Đã lắp bộ phận lọc",
+      "dieuKienSo": [
+        {
+          "fact": "coBoLoc",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-841480",
+          "ngay": "2026-11-22",
+          "bam": "13dc5d180d56168384f55878833b1de5bf2f311d835096f3d9427717646efe9f"
+        }
+      }
+    },
+    {
+      "id": "8414802",
+      "nguon": "tieuDe.8414802",
+      "trich": "8414802 Chưa lắp bộ phận lọc",
+      "dieuKienSo": [
+        {
+          "fact": "coBoLoc",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-841480",
+          "ngay": "2026-11-22",
+          "bam": "13dc5d180d56168384f55878833b1de5bf2f311d835096f3d9427717646efe9f"
+        }
+      }
+    },
+    {
+      "id": "8414804",
+      "nguon": "tieuDe.8414804",
+      "trich": "8414804 Máy nén trừ loại thuộc phân nhóm 8414.30 hoặc 8414.40",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy nén"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-841480",
+          "ngay": "2026-11-22",
+          "bam": "13dc5d180d56168384f55878833b1de5bf2f311d835096f3d9427717646efe9f"
+        }
+      }
+    },
+    {
+      "id": "8414902",
+      "nguon": "tieuDe.8414902",
+      "trich": "8414902 Của quạt",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "quạt"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-841490",
+          "ngay": "2026-11-22",
+          "bam": "58a1cf8325b98790c6781b026466e9ba78ab52d1db89b94f0a47b1a8bfef542e"
+        }
+      }
+    },
+    {
+      "id": "8414903",
+      "nguon": "tieuDe.8414903",
+      "trich": "8414903 Của nắp chụp hút",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "nắp chụp hút"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-841490",
+          "ngay": "2026-11-22",
+          "bam": "58a1cf8325b98790c6781b026466e9ba78ab52d1db89b94f0a47b1a8bfef542e"
+        }
+      }
+    },
+    {
+      "id": "8414904",
+      "nguon": "tieuDe.8414904",
+      "trich": "8414904 Của hàng hóa thuộc phân nhóm 8414.10",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8414.10"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-841490",
+          "ngay": "2026-11-22",
+          "bam": "58a1cf8325b98790c6781b026466e9ba78ab52d1db89b94f0a47b1a8bfef542e"
         }
       }
     }

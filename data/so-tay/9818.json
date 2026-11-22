@@ -7,12 +7,30 @@
   "dong8": [
     {
       "hs": "98181110",
-      "dieuKien": "khung Chương 98 — điều kiện do bản ranh giới 6→8 số đã duyệt điền",
-      "tieuChi": null,
+      "dieuKien": "tên loại hàng: Nắp chụp; có cách điện",
       "nguon": "tax.98181110",
       "trich": "98181110 - - Nắp chụp cách điện",
       "loaiKhac": false,
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Nắp chụp"
+        },
+        {
+          "fact": "coCachDien",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L33-20261111#soat-L33",
+          "ngay": "2026-11-11",
+          "bam": "6f85cc73ec59ee2400e5b3b40cc3d98cd52e0964d04f12ed8ae5754b93f23ed7"
+        }
+      }
     },
     {
       "hs": "98181190",
@@ -37,12 +55,27 @@
     },
     {
       "hs": "98181211",
-      "dieuKien": "khung Chương 98 — điều kiện do bản ranh giới 6→8 số đã duyệt điền",
-      "tieuChi": null,
+      "dieuKien": "hàm lượng carbon >= 0.6 %",
       "nguon": "tax.98181211",
       "trich": "98181211 - - - Có hàm lượng carbon từ 0,6% trở lên tính theo trọng lượng",
       "loaiKhac": false,
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": ">=",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L33-20261111#soat-L33",
+          "ngay": "2026-11-11",
+          "bam": "28ce04ee01334e114ccf837ea782907470bc0ef5b28f711720c8c0b4dcae8b6c"
+        }
+      }
     },
     {
       "hs": "98181219",
@@ -67,12 +100,27 @@
     },
     {
       "hs": "98181291",
-      "dieuKien": "khung Chương 98 — điều kiện do bản ranh giới 6→8 số đã duyệt điền",
-      "tieuChi": null,
+      "dieuKien": "độ dày <= 5 mm",
       "nguon": "tax.98181291",
       "trich": "98181291 - - - Chiều dày từ 5 mm trở xuống",
       "loaiKhac": false,
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "doDay",
+          "op": "<=",
+          "value": 5,
+          "donVi": "mm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L33-20261111#soat-L33",
+          "ngay": "2026-11-11",
+          "bam": "28ce04ee01334e114ccf837ea782907470bc0ef5b28f711720c8c0b4dcae8b6c"
+        }
+      }
     },
     {
       "hs": "98181299",
@@ -97,39 +145,106 @@
     },
     {
       "hs": "98181310",
-      "dieuKien": "khung Chương 98 — điều kiện do bản ranh giới 6→8 số đã duyệt điền",
-      "tieuChi": null,
+      "dieuKien": "tên loại hàng: Vít; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): kim loại",
       "nguon": "tax.98181310",
       "trich": "98181310 - - Vít cho kim loại",
       "loaiKhac": false,
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Vít"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "kim loại"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L33-20261111#soat-L33",
+          "ngay": "2026-11-11",
+          "bam": "8f95d6022b85f09ad2a74fcb84b37574d61d660798a6508ec192640a20abb4a2"
+        }
+      }
     },
     {
       "hs": "98181390",
-      "dieuKien": "khung Chương 98 — điều kiện do bản ranh giới 6→8 số đã duyệt điền",
-      "tieuChi": null,
+      "dieuKien": "tên loại hàng: Chốt hãm hoặc chốt định vị",
       "nguon": "tax.98181390",
       "trich": "98181390 - - Chốt hãm và chốt định vị",
       "loaiKhac": false,
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Chốt hãm",
+            "chốt định vị"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L33-20261111#soat-L33",
+          "ngay": "2026-11-11",
+          "bam": "8f95d6022b85f09ad2a74fcb84b37574d61d660798a6508ec192640a20abb4a2"
+        }
+      }
     },
     {
       "hs": "98181410",
-      "dieuKien": "khung Chương 98 — điều kiện do bản ranh giới 6→8 số đã duyệt điền",
-      "tieuChi": null,
+      "dieuKien": "tên loại hàng: Lò xo lá hoặc lá lò xo",
       "nguon": "tax.98181410",
       "trich": "98181410 - - Lò xo lá và các lá lò xo",
       "loaiKhac": false,
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Lò xo lá",
+            "lá lò xo"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L33-20261111#soat-L33",
+          "ngay": "2026-11-11",
+          "bam": "d57da30eb04482c6598ed3e73df8913241cdfb093b32445479d1d122d65e10ec"
+        }
+      }
     },
     {
       "hs": "98181490",
-      "dieuKien": "khung Chương 98 — điều kiện do bản ranh giới 6→8 số đã duyệt điền",
-      "tieuChi": null,
+      "dieuKien": "tên loại hàng: Lò xo cuộn",
       "nguon": "tax.98181490",
       "trich": "98181490 - - Lò xo cuộn",
       "loaiKhac": false,
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Lò xo cuộn"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L33-20261111#soat-L33",
+          "ngay": "2026-11-11",
+          "bam": "d57da30eb04482c6598ed3e73df8913241cdfb093b32445479d1d122d65e10ec"
+        }
+      }
     },
     {
       "hs": "98181500",
@@ -224,7 +339,7 @@
     },
     {
       "hs": "98181930",
-      "dieuKien": "tên loại hàng: Ống xi lanh; đường kính trong (cửa nạp/cửa thoát, DN) >= 50 mm; đường kính trong (cửa nạp/cửa thoát, DN) <= 155 mm",
+      "dieuKien": "tên loại hàng: Ống xi lanh; đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) >= 50 mm; đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) <= 155 mm",
       "nguon": "tax.98181930",
       "trich": "98181930 - - Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm",
       "loaiKhac": false,
@@ -401,30 +516,70 @@
     },
     {
       "hs": "98182010",
-      "dieuKien": "khung Chương 98 — điều kiện do bản ranh giới 6→8 số đã duyệt điền",
-      "tieuChi": null,
+      "dieuKien": "tên loại hàng: Bơm nước bằng tay",
       "nguon": "tax.98182010",
       "trich": "98182010 - - Bơm nước bằng tay",
       "loaiKhac": false,
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bơm nước bằng tay"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-981820",
+          "ngay": "2026-11-22",
+          "bam": "bc617591a9e2f90004bc5dcbb52fc0e050b4603617e692b10d4c52c2b05dd9dc"
+        }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "98182029",
+          "lyDo": "tax.98182010 \"Bơm nước bằng tay\" (mã tương ứng 8413.20.10) và tax.98182029 \"Loại khác, trừ loại chuyển động tịnh tiến hoặc chuyển động quay\" dưới 9818202 \"Bơm nước hoặc bơm nhiên liệu, dùng cho động cơ đốt trong kiểu piston\" (mã tương ứng 8413.30.90): khoá kieuBom không đọc cụm \"Bơm nước bằng tay\" nên cổng 2 ghép vector chồng lấn trên chữ."
+        }
+      ]
     },
     {
       "hs": "98182021",
-      "dieuKien": "khung Chương 98 — điều kiện do bản ranh giới 6→8 số đã duyệt điền",
-      "tieuChi": null,
+      "dieuKien": "tên loại hàng: Loại ly tâm; kiểu bơm: ly tâm",
       "nguon": "tax.98182021",
       "trich": "98182021 - - Loại ly tâm",
       "loaiKhac": false,
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Loại ly tâm"
+        },
+        {
+          "fact": "kieuBom",
+          "op": "TRONG",
+          "value": [
+            "LY_TAM"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-981820",
+          "ngay": "2026-11-22",
+          "bam": "bc617591a9e2f90004bc5dcbb52fc0e050b4603617e692b10d4c52c2b05dd9dc"
+        }
+      }
     },
     {
       "hs": "98182029",
-      "dieuKien": "khung Chương 98 — điều kiện do bản ranh giới 6→8 số đã duyệt điền",
-      "tieuChi": null,
+      "dieuKien": "không kiểu bơm: piston (chuyển động tịnh tiến)",
       "nguon": "tax.98182029",
       "trich": "98182029 - - Loại khác, trừ loại chuyển động tịnh tiến hoặc chuyển động quay",
       "loaiKhac": true,
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phamViLoaiKhac": {
         "nguonLoai": "MAY_SUY",
         "cha": "9818202",
@@ -436,16 +591,58 @@
         ],
         "toTienCoTen": "981820",
         "dinhNghiaDuoc": true
-      }
+      },
+      "dieuKienSo": [
+        {
+          "fact": "kieuBom",
+          "op": "TRONG",
+          "value": [
+            "PISTON"
+          ],
+          "chieu": "PHAI_KHONG"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-981820",
+          "ngay": "2026-11-22",
+          "bam": "bc617591a9e2f90004bc5dcbb52fc0e050b4603617e692b10d4c52c2b05dd9dc"
+        }
+      },
+      "phanConLai": [
+        "98182021"
+      ],
+      "chongLanVanBan": [
+        {
+          "voi": "98182010",
+          "lyDo": "tax.98182010 \"Bơm nước bằng tay\" (mã tương ứng 8413.20.10) và tax.98182029 \"Loại khác, trừ loại chuyển động tịnh tiến hoặc chuyển động quay\" dưới 9818202 \"Bơm nước hoặc bơm nhiên liệu, dùng cho động cơ đốt trong kiểu piston\" (mã tương ứng 8413.30.90): khoá kieuBom không đọc cụm \"Bơm nước bằng tay\" nên cổng 2 ghép vector chồng lấn trên chữ."
+        }
+      ]
     },
     {
       "hs": "98182031",
-      "dieuKien": "khung Chương 98 — điều kiện do bản ranh giới 6→8 số đã duyệt điền",
-      "tieuChi": null,
+      "dieuKien": "đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) <= 200 mm",
       "nguon": "tax.98182031",
       "trich": "98182031 - - - Với đường kính cửa hút không quá 200mm",
       "loaiKhac": false,
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 200,
+          "donVi": "mm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-981820",
+          "ngay": "2026-11-22",
+          "bam": "bc617591a9e2f90004bc5dcbb52fc0e050b4603617e692b10d4c52c2b05dd9dc"
+        }
+      }
     },
     {
       "hs": "98182039",
@@ -473,30 +670,83 @@
     },
     {
       "hs": "98182090",
-      "dieuKien": "khung Chương 98 — điều kiện do bản ranh giới 6→8 số đã duyệt điền",
-      "tieuChi": null,
+      "dieuKien": "tên loại hàng: Bộ phận của bơm; là bộ phận (không phải hàng hoàn chỉnh); dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): 8413.70.11 hoặc 8413.70.19",
       "nguon": "tax.98182090",
       "trich": "98182090 - Bộ phận của bơm thuộc phân nhóm 8413.70.11 và 8413.70.19",
       "loaiKhac": false,
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bộ phận của bơm"
+        },
+        {
+          "fact": "laBoPhan",
+          "op": "CO"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "8413.70.11",
+            "8413.70.19"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-981820",
+          "ngay": "2026-11-22",
+          "bam": "bc617591a9e2f90004bc5dcbb52fc0e050b4603617e692b10d4c52c2b05dd9dc"
+        }
+      }
     },
     {
       "hs": "98182110",
-      "dieuKien": "khung Chương 98 — điều kiện do bản ranh giới 6→8 số đã duyệt điền",
-      "tieuChi": null,
+      "dieuKien": "tên loại hàng: Máy thổi khí",
       "nguon": "tax.98182110",
       "trich": "98182110 - - Máy thổi khí",
       "loaiKhac": false,
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy thổi khí"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L33-20261111#soat-L33",
+          "ngay": "2026-11-11",
+          "bam": "57842682e4ef05016121dfa3637a074660dd2f3f9fb3c5107ce8fb1901c5d752"
+        }
+      }
     },
     {
       "hs": "98182121",
-      "dieuKien": "khung Chương 98 — điều kiện do bản ranh giới 6→8 số đã duyệt điền",
-      "tieuChi": null,
+      "dieuKien": "có lưới bảo vệ",
       "nguon": "tax.98182121",
       "trich": "98182121 - - - Có lưới bảo vệ",
       "loaiKhac": false,
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "coLuoiBaoVe",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L33-20261111#soat-L33",
+          "ngay": "2026-11-11",
+          "bam": "57842682e4ef05016121dfa3637a074660dd2f3f9fb3c5107ce8fb1901c5d752"
+        }
+      }
     },
     {
       "hs": "98182129",
@@ -522,12 +772,27 @@
     },
     {
       "hs": "98182211",
-      "dieuKien": "khung Chương 98 — điều kiện do bản ranh giới 6→8 số đã duyệt điền",
-      "tieuChi": null,
+      "dieuKien": "công suất <= 26.38 kW",
       "nguon": "tax.98182211",
       "trich": "98182211 - - - Công suất làm mát không quá 26,38 kW",
       "loaiKhac": false,
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 26.38,
+          "donVi": "kW"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-981822",
+          "ngay": "2026-11-22",
+          "bam": "8328d3aae99bf35766ddb44398e0355d7bb66ff968eb2d43af39c09b18b0c285"
+        }
+      }
     },
     {
       "hs": "98182219",
@@ -552,30 +817,131 @@
     },
     {
       "hs": "98182220",
-      "dieuKien": "khung Chương 98 — điều kiện do bản ranh giới 6→8 số đã duyệt điền",
-      "tieuChi": null,
+      "dieuKien": "có kèm bộ phận làm lạnh; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): xe chạy trên đường ray; công suất > 26.38 kW",
       "nguon": "tax.98182220",
       "trich": "98182220 - - Máy điều hoà không khí, loại khác, có kèm theo bộ phận làm lạnh, sử dụng cho xe chạy trên đường ray, có công suất làm mát trên 26,38 kW",
       "loaiKhac": false,
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "coBoPhanLamLanh",
+          "op": "CO"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe chạy trên đường ray"
+        },
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 26.38,
+          "donVi": "kW"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-981822",
+          "ngay": "2026-11-22",
+          "bam": "8328d3aae99bf35766ddb44398e0355d7bb66ff968eb2d43af39c09b18b0c285"
+        }
+      },
+      "phanConLai": true,
+      "chongLanTruc": {
+        "pn6": "981822",
+        "nhanh": [
+          "9818221",
+          "98182220",
+          "9818223"
+        ],
+        "truc": {
+          "9818221": "DAC_DIEM",
+          "9818223": "TEN_LOAI",
+          "98182220": "CONG_DUNG"
+        },
+        "cauHoiPhanBiet": "Hàng là máy điều hoà không khí hoàn chỉnh (loại bơm nhiệt có đảo chiều 9818.22.1x hoặc loại khác > 26,38 kW 9818.22.20) hay là bộ phận của máy điều hoà không khí (9818.22.3x)?",
+        "trich": {
+          "9818221": "Kèm theo các bộ phận làm lạnh và một van đảo chiều chu trình nóng lạnh (bơm nhiệt có đảo chiều)",
+          "9818223": "Bộ phận",
+          "98182220": "Máy điều hoà không khí, loại khác, có kèm theo bộ phận làm lạnh, sử dụng cho xe chạy trên đường ray, có công suất làm mát trên 26,38 kW"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:ozv-1867#soat-981822",
+            "ngay": "2026-11-22",
+            "bam": "8328d3aae99bf35766ddb44398e0355d7bb66ff968eb2d43af39c09b18b0c285"
+          }
+        }
+      }
     },
     {
       "hs": "98182231",
-      "dieuKien": "khung Chương 98 — điều kiện do bản ranh giới 6→8 số đã duyệt điền",
-      "tieuChi": null,
+      "dieuKien": "công suất > 26.38 kW; công suất <= 52.75 kW; lưu lượng <= 67.96 m3/phút",
       "nguon": "tax.98182231",
       "trich": "98182231 - - - Của máy có công suất làm lạnh trên 26,38 kW nhưng không quá 52,75 kW, có tốc độ dòng khí đi qua mối dàn bay hơi không quá 67,96 m3/phút",
       "loaiKhac": false,
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 26.38,
+          "donVi": "kW"
+        },
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 52.75,
+          "donVi": "kW"
+        },
+        {
+          "fact": "luuLuong",
+          "op": "<=",
+          "value": 67.96,
+          "donVi": "m3/phút"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-981822",
+          "ngay": "2026-11-22",
+          "bam": "8328d3aae99bf35766ddb44398e0355d7bb66ff968eb2d43af39c09b18b0c285"
+        }
+      }
     },
     {
       "hs": "98182239",
-      "dieuKien": "khung Chương 98 — điều kiện do bản ranh giới 6→8 số đã duyệt điền",
-      "tieuChi": null,
+      "dieuKien": "công suất > 52.75 kW; lưu lượng <= 67.96 m3/phút",
       "nguon": "tax.98182239",
       "trich": "98182239 - - - Của máy có công suất làm lạnh trên 52,75 kW, có tốc độ dòng khí đi qua mối dàn bay hơi không quá 67,96 m3/phút",
       "loaiKhac": false,
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 52.75,
+          "donVi": "kW"
+        },
+        {
+          "fact": "luuLuong",
+          "op": "<=",
+          "value": 67.96,
+          "donVi": "m3/phút"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-981822",
+          "ngay": "2026-11-22",
+          "bam": "8328d3aae99bf35766ddb44398e0355d7bb66ff968eb2d43af39c09b18b0c285"
+        }
+      }
     },
     {
       "hs": "98182300",
@@ -588,21 +954,47 @@
     },
     {
       "hs": "98182410",
-      "dieuKien": "khung Chương 98 — điều kiện do bản ranh giới 6→8 số đã duyệt điền",
-      "tieuChi": null,
+      "dieuKien": "hoạt động bằng điện",
       "nguon": "tax.98182410",
       "trich": "98182410 - - - Hoạt động bằng điện",
       "loaiKhac": false,
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L33-20261111#soat-L33",
+          "ngay": "2026-11-11",
+          "bam": "a3003f11e27f669139d94bb5db2c6077ad3970963a4253713164d65b493dabc3"
+        }
+      }
     },
     {
       "hs": "98182490",
-      "dieuKien": "khung Chương 98 — điều kiện do bản ranh giới 6→8 số đã duyệt điền",
-      "tieuChi": null,
+      "dieuKien": "không: hoạt động bằng điện",
       "nguon": "tax.98182490",
       "trich": "98182490 - - - Không hoạt động bằng điện",
       "loaiKhac": false,
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L33-20261111#soat-L33",
+          "ngay": "2026-11-11",
+          "bam": "a3003f11e27f669139d94bb5db2c6077ad3970963a4253713164d65b493dabc3"
+        }
+      }
     },
     {
       "hs": "98182500",
@@ -615,21 +1007,46 @@
     },
     {
       "hs": "98182610",
-      "dieuKien": "khung Chương 98 — điều kiện do bản ranh giới 6→8 số đã duyệt điền",
-      "tieuChi": null,
+      "dieuKien": "chất liệu (theo vị trí): plastic; đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) >= 1 cm; đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) <= 2.5 cm",
       "nguon": "tax.98182610",
       "trich": "98182610 - - Bằng plastic, có đường kính trong từ 1cm đến 2,5 cm",
       "loaiKhac": false,
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "plastic"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": ">=",
+          "value": 1,
+          "donVi": "cm"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 2.5,
+          "donVi": "cm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L33-20261111#soat-L33",
+          "ngay": "2026-11-11",
+          "bam": "cdb3264677f188f1813aae7e056aca7224ba2bcfe6ac02479a2e7815e2d3a4a7"
+        }
+      }
     },
     {
       "hs": "98182690",
-      "dieuKien": "khung Chương 98 — điều kiện do bản ranh giới 6→8 số đã duyệt điền",
-      "tieuChi": null,
+      "dieuKien": "(không chất liệu (theo vị trí): đồng) hoặc (đường kính trong (cửa nạp/cửa thoát/cửa hút, DN) > 2.5 cm)",
       "nguon": "tax.98182690",
       "trich": "98182690 - - Loại khác, trừ loại bằng đồng hoặc hợp kim đồng với đường kính trong từ 2,5 cm trở xuống",
       "loaiKhac": true,
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phamViLoaiKhac": {
         "nguonLoai": "MAY_SUY",
         "cha": "981826",
@@ -641,6 +1058,37 @@
         ],
         "toTienCoTen": "981826",
         "dinhNghiaDuoc": true
+      },
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "chatLieu",
+                "op": "LA",
+                "value": "đồng",
+                "chieu": "PHAI_KHONG"
+              }
+            ],
+            [
+              {
+                "fact": "duongKinhTrong",
+                "op": ">",
+                "value": 2.5,
+                "donVi": "cm"
+              }
+            ]
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L33-20261111#soat-L33",
+          "ngay": "2026-11-11",
+          "bam": "cdb3264677f188f1813aae7e056aca7224ba2bcfe6ac02479a2e7815e2d3a4a7"
+        }
       }
     },
     {
@@ -1349,5 +1797,262 @@
     "dat": 48,
     "loai": 0,
     "nguonBiCat": []
-  }
+  },
+  "dieuKienNut": [
+    {
+      "id": "9818121",
+      "nguon": "tieuDe.9818121",
+      "trich": "9818121 Hình chữ U",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Hình chữ U"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L33-20261111#soat-L33",
+          "ngay": "2026-11-11",
+          "bam": "28ce04ee01334e114ccf837ea782907470bc0ef5b28f711720c8c0b4dcae8b6c"
+        }
+      }
+    },
+    {
+      "id": "9818129",
+      "nguon": "tieuDe.9818129",
+      "trich": "9818129 Hình chữ I",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Hình chữ I"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:duyet-L33-20261111#soat-L33",
+          "ngay": "2026-11-11",
+          "bam": "28ce04ee01334e114ccf837ea782907470bc0ef5b28f711720c8c0b4dcae8b6c"
+        }
+      }
+    },
+    {
+      "id": "981820~r19155",
+      "nguon": "tieuDe.981820~r19155",
+      "trich": "981820~r19155 Bơm ly tâm khác",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bơm ly tâm khác"
+        },
+        {
+          "fact": "kieuBom",
+          "op": "TRONG",
+          "value": [
+            "LY_TAM"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-981820",
+          "ngay": "2026-11-22",
+          "bam": "bc617591a9e2f90004bc5dcbb52fc0e050b4603617e692b10d4c52c2b05dd9dc"
+        }
+      },
+      "phanConLai": true
+    },
+    {
+      "id": "9818202",
+      "nguon": "tieuDe.9818202",
+      "trich": "9818202 Bơm nước hoặc bơm nhiên liệu, dùng cho động cơ đốt trong kiểu piston",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Bơm nước",
+            "bơm nhiên liệu"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "động cơ đốt trong kiểu piston"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-981820",
+          "ngay": "2026-11-22",
+          "bam": "bc617591a9e2f90004bc5dcbb52fc0e050b4603617e692b10d4c52c2b05dd9dc"
+        }
+      }
+    },
+    {
+      "id": "9818203",
+      "nguon": "tieuDe.9818203",
+      "trich": "9818203 Bơm nước một tầng, một chiều hút, trục ngang được truyền động bằng dây đai hoặc khớp nối trực tiếp, trừ loại bơm đồng trục với động cơ",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bơm nước"
+        },
+        {
+          "fact": "soTangBom",
+          "op": "TRONG",
+          "value": [
+            "MOT_TANG"
+          ]
+        },
+        {
+          "fact": "kieuHutBom",
+          "op": "TRONG",
+          "value": [
+            "MOT_CHIEU"
+          ]
+        },
+        {
+          "fact": "huongTrucBom",
+          "op": "TRONG",
+          "value": [
+            "NGANG"
+          ]
+        },
+        {
+          "fact": "kieuTruyenDong",
+          "op": "TRONG",
+          "value": [
+            "DAY_DAI",
+            "KHOP_NOI_TRUC_TIEP"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-981820",
+          "ngay": "2026-11-22",
+          "bam": "bc617591a9e2f90004bc5dcbb52fc0e050b4603617e692b10d4c52c2b05dd9dc"
+        }
+      }
+    },
+    {
+      "id": "9818221",
+      "nguon": "tieuDe.9818221",
+      "trich": "9818221 Kèm theo các bộ phận làm lạnh và một van đảo chiều chu trình nóng lạnh (bơm nhiệt có đảo chiều)",
+      "dieuKienSo": [
+        {
+          "fact": "coBoPhanLamLanh",
+          "op": "CO"
+        },
+        {
+          "fact": "coVanDaoChieu",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-981822",
+          "ngay": "2026-11-22",
+          "bam": "8328d3aae99bf35766ddb44398e0355d7bb66ff968eb2d43af39c09b18b0c285"
+        }
+      },
+      "chongLanTruc": {
+        "pn6": "981822",
+        "nhanh": [
+          "9818221",
+          "98182220",
+          "9818223"
+        ],
+        "truc": {
+          "9818221": "DAC_DIEM",
+          "9818223": "TEN_LOAI",
+          "98182220": "CONG_DUNG"
+        },
+        "cauHoiPhanBiet": "Hàng là máy điều hoà không khí hoàn chỉnh (loại bơm nhiệt có đảo chiều 9818.22.1x hoặc loại khác > 26,38 kW 9818.22.20) hay là bộ phận của máy điều hoà không khí (9818.22.3x)?",
+        "trich": {
+          "9818221": "Kèm theo các bộ phận làm lạnh và một van đảo chiều chu trình nóng lạnh (bơm nhiệt có đảo chiều)",
+          "9818223": "Bộ phận",
+          "98182220": "Máy điều hoà không khí, loại khác, có kèm theo bộ phận làm lạnh, sử dụng cho xe chạy trên đường ray, có công suất làm mát trên 26,38 kW"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:ozv-1867#soat-981822",
+            "ngay": "2026-11-22",
+            "bam": "8328d3aae99bf35766ddb44398e0355d7bb66ff968eb2d43af39c09b18b0c285"
+          }
+        }
+      }
+    },
+    {
+      "id": "9818223",
+      "nguon": "tieuDe.9818223",
+      "trich": "9818223 Bộ phận",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bộ phận"
+        },
+        {
+          "fact": "laBoPhan",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-981822",
+          "ngay": "2026-11-22",
+          "bam": "8328d3aae99bf35766ddb44398e0355d7bb66ff968eb2d43af39c09b18b0c285"
+        }
+      },
+      "chongLanTruc": {
+        "pn6": "981822",
+        "nhanh": [
+          "9818221",
+          "98182220",
+          "9818223"
+        ],
+        "truc": {
+          "9818221": "DAC_DIEM",
+          "9818223": "TEN_LOAI",
+          "98182220": "CONG_DUNG"
+        },
+        "cauHoiPhanBiet": "Hàng là máy điều hoà không khí hoàn chỉnh (loại bơm nhiệt có đảo chiều 9818.22.1x hoặc loại khác > 26,38 kW 9818.22.20) hay là bộ phận của máy điều hoà không khí (9818.22.3x)?",
+        "trich": {
+          "9818221": "Kèm theo các bộ phận làm lạnh và một van đảo chiều chu trình nóng lạnh (bơm nhiệt có đảo chiều)",
+          "9818223": "Bộ phận",
+          "98182220": "Máy điều hoà không khí, loại khác, có kèm theo bộ phận làm lạnh, sử dụng cho xe chạy trên đường ray, có công suất làm mát trên 26,38 kW"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:ozv-1867#soat-981822",
+            "ngay": "2026-11-22",
+            "bam": "8328d3aae99bf35766ddb44398e0355d7bb66ff968eb2d43af39c09b18b0c285"
+          }
+        }
+      }
+    }
+  ]
 }

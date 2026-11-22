@@ -272,27 +272,161 @@
     },
     {
       "hs": "84862011",
-      "dieuKien": "Thiết bị kết tủa khí hóa dùng cho ngành sản xuất bán dẫn",
+      "dieuKien": "tên loại hàng: Thiết bị kết tủa khí hóa; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): ngành sản xuất bán dẫn",
       "loaiKhac": false,
       "nguon": "tax.84862011",
       "trich": "84862011 - - - Thiết bị kết tủa khí hóa dùng cho ngành sản xuất bán dẫn",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thiết bị kết tủa khí hóa"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "ngành sản xuất bán dẫn"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848620",
+          "ngay": "2026-11-22",
+          "bam": "5934ddbe52297e73e7bafec113a5c8f479d41111433fde55dfce55ed82f2291d"
+        }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "84862012",
+          "lyDo": "Không có hàng thật thoả cả hai (Q1). A \"Thiết bị kết tủa khí hóa dùng cho ngành sản xuất bán dẫn\" (CVD — tạo màng từ pha khí). B \"thiết bị để tạo lớp phủ nhũ tương in ảnh lên các tấm bán dẫn mỏng\" (máy phủ chất cản quang — quay phủ chất lỏng). Hai công nghệ khác hẳn; vector chồng chỉ do tên chung «thiết bị» của B"
+        }
+      ]
     },
     {
       "hs": "84862012",
-      "dieuKien": "Máy kết tủa epitaxi dùng cho các tấm bán dẫn mỏng; thiết bị để tạo lớp phủ nhũ tương in ảnh lên các tấm bán dẫn mỏng bằng phương pháp quay",
+      "dieuKien": "(tên loại hàng: Máy kết tủa epitaxi và dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): các tấm bán dẫn mỏng) hoặc (tên loại hàng: thiết bị và công dụng / mục đích: tạo lớp phủ nhũ tương in ảnh lên các tấm bán dẫn mỏng và phương pháp / nguyên lý xử lý của thiết bị: phương pháp quay (quay ly tâm))",
       "loaiKhac": false,
       "nguon": "tax.84862012",
       "trich": "84862012 - - - Máy kết tủa epitaxi dùng cho các tấm bán dẫn mỏng; thiết bị để tạo lớp phủ nhũ tương in ảnh lên các tấm bán dẫn mỏng bằng phương pháp quay",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Máy kết tủa epitaxi"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "các tấm bán dẫn mỏng"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "thiết bị"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "tạo lớp phủ nhũ tương in ảnh lên các tấm bán dẫn mỏng"
+              },
+              {
+                "fact": "nguyenLyXuLy",
+                "op": "TRONG",
+                "value": [
+                  "QUAY"
+                ]
+              }
+            ]
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848620",
+          "ngay": "2026-11-22",
+          "bam": "5934ddbe52297e73e7bafec113a5c8f479d41111433fde55dfce55ed82f2291d"
+        }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "84862011",
+          "lyDo": "Không có hàng thật thoả cả hai (Q1). A \"Thiết bị kết tủa khí hóa dùng cho ngành sản xuất bán dẫn\" (CVD — tạo màng từ pha khí). B \"thiết bị để tạo lớp phủ nhũ tương in ảnh lên các tấm bán dẫn mỏng\" (máy phủ chất cản quang — quay phủ chất lỏng). Hai công nghệ khác hẳn; vector chồng chỉ do tên chung «thiết bị» của B"
+        },
+        {
+          "voi": "84862013",
+          "lyDo": "Không có hàng thật thoả cả hai (Q1). A \"thiết bị để tạo lớp phủ nhũ tương in ảnh lên các tấm bán dẫn mỏng\" (phủ chất cản quang dạng lỏng). B \"thiết bị lắng đọng vật lý dùng cho sản xuất bán dẫn\" / \"Thiết bị tạo kết tủa vật lý bằng phương pháp phun phủ lên các tấm bán dẫn mỏng\" (PVD). Hai công nghệ khác hẳn; vector chồng chỉ do tên chung «thiết bị» của A"
+        }
+      ]
     },
     {
       "hs": "84862013",
-      "dieuKien": "Thiết bị tạo kết tủa vật lý bằng phương pháp phun phủ lên các tấm bán dẫn mỏng; thiết bị lắng đọng vật lý dùng cho sản xuất bán dẫn",
+      "dieuKien": "(tên loại hàng: Thiết bị tạo kết tủa vật lý và phương pháp / nguyên lý xử lý của thiết bị: phương pháp phun phủ (sputtering) và dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): các tấm bán dẫn mỏng) hoặc (tên loại hàng: thiết bị lắng đọng vật lý và dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): sản xuất bán dẫn)",
       "loaiKhac": false,
       "nguon": "tax.84862013",
       "trich": "84862013 - - - Thiết bị tạo kết tủa vật lý bằng phương pháp phun phủ lên các tấm bán dẫn mỏng; thiết bị lắng đọng vật lý dùng cho sản xuất bán dẫn",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Thiết bị tạo kết tủa vật lý"
+              },
+              {
+                "fact": "nguyenLyXuLy",
+                "op": "TRONG",
+                "value": [
+                  "PHUN_PHU"
+                ]
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "các tấm bán dẫn mỏng"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "thiết bị lắng đọng vật lý"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "sản xuất bán dẫn"
+              }
+            ]
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848620",
+          "ngay": "2026-11-22",
+          "bam": "5934ddbe52297e73e7bafec113a5c8f479d41111433fde55dfce55ed82f2291d"
+        }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "84862012",
+          "lyDo": "Không có hàng thật thoả cả hai (Q1). A \"thiết bị để tạo lớp phủ nhũ tương in ảnh lên các tấm bán dẫn mỏng\" (phủ chất cản quang dạng lỏng). B \"thiết bị lắng đọng vật lý dùng cho sản xuất bán dẫn\" / \"Thiết bị tạo kết tủa vật lý bằng phương pháp phun phủ lên các tấm bán dẫn mỏng\" (PVD). Hai công nghệ khác hẳn; vector chồng chỉ do tên chung «thiết bị» của A"
+        }
+      ]
     },
     {
       "hs": "84862019",
@@ -320,11 +454,31 @@
     },
     {
       "hs": "84862021",
-      "dieuKien": "Máy cấy ghép ion cho quá trình xử lý vật liệu bán dẫn",
+      "dieuKien": "tên loại hàng: Máy cấy ghép ion; công dụng / mục đích: xử lý vật liệu bán dẫn",
       "loaiKhac": false,
       "nguon": "tax.84862021",
       "trich": "84862021 - - - Máy cấy ghép ion cho quá trình xử lý vật liệu bán dẫn",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy cấy ghép ion"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "xử lý vật liệu bán dẫn"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848620",
+          "ngay": "2026-11-22",
+          "bam": "5934ddbe52297e73e7bafec113a5c8f479d41111433fde55dfce55ed82f2291d"
+        }
+      }
     },
     {
       "hs": "84862029",
@@ -348,27 +502,145 @@
     },
     {
       "hs": "84862031",
-      "dieuKien": "Máy dùng tia sáng để làm sạch và tẩy rửa chất bẩn bám trên các đầu chân dẫn điện kim loại của các cụm linh kiện bán dẫn trước khi tiến hành điện phân; dụng cụ phun dùng để khắc axit, tẩy rửa hoặc làm sạch các tấm bán dẫn mỏng",
+      "dieuKien": "(tên loại hàng: Máy dùng tia sáng và công dụng / mục đích: làm sạch hoặc tẩy rửa chất bẩn bám trên các đầu chân dẫn điện kim loại và dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): các đầu chân dẫn điện kim loại) hoặc (tên loại hàng: dụng cụ phun và công dụng / mục đích: khắc axit hoặc tẩy rửa hoặc làm sạch và dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): tấm bán dẫn mỏng)",
       "loaiKhac": false,
       "nguon": "tax.84862031",
       "trich": "84862031 - - - Máy dùng tia sáng để làm sạch và tẩy rửa chất bẩn bám trên các đầu chân dẫn điện kim loại của các cụm linh kiện bán dẫn trước khi tiến hành điện phân; dụng cụ phun dùng để khắc axit, tẩy rửa hoặc làm sạch các tấm bán dẫn mỏng",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Máy dùng tia sáng"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": [
+                  "làm sạch",
+                  "tẩy rửa chất bẩn bám trên các đầu chân dẫn điện kim loại"
+                ]
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "các đầu chân dẫn điện kim loại"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "dụng cụ phun"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": [
+                  "khắc axit",
+                  "tẩy rửa",
+                  "làm sạch"
+                ]
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "tấm bán dẫn mỏng"
+              }
+            ]
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848620",
+          "ngay": "2026-11-22",
+          "bam": "5934ddbe52297e73e7bafec113a5c8f479d41111433fde55dfce55ed82f2291d"
+        }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "84862033",
+          "lyDo": "Chữ hai dòng không loại trừ nhau: .31 \"dụng cụ phun dùng để khắc axit, tẩy rửa hoặc làm sạch các tấm bán dẫn mỏng\" và .33 \"Thiết bị để khắc axit ướt, hiện ảnh, tẩy rửa hoặc làm sạch các tấm bán dẫn mỏng\" — dụng cụ phun khắc axit (ướt) tấm bán dẫn mỏng thoả cả hai dòng; không có căn cứ thứ tự"
+        }
+      ]
     },
     {
       "hs": "84862032",
-      "dieuKien": "Thiết bị sử dụng cho các bản mẫu khắc khô trên vật liệu bán dẫn",
+      "dieuKien": "tên loại hàng: Thiết bị; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): các bản mẫu khắc khô trên vật liệu bán dẫn",
       "loaiKhac": false,
       "nguon": "tax.84862032",
       "trich": "84862032 - - - Thiết bị sử dụng cho các bản mẫu khắc khô trên vật liệu bán dẫn",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thiết bị"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "các bản mẫu khắc khô trên vật liệu bán dẫn"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848620",
+          "ngay": "2026-11-22",
+          "bam": "5934ddbe52297e73e7bafec113a5c8f479d41111433fde55dfce55ed82f2291d"
+        }
+      }
     },
     {
       "hs": "84862033",
-      "dieuKien": "Thiết bị để khắc axit ướt, hiện ảnh, tẩy rửa hoặc làm sạch các tấm bán dẫn mỏng",
+      "dieuKien": "tên loại hàng: Thiết bị; công dụng / mục đích: khắc axit ướt hoặc hiện ảnh hoặc tẩy rửa hoặc làm sạch; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): tấm bán dẫn mỏng",
       "loaiKhac": false,
       "nguon": "tax.84862033",
       "trich": "84862033 - - - Thiết bị để khắc axit ướt, hiện ảnh, tẩy rửa hoặc làm sạch các tấm bán dẫn mỏng",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thiết bị"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "khắc axit ướt",
+            "hiện ảnh",
+            "tẩy rửa",
+            "làm sạch"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "tấm bán dẫn mỏng"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848620",
+          "ngay": "2026-11-22",
+          "bam": "5934ddbe52297e73e7bafec113a5c8f479d41111433fde55dfce55ed82f2291d"
+        }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "84862031",
+          "lyDo": "Chữ hai dòng không loại trừ nhau: .31 \"dụng cụ phun dùng để khắc axit, tẩy rửa hoặc làm sạch các tấm bán dẫn mỏng\" và .33 \"Thiết bị để khắc axit ướt, hiện ảnh, tẩy rửa hoặc làm sạch các tấm bán dẫn mỏng\" — dụng cụ phun khắc axit (ướt) tấm bán dẫn mỏng thoả cả hai dòng; không có căn cứ thứ tự"
+        }
+      ]
     },
     {
       "hs": "84862039",
@@ -396,19 +668,54 @@
     },
     {
       "hs": "84862041",
-      "dieuKien": "Thiết bị in trực tiếp lên tấm bán dẫn mỏng",
+      "dieuKien": "tên loại hàng: Thiết bị in trực tiếp; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): tấm bán dẫn mỏng",
       "loaiKhac": false,
       "nguon": "tax.84862041",
       "trich": "84862041 - - - Thiết bị in trực tiếp lên tấm bán dẫn mỏng",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thiết bị in trực tiếp"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "tấm bán dẫn mỏng"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848620",
+          "ngay": "2026-11-22",
+          "bam": "5934ddbe52297e73e7bafec113a5c8f479d41111433fde55dfce55ed82f2291d"
+        }
+      }
     },
     {
       "hs": "84862042",
-      "dieuKien": "Thiết bị hiệu chỉnh vị trí mẫu theo bước và lặp lại ",
+      "dieuKien": "tên loại hàng: Thiết bị hiệu chỉnh vị trí mẫu theo bước và lặp lại",
       "loaiKhac": false,
       "nguon": "tax.84862042",
       "trich": "84862042 - - - Thiết bị hiệu chỉnh vị trí mẫu theo bước và lặp lại ",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thiết bị hiệu chỉnh vị trí mẫu theo bước và lặp lại"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848620",
+          "ngay": "2026-11-22",
+          "bam": "5934ddbe52297e73e7bafec113a5c8f479d41111433fde55dfce55ed82f2291d"
+        }
+      }
     },
     {
       "hs": "84862049",
@@ -434,11 +741,39 @@
     },
     {
       "hs": "84862051",
-      "dieuKien": "Thiết bị khắc để đánh dấu hoặc khắc vạch lên các tấm bán dẫn mỏng",
+      "dieuKien": "tên loại hàng: Thiết bị khắc; công dụng / mục đích: đánh dấu hoặc khắc vạch; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): tấm bán dẫn mỏng",
       "loaiKhac": false,
       "nguon": "tax.84862051",
       "trich": "84862051 - - - Thiết bị khắc để đánh dấu hoặc khắc vạch lên các tấm bán dẫn mỏng",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thiết bị khắc"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "đánh dấu",
+            "khắc vạch"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "tấm bán dẫn mỏng"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848620",
+          "ngay": "2026-11-22",
+          "bam": "5934ddbe52297e73e7bafec113a5c8f479d41111433fde55dfce55ed82f2291d"
+        }
+      }
     },
     {
       "hs": "84862059",
@@ -462,43 +797,182 @@
     },
     {
       "hs": "84862091",
-      "dieuKien": "Máy cắt laser để cắt các đường tiếp xúc bằng các chùm tia laser trong các sản phẩm bán dẫn",
+      "dieuKien": "tên loại hàng: Máy cắt laser; công dụng / mục đích: cắt các đường tiếp xúc; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): sản phẩm bán dẫn",
       "loaiKhac": false,
       "nguon": "tax.84862091",
       "trich": "84862091 - - - Máy cắt laser để cắt các đường tiếp xúc bằng các chùm tia laser trong các sản phẩm bán dẫn",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy cắt laser"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "cắt các đường tiếp xúc"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "sản phẩm bán dẫn"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848620",
+          "ngay": "2026-11-22",
+          "bam": "5934ddbe52297e73e7bafec113a5c8f479d41111433fde55dfce55ed82f2291d"
+        }
+      }
     },
     {
       "hs": "84862092",
-      "dieuKien": "Máy uốn, gấp và làm thẳng các đầu chân dẫn điện của bán dẫn",
+      "dieuKien": "tên loại hàng: Máy uốn hoặc gấp hoặc làm thẳng; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): đầu chân dẫn điện; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): bán dẫn",
       "loaiKhac": false,
       "nguon": "tax.84862092",
       "trich": "84862092 - - - Máy uốn, gấp và làm thẳng các đầu chân dẫn điện của bán dẫn",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Máy uốn",
+            "gấp",
+            "làm thẳng"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "đầu chân dẫn điện"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "bán dẫn"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848620",
+          "ngay": "2026-11-22",
+          "bam": "5934ddbe52297e73e7bafec113a5c8f479d41111433fde55dfce55ed82f2291d"
+        }
+      }
     },
     {
       "hs": "84862093",
-      "dieuKien": "Lò sấy và lò luyện dùng điện trở sử dụng trong sản xuất linh kiện bán dẫn trên các tấm bán dẫn mỏng",
+      "dieuKien": "tên loại hàng: Lò sấy hoặc lò luyện; tên loại hàng: điện trở; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): sản xuất linh kiện bán dẫn",
       "loaiKhac": false,
       "nguon": "tax.84862093",
       "trich": "84862093 - - - Lò sấy và lò luyện dùng điện trở sử dụng trong sản xuất linh kiện bán dẫn trên các tấm bán dẫn mỏng",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Lò sấy",
+            "lò luyện"
+          ]
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "điện trở"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "sản xuất linh kiện bán dẫn"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848620",
+          "ngay": "2026-11-22",
+          "bam": "5934ddbe52297e73e7bafec113a5c8f479d41111433fde55dfce55ed82f2291d"
+        }
+      }
     },
     {
       "hs": "84862094",
-      "dieuKien": "Lò sấy và lò luyện hoạt động bằng hiệu ứng cảm ứng điện hoặc điện môi dùng cho sản xuất linh kiện bán dẫn trên các tấm bán dẫn mỏng",
+      "dieuKien": "tên loại hàng: Lò sấy hoặc lò luyện; tên loại hàng: cảm ứng điện hoặc điện môi; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): sản xuất linh kiện bán dẫn",
       "loaiKhac": false,
       "nguon": "tax.84862094",
       "trich": "84862094 - - - Lò sấy và lò luyện hoạt động bằng hiệu ứng cảm ứng điện hoặc điện môi dùng cho sản xuất linh kiện bán dẫn trên các tấm bán dẫn mỏng",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Lò sấy",
+            "lò luyện"
+          ]
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "cảm ứng điện",
+            "điện môi"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "sản xuất linh kiện bán dẫn"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848620",
+          "ngay": "2026-11-22",
+          "bam": "5934ddbe52297e73e7bafec113a5c8f479d41111433fde55dfce55ed82f2291d"
+        }
+      }
     },
     {
       "hs": "84862095",
-      "dieuKien": "Máy tự động dịch chuyển hoặc bóc tách các linh kiện hoặc phần tiếp xúc trên các nguyên liệu bán dẫn",
+      "dieuKien": "tên loại hàng: dịch chuyển hoặc bóc tách; tên loại hàng: linh kiện hoặc phần tiếp xúc",
       "loaiKhac": false,
       "nguon": "tax.84862095",
       "trich": "84862095 - - - Máy tự động dịch chuyển hoặc bóc tách các linh kiện hoặc phần tiếp xúc trên các nguyên liệu bán dẫn",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "dịch chuyển",
+            "bóc tách"
+          ]
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "linh kiện",
+            "phần tiếp xúc"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848620",
+          "ngay": "2026-11-22",
+          "bam": "5934ddbe52297e73e7bafec113a5c8f479d41111433fde55dfce55ed82f2291d"
+        }
+      }
     },
     {
       "hs": "84862099",
@@ -535,27 +1009,91 @@
     },
     {
       "hs": "84863010",
-      "dieuKien": "Thiết bị khắc axit bằng phương pháp khô lên tấm nền của màn hình dẹt",
+      "dieuKien": "tên loại hàng: Thiết bị khắc axit; công dụng / mục đích: khô",
       "loaiKhac": false,
       "nguon": "tax.84863010",
       "trich": "84863010 - - Thiết bị khắc axit bằng phương pháp khô lên tấm nền của màn hình dẹt",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thiết bị khắc axit"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "khô"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848630",
+          "ngay": "2026-11-22",
+          "bam": "329870dc66dcbd636dc490afa1d8a4b39f47481d633993d2b37a980d0fc716ff"
+        }
+      }
     },
     {
       "hs": "84863020",
-      "dieuKien": "Thiết bị khắc axit bằng phương pháp ướt, hiện ảnh, tẩy rửa hoặc làm sạch màn hình dẹt",
+      "dieuKien": "tên loại hàng: Thiết bị khắc axit; công dụng / mục đích: ướt hoặc hiện ảnh hoặc tẩy rửa hoặc làm sạch màn hình dẹt",
       "loaiKhac": false,
       "nguon": "tax.84863020",
       "trich": "84863020 - - Thiết bị khắc axit bằng phương pháp ướt, hiện ảnh, tẩy rửa hoặc làm sạch màn hình dẹt",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thiết bị khắc axit"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "ướt",
+            "hiện ảnh",
+            "tẩy rửa",
+            "làm sạch màn hình dẹt"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848630",
+          "ngay": "2026-11-22",
+          "bam": "329870dc66dcbd636dc490afa1d8a4b39f47481d633993d2b37a980d0fc716ff"
+        }
+      }
     },
     {
       "hs": "84863030",
-      "dieuKien": "Thiết bị kết tủa và bay hơi dùng để sản xuất màn hình dẹt; thiết bị để tạo phủ lớp nhũ tương cảm quang lên các nền của màn hình dẹt bằng phương pháp quay; thiết bị tạo kết tủa vật lý lên các lớp nền của màn hình dẹt",
+      "dieuKien": "tên loại hàng: Thiết bị kết tủa và bay hơi hoặc thiết bị để tạo phủ lớp nhũ tương cảm quang hoặc thiết bị tạo kết tủa vật lý",
       "loaiKhac": false,
       "nguon": "tax.84863030",
       "trich": "84863030 - - Thiết bị kết tủa và bay hơi dùng để sản xuất màn hình dẹt; thiết bị để tạo phủ lớp nhũ tương cảm quang lên các nền của màn hình dẹt bằng phương pháp quay; thiết bị tạo kết tủa vật lý lên các lớp nền của màn hình dẹt",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Thiết bị kết tủa và bay hơi",
+            "thiết bị để tạo phủ lớp nhũ tương cảm quang",
+            "thiết bị tạo kết tủa vật lý"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848630",
+          "ngay": "2026-11-22",
+          "bam": "329870dc66dcbd636dc490afa1d8a4b39f47481d633993d2b37a980d0fc716ff"
+        }
+      }
     },
     {
       "hs": "84863090",
@@ -583,59 +1121,296 @@
     },
     {
       "hs": "84864010",
-      "dieuKien": "Máy phay bằng chùm tia ion hội tụ để sản xuất hoặc sửa chữa màn và lưới quang của các định dạng trên linh kiện bán dẫn",
+      "dieuKien": "tên loại hàng: Máy phay; phương pháp / nguyên lý xử lý của thiết bị: chùm tia ion hội tụ; công dụng / mục đích: sản xuất hoặc sửa chữa; công dụng / mục đích: màn và lưới quang của các định dạng trên linh kiện bán dẫn",
       "loaiKhac": false,
       "nguon": "tax.84864010",
       "trich": "84864010 - - Máy phay bằng chùm tia ion hội tụ để sản xuất hoặc sửa chữa màn và lưới quang của các định dạng trên linh kiện bán dẫn",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy phay"
+        },
+        {
+          "fact": "nguyenLyXuLy",
+          "op": "TRONG",
+          "value": [
+            "CHUM_TIA_ION_HOI_TU"
+          ]
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "sản xuất",
+            "sửa chữa"
+          ]
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "màn và lưới quang của các định dạng trên linh kiện bán dẫn"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848640",
+          "ngay": "2026-11-22",
+          "bam": "259a8451a195ffaeb73ca8b83887f1007d0bf8324455b4259d78eb9b973fc2f9"
+        }
+      }
     },
     {
       "hs": "84864020",
-      "dieuKien": "Thiết bị gắn khuôn, nối băng tự động, nối dây và bọc nhựa để lắp ráp các chất bán dẫn; máy tự động để dịch chuyển, xử lý và kẹp giữ các tấm bán dẫn mỏng, các khung miếng mỏng, hộp mỏng và vật liệu khác dùng cho thiết bị bán dẫn",
+      "dieuKien": "(tên loại hàng: Thiết bị gắn khuôn hoặc nối băng tự động hoặc nối dây hoặc bọc nhựa và công dụng / mục đích: lắp ráp các chất bán dẫn) hoặc (tên loại hàng: máy tự động và công dụng / mục đích: dịch chuyển, xử lý và kẹp giữ và dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): tấm bán dẫn mỏng hoặc khung miếng mỏng hoặc hộp mỏng hoặc vật liệu khác và dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): thiết bị bán dẫn)",
       "loaiKhac": false,
       "nguon": "tax.84864020",
       "trich": "84864020 - - Thiết bị gắn khuôn, nối băng tự động, nối dây và bọc nhựa để lắp ráp các chất bán dẫn; máy tự động để dịch chuyển, xử lý và kẹp giữ các tấm bán dẫn mỏng, các khung miếng mỏng, hộp mỏng và vật liệu khác dùng cho thiết bị bán dẫn",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "Thiết bị gắn khuôn",
+                  "nối băng tự động",
+                  "nối dây",
+                  "bọc nhựa"
+                ]
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "lắp ráp các chất bán dẫn"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "máy tự động"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "dịch chuyển, xử lý và kẹp giữ"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "tấm bán dẫn mỏng",
+                  "khung miếng mỏng",
+                  "hộp mỏng",
+                  "vật liệu khác"
+                ]
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "thiết bị bán dẫn"
+              }
+            ]
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848640",
+          "ngay": "2026-11-22",
+          "bam": "259a8451a195ffaeb73ca8b83887f1007d0bf8324455b4259d78eb9b973fc2f9"
+        }
+      },
+      "phanConLai": false
     },
     {
       "hs": "84864030",
-      "dieuKien": "Khuôn để sản xuất linh kiện bán dẫn",
+      "dieuKien": "tên loại hàng: Khuôn; công dụng / mục đích: sản xuất linh kiện bán dẫn",
       "loaiKhac": false,
       "nguon": "tax.84864030",
       "trich": "84864030 - - Khuôn để sản xuất linh kiện bán dẫn",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Khuôn"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "sản xuất linh kiện bán dẫn"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848640",
+          "ngay": "2026-11-22",
+          "bam": "259a8451a195ffaeb73ca8b83887f1007d0bf8324455b4259d78eb9b973fc2f9"
+        }
+      }
     },
     {
       "hs": "84864040",
-      "dieuKien": "Kính hiển vi quang học soi nổi được lắp với thiết bị chuyên dùng để kẹp giữ và dịch chuyển tấm bán dẫn bản mỏng hoặc tấm lưới bán dẫn",
+      "dieuKien": "tên loại hàng: Kính hiển vi quang học soi nổi; tên loại hàng: thiết bị chuyên; công dụng / mục đích: kẹp giữ và dịch chuyển; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): tấm bán dẫn bản mỏng hoặc tấm lưới bán dẫn",
       "loaiKhac": false,
       "nguon": "tax.84864040",
       "trich": "84864040 - - Kính hiển vi quang học soi nổi được lắp với thiết bị chuyên dùng để kẹp giữ và dịch chuyển tấm bán dẫn bản mỏng hoặc tấm lưới bán dẫn",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Kính hiển vi quang học soi nổi"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "thiết bị chuyên"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "kẹp giữ và dịch chuyển"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "tấm bán dẫn bản mỏng",
+            "tấm lưới bán dẫn"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848640",
+          "ngay": "2026-11-22",
+          "bam": "259a8451a195ffaeb73ca8b83887f1007d0bf8324455b4259d78eb9b973fc2f9"
+        }
+      }
     },
     {
       "hs": "84864050",
-      "dieuKien": "Kính hiển vi chụp ảnh được lắp với thiết bị chuyên dùng để kẹp giữ và dịch chuyển tấm bán dẫn bản mỏng hoặc tấm lưới bán dẫn",
+      "dieuKien": "tên loại hàng: Kính hiển vi chụp ảnh; tên loại hàng: thiết bị chuyên; công dụng / mục đích: kẹp giữ và dịch chuyển; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): tấm bán dẫn bản mỏng hoặc tấm lưới bán dẫn",
       "loaiKhac": false,
       "nguon": "tax.84864050",
       "trich": "84864050 - - Kính hiển vi chụp ảnh được lắp với thiết bị chuyên dùng để kẹp giữ và dịch chuyển tấm bán dẫn bản mỏng hoặc tấm lưới bán dẫn",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Kính hiển vi chụp ảnh"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "thiết bị chuyên"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "kẹp giữ và dịch chuyển"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "tấm bán dẫn bản mỏng",
+            "tấm lưới bán dẫn"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848640",
+          "ngay": "2026-11-22",
+          "bam": "259a8451a195ffaeb73ca8b83887f1007d0bf8324455b4259d78eb9b973fc2f9"
+        }
+      }
     },
     {
       "hs": "84864060",
-      "dieuKien": "Kính hiển vi điện tử được lắp với thiết bị chuyên dùng để kẹp giữ và dịch chuyển tấm bán dẫn bản mỏng hoặc tấm lưới bán dẫn",
+      "dieuKien": "tên loại hàng: Kính hiển vi điện tử; tên loại hàng: thiết bị chuyên; công dụng / mục đích: kẹp giữ và dịch chuyển; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): tấm bán dẫn bản mỏng hoặc tấm lưới bán dẫn",
       "loaiKhac": false,
       "nguon": "tax.84864060",
       "trich": "84864060 - - Kính hiển vi điện tử được lắp với thiết bị chuyên dùng để kẹp giữ và dịch chuyển tấm bán dẫn bản mỏng hoặc tấm lưới bán dẫn",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Kính hiển vi điện tử"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "thiết bị chuyên"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "kẹp giữ và dịch chuyển"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "tấm bán dẫn bản mỏng",
+            "tấm lưới bán dẫn"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848640",
+          "ngay": "2026-11-22",
+          "bam": "259a8451a195ffaeb73ca8b83887f1007d0bf8324455b4259d78eb9b973fc2f9"
+        }
+      }
     },
     {
       "hs": "84864070",
-      "dieuKien": "Thiết bị tạo mẫu dùng cho quá trình tạo màn (khuôn in) hoặc lưới quang trên các tấm nền phủ lớp cản quang trong quá trình khắc",
+      "dieuKien": "tên loại hàng: Thiết bị tạo mẫu; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): quá trình tạo màn hoặc lưới quang",
       "loaiKhac": false,
       "nguon": "tax.84864070",
       "trich": "84864070 - - Thiết bị tạo mẫu dùng cho quá trình tạo màn (khuôn in) hoặc lưới quang trên các tấm nền phủ lớp cản quang trong quá trình khắc",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thiết bị tạo mẫu"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "quá trình tạo màn",
+            "lưới quang"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848640",
+          "ngay": "2026-11-22",
+          "bam": "259a8451a195ffaeb73ca8b83887f1007d0bf8324455b4259d78eb9b973fc2f9"
+        }
+      }
     },
     {
       "hs": "84864090",
@@ -671,35 +1446,167 @@
     },
     {
       "hs": "84869011",
-      "dieuKien": "Của thiết bị nung nóng nhanh tấm bán dẫn mỏng",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): thiết bị nung nóng nhanh tấm bán dẫn mỏng",
       "loaiKhac": false,
       "nguon": "tax.84869011",
       "trich": "84869011 - - - Của thiết bị nung nóng nhanh tấm bán dẫn mỏng",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "thiết bị nung nóng nhanh tấm bán dẫn mỏng"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848690",
+          "ngay": "2026-11-22",
+          "bam": "d0375743b5459e67ed83ab08be0ef6cc3c22da67bf76b4961c2c87387efec9a7"
+        }
+      }
     },
     {
       "hs": "84869012",
-      "dieuKien": "Của thiết bị làm khô bằng phương pháp quay dùng cho quá trình gia công tấm bản mỏng",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): thiết bị làm khô; phương pháp / nguyên lý xử lý của thiết bị: phương pháp quay (quay ly tâm); dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): quá trình gia công tấm bản mỏng",
       "loaiKhac": false,
       "nguon": "tax.84869012",
       "trich": "84869012 - - - Của thiết bị làm khô bằng phương pháp quay dùng cho quá trình gia công tấm bản mỏng",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "thiết bị làm khô"
+        },
+        {
+          "fact": "nguyenLyXuLy",
+          "op": "TRONG",
+          "value": [
+            "QUAY"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "quá trình gia công tấm bản mỏng"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848690",
+          "ngay": "2026-11-22",
+          "bam": "d0375743b5459e67ed83ab08be0ef6cc3c22da67bf76b4961c2c87387efec9a7"
+        }
+      }
     },
     {
       "hs": "84869013",
-      "dieuKien": "Của máy công cụ để gia công mọi vật liệu bằng cách bóc tách vật liệu, bằng quy trình sử dụng tia laser hoặc tia sáng khác hoặc chùm phô-tông trong sản xuất tấm bán dẫn mỏng",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): máy công cụ; công dụng / mục đích: gia công mọi vật liệu bằng cách bóc tách vật liệu; phương pháp / nguyên lý xử lý của thiết bị: tia laser, tia sáng khác hoặc chùm phô-tông; công dụng / mục đích: sản xuất tấm bán dẫn mỏng",
       "loaiKhac": false,
       "nguon": "tax.84869013",
       "trich": "84869013 - - - Của máy công cụ để gia công mọi vật liệu bằng cách bóc tách vật liệu, bằng quy trình sử dụng tia laser hoặc tia sáng khác hoặc chùm phô-tông trong sản xuất tấm bán dẫn mỏng",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy công cụ"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "gia công mọi vật liệu bằng cách bóc tách vật liệu"
+        },
+        {
+          "fact": "nguyenLyXuLy",
+          "op": "TRONG",
+          "value": [
+            "TIA_LASER_HOAC_TIA_SANG_KHAC"
+          ]
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "sản xuất tấm bán dẫn mỏng"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848690",
+          "ngay": "2026-11-22",
+          "bam": "d0375743b5459e67ed83ab08be0ef6cc3c22da67bf76b4961c2c87387efec9a7"
+        }
+      },
+      "phanConLai": false
     },
     {
       "hs": "84869014",
-      "dieuKien": "Bộ phận kẹp dụng cụ và đầu cắt ren tự mở; bộ phận kẹp sản phẩm; đầu chia độ và những bộ phận phụ trợ đặc biệt khác dùng cho máy công cụ ",
+      "dieuKien": "(tên loại hàng: Bộ phận kẹp dụng cụ hoặc đầu cắt ren tự mở và dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): máy công cụ) hoặc (tên loại hàng: bộ phận kẹp sản phẩm và dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): máy công cụ) hoặc (tên loại hàng: đầu chia độ hoặc bộ phận phụ trợ đặc biệt và dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): máy công cụ)",
       "loaiKhac": false,
       "nguon": "tax.84869014",
       "trich": "84869014 - - - - Bộ phận kẹp dụng cụ và đầu cắt ren tự mở; bộ phận kẹp sản phẩm; đầu chia độ và những bộ phận phụ trợ đặc biệt khác dùng cho máy công cụ ",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "Bộ phận kẹp dụng cụ",
+                  "đầu cắt ren tự mở"
+                ]
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "máy công cụ"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "bộ phận kẹp sản phẩm"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "máy công cụ"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "đầu chia độ",
+                  "bộ phận phụ trợ đặc biệt"
+                ]
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "máy công cụ"
+              }
+            ]
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848690",
+          "ngay": "2026-11-22",
+          "bam": "d0375743b5459e67ed83ab08be0ef6cc3c22da67bf76b4961c2c87387efec9a7"
+        }
+      }
     },
     {
       "hs": "84869015",
@@ -723,19 +1630,66 @@
     },
     {
       "hs": "84869016",
-      "dieuKien": "Của máy mài, đánh bóng và mài rà dùng cho quá trình sản xuất tấm bán dẫn mỏng",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): máy; công dụng / mục đích: mài hoặc đánh bóng hoặc mài rà; công dụng / mục đích: sản xuất tấm bán dẫn mỏng",
       "loaiKhac": false,
       "nguon": "tax.84869016",
       "trich": "84869016 - - - Của máy mài, đánh bóng và mài rà dùng cho quá trình sản xuất tấm bán dẫn mỏng",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "mài",
+            "đánh bóng",
+            "mài rà"
+          ]
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "sản xuất tấm bán dẫn mỏng"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848690",
+          "ngay": "2026-11-22",
+          "bam": "d0375743b5459e67ed83ab08be0ef6cc3c22da67bf76b4961c2c87387efec9a7"
+        }
+      }
     },
     {
       "hs": "84869017",
-      "dieuKien": "Của thiết bị làm phát triển hoặc kéo dài khối bán dẫn đơn tinh thể",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): làm phát triển hoặc kéo dài khối bán dẫn đơn tinh thể",
       "loaiKhac": false,
       "nguon": "tax.84869017",
       "trich": "84869017 - - - Của thiết bị làm phát triển hoặc kéo dài khối bán dẫn đơn tinh thể",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "làm phát triển",
+            "kéo dài khối bán dẫn đơn tinh thể"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848690",
+          "ngay": "2026-11-22",
+          "bam": "d0375743b5459e67ed83ab08be0ef6cc3c22da67bf76b4961c2c87387efec9a7"
+        }
+      }
     },
     {
       "hs": "84869019",
@@ -769,35 +1723,230 @@
     },
     {
       "hs": "84869021",
-      "dieuKien": "Của thiết bị kết tủa và bay hơi dùng cho sản xuất bán dẫn",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): thiết bị kết tủa và bay hơi; công dụng / mục đích: sản xuất bán dẫn",
       "loaiKhac": false,
       "nguon": "tax.84869021",
       "trich": "84869021 - - - Của thiết bị kết tủa và bay hơi dùng cho sản xuất bán dẫn",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "thiết bị kết tủa và bay hơi"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "sản xuất bán dẫn"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848690",
+          "ngay": "2026-11-22",
+          "bam": "d0375743b5459e67ed83ab08be0ef6cc3c22da67bf76b4961c2c87387efec9a7"
+        }
+      }
     },
     {
       "hs": "84869022",
-      "dieuKien": "Của máy kết tủa epitaxi dùng cho các tấm bán dẫn mỏng; của thiết bị để tạo lớp phủ nhũ tương cảm quang in ảnh lên các tấm bán dẫn mỏng bằng phương pháp quay",
+      "dieuKien": "(dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): máy kết tủa epitaxi và dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): tấm bán dẫn mỏng) hoặc (dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): thiết bị để tạo lớp phủ nhũ tương cảm quang in ảnh lên các tấm bán dẫn mỏng và phương pháp / nguyên lý xử lý của thiết bị: phương pháp quay (quay ly tâm))",
       "loaiKhac": false,
       "nguon": "tax.84869022",
       "trich": "84869022 - - - Của máy kết tủa epitaxi dùng cho các tấm bán dẫn mỏng; của thiết bị để tạo lớp phủ nhũ tương cảm quang in ảnh lên các tấm bán dẫn mỏng bằng phương pháp quay",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "máy kết tủa epitaxi"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "tấm bán dẫn mỏng"
+              }
+            ],
+            [
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "thiết bị để tạo lớp phủ nhũ tương cảm quang in ảnh lên các tấm bán dẫn mỏng"
+              },
+              {
+                "fact": "nguyenLyXuLy",
+                "op": "TRONG",
+                "value": [
+                  "QUAY"
+                ]
+              }
+            ]
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848690",
+          "ngay": "2026-11-22",
+          "bam": "d0375743b5459e67ed83ab08be0ef6cc3c22da67bf76b4961c2c87387efec9a7"
+        }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "84869025",
+          "lyDo": "Chữ biểu tự chồng thật: .22 \"của thiết bị để tạo lớp phủ nhũ tương cảm quang in ảnh lên các tấm bán dẫn mỏng bằng phương pháp quay\" và tầng r14731 của .25 \"của thiết bị để khắc axit ướt, hiện ảnh, tẩy rửa hoặc làm sạch các tấm bán dẫn mỏng\" — hàng thật: bộ phận của cụm phủ–hiện ảnh cảm quang (coater/developer track) vừa phủ chất cảm quang bằng phương pháp quay vừa hiện ảnh tấm bán dẫn mỏng; không có căn cứ thứ tự trong chữ biểu (Claude 11/11/2026, #1109)."
+        }
+      ]
     },
     {
       "hs": "84869023",
-      "dieuKien": "Của máy cấy ghép ion cho quá trình xử lý vật liệu bán dẫn; của thiết bị tạo kết tủa vật lý bằng phương pháp phun phủ lên tấm bán dẫn mỏng; của thiết bị để lắng đọng vật lý cho sản xuất bán dẫn; của thiết bị ghi trực tiếp lên tấm bán dẫn mỏng, thiết bị hiệu chỉnh vị trí mẫu theo bước và lặp lại và thiết bị in ly tô khác ",
+      "dieuKien": "(dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): máy cấy ghép ion và công dụng / mục đích: xử lý vật liệu bán dẫn) hoặc (dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): thiết bị tạo kết tủa vật lý và phương pháp / nguyên lý xử lý của thiết bị: phương pháp phun phủ (sputtering) và dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): tấm bán dẫn mỏng) hoặc (dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): thiết bị để lắng đọng vật lý cho sản xuất bán dẫn) hoặc (dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): thiết bị ghi trực tiếp lên tấm bán dẫn mỏng hoặc thiết bị hiệu chỉnh vị trí mẫu theo bước và lặp lại hoặc thiết bị in ly tô)",
       "loaiKhac": false,
       "nguon": "tax.84869023",
-      "trich": "84869023 - - - Của máy cấy ghép ion cho quá trình xử lý vật liệu bán dẫn; của thiết bị tạo kết tủa vật lý bằng phương pháp phun phủ lên tấm bán dẫn mỏng; của thiết bị để lắng đọng vật lý cho sản xuất bán dẫn; của thiết bị ghi trực tiếp lên tấm bán dẫn mỏng, thiết bị hiệu chỉnh vị trí mẫu theo bước và lặp lại và thiết bị in ly tô khác ",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "Của máy cấy ghép ion cho … xử lý vật liệu bán dẫn; của thiết bị tạo kết tủa vật lý bằng phương pháp phun phủ …; của thiết bị để lắng đọng vật lý cho sản xuất bán dẫn; của thiết bị ghi trực tiếp lên tấm bán dẫn mỏng, thiết bị hiệu chỉnh vị trí mẫu theo bước và lặp lại và thiết bị in ly tô khác",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "máy cấy ghép ion"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "xử lý vật liệu bán dẫn"
+              }
+            ],
+            [
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "thiết bị tạo kết tủa vật lý"
+              },
+              {
+                "fact": "nguyenLyXuLy",
+                "op": "TRONG",
+                "value": [
+                  "PHUN_PHU"
+                ]
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "tấm bán dẫn mỏng"
+              }
+            ],
+            [
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "thiết bị để lắng đọng vật lý cho sản xuất bán dẫn"
+              }
+            ],
+            [
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "thiết bị ghi trực tiếp lên tấm bán dẫn mỏng",
+                  "thiết bị hiệu chỉnh vị trí mẫu theo bước và lặp lại",
+                  "thiết bị in ly tô"
+                ]
+              }
+            ]
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848690",
+          "ngay": "2026-11-22",
+          "bam": "d0375743b5459e67ed83ab08be0ef6cc3c22da67bf76b4961c2c87387efec9a7"
+        }
+      },
+      "phanConLai": false,
+      "chongLanVanBan": [
+        {
+          "voi": "84869025",
+          "lyDo": "Không có hàng thật thoả cả hai (Q1, Claude 11/11/2026, #1109): .23 \"của thiết bị ghi trực tiếp lên tấm bán dẫn mỏng\" là thiết bị in ly tô (vẽ mạch lên lớp cản quang), còn tầng r14731 của .25 \"của thiết bị để khắc axit ướt, hiện ảnh, tẩy rửa hoặc làm sạch các tấm bán dẫn mỏng\" là thiết bị xử lý ướt — không thiết bị nào vừa ghi trực tiếp vừa khắc axit ướt/tẩy rửa; chồng lấn chỉ do bộ so chữ gán «thiết bị … tấm bán dẫn mỏng» cho cả hai. Không có căn cứ thứ tự."
+        }
+      ]
     },
     {
       "hs": "84869024",
-      "dieuKien": "Bộ phận kẹp dụng cụ và đầu cắt ren tự mở; bộ phận kẹp sản phẩm; đầu chia độ và những bộ phận phụ trợ đặc biệt khác dùng cho máy công cụ ",
+      "dieuKien": "(tên loại hàng: Bộ phận kẹp dụng cụ hoặc đầu cắt ren tự mở và dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): máy công cụ) hoặc (tên loại hàng: bộ phận kẹp sản phẩm và dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): máy công cụ) hoặc (tên loại hàng: đầu chia độ hoặc bộ phận phụ trợ đặc biệt và dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): máy công cụ)",
       "loaiKhac": false,
       "nguon": "tax.84869024",
       "trich": "84869024 - - - - Bộ phận kẹp dụng cụ và đầu cắt ren tự mở; bộ phận kẹp sản phẩm; đầu chia độ và những bộ phận phụ trợ đặc biệt khác dùng cho máy công cụ ",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "Bộ phận kẹp dụng cụ",
+                  "đầu cắt ren tự mở"
+                ]
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "máy công cụ"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "bộ phận kẹp sản phẩm"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "máy công cụ"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "đầu chia độ",
+                  "bộ phận phụ trợ đặc biệt"
+                ]
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "máy công cụ"
+              }
+            ]
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848690",
+          "ngay": "2026-11-22",
+          "bam": "d0375743b5459e67ed83ab08be0ef6cc3c22da67bf76b4961c2c87387efec9a7"
+        }
+      }
     },
     {
       "hs": "84869025",
@@ -817,15 +1966,82 @@
         ],
         "toTienCoTen": "848690",
         "dinhNghiaDuoc": true
-      }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "84869022",
+          "lyDo": "Chữ biểu tự chồng thật: .22 \"của thiết bị để tạo lớp phủ nhũ tương cảm quang in ảnh lên các tấm bán dẫn mỏng bằng phương pháp quay\" và tầng r14731 của .25 \"của thiết bị để khắc axit ướt, hiện ảnh, tẩy rửa hoặc làm sạch các tấm bán dẫn mỏng\" — hàng thật: bộ phận của cụm phủ–hiện ảnh cảm quang (coater/developer track) vừa phủ chất cảm quang bằng phương pháp quay vừa hiện ảnh tấm bán dẫn mỏng; không có căn cứ thứ tự trong chữ biểu (Claude 11/11/2026, #1109)."
+        },
+        {
+          "voi": "84869023",
+          "lyDo": "Không có hàng thật thoả cả hai (Q1, Claude 11/11/2026, #1109): .23 \"của thiết bị ghi trực tiếp lên tấm bán dẫn mỏng\" là thiết bị in ly tô (vẽ mạch lên lớp cản quang), còn tầng r14731 của .25 \"của thiết bị để khắc axit ướt, hiện ảnh, tẩy rửa hoặc làm sạch các tấm bán dẫn mỏng\" là thiết bị xử lý ướt — không thiết bị nào vừa ghi trực tiếp vừa khắc axit ướt/tẩy rửa; chồng lấn chỉ do bộ so chữ gán «thiết bị … tấm bán dẫn mỏng» cho cả hai. Không có căn cứ thứ tự."
+        }
+      ]
     },
     {
       "hs": "84869026",
-      "dieuKien": "Bộ phận kẹp dụng cụ và đầu cắt ren tự mở; bộ phận kẹp sản phẩm; đầu chia độ và những bộ phận phụ trợ đặc biệt khác dùng cho máy công cụ ",
+      "dieuKien": "(tên loại hàng: Bộ phận kẹp dụng cụ hoặc đầu cắt ren tự mở và dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): máy công cụ) hoặc (tên loại hàng: bộ phận kẹp sản phẩm và dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): máy công cụ) hoặc (tên loại hàng: đầu chia độ hoặc bộ phận phụ trợ đặc biệt và dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): máy công cụ)",
       "loaiKhac": false,
       "nguon": "tax.84869026",
       "trich": "84869026 - - - - Bộ phận kẹp dụng cụ và đầu cắt ren tự mở; bộ phận kẹp sản phẩm; đầu chia độ và những bộ phận phụ trợ đặc biệt khác dùng cho máy công cụ ",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "Bộ phận kẹp dụng cụ",
+                  "đầu cắt ren tự mở"
+                ]
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "máy công cụ"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "bộ phận kẹp sản phẩm"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "máy công cụ"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "đầu chia độ",
+                  "bộ phận phụ trợ đặc biệt"
+                ]
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "máy công cụ"
+              }
+            ]
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848690",
+          "ngay": "2026-11-22",
+          "bam": "d0375743b5459e67ed83ab08be0ef6cc3c22da67bf76b4961c2c87387efec9a7"
+        }
+      }
     },
     {
       "hs": "84869027",
@@ -849,11 +2065,43 @@
     },
     {
       "hs": "84869028",
-      "dieuKien": "Của lò sấy và lò luyện dùng điện trở sử dụng trong sản xuất linh kiện bán dẫn trên tấm bán dẫn mỏng; của lò sấy và lò luyện hoạt động bằng hiệu ứng cảm ứng điện hoặc điện môi dùng trong sản xuất linh kiện bán dẫn trên tấm bán dẫn mỏng ",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): lò sấy hoặc lò luyện; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): điện trở hoặc cảm ứng điện hoặc điện môi; công dụng / mục đích: sản xuất linh kiện bán dẫn",
       "loaiKhac": false,
       "nguon": "tax.84869028",
       "trich": "84869028 - - - Của lò sấy và lò luyện dùng điện trở sử dụng trong sản xuất linh kiện bán dẫn trên tấm bán dẫn mỏng; của lò sấy và lò luyện hoạt động bằng hiệu ứng cảm ứng điện hoặc điện môi dùng trong sản xuất linh kiện bán dẫn trên tấm bán dẫn mỏng ",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "lò sấy",
+            "lò luyện"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "điện trở",
+            "cảm ứng điện",
+            "điện môi"
+          ]
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "sản xuất linh kiện bán dẫn"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848690",
+          "ngay": "2026-11-22",
+          "bam": "d0375743b5459e67ed83ab08be0ef6cc3c22da67bf76b4961c2c87387efec9a7"
+        }
+      }
     },
     {
       "hs": "84869029",
@@ -887,19 +2135,101 @@
     },
     {
       "hs": "84869031",
-      "dieuKien": "Của thiết bị để khắc axit bằng phương pháp khô lên các tấm nền của màn hình dẹt",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): thiết bị; công dụng / mục đích: khắc axit bằng phương pháp khô; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): tấm nền của màn hình dẹt",
       "loaiKhac": false,
       "nguon": "tax.84869031",
       "trich": "84869031 - - - Của thiết bị để khắc axit bằng phương pháp khô lên các tấm nền của màn hình dẹt",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "thiết bị"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "khắc axit bằng phương pháp khô"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "tấm nền của màn hình dẹt"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848690",
+          "ngay": "2026-11-22",
+          "bam": "d0375743b5459e67ed83ab08be0ef6cc3c22da67bf76b4961c2c87387efec9a7"
+        }
+      }
     },
     {
       "hs": "84869032",
-      "dieuKien": "Bộ phận kẹp dụng cụ và đầu cắt ren tự mở; bộ phận kẹp sản phẩm; đầu chia độ và những bộ phận phụ trợ đặc biệt khác dùng cho máy công cụ ",
+      "dieuKien": "(tên loại hàng: Bộ phận kẹp dụng cụ hoặc đầu cắt ren tự mở và dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): máy công cụ) hoặc (tên loại hàng: bộ phận kẹp sản phẩm và dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): máy công cụ) hoặc (tên loại hàng: đầu chia độ hoặc bộ phận phụ trợ đặc biệt và dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): máy công cụ)",
       "loaiKhac": false,
       "nguon": "tax.84869032",
       "trich": "84869032 - - - - Bộ phận kẹp dụng cụ và đầu cắt ren tự mở; bộ phận kẹp sản phẩm; đầu chia độ và những bộ phận phụ trợ đặc biệt khác dùng cho máy công cụ ",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "Bộ phận kẹp dụng cụ",
+                  "đầu cắt ren tự mở"
+                ]
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "máy công cụ"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "bộ phận kẹp sản phẩm"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "máy công cụ"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "đầu chia độ",
+                  "bộ phận phụ trợ đặc biệt"
+                ]
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "máy công cụ"
+              }
+            ]
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848690",
+          "ngay": "2026-11-22",
+          "bam": "d0375743b5459e67ed83ab08be0ef6cc3c22da67bf76b4961c2c87387efec9a7"
+        }
+      }
     },
     {
       "hs": "84869033",
@@ -923,27 +2253,97 @@
     },
     {
       "hs": "84869034",
-      "dieuKien": "Của thiết bị kết tủa và bay hơi dùng để sản xuất màn hình dẹt",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): thiết bị kết tủa và bay hơi; công dụng / mục đích: sản xuất màn hình dẹt",
       "loaiKhac": false,
       "nguon": "tax.84869034",
       "trich": "84869034 - - - Của thiết bị kết tủa và bay hơi dùng để sản xuất màn hình dẹt",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "thiết bị kết tủa và bay hơi"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "sản xuất màn hình dẹt"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848690",
+          "ngay": "2026-11-22",
+          "bam": "d0375743b5459e67ed83ab08be0ef6cc3c22da67bf76b4961c2c87387efec9a7"
+        }
+      }
     },
     {
       "hs": "84869035",
-      "dieuKien": "Của thiết bị để tạo lớp phủ nhũ tương cảm quang lên tấm nền của màn hình dẹt",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): thiết bị; công dụng / mục đích: tạo lớp phủ nhũ tương cảm quang; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): tấm nền của màn hình dẹt",
       "loaiKhac": false,
       "nguon": "tax.84869035",
       "trich": "84869035 - - - Của thiết bị để tạo lớp phủ nhũ tương cảm quang lên tấm nền của màn hình dẹt",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "thiết bị"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "tạo lớp phủ nhũ tương cảm quang"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "tấm nền của màn hình dẹt"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848690",
+          "ngay": "2026-11-22",
+          "bam": "d0375743b5459e67ed83ab08be0ef6cc3c22da67bf76b4961c2c87387efec9a7"
+        }
+      }
     },
     {
       "hs": "84869036",
-      "dieuKien": "Của thiết bị để tạo kết tủa vật lý lên các đế của màn hình dẹt",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): thiết bị; công dụng / mục đích: tạo kết tủa vật lý; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): đế của màn hình dẹt",
       "loaiKhac": false,
       "nguon": "tax.84869036",
       "trich": "84869036 - - - Của thiết bị để tạo kết tủa vật lý lên các đế của màn hình dẹt",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "thiết bị"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "tạo kết tủa vật lý"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "đế của màn hình dẹt"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848690",
+          "ngay": "2026-11-22",
+          "bam": "d0375743b5459e67ed83ab08be0ef6cc3c22da67bf76b4961c2c87387efec9a7"
+        }
+      }
     },
     {
       "hs": "84869039",
@@ -975,51 +2375,225 @@
     },
     {
       "hs": "84869041",
-      "dieuKien": "Của máy phay bằng chùm tia ion hội tụ để sản xuất hoặc sửa chữa màn và lưới quang của các định dạng trên linh kiện bán dẫn",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): máy phay; phương pháp / nguyên lý xử lý của thiết bị: chùm tia ion hội tụ; công dụng / mục đích: màn và lưới quang; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): các định dạng trên linh kiện bán dẫn",
       "loaiKhac": false,
       "nguon": "tax.84869041",
       "trich": "84869041 - - - Của máy phay bằng chùm tia ion hội tụ để sản xuất hoặc sửa chữa màn và lưới quang của các định dạng trên linh kiện bán dẫn",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy phay"
+        },
+        {
+          "fact": "nguyenLyXuLy",
+          "op": "TRONG",
+          "value": [
+            "CHUM_TIA_ION_HOI_TU"
+          ]
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "màn và lưới quang"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "các định dạng trên linh kiện bán dẫn"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848690",
+          "ngay": "2026-11-22",
+          "bam": "d0375743b5459e67ed83ab08be0ef6cc3c22da67bf76b4961c2c87387efec9a7"
+        }
+      }
     },
     {
       "hs": "84869042",
-      "dieuKien": "Của thiết bị gắn khuôn, nối băng tự động, nối dây và bọc nhựa để lắp ráp các chất bán dẫn",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): gắn khuôn hoặc nối băng tự động hoặc nối dây hoặc bọc nhựa; công dụng / mục đích: lắp ráp các chất bán dẫn",
       "loaiKhac": false,
       "nguon": "tax.84869042",
       "trich": "84869042 - - - Của thiết bị gắn khuôn, nối băng tự động, nối dây và bọc nhựa để lắp ráp các chất bán dẫn",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "gắn khuôn",
+            "nối băng tự động",
+            "nối dây",
+            "bọc nhựa"
+          ]
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "lắp ráp các chất bán dẫn"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848690",
+          "ngay": "2026-11-22",
+          "bam": "d0375743b5459e67ed83ab08be0ef6cc3c22da67bf76b4961c2c87387efec9a7"
+        }
+      }
     },
     {
       "hs": "84869043",
-      "dieuKien": "Của máy tự động để dịch chuyển, xử lý và kẹp giữ các tấm bán dẫn mỏng, các khung miếng mỏng, hộp mỏng và vật liệu khác dùng cho thiết bị bán dẫn",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): máy tự động; công dụng / mục đích: dịch chuyển, xử lý và kẹp giữ; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): tấm bán dẫn mỏng hoặc khung miếng mỏng hoặc hộp mỏng hoặc vật liệu khác; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): thiết bị bán dẫn",
       "loaiKhac": false,
       "nguon": "tax.84869043",
       "trich": "84869043 - - - Của máy tự động để dịch chuyển, xử lý và kẹp giữ các tấm bán dẫn mỏng, các khung miếng mỏng, hộp mỏng và vật liệu khác dùng cho thiết bị bán dẫn",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy tự động"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "dịch chuyển, xử lý và kẹp giữ"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "tấm bán dẫn mỏng",
+            "khung miếng mỏng",
+            "hộp mỏng",
+            "vật liệu khác"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "thiết bị bán dẫn"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848690",
+          "ngay": "2026-11-22",
+          "bam": "d0375743b5459e67ed83ab08be0ef6cc3c22da67bf76b4961c2c87387efec9a7"
+        }
+      }
     },
     {
       "hs": "84869044",
-      "dieuKien": "Của kính hiển vi quang học soi nổi và kính hiển vi chụp ảnh được lắp với thiết bị chuyên dùng để kẹp giữ và dịch chuyển tấm bán dẫn bản mỏng hoặc tấm lưới bán dẫn",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): kính hiển vi quang học soi nổi hoặc kính hiển vi chụp ảnh; công dụng / mục đích: kẹp giữ và dịch chuyển; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): tấm bán dẫn bản mỏng hoặc tấm lưới bán dẫn",
       "loaiKhac": false,
       "nguon": "tax.84869044",
       "trich": "84869044 - - - Của kính hiển vi quang học soi nổi và kính hiển vi chụp ảnh được lắp với thiết bị chuyên dùng để kẹp giữ và dịch chuyển tấm bán dẫn bản mỏng hoặc tấm lưới bán dẫn",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "kính hiển vi quang học soi nổi",
+            "kính hiển vi chụp ảnh"
+          ]
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "kẹp giữ và dịch chuyển"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "tấm bán dẫn bản mỏng",
+            "tấm lưới bán dẫn"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848690",
+          "ngay": "2026-11-22",
+          "bam": "d0375743b5459e67ed83ab08be0ef6cc3c22da67bf76b4961c2c87387efec9a7"
+        }
+      }
     },
     {
       "hs": "84869045",
-      "dieuKien": "Của kính hiển vi điện tử được lắp với thiết bị chuyên dùng để kẹp giữ và dịch chuyển tấm bán dẫn bản mỏng hoặc tấm lưới bán dẫn",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): kính hiển vi điện tử; công dụng / mục đích: kẹp giữ và dịch chuyển; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): tấm bán dẫn bản mỏng hoặc tấm lưới bán dẫn",
       "loaiKhac": false,
       "nguon": "tax.84869045",
       "trich": "84869045 - - - Của kính hiển vi điện tử được lắp với thiết bị chuyên dùng để kẹp giữ và dịch chuyển tấm bán dẫn bản mỏng hoặc tấm lưới bán dẫn",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "kính hiển vi điện tử"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "kẹp giữ và dịch chuyển"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "tấm bán dẫn bản mỏng",
+            "tấm lưới bán dẫn"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848690",
+          "ngay": "2026-11-22",
+          "bam": "d0375743b5459e67ed83ab08be0ef6cc3c22da67bf76b4961c2c87387efec9a7"
+        }
+      }
     },
     {
       "hs": "84869046",
-      "dieuKien": "Của thiết bị tạo mẫu dùng cho quá trình tạo màn (khuôn in) hoặc lưới quang trên các đế phủ lớp cản quang trong quá trình khắc, kể cả mạch in đã lắp ráp",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): thiết bị tạo mẫu; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): tạo màn hoặc lưới quang",
       "loaiKhac": false,
       "nguon": "tax.84869046",
       "trich": "84869046 - - - Của thiết bị tạo mẫu dùng cho quá trình tạo màn (khuôn in) hoặc lưới quang trên các đế phủ lớp cản quang trong quá trình khắc, kể cả mạch in đã lắp ráp",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "thiết bị tạo mẫu"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "tạo màn",
+            "lưới quang"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848690",
+          "ngay": "2026-11-22",
+          "bam": "d0375743b5459e67ed83ab08be0ef6cc3c22da67bf76b4961c2c87387efec9a7"
+        }
+      }
     },
     {
       "hs": "84869049",
@@ -1859,5 +3433,422 @@
     "dat": 74,
     "loai": 2,
     "nguonBiCat": []
-  }
+  },
+  "dieuKienNut": [
+    {
+      "id": "8486201",
+      "nguon": "tieuDe.8486201",
+      "trich": "8486201 Thiết bị tạo lớp màng mỏng",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thiết bị tạo lớp màng mỏng"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848620",
+          "ngay": "2026-11-22",
+          "bam": "5934ddbe52297e73e7bafec113a5c8f479d41111433fde55dfce55ed82f2291d"
+        }
+      }
+    },
+    {
+      "id": "8486202",
+      "nguon": "tieuDe.8486202",
+      "trich": "8486202 Thiết bị tạo hợp kim hóa",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thiết bị tạo hợp kim hóa"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848620",
+          "ngay": "2026-11-22",
+          "bam": "5934ddbe52297e73e7bafec113a5c8f479d41111433fde55dfce55ed82f2291d"
+        }
+      }
+    },
+    {
+      "id": "8486203",
+      "nguon": "tieuDe.8486203",
+      "trich": "8486203 Thiết bị tẩy rửa và khắc axit",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Thiết bị tẩy rửa",
+            "khắc axit"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848620",
+          "ngay": "2026-11-22",
+          "bam": "5934ddbe52297e73e7bafec113a5c8f479d41111433fde55dfce55ed82f2291d"
+        }
+      }
+    },
+    {
+      "id": "8486204",
+      "nguon": "tieuDe.8486204",
+      "trich": "8486204 Thiết bị in ly tô",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thiết bị in ly tô"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848620",
+          "ngay": "2026-11-22",
+          "bam": "5934ddbe52297e73e7bafec113a5c8f479d41111433fde55dfce55ed82f2291d"
+        }
+      }
+    },
+    {
+      "id": "8486205",
+      "nguon": "tieuDe.8486205",
+      "trich": "8486205 Thiết bị xử lý các tấm bán dẫn mỏng đã được phơi sáng hiện ảnh",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thiết bị xử lý"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "tấm bán dẫn mỏng đã được phơi sáng hiện ảnh"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848620",
+          "ngay": "2026-11-22",
+          "bam": "5934ddbe52297e73e7bafec113a5c8f479d41111433fde55dfce55ed82f2291d"
+        }
+      }
+    },
+    {
+      "id": "848690~r14721",
+      "nguon": "tieuDe.848690~r14721",
+      "trich": "848690~r14721 Của máy dùng để cắt khối bán dẫn đơn tinh thể thành các lớp, hoặc cưa miếng mỏng đơn tinh thể thành các chip",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "cắt khối bán dẫn đơn tinh thể thành các lớp",
+            "cưa miếng mỏng đơn tinh thể thành các chip"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848690",
+          "ngay": "2026-11-22",
+          "bam": "d0375743b5459e67ed83ab08be0ef6cc3c22da67bf76b4961c2c87387efec9a7"
+        }
+      }
+    },
+    {
+      "id": "848690~r14731",
+      "nguon": "tieuDe.848690~r14731",
+      "trich": "848690~r14731 Của dụng cụ phun dùng để khắc axit, tẩy rửa hoặc làm sạch các tấm bán dẫn mỏng; của thiết bị để khắc axit ướt, hiện ảnh, tẩy rửa hoặc làm sạch các tấm bán dẫn mỏng; của các bản mẫu khắc khô trên vật liệu bán dẫn",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "dụng cụ phun"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": [
+                  "khắc axit",
+                  "tẩy rửa",
+                  "làm sạch"
+                ]
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "tấm bán dẫn mỏng"
+              }
+            ],
+            [
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "thiết bị"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": [
+                  "khắc axit ướt",
+                  "hiện ảnh",
+                  "tẩy rửa",
+                  "làm sạch"
+                ]
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "tấm bán dẫn mỏng"
+              }
+            ],
+            [
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "bản mẫu khắc khô"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "vật liệu bán dẫn"
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848690",
+          "ngay": "2026-11-22",
+          "bam": "d0375743b5459e67ed83ab08be0ef6cc3c22da67bf76b4961c2c87387efec9a7"
+        }
+      }
+    },
+    {
+      "id": "848690~r14734",
+      "nguon": "tieuDe.848690~r14734",
+      "trich": "848690~r14734 Của máy khắc để đánh dấu hoặc khắc vạch lên các tấm bán dẫn mỏng; của máy cắt laser để cắt các đường tiếp xúc bằng các chùm tia laser trong các sản phẩm bán dẫn; của máy uốn, gấp và làm thẳng các đầu chân dẫn điện của bán dẫn",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "máy khắc",
+            "máy cắt laser",
+            "máy uốn"
+          ]
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "đánh dấu",
+            "khắc vạch"
+          ]
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "cắt các đường tiếp xúc"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "sản phẩm bán dẫn"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848690",
+          "ngay": "2026-11-22",
+          "bam": "d0375743b5459e67ed83ab08be0ef6cc3c22da67bf76b4961c2c87387efec9a7"
+        }
+      }
+    },
+    {
+      "id": "848690~r14741",
+      "nguon": "tieuDe.848690~r14741",
+      "trich": "848690~r14741 Của thiết bị khắc axit bằng phương pháp ướt, máy điện ảnh, thiết bị tẩy rửa hoặc làm sạch màn hình dẹt",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "thiết bị khắc axit",
+            "máy điện ảnh",
+            "thiết bị tẩy rửa"
+          ]
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "làm sạch màn hình dẹt"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848690",
+          "ngay": "2026-11-22",
+          "bam": "d0375743b5459e67ed83ab08be0ef6cc3c22da67bf76b4961c2c87387efec9a7"
+        }
+      }
+    },
+    {
+      "id": "8486901",
+      "nguon": "tieuDe.8486901",
+      "trich": "8486901 Của máy móc và thiết bị để sản xuất khối hoặc tấm bán dẫn mỏng",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "sản xuất"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "sản xuất khối",
+            "tấm bán dẫn mỏng"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848690",
+          "ngay": "2026-11-22",
+          "bam": "d0375743b5459e67ed83ab08be0ef6cc3c22da67bf76b4961c2c87387efec9a7"
+        }
+      }
+    },
+    {
+      "id": "8486902",
+      "nguon": "tieuDe.8486902",
+      "trich": "8486902 Của máy và thiết bị sản xuất linh kiện bán dẫn hoặc mạch điện tử tích hợp",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "sản xuất linh kiện bán dẫn",
+            "mạch điện tử tích hợp"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848690",
+          "ngay": "2026-11-22",
+          "bam": "d0375743b5459e67ed83ab08be0ef6cc3c22da67bf76b4961c2c87387efec9a7"
+        }
+      }
+    },
+    {
+      "id": "8486903",
+      "nguon": "tieuDe.8486903",
+      "trich": "8486903 Của máy và thiết bị sản xuất màn hình dẹt",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "sản xuất màn hình dẹt"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848690",
+          "ngay": "2026-11-22",
+          "bam": "d0375743b5459e67ed83ab08be0ef6cc3c22da67bf76b4961c2c87387efec9a7"
+        }
+      }
+    },
+    {
+      "id": "8486904",
+      "nguon": "ch84.chuong",
+      "trich": "(C) Nhóm 84.86 cũng bao gồm…(i) sản xuất hoặc sửa chữa màn (khuôn in) và lưới quang;…(ii) lắp ghép thiết bị bán dẫn hoặc các mạch điện tử tích hợp;…(iii) bộ phận nâng, giữ, xếp vào hoặc tháo dỡ khối bán dẫn, tấm bán dẫn mỏng, thiết bị bán dẫn, mạch điện tử tích hợp và màn hình dẹt",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": [
+                  "màn (khuôn in)",
+                  "lưới quang"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "lắp"
+              }
+            ],
+            [
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": [
+                  "nâng",
+                  "giữ",
+                  "xếp vào",
+                  "tháo dỡ"
+                ]
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1867#soat-848690",
+          "ngay": "2026-11-22",
+          "bam": "d0375743b5459e67ed83ab08be0ef6cc3c22da67bf76b4961c2c87387efec9a7"
+        }
+      }
+    }
+  ]
 }

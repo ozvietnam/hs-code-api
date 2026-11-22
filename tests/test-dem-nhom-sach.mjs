@@ -33,13 +33,28 @@ test('2. Nhóm chưa có sổ tay (nhomChuaCoSoTay) bị chấm CHƯA SẠCH v�
 });
 
 // Kì vọng đổi 22/11/2026 (OZV-1785, nguyên tắc 5 OZV-310 — không chỉnh số cho khớp): nhóm 0301 đã được làm SẠCH bởi OZV-1785/PR #1578 nên thay fixture chưa sạch bằng 0305.
-// nhóm 0301 từng bẩn (thiếu ranh giới DUYET) nhưng đã được làm SẠCH bởi OZV-1785/PR #1578
-// (duyệt và áp 030119, 030199 vào sổ tay 0301; hiện 27/27 DONG_CO_TEN
-// đúng + ranh-gioi/030119.json, 030199.json đã DUYET) nên không còn là fixture "chưa sạch".
-// Thay bằng 0305 — bẩn đúng 2 cổng V1 đang kiểm,
-// chua-duyet-ranh-gioi(5 pn6) và dong-co-ten(18/26=69.2%<95%).
+// Kì vọng đổi 23/11/2026 (OZV-1945, nguyên tắc 5 OZV-310 — cô lập fixture chưa sạch vào TEST_DATA_DIR): nhóm 0305 đã được làm SẠCH V1 trong PR #1657 nên gieo fixture 0305 chưa sạch (thiếu ranh giới DUYET + dong8 chưa số hoá điều kiện) vào TEST_DATA_DIR để kiểm bền vững kể cả khi 100% nhóm trên biểu đạt SẠCH V1.
+function gieoFixture0305ChuaSach() {
+  const srcSoTay = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'so-tay', '0305.json'), 'utf8'));
+  const dirtySoTay = structuredClone(srcSoTay);
+  for (const d of dirtySoTay.dong8 || []) {
+    delete d.dieuKienSo;
+    delete d.phanConLai;
+  }
+  const tmpSoTayDir = path.join(TEST_DATA_DIR, 'so-tay');
+  fs.mkdirSync(tmpSoTayDir, { recursive: true });
+  fs.writeFileSync(path.join(tmpSoTayDir, '0305.json'), JSON.stringify(dirtySoTay, null, 2));
+
+  const tmpRgDir = path.join(TEST_DATA_DIR, 'ho-so', 'ranh-gioi');
+  fs.mkdirSync(tmpRgDir, { recursive: true });
+  for (const p6 of ['030539', '030549', '030559', '030569', '030579']) {
+    fs.writeFileSync(path.join(tmpRgDir, `${p6}.json`), JSON.stringify({ pn6: p6, trangThai: 'NHAP' }, null, 2));
+  }
+}
+gieoFixture0305ChuaSach();
+
 test('3. Nhóm có sổ tay nhưng dòng có tên chốt đúng < 95% hoặc thiếu ranh giới DUYET bị chấm CHƯA SẠCH', () => {
-  const kq = danhGiaNhomV1('0305');
+  const kq = danhGiaNhomV1('0305', { boQuaCache: true });
   assert.equal(kq.nhom, '0305');
   assert.equal(kq.sach, false);
   assert.ok(kq.lyDo.length > 0);
@@ -87,6 +102,7 @@ test('6. CLI --json in đúng một dòng JSON {tongNhom, nhomSach, tyLe}', () =
   const out = execFileSync(process.execPath, [SCRIPT, '--nhom=8539,8541,0305', '--json'], {
     cwd: ROOT,
     encoding: 'utf8',
+    env: { ...process.env, HS_DATA_DIR: TEST_DATA_DIR },
   }).trim();
   const lines = out.split(/\r?\n/);
   assert.equal(lines.length, 1, `Cờ --json phải in đúng 1 dòng, nhận ${lines.length} dòng`);
@@ -100,6 +116,7 @@ test('7. CLI mặc định in tổng số nhóm, số nhóm SẠCH, phần trăm
   const out = execFileSync(process.execPath, [SCRIPT, '--nhom=8539,8541,0305'], {
     cwd: ROOT,
     encoding: 'utf8',
+    env: { ...process.env, HS_DATA_DIR: TEST_DATA_DIR },
   });
   assert.match(out, /Tổng số nhóm 4 số:\s*3/);
   assert.match(out, /Số nhóm SẠCH \(V1\):\s*2\s*\(66\.7%\)/);

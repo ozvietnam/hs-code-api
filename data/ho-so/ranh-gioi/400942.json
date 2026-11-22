@@ -4,19 +4,24 @@
   "nhom": "4009",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1705#soan-400942",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "paperclip:ozv-1863#soat-16c",
+    "ngay": "2026-11-22",
+    "bam": "ec9ee943502afbc8c1a41738503e832beb5ee10cee321b7f8c2f22bab6970ff1"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
       "hs": "40094210",
-      "nguon": "tax.40094210",
-      "trich": "40094210 - - - Ống hút và xả bùn dùng trong khai thác mỏ(SEN)",
+      "nguon": "sen.40094210",
+      "trich": "Ống hút và xả bùn dùng trong khai thác mỏ là ống cao su dẻo và không gập được, có mặt cắt ngang hình tròn. Đường kính tối thiểu của ống là 15,24cm, độ dày thành ống tối thiểu 1,27 cm và áp suất bục tối thiểu 517 kPa.",
       "dieuKienSo": [
         {
           "fact": "tenLoai",
@@ -27,34 +32,64 @@
           "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": "khai thác mỏ"
+        },
+        {
+          "fact": "duongKinh",
+          "op": ">=",
+          "value": 15.24,
+          "donVi": "cm"
+        },
+        {
+          "fact": "doDay",
+          "op": ">=",
+          "value": 1.27,
+          "donVi": "cm"
+        },
+        {
+          "fact": "apSuat",
+          "op": ">=",
+          "value": 517,
+          "donVi": "kPa"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "40094220",
-      "nguon": "tax.40094220",
-      "trich": "40094220 - - - Ống vòi cao su dùng cho bếp ga (SEN)",
+      "nguon": "sen.40094220",
+      "trich": "ỐNG VÒI CAO SU DÙNG CHO BẾP GA … Chiều dài mm Tối thiểu 1800 … Áp suất bục MPa Tối thiểu 3,0",
       "dieuKienSo": [
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Ống vòi cao su"
+          "value": "ỐNG VÒI CAO SU"
         },
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
-          "value": "bếp ga"
+          "value": "BẾP GA"
+        },
+        {
+          "fact": "chieuDai",
+          "op": ">=",
+          "value": 1800,
+          "donVi": "mm"
+        },
+        {
+          "fact": "apSuat",
+          "op": ">=",
+          "value": 3,
+          "donVi": "MPa"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "40094290",
       "nguon": "tax.40094290",
       "trich": "40094290 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
