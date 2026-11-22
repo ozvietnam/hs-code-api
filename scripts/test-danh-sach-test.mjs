@@ -359,6 +359,12 @@ ca(
   idxC4 >= 0 && idxC4 < idxTestDanhSach,
   { idxC4, idxTestDanhSach },
 );
+const idxT4 = lenhs.indexOf('node scripts/test-tien-xu-ly.mjs');
+ca(
+  'node scripts/test-tien-xu-ly.mjs được đăng ký trong danh-sach-test.txt trước test-danh-sach-test.mjs',
+  idxT4 >= 0 && idxT4 < idxTestDanhSach,
+  { idxT4, idxTestDanhSach },
+);
 
 // Mọi tệp script + tệp --tep= được nhắc tới phải tồn tại trên đĩa
 const tepThieu = [];

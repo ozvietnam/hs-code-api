@@ -854,6 +854,18 @@
       }
     },
     {
+      "ten": "HS_SEMANTIC_INDEX",
+      "macDinh": "(trống) = theo chỉ mục mặc định",
+      "loai": "duong-dan",
+      "doiQuyetDinhLLM": false,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Tệp chỉ mục tìm theo nghĩa dùng cho tiền xử lý T-4 (tuỳ chọn ghi đè để thử/cách ly).",
+      "chungCu": {
+        "tep": "lib/embed-pool.js",
+        "doan": "process.env.HS_SEMANTIC_INDEX || null;"
+      }
+    },
+    {
       "ten": "HS_SHEET_VISION",
       "macDinh": "(trống) = bật khi có GEMINI_API_KEY",
       "macDinhBat": true,
@@ -935,6 +947,20 @@
         "tep": "lib/so-tay-gates.js",
         "doan": "process.env.HS_SO_TAY_LOAI_TRU || 'phrase', dong8: true };"
       }
+    },
+    {
+      "ten": "HS_TIEN_XU_LY",
+      "macDinh": "tắt",
+      "macDinhBat": false,
+      "loai": "cong-tac",
+      "doiQuyetDinhLLM": true,
+      "chu": "QT",
+      "mucDich": "Tiền xử lý câu hỏi T-4 (#1596) + tìm theo nghĩa cho lib/tim-truoc.js: mở viết tắt XNK, sửa lỗi gõ hợp lý, khôi phục dấu tiếng Việt, bóc 5 trường (tenChinh, chatLieu, boiCanh, thongSo, modelHang), gộp RRF có trọng số với tìm theo nghĩa dùng chung singleton embed-pool. Chỉ ảnh hưởng khi HS_TIM_TRUOC bật. Chỉ on / 1 / true mới bật.",
+      "chungCu": {
+        "tep": "lib/tien-xu-ly.js",
+        "doan": "process.env.HS_TIEN_XU_LY || '').trim());"
+      },
+      "dieuKienBat": "ĐANG TẮT trên máy thật (L1). Số đo không AI trên bộ để riêng S-7 đạt cổng không dấu/gõ sai >= +5pp, nhưng đổi dữ liệu đưa vào vòng 1 nên QT BẮT BUỘC phải đo trực tiếp qua Cổng thật (chuỗi mô hình máy thật) trước khi bật sản xuất; xấu hơn hoặc quá độ trễ thì tắt ngay."
     },
     {
       "ten": "HS_TIM_KIEM_URL",
