@@ -301,47 +301,80 @@
   "dong8": [
     {
       "hs": "84181031",
-      "dieuKien": "Tủ lạnh kết hợp tủ kết đông có các cửa ngoài riêng biệt (phân nhóm 8418.10), thuộc tiêu đề 8418.10.3x (tên tiêu đề không có trong nguồn — đối chiếu biểu thuế): loại gia dụng, dung tích không quá 230 lít",
+      "dieuKien": "phạm vi sử dụng: gia đình (gia dụng); dung tích chứa <= 230 lít",
+      "nguon": "tax.84181031",
+      "trich": "84181031 - - - Loại gia dụng, có dung tích không quá 230 lít",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "phamViSuDung",
+          "op": "TRONG",
+          "value": [
+            "GIA_DINH"
+          ]
+        },
+        {
+          "fact": "dungTich",
+          "op": "<=",
+          "value": 230,
+          "donVi": "lít"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1843#soat-841810",
+          "ngay": "2026-11-22",
+          "bam": "02d3ea10ca597fdd0587fd03cad0a8ed0a9af4a392ba75f86bddc1c2e72bde6b"
+        }
+      },
       "tieuChi": {
         "fact": "dung_tich",
         "op": "<=",
         "value": 230,
         "donVi": "lít"
-      },
-      "nguon": "tax.84181031",
-      "trich": "84181031 - - - Loại gia dụng, có dung tích không quá 230 lít",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false,
-      "dieuKienSo": [
-        {
-          "fact": "dung_tich",
-          "op": "<=",
-          "value": 230,
-          "donVi": "lít"
-        }
-      ]
+      }
     },
     {
       "hs": "84181032",
-      "dieuKien": "Tủ lạnh kết hợp tủ kết đông có các cửa ngoài riêng biệt (phân nhóm 8418.10), thuộc tiêu đề 8418.10.3x (tên tiêu đề không có trong nguồn — đối chiếu biểu thuế): loại gia dụng khác, dung tích trên 230 lít",
+      "dieuKien": "phạm vi sử dụng: gia đình (gia dụng); dung tích chứa > 230 lít",
+      "nguon": "tax.84181032",
+      "trich": "84181032 - - - Loại gia dụng khác, có dung tích trên 230 lít",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "phamViSuDung",
+          "op": "TRONG",
+          "value": [
+            "GIA_DINH"
+          ]
+        },
+        {
+          "fact": "dungTich",
+          "op": ">",
+          "value": 230,
+          "donVi": "lít"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1843#soat-841810",
+          "ngay": "2026-11-22",
+          "bam": "02d3ea10ca597fdd0587fd03cad0a8ed0a9af4a392ba75f86bddc1c2e72bde6b"
+        }
+      },
+      "phanConLai": [
+        "84181031"
+      ],
       "tieuChi": {
         "fact": "dung_tich",
         "op": ">",
         "value": 230,
         "donVi": "lít"
-      },
-      "nguon": "tax.84181032",
-      "trich": "84181032 - - - Loại gia dụng khác, có dung tích trên 230 lít",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false,
-      "dieuKienSo": [
-        {
-          "fact": "dung_tich",
-          "op": ">",
-          "value": 230,
-          "donVi": "lít"
-        }
-      ]
+      }
     },
     {
       "hs": "84181039",
@@ -364,16 +397,10 @@
     },
     {
       "hs": "84181040",
-      "dieuKien": "Tủ lạnh kết hợp tủ kết đông có các cửa ngoài riêng biệt (phân nhóm 8418.10) không thuộc tiêu đề 8418.10.3x, phù hợp dùng trong y tế, phẫu thuật hoặc phòng thí nghiệm",
-      "tieuChi": {
-        "fact": "phu_hop_dung_trong_y_te_phau_thuat_hoac_phong_thi_nghiem",
-        "op": "=",
-        "value": true,
-        "donVi": null
-      },
+      "dieuKien": "phù hợp dùng trong y tế, phẫu thuật hoặc phòng thí nghiệm",
       "nguon": "tax.84181040",
       "trich": "84181040 - - Loại khác, phù hợp dùng trong y tế, phẫu thuật hoặc phòng thí nghiệm",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "loaiKhac": true,
       "phamViLoaiKhac": {
         "nguonLoai": "MAY_SUY",
@@ -384,29 +411,65 @@
         ],
         "toTienCoTen": "841810",
         "dinhNghiaDuoc": true
+      },
+      "dieuKienSo": [
+        {
+          "fact": "dungTrongYTeHoacThiNghiem",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1843#soat-841810",
+          "ngay": "2026-11-22",
+          "bam": "02d3ea10ca597fdd0587fd03cad0a8ed0a9af4a392ba75f86bddc1c2e72bde6b"
+        }
+      },
+      "tieuChi": {
+        "fact": "phu_hop_dung_trong_y_te_phau_thuat_hoac_phong_thi_nghiem",
+        "op": "=",
+        "value": true,
+        "donVi": null
       }
     },
     {
       "hs": "84181091",
-      "dieuKien": "Tủ lạnh kết hợp tủ kết đông có các cửa ngoài riêng biệt (phân nhóm 8418.10) thuộc tiêu đề 8418.10.9x (phần còn lại của 8418.10 trừ 8418.10.3x và 84181040): quầy hàng, tủ bày hàng và các loại tương tự, có lắp thiết bị làm lạnh, dung tích trên 200 lít",
+      "dieuKien": "tên loại hàng: Quầy hàng, tủ bày hàng hoặc loại tương tự; dung tích chứa > 200 lít",
+      "nguon": "tax.84181091",
+      "trich": "84181091 - - - Quầy hàng, tủ bày hàng và các loại tương tự, có lắp thiết bị làm lạnh, dung tích trên 200 lít",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TUONG_TU",
+          "value": [
+            "Quầy hàng",
+            "tủ bày hàng"
+          ]
+        },
+        {
+          "fact": "dungTich",
+          "op": ">",
+          "value": 200,
+          "donVi": "lít"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1843#soat-841810",
+          "ngay": "2026-11-22",
+          "bam": "02d3ea10ca597fdd0587fd03cad0a8ed0a9af4a392ba75f86bddc1c2e72bde6b"
+        }
+      },
       "tieuChi": {
         "fact": "dung_tich",
         "op": ">",
         "value": 200,
         "donVi": "lít"
-      },
-      "nguon": "tax.84181091",
-      "trich": "84181091 - - - Quầy hàng, tủ bày hàng và các loại tương tự, có lắp thiết bị làm lạnh, dung tích trên 200 lít",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false,
-      "dieuKienSo": [
-        {
-          "fact": "dung_tich",
-          "op": ">",
-          "value": 200,
-          "donVi": "lít"
-        }
-      ]
+      }
     },
     {
       "hs": "84181099",
@@ -423,7 +486,7 @@
           "84181091"
         ],
         "toTienCoTen": "841810",
-        "dinhNghiaDuoc": true
+        "dinhNghiaDuoc": false
       }
     },
     {
@@ -590,17 +653,31 @@
     },
     {
       "hs": "84185011",
-      "dieuKien": "Đồ nội thất có lắp thiết bị làm lạnh hoặc kết đông (phân nhóm 8418.50), thuộc tiêu đề 8418.50.1x: loại phù hợp dùng trong y tế, phẫu thuật hoặc phòng thí nghiệm. Tiêu đề 8418.50.1x và 8418.50.9x trùng chữ ở dòng con; dòng cha không có trong nguồn — đối chiếu biểu thuế",
+      "dieuKien": "phù hợp dùng trong y tế, phẫu thuật hoặc phòng thí nghiệm",
+      "nguon": "tax.84185011",
+      "trich": "84185011 - - - Loại phù hợp dùng trong y tế, phẫu thuật hoặc phòng thí nghiệm",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "dungTrongYTeHoacThiNghiem",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1843#soat-841850",
+          "ngay": "2026-11-22",
+          "bam": "940366f2efbeff3f80c00a65712ce3cc4b282d97b6d15a93b9fccd12f2d7613d"
+        }
+      },
       "tieuChi": {
         "fact": "phu_hop_dung_trong_y_te_phau_thuat_hoac_phong_thi_nghiem",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "nguon": "tax.84185011",
-      "trich": "84185011 - - - Loại phù hợp dùng trong y tế, phẫu thuật hoặc phòng thí nghiệm",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      }
     },
     {
       "hs": "84185019",
@@ -622,17 +699,31 @@
     },
     {
       "hs": "84185091",
-      "dieuKien": "Đồ nội thất có lắp thiết bị làm lạnh hoặc kết đông (phân nhóm 8418.50), thuộc tiêu đề 8418.50.9x: loại phù hợp dùng trong y tế, phẫu thuật hoặc phòng thí nghiệm. Trùng chữ với 84185011; dòng cha không có trong nguồn — đối chiếu biểu thuế",
+      "dieuKien": "phù hợp dùng trong y tế, phẫu thuật hoặc phòng thí nghiệm",
+      "nguon": "tax.84185091",
+      "trich": "84185091 - - - Loại phù hợp dùng trong y tế, phẫu thuật hoặc phòng thí nghiệm",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "dungTrongYTeHoacThiNghiem",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1843#soat-841850",
+          "ngay": "2026-11-22",
+          "bam": "940366f2efbeff3f80c00a65712ce3cc4b282d97b6d15a93b9fccd12f2d7613d"
+        }
+      },
       "tieuChi": {
         "fact": "phu_hop_dung_trong_y_te_phau_thuat_hoac_phong_thi_nghiem",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "nguon": "tax.84185091",
-      "trich": "84185091 - - - Loại phù hợp dùng trong y tế, phẫu thuật hoặc phòng thí nghiệm",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      }
     },
     {
       "hs": "84185099",
@@ -668,45 +759,90 @@
     },
     {
       "hs": "84186910",
-      "dieuKien": "Thiết bị làm lạnh hoặc kết đông khác (phân nhóm 8418.69): thiết bị làm lạnh đồ uống",
+      "dieuKien": "tên loại hàng: Thiết bị làm lạnh đồ uống",
+      "nguon": "tax.84186910",
+      "trich": "84186910 - - - Thiết bị làm lạnh đồ uống ",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thiết bị làm lạnh đồ uống"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1843#soat-841869",
+          "ngay": "2026-11-22",
+          "bam": "1e41cd75f6ab8e41c9e4a4e109a91603ee1487cd5774a06bd4b78702734e3349"
+        }
+      },
       "tieuChi": {
         "fact": "thiet_bi_lam_lanh_do_uong",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "nguon": "tax.84186910",
-      "trich": "84186910 - - - Thiết bị làm lạnh đồ uống",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      }
     },
     {
       "hs": "84186930",
-      "dieuKien": "Thiết bị làm lạnh hoặc kết đông khác (phân nhóm 8418.69): thiết bị cấp nước lạnh (cold water dispenser)",
+      "dieuKien": "tên loại hàng: Thiết bị cấp nước lạnh",
+      "nguon": "tax.84186930",
+      "trich": "84186930 - - - Thiết bị cấp nước lạnh (cold water dispenser)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thiết bị cấp nước lạnh"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1843#soat-841869",
+          "ngay": "2026-11-22",
+          "bam": "1e41cd75f6ab8e41c9e4a4e109a91603ee1487cd5774a06bd4b78702734e3349"
+        }
+      },
       "tieuChi": {
         "fact": "thiet_bi_cap_nuoc_lanh",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "nguon": "tax.84186930",
-      "trich": "84186930 - - - Thiết bị cấp nước lạnh (cold water dispenser)",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      }
     },
     {
       "hs": "84186941",
-      "dieuKien": "Thiết bị làm lạnh hoặc kết đông khác (phân nhóm 8418.69) thuộc tiêu đề 8418.69.4x (tên tiêu đề không có trong nguồn — đối chiếu biểu thuế): dùng cho máy điều hòa không khí",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): máy điều hòa không khí",
+      "nguon": "tax.84186941",
+      "trich": "84186941 - - - - Dùng cho máy điều hòa không khí",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy điều hòa không khí"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1843#soat-841869",
+          "ngay": "2026-11-22",
+          "bam": "1e41cd75f6ab8e41c9e4a4e109a91603ee1487cd5774a06bd4b78702734e3349"
+        }
+      },
       "tieuChi": {
         "fact": "dung_cho_may_dieu_hoa_khong_khi",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "nguon": "tax.84186941",
-      "trich": "84186941 - - - - Dùng cho máy điều hòa không khí",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      }
     },
     {
       "hs": "84186949",
@@ -728,17 +864,32 @@
     },
     {
       "hs": "84186950",
-      "dieuKien": "Thiết bị làm lạnh hoặc kết đông khác (phân nhóm 8418.69): thiết bị sản xuất đá vảy",
+      "dieuKien": "tên loại hàng: Thiết bị sản xuất đá vảy",
+      "nguon": "tax.84186950",
+      "trich": "84186950 - - - Thiết bị sản xuất đá vảy",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thiết bị sản xuất đá vảy"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1843#soat-841869",
+          "ngay": "2026-11-22",
+          "bam": "1e41cd75f6ab8e41c9e4a4e109a91603ee1487cd5774a06bd4b78702734e3349"
+        }
+      },
       "tieuChi": {
         "fact": "thiet_bi_san_xuat_da_vay",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "nguon": "tax.84186950",
-      "trich": "84186950 - - - Thiết bị sản xuất đá vảy",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      }
     },
     {
       "hs": "84186990",
@@ -1302,5 +1453,90 @@
     "dat": 61,
     "loai": 0,
     "nguonBiCat": []
-  }
+  },
+  "dieuKienNut": [
+    {
+      "id": "8418103",
+      "nguon": "tieuDe.8418103",
+      "trich": "8418103 Chỉ có các cửa mở riêng biệt",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Chỉ có các cửa mở riêng biệt"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1843#soat-841810",
+          "ngay": "2026-11-22",
+          "bam": "02d3ea10ca597fdd0587fd03cad0a8ed0a9af4a392ba75f86bddc1c2e72bde6b"
+        }
+      }
+    },
+    {
+      "id": "8418501",
+      "nguon": "tieuDe.8418501",
+      "trich": "8418501 Quầy hàng, tủ bày hàng và các loại tương tự, có lắp thiết bị làm lạnh, dung tích trên 200 lít",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TUONG_TU",
+          "value": [
+            "Quầy hàng",
+            "tủ bày hàng"
+          ]
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "có lắp thiết bị làm lạnh"
+        },
+        {
+          "fact": "dungTich",
+          "op": ">",
+          "value": 200,
+          "donVi": "lít"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1843#soat-841850",
+          "ngay": "2026-11-22",
+          "bam": "940366f2efbeff3f80c00a65712ce3cc4b282d97b6d15a93b9fccd12f2d7613d"
+        }
+      }
+    },
+    {
+      "id": "8418694",
+      "nguon": "tieuDe.8418694",
+      "trich": "8418694 Thiết bị làm lạnh nước có công suất làm lạnh trên 21,10 kW",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thiết bị làm lạnh nước"
+        },
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 21.1,
+          "donVi": "kW"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1843#soat-841869",
+          "ngay": "2026-11-22",
+          "bam": "1e41cd75f6ab8e41c9e4a4e109a91603ee1487cd5774a06bd4b78702734e3349"
+        }
+      }
+    }
+  ]
 }

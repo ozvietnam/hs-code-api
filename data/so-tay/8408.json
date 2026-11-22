@@ -151,91 +151,281 @@
     },
     {
       "hs": "84082010",
-      "dieuKien": "Dùng cho xe thuộc phân nhóm 8701.10",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): 8701.10",
       "loaiKhac": false,
       "nguon": "tax.84082010",
       "trich": "84082010 - - - Dùng cho xe thuộc phân nhóm 8701.10",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8701.10"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1843#soat-840820",
+          "ngay": "2026-11-22",
+          "bam": "e2149920336428a622a48d26e75643cbcfbc98a60590667155680adae62db73a"
+        }
+      }
     },
     {
       "hs": "84082021",
-      "dieuKien": "Dung tích xi lanh không quá 2.000 cc",
+      "dieuKien": "dung tích xi lanh <= 2000 cc",
       "loaiKhac": false,
       "nguon": "tax.84082021",
       "trich": "84082021 - - - - Dung tích xi lanh không quá 2.000 cc",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 2000,
+          "donVi": "cc"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1843#soat-840820",
+          "ngay": "2026-11-22",
+          "bam": "e2149920336428a622a48d26e75643cbcfbc98a60590667155680adae62db73a"
+        }
+      }
     },
     {
       "hs": "84082022",
-      "dieuKien": "Dung tích xi lanh trên 2.000 cc nhưng không quá 3.500 cc",
+      "dieuKien": "dung tích xi lanh > 2000 cc; dung tích xi lanh <= 3500 cc",
       "loaiKhac": false,
       "nguon": "tax.84082022",
       "trich": "84082022 - - - - Dung tích xi lanh trên 2.000 cc nhưng không quá 3.500 cc",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 2000,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 3500,
+          "donVi": "cc"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1843#soat-840820",
+          "ngay": "2026-11-22",
+          "bam": "e2149920336428a622a48d26e75643cbcfbc98a60590667155680adae62db73a"
+        }
+      }
     },
     {
       "hs": "84082023",
-      "dieuKien": "Dung tích xi lanh trên 3.500 cc",
+      "dieuKien": "dung tích xi lanh > 3500 cc",
       "loaiKhac": false,
       "nguon": "tax.84082023",
       "trich": "84082023 - - - - Dung tích xi lanh trên 3.500 cc",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 3500,
+          "donVi": "cc"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1843#soat-840820",
+          "ngay": "2026-11-22",
+          "bam": "e2149920336428a622a48d26e75643cbcfbc98a60590667155680adae62db73a"
+        }
+      }
     },
     {
       "hs": "84082093",
-      "dieuKien": "Dùng cho xe thuộc phân nhóm 8701.10",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): 8701.10",
       "loaiKhac": false,
       "nguon": "tax.84082093",
       "trich": "84082093 - - - Dùng cho xe thuộc phân nhóm 8701.10",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8701.10"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1843#soat-840820",
+          "ngay": "2026-11-22",
+          "bam": "e2149920336428a622a48d26e75643cbcfbc98a60590667155680adae62db73a"
+        }
+      }
     },
     {
       "hs": "84082094",
-      "dieuKien": "Dung tích xi lanh không quá 2.000 cc",
+      "dieuKien": "dung tích xi lanh <= 2000 cc",
       "loaiKhac": false,
       "nguon": "tax.84082094",
       "trich": "84082094 - - - - Dung tích xi lanh không quá 2.000 cc",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 2000,
+          "donVi": "cc"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1843#soat-840820",
+          "ngay": "2026-11-22",
+          "bam": "e2149920336428a622a48d26e75643cbcfbc98a60590667155680adae62db73a"
+        }
+      }
     },
     {
       "hs": "84082095",
-      "dieuKien": "Dung tích xi lanh trên 2.000 cc nhưng không quá 3.500 cc",
+      "dieuKien": "dung tích xi lanh > 2000 cc; dung tích xi lanh <= 3500 cc",
       "loaiKhac": false,
       "nguon": "tax.84082095",
       "trich": "84082095 - - - - Dung tích xi lanh trên 2.000 cc nhưng không quá 3.500 cc",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 2000,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 3500,
+          "donVi": "cc"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1843#soat-840820",
+          "ngay": "2026-11-22",
+          "bam": "e2149920336428a622a48d26e75643cbcfbc98a60590667155680adae62db73a"
+        }
+      }
     },
     {
       "hs": "84082096",
-      "dieuKien": "Dung tích xi lanh trên 3.500 cc",
+      "dieuKien": "dung tích xi lanh > 3500 cc",
       "loaiKhac": false,
       "nguon": "tax.84082096",
       "trich": "84082096 - - - - Dung tích xi lanh trên 3.500 cc",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 3500,
+          "donVi": "cc"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1843#soat-840820",
+          "ngay": "2026-11-22",
+          "bam": "e2149920336428a622a48d26e75643cbcfbc98a60590667155680adae62db73a"
+        }
+      }
     },
     {
       "hs": "84089010",
-      "dieuKien": "Công suất không quá 18,65 kW",
+      "dieuKien": "công suất <= 18.65 kW",
       "loaiKhac": false,
       "nguon": "tax.84089010",
       "trich": "84089010 - - Công suất không quá 18,65 kW",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 18.65,
+          "donVi": "kW"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1843#soat-840890",
+          "ngay": "2026-11-22",
+          "bam": "9ec9f7baba9b1ba34af797ed2d0044e7e4df46d80dd04c137f3cd4d72ac1a7eb"
+        }
+      }
     },
     {
       "hs": "84089051",
-      "dieuKien": "Của loại sử dụng cho máy thuộc nhóm 84.29 hoặc 84.30",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): 84.29 hoặc 84.30",
       "loaiKhac": false,
       "nguon": "tax.84089051",
       "trich": "84089051 - - - Của loại sử dụng cho máy thuộc nhóm 84.29 hoặc 84.30",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "84.29",
+            "84.30"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1843#soat-840890",
+          "ngay": "2026-11-22",
+          "bam": "9ec9f7baba9b1ba34af797ed2d0044e7e4df46d80dd04c137f3cd4d72ac1a7eb"
+        }
+      }
     },
     {
       "hs": "84089052",
-      "dieuKien": "Của loại sử dụng cho đầu máy di chuyển trên đường sắt hoặc tàu điện",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): đầu máy di chuyển trên đường sắt hoặc tàu điện",
       "loaiKhac": false,
       "nguon": "tax.84089052",
       "trich": "84089052 - - - Của loại sử dụng cho đầu máy di chuyển trên đường sắt hoặc tàu điện",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "đầu máy di chuyển trên đường sắt",
+            "tàu điện"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1843#soat-840890",
+          "ngay": "2026-11-22",
+          "bam": "9ec9f7baba9b1ba34af797ed2d0044e7e4df46d80dd04c137f3cd4d72ac1a7eb"
+        }
+      }
     },
     {
       "hs": "84089059",
@@ -261,19 +451,60 @@
     },
     {
       "hs": "84089091",
-      "dieuKien": "Dùng cho máy thuộc nhóm 84.29 hoặc 84.30",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): máy; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): 84.29 hoặc 84.30",
       "loaiKhac": false,
       "nguon": "tax.84089091",
       "trich": "84089091 - - - Dùng cho máy thuộc nhóm 84.29 hoặc 84.30",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "84.29",
+            "84.30"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1843#soat-840890",
+          "ngay": "2026-11-22",
+          "bam": "9ec9f7baba9b1ba34af797ed2d0044e7e4df46d80dd04c137f3cd4d72ac1a7eb"
+        }
+      }
     },
     {
       "hs": "84089092",
-      "dieuKien": "Của loại sử dụng cho đầu máy di chuyển trên đường sắt hoặc tàu điện",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): đầu máy di chuyển trên đường sắt hoặc tàu điện",
       "loaiKhac": false,
       "nguon": "tax.84089092",
       "trich": "84089092 - - - Của loại sử dụng cho đầu máy di chuyển trên đường sắt hoặc tàu điện",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "đầu máy di chuyển trên đường sắt",
+            "tàu điện"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1843#soat-840890",
+          "ngay": "2026-11-22",
+          "bam": "9ec9f7baba9b1ba34af797ed2d0044e7e4df46d80dd04c137f3cd4d72ac1a7eb"
+        }
+      }
     },
     {
       "hs": "84089099",
@@ -560,5 +791,49 @@
     "dat": 23,
     "loai": 1,
     "nguonBiCat": []
-  }
+  },
+  "dieuKienNut": [
+    {
+      "id": "840820~r12920",
+      "nguon": "tieuDe.840820~r12920",
+      "trich": "840820~r12920 Đã lắp ráp hoàn chỉnh",
+      "dieuKienSo": [
+        {
+          "fact": "daLapRap",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1843#soat-840820",
+          "ngay": "2026-11-22",
+          "bam": "e2149920336428a622a48d26e75643cbcfbc98a60590667155680adae62db73a"
+        }
+      }
+    },
+    {
+      "id": "8408905",
+      "nguon": "tieuDe.8408905",
+      "trich": "8408905 Công suất trên 100 kW",
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 100,
+          "donVi": "kW"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1843#soat-840890",
+          "ngay": "2026-11-22",
+          "bam": "9ec9f7baba9b1ba34af797ed2d0044e7e4df46d80dd04c137f3cd4d72ac1a7eb"
+        }
+      }
+    }
+  ]
 }
