@@ -339,5 +339,38 @@ const ST8544 = {
   check(`11e ReDoS ~40.000 từ lặp chạy dưới 2000ms (thực tế ${dt}ms)`, dt < 2000 && kqReDoS.hs === '32064110', `${dt}ms`);
 }
 
+// 12. OZV-1820: tách vế cha "Lúa mì và meslin" (100199) + đọc khoảng số 2 cận có dấu phẩy ", nhưng dưới" (151190 chiSoIot)
+{
+  const { chotDong8 } = require('../lib/so-tay-gates.js');
+  // 100199: Lúa mì và meslin (2 chiều)
+  const kq1001a = chotDong8({ hs: '100199', productText: 'Lúa mì và meslin (+). - Loại khác: Thích hợp sử dụng cho người: Meslin (SEN)' });
+  const kq1001b = chotDong8({ hs: '100199', productText: 'Lúa mì và meslin (+). - Loại khác: Meslin, không thích hợp sử dụng cho người' });
+  const kq1001Thieu = chotDong8({ hs: '100199', productText: 'Lúa mì và meslin (+). - Loại khác: Thích hợp sử dụng cho người' });
+  check('12a 10019911/10019991: tách vế cha "Lúa mì và meslin" → chốt đúng Meslin theo tầng sử dụng cho người',
+    kq1001a.ketQua === 'CHOT' && kq1001a.hs === '10019911' && kq1001b.ketQua === 'CHOT' && kq1001b.hs === '10019991',
+    j([kq1001a, kq1001b]));
+  check('12a-ngược 100199: chỉ có tiêu đề cha "Lúa mì và meslin" + tầng trung gian → không tự chốt',
+    kq1001Thieu.ketQua !== 'CHOT' && kq1001Thieu.ketQua !== 'LOAI_KHAC',
+    j(kq1001Thieu));
+
+  // 151190: chiSoIot khoảng 2 cận có ", nhưng dưới" (2 chiều)
+  const kq1511a = chotDong8({ hs: '151190', productText: 'Các phần phân đoạn của dầu tinh chế - Các phần phân đoạn thể rắn: Có chỉ số iốt từ 30 trở lên, nhưng dưới 40' });
+  const kq1511b = chotDong8({ hs: '151190', productText: 'Các phần phân đoạn của dầu tinh chế - Các phần phân đoạn thể lỏng: Loại khác, có chỉ số iốt từ 55 trở lên, nhưng dưới 60' });
+  const kq1511Ng = chotDong8({ hs: '151190', productText: 'Các phần phân đoạn của dầu tinh chế - Các phần phân đoạn thể rắn: Có chỉ số iốt từ 45 trở lên' });
+  check('12b 15119031/15119037: đọc đủ 2 cận chiSoIot qua ", nhưng dưới" → chốt đúng 15119031 và 15119037',
+    kq1511a.ketQua === 'CHOT' && kq1511a.hs === '15119031' && kq1511b.ketQua === 'CHOT' && kq1511b.hs === '15119037',
+    j([kq1511a, kq1511b]));
+  check('12b-ngược 151190: chỉ số iốt ngoài khoảng [30, 40) → không chốt vào 15119031',
+    kq1511Ng.hs !== '15119031',
+    j(kq1511Ng));
+
+  // ReDoS ~40.000 từ lặp < 2 giây (quy tắc 6b)
+  const t0 = Date.now();
+  const chuoiDai1820 = `${Array.from({ length: 8000 }, () => 'lúa mì và chỉ số iốt từ 30').join(' ')}, nhưng dưới 40: Meslin`;
+  const kqReDoS1820 = DK.danhGiaTuChu({ fact: 'chiSoIot', op: '<', value: 40, donVi: 'IV' }, chuoiDai1820, '15119031');
+  const dt = Date.now() - t0;
+  check(`12c ReDoS ~40.000 từ lặp chạy dưới 2000ms (thực tế ${dt}ms)`, dt < 2000 && kqReDoS1820.trangThai === 'THOA', `${dt}ms`);
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
