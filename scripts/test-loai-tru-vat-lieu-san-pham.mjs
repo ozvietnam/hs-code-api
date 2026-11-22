@@ -58,7 +58,8 @@ const CAP_7 = [
   {
     tu: '3926',
     toi: '4016',
-    hangDungDich: 'Thảm chống mỏi chống tĩnh điện ESD bằng cao su EPDM',
+    hangDungDich: 'Thảm cao su chống mỏi chống tĩnh điện ESD',
+    moTaMoRong: 'Thảm chống mỏi chống tĩnh điện ESD / Bề mặt PVC, lõi và đáy cao su EPDM',
     hangNguonSach: 'Bẫy chuột bằng nhựa',
     nguonDich: 'nhom4016.nhom',
   },
@@ -98,9 +99,9 @@ for (const c of CAP_7) {
   const pBA = D.duongDi(c.toi, c.tu, 1, { loai: ['C6'], quaCay: false });
   check(`duongDi hai chiều (${c.tu} → ${c.toi} qua C5, ${c.toi} → ${c.tu} qua C6)`, Boolean(pAB && pBA));
 
-  const mo = D.moRongUngVien([c.tu], c.hangDungDich, { toiDa: 10 });
-  const moBack = D.moRongUngVien([c.toi], c.hangDungDich, { toiDa: 10 });
-  check(`moRongUngVien (${c.tu} → ${c.toi} hoặc ngược lại) nhận diện được "${c.hangDungDich}"`,
+  const mo = D.moRongUngVien([c.tu], c.moTaMoRong || c.hangDungDich, { toiDa: 10 });
+  const moBack = D.moRongUngVien([c.toi], c.moTaMoRong || c.hangDungDich, { toiDa: 10 });
+  check(`moRongUngVien (${c.tu} → ${c.toi} hoặc ngược lại) nhận diện được "${c.moTaMoRong || c.hangDungDich}"`,
     mo.some((x) => x.nhom === c.toi) || moBack.some((x) => x.nhom === c.tu),
     `xuoi=${mo.map((x) => x.nhom).join(',')} nguoc=${moBack.map((x) => x.nhom).join(',')}`);
 
@@ -129,6 +130,23 @@ for (const c of CAP_7) {
   const hitNeg = gNeg.challenges.some((ch) => ch.gate === 'SO_TAY_LOAI_TRU' && ch.target === c.toi);
   check(`CA NGƯỢC không bật oan (${c.tu} đúng cho "${c.hangNguonSach}" KHÔNG bị trỏ sang ${c.toi})`, !hitNeg,
     JSON.stringify(gNeg.challenges.map((x) => ({ gate: x.gate, target: x.target }))));
+}
+
+// 2b. Ca ngược sát ranh giới chính nhóm nguồn (không được bật oan SO_TAY_LOAI_TRU)
+const CA_BIEN_NGUON = [
+  { hs: '96032900', target: '8212', ten: 'Bàn chải cạo râu' },
+  { hs: '39199099', target: '3921', ten: 'Tấm plastic xốp tự dính hai mặt' },
+  { hs: '39199099', target: '3921', ten: 'Tấm plastic ghép lớp tự dính' },
+  { hs: '39269099', target: '4016', ten: 'Thảm chống mỏi bằng nhựa PVC' },
+  { hs: '39269099', target: '4016', ten: 'Thảm trải sàn cao cấp bằng nhựa PVC' },
+  { hs: '59031090', target: '6116', ten: 'Vải dệt phủ nhựa PVC may găng tay' },
+  { hs: '39249090', target: '8424', ten: 'Đồ nhựa phun xịt sơn trang trí' },
+];
+for (const b of CA_BIEN_NGUON) {
+  const g = soTayGates({ hs: b.hs, productText: b.ten, productName: b.ten });
+  const bad = g.challenges.some((ch) => ch.gate === 'SO_TAY_LOAI_TRU' && ch.target === b.target);
+  check(`CA NGƯỢC sát ranh giới (${b.hs} "${b.ten}" KHÔNG bị trỏ oan sang ${b.target})`, !bad,
+    JSON.stringify(g.challenges.map((x) => ({ gate: x.gate, target: x.target, matched: x.matched }))));
 }
 
 // 3. Kiểm định chặt chẽ canCuLoaiTru trong lib/so-tay.js
