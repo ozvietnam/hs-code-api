@@ -4,13 +4,19 @@
   "nhom": "8708",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T1003#soan-870891",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "paperclip:OZV-1907#soat-870891",
+    "ngay": "2026-11-22",
+    "ghiChu": "Duyệt & áp dụng 13 PN6 lô 17d-2 (8703, 8708)",
+    "bam": "233894d00f58788b728b0c5d1e9e0685e7f956b884b9a65b14a64f455460155e"
+  },
   "dieuKienNut": [
     {
       "id": "870891",
@@ -41,7 +47,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "870891~r17524",
@@ -57,7 +63,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "8708911",
@@ -68,13 +74,9 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Két nước làm mát"
-        },
-        {
-          "fact": "laBoPhan",
-          "op": "KHONG"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "8708919",
@@ -86,7 +88,7 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -101,7 +103,7 @@
           "value": "87.01"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87089116",
@@ -114,7 +116,7 @@
           "value": "87.03"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87089117",
@@ -127,21 +129,21 @@
           "value": "8704.10"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87089118",
       "nguon": "tax.87089118",
       "trich": "87089118 - - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87089119",
       "nguon": "tax.87089119",
       "trich": "87089119 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87089191",
@@ -154,7 +156,7 @@
           "value": "87.01"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87089193",
@@ -172,7 +174,7 @@
           "value": "87.03"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87089194",
@@ -199,7 +201,7 @@
           "chieu": "PHAI_KHONG"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87089195",
@@ -212,14 +214,14 @@
           "value": "87.03"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87089199",
       "nguon": "tax.87089199",
       "trich": "87089199 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -292,6 +294,33 @@
       "ma": "870891",
       "loai": "QUYET_DINH",
       "ghiChu": "Claude 10/11/2026 (#1109, lô 11): hết DỪNG. Tầng 8708911 «Két nước làm mát» (hàng hoàn chỉnh) cạnh anh em 8708919 «Bộ phận» ⇒ laBoPhan KHONG (căn cứ cấu trúc); phạm vi phân nhóm = tên phân nhóm «Két nước làm mát và bộ phận của chúng» ⇒ HOAC [tên | bộ phận + dùng cho két nước] (nút xả không phải bộ phận của két nước thì ngoài phân nhóm)."
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "8708911",
+        "8708919"
+      ],
+      "truc": {
+        "8708911": "TEN_LOAI",
+        "8708919": "DAC_DIEM"
+      },
+      "cauHoiPhanBiet": "Hàng này là két nước làm mát hoàn chỉnh (tầng 8708911) hay là bộ phận rời của két nước làm mát (tầng 8708919)?",
+      "trich": {
+        "8708911": "Két nước làm mát",
+        "8708919": "Bộ phận"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "8708911",
+            "8708919"
+          ],
+          "khongCoHangThat": "Két nước làm mát hoàn chỉnh (870891.1) và bộ phận rời của két nước làm mát (870891.9) là hai dạng hàng loại trừ nhau theo cấu trúc hoàn chỉnh ↔ bộ phận."
+        }
+      ],
+      "phanXu": null
     }
   ]
 }

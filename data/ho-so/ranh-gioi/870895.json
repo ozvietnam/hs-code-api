@@ -4,13 +4,19 @@
   "nhom": "8708",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T1003#soan-870895",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "paperclip:OZV-1907#soat-870895",
+    "ngay": "2026-11-22",
+    "ghiChu": "Duyệt & áp dụng 13 PN6 lô 17d-2 (8703, 8708)",
+    "bam": "54a76e55113edbd7a8663906319875ce78141dfaa168f6d32f0ff854d811cf21"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -22,13 +28,9 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Túi khí an toàn lắp với hệ thống bơm phồng"
-        },
-        {
-          "fact": "laBoPhan",
-          "op": "KHONG"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87089590",
@@ -40,7 +42,7 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -63,6 +65,33 @@
       "ma": "87089510+87089590",
       "loai": "QUYET_DINH",
       "ghiChu": "Claude (#1109, 11/11): xoá chongLanVanBan 87089510↔87089590 (cong2-chong-lan-van-ban-thua) — cặp không còn chồng lấn: .10 \"Túi khí an toàn lắp với hệ thống bơm phồng\" mang laBoPhan KHONG lấy căn cứ cấu trúc từ anh em .90 \"Bộ phận\" (cảnh báo cong3-khong-bo-phan-tu-anh-em, luật 07/11/2026) nên hai dòng loại trừ tất định; khai cặp không chồng là thừa."
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "87089510",
+        "87089590"
+      ],
+      "truc": {
+        "87089510": "TEN_LOAI",
+        "87089590": "DAC_DIEM"
+      },
+      "cauHoiPhanBiet": "Hàng này là túi khí an toàn lắp với hệ thống bơm phồng hoàn chỉnh (87089510) hay là bộ phận rời của nó (87089590)?",
+      "trich": {
+        "87089510": "Túi khí an toàn lắp với hệ thống bơm phồng",
+        "87089590": "Bộ phận"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "87089510",
+            "87089590"
+          ],
+          "khongCoHangThat": "Túi khí an toàn lắp với hệ thống bơm phồng hoàn chỉnh (87089510) và bộ phận rời của chúng (87089590) là hai dạng hàng loại trừ nhau theo cấu trúc hoàn chỉnh ↔ bộ phận."
+        }
+      ],
+      "phanXu": null
     }
   ]
 }
