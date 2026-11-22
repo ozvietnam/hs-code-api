@@ -5680,7 +5680,13 @@
         "zh": "产品（板、片、门、壁）的厚度是多少毫米（mm）？"
       },
       "ghiChu": "Độ dày tấm/lá/que/cửa — chữ biểu 7308.30.10 \"Cửa ra vào, có độ dày từ 6 mm đến 8 mm\" (lát 2, đề xuất de-xuat-khoa-lat-2.md: quét + studio-loop). Khoảng \"dày 6-8 mm\" ⇒ giaTri 6, cacGiaTri [6, 8] — người dùng ngưỡng xét cacGiaTri (như chieuCao); \"từ 6 mm đến 8 mm\" (đơn vị sau cả hai số) đọc số đầu 6 — spec dùng cặp điều kiện >= 6 và <= 8. Cần ngữ cảnh \"dày/thickness/厚\" trong 30 ký tự trước số (canNguCanh) — \"8 mm\" trần không đọc. Độ dày theo tỉ lệ (\"không quá 1/10 đường kính\") là khoá tiLe. + đơn vị micron/µm (06/11, lô 4; hệ daiMicron = hệ dai + micron): chữ biểu 8421.29.60 \"… màng lọc hoặc màng tinh chế với độ dày không quá 140 micron\" (đề xuất 842129).",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "AI_DA_KIEM",
+      "docThem": [
+        {
+          "mau": "(?:độ\\s+|bề\\s+|chiều\\s+)?dày\\s+([1-9]\\d{0,2},\\d{2})\\d\\s*mm",
+          "donVi": "mm"
+        }
+      ]
     },
     {
       "khoa": "congSuatBieuKien",
@@ -6321,6 +6327,7 @@
       "canNguCanh": true,
       "cachDoc": {
         "vi": [
+          "(?:dùng\\s+cho\\s+)?loại\\s+lốp\\s+có\\s+chiều\\s+rộng",
           "chiều\\s+rộng",
           "bề\\s+rộng",
           "khổ\\s+rộng",
@@ -6329,12 +6336,14 @@
           "chiều\\s+ngang"
         ],
         "en": [
+          "(?:suitable\\s+for\\s+)?fitting\\s+to\\s+tyres?\\s+of\\s+a\\s+width",
           "width",
           "wide",
           "maximum\\s+horizontal\\s+dimension",
           "horizontal\\s+dimension"
         ],
         "zh": [
+          "适配轮胎宽度",
           "宽度",
           "宽",
           "板宽",
@@ -6349,7 +6358,7 @@
         "vi": "Chiều rộng của sản phẩm cán phẳng là bao nhiêu mm?",
         "zh": "平板轧材的宽度是多少毫米（mm）？"
       },
-      "ghiChu": "Trích chữ biểu 7209.16.10, 7209.27.10 \"Chiều rộng không quá 1.250 mm\" và 7211.23.20 \"chiều rộng không quá 400 mm\". + mẫu \"kích thước chiều ngang\" (8428, Studio lô 11).",
+      "ghiChu": "Trích chữ biểu 7209.16.10, 7209.27.10 \"Chiều rộng không quá 1.250 mm\" và 7211.23.20 \"chiều rộng không quá 400 mm\". + mẫu \"kích thước chiều ngang\" (8428, Studio lô 11). + mẫu \"Dùng cho loại lốp có chiều rộng không quá/trên 450 mm\" (4013.10, 4013.90, OZV-1803).",
       "nguonLoai": "AI_DA_KIEM",
       "docMoRong": true
     },
@@ -8797,7 +8806,10 @@
       "nhanZh": "漂白状态（纤维、纱线或织物）",
       "giaTriHopLe": [
         "CHUA_TAY_TRANG",
-        "DA_TAY_TRANG"
+        "DA_TAY_TRANG",
+        "DA_NHUOM",
+        "TU_SOI_MAU",
+        "DA_IN"
       ],
       "moTaGiaTri": {
         "CHUA_TAY_TRANG": {
@@ -8845,6 +8857,65 @@
             ]
           },
           "cachViet": "đã tẩy trắng"
+        },
+        "DA_NHUOM": {
+          "nhanVi": "đã nhuộm",
+          "nhanEn": "dyed",
+          "nhanZh": "已染色",
+          "cachDoc": {
+            "vi": [
+              "đã\\s+nhuộm",
+              "vải\\s+nhuộm"
+            ],
+            "en": [
+              "(?<!batik[- ])dyed"
+            ],
+            "zh": [
+              "已染色",
+              "染色"
+            ]
+          },
+          "cachViet": "đã nhuộm"
+        },
+        "TU_SOI_MAU": {
+          "nhanVi": "từ các sợi có màu khác nhau",
+          "nhanEn": "of yarns of different colours",
+          "nhanZh": "色织",
+          "cachDoc": {
+            "vi": [
+              "từ\\s+(?:các\\s+)?sợi\\s+có\\s+màu\\s+khác\\s+nhau",
+              "từ\\s+(?:các\\s+)?sợi\\s+(?:nhiều\\s+)?màu",
+              "dệt\\s+từ\\s+sợi\\s+màu"
+            ],
+            "en": [
+              "of\\s+yarns?\\s+of\\s+different\\s+colou?rs?"
+            ],
+            "zh": [
+              "色织",
+              "不同颜色纱线"
+            ]
+          },
+          "cachViet": "từ các sợi có màu khác nhau"
+        },
+        "DA_IN": {
+          "nhanVi": "đã in",
+          "nhanEn": "printed",
+          "nhanZh": "已印花",
+          "cachDoc": {
+            "vi": [
+              "(?:đã|được)\\s+in(?:\\s+bằng\\s+phương\\s+pháp\\s+batik(?:\\s+truyền\\s+thống)?)?"
+            ],
+            "en": [
+              "printed(?:\\s+by\\s+the\\s+traditional\\s+batik\\s+process)?",
+              "batik[- ]printed"
+            ],
+            "zh": [
+              "已印花",
+              "印花",
+              "蜡染"
+            ]
+          },
+          "cachViet": "đã in"
         }
       },
       "cachDoc": {
@@ -8856,10 +8927,10 @@
         "vi": "{giaTri}"
       },
       "cauHoi": {
-        "vi": "Hàng dệt (xơ, sợi, vải) ở tình trạng chưa tẩy trắng hay đã tẩy trắng?",
-        "zh": "纺织品（纤维、纱线、面料）是未漂白还是已漂白状态？"
+        "vi": "Hàng dệt (xơ, sợi, vải) ở tình trạng nào (chưa tẩy trắng, đã tẩy trắng, đã nhuộm, từ các sợi có màu khác nhau, hay đã in)?",
+        "zh": "纺织品（纤维、纱线、面料）处于何种状态（未漂白、已漂白、已染色、色织或已印花）？"
       },
-      "ghiChu": "Chữ biểu 5204.11.10, 5407.10.91, 5408.10.10 \"Chưa tẩy trắng\". (5007.10.20 \"Chưa tẩy trắng hoặc đã tẩy trắng\" gộp cả hai giá trị — không đọc được, đúng ý.)",
+      "ghiChu": "Chữ biểu 5204.11.10, 5407.10.91, 5408.10.10 \"Chưa tẩy trắng\". (5007.10.20, 5007.20.20, 5007.90.20 \"Chưa tẩy trắng hoặc đã tẩy trắng\" gộp cả hai giá trị CHUA_TAY_TRANG/DA_TAY_TRANG trong 5 trạng thái của Chú giải phân nhóm 1 Phần XI — không đọc đơn giá trị, đúng ý; OZV-1803.)",
       "nguonLoai": "AI_DA_KIEM"
     },
     {

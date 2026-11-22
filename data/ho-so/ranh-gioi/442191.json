@@ -4,13 +4,19 @@
   "nhom": "4421",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T1545#soan-442191",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1803#soat-442191",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1803)",
+    "bam": "49e54ecd8d56e520063c8b0eb020b7bfa9a8f5accfc6be871ac769f9509864c4"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -29,7 +35,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "44219120",
@@ -47,7 +53,7 @@
           "value": "làm diêm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "44219130",
@@ -64,7 +70,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "44219140",
@@ -112,7 +118,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "44219150",
@@ -125,7 +131,7 @@
           "value": "Chuỗi hạt cầu nguyện"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "44219160",
@@ -138,12 +144,12 @@
           "value": "Tăm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "44219170",
-      "nguon": "tax.44219170",
-      "trich": "44219170 - - - Các loại que dùng để làm nhang (nén hương)(SEN)",
+      "nguon": "sen.44219170",
+      "trich": "CÁC LOẠI QUE DÙNG ĐỂ LÀM NHANG (NÉN HƯƠNG) … Chiều dày từ 1,3 - 2,5 mm và chiều dài thường không ngắn hơn 5 cm.",
       "dieuKienSo": [
         {
           "fact": "tenLoai",
@@ -154,16 +160,28 @@
           "fact": "congDung",
           "op": "CONG_DUNG",
           "value": "làm nhang"
+        },
+        {
+          "fact": "doDay",
+          "op": ">=",
+          "value": 1.3,
+          "donVi": "mm"
+        },
+        {
+          "fact": "doDay",
+          "op": "<=",
+          "value": 2.5,
+          "donVi": "mm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "44219190",
       "nguon": "tax.44219190",
       "trich": "44219190 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "chongLanTruc": [

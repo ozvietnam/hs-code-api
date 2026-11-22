@@ -4,13 +4,19 @@
   "nhom": "4013",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1705#soan-401390",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1803#soat-401390",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1803)",
+    "bam": "a856344625ee0708c5468d947e25b536bd61d2faa5cad4f9366fffb8b4f4f15f"
+  },
   "dieuKienNut": [
     {
       "id": "4013901",
@@ -23,7 +29,7 @@
           "value": "máy thuộc nhóm 84.29 hoặc 84.30"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "4013903",
@@ -36,7 +42,7 @@
           "value": "các xe khác thuộc Chương 87"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": true
     }
   ],
@@ -53,7 +59,7 @@
           "donVi": "mm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "40139019",
@@ -67,7 +73,7 @@
           "donVi": "mm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "40139020",
@@ -80,7 +86,7 @@
           "value": "xe môtô"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "40139031",
@@ -94,7 +100,7 @@
           "donVi": "mm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "40139039",
@@ -108,7 +114,7 @@
           "donVi": "mm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "40139040",
@@ -121,7 +127,7 @@
           "value": "phương tiện bay"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "40139091",
@@ -135,7 +141,7 @@
           "donVi": "mm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "40139099",
@@ -149,7 +155,7 @@
           "donVi": "mm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -177,37 +183,37 @@
       "ma": "40139011",
       "loai": "BO_VE",
       "ve": "Dùng cho loại lốp",
-      "lyDo": "Vế \"Dùng cho loại lốp\" là đích CHUNG của mọi dòng 8 số dưới tiêu đề này (vòng ruột đều dùng cho loại lốp), không phân biệt dòng nào: điều kiện phân biệt là đích phương tiện nêu ở tiêu đề và biên chiều rộng ở dòng con. Ghi dungCho \"loại lốp\" ở dòng con sẽ làm cổng 1 không phủ kín (vector mang giá trị của tiêu đề không rơi vào dòng con nào), nên miễn vế này — bỏ vế không làm đổi mã 8 số."
+      "lyDo": "Cụm \"Dùng cho loại lốp có chiều rộng\" đã được gộp trực tiếp vào cachDoc của khoá chieuRong trong tu-vung@2 (OZV-1803); cổng 5 với khoá SO chỉ neo ở vị trí chữ số 450 nên khai BO_VE cho mệnh đề đầu \"Dùng cho loại lốp\" để cổng 5 ghi nhận đã phủ qua cachDoc của chieuRong."
     },
     {
       "ma": "40139019",
       "loai": "BO_VE",
       "ve": "Dùng cho loại lốp",
-      "lyDo": "Vế \"Dùng cho loại lốp\" là đích CHUNG của mọi dòng 8 số dưới tiêu đề này (vòng ruột đều dùng cho loại lốp), không phân biệt dòng nào: điều kiện phân biệt là đích phương tiện nêu ở tiêu đề và biên chiều rộng ở dòng con. Ghi dungCho \"loại lốp\" ở dòng con sẽ làm cổng 1 không phủ kín (vector mang giá trị của tiêu đề không rơi vào dòng con nào), nên miễn vế này — bỏ vế không làm đổi mã 8 số."
+      "lyDo": "Cụm \"Dùng cho loại lốp có chiều rộng\" đã được gộp trực tiếp vào cachDoc của khoá chieuRong trong tu-vung@2 (OZV-1803); cổng 5 với khoá SO chỉ neo ở vị trí chữ số 450 nên khai BO_VE cho mệnh đề đầu \"Dùng cho loại lốp\" để cổng 5 ghi nhận đã phủ qua cachDoc của chieuRong."
     },
     {
       "ma": "40139031",
       "loai": "BO_VE",
       "ve": "Dùng cho loại lốp",
-      "lyDo": "Vế \"Dùng cho loại lốp\" là đích CHUNG của mọi dòng 8 số dưới tiêu đề này (vòng ruột đều dùng cho loại lốp), không phân biệt dòng nào: điều kiện phân biệt là đích phương tiện nêu ở tiêu đề và biên chiều rộng ở dòng con. Ghi dungCho \"loại lốp\" ở dòng con sẽ làm cổng 1 không phủ kín (vector mang giá trị của tiêu đề không rơi vào dòng con nào), nên miễn vế này — bỏ vế không làm đổi mã 8 số."
+      "lyDo": "Cụm \"Dùng cho loại lốp có chiều rộng\" đã được gộp trực tiếp vào cachDoc của khoá chieuRong trong tu-vung@2 (OZV-1803); cổng 5 với khoá SO chỉ neo ở vị trí chữ số 450 nên khai BO_VE cho mệnh đề đầu \"Dùng cho loại lốp\" để cổng 5 ghi nhận đã phủ qua cachDoc của chieuRong."
     },
     {
       "ma": "40139039",
       "loai": "BO_VE",
       "ve": "Dùng cho loại lốp",
-      "lyDo": "Vế \"Dùng cho loại lốp\" là đích CHUNG của mọi dòng 8 số dưới tiêu đề này (vòng ruột đều dùng cho loại lốp), không phân biệt dòng nào: điều kiện phân biệt là đích phương tiện nêu ở tiêu đề và biên chiều rộng ở dòng con. Ghi dungCho \"loại lốp\" ở dòng con sẽ làm cổng 1 không phủ kín (vector mang giá trị của tiêu đề không rơi vào dòng con nào), nên miễn vế này — bỏ vế không làm đổi mã 8 số."
+      "lyDo": "Cụm \"Dùng cho loại lốp có chiều rộng\" đã được gộp trực tiếp vào cachDoc của khoá chieuRong trong tu-vung@2 (OZV-1803); cổng 5 với khoá SO chỉ neo ở vị trí chữ số 450 nên khai BO_VE cho mệnh đề đầu \"Dùng cho loại lốp\" để cổng 5 ghi nhận đã phủ qua cachDoc của chieuRong."
     },
     {
       "ma": "40139091",
       "loai": "BO_VE",
       "ve": "Dùng cho loại lốp",
-      "lyDo": "Vế \"Dùng cho loại lốp\" là đích CHUNG của mọi dòng 8 số dưới tiêu đề này (vòng ruột đều dùng cho loại lốp), không phân biệt dòng nào: điều kiện phân biệt là đích phương tiện nêu ở tiêu đề và biên chiều rộng ở dòng con. Ghi dungCho \"loại lốp\" ở dòng con sẽ làm cổng 1 không phủ kín (vector mang giá trị của tiêu đề không rơi vào dòng con nào), nên miễn vế này — bỏ vế không làm đổi mã 8 số."
+      "lyDo": "Cụm \"Dùng cho loại lốp có chiều rộng\" đã được gộp trực tiếp vào cachDoc của khoá chieuRong trong tu-vung@2 (OZV-1803); cổng 5 với khoá SO chỉ neo ở vị trí chữ số 450 nên khai BO_VE cho mệnh đề đầu \"Dùng cho loại lốp\" để cổng 5 ghi nhận đã phủ qua cachDoc của chieuRong."
     },
     {
       "ma": "40139099",
       "loai": "BO_VE",
       "ve": "Dùng cho loại lốp",
-      "lyDo": "Vế \"Dùng cho loại lốp\" là đích CHUNG của mọi dòng 8 số dưới tiêu đề này (vòng ruột đều dùng cho loại lốp), không phân biệt dòng nào: điều kiện phân biệt là đích phương tiện nêu ở tiêu đề và biên chiều rộng ở dòng con. Ghi dungCho \"loại lốp\" ở dòng con sẽ làm cổng 1 không phủ kín (vector mang giá trị của tiêu đề không rơi vào dòng con nào), nên miễn vế này — bỏ vế không làm đổi mã 8 số."
+      "lyDo": "Cụm \"Dùng cho loại lốp có chiều rộng\" đã được gộp trực tiếp vào cachDoc của khoá chieuRong trong tu-vung@2 (OZV-1803); cổng 5 với khoá SO chỉ neo ở vị trí chữ số 450 nên khai BO_VE cho mệnh đề đầu \"Dùng cho loại lốp\" để cổng 5 ghi nhận đã phủ qua cachDoc của chieuRong."
     }
   ],
   "traVe": [

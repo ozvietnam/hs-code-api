@@ -80,11 +80,35 @@
   "dong8": [
     {
       "hs": "39211121",
-      "dieuKien": "Plastic cứng dạng tấm và phiến, mô-đun đàn hồi uốn hoặc mô-đun đàn hồi kéo lớn hơn 100.000 psi ở 23°C, độ ẩm tương đối 50% (thử theo ASTM D747 hoặc ASTM D790); thuộc phân nhóm 392111 (tấm, phiến, màng, lá và dải bằng polyme styren, loại xốp)",
+      "dieuKien": "tên loại hàng: tấm hoặc phiến; mô-đun đàn hồi > 100000 psi",
       "loaiKhac": false,
       "nguon": "sen.39211121",
-      "trich": "Plastic cứng dạng tấm và phiến có modul đàn hồi uốn hoặc module đàn hồi kéo lớn hơn 100,000 psi ở 23°C và có độ ẩm tương đối là 50% khi thử nghiệm theo tiêu chuẩn ASTM D747 hoặc ASTM D790.",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "Plastic cứng dạng tấm và phiến có modul đàn hồi uốn hoặc module đàn hồi kéo lớn hơn 100,000 psi ở 23°C và có độ ẩm tương đối là 50% khi thử nghiệm theo tiêu chuẩn ASTM D747 hoặc ASTM D790",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "tấm",
+            "phiến"
+          ]
+        },
+        {
+          "fact": "moDunDanHoi",
+          "op": ">",
+          "value": 100000,
+          "donVi": "psi"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1803#soat-392111",
+          "ngay": "2026-11-22",
+          "bam": "1575a022fb25467296a9773cb3e178671da94647200a348c6135e3832bccb194"
+        }
+      }
     },
     {
       "hs": "39211129",
@@ -105,27 +129,58 @@
     },
     {
       "hs": "39211191",
-      "dieuKien": "Dạng tấm và phiến: đáp ứng yêu cầu của Chú giải 10 Chương 39, hình chữ nhật (kể cả hình vuông), độ dày trên 0,25 mm; thuộc phân nhóm 392111 (tấm, phiến, màng, lá và dải bằng polyme styren, loại xốp)",
+      "dieuKien": "tên loại hàng: tấm hoặc phiến; độ dày > 0.25 mm",
       "loaiKhac": false,
       "nguon": "sen.3921",
       "trich": "Theo mục đích của các phân nhóm ASEAN trong các nhóm này, \"tấm và phiến\" dùng để chỉ các sản phẩm đáp ứng các yêu cầu của Chú giải 10 của Chương 39, có hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25 mm.",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "be_day",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "tấm",
+            "phiến"
+          ]
+        },
+        {
+          "fact": "doDay",
           "op": ">",
           "value": 0.25,
           "donVi": "mm"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1803#soat-392111",
+          "ngay": "2026-11-22",
+          "bam": "1575a022fb25467296a9773cb3e178671da94647200a348c6135e3832bccb194"
+        }
+      }
     },
     {
       "hs": "39211192",
-      "dieuKien": "Dạng màng: sản phẩm không đáp ứng mô tả \"tấm và phiến\" (hình chữ nhật, dày trên 0,25 mm) được phân loại là màng hoặc lá; thuộc phân nhóm 392111 (tấm, phiến, màng, lá và dải bằng polyme styren, loại xốp)",
+      "dieuKien": "tên loại hàng: màng",
       "loaiKhac": false,
-      "nguon": "sen.3921",
-      "trich": "Theo mục đích của các phân nhóm ASEAN trong các nhóm này, \"tấm và phiến\" dùng để chỉ các sản phẩm đáp ứng các yêu cầu của Chú giải 10 của Chương 39, có hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25 mm. … Sản phẩm không đáp ứng mô tả trên sẽ được phân loại là màng hoặc lá.",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguon": "tax.39211192",
+      "trich": "39211192 - - - - Dạng màng (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "màng"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1803#soat-392111",
+          "ngay": "2026-11-22",
+          "bam": "1575a022fb25467296a9773cb3e178671da94647200a348c6135e3832bccb194"
+        }
+      }
     },
     {
       "hs": "39211199",
@@ -265,11 +320,35 @@
     },
     {
       "hs": "39211421",
-      "dieuKien": "Plastic cứng dạng tấm và phiến, mô-đun đàn hồi uốn hoặc mô-đun đàn hồi kéo lớn hơn 100.000 psi ở 23°C, độ ẩm tương đối 50% (thử theo ASTM D747 hoặc ASTM D790); thuộc phân nhóm 392114 (tấm, phiến, màng, lá và dải bằng xenlulo tái sinh, loại xốp)",
+      "dieuKien": "tên loại hàng: tấm hoặc phiến; mô-đun đàn hồi > 100000 psi",
       "loaiKhac": false,
       "nguon": "sen.39211421",
-      "trich": "Plastic cứng dạng tấm và phiến có modul đàn hồi uốn hoặc module đàn hồi kéo lớn hơn 100,000 psi ở 23°C và có độ ẩm tương đối là 50% khi thử nghiệm theo tiêu chuẩn ASTM D747 hoặc ASTM D790.",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "Plastic cứng dạng tấm và phiến có modul đàn hồi uốn hoặc module đàn hồi kéo lớn hơn 100,000 psi ở 23°C và có độ ẩm tương đối là 50% khi thử nghiệm theo tiêu chuẩn ASTM D747 hoặc ASTM D790",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "tấm",
+            "phiến"
+          ]
+        },
+        {
+          "fact": "moDunDanHoi",
+          "op": ">",
+          "value": 100000,
+          "donVi": "psi"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1803#soat-392114",
+          "ngay": "2026-11-22",
+          "bam": "b7867a40561ecd250d8f2781362bb2f8176a781d307762f3aa69d514ef9c9063"
+        }
+      }
     },
     {
       "hs": "39211429",
@@ -290,27 +369,58 @@
     },
     {
       "hs": "39211491",
-      "dieuKien": "Dạng tấm và phiến: đáp ứng yêu cầu của Chú giải 10 Chương 39, hình chữ nhật (kể cả hình vuông), độ dày trên 0,25 mm; thuộc phân nhóm 392114 (tấm, phiến, màng, lá và dải bằng xenlulo tái sinh, loại xốp)",
+      "dieuKien": "tên loại hàng: tấm hoặc phiến; độ dày > 0.25 mm",
       "loaiKhac": false,
       "nguon": "sen.3921",
       "trich": "Theo mục đích của các phân nhóm ASEAN trong các nhóm này, \"tấm và phiến\" dùng để chỉ các sản phẩm đáp ứng các yêu cầu của Chú giải 10 của Chương 39, có hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25 mm.",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "be_day",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "tấm",
+            "phiến"
+          ]
+        },
+        {
+          "fact": "doDay",
           "op": ">",
           "value": 0.25,
           "donVi": "mm"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1803#soat-392114",
+          "ngay": "2026-11-22",
+          "bam": "b7867a40561ecd250d8f2781362bb2f8176a781d307762f3aa69d514ef9c9063"
+        }
+      }
     },
     {
       "hs": "39211492",
-      "dieuKien": "Dạng màng: sản phẩm không đáp ứng mô tả \"tấm và phiến\" (hình chữ nhật, dày trên 0,25 mm) được phân loại là màng hoặc lá; thuộc phân nhóm 392114 (tấm, phiến, màng, lá và dải bằng xenlulo tái sinh, loại xốp)",
+      "dieuKien": "tên loại hàng: màng",
       "loaiKhac": false,
-      "nguon": "sen.3921",
-      "trich": "Theo mục đích của các phân nhóm ASEAN trong các nhóm này, \"tấm và phiến\" dùng để chỉ các sản phẩm đáp ứng các yêu cầu của Chú giải 10 của Chương 39, có hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25 mm. … Sản phẩm không đáp ứng mô tả trên sẽ được phân loại là màng hoặc lá.",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguon": "tax.39211492",
+      "trich": "39211492 - - - - Dạng màng (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "màng"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1803#soat-392114",
+          "ngay": "2026-11-22",
+          "bam": "b7867a40561ecd250d8f2781362bb2f8176a781d307762f3aa69d514ef9c9063"
+        }
+      }
     },
     {
       "hs": "39211499",
@@ -332,19 +442,49 @@
     },
     {
       "hs": "39211911",
-      "dieuKien": "Từ polypropylen; thuộc phân nhóm 392119 (tấm, phiến, màng, lá và dải bằng plastic khác chưa ghi ở nhóm 3921, loại xốp)",
+      "dieuKien": "tên loại hàng: polypropylen",
       "loaiKhac": false,
       "nguon": "tax.39211911",
-      "trich": "39211911 - - - - Từ polypropylen",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "39211911 - - - - Từ polypropylen ",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "polypropylen"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1803#soat-392119",
+          "ngay": "2026-11-22",
+          "bam": "f49c2dc157ed7fb1660cafd78198cba0f4893d06a6c7b06d27c8998ba7246a2f"
+        }
+      }
     },
     {
       "hs": "39211912",
-      "dieuKien": "Từ polyetylen; thuộc phân nhóm 392119 (tấm, phiến, màng, lá và dải bằng plastic khác chưa ghi ở nhóm 3921, loại xốp)",
+      "dieuKien": "tên loại hàng: polyetylen",
       "loaiKhac": false,
       "nguon": "tax.39211912",
       "trich": "39211912 - - - - Từ polyetylen",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "polyetylen"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1803#soat-392119",
+          "ngay": "2026-11-22",
+          "bam": "f49c2dc157ed7fb1660cafd78198cba0f4893d06a6c7b06d27c8998ba7246a2f"
+        }
+      }
     },
     {
       "hs": "39211919",
@@ -366,11 +506,26 @@
     },
     {
       "hs": "39211931",
-      "dieuKien": "Từ các polycarbonat; thuộc phân nhóm 392119 (tấm, phiến, màng, lá và dải bằng plastic khác chưa ghi ở nhóm 3921, loại xốp)",
+      "dieuKien": "tên loại hàng: polycarbonat",
       "loaiKhac": false,
       "nguon": "tax.39211931",
       "trich": "39211931 - - - - Từ các polycarbonat",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "polycarbonat"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1803#soat-392119",
+          "ngay": "2026-11-22",
+          "bam": "f49c2dc157ed7fb1660cafd78198cba0f4893d06a6c7b06d27c8998ba7246a2f"
+        }
+      }
     },
     {
       "hs": "39211939",
@@ -391,35 +546,119 @@
     },
     {
       "hs": "39211940",
-      "dieuKien": "Dạng tấm và phiến từ xenlulo hoặc từ các dẫn xuất hóa học của chúng, hoặc từ sợi lưu hóa; thuộc phân nhóm 392119 (tấm, phiến, màng, lá và dải bằng plastic khác chưa ghi ở nhóm 3921, loại xốp)",
+      "dieuKien": "dạng hình học bán thành phẩm plastic: dạng tấm và phiến; tên loại hàng: xenlulo hoặc dẫn xuất hóa học của chúng hoặc sợi lưu hóa",
       "loaiKhac": false,
       "nguon": "tax.39211940",
       "trich": "39211940 - - - Dạng tấm và phiến(SEN) từ xenlulo hoặc từ các dẫn xuất hóa học của chúng, hoặc từ sợi lưu hóa",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dangTamPhienMang",
+          "op": "TRONG",
+          "value": [
+            "TAM_VA_PHIEN"
+          ]
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "xenlulo",
+            "dẫn xuất hóa học của chúng",
+            "sợi lưu hóa"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1803#soat-392119",
+          "ngay": "2026-11-22",
+          "bam": "f49c2dc157ed7fb1660cafd78198cba0f4893d06a6c7b06d27c8998ba7246a2f"
+        }
+      }
     },
     {
       "hs": "39211950",
-      "dieuKien": "Dạng tấm và phiến từ các protein được làm cứng, hoặc từ các dẫn xuất hóa học của cao su tự nhiên; thuộc phân nhóm 392119 (tấm, phiến, màng, lá và dải bằng plastic khác chưa ghi ở nhóm 3921, loại xốp)",
+      "dieuKien": "dạng hình học bán thành phẩm plastic: dạng tấm và phiến; tên loại hàng: protein được làm cứng hoặc dẫn xuất hóa học của cao su tự nhiên",
       "loaiKhac": false,
       "nguon": "tax.39211950",
       "trich": "39211950 - - - Dạng tấm và phiến(SEN) từ các protein được làm cứng, hoặc từ các dẫn xuất hóa học của cao su tự nhiên",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dangTamPhienMang",
+          "op": "TRONG",
+          "value": [
+            "TAM_VA_PHIEN"
+          ]
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "protein được làm cứng",
+            "dẫn xuất hóa học của cao su tự nhiên"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1803#soat-392119",
+          "ngay": "2026-11-22",
+          "bam": "f49c2dc157ed7fb1660cafd78198cba0f4893d06a6c7b06d27c8998ba7246a2f"
+        }
+      }
     },
     {
       "hs": "39211961",
-      "dieuKien": "Từ nitrocellulose (thuốc nổ bông); thuộc phân nhóm 392119 (tấm, phiến, màng, lá và dải bằng plastic khác chưa ghi ở nhóm 3921, loại xốp)",
+      "dieuKien": "tên loại hàng: nitrocellulose",
       "loaiKhac": false,
       "nguon": "tax.39211961",
       "trich": "39211961 - - - - Từ nitrocellulose (thuốc nổ bông)",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "nitrocellulose"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1803#soat-392119",
+          "ngay": "2026-11-22",
+          "bam": "f49c2dc157ed7fb1660cafd78198cba0f4893d06a6c7b06d27c8998ba7246a2f"
+        }
+      }
     },
     {
       "hs": "39211962",
-      "dieuKien": "Từ các protein đã làm cứng; từ các dẫn xuất hóa học của cao su tự nhiên; thuộc phân nhóm 392119 (tấm, phiến, màng, lá và dải bằng plastic khác chưa ghi ở nhóm 3921, loại xốp)",
+      "dieuKien": "tên loại hàng: protein đã làm cứng hoặc dẫn xuất hóa học của cao su tự nhiên",
       "loaiKhac": false,
       "nguon": "tax.39211962",
       "trich": "39211962 - - - - Từ các protein đã làm cứng; từ các dẫn xuất hóa học của cao su tự nhiên",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "protein đã làm cứng",
+            "dẫn xuất hóa học của cao su tự nhiên"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1803#soat-392119",
+          "ngay": "2026-11-22",
+          "bam": "f49c2dc157ed7fb1660cafd78198cba0f4893d06a6c7b06d27c8998ba7246a2f"
+        }
+      }
     },
     {
       "hs": "39211969",
@@ -441,19 +680,52 @@
     },
     {
       "hs": "39211993",
-      "dieuKien": "Từ nitrocellulose (thuốc nổ bông); thuộc phân nhóm 392119 (tấm, phiến, màng, lá và dải bằng plastic khác chưa ghi ở nhóm 3921, loại xốp)",
+      "dieuKien": "tên loại hàng: nitrocellulose",
       "loaiKhac": false,
       "nguon": "tax.39211993",
       "trich": "39211993 - - - - Từ nitrocellulose (thuốc nổ bông)",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "nitrocellulose"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1803#soat-392119",
+          "ngay": "2026-11-22",
+          "bam": "f49c2dc157ed7fb1660cafd78198cba0f4893d06a6c7b06d27c8998ba7246a2f"
+        }
+      }
     },
     {
       "hs": "39211994",
-      "dieuKien": "Từ các protein đã làm cứng; từ các dẫn xuất hóa học của cao su tự nhiên; thuộc phân nhóm 392119 (tấm, phiến, màng, lá và dải bằng plastic khác chưa ghi ở nhóm 3921, loại xốp)",
+      "dieuKien": "tên loại hàng: protein đã làm cứng hoặc dẫn xuất hóa học của cao su tự nhiên",
       "loaiKhac": false,
       "nguon": "tax.39211994",
       "trich": "39211994 - - - - Từ các protein đã làm cứng; từ các dẫn xuất hóa học của cao su tự nhiên",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "protein đã làm cứng",
+            "dẫn xuất hóa học của cao su tự nhiên"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1803#soat-392119",
+          "ngay": "2026-11-22",
+          "bam": "f49c2dc157ed7fb1660cafd78198cba0f4893d06a6c7b06d27c8998ba7246a2f"
+        }
+      }
     },
     {
       "hs": "39211999",
@@ -475,59 +747,150 @@
     },
     {
       "hs": "39219010",
-      "dieuKien": "Từ sợi lưu hóa; thuộc phân nhóm 392190 (tấm, phiến, màng, lá và dải bằng plastic, loại không xốp)",
+      "dieuKien": "tên loại hàng: sợi lưu hóa",
       "loaiKhac": false,
       "nguon": "tax.39219010",
       "trich": "39219010 - - Từ sợi lưu hóa",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "sợi lưu hóa"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1803#soat-392190",
+          "ngay": "2026-11-22",
+          "bam": "536c76333b9b601616a40ba227257f2ee319728f52280b215a964b9f8df66831"
+        }
+      }
     },
     {
       "hs": "39219020",
-      "dieuKien": "Từ các protein đã được làm cứng; thuộc phân nhóm 392190 (tấm, phiến, màng, lá và dải bằng plastic, loại không xốp)",
+      "dieuKien": "tên loại hàng: protein đã được làm cứng",
       "loaiKhac": false,
       "nguon": "tax.39219020",
       "trich": "39219020 - - Từ các protein đã được làm cứng",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "protein đã được làm cứng"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1803#soat-392190",
+          "ngay": "2026-11-22",
+          "bam": "536c76333b9b601616a40ba227257f2ee319728f52280b215a964b9f8df66831"
+        }
+      }
     },
     {
       "hs": "39219030",
-      "dieuKien": "Từ các dẫn xuất hóa học của cao su tự nhiên; thuộc phân nhóm 392190 (tấm, phiến, màng, lá và dải bằng plastic, loại không xốp)",
+      "dieuKien": "tên loại hàng: dẫn xuất hóa học của cao su tự nhiên",
       "loaiKhac": false,
       "nguon": "tax.39219030",
       "trich": "39219030 - - Từ các dẫn xuất hóa học của cao su tự nhiên",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "dẫn xuất hóa học của cao su tự nhiên"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1803#soat-392190",
+          "ngay": "2026-11-22",
+          "bam": "536c76333b9b601616a40ba227257f2ee319728f52280b215a964b9f8df66831"
+        }
+      }
     },
     {
       "hs": "39219041",
-      "dieuKien": "Dạng tấm và phiến: đáp ứng yêu cầu của Chú giải 10 Chương 39, hình chữ nhật (kể cả hình vuông), độ dày trên 0,25 mm; thuộc phân nhóm 392190 (tấm, phiến, màng, lá và dải bằng plastic, loại không xốp)",
+      "dieuKien": "tên loại hàng: tấm hoặc phiến; độ dày > 0.25 mm",
       "loaiKhac": false,
       "nguon": "sen.3921",
       "trich": "Theo mục đích của các phân nhóm ASEAN trong các nhóm này, \"tấm và phiến\" dùng để chỉ các sản phẩm đáp ứng các yêu cầu của Chú giải 10 của Chương 39, có hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25 mm.",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "be_day",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "tấm",
+            "phiến"
+          ]
+        },
+        {
+          "fact": "doDay",
           "op": ">",
           "value": 0.25,
           "donVi": "mm"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1803#soat-392190",
+          "ngay": "2026-11-22",
+          "bam": "536c76333b9b601616a40ba227257f2ee319728f52280b215a964b9f8df66831"
+        }
+      }
     },
     {
       "hs": "39219042",
-      "dieuKien": "Dạng màng: sản phẩm không đáp ứng mô tả \"tấm và phiến\" (hình chữ nhật, dày trên 0,25 mm) được phân loại là màng hoặc lá; thuộc phân nhóm 392190 (tấm, phiến, màng, lá và dải bằng plastic, loại không xốp)",
+      "dieuKien": "tên loại hàng: màng",
       "loaiKhac": false,
-      "nguon": "sen.3921",
-      "trich": "Theo mục đích của các phân nhóm ASEAN trong các nhóm này, \"tấm và phiến\" dùng để chỉ các sản phẩm đáp ứng các yêu cầu của Chú giải 10 của Chương 39, có hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25 mm. … Sản phẩm không đáp ứng mô tả trên sẽ được phân loại là màng hoặc lá.",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguon": "tax.39219042",
+      "trich": "39219042 - - - Dạng màng (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "màng"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1803#soat-392190",
+          "ngay": "2026-11-22",
+          "bam": "536c76333b9b601616a40ba227257f2ee319728f52280b215a964b9f8df66831"
+        }
+      }
     },
     {
       "hs": "39219043",
-      "dieuKien": "Dạng dải có ép vật liệu dệt; thuộc phân nhóm 392190 (tấm, phiến, màng, lá và dải bằng plastic, loại không xốp)",
+      "dieuKien": "tên loại hàng: dải có ép vật liệu dệt",
       "loaiKhac": false,
       "nguon": "tax.39219043",
       "trich": "39219043 - - - Dạng dải có ép vật liệu dệt",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "dải có ép vật liệu dệt"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1803#soat-392190",
+          "ngay": "2026-11-22",
+          "bam": "536c76333b9b601616a40ba227257f2ee319728f52280b215a964b9f8df66831"
+        }
+      }
     },
     {
       "hs": "39219049",
@@ -550,27 +913,76 @@
     },
     {
       "hs": "39219050",
-      "dieuKien": "Từ xenlulo tái sinh; thuộc phân nhóm 392190 (tấm, phiến, màng, lá và dải bằng plastic, loại không xốp)",
+      "dieuKien": "tên loại hàng: xenlulo tái sinh",
       "loaiKhac": false,
       "nguon": "tax.39219050",
       "trich": "39219050 - - Từ xenlulo tái sinh",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "xenlulo tái sinh"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1803#soat-392190",
+          "ngay": "2026-11-22",
+          "bam": "536c76333b9b601616a40ba227257f2ee319728f52280b215a964b9f8df66831"
+        }
+      }
     },
     {
       "hs": "39219060",
-      "dieuKien": "Từ xenlulo khác hoặc các dẫn xuất hóa học của nó; thuộc phân nhóm 392190 (tấm, phiến, màng, lá và dải bằng plastic, loại không xốp)",
+      "dieuKien": "tên loại hàng: xenlulo khác hoặc dẫn xuất hóa học của nó",
       "loaiKhac": false,
       "nguon": "tax.39219060",
       "trich": "39219060 - - Từ xenlulo khác hoặc các dẫn xuất hóa học của nó",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "xenlulo khác",
+            "dẫn xuất hóa học của nó"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1803#soat-392190",
+          "ngay": "2026-11-22",
+          "bam": "536c76333b9b601616a40ba227257f2ee319728f52280b215a964b9f8df66831"
+        }
+      },
+      "phanConLai": false
     },
     {
       "hs": "39219070",
-      "dieuKien": "Từ các polyme trùng hợp; thuộc phân nhóm 392190 (tấm, phiến, màng, lá và dải bằng plastic, loại không xốp)",
+      "dieuKien": "tên loại hàng: polyme trùng hợp",
       "loaiKhac": false,
       "nguon": "tax.39219070",
       "trich": "39219070 - - Từ các polyme trùng hợp",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "polyme trùng hợp"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1803#soat-392190",
+          "ngay": "2026-11-22",
+          "bam": "536c76333b9b601616a40ba227257f2ee319728f52280b215a964b9f8df66831"
+        }
+      }
     },
     {
       "hs": "39219090",
@@ -1182,6 +1594,26 @@
   "yKienWcoDayDu": false,
   "dieuKienNut": [
     {
+      "id": "3921112",
+      "nguon": "tieuDe.3921112",
+      "trich": "3921112 Cứng",
+      "dieuKienSo": [
+        {
+          "fact": "loaiCung",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1803#soat-392111",
+          "ngay": "2026-11-22",
+          "bam": "1575a022fb25467296a9773cb3e178671da94647200a348c6135e3832bccb194"
+        }
+      }
+    },
+    {
       "id": "3921131",
       "nguon": "tieuDe.3921131",
       "trich": "3921131 Cứng",
@@ -1198,6 +1630,136 @@
           "phien": "mw-soatS2:20261107T0448#soat-392113",
           "ngay": "2026-11-07",
           "bam": "e1450c4f4be4d2bf9d4b77074c3987f941c68b7f224156cbb413ae814f1203e2"
+        }
+      }
+    },
+    {
+      "id": "3921142",
+      "nguon": "tieuDe.3921142",
+      "trich": "3921142 Cứng",
+      "dieuKienSo": [
+        {
+          "fact": "loaiCung",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1803#soat-392114",
+          "ngay": "2026-11-22",
+          "bam": "b7867a40561ecd250d8f2781362bb2f8176a781d307762f3aa69d514ef9c9063"
+        }
+      }
+    },
+    {
+      "id": "3921191",
+      "nguon": "tieuDe.3921191",
+      "trich": "3921191 Dạng tấm và phiến (SEN) từ các sản phẩm polyme trùng hợp",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "tấm",
+            "phiến"
+          ]
+        },
+        {
+          "fact": "nhomPolyme",
+          "op": "TRONG",
+          "value": [
+            "TRUNG_HOP"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1803#soat-392119",
+          "ngay": "2026-11-22",
+          "bam": "f49c2dc157ed7fb1660cafd78198cba0f4893d06a6c7b06d27c8998ba7246a2f"
+        }
+      }
+    },
+    {
+      "id": "3921193",
+      "nguon": "tieuDe.3921193",
+      "trich": "3921193 Dạng tấm và phiến(SEN) từ các sản phẩm polyme trùng ngưng hoặc tái sắp xếp",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "tấm",
+            "phiến"
+          ]
+        },
+        {
+          "fact": "nhomPolyme",
+          "op": "TRONG",
+          "value": [
+            "TRUNG_NGUNG_HOAC_TAI_SAP_XEP"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1803#soat-392119",
+          "ngay": "2026-11-22",
+          "bam": "f49c2dc157ed7fb1660cafd78198cba0f4893d06a6c7b06d27c8998ba7246a2f"
+        }
+      }
+    },
+    {
+      "id": "3921196",
+      "nguon": "tieuDe.3921196",
+      "trich": "3921196 Dạng màng và lá (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "màng",
+            "lá"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1803#soat-392119",
+          "ngay": "2026-11-22",
+          "bam": "f49c2dc157ed7fb1660cafd78198cba0f4893d06a6c7b06d27c8998ba7246a2f"
+        }
+      }
+    },
+    {
+      "id": "3921904",
+      "nguon": "tieuDe.3921904",
+      "trich": "3921904 Từ các polyme trùng ngưng hoặc tái sắp xếp",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "polyme trùng ngưng",
+            "tái sắp xếp"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1803#soat-392190",
+          "ngay": "2026-11-22",
+          "bam": "536c76333b9b601616a40ba227257f2ee319728f52280b215a964b9f8df66831"
         }
       }
     }

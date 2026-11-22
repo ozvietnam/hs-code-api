@@ -4,13 +4,19 @@
   "nhom": "3903",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-390330",
     "ngay": "2026-11-02"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1803#soat-390330",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1803)",
+    "bam": "3ff0876e86fce0b624b5a21b8c4d0e1394c189109cbe3fae8db48d5bf09c77e1"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -26,12 +32,14 @@
           ]
         },
         {
-          "fact": "congDung",
-          "op": "CONG_DUNG",
-          "value": "nước"
+          "fact": "moiTruongPhanTan",
+          "op": "TRONG",
+          "value": [
+            "NUOC"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39033050",
@@ -46,13 +54,14 @@
           ]
         },
         {
-          "chieu": "PHAI_KHONG",
-          "fact": "congDung",
-          "op": "CONG_DUNG",
-          "value": "nước"
+          "fact": "moiTruongPhanTan",
+          "op": "TRONG",
+          "value": [
+            "KHONG_CHUA_NUOC"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39033060",
@@ -65,33 +74,38 @@
           "value": [
             "HAT_VIEN_VAY_MANH"
           ]
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dạng hạt"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39033090",
       "nguon": "tax.39033090",
       "trich": "39033090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "39033040",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.39033040 \"Dạng phân tán trong môi trường nước\" ⇒ dangNguyenSinh TRONG [PHAN_TAN], congDung \"nước\""
+      "ghiChu": "tax.39033040 \"Dạng phân tán trong môi trường nước\" ⇒ dangNguyenSinh TRONG [PHAN_TAN] + moiTruongPhanTan TRONG [NUOC]"
     },
     {
       "ma": "39033050",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.39033050 \"Dạng phân tán trong môi trường không chứa nước\" ⇒ dangNguyenSinh TRONG [PHAN_TAN], congDung PHAI_KHONG \"nước\""
+      "ghiChu": "tax.39033050 \"Dạng phân tán trong môi trường không chứa nước\" ⇒ dangNguyenSinh TRONG [PHAN_TAN] + moiTruongPhanTan TRONG [KHONG_CHUA_NUOC]"
     },
     {
       "ma": "39033060",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.39033060 \"Dạng hạt\" ⇒ dangNguyenSinh TRONG [HAT_VIEN_VAY_MANH]"
+      "ghiChu": "tax.39033060 \"Dạng hạt(SEN)\" ⇒ dangNguyenSinh TRONG [HAT_VIEN_VAY_MANH] + tenLoai \"Dạng hạt\" (thu hẹp đúng chữ dạng hạt, không bao gồm bột/vẩy/mảnh)"
     }
   ],
   "traVe": [

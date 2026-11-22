@@ -4,13 +4,19 @@
   "nhom": "3921",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1700#soan-392190",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1803#soat-392190",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1803)",
+    "bam": "536c76333b9b601616a40ba227257f2ee319728f52280b215a964b9f8df66831"
+  },
   "dieuKienNut": [
     {
       "id": "3921904",
@@ -20,10 +26,13 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "polyme trùng ngưng"
+          "value": [
+            "polyme trùng ngưng",
+            "tái sắp xếp"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -38,7 +47,7 @@
           "value": "sợi lưu hóa"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39219020",
@@ -48,14 +57,10 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "protein"
-        },
-        {
-          "fact": "loaiCung",
-          "op": "CO"
+          "value": "protein đã được làm cứng"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39219030",
@@ -68,12 +73,12 @@
           "value": "dẫn xuất hóa học của cao su tự nhiên"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39219041",
-      "nguon": "tax.39219041",
-      "trich": "39219041 - - - Dạng tấm và phiến (SEN)",
+      "nguon": "sen.3921",
+      "trich": "Theo mục đích của các phân nhóm ASEAN trong các nhóm này, \"tấm và phiến\" dùng để chỉ các sản phẩm đáp ứng các yêu cầu của Chú giải 10 của Chương 39, có hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25 mm.",
       "dieuKienSo": [
         {
           "fact": "tenLoai",
@@ -82,9 +87,15 @@
             "tấm",
             "phiến"
           ]
+        },
+        {
+          "fact": "doDay",
+          "op": ">",
+          "value": 0.25,
+          "donVi": "mm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39219042",
@@ -97,7 +108,7 @@
           "value": "màng"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39219043",
@@ -110,14 +121,14 @@
           "value": "dải có ép vật liệu dệt"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39219049",
       "nguon": "tax.39219049",
       "trich": "39219049 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39219050",
@@ -130,7 +141,7 @@
           "value": "xenlulo tái sinh"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39219060",
@@ -146,7 +157,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": false
     },
     {
@@ -160,14 +171,14 @@
           "value": "polyme trùng hợp"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39219090",
       "nguon": "tax.39219090",
       "trich": "39219090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [

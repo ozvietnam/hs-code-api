@@ -4,13 +4,19 @@
   "nhom": "5007",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T1537#soan-500720",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1803#soat-500720",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1803)",
+    "bam": "2d82ec015d1813b2574f8ad03c0a2662fb113f9d4abf721d4c57a246d3df3dd5"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -27,13 +33,20 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "50072030",
       "nguon": "tax.50072030",
       "trich": "50072030 - - Được in bằng phương pháp batik truyền thống (SEN)",
       "dieuKienSo": [
+        {
+          "fact": "tinhTrangTayTrang",
+          "op": "TRONG",
+          "value": [
+            "DA_IN"
+          ]
+        },
         {
           "fact": "phuongPhapIn",
           "op": "TRONG",
@@ -42,35 +55,26 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "50072090",
       "nguon": "tax.50072090",
       "trich": "50072090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
-    }
-  ],
-  "chongLanVanBan": [
-    {
-      "cap": [
-        "50072020",
-        "50072030"
-      ],
-      "lyDo": "Vải in batik vẫn có thể ở trạng thái chưa tẩy trắng hoặc đã tẩy trắng — .20 \"Chưa tẩy trắng hoặc đã tẩy trắng\" và .30 \"Được in bằng phương pháp batik truyền thống (SEN)\" là hai trục mô tả độc lập, câu chữ không loại trừ nhau; không có căn cứ thứ tự."
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "50072020",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.50072020 \"Chưa tẩy trắng hoặc đã tẩy trắng\" ⇒ tinhTrangTayTrang TRONG [CHUA_TAY_TRANG, DA_TAY_TRANG] (\"hoặc\" ⇒ cả hai giá trị)."
+      "ghiChu": "tax.50072020 \"Chưa tẩy trắng hoặc đã tẩy trắng\" ⇒ tinhTrangTayTrang TRONG [CHUA_TAY_TRANG, DA_TAY_TRANG] (2/5 giá trị của khoá tinhTrangTayTrang theo Chú giải phân nhóm 1 Phần XI)."
     },
     {
       "ma": "50072030",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.50072030 \"Được in bằng phương pháp batik truyền thống (SEN)\" ⇒ phuongPhapIn TRONG [BATIK] (cách đọc \"in … batik truyền thống\" khớp chữ, phủ cả vế \"Được in\"); không thêm daIn vì regex cachDoc của daIn không đọc được cụm \"Được in\" (cong3 báo), phuongPhapIn đã phủ vế."
+      "ghiChu": "tax.50072030 \"Được in bằng phương pháp batik truyền thống (SEN)\" ⇒ tinhTrangTayTrang TRONG [DA_IN] + phuongPhapIn TRONG [BATIK] (loại trừ tất định với .20 theo trục tinhTrangTayTrang)."
     },
     {
       "ma": "50072090",

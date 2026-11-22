@@ -35,7 +35,309 @@
     }
   ],
   "phanBiet": [],
-  "tieuChi6": [],
+  "tieuChi6": [
+    {
+      "hs6": "854411",
+      "thuTu": 1,
+      "dieuKien": "Dây đơn",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Dây đơn",
+      "donVi": null,
+      "tuKhoa": [
+        "dây đơn"
+      ],
+      "nguon": "tieuDe.85441",
+      "trich": "85441 Dây đơn dạng cuộn",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "854411",
+      "thuTu": 1,
+      "dieuKien": "dạng cuộn",
+      "fact": "dangCuon",
+      "op": "CO",
+      "donVi": null,
+      "tuKhoa": [
+        "dạng cuộn"
+      ],
+      "nguon": "tieuDe.85441",
+      "trich": "85441 Dây đơn dạng cuộn",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "854411",
+      "thuTu": 1,
+      "dieuKien": "Bằng đồng",
+      "fact": "chatLieu",
+      "op": "LA",
+      "value": "đồng",
+      "donVi": null,
+      "tuKhoa": [
+        "bằng đồng"
+      ],
+      "nguon": "tieuDe.854411",
+      "trich": "854411 Bằng đồng",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "854419",
+      "thuTu": 2,
+      "dieuKien": "Dây đơn",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Dây đơn",
+      "donVi": null,
+      "tuKhoa": [
+        "dây đơn"
+      ],
+      "tienLe": [
+        {
+          "so": "380/TB-TCHQ",
+          "ma": "85441900"
+        }
+      ],
+      "nguon": "tieuDe.85441",
+      "trich": "85441 Dây đơn dạng cuộn",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "854419",
+      "thuTu": 2,
+      "dieuKien": "dạng cuộn",
+      "fact": "dangCuon",
+      "op": "CO",
+      "donVi": null,
+      "tuKhoa": [
+        "dạng cuộn"
+      ],
+      "nguon": "tieuDe.85441",
+      "trich": "85441 Dây đơn dạng cuộn",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "854419",
+      "thuTu": 2,
+      "phanConLai": true,
+      "nguon": "tax.85441900",
+      "trich": "85441900 - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "854420",
+      "thuTu": 3,
+      "dieuKien": "Cáp đồng trục và các dây dẫn điện đồng trục",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": [
+        "Cáp đồng trục",
+        "dây dẫn điện đồng trục"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "đồng trục"
+      ],
+      "tienLe": [
+        {
+          "so": "07/TB-CHQ",
+          "ma": "85442021"
+        },
+        {
+          "so": "2076/TB-TCHQ",
+          "ma": "85442021"
+        }
+      ],
+      "nguon": "tieuDe.854420",
+      "trich": "854420 Cáp đồng trục và các dây dẫn điện đồng trục khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "854430",
+      "thuTu": 4,
+      "dieuKien": "Bộ dây đánh lửa và bộ dây",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": [
+        "Bộ dây đánh lửa",
+        "bộ dây"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "bộ dây đánh lửa",
+        "bộ dây"
+      ],
+      "tienLe": [
+        {
+          "so": "3299/TB-TCHQ",
+          "ma": "85443012"
+        }
+      ],
+      "nguon": "tieuDe.854430",
+      "trich": "854430 Bộ dây đánh lửa và bộ dây khác loại sử dụng cho xe, phương tiện bay hoặc tàu thuyền",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "854430",
+      "thuTu": 4,
+      "dieuKien": "sử dụng cho xe, phương tiện bay hoặc tàu thuyền",
+      "fact": "dungCho",
+      "op": "CONG_DUNG",
+      "value": [
+        "xe",
+        "phương tiện bay",
+        "tàu thuyền"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "xe",
+        "phương tiện bay",
+        "tàu thuyền"
+      ],
+      "kiemChung": [
+        {
+          "hoi": "Bộ dây có gồm các dây dẫn được làm thành bộ (đã cắt theo chiều dài hoặc đã gắn các đầu nối ở một hoặc cả hai đầu) không?",
+          "nguon": "nhom8544.nhom",
+          "trich": "Dây, cáp, v.v... vẫn được xếp vào nhóm này nếu được cắt theo chiều dài hoặc đã gắn các đầu nối (ví dụ, phích cắm, ổ cắm, giá đỡ, giắc, măng sông hoặc các đầu cực) ở một hoặc cả hai đầu. Nhóm này cũng gồm dây dẫn, v.v... thuộc các loại mô tả ở trên được làm thành bộ (ví dụ, cáp nhiều sợi dùng để nối bộ phận đánh lửa của các phương tiện chạy bằng động cơ tới bộ chia)."
+        }
+      ],
+      "nguon": "tieuDe.854430",
+      "trich": "854430 Bộ dây đánh lửa và bộ dây khác loại sử dụng cho xe, phương tiện bay hoặc tàu thuyền",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "854442",
+      "thuTu": 5,
+      "dieuKien": "dùng cho điện áp không quá 1.000 V",
+      "fact": "dienAp",
+      "op": "<=",
+      "value": 1000,
+      "donVi": "V",
+      "nguon": "tieuDe.85444",
+      "trich": "85444 Các vật dẫn điện khác, dùng cho điện áp không quá 1.000 V",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "854442",
+      "thuTu": 5,
+      "dieuKien": "Đã lắp với đầu nối điện",
+      "fact": "daGanDauNoi",
+      "op": "CO",
+      "donVi": null,
+      "tuKhoa": [
+        "đầu nối"
+      ],
+      "tienLe": [
+        {
+          "so": "1709/TB-TCHQ",
+          "ma": "85444299"
+        },
+        {
+          "so": "1710/TB-TCHQ",
+          "ma": "85444299"
+        },
+        {
+          "so": "7388/TB-TCHQ",
+          "ma": "85444298"
+        }
+      ],
+      "nguon": "tieuDe.854442",
+      "trich": "854442 Đã lắp với đầu nối điện",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "854449",
+      "thuTu": 6,
+      "dieuKien": "dùng cho điện áp không quá 1.000 V",
+      "fact": "dienAp",
+      "op": "<=",
+      "value": 1000,
+      "donVi": "V",
+      "tienLe": [
+        {
+          "so": "1376/TB-TCHQ",
+          "ma": "85444922"
+        },
+        {
+          "so": "2485/TB-TCHQ",
+          "ma": "85444922"
+        },
+        {
+          "so": "4815/TB-TCHQ",
+          "ma": "85444922"
+        }
+      ],
+      "nguon": "tieuDe.85444",
+      "trich": "85444 Các vật dẫn điện khác, dùng cho điện áp không quá 1.000 V",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "854449",
+      "thuTu": 6,
+      "phanConLai": true,
+      "nguon": "tieuDe.854449",
+      "trich": "854449 Loại khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "854460",
+      "thuTu": 7,
+      "dieuKien": "dùng cho điện áp trên 1000 V",
+      "fact": "dienAp",
+      "op": ">",
+      "value": 1000,
+      "donVi": "V",
+      "tienLe": [
+        {
+          "so": "2041/TB-TCHQ",
+          "ma": "85446011"
+        },
+        {
+          "so": "7457/TB-TCHQ",
+          "ma": "85446011"
+        },
+        {
+          "so": "7458/TB-TCHQ",
+          "ma": "85446011"
+        }
+      ],
+      "nguon": "tieuDe.854460",
+      "trich": "854460 Các vật dẫn điện khác(*), dùng cho điện áp trên 1000 V",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "854460",
+      "thuTu": 7,
+      "phanConLai": true,
+      "nguon": "tieuDe.854460",
+      "trich": "854460 Các vật dẫn điện khác(*), dùng cho điện áp trên 1000 V",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "854470",
+      "thuTu": 8,
+      "dieuKien": "Cáp sợi quang",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Cáp sợi quang",
+      "donVi": null,
+      "tuKhoa": [
+        "cáp sợi quang"
+      ],
+      "tienLe": [
+        {
+          "so": "1985/TB-TCHQ",
+          "ma": "85447090"
+        },
+        {
+          "so": "691/TB-TCHQ",
+          "ma": "85447090"
+        }
+      ],
+      "nguon": "tieuDe.854470",
+      "trich": "854470 Cáp sợi quang",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
   "dong8": [
     {
       "hs": "85441120",
@@ -2489,7 +2791,16 @@
     "tax.85446031",
     "tax.85446039",
     "tax.85447010",
-    "tax.85447090"
+    "tax.85447090",
+    "tieuDe.85441",
+    "tieuDe.854411",
+    "tieuDe.854420",
+    "tieuDe.854430",
+    "tieuDe.85444",
+    "tieuDe.854442",
+    "tieuDe.854449",
+    "tieuDe.854460",
+    "tieuDe.854470"
   ],
   "phienBan": "HS2022",
   "taoBoi": {
@@ -2499,9 +2810,9 @@
     "ms": 23
   },
   "kiemTra": {
-    "tong": 67,
-    "dat": 66,
-    "loai": 1,
+    "tong": 99,
+    "dat": 99,
+    "loai": 0,
     "nguonBiCat": [],
     "nangCap": {
       "luc": "2026-10-11",
@@ -2511,6 +2822,12 @@
         "tieuChi6",
         "phamViLoaiKhac"
       ]
+    },
+    "tieuChi6": {
+      "khuon": "g6@1",
+      "soMuc": 16,
+      "soPhanNhom": 8,
+      "cong": "scripts/kiem-tieu-chi-6.mjs"
     }
   },
   "dieuKienNut": [
