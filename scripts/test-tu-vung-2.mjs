@@ -1851,9 +1851,31 @@ check('vietCum đơn vị @1 KHÔNG đổi ("CS: 75000W" — không cách)', T.v
     check(`T-5 ${khoa} DK CO/KHONG đạt`,
       DK.kiemDieuKien({ fact: khoa, op: 'CO' }, viCo) === null && DK.kiemDieuKien({ fact: khoa, op: 'KHONG' }, viK) === null);
   }
+  // Ca thực tế tuỳ chọn / ngoại lệ trên dòng biểu (40169400, 4009, 4014, 8307, 8471, 8483, 9401): CHUA_BIET (không đảo sang false!)
+  for (const [khoa, t] of [
+    ['coTheBomHoi', '40169400 Boat or dock fenders, whether or not inflatable'],
+    ['coTheBomHoi', 'Đệm chống va, có hoặc không có thể bơm hơi'],
+    ['coKemPhuKien', '4009 Tubes, pipes and hoses, with or without their fittings'],
+    ['coKemPhuKien', '4014 Hygienic or pharmaceutical articles, with or without fittings of hard rubber'],
+    ['coKemPhuKien', '401490 Other, with or without fittings'],
+    ['coKemPhuKien', '8307 Flexible tubing of base metal, with or without fittings'],
+    ['coKemPhuKien', '83071000 Of iron or steel, with or without fittings'],
+    ['coKemPhuKien', '83079000 Of other base metal, with or without fittings'],
+    ['coKemPhuKien', 'Ống nối, whether or not with fittings'],
+    ['coKemPhuKien', 'Ống dẫn, có hoặc không có kèm phụ kiện'],
+    ['daLapVoLoa', 'Loudspeakers, whether or not mounted in their enclosures'],
+    ['daNhoiDem', 'Seats, whether or not upholstered'],
+    ['coGanOBi', 'Bearing housings, whether or not incorporating ball or roller bearings'],
+    ['coGanOBi', 'Thân ổ trục, lắp hoặc không lắp ổ bi hoặc ổ đũa'],
+    ['loaiTuDong', 'Dây chuyền tự động hoá sản xuất'],
+    ['loaiTuDong', 'Hệ thống tự động hóa công nghiệp'],
+    ['loaiTuDong', 'Automatic data-processing machines and units thereof'],
+  ]) {
+    chuaBiet(`T-5 tuỳ chọn/ngoại lệ thực tế ⇒ CHUA_BIET`, khoa, t);
+  }
 
   // 6. ReDoS ~40.000 từ lặp cho tất cả khoá mới & mở rộng < 2000 ms
-  const redosT5 = Array(3000).fill('tấm màng nhựa poly etylen propylen styren có hoặc không kèm phụ kiện đã hoặc chưa lắp vào vỏ loa tự động xử lý dữ liệu').join(' ');
+  const redosT5 = Array(3000).fill('tấm màng nhựa poly etylen propylen styren có hoặc không có kèm phụ kiện with or without their fittings whether or not inflatable đã hoặc chưa lắp vào vỏ loa lắp hoặc không lắp ổ bi tự động hoá xử lý dữ liệu Automatic data-processing').join(' ');
   for (const fk of ['vatLieuKhac', 'loaiNhuaPolyme', 'coKemPhuKien', 'coTheBomHoi', 'daLapVoLoa', 'daNhoiDem', 'coGanOBi', 'loaiTuDong']) {
     const t0 = process.hrtime.bigint();
     T.docGiaTri(fk, redosT5);

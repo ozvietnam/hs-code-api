@@ -26983,10 +26983,10 @@
       "nhanZh": "带配件／接头",
       "cachDoc": {
         "vi": [
-          "(?<!hoặc )(?<!hoặc không )(?:có\\s+)?(?:kèm|gắn)\\s+(?:theo\\s+)?(?:các\\s+)?phụ\\s+kiện"
+          "(?<!hoặc )(?<!hoặc không )(?<!hoặc không có )(?:có\\s+)?(?:kèm|gắn)\\s+(?:theo\\s+)?(?:các\\s+)?phụ\\s+kiện"
         ],
         "en": [
-          "(?<!or )(?<!without )with\\s+fittings?"
+          "(?<!whether or not )(?<!with or without )(?<!or )(?<!without )with\\s+(?:their\\s+)?fittings?"
         ],
         "zh": [
           "带配件",
@@ -27013,12 +27013,12 @@
       },
       "cachDocKhong": {
         "vi": [
-          "(?<!hoặc )không\\s+(?:có\\s+|kèm\\s+)?(?:các\\s+)?phụ\\s+kiện",
-          "không\\s+gắn\\s+(?:các\\s+)?phụ\\s+kiện"
+          "(?<!hoặc )không\\s+(?:có\\s+|kèm\\s+)?(?:theo\\s+)?(?:các\\s+)?phụ\\s+kiện",
+          "(?<!hoặc )không\\s+gắn\\s+(?:các\\s+)?phụ\\s+kiện"
         ],
         "en": [
-          "without\\s+fittings?",
-          "not\\s+(?:fitted|equipped)\\s+with\\s+fittings?"
+          "(?<!or )without\\s+(?:their\\s+)?fittings?",
+          "(?<!whether or )(?<!or )not\\s+(?:fitted|equipped)\\s+with\\s+(?:their\\s+)?fittings?"
         ],
         "zh": [
           "不带配件",
@@ -27044,10 +27044,10 @@
       "nhanZh": "充气式",
       "cachDoc": {
         "vi": [
-          "(?<!hoặc )(?<!hoặc không )(?:loại\\s+)?(?:có\\s+thể\\s+|dạng\\s+)bơm\\s+hơi"
+          "(?<!hoặc )(?<!hoặc không )(?<!hoặc không có )(?:loại\\s+)?(?:có\\s+thể\\s+|dạng\\s+)bơm\\s+hơi"
         ],
         "en": [
-          "(?<!or )inflatable"
+          "(?<!whether or not )(?<!with or without )(?<!or )inflatable"
         ],
         "zh": [
           "可充气的",
@@ -27082,8 +27082,8 @@
           "(?<!hoặc )không\\s+(?:thể\\s+)?bơm\\s+hơi"
         ],
         "en": [
-          "(?<!or )non-?inflatable",
-          "(?<!or )not\\s+inflatable"
+          "(?<!whether or not )(?<!or )non-?inflatable",
+          "(?<!whether or )(?<!or )not\\s+inflatable"
         ],
         "zh": [
           "非充气",
@@ -27141,8 +27141,8 @@
           "loa\\s+rời"
         ],
         "en": [
-          "(?<!whether or not )not\\s+mounted\\s+in\\s+(?:an?\\s+)?enclosures?",
-          "without\\s+enclosures?",
+          "(?<!whether or )(?<!or )not\\s+mounted\\s+in\\s+(?:an?\\s+|their\\s+)?enclosures?",
+          "(?<!or )without\\s+enclosures?",
           "bare\\s+speakers?"
         ],
         "zh": [
@@ -27174,7 +27174,7 @@
           "(?<!không )(?<!chưa )bọc\\s+nệm"
         ],
         "en": [
-          "(?<!non-)(?<!non )(?<!un)upholstered"
+          "(?<!whether or not )(?<!non-)(?<!non )(?<!un)upholstered"
         ],
         "zh": [
           "装软垫",
@@ -27203,9 +27203,9 @@
           "không\\s+(?:bọc\\s+)?nệm"
         ],
         "en": [
-          "un-?upholstered",
-          "non-?upholstered",
-          "not\\s+upholstered"
+          "(?<!whether or not )(?<!or )un-?upholstered",
+          "(?<!whether or not )(?<!or )non-?upholstered",
+          "(?<!whether or )(?<!or )not\\s+upholstered"
         ],
         "zh": [
           "未装软垫",
@@ -27232,11 +27232,11 @@
       "nhanZh": "装有滚珠或滚子轴承",
       "cachDoc": {
         "vi": [
-          "(?:có\\s+)?(?:lắp|gắn)\\s+ổ\\s+(?:bi|đũa)(?:\\s+hoặc\\s+ổ\\s+(?:đũa|bi))?"
+          "(?<!hoặc )(?<!hoặc không )(?<!hoặc không có )(?:có\\s+)?(?:lắp|gắn)\\s+ổ\\s+(?:bi|đũa)(?:\\s+hoặc\\s+ổ\\s+(?:đũa|bi))?"
         ],
         "en": [
-          "incorporating\\s+ball\\s+or\\s+roller\\s+bearings?",
-          "with\\s+(?:ball|roller)\\s+bearings?"
+          "(?<!whether or not )incorporating\\s+ball\\s+or\\s+roller\\s+bearings?",
+          "(?<!whether or not )(?<!with or without )(?<!or )(?<!without )with\\s+(?:ball|roller)\\s+bearings?"
         ],
         "zh": [
           "装有滚珠或滚子轴承",
@@ -27262,12 +27262,12 @@
       },
       "cachDocKhong": {
         "vi": [
-          "không\\s+(?:lắp|gắn)\\s+ổ\\s+(?:bi|đũa)(?:\\s+hoặc\\s+ổ\\s+(?:đũa|bi))?",
-          "không\\s+kèm\\s+ổ\\s+(?:bi|đũa)"
+          "(?<!hoặc )không\\s+(?:lắp|gắn)\\s+ổ\\s+(?:bi|đũa)(?:\\s+hoặc\\s+ổ\\s+(?:đũa|bi))?",
+          "(?<!hoặc )không\\s+kèm\\s+ổ\\s+(?:bi|đũa)"
         ],
         "en": [
-          "not\\s+incorporating\\s+ball\\s+or\\s+roller\\s+bearings?",
-          "without\\s+(?:ball|roller)\\s+bearings?"
+          "(?<!whether or )(?<!or )not\\s+incorporating\\s+ball\\s+or\\s+roller\\s+bearings?",
+          "(?<!or )without\\s+(?:ball|roller)\\s+bearings?"
         ],
         "zh": [
           "未装有滚珠或滚子轴承",
@@ -27293,10 +27293,10 @@
       "nhanZh": "自动式",
       "cachDoc": {
         "vi": [
-          "(?<!xử lý dữ liệu )(?<!nửa )(?<!bán )(?:loại\\s+|hoạt\\s+động\\s+)?tự\\s+động(?!\\s+(?:h[oó]a|bán\\s+phần))"
+          "(?<!xử lý dữ liệu )(?<!nửa )(?<!bán )(?:loại\\s+|hoạt\\s+động\\s+)?tự\\s+động(?!\\s+(?:h(?:óa|oá)|bán\\s+phần))"
         ],
         "en": [
-          "(?<!semi-)(?<!non-)automatic(?!\\s+data\\s+processing)"
+          "(?<!semi-)(?<!non-)automatic(?!\\s+data[-\\s]processing)"
         ],
         "zh": [
           "(?<!数据处理)(?<!半)(?<!非)自动(?:型|式)?"

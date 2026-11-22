@@ -580,8 +580,44 @@ kiem('#1586 (7009.91/92 & phân nhóm không phải DU): 7009 qua cổng với 0
       return { hs6: p.hs6, chuaSoHoa: 'ca kiem T-5', nguon: p.nguonTen, trich: `${p.hs6} ${p.ten}` };
     });
     const kq6110 = G6.kiemTieuChi6('6110', ds6110, { toKhai: false });
-    kiem('T-5 DU_CO_PHAM_VI rỗng tachVe (6110.90 "Từ các vật liệu dệt khác") với phanConLai: true không bị KHUON_SAI',
+    kiem('T-5 DU_CO_PHAM_VI rỗng ("Từ các vật liệu dệt khác" 6110.90) với phanConLai: true không bị KHUON_SAI',
       !kq6110.loi.some((l) => l.hs6 === '611090' && l.ma === 'KHUON_SAI'), kq6110.loi);
+
+    // 4 ca âm tính: DU_CO_PHAM_VI có nội dung riêng (020680, 040690, 851660, 853630) PHẢI vẫn đỏ KHUON_SAI khi chỉ khai phanConLai: true
+    for (const [h4, hs6] of [['0206', '020680'], ['0406', '040690'], ['8516', '851660'], ['8536', '853630']]) {
+      const pTarget = G6.phanNhomCuaNhom(h4).find((p) => p.hs6 === hs6);
+      const ds = G6.phanNhomCuaNhom(h4).map((p) => {
+        if (p.hs6 === hs6) return { hs6, phanConLai: true, nguon: p.nguonTen, trich: `${hs6} ${p.ten}` };
+        if (p.kieu === 'DU') return { hs6: p.hs6, phanConLai: true, nguon: p.nguonTen, trich: `${p.hs6} ${p.ten}` };
+        return { hs6: p.hs6, chuaSoHoa: 'ca am tinh DU_CO_PHAM_VI', nguon: p.nguonTen, trich: `${p.hs6} ${p.ten}` };
+      });
+      const kq = G6.kiemTieuChi6(h4, ds, { toKhai: false });
+      kiem(`T-5 DU_CO_PHAM_VI âm tính ${hs6} ("${pTarget.ten}") chỉ khai phanConLai: true ⇒ PHẢI đỏ KHUON_SAI`,
+        kq.loi.some((l) => l.hs6 === hs6 && l.ma === 'KHUON_SAI'), kq.loi.filter((l) => l.hs6 === hs6));
+    }
+  }
+
+  // 8. Chương 39 (3920) & chưa no: tachVeTieuDe giữ nguyên 1 vế; mọi dòng polyme 3920.61/63/69/92/93/94 → loaiNhuaPolyme; 0 dòng Ch.39 rơi nhầm loaiSoiDet; giữ nguyên Ch.50–63 loaiSoiDet
+  {
+    const ds39 = Object.keys(require('node:zlib').gunzipSync(fs.readFileSync('data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz')).toString('utf8').split('\n').filter(Boolean).reduce((acc, l) => {
+      const r = JSON.parse(l);
+      if (r.maChuan && r.maChuan.startsWith('39') && r.maChuan.length >= 4) acc[r.maChuan.slice(0, 4)] = true;
+      return acc;
+    }, {}));
+    const nhamCh39 = [];
+    for (const h4 of ds39) {
+      let pns; try { pns = G6.phanNhomCuaNhom(h4); } catch { continue; }
+      for (const p of pns) if (G6.khoaPhuHop(h4, p.ten) === 'loaiSoiDet') nhamCh39.push([p.hs6, p.ten]);
+    }
+    kiem('T-5 Chương 39: 0 phân nhóm rơi nhầm loaiSoiDet; 3920.61/63/69/92/93/94 → loaiNhuaPolyme; tachVe("Từ các polyeste chưa no") giữ 1 vế; Ch.54/60/61/62/63 giữ loaiSoiDet',
+      nhamCh39.length === 0
+      && G6.tachVeTieuDe('Từ các polyeste chưa no', new Set()).map((v) => v.chu).join('|') === 'Từ các polyeste chưa no'
+      && ['Từ các polycarbonat', 'Từ các polyeste chưa no', 'Từ các polyeste khác', 'Từ các polyamide', 'Từ nhựa amino', 'Từ nhựa phenolic']
+        .every((ten) => G6.khoaPhuHop('3920', ten) === 'loaiNhuaPolyme')
+      && G6.khoaPhuHop('5407', 'Từ xơ sợi nhân tạo') === 'loaiSoiDet'
+      && G6.khoaPhuHop('6110', 'Từ bông') === 'loaiSoiDet'
+      && G6.khoaPhuHop('6110', 'Của dê Ca-sơ-mia (len casơmia)') === 'loaiSoiDet',
+      JSON.stringify({ nhamCh39 }));
   }
 
   kiem('T-5 Lô 3 (3926, 8501, 7326, 8483, 4016) sạch 0 bẫy SAI_KHOA_THUOC_TINH & mở khoá chuẩn',
