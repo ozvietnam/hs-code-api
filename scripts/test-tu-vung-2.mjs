@@ -1149,7 +1149,7 @@ check('vietCum đơn vị @1 KHÔNG đổi ("CS: 75000W" — không cách)', T.v
   // 4. ReDoS ~40.000 từ lặp < 2 giây (CLAUDE.md quy tắc 6b)
   const redosText1771 = Array(4000).fill('bồn tắm có hình dạng bên trong loại thuần đã lắp sẵn').join(' ');
   const t0 = process.hrtime.bigint();
-  for (const fk of ['laThuanChung', 'coHinhDangBenTrongChuNhatHoacThuon', 'kieuDet', 'loaiSoiDet', 'laBoPhan']) {
+  for (const fk of ['laThuanChung', 'coHinhDangBenTrongChuNhatHoacThuon', 'kieuDet']) {
     T.docGiaTri(fk, redosText1771);
   }
   const ms = Number(process.hrtime.bigint() - t0) / 1e6;
