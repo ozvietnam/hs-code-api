@@ -4,13 +4,19 @@
   "nhom": "3921",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1700#soan-392119",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1803#soat-392119",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1803)",
+    "bam": "f49c2dc157ed7fb1660cafd78198cba0f4893d06a6c7b06d27c8998ba7246a2f"
+  },
   "dieuKienNut": [
     {
       "id": "3921191",
@@ -20,10 +26,20 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "polyme trùng hợp"
+          "value": [
+            "tấm",
+            "phiến"
+          ]
+        },
+        {
+          "fact": "nhomPolyme",
+          "op": "TRONG",
+          "value": [
+            "TRUNG_HOP"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "3921193",
@@ -33,10 +49,20 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "polyme trùng ngưng"
+          "value": [
+            "tấm",
+            "phiến"
+          ]
+        },
+        {
+          "fact": "nhomPolyme",
+          "op": "TRONG",
+          "value": [
+            "TRUNG_NGUNG_HOAC_TAI_SAP_XEP"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "3921196",
@@ -46,10 +72,13 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "màng và lá"
+          "value": [
+            "màng",
+            "lá"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -64,7 +93,7 @@
           "value": "polypropylen"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39211912",
@@ -77,14 +106,14 @@
           "value": "polyetylen"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39211919",
       "nguon": "tax.39211919",
       "trich": "39211919 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39211931",
@@ -97,14 +126,14 @@
           "value": "polycarbonat"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39211939",
       "nguon": "tax.39211939",
       "trich": "39211939 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39211940",
@@ -112,11 +141,10 @@
       "trich": "39211940 - - - Dạng tấm và phiến(SEN) từ xenlulo hoặc từ các dẫn xuất hóa học của chúng, hoặc từ sợi lưu hóa",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
+          "fact": "dangTamPhienMang",
+          "op": "TRONG",
           "value": [
-            "tấm",
-            "phiến"
+            "TAM_VA_PHIEN"
           ]
         },
         {
@@ -129,7 +157,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39211950",
@@ -137,27 +165,22 @@
       "trich": "39211950 - - - Dạng tấm và phiến(SEN) từ các protein được làm cứng, hoặc từ các dẫn xuất hóa học của cao su tự nhiên",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
+          "fact": "dangTamPhienMang",
+          "op": "TRONG",
           "value": [
-            "tấm",
-            "phiến"
+            "TAM_VA_PHIEN"
           ]
         },
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": [
-            "protein",
+            "protein được làm cứng",
             "dẫn xuất hóa học của cao su tự nhiên"
           ]
-        },
-        {
-          "fact": "loaiCung",
-          "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39211961",
@@ -170,7 +193,7 @@
           "value": "nitrocellulose"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39211962",
@@ -181,23 +204,19 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": [
-            "protein",
+            "protein đã làm cứng",
             "dẫn xuất hóa học của cao su tự nhiên"
           ]
-        },
-        {
-          "fact": "loaiCung",
-          "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39211969",
       "nguon": "tax.39211969",
       "trich": "39211969 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39211993",
@@ -210,7 +229,7 @@
           "value": "nitrocellulose"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39211994",
@@ -221,23 +240,19 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": [
-            "protein",
+            "protein đã làm cứng",
             "dẫn xuất hóa học của cao su tự nhiên"
           ]
-        },
-        {
-          "fact": "loaiCung",
-          "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39211999",
       "nguon": "tax.39211999",
       "trich": "39211999 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [

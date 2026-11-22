@@ -4,13 +4,19 @@
   "nhom": "3903",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-390390",
     "ngay": "2026-11-02"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1803#soat-390390",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1803)",
+    "bam": "de48ada30fc7dd2b01b568310d05663ad6d532dd4f98beaa86482b981eefa794"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -26,7 +32,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39039091",
@@ -34,19 +40,24 @@
       "trich": "39039091 - - - Các polyme từ styren chịu lực, có độ bền va đập bằng phương pháp Izod nhỏ hơn 80 J/m ở 23oC (SEN)",
       "dieuKienSo": [
         {
-          "fact": "congDung",
-          "op": "CONG_DUNG",
-          "value": "nhỏ hơn 80 J/m ở 23oC"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "polyme từ styren chịu lực"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "có độ bền va đập bằng phương pháp Izod nhỏ hơn 80 J/m ở 23oC"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39039099",
       "nguon": "tax.39039099",
       "trich": "39039099 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -58,13 +69,7 @@
     {
       "ma": "39039091",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.39039091 \"Các polyme từ styren chịu lực, có độ bền va đập bằng phương pháp Izod nhỏ hơn 80 J/m ở 23oC\" ⇒ congDung \"nhỏ hơn 80 J/m ở 23oC\""
-    },
-    {
-      "ma": "39039091",
-      "loai": "BO_VE",
-      "ve": "có độ bền va đập",
-      "lyDo": "Cụm 'có độ bền va đập bằng phương pháp Izod nhỏ hơn 80 J/m ở 23oC' là chỉ tiêu kỹ thuật được bao hàm trong điều kiện va đập Izod"
+      "ghiChu": "tax.39039091 \"Các polyme từ styren chịu lực, có độ bền va đập bằng phương pháp Izod nhỏ hơn 80 J/m ở 23oC (SEN)\" ⇒ tenLoai \"polyme từ styren chịu lực\" + tenLoai \"có độ bền va đập bằng phương pháp Izod nhỏ hơn 80 J/m ở 23oC\" (phủ đủ vế đầu và vế giới hạn mà không dùng congDung sai nghĩa hay BO_VE)"
     }
   ],
   "traVe": [
