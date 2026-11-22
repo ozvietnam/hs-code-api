@@ -34,10 +34,10 @@
     },
     "chuGiai": {
       "ten": "Chú giải chương / nhóm đưa vào lập luận",
-      "duLieu": "data/chu-giai-heading.json, data/chu-giai-chuong.json, data/notes.json",
+      "duLieu": "data/chu-giai-heading.json, data/chu-giai-chuong.json, data/notes.json, data/explanatory-notes.json",
       "dauVet": [],
       "ghiChu": "lib/hs-tree.js cũng mở chu-giai-heading.json nhưng chỉ để lấy tên nút cây, không tính. Tính là 'đọc chú giải' khi nạp một trong các module dưới đây.",
-      "moDun": ["lib/gir-notes.js", "lib/notes-coverage.js", "lib/evidence-pack.js", "lib/classify.js"]
+      "moDun": ["lib/gir-notes.js", "lib/notes-coverage.js", "lib/evidence-pack.js", "lib/classify.js", "lib/tim-cgct.js"]
     },
     "bangCanh": {
       "ten": "Bảng cạnh đồ thị tri thức HS (C5, C6, C7, C8, C10 + C13, C11 + chỉ mục C1 gộp; hàm C14)",
@@ -73,8 +73,8 @@
           "co": ["HS_SO_TAY", "HS_SO_TAY_DONG"],
           "ghiChu": "Chỉ qua bảng dòng 8 số của cổng sổ tay (dong8HieuLuc). Máy chốt dòng sau HS_SO_TAY_DONG đang tắt. Sổ PN6 vào câu hỏi gửi khách chỉ khi bật HS_HOI_THEO_SO_TAY (xem loiCauHoi)."
         },
-        "tienLe": { "trangThai": "co", "qua": ["lib/precedent-search.js", "lib/oz-precedent-search.js"], "co": [], "ghiChu": "Mặc định: tiền lệ chỉ được tìm SAU vòng 1 (gather) và vào gói vòng 2; nhóm của TB-TCHQ chỉ được thêm khi độ giống ≥ 0,6 và tên hàng khớp, tờ khai Oz không thêm nhóm. Sau cờ HS_TIM_TRUOC (mặc định TẮT): lib/tim-truoc.js tìm TB-TCHQ + tờ khai Oz + biểu thuế + từ điển tên thương mại + cặp dễ nhầm theo mô tả TRƯỚC vòng 1, đưa top 5 nhóm kèm bằng chứng vào đầu vào vòng 1; chỉ khi HS_TIM_TRUOC_NAP > 0 (mặc định 0) mới nạp thêm các nhóm đó vào gather (không qua cổng 0,6). Sau cờ HS_TIEN_XU_LY (mặc định TẮT, #1596): lib/tien-xu-ly.js chuẩn hoá / mở viết tắt / sửa lỗi gõ / khôi phục dấu / bóc 5 trường cho các câu tìm trước + truy hồi theo nghĩa qua singleton lib/embed-pool.js (chỉ đọc data/tu-dien-tien-xu-ly.json, không chạm kho sổ tay/tiền lệ khác). Tên hàng có chữ Hán thì bỏ qua (engine.timTruoc.trangThai ghi lý do)." },
-        "chuGiai": { "trangThai": "co", "qua": ["lib/gir-notes.js", "lib/classify.js"], "co": [] },
+        "tienLe": { "trangThai": "co", "qua": ["lib/precedent-search.js", "lib/oz-precedent-search.js"], "co": [], "ghiChu": "Mặc định: tiền lệ chỉ được tìm SAU vòng 1 (gather) và vào gói vòng 2; nhóm của TB-TCHQ chỉ được thêm khi độ giống ≥ 0,6 và tên hàng khớp, tờ khai Oz không thêm nhóm. Sau cờ HS_TIM_TRUOC (mặc định TẮT): lib/tim-truoc.js tìm TB-TCHQ + tờ khai Oz + biểu thuế + từ điển tên thương mại + cặp dễ nhầm theo mô tả TRƯỚC vòng 1, đưa top 5 nhóm kèm bằng chứng vào đầu vào vòng 1; chỉ khi HS_TIM_TRUOC_NAP > 0 (mặc định 0) mới nạp thêm các nhóm đó vào gather (không qua cổng 0,6). Sau cờ HS_TIEN_XU_LY (mặc định TẮT, #1596): lib/tien-xu-ly.js chuẩn hoá / mở viết tắt / sửa lỗi gõ / khôi phục dấu / bóc 5 trường cho các câu tìm trước + truy hồi theo nghĩa qua singleton lib/embed-pool.js (chỉ đọc data/tu-dien-tien-xu-ly.json, không chạm kho sổ tay/tiền lệ khác). Sau cờ HS_TIM_CGCT (mặc định TẮT, #1645): khi HS_TIM_TRUOC bật, lib/tim-truoc.js gọi lib/tim-cgct.js tìm thêm theo tên nhóm, chú giải chi tiết (data/chu-giai-heading.json, data/explanatory-notes.json), biểu thuế Việt/Anh và đồ thị phân biệt, nâng trần ứng viên từ 5 lên tối đa 10 (không chạm data/so-tay/ hay lib/do-thi/). Tên hàng có chữ Hán thì bỏ qua (engine.timTruoc.trangThai ghi lý do)." },
+        "chuGiai": { "trangThai": "co", "qua": ["lib/gir-notes.js", "lib/classify.js", "lib/tim-cgct.js"], "co": [], "ghiChu": "Mặc định: lib/gir-notes.js + lib/classify.js. Sau cờ HS_TIM_CGCT (mặc định TẮT, #1645): khi HS_TIM_TRUOC bật, lib/tim-cgct.js tìm thêm ứng viên theo tên nhóm, chu-giai-heading.json, explanatory-notes.json và tax.json trước vòng 1 (cờ tắt thì không gọi)." },
         "bangCanh": { "trangThai": "khong", "lyDo": "Giai đoạn 1 của ADR-0002 chỉ dựng bảng cạnh và cổng máy; chưa nối vào đường nào. Giai đoạn 2–4 mới nối, sau công tắc mặc định tắt.", "napMuonHam": { "tep": "lib/hoi-theo-so-tay.js", "chiDung": ["tuKhoa", "khopDieuKien", "tapTuMoTa", "khongDau"], "lyDo": "Sau cờ HS_HOI_THEO_SO_TAY: mượn hàm rút / khớp từ khoá (thuần, không dựng bảng cạnh, không đọc kho) để chỉ hỏi câu loại trừ / phân biệt nhóm khi điều kiện của chính dòng đó khớp mô tả hàng — cùng hàm sinh tuKhoaDieuKien của C5/C6 và luật khớp của moRongUngVien." } }
       },
       "loiCauHoi": {

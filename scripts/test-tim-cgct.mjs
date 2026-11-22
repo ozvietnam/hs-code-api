@@ -10,6 +10,7 @@
  *      giữ nguyên dạng phân số như "5/2", hoạt động cả với luồng tiền xử lý + có ca ngược.
  *   4) Nếu bộ chuẩn data/bo-chuan/4so-v1.jsonl có mặt trên đĩa thì đo recall BẬT đạt 100%.
  */
+import './test-isolate-data.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { createRequire } from 'node:module';
@@ -20,12 +21,13 @@ for (const k of ['HS_TIM_TRUOC', 'HS_TIM_TRUOC_NAP', 'HS_TIM_CGCT', 'HS_TIEN_XU_
   delete process.env[k];
 }
 
-// Cô lập kho Oz giống test-tim-truoc để phép thử OFF/ON tất định và không phụ thuộc CSDL mạng.
+// Cô lập kho Oz giống test-tim-truoc theo đúng hợp đồng { items } và lưu hàm gốc để khôi phục trước mục 5.
 const ozSearch = require('../lib/oz-precedent-search.js');
+const origOzSearch = ozSearch.searchOzByKeyword;
 const OZ_MAU = [
   { hsCode: '84812090', tenHang: 'Van điều khiển khí nén 5/2 bằng nhôm', ozCount: 17, matchCoverage: 100 },
 ];
-ozSearch.searchOzByKeyword = async () => OZ_MAU;
+ozSearch.searchOzByKeyword = async () => ({ items: OZ_MAU });
 
 const tt = require('../lib/tim-truoc.js');
 const cg = require('../lib/tim-cgct.js');
@@ -137,7 +139,8 @@ process.env.HS_TIM_CGCT = 'on';
   check('BẬT cùng HS_TIEN_XU_LY: xuất tomTat.cgct === true và 8481 trong ứng viên', kTxl.tomTat.cgct === true && kTxl.tomTat.nhom.includes('8481'), JSON.stringify(kTxl.tomTat.nhom));
 }
 
-// 5. Kiểm tra có điều kiện nếu data/bo-chuan/4so-v1.jsonl đã gộp về nhánh chính
+// 5. Kiểm tra có điều kiện nếu data/bo-chuan/4so-v1.jsonl đã gộp về nhánh chính (khôi phục kho Oz thật)
+ozSearch.searchOzByKeyword = origOzSearch;
 const boChuanPath = new URL('../data/bo-chuan/4so-v1.jsonl', import.meta.url);
 if (fs.existsSync(boChuanPath)) {
   const rows = fs.readFileSync(boChuanPath, 'utf8').split('\n').map((l) => l.trim()).filter(Boolean).map((l) => JSON.parse(l));
