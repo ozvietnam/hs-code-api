@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:ozv-1801#soat-481190",
+    "phien": "claude-agent:ozv-1829#soat-481190",
     "ngay": "2026-11-22",
-    "ghiChu": "Đồng bộ dieuKienNut 4811904 với 4811513/4811594 để khép SẠCH V1 nhóm 4811 (OZV-1801)",
-    "bam": "1741bc1d33a572b472fdc6d88c11d8e513e2cf8dd5820694fa857f35a92348de"
+    "ghiChu": "Sửa 5 lỗi soat-khac trên PR #1604 và khép SẠCH V1 (OZV-1829)",
+    "bam": "49295278cf5106f92cbda583feb820ec187c6e1f5e1c8baf2255773c9cd51bd6"
   },
   "dieuKienNut": [
     {
@@ -27,11 +27,6 @@
           "op": "HOAC",
           "phuongAn": [
             [
-              {
-                "fact": "tenLoai",
-                "op": "TEN_LOAI",
-                "value": "Dạng cuộn"
-              },
               {
                 "fact": "dangCuon",
                 "op": "CO"
@@ -45,12 +40,17 @@
             ],
             [
               {
-                "fact": "tenLoai",
-                "op": "TEN_LOAI",
-                "value": "ở dạng tờ hình chữ nhật"
+                "fact": "dangToChuNhat",
+                "op": "CO"
               },
               {
-                "fact": "kichThuoc",
+                "fact": "motChieuTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
+              },
+              {
+                "fact": "chieuKiaTo",
                 "op": "<=",
                 "value": 36,
                 "donVi": "cm"
@@ -147,6 +147,13 @@
   "chongLanVanBan": [
     {
       "cap": [
+        "48119041",
+        "48119042"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1, Claude 07/11/2026): \"Tấm phủ sàn\" ↔ \"Giấy tạo vân(SEN)\" — giấy tạo vân (SEN 4811.90.42) là giấy công nghệ tạo bề mặt giả da, phủ silicon/plastic, chịu nhiệt 150–220 °C; không dùng làm tấm phủ sàn."
+    },
+    {
+      "cap": [
         "48119091",
         "48119092"
       ],
@@ -154,6 +161,17 @@
     }
   ],
   "ghiChuSoan": [
+    {
+      "ma": "4811904",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.4811904 \"Dạng cuộn có chiều rộng không quá 15 cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp\" ⇒ chữ \"hoặc\" tách HAI nhánh: phương án A = \"Dạng cuộn\" (dangCuon CO) + \"có chiều rộng không quá 15 cm\" (chieuRong <= 15 cm); phương án B = \"ở dạng tờ hình chữ nhật (kể cả hình vuông)\" (dangToChuNhat CO) + \"không có chiều nào trên 36 cm\" (motChieuTo <= 36 cm, chieuKiaTo <= 36 cm, đồng bộ với 4811513/4811594)."
+    },
+    {
+      "ma": "4811904",
+      "loai": "BO_VE",
+      "ve": "ở dạng không gấp",
+      "lyDo": "Vế nêu cách đo kích thước (trải phẳng, Chú giải 4 Chương 48 «ở dạng không gấp», EN «in the unfolded state»), không phải đặc điểm phân biệt hàng; kích thước đã số hoá ở motChieuTo/chieuKiaTo."
+    },
     {
       "ma": "48119041",
       "loai": "QUYET_DINH",

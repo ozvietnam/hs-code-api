@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:ozv-1801#soat-030695",
+    "phien": "claude-agent:ozv-1829#soat-030695",
     "ngay": "2026-11-22",
-    "ghiChu": "Chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1801)",
-    "bam": "1f9fd24f088c77ebd75bad80a191e8b6dd9ceb2c3547473f878989766a6b8eb5"
+    "ghiChu": "Sửa 5 lỗi soat-khac trên PR #1604 và khép SẠCH V1 (OZV-1829)",
+    "bam": "f03d2bb917e119029077954ae58c27d6fb3acbfe9d357159b4cb051879d2c727"
   },
   "dieuKienNut": [
     {
@@ -38,9 +38,8 @@
       "trich": "03069521 - - - - Còn vỏ, đã hấp chín hoặc luộc chín trong nước",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Còn vỏ"
+          "fact": "conVo",
+          "op": "CO"
         },
         {
           "fact": "phuongPhapBaoQuan",
@@ -71,7 +70,7 @@
     {
       "ma": "03069521",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.03069521 \"Còn vỏ, đã hấp chín hoặc luộc chín trong nước\" ⇒ tenLoai \"Còn vỏ\" + phuongPhapBaoQuan TRONG [\"HAP_LUOC_CHIN\"]."
+      "ghiChu": "tax.03069521 \"Còn vỏ, đã hấp chín hoặc luộc chín trong nước\" ⇒ conVo CO + phuongPhapBaoQuan TRONG [\"HAP_LUOC_CHIN\"]."
     }
   ],
   "traVe": [

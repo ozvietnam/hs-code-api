@@ -12,9 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "https://claude.ai/code/session_01ThoHs02Lo11c#soat-391731",
+    "phien": "claude-agent:ozv-1829#soat-391731",
     "ngay": "2026-11-22",
-    "bam": "94f3d2e162b57d918bba49f0b08435bcab6bcb6475afccf79074f7cd45dd997e"
+    "ghiChu": "Sửa 5 lỗi soat-khac trên PR #1604 và khép SẠCH V1 (OZV-1829)",
+    "bam": "adc720527b91d793996437842429fb05a88385c49c41f236570d5e2a7c9b7dcb"
   },
   "dieuKienNut": [
     {
@@ -22,11 +23,6 @@
       "nguon": "tieuDe.3917311",
       "trich": "3917311 Được gia công hơn mức gia công bề mặt đơn thuần",
       "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Được gia công hơn mức gia công bề mặt đơn thuần"
-        },
         {
           "fact": "giaCongHonBeMat",
           "op": "CO"
@@ -168,7 +164,7 @@
     {
       "ma": "3917311",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.3917311 \"Được gia công hơn mức gia công bề mặt đơn thuần\" ⇒ tầng 3917311 là nhánh \"gia công hơn\", 3917312 \"Loại khác\" là nhánh còn lại (máy phủ định anh em). Không có khoá tu-vung nào mô tả \"gia công hơn mức gia công bề mặt đơn thuần\" ⇒ dùng congDung (khoá tầng) với chính chữ của tiêu đề, khác khoá tenLoai của các dòng con để hai tầng không cùng khoá."
+      "ghiChu": "tieuDe.3917311 \"Được gia công hơn mức gia công bề mặt đơn thuần\" ⇒ giaCongHonBeMat CO (tu-vung@2 có khoá giaCongHonBeMat đúng chữ này). Tiêu đề anh em 3917312 \"Loại khác\" trần ⇒ không khai (máy phủ định anh em)."
     },
     {
       "ma": "39173111",
