@@ -398,6 +398,7 @@ const KHOA_MOI = {
   coDieuChinhDoCao: 'CO_KHONG',
   coTheChuyenThanhGiuong: 'CO_KHONG',
   coKetNoiMayTinh: 'CO_KHONG',
+  coGanThietBiThu: 'CO_KHONG',
 };
 
 // ── 1. Nạp theo phiên bản ─────────────────────────────────────────────────────────────────────────────────────────
@@ -1956,6 +1957,61 @@ check('vietCum đơn vị @1 KHÔNG đổi ("CS: 75000W" — không cách)', T.v
     T.docGiaTri(fk, redosT6Neutral);
     const ms2 = Number(process.hrtime.bigint() - t1) / 1e6;
     check(`T-6 ReDoS ~40.000 từ lặp cho ${fk} < 500 ms (khớp ${ms1.toFixed(1)} ms, rỗng ${ms2.toFixed(1)} ms)`, ms1 < 500 && ms2 < 500, { fk, ms1, ms2 });
+  }
+}
+
+// ── T-8 Top-93 (04/11): khoá coGanThietBiThu + mở rộng @2 (mauHienThi, loaiTuDong, loaiSoiDet.BONG, dangLong) ──────────
+{
+  // 1. mauHienThi cachDocThem (8528.72) — không chạm đối tượng @1
+  la('T-8 mauHienThi 8528.72 "Loại khác, màu"', 'mauHienThi', '85287200 - - - Loại khác, màu', 'MAU');
+  la('T-8 mauHienThi 8528.72 "Loại khác, màu (SEN)"', 'mauHienThi', '85287200 - - - Loại khác, màu (SEN)', 'MAU');
+  la('T-8 mauHienThi vẫn đọc màn hình đơn sắc', 'mauHienThi', '85287900 - - - Màn hình đơn sắc', 'DON_SAC');
+  la('T-8 mauHienThi (nghịch): "Màn hình đơn sắc loại khác, màu đen" giữ DON_SAC (không nhầm MAU)', 'mauHienThi', 'Màn hình đơn sắc loại khác, màu đen', 'DON_SAC');
+  chuaBiet('T-8 mauHienThi (nghịch): "Loại khác" không màu', 'mauHienThi', '85287900 - - - Loại khác');
+  chuaBiet('T-8 mauHienThi (nghịch): "Loại khác, màu đen" không phải màn hình màu', 'mauHienThi', 'Loại khác, màu đen');
+  check('T-8 mauHienThi DK.kiemDieuKien 8528.72 đạt',
+    DK.kiemDieuKien({ fact: 'mauHienThi', op: 'TRONG', value: ['MAU'] }, '85287200 - - - Loại khác, màu') === null);
+
+  // 2. coGanThietBiThu (8525.60)
+  la('T-8 coGanThietBiThu Vi CO (8525.60)', 'coGanThietBiThu', '85256000 - Thiết bị phát có gắn với thiết bị thu', true);
+  la('T-8 coGanThietBiThu Vi KHONG', 'coGanThietBiThu', 'Thiết bị phát không gắn với thiết bị thu', false);
+  la('T-8 coGanThietBiThu En CO', 'coGanThietBiThu', 'Transmission apparatus incorporating reception apparatus', true);
+  la('T-8 coGanThietBiThu En KHONG', 'coGanThietBiThu', 'Transmission apparatus not incorporating reception apparatus', false);
+  la('T-8 coGanThietBiThu Zh CO', 'coGanThietBiThu', '装有接收装置的发送设备', true);
+  la('T-8 coGanThietBiThu Zh KHONG', 'coGanThietBiThu', '未装有接收装置的发送设备', false);
+  chuaBiet('T-8 coGanThietBiThu (nghịch): "kết hợp thiết bị thu truyền hình" (8528)', 'coGanThietBiThu', 'Màn hình kết hợp thiết bị thu truyền hình');
+  check('T-8 coGanThietBiThu DK.kiemDieuKien CO/KHONG đạt',
+    DK.kiemDieuKien({ fact: 'coGanThietBiThu', op: 'CO' }, 'có gắn với thiết bị thu') === null
+    && DK.kiemDieuKien({ fact: 'coGanThietBiThu', op: 'KHONG' }, 'không gắn với thiết bị thu') === null);
+
+  // 3. loaiTuDong (8515.21/31)
+  la('T-8 loaiTuDong 8515.21 Vi CO', 'loaiTuDong', '85152100 - - Loại tự động hoàn toàn hoặc một phần', true, { bc: 'Loại tự động hoàn toàn hoặc một phần' });
+  la('T-8 loaiTuDong 8515.21 En CO', 'loaiTuDong', 'Machines, fully or partly automatic', true);
+  la('T-8 loaiTuDong 8515.21 Zh CO', 'loaiTuDong', '全自动或半自动弧焊机', true);
+  la('T-8 loaiTuDong (nghịch giữ nguyên bán tự động = false)', 'loaiTuDong', 'Thiết bị hàn bán tự động', false);
+  la('T-8 loaiTuDong Zh (nghịch giữ nguyên 半自动 = false)', 'loaiTuDong', '半自动焊机', false);
+
+  // 4. loaiSoiDet.BONG (5407.8x)
+  la('T-8 loaiSoiDet.BONG 5407.8x Vi', 'loaiSoiDet', 'Vải dệt thoi khác, được pha chủ yếu hoặc pha duy nhất với bông', 'BONG');
+  la('T-8 loaiSoiDet.BONG 5407.8x En', 'loaiSoiDet', 'Other woven fabrics, mixed mainly or solely with cotton', 'BONG');
+  la('T-8 loaiSoiDet.BONG 5407.8x Zh', 'loaiSoiDet', '主要与棉混纺的机织物', 'BONG');
+  chuaBiet('T-8 loaiSoiDet.BONG (nghịch): pha với bông thủy tinh', 'loaiSoiDet', 'Vải pha chủ yếu với bông thủy tinh');
+
+  // 5. dangLong (9025.11 không đọc nhầm "Chứa chất lỏng")
+  chuaBiet('T-8 dangLong (nghịch 9025.11): "Chứa chất lỏng, để đọc trực tiếp"', 'dangLong', '90251100 - - Chứa chất lỏng, để đọc trực tiếp');
+  la('T-8 dangLong 0401.10.10 vẫn đọc Dạng lỏng = true', 'dangLong', '04011010 - - Dạng lỏng', true);
+
+  // 6. ReDoS ~40.000 từ lặp cho các mẫu T-8 < 500 ms
+  const redosT8 = Array(1000).fill('loại khác, màu có gắn với thiết bị thu loại tự động hoàn toàn hoặc một phần được pha chủ yếu hoặc pha duy nhất với bông chứa chất lỏng để đọc trực tiếp').join(' ');
+  const redosT8Neutral = Array(1000).fill('thiết bị điện tử van thép không gỉ công nghiệp bọc nhựa PVC không màu cố định 220V').join(' ');
+  for (const fk of ['mauHienThi', 'coGanThietBiThu', 'loaiTuDong', 'loaiSoiDet', 'dangLong']) {
+    const t0 = process.hrtime.bigint();
+    T.docGiaTri(fk, redosT8);
+    const ms1 = Number(process.hrtime.bigint() - t0) / 1e6;
+    const t1 = process.hrtime.bigint();
+    T.docGiaTri(fk, redosT8Neutral);
+    const ms2 = Number(process.hrtime.bigint() - t1) / 1e6;
+    check(`T-8 ReDoS ~40.000 từ lặp cho ${fk} < 500 ms (khớp ${ms1.toFixed(1)} ms, rỗng ${ms2.toFixed(1)} ms)`, ms1 < 500 && ms2 < 500, { fk, ms1, ms2 });
   }
 }
 
