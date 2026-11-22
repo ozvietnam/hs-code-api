@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-code:ozv-1926#soat-984933",
+    "phien": "claude-code:ozv-1944#soat-984933",
     "ngay": "2026-11-22",
-    "ghiChu": "Chuẩn hoá điều kiện ranh giới và khép SẠCH V1 nhóm 9849 (OZV-1926)",
-    "bam": "91faa275493f5d5947e9419e56218729dce461c127321b19af48d3b27a28c5c8"
+    "ghiChu": "Sửa 5 điểm soat-khac trên PR #1656 (OZV-1944)",
+    "bam": "fc93714a3f79743d5ca2e0940d6519baadd209087bd0f4f5604c14922825d363"
   },
   "dieuKienNut": [
     {
@@ -105,9 +105,8 @@
       "trich": "984933~r19702 Đã lắp với đầu nối điện",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Đã lắp với đầu nối điện"
+          "fact": "daGanDauNoi",
+          "op": "CO"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -165,7 +164,11 @@
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
-          "value": "Loại dùng cho xe thuộc nhóm 87.02, 87.03, 87.04"
+          "value": [
+            "87.02",
+            "87.03",
+            "87.04"
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"

@@ -2084,15 +2084,15 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984928",
+          "phien": "claude-code:ozv-1944#soat-984928",
           "ngay": "2026-11-22",
-          "bam": "c15c1ec9c08a1b73cec3e7edb665c5d4ebb91978c0105dde9ff189356313c83c"
+          "bam": "5a3900851b586ec86cde374b482d72b90e7e6b5592fc61879f811c28a8378fd0"
         }
       }
     },
     {
       "hs": "98492812",
-      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): xe có dung tích xi lanh trên 2.000 cc đến 3.000 cc; dung tích xi lanh > 2000 cc",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): xe; dung tích xi lanh > 2000 cc; dung tích xi lanh <= 3000 cc",
       "nguon": "tax.98492812",
       "trich": "98492812 - - - - - Cho xe có dung tích xi lanh trên 2.000 cc đến 3.000 cc",
       "loaiKhac": false,
@@ -2101,21 +2101,27 @@
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
-          "value": "xe có dung tích xi lanh trên 2.000 cc đến 3.000 cc"
+          "value": "xe"
         },
         {
           "fact": "dungTichXiLanh",
           "op": ">",
           "value": 2000,
           "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 3000,
+          "donVi": "cc"
         }
       ],
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984928",
+          "phien": "claude-code:ozv-1944#soat-984928",
           "ngay": "2026-11-22",
-          "bam": "c15c1ec9c08a1b73cec3e7edb665c5d4ebb91978c0105dde9ff189356313c83c"
+          "bam": "5a3900851b586ec86cde374b482d72b90e7e6b5592fc61879f811c28a8378fd0"
         }
       }
     },
@@ -2142,9 +2148,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984928",
+          "phien": "claude-code:ozv-1944#soat-984928",
           "ngay": "2026-11-22",
-          "bam": "c15c1ec9c08a1b73cec3e7edb665c5d4ebb91978c0105dde9ff189356313c83c"
+          "bam": "5a3900851b586ec86cde374b482d72b90e7e6b5592fc61879f811c28a8378fd0"
         }
       }
     },
@@ -2165,9 +2171,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984928",
+          "phien": "claude-code:ozv-1944#soat-984928",
           "ngay": "2026-11-22",
-          "bam": "c15c1ec9c08a1b73cec3e7edb665c5d4ebb91978c0105dde9ff189356313c83c"
+          "bam": "5a3900851b586ec86cde374b482d72b90e7e6b5592fc61879f811c28a8378fd0"
         }
       }
     },
@@ -2188,9 +2194,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984928",
+          "phien": "claude-code:ozv-1944#soat-984928",
           "ngay": "2026-11-22",
-          "bam": "c15c1ec9c08a1b73cec3e7edb665c5d4ebb91978c0105dde9ff189356313c83c"
+          "bam": "5a3900851b586ec86cde374b482d72b90e7e6b5592fc61879f811c28a8378fd0"
         }
       }
     },
@@ -2211,9 +2217,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984928",
+          "phien": "claude-code:ozv-1944#soat-984928",
           "ngay": "2026-11-22",
-          "bam": "c15c1ec9c08a1b73cec3e7edb665c5d4ebb91978c0105dde9ff189356313c83c"
+          "bam": "5a3900851b586ec86cde374b482d72b90e7e6b5592fc61879f811c28a8378fd0"
         }
       }
     },
@@ -2237,9 +2243,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984928",
+          "phien": "claude-code:ozv-1944#soat-984928",
           "ngay": "2026-11-22",
-          "bam": "c15c1ec9c08a1b73cec3e7edb665c5d4ebb91978c0105dde9ff189356313c83c"
+          "bam": "5a3900851b586ec86cde374b482d72b90e7e6b5592fc61879f811c28a8378fd0"
         }
       }
     },
@@ -2263,9 +2269,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984928",
+          "phien": "claude-code:ozv-1944#soat-984928",
           "ngay": "2026-11-22",
-          "bam": "c15c1ec9c08a1b73cec3e7edb665c5d4ebb91978c0105dde9ff189356313c83c"
+          "bam": "5a3900851b586ec86cde374b482d72b90e7e6b5592fc61879f811c28a8378fd0"
         }
       }
     },
@@ -2293,9 +2299,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984928",
+          "phien": "claude-code:ozv-1944#soat-984928",
           "ngay": "2026-11-22",
-          "bam": "c15c1ec9c08a1b73cec3e7edb665c5d4ebb91978c0105dde9ff189356313c83c"
+          "bam": "5a3900851b586ec86cde374b482d72b90e7e6b5592fc61879f811c28a8378fd0"
         }
       },
       "phanConLai": false
@@ -2324,9 +2330,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984928",
+          "phien": "claude-code:ozv-1944#soat-984928",
           "ngay": "2026-11-22",
-          "bam": "c15c1ec9c08a1b73cec3e7edb665c5d4ebb91978c0105dde9ff189356313c83c"
+          "bam": "5a3900851b586ec86cde374b482d72b90e7e6b5592fc61879f811c28a8378fd0"
         }
       },
       "phanConLai": false
@@ -2348,9 +2354,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984929",
+          "phien": "claude-code:ozv-1944#soat-984929",
           "ngay": "2026-11-22",
-          "bam": "2aa838f1203a022c4a608087ecf552a7eccf2ba1e53113dc5afb57d9f8713efc"
+          "bam": "3a08d017bd66d6eb3527b7eb23c76369732496b301348a258a4569a96a980bed"
         }
       }
     },
@@ -2370,9 +2376,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984929",
+          "phien": "claude-code:ozv-1944#soat-984929",
           "ngay": "2026-11-22",
-          "bam": "2aa838f1203a022c4a608087ecf552a7eccf2ba1e53113dc5afb57d9f8713efc"
+          "bam": "3a08d017bd66d6eb3527b7eb23c76369732496b301348a258a4569a96a980bed"
         }
       }
     },
@@ -2413,9 +2419,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984929",
+          "phien": "claude-code:ozv-1944#soat-984929",
           "ngay": "2026-11-22",
-          "bam": "2aa838f1203a022c4a608087ecf552a7eccf2ba1e53113dc5afb57d9f8713efc"
+          "bam": "3a08d017bd66d6eb3527b7eb23c76369732496b301348a258a4569a96a980bed"
         }
       }
     },
@@ -2457,9 +2463,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984929",
+          "phien": "claude-code:ozv-1944#soat-984929",
           "ngay": "2026-11-22",
-          "bam": "2aa838f1203a022c4a608087ecf552a7eccf2ba1e53113dc5afb57d9f8713efc"
+          "bam": "3a08d017bd66d6eb3527b7eb23c76369732496b301348a258a4569a96a980bed"
         }
       }
     },
@@ -2480,9 +2486,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984929",
+          "phien": "claude-code:ozv-1944#soat-984929",
           "ngay": "2026-11-22",
-          "bam": "2aa838f1203a022c4a608087ecf552a7eccf2ba1e53113dc5afb57d9f8713efc"
+          "bam": "3a08d017bd66d6eb3527b7eb23c76369732496b301348a258a4569a96a980bed"
         }
       }
     },
@@ -2503,9 +2509,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984929",
+          "phien": "claude-code:ozv-1944#soat-984929",
           "ngay": "2026-11-22",
-          "bam": "2aa838f1203a022c4a608087ecf552a7eccf2ba1e53113dc5afb57d9f8713efc"
+          "bam": "3a08d017bd66d6eb3527b7eb23c76369732496b301348a258a4569a96a980bed"
         }
       }
     },
@@ -2526,9 +2532,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984929",
+          "phien": "claude-code:ozv-1944#soat-984929",
           "ngay": "2026-11-22",
-          "bam": "2aa838f1203a022c4a608087ecf552a7eccf2ba1e53113dc5afb57d9f8713efc"
+          "bam": "3a08d017bd66d6eb3527b7eb23c76369732496b301348a258a4569a96a980bed"
         }
       },
       "phanConLai": [
@@ -2552,9 +2558,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984929",
+          "phien": "claude-code:ozv-1944#soat-984929",
           "ngay": "2026-11-22",
-          "bam": "2aa838f1203a022c4a608087ecf552a7eccf2ba1e53113dc5afb57d9f8713efc"
+          "bam": "3a08d017bd66d6eb3527b7eb23c76369732496b301348a258a4569a96a980bed"
         }
       }
     },
@@ -2575,9 +2581,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984929",
+          "phien": "claude-code:ozv-1944#soat-984929",
           "ngay": "2026-11-22",
-          "bam": "2aa838f1203a022c4a608087ecf552a7eccf2ba1e53113dc5afb57d9f8713efc"
+          "bam": "3a08d017bd66d6eb3527b7eb23c76369732496b301348a258a4569a96a980bed"
         }
       }
     },
@@ -2598,9 +2604,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984929",
+          "phien": "claude-code:ozv-1944#soat-984929",
           "ngay": "2026-11-22",
-          "bam": "2aa838f1203a022c4a608087ecf552a7eccf2ba1e53113dc5afb57d9f8713efc"
+          "bam": "3a08d017bd66d6eb3527b7eb23c76369732496b301348a258a4569a96a980bed"
         }
       }
     },
@@ -2621,9 +2627,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984929",
+          "phien": "claude-code:ozv-1944#soat-984929",
           "ngay": "2026-11-22",
-          "bam": "2aa838f1203a022c4a608087ecf552a7eccf2ba1e53113dc5afb57d9f8713efc"
+          "bam": "3a08d017bd66d6eb3527b7eb23c76369732496b301348a258a4569a96a980bed"
         }
       }
     },
@@ -2673,9 +2679,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984929",
+          "phien": "claude-code:ozv-1944#soat-984929",
           "ngay": "2026-11-22",
-          "bam": "2aa838f1203a022c4a608087ecf552a7eccf2ba1e53113dc5afb57d9f8713efc"
+          "bam": "3a08d017bd66d6eb3527b7eb23c76369732496b301348a258a4569a96a980bed"
         }
       },
       "phanConLai": [
@@ -2699,9 +2705,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984929",
+          "phien": "claude-code:ozv-1944#soat-984929",
           "ngay": "2026-11-22",
-          "bam": "2aa838f1203a022c4a608087ecf552a7eccf2ba1e53113dc5afb57d9f8713efc"
+          "bam": "3a08d017bd66d6eb3527b7eb23c76369732496b301348a258a4569a96a980bed"
         }
       },
       "phanConLai": [
@@ -3008,9 +3014,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984932",
+          "phien": "claude-code:ozv-1944#soat-984932",
           "ngay": "2026-11-22",
-          "bam": "0423c7f0118b37cf82a05ffb6ceff780e5a98692b5b5dccf470c998aacae2987"
+          "bam": "b92c7c2f2e45007166e782eaaec7e90ac1aae916225bb2ee6af12b434da04864"
         }
       }
     },
@@ -3031,9 +3037,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984932",
+          "phien": "claude-code:ozv-1944#soat-984932",
           "ngay": "2026-11-22",
-          "bam": "0423c7f0118b37cf82a05ffb6ceff780e5a98692b5b5dccf470c998aacae2987"
+          "bam": "b92c7c2f2e45007166e782eaaec7e90ac1aae916225bb2ee6af12b434da04864"
         }
       }
     },
@@ -3054,9 +3060,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984932",
+          "phien": "claude-code:ozv-1944#soat-984932",
           "ngay": "2026-11-22",
-          "bam": "0423c7f0118b37cf82a05ffb6ceff780e5a98692b5b5dccf470c998aacae2987"
+          "bam": "b92c7c2f2e45007166e782eaaec7e90ac1aae916225bb2ee6af12b434da04864"
         }
       },
       "phanConLai": [
@@ -3089,9 +3095,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984932",
+          "phien": "claude-code:ozv-1944#soat-984932",
           "ngay": "2026-11-22",
-          "bam": "0423c7f0118b37cf82a05ffb6ceff780e5a98692b5b5dccf470c998aacae2987"
+          "bam": "b92c7c2f2e45007166e782eaaec7e90ac1aae916225bb2ee6af12b434da04864"
         }
       }
     },
@@ -3112,15 +3118,15 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984933",
+          "phien": "claude-code:ozv-1944#soat-984933",
           "ngay": "2026-11-22",
-          "bam": "91faa275493f5d5947e9419e56218729dce461c127321b19af48d3b27a28c5c8"
+          "bam": "fc93714a3f79743d5ca2e0940d6519baadd209087bd0f4f5604c14922825d363"
         }
       }
     },
     {
       "hs": "98493320",
-      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): Loại dùng cho xe thuộc nhóm 87.02, 87.03, 87.04",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): 87.02 hoặc 87.03 hoặc 87.04",
       "nguon": "tax.98493320",
       "trich": "98493320 - - - - - Loại dùng cho xe thuộc nhóm 87.02, 87.03, 87.04 ",
       "loaiKhac": false,
@@ -3129,15 +3135,19 @@
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
-          "value": "Loại dùng cho xe thuộc nhóm 87.02, 87.03, 87.04"
+          "value": [
+            "87.02",
+            "87.03",
+            "87.04"
+          ]
         }
       ],
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984933",
+          "phien": "claude-code:ozv-1944#soat-984933",
           "ngay": "2026-11-22",
-          "bam": "91faa275493f5d5947e9419e56218729dce461c127321b19af48d3b27a28c5c8"
+          "bam": "fc93714a3f79743d5ca2e0940d6519baadd209087bd0f4f5604c14922825d363"
         }
       }
     },
@@ -3158,9 +3168,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984933",
+          "phien": "claude-code:ozv-1944#soat-984933",
           "ngay": "2026-11-22",
-          "bam": "91faa275493f5d5947e9419e56218729dce461c127321b19af48d3b27a28c5c8"
+          "bam": "fc93714a3f79743d5ca2e0940d6519baadd209087bd0f4f5604c14922825d363"
         }
       }
     },
@@ -3181,14 +3191,11 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984933",
+          "phien": "claude-code:ozv-1944#soat-984933",
           "ngay": "2026-11-22",
-          "bam": "91faa275493f5d5947e9419e56218729dce461c127321b19af48d3b27a28c5c8"
+          "bam": "fc93714a3f79743d5ca2e0940d6519baadd209087bd0f4f5604c14922825d363"
         }
-      },
-      "phanConLai": [
-        "98493320"
-      ]
+      }
     },
     {
       "hs": "98493411",
@@ -6253,9 +6260,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984943",
-          "ngay": "2026-11-22",
-          "bam": "10e82c068d6690fec3b99c8b6624be415ed0437cbce283d0a4eb1a4a92d0b0cb"
+          "phien": "claude-agent:tho-hs-03:ranh-gioi-9849-20261113#soat-984943",
+          "ngay": "2026-11-13",
+          "bam": "16dd3d8e718561e60e86428a4cac7d8ca3a0c75a07e31f03841fb5c0f72dcad0"
         }
       },
       "chongLanVanBan": [
@@ -6283,9 +6290,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984943",
-          "ngay": "2026-11-22",
-          "bam": "10e82c068d6690fec3b99c8b6624be415ed0437cbce283d0a4eb1a4a92d0b0cb"
+          "phien": "claude-agent:tho-hs-03:ranh-gioi-9849-20261113#soat-984943",
+          "ngay": "2026-11-13",
+          "bam": "16dd3d8e718561e60e86428a4cac7d8ca3a0c75a07e31f03841fb5c0f72dcad0"
         }
       },
       "chongLanVanBan": [
@@ -6340,12 +6347,16 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984943",
-          "ngay": "2026-11-22",
-          "bam": "10e82c068d6690fec3b99c8b6624be415ed0437cbce283d0a4eb1a4a92d0b0cb"
+          "phien": "claude-agent:tho-hs-03:ranh-gioi-9849-20261113#soat-984943",
+          "ngay": "2026-11-13",
+          "bam": "16dd3d8e718561e60e86428a4cac7d8ca3a0c75a07e31f03841fb5c0f72dcad0"
         }
       },
       "chongLanVanBan": [
+        {
+          "voi": "98494310",
+          "lyDo": "Hai dòng cùng trục đặc điểm, câu chữ không loại trừ nhau: .10 \"Bằng liti\" không nói pin đã lắp ráp hoàn chỉnh, .90 \"Bộ phận\" không ghi chất liệu pin — mô tả \"bộ phận pin liti\" (vd vỏ pin, cực pin liti) thỏa cả hai dòng; không có căn cứ thứ tự trong chữ biểu."
+        },
         {
           "voi": "98494321",
           "lyDo": "Hai dòng cùng trục đặc điểm, câu chữ không loại trừ nhau: .21 \"Có thể tích ngoài không quá 300 cm3\" không nói pin hoàn chỉnh, .90 \"Bộ phận\" không giới hạn thể tích — mô tả \"bộ phận pin có thể tích ngoài không quá 300 cm3\" thỏa cả hai dòng; không có căn cứ thứ tự trong chữ biểu."
@@ -6353,37 +6364,8 @@
         {
           "voi": "98494329",
           "lyDo": "Hai dòng cùng trục đặc điểm, câu chữ không loại trừ nhau: .29 \"Loại khác\" là phần còn lại theo chất liệu pin, .90 \"Bộ phận\" là phần còn lại theo mức hoàn chỉnh — bộ phận của pin chất liệu khác (không liti, thể tích trên 300 cm3) thỏa cả hai dòng; không có căn cứ thứ tự trong chữ biểu."
-        },
-        {
-          "voi": "98494310",
-          "lyDo": "Hai dòng cùng trục đặc điểm, câu chữ không loại trừ nhau: .10 \"Bằng liti\" không nói pin đã lắp ráp hoàn chỉnh, .90 \"Bộ phận\" không ghi chất liệu pin — mô tả \"bộ phận pin liti\" (vd vỏ pin, cực pin liti) thỏa cả hai dòng; không có căn cứ thứ tự trong chữ biểu."
         }
-      ],
-      "chongLanTruc": {
-        "pn6": "984943",
-        "nhanh": [
-          "984943~r19889",
-          "98494390"
-        ],
-        "truc": {
-          "98494390": "DAC_DIEM",
-          "984943~r19889": "TEN_LOAI"
-        },
-        "cauHoiPhanBiet": "Hàng là pin/bộ pin hoàn chỉnh thuộc nhánh \"Loại khác..., trừ loại bằng kẽm carbon\" (984943~r19889) hay là \"Bộ phận\" của pin (98494390)?",
-        "trich": {
-          "98494390": "Bộ phận",
-          "984943~r19889": "Loại khác (trừ loại thuộc phân nhóm 8506.10, 8506.30, 8506.40, 8506.50, 8506.60), trừ loại bằng kẽm carbon"
-        },
-        "phanXu": null,
-        "ranhGioi": {
-          "phienBan": "ranh-gioi@1",
-          "duyet": {
-            "phien": "claude-code:ozv-1926#soat-984943",
-            "ngay": "2026-11-22",
-            "bam": "10e82c068d6690fec3b99c8b6624be415ed0437cbce283d0a4eb1a4a92d0b0cb"
-          }
-        }
-      }
+      ]
     },
     {
       "hs": "98494400",
@@ -10355,9 +10337,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984928",
+          "phien": "claude-code:ozv-1944#soat-984928",
           "ngay": "2026-11-22",
-          "bam": "c15c1ec9c08a1b73cec3e7edb665c5d4ebb91978c0105dde9ff189356313c83c"
+          "bam": "5a3900851b586ec86cde374b482d72b90e7e6b5592fc61879f811c28a8378fd0"
         }
       }
     },
@@ -10384,9 +10366,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984928",
+          "phien": "claude-code:ozv-1944#soat-984928",
           "ngay": "2026-11-22",
-          "bam": "c15c1ec9c08a1b73cec3e7edb665c5d4ebb91978c0105dde9ff189356313c83c"
+          "bam": "5a3900851b586ec86cde374b482d72b90e7e6b5592fc61879f811c28a8378fd0"
         }
       }
     },
@@ -10413,9 +10395,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984928",
+          "phien": "claude-code:ozv-1944#soat-984928",
           "ngay": "2026-11-22",
-          "bam": "c15c1ec9c08a1b73cec3e7edb665c5d4ebb91978c0105dde9ff189356313c83c"
+          "bam": "5a3900851b586ec86cde374b482d72b90e7e6b5592fc61879f811c28a8378fd0"
         }
       }
     },
@@ -10446,9 +10428,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984928",
+          "phien": "claude-code:ozv-1944#soat-984928",
           "ngay": "2026-11-22",
-          "bam": "c15c1ec9c08a1b73cec3e7edb665c5d4ebb91978c0105dde9ff189356313c83c"
+          "bam": "5a3900851b586ec86cde374b482d72b90e7e6b5592fc61879f811c28a8378fd0"
         }
       }
     },
@@ -10472,9 +10454,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984928",
+          "phien": "claude-code:ozv-1944#soat-984928",
           "ngay": "2026-11-22",
-          "bam": "c15c1ec9c08a1b73cec3e7edb665c5d4ebb91978c0105dde9ff189356313c83c"
+          "bam": "5a3900851b586ec86cde374b482d72b90e7e6b5592fc61879f811c28a8378fd0"
         }
       },
       "phanConLai": false
@@ -10499,9 +10481,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984928",
+          "phien": "claude-code:ozv-1944#soat-984928",
           "ngay": "2026-11-22",
-          "bam": "c15c1ec9c08a1b73cec3e7edb665c5d4ebb91978c0105dde9ff189356313c83c"
+          "bam": "5a3900851b586ec86cde374b482d72b90e7e6b5592fc61879f811c28a8378fd0"
         }
       }
     },
@@ -10520,9 +10502,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984929",
+          "phien": "claude-code:ozv-1944#soat-984929",
           "ngay": "2026-11-22",
-          "bam": "2aa838f1203a022c4a608087ecf552a7eccf2ba1e53113dc5afb57d9f8713efc"
+          "bam": "3a08d017bd66d6eb3527b7eb23c76369732496b301348a258a4569a96a980bed"
         }
       },
       "chongLanTruc": {
@@ -10556,9 +10538,9 @@
         "ranhGioi": {
           "phienBan": "ranh-gioi@1",
           "duyet": {
-            "phien": "claude-code:ozv-1926#soat-984929",
+            "phien": "claude-code:ozv-1944#soat-984929",
             "ngay": "2026-11-22",
-            "bam": "2aa838f1203a022c4a608087ecf552a7eccf2ba1e53113dc5afb57d9f8713efc"
+            "bam": "3a08d017bd66d6eb3527b7eb23c76369732496b301348a258a4569a96a980bed"
           }
         }
       }
@@ -10582,9 +10564,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984929",
+          "phien": "claude-code:ozv-1944#soat-984929",
           "ngay": "2026-11-22",
-          "bam": "2aa838f1203a022c4a608087ecf552a7eccf2ba1e53113dc5afb57d9f8713efc"
+          "bam": "3a08d017bd66d6eb3527b7eb23c76369732496b301348a258a4569a96a980bed"
         }
       },
       "chongLanTruc": {
@@ -10618,9 +10600,9 @@
         "ranhGioi": {
           "phienBan": "ranh-gioi@1",
           "duyet": {
-            "phien": "claude-code:ozv-1926#soat-984929",
+            "phien": "claude-code:ozv-1944#soat-984929",
             "ngay": "2026-11-22",
-            "bam": "2aa838f1203a022c4a608087ecf552a7eccf2ba1e53113dc5afb57d9f8713efc"
+            "bam": "3a08d017bd66d6eb3527b7eb23c76369732496b301348a258a4569a96a980bed"
           }
         }
       }
@@ -10643,9 +10625,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984929",
+          "phien": "claude-code:ozv-1944#soat-984929",
           "ngay": "2026-11-22",
-          "bam": "2aa838f1203a022c4a608087ecf552a7eccf2ba1e53113dc5afb57d9f8713efc"
+          "bam": "3a08d017bd66d6eb3527b7eb23c76369732496b301348a258a4569a96a980bed"
         }
       },
       "chongLanTruc": {
@@ -10679,9 +10661,9 @@
         "ranhGioi": {
           "phienBan": "ranh-gioi@1",
           "duyet": {
-            "phien": "claude-code:ozv-1926#soat-984929",
+            "phien": "claude-code:ozv-1944#soat-984929",
             "ngay": "2026-11-22",
-            "bam": "2aa838f1203a022c4a608087ecf552a7eccf2ba1e53113dc5afb57d9f8713efc"
+            "bam": "3a08d017bd66d6eb3527b7eb23c76369732496b301348a258a4569a96a980bed"
           }
         }
       }
@@ -10694,7 +10676,7 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Động cơ khởi động khác"
+          "value": "Động cơ khởi động"
         },
         {
           "fact": "daLapRap",
@@ -10705,9 +10687,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984929",
+          "phien": "claude-code:ozv-1944#soat-984929",
           "ngay": "2026-11-22",
-          "bam": "2aa838f1203a022c4a608087ecf552a7eccf2ba1e53113dc5afb57d9f8713efc"
+          "bam": "3a08d017bd66d6eb3527b7eb23c76369732496b301348a258a4569a96a980bed"
         }
       },
       "phanConLai": false
@@ -10720,7 +10702,7 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Động cơ khởi động đã lắp ráp"
+          "value": "Động cơ khởi động"
         },
         {
           "fact": "daLapRap",
@@ -10736,9 +10718,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984929",
+          "phien": "claude-code:ozv-1944#soat-984929",
           "ngay": "2026-11-22",
-          "bam": "2aa838f1203a022c4a608087ecf552a7eccf2ba1e53113dc5afb57d9f8713efc"
+          "bam": "3a08d017bd66d6eb3527b7eb23c76369732496b301348a258a4569a96a980bed"
         }
       }
     },
@@ -10757,9 +10739,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984929",
+          "phien": "claude-code:ozv-1944#soat-984929",
           "ngay": "2026-11-22",
-          "bam": "2aa838f1203a022c4a608087ecf552a7eccf2ba1e53113dc5afb57d9f8713efc"
+          "bam": "3a08d017bd66d6eb3527b7eb23c76369732496b301348a258a4569a96a980bed"
         }
       },
       "phanConLai": false,
@@ -10794,9 +10776,9 @@
         "ranhGioi": {
           "phienBan": "ranh-gioi@1",
           "duyet": {
-            "phien": "claude-code:ozv-1926#soat-984929",
+            "phien": "claude-code:ozv-1944#soat-984929",
             "ngay": "2026-11-22",
-            "bam": "2aa838f1203a022c4a608087ecf552a7eccf2ba1e53113dc5afb57d9f8713efc"
+            "bam": "3a08d017bd66d6eb3527b7eb23c76369732496b301348a258a4569a96a980bed"
           }
         }
       }
@@ -10820,9 +10802,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984929",
+          "phien": "claude-code:ozv-1944#soat-984929",
           "ngay": "2026-11-22",
-          "bam": "2aa838f1203a022c4a608087ecf552a7eccf2ba1e53113dc5afb57d9f8713efc"
+          "bam": "3a08d017bd66d6eb3527b7eb23c76369732496b301348a258a4569a96a980bed"
         }
       },
       "phanConLai": false
@@ -10835,16 +10817,16 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Thiết bị khác"
+          "value": "Thiết bị"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET",
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984929",
+          "phien": "claude-code:ozv-1944#soat-984929",
           "ngay": "2026-11-22",
-          "bam": "2aa838f1203a022c4a608087ecf552a7eccf2ba1e53113dc5afb57d9f8713efc"
+          "bam": "3a08d017bd66d6eb3527b7eb23c76369732496b301348a258a4569a96a980bed"
         }
       },
       "phanConLai": true,
@@ -10879,9 +10861,9 @@
         "ranhGioi": {
           "phienBan": "ranh-gioi@1",
           "duyet": {
-            "phien": "claude-code:ozv-1926#soat-984929",
+            "phien": "claude-code:ozv-1944#soat-984929",
             "ngay": "2026-11-22",
-            "bam": "2aa838f1203a022c4a608087ecf552a7eccf2ba1e53113dc5afb57d9f8713efc"
+            "bam": "3a08d017bd66d6eb3527b7eb23c76369732496b301348a258a4569a96a980bed"
           }
         }
       }
@@ -10900,9 +10882,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984929",
+          "phien": "claude-code:ozv-1944#soat-984929",
           "ngay": "2026-11-22",
-          "bam": "2aa838f1203a022c4a608087ecf552a7eccf2ba1e53113dc5afb57d9f8713efc"
+          "bam": "3a08d017bd66d6eb3527b7eb23c76369732496b301348a258a4569a96a980bed"
         }
       },
       "chongLanTruc": {
@@ -10936,9 +10918,9 @@
         "ranhGioi": {
           "phienBan": "ranh-gioi@1",
           "duyet": {
-            "phien": "claude-code:ozv-1926#soat-984929",
+            "phien": "claude-code:ozv-1944#soat-984929",
             "ngay": "2026-11-22",
-            "bam": "2aa838f1203a022c4a608087ecf552a7eccf2ba1e53113dc5afb57d9f8713efc"
+            "bam": "3a08d017bd66d6eb3527b7eb23c76369732496b301348a258a4569a96a980bed"
           }
         }
       }
@@ -10958,9 +10940,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984929",
+          "phien": "claude-code:ozv-1944#soat-984929",
           "ngay": "2026-11-22",
-          "bam": "2aa838f1203a022c4a608087ecf552a7eccf2ba1e53113dc5afb57d9f8713efc"
+          "bam": "3a08d017bd66d6eb3527b7eb23c76369732496b301348a258a4569a96a980bed"
         }
       }
     },
@@ -10979,9 +10961,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984929",
+          "phien": "claude-code:ozv-1944#soat-984929",
           "ngay": "2026-11-22",
-          "bam": "2aa838f1203a022c4a608087ecf552a7eccf2ba1e53113dc5afb57d9f8713efc"
+          "bam": "3a08d017bd66d6eb3527b7eb23c76369732496b301348a258a4569a96a980bed"
         }
       }
     },
@@ -11003,9 +10985,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984929",
+          "phien": "claude-code:ozv-1944#soat-984929",
           "ngay": "2026-11-22",
-          "bam": "2aa838f1203a022c4a608087ecf552a7eccf2ba1e53113dc5afb57d9f8713efc"
+          "bam": "3a08d017bd66d6eb3527b7eb23c76369732496b301348a258a4569a96a980bed"
         }
       }
     },
@@ -11033,9 +11015,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984929",
+          "phien": "claude-code:ozv-1944#soat-984929",
           "ngay": "2026-11-22",
-          "bam": "2aa838f1203a022c4a608087ecf552a7eccf2ba1e53113dc5afb57d9f8713efc"
+          "bam": "3a08d017bd66d6eb3527b7eb23c76369732496b301348a258a4569a96a980bed"
         }
       }
     },
@@ -11230,16 +11212,19 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Đèn pha gắn kín (sealed beam lamp units)"
+          "value": [
+            "Đèn pha gắn kín",
+            "sealed beam lamp units"
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET",
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984932",
+          "phien": "claude-code:ozv-1944#soat-984932",
           "ngay": "2026-11-22",
-          "bam": "0423c7f0118b37cf82a05ffb6ceff780e5a98692b5b5dccf470c998aacae2987"
+          "bam": "b92c7c2f2e45007166e782eaaec7e90ac1aae916225bb2ee6af12b434da04864"
         }
       }
     },
@@ -11251,16 +11236,16 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Các loại bóng đèn dây tóc"
+          "value": "bóng đèn dây tóc"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET",
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984932",
+          "phien": "claude-code:ozv-1944#soat-984932",
           "ngay": "2026-11-22",
-          "bam": "0423c7f0118b37cf82a05ffb6ceff780e5a98692b5b5dccf470c998aacae2987"
+          "bam": "b92c7c2f2e45007166e782eaaec7e90ac1aae916225bb2ee6af12b434da04864"
         }
       },
       "phanConLai": true,
@@ -11283,9 +11268,9 @@
         "ranhGioi": {
           "phienBan": "ranh-gioi@1",
           "duyet": {
-            "phien": "claude-code:ozv-1926#soat-984932",
+            "phien": "claude-code:ozv-1944#soat-984932",
             "ngay": "2026-11-22",
-            "bam": "0423c7f0118b37cf82a05ffb6ceff780e5a98692b5b5dccf470c998aacae2987"
+            "bam": "b92c7c2f2e45007166e782eaaec7e90ac1aae916225bb2ee6af12b434da04864"
           }
         }
       }
@@ -11305,9 +11290,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984932",
+          "phien": "claude-code:ozv-1944#soat-984932",
           "ngay": "2026-11-22",
-          "bam": "0423c7f0118b37cf82a05ffb6ceff780e5a98692b5b5dccf470c998aacae2987"
+          "bam": "b92c7c2f2e45007166e782eaaec7e90ac1aae916225bb2ee6af12b434da04864"
         }
       }
     },
@@ -11325,9 +11310,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984932",
+          "phien": "claude-code:ozv-1944#soat-984932",
           "ngay": "2026-11-22",
-          "bam": "0423c7f0118b37cf82a05ffb6ceff780e5a98692b5b5dccf470c998aacae2987"
+          "bam": "b92c7c2f2e45007166e782eaaec7e90ac1aae916225bb2ee6af12b434da04864"
         }
       },
       "chongLanTruc": {
@@ -11349,9 +11334,9 @@
         "ranhGioi": {
           "phienBan": "ranh-gioi@1",
           "duyet": {
-            "phien": "claude-code:ozv-1926#soat-984932",
+            "phien": "claude-code:ozv-1944#soat-984932",
             "ngay": "2026-11-22",
-            "bam": "0423c7f0118b37cf82a05ffb6ceff780e5a98692b5b5dccf470c998aacae2987"
+            "bam": "b92c7c2f2e45007166e782eaaec7e90ac1aae916225bb2ee6af12b434da04864"
           }
         }
       }
@@ -11383,9 +11368,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984933",
+          "phien": "claude-code:ozv-1944#soat-984933",
           "ngay": "2026-11-22",
-          "bam": "91faa275493f5d5947e9419e56218729dce461c127321b19af48d3b27a28c5c8"
+          "bam": "fc93714a3f79743d5ca2e0940d6519baadd209087bd0f4f5604c14922825d363"
         }
       },
       "phanConLai": false
@@ -11410,9 +11395,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984933",
+          "phien": "claude-code:ozv-1944#soat-984933",
           "ngay": "2026-11-22",
-          "bam": "91faa275493f5d5947e9419e56218729dce461c127321b19af48d3b27a28c5c8"
+          "bam": "fc93714a3f79743d5ca2e0940d6519baadd209087bd0f4f5604c14922825d363"
         }
       }
     },
@@ -11435,9 +11420,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984933",
+          "phien": "claude-code:ozv-1944#soat-984933",
           "ngay": "2026-11-22",
-          "bam": "91faa275493f5d5947e9419e56218729dce461c127321b19af48d3b27a28c5c8"
+          "bam": "fc93714a3f79743d5ca2e0940d6519baadd209087bd0f4f5604c14922825d363"
         }
       }
     },
@@ -11462,9 +11447,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984933",
+          "phien": "claude-code:ozv-1944#soat-984933",
           "ngay": "2026-11-22",
-          "bam": "91faa275493f5d5947e9419e56218729dce461c127321b19af48d3b27a28c5c8"
+          "bam": "fc93714a3f79743d5ca2e0940d6519baadd209087bd0f4f5604c14922825d363"
         }
       },
       "phanConLai": true
@@ -11475,18 +11460,17 @@
       "trich": "984933~r19702 Đã lắp với đầu nối điện",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Đã lắp với đầu nối điện"
+          "fact": "daGanDauNoi",
+          "op": "CO"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET",
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984933",
+          "phien": "claude-code:ozv-1944#soat-984933",
           "ngay": "2026-11-22",
-          "bam": "91faa275493f5d5947e9419e56218729dce461c127321b19af48d3b27a28c5c8"
+          "bam": "fc93714a3f79743d5ca2e0940d6519baadd209087bd0f4f5604c14922825d363"
         }
       }
     },
@@ -11505,9 +11489,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984933",
+          "phien": "claude-code:ozv-1944#soat-984933",
           "ngay": "2026-11-22",
-          "bam": "91faa275493f5d5947e9419e56218729dce461c127321b19af48d3b27a28c5c8"
+          "bam": "fc93714a3f79743d5ca2e0940d6519baadd209087bd0f4f5604c14922825d363"
         }
       }
     },
@@ -11530,9 +11514,9 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984933",
+          "phien": "claude-code:ozv-1944#soat-984933",
           "ngay": "2026-11-22",
-          "bam": "91faa275493f5d5947e9419e56218729dce461c127321b19af48d3b27a28c5c8"
+          "bam": "fc93714a3f79743d5ca2e0940d6519baadd209087bd0f4f5604c14922825d363"
         }
       }
     },
@@ -12902,9 +12886,11 @@
       "trich": "984943~r19889 Loại khác (trừ loại thuộc phân nhóm 8506.10, 8506.30, 8506.40, 8506.50, 8506.60), trừ loại bằng kẽm carbon",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "kẽm carbon",
+          "fact": "loaiPin",
+          "op": "TRONG",
+          "value": [
+            "KEM_CACBON"
+          ],
           "chieu": "PHAI_KHONG"
         }
       ],
@@ -12912,37 +12898,12 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-code:ozv-1926#soat-984943",
-          "ngay": "2026-11-22",
-          "bam": "10e82c068d6690fec3b99c8b6624be415ed0437cbce283d0a4eb1a4a92d0b0cb"
+          "phien": "claude-agent:tho-hs-03:ranh-gioi-9849-20261113#soat-984943",
+          "ngay": "2026-11-13",
+          "bam": "16dd3d8e718561e60e86428a4cac7d8ca3a0c75a07e31f03841fb5c0f72dcad0"
         }
       },
-      "phanConLai": true,
-      "chongLanTruc": {
-        "pn6": "984943",
-        "nhanh": [
-          "984943~r19889",
-          "98494390"
-        ],
-        "truc": {
-          "98494390": "DAC_DIEM",
-          "984943~r19889": "TEN_LOAI"
-        },
-        "cauHoiPhanBiet": "Hàng là pin/bộ pin hoàn chỉnh thuộc nhánh \"Loại khác..., trừ loại bằng kẽm carbon\" (984943~r19889) hay là \"Bộ phận\" của pin (98494390)?",
-        "trich": {
-          "98494390": "Bộ phận",
-          "984943~r19889": "Loại khác (trừ loại thuộc phân nhóm 8506.10, 8506.30, 8506.40, 8506.50, 8506.60), trừ loại bằng kẽm carbon"
-        },
-        "phanXu": null,
-        "ranhGioi": {
-          "phienBan": "ranh-gioi@1",
-          "duyet": {
-            "phien": "claude-code:ozv-1926#soat-984943",
-            "ngay": "2026-11-22",
-            "bam": "10e82c068d6690fec3b99c8b6624be415ed0437cbce283d0a4eb1a4a92d0b0cb"
-          }
-        }
-      }
+      "phanConLai": true
     }
   ]
 }

@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-code:ozv-1926#soat-984943",
-    "ngay": "2026-11-22",
-    "ghiChu": "Chuẩn hoá điều kiện ranh giới và khép SẠCH V1 nhóm 9849 (OZV-1926)",
-    "bam": "10e82c068d6690fec3b99c8b6624be415ed0437cbce283d0a4eb1a4a92d0b0cb"
+    "phien": "claude-agent:tho-hs-03:ranh-gioi-9849-20261113#soat-984943",
+    "ngay": "2026-11-13",
+    "ghiChu": "OZV-655: bỏ laBoPhan KHONG ở r19889/98494310, giữ laBoPhan CO ở 98494390; khai chongLanVanBan 3 cặp (.10/.21/.29 với .90, cùng trục DAC_DIEM)",
+    "bam": "16dd3d8e718561e60e86428a4cac7d8ca3a0c75a07e31f03841fb5c0f72dcad0"
   },
   "dieuKienNut": [
     {
@@ -24,9 +24,11 @@
       "trich": "984943~r19889 Loại khác (trừ loại thuộc phân nhóm 8506.10, 8506.30, 8506.40, 8506.50, 8506.60), trừ loại bằng kẽm carbon",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "kẽm carbon",
+          "fact": "loaiPin",
+          "op": "TRONG",
+          "value": [
+            "KEM_CACBON"
+          ],
           "chieu": "PHAI_KHONG"
         }
       ],
@@ -124,6 +126,20 @@
         "98494390"
       ],
       "lyDo": "Hai dòng cùng trục đặc điểm, câu chữ không loại trừ nhau: .10 \"Bằng liti\" không nói pin đã lắp ráp hoàn chỉnh, .90 \"Bộ phận\" không ghi chất liệu pin — mô tả \"bộ phận pin liti\" (vd vỏ pin, cực pin liti) thỏa cả hai dòng; không có căn cứ thứ tự trong chữ biểu."
+    },
+    {
+      "cap": [
+        "98494321",
+        "98494390"
+      ],
+      "lyDo": "Hai dòng cùng trục đặc điểm, câu chữ không loại trừ nhau: .21 \"Có thể tích ngoài không quá 300 cm3\" không nói pin hoàn chỉnh, .90 \"Bộ phận\" không giới hạn thể tích — mô tả \"bộ phận pin có thể tích ngoài không quá 300 cm3\" thỏa cả hai dòng; không có căn cứ thứ tự trong chữ biểu."
+    },
+    {
+      "cap": [
+        "98494329",
+        "98494390"
+      ],
+      "lyDo": "Hai dòng cùng trục đặc điểm, câu chữ không loại trừ nhau: .29 \"Loại khác\" là phần còn lại theo chất liệu pin, .90 \"Bộ phận\" là phần còn lại theo mức hoàn chỉnh — bộ phận của pin chất liệu khác (không liti, thể tích trên 300 cm3) thỏa cả hai dòng; không có căn cứ thứ tự trong chữ biểu."
     }
   ],
   "traVe": [
@@ -136,33 +152,6 @@
       "phien": "claude-agent:duyet-9849-sua-trich-20261113#soat-984943",
       "ngay": "2026-11-13",
       "lyDo": "OZV-655 (trả thợ L33, lỗi 4): hồ sơ đang DUYET nhưng cổng sổ tay TỪ CHỐI (so-tay-tu-choi: dieu-kien-so-khong-khong-co-trong-trich:laBoPhan) nên --ap-dung không chạy được ⇒ điều kiện KHÔNG vào sổ tay mà vẫn mang nhãn CLAUDE_DUYET. Hạ về TRA_VE để không nằm ở tầng căn cứ; cần soạn lại laBoPhan (bỏ laBoPhan KHONG ở nút/dòng mà trích không có chữ 'bộ phận', giữ laBoPhan CO ở 984930~r19675 và 98494390)"
-    }
-  ],
-  "chongLanTruc": [
-    {
-      "nhanh": [
-        "984943~r19889",
-        "98494390"
-      ],
-      "truc": {
-        "98494390": "DAC_DIEM",
-        "984943~r19889": "TEN_LOAI"
-      },
-      "cauHoiPhanBiet": "Hàng là pin/bộ pin hoàn chỉnh thuộc nhánh \"Loại khác..., trừ loại bằng kẽm carbon\" (984943~r19889) hay là \"Bộ phận\" của pin (98494390)?",
-      "trich": {
-        "98494390": "Bộ phận",
-        "984943~r19889": "Loại khác (trừ loại thuộc phân nhóm 8506.10, 8506.30, 8506.40, 8506.50, 8506.60), trừ loại bằng kẽm carbon"
-      },
-      "viDuHang": [
-        {
-          "cap": [
-            "984943~r19889",
-            "98494390"
-          ],
-          "khongCoHangThat": "Một mặt hàng không vừa là pin hoàn chỉnh vừa là bộ phận rời của pin."
-        }
-      ],
-      "phanXu": null
     }
   ]
 }

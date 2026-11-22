@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-code:ozv-1926#soat-984928",
+    "phien": "claude-code:ozv-1944#soat-984928",
     "ngay": "2026-11-22",
-    "ghiChu": "Chuẩn hoá điều kiện ranh giới và khép SẠCH V1 nhóm 9849 (OZV-1926)",
-    "bam": "c15c1ec9c08a1b73cec3e7edb665c5d4ebb91978c0105dde9ff189356313c83c"
+    "ghiChu": "Sửa 5 điểm soat-khac trên PR #1656 (OZV-1944)",
+    "bam": "5a3900851b586ec86cde374b482d72b90e7e6b5592fc61879f811c28a8378fd0"
   },
   "dieuKienNut": [
     {
@@ -169,12 +169,18 @@
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
-          "value": "xe có dung tích xi lanh trên 2.000 cc đến 3.000 cc"
+          "value": "xe"
         },
         {
           "fact": "dungTichXiLanh",
           "op": ">",
           "value": 2000,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 3000,
           "donVi": "cc"
         }
       ],
