@@ -757,6 +757,36 @@ check('trangThaiDong8.veMoHinh: 73181510 chấm trọn nhãn "Đường kính ng
   });
   check('OZV-1769 63061910: loaiSoiDet TRONG [SOI_THUC_VAT_KHAC, RAMIE] + tuSoiDetThucVatNhom5305 CO nhận hàng từ gai ramie → CHOT 63061910 (không rơi 63061990)',
     cd.ketQua === 'CHOT' && cd.hs === '63061910', JSON.stringify([cd.ketQua, cd.hs]));
+
+  // ── OZV-1830: sibKhongKhopSoChu kiểm chuTuMoTaHang (19012030/40) + dòng phanConLai có dieuKienSo: [] (19019049) ──
+  cd = chotDong8({
+    hs: '190120',
+    productText: 'Bột trộn và bột nhào để chế biến thành các loại bánh thuộc nhóm 19.05: Loại khác, không chứa ca cao',
+  });
+  check('OZV-1830 19012030: chữ "Bột" từ tiêu đề PN6 không làm 19012010 khớp soChu hạ oan 19012030 → CHOT 19012030',
+    cd.ketQua === 'CHOT' && cd.hs === '19012030', JSON.stringify([cd.ketQua, cd.hs, cd.missingFacts]));
+
+  cd = chotDong8({
+    hs: '190120',
+    productText: 'Bột trộn và bột nhào để chế biến thành các loại bánh thuộc nhóm 19.05: làm từ bột, không chứa ca cao',
+  });
+  check('OZV-1830 190120 rào ngược: mô tả riêng có "làm từ bột" (19012010 soChu=THOA) → không chốt nhầm sang 19012030',
+    cd.hs !== '19012030', JSON.stringify([cd.ketQua, cd.hs, cd.missingFacts]));
+
+  cd = chotDong8({
+    hs: '190190',
+    productText: 'Loại khác: Các chế phẩm khác từ đỗ tương: Dạng khác, không ở dạng bột',
+  });
+  check('OZV-1830 19019049: nút 1901904 THOA + anh em phanConLai 19019041 (dangBot) TRAI → CHOT 19019049',
+    cd.ketQua === 'CHOT' && cd.hs === '19019049', JSON.stringify([cd.ketQua, cd.hs, cd.missingFacts]));
+
+  cd = chotDong8({
+    hs: '190190',
+    productText: 'Loại khác: Các chế phẩm khác từ đỗ tương, không phải sản phẩm dinh dưỡng y tế, đã đóng gói để bán lẻ: Dạng khác',
+  });
+  check('OZV-1830 19019049 rào ngược: chưa rõ có ở dạng bột hay không (19019041 CHUA_BIET) → THIEU_SO_LIEU hỏi dangBot, không chốt vội 19019049',
+    cd.ketQua === 'THIEU_SO_LIEU' && cd.hs !== '19019049' && (cd.missingFacts || []).some((m) => m.fact === 'dangBot'),
+    JSON.stringify([cd.ketQua, cd.hs, cd.missingFacts]));
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);

@@ -372,5 +372,89 @@ const ST8544 = {
   check(`12c ReDoS ~40.000 từ lặp chạy dưới 2000ms (thực tế ${dt}ms)`, dt < 2000 && kqReDoS1820.trangThai === 'THOA', `${dt}ms`);
 }
 
+// 13. OZV-1830: tách vế cha "và xirô" + gỡ từ riêng đã tách ở vế khác (170230, 170260), danh sách phủ định sau "trừ ... , ... hoặc ..." + "và dạng nhão" (20079910), tách vế trong ngoặc đơn "(rape seeds hoặc colza seeds)" (230641/230649)
+{
+  const { chotDong8 } = require('../lib/so-tay-gates.js');
+  // 170230 & 170260 (2 chiều)
+  const kq17023010 = chotDong8({
+    hs: '170230',
+    productText: 'Glucoza và xirô glucoza, không chứa hoặc có chứa hàm lượng fructoza dưới 20% tính theo khối lượng ở thể khô: Glucoza',
+  });
+  const kq170230Thieu = chotDong8({
+    hs: '170230',
+    productText: 'Glucoza và xirô glucoza, không chứa hoặc có chứa hàm lượng fructoza dưới 20% tính theo khối lượng ở thể khô',
+  });
+  const kq17026010 = chotDong8({
+    hs: '170260',
+    productText: 'Fructoza và xirô fructoza khác, chứa hàm lượng fructoza trên 50% tính theo khối lượng ở thể khô, trừ đường nghịch chuyển: Fructoza',
+  });
+  const kq17026020 = chotDong8({
+    hs: '170260',
+    productText: 'Fructoza và xirô fructoza khác, chứa hàm lượng fructoza trên 50% tính theo khối lượng ở thể khô, trừ đường nghịch chuyển: Xirô fructoza',
+  });
+  const kq170260Thieu = chotDong8({
+    hs: '170260',
+    productText: 'Fructoza và xirô fructoza khác, chứa hàm lượng fructoza trên 50% tính theo khối lượng ở thể khô, trừ đường nghịch chuyển',
+  });
+  check('13a 17023010/17026010/17026020: tách vế cha nối bằng "và xirô" và gỡ từ riêng ở vế khác → chốt đúng',
+    kq17023010.ketQua === 'CHOT' && kq17023010.hs === '17023010'
+    && kq17026010.ketQua === 'CHOT' && kq17026010.hs === '17026010'
+    && kq17026020.ketQua === 'CHOT' && kq17026020.hs === '17026020',
+    j([kq17023010, kq17026010, kq17026020]));
+  check('13a-ngược 170230 & 170260: chỉ có tiêu đề phân nhóm 6 số → không tự chốt',
+    kq170230Thieu.ketQua !== 'CHOT' && kq170230Thieu.ketQua !== 'LOAI_KHAC'
+    && kq170260Thieu.ketQua !== 'CHOT' && kq170260Thieu.ketQua !== 'LOAI_KHAC',
+    j([kq170230Thieu, kq170260Thieu]));
+
+  // 20079910: Trái cây dạng nhão, trừ xoài, dứa hoặc dâu tây dạng nhão (2 chiều)
+  const kq20079910 = chotDong8({
+    hs: '200799',
+    productText: 'Loại khác - Loại khác: Trái cây dạng nhão, trừ xoài, dứa hoặc dâu tây dạng nhão',
+  });
+  const kq200799Ng = chotDong8({
+    hs: '200799',
+    productText: 'Loại khác - Loại khác: Trái cây dạng nhão từ dứa',
+  });
+  check('13b 20079910: giữ phủ định "trừ xoài, dứa hoặc dâu tây" qua dấu phẩy + tách "và dạng nhão" → chốt 20079910',
+    kq20079910.ketQua === 'CHOT' && kq20079910.hs === '20079910',
+    j(kq20079910));
+  check('13b-ngược 200799: trái cây dạng nhão từ dứa (bị loại trừ) → không chốt 20079910',
+    kq200799Ng.hs !== '20079910',
+    j(kq200799Ng));
+
+  // 230641 & 230649: Từ hạt cải dầu (rape seeds hoặc colza seeds) (2 chiều)
+  const kq23064110 = chotDong8({
+    hs: '230641',
+    productText: 'Từ hạt cải dầu (rape seeds hoặc colza seeds) - Từ hạt cải dầu (rape seeds hoặc colza seeds) có hàm lượng axit eruxic thấp: Từ hạt cải dầu rape có hàm lượng axit eruxic thấp',
+  });
+  const kq23064120 = chotDong8({
+    hs: '230641',
+    productText: 'Từ hạt cải dầu (rape seeds hoặc colza seeds) - Từ hạt cải dầu (rape seeds hoặc colza seeds) có hàm lượng axit eruxic thấp: Từ hạt cải dầu colza có hàm lượng axit eruxic thấp',
+  });
+  const kq23064920 = chotDong8({
+    hs: '230649',
+    productText: 'Từ hạt cải dầu (rape seeds hoặc colza seeds) - Loại khác: Từ hạt cải dầu colza khác',
+  });
+  const kq230641Thieu = chotDong8({
+    hs: '230641',
+    productText: 'Từ hạt cải dầu (rape seeds hoặc colza seeds) - Từ hạt cải dầu (rape seeds hoặc colza seeds) có hàm lượng axit eruxic thấp',
+  });
+  check('13c 23064110/23064120/23064920: tách vế trong ngoặc đơn "(rape seeds hoặc colza seeds)" → chốt đúng rape / colza',
+    kq23064110.ketQua === 'CHOT' && kq23064110.hs === '23064110'
+    && kq23064120.ketQua === 'CHOT' && kq23064120.hs === '23064120'
+    && kq23064920.ketQua === 'CHOT' && kq23064920.hs === '23064920',
+    j([kq23064110, kq23064120, kq23064920]));
+  check('13c-ngược 230641: chỉ có tiêu đề cha có ngoặc "(rape seeds hoặc colza seeds)" → không tự chốt',
+    kq230641Thieu.ketQua !== 'CHOT' && kq230641Thieu.ketQua !== 'LOAI_KHAC',
+    j(kq230641Thieu));
+
+  // ReDoS ~40.000 từ lặp < 2 giây (quy tắc 6b)
+  const t0 = Date.now();
+  const chuoiDai1830 = `${Array.from({ length: 10000 }, () => 'trừ xoài, dứa hoặc').join(' ')} dâu tây: Trái cây dạng nhão, trừ xoài, dứa hoặc dâu tây dạng nhão`;
+  const kqReDoS1830 = chotDong8({ hs: '200799', productText: chuoiDai1830 });
+  const dt = Date.now() - t0;
+  check(`13d ReDoS ~40.000 từ lặp chạy dưới 2000ms (thực tế ${dt}ms)`, dt < 2000 && kqReDoS1830.hs === '20079910', `${dt}ms`);
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
