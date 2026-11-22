@@ -136,7 +136,360 @@
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
-  "tieuChi6": [],
+  "tieuChi6": [
+    {
+      "hs6": "850410",
+      "thuTu": 1,
+      "dieuKien": "Chấn lưu",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Chấn lưu",
+      "donVi": null,
+      "tuKhoa": [
+        "chấn lưu"
+      ],
+      "nguon": "tax.85041000",
+      "trich": "85041000 - Chấn lưu dùng cho đèn phóng hoặc ống phóng",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850410",
+      "thuTu": 1,
+      "dieuKien": "dùng cho đèn phóng hoặc ống phóng",
+      "fact": "dungCho",
+      "op": "CONG_DUNG",
+      "value": [
+        "đèn phóng",
+        "ống phóng"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "đèn phóng",
+        "ống phóng"
+      ],
+      "nguon": "tax.85041000",
+      "trich": "85041000 - Chấn lưu dùng cho đèn phóng hoặc ống phóng",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850421",
+      "thuTu": 2,
+      "dieuKien": "Máy biến điện sử dụng điện môi lỏng",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Máy biến điện sử dụng điện môi lỏng",
+      "donVi": null,
+      "tuKhoa": [
+        "điện môi lỏng"
+      ],
+      "tienLe": [
+        {
+          "so": "788/TB-TCHQ",
+          "ma": "85042199"
+        }
+      ],
+      "nguon": "tieuDe.85042",
+      "trich": "85042 Máy biến điện sử dụng điện môi lỏng",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850421",
+      "thuTu": 2,
+      "dieuKien": "Có công suất danh định không quá 650 kVA",
+      "fact": "congSuatBieuKien",
+      "op": "<=",
+      "value": 650,
+      "donVi": "kVA",
+      "nguon": "tieuDe.850421",
+      "trich": "850421 Có công suất danh định không quá 650 kVA",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850422",
+      "thuTu": 3,
+      "dieuKien": "Máy biến điện sử dụng điện môi lỏng",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Máy biến điện sử dụng điện môi lỏng",
+      "donVi": null,
+      "tuKhoa": [
+        "điện môi lỏng"
+      ],
+      "nguon": "tieuDe.85042",
+      "trich": "85042 Máy biến điện sử dụng điện môi lỏng",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850422",
+      "thuTu": 3,
+      "dieuKien": "Có công suất danh định trên 650 kVA",
+      "fact": "congSuatBieuKien",
+      "op": ">",
+      "value": 650,
+      "donVi": "kVA",
+      "nguon": "tieuDe.850422",
+      "trich": "850422 Có công suất danh định trên 650 kVA nhưng không quá 10.000 kVA",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850422",
+      "thuTu": 3,
+      "dieuKien": "công suất danh định không quá 10.000 kVA",
+      "fact": "congSuatBieuKien",
+      "op": "<=",
+      "value": 10000,
+      "donVi": "kVA",
+      "nguon": "tieuDe.850422",
+      "trich": "850422 Có công suất danh định trên 650 kVA nhưng không quá 10.000 kVA",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850423",
+      "thuTu": 4,
+      "dieuKien": "Máy biến điện sử dụng điện môi lỏng",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Máy biến điện sử dụng điện môi lỏng",
+      "donVi": null,
+      "tuKhoa": [
+        "điện môi lỏng"
+      ],
+      "nguon": "tieuDe.85042",
+      "trich": "85042 Máy biến điện sử dụng điện môi lỏng",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850423",
+      "thuTu": 4,
+      "dieuKien": "Có công suất danh định trên 10.000 kVA",
+      "fact": "congSuatBieuKien",
+      "op": ">",
+      "value": 10000,
+      "donVi": "kVA",
+      "nguon": "tieuDe.850423",
+      "trich": "850423 Có công suất danh định trên 10.000 kVA",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850431",
+      "thuTu": 5,
+      "dieuKien": "Máy biến điện",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Máy biến điện",
+      "donVi": null,
+      "tuKhoa": [
+        "máy biến điện"
+      ],
+      "nguon": "tieuDe.85043",
+      "trich": "85043 Máy biến điện khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850431",
+      "thuTu": 5,
+      "dieuKien": "Có công suất danh định không quá 1 kVA",
+      "fact": "congSuatBieuKien",
+      "op": "<=",
+      "value": 1,
+      "donVi": "kVA",
+      "nguon": "tieuDe.850431",
+      "trich": "850431 Có công suất danh định không quá 1 kVA",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850432",
+      "thuTu": 6,
+      "dieuKien": "Máy biến điện",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Máy biến điện",
+      "donVi": null,
+      "tuKhoa": [
+        "máy biến điện"
+      ],
+      "nguon": "tieuDe.85043",
+      "trich": "85043 Máy biến điện khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850432",
+      "thuTu": 6,
+      "dieuKien": "Công suất danh định trên 1 kVA",
+      "fact": "congSuatBieuKien",
+      "op": ">",
+      "value": 1,
+      "donVi": "kVA",
+      "nguon": "tieuDe.850432",
+      "trich": "850432 Công suất danh định trên 1 kVA nhưng không quá 16 kVA",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850432",
+      "thuTu": 6,
+      "dieuKien": "Công suất danh định không quá 16 kVA",
+      "fact": "congSuatBieuKien",
+      "op": "<=",
+      "value": 16,
+      "donVi": "kVA",
+      "nguon": "tieuDe.850432",
+      "trich": "850432 Công suất danh định trên 1 kVA nhưng không quá 16 kVA",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850433",
+      "thuTu": 7,
+      "dieuKien": "Máy biến điện",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Máy biến điện",
+      "donVi": null,
+      "tuKhoa": [
+        "máy biến điện"
+      ],
+      "nguon": "tieuDe.85043",
+      "trich": "85043 Máy biến điện khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850433",
+      "thuTu": 7,
+      "dieuKien": "Có công suất danh định trên 16 kVA",
+      "fact": "congSuatBieuKien",
+      "op": ">",
+      "value": 16,
+      "donVi": "kVA",
+      "nguon": "tieuDe.850433",
+      "trich": "850433 Có công suất danh định trên 16 kVA nhưng không quá 500 kVA",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850433",
+      "thuTu": 7,
+      "dieuKien": "công suất danh định không quá 500 kVA",
+      "fact": "congSuatBieuKien",
+      "op": "<=",
+      "value": 500,
+      "donVi": "kVA",
+      "nguon": "tieuDe.850433",
+      "trich": "850433 Có công suất danh định trên 16 kVA nhưng không quá 500 kVA",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850434",
+      "thuTu": 8,
+      "dieuKien": "Máy biến điện",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Máy biến điện",
+      "donVi": null,
+      "tuKhoa": [
+        "máy biến điện"
+      ],
+      "nguon": "tieuDe.85043",
+      "trich": "85043 Máy biến điện khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850434",
+      "thuTu": 8,
+      "dieuKien": "Có công suất danh định trên 500 kVA",
+      "fact": "congSuatBieuKien",
+      "op": ">",
+      "value": 500,
+      "donVi": "kVA",
+      "nguon": "tieuDe.850434",
+      "trich": "850434 Có công suất danh định trên 500 kVA",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850440",
+      "thuTu": 9,
+      "dieuKien": "Máy biến đổi tĩnh điện",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Máy biến đổi tĩnh điện",
+      "donVi": null,
+      "tuKhoa": [
+        "biến đổi tĩnh điện"
+      ],
+      "tienLe": [
+        {
+          "so": "1112/TB-TCHQ",
+          "ma": "85044019"
+        },
+        {
+          "so": "2307/TB-TCHQ",
+          "ma": "85044019"
+        },
+        {
+          "so": "2765/TB-TCHQ",
+          "ma": "85044019"
+        }
+      ],
+      "nguon": "tieuDe.850440",
+      "trich": "850440 Máy biến đổi tĩnh điện",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850450",
+      "thuTu": 10,
+      "dieuKien": "Cuộn cảm",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Cuộn cảm",
+      "donVi": null,
+      "tuKhoa": [
+        "cuộn cảm"
+      ],
+      "tienLe": [
+        {
+          "so": "6965/TB-TCHQ",
+          "ma": "85045020"
+        },
+        {
+          "so": "6966/TB-TCHQ",
+          "ma": "85045020"
+        },
+        {
+          "so": "6967/TB-TCHQ",
+          "ma": "85045020"
+        }
+      ],
+      "nguon": "tieuDe.850450",
+      "trich": "850450 Cuộn cảm khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850450",
+      "thuTu": 10,
+      "phanConLai": true,
+      "nguon": "tieuDe.850450",
+      "trich": "850450 Cuộn cảm khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "850490",
+      "thuTu": 11,
+      "dieuKien": "Bộ phận",
+      "fact": "laBoPhan",
+      "op": "CO",
+      "donVi": null,
+      "tienLe": [
+        {
+          "so": "7626/TB-TCHQ",
+          "ma": "85049039"
+        },
+        {
+          "so": "7627/TB-TCHQ",
+          "ma": "85049039"
+        }
+      ],
+      "nguon": "tieuDe.850490",
+      "trich": "850490 Bộ phận",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
   "dong8": [
     {
       "hs": "85041000",
@@ -3065,6 +3418,18 @@
     "tax.85049041",
     "tax.85049049",
     "tax.85049090",
+    "tieuDe.85042",
+    "tieuDe.850421",
+    "tieuDe.850422",
+    "tieuDe.850423",
+    "tieuDe.85043",
+    "tieuDe.850431",
+    "tieuDe.850432",
+    "tieuDe.850433",
+    "tieuDe.850434",
+    "tieuDe.850440",
+    "tieuDe.850450",
+    "tieuDe.850490",
     "wco-op.850440.1",
     "wco-op.850440.2",
     "wco-op.850490.1"
@@ -3077,9 +3442,9 @@
     "ms": 29
   },
   "kiemTra": {
-    "tong": 96,
-    "dat": 95,
-    "loai": 1,
+    "tong": 132,
+    "dat": 132,
+    "loai": 0,
     "nguonBiCat": [],
     "nangCap": {
       "luc": "2026-10-11",
@@ -3089,6 +3454,12 @@
         "tieuChi6",
         "phamViLoaiKhac"
       ]
+    },
+    "tieuChi6": {
+      "khuon": "g6@1",
+      "soMuc": 23,
+      "soPhanNhom": 11,
+      "cong": "scripts/kiem-tieu-chi-6.mjs"
     }
   },
   "yKienWcoDayDu": false,
