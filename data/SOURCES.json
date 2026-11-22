@@ -409,6 +409,21 @@
     "thue-tam-thoi.json": {
       "kind": "CURATED",
       "descriptionVi": "Mức thuế NK ưu đãi tạm thời có thời hạn (xăng dầu 0%: NĐ 72/2026/NĐ-CP, NQ 25, 34, 43/2026/NQ-CP) — đọc từ bản gốc datafiles.chinhphu.vn; lib/thue-tam-thoi.js"
+    },
+    "tu-dien-tien-xu-ly.json": {
+      "kind": "DERIVED",
+      "descriptionVi": "Từ điển tiền xử lý T-4 (#1596): n-gram tiếng Việt (don/doi/ba), từ vựng, từ tiếng Anh, viết tắt, chất liệu, bối cảnh mẫu, hãng — dùng bởi lib/tien-xu-ly.js",
+      "builtBy": "scripts/dung-tu-dien-tien-xu-ly.mjs"
+    },
+    "do-thi/chi-muc-nghia.bin": {
+      "kind": "DERIVED",
+      "descriptionVi": "Chỉ mục vector ngữ nghĩa Int8 (Xenova/multilingual-e5-small, 384 chiều, scale 127) cho 21.314 mục (11.235 biểu thuế + 4.447 TBPL + 5.632 dòng OZ) — T-4 (#1596), dùng với lib/embed-pool.js và lib/tim-truoc.js",
+      "builtBy": "scripts/dung-chi-muc-nghia.mjs"
+    },
+    "do-thi/chi-muc-nghia.meta.json": {
+      "kind": "DERIVED",
+      "descriptionVi": "Metadata (model, chiều, scale, danh sách 21.314 mục hs/nguon/ten) cho do-thi/chi-muc-nghia.bin (#1596)",
+      "builtBy": "scripts/dung-chi-muc-nghia.mjs"
     }
   }
 }
