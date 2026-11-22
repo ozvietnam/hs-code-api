@@ -4,13 +4,19 @@
   "nhom": "7215",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-721590",
     "ngay": "2026-11-04"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "tho-hs-01:ozv-1799-20261122#soat-721590",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá ranh giới theo traVe.lyDo và khép SẠCH V1 lô 11a (OZV-1799).",
+    "bam": "2d9bdbd77306f6e4448387e99376e04b910c996565806b422d659898c085b121"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -24,7 +30,7 @@
           "value": "Thép cốt bê tông"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "72159091",
@@ -32,18 +38,21 @@
       "trich": "72159091 - - - Có mặt cắt ngang hình tròn",
       "dieuKienSo": [
         {
-          "fact": "hinhDangCatGocKinh",
-          "op": "KHONG"
+          "fact": "hinhDangMatCatNgang",
+          "op": "TRONG",
+          "value": [
+            "TRON"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "72159099",
       "nguon": "tax.72159099",
       "trich": "72159099 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -55,7 +64,7 @@
     {
       "ma": "72159091",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.72159091: \"Có mặt cắt ngang hình tròn\" ⇒ hinhDangCatGocKinh KHONG"
+      "ghiChu": "tax.72159091: \"Có mặt cắt ngang hình tròn\" ⇒ hinhDangMatCatNgang TRONG [TRON]"
     },
     {
       "ma": "72159091",

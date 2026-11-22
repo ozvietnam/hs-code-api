@@ -39,8 +39,9 @@ Mỗi mục là MỘT điều kiện của MỘT phân nhóm. Một phân nhóm 
 | `fact`, `op`, `value` | có ở mục điều kiện | `fact` là một `khoa` trong `khoaGoiY`; `op` theo `kieu` của khoá đó (bảng dưới) |
 | `tuKhoa` | có với `TEN_LOAI`, `CONG_DUNG` | Mảng cụm từ ngắn, mỗi cụm nằm nguyên trong `trich` và chỉ riêng phân nhóm này có. Là GỢI Ý để dò mô tả hàng, không phải điều kiện |
 | `chieu` | không | `"PHAI_KHONG"` cho vế loại trừ ("trừ …") |
+| `dieuKienTru` | không | Chuỗi hoặc mảng chuỗi ghi thứ bị loại từ vế loại trừ ("trừ …", "nhưng không bao gồm …", "không kể …") của `trich` (gắn trên mục khẳng định khi chưa có khoá phủ định riêng, không dùng trên mục phủ định / `phanConLai` / `chuaSoHoa`) |
 | `phanConLai` | mục dư | `true`. Mục này chỉ có `hs6`, `phanConLai`, `nguon`, `trich` |
-| `chuaSoHoa` | mục thiếu khoá | Một câu nói thiếu khoá gì. Mục này chỉ có `hs6`, `chuaSoHoa`, `nguon`, `trich` |
+| `chuaSoHoa` | mục thiếu khoá | Một câu nói thiếu khoá gì (vd 7009.91 "Chưa có khung", 7009.92 "Có khung" — mục này cố ý không có `fact`/`dieuKien`). Chỉ gồm `hs6`, `chuaSoHoa`, `nguon`, `trich` |
 | `uuTien` | không | `{ "nguon", "trich" }`: câu luật nói phân nhóm này được ưu tiên / xem xét trước |
 | `tienLe` | không | `[{ "so", "ma" }]` chép từ `thongBaoPhanLoai[]`. Là ví dụ, không phải điều kiện |
 | `kiemChung` | có ở mục công dụng (L15) | `[{ "hoi", "nguon", "trich" }]`: câu hỏi MỘT đặc tính quan sát / đo được giúp kiểm chứng công dụng mà chữ luật nêu; `trich` nguyên văn từ `nguon{}`, đặc tính được hỏi phải nằm trong `trich` |
@@ -105,9 +106,9 @@ Ví dụ lấy từ hai bản mẫu đã qua cổng: [`mau/8481.json`](mau/8481.
 - ĐÚNG: 848140 "Van an toàn hoặc van xả" → `"value": ["Van an toàn", "van xả"]`.
 - SAI: `"value": "Van an toàn, van xả, v.v.., có hoặc không đi kèm với một còi báo"` (cả câu trong một chuỗi).
 
-**L11. Vế "trừ …" là một mục riêng.** Viết thêm một mục `chieu: "PHAI_KHONG"` với `value` là thứ bị trừ. Thứ bị trừ không bao giờ nằm trong `tuKhoa` hay `value` của mục khẳng định.
-- ĐÚNG: 841210 "Động cơ phản lực trừ tua bin phản lực" → mục `value: "Động cơ phản lực"` và mục `chieu: "PHAI_KHONG", value: "tua bin phản lực"`.
-- SAI: bỏ mục phủ định; hoặc mục khẳng định ghi `"tuKhoa": ["tua bin phản lực"]`.
+**L11. Vế loại trừ ("trừ …", "nhưng không bao gồm …", "không kể …") phải tách riêng.** Viết một mục `chieu: "PHAI_KHONG"` với `value` là thứ bị trừ, HOẶC gắn `dieuKienTru` trên mục khẳng định (khi không có khoá phủ định hẹp riêng — không dùng khoá rộng hơn chữ luật như `tinhDanHoi` để biểu diễn "nhưng không bao gồm sợi cao su"). Thứ bị trừ không bao giờ nằm trong `tuKhoa` hay `value` của mục khẳng định.
+- ĐÚNG: 841210 "Động cơ phản lực trừ tua bin phản lực" → mục `value: "Động cơ phản lực"` và mục `chieu: "PHAI_KHONG", value: "tua bin phản lực"`. 600410 "Có hàm lượng sợi đàn hồi chiếm từ 5% trở lên tính theo khối lượng nhưng không bao gồm sợi cao su" → mục `hamLuongSoiDanHoi >= 5%` kèm `"dieuKienTru": ["sợi cao su"]`.
+- SAI: bỏ vế loại trừ; dùng `tinhDanHoi` cho "nhưng không bao gồm sợi cao su"; hoặc mục khẳng định ghi `"tuKhoa": ["tua bin phản lực"]`.
 
 **L12. `tuKhoa` phải riêng.** Cụm mà tiêu đề của phân nhóm khác cũng có, hoặc chữ chung hàng nào cũng mang ("thiết bị", "phụ kiện", "sản phẩm", "đồ dùng"), không phải dấu hiệu nhận ra phân nhóm này. Hai phân nhóm không được có bộ điều kiện giống nhau.
 - ĐÚNG: 841221 = "thủy lực" + "xi lanh"; 841231 = "khí nén" + "xi lanh" (hai mục, cả hai cùng phải khớp).
@@ -133,19 +134,20 @@ Chạy: `node scripts/kiem-tieu-chi-6.mjs --tep=<tệp của bạn>`. Danh sách
 
 | Mã lỗi | Bạn đã làm gì | Sửa |
 |---|---|---|
-| `KHUON_SAI` | Thiếu trường, trường lạ, `op` không hợp `kieu`, khoá `SO` thiếu `donVi`, `trich` quá 600 ký tự | Bảng mục 2 |
+| `KHUON_SAI` | Thiếu trường, trường lạ, `op` không hợp `kieu`, khoá `SO` thiếu `donVi`, `trich` quá 600 ký tự, phân nhóm không phải `DU` thiếu điều kiện/`chuaSoHoa` riêng | Bảng mục 2 |
 | `PHAN_NHOM_KHONG_TON_TAI` / `THIEU_PHAN_NHOM` | `hs6` lạ / bỏ sót phân nhóm | L1 |
 | `NGUON_KHONG_TON_TAI` / `TRICH_KHONG_NGUYEN_VAN` | `nguon` ngoài gói / `trich` không có trong nguồn | L2 |
 | `NGUON_LAC_PHAN_NHOM` | Trích tên của phân nhóm khác | L3 |
-| `SUY_RONG` | `dieuKien` / `tuKhoa` / `value` có chữ ngoài `trich` | L4, L5 |
+| `SUY_RONG` | `dieuKien` / `tuKhoa` / `value` / `dieuKienTru` có chữ ngoài `trich` (hoặc `dieuKienTru` không nằm trong vế loại trừ) | L4, L5, L11 |
 | `TIEN_LE_SAI` | `tienLe` không có trong gói hoặc không ra phân nhóm này | L5 |
 | `DU_SAI_KHAI` / `DU_MANG_DIEU_KIEN` | Phân nhóm `DU` / `DU_CO_PHAM_VI` thiếu `phanConLai`, `CO_TEN` lại khai `phanConLai`, hoặc `DU` mang điều kiện riêng | L6, L7, bảng `kieu` |
 | `THIEU_DIEU_KIEN_TANG` | Phân nhóm trong một tầng có tên mà không có mục trích `tieuDe.<thuocTang>` | L7 |
 | `KHOA_DU_KIEN_LA` / `SAI_KHOA_THUOC_TINH` | `fact` tự đặt / `tenLoai` nhận một thuộc tính | L8, L9 |
+| `KHOA_RONG_HON_LUAT` | Khoá / giá trị `tu-vung@2` rộng hơn chữ luật (`gốm sứ` cho chỉ "sứ", `sắt thép` cho chỉ "sắt"/"thép", `kim loại` cho kim loại cụ thể, `chatLieu` làm rơi chữ thu hẹp như "tổng hợp"/"xốp"/"lưu hóa", hoặc `tinhDanHoi` cho chỉ "sợi đàn hồi" / trừ "sợi cao su") | L9; chọn khoá hẹp đúng luật hoặc khai `chuaSoHoa` |
 | `TEN_LOAI_SAU_GIOI_TU` / `TEN_CO_CHU_KHAC` | `tenLoai` nhận thứ đứng sau "dùng cho" / `value` còn chữ "khác" | L8 |
 | `LIET_KE_MOT_CHUOI` | Một chuỗi gói cả danh sách | L10 |
 | `GIA_TRI_RONG` / `KE_CA_LA_DIEU_KIEN` / `TACH_LIET_KE` | "các loại tương tự" trong value / tên trong "kể cả" thành mục riêng / các tên của một câu tách thành nhiều mục | L10 |
-| `THIEU_VE_TRU` / `TU_KHOA_TRONG_VE_TRU` | Bỏ vế "trừ …" / lấy thứ bị trừ làm dấu hiệu | L11 |
+| `THIEU_VE_TRU` / `TU_KHOA_TRONG_VE_TRU` | Bỏ vế loại trừ ("trừ …", "nhưng không bao gồm …", "không kể …") / lấy thứ bị loại làm dấu hiệu | L11 |
 | `TIEU_DE_CHI_LAC` / `TU_KHOA_QUA_CHUNG` / `TRUNG_DIEU_KIEN` | `tuKhoa` dùng chữ của phân nhóm khác / chữ chung / hai phân nhóm giống nhau | L12 |
 | `THU_TU_KHONG_CAN_CU` | `uuTien` không phải câu luật nói ưu tiên | L13 |
 | `THIEU_VE_GIOI_HAN` | Một vế của tiêu đề / tầng không có mục nào mang | L14 |
