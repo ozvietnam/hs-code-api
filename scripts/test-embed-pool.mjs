@@ -31,6 +31,8 @@ ep.reset();
 let batLoi = null;
 try { const r = await ep.poolNhom('quạt'); check('index thiếu → trả null (không ném)', r === null, JSON.stringify(r)); } catch (e) { batLoi = e; }
 check('không ném ngoại lệ khi khởi tạo lỗi', batLoi === null, String(batLoi));
+const explicitNullSem = await ep.timTheoNghia('kính mắt', { index: null, embedder: async () => [1, 0, 0] });
+check('timTheoNghia({ index: null }) trả null ngay không rơi xuống đĩa', explicitNullSem === null, JSON.stringify(explicitNullSem));
 ep.reset();
 delete process.env.HS_EMBED_POOL; delete process.env.HS_EMBED_INDEX;
 
