@@ -11,3 +11,4 @@ Mỗi quyết định thật (chọn kiến trúc, bỏ / hoãn tính năng, đ�
 | [0003](0003-khuon-tieu-chi-6-so-va-cong-may.md) | Khuôn g6@1 cho `tieuChi6` (cạnh C10 / C13) và cổng máy trước khi nhân bản | 21/11/2026 |
 
 Quyết định cấp công ty (văn phòng OZ) nằm ở Gitea `ozvietnam/oz-infra-codex`, không chép về đây.
+- [ADR-0004](0004-quy-trinh-phan-loai-chuan-6-quy-tac.md): quy trình phân loại chuẩn theo 6 Quy tắc (luật cao nhất, CEO duyệt 22/11/2026)
