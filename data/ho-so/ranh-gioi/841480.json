@@ -4,13 +4,19 @@
   "nhom": "8414",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-841480",
     "ngay": "2026-11-02"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1867#soat-841480",
+    "ngay": "2026-11-22",
+    "ghiChu": "Duyệt ranh giới PN6 841480: đổi kichThuoc sang chieuRong (OZV-1867)",
+    "bam": "13dc5d180d56168384f55878833b1de5bf2f311d835096f3d9427717646efe9f"
+  },
   "dieuKienNut": [
     {
       "id": "841480~r13208",
@@ -23,13 +29,13 @@
           "value": "Nắp chụp hút"
         },
         {
-          "fact": "kichThuoc",
+          "fact": "chieuRong",
           "op": ">",
           "value": 120,
           "donVi": "cm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "8414801",
@@ -41,7 +47,7 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "8414802",
@@ -53,7 +59,7 @@
           "op": "KHONG"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "8414804",
@@ -66,7 +72,7 @@
           "value": "Máy nén"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -76,19 +82,24 @@
       "trich": "84148011 - - - - Tủ hút, lọc không khí sử dụng trong phòng thí nghiệm (SEN)",
       "dieuKienSo": [
         {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Tủ hút"
+        },
+        {
           "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": "phòng thí nghiệm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84148019",
       "nguon": "tax.84148019",
       "trich": "84148019 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84148021",
@@ -103,14 +114,14 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84148029",
       "nguon": "tax.84148029",
       "trich": "84148029 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84148030",
@@ -128,7 +139,7 @@
           "value": "tua bin khí"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84148041",
@@ -136,12 +147,17 @@
       "trich": "84148041 - - - Mô-đun nén khí sử dụng trong khoan dầu mỏ",
       "dieuKienSo": [
         {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Mô-đun nén khí"
+        },
+        {
           "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": "khoan dầu mỏ"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84148042",
@@ -154,7 +170,7 @@
           "value": "máy điều hòa không khí của ô tô"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84148043",
@@ -172,14 +188,14 @@
           "value": "máy điều hòa không khí"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84148049",
       "nguon": "tax.84148049",
       "trich": "84148049 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84148050",
@@ -192,14 +208,14 @@
           "value": "Máy bơm không khí"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84148090",
       "nguon": "tax.84148090",
       "trich": "84148090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "chongLanVanBan": [

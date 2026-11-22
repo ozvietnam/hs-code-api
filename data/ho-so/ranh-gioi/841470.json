@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L24-20261111#soat-L24",
-    "ngay": "2026-11-11",
-    "ghiChu": "Tầng 'Fitted with filters'/'Not fitted with a filter' ⇒ coBoLoc CO/KHONG; .11/.21 'Having a hood … not exceeding 120 cm' ⇒ nắp chụp hút + kichThuoc <= 120 cm (tenLoai dùng cho bộ phận nắp chụp — chấp nhận, so chữ tự do không tự chốt).",
-    "bam": "bb2cc807b70ce75793aab9e7ea2dde2955141bf0036f78cef69afe694a258883"
+    "phien": "claude-agent:ozv-1867#soat-841470",
+    "ngay": "2026-11-22",
+    "ghiChu": "Duyệt ranh giới PN6 841470 (OZV-1867)",
+    "bam": "7a10910dca2a29dd9cbe0171fa9c73089173b5d7ef01f5a46c09d61656edd7d5"
   },
   "dieuKienNut": [
     {
@@ -50,12 +50,7 @@
       "trich": "84147011 - - - Có nắp chụp hút với kích thước chiều ngang tối đa không quá 120 cm",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "nắp chụp hút"
-        },
-        {
-          "fact": "kichThuoc",
+          "fact": "chieuRong",
           "op": "<=",
           "value": 120,
           "donVi": "cm"
@@ -76,12 +71,7 @@
       "trich": "84147021 - - - Có nắp chụp hút với kích thước chiều ngang tối đa không quá 120 cm",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "nắp chụp hút"
-        },
-        {
-          "fact": "kichThuoc",
+          "fact": "chieuRong",
           "op": "<=",
           "value": 120,
           "donVi": "cm"
@@ -106,7 +96,13 @@
     {
       "ma": "84147011",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.84147011: \"Có nắp chụp hút với kích thước chiều ngang tối đa không quá 120 cm\" ⇒ tenLoai \"nắp chụp hút\" + kichThuoc <= 120 cm"
+      "ghiChu": "tax.84147011: \"Có nắp chụp hút với kích thước chiều ngang tối đa không quá 120 cm\" ⇒ chieuRong <= 120 cm"
+    },
+    {
+      "ma": "84147011",
+      "loai": "BO_VE",
+      "ve": "Có nắp chụp hút",
+      "lyDo": "Hàng của phân nhóm 8414.70 là tủ an toàn sinh học kín khí; vế 'Có nắp chụp hút' nêu bộ phận cửa hút của tủ để giới hạn kích thước chiều ngang <= 120 cm (chieuRong <= 120 cm), không phải tenLoai của hàng."
     },
     {
       "ma": "8414702",
@@ -116,7 +112,13 @@
     {
       "ma": "84147021",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.84147021: \"Có nắp chụp hút với kích thước chiều ngang tối đa không quá 120 cm\" ⇒ tenLoai \"nắp chụp hút\" + kichThuoc <= 120 cm"
+      "ghiChu": "tax.84147021: \"Có nắp chụp hút với kích thước chiều ngang tối đa không quá 120 cm\" ⇒ chieuRong <= 120 cm"
+    },
+    {
+      "ma": "84147021",
+      "loai": "BO_VE",
+      "ve": "Có nắp chụp hút",
+      "lyDo": "Hàng của phân nhóm 8414.70 là tủ an toàn sinh học kín khí; vế 'Có nắp chụp hút' nêu bộ phận cửa hút của tủ để giới hạn kích thước chiều ngang <= 120 cm (chieuRong <= 120 cm), không phải tenLoai của hàng."
     }
   ]
 }

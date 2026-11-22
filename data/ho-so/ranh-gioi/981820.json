@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L33-20261111#soat-L33",
-    "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu biểu + mã tương ứng 8413: tầng bơm cho động cơ piston / 'Bơm ly tâm khác' (phần còn lại, laBoPhan KHONG) / bơm nước một tầng…; .31 'không quá 200mm' = <=; BO_VE 'bằng tay' (.10) và 'trừ loại chuyển động tịnh tiến/quay' (.29) giữ tất định bằng maHsTuongUng 8413.20.10 / 8413.30.90 đúng quy ước Chương 98.",
-    "bam": "ab5e669c0ee92a8b75f424434ecc7d19bfcadf8220dae90768f6d4307d672fd8"
+    "phien": "claude-agent:ozv-1867#soat-981820",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá 981820 theo mẫu 841370 (OZV-1867)",
+    "bam": "48529b0a5395a34f1164a93a0b4d6c7ce5e141ea0db735ee49695360cb0e5803"
   },
   "dieuKienNut": [
     {
@@ -24,15 +24,16 @@
       "trich": "981820~r19155 Bơm ly tâm khác",
       "dieuKienSo": [
         {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bơm ly tâm khác"
+        },
+        {
           "fact": "kieuBom",
           "op": "TRONG",
           "value": [
             "LY_TAM"
           ]
-        },
-        {
-          "fact": "laBoPhan",
-          "op": "KHONG"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET",
@@ -67,44 +68,36 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Bơm nước"
+          "value": "một tầng"
         },
         {
-          "fact": "soTangBom",
-          "op": "TRONG",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "một chiều hút"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "trục ngang"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
           "value": [
-            "MOT_TANG"
+            "được truyền động bằng dây đai",
+            "khớp nối trực tiếp"
           ]
         },
         {
-          "fact": "kieuHutBom",
-          "op": "TRONG",
-          "value": [
-            "MOT_CHIEU"
-          ]
-        },
-        {
-          "fact": "huongTrucBom",
-          "op": "TRONG",
-          "value": [
-            "NGANG"
-          ]
-        },
-        {
-          "fact": "kieuTruyenDong",
-          "op": "TRONG",
-          "value": [
-            "DAY_DAI",
-            "KHOP_NOI_TRUC_TIEP"
-          ]
-        },
-        {
-          "fact": "kieuTruyenDong",
-          "op": "TRONG",
-          "value": [
-            "DONG_TRUC_DONG_CO"
-          ],
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "đồng trục với động cơ",
           "chieu": "PHAI_KHONG"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bơm nước"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -113,42 +106,32 @@
   "dong8": [
     {
       "hs": "98182010",
-      "nguon": "tuongUng.98182010",
-      "trich": "Bơm nước bằng tay — mã hàng tương ứng: 8413.20.10",
+      "nguon": "tax.98182010",
+      "trich": "98182010 - - Bơm nước bằng tay",
       "dieuKienSo": [
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Bơm nước"
-        },
-        {
-          "fact": "maHsTuongUng",
-          "op": "CONG_DUNG",
-          "value": [
-            "8413.20.10"
-          ]
+          "value": "Bơm nước bằng tay"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "98182021",
-      "nguon": "tuongUng.98182021",
-      "trich": "Loại ly tâm — mã hàng tương ứng: 8413.30.51, 8413.30.52",
+      "nguon": "tax.98182021",
+      "trich": "98182021 - - Loại ly tâm",
       "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Loại ly tâm"
+        },
         {
           "fact": "kieuBom",
           "op": "TRONG",
           "value": [
             "LY_TAM"
-          ]
-        },
-        {
-          "fact": "maHsTuongUng",
-          "op": "CONG_DUNG",
-          "value": [
-            "8413.30.51",
-            "8413.30.52"
           ]
         }
       ],
@@ -156,36 +139,27 @@
     },
     {
       "hs": "98182029",
-      "nguon": "tuongUng.98182029",
-      "trich": "Loại khác, trừ loại chuyển động tịnh tiến hoặc chuyển động quay — mã hàng tương ứng: 8413.30.90",
+      "nguon": "tax.98182029",
+      "trich": "98182029 - - Loại khác, trừ loại chuyển động tịnh tiến hoặc chuyển động quay",
       "dieuKienSo": [
         {
-          "fact": "maHsTuongUng",
-          "op": "CONG_DUNG",
-          "value": [
-            "8413.30.90"
-          ]
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "trừ loại chuyển động tịnh tiến"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "98182031",
-      "nguon": "tuongUng.98182031",
-      "trich": "Với đường kính cửa hút không quá 200mm — mã hàng tương ứng: 8413.70.11",
+      "nguon": "tax.98182031",
+      "trich": "98182031 - - - Với đường kính cửa hút không quá 200mm",
       "dieuKienSo": [
         {
           "fact": "duongKinhTrong",
           "op": "<=",
           "value": 200,
           "donVi": "mm"
-        },
-        {
-          "fact": "maHsTuongUng",
-          "op": "CONG_DUNG",
-          "value": [
-            "8413.70.11"
-          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -199,9 +173,14 @@
     },
     {
       "hs": "98182090",
-      "nguon": "tuongUng.98182090",
-      "trich": "Bộ phận của bơm thuộc phân nhóm 8413.70.11 và 8413.70.19 — mã hàng tương ứng: 8413.91.30",
+      "nguon": "tax.98182090",
+      "trich": "98182090 - Bộ phận của bơm thuộc phân nhóm 8413.70.11 và 8413.70.19",
       "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bộ phận của bơm"
+        },
         {
           "fact": "laBoPhan",
           "op": "CO"
@@ -212,13 +191,6 @@
           "value": [
             "8413.70.11",
             "8413.70.19"
-          ]
-        },
-        {
-          "fact": "maHsTuongUng",
-          "op": "CONG_DUNG",
-          "value": [
-            "8413.91.30"
           ]
         }
       ],

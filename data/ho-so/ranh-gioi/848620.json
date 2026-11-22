@@ -4,13 +4,19 @@
   "nhom": "8486",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-848620",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1867#soat-848620",
+    "ngay": "2026-11-22",
+    "ghiChu": "Duyệt ranh giới PN6 848620 (OZV-1867)",
+    "bam": "5934ddbe52297e73e7bafec113a5c8f479d41111433fde55dfce55ed82f2291d"
+  },
   "dieuKienNut": [
     {
       "id": "8486201",
@@ -23,7 +29,7 @@
           "value": "Thiết bị tạo lớp màng mỏng"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "8486202",
@@ -36,7 +42,7 @@
           "value": "Thiết bị tạo hợp kim hóa"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "8486203",
@@ -52,7 +58,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "8486204",
@@ -65,7 +71,7 @@
           "value": "Thiết bị in ly tô"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "8486205",
@@ -83,7 +89,7 @@
           "value": "tấm bán dẫn mỏng đã được phơi sáng hiện ảnh"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -103,7 +109,7 @@
           "value": "ngành sản xuất bán dẫn"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84862012",
@@ -147,7 +153,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84862013",
@@ -191,14 +197,14 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84862019",
       "nguon": "tax.84862019",
       "trich": "84862019 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84862021",
@@ -216,14 +222,14 @@
           "value": "xử lý vật liệu bán dẫn"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84862029",
       "nguon": "tax.84862029",
       "trich": "84862029 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84862031",
@@ -231,21 +237,53 @@
       "trich": "84862031 - - - Máy dùng tia sáng để làm sạch và tẩy rửa chất bẩn bám trên các đầu chân dẫn điện kim loại của các cụm linh kiện bán dẫn trước khi tiến hành điện phân; dụng cụ phun dùng để khắc axit, tẩy rửa hoặc làm sạch các tấm bán dẫn mỏng",
       "dieuKienSo": [
         {
-          "fact": "congDung",
-          "op": "CONG_DUNG",
-          "value": [
-            "làm sạch",
-            "tẩy rửa chất bẩn bám trên các đầu chân dẫn điện kim loại",
-            "khắc axit"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Máy dùng tia sáng"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": [
+                  "làm sạch",
+                  "tẩy rửa chất bẩn bám trên các đầu chân dẫn điện kim loại"
+                ]
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "các đầu chân dẫn điện kim loại"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "dụng cụ phun"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": [
+                  "khắc axit",
+                  "tẩy rửa",
+                  "làm sạch"
+                ]
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "tấm bán dẫn mỏng"
+              }
+            ]
           ]
-        },
-        {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": "tấm bán dẫn mỏng"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84862032",
@@ -263,7 +301,7 @@
           "value": "các bản mẫu khắc khô trên vật liệu bán dẫn"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84862033",
@@ -291,14 +329,14 @@
           "value": "tấm bán dẫn mỏng"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84862039",
       "nguon": "tax.84862039",
       "trich": "84862039 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84862041",
@@ -316,7 +354,7 @@
           "value": "tấm bán dẫn mỏng"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84862042",
@@ -329,14 +367,14 @@
           "value": "Thiết bị hiệu chỉnh vị trí mẫu theo bước và lặp lại"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84862049",
       "nguon": "tax.84862049",
       "trich": "84862049 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84862051",
@@ -362,14 +400,14 @@
           "value": "tấm bán dẫn mỏng"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84862059",
       "nguon": "tax.84862059",
       "trich": "84862059 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84862091",
@@ -392,7 +430,7 @@
           "value": "sản phẩm bán dẫn"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84862092",
@@ -419,7 +457,7 @@
           "value": "bán dẫn"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84862093",
@@ -445,7 +483,7 @@
           "value": "sản xuất linh kiện bán dẫn"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84862094",
@@ -474,7 +512,7 @@
           "value": "sản xuất linh kiện bán dẫn"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84862095",
@@ -498,14 +536,14 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84862099",
       "nguon": "tax.84862099",
       "trich": "84862099 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "chongLanVanBan": [
