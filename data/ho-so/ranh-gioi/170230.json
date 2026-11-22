@@ -12,22 +12,45 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L5-20261111#soat-L5",
-    "ngay": "2026-11-11",
-    "ghiChu": ".10 'Glucose', .20 'Glucose syrup' ⇒ tên nguyên văn, 'tên cụ thể hơn thắng'. Lưu ý bộ so chữ: 'Xiro' (không dấu) không khớp 'Xirô' ⇒ xirô glucoza của tiền lệ 1164/1224/TB-TCHQ có thể bị gợi ý .10 — lỗi chuẩn hoá dấu.",
-    "bam": "7aa4a2e0503793af1cef17c6ed0d510fa33646c039b9003c61d77c485aa41b3e"
+    "phien": "claude-agent:ozv-1808#soat-170230",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá điều kiện Glucoza ở thể khô từ chú giải nhóm 17.02 (OZV-1808)",
+    "bam": "5a9014fc93e296fca69c0f092bb1bfc6891dfe8ee51fddd152c8954d9e798120"
   },
-  "dieuKienNut": [],
+  "dieuKienNut": [
+    {
+      "id": "170230",
+      "nguon": "tieuDe.170230",
+      "trich": "170230 Glucoza và xirô glucoza, không chứa hoặc có chứa hàm lượng fructoza dưới 20% tính theo khối lượng ở thể khô",
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "KHO_MUOI"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    }
+  ],
   "dong8": [
     {
       "hs": "17023010",
-      "nguon": "tax.17023010",
-      "trich": "17023010 - - Glucoza",
+      "nguon": "nhom1702.nhom",
+      "trich": "20% tính theo khối lượng ở thể khô 1702.40 - Glucoza",
       "dieuKienSo": [
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Glucoza"
+        },
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "KHO_MUOI"
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
