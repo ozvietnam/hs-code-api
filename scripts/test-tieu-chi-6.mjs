@@ -271,7 +271,9 @@ kiem('KHOA_RONG_HON_LUAT (bổ ngữ thu hẹp & tương thích): 6704 "vải d�
   && G6.khoaRongHonLuat('chatLieu', 'vải dệt', '610990 Từ các vật liệu dệt khác') === null
   && G6.khoaRongHonLuat('chatLieu', ['plastic', 'vải dệt'], '420222 Mặt ngoài bằng tấm plastic hoặc vật liệu dệt') === null
   && Boolean(G6.khoaRongHonLuat('chatLieu', 'cao su', 'Bằng cao su lưu hóa'))
-  && Boolean(G6.khoaRongHonLuat('chatLieu', 'vải dệt', 'Bằng vải không dệt')));
+  && Boolean(G6.khoaRongHonLuat('chatLieu', 'vải dệt', 'Bằng vải không dệt'))
+  && Boolean(G6.khoaRongHonLuat('chatLieu', 'vải dệt', 'Từ vải dệt kim tổng hợp'))
+  && Boolean(G6.khoaRongHonLuat('chatLieu', 'vải dệt', 'Bằng vải dệt thoi')));
 kiem('KHOA_RONG_HON_LUAT (tinhDanHoi): đỏ cả khi dùng tinhDanHoi op KHONG / chieu PHAI_KHONG cho 6004.10; 5806.20 có cả hai loại sợi thì sạch',
   tiem('6004', (ds) => { const x = cua(ds, '600410'); ds.push({ hs6: '600410', dieuKien: 'không bao gồm sợi cao su', fact: 'tinhDanHoi', op: 'KHONG', nguon: 'tieuDe.600410', trich: x.trich }); delete x.dieuKienTru; }).loi.some((l) => l.ma === 'KHOA_RONG_HON_LUAT')
   && tiem('6004', (ds) => { const x = cua(ds, '600410'); ds.push({ hs6: '600410', dieuKien: 'không bao gồm sợi cao su', fact: 'tinhDanHoi', op: 'CO', chieu: 'PHAI_KHONG', nguon: 'tieuDe.600410', trich: x.trich }); delete x.dieuKienTru; }).loi.some((l) => l.ma === 'KHOA_RONG_HON_LUAT')
@@ -300,11 +302,13 @@ kiem('dieuKienTru: cấm trên phanConLai / chuaSoHoa / mục phủ định / r�
     && rong.loi.some((l) => l.ma === 'KHUON_SAI')
     && !khacDauVet.loi.some((l) => l.ma === 'TRUNG_DIEU_KIEN');
 })());
-kiem('apTieuChi với dieuKienTru (6004): khớp "vải dệt kim 8% sợi đàn hồi" và câu giữ nguyên phủ định "nhưng không bao gồm sợi cao su"; loại "kết hợp sợi cao su"',
+kiem('apTieuChi với dieuKienTru (6004) & ranh giới RE_PHU_DINH_TRUOC: khớp "vải dệt kim 8% sợi đàn hồi" và câu giữ nguyên phủ định "nhưng không bao gồm sợi cao su"; loại "kết hợp sợi cao su"; "dự trữ" không chặn nhầm "truyền động khí nén"',
   G6.apTieuChi(DS_6004_CHUAN, 'vải dệt kim 8% sợi đàn hồi').hs6 === '600410'
   && G6.apTieuChi(DS_6004_CHUAN, 'vải dệt kim 8% sợi đàn hồi nhưng không bao gồm sợi cao su').hs6 === '600410'
   && G6.apTieuChi(DS_6004_CHUAN, 'vải dệt kim 8% sợi đàn hồi kết hợp sợi cao su').hs6 === null
-  && G6.apTieuChi(DS_6004_CHUAN, 'vải dệt kim 8% spandex').hs6 === null);
+  && G6.apTieuChi(DS_6004_CHUAN, 'vải dệt kim 8% spandex').hs6 === null
+  && ap('8481', 'Van điện từ dự trữ truyền động khí nén') === '848120'
+  && ap('8481', 'Van điện từ trụ đỡ truyền động khí nén') === '848120');
 kiem('#1586 (7009.91/92 & phân nhóm không phải DU): 7009 qua cổng với 0 lỗi (7009.91/92 cảnh báo THIEU_KHOA_TU_VUNG); thay 7009.91 bằng mục rỗng hoặc bỏ điều kiện riêng dưới tầng có tên đều đỏ KHUON_SAI', (() => {
   const st7009 = doc('data/so-tay/7009.json').tieuChi6;
   const kq7009 = G6.kiemTieuChi6('7009', st7009, { toKhai: false });
