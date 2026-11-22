@@ -4,13 +4,18 @@
   "nhom": "6305",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T0856#soan-630533",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "paperclip:ozv-1863#soat-16c",
+    "ngay": "2026-11-22",
+    "bam": "7c407af3dc5f91c09215768ad4d0c21bcaf99b3ecbbe0265febe2b6b4a5b1059"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -19,15 +24,11 @@
       "trich": "63053310 - - - Dệt kim hoặc móc",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "Dệt kim",
-            "móc"
-          ]
+          "fact": "detKimHoacMoc",
+          "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "63053320",
@@ -36,37 +37,26 @@
       "dieuKienSo": [
         {
           "fact": "tenLoai",
-          "op": "TUONG_TU",
-          "value": [
-            "sợi dệt dạng dải"
-          ]
+          "op": "TEN_LOAI",
+          "value": "sợi dệt dạng dải"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "63053390",
       "nguon": "tax.63053390",
       "trich": "63053390 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
-      "ma": "63053310",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.63053310 \"Dệt kim hoặc móc\" ⇒ tenLoai TEN_LOAI [\"Dệt kim\",\"móc\"] — mảng vì chữ có \"hoặc\"; kieuDet không có giá trị dệt kim"
-    },
-    {
       "ma": "63053320",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.63053320 \"Bằng sợi dệt dạng dải hoặc tương tự\" ⇒ tenLoai TUONG_TU [\"sợi dệt dạng dải\"] — vế mở \"hoặc tương tự\" (quy ước vòng 7), giá trị là hàng nêu tên nguyên văn đứng trước cụm tương tự"
-    },
-    {
-      "ma": "63053390",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.63053390 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+      "loai": "BO_VE",
+      "ve": "hoặc tương tự",
+      "lyDo": "Vế mở không thể đóng thành liệt kê cứng; dùng TEN_LOAI cho cụm danh từ chính sợi dệt dạng dải để chốt tất định."
     }
   ],
   "traVe": [
@@ -74,6 +64,15 @@
       "phien": "claude-agent:duyet-L19-20261111#soat-L19",
       "ngay": "2026-11-11",
       "lyDo": "(A) 63053310 SUY RỘNG + sai khoá: \"Dệt kim hoặc móc\" (Knitted or crocheted) ⇒ tenLoai [\"Dệt kim\",\"móc\"]; \"móc\" một mình = cái móc (hook) nên bao có móc khớp .10. Dùng khoá detKimHoacMoc CO đã có trong tu-vung@2. (.20 TUONG_TU \"sợi dệt dạng dải\" đạt.)"
+    }
+  ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "63053310",
+        "63053320"
+      ],
+      "lyDo": "Dòng 63053310 \"Dệt kim hoặc móc\" (detKimHoacMoc) và dòng 63053320 \"Bằng sợi dệt dạng dải hoặc tương tự\" (tenLoai) là hai kiểu kết cấu bao gói tách biệt theo chữ biểu nhưng biểu diễn trên hai khoá từ vựng khác nhau."
     }
   ]
 }

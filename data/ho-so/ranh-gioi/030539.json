@@ -4,13 +4,18 @@
   "nhom": "0305",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261105T1529#soan-030539",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "paperclip:ozv-1863#soat-16c",
+    "ngay": "2026-11-22",
+    "bam": "0eca4f05046383d584c639f36d89c39f5a27d72c08af89135dbb9dae19d115c8"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -28,7 +33,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "03053920",
@@ -46,7 +51,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "03053991",
@@ -54,12 +59,14 @@
       "trich": "03053991 - - - - Của cá nước ngọt",
       "dieuKienSo": [
         {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": "cá nước ngọt"
+          "fact": "moiTruongSongCuaCa",
+          "op": "TRONG",
+          "value": [
+            "NUOC_NGOT"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "03053992",
@@ -67,19 +74,21 @@
       "trich": "03053992 - - - - Của cá biển",
       "dieuKienSo": [
         {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": "cá biển"
+          "fact": "moiTruongSongCuaCa",
+          "op": "TRONG",
+          "value": [
+            "BIEN"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "03053999",
       "nguon": "tax.03053999",
       "trich": "03053999 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [],

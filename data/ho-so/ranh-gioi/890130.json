@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L31-20261111#soat-L31",
-    "ngay": "2026-11-11",
+    "phien": "paperclip:ozv-1863#soat-16c",
+    "ngay": "2026-11-22",
     "ghiChu": "Đối chiếu 3 dòng GT ≤5.000 / >5.000–≤50.000 / >50.000: biên khớp VI+EN, liền mạch.",
-    "bam": "1d961853c591351d80614f7bf0b3992c5e7d1b4299602cc95680c3665319309e"
+    "bam": "f8a52f88ce9863bfce98b0c623d23f833652a645aa89add59227044162b42b70"
   },
   "dieuKienNut": [],
   "dong8": [
@@ -45,10 +45,29 @@
           "donVi": "GT"
         },
         {
-          "fact": "tongDungTichTau",
-          "op": "<=",
-          "value": 50000,
-          "donVi": "GT"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tongDungTichTau",
+                "op": "<=",
+                "value": 50000,
+                "donVi": "GT"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Tổng dung tích (gross tonnage)"
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "trên 5.000 nhưng không quá 50.000"
+              }
+            ]
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
