@@ -66,9 +66,14 @@ for (const [ten, ds, tk] of [
   kiem(`${ten}: xếp theo tổng số dòng tờ khai giảm dần`, dungThuTu);
 }
 
-// Kiểm tra bình thủy xuất hiện đúng trong báo cáo
+// Kiểm tra "bình thủy" đã hết mâu thuẫn sau #1611 (bỏ đích 7013 sai, giữ 9617), còn các cụm chờ thực vẫn có mặt đúng loại
 const binhThuy = bc1.khacNhom4.find((x) => x.khoa === 'binh thuy');
-kiem('cụm mẫu "bình thủy" (7013/9617) có mặt và được xếp loại (a)', Boolean(binhThuy) && binhThuy.phanLoai.maLoai === 'a' && binhThuy.phanLoai.nhan.includes('trade-synonyms'), JSON.stringify(binhThuy));
+const binhThuyC1 = DoThi.timCum('bình thủy');
+kiem('cụm "bình thủy" đã sạch khỏi khacNhom4 và chỉ trỏ 9617 (trade-synonyms)', !binhThuy && Boolean(binhThuyC1) && binhThuyC1.dich.every((d) => d.ma.startsWith('9617')), JSON.stringify({ binhThuy, binhThuyC1 }));
+const giay = bc1.khacNhom4.find((x) => x.khoa === 'giay');
+kiem('cụm mẫu "giay" (6403/6404) có mặt trong khacNhom4 và xếp loại (b)', Boolean(giay) && giay.phanLoai.maLoai === 'b', JSON.stringify(giay));
+const vanAnToan = bc1.khacPn6CungNhom.find((x) => x.khoa === 'van an toan');
+kiem('cụm mẫu "van an toàn" (848140/848180) có mặt trong khacPn6CungNhom và xếp loại (a)', Boolean(vanAnToan) && vanAnToan.phanLoai.maLoai === 'a' && vanAnToan.phanLoai.nhan.includes('trade-synonyms'), JSON.stringify(vanAnToan));
 
 // Kiểm tra định dạng bảng markdown không bị vỡ dòng
 const tableLines = mdDia.split('\n').filter((l) => l.startsWith('|'));
