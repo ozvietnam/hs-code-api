@@ -400,7 +400,8 @@
       "coDuTru",
       "coDieuChinhDoCao",
       "coTheChuyenThanhGiuong",
-      "coKetNoiMayTinh"
+      "coKetNoiMayTinh",
+      "coGanThietBiThu"
     ],
     "tuVung1": {
       "trangThai": "DA_CHAM",
@@ -5383,15 +5384,18 @@
           "cachDoc": {
             "vi": [
               "(?:từ|bằng|chất\\s+liệu)\\s+bông(?!\\s*(?:thủy\\s+tinh|thuỷ\\s+tinh|khoáng|gòn|tai|hoa))",
+              "(?:được\\s+)?pha\\s+(?:chủ\\s+yếu|duy\\s+nhất)(?:\\s+hoặc\\s+pha\\s+(?:chủ\\s+yếu|duy\\s+nhất))?\\s+với\\s+bông(?!\\s*(?:thủy\\s+tinh|thuỷ\\s+tinh|khoáng|gòn|tai|hoa))",
               "(?:sợi|xơ|vải)\\s+bông(?!\\s*(?:thủy|thuỷ|khoáng|gòn))",
               "bông\\s*100\\s*%",
               "100\\s*%\\s*bông",
               "cotton"
             ],
             "en": [
+              "mixed\\s+(?:mainly|solely)(?:\\s+or\\s+(?:mainly|solely))?\\s+with\\s+cotton",
               "cotton"
             ],
             "zh": [
+              "(?:主要|全部)?与棉混纺",
               "(?<![石木])棉(?!花糖)",
               "纯棉",
               "全棉"
@@ -9451,7 +9455,7 @@
         "vi": [
           "dạng\\s+lỏng",
           "thể\\s+lỏng",
-          "chất\\s+lỏng"
+          "(?<!chứa\\s)chất\\s+lỏng"
         ],
         "en": [
           "liquid\\s+form",
@@ -27302,12 +27306,15 @@
       "nhanZh": "自动式",
       "cachDoc": {
         "vi": [
+          "(?:loại\\s+)?tự\\s+động\\s+hoàn\\s+toàn\\s+hoặc\\s+một\\s+phần",
           "(?<!xử lý dữ liệu )(?<!nửa )(?<!bán )(?:loại\\s+|hoạt\\s+động\\s+)?tự\\s+động(?!\\s+(?:h(?:óa|oá)|bán\\s+phần))"
         ],
         "en": [
+          "fully\\s+or\\s+partly\\s+automatic",
           "(?<!semi-)(?<!non-)automatic(?!\\s+data[-\\s]processing)"
         ],
         "zh": [
+          "全自动或半自动",
           "(?<!数据处理)(?<!半)(?<!非)自动(?:型|式)?"
         ],
         "phuDinh": [
@@ -27345,7 +27352,7 @@
         ],
         "zh": [
           "非自动",
-          "半自动",
+          "(?<!全自动或)半自动",
           "手动"
         ]
       },
@@ -27722,6 +27729,67 @@
       },
       "ghiChu": "T-6: Chữ biểu 8528.42.00, 8528.52.00, 8528.62.00 \"Có khả năng kết nối trực tiếp và được thiết kế để dùng cho máy xử lý dữ liệu tự động thuộc nhóm 84.71\", 8517.62.43 \"được thiết kế chỉ để kết nối với máy xử lý dữ liệu tự động thuộc nhóm 84.71\", và 8443.31/8443.32 \"có khả năng kết nối với máy xử lý dữ liệu tự động hoặc kết nối mạng\".",
       "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "kieu": "CO_KHONG",
+      "khoa": "coGanThietBiThu",
+      "nhanVi": "có gắn với thiết bị thu",
+      "nhanEn": "incorporating reception apparatus",
+      "nhanZh": "装有接收装置",
+      "cachDoc": {
+        "vi": [
+          "(?:có\\s+)?(?:gắn|tích\\s+hợp|kết\\s+hợp)(?:\\s+với)?\\s+thiết\\s+bị\\s+thu(?!\\s+(?:sóng|truyền\\s+hình|thanh|âm))"
+        ],
+        "en": [
+          "(?<!not\\s)incorporating\\s+reception\\s+apparatus",
+          "with\\s+(?:built-in\\s+)?reception\\s+apparatus"
+        ],
+        "zh": [
+          "(?<![未不])(?:装有|带有)接收装置"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không có",
+          "không",
+          "chưa",
+          "ko",
+          "chẳng",
+          "non-?",
+          "without",
+          "no",
+          "not",
+          "无",
+          "非",
+          "不",
+          "没有",
+          "未"
+        ]
+      },
+      "cachDocKhong": {
+        "vi": [
+          "không\\s+(?:có\\s+)?(?:gắn|tích\\s+hợp|kết\\s+hợp)(?:\\s+với)?\\s+thiết\\s+bị\\s+thu",
+          "chỉ\\s+phát(?:\\s+không\\s+thu)?"
+        ],
+        "en": [
+          "not\\s+incorporating\\s+reception\\s+apparatus",
+          "without\\s+reception\\s+apparatus",
+          "transmit(?:ter)?\\s+only"
+        ],
+        "zh": [
+          "(?:未|不)(?:装有|带有)接收装置",
+          "仅发射"
+        ]
+      },
+      "cachViet": {
+        "vi": "có gắn với thiết bị thu",
+        "viPhuDinh": "không gắn với thiết bị thu"
+      },
+      "cauHoi": {
+        "vi": "Thiết bị phát có gắn hoặc tích hợp với thiết bị thu không?",
+        "zh": "该发射设备是否装有接收装置？"
+      },
+      "ghiChu": "T-8 Top-93: Chữ biểu 8525.60.00 \"Thiết bị phát có gắn với thiết bị thu\" (tách khỏi 8525.50 Thiết bị phát). Tách riêng khỏi khoá @1 coKetHopThietBiThu.",
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "khongPhaiPhuDinh": [
@@ -27967,6 +28035,13 @@
           "bơm hoạt động kiểu piston quay",
           "kiểu piston quay",
           "piston quay"
+        ]
+      }
+    },
+    "mauHienThi": {
+      "MAU": {
+        "vi": [
+          "loại\\s+khác,\\s*màu(?=$|[,;.)\\n]|\\s*\\()"
         ]
       }
     }
