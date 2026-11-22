@@ -4,13 +4,19 @@
   "nhom": "7214",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-721420",
     "ngay": "2026-11-04"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "tho-hs-03:ozv-1804-20261122#soat-721420",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá ranh giới theo traVe.lyDo và khép SẠCH V1 lô 12b (OZV-1804).",
+    "bam": "0f7cc11bf1a475636c1d870bb4677a21a3a941849fd2d97141d95bd7cc461f62"
+  },
   "dieuKienNut": [
     {
       "id": "721420~r11268",
@@ -24,7 +30,7 @@
           "donVi": "%"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "7214203",
@@ -32,11 +38,14 @@
       "trich": "7214203 Có mặt cắt ngang hình tròn",
       "dieuKienSo": [
         {
-          "fact": "hinhDangCatGocKinh",
-          "op": "KHONG"
+          "fact": "hinhDangMatCatNgang",
+          "op": "TRONG",
+          "value": [
+            "TRON"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "7214205",
@@ -44,11 +53,14 @@
       "trich": "7214205 Có mặt cắt ngang hình tròn",
       "dieuKienSo": [
         {
-          "fact": "hinhDangCatGocKinh",
-          "op": "KHONG"
+          "fact": "hinhDangMatCatNgang",
+          "op": "TRONG",
+          "value": [
+            "TRON"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -63,14 +75,14 @@
           "value": "Thép cốt bê tông"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "72142039",
       "nguon": "tax.72142039",
       "trich": "72142039 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "72142041",
@@ -83,14 +95,14 @@
           "value": "Thép cốt bê tông"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "72142049",
       "nguon": "tax.72142049",
       "trich": "72142049 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "72142051",
@@ -103,14 +115,14 @@
           "value": "Thép cốt bê tông"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "72142059",
       "nguon": "tax.72142059",
       "trich": "72142059 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "72142061",
@@ -123,14 +135,14 @@
           "value": "Thép cốt bê tông"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "72142069",
       "nguon": "tax.72142069",
       "trich": "72142069 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -146,21 +158,9 @@
       "lyDo": "Cụm danh từ chỉ thuộc tính"
     },
     {
-      "ma": "721420~r11268",
-      "loai": "BO_VE",
-      "ve": "dưới 0,6% tính theo khối lượng",
-      "lyDo": "Đã lượng hóa qua hamLuongCarbon < 0.6 %"
-    },
-    {
       "ma": "7214203",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.7214203: \"Có mặt cắt ngang hình tròn\" ⇒ hinhDangCatGocKinh KHONG"
-    },
-    {
-      "ma": "7214203",
-      "loai": "BO_VE",
-      "ve": "Có mặt cắt ngang hình tròn",
-      "lyDo": "Đã phản ánh qua mặt cắt ngang hình tròn"
+      "ghiChu": "tieuDe.7214203: \"Có mặt cắt ngang hình tròn\" ⇒ hinhDangMatCatNgang TRONG [TRON]"
     },
     {
       "ma": "72142031",
@@ -175,13 +175,7 @@
     {
       "ma": "7214205",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.7214205: \"Có mặt cắt ngang hình tròn\" ⇒ hinhDangCatGocKinh KHONG"
-    },
-    {
-      "ma": "7214205",
-      "loai": "BO_VE",
-      "ve": "Có mặt cắt ngang hình tròn",
-      "lyDo": "Đã phản ánh qua mặt cắt ngang hình tròn"
+      "ghiChu": "tieuDe.7214205: \"Có mặt cắt ngang hình tròn\" ⇒ hinhDangMatCatNgang TRONG [TRON]"
     },
     {
       "ma": "72142051",

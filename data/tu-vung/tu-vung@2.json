@@ -385,7 +385,9 @@
       "tyLeLotQuaLuoiLoc1mm",
       "tyLeLotQuaLuoiLoc5mm",
       "dangTam",
-      "nguonDongLuc"
+      "nguonDongLuc",
+      "cuaLoaiGiaCam",
+      "tuXoDay"
     ],
     "tuVung1": {
       "trangThai": "DA_CHAM",
@@ -5395,7 +5397,7 @@
               "vải\\s+lanh",
               "vải\\s+đay",
               "lanh(?!\\s+gai)",
-              "từ\\s+các\\s+vật\\s+liệu\\s+dệt\\s+khác(?=\\s*:\\s*đã\\s+tráng)"
+              "từ\\s+các\\s+vật\\s+liệu\\s+dệt\\s+khác(?=\\s*:\\s*(?:đã\\s+tráng|thảm\\s+cầu\\s+nguyện))"
             ],
             "en": [
               "vegetable\\s+(?:textile\\s+)?fib(?:re|er)s?",
@@ -13027,7 +13029,7 @@
             "vi": [
               "không\\s+phải\\s+dạng\\s+đai\\s+và\\s+dải(?:\\s+hoặc\\s+tấm\\s+phổ\\s+dụng)?",
               "dạng\\s+tấm\\s+cắt\\s+sẵn",
-              "loại\\s+khác,\\s*chiều\\s+dày\\s+không\\s+quá\\s+1,5\\s*mm",
+              "loại\\s+khác,\\s*chiều\\s+dày\\s+không\\s+quá\\s+(?:1,5|0,17)\\s*mm",
               "loại\\s+khác,\\s*được\\s+sơn\\s+sau\\s+khi\\s+phủ,\\s*mạ\\s+kẽm",
               "loại\\s+khác:\\s*được\\s+phủ,\\s*mạ\\s+hoặc\\s+tráng\\s+kẽm"
             ],
@@ -13090,7 +13092,8 @@
         "vi": [
           "không\\s+lượn\\s+sóng",
           "dạng\\s+phẳng",
-          "dạng\\s+cuộn"
+          "dạng\\s+cuộn",
+          "loại\\s+khác,\\s*chiều\\s+dày\\s+không\\s+quá\\s+0,17\\s*mm"
         ],
         "en": [
           "non-?corrugated",
@@ -14657,7 +14660,8 @@
           "cachDoc": {
             "vi": [
               "(?:trừ|không\\s+phải)(?:\\s+dạng)?\\s+mặt\\s+cắt\\s+ngang\\s+hình\\s+tròn",
-              "mặt\\s+cắt\\s+ngang\\s+(?:hình\\s+)?(?:lục\\s+giác|bát\\s+giác|dẹt|đa\\s+giác)"
+              "mặt\\s+cắt\\s+ngang\\s+(?:hình\\s+)?(?:lục\\s+giác|bát\\s+giác|dẹt|đa\\s+giác)",
+              "xoắn\\s+sau\\s+khi\\s+cán(?::\\s*có\\s+hàm\\s+lượng\\s+carbon\\s+dưới\\s+0,6%\\s+tính\\s+theo\\s+khối\\s+lượng)?:\\s*thép\\s+cốt\\s+bê\\s+tông"
             ],
             "en": [
               "(?:other\\s+than|not|excluding)\\s+(?:of\\s+)?circular\\s+cross-section",
@@ -26267,6 +26271,155 @@
         "zh": "该设备的主要动力源是液压还是气动？"
       },
       "ghiChu": "Chữ biểu 8467.92.00 \"Của dụng cụ hoạt động bằng khí nén\", 9822.20.00 \"Máy ép thủy lực\" (tiêu đề tầng/phân nhóm hai nguồn hoặc cấp 5–6 số: 8412.2 \"Động cơ và mô tơ thủy lực\", 8412.3 \"Động cơ và mô tơ dùng khí nén\", 8425.42 \"Loại kích và tời khác, dùng thủy lực\", 8428.20 \"Máy nâng hạ và băng tải dùng khí nén\", 8462.61 \"Máy ép thuỷ lực\", 8481.20 \"Van dùng trong truyền động dầu thủy lực hoặc khí nén\", 9032.81.00 \"Loại dùng thủy lực hoặc khí nén\"). Phân biệt với cachDieuKhien (cách điều khiển van/thiết bị, không dùng cho nguồn động lực của động cơ/máy theo SOAN-TIEU-CHI-6-SO.md L9). Hỗ trợ cả hai cách bỏ dấu \"thủy lực\" và \"thuỷ lực\"; không bắt nhầm vôi/xi măng thủy lực, dầu/chất lỏng thủy lực, bình chứa khí nén, lốp hơi pneumatic tyres (#1584).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "cuaLoaiGiaCam",
+      "kieu": "LIET_KE",
+      "nhanVi": "của loài gia cầm (loài gia cầm/chim đẻ trứng)",
+      "nhanEn": "of poultry/bird species (egg-laying species)",
+      "nhanZh": "禽类物种（产卵禽鸟种类）",
+      "giaTriHopLe": [
+        "GA_GALLUS_DOMESTICUS",
+        "VIT_NGAN",
+        "GIA_CAM_CHIM_KHAC"
+      ],
+      "moTaGiaTri": {
+        "GA_GALLUS_DOMESTICUS": {
+          "nhanVi": "của gà thuộc loài Gallus domesticus",
+          "nhanEn": "of fowls of the species Gallus domesticus",
+          "nhanZh": "家鸡（Gallus domesticus）",
+          "cachDoc": {
+            "vi": [
+              "(?:của\\s+|trứng\\s+)?gà\\s+thuộc\\s+loài\\s+gallus\\s+domesticus",
+              "(?:của\\s+|trứng\\s+)?gà\\s+gallus\\s+domesticus"
+            ],
+            "en": [
+              "(?:of\\s+)?fowls?\\s+of\\s+the\\s+species\\s+gallus\\s+domesticus"
+            ],
+            "zh": [
+              "家鸡（?gallus\\s*domesticus）?"
+            ]
+          },
+          "cachViet": "của gà thuộc loài Gallus domesticus"
+        },
+        "VIT_NGAN": {
+          "nhanVi": "của vịt, ngan",
+          "nhanEn": "of ducks",
+          "nhanZh": "鸭（含番鸭）",
+          "cachDoc": {
+            "vi": [
+              "của\\s+(?:vịt\\s*,\\s*ngan|vịt|ngan)",
+              "trứng\\s+(?:vịt|ngan)"
+            ],
+            "en": [
+              "of\\s+ducks?",
+              "duck\\s+eggs?"
+            ],
+            "zh": [
+              "鸭蛋"
+            ]
+          },
+          "cachViet": "của vịt, ngan"
+        },
+        "GIA_CAM_CHIM_KHAC": {
+          "nhanVi": "của loài chim hoặc gia cầm khác (ngỗng, chim cút, gà tây, đà điểu…)",
+          "nhanEn": "of other birds or poultry (geese, quail, turkeys, ostriches…)",
+          "nhanZh": "其他禽鸟（鹅、鹌鹑、火鸡、鸵鸟等）",
+          "cachDoc": {
+            "vi": [
+              "không\\s+phải\\s+của\\s+(?:vịt|gà)",
+              "(?:của\\s+|trứng\\s+)(?:ngỗng|chim\\s+cút|gà\\s+tây|đà\\s+điểu)",
+              "trứng\\s+đã\\s+thụ\\s+tinh\\s+để\\s+ấp\\s*-\\s*loại\\s+khác:\\s*để\\s+nhân\\s+giống"
+            ],
+            "en": [
+              "(?:of\\s+)?(?:geese|goose|quails?|turkeys?|ostrich(?:es)?)\\s+eggs?",
+              "eggs?\\s+of\\s+(?:geese|quails?|turkeys?|ostriches)"
+            ],
+            "zh": [
+              "鹅蛋",
+              "鹌鹑蛋",
+              "火鸡蛋",
+              "鸵鸟蛋"
+            ]
+          },
+          "cachViet": "của chim cút"
+        }
+      },
+      "cachDoc": {
+        "vi": [],
+        "en": [],
+        "zh": []
+      },
+      "cachViet": {
+        "vi": "{giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Trứng này là của gà thuộc loài Gallus domesticus, của vịt/ngan, hay của loài chim/gia cầm khác?",
+        "zh": "该禽蛋属于家鸡（Gallus domesticus）、鸭（含番鸭），还是其他禽鸟？"
+      },
+      "ghiChu": "Chữ biểu 0407.19.1 / 0407.29.10 / 0407.90.20 \"Của vịt, ngan\" (EN \"Of ducks\") và 0407.90.10 \"Của gà thuộc loài Gallus domesticus\" (EN \"Of fowls of the species Gallus domesticus\") (OZV-1804).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "tuXoDay",
+      "kieu": "CO_KHONG",
+      "nhanVi": "từ xơ đay (jute fibres)",
+      "nhanEn": "of jute fibres",
+      "nhanZh": "黄麻纤维制",
+      "cachDoc": {
+        "vi": [
+          "(?:từ|bằng|sợi|vải|xơ|chất\\s+liệu)\\s+(?:xơ\\s+)?đay\\b"
+        ],
+        "en": [
+          "(?:of\\s+)?jute(?:\\s+fib(?:re|er)s?)?\\b"
+        ],
+        "zh": [
+          "黄麻(?:纤维)?制?"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không",
+          "chưa",
+          "trừ",
+          "ko",
+          "chẳng",
+          "non-?",
+          "without",
+          "no",
+          "not",
+          "excluding",
+          "other than",
+          "无",
+          "非",
+          "不",
+          "未"
+        ]
+      },
+      "cachDocKhong": {
+        "vi": [
+          "không\\s+(?:phải\\s+)?(?:từ|bằng|sợi|vải|xơ)\\s+(?:xơ\\s+)?đay\\b",
+          "(?:từ|bằng|sợi|vải|xơ)\\s+(?:lanh(?!\\s+gai)|gai(?:\\s+ramie|\\s+dầu)?|ramie|xơ\\s+dừa|sisal|chuối\\s+sợi|abaca)",
+          "từ\\s+các\\s+vật\\s+liệu\\s+dệt\\s+khác(?=\\s*:\\s*thảm\\s+cầu\\s+nguyện)"
+        ],
+        "en": [
+          "not\\s+(?:of\\s+)?jute(?:\\s+fib(?:re|er)s?)?\\b",
+          "(?:of\\s+)?(?:flax|linen|ramie|true\\s+hemp|coir|sisal|abaca)\\b"
+        ],
+        "zh": [
+          "非黄麻",
+          "(?:亚麻|苎麻|大麻|剑麻|椰壳纤维|蕉麻)制"
+        ]
+      },
+      "cachViet": {
+        "vi": "từ xơ đay",
+        "viPhuDinh": "không phải từ xơ đay"
+      },
+      "cauHoi": {
+        "vi": "Sản phẩm có được làm từ xơ đay (jute fibres, nhóm 53.03) không?",
+        "zh": "该产品是否由黄麻纤维（税目53.03）制成？"
+      },
+      "ghiChu": "Chữ biểu 5702.39.20 / 5702.49.20 / 5702.50.20 / 5702.99.20 \"Từ xơ đay\" / EN \"Of jute fibres\" (phân biệt với sisal, lanh, gai ramie, xơ dừa… trong cùng nhóm vật liệu dệt thực vật khác) (OZV-1804).",
       "nguonLoai": "AI_DA_KIEM"
     }
   ],

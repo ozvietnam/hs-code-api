@@ -379,6 +379,9 @@ const KHOA_MOI = {
   // 22/11/2026 (#1584): bổ sung dangTam, nguonDongLuc (và mở rộng vatLieuKhac: DA_THUOC, DA_THUOC_TONG_HOP)
   dangTam: 'CO_KHONG',
   nguonDongLuc: 'LIET_KE',
+  // 22/11/2026 (OZV-1804): lô 12b (0407.19/.29/.90, 5702.39/.49/.50/.99)
+  cuaLoaiGiaCam: 'LIET_KE',
+  tuXoDay: 'CO_KHONG',
 };
 
 // ── 1. Nạp theo phiên bản ─────────────────────────────────────────────────────────────────────────────────────────
@@ -1574,6 +1577,46 @@ check('vietCum đơn vị @1 KHÔNG đổi ("CS: 75000W" — không cách)', T.v
   }
   const ms = Number(process.hrtime.bigint() - t0) / 1e6;
   check(`OZV-1803 ReDoS ~40.000 từ lặp trên 3 khoá < 2000 ms (thực tế ${ms.toFixed(0)} ms)`, ms < 2000, { ms });
+}
+
+// OZV-1804 — kiểm chứng 2 khoá mới (cuaLoaiGiaCam, tuXoDay) và mở rộng dangDaiDaiTamPhoDung/dangLuonSong/hinhDangMatCatNgang/loaiSoiDet + ReDoS ~40.000 từ lặp < 2 giây (quy tắc 6b).
+{
+  // 1. cuaLoaiGiaCam (0407.19.1, 0407.29.10, 0407.90.10/.20)
+  la('chữ biểu 0407.90.10 (Của gà thuộc loài Gallus domesticus) ⇒ GA_GALLUS_DOMESTICUS', 'cuaLoaiGiaCam', 'Của gà thuộc loài Gallus domesticus', 'GA_GALLUS_DOMESTICUS');
+  la('En Of fowls of the species Gallus domesticus ⇒ GA_GALLUS_DOMESTICUS', 'cuaLoaiGiaCam', 'Eggs of fowls of the species Gallus domesticus', 'GA_GALLUS_DOMESTICUS');
+  la('Zh 家鸡（Gallus domesticus） ⇒ GA_GALLUS_DOMESTICUS', 'cuaLoaiGiaCam', '家鸡（Gallus domesticus）种蛋', 'GA_GALLUS_DOMESTICUS');
+  la('chữ biểu 0407.19.1 / 0407.29.10 (Của vịt, ngan) ⇒ VIT_NGAN', 'cuaLoaiGiaCam', 'Của vịt, ngan', 'VIT_NGAN');
+  la('trứng vịt ⇒ VIT_NGAN', 'cuaLoaiGiaCam', 'Trứng vịt muối nguyên vỏ', 'VIT_NGAN');
+  la('En Of ducks ⇒ VIT_NGAN', 'cuaLoaiGiaCam', 'Fertilised eggs of ducks for incubation', 'VIT_NGAN');
+  la('Zh 鸭蛋 ⇒ VIT_NGAN', 'cuaLoaiGiaCam', '新鲜鸭蛋', 'VIT_NGAN');
+  la('trứng chim cút ⇒ GIA_CAM_CHIM_KHAC', 'cuaLoaiGiaCam', 'Trứng chim cút ăn liền nguyên vỏ', 'GIA_CAM_CHIM_KHAC');
+  la('En quail eggs ⇒ GIA_CAM_CHIM_KHAC', 'cuaLoaiGiaCam', 'Fresh quail eggs in shell', 'GIA_CAM_CHIM_KHAC');
+  chuaBiet('chỉ ghi trứng gia cầm nguyên vỏ trần ⇒ CHUA_BIET', 'cuaLoaiGiaCam', 'Trứng chim và trứng gia cầm, nguyên vỏ, sống');
+
+  // 2. tuXoDay (5702.39.20, 5702.49.20, 5702.50.20, 5702.99.20)
+  la('chữ biểu 5702.39.20 (Từ xơ đay) ⇒ true', 'tuXoDay', 'Từ xơ đay', true);
+  la('thảm dệt thoi từ đay ⇒ true', 'tuXoDay', 'Thảm trải sàn dệt thoi từ đay tự nhiên', true);
+  la('En Of jute fibres ⇒ true', 'tuXoDay', 'Woven carpets of jute fibres', true);
+  la('Zh 黄麻纤维制 ⇒ true', 'tuXoDay', '黄麻纤维制机织地毯', true);
+  la('thảm từ xơ sisal (phản chứng traVe 570239) ⇒ false', 'tuXoDay', 'Thảm dệt thoi từ xơ sisal, chưa chần', false);
+  la('thảm từ xơ dừa ⇒ false', 'tuXoDay', 'Thảm chùi chân dệt từ xơ dừa', false);
+  la('En of sisal ⇒ false', 'tuXoDay', 'Woven floor coverings of sisal', false);
+  chuaBiet('chỉ ghi thảm từ các vật liệu dệt khác trần ⇒ CHUA_BIET', 'tuXoDay', 'Loại khác, có cấu tạo nổi vòng - Từ các vật liệu dệt khác');
+
+  // 3. Mở rộng dangDaiDaiTamPhoDung & dangLuonSong (7211.23.30, 7211.29.30, 7211.90.14) và hinhDangMatCatNgang (7214.20.41/.61)
+  la('7211.23.30 (Loại khác, chiều dày không quá 0,17 mm) ⇒ DANG_CAN_PHANG_KHAC', 'dangDaiDaiTamPhoDung', 'Loại khác, chiều dày không quá 0,17 mm', 'DANG_CAN_PHANG_KHAC');
+  la('7211.23.30 (Loại khác, chiều dày không quá 0,17 mm) ⇒ dangLuonSong false', 'dangLuonSong', 'Loại khác, chiều dày không quá 0,17 mm', false);
+  la('7214.20.41 (xoắn sau khi cán: C < 0,6%: Thép cốt bê tông) ⇒ KHAC_TRON', 'hinhDangMatCatNgang', 'Có răng khía, rãnh, gân hoặc các dạng khác được tạo thành trong quá trình cán hoặc xoắn sau khi cán: Có hàm lượng carbon dưới 0,6% tính theo khối lượng: Thép cốt bê tông', 'KHAC_TRON');
+  la('7214.20.31 (Có mặt cắt ngang hình tròn: Thép cốt bê tông) vẫn ⇒ TRON', 'hinhDangMatCatNgang', 'Có răng khía, rãnh, gân hoặc các dạng khác được tạo thành trong quá trình cán hoặc xoắn sau khi cán: Có hàm lượng carbon dưới 0,6% tính theo khối lượng - Có mặt cắt ngang hình tròn: Thép cốt bê tông', 'TRON');
+
+  // 4. ReDoS ~40.000 từ lặp < 2 giây (CLAUDE.md quy tắc 6b)
+  const redosText1804 = Array(4000).fill('trứng của gà thuộc loài thảm từ các vật liệu dệt khác xoắn sau khi cán').join(' ');
+  for (const fk of ['cuaLoaiGiaCam', 'tuXoDay', 'dangDaiDaiTamPhoDung', 'dangLuonSong', 'hinhDangMatCatNgang', 'loaiSoiDet']) {
+    const t0 = process.hrtime.bigint();
+    T.docGiaTri(fk, redosText1804);
+    const ms = Number(process.hrtime.bigint() - t0) / 1e6;
+    check(`OZV-1804 ReDoS ~40.000 từ lặp cho ${fk} < 2000 ms (thực tế ${ms.toFixed(0)} ms)`, ms < 2000, { fk, ms });
+  }
 }
 
 console.log(`\n${pass} pass, ${fail} fail`);

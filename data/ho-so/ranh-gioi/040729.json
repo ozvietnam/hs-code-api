@@ -4,13 +4,19 @@
   "nhom": "0407",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-040729",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "tho-hs-03:ozv-1804-20261122#soat-040729",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá ranh giới theo traVe.lyDo và khép SẠCH V1 lô 12b (OZV-1804).",
+    "bam": "846cc5b0e37bee9571163341dee40a794c15b028c09692eba9003d8ae107963a"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -19,29 +25,28 @@
       "trich": "04072910 - - - Của vịt, ngan",
       "dieuKienSo": [
         {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
+          "fact": "cuaLoaiGiaCam",
+          "op": "TRONG",
           "value": [
-            "vịt",
-            "ngan"
+            "VIT_NGAN"
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "04072990",
       "nguon": "tax.04072990",
       "trich": "04072990 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "04072910",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.04072910 \"Của vịt, ngan\" ⇒ dungCho mảng vịt, ngan"
+      "ghiChu": "tax.04072910 \"Của vịt, ngan\" ⇒ cuaLoaiGiaCam TRONG [VIT_NGAN]"
     }
   ],
   "traVe": [

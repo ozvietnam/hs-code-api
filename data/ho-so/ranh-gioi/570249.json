@@ -4,13 +4,19 @@
   "nhom": "5702",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-570249",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "tho-hs-03:ozv-1804-20261122#soat-570249",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá ranh giới theo traVe.lyDo và khép SẠCH V1 lô 12b (OZV-1804).",
+    "bam": "908b1cc62e8fd44b53b04aa6df11d4b3f1ed11703a9bacd3516aa112f060f997"
+  },
   "dieuKienNut": [
     {
       "id": "5702491",
@@ -25,7 +31,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -39,14 +45,14 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "57024919",
       "nguon": "tax.57024919",
       "trich": "57024919 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "57024920",
@@ -59,9 +65,13 @@
           "value": [
             "SOI_THUC_VAT_KHAC"
           ]
+        },
+        {
+          "fact": "tuXoDay",
+          "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "57024991",
@@ -73,17 +83,23 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "57024999",
       "nguon": "tax.57024999",
       "trich": "57024999 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
-  "ghiChuSoan": [],
+  "ghiChuSoan": [
+    {
+      "ma": "57024920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.57024920 \"Từ xơ đay\" (EN \"Of jute fibres\") ⇒ loaiSoiDet TRONG [SOI_THUC_VAT_KHAC] kết hợp tuXoDay CO để tách xơ đay với các sợi thực vật khác (sisal, lanh, gai, xơ dừa…)."
+    }
+  ],
   "traVe": [
     {
       "phien": "claude-agent:duyet-L16-20261111#soat-L16",
