@@ -9,9 +9,17 @@ import fs from 'node:fs';
 import path from 'node:path';
 {
   fs.mkdirSync(path.join(TEST_DATA_DIR, 'so-tay'), { recursive: true });
+  fs.mkdirSync(path.join(TEST_DATA_DIR, 'ho-so/ranh-gioi'), { recursive: true });
   const st9026 = JSON.parse(fs.readFileSync('data/so-tay/9026.json', 'utf8'));
   st9026.dong8 = (st9026.dong8 || []).map((d) => (d.hs === '90262050' ? { ...d, dieuKienSo: [] } : d));
   fs.writeFileSync(path.join(TEST_DATA_DIR, 'so-tay/9026.json'), JSON.stringify(st9026));
+  const st8481 = JSON.parse(fs.readFileSync('data/so-tay/8481.json', 'utf8'));
+  st8481.dong8 = (st8481.dong8 || []).map((d) => (String(d.hs || '').startsWith('848180') ? { ...d, dieuKienSo: (d.dieuKienSo || []).filter((c) => ['duong_kinh', 'duongKinhTrong', 'chat_lieu', 'chatLieu'].includes(c.fact)) } : d));
+  st8481.dieuKienNut = (st8481.dieuKienNut || []).filter((n) => !String(n.id || '').startsWith('848180'));
+  fs.writeFileSync(path.join(TEST_DATA_DIR, 'so-tay/8481.json'), JSON.stringify(st8481));
+  for (const pn of ['848110', '848120', '848130', '848140', '848190']) {
+    fs.copyFileSync(`data/ho-so/ranh-gioi/${pn}.json`, path.join(TEST_DATA_DIR, `ho-so/ranh-gioi/${pn}.json`));
+  }
 }
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
