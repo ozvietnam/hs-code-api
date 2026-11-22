@@ -4,13 +4,19 @@
   "nhom": "6811",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T0856#soan-681140",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1782#soat-681140",
+    "ngay": "2026-11-21",
+    "ghiChu": "Chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1782)",
+    "bam": "e0baebc9ef7ca6c0e8f4a793e77bd8aa63c9246733347cd2af6b1a29aee08685"
+  },
   "dieuKienNut": [
     {
       "id": "6811402",
@@ -27,7 +33,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": [
         "68114010"
       ]
@@ -45,7 +51,7 @@
           "value": "Tấm làn sóng"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "68114021",
@@ -55,8 +61,13 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
+          "value": "Gạch"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
           "value": [
-            "Gạch lát nền",
+            "lát nền",
             "ốp tường"
           ]
         },
@@ -66,7 +77,7 @@
           "value": "plastic"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "68114022",
@@ -83,20 +94,27 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "68114029",
       "nguon": "tax.68114029",
       "trich": "68114029 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "68114030",
       "nguon": "tax.68114030",
       "trich": "68114030 - - Ống hoặc ống dẫn",
       "dieuKienSo": [
+        {
+          "fact": "loaiSanPhamXiMangSoi",
+          "op": "TRONG",
+          "value": [
+            "ONG_HOAC_ONG_DAN"
+          ]
+        },
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
@@ -106,13 +124,20 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "68114040",
       "nguon": "tax.68114040",
       "trich": "68114040 - - Các phụ kiện để ghép nối ống hoặc ống dẫn",
       "dieuKienSo": [
+        {
+          "fact": "loaiSanPhamXiMangSoi",
+          "op": "TRONG",
+          "value": [
+            "PHU_KIEN_GHEP_NOI"
+          ]
+        },
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
@@ -132,7 +157,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "68114050",
@@ -145,7 +170,7 @@
           "value": "xây dựng"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": true
     },
     {
@@ -153,7 +178,7 @@
       "nguon": "tax.68114090",
       "trich": "68114090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -170,7 +195,7 @@
     {
       "ma": "68114021",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.68114021 \"Gạch lát nền hoặc ốp tường chứa plastic\" ⇒ tenLoai [\"Gạch lát nền\",\"ốp tường\"] (mảng vì \"hoặc\") + chatLieu LA \"plastic\" — phủ vế \"chứa plastic\""
+      "ghiChu": "tax.68114021 \"Gạch lát nền hoặc ốp tường chứa plastic\" ⇒ tenLoai \"Gạch\" (danh từ đầu chung) + tenLoai [\"lát nền\",\"ốp tường\"] (mảng vì \"hoặc\") + chatLieu LA \"plastic\" — phủ vế \"chứa plastic\""
     },
     {
       "ma": "68114022",
@@ -180,12 +205,12 @@
     {
       "ma": "68114030",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.68114030 \"Ống hoặc ống dẫn\" ⇒ tenLoai [\"Ống\",\"ống dẫn\"] — mảng vì \"hoặc\""
+      "ghiChu": "tax.68114030 \"Ống hoặc ống dẫn\" ⇒ loaiSanPhamXiMangSoi TRONG [\"ONG_HOAC_ONG_DAN\"] + tenLoai [\"Ống\",\"ống dẫn\"] — mảng vì \"hoặc\""
     },
     {
       "ma": "68114040",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.68114040 \"Các phụ kiện để ghép nối ống hoặc ống dẫn\" ⇒ tenLoai \"phụ kiện\" + congDung \"ghép nối\" (định ngữ chung) + dungCho [\"ống\",\"ống dẫn\"] (mảng vì \"hoặc\" — luật 841459 .10)"
+      "ghiChu": "tax.68114040 \"Các phụ kiện để ghép nối ống hoặc ống dẫn\" ⇒ loaiSanPhamXiMangSoi TRONG [\"PHU_KIEN_GHEP_NOI\"] + tenLoai \"phụ kiện\" + congDung \"ghép nối\" (định ngữ chung) + dungCho [\"ống\",\"ống dẫn\"] (mảng vì \"hoặc\" — luật 841459 .10)"
     },
     {
       "ma": "68114050",

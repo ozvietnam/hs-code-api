@@ -32,15 +32,15 @@ test('2. Nhóm chưa có sổ tay (nhomChuaCoSoTay) bị chấm CHƯA SẠCH v�
   assert.ok(kq.lyDo.includes('chua-co-so-tay'), `Kỳ vọng chua-co-so-tay, nhận: ${kq.lyDo.join(', ')}`);
 });
 
-// Kì vọng đổi 21/11/2026 (OZV-1776, nguyên tắc 5 OZV-310 — không chỉnh số cho khớp):
-// nhóm 0104 từng bẩn (thiếu ranh giới DUYET) nhưng đã được làm SẠCH bởi OZV-1771/PR #1575
-// (duyệt và áp 010410, 010420 vào sổ tay 0104; hiện 2/2 DONG_CO_TEN
-// đúng + ranh-gioi/010410.json, 010420.json đã DUYET) nên không còn là fixture "chưa sạch".
-// Thay bằng 0301 — bẩn đúng 2 cổng V1 đang kiểm,
-// chua-duyet-ranh-gioi(2 pn6) và dong-co-ten(9/27=33.3%<95%).
+// Kì vọng đổi 22/11/2026 (OZV-1785, nguyên tắc 5 OZV-310 — không chỉnh số cho khớp): nhóm 0301 đã được làm SẠCH bởi OZV-1785/PR #1578 nên thay fixture chưa sạch bằng 0305.
+// nhóm 0301 từng bẩn (thiếu ranh giới DUYET) nhưng đã được làm SẠCH bởi OZV-1785/PR #1578
+// (duyệt và áp 030119, 030199 vào sổ tay 0301; hiện 27/27 DONG_CO_TEN
+// đúng + ranh-gioi/030119.json, 030199.json đã DUYET) nên không còn là fixture "chưa sạch".
+// Thay bằng 0305 — bẩn đúng 2 cổng V1 đang kiểm,
+// chua-duyet-ranh-gioi(5 pn6) và dong-co-ten(18/26=69.2%<95%).
 test('3. Nhóm có sổ tay nhưng dòng có tên chốt đúng < 95% hoặc thiếu ranh giới DUYET bị chấm CHƯA SẠCH', () => {
-  const kq = danhGiaNhomV1('0301');
-  assert.equal(kq.nhom, '0301');
+  const kq = danhGiaNhomV1('0305');
+  assert.equal(kq.nhom, '0305');
   assert.equal(kq.sach, false);
   assert.ok(kq.lyDo.length > 0);
   assert.ok(
@@ -72,19 +72,19 @@ test('4. Phát hiện bản ghi dong8 trùng mã trong sổ tay (mục 3c công 
 
 test('5. demNhomSach tổng hợp đúng tongNhom, nhomSach, tyLe và danh sách chuaSach', async () => {
   const { h4: chuaCo } = nhomChuaCoSoTay();
-  const kq = await demNhomSach({ nhoms: ['8539', '8541', '0301', chuaCo], useWorkers: false });
+  const kq = await demNhomSach({ nhoms: ['8539', '8541', '0305', chuaCo], useWorkers: false });
   assert.equal(kq.tongNhom, 4);
   assert.equal(kq.nhomSach, 2);
   assert.equal(kq.tyLe, 50);
   assert.equal(kq.chuaSach.length, 2);
   assert.deepEqual(
     kq.chuaSach.map((x) => x.nhom),
-    ['0301', chuaCo].sort(),
+    ['0305', chuaCo].sort(),
   );
 });
 
 test('6. CLI --json in đúng một dòng JSON {tongNhom, nhomSach, tyLe}', () => {
-  const out = execFileSync(process.execPath, [SCRIPT, '--nhom=8539,8541,0301', '--json'], {
+  const out = execFileSync(process.execPath, [SCRIPT, '--nhom=8539,8541,0305', '--json'], {
     cwd: ROOT,
     encoding: 'utf8',
   }).trim();
@@ -97,11 +97,11 @@ test('6. CLI --json in đúng một dòng JSON {tongNhom, nhomSach, tyLe}', () =
 });
 
 test('7. CLI mặc định in tổng số nhóm, số nhóm SẠCH, phần trăm và danh sách tối đa 20 nhóm chưa sạch', () => {
-  const out = execFileSync(process.execPath, [SCRIPT, '--nhom=8539,8541,0301'], {
+  const out = execFileSync(process.execPath, [SCRIPT, '--nhom=8539,8541,0305'], {
     cwd: ROOT,
     encoding: 'utf8',
   });
   assert.match(out, /Tổng số nhóm 4 số:\s*3/);
   assert.match(out, /Số nhóm SẠCH \(V1\):\s*2\s*\(66\.7%\)/);
-  assert.match(out, /0301:/);
+  assert.match(out, /0305:/);
 });

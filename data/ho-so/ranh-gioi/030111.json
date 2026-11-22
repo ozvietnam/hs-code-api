@@ -4,13 +4,19 @@
   "nhom": "0301",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261105T1529#soan-030111",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1785#soat-030111",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1785)",
+    "bam": "e01c1353d5abd816eac2c17e190dda0b210153c379614d7003164de23b6cffbb"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -23,7 +29,7 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "03011191",
@@ -36,7 +42,7 @@
           "value": "Cá chép Koi"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "03011192",
@@ -49,7 +55,7 @@
           "value": "Cá vàng"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "03011193",
@@ -62,7 +68,7 @@
           "value": "Cá chọi Thái Lan"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "03011195",
@@ -73,16 +79,21 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Cá rồng"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Scleropages formosus"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "03011199",
       "nguon": "tax.03011199",
       "trich": "03011199 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -94,7 +105,12 @@
     {
       "ma": "03011191",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.03011191 \"Cá chép Koi (Cyprinus carpio)\" ⇒ tenLoai \"Cá chép Koi\"; ngoặc tên khoa học là chú thích, không thành điều kiện. Tương tự 03011192-95 (mã nhảy .93 → .95 theo biểu thuế, không có .94)."
+      "ghiChu": "tax.03011191 \"Cá chép Koi (Cyprinus carpio)\" ⇒ tenLoai \"Cá chép Koi\"; ngoặc tên khoa học là chú thích, không thành điều kiện. Tương tự 03011192-93 (mã nhảy .93 → .95 theo biểu thuế, không có .94)."
+    },
+    {
+      "ma": "03011195",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.03011195 \"Cá rồng (Scleropages formosus)\" ⇒ tenLoai \"Cá rồng\" + tenLoai \"Scleropages formosus\" — ngoặc tên khoa học là giới hạn loài (cá rồng có nhiều chi/loài khác thuộc 03011199)."
     }
   ],
   "traVe": [

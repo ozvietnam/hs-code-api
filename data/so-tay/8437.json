@@ -101,27 +101,105 @@
   "dong8": [
     {
       "hs": "84371010",
-      "dieuKien": "Dùng cho các loại hạt, hoạt động bằng điện; máy sàng sảy hạt và các loại máy làm sạch tương tự, hoạt động bằng điện",
+      "dieuKien": "(dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): các loại hạt và hoạt động bằng điện) hoặc (tên loại hàng: máy sàng sảy hạt hoặc loại tương tự và hoạt động bằng điện)",
       "loaiKhac": false,
       "nguon": "tax.84371010",
       "trich": "84371010 - - Dùng cho các loại hạt, hoạt động bằng điện; máy sàng sảy hạt và các loại máy làm sạch tương tự, hoạt động bằng điện",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "các loại hạt"
+              },
+              {
+                "fact": "hoatDongBangDien",
+                "op": "CO"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TUONG_TU",
+                "value": [
+                  "máy sàng sảy hạt"
+                ]
+              },
+              {
+                "fact": "hoatDongBangDien",
+                "op": "CO"
+              }
+            ]
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1782#soat-843710",
+          "ngay": "2026-11-21",
+          "bam": "167a6620bc1f3041eb795fa15644872a0139afafd38f3e19a934c4b50dca8caf"
+        }
+      }
     },
     {
       "hs": "84371020",
-      "dieuKien": "Dùng cho các loại hạt, không hoạt động bằng điện; máy sàng sảy hạt và các loại máy làm sạch tương tự, không hoạt động bằng điện",
+      "dieuKien": "(dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): các loại hạt và không: hoạt động bằng điện) hoặc (tên loại hàng: máy sàng sảy hạt hoặc loại tương tự và không: hoạt động bằng điện)",
       "loaiKhac": false,
       "nguon": "tax.84371020",
       "trich": "84371020 - - Dùng cho các loại hạt, không hoạt động bằng điện; máy sàng sảy hạt và các loại máy làm sạch tương tự, không hoạt động bằng điện",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "các loại hạt"
+              },
+              {
+                "fact": "hoatDongBangDien",
+                "op": "KHONG"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TUONG_TU",
+                "value": [
+                  "máy sàng sảy hạt"
+                ]
+              },
+              {
+                "fact": "hoatDongBangDien",
+                "op": "KHONG"
+              }
+            ]
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1782#soat-843710",
+          "ngay": "2026-11-21",
+          "bam": "167a6620bc1f3041eb795fa15644872a0139afafd38f3e19a934c4b50dca8caf"
+        }
+      }
     },
     {
       "hs": "84371030",
-      "dieuKien": "Loại khác, hoạt động bằng điện",
+      "dieuKien": "hoạt động bằng điện",
       "loaiKhac": true,
       "nguon": "tax.84371030",
       "trich": "84371030 - - Loại khác, hoạt động bằng điện",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phamViLoaiKhac": {
         "nguonLoai": "MAY_SUY",
         "cha": "843710",
@@ -132,15 +210,29 @@
         ],
         "toTienCoTen": "843710",
         "dinhNghiaDuoc": false
+      },
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1782#soat-843710",
+          "ngay": "2026-11-21",
+          "bam": "167a6620bc1f3041eb795fa15644872a0139afafd38f3e19a934c4b50dca8caf"
+        }
       }
     },
     {
       "hs": "84371040",
-      "dieuKien": "Loại khác, không hoạt động bằng điện",
+      "dieuKien": "không: hoạt động bằng điện",
       "loaiKhac": true,
       "nguon": "tax.84371040",
       "trich": "84371040 - - Loại khác, không hoạt động bằng điện",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phamViLoaiKhac": {
         "nguonLoai": "MAY_SUY",
         "cha": "843710",
@@ -151,47 +243,194 @@
         ],
         "toTienCoTen": "843710",
         "dinhNghiaDuoc": false
+      },
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1782#soat-843710",
+          "ngay": "2026-11-21",
+          "bam": "167a6620bc1f3041eb795fa15644872a0139afafd38f3e19a934c4b50dca8caf"
+        }
       }
     },
     {
       "hs": "84378010",
-      "dieuKien": "Máy bóc vỏ trấu và máy xát gạo hình côn, hoạt động bằng điện",
+      "dieuKien": "tên loại hàng: Máy bóc vỏ trấu hoặc máy xát gạo hình côn; hoạt động bằng điện",
       "loaiKhac": false,
       "nguon": "tax.84378010",
       "trich": "84378010 - - Máy bóc vỏ trấu và máy xát gạo hình côn, hoạt động bằng điện",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Máy bóc vỏ trấu",
+            "máy xát gạo hình côn"
+          ]
+        },
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1785#soat-843780",
+          "ngay": "2026-11-22",
+          "bam": "c91b8034bf6d292920ef4df25e2eccab00522325f0b300d059e588782509f564"
+        }
+      }
     },
     {
       "hs": "84378020",
-      "dieuKien": "Máy bóc vỏ trấu và máy xát gạo hình côn, không hoạt động bằng điện",
+      "dieuKien": "tên loại hàng: Máy bóc vỏ trấu hoặc máy xát gạo hình côn; không: hoạt động bằng điện",
       "loaiKhac": false,
       "nguon": "tax.84378020",
       "trich": "84378020 - - Máy bóc vỏ trấu và máy xát gạo hình côn, không hoạt động bằng điện",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Máy bóc vỏ trấu",
+            "máy xát gạo hình côn"
+          ]
+        },
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1785#soat-843780",
+          "ngay": "2026-11-22",
+          "bam": "c91b8034bf6d292920ef4df25e2eccab00522325f0b300d059e588782509f564"
+        }
+      }
     },
     {
       "hs": "84378030",
-      "dieuKien": "Máy nghiền cà phê và ngô dạng công nghiệp, hoạt động bằng điện",
+      "dieuKien": "tên loại hàng: Máy nghiền; tên loại hàng: cà phê hoặc ngô; tên loại hàng: dạng công nghiệp; hoạt động bằng điện",
       "loaiKhac": false,
       "nguon": "tax.84378030",
       "trich": "84378030 - - Máy nghiền cà phê và ngô dạng công nghiệp, hoạt động bằng điện",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy nghiền"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "cà phê",
+            "ngô"
+          ]
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "dạng công nghiệp"
+        },
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1785#soat-843780",
+          "ngay": "2026-11-22",
+          "bam": "c91b8034bf6d292920ef4df25e2eccab00522325f0b300d059e588782509f564"
+        }
+      }
     },
     {
       "hs": "84378040",
-      "dieuKien": "Máy nghiền cà phê và ngô dạng công nghiệp, không hoạt động bằng điện",
+      "dieuKien": "tên loại hàng: Máy nghiền; tên loại hàng: cà phê hoặc ngô; tên loại hàng: dạng công nghiệp; không: hoạt động bằng điện",
       "loaiKhac": false,
       "nguon": "tax.84378040",
       "trich": "84378040 - - Máy nghiền cà phê và ngô dạng công nghiệp, không hoạt động bằng điện",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy nghiền"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "cà phê",
+            "ngô"
+          ]
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "dạng công nghiệp"
+        },
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1785#soat-843780",
+          "ngay": "2026-11-22",
+          "bam": "c91b8034bf6d292920ef4df25e2eccab00522325f0b300d059e588782509f564"
+        }
+      }
     },
     {
       "hs": "84378051",
-      "dieuKien": "Máy đánh bóng gạo, máy giần, sàng, rây, máy làm sạch cám và máy bóc vỏ — dòng cha không có trong nguồn — đối chiếu biểu thuế (trùng chữ với 84378061)",
+      "dieuKien": "tên loại hàng: Máy đánh bóng gạo hoặc máy giần hoặc sàng hoặc rây hoặc máy làm sạch cám hoặc máy bóc vỏ",
       "loaiKhac": false,
       "nguon": "tax.84378051",
       "trich": "84378051 - - - Máy đánh bóng gạo, máy giần, sàng, rây, máy làm sạch cám và máy bóc vỏ",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Máy đánh bóng gạo",
+            "máy giần",
+            "sàng",
+            "rây",
+            "máy làm sạch cám",
+            "máy bóc vỏ"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1785#soat-843780",
+          "ngay": "2026-11-22",
+          "bam": "c91b8034bf6d292920ef4df25e2eccab00522325f0b300d059e588782509f564"
+        }
+      },
+      "phanConLai": [
+        "84378010"
+      ]
     },
     {
       "hs": "84378059",
@@ -212,11 +451,36 @@
     },
     {
       "hs": "84378061",
-      "dieuKien": "Máy đánh bóng gạo, máy giần, sàng, rây, máy làm sạch cám và máy bóc vỏ — dòng cha không có trong nguồn — đối chiếu biểu thuế (trùng chữ với 84378051)",
+      "dieuKien": "tên loại hàng: Máy đánh bóng gạo hoặc máy giần hoặc sàng hoặc rây hoặc máy làm sạch cám hoặc máy bóc vỏ",
       "loaiKhac": false,
       "nguon": "tax.84378061",
       "trich": "84378061 - - - Máy đánh bóng gạo, máy giần, sàng, rây, máy làm sạch cám và máy bóc vỏ",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Máy đánh bóng gạo",
+            "máy giần",
+            "sàng",
+            "rây",
+            "máy làm sạch cám",
+            "máy bóc vỏ"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1785#soat-843780",
+          "ngay": "2026-11-22",
+          "bam": "c91b8034bf6d292920ef4df25e2eccab00522325f0b300d059e588782509f564"
+        }
+      },
+      "phanConLai": [
+        "84378020"
+      ]
     },
     {
       "hs": "84378069",
@@ -570,6 +834,46 @@
     }
   },
   "dieuKienNut": [
+    {
+      "id": "8437805",
+      "nguon": "tieuDe.8437805",
+      "trich": "8437805 Loại khác, hoạt động bằng điện",
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1785#soat-843780",
+          "ngay": "2026-11-22",
+          "bam": "c91b8034bf6d292920ef4df25e2eccab00522325f0b300d059e588782509f564"
+        }
+      }
+    },
+    {
+      "id": "8437806",
+      "nguon": "tieuDe.8437806",
+      "trich": "8437806 Loại khác, không hoạt động bằng điện",
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1785#soat-843780",
+          "ngay": "2026-11-22",
+          "bam": "c91b8034bf6d292920ef4df25e2eccab00522325f0b300d059e588782509f564"
+        }
+      }
+    },
     {
       "id": "8437901",
       "nguon": "tieuDe.8437901",
