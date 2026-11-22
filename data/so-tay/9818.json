@@ -533,9 +533,15 @@
         "duyet": {
           "phien": "claude-agent:ozv-1867#soat-981820",
           "ngay": "2026-11-22",
-          "bam": "48529b0a5395a34f1164a93a0b4d6c7ce5e141ea0db735ee49695360cb0e5803"
+          "bam": "bc617591a9e2f90004bc5dcbb52fc0e050b4603617e692b10d4c52c2b05dd9dc"
         }
-      }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "98182029",
+          "lyDo": "tax.98182010 \"Bơm nước bằng tay\" (mã tương ứng 8413.20.10) và tax.98182029 \"Loại khác, trừ loại chuyển động tịnh tiến hoặc chuyển động quay\" dưới 9818202 \"Bơm nước hoặc bơm nhiên liệu, dùng cho động cơ đốt trong kiểu piston\" (mã tương ứng 8413.30.90): khoá kieuBom không đọc cụm \"Bơm nước bằng tay\" nên cổng 2 ghép vector chồng lấn trên chữ."
+        }
+      ]
     },
     {
       "hs": "98182021",
@@ -563,13 +569,13 @@
         "duyet": {
           "phien": "claude-agent:ozv-1867#soat-981820",
           "ngay": "2026-11-22",
-          "bam": "48529b0a5395a34f1164a93a0b4d6c7ce5e141ea0db735ee49695360cb0e5803"
+          "bam": "bc617591a9e2f90004bc5dcbb52fc0e050b4603617e692b10d4c52c2b05dd9dc"
         }
       }
     },
     {
       "hs": "98182029",
-      "dieuKien": "tên loại hàng: trừ loại chuyển động tịnh tiến",
+      "dieuKien": "không kiểu bơm: piston (chuyển động tịnh tiến)",
       "nguon": "tax.98182029",
       "trich": "98182029 - - Loại khác, trừ loại chuyển động tịnh tiến hoặc chuyển động quay",
       "loaiKhac": true,
@@ -588,9 +594,12 @@
       },
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "trừ loại chuyển động tịnh tiến"
+          "fact": "kieuBom",
+          "op": "TRONG",
+          "value": [
+            "PISTON"
+          ],
+          "chieu": "PHAI_KHONG"
         }
       ],
       "ranhGioi": {
@@ -598,9 +607,18 @@
         "duyet": {
           "phien": "claude-agent:ozv-1867#soat-981820",
           "ngay": "2026-11-22",
-          "bam": "48529b0a5395a34f1164a93a0b4d6c7ce5e141ea0db735ee49695360cb0e5803"
+          "bam": "bc617591a9e2f90004bc5dcbb52fc0e050b4603617e692b10d4c52c2b05dd9dc"
         }
-      }
+      },
+      "phanConLai": [
+        "98182021"
+      ],
+      "chongLanVanBan": [
+        {
+          "voi": "98182010",
+          "lyDo": "tax.98182010 \"Bơm nước bằng tay\" (mã tương ứng 8413.20.10) và tax.98182029 \"Loại khác, trừ loại chuyển động tịnh tiến hoặc chuyển động quay\" dưới 9818202 \"Bơm nước hoặc bơm nhiên liệu, dùng cho động cơ đốt trong kiểu piston\" (mã tương ứng 8413.30.90): khoá kieuBom không đọc cụm \"Bơm nước bằng tay\" nên cổng 2 ghép vector chồng lấn trên chữ."
+        }
+      ]
     },
     {
       "hs": "98182031",
@@ -622,7 +640,7 @@
         "duyet": {
           "phien": "claude-agent:ozv-1867#soat-981820",
           "ngay": "2026-11-22",
-          "bam": "48529b0a5395a34f1164a93a0b4d6c7ce5e141ea0db735ee49695360cb0e5803"
+          "bam": "bc617591a9e2f90004bc5dcbb52fc0e050b4603617e692b10d4c52c2b05dd9dc"
         }
       }
     },
@@ -681,7 +699,7 @@
         "duyet": {
           "phien": "claude-agent:ozv-1867#soat-981820",
           "ngay": "2026-11-22",
-          "bam": "48529b0a5395a34f1164a93a0b4d6c7ce5e141ea0db735ee49695360cb0e5803"
+          "bam": "bc617591a9e2f90004bc5dcbb52fc0e050b4603617e692b10d4c52c2b05dd9dc"
         }
       }
     },
@@ -772,7 +790,7 @@
         "duyet": {
           "phien": "claude-agent:ozv-1867#soat-981822",
           "ngay": "2026-11-22",
-          "bam": "8b14ff238415e9dfd352f2833e7cc01f91fbc700d7108fb1aaf51a4eaf304874"
+          "bam": "8328d3aae99bf35766ddb44398e0355d7bb66ff968eb2d43af39c09b18b0c285"
         }
       }
     },
@@ -799,17 +817,12 @@
     },
     {
       "hs": "98182220",
-      "dieuKien": "tên loại hàng: có kèm theo bộ phận làm lạnh; có kèm bộ phận làm lạnh; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): xe chạy trên đường ray; công suất > 26.38 kW",
+      "dieuKien": "có kèm bộ phận làm lạnh; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): xe chạy trên đường ray; công suất > 26.38 kW",
       "nguon": "tax.98182220",
       "trich": "98182220 - - Máy điều hoà không khí, loại khác, có kèm theo bộ phận làm lạnh, sử dụng cho xe chạy trên đường ray, có công suất làm mát trên 26,38 kW",
       "loaiKhac": false,
       "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "có kèm theo bộ phận làm lạnh"
-        },
         {
           "fact": "coBoPhanLamLanh",
           "op": "CO"
@@ -831,24 +844,47 @@
         "duyet": {
           "phien": "claude-agent:ozv-1867#soat-981822",
           "ngay": "2026-11-22",
-          "bam": "8b14ff238415e9dfd352f2833e7cc01f91fbc700d7108fb1aaf51a4eaf304874"
+          "bam": "8328d3aae99bf35766ddb44398e0355d7bb66ff968eb2d43af39c09b18b0c285"
         }
       },
-      "phanConLai": true
+      "phanConLai": true,
+      "chongLanTruc": {
+        "pn6": "981822",
+        "nhanh": [
+          "9818221",
+          "98182220",
+          "9818223"
+        ],
+        "truc": {
+          "9818221": "DAC_DIEM",
+          "9818223": "TEN_LOAI",
+          "98182220": "CONG_DUNG"
+        },
+        "cauHoiPhanBiet": "Hàng là máy điều hoà không khí hoàn chỉnh (loại bơm nhiệt có đảo chiều 9818.22.1x hoặc loại khác > 26,38 kW 9818.22.20) hay là bộ phận của máy điều hoà không khí (9818.22.3x)?",
+        "trich": {
+          "9818221": "Kèm theo các bộ phận làm lạnh và một van đảo chiều chu trình nóng lạnh (bơm nhiệt có đảo chiều)",
+          "9818223": "Bộ phận",
+          "98182220": "Máy điều hoà không khí, loại khác, có kèm theo bộ phận làm lạnh, sử dụng cho xe chạy trên đường ray, có công suất làm mát trên 26,38 kW"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:ozv-1867#soat-981822",
+            "ngay": "2026-11-22",
+            "bam": "8328d3aae99bf35766ddb44398e0355d7bb66ff968eb2d43af39c09b18b0c285"
+          }
+        }
+      }
     },
     {
       "hs": "98182231",
-      "dieuKien": "tên loại hàng: Của máy có công suất làm lạnh; công suất > 26.38 kW; công suất <= 52.75 kW; lưu lượng <= 67.96 m3/phút",
+      "dieuKien": "công suất > 26.38 kW; công suất <= 52.75 kW; lưu lượng <= 67.96 m3/phút",
       "nguon": "tax.98182231",
       "trich": "98182231 - - - Của máy có công suất làm lạnh trên 26,38 kW nhưng không quá 52,75 kW, có tốc độ dòng khí đi qua mối dàn bay hơi không quá 67,96 m3/phút",
       "loaiKhac": false,
       "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Của máy có công suất làm lạnh"
-        },
         {
           "fact": "congSuat",
           "op": ">",
@@ -873,23 +909,18 @@
         "duyet": {
           "phien": "claude-agent:ozv-1867#soat-981822",
           "ngay": "2026-11-22",
-          "bam": "8b14ff238415e9dfd352f2833e7cc01f91fbc700d7108fb1aaf51a4eaf304874"
+          "bam": "8328d3aae99bf35766ddb44398e0355d7bb66ff968eb2d43af39c09b18b0c285"
         }
       }
     },
     {
       "hs": "98182239",
-      "dieuKien": "tên loại hàng: Của máy có công suất làm lạnh; công suất > 52.75 kW; lưu lượng <= 67.96 m3/phút",
+      "dieuKien": "công suất > 52.75 kW; lưu lượng <= 67.96 m3/phút",
       "nguon": "tax.98182239",
       "trich": "98182239 - - - Của máy có công suất làm lạnh trên 52,75 kW, có tốc độ dòng khí đi qua mối dàn bay hơi không quá 67,96 m3/phút",
       "loaiKhac": false,
       "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Của máy có công suất làm lạnh"
-        },
         {
           "fact": "congSuat",
           "op": ">",
@@ -908,7 +939,7 @@
         "duyet": {
           "phien": "claude-agent:ozv-1867#soat-981822",
           "ngay": "2026-11-22",
-          "bam": "8b14ff238415e9dfd352f2833e7cc01f91fbc700d7108fb1aaf51a4eaf304874"
+          "bam": "8328d3aae99bf35766ddb44398e0355d7bb66ff968eb2d43af39c09b18b0c285"
         }
       }
     },
@@ -1834,7 +1865,7 @@
         "duyet": {
           "phien": "claude-agent:ozv-1867#soat-981820",
           "ngay": "2026-11-22",
-          "bam": "48529b0a5395a34f1164a93a0b4d6c7ce5e141ea0db735ee49695360cb0e5803"
+          "bam": "bc617591a9e2f90004bc5dcbb52fc0e050b4603617e692b10d4c52c2b05dd9dc"
         }
       },
       "phanConLai": true
@@ -1864,7 +1895,7 @@
         "duyet": {
           "phien": "claude-agent:ozv-1867#soat-981820",
           "ngay": "2026-11-22",
-          "bam": "48529b0a5395a34f1164a93a0b4d6c7ce5e141ea0db735ee49695360cb0e5803"
+          "bam": "bc617591a9e2f90004bc5dcbb52fc0e050b4603617e692b10d4c52c2b05dd9dc"
         }
       }
     },
@@ -1876,36 +1907,36 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "một tầng"
+          "value": "Bơm nước"
         },
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "một chiều hút"
-        },
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "trục ngang"
-        },
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
+          "fact": "soTangBom",
+          "op": "TRONG",
           "value": [
-            "được truyền động bằng dây đai",
-            "khớp nối trực tiếp"
+            "MOT_TANG"
           ]
         },
         {
-          "fact": "congDung",
-          "op": "CONG_DUNG",
-          "value": "đồng trục với động cơ",
-          "chieu": "PHAI_KHONG"
+          "fact": "kieuHutBom",
+          "op": "TRONG",
+          "value": [
+            "MOT_CHIEU"
+          ]
         },
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Bơm nước"
+          "fact": "huongTrucBom",
+          "op": "TRONG",
+          "value": [
+            "NGANG"
+          ]
+        },
+        {
+          "fact": "kieuTruyenDong",
+          "op": "TRONG",
+          "value": [
+            "DAY_DAI",
+            "KHOP_NOI_TRUC_TIEP"
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET",
@@ -1914,7 +1945,7 @@
         "duyet": {
           "phien": "claude-agent:ozv-1867#soat-981820",
           "ngay": "2026-11-22",
-          "bam": "48529b0a5395a34f1164a93a0b4d6c7ce5e141ea0db735ee49695360cb0e5803"
+          "bam": "bc617591a9e2f90004bc5dcbb52fc0e050b4603617e692b10d4c52c2b05dd9dc"
         }
       }
     },
@@ -1923,11 +1954,6 @@
       "nguon": "tieuDe.9818221",
       "trich": "9818221 Kèm theo các bộ phận làm lạnh và một van đảo chiều chu trình nóng lạnh (bơm nhiệt có đảo chiều)",
       "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Kèm theo các bộ phận làm lạnh và một van đảo chiều chu trình nóng lạnh"
-        },
         {
           "fact": "coBoPhanLamLanh",
           "op": "CO"
@@ -1943,7 +1969,35 @@
         "duyet": {
           "phien": "claude-agent:ozv-1867#soat-981822",
           "ngay": "2026-11-22",
-          "bam": "8b14ff238415e9dfd352f2833e7cc01f91fbc700d7108fb1aaf51a4eaf304874"
+          "bam": "8328d3aae99bf35766ddb44398e0355d7bb66ff968eb2d43af39c09b18b0c285"
+        }
+      },
+      "chongLanTruc": {
+        "pn6": "981822",
+        "nhanh": [
+          "9818221",
+          "98182220",
+          "9818223"
+        ],
+        "truc": {
+          "9818221": "DAC_DIEM",
+          "9818223": "TEN_LOAI",
+          "98182220": "CONG_DUNG"
+        },
+        "cauHoiPhanBiet": "Hàng là máy điều hoà không khí hoàn chỉnh (loại bơm nhiệt có đảo chiều 9818.22.1x hoặc loại khác > 26,38 kW 9818.22.20) hay là bộ phận của máy điều hoà không khí (9818.22.3x)?",
+        "trich": {
+          "9818221": "Kèm theo các bộ phận làm lạnh và một van đảo chiều chu trình nóng lạnh (bơm nhiệt có đảo chiều)",
+          "9818223": "Bộ phận",
+          "98182220": "Máy điều hoà không khí, loại khác, có kèm theo bộ phận làm lạnh, sử dụng cho xe chạy trên đường ray, có công suất làm mát trên 26,38 kW"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:ozv-1867#soat-981822",
+            "ngay": "2026-11-22",
+            "bam": "8328d3aae99bf35766ddb44398e0355d7bb66ff968eb2d43af39c09b18b0c285"
+          }
         }
       }
     },
@@ -1952,6 +2006,11 @@
       "nguon": "tieuDe.9818223",
       "trich": "9818223 Bộ phận",
       "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bộ phận"
+        },
         {
           "fact": "laBoPhan",
           "op": "CO"
@@ -1963,7 +2022,35 @@
         "duyet": {
           "phien": "claude-agent:ozv-1867#soat-981822",
           "ngay": "2026-11-22",
-          "bam": "8b14ff238415e9dfd352f2833e7cc01f91fbc700d7108fb1aaf51a4eaf304874"
+          "bam": "8328d3aae99bf35766ddb44398e0355d7bb66ff968eb2d43af39c09b18b0c285"
+        }
+      },
+      "chongLanTruc": {
+        "pn6": "981822",
+        "nhanh": [
+          "9818221",
+          "98182220",
+          "9818223"
+        ],
+        "truc": {
+          "9818221": "DAC_DIEM",
+          "9818223": "TEN_LOAI",
+          "98182220": "CONG_DUNG"
+        },
+        "cauHoiPhanBiet": "Hàng là máy điều hoà không khí hoàn chỉnh (loại bơm nhiệt có đảo chiều 9818.22.1x hoặc loại khác > 26,38 kW 9818.22.20) hay là bộ phận của máy điều hoà không khí (9818.22.3x)?",
+        "trich": {
+          "9818221": "Kèm theo các bộ phận làm lạnh và một van đảo chiều chu trình nóng lạnh (bơm nhiệt có đảo chiều)",
+          "9818223": "Bộ phận",
+          "98182220": "Máy điều hoà không khí, loại khác, có kèm theo bộ phận làm lạnh, sử dụng cho xe chạy trên đường ray, có công suất làm mát trên 26,38 kW"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:ozv-1867#soat-981822",
+            "ngay": "2026-11-22",
+            "bam": "8328d3aae99bf35766ddb44398e0355d7bb66ff968eb2d43af39c09b18b0c285"
+          }
         }
       }
     }

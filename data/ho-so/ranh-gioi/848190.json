@@ -15,7 +15,7 @@
     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot6",
     "ngay": "2026-11-01",
     "ghiChu": "Soát độc lập đợt 6: #662 đã sửa — 8481902 bỏ dungCho dương [\"vòi\",\"van\"] (vế mở không còn bị đóng), giữ dungCho PHAI_KHONG [\"săm\",\"lốp không săm\"] + duongKinhTrong <= 25 mm (\"từ 25 mm trở xuống\", đối chiếu tay). BO_VE \"và các thiết bị tương tự\": CHẤP NHẬN — không có điều kiện liệt kê đóng nào, máy báo chỉ vì neo PHAI_KHONG nằm trong cùng mệnh đề với danh sách (bộ tách đọc ngoặc \"(trừ …)\" như liệt kê). Loại trừ vẫn đủ: thử doiChieuPhanNhom — thân van săm xe đạp bằng đồng 8 mm ⇒ .31; thân van lốp không săm bằng nhôm ⇒ .39; lõi van lốp không săm bằng đồng ⇒ .41; màng van dùng cho van săm 6 mm ⇒ .90 (không lọt 8481902); thân van săm 30 mm ⇒ 8481903 (không giới hạn đường kính, đúng chữ); thân vòi nước 15 mm ⇒ .21; vỏ van cổng 100 mm ⇒ .10, 20 mm ⇒ .29. Biên .10 (> 50, <= 400) đúng chữ. Bảng 848190-01 LECH_CHUA_PHAN_XU giữ, ghi chú LECH_TIEN_LE có.",
-    "bam": "3f4c58372a3b3f49e55a86481fc9807fa0c92b6209585c4575c129d9d7625275"
+    "bam": "af32f1f0d0c098ec2e08fb7f0f30f77e190ca120bc3edf23c675f9e72f7dabae"
   },
   "dieuKienNut": [
     {
@@ -24,27 +24,21 @@
       "trich": "8481902 Dùng cho vòi, van các loại (trừ van dùng cho săm và lốp không săm) và các thiết bị tương tự có đường kính trong từ 25 mm trở xuống",
       "dieuKienSo": [
         {
-          "op": "HOAC",
-          "phuongAn": [
-            [
-              {
-                "fact": "dungCho",
-                "op": "CONG_DUNG",
-                "value": [
-                  "săm",
-                  "lốp không săm"
-                ],
-                "chieu": "PHAI_KHONG"
-              }
-            ],
-            [
-              {
-                "fact": "dungCho",
-                "op": "CONG_DUNG",
-                "value": "van các loại"
-              }
-            ]
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "vòi",
+            "van"
           ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "săm",
+            "lốp không săm"
+          ],
+          "chieu": "PHAI_KHONG"
         },
         {
           "fact": "duongKinhTrong",

@@ -15,7 +15,7 @@
     "phien": "claude-agent:ozv-1867#soat-981822",
     "ngay": "2026-11-22",
     "ghiChu": "Duyệt ranh giới PN6 981822 (OZV-1867)",
-    "bam": "8b14ff238415e9dfd352f2833e7cc01f91fbc700d7108fb1aaf51a4eaf304874"
+    "bam": "8328d3aae99bf35766ddb44398e0355d7bb66ff968eb2d43af39c09b18b0c285"
   },
   "dieuKienNut": [
     {
@@ -23,11 +23,6 @@
       "nguon": "tieuDe.9818221",
       "trich": "9818221 Kèm theo các bộ phận làm lạnh và một van đảo chiều chu trình nóng lạnh (bơm nhiệt có đảo chiều)",
       "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Kèm theo các bộ phận làm lạnh và một van đảo chiều chu trình nóng lạnh"
-        },
         {
           "fact": "coBoPhanLamLanh",
           "op": "CO"
@@ -44,6 +39,11 @@
       "nguon": "tieuDe.9818223",
       "trich": "9818223 Bộ phận",
       "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bộ phận"
+        },
         {
           "fact": "laBoPhan",
           "op": "CO"
@@ -80,11 +80,6 @@
       "trich": "98182220 - - Máy điều hoà không khí, loại khác, có kèm theo bộ phận làm lạnh, sử dụng cho xe chạy trên đường ray, có công suất làm mát trên 26,38 kW",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "có kèm theo bộ phận làm lạnh"
-        },
-        {
           "fact": "coBoPhanLamLanh",
           "op": "CO"
         },
@@ -108,11 +103,6 @@
       "nguon": "tax.98182231",
       "trich": "98182231 - - - Của máy có công suất làm lạnh trên 26,38 kW nhưng không quá 52,75 kW, có tốc độ dòng khí đi qua mối dàn bay hơi không quá 67,96 m3/phút",
       "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Của máy có công suất làm lạnh"
-        },
         {
           "fact": "congSuat",
           "op": ">",
@@ -139,11 +129,6 @@
       "nguon": "tax.98182239",
       "trich": "98182239 - - - Của máy có công suất làm lạnh trên 52,75 kW, có tốc độ dòng khí đi qua mối dàn bay hơi không quá 67,96 m3/phút",
       "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Của máy có công suất làm lạnh"
-        },
         {
           "fact": "congSuat",
           "op": ">",
@@ -195,6 +180,43 @@
       "ma": "981822",
       "loai": "QUYET_DINH",
       "ghiChu": "Claude 07/11/2026 (#1109): tax.98182220 \"Máy điều hoà không khí, loại khác, có kèm theo bộ phận làm lạnh…\" là phần còn lại sau tầng 9818221 (bơm nhiệt có đảo chiều) ⇒ phanConLai; 9818221 và .20 cạnh tầng anh em \"Bộ phận\" ⇒ laBoPhan KHONG (căn cứ cấu trúc; chữ «bộ phận làm lạnh» là đặc điểm, không phải «là bộ phận»). Bỏ cụm chongLanTruc cũ (chồng lấn giả)."
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "9818221",
+        "98182220",
+        "9818223"
+      ],
+      "truc": {
+        "9818221": "DAC_DIEM",
+        "9818223": "TEN_LOAI",
+        "98182220": "CONG_DUNG"
+      },
+      "cauHoiPhanBiet": "Hàng là máy điều hoà không khí hoàn chỉnh (loại bơm nhiệt có đảo chiều 9818.22.1x hoặc loại khác > 26,38 kW 9818.22.20) hay là bộ phận của máy điều hoà không khí (9818.22.3x)?",
+      "trich": {
+        "9818221": "Kèm theo các bộ phận làm lạnh và một van đảo chiều chu trình nóng lạnh (bơm nhiệt có đảo chiều)",
+        "9818223": "Bộ phận",
+        "98182220": "Máy điều hoà không khí, loại khác, có kèm theo bộ phận làm lạnh, sử dụng cho xe chạy trên đường ray, có công suất làm mát trên 26,38 kW"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "9818221",
+            "9818223"
+          ],
+          "khongCoHangThat": "9818221 là máy điều hoà hoàn chỉnh (bơm nhiệt có đảo chiều); 9818223 là bộ phận rời của máy điều hoà — một mặt hàng không thể vừa là máy hoàn chỉnh vừa là bộ phận."
+        },
+        {
+          "cap": [
+            "98182220",
+            "9818223"
+          ],
+          "khongCoHangThat": "98182220 là máy điều hoà không khí hoàn chỉnh; 9818223 là bộ phận rời của máy điều hoà — một mặt hàng không thể vừa là máy hoàn chỉnh vừa là bộ phận."
+        }
+      ],
+      "phanXu": null
     }
   ]
 }

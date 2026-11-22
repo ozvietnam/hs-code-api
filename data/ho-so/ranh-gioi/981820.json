@@ -15,7 +15,7 @@
     "phien": "claude-agent:ozv-1867#soat-981820",
     "ngay": "2026-11-22",
     "ghiChu": "Chuẩn hoá 981820 theo mẫu 841370 (OZV-1867)",
-    "bam": "48529b0a5395a34f1164a93a0b4d6c7ce5e141ea0db735ee49695360cb0e5803"
+    "bam": "bc617591a9e2f90004bc5dcbb52fc0e050b4603617e692b10d4c52c2b05dd9dc"
   },
   "dieuKienNut": [
     {
@@ -68,36 +68,36 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "một tầng"
+          "value": "Bơm nước"
         },
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "một chiều hút"
-        },
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "trục ngang"
-        },
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
+          "fact": "soTangBom",
+          "op": "TRONG",
           "value": [
-            "được truyền động bằng dây đai",
-            "khớp nối trực tiếp"
+            "MOT_TANG"
           ]
         },
         {
-          "fact": "congDung",
-          "op": "CONG_DUNG",
-          "value": "đồng trục với động cơ",
-          "chieu": "PHAI_KHONG"
+          "fact": "kieuHutBom",
+          "op": "TRONG",
+          "value": [
+            "MOT_CHIEU"
+          ]
         },
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Bơm nước"
+          "fact": "huongTrucBom",
+          "op": "TRONG",
+          "value": [
+            "NGANG"
+          ]
+        },
+        {
+          "fact": "kieuTruyenDong",
+          "op": "TRONG",
+          "value": [
+            "DAY_DAI",
+            "KHOP_NOI_TRUC_TIEP"
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -143,12 +143,18 @@
       "trich": "98182029 - - Loại khác, trừ loại chuyển động tịnh tiến hoặc chuyển động quay",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "trừ loại chuyển động tịnh tiến"
+          "fact": "kieuBom",
+          "op": "TRONG",
+          "value": [
+            "PISTON"
+          ],
+          "chieu": "PHAI_KHONG"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "CLAUDE_DUYET",
+      "phanConLai": [
+        "98182021"
+      ]
     },
     {
       "hs": "98182031",
@@ -199,18 +205,6 @@
   ],
   "ghiChuSoan": [
     {
-      "ma": "98182010",
-      "loai": "BO_VE",
-      "ve": "bằng tay",
-      "lyDo": "Khoá kieuBom (@1, đóng băng) chỉ đọc «bơm (bằng) tay», không đọc «Bơm nước bằng tay». Vế được giữ tất định bằng mã hàng tương ứng 8413.20.10 (phân nhóm 8413.20 — bơm tay) của chính dòng (tuongUng)."
-    },
-    {
-      "ma": "98182029",
-      "loai": "BO_VE",
-      "ve": "trừ loại chuyển động tịnh tiến hoặc chuyển động quay",
-      "lyDo": "Vế loại trừ kiểu bơm (tịnh tiến — PISTON; quay — kieuBom không đọc «chuyển động quay»). Giữ tất định bằng mã hàng tương ứng 8413.30.90 của chính dòng (tuongUng): đúng phần còn lại của 8413.30 sau bơm piston/quay."
-    },
-    {
       "ma": "981820",
       "loai": "QUYET_DINH",
       "ghiChu": "Claude 07/11/2026 (#1109): spec viết mới (bản cũ trống). Tầng theo chữ biểu: 9818202 bơm nước/nhiên liệu cho động cơ đốt trong kiểu piston; r19155 \"Bơm ly tâm khác\" (kieuBom LY_TAM, phần còn lại); 9818203 theo cách ghi 8413.70.1 (soTangBom, kieuHutBom, huongTrucBom, kieuTruyenDong). Dòng mà chữ không đọc được bằng khoá (\"bằng tay\", \"trừ loại chuyển động… quay\") và các dòng dễ chồng (.21, .31, .90) ghi thêm maHsTuongUng theo cột mã hàng tương ứng (tuongUng)."
@@ -219,6 +213,21 @@
       "ma": "981820~r19155",
       "loai": "QUYET_DINH",
       "ghiChu": "tieuDe.981820~r19155 \"Bơm ly tâm khác\" — bơm nguyên chiếc, anh em của 98182090 \"Bộ phận của bơm thuộc phân nhóm 8413.70.11 và 8413.70.19\" ⇒ thêm laBoPhan KHONG (căn cứ cấu trúc: anh em là bộ phận của chính hàng ở tầng này)"
+    },
+    {
+      "ma": "9818203",
+      "loai": "BO_VE",
+      "ve": "trừ loại bơm đồng trục với động cơ",
+      "lyDo": "Khoá kieuTruyenDong TRONG [DAY_DAI, KHOP_NOI_TRUC_TIEP] đã loại trừ tất định giá trị DONG_TRUC_DONG_CO trên cùng trục liệt kê."
+    }
+  ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "98182010",
+        "98182029"
+      ],
+      "lyDo": "tax.98182010 \"Bơm nước bằng tay\" (mã tương ứng 8413.20.10) và tax.98182029 \"Loại khác, trừ loại chuyển động tịnh tiến hoặc chuyển động quay\" dưới 9818202 \"Bơm nước hoặc bơm nhiên liệu, dùng cho động cơ đốt trong kiểu piston\" (mã tương ứng 8413.30.90): khoá kieuBom không đọc cụm \"Bơm nước bằng tay\" nên cổng 2 ghép vector chồng lấn trên chữ."
     }
   ]
 }
