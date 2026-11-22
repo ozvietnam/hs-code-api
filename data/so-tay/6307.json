@@ -246,7 +246,70 @@
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
-  "tieuChi6": [],
+  "tieuChi6": [
+    {
+      "hs6": "630710",
+      "thuTu": 1,
+      "dieuKien": "Khăn lau sàn, khăn lau bát đĩa, khăn lau bụi và các loại khăn lau tương tự",
+      "fact": "tenLoai",
+      "op": "TUONG_TU",
+      "value": [
+        "Khăn lau sàn",
+        "khăn lau bát đĩa",
+        "khăn lau bụi"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "khăn lau sàn",
+        "khăn lau bát đĩa",
+        "khăn lau bụi"
+      ],
+      "nguon": "tieuDe.630710",
+      "trich": "630710 Khăn lau sàn, khăn lau bát đĩa, khăn lau bụi và các loại khăn lau tương tự",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "630720",
+      "thuTu": 2,
+      "dieuKien": "Áo cứu sinh và đai cứu sinh",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": [
+        "Áo cứu sinh",
+        "đai cứu sinh"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "áo cứu sinh",
+        "đai cứu sinh"
+      ],
+      "nguon": "tax.63072000",
+      "trich": "63072000 - Áo cứu sinh và đai cứu sinh",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "630790",
+      "thuTu": 3,
+      "phanConLai": true,
+      "tienLe": [
+        {
+          "so": "13270/TB-CHQ",
+          "ma": "63079090"
+        },
+        {
+          "so": "13271/TB-CHQ",
+          "ma": "63079090"
+        },
+        {
+          "so": "13272/TB-CHQ",
+          "ma": "63079090"
+        }
+      ],
+      "nguon": "tieuDe.630790",
+      "trich": "630790 Loại khác",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
   "dong8": [
     {
       "hs": "63071010",
@@ -734,6 +797,8 @@
     "tax.63079069",
     "tax.63079070",
     "tax.63079090",
+    "tieuDe.630710",
+    "tieuDe.630790",
     "wco-op.630790.1",
     "wco-op.630790.2",
     "wco-op.630790.3",
@@ -751,8 +816,8 @@
     "ms": 6
   },
   "kiemTra": {
-    "tong": 59,
-    "dat": 59,
+    "tong": 55,
+    "dat": 55,
     "loai": 0,
     "nguonBiCat": [
       "phan63.phan (46130→25000)"
@@ -765,6 +830,12 @@
         "tieuChi6",
         "phamViLoaiKhac"
       ]
+    },
+    "tieuChi6": {
+      "khuon": "g6@1",
+      "soMuc": 3,
+      "soPhanNhom": 3,
+      "cong": "scripts/kiem-tieu-chi-6.mjs"
     }
   },
   "yKienWcoDayDu": false,

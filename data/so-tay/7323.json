@@ -144,7 +144,173 @@
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
-  "tieuChi6": [],
+  "tieuChi6": [
+    {
+      "hs6": "732310",
+      "thuTu": 1,
+      "dieuKien": "Bùi nhùi; miếng cọ nồi và cọ rửa hoặc đánh bóng, găng tay và các loại tương tự",
+      "fact": "tenLoai",
+      "op": "TUONG_TU",
+      "value": [
+        "Bùi nhùi",
+        "miếng cọ nồi và cọ rửa hoặc đánh bóng",
+        "găng tay"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "bùi nhùi",
+        "miếng cọ nồi",
+        "găng tay"
+      ],
+      "nguon": "tax.73231000",
+      "trich": "73231000 - Bùi nhùi bằng sắt hoặc thép; miếng cọ nồi và cọ rửa hoặc đánh bóng, găng tay và các loại tương tự",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "732310",
+      "thuTu": 1,
+      "dieuKien": "bằng sắt hoặc thép",
+      "fact": "chatLieu",
+      "op": "LA",
+      "value": "sắt thép",
+      "donVi": null,
+      "tuKhoa": [
+        "sắt",
+        "thép"
+      ],
+      "nguon": "tax.73231000",
+      "trich": "73231000 - Bùi nhùi bằng sắt hoặc thép; miếng cọ nồi và cọ rửa hoặc đánh bóng, găng tay và các loại tương tự",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "732391",
+      "thuTu": 2,
+      "dieuKien": "Bằng gang đúc",
+      "fact": "chatLieu",
+      "op": "LA",
+      "value": "gang",
+      "donVi": null,
+      "nguon": "tieuDe.732391",
+      "trich": "732391 Bằng gang đúc, chưa tráng men",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "732391",
+      "thuTu": 2,
+      "dieuKien": "chưa tráng men",
+      "fact": "daTrangMen",
+      "op": "KHONG",
+      "donVi": null,
+      "nguon": "tieuDe.732391",
+      "trich": "732391 Bằng gang đúc, chưa tráng men",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "732392",
+      "thuTu": 3,
+      "dieuKien": "Bằng gang đúc",
+      "fact": "chatLieu",
+      "op": "LA",
+      "value": "gang",
+      "donVi": null,
+      "tuKhoa": [
+        "gang"
+      ],
+      "nguon": "tax.73239200",
+      "trich": "73239200 - - Bằng gang đúc, đã tráng men",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "732392",
+      "thuTu": 3,
+      "dieuKien": "đã tráng men",
+      "fact": "daTrangMen",
+      "op": "CO",
+      "donVi": null,
+      "tuKhoa": [
+        "đã tráng men"
+      ],
+      "nguon": "tax.73239200",
+      "trich": "73239200 - - Bằng gang đúc, đã tráng men",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "732393",
+      "thuTu": 4,
+      "dieuKien": "Bằng thép không gỉ",
+      "fact": "chatLieu",
+      "op": "LA",
+      "value": "thép không gỉ",
+      "donVi": null,
+      "tuKhoa": [
+        "thép không gỉ"
+      ],
+      "tienLe": [
+        {
+          "so": "19783/TB-CHQ",
+          "ma": "73239390"
+        }
+      ],
+      "nguon": "tieuDe.732393",
+      "trich": "732393 Bằng thép không gỉ",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "732394",
+      "thuTu": 5,
+      "dieuKien": "Bằng sắt hoặc thép",
+      "fact": "chatLieu",
+      "op": "LA",
+      "value": "sắt thép",
+      "donVi": null,
+      "tuKhoa": [
+        "sắt",
+        "thép"
+      ],
+      "nguon": "tax.73239400",
+      "trich": "73239400 - - Bằng sắt (trừ gang đúc) hoặc thép, đã tráng men",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "732394",
+      "thuTu": 5,
+      "dieuKien": "trừ gang đúc",
+      "fact": "chatLieu",
+      "op": "LA",
+      "value": "gang",
+      "donVi": null,
+      "chieu": "PHAI_KHONG",
+      "tuKhoa": [
+        "gang đúc",
+        "gang"
+      ],
+      "nguon": "tax.73239400",
+      "trich": "73239400 - - Bằng sắt (trừ gang đúc) hoặc thép, đã tráng men",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "732394",
+      "thuTu": 5,
+      "dieuKien": "đã tráng men",
+      "fact": "daTrangMen",
+      "op": "CO",
+      "donVi": null,
+      "tuKhoa": [
+        "tráng men"
+      ],
+      "nguon": "tax.73239400",
+      "trich": "73239400 - - Bằng sắt (trừ gang đúc) hoặc thép, đã tráng men",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "732399",
+      "thuTu": 6,
+      "phanConLai": true,
+      "nguon": "tieuDe.732399",
+      "trich": "732399 Loại khác",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
   "dong8": [
     {
       "hs": "73231000",
@@ -564,6 +730,9 @@
     "tax.73239910",
     "tax.73239920",
     "tax.73239990",
+    "tieuDe.732391",
+    "tieuDe.732393",
+    "tieuDe.732399",
     "wco-op.732393.1",
     "wco-op.732399.1"
   ],
@@ -575,8 +744,8 @@
     "ms": 3
   },
   "kiemTra": {
-    "tong": 35,
-    "dat": 35,
+    "tong": 44,
+    "dat": 44,
     "loai": 0,
     "nguonBiCat": [],
     "nangCap": {
@@ -587,6 +756,12 @@
         "tieuChi6",
         "phamViLoaiKhac"
       ]
+    },
+    "tieuChi6": {
+      "khuon": "g6@1",
+      "soMuc": 11,
+      "soPhanNhom": 6,
+      "cong": "scripts/kiem-tieu-chi-6.mjs"
     }
   },
   "yKienWcoDayDu": false
