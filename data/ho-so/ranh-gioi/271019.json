@@ -15,7 +15,7 @@
     "phien": "claude-agent:ozv-1837#soat-271019",
     "ngay": "2026-11-22",
     "ghiChu": "Bổ sung chế phẩm vào tenLoai 27101989 và tách phanConLai 27101946 khỏi 27101944 (OZV-1837)",
-    "bam": "81487651da3d591e70196bd9ca9b8850e2fbb6b20134d00e9421bcd459aacf34"
+    "bam": "eeeed710da639b0897a70778d8a5cdfd8ed87a882d7a9e304efdab321eebf7c2"
   },
   "dieuKienNut": [
     {
@@ -24,17 +24,39 @@
       "trich": "2710194 Dầu và mỡ bôi trơn",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "Dầu",
-            "mỡ"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "Dầu",
+                  "mỡ"
+                ]
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "bôi trơn"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "Dầu",
+                  "mỡ"
+                ]
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "bôi trơn"
+              }
+            ]
           ]
-        },
-        {
-          "fact": "congDung",
-          "op": "CONG_DUNG",
-          "value": "bôi trơn"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -132,7 +154,10 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Mỡ bôi trơn"
+          "value": [
+            "mỡ",
+            "Mỡ bôi trơn"
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -161,9 +186,12 @@
       "trich": "27101946 - - - - Dầu bôi trơn khác",
       "dieuKienSo": [
         {
-          "fact": "congDung",
-          "op": "CONG_DUNG",
-          "value": "bôi trơn"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Dầu",
+            "Dầu bôi trơn"
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET",
