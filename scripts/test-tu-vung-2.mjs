@@ -360,6 +360,11 @@ const KHOA_MOI = {
   hamLuongNhua: 'SO',
   ketHopVoiSoiCaoSu: 'CO_KHONG',
   loaiDauHatCoBabassu: 'LIET_KE',
+  // 22/11/2026 (OZV-1796): khoá cho 9804.28.11, 8716.39.91, 3907.69.10/3907.91.20 (SEN)
+  daHapChinHoacLuocChin: 'CO_KHONG',
+  khoiLuongHangChuyenCho: 'SO',
+  tyLeLotQuaLuoiLoc1mm: 'SO',
+  tyLeLotQuaLuoiLoc5mm: 'SO',
 };
 
 // ── 1. Nạp theo phiên bản ─────────────────────────────────────────────────────────────────────────────────────────
@@ -1217,6 +1222,44 @@ check('vietCum đơn vị @1 KHÔNG đổi ("CS: 75000W" — không cách)', T.v
   }
   const ms = Number(process.hrtime.bigint() - t0) / 1e6;
   check(`OZV-1778 ReDoS ~40.000 từ lặp trên 6 khoá < 2000 ms (thực tế ${ms.toFixed(0)} ms)`, ms < 2000, { ms });
+}
+
+// OZV-1796 — kiểm chứng 4 khoá mới (daHapChinHoacLuocChin, khoiLuongHangChuyenCho, tyLeLotQuaLuoiLoc1mm, tyLeLotQuaLuoiLoc5mm)
+// và giaTriCha DA_BO_DAU trong soCheTom + ReDoS 40.000 từ lặp < 500 ms (quy tắc 6b).
+{
+  // 1. daHapChinHoacLuocChin (9804.28.11)
+  la('chữ biểu 9804.28.11 (Còn vỏ, đã hấp chín hoặc luộc chín trong nước)', 'daHapChinHoacLuocChin', 'Còn vỏ, đã hấp chín hoặc luộc chín trong nước', true);
+  la('En cooked by steaming or by boiling in water', 'daHapChinHoacLuocChin', 'In shell, cooked by steaming or by boiling in water', true);
+  la('Zh 经蒸煮或水煮', 'daHapChinHoacLuocChin', '带壳，经蒸煮或水煮', true);
+  la('phủ định chưa hấp chín hoặc luộc chín trong nước ⇒ false', 'daHapChinHoacLuocChin', 'Tôm hun khói còn vỏ, chưa hấp chín hoặc luộc chín trong nước', false);
+  chuaBiet('tiêu đề nhóm 98.04 đã hoặc chưa luộc chín trước hoặc trong quá trình hun khói ⇒ CHUA_BIET', 'daHapChinHoacLuocChin', 'Động vật giáp xác, đã được hun khói, đã hoặc chưa bóc vỏ, đã hoặc chưa luộc chín trước hoặc trong quá trình hun khói');
+
+  // 2. khoiLuongHangChuyenCho (8716.39.91)
+  la('chữ biểu 8716.39.91 (payload trên 200 tấn)', 'khoiLuongHangChuyenCho', 'Có khối lượng hàng chuyên chở theo thiết kế (payload) trên 200 tấn', 200000, { op: '>' });
+  la('En carrying capacity (payload) exceeding 200000 kg', 'khoiLuongHangChuyenCho', 'Having a carrying capacity (payload) exceeding 200000 kg', 200000, { op: '>' });
+  la('Zh 设计载重量250000千克', 'khoiLuongHangChuyenCho', '设计载重量250000千克', 250000, { op: null });
+  chuaBiet('chỉ ghi khối lượng toàn bộ GVW không ghi tải trọng chuyên chở ⇒ CHUA_BIET', 'khoiLuongHangChuyenCho', 'Rơ-moóc có khối lượng toàn bộ theo thiết kế 220 tấn');
+
+  // 3. tyLeLotQuaLuoiLoc1mm & tyLeLotQuaLuoiLoc5mm (sen.3907 — 3907.69.10 / 3907.91.20)
+  const sen3907 = 'DẠNG HẠT VÀ CÁC DẠNG TƯƠNG TỰ\nSản phẩm dạng rắn ở dạng nguyên sinh trừ dạng bột, có ít hơn 10% khối lượng lọt qua lưới lọc có đường kính mắt lọc là 1mm và sản phẩm có 90% khối lượng trở lên lọt qua lưới lọc có đường kính mắt lọc là 5mm.';
+  la('sen.3907 đọc tyLeLotQuaLuoiLoc1mm < 10%', 'tyLeLotQuaLuoiLoc1mm', sen3907, 10, { op: '<' });
+  la('sen.3907 đọc tyLeLotQuaLuoiLoc5mm >= 90%', 'tyLeLotQuaLuoiLoc5mm', sen3907, 90, { op: '>=' });
+  la('cachViet đọc lại tyLeLotQuaLuoiLoc1mm 5%', 'tyLeLotQuaLuoiLoc1mm', 'khối lượng lọt qua lưới lọc mắt lọc 1 mm 5%', 5, { op: null });
+  la('cachViet đọc lại tyLeLotQuaLuoiLoc5mm 95%', 'tyLeLotQuaLuoiLoc5mm', 'khối lượng lọt qua lưới lọc mắt lọc 5 mm 95%', 95, { op: null });
+  chuaBiet('tyLeLotQuaLuoiLoc1mm không bắt nhầm lưới 5mm ⇒ CHUA_BIET', 'tyLeLotQuaLuoiLoc1mm', 'khối lượng lọt qua lưới lọc mắt lọc 5 mm 95%');
+
+  // 4. soCheTom giaTriCha DA_BO_DAU ⊃ [DA_BO_DAU_CON_DUOI, DA_BO_DAU_BO_DUOI] (9804.17.11)
+  const kTom = T.layKhoa('soCheTom');
+  check('soCheTom có giaTriCha DA_BO_DAU ⊃ DA_BO_DAU_CON_DUOI, DA_BO_DAU_BO_DUOI', JSON.stringify(kTom?.giaTriCha?.DA_BO_DAU) === JSON.stringify(['DA_BO_DAU_CON_DUOI', 'DA_BO_DAU_BO_DUOI']), kTom?.giaTriCha);
+
+  // 5. ReDoS ~40.000 từ lặp < 500 ms (CLAUDE.md quy tắc 6b + OZV-1796)
+  const redosText1796 = Array(8000).fill('tôm còn vỏ khối lượng hàng chuyên chở lưới lọc').join(' ');
+  const t0 = process.hrtime.bigint();
+  for (const fk of ['daHapChinHoacLuocChin', 'khoiLuongHangChuyenCho', 'tyLeLotQuaLuoiLoc1mm', 'tyLeLotQuaLuoiLoc5mm', 'soCheTom']) {
+    T.docGiaTri(fk, redosText1796);
+  }
+  const ms = Number(process.hrtime.bigint() - t0) / 1e6;
+  check(`OZV-1796 ReDoS ~40.000 từ lặp trên 5 khoá < 500 ms (thực tế ${ms.toFixed(0)} ms)`, ms < 500, { ms });
 }
 
 console.log(`\n${pass} pass, ${fail} fail`);
