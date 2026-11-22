@@ -42,8 +42,8 @@ kiem('id cạnh không trùng', new Set(canh.map((e) => e.id)).size === canh.len
 const moCoi = canh.filter((e) => !D.coNut(e.tu) || !D.coNut(e.toi));
 kiem('0 cạnh mồ côi (hai đầu đều là nhóm / phân nhóm / dòng còn trong biểu thuế)', moCoi.length === 0, moCoi.slice(0, 5).map((e) => `${e.id}`).join(', '));
 kiem('không cạnh nào tự trỏ vào chính nó', !canh.some((e) => e.tu === e.toi));
-const bacSai = canh.filter((e) => (['C5', 'C6', 'C7', 'C11'].includes(e.loai) && e.bac !== 1) || (e.loai === 'C8' && e.bac === 1));
-kiem('thứ bậc: C5/C6/C7/C11 bậc 1; C8 không bao giờ bậc 1', bacSai.length === 0, bacSai.slice(0, 3).map((e) => e.id).join(', '));
+const bacSai = canh.filter((e) => (['C5', 'C6', 'C7', 'C9', 'C11'].includes(e.loai) && e.bac !== 1) || (e.loai === 'C8' && e.bac === 1));
+kiem('thứ bậc: C5/C6/C7/C9/C11 bậc 1; C8 không bao giờ bậc 1', bacSai.length === 0, bacSai.slice(0, 3).map((e) => e.id).join(', '));
 const c8ChuaDuyet = canh.filter((e) => e.loai === 'C8' && e.nguonKho === 'confusion-pairs' && e.daDuyet !== true && e.bac !== 4);
 kiem('C8 từ từ điển chưa duyệt mang bậc 4 (chỉ gợi ý), không lẫn vào bậc thông báo phân loại', c8ChuaDuyet.length === 0);
 
@@ -58,9 +58,43 @@ const c6Sai = c6.filter((e) => {
   return !dung;
 });
 kiem(`C6 khớp 1-1 với C5 (${c5.length} ↔ ${c6.length}): đảo chiều, giữ nguyên trích + nguồn + điều kiện của cạnh gốc`, c5.length > 0 && c5.length === c6.length && c6Sai.length === 0 && gocDaDung.size === c5.length, c6Sai.slice(0, 3).map((e) => e.id).join(', '));
-kiem('C5 không sinhTuDong; C6 và C11 sinhTuDong', c5.every((e) => e.sinhTuDong === false) && canh.filter((e) => e.loai === 'C11').every((e) => e.sinhTuDong === true));
+kiem('C5 không sinhTuDong; C6, C9 và C11 sinhTuDong', c5.every((e) => e.sinhTuDong === false) && ['C6', 'C9', 'C11'].every((l) => canh.filter((e) => e.loai === l).every((e) => e.sinhTuDong === true)));
 const c6ThieuTuKhoa = c6.filter((e) => !Array.isArray(e.tuKhoaDieuKien));
 kiem('mọi cạnh C6 mang tuKhoaDieuKien (rút bằng luật từ dòng loại trừ gốc)', c6ThieuTuKhoa.length === 0 && c6.filter((e) => e.tuKhoaDieuKien.length > 0).length / c6.length > 0.95, `${c6.filter((e) => e.tuKhoaDieuKien.length === 0).length} cạnh rỗng từ khoá`);
+
+// ── 3b. C9 Chú-giải-chi-phối (Phần / Chương → nhóm 4 số) ────────────────────────────────────────────────────────
+const cgChuong = docJson('data/chu-giai-chuong.json');
+const c9 = canh.filter((e) => e.loai === 'C9');
+const c9Sai = c9.filter((e) => {
+  const m = String(e.nguon || '').match(/^(phan|ch)(\d{2})\.(phan|chuong)$/);
+  if (!m) return true;
+  const goc = cgChuong[m[2]] && cgChuong[m[2]][m[3]];
+  const maCham = `${e.toi.slice(0, 2)}.${e.toi.slice(2)}`;
+  return e.bac !== 1 || e.sinhTuDong !== true || e.toi.length !== 4 || !goc || e.trich.length > 600 || !e.trich.includes(maCham) || !goc.includes(e.trich);
+});
+kiem(`C9 (${c9.length} cạnh): bậc 1, sinhTuDong, trích ≤ 600 ký tự chứa nguyên mã đích và khớp 100% data/chu-giai-chuong.json`, c9.length > 0 && c9Sai.length === 0, c9Sai.slice(0, 3).map((e) => e.id).join(', '));
+kiem('C9 khử trùng theo (tu, toi) — không có cặp (tu, toi) trùng lặp', new Set(c9.map((e) => `${e.tu}>${e.toi}`)).size === c9.length);
+const c9PXVI = D.canhTu('P:XVI', 'C9');
+const c9Ch84 = D.canhTu('84', 'C9');
+const c9Ch39 = D.canhTu('39', 'C9');
+const c9Toi8485 = D.canhToi('8485', 'C9');
+kiem('C9 tra được: Phần P:XVI (→ 8484/8522), Chương 84 (→ 8485), Chương 39 (→ 3925) và canhToi(8485)',
+  c9PXVI.some((e) => e.toi === '8484' && e.nguon === 'phan84.phan')
+  && c9PXVI.some((e) => e.toi === '8522' && e.nguon === 'phan84.phan')
+  && c9Ch84.some((e) => e.toi === '8485' && e.nguon === 'ch84.chuong')
+  && c9Ch39.some((e) => e.toi === '3925' && e.nguon === 'ch39.chuong')
+  && c9Toi8485.some((e) => e.tu === '84'),
+  JSON.stringify({ pxvi: c9PXVI.length, ch84: c9Ch84.length, ch39: c9Ch39.length, toi8485: c9Toi8485.map((e) => e.tu) }));
+kiem('C9 kết hợp duongDi và không vỡ canhTu(848180)',
+  Boolean(D.duongDi('84', '8485', 1, { loai: 'C9', quaCay: false })) && D.canhTu('848180').length > 0);
+kiem('ca ngược C9: Ch.84 không tự trỏ chính nó; nút giả P:NONEXISTENT / Chương 77 / nhóm hết hiệu lực 8469 không có coNut; Phần VII không nhận nhầm chú giải Phần VI; bỏ số thập phân công thức (48 → 28.22)',
+  c9Ch84.every((e) => e.toi !== '84' && e.tu !== e.toi)
+  && D.coNut('P:XVI') === true && D.coNut('84') === true && D.coNut('98') === true
+  && D.coNut('p:xvi') === false
+  && D.coNut('P:NONEXISTENT') === false && D.chuanNut('P:NONEXISTENT') === null && D.canhTu('P:NONEXISTENT', 'C9').length === 0
+  && D.coNut('77') === false && D.coNut('99') === false && D.coNut('8469') === false && D.chuanNut('8469') === null
+  && D.canhTu('P:VII', 'C9').length === 0
+  && !D.canhTu('48', 'C9').some((e) => e.toi === '2822'));
 
 // ── 4. Số cạnh theo loại khớp tệp thống kê đã commit ────────────────────────────────────────────────────────────
 const tk = co('data/do-thi/thong-ke.json') ? docJson('data/do-thi/thong-ke.json') : null;
