@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:ozv-1801#soat-380891",
+    "phien": "claude-agent:ozv-1829#soat-380891",
     "ngay": "2026-11-22",
-    "ghiChu": "Chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1801)",
-    "bam": "edd102a19d571c4d192bdd438bb60966793d0177f788dbc5e4953bc8a1470af6"
+    "ghiChu": "Sửa 5 lỗi soat-khac trên PR #1604 và khép SẠCH V1 (OZV-1829)",
+    "bam": "6f741842e1ff07e088de10abba38edf78061031b8d120cbd067bc461f32d110a"
   },
   "dieuKienNut": [],
   "dong8": [
@@ -27,7 +27,12 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Các chế phẩm trung gian chứa 2-(methylpropyl-phenol methylcarbamate)"
+          "value": "Các chế phẩm trung gian"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "chứa 2-(methylpropyl-phenol methylcarbamate)"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -117,7 +122,7 @@
     {
       "ma": "38089110",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.38089110 \"Các chế phẩm trung gian chứa 2-(methylpropyl-phenol methylcarbamate)\" (EN \"Intermediate preparations containing 2-(methylpropyl-phenol methylcarbamate)\") ⇒ tenLoai \"chứa 2-(methylpropyl-phenol methylcarbamate)\" (đoạn nguyên văn phân biệt dòng; tu-vung chưa có khoá riêng cho tiêu chí thành phần hoạt tính)."
+      "ghiChu": "tax.38089110 \"Các chế phẩm trung gian chứa 2-(methylpropyl-phenol methylcarbamate)\" (EN \"Intermediate preparations containing 2-(methylpropyl-phenol methylcarbamate)\") ⇒ tenLoai \"Các chế phẩm trung gian\" + tenLoai \"chứa 2-(methylpropyl-phenol methylcarbamate)\" (hai điều kiện cùng khoá = VÀ, tách danh từ đầu chế phẩm trung gian với thành phần hoạt tính BPMC theo traVe.lyDo; tu-vung chưa có khoá riêng cho thành phần này)."
     },
     {
       "ma": "38089120",
