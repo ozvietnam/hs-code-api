@@ -97,7 +97,94 @@
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
-  "tieuChi6": [],
+  "tieuChi6": [
+    {
+      "hs6": "853810",
+      "thuTu": 1,
+      "dieuKien": "Bảng, panel, giá đỡ, bàn, tủ và các loại hộp và đế",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": [
+        "Bảng",
+        "panel",
+        "giá đỡ",
+        "bàn",
+        "tủ",
+        "hộp",
+        "đế"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "panel",
+        "giá đỡ",
+        "bàn",
+        "tủ",
+        "hộp",
+        "đế"
+      ],
+      "tienLe": [
+        {
+          "so": "3831/TB-TCHQ",
+          "ma": "85381019"
+        }
+      ],
+      "nguon": "tieuDe.853810",
+      "trich": "853810 Bảng, panel, giá đỡ, bàn, tủ và các loại hộp và đế khác dùng cho các mặt hàng thuộc nhóm 85.37, chưa được lắp đặt các thiết bị của chúng",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "853810",
+      "thuTu": 1,
+      "dieuKien": "dùng cho các mặt hàng thuộc nhóm 85.37",
+      "fact": "dungCho",
+      "op": "CONG_DUNG",
+      "value": "mặt hàng thuộc nhóm 85.37",
+      "donVi": null,
+      "tuKhoa": [
+        "nhóm 85.37"
+      ],
+      "kiemChung": [
+        {
+          "hoi": "Sản phẩm (ví dụ các tấm dùng cho những bảng chuyển mạch, thường làm từ plastic hoặc kim loại) có ở trạng thái không lắp đặt thiết bị và có thể được nhận biết một cách rõ ràng như những bộ phận của bảng chuyển mạch không?",
+          "nguon": "nhom8538.nhom",
+          "trich": "Lấy ví dụ, nhóm này bao gồm các tấm dùng cho những bảng chuyển mạch, thường làm từ plastic hoặc kim loại, không lắp đặt thiết bị, với điều kiện chúng có thể được nhận biết một cách rõ ràng như những bộ phận của bảng chuyển mạch."
+        }
+      ],
+      "nguon": "tieuDe.853810",
+      "trich": "853810 Bảng, panel, giá đỡ, bàn, tủ và các loại hộp và đế khác dùng cho các mặt hàng thuộc nhóm 85.37, chưa được lắp đặt các thiết bị của chúng",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "853810",
+      "thuTu": 1,
+      "chuaSoHoa": "thiếu khoá có–không cho trạng thái chưa được lắp đặt các thiết bị của chúng (khác daLapRap ở nghĩa vỏ/bảng trống chưa gắn thiết bị điện)",
+      "nguon": "tieuDe.853810",
+      "trich": "chưa được lắp đặt các thiết bị của chúng",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "853890",
+      "thuTu": 2,
+      "phanConLai": true,
+      "tienLe": [
+        {
+          "so": "1249/TB-TCHQ",
+          "ma": "85389019"
+        },
+        {
+          "so": "1251/TB-TCHQ",
+          "ma": "85389019"
+        },
+        {
+          "so": "193/TB-TCHQ",
+          "ma": "85389019"
+        }
+      ],
+      "nguon": "tieuDe.853890",
+      "trich": "853890 Loại khác",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
   "dong8": [
     {
       "hs": "85381011",
@@ -589,6 +676,8 @@
     "tax.85389013",
     "tax.85389019",
     "tax.85389020",
+    "tieuDe.853810",
+    "tieuDe.853890",
     "wco-op.853810.1",
     "wco-op.853810.2",
     "wco-op.853810.3",
@@ -604,8 +693,8 @@
     "ms": 10
   },
   "kiemTra": {
-    "tong": 23,
-    "dat": 23,
+    "tong": 34,
+    "dat": 34,
     "loai": 0,
     "nguonBiCat": [],
     "nangCap": {
@@ -616,6 +705,12 @@
         "tieuChi6",
         "phamViLoaiKhac"
       ]
+    },
+    "tieuChi6": {
+      "khuon": "g6@1",
+      "soMuc": 4,
+      "soPhanNhom": 2,
+      "cong": "scripts/kiem-tieu-chi-6.mjs"
     }
   },
   "yKienWcoDayDu": false,
