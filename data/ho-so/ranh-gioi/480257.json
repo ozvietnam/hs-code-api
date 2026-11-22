@@ -4,13 +4,19 @@
   "nhom": "4802",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-480257",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1947#soat-480257",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1947)",
+    "bam": "c5301cfbe9819e7d701fc7d5ccf25f734caacc97fe7159d82c76c1dfcbaf8d49"
+  },
   "dieuKienNut": [
     {
       "id": "4802572",
@@ -27,7 +33,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": false
     }
   ],
@@ -38,24 +44,40 @@
       "trich": "48025721 - - - - Không có chiều nào trên 36 cm ở dạng không gấp",
       "dieuKienSo": [
         {
-          "fact": "motChieuTo",
-          "op": "<=",
-          "value": 36,
-          "donVi": "cm"
-        },
-        {
-          "fact": "daGap",
-          "op": "KHONG"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "motChieuTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
+              },
+              {
+                "fact": "chieuKiaTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Không có chiều nào trên 36 cm"
+              }
+            ]
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "48025729",
       "nguon": "tax.48025729",
       "trich": "48025729 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "48025730",
@@ -67,14 +89,14 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "48025790",
       "nguon": "tax.48025790",
       "trich": "48025790 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "chongLanVanBan": [
@@ -118,6 +140,12 @@
       "ma": "480257",
       "loai": "CHONG_LAN",
       "ghiChu": "Chữ biểu tự chồng: tầng 4802572 \"Loại dùng để viết, in và các mục đích đồ bản khác\" (.21, .29) ↔ dòng 48025730 \"Giấy nhiều lớp(SEN)\" — sen.4802 nêu giấy nhiều lớp dùng để viết, in vẫn thuộc Nhóm 48.02 nên hàng nhiều lớp dùng để viết, in thoả cả hai; khai chongLanVanBan cho hai cặp máy báo, không có căn cứ thứ tự (bảng hiệu chỉnh 480257-01 KHONG_LECH)."
+    },
+    {
+      "ma": "48025721",
+      "loai": "BO_VE",
+      "ve": "ở dạng không gấp",
+      "lyDo": "Vế nêu cách đo kích thước (trải phẳng, Chú giải 8 Chương 48 «ở dạng không gấp», EN «in the unfolded state»), không phải đặc điểm phân biệt hàng; kích thước đã số hoá ở motChieuTo/chieuKiaTo."
     }
   ],
   "traVe": [
