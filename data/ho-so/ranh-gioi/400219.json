@@ -4,13 +4,19 @@
   "nhom": "4002",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1700#soan-400219",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "tho-hs-01:ozv-1799-20261122#soat-400219",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá ranh giới theo traVe.lyDo và khép SẠCH V1 lô 11a (OZV-1799).",
+    "bam": "175f71b159d5518a9c372e340b818d53b47e7818a16ef0f502712a4f69819495"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -39,34 +45,36 @@
                 ]
               },
               {
-                "fact": "congDung",
-                "op": "CONG_DUNG",
-                "value": "chưa lưu hóa"
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "lưu hóa",
+                "chieu": "PHAI_KHONG"
               },
               {
-                "fact": "dungCho",
-                "op": "CONG_DUNG",
-                "value": "chưa pha trộn"
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "pha trộn",
+                "chieu": "PHAI_KHONG"
               }
             ]
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "40021990",
       "nguon": "tax.40021990",
       "trich": "40021990 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "40021910",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.40021910 \"Dạng nguyên sinh hoặc dạng tấm, tờ hoặc dải chưa lưu hóa, chưa pha trộn\" (EN \"In primary forms or in unvulcanised, uncompounded plates, sheets or strip\") ⇒ HOAC hai phương án: (1) tenLoai \"Dạng nguyên sinh\"; (2) tenLoai [\"tấm\",\"tờ\",\"dải\"] (mảng = hoặc) + tenLoai \"chưa lưu hóa, chưa pha trộn\" (vế GIỚI HẠN, chép nguyên văn gồm dấu phẩy). Từ vựng không có khoá \"chưa lưu hóa\"/\"chưa pha trộn\" (CO_KHONG) ⇒ dùng khoá chữ tự do; KHÔNG dùng dangNguyenSinh (không có giá trị cho dạng nguyên sinh)."
+      "ghiChu": "tax.40021910 \"Dạng nguyên sinh hoặc dạng tấm, tờ hoặc dải chưa lưu hóa, chưa pha trộn\" (EN \"In primary forms or in unvulcanised, uncompounded plates, sheets or strip\") ⇒ HOAC hai phương án: (1) tenLoai \"Dạng nguyên sinh\"; (2) tenLoai [\"tấm\",\"tờ\",\"dải\"] + tenLoai chieu PHAI_KHONG \"lưu hóa\" và \"pha trộn\" phủ hai vế GIỚI_HẠN."
     },
     {
       "ma": "40021990",

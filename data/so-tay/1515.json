@@ -223,7 +223,8 @@
         "op": "=",
         "value": true,
         "donVi": null
-      }
+      },
+      "phanConLai": true
     },
     {
       "hs": "15152999",
@@ -245,17 +246,34 @@
     },
     {
       "hs": "15153010",
-      "dieuKien": "Dầu thô",
+      "dieuKien": "mức độ tinh chế của dầu và chất béo: dầu thô / dạng thô / chưa tinh chế",
+      "nguon": "tax.15153010",
+      "trich": "15153010 - - Dầu thô",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "mucDoTinhCheDau",
+          "op": "TRONG",
+          "value": [
+            "DANG_THO"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1800#soat-151530",
+          "ngay": "2026-11-22",
+          "bam": "3b8b3529e962134188481578ac789d79e7d03b8850837044f10a85741d007c2f"
+        }
+      },
       "tieuChi": {
         "fact": "la_dau_tho",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "nguon": "tax.15153010",
-      "trich": "15153010 - - Dầu thô",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      }
     },
     {
       "hs": "15153090",
@@ -277,31 +295,78 @@
     },
     {
       "hs": "15155010",
-      "dieuKien": "Dầu thô",
+      "dieuKien": "tên loại hàng: Dầu thô; mức độ tinh chế của dầu và chất béo: dầu thô / dạng thô / chưa tinh chế",
+      "nguon": "tax.15155010",
+      "trich": "15155010 - - Dầu thô",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dầu thô"
+        },
+        {
+          "fact": "mucDoTinhCheDau",
+          "op": "TRONG",
+          "value": [
+            "DANG_THO"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1800#soat-151550",
+          "ngay": "2026-11-22",
+          "bam": "9eb1424984c7d7183117ea5852f1311d98398a777d7db4f89b79dea0b55ed3ce"
+        }
+      },
       "tieuChi": {
         "fact": "la_dau_tho",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "nguon": "tax.15155010",
-      "trich": "15155010 - - Dầu thô",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      }
     },
     {
       "hs": "15155020",
-      "dieuKien": "Các phần phân đoạn của dầu chưa tinh chế",
+      "dieuKien": "tên loại hàng: Các phần phân đoạn hoặc Các phần phân đoạn của dầu chưa tinh chế; mức độ tinh chế của dầu và chất béo: dầu thô / dạng thô / chưa tinh chế",
+      "nguon": "tax.15155020",
+      "trich": "15155020 - - Các phần phân đoạn của dầu chưa tinh chế",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Các phần phân đoạn",
+            "Các phần phân đoạn của dầu chưa tinh chế"
+          ]
+        },
+        {
+          "fact": "mucDoTinhCheDau",
+          "op": "TRONG",
+          "value": [
+            "DANG_THO"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1800#soat-151550",
+          "ngay": "2026-11-22",
+          "bam": "9eb1424984c7d7183117ea5852f1311d98398a777d7db4f89b79dea0b55ed3ce"
+        }
+      },
       "tieuChi": {
         "fact": "la_phan_phan_doan_cua_dau_chua_tinh_che",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "nguon": "tax.15155020",
-      "trich": "15155020 - - Các phần phân đoạn của dầu chưa tinh chế",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      }
     },
     {
       "hs": "15155090",
@@ -338,31 +403,78 @@
     },
     {
       "hs": "15159011",
-      "dieuKien": "Dầu hạt illipe — dầu này thu được từ hạt cây Tengkawang của loài Shorea",
+      "dieuKien": "tên loại hàng: Dầu thô; mức độ tinh chế của dầu và chất béo: dầu thô / dạng thô / chưa tinh chế",
+      "nguon": "tax.15159011",
+      "trich": "15159011 - - - Dầu thô (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dầu thô"
+        },
+        {
+          "fact": "mucDoTinhCheDau",
+          "op": "TRONG",
+          "value": [
+            "DANG_THO"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1800#soat-151590",
+          "ngay": "2026-11-22",
+          "bam": "587cb8d54429108b6cb2172e7661a47fe49b227e05744dbd999891bc4463c68a"
+        }
+      },
       "tieuChi": {
         "fact": "la_dau_hat_illipe_thu_duoc_tu_hat_cay_tengkawang_cua_loai_shorea",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "nguon": "sen.15159011",
-      "trich": "DẦU HẠT ILLIPE\nDầu này thu được từ hạt cây Tengkawang của loài Shorea. Nó được sử dụng như một nguyên liệu thô trong sản xuất mỹ phẩm, nước hoa và trong y học cổ truyền.",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      }
     },
     {
       "hs": "15159012",
-      "dieuKien": "Các phần phân đoạn của dầu chưa tinh chế (SEN)",
+      "dieuKien": "tên loại hàng: Các phần phân đoạn hoặc Các phần phân đoạn của dầu chưa tinh chế; mức độ tinh chế của dầu và chất béo: dầu thô / dạng thô / chưa tinh chế",
+      "nguon": "tax.15159012",
+      "trich": "15159012 - - - Các phần phân đoạn của dầu chưa tinh chế (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Các phần phân đoạn",
+            "Các phần phân đoạn của dầu chưa tinh chế"
+          ]
+        },
+        {
+          "fact": "mucDoTinhCheDau",
+          "op": "TRONG",
+          "value": [
+            "DANG_THO"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1800#soat-151590",
+          "ngay": "2026-11-22",
+          "bam": "587cb8d54429108b6cb2172e7661a47fe49b227e05744dbd999891bc4463c68a"
+        }
+      },
       "tieuChi": {
         "fact": "la_phan_phan_doan_cua_dau_chua_tinh_che",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "nguon": "tax.15159012",
-      "trich": "15159012 - - - Các phần phân đoạn của dầu chưa tinh chế (SEN)",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      }
     },
     {
       "hs": "15159019",
@@ -385,31 +497,78 @@
     },
     {
       "hs": "15159021",
-      "dieuKien": "Dầu thô",
+      "dieuKien": "tên loại hàng: Dầu thô; mức độ tinh chế của dầu và chất béo: dầu thô / dạng thô / chưa tinh chế",
+      "nguon": "tax.15159021",
+      "trich": "15159021 - - - Dầu thô",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dầu thô"
+        },
+        {
+          "fact": "mucDoTinhCheDau",
+          "op": "TRONG",
+          "value": [
+            "DANG_THO"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1800#soat-151590",
+          "ngay": "2026-11-22",
+          "bam": "587cb8d54429108b6cb2172e7661a47fe49b227e05744dbd999891bc4463c68a"
+        }
+      },
       "tieuChi": {
         "fact": "la_dau_tho",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "nguon": "tax.15159021",
-      "trich": "15159021 - - - Dầu thô",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      }
     },
     {
       "hs": "15159022",
-      "dieuKien": "Các phần phân đoạn của dầu chưa tinh chế",
+      "dieuKien": "tên loại hàng: Các phần phân đoạn hoặc Các phần phân đoạn của dầu chưa tinh chế; mức độ tinh chế của dầu và chất béo: dầu thô / dạng thô / chưa tinh chế",
+      "nguon": "tax.15159022",
+      "trich": "15159022 - - - Các phần phân đoạn của dầu chưa tinh chế",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Các phần phân đoạn",
+            "Các phần phân đoạn của dầu chưa tinh chế"
+          ]
+        },
+        {
+          "fact": "mucDoTinhCheDau",
+          "op": "TRONG",
+          "value": [
+            "DANG_THO"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1800#soat-151590",
+          "ngay": "2026-11-22",
+          "bam": "587cb8d54429108b6cb2172e7661a47fe49b227e05744dbd999891bc4463c68a"
+        }
+      },
       "tieuChi": {
         "fact": "la_phan_phan_doan_cua_dau_chua_tinh_che",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "nguon": "tax.15159022",
-      "trich": "15159022 - - - Các phần phân đoạn của dầu chưa tinh chế",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      }
     },
     {
       "hs": "15159029",
@@ -432,31 +591,78 @@
     },
     {
       "hs": "15159031",
-      "dieuKien": "Dầu thô",
+      "dieuKien": "tên loại hàng: Dầu thô; mức độ tinh chế của dầu và chất béo: dầu thô / dạng thô / chưa tinh chế",
+      "nguon": "tax.15159031",
+      "trich": "15159031 - - - Dầu thô",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dầu thô"
+        },
+        {
+          "fact": "mucDoTinhCheDau",
+          "op": "TRONG",
+          "value": [
+            "DANG_THO"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1800#soat-151590",
+          "ngay": "2026-11-22",
+          "bam": "587cb8d54429108b6cb2172e7661a47fe49b227e05744dbd999891bc4463c68a"
+        }
+      },
       "tieuChi": {
         "fact": "la_dau_tho",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "nguon": "tax.15159031",
-      "trich": "15159031 - - - Dầu thô",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      }
     },
     {
       "hs": "15159032",
-      "dieuKien": "Các phần phân đoạn của dầu chưa tinh chế",
+      "dieuKien": "tên loại hàng: Các phần phân đoạn hoặc Các phần phân đoạn của dầu chưa tinh chế; mức độ tinh chế của dầu và chất béo: dầu thô / dạng thô / chưa tinh chế",
+      "nguon": "tax.15159032",
+      "trich": "15159032 - - - Các phần phân đoạn của dầu chưa tinh chế",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Các phần phân đoạn",
+            "Các phần phân đoạn của dầu chưa tinh chế"
+          ]
+        },
+        {
+          "fact": "mucDoTinhCheDau",
+          "op": "TRONG",
+          "value": [
+            "DANG_THO"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1800#soat-151590",
+          "ngay": "2026-11-22",
+          "bam": "587cb8d54429108b6cb2172e7661a47fe49b227e05744dbd999891bc4463c68a"
+        }
+      },
       "tieuChi": {
         "fact": "la_phan_phan_doan_cua_dau_chua_tinh_che",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "nguon": "tax.15159032",
-      "trich": "15159032 - - - Các phần phân đoạn của dầu chưa tinh chế",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      }
     },
     {
       "hs": "15159039",
@@ -479,31 +685,78 @@
     },
     {
       "hs": "15159091",
-      "dieuKien": "Dầu thô",
+      "dieuKien": "tên loại hàng: Dầu thô; mức độ tinh chế của dầu và chất béo: dầu thô / dạng thô / chưa tinh chế",
+      "nguon": "tax.15159091",
+      "trich": "15159091 - - - Dầu thô",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dầu thô"
+        },
+        {
+          "fact": "mucDoTinhCheDau",
+          "op": "TRONG",
+          "value": [
+            "DANG_THO"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1800#soat-151590",
+          "ngay": "2026-11-22",
+          "bam": "587cb8d54429108b6cb2172e7661a47fe49b227e05744dbd999891bc4463c68a"
+        }
+      },
       "tieuChi": {
         "fact": "la_dau_tho",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "nguon": "tax.15159091",
-      "trich": "15159091 - - - Dầu thô",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      }
     },
     {
       "hs": "15159092",
-      "dieuKien": "Các phần phân đoạn của dầu chưa tinh chế",
+      "dieuKien": "tên loại hàng: Các phần phân đoạn hoặc Các phần phân đoạn của dầu chưa tinh chế; mức độ tinh chế của dầu và chất béo: dầu thô / dạng thô / chưa tinh chế",
+      "nguon": "tax.15159092",
+      "trich": "15159092 - - - Các phần phân đoạn của dầu chưa tinh chế",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Các phần phân đoạn",
+            "Các phần phân đoạn của dầu chưa tinh chế"
+          ]
+        },
+        {
+          "fact": "mucDoTinhCheDau",
+          "op": "TRONG",
+          "value": [
+            "DANG_THO"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1800#soat-151590",
+          "ngay": "2026-11-22",
+          "bam": "587cb8d54429108b6cb2172e7661a47fe49b227e05744dbd999891bc4463c68a"
+        }
+      },
       "tieuChi": {
         "fact": "la_phan_phan_doan_cua_dau_chua_tinh_che",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "nguon": "tax.15159092",
-      "trich": "15159092 - - - Các phần phân đoạn của dầu chưa tinh chế",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      }
     },
     {
       "hs": "15159099",
@@ -919,6 +1172,69 @@
           "phien": "claude-agent:duyet-L5-20261111#soat-L5",
           "ngay": "2026-11-11",
           "bam": "60cae34e8c83f95663767a8314f77b78446c7479f80185e189072f5d14d04ef2"
+        }
+      }
+    },
+    {
+      "id": "1515901",
+      "nguon": "tieuDe.1515901",
+      "trich": "1515901 Dầu hạt illipe",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dầu hạt illipe"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1800#soat-151590",
+          "ngay": "2026-11-22",
+          "bam": "587cb8d54429108b6cb2172e7661a47fe49b227e05744dbd999891bc4463c68a"
+        }
+      }
+    },
+    {
+      "id": "1515902",
+      "nguon": "tieuDe.1515902",
+      "trich": "1515902 Dầu Tung",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dầu Tung"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1800#soat-151590",
+          "ngay": "2026-11-22",
+          "bam": "587cb8d54429108b6cb2172e7661a47fe49b227e05744dbd999891bc4463c68a"
+        }
+      }
+    },
+    {
+      "id": "1515903",
+      "nguon": "tieuDe.1515903",
+      "trich": "1515903 Dầu Jojoba",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dầu Jojoba"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1800#soat-151590",
+          "ngay": "2026-11-22",
+          "bam": "587cb8d54429108b6cb2172e7661a47fe49b227e05744dbd999891bc4463c68a"
         }
       }
     }

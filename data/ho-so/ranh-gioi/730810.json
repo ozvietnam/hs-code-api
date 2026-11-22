@@ -4,13 +4,19 @@
   "nhom": "7308",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-730810",
     "ngay": "2026-11-04"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1800#soat-730810",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá ranh giới theo traVe.lyDo và duyệt áp sổ tay (OZV-1800)",
+    "bam": "0863230b196e2a4e676d4c04364484c7a716a559574061d3c55e51692c468fbe"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -19,37 +25,30 @@
       "trich": "73081010 - - Dạng cấu kiện tiền chế được lắp ráp bằng các khớp nối (SEN)",
       "dieuKienSo": [
         {
-          "fact": "daLapRap",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "cấu kiện tiền chế"
+        },
+        {
+          "fact": "lapRapBangKhopNoi",
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "73081090",
       "nguon": "tax.73081090",
       "trich": "73081090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "73081010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.73081010: \"Dạng cấu kiện tiền chế được lắp ráp bằng các khớp nối (SEN)\" ⇒ daLapRap CO"
-    },
-    {
-      "ma": "73081010",
-      "loai": "BO_VE",
-      "ve": "được lắp ráp",
-      "lyDo": "Đã được phủ bằng daLapRap CO"
-    },
-    {
-      "ma": "73081010",
-      "loai": "BO_VE",
-      "ve": "bằng các khớp nối",
-      "lyDo": "Phương thức liên kết của cấu kiện tiền chế"
+      "ghiChu": "tax.73081010: \"Dạng cấu kiện tiền chế được lắp ráp bằng các khớp nối (SEN)\" ⇒ tenLoai \"cấu kiện tiền chế\" + lapRapBangKhopNoi CO"
     }
   ],
   "traVe": [

@@ -49,7 +49,36 @@ kiem('mẫu 8412: 7/7 phân nhóm; 841229, 841239, 841280 khai phanConLai', kq12
 kiem('mẫu có phép đo trên tờ khai mẫu (số dòng > 0, đúng + sai + không kết luận = tổng)', [kq81, kq12].every((k) => k.thongKe.toKhai.tong > 0 && k.thongKe.toKhai.dung + k.thongKe.toKhai.sai + k.thongKe.toKhai.khongKetLuan === k.thongKe.toKhai.tong));
 
 // ── 2. TIÊM LỖI: sửa mẫu thành từng kiểu sai → cổng đỏ ĐÚNG mã lỗi ──────────────────────────────────────────────
-const tiem = (h4, sua, goc = XEP) => { const ds = sao(goc[h4]); const ra = sua(ds) || ds; return G6.kiemTieuChi6(h4, ra, { toKhai: false }); };
+const DS_6704_CHUAN = [
+  { hs6: '670411', nguon: 'tieuDe.67041', trich: '67041 Bằng vật liệu dệt tổng hợp', chuaSoHoa: 'thiếu khoá cho vật liệu dệt tổng hợp' },
+  { hs6: '670411', nguon: 'tax.67041100', trich: '67041100 - - Bộ tóc giả hoàn chỉnh', dieuKien: 'Bộ tóc giả hoàn chỉnh', fact: 'tenLoai', op: 'TEN_LOAI', value: 'Bộ tóc giả hoàn chỉnh', tuKhoa: ['Bộ tóc giả hoàn chỉnh'] },
+  { hs6: '670419', nguon: 'tieuDe.67041', trich: '67041 Bằng vật liệu dệt tổng hợp', chuaSoHoa: 'thiếu khoá cho vật liệu dệt tổng hợp' },
+  { hs6: '670419', nguon: 'tax.67041900', trich: '67041900 - - Loại khác', phanConLai: true },
+  { hs6: '670420', nguon: 'tax.67042000', trich: '67042000 - Bằng tóc người', chuaSoHoa: 'thiếu chất liệu tóc người' },
+  { hs6: '670490', nguon: 'tax.67049000', trich: '67049000 - Bằng vật liệu khác', chuaSoHoa: 'thiếu chất liệu vật liệu khác' },
+  { hs6: '670490', nguon: 'tax.67049000', trich: '67049000 - Bằng vật liệu khác', phanConLai: true },
+];
+const DS_6913_CHUAN = [
+  { hs6: '691310', nguon: 'tieuDe.691310', trich: '691310 Bằng sứ', chuaSoHoa: 'thiếu chất liệu sứ (gốm sứ rộng hơn sứ)' },
+  { hs6: '691390', nguon: 'tieuDe.691390', trich: '691390 Loại khác', phanConLai: true },
+];
+const DS_6004_CHUAN = [
+  {
+    hs6: '600410',
+    dieuKien: 'Có hàm lượng sợi đàn hồi chiếm từ 5% trở lên tính theo khối lượng',
+    fact: 'hamLuongSoiDanHoi',
+    op: '>=',
+    value: 5,
+    donVi: '%',
+    dieuKienTru: ['sợi cao su'],
+    tuKhoa: ['sợi đàn hồi'],
+    nguon: 'tieuDe.600410',
+    trich: '600410 Có hàm lượng sợi đàn hồi chiếm từ 5% trở lên tính theo khối lượng nhưng không bao gồm sợi cao su',
+  },
+  { hs6: '600490', phanConLai: true, nguon: 'tax.60049000', trich: '60049000 - Loại khác' },
+];
+const GOC_TIEM = { ...XEP, 6704: DS_6704_CHUAN, 6913: DS_6913_CHUAN, 6004: DS_6004_CHUAN };
+const tiem = (h4, sua, goc = GOC_TIEM) => { const ds = sao(goc[h4]); const ra = sua(ds) || ds; return G6.kiemTieuChi6(h4, ra, { toKhai: false }); };
 const cua = (ds, hs6, loc = () => true) => ds.find((x) => x.hs6 === hs6 && loc(x));
 const CA = [
   ['TRICH_KHONG_NGUYEN_VAN', 'sửa một chữ trong câu trích của 848120 ("khí nén" → "khí ép")', '8481', (ds) => { const x = cua(ds, '848120'); x.trich = x.trich.replace('truyền động khí nén"', 'truyền động khí ép"'); x.value = ['truyền động dầu thủy lực']; x.tuKhoa = ['thủy lực']; x.dieuKien = 'Van dùng trong truyền động dầu thủy lực'; }],
@@ -101,6 +130,14 @@ const CA = [
   ['SUY_RONG', 'kiemChung của 848120 hỏi đặc tính không có trong câu trích ("áp suất trên 10 bar")', '8481', (ds) => { cua(ds, '848120').kiemChung[0].hoi = 'Van chịu áp suất trên 10 bar không?'; }],
   ['TRICH_KHONG_NGUYEN_VAN', 'kiemChung của 848120 trích tự viết lại', '8481', (ds) => { cua(ds, '848120').kiemChung[0].trich = 'van làm việc với chất lưu nén'; }],
   ['DU_MANG_DIEU_KIEN', 'phân nhóm dư 848180 mang kiemChung', '8481', (ds) => { cua(ds, '848180').kiemChung = sao(cua(ds, '848120').kiemChung); }],
+  // #1583: KHOA_RONG_HON_LUAT + dieuKienTru + #1586 phân nhóm không phải DU thiếu điều kiện riêng.
+  ['KHOA_RONG_HON_LUAT', '6704.1 dùng chatLieu "vải dệt" cho "Bằng vật liệu dệt tổng hợp" (rơi chữ "tổng hợp")', '6704', (ds) => { const x = cua(ds, '670411', (y) => y.nguon === 'tieuDe.67041'); delete x.chuaSoHoa; Object.assign(x, { dieuKien: 'Bằng vật liệu dệt tổng hợp', fact: 'chatLieu', op: 'LA', value: 'vải dệt' }); }],
+  ['KHOA_RONG_HON_LUAT', '6913.10 dùng chatLieu "gốm sứ" cho "Bằng sứ"', '6913', (ds) => { const x = cua(ds, '691310'); delete x.chuaSoHoa; Object.assign(x, { dieuKien: 'Bằng sứ', fact: 'chatLieu', op: 'LA', value: 'gốm sứ' }); }],
+  ['KHOA_RONG_HON_LUAT', '6004.10 dùng tinhDanHoi cho "... sợi đàn hồi ... nhưng không bao gồm sợi cao su"', '6004', (ds) => { const x = cua(ds, '600410'); Object.assign(x, { fact: 'tinhDanHoi', op: 'CO', dieuKien: 'sợi đàn hồi' }); delete x.value; delete x.donVi; delete x.dieuKienTru; }],
+  ['THIEU_VE_TRU', '6004.10 bỏ dieuKienTru dù tiêu đề có "nhưng không bao gồm sợi cao su"', '6004', (ds) => { delete cua(ds, '600410').dieuKienTru; }],
+  ['SUY_RONG', '6004.10 ghi dieuKienTru ["người"] không có trong trích', '6004', (ds) => { cua(ds, '600410').dieuKienTru = ['người']; }],
+  ['SUY_RONG', '6004.10 ghi dieuKienTru ["sợi đàn hồi"] (có trong trích nhưng nằm ngoài vế loại trừ)', '6004', (ds) => { cua(ds, '600410').dieuKienTru = ['sợi đàn hồi']; }],
+  ['KHUON_SAI', 'phân nhóm không phải DU dưới tầng có tên (8412.21) chỉ giữ mục tầng, thiếu điều kiện riêng của phân nhóm', '8412', (ds) => ds.filter((x) => !(x.hs6 === '841221' && x.nguon === 'tax.84122100'))],
 ];
 for (const [maLoi, moTa, h4, sua] of CA) {
   const kq = tiem(h4, sua);
@@ -213,5 +250,74 @@ kiem('gói soạn: mọi khoá gợi ý đều có trong tu-vung và ghi op hợ
 const { tepMa, baoDong } = await import('./lib-luat.mjs');
 const nap = [...tepMa('api'), 'server.js'].filter((t) => [...baoDong(t)].some((x) => x === 'lib/do-thi/tieu-chi-6.js'));
 kiem('không route nào trong api/ nạp lib/do-thi/tieu-chi-6.js (cổng soạn dữ liệu, không phải đường khách)', nap.length === 0, nap.join(', '));
+// ── 9. #1583 (KHOA_RONG_HON_LUAT, dieuKienTru, tách vế loại trừ) + #1586 (phân nhóm không phải DU thiếu điều kiện riêng) ──
+kiem('ca ngược #1583: 6704 / 6913 (chuaSoHoa) và 6004 (hamLuongSoiDanHoi >= 5% + dieuKienTru ["sợi cao su"]) đạt 0 lỗi',
+  ['6704', '6913', '6004'].every((h) => tiem(h, () => {}).loi.length === 0),
+  JSON.stringify(['6704', '6913', '6004'].map((h) => [h, ma(tiem(h, () => {}))])));
+kiem('KHOA_RONG_HON_LUAT (chatLieu gộp): gốm sứ trên "Bằng sứ"/"Bằng gốm" đỏ nhưng "Bằng gốm sứ" đạt; sắt thép trên chỉ "sắt"/"thép" đỏ nhưng 7323.94 "Bằng sắt (trừ gang đúc) hoặc thép" đạt; kim loại trên kim loại cụ thể đỏ nhưng "kim loại cơ bản" đạt',
+  Boolean(G6.khoaRongHonLuat('chatLieu', 'gốm sứ', 'Bằng sứ'))
+  && Boolean(G6.khoaRongHonLuat('chatLieu', 'gốm sứ', 'Bằng gốm'))
+  && G6.khoaRongHonLuat('chatLieu', 'gốm sứ', 'Bằng gốm sứ') === null
+  && Boolean(G6.khoaRongHonLuat('chatLieu', 'sắt thép', 'Bằng sắt'))
+  && Boolean(G6.khoaRongHonLuat('chatLieu', 'sắt thép', 'Bằng thép'))
+  && G6.khoaRongHonLuat('chatLieu', 'sắt thép', '73239400 - - Bằng sắt (trừ gang đúc) hoặc thép, đã tráng men') === null
+  && ['đồng', 'nhôm', 'kẽm', 'thép', 'sắt', 'kim loại quý', 'niken', 'chì', 'thiếc', 'titan'].every((kl) => Boolean(G6.khoaRongHonLuat('chatLieu', 'kim loại', `Bằng ${kl}`)))
+  && G6.khoaRongHonLuat('chatLieu', 'kim loại', 'Bằng kim loại cơ bản') === null
+  && G6.khoaRongHonLuat('chatLieu', 'kim loại', 'Bằng kim loại') === null);
+kiem('KHOA_RONG_HON_LUAT (bổ ngữ thu hẹp & tương thích): 6704 "vải dệt" rơi "tổng hợp" đỏ + không phủ vế; có mục khẳng định khác phủ "tổng hợp" thì sạch; 6109.90 ("Từ các vật liệu dệt khác") và 4202.22 ("tấm plastic hoặc vật liệu dệt") giữ nguyên 0 lỗi',
+  Boolean(G6.khoaRongHonLuat('chatLieu', 'vải dệt', '67041 Bằng vật liệu dệt tổng hợp'))
+  && !G6.phuVe([{ fact: 'chatLieu', op: 'LA', value: 'vải dệt', nguon: 'tieuDe.67041', trich: '67041 Bằng vật liệu dệt tổng hợp' }], G6.veCanPhu('6704', G6.phanNhomCuaNhom('6704').find((p) => p.hs6 === '670411')).find((v) => /tổng hợp/.test(v.chu)))
+  && G6.khoaRongHonLuat('chatLieu', 'vải dệt', '67041 Bằng vật liệu dệt tổng hợp', { mucCungPn: [{ fact: 'loaiSoiDet', op: 'TRONG', value: ['SOI_TONG_HOP'], dieuKien: 'vật liệu dệt tổng hợp' }] }) === null
+  && G6.khoaRongHonLuat('chatLieu', 'vải dệt', '610990 Từ các vật liệu dệt khác') === null
+  && G6.khoaRongHonLuat('chatLieu', ['plastic', 'vải dệt'], '420222 Mặt ngoài bằng tấm plastic hoặc vật liệu dệt') === null
+  && Boolean(G6.khoaRongHonLuat('chatLieu', 'cao su', 'Bằng cao su lưu hóa'))
+  && Boolean(G6.khoaRongHonLuat('chatLieu', 'vải dệt', 'Bằng vải không dệt'))
+  && Boolean(G6.khoaRongHonLuat('chatLieu', 'vải dệt', 'Từ vải dệt kim tổng hợp'))
+  && Boolean(G6.khoaRongHonLuat('chatLieu', 'vải dệt', 'Bằng vải dệt thoi')));
+kiem('KHOA_RONG_HON_LUAT (tinhDanHoi): đỏ cả khi dùng tinhDanHoi op KHONG / chieu PHAI_KHONG cho 6004.10; 5806.20 có cả hai loại sợi thì sạch',
+  tiem('6004', (ds) => { const x = cua(ds, '600410'); ds.push({ hs6: '600410', dieuKien: 'không bao gồm sợi cao su', fact: 'tinhDanHoi', op: 'KHONG', nguon: 'tieuDe.600410', trich: x.trich }); delete x.dieuKienTru; }).loi.some((l) => l.ma === 'KHOA_RONG_HON_LUAT')
+  && tiem('6004', (ds) => { const x = cua(ds, '600410'); ds.push({ hs6: '600410', dieuKien: 'không bao gồm sợi cao su', fact: 'tinhDanHoi', op: 'CO', chieu: 'PHAI_KHONG', nguon: 'tieuDe.600410', trich: x.trich }); delete x.dieuKienTru; }).loi.some((l) => l.ma === 'KHOA_RONG_HON_LUAT')
+  && G6.khoaRongHonLuat('tinhDanHoi', undefined, '580620 Vải dệt thoi khác, có hàm lượng sợi đàn hồi (elastomeric) hoặc sợi cao su chiếm từ 5% trở lên tính theo khối lượng') === null);
+kiem('khoaPhuHop #1583: 6704 ("Bằng vật liệu dệt tổng hợp") và 6913 ("Bằng sứ") không trả chatLieu; 6004.10 không trả tinhDanHoi (trả hamLuongSoiDanHoi)',
+  G6.khoaPhuHop('6704', 'Bằng vật liệu dệt tổng hợp') === null
+  && G6.khoaPhuHop('6913', 'Bằng sứ') === null
+  && G6.khoaPhuHop('6004', 'Có hàm lượng sợi đàn hồi chiếm từ 5% trở lên tính theo khối lượng nhưng không bao gồm sợi cao su') === 'hamLuongSoiDanHoi');
+kiem('tachVeTru: trích đúng nội dòng & trong ngoặc; giữ nguyên cận số "nhưng không quá …" của 8504.32',
+  JSON.stringify(G6.tachVeTru('Có hàm lượng sợi đàn hồi chiếm từ 5% trở lên tính theo khối lượng nhưng không bao gồm sợi cao su')) === JSON.stringify(['sợi cao su'])
+  && JSON.stringify(G6.tachVeTru('Công suất danh định trên 1 kVA nhưng không quá 16 kVA')) === JSON.stringify([])
+  && JSON.stringify(G6.tachVeTru('Thuyền máy, trừ loại có thể bơm hơi, không bao gồm thuyền máy có gắn máy bên ngoài')) === JSON.stringify(['loại có thể bơm hơi', 'thuyền máy có gắn máy bên ngoài'])
+  && JSON.stringify(G6.tachVeTru('Bằng sắt (trừ gang đúc) hoặc thép, đã tráng men')) === JSON.stringify(['gang đúc']));
+kiem('dieuKienTru: cấm trên phanConLai / chuaSoHoa / mục phủ định / rỗng; tách biệt dấu vết TRUNG_DIEU_KIEN', (() => {
+  const trenDu = tiem('6004', (ds) => { cua(ds, '600490').dieuKienTru = ['sợi cao su']; });
+  const trenChua = tiem('6913', (ds) => { cua(ds, '691310').dieuKienTru = ['sứ']; });
+  const trenPd = tiem('8412', (ds) => { cua(ds, '841210', (x) => x.chieu === 'PHAI_KHONG').dieuKienTru = ['tua bin']; });
+  const rong = tiem('6004', (ds) => { cua(ds, '600410').dieuKienTru = []; });
+  const khacDauVet = G6.kiemTieuChi6('6004', [
+    ...sao(DS_6004_CHUAN).filter((x) => x.hs6 === '600410'),
+    { ...sao(DS_6004_CHUAN)[0], hs6: '600490', dieuKienTru: ['khác'] },
+  ], { toKhai: false });
+  return trenDu.loi.some((l) => l.ma === 'DU_MANG_DIEU_KIEN')
+    && trenChua.loi.some((l) => l.ma === 'KHUON_SAI')
+    && trenPd.loi.some((l) => l.ma === 'KHUON_SAI')
+    && rong.loi.some((l) => l.ma === 'KHUON_SAI')
+    && !khacDauVet.loi.some((l) => l.ma === 'TRUNG_DIEU_KIEN');
+})());
+kiem('apTieuChi với dieuKienTru (6004) & ranh giới RE_PHU_DINH_TRUOC: khớp "vải dệt kim 8% sợi đàn hồi" và câu giữ nguyên phủ định "nhưng không bao gồm sợi cao su"; loại "kết hợp sợi cao su"; "dự trữ" không chặn nhầm "truyền động khí nén"',
+  G6.apTieuChi(DS_6004_CHUAN, 'vải dệt kim 8% sợi đàn hồi').hs6 === '600410'
+  && G6.apTieuChi(DS_6004_CHUAN, 'vải dệt kim 8% sợi đàn hồi nhưng không bao gồm sợi cao su').hs6 === '600410'
+  && G6.apTieuChi(DS_6004_CHUAN, 'vải dệt kim 8% sợi đàn hồi kết hợp sợi cao su').hs6 === null
+  && G6.apTieuChi(DS_6004_CHUAN, 'vải dệt kim 8% spandex').hs6 === null
+  && ap('8481', 'Van điện từ dự trữ truyền động khí nén') === '848120'
+  && ap('8481', 'Van điện từ trụ đỡ truyền động khí nén') === '848120');
+kiem('#1586 (7009.91/92 & phân nhóm không phải DU): 7009 qua cổng với 0 lỗi (7009.91/92 cảnh báo THIEU_KHOA_TU_VUNG); thay 7009.91 bằng mục rỗng hoặc bỏ điều kiện riêng dưới tầng có tên đều đỏ KHUON_SAI', (() => {
+  const st7009 = doc('data/so-tay/7009.json').tieuChi6;
+  const kq7009 = G6.kiemTieuChi6('7009', st7009, { toKhai: false });
+  const hong7009 = sao(st7009).map((x) => (x.hs6 === '700991' ? { hs6: '700991', nguon: 'tax.70099100', trich: '70099100 - - Chưa có khung' } : x));
+  const kqHong7009 = G6.kiemTieuChi6('7009', hong7009, { toKhai: false });
+  return kq7009.loi.length === 0
+    && kq7009.canhBao.some((c) => c.ma === 'THIEU_KHOA_TU_VUNG' && c.hs6 === '700991')
+    && kq7009.canhBao.some((c) => c.ma === 'THIEU_KHOA_TU_VUNG' && c.hs6 === '700992')
+    && kqHong7009.loi.some((l) => l.ma === 'KHUON_SAI' && l.hs6 === '700991');
+})());
 void os;
 xong();
