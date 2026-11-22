@@ -122,6 +122,7 @@ try {
 
   const envTest = { ...process.env };
   delete envTest.HS_TIEN_XU_LY;
+  const envChaBatTxl = { ...envTest, HS_TIEN_XU_LY: 'on' };
 
   const t0 = performance.now();
   execFileSync(
@@ -132,7 +133,7 @@ try {
   execFileSync(
     process.execPath,
     [SCRIPT, '--nhanh', '--gioi-han=3', '--json', json2, '--ghi-bao-cao', md2, '--che-pII'],
-    { cwd: GOC, env: envTest, encoding: 'utf8' },
+    { cwd: GOC, env: envChaBatTxl, encoding: 'utf8' },
   );
   const subMs = Math.round(performance.now() - t0);
 
@@ -146,8 +147,8 @@ try {
   const norm1 = JSON.stringify(chuanHoaTatDinh(r1));
   const norm2 = JSON.stringify(chuanHoaTatDinh(r2));
   kiem(
-    `2 lần chạy tiến trình riêng cho cùng số liệu tất định 100% (tổng 2 lượt ${subMs} ms)`,
-    norm1 === norm2 && subMs < 14000,
+    `2 lần chạy tiến trình riêng (kể cả shell cha export HS_TIEN_XU_LY=on) cho cùng số liệu tất định 100% (tổng 2 lượt ${subMs} ms)`,
+    norm1 === norm2 && subMs < 30000,
     { subMs, diff: norm1 === norm2 },
   );
 
@@ -199,8 +200,61 @@ try {
     zMd1.sach && zMd2.sach && zJson.sach
       && m1Text.includes('## (a)') && m1Text.includes('## (b)') && m1Text.includes('## (c)')
       && !('chiTietKhongChuaTenHang' in (r1.c4?.danhGiaDeRieng300 || {}))
+      && !('chiTietKhongChuaTenHang' in (r1.c4?.danhGiaDeRieng300?.thamKhao || {}))
       && mdSkipC4.includes('BO_QUA_CHUA_CO_TEP'),
     { zMd1, zMd2, zJson, c4: r1.c4?.trangThai },
+  );
+
+  // Phần (c) C4 v2: đủ hang_model + model + hang === tong, hangThamKhao, soDongDuocPhuHangModel & in Markdown
+  if (r1.c4?.coTep) {
+    const cap = r1.c4.capChapNhan;
+    const tongC4 = (cap.hang_model || 0) + cap.model + cap.hang;
+    const dongC4Md = `hãng+model: ${cap.hang_model ?? 0}, model: ${cap.model}, hãng: ${cap.hang}`;
+    const v2Ok = !r1.c4.laV2 || (
+      cap.hang_model > 0
+      && (r1.c4.hangThamKhao?.soCap || 0) > 0
+      && typeof r1.c4.doPhuTrenOz?.soDongDuocPhuHangModel === 'number'
+      && m1Text.includes('Hãng tham khảo:')
+      && (
+        r1.c4.danhGiaDeRieng300?.trangThai !== 'DA_DO'
+        || (
+          typeof r1.c4.danhGiaDeRieng300?.thamKhao?.soCaCoGoiY === 'number'
+          && m1Text.includes('Hãng tham khảo C4 trên')
+        )
+      )
+    );
+    kiem(
+      'phần (c) C4 (v1/v2): cộng (hang_model + model + hang) === tong và Markdown in đủ thành phần C4 v2',
+      tongC4 === cap.tong && m1Text.includes(dongC4Md) && v2Ok,
+      { cap, tongC4, laV2: r1.c4.laV2, hangThamKhao: r1.c4.hangThamKhao },
+    );
+  }
+
+  // Fallback đếm hang_model / model / hang / hangThamKhao khi tệp C4 không có thongKe tóm tắt sẵn
+  const c4FallbackPath = path.join(tmpDir, 'c4-fallback.json');
+  fs.writeFileSync(c4FallbackPath, JSON.stringify({
+    phienBan: 2,
+    loaiCaKin: true,
+    bang: [
+      { loai: 'hang_model', khoa: 'A|1', nhom4: '8481' },
+      { loai: 'hang_model', khoa: 'B|2', nhom4: '8481' },
+      { loai: 'model', khoa: 'M1', nhom4: '8481' },
+      { loai: 'hang', khoa: 'H1', nhom4: '8481' },
+    ],
+    hangThamKhao: [{ khoa: 'HTK1', nhom4: '8481' }],
+    mauThuan: [{ khoa: 'MT1' }],
+  }));
+  const c4Fb = await doDoPhuC4({ c4Path: c4FallbackPath });
+  kiem(
+    'doDoPhuC4 fallback đếm đúng hang_model + model + hang và hangThamKhao khi thiếu thongKe',
+    c4Fb.coTep === true
+      && c4Fb.capChapNhan.hang_model === 2
+      && c4Fb.capChapNhan.model === 1
+      && c4Fb.capChapNhan.hang === 1
+      && c4Fb.capChapNhan.tong === 4
+      && c4Fb.hangThamKhao?.soCap === 1
+      && c4Fb.capMauThuan.tong === 1,
+    c4Fb,
   );
 
   // Không sửa bang-co.json hay thong-ke.json

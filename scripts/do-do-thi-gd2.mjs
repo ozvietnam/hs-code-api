@@ -288,14 +288,37 @@ export async function doDoPhuC4(tuyChon = {}) {
   const tk = docC4.thongKe || {};
   const phienBan = docC4.phienBan ?? null;
   const bang = Array.isArray(docC4.bang) ? docC4.bang : [];
-  const capChapNhan = tk.capChapNhan || {
-    model: bang.filter((x) => x.loai === 'model').length,
-    hang: bang.filter((x) => x.loai === 'hang').length,
-    tong: bang.length,
-  };
+  const capChapNhan = tk.capChapNhan
+    ? {
+      hang_model: tk.capChapNhan.hang_model ?? 0,
+      model: tk.capChapNhan.model ?? 0,
+      hang: tk.capChapNhan.hang ?? 0,
+      tong: tk.capChapNhan.tong
+        ?? ((tk.capChapNhan.hang_model ?? 0) + (tk.capChapNhan.model ?? 0) + (tk.capChapNhan.hang ?? 0)),
+    }
+    : {
+      hang_model: bang.filter((x) => x.loai === 'hang_model').length,
+      model: bang.filter((x) => x.loai === 'model').length,
+      hang: bang.filter((x) => x.loai === 'hang').length,
+      tong: bang.length,
+    };
   const capMauThuan = tk.capMauThuan || {
     tong: Array.isArray(docC4.mauThuan) ? docC4.mauThuan.length : 0,
   };
+  const hangThamKhaoRaw = tk.hangThamKhao;
+  const hangThamKhao = hangThamKhaoRaw
+    ? {
+      soCap: hangThamKhaoRaw.soCap ?? 0,
+      nhatQuanItDong: hangThamKhaoRaw.nhatQuanItDong ?? null,
+      daSoUuThe: hangThamKhaoRaw.daSoUuThe ?? null,
+    }
+    : (Array.isArray(docC4.hangThamKhao)
+      ? {
+        soCap: docC4.hangThamKhao.length,
+        nhatQuanItDong: null,
+        daSoUuThe: null,
+      }
+      : null);
 
   let danhGiaDeRieng300 = null;
   const scriptC4 = path.join(ROOT, 'scripts', 'dung-c4-model-hang.mjs');
@@ -316,6 +339,14 @@ export async function doDoPhuC4(tuyChon = {}) {
           doPhuTrenCaCoModelHangPhanTram: kq.doPhuTrenCaCoModelHangPhanTram,
           doChinhXacTrenCaDuocPhuPhanTram: kq.doChinhXacTrenCaDuocPhuPhanTram,
           theoLoai: kq.theoLoai,
+          thamKhao: kq.thamKhao
+            ? {
+              soCaCoGoiY: kq.thamKhao.soCaCoGoiY ?? 0,
+              soCaDungNhom4: kq.thamKhao.soCaDungNhom4 ?? 0,
+              soCaSaiNhom4: kq.thamKhao.soCaSaiNhom4 ?? 0,
+              doChinhXacPhanTram: kq.thamKhao.doChinhXacPhanTram ?? 0,
+            }
+            : null,
         };
       }
     } catch (e) {
@@ -339,8 +370,10 @@ export async function doDoPhuC4(tuyChon = {}) {
     capChapNhan,
     capMauThuan,
     capDuoiNguong: tk.capDuoiNguong ?? null,
+    hangThamKhao,
     doPhuTrenOz: tk.doPhu ? {
       soDongDuocPhu: tk.doPhu.soDongDuocPhu,
+      soDongDuocPhuHangModel: tk.doPhu.soDongDuocPhuHangModel ?? null,
       soDongDuocPhuModel: tk.doPhu.soDongDuocPhuModel,
       soDongDuocPhuHang: tk.doPhu.soDongDuocPhuHang,
       trenDongCoModelHangPhanTram: tk.doPhu.trenDongCoModelHangPhanTram,
@@ -510,6 +543,9 @@ export async function doBoTimTruoc(opts = {}) {
   let transformersEnv = null;
 
   try {
+    // Đảm bảo mặc định HS_TIEN_XU_LY OFF ngay cả trước bước làm ấm (tránh shell cha export sẵn HS_TIEN_XU_LY=on)
+    delete process.env.HS_TIEN_XU_LY;
+
     // Chặn gọi mạng ở mọi tình huống
     globalThis.fetch = async () => {
       fetchBiChan += 1;
@@ -823,15 +859,27 @@ export function dinhDangBaoCaoMarkdown(kq) {
   if (!c4.coTep || c4.trangThai.startsWith('BO_QUA')) {
     lines.push(`- **Trạng thái:** ${c4.trangThai} — ${c4.ghiChu}`);
   } else {
+    const tkHangInfo = c4.hangThamKhao
+      ? ` · Hãng tham khảo: **${c4.hangThamKhao.soCap}**${c4.hangThamKhao.nhatQuanItDong != null ? ` (nhất quán ít dòng: ${c4.hangThamKhao.nhatQuanItDong}, đa số ưu thế: ${c4.hangThamKhao.daSoUuThe})` : ''}`
+      : '';
     lines.push(
-      `- **Phiên bản tệp C4:** v${c4.phienBan} (${c4.trangThai}, \`loaiCaKin\`: ${c4.loaiCaKin}) · **Cặp chấp nhận:** **${c4.capChapNhan.tong}** (model: ${c4.capChapNhan.model}, hãng: ${c4.capChapNhan.hang}) · Mâu thuẫn: ${c4.capMauThuan.tong}`,
+      `- **Phiên bản tệp C4:** v${c4.phienBan} (${c4.trangThai}, \`loaiCaKin\`: ${c4.loaiCaKin}) · **Cặp chấp nhận:** **${c4.capChapNhan.tong}** (hãng+model: ${c4.capChapNhan.hang_model ?? 0}, model: ${c4.capChapNhan.model}, hãng: ${c4.capChapNhan.hang}) · Mâu thuẫn: ${c4.capMauThuan.tong}${tkHangInfo}`,
     );
     if (c4.doPhuTrenOz) {
-      lines.push(`- **Độ phủ trên kho OZ (bản ghi hiện hành):** ${c4.doPhuTrenOz.soDongDuocPhu} dòng (**${c4.doPhuTrenOz.trenDongCoModelHangPhanTram}%** dòng có model/hãng hợp lệ · **${c4.doPhuTrenOz.trenTongSoDongPhanTram}%** toàn kho OZ)`);
+      const hmOz = c4.doPhuTrenOz.soDongDuocPhuHangModel != null
+        ? ` · hãng+model: ${c4.doPhuTrenOz.soDongDuocPhuHangModel}, model: ${c4.doPhuTrenOz.soDongDuocPhuModel}, hãng: ${c4.doPhuTrenOz.soDongDuocPhuHang}`
+        : '';
+      lines.push(`- **Độ phủ trên kho OZ (bản ghi hiện hành):** ${c4.doPhuTrenOz.soDongDuocPhu} dòng (**${c4.doPhuTrenOz.trenDongCoModelHangPhanTram}%** dòng có model/hãng hợp lệ · **${c4.doPhuTrenOz.trenTongSoDongPhanTram}%** toàn kho OZ${hmOz})`);
     }
     if (c4.danhGiaDeRieng300?.trangThai === 'DA_DO') {
       const d3 = c4.danhGiaDeRieng300;
-      lines.push(`- **Đo S-7 sạch đứng riêng trên \`de-rieng-300.jsonl\`:** phủ **${d3.soCaDuocPhu}/${d3.tongCa}** ca (**${d3.doPhuTrenTongCaPhanTram}%** tổng ca · **${d3.doPhuTrenCaCoModelHangPhanTram}%** ca có model/hãng hợp lệ) · chính xác trên ca phủ: **${d3.soCaDungNhom4}/${d3.soCaDuocPhu} (${d3.doChinhXacTrenCaDuocPhuPhanTram}%)**`);
+      const theoLoaiInfo = d3.theoLoai
+        ? ` · theo loại: hãng+model ${d3.theoLoai.hang_model?.phu ?? 0} (${d3.theoLoai.hang_model?.dung ?? 0} đúng), model ${d3.theoLoai.model?.phu ?? 0} (${d3.theoLoai.model?.dung ?? 0} đúng), hãng ${d3.theoLoai.hang?.phu ?? 0} (${d3.theoLoai.hang?.dung ?? 0} đúng)`
+        : '';
+      lines.push(`- **Đo S-7 sạch đứng riêng trên \`de-rieng-300.jsonl\`:** phủ **${d3.soCaDuocPhu}/${d3.tongCa}** ca (**${d3.doPhuTrenTongCaPhanTram}%** tổng ca · **${d3.doPhuTrenCaCoModelHangPhanTram}%** ca có model/hãng hợp lệ) · chính xác trên ca phủ: **${d3.soCaDungNhom4}/${d3.soCaDuocPhu} (${d3.doChinhXacTrenCaDuocPhuPhanTram}%)**${theoLoaiInfo}`);
+      if (d3.thamKhao) {
+        lines.push(`- **Hãng tham khảo C4 trên \`de-rieng-300.jsonl\` (chỉ tham khảo):** ${d3.thamKhao.soCaCoGoiY} ca · đúng nhóm 4 số: **${d3.thamKhao.soCaDungNhom4}/${d3.thamKhao.soCaCoGoiY} (${d3.thamKhao.doChinhXacPhanTram}%)**`);
+      }
     }
   }
 
