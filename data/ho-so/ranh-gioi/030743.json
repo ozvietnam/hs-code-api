@@ -4,13 +4,19 @@
   "nhom": "0307",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261105T1605#soan-030743",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "tho-hs-03:ozv-1804-20261122#soat-030743",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá ranh giới theo traVe.lyDo và khép SẠCH V1 lô 12b (OZV-1804).",
+    "bam": "f48c38badcf8854c9387044d37c55513c9e6a722035bc856c7afd132ac96d568"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -22,26 +28,36 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": [
-            "Mực nang",
-            "mực ống"
+            "Sepia officinalis",
+            "Rossia macrosoma",
+            "Sepiola",
+            "Ommastrephes",
+            "Loligo",
+            "Nototodarus",
+            "Sepioteuthis"
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "03074390",
       "nguon": "tax.03074390",
       "trich": "03074390 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "03074310",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.03074310 \"Mực nang (…) và mực ống (…)\" ⇒ tenLoai [\"Mực nang\",\"mực ống\"] — chữ Anh \"Cuttle fish (…) and squid (…)\" nối hai hàng bằng and; tên khoa học trong ngoặc là PHU"
+      "ghiChu": "tax.03074310 \"Mực nang (Sepia officinalis, Rossia macrosoma, Sepiola spp.) và mực ống (Ommastrephes spp., Loligo spp., Nototodarus spp., Sepioteuthis spp.)\" ⇒ tenLoai danh sách 7 loài/chi theo tên khoa học giới hạn loài (không suy rộng ra Sepia pharaonis hay loài ngoài danh sách theo 5186/TCHQ-TXNK)."
+    },
+    {
+      "ma": "030743",
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 030743-01 KHONG_LECH (5186/TCHQ-TXNK: loài mực có tên khoa học ngoài danh sách liệt kê ở .10 như mực nang vân hổ Sepia pharaonis ⇒ .90): soạn theo chữ biểu, ranh giới phân biệt bằng danh sách tên khoa học khai báo, khớp bảng."
     }
   ],
   "traVe": [

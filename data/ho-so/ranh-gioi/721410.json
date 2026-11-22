@@ -4,13 +4,19 @@
   "nhom": "7214",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-721410",
     "ngay": "2026-11-04"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "tho-hs-03:ozv-1804-20261122#soat-721410",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá ranh giới theo traVe.lyDo và khép SẠCH V1 lô 12b (OZV-1804).",
+    "bam": "69663a45df2cf1279aa2c5eabb220f5e78c13fce97b5fd52ac96c34239d048b8"
+  },
   "dieuKienNut": [
     {
       "id": "7214101",
@@ -24,7 +30,7 @@
           "donVi": "%"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -34,18 +40,21 @@
       "trich": "72141011 - - - Có mặt cắt ngang hình tròn",
       "dieuKienSo": [
         {
-          "fact": "hinhDangCatGocKinh",
-          "op": "KHONG"
+          "fact": "hinhDangMatCatNgang",
+          "op": "TRONG",
+          "value": [
+            "TRON"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "72141019",
       "nguon": "tax.72141019",
       "trich": "72141019 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "72141021",
@@ -53,18 +62,21 @@
       "trich": "72141021 - - - Có mặt cắt ngang hình tròn",
       "dieuKienSo": [
         {
-          "fact": "hinhDangCatGocKinh",
-          "op": "KHONG"
+          "fact": "hinhDangMatCatNgang",
+          "op": "TRONG",
+          "value": [
+            "TRON"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "72141029",
       "nguon": "tax.72141029",
       "trich": "72141029 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -80,32 +92,14 @@
       "lyDo": "Cụm danh từ chỉ thuộc tính"
     },
     {
-      "ma": "7214101",
-      "loai": "BO_VE",
-      "ve": "dưới 0,6% tính theo khối lượng",
-      "lyDo": "Đã lượng hóa qua hamLuongCarbon < 0.6 %"
-    },
-    {
       "ma": "72141011",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.72141011: \"Có mặt cắt ngang hình tròn\" ⇒ hinhDangCatGocKinh KHONG"
-    },
-    {
-      "ma": "72141011",
-      "loai": "BO_VE",
-      "ve": "Có mặt cắt ngang hình tròn",
-      "lyDo": "Đã phản ánh qua hình dạng mặt cắt hình tròn (không phải vuông/chữ nhật)"
+      "ghiChu": "tax.72141011: \"Có mặt cắt ngang hình tròn\" ⇒ hinhDangMatCatNgang TRONG [TRON]"
     },
     {
       "ma": "72141021",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.72141021: \"Có mặt cắt ngang hình tròn\" ⇒ hinhDangCatGocKinh KHONG"
-    },
-    {
-      "ma": "72141021",
-      "loai": "BO_VE",
-      "ve": "Có mặt cắt ngang hình tròn",
-      "lyDo": "Đã phản ánh qua hình dạng mặt cắt hình tròn"
+      "ghiChu": "tax.72141021: \"Có mặt cắt ngang hình tròn\" ⇒ hinhDangMatCatNgang TRONG [TRON]"
     }
   ],
   "traVe": [
