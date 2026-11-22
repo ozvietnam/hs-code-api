@@ -787,6 +787,56 @@ check('trangThaiDong8.veMoHinh: 73181510 chấm trọn nhãn "Đường kính ng
   check('OZV-1830 19019049 rào ngược: chưa rõ có ở dạng bột hay không (19019041 CHUA_BIET) → THIEU_SO_LIEU hỏi dangBot, không chốt vội 19019049',
     cd.ketQua === 'THIEU_SO_LIEU' && cd.hs !== '19019049' && (cd.missingFacts || []).some((m) => m.fact === 'dangBot'),
     JSON.stringify([cd.ketQua, cd.hs, cd.missingFacts]));
+
+  // ── OZV-1866: goTieuDeChaDaVe xx00 (98100090), kieu SO trên dòng 8 số dưới tiêu đề đa vế (85365051/59), hoacCoVeKhop (48119092), và mỡ bôi trơn (2710194) ──
+  cd = chotDong8({
+    hs: '981000',
+    productText: 'Sắt hoặc thép để sản xuất tanh lốp xe: Sản phẩm bằng dây sắt hoặc thép để sản xuất tanh lốp xe',
+  });
+  check('OZV-1866 98100090: goTieuDeChaDaVe không xoá kép tiêu đề nhóm 9810 ở phân nhóm xx00 → CHOT 98100090',
+    cd.ketQua === 'CHOT' && cd.hs === '98100090', JSON.stringify([cd.ketQua, cd.hs, cd.missingFacts]));
+
+  cd = chotDong8({
+    hs: '981000',
+    productText: 'Sắt hoặc thép để sản xuất tanh lốp xe',
+  });
+  check('OZV-1866 981000 rào ngược: chỉ có tiêu đề nhóm 9810 chưa rõ dạng dây hay thanh/que → không tự chốt 98100090',
+    cd.ketQua !== 'CHOT' && cd.hs !== '98100090', JSON.stringify([cd.ketQua, cd.hs]));
+
+  cd = chotDong8({
+    hs: '853650',
+    productText: 'Thiết bị đóng ngắt mạch khác: Công tắc điện tử dùng cho mạch xoay chiều gồm mạch vào và mạch ra kết nối điều khiển bằng quang học (công tắc dùng cho mạch xoay chiều điều khiển bằng thyristor); công tắc điện tử, kể cả công tắc bảo vệ quá nhiệt điện tử gồm một tranzito và một chip logic (công nghệ chip-on-chip) dùng cho điện áp không quá 1.000 V; công tắc điện cơ bật nhanh dùng cho dòng điện không quá 11 A',
+  });
+  check('OZV-1866 85365059 THIEU_DU_KIEN: chỉ có tiêu đề cha đa vế 8536505 (chứa "11 A" ở vế 3) → hỏi dongDien, không tự chốt 85365051',
+    cd.ketQua === 'THIEU_SO_LIEU' && cd.hs !== '85365051', JSON.stringify([cd.ketQua, cd.hs, cd.missingFacts]));
+
+  cd = chotDong8({
+    hs: '853650',
+    productText: 'Thiết bị đóng ngắt mạch khác: Công tắc điện tử dùng cho mạch xoay chiều gồm mạch vào và mạch ra kết nối điều khiển bằng quang học (công tắc dùng cho mạch xoay chiều điều khiển bằng thyristor); công tắc điện tử, kể cả công tắc bảo vệ quá nhiệt điện tử gồm một tranzito và một chip logic (công nghệ chip-on-chip) dùng cho điện áp không quá 1.000 V; công tắc điện cơ bật nhanh dùng cho dòng điện không quá 11 A: Dòng điện dưới 16 A',
+  });
+  check('OZV-1866 85365051 rào ngược: mô tả riêng có dòng điện dưới 16 A → CHOT 85365051',
+    cd.ketQua === 'CHOT' && cd.hs === '85365051', JSON.stringify([cd.ketQua, cd.hs]));
+
+  cd = chotDong8({
+    hs: '481151',
+    productText: 'Giấy và bìa đã tráng, thấm tẩm hoặc phủ bằng plastic (trừ chất kết dính) - Loại đã tẩy trắng, định lượng trên 150 g/m2: Tấm phủ sàn, không phải dạng cuộn, không ở dạng tờ hình chữ nhật',
+  });
+  check('OZV-1866 48115191: phủ định cả 2 phương án HOAC của nút anh em 4811513 → CHOT 48115191',
+    cd.ketQua === 'CHOT' && cd.hs === '48115191', JSON.stringify([cd.ketQua, cd.hs, cd.missingFacts]));
+
+  cd = chotDong8({
+    hs: '481151',
+    productText: 'Giấy và bìa đã tráng, thấm tẩm hoặc phủ bằng plastic (trừ chất kết dính) - Loại đã tẩy trắng, định lượng trên 150 g/m2: Tấm phủ sàn',
+  });
+  check('OZV-1866 481151 rào ngược: "Tấm phủ sàn" có dòng con khớp ở cả 48115131 và 48115191 mà thiếu kích thước/dạng cuộn → THIEU_SO_LIEU',
+    cd.ketQua === 'THIEU_SO_LIEU' && cd.hs !== '48115191', JSON.stringify([cd.ketQua, cd.hs]));
+
+  cd = chotDong8({
+    hs: '271019',
+    productText: 'Dầu có nguồn gốc từ dầu mỏ và các loại dầu thu được từ các khoáng bi-tum (trừ dầu thô) và các chế phẩm chưa được chi tiết hoặc ghi ở nơi khác, có chứa hàm lượng từ 70% trở lên là dầu có nguồn gốc từ dầu mỏ hoặc các loại dầu thu được từ các khoáng bi-tum, những loại dầu này là thành phần cơ bản của các chế phẩm đó, trừ loại chứa dầu diesel sinh học và trừ dầu thải - Loại khác: Dầu và mỡ bôi trơn: Dầu bôi trơn khác',
+  });
+  check('OZV-1866 27101946: tách vế cha "Dầu và mỡ bôi trơn" không để 27101944 (Mỡ bôi trơn) tranh chấp → CHOT 27101946',
+    cd.ketQua === 'CHOT' && cd.hs === '27101946', JSON.stringify([cd.ketQua, cd.hs]));
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);

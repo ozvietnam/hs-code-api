@@ -15,7 +15,7 @@
     "phien": "claude-agent:duyet-L33-20261111#soat-L33",
     "ngay": "2026-11-11",
     "ghiChu": "Đối chiếu biểu: hai dòng .10/.90 cùng chữ tên nhóm 9811, tách bằng maHsTuongUng theo cột mã tương ứng (72.24–72.28 ↔ 72.29) đúng quy ước Chương 98; 16 tiền lệ TB-TCHQ dùng 9811.00.10/.90 khớp hướng tách.",
-    "bam": "48814dd801572bb43e60707ad5edf8c5c89749da32ad6b1ce654a89bb6d5444c"
+    "bam": "a15e7492aab33ea78976d32021343dd575c4570d7d7d16df4b084dc3817296a3"
   },
   "dieuKienNut": [],
   "dong8": [
@@ -25,18 +25,31 @@
       "trich": "Thép hợp kim có chứa nguyên tố Bo và/hoặc Crôm và/hoặc Titan trừ chủng loại thép cán phẳng được cán nóng — mã hàng tương ứng: 72.24, 72.25, 72.26, 72.27, 72.28",
       "dieuKienSo": [
         {
-          "fact": "chatLieu",
-          "op": "LA",
-          "value": "sắt thép"
+          "fact": "maHsTuongUng",
+          "op": "CONG_DUNG",
+          "value": [
+            "72.24",
+            "72.25",
+            "72.26",
+            "72.27",
+            "72.28"
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "98110090",
-      "dieuKienSo": [],
-      "phanConLai": [
-        "98110010"
+      "nguon": "tuongUng.98110090",
+      "trich": "Thép hợp kim có chứa nguyên tố Bo và/hoặc Crôm và/hoặc Titan trừ chủng loại thép cán phẳng được cán nóng — mã hàng tương ứng: 72.29",
+      "dieuKienSo": [
+        {
+          "fact": "maHsTuongUng",
+          "op": "CONG_DUNG",
+          "value": [
+            "72.29"
+          ]
+        }
       ],
       "nguonLoai": "CLAUDE_DUYET"
     }
