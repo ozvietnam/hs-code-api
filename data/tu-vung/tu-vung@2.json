@@ -387,7 +387,14 @@
       "dangTam",
       "nguonDongLuc",
       "cuaLoaiGiaCam",
-      "tuXoDay"
+      "tuXoDay",
+      "loaiNhuaPolyme",
+      "coKemPhuKien",
+      "coTheBomHoi",
+      "daLapVoLoa",
+      "daNhoiDem",
+      "coGanOBi",
+      "loaiTuDong"
     ],
     "tuVung1": {
       "trangThai": "DA_CHAM",
@@ -5457,7 +5464,8 @@
               "cashmere",
               "mohair",
               "alpaca",
-              "len\\s+lông\\s+(?:cừu|dê|thỏ)"
+              "len\\s+lông\\s+(?:cừu|dê|thỏ)",
+              "ca-?sơ-?mia"
             ],
             "en": [
               "wool(?:len|en)?",
@@ -6452,7 +6460,8 @@
           "ren\\s+trong",
           "ren\\s+ngoài",
           "được\\s+tiện\\s+ren",
-          "bước\\s+ren"
+          "bước\\s+ren",
+          "đã\\s+(?:được\\s+)?ren"
         ],
         "en": [
           "thread(?:ed)?",
@@ -6488,7 +6497,9 @@
         "vi": [
           "không\\s+(?:có\\s+)?ren(?:\\s+ở\\s+đầu\\s+ống)?",
           "đầu\\s+trơn",
-          "chưa\\s+tiện\\s+ren"
+          "chưa\\s+tiện\\s+ren",
+          "không\\s+(?:được\\s+)?ren",
+          "chưa\\s+(?:được\\s+)?ren"
         ],
         "en": [
           "unthreaded",
@@ -8883,6 +8894,7 @@
           "nhanZh": "色织",
           "cachDoc": {
             "vi": [
+              "(?:từ\\s+(?:các\\s+)?sợi\\s+)?có\\s+(?:các\\s+)?màu\\s+khác\\s+nhau",
               "từ\\s+(?:các\\s+)?sợi\\s+có\\s+màu\\s+khác\\s+nhau",
               "từ\\s+(?:các\\s+)?sợi\\s+(?:nhiều\\s+)?màu",
               "dệt\\s+từ\\s+sợi\\s+màu"
@@ -11468,8 +11480,8 @@
       "nhanZh": "硬质",
       "cachDoc": {
         "vi": [
-          "(?:loại\\s+)?cứng(?:\\s*\\(SEN\\))?",
-          "dạng\\s+tấm\\s+và\\s+phiến,\\s+loại\\s+cứng(?:\\s*\\(SEN\\))?"
+          "(?:loại\\s+)?(?<!cao su )cứng(?!\\s*bức\\s*xạ)(?:\\s*\\(SEN\\))?",
+          "dạng\\s+tấm\\s+và\\s+phiến,\\s+loại\\s+cứng(?!\\s*bức\\s*xạ)(?:\\s*\\(SEN\\))?"
         ],
         "en": [
           "rigid(?:\\s+type)?"
@@ -14568,7 +14580,7 @@
       },
       "cachDoc": {
         "vi": [
-          "cao\\s+su"
+          "cao\\s+su\\s+(?:tự\\s+nhiên|tổng\\s+hợp|lưu\\s+h(?:oá|óa))"
         ],
         "en": [
           "rubber"
@@ -19096,7 +19108,7 @@
       },
       "cachDoc": {
         "vi": [
-          "thuộc"
+          "(?<!da\\s)thuộc(?!\\s+(?:nhóm|phân\\s+nhóm|chương|phần|các\\s+nhóm|các\\s+phân\\s+nhóm))"
         ],
         "en": [
           "tanned"
@@ -21504,7 +21516,14 @@
         "VANG_HOAC_BAC",
         "KIM_LOAI_DAT_PHU_VANG_HOAC_BAC",
         "DA_THUOC",
-        "DA_THUOC_TONG_HOP"
+        "DA_THUOC_TONG_HOP",
+        "TRE",
+        "LIEU_GAI",
+        "PHA_LE_CHI",
+        "GOM_KIM_LOAI",
+        "CAO_SU_XOP",
+        "CAO_SU_CUNG",
+        "PLASTIC_XOP"
       ],
       "moTaGiaTri": {
         "TITAN": {
@@ -21794,12 +21813,150 @@
             ]
           },
           "cachViet": "bằng da thuộc tổng hợp"
+        },
+        "TRE": {
+          "nhanVi": "tre",
+          "nhanEn": "bamboo",
+          "nhanZh": "竹",
+          "cachDoc": {
+            "vi": [
+              "(?:làm\\s+)?(?:bằng|từ)\\s+tre"
+            ],
+            "en": [
+              "(?:of|made\\s+(?:of|from)|from)\\s+bamboo",
+              "bamboo\\s+(?:furniture|seats?|chairs?|mats?|baskets?|articles?|products?)"
+            ],
+            "zh": [
+              "竹制",
+              "竹编",
+              "竹家具"
+            ]
+          },
+          "cachViet": "bằng tre"
+        },
+        "LIEU_GAI": {
+          "nhanVi": "liễu gai",
+          "nhanEn": "osier",
+          "nhanZh": "柳条",
+          "cachDoc": {
+            "vi": [
+              "(?:(?:làm\\s+)?(?:bằng|từ)\\s+)?liễu\\s+gai"
+            ],
+            "en": [
+              "(?:of|made\\s+(?:of|from)|from)\\s+osier",
+              "\\bosier\\b"
+            ],
+            "zh": [
+              "柳条制",
+              "柳条编",
+              "柳条"
+            ]
+          },
+          "cachViet": "bằng liễu gai"
+        },
+        "PHA_LE_CHI": {
+          "nhanVi": "pha lê chì",
+          "nhanEn": "lead crystal",
+          "nhanZh": "铅晶质玻璃",
+          "cachDoc": {
+            "vi": [
+              "(?:(?:làm\\s+)?(?:bằng|từ)\\s+)?pha\\s+lê\\s+chì"
+            ],
+            "en": [
+              "lead\\s+crystal"
+            ],
+            "zh": [
+              "铅晶质玻璃",
+              "铅水晶"
+            ]
+          },
+          "cachViet": "bằng pha lê chì"
+        },
+        "GOM_KIM_LOAI": {
+          "nhanVi": "gốm kim loại",
+          "nhanEn": "cermets",
+          "nhanZh": "金属陶瓷",
+          "cachDoc": {
+            "vi": [
+              "(?:(?:làm\\s+)?(?:bằng|từ)\\s+)?gốm\\s+kim\\s+loại",
+              "cermet(?:s)?"
+            ],
+            "en": [
+              "\\bcermets?\\b",
+              "ceramic[-\\s]metals?"
+            ],
+            "zh": [
+              "金属陶瓷"
+            ]
+          },
+          "cachViet": "bằng gốm kim loại"
+        },
+        "CAO_SU_XOP": {
+          "nhanVi": "cao su xốp",
+          "nhanEn": "cellular rubber",
+          "nhanZh": "海绵橡胶",
+          "cachDoc": {
+            "vi": [
+              "(?:(?:làm\\s+)?(?:bằng|từ)\\s+)?cao\\s+su\\s+(?:xốp|tế\\s+bào)"
+            ],
+            "en": [
+              "cellular\\s+rubber",
+              "sponge\\s+rubber",
+              "foam\\s+rubber"
+            ],
+            "zh": [
+              "海绵橡胶",
+              "泡沫橡胶",
+              "微孔橡胶"
+            ]
+          },
+          "cachViet": "bằng cao su xốp"
+        },
+        "CAO_SU_CUNG": {
+          "nhanVi": "cao su cứng",
+          "nhanEn": "hard rubber",
+          "nhanZh": "硬质橡胶",
+          "cachDoc": {
+            "vi": [
+              "(?:(?:làm\\s+)?(?:bằng|từ)\\s+)?cao\\s+su\\s+cứng",
+              "(?:(?:làm\\s+)?(?:bằng|từ)\\s+)?ebonit"
+            ],
+            "en": [
+              "hard\\s+rubber",
+              "\\bebonite\\b"
+            ],
+            "zh": [
+              "硬质橡胶",
+              "硬橡胶",
+              "硬象皮"
+            ]
+          },
+          "cachViet": "bằng cao su cứng"
+        },
+        "PLASTIC_XOP": {
+          "nhanVi": "plastic xốp",
+          "nhanEn": "cellular plastics",
+          "nhanZh": "泡沫塑料",
+          "cachDoc": {
+            "vi": [
+              "(?:(?:làm\\s+)?(?:bằng|từ)\\s+)?(?:plastic|nhựa)\\s+(?:xốp|tế\\s+bào)"
+            ],
+            "en": [
+              "cellular\\s+plastics?",
+              "foam(?:ed)?\\s+plastics?",
+              "expanded\\s+plastics?"
+            ],
+            "zh": [
+              "泡沫塑料",
+              "微孔塑料",
+              "多孔塑料"
+            ]
+          },
+          "cachViet": "bằng plastic xốp"
         }
       },
       "cachDoc": {
-        "vi": [
-          "vật\\s+liệu"
-        ],
+        "vi": [],
         "en": [
           "material"
         ],
@@ -26429,6 +26586,769 @@
         "zh": "该产品是否由黄麻纤维（税目53.03）制成？"
       },
       "ghiChu": "Chữ biểu 5702.39.20 / 5702.49.20 / 5702.50.20 / 5702.99.20 \"Từ xơ đay\" / EN \"Of jute fibres\" (phân biệt với sisal, lanh, gai ramie, xơ dừa… trong cùng nhóm vật liệu dệt thực vật khác) (OZV-1804).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "loaiNhuaPolyme",
+      "kieu": "LIET_KE",
+      "nhanVi": "loại nhựa polyme cụ thể (nhóm 39.20 / 39.23)",
+      "nhanEn": "specific polymer plastic type (39.20 / 39.23)",
+      "nhanZh": "具体聚合物塑料种类（39.20 / 39.23）",
+      "cumDaiThang": true,
+      "giaTriHopLe": [
+        "ETYLEN",
+        "PROPYLEN",
+        "STYREN",
+        "VINYL_CLORUA",
+        "ACRYLIC",
+        "POLYCARBONAT",
+        "PET",
+        "PMMA",
+        "POLYESTE_CHUA_NO",
+        "POLYESTE",
+        "XENLULO_TAI_SINH",
+        "XENLULO_AXETAT",
+        "XENLULO",
+        "POLY_VINYL_BUTYRAL",
+        "POLYAMIDE",
+        "NHUA_AMINO",
+        "NHUA_PHENOLIC"
+      ],
+      "moTaGiaTri": {
+        "ETYLEN": {
+          "nhanVi": "polyme từ etylen (PE / HDPE / LDPE)",
+          "nhanEn": "polymers of ethylene",
+          "nhanZh": "乙烯聚合物",
+          "cachDoc": {
+            "vi": [
+              "(?:từ\\s+)?(?:các\\s+)?polyme\\s+(?:từ|của)\\s+[eê]tylen",
+              "poly\\s*(?:\\(\\s*)?[eê]tylen(?!\\s*(?:\\)\\s*)?terepht)(?:\\s*\\))?",
+              "polyethylene",
+              "(?:nhựa|tấm|màng|phiến|cuộn|túi|bao|vật\\s+liệu)\\s+(?:PE|HDPE|LDPE|LLDPE)(?![\\p{L}\\p{N}])",
+              "(?<![\\p{L}\\p{N}])(?:HDPE|LDPE|LLDPE)(?![\\p{L}\\p{N}])"
+            ],
+            "en": [
+              "polymers?\\s+of\\s+ethylene",
+              "polyethylene(?!\\s+terephthalate)",
+              "(?<![A-Za-z0-9])(?:HDPE|LDPE|LLDPE)(?![A-Za-z0-9])"
+            ],
+            "zh": [
+              "乙烯聚合物",
+              "(?<!对苯二甲酸)聚乙烯"
+            ]
+          },
+          "cachViet": "từ polyme từ etylen"
+        },
+        "PROPYLEN": {
+          "nhanVi": "polyme từ propylen (PP)",
+          "nhanEn": "polymers of propylene",
+          "nhanZh": "丙烯聚合物",
+          "cachDoc": {
+            "vi": [
+              "(?:từ\\s+)?(?:các\\s+)?polyme\\s+(?:từ|của)\\s+propylen",
+              "polypropylen(?:e)?",
+              "(?:nhựa|tấm|màng|phiến|cuộn|túi|bao|vật\\s+liệu)\\s+PP(?![\\p{L}\\p{N}])"
+            ],
+            "en": [
+              "polymers?\\s+of\\s+propylene",
+              "polypropylene"
+            ],
+            "zh": [
+              "丙烯聚合物",
+              "聚丙烯"
+            ]
+          },
+          "cachViet": "từ polyme từ propylen"
+        },
+        "STYREN": {
+          "nhanVi": "polyme từ styren (PS / ABS)",
+          "nhanEn": "polymers of styrene",
+          "nhanZh": "苯乙烯聚合物",
+          "cachDoc": {
+            "vi": [
+              "(?:từ\\s+)?(?:các\\s+)?polyme\\s+(?:từ|của)\\s+styren",
+              "polystyren(?:e)?",
+              "(?:nhựa|tấm|màng|phiến|cuộn|hộp|vật\\s+liệu)\\s+(?:PS|EPS|HIPS|ABS)(?![\\p{L}\\p{N}])"
+            ],
+            "en": [
+              "polymers?\\s+of\\s+styrene",
+              "polystyrene",
+              "\\b(?:HIPS|EPS)\\s+(?:plastic|sheet|resin|foam)s?\\b"
+            ],
+            "zh": [
+              "苯乙烯聚合物",
+              "聚苯乙烯"
+            ]
+          },
+          "cachViet": "từ polyme từ styren"
+        },
+        "VINYL_CLORUA": {
+          "nhanVi": "polyme từ vinyl clorua (PVC)",
+          "nhanEn": "polymers of vinyl chloride",
+          "nhanZh": "氯乙烯聚合物",
+          "cachDoc": {
+            "vi": [
+              "(?:từ\\s+)?(?:các\\s+)?polyme\\s+(?:từ|của)\\s+vinyl\\s+clorua",
+              "poly\\s*\\(\\s*vinyl\\s+clorua\\s*\\)",
+              "polyvinyl\\s+clorua",
+              "(?<![\\p{L}\\p{N}])PVC(?![\\p{L}\\p{N}])"
+            ],
+            "en": [
+              "polymers?\\s+of\\s+vinyl\\s+chloride",
+              "poly\\s*\\(\\s*vinyl\\s+chloride\\s*\\)",
+              "polyvinyl\\s+chloride",
+              "\\bPVC\\b"
+            ],
+            "zh": [
+              "氯乙烯聚合物",
+              "聚氯乙烯",
+              "\\bPVC\\b"
+            ]
+          },
+          "cachViet": "từ polyme từ vinyl clorua"
+        },
+        "ACRYLIC": {
+          "nhanVi": "polyme acrylic",
+          "nhanEn": "acrylic polymers",
+          "nhanZh": "丙烯酸聚合物",
+          "cachDoc": {
+            "vi": [
+              "(?:từ\\s+)?(?:các\\s+)?polyme\\s+acrylic",
+              "(?:nhựa|tấm|màng|phiến|vật\\s+liệu)\\s+acrylic(?!\\s+(?:trùng\\s+hợp|dệt))",
+              "từ\\s+nhựa\\s+acrylic"
+            ],
+            "en": [
+              "acrylic\\s+polymers?",
+              "acrylic\\s+(?:sheets?|plates?|films?|plastics?)"
+            ],
+            "zh": [
+              "丙烯酸聚合物",
+              "丙烯酸塑料"
+            ]
+          },
+          "cachViet": "từ các polyme acrylic"
+        },
+        "POLYCARBONAT": {
+          "nhanVi": "polycarbonat (PC)",
+          "nhanEn": "polycarbonates",
+          "nhanZh": "聚碳酸酯",
+          "cachDoc": {
+            "vi": [
+              "polycarbonat(?:e)?",
+              "(?:nhựa|tấm|màng|phiến|vật\\s+liệu)\\s+PC(?![\\p{L}\\p{N}])"
+            ],
+            "en": [
+              "polycarbonates?"
+            ],
+            "zh": [
+              "聚碳酸酯"
+            ]
+          },
+          "cachViet": "từ polycarbonat"
+        },
+        "PET": {
+          "nhanVi": "polyetylen terephtalat (PET)",
+          "nhanEn": "poly(ethylene terephthalate) (PET)",
+          "nhanZh": "聚对苯二甲酸乙二醇酯（PET）",
+          "cachDoc": {
+            "vi": [
+              "poly\\s*\\(\\s*[eê]tylen\\s+terepht(?:hal|al)?at\\s*\\)",
+              "poly[eê]tylen\\s+terepht(?:hal|al)?at",
+              "(?:nhựa|tấm|màng|phiến|chai|cuộn|vật\\s+liệu|bằng|từ)\\s+PET(?![\\p{L}\\p{N}])",
+              "(?<![\\p{L}\\p{N}])PET\\s+(?:film|sheet|resin|plastic|bottle)"
+            ],
+            "en": [
+              "poly\\s*\\(\\s*ethylene\\s+terepht(?:hal|al)ate?\\s*\\)",
+              "polyethylene\\s+terepht(?:hal|al)ate?",
+              "\\bPET\\s+(?:film|sheet|resin|plastic|bottle)s?\\b"
+            ],
+            "zh": [
+              "聚对苯二甲酸乙二醇酯",
+              "PET塑料",
+              "PET薄膜"
+            ]
+          },
+          "cachViet": "từ polyetylen terephtalat"
+        },
+        "PMMA": {
+          "nhanVi": "polymetyl metacrylat (PMMA)",
+          "nhanEn": "poly(methyl methacrylate) (PMMA)",
+          "nhanZh": "聚甲基丙烯酸甲酯（PMMA）",
+          "cachDoc": {
+            "vi": [
+              "poly\\s*\\(\\s*metyl\\s+metacrylat\\s*\\)",
+              "polymetyl\\s+metacrylat",
+              "(?<![\\p{L}\\p{N}])PMMA(?![\\p{L}\\p{N}])"
+            ],
+            "en": [
+              "poly\\s*\\(\\s*methyl\\s+methacrylate\\s*\\)",
+              "polymethyl\\s+methacrylate",
+              "\\bPMMA\\b"
+            ],
+            "zh": [
+              "聚甲基丙烯酸甲酯",
+              "亚克力",
+              "PMMA"
+            ]
+          },
+          "cachViet": "từ polymetyl metacrylat"
+        },
+        "POLYESTE_CHUA_NO": {
+          "nhanVi": "polyeste chưa no",
+          "nhanEn": "unsaturated polyesters",
+          "nhanZh": "不饱和聚酯",
+          "cachDoc": {
+            "vi": [
+              "(?:các\\s+)?polyeste(?:r)?\\s+chưa\\s+no"
+            ],
+            "en": [
+              "unsaturated\\s+polyesters?"
+            ],
+            "zh": [
+              "不饱和聚酯"
+            ]
+          },
+          "cachViet": "từ các polyeste chưa no"
+        },
+        "POLYESTE": {
+          "nhanVi": "polyeste (no)",
+          "nhanEn": "polyesters",
+          "nhanZh": "聚酯",
+          "cachDoc": {
+            "vi": [
+              "(?<![\\p{L}])(?:các\\s+)?polyeste(?:r)?(?!\\s+chưa\\s+no)(?![\\p{L}])"
+            ],
+            "en": [
+              "(?<!unsaturated\\s+)polyesters?"
+            ],
+            "zh": [
+              "(?<!不饱和)聚酯"
+            ]
+          },
+          "cachViet": "từ polyeste"
+        },
+        "XENLULO_TAI_SINH": {
+          "nhanVi": "xenlulo tái sinh (cellophane)",
+          "nhanEn": "regenerated cellulose",
+          "nhanZh": "再生纤维素",
+          "cachDoc": {
+            "vi": [
+              "xenlulo\\s+tái\\s+sinh",
+              "cellophane"
+            ],
+            "en": [
+              "regenerated\\s+cellulose",
+              "cellophane"
+            ],
+            "zh": [
+              "再生纤维素",
+              "玻璃纸"
+            ]
+          },
+          "cachViet": "từ xenlulo tái sinh"
+        },
+        "XENLULO_AXETAT": {
+          "nhanVi": "xenlulo axetat",
+          "nhanEn": "cellulose acetate",
+          "nhanZh": "醋酸纤维素",
+          "cachDoc": {
+            "vi": [
+              "xenlulo\\s+axetat"
+            ],
+            "en": [
+              "cellulose\\s+acetate"
+            ],
+            "zh": [
+              "醋酸纤维素"
+            ]
+          },
+          "cachViet": "từ xenlulo axetat"
+        },
+        "XENLULO": {
+          "nhanVi": "xenlulo hoặc dẫn xuất hóa học của xenlulo",
+          "nhanEn": "cellulose or its chemical derivatives",
+          "nhanZh": "纤维素或其化学衍生物",
+          "cachDoc": {
+            "vi": [
+              "(?<!bột\\s)(?<!xơ\\s)(?<!sợi\\s)xenlulo(?!\\s+(?:tái\\s+sinh|axetat))"
+            ],
+            "en": [
+              "(?<!regenerated\\s)cellulose(?!\\s+acetate)(?!\\s+(?:wadding|fibre|pulp))"
+            ],
+            "zh": [
+              "(?<!再生)(?<!醋酸)纤维素(?!絮胎)"
+            ]
+          },
+          "cachViet": "từ xenlulo"
+        },
+        "POLY_VINYL_BUTYRAL": {
+          "nhanVi": "polyvinyl butyral (PVB)",
+          "nhanEn": "poly(vinyl butyral) (PVB)",
+          "nhanZh": "聚乙烯醇缩丁醛（PVB）",
+          "cachDoc": {
+            "vi": [
+              "poly\\s*\\(\\s*vinyl\\s+butyral\\s*\\)",
+              "polyvinyl\\s+butyral",
+              "(?<![\\p{L}\\p{N}])PVB(?![\\p{L}\\p{N}])"
+            ],
+            "en": [
+              "poly\\s*\\(\\s*vinyl\\s+butyral\\s*\\)",
+              "polyvinyl\\s+butyral",
+              "\\bPVB\\b"
+            ],
+            "zh": [
+              "聚乙烯醇缩丁醛",
+              "PVB"
+            ]
+          },
+          "cachViet": "từ polyvinyl butyral"
+        },
+        "POLYAMIDE": {
+          "nhanVi": "polyamide (nylon)",
+          "nhanEn": "polyamides",
+          "nhanZh": "聚酰胺",
+          "cachDoc": {
+            "vi": [
+              "polyamid(?:e)?",
+              "polyamit",
+              "(?:nhựa|tấm|màng|phiến)\\s+(?:PA|nylon)(?![\\p{L}\\p{N}])"
+            ],
+            "en": [
+              "polyamides?"
+            ],
+            "zh": [
+              "聚酰胺"
+            ]
+          },
+          "cachViet": "từ polyamide"
+        },
+        "NHUA_AMINO": {
+          "nhanVi": "nhựa amino",
+          "nhanEn": "amino-resins",
+          "nhanZh": "氨基树脂",
+          "cachDoc": {
+            "vi": [
+              "nhựa\\s+amino",
+              "amino[-\\s]?resin"
+            ],
+            "en": [
+              "amino[-\\s]?resins?"
+            ],
+            "zh": [
+              "氨基树脂"
+            ]
+          },
+          "cachViet": "từ nhựa amino"
+        },
+        "NHUA_PHENOLIC": {
+          "nhanVi": "nhựa phenolic",
+          "nhanEn": "phenolic resins",
+          "nhanZh": "酚醛树脂",
+          "cachDoc": {
+            "vi": [
+              "nhựa\\s+phenolic",
+              "phenolic\\s+resin",
+              "nhựa\\s+phenol"
+            ],
+            "en": [
+              "phenolic\\s+resins?"
+            ],
+            "zh": [
+              "酚醛树脂"
+            ]
+          },
+          "cachViet": "từ nhựa phenolic"
+        }
+      },
+      "cachDoc": {
+        "vi": [],
+        "en": [],
+        "zh": []
+      },
+      "cachViet": {
+        "vi": "{giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Tấm, màng, bao, túi plastic làm từ loại nhựa polyme nào (polyme từ etylen, propylen, styren, vinyl clorua, acrylic, polycarbonat, PET, PMMA, polyeste, xenlulo, PVB, polyamide, nhựa amino hay phenolic)?",
+        "zh": "该塑料板、膜、袋由哪种具体聚合物塑料制成（乙烯、丙烯、苯乙烯、氯乙烯、丙烯酸、聚碳酸酯、PET、PMMA、聚酯、纤维素、PVB、聚酰胺、氨基树脂还是酚醛树脂）？"
+      },
+      "ghiChu": "T-5 Top-93: Phân nhóm 39.20 và 39.23 phân biệt các loại nhựa polyme cụ thể mà chatLieu (chỉ plastic chung) và nhomPolyme (chỉ 2 nhóm trùng hợp / trùng ngưng) không phân tách đủ.",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "coKemPhuKien",
+      "kieu": "CO_KHONG",
+      "nhanVi": "có kèm phụ kiện",
+      "nhanEn": "with fittings",
+      "nhanZh": "带配件／接头",
+      "cachDoc": {
+        "vi": [
+          "(?<!hoặc )(?<!hoặc không )(?<!hoặc không có )(?:có\\s+)?(?:kèm|gắn)\\s+(?:theo\\s+)?(?:các\\s+)?phụ\\s+kiện"
+        ],
+        "en": [
+          "(?<!whether or not )(?<!with or without )(?<!or )(?<!without )with\\s+(?:their\\s+)?fittings?"
+        ],
+        "zh": [
+          "带配件",
+          "附配件",
+          "带管件"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không có",
+          "không",
+          "chưa",
+          "ko",
+          "chẳng",
+          "non-?",
+          "without",
+          "no",
+          "not",
+          "无",
+          "非",
+          "不",
+          "没有",
+          "未"
+        ]
+      },
+      "cachDocKhong": {
+        "vi": [
+          "(?<!hoặc )không\\s+(?:có\\s+|kèm\\s+)?(?:theo\\s+)?(?:các\\s+)?phụ\\s+kiện",
+          "(?<!hoặc )không\\s+gắn\\s+(?:các\\s+)?phụ\\s+kiện"
+        ],
+        "en": [
+          "(?<!or )without\\s+(?:their\\s+)?fittings?",
+          "(?<!whether or )(?<!or )not\\s+(?:fitted|equipped)\\s+with\\s+(?:their\\s+)?fittings?"
+        ],
+        "zh": [
+          "不带配件",
+          "无配件"
+        ]
+      },
+      "cachViet": {
+        "vi": "có kèm phụ kiện",
+        "viPhuDinh": "không kèm phụ kiện"
+      },
+      "cauHoi": {
+        "vi": "Hàng có kèm theo phụ kiện không?",
+        "zh": "该货物是否附带配件？"
+      },
+      "ghiChu": "T-5 Top-93: Đọc vế có hoặc không kèm phụ kiện (nhóm 39.17, 40.09, ...).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "coTheBomHoi",
+      "kieu": "CO_KHONG",
+      "nhanVi": "có thể bơm hơi",
+      "nhanEn": "inflatable",
+      "nhanZh": "充气式",
+      "cachDoc": {
+        "vi": [
+          "(?<!hoặc )(?<!hoặc không )(?<!hoặc không có )(?:loại\\s+)?(?:có\\s+thể\\s+|dạng\\s+)bơm\\s+hơi"
+        ],
+        "en": [
+          "(?<!whether or not )(?<!with or without )(?<!or )inflatable"
+        ],
+        "zh": [
+          "可充气的",
+          "充气式",
+          "充气"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không có",
+          "không",
+          "chưa",
+          "ko",
+          "chẳng",
+          "non-?",
+          "without",
+          "no",
+          "not",
+          "trừ",
+          "ngoại\\s+trừ",
+          "except",
+          "other\\s+than",
+          "除",
+          "无",
+          "非",
+          "不",
+          "没有",
+          "未"
+        ]
+      },
+      "cachDocKhong": {
+        "vi": [
+          "(?<!hoặc )không\\s+(?:thể\\s+)?bơm\\s+hơi"
+        ],
+        "en": [
+          "(?<!whether or not )(?<!or )non-?inflatable",
+          "(?<!whether or )(?<!or )not\\s+inflatable"
+        ],
+        "zh": [
+          "非充气",
+          "不可充气"
+        ]
+      },
+      "cachViet": {
+        "vi": "có thể bơm hơi",
+        "viPhuDinh": "không thể bơm hơi"
+      },
+      "cauHoi": {
+        "vi": "Hàng có phải loại có thể bơm hơi không?",
+        "zh": "该货物是否为可充气式？"
+      },
+      "ghiChu": "T-5 Top-93: 4016.95 \"Các sản phẩm có thể bơm hơi khác\" vs 4016.94 \"có hoặc không thể bơm hơi\".",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "daLapVoLoa",
+      "kieu": "CO_KHONG",
+      "nhanVi": "đã lắp vào vỏ loa",
+      "nhanEn": "mounted in their enclosures",
+      "nhanZh": "装在音箱内",
+      "cachDoc": {
+        "vi": [
+          "(?<!hoặc )(?<!hoặc chưa )(?:đã\\s+)?lắp\\s+(?:vào\\s+)?(?:cùng\\s+một\\s+)?vỏ\\s+loa"
+        ],
+        "en": [
+          "(?<!whether or not )mounted\\s+in\\s+(?:their\\s+|an?\\s+|the\\s+same\\s+)?enclosures?"
+        ],
+        "zh": [
+          "(?<!无论是否)装在(?:同一个)?音箱内",
+          "带音箱"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không",
+          "chưa",
+          "ko",
+          "chẳng",
+          "non-?",
+          "without",
+          "not",
+          "无",
+          "非",
+          "不",
+          "没有",
+          "未"
+        ]
+      },
+      "cachDocKhong": {
+        "vi": [
+          "(?<!hoặc )chưa\\s+lắp\\s+(?:vào\\s+)?vỏ\\s+loa",
+          "(?<!hoặc )không\\s+(?:có\\s+)?vỏ\\s+loa",
+          "loa\\s+rời"
+        ],
+        "en": [
+          "(?<!whether or )(?<!or )not\\s+mounted\\s+in\\s+(?:an?\\s+|their\\s+)?enclosures?",
+          "(?<!or )without\\s+enclosures?",
+          "bare\\s+speakers?"
+        ],
+        "zh": [
+          "未装在音箱内",
+          "无音箱",
+          "裸喇叭"
+        ]
+      },
+      "cachViet": {
+        "vi": "đã lắp vào vỏ loa",
+        "viPhuDinh": "chưa lắp vào vỏ loa"
+      },
+      "cauHoi": {
+        "vi": "Loa đã được lắp vào vỏ loa chưa?",
+        "zh": "扬声器是否已装入音箱内？"
+      },
+      "ghiChu": "T-5 Top-93: 8518.21/8518.22 \"đã lắp vào (cùng một) vỏ loa\" vs 8518.2 \"Loa, đã hoặc chưa lắp vào vỏ loa\".",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "daNhoiDem",
+      "kieu": "CO_KHONG",
+      "nhanVi": "đã nhồi đệm",
+      "nhanEn": "upholstered",
+      "nhanZh": "装软垫",
+      "cachDoc": {
+        "vi": [
+          "(?<!hoặc )(?<!hoặc chưa )(?:đã\\s+|có\\s+)?(?:nhồi|bọc)\\s+đệm",
+          "(?<!không )(?<!chưa )bọc\\s+nệm"
+        ],
+        "en": [
+          "(?<!whether or not )(?<!non-)(?<!non )(?<!un)upholstered"
+        ],
+        "zh": [
+          "装软垫",
+          "软包"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không có",
+          "không",
+          "chưa",
+          "ko",
+          "chẳng",
+          "non-?",
+          "not",
+          "un",
+          "无",
+          "非",
+          "不",
+          "没有",
+          "未"
+        ]
+      },
+      "cachDocKhong": {
+        "vi": [
+          "(?<!hoặc )(?:chưa|không)\\s+(?:nhồi|bọc)\\s+đệm",
+          "không\\s+(?:bọc\\s+)?nệm"
+        ],
+        "en": [
+          "(?<!whether or not )(?<!or )un-?upholstered",
+          "(?<!whether or not )(?<!or )non-?upholstered",
+          "(?<!whether or )(?<!or )not\\s+upholstered"
+        ],
+        "zh": [
+          "未装软垫",
+          "无软垫",
+          "非软包"
+        ]
+      },
+      "cachViet": {
+        "vi": "đã nhồi đệm",
+        "viPhuDinh": "chưa nhồi đệm"
+      },
+      "cauHoi": {
+        "vi": "Ghế đã được nhồi đệm (bọc đệm) chưa?",
+        "zh": "座椅是否带有软垫（软包）？"
+      },
+      "ghiChu": "T-5 Top-93: 9401.61 / 9401.71 \"Đã nhồi đệm\".",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "coGanOBi",
+      "kieu": "CO_KHONG",
+      "nhanVi": "có lắp ổ bi hoặc ổ đũa",
+      "nhanEn": "incorporating ball or roller bearings",
+      "nhanZh": "装有滚珠或滚子轴承",
+      "cachDoc": {
+        "vi": [
+          "(?<!hoặc )(?<!hoặc không )(?<!hoặc không có )(?:có\\s+)?(?:lắp|gắn)\\s+ổ\\s+(?:bi|đũa)(?:\\s+hoặc\\s+ổ\\s+(?:đũa|bi))?"
+        ],
+        "en": [
+          "(?<!whether or not )incorporating\\s+ball\\s+or\\s+roller\\s+bearings?",
+          "(?<!whether or not )(?<!with or without )(?<!or )(?<!without )with\\s+(?:ball|roller)\\s+bearings?"
+        ],
+        "zh": [
+          "装有滚珠或滚子轴承",
+          "带(?:滚珠|滚子)轴承"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không có",
+          "không",
+          "chưa",
+          "ko",
+          "chẳng",
+          "non-?",
+          "without",
+          "not",
+          "no",
+          "无",
+          "非",
+          "不",
+          "没有",
+          "未"
+        ]
+      },
+      "cachDocKhong": {
+        "vi": [
+          "(?<!hoặc )không\\s+(?:lắp|gắn)\\s+ổ\\s+(?:bi|đũa)(?:\\s+hoặc\\s+ổ\\s+(?:đũa|bi))?",
+          "(?<!hoặc )không\\s+kèm\\s+ổ\\s+(?:bi|đũa)"
+        ],
+        "en": [
+          "(?<!whether or )(?<!or )not\\s+incorporating\\s+ball\\s+or\\s+roller\\s+bearings?",
+          "(?<!or )without\\s+(?:ball|roller)\\s+bearings?"
+        ],
+        "zh": [
+          "未装有滚珠或滚子轴承",
+          "不带(?:滚珠|滚子)轴承"
+        ]
+      },
+      "cachViet": {
+        "vi": "có lắp ổ bi hoặc ổ đũa",
+        "viPhuDinh": "không lắp ổ bi hoặc ổ đũa"
+      },
+      "cauHoi": {
+        "vi": "Thân ổ trục có lắp sẵn ổ bi hoặc ổ đũa không?",
+        "zh": "轴承座是否装有滚珠或滚子轴承？"
+      },
+      "ghiChu": "T-5 Top-93 (Lô 3): 8483.20 \"Thân ổ, lắp ổ bi hoặc ổ đũa\" vs 8483.30 \"Thân ổ, không lắp ổ bi hoặc ổ đũa\".",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "loaiTuDong",
+      "kieu": "CO_KHONG",
+      "nhanVi": "loại tự động",
+      "nhanEn": "automatic",
+      "nhanZh": "自动式",
+      "cachDoc": {
+        "vi": [
+          "(?<!xử lý dữ liệu )(?<!nửa )(?<!bán )(?:loại\\s+|hoạt\\s+động\\s+)?tự\\s+động(?!\\s+(?:h(?:óa|oá)|bán\\s+phần))"
+        ],
+        "en": [
+          "(?<!semi-)(?<!non-)automatic(?!\\s+data[-\\s]processing)"
+        ],
+        "zh": [
+          "(?<!数据处理)(?<!半)(?<!非)自动(?:型|式)?"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không",
+          "chưa",
+          "ko",
+          "chẳng",
+          "non-?",
+          "not",
+          "semi-?",
+          "bán",
+          "nửa",
+          "无",
+          "非",
+          "不",
+          "没有",
+          "未",
+          "半"
+        ]
+      },
+      "cachDocKhong": {
+        "vi": [
+          "không\\s+tự\\s+động",
+          "bán\\s+tự\\s+động",
+          "nửa\\s+tự\\s+động",
+          "(?:vận\\s+hành|điều\\s+khiển)\\s+bằng\\s+tay",
+          "thủ\\s+công"
+        ],
+        "en": [
+          "non-?automatic",
+          "semi-?automatic",
+          "not\\s+automatic",
+          "manually\\s+operated"
+        ],
+        "zh": [
+          "非自动",
+          "半自动",
+          "手动"
+        ]
+      },
+      "cachViet": {
+        "vi": "loại tự động",
+        "viPhuDinh": "không tự động"
+      },
+      "cauHoi": {
+        "vi": "Thiết bị hoặc máy móc có phải loại tự động không?",
+        "zh": "该设备或机器是否为自动型？"
+      },
+      "ghiChu": "T-5 Top-93: Phân biệt loại tự động và không tự động / bán tự động; chắn cụm \"xử lý dữ liệu tự động\".",
       "nguonLoai": "AI_DA_KIEM"
     }
   ],

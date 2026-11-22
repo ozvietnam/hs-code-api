@@ -383,6 +383,14 @@ const KHOA_MOI = {
   // 22/11/2026 (OZV-1804): lô 12b (0407.19/.29/.90, 5702.39/.49/.50/.99)
   cuaLoaiGiaCam: 'LIET_KE',
   tuXoDay: 'CO_KHONG',
+  // 22/11/2026 (T-5): mở khoá cho Top-93 (loại nhựa polyme 39.20/39.23 + 6 khoá có/không)
+  loaiNhuaPolyme: 'LIET_KE',
+  coKemPhuKien: 'CO_KHONG',
+  coTheBomHoi: 'CO_KHONG',
+  daLapVoLoa: 'CO_KHONG',
+  daNhoiDem: 'CO_KHONG',
+  coGanOBi: 'CO_KHONG',
+  loaiTuDong: 'CO_KHONG',
 };
 
 // ── 1. Nạp theo phiên bản ─────────────────────────────────────────────────────────────────────────────────────────
@@ -1733,6 +1741,147 @@ check('vietCum đơn vị @1 KHÔNG đổi ("CS: 75000W" — không cách)', T.v
   T.docGiaTri('vatLieuKhac', redosVld);
   const msVld = Number(process.hrtime.bigint() - t0Vld) / 1e6;
   check(`T-1 ReDoS ~40.000 từ lặp cho vatLieuKhac VAT_LIEU_DET < 2000 ms (thực tế ${msVld.toFixed(0)} ms)`, msVld < 2000, { msVld });
+}
+
+// T-5 — thu hẹp 4 khoá nhiễu, mở rộng 3 khoá @2, mở rộng vatLieuKhac (+7 giá trị), loaiNhuaPolyme (17 giá trị), 6 khoá CO_KHONG + ReDoS < 2 giây.
+{
+  // 1. Thu hẹp 4 khoá nhiễu @2
+  la('T-5 giaiDoanThuocDa 4104.11.10 đã thuộc thực vật ⇒ THUOC_THUC_VAT', 'giaiDoanThuocDa', '41041110 Của động vật họ trâu bò, đã thuộc thực vật', 'THUOC_THUC_VAT');
+  la('T-5 giaiDoanThuocDa 4101.90.10 chuẩn bị để thuộc ⇒ CHUAN_BI_DE_THUOC', 'giaiDoanThuocDa', 'Đã được chuẩn bị để thuộc', 'CHUAN_BI_DE_THUOC');
+  chuaBiet('T-5 giaiDoanThuocDa (nghịch): "da thuộc" không khớp nhầm thuộc da', 'giaiDoanThuocDa', 'Sản phẩm bằng da thuộc hoặc da thuộc tổng hợp');
+  chuaBiet('T-5 giaiDoanThuocDa (nghịch): "thuộc nhóm / phân nhóm / chương" không khớp nhầm', 'giaiDoanThuocDa', 'Của máy thuộc nhóm 84.25, thuộc phân nhóm 8430.41 thuộc chương 84');
+
+  chuaBiet('T-5 vatLieuKhac (nghịch): chữ chung "vật liệu" / "bằng vật liệu khác" ⇒ CHUA_BIET', 'vatLieuKhac', '670490 Bằng vật liệu khác và vật liệu mài');
+
+  la('T-5 loaiCaoSu tự nhiên lưu hóa ⇒ TU_NHIEN', 'loaiCaoSu', 'Bằng cao su tự nhiên lưu hóa', 'TU_NHIEN');
+  la('T-5 loaiCaoSu tổng hợp ⇒ TONG_HOP', 'loaiCaoSu', 'Găng tay bằng cao su tổng hợp', 'TONG_HOP');
+  chuaBiet('T-5 loaiCaoSu (nghịch): cao su xốp / cao su cứng / cao su lưu hóa chung ⇒ CHUA_BIET', 'loaiCaoSu', 'Từ cao su xốp hoặc cao su cứng hoặc cao su lưu hóa');
+
+  la('T-5 loaiCung (thuận 3920.10.11): Loại cứng (SEN) ⇒ CO', 'loaiCung', '39201011 Loại cứng (SEN)', true);
+  la('T-5 loaiCung (thuận 3920.99.10 bảo toàn): Từ protein đã được làm cứng ⇒ CO', 'loaiCung', 'Từ protein đã được làm cứng', true);
+  chuaBiet('T-5 loaiCung (nghịch 8525.82): được làm cứng bức xạ ⇒ CHUA_BIET', 'loaiCung', 'Loại khác, được làm cứng bức xạ hoặc chịu bức xạ');
+  chuaBiet('T-5 loaiCung (nghịch 9615.11): bằng cao su cứng hoặc plastic ⇒ CHUA_BIET', 'loaiCung', 'Bằng cao su cứng hoặc plastic');
+
+  // 2. Mở rộng 3 khoá @2
+  la('T-5 tinhTrangTayTrang có màu khác nhau ⇒ TU_SOI_MAU', 'tinhTrangTayTrang', 'Vải dệt thoi có màu khác nhau', 'TU_SOI_MAU');
+  la('T-5 tinhTrangTayTrang có các màu khác nhau ⇒ TU_SOI_MAU', 'tinhTrangTayTrang', 'Có các màu khác nhau', 'TU_SOI_MAU');
+  chuaBiet('T-5 tinhTrangTayTrang (nghịch): nhiều kích cỡ khác nhau ⇒ CHUA_BIET', 'tinhTrangTayTrang', 'Có các kích cỡ khác nhau');
+
+  la('T-5 coRen (thuận 7318.1): đã được ren / đã ren ⇒ CO', 'coRen', 'Đinh vít bằng thép đã được ren', true);
+  la('T-5 coRen (thuận): bu lông đã ren ⇒ CO', 'coRen', 'Bu lông đầu lục giác đã ren', true);
+  la('T-5 coRen (nghịch): chưa được ren / không được ren ⇒ KHONG', 'coRen', 'Chốt thép chưa được ren', false);
+  chuaBiet('T-5 coRen (nghịch): bu lông trơn không nói ren ⇒ CHUA_BIET', 'coRen', 'Bu lông đầu tròn trơn');
+
+  la('T-5 loaiSoiDet 6110.12 Ca-sơ-mia ⇒ LEN_LONG_DONG_VAT_MIN', 'loaiSoiDet', 'Của dê Ca-sơ-mia (len casơmia)', 'LEN_LONG_DONG_VAT_MIN');
+  la('T-5 loaiSoiDet 6110.12 casơmia ⇒ LEN_LONG_DONG_VAT_MIN', 'loaiSoiDet', 'Áo len dê casơmia', 'LEN_LONG_DONG_VAT_MIN');
+  la('T-5 loaiSoiDet (nghịch): áo sơ mi cotton không bị nhầm casơmia', 'loaiSoiDet', 'Áo sơ mi vải cotton', 'BONG');
+
+  // 3. Mở rộng vatLieuKhac (+7 giá trị mới)
+  const VK_T5 = [
+    ['TRE', 'Bằng tre', 'Seats of bamboo', '竹制座椅', 'Măng tre tươi và bamboo shoots'],
+    ['LIEU_GAI', 'Bằng liễu gai', 'Baskets of osier', '柳条篮', 'Cây xanh trang trí'],
+    ['PHA_LE_CHI', 'Ly bằng pha lê chì', 'Drinking glasses of lead crystal', '铅晶质玻璃杯', 'Ly thủy tinh borosilicate'],
+    ['GOM_KIM_LOAI', 'Sản phẩm bằng gốm kim loại', 'Plates and tips of cermets', '金属陶瓷板', 'Bát ăn bằng gốm sứ'],
+    ['CAO_SU_XOP', '401610 Từ cao su xốp', 'Articles of cellular rubber', '海绵橡胶制品', 'Găng tay cao su tự nhiên'],
+    ['CAO_SU_CUNG', '961511 Bằng cao su cứng hoặc plastic', 'Combs of hard rubber', '硬质橡胶梳', 'Nút chặn cao su mềm'],
+    ['PLASTIC_XOP', 'Đệm bằng plastic xốp', 'Plates and sheets of cellular plastics', '泡沫塑料垫', 'Tấm nhựa PVC cứng không xốp'],
+  ];
+  for (const [val, vi, en, zh, neg] of VK_T5) {
+    la(`T-5 vatLieuKhac.${val} Vi`, 'vatLieuKhac', vi, val);
+    la(`T-5 vatLieuKhac.${val} En`, 'vatLieuKhac', en, val);
+    la(`T-5 vatLieuKhac.${val} Zh`, 'vatLieuKhac', zh, val);
+    check(`T-5 vatLieuKhac.${val} DK.kiemDieuKien + vietCum sạch`,
+      DK.kiemDieuKien({ fact: 'vatLieuKhac', op: 'TRONG', value: [val] }, vi) === null && viet('vatLieuKhac', val).length > 0 && !/[();]/.test(viet('vatLieuKhac', val)));
+    const rNeg = doc('vatLieuKhac', neg);
+    check(`T-5 vatLieuKhac.${val} nghịch không khớp nhầm "${neg}"`, rNeg.trangThai === 'CHUA_BIET' || rNeg.giaTri !== val, rNeg);
+  }
+  {
+    const r9404 = chuaBiet('T-5 9404.21 Bằng cao su xốp hoặc bằng plastic xốp ⇒ CHUA_BIET (2 ứng viên)', 'vatLieuKhac', 'Bằng cao su xốp hoặc bằng plastic xốp, đã hoặc chưa bọc');
+    check('T-5 9404.21 ungVien [CAO_SU_XOP, PLASTIC_XOP] & DK TRONG đạt',
+      JSON.stringify((r9404.ungVien || []).slice().sort()) === JSON.stringify(['CAO_SU_XOP', 'PLASTIC_XOP'])
+      && DK.kiemDieuKien({ fact: 'vatLieuKhac', op: 'TRONG', value: ['CAO_SU_XOP', 'PLASTIC_XOP'] }, 'Bằng cao su xốp hoặc bằng plastic xốp, đã hoặc chưa bọc') === null, r9404);
+  }
+
+  // 4. loaiNhuaPolyme (17 giá trị, kèm ngoặc đơn hoá chất & chống đụng độ)
+  const POLY_T5 = [
+    ['ETYLEN', 'Từ các polyme từ etylen', 'Of polymers of ethylene', '乙烯聚合物制薄膜'],
+    ['PROPYLEN', 'Từ các polyme từ propylen', 'Of polymers of propylene', '丙烯聚合物制薄膜'],
+    ['STYREN', 'Từ các polyme từ styren', 'Of polymers of styrene', '苯乙烯聚合物制板材'],
+    ['VINYL_CLORUA', 'Từ các polyme từ vinyl clorua', 'Of polymers of vinyl chloride', '氯乙烯聚合物制片材'],
+    ['ACRYLIC', 'Từ các polyme acrylic', 'Of acrylic polymers', '丙烯酸聚合物板材'],
+    ['POLYCARBONAT', 'Từ các polycarbonat', 'Of polycarbonates', '聚碳酸酯板材'],
+    ['PET', 'Từ poly(etylen terephtalat)', 'Of poly(ethylene terephthalate)', '聚对苯二甲酸乙二醇酯薄膜'],
+    ['PMMA', 'Từ poly(metyl metacrylat)', 'Of poly(methyl methacrylate)', '聚甲基丙烯酸甲酯板材'],
+    ['POLYESTE_CHUA_NO', 'Từ các polyeste chưa no', 'Of unsaturated polyesters', '不饱和聚酯板'],
+    ['POLYESTE', 'Từ các polyeste khác', 'Of polyesters', '聚酯薄膜'],
+    ['XENLULO_TAI_SINH', 'Từ xenlulo tái sinh', 'Of regenerated cellulose', '再生纤维素膜'],
+    ['XENLULO_AXETAT', 'Từ xenlulo axetat', 'Of cellulose acetate', '醋酸纤维素片'],
+    ['XENLULO', 'Từ xenlulo hoặc các dẫn xuất hóa học của nó', 'Of cellulose', '纤维素板'],
+    ['POLY_VINYL_BUTYRAL', 'Từ poly(vinyl butyral)', 'Of poly(vinyl butyral)', '聚乙烯醇缩丁醛膜'],
+    ['POLYAMIDE', 'Từ các polyamide', 'Of polyamides', '聚酰胺薄膜'],
+    ['NHUA_AMINO', 'Từ nhựa amino', 'Of amino-resins', '氨基树脂板'],
+    ['NHUA_PHENOLIC', 'Từ nhựa phenolic', 'Of phenolic resins', '酚醛树脂板'],
+  ];
+  for (const [val, vi, en, zh] of POLY_T5) {
+    la(`T-5 loaiNhuaPolyme.${val} Vi`, 'loaiNhuaPolyme', vi, val);
+    la(`T-5 loaiNhuaPolyme.${val} En`, 'loaiNhuaPolyme', en, val);
+    la(`T-5 loaiNhuaPolyme.${val} Zh`, 'loaiNhuaPolyme', zh, val);
+    check(`T-5 loaiNhuaPolyme.${val} DK + vietCum không ngoặc`,
+      DK.kiemDieuKien({ fact: 'loaiNhuaPolyme', op: 'TRONG', value: [val] }, vi) === null && viet('loaiNhuaPolyme', val).length > 0 && !/[();]/.test(viet('loaiNhuaPolyme', val)));
+  }
+  chuaBiet('T-5 loaiNhuaPolyme (nghịch): "pet dog food / PC computer / PE class" ⇒ CHUA_BIET', 'loaiNhuaPolyme', 'pet dog food and PC computer cable for PE class');
+
+  // 5. 6 khoá CO_KHONG mới (2 chiều + CHUA_BIET cụm tuỳ chọn / ngoại lệ)
+  const CK_T5 = [
+    ['coKemPhuKien', 'Ống cao su có kèm phụ kiện', 'Rubber tubes with fittings', '带配件橡胶管', 'Ống cao su không kèm phụ kiện', 'Rubber hoses without fittings', '不带配件橡胶管', 'Ống cao su có hoặc không kèm phụ kiện'],
+    ['coTheBomHoi', '401695 Các sản phẩm có thể bơm hơi khác', 'Inflatable pneumatic fender', '充气式护舷', 'Đệm chống va đặc không thể bơm hơi', 'Non-inflatable solid fender', '非充气护舷', '401694 Đệm chống va cho tàu thuyền hoặc ụ tàu, có hoặc không thể bơm hơi'],
+    ['daLapVoLoa', '851821 Loa đơn, đã lắp vào vỏ loa', 'Single loudspeaker, mounted in their enclosures', '装在音箱内的单喇叭', 'Loa rời chưa lắp vào vỏ loa', 'Bare speaker not mounted in an enclosure', '未装在音箱内的喇叭', 'Loa, đã hoặc chưa lắp vào vỏ loa'],
+    ['daNhoiDem', '940161 Ghế khung gỗ đã nhồi đệm', 'Wooden seats, upholstered', '装软垫木椅', 'Ghế gỗ chưa nhồi đệm', 'Unupholstered wooden chair', '未装软垫木椅', 'Ghế khung gỗ đã hoặc chưa nhồi đệm'],
+    ['coGanOBi', '848320 Thân ổ, lắp ổ bi hoặc ổ đũa', 'Bearing housings, incorporating ball or roller bearings', '装有滚珠或滚子轴承的轴承座', '848330 Thân ổ, không lắp ổ bi hoặc ổ đũa', 'Bearing housings, not incorporating ball or roller bearings', '未装有滚珠或滚子轴承的轴承座', 'Thân ổ trục bằng gang xám'],
+    ['loaiTuDong', 'Bộ ngắt mạch loại tự động', 'Automatic circuit breaker', '自动断路器', 'Cầu dao đóng ngắt không tự động', 'Manual non-automatic switch', '非自动开关', 'Máy xử lý dữ liệu tự động (automatic data processing machine)'],
+  ];
+  for (const [khoa, viCo, enCo, zhCo, viK, enK, zhK, neutral] of CK_T5) {
+    la(`T-5 ${khoa} Vi CO`, khoa, viCo, true);
+    la(`T-5 ${khoa} En CO`, khoa, enCo, true);
+    la(`T-5 ${khoa} Zh CO`, khoa, zhCo, true);
+    la(`T-5 ${khoa} Vi KHONG`, khoa, viK, false);
+    la(`T-5 ${khoa} En KHONG`, khoa, enK, false);
+    la(`T-5 ${khoa} Zh KHONG`, khoa, zhK, false);
+    chuaBiet(`T-5 ${khoa} (nghịch): "${neutral}" ⇒ CHUA_BIET`, khoa, neutral);
+    check(`T-5 ${khoa} DK CO/KHONG đạt`,
+      DK.kiemDieuKien({ fact: khoa, op: 'CO' }, viCo) === null && DK.kiemDieuKien({ fact: khoa, op: 'KHONG' }, viK) === null);
+  }
+  // Ca thực tế tuỳ chọn / ngoại lệ trên dòng biểu (40169400, 4009, 4014, 8307, 8471, 8483, 9401): CHUA_BIET (không đảo sang false!)
+  for (const [khoa, t] of [
+    ['coTheBomHoi', '40169400 Boat or dock fenders, whether or not inflatable'],
+    ['coTheBomHoi', 'Đệm chống va, có hoặc không có thể bơm hơi'],
+    ['coKemPhuKien', '4009 Tubes, pipes and hoses, with or without their fittings'],
+    ['coKemPhuKien', '4014 Hygienic or pharmaceutical articles, with or without fittings of hard rubber'],
+    ['coKemPhuKien', '401490 Other, with or without fittings'],
+    ['coKemPhuKien', '8307 Flexible tubing of base metal, with or without fittings'],
+    ['coKemPhuKien', '83071000 Of iron or steel, with or without fittings'],
+    ['coKemPhuKien', '83079000 Of other base metal, with or without fittings'],
+    ['coKemPhuKien', 'Ống nối, whether or not with fittings'],
+    ['coKemPhuKien', 'Ống dẫn, có hoặc không có kèm phụ kiện'],
+    ['daLapVoLoa', 'Loudspeakers, whether or not mounted in their enclosures'],
+    ['daNhoiDem', 'Seats, whether or not upholstered'],
+    ['coGanOBi', 'Bearing housings, whether or not incorporating ball or roller bearings'],
+    ['coGanOBi', 'Thân ổ trục, lắp hoặc không lắp ổ bi hoặc ổ đũa'],
+    ['loaiTuDong', 'Dây chuyền tự động hoá sản xuất'],
+    ['loaiTuDong', 'Hệ thống tự động hóa công nghiệp'],
+    ['loaiTuDong', 'Automatic data-processing machines and units thereof'],
+  ]) {
+    chuaBiet(`T-5 tuỳ chọn/ngoại lệ thực tế ⇒ CHUA_BIET`, khoa, t);
+  }
+
+  // 6. ReDoS ~40.000 từ lặp cho tất cả khoá mới & mở rộng < 2000 ms
+  const redosT5 = Array(3000).fill('tấm màng nhựa poly etylen propylen styren có hoặc không có kèm phụ kiện with or without their fittings whether or not inflatable đã hoặc chưa lắp vào vỏ loa lắp hoặc không lắp ổ bi tự động hoá xử lý dữ liệu Automatic data-processing').join(' ');
+  for (const fk of ['vatLieuKhac', 'loaiNhuaPolyme', 'coKemPhuKien', 'coTheBomHoi', 'daLapVoLoa', 'daNhoiDem', 'coGanOBi', 'loaiTuDong']) {
+    const t0 = process.hrtime.bigint();
+    T.docGiaTri(fk, redosT5);
+    const ms = Number(process.hrtime.bigint() - t0) / 1e6;
+    check(`T-5 ReDoS ~40.000 từ lặp cho ${fk} < 2000 ms (thực tế ${ms.toFixed(0)} ms)`, ms < 2000, { fk, ms });
+  }
 }
 
 console.log(`\n${pass} pass, ${fail} fail`);
