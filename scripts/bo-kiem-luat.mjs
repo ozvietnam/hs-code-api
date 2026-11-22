@@ -340,6 +340,7 @@ export function cumKhangDinh(c) {
   }
   if (c.op === 'CONG_DUNG') {
     const v = Array.isArray(c.value) ? c.value[0] : c.value;
+    if (c.fact === 'maHsTuongUng') return `mã hàng tương ứng ${v}`;
     return c.fact === 'dungCho' ? `dùng cho ${v}` : `dùng trong ${v}`;
   }
   if (c.op === 'CO') {
@@ -659,7 +660,9 @@ export function sinhCaNhom(nhom4) {
                 continue;
               }
               if (g.chieu !== 'PHAI_KHONG' || !(g.tang > 0)) continue;
-              if (!g.dieuKien.every((x) => ['<=', '<', '>=', '>', 'CO', 'KHONG', 'TRONG', 'LA'].includes(x.op))) continue;
+              const laOpPhuDinhDuoc = (x) => ['<=', '<', '>=', '>', 'CO', 'KHONG', 'TRONG', 'LA'].includes(x?.op)
+                || (x?.op === 'HOAC' && Array.isArray(x.phuongAn) && x.phuongAn.every((alt) => Array.isArray(alt) && alt.every((lc) => ['<=', '<', '>=', '>', 'CO', 'KHONG', 'TRONG', 'LA'].includes(lc?.op))));
+              if (!g.dieuKien.every(laOpPhuDinhDuoc)) continue;
               const dkKhongTrong = g.dieuKien.filter((x) => x.op !== 'TRONG');
               if (!dkKhongTrong.length) {
                 for (const c of g.dieuKien) {
@@ -687,7 +690,7 @@ export function sinhCaNhom(nhom4) {
             if (s) moTa += `, ${s}`;
           }
           const dRec = (st.dong8 || []).find((d) => nz(d?.hs) === hs8);
-          if (dRec && String(dRec.nguon || '').startsWith('sen.') && Array.isArray(dRec.dieuKienSo) && dRec.dieuKienSo.length) {
+          if (dRec && /^(?:sen|tuongUng)\./.test(String(dRec.nguon || '')) && Array.isArray(dRec.dieuKienSo) && dRec.dieuKienSo.length) {
             const veSen = dRec.dieuKienSo.filter((x) => x && x.op !== 'TEN_LOAI');
             const sSen = cumKhangDinh(veSen.length ? veSen : dRec.dieuKienSo);
             if (sSen) moTa += `, ${sSen}`;
@@ -704,7 +707,7 @@ export function sinhCaNhom(nhom4) {
         }
         if (chi8544) {
           const dRec = (st.dong8 || []).find((d) => nz(d?.hs) === hs8);
-          if (dRec && String(dRec.nguon || '').startsWith('sen.') && Array.isArray(dRec.dieuKienSo) && dRec.dieuKienSo.length) {
+          if (dRec && /^(?:sen|tuongUng)\./.test(String(dRec.nguon || '')) && Array.isArray(dRec.dieuKienSo) && dRec.dieuKienSo.length) {
             const veSen = dRec.dieuKienSo.filter((x) => x && x.op !== 'TEN_LOAI');
             const sSen = cumKhangDinh(veSen.length ? veSen : dRec.dieuKienSo);
             if (sSen) moTa += `, ${sSen}`;
