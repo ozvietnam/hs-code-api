@@ -1239,27 +1239,62 @@
     },
     {
       "hs": "85365020",
-      "dieuKien": "Phân nhóm 8536.50 — loại tự động ngắt mạch khi có hiện tượng rò điện và quá tải",
+      "dieuKien": "loại thiết bị đóng ngắt (8536.50): tự động ngắt khi rò điện và quá tải",
       "loaiKhac": false,
       "nguon": "tax.85365020",
       "trich": "85365020 - - Loại tự động ngắt mạch khi có hiện tượng rò điện và quá tải",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "loaiCongTac",
+          "op": "TRONG",
+          "value": [
+            "TU_DONG_RO_DIEN_QUA_TAI"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1866#soat-853650",
+          "ngay": "2026-11-22",
+          "bam": "925a1f5b5b444c8022aa4da6a7c3c445dcbf1b6b5e13305eb6dd579e866ea335"
+        }
+      }
     },
     {
       "hs": "85365032",
-      "dieuKien": "Phân nhóm 8536.50 (nhánh 8536.50.3x) — của loại thích hợp dùng cho quạt điện hoặc thiết bị sóng vô tuyến",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): thích hợp dùng cho quạt điện hoặc thiết bị sóng vô tuyến",
       "loaiKhac": false,
       "nguon": "tax.85365032",
-      "trich": "85365032 - - - Của loại thích hợp dùng cho quạt điện hoặc thiết bị sóng vô tuyến",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "85365032 - - - Của loại thích hợp dùng cho quạt điện hoặc thiết bị sóng vô tuyến ",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "thích hợp dùng cho quạt điện",
+            "thiết bị sóng vô tuyến"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1866#soat-853650",
+          "ngay": "2026-11-22",
+          "bam": "925a1f5b5b444c8022aa4da6a7c3c445dcbf1b6b5e13305eb6dd579e866ea335"
+        }
+      }
     },
     {
       "hs": "85365033",
-      "dieuKien": "Nhánh 8536.50.3x — loại ngắt mạch khi có sốc dòng điện cao (SEN); dòng biểu thuế: loại khác, dùng cho dòng điện danh định dưới 16 A",
+      "dieuKien": "dòng điện (định mức) < 16 A",
       "loaiKhac": true,
-      "nguon": "sen.85365033",
-      "trich": "LOẠI NGẮT MẠCH KHI CÓ SỐC DÒNG ĐIỆN CAO Loại ngắt mạch này có khả năng xử lý sự tăng cao đột biến của dòng điện.",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguon": "tax.85365033",
+      "trich": "85365033 - - - Loại khác, dùng cho dòng điện danh định dưới 16 A",
+      "nguonLoai": "CLAUDE_DUYET",
       "phamViLoaiKhac": {
         "nguonLoai": "MAY_SUY",
         "cha": "8536503",
@@ -1268,6 +1303,22 @@
         ],
         "toTienCoTen": "853650",
         "dinhNghiaDuoc": true
+      },
+      "dieuKienSo": [
+        {
+          "fact": "dongDien",
+          "op": "<",
+          "value": 16,
+          "donVi": "A"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1866#soat-853650",
+          "ngay": "2026-11-22",
+          "bam": "925a1f5b5b444c8022aa4da6a7c3c445dcbf1b6b5e13305eb6dd579e866ea335"
+        }
       }
     },
     {
@@ -1290,19 +1341,52 @@
     },
     {
       "hs": "85365040",
-      "dieuKien": "Phân nhóm 8536.50 — công tắc mini thích hợp dùng cho nồi cơm điện hoặc lò nướng (toaster ovens)",
+      "dieuKien": "loại thiết bị đóng ngắt (8536.50): công tắc mini cho nồi cơm điện / lò nướng",
       "loaiKhac": false,
       "nguon": "tax.85365040",
       "trich": "85365040 - - Công tắc mini thích hợp dùng cho nồi cơm điện hoặc lò nướng (toaster ovens)",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "loaiCongTac",
+          "op": "TRONG",
+          "value": [
+            "MINI_NOI_COM"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1866#soat-853650",
+          "ngay": "2026-11-22",
+          "bam": "925a1f5b5b444c8022aa4da6a7c3c445dcbf1b6b5e13305eb6dd579e866ea335"
+        }
+      }
     },
     {
       "hs": "85365051",
-      "dieuKien": "Phân nhóm 8536.50 (nhánh 8536.50.5x) — dòng điện dưới 16 A",
+      "dieuKien": "dòng điện (định mức) < 16 A",
       "loaiKhac": false,
       "nguon": "tax.85365051",
       "trich": "85365051 - - - Dòng điện dưới 16 A",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dongDien",
+          "op": "<",
+          "value": 16,
+          "donVi": "A"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1866#soat-853650",
+          "ngay": "2026-11-22",
+          "bam": "925a1f5b5b444c8022aa4da6a7c3c445dcbf1b6b5e13305eb6dd579e866ea335"
+        }
+      }
     },
     {
       "hs": "85365059",
@@ -1323,11 +1407,27 @@
     },
     {
       "hs": "85365061",
-      "dieuKien": "Phân nhóm 8536.50 (nhánh 8536.50.6x) — dòng điện dưới 16 A",
+      "dieuKien": "dòng điện (định mức) < 16 A",
       "loaiKhac": false,
       "nguon": "tax.85365061",
       "trich": "85365061 - - - Dòng điện dưới 16 A",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dongDien",
+          "op": "<",
+          "value": 16,
+          "donVi": "A"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1866#soat-853650",
+          "ngay": "2026-11-22",
+          "bam": "925a1f5b5b444c8022aa4da6a7c3c445dcbf1b6b5e13305eb6dd579e866ea335"
+        }
+      }
     },
     {
       "hs": "85365069",
@@ -1348,19 +1448,36 @@
     },
     {
       "hs": "85365095",
-      "dieuKien": "Phân nhóm 8536.50 (nhánh 8536.50.9x) — công tắc đảo chiều loại dùng khởi động động cơ điện; thiết bị đóng cắt có cầu chì (fuse switches)",
+      "dieuKien": "loại thiết bị đóng ngắt (8536.50): đảo chiều khởi động động cơ; đóng cắt có cầu chì",
       "loaiKhac": false,
       "nguon": "tax.85365095",
       "trich": "85365095 - - - Công tắc đảo chiều (change-over switches) loại dùng khởi động động cơ điện; thiết bị đóng cắt có cầu chì (fuse switches)",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "loaiCongTac",
+          "op": "TRONG",
+          "value": [
+            "DAO_CHIEU_HOAC_CAU_CHI"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1866#soat-853650",
+          "ngay": "2026-11-22",
+          "bam": "925a1f5b5b444c8022aa4da6a7c3c445dcbf1b6b5e13305eb6dd579e866ea335"
+        }
+      }
     },
     {
       "hs": "85365096",
-      "dieuKien": "Phân nhóm 8536.50 (nhánh 8536.50.9x) — loại khác, dòng điện dưới 16 A",
+      "dieuKien": "dòng điện (định mức) < 16 A",
       "loaiKhac": true,
       "nguon": "tax.85365096",
       "trich": "85365096 - - - Loại khác, dòng điện dưới 16 A",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phamViLoaiKhac": {
         "nguonLoai": "MAY_SUY",
         "cha": "8536509",
@@ -1369,6 +1486,22 @@
         ],
         "toTienCoTen": "853650",
         "dinhNghiaDuoc": true
+      },
+      "dieuKienSo": [
+        {
+          "fact": "dongDien",
+          "op": "<",
+          "value": 16,
+          "donVi": "A"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1866#soat-853650",
+          "ngay": "2026-11-22",
+          "bam": "925a1f5b5b444c8022aa4da6a7c3c445dcbf1b6b5e13305eb6dd579e866ea335"
+        }
       }
     },
     {
@@ -1736,11 +1869,27 @@
     },
     {
       "hs": "85369012",
-      "dieuKien": "Phân nhóm 8536.90 (nhánh 8536.90.1x) — dòng điện dưới 16 A",
+      "dieuKien": "dòng điện (định mức) < 16 A",
       "loaiKhac": false,
       "nguon": "tax.85369012",
       "trich": "85369012 - - - Dòng điện dưới 16 A",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dongDien",
+          "op": "<",
+          "value": 16,
+          "donVi": "A"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01-20261120#soat-853690-v1",
+          "ngay": "2026-11-20",
+          "bam": "fad3a1aad109d106763ae548488f6812bef1dc85dafe5286c138a280dd07257c"
+        }
+      }
     },
     {
       "hs": "85369019",
@@ -1761,11 +1910,27 @@
     },
     {
       "hs": "85369022",
-      "dieuKien": "Phân nhóm 8536.90 (nhánh 8536.90.2x) — dòng điện dưới 16 A",
+      "dieuKien": "dòng điện (định mức) < 16 A",
       "loaiKhac": false,
       "nguon": "tax.85369022",
       "trich": "85369022 - - - Dòng điện dưới 16 A",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dongDien",
+          "op": "<",
+          "value": 16,
+          "donVi": "A"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01-20261120#soat-853690-v1",
+          "ngay": "2026-11-20",
+          "bam": "fad3a1aad109d106763ae548488f6812bef1dc85dafe5286c138a280dd07257c"
+        }
+      }
     },
     {
       "hs": "85369029",
@@ -1786,11 +1951,27 @@
     },
     {
       "hs": "85369032",
-      "dieuKien": "Phân nhóm 8536.90 (nhánh 8536.90.3x) — dòng điện dưới 16 A",
+      "dieuKien": "dòng điện (định mức) < 16 A",
       "loaiKhac": false,
       "nguon": "tax.85369032",
       "trich": "85369032 - - - Dòng điện dưới 16 A",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dongDien",
+          "op": "<",
+          "value": 16,
+          "donVi": "A"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01-20261120#soat-853690-v1",
+          "ngay": "2026-11-20",
+          "bam": "fad3a1aad109d106763ae548488f6812bef1dc85dafe5286c138a280dd07257c"
+        }
+      }
     },
     {
       "hs": "85369039",
@@ -1811,19 +1992,67 @@
     },
     {
       "hs": "85369040",
-      "dieuKien": "Phân nhóm 8536.90 — kẹp pin dùng cho xe có động cơ thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11",
+      "dieuKien": "tên loại hàng: Kẹp pin; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): 87.02 hoặc 87.03 hoặc 87.04 hoặc 87.11",
       "loaiKhac": false,
       "nguon": "tax.85369040",
-      "trich": "85369040 - - Kẹp pin dùng cho xe có động cơ thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "85369040 - - Kẹp pin dùng cho xe có động cơ thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11 ",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Kẹp pin"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "87.02",
+            "87.03",
+            "87.04",
+            "87.11"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01-20261120#soat-853690-v1",
+          "ngay": "2026-11-20",
+          "bam": "fad3a1aad109d106763ae548488f6812bef1dc85dafe5286c138a280dd07257c"
+        }
+      }
     },
     {
       "hs": "85369093",
-      "dieuKien": "Phân nhóm 8536.90 (nhánh 8536.90.9x) — phiến đầu nối và khối đấu nối cáp điện thoại",
+      "dieuKien": "tên loại hàng: Phiến đầu nối hoặc khối đấu nối; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): cáp điện thoại",
       "loaiKhac": false,
       "nguon": "tax.85369093",
-      "trich": "85369093 - - - - Phiến đầu nối và khối đấu nối cáp điện thoại",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "85369093 - - - - Phiến đầu nối và khối đấu nối cáp điện thoại ",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Phiến đầu nối",
+            "khối đấu nối"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "cáp điện thoại"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01-20261120#soat-853690-v1",
+          "ngay": "2026-11-20",
+          "bam": "fad3a1aad109d106763ae548488f6812bef1dc85dafe5286c138a280dd07257c"
+        }
+      }
     },
     {
       "hs": "85369094",
@@ -1853,6 +2082,7 @@
         "nguonLoai": "MAY_SUY",
         "cha": "8536909",
         "truAnhEm": [
+          "853690~r15857",
           "85369093"
         ],
         "toTienCoTen": "853690",
@@ -2860,6 +3090,150 @@
       }
     },
     {
+      "id": "8536503",
+      "nguon": "tieuDe.8536503",
+      "trich": "8536503 Loại ngắt mạch khi có sốc dòng điện cao (SEN); loại đảo mạch dùng cho bếp và bếp có lò nướng(SEN); công tắc micro; công tắc nguồn cho máy thu truyền hình hoặc thu sóng vô tuyến; công tắc cho quạt điện; …",
+      "dieuKienSo": [
+        {
+          "fact": "loaiCongTac",
+          "op": "TRONG",
+          "value": [
+            "NGAT_SOC_DONG"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1866#soat-853650",
+          "ngay": "2026-11-22",
+          "bam": "925a1f5b5b444c8022aa4da6a7c3c445dcbf1b6b5e13305eb6dd579e866ea335"
+        }
+      }
+    },
+    {
+      "id": "8536505",
+      "nguon": "tieuDe.8536505",
+      "trich": "8536505 Công tắc điện tử dùng cho mạch xoay chiều gồm mạch vào và mạch ra kết nối điều khiển bằng quang học … công tắc điện tử, kể cả công tắc bảo vệ quá nhiệt điện tử gồm một tranzito và một chip logic … công tắc điện cơ bật nhanh dùng cho dòng điện không quá 11 A",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "loaiCongTac",
+                "op": "TRONG",
+                "value": [
+                  "DIEN_TU_HOAC_BAT_NHANH"
+                ]
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "công tắc điện tử"
+              },
+              {
+                "fact": "loaiDongDien",
+                "op": "TRONG",
+                "value": [
+                  "XOAY_CHIEU"
+                ]
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "điều khiển bằng quang học"
+              }
+            ],
+            [
+              {
+                "fact": "loaiCongTac",
+                "op": "TRONG",
+                "value": [
+                  "DIEN_TU_HOAC_BAT_NHANH"
+                ]
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "công tắc điện tử"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "gồm một tranzito và một chip logic"
+              }
+            ],
+            [
+              {
+                "fact": "loaiCongTac",
+                "op": "TRONG",
+                "value": [
+                  "DIEN_TU_HOAC_BAT_NHANH"
+                ]
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "công tắc điện cơ bật nhanh"
+              },
+              {
+                "fact": "dongDien",
+                "op": "<=",
+                "value": 11,
+                "donVi": "A"
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1866#soat-853650",
+          "ngay": "2026-11-22",
+          "bam": "925a1f5b5b444c8022aa4da6a7c3c445dcbf1b6b5e13305eb6dd579e866ea335"
+        }
+      }
+    },
+    {
+      "id": "8536506",
+      "nguon": "tieuDe.8536506",
+      "trich": "8536506 Loại khác, loại đóng ngắt mạch dùng trong mạng điện gia dụng điện áp không quá 500 V và giới hạn dòng danh định không quá 20 A",
+      "dieuKienSo": [
+        {
+          "fact": "loaiCongTac",
+          "op": "TRONG",
+          "value": [
+            "MANG_DIEN_GIA_DUNG"
+          ]
+        },
+        {
+          "fact": "dienAp",
+          "op": "<=",
+          "value": 500,
+          "donVi": "V"
+        },
+        {
+          "fact": "dongDien",
+          "op": "<=",
+          "value": 20,
+          "donVi": "A"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1866#soat-853650",
+          "ngay": "2026-11-22",
+          "bam": "925a1f5b5b444c8022aa4da6a7c3c445dcbf1b6b5e13305eb6dd579e866ea335"
+        }
+      }
+    },
+    {
       "id": "8536611",
       "nguon": "tieuDe.8536611",
       "trich": "8536611 Dùng cho đèn com-pắc hoặc đèn halogen",
@@ -2944,6 +3318,128 @@
           "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot1",
           "ngay": "2026-10-30",
           "bam": "218a4b2a69c8b30708dbbeafb27014849aadc0375525b560efa43e26307ea2d4"
+        }
+      }
+    },
+    {
+      "id": "853690~r15857",
+      "nguon": "tieuDe.853690~r15857",
+      "trich": "853690~r15857 Dòng điện dưới 16 A",
+      "dieuKienSo": [
+        {
+          "fact": "dongDien",
+          "op": "<",
+          "value": 16,
+          "donVi": "A"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01-20261120#soat-853690-v1",
+          "ngay": "2026-11-20",
+          "bam": "fad3a1aad109d106763ae548488f6812bef1dc85dafe5286c138a280dd07257c"
+        }
+      }
+    },
+    {
+      "id": "8536901",
+      "nguon": "tieuDe.8536901",
+      "trich": "8536901 Đầu nối và các bộ phận dùng để nối cho dây dẫn và cáp; đầu dò tiếp xúc dùng cho tấm wafer",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "Đầu nối",
+                  "các bộ phận"
+                ]
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "dây dẫn và cáp"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "đầu dò tiếp xúc"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "tấm wafer"
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01-20261120#soat-853690-v1",
+          "ngay": "2026-11-20",
+          "bam": "fad3a1aad109d106763ae548488f6812bef1dc85dafe5286c138a280dd07257c"
+        }
+      }
+    },
+    {
+      "id": "8536902",
+      "nguon": "tieuDe.8536902",
+      "trich": "8536902 Hộp đấu nối",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Hộp đấu nối"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01-20261120#soat-853690-v1",
+          "ngay": "2026-11-20",
+          "bam": "fad3a1aad109d106763ae548488f6812bef1dc85dafe5286c138a280dd07257c"
+        }
+      }
+    },
+    {
+      "id": "8536903",
+      "nguon": "tieuDe.8536903",
+      "trich": "8536903 Đầu nối cáp gồm một phích cắm kiểu giắc, đầu cuối có hoặc không có chân cắm, đầu nối, hoặc bộ thích ứng (adaptor) sử dụng cho cáp đồng trục",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Đầu nối cáp",
+            "phích cắm kiểu giắc",
+            "đầu cuối",
+            "bộ thích ứng"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "cáp đồng trục"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:tho-hs-01-20261120#soat-853690-v1",
+          "ngay": "2026-11-20",
+          "bam": "fad3a1aad109d106763ae548488f6812bef1dc85dafe5286c138a280dd07257c"
         }
       }
     }

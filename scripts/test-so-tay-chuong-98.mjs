@@ -63,9 +63,8 @@ check('2a khung đổi lý do khỏi nhom-chua-co-so-tay', r9811.lyDo !== 'nhom-
 check('2b khung một mình KHÔNG chốt mã', r9811.ketQua === 'KHONG_THE_CHOT' && /^ranh-gioi-/.test(String(r9811.lyDo)), r9811);
 
 // Nhóm 98 CHƯA sinh khung vẫn phải báo nhom-chua-co-so-tay (khung không rò sang nhóm khác).
-// Nhóm mốc phải là nhóm KHÔNG có khung trong `data/so-tay/` — `dataReadPath` rơi về data/ thật khi thư mục cách ly
-// thiếu tệp, nên nhóm vừa được đưa vào repo sẽ làm ca này đỏ oan (9849 vào repo ở OZV-420). 9850 chưa có khung.
-const chuaCo = G.chotDong8({ hs: '985000', productText: 'linh kiện ô tô' });
+// Khi toàn bộ 38 nhóm Chương 98 trong biểu đều đã có sổ tay trong repo (OZV-1876), dùng mã 989900 (nhóm 98 chưa có tệp sổ tay).
+const chuaCo = G.chotDong8({ hs: '989900', productText: 'linh kiện ô tô' });
 check('2c nhóm 98 chưa có khung vẫn nhom-chua-co-so-tay', chuaCo.lyDo === 'nhom-chua-co-so-tay', chuaCo);
 
 // ── 3. Có bản ranh giới DUYET ⇒ apDung ghi điều kiện vào khung, máy chốt ĐÚNG mã ─────────────────────────────────
@@ -129,15 +128,27 @@ let maThoat2 = 0; let loiOut2 = '';
 try { chay(); } catch (e) { maThoat2 = e.status; loiOut2 = String(e.stderr || ''); }
 check('4b thiếu tham số thì hướng dẫn, không ghi bừa', maThoat2 === 2 && /co-ranh-gioi/.test(loiOut2), `${maThoat2} ${loiOut2.slice(0, 80)}`);
 
-// 9808 chưa có khung trong repo: lượt đầu phải ghi, lượt sau (thiếu --force) phải GIỮ bản vừa ghi.
-const lan1 = chay('--nhom=9808');
-const lan2 = chay('--nhom=9808');
+// Khi chưa có khung trong thư mục nguồn (dựng cwd cách ly chưa có 9808.json): lượt đầu phải ghi, lượt sau (thiếu --force) phải GIỮ bản vừa ghi.
+const tmpRoot4c = path.join(WRITE, 'root-4c');
+fs.mkdirSync(path.join(tmpRoot4c, 'data', 'so-tay'), { recursive: true });
+for (const entry of fs.readdirSync(path.join(ROOT, 'data'))) {
+  if (entry === 'so-tay') continue;
+  fs.symlinkSync(path.join(ROOT, 'data', entry), path.join(tmpRoot4c, 'data', entry));
+}
+const chay4c = (...args) => execFileSync(process.execPath, [path.join(ROOT, 'scripts', 'so-tay-chuong-98.mjs'), ...args], {
+  cwd: tmpRoot4c,
+  encoding: 'utf8',
+  env: { ...process.env, HS_DATA_DIR: path.join(tmpRoot4c, 'data') },
+});
+const lan1 = chay4c('--nhom=9808');
+const lan2 = chay4c('--nhom=9808');
 check('4c lượt đầu ghi, lượt sau GIỮ khi thiếu --force', /9808: 2\/2 dòng/.test(lan1) && /9808: GIỮ/.test(lan2), `${lan1} || ${lan2}`);
 
 // ── 5. Tính lại với --luc phải ra ĐÚNG BYTE bản đã commit (dữ liệu KHÔNG mồ côi, quy tắc 5) ─────────────────────
 // Năm nhóm khung đã commit trong repo. Sinh lại vào thư mục ghi cách ly với đúng `taoBoi.luc` của bản commit rồi
 // so byte: lệch một byte nào cũng là bằng chứng tệp trong repo không còn do script này sinh ra.
-const DA_COMMIT = ['9811', '9812', '9817', '9821', '9846'];
+// 9821 đã áp bản ranh giới DUYET 982130.json (có dieuKienNut) ở OZV-1866; dùng 9805 làm nhóm khung thuần thứ 5.
+const DA_COMMIT = ['9805', '9811', '9812', '9817', '9846'];
 const lech = [];
 const thieu = [];
 for (const h4 of DA_COMMIT) {

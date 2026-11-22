@@ -20,6 +20,10 @@ import path from 'node:path';
   for (const pn of ['848110', '848120', '848130', '848140', '848190']) {
     fs.copyFileSync(`data/ho-so/ranh-gioi/${pn}.json`, path.join(TEST_DATA_DIR, `ho-so/ranh-gioi/${pn}.json`));
   }
+  const st8536 = JSON.parse(fs.readFileSync('data/so-tay/8536.json', 'utf8'));
+  st8536.dong8 = (st8536.dong8 || []).map((d) => (String(d.hs || '').startsWith('853650') ? { ...d, dieuKienSo: [] } : d));
+  st8536.dieuKienNut = (st8536.dieuKienNut || []).filter((n) => !String(n.id || '').startsWith('853650'));
+  fs.writeFileSync(path.join(TEST_DATA_DIR, 'so-tay/8536.json'), JSON.stringify(st8536));
 }
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
