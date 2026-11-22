@@ -4,13 +4,19 @@
   "nhom": "0306",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T1528#soan-030695",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1801#soat-030695",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1801)",
+    "bam": "1f9fd24f088c77ebd75bad80a191e8b6dd9ceb2c3547473f878989766a6b8eb5"
+  },
   "dieuKienNut": [
     {
       "id": "0306952",
@@ -22,7 +28,7 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -35,30 +41,37 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Còn vỏ"
+        },
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "HAP_LUOC_CHIN"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "03069529",
       "nguon": "tax.03069529",
       "trich": "03069529 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "03069530",
       "nguon": "tax.03069530",
       "trich": "03069530 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "03069521",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.03069521 \"Còn vỏ, đã hấp chín hoặc luộc chín trong nước\" ⇒ tenLoai \"Còn vỏ\" nguyên văn (cùng xử lý như 030711 .10 tenLoai \"Sống\"): chữ ghép trạng thái + cách chế, không có khoá riêng cho \"hấp chín hoặc luộc chín trong nước\"; vế chế nằm trong mô tả hàng hấp/luộc"
+      "ghiChu": "tax.03069521 \"Còn vỏ, đã hấp chín hoặc luộc chín trong nước\" ⇒ tenLoai \"Còn vỏ\" + phuongPhapBaoQuan TRONG [\"HAP_LUOC_CHIN\"]."
     }
   ],
   "traVe": [

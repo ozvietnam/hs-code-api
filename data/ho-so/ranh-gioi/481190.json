@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L15-20261111#soat-L15",
-    "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu VI+EN: tầng 4811904 HOAC(cuộn rộng ≤15 cm | tờ kichThuoc ≤36 cm — chặn mọi cạnh, không ép daGap); .41/.91 tamPhuSan, .42/.92 «Giấy tạo vân» (Marbled paper), .93 «Loại khác, tấm xenlulo hoặc màng xơ sợi xenlulo» (máy tự phủ định anh em); khongCoHangThat sàn↔tạo vân hợp lý; khớp bảng hiệu chỉnh 481190-01/02.",
-    "bam": "2b6c22164753a75279a0191c4ec4ef4e321eeb6f1c5e8b658ff15777dbc5d6fc"
+    "phien": "claude-agent:ozv-1801#soat-481190",
+    "ngay": "2026-11-22",
+    "ghiChu": "Đồng bộ dieuKienNut 4811904 với 4811513/4811594 để khép SẠCH V1 nhóm 4811 (OZV-1801)",
+    "bam": "1741bc1d33a572b472fdc6d88c11d8e513e2cf8dd5820694fa857f35a92348de"
   },
   "dieuKienNut": [
     {
@@ -28,6 +28,11 @@
           "phuongAn": [
             [
               {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Dạng cuộn"
+              },
+              {
                 "fact": "dangCuon",
                 "op": "CO"
               },
@@ -39,6 +44,11 @@
               }
             ],
             [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "ở dạng tờ hình chữ nhật"
+              },
               {
                 "fact": "kichThuoc",
                 "op": "<=",
@@ -135,13 +145,6 @@
     }
   ],
   "chongLanVanBan": [
-    {
-      "cap": [
-        "48119041",
-        "48119042"
-      ],
-      "lyDo": "Không có hàng thật thoả cả hai (Q1, Claude 07/11/2026): \"Tấm phủ sàn\" ↔ \"Giấy tạo vân(SEN)\" — giấy tạo vân (SEN 4811.90.42) là giấy công nghệ tạo bề mặt giả da, phủ silicon/plastic, chịu nhiệt 150–220 °C; không dùng làm tấm phủ sàn."
-    },
     {
       "cap": [
         "48119091",

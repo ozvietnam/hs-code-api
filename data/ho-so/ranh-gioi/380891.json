@@ -4,13 +4,19 @@
   "nhom": "3808",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1704#soan-380891",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1801#soat-380891",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1801)",
+    "bam": "edd102a19d571c4d192bdd438bb60966793d0177f788dbc5e4953bc8a1470af6"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -21,21 +27,16 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "chứa 2-(methylpropyl-phenol methylcarbamate)"
+          "value": "Các chế phẩm trung gian chứa 2-(methylpropyl-phenol methylcarbamate)"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "38089120",
       "nguon": "tax.38089120",
       "trich": "38089120 - - - Loại khác, dạng bột dùng làm hương vòng chống muỗi",
       "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "dạng bột dùng làm hương vòng chống muỗi"
-        },
         {
           "fact": "dangChePhamDietMuoi",
           "op": "TRONG",
@@ -44,7 +45,10 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "phanConLai": [
+        "38089110"
+      ]
     },
     {
       "hs": "38089130",
@@ -52,27 +56,17 @@
       "trich": "38089130 - - - Dạng bình xịt",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Dạng bình xịt"
-        },
-        {
           "fact": "dangBinhXit",
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "38089140",
       "nguon": "tax.38089140",
       "trich": "38089140 - - - Hương vòng chống muỗi",
       "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Hương vòng chống muỗi"
-        },
         {
           "fact": "dangChePhamDietMuoi",
           "op": "TRONG",
@@ -81,18 +75,13 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "38089150",
       "nguon": "tax.38089150",
       "trich": "38089150 - - - Tấm thuốc diệt muỗi (SEN)",
       "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Tấm thuốc diệt muỗi"
-        },
         {
           "fact": "dangChePhamDietMuoi",
           "op": "TRONG",
@@ -101,7 +90,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "38089191",
@@ -114,14 +103,14 @@
           "value": "có chức năng khử mùi"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "38089199",
       "nguon": "tax.38089199",
       "trich": "38089199 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -166,6 +155,76 @@
       "phien": "claude-agent:duyet-L11-20261111#soat-L11",
       "ngay": "2026-11-11",
       "lyDo": "(A) 380891:38089110 SUY RỘNG: chữ biểu 'Các chế phẩm trung gian chứa 2-(methylpropyl-phenol methylcarbamate)' / EN 'Intermediate preparations containing 2-(methylpropyl-phenol methylcarbamate)' — bản nháp chỉ ghi tenLoai 'chứa 2-(methylpropyl-phenol methylcarbamate)', BỎ danh từ đầu 'Các chế phẩm trung gian' (cổng 5 coi DAU không cần phủ nên không bắt). Hệ quả: thuốc trừ sâu THÀNH PHẨM chứa BPMC (fenobucarb, vd dạng EC bán lẻ) vào .10 (MFN 0%) thay vì .99 (MFN 3%). Giá trị tenLoai cũng không phải tên hàng. Sửa: tenLoai 'Các chế phẩm trung gian' + điều kiện thành phần BPMC (THIEU_KHOA nếu cần khoá thành phần). (B) 380891:38089130 THU HẸP: tenLoai 'Dạng bình xịt' + dangBinhXit CO — như 380859/380861 ('... trừ ... dạng bình xịt' ⇒ TRAI tất định); chỉ giữ dangBinhXit CO."
+    }
+  ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "38089120",
+        "38089130"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1): tax.38089120 \"Loại khác, dạng bột dùng làm hương vòng chống muỗi\" là nguyên liệu dạng bột rắn, không ở tax.38089130 \"Dạng bình xịt\"."
+    },
+    {
+      "cap": [
+        "38089130",
+        "38089140"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1): tax.38089130 \"Dạng bình xịt\" là bình phun aerosol, không phải tax.38089140 \"Hương vòng chống muỗi\"."
+    },
+    {
+      "cap": [
+        "38089130",
+        "38089150"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1): tax.38089130 \"Dạng bình xịt\" là bình phun aerosol, không phải tax.38089150 \"Tấm thuốc diệt muỗi (SEN)\"."
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "38089110",
+        "38089130",
+        "38089140",
+        "38089150"
+      ],
+      "truc": {
+        "38089110": "TEN_LOAI",
+        "38089130": "DAC_DIEM",
+        "38089140": "DAC_DIEM",
+        "38089150": "DAC_DIEM"
+      },
+      "cauHoiPhanBiet": "Hàng là các chế phẩm trung gian chứa 2-(methylpropyl-phenol methylcarbamate), hay thuốc trừ côn trùng dạng bình xịt / hương vòng chống muỗi / tấm thuốc diệt muỗi?",
+      "trich": {
+        "38089110": "38089110 - - - Các chế phẩm trung gian chứa 2-(methylpropyl-phenol methylcarbamate)",
+        "38089130": "38089130 - - - Dạng bình xịt",
+        "38089140": "38089140 - - - Hương vòng chống muỗi",
+        "38089150": "38089150 - - - Tấm thuốc diệt muỗi (SEN)"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "38089110",
+            "38089130"
+          ],
+          "khongCoHangThat": "38089110 là chế phẩm trung gian (bán thành phẩm công nghiệp chứa BPMC dùng để pha chế), không đóng ở dạng bình xịt thành phẩm (38089130)."
+        },
+        {
+          "cap": [
+            "38089110",
+            "38089140"
+          ],
+          "khongCoHangThat": "38089110 là chế phẩm trung gian chứa BPMC, không phải hương vòng chống muỗi thành phẩm (38089140)."
+        },
+        {
+          "cap": [
+            "38089110",
+            "38089150"
+          ],
+          "khongCoHangThat": "38089110 là chế phẩm trung gian chứa BPMC, không phải tấm thuốc diệt muỗi thành phẩm (38089150)."
+        }
+      ],
+      "phanXu": null
     }
   ]
 }

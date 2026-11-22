@@ -4,13 +4,19 @@
   "nhom": "4811",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-481141",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1801#soat-481141",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1801)",
+    "bam": "124440b6026ce343ddd7cdd945f3fffe37043b5f0cc665be6ea3b8a05871c055"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -45,21 +51,23 @@
                 "donVi": "cm"
               },
               {
-                "fact": "daGap",
-                "op": "KHONG"
+                "fact": "chieuKiaTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
               }
             ]
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "48114190",
       "nguon": "tax.48114190",
       "trich": "48114190 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -77,6 +85,12 @@
       "ma": "481141",
       "loai": "QUYET_DINH",
       "ghiChu": "Không có tầng không mã (tangKhongMa rỗng) ⇒ dieuKienNut rỗng. Không có nhánh anh em chia theo tên ↔ công dụng ⇒ không khai chongLanTruc / chongLanVanBan."
+    },
+    {
+      "ma": "48114120",
+      "loai": "BO_VE",
+      "ve": "ở dạng không gấp",
+      "lyDo": "Vế nêu cách đo kích thước (trải phẳng, Chú giải 4 Chương 48 «ở dạng không gấp», EN «in the unfolded state»), không phải đặc điểm phân biệt hàng; kích thước đã số hoá ở motChieuTo/chieuKiaTo."
     }
   ],
   "traVe": [
