@@ -99,10 +99,11 @@ kiem('ca ngược C9: Ch.84 không tự trỏ chính nó; nút giả P:NONEXISTE
 // ── 4. Số cạnh theo loại khớp tệp thống kê đã commit ────────────────────────────────────────────────────────────
 const tk = co('data/do-thi/thong-ke.json') ? docJson('data/do-thi/thong-ke.json') : null;
 if (kiem('có data/do-thi/thong-ke.json', Boolean(tk && tk.soCanh && tk.nguong), 'chạy: node scripts/dung-bang-canh.mjs --ghi')) {
+  // C16 (bản đồ 4 số) nạp dần từ Studio: chưa nạp nhóm nào thì 0 cạnh là hợp lệ; còn lại mọi loại phải > 0.
   for (const l of D.LOAI_CANH) {
     const ghi = tk.soCanh[l]; const that = b.thongKe.soCanh[l];
     const nguong = Math.max(tk.nguong.toiThieu, Math.ceil(tk.nguong.tyLe * ghi));
-    kiem(`số cạnh ${l}: thật ${that}, đã ghi ${ghi} (ngưỡng lệch ±${nguong})`, Number.isFinite(ghi) && that > 0 && Math.abs(that - ghi) <= nguong, 'tệp gốc đã đổi nhiều: chạy node scripts/dung-bang-canh.mjs --ghi rồi commit data/do-thi/ cùng PR');
+    kiem(`số cạnh ${l}: thật ${that}, đã ghi ${ghi} (ngưỡng lệch ±${nguong})`, Number.isFinite(ghi) && (that > 0 || l === 'C16') && Math.abs(that - ghi) <= nguong, 'tệp gốc đã đổi nhiều: chạy node scripts/dung-bang-canh.mjs --ghi rồi commit data/do-thi/ cùng PR');
   }
   kiem('thống kê ghi rõ bảng lưu ở RAM và lệnh dựng lại', tk.luuO === 'RAM' && /dung-bang-canh/.test(tk.cachDungLai || ''));
   kiem('thống kê có đếm riêng mã không còn trong biểu thuế', Number.isFinite(tk.maKhongConTrongBieu));
