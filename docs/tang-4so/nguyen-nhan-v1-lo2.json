@@ -1,0 +1,380 @@
+[
+  {
+    "ca": 47,
+    "moTa": "Bộ xử lý hình ảnh / None / xử lý hình ảnh cho màn hình LED",
+    "nhan": "PHAN_VAN",
+    "nhomNhan": [
+      "8471",
+      "8543"
+    ],
+    "heTra": "CHOT",
+    "heNhom": "8471",
+    "coNhanTrongUV": false,
+    "nguyenNhanGoc": "TIM_SOT",
+    "dieuKhoanChungMinh": "Chú giải 6(A) và 6(E) Chương 84 (data/chu-giai-chuong.json): 'Theo mục đích của nhóm 84.71, khái niệm \"máy xử lý dữ liệu tự động\" là máy có khả năng: (i) Lưu trữ chương trình xử lý... (ii) Lập chương trình tùy theo yêu cầu của người sử dụng...'; máy thực hiện một chức năng riêng ngoài việc xử lý dữ liệu phân loại vào nhóm theo chức năng hoặc nhóm 85.43 ('85.43 - Máy và thiết bị điện, có chức năng riêng, chưa được chi tiết hay ghi ở nơi khác trong Chương này.', data/chu-giai-heading.json).",
+    "phanTichNgan": "Khâu gom ứng viên bỏ sót nhóm 85.43 (thiết bị điện có chức năng riêng xử lý/chia tín hiệu video cho màn hình LED) khỏi danh sách ứng viên, khiến hệ thống mất nhánh phân vân và chốt thẳng vào 84.71.",
+    "tepCanSua": [
+      "lib/do-thi/tu-khoa.js",
+      "lib/tim-truoc.js",
+      "lib/do-thi/hoi-truoc-4so.js"
+    ]
+  },
+  {
+    "ca": 49,
+    "moTa": "Thanh kéo vải rèm trần / Nhôm / Phụ kiện rèm cửa",
+    "nhan": "PHAN_VAN",
+    "nhomNhan": [
+      "7616",
+      "8302"
+    ],
+    "heTra": "CHOT",
+    "heNhom": "7616",
+    "coNhanTrongUV": true,
+    "nguyenNhanGoc": "KHONG_HOI",
+    "dieuKhoanChungMinh": "Tên nhóm 83.02 và Chú giải chi tiết nhóm 83.02 mục (D)(5) (data/chu-giai-heading.json): 'Các loại phụ kiện để treo rèm hay mành cửa (ví dụ: các loại thanh treo rèm, ống, nơ trang trí hình hoa hồng, giá đỡ, dải vén màn, kẹp, vòng chạy hoặc trượt, thanh chặn)... Các loại thanh treo rèm, ống phù hợp để treo rèm hoặc giữ thảm chỉ đơn thuần được cắt theo chiều dài và khoan được phân loại theo kim loại cấu thành.' kết hợp tên nhóm 76.16: '76.16 – Các sản phẩm khác bằng nhôm'.",
+    "phanTichNgan": "Mô tả hàng thiếu dữ kiện phân định thanh nhôm chỉ đơn thuần cắt theo chiều dài và khoan lỗ (76.16) hay đã gia công thành ray trượt rèm cửa kèm phụ kiện/con chạy (83.02), nhưng hệ thống tự ý chốt 76.16 thay vì hỏi lại người dùng.",
+    "tepCanSua": [
+      "lib/do-thi/hoi-truoc-4so.js",
+      "data/so-tay/8302.json",
+      "data/so-tay/7616.json"
+    ]
+  },
+  {
+    "ca": 53,
+    "moTa": "Giá đỡ chổi than / than chì, đồng / Sửa chữa động cơ điện",
+    "nhan": "CHOT",
+    "nhomNhan": [
+      "8503"
+    ],
+    "heTra": "CHOT",
+    "heNhom": "8543",
+    "coNhanTrongUV": false,
+    "nguyenNhanGoc": "TIM_SOT",
+    "dieuKhoanChungMinh": "Chú giải chi tiết nhóm 85.45 mục (D) (data/chu-giai-heading.json): 'Bộ phận giữ chổi than (đã hoặc chưa phù hợp với chổi than) được phân loại như các bộ phận của máy (ví dụ nhóm 85.03).' kết hợp Chú giải 2(b) Phần XVI và tên nhóm 85.03: '85.03 - Các bộ phận chỉ dùng hoặc chủ yếu dùng cho các loại máy thuộc nhóm 85.01 hoặc 85.02.'.",
+    "phanTichNgan": "Khâu gom ứng viên có nhóm máy chủ 85.01 và nhóm chổi than 85.45 nhưng không bắc cầu sang nhóm bộ phận động cơ điện 85.03 theo điều khoản loại trừ của CGCT 85.45 mục (D), khiến nhóm đúng 85.03 vắng mặt trong danh sách ứng viên.",
+    "tepCanSua": [
+      "lib/tim-truoc.js",
+      "lib/tim-cgct.js",
+      "lib/do-thi/chu-giai-2-phan-xvi.js",
+      "data/so-tay/8545.json"
+    ]
+  },
+  {
+    "ca": 57,
+    "moTa": "Nhánh lá thông nhân tạo / Nhựa PE / Trang trí cây thông",
+    "nhan": "PHAN_VAN",
+    "nhomNhan": [
+      "6702",
+      "9505"
+    ],
+    "heTra": "CHOT",
+    "heNhom": "6702",
+    "coNhanTrongUV": true,
+    "nguyenNhanGoc": "KHONG_HOI",
+    "dieuKhoanChungMinh": "Tên nhóm 95.05 và Chú giải chi tiết nhóm 95.05 mục (1), (2) (data/chu-giai-heading.json): '95.05 - Đồ dùng trong lễ hội, hội hoá trang hoặc trong các trò chơi giải trí khác... (1) ...các đồ trang trí cây Nô-en (kim tuyến, bóng màu, động vật hoặc các hình thù khác...); (2) Các mặt hàng truyền thống dùng trong dịp lễ Nô-en, ví dụ cây Nôel nhân tạo...' phân biệt với tên nhóm 67.02: '67.02 Hoa, cành, lá, quả nhân tạo và các phần của chúng; các sản phẩm làm bằng hoa, cành, lá hoặc quả nhân tạo.'.",
+    "phanTichNgan": "Mô tả 'Trang trí cây thông' chưa làm rõ hàng là vật phẩm trang trí cây thông Nô-en chuyên dùng cho dịp lễ Giáng sinh (95.05) hay cành lá nhân tạo trang trí thông thường (67.02), nhưng hệ thống tự chốt 67.02 mà không hỏi để phân nhánh.",
+    "tepCanSua": [
+      "lib/do-thi/hoi-truoc-4so.js",
+      "data/so-tay/6702.json",
+      "data/so-tay/9505.json"
+    ]
+  },
+  {
+    "ca": 58,
+    "moTa": "Kim đục lỗ da / Sắt / Dùng cho máy đục lỗ cầm tay",
+    "nhan": "CHOT",
+    "nhomNhan": [
+      "8207"
+    ],
+    "heTra": "CHOT",
+    "heNhom": "8205",
+    "coNhanTrongUV": true,
+    "nguyenNhanGoc": "AP_SAI",
+    "dieuKhoanChungMinh": "Tên nhóm 82.07 (data/chu-giai-heading.json): '82.07 – Các dụng cụ có thể thay đổi được dùng cho các dụng cụ cầm tay, có hoặc không hoạt động bằng điện, hoặc dùng cho máy công cụ (ví dụ, để ép, dập, đục lỗ, ta rô, ren, khoan, chuốt, phay, cán, tiện hoặc bắt, đóng vít)...' so với tên nhóm 82.05: '82.05 – Dụng cụ cầm tay (kể cả đầu nạm kim cương để cắt kính), chưa được ghi hoặc chi tiết ở nơi khác...'.",
+    "phanTichNgan": "Mô tả đã xác định rõ là kim đục lỗ lắp vào máy đục lỗ cầm tay (dụng cụ thay thế được để đục lỗ thuộc nhóm 82.07), nhưng bước so sánh áp sai điều khoản khi xếp vào nhóm dụng cụ cầm tay hoàn chỉnh 82.05.",
+    "tepCanSua": [
+      "data/chu-giai-heading.json",
+      "data/so-tay/8207.json",
+      "data/so-tay/8205.json"
+    ]
+  },
+  {
+    "ca": 62,
+    "moTa": "Máy tự động cắt kén tằm / None / Cắt kén tằm",
+    "nhan": "PHAN_VAN",
+    "nhomNhan": [
+      "8436",
+      "8445"
+    ],
+    "heTra": "CHOT",
+    "heNhom": "8479",
+    "coNhanTrongUV": false,
+    "nguyenNhanGoc": "TIM_SOT",
+    "dieuKhoanChungMinh": "Tên nhóm 84.36 (data/chu-giai-heading.json): '84.36 - Các loại máy khác dùng trong nông nghiệp, làm vườn, lâm nghiệp, chăn nuôi gia cầm hoặc nuôi ong...' (phân nhóm 8436.80 gồm máy dùng trong nuôi tằm); kết hợp tên nhóm 84.45 và Chú giải chi tiết nhóm 84.45 mục (B)(1): '84.45 - Máy chuẩn bị xơ sợi dệt...', '(1) Máy dùng để loại bỏ các phần bên ngoài của kén tằm, và máy dùng để loại bỏ các sợi bên ngoài mà không thể cuộn được bằng cách đập kén tằm.'.",
+    "phanTichNgan": "Khâu gom ứng viên bỏ sót cả hai nhóm chuyên ngành cho kén tằm là 84.36 (nuôi tằm lấy nhộng giống) và 84.45 (xử lý kén chuẩn bị tơ trước khi xe), khiến hệ thống rơi vào nhóm máy cơ khí có chức năng riêng chưa chi tiết 84.79.",
+    "tepCanSua": [
+      "lib/do-thi/tu-khoa.js",
+      "lib/tim-truoc.js",
+      "lib/tim-cgct.js",
+      "data/so-tay/8445.json"
+    ]
+  },
+  {
+    "ca": 65,
+    "moTa": "Dây hàn bằng thép hợp kim / Thép hợp kim, lõi thép không gỉ / None",
+    "nhan": "PHAN_VAN",
+    "nhomNhan": [
+      "7223",
+      "7229",
+      "8311"
+    ],
+    "heTra": "CHOT",
+    "heNhom": "8311",
+    "coNhanTrongUV": false,
+    "nguyenNhanGoc": "TIM_SOT",
+    "dieuKhoanChungMinh": "Tên nhóm 83.11 và Chú giải chi tiết nhóm 83.11 (data/chu-giai-heading.json): '83.11- Dây, que, ống, tấm, điện cực và các sản phẩm tương tự, bằng kim loại cơ bản hoặc carbu kim loại, được bọc, phủ hoặc có lõi bằng chất trợ dung, loại dùng để hàn xì, hàn hơi, hàn điện...', 'Các dây, que, ống, tấm, điện cực... bằng kim loại thường không được bọc hoặc không có lõi bằng chất trợ dung bị loại trừ (Chương 72 đến 76 và 78 đến 81)'; kết hợp tên nhóm 72.23 ('72.23 - Dây thép không gỉ.') và 72.29 ('72.29 - Dây thép hợp kim khác.').",
+    "phanTichNgan": "Khâu gom ứng viên chỉ bắt theo chữ 'dây hàn' vào 83.11 mà bỏ sót hai nhóm dây thép trần hợp kim thuộc Chương 72 (72.23 và 72.29 theo điều khoản loại trừ của CGCT 83.11), làm mất các nhánh ứng viên cần hỏi khi chưa rõ dây có chất trợ dung hay không.",
+    "tepCanSua": [
+      "lib/do-thi/tu-khoa.js",
+      "lib/tim-truoc.js",
+      "lib/do-thi/hoi-truoc-4so.js",
+      "data/so-tay/8311.json"
+    ]
+  },
+  {
+    "ca": 68,
+    "moTa": "Dây thép không hợp kim (Steel wire rope) / Thép không hợp kim / Dùng để sản xuất dây thép chịu lực",
+    "nhan": "PHAN_VAN",
+    "nhomNhan": [
+      "7217",
+      "7312"
+    ],
+    "heTra": "CHOT",
+    "heNhom": "7217",
+    "coNhanTrongUV": true,
+    "nguyenNhanGoc": "KHONG_HOI",
+    "dieuKhoanChungMinh": "Tên nhóm 72.17 và Chú giải chi tiết nhóm 72.17 (data/chu-giai-heading.json): '72.17 - Dây của sắt hoặc thép không hợp kim (+).', 'Nhóm này không bao gồm: ... (b) Dây bện tao, dây thừng, dây cáp và các sản phẩm tương tự thuộc nhóm 73.12.' kết hợp tên nhóm 73.12: '73.12 – Dây bện tao, thừng, cáp, băng tết, dây treo và các loại tương tự, bằng sắt hoặc thép, chưa cách điện.'.",
+    "phanTichNgan": "Mô tả mâu thuẫn giữa tên tiếng Việt/công dụng ('Dây thép không hợp kim / Dùng để sản xuất dây thép chịu lực' → sợi đơn 72.17) và cụm tiếng Anh '(Steel wire rope)' (cáp thép bện tao → 73.12), nhưng hệ thống tự chốt 72.17 thay vì hỏi làm rõ cấu tạo sợi đơn hay dây bện tao.",
+    "tepCanSua": [
+      "lib/do-thi/hoi-truoc-4so.js",
+      "data/so-tay/7217.json",
+      "data/so-tay/7312.json"
+    ]
+  },
+  {
+    "ca": 69,
+    "moTa": "Cân điện tử / None / Cân bàn",
+    "nhan": "CHOT",
+    "nhomNhan": [
+      "8423"
+    ],
+    "heTra": "PHAN_VAN",
+    "heNhom": "",
+    "coNhanTrongUV": true,
+    "nguyenNhanGoc": "AP_SAI",
+    "dieuKhoanChungMinh": "Tên nhóm 84.23 (data/chu-giai-heading.json): '84.23 - Cân (trừ loại cân đo có độ nhậy 5 cg hoặc nhậy hơn), kể cả máy đếm hoặc máy kiểm tra, hoạt động bằng nguyên lý cân; các loại quả cân (+).'.",
+    "phanTichNgan": "Mô tả đã nêu rõ hàng là 'Cân điện tử / Cân bàn' thuộc phạm vi định danh trực tiếp của nhóm 84.23 (không phải cân phân tích phòng thí nghiệm độ nhạy ≤ 5 cg nhóm 90.16), nhưng bước so sánh không áp dụng Quy tắc 1 để chốt 84.23 mà trả trạng thái phân vân.",
+    "tepCanSua": [
+      "lib/do-thi/hoi-truoc-4so.js",
+      "data/so-tay/8423.json",
+      "data/chu-giai-heading.json"
+    ]
+  },
+  {
+    "ca": 76,
+    "moTa": "Chốt cài khóa dây bảo hiểm có nối tiếp / sắt mạ+nhựa / None",
+    "nhan": "PHAN_VAN",
+    "nhomNhan": [
+      "8308",
+      "8708"
+    ],
+    "heTra": "CHOT",
+    "heNhom": "8308",
+    "coNhanTrongUV": true,
+    "nguyenNhanGoc": "KHONG_HOI",
+    "dieuKhoanChungMinh": "Tên nhóm 87.08 và Chú giải chi tiết nhóm 87.08 (data/chu-giai-heading.json): '87.08 - Bộ phận và phụ kiện của xe có động cơ thuộc các nhóm từ 87.01 đến 87.05', '...các dây đai an toàn để bảo vệ người được thiết kế gắn cố định trong xe...' kết hợp Chú giải 2 Phần XVII và tên nhóm 83.08: '83.08- Móc cào, khóa móc cài, khóa thắt lưng, cài thắt lưng, khóa có chốt, mắt cài khóa, khoen và các loại tương tự, bằng kim loại cơ bản...'.",
+    "phanTichNgan": "Mô tả chưa xác định chốt cài khóa dùng cho dây đai an toàn ghế xe ô tô (87.08) hay là khóa cài bằng kim loại cơ bản dùng cho dây đai bảo hộ/vật dụng thông thường (83.08), nhưng hệ thống tự ý chốt 83.08 thay vì dừng hỏi mục đích sử dụng.",
+    "tepCanSua": [
+      "lib/do-thi/hoi-truoc-4so.js",
+      "data/so-tay/8708.json",
+      "data/so-tay/8308.json"
+    ]
+  },
+  {
+    "ca": 80,
+    "moTa": "Chân tăng chỉnh độ cao / thép hợp kim / bộ phận của máy khắc gỗ CNC",
+    "nhan": "CHOT",
+    "nhomNhan": [
+      "8466"
+    ],
+    "heTra": "PHAN_VAN",
+    "heNhom": "",
+    "coNhanTrongUV": true,
+    "nguyenNhanGoc": "AP_SAI",
+    "dieuKhoanChungMinh": "Chú giải 2(b) Phần XVI (data/chu-giai-chuong.json) và tên nhóm 84.66 (data/chu-giai-heading.json): '84.66 - Bộ phận và phụ kiện chỉ dùng hoặc chủ yếu dùng với các máy thuộc các nhóm từ 84.56 đến 84.65, kể cả bộ phận kẹp sản phẩm hoặc kẹp dụng cụ, đầu cắt ren tự mở, đầu chia độ và những bộ phận phụ trợ chuyên dùng khác dùng cho các máy này...'.",
+    "phanTichNgan": "Hồ sơ đã ghi rõ hàng là bộ phận của máy khắc gỗ CNC (máy công cụ gia công gỗ nhóm 84.65), nhưng bước so sánh không áp dụng Chú giải 2(b) Phần XVI và tên nhóm 84.66 để chốt vào nhóm bộ phận máy công cụ mà lại trả phân vân.",
+    "tepCanSua": [
+      "lib/do-thi/chu-giai-2-phan-xvi.js",
+      "data/luat/chu-giai-2-phan-xvi.json",
+      "data/so-tay/8466.json"
+    ]
+  },
+  {
+    "ca": 82,
+    "moTa": "Gặm nướu cho trẻ em / cao su silicone / trẻ mọc răng",
+    "nhan": "PHAN_VAN",
+    "nhomNhan": [
+      "3926",
+      "4014"
+    ],
+    "heTra": "CHOT",
+    "heNhom": "9503",
+    "coNhanTrongUV": false,
+    "nguyenNhanGoc": "TIM_SOT",
+    "dieuKhoanChungMinh": "Tên nhóm 40.14 và Chú giải chi tiết nhóm 40.14 (data/chu-giai-heading.json): '40.14 - Sản phẩm vệ sinh hoặc y tế (kể cả núm vú cao su), bằng cao su lưu hóa trừ cao su cứng...', '...các núm vú (các núm vú cho em bé), màng chắn núm vú...' kết hợp Chú giải 4 Chương 40 và tên nhóm 39.26: '39.26 - Các sản phẩm khác bằng plastic và các sản phẩm bằng các vật liệu khác của các nhóm từ 39.01 đến 39.14.'.",
+    "phanTichNgan": "Khâu gom ứng viên bỏ sót nhóm 40.14 (sản phẩm vệ sinh/chăm sóc răng nướu cho trẻ em bằng cao su lưu hóa) khỏi danh sách ứng viên, đồng thời bước chọn nhóm lại nhầm gặm nướu trẻ mọc răng sang đồ chơi nhóm 95.03 thay vì phân nhánh giữa 40.14 và 39.26.",
+    "tepCanSua": [
+      "lib/do-thi/tu-khoa.js",
+      "lib/tim-truoc.js",
+      "lib/do-thi/hoi-truoc-4so.js",
+      "data/so-tay/4014.json"
+    ]
+  },
+  {
+    "ca": 93,
+    "moTa": "Tấm lót chuột máy tính / Cao su lưu hóa, xốp, vải / None",
+    "nhan": "PHAN_VAN",
+    "nhomNhan": [
+      "4008",
+      "4016"
+    ],
+    "heTra": "CHOT",
+    "heNhom": "4016",
+    "coNhanTrongUV": true,
+    "nguyenNhanGoc": "KHONG_HOI",
+    "dieuKhoanChungMinh": "Chú giải 9 Chương 40 (data/chu-giai-chuong.json): 'Trong các nhóm 40.01, 40.02, 40.03, 40.05 và 40.08 khái niệm “tấm\",\"tờ\" và \"dải” chỉ áp dụng cho các loại tấm, tờ và dải và khối hình học đều, chưa cắt hoặc mới chỉ cắt đơn giản thành hình chữ nhật (kể cả hình vuông), có hoặc chưa có tính chất của sản phẩm... nhưng chưa cắt thành hình hoặc gia công thêm theo cách khác.' và Chú giải chi tiết nhóm 40.08 loại trừ tấm đã cắt vát mép, bo tròn góc hoặc gia công thêm sang nhóm 40.16 ('40.16 - Các sản phẩm khác bằng cao su lưu hóa trừ cao su cứng.', data/chu-giai-heading.json).",
+    "phanTichNgan": "Mô tả hàng chưa cho biết tấm lót chuột chỉ cắt đơn giản thành hình chữ nhật/vuông (40.08 theo Chú giải 9 Chương 40) hay đã bo góc, may viền hoặc cắt hình khác (40.16), nhưng hệ thống tự ý chốt 40.16 mà không dừng hỏi.",
+    "tepCanSua": [
+      "lib/do-thi/hoi-truoc-4so.js",
+      "data/so-tay/4008.json",
+      "data/so-tay/4016.json"
+    ]
+  },
+  {
+    "ca": 94,
+    "moTa": "Card nhận tín hiệu / None / nhận tín hiệu cho màn hình dẹt",
+    "nhan": "CHOT",
+    "nhomNhan": [
+      "8529"
+    ],
+    "heTra": "CHOT",
+    "heNhom": "8528",
+    "coNhanTrongUV": true,
+    "nguyenNhanGoc": "HIEU_HANG",
+    "dieuKhoanChungMinh": "Chú giải 2(b) Phần XVI (data/chu-giai-chuong.json): 'Các bộ phận khác, nếu phù hợp để chỉ sử dụng hoặc chủ yếu sử dụng cho các loại máy cụ thể, hoặc cho một số loại máy cùng nhóm... được phân loại cùng nhóm với các máy đó hoặc vào các nhóm 84.09, 84.31, 84.48, 84.66, 84.73, 85.03, 85.22, 85.29 hoặc 85.38 khi thấy phù hợp' kết hợp tên nhóm 85.29: '85.29 - Bộ phận chỉ dùng hoặc chủ yếu dùng với các thiết bị thuộc các nhóm từ 85.25 đến 85.28.' (data/chu-giai-heading.json).",
+    "phanTichNgan": "Hệ thống hiểu sai bản chất 'Card nhận tín hiệu' (bo mạch bộ phận chuyên dùng để nhận tín hiệu cho màn hình dẹt thuộc nhóm 85.29) thành chính thiết bị màn hình hoàn chỉnh của nhóm máy chủ 85.28.",
+    "tepCanSua": [
+      "lib/do-thi/chu-giai-2-phan-xvi.js",
+      "data/luat/chu-giai-2-phan-xvi.json",
+      "data/so-tay/8529.json"
+    ]
+  },
+  {
+    "ca": 95,
+    "moTa": "Bộ trao đổi nhiệt làm mát dầu thủy lực / Vỏ thép, ruột đồng / Làm mát dầu thủy lực trong hệ thống bơm nguyên liệu sản xuất gạch ceramic",
+    "nhan": "CHOT",
+    "nhomNhan": [
+      "8419"
+    ],
+    "heTra": "CHOT",
+    "heNhom": "8404",
+    "coNhanTrongUV": true,
+    "nguyenNhanGoc": "HIEU_HANG",
+    "dieuKhoanChungMinh": "Tên nhóm 84.19 và Chú giải chi tiết nhóm 84.19 mục (I)(B) (data/chu-giai-heading.json): '84.19 - Trang thiết bị cho phòng thí nghiệm hoặc máy, thiết bị, gia nhiệt bằng điện hoặc không bằng điện... để xử lý các loại vật liệu bằng quá trình thay đổi nhiệt như... làm mát trừ các loại máy hoặc thiết bị dùng cho gia đình...', '(B) Bộ trao đổi nhiệt trong đó lưu chất nóng... và lưu chất lạnh được đẩy qua các dòng song song... được tách biệt bởi vách kim loại mỏng theo cách một lưu chất được làm lạnh và lưu chất kia được làm nóng.' so với tên nhóm 84.04 chỉ gồm thiết bị phụ trợ cho nồi hơi 84.02/84.03 và thiết bị ngưng tụ cho tổ máy động lực hơi nước.",
+    "phanTichNgan": "Hệ thống hiểu sai bản chất bộ trao đổi nhiệt làm mát dầu thủy lực trong hệ thống bơm công nghiệp (84.19) thành thiết bị phụ trợ nồi hơi hoặc bình ngưng cho tổ máy động lực hơi nước nhóm 84.04 (dù 84.04 không nằm trong danh sách ứng viên).",
+    "tepCanSua": [
+      "data/chu-giai-heading.json",
+      "data/so-tay/8419.json",
+      "data/so-tay/8404.json"
+    ]
+  },
+  {
+    "ca": 96,
+    "moTa": "Giấy lụa lau chùi / sợi gỗ nguyên sinh / lau chùi, dùng 1 lần",
+    "nhan": "CHOT",
+    "nhomNhan": [
+      "4818"
+    ],
+    "heTra": "CHOT",
+    "heNhom": "4803",
+    "coNhanTrongUV": true,
+    "nguyenNhanGoc": "AP_SAI",
+    "dieuKhoanChungMinh": "Tên nhóm 48.18 và Chú giải chi tiết nhóm 48.18 (data/chu-giai-heading.json): '48.18 - Giấy vệ sinh và giấy tương tự, tấm xenlulo hoặc màng xơ sợi xenlulo, dùng trong gia đình hoặc vệ sinh, dạng cuộn có chiều rộng không quá 36 cm, hoặc cắt theo hình dạng hoặc kích thước; khăn tay, giấy lụa lau, khăn lau...', 'Các sản phẩm của nhóm này thường được chế tạo từ các vật liệu của nhóm 48.03.' phân biệt với tên nhóm 48.03 ('48.03 - Giấy để làm giấy vệ sinh hoặc lau mặt, khăn giấy... ở dạng cuộn hoặc tờ.', chịu giới hạn kích thước cuộn/tờ nguyên liệu theo Chú giải 8 Chương 48).",
+    "phanTichNgan": "Hàng là thành phẩm giấy lụa lau chùi dùng một lần thuộc nhóm 48.18, nhưng bước so sánh áp sai ranh giới Chú giải 8 Chương 48 khi chọn nhóm giấy nguyên liệu dạng cuộn/tờ lớn dùng để sản xuất giấy vệ sinh 48.03.",
+    "tepCanSua": [
+      "data/chu-giai-heading.json",
+      "data/so-tay/4818.json",
+      "data/so-tay/4803.json"
+    ]
+  },
+  {
+    "ca": 97,
+    "moTa": "Mô đun IGBT / None / Chuyển mạch bán dẫn trong thiết bị điện dùng cho máy biến tần",
+    "nhan": "PHAN_VAN",
+    "nhomNhan": [
+      "8504",
+      "8541"
+    ],
+    "heTra": "CHOT",
+    "heNhom": "8541",
+    "coNhanTrongUV": true,
+    "nguyenNhanGoc": "THIEU_DIEU_KHOAN",
+    "dieuKhoanChungMinh": "Ý kiến phân loại WCO 8541.29/1 (data/wco-op/opinions.json#854129/1: 'Packaged insulated gate bipolar transistor (IGBT) device... containing 2 IGBT chips, 2 diodes in an anti-parallel connection... Application of GIRs 1 (Note 12 to Chapter 85) and 6' → 85.41) và WCO 8504.40/2 (data/wco-op/opinions.json#850440/2: 'Packaged insulated gate bipolar transistor (IGBT) module, consisting of 6 switches in which an IGBT and a Free Wheeling Diode (FWD) are connected in parallel, and 3 NTC Thermistors... to convert DC power to AC power. Application of GIRs 1 (Note 2 (a) to Section XVI) and 6' → 85.04).",
+    "phanTichNgan": "Dữ liệu điều khoản tầng 4 số và sổ tay chưa nối cặp ý kiến phân loại WCO 8541.29/1,/2 và 8504.40/2 để phân biệt mô đun linh kiện bán dẫn rời 1–2 nhánh IGBT (85.41) với mô đun ghép nhiều công tắc thành mạch biến đổi điện hoàn chỉnh (85.04), khiến hệ thống tự chốt 85.41 mà không hỏi cấu tạo mạch bên trong.",
+    "tepCanSua": [
+      "data/so-tay/8541.json",
+      "data/so-tay/8504.json",
+      "lib/do-thi/hoi-truoc-4so.js",
+      "data/luat/dieu-khoan-tang2.json"
+    ]
+  },
+  {
+    "ca": 98,
+    "moTa": "Cọ lăn sơn mini / sợi tổng hợp / bộ phận của cây lăn sơn",
+    "nhan": "CHOT",
+    "nhomNhan": [
+      "9603"
+    ],
+    "heTra": "PHAN_VAN",
+    "heNhom": "",
+    "coNhanTrongUV": true,
+    "nguyenNhanGoc": "AP_SAI",
+    "dieuKhoanChungMinh": "Tên nhóm 96.03 (data/chu-giai-heading.json): '96.03 - Chổi, bàn chải (kể cả các loại bàn chải là những bộ phận của máy, dụng cụ hoặc xe), dụng cụ cơ học vận hành bằng tay để quét sàn, không có động cơ, giẻ lau sàn và chổi bằng lông vũ; túm và búi đã làm sẵn để làm chổi hoặc bàn chải; miếng thấm và con lăn để sơn hoặc vẽ; chổi cao su (trừ con lăn bằng cao su).'.",
+    "phanTichNgan": "Tên nhóm 96.03 đã định danh trực tiếp 'miếng thấm và con lăn để sơn hoặc vẽ' (bao gồm cả ống/cọ lăn sơn thay thế cho cây lăn sơn), nhưng bước so sánh không áp dụng Quy tắc 1 để chốt 96.03 mà lại trả trạng thái phân vân.",
+    "tepCanSua": [
+      "lib/do-thi/hoi-truoc-4so.js",
+      "data/so-tay/9603.json",
+      "data/chu-giai-heading.json"
+    ]
+  },
+  {
+    "ca": 99,
+    "moTa": "Váy liền thân trẻ em gái / Vải dệt kim sợi tổng hợp / Trang phục trẻ em",
+    "nhan": "PHAN_VAN",
+    "nhomNhan": [
+      "6104",
+      "6111"
+    ],
+    "heTra": "CHOT",
+    "heNhom": "6104",
+    "coNhanTrongUV": true,
+    "nguyenNhanGoc": "KHONG_HOI",
+    "dieuKhoanChungMinh": "Chú giải 6 Chương 61 (data/chu-giai-chuong.json): '6. Theo mục đích của nhóm 61.11: (a) Khái niệm \"quần áo và các vật phẩm may mặc dùng cho trẻ em\" chỉ các sản phẩm dùng cho trẻ có chiều cao không quá 86 cm; (b) Những mặt hàng mà, thoạt nhìn, có thể vừa xếp vào nhóm 61.11, vừa xếp được vào các nhóm khác của Chương này phải được xếp vào nhóm 61.11.' kết hợp tên nhóm 61.04 ('61.04- Bộ com-lê... váy liền thân (dress)... dùng cho phụ nữ hoặc trẻ em gái, dệt kim hoặc móc.') và 61.11 ('61.11 - Quần áo và hàng may mặc phụ trợ dùng cho trẻ em, dệt kim hoặc móc.', data/chu-giai-heading.json).",
+    "phanTichNgan": "Mô tả hàng không nêu kích cỡ chiều cao của trẻ để phân định theo ngưỡng 86 cm tại Chú giải 6(a) Chương 61 giữa nhóm 61.11 (trẻ cao ≤ 86 cm) và nhóm 61.04 (trẻ em gái cao > 86 cm), nhưng hệ thống tự ý chốt 61.04 mà không dừng hỏi.",
+    "tepCanSua": [
+      "lib/do-thi/hoi-truoc-4so.js",
+      "data/so-tay/6104.json",
+      "data/so-tay/6111.json"
+    ]
+  }
+]
