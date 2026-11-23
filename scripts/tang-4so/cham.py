@@ -11,16 +11,18 @@ def nhom_nhan(c):
     n = c.get("nhomNhan") or c.get("nhan")
     return [str(x)[:4] for x in (n if isinstance(n, list) else [n])]
 
-def co_nhan_trong_uv(c, uv=None):
-    nn = nhom_nhan(c)
-    uv4 = {str(u)[:4] for u in ((uv if uv is not None else c.get("ungVien") or c.get("uv")) or [])}
-    return bool(nn) and all(n in uv4 for n in nn)
-
 def nhanh_cua(r):
     nh = [b["nhom"] for b in (r.get("nhanh") or []) if b.get("nhom")]
     if not nh and r.get("dapAnDieuKien"):  # đường thay thế: đọc từ chuỗi "Nếu A → nhóm X; nếu B → nhóm Y"
         nh = re.findall(r"(?:→|->)\s*(?:nhóm\s*)?(\d{4})", r["dapAnDieuKien"])
     return nh
+
+def nap_nhan(c, bc):
+    """Nhãn hiện hành (có thể QT đã sửa) lấy từ bộ chuẩn, không dùng bản chép trong tệp ca-sai."""
+    b = bc.get(c["ca"])
+    if not b: return c
+    c = dict(c); c["nhan"] = b["ketQua"]; c["nhomNhan"] = b["nhom"]; c["nhomBatBuoc"] = b.get("nhomBatBuoc") or b["nhom"]
+    return c
 
 def dat(c, r):
     nhan = c.get("nhan") or c.get("nhanKetQua")
@@ -34,7 +36,8 @@ def dat(c, r):
     if r["ketQua"] != "PHAN_VAN": return False, "CHOT_KHI_PHAI_HOI" if r["ketQua"] == "CHOT" else "BE_TAC"
     nh = nhanh_cua(r)
     trung = {n for n in nh if n in nn}
-    if len(trung) < 2: return False, "NHANH_KHONG_TRUNG_NHAN"
+    bat = c.get("nhomBatBuoc") or nn  # mặc định: các nhánh phải phủ ĐỦ các nhóm trong nhãn
+    if len(trung) < 2 or not set(bat) <= set(nh): return False, "NHANH_KHONG_TRUNG_NHAN"
     if not r.get("chungMinh"): return False, "NHANH_KHONG_CAN_CU"
     return True, "OK"
 
@@ -51,8 +54,13 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("ca_sai"); ap.add_argument("ket_qua")
     ap.add_argument("--ghi"); ap.add_argument("--nguyen-nhan")
+    ap.add_argument("--bo-chuan", default="data/bo-chuan/4so-v1.jsonl")
     A = ap.parse_args()
     cas = json.load(open(A.ca_sai))
+    bc = {}
+    for l in open(A.bo_chuan):
+        d = json.loads(l); bc[d["ca"]] = d
+    cas = [nap_nhan(c, bc) for c in cas]
     kq = {}
     for l in open(A.ket_qua):
         d = json.loads(l); kq[d["ca"]] = d
@@ -67,7 +75,6 @@ if __name__ == "__main__":
             m.update({"heTra": r["ketQua"], "heNhom": r.get("nhom") or nhanh_cua(r), "ungVien": r.get("ungVien"), "lyKhongDat": ly,
                       "dapAnHe": r.get("dapAnDieuKien")})
             m["nguyenNhan"] = nn_tay.get(str(c["ca"])) or nguyen_nhan_so_bo(c, r, ly)
-        m["coNhanTrongUV"] = co_nhan_trong_uv(m, m.get("ungVien"))
         con.append(m)
     dem = collections.Counter(m.get("nguyenNhan") for m in con)
     print(f"Đo {len(cas)} ca: đạt {len(ra)}, còn sai {len(con)}")

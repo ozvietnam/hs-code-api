@@ -10,4 +10,11 @@ Cả bốn ca có chung dấu hiệu: nhãn CHOT ghi "không điều loại tr�
 | 44 | Vỏ khung bộ điều khiển | CHOT 8538 | PHAN_VAN 8538 / 9033 / 7326 | `chuong:90:chu_giai:2b`, `chuong:90:chu_giai:2c`: vỏ của bộ điều khiển tự động thuộc 90.32 đi theo máy (9033) chứ không phải 85.38. Loại bộ điều khiển (PLC/tủ điện 85.37 hay điều khiển tự động 90.32) không có trong mô tả. |
 | 69 | Cân điện tử (cân bàn) | CHOT 8423 | vòng 1: PHAN_VAN 8423 / 9016; vòng 2: CHOT 8423 | `chuong:90:chu_giai:1g`: cân/máy kiểm tra theo nguyên lý cân thuộc 84.23, trừ cân có độ nhạy 5 cg trở lên (9016). Mô tả không có độ nhạy. Hệ dao động giữa hai vòng; ca này đã ra khỏi danh sách ở vòng 2 nhưng đáng xem lại nhãn. |
 
-Ghi chú: 69 đã ra khỏi danh sách theo tiêu chí; ba ca còn lại giữ trong danh sách.
+## QT duyệt (23/11/2026)
+
+- **Ca 37 → PHAN_VAN** (nhóm 9507, 5607, 5404; bắt buộc có nhánh 9507 và 5607): đã làm thành dây câu (gắn lưỡi/chì/phao, sẵn dùng) → 9507; chỉ là dây/cước cuộn hoặc cắt đoạn chưa làm thành dây câu → Phần XI (5404/5607), theo `chuong:95:chu_giai:1c`.
+- **Ca 44 → PHAN_VAN** (8538, 9033): vỏ cho bảng/tủ điều khiển điện 85.37 → 8538; vỏ của bộ điều khiển tự động 90.32 → 9033.
+- **Ca 40 → PHAN_VAN** (8424, 8483, 8484, 4016; bắt buộc có nhánh 8424): bộ phận chỉ dùng cho máy phun 84.24, không phải hàng của nhóm riêng → 8424 (Chú giải 2(b) Phần XVI); nếu bản thân là hàng của nhóm định danh (khớp nối 8483, gioăng 8484/4016) → nhóm đó (2(a)).
+- **Ca 69: GIỮ nhãn CHOT 8423** (cân bàn không thể có độ nhạy 5 cg). Hệ hỏi ca này là hỏi thừa.
+
+Nhãn đã sửa trong `data/bo-chuan/4so-v1.jsonl` kèm trường `suaNhan {boi, ngay, lyDo, truoc}`; trường `nhomBatBuoc` là các nhóm mà nhánh của hệ phải có. `cham.py` nay đọc nhãn từ bộ chuẩn và chấm PHAN_VAN đúng nghĩa: các nhánh của hệ phải phủ đủ `nhomBatBuoc` (mặc định là mọi nhóm trong nhãn) và có ít nhất hai nhánh thuộc nhãn.
