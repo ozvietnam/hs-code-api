@@ -2,7 +2,7 @@
 /**
  * scripts/nap-ban-do-4so.mjs — NẠP bản đồ 4 số đã qua cổng vào data/do-thi/ban-do-4so/<nhóm>.json (nguonLoai AI_NHAP).
  *   node scripts/nap-ban-do-4so.mjs <tep.json> --goi=<goi.json> [--thu] [--ten-mo-hinh=<ten>]
- * Chỉ nạp nhóm XANH (0 lỗi đỏ) và nằm trong gói; nhóm đỏ bị bỏ, in lý do. Bản nạp mang chamCheo=null: cạnh C16 chỉ lên bậc 1 sau chấm chéo
+ * Mục / cạnh có lỗi đỏ bị BỎ, phần còn lại của nhóm vẫn nạp; nhóm chỉ đỏ khi lỗi ở cấp nhóm hoặc không còn mục hồ sơ nào. Bản nạp mang chamCheo=null: cạnh C16 chỉ lên bậc 1 sau chấm chéo
  * (DUYET) — xem QUY-TRINH-BAN-DO-4SO.md. Nạp xong chạy: node scripts/dung-bang-canh.mjs --ghi (commit cùng PR).
  * Mã thoát: 0 · 1 có nhóm đỏ (nhóm xanh vẫn nạp) · 2 dùng sai lệnh.
  */
@@ -24,7 +24,7 @@ const kq = B.kiemBanDo(ban, goi, { daNap: docDaNap() });
 inKetQua(kq);
 const dir = path.join(GOC, 'data/do-thi/ban-do-4so');
 const moi = new Map();
-for (const b of ban) { const h = String(b && b.nhom || '').replace(/\D/g, ''); if (kq.nhomXanh.includes(h)) moi.set(h, b); } // cùng mã ⇒ bản cuối thắng
+for (const h of kq.nhomXanh) moi.set(h, kq.banSach[h]); // bản đã bỏ mục / cạnh lỗi (cùng mã ⇒ bản cuối thắng)
 for (const [h, b] of moi) {
   const ghi = {
     nhom: h, khuon: B.KHUON, nguonLoai: 'AI_NHAP', chamCheo: null,

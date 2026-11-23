@@ -24,7 +24,8 @@ export function docDaNap() {
 export function inKetQua(kq) {
   for (const l of kq.loi) console.log(`✗ ${l.ma} [${l.nhom || '-'}] ${l.muc}: ${l.chiTiet}`);
   for (const v of kq.vang) console.log(`! ${v.ma} [${v.nhom || '-'}] ${v.muc}: ${v.chiTiet}`);
-  console.log(`nhóm xanh: ${kq.nhomXanh.join(', ') || '(không)'} · nhóm đỏ: ${kq.nhomDo.join(', ') || '(không)'} · ${kq.loi.length} lỗi đỏ, ${kq.vang.length} cảnh báo vàng`);
+  const bo = Object.entries(kq.boMuc || {}).filter(([, n]) => n).map(([h, n]) => `${h}(-${n})`).join(", ");
+  console.log(`nhóm xanh: ${kq.nhomXanh.join(", ") || "(không)"} · nhóm đỏ: ${kq.nhomDo.join(", ") || "(không)"} · ${kq.loi.length} lỗi đỏ, ${kq.vang.length} cảnh báo vàng${bo ? ` · bỏ mục lỗi: ${bo}` : ""}`);
 }
 
 const laChinh = process.argv[1] && import.meta.url.endsWith(process.argv[1].replace(/^.*\//, ''));

@@ -48,7 +48,7 @@ Không thêm trường khác. Không viết lời giải thích ngoài khối JS
 
 ### Giới hạn đầu ra và cách nối
 
-Mỗi lượt trả TỐI ĐA 8 nhóm (đầu ra có trần). Còn nhóm chưa soạn thì sau khối JSON thêm đúng một dòng `CON_LAI: <mã>, <mã>, …`; người dùng nhắn "tiếp" thì soạn các nhóm đó, theo cùng khuôn. Soạn hết thì dòng cuối là `HET`. Không bỏ nhóm nào im lặng: nhóm không soạn được thì vẫn có mục với `hoSo` các trục rỗng, `canh: []` và lý do trong `khongChac`.
+Mỗi lượt trả TỐI ĐA 4 nhóm, mỗi nhóm tối đa 6 cạnh và mỗi trục tối đa 4 mục (đầu ra có trần: vòng 1 lượt 8 nhóm bị cắt giữa JSON). Còn nhóm chưa soạn thì sau khối JSON thêm đúng một dòng `CON_LAI: <mã>, <mã>, …`; người dùng nhắn "tiếp" thì soạn các nhóm đó, theo cùng khuôn. Soạn hết thì dòng cuối là `HET`. Không bỏ nhóm nào im lặng: nhóm không soạn được thì vẫn có mục với `hoSo` các trục rỗng, `canh: []` và lý do trong `khongChac`.
 
 ## 2. Các trục của hồ sơ
 

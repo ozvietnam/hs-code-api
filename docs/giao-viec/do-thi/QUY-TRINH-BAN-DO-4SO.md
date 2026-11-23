@@ -16,7 +16,7 @@ Vòng lặp theo skill `studio-loop`: Claude (hoặc người) chỉ đóng gói
 | Chấm chéo | `node scripts/cham-cheo-ban-do-4so.mjs --goi --nhom=…` / `--ap=<kq.json>` | gói chấm chéo 12 nhóm; áp DUYET / SUA / BO |
 | Cạnh trong đồ thị | `lib/do-thi/dung-bang-canh.js` loại **C16 Phân-biệt-theo-nghĩa** | bậc 4 mặc định; bậc 1 chỉ sau chấm chéo |
 
-Cỡ gói (đo 23/11/2026, vòng 1, 30 nhóm): khoảng 640 nghìn ký tự, đã nằm trong mức Studio chạy được với sổ tay 4 số (1–1,6 triệu ký tự / lượt, 7–14 phút). Mốc 150 nghìn ký tự của gói PN6 không áp ở đây vì riêng chú giải chi tiết của 30 nhóm đã ≈ 190 nghìn. Nếu Studio chậm hoặc rỗng lượt: chia đôi gói (15 nhóm) rồi chạy lại. Đầu ra có trần ≈ 65 nghìn token nên khuôn bắt trả ≤ 8 nhóm / lượt và nối bằng `CON_LAI:` + "tiếp".
+Cỡ gói (đo 23/11/2026, vòng 1, 30 nhóm): khoảng 640 nghìn ký tự, đã nằm trong mức Studio chạy được với sổ tay 4 số (1–1,6 triệu ký tự / lượt, 7–14 phút). Mốc 150 nghìn ký tự của gói PN6 không áp ở đây vì riêng chú giải chi tiết của 30 nhóm đã ≈ 190 nghìn. Nếu Studio chậm hoặc rỗng lượt: chia đôi gói (15 nhóm) rồi chạy lại. Đầu ra có trần ≈ 65 nghìn token nên khuôn bắt trả ≤ 4 nhóm / lượt và nối bằng `CON_LAI:` + "tiếp". Bài học vòng 1 (23/11): (1) 8 nhóm / lượt bị cắt giữa JSON; (2) Gemini hay quên dòng `CON_LAI:` — người / autopilot phải tự giữ danh sách nhóm đã soạn, không dựa vào dòng đó; (3) tắt Grounding with Google Search TRƯỚC khi Run, đổi sau lượt đầu không có tác dụng với chat đã chạy (có lượt vẫn kèm Citations web — cổng trích nguyên văn chặn phần đó); (4) cổng bỏ MỤC / CẠNH lỗi, không bỏ cả nhóm.
 
 ## 2. Vòng soạn
 
