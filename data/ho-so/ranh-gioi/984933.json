@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L33-20261111#soat-L33",
-    "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu biểu + 8544.30/42: tầng bộ dây đánh lửa → bộ dây cho xe → cách điện cao su/plastic (chatLieu viTri CACH_DIEN) / Loại khác; dây dẫn khác ≤1000 V (pcl) → đã lắp đầu nối → cáp ắc quy.",
-    "bam": "603043dc3bf7bbf53bd2701bbfe4e60e01ff6a223f0a71baf8582073581b4c25"
+    "phien": "claude-code:ozv-1944#soat-984933",
+    "ngay": "2026-11-22",
+    "ghiChu": "Sửa 5 điểm soat-khac trên PR #1656 (OZV-1944)",
+    "bam": "fc93714a3f79743d5ca2e0940d6519baadd209087bd0f4f5604c14922825d363"
   },
   "dieuKienNut": [
     {
@@ -164,7 +164,11 @@
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
-          "value": "xe thuộc nhóm 87.02, 87.03, 87.04"
+          "value": [
+            "87.02",
+            "87.03",
+            "87.04"
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
