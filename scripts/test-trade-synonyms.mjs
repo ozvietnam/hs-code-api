@@ -1023,6 +1023,62 @@ console.log('\n== Ứng viên cấp nhóm: cộng điểm cho lá khớp lời v
   }
 }
 
+// OZV-2038 — điện trở ống 8×60 · 220V · 150W → 85168090 (đốt nóng), hết lệch 85169040 / dừng 6 số / bẫy 8533
+{
+  const TEN = 'điện trở 8*60 mm, điện áp 220v, công suất 150w';
+  check(
+    'OZV-2038 điện trở 8×60 220V 150W khớp mục dien-tro-dot-nong',
+    lookupTradeTerms(TEN).matches.some((m) => m.entryId === 'dien-tro-dot-nong'),
+  );
+  check(
+    'OZV-2038 điện trở đốt nóng khớp',
+    lookupTradeTerms('điện trở đốt nóng 220V 150W').matches.some((m) => m.entryId === 'dien-tro-dot-nong'),
+  );
+  check(
+    'OZV-2038 không dấu dien tro 8 60 mm vẫn khớp',
+    lookupTradeTerms('dien tro 8 60 mm 220v 150w').matches.some((m) => m.entryId === 'dien-tro-dot-nong'),
+  );
+  for (const q of [
+    'điện trở 10k ohm SMD',
+    'điện trở dán 0402',
+    'điện trở đốt nóng dùng cho thiết bị gia dụng',
+    'điện trở đốt nóng dùng cho lò công nghiệp',
+    'túi sưởi điện có điện trở đốt',
+    'phụ tùng điện trở đốt nóng',
+  ]) {
+    check(
+      `OZV-2038 «${q}» không kích hoạt mục dien-tro-dot-nong`,
+      !(lookupTradeTerms(q).matches || []).some((m) => m.entryId === 'dien-tro-dot-nong'),
+    );
+  }
+  {
+    const m = lookupTradeTerms(TEN).matches.find((x) => x.entryId === 'dien-tro-dot-nong');
+    check(
+      'OZV-2038 ưu tiên 85168090 high + chotSom',
+      (m?.candidates || []).some((c) => (c.hsCode || c.hs) === '85168090' && c.confidence === 'high')
+        && m?.chotSom === true,
+    );
+    check(
+      'OZV-2038 tránh 8533 (mạch) / 851690 (phụ tùng)',
+      (m?.avoid || []).some((a) => String(a.prefix) === '8533')
+        && (m?.avoid || []).some((a) => String(a.prefix) === '851690'),
+    );
+  }
+  {
+    const r = searchCandidates(TEN, { topCandidates: 5 });
+    check(
+      'OZV-2038 search top có 85168090',
+      r.some((c) => c.hsCode === '85168090'),
+      r.map((c) => c.hsCode).join(','),
+    );
+    check(
+      'OZV-2038 search top không còn 85331010 / 85169040 (bẫy mạch / phụ tùng)',
+      r.every((c) => c.hsCode !== '85331010' && c.hsCode !== '85169040'),
+      r.map((c) => c.hsCode).join(','),
+    );
+  }
+}
+
 console.log('\n== Thống kê ==');
 {
   const s = tradeTermStats();

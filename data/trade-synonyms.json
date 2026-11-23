@@ -4360,7 +4360,98 @@
    "gir": "GIR 1",
    "basis": "RULE_TABLE",
    "sourceVi": "Chú giải nhóm 85.16 (data/chu-giai-heading.json): loại trừ chăn sưởi điện, đệm giường, đệm chân và thiết bị làm ấm dùng cho người. Chú giải 63.01: chăn làm nóng bằng điện thuộc nhóm này. Biểu thuế 63011000 «Chăn điện» (lá duy nhất 6301.10). conflicts.json 85162900↔63011000: sưởi không gian ≠ sưởi ấm cá nhân. OZV-2015: thực địa 23/11 «túi sưởi điện gia dụng» · 1 lượt · dừng 6 số; search top 85362020; không có mục từ điển."
+  },
+  {
+   "id": "dien-tro-dot-nong",
+   "titleVi": "Điện trở đốt nóng bằng điện (ống/cartridge, không phải điện trở mạch) — 8516.80.90",
+   "terms": [
+    "điện trở 8 60",
+    "dien tro 8 60",
+    "điện trở 8x60",
+    "điện trở đốt nóng",
+    "dien tro dot nong",
+    "điện trở đốt",
+    "dien tro dot",
+    "điện trở nhiệt",
+    "dien tro nhiet",
+    "điện trở sấy",
+    "dien tro say",
+    "điện trở ống",
+    "dien tro ong",
+    "cartridge heater",
+    "heating resistor",
+    "electric heating resistor",
+    "heating cartridge"
+   ],
+   "excludeIfAny": [
+    "ohm",
+    "Ω",
+    "smd",
+    "chip resistor",
+    "điện trở dán",
+    "dien tro dan",
+    "chiết áp",
+    "chiet ap",
+    "biến trở",
+    "bien tro",
+    "potentiometer",
+    "rheostat",
+    "trở kháng",
+    "tro khang",
+    "gia dụng",
+    "gia dung",
+    "lò công nghiệp",
+    "lo cong nghiep",
+    "đúc chữ",
+    "duc chu",
+    "sắp chữ",
+    "sap chu",
+    "túi sưởi",
+    "tui suoi",
+    "chăn điện",
+    "chan dien",
+    "đệm sưởi",
+    "dem suoi",
+    "phụ tùng điện trở",
+    "phu tung dien tro",
+    "parts of heating",
+    "của điện trở đốt"
+   ],
+   "excludeReasonVi": "Điện trở mạch (Ohm/SMD/dán/chiết áp) thuộc nhóm 85.33 — chú giải 85.33 loại trừ điện trở đốt nóng. Dùng cho thiết bị gia dụng → 85168030; lò công nghiệp / máy đúc·sắp chữ → 85168010. Túi/chăn/đệm sưởi dùng cho người → 63.01. Phụ tùng của điện trở đốt → 8516.90.",
+   "candidates": [
+    {
+     "hs": "85168090",
+     "whenVi": "Điện trở đốt nóng bằng điện (ống cartridge / phần tử phát nhiệt) hoàn chỉnh, không ghi dùng cho thiết bị gia dụng (85168030) cũng không ghi máy đúc·sắp chữ hay lò công nghiệp (85168010) → lá «Loại khác» 8516.80.90.",
+     "confidence": "high"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "8533",
+     "whyVi": "Nhóm 85.33 là điện trở mạch (hạn chế dòng); chú giải loại trừ điện trở đốt nóng — chuyển 85.16.80. Search thô «điện trở»+mm/V/W kéo 8533 là bẫy."
+    },
+    {
+     "prefix": "851690",
+     "whyVi": "8516.90 là bộ phận/phụ tùng; hàng là chính điện trở đốt hoàn chỉnh thuộc 8516.80. Prod 24/11 gợi ý 85169040 (của điện trở đốt máy đúc chữ) khi khách mô tả điện trở ống 8×60 · 220V · 150W là lệch lá."
+    },
+    {
+     "prefix": "8514",
+     "whyVi": "8514 là lò/thiết bị đun nóng công nghiệp hoàn chỉnh — không phải linh kiện điện trở đốt."
+    },
+    {
+     "prefix": "6301",
+     "whyVi": "6301 là chăn/đệm sưởi dùng cho người; điện trở ống đốt là linh kiện 8516.80."
+    }
+   ],
+   "askVi": [
+    "Hàng là điện trở ĐỐT NÓNG (phát nhiệt/sấy, dạng ống cartridge) chứ không phải điện trở mạch tính bằng Ohm?",
+    "Dùng cho thiết bị gia dụng (→ 85168030), lò công nghiệp / máy đúc·sắp chữ (→ 85168010), hay máy/khuôn công nghiệp khác (→ 85168090)?"
+   ],
+   "chotSom": true,
+   "gir": "GIR 1 + GIR 6",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế 85168010/030/090 (điện trở đốt nóng bằng điện). Chú giải nhóm 85.33 loại trừ heating resistors → 85.16. conflicts.json 85168090↔8533. OZV-2038: thực địa 24/11 «điện trở 8*60 mm, điện áp 220v, công suất 150w» · 2 lượt · 1 ra 8 số lệch 85169040 / 1 dừng 6 số; search top 8533; không có mục từ điển."
   }
  ],
- "updatedAt": "2026-11-23"
+ "updatedAt": "2026-11-24"
 }
