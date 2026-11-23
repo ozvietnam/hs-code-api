@@ -312,5 +312,46 @@ const ketQuaSong = (raw = VAN) => ketQuaGia('848180', raw, {}, ['848120']);
   check('động cơ (dựng lại lượt thật 21/11 18:27, ra 848120): BẬT → câu theo sổ, không hỏi phân nhóm 84.81, không hỏi van trượt hơi nước, có đường kính trong, không còn "điện áp cuộn dây"', bat.out.results?.[0]?.hs === '848120' && bat.out.nextAction?.canCuCauHoi === 'so-tay' && !qs.some((q) => q.loai === 'PHAN_NHOM_6' || q.loai === 'PHAN_BIET_NHOM') && qs.some((q) => /[Đđ]ường kính trong/.test(q.questionVi)) && !qs.some((q) => /điện áp cuộn dây|Van trượt/i.test(q.questionVi)) && qs.length <= 4, { hs: bat.out.results?.[0]?.hs, cc: bat.out.nextAction?.canCuCauHoi, qs: qs.map((q) => q.questionVi), ly: bat.out.hoiTheoSoTay });
 }
 
+// 8) OZV-2037: ca khách thực địa «bộ tản nhiệt, model 65k-50l, chất liệu hợp kim» (dừng 870891, ứng viên 8708 / 8419 / 7604)
+//    sinh đủ câu phân biệt nhóm 4 số có căn cứ chú giải (87.08 ↔ 84.19 và 76.04 ↔ 87.08) + câu dòng 8 số 870891, kèm ca ngược.
+{
+  const moTa = 'bộ tản nhiệt, model 65k-50l, chất liệu hợp kim';
+  const out65k = {
+    status: 'NEED_FACTS',
+    results: [{ hs: '870891', confidence: 45, hsLevel: 6 }],
+    nextAction: {
+      type: 'ASK_USER',
+      questions: [
+        { attribute: null, questionVi: 'Hàng được lắp cho xe cơ giới, máy công nghiệp hay thiết bị sưởi/làm mát cụ thể' },
+        { attribute: null, questionVi: 'Hàng là bộ phận/linh kiện của máy khác hay là hàng hoàn chỉnh?' },
+      ],
+    },
+    dossier: {
+      product: { nameVi: 'Bộ tản nhiệt', material: 'hợp kim', model: '65K-50L' },
+      hypotheses: [
+        { chapter: '87', heading4: '8708', subheading6: '870891', confidence: 45 },
+        { chapter: '84', heading4: '8419', subheading6: '841950', confidence: 35 },
+        { chapter: '76', heading4: '7604', subheading6: '760429', confidence: 15 },
+      ],
+    },
+    missingStructured: [],
+  };
+  const kq65k = await voi('on', () => H.apDung(out65k, { rawAttrs: { tenHang: moTa } }));
+  const qs65k = kq65k.nextAction?.questions || [];
+  const pb65k = qs65k.filter((q) => q.loai === 'PHAN_BIET_NHOM');
+  check('OZV-2037 (thuận): bộ tản nhiệt 65k-50l dừng 870891 → có 2 câu PHAN_BIET_NHOM (87.08↔84.19 và 76.04↔87.08) + 1 câu DONG_8 có đủ canCu/nguon/trich',
+    kq65k.nextAction?.canCuCauHoi === 'so-tay'
+    && pb65k.length === 2
+    && pb65k.some((q) => q.canCu === 'so-tay' && q.nguon === 'phan87.phan' && /84\.19/.test(q.questionVi))
+    && pb65k.some((q) => q.canCu === 'so-tay' && q.nguon === 'phan76.phan' && /76\.04/.test(q.questionVi))
+    && qs65k.some((q) => q.loai === 'DONG_8' && q.canCu === 'ranh-gioi-pn6' && q.nguon === 'tieuDe.870891'),
+    qs65k);
+
+  const pbNguoc = H.cauPhanBietNhom('8708', ['8708', '8419', '7604'], 'má phanh đĩa trước dùng cho xe ô tô con');
+  check('OZV-2037 (ngược): mô tả "má phanh đĩa trước" không chạm "bộ tản nhiệt" → không hỏi oan câu phân biệt bộ tản nhiệt',
+    !pbNguoc.some((q) => /Bộ tản nhiệt/i.test(q.questionVi)),
+    pbNguoc);
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
