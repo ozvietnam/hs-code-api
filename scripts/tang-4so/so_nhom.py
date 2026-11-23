@@ -6,11 +6,12 @@
 
 Chỉ đo các ca trong --ca-sai (luật đo: cấm chạy lại cả bộ). Mỗi ca tối đa 2 lượt gọi LLM mạnh.
 Hồ sơ hàng dùng lại từ --hh (hh_agy.py tạo), không chạy lại."""
-import argparse, gzip, json, os, re, sys, urllib.request, importlib.util
+import argparse, collections, gzip, json, os, re, sys, urllib.request, importlib.util
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-from dieu_khoan import DieuKhoan, bo_dau
+from dieu_khoan import DieuKhoan, bo_dau, SO_LA_MA as SO_LA_MA_P
+from do_thi_cap import DoThiCap, khoi_ban_do, _hh_tu as _tu_chinh, so_khop as _so_khop
 import agy
 
 ap = argparse.ArgumentParser()
@@ -25,7 +26,12 @@ ap.add_argument("--vong", type=int, default=1)
 ap.add_argument("--llm-nha", default=os.environ.get("LLM_NHA", "http://192.168.1.68:11434/v1/chat/completions"))
 ap.add_argument("--toi-da-uv", type=int, default=22)
 ap.add_argument("--song-song", type=int, default=3)
+ap.add_argument("--nao", choices=["agy", "tep"], default="agy", help="agy: gọi LLM mạnh; tep: ghi prompt ra tệp rồi thoát, lần sau đọc đáp án từ tệp")
+ap.add_argument("--thu-muc", help="thư mục D cho --nao tep: D/hoi/<ca>-<luot>.txt, D/dap/<ca>-<luot>.json, D/meta/<ca>-<luot>.json")
+ap.add_argument("--gioi-han-kb", type=int, default=60)
 ap.add_argument("--phan-bien", action="store_true", help="lượt kiểm phản biện giả định ẩn trước khi CHOT (mới viết, chưa đo bằng LLM thật)")
+ap.add_argument("--ban-do", action="store_true", help="(mặc định tắt) thêm khối BẢN ĐỒ QUAN HỆ (data/do-thi/ban-do-4so) vào hồ sơ đồ thị; chỉ có tác dụng khi --ho-so do-thi")
+ap.add_argument("--ho-so", choices=["cu", "do-thi"], default="cu", help="cu: khối điều khoản nguyên Chương/Phần (đường cũ); do-thi: chỉ khoản nối giữa các ứng viên + mở rộng ứng viên theo cạnh (scripts/tang-4so/do_thi_cap.py)")
 A = ap.parse_args()
 REPO = A.repo
 P = lambda p: p if os.path.isabs(p) else os.path.join(REPO, p)
@@ -37,6 +43,7 @@ for l in gzip.open(f"{REPO}/data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz", "rt"
     if len(m) >= 4 and (d.get("soChuSo") == 4 or m[:4] not in TEN): TEN[m[:4]] = d.get("moTaVi", "")
 CGN = json.load(open(f"{REPO}/data/chu-giai-heading.json"))
 DK = DieuKhoan(REPO)
+DT = DoThiCap(REPO, ten=TEN) if A.ho_so == "do-thi" else None
 _sp = importlib.util.spec_from_file_location("ttl", os.path.join(HERE, "tim_tong_luc.py"))
 ttl = importlib.util.module_from_spec(_sp); _sp.loader.exec_module(ttl)
 IDX = ttl.ChiMuc(REPO)
@@ -79,7 +86,7 @@ if os.path.exists(P(A.cum)):
 
 def llm_nha(msg, mx=3000):
     """Máy nhà: chỉ việc phụ (tách cụm từ). Không sẵn thì trả None, người gọi dùng đường thay thế."""
-    b = {"model": "gpt-oss:120b", "max_tokens": mx, "reasoning_effort": "low", "response_format": {"type": "json_object"},
+    b = {"model": os.environ.get("LLM_NHA_MODEL", "gpt-oss:120b"), "max_tokens": mx, "reasoning_effort": "low", "response_format": {"type": "json_object"},
          "messages": [{"role": "user", "content": msg}]}
     try:
         r = json.load(urllib.request.urlopen(urllib.request.Request(A.llm_nha, json.dumps(b).encode(),
@@ -115,6 +122,7 @@ def gom_ung_vien(ca, mo, h, bc):
     tu = tu_khoa(mo, h.get("tenDung"), h.get("banChat"), h.get("coChe"), h.get("dungChoViecGi"))
     cum = lay_cum(mo, h, bc)
     tim_het = [n for n, _, _ in IDX.tim(cum, top=200)]  # tính MỘT lần cho mỗi ca
+    ca["_tim"] = tim_het[:8]
     uv = []
     # ứng viên đã gom ở vòng trước (gồm đề xuất AI) giữ nguyên và đứng đầu: không bỏ nhóm đã có (lỗi vòng 1: cắt ở 16 làm rớt nhóm đúng)
     for x in ca.get("ungVien") or []:
@@ -144,33 +152,110 @@ def gom_ung_vien(ca, mo, h, bc):
         for n in maychu:
             if n not in uv and n not in them: them.append(n)
     uv = (uv + them)[: A.toi_da_uv]
+    if DT:  # đi 1 bước theo cạnh LOAI_TRU / phân biệt: nhóm bị sót tự lộ ra; KHÔNG cắt vì độ dài
+        uv, ca["_dt_nguon"] = DT.mo_rong(uv, h)
+        ca["_dt_goc"] = len(uv) - len(ca["_dt_nguon"])
     return uv, tu
 
 # ---------------- hồ sơ từng nhóm ----------------
-def ho_so_nhom(n, tu, cap_cgn=1400):
+def ho_so_nhom(n, tu, cap_cgn=1400, day_du=True):
     st = so_tay(n)
     cgn = CGN.get(n) or {}
     cgn_txt = cgn.get("nhom") if isinstance(cgn, dict) else str(cgn)
-    vao = [f"- {x.get('fact','')} {x.get('op','')} {x.get('value','')} (trích: {str(x.get('trich',''))[:140]})" for x in (st.get("dieuKienVao") or [])[:6] if isinstance(x, dict)]
+    vao = [f"- {x.get('fact','')} {x.get('op','')} {x.get('value','')} (trích: {str(x.get('trich',''))[:140]})" for x in (st.get("dieuKienVao") or [])[:6] if isinstance(x, dict)] if day_du else []
     return (f"### Nhóm {n}: {TEN.get(n,'?')}\n[Chú giải chi tiết {n}] {doan_khop(cgn_txt, tu, cap_cgn)}\n"
             + ("[Sổ tay – điều kiện vào nhóm (trái điều kiện thì LOẠI)]\n" + "\n".join(vao) + "\n" if vao else ""))
 
+def ho_so_nhom_gon(n, h, uv, muc):
+    """Hồ sơ gọn của một nhóm (chế độ đồ thị). muc="day_du": tên nhóm + chú giải chi tiết chỉ giữ đoạn đầu (phạm vi), đoạn có chữ của hàng (>= 2 từ khoá) và đoạn loại trừ/trỏ
+    sang ứng viên khác + điều kiện vào nhóm; muc="gon": tên + đoạn phạm vi (nhóm đáng xét còn lại, nhóm do đồ thị kéo thêm; khoản nối nằm ở khối khoản); muc="ten": chỉ tên nhóm."""
+    cgn = CGN.get(n) or {}
+    txt = cgn.get("nhom") if isinstance(cgn, dict) else str(cgn)
+    doan = [p.strip() for p in re.split(r"\n\s*\n", txt or "") if p.strip()]
+    ten = TEN.get(n, "?")
+    ra = [f"### Nhóm {n}: {ten if muc == 'day_du' else ten[:200]}"]
+    if muc != "ten" and doan: ra.append("[Phạm vi] " + re.sub(r"\s+", " ", doan[0])[: 400 if muc == "day_du" else 220])
+    if muc == "day_du":
+        tu = _tu_chinh(h)
+        dau = [f"{m[:2]}.{m[2:]}" for m in uv if m != n]
+        giu = []
+        for p in doan[1:]:
+            tro = any(d in p for d in dau) and re.search(r"không bao gồm|loại trừ|trừ |ngoại trừ|khác với", p, re.I)
+            if tro or _so_khop(p, tu) >= 2: giu.append(re.sub(r"\s+", " ", p)[:300])
+            if len(giu) >= 3: break
+        if giu: ra.append("[Đoạn liên quan] " + " | ".join(giu))
+        st = so_tay(n)
+        vao = [f"- {x.get('fact','')} {x.get('op','')} {x.get('value','')} (trích: {str(x.get('trich',''))[:90]})" for x in (st.get("dieuKienVao") or [])[:3] if isinstance(x, dict)]
+        if vao: ra.append("[Sổ tay – điều kiện vào nhóm (trái điều kiện thì LOẠI)]\n" + "\n".join(vao))
+    return "\n".join(ra) + "\n"
+
 GIOI_HAN_BYTE = 115000  # argv của Linux tối đa 128 KB cho một đối số
+_KHOI_CACHE = {}
 
-def dung_prompt(ca, mo, h, uv, tu):
-    for cap_ch, cap_cgn in ((7000, 1400), (5000, 1000), (3500, 700), (2500, 450)):
-        p = _dung_prompt(ca, mo, h, uv, tu, cap_ch, cap_cgn)
-        if len(p[0].encode()) <= GIOI_HAN_BYTE: return p
-    return p
+def _cỡ_chương(ch, tu):
+    k = (ch, tuple(tu))
+    if k not in _KHOI_CACHE: _KHOI_CACHE[k] = len(DK.khoi_chuong(ch, tu)[0].encode())
+    return _KHOI_CACHE[k]
 
-def _dung_prompt(ca, mo, h, uv, tu, cap_ch, cap_cgn):
+def dung_prompt(ca, mo, h, uv, tu, da_loai=None):
+    """Giữ NGUYÊN VĂN mọi điều khoản đang dùng (không cắt). Quá giới hạn thì giảm chú giải chi tiết, rồi bỏ bớt ứng viên xếp sau
+    (ưu tiên bỏ nhóm là ứng viên duy nhất của một Chương có khối điều khoản lớn). Trả (prompt, ids, text_all, uv đã dùng, nhóm bị bỏ)."""
+    gh = A.gioi_han_kb * 1024 if A.nao == "tep" else GIOI_HAN_BYTE
+    uv, bo = list(uv), []
+    if DT:  # hồ sơ đi theo đồ thị: không cắt ứng viên vì độ dài; quá 40 KB thì báo
+        p = _dung_prompt(ca, mo, h, uv, tu, None, 1400, da_loai)
+        if len(p[0].encode()) > 40 * 1024: print(f"BAO: ca {ca.get('ca')} hồ sơ {len(p[0].encode()) // 1024} KB > 40 KB (không cắt)", file=sys.stderr)
+        return (*p, uv, bo)
+    while True:
+        for cap_cgn in (1400, 900, 500):
+            p = _dung_prompt(ca, mo, h, uv, tu, None, cap_cgn, da_loai)
+            if len(p[0].encode()) <= gh: return (*p, uv, bo)
+        if len(uv) <= 3: return (*p, uv, bo)
+        def bac(n):  # số lớn = bỏ trước; nhóm trọng tài vừa nêu (nhomThieu) bỏ SAU CÙNG
+            return -1 if n in (ca.get("_moi") or []) else 0 if n in (ca.get("uuTien") or []) else 1 if n in (ca.get("_tim") or []) else 2
+        dem = collections.Counter(n[:2] for n in uv)
+        tang = max(bac(n) for n in uv)
+        ds = [n for n in uv if bac(n) == tang]
+        x = max(ds, key=lambda n: ((dem[n[:2]] == 1) * _cỡ_chương(n[:2], tu), uv.index(n)))
+        uv.remove(x); bo.append(x)
+
+def _dung_prompt(ca, mo, h, uv, tu, cap_ch, cap_cgn, da_loai=None):
     chuong = sorted({n[:2] for n in uv})
+    lq = DK.lien_quan(uv)
     khoi, ids = [], set()
+    if DT:
+        nguon = {n: v for n, v in (ca.get("_dt_nguon") or {}).items() if n in uv}
+        ks = DT.dieu_khoan_tach(uv, h, nguon)
+        ids = {k["id"] for k in ks}
+        khoi = ["=== CÁC KHOẢN LUẬT NỐI GIỮA CÁC NHÓM ỨNG VIÊN (nguyên văn; mỗi khoản kèm cạnh dẫn tới: A->B là khoản của Chương/Phần của A nói tới B; A<->B là cạnh phân biệt/loại trừ giữa A và B) ===\n" + DT.khoi_van_ban(ks)]
+        chuong = []
     for ch in chuong:
-        t, i = DK.khoi(ch, tu, cap=cap_ch); khoi.append(f"=== ĐIỀU KHOẢN HIỆU LỰC CHO NHÓM THUỘC CHƯƠNG {ch} ===\n{t}"); ids |= set(i)
+        t, i = DK.khoi_chuong(ch, tu, lq); khoi.append(f"=== ĐIỀU KHOẢN CỦA CHƯƠNG {ch} (áp cho nhóm thuộc Chương {ch}) ===\n{t}"); ids |= set(i)
+    for gan in sorted({DK._phan_gan(ch) for ch in chuong} - {""}):  # điều khoản Phần: ghi một lần cho mọi Chương của Phần
+        cs = [ch for ch in chuong if DK._phan_gan(ch) == gan]
+        t, i = DK.khoi_phan(gan, tu, lq); khoi.append(f"=== ĐIỀU KHOẢN CỦA PHẦN {SO_LA_MA_P.get(gan, gan)} (áp cho mọi nhóm thuộc Chương {', '.join(cs)}) ===\n{t}"); ids |= set(i)
     cg2 = DK.cg2_khoi() if any(DK.la_phan_xvi(c) for c in chuong) else ""
-    ho_so = "\n".join(ho_so_nhom(n, tu, cap_cgn) for n in uv)
+    if DT:  # hồ sơ gọn: nhóm đầy đủ = 6 nhóm khớp hàng nhất + 3 ứng viên gốc đầu; còn lại tên + phạm vi
+        tt = DT.nhom_day_du(uv, h, [n for n in uv if n not in (ca.get("_dt_nguon") or {})])
+        nguon_dt = ca.get("_dt_nguon") or {}
+        dx = DT.nhom_dang_xet(uv, h, nguon_dt, [n for n in uv if n not in nguon_dt])
+        ho_so = "\n".join(ho_so_nhom_gon(n, h, uv, "day_du" if n in tt else "gon" if (n in dx or n in nguon_dt) else "ten") for n in uv)
+        if A.ban_do:
+            kb = khoi_ban_do(REPO, uv)
+            if kb: ho_so += "\n\n" + kb
+    else:
+        ho_so = "\n".join(ho_so_nhom(n, tu, cap_cgn) for n in uv)
     bc = {k: h.get(k) for k in ("tenDung", "banChat", "dangVatLy", "dungChoViecGi", "coChe", "oDau", "aiDung", "laBoPhanCua", "tenKhac", "canXacNhan") if h.get(k)}
+    da_loai_txt = ""
+    vang = {n: x for n, x in (da_loai or {}).items() if n not in uv}  # nhóm đã có kết luận ở lượt 1 mà không được mở hồ sơ ở lượt này
+    if vang:
+        def dong(n, x):
+            cc = ', '.join(x.get('dieuKhoan') or []) or '(tên nhóm/chú giải chi tiết)'
+            tr = re.sub(chr(10), ' ', str(x.get('trich') or ''))[:200]
+            if x.get('ketLuan') == 'LOAI': return f"- {n} {TEN.get(n,'')[:70]} | đã loại, căn cứ: {cc} | {tr}"
+            return f"- {n} {TEN.get(n,'')[:70]} | lượt 1 kết luận {x.get('ketLuan')} (điều kiện vào: {x.get('dieuKienVao')}); không đủ chỗ cho hồ sơ, giữ nguyên kết luận lượt 1"
+        da_loai_txt = ("\n\nNHÓM ĐÃ CÓ KẾT LUẬN Ở LƯỢT 1 (không mở hồ sơ ở lượt này; KHÔNG xét lại, KHÔNG đưa vào \"xet\", hệ giữ nguyên kết luận):\n"
+                       + "\n".join(dong(n, x) for n, x in vang.items()))
     text_all = "\n".join(khoi) + "\n" + ho_so + "\n" + cg2
     prompt = (
         "Bạn là chuyên gia phân loại HS Việt Nam. CHỈ xét tầng NHÓM 4 số, đúng trình tự ADR-0004 (6 Quy tắc tổng quát):\n"
@@ -186,7 +271,7 @@ def _dung_prompt(ca, mo, h, uv, tu, cap_ch, cap_cgn):
         "Không ghi dữ kiện chỉ ảnh hưởng thuế suất, thương hiệu, model, kích thước; không ghi khi hồ sơ đã nêu rõ. Đừng chốt chỉ vì chọn giả định dễ nhất cho dữ kiện còn thiếu.\n"
         "6) Điều loại trừ chỉ áp khi hàng thực sự là thứ mà điều đó gọi tên và nhóm đích có mô tả khớp hàng; nhóm đích không gọi đúng hàng thì điều loại trừ KHÔNG áp.\n\n"
         f"HÀNG: \"{mo}\"\nBẢN CHẤT (hồ sơ hàng): {json.dumps(bc, ensure_ascii=False)}\n\n"
-        + "\n".join(khoi) + ("\n\n" + cg2 if cg2 else "") + "\n\nHỒ SƠ CÁC NHÓM ỨNG VIÊN:\n" + ho_so +
+        + "\n".join(khoi) + ("\n\n" + cg2 if cg2 else "") + "\n\nHỒ SƠ CÁC NHÓM ỨNG VIÊN:\n" + ho_so + da_loai_txt +
         "\n\nTrả JSON thuần (không giải thích ngoài JSON):\n"
         "{\"xet\": [{\"nhom\": \"xxxx\", \"ketLuan\": \"KHOP|LOAI|CHUA_RO\", \"dieuKhoan\": [\"id điều khoản áp dụng, đúng số hiệu ở trên\"], "
         "\"trich\": \"trích nguyên văn ≤200 chữ làm căn cứ (điều khoản hoặc tên nhóm/chú giải chi tiết)\", "
@@ -283,7 +368,26 @@ def hau_xu_ly(kq, uv, ids, text_all, h):
 
 
 # ---------------- phản biện: kiểm giả định trước khi CHỐT ----------------
-def phan_bien(mo, h, r, uv, ids, text_all, kq):
+class ChoDap(Exception):
+    pass
+
+def hoi(prompt, ca, luot, meta=None):
+    """Một lượt hỏi mô hình. --nao agy: gọi agy. --nao tep: có D/dap/<ca>-<luot>.json thì đọc, chưa có thì ghi D/hoi/<ca>-<luot>.txt và báo chờ."""
+    prompt = re.sub(r"[\ufffd\x00-\x08\x0b\x0c\x0e-\x1f\ud800-\udfff]", "", prompt)  # ký tự hỏng/điều khiển không đi vào prompt
+    if A.nao == "agy": return agy.goi(prompt, ca=ca, vong=A.vong)
+    D = A.thu_muc
+    for sub in ("hoi", "dap", "meta"): os.makedirs(f"{D}/{sub}", exist_ok=True)
+    dap = f"{D}/dap/{ca}-{luot}.json"
+    if os.path.exists(dap): return open(dap).read()
+    duong = f"{D}/hoi/{ca}-{luot}.txt"
+    with open(duong, "w", encoding="utf-8", newline="") as f: f.write(prompt)
+    tho = open(duong, "rb").read()
+    tho.decode("utf-8")  # nổ nếu tệp không phải UTF-8
+    assert tho == prompt.encode("utf-8")
+    json.dump({"ca": ca, "luot": luot, "byte": len(tho), "utf8": True, **(meta or {})}, open(f"{D}/meta/{ca}-{luot}.json", "w", encoding="utf-8"), ensure_ascii=False)
+    raise ChoDap(f"{ca}-{luot}")
+
+def phan_bien(mo, h, r, uv, ids, text_all, kq, luot=2):
     """Lượt kiểm phản biện cho kết quả CHOT. Trả (danh sách mục hợp lệ, thô). Mục hợp lệ: nhóm Y khác X, giả định không có trong hồ sơ
     (hoặc trích hồ sơ không kiểm được), có căn cứ luật thật, và có đặc điểm quan sát được dẫn sang Y."""
     X = r["nhom"]
@@ -294,7 +398,7 @@ def phan_bien(mo, h, r, uv, ids, text_all, kq):
         if not x: continue
         bang.append(f"- {n} {TEN.get(n,'')[:70]} | {x.get('ketLuan')} | điều kiện vào: {x.get('dieuKienVao')} | lý do: {x.get('duKienQuyetDinh')} | điều khoản: {','.join(x.get('dieuKhoan') or [])}")
     dan = sorted({i for x in r["xet"].values() for i in (x.get("dieuKhoan") or [])})
-    van = "\n".join(f"[{i}] {re.sub(chr(10), ' ', DK.theo_id[i]['nguyenVan'])[:350]}" for i in dan if i in DK.theo_id)
+    van = "\n".join(f"[{i}] {re.sub(chr(10), ' ', DK.theo_id[i]['nguyenVan'])}" for i in dan if i in DK.theo_id)
     prompt = (
         "Bạn là kiểm toán viên phân loại HS. Hệ vừa CHỐT nhóm %s cho hàng dưới đây. Luật PHẢI HỎI, KHÔNG ĐOÁN: chỉ được chốt khi mọi dữ kiện mà chữ luật dùng để tách nhóm "
         "đã có TRONG HỒ SƠ HÀNG. Hãy tìm GIẢ ĐỊNH ẨN: chỗ hệ đã loại nhóm khác (hoặc chọn %s) dựa trên điều 'hàng là ...' mà hồ sơ KHÔNG nêu.\n\n"
@@ -306,7 +410,7 @@ def phan_bien(mo, h, r, uv, ids, text_all, kq):
         "\"trichHoSo\": \"trích nguyên văn hồ sơ nếu hoSoCoNeu\", \"neuKhac\": \"đặc điểm quan sát được nếu giả định sai → hàng vào Y\", \"trichLuat\": \"trích nguyên văn chữ luật tách hai nhóm\", "
         "\"canCu\": [\"id điều khoản nếu có\"]}]} (để [] nếu không có giả định ẩn). KHÔNG dùng công cụ, không tìm web: trả JSON ngay."
     ) % (X, X, mo, json.dumps(bc, ensure_ascii=False), "\n".join(bang), van or "(không có)", X, X)
-    resp = agy.json_tu_chuoi(agy.goi(prompt, ca=r.get("ca"), vong=A.vong))
+    resp = agy.json_tu_chuoi(hoi(prompt, r.get("ca"), luot, {"loai": "phan-bien", "ungVien": uv}))
     ho_so_txt = json.dumps(bc, ensure_ascii=False)
     hop_le = []
     for e in ((resp or {}).get("phanBien") or []):
@@ -326,54 +430,78 @@ def main():
     for l in open(P(A.bo_chuan)):
         d = json.loads(l); bc[d["ca"]] = d
     cas = json.load(open(P(A.ca_sai)))
-    cu = {}
+    cu, uu = {}, {}
     for f in A.uv_cu:
         txt = open(P(f)).read().strip()
         rows = json.loads(txt) if txt.startswith("[") else [json.loads(l) for l in txt.splitlines() if l.strip()]
         for d in rows:
+            for n, x in (d.get("xet") or {}).items():  # nhóm mô hình từng cho là KHOP/CHUA_RO: ưu tiên giữ (bằng chứng, không phải nhãn)
+                if x.get("ketLuan") in ("KHOP", "CHUA_RO"): uu.setdefault(d["ca"], []).append(n)
             for n in d.get("ungVien") or []: cu.setdefault(d["ca"], [])
             for n in d.get("ungVien") or []:
                 if n not in cu[d["ca"]]: cu[d["ca"]].append(n)
     for c in cas:
         c["ungVien"] = list(dict.fromkeys((c.get("ungVien") or []) + cu.get(c["ca"], [])))
+        c["uuTien"] = list(dict.fromkeys(uu.get(c["ca"], [])))
     da = set()
     if os.path.exists(A.ra):
         for l in open(A.ra):
             try: da.add(json.loads(l)["ca"])
             except Exception: pass
     import threading, concurrent.futures as cf
-    khoa = threading.Lock(); dung = threading.Event()
+    khoa = threading.Lock(); dung = threading.Event(); cho = []
 
     def xu_ly(ca):
         if dung.is_set(): return
         mo = chuan(ca["moTa"]); h = HH.get(mo, {})
         with khoa: uv, tu = gom_ung_vien(ca, mo, h, bc)
         best, luot, loi_nhac = None, 0, ""
+        lan1, da_loai, prev = None, {}, None
+        ca["_moi"] = []
         try:
             for lan in range(2):
-                prompt, ids, text_all = dung_prompt(ca, mo, h, uv, tu)
+                prompt, ids, text_all, uv, bo = dung_prompt(ca, mo, h, uv, tu, da_loai)
+                day_du = prompt + loi_nhac
+                if day_du == prev: break  # không bao giờ hỏi lại đúng nội dung đã hỏi
+                loai_luot = "mo-rong" if (lan == 1 and ca["_moi"]) else "phan-xu" if not loi_nhac else "phan-xu-lai"
                 luot += 1
-                kq = agy.json_tu_chuoi(agy.goi(prompt + loi_nhac, ca=ca["ca"], vong=A.vong))
+                kq = agy.json_tu_chuoi(hoi(day_du, ca["ca"], luot, {"loai": loai_luot, "ungVien": uv, "daBo": bo, "nhomMoi": ca["_moi"], "daLoai": list(da_loai)}))
+                prev = day_du
                 if not (kq and kq.get("xet")):
                     loi_nhac = "\n\nLƯU Ý: lần trả lời trước trống hoặc không phải JSON hợp lệ theo mẫu. Đừng gọi công cụ nào. Trả lại ĐÚNG mẫu JSON."
                     continue
                 best = (kq, list(uv), ids, text_all)
-                # tìm trước, đoán sau: LLM nêu nhóm còn thiếu trong ứng viên -> mở rộng danh sách, lượt 2 mở hồ sơ đầy đủ cho nhóm đó
+                # tìm trước, đoán sau: nhóm trọng tài nêu thêm mà lượt này CHƯA được xem (kể cả nhóm đã bị cắt vì giới hạn KB) -> lượt mở rộng
                 moi = [n for n in (nhom_hop_le(x) for x in (kq.get("nhomThieu") or [])[:4]) if n and n not in uv]
                 if lan == 0 and moi:
-                    giu = [n for n in uv if (kq["xet"] and any(nhom_hop_le(x.get("nhom")) == n and x.get("ketLuan") != "LOAI" for x in kq["xet"] if isinstance(x, dict)))]
-                    uv = (giu + moi + [n for n in uv if n not in giu])[:12]
+                    xet1 = {}
+                    for x in kq["xet"]:
+                        if isinstance(x, dict) and nhom_hop_le(x.get("nhom")) in uv: xet1[nhom_hop_le(x.get("nhom"))] = x
+                    da_loai = dict(xet1)  # mọi kết luận lượt 1; nhóm đã LOAI không đưa lại hồ sơ, nhóm bị cắt vì KB cũng giữ kết luận
+                    giu = [n for n in uv if xet1.get(n, {}).get("ketLuan") != "LOAI"]
+                    ca["_moi"] = list(dict.fromkeys(moi))
+                    ca["uuTien"] = list(dict.fromkeys(giu + (ca.get("uuTien") or [])))
+                    lan1 = best
+                    uv = (giu + ca["_moi"])[:12]
                     continue
                 break
+        except ChoDap as e:
+            cho.append(str(e)); return
         except agy.QuotaError as e:
             dung.set(); print("DUNG: hết hạn mức LLM mạnh:", e, file=sys.stderr); return
         kq, uv, ids, text_all = best or ({}, uv, ids, text_all)
+        if lan1 is not None and best is not lan1 and da_loai:  # hợp kết luận lượt 1 (LOAI, hoặc nhóm bị cắt vì KB) vào kết quả lượt mở rộng
+            co = {nhom_hop_le(y.get("nhom")) for y in kq["xet"] if isinstance(y, dict)}
+            kq = dict(kq); kq["xet"] = list(kq["xet"]) + [x for n, x in da_loai.items() if n not in co]
+            uv = uv + [n for n in da_loai if n not in uv]; ids = set(ids) | set(lan1[2]); text_all += "\n" + lan1[3]
         r = hau_xu_ly(kq, uv, ids, text_all, h)
         r["ca"] = ca["ca"]; pb_thô = None
         if r["ketQua"] == "CHOT" and luot < 2 and A.phan_bien:
             try:
                 luot += 1
-                muc, pb_thô = phan_bien(mo, h, r, uv, ids, text_all, kq)
+                muc, pb_thô = phan_bien(mo, h, r, uv, ids, text_all, kq, luot)
+            except ChoDap as e:
+                cho.append(str(e)); return
             except agy.QuotaError as e:
                 dung.set(); print("DUNG: hết hạn mức LLM mạnh:", e, file=sys.stderr); return
             if muc:
@@ -400,6 +528,8 @@ def main():
 
     viec = [ca for ca in cas if ca["ca"] not in da]
     with cf.ThreadPoolExecutor(A.song_song) as ex: list(ex.map(xu_ly, viec))
+    if cho: print("CHO DAP:", " ".join(sorted(cho)), "-> ghi đáp vào", A.thu_muc + "/dap/<ca>-<luot>.json rồi chạy lại cùng lệnh")
     if dung.is_set(): sys.exit(3)
 
-main()
+if __name__ == "__main__":
+    main()

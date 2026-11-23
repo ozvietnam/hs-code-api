@@ -1,0 +1,2551 @@
+{
+ "ngay": "2026-11-23",
+ "muc": "A/B khối BẢN ĐỒ QUAN HỆ (--ban-do) trong hồ sơ đồ thị tầng 4 số",
+ "nguoiCham": "gemma4:31b qua Ollama (OLLAMA_URL), tuần tự, temperature 0, seed 7, không think, num_ctx 65536, cùng một cách gọi cho A và B (scripts/tang-4so/cham_ollama.py); cụm từ tìm ứng viên cũng bằng gemma4:31b (LLM_NHA_MODEL), dùng chung một bộ nhớ đệm cho A và B nên ứng viên giống hệt",
+ "A": "so_nhom.py --ho-so do-thi --nao tep",
+ "B": "như A + --ban-do",
+ "tepCaSai": {
+  "v1": "docs/tang-4so/ca-sai-v1-vong2-nhanmoi.json (13 ca; gồm 9 ca còn sai ở ca-sai-v1-vong3.json + 4 ca đã đạt ở vòng 3 bằng LLM khác: 10, 19, 38, 40); nhãn lấy từ bộ chuẩn v1 bản nhãn mới của nhánh qt/tang-4so-vong (QT sửa ca 37/40/44), chưa có trên main",
+  "v2": "docs/tang-4so/ca-sai-v2-vong0.json (40 ca); nhãn bộ chuẩn v2 trên main"
+ },
+ "ketQua": {
+  "v1": {
+   "soCa": 13,
+   "datA": 3,
+   "datB": 4,
+   "BCuu": [
+    10,
+    47
+   ],
+   "BLamHong": [
+    76
+   ],
+   "caCoNhomNhanTrongUngVien": 11,
+   "kbHoSoTrungBinhLuot1": {
+    "A": 45.8,
+    "B": 65.3
+   },
+   "kbTrungBinhMoiLuot": {
+    "A": 43.8,
+    "B": 62.3
+   },
+   "giayChayTong": {
+    "A": "661",
+    "B": "744"
+   },
+   "ca": [
+    {
+     "ca": 10,
+     "nhan": "PHAN_VAN",
+     "nhomNhan": [
+      "8477",
+      "8422",
+      "8414"
+     ],
+     "moTa": "Máy đúc thổi túi cột khí / None / Thổi khí nén vào túi tạo x",
+     "A": {
+      "dat": false,
+      "ly": "NHANH_KHONG_TRUNG_NHAN",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "8414",
+       "8422",
+       "8515",
+       "8479"
+      ],
+      "nhomNhanTrongUV": [
+       "8414",
+       "8422",
+       "8477"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 55182,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     },
+     "B": {
+      "dat": true,
+      "ly": "OK",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "8414",
+       "8422",
+       "8515",
+       "8477",
+       "8479"
+      ],
+      "nhomNhanTrongUV": [
+       "8414",
+       "8422",
+       "8477"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 79772,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     }
+    },
+    {
+     "ca": 19,
+     "nhan": "PHAN_VAN",
+     "nhomNhan": [
+      "8210",
+      "7323"
+     ],
+     "moTa": "Dụng cụ ép trái cây / thép không gỉ / ép trái cây (không hoạ",
+     "A": {
+      "dat": false,
+      "ly": "NHANH_KHONG_TRUNG_NHAN",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "8210",
+       "8435"
+      ],
+      "nhomNhanTrongUV": [
+       "7323",
+       "8210"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 37708,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     },
+     "B": {
+      "dat": false,
+      "ly": "NHANH_KHONG_TRUNG_NHAN",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "8210",
+       "8435",
+       "8205"
+      ],
+      "nhomNhanTrongUV": [
+       "7323",
+       "8210"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 65242,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     }
+    },
+    {
+     "ca": 24,
+     "nhan": "PHAN_VAN",
+     "nhomNhan": [
+      "3926",
+      "4202"
+     ],
+     "moTa": "Vỏ ốp điện thoại / PVC / bảo vệ điện thoại",
+     "A": {
+      "dat": false,
+      "ly": "CHOT_KHI_PHAI_HOI",
+      "ketQua": "CHOT",
+      "nhom": "3926",
+      "nhomNhanTrongUV": [
+       "3926",
+       "4202"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 36680,
+      "lyDoLLM": [
+       "chỉ còn một nhóm: QT1"
+      ]
+     },
+     "B": {
+      "dat": false,
+      "ly": "CHOT_KHI_PHAI_HOI",
+      "ketQua": "CHOT",
+      "nhom": "3926",
+      "nhomNhanTrongUV": [
+       "3926",
+       "4202"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 53211,
+      "lyDoLLM": [
+       "chỉ còn một nhóm: QT1"
+      ]
+     }
+    },
+    {
+     "ca": 26,
+     "nhan": "PHAN_VAN",
+     "nhomNhan": [
+      "3924",
+      "8481"
+     ],
+     "moTa": "Bát sen tắm nhỏ / nhựa ABS / None",
+     "A": {
+      "dat": false,
+      "ly": "NHANH_KHONG_TRUNG_NHAN",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "3922",
+       "3924",
+       "8424",
+       "3926"
+      ],
+      "nhomNhanTrongUV": [
+       "3924",
+       "8481"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 42662,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     },
+     "B": {
+      "dat": false,
+      "ly": "NHANH_KHONG_TRUNG_NHAN",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "3924",
+       "3922"
+      ],
+      "nhomNhanTrongUV": [
+       "3924",
+       "8481"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 62004,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     }
+    },
+    {
+     "ca": 27,
+     "nhan": "PHAN_VAN",
+     "nhomNhan": [
+      "3921",
+      "3919",
+      "3920"
+     ],
+     "moTa": "Tấm nhựa Laminate / nhựa / trang trí nội thất",
+     "A": {
+      "dat": false,
+      "ly": "CHOT_KHI_PHAI_HOI",
+      "ketQua": "CHOT",
+      "nhom": "3921",
+      "nhomNhanTrongUV": [
+       "3919",
+       "3920",
+       "3921"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 45700,
+      "lyDoLLM": [
+       "chỉ còn một nhóm: QT1"
+      ]
+     },
+     "B": {
+      "dat": false,
+      "ly": "CHOT_KHI_PHAI_HOI",
+      "ketQua": "CHOT",
+      "nhom": "3921",
+      "nhomNhanTrongUV": [
+       "3919",
+       "3920",
+       "3921"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 59512,
+      "lyDoLLM": [
+       "chỉ còn một nhóm: QT1"
+      ]
+     }
+    },
+    {
+     "ca": 38,
+     "nhan": "PHAN_VAN",
+     "nhomNhan": [
+      "8201",
+      "7019",
+      "3926"
+     ],
+     "moTa": "Sào rút / sợi thủy tinh / hái hoa quả",
+     "A": {
+      "dat": false,
+      "ly": "NHANH_KHONG_TRUNG_NHAN",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "8201",
+       "8205"
+      ],
+      "nhomNhanTrongUV": [
+       "7019",
+       "8201"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 46834,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     },
+     "B": {
+      "dat": false,
+      "ly": "NHANH_KHONG_TRUNG_NHAN",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "8201",
+       "8205"
+      ],
+      "nhomNhanTrongUV": [
+       "7019",
+       "8201"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 76746,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     }
+    },
+    {
+     "ca": 40,
+     "nhan": "PHAN_VAN",
+     "nhomNhan": [
+      "8424",
+      "8483",
+      "8484",
+      "4016"
+     ],
+     "moTa": "Đệm chữ thập phun hồ / thép / phụ tùng máy phun nguyên liệu ",
+     "A": {
+      "dat": false,
+      "ly": "NHANH_KHONG_TRUNG_NHAN",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "8483",
+       "7318",
+       "7326",
+       "7325"
+      ],
+      "nhomNhanTrongUV": [
+       "8424",
+       "8483",
+       "8484"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 47790,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     },
+     "B": {
+      "dat": false,
+      "ly": "NHANH_KHONG_TRUNG_NHAN",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "8483",
+       "7318",
+       "7325",
+       "7326"
+      ],
+      "nhomNhanTrongUV": [
+       "8424",
+       "8483",
+       "8484"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 61574,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     }
+    },
+    {
+     "ca": 47,
+     "nhan": "PHAN_VAN",
+     "nhomNhan": [
+      "8543",
+      "8471"
+     ],
+     "moTa": "Bộ xử lý hình ảnh / None / xử lý hình ảnh cho màn hình LED",
+     "A": {
+      "dat": false,
+      "ly": "CHOT_KHI_PHAI_HOI",
+      "ketQua": "CHOT",
+      "nhom": "8543",
+      "nhomNhanTrongUV": [
+       "8471",
+       "8543"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 51464,
+      "lyDoLLM": [
+       "chỉ còn một nhóm: QT1"
+      ]
+     },
+     "B": {
+      "dat": true,
+      "ly": "OK",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "8471",
+       "8543"
+      ],
+      "nhomNhanTrongUV": [
+       "8471",
+       "8543"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 75715,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     }
+    },
+    {
+     "ca": 49,
+     "nhan": "PHAN_VAN",
+     "nhomNhan": [
+      "8302",
+      "7616"
+     ],
+     "moTa": "Thanh kéo vải rèm trần / Nhôm / Phụ kiện rèm cửa",
+     "A": {
+      "dat": true,
+      "ly": "OK",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "8302",
+       "7610",
+       "7616"
+      ],
+      "nhomNhanTrongUV": [
+       "7616",
+       "8302"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 48774,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     },
+     "B": {
+      "dat": true,
+      "ly": "OK",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "8302",
+       "7610",
+       "7616"
+      ],
+      "nhomNhanTrongUV": [
+       "7616",
+       "8302"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 67841,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     }
+    },
+    {
+     "ca": 76,
+     "nhan": "PHAN_VAN",
+     "nhomNhan": [
+      "8708",
+      "8308"
+     ],
+     "moTa": "Chốt cài khóa dây bảo hiểm có nối tiếp / sắt mạ+nhựa / None",
+     "A": {
+      "dat": true,
+      "ly": "OK",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "8308",
+       "8708"
+      ],
+      "nhomNhanTrongUV": [
+       "8308",
+       "8708"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 49250,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     },
+     "B": {
+      "dat": false,
+      "ly": "NHANH_KHONG_TRUNG_NHAN",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "8302",
+       "8708"
+      ],
+      "nhomNhanTrongUV": [
+       "8308",
+       "8708"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 68743,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     }
+    },
+    {
+     "ca": 82,
+     "nhan": "PHAN_VAN",
+     "nhomNhan": [
+      "4014",
+      "3926"
+     ],
+     "moTa": "Gặm nướu cho trẻ em / cao su silicone / trẻ mọc răng",
+     "A": {
+      "dat": false,
+      "ly": "NHANH_KHONG_TRUNG_NHAN",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "4014",
+       "9503",
+       "4016"
+      ],
+      "nhomNhanTrongUV": [
+       "3926",
+       "4014"
+      ],
+      "soUV": 35,
+      "luot": 2,
+      "kbLuot1": 37334,
+      "lyDoLLM": [
+       "LUAT_CUNG: dữ kiện chưa có mà đổi giá trị thì sang nhóm khác: mục đích sử dụng chính"
+      ]
+     },
+     "B": {
+      "dat": false,
+      "ly": "NHANH_KHONG_TRUNG_NHAN",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "4014",
+       "9503",
+       "4016"
+      ],
+      "nhomNhanTrongUV": [
+       "3926",
+       "4014"
+      ],
+      "soUV": 35,
+      "luot": 2,
+      "kbLuot1": 43686,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     }
+    },
+    {
+     "ca": 93,
+     "nhan": "PHAN_VAN",
+     "nhomNhan": [
+      "4008",
+      "4016"
+     ],
+     "moTa": "Tấm lót chuột máy tính / Cao su lưu hóa, xốp, vải / None",
+     "A": {
+      "dat": true,
+      "ly": "OK",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "4016",
+       "4008",
+       "5906",
+       "5602"
+      ],
+      "nhomNhanTrongUV": [
+       "4008",
+       "4016"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 53991,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     },
+     "B": {
+      "dat": true,
+      "ly": "OK",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "4016",
+       "4008"
+      ],
+      "nhomNhanTrongUV": [
+       "4008",
+       "4016"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 72645,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     }
+    },
+    {
+     "ca": 97,
+     "nhan": "PHAN_VAN",
+     "nhomNhan": [
+      "8541",
+      "8504"
+     ],
+     "moTa": "Mô đun IGBT / None / Chuyển mạch bán dẫn trong thiết bị điện",
+     "A": {
+      "dat": false,
+      "ly": "NHANH_KHONG_TRUNG_NHAN",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "8541",
+       "8542"
+      ],
+      "nhomNhanTrongUV": [
+       "8504",
+       "8541"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 55742,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     },
+     "B": {
+      "dat": false,
+      "ly": "NHANH_KHONG_TRUNG_NHAN",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "8541",
+       "8542"
+      ],
+      "nhomNhanTrongUV": [
+       "8504",
+       "8541"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 82477,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     }
+    }
+   ]
+  },
+  "v2": {
+   "soCa": 40,
+   "datA": 10,
+   "datB": 13,
+   "BCuu": [
+    116,
+    146,
+    170,
+    173
+   ],
+   "BLamHong": [
+    169
+   ],
+   "caCoNhomNhanTrongUngVien": 31,
+   "kbHoSoTrungBinhLuot1": {
+    "A": 45.3,
+    "B": 61.9
+   },
+   "kbTrungBinhMoiLuot": {
+    "A": 44.6,
+    "B": 61.4
+   },
+   "giayChayTong": {
+    "A": "3172",
+    "B": "2644"
+   },
+   "ca": [
+    {
+     "ca": 103,
+     "nhan": "CHOT",
+     "nhomNhan": [
+      "8536"
+     ],
+     "moTa": "Rơ le bán dẫn / None / Đóng cắt tải trong hệ thống điều khiể",
+     "A": {
+      "dat": false,
+      "ly": "KHONG_CHOT",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "8536",
+       "8535"
+      ],
+      "nhomNhanTrongUV": [
+       "8536"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 51091,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     },
+     "B": {
+      "dat": false,
+      "ly": "KHONG_CHOT",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "8536",
+       "8535"
+      ],
+      "nhomNhanTrongUV": [
+       "8536"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 79059,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     }
+    },
+    {
+     "ca": 104,
+     "nhan": "CHOT",
+     "nhomNhan": [
+      "3919"
+     ],
+     "moTa": "Phim cường lực bảo vệ màn hình đồng hồ thông minh / nhựa PPF",
+     "A": {
+      "dat": false,
+      "ly": "SAI_NHOM",
+      "ketQua": "CHOT",
+      "nhom": "3926",
+      "nhomNhanTrongUV": [],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 51279,
+      "lyDoLLM": [
+       "chỉ còn một nhóm: QT1"
+      ]
+     },
+     "B": {
+      "dat": false,
+      "ly": "SAI_NHOM",
+      "ketQua": "CHOT",
+      "nhom": "3926",
+      "nhomNhanTrongUV": [],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 67173,
+      "lyDoLLM": [
+       "chỉ còn một nhóm: QT1"
+      ]
+     }
+    },
+    {
+     "ca": 113,
+     "nhan": "CHOT",
+     "nhomNhan": [
+      "9615"
+     ],
+     "moTa": "Dây buộc trang trí tóc / nhựa / trang trí tóc",
+     "A": {
+      "dat": false,
+      "ly": "SAI_NHOM",
+      "ketQua": "CHOT",
+      "nhom": "3926",
+      "nhomNhanTrongUV": [],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 53251,
+      "lyDoLLM": [
+       "chỉ còn một nhóm: QT1"
+      ]
+     },
+     "B": {
+      "dat": false,
+      "ly": "SAI_NHOM",
+      "ketQua": "CHOT",
+      "nhom": "3926",
+      "nhomNhanTrongUV": [],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 65745,
+      "lyDoLLM": [
+       "chỉ còn một nhóm: QT1"
+      ]
+     }
+    },
+    {
+     "ca": 116,
+     "nhan": "PHAN_VAN",
+     "nhomNhan": [
+      "8541",
+      "8536",
+      "9031"
+     ],
+     "moTa": "Cảm biến quang / None / phát hiện sự hiện diện của vật thể b",
+     "A": {
+      "dat": false,
+      "ly": "NHANH_KHONG_TRUNG_NHAN",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "8536",
+       "9031",
+       "9032",
+       "8543"
+      ],
+      "nhomNhanTrongUV": [
+       "8536",
+       "8541",
+       "9031"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 59827,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     },
+     "B": {
+      "dat": true,
+      "ly": "OK",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "9031",
+       "8536",
+       "9032",
+       "8541",
+       "8543"
+      ],
+      "nhomNhanTrongUV": [
+       "8536",
+       "8541",
+       "9031"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 92918,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     }
+    },
+    {
+     "ca": 124,
+     "nhan": "PHAN_VAN",
+     "nhomNhan": [
+      "6004",
+      "6006",
+      "6005",
+      "6001",
+      "5903"
+     ],
+     "moTa": "Vải gió dệt kim / None / None",
+     "A": {
+      "dat": false,
+      "ly": "NHANH_KHONG_TRUNG_NHAN",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "6005",
+       "6006",
+       "6002",
+       "6003",
+       "6004",
+       "5903",
+       "5907"
+      ],
+      "nhomNhanTrongUV": [
+       "5903",
+       "6001",
+       "6004",
+       "6005",
+       "6006"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 44613,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     },
+     "B": {
+      "dat": false,
+      "ly": "NHANH_KHONG_TRUNG_NHAN",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "6005",
+       "6006",
+       "6004",
+       "5903",
+       "5907"
+      ],
+      "nhomNhanTrongUV": [
+       "5903",
+       "6001",
+       "6004",
+       "6005",
+       "6006"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 52126,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     }
+    },
+    {
+     "ca": 125,
+     "nhan": "PHAN_VAN",
+     "nhomNhan": [
+      "8526",
+      "8537"
+     ],
+     "moTa": "Bộ điều khiển đóng mở / nhựa / điều khiển khóa cửa ô tô",
+     "A": {
+      "dat": false,
+      "ly": "NHANH_KHONG_TRUNG_NHAN",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "8526",
+       "8543",
+       "8708"
+      ],
+      "nhomNhanTrongUV": [
+       "8526",
+       "8537"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 61270,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     },
+     "B": {
+      "dat": false,
+      "ly": "NHANH_KHONG_TRUNG_NHAN",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "8526",
+       "8543",
+       "8708"
+      ],
+      "nhomNhanTrongUV": [
+       "8526",
+       "8537"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 94593,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     }
+    },
+    {
+     "ca": 126,
+     "nhan": "PHAN_VAN",
+     "nhomNhan": [
+      "5704",
+      "5702",
+      "5705"
+     ],
+     "moTa": "Thảm trải sàn họa tiết thổ cẩm / nỉ / trải sàn",
+     "A": {
+      "dat": true,
+      "ly": "OK",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "5705",
+       "5703",
+       "5702",
+       "5704",
+       "5904"
+      ],
+      "nhomNhanTrongUV": [
+       "5702",
+       "5704",
+       "5705"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 41058,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     },
+     "B": {
+      "dat": true,
+      "ly": "OK",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "5705",
+       "5703",
+       "5702",
+       "5704"
+      ],
+      "nhomNhanTrongUV": [
+       "5702",
+       "5704",
+       "5705"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 49798,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     }
+    },
+    {
+     "ca": 130,
+     "nhan": "PHAN_VAN",
+     "nhomNhan": [
+      "7318",
+      "8302"
+     ],
+     "moTa": "Ốc thăng bằng / thép không gỉ / None",
+     "A": {
+      "dat": true,
+      "ly": "OK",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "7318",
+       "8302",
+       "7326"
+      ],
+      "nhomNhanTrongUV": [
+       "7318",
+       "8302"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 45947,
+      "lyDoLLM": [
+       "LUAT_CUNG: dữ kiện chưa có mà đổi giá trị thì sang nhóm khác: Kết cấu cụ thể"
+      ]
+     },
+     "B": {
+      "dat": true,
+      "ly": "OK",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "7326",
+       "7318",
+       "8302"
+      ],
+      "nhomNhanTrongUV": [
+       "7318",
+       "8302"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 67359,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     }
+    },
+    {
+     "ca": 132,
+     "nhan": "PHAN_VAN",
+     "nhomNhan": [
+      "8466",
+      "8479",
+      "7616"
+     ],
+     "moTa": "Bộ bàn trượt bằng tay / nhôm / gá thiết bị máy công nghiệp c",
+     "A": {
+      "dat": false,
+      "ly": "NHANH_KHONG_TRUNG_NHAN",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "8479",
+       "8466"
+      ],
+      "nhomNhanTrongUV": [
+       "8466",
+       "8479"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 55700,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     },
+     "B": {
+      "dat": false,
+      "ly": "NHANH_KHONG_TRUNG_NHAN",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "8483",
+       "8466",
+       "8479"
+      ],
+      "nhomNhanTrongUV": [
+       "8466",
+       "8479"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 76763,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     }
+    },
+    {
+     "ca": 134,
+     "nhan": "CHOT",
+     "nhomNhan": [
+      "6307"
+     ],
+     "moTa": "Khăn lau xe / Vải cotton / Lau xe",
+     "A": {
+      "dat": false,
+      "ly": "KHONG_CHOT",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "5802",
+       "5208",
+       "5210",
+       "6001",
+       "6307"
+      ],
+      "nhomNhanTrongUV": [
+       "6307"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 38841,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     },
+     "B": {
+      "dat": false,
+      "ly": "KHONG_CHOT",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "5802",
+       "5208",
+       "6001",
+       "6307",
+       "6302"
+      ],
+      "nhomNhanTrongUV": [
+       "6307"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 43094,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     }
+    },
+    {
+     "ca": 138,
+     "nhan": "PHAN_VAN",
+     "nhomNhan": [
+      "9031",
+      "8543",
+      "8536"
+     ],
+     "moTa": "Module cảm biến chuyển động / None / Phát hiện chuyển động v",
+     "A": {
+      "dat": false,
+      "ly": "NHANH_KHONG_TRUNG_NHAN",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "8526",
+       "9031",
+       "8543"
+      ],
+      "nhomNhanTrongUV": [
+       "8536",
+       "8543",
+       "9031"
+      ],
+      "soUV": 35,
+      "luot": 2,
+      "kbLuot1": 43329,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     },
+     "B": {
+      "dat": false,
+      "ly": "NHANH_KHONG_TRUNG_NHAN",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "8541",
+       "8542",
+       "9031",
+       "9032",
+       "8526"
+      ],
+      "nhomNhanTrongUV": [
+       "8536",
+       "8543",
+       "9031"
+      ],
+      "soUV": 35,
+      "luot": 2,
+      "kbLuot1": 69301,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     }
+    },
+    {
+     "ca": 140,
+     "nhan": "CHOT",
+     "nhomNhan": [
+      "8421"
+     ],
+     "moTa": "Vỏ lõi lọc nước RO / inox 304 / hệ thống lọc nước",
+     "A": {
+      "dat": false,
+      "ly": "KHONG_CHOT",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "7307",
+       "7326"
+      ],
+      "nhomNhanTrongUV": [
+       "8421"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 40685,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     },
+     "B": {
+      "dat": false,
+      "ly": "KHONG_CHOT",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "7307",
+       "7326"
+      ],
+      "nhomNhanTrongUV": [
+       "8421"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 60790,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     }
+    },
+    {
+     "ca": 143,
+     "nhan": "PHAN_VAN",
+     "nhomNhan": [
+      "6913",
+      "9403",
+      "6914"
+     ],
+     "moTa": "Kệ trưng bày / Sứ / Trang trí không gian, trưng bày sản phẩm",
+     "A": {
+      "dat": false,
+      "ly": "NHANH_KHONG_TRUNG_NHAN",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "9403",
+       "6913"
+      ],
+      "nhomNhanTrongUV": [
+       "6913",
+       "9403"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 44672,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     },
+     "B": {
+      "dat": false,
+      "ly": "NHANH_KHONG_TRUNG_NHAN",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "9403",
+       "6913"
+      ],
+      "nhomNhanTrongUV": [
+       "6913",
+       "9403"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 60089,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     }
+    },
+    {
+     "ca": 146,
+     "nhan": "PHAN_VAN",
+     "nhomNhan": [
+      "9405",
+      "8539"
+     ],
+     "moTa": "Đèn LED dạng dải / None / Trang trí Decor thay đổi không gia",
+     "A": {
+      "dat": false,
+      "ly": "CHOT_KHI_PHAI_HOI",
+      "ketQua": "CHOT",
+      "nhom": "9405",
+      "nhomNhanTrongUV": [
+       "8539",
+       "9405"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 44987,
+      "lyDoLLM": [
+       "chỉ còn một nhóm: QT1"
+      ]
+     },
+     "B": {
+      "dat": true,
+      "ly": "OK",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "8541",
+       "9405",
+       "8539"
+      ],
+      "nhomNhanTrongUV": [
+       "8539",
+       "9405"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 71220,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     }
+    },
+    {
+     "ca": 148,
+     "nhan": "CHOT",
+     "nhomNhan": [
+      "8714"
+     ],
+     "moTa": "Nắp ốp đèn soi biển số cho xe máy / nhựa ABS mạ crom / ốp đè",
+     "A": {
+      "dat": false,
+      "ly": "KHONG_CHOT",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "3926",
+       "9405",
+       "8708"
+      ],
+      "nhomNhanTrongUV": [],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 49776,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     },
+     "B": {
+      "dat": false,
+      "ly": "KHONG_CHOT",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "8708",
+       "3926"
+      ],
+      "nhomNhanTrongUV": [],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 68859,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     }
+    },
+    {
+     "ca": 152,
+     "nhan": "PHAN_VAN",
+     "nhomNhan": [
+      "9503",
+      "5607"
+     ],
+     "moTa": "Dây diều / xơ tổng hợp / thả và điều khiển diều",
+     "A": {
+      "dat": false,
+      "ly": "CHOT_KHI_PHAI_HOI",
+      "ketQua": "CHOT",
+      "nhom": "5607",
+      "nhomNhanTrongUV": [
+       "5607",
+       "9503"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 55214,
+      "lyDoLLM": [
+       "chỉ còn một nhóm: QT1"
+      ]
+     },
+     "B": {
+      "dat": false,
+      "ly": "CHOT_KHI_PHAI_HOI",
+      "ketQua": "CHOT",
+      "nhom": "5607",
+      "nhomNhanTrongUV": [
+       "5607",
+       "9503"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 70200,
+      "lyDoLLM": [
+       "chỉ còn một nhóm: QT1"
+      ]
+     }
+    },
+    {
+     "ca": 156,
+     "nhan": "PHAN_VAN",
+     "nhomNhan": [
+      "5401",
+      "5406"
+     ],
+     "moTa": "Chỉ thêu sợi filament tổng hợp / sợi filament tổng hợp / thê",
+     "A": {
+      "dat": false,
+      "ly": "CHOT_KHI_PHAI_HOI",
+      "ketQua": "CHOT",
+      "nhom": "5401",
+      "nhomNhanTrongUV": [
+       "5401",
+       "5406"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 36437,
+      "lyDoLLM": [
+       "chỉ còn một nhóm: QT1"
+      ]
+     },
+     "B": {
+      "dat": false,
+      "ly": "CHOT_KHI_PHAI_HOI",
+      "ketQua": "CHOT",
+      "nhom": "5401",
+      "nhomNhanTrongUV": [
+       "5401",
+       "5406"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 40463,
+      "lyDoLLM": [
+       "chỉ còn một nhóm: QT1"
+      ]
+     }
+    },
+    {
+     "ca": 157,
+     "nhan": "PHAN_VAN",
+     "nhomNhan": [
+      "6108",
+      "6208",
+      "6212"
+     ],
+     "moTa": "Bộ đồ lót nữ / 100% cotton / None",
+     "A": {
+      "dat": true,
+      "ly": "OK",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "6212",
+       "6208",
+       "6108",
+       "6109"
+      ],
+      "nhomNhanTrongUV": [
+       "6108",
+       "6208",
+       "6212"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 36442,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     },
+     "B": {
+      "dat": true,
+      "ly": "OK",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "6208",
+       "6108",
+       "6212",
+       "6109"
+      ],
+      "nhomNhanTrongUV": [
+       "6108",
+       "6208",
+       "6212"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 46594,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     }
+    },
+    {
+     "ca": 159,
+     "nhan": "PHAN_VAN",
+     "nhomNhan": [
+      "6911",
+      "6912"
+     ],
+     "moTa": "Bộ ấm chén bằng gốm / Gốm / None",
+     "A": {
+      "dat": true,
+      "ly": "OK",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "6911",
+       "6912"
+      ],
+      "nhomNhanTrongUV": [
+       "6911",
+       "6912"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 35502,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     },
+     "B": {
+      "dat": true,
+      "ly": "OK",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "6911",
+       "6912"
+      ],
+      "nhomNhanTrongUV": [
+       "6911",
+       "6912"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 46338,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     }
+    },
+    {
+     "ca": 160,
+     "nhan": "CHOT",
+     "nhomNhan": [
+      "6110"
+     ],
+     "moTa": "Áo len dài tay cao cổ / Dệt kim cotton / Dùng cho người lớn",
+     "A": {
+      "dat": true,
+      "ly": "OK",
+      "ketQua": "CHOT",
+      "nhom": "6110",
+      "nhomNhanTrongUV": [
+       "6110"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 30387,
+      "lyDoLLM": [
+       "chỉ còn một nhóm: QT1"
+      ]
+     },
+     "B": {
+      "dat": true,
+      "ly": "OK",
+      "ketQua": "CHOT",
+      "nhom": "6110",
+      "nhomNhanTrongUV": [
+       "6110"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 47212,
+      "lyDoLLM": [
+       "chỉ còn một nhóm: QT1"
+      ]
+     }
+    },
+    {
+     "ca": 162,
+     "nhan": "CHOT",
+     "nhomNhan": [
+      "9013"
+     ],
+     "moTa": "Đầu chiếu tia Laser / None / Chiếu tia sáng chấm đỏ",
+     "A": {
+      "dat": false,
+      "ly": "KHONG_CHOT",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "8541",
+       "9013",
+       "8543"
+      ],
+      "nhomNhanTrongUV": [
+       "9013"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 40772,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     },
+     "B": {
+      "dat": false,
+      "ly": "KHONG_CHOT",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "8541",
+       "8539",
+       "8543"
+      ],
+      "nhomNhanTrongUV": [
+       "9013"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 62296,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     }
+    },
+    {
+     "ca": 164,
+     "nhan": "PHAN_VAN",
+     "nhomNhan": [
+      "3917",
+      "5909",
+      "8516",
+      "8451"
+     ],
+     "moTa": "Dây hơi bàn ủi / Vải bọc nhựa / Phụ kiện bàn ủi, dùng trong ",
+     "A": {
+      "dat": false,
+      "ly": "NHANH_KHONG_TRUNG_NHAN",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "3917",
+       "4009",
+       "5909"
+      ],
+      "nhomNhanTrongUV": [
+       "3917",
+       "5909",
+       "8516"
+      ],
+      "soUV": 35,
+      "luot": 2,
+      "kbLuot1": 54322,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     },
+     "B": {
+      "dat": false,
+      "ly": "NHANH_KHONG_TRUNG_NHAN",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "3917",
+       "4016",
+       "5909"
+      ],
+      "nhomNhanTrongUV": [
+       "3917",
+       "5909",
+       "8516"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 71027,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     }
+    },
+    {
+     "ca": 165,
+     "nhan": "CHOT",
+     "nhomNhan": [
+      "9608"
+     ],
+     "moTa": "Bút mực / nhựa / dùng cho máy in sơ đồ",
+     "A": {
+      "dat": false,
+      "ly": "KHONG_CHOT",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "9608",
+       "9017"
+      ],
+      "nhomNhanTrongUV": [
+       "9608"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 41814,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     },
+     "B": {
+      "dat": false,
+      "ly": "KHONG_CHOT",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "9017",
+       "9608"
+      ],
+      "nhomNhanTrongUV": [
+       "9608"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 52134,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     }
+    },
+    {
+     "ca": 168,
+     "nhan": "CHOT",
+     "nhomNhan": [
+      "4013"
+     ],
+     "moTa": "Săm lốp máy xúc lật / cao su / lắp cho lốp máy xúc lật 17.5-",
+     "A": {
+      "dat": true,
+      "ly": "OK",
+      "ketQua": "CHOT",
+      "nhom": "4013",
+      "nhomNhanTrongUV": [
+       "4013"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 50925,
+      "lyDoLLM": [
+       "chỉ còn một nhóm: QT1"
+      ]
+     },
+     "B": {
+      "dat": true,
+      "ly": "OK",
+      "ketQua": "CHOT",
+      "nhom": "4013",
+      "nhomNhanTrongUV": [
+       "4013"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 67739,
+      "lyDoLLM": [
+       "chỉ còn một nhóm: QT1"
+      ]
+     }
+    },
+    {
+     "ca": 169,
+     "nhan": "CHOT",
+     "nhomNhan": [
+      "8512"
+     ],
+     "moTa": "Bộ chống trộm xe máy điện / None / Kết nối còi và đèn xi nha",
+     "A": {
+      "dat": true,
+      "ly": "OK",
+      "ketQua": "CHOT",
+      "nhom": "8512",
+      "nhomNhanTrongUV": [
+       "8512"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 57392,
+      "lyDoLLM": [
+       "chỉ còn một nhóm: QT1"
+      ]
+     },
+     "B": {
+      "dat": false,
+      "ly": "KHONG_CHOT",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "8512",
+       "8531"
+      ],
+      "nhomNhanTrongUV": [
+       "8512"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 85270,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     }
+    },
+    {
+     "ca": 170,
+     "nhan": "CHOT",
+     "nhomNhan": [
+      "8531"
+     ],
+     "moTa": "Còi chíp điện từ / None / tạo âm thanh trong mạch điện tử",
+     "A": {
+      "dat": false,
+      "ly": "KHONG_CHOT",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "8512",
+       "8531"
+      ],
+      "nhomNhanTrongUV": [
+       "8531"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 52528,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     },
+     "B": {
+      "dat": true,
+      "ly": "OK",
+      "ketQua": "CHOT",
+      "nhom": "8531",
+      "nhomNhanTrongUV": [
+       "8531"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 83721,
+      "lyDoLLM": [
+       "chỉ còn một nhóm: QT1"
+      ]
+     }
+    },
+    {
+     "ca": 172,
+     "nhan": "PHAN_VAN",
+     "nhomNhan": [
+      "8437",
+      "8479"
+     ],
+     "moTa": "Máy xay bột khô / thép không gỉ / xay bột khô trong công ngh",
+     "A": {
+      "dat": false,
+      "ly": "CHOT_KHI_PHAI_HOI",
+      "ketQua": "CHOT",
+      "nhom": "8437",
+      "nhomNhanTrongUV": [
+       "8437",
+       "8479"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 36867,
+      "lyDoLLM": [
+       "chỉ còn một nhóm: QT1"
+      ]
+     },
+     "B": {
+      "dat": false,
+      "ly": "CHOT_KHI_PHAI_HOI",
+      "ketQua": "CHOT",
+      "nhom": "8437",
+      "nhomNhanTrongUV": [
+       "8437",
+       "8479"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 50739,
+      "lyDoLLM": [
+       "chỉ còn một nhóm: QT1"
+      ]
+     }
+    },
+    {
+     "ca": 173,
+     "nhan": "CHOT",
+     "nhomNhan": [
+      "3506"
+     ],
+     "moTa": "Keo dán polyurethane / Polyurethane / Dùng cho công nghiệp c",
+     "A": {
+      "dat": false,
+      "ly": "KHONG_CHOT",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "3506",
+       "3214"
+      ],
+      "nhomNhanTrongUV": [
+       "3506"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 29586,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     },
+     "B": {
+      "dat": true,
+      "ly": "OK",
+      "ketQua": "CHOT",
+      "nhom": "3506",
+      "nhomNhanTrongUV": [
+       "3506"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 34006,
+      "lyDoLLM": [
+       "chỉ còn một nhóm: QT1"
+      ]
+     }
+    },
+    {
+     "ca": 174,
+     "nhan": "CHOT",
+     "nhomNhan": [
+      "8211"
+     ],
+     "moTa": "Bộ dao gọt / thép / None",
+     "A": {
+      "dat": true,
+      "ly": "OK",
+      "ketQua": "CHOT",
+      "nhom": "8211",
+      "nhomNhanTrongUV": [
+       "8211"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 40964,
+      "lyDoLLM": [
+       "chỉ còn một nhóm: QT1"
+      ]
+     },
+     "B": {
+      "dat": true,
+      "ly": "OK",
+      "ketQua": "CHOT",
+      "nhom": "8211",
+      "nhomNhanTrongUV": [
+       "8211"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 53928,
+      "lyDoLLM": [
+       "chỉ còn một nhóm: QT1"
+      ]
+     }
+    },
+    {
+     "ca": 176,
+     "nhan": "PHAN_VAN",
+     "nhomNhan": [
+      "6111",
+      "6103",
+      "6104"
+     ],
+     "moTa": "Bộ quần áo trẻ em / dệt kim cotton 90%, polyester 5% / None",
+     "A": {
+      "dat": true,
+      "ly": "OK",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "6111",
+       "6103",
+       "6104"
+      ],
+      "nhomNhanTrongUV": [
+       "6103",
+       "6104",
+       "6111"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 44116,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     },
+     "B": {
+      "dat": true,
+      "ly": "OK",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "6111",
+       "6103",
+       "6104"
+      ],
+      "nhomNhanTrongUV": [
+       "6103",
+       "6104",
+       "6111"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 65396,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     }
+    },
+    {
+     "ca": 178,
+     "nhan": "PHAN_VAN",
+     "nhomNhan": [
+      "6203",
+      "6103"
+     ],
+     "moTa": "Quần bò dài nam / sợi cotton 90%, sợi Polyester 10% / trang ",
+     "A": {
+      "dat": true,
+      "ly": "OK",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "6103",
+       "6203",
+       "6209",
+       "6307"
+      ],
+      "nhomNhanTrongUV": [
+       "6103",
+       "6203"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 39010,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     },
+     "B": {
+      "dat": true,
+      "ly": "OK",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "6103",
+       "6203",
+       "6209",
+       "6307",
+       "6111",
+       "6114"
+      ],
+      "nhomNhanTrongUV": [
+       "6103",
+       "6203"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 54709,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     }
+    },
+    {
+     "ca": 181,
+     "nhan": "CHOT",
+     "nhomNhan": [
+      "8412"
+     ],
+     "moTa": "Xi lanh thủy lực / None / máy móc công nghiệp",
+     "A": {
+      "dat": false,
+      "ly": "KHONG_CHOT",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "8412",
+       "8431",
+       "8428",
+       "8479"
+      ],
+      "nhomNhanTrongUV": [
+       "8412"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 49554,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     },
+     "B": {
+      "dat": false,
+      "ly": "KHONG_CHOT",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "8412",
+       "8431"
+      ],
+      "nhomNhanTrongUV": [
+       "8412"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 68057,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     }
+    },
+    {
+     "ca": 183,
+     "nhan": "PHAN_VAN",
+     "nhomNhan": [
+      "8515",
+      "8449"
+     ],
+     "moTa": "Máy dập quai hàn khẩu trang / None / dập quai hàn khẩu trang",
+     "A": {
+      "dat": false,
+      "ly": "CHOT_KHI_PHAI_HOI",
+      "ketQua": "CHOT",
+      "nhom": "8515",
+      "nhomNhanTrongUV": [
+       "8515"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 55606,
+      "lyDoLLM": [
+       "LLM chốt theo thứ tự quy tắc, mọi dữ kiện đã có"
+      ]
+     },
+     "B": {
+      "dat": false,
+      "ly": "NHANH_KHONG_TRUNG_NHAN",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "8515",
+       "8479"
+      ],
+      "nhomNhanTrongUV": [
+       "8515"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 76009,
+      "lyDoLLM": [
+       "LUAT_CUNG: dữ kiện chưa có mà đổi giá trị thì sang nhóm khác: Vật liệu được hàn"
+      ]
+     }
+    },
+    {
+     "ca": 186,
+     "nhan": "CHOT",
+     "nhomNhan": [
+      "8477"
+     ],
+     "moTa": "Máy rót nhựa polyurethane / nhựa polyurethane / Rót nhựa tro",
+     "A": {
+      "dat": false,
+      "ly": "KHONG_CHOT",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "8477",
+       "8479"
+      ],
+      "nhomNhanTrongUV": [
+       "8477"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 47037,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     },
+     "B": {
+      "dat": false,
+      "ly": "KHONG_CHOT",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "8477",
+       "8479"
+      ],
+      "nhomNhanTrongUV": [
+       "8477"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 67326,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     }
+    },
+    {
+     "ca": 187,
+     "nhan": "PHAN_VAN",
+     "nhomNhan": [
+      "6306",
+      "9404",
+      "3926"
+     ],
+     "moTa": "Đệm hơi dã ngoại / Vải co giãn, bọt biển, TPU / Dã ngoại",
+     "A": {
+      "dat": false,
+      "ly": "CHOT_KHI_PHAI_HOI",
+      "ketQua": "CHOT",
+      "nhom": "6306",
+      "nhomNhanTrongUV": [
+       "3926",
+       "6306",
+       "9404"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 55568,
+      "lyDoLLM": [
+       "chỉ còn một nhóm: QT1"
+      ]
+     },
+     "B": {
+      "dat": false,
+      "ly": "CHOT_KHI_PHAI_HOI",
+      "ketQua": "CHOT",
+      "nhom": "6306",
+      "nhomNhanTrongUV": [
+       "3926",
+       "6306",
+       "9404"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 74555,
+      "lyDoLLM": [
+       "chỉ còn một nhóm: QT1"
+      ]
+     }
+    },
+    {
+     "ca": 189,
+     "nhan": "PHAN_VAN",
+     "nhomNhan": [
+      "8479",
+      "8477"
+     ],
+     "moTa": "Máy nghiền trục đơn / None / Nghiền nhỏ rác thải/phế liệu cô",
+     "A": {
+      "dat": false,
+      "ly": "CHOT_KHI_PHAI_HOI",
+      "ketQua": "CHOT",
+      "nhom": "8479",
+      "nhomNhanTrongUV": [
+       "8479"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 57228,
+      "lyDoLLM": [
+       "chỉ còn một nhóm: QT1"
+      ]
+     },
+     "B": {
+      "dat": false,
+      "ly": "CHOT_KHI_PHAI_HOI",
+      "ketQua": "CHOT",
+      "nhom": "8479",
+      "nhomNhanTrongUV": [
+       "8479"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 74743,
+      "lyDoLLM": [
+       "chỉ còn một nhóm: QT1"
+      ]
+     }
+    },
+    {
+     "ca": 190,
+     "nhan": "PHAN_VAN",
+     "nhomNhan": [
+      "2508",
+      "3824"
+     ],
+     "moTa": "Đất bentonite cho chó mèo đi vệ sinh / Bentonite / Vệ sinh t",
+     "A": {
+      "dat": false,
+      "ly": "NHANH_KHONG_TRUNG_NHAN",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "2508",
+       "3802",
+       "3307"
+      ],
+      "nhomNhanTrongUV": [
+       "2508",
+       "3824"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 43136,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     },
+     "B": {
+      "dat": false,
+      "ly": "NHANH_KHONG_TRUNG_NHAN",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "3307",
+       "3802",
+       "2508"
+      ],
+      "nhomNhanTrongUV": [
+       "2508",
+       "3824"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 44733,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     }
+    },
+    {
+     "ca": 194,
+     "nhan": "PHAN_VAN",
+     "nhomNhan": [
+      "4203",
+      "3926",
+      "6116",
+      "6216"
+     ],
+     "moTa": "Bao tay da / da thuộc tổng hợp PU / đi đường mùa đông",
+     "A": {
+      "dat": false,
+      "ly": "NHANH_KHONG_TRUNG_NHAN",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "4203",
+       "6216",
+       "6116"
+      ],
+      "nhomNhanTrongUV": [
+       "3926",
+       "4203",
+       "6116",
+       "6216"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 46317,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     },
+     "B": {
+      "dat": false,
+      "ly": "NHANH_KHONG_TRUNG_NHAN",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "4203",
+       "6116",
+       "6216"
+      ],
+      "nhomNhanTrongUV": [
+       "3926",
+       "4203",
+       "6116",
+       "6216"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 66707,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     }
+    },
+    {
+     "ca": 195,
+     "nhan": "PHAN_VAN",
+     "nhomNhan": [
+      "5909",
+      "6307",
+      "5911"
+     ],
+     "moTa": "Cổ bạt mềm / Vải canvas phủ silicon chống cháy / Khớp nối ốn",
+     "A": {
+      "dat": false,
+      "ly": "NHANH_KHONG_TRUNG_NHAN",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "5907",
+       "7019"
+      ],
+      "nhomNhanTrongUV": [
+       "6307"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 47966,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     },
+     "B": {
+      "dat": false,
+      "ly": "NHANH_KHONG_TRUNG_NHAN",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "5907",
+       "6307"
+      ],
+      "nhomNhanTrongUV": [
+       "6307"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 62571,
+      "lyDoLLM": [
+       "LUAT_CUNG: dữ kiện chưa có mà đổi giá trị thì sang nhóm khác: Hình thức trình bày (cuộn vải hay thành phẩm khớp nối)"
+      ]
+     }
+    },
+    {
+     "ca": 196,
+     "nhan": "CHOT",
+     "nhomNhan": [
+      "5402"
+     ],
+     "moTa": "Sợi filament tổng hợp / Polyamide (Nylon) / Dùng để gia công",
+     "A": {
+      "dat": false,
+      "ly": "KHONG_CHOT",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "5402",
+       "5404",
+       "3916"
+      ],
+      "nhomNhanTrongUV": [
+       "5402"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 45812,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     },
+     "B": {
+      "dat": false,
+      "ly": "KHONG_CHOT",
+      "ketQua": "PHAN_VAN",
+      "nhom": [
+       "5402",
+       "5404",
+       "3916"
+      ],
+      "nhomNhanTrongUV": [
+       "5402"
+      ],
+      "soUV": 34,
+      "luot": 1,
+      "kbLuot1": 49708,
+      "lyDoLLM": [
+       "LUAT_CUNG: >=2 nhóm còn khớp và điểm khác là dữ kiện hồ sơ chưa có"
+      ]
+     }
+    }
+   ]
+  }
+ },
+ "chiPhi": {
+  "v1-A": {
+   "luot": 14,
+   "gpuGiay": 500,
+   "kbTbMoiLuot": 43.2
+  },
+  "v1-B": {
+   "luot": 14,
+   "gpuGiay": 582,
+   "kbTbMoiLuot": 61.7
+  },
+  "v2-A": {
+   "luot": 42,
+   "gpuGiay": 2345,
+   "kbTbMoiLuot": 44.1
+  },
+  "v2-B": {
+   "luot": 41,
+   "gpuGiay": 2345,
+   "kbTbMoiLuot": 60.9
+  }
+ }
+}
