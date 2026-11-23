@@ -1,0 +1,168 @@
+{
+  "nhom": "6004",
+  "khuon": "bd4@1",
+  "nguonLoai": "AI_NHAP",
+  "chamCheo": "DUYET",
+  "taoBoi": {
+    "provider": "google-studio",
+    "model": "gemini-4-hydrogen",
+    "goi": "eb85d0dbe1b7"
+  },
+  "kieuNhom": "THEO_VAT_LIEU",
+  "hoSo": {
+    "chucNang": [],
+    "coChe": [],
+    "dangVatLy": [
+      {
+        "y": "vải dệt kim không tạo vòng lông",
+        "trich": "Loại trừ vải có tạo vòng lông thuộc nhóm 60.01, nhóm này bao gồm vải dệt kim hoặc móc có khổ rộng không quá 30 cm",
+        "nguon": "ct.6004.1"
+      }
+    ],
+    "chatLieu": [
+      {
+        "y": "chứa sợi đàn hồi từ 5 phần trăm",
+        "trich": "có tỷ trọng sợi đàn hồi hoặc sợi cao su từ 5% trở lên.",
+        "nguon": "ct.6004.1"
+      },
+      {
+        "y": "chứa sợi cao su từ 5 phần trăm",
+        "trich": "có tỷ trọng sợi đàn hồi hoặc sợi cao su từ 5% trở lên.",
+        "nguon": "ct.6004.1"
+      }
+    ],
+    "oDauAiDung": [],
+    "hangDuocNeu": [
+      {
+        "ten": "vải dệt kim",
+        "trich": "vải dệt kim hoặc móc",
+        "nguon": "ct.6004.1"
+      }
+    ],
+    "dieuKienBatBuoc": [
+      {
+        "y": "tỷ trọng sợi đàn hồi từ 5 phần trăm trở lên",
+        "trich": "có tỷ trọng sợi đàn hồi hoặc sợi cao su từ 5% trở lên.",
+        "nguon": "ct.6004.1"
+      },
+      {
+        "y": "sợi đàn hồi theo Chú giải 13 Phần XI",
+        "trich": "Sợi đàn hồi được định nghĩa tại Chú giải 13 Phần XI.",
+        "nguon": "ct.6004.2"
+      }
+    ]
+  },
+  "canh": [
+    {
+      "den": "6001",
+      "loai": "LOAI_TRU",
+      "dacDiem": "bề mặt có tạo vòng lông nhung hay không",
+      "neu": "là vải có tạo vòng lông",
+      "thi": "6001",
+      "conNeu": "là vải dệt kim không tạo vòng lông",
+      "thiKia": "6004",
+      "canCu": [
+        {
+          "nguon": "ct.6004.1",
+          "trich": "Loại trừ vải có tạo vòng lông thuộc nhóm 60.01, nhóm này bao gồm vải dệt kim hoặc móc có khổ rộng không quá 30 cm, có tỷ trọng sợi đàn hồi hoặc sợi cao su từ 5% trở lên."
+        }
+      ],
+      "quyTac": "QT1"
+    },
+    {
+      "den": "6006",
+      "loai": "PHAN_BIET",
+      "dacDiem": "tỷ trọng sợi đàn hồi sợi cao su dưới hay từ 5 phần trăm",
+      "neu": "tỷ trọng sợi đàn hồi dưới 5 phần trăm",
+      "thi": "6006",
+      "conNeu": "tỷ trọng sợi đàn hồi từ 5 phần trăm trở lên",
+      "thiKia": "6004",
+      "canCu": [
+        {
+          "nguon": "ct.6006.2",
+          "trich": "Nhóm này bao gồm, ví dụ như vải dệt kim sợi ngang và vải móc có khổ rộng hơn 30 cm, không chứa sợi đàn hồi hoặc sợi cao su hoặc có tỷ trọng sợi đàn hồi hoặc sợi cao su dưới 5%."
+        },
+        {
+          "nguon": "ct.6004.1",
+          "trich": "có tỷ trọng sợi đàn hồi hoặc sợi cao su từ 5% trở lên."
+        }
+      ],
+      "quyTac": "QT1"
+    },
+    {
+      "den": "3005",
+      "loai": "LOAI_TRU",
+      "dacDiem": "băng đã tẩm thuốc bán lẻ y tế hay vải dệt thông thường",
+      "neu": "là băng đã tẩm thuốc đóng gói bán lẻ",
+      "thi": "3005",
+      "conNeu": "là vải dệt kim chưa tẩm thuốc y tế",
+      "thiKia": "6004",
+      "canCu": [
+        {
+          "nguon": "ct.6004.4",
+          "trich": "(a) Băng, đã tẩm thuốc hoặc đóng gói để bán lẻ (nhóm 30.05)."
+        }
+      ],
+      "quyTac": "QT1"
+    },
+    {
+      "den": "5807",
+      "loai": "LOAI_TRU",
+      "dacDiem": "nhãn phù hiệu dạng chiếc hay vải tấm",
+      "neu": "là nhãn phù hiệu dệt kim",
+      "thi": "5807",
+      "conNeu": "là vải dệt kim chưa cắt thành nhãn",
+      "thiKia": "6004",
+      "canCu": [
+        {
+          "nguon": "ct.6004.5",
+          "trich": "(b) Các loại nhãn, phù hiệu và các mặt hàng tương tự, dệt kim hoặc móc thuộc nhóm 58.07."
+        }
+      ],
+      "quyTac": "QT1"
+    },
+    {
+      "den": "5810",
+      "loai": "LOAI_TRU",
+      "dacDiem": "đã thêu tạo mẫu trang trí trên nền hay chưa thêu",
+      "neu": "là vải thêu",
+      "thi": "5810",
+      "conNeu": "là vải dệt kim không thêu",
+      "thiKia": "6004",
+      "canCu": [
+        {
+          "nguon": "ct.6004.6",
+          "trich": "(c) Vải thêu thuộc nhóm 58.10/"
+        }
+      ],
+      "quyTac": "QT1"
+    },
+    {
+      "den": "5903",
+      "loai": "LOAI_TRU",
+      "dacDiem": "đã ngâm tẩm tráng phủ plastic hay chưa tráng phủ",
+      "neu": "đã được ngâm tẩm tráng phủ plastic",
+      "thi": "5903",
+      "conNeu": "chưa ngâm tẩm tráng phủ plastic",
+      "thiKia": "6004",
+      "canCu": [
+        {
+          "nguon": "ct.6004.7",
+          "trich": "(d) Vải thuộc Chương 59 (Ví dụ: Vải đã được ngâm tẩm, tráng, phủ hoặc ép thuộc nhóm 59.03 hoặc 59.07, vải cao su hóa thuộc nhóm 59.06)."
+        },
+        {
+          "nguon": "chuong:60:chu_giai:1c",
+          "trich": "(c) Vải dệt kim hoặc móc, đã ngâm tẩm, tráng, phủ hoặc ép lớp, thuộc Chương 59."
+        }
+      ],
+      "quyTac": "QT1"
+    }
+  ],
+  "khongChac": [
+    "chú giải chi tiết nhóm 6004 không nêu công dụng sử dụng của vải",
+    "chú giải chi tiết nhóm 6004 không nêu cơ chế hoạt động vì sản phẩm là vải dệt kim",
+    "chú giải chi tiết nhóm 6004 không nêu đối tượng sử dụng của vải",
+    "đoạn ct.6004.1 ghi khổ rộng không quá 30 cm khác với tên nhóm ghi khổ rộng hơn 30 cm"
+  ],
+  "chamCheoGhiChu": "[gemma4:31b, máy GPU nhà] Các cạnh phân biệt với 6001, 6006, 3005, 5807, 5810, 5903 đều đúng nghĩa và đúng chiều theo đoạn luật trích dẫn. | "
+}
