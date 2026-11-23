@@ -46,6 +46,20 @@ check('model: cắt tiền tố model:', fr3 && fr3.rutGon === 'frd720075k' && f
 const plc = kho.chuanHoaModel('6ES7214-1AG40-0XB0');
 check('model: PLC Siemens giữ gạch', plc && plc.chuan === '6ES7214-1AG40-0XB0' && plc.rutGon === '6es72141ag400xb0');
 
+// Hồi quy: ma/pn là phần model thật — không cắt khi thiếu phân cách (soat-khac PR #1678).
+const max485 = kho.chuanHoaModel('MAX485CPA');
+check('model: MAX485CPA không cắt ma → rutGon max485cpa', max485 && max485.chuan === 'MAX485CPA' && max485.rutGon === 'max485cpa');
+const ma1000 = kho.chuanHoaModel('MA-1000');
+check('model: MA-1000 giữ nguyên (không cắt ma-)', ma1000 && ma1000.chuan === 'MA-1000' && ma1000.rutGon === 'ma1000');
+const pn532 = kho.chuanHoaModel('PN532A');
+check('model: PN532A giữ nguyên (không cắt pn)', pn532 && pn532.chuan === 'PN532A' && pn532.rutGon === 'pn532a');
+const maLabel = kho.chuanHoaModel('ma: FR-D720-0.75K');
+check('model: cắt nhãn ma: có phân cách', maLabel && maLabel.rutGon === 'frd720075k');
+const pnLabel = kho.chuanHoaModel('pn FR-D720-0.75K');
+check('model: cắt nhãn pn + khoảng trắng', pnLabel && pnLabel.rutGon === 'frd720075k');
+const pnSlash = kho.chuanHoaModel('p/n FR-D720-0.75K');
+check('model: cắt nhãn p/n', pnSlash && pnSlash.rutGon === 'frd720075k');
+
 check('model: chặn <4 ký tự rutGon (AB)', kho.chuanHoaModel('AB') == null);
 check('model: chặn 304 (số thuần)', kho.chuanHoaModel('304') == null);
 check('model: chặn 100W', kho.chuanHoaModel('100W') == null);
