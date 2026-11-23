@@ -1,4 +1,5 @@
-// scripts/test-kho-dinh-danh.mjs — Kho định danh PR1a (OZV-2024): chuẩn hoá + cờ off + migration 0004.
+// scripts/test-kho-dinh-danh.mjs — Kho định danh PR1a/PR1b (OZV-2024 / OZV-2026):
+// chuẩn hoá + cờ off + migration 0004 + soiBong (shadow không đổi frame) + nối identify.
 // Không mạng, không ghi data/ thật. Migration kiểm bằng parse SQL (CREATE TABLE 5 bảng + UNIQUE) và
 // chạy PGlite nếu có @electric-sql/pglite.
 import './test-isolate-data.mjs';
@@ -129,7 +130,7 @@ try {
   }
 }
 
-// ── 5. bang-co ────────────────────────────────────────────────────────────────────────────────────────────────
+// ── 5. bang-co + dau-noi ──────────────────────────────────────────────────────────────────────────────────────
 {
   const bang = JSON.parse(fs.readFileSync(path.join(root, 'data', 'luat', 'bang-co.json'), 'utf8'));
   const list = bang.co || [];
@@ -138,6 +139,109 @@ try {
   check('bang-co: mặc định off', entry && entry.macDinh === 'off' && entry.macDinhBat === false);
   check('bang-co: cheDo gồm off/shadow/on', entry && Array.isArray(entry.cheDo) && entry.cheDo.includes('off') && entry.cheDo.includes('shadow') && entry.cheDo.includes('on'));
   check('bang-co: có khối bong (shadow)', entry && entry.bong && typeof entry.bong === 'object');
+  check('bang-co: bong.the = OZV-2026 (PR1b)', entry && entry.bong && entry.bong.the === 'OZV-2026');
+  check('bang-co: máy thật chưa chạy bóng', entry && entry.bong && entry.bong.dangChayMayThat === false);
+
+  const dauNoi = JSON.parse(fs.readFileSync(path.join(root, 'data', 'luat', 'dau-noi.json'), 'utf8'));
+  const idPath = (dauNoi.duong || []).find((d) => d.duong === '/api/identify');
+  check('dau-noi: /api/identify ghi đọc kho sau HS_KHO_DINH_DANH', idPath && typeof idPath.ghiChu === 'string' && idPath.ghiChu.includes('HS_KHO_DINH_DANH'));
+}
+
+// ── 6. soiBong / chayBongNeuCan (PR1b) ────────────────────────────────────────────────────────────────────────
+{
+  delete process.env.HS_KHO_DINH_DANH;
+  const logs = [];
+  const r = await kho.soiBong(
+    { thuongHieu: 'Mitsubishi', model: 'FR-D720-0.75K' },
+    { frame: { chuong: '85', model: 'FR-D720-0.75K', thuongHieu: 'Mitsubishi' } },
+    { ghiLog: (l) => logs.push(l) },
+  );
+  check('soiBong: cờ off → ketQua OFF, không chuẩn hoá', r.ketQua === 'OFF' && logs.length === 1 && !logs[0].hangChuan);
+  check('chayBongNeuCan: off → null (no-op)', kho.chayBongNeuCan({ thuongHieu: 'X', model: 'ABCD1234' }, {}) === null);
+}
+{
+  process.env.HS_KHO_DINH_DANH = 'shadow';
+  const ketQua = { frame: { chuong: '85', model: 'FR-D720-0.75K', thuongHieu: 'Mitsubishi Electric' }, xacMinh: { muc: 'HYPOTHESIS' } };
+  const snap = JSON.stringify(ketQua);
+  const logs = [];
+  const r = await kho.soiBong(
+    { thuongHieu: 'Mitsubishi Electric Corp.', model: 'FR-D720-0.75K' },
+    ketQua,
+    { ghiLog: (l) => logs.push(l) },
+  );
+  check('soiBong shadow: type + TRUOT_KHO (stub docKho)', r.type === 'kho_dinh_danh' && r.ketQua === 'TRUOT_KHO' && r.cheDo === 'shadow');
+  check('soiBong shadow: chuẩn hoá hang+model', r.hangChuan === 'mitsubishi' && r.modelRutGon === 'frd720075k');
+  check('soiBong shadow: có msTraKho số', typeof r.msTraKho === 'number' && r.msTraKho >= 0);
+  check('soiBong shadow: KHÔNG đổi frame khách', JSON.stringify(ketQua) === snap);
+  check('soiBong shadow: frameKhach giữ chuong/model/thuongHieu', r.frameKhach?.chuong === '85' && r.frameKhach?.model === 'FR-D720-0.75K');
+  const logs2 = [];
+  const p = kho.chayBongNeuCan(
+    { thuongHieu: 'Siemens', model: '6ES7214-1AG40-0XB0' },
+    { frame: { chuong: '85' } },
+    { awaitKhoBong: true, ghiLog: (l) => logs2.push(l) },
+  );
+  check('chayBongNeuCan shadow: trả Promise', p && typeof p.then === 'function');
+  const r2 = await p;
+  check('chayBongNeuCan shadow: log TRUOT_KHO', r2 && r2.ketQua === 'TRUOT_KHO' && logs2.length === 1);
+  delete process.env.HS_KHO_DINH_DANH;
+}
+{
+  process.env.HS_KHO_DINH_DANH = 'shadow';
+  const r = await kho.soiBong({ thuongHieu: 'X', model: 'AB' }, {}, { ghiLog: () => {} });
+  check('soiBong shadow: thiếu khoá model → THIEU_KHOA', r.ketQua === 'THIEU_KHOA');
+  delete process.env.HS_KHO_DINH_DANH;
+}
+
+// ── 7. Nối identify: off = không gọi bóng; shadow = log, frame khách không đổi ────────────────────────────────
+{
+  const llmTier = require('../lib/llm-tier.js');
+  const orig = llmTier.callLLMJson;
+  llmTier.callLLMJson = async () => ({
+    json: {
+      chuong: '84',
+      model: 'FR-D720-0.75K',
+      thuongHieu: 'Mitsubishi',
+      truong: {
+        machineFunction: 'biến tần',
+        power: '0,75 kW',
+        nguyenLyHoatDong: 'biến đổi tần số điện',
+        chucNangChinh: 'điều khiển động cơ',
+      },
+      nguon: [],
+    },
+    provider: 'stub',
+    model: 'stub',
+  });
+  const { identify } = require('../lib/identify.js');
+  const fetchOk = async () => ({ ok: true, status: 200, arrayBuffer: async () => Buffer.from('FR-D720') });
+
+  delete process.env.HS_KHO_DINH_DANH;
+  const logsOff = [];
+  const rOff = await identify(
+    { tenHang: 'biến tần Mitsubishi FR-D720-0.75K', model: 'FR-D720-0.75K', thuongHieu: 'Mitsubishi' },
+    { fetchImpl: fetchOk, timWeb: async () => null, khoBong: { awaitKhoBong: true, ghiLog: (l) => logsOff.push(l) } },
+  );
+  check('identify off: không ghi log bóng', logsOff.length === 0);
+  check('identify off: có frame chương', rOff.frame?.chuong === '84');
+  const snapOff = JSON.stringify({ chuong: rOff.frame?.chuong, model: rOff.frame?.model, thuongHieu: rOff.frame?.thuongHieu });
+
+  process.env.HS_KHO_DINH_DANH = 'shadow';
+  const logsSh = [];
+  const rSh = await identify(
+    { tenHang: 'biến tần Mitsubishi FR-D720-0.75K', model: 'FR-D720-0.75K', thuongHieu: 'Mitsubishi' },
+    { fetchImpl: fetchOk, timWeb: async () => null, khoBong: { awaitKhoBong: true, ghiLog: (l) => logsSh.push(l) } },
+  );
+  const snapSh = JSON.stringify({ chuong: rSh.frame?.chuong, model: rSh.frame?.model, thuongHieu: rSh.frame?.thuongHieu });
+  check('identify shadow: có log bóng TRUOT_KHO', logsSh.length === 1 && logsSh[0].type === 'kho_dinh_danh' && logsSh[0].ketQua === 'TRUOT_KHO');
+  check('identify shadow: frame khách = off (không đổi vì kho)', snapSh === snapOff);
+  check('identify shadow: phản hồi không gắn field kho vào khách', rSh.khoDinhDanh == null && rSh.kho_dinh_danh == null);
+
+  // Nguồn: lib/identify.js phải gọi chayBongNeuCan
+  const srcId = fs.readFileSync(path.join(root, 'lib', 'identify.js'), 'utf8');
+  check('identify.js: import chayBongNeuCan', /chayBongNeuCan/.test(srcId) && /kho-dinh-danh/.test(srcId));
+
+  llmTier.callLLMJson = orig;
+  delete process.env.HS_KHO_DINH_DANH;
 }
 
 console.log(`\n${pass} passed | ${fail} failed`);
