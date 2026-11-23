@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L33-20261111#soat-L33",
-    "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu biểu + 8539: tầng đèn pha gắn kín / bóng dây tóc khác (pcl) → ha-lo-gien / Loại khác / Bộ phận; BO_VE 'trừ bóng UV/IR' không đổi mã thực tế (không có dòng 98 nào cho UV/IR).",
-    "bam": "2db1617965e485379865d0391dc118ecc78db4b0dacba2936fdc3218fe1f2927"
+    "phien": "claude-code:ozv-1944#soat-984932",
+    "ngay": "2026-11-22",
+    "ghiChu": "Sửa 5 điểm soat-khac trên PR #1656 (OZV-1944)",
+    "bam": "b92c7c2f2e45007166e782eaaec7e90ac1aae916225bb2ee6af12b434da04864"
   },
   "dieuKienNut": [
     {
@@ -26,11 +26,10 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Đèn pha gắn kín"
-        },
-        {
-          "fact": "laBoPhan",
-          "op": "KHONG"
+          "value": [
+            "Đèn pha gắn kín",
+            "sealed beam lamp units"
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -44,10 +43,6 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "bóng đèn dây tóc"
-        },
-        {
-          "fact": "laBoPhan",
-          "op": "KHONG"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET",
@@ -164,6 +159,33 @@
       "ma": "984932",
       "loai": "QUYET_DINH",
       "ghiChu": "Claude 07/11/2026 (#1109): tầng \"Đèn pha gắn kín\", \"Các loại bóng đèn dây tóc khác…\" là chính bóng đèn, cạnh tầng anh em \"Bộ phận\" ⇒ laBoPhan KHONG (căn cứ cấu trúc: cảnh báo cong3-khong-bo-phan-tu-anh-em). Chồng lấn cũ .20/.30 ↔ .90 do spec sót vế."
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "984932~r19686",
+        "984932~r19691"
+      ],
+      "truc": {
+        "984932~r19686": "TEN_LOAI",
+        "984932~r19691": "DAC_DIEM"
+      },
+      "cauHoiPhanBiet": "Hàng là \"Các loại bóng đèn dây tóc khác\" hoàn chỉnh (984932~r19686) hay là \"Bộ phận\" của bóng đèn (984932~r19691)?",
+      "trich": {
+        "984932~r19686": "Các loại bóng đèn dây tóc khác, trừ bóng đèn tia cực tím hoặc tia hồng ngoại",
+        "984932~r19691": "Bộ phận"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "984932~r19686",
+            "984932~r19691"
+          ],
+          "khongCoHangThat": "Một mặt hàng không vừa là bóng đèn dây tóc hoàn chỉnh vừa là bộ phận rời của bóng đèn."
+        }
+      ],
+      "phanXu": null
     }
   ]
 }

@@ -4,13 +4,19 @@
   "nhom": "8415",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-841581",
     "ngay": "2026-11-04"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1947#soat-841581",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1947)",
+    "bam": "a33c891b45eb0ed8556a27f9c8ce4bdace1b870cc91fa7307cab298cd581bd8c"
+  },
   "dieuKienNut": [
     {
       "id": "8415811",
@@ -23,7 +29,7 @@
           "value": "phương tiện bay"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "8415812",
@@ -36,7 +42,7 @@
           "value": "phương tiện giao thông đường sắt"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "8415813",
@@ -46,10 +52,10 @@
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
-          "value": "xe có động cơ (trừ loại thuộc phân nhóm 8415.20)"
+          "value": "xe có động cơ"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -65,7 +71,7 @@
           "donVi": "kW"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84158112",
@@ -85,14 +91,14 @@
           "donVi": "m3/phút"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84158119",
       "nguon": "tax.84158119",
       "trich": "84158119 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84158121",
@@ -106,14 +112,14 @@
           "donVi": "kW"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84158129",
       "nguon": "tax.84158129",
       "trich": "84158129 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84158131",
@@ -127,14 +133,14 @@
           "donVi": "kW"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84158139",
       "nguon": "tax.84158139",
       "trich": "84158139 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84158195",
@@ -160,7 +166,7 @@
           "donVi": "m3/phút"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84158196",
@@ -180,7 +186,7 @@
           "donVi": "m3/phút"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84158197",
@@ -194,7 +200,7 @@
           "donVi": "kW"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84158198",
@@ -214,14 +220,14 @@
           "donVi": "kW"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "84158199",
       "nguon": "tax.84158199",
       "trich": "84158199 - - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -279,6 +285,12 @@
       "ma": "84158198",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.84158198: \"Công suất làm mát trên 21,10 kW nhưng không quá 26,38 kW\" ⇒ congSuat > 21.1 kW, <= 26.38 kW"
+    },
+    {
+      "ma": "8415813",
+      "loai": "BO_VE",
+      "ve": "(trừ loại thuộc phân nhóm 8415.20)",
+      "lyDo": "Phạm vi phân nhóm 8415.81/8415.82/8415.83 ở cấp 6 số đã tách khỏi 8415.20; vế ngoặc chỉ nhắc lại phân nhóm 6 số 8415.20, không phân biệt các dòng 8 số trong phân nhóm này."
     }
   ],
   "traVe": [

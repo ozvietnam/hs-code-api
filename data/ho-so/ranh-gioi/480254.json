@@ -4,13 +4,25 @@
   "nhom": "4802",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-480254",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1947#soat-480254",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1947)",
+    "giaiQuyetDeTrong": [
+      {
+        "ma": "480254",
+        "ketLuan": "Đã đối chiếu SEN 4802: cặp 48025440 ↔ 48025450 khai Q1 trong chongLanTruc hợp lệ."
+      }
+    ],
+    "bam": "21c9e3f56712951a348931c37396fb79a7537f094d66da5b539ebd98f4b6e758"
+  },
   "dieuKienNut": [
     {
       "id": "4802541",
@@ -29,7 +41,7 @@
           "donVi": "g/m2"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "4802542",
@@ -42,7 +54,7 @@
           "value": "làm nền sản xuất giấy carbon"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": true
     }
   ],
@@ -79,21 +91,23 @@
                 "donVi": "cm"
               },
               {
-                "fact": "daGap",
-                "op": "KHONG"
+                "fact": "chieuKiaTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
               }
             ]
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "48025419",
       "nguon": "tax.48025419",
       "trich": "48025419 - - - - Loại khác (SEN)",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "48025421",
@@ -127,21 +141,23 @@
                 "donVi": "cm"
               },
               {
-                "fact": "daGap",
-                "op": "KHONG"
+                "fact": "chieuKiaTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
               }
             ]
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "48025429",
       "nguon": "tax.48025429",
       "trich": "48025429 - - - - Loại khác (SEN)",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "48025430",
@@ -154,7 +170,7 @@
           "value": "làm nền sản xuất giấy tráng nhôm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "48025440",
@@ -193,14 +209,16 @@
                 "donVi": "cm"
               },
               {
-                "fact": "daGap",
-                "op": "KHONG"
+                "fact": "chieuKiaTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
               }
             ]
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "48025450",
@@ -212,14 +230,14 @@
           "op": "CO"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "48025490",
       "nguon": "tax.48025490",
       "trich": "48025490 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "chongLanTruc": [
@@ -339,6 +357,24 @@
       "ma": "480254",
       "loai": "QUYET_DINH",
       "ghiChu": "Claude 07/11/2026 (#1109): .50 «Giấy và bìa nhiều lớp» chia theo đặc điểm (nhiều lớp), các nhánh khác chia theo công dụng. SEN 4802: giấy nhiều lớp thuộc 48.02 chỉ là loại dùng để viết, in, đồ bản ⇒ không đồng thời là giấy nền (carbon, tráng nhôm) — khai Q1. Cặp .40 (viết, in khổ nhỏ) ↔ .50: về chữ có thể chồng nhưng không thấy hàng thật dưới 40 g/m2 — khai Q1, ghi rõ để người soát xem lại. Lúc chạy hàng thoả hai nhánh ⇒ hỏi câu phân biệt."
+    },
+    {
+      "ma": "48025411",
+      "loai": "BO_VE",
+      "ve": "ở dạng không gấp",
+      "lyDo": "Vế nêu cách đo kích thước (trải phẳng, Chú giải 8 Chương 48 «ở dạng không gấp», EN «in the unfolded state»), không phải đặc điểm phân biệt hàng; kích thước đã số hoá ở motChieuTo/chieuKiaTo."
+    },
+    {
+      "ma": "48025421",
+      "loai": "BO_VE",
+      "ve": "ở dạng không gấp",
+      "lyDo": "Vế nêu cách đo kích thước (trải phẳng, Chú giải 8 Chương 48 «ở dạng không gấp», EN «in the unfolded state»), không phải đặc điểm phân biệt hàng; kích thước đã số hoá ở motChieuTo/chieuKiaTo."
+    },
+    {
+      "ma": "48025440",
+      "loai": "BO_VE",
+      "ve": "ở dạng không gấp",
+      "lyDo": "Vế nêu cách đo kích thước (trải phẳng, Chú giải 8 Chương 48 «ở dạng không gấp», EN «in the unfolded state»), không phải đặc điểm phân biệt hàng; kích thước đã số hoá ở motChieuTo/chieuKiaTo."
     }
   ],
   "traVe": [

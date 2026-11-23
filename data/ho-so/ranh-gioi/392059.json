@@ -4,13 +4,19 @@
   "nhom": "3920",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1705#soan-392059",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1947#soat-392059",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1947)",
+    "bam": "d5cd95c9e2a062ac8a014c6b36a5c5c593d361dbc7f4701379cd9960bbcac2ff"
+  },
   "dieuKienNut": [
     {
       "id": "3920591",
@@ -26,7 +32,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -36,9 +42,8 @@
       "trich": "Plastic cứng dạng tấm và phiến có modul đàn hồi uốn hoặc module đàn hồi kéo lớn hơn 100,000 psi ở 23°C và có độ ẩm tương đối là 50% khi thử nghiệm theo tiêu chuẩn ASTM D747 hoặc ASTM D790",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "cứng"
+          "fact": "loaiCung",
+          "op": "CO"
         },
         {
           "fact": "moDunDanHoi",
@@ -47,21 +52,21 @@
           "donVi": "psi"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39205919",
       "nguon": "tax.39205919",
       "trich": "39205919 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39205990",
       "nguon": "tax.39205990",
       "trich": "39205990 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [

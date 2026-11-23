@@ -837,6 +837,56 @@ check('trangThaiDong8.veMoHinh: 73181510 chấm trọn nhãn "Đường kính ng
   });
   check('OZV-1866 27101946: tách vế cha "Dầu và mỡ bôi trơn" không để 27101944 (Mỡ bôi trơn) tranh chấp → CHOT 27101946',
     cd.ketQua === 'CHOT' && cd.hs === '27101946', JSON.stringify([cd.ketQua, cd.hs]));
+
+  // ── OZV-1944: tách khoảng "trên 2.000 cc đến 3.000 cc" (98492812), kế thừa nút qua tầng Loại khác trần (98493330/40), phủ định LIET_KE "trừ loại bằng kẽm carbon" (98494321) ──
+  cd = chotDong8({
+    hs: '984928',
+    productText: 'Trục truyền động (kể cả trục cam và trục khuỷu) và tay biên; gối đỡ trục dùng ổ lăn và gối đỡ trục dùng ổ trượt; bánh răng và cụm bánh răng; vít bi hoặc vít đũa; hộp số và các cơ cấu điều tốc khác, kể cả bộ biến đổi mô men xoắn; bánh đà và ròng rọc, kể cả khối puli; ly hợp và khớp nối trục (kể cả khớp nối vạn năng): Trục truyền động (kể cả trục cam và trục khuỷu) và tay biên - Trục cam và trục khuỷu dùng cho động cơ xe của Chương 87: Cho xe có dung tích xi lanh trên 2.000 cc đến 3.000 cc',
+  });
+  check('OZV-1944 98492812: tách khoảng "trên 2.000 cc đến 3.000 cc" thoả cả > 2000 cc và <= 3000 cc → CHOT 98492812',
+    cd.ketQua === 'CHOT' && cd.hs === '98492812', JSON.stringify([cd.ketQua, cd.hs, cd.missingFacts]));
+
+  cd = chotDong8({
+    hs: '984928',
+    productText: 'Trục truyền động (kể cả trục cam và trục khuỷu) và tay biên: Trục cam và trục khuỷu dùng cho động cơ xe của Chương 87: Cho xe có dung tích xi lanh 3.500 cc',
+  });
+  check('OZV-1944 98492812 rào ngược: dung tích xi lanh 3.500 cc (> 3000 cc) → CHOT 98492813, không chốt 98492812',
+    cd.ketQua === 'CHOT' && cd.hs === '98492813', JSON.stringify([cd.ketQua, cd.hs]));
+
+  cd = chotDong8({
+    hs: '984933',
+    productText: 'Dây điện, cáp điện (kể cả cáp đồng trục) có cách điện (kể cả loại đã tráng men cách điện hoặc mạ lớp cách điện) và dây dẫn có cách điện khác, đã hoặc chưa gắn với đầu nối; cáp sợi quang, làm bằng các bó sợi đơn có vỏ bọc riêng biệt từng sợi, có hoặc không gắn với dây dẫn điện hoặc gắn với đầu nối: Dây dẫn điện khác, dùng cho điện áp không quá 1.000 V - Đã lắp với đầu nối điện - Cáp ắc quy: Cho xe thuộc nhóm 87.02, 87.03, 87.04, cách điện bằng thủy tinh',
+  });
+  check('OZV-1944 98493340: gỡ tiêu đề PN6 đa vế cho nút daGanDauNoi CO và kế thừa nút tổ tiên qua tầng Loại khác trần → CHOT 98493340 (không nhảy sang 98493320)',
+    cd.ketQua === 'CHOT' && cd.hs === '98493340', JSON.stringify([cd.ketQua, cd.hs, cd.missingFacts]));
+
+  cd = chotDong8({
+    hs: '984933',
+    productText: 'Dây dẫn điện khác, dùng cho điện áp không quá 1.000 V - chưa gắn với đầu nối - Cáp ắc quy: Cho xe thuộc nhóm 87.02, 87.03, 87.04, cách điện bằng thủy tinh',
+  });
+  check('OZV-1944 98493340 rào ngược: chưa gắn với đầu nối (trái 984933~r19702 daGanDauNoi CO) → không chốt 98493340',
+    cd.hs !== '98493340' && cd.hs !== '98493330', JSON.stringify([cd.ketQua, cd.hs]));
+
+  cd = chotDong8({
+    hs: '984943',
+    productText: 'Pin và bộ pin: Loại khác (trừ loại thuộc phân nhóm 8506.10, 8506.30, 8506.40, 8506.50, 8506.60), trừ loại bằng kẽm carbon: Có thể tích ngoài không quá 300 cm3',
+  });
+  check('OZV-1944 98494321: vế "trừ loại bằng kẽm carbon" thoả loaiPin PHAI_KHONG [KEM_CACBON] → CHOT 98494321',
+    cd.ketQua === 'CHOT' && cd.hs === '98494321', JSON.stringify([cd.ketQua, cd.hs, cd.missingFacts]));
+
+  cd = chotDong8({
+    hs: '984943',
+    productText: 'Pin và bộ pin bằng kẽm carbon: Có thể tích ngoài không quá 300 cm3',
+  });
+  check('OZV-1944 98494321 rào ngược: pin bằng kẽm carbon (trái PHAI_KHONG KEM_CACBON) → không chốt 98494321',
+    cd.hs !== '98494321', JSON.stringify([cd.ketQua, cd.hs]));
+
+  const t0ReDoS1944 = Date.now();
+  const chuoiDai1944 = `Trục cam và trục khuỷu dùng cho động cơ xe của Chương 87: Cho xe có dung tích xi lanh ${Array.from({ length: 10000 }, () => 'trên 2.000 cc đến').join(' ')} 3.000 cc`;
+  const kqReDoS1944 = chotDong8({ hs: '984928', productText: chuoiDai1944 });
+  const dtReDoS1944 = Date.now() - t0ReDoS1944;
+  check(`OZV-1944 ReDoS ~40.000 từ lặp chạy dưới 2000ms (thực tế ${dtReDoS1944}ms)`,
+    dtReDoS1944 < 2000 && kqReDoS1944.hs === '98492812', `${dtReDoS1944}ms`);
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);

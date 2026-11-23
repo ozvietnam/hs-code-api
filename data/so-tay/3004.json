@@ -204,27 +204,89 @@
     },
     {
       "hs": "30042010",
-      "dieuKien": "Phân nhóm 3004.20 [Medicaments; containing antibiotics (other than penicillins, streptomycins or their derivatives), for therapeutic or prophylactic uses, packaged for retail sale]: Chứa gentamycin, lincomycin, sulphamethoxazole hoặc các dẫn xuất của chúng, dạng uống (*) hoặc dạng mỡ",
+      "dieuKien": "tên loại hàng: gentamycin hoặc lincomycin hoặc sulphamethoxazole; dạng bào chế / đường dùng của thuốc: dạng uống hoặc dạng mỡ hoặc dạng uống hoặc dạng mỡ",
       "loaiKhac": false,
       "nguon": "tax.30042010",
-      "trich": "Chứa gentamycin, lincomycin, sulphamethoxazole hoặc các dẫn xuất của chúng, dạng uống (*) hoặc dạng mỡ",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "30042010 - - Chứa gentamycin, lincomycin, sulphamethoxazole hoặc các dẫn xuất của chúng, dạng uống (*) hoặc dạng mỡ",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "gentamycin",
+            "lincomycin",
+            "sulphamethoxazole"
+          ]
+        },
+        {
+          "fact": "dangBaoCheThuoc",
+          "op": "TRONG",
+          "value": [
+            "DANG_UONG",
+            "DANG_MO",
+            "UONG_HOAC_MO"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-300420",
+          "ngay": "2026-11-22",
+          "bam": "9f483bda6750558895567c2898257e8a1b67d1955bb96202b1aab9f527e9b2fa"
+        }
+      }
     },
     {
       "hs": "30042031",
-      "dieuKien": "Phân nhóm 3004.20 [Medicaments; containing antibiotics (other than penicillins, streptomycins or their derivatives), for therapeutic or prophylactic uses, packaged for retail sale]: Dạng uống (*) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+      "dieuKien": "dạng bào chế / đường dùng của thuốc: dạng uống",
       "loaiKhac": false,
       "nguon": "tax.30042031",
-      "trich": "Dạng uống (*)",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "30042031 - - - Dạng uống (*)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dangBaoCheThuoc",
+          "op": "TRONG",
+          "value": [
+            "DANG_UONG"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-300420",
+          "ngay": "2026-11-22",
+          "bam": "9f483bda6750558895567c2898257e8a1b67d1955bb96202b1aab9f527e9b2fa"
+        }
+      }
     },
     {
       "hs": "30042032",
-      "dieuKien": "Phân nhóm 3004.20 [Medicaments; containing antibiotics (other than penicillins, streptomycins or their derivatives), for therapeutic or prophylactic uses, packaged for retail sale]: Dạng mỡ (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+      "dieuKien": "dạng bào chế / đường dùng của thuốc: dạng mỡ",
       "loaiKhac": false,
       "nguon": "tax.30042032",
-      "trich": "Dạng mỡ",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "30042032 - - - Dạng mỡ",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dangBaoCheThuoc",
+          "op": "TRONG",
+          "value": [
+            "DANG_MO"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-300420",
+          "ngay": "2026-11-22",
+          "bam": "9f483bda6750558895567c2898257e8a1b67d1955bb96202b1aab9f527e9b2fa"
+        }
+      }
     },
     {
       "hs": "30042039",
@@ -246,11 +308,30 @@
     },
     {
       "hs": "30042071",
-      "dieuKien": "Phân nhóm 3004.20 [Medicaments; containing antibiotics (other than penicillins, streptomycins or their derivatives), for therapeutic or prophylactic uses, packaged for retail sale]: Dạng uống (*) hoặc dạng mỡ (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+      "dieuKien": "dạng bào chế / đường dùng của thuốc: dạng uống hoặc dạng mỡ hoặc dạng uống hoặc dạng mỡ",
       "loaiKhac": false,
       "nguon": "tax.30042071",
-      "trich": "Dạng uống (*) hoặc dạng mỡ",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "30042071 - - - Dạng uống (*) hoặc dạng mỡ",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dangBaoCheThuoc",
+          "op": "TRONG",
+          "value": [
+            "DANG_UONG",
+            "DANG_MO",
+            "UONG_HOAC_MO"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-300420",
+          "ngay": "2026-11-22",
+          "bam": "9f483bda6750558895567c2898257e8a1b67d1955bb96202b1aab9f527e9b2fa"
+        }
+      }
     },
     {
       "hs": "30042079",
@@ -271,11 +352,33 @@
     },
     {
       "hs": "30042091",
-      "dieuKien": "Phân nhóm 3004.20 [Medicaments; containing antibiotics (other than penicillins, streptomycins or their derivatives), for therapeutic or prophylactic uses, packaged for retail sale]: Dạng uống (*) hoặc dạng mỡ (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+      "dieuKien": "dạng bào chế / đường dùng của thuốc: dạng uống hoặc dạng mỡ hoặc dạng uống hoặc dạng mỡ",
       "loaiKhac": false,
       "nguon": "tax.30042091",
-      "trich": "Dạng uống (*) hoặc dạng mỡ",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "30042091 - - - Dạng uống (*) hoặc dạng mỡ",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dangBaoCheThuoc",
+          "op": "TRONG",
+          "value": [
+            "DANG_UONG",
+            "DANG_MO",
+            "UONG_HOAC_MO"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-300420",
+          "ngay": "2026-11-22",
+          "bam": "9f483bda6750558895567c2898257e8a1b67d1955bb96202b1aab9f527e9b2fa"
+        }
+      },
+      "phanConLai": [
+        "30042010"
+      ]
     },
     {
       "hs": "30042099",
@@ -413,11 +516,29 @@
     },
     {
       "hs": "30044911",
-      "dieuKien": "Phân nhóm 3004.49 [Medicaments; containing alkaloids or their derivatives; other than ephedrine, pseudoephedrine (INN) or norephedrine or their salts; for therapeutic or prophylactic uses, packaged for retail sale]: Dạng uống (*) hoặc tiêm (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+      "dieuKien": "dạng bào chế / đường dùng của thuốc: dạng uống hoặc dạng tiêm",
       "loaiKhac": false,
       "nguon": "tax.30044911",
-      "trich": "Dạng uống (*) hoặc tiêm",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "30044911 - - - - Dạng uống (*) hoặc tiêm",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dangBaoCheThuoc",
+          "op": "TRONG",
+          "value": [
+            "DANG_UONG",
+            "DANG_TIEM"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-300449",
+          "ngay": "2026-11-22",
+          "bam": "833db9aa75a70ecf150545e37f791a6771254281b3c29ee15b5271475bea4b70"
+        }
+      }
     },
     {
       "hs": "30044919",
@@ -438,11 +559,28 @@
     },
     {
       "hs": "30044951",
-      "dieuKien": "Phân nhóm 3004.49 [Medicaments; containing alkaloids or their derivatives; other than ephedrine, pseudoephedrine (INN) or norephedrine or their salts; for therapeutic or prophylactic uses, packaged for retail sale]: Dạng uống (*) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+      "dieuKien": "dạng bào chế / đường dùng của thuốc: dạng uống",
       "loaiKhac": false,
       "nguon": "tax.30044951",
-      "trich": "Dạng uống (*)",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "30044951 - - - - Dạng uống (*)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "dangBaoCheThuoc",
+          "op": "TRONG",
+          "value": [
+            "DANG_UONG"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-300449",
+          "ngay": "2026-11-22",
+          "bam": "833db9aa75a70ecf150545e37f791a6771254281b3c29ee15b5271475bea4b70"
+        }
+      }
     },
     {
       "hs": "30044959",
@@ -463,27 +601,130 @@
     },
     {
       "hs": "30044960",
-      "dieuKien": "Phân nhóm 3004.49 [Medicaments; containing alkaloids or their derivatives; other than ephedrine, pseudoephedrine (INN) or norephedrine or their salts; for therapeutic or prophylactic uses, packaged for retail sale]: Chứa theophylline, dạng uống (*)",
+      "dieuKien": "tên loại hàng: theophylline; dạng bào chế / đường dùng của thuốc: dạng uống",
       "loaiKhac": false,
       "nguon": "tax.30044960",
-      "trich": "Chứa theophylline, dạng uống (*)",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "30044960 - - - Chứa theophylline, dạng uống (*)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "theophylline"
+        },
+        {
+          "fact": "dangBaoCheThuoc",
+          "op": "TRONG",
+          "value": [
+            "DANG_UONG"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-300449",
+          "ngay": "2026-11-22",
+          "bam": "833db9aa75a70ecf150545e37f791a6771254281b3c29ee15b5271475bea4b70"
+        }
+      }
     },
     {
       "hs": "30044970",
-      "dieuKien": "Phân nhóm 3004.49 [Medicaments; containing alkaloids or their derivatives; other than ephedrine, pseudoephedrine (INN) or norephedrine or their salts; for therapeutic or prophylactic uses, packaged for retail sale]: Chứa atropine sulphate",
+      "dieuKien": "tên loại hàng: atropine sulphate",
       "loaiKhac": false,
       "nguon": "tax.30044970",
-      "trich": "Chứa atropine sulphate",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "30044970 - - - Chứa atropine sulphate",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "atropine sulphate"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-300449",
+          "ngay": "2026-11-22",
+          "bam": "833db9aa75a70ecf150545e37f791a6771254281b3c29ee15b5271475bea4b70"
+        }
+      }
     },
     {
       "hs": "30044980",
-      "dieuKien": "Phân nhóm 3004.49 [Medicaments; containing alkaloids or their derivatives; other than ephedrine, pseudoephedrine (INN) or norephedrine or their salts; for therapeutic or prophylactic uses, packaged for retail sale]: Chứa quinine hydrochloride hoặc dihydroquinine chloride, dùng để tiêm; Chứa quinine sulphate hoặc bisulphate, dạng uống (*)",
+      "dieuKien": "(tên loại hàng: quinine hydrochloride hoặc dihydroquinine chloride và dạng bào chế / đường dùng của thuốc: dạng tiêm) hoặc (tên loại hàng: quinine sulphate hoặc bisulphate và tên loại hàng: quinine và dạng bào chế / đường dùng của thuốc: dạng uống) hoặc (tên loại hàng: quinine hydrochloride và tên loại hàng: quinine sulphate)",
       "loaiKhac": false,
       "nguon": "tax.30044980",
-      "trich": "Chứa quinine hydrochloride hoặc dihydroquinine chloride, dùng để tiêm; Chứa quinine sulphate hoặc bisulphate, dạng uống (*)",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "30044980 - - - Chứa quinine hydrochloride hoặc dihydroquinine chloride, dùng để tiêm; Chứa quinine sulphate hoặc bisulphate, dạng uống (*)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "quinine hydrochloride",
+                  "dihydroquinine chloride"
+                ]
+              },
+              {
+                "fact": "dangBaoCheThuoc",
+                "op": "TRONG",
+                "value": [
+                  "DANG_TIEM"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "quinine sulphate",
+                  "bisulphate"
+                ]
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "quinine"
+              },
+              {
+                "fact": "dangBaoCheThuoc",
+                "op": "TRONG",
+                "value": [
+                  "DANG_UONG"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "quinine hydrochloride"
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "quinine sulphate"
+              }
+            ]
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-300449",
+          "ngay": "2026-11-22",
+          "bam": "833db9aa75a70ecf150545e37f791a6771254281b3c29ee15b5271475bea4b70"
+        }
+      }
     },
     {
       "hs": "30044990",
@@ -600,35 +841,115 @@
     },
     {
       "hs": "30049010",
-      "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Miếng thẩm thấu qua da dùng điều trị bệnh ung thư hoặc bệnh tim",
+      "dieuKien": "tên loại hàng: Miếng thẩm thấu qua da; dạng bào chế / đường dùng của thuốc: miếng dán thẩm thấu qua da; công dụng / mục đích: bệnh ung thư hoặc bệnh tim",
       "loaiKhac": false,
       "nguon": "tax.30049010",
-      "trich": "Miếng thẩm thấu qua da dùng điều trị bệnh ung thư hoặc bệnh tim",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "30049010 - - Miếng thẩm thấu qua da dùng điều trị bệnh ung thư hoặc bệnh tim",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Miếng thẩm thấu qua da"
+        },
+        {
+          "fact": "dangBaoCheThuoc",
+          "op": "TRONG",
+          "value": [
+            "MIENG_DAN_THAM_THAU"
+          ]
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "bệnh ung thư",
+            "bệnh tim"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-300490",
+          "ngay": "2026-11-22",
+          "bam": "9f6167a252f2cb8648cafe12e7d3c469b871a308a1f840210264ec1cd020be52"
+        }
+      }
     },
     {
       "hs": "30049020",
-      "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Nước vô trùng đóng kín để xông, loại dược phẩm — nước vô trùng điều chế từ nước để tiêm, đóng trong đồ chứa thủy tinh hoặc nhựa, nhãn ghi dùng qua đường xông và đường tiêu hóa",
+      "dieuKien": "tên loại hàng: Nước vô trùng đóng kín; công dụng / mục đích: xông",
       "loaiKhac": false,
-      "nguon": "sen.30049020",
-      "trich": "Sản phẩm này chứa nước vô trùng được điều chế từ nước để tiêm, loại đã vô trùng và được đóng gói trong đồ chứa bằng thủy tinh hoặc nhựa phù hợp và được dán nhãn với nội dung: sản phẩm này sử dụng qua đường xông và đường tiêu hóa.",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguon": "tax.30049020",
+      "trich": "30049020 - - Nước vô trùng đóng kín để xông, loại dược phẩm (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Nước vô trùng đóng kín"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "xông"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-300490",
+          "ngay": "2026-11-22",
+          "bam": "9f6167a252f2cb8648cafe12e7d3c469b871a308a1f840210264ec1cd020be52"
+        }
+      }
     },
     {
       "hs": "30049030",
-      "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Thuốc sát trùng (Antiseptics)",
+      "dieuKien": "tên loại hàng: thuốc sát trùng",
       "loaiKhac": false,
       "nguon": "tax.30049030",
-      "trich": "Thuốc sát trùng (Antiseptics)",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "30049030 - - Thuốc sát trùng (Antiseptics)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "thuốc sát trùng"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-300490",
+          "ngay": "2026-11-22",
+          "bam": "9f6167a252f2cb8648cafe12e7d3c469b871a308a1f840210264ec1cd020be52"
+        }
+      }
     },
     {
       "hs": "30049041",
-      "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Chứa procain hydroclorua (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+      "dieuKien": "tên loại hàng: procain hydroclorua",
       "loaiKhac": false,
       "nguon": "tax.30049041",
-      "trich": "Chứa procain hydroclorua",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "30049041 - - - Chứa procain hydroclorua",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "procain hydroclorua"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-300490",
+          "ngay": "2026-11-22",
+          "bam": "9f6167a252f2cb8648cafe12e7d3c469b871a308a1f840210264ec1cd020be52"
+        }
+      }
     },
     {
       "hs": "30049049",
@@ -649,35 +970,101 @@
     },
     {
       "hs": "30049051",
-      "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Chứa axit acetylsalicylic, paracetamol hoặc dipyrone (INN), dạng uống (*) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+      "dieuKien": "tên loại hàng: axit acetylsalicylic hoặc paracetamol hoặc dipyrone; dạng bào chế / đường dùng của thuốc: dạng uống",
       "loaiKhac": false,
       "nguon": "tax.30049051",
-      "trich": "Chứa axit acetylsalicylic, paracetamol hoặc dipyrone (INN), dạng uống (*)",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "30049051 - - - Chứa axit acetylsalicylic, paracetamol hoặc dipyrone (INN), dạng uống (*)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "axit acetylsalicylic",
+            "paracetamol",
+            "dipyrone"
+          ]
+        },
+        {
+          "fact": "dangBaoCheThuoc",
+          "op": "TRONG",
+          "value": [
+            "DANG_UONG"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-300490",
+          "ngay": "2026-11-22",
+          "bam": "9f6167a252f2cb8648cafe12e7d3c469b871a308a1f840210264ec1cd020be52"
+        }
+      }
     },
     {
       "hs": "30049053",
-      "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Chứa diclofenac, dạng uống (*) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+      "dieuKien": "tên loại hàng: diclofenac; dạng bào chế / đường dùng của thuốc: dạng uống",
       "loaiKhac": false,
       "nguon": "tax.30049053",
-      "trich": "Chứa diclofenac, dạng uống (*)",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "30049053 - - - Chứa diclofenac, dạng uống (*)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "diclofenac"
+        },
+        {
+          "fact": "dangBaoCheThuoc",
+          "op": "TRONG",
+          "value": [
+            "DANG_UONG"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-300490",
+          "ngay": "2026-11-22",
+          "bam": "9f6167a252f2cb8648cafe12e7d3c469b871a308a1f840210264ec1cd020be52"
+        }
+      }
     },
     {
       "hs": "30049054",
-      "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Chứa piroxicam (INN) hoặc ibuprofen (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+      "dieuKien": "tên loại hàng: piroxicam hoặc ibuprofen",
       "loaiKhac": false,
       "nguon": "tax.30049054",
-      "trich": "Chứa piroxicam (INN) hoặc ibuprofen",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "30049054 - - - Chứa piroxicam (INN) hoặc ibuprofen",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "piroxicam",
+            "ibuprofen"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-300490",
+          "ngay": "2026-11-22",
+          "bam": "9f6167a252f2cb8648cafe12e7d3c469b871a308a1f840210264ec1cd020be52"
+        }
+      }
     },
     {
       "hs": "30049055",
-      "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Loại khác, dạng dầu xoa bóp (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+      "dieuKien": "dạng bào chế / đường dùng của thuốc: dạng dầu xoa bóp",
       "loaiKhac": true,
       "nguon": "tax.30049055",
-      "trich": "Loại khác, dạng dầu xoa bóp",
-      "nguonLoai": "AI_DA_KIEM",
+      "trich": "30049055 - - - Loại khác, dạng dầu xoa bóp",
+      "nguonLoai": "CLAUDE_DUYET",
       "phamViLoaiKhac": {
         "nguonLoai": "MAY_SUY",
         "cha": "3004905",
@@ -688,6 +1075,23 @@
         ],
         "toTienCoTen": "300490",
         "dinhNghiaDuoc": true
+      },
+      "dieuKienSo": [
+        {
+          "fact": "dangBaoCheThuoc",
+          "op": "TRONG",
+          "value": [
+            "DAU_XOA_BOP"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-300490",
+          "ngay": "2026-11-22",
+          "bam": "9f6167a252f2cb8648cafe12e7d3c469b871a308a1f840210264ec1cd020be52"
+        }
       }
     },
     {
@@ -712,27 +1116,82 @@
     },
     {
       "hs": "30049062",
-      "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Chứa primaquine (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+      "dieuKien": "tên loại hàng: primaquine",
       "loaiKhac": false,
       "nguon": "tax.30049062",
-      "trich": "Chứa primaquine",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "30049062 - - - Chứa primaquine",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "primaquine"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-300490",
+          "ngay": "2026-11-22",
+          "bam": "9f6167a252f2cb8648cafe12e7d3c469b871a308a1f840210264ec1cd020be52"
+        }
+      }
     },
     {
       "hs": "30049064",
-      "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Chứa artemisinin trừ các loại thuộc phân nhóm 3004.60.10 (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+      "dieuKien": "tên loại hàng: artemisinin; không dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): phân nhóm 3004.60.10",
       "loaiKhac": false,
       "nguon": "tax.30049064",
-      "trich": "Chứa artemisinin trừ các loại thuộc phân nhóm 3004.60.10",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "30049064 - - - Chứa artemisinin trừ các loại thuộc phân nhóm 3004.60.10",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "artemisinin"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "phân nhóm 3004.60.10",
+          "chieu": "PHAI_KHONG"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-300490",
+          "ngay": "2026-11-22",
+          "bam": "9f6167a252f2cb8648cafe12e7d3c469b871a308a1f840210264ec1cd020be52"
+        }
+      }
     },
     {
       "hs": "30049065",
-      "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Thuốc đông y từ thảo dược (nhánh cùng 30049069) — được cơ quan có thẩm quyền nước nhập khẩu xác nhận là thuốc chữa bệnh; tối thiểu: đóng gói theo liều lượng, nhãn ghi điều trị/phòng chống bệnh cụ thể, chứa ≥1 thảo dược là hoạt chất; không đơn thuần duy trì sức khỏe (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+      "dieuKien": "tên loại hàng: Thuốc đông y từ thảo dược",
       "loaiKhac": false,
-      "nguon": "sen.30049065",
-      "trich": "Thuốc đông y từ thảo dược là dược phẩm được cơ quan nhà nước có thẩm quyền ở nước nhập khẩu xác nhận là thuốc chữa bệnh … đóng gói theo liều lượng, … ghi trên nhãn để điều trị hoặc phòng chống các dịch bệnh hoặc các bệnh cụ thể … Loại thuốc thảo dược này không đơn thuần chỉ để duy trì sức khỏe.",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguon": "tax.30049065",
+      "trich": "30049065 - - - - Thuốc đông y từ thảo dược (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thuốc đông y từ thảo dược"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-300490",
+          "ngay": "2026-11-22",
+          "bam": "9f6167a252f2cb8648cafe12e7d3c469b871a308a1f840210264ec1cd020be52"
+        }
+      },
+      "_ancNut": "3004906",
+      "_ancNuts": [
+        "3004906"
+      ]
     },
     {
       "hs": "30049069",
@@ -755,19 +1214,56 @@
     },
     {
       "hs": "30049071",
-      "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Chứa piperazine hoặc mebendazole (INN) (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+      "dieuKien": "tên loại hàng: piperazine hoặc mebendazole",
       "loaiKhac": false,
       "nguon": "tax.30049071",
-      "trich": "Chứa piperazine hoặc mebendazole (INN)",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "30049071 - - - Chứa piperazine hoặc mebendazole (INN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "piperazine",
+            "mebendazole"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-300490",
+          "ngay": "2026-11-22",
+          "bam": "9f6167a252f2cb8648cafe12e7d3c469b871a308a1f840210264ec1cd020be52"
+        }
+      }
     },
     {
       "hs": "30049072",
-      "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Thuốc đông y từ thảo dược (nhánh cùng 30049079) — được cơ quan có thẩm quyền nước nhập khẩu xác nhận là thuốc chữa bệnh; tối thiểu: đóng gói theo liều lượng, nhãn ghi điều trị/phòng chống bệnh cụ thể, chứa ≥1 thảo dược là hoạt chất; không đơn thuần duy trì sức khỏe (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+      "dieuKien": "tên loại hàng: Thuốc đông y từ thảo dược",
       "loaiKhac": false,
-      "nguon": "sen.30049072",
-      "trich": "Thuốc đông y từ thảo dược là dược phẩm được cơ quan nhà nước có thẩm quyền ở nước nhập khẩu xác nhận là thuốc chữa bệnh … đóng gói theo liều lượng, … ghi trên nhãn để điều trị hoặc phòng chống các dịch bệnh hoặc các bệnh cụ thể … Loại thuốc thảo dược này không đơn thuần chỉ để duy trì sức khỏe.",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguon": "tax.30049072",
+      "trich": "30049072 - - - - Thuốc đông y từ thảo dược (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thuốc đông y từ thảo dược"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-300490",
+          "ngay": "2026-11-22",
+          "bam": "9f6167a252f2cb8648cafe12e7d3c469b871a308a1f840210264ec1cd020be52"
+        }
+      },
+      "_ancNut": "3004907",
+      "_ancNuts": [
+        "3004907"
+      ]
     },
     {
       "hs": "30049079",
@@ -789,19 +1285,56 @@
     },
     {
       "hs": "30049081",
-      "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Thuốc khác điều trị ung thư, HIV/AIDS hoặc bệnh khó chữa khác (theo SEN: chỉ định cho bệnh nhân ung thư, tim, HIV/AIDS, suy thận hoặc bệnh kinh niên) — chứa deferoxamine, dạng tiêm",
+      "dieuKien": "tên loại hàng: deferoxamine; dạng bào chế / đường dùng của thuốc: dạng tiêm",
       "loaiKhac": false,
-      "nguon": "sen.30049081",
-      "trich": "CÁC THUỐC KHÁC ĐIỀU TRỊ UNG THƯ, HIV/AIDS HOẶC CÁC BỆNH KHÓ CHỮA KHÁC … Đây là những loại thuốc được chỉ định cho bệnh nhân mắc bệnh ung thư, bệnh tim, Virus suy giảm miễn dịch ở người (HIV)",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguon": "tax.30049081",
+      "trich": "30049081 - - - Chứa deferoxamine, dạng tiêm (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "deferoxamine"
+        },
+        {
+          "fact": "dangBaoCheThuoc",
+          "op": "TRONG",
+          "value": [
+            "DANG_TIEM"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-300490",
+          "ngay": "2026-11-22",
+          "bam": "9f6167a252f2cb8648cafe12e7d3c469b871a308a1f840210264ec1cd020be52"
+        }
+      }
     },
     {
       "hs": "30049082",
-      "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Thuốc khác điều trị ung thư, HIV/AIDS hoặc bệnh khó chữa khác — thuốc chống HIV/AIDS",
+      "dieuKien": "tên loại hàng: Thuốc chống HIV/AIDS",
       "loaiKhac": false,
-      "nguon": "sen.30049082",
-      "trich": "CÁC THUỐC KHÁC ĐIỀU TRỊ UNG THƯ, HIV/AIDS HOẶC CÁC BỆNH KHÓ CHỮA KHÁC … Đây là những loại thuốc được chỉ định cho bệnh nhân mắc bệnh ung thư, bệnh tim, Virus suy giảm miễn dịch ở người (HIV)/Hội chứng suy giảm miễn dịch mắc phải (AIDS) hoặc HIV/AIDS",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguon": "tax.30049082",
+      "trich": "30049082 - - - Thuốc chống HIV/AIDS (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thuốc chống HIV/AIDS"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-300490",
+          "ngay": "2026-11-22",
+          "bam": "9f6167a252f2cb8648cafe12e7d3c469b871a308a1f840210264ec1cd020be52"
+        }
+      }
     },
     {
       "hs": "30049089",
@@ -823,59 +1356,254 @@
     },
     {
       "hs": "30049091",
-      "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Chứa natri clorua hoặc glucose, dạng truyền (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+      "dieuKien": "tên loại hàng: natri clorua hoặc glucose; dạng bào chế / đường dùng của thuốc: dạng truyền",
       "loaiKhac": false,
       "nguon": "tax.30049091",
-      "trich": "Chứa natri clorua hoặc glucose, dạng truyền",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "30049091 - - - Chứa natri clorua hoặc glucose, dạng truyền",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "natri clorua",
+            "glucose"
+          ]
+        },
+        {
+          "fact": "dangBaoCheThuoc",
+          "op": "TRONG",
+          "value": [
+            "DANG_TRUYEN"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-300490",
+          "ngay": "2026-11-22",
+          "bam": "9f6167a252f2cb8648cafe12e7d3c469b871a308a1f840210264ec1cd020be52"
+        }
+      }
     },
     {
       "hs": "30049092",
-      "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Chứa sorbitol hoặc salbutamol, dạng truyền (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+      "dieuKien": "tên loại hàng: sorbitol hoặc salbutamol; dạng bào chế / đường dùng của thuốc: dạng truyền",
       "loaiKhac": false,
       "nguon": "tax.30049092",
-      "trich": "Chứa sorbitol hoặc salbutamol, dạng truyền",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "30049092 - - - Chứa sorbitol hoặc salbutamol, dạng truyền",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "sorbitol",
+            "salbutamol"
+          ]
+        },
+        {
+          "fact": "dangBaoCheThuoc",
+          "op": "TRONG",
+          "value": [
+            "DANG_TRUYEN"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-300490",
+          "ngay": "2026-11-22",
+          "bam": "9f6167a252f2cb8648cafe12e7d3c469b871a308a1f840210264ec1cd020be52"
+        }
+      }
     },
     {
       "hs": "30049093",
-      "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Chứa sorbitol hoặc salbutamol, ở dạng khác (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+      "dieuKien": "tên loại hàng: sorbitol hoặc salbutamol",
       "loaiKhac": false,
       "nguon": "tax.30049093",
-      "trich": "Chứa sorbitol hoặc salbutamol, ở dạng khác",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "30049093 - - - Chứa sorbitol hoặc salbutamol, ở dạng khác",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "sorbitol",
+            "salbutamol"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-300490",
+          "ngay": "2026-11-22",
+          "bam": "9f6167a252f2cb8648cafe12e7d3c469b871a308a1f840210264ec1cd020be52"
+        }
+      },
+      "phanConLai": true
     },
     {
       "hs": "30049094",
-      "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Chứa cimetidine (INN) hoặc ranitidine (INN) trừ dạng tiêm (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+      "dieuKien": "tên loại hàng: cimetidine hoặc ranitidine; (không dạng bào chế / đường dùng của thuốc: dạng tiêm) hoặc (tên loại hàng: ranitidine (INN) trừ dạng tiêm)",
       "loaiKhac": false,
       "nguon": "tax.30049094",
-      "trich": "Chứa cimetidine (INN) hoặc ranitidine (INN) trừ dạng tiêm",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "30049094 - - - Chứa cimetidine (INN) hoặc ranitidine (INN) trừ dạng tiêm",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "cimetidine",
+            "ranitidine"
+          ]
+        },
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "dangBaoCheThuoc",
+                "op": "TRONG",
+                "value": [
+                  "DANG_TIEM"
+                ],
+                "chieu": "PHAI_KHONG"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "ranitidine (INN) trừ dạng tiêm"
+              }
+            ]
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-300490",
+          "ngay": "2026-11-22",
+          "bam": "9f6167a252f2cb8648cafe12e7d3c469b871a308a1f840210264ec1cd020be52"
+        }
+      }
     },
     {
       "hs": "30049095",
-      "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Chứa phenobarbital, diazepam hoặc chlorpromazine, trừ dạng tiêm hoặc dạng truyền (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+      "dieuKien": "tên loại hàng: phenobarbital hoặc diazepam hoặc chlorpromazine; (không dạng bào chế / đường dùng của thuốc: dạng tiêm hoặc dạng truyền) hoặc (tên loại hàng: trừ dạng tiêm và tên loại hàng: dạng truyền)",
       "loaiKhac": false,
       "nguon": "tax.30049095",
-      "trich": "Chứa phenobarbital, diazepam hoặc chlorpromazine, trừ dạng tiêm hoặc dạng truyền",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "30049095 - - - Chứa phenobarbital, diazepam hoặc chlorpromazine, trừ dạng tiêm hoặc dạng truyền",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "phenobarbital",
+            "diazepam",
+            "chlorpromazine"
+          ]
+        },
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "dangBaoCheThuoc",
+                "op": "TRONG",
+                "value": [
+                  "DANG_TIEM",
+                  "DANG_TRUYEN"
+                ],
+                "chieu": "PHAI_KHONG"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "trừ dạng tiêm"
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "dạng truyền"
+              }
+            ]
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-300490",
+          "ngay": "2026-11-22",
+          "bam": "9f6167a252f2cb8648cafe12e7d3c469b871a308a1f840210264ec1cd020be52"
+        }
+      }
     },
     {
       "hs": "30049096",
-      "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Thuốc nhỏ mũi có chứa naphazoline, xylometazoline hoặc oxymetazoline (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+      "dieuKien": "tên loại hàng: Thuốc nhỏ mũi; tên loại hàng: naphazoline hoặc xylometazoline hoặc oxymetazoline",
       "loaiKhac": false,
       "nguon": "tax.30049096",
-      "trich": "Thuốc nhỏ mũi có chứa naphazoline, xylometazoline hoặc oxymetazoline",
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "30049096 - - - Thuốc nhỏ mũi có chứa naphazoline, xylometazoline hoặc oxymetazoline",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thuốc nhỏ mũi"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "naphazoline",
+            "xylometazoline",
+            "oxymetazoline"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-300490",
+          "ngay": "2026-11-22",
+          "bam": "9f6167a252f2cb8648cafe12e7d3c469b871a308a1f840210264ec1cd020be52"
+        }
+      }
     },
     {
       "hs": "30049098",
-      "dieuKien": "Phân nhóm 3004.90 [Medicaments; consisting of mixed or unmixed products n.e.c. in heading no. 3004, for therapeutic or prophylactic uses, packaged for retail sale]: Thuốc đông y từ thảo dược (nhánh cùng 30049099) — được cơ quan có thẩm quyền nước nhập khẩu xác nhận là thuốc chữa bệnh; tối thiểu: đóng gói theo liều lượng, nhãn ghi điều trị/phòng chống bệnh cụ thể, chứa ≥1 thảo dược là hoạt chất; không đơn thuần duy trì sức khỏe (dòng cha cấp trên KHÔNG có trong nguồn — đối chiếu biểu thuế)",
+      "dieuKien": "tên loại hàng: Thuốc đông y từ thảo dược",
       "loaiKhac": false,
-      "nguon": "sen.30049098",
-      "trich": "Thuốc đông y từ thảo dược là dược phẩm được cơ quan nhà nước có thẩm quyền ở nước nhập khẩu xác nhận là thuốc chữa bệnh … đóng gói theo liều lượng, … ghi trên nhãn để điều trị hoặc phòng chống các dịch bệnh hoặc các bệnh cụ thể … Loại thuốc thảo dược này không đơn thuần chỉ để duy trì sức khỏe.",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguon": "tax.30049098",
+      "trich": "30049098 - - - - Thuốc đông y từ thảo dược (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thuốc đông y từ thảo dược"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-300490",
+          "ngay": "2026-11-22",
+          "bam": "9f6167a252f2cb8648cafe12e7d3c469b871a308a1f840210264ec1cd020be52"
+        }
+      }
     },
     {
       "hs": "30049099",
@@ -1845,5 +2573,246 @@
       ]
     }
   },
-  "yKienWcoDayDu": false
+  "yKienWcoDayDu": false,
+  "dieuKienNut": [
+    {
+      "id": "3004203",
+      "nguon": "tieuDe.3004203",
+      "trich": "3004203 Chứa erythromycin hoặc các dẫn xuất của chúng",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "erythromycin"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-300420",
+          "ngay": "2026-11-22",
+          "bam": "9f483bda6750558895567c2898257e8a1b67d1955bb96202b1aab9f527e9b2fa"
+        }
+      }
+    },
+    {
+      "id": "3004207",
+      "nguon": "tieuDe.3004207",
+      "trich": "3004207 Chứa tetracylin hoặc chloramphenicol hoặc các dẫn xuất của chúng",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "tetracylin",
+            "chloramphenicol"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-300420",
+          "ngay": "2026-11-22",
+          "bam": "9f483bda6750558895567c2898257e8a1b67d1955bb96202b1aab9f527e9b2fa"
+        }
+      }
+    },
+    {
+      "id": "3004491",
+      "nguon": "tieuDe.3004491",
+      "trich": "3004491 Chứa morphine hoặc các dẫn xuất của nó",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "morphine"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "dẫn xuất"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "morphine"
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-300449",
+          "ngay": "2026-11-22",
+          "bam": "833db9aa75a70ecf150545e37f791a6771254281b3c29ee15b5271475bea4b70"
+        }
+      }
+    },
+    {
+      "id": "3004495",
+      "nguon": "tieuDe.3004495",
+      "trich": "3004495 Chứa papaverine hoặc berberine",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "papaverine",
+            "berberine"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-300449",
+          "ngay": "2026-11-22",
+          "bam": "833db9aa75a70ecf150545e37f791a6771254281b3c29ee15b5271475bea4b70"
+        }
+      }
+    },
+    {
+      "id": "3004904",
+      "nguon": "tieuDe.3004904",
+      "trich": "3004904 Chất gây tê, gây mê (Anaesthetics)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Chất gây tê",
+            "gây mê"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-300490",
+          "ngay": "2026-11-22",
+          "bam": "9f6167a252f2cb8648cafe12e7d3c469b871a308a1f840210264ec1cd020be52"
+        }
+      }
+    },
+    {
+      "id": "3004905",
+      "nguon": "tieuDe.3004905",
+      "trich": "3004905 Thuốc giảm đau, thuốc hạ sốt và các loại dược phẩm khác dùng để điều trị ho hoặc cảm lạnh, có hoặc không chứa chất kháng histamin",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Thuốc giảm đau",
+            "thuốc hạ sốt"
+          ]
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "điều trị ho",
+            "cảm lạnh"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-300490",
+          "ngay": "2026-11-22",
+          "bam": "9f6167a252f2cb8648cafe12e7d3c469b871a308a1f840210264ec1cd020be52"
+        }
+      },
+      "phanConLai": false
+    },
+    {
+      "id": "3004906",
+      "nguon": "tieuDe.3004906",
+      "trich": "3004906 Thuốc chống sốt rét",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thuốc chống sốt rét"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-300490",
+          "ngay": "2026-11-22",
+          "bam": "9f6167a252f2cb8648cafe12e7d3c469b871a308a1f840210264ec1cd020be52"
+        }
+      }
+    },
+    {
+      "id": "3004907",
+      "nguon": "tieuDe.3004907",
+      "trich": "3004907 Thuốc tẩy giun",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thuốc tẩy giun"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-300490",
+          "ngay": "2026-11-22",
+          "bam": "9f6167a252f2cb8648cafe12e7d3c469b871a308a1f840210264ec1cd020be52"
+        }
+      }
+    },
+    {
+      "id": "3004908",
+      "nguon": "tieuDe.3004908",
+      "trich": "3004908 Các thuốc khác điều trị ung thư, HIV/AIDS hoặc các bệnh khó chữa khác",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Các thuốc khác"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "điều trị ung thư",
+            "HIV/AIDS",
+            "bệnh khó chữa khác"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-300490",
+          "ngay": "2026-11-22",
+          "bam": "9f6167a252f2cb8648cafe12e7d3c469b871a308a1f840210264ec1cd020be52"
+        }
+      },
+      "phanConLai": false
+    }
+  ]
 }

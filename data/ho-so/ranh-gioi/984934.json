@@ -12,9 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:tho-hs-02:20261114T2046#soat-984934",
-    "ngay": "2026-11-14",
-    "bam": "2f1c37e024c227ec0a40d93cfa76537152838d249acbfc09fca8d328c7eb4c22"
+    "phien": "claude-code:ozv-1926#soat-984934",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá điều kiện ranh giới và khép SẠCH V1 nhóm 9849 (OZV-1926)",
+    "bam": "9de9a5674ef97d3e646b285c88ab2c0e6b0afc704fa347ec8e8d29f6b29e8269"
   },
   "dieuKienNut": [
     {
@@ -227,10 +228,6 @@
         {
           "fact": "daLapRap",
           "op": "KHONG"
-        },
-        {
-          "fact": "laBoPhan",
-          "op": "KHONG"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -368,10 +365,6 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Hệ thống giảm chấn"
-        },
-        {
-          "fact": "laBoPhan",
-          "op": "KHONG"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -576,8 +569,8 @@
     },
     {
       "hs": "98493418",
-      "nguon": "tuongUng.98493418",
-      "trich": "Bộ phận của dây đai an toàn — mã hàng tương ứng: 8708.29.20",
+      "nguon": "tax.98493418",
+      "trich": "98493418 - - - - Bộ phận của dây đai an toàn",
       "dieuKienSo": [
         {
           "fact": "laBoPhan",
@@ -587,13 +580,6 @@
           "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": "dây đai an toàn"
-        },
-        {
-          "fact": "maHsTuongUng",
-          "op": "CONG_DUNG",
-          "value": [
-            "8708.29.20"
-          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -983,20 +969,13 @@
     },
     {
       "hs": "98493476",
-      "nguon": "tuongUng.98493476",
-      "trich": "Dùng cho xe thuộc nhóm 87.02 hoặc 87.04 (trừ phân nhóm 8704.10) — mã hàng tương ứng: 8708.70.23",
+      "nguon": "tax.98493476",
+      "trich": "98493476 - - - - Dùng cho xe thuộc nhóm 87.02 hoặc 87.04 (trừ phân nhóm 8704.10)",
       "dieuKienSo": [
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": "xe thuộc nhóm 87.02 hoặc 87.04"
-        },
-        {
-          "fact": "maHsTuongUng",
-          "op": "CONG_DUNG",
-          "value": [
-            "8708.70.23"
-          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -1023,8 +1002,8 @@
     },
     {
       "hs": "98493479",
-      "nguon": "tuongUng.98493479",
-      "trich": "Dùng cho xe tự đổ được thiết kế để sử dụng trên các loại đường không phải đường quốc lộ có khối lượng toàn bộ theo thiết kế trên 45 tấn — mã hàng tương ứng: 8708.70.33",
+      "nguon": "tax.98493479",
+      "trich": "98493479 - - - - Dùng cho xe tự đổ được thiết kế để sử dụng trên các loại đường không phải đường quốc lộ có khối lượng toàn bộ theo thiết kế trên 45 tấn",
       "dieuKienSo": [
         {
           "fact": "dungCho",
@@ -1036,13 +1015,6 @@
           "op": ">",
           "value": 45,
           "donVi": "tấn"
-        },
-        {
-          "fact": "maHsTuongUng",
-          "op": "CONG_DUNG",
-          "value": [
-            "8708.70.33"
-          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -1253,6 +1225,12 @@
       "ma": "98493483",
       "loai": "QUYET_DINH",
       "ghiChu": "OZV-655: lá chỉ dungCho 'xe 87.03' trùng nhiều nhánh (hộp số/cầu/bánh) — siết bằng maHsTuongUng 8708.70.97 (Cụm bánh xe) để hết chotSai .44/.51/.54/.58 → .83."
+    },
+    {
+      "ma": "98493476",
+      "loai": "BO_VE",
+      "ve": "(trừ phân nhóm 8704.10)",
+      "lyDo": "vế trừ dẫn phân nhóm 8704.10: tu-vung@2 không có op phủ định theo mã cho dungCho; xe tự đổ 8704.10 không có dòng bánh xe đã lắp lốp riêng trong 984934"
     }
   ],
   "traVe": [
@@ -1270,6 +1248,77 @@
       "phien": "claude-agent:tho-hs-02:20261114T2045#soat-984934",
       "ngay": "2026-11-14",
       "lyDo": "OZV-1030: siết maHsTuongUng 8708.70.96 cho 98493482"
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "984934~r19789",
+        "984934~r19793"
+      ],
+      "truc": {
+        "984934~r19789": "TEN_LOAI",
+        "984934~r19793": "DAC_DIEM"
+      },
+      "cauHoiPhanBiet": "Hàng là \"Hệ thống giảm chấn\" hoàn chỉnh (984934~r19789) hay là \"Bộ phận\" của hệ thống giảm chấn (984934~r19793)?",
+      "trich": {
+        "984934~r19789": "Hệ thống giảm chấn",
+        "984934~r19793": "Bộ phận"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "984934~r19789",
+            "984934~r19793"
+          ],
+          "khongCoHangThat": "Một mặt hàng không vừa là hệ thống giảm chấn hoàn chỉnh vừa là bộ phận rời của hệ thống giảm chấn."
+        }
+      ],
+      "phanXu": null
+    }
+  ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "98493451",
+        "98493457"
+      ],
+      "lyDo": "Hai nhánh cùng trục đặc điểm dưới tầng 984934~r19752: 98493451 \"Dùng cho xe thuộc nhóm 87.03\" dưới \"Chưa lắp ráp hoàn chỉnh\" (daLapRap=false) còn 98493457 \"Bánh răng vành khăn và bánh răng quả dứa\" dưới \"Bộ phận\" (laBoPhan=true) không giới hạn mức lắp ráp."
+    },
+    {
+      "cap": [
+        "98493451",
+        "98493458"
+      ],
+      "lyDo": "Hai nhánh cùng trục đặc điểm dưới tầng 984934~r19752: 98493451 \"Dùng cho xe thuộc nhóm 87.03\" dưới \"Chưa lắp ráp hoàn chỉnh\" (daLapRap=false) còn 98493458 \"Loại khác\" dưới \"Bộ phận\" (laBoPhan=true) không giới hạn mức lắp ráp."
+    },
+    {
+      "cap": [
+        "98493452",
+        "98493459"
+      ],
+      "lyDo": "Hai nhánh cùng trục đặc điểm dưới tầng 984934~r19752: 98493452 \"Dùng cho xe thuộc nhóm 87.04 hoặc nhóm 87.05\" dưới \"Chưa lắp ráp hoàn chỉnh\" (daLapRap=false) còn 98493459 \"Bánh răng vành khăn và bánh răng quả dứa\" dưới \"Bộ phận\" (laBoPhan=true) không giới hạn mức lắp ráp."
+    },
+    {
+      "cap": [
+        "98493452",
+        "98493460"
+      ],
+      "lyDo": "Hai nhánh cùng trục đặc điểm dưới tầng 984934~r19752: 98493452 \"Dùng cho xe thuộc nhóm 87.04 hoặc nhóm 87.05\" dưới \"Chưa lắp ráp hoàn chỉnh\" (daLapRap=false) còn 98493460 \"Loại khác\" dưới \"Bộ phận\" (laBoPhan=true) không giới hạn mức lắp ráp."
+    },
+    {
+      "cap": [
+        "98493453",
+        "98493459"
+      ],
+      "lyDo": "Hai nhánh cùng trục đặc điểm dưới tầng 984934~r19752: 98493453 \"Loại khác\" dưới \"Chưa lắp ráp hoàn chỉnh\" (daLapRap=false) còn 98493459 \"Bánh răng vành khăn và bánh răng quả dứa\" dưới \"Bộ phận\" (laBoPhan=true) không giới hạn mức lắp ráp."
+    },
+    {
+      "cap": [
+        "98493453",
+        "98493460"
+      ],
+      "lyDo": "Hai nhánh cùng trục đặc điểm dưới tầng 984934~r19752: 98493453 \"Loại khác\" dưới \"Chưa lắp ráp hoàn chỉnh\" (daLapRap=false) còn 98493460 \"Loại khác\" dưới \"Bộ phận\" (laBoPhan=true) không giới hạn mức lắp ráp."
     }
   ]
 }
