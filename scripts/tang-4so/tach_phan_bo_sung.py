@@ -5,19 +5,20 @@ Nguyên nhân gốc (ca 76, 23/11/2026): bản tách điều khoản chỉ nhậ
 vì thế chỉ có mục chú giải chi tiết (khoản "5a", "5b"... trùng id), không có Chú giải 1-4 của Phần, gồm Chú giải 2(b) "bộ phận có công dụng chung (Phần XV)
 không phải bộ phận của xe" là khoản tách khoá 8708 khỏi 8308.
 Tệp ra: data/luat/dieu-khoan-bo-sung.json, cùng khuôn với dieu-khoan-tang2.json, id dạng phan:<gan>:chu_giai_bs:<khoản><điểm>.
-Chỉ tách Phần có văn bản chú giải trong data/chu-giai-chuong.json mà tệp tang2 chưa có khoản 1 (hiện: Phần XVII, gan 86)."""
+Chỉ tách Phần có văn bản chú giải trong data/chu-giai-chuong.json mà tệp tang2 chưa có khoản 1 (hiện: Phần XVII gan 86, Phần VI gan 28).
+Lưu ý: chu-giai-chuong.json gắn văn bản Phần VI cho cả Chương 39-40 (Phần VII); ở đây chỉ áp cho Chương 28-38."""
 import json, os, re, sys
 
 REPO = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
-CHUONG_CUA_PHAN = {"86": ["86", "87", "88", "89"]}  # gan -> chương; khoá văn bản = chương đại diện
-KHOA_VAN_BAN = {"86": "87"}
-LA_MA = {"86": "XVII"}
+CHUONG_CUA_PHAN = {"86": ["86", "87", "88", "89"], "28": [str(i) for i in range(28, 39)]}  # gan -> chương
+KHOA_VAN_BAN = {"86": "87", "28": "28"}  # gan -> chương đại diện giữ văn bản Phần trong chu-giai-chuong.json
+LA_MA = {"86": "XVII", "28": "VI"}
 
 
 def bo_dau_so(s): return s
 
 
-def dich_cua(van, ten_nhom):
+def dich_cua(van, ten_nhom, gan="86"):
     """Đích của một điều khoản: nhóm 4 số (kể cả 'nhóm từ A đến B'), Chương (Cxx), Phần (P:XV)."""
     d = []
     for a, b, c, e in re.findall(r"(\d{2})\.(\d{2})\s+đến\s+(?:nhóm\s+)?(\d{2})\.(\d{2})", van):
@@ -26,7 +27,7 @@ def dich_cua(van, ten_nhom):
     for a, b in re.findall(r"\b(\d{2})\.(\d{2})\b", van): d.append(a + b)
     for c in re.findall(r"Chương\s+(\d{1,2})\b", van): d.append("C" + c.zfill(2))
     for m in re.findall(r"Phần\s+(I{1,3}|IV|VI{0,3}|IX|XI{0,3}|XIV|XV|XVI{0,3}|XIX|XX|XXI)\b", van):
-        if m != LA_MA.get("86"): d.append("P:" + m)  # Phần XVII nhắc chính nó: không phải đích
+        if m != LA_MA.get(gan): d.append("P:" + m)  # Phần XVII nhắc chính nó: không phải đích
     out = []
     for x in d:
         if x not in out: out.append(x)
@@ -35,7 +36,8 @@ def dich_cua(van, ten_nhom):
 
 def tach(van_ban, gan, ten_nhom):
     i = van_ban.find("Chú giải")
-    j = van_ban.find("TỔNG QUÁT", i)
+    m = re.search(r"TỔNG QUÁT|KHÁI QUÁT CHUNG", van_ban[i:])
+    j = i + m.start() if m else -1
     khoi = van_ban[i:j if j > 0 else None]
     dong = [l.rstrip() for l in khoi.split("\n")]
     # gộp dòng gãy
@@ -45,7 +47,7 @@ def tach(van_ban, gan, ten_nhom):
         nonlocal cur
         if cur: ra.append(cur); cur = None
     for l in dong[1:]:
-        m = re.match(r"^(\d+)\.\s*-?\s*(.*)$", l)
+        m = re.match(r"^(\d{1,2})\.(?!\d)\s*-?\s*(.*)$", l)
         if m:
             chot(); khoan = m.group(1); phan_dau = m.group(2)
             dan = ""
@@ -70,7 +72,7 @@ def tach(van_ban, gan, ten_nhom):
         kieu = "LOAI_TRU" if loai_tru else ("QUY_TAC_PHAN_LOAI" if re.search(r"phải phân loại|được phân loại|xếp vào|phân loại", goc) else "DINH_NGHIA_PHAM_VI")
         if r["dau"] and any(x["khoan"] == r["khoan"] and not x["dau"] for x in ra): continue  # khoản chỉ là dẫn của các điểm
         kq.append({"id": f"phan:{gan}:chu_giai_bs:{r['khoan']}{r['diem']}", "cap": "phan", "gan": gan, "vung": "chu_giai", "khoan": r["khoan"], "diem": r["diem"],
-                   "kieu": kieu, "dich": dich_cua(van, ten_nhom), "dan": dan if (dan and loai_tru) else "", "nguyenVan": van, "hieuLuc": "BAT_BUOC",
+                   "kieu": kieu, "dich": dich_cua(van, ten_nhom, gan), "dan": dan if (dan and loai_tru) else "", "nguyenVan": van, "hieuLuc": "BAT_BUOC",
                    "apChoChuong": CHUONG_CUA_PHAN[gan], "nguon": "data/chu-giai-chuong.json#%s.phan (tach_phan_bo_sung.py)" % KHOA_VAN_BAN[gan]})
     return kq
 

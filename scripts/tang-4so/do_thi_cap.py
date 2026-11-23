@@ -6,7 +6,7 @@ data/luat/dieu-khoan-tang2.json, Chú giải 2 Phần XVI, sổ tay data/so-tay/
   uv2, nguon = dt.mo_rong(uv, ho_so_hang)           # ứng viên sau khi đi 1 bước theo cạnh, kèm cạnh dẫn tới từng nhóm mới
   ks = dt.dieu_khoan_tach(uv2, ho_so_hang)          # list khoản nối, mỗi khoản nguyên văn + id + cạnh dẫn tới
 """
-import glob, gzip, json, os, re, subprocess, sys, tempfile
+import collections, glob, gzip, json, os, re, subprocess, sys, tempfile
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
@@ -284,6 +284,13 @@ class DoThiCap:
         goc = goc if goc is not None else uv
         return set(sorted(uv, key=lambda n: -self.lien_quan(n, tu))[:8]) | set(goc[:4])
 
+    def nhom_dang_xet(self, uv, h, mr=None, goc=None):
+        """Nhóm đáng xét: 10 nhóm khớp chữ của hàng nhất + 4 ứng viên gốc đầu + 5 nhóm đồ thị kéo thêm điểm cao nhất. Khoản nối chỉ xét giữa các nhóm này; nhóm ngoài tập này chỉ ghi tên."""
+        tu = _hh_tu(h)
+        mr = mr or {}
+        goc = goc if goc is not None else [n for n in uv if n not in mr]
+        return set(sorted(uv, key=lambda n: -self.lien_quan(n, tu))[:10]) | set(goc[:4]) | set(list(mr)[:5])
+
     def nhom_day_du(self, uv, h, goc=None):
         """Nhóm được hồ sơ đầy đủ (chú giải chi tiết + điều kiện vào nhóm): 6 nhóm khớp chữ của hàng nhất + 3 ứng viên gốc đầu danh sách; nhóm còn lại: tên + chú giải gọn."""
         tu = _hh_tu(h)
@@ -306,8 +313,8 @@ class DoThiCap:
         tu = _hh_tu(h)
         mr = nguon_mo_rong or {}
         goc = uv[:so_goc] if so_goc is not None else [n for n in uv if n not in mr]
-        dang_xet = {n for n in uv if n in mr or n in goc[:10] or self.lien_quan(n, tu) > 0}
-        trong_tam = self.trong_tam(uv, h, goc)  # cặp phải có ít nhất một nhóm trọng tâm
+        dang_xet = self.nhom_dang_xet(uv, h, mr, goc)
+        trong_tam = self.nhom_day_du(uv, h, goc)  # cặp phải có ít nhất một nhóm trọng tâm (nhóm có hồ sơ đầy đủ)
         cap, rieng, thay = {}, [], {}  # cap: khoá cặp -> [(điểm, khoản)]
 
         def ghi(k, cap_khoa, loai):
@@ -336,6 +343,7 @@ class DoThiCap:
                     if x["kieu"] == "DINH_NGHIA_PHAM_VI": ok = (a in dich) and (ten_b or ngoai)
                     elif x["kieu"] == "QUY_TAC_PHAN_LOAI": ok = ten_b and len(dich) <= 8
                     else: ok = ten_b or ngoai
+                    if ok and len(x["nguyenVan"]) > 1500 and not ten_b: ok = False  # khoản định nghĩa dài chỉ nêu cả Chương/Phần: không đưa vào (đã có phạm vi trong hồ sơ nhóm)
                     if ok: ghi(self._khoan(x["id"], x["kieu"], "dieu-khoan", van_dk(x), [f"{a}->{b}"], ten_chuong(x)), frozenset((a, b)), x["kieu"])
                     elif x["kieu"] == "LOAI_TRU":  # chuỗi hai khoản: khoản của A loại một loại hàng (vd "bộ phận công dụng chung, Phần XV"), khoản của B định nghĩa loại hàng đó nêu đích danh B
                         for y in self._khoan_dinh_nghia_toi(x, b):
@@ -351,10 +359,10 @@ class DoThiCap:
                     if x["kieu"] in ("QUY_TAC_PHAN_LOAI", "DINH_NGHIA_PHAM_VI", "CHUA_XEP") and "chuc nang rieng" in bo_dau(x["nguyenVan"]) and len(x["nguyenVan"]) <= 2500:
                         ghi(self._khoan(x["id"], x["kieu"], "dieu-khoan", van_dk(x), [f"{a}->{b}(chức năng riêng)"], ten_chuong(x)), frozenset((a, b)), "QUY_TAC_PHAN_LOAI")
         # (a2) khoản đã dẫn tới nhóm được mở rộng
-        for b, v in list(mr.items())[:6]:  # chỉ 6 nhóm kéo thêm điểm cao nhất
+        for b, v in list(mr.items())[:4]:  # chỉ 4 nhóm kéo thêm điểm cao nhất; chỉ khoản nêu đích danh nhóm (không phải khoản trỏ cả Chương)
             for l in v["ly"]:
                 y = self.dk_theo_id.get(l["id"])
-                if y and l["loai"].startswith("DK_"): ghi(self._khoan(y["id"], y["kieu"], "dieu-khoan", van_dk(y), [f"{l['tu']}->{b}(mo-rong)"], ten_chuong(y)), frozenset((l["tu"], b)), y["kieu"])
+                if y and l["loai"] in ("DK_LOAI_TRU", "DK_DINH_NGHIA_PHAM_VI"): ghi(self._khoan(y["id"], y["kieu"], "dieu-khoan", van_dk(y), [f"{l['tu']}->{b}(mo-rong)"], ten_chuong(y)), frozenset((l["tu"], b)), y["kieu"])
         # (b)
         for i, a in enumerate(uv):
             for b in uv[i + 1:]:
@@ -402,9 +410,23 @@ class DoThiCap:
                 return
             thay[k["id"]] = k; ra.append(k)
 
-        for k in rieng: them(k)
-        for khoa, ds in sorted(cap.items(), key=lambda kv: sorted(kv[0])):
-            for imp, k in sorted(ds, key=lambda t: (-t[0], t[1]["id"]))[:toi_da_moi_cap]: them(k)
+        vet = set()  # khoá văn bản: C5 / C7 / phanBiet / điều khoản cùng một trích dẫn chỉ giữ một khoản (giữ khoản ưu tiên cao nhất)
+
+        def khoa_van(k): return re.sub(r"[^a-z0-9 ]", "", bo_dau(k["nguyenVan"]))[-100:]
+
+        for k in rieng:
+            if khoa_van(k) in vet: continue
+            vet.add(khoa_van(k)); them(k)
+        tat_ca = []
+        for khoa, ds in cap.items():
+            for imp, k in ds: tat_ca.append((imp, khoa, k))
+        moi_cap = collections.Counter(); cap_luat = collections.defaultdict(bool)
+        for imp, khoa, k in sorted(tat_ca, key=lambda t: (-t[0], sorted(t[1]), t[2]["id"])):
+            if k["id"] in thay:  # đã có (khoản dùng cho nhiều cặp): thêm cạnh dẫn tới
+                them(k); continue
+            tien_le = k["kieu"] in ("C5", "C6", "WCO", "C8")  # tiền lệ/cạnh dễ nhầm: mỗi cặp tối đa 1, và không lấy khi cặp đã có khoản luật
+            if moi_cap[khoa] >= toi_da_moi_cap or khoa_van(k) in vet or (tien_le and (moi_cap[khoa] >= 1 and cap_luat[khoa])): continue
+            moi_cap[khoa] += 1; cap_luat[khoa] = cap_luat[khoa] or not tien_le; vet.add(khoa_van(k)); them(k)
         return ra
 
     def khoi_van_ban(self, ks):

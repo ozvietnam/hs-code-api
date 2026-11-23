@@ -10,7 +10,7 @@ def bo_dau(s):
     return re.sub(r"[^a-z0-9]+", " ", s).strip()
 
 THU_TU = ["LOAI_TRU", "QUY_TAC_PHAN_LOAI", "DINH_NGHIA_PHAM_VI", "CHUA_XEP"]
-SO_LA_MA = {"01": "I", "06": "VI", "16": "IV", "50": "XI", "72": "XV", "84": "XVI", "86": "XVII"}
+SO_LA_MA = {"01": "I", "06": "II", "16": "IV", "28": "VI", "50": "XI", "72": "XV", "84": "XVI", "86": "XVII"}  # gan = Chương đầu của Phần (gan 06 là Phần II, không phải VI)
 
 
 class DieuKhoan:

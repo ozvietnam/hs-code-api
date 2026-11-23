@@ -11,7 +11,7 @@ import argparse, collections, gzip, json, os, re, sys, urllib.request, importlib
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 from dieu_khoan import DieuKhoan, bo_dau, SO_LA_MA as SO_LA_MA_P
-from do_thi_cap import DoThiCap
+from do_thi_cap import DoThiCap, _hh_tu as _tu_chinh, so_khop as _so_khop
 import agy
 
 ap = argparse.ArgumentParser()
@@ -165,6 +165,29 @@ def ho_so_nhom(n, tu, cap_cgn=1400, day_du=True):
     return (f"### Nhóm {n}: {TEN.get(n,'?')}\n[Chú giải chi tiết {n}] {doan_khop(cgn_txt, tu, cap_cgn)}\n"
             + ("[Sổ tay – điều kiện vào nhóm (trái điều kiện thì LOẠI)]\n" + "\n".join(vao) + "\n" if vao else ""))
 
+def ho_so_nhom_gon(n, h, uv, muc):
+    """Hồ sơ gọn của một nhóm (chế độ đồ thị). muc="day_du": tên nhóm + chú giải chi tiết chỉ giữ đoạn đầu (phạm vi), đoạn có chữ của hàng (>= 2 từ khoá) và đoạn loại trừ/trỏ
+    sang ứng viên khác + điều kiện vào nhóm; muc="gon": tên + đoạn phạm vi (nhóm đáng xét còn lại, nhóm do đồ thị kéo thêm; khoản nối nằm ở khối khoản); muc="ten": chỉ tên nhóm."""
+    cgn = CGN.get(n) or {}
+    txt = cgn.get("nhom") if isinstance(cgn, dict) else str(cgn)
+    doan = [p.strip() for p in re.split(r"\n\s*\n", txt or "") if p.strip()]
+    ten = TEN.get(n, "?")
+    ra = [f"### Nhóm {n}: {ten if muc == 'day_du' else ten[:200]}"]
+    if muc != "ten" and doan: ra.append("[Phạm vi] " + re.sub(r"\s+", " ", doan[0])[: 400 if muc == "day_du" else 220])
+    if muc == "day_du":
+        tu = _tu_chinh(h)
+        dau = [f"{m[:2]}.{m[2:]}" for m in uv if m != n]
+        giu = []
+        for p in doan[1:]:
+            tro = any(d in p for d in dau) and re.search(r"không bao gồm|loại trừ|trừ |ngoại trừ|khác với", p, re.I)
+            if tro or _so_khop(p, tu) >= 2: giu.append(re.sub(r"\s+", " ", p)[:300])
+            if len(giu) >= 3: break
+        if giu: ra.append("[Đoạn liên quan] " + " | ".join(giu))
+        st = so_tay(n)
+        vao = [f"- {x.get('fact','')} {x.get('op','')} {x.get('value','')} (trích: {str(x.get('trich',''))[:90]})" for x in (st.get("dieuKienVao") or [])[:3] if isinstance(x, dict)]
+        if vao: ra.append("[Sổ tay – điều kiện vào nhóm (trái điều kiện thì LOẠI)]\n" + "\n".join(vao))
+    return "\n".join(ra) + "\n"
+
 GIOI_HAN_BYTE = 115000  # argv của Linux tối đa 128 KB cho một đối số
 _KHOI_CACHE = {}
 
@@ -211,9 +234,11 @@ def _dung_prompt(ca, mo, h, uv, tu, cap_ch, cap_cgn, da_loai=None):
         cs = [ch for ch in chuong if DK._phan_gan(ch) == gan]
         t, i = DK.khoi_phan(gan, tu, lq); khoi.append(f"=== ĐIỀU KHOẢN CỦA PHẦN {SO_LA_MA_P.get(gan, gan)} (áp cho mọi nhóm thuộc Chương {', '.join(cs)}) ===\n{t}"); ids |= set(i)
     cg2 = DK.cg2_khoi() if any(DK.la_phan_xvi(c) for c in chuong) else ""
-    if DT:  # hồ sơ đầy đủ chỉ cho nhóm trọng tâm; nhóm còn lại: tên + chú giải chi tiết gọn, đã có khoản nối ở trên
+    if DT:  # hồ sơ gọn: nhóm đầy đủ = 6 nhóm khớp hàng nhất + 3 ứng viên gốc đầu; còn lại tên + phạm vi
         tt = DT.nhom_day_du(uv, h, [n for n in uv if n not in (ca.get("_dt_nguon") or {})])
-        ho_so = "\n".join(ho_so_nhom(n, tu, min(cap_cgn, 1000) if n in tt else 300, n in tt) for n in uv)
+        nguon_dt = ca.get("_dt_nguon") or {}
+        dx = DT.nhom_dang_xet(uv, h, nguon_dt, [n for n in uv if n not in nguon_dt])
+        ho_so = "\n".join(ho_so_nhom_gon(n, h, uv, "day_du" if n in tt else "gon" if (n in dx or n in nguon_dt) else "ten") for n in uv)
     else:
         ho_so = "\n".join(ho_so_nhom(n, tu, cap_cgn) for n in uv)
     bc = {k: h.get(k) for k in ("tenDung", "banChat", "dangVatLy", "dungChoViecGi", "coChe", "oDau", "aiDung", "laBoPhanCua", "tenKhac", "canXacNhan") if h.get(k)}

@@ -13,6 +13,8 @@ REPO = os.path.abspath(os.path.join(HERE, "..", ".."))
 ap = argparse.ArgumentParser()
 ap.add_argument("--ra", default=None)
 ap.add_argument("--hh", default=os.path.expanduser("~/hh-agy-v1.jsonl"))
+ap.add_argument("--ca-sai", default=None, help="tệp ca sai khác (vd v2); mặc định: 11 ca v1 + ca mẫu")
+ap.add_argument("--bo-chuan", default="data/bo-chuan/4so-v1.jsonl")
 ap.add_argument("--khong-kich-thuoc", action="store_true", help="bỏ phần dựng prompt thật (nhanh hơn, không nạp chỉ mục tìm kiếm)")
 A = ap.parse_args()
 
@@ -21,9 +23,10 @@ if A.khong_kich_thuoc:
     from do_thi_cap import DoThiCap
     DT = DoThiCap(REPO); SN = None
 else:
-    sys.argv = ["so_nhom.py", "--ca-sai", "x", "--ra", os.devnull, "--ho-so", "do-thi", "--hh", A.hh]
+    sys.argv = ["so_nhom.py", "--ca-sai", "x", "--ra", os.devnull, "--ho-so", "do-thi", "--hh", A.hh, "--cum", "/tmp/cum-kiem.jsonl"]
     import so_nhom as SN  # nạp dữ liệu như đường chạy thật (mô-đun này không tự chạy main khi import)
     DT = SN.DT
+    SN.llm_nha = lambda *a, **k: None  # kiểm KHÔNG gọi LLM kể cả máy nhà: ca chưa có cụm trong đệm dùng cụm lấy thẳng từ hồ sơ hàng
 
 
 def chuan(s): return (s or "").replace("\n", " ").strip()
@@ -34,7 +37,7 @@ for l in open(A.hh):
     try: d = json.loads(l); HH[chuan(d["moTa"])] = d
     except Exception: pass
 BC = {}
-for l in open(f"{REPO}/data/bo-chuan/4so-v1.jsonl"):
+for l in open(os.path.join(REPO, A.bo_chuan)):
     d = json.loads(l); BC[d["ca"]] = d
 
 MAU = {"ca": "mau", "moTa": "Cụm thiết bị dò vải / FABRIC DETECTOR ASSEMBLY, model SMD-01, đầu dò nam châm buộc ở đuôi vải, lắp trên máy nhuộm vải",
@@ -43,10 +46,13 @@ MAU = {"ca": "mau", "moTa": "Cụm thiết bị dò vải / FABRIC DETECTOR ASSE
               "coChe": "đầu dò nam châm buộc ở đuôi vải để phát hiện vải", "dungChoViecGi": "phát hiện đuôi vải trên máy nhuộm vải", "laBoPhanCua": "máy nhuộm vải",
               "dangVatLy": {"chatLieu": "kim loại, nam châm"}}}
 
-ca_sai = {c["ca"]: c for c in json.load(open(f"{REPO}/docs/tang-4so/ca-sai-v1-vong3.json"))}
-for c in json.load(open(f"{REPO}/docs/tang-4so/ca-sai-v1-vong2-nhanmoi.json")):
-    if c["ca"] in (10, 38): ca_sai[c["ca"]] = c
-DS = [ca_sai[k] for k in sorted(ca_sai)] + [MAU]
+if A.ca_sai:
+    DS = json.load(open(os.path.join(REPO, A.ca_sai)))
+else:
+    ca_sai = {c["ca"]: c for c in json.load(open(f"{REPO}/docs/tang-4so/ca-sai-v1-vong3.json"))}
+    for c in json.load(open(f"{REPO}/docs/tang-4so/ca-sai-v1-vong2-nhanmoi.json")):
+        if c["ca"] in (10, 38): ca_sai[c["ca"]] = c
+    DS = [ca_sai[k] for k in sorted(ca_sai)] + [MAU]
 
 
 def chuan_canh(cc): return re.sub(r"\(.*?\)$", "", cc)
@@ -79,7 +85,7 @@ for c in DS:
     # hạng của nhóm nhãn trong xếp hạng mở rộng
     hang = {n: next((i + 1 for i, t in enumerate(DT.xep_cuoi) if t[1] == n), None) for n in nhan if n not in uv0}
     # (iii)
-    kb_moi = kb_cu = None
+    kb_moi = kb_cu = None; cu_uv = cu_noi = None
     if SN is not None:
         mo = chuan(c["moTa"])
         tu = SN.tu_khoa(mo, h.get("tenDung"), h.get("banChat"), h.get("coChe"), h.get("dungChoViecGi"))
@@ -89,12 +95,22 @@ for c in DS:
         ca2 = {"ca": c["ca"], "ungVien": uv0}
         dt_cu, SN.DT = SN.DT, None
         try:
-            p2, _, _, _, bo = SN.dung_prompt(ca2, mo, h, uv0, tu, None)
+            p2, p2_ids, _, _, bo = SN.dung_prompt(ca2, mo, h, uv0, tu, None)
             kb_cu = round(len(p2.encode()) / 1024, 1)
+            cu_uv = [n for n in uv0 if n not in bo]
+            cu_noi = []
+            for i in p2_ids:
+                x = DT.dk_theo_id.get(i)
+                if not x: continue
+                for a_ in nhan:
+                    for b_ in nhan:
+                        if a_ != b_ and x["id"] in {y["id"] for y in sum(DT.dk.hieu_luc(a_[:2]), [])} and (b_ in (x.get("dich") or []) or DT._dich_chi_toi(x.get("dich") or [], b_) and b_[:2] != a_[:2]):
+                            cu_noi.append(i)
+            cu_noi = sorted(set(cu_noi))
         finally:
             SN.DT = dt_cu
     bang.append({"ca": c["ca"], "nhan": nhan, "nhanTrongUvGoc": co0, "nhanTrongUvSauMoRong": co2, "hangMoRong": hang, "soUvGoc": len(uv0), "soUvSau": len(uv2),
-                 "khoanNoiNhan": {k: sorted(v) for k, v in noi.items()}, "soKhoan": len(ks), "kbKhoan": round(sum(len(k["nguyenVan"]) for k in ks) / 1024, 1), "kbHoSoMoi": kb_moi, "kbHoSoCu": kb_cu})
+                 "khoanNoiNhan": {k: sorted(v) for k, v in noi.items()}, "soKhoan": len(ks), "kbKhoan": round(sum(len(k["nguyenVan"]) for k in ks) / 1024, 1), "kbHoSoMoi": kb_moi, "kbHoSoCu": kb_cu, "cuNhanTrongUv": ({n: (n in cu_uv) for n in nhan} if cu_uv is not None else None), "cuKhoanNoi": cu_noi})
     chi_tiet.append({"ca": c["ca"], "ungVienSau": uv2, "nhomThem": {n: {"diem": v["diem"], "ly": [(l["tu"], l["loai"], l["id"]) for l in v["ly"]]} for n, v in nguon.items()},
                      "khoan": [{"id": k["id"], "kieu": k["kieu"], "canh": k["canh"][:6], "byte": len(k["nguyenVan"])} for k in ks]})
 
@@ -103,7 +119,13 @@ for b in bang:
     i = " ".join(f"{n}:{'Y' if b['nhanTrongUvGoc'][n] else 'n'}>{'Y' if b['nhanTrongUvSauMoRong'][n] else 'N'}" + (f"(#{b['hangMoRong'][n]})" if b['hangMoRong'].get(n) else "") for n in b["nhan"])
     ii = "; ".join(f"{k[:36]}" for k in list(b["khoanNoiNhan"])[:3]) or "KHONG"
     print(f"{str(b['ca']):>4} {','.join(b['nhan']):<22} {i:<38} {ii:<44} {b['kbHoSoMoi'] if b['kbHoSoMoi'] is not None else '-':>7} {b['kbHoSoCu'] if b['kbHoSoCu'] is not None else '-':>6}")
-m = [x for x in chi_tiet if x["ca"] == "mau"][0]
-print("ca mau: Chu giai 2(a) Phan XVI trong ho so:", "CO" if any(k["id"] == "phan:84:chu_giai:2a" for k in m["khoan"]) else "KHONG", "| mo sang 8543:", "CO" if "8543" in m["ungVienSau"] else "KHONG", "| mo sang 9031:", "CO" if "9031" in m["ungVienSau"] else "KHONG")
+tong = [b for b in bang if b["ca"] != "mau"]
+da = [b for b in tong if len(b["nhan"]) >= 2]
+print(f"TONG {len(tong)} ca: (i) moi: moi nhan trong UV {sum(all(b['nhanTrongUvSauMoRong'].values()) for b in tong)}/{len(tong)}, cu: {sum(all(b['cuNhanTrongUv'].values()) for b in tong if b['cuNhanTrongUv'])}/{len(tong)}; "
+      f"(ii) tren {len(da)} ca co >=2 nhan: moi co khoan noi {sum(bool(b['khoanNoiNhan']) for b in da)}, cu {sum(bool(b['cuKhoanNoi']) for b in da)}; KB moi TB {sum(b['kbHoSoMoi'] for b in tong)/len(tong):.1f}, cu TB {sum(b['kbHoSoCu'] for b in tong)/len(tong):.1f}")
 if A.ra:
     json.dump({"bang": bang, "chiTiet": chi_tiet}, open(A.ra if os.path.isabs(A.ra) else os.path.join(REPO, A.ra), "w"), ensure_ascii=False, indent=1)
+mm = [x for x in chi_tiet if x["ca"] == "mau"]
+if not mm: sys.exit(0)
+m = mm[0]
+print("ca mau: Chu giai 2(a) Phan XVI trong ho so:", "CO" if any(k["id"] == "phan:84:chu_giai:2a" for k in m["khoan"]) else "KHONG", "| mo sang 8543:", "CO" if "8543" in m["ungVienSau"] else "KHONG", "| mo sang 9031:", "CO" if "9031" in m["ungVienSau"] else "KHONG")
