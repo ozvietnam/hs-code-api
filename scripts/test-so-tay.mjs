@@ -180,5 +180,29 @@ assert('loaiTru mà câu nguồn chỉ nói "thường thuộc nhóm" bị loạ
   assert('L1-3b: kiemCay — dieuKienNut trỏ nút không có trong cây → lỗi đỏ', kiemCay({ dieuKienNut: [{ id: '8544499' }] }, '8544').loi.includes('dieu-kien-nut-khong-co-trong-cay:8544499'));
 }
 
+// ── OZV-1968: fallback duongKinh phân biệt "đường kính trong" (7306) và "đường kính ngoài của thân" (7318) ──
+{
+  const { danhGiaDong, loadSoTay } = require('../lib/so-tay-gates.js');
+  const d73063011 = loadSoTay('7306').dong8.find((d) => d.hs === '73063011');
+  const d73181210 = loadSoTay('7318').dong8.find((d) => d.hs === '73181210');
+  const rTrong = danhGiaDong(d73063011, 'Với đường kính trong dưới 12,5 mm');
+  const rNgoai7306 = danhGiaDong(d73063011, 'Với đường kính ngoài 10 mm');
+  const rThanThoa = danhGiaDong(d73181210, 'Đường kính ngoài của thân không quá 16 mm');
+  const rThanTrai = danhGiaDong(d73181210, 'Đường kính ngoài của thân 20 mm');
+  const t0 = Date.now();
+  const rRedos = danhGiaDong(d73181210, `${'đường kính ngoài của '.repeat(40000)}10 mm`);
+  const dt = Date.now() - t0;
+  assert(
+    'OZV-1968: 73063011 (duongKinh) không ăn nhầm "đường kính trong" nhưng khớp "đường kính ngoài"; 73181210 khớp "Đường kính ngoài của thân" (THOA/TRAI) và ReDoS 40k từ < 2s',
+    rTrong.trangThai === 'CHUA_BIET'
+      && rNgoai7306.trangThai === 'THOA'
+      && rThanThoa.trangThai === 'THOA'
+      && rThanTrai.trangThai === 'TRAI'
+      && rRedos.trangThai === 'THOA'
+      && dt < 2000,
+    JSON.stringify({ rTrong: rTrong.trangThai, rNgoai7306: rNgoai7306.trangThai, rThanThoa: rThanThoa.trangThai, rThanTrai: rThanTrai.trangThai, rRedos: rRedos.trangThai, dt }),
+  );
+}
+
 console.log(`\n${passed}/${passed + failed} passed`);
 process.exit(failed ? 1 : 0);
