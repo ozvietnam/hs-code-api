@@ -24,3 +24,25 @@ Chỉ số là vị trí trong mảng `dieu-khoan-tang2.json` (không dùng `id`
 ## (a) Id trùng (đỏ, chưa sửa)
 
 128 `id` bị trùng, ví dụ `chuong:09:chu_giai:2a` ×2, `chuong:09:chu_giai:2b` ×2, `chuong:48:chu_giai:1` nhiều lần. Lý do đoán: `id` tạo từ cap, gan, vùng, khoản, điểm, nhưng tách bằng máy làm nhiều đoạn mang cùng khoản/điểm (ví dụ đoạn tiếp nối bị tách thành mục riêng). Cần quyết định cách đánh số lại, không sửa tự động ở PR này.
+
+## (f) Điều khoản dính đoạn TỔNG QUÁT của Chú giải chi tiết WCO (210 cảnh báo)
+
+**Nguyên nhân:** Khi bóc tách chú giải Phần/Chương từ nguồn Chú giải chi tiết WCO (Explanatory Notes), phần văn bản "TỔNG QUÁT" (General Explanatory Notes) nằm ngay sau các chú giải pháp lý cuối cùng của Phần hoặc Chương. Bộ bóc tách tất định (deterministic parser) chưa ngắt trước tiêu đề "TỔNG QUÁT", dẫn đến đoạn mở đầu của Chú giải tổng quát WCO bị dính vào:
+- Trường `nguyenVan` của khoản/điểm cuối cùng (46 mục).
+- Trường lời dẫn `dan` của các mục kế sau (164 mục).
+
+Tổng cộng có 210 mục bị dính tiêu đề `TỔNG QUÁT`. Dữ liệu KHÔNG tự ý sửa trong đợt này (giữ nguyên theo quy định), ghi nhận cảnh báo để đối chiếu nguồn và tách sạch ở bước làm sạch chuyên sâu.
+
+### Bảng ví dụ điển hình
+
+| # | id | Vị trí dính | Trích đoạn dính | Nhận xét |
+|---|----|-------------|-----------------|----------|
+| 4 | chuong:01:chu_giai:1c | nguyenVan | `... thuộc nhóm 95.08.\n\nTỔNG QUÁT\n\nChương này bao gồm tất cả các loại sinh vật sống ...` | Điểm (c) cuối khoản 1 dính toàn bộ phần Chú giải tổng quát của Chương 01 WCO. |
+| 10 | chuong:03:chu_giai:3a | dan | `... (nhóm 03.09).\n\nTỔNG QUÁT\n\nChương này bao gồm tất cả các loại cá ...` | Lời dẫn `dan` của khoản 3 dính tiêu đề và nội dung TỔNG QUÁT của Chương 03. Tương tự cho các điểm 3b, 3c, 3d. |
+| 27 | chuong:04:chu_giai_phan_nhom:2a | dan | `... phân nhóm 0405.90).\n\nTỔNG QUÁT\n\nChương này bao gồm: (I) Các sản phẩm bơ sữa ...` | Lời dẫn `dan` của chú giải phân nhóm 2 dính Chú giải tổng quát Chương 04. Dính cả 2a–2e. |
+| 88 | chuong:10:chu_giai_phan_nhom:1 | nguyenVan | `... như loài đó.\n\nTỔNG QUÁT\n\nChương này chỉ bao gồm các loại hạt ngũ cốc ...` | Chú giải phân nhóm 1 dính phần TỔNG QUÁT của Chương 10 WCO. |
+| 354 | chuong:29:chu_giai_phan_nhom:2a | dan | `... của Chương này.\n\nTỔNG QUÁT\n\nTheo quy tắc chung, Chương này giới hạn ...` | Lời dẫn `dan` của phân nhóm Chương 29 dính TỔNG QUÁT WCO. |
+| 750 | chuong:48:chu_giai_phan_nhom:7 | nguyenVan | `... – 0.829\n\nTỔNG QUÁT\n\nTrong các Chú giải của Chương này ...` | Điểm cuối công thức phân nhóm 7 Chương 48 dính TỔNG QUÁT WCO. |
+| 842 | phan:50:chu_giai:2c~2 | nguyenVan | `... chỉ thêu.\n\nTỔNG QUÁT\n\nNói chung, Phần XI bao gồm những loại nguyên liệu thô ...` | Chú giải Phần XI dính Chú giải tổng quát Phần XI WCO. |
+| 1596 | chuong:97:chu_giai:6 | nguyenVan | `... phân loại riêng.\n\nTỔNG QUÁT\n\nChương này bao gồm: (A) Một số loại tác phẩm nghệ thuật ...` | Khoản 6 Chương 97 dính phần TỔNG QUÁT WCO. |
+
