@@ -15,7 +15,7 @@
     "phien": "claude-agent:ozv-1947#soat-300490",
     "ngay": "2026-11-22",
     "ghiChu": "Chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1947)",
-    "bam": "9f6167a252f2cb8648cafe12e7d3c469b871a308a1f840210264ec1cd020be52"
+    "bam": "1c2672431a939df9b562c366be59450fc0a30418383009c59d8d153931dac212"
   },
   "dieuKienNut": [
     {
@@ -515,32 +515,13 @@
           ]
         },
         {
-          "op": "HOAC",
-          "phuongAn": [
-            [
-              {
-                "fact": "dangBaoCheThuoc",
-                "op": "TRONG",
-                "value": [
-                  "DANG_TIEM",
-                  "DANG_TRUYEN"
-                ],
-                "chieu": "PHAI_KHONG"
-              }
-            ],
-            [
-              {
-                "fact": "tenLoai",
-                "op": "TEN_LOAI",
-                "value": "trừ dạng tiêm"
-              },
-              {
-                "fact": "tenLoai",
-                "op": "TEN_LOAI",
-                "value": "dạng truyền"
-              }
-            ]
-          ]
+          "fact": "dangBaoCheThuoc",
+          "op": "TRONG",
+          "value": [
+            "DANG_TIEM",
+            "DANG_TRUYEN"
+          ],
+          "chieu": "PHAI_KHONG"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
