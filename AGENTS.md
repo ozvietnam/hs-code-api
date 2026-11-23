@@ -356,3 +356,5 @@ Repo này là **một thành viên** của văn phòng chung OZ Việt Nam. Tri 
 - **Gửi yêu cầu cho quản trị server:** tạo `docs/viec/yeu-cau-YYYY-MM-DD-<slug>.md` theo mẫu `docs/viec/README.md`, commit lên nhánh/PR. Văn phòng quét `docs/viec/` và ghi vào bảng việc chung. **KHÔNG nhờ CEO chuyển thư.**
 - **Leo thang:** chi tiền · xoá dữ liệu · bật tính năng cho khách thật / deploy production · quyết định chiến lược → hỏi CEO (qua Giám đốc @Claudiaozbot), không tự làm.
 - Báo cáo kết quả / cập nhật tiến độ: cập nhật file yêu cầu tương ứng (đánh dấu ô) — quản trị đọc tại đó.
+
+- **Tầng nhóm 4 số:** luật đo và vòng sửa lỗi ở `docs/tang-4so/LUAT-DO.md` (chỉ đo lại ca còn sai, mỗi vòng phải tìm nguyên nhân rồi sửa tận gốc). Bắt buộc đọc trước khi đụng tầng 4 số.
