@@ -119,8 +119,8 @@ assert('#411(d) 70189010: duong_kinh DONG_BIEU, tacDongThue {mfnMin 0, mfnMax 30
 r = await call({ hs: '84181039' }); // 8418.10: dung tích quyết định MFN 3 % ↔ 25 %, ACFTA 0 ↔ 15 (-KH, TH)
 const dt8418 = (r._j.questions || []).find((q) => q.key === 'dung_tich' || q.key === 'dungTich');
 assert('#411(d) 84181039: dung_tich chenh 22 (3 → 25) + acftaKhac true', Boolean(dt8418) && Boolean(dt8418.tacDongThue) && dt8418.tacDongThue.mfnMin === 3 && dt8418.tacDongThue.mfnMax === 25 && dt8418.tacDongThue.chenh === 22 && dt8418.tacDongThue.acftaKhac === true, dt8418);
-r = await call({ hs: '39204310' }); // 3920.43: be_day quyết định dòng nhưng hai dòng đều MFN 6 % → chenh 0
-const bd3920 = (r._j.questions || []).find((q) => q.key === 'be_day');
+r = await call({ hs: '39204310' }); // 3920.43: be_day/doDay quyết định dòng nhưng hai dòng đều MFN 6 % → chenh 0
+const bd3920 = (r._j.questions || []).find((q) => q.key === 'be_day' || q.key === 'doDay');
 assert('#411(d) 39204310: be_day chenh 0 (hai dòng đều MFN 6 %)', Boolean(bd3920) && Boolean(bd3920.tacDongThue) && bd3920.tacDongThue.chenh === 0 && bd3920.tacDongThue.mfnMin === 6 && bd3920.tacDongThue.mfnMax === 6 && bd3920.tacDongThue.acftaKhac === false, bd3920);
 assert('#411(d) câu TT39 không mang tacDongThue', (r._j.questions || []).filter((q) => q.loai === 'TT39').every((q) => !('tacDongThue' in q)), r._j.questions);
 
