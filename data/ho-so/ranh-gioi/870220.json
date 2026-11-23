@@ -4,13 +4,19 @@
   "nhom": "8702",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-sub:glm-5.3:20261106T1003#soan-870220",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "paperclip:tho-hs-02:20261123#soat-870220",
+    "ngay": "2026-11-23",
+    "ghiChu": "OZV-1954",
+    "bam": "88af502228ebf2edb4255593676f06fd9e5d7a38edfc61101486a0a762f5e53b"
+  },
   "dieuKienNut": [
     {
       "id": "870220~r16335",
@@ -22,7 +28,7 @@
           "op": "KHONG"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "8702202",
@@ -35,7 +41,7 @@
           "value": "chở từ 30 người trở lên"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "8702203",
@@ -48,7 +54,7 @@
           "value": "Ô tô khách"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": [
         "8702202"
       ]
@@ -67,9 +73,14 @@
           "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": "sân bay"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "chở từ 30 người trở lên"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "8702207",
@@ -82,7 +93,7 @@
           "value": "Ô tô khách"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": [
         "8702206"
       ]
@@ -98,9 +109,20 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Ô tô"
+        },
+        {
+          "fact": "kieuXeChoNguoi",
+          "op": "TRONG",
+          "value": [
+            "LIMOUSINE_KEO_DAI"
+          ]
+        },
+        {
+          "fact": "laOtoVan",
+          "op": "KHONG"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87022022",
@@ -120,7 +142,7 @@
           "donVi": "tấn"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87022023",
@@ -134,14 +156,14 @@
           "donVi": "tấn"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87022029",
       "nguon": "tax.87022029",
       "trich": "87022029 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87022031",
@@ -161,7 +183,7 @@
           "donVi": "tấn"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87022032",
@@ -175,14 +197,14 @@
           "donVi": "tấn"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87022039",
       "nguon": "tax.87022039",
       "trich": "87022039 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87022041",
@@ -196,14 +218,14 @@
           "donVi": "tấn"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87022049",
       "nguon": "tax.87022049",
       "trich": "87022049 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87022050",
@@ -214,9 +236,20 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Ô tô"
+        },
+        {
+          "fact": "kieuXeChoNguoi",
+          "op": "TRONG",
+          "value": [
+            "LIMOUSINE_KEO_DAI"
+          ]
+        },
+        {
+          "fact": "laOtoVan",
+          "op": "KHONG"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87022061",
@@ -236,7 +269,7 @@
           "donVi": "tấn"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87022062",
@@ -250,14 +283,14 @@
           "donVi": "tấn"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87022069",
       "nguon": "tax.87022069",
       "trich": "87022069 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87022071",
@@ -277,7 +310,7 @@
           "donVi": "tấn"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87022072",
@@ -291,14 +324,14 @@
           "donVi": "tấn"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87022079",
       "nguon": "tax.87022079",
       "trich": "87022079 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87022091",
@@ -312,14 +345,14 @@
           "donVi": "tấn"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "87022099",
       "nguon": "tax.87022099",
       "trich": "87022099 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [

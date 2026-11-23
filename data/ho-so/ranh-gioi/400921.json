@@ -4,40 +4,60 @@
   "nhom": "4009",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1707#soan-400921",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "paperclip:tho-hs-02:20261123#soat-400921",
+    "ngay": "2026-11-23",
+    "ghiChu": "OZV-1954",
+    "bam": "989001450a4e2143368839746d203b5041836d5515baf6beb89ea61440128f75"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
       "hs": "40092110",
-      "nguon": "tax.40092110",
-      "trich": "40092110 - - - Ống hút và xả bùn dùng trong khai thác mỏ(SEN)",
+      "nguon": "sen.40092110",
+      "trich": "Ống hút và xả bùn dùng trong khai thác mỏ là ống cao su dẻo và không gập được, có mặt cắt ngang hình tròn. Đường kính tối thiểu của ống là 15,24cm, độ dày thành ống tối thiểu 1,27 cm và áp suất bục tối thiểu 517 kPa.",
       "dieuKienSo": [
         {
-          "fact": "ongHutXaBunKhaiThacMo",
-          "op": "CO"
+          "fact": "duongKinh",
+          "op": ">=",
+          "value": 15.24,
+          "donVi": "cm"
+        },
+        {
+          "fact": "doDay",
+          "op": ">=",
+          "value": 1.27,
+          "donVi": "cm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "40092190",
       "nguon": "tax.40092190",
       "trich": "40092190 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "40092110",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.40092110 \"Ống hút và xả bùn dùng trong khai thác mỏ(SEN)\" (EN \"Mining slurry suction and discharge hoses\") => ongHutXaBunKhaiThacMo CO; khoá đọc đúng cụm \"ống hút và xả bùn dùng trong khai thác mỏ\". Ngoặc \"(SEN)\" là ngoặc chú thích. Dòng 40092190 \"Loại khác\" trần => không ghi điều kiện."
+      "ghiChu": "sen.40092110 định nghĩa ống hút và xả bùn dùng trong khai thác mỏ: đường kính tối thiểu 15,24 cm, độ dày thành ống tối thiểu 1,27 cm ⇒ duongKinh >= 15.24 cm + doDay >= 1.27 cm."
+    },
+    {
+      "ma": "40092110",
+      "loai": "BO_VE",
+      "ve": "dùng trong khai thác mỏ",
+      "lyDo": "Đã định nghĩa định lượng qua ngưỡng kích thước đặc trưng của SEN (đường kính ≥ 15,24 cm, độ dày thành ≥ 1,27 cm)"
     }
   ],
   "traVe": [

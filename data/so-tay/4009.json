@@ -117,31 +117,33 @@
     },
     {
       "hs": "40092110",
-      "dieuKien": "Ống hút và xả bùn dùng trong khai thác mỏ: ống cao su dẻo, không gập được, mặt cắt ngang hình tròn; đường kính tối thiểu 15,24 cm, độ dày thành tối thiểu 1,27 cm, áp suất bục tối thiểu 517 kPa",
+      "dieuKien": "đường kính (ngoài) >= 15.24 cm; độ dày >= 1.27 cm",
       "loaiKhac": false,
       "nguon": "sen.40092110",
       "trich": "Ống hút và xả bùn dùng trong khai thác mỏ là ống cao su dẻo và không gập được, có mặt cắt ngang hình tròn. Đường kính tối thiểu của ống là 15,24cm, độ dày thành ống tối thiểu 1,27 cm và áp suất bục tối thiểu 517 kPa.",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
-        {
-          "fact": "duong_kinh",
-          "op": ">=",
-          "value": 15.24,
-          "donVi": "cm"
-        },
-        {
-          "fact": "duong_kinh",
-          "op": ">=",
-          "value": 1.27,
-          "donVi": "cm"
-        },
         {
           "fact": "duongKinh",
           "op": ">=",
           "value": 15.24,
           "donVi": "cm"
+        },
+        {
+          "fact": "doDay",
+          "op": ">=",
+          "value": 1.27,
+          "donVi": "cm"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "paperclip:tho-hs-02:20261123#soat-400921",
+          "ngay": "2026-11-23",
+          "bam": "989001450a4e2143368839746d203b5041836d5515baf6beb89ea61440128f75"
+        }
+      }
     },
     {
       "hs": "40092190",

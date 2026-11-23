@@ -113,7 +113,7 @@ check('4009.21: 20cm + 2cm → CHOT 40092110 kèm trích nguồn', cd.ketQua ===
 cd = chotDong8({ hs: '40092110', productText: 'ống cao su có phụ kiện, đường kính 12 mm' });
 check('4009.21: 1.2cm trái mọi điều kiện → LOAI_KHAC 40092190 (phủ định hoàn chỉnh)', cd.ketQua === 'LOAI_KHAC' && cd.hs === '40092190', JSON.stringify(cd));
 cd = chotDong8({ hs: '40092190', productText: 'ống cao su có lắp phụ kiện cứng' });
-check('thiếu số liệu → THIEU_SO_LIEU + missingFacts duong_kinh', cd.ketQua === 'THIEU_SO_LIEU' && cd.missingFacts?.[0]?.fact === 'duong_kinh', JSON.stringify(cd.missingFacts));
+check('thiếu số liệu → THIEU_SO_LIEU + missingFacts duong_kinh', cd.ketQua === 'THIEU_SO_LIEU' && ['duong_kinh', 'duongKinh'].includes(cd.missingFacts?.[0]?.fact), JSON.stringify(cd.missingFacts));
 cd = chotDong8({ hs: '84811019', productText: 'van cổng điều khiển bằng tay, đường kính 30 cm' });
 check('8481.10 (đã duyệt ranh giới 848110.json): chưa khai chất liệu + đường kính trong → THIEU_SO_LIEU (không đoán)', cd.ketQua === 'THIEU_SO_LIEU' && (cd.missingFacts || []).some((m) => m.fact === 'chatLieu'), JSON.stringify(cd.missingFacts));
 cd = chotDong8({ hs: '84811019', productText: 'van giảm áp bằng đồng, đường kính trong 2 cm' });

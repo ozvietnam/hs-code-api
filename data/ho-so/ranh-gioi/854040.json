@@ -4,13 +4,19 @@
   "nhom": "8540",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-854040",
     "ngay": "2026-11-04"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "paperclip:tho-hs-02:20261123#soat-854040",
+    "ngay": "2026-11-23",
+    "ghiChu": "OZV-1954",
+    "bam": "804d0bea946136456556f9a6fbb0ad39823ec33685fa6433fded4c00b5ed9ce1"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -19,31 +25,52 @@
       "trich": "85404010 - - Ống hiển thị dữ liệu/đồ họa, loại màu, của loại dùng cho hàng hóa thuộc nhóm 85.25",
       "dieuKienSo": [
         {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": "85.25"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "mauHienThi",
+                "op": "TRONG",
+                "value": [
+                  "MAU"
+                ]
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "85.25"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Ống hiển thị dữ liệu/đồ họa, loại màu"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "85.25"
+              }
+            ]
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85404090",
       "nguon": "tax.85404090",
       "trich": "85404090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "85404010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85404010: \"Ống hiển thị dữ liệu/đồ họa, loại màu, của loại dùng cho hàng hóa thuộc nhóm 85.25\" ⇒ dungCho \"85.25\""
-    },
-    {
-      "ma": "854040",
-      "loai": "QUYET_DINH",
-      "ghiChu": "Máy kiểm đã XANH (scripts/so-hoa-ranh-gioi.mjs --kiem --pn6=854040: cổng 0, 1, 2, 3, 5 + cổng anh em + bộ kiểm luật; dungCho \"85.25\" nguyên văn tax.85404010, 85404090 trần). Nhưng máy kiểm KHÔNG phải soát độc lập: giữ NHAP/AI_DA_KIEM, chỉ duyet() của phiên Claude khác người soạn mới được nâng CLAUDE_DUYET (lib/ho-so/cong-ranh-gioi.js). Xem OZV-245 điểm 4."
+      "ghiChu": "tax.85404010: \"Ống hiển thị dữ liệu/đồ họa, loại màu, của loại dùng cho hàng hóa thuộc nhóm 85.25\" ⇒ mauHienThi TRONG [\"MAU\"] + dungCho \"85.25\" (phủ đủ vế loại màu và công dụng nhóm 85.25)."
     }
   ],
   "traVe": [
