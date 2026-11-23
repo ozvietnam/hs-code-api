@@ -63,7 +63,7 @@ Dừng lô khi một vòng có hơn một nửa nhóm đỏ cổng: sửa khuôn
 ## Chấm chéo bằng máy GPU nội bộ (Gemma) — chốt 23/11/2026
 
 - Mô hình: `gemma4:31b` trên Ollama máy GPU nhà (CEO 23/11: dùng Gemma, KHÔNG dùng gpt-oss — gpt-oss:120b đã chấm sai: hiểu ngược neu/thi, BO oan 8536, DUYET không lý do).
-- Chạy: `OUT=~/cham-cheo-gpu node scripts/cham-cheo-ban-do-4so-gemma.mjs <nhóm,nhóm,…>` (tuần tự, một hàng đợi; ~20–40 s/nhóm) → `~/cham-cheo-gpu/kq.json`; chuyển sang khuôn `[{nhom,ketQua,ghiChu}]` (ghiChu ghi rõ `[gemma4:31b, máy GPU nhà]` + lỗi từng mục) rồi `--ap`.
+- Chạy: `OLLAMA_URL=<máy GPU nhà> OUT=~/cham-cheo-gpu node scripts/cham-cheo-ban-do-4so-gemma.mjs <nhóm,nhóm,…>` (tuần tự, một hàng đợi; ~20–40 s/nhóm) → `~/cham-cheo-gpu/kq.json`; chuyển sang khuôn `[{nhom,ketQua,ghiChu}]` (ghiChu ghi rõ `[gemma4:31b, máy GPU nhà]` + lỗi từng mục) rồi `--ap`.
 - Lời dặn hệ thống PHẢI giải thích cách đọc cạnh (neu→thi, conNeu→thiKia) — thiếu dòng này mô hình đọc ngược chiều.
 - **Ca bẫy bắt buộc mỗi lô:** đảo thi/thiKia của 1 cạnh ở ≥ 3 nhóm; Gemma phải trả SUA và nêu đúng cạnh. Lô 23/11: 4/4 ca bẫy bắt đúng (8536, 8544, 7318, 9401). Ca bẫy trượt ⇒ không áp kết quả lô đó.
 - Kết quả 23/11: vòng 1 22 DUYET / 6 SUA (suy rộng ngoài đoạn trích); vòng 2 30 DUYET. C16: 315/354 cạnh bậc 1.

@@ -2,7 +2,8 @@ import fs from 'node:fs';
 import { execFileSync } from 'node:child_process';
 const REPO = process.env.REPO || new URL("..", import.meta.url).pathname;
 const OUT = process.env.OUT || process.env.HOME + "/cham-cheo-gpu";
-const URL = 'http://192.168.1.68:11434/api/chat';
+const URL = (process.env.OLLAMA_URL || "").replace(/\/$/, "") + "/api/chat"; // repo public: không ghi IP nội bộ; OLLAMA_URL đặt trong môi trường
+if (!process.env.OLLAMA_URL) { console.error("Thiếu OLLAMA_URL (Ollama máy GPU nhà)"); process.exit(2); }
 const ds = process.argv[2] ? process.argv[2].split(',') : fs.readdirSync(REPO + '/data/do-thi/ban-do-4so').filter(f => /^\d{4}\.json$/.test(f)).map(f => f.slice(0, 4)).sort();
 const SYS = `Bạn là người chấm chéo độc lập bản đồ quan hệ nhóm HS 4 số. Bản đồ do AI khác soạn. Nhiệm vụ: kiểm từng mục (y / dacDiem / neu / conNeu / cạnh) xem có đúng NGHĨA của đoạn luật được trích không (không chỉ trùng chữ), chiều cạnh (thi / thiKia) đúng không, có suy rộng hay bịa không.
 Cách đọc một cạnh: {den, dacDiem, neu, thi, conNeu, thiKia, canCu}: xét đặc điểm dacDiem của hàng; NẾU hàng thoả "neu" THÌ thuộc nhóm "thi"; còn NẾU hàng thoả "conNeu" THÌ thuộc nhóm "thiKia". thi và thiKia là hai nhóm khác nhau trong {nhóm đang chấm, den}. Cạnh đúng chiều khi đoạn luật trong canCu nói đúng điều đó.
