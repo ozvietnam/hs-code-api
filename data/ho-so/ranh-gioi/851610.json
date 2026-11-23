@@ -4,13 +4,19 @@
   "nhom": "8516",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-851610",
     "ngay": "2026-11-02"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "paperclip:tho-hs-02:20261123#soat-851610",
+    "ngay": "2026-11-23",
+    "ghiChu": "OZV-1954",
+    "bam": "c79a05f749816a78285ec8563125c90d31c9937c2bb7f66d6ed357e2b1c21e5d"
+  },
   "dieuKienNut": [
     {
       "id": "8516101",
@@ -26,7 +32,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -48,14 +54,14 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85161019",
       "nguon": "tax.85161019",
       "trich": "85161019 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "85161030",
@@ -68,7 +74,7 @@
           "value": "kiểu nhúng"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -79,8 +85,8 @@
     },
     {
       "ma": "8516101",
-      "loai": "DUNG",
-      "ghiChu": "OZV-1474 (19/11): nút 8516101 KHÔNG thể có đk TEN_LOAI tất định: cổng 3 đòi value ⊆ trich nút (nguon tieuDe.8516101 = vế 1 tên cha 851610), còn coCumPhanBiet bỏ âm tiết có trong tên cha nên mọi cum ⊆ trich đều không phân biệt ⇒ dgNut luôn CHUA_BIET, dòng 85161011 bị ép CHUA_BIET (so-tay-gates.js:952). Đã thử + bị cong3-muc chặn: tenLoai 'Bình thủy điện' (thực nghiệm node -e: mọi value hợp cổng — 'tức thời'/'có dự trữ'/nguyên vế/HOAC — đều tatDinh=false). Hướng cần GĐ quyết: sen.85161011 làm nguon nút (nguonDungNut chấp nhận id.startsWith(ma) nhưng SAI ngữ nghĩa — .1 gồm cả máy đun dự trữ không phải bình), hoặc ten-khac-8516.json (ngoài phạm vi thẻ)."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8516101: \"Loại đun nước nóng tức thời hoặc đun nước nóng có dự trữ\" ⇒ congDung CONG_DUNG [\"tức thời\", \"có dự trữ\"]; cụm phân biệt nút 8516101 cho dòng 85161011 đã khai ở data/tu-vung/ten-khac-8516.json (OZV-1474)."
     }
   ],
   "traVe": [
