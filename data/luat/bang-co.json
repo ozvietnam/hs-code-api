@@ -458,7 +458,7 @@
       "loai": "cong-tac",
       "doiQuyetDinhLLM": true,
       "chu": "QT",
-      "mucDich": "Dừng sớm có kiểm (L11): trước khi nhánh earlyExitHoiTuR1 bỏ vòng 2, xét tín hiệu tất định TRÁI NHÓM 4 SỐ với giả thuyết đứng đầu của vòng 1 (tiền lệ Oz đạt ngưỡng cờ review, TB-TCHQ khớp tên hàng, ≥3 shop made-in-china, sổ tay loại trừ đích danh); có thì không dừng sớm, đi vòng 2 như đường thường. Không đổi prompt; đổi quyết định LLM gián tiếp vì thêm lượt vòng 2. Khi bật còn xuất soTay.daTra + lyDoChuaTra và engine.gates[].chanChotSom. Chỉ on / 1 / true mới bật (PR #1528, OZV-1707).",
+      "mucDich": "Dừng sớm có kiểm (L11): trước khi CẢ BỐN nhánh dừng sớm (earlyExitHoiTuR1, earlyExitChotTuConflict, fastFirstUngVien, earlyExitChotTuTrade) bỏ vòng 2 (hoặc vòng 1+2 ở trade), xét tín hiệu tất định TRÁI NHÓM 4 SỐ với mã/giả thuyết dự kiến (tiền lệ Oz đạt ngưỡng cờ review, TB-TCHQ khớp tên hàng, ≥3 shop made-in-china, sổ tay loại trừ đích danh); có thì không dừng sớm, nạp nhóm trái chiều và đi tiếp đường thường. Không đổi prompt; đổi quyết định LLM gián tiếp vì không bỏ vòng 2. Khi bật còn xuất soTay.daTra + lyDoChuaTra và engine.gates[].chanChotSom. Chỉ on / 1 / true mới bật (PR #1528, OZV-1707).",
       "chungCu": {
         "tep": "lib/chot-som-co-kiem.js",
         "doan": "process.env.HS_CHOT_SOM_CO_KIEM || '').trim());"

@@ -212,6 +212,87 @@ check('giác hút SMC: bật = tắt (dừng sớm, 0 lượt vòng 2, cùng sta
   check('GIẢ, BẬT, CA NGƯỢC: tiền lệ trái nhóm nhưng chỉ khớp 60% → không đủ ngưỡng, vẫn dừng sớm', gYeu.girCalls === 0 && gYeu.gates.some((g) => g.earlyExitHoi === true), tom(gYeu));
 }
 
+// ───────────────────────── 4. Phủ đủ 3 nhánh dừng sớm còn lại (OZV-1707, L11) ─────────────────────────
+// 4a. earlyExitChotTuConflict (bảng CF-cooling-tower-fan-blade → 84149029)
+{
+  const QUAT = { tenHang: 'Cánh quạt tháp giải nhiệt nhập riêng rẽ' };
+  const R1_QUAT = {
+    product: { nameVi: 'Cánh quạt tháp giải nhiệt', nameEn: 'Cooling tower fan blade', purpose: 'lắp cho tháp giải nhiệt', mechanism: 'cơ khí', material: 'nhôm', form: 'bộ phận rời', evidence: {} },
+    hypotheses: [{ chapter: '84', heading4: '8414', subheading6: '841490', why: 'bộ phận quạt', confidence: 85 }],
+    verify: { searchVi: ['cánh quạt tháp giải nhiệt'], codes8: ['84149029'], unknowns: ['đường kính cánh', 'kiểu quạt'] },
+  };
+  const R2_QUAT = { ...R2_VAN, hs: '84195010', reason: 'Vòng 2 xét đối chiếu tiền lệ trái nhóm 8419 và bảng xung đột 8414' };
+  const ozTrai = [
+    { hsCode: '84195010', tenHang: 'Cánh quạt tháp giải nhiệt', ozCount: 9, matchCoverage: 100 },
+    { hsCode: '84195010', tenHang: 'Tháp giải nhiệt', ozCount: 5, matchCoverage: 100 },
+  ];
+  const ozCung = [
+    { hsCode: '84149029', tenHang: 'Cánh quạt tháp giải nhiệt', ozCount: 9, matchCoverage: 100 },
+  ];
+  const cfTat = await run(R1_QUAT, { hang: QUAT, oz: ozTrai, r2: R2_QUAT, env: { HS_SO_TAY: 'full' } });
+  check('CONFLICT, TẮT: tiền lệ trái nhóm 8419 nhưng cờ tắt → vẫn earlyExitConflict:true, 0 lượt vòng 2',
+    cfTat.girCalls === 0 && cfTat.gates.some((g) => g.earlyExitConflict === true && g.hs === '84149029') && !cfTat.gates.some((g) => 'chanChotSom' in g), tom(cfTat));
+
+  const cfBat = await run(R1_QUAT, { hang: QUAT, oz: ozTrai, r2: R2_QUAT, env: { HS_SO_TAY: 'full', HS_CHOT_SOM_CO_KIEM: 'on' } });
+  const gCf = cfBat.gates.find((g) => g.earlyExitConflict === false && g.lyDo === 'TIN_HIEU_TRAI_NHOM');
+  check('CONFLICT, BẬT: tiền lệ Oz trái nhóm 8419 → CHẶN earlyExitConflict, nạp 8419, chạy vòng 2',
+    cfBat.girCalls >= 1 && !cfBat.gates.some((g) => g.earlyExitConflict === true) && Boolean(gCf) && gCf.chanChotSom.includes('tien-le-oz') && gCf.nhomTrai.includes('8419'), tom(cfBat));
+
+  const cfCung = await run(R1_QUAT, { hang: QUAT, oz: ozCung, r2: R2_QUAT, env: { HS_SO_TAY: 'full', HS_CHOT_SOM_CO_KIEM: 'on' } });
+  check('CONFLICT, BẬT, CA NGƯỢC: tiền lệ cùng nhóm 8414 → vẫn earlyExitConflict:true, 0 lượt vòng 2, soTay.daTra:false + dung-som-bang-xung-dot',
+    cfCung.girCalls === 0 && cfCung.gates.some((g) => g.earlyExitConflict === true && g.hs === '84149029') && cfCung.out.soTay?.daTra === false && cfCung.out.soTay?.lyDoChuaTra === 'dung-som-bang-xung-dot', tom(cfCung));
+}
+
+// 4b. fastFirstUngVien (HS_CLASSIFY_FAST_FIRST=on)
+{
+  const FF_HANG = { tenHang: 'vật phẩm thử nghiệm zzq-17 kiểu qx' };
+  const R1_FF = {
+    product: { nameVi: 'vật phẩm thử nghiệm zzq-17', nameEn: 'test article zzq-17', purpose: 'thử nghiệm', mechanism: 'không', material: 'không rõ', evidence: {} },
+    hypotheses: [{ chapter: '40', heading4: '4016', subheading6: '401699', why: 'giả thuyết độ tin cậy cao', confidence: 95 }],
+    verify: { searchVi: ['vật phẩm zzq'], codes8: ['40169999'], unknowns: [] },
+  };
+  const R2_FF = { ...R2_VAN, hs: '39269099', reason: 'Vòng 2 xét tiền lệ trái nhóm 3926' };
+  // 3 tờ khai ở 40169999 đủ kích hoạt fastFirstUngVien (nguonDocLap), nhưng 12 tờ khai (80% ≥ 60%) ở 39269099 là tín hiệu trái nhóm!
+  const ozFastTrai = [
+    { hsCode: '40169999', tenHang: 'vật phẩm thử nghiệm zzq-17', ozCount: 3, matchCoverage: 100 },
+    { hsCode: '39269099', tenHang: 'vật phẩm thử nghiệm zzq-17', ozCount: 12, matchCoverage: 100 },
+  ];
+  const ozFastCung = [
+    { hsCode: '40169999', tenHang: 'vật phẩm thử nghiệm zzq-17', ozCount: 8, matchCoverage: 100 },
+  ];
+  const ffTat = await run(R1_FF, { hang: FF_HANG, oz: ozFastTrai, r2: R2_FF, env: { HS_SO_TAY: 'full', HS_CLASSIFY_FAST_FIRST: 'on' } });
+  check('FAST-FIRST, TẮT: tiền lệ Oz đa số 3926 nhưng cờ tắt → vẫn fastFirst:true (bỏ vòng 2)',
+    ffTat.girCalls === 0 && ffTat.gates.some((g) => g.fastFirst === true && g.boQuaVong2 === true && g.hs === '40169999'), tom(ffTat));
+
+  const ffBat = await run(R1_FF, { hang: FF_HANG, oz: ozFastTrai, r2: R2_FF, env: { HS_SO_TAY: 'full', HS_CLASSIFY_FAST_FIRST: 'on', HS_CHOT_SOM_CO_KIEM: 'on' } });
+  const gFf = ffBat.gates.find((g) => g.fastFirst === false && g.lyDo === 'TIN_HIEU_TRAI_NHOM');
+  check('FAST-FIRST, BẬT: tiền lệ Oz đa số trái nhóm 3926 → CHẶN fast-first, chạy vòng 2',
+    ffBat.girCalls >= 1 && !ffBat.gates.some((g) => g.fastFirst === true) && Boolean(gFf) && gFf.chanChotSom.includes('tien-le-oz') && gFf.nhomTrai.includes('3926'), tom(ffBat));
+
+  const ffCung = await run(R1_FF, { hang: FF_HANG, oz: ozFastCung, r2: R2_FF, env: { HS_SO_TAY: 'full', HS_CLASSIFY_FAST_FIRST: 'on', HS_CHOT_SOM_CO_KIEM: 'on' } });
+  check('FAST-FIRST, BẬT, CA NGƯỢC: tiền lệ cùng nhóm 4016 → vẫn fastFirst:true, 0 lượt vòng 2, soTay.daTra:false + fast-first',
+    ffCung.girCalls === 0 && ffCung.gates.some((g) => g.fastFirst === true && g.boQuaVong2 === true) && ffCung.out.soTay?.daTra === false && ffCung.out.soTay?.lyDoChuaTra === 'fast-first', tom(ffCung));
+}
+
+// 4c. earlyExitChotTuTrade (từ điển high + chotSom: coc-giu-nhiet-chan-khong → 96170010)
+{
+  const COC_SACH = { tenHang: 'cốc giữ nhiệt chân không' };
+  const trSach = await run(R1_VAN('8481'), { hang: COC_SACH, oz: [], env: { HS_SO_TAY: 'full', HS_CHOT_SOM_CO_KIEM: 'on' } });
+  check('TRADE, BẬT, CA NGƯỢC: cốc giữ nhiệt chân không không tín hiệu trái → vẫn earlyExitTradeChotSom:true, 0 lượt LLM, soTay.daTra:false + chot-som-tu-dien',
+    trSach.llm.length === 0 && trSach.gates.some((g) => g.earlyExitTradeChotSom === true && g.hs === '96170010') && trSach.out.soTay?.daTra === false && trSach.out.soTay?.lyDoChuaTra === 'chot-som-tu-dien', tom(trSach));
+
+  // Mô tả trùng khít tên TB-TCHQ 852 (nhóm 8481) đồng thời dính cụm từ điển 96170010: TẮT vẫn chốt sớm 96170010, BẬT chặn bằng tb-tchq:8481 và chạy vòng 1+2.
+  const COC_TRAI_TB = { tenHang: `${TEN_TB_852} (kèm cốc giữ nhiệt chân không)` };
+  const trTat = await run(R1_VAN('8481'), { hang: COC_TRAI_TB, oz: [], env: { HS_SO_TAY: 'full' } });
+  check('TRADE, TẮT: mô tả trùng TB-TCHQ nhóm 8481 nhưng cờ tắt → vẫn earlyExitTradeChotSom:true (0 lượt LLM)',
+    trTat.llm.length === 0 && trTat.gates.some((g) => g.earlyExitTradeChotSom === true && g.hs === '96170010'), tom(trTat));
+
+  const trBat = await run(R1_VAN('8481'), { hang: COC_TRAI_TB, oz: [], env: { HS_SO_TAY: 'full', HS_CHOT_SOM_CO_KIEM: 'on' } });
+  const gTr = trBat.gates.find((g) => g.earlyExitTradeChotSom === false && g.lyDo === 'TIN_HIEU_TRAI_NHOM');
+  check('TRADE, BẬT: TB-TCHQ trái nhóm 8481 → CHẶN chốt sớm từ điển, chạy đường AI bình thường',
+    trBat.llm.length >= 1 && !trBat.gates.some((g) => g.earlyExitTradeChotSom === true) && Boolean(gTr) && gTr.chanChotSom.includes('tb-tchq') && gTr.nhomTrai.includes('8481'), tom(trBat));
+}
+
 console.log(`\n${fail ? `${fail} failed | ` : ''}${pass} passed`);
 if (fail) process.exit(1);
 console.log('=== ALL TESTS PASSED ===');
