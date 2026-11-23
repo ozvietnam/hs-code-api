@@ -90,6 +90,7 @@
       "loai": "phan-loai",
       "congGoi": true,
       "llm": true,
+      "ghiChu": "Sau cờ HS_KHO_DINH_DANH (mặc định off): lib/identify.js gọi lib/kho-dinh-danh.js#chayBongNeuCan → soiBong/docKho (Postgres dd_*). off = no-op; shadow = log số đo, không đổi frame khách; on trả từ kho = PR sau. Kho này không thuộc 5 kho trong mục kho{} (sổ tay/PN6/tiền lệ/chú giải/bảng cạnh).",
       "doc": {
         "soTayNhom": { "trangThai": "khong", "the": "OZV-1670", "lyDo": "Định danh không đọc sổ tay. Không tự suy nhóm (L3): nhóm chỉ nhận từ bên gọi để lọc trường khai.", "napMuonHam": { "tep": "lib/xac-minh-nguon.js", "chiDung": ["productHead"], "lyDo": "Mượn hàm tách danh từ chính của tên hàng (productHead) để siết khớp nguồn web (PR #1520). Hàm này không mở tệp sổ nào." } },
         "soPn6": { "trangThai": "khong", "the": "OZV-1670", "lyDo": "Định danh không đọc sổ ranh giới; không tự suy phân nhóm (L3).", "napMuonHam": { "tep": "lib/xac-minh-nguon.js", "chiDung": ["productHead"], "lyDo": "Mượn hàm tách danh từ chính của tên hàng (productHead) để siết khớp nguồn web (PR #1520). Hàm này không mở tệp sổ nào." } },

@@ -698,7 +698,7 @@
       ],
       "doiQuyetDinhLLM": false,
       "chu": "GĐ hs-code-api",
-      "mucDich": "Kho định danh hãng+model (OZV-1657). shadow = tra thử + log; on = trả dữ kiện đã kiểm từ kho. PR1a chỉ schema + chuẩn hoá — chưa nối identify.",
+      "mucDich": "Kho định danh hãng+model (OZV-1657). shadow = tra thử + log số đo qua identify; on = trả dữ kiện đã kiểm từ kho (PR sau). PR1b đã nối bóng vào lib/identify.js — mặc định off.",
       "chungCu": {
         "tep": "lib/kho-dinh-danh.js",
         "doan": "process.env.HS_KHO_DINH_DANH || 'off').trim().toLowerCase();"
@@ -706,8 +706,8 @@
       "bong": {
         "dangChayMayThat": false,
         "chu": "GĐ hs-code-api",
-        "the": "OZV-2024",
-        "ghiChu": "PR1a (OZV-2024): cờ off, chưa nối đường khách. Khi bật shadow cần điền ngayXet + tieuChiBat + tieuChiTat + laySoODau."
+        "the": "OZV-2026",
+        "ghiChu": "PR1b (OZV-2026): mã đã nối soiBong vào /api/identify; máy thật giữ off. Khi QT bật shadow: điền ngayXet + tieuChiBat + tieuChiTat + laySoODau và đặt dangChayMayThat=true."
       }
     },
     {
