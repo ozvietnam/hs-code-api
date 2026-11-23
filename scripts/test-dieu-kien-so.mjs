@@ -48,6 +48,13 @@ const one = (c, f) => DK.danhGiaDieuKien(c, f ? DK.chuanDuKien([f]).get(f.fact) 
   check('LA cha–con: "inox" thuộc "kim loại" → THOA; dữ kiện chung "kim loại" trên điều kiện "đồng" → CHUA_BIET',
     one({ fact: 'chatLieu', op: 'LA', value: 'kim loại' }, fact('chatLieu', [{ viTri: 'CHINH', chatLieu: 'thép không gỉ' }])).trangThai === 'THOA'
     && one({ fact: 'chatLieu', op: 'LA', value: 'đồng' }, fact('chatLieu', [{ viTri: 'CHINH', chatLieu: 'kim loại' }])).trangThai === 'CHUA_BIET');
+  // OZV-2013: "bằng plastic" không nhận hàng nhựa+kim loại cùng vị trí CHÍNH (AR3000-03).
+  check('LA hỗn hợp cùng vị trí: nhựa+nhôm trên "bằng plastic" → TRAI (không THOA)',
+    one({ fact: 'chatLieu', op: 'LA', value: 'plastic' }, fact('chatLieu', [{ viTri: 'CHINH', chatLieu: 'plastic' }, { viTri: 'CHINH', chatLieu: 'nhôm' }])).trangThai === 'TRAI'
+    && one({ fact: 'chatLieu', op: 'LA', value: 'plastic' }, fact('chatLieu', [{ viTri: 'CHINH', chatLieu: 'plastic' }, { viTri: 'CHINH', chatLieu: 'nhôm' }])).lyDo === 'chat-lieu-hon-hop');
+  check('LA hỗn hợp: chỉ plastic vẫn THOA; nhựa ở cách điện + nhôm CHÍNH không làm hỏng LA plastic cách điện',
+    one({ fact: 'chatLieu', op: 'LA', value: 'plastic' }, fact('chatLieu', [{ viTri: 'CHINH', chatLieu: 'plastic' }])).trangThai === 'THOA'
+    && one({ fact: 'chatLieu', op: 'LA', value: 'plastic', viTri: 'CACH_DIEN' }, fact('chatLieu', [{ viTri: 'CACH_DIEN', chatLieu: 'plastic' }, { viTri: 'CHINH', chatLieu: 'nhôm' }])).trangThai === 'THOA');
 
   const TL = { fact: 'tenLoai', op: 'TEN_LOAI', value: ['quạt bàn', 'quạt dạng hộp'] };
   check('TEN_LOAI: "quạt bàn mini" chứa đủ chữ của một phương án → THOA (không tất định)', one(TL, fact('tenLoai', 'quạt bàn mini')).trangThai === 'THOA' && one(TL, fact('tenLoai', 'quạt bàn mini')).tatDinh === false);
@@ -518,6 +525,38 @@ const ST8544 = {
   const kqReDoS1943 = chotDong8({ hs: '950640', productText: chuoiDai1943 });
   const dt = Date.now() - t0;
   check(`14d ReDoS ~40.000 từ lặp chạy dưới 2000ms (thực tế ${dt}ms)`, dt < 2000 && kqReDoS1943.hs === '95064010', `${dt}ms`);
+}
+
+// ── 15. OZV-2013 AR3000-03: nhựa+nhôm không bị hỏi ĐK trong vì nhầm "bằng plastic" 84812020 ─────────────────
+{
+  const DESC_AR = 'Van điều chỉnh áp suất khí nén cỡ nhỏ AR3000-03, chất liệu nhựa+nhôm, dùng cho thiết bị khí nén, kích thước 53x122.5x101';
+  const TV = require('../lib/tu-vung.js');
+  const duKienAr = [];
+  for (const f of ['tenLoai', 'dungCho', 'nguonDongLuc', 'chatLieu', 'cachDieuKhien']) {
+    const x = TV.docGiaTri(f, DESC_AR);
+    if (x?.trangThai && x.trangThai !== 'CHUA_BIET') {
+      duKienAr.push({ fact: f, giaTri: x.giaTri, bangChung: x.bangChung, trangThai: x.trangThai, nguon: 'MO_TA' });
+    }
+  }
+  const Far = DK.chuanDuKien(duKienAr);
+  const r90 = DK.doiChieuDong8('84812090', Far);
+  const r20 = DK.doiChieuDong8('84812020', Far);
+  check('15a AR3000-03 nhựa+nhôm: 84812020 TRAI/MAU_THUAN (không phải bằng plastic thuần)',
+    r20.ketQua === 'MAU_THUAN' || r20.ketQua === 'TRAI' || (r20.ketQua !== 'CO' && r20.ketQua !== 'THIEU'),
+    j({ r20, chatLieu: Far.get('chatLieu') }));
+  check('15b AR3000-03: 84812090 CO — không còn hỏi duongKinhTrong',
+    r90.ketQua === 'CO' && !(r90.thieu || []).some((t) => t.fact === 'duongKinhTrong'),
+    j({ ketQua: r90.ketQua, thieu: r90.thieu, dd: r90.duongDi?.map((d) => ({ nut: d.nut, kq: d.ketQua })) }));
+  // Chiều ngược: chỉ plastic + thiếu ĐK trong → vẫn THIEU (đúng luật hỏi đường kính)
+  const Fplastic = DK.chuanDuKien([
+    fact('tenLoai', 'van điều áp khí nén'),
+    fact('cachDieuKhien', 'KHI_NEN'),
+    fact('chatLieu', [{ viTri: 'CHINH', chatLieu: 'plastic' }]),
+  ]);
+  const r90p = DK.doiChieuDong8('84812090', Fplastic);
+  check('15c ngược: chỉ plastic thiếu ĐK trong → 84812090 vẫn THIEU duongKinhTrong',
+    r90p.ketQua === 'THIEU' && (r90p.thieu || []).some((t) => t.fact === 'duongKinhTrong'),
+    j({ ketQua: r90p.ketQua, thieu: r90p.thieu }));
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);
