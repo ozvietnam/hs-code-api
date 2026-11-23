@@ -15,7 +15,7 @@
 
 ## Tổng hợp số liệu
 
-- **Tổng chỉ mục C1:** **21262** cụm · **33581** ánh xạ đích · **8** kho trong `KHO_C1`.
+- **Tổng chỉ mục C1:** **21271** cụm · **33590** ánh xạ đích · **8** kho trong `KHO_C1`.
 
 | Hạng mục | Tổng cụm | (a) Nghi đích sai | (b) Mơ hồ thật | (c) Chưa có căn cứ | (d) Một đích có TK, thiếu TB | Lệch hẳn liên kho | Liên kho có giao | Nội bộ 1 kho |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
