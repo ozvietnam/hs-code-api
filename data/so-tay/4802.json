@@ -522,20 +522,56 @@
     },
     {
       "hs": "48022010",
-      "dieuKien": "Giấy và bìa làm nền cho giấy hoặc bìa nhạy sáng, nhạy nhiệt hoặc nhạy điện (phân nhóm 4802.20), ở dạng cuộn có chiều rộng không quá 15 cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp (hai dạng thay thế nhau — không biểu diễn được bằng một ngưỡng)",
-      "tieuChi": null,
+      "dieuKien": "(ở dạng cuộn (dây hàn, que hàn, tấm, dải) và chiều rộng <= 15 cm) hoặc (ở dạng tờ hình chữ nhật (kể cả hình vuông) và một chiều (cạnh) của tờ <= 36 cm và chiều (cạnh) kia của tờ <= 36 cm)",
       "nguon": "tax.48022010",
       "trich": "48022010 - - Ở dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "loaiKhac": false,
       "dieuKienSo": [
         {
-          "fact": "chieu_rong",
-          "op": "<=",
-          "value": 15,
-          "donVi": "cm"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "dangCuon",
+                "op": "CO"
+              },
+              {
+                "fact": "chieuRong",
+                "op": "<=",
+                "value": 15,
+                "donVi": "cm"
+              }
+            ],
+            [
+              {
+                "fact": "dangToChuNhat",
+                "op": "CO"
+              },
+              {
+                "fact": "motChieuTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
+              },
+              {
+                "fact": "chieuKiaTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
+              }
+            ]
+          ]
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-480220",
+          "ngay": "2026-11-22",
+          "bam": "5973c561ae9e60da44c78d5839973729438d3757d0994029432389e78bd87acc"
+        }
+      }
     },
     {
       "hs": "48022090",
@@ -557,20 +593,56 @@
     },
     {
       "hs": "48024010",
-      "dieuKien": "Giấy làm nền sản xuất giấy dán tường (phân nhóm 4802.40), ở dạng cuộn có chiều rộng không quá 15 cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp (hai dạng thay thế nhau — không biểu diễn được bằng một ngưỡng)",
-      "tieuChi": null,
+      "dieuKien": "(ở dạng cuộn (dây hàn, que hàn, tấm, dải) và chiều rộng <= 15 cm) hoặc (ở dạng tờ hình chữ nhật (kể cả hình vuông) và một chiều (cạnh) của tờ <= 36 cm và chiều (cạnh) kia của tờ <= 36 cm)",
       "nguon": "tax.48024010",
       "trich": "48024010 - - Ở dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "loaiKhac": false,
       "dieuKienSo": [
         {
-          "fact": "chieu_rong",
-          "op": "<=",
-          "value": 15,
-          "donVi": "cm"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "dangCuon",
+                "op": "CO"
+              },
+              {
+                "fact": "chieuRong",
+                "op": "<=",
+                "value": 15,
+                "donVi": "cm"
+              }
+            ],
+            [
+              {
+                "fact": "dangToChuNhat",
+                "op": "CO"
+              },
+              {
+                "fact": "motChieuTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
+              },
+              {
+                "fact": "chieuKiaTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
+              }
+            ]
+          ]
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-480240",
+          "ngay": "2026-11-22",
+          "bam": "f2e8d663ecdf6a6f092c1221a26f70b44cfa7391b12aff2df58c19ff71514f08"
+        }
+      }
     },
     {
       "hs": "48024090",
@@ -592,20 +664,56 @@
     },
     {
       "hs": "48025411",
-      "dieuKien": "Phân nhóm 4802.54 (giấy in/viết/đồ bản, sợi cơ học hoặc hoá-cơ không quá 10%, định lượng dưới 40 g/m2); tiêu đề quốc gia cha 4802541 bị lược — SEN gắn dòng này là giấy làm nền sản xuất giấy carbon (nguồn không phân biệt 4802541 với 4802542, đối chiếu biểu thuế); ở dạng cuộn có chiều rộng không quá 15 cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp (hai dạng thay thế nhau — không biểu diễn được bằng một ngưỡng)",
-      "tieuChi": null,
+      "dieuKien": "(ở dạng cuộn (dây hàn, que hàn, tấm, dải) và chiều rộng <= 15 cm) hoặc (ở dạng tờ hình chữ nhật (kể cả hình vuông) và một chiều (cạnh) của tờ <= 36 cm và chiều (cạnh) kia của tờ <= 36 cm)",
       "nguon": "tax.48025411",
       "trich": "48025411 - - - - Ở dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp (SEN)",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "loaiKhac": false,
       "dieuKienSo": [
         {
-          "fact": "chieu_rong",
-          "op": "<=",
-          "value": 15,
-          "donVi": "cm"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "dangCuon",
+                "op": "CO"
+              },
+              {
+                "fact": "chieuRong",
+                "op": "<=",
+                "value": 15,
+                "donVi": "cm"
+              }
+            ],
+            [
+              {
+                "fact": "dangToChuNhat",
+                "op": "CO"
+              },
+              {
+                "fact": "motChieuTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
+              },
+              {
+                "fact": "chieuKiaTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
+              }
+            ]
+          ]
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-480254",
+          "ngay": "2026-11-22",
+          "bam": "21c9e3f56712951a348931c37396fb79a7537f094d66da5b539ebd98f4b6e758"
+        }
+      }
     },
     {
       "hs": "48025419",
@@ -627,20 +735,56 @@
     },
     {
       "hs": "48025421",
-      "dieuKien": "Phân nhóm 4802.54 (giấy in/viết/đồ bản, sợi cơ học hoặc hoá-cơ không quá 10%, định lượng dưới 40 g/m2); tiêu đề quốc gia cha 4802542 bị lược — SEN gắn dòng này là giấy làm nền sản xuất giấy carbon (nguồn không phân biệt 4802541 với 4802542, đối chiếu biểu thuế); ở dạng cuộn có chiều rộng không quá 15 cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp (hai dạng thay thế nhau — không biểu diễn được bằng một ngưỡng)",
-      "tieuChi": null,
+      "dieuKien": "(ở dạng cuộn (dây hàn, que hàn, tấm, dải) và chiều rộng <= 15 cm) hoặc (ở dạng tờ hình chữ nhật (kể cả hình vuông) và một chiều (cạnh) của tờ <= 36 cm và chiều (cạnh) kia của tờ <= 36 cm)",
       "nguon": "tax.48025421",
       "trich": "48025421 - - - - Ở dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp (SEN)",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "loaiKhac": false,
       "dieuKienSo": [
         {
-          "fact": "chieu_rong",
-          "op": "<=",
-          "value": 15,
-          "donVi": "cm"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "dangCuon",
+                "op": "CO"
+              },
+              {
+                "fact": "chieuRong",
+                "op": "<=",
+                "value": 15,
+                "donVi": "cm"
+              }
+            ],
+            [
+              {
+                "fact": "dangToChuNhat",
+                "op": "CO"
+              },
+              {
+                "fact": "motChieuTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
+              },
+              {
+                "fact": "chieuKiaTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
+              }
+            ]
+          ]
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-480254",
+          "ngay": "2026-11-22",
+          "bam": "21c9e3f56712951a348931c37396fb79a7537f094d66da5b539ebd98f4b6e758"
+        }
+      }
     },
     {
       "hs": "48025429",
@@ -662,48 +806,220 @@
     },
     {
       "hs": "48025430",
-      "dieuKien": "Phân nhóm 4802.54 (giấy in/viết/đồ bản, sợi cơ học hoặc hoá-cơ không quá 10%, định lượng dưới 40 g/m2), giấy làm nền sản xuất giấy tráng nhôm (SEN: đáp ứng chú giải 5, bóng một mặt, tỷ trọng biểu kiến không nhỏ hơn 750 kg/m3, độ nhẵn không quá 125 ml/phút, Cobb nhỏ hơn 25 g/m2, độ trắng không dưới 82% ISO, độ mờ đục không nhỏ hơn 60%)",
+      "dieuKien": "công dụng / mục đích: làm nền sản xuất giấy tráng nhôm",
+      "nguon": "tax.48025430",
+      "trich": "48025430 - - - Giấy làm nền sản xuất giấy tráng nhôm(SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "làm nền sản xuất giấy tráng nhôm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-480254",
+          "ngay": "2026-11-22",
+          "bam": "21c9e3f56712951a348931c37396fb79a7537f094d66da5b539ebd98f4b6e758"
+        }
+      },
       "tieuChi": {
         "fact": "lam_nen_san_xuat_giay_trang_nhom",
         "op": "=",
         "value": true,
         "donVi": null
       },
-      "nguon": "sen.48025430",
-      "trich": "GIẤY LÀM NỀN SẢN XUẤT GIẤY TRÁNG NHÔM Đáp ứng chú giải 5, bóng một mặt, tỷ trọng biểu kiến không nhỏ hơn 750kg/m3, độ nhẵn không quá 125ml/phút, độ hút nước theo phương pháp Cobb nhỏ hơn 25g/m2, độ trắng không dưới 82% theo ISO, độ mờ đục không nhỏ hơn 60%",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      "chongLanTruc": {
+        "pn6": "480254",
+        "nhanh": [
+          "4802541",
+          "4802542",
+          "48025430",
+          "48025440",
+          "48025450"
+        ],
+        "truc": {
+          "4802541": "CONG_DUNG",
+          "4802542": "CONG_DUNG",
+          "48025430": "CONG_DUNG",
+          "48025440": "CONG_DUNG",
+          "48025450": "DAC_DIEM"
+        },
+        "cauHoiPhanBiet": "Giấy này là giấy nhiều lớp (hai lớp trở lên ép với nhau khi còn ướt — 48025450), hay là giấy làm nền sản xuất giấy carbon (tầng 4802541/4802542), giấy làm nền sản xuất giấy tráng nhôm (48025430), hoặc giấy viết, in khổ nhỏ (48025440)?",
+        "trich": {
+          "4802541": "Giấy làm nền sản xuất giấy carbon, có định lượng dưới 20g/m2",
+          "4802542": "Giấy làm nền sản xuất giấy carbon khác",
+          "48025430": "Giấy làm nền sản xuất giấy tráng nhôm(SEN)",
+          "48025440": "Loại dùng để viết, in và các mục đích đồ bản khác, dạng cuộn có chiều rộng không quá 15 cm hoặc dạng tờ hình chữ nhật (kể cả hình vuông) không có cạnh nào trên 36 cm ở dạng không gấp",
+          "48025450": "Giấy và bìa nhiều lớp(SEN)"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:ozv-1947#soat-480254",
+            "ngay": "2026-11-22",
+            "bam": "21c9e3f56712951a348931c37396fb79a7537f094d66da5b539ebd98f4b6e758"
+          }
+        }
+      }
     },
     {
       "hs": "48025440",
-      "dieuKien": "Phân nhóm 4802.54 (giấy in/viết/đồ bản, sợi cơ học hoặc hoá-cơ không quá 10%, định lượng dưới 40 g/m2), loại dùng để viết, in và các mục đích đồ bản khác, dạng cuộn có chiều rộng không quá 15 cm hoặc dạng tờ hình chữ nhật (kể cả hình vuông) không có cạnh nào trên 36 cm ở dạng không gấp (hai dạng thay thế nhau — không biểu diễn được bằng một ngưỡng)",
-      "tieuChi": null,
+      "dieuKien": "công dụng / mục đích: dùng để viết, in và các mục đích đồ bản khác; (ở dạng cuộn (dây hàn, que hàn, tấm, dải) và chiều rộng <= 15 cm) hoặc (ở dạng tờ hình chữ nhật (kể cả hình vuông) và một chiều (cạnh) của tờ <= 36 cm và chiều (cạnh) kia của tờ <= 36 cm)",
       "nguon": "tax.48025440",
       "trich": "48025440 - - - Loại dùng để viết, in và các mục đích đồ bản khác, dạng cuộn có chiều rộng không quá 15 cm hoặc dạng tờ hình chữ nhật (kể cả hình vuông) không có cạnh nào trên 36 cm ở dạng không gấp",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "loaiKhac": false,
       "dieuKienSo": [
         {
-          "fact": "chieu_rong",
-          "op": "<=",
-          "value": 15,
-          "donVi": "cm"
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "dùng để viết, in và các mục đích đồ bản khác"
+        },
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "dangCuon",
+                "op": "CO"
+              },
+              {
+                "fact": "chieuRong",
+                "op": "<=",
+                "value": 15,
+                "donVi": "cm"
+              }
+            ],
+            [
+              {
+                "fact": "dangToChuNhat",
+                "op": "CO"
+              },
+              {
+                "fact": "motChieuTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
+              },
+              {
+                "fact": "chieuKiaTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
+              }
+            ]
+          ]
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-480254",
+          "ngay": "2026-11-22",
+          "bam": "21c9e3f56712951a348931c37396fb79a7537f094d66da5b539ebd98f4b6e758"
+        }
+      },
+      "chongLanTruc": {
+        "pn6": "480254",
+        "nhanh": [
+          "4802541",
+          "4802542",
+          "48025430",
+          "48025440",
+          "48025450"
+        ],
+        "truc": {
+          "4802541": "CONG_DUNG",
+          "4802542": "CONG_DUNG",
+          "48025430": "CONG_DUNG",
+          "48025440": "CONG_DUNG",
+          "48025450": "DAC_DIEM"
+        },
+        "cauHoiPhanBiet": "Giấy này là giấy nhiều lớp (hai lớp trở lên ép với nhau khi còn ướt — 48025450), hay là giấy làm nền sản xuất giấy carbon (tầng 4802541/4802542), giấy làm nền sản xuất giấy tráng nhôm (48025430), hoặc giấy viết, in khổ nhỏ (48025440)?",
+        "trich": {
+          "4802541": "Giấy làm nền sản xuất giấy carbon, có định lượng dưới 20g/m2",
+          "4802542": "Giấy làm nền sản xuất giấy carbon khác",
+          "48025430": "Giấy làm nền sản xuất giấy tráng nhôm(SEN)",
+          "48025440": "Loại dùng để viết, in và các mục đích đồ bản khác, dạng cuộn có chiều rộng không quá 15 cm hoặc dạng tờ hình chữ nhật (kể cả hình vuông) không có cạnh nào trên 36 cm ở dạng không gấp",
+          "48025450": "Giấy và bìa nhiều lớp(SEN)"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:ozv-1947#soat-480254",
+            "ngay": "2026-11-22",
+            "bam": "21c9e3f56712951a348931c37396fb79a7537f094d66da5b539ebd98f4b6e758"
+          }
+        }
+      }
     },
     {
       "hs": "48025450",
-      "dieuKien": "Phân nhóm 4802.54 (giấy in/viết/đồ bản, sợi cơ học hoặc hoá-cơ không quá 10%, định lượng dưới 40 g/m2), giấy và bìa nhiều lớp (SEN: gồm từ hai lớp kết hợp trở lên hoặc từng lớp đặt chồng lên nhau tạo thành tờ khi vẫn còn ẩm mà không cần chất kết dính)",
+      "dieuKien": "nhiều lớp (giấy/bìa/gỗ nhiều lớp)",
+      "nguon": "tax.48025450",
+      "trich": "48025450 - - - Giấy và bìa nhiều lớp(SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "nhieuLop",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-480254",
+          "ngay": "2026-11-22",
+          "bam": "21c9e3f56712951a348931c37396fb79a7537f094d66da5b539ebd98f4b6e758"
+        }
+      },
       "tieuChi": {
         "fact": "giay_nhieu_lop",
         "op": "=",
         "value": true,
         "donVi": null
       },
-      "nguon": "sen.4802",
-      "trich": "GIẤY NHIỀU LỚP Giấy hoặc bìa nhiều lớp còn được gọi là đa hợp hoặc đa lớp gồm từ hai lớp kết hợp trở lên hoặc từng lớp đặt chồng lên nhau tạo thành tờ khi vẫn còn ẩm mà không cần sử dụng chất kết dính trong suốt quá trình sản xuất.",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      "chongLanTruc": {
+        "pn6": "480254",
+        "nhanh": [
+          "4802541",
+          "4802542",
+          "48025430",
+          "48025440",
+          "48025450"
+        ],
+        "truc": {
+          "4802541": "CONG_DUNG",
+          "4802542": "CONG_DUNG",
+          "48025430": "CONG_DUNG",
+          "48025440": "CONG_DUNG",
+          "48025450": "DAC_DIEM"
+        },
+        "cauHoiPhanBiet": "Giấy này là giấy nhiều lớp (hai lớp trở lên ép với nhau khi còn ướt — 48025450), hay là giấy làm nền sản xuất giấy carbon (tầng 4802541/4802542), giấy làm nền sản xuất giấy tráng nhôm (48025430), hoặc giấy viết, in khổ nhỏ (48025440)?",
+        "trich": {
+          "4802541": "Giấy làm nền sản xuất giấy carbon, có định lượng dưới 20g/m2",
+          "4802542": "Giấy làm nền sản xuất giấy carbon khác",
+          "48025430": "Giấy làm nền sản xuất giấy tráng nhôm(SEN)",
+          "48025440": "Loại dùng để viết, in và các mục đích đồ bản khác, dạng cuộn có chiều rộng không quá 15 cm hoặc dạng tờ hình chữ nhật (kể cả hình vuông) không có cạnh nào trên 36 cm ở dạng không gấp",
+          "48025450": "Giấy và bìa nhiều lớp(SEN)"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:ozv-1947#soat-480254",
+            "ngay": "2026-11-22",
+            "bam": "21c9e3f56712951a348931c37396fb79a7537f094d66da5b539ebd98f4b6e758"
+          }
+        }
+      }
     },
     {
       "hs": "48025490",
@@ -1045,17 +1361,57 @@
     },
     {
       "hs": "48025621",
-      "dieuKien": "Phân nhóm 4802.56 (sợi cơ học hoặc hoá-cơ không quá 10%, định lượng 40–150 g/m2, dạng tờ không quá 435 mm x 297 mm không gấp); tiêu đề quốc gia cha 4802562 = giấy và bìa trang trí (SEN); ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp",
+      "dieuKien": "ở dạng tờ hình chữ nhật (kể cả hình vuông); (một chiều (cạnh) của tờ <= 36 cm và chiều (cạnh) kia của tờ <= 36 cm) hoặc (tên loại hàng: không có chiều nào trên 36 cm)",
+      "nguon": "tax.48025621",
+      "trich": "48025621 - - - - Ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "dangToChuNhat",
+          "op": "CO"
+        },
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "motChieuTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
+              },
+              {
+                "fact": "chieuKiaTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "không có chiều nào trên 36 cm"
+              }
+            ]
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-480256",
+          "ngay": "2026-11-22",
+          "bam": "bcf8e3dd6fdfb303755283545f745e79974e89fac4014f8cdc343d62a81291d3"
+        }
+      },
       "tieuChi": {
         "fact": "chieu_lon_nhat_to_khong_gap",
         "op": "<=",
         "value": 36,
         "donVi": "cm"
-      },
-      "nguon": "tax.48025621",
-      "trich": "48025621 - - - - Ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp (SEN)",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      }
     },
     {
       "hs": "48025629",
@@ -1077,25 +1433,37 @@
     },
     {
       "hs": "48025641",
-      "dieuKien": "Phân nhóm 4802.56 (sợi cơ học hoặc hoá-cơ không quá 10%, định lượng 40–150 g/m2, dạng tờ không quá 435 mm x 297 mm không gấp); tiêu đề quốc gia cha 4802564 bị lược, nguồn không nêu tên — đối chiếu biểu thuế; có chiều rộng không quá 36 cm ở dạng tờ hình chữ nhật (kể cả hình vuông) và ở dạng không gấp",
+      "dieuKien": "chiều rộng <= 36 cm; ở dạng tờ hình chữ nhật (kể cả hình vuông)",
+      "nguon": "tax.48025641",
+      "trich": "48025641 - - - - Có chiều rộng không quá 36 cm ở dạng tờ hình chữ nhật (kể cả hình vuông) và ở dạng không gấp",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 36,
+          "donVi": "cm"
+        },
+        {
+          "fact": "dangToChuNhat",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-480256",
+          "ngay": "2026-11-22",
+          "bam": "bcf8e3dd6fdfb303755283545f745e79974e89fac4014f8cdc343d62a81291d3"
+        }
+      },
       "tieuChi": {
         "fact": "chieu_rong_to_khong_gap",
         "op": "<=",
         "value": 36,
         "donVi": "cm"
-      },
-      "nguon": "tax.48025641",
-      "trich": "48025641 - - - - Có chiều rộng không quá 36 cm ở dạng tờ hình chữ nhật (kể cả hình vuông) và ở dạng không gấp",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false,
-      "dieuKienSo": [
-        {
-          "fact": "chieu_rong",
-          "op": "<=",
-          "value": 36,
-          "donVi": "cm"
-        }
-      ]
+      }
     },
     {
       "hs": "48025649",
@@ -1117,17 +1485,59 @@
     },
     {
       "hs": "48025650",
-      "dieuKien": "Phân nhóm 4802.56 (sợi cơ học hoặc hoá-cơ không quá 10%, định lượng 40–150 g/m2, dạng tờ không quá 435 mm x 297 mm không gấp), giấy nhiều lớp (SEN: gồm từ hai lớp kết hợp trở lên hoặc từng lớp đặt chồng lên nhau tạo thành tờ khi vẫn còn ẩm mà không cần chất kết dính)",
+      "dieuKien": "nhiều lớp (giấy/bìa/gỗ nhiều lớp)",
+      "nguon": "tax.48025650",
+      "trich": "48025650 - - - Giấy nhiều lớp(SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "nhieuLop",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-480256",
+          "ngay": "2026-11-22",
+          "bam": "bcf8e3dd6fdfb303755283545f745e79974e89fac4014f8cdc343d62a81291d3"
+        }
+      },
       "tieuChi": {
         "fact": "giay_nhieu_lop",
         "op": "=",
         "value": true,
         "donVi": null
       },
-      "nguon": "sen.4802",
-      "trich": "GIẤY NHIỀU LỚP Giấy hoặc bìa nhiều lớp còn được gọi là đa hợp hoặc đa lớp gồm từ hai lớp kết hợp trở lên hoặc từng lớp đặt chồng lên nhau tạo thành tờ khi vẫn còn ẩm mà không cần sử dụng chất kết dính trong suốt quá trình sản xuất.",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      "chongLanTruc": {
+        "pn6": "480256",
+        "nhanh": [
+          "4802562",
+          "4802564",
+          "48025650"
+        ],
+        "truc": {
+          "4802562": "TEN_LOAI",
+          "4802564": "CONG_DUNG",
+          "48025650": "DAC_DIEM"
+        },
+        "cauHoiPhanBiet": "Hàng này là \"Giấy và bìa trang trí\" (4802562), loại \"dùng để viết, in và các mục đích đồ bản khác\" (4802564) hay \"Giấy nhiều lớp\" (48025650)? Nếu hàng thoả từ hai nhánh trở lên (vd giấy trang trí dùng để viết, in; giấy nhiều lớp dùng để viết, in), biểu thuế không nêu nhánh nào được ưu tiên — cần chuyên gia phân xử.",
+        "trich": {
+          "4802562": "Giấy và bìa trang trí",
+          "4802564": "Loại dùng để viết, in và các mục đích đồ bản khác",
+          "48025650": "Giấy nhiều lớp"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:ozv-1947#soat-480256",
+            "ngay": "2026-11-22",
+            "bam": "bcf8e3dd6fdfb303755283545f745e79974e89fac4014f8cdc343d62a81291d3"
+          }
+        }
+      }
     },
     {
       "hs": "48025690",
@@ -1151,17 +1561,59 @@
     },
     {
       "hs": "48025721",
-      "dieuKien": "Phân nhóm 4802.57 (sợi cơ học hoặc hoá-cơ không quá 10%, định lượng 40–150 g/m2, loại khác ngoài 4802.55 và 4802.56); tiêu đề quốc gia cha 4802572 bị lược, nguồn không nêu tên — đối chiếu biểu thuế; không có chiều nào trên 36 cm ở dạng không gấp",
+      "dieuKien": "(một chiều (cạnh) của tờ <= 36 cm và chiều (cạnh) kia của tờ <= 36 cm) hoặc (tên loại hàng: Không có chiều nào trên 36 cm)",
+      "nguon": "tax.48025721",
+      "trich": "48025721 - - - - Không có chiều nào trên 36 cm ở dạng không gấp",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "motChieuTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
+              },
+              {
+                "fact": "chieuKiaTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Không có chiều nào trên 36 cm"
+              }
+            ]
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-480257",
+          "ngay": "2026-11-22",
+          "bam": "c5301cfbe9819e7d701fc7d5ccf25f734caacc97fe7159d82c76c1dfcbaf8d49"
+        }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "48025730",
+          "lyDo": "tieuDe.4802572 \"Loại dùng để viết, in và các mục đích đồ bản khác\" (tầng cha của .21; .21 \"Không có chiều nào trên 36 cm ở dạng không gấp\") không loại trừ tax.48025730 \"Giấy nhiều lớp\" — giấy nhiều lớp vẫn có thể là loại dùng để viết, in; sen.4802 nêu giấy nhiều lớp dùng để viết, in; chữ biểu không nêu thứ tự ưu tiên"
+        }
+      ],
       "tieuChi": {
         "fact": "chieu_lon_nhat_to_khong_gap",
         "op": "<=",
         "value": 36,
         "donVi": "cm"
-      },
-      "nguon": "tax.48025721",
-      "trich": "48025721 - - - - Không có chiều nào trên 36 cm ở dạng không gấp",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      }
     },
     {
       "hs": "48025729",
@@ -1179,21 +1631,51 @@
         ],
         "toTienCoTen": "480257",
         "dinhNghiaDuoc": true
-      }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "48025730",
+          "lyDo": "tieuDe.4802572 \"Loại dùng để viết, in và các mục đích đồ bản khác\" (tầng cha của .29) không loại trừ tax.48025730 \"Giấy nhiều lớp\" — giấy nhiều lớp vẫn có thể là loại dùng để viết, in; chữ biểu không nêu thứ tự ưu tiên"
+        }
+      ]
     },
     {
       "hs": "48025730",
-      "dieuKien": "Phân nhóm 4802.57 (sợi cơ học hoặc hoá-cơ không quá 10%, định lượng 40–150 g/m2, loại khác ngoài 4802.55 và 4802.56), giấy nhiều lớp (SEN: gồm từ hai lớp kết hợp trở lên hoặc từng lớp đặt chồng lên nhau tạo thành tờ khi vẫn còn ẩm mà không cần chất kết dính)",
+      "dieuKien": "nhiều lớp (giấy/bìa/gỗ nhiều lớp)",
+      "nguon": "tax.48025730",
+      "trich": "48025730 - - - Giấy nhiều lớp(SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "nhieuLop",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-480257",
+          "ngay": "2026-11-22",
+          "bam": "c5301cfbe9819e7d701fc7d5ccf25f734caacc97fe7159d82c76c1dfcbaf8d49"
+        }
+      },
+      "chongLanVanBan": [
+        {
+          "voi": "48025721",
+          "lyDo": "tieuDe.4802572 \"Loại dùng để viết, in và các mục đích đồ bản khác\" (tầng cha của .21; .21 \"Không có chiều nào trên 36 cm ở dạng không gấp\") không loại trừ tax.48025730 \"Giấy nhiều lớp\" — giấy nhiều lớp vẫn có thể là loại dùng để viết, in; sen.4802 nêu giấy nhiều lớp dùng để viết, in; chữ biểu không nêu thứ tự ưu tiên"
+        },
+        {
+          "voi": "48025729",
+          "lyDo": "tieuDe.4802572 \"Loại dùng để viết, in và các mục đích đồ bản khác\" (tầng cha của .29) không loại trừ tax.48025730 \"Giấy nhiều lớp\" — giấy nhiều lớp vẫn có thể là loại dùng để viết, in; chữ biểu không nêu thứ tự ưu tiên"
+        }
+      ],
       "tieuChi": {
         "fact": "giay_nhieu_lop",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "nguon": "sen.4802",
-      "trich": "GIẤY NHIỀU LỚP Giấy hoặc bìa nhiều lớp còn được gọi là đa hợp hoặc đa lớp gồm từ hai lớp kết hợp trở lên hoặc từng lớp đặt chồng lên nhau tạo thành tờ khi vẫn còn ẩm mà không cần sử dụng chất kết dính trong suốt quá trình sản xuất.",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      }
     },
     {
       "hs": "48025790",
@@ -1216,20 +1698,56 @@
     },
     {
       "hs": "48025821",
-      "dieuKien": "Phân nhóm 4802.58 (sợi cơ học hoặc hoá-cơ không quá 10%, định lượng trên 150 g/m2); tiêu đề quốc gia cha 4802582 = giấy và bìa trang trí (SEN); ở dạng cuộn có chiều rộng từ 15 cm trở xuống hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) với một chiều từ 36 cm trở xuống và chiều kia từ 15 cm trở xuống ở dạng không gấp (nhiều chiều — không biểu diễn được bằng một ngưỡng)",
-      "tieuChi": null,
+      "dieuKien": "(ở dạng cuộn (dây hàn, que hàn, tấm, dải) và chiều rộng <= 15 cm) hoặc (ở dạng tờ hình chữ nhật (kể cả hình vuông) và một chiều (cạnh) của tờ <= 36 cm và chiều (cạnh) kia của tờ <= 15 cm)",
       "nguon": "tax.48025821",
       "trich": "48025821 - - - - Ở dạng cuộn có chiều rộng từ 15 cm trở xuống hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) với một chiều từ 36 cm trở xuống và chiều kia từ 15 cm trở xuống ở dạng không gấp(SEN)",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "loaiKhac": false,
       "dieuKienSo": [
         {
-          "fact": "chieu_rong",
-          "op": "<=",
-          "value": 15,
-          "donVi": "cm"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "dangCuon",
+                "op": "CO"
+              },
+              {
+                "fact": "chieuRong",
+                "op": "<=",
+                "value": 15,
+                "donVi": "cm"
+              }
+            ],
+            [
+              {
+                "fact": "dangToChuNhat",
+                "op": "CO"
+              },
+              {
+                "fact": "motChieuTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
+              },
+              {
+                "fact": "chieuKiaTo",
+                "op": "<=",
+                "value": 15,
+                "donVi": "cm"
+              }
+            ]
+          ]
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-480258",
+          "ngay": "2026-11-22",
+          "bam": "f8a522210f138fb466435ae2114b9dbb8244fd9cb08ddbae2250ea20fefd8727"
+        }
+      }
     },
     {
       "hs": "48025829",
@@ -1251,20 +1769,56 @@
     },
     {
       "hs": "48025831",
-      "dieuKien": "Phân nhóm 4802.58 (sợi cơ học hoặc hoá-cơ không quá 10%, định lượng trên 150 g/m2); tiêu đề quốc gia cha 4802583 bị lược, nguồn không nêu tên — đối chiếu biểu thuế; ở dạng cuộn có chiều rộng không quá 15 cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp (hai dạng thay thế nhau — không biểu diễn được bằng một ngưỡng)",
-      "tieuChi": null,
+      "dieuKien": "(ở dạng cuộn (dây hàn, que hàn, tấm, dải) và chiều rộng <= 15 cm) hoặc (ở dạng tờ hình chữ nhật (kể cả hình vuông) và một chiều (cạnh) của tờ <= 36 cm và chiều (cạnh) kia của tờ <= 36 cm)",
       "nguon": "tax.48025831",
       "trich": "48025831 - - - - Ở dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "loaiKhac": false,
       "dieuKienSo": [
         {
-          "fact": "chieu_rong",
-          "op": "<=",
-          "value": 15,
-          "donVi": "cm"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "dangCuon",
+                "op": "CO"
+              },
+              {
+                "fact": "chieuRong",
+                "op": "<=",
+                "value": 15,
+                "donVi": "cm"
+              }
+            ],
+            [
+              {
+                "fact": "dangToChuNhat",
+                "op": "CO"
+              },
+              {
+                "fact": "motChieuTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
+              },
+              {
+                "fact": "chieuKiaTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
+              }
+            ]
+          ]
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-480258",
+          "ngay": "2026-11-22",
+          "bam": "f8a522210f138fb466435ae2114b9dbb8244fd9cb08ddbae2250ea20fefd8727"
+        }
+      }
     },
     {
       "hs": "48025839",
@@ -1286,12 +1840,33 @@
     },
     {
       "hs": "48025891",
-      "dieuKien": "Phân nhóm 4802.58 (sợi cơ học hoặc hoá-cơ không quá 10%, định lượng trên 150 g/m2); tiêu đề quốc gia cha 4802589 bị lược (máy nghi “Loại khác”); định lượng trên 150 g/m2 nhưng dưới 225 g/m2 (khoảng hai đầu — không biểu diễn được bằng một ngưỡng)",
-      "tieuChi": null,
+      "dieuKien": "định lượng giấy hoặc bìa > 150 g/m2; định lượng giấy hoặc bìa < 225 g/m2",
       "nguon": "tax.48025891",
       "trich": "48025891 - - - - Định lượng trên 150 g/m2 nhưng dưới 225 g/m2",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "dinhLuong",
+          "op": ">",
+          "value": 150,
+          "donVi": "g/m2"
+        },
+        {
+          "fact": "dinhLuong",
+          "op": "<",
+          "value": 225,
+          "donVi": "g/m2"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-480258",
+          "ngay": "2026-11-22",
+          "bam": "f8a522210f138fb466435ae2114b9dbb8244fd9cb08ddbae2250ea20fefd8727"
+        }
+      }
     },
     {
       "hs": "48025899",
@@ -1313,25 +1888,33 @@
     },
     {
       "hs": "48026131",
-      "dieuKien": "Phân nhóm 4802.61 (sợi cơ học hoặc hoá-cơ trên 10%, dạng cuộn); tiêu đề quốc gia cha 4802613 = giấy và bìa trang trí (SEN); có chiều rộng không quá 15 cm",
+      "dieuKien": "chiều rộng <= 15 cm",
+      "nguon": "tax.48026131",
+      "trich": "48026131 - - - - Có chiều rộng không quá 15 cm (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 15,
+          "donVi": "cm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-480261",
+          "ngay": "2026-11-22",
+          "bam": "fc521cf5e21d9369d2c04238763ad3bd5581f686e5fe63e9f20b2a340f1b5e81"
+        }
+      },
       "tieuChi": {
         "fact": "chieu_rong_cuon",
         "op": "<=",
         "value": 15,
         "donVi": "cm"
-      },
-      "nguon": "tax.48026131",
-      "trich": "48026131 - - - - Có chiều rộng không quá 15 cm (SEN)",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false,
-      "dieuKienSo": [
-        {
-          "fact": "chieu_rong",
-          "op": "<=",
-          "value": 15,
-          "donVi": "cm"
-        }
-      ]
+      }
     },
     {
       "hs": "48026139",
@@ -1353,12 +1936,33 @@
     },
     {
       "hs": "48026141",
-      "dieuKien": "Phân nhóm 4802.61 (sợi cơ học hoặc hoá-cơ trên 10%, dạng cuộn); tiêu đề quốc gia cha 4802614 = giấy làm nền sản xuất giấy tráng nhôm (SEN); định lượng trên 150 g/m2 nhưng dưới 225 g/m2 (khoảng hai đầu — không biểu diễn được bằng một ngưỡng)",
-      "tieuChi": null,
-      "nguon": "sen.48026141",
-      "trich": "GIẤY LÀM NỀN SẢN XUẤT GIẤY TRÁNG NHÔM Đáp ứng chú giải 5, bóng một mặt, tỷ trọng biểu kiến không nhỏ hơn 750kg/m3, độ nhẵn không quá 125ml/phút, độ hút nước theo phương pháp Cobb nhỏ hơn 25g/m2, độ trắng không dưới 82% theo ISO, độ mờ đục không nhỏ hơn 60%",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      "dieuKien": "định lượng giấy hoặc bìa > 150 g/m2; định lượng giấy hoặc bìa < 225 g/m2",
+      "nguon": "tax.48026141",
+      "trich": "48026141 - - - - Định lượng trên 150 g/m2 nhưng dưới 225 g/m2(SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "dinhLuong",
+          "op": ">",
+          "value": 150,
+          "donVi": "g/m2"
+        },
+        {
+          "fact": "dinhLuong",
+          "op": "<",
+          "value": 225,
+          "donVi": "g/m2"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-480261",
+          "ngay": "2026-11-22",
+          "bam": "fc521cf5e21d9369d2c04238763ad3bd5581f686e5fe63e9f20b2a340f1b5e81"
+        }
+      }
     },
     {
       "hs": "48026149",
@@ -1380,25 +1984,33 @@
     },
     {
       "hs": "48026151",
-      "dieuKien": "Phân nhóm 4802.61 (sợi cơ học hoặc hoá-cơ trên 10%, dạng cuộn); tiêu đề quốc gia cha 4802615 bị lược, nguồn không nêu tên — đối chiếu biểu thuế; có chiều rộng không quá 15 cm",
+      "dieuKien": "chiều rộng <= 15 cm",
+      "nguon": "tax.48026151",
+      "trich": "48026151 - - - - Có chiều rộng không quá 15 cm",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 15,
+          "donVi": "cm"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-480261",
+          "ngay": "2026-11-22",
+          "bam": "fc521cf5e21d9369d2c04238763ad3bd5581f686e5fe63e9f20b2a340f1b5e81"
+        }
+      },
       "tieuChi": {
         "fact": "chieu_rong_cuon",
         "op": "<=",
         "value": 15,
         "donVi": "cm"
-      },
-      "nguon": "tax.48026151",
-      "trich": "48026151 - - - - Có chiều rộng không quá 15 cm",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false,
-      "dieuKienSo": [
-        {
-          "fact": "chieu_rong",
-          "op": "<=",
-          "value": 15,
-          "donVi": "cm"
-        }
-      ]
+      }
     },
     {
       "hs": "48026159",
@@ -1420,26 +2032,92 @@
     },
     {
       "hs": "48026160",
-      "dieuKien": "Phân nhóm 4802.61 (sợi cơ học hoặc hoá-cơ trên 10%, dạng cuộn), giấy nhiều lớp (SEN: gồm từ hai lớp kết hợp trở lên hoặc từng lớp đặt chồng lên nhau tạo thành tờ khi vẫn còn ẩm mà không cần chất kết dính)",
+      "dieuKien": "nhiều lớp (giấy/bìa/gỗ nhiều lớp)",
+      "nguon": "tax.48026160",
+      "trich": "48026160 - - - Giấy nhiều lớp(SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "nhieuLop",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-480261",
+          "ngay": "2026-11-22",
+          "bam": "fc521cf5e21d9369d2c04238763ad3bd5581f686e5fe63e9f20b2a340f1b5e81"
+        }
+      },
       "tieuChi": {
         "fact": "giay_nhieu_lop",
         "op": "=",
         "value": true,
         "donVi": null
       },
-      "nguon": "sen.4802",
-      "trich": "GIẤY NHIỀU LỚP Giấy hoặc bìa nhiều lớp còn được gọi là đa hợp hoặc đa lớp gồm từ hai lớp kết hợp trở lên hoặc từng lớp đặt chồng lên nhau tạo thành tờ khi vẫn còn ẩm mà không cần sử dụng chất kết dính trong suốt quá trình sản xuất.",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      "chongLanTruc": {
+        "pn6": "480261",
+        "nhanh": [
+          "4802613",
+          "4802614",
+          "4802615",
+          "48026160"
+        ],
+        "truc": {
+          "4802613": "TEN_LOAI",
+          "4802614": "CONG_DUNG",
+          "4802615": "CONG_DUNG",
+          "48026160": "DAC_DIEM"
+        },
+        "cauHoiPhanBiet": "Giấy này là \"Giấy và bìa trang trí\" (4802613), \"Giấy làm nền sản xuất giấy tráng nhôm\" (4802614), loại \"dùng để viết, in và các mục đích đồ bản khác\" (4802615) hay \"Giấy nhiều lớp\" (48026160)? Nếu hàng có cùng lúc đặc điểm của hai nhánh (vd giấy trang trí dùng để viết; giấy nhiều lớp dùng để in), biểu thuế không nêu nhánh nào được ưu tiên — cần chuyên gia phân xử?",
+        "trich": {
+          "4802613": "Giấy và bìa trang trí",
+          "4802614": "Giấy làm nền sản xuất giấy tráng nhôm",
+          "4802615": "Loại dùng để viết, in và các mục đích đồ bản khác",
+          "48026160": "Giấy nhiều lớp"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:ozv-1947#soat-480261",
+            "ngay": "2026-11-22",
+            "bam": "fc521cf5e21d9369d2c04238763ad3bd5581f686e5fe63e9f20b2a340f1b5e81"
+          }
+        }
+      }
     },
     {
       "hs": "48026191",
-      "dieuKien": "Phân nhóm 4802.61 (sợi cơ học hoặc hoá-cơ trên 10%, dạng cuộn); tiêu đề quốc gia cha 4802619 bị lược (máy nghi 'Loại khác'); định lượng trên 150 g/m2 nhưng dưới 225 g/m2 (khoảng hai đầu — không biểu diễn được bằng một ngưỡng)",
-      "tieuChi": null,
+      "dieuKien": "định lượng giấy hoặc bìa > 150 g/m2; định lượng giấy hoặc bìa < 225 g/m2",
       "nguon": "tax.48026191",
       "trich": "48026191 - - - - Định lượng trên 150 g/m2 nhưng dưới 225 g/m2",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "dinhLuong",
+          "op": ">",
+          "value": 150,
+          "donVi": "g/m2"
+        },
+        {
+          "fact": "dinhLuong",
+          "op": "<",
+          "value": 225,
+          "donVi": "g/m2"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-480261",
+          "ngay": "2026-11-22",
+          "bam": "fc521cf5e21d9369d2c04238763ad3bd5581f686e5fe63e9f20b2a340f1b5e81"
+        }
+      }
     },
     {
       "hs": "48026199",
@@ -1461,12 +2139,33 @@
     },
     {
       "hs": "48026211",
-      "dieuKien": "Phân nhóm 4802.62 (sợi cơ học hoặc hoá-cơ trên 10%, dạng tờ không quá 435 mm x 297 mm không gấp); tiêu đề quốc gia cha 4802621 bị lược — SEN gắn cùng tên “giấy và bìa trang trí” cho cả hai nhánh 4802621 và 4802622 (nguồn mâu thuẫn, không điền tên — đối chiếu biểu thuế); định lượng trên 150 g/m2 nhưng dưới 225 g/m2 (khoảng hai đầu — không biểu diễn được bằng một ngưỡng)",
-      "tieuChi": null,
+      "dieuKien": "định lượng giấy hoặc bìa > 150 g/m2; định lượng giấy hoặc bìa < 225 g/m2",
       "nguon": "tax.48026211",
       "trich": "48026211 - - - - Định lượng trên 150 g/m2 nhưng dưới 225 g/m2(SEN)",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "dinhLuong",
+          "op": ">",
+          "value": 150,
+          "donVi": "g/m2"
+        },
+        {
+          "fact": "dinhLuong",
+          "op": "<",
+          "value": 225,
+          "donVi": "g/m2"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-480262",
+          "ngay": "2026-11-22",
+          "bam": "2f127fae04c6ee1f9f457ac04635ab92d35c0f0153f7705caa06f17d665a173d"
+        }
+      }
     },
     {
       "hs": "48026219",
@@ -1488,12 +2187,33 @@
     },
     {
       "hs": "48026221",
-      "dieuKien": "Phân nhóm 4802.62 (sợi cơ học hoặc hoá-cơ trên 10%, dạng tờ không quá 435 mm x 297 mm không gấp); tiêu đề quốc gia cha 4802622 bị lược — SEN gắn cùng tên “giấy và bìa trang trí” cho cả hai nhánh 4802621 và 4802622 (nguồn mâu thuẫn, không điền tên — đối chiếu biểu thuế); định lượng trên 150 g/m2 nhưng dưới 225 g/m2 (khoảng hai đầu — không biểu diễn được bằng một ngưỡng)",
-      "tieuChi": null,
+      "dieuKien": "định lượng giấy hoặc bìa > 150 g/m2; định lượng giấy hoặc bìa < 225 g/m2",
       "nguon": "tax.48026221",
       "trich": "48026221 - - - - Định lượng trên 150 g/m2 nhưng dưới 225 g/m2(SEN)",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "dinhLuong",
+          "op": ">",
+          "value": 150,
+          "donVi": "g/m2"
+        },
+        {
+          "fact": "dinhLuong",
+          "op": "<",
+          "value": 225,
+          "donVi": "g/m2"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-480262",
+          "ngay": "2026-11-22",
+          "bam": "2f127fae04c6ee1f9f457ac04635ab92d35c0f0153f7705caa06f17d665a173d"
+        }
+      }
     },
     {
       "hs": "48026229",
@@ -1515,17 +2235,57 @@
     },
     {
       "hs": "48026231",
-      "dieuKien": "Phân nhóm 4802.62 (sợi cơ học hoặc hoá-cơ trên 10%, dạng tờ không quá 435 mm x 297 mm không gấp); tiêu đề quốc gia cha 4802623 bị lược, nguồn không nêu tên — đối chiếu biểu thuế; ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp",
+      "dieuKien": "ở dạng tờ hình chữ nhật (kể cả hình vuông); (một chiều (cạnh) của tờ <= 36 cm và chiều (cạnh) kia của tờ <= 36 cm) hoặc (tên loại hàng: không có chiều nào trên 36 cm)",
+      "nguon": "tax.48026231",
+      "trich": "48026231 - - - - Ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "dangToChuNhat",
+          "op": "CO"
+        },
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "motChieuTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
+              },
+              {
+                "fact": "chieuKiaTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "không có chiều nào trên 36 cm"
+              }
+            ]
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-480262",
+          "ngay": "2026-11-22",
+          "bam": "2f127fae04c6ee1f9f457ac04635ab92d35c0f0153f7705caa06f17d665a173d"
+        }
+      },
       "tieuChi": {
         "fact": "chieu_lon_nhat_to_khong_gap",
         "op": "<=",
         "value": 36,
         "donVi": "cm"
-      },
-      "nguon": "tax.48026231",
-      "trich": "48026231 - - - - Ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      }
     },
     {
       "hs": "48026239",
@@ -1547,12 +2307,33 @@
     },
     {
       "hs": "48026291",
-      "dieuKien": "Phân nhóm 4802.62 (sợi cơ học hoặc hoá-cơ trên 10%, dạng tờ không quá 435 mm x 297 mm không gấp); tiêu đề quốc gia cha 4802629 bị lược (máy nghi 'Loại khác'); định lượng trên 150 g/m2 nhưng dưới 225 g/m2 (khoảng hai đầu — không biểu diễn được bằng một ngưỡng)",
-      "tieuChi": null,
+      "dieuKien": "định lượng giấy hoặc bìa > 150 g/m2; định lượng giấy hoặc bìa < 225 g/m2",
       "nguon": "tax.48026291",
       "trich": "48026291 - - - - Định lượng trên 150 g/m2 nhưng dưới 225 g/m2",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "dinhLuong",
+          "op": ">",
+          "value": 150,
+          "donVi": "g/m2"
+        },
+        {
+          "fact": "dinhLuong",
+          "op": "<",
+          "value": 225,
+          "donVi": "g/m2"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-480262",
+          "ngay": "2026-11-22",
+          "bam": "2f127fae04c6ee1f9f457ac04635ab92d35c0f0153f7705caa06f17d665a173d"
+        }
+      }
     },
     {
       "hs": "48026299",
@@ -1574,17 +2355,57 @@
     },
     {
       "hs": "48026911",
-      "dieuKien": "Phân nhóm 4802.69 (sợi cơ học hoặc hoá-cơ trên 10%, loại khác ngoài dạng cuộn và dạng tờ 435 x 297 mm); tiêu đề quốc gia cha 4802691 bị lược, nguồn không nêu tên — đối chiếu biểu thuế; ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp",
+      "dieuKien": "ở dạng tờ hình chữ nhật (kể cả hình vuông); (một chiều (cạnh) của tờ <= 36 cm và chiều (cạnh) kia của tờ <= 36 cm) hoặc (tên loại hàng: không có chiều nào trên 36 cm)",
+      "nguon": "tax.48026911",
+      "trich": "48026911 - - - - Ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "dangToChuNhat",
+          "op": "CO"
+        },
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "motChieuTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
+              },
+              {
+                "fact": "chieuKiaTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "không có chiều nào trên 36 cm"
+              }
+            ]
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-480269",
+          "ngay": "2026-11-22",
+          "bam": "a6f08e796d350a00bb4d9b55d0b76622aa3fbc01027391c2de8a1906e6667de7"
+        }
+      },
       "tieuChi": {
         "fact": "chieu_lon_nhat_to_khong_gap",
         "op": "<=",
         "value": 36,
         "donVi": "cm"
-      },
-      "nguon": "tax.48026911",
-      "trich": "48026911 - - - - Ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      }
     },
     {
       "hs": "48026919",
@@ -1606,12 +2427,33 @@
     },
     {
       "hs": "48026991",
-      "dieuKien": "Phân nhóm 4802.69 (sợi cơ học hoặc hoá-cơ trên 10%, loại khác ngoài dạng cuộn và dạng tờ 435 x 297 mm); tiêu đề quốc gia cha 4802699 bị lược (máy nghi 'Loại khác'); định lượng trên 150 g/m2 nhưng dưới 225 g/m2 (khoảng hai đầu — không biểu diễn được bằng một ngưỡng)",
-      "tieuChi": null,
+      "dieuKien": "định lượng giấy hoặc bìa > 150 g/m2; định lượng giấy hoặc bìa < 225 g/m2",
       "nguon": "tax.48026991",
       "trich": "48026991 - - - - Định lượng trên 150 g/m2 nhưng dưới 225 g/m2",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "dinhLuong",
+          "op": ">",
+          "value": 150,
+          "donVi": "g/m2"
+        },
+        {
+          "fact": "dinhLuong",
+          "op": "<",
+          "value": 225,
+          "donVi": "g/m2"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-480269",
+          "ngay": "2026-11-22",
+          "bam": "a6f08e796d350a00bb4d9b55d0b76622aa3fbc01027391c2de8a1906e6667de7"
+        }
+      }
     },
     {
       "hs": "48026999",
@@ -2539,6 +3381,123 @@
   },
   "dieuKienNut": [
     {
+      "id": "4802541",
+      "nguon": "tieuDe.4802541",
+      "trich": "4802541 Giấy làm nền sản xuất giấy carbon, có định lượng dưới 20g/m2",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "làm nền sản xuất giấy carbon"
+        },
+        {
+          "fact": "dinhLuong",
+          "op": "<",
+          "value": 20,
+          "donVi": "g/m2"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-480254",
+          "ngay": "2026-11-22",
+          "bam": "21c9e3f56712951a348931c37396fb79a7537f094d66da5b539ebd98f4b6e758"
+        }
+      },
+      "chongLanTruc": {
+        "pn6": "480254",
+        "nhanh": [
+          "4802541",
+          "4802542",
+          "48025430",
+          "48025440",
+          "48025450"
+        ],
+        "truc": {
+          "4802541": "CONG_DUNG",
+          "4802542": "CONG_DUNG",
+          "48025430": "CONG_DUNG",
+          "48025440": "CONG_DUNG",
+          "48025450": "DAC_DIEM"
+        },
+        "cauHoiPhanBiet": "Giấy này là giấy nhiều lớp (hai lớp trở lên ép với nhau khi còn ướt — 48025450), hay là giấy làm nền sản xuất giấy carbon (tầng 4802541/4802542), giấy làm nền sản xuất giấy tráng nhôm (48025430), hoặc giấy viết, in khổ nhỏ (48025440)?",
+        "trich": {
+          "4802541": "Giấy làm nền sản xuất giấy carbon, có định lượng dưới 20g/m2",
+          "4802542": "Giấy làm nền sản xuất giấy carbon khác",
+          "48025430": "Giấy làm nền sản xuất giấy tráng nhôm(SEN)",
+          "48025440": "Loại dùng để viết, in và các mục đích đồ bản khác, dạng cuộn có chiều rộng không quá 15 cm hoặc dạng tờ hình chữ nhật (kể cả hình vuông) không có cạnh nào trên 36 cm ở dạng không gấp",
+          "48025450": "Giấy và bìa nhiều lớp(SEN)"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:ozv-1947#soat-480254",
+            "ngay": "2026-11-22",
+            "bam": "21c9e3f56712951a348931c37396fb79a7537f094d66da5b539ebd98f4b6e758"
+          }
+        }
+      }
+    },
+    {
+      "id": "4802542",
+      "nguon": "tieuDe.4802542",
+      "trich": "4802542 Giấy làm nền sản xuất giấy carbon khác",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "làm nền sản xuất giấy carbon"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-480254",
+          "ngay": "2026-11-22",
+          "bam": "21c9e3f56712951a348931c37396fb79a7537f094d66da5b539ebd98f4b6e758"
+        }
+      },
+      "phanConLai": true,
+      "chongLanTruc": {
+        "pn6": "480254",
+        "nhanh": [
+          "4802541",
+          "4802542",
+          "48025430",
+          "48025440",
+          "48025450"
+        ],
+        "truc": {
+          "4802541": "CONG_DUNG",
+          "4802542": "CONG_DUNG",
+          "48025430": "CONG_DUNG",
+          "48025440": "CONG_DUNG",
+          "48025450": "DAC_DIEM"
+        },
+        "cauHoiPhanBiet": "Giấy này là giấy nhiều lớp (hai lớp trở lên ép với nhau khi còn ướt — 48025450), hay là giấy làm nền sản xuất giấy carbon (tầng 4802541/4802542), giấy làm nền sản xuất giấy tráng nhôm (48025430), hoặc giấy viết, in khổ nhỏ (48025440)?",
+        "trich": {
+          "4802541": "Giấy làm nền sản xuất giấy carbon, có định lượng dưới 20g/m2",
+          "4802542": "Giấy làm nền sản xuất giấy carbon khác",
+          "48025430": "Giấy làm nền sản xuất giấy tráng nhôm(SEN)",
+          "48025440": "Loại dùng để viết, in và các mục đích đồ bản khác, dạng cuộn có chiều rộng không quá 15 cm hoặc dạng tờ hình chữ nhật (kể cả hình vuông) không có cạnh nào trên 36 cm ở dạng không gấp",
+          "48025450": "Giấy và bìa nhiều lớp(SEN)"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:ozv-1947#soat-480254",
+            "ngay": "2026-11-22",
+            "bam": "21c9e3f56712951a348931c37396fb79a7537f094d66da5b539ebd98f4b6e758"
+          }
+        }
+      }
+    },
+    {
       "id": "4802552",
       "nguon": "tieuDe.4802552",
       "trich": "4802552 Giấy và bìa trang trí",
@@ -2649,6 +3608,590 @@
             "ngay": "2026-11-11",
             "bam": "af5d601a6048e1c9d94433591512f72fd21dd390f067e9fd3c47b8a1dc7ddb58"
           }
+        }
+      }
+    },
+    {
+      "id": "4802562",
+      "nguon": "tieuDe.4802562",
+      "trich": "4802562 Giấy và bìa trang trí",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Giấy và bìa trang trí"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-480256",
+          "ngay": "2026-11-22",
+          "bam": "bcf8e3dd6fdfb303755283545f745e79974e89fac4014f8cdc343d62a81291d3"
+        }
+      },
+      "chongLanTruc": {
+        "pn6": "480256",
+        "nhanh": [
+          "4802562",
+          "4802564",
+          "48025650"
+        ],
+        "truc": {
+          "4802562": "TEN_LOAI",
+          "4802564": "CONG_DUNG",
+          "48025650": "DAC_DIEM"
+        },
+        "cauHoiPhanBiet": "Hàng này là \"Giấy và bìa trang trí\" (4802562), loại \"dùng để viết, in và các mục đích đồ bản khác\" (4802564) hay \"Giấy nhiều lớp\" (48025650)? Nếu hàng thoả từ hai nhánh trở lên (vd giấy trang trí dùng để viết, in; giấy nhiều lớp dùng để viết, in), biểu thuế không nêu nhánh nào được ưu tiên — cần chuyên gia phân xử.",
+        "trich": {
+          "4802562": "Giấy và bìa trang trí",
+          "4802564": "Loại dùng để viết, in và các mục đích đồ bản khác",
+          "48025650": "Giấy nhiều lớp"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:ozv-1947#soat-480256",
+            "ngay": "2026-11-22",
+            "bam": "bcf8e3dd6fdfb303755283545f745e79974e89fac4014f8cdc343d62a81291d3"
+          }
+        }
+      }
+    },
+    {
+      "id": "4802564",
+      "nguon": "tieuDe.4802564",
+      "trich": "4802564 Loại dùng để viết, in và các mục đích đồ bản khác",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "viết",
+            "in",
+            "đồ bản"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-480256",
+          "ngay": "2026-11-22",
+          "bam": "bcf8e3dd6fdfb303755283545f745e79974e89fac4014f8cdc343d62a81291d3"
+        }
+      },
+      "phanConLai": false,
+      "chongLanTruc": {
+        "pn6": "480256",
+        "nhanh": [
+          "4802562",
+          "4802564",
+          "48025650"
+        ],
+        "truc": {
+          "4802562": "TEN_LOAI",
+          "4802564": "CONG_DUNG",
+          "48025650": "DAC_DIEM"
+        },
+        "cauHoiPhanBiet": "Hàng này là \"Giấy và bìa trang trí\" (4802562), loại \"dùng để viết, in và các mục đích đồ bản khác\" (4802564) hay \"Giấy nhiều lớp\" (48025650)? Nếu hàng thoả từ hai nhánh trở lên (vd giấy trang trí dùng để viết, in; giấy nhiều lớp dùng để viết, in), biểu thuế không nêu nhánh nào được ưu tiên — cần chuyên gia phân xử.",
+        "trich": {
+          "4802562": "Giấy và bìa trang trí",
+          "4802564": "Loại dùng để viết, in và các mục đích đồ bản khác",
+          "48025650": "Giấy nhiều lớp"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:ozv-1947#soat-480256",
+            "ngay": "2026-11-22",
+            "bam": "bcf8e3dd6fdfb303755283545f745e79974e89fac4014f8cdc343d62a81291d3"
+          }
+        }
+      }
+    },
+    {
+      "id": "4802572",
+      "nguon": "tieuDe.4802572",
+      "trich": "4802572 Loại dùng để viết, in và các mục đích đồ bản khác",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "viết",
+            "in",
+            "đồ bản"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-480257",
+          "ngay": "2026-11-22",
+          "bam": "c5301cfbe9819e7d701fc7d5ccf25f734caacc97fe7159d82c76c1dfcbaf8d49"
+        }
+      },
+      "phanConLai": false
+    },
+    {
+      "id": "4802582",
+      "nguon": "tieuDe.4802582",
+      "trich": "4802582 Giấy và bìa trang trí",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Giấy và bìa trang trí"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-480258",
+          "ngay": "2026-11-22",
+          "bam": "f8a522210f138fb466435ae2114b9dbb8244fd9cb08ddbae2250ea20fefd8727"
+        }
+      },
+      "chongLanTruc": {
+        "pn6": "480258",
+        "nhanh": [
+          "4802582",
+          "4802583"
+        ],
+        "truc": {
+          "4802582": "TEN_LOAI",
+          "4802583": "CONG_DUNG"
+        },
+        "cauHoiPhanBiet": "Hàng này là \"Giấy và bìa trang trí\" (4802582) hay loại \"dùng để viết, in và các mục đích đồ bản khác\" (4802583)? Nếu vừa là giấy và bìa trang trí vừa dùng để viết, in và các mục đích đồ bản, biểu thuế không nêu nhánh nào được ưu tiên — cần chuyên gia phân xử.",
+        "trich": {
+          "4802582": "Giấy và bìa trang trí",
+          "4802583": "Loại dùng để viết, in và các mục đích đồ bản khác"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:ozv-1947#soat-480258",
+            "ngay": "2026-11-22",
+            "bam": "f8a522210f138fb466435ae2114b9dbb8244fd9cb08ddbae2250ea20fefd8727"
+          }
+        }
+      }
+    },
+    {
+      "id": "4802583",
+      "nguon": "tieuDe.4802583",
+      "trich": "4802583 Loại dùng để viết, in và các mục đích đồ bản khác",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "viết",
+            "in",
+            "đồ bản"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-480258",
+          "ngay": "2026-11-22",
+          "bam": "f8a522210f138fb466435ae2114b9dbb8244fd9cb08ddbae2250ea20fefd8727"
+        }
+      },
+      "phanConLai": false,
+      "chongLanTruc": {
+        "pn6": "480258",
+        "nhanh": [
+          "4802582",
+          "4802583"
+        ],
+        "truc": {
+          "4802582": "TEN_LOAI",
+          "4802583": "CONG_DUNG"
+        },
+        "cauHoiPhanBiet": "Hàng này là \"Giấy và bìa trang trí\" (4802582) hay loại \"dùng để viết, in và các mục đích đồ bản khác\" (4802583)? Nếu vừa là giấy và bìa trang trí vừa dùng để viết, in và các mục đích đồ bản, biểu thuế không nêu nhánh nào được ưu tiên — cần chuyên gia phân xử.",
+        "trich": {
+          "4802582": "Giấy và bìa trang trí",
+          "4802583": "Loại dùng để viết, in và các mục đích đồ bản khác"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:ozv-1947#soat-480258",
+            "ngay": "2026-11-22",
+            "bam": "f8a522210f138fb466435ae2114b9dbb8244fd9cb08ddbae2250ea20fefd8727"
+          }
+        }
+      }
+    },
+    {
+      "id": "4802613",
+      "nguon": "tieuDe.4802613",
+      "trich": "4802613 Giấy và bìa trang trí",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Giấy",
+            "bìa"
+          ]
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "trang trí"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-480261",
+          "ngay": "2026-11-22",
+          "bam": "fc521cf5e21d9369d2c04238763ad3bd5581f686e5fe63e9f20b2a340f1b5e81"
+        }
+      },
+      "chongLanTruc": {
+        "pn6": "480261",
+        "nhanh": [
+          "4802613",
+          "4802614",
+          "4802615",
+          "48026160"
+        ],
+        "truc": {
+          "4802613": "TEN_LOAI",
+          "4802614": "CONG_DUNG",
+          "4802615": "CONG_DUNG",
+          "48026160": "DAC_DIEM"
+        },
+        "cauHoiPhanBiet": "Giấy này là \"Giấy và bìa trang trí\" (4802613), \"Giấy làm nền sản xuất giấy tráng nhôm\" (4802614), loại \"dùng để viết, in và các mục đích đồ bản khác\" (4802615) hay \"Giấy nhiều lớp\" (48026160)? Nếu hàng có cùng lúc đặc điểm của hai nhánh (vd giấy trang trí dùng để viết; giấy nhiều lớp dùng để in), biểu thuế không nêu nhánh nào được ưu tiên — cần chuyên gia phân xử?",
+        "trich": {
+          "4802613": "Giấy và bìa trang trí",
+          "4802614": "Giấy làm nền sản xuất giấy tráng nhôm",
+          "4802615": "Loại dùng để viết, in và các mục đích đồ bản khác",
+          "48026160": "Giấy nhiều lớp"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:ozv-1947#soat-480261",
+            "ngay": "2026-11-22",
+            "bam": "fc521cf5e21d9369d2c04238763ad3bd5581f686e5fe63e9f20b2a340f1b5e81"
+          }
+        }
+      }
+    },
+    {
+      "id": "4802614",
+      "nguon": "tieuDe.4802614",
+      "trich": "4802614 Giấy làm nền sản xuất giấy tráng nhôm",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "làm nền sản xuất giấy tráng nhôm"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-480261",
+          "ngay": "2026-11-22",
+          "bam": "fc521cf5e21d9369d2c04238763ad3bd5581f686e5fe63e9f20b2a340f1b5e81"
+        }
+      },
+      "chongLanTruc": {
+        "pn6": "480261",
+        "nhanh": [
+          "4802613",
+          "4802614",
+          "4802615",
+          "48026160"
+        ],
+        "truc": {
+          "4802613": "TEN_LOAI",
+          "4802614": "CONG_DUNG",
+          "4802615": "CONG_DUNG",
+          "48026160": "DAC_DIEM"
+        },
+        "cauHoiPhanBiet": "Giấy này là \"Giấy và bìa trang trí\" (4802613), \"Giấy làm nền sản xuất giấy tráng nhôm\" (4802614), loại \"dùng để viết, in và các mục đích đồ bản khác\" (4802615) hay \"Giấy nhiều lớp\" (48026160)? Nếu hàng có cùng lúc đặc điểm của hai nhánh (vd giấy trang trí dùng để viết; giấy nhiều lớp dùng để in), biểu thuế không nêu nhánh nào được ưu tiên — cần chuyên gia phân xử?",
+        "trich": {
+          "4802613": "Giấy và bìa trang trí",
+          "4802614": "Giấy làm nền sản xuất giấy tráng nhôm",
+          "4802615": "Loại dùng để viết, in và các mục đích đồ bản khác",
+          "48026160": "Giấy nhiều lớp"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:ozv-1947#soat-480261",
+            "ngay": "2026-11-22",
+            "bam": "fc521cf5e21d9369d2c04238763ad3bd5581f686e5fe63e9f20b2a340f1b5e81"
+          }
+        }
+      }
+    },
+    {
+      "id": "4802615",
+      "nguon": "tieuDe.4802615",
+      "trich": "4802615 Loại dùng để viết, in và các mục đích đồ bản khác",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "viết",
+            "in",
+            "đồ bản"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-480261",
+          "ngay": "2026-11-22",
+          "bam": "fc521cf5e21d9369d2c04238763ad3bd5581f686e5fe63e9f20b2a340f1b5e81"
+        }
+      },
+      "chongLanTruc": {
+        "pn6": "480261",
+        "nhanh": [
+          "4802613",
+          "4802614",
+          "4802615",
+          "48026160"
+        ],
+        "truc": {
+          "4802613": "TEN_LOAI",
+          "4802614": "CONG_DUNG",
+          "4802615": "CONG_DUNG",
+          "48026160": "DAC_DIEM"
+        },
+        "cauHoiPhanBiet": "Giấy này là \"Giấy và bìa trang trí\" (4802613), \"Giấy làm nền sản xuất giấy tráng nhôm\" (4802614), loại \"dùng để viết, in và các mục đích đồ bản khác\" (4802615) hay \"Giấy nhiều lớp\" (48026160)? Nếu hàng có cùng lúc đặc điểm của hai nhánh (vd giấy trang trí dùng để viết; giấy nhiều lớp dùng để in), biểu thuế không nêu nhánh nào được ưu tiên — cần chuyên gia phân xử?",
+        "trich": {
+          "4802613": "Giấy và bìa trang trí",
+          "4802614": "Giấy làm nền sản xuất giấy tráng nhôm",
+          "4802615": "Loại dùng để viết, in và các mục đích đồ bản khác",
+          "48026160": "Giấy nhiều lớp"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:ozv-1947#soat-480261",
+            "ngay": "2026-11-22",
+            "bam": "fc521cf5e21d9369d2c04238763ad3bd5581f686e5fe63e9f20b2a340f1b5e81"
+          }
+        }
+      }
+    },
+    {
+      "id": "4802621",
+      "nguon": "tieuDe.4802621",
+      "trich": "4802621 Giấy và bìa trang trí, dạng tờ hình chữ nhật (kể cả hình vuông) với một chiều từ 36 cm trở xuống và chiều kia từ 15 cm trở xuống ở dạng không gấp",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Giấy và bìa trang trí"
+        },
+        {
+          "fact": "dangToChuNhat",
+          "op": "CO"
+        },
+        {
+          "fact": "motChieuTo",
+          "op": "<=",
+          "value": 36,
+          "donVi": "cm"
+        },
+        {
+          "fact": "chieuKiaTo",
+          "op": "<=",
+          "value": 15,
+          "donVi": "cm"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-480262",
+          "ngay": "2026-11-22",
+          "bam": "2f127fae04c6ee1f9f457ac04635ab92d35c0f0153f7705caa06f17d665a173d"
+        }
+      },
+      "chongLanTruc": {
+        "pn6": "480262",
+        "nhanh": [
+          "4802621",
+          "4802622",
+          "4802623"
+        ],
+        "truc": {
+          "4802621": "TEN_LOAI",
+          "4802622": "TEN_LOAI",
+          "4802623": "CONG_DUNG"
+        },
+        "cauHoiPhanBiet": "Hàng này thuộc nhánh \"Giấy và bìa trang trí\" (4802621 dạng tờ hình chữ nhật (kể cả hình vuông) một chiều từ 36 cm trở xuống và chiều kia từ 15 cm trở xuống ở dạng không gấp; 4802622 loại khác) hay nhánh \"dùng để viết, in và các mục đích đồ bản khác\" (4802623)? Một tờ giấy và bìa trang trí dạng tờ không gấp vừa dùng để viết, in thì thoả cả hai nhánh — biểu thuế không nêu nhánh nào được ưu tiên, cần chuyên gia phân xử.",
+        "trich": {
+          "4802621": "Giấy và bìa trang trí, dạng tờ hình chữ nhật (kể cả hình vuông) với một chiều từ 36 cm trở xuống và chiều kia từ 15 cm trở xuống ở dạng không gấp",
+          "4802622": "Giấy và bìa trang trí khác",
+          "4802623": "Loại dùng để viết, in và các mục đích đồ bản khác"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:ozv-1947#soat-480262",
+            "ngay": "2026-11-22",
+            "bam": "2f127fae04c6ee1f9f457ac04635ab92d35c0f0153f7705caa06f17d665a173d"
+          }
+        }
+      }
+    },
+    {
+      "id": "4802622",
+      "nguon": "tieuDe.4802622",
+      "trich": "4802622 Giấy và bìa trang trí khác",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Giấy và bìa trang trí"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-480262",
+          "ngay": "2026-11-22",
+          "bam": "2f127fae04c6ee1f9f457ac04635ab92d35c0f0153f7705caa06f17d665a173d"
+        }
+      },
+      "phanConLai": true,
+      "chongLanTruc": {
+        "pn6": "480262",
+        "nhanh": [
+          "4802621",
+          "4802622",
+          "4802623"
+        ],
+        "truc": {
+          "4802621": "TEN_LOAI",
+          "4802622": "TEN_LOAI",
+          "4802623": "CONG_DUNG"
+        },
+        "cauHoiPhanBiet": "Hàng này thuộc nhánh \"Giấy và bìa trang trí\" (4802621 dạng tờ hình chữ nhật (kể cả hình vuông) một chiều từ 36 cm trở xuống và chiều kia từ 15 cm trở xuống ở dạng không gấp; 4802622 loại khác) hay nhánh \"dùng để viết, in và các mục đích đồ bản khác\" (4802623)? Một tờ giấy và bìa trang trí dạng tờ không gấp vừa dùng để viết, in thì thoả cả hai nhánh — biểu thuế không nêu nhánh nào được ưu tiên, cần chuyên gia phân xử.",
+        "trich": {
+          "4802621": "Giấy và bìa trang trí, dạng tờ hình chữ nhật (kể cả hình vuông) với một chiều từ 36 cm trở xuống và chiều kia từ 15 cm trở xuống ở dạng không gấp",
+          "4802622": "Giấy và bìa trang trí khác",
+          "4802623": "Loại dùng để viết, in và các mục đích đồ bản khác"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:ozv-1947#soat-480262",
+            "ngay": "2026-11-22",
+            "bam": "2f127fae04c6ee1f9f457ac04635ab92d35c0f0153f7705caa06f17d665a173d"
+          }
+        }
+      }
+    },
+    {
+      "id": "4802623",
+      "nguon": "tieuDe.4802623",
+      "trich": "4802623 Loại dùng để viết, in và các mục đích đồ bản khác",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "viết",
+            "in",
+            "đồ bản"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-480262",
+          "ngay": "2026-11-22",
+          "bam": "2f127fae04c6ee1f9f457ac04635ab92d35c0f0153f7705caa06f17d665a173d"
+        }
+      },
+      "phanConLai": false,
+      "chongLanTruc": {
+        "pn6": "480262",
+        "nhanh": [
+          "4802621",
+          "4802622",
+          "4802623"
+        ],
+        "truc": {
+          "4802621": "TEN_LOAI",
+          "4802622": "TEN_LOAI",
+          "4802623": "CONG_DUNG"
+        },
+        "cauHoiPhanBiet": "Hàng này thuộc nhánh \"Giấy và bìa trang trí\" (4802621 dạng tờ hình chữ nhật (kể cả hình vuông) một chiều từ 36 cm trở xuống và chiều kia từ 15 cm trở xuống ở dạng không gấp; 4802622 loại khác) hay nhánh \"dùng để viết, in và các mục đích đồ bản khác\" (4802623)? Một tờ giấy và bìa trang trí dạng tờ không gấp vừa dùng để viết, in thì thoả cả hai nhánh — biểu thuế không nêu nhánh nào được ưu tiên, cần chuyên gia phân xử.",
+        "trich": {
+          "4802621": "Giấy và bìa trang trí, dạng tờ hình chữ nhật (kể cả hình vuông) với một chiều từ 36 cm trở xuống và chiều kia từ 15 cm trở xuống ở dạng không gấp",
+          "4802622": "Giấy và bìa trang trí khác",
+          "4802623": "Loại dùng để viết, in và các mục đích đồ bản khác"
+        },
+        "phanXu": null,
+        "ranhGioi": {
+          "phienBan": "ranh-gioi@1",
+          "duyet": {
+            "phien": "claude-agent:ozv-1947#soat-480262",
+            "ngay": "2026-11-22",
+            "bam": "2f127fae04c6ee1f9f457ac04635ab92d35c0f0153f7705caa06f17d665a173d"
+          }
+        }
+      }
+    },
+    {
+      "id": "4802691",
+      "nguon": "tieuDe.4802691",
+      "trich": "4802691 Loại dùng để viết, in và các mục đích đồ bản khác",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "dùng để viết, in và các mục đích đồ bản khác"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-480269",
+          "ngay": "2026-11-22",
+          "bam": "a6f08e796d350a00bb4d9b55d0b76622aa3fbc01027391c2de8a1906e6667de7"
         }
       }
     }

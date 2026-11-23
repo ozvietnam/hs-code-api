@@ -4,13 +4,19 @@
   "nhom": "3920",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "mm:minimax-m3:20261105T1705#soan-392079",
     "ngay": "2026-11-05"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1947#soat-392079",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1947)",
+    "bam": "ab105fe1634f734da42cb1d729b4920cb5b51421175b60880a980af5becf17d9"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -24,7 +30,7 @@
           "value": "nitrocellulose"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39207920",
@@ -37,12 +43,12 @@
           "value": "sợi lưu hóa"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39207991",
-      "nguon": "tax.39207991",
-      "trich": "39207991 - - - - Dạng tấm và phiến (SEN)",
+      "nguon": "sen.3920",
+      "trich": "Theo mục đích của các phân nhóm ASEAN trong các nhóm này, \"tấm và phiến\" dùng để chỉ các sản phẩm đáp ứng các yêu cầu của Chú giải 10 của Chương 39, có hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25 mm.",
       "dieuKienSo": [
         {
           "fact": "tenLoai",
@@ -51,16 +57,22 @@
             "tấm",
             "phiến"
           ]
+        },
+        {
+          "fact": "doDay",
+          "op": ">",
+          "value": 0.25,
+          "donVi": "mm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39207999",
       "nguon": "tax.39207999",
       "trich": "39207999 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [

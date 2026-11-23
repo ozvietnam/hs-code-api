@@ -4,19 +4,25 @@
   "nhom": "3920",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-392043",
     "ngay": "2026-11-02"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1947#soat-392043",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1947)",
+    "bam": "aa715788a735e05fb281287bb443524e16555001de2eade4dd4e791196af86ee"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
       "hs": "39204310",
-      "nguon": "tax.39204310",
-      "trich": "39204310 - - - Dạng tấm và phiến (SEN)",
+      "nguon": "sen.3920",
+      "trich": "Theo mục đích của các phân nhóm ASEAN trong các nhóm này, \"tấm và phiến\" dùng để chỉ các sản phẩm đáp ứng các yêu cầu của Chú giải 10 của Chương 39, có hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25 mm.",
       "dieuKienSo": [
         {
           "fact": "tenLoai",
@@ -25,16 +31,22 @@
             "tấm",
             "phiến"
           ]
+        },
+        {
+          "fact": "doDay",
+          "op": ">",
+          "value": 0.25,
+          "donVi": "mm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "39204390",
       "nguon": "tax.39204390",
       "trich": "39204390 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [

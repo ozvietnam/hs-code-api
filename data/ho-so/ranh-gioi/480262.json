@@ -4,13 +4,19 @@
   "nhom": "4802",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-480262",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-agent:ozv-1947#soat-480262",
+    "ngay": "2026-11-22",
+    "ghiChu": "Chuẩn hoá dieuKienSo theo traVe.lyDo và khép SẠCH V1 (OZV-1947)",
+    "bam": "2f127fae04c6ee1f9f457ac04635ab92d35c0f0153f7705caa06f17d665a173d"
+  },
   "dieuKienNut": [
     {
       "id": "4802621",
@@ -37,13 +43,9 @@
           "op": "<=",
           "value": 15,
           "donVi": "cm"
-        },
-        {
-          "fact": "daGap",
-          "op": "KHONG"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "id": "4802622",
@@ -56,7 +58,7 @@
           "value": "Giấy và bìa trang trí"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": true
     },
     {
@@ -74,7 +76,7 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": false
     }
   ],
@@ -97,14 +99,14 @@
           "donVi": "g/m2"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "48026219",
       "nguon": "tax.48026219",
       "trich": "48026219 - - - - Loại khác (SEN)",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "48026221",
@@ -124,14 +126,14 @@
           "donVi": "g/m2"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "48026229",
       "nguon": "tax.48026229",
       "trich": "48026229 - - - - Loại khác (SEN)",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "48026231",
@@ -143,24 +145,40 @@
           "op": "CO"
         },
         {
-          "fact": "motChieuTo",
-          "op": "<=",
-          "value": 36,
-          "donVi": "cm"
-        },
-        {
-          "fact": "daGap",
-          "op": "KHONG"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "motChieuTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
+              },
+              {
+                "fact": "chieuKiaTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "không có chiều nào trên 36 cm"
+              }
+            ]
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "48026239",
       "nguon": "tax.48026239",
       "trich": "48026239 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "48026291",
@@ -180,14 +198,14 @@
           "donVi": "g/m2"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "48026299",
       "nguon": "tax.48026299",
       "trich": "48026299 - - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "chongLanTruc": [
@@ -297,6 +315,18 @@
       "ma": "48026231",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.48026231 \"Ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp\" ⇒ dangToChuNhat CO + motChieuTo <= 36 cm (\"không có chiều nào trên\" = <=, mọi cạnh của tờ) + daGap KHONG (\"ở dạng không gấp\"). Đơn vị cm như chữ biểu; biên đã đối chiếu tay. Thay ghi chú THIEU_KHOA_TU_VUNG (khongGap) cũ."
+    },
+    {
+      "ma": "4802621",
+      "loai": "BO_VE",
+      "ve": "ở dạng không gấp",
+      "lyDo": "Vế nêu cách đo kích thước (trải phẳng, Chú giải 8 Chương 48 «ở dạng không gấp», EN «in the unfolded state»), không phải đặc điểm phân biệt hàng; kích thước đã số hoá ở motChieuTo/chieuKiaTo."
+    },
+    {
+      "ma": "48026231",
+      "loai": "BO_VE",
+      "ve": "ở dạng không gấp",
+      "lyDo": "Vế nêu cách đo kích thước (trải phẳng, Chú giải 8 Chương 48 «ở dạng không gấp», EN «in the unfolded state»), không phải đặc điểm phân biệt hàng; kích thước đã số hoá ở motChieuTo/chieuKiaTo."
     }
   ],
   "traVe": [

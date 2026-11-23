@@ -127,11 +127,31 @@
   "dong8": [
     {
       "hs": "39201011",
-      "dieuKien": "Loại cứng (SEN): plastic cứng dạng tấm và phiến có modul đàn hồi uốn hoặc kéo lớn hơn 100,000 psi ở 23°C, độ ẩm tương đối 50%, thử theo ASTM D747 hoặc D790 — phân nhóm 3920.10 (WCO: polymers of ethylene)",
+      "dieuKien": "loại cứng (rigid); mô-đun đàn hồi > 100000 psi",
       "loaiKhac": false,
       "nguon": "sen.39201011",
       "trich": "Plastic cứng dạng tấm và phiến có modul đàn hồi uốn hoặc module đàn hồi kéo lớn hơn 100,000 psi ở 23°C và có độ ẩm tương đối là 50% khi thử nghiệm theo tiêu chuẩn ASTM D747 hoặc ASTM D790",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "loaiCung",
+          "op": "CO"
+        },
+        {
+          "fact": "moDunDanHoi",
+          "op": ">",
+          "value": 100000,
+          "donVi": "psi"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-392010",
+          "ngay": "2026-11-22",
+          "bam": "ef65d269cafdb19e22f74b6d39b62183686826b84919a99d8626a4f7081ad401"
+        }
+      }
     },
     {
       "hs": "39201019",
@@ -234,27 +254,75 @@
     },
     {
       "hs": "39203020",
-      "dieuKien": "Tấm Acrylonitril butadien styren (ABS) sử dụng trong sản xuất tủ lạnh — phân nhóm 3920.30 (WCO: polymers of styrene)",
+      "dieuKien": "tên loại hàng: Tấm Acrylonitril butadien styren (ABS); dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): sản xuất tủ lạnh",
       "loaiKhac": false,
       "nguon": "tax.39203020",
       "trich": "39203020 - - Tấm Acrylonitril butadien styren (ABS) sử dụng trong sản xuất tủ lạnh",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Tấm Acrylonitril butadien styren (ABS)"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "sản xuất tủ lạnh"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-392030",
+          "ngay": "2026-11-22",
+          "bam": "6c0e07bf46b0275d786ec95a91d896f54697da244dd53675c0b9007309cbf0e9"
+        }
+      }
     },
     {
       "hs": "39203091",
-      "dieuKien": "Loại cứng (SEN): plastic cứng dạng tấm và phiến có modul đàn hồi uốn hoặc kéo lớn hơn 100,000 psi ở 23°C, độ ẩm tương đối 50%, thử theo ASTM D747 hoặc D790 — phân nhóm 3920.30 (WCO: polymers of styrene)",
+      "dieuKien": "tên loại hàng: tấm hoặc phiến; loại cứng (rigid); mô-đun đàn hồi > 100000 psi",
       "loaiKhac": false,
       "nguon": "sen.39203091",
       "trich": "Plastic cứng dạng tấm và phiến có modul đàn hồi uốn hoặc module đàn hồi kéo lớn hơn 100,000 psi ở 23°C và có độ ẩm tương đối là 50% khi thử nghiệm theo tiêu chuẩn ASTM D747 hoặc ASTM D790",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "tấm",
+            "phiến"
+          ]
+        },
+        {
+          "fact": "loaiCung",
+          "op": "CO"
+        },
+        {
+          "fact": "moDunDanHoi",
+          "op": ">",
+          "value": 100000,
+          "donVi": "psi"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-392030",
+          "ngay": "2026-11-22",
+          "bam": "6c0e07bf46b0275d786ec95a91d896f54697da244dd53675c0b9007309cbf0e9"
+        }
+      }
     },
     {
       "hs": "39203092",
-      "dieuKien": "Dạng tấm và phiến (SEN): sản phẩm đáp ứng Chú giải 10 Chương 39, hình chữ nhật (kể cả hình vuông), độ dày trên 0,25 mm; sản phẩm không đáp ứng thì là màng hoặc lá — phân nhóm 3920.30 (WCO: polymers of styrene)",
+      "dieuKien": "tên loại hàng: tấm hoặc phiến",
       "loaiKhac": true,
-      "nguon": "sen.3920",
-      "trich": "các sản phẩm đáp ứng các yêu cầu của Chú giải 10 của Chương 39, có hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25 mm. Sản phẩm không đáp ứng mô tả trên sẽ được phân loại là màng hoặc lá",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguon": "tax.39203092",
+      "trich": "39203092 - - - Loại khác, dạng tấm và phiến (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
       "phamViLoaiKhac": {
         "nguonLoai": "MAY_SUY",
         "cha": "3920309",
@@ -263,6 +331,24 @@
         ],
         "toTienCoTen": "392030",
         "dinhNghiaDuoc": true
+      },
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "tấm",
+            "phiến"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-392030",
+          "ngay": "2026-11-22",
+          "bam": "6c0e07bf46b0275d786ec95a91d896f54697da244dd53675c0b9007309cbf0e9"
+        }
       }
     },
     {
@@ -285,19 +371,35 @@
     },
     {
       "hs": "39204310",
-      "dieuKien": "Dạng tấm và phiến (SEN): sản phẩm đáp ứng Chú giải 10 Chương 39, hình chữ nhật (kể cả hình vuông), độ dày trên 0,25 mm; sản phẩm không đáp ứng thì là màng hoặc lá — phân nhóm 3920.43 (WCO: polymers of vinyl chloride, plasticisers not less than 6% by weight)",
+      "dieuKien": "tên loại hàng: tấm hoặc phiến; độ dày > 0.25 mm",
       "loaiKhac": false,
       "nguon": "sen.3920",
-      "trich": "các sản phẩm đáp ứng các yêu cầu của Chú giải 10 của Chương 39, có hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25 mm. Sản phẩm không đáp ứng mô tả trên sẽ được phân loại là màng hoặc lá",
-      "nguonLoai": "AI_DA_KIEM",
+      "trich": "Theo mục đích của các phân nhóm ASEAN trong các nhóm này, \"tấm và phiến\" dùng để chỉ các sản phẩm đáp ứng các yêu cầu của Chú giải 10 của Chương 39, có hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25 mm.",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "be_day",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "tấm",
+            "phiến"
+          ]
+        },
+        {
+          "fact": "doDay",
           "op": ">",
           "value": 0.25,
           "donVi": "mm"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-392043",
+          "ngay": "2026-11-22",
+          "bam": "aa715788a735e05fb281287bb443524e16555001de2eade4dd4e791196af86ee"
+        }
+      }
     },
     {
       "hs": "39204390",
@@ -335,11 +437,31 @@
     },
     {
       "hs": "39205111",
-      "dieuKien": "Loại cứng (SEN): plastic cứng dạng tấm và phiến có modul đàn hồi uốn hoặc kéo lớn hơn 100,000 psi ở 23°C, độ ẩm tương đối 50%, thử theo ASTM D747 hoặc D790 — phân nhóm 3920.51 (WCO: acrylic polymers, polymethyl methacrylate)",
+      "dieuKien": "loại cứng (rigid); mô-đun đàn hồi > 100000 psi",
       "loaiKhac": false,
       "nguon": "sen.39205111",
       "trich": "Plastic cứng dạng tấm và phiến có modul đàn hồi uốn hoặc module đàn hồi kéo lớn hơn 100,000 psi ở 23°C và có độ ẩm tương đối là 50% khi thử nghiệm theo tiêu chuẩn ASTM D747 hoặc ASTM D790",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "loaiCung",
+          "op": "CO"
+        },
+        {
+          "fact": "moDunDanHoi",
+          "op": ">",
+          "value": 100000,
+          "donVi": "psi"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-392051",
+          "ngay": "2026-11-22",
+          "bam": "2ee96c6d7f485e2283c8d84acb0549bf8476029a33a78004de9908f4630b0ee2"
+        }
+      }
     },
     {
       "hs": "39205119",
@@ -377,11 +499,31 @@
     },
     {
       "hs": "39205911",
-      "dieuKien": "Loại cứng (SEN): plastic cứng dạng tấm và phiến có modul đàn hồi uốn hoặc kéo lớn hơn 100,000 psi ở 23°C, độ ẩm tương đối 50%, thử theo ASTM D747 hoặc D790 — phân nhóm 3920.59 (WCO: acrylic polymers (excluding polymethyl methacrylate))",
+      "dieuKien": "loại cứng (rigid); mô-đun đàn hồi > 100000 psi",
       "loaiKhac": false,
       "nguon": "sen.39205911",
       "trich": "Plastic cứng dạng tấm và phiến có modul đàn hồi uốn hoặc module đàn hồi kéo lớn hơn 100,000 psi ở 23°C và có độ ẩm tương đối là 50% khi thử nghiệm theo tiêu chuẩn ASTM D747 hoặc ASTM D790",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "loaiCung",
+          "op": "CO"
+        },
+        {
+          "fact": "moDunDanHoi",
+          "op": ">",
+          "value": 100000,
+          "donVi": "psi"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-392059",
+          "ngay": "2026-11-22",
+          "bam": "d5cd95c9e2a062ac8a014c6b36a5c5c593d361dbc7f4701379cd9960bbcac2ff"
+        }
+      }
     },
     {
       "hs": "39205919",
@@ -468,27 +610,58 @@
     },
     {
       "hs": "39206210",
-      "dieuKien": "Dạng tấm và phiến (SEN): sản phẩm đáp ứng Chú giải 10 Chương 39, hình chữ nhật (kể cả hình vuông), độ dày trên 0,25 mm; sản phẩm không đáp ứng thì là màng hoặc lá — phân nhóm 3920.62 (WCO: poly(ethylene terephthalate))",
+      "dieuKien": "tên loại hàng: tấm hoặc phiến; độ dày > 0.25 mm",
       "loaiKhac": false,
       "nguon": "sen.3920",
-      "trich": "các sản phẩm đáp ứng các yêu cầu của Chú giải 10 của Chương 39, có hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25 mm. Sản phẩm không đáp ứng mô tả trên sẽ được phân loại là màng hoặc lá",
-      "nguonLoai": "AI_DA_KIEM",
+      "trich": "Theo mục đích của các phân nhóm ASEAN trong các nhóm này, \"tấm và phiến\" dùng để chỉ các sản phẩm đáp ứng các yêu cầu của Chú giải 10 của Chương 39, có hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25 mm.",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "be_day",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "tấm",
+            "phiến"
+          ]
+        },
+        {
+          "fact": "doDay",
           "op": ">",
           "value": 0.25,
           "donVi": "mm"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-392062",
+          "ngay": "2026-11-22",
+          "bam": "d038c0fff9f41c0dc92cde07f0b619d66bf48027b871cf15f676ac04539d8732"
+        }
+      }
     },
     {
       "hs": "39206291",
-      "dieuKien": "Màng bảo vệ chắn ánh sáng mặt trời (SEN): màng plastic lọc tia cực tím, có hoặc không mạ lớp kim loại mỏng, làm bằng polyetylen terephthalate (PET) — phân nhóm 3920.62 (WCO: poly(ethylene terephthalate))",
+      "dieuKien": "tên loại hàng: Màng bảo vệ chắn ánh sáng mặt trời",
       "loaiKhac": false,
-      "nguon": "sen.39206291",
-      "trich": "Màng bảo vệ chắn ánh sáng mặt trời là màng plastic lọc tia cực tím có hoặc không được mạ lớp kim loại mỏng (metalized), được làm bằng polyetylen terephthalate (PET)",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguon": "tax.39206291",
+      "trich": "39206291 - - - - Màng bảo vệ chắn ánh sáng mặt trời (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Màng bảo vệ chắn ánh sáng mặt trời"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-392062",
+          "ngay": "2026-11-22",
+          "bam": "d038c0fff9f41c0dc92cde07f0b619d66bf48027b871cf15f676ac04539d8732"
+        }
+      }
     },
     {
       "hs": "39206299",
@@ -509,19 +682,35 @@
     },
     {
       "hs": "39206310",
-      "dieuKien": "Dạng tấm và phiến (SEN): sản phẩm đáp ứng Chú giải 10 Chương 39, hình chữ nhật (kể cả hình vuông), độ dày trên 0,25 mm; sản phẩm không đáp ứng thì là màng hoặc lá — phân nhóm 3920.63 (WCO: unsaturated polyesters)",
+      "dieuKien": "tên loại hàng: tấm hoặc phiến; độ dày > 0.25 mm",
       "loaiKhac": false,
       "nguon": "sen.3920",
-      "trich": "các sản phẩm đáp ứng các yêu cầu của Chú giải 10 của Chương 39, có hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25 mm. Sản phẩm không đáp ứng mô tả trên sẽ được phân loại là màng hoặc lá",
-      "nguonLoai": "AI_DA_KIEM",
+      "trich": "Theo mục đích của các phân nhóm ASEAN trong các nhóm này, \"tấm và phiến\" dùng để chỉ các sản phẩm đáp ứng các yêu cầu của Chú giải 10 của Chương 39, có hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25 mm.",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "be_day",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "tấm",
+            "phiến"
+          ]
+        },
+        {
+          "fact": "doDay",
           "op": ">",
           "value": 0.25,
           "donVi": "mm"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-392063",
+          "ngay": "2026-11-22",
+          "bam": "49d0c33721199e2de9977d16a29d3be60e76aebfc7635f59ae538be8c0292ad1"
+        }
+      }
     },
     {
       "hs": "39206390",
@@ -542,19 +731,35 @@
     },
     {
       "hs": "39206910",
-      "dieuKien": "Dạng tấm và phiến (SEN): sản phẩm đáp ứng Chú giải 10 Chương 39, hình chữ nhật (kể cả hình vuông), độ dày trên 0,25 mm; sản phẩm không đáp ứng thì là màng hoặc lá — phân nhóm 3920.69 (WCO: polyesters n.e.c. in heading 3920)",
+      "dieuKien": "tên loại hàng: tấm hoặc phiến; độ dày > 0.25 mm",
       "loaiKhac": false,
       "nguon": "sen.3920",
-      "trich": "các sản phẩm đáp ứng các yêu cầu của Chú giải 10 của Chương 39, có hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25 mm. Sản phẩm không đáp ứng mô tả trên sẽ được phân loại là màng hoặc lá",
-      "nguonLoai": "AI_DA_KIEM",
+      "trich": "Theo mục đích của các phân nhóm ASEAN trong các nhóm này, \"tấm và phiến\" dùng để chỉ các sản phẩm đáp ứng các yêu cầu của Chú giải 10 của Chương 39, có hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25 mm.",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "be_day",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "tấm",
+            "phiến"
+          ]
+        },
+        {
+          "fact": "doDay",
           "op": ">",
           "value": 0.25,
           "donVi": "mm"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-392069",
+          "ngay": "2026-11-22",
+          "bam": "371d20038d3d8efe324741f69ed4d254ee6215f672fc1af7efd7200c5c25e224"
+        }
+      }
     },
     {
       "hs": "39206990",
@@ -650,35 +855,81 @@
     },
     {
       "hs": "39207910",
-      "dieuKien": "Từ nitrocellulose (thuốc nổ bông) — phân nhóm 3920.79 (WCO: cellulose derivatives n.e.c. in heading 3920)",
+      "dieuKien": "tên loại hàng: nitrocellulose",
       "loaiKhac": false,
       "nguon": "tax.39207910",
       "trich": "39207910 - - - Từ nitrocellulose (thuốc nổ bông)",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "nitrocellulose"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-392079",
+          "ngay": "2026-11-22",
+          "bam": "ab105fe1634f734da42cb1d729b4920cb5b51421175b60880a980af5becf17d9"
+        }
+      }
     },
     {
       "hs": "39207920",
-      "dieuKien": "Từ sợi lưu hóa — phân nhóm 3920.79 (WCO: cellulose derivatives n.e.c. in heading 3920)",
+      "dieuKien": "tên loại hàng: sợi lưu hóa",
       "loaiKhac": false,
       "nguon": "tax.39207920",
       "trich": "39207920 - - - Từ sợi lưu hóa",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "sợi lưu hóa"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-392079",
+          "ngay": "2026-11-22",
+          "bam": "ab105fe1634f734da42cb1d729b4920cb5b51421175b60880a980af5becf17d9"
+        }
+      }
     },
     {
       "hs": "39207991",
-      "dieuKien": "Dạng tấm và phiến (SEN): sản phẩm đáp ứng Chú giải 10 Chương 39, hình chữ nhật (kể cả hình vuông), độ dày trên 0,25 mm; sản phẩm không đáp ứng thì là màng hoặc lá — phân nhóm 3920.79 (WCO: cellulose derivatives n.e.c. in heading 3920)",
+      "dieuKien": "tên loại hàng: tấm hoặc phiến; độ dày > 0.25 mm",
       "loaiKhac": false,
       "nguon": "sen.3920",
-      "trich": "các sản phẩm đáp ứng các yêu cầu của Chú giải 10 của Chương 39, có hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25 mm. Sản phẩm không đáp ứng mô tả trên sẽ được phân loại là màng hoặc lá",
-      "nguonLoai": "AI_DA_KIEM",
+      "trich": "Theo mục đích của các phân nhóm ASEAN trong các nhóm này, \"tấm và phiến\" dùng để chỉ các sản phẩm đáp ứng các yêu cầu của Chú giải 10 của Chương 39, có hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25 mm.",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "be_day",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "tấm",
+            "phiến"
+          ]
+        },
+        {
+          "fact": "doDay",
           "op": ">",
           "value": 0.25,
           "donVi": "mm"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-392079",
+          "ngay": "2026-11-22",
+          "bam": "ab105fe1634f734da42cb1d729b4920cb5b51421175b60880a980af5becf17d9"
+        }
+      }
     },
     {
       "hs": "39207999",
@@ -699,41 +950,81 @@
     },
     {
       "hs": "39209110",
-      "dieuKien": "Màng dùng làm kính an toàn, độ dày trên 0,38 mm nhưng không quá 0,76 mm, và chiều rộng không quá 2 m — phân nhóm 3920.91 (WCO: poly(vinyl butyral))",
+      "dieuKien": "tên loại hàng: Màng; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): kính an toàn; độ dày > 0.38 mm; độ dày <= 0.76 mm; chiều rộng <= 2 m",
       "loaiKhac": false,
       "nguon": "tax.39209110",
       "trich": "39209110 - - - Màng dùng làm kính an toàn, độ dày trên 0,38 mm nhưng không quá 0,76 mm, và chiều rộng không quá 2 m",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "chieu_rong",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Màng"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "kính an toàn"
+        },
+        {
+          "fact": "doDay",
           "op": ">",
           "value": 0.38,
           "donVi": "mm"
         },
         {
-          "fact": "chieu_rong",
+          "fact": "doDay",
           "op": "<=",
           "value": 0.76,
           "donVi": "mm"
+        },
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 2,
+          "donVi": "m"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-392091",
+          "ngay": "2026-11-22",
+          "bam": "ff8dee8d4019b4a2f1514a60c0a938b4f54b6c721baed313c3c1a0a70c76c357"
+        }
+      }
     },
     {
       "hs": "39209191",
-      "dieuKien": "Dạng tấm và phiến (SEN): sản phẩm đáp ứng Chú giải 10 Chương 39, hình chữ nhật (kể cả hình vuông), độ dày trên 0,25 mm; sản phẩm không đáp ứng thì là màng hoặc lá — phân nhóm 3920.91 (WCO: poly(vinyl butyral))",
+      "dieuKien": "tên loại hàng: tấm hoặc phiến; độ dày > 0.25 mm",
       "loaiKhac": false,
       "nguon": "sen.3920",
-      "trich": "các sản phẩm đáp ứng các yêu cầu của Chú giải 10 của Chương 39, có hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25 mm. Sản phẩm không đáp ứng mô tả trên sẽ được phân loại là màng hoặc lá",
-      "nguonLoai": "AI_DA_KIEM",
+      "trich": "Theo mục đích của các phân nhóm ASEAN trong các nhóm này, \"tấm và phiến\" dùng để chỉ các sản phẩm đáp ứng các yêu cầu của Chú giải 10 của Chương 39, có hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25 mm.",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "be_day",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "tấm",
+            "phiến"
+          ]
+        },
+        {
+          "fact": "doDay",
           "op": ">",
           "value": 0.25,
           "donVi": "mm"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-392091",
+          "ngay": "2026-11-22",
+          "bam": "ff8dee8d4019b4a2f1514a60c0a938b4f54b6c721baed313c3c1a0a70c76c357"
+        }
+      }
     },
     {
       "hs": "39209199",
@@ -754,27 +1045,58 @@
     },
     {
       "hs": "39209210",
-      "dieuKien": "Từ polyamide-6 — phân nhóm 3920.92 (WCO: polyamides)",
+      "dieuKien": "tên loại hàng: polyamide-6",
       "loaiKhac": false,
       "nguon": "tax.39209210",
       "trich": "39209210 - - - Từ polyamide-6",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "polyamide-6"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-392092",
+          "ngay": "2026-11-22",
+          "bam": "abf299c671e7c9a5ad46c3a67ebaf57adb594330c20cfdec88fe53428d201625"
+        }
+      }
     },
     {
       "hs": "39209291",
-      "dieuKien": "Dạng tấm và phiến (SEN): sản phẩm đáp ứng Chú giải 10 Chương 39, hình chữ nhật (kể cả hình vuông), độ dày trên 0,25 mm; sản phẩm không đáp ứng thì là màng hoặc lá — phân nhóm 3920.92 (WCO: polyamides)",
+      "dieuKien": "tên loại hàng: tấm hoặc phiến; độ dày > 0.25 mm",
       "loaiKhac": false,
       "nguon": "sen.3920",
-      "trich": "các sản phẩm đáp ứng các yêu cầu của Chú giải 10 của Chương 39, có hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25 mm. Sản phẩm không đáp ứng mô tả trên sẽ được phân loại là màng hoặc lá",
-      "nguonLoai": "AI_DA_KIEM",
+      "trich": "Theo mục đích của các phân nhóm ASEAN trong các nhóm này, \"tấm và phiến\" dùng để chỉ các sản phẩm đáp ứng các yêu cầu của Chú giải 10 của Chương 39, có hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25 mm.",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "be_day",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "tấm",
+            "phiến"
+          ]
+        },
+        {
+          "fact": "doDay",
           "op": ">",
           "value": 0.25,
           "donVi": "mm"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-392092",
+          "ngay": "2026-11-22",
+          "bam": "abf299c671e7c9a5ad46c3a67ebaf57adb594330c20cfdec88fe53428d201625"
+        }
+      }
     },
     {
       "hs": "39209299",
@@ -795,19 +1117,35 @@
     },
     {
       "hs": "39209310",
-      "dieuKien": "Dạng tấm và phiến (SEN): sản phẩm đáp ứng Chú giải 10 Chương 39, hình chữ nhật (kể cả hình vuông), độ dày trên 0,25 mm; sản phẩm không đáp ứng thì là màng hoặc lá — phân nhóm 3920.93 (WCO: amino-resins)",
+      "dieuKien": "tên loại hàng: tấm hoặc phiến; độ dày > 0.25 mm",
       "loaiKhac": false,
       "nguon": "sen.3920",
-      "trich": "các sản phẩm đáp ứng các yêu cầu của Chú giải 10 của Chương 39, có hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25 mm. Sản phẩm không đáp ứng mô tả trên sẽ được phân loại là màng hoặc lá",
-      "nguonLoai": "AI_DA_KIEM",
+      "trich": "Theo mục đích của các phân nhóm ASEAN trong các nhóm này, \"tấm và phiến\" dùng để chỉ các sản phẩm đáp ứng các yêu cầu của Chú giải 10 của Chương 39, có hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25 mm.",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "be_day",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "tấm",
+            "phiến"
+          ]
+        },
+        {
+          "fact": "doDay",
           "op": ">",
           "value": 0.25,
           "donVi": "mm"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-392093",
+          "ngay": "2026-11-22",
+          "bam": "934cf6b20014b1d693f9ef3dbbdab3552c1d361fba729ca37ff9bd6d49ba34aa"
+        }
+      }
     },
     {
       "hs": "39209390",
@@ -828,27 +1166,58 @@
     },
     {
       "hs": "39209410",
-      "dieuKien": "Dạng tấm phenol formaldehyt (bakelit) — phân nhóm 3920.94 (WCO: phenolic resins)",
+      "dieuKien": "tên loại hàng: Dạng tấm phenol formaldehyt (bakelit)",
       "loaiKhac": false,
       "nguon": "tax.39209410",
       "trich": "39209410 - - - Dạng tấm phenol formaldehyt (bakelit)",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dạng tấm phenol formaldehyt (bakelit)"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-392094",
+          "ngay": "2026-11-22",
+          "bam": "4d008a1f274ee4739ec208a64c930744f290451da4274da497480a90904c8564"
+        }
+      }
     },
     {
       "hs": "39209491",
-      "dieuKien": "Dạng tấm và phiến (SEN): sản phẩm đáp ứng Chú giải 10 Chương 39, hình chữ nhật (kể cả hình vuông), độ dày trên 0,25 mm; sản phẩm không đáp ứng thì là màng hoặc lá — phân nhóm 3920.94 (WCO: phenolic resins)",
+      "dieuKien": "tên loại hàng: tấm hoặc phiến; độ dày > 0.25 mm",
       "loaiKhac": false,
       "nguon": "sen.3920",
-      "trich": "các sản phẩm đáp ứng các yêu cầu của Chú giải 10 của Chương 39, có hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25 mm. Sản phẩm không đáp ứng mô tả trên sẽ được phân loại là màng hoặc lá",
-      "nguonLoai": "AI_DA_KIEM",
+      "trich": "Theo mục đích của các phân nhóm ASEAN trong các nhóm này, \"tấm và phiến\" dùng để chỉ các sản phẩm đáp ứng các yêu cầu của Chú giải 10 của Chương 39, có hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25 mm.",
+      "nguonLoai": "CLAUDE_DUYET",
       "dieuKienSo": [
         {
-          "fact": "be_day",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "tấm",
+            "phiến"
+          ]
+        },
+        {
+          "fact": "doDay",
           "op": ">",
           "value": 0.25,
           "donVi": "mm"
         }
-      ]
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-392094",
+          "ngay": "2026-11-22",
+          "bam": "4d008a1f274ee4739ec208a64c930744f290451da4274da497480a90904c8564"
+        }
+      }
     },
     {
       "hs": "39209499",
@@ -1842,6 +2211,78 @@
   },
   "yKienWcoDayDu": false,
   "dieuKienNut": [
+    {
+      "id": "3920101",
+      "nguon": "tieuDe.3920101",
+      "trich": "3920101 Dạng tấm và phiến (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "tấm",
+            "phiến"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-392010",
+          "ngay": "2026-11-22",
+          "bam": "ef65d269cafdb19e22f74b6d39b62183686826b84919a99d8626a4f7081ad401"
+        }
+      }
+    },
+    {
+      "id": "3920511",
+      "nguon": "tieuDe.3920511",
+      "trich": "3920511 Dạng tấm và phiến (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "tấm",
+            "phiến"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-392051",
+          "ngay": "2026-11-22",
+          "bam": "2ee96c6d7f485e2283c8d84acb0549bf8476029a33a78004de9908f4630b0ee2"
+        }
+      }
+    },
+    {
+      "id": "3920591",
+      "nguon": "tieuDe.3920591",
+      "trich": "3920591 Dạng tấm và phiến (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "tấm",
+            "phiến"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "claude-agent:ozv-1947#soat-392059",
+          "ngay": "2026-11-22",
+          "bam": "d5cd95c9e2a062ac8a014c6b36a5c5c593d361dbc7f4701379cd9960bbcac2ff"
+        }
+      }
+    },
     {
       "id": "3920992",
       "nguon": "tieuDe.3920992",
