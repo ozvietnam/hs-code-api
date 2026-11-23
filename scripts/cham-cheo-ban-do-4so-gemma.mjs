@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import { execFileSync } from 'node:child_process';
 const REPO = process.env.REPO || new URL("..", import.meta.url).pathname;
 const OUT = process.env.OUT || process.env.HOME + "/cham-cheo-gpu";
-const URL = (process.env.OLLAMA_URL || "").replace(/\/$/, "") + "/api/chat"; // repo public: không ghi IP nội bộ; OLLAMA_URL đặt trong môi trường
+const CHAT_URL = (process.env.OLLAMA_URL || "").replace(/\/$/, "") + "/api/chat"; // repo public: không ghi IP nội bộ; OLLAMA_URL đặt trong môi trường
 if (!process.env.OLLAMA_URL) { console.error("Thiếu OLLAMA_URL (Ollama máy GPU nhà)"); process.exit(2); }
 const ds = process.argv[2] ? process.argv[2].split(',') : fs.readdirSync(REPO + '/data/do-thi/ban-do-4so').filter(f => /^\d{4}\.json$/.test(f)).map(f => f.slice(0, 4)).sort();
 const SYS = `Bạn là người chấm chéo độc lập bản đồ quan hệ nhóm HS 4 số. Bản đồ do AI khác soạn. Nhiệm vụ: kiểm từng mục (y / dacDiem / neu / conNeu / cạnh) xem có đúng NGHĨA của đoạn luật được trích không (không chỉ trùng chữ), chiều cạnh (thi / thiKia) đúng không, có suy rộng hay bịa không.
@@ -19,7 +19,7 @@ for (const h of ds) {
   for (let lan = 1; lan <= 2 && !ok; lan++) {
     const t0 = Date.now();
     try {
-      const r = await fetch(URL, { method: 'POST', headers: { 'content-type': 'application/json' }, signal: AbortSignal.timeout(15 * 60 * 1000),
+      const r = await fetch(CHAT_URL, { method: 'POST', headers: { 'content-type': 'application/json' }, signal: AbortSignal.timeout(15 * 60 * 1000),
         body: JSON.stringify({ model: process.env.MO_HINH || "gemma4:31b", stream: false, options: { num_ctx: 32768, temperature: 0.1 }, messages: [{ role: 'system', content: SYS }, { role: 'user', content: goi }] }) });
       const j = await r.json();
       const txt = j.message?.content || '';
