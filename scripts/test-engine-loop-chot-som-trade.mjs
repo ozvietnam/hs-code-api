@@ -36,6 +36,8 @@ const CA = [
   { ten: 'vỏ chụp loa bằng nhựa tổng hợp (nón loa)', hs: '85189090', id: 'vo-chup-loa-non-loa' },
   // OZV-1346: câu khách «đèn LED hình gấu» — trước đây 0 match term (chỉ có «đèn tường hình gấu») → LLM NEED_FACTS ~37s.
   { ten: 'đèn LED hình gấu', hs: '94054290', id: 'den-led-cam-tuong' },
+  // OZV-2015: «túi sưởi điện gia dụng» — trước dừng 6 số nhánh 851679; chú giải 85.16 loại trừ làm ấm người → 63011000.
+  { ten: 'túi sưởi điện gia dụng', hs: '63011000', id: 'tui-suoi-dien-gia-dung' },
 ];
 
 for (const c of CA) {

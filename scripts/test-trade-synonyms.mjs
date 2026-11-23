@@ -140,6 +140,8 @@ console.log('\n== Câu hỏi thật của khách phải ra đúng mã (kho Oz kh
     // OZV-1239 — đo A1 16/11: ca 6 (32064990) và ca 40 (85081100)
     ['Aluminium powder (bột nhôm): chất màu vô cơ', ['32064990']],
     ['industrial vacuum cleaner Nilfisk model VHW310', ['85081100', '85081910', '85081990']],
+    // OZV-2015 — túi sưởi điện gia dụng: trước search top 85362020; chốt 63011000
+    ['túi sưởi điện gia dụng', ['63011000']],
   ];
   for (const [q, want] of cases) {
     const top2 = searchCandidates(q, { topCandidates: 2 }).map((c) => c.hsCode);
@@ -915,6 +917,60 @@ console.log('\n== Ứng viên cấp nhóm: cộng điểm cho lá khớp lời v
       'OZV-1334 tránh 8414 (bơm chân không/quạt) / 841330 (bơm nhiên liệu)',
       (m?.avoid || []).some((a) => String(a.prefix) === '8414')
         && (m?.avoid || []).some((a) => String(a.prefix) === '841330'),
+    );
+  }
+}
+
+// OZV-2015 — túi sưởi điện gia dụng → 63011000 (chăn điện / sưởi ấm người), hết dừng 6 số nhánh 851679
+{
+  const TEN = 'túi sưởi điện gia dụng';
+  check(
+    'OZV-2015 túi sưởi điện gia dụng khớp mục tui-suoi-dien-gia-dung',
+    lookupTradeTerms(TEN).matches.some((m) => m.entryId === 'tui-suoi-dien-gia-dung'),
+  );
+  check(
+    'OZV-2015 túi sưởi điện (rút gọn) khớp',
+    lookupTradeTerms('túi sưởi điện').matches.some((m) => m.entryId === 'tui-suoi-dien-gia-dung'),
+  );
+  check(
+    'OZV-2015 không dấu tui suoi dien gia dung vẫn khớp',
+    lookupTradeTerms('tui suoi dien gia dung').matches.some((m) => m.entryId === 'tui-suoi-dien-gia-dung'),
+  );
+  for (const q of [
+    'quạt sưởi dầu',
+    'máy sưởi phòng',
+    'ấm đun nước điện',
+    'túi sưởi bột sắt dùng một lần',
+  ]) {
+    check(
+      `OZV-2015 «${q}» không kích hoạt mục tui-suoi-dien-gia-dung`,
+      !(lookupTradeTerms(q).matches || []).some((m) => m.entryId === 'tui-suoi-dien-gia-dung'),
+    );
+  }
+  {
+    const m = lookupTradeTerms(TEN).matches.find((x) => x.entryId === 'tui-suoi-dien-gia-dung');
+    check(
+      'OZV-2015 ưu tiên 63011000 high + chotSom',
+      (m?.candidates || []).some((c) => (c.hsCode || c.hs) === '63011000' && c.confidence === 'high')
+        && m?.chotSom === true,
+    );
+    check(
+      'OZV-2015 tránh 8516 (loại trừ làm ấm người) / 8536 (bẫy search cầu dao)',
+      (m?.avoid || []).some((a) => String(a.prefix) === '8516')
+        && (m?.avoid || []).some((a) => String(a.prefix) === '8536'),
+    );
+  }
+  {
+    const r = searchCandidates(TEN, { topCandidates: 5 });
+    check(
+      'OZV-2015 search top có 63011000',
+      r.some((c) => c.hsCode === '63011000'),
+      r.map((c) => c.hsCode).join(','),
+    );
+    check(
+      'OZV-2015 search top không còn 85362020 (bẫy cầu dao nhiệt điện gia dụng)',
+      r.every((c) => c.hsCode !== '85362020'),
+      r.map((c) => c.hsCode).join(','),
     );
   }
 }
