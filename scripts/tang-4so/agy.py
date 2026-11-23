@@ -14,21 +14,30 @@ class QuotaError(RuntimeError):
 
 def goi(prompt, ca=None, vong=None, timeout=900):
     t0 = time.time()
-    r = subprocess.run([AGY, "-p", prompt, "--model", MODEL, "--output-format", "json"],
-                       capture_output=True, text=True, timeout=timeout)
+    try:
+        r = subprocess.run([AGY, "-p", prompt, "--model", MODEL, "--output-format", "json"],
+                           capture_output=True, text=True, timeout=timeout)
+    except (OSError, subprocess.TimeoutExpired) as e:  # prompt quá dài cho argv, hoặc quá giờ: không tính là hạn mức
+        with open(NHAT_KY, "a") as f:
+            f.write(json.dumps({"ca": ca, "vong": vong, "model": MODEL, "ok": False, "loi": str(e)[:100], "quota": False}, ensure_ascii=False) + "\n")
+        return None
     raw = (r.stdout or "") + "\n" + (r.stderr or "")
-    ok, resp, loi = False, "", None
+    ok, resp, loi, bi_chan, status = False, "", None, False, None
     try:
         d = json.loads(r.stdout)
         resp = d.get("response") or ""
-        ok = d.get("status") == "SUCCESS" and bool(resp.strip())
-        if not ok: loi = f"status={d.get('status')}"
+        status = d.get("status")
+        bi_chan = bool(d.get("denied_actions"))  # mô hình đòi chạy lệnh/công cụ nhưng bị chặn -> trả rỗng
+        ok = status == "SUCCESS" and bool(resp.strip())
+        if not ok: loi = f"status={status} bi_chan={bi_chan}"
     except Exception as e:
         loi = f"khong-doc-duoc-json: {e}"
-    quota = (not ok) and any(k in raw.lower() for k in DAU_HIEU_HAN_MUC)
+    # Hạn mức: chỉ khi lượt KHÔNG thành công và lỗi nằm ở stderr/trạng thái, không dò trong nội dung trả lời
+    ngoai = ((r.stderr or "") + " " + str(status if status != "SUCCESS" else "")).lower()
+    quota = (not ok) and (not bi_chan) and any(k in ngoai for k in DAU_HIEU_HAN_MUC)
     with open(NHAT_KY, "a") as f:
         f.write(json.dumps({"ca": ca, "vong": vong, "model": MODEL, "ok": ok, "giay": round(time.time() - t0, 1),
-                            "loi": loi, "quota": quota}, ensure_ascii=False) + "\n")
+                            "loi": loi, "quota": quota, "biChan": bi_chan}, ensure_ascii=False) + "\n")
     if quota:
         raise QuotaError(raw[:300])
     return resp if ok else None
