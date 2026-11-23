@@ -687,6 +687,30 @@
       }
     },
     {
+      "ten": "HS_KHO_DINH_DANH",
+      "macDinh": "off",
+      "macDinhBat": false,
+      "loai": "che-do",
+      "cheDo": [
+        "off",
+        "shadow",
+        "on"
+      ],
+      "doiQuyetDinhLLM": false,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Kho định danh hãng+model (OZV-1657). shadow = tra thử + log; on = trả dữ kiện đã kiểm từ kho. PR1a chỉ schema + chuẩn hoá — chưa nối identify.",
+      "chungCu": {
+        "tep": "lib/kho-dinh-danh.js",
+        "doan": "process.env.HS_KHO_DINH_DANH || 'off').trim().toLowerCase();"
+      },
+      "bong": {
+        "dangChayMayThat": false,
+        "chu": "GĐ hs-code-api",
+        "the": "OZV-2024",
+        "ghiChu": "PR1a (OZV-2024): cờ off, chưa nối đường khách. Khi bật shadow cần điền ngayXet + tieuChiBat + tieuChiTat + laySoODau."
+      }
+    },
+    {
       "ten": "HS_KHO_DAP_AN_TIMEOUT_MS",
       "macDinh": "150",
       "loai": "so",
