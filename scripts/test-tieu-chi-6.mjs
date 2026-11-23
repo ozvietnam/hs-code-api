@@ -1172,6 +1172,18 @@ kiem('#1586 (7009.91/92 & phân nhóm không phải DU): 7009 qua cổng với 0
       msCn < 500 && msNhu < 500,
       { msCn, msNhu });
   }
+
+  // ADR-0003 / G6-1 lọt #4: phủ vế so chiều CO/KHONG ("chưa tráng men" không được phủ bằng daTrangMen:CO và ngược lại)
+  {
+    const vChua = G6.veCanPhu('7323', G6.phanNhomCuaNhom('7323').find((p) => p.hs6 === '732391')).find((v) => /tráng men/i.test(v.chu));
+    const vDa = G6.veCanPhu('7323', G6.phanNhomCuaNhom('7323').find((p) => p.hs6 === '732392')).find((v) => /tráng men/i.test(v.chu));
+    kiem('ADR-0003 lọt #4: phuVe so chiều CO/KHONG — daTrangMen:CO KHÔNG phủ "chưa tráng men", KHONG phủ được; ngược lại trên "đã tráng men"',
+      !G6.phuVe([{ fact: 'daTrangMen', op: 'CO', nguon: 'tax.73239100', trich: '73239100 - - Bằng gang đúc, chưa tráng men' }], vChua)
+      && G6.phuVe([{ fact: 'daTrangMen', op: 'KHONG', nguon: 'tax.73239100', trich: '73239100 - - Bằng gang đúc, chưa tráng men' }], vChua)
+      && !G6.phuVe([{ fact: 'daTrangMen', op: 'KHONG', nguon: 'tax.73239200', trich: '73239200 - - Bằng gang đúc, đã tráng men' }], vDa)
+      && G6.phuVe([{ fact: 'daTrangMen', op: 'CO', nguon: 'tax.73239200', trich: '73239200 - - Bằng gang đúc, đã tráng men' }], vDa),
+      { vChua, vDa });
+  }
 }
 void os;
 xong();

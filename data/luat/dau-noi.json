@@ -203,7 +203,7 @@
       "boQua": ["soTayNhom", "soPn6"],
       "the": "OZV-1707",
       "phepKiemTienLe": { "ham": "lib/do-thi/tien-le-ung-ho.js tienLeUngHo()", "trangThai": "chua-noi", "adr": "ADR-0002", "ghiChu": "Kế hoạch mục 4.5: phép kiểm tiền lệ (C14 ủng hộ + không bị cạnh bậc 1 hay thông báo phân loại phản đối — trường biPhanDoi) sẽ áp cho CẢ BỐN nhánh dừng sớm, không chỉ nhánh dừng sớm để hỏi. Giai đoạn 1 mới có hàm, chưa nhánh nào gọi." },
-      "lyDo": "Bảng xung đột đã duyệt chốt được từ văn bản thì động cơ CHOT tất định và bỏ vòng 2 (OZV-1317). Khối sổ tay của vòng 2 không được đọc; cổng máy G8 có chạy trên đáp án dựng sẵn. CHƯA có phép kiểm tín hiệu tất định trái kết luận trước khi rẽ (L11): HS_CHOT_SOM_CO_KIEM chỉ phủ earlyExitHoiTuR1. Khi cờ đó bật, kết quả ghi soTay.daTra:false + lyDoChuaTra 'dung-som-bang-xung-dot'."
+      "lyDo": "Bảng xung đột đã duyệt chốt được từ văn bản thì động cơ CHOT tất định và bỏ vòng 2 (OZV-1317). Khối sổ tay của vòng 2 không được đọc; cổng máy G8 có chạy trên đáp án dựng sẵn. Sau cờ HS_CHOT_SOM_CO_KIEM (mặc định TẮT, L11): trước khi rẽ, kiểm tín hiệu tất định trái nhóm 4 số (lib/chot-som-co-kiem.js: tien-le-oz, tb-tchq, made-in-china, so-tay-loai-tru); có thì nạp nhóm trái chiều và đi vòng 2. Còn rẽ khi cờ bật thì kết quả ghi soTay.daTra:false + lyDoChuaTra 'dung-som-bang-xung-dot'. Cờ tắt thì giữ nguyên hành vi cũ."
     },
     {
       "ten": "fastFirstUngVien",
@@ -213,7 +213,7 @@
       "boQua": ["soTayNhom", "soPn6"],
       "the": "OZV-1707",
       "phepKiemTienLe": { "ham": "lib/do-thi/tien-le-ung-ho.js tienLeUngHo()", "trangThai": "chua-noi", "adr": "ADR-0002", "ghiChu": "Kế hoạch mục 4.5: phép kiểm tiền lệ (C14 ủng hộ + không bị cạnh bậc 1 hay thông báo phân loại phản đối — trường biPhanDoi) sẽ áp cho CẢ BỐN nhánh dừng sớm, không chỉ nhánh dừng sớm để hỏi. Giai đoạn 1 mới có hàm, chưa nhánh nào gọi." },
-      "lyDo": "Fast-first (HS_CLASSIFY_FAST_FIRST, OZV-570): vòng 1 tắt suy nghĩ + một nguồn độc lập xác nhận thì dựng đáp án CHOT và bỏ lời GIR vòng 2. Khối sổ tay của vòng 2 không được đọc; cổng máy G8 có chạy. CHƯA có phép kiểm tín hiệu tất định trái kết luận trước khi rẽ (L11): HS_CHOT_SOM_CO_KIEM chỉ phủ earlyExitHoiTuR1. Khi cờ đó bật, kết quả ghi soTay.daTra:false + lyDoChuaTra 'fast-first'."
+      "lyDo": "Fast-first (HS_CLASSIFY_FAST_FIRST, OZV-570): vòng 1 tắt suy nghĩ + một nguồn độc lập xác nhận thì dựng đáp án CHOT và bỏ lời GIR vòng 2. Khối sổ tay của vòng 2 không được đọc; cổng máy G8 có chạy. Sau cờ HS_CHOT_SOM_CO_KIEM (mặc định TẮT, L11): trước khi rẽ, kiểm tín hiệu tất định trái nhóm 4 số (lib/chot-som-co-kiem.js); có thì nạp nhóm trái chiều và đi vòng 2. Còn rẽ khi cờ bật thì kết quả ghi soTay.daTra:false + lyDoChuaTra 'fast-first'. Cờ tắt thì giữ nguyên hành vi cũ."
     },
     {
       "ten": "earlyExitChotTuTrade",
@@ -223,7 +223,7 @@
       "boQua": ["soTayNhom", "soPn6", "tienLe", "chuGiai"],
       "the": "OZV-1707",
       "phepKiemTienLe": { "ham": "lib/do-thi/tien-le-ung-ho.js tienLeUngHo()", "trangThai": "chua-noi", "adr": "ADR-0002", "ghiChu": "Kế hoạch mục 4.5: phép kiểm tiền lệ (C14 ủng hộ + không bị cạnh bậc 1 hay thông báo phân loại phản đối — trường biPhanDoi) sẽ áp cho CẢ BỐN nhánh dừng sớm, không chỉ nhánh dừng sớm để hỏi. Giai đoạn 1 mới có hàm, chưa nhánh nào gọi." },
-      "lyDo": "Chốt sớm theo từ điển tên thương mại (mục high + chotSom, OZV-1356): bỏ cả vòng 1, gather đầy đủ và vòng 2 — không đọc sổ tay, không tra tiền lệ theo mô tả. CHƯA có phép kiểm tín hiệu tất định trái kết luận trước khi rẽ (L11): HS_CHOT_SOM_CO_KIEM chỉ phủ earlyExitHoiTuR1. Khi cờ đó bật, kết quả ghi soTay.daTra:false + lyDoChuaTra 'chot-som-tu-dien'."
+      "lyDo": "Chốt sớm theo từ điển tên thương mại (mục high + chotSom, OZV-1356): bỏ cả vòng 1, gather đầy đủ và vòng 2 — không đọc sổ tay, không tra tiền lệ theo mô tả. Sau cờ HS_CHOT_SOM_CO_KIEM (mặc định TẮT, L11): trước khi rẽ, kiểm tín hiệu tất định trái nhóm 4 số có sẵn không cần mạng (tb-tchq khớp tên hàng, so-tay-loai-tru); có thì không chốt sớm, đi vòng 1 → gather → vòng 2. Còn rẽ khi cờ bật thì kết quả ghi soTay.daTra:false + lyDoChuaTra 'chot-som-tu-dien'. Cờ tắt thì giữ nguyên hành vi cũ."
     }
   ],
   "noiDungCauHoi": {
