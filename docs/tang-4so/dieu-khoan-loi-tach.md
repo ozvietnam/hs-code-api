@@ -25,15 +25,18 @@ Chỉ số là vị trí trong mảng `dieu-khoan-tang2.json` (không dùng `id`
 
 128 `id` bị trùng, ví dụ `chuong:09:chu_giai:2a` ×2, `chuong:09:chu_giai:2b` ×2, `chuong:48:chu_giai:1` nhiều lần. Lý do đoán: `id` tạo từ cap, gan, vùng, khoản, điểm, nhưng tách bằng máy làm nhiều đoạn mang cùng khoản/điểm (ví dụ đoạn tiếp nối bị tách thành mục riêng). Cần quyết định cách đánh số lại, không sửa tự động ở PR này.
 
-## (f) Điều khoản dính đoạn TỔNG QUÁT của Chú giải chi tiết WCO (210 cảnh báo)
+## (f) Điều khoản dính đoạn TỔNG QUÁT của Chú giải chi tiết WCO (đã làm sạch 210/210 mục)
 
-**Nguyên nhân:** Khi bóc tách chú giải Phần/Chương từ nguồn Chú giải chi tiết WCO (Explanatory Notes), phần văn bản "TỔNG QUÁT" (General Explanatory Notes) nằm ngay sau các chú giải pháp lý cuối cùng của Phần hoặc Chương. Bộ bóc tách tất định (deterministic parser) chưa ngắt trước tiêu đề "TỔNG QUÁT", dẫn đến đoạn mở đầu của Chú giải tổng quát WCO bị dính vào:
+**Nguyên nhân:** Khi bóc tách chú giải Phần/Chương từ nguồn Chú giải chi tiết WCO (Explanatory Notes), phần văn bản "TỔNG QUÁT" (General Explanatory Notes) nằm ngay sau các chú giải pháp lý cuối cùng của Phần hoặc Chương. Bộ bóc tách tất định (deterministic parser) ban đầu chưa ngắt trước tiêu đề "TỔNG QUÁT", dẫn đến đoạn mở đầu của Chú giải tổng quát WCO bị dính vào:
 - Trường `nguyenVan` của khoản/điểm cuối cùng (46 mục).
 - Trường lời dẫn `dan` của các mục kế sau (164 mục).
 
-Tổng cộng có 210 mục bị dính tiêu đề `TỔNG QUÁT`. Dữ liệu KHÔNG tự ý sửa trong đợt này (giữ nguyên theo quy định), ghi nhận cảnh báo để đối chiếu nguồn và tách sạch ở bước làm sạch chuyên sâu.
+**Đã xử lý (OZV-1969):** Đã cắt bỏ phần từ dòng tiêu đề `TỔNG QUÁT` trở về sau (kèm khoảng trắng cuối) trong `dan` và `nguyenVan` của toàn bộ 210/210 mục trong `data/luat/dieu-khoan-tang2.json`. Sau khi làm sạch:
+- `0` mục còn dính `TỔNG QUÁT` (46 mục ở `nguyenVan`, 164 mục ở `dan` đều đã sạch).
+- Toàn bộ 1.597 mục trong `data/luat/dieu-khoan-tang2.json` vẫn có `nguyenVan` khớp nguyên văn 100% chuỗi con trong `data/chu-giai-chuong.json` (0 cảnh báo ở mục `(c)`).
+- Nâng mục `(f)` trong `scripts/test-dieu-khoan-tang2.mjs` từ cảnh báo thành ca kiểm cứng `PASS` thứ 4.
 
-### Bảng ví dụ điển hình
+### Bảng ví dụ điển hình đã làm sạch
 
 | # | id | Vị trí dính | Trích đoạn dính | Nhận xét |
 |---|----|-------------|-----------------|----------|
