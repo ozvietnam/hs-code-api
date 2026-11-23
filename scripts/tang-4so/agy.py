@@ -2,7 +2,7 @@
 Gặp lỗi hạn mức thì ném QuotaError: người gọi phải dừng, KHÔNG chuyển sang khoá khác."""
 import json, os, subprocess, time
 
-AGY = os.path.expanduser("~/.local/bin/agy")
+AGY = os.environ.get("AGY_BIN") or os.path.expanduser("~/.local/bin/agy")  # AGY_BIN: chỉ để thử luồng bằng agy giả, không tốn hạn mức
 MODEL = "gemini-3.8-flash-medium"
 NHAT_KY = os.environ.get("AGY_LUOT", os.path.join(os.path.dirname(__file__), "..", "..", "docs", "tang-4so", "agy-luot.jsonl"))
 DAU_HIEU_HAN_MUC = ("quota", "rate limit", "rate_limit", "resource_exhausted", "429", "exhausted", "usage limit")

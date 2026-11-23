@@ -20,10 +20,12 @@ ap.add_argument("--ca-sai", required=True)
 ap.add_argument("--hh", default=os.path.expanduser("~/hh-agy-v1.jsonl"))
 ap.add_argument("--cum", default="docs/tang-4so/cache-cum-v1.jsonl", help="bộ nhớ đệm cụm từ dò luật")
 ap.add_argument("--ra", required=True)
+ap.add_argument("--uv-cu", nargs="*", default=[], help="các tệp ca-sai/ket-qua của vòng trước: gộp ứng viên cũ, không để rớt")
 ap.add_argument("--vong", type=int, default=1)
 ap.add_argument("--llm-nha", default=os.environ.get("LLM_NHA", "http://192.168.1.68:11434/v1/chat/completions"))
 ap.add_argument("--toi-da-uv", type=int, default=22)
 ap.add_argument("--song-song", type=int, default=3)
+ap.add_argument("--phan-bien", action="store_true", help="lượt kiểm phản biện giả định ẩn trước khi CHOT (mới viết, chưa đo bằng LLM thật)")
 A = ap.parse_args()
 REPO = A.repo
 P = lambda p: p if os.path.isabs(p) else os.path.join(REPO, p)
@@ -279,12 +281,61 @@ def hau_xu_ly(kq, uv, ids, text_all, h):
         out["chungMinh"] = len(nh) >= 2 and all(b["canCu"] or xet.get(b["nhom"], {}).get("trichDung") for b in nh)
     return out
 
+
+# ---------------- phản biện: kiểm giả định trước khi CHỐT ----------------
+def phan_bien(mo, h, r, uv, ids, text_all, kq):
+    """Lượt kiểm phản biện cho kết quả CHOT. Trả (danh sách mục hợp lệ, thô). Mục hợp lệ: nhóm Y khác X, giả định không có trong hồ sơ
+    (hoặc trích hồ sơ không kiểm được), có căn cứ luật thật, và có đặc điểm quan sát được dẫn sang Y."""
+    X = r["nhom"]
+    bc = {k: h.get(k) for k in ("tenDung", "banChat", "dangVatLy", "dungChoViecGi", "coChe", "oDau", "aiDung", "laBoPhanCua", "tenKhac", "canXacNhan") if h.get(k)}
+    bang = []
+    for n in uv:
+        x = r["xet"].get(n)
+        if not x: continue
+        bang.append(f"- {n} {TEN.get(n,'')[:70]} | {x.get('ketLuan')} | điều kiện vào: {x.get('dieuKienVao')} | lý do: {x.get('duKienQuyetDinh')} | điều khoản: {','.join(x.get('dieuKhoan') or [])}")
+    dan = sorted({i for x in r["xet"].values() for i in (x.get("dieuKhoan") or [])})
+    van = "\n".join(f"[{i}] {re.sub(chr(10), ' ', DK.theo_id[i]['nguyenVan'])[:350]}" for i in dan if i in DK.theo_id)
+    prompt = (
+        "Bạn là kiểm toán viên phân loại HS. Hệ vừa CHỐT nhóm %s cho hàng dưới đây. Luật PHẢI HỎI, KHÔNG ĐOÁN: chỉ được chốt khi mọi dữ kiện mà chữ luật dùng để tách nhóm "
+        "đã có TRONG HỒ SƠ HÀNG. Hãy tìm GIẢ ĐỊNH ẨN: chỗ hệ đã loại nhóm khác (hoặc chọn %s) dựa trên điều 'hàng là ...' mà hồ sơ KHÔNG nêu.\n\n"
+        "HÀNG: \"%s\"\nHỒ SƠ HÀNG: %s\n\nBẢNG PHÁN XỬ CỦA HỆ:\n%s\n\nĐIỀU KHOẢN HỆ ĐÃ DẪN:\n%s\n\n"
+        "Với MỖI nhóm Y khác %s mà việc loại Y dựa vào một giả định, nêu một mục nếu ĐỦ ba điều: (1) chữ luật (điều khoản, tên nhóm, chú giải) dùng chính dữ kiện đó để tách %s khỏi Y; "
+        "(2) hồ sơ hàng không nêu dữ kiện đó (hoặc nó nằm trong canXacNhan); (3) nếu dữ kiện khác đi thì hàng khớp Y theo chữ luật. "
+        "KHÔNG nêu dữ kiện chỉ ảnh hưởng thuế suất, thương hiệu, model, kích thước. Nếu hồ sơ đã nêu rõ thì KHÔNG nêu.\n"
+        "Trả JSON thuần: {\"phanBien\": [{\"nhomY\": \"yyyy\", \"giaDinh\": \"giả định hệ đã dùng, nói như đặc điểm quan sát được\", \"hoSoCoNeu\": true|false, "
+        "\"trichHoSo\": \"trích nguyên văn hồ sơ nếu hoSoCoNeu\", \"neuKhac\": \"đặc điểm quan sát được nếu giả định sai → hàng vào Y\", \"trichLuat\": \"trích nguyên văn chữ luật tách hai nhóm\", "
+        "\"canCu\": [\"id điều khoản nếu có\"]}]} (để [] nếu không có giả định ẩn). KHÔNG dùng công cụ, không tìm web: trả JSON ngay."
+    ) % (X, X, mo, json.dumps(bc, ensure_ascii=False), "\n".join(bang), van or "(không có)", X, X)
+    resp = agy.json_tu_chuoi(agy.goi(prompt, ca=r.get("ca"), vong=A.vong))
+    ho_so_txt = json.dumps(bc, ensure_ascii=False)
+    hop_le = []
+    for e in ((resp or {}).get("phanBien") or []):
+        if not isinstance(e, dict): continue
+        y = nhom_hop_le(e.get("nhomY"))
+        if not y or y == X or y not in uv or not e.get("neuKhac") or not e.get("giaDinh"): continue
+        co_neu = e.get("hoSoCoNeu") is True and kiem_trich(e.get("trichHoSo") or "", ho_so_txt)
+        if co_neu: continue  # hồ sơ có nêu thật: không phải giả định
+        luat_ok = bool(chuan_id(e.get("canCu"), ids)) or kiem_trich(e.get("trichLuat") or "", text_all)
+        if not luat_ok: continue
+        hop_le.append({**e, "nhomY": y, "canCu": chuan_id(e.get("canCu"), ids)})
+    return hop_le, resp
+
 # ---------------- chạy ----------------
 def main():
     bc = {}
     for l in open(P(A.bo_chuan)):
         d = json.loads(l); bc[d["ca"]] = d
     cas = json.load(open(P(A.ca_sai)))
+    cu = {}
+    for f in A.uv_cu:
+        txt = open(P(f)).read().strip()
+        rows = json.loads(txt) if txt.startswith("[") else [json.loads(l) for l in txt.splitlines() if l.strip()]
+        for d in rows:
+            for n in d.get("ungVien") or []: cu.setdefault(d["ca"], [])
+            for n in d.get("ungVien") or []:
+                if n not in cu[d["ca"]]: cu[d["ca"]].append(n)
+    for c in cas:
+        c["ungVien"] = list(dict.fromkeys((c.get("ungVien") or []) + cu.get(c["ca"], [])))
     da = set()
     if os.path.exists(A.ra):
         for l in open(A.ra):
@@ -318,11 +369,30 @@ def main():
             dung.set(); print("DUNG: hết hạn mức LLM mạnh:", e, file=sys.stderr); return
         kq, uv, ids, text_all = best or ({}, uv, ids, text_all)
         r = hau_xu_ly(kq, uv, ids, text_all, h)
+        r["ca"] = ca["ca"]; pb_thô = None
+        if r["ketQua"] == "CHOT" and luot < 2 and A.phan_bien:
+            try:
+                luot += 1
+                muc, pb_thô = phan_bien(mo, h, r, uv, ids, text_all, kq)
+            except agy.QuotaError as e:
+                dung.set(); print("DUNG: hết hạn mức LLM mạnh:", e, file=sys.stderr); return
+            if muc:
+                X = r["nhom"]; xx = r["xet"][X]
+                nh = [{"neu": muc[0]["giaDinh"], "nhom": X, "canCu": xx["dieuKhoan"]}]
+                dd = {X}
+                for e in muc:
+                    if e["nhomY"] not in dd: nh.append({"neu": e["neuKhac"], "nhom": e["nhomY"], "canCu": e["canCu"]}); dd.add(e["nhomY"])
+                r.update({"ketQua": "PHAN_VAN", "nhom": None, "nhanh": nh, "quyTac": "QT1(thiếu dữ kiện → hỏi)",
+                          "dapAnDieuKien": "; ".join(f"Nếu {b['neu']} → nhóm {b['nhom']} (căn cứ: {', '.join(b['canCu']) or 'tên nhóm/chú giải chi tiết'})" for b in nh),
+                          "cauHoi": " / ".join(str(e.get("giaDinh")) for e in muc), "chungMinh": len(nh) >= 2})
+                r["dieuKhoanApDung"] = None; r["trichDan"] = None
+                r["lyDo"].append("PHAN_BIEN: giả định ẩn hồ sơ không nêu: " + "; ".join(str(e["giaDinh"]) for e in muc)[:300])
         nhan = ca.get("nhomNhan") or ca.get("nhan")
-        out = {"ca": ca["ca"], "moTa": mo, "nhanKetQua": ca.get("nhan"), "nhomNhan": nhan, "ungVien": uv, "luotLlm": luot,
+        out = {"ca": ca["ca"], "moTa": mo, "nhanKetQua": ca.get("nhan"), "nhomNhan": nhan, "ungVien": uv,
                "nhanDinh": h.get("nhanDinh"), "ketQua": r["ketQua"], "nhom": r.get("nhom"), "quyTac": r.get("quyTac"),
                "dieuKhoanApDung": r.get("dieuKhoanApDung"), "dapAnDieuKien": r.get("dapAnDieuKien"), "nhanh": r.get("nhanh"), "cauHoi": r.get("cauHoi"),
                "chungMinh": r.get("chungMinh"), "trichDan": r.get("trichDan"), "lyDo": r["lyDo"], "llmKetQua": kq.get("ketQua"), "llmNhom": kq.get("nhom"),
+               "nhayCamTho": kq.get("nhayCam"), "nhomThieuTho": kq.get("nhomThieu"), "phanBienTho": pb_thô, "luotLlm": luot,
                "xet": {n: {k: x.get(k) for k in ("ketLuan", "dieuKhoan", "dieuKhoanTho", "trich", "trichDung", "dieuKienVao", "duKienQuyetDinh", "daCo")} for n, x in r["xet"].items()}}
         with khoa:
             with open(A.ra, "a") as f: f.write(json.dumps(out, ensure_ascii=False) + "\n")
