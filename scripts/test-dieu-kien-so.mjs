@@ -456,5 +456,69 @@ const ST8544 = {
   check(`13d ReDoS ~40.000 từ lặp chạy dưới 2000ms (thực tế ${dt}ms)`, dt < 2000 && kqReDoS1830.hs === '20079910', `${dt}ms`);
 }
 
+// 14. OZV-1943: tách vế cha "và các loại ghim khác" (73194010), tiền tố vế cha "có gắn lò xo" (94042910), và từ ghép khác nghĩa "bóng bàn" vs "Bàn" (95064010)
+{
+  const { chotDong8 } = require('../lib/so-tay-gates.js');
+  // 73194010 (2 chiều)
+  const kq73194010 = chotDong8({
+    hs: '731940',
+    productText: 'Ghim băng và các loại ghim khác: Ghim băng',
+  });
+  const kq731940Thieu = chotDong8({
+    hs: '731940',
+    productText: 'Ghim băng và các loại ghim khác',
+  });
+  check('14a 73194010: tách vế cha nối bằng "và các loại ghim khác" → chốt 73194010',
+    kq73194010.ketQua === 'CHOT' && kq73194010.hs === '73194010',
+    j(kq73194010));
+  check('14a-ngược 731940: chỉ có tiêu đề phân nhóm 6 số → không tự chốt',
+    kq731940Thieu.ketQua !== 'CHOT' && kq731940Thieu.ketQua !== 'LOAI_KHAC',
+    j(kq731940Thieu));
+
+  // 94042910 (2 chiều)
+  const kq94042910 = chotDong8({
+    hs: '940429',
+    productText: 'Đệm - Bằng các loại vật liệu khác: Đệm lò xo',
+  });
+  const kq940429Thieu = chotDong8({
+    hs: '940429',
+    productText: 'Đệm - Bằng các loại vật liệu khác',
+  });
+  check('14b 94042910: tách tiền tố vế cha "có gắn lò xo" trong nhóm 9404 → chốt 94042910',
+    kq94042910.ketQua === 'CHOT' && kq94042910.hs === '94042910',
+    j(kq94042910));
+  check('14b-ngược 940429: chỉ có tiêu đề phân nhóm 6 số → không tự chốt',
+    kq940429Thieu.ketQua !== 'CHOT' && kq940429Thieu.ketQua !== 'LOAI_KHAC',
+    j(kq940429Thieu));
+
+  // 95064010 (2 chiều)
+  const kq95064010 = chotDong8({
+    hs: '950640',
+    productText: 'Dụng cụ và thiết bị cho môn bóng bàn: Bàn',
+  });
+  const kq950640Thieu = chotDong8({
+    hs: '950640',
+    productText: 'Dụng cụ và thiết bị cho môn bóng bàn',
+  });
+  const kq95064090 = chotDong8({
+    hs: '950640',
+    productText: 'Dụng cụ và thiết bị cho môn bóng bàn, không phải Bàn',
+  });
+  check('14c 95064010/95064090: phân biệt "bóng bàn" (môn thể thao) với "Bàn" → chốt 95064010 và Loại khác 95064090',
+    kq95064010.ketQua === 'CHOT' && kq95064010.hs === '95064010'
+    && kq95064090.ketQua === 'LOAI_KHAC' && kq95064090.hs === '95064090',
+    j([kq95064010, kq95064090]));
+  check('14c-ngược 950640: chỉ có chữ "bóng bàn" ở tiêu đề phân nhóm → không khớp nhầm chữ "Bàn"',
+    kq950640Thieu.ketQua !== 'CHOT' && kq950640Thieu.ketQua !== 'LOAI_KHAC',
+    j(kq950640Thieu));
+
+  // ReDoS ~40.000 từ lặp < 2 giây (quy tắc 6b)
+  const t0 = Date.now();
+  const chuoiDai1943 = `${Array.from({ length: 13500 }, () => 'dụng cụ bóng bàn').join(' ')}: Bàn`;
+  const kqReDoS1943 = chotDong8({ hs: '950640', productText: chuoiDai1943 });
+  const dt = Date.now() - t0;
+  check(`14d ReDoS ~40.000 từ lặp chạy dưới 2000ms (thực tế ${dt}ms)`, dt < 2000 && kqReDoS1943.hs === '95064010', `${dt}ms`);
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);

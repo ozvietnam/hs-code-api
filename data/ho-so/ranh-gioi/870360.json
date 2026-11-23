@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L30-20261111#soat-L30",
-    "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu VI/EN: cùng cấu trúc 870340; 61 dòng cc khớp biên; tầng kiểu xe (ATV, cứu thương, tang lễ, phạm nhân, nhà ở, Sedan) đúng nhãn; Ô tô khác có laOtoVan KHONG.",
-    "bam": "0b300f92be787e34564b20ad88e6e85c38604e1e7f333b0f2a6da4311401af3f"
+    "phien": "paperclip:OZV-1943#soat-870360",
+    "ngay": "2026-11-22",
+    "ghiChu": "Bổ sung tenLoai Dạng CKD và Ô tô khác cho dieuKienNut để khép SẠCH V1 nhóm 8703 (OZV-1943)",
+    "bam": "a876eca0d130c6b2728e89c93e666c0baa9066c6e092446156d626a325258549"
   },
   "dieuKienNut": [
     {
@@ -26,6 +26,11 @@
         {
           "fact": "daLapRap",
           "op": "KHONG"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dạng CKD"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -66,6 +71,11 @@
       "trich": "870360~r16842 Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), loại bốn bánh chủ động",
       "dieuKienSo": [
         {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô khác"
+        },
+        {
           "fact": "bonBanhChuDong",
           "op": "CO"
         },
@@ -82,6 +92,11 @@
       "nguon": "tieuDe.870360~r16846",
       "trich": "870360~r16846 Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), không phải loại bốn bánh chủ động",
       "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô khác"
+        },
         {
           "fact": "bonBanhChuDong",
           "op": "KHONG"
@@ -190,6 +205,11 @@
       "trich": "8703607 Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), loại bốn bánh chủ động",
       "dieuKienSo": [
         {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô khác"
+        },
+        {
           "fact": "bonBanhChuDong",
           "op": "CO"
         },
@@ -206,6 +226,11 @@
       "nguon": "tieuDe.8703608",
       "trich": "8703608 Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), không phải loại bốn bánh chủ động",
       "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô khác"
+        },
         {
           "fact": "bonBanhChuDong",
           "op": "KHONG"
