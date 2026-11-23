@@ -38,6 +38,8 @@ const CA = [
   { ten: 'đèn LED hình gấu', hs: '94054290', id: 'den-led-cam-tuong' },
   // OZV-2015: «túi sưởi điện gia dụng» — trước dừng 6 số nhánh 851679; chú giải 85.16 loại trừ làm ấm người → 63011000.
   { ten: 'túi sưởi điện gia dụng', hs: '63011000', id: 'tui-suoi-dien-gia-dung' },
+  // OZV-2038: «điện trở 8*60 mm · 220V · 150W» — trước lệch 85169040 / dừng 6 số / search 8533 → 85168090.
+  { ten: 'điện trở 8*60 mm, điện áp 220v, công suất 150w', hs: '85168090', id: 'dien-tro-dot-nong' },
 ];
 
 for (const c of CA) {
