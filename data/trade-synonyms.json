@@ -4282,7 +4282,85 @@
    "gir": "GIR 1 + Chú giải 5 Chương 84 + GIR 3b",
    "basis": "RULE_TABLE",
    "sourceVi": "Ca thật 21/11/2026: Metalio E-INK 4 PLUS (ESP32-S31, 4.7 inch, 4G optional). Tiền lệ: TB-TCHQ 2387 (Boox Poke5), 2388 (Kindle Scribe), 2392 (Kindle, XĐT) → 85437030; TB 5666 (HoloLens) → 84713090. Cả 3 dòng MFN 0% — chọn mã chủ yếu là quyết định NGHĨA VỤ (8471 dính khối CNTT, 8543 sạch)."
+  },
+  {
+   "id": "tui-suoi-dien-gia-dung",
+   "titleVi": "Túi sưởi điện / đệm sưởi điện dùng cho người (gia dụng) — 6301.10.00",
+   "terms": [
+    "túi sưởi điện gia dụng",
+    "tui suoi dien gia dung",
+    "túi sưởi điện",
+    "tui suoi dien",
+    "túi chườm điện",
+    "tui chuom dien",
+    "đệm sưởi điện",
+    "dem suoi dien",
+    "đệm chân điện",
+    "dem chan dien",
+    "electric heating pad",
+    "electric heat pad",
+    "heating pad electric",
+    "electric foot warmer"
+   ],
+   "excludeIfAny": [
+    "quạt sưởi",
+    "quat suoi",
+    "máy sưởi",
+    "may suoi",
+    "đèn sưởi",
+    "den suoi",
+    "ấm đun",
+    "am dun",
+    "ấm siêu tốc",
+    "bột sắt",
+    "bot sat",
+    "dùng một lần",
+    "dung mot lan",
+    "Disposable hand",
+    "không điện",
+    "khong dien",
+    "than hồng ngoại",
+    "sưởi dầu phòng",
+    "suoi dau phong"
+   ],
+   "excludeReasonVi": "Quạt/máy/đèn sưởi phòng là thiết bị sưởi không gian 85.16.29; ấm đun nước là 8516.79.10. Túi chườm dùng một lần (bột sắt oxi hoá) là hỗn hợp hoá chất 38.24 (ý kiến WCO 3824.99), không phải túi sưởi điện.",
+   "candidates": [
+    {
+     "hs": "63011000",
+     "whenVi": "Túi/đệm sưởi điện gia dụng dùng để làm ấm người (tương tự chăn điện, đệm giường, đệm chân điện) — chú giải nhóm 85.16 loại trừ thiết bị làm ấm dùng cho người; chú giải 63.01 ghi chăn làm nóng bằng điện thuộc nhóm này → lá duy nhất 6301.10.00.",
+     "confidence": "high"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "8516",
+     "whyVi": "Chú giải nhóm 85.16 loại trừ chăn sưởi điện, đệm giường, đệm chân và thiết bị làm ấm dùng cho người — chuyển sang nhóm thích hợp (63.01). Prod 23/11 «túi sưởi điện gia dụng» dừng 6 số ở nhánh 8516.79 (NEED_FACTS .10 ấm đun / .90 loại khác) là lệch chú giải."
+    },
+    {
+     "prefix": "851679",
+     "whyVi": "8516.79 là thiết bị nhiệt điện gia dụng còn lại (ấm đun…); túi sưởi dùng cho người không thuộc 85.16."
+    },
+    {
+     "prefix": "851629",
+     "whyVi": "8516.29 là sưởi không gian (quạt sưởi, sưởi dầu phòng) — conflicts.json phân biệt với sưởi ấm cá nhân 6301.10."
+    },
+    {
+     "prefix": "8536",
+     "whyVi": "Search thô «gia dụng»+«điện» kéo 8536.20 «để lắp ghép với thiết bị nhiệt điện gia dụng» (cầu dao) — không phải túi sưởi."
+    },
+    {
+     "prefix": "3824",
+     "whyVi": "3824.99 là túi sưởi dùng một lần (bột sắt) theo ý kiến WCO — khác túi sưởi điện có phần tử đốt."
+    }
+   ],
+   "askVi": [
+    "Hàng là túi/đệm sưởi điện dùng để làm ấm người (có điện trở đốt), không phải quạt/máy sưởi phòng hay túi chườm bột sắt dùng một lần?"
+   ],
+   "chotSom": true,
+   "gir": "GIR 1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Chú giải nhóm 85.16 (data/chu-giai-heading.json): loại trừ chăn sưởi điện, đệm giường, đệm chân và thiết bị làm ấm dùng cho người. Chú giải 63.01: chăn làm nóng bằng điện thuộc nhóm này. Biểu thuế 63011000 «Chăn điện» (lá duy nhất 6301.10). conflicts.json 85162900↔63011000: sưởi không gian ≠ sưởi ấm cá nhân. OZV-2015: thực địa 23/11 «túi sưởi điện gia dụng» · 1 lượt · dừng 6 số; search top 85362020; không có mục từ điển."
   }
  ],
- "updatedAt": "2026-11-21"
+ "updatedAt": "2026-11-23"
 }
