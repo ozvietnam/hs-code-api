@@ -31,25 +31,43 @@ class DieuKhoan:
 
     def la_phan_xvi(self, ch): return ch in ("84", "85")
 
-    def khoi(self, ch, tu, cap=7000):
-        """Khối văn bản điều khoản của một Chương (kèm Phần) cho prompt + danh sách id đã đưa vào."""
-        c, p = self.hieu_luc(ch)
+    def _khoi_ds(self, ten, ds, tu, lq=None):
         ids, out = [], []
-        for ten, ds in (("CHƯƠNG " + ch, c), ("PHẦN " + SO_LA_MA.get(self._phan_gan(ch), "?"), p)):
-            for kieu in THU_TU:
-                xs = [x for x in ds if x["kieu"] == kieu]
-                if kieu == "CHUA_XEP":  # chỉ giữ khi dính chữ của hàng
-                    xs = [x for x in xs if any(t in bo_dau(x["nguyenVan"]) for t in tu)]
-                if kieu == "DINH_NGHIA_PHAM_VI":  # định nghĩa: lọc theo liên quan, giữ ngắn
-                    xs = [x for x in xs if any(t in bo_dau(x["nguyenVan"]) for t in tu)][:8]
-                for x in xs:
-                    nv = re.sub(r"\s+", " ", x["nguyenVan"]).strip()
-                    dan = re.sub(r"\s+", " ", x.get("dan") or "").strip()
-                    dich = (" → đích: " + ",".join(x["dich"])) if x.get("dich") else ""
-                    dong = f"[{x['id']}] ({ten}/{kieu}) " + (f"{dan[:90]} " if dan and kieu == "LOAI_TRU" else "") + nv[:320] + dich
-                    out.append(dong); ids.append(x["id"])
-        txt = "\n".join(out)
-        return txt[:cap], ids
+        for kieu in THU_TU:
+            xs = [x for x in ds if x["kieu"] == kieu]
+            if kieu == "CHUA_XEP":  # chỉ giữ khi dính chữ của hàng
+                xs = [x for x in xs if any(t in bo_dau(x["nguyenVan"]) for t in tu)]
+            if kieu == "DINH_NGHIA_PHAM_VI":  # định nghĩa: lọc theo liên quan
+                xs = [x for x in xs if any(t in bo_dau(x["nguyenVan"]) for t in tu)][:8]
+            if kieu == "LOAI_TRU" and lq is not None:  # chỉ điều loại trừ liên quan tới ứng viên: đích trùng ứng viên/Chương/Phần của ứng viên, hoặc dính chữ của hàng, hoặc không nêu đích
+                xs = [x for x in xs if not x.get("dich") or (set(x["dich"]) & lq) or any(t in bo_dau(x["nguyenVan"]) for t in tu)]
+            for x in xs:
+                nv = re.sub(r"\s+", " ", x["nguyenVan"]).strip()
+                dan = re.sub(r"\s+", " ", x.get("dan") or "").strip()
+                dich = (" → đích: " + ",".join(x["dich"])) if x.get("dich") else ""
+                out.append(f"[{x['id']}] ({ten}/{kieu}) " + (f"{dan} " if dan and kieu == "LOAI_TRU" else "") + nv + dich)  # nguyên văn, không cắt
+                ids.append(x["id"])
+        return "\n".join(out), ids
+
+    def khoi_chuong(self, ch, tu, lq=None):
+        return self._khoi_ds("CHƯƠNG " + ch, self.chuong.get(ch, []), tu, lq)
+
+    def khoi_phan(self, gan, tu, lq=None):
+        return self._khoi_ds("PHẦN " + SO_LA_MA.get(gan, "?"), [x for x in self.phan if x["gan"] == gan], tu, lq)
+
+    def lien_quan(self, uv):
+        """Tập đích mà một điều loại trừ phải trỏ tới để được coi là liên quan: nhóm ứng viên, Chương (Cxx), Phần (P:XVI)."""
+        s = set()
+        for n in uv:
+            s |= {n, "C" + n[:2]}
+            g = self._phan_gan(n[:2])
+            if g: s.add("P:" + SO_LA_MA.get(g, ""))
+        return s
+
+    def khoi(self, ch, tu, cap=None):
+        """Chương + Phần của Chương (dùng khi cần một khối đầy đủ)."""
+        t1, i1 = self.khoi_chuong(ch, tu); t2, i2 = self.khoi_phan(self._phan_gan(ch), tu)
+        return t1 + "\n" + t2, i1 + i2
 
     def _phan_gan(self, ch):
         for x in self.phan:
