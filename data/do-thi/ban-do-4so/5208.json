@@ -1,0 +1,198 @@
+{
+  "nhom": "5208",
+  "khuon": "bd4@1",
+  "nguonLoai": "AI_NHAP",
+  "chamCheo": "DUYET",
+  "taoBoi": {
+    "provider": "google-studio",
+    "model": "gemini-4-hydrogen",
+    "goi": "755a8c82dc40"
+  },
+  "kieuNhom": "THEO_VAT_LIEU",
+  "hoSo": {
+    "chucNang": [
+      {
+        "y": "sản xuất để làm quần áo",
+        "trich": "sản xuất để làm quần áo, vải lanh dùng trong gia đình, khăn trải giường, rèm cửa và các mặt hàng nội thất khác...",
+        "nguon": "ct.5208.2"
+      },
+      {
+        "y": "làm váy liền, váy, áo",
+        "trich": "làm váy liền, váy, áo…",
+        "nguon": "wco.520851/1"
+      }
+    ],
+    "coChe": [],
+    "dangVatLy": [
+      {
+        "y": "loại vải dệt thoi",
+        "trich": "loại vải dệt thoi",
+        "nguon": "ct.5208.1"
+      },
+      {
+        "y": "vải dệt thoi vân điểm",
+        "trich": "Vải dệt thoi vân điểm bằng bông",
+        "nguon": "wco.520851/1"
+      }
+    ],
+    "chatLieu": [
+      {
+        "y": "tỷ trọng bông từ 85% trở lên",
+        "trich": "có tỷ trọng bông từ 85% trở lên",
+        "nguon": "ct.5208.1"
+      }
+    ],
+    "oDauAiDung": [
+      {
+        "y": "làm vải lanh gia đình, khăn rèm",
+        "trich": "vải lanh dùng trong gia đình, khăn trải giường, rèm cửa và các mặt hàng nội thất khác...",
+        "nguon": "ct.5208.2"
+      }
+    ],
+    "hangDuocNeu": [
+      {
+        "ten": "Khanga",
+        "trich": "tạo thành một cặp “Khanga” là trang phục truyền thống của phụ nữ",
+        "nguon": "wco.520851/1"
+      }
+    ],
+    "dieuKienBatBuoc": [
+      {
+        "y": "trọng lượng không quá 200g/m2",
+        "trich": "trọng lượng không vượt quá 200g/m2",
+        "nguon": "ct.5208.1"
+      },
+      {
+        "y": "tỷ trọng bông từ 85% trở lên",
+        "trich": "có tỷ trọng bông từ 85% trở lên",
+        "nguon": "ct.5208.1"
+      }
+    ]
+  },
+  "canh": [
+    {
+      "den": "5209",
+      "loai": "PHAN_BIET",
+      "dacDiem": "định lượng trọng lượng trên một mét vuông vải",
+      "neu": "trọng lượng không vượt quá 200g/m2",
+      "thi": "5208",
+      "conNeu": "có trọng lượng lớn hơn 200g/m2",
+      "thiKia": "5209",
+      "canCu": [
+        {
+          "nguon": "ct.5208.1",
+          "trich": "trọng lượng không vượt quá 200g/m2"
+        },
+        {
+          "nguon": "phan:50:chu_giai:2b~4",
+          "trich": "có trọng lượng lớn hơn 200g/m2"
+        }
+      ],
+      "quyTac": "QT1"
+    },
+    {
+      "den": "5210",
+      "loai": "PHAN_BIET",
+      "dacDiem": "hàm lượng tỷ trọng xơ bông trong vải",
+      "neu": "có tỷ trọng bông từ 85% trở lên",
+      "thi": "5208",
+      "conNeu": "có tỷ trọng bông dưới 85%",
+      "thiKia": "5210",
+      "canCu": [
+        {
+          "nguon": "ct.5208.1",
+          "trich": "có tỷ trọng bông từ 85% trở lên"
+        },
+        {
+          "nguon": "phan:50:chu_giai:2b~4",
+          "trich": "có tỷ trọng bông dưới 85%"
+        }
+      ],
+      "quyTac": "QT1"
+    },
+    {
+      "den": "3005",
+      "loai": "LOAI_TRU",
+      "dacDiem": "mục đích sử dụng y tế đã tẩm thuốc hay vải dệt thông thường",
+      "neu": "Băng dùng trong y tế, đã tẩm thuốc hay đã đóng gói để bán lẻ",
+      "thi": "3005",
+      "conNeu": "loại vải dệt thoi",
+      "thiKia": "5208",
+      "canCu": [
+        {
+          "nguon": "ct.5208.4",
+          "trich": "(a) Băng dùng trong y tế, đã tẩm thuốc hay đã đóng gói để bán lẻ (nhóm 30.05)."
+        },
+        {
+          "nguon": "ct.5208.1",
+          "trich": "loại vải dệt thoi"
+        }
+      ],
+      "quyTac": "QT1"
+    },
+    {
+      "den": "5801",
+      "loai": "LOAI_TRU",
+      "dacDiem": "cấu tạo vải có sợi nổi vòng hay vải dệt thoi thông thường",
+      "neu": "Các loại vải dệt của nhóm 58.01",
+      "thi": "5801",
+      "conNeu": "loại vải dệt thoi",
+      "thiKia": "5208",
+      "canCu": [
+        {
+          "nguon": "ct.5208.5",
+          "trich": "(b) Các loại vải dệt của nhóm 58.01."
+        },
+        {
+          "nguon": "ct.5208.1",
+          "trich": "loại vải dệt thoi"
+        }
+      ],
+      "quyTac": "QT1"
+    },
+    {
+      "den": "5802",
+      "loai": "LOAI_TRU",
+      "dacDiem": "kết cấu dệt tạo vòng lông hay dệt thoi phẳng",
+      "neu": "Vải khăn lông và các loại vải dệt thoi tạo vòng lông tương tự",
+      "thi": "5802",
+      "conNeu": "loại vải dệt thoi",
+      "thiKia": "5208",
+      "canCu": [
+        {
+          "nguon": "ct.5208.6",
+          "trich": "(c) Vải khăn lông và các loại vải dệt thoi tạo vòng lông tương tự (nhóm 58.02)."
+        },
+        {
+          "nguon": "ct.5208.1",
+          "trich": "loại vải dệt thoi"
+        }
+      ],
+      "quyTac": "QT1"
+    },
+    {
+      "den": "5911",
+      "loai": "LOAI_TRU",
+      "dacDiem": "mục đích phục vụ kỹ thuật hay may mặc nội thất",
+      "neu": "Vải dệt thoi phục vụ cho kỹ thuật của nhóm 59.11",
+      "thi": "5911",
+      "conNeu": "sản xuất để làm quần áo, vải lanh dùng trong gia đình, khăn trải giường, rèm cửa và các mặt hàng nội thất khác...",
+      "thiKia": "5208",
+      "canCu": [
+        {
+          "nguon": "ct.5208.8",
+          "trich": "(e) Vải dệt thoi phục vụ cho kỹ thuật của nhóm 59.11."
+        },
+        {
+          "nguon": "ct.5208.2",
+          "trich": "sản xuất để làm quần áo, vải lanh dùng trong gia đình, khăn trải giường, rèm cửa và các mặt hàng nội thất khác..."
+        }
+      ],
+      "quyTac": "QT1"
+    }
+  ],
+  "khongChac": [
+    "gói văn bản không có đoạn trích chứa từ khóa về cơ chế dệt thoi cho nhóm 5208"
+  ],
+  "chamCheoGhiChu": "[gemma4:31b, máy GPU nhà] Các đặc điểm định danh và các cạnh phân biệt/loại trừ đều khớp chính xác với nội dung đoạn luật trích dẫn. | "
+}
