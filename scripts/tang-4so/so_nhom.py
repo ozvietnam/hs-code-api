@@ -11,6 +11,7 @@ import argparse, collections, gzip, json, os, re, sys, urllib.request, importlib
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 from dieu_khoan import DieuKhoan, bo_dau, SO_LA_MA as SO_LA_MA_P
+from do_thi_cap import DoThiCap
 import agy
 
 ap = argparse.ArgumentParser()
@@ -29,6 +30,7 @@ ap.add_argument("--nao", choices=["agy", "tep"], default="agy", help="agy: gọi
 ap.add_argument("--thu-muc", help="thư mục D cho --nao tep: D/hoi/<ca>-<luot>.txt, D/dap/<ca>-<luot>.json, D/meta/<ca>-<luot>.json")
 ap.add_argument("--gioi-han-kb", type=int, default=60)
 ap.add_argument("--phan-bien", action="store_true", help="lượt kiểm phản biện giả định ẩn trước khi CHOT (mới viết, chưa đo bằng LLM thật)")
+ap.add_argument("--ho-so", choices=["cu", "do-thi"], default="cu", help="cu: khối điều khoản nguyên Chương/Phần (đường cũ); do-thi: chỉ khoản nối giữa các ứng viên + mở rộng ứng viên theo cạnh (scripts/tang-4so/do_thi_cap.py)")
 A = ap.parse_args()
 REPO = A.repo
 P = lambda p: p if os.path.isabs(p) else os.path.join(REPO, p)
@@ -40,6 +42,7 @@ for l in gzip.open(f"{REPO}/data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz", "rt"
     if len(m) >= 4 and (d.get("soChuSo") == 4 or m[:4] not in TEN): TEN[m[:4]] = d.get("moTaVi", "")
 CGN = json.load(open(f"{REPO}/data/chu-giai-heading.json"))
 DK = DieuKhoan(REPO)
+DT = DoThiCap(REPO, ten=TEN) if A.ho_so == "do-thi" else None
 _sp = importlib.util.spec_from_file_location("ttl", os.path.join(HERE, "tim_tong_luc.py"))
 ttl = importlib.util.module_from_spec(_sp); _sp.loader.exec_module(ttl)
 IDX = ttl.ChiMuc(REPO)
@@ -148,14 +151,17 @@ def gom_ung_vien(ca, mo, h, bc):
         for n in maychu:
             if n not in uv and n not in them: them.append(n)
     uv = (uv + them)[: A.toi_da_uv]
+    if DT:  # đi 1 bước theo cạnh LOAI_TRU / phân biệt: nhóm bị sót tự lộ ra; KHÔNG cắt vì độ dài
+        uv, ca["_dt_nguon"] = DT.mo_rong(uv, h)
+        ca["_dt_goc"] = len(uv) - len(ca["_dt_nguon"])
     return uv, tu
 
 # ---------------- hồ sơ từng nhóm ----------------
-def ho_so_nhom(n, tu, cap_cgn=1400):
+def ho_so_nhom(n, tu, cap_cgn=1400, day_du=True):
     st = so_tay(n)
     cgn = CGN.get(n) or {}
     cgn_txt = cgn.get("nhom") if isinstance(cgn, dict) else str(cgn)
-    vao = [f"- {x.get('fact','')} {x.get('op','')} {x.get('value','')} (trích: {str(x.get('trich',''))[:140]})" for x in (st.get("dieuKienVao") or [])[:6] if isinstance(x, dict)]
+    vao = [f"- {x.get('fact','')} {x.get('op','')} {x.get('value','')} (trích: {str(x.get('trich',''))[:140]})" for x in (st.get("dieuKienVao") or [])[:6] if isinstance(x, dict)] if day_du else []
     return (f"### Nhóm {n}: {TEN.get(n,'?')}\n[Chú giải chi tiết {n}] {doan_khop(cgn_txt, tu, cap_cgn)}\n"
             + ("[Sổ tay – điều kiện vào nhóm (trái điều kiện thì LOẠI)]\n" + "\n".join(vao) + "\n" if vao else ""))
 
@@ -172,6 +178,10 @@ def dung_prompt(ca, mo, h, uv, tu, da_loai=None):
     (ưu tiên bỏ nhóm là ứng viên duy nhất của một Chương có khối điều khoản lớn). Trả (prompt, ids, text_all, uv đã dùng, nhóm bị bỏ)."""
     gh = A.gioi_han_kb * 1024 if A.nao == "tep" else GIOI_HAN_BYTE
     uv, bo = list(uv), []
+    if DT:  # hồ sơ đi theo đồ thị: không cắt ứng viên vì độ dài; quá 40 KB thì báo
+        p = _dung_prompt(ca, mo, h, uv, tu, None, 1400, da_loai)
+        if len(p[0].encode()) > 40 * 1024: print(f"BAO: ca {ca.get('ca')} hồ sơ {len(p[0].encode()) // 1024} KB > 40 KB (không cắt)", file=sys.stderr)
+        return (*p, uv, bo)
     while True:
         for cap_cgn in (1400, 900, 500):
             p = _dung_prompt(ca, mo, h, uv, tu, None, cap_cgn, da_loai)
@@ -189,13 +199,23 @@ def _dung_prompt(ca, mo, h, uv, tu, cap_ch, cap_cgn, da_loai=None):
     chuong = sorted({n[:2] for n in uv})
     lq = DK.lien_quan(uv)
     khoi, ids = [], set()
+    if DT:
+        nguon = {n: v for n, v in (ca.get("_dt_nguon") or {}).items() if n in uv}
+        ks = DT.dieu_khoan_tach(uv, h, nguon)
+        ids = {k["id"] for k in ks}
+        khoi = ["=== CÁC KHOẢN LUẬT NỐI GIỮA CÁC NHÓM ỨNG VIÊN (nguyên văn; mỗi khoản kèm cạnh dẫn tới: A->B là khoản của Chương/Phần của A nói tới B; A<->B là cạnh phân biệt/loại trừ giữa A và B) ===\n" + DT.khoi_van_ban(ks)]
+        chuong = []
     for ch in chuong:
         t, i = DK.khoi_chuong(ch, tu, lq); khoi.append(f"=== ĐIỀU KHOẢN CỦA CHƯƠNG {ch} (áp cho nhóm thuộc Chương {ch}) ===\n{t}"); ids |= set(i)
     for gan in sorted({DK._phan_gan(ch) for ch in chuong} - {""}):  # điều khoản Phần: ghi một lần cho mọi Chương của Phần
         cs = [ch for ch in chuong if DK._phan_gan(ch) == gan]
         t, i = DK.khoi_phan(gan, tu, lq); khoi.append(f"=== ĐIỀU KHOẢN CỦA PHẦN {SO_LA_MA_P.get(gan, gan)} (áp cho mọi nhóm thuộc Chương {', '.join(cs)}) ===\n{t}"); ids |= set(i)
     cg2 = DK.cg2_khoi() if any(DK.la_phan_xvi(c) for c in chuong) else ""
-    ho_so = "\n".join(ho_so_nhom(n, tu, cap_cgn) for n in uv)
+    if DT:  # hồ sơ đầy đủ chỉ cho nhóm trọng tâm; nhóm còn lại: tên + chú giải chi tiết gọn, đã có khoản nối ở trên
+        tt = DT.nhom_day_du(uv, h, [n for n in uv if n not in (ca.get("_dt_nguon") or {})])
+        ho_so = "\n".join(ho_so_nhom(n, tu, min(cap_cgn, 1000) if n in tt else 300, n in tt) for n in uv)
+    else:
+        ho_so = "\n".join(ho_so_nhom(n, tu, cap_cgn) for n in uv)
     bc = {k: h.get(k) for k in ("tenDung", "banChat", "dangVatLy", "dungChoViecGi", "coChe", "oDau", "aiDung", "laBoPhanCua", "tenKhac", "canXacNhan") if h.get(k)}
     da_loai_txt = ""
     vang = {n: x for n, x in (da_loai or {}).items() if n not in uv}  # nhóm đã có kết luận ở lượt 1 mà không được mở hồ sơ ở lượt này
@@ -482,4 +502,5 @@ def main():
     if cho: print("CHO DAP:", " ".join(sorted(cho)), "-> ghi đáp vào", A.thu_muc + "/dap/<ca>-<luot>.json rồi chạy lại cùng lệnh")
     if dung.is_set(): sys.exit(3)
 
-main()
+if __name__ == "__main__":
+    main()

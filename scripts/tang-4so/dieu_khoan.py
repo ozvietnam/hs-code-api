@@ -1,7 +1,7 @@
 """Tầng điều khoản: với mỗi nhóm ứng viên gom mọi điều khoản chú giải đang có hiệu lực (Chương chứa nhóm + Phần chứa Chương),
 đã tách ở data/luat/dieu-khoan-tang2.json. Thứ tự: LOAI_TRU -> QUY_TAC_PHAN_LOAI -> DINH_NGHIA_PHAM_VI (-> CHUA_XEP nếu liên quan).
 Chú giải 2 Phần XVI lấy từ data/luat/chu-giai-2-phan-xvi.json."""
-import json, re, unicodedata
+import json, os, re, unicodedata
 
 def bo_dau(s):
     if not isinstance(s, str): s = json.dumps(s, ensure_ascii=False) if s is not None else ""
@@ -14,8 +14,11 @@ SO_LA_MA = {"01": "I", "06": "VI", "16": "IV", "50": "XI", "72": "XV", "84": "XV
 
 
 class DieuKhoan:
-    def __init__(self, repo):
+    def __init__(self, repo, bo_sung=False):
+        """bo_sung=True: nạp thêm data/luat/dieu-khoan-bo-sung.json (Phần mà bản tách tang2 bỏ sót, xem scripts/tang-4so/tach_phan_bo_sung.py). Mặc định tắt để đường cũ không đổi."""
         self.dk = json.load(open(f"{repo}/data/luat/dieu-khoan-tang2.json"))
+        if bo_sung and os.path.exists(f"{repo}/data/luat/dieu-khoan-bo-sung.json"):
+            self.dk = self.dk + json.load(open(f"{repo}/data/luat/dieu-khoan-bo-sung.json"))
         self.theo_id = {x["id"]: x for x in self.dk}
         self.cg2 = json.load(open(f"{repo}/data/luat/chu-giai-2-phan-xvi.json"))
         self.chuong = {}
