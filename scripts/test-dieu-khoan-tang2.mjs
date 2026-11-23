@@ -6,7 +6,7 @@
  *   (c) mọi nguyenVan (bỏ khác biệt khoảng trắng) có nguyên văn trong chu-giai-chuong.json ở đúng chương gan — CẢNH BÁO
  *   (d) mọi mã 4 chữ số trong dich là nhóm có thật (khoá của chu-giai-heading.json) — CẢNH BÁO
  *   (e) LOAI_TRU của cap "chuong", vung "chu_giai" phải có "không bao gồm"/"không áp dụng"/"loại trừ" — CẢNH BÁO
- *   (f) dan/nguyenVan dính đoạn TỔNG QUÁT        — CẢNH BÁO
+ *   (f) dan/nguyenVan dính đoạn TỔNG QUÁT        — ĐỎ nếu còn dính
  * Chạy: node scripts/test-dieu-khoan-tang2.mjs  → in "N ca xanh, M ca đỏ"; exit 1 nếu có đỏ.
  */
 import fs from 'node:fs';
@@ -92,12 +92,16 @@ function canhBao(ten, danhSach) {
   canhBao('(e) LOAI_TRU chương thiếu cụm "không bao gồm/không áp dụng/loại trừ" trong dan', loi);
 }
 
-// (f) dan/nguyenVan dính đoạn TỔNG QUÁT (cảnh báo)
+// (f) Không có điều khoản dính đoạn TỔNG QUÁT của WCO
 {
-  const loi = dieuKhoan
+  const dinhTongQuat = dieuKhoan
     .filter((x) => (x.dan && x.dan.includes('TỔNG QUÁT')) || (x.nguyenVan && x.nguyenVan.includes('TỔNG QUÁT')))
     .map((x) => x.id);
-  canhBao('(f) dan/nguyenVan dính đoạn TỔNG QUÁT', loi);
+  ca(
+    '(f) Không có điều khoản dính đoạn TỔNG QUÁT của WCO',
+    dinhTongQuat.length === 0,
+    `${dinhTongQuat.length} mục: ${dinhTongQuat.slice(0, 10).join(', ')}`,
+  );
 }
 
 console.log(`${xanh} ca xanh, ${do_} ca đỏ`);
