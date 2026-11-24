@@ -1,0 +1,136 @@
+{
+  "nhom": "8508",
+  "khuon": "bd4@1",
+  "nguonLoai": "AI_NHAP",
+  "chamCheo": "DUYET",
+  "taoBoi": {
+    "provider": "google-studio",
+    "model": "gemini-4-hydrogen",
+    "goi": "df72d2d8d800"
+  },
+  "kieuNhom": "THEO_CHUC_NANG",
+  "hoSo": {
+    "chucNang": [
+      {
+        "y": "hút các vật liệu, bao gồm cả bụi bẩn",
+        "trich": "hút các vật liệu, bao gồm cả bụi bẩn",
+        "nguon": "ct.8508.2"
+      },
+      {
+        "y": "lọc luồng không khí",
+        "trich": "lọc luồng không khí",
+        "nguon": "ct.8508.2"
+      }
+    ],
+    "coChe": [
+      {
+        "y": "tua bin gắn trên trục quay mô tơ",
+        "trich": "thực hiện bởi một tua bin cố định trực tiếp trên trục quay mô tơ, quay ở tốc độ cao",
+        "nguon": "ct.8508.2"
+      }
+    ],
+    "dangVatLy": [
+      {
+        "y": "loại cầm tay hoặc loại khác",
+        "trich": "máy hút bụi các loại, dù có hay không là loại cầm tay, bao gồm cả máy hút bụi loại khô và ướt",
+        "nguon": "ct.8508.1"
+      },
+      {
+        "y": "bộ phận của máy hút bụi",
+        "trich": "bộ phận của các máy nhóm này",
+        "nguon": "ct.8508.8"
+      }
+    ],
+    "chatLieu": [],
+    "oDauAiDung": [
+      {
+        "y": "dùng cho ngựa hoặc gia súc khác",
+        "trich": "dùng cho ngựa hoặc gia súc khác",
+        "nguon": "ct.8508.4"
+      }
+    ],
+    "hangDuocNeu": [
+      {
+        "ten": "máy hút bụi loại khô và ướt",
+        "trich": "máy hút bụi loại khô và ướt",
+        "nguon": "ct.8508.1"
+      },
+      {
+        "ten": "máy hút bụi loại để chải lông",
+        "trich": "máy hút bụi loại để chải lông dùng cho ngựa hoặc gia súc khác",
+        "nguon": "ct.8508.4"
+      }
+    ],
+    "dieuKienBatBuoc": []
+  },
+  "canh": [
+    {
+      "den": "8451",
+      "loai": "LOAI_TRU",
+      "dacDiem": "sự kết hợp máy hút bụi khô hay ướt khi làm sạch thảm",
+      "neu": "phun chất lỏng làm sạch rồi hút ra mà không kết hợp máy hút bụi khô hay ướt",
+      "thi": "8451",
+      "conNeu": "máy hút bụi khô và ướt thông thường",
+      "thiKia": "8508",
+      "canCu": [
+        {
+          "nguon": "ct.8508.5",
+          "trich": "các thiết bị làm sạch thảm bằng cách phun chất lỏng làm sạch lên trên mặt thảm, dung dịch làm sạch sau đó được hút ra mà không có sự kết hợp máy hút bụi khô hay ướt (nhóm 84.51 hoặc 85.09)"
+        }
+      ],
+      "quyTac": "QT1"
+    },
+    {
+      "den": "8509",
+      "loai": "LOAI_TRU",
+      "dacDiem": "chức năng hút bụi độc lập hay làm sạch thảm không kết hợp máy hút bụi",
+      "neu": "thiết bị làm sạch thảm hút dung dịch ra mà không có sự kết hợp máy hút bụi khô hay ướt",
+      "thi": "8509",
+      "conNeu": "máy hút bụi",
+      "thiKia": "8508",
+      "canCu": [
+        {
+          "nguon": "ct.8508.5",
+          "trich": "dung dịch làm sạch sau đó được hút ra mà không có sự kết hợp máy hút bụi khô hay ướt (nhóm 84.51 hoặc 85.09)"
+        }
+      ],
+      "quyTac": "QT1"
+    },
+    {
+      "den": "9018",
+      "loai": "LOAI_TRU",
+      "dacDiem": "lĩnh vực sử dụng thiết bị hút chân không",
+      "neu": "sử dụng trong y tế, phẫu thuật, nha khoa hoặc thú y",
+      "thi": "9018",
+      "conNeu": "hút bụi làm sạch thông thường",
+      "thiKia": "8508",
+      "canCu": [
+        {
+          "nguon": "chuong:85:chu_giai:1d",
+          "trich": "Thiết bị hút chân không sử dụng trong lĩnh vực y tế, phẫu thuật, nha khoa hoặc thú y (nhóm 90.18)"
+        }
+      ],
+      "quyTac": "QT1"
+    },
+    {
+      "den": "8479",
+      "loai": "PHAN_BIET",
+      "dacDiem": "được chi tiết riêng ở Chương 85 hay là máy có chức năng riêng biệt ở Chương 84",
+      "neu": "máy hút bụi đã được chi tiết ở Chương 85",
+      "thi": "8508",
+      "conNeu": "máy có chức năng riêng biệt chưa được chi tiết thuộc Chương 84",
+      "thiKia": "8479",
+      "canCu": [
+        {
+          "nguon": "chuong:84:chu_giai:1e",
+          "trich": "Máy hút bụi thuộc nhóm 85.08;"
+        }
+      ],
+      "quyTac": "QT1"
+    }
+  ],
+  "khongChac": [
+    "chú giải chi tiết không đặt điều kiện bắt buộc cụ thể về thông số kỹ thuật để phân loại vào nhóm"
+  ],
+  "chamCheoGhiChu": "[gemma4:31b, máy GPU nhà] Bản đồ soạn chính xác, đối chiếu khớp với chú giải chương 84, 85 và chú giải chi tiết nhóm 8508. | "
+}
