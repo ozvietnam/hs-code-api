@@ -283,5 +283,83 @@ const that = chayCaDoiChungVatLieu(['8546', '8547']);
     { pbNguoc8421, pbNguoc7304 });
 }
 
+// ── J. OZV-2154 — ca 174 tầng 4 số: Bộ dao gọt bằng thép → cạnh loại trừ 2 chiều 82.11 ↔ 82.15 ──
+{
+  const { sourcesFor, checkItem } = require('../lib/so-tay.js');
+  const H = require('../lib/hoi-theo-so-tay.js');
+  const { soTayGates, nhomLienQuanSoTay } = require('../lib/so-tay-gates.js');
+  const D = require('../lib/do-thi/index.js');
+  const { phanTichHoiTruoc4So, TRANG_THAI_4SO } = require('../lib/do-thi/hoi-truoc-4so.js');
+  const st8211 = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'so-tay', '8211.json'), 'utf8'));
+  const st8215 = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'so-tay', '8215.json'), 'utf8'));
+  const muc8211 = (st8211.loaiTru || []).find((x) => x.sangNhom === '8215' && /bộ dao gọt/i.test(x.dieuKien || ''));
+  const muc8215 = (st8215.loaiTru || []).find((x) => x.sangNhom === '8211' && /bộ dao gọt/i.test(x.dieuKien || ''));
+  const ds8211To8215 = (st8211.loaiTru || []).filter((x) => x.sangNhom === '8215');
+  check('J1 OZV-2154: sổ tay 8211↔8215 có loaiTru 2 chiều + canCuLoaiTru nguyên văn (checkItem đạt)',
+    Boolean(muc8211 && muc8215)
+    && ds8211To8215.length >= 1
+    && ds8211To8215.every((m) => m.canCuLoaiTru?.nguon === 'nhom8215.nhom' && checkItem('loaiTru', m, sourcesFor('8211'), '8211') === null)
+    && muc8211.nguon === 'nhom8211.nhom'
+    && muc8211.canCuLoaiTru?.nguon === 'nhom8215.nhom'
+    && muc8215.nguon === 'nhom8215.nhom'
+    && muc8215.canCuLoaiTru?.nguon === 'nhom8211.nhom'
+    && checkItem('loaiTru', muc8211, sourcesFor('8211'), '8211') === null
+    && checkItem('loaiTru', muc8215, sourcesFor('8215'), '8215') === null,
+    { muc8211: Boolean(muc8211), muc8215: Boolean(muc8215),
+      err8211: muc8211 ? checkItem('loaiTru', muc8211, sourcesFor('8211'), '8211') : null,
+      err8215: muc8215 ? checkItem('loaiTru', muc8215, sourcesFor('8215'), '8215') : null });
+  check('J2 OZV-2154: dieuKien hai chiều 8211↔8215 tách biệt cho hoi-truoc-4so',
+    Boolean(muc8211 && muc8215)
+    && muc8211.dieuKien !== muc8215.dieuKien
+    && !/;/.test(muc8211.dieuKien)
+    && !/;/.test(muc8215.dieuKien),
+    { dk8211: muc8211?.dieuKien, dk8215: muc8215?.dieuKien });
+
+  const moTa174 = 'Bộ dao gọt / thép / None';
+  const c5_8211 = D.canhTu('8211', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8215');
+  const c5_8215 = D.canhTu('8215', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8211');
+  const giua = D.canhGiuaNhomConSong(['8211', '8215']).filter((e) => e.loai === 'C5' || e.loai === 'C6');
+  const mr8211 = D.moRongUngVien(['8211'], moTa174);
+  const mr8215 = D.moRongUngVien(['8215'], moTa174);
+  check('J3 OZV-2154: đồ thị C5/C6 + canhGiuaNhomConSong + moRongUngVien + nhomLienQuanSoTay nối 2 chiều 8211↔8215',
+    c5_8211.length >= 1
+    && c5_8215.length >= 1
+    && giua.length >= 2
+    && mr8211.some((x) => x.nhom === '8215')
+    && mr8215.some((x) => x.nhom === '8211')
+    && nhomLienQuanSoTay('8211').includes('8215')
+    && nhomLienQuanSoTay('8215').includes('8211'),
+    { c5_8211: c5_8211.length, c5_8215: c5_8215.length, giua: giua.length });
+
+  const pb8211 = H.cauPhanBietNhom('8211', ['8211', '8215'], moTa174);
+  const pb8215 = H.cauPhanBietNhom('8215', ['8215', '8211'], moTa174);
+  const g8211 = soTayGates({ hs: '82111000', productText: moTa174, productName: 'Bộ dao gọt', candidateHeadings: ['8211', '8215'] });
+  const g8215 = soTayGates({ hs: '82152000', productText: moTa174, productName: 'Bộ dao gọt', candidateHeadings: ['8215', '8211'] });
+  const ht174 = phanTichHoiTruoc4So({ moTa: moTa174, ungVien: ['8211', '8215'] });
+  check('J4 OZV-2154 (thuận): cauPhanBietNhom, soTayGates và phanTichHoiTruoc4So hoạt động đúng 2 chiều cho ca 174',
+    pb8211.length === 1 && pb8211[0].nguon === 'nhom8211.nhom' && /82\.15/.test(pb8211[0].questionVi)
+    && pb8215.length === 1 && pb8215[0].nguon === 'nhom8215.nhom' && /82\.11/.test(pb8215[0].questionVi)
+    && (g8211.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '8215')
+    && (g8215.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '8211')
+    && ht174.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC
+    && new Set((ht174.nhanh || []).map((n) => n.dieuKien)).size === 2,
+    { pb8211, pb8215, ht174: ht174.dapAnDieuKien });
+
+  const moTaAm8211 = 'Lưỡi cắt rời có răng cưa dùng trong nông nghiệp';
+  const moTaAm8215 = 'Muôi múc canh và thìa hớt bọt bằng thép không gỉ';
+  const pbNguoc8211 = H.cauPhanBietNhom('8211', ['8211', '8215'], moTaAm8211);
+  const pbNguoc8215 = H.cauPhanBietNhom('8215', ['8215', '8211'], moTaAm8215);
+  const gNguoc8211 = soTayGates({ hs: '82119410', productText: moTaAm8211, productName: moTaAm8211 });
+  const gNguoc8215 = soTayGates({ hs: '82159900', productText: moTaAm8215, productName: moTaAm8215 });
+  check('J5 OZV-2154 (đối chứng): lưỡi cắt nông nghiệp / muôi múc canh không hỏi oan, không kéo oan và không bật oan 82.11↔82.15',
+    pbNguoc8211.length === 0
+    && pbNguoc8215.length === 0
+    && !D.moRongUngVien(['8211'], moTaAm8211).some((x) => x.nhom === '8215')
+    && !D.moRongUngVien(['8215'], moTaAm8215).some((x) => x.nhom === '8211')
+    && !(gNguoc8211.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '8215')
+    && !(gNguoc8215.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '8211'),
+    { pbNguoc8211, pbNguoc8215 });
+}
+
 console.log(`\ncổng đối chứng vật liệu 8546+8547 (OZV-548 vòng ba): ${passed} PASS, ${failed} FAIL`);
 process.exit(failed ? 1 : 0);
