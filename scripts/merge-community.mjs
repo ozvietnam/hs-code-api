@@ -419,7 +419,10 @@ function mergeMicProduct(doc, rec, fileRel, statsObj) {
 
 const files = listFiles(communityDir);
 for (const full of files) {
-  const fileRel = relative(communityDir, full);
+  // `relative()` nhả dấu `\` trên Windows, mà chuỗi này được ghi NGUYÊN VĂN vào `sourceFile`
+  // trong kho (`community:<đường dẫn>`) ⇒ hai hệ điều hành cho hai kho khác nhau. Chuẩn hoá `/`,
+  // POSIX không đổi vì `sep` đã là `/`.
+  const fileRel = relative(communityDir, full).split(sep).join('/');
   if (isExample(full) && !INCLUDE_EXAMPLES) {
     stats.skippedExample += 1;
     appendLog({ action: 'skip-example', file: fileRel });
