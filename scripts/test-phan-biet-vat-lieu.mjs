@@ -146,5 +146,90 @@ for (const c of fixture.ca) {
   );
 }
 
+// OZV-2113 — Cạnh loại trừ 2 chiều 85.26 <-> 85.37 cho ca 125 tầng 4 số
+// "Bộ điều khiển đóng mở / nhựa / điều khiển khóa cửa ô tô"
+{
+  const S = require('../lib/so-tay.js');
+  const { loadSoTay } = require('../lib/so-tay-gates.js');
+  const { cauPhanBietNhom } = require('../lib/hoi-theo-so-tay.js');
+  const D = require('../lib/do-thi/index.js');
+  const q125 = 'Bộ điều khiển đóng mở / nhựa / điều khiển khóa cửa ô tô';
+
+  const st8526 = loadSoTay('8526');
+  const st8537 = loadSoTay('8537');
+  const lt8526 = (st8526?.loaiTru || []).find((x) => x.sangNhom === '8537');
+  const lt8537 = (st8537?.loaiTru || []).find((x) => x.sangNhom === '8526');
+  check(
+    '[OZV-2113 căn cứ] sổ tay 8526 và 8537 có mục loaiTru 2 chiều 8526 <-> 8537 kèm canCuLoaiTru nguyên văn đạt checkItem',
+    Boolean(
+      lt8526 &&
+        lt8526.canCuLoaiTru?.nguon === 'nhom8537.nhom' &&
+        S.checkItem('loaiTru', lt8526, S.sourcesFor('8526'), '8526') === null
+    ) &&
+      Boolean(
+        lt8537 &&
+          lt8537.canCuLoaiTru?.nguon === 'nhom8526.nhom' &&
+          S.checkItem('loaiTru', lt8537, S.sourcesFor('8537'), '8537') === null
+      ),
+    { lt8526, lt8537 }
+  );
+
+  const c5Tu8526 = D.canhTu('8526', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8537');
+  const c5Tu8537 = D.canhTu('8537', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8526');
+  const mrTu8526 = D.moRongUngVien(['8526'], q125);
+  const mrTu8537 = D.moRongUngVien(['8537'], q125);
+  check(
+    '[OZV-2113 đồ thị 2 chiều] bảng cạnh có C5 8526->8537 & 8537->8526 và moRongUngVien kéo 2 chiều cho ca 125',
+    c5Tu8526.length >= 1 &&
+      c5Tu8537.length >= 1 &&
+      mrTu8526.some((x) => x.nhom === '8537') &&
+      mrTu8537.some((x) => x.nhom === '8526'),
+    { c5Tu8526: c5Tu8526.length, c5Tu8537: c5Tu8537.length, mrTu8526, mrTu8537 }
+  );
+
+  const pb8526 = cauPhanBietNhom('8526', ['8526', '8537'], q125);
+  check(
+    '[OZV-2113 thuận 8526->8537] 8526 đứng đầu với [8526, 8537] sinh câu phân biệt từ nhom8526.nhom trỏ sang 85.37',
+    pb8526.length === 1 &&
+      pb8526[0].loai === 'PHAN_BIET_NHOM' &&
+      pb8526[0].canCu === 'so-tay' &&
+      pb8526[0].nguon === 'nhom8526.nhom' &&
+      /85\.37/.test(pb8526[0].questionVi) &&
+      /85\.26/.test(pb8526[0].questionVi),
+    { pb8526 }
+  );
+
+  const pb8537 = cauPhanBietNhom('8537', ['8537', '8526'], q125);
+  check(
+    '[OZV-2113 thuận 8537->8526] 8537 đứng đầu với [8537, 8526] sinh câu phân biệt từ nhom8537.nhom trỏ sang 85.26',
+    pb8537.length === 1 &&
+      pb8537[0].loai === 'PHAN_BIET_NHOM' &&
+      pb8537[0].canCu === 'so-tay' &&
+      pb8537[0].nguon === 'nhom8537.nhom' &&
+      /85\.26/.test(pb8537[0].questionVi) &&
+      /85\.37/.test(pb8537[0].questionVi),
+    { pb8537 }
+  );
+
+  const dcRadar8526 = cauPhanBietNhom('8526', ['8526', '8537'], 'Ra đa hàng hải dùng cho tàu thuyền đi biển');
+  const dcRadar8537 = cauPhanBietNhom('8537', ['8537', '8526'], 'Ra đa hàng hải dùng cho tàu thuyền đi biển');
+  const dcTuDien8526 = cauPhanBietNhom('8526', ['8526', '8537'], 'Tủ bảng điện phân phối hạ thế lắp cầu chì');
+  const dcTuDien8537 = cauPhanBietNhom('8537', ['8537', '8526'], 'Tủ bảng điện phân phối hạ thế lắp cầu chì');
+  const dcPlc8526 = cauPhanBietNhom('8526', ['8526', '8537'], 'Bộ điều khiển logic có khả năng lập trình PLC cho máy công cụ');
+  const dcPlc8537 = cauPhanBietNhom('8537', ['8537', '8526'], 'Bộ điều khiển logic có khả năng lập trình PLC cho máy công cụ');
+  check(
+    '[OZV-2113 đối chứng] ra đa hàng hải, tủ bảng điện phân phối và bộ điều khiển PLC không hỏi oan 85.26 <-> 85.37',
+    dcRadar8526.length === 0 &&
+      dcRadar8537.length === 0 &&
+      dcTuDien8526.length === 0 &&
+      dcTuDien8537.length === 0 &&
+      dcPlc8526.length === 0 &&
+      dcPlc8537.length === 0 &&
+      !D.moRongUngVien(['8526'], 'Ra đa hàng hải dùng cho tàu thuyền đi biển').some((x) => x.nhom === '8537') &&
+      !D.moRongUngVien(['8537'], 'Bộ điều khiển logic có khả năng lập trình PLC cho máy công cụ').some((x) => x.nhom === '8526'),
+    { dcRadar8526, dcRadar8537, dcTuDien8526, dcTuDien8537, dcPlc8526, dcPlc8537 }
+  );
+}
+
 console.log(`\nphân biệt vật liệu ở tầng tiêu đề 6 số (OZV-558): ${passed} PASS, ${failed} FAIL`);
 process.exit(failed ? 1 : 0);
