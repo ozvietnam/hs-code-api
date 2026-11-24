@@ -231,5 +231,90 @@ for (const c of fixture.ca) {
   );
 }
 
+// OZV-2127 — Cạnh loại trừ 2 chiều 69.13 <-> 69.14 cho ca 143 tầng 4 số
+// "Kệ trưng bày / Sứ / Trang trí không gian, trưng bày sản phẩm"
+{
+  const S = require('../lib/so-tay.js');
+  const { loadSoTay } = require('../lib/so-tay-gates.js');
+  const { cauPhanBietNhom } = require('../lib/hoi-theo-so-tay.js');
+  const D = require('../lib/do-thi/index.js');
+  const q143 = 'Kệ trưng bày / Sứ / Trang trí không gian, trưng bày sản phẩm';
+
+  const st6913 = loadSoTay('6913');
+  const st6914 = loadSoTay('6914');
+  const lt6913 = (st6913?.loaiTru || []).find((x) => x.sangNhom === '6914');
+  const lt6914 = (st6914?.loaiTru || []).find((x) => x.sangNhom === '6913');
+  check(
+    '[OZV-2127 căn cứ] sổ tay 6913 và 6914 có mục loaiTru 2 chiều 6913 <-> 6914 kèm canCuLoaiTru nguyên văn đạt checkItem',
+    Boolean(
+      lt6913 &&
+        lt6913.canCuLoaiTru?.nguon === 'nhom6914.nhom' &&
+        S.checkItem('loaiTru', lt6913, S.sourcesFor('6913'), '6913') === null
+    ) &&
+      Boolean(
+        lt6914 &&
+          lt6914.canCuLoaiTru?.nguon === 'nhom6913.nhom' &&
+          S.checkItem('loaiTru', lt6914, S.sourcesFor('6914'), '6914') === null
+      ),
+    { lt6913, lt6914 }
+  );
+
+  const c5Tu6913 = D.canhTu('6913', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '6914');
+  const c5Tu6914 = D.canhTu('6914', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '6913');
+  const mrTu6913 = D.moRongUngVien(['6913'], q143);
+  const mrTu6914 = D.moRongUngVien(['6914'], q143);
+  check(
+    '[OZV-2127 đồ thị 2 chiều] bảng cạnh có C5 6913->6914 & 6914->6913 và moRongUngVien kéo 2 chiều cho ca 143',
+    c5Tu6913.length >= 1 &&
+      c5Tu6914.length >= 1 &&
+      mrTu6913.some((x) => x.nhom === '6914') &&
+      mrTu6914.some((x) => x.nhom === '6913'),
+    { c5Tu6913: c5Tu6913.length, c5Tu6914: c5Tu6914.length, mrTu6913, mrTu6914 }
+  );
+
+  const pb6913 = cauPhanBietNhom('6913', ['6913', '6914'], q143);
+  check(
+    '[OZV-2127 thuận 6913->6914] 6913 đứng đầu với [6913, 6914] sinh câu phân biệt từ nhom6913.nhom trỏ sang 69.14',
+    pb6913.length === 1 &&
+      pb6913[0].loai === 'PHAN_BIET_NHOM' &&
+      pb6913[0].canCu === 'so-tay' &&
+      pb6913[0].nguon === 'nhom6913.nhom' &&
+      /69\.14/.test(pb6913[0].questionVi) &&
+      /69\.13/.test(pb6913[0].questionVi),
+    { pb6913 }
+  );
+
+  const pb6914 = cauPhanBietNhom('6914', ['6914', '6913'], q143);
+  check(
+    '[OZV-2127 thuận 6914->6913] 6914 đứng đầu với [6914, 6913] sinh câu phân biệt từ nhom6914.nhom trỏ sang 69.13',
+    pb6914.length === 1 &&
+      pb6914[0].loai === 'PHAN_BIET_NHOM' &&
+      pb6914[0].canCu === 'so-tay' &&
+      pb6914[0].nguon === 'nhom6914.nhom' &&
+      /69\.13/.test(pb6914[0].questionVi) &&
+      /69\.14/.test(pb6914[0].questionVi),
+    { pb6914 }
+  );
+
+  const dcNum6913 = cauPhanBietNhom('6913', ['6913', '6914'], 'Núm cửa bằng gốm sứ');
+  const dcNum6914 = cauPhanBietNhom('6914', ['6914', '6913'], 'Núm cửa bằng gốm sứ');
+  const dcRang6913 = cauPhanBietNhom('6913', ['6913', '6914'], 'Răng giả bằng sứ');
+  const dcRang6914 = cauPhanBietNhom('6914', ['6914', '6913'], 'Răng giả bằng sứ');
+  const dcLo6913 = cauPhanBietNhom('6913', ['6913', '6914'], 'Lò sưởi bằng gốm');
+  const dcLo6914 = cauPhanBietNhom('6914', ['6914', '6913'], 'Lò sưởi bằng gốm');
+  check(
+    '[OZV-2127 đối chứng] núm cửa gốm sứ, răng giả sứ và lò sưởi gốm không hỏi oan 69.13 <-> 69.14',
+    dcNum6913.length === 0 &&
+      dcNum6914.length === 0 &&
+      dcRang6913.length === 0 &&
+      dcRang6914.length === 0 &&
+      dcLo6913.length === 0 &&
+      dcLo6914.length === 0 &&
+      !D.moRongUngVien(['6913'], 'Núm cửa bằng gốm sứ').some((x) => x.nhom === '6914') &&
+      !D.moRongUngVien(['6914'], 'Răng giả bằng sứ').some((x) => x.nhom === '6913'),
+    { dcNum6913, dcNum6914, dcRang6913, dcRang6914, dcLo6913, dcLo6914 }
+  );
+}
+
 console.log(`\nphân biệt vật liệu ở tầng tiêu đề 6 số (OZV-558): ${passed} PASS, ${failed} FAIL`);
 process.exit(failed ? 1 : 0);
