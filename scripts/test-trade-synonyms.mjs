@@ -144,6 +144,9 @@ console.log('\n== Câu hỏi thật của khách phải ra đúng mã (kho Oz kh
     ['túi sưởi điện gia dụng', ['63011000']],
     // OZV-2068 — bóng đèn led 9w: dẫn về 8539.52 (85395210 / 85395290), loại 85391010 / 8540 / 7011
     ['bóng đèn led 9w', ['85395210', '85395290']],
+    // OZV-2071 — thực địa 24h top 1: model AR3000-03 / AR3000 / AR4000-04 → 84812011 / 84812090
+    ['ar3000-03', ['84812011', '84812090']],
+    ['bộ lọc điều áp khí nén, model ar3000-03', ['84812011', '84812090']],
   ];
   for (const [q, want] of cases) {
     const top2 = searchCandidates(q, { topCandidates: 2 }).map((c) => c.hsCode);
@@ -1159,6 +1162,80 @@ console.log('\n== Ứng viên cấp nhóm: cộng điểm cho lá khớp lời v
       'OZV-2068 search "bóng đèn led 9w" không còn 85391010 / 8540* / 7011*',
       r.every((c) => c.hsCode !== '85391010' && !c.hsCode.startsWith('8540') && !c.hsCode.startsWith('7011')),
       r.map((c) => c.hsCode).join(','),
+    );
+  }
+}
+
+// OZV-2071 — mở rộng dieu-ap-khi-nen-ar nhận diện ar3000-03 / ar3000 / ar4000 (top 1 câu hỏi khách 24h)
+{
+  for (const q of [
+    'ar3000-03',
+    'AR3000-03',
+    'ar3000',
+    'ar4000-04',
+    'ar1500',
+    'ar2000-01',
+    'ar2500',
+    'ar3000-02',
+    'ar4000',
+    'ar4000-03',
+    'ar5000',
+    'airtac ar3000',
+    'airtac ar3000-03',
+    'zonye ar3000',
+    'zonye ar3000-03',
+    'bộ lọc điều áp khí nén, model ar3000-03',
+  ]) {
+    check(
+      `OZV-2071 «${q}» khớp mục dieu-ap-khi-nen-ar`,
+      lookupTradeTerms(q).matches.some((m) => m.entryId === 'dieu-ap-khi-nen-ar'),
+    );
+  }
+  {
+    const r = searchCandidates('ar3000-03', { topCandidates: 5 });
+    const topHs = r.map((c) => c.hsCode);
+    check(
+      'OZV-2071 searchCandidates("ar3000-03") có 84812011 / 84812090 ở top đầu (top1 = 84812011)',
+      topHs[0] === '84812011',
+      `nhận ${topHs.join(',') || '[]'}`,
+    );
+    const m = lookupTradeTerms('ar3000-03').matches.find((x) => x.entryId === 'dieu-ap-khi-nen-ar');
+    const cands = (m?.candidates || []).map((c) => c.hsCode || c.hs);
+    check(
+      'OZV-2071 lookupTradeTerms("ar3000-03") có đủ ứng viên 84812011 và 84812090',
+      cands.includes('84812011') && cands.includes('84812090'),
+      `nhận ${cands.join(',')}`,
+    );
+    check(
+      'OZV-2071 dieu-ap-khi-nen-ar KHÔNG bật chotSom (còn phụ thuộc chất liệu thân van)',
+      m?.chotSom === false,
+    );
+  }
+  {
+    const hit = lookupTradeTerms('bộ lọc khí nén model ar3000-03');
+    check(
+      'OZV-2071 «bộ lọc khí nén model ar3000-03» khớp dieu-ap-khi-nen-ar',
+      (hit.matches || []).some((m) => m.entryId === 'dieu-ap-khi-nen-ar'),
+    );
+    check(
+      'OZV-2071 «bộ lọc khí nén model ar3000-03» tắt bo-loc-khi-nen-af-frl (excluded)',
+      !(hit.matches || []).some((m) => m.entryId === 'bo-loc-khi-nen-af-frl')
+        && (hit.excluded || []).some((e) => e.entryId === 'bo-loc-khi-nen-af-frl'),
+    );
+  }
+  for (const q of [
+    'af3000',
+    'afr3000',
+    'af4000',
+    'afr4000',
+    'điều áp khí nén af3000',
+    'điều áp khí nén afr3000',
+    'máy lọc không khí phòng ngủ',
+    'máy lọc không khí phòng ngủ ar3000',
+  ]) {
+    check(
+      `OZV-2071 đối chứng «${q}» không kích hoạt dieu-ap-khi-nen-ar`,
+      !(lookupTradeTerms(q).matches || []).some((m) => m.entryId === 'dieu-ap-khi-nen-ar'),
     );
   }
 }
