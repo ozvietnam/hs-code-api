@@ -489,5 +489,166 @@ assert('"mũ giày bằng vải lưới, đế EVA" → không hỏi upper/sole'
   );
 }
 
+// ───────────── OZV-2151: cạnh loại trừ 2 chiều 85.12 <-> 85.36 cho ca 169 ─────────────
+// "Bộ chống trộm xe máy điện / None / Kết nối còi và đèn xi nhan phát tín hiệu cảnh báo" (nhomNhan: ["8512"], heNhom: "8536").
+{
+  const S2151 = require('../lib/so-tay.js');
+  const { loadSoTay: loadSoTay2151, soTayGates: soTayGates2151, nhomLienQuanSoTay: nhomLienQuan2151 } = require('../lib/so-tay-gates.js');
+  const { cauPhanBietNhom: cauPhanBiet2151 } = require('../lib/hoi-theo-so-tay.js');
+  const D2151 = require('../lib/do-thi/index.js');
+  const { phanTichHoiTruoc4So: hoiTruoc2151, TRANG_THAI_4SO: TT2151 } = require('../lib/do-thi/hoi-truoc-4so.js');
+  const ROOT2151 = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+
+  fs.mkdirSync(path.join(TEST_DATA_DIR, 'so-tay'), { recursive: true });
+  for (const nh of ['8512', '8536']) {
+    fs.copyFileSync(path.join(ROOT2151, 'data', 'so-tay', `${nh}.json`), path.join(TEST_DATA_DIR, 'so-tay', `${nh}.json`));
+  }
+  D2151.datLai();
+
+  const moTaCa169 = 'Bộ chống trộm xe máy điện / None / Kết nối còi và đèn xi nhan phát tín hiệu cảnh báo';
+
+  const s8512 = JSON.parse(fs.readFileSync(path.join(ROOT2151, 'data', 'so-tay', '8512.json'), 'utf8'));
+  const s8536 = JSON.parse(fs.readFileSync(path.join(ROOT2151, 'data', 'so-tay', '8536.json'), 'utf8'));
+  const v8512 = S2151.verifySoTay(s8512, '8512');
+  const v8536 = S2151.verifySoTay(s8536, '8536');
+  assert(
+    '[OZV-2151 verifySoTay] sổ tay 8512 và 8536 đạt 100% (0 mục bị loại)',
+    v8512.loai.length === 0 && v8536.loai.length === 0,
+    { loai8512: v8512.loai, loai8536: v8536.loai }
+  );
+
+  const st8512 = loadSoTay2151('8512');
+  const st8536 = loadSoTay2151('8536');
+  const lt8512 = (st8512?.loaiTru || []).find((x) => x.sangNhom === '8536');
+  const lt8536 = (st8536?.loaiTru || []).find((x) => x.sangNhom === '8512');
+  assert(
+    '[OZV-2151 căn cứ] sổ tay 8512 và 8536 có mục loaiTru 2 chiều 8512 <-> 8536 kèm canCuLoaiTru nguyên văn từ nhom8512.nhom/nhom8536.nhom đạt checkItem',
+    Boolean(
+      lt8512 &&
+        lt8512.nguon === 'nhom8512.nhom' &&
+        lt8512.canCuLoaiTru?.nguon === 'nhom8536.nhom' &&
+        !String(lt8512.dieuKien || '').includes(';') &&
+        S2151.checkItem('loaiTru', lt8512, S2151.sourcesFor('8512'), '8512') === null
+    ) &&
+      Boolean(
+        lt8536 &&
+          lt8536.nguon === 'nhom8536.nhom' &&
+          lt8536.canCuLoaiTru?.nguon === 'nhom8512.nhom' &&
+          !String(lt8536.dieuKien || '').includes(';') &&
+          lt8536.dieuKien !== lt8512.dieuKien &&
+          S2151.checkItem('loaiTru', lt8536, S2151.sourcesFor('8536'), '8536') === null
+      ),
+    { lt8512, lt8536 }
+  );
+
+  const c5Tu8512 = D2151.canhTu('8512', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8536');
+  const c5Tu8536 = D2151.canhTu('8536', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8512');
+  const c6Tu8512 = D2151.canhTu('8512', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '8536');
+  const c6Tu8536 = D2151.canhTu('8536', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '8512');
+  const giua8512_8536 = D2151.canhGiuaNhomConSong(['8512', '8536']).filter((e) => e.loai === 'C5' || e.loai === 'C6');
+  const mrTu8512 = D2151.moRongUngVien(['8512'], moTaCa169, { toiDa: 10 });
+  const mrTu8536 = D2151.moRongUngVien(['8536'], moTaCa169, { toiDa: 10 });
+  assert(
+    '[OZV-2151 đồ thị 2 chiều] bảng cạnh có C5/C6 8512<->8536, canhGiuaNhomConSong >= 2 và moRongUngVien kéo 2 chiều cho ca 169',
+    c5Tu8512.some((e) => e.nguon === 'nhom8512.nhom' && e.canCuLoaiTru?.nguon === 'nhom8536.nhom') &&
+      c5Tu8536.some((e) => e.nguon === 'nhom8536.nhom' && e.canCuLoaiTru?.nguon === 'nhom8512.nhom') &&
+      c6Tu8512.length >= 1 &&
+      c6Tu8536.length >= 1 &&
+      giua8512_8536.length >= 2 &&
+      mrTu8512.some((x) => x.nhom === '8536') &&
+      mrTu8536.some((x) => x.nhom === '8512'),
+    { c5Tu8512: c5Tu8512.length, c5Tu8536: c5Tu8536.length, giua: giua8512_8536.length, mrTu8512, mrTu8536 }
+  );
+
+  assert(
+    '[OZV-2151 nhomLienQuanSoTay] liên kết hai chiều 8512 <-> 8536',
+    nhomLienQuan2151('8512').includes('8536') && nhomLienQuan2151('8536').includes('8512'),
+    { rel8512: nhomLienQuan2151('8512'), rel8536: nhomLienQuan2151('8536') }
+  );
+
+  const pb8512 = cauPhanBiet2151('8512', ['8512', '8536'], moTaCa169);
+  assert(
+    '[OZV-2151 thuận 8512->8536] 8512 đứng đầu với [8512, 8536] sinh câu phân biệt từ nhom8512.nhom trỏ sang 85.36',
+    pb8512.length === 1 &&
+      pb8512[0].loai === 'PHAN_BIET_NHOM' &&
+      pb8512[0].canCu === 'so-tay' &&
+      pb8512[0].nguon === 'nhom8512.nhom' &&
+      /85\.36/.test(pb8512[0].questionVi) &&
+      /85\.12/.test(pb8512[0].questionVi),
+    { pb8512 }
+  );
+
+  const pb8536 = cauPhanBiet2151('8536', ['8536', '8512'], moTaCa169);
+  assert(
+    '[OZV-2151 thuận 8536->8512] 8536 đứng đầu với [8536, 8512] sinh câu phân biệt từ nhom8536.nhom trỏ sang 85.12',
+    pb8536.length === 1 &&
+      pb8536[0].loai === 'PHAN_BIET_NHOM' &&
+      pb8536[0].canCu === 'so-tay' &&
+      pb8536[0].nguon === 'nhom8536.nhom' &&
+      /85\.12/.test(pb8536[0].questionVi) &&
+      /85\.36/.test(pb8536[0].questionVi),
+    { pb8536 }
+  );
+
+  const g8512To8536 = soTayGates2151({
+    hs: '85123099',
+    productText: 'Bộ chống trộm hoặc bộ điều khiển chỉ là thiết bị điện đóng ngắt, bảo vệ hay đấu nối mạch điện áp không quá 1000 V',
+    productName: 'Bộ chống trộm chỉ là thiết bị điện đóng ngắt mạch điện áp không quá 1000 V',
+    candidateHeadings: ['8512', '8536'],
+  });
+  const g8536To8512 = soTayGates2151({
+    hs: '85365099',
+    productText: 'Bộ chống trộm xe máy điện kết nối còi và đèn xi nhan phát tín hiệu âm thanh hoặc ánh sáng cảnh báo chuyên dùng cho xe có động cơ',
+    productName: 'Bộ chống trộm xe máy điện phát tín hiệu cảnh báo',
+    candidateHeadings: ['8536', '8512'],
+  });
+  assert(
+    '[OZV-2151 thuận soTayGates] kích hoạt SO_TAY_LOAI_TRU đúng cả 2 chiều 8512 -> 8536 và 8536 -> 8512',
+    (g8512To8536.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8536')) &&
+      (g8536To8512.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8512')),
+    { g8512To8536: g8512To8536.challenges, g8536To8512: g8536To8512.challenges }
+  );
+
+  const dcGatNuoc8512 = cauPhanBiet2151('8512', ['8512', '8536'], 'Cần gạt nước kính chắn gió bằng điện dùng cho xe ô tô');
+  const dcGatNuoc8536 = cauPhanBiet2151('8536', ['8536', '8512'], 'Cần gạt nước kính chắn gió bằng điện dùng cho xe ô tô');
+  const dcCauChi8512 = cauPhanBiet2151('8512', ['8512', '8536'], 'Cầu chì ống thủy tinh 10A 250V bảo vệ mạch điện');
+  const dcCauChi8536 = cauPhanBiet2151('8536', ['8536', '8512'], 'Cầu chì ống thủy tinh 10A 250V bảo vệ mạch điện');
+  const dcGate8512 = soTayGates2151({
+    hs: '85124000',
+    productText: 'Cần gạt nước kính chắn gió bằng điện dùng cho xe ô tô',
+    productName: 'Cần gạt nước kính chắn gió bằng điện',
+    candidateHeadings: ['8512', '8536'],
+  });
+  const dcGate8536 = soTayGates2151({
+    hs: '85361099',
+    productText: 'Cầu chì ống thủy tinh 10A 250V bảo vệ mạch điện',
+    productName: 'Cầu chì ống thủy tinh 10A 250V',
+    candidateHeadings: ['8536', '8512'],
+  });
+  assert(
+    '[OZV-2151 đối chứng] cần gạt nước kính chắn gió và cầu chì ống thủy tinh không hỏi oan / không kéo oan 85.12 <-> 85.36',
+    dcGatNuoc8512.length === 0 &&
+      dcGatNuoc8536.length === 0 &&
+      dcCauChi8512.length === 0 &&
+      dcCauChi8536.length === 0 &&
+      !(dcGate8512.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8536')) &&
+      !(dcGate8536.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8512')) &&
+      !D2151.moRongUngVien(['8512'], 'Cần gạt nước kính chắn gió bằng điện dùng cho xe ô tô').some((x) => x.nhom === '8536') &&
+      !D2151.moRongUngVien(['8536'], 'Cầu chì ống thủy tinh 10A 250V bảo vệ mạch điện').some((x) => x.nhom === '8512'),
+    { dcGatNuoc8512, dcGatNuoc8536, dcCauChi8512, dcCauChi8536 }
+  );
+
+  const ht169 = hoiTruoc2151({ moTa: moTaCa169, ungVien: ['8512', '8536'] });
+  const distinctDk169 = new Set((ht169.nhanh || []).map((n) => n.dieuKien)).size === 2;
+  assert(
+    '[OZV-2151 hoi-truoc-4so] ca 169 với [8512, 8536] trả CHUA_CHOT_NHOM_HOI_TRUOC với 2 nhánh điều kiện phân biệt từ cạnh C5',
+    ht169.trangThai === TT2151.CHUA_CHOT_NHOM_HOI_TRUOC &&
+      distinctDk169 &&
+      (ht169.nhanh || []).every((n) => String(n.nguon || '').startsWith('do-thi:C5:')) &&
+      ['8512', '8536'].every((h) => (ht169.dapAnDieuKien || '').includes(`→ nhóm ${h} (`)),
+    { trangThai: ht169.trangThai, distinctDk169, nhanh: ht169.nhanh, dapAnDieuKien: ht169.dapAnDieuKien }
+  );
+}
+
 console.log(`\n${passed} passed, ${failed} failed`);
 process.exit(failed ? 1 : 0);
