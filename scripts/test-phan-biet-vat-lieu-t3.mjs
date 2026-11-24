@@ -391,5 +391,109 @@ check(`ReDoS: 40.000 từ lặp (${REDOS_LAU.length} ký tự) chạy ${msRedos}
     { pbDoi8449, pbDoi8515 });
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// OZV-2126 — Cạnh loại trừ 2 chiều 61.08 ↔ 62.08 cho ca 157 tầng 4 số
+// ('Bộ đồ lót nữ / 100% cotton / None')
+{
+  const D = require('../lib/do-thi/index.js');
+  const ST = require('../lib/so-tay.js');
+  const H = require('../lib/hoi-theo-so-tay.js');
+  const { soTayGates, nhomLienQuanSoTay } = require('../lib/so-tay-gates.js');
+  const { phanTichHoiTruoc4So, TRANG_THAI_4SO } = require('../lib/do-thi/hoi-truoc-4so.js');
+  D.datLai();
+
+  const s6108 = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'so-tay', '6108.json'), 'utf8'));
+  const s6208 = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'so-tay', '6208.json'), 'utf8'));
+  const v6108 = ST.verifySoTay(s6108, '6108');
+  const v6208 = ST.verifySoTay(s6208, '6208');
+  check('OZV-2126: verifySoTay 6108 và 6208 đạt 100% (0 mục bị loại)',
+    v6108.loai.length === 0 && v6208.loai.length === 0,
+    { loai6108: v6108.loai, loai6208: v6208.loai });
+
+  const c5_6108_6208 = D.canhTu('6108', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '6208');
+  const c5_6208_6108 = D.canhTu('6208', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '6108');
+  const c6_6208_6108 = D.canhTu('6208', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '6108');
+  const c6_6108_6208 = D.canhTu('6108', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '6208');
+  check('OZV-2126: đồ thị 2 chiều C5/C6 giữa 6108 ↔ 6208 giữ đủ trích nguồn + canCuLoaiTru',
+    c5_6108_6208.some((e) => e.nguon === 'nhom6108.nhom' && e.canCuLoaiTru?.nguon === 'nhom6208.nhom')
+    && c5_6208_6108.some((e) => e.nguon === 'nhom6208.nhom' && e.canCuLoaiTru?.nguon === 'nhom6108.nhom')
+    && c6_6208_6108.length >= 1
+    && c6_6108_6208.length >= 1,
+    { c5_6108_6208: c5_6108_6208.length, c5_6208_6108: c5_6208_6108.length });
+
+  const moTaCa157 = 'Bộ đồ lót nữ / 100% cotton / None';
+  const mo6108 = D.moRongUngVien(['6108'], moTaCa157, { toiDa: 10 });
+  const mo6208 = D.moRongUngVien(['6208'], moTaCa157, { toiDa: 10 });
+  check('OZV-2126: moRongUngVien kéo 2 chiều 6108 ↔ 6208 trên ca 157 "Bộ đồ lót nữ / 100% cotton / None"',
+    mo6108.some((x) => x.nhom === '6208') && mo6208.some((x) => x.nhom === '6108'),
+    { tu6108: mo6108.map((x) => x.nhom), tu6208: mo6208.map((x) => x.nhom) });
+
+  const rel6108 = nhomLienQuanSoTay('6108');
+  const rel6208 = nhomLienQuanSoTay('6208');
+  check('OZV-2126: nhomLienQuanSoTay hai chiều 6108 ↔ 6208',
+    rel6108.includes('6208') && rel6208.includes('6108'),
+    { rel6108, rel6208 });
+
+  const g6108To6208 = soTayGates({
+    hs: '61082100',
+    productText: 'Bộ đồ lót nữ từ bông hoặc cotton bằng vải được dệt mà không bằng kim hoặc móc',
+    productName: 'Bộ đồ lót nữ từ bông hoặc cotton bằng vải được dệt mà không bằng kim hoặc móc',
+    candidateHeadings: ['6108', '6208'],
+  });
+  const g6208To6108 = soTayGates({
+    hs: '62089190',
+    productText: 'Bộ đồ lót nữ từ bông hoặc cotton là hàng được dệt bằng kim hoặc móc',
+    productName: 'Bộ đồ lót nữ từ bông hoặc cotton là hàng được dệt bằng kim hoặc móc',
+    candidateHeadings: ['6208', '6108'],
+  });
+  check('OZV-2126 (thuận soTayGates): kích hoạt SO_TAY_LOAI_TRU đúng cả 2 chiều 6108 → 6208 và 6208 → 6108',
+    (g6108To6208.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('6208'))
+    && (g6208To6108.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('6108')),
+    { g6108To6208: g6108To6208.challenges, g6208To6108: g6208To6108.challenges });
+
+  const gDoi6108 = soTayGates({
+    hs: '61081100',
+    productText: 'Váy lót phụ nữ bằng sợi nhân tạo dệt kim',
+    productName: 'Váy lót phụ nữ bằng sợi nhân tạo dệt kim',
+    candidateHeadings: ['6108', '6208'],
+  });
+  const gDoi6208 = soTayGates({
+    hs: '62089190',
+    productText: 'Áo choàng tắm nữ bằng bông không dệt kim',
+    productName: 'Áo choàng tắm nữ bằng bông không dệt kim',
+    candidateHeadings: ['6208', '6108'],
+  });
+  check('OZV-2126 (đối chứng soTayGates): hàng thật của 6108 (váy lót) và 6208 (áo choàng tắm) không kích hoạt oan 6108 ↔ 6208',
+    !(gDoi6108.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('6208'))
+    && !(gDoi6208.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('6108')),
+    { gDoi6108: gDoi6108.challenges, gDoi6208: gDoi6208.challenges });
+
+  const pb6108 = H.cauPhanBietNhom('6108', ['6108', '6208'], moTaCa157);
+  const pb6208 = H.cauPhanBietNhom('6208', ['6208', '6108'], moTaCa157);
+  check('OZV-2126 (thuận cauPhanBietNhom): sinh câu PHAN_BIET_NHOM 2 chiều 61.08 ↔ 62.08 cho ca 157',
+    pb6108.length === 1 && pb6108[0].nguon === 'nhom6108.nhom' && /62\.08/.test(pb6108[0].questionVi)
+    && pb6208.length === 1 && pb6208[0].nguon === 'nhom6208.nhom' && /61\.08/.test(pb6208[0].questionVi),
+    { pb6108, pb6208 });
+
+  const pbDoi6108 = H.cauPhanBietNhom('6108', ['6108', '6208'], 'Váy lót phụ nữ bằng sợi nhân tạo dệt kim');
+  const pbDoi6208 = H.cauPhanBietNhom('6208', ['6208', '6108'], 'Bộ pyjama nữ 100% cotton');
+  check('OZV-2126 (đối chứng cauPhanBietNhom & moRongUngVien): không hỏi oan / không kéo oan 61.08 ↔ 62.08 trên hàng không liên quan',
+    pbDoi6108.length === 0
+    && pbDoi6208.length === 0
+    && !D.moRongUngVien(['6108'], 'Váy lót phụ nữ bằng sợi nhân tạo dệt kim').some((x) => x.nhom === '6208')
+    && !D.moRongUngVien(['6208'], 'Bộ pyjama nữ 100% cotton').some((x) => x.nhom === '6108'),
+    { pbDoi6108, pbDoi6208 });
+
+  const ht157 = phanTichHoiTruoc4So({ moTa: moTaCa157, ungVien: ['6108', '6208'] });
+  const distinctDk157 = new Set((ht157.nhanh || []).map((n) => n.dieuKien)).size === 2;
+  const tuCanhDoThi157 = (ht157.nhanh || []).length === 2 && (ht157.nhanh || []).every((n) => String(n.nguon || '').startsWith('do-thi:'));
+  check('OZV-2126 (hoi-truoc-4so): ca 157 với [6108, 6208] trả CHUA_CHOT_NHOM_HOI_TRUOC với 2 nhánh điều kiện phân biệt từ cạnh đồ thị',
+    ht157.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC
+    && distinctDk157
+    && tuCanhDoThi157
+    && ['6108', '6208'].every((h) => (ht157.dapAnDieuKien || '').includes(`→ nhóm ${h} (`)),
+    { trangThai: ht157.trangThai, distinctDk157, tuCanhDoThi157, dapAnDieuKien: ht157.dapAnDieuKien });
+}
+
 console.log(`\nvật liệu tổng hợp (composite) — OZV-581 / OZV-540 PA-3: ${passed} PASS, ${failed} FAIL`);
 process.exit(failed ? 1 : 0);
