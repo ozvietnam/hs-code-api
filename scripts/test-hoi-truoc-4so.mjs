@@ -402,5 +402,137 @@ if (fs.existsSync(boChuanPath)) {
   );
 }
 
+// 6. OZV-2146 — Cạnh loại trừ 2 chiều 39.19 <-> 39.20 cho ca 104 tầng 4 số
+// ('Phim cường lực bảo vệ màn hình đồng hồ thông minh / nhựa PPF / Bảo vệ màn hình đồng hồ thông minh')
+{
+  const S = require('../lib/so-tay.js');
+  const { loadSoTay, soTayGates, nhomLienQuanSoTay } = require('../lib/so-tay-gates.js');
+  const { cauPhanBietNhom } = require('../lib/hoi-theo-so-tay.js');
+  const D = require('../lib/do-thi/index.js');
+  D.datLai();
+
+  const q104 = 'Phim cường lực bảo vệ màn hình đồng hồ thông minh / nhựa PPF / Bảo vệ màn hình đồng hồ thông minh';
+  const st3919 = loadSoTay('3919');
+  const st3920 = loadSoTay('3920');
+  const v3919 = S.verifySoTay(st3919, '3919');
+  const v3920 = S.verifySoTay(st3920, '3920');
+  check(
+    '[OZV-2146 verifySoTay] sổ tay 3919 và 3920 đạt 100% (0 mục không kiểm được nguồn)',
+    v3919.loai.length === 0 && v3920.loai.length === 0,
+    JSON.stringify({ loai3919: v3919.loai, loai3920: v3920.loai }),
+  );
+
+  const lt3919 = (st3919?.loaiTru || []).find((x) => x.sangNhom === '3920' && x.canCuLoaiTru?.nguon === 'nhom3920.nhom' && /phim|PPF|màn hình/i.test(x.dieuKien || ''));
+  const lt3920 = (st3920?.loaiTru || []).find((x) => x.sangNhom === '3919' && x.canCuLoaiTru?.nguon === 'nhom3919.nhom' && /phim|PPF|màn hình/i.test(x.dieuKien || ''));
+  check(
+    '[OZV-2146 căn cứ] sổ tay 3919 và 3920 có mục loaiTru 2 chiều 3919 <-> 3920 kèm canCuLoaiTru nguyên văn đạt checkItem',
+    Boolean(lt3919 && lt3919.nguon === 'nhom3919.nhom' && S.checkItem('loaiTru', lt3919, S.sourcesFor('3919'), '3919') === null)
+      && Boolean(lt3920 && lt3920.nguon === 'nhom3920.nhom' && S.checkItem('loaiTru', lt3920, S.sourcesFor('3920'), '3920') === null)
+      && lt3919.dieuKien !== lt3920.dieuKien
+      && !/;/.test(lt3919.dieuKien)
+      && !/;/.test(lt3920.dieuKien),
+    JSON.stringify({ lt3919: Boolean(lt3919), lt3920: Boolean(lt3920) }),
+  );
+
+  const c5Tu3919 = D.canhTu('3919', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '3920');
+  const c5Tu3920 = D.canhTu('3920', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '3919');
+  const c6Tu3919 = D.canhTu('3919', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '3920');
+  const c6Tu3920 = D.canhTu('3920', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '3919');
+  const mrTu3919 = D.moRongUngVien(['3919'], q104);
+  const mrTu3920 = D.moRongUngVien(['3920'], q104);
+  const rel3919 = nhomLienQuanSoTay('3919');
+  const rel3920 = nhomLienQuanSoTay('3920');
+  check(
+    '[OZV-2146 đồ thị 2 chiều] bảng cạnh có C5/C6 3919<->3920, nhomLienQuanSoTay 2 chiều và moRongUngVien kéo 2 chiều cho ca 104',
+    c5Tu3919.some((e) => e.nguon === 'nhom3919.nhom' && e.canCuLoaiTru?.nguon === 'nhom3920.nhom')
+      && c5Tu3920.some((e) => e.nguon === 'nhom3920.nhom' && e.canCuLoaiTru?.nguon === 'nhom3919.nhom')
+      && c6Tu3919.length >= 1
+      && c6Tu3920.length >= 1
+      && rel3919.includes('3920')
+      && rel3920.includes('3919')
+      && mrTu3919.some((x) => x.nhom === '3920')
+      && mrTu3920.some((x) => x.nhom === '3919'),
+    JSON.stringify({ c5Tu3919: c5Tu3919.length, c5Tu3920: c5Tu3920.length, mrTu3919, mrTu3920 }),
+  );
+
+  const ht104 = phanTichHoiTruoc4So({ moTa: q104, ungVien: ['3919', '3920'] });
+  const distinctDk104 = new Set((ht104.nhanh || []).map((n) => n.dieuKien)).size === 2;
+  check(
+    '[OZV-2146 hoi-truoc-4so] ca 104 Phim cường lực bảo vệ màn hình tách 2 nhánh điều kiện riêng biệt cho [3919, 3920]',
+    ht104.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC
+      && distinctDk104
+      && Boolean(ht104.dapAnDieuKien && ht104.dapAnDieuKien.includes('→ nhóm 3919 (') && ht104.dapAnDieuKien.includes('→ nhóm 3920 ('))
+      && Boolean(ht104.cauHoi),
+    JSON.stringify({ trangThai: ht104.trangThai, distinctDk104, dapAnDieuKien: ht104.dapAnDieuKien }),
+  );
+
+  const pb3919 = cauPhanBietNhom('3919', ['3919', '3920'], q104);
+  const pb3920 = cauPhanBietNhom('3920', ['3920', '3919'], q104);
+  check(
+    '[OZV-2146 thuận cauPhanBietNhom] sinh câu hỏi phân biệt 2 chiều 39.19 <-> 39.20 cho ca 104 Phim PPF bảo vệ màn hình',
+    pb3919.length === 1
+      && pb3919[0].loai === 'PHAN_BIET_NHOM'
+      && pb3919[0].canCu === 'so-tay'
+      && pb3919[0].nguon === 'nhom3919.nhom'
+      && /39\.20/.test(pb3919[0].questionVi)
+      && /39\.19/.test(pb3919[0].questionVi)
+      && pb3920.length === 1
+      && pb3920[0].loai === 'PHAN_BIET_NHOM'
+      && pb3920[0].canCu === 'so-tay'
+      && pb3920[0].nguon === 'nhom3920.nhom'
+      && /39\.19/.test(pb3920[0].questionVi)
+      && /39\.20/.test(pb3920[0].questionVi),
+    JSON.stringify({ pb3919, pb3920 }),
+  );
+
+  const g3919To3920 = soTayGates({
+    hs: '39199099',
+    productText: q104,
+    productName: 'Phim cường lực bảo vệ màn hình đồng hồ thông minh',
+    candidateHeadings: ['3919', '3920'],
+  });
+  const g3920To3919 = soTayGates({
+    hs: '39201090',
+    productText: q104,
+    productName: 'Phim cường lực bảo vệ màn hình đồng hồ thông minh',
+    candidateHeadings: ['3920', '3919'],
+  });
+  check(
+    '[OZV-2146 thuận soTayGates] kích hoạt SO_TAY_LOAI_TRU đúng cả 2 chiều 3919 -> 3920 và 3920 -> 3919',
+    (g3919To3920.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('3920'))
+      && (g3920To3919.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('3919')),
+    JSON.stringify({ g3919To3920: g3919To3920.challenges, g3920To3919: g3920To3919.challenges }),
+  );
+
+  const dcOngNhua = 'Ống nhựa PVC cứng dùng dẫn nước tưới';
+  const dcTamSan = 'Tấm trải sàn vinyl phủ tường phòng khách';
+  const dcOng3919 = cauPhanBietNhom('3919', ['3919', '3920'], dcOngNhua);
+  const dcOng3920 = cauPhanBietNhom('3920', ['3920', '3919'], dcOngNhua);
+  const dcSan3919 = cauPhanBietNhom('3919', ['3919', '3920'], dcTamSan);
+  const dcSan3920 = cauPhanBietNhom('3920', ['3920', '3919'], dcTamSan);
+  const gDoi3919 = soTayGates({
+    hs: '39199099',
+    productText: dcOngNhua,
+    productName: dcOngNhua,
+  });
+  const gDoi3920 = soTayGates({
+    hs: '39201090',
+    productText: dcTamSan,
+    productName: dcTamSan,
+  });
+  check(
+    '[OZV-2146 đối chứng] ống nhựa PVC và tấm trải sàn vinyl không hỏi oan / không kéo oan 39.19 <-> 39.20',
+    dcOng3919.length === 0
+      && dcOng3920.length === 0
+      && dcSan3919.length === 0
+      && dcSan3920.length === 0
+      && !D.moRongUngVien(['3919'], dcOngNhua).some((x) => x.nhom === '3920')
+      && !D.moRongUngVien(['3920'], dcTamSan).some((x) => x.nhom === '3919')
+      && !(gDoi3919.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('3920'))
+      && !(gDoi3920.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('3919')),
+    JSON.stringify({ dcOng3919, dcOng3920, dcSan3919, dcSan3920, gDoi3919: gDoi3919.challenges, gDoi3920: gDoi3920.challenges }),
+  );
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
