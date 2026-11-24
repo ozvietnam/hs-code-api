@@ -136,7 +136,519 @@
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
-  "tieuChi6": [],
+  "tieuChi6": [
+    {
+      "hs6": "844311",
+      "thuTu": 1,
+      "dieuKien": "Máy in sử dụng các bộ phận in như khuôn in (bát chữ), ống in và các bộ phận in khác thuộc nhóm 84.42",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Máy in sử dụng các bộ phận in như khuôn in (bát chữ), ống in và các bộ phận in khác thuộc nhóm 84.42",
+      "donVi": null,
+      "tuKhoa": [
+        "khuôn in",
+        "bát chữ",
+        "ống in"
+      ],
+      "nguon": "tieuDe.84431",
+      "trich": "84431 Máy in sử dụng các bộ phận in như khuôn in (bát chữ), ống in và các bộ phận in khác thuộc nhóm 84.42",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "844311",
+      "thuTu": 1,
+      "dieuKien": "Máy in offset, in cuộn",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Máy in offset, in cuộn",
+      "donVi": null,
+      "tuKhoa": [
+        "máy in offset, in cuộn"
+      ],
+      "nguon": "tax.84431100",
+      "trich": "84431100 - - Máy in offset, in cuộn",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "844312",
+      "thuTu": 2,
+      "dieuKien": "Máy in sử dụng các bộ phận in như khuôn in (bát chữ), ống in và các bộ phận in khác thuộc nhóm 84.42",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Máy in sử dụng các bộ phận in như khuôn in (bát chữ), ống in và các bộ phận in khác thuộc nhóm 84.42",
+      "donVi": null,
+      "tuKhoa": [
+        "khuôn in",
+        "bát chữ",
+        "ống in"
+      ],
+      "nguon": "tieuDe.84431",
+      "trich": "84431 Máy in sử dụng các bộ phận in như khuôn in (bát chữ), ống in và các bộ phận in khác thuộc nhóm 84.42",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "844312",
+      "thuTu": 2,
+      "dieuKien": "Máy in offset, in theo tờ",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Máy in offset, in theo tờ",
+      "donVi": null,
+      "tuKhoa": [
+        "máy in offset, in theo tờ",
+        "in theo tờ"
+      ],
+      "nguon": "tax.84431200",
+      "trich": "84431200 - - Máy in offset, in theo tờ, loại sử dụng trong văn phòng (sử dụng giấy với kích thước giấy ở dạng không gấp một chiều không quá 22 cm và chiều kia không quá 36 cm)",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "844312",
+      "thuTu": 2,
+      "dieuKien": "kích thước giấy ở dạng không gấp một chiều không quá 22 cm",
+      "fact": "motChieuTo",
+      "op": "<=",
+      "value": 22,
+      "donVi": "cm",
+      "nguon": "tax.84431200",
+      "trich": "84431200 - - Máy in offset, in theo tờ, loại sử dụng trong văn phòng (sử dụng giấy với kích thước giấy ở dạng không gấp một chiều không quá 22 cm và chiều kia không quá 36 cm)",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "844312",
+      "thuTu": 2,
+      "dieuKien": "chiều kia không quá 36 cm",
+      "fact": "chieuKiaTo",
+      "op": "<=",
+      "value": 36,
+      "donVi": "cm",
+      "nguon": "tax.84431200",
+      "trich": "84431200 - - Máy in offset, in theo tờ, loại sử dụng trong văn phòng (sử dụng giấy với kích thước giấy ở dạng không gấp một chiều không quá 22 cm và chiều kia không quá 36 cm)",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "844313",
+      "thuTu": 3,
+      "dieuKien": "Máy in sử dụng các bộ phận in như khuôn in (bát chữ), ống in và các bộ phận in khác thuộc nhóm 84.42",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Máy in sử dụng các bộ phận in như khuôn in (bát chữ), ống in và các bộ phận in khác thuộc nhóm 84.42",
+      "donVi": null,
+      "tuKhoa": [
+        "khuôn in",
+        "bát chữ",
+        "ống in"
+      ],
+      "nguon": "tieuDe.84431",
+      "trich": "84431 Máy in sử dụng các bộ phận in như khuôn in (bát chữ), ống in và các bộ phận in khác thuộc nhóm 84.42",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "844313",
+      "thuTu": 3,
+      "dieuKien": "Máy in offset",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Máy in offset",
+      "donVi": null,
+      "tuKhoa": [
+        "máy in offset"
+      ],
+      "nguon": "tax.84431300",
+      "trich": "84431300 - - Máy in offset khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "844313",
+      "thuTu": 3,
+      "phanConLai": true,
+      "nguon": "tax.84431300",
+      "trich": "84431300 - - Máy in offset khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "844314",
+      "thuTu": 4,
+      "dieuKien": "Máy in sử dụng các bộ phận in như khuôn in (bát chữ), ống in và các bộ phận in khác thuộc nhóm 84.42",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Máy in sử dụng các bộ phận in như khuôn in (bát chữ), ống in và các bộ phận in khác thuộc nhóm 84.42",
+      "donVi": null,
+      "tuKhoa": [
+        "khuôn in",
+        "bát chữ",
+        "ống in"
+      ],
+      "nguon": "tieuDe.84431",
+      "trich": "84431 Máy in sử dụng các bộ phận in như khuôn in (bát chữ), ống in và các bộ phận in khác thuộc nhóm 84.42",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "844314",
+      "thuTu": 4,
+      "dieuKien": "Máy in letterpress, in cuộn",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Máy in letterpress, in cuộn",
+      "donVi": null,
+      "tuKhoa": [
+        "máy in letterpress, in cuộn"
+      ],
+      "nguon": "tax.84431400",
+      "trich": "84431400 - - Máy in letterpress, in cuộn, trừ loại máy in flexo(1)",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "844314",
+      "thuTu": 4,
+      "dieuKien": "trừ loại máy in flexo",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "máy in flexo",
+      "donVi": null,
+      "chieu": "PHAI_KHONG",
+      "tuKhoa": [
+        "máy in flexo",
+        "in flexo"
+      ],
+      "nguon": "tax.84431400",
+      "trich": "84431400 - - Máy in letterpress, in cuộn, trừ loại máy in flexo(1)",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "844315",
+      "thuTu": 5,
+      "dieuKien": "Máy in sử dụng các bộ phận in như khuôn in (bát chữ), ống in và các bộ phận in khác thuộc nhóm 84.42",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Máy in sử dụng các bộ phận in như khuôn in (bát chữ), ống in và các bộ phận in khác thuộc nhóm 84.42",
+      "donVi": null,
+      "tuKhoa": [
+        "khuôn in",
+        "bát chữ",
+        "ống in"
+      ],
+      "nguon": "tieuDe.84431",
+      "trich": "84431 Máy in sử dụng các bộ phận in như khuôn in (bát chữ), ống in và các bộ phận in khác thuộc nhóm 84.42",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "844315",
+      "thuTu": 5,
+      "dieuKien": "Máy in letterpress",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Máy in letterpress",
+      "donVi": null,
+      "tuKhoa": [
+        "máy in letterpress",
+        "in letterpress"
+      ],
+      "nguon": "tax.84431500",
+      "trich": "84431500 - - Máy in letterpress, trừ loại in cuộn, trừ loại máy in flexo(1)",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "844315",
+      "thuTu": 5,
+      "dieuKien": "trừ loại in cuộn",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "in cuộn",
+      "donVi": null,
+      "chieu": "PHAI_KHONG",
+      "tuKhoa": [
+        "in cuộn"
+      ],
+      "nguon": "tax.84431500",
+      "trich": "84431500 - - Máy in letterpress, trừ loại in cuộn, trừ loại máy in flexo(1)",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "844315",
+      "thuTu": 5,
+      "dieuKien": "trừ loại máy in flexo",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "máy in flexo",
+      "donVi": null,
+      "chieu": "PHAI_KHONG",
+      "tuKhoa": [
+        "máy in flexo",
+        "in flexo"
+      ],
+      "nguon": "tax.84431500",
+      "trich": "84431500 - - Máy in letterpress, trừ loại in cuộn, trừ loại máy in flexo(1)",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "844316",
+      "thuTu": 6,
+      "dieuKien": "Máy in sử dụng các bộ phận in như khuôn in (bát chữ), ống in và các bộ phận in khác thuộc nhóm 84.42",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Máy in sử dụng các bộ phận in như khuôn in (bát chữ), ống in và các bộ phận in khác thuộc nhóm 84.42",
+      "donVi": null,
+      "tuKhoa": [
+        "khuôn in",
+        "bát chữ",
+        "ống in"
+      ],
+      "nguon": "tieuDe.84431",
+      "trich": "84431 Máy in sử dụng các bộ phận in như khuôn in (bát chữ), ống in và các bộ phận in khác thuộc nhóm 84.42",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "844316",
+      "thuTu": 6,
+      "dieuKien": "Máy in flexo",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Máy in flexo",
+      "donVi": null,
+      "tuKhoa": [
+        "máy in flexo",
+        "in flexo"
+      ],
+      "nguon": "tax.84431600",
+      "trich": "84431600 - - Máy in flexo(1)",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "844317",
+      "thuTu": 7,
+      "dieuKien": "Máy in sử dụng các bộ phận in như khuôn in (bát chữ), ống in và các bộ phận in khác thuộc nhóm 84.42",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Máy in sử dụng các bộ phận in như khuôn in (bát chữ), ống in và các bộ phận in khác thuộc nhóm 84.42",
+      "donVi": null,
+      "tuKhoa": [
+        "khuôn in",
+        "bát chữ",
+        "ống in"
+      ],
+      "nguon": "tieuDe.84431",
+      "trich": "84431 Máy in sử dụng các bộ phận in như khuôn in (bát chữ), ống in và các bộ phận in khác thuộc nhóm 84.42",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "844317",
+      "thuTu": 7,
+      "dieuKien": "Máy in ống đồng",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Máy in ống đồng",
+      "donVi": null,
+      "tuKhoa": [
+        "máy in ống đồng",
+        "in ống đồng"
+      ],
+      "nguon": "tax.84431700",
+      "trich": "84431700 - - Máy in ống đồng(1) (*)",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "844319",
+      "thuTu": 8,
+      "dieuKien": "Máy in sử dụng các bộ phận in như khuôn in (bát chữ), ống in và các bộ phận in khác thuộc nhóm 84.42",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Máy in sử dụng các bộ phận in như khuôn in (bát chữ), ống in và các bộ phận in khác thuộc nhóm 84.42",
+      "donVi": null,
+      "tuKhoa": [
+        "khuôn in",
+        "bát chữ",
+        "ống in"
+      ],
+      "tienLe": [
+        {
+          "so": "490/TB-TCHQ",
+          "ma": "84431900"
+        }
+      ],
+      "nguon": "tieuDe.84431",
+      "trich": "84431 Máy in sử dụng các bộ phận in như khuôn in (bát chữ), ống in và các bộ phận in khác thuộc nhóm 84.42",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "844319",
+      "thuTu": 8,
+      "phanConLai": true,
+      "nguon": "tax.84431900",
+      "trich": "84431900 - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "844331",
+      "thuTu": 9,
+      "dieuKien": "Máy in khác, máy copy và máy fax, có hoặc không kết hợp với nhau",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": [
+        "Máy in",
+        "máy copy",
+        "máy fax"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "máy in",
+        "máy copy",
+        "máy fax"
+      ],
+      "nguon": "tieuDe.84433",
+      "trich": "84433 Máy in khác, máy copy và máy fax, có hoặc không kết hợp với nhau",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "844331",
+      "thuTu": 9,
+      "dieuKien": "Máy kết hợp hai hoặc nhiều chức năng in, copy hoặc fax",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Máy kết hợp hai hoặc nhiều chức năng in, copy hoặc fax",
+      "donVi": null,
+      "tuKhoa": [
+        "kết hợp hai hoặc nhiều chức năng",
+        "hai hoặc nhiều chức năng"
+      ],
+      "nguon": "tieuDe.844331",
+      "trich": "844331 Máy kết hợp hai hoặc nhiều chức năng in, copy hoặc fax, có khả năng kết nối với máy xử lý dữ liệu tự động hoặc kết nối mạng",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "844331",
+      "thuTu": 9,
+      "dieuKien": "có khả năng kết nối với máy xử lý dữ liệu tự động hoặc kết nối mạng",
+      "fact": "coKetNoiMayTinh",
+      "op": "CO",
+      "donVi": null,
+      "nguon": "tieuDe.844331",
+      "trich": "844331 Máy kết hợp hai hoặc nhiều chức năng in, copy hoặc fax, có khả năng kết nối với máy xử lý dữ liệu tự động hoặc kết nối mạng",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "844332",
+      "thuTu": 10,
+      "dieuKien": "Máy in khác, máy copy và máy fax, có hoặc không kết hợp với nhau",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": [
+        "Máy in",
+        "máy copy",
+        "máy fax"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "máy in",
+        "máy copy",
+        "máy fax"
+      ],
+      "nguon": "tieuDe.84433",
+      "trich": "84433 Máy in khác, máy copy và máy fax, có hoặc không kết hợp với nhau",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "844332",
+      "thuTu": 10,
+      "dieuKien": "có khả năng kết nối với máy xử lý dữ liệu tự động hoặc kết nối mạng",
+      "fact": "coKetNoiMayTinh",
+      "op": "CO",
+      "donVi": null,
+      "nguon": "tieuDe.844332",
+      "trich": "844332 Loại khác, có khả năng kết nối với máy xử lý dữ liệu tự động hoặc kết nối mạng",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "844332",
+      "thuTu": 10,
+      "phanConLai": true,
+      "nguon": "tieuDe.844332",
+      "trich": "844332 Loại khác, có khả năng kết nối với máy xử lý dữ liệu tự động hoặc kết nối mạng",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "844339",
+      "thuTu": 11,
+      "dieuKien": "Máy in khác, máy copy và máy fax, có hoặc không kết hợp với nhau",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": [
+        "Máy in",
+        "máy copy",
+        "máy fax"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "máy in",
+        "máy copy",
+        "máy fax"
+      ],
+      "nguon": "tieuDe.84433",
+      "trich": "84433 Máy in khác, máy copy và máy fax, có hoặc không kết hợp với nhau",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "844339",
+      "thuTu": 11,
+      "phanConLai": true,
+      "nguon": "tieuDe.844339",
+      "trich": "844339 Loại khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "844391",
+      "thuTu": 12,
+      "dieuKien": "Bộ phận và phụ kiện",
+      "fact": "laBoPhan",
+      "op": "CO",
+      "donVi": null,
+      "nguon": "tieuDe.84439",
+      "trich": "84439 Bộ phận và phụ kiện",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "844391",
+      "thuTu": 12,
+      "dieuKien": "của máy in sử dụng các bộ phận in như khuôn in (bát chữ), ống in và các bộ phận in khác của nhóm 84.42",
+      "fact": "dungCho",
+      "op": "CONG_DUNG",
+      "value": "máy in sử dụng các bộ phận in như khuôn in (bát chữ), ống in và các bộ phận in khác của nhóm 84.42",
+      "donVi": null,
+      "tuKhoa": [
+        "khuôn in",
+        "bát chữ",
+        "ống in"
+      ],
+      "nguon": "tax.84439100",
+      "trich": "84439100 - - Bộ phận và phụ kiện của máy in sử dụng các bộ phận in như khuôn in (bát chữ), ống in và các bộ phận in khác của nhóm 84.42",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "844399",
+      "thuTu": 13,
+      "dieuKien": "Bộ phận và phụ kiện",
+      "fact": "laBoPhan",
+      "op": "CO",
+      "donVi": null,
+      "tienLe": [
+        {
+          "so": "2106/TB-TCHQ",
+          "ma": "84439990"
+        }
+      ],
+      "nguon": "tieuDe.84439",
+      "trich": "84439 Bộ phận và phụ kiện",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "844399",
+      "thuTu": 13,
+      "phanConLai": true,
+      "nguon": "tieuDe.844399",
+      "trich": "844399 Loại khác",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
   "dong8": [
     {
       "hs": "84431100",
@@ -1407,6 +1919,13 @@
     "tax.84439920",
     "tax.84439930",
     "tax.84439990",
+    "tieuDe.84431",
+    "tieuDe.84433",
+    "tieuDe.844331",
+    "tieuDe.844332",
+    "tieuDe.844339",
+    "tieuDe.84439",
+    "tieuDe.844399",
     "wco-op.844332.1"
   ],
   "phienBan": "HS2022",
@@ -1417,8 +1936,8 @@
     "ms": 14
   },
   "kiemTra": {
-    "tong": 56,
-    "dat": 56,
+    "tong": 95,
+    "dat": 95,
     "loai": 0,
     "nguonBiCat": [],
     "nangCap": {
@@ -1429,6 +1948,12 @@
         "tieuChi6",
         "phamViLoaiKhac"
       ]
+    },
+    "tieuChi6": {
+      "khuon": "g6@1",
+      "soMuc": 34,
+      "soPhanNhom": 13,
+      "cong": "scripts/kiem-tieu-chi-6.mjs"
     }
   },
   "yKienWcoDayDu": false,
