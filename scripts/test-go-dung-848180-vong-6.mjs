@@ -214,5 +214,45 @@ check('0b spec: không nguonLoai/trangThai/duyet, mọi chongLanTruc phanXu null
     { pbNguoc3924, pbNguoc8481 });
 }
 
+// ── 9. OZV-2110 — ca 156 tầng 4 số: Chỉ thêu sợi filament tổng hợp → cạnh loại trừ 2 chiều 54.01 ↔ 54.06 ──────────────
+{
+  const DT = require('../lib/do-thi/index.js');
+  const H = require('../lib/hoi-theo-so-tay.js');
+  // Ca 156 gốc "Chỉ thêu sợi filament tổng hợp / sợi filament tổng hợp / thêu" khớp chiều 5401→5406 ("chỉ thêu")
+  // nhưng thiếu "chỉ khâu" của dieuKien chiều 5406→5401 → khopPhanBiet bỏ; thêm "chỉ khâu" để đo 2 chiều.
+  const moTa = 'Chỉ thêu sợi filament tổng hợp chỉ khâu / sợi filament tổng hợp / thêu';
+  const st5401 = loadSoTay('5401');
+  const st5406 = loadSoTay('5406');
+  const src5401 = S.sourcesFor('5401');
+  const src5406 = S.sourcesFor('5406');
+  const lt5401 = (st5401?.loaiTru || []).find((x) => x.sangNhom === '5406' && /chỉ thêu/i.test(x.dieuKien || ''));
+  const lt5406 = (st5406?.loaiTru || []).find((x) => x.sangNhom === '5401' && /Chỉ khâu/i.test(x.dieuKien || ''));
+  check('9a sổ tay 5401↔5406 có loaiTru 2 chiều + canCuLoaiTru nguyên văn đạt checkItem',
+    Boolean(lt5401 && lt5401.canCuLoaiTru?.nguon === 'nhom5406.nhom' && S.checkItem('loaiTru', lt5401, src5401, '5401') === null)
+    && Boolean(lt5406 && lt5406.canCuLoaiTru?.nguon === 'nhom5401.nhom' && S.checkItem('loaiTru', lt5406, src5406, '5406') === null),
+    { lt5401: Boolean(lt5401), lt5406: Boolean(lt5406), e5401: lt5401 && S.checkItem('loaiTru', lt5401, src5401, '5401'), e5406: lt5406 && S.checkItem('loaiTru', lt5406, src5406, '5406') });
+
+  const c5_5401 = DT.canhTu('5401', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '5406' && /chỉ thêu/i.test(e.dieuKien || ''));
+  const c5_5406 = DT.canhTu('5406', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '5401' && /Chỉ khâu/i.test(e.dieuKien || ''));
+  const giua = DT.canhGiuaNhomConSong(['5401', '5406']).filter((e) => (e.loai === 'C5' || e.loai === 'C6') && (/chỉ thêu|Chỉ khâu/i.test(e.dieuKien || '')));
+  check('9b đồ thị C5/C6 + canhGiuaNhomConSong có ≥2 cạnh 5401↔5406 (chỉ thêu / chỉ khâu)',
+    c5_5401.length >= 1 && c5_5406.length >= 1 && giua.length >= 2,
+    { c5_5401: c5_5401.length, c5_5406: c5_5406.length, giua: giua.length });
+
+  const pb5401 = H.cauPhanBietNhom('5401', ['5401', '5406'], moTa);
+  const pb5406 = H.cauPhanBietNhom('5406', ['5406', '5401'], moTa);
+  check('9c (thuận) cauPhanBietNhom 2 chiều khớp ca 156 chỉ thêu filament tổng hợp',
+    pb5401.length >= 1 && pb5406.length >= 1
+    && pb5401.some((q) => q.loai === 'PHAN_BIET_NHOM' && q.canCu === 'so-tay' && /54\.01|54\.06/.test(q.questionVi))
+    && pb5406.some((q) => q.loai === 'PHAN_BIET_NHOM' && q.canCu === 'so-tay' && /54\.01|54\.06/.test(q.questionVi)),
+    { pb5401, pb5406 });
+
+  const pbNguoc5401 = H.cauPhanBietNhom('5401', ['5401', '5406'], 'vải cotton trắng dùng may áo');
+  const pbNguoc5406 = H.cauPhanBietNhom('5406', ['5406', '5401'], 'van bi đường ống hơi bằng thép');
+  check('9d (ngược) vải cotton / van bi đường ống không hỏi oan 54.01↔54.06',
+    pbNguoc5401.length === 0 && pbNguoc5406.length === 0,
+    { pbNguoc5401, pbNguoc5406 });
+}
+
 console.log(`\n${pass} pass, ${fail} fail`);
 if (fail) process.exit(1);
