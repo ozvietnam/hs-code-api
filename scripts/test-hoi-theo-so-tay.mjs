@@ -1837,5 +1837,173 @@ const ketQuaSong = (raw = VAN) => ketQuaGia('848180', raw, {}, ['848120']);
     { ht2: ht2.dapAnDieuKien, ht4: ht4.dapAnDieuKien });
 }
 
+// 23) OZV-2209 — cạnh loại trừ 2 chiều 87.08 <-> 39.26 cho ca 148 tầng 4 số «Nắp ốp đèn soi biển số cho xe máy / nhựa ABS mạ crom»
+{
+  const S = require('../lib/so-tay.js');
+  const D = require('../lib/do-thi/index.js');
+  const { phanTichHoiTruoc4So, TRANG_THAI_4SO } = require('../lib/do-thi/hoi-truoc-4so.js');
+  const q148 = 'Nắp ốp đèn soi biển số cho xe máy / nhựa ABS mạ crom';
+  const q148Full = 'Nắp ốp đèn soi biển số cho xe máy / nhựa ABS mạ crom / ốp đèn soi biển số xe máy';
+  const cum3 = ['8714', '8708', '3926'];
+  const cum4 = ['8714', '8708', '3926', '9405'];
+  for (const nh of cum4) {
+    fs.copyFileSync(path.join('data/so-tay', `${nh}.json`), path.join(TEST_DATA_DIR, 'so-tay', `${nh}.json`));
+  }
+  delete require.cache[require.resolve('../lib/so-tay-gates.js')];
+  const { soTayGates, nhomLienQuanSoTay, loadSoTay: loadSoTay23 } = require('../lib/so-tay-gates.js');
+  D.datLai();
+
+  const st8708 = loadSoTay23('8708');
+  const st3926 = loadSoTay23('3926');
+  const v8708 = S.verifySoTay(st8708, '8708');
+  const v3926 = S.verifySoTay(st3926, '3926');
+  check('OZV-2209 (1/9 verifySoTay): sổ tay 8708 và 3926 đạt 100% (0 mục bị loại)',
+    v8708.loai.length === 0 &&
+      v3926.loai.length === 0 &&
+      v8708.dat === v8708.tong &&
+      v3926.dat === v3926.tong &&
+      st8708.kiemTra?.tong === v8708.tong &&
+      st8708.kiemTra?.dat === v8708.dat &&
+      st8708.kiemTra?.loai === 0 &&
+      st3926.kiemTra?.tong === v3926.tong &&
+      st3926.kiemTra?.dat === v3926.dat &&
+      st3926.kiemTra?.loai === 0,
+    { loai8708: v8708.loai, loai3926: v3926.loai, tong8708: v8708.tong, tong3926: v3926.tong });
+
+  const lt8708 = (st8708?.loaiTru || []).find((x) => x.sangNhom === '3926');
+  const lt3926 = (st3926?.loaiTru || []).find((x) => x.sangNhom === '8708');
+  check('OZV-2209 (2/9 căn cứ): sổ tay 8708 và 3926 có loaiTru 2 chiều kèm canCuLoaiTru nguyên văn đạt checkItem',
+    Boolean(
+      lt8708 &&
+        lt8708.nguon === 'nhom8708.nhom' &&
+        lt8708.canCuLoaiTru?.nguon === 'nhom3926.nhom' &&
+        S.checkItem('loaiTru', lt8708, S.sourcesFor('8708'), '8708') === null
+    ) &&
+      Boolean(
+        lt3926 &&
+          lt3926.nguon === 'ch39.chuong' &&
+          lt3926.canCuLoaiTru?.nguon === 'nhom8708.nhom' &&
+          S.checkItem('loaiTru', lt3926, S.sourcesFor('3926'), '3926') === null
+      ) &&
+      lt8708.dieuKien !== lt3926.dieuKien &&
+      !/;/.test(lt8708.dieuKien) &&
+      !/;/.test(lt3926.dieuKien),
+    { lt8708, lt3926 });
+
+  const c5Tu8708 = D.canhTu('8708', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '3926');
+  const c5Tu3926 = D.canhTu('3926', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8708');
+  const c6Tu8708 = D.canhTu('8708', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '3926');
+  const c6Tu3926 = D.canhTu('3926', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '8708');
+  const giua = D.canhGiuaNhomConSong(['8708', '3926']).filter((e) => e.loai === 'C5' || e.loai === 'C6');
+  const mrTu8708 = D.moRongUngVien(['8708'], q148);
+  const mrTu3926 = D.moRongUngVien(['3926'], q148);
+  const mrFull8708 = D.moRongUngVien(['8708'], q148Full);
+  const mrFull3926 = D.moRongUngVien(['3926'], q148Full);
+  let du3Cap = true;
+  for (let i = 0; i < cum3.length; i += 1) {
+    for (let j = i + 1; j < cum3.length; j += 1) {
+      const a = cum3[i];
+      const b = cum3[j];
+      const ab = D.canhTu(a, 'C5', { toiDa: Infinity }).some((e) => e.toi === b);
+      const ba = D.canhTu(b, 'C5', { toiDa: Infinity }).some((e) => e.toi === a);
+      if (!ab || !ba) du3Cap = false;
+    }
+  }
+  check('OZV-2209 (3/9 đồ thị 2 chiều & khép kín 3/3 cặp cụm [8714, 8708, 3926]): bảng cạnh C5/C6 8708↔3926, canhGiuaNhomConSong và moRongUngVien kéo 2 chiều cho ca 148',
+    c5Tu8708.some((e) => e.nguon === 'nhom8708.nhom' && e.canCuLoaiTru?.nguon === 'nhom3926.nhom') &&
+      c5Tu3926.some((e) => e.nguon === 'ch39.chuong' && e.canCuLoaiTru?.nguon === 'nhom8708.nhom') &&
+      c6Tu8708.length >= 1 &&
+      c6Tu3926.length >= 1 &&
+      giua.length >= 2 &&
+      du3Cap &&
+      mrTu8708.some((x) => x.nhom === '3926') &&
+      mrTu3926.some((x) => x.nhom === '8708') &&
+      mrFull8708.some((x) => x.nhom === '3926') &&
+      mrFull3926.some((x) => x.nhom === '8708'),
+    { c5Tu8708: c5Tu8708.length, c5Tu3926: c5Tu3926.length, giua: giua.length, du3Cap, mrTu8708, mrTu3926 });
+
+  check('OZV-2209 (4/9 nhomLienQuanSoTay): liên kết hai chiều 8708 ↔ 3926 và toàn cụm 3 nhóm [8714, 8708, 3926]',
+    nhomLienQuanSoTay('8708').includes('3926') &&
+      nhomLienQuanSoTay('3926').includes('8708') &&
+      cum3.every((a) => cum3.filter((b) => b !== a).every((b) => nhomLienQuanSoTay(a).includes(b))),
+    { rel8708: nhomLienQuanSoTay('8708'), rel3926: nhomLienQuanSoTay('3926') });
+
+  const pb8708 = H.cauPhanBietNhom('8708', ['8708', '3926'], q148);
+  const pb8708Full = H.cauPhanBietNhom('8708', ['8708', '3926'], q148Full);
+  check('OZV-2209 (5/9 thuận 8708 → 3926): 8708 đứng đầu với [8708, 3926] sinh câu PHAN_BIET_NHOM từ nhom8708.nhom sang 39.26',
+    pb8708.length === 1 &&
+      pb8708[0].loai === 'PHAN_BIET_NHOM' &&
+      pb8708[0].canCu === 'so-tay' &&
+      pb8708[0].nguon === 'nhom8708.nhom' &&
+      /39\.26/.test(pb8708[0].questionVi) &&
+      /87\.08/.test(pb8708[0].questionVi) &&
+      pb8708Full.length === 1 &&
+      /39\.26/.test(pb8708Full[0].questionVi),
+    { pb8708, pb8708Full });
+
+  const pb3926 = H.cauPhanBietNhom('3926', ['3926', '8708'], q148);
+  const pb3926Full = H.cauPhanBietNhom('3926', ['3926', '8708'], q148Full);
+  check('OZV-2209 (6/9 thuận 3926 → 8708): 3926 đứng đầu với [3926, 8708] sinh câu PHAN_BIET_NHOM từ ch39.chuong sang 87.08',
+    pb3926.length === 1 &&
+      pb3926[0].loai === 'PHAN_BIET_NHOM' &&
+      pb3926[0].canCu === 'so-tay' &&
+      pb3926[0].nguon === 'ch39.chuong' &&
+      /87\.08/.test(pb3926[0].questionVi) &&
+      /39\.26/.test(pb3926[0].questionVi) &&
+      pb3926Full.length === 1 &&
+      /87\.08/.test(pb3926Full[0].questionVi),
+    { pb3926, pb3926Full });
+
+  const g8708 = soTayGates({ hs: '87082995', productText: q148, productName: q148, pool: [{ h4: '3926', from: 'test' }] });
+  const g3926 = soTayGates({ hs: '39263000', productText: q148, productName: q148, pool: [{ h4: '8708', from: 'test' }] });
+  check('OZV-2209 (7/9 soTayGates 2 chiều): bật cổng SO_TAY_LOAI_TRU cả 2 chiều 87.08 ↔ 39.26 trên ca 148',
+    (g8708.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '3926') &&
+      (g3926.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '8708'),
+    { g8708: g8708.challenges, g3926: g3926.challenges });
+
+  const dcBaDoXoc = 'Thanh chắn chống va đập ba đờ xốc trước dùng cho xe ô tô con';
+  const dcDayDai = 'Dây đai an toàn để bảo vệ người gắn cố định trong xe ô tô';
+  const dcTuongNhua = 'Tượng nhỏ trang trí để bàn bằng plastic';
+  const pbBaDo8708 = H.cauPhanBietNhom('8708', ['8708', '3926'], dcBaDoXoc);
+  const pbBaDo3926 = H.cauPhanBietNhom('3926', ['3926', '8708'], dcBaDoXoc);
+  const pbDai8708 = H.cauPhanBietNhom('8708', ['8708', '3926'], dcDayDai);
+  const pbDai3926 = H.cauPhanBietNhom('3926', ['3926', '8708'], dcDayDai);
+  const pbTuong8708 = H.cauPhanBietNhom('8708', ['8708', '3926'], dcTuongNhua);
+  const pbTuong3926 = H.cauPhanBietNhom('3926', ['3926', '8708'], dcTuongNhua);
+  const gDc8708 = soTayGates({ hs: '87081090', productText: dcBaDoXoc, productName: dcBaDoXoc });
+  const gDc3926 = soTayGates({ hs: '39264000', productText: dcTuongNhua, productName: dcTuongNhua });
+  check('OZV-2209 (8/9 đối chứng): ba đờ xốc ô tô, dây đai an toàn ô tô và tượng nhỏ trang trí bằng plastic không hỏi/kéo/bật cổng oan 87.08 ↔ 39.26',
+    pbBaDo8708.length === 0 &&
+      pbBaDo3926.length === 0 &&
+      pbDai8708.length === 0 &&
+      pbDai3926.length === 0 &&
+      pbTuong8708.length === 0 &&
+      pbTuong3926.length === 0 &&
+      !(gDc8708.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '3926') &&
+      !(gDc3926.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '8708') &&
+      !D.moRongUngVien(['8708'], dcBaDoXoc).some((x) => x.nhom === '3926') &&
+      !D.moRongUngVien(['8708'], dcDayDai).some((x) => x.nhom === '3926') &&
+      !D.moRongUngVien(['3926'], dcTuongNhua).some((x) => x.nhom === '8708'),
+    { pbBaDo8708, pbBaDo3926, pbDai8708, pbDai3926, pbTuong8708, pbTuong3926, gDc8708: gDc8708.challenges, gDc3926: gDc3926.challenges });
+
+  const ht2 = phanTichHoiTruoc4So({ moTa: q148, ungVien: ['8708', '3926'] });
+  const ht3 = phanTichHoiTruoc4So({ moTa: q148, ungVien: cum3 });
+  const ht4 = phanTichHoiTruoc4So({ moTa: q148, ungVien: cum4 });
+  check('OZV-2209 (9/9 phanTichHoiTruoc4So): tách đủ nhánh điều kiện cho [8708, 3926], cụm [8714, 8708, 3926] và cụm 4 nhóm [8714, 8708, 3926, 9405] trên ca 148',
+    ht2.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC &&
+      (ht2.nhanh || []).every((n) => String(n.nguon || '').startsWith('do-thi:C5:')) &&
+      new Set((ht2.nhanh || []).map((n) => n.dieuKien)).size === 2 &&
+      Boolean(ht2.dapAnDieuKien && ht2.dapAnDieuKien.includes('→ nhóm 8708 (') && ht2.dapAnDieuKien.includes('→ nhóm 3926 (')) &&
+      ht3.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC &&
+      (ht3.nhanh || []).every((n) => /^do-thi:C[57]:/.test(String(n.nguon || ''))) &&
+      new Set((ht3.nhanh || []).map((n) => n.dieuKien)).size === 3 &&
+      cum3.every((h) => ht3.dapAnDieuKien?.includes(`→ nhóm ${h} (`)) &&
+      ht4.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC &&
+      (ht4.nhanh || []).every((n) => /^do-thi:C[57]:/.test(String(n.nguon || ''))) &&
+      new Set((ht4.nhanh || []).map((n) => n.dieuKien)).size === 4 &&
+      cum4.every((h) => ht4.dapAnDieuKien?.includes(`→ nhóm ${h} (`)),
+    { ht2: ht2.dapAnDieuKien, ht3: ht3.dapAnDieuKien, ht4: ht4.dapAnDieuKien });
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
