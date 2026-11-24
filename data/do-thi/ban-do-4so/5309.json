@@ -1,0 +1,113 @@
+{
+  "nhom": "5309",
+  "khuon": "bd4@1",
+  "nguonLoai": "AI_NHAP",
+  "chamCheo": null,
+  "taoBoi": {
+    "provider": "google-studio",
+    "model": "gemini-4-hydrogen",
+    "goi": "052d80ef0eb6"
+  },
+  "kieuNhom": "THEO_VAT_LIEU",
+  "hoSo": {
+    "chucNang": [],
+    "coChe": [],
+    "dangVatLy": [
+      {
+        "y": "dạng vải dệt thoi từ sợi lanh",
+        "trich": "Nhóm này bao gồm các vải dệt thoi (như đã định nghĩa tại Phần (I) (c) của Chú giải tổng quát Phần XI) được làm từ sợi lanh.",
+        "nguon": "ct.5309.1"
+      }
+    ],
+    "chatLieu": [
+      {
+        "y": "được làm từ sợi lanh",
+        "trich": "được làm từ sợi lanh.",
+        "nguon": "ct.5309.1"
+      },
+      {
+        "y": "vải pha có lanh và đay trội và lanh hơn đay",
+        "trich": "Vải dệt thoi bao gồm\nTỷ trọng lanh 35%\nTỷ trọng đay 25%\nTỷ trọng bông 40%\nHàng dệt này không được phân loại trong nhóm 52.12 (vải dệt thoi khác từ bông)\nnhưng lại được phân loại trong nhóm 53.09 (vải dệt thoi từ sợi lanh).",
+        "nguon": "phan:50:chu_giai:2c~4"
+      }
+    ],
+    "oDauAiDung": [
+      {
+        "y": "làm quần áo lót phụ nữ và váy áo",
+        "trich": "Những loại vải này bao gồm những nguyên liệu tốt làm quần áo lót phụ nữ và váy áo",
+        "nguon": "ct.5309.2"
+      },
+      {
+        "y": "làm ga trải giường và khăn trải bàn",
+        "trich": "các nguyên liệu dùng làm ga trải giường, khăn trải bàn,...",
+        "nguon": "ct.5309.2"
+      },
+      {
+        "y": "làm bọc đệm bao tải vải bạt và buồm",
+        "trich": "Vải lanh cũng dùng làm bọc đệm, bao tải, vải bạt, buồm,...",
+        "nguon": "ct.5309.2"
+      }
+    ],
+    "hangDuocNeu": [
+      {
+        "ten": "vải dệt thoi từ sợi lanh",
+        "trich": "Nhóm này bao gồm các vải dệt thoi (như đã định nghĩa tại Phần (I) (c) của Chú giải tổng quát Phần XI) được làm từ sợi lanh.",
+        "nguon": "ct.5309.1"
+      }
+    ],
+    "dieuKienBatBuoc": [
+      {
+        "y": "phải là vải dệt thoi được làm từ sợi lanh",
+        "trich": "Nhóm này bao gồm các vải dệt thoi (như đã định nghĩa tại Phần (I) (c) của Chú giải tổng quát Phần XI) được làm từ sợi lanh.",
+        "nguon": "ct.5309.1"
+      },
+      {
+        "y": "khi pha nhiều sợi thì nhóm sợi Chương 53 trội và lanh hơn đay",
+        "trich": "Sự phân loại\nnày đạt được bởi việc xác định trước nhất là Chương thích hợp (trong trường hợp\nnày là Chương 53 vì tỷ lệ về sợi lanh và sợi đay được cộng lại) và sau đó là nhóm\ncó thể phân loại trong Chương đó, ở ví dụ này là nhóm 53.09 vì tỷ lệ lanh trội hơn\nđay",
+        "nguon": "phan:50:chu_giai:2c~4"
+      }
+    ]
+  },
+  "canh": [
+    {
+      "den": "3005",
+      "loai": "LOAI_TRU",
+      "dacDiem": "có tẩm thuốc hoặc đóng gói bán lẻ dùng trong y tế hay không",
+      "neu": "là băng dùng trong y tế đã tẩm thuốc hoặc đóng gói bán lẻ",
+      "thi": "3005",
+      "conNeu": "là vải dệt thoi sợi lanh chưa tẩm thuốc đóng gói y tế",
+      "thiKia": "5309",
+      "canCu": [
+        {
+          "nguon": "ct.5309.3",
+          "trich": "Băng dùng trong y tế, đã tẩm thuốc hay đã đóng gói để bán lẻ (nhóm 30.05) bị loại trừ khỏi nhóm này."
+        },
+        {
+          "nguon": "ct.3005.1",
+          "trich": "Nhóm này bao gồm các loại sản phẩm như bông, gạc, băng và các loại sản phẩm tương tự bằng vải, giấy, plastic..., đã được thấm hoặc tráng bằng dược chất (chống kích ứng, thuốc sát trùng, ...) với mục đích sử dụng cho y tế, phẫu thuật, nha khoa hoặc thú y."
+        }
+      ],
+      "quyTac": "QT1"
+    },
+    {
+      "den": "5212",
+      "loai": "PHAN_BIET",
+      "dacDiem": "tỷ trọng thành phần sợi dệt trội hơn theo quy tắc cộng gộp Chương",
+      "neu": "vải pha có tỷ trọng sợi bông chiếm ưu thế theo quy tắc Chương",
+      "thi": "5212",
+      "conNeu": "vải pha có tổng sợi lanh và đay trội và lanh hơn đay",
+      "thiKia": "5309",
+      "canCu": [
+        {
+          "nguon": "phan:50:chu_giai:2c~4",
+          "trich": "Hàng dệt này không được phân loại trong nhóm 52.12 (vải dệt thoi khác từ bông)\nnhưng lại được phân loại trong nhóm 53.09 (vải dệt thoi từ sợi lanh). Sự phân loại\nnày đạt được bởi việc xác định trước nhất là Chương thích hợp (trong trường hợp\nnày là Chương 53 vì tỷ lệ về sợi lanh và sợi đay được cộng lại) và sau đó là nhóm\ncó thể phân loại trong Chương đó, ở ví dụ này là nhóm 53.09 vì tỷ lệ lanh trội hơn\nđay"
+        }
+      ],
+      "quyTac": "QT1"
+    }
+  ],
+  "khongChac": [
+    "Nhóm 5309 là vải dệt thoi từ sợi lanh nên gói không quy định chức năng làm việc của thiết bị",
+    "Nhóm 5309 là mặt hàng vải dệt thoi nên không có cơ chế hoạt động cơ khí hay điện"
+  ]
+}
