@@ -319,4 +319,73 @@ kiem('ca ngược: cổng công khai lib/wco-op.js#view vẫn chặn 392490/4 (h
     JSON.stringify({ pbNguoc9615, pbNguoc3926 }));
 }
 
+// 8. OZV-2148 — ca 165 tầng 4 số: Bút mực dùng cho máy in sơ đồ → cạnh loại trừ 2 chiều 96.08 ↔ 90.17
+{
+  const H = require('../lib/hoi-theo-so-tay.js');
+  const { soTayGates, nhomLienQuanSoTay } = require('../lib/so-tay-gates.js');
+  const { phanTichHoiTruoc4So, TRANG_THAI_4SO } = require('../lib/do-thi/hoi-truoc-4so.js');
+  const st9608 = docJson('data/so-tay/9608.json');
+  const st9017 = docJson('data/so-tay/9017.json');
+  const muc9608 = (st9608.loaiTru || []).find((x) => x.sangNhom === '9017' && /bút mực bằng nhựa dùng cho máy in sơ đồ/i.test(x.dieuKien || ''));
+  const muc9017 = (st9017.loaiTru || []).find((x) => x.sangNhom === '9608' && /bút mực bằng nhựa dùng cho máy in sơ đồ/i.test(x.dieuKien || ''));
+  kiem('OZV-2148: sổ tay 9608↔9017 có loaiTru 2 chiều + canCuLoaiTru nguyên văn (checkItem đạt)',
+    Boolean(muc9608 && muc9017)
+    && muc9608.nguon === 'nhom9608.nhom'
+    && muc9608.canCuLoaiTru?.nguon === 'nhom9017.nhom'
+    && muc9017.nguon === 'nhom9017.nhom'
+    && muc9017.canCuLoaiTru?.nguon === 'nhom9608.nhom'
+    && checkItem('loaiTru', muc9608, sourcesFor('9608'), '9608') === null
+    && checkItem('loaiTru', muc9017, sourcesFor('9017'), '9017') === null,
+    JSON.stringify({ muc9608: Boolean(muc9608), muc9017: Boolean(muc9017) }));
+  kiem('OZV-2148: dieuKien hai chiều 9608↔9017 tách biệt cho hoi-truoc-4so',
+    Boolean(muc9608 && muc9017)
+    && muc9608.dieuKien !== muc9017.dieuKien
+    && !/;/.test(muc9608.dieuKien)
+    && !/;/.test(muc9017.dieuKien),
+    JSON.stringify({ dk9608: muc9608?.dieuKien, dk9017: muc9017?.dieuKien }));
+
+  const moTa165 = 'Bút mực / nhựa / dùng cho máy in sơ đồ';
+  const c5_9608 = D.canhTu('9608', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '9017');
+  const c5_9017 = D.canhTu('9017', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '9608');
+  const giua = D.canhGiuaNhomConSong(['9608', '9017']).filter((e) => e.loai === 'C5' || e.loai === 'C6');
+  const mr9608 = D.moRongUngVien(['9608'], moTa165);
+  const mr9017 = D.moRongUngVien(['9017'], moTa165);
+  kiem('OZV-2148: đồ thị C5/C6 + canhGiuaNhomConSong + moRongUngVien + nhomLienQuanSoTay nối 2 chiều 9608↔9017',
+    c5_9608.length >= 1
+    && c5_9017.length >= 1
+    && giua.length >= 2
+    && mr9608.some((x) => x.nhom === '9017')
+    && mr9017.some((x) => x.nhom === '9608')
+    && nhomLienQuanSoTay('9608').includes('9017')
+    && nhomLienQuanSoTay('9017').includes('9608'),
+    JSON.stringify({ c5_9608: c5_9608.length, c5_9017: c5_9017.length, giua: giua.length }));
+
+  const pb9608 = H.cauPhanBietNhom('9608', ['9608', '9017'], moTa165);
+  const pb9017 = H.cauPhanBietNhom('9017', ['9017', '9608'], moTa165);
+  const g9608 = soTayGates({ hs: '96082000', productText: moTa165, productName: 'Bút mực', candidateHeadings: ['9608', '9017'] });
+  const g9017 = soTayGates({ hs: '90172010', productText: moTa165, productName: 'Bút mực', candidateHeadings: ['9017', '9608'] });
+  const ht165 = phanTichHoiTruoc4So({ moTa: moTa165, ungVien: ['9608', '9017'] });
+  kiem('OZV-2148 (thuận): cauPhanBietNhom, soTayGates và phanTichHoiTruoc4So hoạt động đúng 2 chiều cho ca 165',
+    pb9608.length === 1 && pb9608[0].nguon === 'nhom9608.nhom' && /90\.17/.test(pb9608[0].questionVi)
+    && pb9017.length === 1 && pb9017[0].nguon === 'nhom9017.nhom' && /96\.08/.test(pb9017[0].questionVi)
+    && (g9608.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '9017')
+    && (g9017.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '9608')
+    && ht165.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC
+    && new Set((ht165.nhanh || []).map((n) => n.dieuKien)).size === 2,
+    JSON.stringify({ pb9608, pb9017, ht165: ht165.dapAnDieuKien }));
+
+  const pbNguoc9608 = H.cauPhanBietNhom('9608', ['9608', '9017'], 'Compa để vẽ bản đồ kỹ thuật bằng thép');
+  const pbNguoc9017 = H.cauPhanBietNhom('9017', ['9017', '9608'], 'Thước chữ T dùng trên bàn vẽ');
+  const gNguoc9608 = soTayGates({ hs: '96081010', productText: 'Compa để vẽ bản đồ kỹ thuật bằng thép', productName: 'Compa để vẽ bản đồ kỹ thuật bằng thép' });
+  const gNguoc9017 = soTayGates({ hs: '90172010', productText: 'Thước chữ T dùng trên bàn vẽ', productName: 'Thước chữ T dùng trên bàn vẽ' });
+  kiem('OZV-2148 (đối chứng): compa vẽ bản đồ / thước chữ T không hỏi oan và không bật oan 96.08↔90.17',
+    pbNguoc9608.length === 0
+    && pbNguoc9017.length === 0
+    && !(gNguoc9608.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '9017')
+    && !(gNguoc9017.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '9608')
+    && !D.moRongUngVien(['9608'], 'Compa để vẽ bản đồ kỹ thuật bằng thép').some((x) => x.nhom === '9017')
+    && !D.moRongUngVien(['9017'], 'Thước chữ T dùng trên bàn vẽ').some((x) => x.nhom === '9608'),
+    JSON.stringify({ pbNguoc9608, pbNguoc9017 }));
+}
+
 xong();
