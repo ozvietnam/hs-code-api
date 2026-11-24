@@ -278,5 +278,129 @@ if (fs.existsSync(boChuanPath)) {
   console.log('INFO  data/bo-chuan/4so-v1.jsonl chưa gộp từ #1644 — bỏ qua kiểm 100 ca trong CI.');
 }
 
+// 5. OZV-2136 — Cạnh loại trừ 2 chiều 39.17 <-> 59.09 cho ca 164 tầng 4 số
+// ('Dây hơi bàn ủi / Vải bọc nhựa / Phụ kiện bàn ủi, dùng trong ngành công nghiệp may mặc')
+{
+  const S = require('../lib/so-tay.js');
+  const { loadSoTay, soTayGates, nhomLienQuanSoTay } = require('../lib/so-tay-gates.js');
+  const { cauPhanBietNhom } = require('../lib/hoi-theo-so-tay.js');
+  const D = require('../lib/do-thi/index.js');
+  D.datLai();
+
+  const q164 = 'Dây hơi bàn ủi / Vải bọc nhựa / Phụ kiện bàn ủi, dùng trong ngành công nghiệp may mặc';
+  const st3917 = loadSoTay('3917');
+  const st5909 = loadSoTay('5909');
+  const lt3917 = (st3917?.loaiTru || []).find((x) => x.sangNhom === '5909' && x.canCuLoaiTru?.nguon === 'nhom5909.nhom' && /dây hơi|vải bọc nhựa/i.test(x.dieuKien || ''));
+  const lt5909 = (st5909?.loaiTru || []).find((x) => x.sangNhom === '3917' && x.canCuLoaiTru?.nguon === 'nhom3917.nhom' && /dây hơi|rỗng nòng|plastic/i.test(x.dieuKien || ''));
+  check(
+    '[OZV-2136 căn cứ] sổ tay 3917 và 5909 có mục loaiTru 2 chiều 3917 <-> 5909 kèm canCuLoaiTru nguyên văn đạt checkItem',
+    Boolean(lt3917 && lt3917.nguon === 'ch39.chuong' && S.checkItem('loaiTru', lt3917, S.sourcesFor('3917'), '3917') === null)
+      && Boolean(lt5909 && lt5909.nguon === 'nhom5909.nhom' && S.checkItem('loaiTru', lt5909, S.sourcesFor('5909'), '5909') === null)
+      && lt3917.dieuKien !== lt5909.dieuKien
+      && !/;/.test(lt3917.dieuKien)
+      && !/;/.test(lt5909.dieuKien),
+    JSON.stringify({ lt3917: Boolean(lt3917), lt5909: Boolean(lt5909) }),
+  );
+
+  const c5Tu3917 = D.canhTu('3917', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '5909');
+  const c5Tu5909 = D.canhTu('5909', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '3917');
+  const c6Tu3917 = D.canhTu('3917', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '5909');
+  const c6Tu5909 = D.canhTu('5909', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '3917');
+  const mrTu3917 = D.moRongUngVien(['3917'], q164);
+  const mrTu5909 = D.moRongUngVien(['5909'], q164);
+  const rel3917 = nhomLienQuanSoTay('3917');
+  const rel5909 = nhomLienQuanSoTay('5909');
+  check(
+    '[OZV-2136 đồ thị 2 chiều] bảng cạnh có C5/C6 3917<->5909, nhomLienQuanSoTay 2 chiều và moRongUngVien kéo 2 chiều cho ca 164',
+    c5Tu3917.some((e) => e.nguon === 'ch39.chuong' && e.canCuLoaiTru?.nguon === 'nhom5909.nhom')
+      && c5Tu5909.some((e) => e.nguon === 'nhom5909.nhom' && e.canCuLoaiTru?.nguon === 'nhom3917.nhom')
+      && c6Tu3917.length >= 1
+      && c6Tu5909.length >= 1
+      && rel3917.includes('5909')
+      && rel5909.includes('3917')
+      && mrTu3917.some((x) => x.nhom === '5909')
+      && mrTu5909.some((x) => x.nhom === '3917'),
+    JSON.stringify({ c5Tu3917: c5Tu3917.length, c5Tu5909: c5Tu5909.length, mrTu3917, mrTu5909 }),
+  );
+
+  const ht164 = phanTichHoiTruoc4So({ moTa: q164, ungVien: ['3917', '5909'] });
+  const distinctDk164 = new Set((ht164.nhanh || []).map((n) => n.dieuKien)).size === 2;
+  check(
+    '[OZV-2136 hoi-truoc-4so] ca 164 Dây hơi bàn ủi tách 2 nhánh điều kiện riêng biệt cho [3917, 5909]',
+    ht164.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC
+      && distinctDk164
+      && Boolean(ht164.dapAnDieuKien && ht164.dapAnDieuKien.includes('→ nhóm 3917 (') && ht164.dapAnDieuKien.includes('→ nhóm 5909 ('))
+      && Boolean(ht164.cauHoi),
+    JSON.stringify({ trangThai: ht164.trangThai, distinctDk164, dapAnDieuKien: ht164.dapAnDieuKien }),
+  );
+
+  const pb3917 = cauPhanBietNhom('3917', ['3917', '5909'], q164);
+  const pb5909 = cauPhanBietNhom('5909', ['5909', '3917'], q164);
+  check(
+    '[OZV-2136 thuận cauPhanBietNhom] sinh câu hỏi phân biệt 2 chiều 39.17 <-> 59.09 cho ca 164 Dây hơi bàn ủi',
+    pb3917.length === 1
+      && pb3917[0].loai === 'PHAN_BIET_NHOM'
+      && pb3917[0].canCu === 'so-tay'
+      && pb3917[0].nguon === 'ch39.chuong'
+      && /59\.09/.test(pb3917[0].questionVi)
+      && /39\.17/.test(pb3917[0].questionVi)
+      && pb5909.length === 1
+      && pb5909[0].loai === 'PHAN_BIET_NHOM'
+      && pb5909[0].canCu === 'so-tay'
+      && pb5909[0].nguon === 'nhom5909.nhom'
+      && /39\.17/.test(pb5909[0].questionVi)
+      && /59\.09/.test(pb5909[0].questionVi),
+    JSON.stringify({ pb3917, pb5909 }),
+  );
+
+  const g3917To5909 = soTayGates({
+    hs: '39172929',
+    productText: q164,
+    productName: 'Dây hơi bàn ủi',
+    candidateHeadings: ['3917', '5909'],
+  });
+  const g5909To3917 = soTayGates({
+    hs: '59090090',
+    productText: q164,
+    productName: 'Dây hơi bàn ủi',
+    candidateHeadings: ['5909', '3917'],
+  });
+  check(
+    '[OZV-2136 thuận soTayGates] kích hoạt SO_TAY_LOAI_TRU đúng cả 2 chiều 3917 -> 5909 và 5909 -> 3917',
+    (g3917To5909.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('5909'))
+      && (g5909To3917.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('3917')),
+    JSON.stringify({ g3917To5909: g3917To5909.challenges, g5909To3917: g5909To3917.challenges }),
+  );
+
+  const dcXucXich = 'Vỏ xúc xích nhân tạo bằng protein đã làm cứng';
+  const dcVaiThoi = 'Vải dệt thoi cotton khổ rộng chưa may thành ống';
+  const dcXx3917 = cauPhanBietNhom('3917', ['3917', '5909'], dcXucXich);
+  const dcXx5909 = cauPhanBietNhom('5909', ['5909', '3917'], dcXucXich);
+  const dcVt3917 = cauPhanBietNhom('3917', ['3917', '5909'], dcVaiThoi);
+  const dcVt5909 = cauPhanBietNhom('5909', ['5909', '3917'], dcVaiThoi);
+  const gDoi3917 = soTayGates({
+    hs: '39171010',
+    productText: dcXucXich,
+    productName: dcXucXich,
+  });
+  const gDoi5909 = soTayGates({
+    hs: '59090010',
+    productText: dcVaiThoi,
+    productName: dcVaiThoi,
+  });
+  check(
+    '[OZV-2136 đối chứng] vỏ xúc xích protein và vải dệt thoi cotton không hỏi oan / không kéo oan 39.17 <-> 59.09',
+    dcXx3917.length === 0
+      && dcXx5909.length === 0
+      && dcVt3917.length === 0
+      && dcVt5909.length === 0
+      && !D.moRongUngVien(['3917'], dcXucXich).some((x) => x.nhom === '5909')
+      && !D.moRongUngVien(['5909'], dcVaiThoi).some((x) => x.nhom === '3917')
+      && !(gDoi3917.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('5909'))
+      && !(gDoi5909.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('3917')),
+    JSON.stringify({ dcXx3917, dcXx5909, dcVt3917, dcVt5909, gDoi3917: gDoi3917.challenges, gDoi5909: gDoi5909.challenges }),
+  );
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
