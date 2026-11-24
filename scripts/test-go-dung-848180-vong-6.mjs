@@ -138,5 +138,41 @@ check('0b spec: không nguonLoai/trangThai/duyet, mọi chongLanTruc phanXu null
   check('6e van bi điều khiển bằng khí nén (thoả r14573 lẫn r14563) ⇒ KHÔNG chốt, chong-lan-truc:848180~r14563', h2.ketLuan.trangThai === 'CAN_CHUYEN_GIA' && h2.ketLuan.chuaChot.includes('chong-lan-truc:848180~r14563'), h2.ketLuan);
 }
 
+// ── 7. OZV-2091: cạnh loại trừ 2 chiều 84.21 <-> 84.81 cho câu thực địa "bộ lọc điều áp khí nén, model ar3000-03..." ──
+{
+  const H = require('../lib/hoi-theo-so-tay.js');
+  const moTa = 'bộ lọc điều áp khí nén, model ar3000-03, kt (90*53*53)mm, bằng hợp kim nhôm, mới 100%';
+  const st8421 = loadSoTay('8421');
+  const st8481 = loadSoTay('8481');
+  const src8421 = S.sourcesFor('8421');
+  const src8481 = S.sourcesFor('8481');
+  const lt8421 = (st8421?.loaiTru || []).find((x) => x.sangNhom === '8481');
+  const lt8481 = (st8481?.loaiTru || []).find((x) => x.sangNhom === '8421');
+  check('7a sổ tay 8421 và 8481 có mục loaiTru 2 chiều 8421 <-> 8481 kèm canCuLoaiTru nguyên văn đạt checkItem',
+    Boolean(lt8421 && lt8421.canCuLoaiTru?.nguon === 'nhom8481.nhom' && S.checkItem('loaiTru', lt8421, src8421, '8421') === null)
+    && Boolean(lt8481 && lt8481.canCuLoaiTru?.nguon === 'nhom8421.nhom' && S.checkItem('loaiTru', lt8481, src8481, '8481') === null),
+    { lt8421, lt8481 });
+
+  const pb8481 = H.cauPhanBietNhom('8481', ['8481', '8421'], moTa);
+  check('7b chiều thuận 8481 đứng đầu với [8481, 8421]: sinh câu PHAN_BIET_NHOM từ nhom8481.nhom trỏ sang 84.21',
+    pb8481.length === 1 && pb8481[0].loai === 'PHAN_BIET_NHOM' && pb8481[0].canCu === 'so-tay'
+    && pb8481[0].nguon === 'nhom8481.nhom' && /84\.21/.test(pb8481[0].questionVi) && /84\.81/.test(pb8481[0].questionVi),
+    pb8481);
+
+  const pb8421 = H.cauPhanBietNhom('8421', ['8421', '8481'], moTa);
+  check('7c chiều thuận 8421 đứng đầu với [8421, 8481]: sinh câu PHAN_BIET_NHOM từ nhom8421.nhom trỏ sang 84.81',
+    pb8421.length === 1 && pb8421[0].loai === 'PHAN_BIET_NHOM' && pb8421[0].canCu === 'so-tay'
+    && pb8421[0].nguon === 'nhom8421.nhom' && /84\.81/.test(pb8421[0].questionVi) && /84\.21/.test(pb8421[0].questionVi),
+    pb8421);
+
+  const nguocLyTam8421 = H.cauPhanBietNhom('8421', ['8421', '8481'], 'máy vắt ly tâm quần áo');
+  const nguocLyTam8481 = H.cauPhanBietNhom('8481', ['8481', '8421'], 'máy vắt ly tâm quần áo');
+  const nguocVoiNuoc8421 = H.cauPhanBietNhom('8421', ['8421', '8481'], 'vòi nước bồn rửa tay bằng đồng');
+  const nguocVoiNuoc8481 = H.cauPhanBietNhom('8481', ['8481', '8421'], 'vòi nước bồn rửa tay bằng đồng');
+  check('7d ca đối chứng: "máy vắt ly tâm quần áo" và "vòi nước bồn rửa tay bằng đồng" không hỏi oan 84.21 <-> 84.81',
+    nguocLyTam8421.length === 0 && nguocLyTam8481.length === 0 && nguocVoiNuoc8421.length === 0 && nguocVoiNuoc8481.length === 0,
+    { nguocLyTam8421, nguocLyTam8481, nguocVoiNuoc8421, nguocVoiNuoc8481 });
+}
+
 console.log(`\n${pass} pass, ${fail} fail`);
 if (fail) process.exit(1);
