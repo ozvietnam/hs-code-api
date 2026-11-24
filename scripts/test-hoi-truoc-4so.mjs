@@ -534,5 +534,137 @@ if (fs.existsSync(boChuanPath)) {
   );
 }
 
+// 7. OZV-2158 — Cạnh loại trừ 2 chiều 90.13 <-> 85.41 cho ca 162 tầng 4 số
+// ('Đầu chiếu tia Laser / None / Chiếu tia sáng chấm đỏ')
+{
+  const S = require('../lib/so-tay.js');
+  const { loadSoTay, soTayGates, nhomLienQuanSoTay } = require('../lib/so-tay-gates.js');
+  const { cauPhanBietNhom } = require('../lib/hoi-theo-so-tay.js');
+  const D = require('../lib/do-thi/index.js');
+  D.datLai();
+
+  const q162 = 'Đầu chiếu tia Laser / None / Chiếu tia sáng chấm đỏ';
+  const st9013 = loadSoTay('9013');
+  const st8541 = loadSoTay('8541');
+  const v9013 = S.verifySoTay(st9013, '9013');
+  const v8541 = S.verifySoTay(st8541, '8541');
+  check(
+    '[OZV-2158 verifySoTay] sổ tay 9013 và 8541 đạt 100% (0 mục không kiểm được nguồn)',
+    v9013.loai.length === 0 && v8541.loai.length === 0,
+    JSON.stringify({ loai9013: v9013.loai, loai8541: v8541.loai }),
+  );
+
+  const lt9013 = (st9013?.loaiTru || []).find((x) => x.sangNhom === '8541' && x.canCuLoaiTru?.nguon === 'nhom8541.nhom' && /đầu chiếu tia laser|đi-ốt laser/i.test(x.dieuKien || ''));
+  const lt8541 = (st8541?.loaiTru || []).find((x) => x.sangNhom === '9013' && x.canCuLoaiTru?.nguon === 'nhom9013.nhom' && /đầu chiếu tia laser|thiết bị tạo tia laser/i.test(x.dieuKien || ''));
+  check(
+    '[OZV-2158 căn cứ] sổ tay 9013 và 8541 có mục loaiTru 2 chiều 9013 <-> 8541 kèm canCuLoaiTru nguyên văn đạt checkItem',
+    Boolean(lt9013 && lt9013.nguon === 'nhom9013.nhom' && S.checkItem('loaiTru', lt9013, S.sourcesFor('9013'), '9013') === null)
+      && Boolean(lt8541 && lt8541.nguon === 'nhom8541.nhom' && S.checkItem('loaiTru', lt8541, S.sourcesFor('8541'), '8541') === null)
+      && lt9013.dieuKien !== lt8541.dieuKien
+      && !/;/.test(lt9013.dieuKien)
+      && !/;/.test(lt8541.dieuKien),
+    JSON.stringify({ lt9013: Boolean(lt9013), lt8541: Boolean(lt8541) }),
+  );
+
+  const c5Tu9013 = D.canhTu('9013', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8541');
+  const c5Tu8541 = D.canhTu('8541', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '9013');
+  const c6Tu9013 = D.canhTu('9013', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '8541');
+  const c6Tu8541 = D.canhTu('8541', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '9013');
+  const mrTu9013 = D.moRongUngVien(['9013'], q162);
+  const mrTu8541 = D.moRongUngVien(['8541'], q162);
+  const rel9013 = nhomLienQuanSoTay('9013');
+  const rel8541 = nhomLienQuanSoTay('8541');
+  check(
+    '[OZV-2158 đồ thị 2 chiều] bảng cạnh có C5/C6 9013<->8541, nhomLienQuanSoTay 2 chiều và moRongUngVien kéo 2 chiều cho ca 162',
+    c5Tu9013.some((e) => e.nguon === 'nhom9013.nhom' && e.canCuLoaiTru?.nguon === 'nhom8541.nhom')
+      && c5Tu8541.some((e) => e.nguon === 'nhom8541.nhom' && e.canCuLoaiTru?.nguon === 'nhom9013.nhom')
+      && c6Tu9013.length >= 1
+      && c6Tu8541.length >= 1
+      && rel9013.includes('8541')
+      && rel8541.includes('9013')
+      && mrTu9013.some((x) => x.nhom === '8541')
+      && mrTu8541.some((x) => x.nhom === '9013'),
+    JSON.stringify({ c5Tu9013: c5Tu9013.length, c5Tu8541: c5Tu8541.length, mrTu9013, mrTu8541 }),
+  );
+
+  const ht162 = phanTichHoiTruoc4So({ moTa: q162, ungVien: ['9013', '8541'] });
+  const distinctDk162 = new Set((ht162.nhanh || []).map((n) => n.dieuKien)).size === 2;
+  check(
+    '[OZV-2158 hoi-truoc-4so] ca 162 Đầu chiếu tia Laser tách 2 nhánh điều kiện riêng biệt cho [9013, 8541]',
+    ht162.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC
+      && distinctDk162
+      && Boolean(ht162.dapAnDieuKien && ht162.dapAnDieuKien.includes('→ nhóm 9013 (') && ht162.dapAnDieuKien.includes('→ nhóm 8541 ('))
+      && Boolean(ht162.cauHoi),
+    JSON.stringify({ trangThai: ht162.trangThai, distinctDk162, dapAnDieuKien: ht162.dapAnDieuKien }),
+  );
+
+  const pb9013 = cauPhanBietNhom('9013', ['9013', '8541'], q162);
+  const pb8541 = cauPhanBietNhom('8541', ['8541', '9013'], q162);
+  check(
+    '[OZV-2158 thuận cauPhanBietNhom] sinh câu hỏi phân biệt 2 chiều 90.13 <-> 85.41 cho ca 162 Đầu chiếu tia Laser',
+    pb9013.length === 1
+      && pb9013[0].loai === 'PHAN_BIET_NHOM'
+      && pb9013[0].canCu === 'so-tay'
+      && pb9013[0].nguon === 'nhom9013.nhom'
+      && /85\.41/.test(pb9013[0].questionVi)
+      && /90\.13/.test(pb9013[0].questionVi)
+      && pb8541.length === 1
+      && pb8541[0].loai === 'PHAN_BIET_NHOM'
+      && pb8541[0].canCu === 'so-tay'
+      && pb8541[0].nguon === 'nhom8541.nhom'
+      && /90\.13/.test(pb8541[0].questionVi)
+      && /85\.41/.test(pb8541[0].questionVi),
+    JSON.stringify({ pb9013, pb8541 }),
+  );
+
+  const g9013To8541 = soTayGates({
+    hs: '90132000',
+    productText: q162,
+    productName: 'Đầu chiếu tia Laser',
+    candidateHeadings: ['9013', '8541'],
+  });
+  const g8541To9013 = soTayGates({
+    hs: '85414100',
+    productText: q162,
+    productName: 'Đầu chiếu tia Laser',
+    candidateHeadings: ['8541', '9013'],
+  });
+  check(
+    '[OZV-2158 thuận soTayGates] kích hoạt SO_TAY_LOAI_TRU đúng cả 2 chiều 9013 -> 8541 và 8541 -> 9013',
+    (g9013To8541.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8541'))
+      && (g8541To9013.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('9013')),
+    JSON.stringify({ g9013To8541: g9013To8541.challenges, g8541To9013: g8541To9013.challenges }),
+  );
+
+  const dcKinhNgam = 'Kính ngắm để lắp vào vũ khí săn bắn';
+  const dcPinMatTroi = 'Tế bào quang điện đã lắp ráp thành mảng mô-đun pin mặt trời';
+  const dcKn9013 = cauPhanBietNhom('9013', ['9013', '8541'], dcKinhNgam);
+  const dcKn8541 = cauPhanBietNhom('8541', ['8541', '9013'], dcKinhNgam);
+  const dcPin9013 = cauPhanBietNhom('9013', ['9013', '8541'], dcPinMatTroi);
+  const dcPin8541 = cauPhanBietNhom('8541', ['8541', '9013'], dcPinMatTroi);
+  const gDoi9013 = soTayGates({
+    hs: '90131010',
+    productText: dcKinhNgam,
+    productName: dcKinhNgam,
+  });
+  const gDoi8541 = soTayGates({
+    hs: '85414300',
+    productText: dcPinMatTroi,
+    productName: dcPinMatTroi,
+  });
+  check(
+    '[OZV-2158 đối chứng] kính ngắm vũ khí và mô-đun pin mặt trời không hỏi oan / không kéo oan 90.13 <-> 85.41',
+    dcKn9013.length === 0
+      && dcKn8541.length === 0
+      && dcPin9013.length === 0
+      && dcPin8541.length === 0
+      && !D.moRongUngVien(['9013'], dcKinhNgam).some((x) => x.nhom === '8541')
+      && !D.moRongUngVien(['8541'], dcPinMatTroi).some((x) => x.nhom === '9013')
+      && !(gDoi9013.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8541'))
+      && !(gDoi8541.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('9013')),
+    JSON.stringify({ dcKn9013, dcKn8541, dcPin9013, dcPin8541, gDoi9013: gDoi9013.challenges, gDoi8541: gDoi8541.challenges }),
+  );
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
