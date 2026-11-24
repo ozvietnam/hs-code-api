@@ -1206,5 +1206,162 @@ const ketQuaSong = (raw = VAN) => ketQuaGia('848180', raw, {}, ['848120']);
     { pbDau5907, pbDau5909, pbPhong5907, pbPhong5909, pbVoi5907, pbVoi5909, gDc5907: gDc5907.challenges, gDc5909: gDc5909.challenges });
 }
 
+// 19) OZV-2186 — cạnh loại trừ 2 chiều 60.04 <-> 60.06 cho ca 124 tầng 4 số «Vải gió dệt kim / Vải giả lông thú dệt kim»
+{
+  const S = require('../lib/so-tay.js');
+  const D = require('../lib/do-thi/index.js');
+  const { phanTichHoiTruoc4So, TRANG_THAI_4SO } = require('../lib/do-thi/hoi-truoc-4so.js');
+  const q124Gio = 'Vải gió dệt kim / None / None';
+  const q124Long = 'Vải giả lông thú dệt kim, khổ 1,5m, có tráng lớp nhựa PU mặt sau';
+  for (const nh of ['5903', '6001', '6004', '6005', '6006']) {
+    fs.copyFileSync(path.join('data/so-tay', `${nh}.json`), path.join(TEST_DATA_DIR, 'so-tay', `${nh}.json`));
+  }
+  delete require.cache[require.resolve('../lib/so-tay-gates.js')];
+  const { soTayGates, nhomLienQuanSoTay, loadSoTay: loadSoTay19 } = require('../lib/so-tay-gates.js');
+  D.datLai();
+
+  const st6004 = loadSoTay19('6004');
+  const st6006 = loadSoTay19('6006');
+  const v6004 = S.verifySoTay(st6004, '6004');
+  const v6006 = S.verifySoTay(st6006, '6006');
+  check('OZV-2186 (1/9 verifySoTay): sổ tay 6004 và 6006 đạt 100% (0 mục bị loại)',
+    v6004.loai.length === 0 &&
+      v6006.loai.length === 0 &&
+      v6004.dat === v6004.tong &&
+      v6006.dat === v6006.tong &&
+      st6004.kiemTra?.tong === v6004.tong &&
+      st6004.kiemTra?.dat === v6004.dat &&
+      st6004.kiemTra?.loai === 0 &&
+      st6006.kiemTra?.tong === v6006.tong &&
+      st6006.kiemTra?.dat === v6006.dat &&
+      st6006.kiemTra?.loai === 0,
+    { loai6004: v6004.loai, loai6006: v6006.loai, tong6004: v6004.tong, tong6006: v6006.tong });
+
+  const lt6004 = (st6004?.loaiTru || []).find((x) => x.sangNhom === '6006');
+  const lt6006 = (st6006?.loaiTru || []).find((x) => x.sangNhom === '6004');
+  check('OZV-2186 (2/9 căn cứ): sổ tay 6004 và 6006 có loaiTru 2 chiều kèm canCuLoaiTru nguyên văn đạt checkItem',
+    Boolean(
+      lt6004 &&
+        lt6004.nguon === 'nhom6004.nhom' &&
+        lt6004.canCuLoaiTru?.nguon === 'nhom6006.nhom' &&
+        S.checkItem('loaiTru', lt6004, S.sourcesFor('6004'), '6004') === null
+    ) &&
+      Boolean(
+        lt6006 &&
+          lt6006.nguon === 'nhom6006.nhom' &&
+          lt6006.canCuLoaiTru?.nguon === 'nhom6004.nhom' &&
+          S.checkItem('loaiTru', lt6006, S.sourcesFor('6006'), '6006') === null
+      ) &&
+      lt6004.dieuKien !== lt6006.dieuKien &&
+      !/;/.test(lt6004.dieuKien) &&
+      !/;/.test(lt6006.dieuKien),
+    { lt6004, lt6006 });
+
+  const c5Tu6004 = D.canhTu('6004', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '6006');
+  const c5Tu6006 = D.canhTu('6006', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '6004');
+  const c6Tu6004 = D.canhTu('6004', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '6006');
+  const c6Tu6006 = D.canhTu('6006', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '6004');
+  const giua = D.canhGiuaNhomConSong(['6004', '6006']).filter((e) => e.loai === 'C5' || e.loai === 'C6');
+  const mrGioTu6004 = D.moRongUngVien(['6004'], q124Gio, { toiDa: 10 });
+  const mrGioTu6006 = D.moRongUngVien(['6006'], q124Gio, { toiDa: 10 });
+  const mrLongTu6004 = D.moRongUngVien(['6004'], q124Long, { toiDa: 10 });
+  const mrLongTu6006 = D.moRongUngVien(['6006'], q124Long, { toiDa: 10 });
+  check('OZV-2186 (3/9 đồ thị 2 chiều): bảng cạnh C5/C6 6004↔6006, canhGiuaNhomConSong và moRongUngVien kéo 2 chiều cho ca 124',
+    c5Tu6004.some((e) => e.nguon === 'nhom6004.nhom' && e.canCuLoaiTru?.nguon === 'nhom6006.nhom') &&
+      c5Tu6006.some((e) => e.nguon === 'nhom6006.nhom' && e.canCuLoaiTru?.nguon === 'nhom6004.nhom') &&
+      c6Tu6004.length >= 1 &&
+      c6Tu6006.length >= 1 &&
+      giua.length >= 2 &&
+      mrGioTu6004.some((x) => x.nhom === '6006') &&
+      mrGioTu6006.some((x) => x.nhom === '6004') &&
+      mrLongTu6004.some((x) => x.nhom === '6006') &&
+      mrLongTu6006.some((x) => x.nhom === '6004'),
+    { c5Tu6004: c5Tu6004.length, c5Tu6006: c5Tu6006.length, giua: giua.length, mrGioTu6004, mrGioTu6006, mrLongTu6004, mrLongTu6006 });
+
+  check('OZV-2186 (4/9 nhomLienQuanSoTay): liên kết hai chiều 6004 ↔ 6006',
+    nhomLienQuanSoTay('6004').includes('6006') && nhomLienQuanSoTay('6006').includes('6004'),
+    { rel6004: nhomLienQuanSoTay('6004'), rel6006: nhomLienQuanSoTay('6006') });
+
+  const pb6004Gio = H.cauPhanBietNhom('6004', ['6004', '6006'], q124Gio);
+  const pb6004Long = H.cauPhanBietNhom('6004', ['6004', '6006'], q124Long);
+  check('OZV-2186 (5/9 thuận 6004 → 6006): 6004 đứng đầu với [6004, 6006] sinh câu PHAN_BIET_NHOM từ nhom6004.nhom sang 60.06',
+    pb6004Gio.length === 1 &&
+      pb6004Gio[0].loai === 'PHAN_BIET_NHOM' &&
+      pb6004Gio[0].canCu === 'so-tay' &&
+      pb6004Gio[0].nguon === 'nhom6004.nhom' &&
+      /60\.06/.test(pb6004Gio[0].questionVi) &&
+      /60\.04/.test(pb6004Gio[0].questionVi) &&
+      pb6004Long.length === 1 &&
+      /60\.06/.test(pb6004Long[0].questionVi),
+    { pb6004Gio, pb6004Long });
+
+  const pb6006Gio = H.cauPhanBietNhom('6006', ['6006', '6004'], q124Gio);
+  const pb6006Long = H.cauPhanBietNhom('6006', ['6006', '6004'], q124Long);
+  check('OZV-2186 (6/9 thuận 6006 → 6004): 6006 đứng đầu với [6006, 6004] sinh câu PHAN_BIET_NHOM từ nhom6006.nhom sang 60.04',
+    pb6006Gio.length === 1 &&
+      pb6006Gio[0].loai === 'PHAN_BIET_NHOM' &&
+      pb6006Gio[0].canCu === 'so-tay' &&
+      pb6006Gio[0].nguon === 'nhom6006.nhom' &&
+      /60\.04/.test(pb6006Gio[0].questionVi) &&
+      /60\.06/.test(pb6006Gio[0].questionVi) &&
+      pb6006Long.length === 1 &&
+      /60\.04/.test(pb6006Long[0].questionVi),
+    { pb6006Gio, pb6006Long });
+
+  const g6004Gio = soTayGates({ hs: '60041010', productText: q124Gio, productName: q124Gio, pool: [{ h4: '6006', from: 'test' }] });
+  const g6006Gio = soTayGates({ hs: '60063290', productText: q124Gio, productName: q124Gio, pool: [{ h4: '6004', from: 'test' }] });
+  const g6004Long = soTayGates({ hs: '60041010', productText: q124Long, productName: q124Long, pool: [{ h4: '6006', from: 'test' }] });
+  const g6006Long = soTayGates({ hs: '60063290', productText: q124Long, productName: q124Long, pool: [{ h4: '6004', from: 'test' }] });
+  check('OZV-2186 (7/9 soTayGates 2 chiều): bật cổng SO_TAY_LOAI_TRU cả 2 chiều 60.04 ↔ 60.06 trên ca 124',
+    (g6004Gio.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '6006') &&
+      (g6006Gio.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '6004') &&
+      (g6004Long.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '6006') &&
+      (g6006Long.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '6004'),
+    { g6004Gio: g6004Gio.challenges, g6006Gio: g6006Gio.challenges, g6004Long: g6004Long.challenges, g6006Long: g6006Long.challenges });
+
+  const dcBang = 'Băng đã tẩm thuốc hoặc đóng gói để bán lẻ';
+  const dcTheu = 'Vải thêu thuộc nhóm 58.10';
+  const dcTham = 'Các loại thảm dệt kim và thảm trải sàn';
+  const pbBang6004 = H.cauPhanBietNhom('6004', ['6004', '6006'], dcBang);
+  const pbBang6006 = H.cauPhanBietNhom('6006', ['6006', '6004'], dcBang);
+  const pbTheu6004 = H.cauPhanBietNhom('6004', ['6004', '6006'], dcTheu);
+  const pbTheu6006 = H.cauPhanBietNhom('6006', ['6006', '6004'], dcTheu);
+  const pbTham6004 = H.cauPhanBietNhom('6004', ['6004', '6006'], dcTham);
+  const pbTham6006 = H.cauPhanBietNhom('6006', ['6006', '6004'], dcTham);
+  const gDc6004 = soTayGates({ hs: '60041010', productText: dcBang, productName: dcBang });
+  const gDc6006 = soTayGates({ hs: '60062200', productText: dcTheu, productName: dcTheu });
+  check('OZV-2186 (8/9 đối chứng): băng tẩm thuốc, vải thêu và thảm dệt kim không hỏi/kéo/bật cổng oan 60.04 ↔ 60.06',
+    pbBang6004.length === 0 &&
+      pbBang6006.length === 0 &&
+      pbTheu6004.length === 0 &&
+      pbTheu6006.length === 0 &&
+      pbTham6004.length === 0 &&
+      pbTham6006.length === 0 &&
+      !(gDc6004.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '6006') &&
+      !(gDc6006.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '6004') &&
+      !D.moRongUngVien(['6004'], dcBang).some((x) => x.nhom === '6006') &&
+      !D.moRongUngVien(['6006'], dcTheu).some((x) => x.nhom === '6004') &&
+      !D.moRongUngVien(['6006'], dcTham).some((x) => x.nhom === '6004'),
+    { pbBang6004, pbBang6006, pbTheu6004, pbTheu6006, pbTham6004, pbTham6006, gDc6004: gDc6004.challenges, gDc6006: gDc6006.challenges });
+
+  const ht2 = phanTichHoiTruoc4So({ moTa: q124Gio, ungVien: ['6004', '6006'] });
+  const ht3 = phanTichHoiTruoc4So({ moTa: q124Long, ungVien: ['5903', '6004', '6006'] });
+  const ht5 = phanTichHoiTruoc4So({ moTa: q124Gio, ungVien: ['5903', '6001', '6004', '6005', '6006'] });
+  check('OZV-2186 (9/9 phanTichHoiTruoc4So): tách đủ nhánh điều kiện theo cạnh C5 cho [6004, 6006], [5903, 6004, 6006] và cụm 5 nhóm [5903, 6001, 6004, 6005, 6006] trên ca 124',
+    ht2.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC &&
+      (ht2.nhanh || []).every((n) => String(n.nguon || '').startsWith('do-thi:C5:')) &&
+      new Set((ht2.nhanh || []).map((n) => n.dieuKien)).size === 2 &&
+      Boolean(ht2.dapAnDieuKien && ht2.dapAnDieuKien.includes('→ nhóm 6004 (') && ht2.dapAnDieuKien.includes('→ nhóm 6006 (')) &&
+      ht3.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC &&
+      (ht3.nhanh || []).every((n) => String(n.nguon || '').startsWith('do-thi:C5:')) &&
+      new Set((ht3.nhanh || []).map((n) => n.dieuKien)).size === 3 &&
+      ['5903', '6004', '6006'].every((h) => ht3.dapAnDieuKien?.includes(`→ nhóm ${h} (`)) &&
+      ht5.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC &&
+      (ht5.nhanh || []).every((n) => /^do-thi:C[57]:/.test(String(n.nguon || ''))) &&
+      new Set((ht5.nhanh || []).map((n) => n.dieuKien)).size === 5 &&
+      ['5903', '6001', '6004', '6005', '6006'].every((h) => ht5.dapAnDieuKien?.includes(`→ nhóm ${h} (`)),
+    { ht2: ht2.dapAnDieuKien, ht3: ht3.dapAnDieuKien, ht5: ht5.dapAnDieuKien });
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
