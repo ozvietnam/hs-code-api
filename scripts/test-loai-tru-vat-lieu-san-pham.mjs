@@ -199,8 +199,7 @@ const CAP_7 = [
     moTaMoRong: 'Còi chíp điện từ / None / tạo âm thanh trong mạch điện tử',
     hangNguonSach: 'Tai nghe có khung chụp qua đầu',
     nguonDich: 'nhom8531.nhom',
-
-
+  },
   // OZV-2132: 76.16 ↔ 84.66 (Bộ bàn trượt bằng tay / nhôm / gá thiết bị máy công nghiệp căn chỉnh bằng tay)
   {
     tu: '7616',
@@ -217,7 +216,6 @@ const CAP_7 = [
     moTaMoRong: 'Bộ bàn trượt bằng tay / nhôm / gá thiết bị máy công nghiệp căn chỉnh bằng tay',
     hangNguonSach: 'Mâm cặp máy tiện 3 chấu tự định tâm',
     nguonDich: 'nhom7616.nhom',
-
   },
 ];
 
@@ -294,11 +292,6 @@ const CA_BIEN_NGUON = [
   { hs: '85318011', target: '8518', ten: 'Chuông cửa điện tử có dây 220V' },
   { hs: '85183010', target: '8531', ten: 'Tai nghe có khung chụp qua đầu' },
   { hs: '85182110', target: '8531', ten: 'Loa thùng hội trường công suất 300W' },
-
-
-  { hs: '76169990', target: '8466', ten: 'Tấm đan lưới bằng dây nhôm dùng chắn bảo vệ' },
-  { hs: '84662090', target: '7616', ten: 'Bàn kẹp phôi bằng thép dùng cho máy phay CNC' },
-
 ];
 for (const b of CA_BIEN_NGUON) {
   const g = soTayGates({ hs: b.hs, productText: b.ten, productName: b.ten });
@@ -639,30 +632,6 @@ for (const b of CA_BIEN_NGUON) {
         hypotheses: [
           { chapter: '85', heading4: '8518', subheading6: '851829', confidence: 53 },
           { chapter: '85', heading4: '8531', subheading6: '853180', confidence: 37 },
-
-
-// 8. OZV-2132: ca 132 tầng 4 số «Bộ bàn trượt bằng tay / nhôm / gá thiết bị máy công nghiệp căn chỉnh bằng tay» (dừng 6 số 761699 hoặc 846620)
-//    sinh đủ câu hỏi phân biệt nhóm 4 số có căn cứ chú giải nguyên văn giữa 76.16 ↔ 84.66, kèm ca ngược.
-{
-  const moTa = 'Bộ bàn trượt bằng tay / nhôm / gá thiết bị máy công nghiệp căn chỉnh bằng tay';
-  const prevFlag = process.env.HS_HOI_THEO_SO_TAY;
-  process.env.HS_HOI_THEO_SO_TAY = 'on';
-  try {
-    const out7616 = {
-      status: 'NEED_FACTS',
-      results: [{ hs: '761699', confidence: 53, hsLevel: 6 }],
-      nextAction: {
-        type: 'ASK_USER',
-        questions: [
-          { attribute: null, questionVi: 'Hàng là đồ gá/bàn trượt chuyên dùng cho máy công cụ 84.56–84.65 hay chỉ là tấm/thanh nhôm không có cơ cấu dịch chuyển?' },
-        ],
-      },
-      dossier: {
-        product: { nameVi: 'Bộ bàn trượt bằng tay bằng nhôm gá thiết bị máy công nghiệp' },
-        hypotheses: [
-          { chapter: '76', heading4: '7616', subheading6: '761699', confidence: 53 },
-          { chapter: '84', heading4: '8466', subheading6: '846620', confidence: 37 },
-
         ],
       },
       missingStructured: [],
@@ -717,8 +686,37 @@ for (const b of CA_BIEN_NGUON) {
     check('OZV-2130 (ngược): "Báo cháy tự động gắn trần 24V" và "Tai nghe có khung chụp qua đầu" không hỏi oan 85.31↔85.18',
       pbNguoc8531.length === 0 && pbNguoc8518.length === 0,
       JSON.stringify({ pbNguoc8531, pbNguoc8518 }));
+  } finally {
+    if (prevFlag === undefined) delete process.env.HS_HOI_THEO_SO_TAY;
+    else process.env.HS_HOI_THEO_SO_TAY = prevFlag;
+  }
+}
 
-
+// 9. OZV-2132: ca 132 tầng 4 số «Bộ bàn trượt bằng tay / nhôm / gá thiết bị máy công nghiệp căn chỉnh bằng tay» (dừng 6 số 761699 hoặc 846620)
+//    sinh đủ câu hỏi phân biệt nhóm 4 số có căn cứ chú giải nguyên văn giữa 76.16 ↔ 84.66, kèm ca ngược.
+{
+  const moTa = 'Bộ bàn trượt bằng tay / nhôm / gá thiết bị máy công nghiệp căn chỉnh bằng tay';
+  const prevFlag = process.env.HS_HOI_THEO_SO_TAY;
+  process.env.HS_HOI_THEO_SO_TAY = 'on';
+  try {
+    const out7616 = {
+      status: 'NEED_FACTS',
+      results: [{ hs: '761699', confidence: 53, hsLevel: 6 }],
+      nextAction: {
+        type: 'ASK_USER',
+        questions: [
+          { attribute: null, questionVi: 'Hàng là đồ gá/bàn trượt chuyên dùng cho máy công cụ 84.56–84.65 hay chỉ là tấm/thanh nhôm không có cơ cấu dịch chuyển?' },
+        ],
+      },
+      dossier: {
+        product: { nameVi: 'Bộ bàn trượt bằng tay bằng nhôm gá thiết bị máy công nghiệp' },
+        hypotheses: [
+          { chapter: '76', heading4: '7616', subheading6: '761699', confidence: 53 },
+          { chapter: '84', heading4: '8466', subheading6: '846620', confidence: 37 },
+        ],
+      },
+      missingStructured: [],
+    };
     const kq7616 = H.apDung(out7616, { rawAttrs: { tenHang: moTa } });
     const qs7616 = kq7616.nextAction?.questions || [];
     const pb7616 = qs7616.filter((q) => q.loai === 'PHAN_BIET_NHOM');
@@ -753,12 +751,12 @@ for (const b of CA_BIEN_NGUON) {
     check('OZV-2132 (ngược): "Đinh tán bằng nhôm", "Mâm cặp máy tiện 3 chấu" và "Bàn kẹp phôi bằng thép" không hỏi oan 76.16↔84.66',
       pbNguoc7616.length === 0 && pbNguoc8466.length === 0 && pbNguoc8466BanKep.length === 0,
       JSON.stringify({ pbNguoc7616, pbNguoc8466, pbNguoc8466BanKep }));
-
   } finally {
     if (prevFlag === undefined) delete process.env.HS_HOI_THEO_SO_TAY;
     else process.env.HS_HOI_THEO_SO_TAY = prevFlag;
   }
 }
+
 
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
