@@ -182,6 +182,23 @@ const CAP_7 = [
     hangNguonSach: 'Chế phẩm hóa học hỗn hợp dùng làm chất gắn lõi đúc',
     nguonDich: 'nhom2508.nhom',
   },
+  // OZV-2132: 76.16 ↔ 84.66 (Bộ bàn trượt bằng tay / nhôm / gá thiết bị máy công nghiệp căn chỉnh bằng tay)
+  {
+    tu: '7616',
+    toi: '8466',
+    hangDungDich: 'Bộ bàn trượt bằng tay gá chi tiết cho máy công cụ',
+    moTaMoRong: 'Bộ bàn trượt bằng tay / nhôm / gá thiết bị máy công nghiệp căn chỉnh bằng tay',
+    hangNguonSach: 'Đinh tán bằng nhôm dùng trong cơ khí',
+    nguonDich: 'nhom8466.nhom',
+  },
+  {
+    tu: '8466',
+    toi: '7616',
+    hangDungDich: 'Tấm nhôm gá thiết bị không có cơ cấu bàn trượt dịch chuyển',
+    moTaMoRong: 'Bộ bàn trượt bằng tay / nhôm / gá thiết bị máy công nghiệp căn chỉnh bằng tay',
+    hangNguonSach: 'Mâm cặp máy tiện 3 chấu tự định tâm',
+    nguonDich: 'nhom7616.nhom',
+  },
 ];
 
 // 1. Đồ thị hai chiều C5 / C6 + moRongUngVien + nhomLienQuanSoTay
@@ -253,6 +270,8 @@ const CA_BIEN_NGUON = [
   { hs: '73231000', target: '8210', ten: 'Bùi nhùi bằng thép dùng cọ nồi' },
   { hs: '25084090', target: '3824', ten: 'Bentonite nghiền dùng lọc dầu và tẩy dầu mỡ' },
   { hs: '38249999', target: '2508', ten: 'Chế phẩm hóa học hỗn hợp dùng làm chất gắn lõi đúc' },
+  { hs: '76169990', target: '8466', ten: 'Tấm đan lưới bằng dây nhôm dùng chắn bảo vệ' },
+  { hs: '84662090', target: '7616', ten: 'Bàn kẹp phôi bằng thép dùng cho máy phay CNC' },
 ];
 for (const b of CA_BIEN_NGUON) {
   const g = soTayGates({ hs: b.hs, productText: b.ten, productName: b.ten });
@@ -566,6 +585,71 @@ for (const b of CA_BIEN_NGUON) {
     check('OZV-2122 (ngược): "Bentonite nghiền lọc dầu" và "chế phẩm gắn lõi đúc" không hỏi oan 25.08↔38.24',
       pbNguoc2508.length === 0 && pbNguoc3824.length === 0,
       JSON.stringify({ pbNguoc2508, pbNguoc3824 }));
+  } finally {
+    if (prevFlag === undefined) delete process.env.HS_HOI_THEO_SO_TAY;
+    else process.env.HS_HOI_THEO_SO_TAY = prevFlag;
+  }
+}
+
+// 8. OZV-2132: ca 132 tầng 4 số «Bộ bàn trượt bằng tay / nhôm / gá thiết bị máy công nghiệp căn chỉnh bằng tay» (dừng 6 số 761699 hoặc 846620)
+//    sinh đủ câu hỏi phân biệt nhóm 4 số có căn cứ chú giải nguyên văn giữa 76.16 ↔ 84.66, kèm ca ngược.
+{
+  const moTa = 'Bộ bàn trượt bằng tay / nhôm / gá thiết bị máy công nghiệp căn chỉnh bằng tay';
+  const prevFlag = process.env.HS_HOI_THEO_SO_TAY;
+  process.env.HS_HOI_THEO_SO_TAY = 'on';
+  try {
+    const out7616 = {
+      status: 'NEED_FACTS',
+      results: [{ hs: '761699', confidence: 53, hsLevel: 6 }],
+      nextAction: {
+        type: 'ASK_USER',
+        questions: [
+          { attribute: null, questionVi: 'Hàng là đồ gá/bàn trượt chuyên dùng cho máy công cụ 84.56–84.65 hay chỉ là tấm/thanh nhôm không có cơ cấu dịch chuyển?' },
+        ],
+      },
+      dossier: {
+        product: { nameVi: 'Bộ bàn trượt bằng tay bằng nhôm gá thiết bị máy công nghiệp' },
+        hypotheses: [
+          { chapter: '76', heading4: '7616', subheading6: '761699', confidence: 53 },
+          { chapter: '84', heading4: '8466', subheading6: '846620', confidence: 37 },
+        ],
+      },
+      missingStructured: [],
+    };
+    const kq7616 = H.apDung(out7616, { rawAttrs: { tenHang: moTa } });
+    const qs7616 = kq7616.nextAction?.questions || [];
+    const pb7616 = qs7616.filter((q) => q.loai === 'PHAN_BIET_NHOM');
+    check('OZV-2132 (thuận · dừng 761699): sinh câu PHAN_BIET_NHOM (76.16↔84.66 từ phan76.phan) có đủ canCu/nguon/trich',
+      kq7616.nextAction?.canCuCauHoi === 'so-tay'
+      && pb7616.length >= 1
+      && pb7616.some((q) => q.canCu === 'so-tay' && q.nguon === 'phan76.phan' && /84\.66/.test(q.questionVi)),
+      JSON.stringify(qs7616));
+
+    const out8466 = {
+      ...out7616,
+      results: [{ hs: '846620', confidence: 51, hsLevel: 6 }],
+      dossier: {
+        ...out7616.dossier,
+        hypotheses: [
+          { chapter: '84', heading4: '8466', subheading6: '846620', confidence: 51 },
+          { chapter: '76', heading4: '7616', subheading6: '761699', confidence: 39 },
+        ],
+      },
+    };
+    const kq8466 = H.apDung(out8466, { rawAttrs: { tenHang: moTa } });
+    const pb8466 = (kq8466.nextAction?.questions || []).filter((q) => q.loai === 'PHAN_BIET_NHOM');
+    check('OZV-2132 (thuận · dừng 846620): sinh câu PHAN_BIET_NHOM (84.66↔76.16 từ nhom8466.nhom) có đủ canCu/nguon/trich',
+      kq8466.nextAction?.canCuCauHoi === 'so-tay'
+      && pb8466.length >= 1
+      && pb8466.some((q) => q.canCu === 'so-tay' && q.nguon === 'nhom8466.nhom' && /76\.16/.test(q.questionVi)),
+      JSON.stringify(pb8466));
+
+    const pbNguoc7616 = H.cauPhanBietNhom('7616', ['7616', '8466'], 'Đinh tán bằng nhôm dùng trong cơ khí');
+    const pbNguoc8466 = H.cauPhanBietNhom('8466', ['8466', '7616'], 'Mâm cặp máy tiện 3 chấu tự định tâm');
+    const pbNguoc8466BanKep = H.cauPhanBietNhom('8466', ['8466', '7616'], 'Bàn kẹp phôi bằng thép dùng cho máy phay CNC');
+    check('OZV-2132 (ngược): "Đinh tán bằng nhôm", "Mâm cặp máy tiện 3 chấu" và "Bàn kẹp phôi bằng thép" không hỏi oan 76.16↔84.66',
+      pbNguoc7616.length === 0 && pbNguoc8466.length === 0 && pbNguoc8466BanKep.length === 0,
+      JSON.stringify({ pbNguoc7616, pbNguoc8466, pbNguoc8466BanKep }));
   } finally {
     if (prevFlag === undefined) delete process.env.HS_HOI_THEO_SO_TAY;
     else process.env.HS_HOI_THEO_SO_TAY = prevFlag;
