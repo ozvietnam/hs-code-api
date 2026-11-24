@@ -131,6 +131,23 @@ const CAP_7 = [
     hangNguonSach: 'Bộ điều chỉnh áp lực tự động dùng cho máy nén',
     nguonDich: 'nhom8536.nhom',
   },
+  // OZV-2084: 85.16 ↔ 85.33 (điện trở 8*60 mm, điện áp 220v, công suất 150w, chất liệu inox)
+  {
+    tu: '8516',
+    toi: '8533',
+    hangDungDich: 'Điện trở cố định 150W dùng trong mạch điện',
+    moTaMoRong: 'điện trở 8*60 mm, điện áp 220v, công suất 150w, chất liệu inox',
+    hangNguonSach: 'Bàn là điện hơi nước 1200W',
+    nguonDich: 'nhom8533.nhom',
+  },
+  {
+    tu: '8533',
+    toi: '8516',
+    hangDungDich: 'Điện trở đốt nóng bằng điện / thanh nhiệt điện trở inox',
+    moTaMoRong: 'điện trở 8*60 mm, điện áp 220v, công suất 150w, chất liệu inox',
+    hangNguonSach: 'Chiết áp xoay 10k ohm',
+    nguonDich: 'nhom8516.nhom',
+  },
 ];
 
 // 1. Đồ thị hai chiều C5 / C6 + moRongUngVien + nhomLienQuanSoTay
@@ -192,6 +209,10 @@ const CA_BIEN_NGUON = [
   { hs: '90303100', target: '9032', ten: 'Đồng hồ đo đa năng hiển thị số' },
   { hs: '85364990', target: '9030', ten: 'Rơ le điện từ 8 chân 220V dùng trong tủ điện' },
   { hs: '90328931', target: '9030', ten: 'Bộ điều chỉnh điện áp tự động 3 pha có đồng hồ hiển thị' },
+  { hs: '85168010', target: '8533', ten: 'Điện trở đốt nóng bằng điện dùng cho lò công nghiệp' },
+  { hs: '85164090', target: '8533', ten: 'Bàn là điện hơi nước 1200W' },
+  { hs: '85334000', target: '8516', ten: 'Chiết áp xoay 10k ohm' },
+  { hs: '85332900', target: '8516', ten: 'Điện trở cố định 150W dùng trong mạch điện' },
 ];
 for (const b of CA_BIEN_NGUON) {
   const g = soTayGates({ hs: b.hs, productText: b.ten, productName: b.ten });
@@ -301,6 +322,78 @@ for (const b of CA_BIEN_NGUON) {
     check('OZV-2067 (ngược): "máy hiện sóng kỹ thuật số" và "phích cắm điện 2 chấu" không chạm đồng hồ đo áp / chống mất pha → không hỏi oan',
       pbNguoc9030.length === 0 && pbNguoc8536.length === 0,
       JSON.stringify({ pbNguoc9030, pbNguoc8536 }));
+  } finally {
+    if (prevFlag === undefined) delete process.env.HS_HOI_THEO_SO_TAY;
+    else process.env.HS_HOI_THEO_SO_TAY = prevFlag;
+  }
+}
+
+// 5. OZV-2084: ca khách thực địa «điện trở 8*60 mm, điện áp 220v, công suất 150w, chất liệu inox» (dừng 6 số 851680 hoặc 853329)
+//    sinh đủ câu hỏi phân biệt nhóm 4 số có căn cứ chú giải nguyên văn giữa 85.16 ↔ 85.33, kèm ca ngược.
+{
+  const moTa = 'điện trở 8*60 mm, điện áp 220v, công suất 150w, chất liệu inox';
+  const prevFlag = process.env.HS_HOI_THEO_SO_TAY;
+  process.env.HS_HOI_THEO_SO_TAY = 'on';
+  try {
+    const out8516 = {
+      status: 'NEED_FACTS',
+      results: [{ hs: '851680', confidence: 55, hsLevel: 6 }],
+      nextAction: {
+        type: 'ASK_USER',
+        questions: [
+          { attribute: null, questionVi: 'Điện trở này dùng để đốt nóng / gia nhiệt hay dùng trong mạch điện?' },
+        ],
+      },
+      dossier: {
+        product: { nameVi: 'Điện trở 8*60 mm, điện áp 220v, công suất 150w, chất liệu inox' },
+        hypotheses: [
+          { chapter: '85', heading4: '8516', subheading6: '851680', confidence: 55 },
+          { chapter: '85', heading4: '8533', subheading6: '853329', confidence: 35 },
+        ],
+      },
+      missingStructured: [],
+    };
+    const kq8516 = H.apDung(out8516, { rawAttrs: { tenHang: moTa } });
+    const qs8516 = kq8516.nextAction?.questions || [];
+    const pb8516 = qs8516.filter((q) => q.loai === 'PHAN_BIET_NHOM');
+    check('OZV-2084 (thuận · dừng 851680): sinh câu PHAN_BIET_NHOM (85.16↔85.33 từ nhom8516.nhom) + câu DONG_8 có đủ canCu/nguon/trich',
+      kq8516.nextAction?.canCuCauHoi === 'so-tay'
+      && pb8516.length === 1
+      && pb8516[0].canCu === 'so-tay'
+      && pb8516[0].nguon === 'nhom8516.nhom'
+      && /85\.33/.test(pb8516[0].questionVi)
+      && qs8516.some((q) => q.loai === 'DONG_8' && q.canCu === 'ranh-gioi-pn6'),
+      JSON.stringify(qs8516));
+
+    const out8533 = {
+      ...out8516,
+      results: [{ hs: '853329', confidence: 52, hsLevel: 6 }],
+      dossier: {
+        ...out8516.dossier,
+        hypotheses: [
+          { chapter: '85', heading4: '8533', subheading6: '853329', confidence: 52 },
+          { chapter: '85', heading4: '8516', subheading6: '851680', confidence: 38 },
+        ],
+      },
+    };
+    const kq8533 = H.apDung(out8533, { rawAttrs: { tenHang: moTa } });
+    const pb8533 = (kq8533.nextAction?.questions || []).filter((q) => q.loai === 'PHAN_BIET_NHOM');
+    const pbThanhNhiet = H.cauPhanBietNhom('8533', ['8533', '8516'], 'Điện trở đốt nóng bằng điện / thanh nhiệt điện trở inox');
+    check('OZV-2084 (thuận · dừng 853329): sinh câu PHAN_BIET_NHOM (85.33↔85.16 từ nhom8533.nhom) và khớp cả "Điện trở đốt nóng bằng điện / thanh nhiệt điện trở inox"',
+      kq8533.nextAction?.canCuCauHoi === 'so-tay'
+      && pb8533.length === 1
+      && pb8533[0].canCu === 'so-tay'
+      && pb8533[0].nguon === 'nhom8533.nhom'
+      && /85\.16/.test(pb8533[0].questionVi)
+      && pbThanhNhiet.length === 1
+      && pbThanhNhiet[0].nguon === 'nhom8533.nhom',
+      JSON.stringify({ pb8533, pbThanhNhiet }));
+
+    const pbNguoc8516 = H.cauPhanBietNhom('8516', ['8516', '8533'], 'bàn là điện hơi nước 1200W');
+    const pbNguoc8533 = H.cauPhanBietNhom('8533', ['8533', '8516'], 'chiết áp xoay 10k ohm');
+    check('OZV-2084 (ngược): "bàn là điện hơi nước 1200W" và "chiết áp xoay 10k ohm" không hỏi oan 85.16↔85.33',
+      pbNguoc8516.length === 0 && pbNguoc8533.length === 0,
+      JSON.stringify({ pbNguoc8516, pbNguoc8533 }));
   } finally {
     if (prevFlag === undefined) delete process.env.HS_HOI_THEO_SO_TAY;
     else process.env.HS_HOI_THEO_SO_TAY = prevFlag;
