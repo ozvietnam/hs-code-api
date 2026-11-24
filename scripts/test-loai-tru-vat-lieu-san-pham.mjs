@@ -148,6 +148,23 @@ const CAP_7 = [
     hangNguonSach: 'Chiết áp xoay 10k ohm',
     nguonDich: 'nhom8516.nhom',
   },
+  // OZV-2097: 82.10 ↔ 73.23 (Dụng cụ ép trái cây / thép không gỉ / ép trái cây (không hoạt động bằng điện))
+  {
+    tu: '8210',
+    toi: '7323',
+    hangDungDich: 'Khuôn vắt trái cây bằng thép không gỉ',
+    moTaMoRong: 'Dụng cụ ép trái cây / thép không gỉ / ép trái cây (không hoạt động bằng điện)',
+    hangNguonSach: 'Máy xay cà phê bằng tay nặng 2 kg',
+    nguonDich: 'nhom7323.nhom',
+  },
+  {
+    tu: '7323',
+    toi: '8210',
+    hangDungDich: 'Máy ép hoa quả bằng tay có trục vít nặng 3 kg',
+    moTaMoRong: 'Dụng cụ ép trái cây / thép không gỉ / ép trái cây (không hoạt động bằng điện)',
+    hangNguonSach: 'Nồi áp suất bằng thép không gỉ dùng cho nhà bếp',
+    nguonDich: 'nhom8210.nhom',
+  },
 ];
 
 // 1. Đồ thị hai chiều C5 / C6 + moRongUngVien + nhomLienQuanSoTay
@@ -213,6 +230,10 @@ const CA_BIEN_NGUON = [
   { hs: '85164090', target: '8533', ten: 'Bàn là điện hơi nước 1200W' },
   { hs: '85334000', target: '8516', ten: 'Chiết áp xoay 10k ohm' },
   { hs: '85332900', target: '8516', ten: 'Điện trở cố định 150W dùng trong mạch điện' },
+  { hs: '82100000', target: '7323', ten: 'Máy xay cà phê bằng tay có tay quay nặng 2 kg' },
+  { hs: '82100000', target: '7323', ten: 'Dụng cụ đánh trứng cơ khí có bánh răng quay tay' },
+  { hs: '73239310', target: '8210', ten: 'Nồi hấp bằng thép không gỉ dùng cho nhà bếp' },
+  { hs: '73231000', target: '8210', ten: 'Bùi nhùi bằng thép dùng cọ nồi' },
 ];
 for (const b of CA_BIEN_NGUON) {
   const g = soTayGates({ hs: b.hs, productText: b.ten, productName: b.ten });
@@ -394,6 +415,74 @@ for (const b of CA_BIEN_NGUON) {
     check('OZV-2084 (ngược): "bàn là điện hơi nước 1200W" và "chiết áp xoay 10k ohm" không hỏi oan 85.16↔85.33',
       pbNguoc8516.length === 0 && pbNguoc8533.length === 0,
       JSON.stringify({ pbNguoc8516, pbNguoc8533 }));
+  } finally {
+    if (prevFlag === undefined) delete process.env.HS_HOI_THEO_SO_TAY;
+    else process.env.HS_HOI_THEO_SO_TAY = prevFlag;
+  }
+}
+
+// 6. OZV-2097: ca 19 tầng 4 số «Dụng cụ ép trái cây / thép không gỉ / ép trái cây (không hoạt động bằng điện)» (dừng 6 số 821000 hoặc 732393)
+//    sinh đủ câu hỏi phân biệt nhóm 4 số có căn cứ chú giải nguyên văn giữa 82.10 ↔ 73.23, kèm ca ngược.
+{
+  const moTa = 'Dụng cụ ép trái cây / thép không gỉ / ép trái cây (không hoạt động bằng điện)';
+  const prevFlag = process.env.HS_HOI_THEO_SO_TAY;
+  process.env.HS_HOI_THEO_SO_TAY = 'on';
+  try {
+    const out8210 = {
+      status: 'NEED_FACTS',
+      results: [{ hs: '821000', confidence: 54, hsLevel: 6 }],
+      nextAction: {
+        type: 'ASK_USER',
+        questions: [
+          { attribute: null, questionVi: 'Dụng cụ có cơ cấu cơ khí (tay quay, bánh răng, trục vít, đòn bẩy gắn đế đặt bàn) hay chỉ là khuôn/chén vắt bằng tay đơn giản?' },
+        ],
+      },
+      dossier: {
+        product: { nameVi: 'Dụng cụ ép trái cây bằng thép không gỉ không hoạt động bằng điện' },
+        hypotheses: [
+          { chapter: '82', heading4: '8210', subheading6: '821000', confidence: 54 },
+          { chapter: '73', heading4: '7323', subheading6: '732393', confidence: 36 },
+        ],
+      },
+      missingStructured: [],
+    };
+    const kq8210 = H.apDung(out8210, { rawAttrs: { tenHang: moTa } });
+    const qs8210 = kq8210.nextAction?.questions || [];
+    const pb8210 = qs8210.filter((q) => q.loai === 'PHAN_BIET_NHOM');
+    check('OZV-2097 (thuận · dừng 821000): sinh câu PHAN_BIET_NHOM (82.10↔73.23 từ nhom8210.nhom) có đủ canCu/nguon/trich',
+      kq8210.nextAction?.canCuCauHoi === 'so-tay'
+      && pb8210.length === 1
+      && pb8210[0].canCu === 'so-tay'
+      && pb8210[0].nguon === 'nhom8210.nhom'
+      && /73\.23/.test(pb8210[0].questionVi),
+      JSON.stringify(qs8210));
+
+    const out7323 = {
+      ...out8210,
+      results: [{ hs: '732393', confidence: 51, hsLevel: 6 }],
+      dossier: {
+        ...out8210.dossier,
+        hypotheses: [
+          { chapter: '73', heading4: '7323', subheading6: '732393', confidence: 51 },
+          { chapter: '82', heading4: '8210', subheading6: '821000', confidence: 39 },
+        ],
+      },
+    };
+    const kq7323 = H.apDung(out7323, { rawAttrs: { tenHang: moTa } });
+    const pb7323 = (kq7323.nextAction?.questions || []).filter((q) => q.loai === 'PHAN_BIET_NHOM');
+    check('OZV-2097 (thuận · dừng 732393): sinh câu PHAN_BIET_NHOM (73.23↔82.10 từ nhom7323.nhom) có đủ canCu/nguon/trich',
+      kq7323.nextAction?.canCuCauHoi === 'so-tay'
+      && pb7323.length === 1
+      && pb7323[0].canCu === 'so-tay'
+      && pb7323[0].nguon === 'nhom7323.nhom'
+      && /82\.10/.test(pb7323[0].questionVi),
+      JSON.stringify(pb7323));
+
+    const pbNguoc8210 = H.cauPhanBietNhom('8210', ['8210', '7323'], 'máy xay cà phê bằng tay có tay quay nặng 2 kg');
+    const pbNguoc7323 = H.cauPhanBietNhom('7323', ['7323', '8210'], 'nồi áp suất bằng thép không gỉ dùng cho nhà bếp');
+    check('OZV-2097 (ngược): "máy xay cà phê bằng tay" và "nồi áp suất bằng thép không gỉ" không hỏi oan 82.10↔73.23',
+      pbNguoc8210.length === 0 && pbNguoc7323.length === 0,
+      JSON.stringify({ pbNguoc8210, pbNguoc7323 }));
   } finally {
     if (prevFlag === undefined) delete process.env.HS_HOI_THEO_SO_TAY;
     else process.env.HS_HOI_THEO_SO_TAY = prevFlag;
