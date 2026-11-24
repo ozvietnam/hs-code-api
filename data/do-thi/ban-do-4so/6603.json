@@ -1,0 +1,137 @@
+{
+  "nhom": "6603",
+  "khuon": "bd4@1",
+  "nguonLoai": "AI_NHAP",
+  "chamCheo": "DUYET",
+  "taoBoi": {
+    "provider": "google-studio",
+    "model": "gemini-4-hydrogen",
+    "goi": "df72d2d8d800"
+  },
+  "kieuNhom": "BO_PHAN",
+  "hoSo": {
+    "chucNang": [],
+    "coChe": [],
+    "dangVatLy": [
+      {
+        "y": "bộ phận, đồ trang trí và đồ phụ trợ",
+        "trich": "các bộ phận, các đồ trang trí và các đồ phụ trợ có thể nhận biết được",
+        "nguon": "ct.6603.1"
+      }
+    ],
+    "chatLieu": [
+      {
+        "y": "không phụ thuộc vào nguyên liệu tạo thành",
+        "trich": "không phụ thuộc vào nguyên liệu tạo thành (kể cả kim loại quý hoặc kim loại dát phủ kim loại quý hoặc đá bán quý, tự nhiên, tổng hợp hoặc tái tạo)",
+        "nguon": "ct.6603.2"
+      }
+    ],
+    "oDauAiDung": [
+      {
+        "y": "dùng cho mặt hàng nhóm 66.01 hoặc 66.02",
+        "trich": "của các mặt hàng thuộc nhóm 66.01 hoặc 66.02",
+        "nguon": "ct.6603.1"
+      }
+    ],
+    "hangDuocNeu": [
+      {
+        "ten": "tay cầm và tay nắm",
+        "trich": "Các loại tay cầm (kể cả các loại phôi hình dạng của tay cầm chưa hoàn thiện) và tay nắm của ô, dù, ba toong, gậy chống, roi da, v.v....",
+        "nguon": "ct.6603.3"
+      },
+      {
+        "ten": "khung ô",
+        "trich": "Các loại khung, kể cả các loại khung có gắn liền với cán, gọng và khung căng.",
+        "nguon": "ct.6603.4"
+      },
+      {
+        "ten": "cán (gậy)",
+        "trich": "Các loại cán (gậy) có hoặc không kết hợp với cán hay tay nắm dành cho ô, dù hoặc ô che nắng.",
+        "nguon": "ct.6603.5"
+      },
+      {
+        "ten": "con trượt, đầu gọng",
+        "trich": "Con trượt, đầu gọng, vòng bít đỉnh và vòng bít tay nắm, đầu bịt cán ô, lò xo đóng mở",
+        "nguon": "ct.6603.6"
+      }
+    ],
+    "dieuKienBatBuoc": [
+      {
+        "y": "không bao gồm bộ phận bằng vật liệu dệt",
+        "trich": "Nhóm 66.03 không bao gồm các bộ phận, đồ trang trí hoặc đồ phụ kiện bằng vật liệu dệt",
+        "nguon": "chuong:66:chu_giai:2"
+      }
+    ]
+  },
+  "canh": [
+    {
+      "den": "6601",
+      "loai": "BO_PHAN_CUA",
+      "dacDiem": "tính chất là ô dù hoàn chỉnh hay bộ phận nhận biết được",
+      "neu": "là ô, dù che hoàn chỉnh",
+      "thi": "6601",
+      "conNeu": "là bộ phận, đồ trang trí và đồ phụ trợ có thể nhận biết được của ô dù",
+      "thiKia": "6603",
+      "canCu": [
+        {
+          "nguon": "ct.6603.1",
+          "trich": "nhóm bao gồm các bộ phận, các đồ trang trí và các đồ phụ trợ có thể nhận biết được của các mặt hàng thuộc nhóm 66.01 hoặc 66.02."
+        }
+      ],
+      "quyTac": "QT1"
+    },
+    {
+      "den": "6602",
+      "loai": "PHAN_BIET",
+      "dacDiem": "mức độ hoàn thiện của gậy chống",
+      "neu": "gậy chống chưa hoàn chỉnh",
+      "thi": "6602",
+      "conNeu": "chỉ là bộ phận nhận biết được của gậy chống",
+      "thiKia": "6603",
+      "canCu": [
+        {
+          "nguon": "ct.6603.8",
+          "trich": "Các loại gậy chống chưa hoàn chỉnh (xem chú giải chi tiết của nhóm 66.02)."
+        }
+      ],
+      "quyTac": "QT1"
+    },
+    {
+      "den": "7320",
+      "loai": "PHAN_BIET",
+      "dacDiem": "chức năng chuyên dụng làm lò xo đóng mở cho ô dù hay lò xo thông thường",
+      "neu": "lò xo đóng mở của ô",
+      "thi": "6603",
+      "conNeu": "lò xo các loại bằng sắt hoặc thép công dụng thông thường",
+      "thiKia": "7320",
+      "canCu": [
+        {
+          "nguon": "ct.6603.6",
+          "trich": "lò xo đóng mở, cổ, các bộ phận chỉnh độ nghiêng để điều chỉnh đỉnh ô nghiêng một góc với cột"
+        }
+      ],
+      "quyTac": "QT1"
+    },
+    {
+      "den": "9503",
+      "loai": "LOAI_TRU",
+      "dacDiem": "mục đích sử dụng làm đồ chơi",
+      "neu": "ô, dù che, loại dùng làm đồ chơi",
+      "thi": "9503",
+      "conNeu": "bộ phận nhận biết được của ô dù thông thường",
+      "thiKia": "6603",
+      "canCu": [
+        {
+          "nguon": "chuong:66:chu_giai:1c",
+          "trich": "Hàng hóa thuộc Chương 95 (ví dụ: ô, dù che, loại dùng làm đồ chơi)."
+        }
+      ],
+      "quyTac": "QT1"
+    }
+  ],
+  "khongChac": [
+    "nhóm bộ phận không định nghĩa theo chức năng hoạt động độc lập",
+    "nhóm bộ phận không có cơ chế vận hành riêng biệt"
+  ],
+  "chamCheoGhiChu": "[gemma4:31b, máy GPU nhà] Bản đồ soạn chính xác, đối chiếu khớp với chú giải chương 66 và chi tiết nhóm 66.03. | "
+}

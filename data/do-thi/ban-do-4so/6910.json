@@ -1,0 +1,110 @@
+{
+  "nhom": "6910",
+  "khuon": "bd4@1",
+  "nguonLoai": "AI_NHAP",
+  "chamCheo": "SUA",
+  "taoBoi": {
+    "provider": "google-studio",
+    "model": "gemini-4-hydrogen",
+    "goi": "df72d2d8d800"
+  },
+  "kieuNhom": "HANG_CU_THE",
+  "hoSo": {
+    "chucNang": [
+      {
+        "y": "nối với hệ thống nước hoặc nước thải",
+        "trich": "nối với các hệ thống nước hoặc nước thải",
+        "nguon": "ct.6910.1"
+      }
+    ],
+    "coChe": [],
+    "dangVatLy": [
+      {
+        "y": "thiết bị vệ sinh gắn cố định",
+        "trich": "các thiết bị được thiết kế để gắn cố định trong nhà",
+        "nguon": "ct.6910.1"
+      }
+    ],
+    "chatLieu": [
+      {
+        "y": "bằng đồ sứ, đồ gốm",
+        "trich": "đồ sứ, đồ gốm, sứ vệ sinh bằng đất sét nung, đồ giả sứ, hoặc đồ sứ dạng thủy tinh",
+        "nguon": "ct.6910.1"
+      },
+      {
+        "y": "không thấm nước bằng tráng men hoặc nung",
+        "trich": "thiết kế không thấm nước bằng cách tráng men hoặc bằng cách nung kéo dài",
+        "nguon": "ct.6910.1"
+      }
+    ],
+    "oDauAiDung": [
+      {
+        "y": "gắn cố định trong nhà",
+        "trich": "gắn cố định trong nhà, v.v, thường bằng cách nối với các hệ thống nước hoặc nước thải.",
+        "nguon": "ct.6910.1"
+      },
+      {
+        "y": "dùng trong phòng vệ sinh",
+        "trich": "dùng trong phòng vệ sinh.",
+        "nguon": "ct.6910.1"
+      }
+    ],
+    "hangDuocNeu": [
+      {
+        "ten": "bể chứa dùng trong phòng vệ sinh",
+        "trich": "bể chứa (cistern) dùng trong phòng vệ sinh.",
+        "nguon": "ct.6910.1"
+      },
+      {
+        "ten": "bình xối nước bằng gốm",
+        "trich": "Bình xối nước bằng gốm vẫn được xếp trong nhóm này",
+        "nguon": "ct.6910.2"
+      }
+    ],
+    "dieuKienBatBuoc": [
+      {
+        "y": "nung ở mức nhiệt độ 800 °C hoặc cao hơn",
+        "trich": "được nung ở mức nhiệt độ 800 °C hoặc cao hơn",
+        "nguon": "chuong:69:chu_giai:2iv"
+      }
+    ]
+  },
+  "canh": [
+    {
+      "den": "6911",
+      "loai": "PHAN_BIET",
+      "dacDiem": "thiết bị vệ sinh gắn cố định hay phụ kiện nhỏ hoặc thiết bị dịch chuyển bằng sứ",
+      "neu": "phụ kiện vệ sinh nhỏ hoặc thiết bị vệ sinh dịch chuyển bằng sứ",
+      "thi": "6911",
+      "conNeu": "thiết bị vệ sinh bằng sứ thiết kế để gắn cố định",
+      "thiKia": "6910",
+      "canCu": [
+        {
+          "nguon": "ct.6910.3",
+          "trich": "nhóm này không gồm các phụ kiện vệ sinh hoặc các phụ kiện nhỏ cho nhà tắm, như đĩa đựng xà bông, hộp đựng đá kỳ, giá để bàn chải đánh răng, móc treo khăn tắm và giá để giấy vệ sinh, kể cả loại được thiết kế để gắn cố định lên tường và cũng không bao gồm các thiết bị vệ sinh có thể dịch chuyển như bồn tắm, tiểu treo; các sản phẩm này được xếp vào nhóm 69.11 hoặc 69.12."
+        }
+      ],
+      "quyTac": "QT1"
+    },
+    {
+      "den": "6912",
+      "loai": "PHAN_BIET",
+      "dacDiem": "thiết bị vệ sinh gắn cố định hay phụ kiện nhỏ hoặc thiết bị dịch chuyển bằng gốm trừ sứ",
+      "neu": "phụ kiện nhỏ hoặc thiết bị vệ sinh có thể dịch chuyển bằng gốm trừ sứ",
+      "thi": "6912",
+      "conNeu": "thiết bị vệ sinh bằng gốm trừ sứ được thiết kế để gắn cố định",
+      "thiKia": "6910",
+      "canCu": [
+        {
+          "nguon": "ct.6910.3",
+          "trich": "các thiết bị vệ sinh có thể dịch chuyển như bồn tắm, tiểu treo; các sản phẩm này được xếp vào nhóm 69.11 hoặc 69.12."
+        }
+      ],
+      "quyTac": "QT1"
+    }
+  ],
+  "khongChac": [
+    "nhóm hàng gốm sứ vệ sinh không định nghĩa theo cơ chế vận hành"
+  ],
+  "chamCheoGhiChu": "[gemma4:31b, máy GPU nhà] Bản đồ tự ý phân chia 6911 và 6912 dựa trên chất liệu (sứ vs gốm), điều này không có trong đoạn luật được trích dẫn. | canh[0]: Suy rộng chất liệu 'bằng sứ' để định hướng về nhóm 6911. Đoạn luật ct.6910.3 chỉ ghi 'được xếp vào nhóm 69.11 hoặc 69.12', không phân chia cụ thể chất liệu nào vào nhóm nào.; canh[1]: Suy rộng chất liệu 'bằng gốm trừ sứ' để định hướng về nhóm 6912. Đoạn luật ct.6910.3 chỉ ghi 'được xếp vào nhóm 69.11 hoặc 69.12', không phân chia cụ thể chất liệu nào vào nhóm nào."
+}
