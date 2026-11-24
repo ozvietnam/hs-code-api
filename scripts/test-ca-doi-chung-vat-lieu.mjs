@@ -208,5 +208,80 @@ const that = chayCaDoiChungVatLieu(['8546', '8547']);
     { pbNguoc8543, pbNguoc9031 });
 }
 
+// ── I. OZV-2143 — ca 140 tầng 4 số: Vỏ lõi lọc nước RO → cạnh loại trừ 2 chiều 84.21 ↔ 73.04 ──
+{
+  const { sourcesFor, checkItem } = require('../lib/so-tay.js');
+  const H = require('../lib/hoi-theo-so-tay.js');
+  const { soTayGates, nhomLienQuanSoTay } = require('../lib/so-tay-gates.js');
+  const D = require('../lib/do-thi/index.js');
+  const { phanTichHoiTruoc4So, TRANG_THAI_4SO } = require('../lib/do-thi/hoi-truoc-4so.js');
+  const st8421 = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'so-tay', '8421.json'), 'utf8'));
+  const st7304 = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'so-tay', '7304.json'), 'utf8'));
+  const muc8421 = (st8421.loaiTru || []).find((x) => x.sangNhom === '7304' && /vỏ lõi lọc/i.test(x.dieuKien || ''));
+  const muc7304 = (st7304.loaiTru || []).find((x) => x.sangNhom === '8421' && /vỏ lõi lọc/i.test(x.dieuKien || ''));
+  check('I1 OZV-2143: sổ tay 8421↔7304 có loaiTru 2 chiều + canCuLoaiTru nguyên văn (checkItem đạt)',
+    Boolean(muc8421 && muc7304)
+    && muc8421.nguon === 'nhom8421.nhom'
+    && muc8421.canCuLoaiTru?.nguon === 'nhom7304.nhom'
+    && muc7304.nguon === 'nhom7304.nhom'
+    && muc7304.canCuLoaiTru?.nguon === 'nhom8421.nhom'
+    && checkItem('loaiTru', muc8421, sourcesFor('8421'), '8421') === null
+    && checkItem('loaiTru', muc7304, sourcesFor('7304'), '7304') === null,
+    { muc8421: Boolean(muc8421), muc7304: Boolean(muc7304),
+      err8421: muc8421 ? checkItem('loaiTru', muc8421, sourcesFor('8421'), '8421') : null,
+      err7304: muc7304 ? checkItem('loaiTru', muc7304, sourcesFor('7304'), '7304') : null });
+  check('I2 OZV-2143: dieuKien hai chiều 8421↔7304 tách biệt cho hoi-truoc-4so',
+    Boolean(muc8421 && muc7304)
+    && muc8421.dieuKien !== muc7304.dieuKien
+    && !/;/.test(muc8421.dieuKien)
+    && !/;/.test(muc7304.dieuKien),
+    { dk8421: muc8421?.dieuKien, dk7304: muc7304?.dieuKien });
+
+  const moTa140 = 'Vỏ lõi lọc nước RO / inox 304 / hệ thống lọc nước';
+  const c5_8421 = D.canhTu('8421', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '7304');
+  const c5_7304 = D.canhTu('7304', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8421');
+  const giua = D.canhGiuaNhomConSong(['8421', '7304']).filter((e) => e.loai === 'C5' || e.loai === 'C6');
+  const mr8421 = D.moRongUngVien(['8421'], moTa140);
+  const mr7304 = D.moRongUngVien(['7304'], moTa140);
+  check('I3 OZV-2143: đồ thị C5/C6 + canhGiuaNhomConSong + moRongUngVien + nhomLienQuanSoTay nối 2 chiều 8421↔7304',
+    c5_8421.length >= 1
+    && c5_7304.length >= 1
+    && giua.length >= 2
+    && mr8421.some((x) => x.nhom === '7304')
+    && mr7304.some((x) => x.nhom === '8421')
+    && nhomLienQuanSoTay('8421').includes('7304')
+    && nhomLienQuanSoTay('7304').includes('8421'),
+    { c5_8421: c5_8421.length, c5_7304: c5_7304.length, giua: giua.length });
+
+  // ca 140 khớp dieuKien chiều 7304→8421 (vỏ lõi lọc); chiều 8421→7304 (ống thông dụng) đo bằng mô tả ống riêng (mẫu OZV-2129).
+  const pb8421 = H.cauPhanBietNhom('8421', ['8421', '7304'], moTa140);
+  const pb7304 = H.cauPhanBietNhom('7304', ['7304', '8421'], moTa140);
+  const moTaOngThongDung = 'ống dẫn không mối nối bằng sắt hoặc thép (inox) thông dụng chưa gia công';
+  const pbOng8421 = H.cauPhanBietNhom('8421', ['8421', '7304'], moTaOngThongDung);
+  const gVoLoi7304 = soTayGates({ hs: '73049090', productText: moTa140, productName: 'Vỏ lõi lọc nước RO', candidateHeadings: ['7304', '8421'] });
+  const gOng8421 = soTayGates({ hs: '84219900', productText: moTaOngThongDung, productName: moTaOngThongDung, candidateHeadings: ['8421', '7304'] });
+  const ht140 = phanTichHoiTruoc4So({ moTa: moTa140, ungVien: ['8421', '7304'] });
+  check('I4 OZV-2143 (thuận): cauPhanBietNhom, soTayGates và phanTichHoiTruoc4So hoạt động đúng 2 chiều cho ca 140',
+    pb8421.length === 1 && /84\.21/.test(pb8421[0].questionVi) && /73\.04/.test(pb8421[0].questionVi)
+    && pb7304.length === 1 && pb7304[0].nguon === 'nhom7304.nhom' && /84\.21/.test(pb7304[0].questionVi)
+    && pbOng8421.length === 1 && pbOng8421[0].nguon === 'nhom8421.nhom' && /73\.04/.test(pbOng8421[0].questionVi)
+    && (gVoLoi7304.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '8421')
+    && (gOng8421.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '7304')
+    && ht140.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC
+    && new Set((ht140.nhanh || []).map((n) => n.dieuKien)).size === 2,
+    { pb8421, pb7304, pbOng8421, ht140: ht140.dapAnDieuKien });
+
+  const pbNguoc8421 = H.cauPhanBietNhom('8421', ['8421', '7304'], 'Máy lọc nước RO hoàn chỉnh có bơm và màng lọc');
+  const pbNguoc7304 = H.cauPhanBietNhom('7304', ['7304', '8421'], 'Ống thép không mối nối đường kính 50mm dùng dẫn nước');
+  const gNguoc8421 = soTayGates({ hs: '84212111', productText: 'Máy lọc nước RO hoàn chỉnh có bơm và màng lọc', productName: 'Máy lọc nước RO hoàn chỉnh có bơm và màng lọc' });
+  const gNguoc7304 = soTayGates({ hs: '73041100', productText: 'Ống thép không mối nối đường kính 50mm dùng dẫn nước', productName: 'Ống thép không mối nối đường kính 50mm dùng dẫn nước' });
+  check('I5 OZV-2143 (đối chứng): máy lọc nước RO / ống thép không mối nối không hỏi oan và không bật oan 84.21↔73.04',
+    pbNguoc8421.length === 0
+    && pbNguoc7304.length === 0
+    && !(gNguoc8421.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '7304')
+    && !(gNguoc7304.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '8421'),
+    { pbNguoc8421, pbNguoc7304 });
+}
+
 console.log(`\ncổng đối chứng vật liệu 8546+8547 (OZV-548 vòng ba): ${passed} PASS, ${failed} FAIL`);
 process.exit(failed ? 1 : 0);
