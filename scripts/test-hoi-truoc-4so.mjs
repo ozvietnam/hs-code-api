@@ -1143,5 +1143,139 @@ if (fs.existsSync(boChuanPath)) {
   );
 }
 
+// OZV-2190 — Cạnh loại trừ 2 chiều 54.04 <-> 39.16 cho ca 196 tầng 4 số
+// ('Sợi filament tổng hợp / Polyamide (Nylon) / Dùng để gia công lõi dây câu')
+{
+  const S = require('../lib/so-tay.js');
+  const { loadSoTay, soTayGates, nhomLienQuanSoTay } = require('../lib/so-tay-gates.js');
+  const { cauPhanBietNhom } = require('../lib/hoi-theo-so-tay.js');
+  const D = require('../lib/do-thi/index.js');
+  D.datLai();
+
+  const q196 = 'Sợi filament tổng hợp / Polyamide (Nylon) / Dùng để gia công lõi dây câu';
+  const st5404 = loadSoTay('5404');
+  const st3916 = loadSoTay('3916');
+  const v5404 = S.verifySoTay(st5404, '5404');
+  const v3916 = S.verifySoTay(st3916, '3916');
+  check(
+    '[OZV-2190 verifySoTay] sổ tay 5404 và 3916 đạt 100% (0 mục không kiểm được nguồn)',
+    v5404.loai.length === 0 && v3916.loai.length === 0
+      && v5404.dat === v5404.tong && st5404.kiemTra?.tong === v5404.tong && st5404.kiemTra?.dat === v5404.dat
+      && v3916.dat === v3916.tong && st3916.kiemTra?.tong === v3916.tong && st3916.kiemTra?.dat === v3916.dat,
+    JSON.stringify({ loai5404: v5404.loai, loai3916: v3916.loai, tong5404: v5404.tong, tong3916: v3916.tong }),
+  );
+
+  const lt5404 = (st5404?.loaiTru || []).find((x) => x.sangNhom === '3916' && x.canCuLoaiTru?.nguon === 'nhom3916.nhom' && /mặt cắt ngang|1\s*mm|filament|Polyamide|lõi dây câu/i.test(x.dieuKien || ''));
+  const lt3916 = (st3916?.loaiTru || []).find((x) => x.sangNhom === '5404' && x.canCuLoaiTru?.nguon === 'nhom5404.nhom' && /mặt cắt ngang|1\s*mm|filament|Polyamide|lõi dây câu|Phần XI/i.test(x.dieuKien || ''));
+  check(
+    '[OZV-2190 căn cứ] sổ tay 5404 và 3916 có mục loaiTru 2 chiều 5404 <-> 3916 kèm canCuLoaiTru nguyên văn đạt checkItem',
+    Boolean(lt5404 && lt5404.nguon === 'nhom5404.nhom' && S.checkItem('loaiTru', lt5404, S.sourcesFor('5404'), '5404') === null)
+      && Boolean(lt3916 && lt3916.nguon === 'ch39.chuong' && S.checkItem('loaiTru', lt3916, S.sourcesFor('3916'), '3916') === null)
+      && lt5404.dieuKien !== lt3916.dieuKien
+      && !/;/.test(lt5404.dieuKien)
+      && !/;/.test(lt3916.dieuKien),
+    JSON.stringify({ lt5404, lt3916 }),
+  );
+
+  const c5Tu5404 = D.canhTu('5404', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '3916');
+  const c5Tu3916 = D.canhTu('3916', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '5404');
+  const c6Tu5404 = D.canhTu('5404', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '3916');
+  const c6Tu3916 = D.canhTu('3916', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '5404');
+  const mrTu5404 = D.moRongUngVien(['5404'], q196);
+  const mrTu3916 = D.moRongUngVien(['3916'], q196);
+  const rel5404 = nhomLienQuanSoTay('5404');
+  const rel3916 = nhomLienQuanSoTay('3916');
+  check(
+    '[OZV-2190 đồ thị 2 chiều] bảng cạnh có C5/C6 5404<->3916, nhomLienQuanSoTay 2 chiều và moRongUngVien kéo 2 chiều cho ca 196',
+    c5Tu5404.some((e) => e.nguon === 'nhom5404.nhom' && e.canCuLoaiTru?.nguon === 'nhom3916.nhom')
+      && c5Tu3916.some((e) => e.nguon === 'ch39.chuong' && e.canCuLoaiTru?.nguon === 'nhom5404.nhom')
+      && c6Tu5404.length >= 1
+      && c6Tu3916.length >= 1
+      && rel5404.includes('3916')
+      && rel3916.includes('5404')
+      && mrTu5404.some((x) => x.nhom === '3916')
+      && mrTu3916.some((x) => x.nhom === '5404'),
+    JSON.stringify({ c5Tu5404: c5Tu5404.length, c5Tu3916: c5Tu3916.length, mrTu5404, mrTu3916 }),
+  );
+
+  const ht196 = phanTichHoiTruoc4So({ moTa: q196, ungVien: ['5404', '3916'] });
+  const distinctDk196 = new Set((ht196.nhanh || []).map((n) => n.dieuKien)).size === 2;
+  check(
+    '[OZV-2190 hoi-truoc-4so] ca 196 Sợi filament tổng hợp tách 2 nhánh điều kiện riêng biệt cho [5404, 3916]',
+    ht196.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC
+      && distinctDk196
+      && Boolean(ht196.dapAnDieuKien && ht196.dapAnDieuKien.includes('→ nhóm 5404 (') && ht196.dapAnDieuKien.includes('→ nhóm 3916 ('))
+      && Boolean(ht196.cauHoi),
+    JSON.stringify({ trangThai: ht196.trangThai, distinctDk196, dapAnDieuKien: ht196.dapAnDieuKien }),
+  );
+
+  const pb5404 = cauPhanBietNhom('5404', ['5404', '3916'], q196);
+  const pb3916 = cauPhanBietNhom('3916', ['3916', '5404'], q196);
+  check(
+    '[OZV-2190 thuận cauPhanBietNhom] sinh câu hỏi phân biệt 2 chiều 54.04 <-> 39.16 cho ca 196 Sợi filament tổng hợp',
+    pb5404.length === 1
+      && pb5404[0].loai === 'PHAN_BIET_NHOM'
+      && pb5404[0].canCu === 'so-tay'
+      && pb5404[0].nguon === 'nhom5404.nhom'
+      && /39\.16/.test(pb5404[0].questionVi)
+      && /54\.04/.test(pb5404[0].questionVi)
+      && pb3916.length === 1
+      && pb3916[0].loai === 'PHAN_BIET_NHOM'
+      && pb3916[0].canCu === 'so-tay'
+      && pb3916[0].nguon === 'ch39.chuong'
+      && /54\.04/.test(pb3916[0].questionVi)
+      && /39\.16/.test(pb3916[0].questionVi),
+    JSON.stringify({ pb5404, pb3916 }),
+  );
+
+  const g5404To3916 = soTayGates({
+    hs: '54041900',
+    productText: q196,
+    productName: q196,
+    pool: [{ h4: '3916', from: 'test' }],
+  });
+  const g3916To5404 = soTayGates({
+    hs: '39169091',
+    productText: q196,
+    productName: q196,
+    pool: [{ h4: '5404', from: 'test' }],
+  });
+  check(
+    '[OZV-2190 thuận soTayGates] kích hoạt SO_TAY_LOAI_TRU đúng cả 2 chiều 5404 -> 3916 và 3916 -> 5404',
+    (g5404To3916.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('3916'))
+      && (g3916To5404.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('5404')),
+    JSON.stringify({ g5404To3916: g5404To3916.challenges, g3916To5404: g3916To5404.challenges }),
+  );
+
+  const dcThanhPvc = 'Thanh nhựa PVC đặc tiết diện vuông cạnh 8 mm dùng làm khung cửa sổ';
+  const dcVaiDet = 'Vải dệt polyester khổ 1,5 m dùng may túi';
+  const dcThanh5404 = cauPhanBietNhom('5404', ['5404', '3916'], dcThanhPvc);
+  const dcThanh3916 = cauPhanBietNhom('3916', ['3916', '5404'], dcThanhPvc);
+  const dcVai5404 = cauPhanBietNhom('5404', ['5404', '3916'], dcVaiDet);
+  const dcVai3916 = cauPhanBietNhom('3916', ['3916', '5404'], dcVaiDet);
+  const gDoi5404 = soTayGates({
+    hs: '54049000',
+    productText: dcVaiDet,
+    productName: dcVaiDet,
+  });
+  const gDoi3916 = soTayGates({
+    hs: '39161010',
+    productText: dcThanhPvc,
+    productName: dcThanhPvc,
+  });
+  check(
+    '[OZV-2190 đối chứng] thanh nhựa PVC khung cửa sổ và vải dệt polyester không hỏi oan / không kéo oan 54.04 <-> 39.16',
+    dcThanh5404.length === 0
+      && dcThanh3916.length === 0
+      && dcVai5404.length === 0
+      && dcVai3916.length === 0
+      && !D.moRongUngVien(['5404'], dcVaiDet).some((x) => x.nhom === '3916')
+      && !D.moRongUngVien(['3916'], dcThanhPvc).some((x) => x.nhom === '5404')
+      && !(gDoi5404.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('3916'))
+      && !(gDoi3916.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('5404')),
+    JSON.stringify({ dcThanh5404, dcThanh3916, dcVai5404, dcVai3916, gDoi5404: gDoi5404.challenges, gDoi3916: gDoi3916.challenges }),
+  );
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
