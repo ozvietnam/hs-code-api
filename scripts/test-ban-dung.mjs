@@ -81,10 +81,13 @@ check('docTepThoiGian: tệp có rác → tep-sai-dinh-dang', docTepThoiGian(tep
 check('docTepThoiGian: tệp hợp lệ → có buildTime, không có lyDo',
   docTepThoiGian(tepTot).buildTime === '2026-11-13T10:00:00.000Z' && !docTepThoiGian(tepTot).lyDo, docTepThoiGian(tepTot));
 
-// Giả thuyết 2 (quyền đọc): chmod 000 — bỏ qua khi chạy bằng root vì root đọc được mọi tệp.
+// Giả thuyết 2 (quyền đọc): chmod 000 — bỏ qua khi chạy bằng root vì root đọc được mọi tệp,
+// và bỏ qua trên Windows vì chmod không bật được bit quyền unix nên tệp vẫn đọc được.
 fs.chmodSync(tepTot, 0o000);
 const khiCam = docTepThoiGian(tepTot);
-if (typeof process.getuid === 'function' && process.getuid() === 0) {
+if (process.platform === 'win32') {
+  console.log('SKIP docTepThoiGian: Windows không có bit quyền unix nên chmod 000 không cấm được đọc');
+} else if (typeof process.getuid === 'function' && process.getuid() === 0) {
   console.log('SKIP docTepThoiGian: chạy bằng root nên không thử được ca cấm đọc');
 } else {
   check('docTepThoiGian: cấm đọc → khong-doc-duoc-tep (khác hẳn khong-co-tep)', khiCam.lyDo === 'khong-doc-duoc-tep', khiCam);
