@@ -1,0 +1,187 @@
+{
+  "nhom": "5513",
+  "khuon": "bd4@1",
+  "nguonLoai": "AI_NHAP",
+  "chamCheo": null,
+  "taoBoi": {
+    "provider": "google-studio",
+    "model": "gemini-4-hydrogen",
+    "goi": "30c9bf5229d0"
+  },
+  "kieuNhom": "THEO_VAT_LIEU",
+  "hoSo": {
+    "chucNang": [],
+    "coChe": [],
+    "dangVatLy": [
+      {
+        "y": "dạng vải dệt thoi",
+        "trich": "các loại vải dệt thoi",
+        "nguon": "ct.5513.1"
+      }
+    ],
+    "chatLieu": [
+      {
+        "y": "xơ staple tổng hợp tỷ trọng dưới 85%",
+        "trich": "Có tỷ trọng xơ staple tổng hợp dưới 85%;",
+        "nguon": "ct.5513.3"
+      },
+      {
+        "y": "pha chủ yếu với bông",
+        "trich": "Được pha chủ yếu hoặc pha duy nhất với bông;",
+        "nguon": "ct.5513.4"
+      }
+    ],
+    "oDauAiDung": [],
+    "hangDuocNeu": [],
+    "dieuKienBatBuoc": [
+      {
+        "y": "tỷ trọng xơ staple tổng hợp dưới 85%",
+        "trich": "Có tỷ trọng xơ staple tổng hợp dưới 85%;",
+        "nguon": "ct.5513.3"
+      },
+      {
+        "y": "được pha chủ yếu với bông",
+        "trich": "Được pha chủ yếu hoặc pha duy nhất với bông;",
+        "nguon": "ct.5513.4"
+      },
+      {
+        "y": "trọng lượng không vượt quá 170 g/m2",
+        "trich": "Trọng lượng không vượt quá 170g/m2.",
+        "nguon": "ct.5513.5"
+      },
+      {
+        "y": "phân loại là vải từ xơ staple tổng hợp theo Chú giải 2 Phần XI",
+        "trich": "được phân loại như vải làm từ xơ staple tổng hợp bằng cách áp dụng Chú giải 2 của Phần XI",
+        "nguon": "ct.5513.2"
+      }
+    ]
+  },
+  "canh": [
+    {
+      "den": "5514",
+      "loai": "PHAN_BIET",
+      "dacDiem": "trọng lượng vải tính trên một mét vuông",
+      "neu": "trọng lượng không vượt quá 170 g/m2",
+      "thi": "5513",
+      "conNeu": "trọng lượng lớn hơn 170 g/m2",
+      "thiKia": "5514",
+      "canCu": [
+        {
+          "nguon": "ct.5513.5",
+          "trich": "Trọng lượng không vượt quá 170g/m2."
+        },
+        {
+          "nguon": "phan:50:chu_giai:2b~4",
+          "trich": "hay trong nhóm 55.14 (vải dệt thoi từ xơ staple tổng hợp…pha chủ yếu hay pha duy nhất với bông…170g/m2)"
+        }
+      ],
+      "quyTac": "QT1"
+    },
+    {
+      "den": "5208",
+      "loai": "PHAN_BIET",
+      "dacDiem": "tỷ trọng thành phần bông so với xơ tổng hợp trong vải",
+      "neu": "phân loại là vải xơ staple tổng hợp dưới 85% pha bông",
+      "thi": "5513",
+      "conNeu": "có tỷ trọng bông từ 85% trở lên",
+      "thiKia": "5208",
+      "canCu": [
+        {
+          "nguon": "ct.5513.3",
+          "trich": "Có tỷ trọng xơ staple tổng hợp dưới 85%;"
+        },
+        {
+          "nguon": "ct.5513.4",
+          "trich": "Được pha chủ yếu hoặc pha duy nhất với bông;"
+        },
+        {
+          "nguon": "ct.5208.1",
+          "trich": "trọng lượng không vượt quá 200g/m2, có tỷ trọng bông từ 85% trở lên."
+        }
+      ],
+      "quyTac": "QT1"
+    },
+    {
+      "den": "3005",
+      "loai": "LOAI_TRU",
+      "dacDiem": "vải nguyên liệu dệt thoi hay băng y tế tẩm thuốc đóng gói bán lẻ",
+      "neu": "vải dệt thoi chưa tẩm dược chất đóng gói bán lẻ",
+      "thi": "5513",
+      "conNeu": "băng đã tẩm thuốc hoặc đã đóng gói để bán lẻ dùng cho y tế",
+      "thiKia": "3005",
+      "canCu": [
+        {
+          "nguon": "ct.5513.6",
+          "trich": "Băng, đã tẩm thuốc hoặc đã đóng gói để bán lẻ thì bị loại trừ (nhóm 30.05)."
+        },
+        {
+          "nguon": "ct.3005.1",
+          "trich": "đã được thấm hoặc tráng bằng dược chất (chống kích ứng, thuốc sát trùng, ...) với mục đích sử dụng cho y tế, phẫu thuật, nha khoa hoặc thú y."
+        }
+      ],
+      "quyTac": "QT1"
+    },
+    {
+      "den": "7019",
+      "loai": "LOAI_TRU",
+      "dacDiem": "bản chất xơ sợi tổng hợp hay sợi thủy tinh",
+      "neu": "vải từ xơ staple tổng hợp pha bông",
+      "thi": "5513",
+      "conNeu": "sợi thủy tinh và các mặt hàng từ sợi thủy tinh",
+      "thiKia": "7019",
+      "canCu": [
+        {
+          "nguon": "chuong:55:chu_giai:1d~2",
+          "trich": "(d) Sợi thủy tinh và các mặt hàng từ sợi thủy tinh của nhóm 70.19."
+        },
+        {
+          "nguon": "phan:50:chu_giai:2d~2",
+          "trich": "(d) Sợi thuỷ tinh, sợi, vải và các mặt hàng làm từ chúng"
+        }
+      ],
+      "quyTac": "QT1"
+    },
+    {
+      "den": "6815",
+      "loai": "LOAI_TRU",
+      "dacDiem": "bản chất xơ sợi tổng hợp hay sợi carbon",
+      "neu": "vải từ xơ staple tổng hợp pha bông",
+      "thi": "5513",
+      "conNeu": "carbon và các mặt hàng từ carbon",
+      "thiKia": "6815",
+      "canCu": [
+        {
+          "nguon": "chuong:55:chu_giai:1c~2",
+          "trich": "(c) Carbon và các mặt hàng từ carbon của nhóm 68.15."
+        },
+        {
+          "nguon": "phan:50:chu_giai:2c~3",
+          "trich": "(c) Sợi, xơ carbon và các loại sợi khoáng phi kim…(Chương 68)."
+        }
+      ],
+      "quyTac": "QT1"
+    },
+    {
+      "den": "6812",
+      "loai": "LOAI_TRU",
+      "dacDiem": "bản chất xơ sợi tổng hợp hay amiăng",
+      "neu": "vải từ xơ staple tổng hợp pha bông",
+      "thi": "5513",
+      "conNeu": "sợi amiăng và các mặt hàng làm từ amiăng",
+      "thiKia": "6812",
+      "canCu": [
+        {
+          "nguon": "chuong:55:chu_giai:1b~2",
+          "trich": "(b) Amiăng của nhóm 25.24 và các mặt hàng làm từ amiăng và các sản phẩm khác của nhóm 68.12 hoặc 68.13."
+        }
+      ],
+      "quyTac": "QT1"
+    }
+  ],
+  "khongChac": [
+    "chú giải chi tiết nhóm không nêu chức năng sử dụng của vải",
+    "chú giải chi tiết nhóm không nêu cơ chế hoạt động vì hàng là vải dệt thoi",
+    "chú giải chi tiết nhóm không nêu nơi sử dụng hoặc người dùng cụ thể",
+    "chú giải chi tiết nhóm không liệt kê tên mặt hàng cụ thể nào ngoài vải dệt thoi nói chung"
+  ]
+}
