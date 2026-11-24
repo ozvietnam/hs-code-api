@@ -401,5 +401,141 @@ for (const c of fixture.ca) {
   );
 }
 
+// OZV-2150 — Cạnh loại trừ 2 chiều 85.26 <-> 85.43 cho ca 125 tầng 4 số
+// "Bộ điều khiển đóng mở / nhựa / điều khiển khóa cửa ô tô"
+{
+  const S = require('../lib/so-tay.js');
+  const { loadSoTay, soTayGates } = require('../lib/so-tay-gates.js');
+  const { cauPhanBietNhom } = require('../lib/hoi-theo-so-tay.js');
+  const D = require('../lib/do-thi/index.js');
+  const { phanTichHoiTruoc4So, TRANG_THAI_4SO } = require('../lib/do-thi/hoi-truoc-4so.js');
+  const q125 = 'Bộ điều khiển đóng mở / nhựa / điều khiển khóa cửa ô tô';
+
+  const st8526 = loadSoTay('8526');
+  const st8543 = loadSoTay('8543');
+  const lt8526 = (st8526?.loaiTru || []).find((x) => x.sangNhom === '8543');
+  const lt8543 = (st8543?.loaiTru || []).find((x) => x.sangNhom === '8526');
+  check(
+    '[OZV-2150 căn cứ] sổ tay 8526 và 8543 có mục loaiTru 2 chiều 8526 <-> 8543 kèm canCuLoaiTru nguyên văn đạt checkItem',
+    Boolean(
+      lt8526 &&
+        lt8526.nguon === 'nhom8526.nhom' &&
+        lt8526.canCuLoaiTru?.nguon === 'nhom8543.nhom' &&
+        S.checkItem('loaiTru', lt8526, S.sourcesFor('8526'), '8526') === null
+    ) &&
+      Boolean(
+        lt8543 &&
+          lt8543.nguon === 'nhom8543.nhom' &&
+          lt8543.canCuLoaiTru?.nguon === 'nhom8526.nhom' &&
+          S.checkItem('loaiTru', lt8543, S.sourcesFor('8543'), '8543') === null
+      ),
+    { lt8526, lt8543 }
+  );
+
+  const c5Tu8526 = D.canhTu('8526', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8543');
+  const c5Tu8543 = D.canhTu('8543', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8526');
+  const c6Tu8526 = D.canhTu('8526', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '8543');
+  const c6Tu8543 = D.canhTu('8543', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '8526');
+  const mrTu8526 = D.moRongUngVien(['8526'], q125);
+  const mrTu8543 = D.moRongUngVien(['8543'], q125);
+  check(
+    '[OZV-2150 đồ thị 2 chiều] bảng cạnh có C5/C6 8526<->8543 và moRongUngVien kéo 2 chiều cho ca 125',
+    c5Tu8526.length >= 1 &&
+      c5Tu8543.length >= 1 &&
+      c6Tu8526.length >= 1 &&
+      c6Tu8543.length >= 1 &&
+      mrTu8526.some((x) => x.nhom === '8543') &&
+      mrTu8543.some((x) => x.nhom === '8526'),
+    { c5Tu8526: c5Tu8526.length, c5Tu8543: c5Tu8543.length, c6Tu8526: c6Tu8526.length, c6Tu8543: c6Tu8543.length, mrTu8526, mrTu8543 }
+  );
+
+  const pb8526 = cauPhanBietNhom('8526', ['8526', '8543'], q125);
+  check(
+    '[OZV-2150 thuận 8526->8543] 8526 đứng đầu với [8526, 8543] sinh câu phân biệt từ nhom8526.nhom trỏ sang 85.43',
+    pb8526.length === 1 &&
+      pb8526[0].loai === 'PHAN_BIET_NHOM' &&
+      pb8526[0].canCu === 'so-tay' &&
+      pb8526[0].nguon === 'nhom8526.nhom' &&
+      /85\.43/.test(pb8526[0].questionVi) &&
+      /85\.26/.test(pb8526[0].questionVi),
+    { pb8526 }
+  );
+
+  const pb8543 = cauPhanBietNhom('8543', ['8543', '8526'], q125);
+  check(
+    '[OZV-2150 thuận 8543->8526] 8543 đứng đầu với [8543, 8526] sinh câu phân biệt từ nhom8543.nhom trỏ sang 85.26',
+    pb8543.length === 1 &&
+      pb8543[0].loai === 'PHAN_BIET_NHOM' &&
+      pb8543[0].canCu === 'so-tay' &&
+      pb8543[0].nguon === 'nhom8543.nhom' &&
+      /85\.26/.test(pb8543[0].questionVi) &&
+      /85\.43/.test(pb8543[0].questionVi),
+    { pb8543 }
+  );
+
+  const g8526To8543 = soTayGates({
+    hs: '85269200',
+    productText: q125,
+    productName: q125,
+    candidateHeadings: ['8526', '8543'],
+  });
+  const g8543To8526 = soTayGates({
+    hs: '85437029',
+    productText: q125,
+    productName: q125,
+    candidateHeadings: ['8543', '8526'],
+  });
+  check(
+    '[OZV-2150 thuận soTayGates] kích hoạt SO_TAY_LOAI_TRU đúng cả 2 chiều 8526 -> 8543 và 8543 -> 8526',
+    (g8526To8543.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8543')) &&
+      (g8543To8526.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8526')),
+    { g8526To8543: g8526To8543.challenges, g8543To8526: g8543To8526.challenges }
+  );
+
+  const dcRadar8526 = cauPhanBietNhom('8526', ['8526', '8543'], 'Ra đa hàng hải dùng cho tàu thuyền đi biển');
+  const dcRadar8543 = cauPhanBietNhom('8543', ['8543', '8526'], 'Ra đa hàng hải dùng cho tàu thuyền đi biển');
+  const dcGiaToc8526 = cauPhanBietNhom('8526', ['8526', '8543'], 'Máy gia tốc hạt tạo chùm electron trong công nghiệp');
+  const dcGiaToc8543 = cauPhanBietNhom('8543', ['8543', '8526'], 'Máy gia tốc hạt tạo chùm electron trong công nghiệp');
+  const dcPhatTinHieu8526 = cauPhanBietNhom('8526', ['8526', '8543'], 'Máy phát tín hiệu cao tần tạo sóng chuẩn');
+  const dcPhatTinHieu8543 = cauPhanBietNhom('8543', ['8543', '8526'], 'Máy phát tín hiệu cao tần tạo sóng chuẩn');
+  const dcGate8526 = soTayGates({
+    hs: '85261010',
+    productText: 'Ra đa hàng hải dùng cho tàu thuyền đi biển',
+    productName: 'Ra đa hàng hải dùng cho tàu thuyền đi biển',
+    candidateHeadings: ['8526', '8543'],
+  });
+  const dcGate8543 = soTayGates({
+    hs: '85431000',
+    productText: 'Máy gia tốc hạt tạo chùm electron trong công nghiệp',
+    productName: 'Máy gia tốc hạt tạo chùm electron trong công nghiệp',
+    candidateHeadings: ['8543', '8526'],
+  });
+  check(
+    '[OZV-2150 đối chứng] ra đa hàng hải, máy gia tốc hạt và máy phát tín hiệu không hỏi oan / không kéo oan 85.26 <-> 85.43',
+    dcRadar8526.length === 0 &&
+      dcRadar8543.length === 0 &&
+      dcGiaToc8526.length === 0 &&
+      dcGiaToc8543.length === 0 &&
+      dcPhatTinHieu8526.length === 0 &&
+      dcPhatTinHieu8543.length === 0 &&
+      !(dcGate8526.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8543')) &&
+      !(dcGate8543.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8526')) &&
+      !D.moRongUngVien(['8526'], 'Ra đa hàng hải dùng cho tàu thuyền đi biển').some((x) => x.nhom === '8543') &&
+      !D.moRongUngVien(['8543'], 'Máy gia tốc hạt tạo chùm electron trong công nghiệp').some((x) => x.nhom === '8526'),
+    { dcRadar8526, dcRadar8543, dcGiaToc8526, dcGiaToc8543, dcPhatTinHieu8526, dcPhatTinHieu8543 }
+  );
+
+  const ht125 = phanTichHoiTruoc4So({ moTa: q125, ungVien: ['8526', '8543'] });
+  const distinctDk125 = new Set((ht125.nhanh || []).map((n) => n.dieuKien)).size === 2;
+  check(
+    '[OZV-2150 hoi-truoc-4so] ca 125 với [8526, 8543] trả CHUA_CHOT_NHOM_HOI_TRUOC với 2 nhánh điều kiện phân biệt từ cạnh C5',
+    ht125.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC &&
+      distinctDk125 &&
+      (ht125.nhanh || []).every((n) => String(n.nguon || '').startsWith('do-thi:C5:')) &&
+      ['8526', '8543'].every((h) => (ht125.dapAnDieuKien || '').includes(`→ nhóm ${h} (`)),
+    { trangThai: ht125.trangThai, distinctDk125, nhanh: ht125.nhanh, dapAnDieuKien: ht125.dapAnDieuKien }
+  );
+}
+
 console.log(`\nphân biệt vật liệu ở tầng tiêu đề 6 số (OZV-558): ${passed} PASS, ${failed} FAIL`);
 process.exit(failed ? 1 : 0);
