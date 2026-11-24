@@ -18,6 +18,7 @@ const require = createRequire(import.meta.url);
 const D = require('../lib/do-thi/index.js');
 const ST = require('../lib/so-tay.js');
 const H = require('../lib/hoi-theo-so-tay.js');
+const { phanTichHoiTruoc4So, TRANG_THAI_4SO } = require('../lib/do-thi/hoi-truoc-4so.js');
 const { soTayGates, nhomLienQuanSoTay } = require('../lib/so-tay-gates.js');
 
 let pass = 0;
@@ -182,6 +183,23 @@ const CAP_7 = [
     hangNguonSach: 'Chế phẩm hóa học hỗn hợp dùng làm chất gắn lõi đúc',
     nguonDich: 'nhom2508.nhom',
   },
+  // OZV-2130: 85.31 ↔ 85.18 (ca 170: Còi chíp điện từ / None / tạo âm thanh trong mạch điện tử)
+  {
+    tu: '8531',
+    toi: '8518',
+    hangDungDich: 'Loa âm thanh dùng tái tạo âm thanh trong thiết bị',
+    moTaMoRong: 'Còi chíp điện từ / None / tạo âm thanh trong mạch điện tử',
+    hangNguonSach: 'Báo cháy tự động gắn trần 24V',
+    nguonDich: 'nhom8518.nhom',
+  },
+  {
+    tu: '8518',
+    toi: '8531',
+    hangDungDich: 'Còi chíp điện từ tạo âm thanh trong mạch điện tử',
+    moTaMoRong: 'Còi chíp điện từ / None / tạo âm thanh trong mạch điện tử',
+    hangNguonSach: 'Tai nghe có khung chụp qua đầu',
+    nguonDich: 'nhom8531.nhom',
+  },
 ];
 
 // 1. Đồ thị hai chiều C5 / C6 + moRongUngVien + nhomLienQuanSoTay
@@ -253,6 +271,10 @@ const CA_BIEN_NGUON = [
   { hs: '73231000', target: '8210', ten: 'Bùi nhùi bằng thép dùng cọ nồi' },
   { hs: '25084090', target: '3824', ten: 'Bentonite nghiền dùng lọc dầu và tẩy dầu mỡ' },
   { hs: '38249999', target: '2508', ten: 'Chế phẩm hóa học hỗn hợp dùng làm chất gắn lõi đúc' },
+  { hs: '85311020', target: '8518', ten: 'Báo cháy tự động gắn trần 24V' },
+  { hs: '85318011', target: '8518', ten: 'Chuông cửa điện tử có dây 220V' },
+  { hs: '85183010', target: '8531', ten: 'Tai nghe có khung chụp qua đầu' },
+  { hs: '85182110', target: '8531', ten: 'Loa thùng hội trường công suất 300W' },
 ];
 for (const b of CA_BIEN_NGUON) {
   const g = soTayGates({ hs: b.hs, productText: b.ten, productName: b.ten });
@@ -566,6 +588,87 @@ for (const b of CA_BIEN_NGUON) {
     check('OZV-2122 (ngược): "Bentonite nghiền lọc dầu" và "chế phẩm gắn lõi đúc" không hỏi oan 25.08↔38.24',
       pbNguoc2508.length === 0 && pbNguoc3824.length === 0,
       JSON.stringify({ pbNguoc2508, pbNguoc3824 }));
+  } finally {
+    if (prevFlag === undefined) delete process.env.HS_HOI_THEO_SO_TAY;
+    else process.env.HS_HOI_THEO_SO_TAY = prevFlag;
+  }
+}
+
+// 8. OZV-2130: ca 170 tầng 4 số «Còi chíp điện từ / None / tạo âm thanh trong mạch điện tử»
+//    sinh đủ câu hỏi phân biệt nhóm 4 số và nhánh hỏi trước tầng 4 số giữa 85.31 ↔ 85.18, kèm ca ngược.
+{
+  const moTa = 'Còi chíp điện từ / None / tạo âm thanh trong mạch điện tử';
+  const prevFlag = process.env.HS_HOI_THEO_SO_TAY;
+  process.env.HS_HOI_THEO_SO_TAY = 'on';
+  try {
+    const out8518 = {
+      status: 'NEED_FACTS',
+      results: [{ hs: '851829', confidence: 53, hsLevel: 6 }],
+      nextAction: {
+        type: 'ASK_USER',
+        questions: [
+          { attribute: null, questionVi: 'Hàng là còi chíp điện từ phát tín hiệu báo hiệu hay là loa/thiết bị tái tạo âm thanh?' },
+        ],
+      },
+      dossier: {
+        product: { nameVi: 'Còi chíp điện từ tạo âm thanh trong mạch điện tử' },
+        hypotheses: [
+          { chapter: '85', heading4: '8518', subheading6: '851829', confidence: 53 },
+          { chapter: '85', heading4: '8531', subheading6: '853180', confidence: 37 },
+        ],
+      },
+      missingStructured: [],
+    };
+    const kq8518 = H.apDung(out8518, { rawAttrs: { tenHang: moTa } });
+    const qs8518 = kq8518.nextAction?.questions || [];
+    const pb8518 = qs8518.filter((q) => q.loai === 'PHAN_BIET_NHOM');
+    check('OZV-2130 (thuận · dừng 851829): sinh câu PHAN_BIET_NHOM (85.18↔85.31 từ nhom8518.nhom) có đủ canCu/nguon/trich',
+      kq8518.nextAction?.canCuCauHoi === 'so-tay'
+      && pb8518.length === 1
+      && pb8518[0].canCu === 'so-tay'
+      && pb8518[0].nguon === 'nhom8518.nhom'
+      && /85\.31/.test(pb8518[0].questionVi),
+      JSON.stringify(qs8518));
+
+    const out8531 = {
+      ...out8518,
+      results: [{ hs: '853180', confidence: 55, hsLevel: 6 }],
+      dossier: {
+        ...out8518.dossier,
+        hypotheses: [
+          { chapter: '85', heading4: '8531', subheading6: '853180', confidence: 55 },
+          { chapter: '85', heading4: '8518', subheading6: '851829', confidence: 35 },
+        ],
+      },
+    };
+    const kq8531 = H.apDung(out8531, { rawAttrs: { tenHang: moTa } });
+    const pb8531 = (kq8531.nextAction?.questions || []).filter((q) => q.loai === 'PHAN_BIET_NHOM');
+    const pbLoa = H.cauPhanBietNhom('8531', ['8531', '8518'], 'Loa âm thanh dùng tái tạo âm thanh trong mạch điện tử');
+    check('OZV-2130 (thuận · dừng 853180): sinh câu PHAN_BIET_NHOM (85.31↔85.18) và chiều 8531→8518 từ nhom8531.nhom',
+      kq8531.nextAction?.canCuCauHoi === 'so-tay'
+      && pb8531.length === 1
+      && pb8531[0].canCu === 'so-tay'
+      && (/85\.31/.test(pb8531[0].questionVi) || /85\.18/.test(pb8531[0].questionVi))
+      && pbLoa.length === 1
+      && pbLoa[0].nguon === 'nhom8531.nhom'
+      && /85\.18/.test(pbLoa[0].questionVi),
+      JSON.stringify({ pb8531, pbLoa }));
+
+    const ht = phanTichHoiTruoc4So({ moTa, ungVien: ['8531', '8518'] });
+    check('OZV-2130 (hoi-truoc-4so): phanTichHoiTruoc4So tách 2 nhánh 8531 và 8518 từ cạnh đồ thị C5 có đủ căn cứ nhom8518.nhom / nhom8531.nhom',
+      ht.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC
+      && ht.nhanh.length === 2
+      && ht.nhanh.some((n) => n.nhom === '8531' && /^do-thi:/.test(n.nguon) && /nhom8518\.nhom/.test(n.canCu))
+      && ht.nhanh.some((n) => n.nhom === '8518' && /^do-thi:/.test(n.nguon) && /nhom8531\.nhom/.test(n.canCu))
+      && /nhóm 8531/.test(ht.dapAnDieuKien || '')
+      && /nhóm 8518/.test(ht.dapAnDieuKien || ''),
+      JSON.stringify(ht));
+
+    const pbNguoc8531 = H.cauPhanBietNhom('8531', ['8531', '8518'], 'Báo cháy tự động gắn trần 24V');
+    const pbNguoc8518 = H.cauPhanBietNhom('8518', ['8518', '8531'], 'Tai nghe có khung chụp qua đầu');
+    check('OZV-2130 (ngược): "Báo cháy tự động gắn trần 24V" và "Tai nghe có khung chụp qua đầu" không hỏi oan 85.31↔85.18',
+      pbNguoc8531.length === 0 && pbNguoc8518.length === 0,
+      JSON.stringify({ pbNguoc8531, pbNguoc8518 }));
   } finally {
     if (prevFlag === undefined) delete process.env.HS_HOI_THEO_SO_TAY;
     else process.env.HS_HOI_THEO_SO_TAY = prevFlag;
