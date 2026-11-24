@@ -14,8 +14,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
+import { fileURLToPath } from 'url';
 
-const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const arg = (n, d = null) => { const a = process.argv.find((x) => x.startsWith(`--${n}=`)); return a ? a.slice(n.length + 3) : d; };
 const MIN_LABEL = 8;
 
@@ -79,4 +80,4 @@ function main() {
   console.log(JSON.stringify(rep, null, 1));
 }
 
-if (process.argv[1] && path.resolve(process.argv[1]) === new URL(import.meta.url).pathname) main();
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) main();

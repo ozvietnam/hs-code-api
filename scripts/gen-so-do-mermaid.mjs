@@ -12,6 +12,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { GOC, doc, docJson, co } from './lib-luat.mjs';
+import { pathToFileURL } from 'url';
 
 export const NEO_BAT_DAU = '<!-- AUTO_MERMAID_DUONG_KHACH_START -->';
 export const NEO_KET_THUC = '<!-- AUTO_MERMAID_DUONG_KHACH_END -->';
@@ -110,7 +111,7 @@ export function capNhatTepMarkdown(duongDanTep = 'docs/luat-duong-khach.md') {
 }
 
 // Chạy trực tiếp qua CLI
-if (process.argv[1] && import.meta.url.endsWith(process.argv[1].replace(/^.*\//, ''))) {
+if (Boolean(process.argv[1]) && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const laKiem = process.argv.includes('--kiem');
   if (laKiem) {
     const noiDung = doc('docs/luat-duong-khach.md');

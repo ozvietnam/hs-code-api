@@ -2,8 +2,11 @@
 // Chỉ đọc tệp (fs), không nạp mã sản phẩm, không LLM, không mạng.
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-export const GOC = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+// `new URL(...).pathname` cho '/C:/...' trên Windows — fs hiểu thành C:\C:\... và mọi cổng máy
+// dùng chung đồ dùng này chết. fileURLToPath là quy ước 170 tệp khác trong repo đã dùng.
+export const GOC = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 export const doc = (tep) => fs.readFileSync(path.join(GOC, tep), 'utf8');
 export const docJson = (tep) => JSON.parse(doc(tep));
 export const co = (tep) => fs.existsSync(path.join(GOC, tep));

@@ -31,9 +31,10 @@ import './test-isolate-data.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import { createRequire } from 'node:module';
+import { fileURLToPath } from 'url';
 
 const require = createRequire(import.meta.url);
-const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const { chotDong8 } = require('../lib/so-tay-gates.js');
 const { chayCaDoiChungVatLieu } = await import('./bo-kiem-luat.mjs');
 

@@ -2,6 +2,7 @@
 import './test-isolate-data.mjs';
 /** lib/nguon-loai.js — nhãn loại nguồn dùng chung (#236 việc 2): tệp AI chưa kiểm được gắn nhãn ở mọi nơi nó lộ ra. */
 import { createRequire } from 'node:module';
+import { fileURLToPath } from 'url';
 const require = createRequire(import.meta.url);
 const N = require('../lib/nguon-loai.js');
 
@@ -88,7 +89,7 @@ assert('cấp nút cây: CLAUDE_DUYET / AI_DA_KIEM / NGUOI_DUYET gộp vào DA_K
   const path = require('node:path');
   const { execFileSync } = require('node:child_process');
   const { TEST_DATA_DIR } = await import('./test-isolate-data.mjs');
-  const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+  const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
   const SCRIPT = path.join(ROOT, 'scripts', 'check-mo-ta-bo-de.mjs');
   const src = fs.readFileSync(SCRIPT, 'utf8');
   assert('check-mo-ta-bo-de: nhãn duyệt lấy từ NHAN_BO_DE của lib/nguon-loai.js, không so chuỗi gõ tay', /NHAN_BO_DE/.test(src) && !/!==\s*'CLAUDE_DUYET'/.test(src));

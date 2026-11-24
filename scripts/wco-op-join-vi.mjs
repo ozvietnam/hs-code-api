@@ -10,6 +10,7 @@
  */
 import fs from 'node:fs';
 import { numericParity } from './wco-op-check-vi.mjs';
+import { pathToFileURL } from 'url';
 
 const arg = (n, d = null) => { const a = process.argv.find((x) => x.startsWith(`--${n}=`)); return a ? a.slice(n.length + 3) : d; };
 
@@ -60,4 +61,4 @@ function main() {
   if (missing.length) console.log('dòng thiếu:', missing.join(','));
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) main();
+if (import.meta.url === pathToFileURL(process.argv[1] || '').href) main();

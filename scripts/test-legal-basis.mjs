@@ -7,9 +7,10 @@ import './test-isolate-data.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import { createRequire } from 'node:module';
+import { fileURLToPath } from 'url';
 const require = createRequire(import.meta.url);
 process.env.HS_API_TOKEN = 'test-token';
-const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
 let pass = 0; let fail = 0;
 const check = (n, c, d) => { c ? (pass++, console.log(`PASS ${n}`)) : (fail++, console.log(`FAIL ${n}`, d === undefined ? '' : JSON.stringify(d).slice(0, 300))); };

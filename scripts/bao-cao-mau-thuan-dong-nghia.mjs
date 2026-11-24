@@ -14,9 +14,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { createRequire } from 'node:module';
+import { fileURLToPath } from 'url';
 
 const require = createRequire(import.meta.url);
-const GOC = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+const GOC = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
 const CAU_LENH_DUNG = 'node scripts/bao-cao-mau-thuan-dong-nghia.mjs --ghi';
 const TEP_BAO_CAO = 'docs/do-thi/mau-thuan-dong-nghia.md';
@@ -341,7 +342,7 @@ export function dinhDangMarkdown(baoCao) {
   ].join('\n');
 }
 
-const laChinh = process.argv[1] && path.resolve(process.argv[1]) === path.resolve(new URL(import.meta.url).pathname);
+const laChinh = process.argv[1] && path.resolve(process.argv[1]) === path.resolve(fileURLToPath(import.meta.url));
 if (laChinh) {
   const ghi = process.argv.includes('--ghi');
   const bc = taoBaoCao();

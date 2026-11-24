@@ -6,9 +6,10 @@
  */
 import { createRequire } from 'node:module';
 import path from 'node:path';
+import { fileURLToPath } from 'url';
 
 const require = createRequire(import.meta.url);
-const GOC = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+const GOC = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 process.chdir(GOC);
 const B = require('../lib/do-thi/ban-do-4so.js');
 let loi = 0;
@@ -97,7 +98,7 @@ kiem('trichNguyenVan: dấu … tách đoạn theo thứ tự', B.trichNguyenVan
 
 // Mỗi mã lỗi đỏ có ca tiêm
 const maDo = Object.keys(B.MA_LOI);
-const src = (await import('node:fs')).readFileSync(new URL(import.meta.url).pathname, 'utf8');
+const src = (await import('node:fs')).readFileSync(fileURLToPath(import.meta.url), 'utf8');
 kiem('mỗi mã lỗi đỏ có ≥ 1 ca tiêm trong tệp này', maDo.every((m) => src.includes(`'${m}'`)), maDo.filter((m) => !src.includes(`'${m}'`)).join(','));
 
 if (loi) { console.log(`\n✗ ${loi} ca sai`); process.exit(1); }
