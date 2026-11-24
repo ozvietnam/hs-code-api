@@ -472,5 +472,157 @@ check(
   );
 }
 
-console.log(`\nOZV-2109 / OZV-2118 cạnh loại trừ 2 chiều: ${passed} PASS, ${failed} FAIL`);
+// ─────────────────────────────────────────────────────────────────────────────
+// OZV-2129 — Kiểm tra cạnh loại trừ 2 chiều 40.13 <-> 40.16 cho ca 168 tầng 4 số:
+// "Săm lốp máy xúc lật / cao su / lắp cho lốp máy xúc lật" (nhomNhan: ["4013"], heNhom: "4016").
+{
+  const moTaCa168 = 'Săm lốp máy xúc lật / cao su / lắp cho lốp máy xúc lật';
+
+  // 1. Căn cứ pháp lý nguyên văn
+  const s4013 = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'so-tay', '4013.json'), 'utf8'));
+  const s4016 = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'so-tay', '4016.json'), 'utf8'));
+  const v4013 = S.verifySoTay(s4013, '4013');
+  const v4016 = S.verifySoTay(s4016, '4016');
+  check(
+    '[OZV-2129 verifySoTay] sổ tay 4013 và 4016 đạt 100% (0 mục bị loại)',
+    v4013.loai.length === 0 && v4016.loai.length === 0,
+    { loai4013: v4013.loai, loai4016: v4016.loai }
+  );
+
+  const st4013 = loadSoTay('4013');
+  const st4016 = loadSoTay('4016');
+  const lt4013 = (st4013?.loaiTru || []).find((x) => x.sangNhom === '4016');
+  const lt4016 = (st4016?.loaiTru || []).find((x) => x.sangNhom === '4013');
+  check(
+    '[OZV-2129 căn cứ] sổ tay 4013 và 4016 có mục loaiTru 2 chiều 4013 <-> 4016 kèm canCuLoaiTru nguyên văn đạt checkItem',
+    Boolean(
+      lt4013 &&
+        lt4013.nguon === 'ch40.chuong' &&
+        lt4013.canCuLoaiTru?.nguon === 'nhom4016.nhom' &&
+        S.checkItem('loaiTru', lt4013, S.sourcesFor('4013'), '4013') === null
+    ) &&
+      Boolean(
+        lt4016 &&
+          lt4016.nguon === 'ch40.chuong' &&
+          lt4016.canCuLoaiTru?.nguon === 'nhom4013.nhom' &&
+          S.checkItem('loaiTru', lt4016, S.sourcesFor('4016'), '4016') === null
+      ),
+    { lt4013, lt4016 }
+  );
+
+  // 2. Bảng cạnh đồ thị 2 chiều C5/C6 và mở rộng ứng viên
+  const c5Tu4013 = D.canhTu('4013', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '4016');
+  const c5Tu4016 = D.canhTu('4016', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '4013');
+  const c6Tu4013 = D.canhTu('4013', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '4016');
+  const c6Tu4016 = D.canhTu('4016', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '4013');
+  const giua4013_4016 = D.canhGiuaNhomConSong(['4013', '4016']).filter((e) => e.loai === 'C5' || e.loai === 'C6');
+  const mrTu4013 = D.moRongUngVien(['4013'], moTaCa168, { toiDa: 10 });
+  const mrTu4016 = D.moRongUngVien(['4016'], moTaCa168, { toiDa: 10 });
+  check(
+    '[OZV-2129 đồ thị 2 chiều] bảng cạnh có C5/C6 4013<->4016, canhGiuaNhomConSong >= 2 và moRongUngVien kéo 2 chiều cho ca 168',
+    c5Tu4013.some((e) => e.nguon === 'ch40.chuong' && e.canCuLoaiTru?.nguon === 'nhom4016.nhom') &&
+      c5Tu4016.some((e) => e.nguon === 'ch40.chuong' && e.canCuLoaiTru?.nguon === 'nhom4013.nhom') &&
+      c6Tu4013.length >= 1 &&
+      c6Tu4016.length >= 1 &&
+      giua4013_4016.length >= 2 &&
+      mrTu4013.some((x) => x.nhom === '4016') &&
+      mrTu4016.some((x) => x.nhom === '4013'),
+    { c5Tu4013: c5Tu4013.length, c5Tu4016: c5Tu4016.length, giua: giua4013_4016.length, mrTu4013, mrTu4016 }
+  );
+
+  const rel4013 = nhomLienQuanSoTay('4013');
+  const rel4016 = nhomLienQuanSoTay('4016');
+  check(
+    '[OZV-2129 nhomLienQuanSoTay] liên kết hai chiều 4013 <-> 4016',
+    rel4013.includes('4016') && rel4016.includes('4013'),
+    { rel4013, rel4016 }
+  );
+
+  // 3. Thuận 2 chiều: cauPhanBietNhom và soTayGates
+  const pb4013 = cauPhanBietNhom('4013', ['4013', '4016'], moTaCa168);
+  check(
+    '[OZV-2129 thuận 4013->4016] 4013 đứng đầu với [4013, 4016] sinh câu phân biệt từ ch40.chuong trỏ sang 40.16',
+    pb4013.length === 1 &&
+      pb4013[0].loai === 'PHAN_BIET_NHOM' &&
+      pb4013[0].canCu === 'so-tay' &&
+      pb4013[0].nguon === 'ch40.chuong' &&
+      /40\.16/.test(pb4013[0].questionVi) &&
+      /40\.13/.test(pb4013[0].questionVi),
+    { pb4013 }
+  );
+
+  const pb4016 = cauPhanBietNhom('4016', ['4016', '4013'], moTaCa168);
+  check(
+    '[OZV-2129 thuận 4016->4013] 4016 đứng đầu với [4016, 4013] sinh câu phân biệt từ ch40.chuong trỏ sang 40.13',
+    pb4016.length === 1 &&
+      pb4016[0].loai === 'PHAN_BIET_NHOM' &&
+      pb4016[0].canCu === 'so-tay' &&
+      pb4016[0].nguon === 'ch40.chuong' &&
+      /40\.13/.test(pb4016[0].questionVi) &&
+      /40\.16/.test(pb4016[0].questionVi),
+    { pb4016 }
+  );
+
+  const g4013To4016 = soTayGates({
+    hs: '40139019',
+    productText: 'Săm lốp máy xúc lật ở dạng miếng vá săm và vòng đệm bằng cao su lưu hóa',
+    productName: 'Săm lốp máy xúc lật ở dạng miếng vá săm và vòng đệm bằng cao su lưu hóa',
+    candidateHeadings: ['4013', '4016'],
+  });
+  const g4016To4013 = soTayGates({
+    hs: '40169959',
+    productText: 'Săm lốp máy xúc lật bằng cao su lắp vào lốp máy xúc lật',
+    productName: 'Săm lốp máy xúc lật bằng cao su lắp vào lốp máy xúc lật',
+    candidateHeadings: ['4016', '4013'],
+  });
+  check(
+    '[OZV-2129 thuận soTayGates] kích hoạt SO_TAY_LOAI_TRU đúng cả 2 chiều 4013 -> 4016 và 4016 -> 4013',
+    (g4013To4016.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('4016')) &&
+      (g4016To4013.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('4013')),
+    { g4013To4016: g4013To4016.challenges, g4016To4013: g4016To4013.challenges }
+  );
+
+  // 4. Đối chứng (ca âm): hàng không trùng từ khoá điều kiện không hỏi oan / không kéo oan
+  const dcVongDem4013 = cauPhanBietNhom('4013', ['4013', '4016'], 'Vòng đệm bằng cao su lưu hóa dùng cho đường ống nước');
+  const dcVongDem4016 = cauPhanBietNhom('4016', ['4016', '4013'], 'Vòng đệm bằng cao su lưu hóa dùng cho đường ống nước');
+  const dcTamPhuSan4013 = cauPhanBietNhom('4013', ['4013', '4016'], 'Tấm phủ sàn bằng cao su lưu hóa cho tòa nhà');
+  const dcTamPhuSan4016 = cauPhanBietNhom('4016', ['4016', '4013'], 'Tấm phủ sàn bằng cao su lưu hóa cho tòa nhà');
+  const dcSamMayBay4013 = soTayGates({
+    hs: '40139040',
+    productText: 'Săm cao su sử dụng cho phương tiện bay',
+    productName: 'Săm cao su sử dụng cho phương tiện bay',
+    candidateHeadings: ['4013', '4016'],
+  });
+  const dcDemChongVa4016 = soTayGates({
+    hs: '40169400',
+    productText: 'Đệm chống va bằng cao su lưu hóa cho tàu thuyền hoặc ụ tàu',
+    productName: 'Đệm chống va bằng cao su lưu hóa cho tàu thuyền hoặc ụ tàu',
+    candidateHeadings: ['4016', '4013'],
+  });
+  check(
+    '[OZV-2129 đối chứng] vòng đệm cao su, tấm phủ sàn, săm phương tiện bay và đệm chống va tàu thuyền không hỏi oan / không kéo oan 40.13 <-> 40.16',
+    dcVongDem4013.length === 0 &&
+      dcVongDem4016.length === 0 &&
+      dcTamPhuSan4013.length === 0 &&
+      dcTamPhuSan4016.length === 0 &&
+      !(dcSamMayBay4013.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('4016')) &&
+      !(dcDemChongVa4016.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('4013')) &&
+      !D.moRongUngVien(['4013'], 'Đệm chống va bằng cao su lưu hóa cho tàu thuyền hoặc ụ tàu').some((x) => x.nhom === '4016') &&
+      !D.moRongUngVien(['4016'], 'Vòng đệm bằng cao su lưu hóa dùng cho đường ống nước').some((x) => x.nhom === '4013'),
+    { dcVongDem4013, dcVongDem4016, dcTamPhuSan4013, dcTamPhuSan4016 }
+  );
+
+  // 5. phanTichHoiTruoc4So tách 2 nhánh điều kiện riêng biệt cho ca 168
+  const ht168 = phanTichHoiTruoc4So({ moTa: moTaCa168, ungVien: ['4013', '4016'] });
+  const distinctDk168 = new Set((ht168.nhanh || []).map((n) => n.dieuKien)).size === 2;
+  check(
+    '[OZV-2129 hoi-truoc-4so] ca 168 với [4013, 4016] trả CHUA_CHOT_NHOM_HOI_TRUOC với 2 nhánh điều kiện phân biệt',
+    ht168.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC &&
+      distinctDk168 &&
+      ['4013', '4016'].every((h) => (ht168.dapAnDieuKien || '').includes(`→ nhóm ${h} (`)),
+    { trangThai: ht168.trangThai, distinctDk168, dapAnDieuKien: ht168.dapAnDieuKien }
+  );
+}
+
+console.log(`\nOZV-2109 / OZV-2118 / OZV-2121 / OZV-2129 cạnh loại trừ 2 chiều: ${passed} PASS, ${failed} FAIL`);
 process.exit(failed ? 1 : 0);
