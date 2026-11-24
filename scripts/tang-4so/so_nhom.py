@@ -249,7 +249,7 @@ def _dung_prompt(ca, mo, h, uv, tu, cap_ch, cap_cgn, da_loai=None):
             if kw: ho_so += "\n\n" + kw; ids |= set(re.findall(r"\[(wco\.\d{6}/\d+)\]", kw))
     else:
         ho_so = "\n".join(ho_so_nhom(n, tu, cap_cgn) for n in uv)
-    bc = {k: h.get(k) for k in ("tenDung", "banChat", "dangVatLy", "dungChoViecGi", "coChe", "oDau", "aiDung", "laBoPhanCua", "tenKhac", "canXacNhan") if h.get(k)}
+    bc = {k: h.get(k) for k in ("tenDung", "banChat", "dangVatLy", "dungChoViecGi", "coChe", "oDau", "aiDung", "laBoPhanCua", "tenKhac", "canXacNhan", "cachHieuKhac") if h.get(k)}
     da_loai_txt = ""
     vang = {n: x for n, x in (da_loai or {}).items() if n not in uv}  # nhóm đã có kết luận ở lượt 1 mà không được mở hồ sơ ở lượt này
     if vang:
@@ -274,7 +274,10 @@ def _dung_prompt(ca, mo, h, uv, tu, cap_ch, cap_cgn, da_loai=None):
         "nếu giá trị dữ kiện này khác đi thì hàng có sang nhóm KHÁC trong danh sách không? Nếu CÓ và hồ sơ chưa nêu giá trị đó → ghi vào \"nhayCam\" (daCo=false). "
         "Không ghi dữ kiện chỉ ảnh hưởng thuế suất, thương hiệu, model, kích thước; không ghi khi hồ sơ đã nêu rõ. Đừng chốt chỉ vì chọn giả định dễ nhất cho dữ kiện còn thiếu.\n"
         "6) Điều loại trừ chỉ áp khi hàng thực sự là thứ mà điều đó gọi tên và nhóm đích có mô tả khớp hàng; nhóm đích không gọi đúng hàng thì điều loại trừ KHÔNG áp.\n\n"
-        f"HÀNG: \"{mo}\"\nBẢN CHẤT (hồ sơ hàng): {json.dumps(bc, ensure_ascii=False)}\n\n"
+        f"HÀNG: \"{mo}\"\nBẢN CHẤT (hồ sơ hàng): {json.dumps(bc, ensure_ascii=False)}\n"
+        + ("Khách chỉ nói đúng câu HÀNG. cachHieuKhac là loại hàng khác mà cùng câu đó có thể chỉ tới: nhóm của cách hiểu nào còn khả thi theo luật thì phải có nhánh riêng, không chốt theo cách hiểu thường gặp. "
+           "Cách hiểu nào trái với điều khách đã nói thì bỏ. Mỗi nhánh phải tách bằng một dữ kiện khách trả lời được; nhánh hiếm gặp hoặc chỉ suy từ chữ luật mà không hợp với tên hàng thì KHÔNG đưa vào.\n" if h.get("cachHieuKhac") else "")
+        + "\n"
         + "\n".join(khoi) + ("\n\n" + cg2 if cg2 else "") + "\n\nHỒ SƠ CÁC NHÓM ỨNG VIÊN:\n" + ho_so + da_loai_txt +
         "\n\nTrả JSON thuần (không giải thích ngoài JSON):\n"
         "{\"xet\": [{\"nhom\": \"xxxx\", \"ketLuan\": \"KHOP|LOAI|CHUA_RO\", \"dieuKhoan\": [\"id điều khoản áp dụng, đúng số hiệu ở trên\"], "
