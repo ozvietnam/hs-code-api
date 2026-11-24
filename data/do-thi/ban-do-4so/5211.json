@@ -1,0 +1,109 @@
+{
+  "nhom": "5211",
+  "khuon": "bd4@1",
+  "nguonLoai": "AI_NHAP",
+  "chamCheo": "DUYET",
+  "taoBoi": {
+    "provider": "google-studio",
+    "model": "gemini-4-hydrogen",
+    "goi": "30c9bf5229d0"
+  },
+  "kieuNhom": "THEO_VAT_LIEU",
+  "hoSo": {
+    "chucNang": [],
+    "coChe": [
+      {
+        "y": "dệt kiểu vân chéo đối với vải denim",
+        "trich": "kiểu dệt là vân chéo 3 sợi hoặc vân chéo 4 sợi, kể cả vân chéo gãy",
+        "nguon": "chuong:52:chu_giai_phan_nhom:1"
+      }
+    ],
+    "dangVatLy": [
+      {
+        "y": "dạng vải dệt thoi",
+        "trich": "vải dệt thoi từ sợi bông",
+        "nguon": "phan:50:chu_giai:2b~4"
+      }
+    ],
+    "chatLieu": [
+      {
+        "y": "làm từ sợi bông",
+        "trich": "vải dệt thoi từ sợi bông",
+        "nguon": "phan:50:chu_giai:2b~4"
+      },
+      {
+        "y": "pha với xơ sợi nhân tạo",
+        "trich": "pha chủ yếu hay duy nhất với xơ sợi nhân tạo",
+        "nguon": "phan:50:chu_giai:2b~4"
+      }
+    ],
+    "oDauAiDung": [],
+    "hangDuocNeu": [
+      {
+        "ten": "vải denim",
+        "trich": "khái niệm “denim” là vải dệt từ các sợi có các màu khác nhau",
+        "nguon": "chuong:52:chu_giai_phan_nhom:1"
+      }
+    ],
+    "dieuKienBatBuoc": [
+      {
+        "y": "tỷ trọng bông dưới 85%",
+        "trich": "có tỷ trọng…bông dưới 85%",
+        "nguon": "phan:50:chu_giai:2b~4"
+      },
+      {
+        "y": "trọng lượng lớn hơn 200 g/m2",
+        "trich": "có trọng lượng lớn…hơn 200g/m2",
+        "nguon": "phan:50:chu_giai:2b~4"
+      }
+    ]
+  },
+  "canh": [
+    {
+      "den": "5516",
+      "loai": "PHAN_BIET",
+      "dacDiem": "tỷ trọng bông so với tổng tỷ trọng xơ staple nhân tạo",
+      "neu": "tỷ trọng bông trội hơn tổng tỷ trọng xơ sợi nhân tạo",
+      "thi": "5211",
+      "conNeu": "tổng tỷ trọng xơ staple tổng hợp cộng xơ staple tái tạo trội hơn bông",
+      "thiKia": "5516",
+      "canCu": [
+        {
+          "nguon": "phan:50:chu_giai:2b~4",
+          "trich": "vì tỷ lệ về xơ staple tổng hợp và xơ staple tái tạo…được cộng lại"
+        },
+        {
+          "nguon": "phan:50:chu_giai:2b~4",
+          "trich": "không được phân loại trong nhóm 52.11…mà lại đưa vào nhóm 55.16"
+        }
+      ],
+      "quyTac": "QT1"
+    },
+    {
+      "den": "5514",
+      "loai": "PHAN_BIET",
+      "dacDiem": "thành phần xơ trội hơn trong hỗn hợp bông và xơ staple tổng hợp",
+      "neu": "thành phần chính là sợi bông (dưới 85%), pha xơ sợi nhân tạo, nặng trên 200 g/m2",
+      "thi": "5211",
+      "conNeu": "thành phần chính là xơ staple tổng hợp (dưới 85%), pha bông, nặng trên 170 g/m2",
+      "thiKia": "5514",
+      "canCu": [
+        {
+          "nguon": "phan:50:chu_giai:2b~4",
+          "trich": "vải dệt thoi từ sợi bông, có tỷ trọng…bông dưới 85%, pha chủ yếu hay duy nhất với xơ sợi nhân tạo, có trọng lượng lớn…hơn 200g/m2"
+        },
+        {
+          "nguon": "phan:50:chu_giai:2b~4",
+          "trich": "vải dệt thoi từ xơ staple tổng hợp, có tỷ trọng…loại xơ này dưới 85% pha chủ yếu hay pha duy nhất với bông có trọng lượng lớn…hơn 170g/m2"
+        }
+      ],
+      "quyTac": "QT1"
+    }
+  ],
+  "khongChac": [
+    "Chú giải chi tiết 5211 dẫn chiếu sang nhóm 52.10 nhưng gói không có nội dung nhóm 52.10 nên thiếu thông tin về chức năng chung",
+    "Gói không có đoạn nêu nơi sử dụng hoặc đối tượng sử dụng của vải nhóm 5211",
+    "Gói không nêu quy tắc xử lý trường hợp tỷ trọng bông bằng đúng tổng tỷ trọng xơ nhân tạo"
+  ],
+  "chamCheoGhiChu": "[gemma4:31b, máy GPU nhà] Các đặc điểm, điều kiện bắt buộc và hai cạnh phân biệt với 5516, 5514 đều khớp chính xác với nội dung và logic của đoạn luật trích dẫn. | "
+}
