@@ -168,5 +168,157 @@ check(
   { trangThai: ht159.trangThai, distinctDk159, dapAnDieuKien: ht159.dapAnDieuKien }
 );
 
-console.log(`\nOZV-2109 phân biệt vật liệu gốm/sứ 69.11 <-> 69.12: ${passed} PASS, ${failed} FAIL`);
+// ─────────────────────────────────────────────────────────────────────────────
+// OZV-2118 — Kiểm tra cạnh loại trừ 2 chiều 56.07 <-> 95.03 cho ca 152 tầng 4 số:
+// "Dây diều / xơ tổng hợp / thả và điều khiển diều" (nhomNhan: ["5607", "9503"]).
+{
+  const moTaCa152 = 'Dây diều / xơ tổng hợp / thả và điều khiển diều';
+
+  // 1. Căn cứ pháp lý nguyên văn
+  const s5607 = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'so-tay', '5607.json'), 'utf8'));
+  const s9503 = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'so-tay', '9503.json'), 'utf8'));
+  const v5607 = S.verifySoTay(s5607, '5607');
+  const v9503 = S.verifySoTay(s9503, '9503');
+  check(
+    '[OZV-2118 verifySoTay] sổ tay 5607 và 9503 đạt 100% (0 mục bị loại)',
+    v5607.loai.length === 0 && v9503.loai.length === 0,
+    { loai5607: v5607.loai, loai9503: v9503.loai }
+  );
+
+  const st5607 = loadSoTay('5607');
+  const st9503 = loadSoTay('9503');
+  const lt5607 = (st5607?.loaiTru || []).find((x) => x.sangNhom === '9503');
+  const lt9503 = (st9503?.loaiTru || []).find((x) => x.sangNhom === '5607');
+  check(
+    '[OZV-2118 căn cứ] sổ tay 5607 và 9503 có mục loaiTru 2 chiều 5607 <-> 9503 kèm canCuLoaiTru nguyên văn đạt checkItem',
+    Boolean(
+      lt5607 &&
+        lt5607.nguon === 'nhom5607.nhom' &&
+        lt5607.canCuLoaiTru?.nguon === 'nhom9503.nhom' &&
+        S.checkItem('loaiTru', lt5607, S.sourcesFor('5607'), '5607') === null
+    ) &&
+      Boolean(
+        lt9503 &&
+          lt9503.nguon === 'nhom9503.nhom' &&
+          lt9503.canCuLoaiTru?.nguon === 'nhom5607.nhom' &&
+          S.checkItem('loaiTru', lt9503, S.sourcesFor('9503'), '9503') === null
+      ),
+    { lt5607, lt9503 }
+  );
+
+  // 2. Bảng cạnh đồ thị 2 chiều C5/C6 và mở rộng ứng viên
+  const c5Tu5607 = D.canhTu('5607', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '9503');
+  const c5Tu9503 = D.canhTu('9503', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '5607');
+  const c6Tu5607 = D.canhTu('5607', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '9503');
+  const c6Tu9503 = D.canhTu('9503', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '5607');
+  const giua5607_9503 = D.canhGiuaNhomConSong(['5607', '9503']).filter((e) => e.loai === 'C5' || e.loai === 'C6');
+  const mrTu5607 = D.moRongUngVien(['5607'], moTaCa152);
+  const mrTu9503 = D.moRongUngVien(['9503'], moTaCa152);
+  check(
+    '[OZV-2118 đồ thị 2 chiều] bảng cạnh có C5/C6 5607<->9503, canhGiuaNhomConSong >= 2 và moRongUngVien kéo 2 chiều cho ca 152',
+    c5Tu5607.some((e) => e.nguon === 'nhom5607.nhom' && e.canCuLoaiTru?.nguon === 'nhom9503.nhom') &&
+      c5Tu9503.some((e) => e.nguon === 'nhom9503.nhom' && e.canCuLoaiTru?.nguon === 'nhom5607.nhom') &&
+      c6Tu5607.length >= 1 &&
+      c6Tu9503.length >= 1 &&
+      giua5607_9503.length >= 2 &&
+      mrTu5607.some((x) => x.nhom === '9503') &&
+      mrTu9503.some((x) => x.nhom === '5607'),
+    { c5Tu5607: c5Tu5607.length, c5Tu9503: c5Tu9503.length, giua: giua5607_9503.length, mrTu5607, mrTu9503 }
+  );
+
+  const rel5607 = nhomLienQuanSoTay('5607');
+  const rel9503 = nhomLienQuanSoTay('9503');
+  check(
+    '[OZV-2118 nhomLienQuanSoTay] liên kết hai chiều 5607 <-> 9503',
+    rel5607.includes('9503') && rel9503.includes('5607'),
+    { rel5607, rel9503 }
+  );
+
+  // 3. Thuận 2 chiều: cauPhanBietNhom và soTayGates
+  const pb5607 = cauPhanBietNhom('5607', ['5607', '9503'], moTaCa152);
+  check(
+    '[OZV-2118 thuận 5607->9503] 5607 đứng đầu với [5607, 9503] sinh câu phân biệt từ nhom5607.nhom trỏ sang 95.03',
+    pb5607.length === 1 &&
+      pb5607[0].loai === 'PHAN_BIET_NHOM' &&
+      pb5607[0].canCu === 'so-tay' &&
+      pb5607[0].nguon === 'nhom5607.nhom' &&
+      /95\.03/.test(pb5607[0].questionVi) &&
+      /56\.07/.test(pb5607[0].questionVi),
+    { pb5607 }
+  );
+
+  const pb9503 = cauPhanBietNhom('9503', ['9503', '5607'], moTaCa152);
+  check(
+    '[OZV-2118 thuận 9503->5607] 9503 đứng đầu với [9503, 5607] sinh câu phân biệt từ nhom9503.nhom trỏ sang 56.07',
+    pb9503.length === 1 &&
+      pb9503[0].loai === 'PHAN_BIET_NHOM' &&
+      pb9503[0].canCu === 'so-tay' &&
+      pb9503[0].nguon === 'nhom9503.nhom' &&
+      /56\.07/.test(pb9503[0].questionVi) &&
+      /95\.03/.test(pb9503[0].questionVi),
+    { pb9503 }
+  );
+
+  const g5607To9503 = soTayGates({
+    hs: '56075090',
+    productText: 'Dây diều bằng xơ tổng hợp đã cuốn trên tay quay chuyên dùng cho diều đồ chơi',
+    productName: 'Dây diều bằng xơ tổng hợp đã cuốn trên tay quay chuyên dùng cho diều đồ chơi',
+    candidateHeadings: ['5607', '9503'],
+  });
+  const g9503To5607 = soTayGates({
+    hs: '95030099',
+    productText: 'Dây diều từ xơ tổng hợp ở dạng cuộn thông thường chưa gắn tay quay đồ chơi',
+    productName: 'Dây diều từ xơ tổng hợp ở dạng cuộn thông thường chưa gắn tay quay đồ chơi',
+    candidateHeadings: ['9503', '5607'],
+  });
+  check(
+    '[OZV-2118 thuận soTayGates] kích hoạt SO_TAY_LOAI_TRU đúng cả 2 chiều 5607 -> 9503 và 9503 -> 5607',
+    (g5607To9503.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('9503')) &&
+      (g9503To5607.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('5607')),
+    { g5607To9503: g5607To9503.challenges, g9503To5607: g9503To5607.challenges }
+  );
+
+  // 4. Đối chứng (ca âm): hàng không trùng từ khoá điều kiện không hỏi oan / không kéo oan
+  const dcDayXe5607 = cauPhanBietNhom('5607', ['5607', '9503'], 'Dây xe để buộc hoặc đóng kiện từ polyetylen');
+  const dcDayXe9503 = cauPhanBietNhom('9503', ['9503', '5607'], 'Dây xe để buộc hoặc đóng kiện từ polyetylen');
+  const dcBupBe5607 = cauPhanBietNhom('5607', ['5607', '9503'], 'Búp bê bằng nhựa có trang phục cho trẻ em');
+  const dcBupBe9503 = cauPhanBietNhom('9503', ['9503', '5607'], 'Búp bê bằng nhựa có trang phục cho trẻ em');
+  const dcDayNhay9503 = soTayGates({
+    hs: '95030092',
+    productText: 'Dây nhảy đồ chơi có tay nắm bằng nhựa cho trẻ em',
+    productName: 'Dây nhảy đồ chơi có tay nắm bằng nhựa cho trẻ em',
+    candidateHeadings: ['9503', '5607'],
+  });
+  const dcSoiBen5607 = soTayGates({
+    hs: '56075010',
+    productText: 'Sợi bện cho dây đai chữ V làm từ xơ nhân tạo đã xử lý bằng resorcinol formaldehyde',
+    productName: 'Sợi bện cho dây đai chữ V làm từ xơ nhân tạo đã xử lý bằng resorcinol formaldehyde',
+    candidateHeadings: ['5607', '9503'],
+  });
+  check(
+    '[OZV-2118 đối chứng] dây xe đóng kiện, sợi bện dây đai chữ V, búp bê và dây nhảy không hỏi oan / không kéo oan 56.07 <-> 95.03',
+    dcDayXe5607.length === 0 &&
+      dcDayXe9503.length === 0 &&
+      dcBupBe5607.length === 0 &&
+      dcBupBe9503.length === 0 &&
+      !(dcDayNhay9503.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('5607')) &&
+      !(dcSoiBen5607.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('9503')) &&
+      !D.moRongUngVien(['5607'], 'Dây xe để buộc hoặc đóng kiện từ polyetylen').some((x) => x.nhom === '9503') &&
+      !D.moRongUngVien(['9503'], 'Búp bê bằng nhựa có trang phục cho trẻ em').some((x) => x.nhom === '5607'),
+    { dcDayXe5607, dcDayXe9503, dcBupBe5607, dcBupBe9503 }
+  );
+
+  // 5. phanTichHoiTruoc4So tách 2 nhánh điều kiện riêng biệt cho ca 152
+  const ht152 = phanTichHoiTruoc4So({ moTa: moTaCa152, ungVien: ['5607', '9503'] });
+  const distinctDk152 = new Set((ht152.nhanh || []).map((n) => n.dieuKien)).size === 2;
+  check(
+    '[OZV-2118 hoi-truoc-4so] ca 152 với [5607, 9503] trả CHUA_CHOT_NHOM_HOI_TRUOC với 2 nhánh điều kiện phân biệt',
+    ht152.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC &&
+      distinctDk152 &&
+      ['5607', '9503'].every((h) => (ht152.dapAnDieuKien || '').includes(`→ nhóm ${h} (`)),
+    { trangThai: ht152.trangThai, distinctDk152, dapAnDieuKien: ht152.dapAnDieuKien }
+  );
+}
+
+console.log(`\nOZV-2109 / OZV-2118 cạnh loại trừ 2 chiều: ${passed} PASS, ${failed} FAIL`);
 process.exit(failed ? 1 : 0);
