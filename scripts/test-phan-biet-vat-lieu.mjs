@@ -845,5 +845,159 @@ for (const c of fixture.ca) {
   );
 }
 
+// OZV-2182 — Cạnh loại trừ 2 chiều 39.20 <-> 39.21 cho ca 104 tầng 4 số
+// "Phim cường lực bảo vệ màn hình đồng hồ thông minh bằng nhựa PPF"
+{
+  const S = require('../lib/so-tay.js');
+  const { loadSoTay, soTayGates, nhomLienQuanSoTay } = require('../lib/so-tay-gates.js');
+  const { cauPhanBietNhom } = require('../lib/hoi-theo-so-tay.js');
+  const D = require('../lib/do-thi/index.js');
+  const { phanTichHoiTruoc4So, TRANG_THAI_4SO } = require('../lib/do-thi/hoi-truoc-4so.js');
+  D.datLai();
+
+  const moTaCa104 = 'Phim cường lực bảo vệ màn hình đồng hồ thông minh bằng nhựa PPF';
+  const s3920 = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'so-tay', '3920.json'), 'utf8'));
+  const s3921 = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'so-tay', '3921.json'), 'utf8'));
+  const v3920 = S.verifySoTay(s3920, '3920');
+  const v3921 = S.verifySoTay(s3921, '3921');
+  check(
+    '[OZV-2182 verifySoTay] sổ tay 3920 và 3921 đạt 100% (0 mục bị loại)',
+    v3920.loai.length === 0 && v3921.loai.length === 0 && v3920.dat === v3920.tong && v3921.dat === v3921.tong,
+    { loai3920: v3920.loai, loai3921: v3921.loai, tong3920: v3920.tong, tong3921: v3921.tong }
+  );
+
+  const st3920 = loadSoTay('3920');
+  const st3921 = loadSoTay('3921');
+  const lt3920 = (st3920?.loaiTru || []).find((x) => x.sangNhom === '3921' && x.canCuLoaiTru);
+  const lt3921 = (st3921?.loaiTru || []).find((x) => x.sangNhom === '3920');
+  check(
+    '[OZV-2182 căn cứ] sổ tay 3920 và 3921 có mục loaiTru 2 chiều 3920 <-> 3921 kèm canCuLoaiTru nguyên văn đạt checkItem',
+    Boolean(
+      lt3920 &&
+        lt3920.nguon === 'nhom3920.nhom' &&
+        lt3920.canCuLoaiTru?.nguon === 'nhom3921.nhom' &&
+        lt3920.dieuKien !== lt3921?.dieuKien &&
+        !/;/.test(lt3920.dieuKien || '') &&
+        S.checkItem('loaiTru', lt3920, S.sourcesFor('3920'), '3920') === null
+    ) &&
+      Boolean(
+        lt3921 &&
+          lt3921.nguon === 'nhom3921.nhom' &&
+          lt3921.canCuLoaiTru?.nguon === 'nhom3920.nhom' &&
+          !/;/.test(lt3921.dieuKien || '') &&
+          S.checkItem('loaiTru', lt3921, S.sourcesFor('3921'), '3921') === null
+      ),
+    { lt3920, lt3921 }
+  );
+
+  const c5Tu3920 = D.canhTu('3920', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '3921');
+  const c5Tu3921 = D.canhTu('3921', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '3920');
+  const c6Tu3920 = D.canhTu('3920', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '3921');
+  const c6Tu3921 = D.canhTu('3921', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '3920');
+  const giua3920_3921 = D.canhGiuaNhomConSong(['3920', '3921']).filter((e) => e.loai === 'C5' || e.loai === 'C6');
+  const mrTu3920 = D.moRongUngVien(['3920'], moTaCa104);
+  const mrTu3921 = D.moRongUngVien(['3921'], moTaCa104);
+  check(
+    '[OZV-2182 đồ thị 2 chiều] bảng cạnh có C5/C6 3920<->3921, canhGiuaNhomConSong >= 2 và moRongUngVien kéo 2 chiều cho ca 104',
+    c5Tu3920.some((e) => e.nguon === 'nhom3920.nhom' && e.canCuLoaiTru?.nguon === 'nhom3921.nhom') &&
+      c5Tu3921.some((e) => e.nguon === 'nhom3921.nhom' && e.canCuLoaiTru?.nguon === 'nhom3920.nhom') &&
+      c6Tu3920.length >= 1 &&
+      c6Tu3921.length >= 1 &&
+      giua3920_3921.length >= 2 &&
+      mrTu3920.some((x) => x.nhom === '3921') &&
+      mrTu3921.some((x) => x.nhom === '3920'),
+    { c5Tu3920: c5Tu3920.length, c5Tu3921: c5Tu3921.length, giua: giua3920_3921.length, mrTu3920, mrTu3921 }
+  );
+
+  check(
+    '[OZV-2182 nhomLienQuanSoTay] liên kết hai chiều 3920 <-> 3921',
+    nhomLienQuanSoTay('3920').includes('3921') && nhomLienQuanSoTay('3921').includes('3920'),
+    { rel3920: nhomLienQuanSoTay('3920'), rel3921: nhomLienQuanSoTay('3921') }
+  );
+
+  const pb3920 = cauPhanBietNhom('3920', ['3920', '3921'], moTaCa104);
+  check(
+    '[OZV-2182 thuận 3920->3921] 3920 đứng đầu với [3920, 3921] sinh câu phân biệt từ nhom3920.nhom trỏ sang 39.21',
+    pb3920.length === 1 &&
+      pb3920[0].loai === 'PHAN_BIET_NHOM' &&
+      pb3920[0].canCu === 'so-tay' &&
+      pb3920[0].nguon === 'nhom3920.nhom' &&
+      /39\.21/.test(pb3920[0].questionVi) &&
+      /39\.20/.test(pb3920[0].questionVi),
+    { pb3920 }
+  );
+
+  const pb3921 = cauPhanBietNhom('3921', ['3921', '3920'], moTaCa104);
+  check(
+    '[OZV-2182 thuận 3921->3920] 3921 đứng đầu với [3921, 3920] sinh câu phân biệt từ nhom3921.nhom trỏ sang 39.20',
+    pb3921.length === 1 &&
+      pb3921[0].loai === 'PHAN_BIET_NHOM' &&
+      pb3921[0].canCu === 'so-tay' &&
+      pb3921[0].nguon === 'nhom3921.nhom' &&
+      /39\.20/.test(pb3921[0].questionVi) &&
+      /39\.21/.test(pb3921[0].questionVi),
+    { pb3921 }
+  );
+
+  const g3920To3921 = soTayGates({
+    hs: '39201090',
+    productText: moTaCa104,
+    productName: moTaCa104,
+    candidateHeadings: ['3920', '3921'],
+  });
+  const g3921To3920 = soTayGates({
+    hs: '39211199',
+    productText: moTaCa104,
+    productName: moTaCa104,
+    candidateHeadings: ['3921', '3920'],
+  });
+  check(
+    '[OZV-2182 thuận soTayGates] kích hoạt SO_TAY_LOAI_TRU đúng cả 2 chiều 3920 -> 3921 và 3921 -> 3920',
+    (g3920To3921.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('3921')) &&
+      (g3921To3920.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('3920')),
+    { g3920To3921: g3920To3921.challenges, g3921To3920: g3921To3920.challenges }
+  );
+
+  const dcSan3920 = cauPhanBietNhom('3920', ['3920', '3921'], 'Tấm trải sàn PVC thuộc nhóm 39.18');
+  const dcSan3921 = cauPhanBietNhom('3921', ['3921', '3920'], 'Tấm trải sàn PVC thuộc nhóm 39.18');
+  const dcKeo3920 = cauPhanBietNhom('3920', ['3920', '3921'], 'Keo dán epoxy hai thành phần thuộc nhóm 35.06');
+  const dcKeo3921 = cauPhanBietNhom('3921', ['3921', '3920'], 'Keo dán epoxy hai thành phần thuộc nhóm 35.06');
+  const dcGate3920 = soTayGates({
+    hs: '39201090',
+    productText: 'Tấm trải sàn PVC thuộc nhóm 39.18',
+    productName: 'Tấm trải sàn PVC thuộc nhóm 39.18',
+    candidateHeadings: ['3920', '3921'],
+  });
+  const dcGate3921 = soTayGates({
+    hs: '39211199',
+    productText: 'Keo dán epoxy hai thành phần thuộc nhóm 35.06',
+    productName: 'Keo dán epoxy hai thành phần thuộc nhóm 35.06',
+    candidateHeadings: ['3921', '3920'],
+  });
+  check(
+    '[OZV-2182 đối chứng] tấm trải sàn PVC và keo epoxy không hỏi oan / không kéo oan 39.20 <-> 39.21',
+    dcSan3920.length === 0 &&
+      dcSan3921.length === 0 &&
+      dcKeo3920.length === 0 &&
+      dcKeo3921.length === 0 &&
+      !(dcGate3920.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('3921')) &&
+      !(dcGate3921.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('3920')) &&
+      !D.moRongUngVien(['3920'], 'Tấm trải sàn PVC thuộc nhóm 39.18').some((x) => x.nhom === '3921') &&
+      !D.moRongUngVien(['3921'], 'Keo dán epoxy hai thành phần thuộc nhóm 35.06').some((x) => x.nhom === '3920'),
+    { dcSan3920, dcSan3921, dcKeo3920, dcKeo3921 }
+  );
+
+  const ht104 = phanTichHoiTruoc4So({ moTa: moTaCa104, ungVien: ['3920', '3921'] });
+  const distinctDk104 = new Set((ht104.nhanh || []).map((n) => n.dieuKien)).size === 2;
+  check(
+    '[OZV-2182 hoi-truoc-4so] ca 104 với [3920, 3921] trả CHUA_CHOT_NHOM_HOI_TRUOC với 2 nhánh điều kiện phân biệt từ đồ thị',
+    ht104.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC &&
+      distinctDk104 &&
+      (ht104.nhanh || []).every((n) => /^do-thi:C[567]:/.test(String(n.nguon || ''))) &&
+      ['3920', '3921'].every((h) => (ht104.dapAnDieuKien || '').includes(`→ nhóm ${h} (`)),
+    { trangThai: ht104.trangThai, distinctDk104, nhanh: ht104.nhanh, dapAnDieuKien: ht104.dapAnDieuKien }
+  );
+}
+
 console.log(`\nphân biệt vật liệu ở tầng tiêu đề 6 số (OZV-558): ${passed} PASS, ${failed} FAIL`);
 process.exit(failed ? 1 : 0);
