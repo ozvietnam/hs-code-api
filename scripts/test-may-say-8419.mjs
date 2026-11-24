@@ -80,5 +80,67 @@ for (const q of ['máy sấy sinh tố 350w 220v', 'máy sấy hoa quả']) {
   check(`"${q}" không dính từ mở rộng 8509`, dinh.length === 0, `dính ${JSON.stringify(dinh)}`);
 }
 
+// OZV-2079 — Tách dấu câu dính từ khoá (, ; : ( ) " ' và dấu - đứng lẻ đầu thông số)
+// để không rơi từ lõi và lọc đúng NOISE_TOKEN trên 4 câu hỏi thực địa 24h.
+{
+  const q1 = 'bộ lọc điều áp khí nén, model ar3000-03, kt (90*53*165)mm';
+  const t1 = expandSearchQuery(q1).keywordTokens || [];
+  check(
+    '[OZV-2079 bắt lỗi] câu 1 giữ được "nén" và mã model "ar3000-03" (không còn dấu phẩy dính cuối)',
+    t1.includes('nén') && t1.includes('ar3000-03') && !t1.includes('nén,') && !t1.includes('ar3000-03,'),
+    `keywordTokens = ${JSON.stringify(t1)}`
+  );
+
+  const q2 = 'bộ tản nhiệt, model 65k-50l, chất liệu hợp kim nhôm';
+  const t2 = expandSearchQuery(q2).keywordTokens || [];
+  check(
+    '[OZV-2079 bắt lỗi] câu 2 giữ được "nhiệt" và mã model "65k-50l" (không còn dấu phẩy dính cuối)',
+    t2.includes('nhiệt') && t2.includes('65k-50l') && !t2.includes('nhiệt,') && !t2.includes('65k-50l,'),
+    `keywordTokens = ${JSON.stringify(t2)}`
+  );
+
+  const q3 = 'điện trở 8*60 mm, điện áp 220v, công suất 150w, chất liệu inox';
+  const t3 = expandSearchQuery(q3).keywordTokens || [];
+  const noise3 = ['mm,', 'mm', '220v,', '220v', '150w,', '150w'].filter((w) => t3.includes(w));
+  check(
+    '[OZV-2079 bắt lỗi] câu 3 lọc sạch "mm,", "220v,", "150w," qua NOISE_TOKEN',
+    noise3.length === 0 && t3.includes('điện') && t3.includes('trở') && t3.includes('inox'),
+    `còn sót noise = ${JSON.stringify(noise3)}, keywordTokens = ${JSON.stringify(t3)}`
+  );
+
+  const q4 = 'đồng hồ đo áp, đo dòng, chống mất pha , 3pha -380v';
+  const t4 = expandSearchQuery(q4).keywordTokens || [];
+  const noise4 = ['áp,', 'dòng,', '-380v', '380v'].filter((w) => t4.includes(w));
+  check(
+    '[OZV-2079 bắt lỗi] câu 4 giữ được "áp", "dòng" và lọc sạch "-380v" qua NOISE_TOKEN',
+    t4.includes('áp') && t4.includes('dòng') && noise4.length === 0,
+    `còn sót = ${JSON.stringify(noise4)}, keywordTokens = ${JSON.stringify(t4)}`
+  );
+
+  // Chiều đối chứng: giữ dấu chấm trong số thập phân 3.5kw để NOISE_TOKEN lọc đúng,
+  // và không lọc nhầm chữ tiếng Việt "in" (máy in / đã in) thành đơn vị inch ("24in").
+  const tDoiChung = expandSearchQuery('máy in phun, công suất 3.5kw, màn 24in, đã in').keywordTokens || [];
+  check(
+    '[OZV-2079 đối chứng] giữ từ tiếng Việt "in", lọc đúng "3.5kw," và "24in,"',
+    tDoiChung.includes('in') &&
+      !tDoiChung.includes('3.5kw') &&
+      !tDoiChung.includes('3.5kw,') &&
+      !tDoiChung.includes('24in') &&
+      !tDoiChung.includes('24in,'),
+    `keywordTokens = ${JSON.stringify(tDoiChung)}`
+  );
+
+  // Chống ReDoS (~40.000 từ lặp có dấu câu < 2 giây theo luật 9.6b)
+  const bigQuery = Array.from({ length: 10000 }, () => 'nén, 220v, -380v, (ar3000-03),').join(' ');
+  const t0 = Date.now();
+  const bigRes = expandSearchQuery(bigQuery);
+  const elapsed = Date.now() - t0;
+  check(
+    '[OZV-2079 ReDoS] 40.000 token lặp có dấu câu chạy < 2000ms',
+    elapsed < 2000 && bigRes.keywordTokens.includes('nén') && bigRes.keywordTokens.includes('ar3000-03'),
+    `elapsed = ${elapsed}ms`
+  );
+}
+
 console.log(`\n${passed} passed | ${failed} failed`);
 process.exit(failed > 0 ? 1 : 0);
