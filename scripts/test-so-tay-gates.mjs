@@ -1611,5 +1611,121 @@ check('trangThaiDong8.veMoHinh: 73181510 chấm trọn nhãn "Đường kính ng
     JSON.stringify({ distinctCamBien, htCamBien: htCamBien.dapAnDieuKien, nhanh: htCamBien.nhanh }));
 }
 
+// ── OZV-2214: cạnh loại trừ 2 chiều 40.16 <-> 84.66 cho ca thực địa 24h 'núm hút mbs-15, silicon, đường kính lỗ 2,5mm' ──
+{
+  const S = require('../lib/so-tay.js');
+  const D = require('../lib/do-thi/index.js');
+  const { cauPhanBietNhom } = require('../lib/hoi-theo-so-tay.js');
+  const { phanTichHoiTruoc4So, TRANG_THAI_4SO } = require('../lib/do-thi/hoi-truoc-4so.js');
+  const { dataPath } = require('../lib/data-paths.js');
+  fs.mkdirSync(dataPath('so-tay'), { recursive: true });
+  for (const h of ['4016', '8466', '8479']) {
+    fs.copyFileSync(path.join('data', 'so-tay', `${h}.json`), dataPath('so-tay', `${h}.json`));
+  }
+  D.datLai();
+
+  const moTaMbs15 = 'núm hút mbs-15, silicon, đường kính lỗ 2,5mm';
+  const moTaVp16ps = 'núm hút vp16ps, silicon, đường kính lỗ 2,2mm';
+  const moTaYs310 = 'núm hút ys3-10, silicon, đường kính lỗ 3mm';
+  const dcGioang = 'Gioăng vòng đệm cao su NBR làm kín mặt bích đường ống';
+  const dcMamCap = 'Mâm cặp 3 chấu tự định tâm dùng cho máy tiện CNC';
+  const dcDauCatRen = 'Đầu cắt ren tự mở lắp trên máy công cụ gia công kim loại';
+
+  const s4016 = JSON.parse(fs.readFileSync(path.join('data', 'so-tay', '4016.json'), 'utf8'));
+  const s8466 = JSON.parse(fs.readFileSync(path.join('data', 'so-tay', '8466.json'), 'utf8'));
+  const v4016 = S.verifySoTay(s4016, '4016');
+  const v8466 = S.verifySoTay(s8466, '8466');
+  check('[OZV-2214 verifySoTay] sổ tay 4016 và 8466 đạt 100% (0 mục bị loại) và kiemTra khớp',
+    v4016.loai.length === 0 && v8466.loai.length === 0
+    && v4016.tong === s4016.kiemTra.tong && v4016.dat === s4016.kiemTra.dat
+    && v8466.tong === s8466.kiemTra.tong && v8466.dat === s8466.kiemTra.dat,
+    JSON.stringify({ loai4016: v4016.loai.slice(0, 2), loai8466: v8466.loai.slice(0, 2), v4016, v8466 }));
+
+  const lt4016 = (loadSoTay('4016')?.loaiTru || []).find((x) => x.sangNhom === '8466' && x.canCuLoaiTru?.nguon === 'nhom8466.nhom');
+  const lt8466 = (loadSoTay('8466')?.loaiTru || []).find((x) => x.sangNhom === '4016' && x.canCuLoaiTru?.nguon === 'nhom4016.nhom');
+  check('[OZV-2214 canCuLoaiTru] loaiTru 2 chiều 4016 <-> 8466 kèm canCuLoaiTru nguyên văn đạt checkItem',
+    Boolean(lt4016 && lt4016.nguon === 'ch40.chuong' && lt4016.canCuLoaiTru?.nguon === 'nhom8466.nhom'
+      && !/;/.test(lt4016.dieuKien || '')
+      && S.checkItem('loaiTru', lt4016, S.sourcesFor('4016'), '4016') === null)
+    && Boolean(lt8466 && lt8466.nguon === 'phan84.phan' && lt8466.canCuLoaiTru?.nguon === 'nhom4016.nhom'
+      && !/;/.test(lt8466.dieuKien || '')
+      && lt4016.dieuKien !== lt8466.dieuKien
+      && S.checkItem('loaiTru', lt8466, S.sourcesFor('8466'), '8466') === null),
+    JSON.stringify({ lt4016, lt8466 }));
+
+  const c5Tu4016 = D.canhTu('4016', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8466');
+  const c5Tu8466 = D.canhTu('8466', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '4016');
+  const c6Tu4016 = D.canhTu('4016', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '8466');
+  const c6Tu8466 = D.canhTu('8466', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '4016');
+  const giua4016_8466 = D.canhGiuaNhomConSong(['4016', '8466']).filter((e) => e.loai === 'C5' || e.loai === 'C6');
+  const mrTu4016 = D.moRongUngVien(['4016'], moTaMbs15, { toiDa: 10 });
+  const mrTu8466 = D.moRongUngVien(['8466'], moTaMbs15, { toiDa: 10 });
+  const mrVpTu8466 = D.moRongUngVien(['8466'], moTaVp16ps, { toiDa: 10 });
+  const mrYsTu8466 = D.moRongUngVien(['8466'], moTaYs310, { toiDa: 10 });
+  const rel4016 = [...new Set((loadSoTay('4016')?.loaiTru || []).flatMap((x) => String(x.sangNhom || '').split(/[|,;\s]+/).map((t) => t.replace(/\D/g, '').slice(0, 4)).filter((t) => t.length === 4)))];
+  const rel8466 = [...new Set((loadSoTay('8466')?.loaiTru || []).flatMap((x) => String(x.sangNhom || '').split(/[|,;\s]+/).map((t) => t.replace(/\D/g, '').slice(0, 4)).filter((t) => t.length === 4)))];
+  check('[OZV-2214 đồ thị 2 chiều] C5/C6 4016<->8466, nhomLienQuanSoTay 2 chiều, canhGiuaNhomConSong >= 2 và moRongUngVien kéo 2 chiều cho cả 3 ca núm hút',
+    c5Tu4016.some((e) => e.nguon === 'ch40.chuong' && e.canCuLoaiTru?.nguon === 'nhom8466.nhom')
+    && c5Tu8466.some((e) => e.nguon === 'phan84.phan' && e.canCuLoaiTru?.nguon === 'nhom4016.nhom')
+    && c6Tu4016.length >= 1 && c6Tu8466.length >= 1 && giua4016_8466.length >= 2
+    && rel4016.includes('8466') && rel8466.includes('4016')
+    && mrTu4016.some((x) => x.nhom === '8466') && mrTu8466.some((x) => x.nhom === '4016')
+    && mrVpTu8466.some((x) => x.nhom === '4016') && mrYsTu8466.some((x) => x.nhom === '4016'),
+    JSON.stringify({ c5: c5Tu4016.length, c5r: c5Tu8466.length, giua: giua4016_8466.length, mrTu4016: mrTu4016.map((x) => x.nhom), mrTu8466: mrTu8466.map((x) => x.nhom) }));
+
+  const pb4016 = cauPhanBietNhom('4016', ['4016', '8466'], moTaMbs15);
+  const pb8466 = cauPhanBietNhom('8466', ['8466', '4016'], moTaMbs15);
+  check('[OZV-2214 thuận cauPhanBietNhom] sinh câu hỏi phân biệt 2 chiều 40.16 <-> 84.66 cho ca núm hút mbs-15',
+    pb4016.length === 1 && pb4016[0].loai === 'PHAN_BIET_NHOM' && pb4016[0].canCu === 'so-tay'
+    && pb4016[0].nguon === 'ch40.chuong' && /84\.66/.test(pb4016[0].questionVi) && /40\.16/.test(pb4016[0].questionVi)
+    && pb8466.length === 1 && pb8466[0].loai === 'PHAN_BIET_NHOM' && pb8466[0].canCu === 'so-tay'
+    && pb8466[0].nguon === 'phan84.phan' && /40\.16/.test(pb8466[0].questionVi) && /84\.66/.test(pb8466[0].questionVi),
+    JSON.stringify({ pb4016, pb8466 }));
+
+  const g4016To8466 = soTayGates({
+    hs: '40169959', productText: moTaMbs15, productName: 'núm hút mbs-15', candidateHeadings: ['4016', '8466'],
+  });
+  const g8466To4016 = soTayGates({
+    hs: '84662090', productText: moTaMbs15, productName: 'núm hút mbs-15', candidateHeadings: ['8466', '4016'],
+  });
+  check('[OZV-2214 thuận soTayGates] kích hoạt SO_TAY_LOAI_TRU đúng cả 2 chiều 4016 -> 8466 và 8466 -> 4016 cho ca núm hút mbs-15',
+    (g4016To8466.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8466'))
+    && (g8466To4016.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('4016')),
+    JSON.stringify({ g4016To8466: g4016To8466.challenges, g8466To4016: g8466To4016.challenges }));
+
+  const dcPbGioang4016 = cauPhanBietNhom('4016', ['4016', '8466'], dcGioang);
+  const dcPbGioang8466 = cauPhanBietNhom('8466', ['8466', '4016'], dcGioang);
+  const dcPbMamCap4016 = cauPhanBietNhom('4016', ['4016', '8466'], dcMamCap);
+  const dcPbMamCap8466 = cauPhanBietNhom('8466', ['8466', '4016'], dcMamCap);
+  const dcPbRen8466 = cauPhanBietNhom('8466', ['8466', '4016'], dcDauCatRen);
+  const dcG4016 = soTayGates({
+    hs: '40169390', productText: dcGioang, productName: 'Gioăng vòng đệm cao su NBR', candidateHeadings: ['4016', '8466'],
+  });
+  const dcG8466 = soTayGates({
+    hs: '84662090', productText: dcMamCap, productName: 'Mâm cặp 3 chấu tự định tâm', candidateHeadings: ['8466', '4016'],
+  });
+  check('[OZV-2214 đối chứng] gioăng vòng đệm cao su, mâm cặp máy tiện và đầu cắt ren không hỏi oan / không kéo oan 40.16 <-> 84.66',
+    dcPbGioang4016.length === 0 && dcPbGioang8466.length === 0 && dcPbMamCap4016.length === 0 && dcPbMamCap8466.length === 0 && dcPbRen8466.length === 0
+    && !(dcG4016.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8466'))
+    && !(dcG8466.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('4016'))
+    && !D.moRongUngVien(['4016'], dcGioang).some((x) => x.nhom === '8466')
+    && !D.moRongUngVien(['8466'], dcMamCap).some((x) => x.nhom === '4016')
+    && !D.moRongUngVien(['8466'], dcDauCatRen).some((x) => x.nhom === '4016'),
+    JSON.stringify({ dcPbGioang4016, dcPbGioang8466, dcPbMamCap4016, dcPbMamCap8466, dcPbRen8466 }));
+
+  const ht2 = phanTichHoiTruoc4So({ moTa: moTaMbs15, ungVien: ['4016', '8466'] });
+  const distinct2 = new Set((ht2.nhanh || []).map((n) => n.dieuKien)).size === 2;
+  const ht3 = phanTichHoiTruoc4So({ moTa: moTaMbs15, ungVien: ['4016', '8479', '8466'] });
+  const distinct3 = new Set((ht3.nhanh || []).map((n) => n.dieuKien)).size === 3;
+  check('[OZV-2214 hoi-truoc-4so] ca núm hút mbs-15 với [4016, 8466] và tam giác [4016, 8479, 8466] trả CHUA_CHOT_NHOM_HOI_TRUOC với đủ nhánh điều kiện phân biệt từ cạnh C5',
+    ht2.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC && distinct2
+    && (ht2.nhanh || []).every((n) => String(n.nguon || '').startsWith('do-thi:C5:'))
+    && ['4016', '8466'].every((h) => (ht2.dapAnDieuKien || '').includes(`→ nhóm ${h} (`))
+    && ht3.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC && distinct3
+    && (ht3.nhanh || []).every((n) => String(n.nguon || '').startsWith('do-thi:C5:'))
+    && ['4016', '8479', '8466'].every((h) => (ht3.dapAnDieuKien || '').includes(`→ nhóm ${h} (`)),
+    JSON.stringify({ distinct2, distinct3, ht2: ht2.dapAnDieuKien, ht3: ht3.dapAnDieuKien }));
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
