@@ -17,6 +17,7 @@ import { createRequire } from 'node:module';
 const require = createRequire(import.meta.url);
 const D = require('../lib/do-thi/index.js');
 const ST = require('../lib/so-tay.js');
+const H = require('../lib/hoi-theo-so-tay.js');
 const { soTayGates, nhomLienQuanSoTay } = require('../lib/so-tay-gates.js');
 
 let pass = 0;
@@ -84,6 +85,52 @@ const CAP_7 = [
     hangNguonSach: 'Vải dệt phủ nhựa PVC dạng cuộn',
     nguonDich: 'nhom6302.nhom',
   },
+  // OZV-2067: 90.30 ↔ 85.36 ↔ 90.32 (đồng hồ đo áp, đo dòng, chống mất pha 3 pha)
+  {
+    tu: '9030',
+    toi: '8536',
+    hangDungDich: 'Rơ le bảo vệ mất pha 3 pha 380V',
+    moTaMoRong: 'Đồng hồ đo áp, đo dòng, chống mất pha , 3pha -38',
+    hangNguonSach: 'Máy hiện sóng kỹ thuật số 100MHz',
+    nguonDich: 'nhom8536.nhom',
+  },
+  {
+    tu: '8536',
+    toi: '9030',
+    hangDungDich: 'Đồng hồ đo áp, đo dòng 3 pha gắn tủ điện',
+    moTaMoRong: 'Đồng hồ đo áp, đo dòng, chống mất pha , 3pha -38',
+    hangNguonSach: 'Cầu chì ống thủy tinh 10A 250V',
+    nguonDich: 'nhom9030.nhom',
+  },
+  {
+    tu: '9030',
+    toi: '9032',
+    hangDungDich: 'Bộ điều chỉnh điện áp tự động 3 pha 15kVA',
+    hangNguonSach: 'Máy phân tích phổ tần số cao',
+    nguonDich: 'nhom9032.nhom',
+  },
+  {
+    tu: '9032',
+    toi: '9030',
+    hangDungDich: 'Đồng hồ đo dòng điện xoay chiều 3 pha',
+    hangNguonSach: 'Bộ ổn nhiệt tự động dùng cho lò sấy',
+    nguonDich: 'nhom9030.nhom',
+  },
+  {
+    tu: '8536',
+    toi: '9032',
+    hangDungDich: 'Bộ điều chỉnh điện áp tự động 1 pha 10kVA',
+    hangNguonSach: 'Phích cắm điện công nghiệp 3 pha 32A',
+    nguonDich: 'nhom9032.nhom',
+  },
+  {
+    tu: '9032',
+    toi: '8536',
+    hangDungDich: 'Rơ le bảo vệ mất pha và thấp áp 3 pha 380V',
+    moTaMoRong: 'Đồng hồ đo áp, đo dòng, chống mất pha , 3pha -38',
+    hangNguonSach: 'Bộ điều chỉnh áp lực tự động dùng cho máy nén',
+    nguonDich: 'nhom8536.nhom',
+  },
 ];
 
 // 1. Đồ thị hai chiều C5 / C6 + moRongUngVien + nhomLienQuanSoTay
@@ -141,6 +188,10 @@ const CA_BIEN_NGUON = [
   { hs: '39269099', target: '4016', ten: 'Thảm trải sàn cao cấp bằng nhựa PVC' },
   { hs: '59031090', target: '6116', ten: 'Vải dệt phủ nhựa PVC may găng tay' },
   { hs: '39249090', target: '8424', ten: 'Đồ nhựa phun xịt sơn trang trí' },
+  { hs: '90303390', target: '8536', ten: 'Đồng hồ đo điện áp xoay chiều 3 pha hiển thị LED' },
+  { hs: '90303100', target: '9032', ten: 'Đồng hồ đo đa năng hiển thị số' },
+  { hs: '85364990', target: '9030', ten: 'Rơ le điện từ 8 chân 220V dùng trong tủ điện' },
+  { hs: '90328931', target: '9030', ten: 'Bộ điều chỉnh điện áp tự động 3 pha có đồng hồ hiển thị' },
 ];
 for (const b of CA_BIEN_NGUON) {
   const g = soTayGates({ hs: b.hs, productText: b.ten, productName: b.ten });
@@ -185,6 +236,75 @@ for (const b of CA_BIEN_NGUON) {
   check('CA NGƯỢC checkItem: canCuLoaiTru.nguon không đúng cấp nhóm đích → bị loại', /can-cu-loai-tru-nguon-sai/.test(errWrongDstSrc), errWrongDstSrc);
   check('CA NGƯỢC checkItem: canCuLoaiTru gắn nhiều nhóm đích → bị loại', errMultiTarget === 'can-cu-loai-tru-mot-nhom-dich', errMultiTarget);
   check('CA NGƯỢC checkItem: câu nguồn không chứa neo loại trừ/Phần/Chương → bị loại', errNoAnchorSrc === 'can-cu-loai-tru-thieu-neo-nguon', errNoAnchorSrc);
+}
+
+// 4. OZV-2067: ca khách thực địa «đồng hồ đo áp, đo dòng, chống mất pha , 3pha -38» (dừng 6 số 903033 hoặc 853630)
+//    sinh đủ câu hỏi phân biệt nhóm 4 số có căn cứ chú giải nguyên văn giữa 90.30 ↔ 85.36 ↔ 90.32, kèm ca ngược.
+{
+  const moTa = 'đồng hồ đo áp, đo dòng, chống mất pha , 3pha -38';
+  const prevFlag = process.env.HS_HOI_THEO_SO_TAY;
+  process.env.HS_HOI_THEO_SO_TAY = 'on';
+  try {
+    const out9030 = {
+      status: 'NEED_FACTS',
+      results: [{ hs: '903033', confidence: 52, hsLevel: 6 }],
+      nextAction: {
+        type: 'ASK_USER',
+        questions: [
+          { attribute: null, questionVi: 'Thiết bị có tích hợp tiếp điểm rơ-le tự động cắt mạch để bảo vệ mất pha hay chỉ đo và hiển thị điện áp, dòng điện?' },
+        ],
+      },
+      dossier: {
+        product: { nameVi: 'Đồng hồ đo áp, đo dòng, chống mất pha 3 pha' },
+        hypotheses: [
+          { chapter: '90', heading4: '9030', subheading6: '903033', confidence: 52 },
+          { chapter: '85', heading4: '8536', subheading6: '853630', confidence: 33 },
+          { chapter: '90', heading4: '9032', subheading6: '903289', confidence: 15 },
+        ],
+      },
+      missingStructured: [],
+    };
+    const kq9030 = H.apDung(out9030, { rawAttrs: { tenHang: moTa } });
+    const qs9030 = kq9030.nextAction?.questions || [];
+    const pb9030 = qs9030.filter((q) => q.loai === 'PHAN_BIET_NHOM');
+    check('OZV-2067 (thuận · dừng 903033): sinh 2 câu PHAN_BIET_NHOM (90.30↔85.36 từ ch90.chuong và 90.30↔90.32 từ nhom9032.nhom) + câu DONG_8 có đủ canCu/nguon/trich',
+      kq9030.nextAction?.canCuCauHoi === 'so-tay'
+      && pb9030.length === 2
+      && pb9030.some((q) => q.canCu === 'so-tay' && q.nguon === 'ch90.chuong' && /85\.36/.test(q.questionVi))
+      && pb9030.some((q) => q.canCu === 'so-tay' && q.nguon === 'nhom9032.nhom' && /90\.32/.test(q.questionVi))
+      && qs9030.some((q) => q.loai === 'DONG_8' && q.canCu === 'ranh-gioi-pn6'),
+      JSON.stringify(qs9030));
+
+    const out8536 = {
+      ...out9030,
+      results: [{ hs: '853630', confidence: 48, hsLevel: 6 }],
+      dossier: {
+        ...out9030.dossier,
+        hypotheses: [
+          { chapter: '85', heading4: '8536', subheading6: '853630', confidence: 48 },
+          { chapter: '90', heading4: '9030', subheading6: '903033', confidence: 37 },
+          { chapter: '90', heading4: '9032', subheading6: '903289', confidence: 15 },
+        ],
+      },
+    };
+    const kq8536 = H.apDung(out8536, { rawAttrs: { tenHang: moTa } });
+    const pb8536 = (kq8536.nextAction?.questions || []).filter((q) => q.loai === 'PHAN_BIET_NHOM');
+    check('OZV-2067 (thuận · dừng 853630): sinh 2 câu PHAN_BIET_NHOM (85.36↔90.30 từ phan85.phan và 85.36↔90.32 từ nhom9032.nhom)',
+      kq8536.nextAction?.canCuCauHoi === 'so-tay'
+      && pb8536.length === 2
+      && pb8536.some((q) => q.canCu === 'so-tay' && q.nguon === 'phan85.phan' && /90\.30/.test(q.questionVi))
+      && pb8536.some((q) => q.canCu === 'so-tay' && q.nguon === 'nhom9032.nhom' && /90\.32/.test(q.questionVi)),
+      JSON.stringify(pb8536));
+
+    const pbNguoc9030 = H.cauPhanBietNhom('9030', ['9030', '8536', '9032'], 'máy hiện sóng kỹ thuật số 100MHz 2 kênh');
+    const pbNguoc8536 = H.cauPhanBietNhom('8536', ['8536', '9030', '9032'], 'phích cắm điện 2 chấu bằng nhựa 250V 10A');
+    check('OZV-2067 (ngược): "máy hiện sóng kỹ thuật số" và "phích cắm điện 2 chấu" không chạm đồng hồ đo áp / chống mất pha → không hỏi oan',
+      pbNguoc9030.length === 0 && pbNguoc8536.length === 0,
+      JSON.stringify({ pbNguoc9030, pbNguoc8536 }));
+  } finally {
+    if (prevFlag === undefined) delete process.env.HS_HOI_THEO_SO_TAY;
+    else process.env.HS_HOI_THEO_SO_TAY = prevFlag;
+  }
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);

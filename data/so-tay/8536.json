@@ -84,10 +84,25 @@
       "nguonLoai": "AI_DA_KIEM"
     },
     {
-      "dieuKien": "Bộ điều chỉnh điện áp tự động",
+      "dieuKien": "Bộ điều chỉnh điện áp tự động, ổn áp tự động dùng để điều chỉnh và duy trì điện áp ở giá trị mong muốn",
       "sangNhom": "9032",
       "nguon": "nhom8536.nhom",
       "trich": "Nhóm này cũng không bao gồm các máy biến áp (nhóm 85.04) và các bộ điều chỉnh điện áp tự động (nhóm 90.32)",
+      "canCuLoaiTru": {
+        "nguon": "nhom9032.nhom",
+        "trich": "(B) Các bộ điều chỉnh tự động các đại lượng điện, và các bộ điều chỉnh tự động các đại lượng không thuộc điện khác và vận hành của chúng phụ thuộc vào môi trường điện biến thiên theo hệ số được kiểm tra. Chúng được thiết kế để đưa hệ số này tới và duy trì nó ở giá trị mong muốn"
+      },
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "dieuKien": "Đồng hồ đo áp, đồng hồ đo dòng điện, vôn kế, ampe kế hoặc máy đo đa năng dùng để đo hoặc kiểm tra đại lượng điện",
+      "sangNhom": "9030",
+      "nguon": "phan85.phan",
+      "trich": "1. Phần này không bao gồm: … (m) Các sản phẩm thuộc Chương 90;",
+      "canCuLoaiTru": {
+        "nguon": "nhom9030.nhom",
+        "trich": "(B) MÁY HIỆN SÓNG, MÁY PHÂN TÍCH PHỔ VÀ CÁC DỤNG CỤ VÀ CÁC THIẾT BỊ KHÁC ĐỂ ĐO HOẶC KIỂM TRA ĐẠI LƯỢNG ĐIỆN … (I) Dụng cụ đo cường độ dòng: công việc này được thực hiện riêng bằng điện kế hoặc ampe kế (ammeters). (II) Đo điện thế: bằng vôn kế, chiết áp, tĩnh điện kế, v.v..."
+      },
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -2928,6 +2943,7 @@
   "dungTuNguon": [
     "ch85.chuong",
     "nhom8536.nhom",
+    "phan85.phan",
     "sen.85365033",
     "sen.85365039",
     "tax.85361011",
@@ -3022,8 +3038,8 @@
     "ms": 19
   },
   "kiemTra": {
-    "tong": 113,
-    "dat": 113,
+    "tong": 114,
+    "dat": 114,
     "loai": 0,
     "nguonBiCat": [],
     "nangCap": {
