@@ -738,5 +738,97 @@ assert('loaiTru mà câu nguồn chỉ nói "thường thuộc nhóm" bị loạ
   );
 }
 
+// ── OZV-2194: Cạnh loại trừ 2 chiều 90.13 <-> 85.43 cho ca 162 'Đầu chiếu tia Laser / Chiếu tia sáng chấm đỏ' ──
+{
+  const { loadSoTay, soTayGates, nhomLienQuanSoTay } = require('../lib/so-tay-gates.js');
+  const { cauPhanBietNhom } = require('../lib/hoi-theo-so-tay.js');
+  const { phanTichHoiTruoc4So, TRANG_THAI_4SO } = require('../lib/do-thi/hoi-truoc-4so.js');
+  const D = require('../lib/do-thi/index.js');
+  D.datLai();
+
+  const moTa162 = 'Đầu chiếu tia Laser / None / Chiếu tia sáng chấm đỏ';
+  const st9013 = loadSoTay('9013');
+  const st8543 = loadSoTay('8543');
+  const lt9013 = (st9013?.loaiTru || []).find((x) => x.sangNhom === '8543' && x.canCuLoaiTru?.nguon === 'nhom8543.nhom' && /đầu chiếu tia laser/i.test(x.dieuKien || ''));
+  const lt8543 = (st8543?.loaiTru || []).find((x) => x.sangNhom === '9013' && x.canCuLoaiTru?.nguon === 'nhom9013.nhom' && /đầu chiếu tia laser/i.test(x.dieuKien || ''));
+  const v9013 = verifySoTay(st9013, '9013', sourcesFor('9013'));
+  const v8543 = verifySoTay(st8543, '8543', sourcesFor('8543'));
+  assert(
+    'OZV-2194: sổ tay 9013 và 8543 có loaiTru 2 chiều 9013 <-> 8543 kèm canCuLoaiTru nguyên văn đạt 100% checkItem & verifySoTay',
+    Boolean(lt9013 && lt9013.nguon === 'nhom9013.nhom' && checkItem('loaiTru', lt9013, sourcesFor('9013'), '9013') === null)
+      && Boolean(lt8543 && lt8543.nguon === 'nhom8543.nhom' && checkItem('loaiTru', lt8543, sourcesFor('8543'), '8543') === null)
+      && lt9013.dieuKien !== lt8543.dieuKien
+      && !/;/.test(lt9013.dieuKien)
+      && !/;/.test(lt8543.dieuKien)
+      && v9013.loai.length === 0 && v9013.dat === v9013.tong && st9013.kiemTra?.tong === v9013.tong && st9013.kiemTra?.dat === v9013.dat
+      && v8543.loai.length === 0 && v8543.dat === v8543.tong && st8543.kiemTra?.tong === v8543.tong && st8543.kiemTra?.dat === v8543.dat,
+    JSON.stringify({ lt9013: Boolean(lt9013), lt8543: Boolean(lt8543), loai9013: v9013.loai, loai8543: v8543.loai, tong9013: v9013.tong, tong8543: v8543.tong }),
+  );
+
+  const c5Tu9013 = D.canhTu('9013', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8543');
+  const c5Tu8543 = D.canhTu('8543', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '9013');
+  const c6Tu9013 = D.canhTu('9013', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '8543');
+  const c6Tu8543 = D.canhTu('8543', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '9013');
+  const giua = D.canhGiuaNhomConSong(['9013', '8543']).filter((e) => e.loai === 'C5' || e.loai === 'C6');
+  const mrTu9013 = D.moRongUngVien(['9013'], moTa162);
+  const mrTu8543 = D.moRongUngVien(['8543'], moTa162);
+  assert(
+    'OZV-2194: đồ thị C5/C6, canhGiuaNhomConSong, nhomLienQuanSoTay và moRongUngVien nối 2 chiều 9013 <-> 8543 cho ca 162',
+    c5Tu9013.some((e) => e.nguon === 'nhom9013.nhom' && e.canCuLoaiTru?.nguon === 'nhom8543.nhom')
+      && c5Tu8543.some((e) => e.nguon === 'nhom8543.nhom' && e.canCuLoaiTru?.nguon === 'nhom9013.nhom')
+      && c6Tu9013.length >= 1
+      && c6Tu8543.length >= 1
+      && giua.length >= 2
+      && nhomLienQuanSoTay('9013').includes('8543')
+      && nhomLienQuanSoTay('8543').includes('9013')
+      && mrTu9013.some((x) => x.nhom === '8543')
+      && mrTu8543.some((x) => x.nhom === '9013'),
+    JSON.stringify({ c5Tu9013: c5Tu9013.length, c5Tu8543: c5Tu8543.length, mrTu9013, mrTu8543 }),
+  );
+
+  const pb9013 = cauPhanBietNhom('9013', ['9013', '8543'], moTa162);
+  const pb8543 = cauPhanBietNhom('8543', ['8543', '9013'], moTa162);
+  const g9013 = soTayGates({ hs: '90132000', productText: moTa162, productName: moTa162, pool: [{ h4: '8543', from: 'test' }] });
+  const g8543 = soTayGates({ hs: '85437090', productText: moTa162, productName: moTa162, pool: [{ h4: '9013', from: 'test' }] });
+  const ht2 = phanTichHoiTruoc4So({ moTa: moTa162, ungVien: ['9013', '8543'] });
+  const ht3 = phanTichHoiTruoc4So({ moTa: moTa162, ungVien: ['9013', '8541', '8543'] });
+  assert(
+    'OZV-2194 (thuận): cauPhanBietNhom, soTayGates và phanTichHoiTruoc4So hoạt động đúng 2 chiều 90.13 <-> 85.43 (và cụm [9013, 8541, 8543]) cho ca 162',
+    pb9013.length === 1 && pb9013[0].canCu === 'so-tay' && pb9013[0].nguon === 'nhom9013.nhom' && /85\.43/.test(pb9013[0].questionVi)
+      && pb8543.length === 1 && pb8543[0].canCu === 'so-tay' && pb8543[0].nguon === 'nhom8543.nhom' && /90\.13/.test(pb8543[0].questionVi)
+      && (g9013.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '8543')
+      && (g8543.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '9013')
+      && ht2.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC
+      && new Set((ht2.nhanh || []).map((n) => n.dieuKien)).size === 2
+      && Boolean(ht2.dapAnDieuKien && ht2.dapAnDieuKien.includes('→ nhóm 9013 (') && ht2.dapAnDieuKien.includes('→ nhóm 8543 ('))
+      && Boolean(ht2.cauHoi)
+      && ht3.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC
+      && new Set((ht3.nhanh || []).map((n) => n.dieuKien)).size === 3
+      && Boolean(ht3.dapAnDieuKien && ht3.dapAnDieuKien.includes('→ nhóm 9013 (') && ht3.dapAnDieuKien.includes('→ nhóm 8541 (') && ht3.dapAnDieuKien.includes('→ nhóm 8543 ('))
+      && Boolean(ht3.cauHoi),
+    JSON.stringify({ pb9013, pb8543, g9013: g9013.challenges, g8543: g8543.challenges, ht2: ht2.dapAnDieuKien, ht3: ht3.dapAnDieuKien }),
+  );
+
+  const dcKinhNgam = 'Kính ngắm để lắp vào vũ khí săn bắn';
+  const dcMayGiaToc = 'Máy gia tốc hạt truyền động năng cao cho các hạt tích điện';
+  const dcMayPhatTinHieu = 'Máy phát tín hiệu tạo ra các tín hiệu điện ở tần số cao';
+  const pbDc9013 = cauPhanBietNhom('9013', ['9013', '8543'], dcKinhNgam);
+  const pbDc8543 = cauPhanBietNhom('8543', ['8543', '9013'], dcMayGiaToc);
+  const pbDcTinHieu8543 = cauPhanBietNhom('8543', ['8543', '9013'], dcMayPhatTinHieu);
+  const gDc9013 = soTayGates({ hs: '90131010', productText: dcKinhNgam, productName: dcKinhNgam });
+  const gDc8543 = soTayGates({ hs: '85431000', productText: dcMayGiaToc, productName: dcMayGiaToc });
+  assert(
+    'OZV-2194 (đối chứng): kính ngắm vũ khí, máy gia tốc hạt và máy phát tín hiệu không hỏi oan / không kéo oan 90.13 <-> 85.43',
+    pbDc9013.length === 0
+      && pbDc8543.length === 0
+      && pbDcTinHieu8543.length === 0
+      && !(gDc9013.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '8543')
+      && !(gDc8543.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '9013')
+      && !D.moRongUngVien(['9013'], dcKinhNgam).some((x) => x.nhom === '8543')
+      && !D.moRongUngVien(['8543'], dcMayGiaToc).some((x) => x.nhom === '9013'),
+    JSON.stringify({ pbDc9013, pbDc8543, pbDcTinHieu8543, gDc9013: gDc9013.challenges, gDc8543: gDc8543.challenges }),
+  );
+}
+
 console.log(`\n${passed}/${passed + failed} passed`);
 process.exit(failed ? 1 : 0);
