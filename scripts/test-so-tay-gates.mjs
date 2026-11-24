@@ -1611,5 +1611,109 @@ check('trangThaiDong8.veMoHinh: 73181510 chấm trọn nhãn "Đường kính ng
     JSON.stringify({ distinctCamBien, htCamBien: htCamBien.dapAnDieuKien, nhanh: htCamBien.nhanh }));
 }
 
+// ── OZV-2213: cạnh loại trừ 2 chiều 90.31 <-> 85.36 — khép tam giác [9031, 9032, 8536] cho ca cảm biến quang ──
+{
+  const S = require('../lib/so-tay.js');
+  const D = require('../lib/do-thi/index.js');
+  const { cauPhanBietNhom } = require('../lib/hoi-theo-so-tay.js');
+  const { phanTichHoiTruoc4So, TRANG_THAI_4SO } = require('../lib/do-thi/hoi-truoc-4so.js');
+  const { dataPath } = require('../lib/data-paths.js');
+  fs.mkdirSync(dataPath('so-tay'), { recursive: true });
+  for (const h of ['9031', '8536']) {
+    fs.copyFileSync(path.join('data', 'so-tay', `${h}.json`), dataPath('so-tay', `${h}.json`));
+  }
+  D.datLai();
+
+  const moTaCamBien = 'cảm biến quang e3sct11, điện áp 26v, nhận biết vật';
+  const dcCongTac = 'Công tắc hành trình đóng ngắt mạch điện 24V';
+  const dcRelay = 'Rơ le bảo vệ mất pha không quá 1000 V';
+  const dcBan = 'Bàn kiểm tra cơ khí';
+
+  const s9031 = JSON.parse(fs.readFileSync(path.join('data', 'so-tay', '9031.json'), 'utf8'));
+  const s8536 = JSON.parse(fs.readFileSync(path.join('data', 'so-tay', '8536.json'), 'utf8'));
+  const v9031 = S.verifySoTay(s9031, '9031');
+  const v8536 = S.verifySoTay(s8536, '8536');
+  check('[OZV-2213 verifySoTay] sổ tay 9031 và 8536 đạt 100% (0 mục bị loại, khớp kiemTra.tong/dat)',
+    v9031.loai.length === 0 && v8536.loai.length === 0
+    && v9031.tong === s9031.kiemTra.tong && v9031.dat === s9031.kiemTra.dat
+    && v8536.tong === s8536.kiemTra.tong && v8536.dat === s8536.kiemTra.dat,
+    JSON.stringify({ loai9031: v9031.loai.slice(0, 2), loai8536: v8536.loai.slice(0, 2), v9031, v8536 }));
+
+  const lt9031to8536 = (loadSoTay('9031')?.loaiTru || []).find((x) => x.sangNhom === '8536');
+  const lt8536to9031 = (loadSoTay('8536')?.loaiTru || []).find((x) => x.sangNhom === '9031');
+  check('[OZV-2213 canCuLoaiTru] loaiTru 2 chiều 9031 <-> 8536 kèm canCuLoaiTru nguyên văn đạt checkItem',
+    Boolean(lt9031to8536 && lt9031to8536.nguon === 'nhom9031.nhom' && lt9031to8536.canCuLoaiTru?.nguon === 'nhom8536.nhom'
+      && !/;/.test(lt9031to8536.dieuKien || '')
+      && S.checkItem('loaiTru', lt9031to8536, S.sourcesFor('9031'), '9031') === null)
+    && Boolean(lt8536to9031 && lt8536to9031.nguon === 'nhom8536.nhom' && lt8536to9031.canCuLoaiTru?.nguon === 'nhom9031.nhom'
+      && !/;/.test(lt8536to9031.dieuKien || '')
+      && lt9031to8536.dieuKien !== lt8536to9031.dieuKien
+      && S.checkItem('loaiTru', lt8536to9031, S.sourcesFor('8536'), '8536') === null),
+    JSON.stringify({ lt9031to8536, lt8536to9031 }));
+
+  const c5Tu9031 = D.canhTu('9031', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8536');
+  const c5Tu8536 = D.canhTu('8536', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '9031');
+  const c6Tu9031 = D.canhTu('9031', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '8536');
+  const c6Tu8536 = D.canhTu('8536', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '9031');
+  const giua = D.canhGiuaNhomConSong(['9031', '8536']).filter((e) => e.loai === 'C5' || e.loai === 'C6');
+  const mr9031 = D.moRongUngVien(['9031'], moTaCamBien, { toiDa: 10 });
+  const mr8536 = D.moRongUngVien(['8536'], moTaCamBien, { toiDa: 10 });
+  const rel9031 = [...new Set((loadSoTay('9031')?.loaiTru || []).flatMap((x) => String(x.sangNhom || '').split(/[|,;\s]+/).map((t) => t.replace(/\D/g, '').slice(0, 4)).filter((t) => t.length === 4)))];
+  const rel8536 = [...new Set((loadSoTay('8536')?.loaiTru || []).flatMap((x) => String(x.sangNhom || '').split(/[|,;\s]+/).map((t) => t.replace(/\D/g, '').slice(0, 4)).filter((t) => t.length === 4)))];
+  check('[OZV-2213 đồ thị 2 chiều] C5/C6 9031<->8536, nhomLienQuanSoTay 2 chiều, canhGiuaNhomConSong >= 2 và moRongUngVien kéo 2 chiều cho ca cảm biến quang',
+    c5Tu9031.some((e) => e.nguon === 'nhom9031.nhom' && e.canCuLoaiTru?.nguon === 'nhom8536.nhom')
+    && c5Tu8536.some((e) => e.nguon === 'nhom8536.nhom' && e.canCuLoaiTru?.nguon === 'nhom9031.nhom')
+    && c6Tu9031.length >= 1 && c6Tu8536.length >= 1 && giua.length >= 2
+    && rel9031.includes('8536') && rel8536.includes('9031')
+    && mr9031.some((x) => x.nhom === '8536') && mr8536.some((x) => x.nhom === '9031'),
+    JSON.stringify({ c5: c5Tu9031.length, c5r: c5Tu8536.length, giua: giua.length, mr9031: mr9031.map((x) => x.nhom), mr8536: mr8536.map((x) => x.nhom) }));
+
+  const pb9031 = cauPhanBietNhom('9031', ['9031', '8536'], moTaCamBien);
+  const pb8536 = cauPhanBietNhom('8536', ['8536', '9031'], moTaCamBien);
+  check('[OZV-2213 thuận cauPhanBietNhom] sinh câu hỏi phân biệt 2 chiều 90.31 <-> 85.36 cho ca cảm biến quang nhận biết vật',
+    pb9031.length === 1 && pb9031[0].loai === 'PHAN_BIET_NHOM' && pb9031[0].canCu === 'so-tay'
+    && pb9031[0].nguon === 'nhom9031.nhom' && /85\.36/.test(pb9031[0].questionVi) && /90\.31/.test(pb9031[0].questionVi)
+    && pb8536.length === 1 && pb8536[0].loai === 'PHAN_BIET_NHOM' && pb8536[0].canCu === 'so-tay'
+    && pb8536[0].nguon === 'nhom8536.nhom' && /90\.31/.test(pb8536[0].questionVi) && /85\.36/.test(pb8536[0].questionVi),
+    JSON.stringify({ pb9031, pb8536 }));
+
+  const g9031To8536 = soTayGates({
+    hs: '90318090', productText: moTaCamBien, productName: moTaCamBien, candidateHeadings: ['9031', '8536'],
+  });
+  const g8536To9031 = soTayGates({
+    hs: '85365099', productText: moTaCamBien, productName: moTaCamBien, candidateHeadings: ['8536', '9031'],
+  });
+  check('[OZV-2213 thuận soTayGates] kích hoạt SO_TAY_LOAI_TRU đúng cả 2 chiều 9031 -> 8536 và 8536 -> 9031 cho ca cảm biến quang',
+    (g9031To8536.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8536'))
+    && (g8536To9031.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('9031')),
+    JSON.stringify({ g9031To8536: g9031To8536.challenges, g8536To9031: g8536To9031.challenges }));
+
+  const dcPbCongTac9031 = cauPhanBietNhom('9031', ['9031', '8536'], dcCongTac);
+  const dcPbRelay8536 = cauPhanBietNhom('8536', ['8536', '9031'], dcRelay);
+  const dcPbBan9031 = cauPhanBietNhom('9031', ['9031', '8536'], dcBan);
+  const dcPbBan8536 = cauPhanBietNhom('8536', ['8536', '9031'], dcBan);
+  const dcGBan = soTayGates({
+    hs: '90318090', productText: dcBan, productName: dcBan, candidateHeadings: ['9031', '8536'],
+  });
+  const dcGRelay = soTayGates({
+    hs: '85365099', productText: dcRelay, productName: dcRelay, candidateHeadings: ['8536', '9031'],
+  });
+  check('[OZV-2213 đối chứng] công tắc hành trình, rơ le mất pha và bàn kiểm tra không hỏi oan / không kéo oan 90.31 <-> 85.36',
+    dcPbCongTac9031.length === 0 && dcPbRelay8536.length === 0 && dcPbBan9031.length === 0 && dcPbBan8536.length === 0
+    && !(dcGBan.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8536'))
+    && !(dcGRelay.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('9031'))
+    && !D.moRongUngVien(['9031'], dcBan).some((x) => x.nhom === '8536')
+    && !D.moRongUngVien(['8536'], dcRelay).some((x) => x.nhom === '9031'),
+    JSON.stringify({ dcPbCongTac9031, dcPbRelay8536, dcPbBan9031, dcPbBan8536 }));
+
+  const htCamBien = phanTichHoiTruoc4So({ moTa: moTaCamBien, ungVien: ['9031', '8536'] });
+  const distinctCamBien = new Set((htCamBien.nhanh || []).map((n) => n.dieuKien)).size === 2;
+  check('[OZV-2213 hoi-truoc-4so] ca cảm biến quang với [9031, 8536] trả CHUA_CHOT_NHOM_HOI_TRUOC với các nhánh điều kiện phân biệt từ cạnh C5',
+    htCamBien.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC && distinctCamBien
+    && (htCamBien.nhanh || []).every((n) => String(n.nguon || '').startsWith('do-thi:C5:'))
+    && ['9031', '8536'].every((h) => (htCamBien.dapAnDieuKien || '').includes(`→ nhóm ${h} (`)),
+    JSON.stringify({ distinctCamBien, htCamBien: htCamBien.dapAnDieuKien, nhanh: htCamBien.nhanh }));
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
