@@ -208,5 +208,73 @@ for (const q of ['máy sấy sinh tố 350w 220v', 'máy sấy hoa quả']) {
   );
 }
 
+// OZV-2098 — Cạnh loại trừ 2 chiều 83.02 <-> 76.16 cho ca 49 tầng 4 số
+// "Thanh kéo vải rèm trần / Nhôm / Phụ kiện rèm cửa"
+{
+  const S = require('./lib/so-tay');
+  const { loadSoTay } = require('./lib/so-tay-gates');
+  const qRem = 'Thanh kéo vải rèm trần / Nhôm / Phụ kiện rèm cửa';
+
+  const st8302 = loadSoTay('8302');
+  const st7616 = loadSoTay('7616');
+  const lt8302 = (st8302?.loaiTru || []).find((x) => x.sangNhom === '7616');
+  const lt7616 = (st7616?.loaiTru || []).find((x) => x.sangNhom === '8302');
+  check(
+    '[OZV-2098 căn cứ] sổ tay 8302 và 7616 có mục loaiTru 2 chiều 8302 <-> 7616 kèm canCuLoaiTru nguyên văn đạt checkItem',
+    Boolean(
+      lt8302 &&
+        lt8302.canCuLoaiTru?.nguon === 'nhom7616.nhom' &&
+        S.checkItem('loaiTru', lt8302, S.sourcesFor('8302'), '8302') === null
+    ) &&
+      Boolean(
+        lt7616 &&
+          lt7616.canCuLoaiTru?.nguon === 'nhom8302.nhom' &&
+          S.checkItem('loaiTru', lt7616, S.sourcesFor('7616'), '7616') === null
+      ),
+    `lt8302=${JSON.stringify(lt8302)}, lt7616=${JSON.stringify(lt7616)}`
+  );
+
+  const pb8302 = cauPhanBietNhom('8302', ['8302', '7616'], qRem);
+  check(
+    '[OZV-2098 thuận] 8302 đứng đầu với [8302, 7616] sinh câu phân biệt từ nhom8302.nhom trỏ sang 76.16',
+    pb8302.length === 1 &&
+      pb8302[0].loai === 'PHAN_BIET_NHOM' &&
+      pb8302[0].canCu === 'so-tay' &&
+      pb8302[0].nguon === 'nhom8302.nhom' &&
+      /76\.16/.test(pb8302[0].questionVi) &&
+      /83\.02/.test(pb8302[0].questionVi),
+    `pb8302 = ${JSON.stringify(pb8302)}`
+  );
+
+  const pb7616 = cauPhanBietNhom('7616', ['7616', '8302'], qRem);
+  check(
+    '[OZV-2098 thuận] 7616 đứng đầu với [7616, 8302] sinh câu phân biệt từ nhom7616.nhom trỏ sang 83.02',
+    pb7616.length === 1 &&
+      pb7616[0].loai === 'PHAN_BIET_NHOM' &&
+      pb7616[0].canCu === 'so-tay' &&
+      pb7616[0].nguon === 'nhom7616.nhom' &&
+      /83\.02/.test(pb7616[0].questionVi) &&
+      /76\.16/.test(pb7616[0].questionVi),
+    `pb7616 = ${JSON.stringify(pb7616)}`
+  );
+
+  const dcTamNhom8302 = cauPhanBietNhom('8302', ['8302', '7616'], 'tấm hợp kim nhôm 5082 dày 3mm');
+  const dcTamNhom7616 = cauPhanBietNhom('7616', ['7616', '8302'], 'tấm hợp kim nhôm 5082 dày 3mm');
+  const dcBanLe8302 = cauPhanBietNhom('8302', ['8302', '7616'], 'bản lề cửa gỗ bằng thép');
+  const dcBanLe7616 = cauPhanBietNhom('7616', ['7616', '8302'], 'bản lề cửa gỗ bằng thép');
+  const dcDinhNhom8302 = cauPhanBietNhom('8302', ['8302', '7616'], 'đinh nhôm đóng gỗ');
+  const dcDinhNhom7616 = cauPhanBietNhom('7616', ['7616', '8302'], 'đinh nhôm đóng gỗ');
+  check(
+    '[OZV-2098 đối chứng] tấm hợp kim nhôm, bản lề cửa gỗ và đinh nhôm đóng gỗ không hỏi oan 83.02 <-> 76.16',
+    dcTamNhom8302.length === 0 &&
+      dcTamNhom7616.length === 0 &&
+      dcBanLe8302.length === 0 &&
+      dcBanLe7616.length === 0 &&
+      dcDinhNhom8302.length === 0 &&
+      dcDinhNhom7616.length === 0,
+    `dc = ${JSON.stringify({ dcTamNhom8302, dcTamNhom7616, dcBanLe8302, dcBanLe7616, dcDinhNhom8302, dcDinhNhom7616 })}`
+  );
+}
+
 console.log(`\n${passed} passed | ${failed} failed`);
 process.exit(failed > 0 ? 1 : 0);
