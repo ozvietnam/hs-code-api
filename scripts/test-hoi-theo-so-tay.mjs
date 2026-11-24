@@ -438,5 +438,84 @@ const ketQuaSong = (raw = VAN) => ketQuaGia('848180', raw, {}, ['848120']);
     { kqDoi1, kqDoi2 });
 }
 
+
+// 12) OZV-2115 — cạnh loại trừ 2 chiều 73.18 <-> 83.02 cho ca 130 tầng 4 số «Ốc thăng bằng / thép không gỉ / None»
+{
+  const S = require('../lib/so-tay.js');
+  const D = require('../lib/do-thi/index.js');
+  const qOc = 'Ốc thăng bằng / thép không gỉ / None';
+  // test-isolate tạo data/so-tay/ chỉ với 9026/8536 → dataReadPath('so-tay') trỏ tmp;
+  // docSoTay() chỉ thấy các tệp trong tmp. Chép 7318/8302 vào isolate rồi dựng lại bảng cạnh.
+  for (const nh of ['7318', '8302']) {
+    fs.copyFileSync(path.join('data/so-tay', `${nh}.json`), path.join(TEST_DATA_DIR, 'so-tay', `${nh}.json`));
+  }
+  D.datLai();
+
+  const st7318 = loadSoTay('7318');
+  const st8302 = loadSoTay('8302');
+  const lt7318 = (st7318?.loaiTru || []).find((x) => x.sangNhom === '8302');
+  const lt8302 = (st8302?.loaiTru || []).find((x) => x.sangNhom === '7318');
+  check('OZV-2115 (căn cứ): sổ tay 7318 và 8302 có loaiTru 2 chiều kèm canCuLoaiTru nguyên văn đạt checkItem',
+    Boolean(
+      lt7318 &&
+        lt7318.canCuLoaiTru?.nguon === 'nhom8302.nhom' &&
+        S.checkItem('loaiTru', lt7318, S.sourcesFor('7318'), '7318') === null
+    ) &&
+      Boolean(
+        lt8302 &&
+          lt8302.canCuLoaiTru?.nguon === 'nhom7318.nhom' &&
+          S.checkItem('loaiTru', lt8302, S.sourcesFor('8302'), '8302') === null
+      ),
+    { lt7318, lt8302 });
+
+  const c5Tu7318 = D.canhTu('7318', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8302');
+  const c5Tu8302 = D.canhTu('8302', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '7318');
+  const mrTu7318 = D.moRongUngVien(['7318'], qOc);
+  const mrTu8302 = D.moRongUngVien(['8302'], qOc);
+  check('OZV-2115 (đồ thị 2 chiều): bảng cạnh C5 7318↔8302 và moRongUngVien kéo 2 chiều cho ca 130',
+    c5Tu7318.length >= 1 &&
+      c5Tu8302.length >= 1 &&
+      mrTu7318.some((x) => x.nhom === '8302') &&
+      mrTu8302.some((x) => x.nhom === '7318'),
+    { c5Tu7318: c5Tu7318.length, c5Tu8302: c5Tu8302.length, mrTu7318, mrTu8302 });
+
+  const pb7318 = H.cauPhanBietNhom('7318', ['7318', '8302'], qOc);
+  check('OZV-2115 (thuận 7318 → 8302): 7318 đứng đầu với [7318, 8302] sinh câu PHAN_BIET_NHOM từ phan73.phan sang 83.02',
+    pb7318.length === 1
+    && pb7318[0].loai === 'PHAN_BIET_NHOM'
+    && pb7318[0].canCu === 'so-tay'
+    && pb7318[0].nguon === 'phan73.phan'
+    && /83\.02/.test(pb7318[0].questionVi)
+    && /73\.18/.test(pb7318[0].questionVi),
+    pb7318);
+
+  const pb8302 = H.cauPhanBietNhom('8302', ['8302', '7318'], qOc);
+  check('OZV-2115 (thuận 8302 → 7318): 8302 đứng đầu với [8302, 7318] sinh câu PHAN_BIET_NHOM từ ch83.chuong sang 73.18',
+    pb8302.length === 1
+    && pb8302[0].loai === 'PHAN_BIET_NHOM'
+    && pb8302[0].canCu === 'so-tay'
+    && pb8302[0].nguon === 'ch83.chuong'
+    && /73\.18/.test(pb8302[0].questionVi)
+    && /83\.02/.test(pb8302[0].questionVi),
+    pb8302);
+
+  const dcBanLe7318 = H.cauPhanBietNhom('7318', ['7318', '8302'], 'Bản lề cửa gỗ bằng thép');
+  const dcBanLe8302 = H.cauPhanBietNhom('8302', ['8302', '7318'], 'Bản lề cửa gỗ bằng thép');
+  const dcBuLong7318 = H.cauPhanBietNhom('7318', ['7318', '8302'], 'Bu lông M8 bằng thép không gỉ dùng bắt mặt bích');
+  const dcBuLong8302 = H.cauPhanBietNhom('8302', ['8302', '7318'], 'Bu lông M8 bằng thép không gỉ dùng bắt mặt bích');
+  const dcThanhTreo7318 = H.cauPhanBietNhom('7318', ['7318', '8302'], 'Thanh treo rèm cửa bằng thép');
+  const dcThanhTreo8302 = H.cauPhanBietNhom('8302', ['8302', '7318'], 'Thanh treo rèm cửa bằng thép');
+  check('OZV-2115 (đối chứng): bản lề cửa, bu lông M8 và thanh treo rèm không hỏi oan 73.18 ↔ 83.02',
+    dcBanLe7318.length === 0 &&
+      dcBanLe8302.length === 0 &&
+      dcBuLong7318.length === 0 &&
+      dcBuLong8302.length === 0 &&
+      dcThanhTreo7318.length === 0 &&
+      dcThanhTreo8302.length === 0 &&
+      !D.moRongUngVien(['7318'], 'Bản lề cửa gỗ bằng thép').some((x) => x.nhom === '8302') &&
+      !D.moRongUngVien(['8302'], 'Bu lông M8 bằng thép không gỉ dùng bắt mặt bích').some((x) => x.nhom === '7318'),
+    { dcBanLe7318, dcBanLe8302, dcBuLong7318, dcBuLong8302, dcThanhTreo7318, dcThanhTreo8302 });
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
