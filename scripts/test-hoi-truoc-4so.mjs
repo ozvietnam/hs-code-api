@@ -941,5 +941,207 @@ if (fs.existsSync(boChuanPath)) {
   );
 }
 
+// 10. OZV-2184 — Cạnh loại trừ 2 chiều 84.66 <-> 84.83 cho ca 132 tầng 4 số
+// ('Bộ bàn trượt bằng tay / nhôm / gá thiết bị máy công nghiệp căn chỉnh bằng tay' và 'Con lăn đỡ trục cán bằng thép hợp kim')
+{
+  const S = require('../lib/so-tay.js');
+  const { loadSoTay, soTayGates, nhomLienQuanSoTay } = require('../lib/so-tay-gates.js');
+  const { cauPhanBietNhom } = require('../lib/hoi-theo-so-tay.js');
+  const D = require('../lib/do-thi/index.js');
+  D.datLai();
+
+  const q132BanTruot = 'Bộ bàn trượt bằng tay / nhôm / gá thiết bị máy công nghiệp căn chỉnh bằng tay';
+  const q132ConLan = 'Con lăn đỡ trục cán bằng thép hợp kim';
+  const st8466 = loadSoTay('8466');
+  const st8483 = loadSoTay('8483');
+  const v8466 = S.verifySoTay(st8466, '8466');
+  const v8483 = S.verifySoTay(st8483, '8483');
+  check(
+    '[OZV-2184 verifySoTay] sổ tay 8466 và 8483 đạt 100% (0 mục không kiểm được nguồn)',
+    v8466.loai.length === 0 && v8483.loai.length === 0,
+    JSON.stringify({ loai8466: v8466.loai, loai8483: v8483.loai }),
+  );
+
+  const lt8466BanTruot = (st8466?.loaiTru || []).find((x) => x.sangNhom === '8483' && x.canCuLoaiTru?.nguon === 'nhom8483.nhom' && /bàn trượt/i.test(x.dieuKien || ''));
+  const lt8466ConLan = (st8466?.loaiTru || []).find((x) => x.sangNhom === '8483' && x.canCuLoaiTru?.nguon === 'nhom8483.nhom' && /con lăn/i.test(x.dieuKien || ''));
+  const lt8483BanTruot = (st8483?.loaiTru || []).find((x) => x.sangNhom === '8466' && x.canCuLoaiTru?.nguon === 'nhom8466.nhom' && /bàn trượt/i.test(x.dieuKien || ''));
+  const lt8483ConLan = (st8483?.loaiTru || []).find((x) => x.sangNhom === '8466' && x.canCuLoaiTru?.nguon === 'nhom8466.nhom' && /con lăn/i.test(x.dieuKien || ''));
+  check(
+    '[OZV-2184 căn cứ] sổ tay 8466 và 8483 có mục loaiTru 2 chiều 8466 <-> 8483 kèm canCuLoaiTru nguyên văn đạt checkItem',
+    Boolean(lt8466BanTruot && lt8466BanTruot.nguon === 'nhom8466.nhom' && S.checkItem('loaiTru', lt8466BanTruot, S.sourcesFor('8466'), '8466') === null)
+      && Boolean(lt8466ConLan && lt8466ConLan.nguon === 'nhom8466.nhom' && S.checkItem('loaiTru', lt8466ConLan, S.sourcesFor('8466'), '8466') === null)
+      && Boolean(lt8483BanTruot && lt8483BanTruot.nguon === 'nhom8483.nhom' && S.checkItem('loaiTru', lt8483BanTruot, S.sourcesFor('8483'), '8483') === null)
+      && Boolean(lt8483ConLan && lt8483ConLan.nguon === 'nhom8483.nhom' && S.checkItem('loaiTru', lt8483ConLan, S.sourcesFor('8483'), '8483') === null)
+      && lt8466BanTruot.dieuKien !== lt8483BanTruot.dieuKien
+      && lt8466ConLan.dieuKien !== lt8483ConLan.dieuKien
+      && ![lt8466BanTruot, lt8466ConLan, lt8483BanTruot, lt8483ConLan].some((x) => /;/.test(x.dieuKien)),
+    JSON.stringify({
+      lt8466BanTruot: Boolean(lt8466BanTruot),
+      lt8466ConLan: Boolean(lt8466ConLan),
+      lt8483BanTruot: Boolean(lt8483BanTruot),
+      lt8483ConLan: Boolean(lt8483ConLan),
+    }),
+  );
+
+  const c5Tu8466 = D.canhTu('8466', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8483');
+  const c5Tu8483 = D.canhTu('8483', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8466');
+  const c6Tu8466 = D.canhTu('8466', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '8483');
+  const c6Tu8483 = D.canhTu('8483', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '8466');
+  const mrBtTu8466 = D.moRongUngVien(['8466'], q132BanTruot);
+  const mrBtTu8483 = D.moRongUngVien(['8483'], q132BanTruot);
+  const mrClTu8466 = D.moRongUngVien(['8466'], q132ConLan);
+  const mrClTu8483 = D.moRongUngVien(['8483'], q132ConLan);
+  const rel8466 = nhomLienQuanSoTay('8466');
+  const rel8483 = nhomLienQuanSoTay('8483');
+  check(
+    '[OZV-2184 đồ thị 2 chiều] bảng cạnh có C5/C6 8466<->8483, nhomLienQuanSoTay 2 chiều và moRongUngVien kéo 2 chiều cho ca 132',
+    c5Tu8466.some((e) => e.nguon === 'nhom8466.nhom' && e.canCuLoaiTru?.nguon === 'nhom8483.nhom')
+      && c5Tu8483.some((e) => e.nguon === 'nhom8483.nhom' && e.canCuLoaiTru?.nguon === 'nhom8466.nhom')
+      && c6Tu8466.length >= 1
+      && c6Tu8483.length >= 1
+      && rel8466.includes('8483')
+      && rel8483.includes('8466')
+      && mrBtTu8466.some((x) => x.nhom === '8483')
+      && mrBtTu8483.some((x) => x.nhom === '8466')
+      && mrClTu8466.some((x) => x.nhom === '8483')
+      && mrClTu8483.some((x) => x.nhom === '8466'),
+    JSON.stringify({ c5Tu8466: c5Tu8466.length, c5Tu8483: c5Tu8483.length, mrBtTu8466, mrBtTu8483, mrClTu8466, mrClTu8483 }),
+  );
+
+  const ht132Bt = phanTichHoiTruoc4So({ moTa: q132BanTruot, ungVien: ['8466', '8483'] });
+  const distinctDk132Bt = new Set((ht132Bt.nhanh || []).map((n) => n.dieuKien)).size === 2;
+  const ht132BtFull = phanTichHoiTruoc4So({ moTa: q132BanTruot, ungVien: ['8483', '8466', '8479'] });
+  const distinctDk132BtFull = new Set((ht132BtFull.nhanh || []).map((n) => n.dieuKien)).size === 3;
+  const ht132Cl = phanTichHoiTruoc4So({ moTa: q132ConLan, ungVien: ['8466', '8483'] });
+  const distinctDk132Cl = new Set((ht132Cl.nhanh || []).map((n) => n.dieuKien)).size === 2;
+  const ht132ClFull = phanTichHoiTruoc4So({ moTa: q132ConLan, ungVien: ['8483', '8466', '8479'] });
+  const distinctDk132ClFull = new Set((ht132ClFull.nhanh || []).map((n) => n.dieuKien)).size === 3;
+  check(
+    '[OZV-2184 hoi-truoc-4so] ca 132 Bộ bàn trượt bằng tay và Con lăn đỡ trục cán tách nhánh điều kiện riêng biệt cho [8466, 8483] và [8483, 8466, 8479]',
+    ht132Bt.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC
+      && distinctDk132Bt
+      && Boolean(ht132Bt.dapAnDieuKien && ht132Bt.dapAnDieuKien.includes('→ nhóm 8466 (') && ht132Bt.dapAnDieuKien.includes('→ nhóm 8483 ('))
+      && Boolean(ht132Bt.cauHoi)
+      && ht132BtFull.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC
+      && distinctDk132BtFull
+      && ['8483', '8466', '8479'].every((h) => (ht132BtFull.dapAnDieuKien || '').includes(`→ nhóm ${h} (`))
+      && ht132Cl.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC
+      && distinctDk132Cl
+      && Boolean(ht132Cl.dapAnDieuKien && ht132Cl.dapAnDieuKien.includes('→ nhóm 8466 (') && ht132Cl.dapAnDieuKien.includes('→ nhóm 8483 ('))
+      && Boolean(ht132Cl.cauHoi)
+      && ht132ClFull.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC
+      && distinctDk132ClFull
+      && ['8483', '8466', '8479'].every((h) => (ht132ClFull.dapAnDieuKien || '').includes(`→ nhóm ${h} (`)),
+    JSON.stringify({
+      distinctDk132Bt,
+      distinctDk132BtFull,
+      distinctDk132Cl,
+      distinctDk132ClFull,
+      dapAnBt: ht132BtFull.dapAnDieuKien,
+      dapAnCl: ht132ClFull.dapAnDieuKien,
+    }),
+  );
+
+  const pbBt8466 = cauPhanBietNhom('8466', ['8466', '8483'], q132BanTruot);
+  const pbBt8483 = cauPhanBietNhom('8483', ['8483', '8466'], q132BanTruot);
+  const pbCl8466 = cauPhanBietNhom('8466', ['8466', '8483'], q132ConLan);
+  const pbCl8483 = cauPhanBietNhom('8483', ['8483', '8466'], q132ConLan);
+  check(
+    '[OZV-2184 thuận cauPhanBietNhom] sinh câu hỏi phân biệt 2 chiều 84.66 <-> 84.83 cho ca 132 Bộ bàn trượt bằng tay và Con lăn đỡ trục cán',
+    pbBt8466.length === 1
+      && pbBt8466[0].loai === 'PHAN_BIET_NHOM'
+      && pbBt8466[0].canCu === 'so-tay'
+      && pbBt8466[0].nguon === 'nhom8466.nhom'
+      && /84\.83/.test(pbBt8466[0].questionVi)
+      && /84\.66/.test(pbBt8466[0].questionVi)
+      && pbBt8483.length === 1
+      && pbBt8483[0].loai === 'PHAN_BIET_NHOM'
+      && pbBt8483[0].canCu === 'so-tay'
+      && pbBt8483[0].nguon === 'nhom8483.nhom'
+      && /84\.66/.test(pbBt8483[0].questionVi)
+      && /84\.83/.test(pbBt8483[0].questionVi)
+      && pbCl8466.length === 1
+      && pbCl8466[0].loai === 'PHAN_BIET_NHOM'
+      && pbCl8466[0].canCu === 'so-tay'
+      && pbCl8466[0].nguon === 'nhom8466.nhom'
+      && /84\.83/.test(pbCl8466[0].questionVi)
+      && /84\.66/.test(pbCl8466[0].questionVi)
+      && pbCl8483.length === 1
+      && pbCl8483[0].loai === 'PHAN_BIET_NHOM'
+      && pbCl8483[0].canCu === 'so-tay'
+      && pbCl8483[0].nguon === 'nhom8483.nhom'
+      && /84\.66/.test(pbCl8483[0].questionVi)
+      && /84\.83/.test(pbCl8483[0].questionVi),
+    JSON.stringify({ pbBt8466, pbBt8483, pbCl8466, pbCl8483 }),
+  );
+
+  const gBt8466To8483 = soTayGates({
+    hs: '84663000',
+    productText: q132BanTruot,
+    productName: 'Bộ bàn trượt bằng tay',
+    candidateHeadings: ['8466', '8483'],
+  });
+  const gBt8483To8466 = soTayGates({
+    hs: '84834090',
+    productText: q132BanTruot,
+    productName: 'Bộ bàn trượt bằng tay',
+    candidateHeadings: ['8483', '8466'],
+  });
+  const gCl8466To8483 = soTayGates({
+    hs: '84662090',
+    productText: q132ConLan,
+    productName: 'Con lăn đỡ trục cán bằng thép hợp kim',
+    candidateHeadings: ['8466', '8483'],
+  });
+  const gCl8483To8466 = soTayGates({
+    hs: '84833090',
+    productText: q132ConLan,
+    productName: 'Con lăn đỡ trục cán bằng thép hợp kim',
+    candidateHeadings: ['8483', '8466'],
+  });
+  check(
+    '[OZV-2184 thuận soTayGates] kích hoạt SO_TAY_LOAI_TRU đúng cả 2 chiều 8466 -> 8483 và 8483 -> 8466 cho cả 2 mô tả ca 132',
+    (gBt8466To8483.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8483'))
+      && (gBt8483To8466.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8466'))
+      && (gCl8466To8483.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8483'))
+      && (gCl8483To8466.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8466')),
+    JSON.stringify({
+      gBt8466To8483: gBt8466To8483.challenges,
+      gBt8483To8466: gBt8483To8466.challenges,
+      gCl8466To8483: gCl8466To8483.challenges,
+      gCl8483To8466: gCl8483To8466.challenges,
+    }),
+  );
+
+  const dcMamCap = 'Mâm cặp 3 chấu tự định tâm dùng cho máy tiện kim loại';
+  const dcBanhDa = 'Bánh đà bằng gang dùng cho động cơ máy thủy';
+  const dcMc8466 = cauPhanBietNhom('8466', ['8466', '8483'], dcMamCap);
+  const dcMc8483 = cauPhanBietNhom('8483', ['8483', '8466'], dcMamCap);
+  const dcBd8466 = cauPhanBietNhom('8466', ['8466', '8483'], dcBanhDa);
+  const dcBd8483 = cauPhanBietNhom('8483', ['8483', '8466'], dcBanhDa);
+  const gDoi8466 = soTayGates({
+    hs: '84662090',
+    productText: dcMamCap,
+    productName: dcMamCap,
+  });
+  const gDoi8483 = soTayGates({
+    hs: '84835000',
+    productText: dcBanhDa,
+    productName: dcBanhDa,
+  });
+  check(
+    '[OZV-2184 đối chứng] mâm cặp máy tiện và bánh đà động cơ máy thủy không hỏi oan / không kéo oan 84.66 <-> 84.83',
+    dcMc8466.length === 0
+      && dcMc8483.length === 0
+      && dcBd8466.length === 0
+      && dcBd8483.length === 0
+      && !D.moRongUngVien(['8466'], dcMamCap).some((x) => x.nhom === '8483')
+      && !D.moRongUngVien(['8483'], dcBanhDa).some((x) => x.nhom === '8466')
+      && !(gDoi8466.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8483'))
+      && !(gDoi8483.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8466')),
+    JSON.stringify({ dcMc8466, dcMc8483, dcBd8466, dcBd8483, gDoi8466: gDoi8466.challenges, gDoi8483: gDoi8483.challenges }),
+  );
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
