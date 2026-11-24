@@ -139,5 +139,74 @@ const that = chayCaDoiChungVatLieu(['8546', '8547']);
     cd.do === 2 && cd.doiHanhVi === 0 && cd.dat === 34, bang(cd));
 }
 
+// ── H. OZV-2134 — ca 138 tầng 4 số: Module cảm biến chuyển động → cạnh loại trừ 2 chiều 85.43 ↔ 90.31 ──
+{
+  const { sourcesFor, checkItem } = require('../lib/so-tay.js');
+  const H = require('../lib/hoi-theo-so-tay.js');
+  const { soTayGates, nhomLienQuanSoTay } = require('../lib/so-tay-gates.js');
+  const D = require('../lib/do-thi/index.js');
+  const { phanTichHoiTruoc4So, TRANG_THAI_4SO } = require('../lib/do-thi/hoi-truoc-4so.js');
+  const st8543 = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'so-tay', '8543.json'), 'utf8'));
+  const st9031 = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'so-tay', '9031.json'), 'utf8'));
+  const muc8543 = (st8543.loaiTru || []).find((x) => x.sangNhom === '9031' && /module cảm biến chuyển động/i.test(x.dieuKien || ''));
+  const muc9031 = (st9031.loaiTru || []).find((x) => x.sangNhom === '8543' && /module cảm biến chuyển động/i.test(x.dieuKien || ''));
+  check('H1 OZV-2134: sổ tay 8543↔9031 có loaiTru 2 chiều + canCuLoaiTru nguyên văn (checkItem đạt)',
+    Boolean(muc8543 && muc9031)
+    && muc8543.nguon === 'nhom8543.nhom'
+    && muc8543.canCuLoaiTru?.nguon === 'nhom9031.nhom'
+    && muc9031.nguon === 'nhom9031.nhom'
+    && muc9031.canCuLoaiTru?.nguon === 'nhom8543.nhom'
+    && checkItem('loaiTru', muc8543, sourcesFor('8543'), '8543') === null
+    && checkItem('loaiTru', muc9031, sourcesFor('9031'), '9031') === null,
+    { muc8543: Boolean(muc8543), muc9031: Boolean(muc9031) });
+  check('H2 OZV-2134: dieuKien hai chiều 8543↔9031 tách biệt cho hoi-truoc-4so',
+    Boolean(muc8543 && muc9031)
+    && muc8543.dieuKien !== muc9031.dieuKien
+    && !/;/.test(muc8543.dieuKien)
+    && !/;/.test(muc9031.dieuKien),
+    { dk8543: muc8543?.dieuKien, dk9031: muc9031?.dieuKien });
+
+  const moTa138 = 'Module cảm biến chuyển động / None / Phát hiện chuyển động vật lý trên thiết bị';
+  const c5_8543 = D.canhTu('8543', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '9031');
+  const c5_9031 = D.canhTu('9031', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8543');
+  const giua = D.canhGiuaNhomConSong(['8543', '9031']).filter((e) => e.loai === 'C5' || e.loai === 'C6');
+  const mr8543 = D.moRongUngVien(['8543'], moTa138);
+  const mr9031 = D.moRongUngVien(['9031'], moTa138);
+  check('H3 OZV-2134: đồ thị C5/C6 + canhGiuaNhomConSong + moRongUngVien + nhomLienQuanSoTay nối 2 chiều 8543↔9031',
+    c5_8543.length >= 1
+    && c5_9031.length >= 1
+    && giua.length >= 2
+    && mr8543.some((x) => x.nhom === '9031')
+    && mr9031.some((x) => x.nhom === '8543')
+    && nhomLienQuanSoTay('8543').includes('9031')
+    && nhomLienQuanSoTay('9031').includes('8543'),
+    { c5_8543: c5_8543.length, c5_9031: c5_9031.length, giua: giua.length });
+
+  const pb8543 = H.cauPhanBietNhom('8543', ['8543', '9031'], moTa138);
+  const pb9031 = H.cauPhanBietNhom('9031', ['9031', '8543'], moTa138);
+  const g8543 = soTayGates({ hs: '85437090', productText: moTa138, productName: 'Module cảm biến chuyển động', candidateHeadings: ['8543', '9031'] });
+  const g9031 = soTayGates({ hs: '90318090', productText: moTa138, productName: 'Module cảm biến chuyển động', candidateHeadings: ['9031', '8543'] });
+  const ht138 = phanTichHoiTruoc4So({ moTa: moTa138, ungVien: ['8543', '9031'] });
+  check('H4 OZV-2134 (thuận): cauPhanBietNhom, soTayGates và phanTichHoiTruoc4So hoạt động đúng 2 chiều cho ca 138',
+    pb8543.length === 1 && pb8543[0].nguon === 'nhom8543.nhom' && /90\.31/.test(pb8543[0].questionVi)
+    && pb9031.length === 1 && pb9031[0].nguon === 'nhom9031.nhom' && /85\.43/.test(pb9031[0].questionVi)
+    && (g8543.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '9031')
+    && (g9031.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '8543')
+    && ht138.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC
+    && new Set((ht138.nhanh || []).map((n) => n.dieuKien)).size === 2,
+    { pb8543, pb9031, ht138: ht138.dapAnDieuKien });
+
+  const pbNguoc8543 = H.cauPhanBietNhom('8543', ['8543', '9031'], 'Máy phát tín hiệu điện tạo sóng biên độ cố định');
+  const pbNguoc9031 = H.cauPhanBietNhom('9031', ['9031', '8543'], 'Máy đo tọa độ CMMS kiểm tra kích thước đa chiều');
+  const gNguoc8543 = soTayGates({ hs: '85432000', productText: 'Máy phát tín hiệu điện tạo sóng biên độ cố định', productName: 'Máy phát tín hiệu điện tạo sóng biên độ cố định' });
+  const gNguoc9031 = soTayGates({ hs: '90318090', productText: 'Máy đo tọa độ CMMS kiểm tra kích thước đa chiều', productName: 'Máy đo tọa độ CMMS kiểm tra kích thước đa chiều' });
+  check('H5 OZV-2134 (đối chứng): máy phát tín hiệu / máy đo tọa độ không hỏi oan và không bật oan 85.43↔90.31',
+    pbNguoc8543.length === 0
+    && pbNguoc9031.length === 0
+    && !(gNguoc8543.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '9031')
+    && !(gNguoc9031.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '8543'),
+    { pbNguoc8543, pbNguoc9031 });
+}
+
 console.log(`\ncổng đối chứng vật liệu 8546+8547 (OZV-548 vòng ba): ${passed} PASS, ${failed} FAIL`);
 process.exit(failed ? 1 : 0);
