@@ -83,6 +83,15 @@ kiem('ca ngược: cổng công khai lib/wco-op.js#view vẫn chặn 392490/4 (h
     && checkItem('loaiTru', muc4014, sourcesFor('4014'), '4014') === null
     && checkItem('loaiTru', muc3926, sourcesFor('3926'), '3926') === null,
     JSON.stringify({ muc4014: Boolean(muc4014), muc3926: Boolean(muc3926) }));
+  kiem('OZV-2099: dieuKien hai chiều phải khác nhau (distinctDk cho hoi-truoc-4so)',
+    Boolean(muc4014 && muc3926)
+    && muc4014.dieuKien !== muc3926.dieuKien
+    && !/;/.test(muc4014.dieuKien)
+    && !/;/.test(muc3926.dieuKien)
+    && /không thoả định nghĩa cao su tổng hợp/i.test(muc4014.dieuKien)
+    && /thoả định nghĩa cao su tổng hợp/i.test(muc3926.dieuKien)
+    && !/không thoả/.test(muc3926.dieuKien),
+    JSON.stringify({ dk4014: muc4014?.dieuKien, dk3926: muc3926?.dieuKien }));
 
   const c5_4014 = D.canhTu('4014', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '3926' && /gặm nướu/i.test(e.dieuKien || ''));
   const c5_3926 = D.canhTu('3926', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '4014' && /gặm nướu/i.test(e.dieuKien || ''));
