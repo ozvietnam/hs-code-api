@@ -1036,5 +1036,113 @@ assert('loaiTru mà câu nguồn chỉ nói "thường thuộc nhóm" bị loạ
   );
 }
 
+// ── OZV-2208: Cạnh loại trừ 2 chiều 70.07 <-> 39.19 cho ca 104 'Miếng dán cường lực màn hình điện thoại' ──
+{
+  const { loadSoTay, soTayGates, nhomLienQuanSoTay } = require('../lib/so-tay-gates.js');
+  const { cauPhanBietNhom } = require('../lib/hoi-theo-so-tay.js');
+  const { phanTichHoiTruoc4So, TRANG_THAI_4SO } = require('../lib/do-thi/hoi-truoc-4so.js');
+  const D = require('../lib/do-thi/index.js');
+  D.datLai();
+
+  const moTa104 = 'Miếng dán cường lực màn hình điện thoại';
+  const moTa104Ppf = 'Phim cường lực bảo vệ màn hình đồng hồ thông minh / nhựa PPF / Bảo vệ màn hình đồng hồ thông minh';
+  const st7007 = loadSoTay('7007');
+  const st3919 = loadSoTay('3919');
+  const lt7007 = (st7007?.loaiTru || []).find((x) => x.sangNhom === '3919' && x.canCuLoaiTru?.nguon === 'nhom3919.nhom' && /cường lực/i.test(x.dieuKien || ''));
+  const lt3919 = (st3919?.loaiTru || []).find((x) => x.sangNhom === '7007' && x.canCuLoaiTru?.nguon === 'nhom7007.nhom' && /cường lực/i.test(x.dieuKien || ''));
+  const v7007 = verifySoTay(st7007, '7007', sourcesFor('7007'));
+  const v3919 = verifySoTay(st3919, '3919', sourcesFor('3919'));
+  assert(
+    'OZV-2208: sổ tay 7007 và 3919 có loaiTru 2 chiều 7007 <-> 3919 kèm canCuLoaiTru nguyên văn đạt 100% checkItem & verifySoTay',
+    Boolean(lt7007 && lt7007.nguon === 'nhom7007.nhom' && checkItem('loaiTru', lt7007, sourcesFor('7007'), '7007') === null)
+      && Boolean(lt3919 && lt3919.nguon === 'nhom3919.nhom' && checkItem('loaiTru', lt3919, sourcesFor('3919'), '3919') === null)
+      && lt7007.dieuKien !== lt3919.dieuKien
+      && !/;/.test(lt7007.dieuKien)
+      && !/;/.test(lt3919.dieuKien)
+      && v7007.loai.length === 0 && v7007.dat === v7007.tong && st7007.kiemTra?.tong === v7007.tong && st7007.kiemTra?.dat === v7007.dat
+      && v3919.loai.length === 0 && v3919.dat === v3919.tong && st3919.kiemTra?.tong === v3919.tong && st3919.kiemTra?.dat === v3919.dat,
+    JSON.stringify({ lt7007: Boolean(lt7007), lt3919: Boolean(lt3919), loai7007: v7007.loai, loai3919: v3919.loai, tong7007: v7007.tong, tong3919: v3919.tong }),
+  );
+
+  const c5Tu7007 = D.canhTu('7007', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '3919');
+  const c5Tu3919 = D.canhTu('3919', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '7007');
+  const c6Tu7007 = D.canhTu('7007', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '3919');
+  const c6Tu3919 = D.canhTu('3919', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '7007');
+  const giua = D.canhGiuaNhomConSong(['7007', '3919']).filter((e) => e.loai === 'C5' || e.loai === 'C6');
+  const mrTu7007 = D.moRongUngVien(['7007'], moTa104);
+  const mrTu3919 = D.moRongUngVien(['3919'], moTa104);
+  const mrPpfTu7007 = D.moRongUngVien(['7007'], moTa104Ppf);
+  const mrPpfTu3919 = D.moRongUngVien(['3919'], moTa104Ppf, { toiDa: 4 });
+  assert(
+    'OZV-2208: đồ thị C5/C6, canhGiuaNhomConSong, nhomLienQuanSoTay và moRongUngVien nối 2 chiều 7007 <-> 3919 cho ca 104',
+    c5Tu7007.some((e) => e.nguon === 'nhom7007.nhom' && e.canCuLoaiTru?.nguon === 'nhom3919.nhom')
+      && c5Tu3919.some((e) => e.nguon === 'nhom3919.nhom' && e.canCuLoaiTru?.nguon === 'nhom7007.nhom')
+      && c6Tu7007.length >= 1
+      && c6Tu3919.length >= 1
+      && giua.length >= 2
+      && nhomLienQuanSoTay('7007').includes('3919')
+      && nhomLienQuanSoTay('3919').includes('7007')
+      && mrTu7007.some((x) => x.nhom === '3919')
+      && mrTu3919.some((x) => x.nhom === '7007')
+      && mrPpfTu7007.some((x) => x.nhom === '3919')
+      && mrPpfTu3919.some((x) => x.nhom === '7007'),
+    JSON.stringify({ c5Tu7007: c5Tu7007.length, c5Tu3919: c5Tu3919.length, mrTu7007, mrTu3919, mrPpfTu7007, mrPpfTu3919 }),
+  );
+
+  const pb7007 = cauPhanBietNhom('7007', ['7007', '3919'], moTa104);
+  const pb3919 = cauPhanBietNhom('3919', ['3919', '7007'], moTa104);
+  const pbPpf7007 = cauPhanBietNhom('7007', ['7007', '3919'], moTa104Ppf);
+  const pbPpf3919 = cauPhanBietNhom('3919', ['3919', '7007'], moTa104Ppf);
+  const g7007 = soTayGates({ hs: '70071990', productText: moTa104, productName: moTa104, pool: [{ h4: '3919', from: 'test' }] });
+  const g3919 = soTayGates({ hs: '39199099', productText: moTa104, productName: moTa104, pool: [{ h4: '7007', from: 'test' }] });
+  const gPpf7007 = soTayGates({ hs: '70071990', productText: moTa104Ppf, productName: 'Phim cường lực bảo vệ màn hình đồng hồ thông minh', pool: [{ h4: '3919', from: 'test' }] });
+  const gPpf3919 = soTayGates({ hs: '39199099', productText: moTa104Ppf, productName: 'Phim cường lực bảo vệ màn hình đồng hồ thông minh', pool: [{ h4: '7007', from: 'test' }] });
+  const ht2 = phanTichHoiTruoc4So({ moTa: moTa104, ungVien: ['7007', '3919'] });
+  const ht3 = phanTichHoiTruoc4So({ moTa: moTa104, ungVien: ['7007', '3919', '3926'] });
+  const htPpf2 = phanTichHoiTruoc4So({ moTa: moTa104Ppf, ungVien: ['7007', '3919'] });
+  assert(
+    'OZV-2208 (thuận): cauPhanBietNhom, soTayGates và phanTichHoiTruoc4So hoạt động đúng 2 chiều 70.07 <-> 39.19 (và cụm [7007, 3919, 3926]) cho ca 104',
+    pb7007.length === 1 && pb7007[0].canCu === 'so-tay' && pb7007[0].nguon === 'nhom7007.nhom' && /39\.19/.test(pb7007[0].questionVi)
+      && pb3919.length === 1 && pb3919[0].canCu === 'so-tay' && pb3919[0].nguon === 'nhom3919.nhom' && /70\.07/.test(pb3919[0].questionVi)
+      && pbPpf7007.length === 1 && /39\.19/.test(pbPpf7007[0].questionVi)
+      && pbPpf3919.length === 1 && /70\.07/.test(pbPpf3919[0].questionVi)
+      && (g7007.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '3919')
+      && (g3919.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '7007')
+      && (gPpf7007.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '3919')
+      && (gPpf3919.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '7007')
+      && ht2.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC
+      && new Set((ht2.nhanh || []).map((n) => n.dieuKien)).size === 2
+      && Boolean(ht2.dapAnDieuKien && ht2.dapAnDieuKien.includes('→ nhóm 7007 (') && ht2.dapAnDieuKien.includes('→ nhóm 3919 ('))
+      && Boolean(ht2.cauHoi)
+      && ht3.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC
+      && new Set((ht3.nhanh || []).map((n) => n.dieuKien)).size === 3
+      && Boolean(ht3.dapAnDieuKien && ht3.dapAnDieuKien.includes('→ nhóm 7007 (') && ht3.dapAnDieuKien.includes('→ nhóm 3919 (') && ht3.dapAnDieuKien.includes('→ nhóm 3926 ('))
+      && Boolean(ht3.cauHoi)
+      && htPpf2.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC
+      && new Set((htPpf2.nhanh || []).map((n) => n.dieuKien)).size === 2,
+    JSON.stringify({ pb7007, pb3919, g7007: g7007.challenges, g3919: g3919.challenges, ht2: ht2.dapAnDieuKien, ht3: ht3.dapAnDieuKien }),
+  );
+
+  const dcKinhChanGio = 'Kính chắn gió ô tô bằng kính tôi an toàn';
+  const dcKinhChongDan = 'Kính dán nhiều lớp chống đạn dùng cho xe chuyên dụng';
+  const dcBangKeoDien = 'Băng keo điện PVC tự dính dạng cuộn rộng 2 cm';
+  const pbDc7007 = cauPhanBietNhom('7007', ['7007', '3919'], dcKinhChanGio);
+  const pbDcChongDan7007 = cauPhanBietNhom('7007', ['7007', '3919'], dcKinhChongDan);
+  const pbDc3919 = cauPhanBietNhom('3919', ['3919', '7007'], dcBangKeoDien);
+  const gDc7007 = soTayGates({ hs: '70071110', productText: dcKinhChanGio, productName: dcKinhChanGio });
+  const gDc3919 = soTayGates({ hs: '39191010', productText: dcBangKeoDien, productName: dcBangKeoDien });
+  assert(
+    'OZV-2208 (đối chứng): kính chắn gió ô tô, kính chống đạn và băng keo điện PVC không hỏi oan / không kéo oan 70.07 <-> 39.19',
+    pbDc7007.length === 0
+      && pbDcChongDan7007.length === 0
+      && pbDc3919.length === 0
+      && !(gDc7007.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '3919')
+      && !(gDc3919.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '7007')
+      && !D.moRongUngVien(['7007'], dcKinhChanGio).some((x) => x.nhom === '3919')
+      && !D.moRongUngVien(['3919'], dcBangKeoDien).some((x) => x.nhom === '7007'),
+    JSON.stringify({ pbDc7007, pbDcChongDan7007, pbDc3919, gDc7007: gDc7007.challenges, gDc3919: gDc3919.challenges }),
+  );
+}
+
 console.log(`\n${passed}/${passed + failed} passed`);
 process.exit(failed ? 1 : 0);
