@@ -183,4 +183,71 @@ kiem('ca ngược: cổng công khai lib/wco-op.js#view vẫn chặn 392490/4 (h
     JSON.stringify({ pbNguoc8437, pbNguoc8479 }));
 }
 
+// 6. OZV-2125 — ca 189 tầng 4 số: Máy nghiền trục đơn → cạnh loại trừ 2 chiều 84.77 ↔ 84.79
+{
+  const H = require('../lib/hoi-theo-so-tay.js');
+  const { soTayGates, nhomLienQuanSoTay } = require('../lib/so-tay-gates.js');
+  const { phanTichHoiTruoc4So, TRANG_THAI_4SO } = require('../lib/do-thi/hoi-truoc-4so.js');
+  const st8477 = docJson('data/so-tay/8477.json');
+  const st8479 = docJson('data/so-tay/8479.json');
+  const muc8477 = (st8477.loaiTru || []).find((x) => x.sangNhom === '8479' && /máy nghiền trục đơn/i.test(x.dieuKien || ''));
+  const muc8479 = (st8479.loaiTru || []).find((x) => x.sangNhom === '8477' && /máy nghiền trục đơn/i.test(x.dieuKien || ''));
+  kiem('OZV-2125: sổ tay 8477↔8479 có loaiTru 2 chiều + canCuLoaiTru nguyên văn (checkItem đạt)',
+    Boolean(muc8477 && muc8479)
+    && muc8477.nguon === 'nhom8477.nhom'
+    && muc8477.canCuLoaiTru?.nguon === 'nhom8479.nhom'
+    && muc8479.nguon === 'nhom8479.nhom'
+    && muc8479.canCuLoaiTru?.nguon === 'nhom8477.nhom'
+    && checkItem('loaiTru', muc8477, sourcesFor('8477'), '8477') === null
+    && checkItem('loaiTru', muc8479, sourcesFor('8479'), '8479') === null,
+    JSON.stringify({ muc8477: Boolean(muc8477), muc8479: Boolean(muc8479) }));
+  kiem('OZV-2125: dieuKien hai chiều 8477↔8479 tách biệt cho hoi-truoc-4so',
+    Boolean(muc8477 && muc8479)
+    && muc8477.dieuKien !== muc8479.dieuKien
+    && !/;/.test(muc8477.dieuKien)
+    && !/;/.test(muc8479.dieuKien),
+    JSON.stringify({ dk8477: muc8477?.dieuKien, dk8479: muc8479?.dieuKien }));
+
+  const moTa189 = 'Máy nghiền trục đơn / None / Nghiền nhỏ rác thải/phế liệu công nghiệp';
+  const c5_8477 = D.canhTu('8477', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8479');
+  const c5_8479 = D.canhTu('8479', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8477');
+  const giua = D.canhGiuaNhomConSong(['8477', '8479']).filter((e) => e.loai === 'C5' || e.loai === 'C6');
+  const mr8477 = D.moRongUngVien(['8477'], moTa189);
+  const mr8479 = D.moRongUngVien(['8479'], moTa189);
+  kiem('OZV-2125: đồ thị C5/C6 + canhGiuaNhomConSong + moRongUngVien + nhomLienQuanSoTay nối 2 chiều 8477↔8479',
+    c5_8477.length >= 1
+    && c5_8479.length >= 1
+    && giua.length >= 2
+    && mr8477.some((x) => x.nhom === '8479')
+    && mr8479.some((x) => x.nhom === '8477')
+    && nhomLienQuanSoTay('8477').includes('8479')
+    && nhomLienQuanSoTay('8479').includes('8477'),
+    JSON.stringify({ c5_8477: c5_8477.length, c5_8479: c5_8479.length, giua: giua.length }));
+
+  const pb8477 = H.cauPhanBietNhom('8477', ['8477', '8479'], moTa189);
+  const pb8479 = H.cauPhanBietNhom('8479', ['8479', '8477'], moTa189);
+  const g8477 = soTayGates({ hs: '84778039', productText: moTa189, productName: 'Máy nghiền trục đơn', candidateHeadings: ['8477', '8479'] });
+  const g8479 = soTayGates({ hs: '84798210', productText: moTa189, productName: 'Máy nghiền trục đơn', candidateHeadings: ['8479', '8477'] });
+  const ht189 = phanTichHoiTruoc4So({ moTa: moTa189, ungVien: ['8477', '8479'] });
+  kiem('OZV-2125 (thuận): cauPhanBietNhom, soTayGates và phanTichHoiTruoc4So hoạt động đúng 2 chiều cho ca 189',
+    pb8477.length === 1 && pb8477[0].nguon === 'nhom8477.nhom' && /84\.79/.test(pb8477[0].questionVi)
+    && pb8479.length === 1 && pb8479[0].nguon === 'nhom8479.nhom' && /84\.77/.test(pb8479[0].questionVi)
+    && (g8477.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '8479')
+    && (g8479.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '8477')
+    && ht189.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC
+    && new Set((ht189.nhanh || []).map((n) => n.dieuKien)).size === 2,
+    JSON.stringify({ pb8477, pb8479, ht189: ht189.dapAnDieuKien }));
+
+  const pbNguoc8477 = H.cauPhanBietNhom('8477', ['8477', '8479'], 'Máy đúc phun sản phẩm poly(vinyl chloride) (PVC)');
+  const pbNguoc8479 = H.cauPhanBietNhom('8479', ['8479', '8477'], 'Máy làm mát không khí bằng bay hơi');
+  const gNguoc8477 = soTayGates({ hs: '84771031', productText: 'Máy đúc phun sản phẩm poly(vinyl chloride) (PVC)', productName: 'Máy đúc phun sản phẩm poly(vinyl chloride) (PVC)' });
+  const gNguoc8479 = soTayGates({ hs: '84796000', productText: 'Máy làm mát không khí bằng bay hơi', productName: 'Máy làm mát không khí bằng bay hơi' });
+  kiem('OZV-2125 (đối chứng): máy đúc phun PVC / máy làm mát không khí không hỏi oan và không bật oan 84.77↔84.79',
+    pbNguoc8477.length === 0
+    && pbNguoc8479.length === 0
+    && !(gNguoc8477.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '8479')
+    && !(gNguoc8479.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '8477'),
+    JSON.stringify({ pbNguoc8477, pbNguoc8479 }));
+}
+
 xong();
