@@ -776,5 +776,157 @@ check(
   );
 }
 
-console.log(`\nOZV-2109 / OZV-2118 / OZV-2121 / OZV-2129 / OZV-2144 cạnh loại trừ 2 chiều: ${passed} PASS, ${failed} FAIL`);
+// ─────────────────────────────────────────────────────────────────────────────
+// OZV-2153 — Kiểm tra cạnh loại trừ 2 chiều 59.03 <-> 60.05 cho ca 124 tầng 4 số:
+// "Vải gió dệt kim / None / None" (nhomNhan: ["5903","6001","6004","6005","6006"], heNhom: "6005").
+{
+  const moTaCa124 = 'Vải gió dệt kim / None / None';
+
+  // 1. Căn cứ pháp lý nguyên văn
+  const s5903 = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'so-tay', '5903.json'), 'utf8'));
+  const s6005 = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'so-tay', '6005.json'), 'utf8'));
+  const v5903 = S.verifySoTay(s5903, '5903');
+  const v6005 = S.verifySoTay(s6005, '6005');
+  check(
+    '[OZV-2153 verifySoTay] sổ tay 5903 và 6005 đạt 100% (0 mục bị loại)',
+    v5903.loai.length === 0 && v6005.loai.length === 0,
+    { loai5903: v5903.loai, loai6005: v6005.loai }
+  );
+
+  const st5903 = loadSoTay('5903');
+  const st6005 = loadSoTay('6005');
+  const lt5903 = (st5903?.loaiTru || []).find((x) => x.sangNhom === '6005');
+  const lt6005 = (st6005?.loaiTru || []).find((x) => x.sangNhom === '5903');
+  check(
+    '[OZV-2153 căn cứ] sổ tay 5903 và 6005 có mục loaiTru 2 chiều 5903 <-> 6005 kèm canCuLoaiTru nguyên văn đạt checkItem',
+    Boolean(
+      lt5903 &&
+        lt5903.nguon === 'nhom5903.nhom' &&
+        lt5903.canCuLoaiTru?.nguon === 'nhom6005.nhom' &&
+        S.checkItem('loaiTru', lt5903, S.sourcesFor('5903'), '5903') === null
+    ) &&
+      Boolean(
+        lt6005 &&
+          lt6005.nguon === 'ch60.chuong' &&
+          lt6005.canCuLoaiTru?.nguon === 'nhom5903.nhom' &&
+          S.checkItem('loaiTru', lt6005, S.sourcesFor('6005'), '6005') === null
+      ),
+    { lt5903, lt6005 }
+  );
+
+  // 2. Bảng cạnh đồ thị 2 chiều C5/C6 và mở rộng ứng viên
+  const c5Tu5903 = D.canhTu('5903', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '6005');
+  const c5Tu6005 = D.canhTu('6005', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '5903');
+  const c6Tu5903 = D.canhTu('5903', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '6005');
+  const c6Tu6005 = D.canhTu('6005', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '5903');
+  const giua5903_6005 = D.canhGiuaNhomConSong(['5903', '6005']).filter((e) => e.loai === 'C5' || e.loai === 'C6');
+  const mrTu5903 = D.moRongUngVien(['5903'], moTaCa124, { toiDa: 10 });
+  const mrTu6005 = D.moRongUngVien(['6005'], moTaCa124, { toiDa: 10 });
+  check(
+    '[OZV-2153 đồ thị 2 chiều] bảng cạnh có C5/C6 5903<->6005, canhGiuaNhomConSong >= 2 và moRongUngVien kéo 2 chiều cho ca 124',
+    c5Tu5903.some((e) => e.nguon === 'nhom5903.nhom' && e.canCuLoaiTru?.nguon === 'nhom6005.nhom') &&
+      c5Tu6005.some((e) => e.nguon === 'ch60.chuong' && e.canCuLoaiTru?.nguon === 'nhom5903.nhom') &&
+      c6Tu5903.length >= 1 &&
+      c6Tu6005.length >= 1 &&
+      giua5903_6005.length >= 2 &&
+      mrTu5903.some((x) => x.nhom === '6005') &&
+      mrTu6005.some((x) => x.nhom === '5903'),
+    { c5Tu5903: c5Tu5903.length, c5Tu6005: c5Tu6005.length, giua: giua5903_6005.length, mrTu5903, mrTu6005 }
+  );
+
+  const rel5903 = nhomLienQuanSoTay('5903');
+  const rel6005 = nhomLienQuanSoTay('6005');
+  check(
+    '[OZV-2153 nhomLienQuanSoTay] liên kết hai chiều 5903 <-> 6005',
+    rel5903.includes('6005') && rel6005.includes('5903'),
+    { rel5903, rel6005 }
+  );
+
+  // 3. Thuận 2 chiều: cauPhanBietNhom và soTayGates
+  const pb5903 = cauPhanBietNhom('5903', ['5903', '6005'], moTaCa124);
+  check(
+    '[OZV-2153 thuận 5903->6005] 5903 đứng đầu với [5903, 6005] sinh câu phân biệt từ nhom5903.nhom trỏ sang 60.05',
+    pb5903.length === 1 &&
+      pb5903[0].loai === 'PHAN_BIET_NHOM' &&
+      pb5903[0].canCu === 'so-tay' &&
+      pb5903[0].nguon === 'nhom5903.nhom' &&
+      /60\.05/.test(pb5903[0].questionVi) &&
+      /59\.03/.test(pb5903[0].questionVi),
+    { pb5903 }
+  );
+
+  const pb6005 = cauPhanBietNhom('6005', ['6005', '5903'], moTaCa124);
+  check(
+    '[OZV-2153 thuận 6005->5903] 6005 đứng đầu với [6005, 5903] sinh câu phân biệt từ ch60.chuong trỏ sang 59.03',
+    pb6005.length === 1 &&
+      pb6005[0].loai === 'PHAN_BIET_NHOM' &&
+      pb6005[0].canCu === 'so-tay' &&
+      pb6005[0].nguon === 'ch60.chuong' &&
+      /59\.03/.test(pb6005[0].questionVi) &&
+      /60\.05/.test(pb6005[0].questionVi),
+    { pb6005 }
+  );
+
+  const g5903To6005 = soTayGates({
+    hs: '59031090',
+    productText: 'Vải gió dệt kim đan dọc khổ rộng trên 30 cm, không chứa hoặc chứa dưới 5% sợi đàn hồi/cao su, lớp plastic không nhận biết bằng mắt thường',
+    productName: 'Vải gió dệt kim đan dọc khổ rộng trên 30 cm, không chứa hoặc chứa dưới 5% sợi đàn hồi/cao su, lớp plastic không nhận biết bằng mắt thường',
+    candidateHeadings: ['5903', '6005'],
+  });
+  const g6005To5903 = soTayGates({
+    hs: '60052100',
+    productText: 'Vải gió dệt kim hoặc móc đã ngâm tẩm, tráng, phủ hoặc ép với plastic thuộc nhóm 59.03',
+    productName: 'Vải gió dệt kim hoặc móc đã ngâm tẩm, tráng, phủ hoặc ép với plastic thuộc nhóm 59.03',
+    candidateHeadings: ['6005', '5903'],
+  });
+  check(
+    '[OZV-2153 thuận soTayGates] kích hoạt SO_TAY_LOAI_TRU đúng cả 2 chiều 5903 -> 6005 và 6005 -> 5903',
+    (g5903To6005.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('6005')) &&
+      (g6005To5903.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('5903')),
+    { g5903To6005: g5903To6005.challenges, g6005To5903: g6005To5903.challenges }
+  );
+
+  // 4. Đối chứng (ca âm): hàng không trùng từ khoá điều kiện không hỏi oan / không kéo oan
+  const dcBang5903 = cauPhanBietNhom('5903', ['5903', '6005'], 'Băng đã tẩm thuốc hoặc đóng gói để bán lẻ');
+  const dcBang6005 = cauPhanBietNhom('6005', ['6005', '5903'], 'Băng đã tẩm thuốc hoặc đóng gói để bán lẻ');
+  const dcNhan5903 = cauPhanBietNhom('5903', ['5903', '6005'], 'Nhãn phù hiệu dệt kim hoặc móc thuộc nhóm 58.07');
+  const dcNhan6005 = cauPhanBietNhom('6005', ['6005', '5903'], 'Nhãn phù hiệu dệt kim hoặc móc thuộc nhóm 58.07');
+  const dcGate5903 = soTayGates({
+    hs: '59031010',
+    productText: 'Băng đã tẩm thuốc hoặc đóng gói để bán lẻ',
+    productName: 'Băng đã tẩm thuốc hoặc đóng gói để bán lẻ',
+    candidateHeadings: ['5903', '6005'],
+  });
+  const dcGate6005 = soTayGates({
+    hs: '60052200',
+    productText: 'Nhãn phù hiệu dệt kim hoặc móc thuộc nhóm 58.07',
+    productName: 'Nhãn phù hiệu dệt kim hoặc móc thuộc nhóm 58.07',
+    candidateHeadings: ['6005', '5903'],
+  });
+  check(
+    '[OZV-2153 đối chứng] băng tẩm thuốc và nhãn phù hiệu không hỏi oan / không kéo oan 59.03 <-> 60.05',
+    dcBang5903.length === 0 &&
+      dcBang6005.length === 0 &&
+      dcNhan5903.length === 0 &&
+      dcNhan6005.length === 0 &&
+      !(dcGate5903.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('6005')) &&
+      !(dcGate6005.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('5903')) &&
+      !D.moRongUngVien(['5903'], 'Băng đã tẩm thuốc hoặc đóng gói để bán lẻ').some((x) => x.nhom === '6005') &&
+      !D.moRongUngVien(['6005'], 'Nhãn phù hiệu dệt kim hoặc móc thuộc nhóm 58.07').some((x) => x.nhom === '5903'),
+    { dcBang5903, dcBang6005, dcNhan5903, dcNhan6005 }
+  );
+
+  // 5. phanTichHoiTruoc4So tách 2 nhánh điều kiện riêng biệt cho ca 124
+  const ht124 = phanTichHoiTruoc4So({ moTa: moTaCa124, ungVien: ['5903', '6005'] });
+  const distinctDk124 = new Set((ht124.nhanh || []).map((n) => n.dieuKien)).size === 2;
+  check(
+    '[OZV-2153 hoi-truoc-4so] ca 124 với [5903, 6005] trả CHUA_CHOT_NHOM_HOI_TRUOC với 2 nhánh điều kiện phân biệt',
+    ht124.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC &&
+      distinctDk124 &&
+      ['5903', '6005'].every((h) => (ht124.dapAnDieuKien || '').includes(`→ nhóm ${h} (`)),
+    { trangThai: ht124.trangThai, distinctDk124, dapAnDieuKien: ht124.dapAnDieuKien }
+  );
+}
+
+console.log(`\nOZV-2109 / OZV-2118 / OZV-2121 / OZV-2129 / OZV-2144 / OZV-2153 cạnh loại trừ 2 chiều: ${passed} PASS, ${failed} FAIL`);
 process.exit(failed ? 1 : 0);
