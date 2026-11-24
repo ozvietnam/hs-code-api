@@ -33,12 +33,19 @@ function check(name, cond, detail = '') {
   const q148 = 'Nắp ốp đèn soi biển số cho xe máy / nhựa ABS mạ crom / ốp đèn soi biển số';
   const st8714 = loadSoTay('8714');
   const st3926 = loadSoTay('3926');
-  const v8714 = S.verifySoTay(st8714, '8714');
-  const v3926 = S.verifySoTay(st3926, '3926');
+  const v8714 = S.verifySoTay(st8714, '8714', S.sourcesFor('8714'));
+  const v3926 = S.verifySoTay(st3926, '3926', S.sourcesFor('3926'));
   check(
-    '[OZV-2192 verifySoTay] sổ tay 8714 và 3926 đạt 100% (0 mục không kiểm được nguồn)',
-    v8714.loai.length === 0 && v3926.loai.length === 0 && v8714.dat === v8714.tong && v3926.dat === v3926.tong,
-    { loai8714: v8714.loai, loai3926: v3926.loai },
+    '[OZV-2192 verifySoTay] sổ tay 8714 và 3926 đạt 100% (0 mục không kiểm được nguồn) và khớp kiemTra.tong/dat',
+    v8714.loai.length === 0
+      && v3926.loai.length === 0
+      && v8714.dat === v8714.tong
+      && v3926.dat === v3926.tong
+      && st8714.kiemTra?.tong === v8714.tong
+      && st8714.kiemTra?.dat === v8714.dat
+      && st3926.kiemTra?.tong === v3926.tong
+      && st3926.kiemTra?.dat === v3926.dat,
+    { loai8714: v8714.loai, loai3926: v3926.loai, kt8714: st8714.kiemTra, v8714: { tong: v8714.tong, dat: v8714.dat }, kt3926: st3926.kiemTra, v3926: { tong: v3926.tong, dat: v3926.dat } },
   );
 
   const lt8714 = (st8714?.loaiTru || []).find((x) => x.sangNhom === '3926' && x.canCuLoaiTru?.nguon === 'nhom3926.nhom');
