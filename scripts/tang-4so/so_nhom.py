@@ -11,7 +11,7 @@ import argparse, collections, gzip, json, os, re, sys, urllib.request, importlib
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 from dieu_khoan import DieuKhoan, bo_dau, SO_LA_MA as SO_LA_MA_P
-from do_thi_cap import DoThiCap, khoi_ban_do, _hh_tu as _tu_chinh, so_khop as _so_khop
+from do_thi_cap import DoThiCap, khoi_ban_do, khoi_wco_gan, _hh_tu as _tu_chinh, so_khop as _so_khop
 import agy
 
 ap = argparse.ArgumentParser()
@@ -31,6 +31,7 @@ ap.add_argument("--thu-muc", help="thư mục D cho --nao tep: D/hoi/<ca>-<luot>
 ap.add_argument("--gioi-han-kb", type=int, default=60)
 ap.add_argument("--phan-bien", action="store_true", help="lượt kiểm phản biện giả định ẩn trước khi CHOT (mới viết, chưa đo bằng LLM thật)")
 ap.add_argument("--ban-do", action="store_true", help="(mặc định tắt) thêm khối BẢN ĐỒ QUAN HỆ (data/do-thi/ban-do-4so) vào hồ sơ đồ thị; chỉ có tác dụng khi --ho-so do-thi")
+ap.add_argument("--wco-gan", action="store_true", help="(mặc định tắt) thêm ý kiến phân loại WCO có chữ của hàng, không đòi nhắc tên nhóm kia; chỉ khi --ho-so do-thi")
 ap.add_argument("--ho-so", choices=["cu", "do-thi"], default="cu", help="cu: khối điều khoản nguyên Chương/Phần (đường cũ); do-thi: chỉ khoản nối giữa các ứng viên + mở rộng ứng viên theo cạnh (scripts/tang-4so/do_thi_cap.py)")
 A = ap.parse_args()
 REPO = A.repo
@@ -243,6 +244,9 @@ def _dung_prompt(ca, mo, h, uv, tu, cap_ch, cap_cgn, da_loai=None):
         if A.ban_do:
             kb = khoi_ban_do(REPO, uv)
             if kb: ho_so += "\n\n" + kb
+        if A.wco_gan:
+            kw = khoi_wco_gan(REPO, uv, h)
+            if kw: ho_so += "\n\n" + kw; ids |= set(re.findall(r"\[(wco\.\d{6}/\d+)\]", kw))
     else:
         ho_so = "\n".join(ho_so_nhom(n, tu, cap_cgn) for n in uv)
     bc = {k: h.get(k) for k in ("tenDung", "banChat", "dangVatLy", "dungChoViecGi", "coChe", "oDau", "aiDung", "laBoPhanCua", "tenKhac", "canXacNhan") if h.get(k)}

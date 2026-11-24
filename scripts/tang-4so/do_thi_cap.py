@@ -6,7 +6,7 @@ data/luat/dieu-khoan-tang2.json, Chú giải 2 Phần XVI, sổ tay data/so-tay/
   uv2, nguon = dt.mo_rong(uv, ho_so_hang)           # ứng viên sau khi đi 1 bước theo cạnh, kèm cạnh dẫn tới từng nhóm mới
   ks = dt.dieu_khoan_tach(uv2, ho_so_hang)          # list khoản nối, mỗi khoản nguyên văn + id + cạnh dẫn tới
 """
-import collections, glob, gzip, json, os, re, subprocess, sys, tempfile
+import collections, glob, gzip, json, math, os, re, subprocess, sys, tempfile
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
@@ -432,6 +432,48 @@ class DoThiCap:
     def khoi_van_ban(self, ks):
         """Dựng khối chữ cho prompt: [id] (nguồn) nguyên văn  <- cạnh dẫn tới."""
         return "\n".join(f"[{k['id']}] ({k['ten']}/{k['kieu']}) {k['nguyenVan']}  <- nối: {', '.join(k['canh'][:4])}" for k in ks)
+
+
+# ---------------- ý kiến WCO gần hàng (data/wco-op/vi.json) ----------------
+_WCO_CACHE = {}
+
+
+def _nhung(chuoi):
+    """Vectơ nghĩa (bge-m3 qua Ollama, biến OLLAMA_URL). Máy nhà, không tốn token."""
+    import urllib.request
+    u = os.environ["OLLAMA_URL"].rstrip("/") + "/api/embed"
+    r = json.load(urllib.request.urlopen(urllib.request.Request(u, json.dumps({"model": "bge-m3", "input": chuoi}).encode(), {"content-type": "application/json"}), timeout=300))["embeddings"]
+    return [[x / (sum(y * y for y in v) ** 0.5 or 1.0) for x in v] for v in r]
+
+
+def wco_gan(repo, uv, h, toi_da=3, nguong=0.62, dai=900):
+    """Ý kiến phân loại WCO của các nhóm ỨNG VIÊN gần NGHĨA với hàng nhất, KHÔNG đòi ý kiến nhắc tên nhóm kia.
+    Bỏ ý kiến có dấu nghi ngờ nhận dạng chữ (nghiOcr) hoặc mã chưa chắc (hsTinCay=false). Vectơ kho lưu ở WCO_VEC (tự tính lần đầu)."""
+    if repo not in _WCO_CACHE:
+        kho = list(json.load(open(os.path.join(repo, "data/wco-op/vi.json"), encoding="utf-8")).values())
+        f = os.path.expanduser(os.environ.get("WCO_VEC", "~/.cache/wco-bge.json"))
+        if os.path.exists(f): vec = json.load(open(f))
+        else:
+            vec = {}
+            for i in range(0, len(kho), 32): vec.update(zip([o["id"] for o in kho[i:i + 32]], _nhung([o["vi"][:1500] for o in kho[i:i + 32]])))
+            os.makedirs(os.path.dirname(f), exist_ok=True); json.dump(vec, open(f, "w"))
+        _WCO_CACHE[repo] = (kho, vec)
+    kho, vec = _WCO_CACHE[repo]
+    q = _nhung([(h.get("tenDung") or "") + ". " + (h.get("moTa") or "") + ". " + str(h.get("banChat") or "")[:400]])[0]
+    nhom, ds = set(uv), []
+    for o in kho:
+        if o["hs"][:4] not in nhom or not o.get("hsTinCay", True) or o.get("nghiOcr"): continue
+        d = sum(x * y for x, y in zip(q, vec[o["id"]]))
+        if d >= nguong: ds.append((d, o["id"], o))
+    ds.sort(key=lambda t: (-t[0], t[1]))
+    return [{"id": "wco." + o["id"], "nhom": o["hs"][:4], "diem": round(d, 2), "vi": re.sub(r"\s+", " ", o["vi"])[:dai]} for d, _, o in ds[:toi_da]]
+
+
+def khoi_wco_gan(repo, uv, h):
+    ds = wco_gan(repo, uv, h)
+    if not ds: return ""
+    return ("Ý KIẾN PHÂN LOẠI WCO GẦN HÀNG (tham khảo cho mặt hàng tương tự; chỉ áp khi đặc điểm hàng giống; dẫn được bằng id):\n"
+            + "\n".join(f"[{o['id']}] (nhóm {o['nhom']}) {o['vi']}" for o in ds))
 
 
 # ---------------- bản đồ quan hệ 4 số (data/do-thi/ban-do-4so, khuôn bd4@1) ----------------
