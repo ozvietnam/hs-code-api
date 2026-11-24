@@ -128,7 +128,86 @@
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
-  "tieuChi6": [],
+  "tieuChi6": [
+    {
+      "hs6": "640411",
+      "thuTu": 1,
+      "dieuKien": "Giày, dép có đế ngoài bằng cao su hoặc plastic",
+      "fact": "chatLieu",
+      "op": "LA",
+      "value": [
+        "cao su",
+        "plastic"
+      ],
+      "donVi": null,
+      "nguon": "tieuDe.64041",
+      "trich": "64041 Giày, dép có đế ngoài bằng cao su hoặc plastic",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "640411",
+      "thuTu": 1,
+      "dieuKien": "Giày, dép thể thao, giày tennis, giày bóng rổ, giày thể dục, giày luyện tập",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": [
+        "Giày, dép thể thao",
+        "giày tennis",
+        "giày bóng rổ",
+        "giày thể dục",
+        "giày luyện tập"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "Giày, dép thể thao",
+        "giày tennis",
+        "giày bóng rổ",
+        "giày thể dục",
+        "giày luyện tập"
+      ],
+      "nguon": "tieuDe.640411",
+      "trich": "640411 Giày, dép thể thao, giày tennis, giày bóng rổ, giày thể dục, giày luyện tập và các loại tương tự",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "640419",
+      "thuTu": 2,
+      "dieuKien": "Giày, dép có đế ngoài bằng cao su hoặc plastic",
+      "fact": "chatLieu",
+      "op": "LA",
+      "value": [
+        "cao su",
+        "plastic"
+      ],
+      "donVi": null,
+      "nguon": "tieuDe.64041",
+      "trich": "64041 Giày, dép có đế ngoài bằng cao su hoặc plastic",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "640419",
+      "thuTu": 2,
+      "phanConLai": true,
+      "nguon": "tieuDe.640419",
+      "trich": "640419 Loại khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "640420",
+      "thuTu": 3,
+      "dieuKien": "Giày, dép có đế ngoài bằng da thuộc hoặc da tổng hợp",
+      "fact": "vatLieuKhac",
+      "op": "TRONG",
+      "value": [
+        "DA_THUOC",
+        "DA_THUOC_TONG_HOP"
+      ],
+      "donVi": null,
+      "nguon": "tax.64042000",
+      "trich": "64042000 - Giày, dép có đế ngoài bằng da thuộc hoặc da tổng hợp",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
   "dong8": [
     {
       "hs": "64041110",
@@ -427,6 +506,9 @@
     "tax.64041910",
     "tax.64041990",
     "tax.64042000",
+    "tieuDe.64041",
+    "tieuDe.640411",
+    "tieuDe.640419",
     "wco-op.640419.1",
     "wco-op.640419.2"
   ],
@@ -438,8 +520,8 @@
     "ms": 2
   },
   "kiemTra": {
-    "tong": 21,
-    "dat": 21,
+    "tong": 28,
+    "dat": 28,
     "loai": 0,
     "nguonBiCat": [],
     "nangCap": {
@@ -450,6 +532,12 @@
         "tieuChi6",
         "phamViLoaiKhac"
       ]
+    },
+    "tieuChi6": {
+      "khuon": "g6@1",
+      "soMuc": 5,
+      "soPhanNhom": 3,
+      "cong": "scripts/kiem-tieu-chi-6.mjs"
     }
   },
   "yKienWcoDayDu": false

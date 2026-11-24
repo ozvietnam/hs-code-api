@@ -64,7 +64,68 @@
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
-  "tieuChi6": [],
+  "tieuChi6": [
+    {
+      "hs6": "901910",
+      "thuTu": 1,
+      "dieuKien": "Máy trị liệu cơ học; máy xoa bóp; máy thử nghiệm trạng thái tâm lý",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": [
+        "Máy trị liệu cơ học",
+        "máy xoa bóp",
+        "máy thử nghiệm trạng thái tâm lý"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "trị liệu cơ học",
+        "xoa bóp",
+        "thử nghiệm trạng thái tâm lý"
+      ],
+      "tienLe": [
+        {
+          "so": "1776/TB-TCHQ",
+          "ma": "90191010"
+        },
+        {
+          "so": "3818/TB-TCHQ",
+          "ma": "90191010"
+        },
+        {
+          "so": "3819/TB-TCHQ",
+          "ma": "90191010"
+        }
+      ],
+      "nguon": "tieuDe.901910",
+      "trich": "901910 Máy trị liệu cơ học; máy xoa bóp; máy thử nghiệm trạng thái tâm lý",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "901920",
+      "thuTu": 2,
+      "dieuKien": "Máy trị liệu bằng ôzôn, bằng oxy, bằng xông, máy hô hấp nhân tạo hoặc máy hô hấp trị liệu khác",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": [
+        "Máy trị liệu bằng ôzôn",
+        "oxy",
+        "xông",
+        "máy hô hấp nhân tạo",
+        "máy hô hấp trị liệu"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "ôzôn",
+        "oxy",
+        "xông",
+        "hô hấp nhân tạo",
+        "hô hấp trị liệu"
+      ],
+      "nguon": "tieuDe.901920",
+      "trich": "901920 Máy trị liệu bằng ôzôn, bằng oxy, bằng xông, máy hô hấp nhân tạo hoặc máy hô hấp trị liệu khác",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
   "dong8": [
     {
       "hs": "90191010",
@@ -293,6 +354,8 @@
     "sen.90192010",
     "tax.90191010",
     "tax.90192020",
+    "tieuDe.901910",
+    "tieuDe.901920",
     "wco-op.901910.1",
     "wco-op.901910.2",
     "wco-op.901920.1",
@@ -307,8 +370,8 @@
     "ms": 5
   },
   "kiemTra": {
-    "tong": 16,
-    "dat": 16,
+    "tong": 19,
+    "dat": 19,
     "loai": 0,
     "nguonBiCat": [],
     "nangCap": {
@@ -319,6 +382,12 @@
         "tieuChi6",
         "phamViLoaiKhac"
       ]
+    },
+    "tieuChi6": {
+      "khuon": "g6@1",
+      "soMuc": 2,
+      "soPhanNhom": 2,
+      "cong": "scripts/kiem-tieu-chi-6.mjs"
     }
   },
   "yKienWcoDayDu": false

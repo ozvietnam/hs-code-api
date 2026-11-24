@@ -151,7 +151,73 @@
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
-  "tieuChi6": [],
+  "tieuChi6": [
+    {
+      "hs6": "611710",
+      "thuTu": 1,
+      "dieuKien": "Khăn choàng, khăn quàng cổ, khăn choàng rộng đội đầu, khăn choàng vai, mạng che mặt",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": [
+        "Khăn choàng",
+        "khăn quàng cổ",
+        "khăn choàng rộng đội đầu",
+        "khăn choàng vai",
+        "mạng che mặt"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "Khăn choàng",
+        "khăn quàng cổ",
+        "khăn choàng rộng đội đầu",
+        "khăn choàng vai",
+        "mạng che mặt"
+      ],
+      "nguon": "tieuDe.611710",
+      "trich": "611710 Khăn choàng, khăn quàng cổ, khăn choàng rộng đội đầu, khăn choàng vai, mạng che mặt và các loại tương tự",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "611780",
+      "thuTu": 2,
+      "dieuKien": "phụ kiện may mặc",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "phụ kiện may mặc",
+      "donVi": null,
+      "tuKhoa": [
+        "phụ kiện may mặc"
+      ],
+      "nguon": "tieuDe.611780",
+      "trich": "611780 Các phụ kiện may mặc khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "611780",
+      "thuTu": 2,
+      "phanConLai": true,
+      "nguon": "tieuDe.611780",
+      "trich": "611780 Các phụ kiện may mặc khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "611790",
+      "thuTu": 3,
+      "dieuKien": "Các chi tiết",
+      "fact": "laBoPhan",
+      "op": "CO",
+      "donVi": null,
+      "tienLe": [
+        {
+          "so": "2274/TB-TCHQ",
+          "ma": "61179000"
+        }
+      ],
+      "nguon": "tax.61179000",
+      "trich": "61179000 - Các chi tiết",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
   "dong8": [
     {
       "hs": "61171010",
@@ -402,6 +468,9 @@
     "tax.61171010",
     "tax.61178011",
     "tax.61178020",
+    "tax.61179000",
+    "tieuDe.611710",
+    "tieuDe.611780",
     "tieuDe.6117801",
     "wco.611710",
     "wco.611780",
@@ -415,8 +484,8 @@
     "ms": 7
   },
   "kiemTra": {
-    "tong": 29,
-    "dat": 29,
+    "tong": 33,
+    "dat": 33,
     "loai": 0,
     "nguonBiCat": [
       "phan61.phan (46130→25000)"
@@ -429,6 +498,12 @@
         "tieuChi6",
         "phamViLoaiKhac"
       ]
+    },
+    "tieuChi6": {
+      "khuon": "g6@1",
+      "soMuc": 4,
+      "soPhanNhom": 3,
+      "cong": "scripts/kiem-tieu-chi-6.mjs"
     }
   },
   "dieuKienNut": [

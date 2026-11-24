@@ -65,7 +65,130 @@
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
-  "tieuChi6": [],
+  "tieuChi6": [
+    {
+      "hs6": "940410",
+      "thuTu": 1,
+      "dieuKien": "Khung đệm",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Khung đệm",
+      "donVi": null,
+      "tuKhoa": [
+        "Khung đệm"
+      ],
+      "nguon": "tax.94041000",
+      "trich": "94041000 - Khung đệm",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "940421",
+      "thuTu": 2,
+      "dieuKien": "Đệm",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Đệm",
+      "donVi": null,
+      "tuKhoa": [
+        "Đệm"
+      ],
+      "nguon": "tieuDe.94042",
+      "trich": "94042 Đệm",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "940421",
+      "thuTu": 2,
+      "dieuKien": "Bằng cao su xốp hoặc bằng plastic xốp",
+      "fact": "vatLieuKhac",
+      "op": "TRONG",
+      "value": [
+        "CAO_SU_XOP",
+        "PLASTIC_XOP"
+      ],
+      "donVi": null,
+      "nguon": "tieuDe.940421",
+      "trich": "940421 Bằng cao su xốp hoặc bằng plastic xốp, đã hoặc chưa bọc",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "940429",
+      "thuTu": 3,
+      "dieuKien": "Đệm",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Đệm",
+      "donVi": null,
+      "tuKhoa": [
+        "Đệm"
+      ],
+      "nguon": "tieuDe.94042",
+      "trich": "94042 Đệm",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "940429",
+      "thuTu": 3,
+      "chuaSoHoa": "thiếu khoá chất liệu cho vật liệu khác",
+      "nguon": "tieuDe.940429",
+      "trich": "940429 Bằng các loại vật liệu khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "940429",
+      "thuTu": 3,
+      "phanConLai": true,
+      "nguon": "tieuDe.940429",
+      "trich": "940429 Bằng các loại vật liệu khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "940430",
+      "thuTu": 4,
+      "dieuKien": "Túi ngủ",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Túi ngủ",
+      "donVi": null,
+      "tuKhoa": [
+        "Túi ngủ"
+      ],
+      "nguon": "tax.94043000",
+      "trich": "94043000 - Túi ngủ",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "940440",
+      "thuTu": 5,
+      "dieuKien": "Chăn quilt, chăn phủ giường (bedspreads), chăn nhồi lông và chăn nhồi bông (comforters)",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": [
+        "Chăn quilt",
+        "chăn phủ giường (bedspreads)",
+        "chăn nhồi lông",
+        "chăn nhồi bông (comforters)"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "Chăn quilt",
+        "chăn phủ giường",
+        "chăn nhồi lông",
+        "chăn nhồi bông"
+      ],
+      "nguon": "tax.94044000",
+      "trich": "94044000 - Chăn quilt, chăn phủ giường (bedspreads), chăn nhồi lông và chăn nhồi bông (comforters)",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "940490",
+      "thuTu": 6,
+      "phanConLai": true,
+      "nguon": "tax.94049000",
+      "trich": "94049000 - Loại khác",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
   "dong8": [
     {
       "hs": "94041000",
@@ -365,6 +488,10 @@
     "tax.94042910",
     "tax.94043000",
     "tax.94044000",
+    "tax.94049000",
+    "tieuDe.94042",
+    "tieuDe.940421",
+    "tieuDe.940429",
     "wco.940429",
     "wco.940490"
   ],
@@ -376,8 +503,8 @@
     "ms": 8
   },
   "kiemTra": {
-    "tong": 18,
-    "dat": 18,
+    "tong": 27,
+    "dat": 27,
     "loai": 0,
     "nguonBiCat": [],
     "nangCap": {
@@ -388,6 +515,12 @@
         "tieuChi6",
         "phamViLoaiKhac"
       ]
+    },
+    "tieuChi6": {
+      "khuon": "g6@1",
+      "soMuc": 9,
+      "soPhanNhom": 6,
+      "cong": "scripts/kiem-tieu-chi-6.mjs"
     }
   }
 }

@@ -64,7 +64,58 @@
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
-  "tieuChi6": [],
+  "tieuChi6": [
+    {
+      "hs6": "392210",
+      "thuTu": 1,
+      "dieuKien": "Bồn tắm, bồn tắm vòi sen, bồn rửa hoặc chậu rửa",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": [
+        "Bồn tắm",
+        "bồn tắm vòi sen",
+        "bồn rửa",
+        "chậu rửa"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "Bồn tắm",
+        "bồn tắm vòi sen",
+        "bồn rửa",
+        "chậu rửa"
+      ],
+      "nguon": "tieuDe.392210",
+      "trich": "392210 Bồn tắm, bồn tắm vòi sen, bồn rửa và chậu rửa",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "392220",
+      "thuTu": 2,
+      "dieuKien": "Bệ hoặc nắp xí bệt",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": [
+        "Bệ",
+        "nắp xí bệt"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "Bệ",
+        "nắp xí bệt"
+      ],
+      "nguon": "tax.39222000",
+      "trich": "39222000 - Bệ và nắp xí bệt",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "392290",
+      "thuTu": 3,
+      "phanConLai": true,
+      "nguon": "tieuDe.392290",
+      "trich": "392290 Loại khác",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
   "dong8": [
     {
       "hs": "39221011",
@@ -397,7 +448,9 @@
     "tax.39221090",
     "tax.39222000",
     "tax.39229019",
-    "tax.39229090"
+    "tax.39229090",
+    "tieuDe.392210",
+    "tieuDe.392290"
   ],
   "phienBan": "HS2022+SEN2022",
   "taoBoi": {
@@ -407,8 +460,8 @@
     "ms": 4
   },
   "kiemTra": {
-    "tong": 16,
-    "dat": 16,
+    "tong": 21,
+    "dat": 21,
     "loai": 0,
     "nguonBiCat": [
       "ch39.chuong (44853→40000)"
@@ -421,6 +474,12 @@
         "tieuChi6",
         "phamViLoaiKhac"
       ]
+    },
+    "tieuChi6": {
+      "khuon": "g6@1",
+      "soMuc": 3,
+      "soPhanNhom": 3,
+      "cong": "scripts/kiem-tieu-chi-6.mjs"
     }
   },
   "dieuKienNut": [

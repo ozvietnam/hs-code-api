@@ -93,7 +93,267 @@
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
-  "tieuChi6": [],
+  "tieuChi6": [
+    {
+      "hs6": "611510",
+      "thuTu": 1,
+      "dieuKien": "Nịt chân",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Nịt chân",
+      "donVi": null,
+      "tuKhoa": [
+        "Nịt chân"
+      ],
+      "nguon": "tieuDe.611510",
+      "trich": "611510 Nịt chân (ví dụ, dùng cho người giãn tĩnh mạch)",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "611521",
+      "thuTu": 2,
+      "dieuKien": "Quần tất và quần nịt",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": [
+        "Quần tất",
+        "quần nịt"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "Quần tất",
+        "quần nịt"
+      ],
+      "nguon": "tieuDe.61152",
+      "trich": "61152 Quần tất và quần nịt khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "611521",
+      "thuTu": 2,
+      "dieuKien": "Từ sợi tổng hợp",
+      "fact": "loaiSoiDet",
+      "op": "TRONG",
+      "value": [
+        "SOI_TONG_HOP"
+      ],
+      "donVi": null,
+      "nguon": "tax.61152100",
+      "trich": "61152100 - - Từ sợi tổng hợp, có độ mảnh sợi đơn dưới 67 decitex",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "611521",
+      "thuTu": 2,
+      "dieuKien": "có độ mảnh sợi đơn dưới 67 decitex",
+      "fact": "doManh",
+      "op": "<",
+      "value": 67,
+      "donVi": "decitex",
+      "nguon": "tax.61152100",
+      "trich": "61152100 - - Từ sợi tổng hợp, có độ mảnh sợi đơn dưới 67 decitex",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "611522",
+      "thuTu": 3,
+      "dieuKien": "Quần tất và quần nịt",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": [
+        "Quần tất",
+        "quần nịt"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "Quần tất",
+        "quần nịt"
+      ],
+      "nguon": "tieuDe.61152",
+      "trich": "61152 Quần tất và quần nịt khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "611522",
+      "thuTu": 3,
+      "dieuKien": "Từ sợi tổng hợp",
+      "fact": "loaiSoiDet",
+      "op": "TRONG",
+      "value": [
+        "SOI_TONG_HOP"
+      ],
+      "donVi": null,
+      "nguon": "tax.61152200",
+      "trich": "61152200 - - Từ sợi tổng hợp, có độ mảnh sợi đơn từ 67 decitex trở lên",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "611522",
+      "thuTu": 3,
+      "dieuKien": "có độ mảnh sợi đơn từ 67 decitex trở lên",
+      "fact": "doManh",
+      "op": ">=",
+      "value": 67,
+      "donVi": "decitex",
+      "nguon": "tax.61152200",
+      "trich": "61152200 - - Từ sợi tổng hợp, có độ mảnh sợi đơn từ 67 decitex trở lên",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "611529",
+      "thuTu": 4,
+      "dieuKien": "Quần tất và quần nịt",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": [
+        "Quần tất",
+        "quần nịt"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "Quần tất",
+        "quần nịt"
+      ],
+      "nguon": "tieuDe.61152",
+      "trich": "61152 Quần tất và quần nịt khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "611529",
+      "thuTu": 4,
+      "dieuKien": "Từ các vật liệu dệt",
+      "fact": "vatLieuKhac",
+      "op": "TRONG",
+      "value": [
+        "VAT_LIEU_DET"
+      ],
+      "donVi": null,
+      "nguon": "tieuDe.611529",
+      "trich": "611529 Từ các vật liệu dệt khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "611529",
+      "thuTu": 4,
+      "phanConLai": true,
+      "nguon": "tieuDe.611529",
+      "trich": "611529 Từ các vật liệu dệt khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "611530",
+      "thuTu": 5,
+      "dieuKien": "Tất dài đến đầu gối hoặc trên đầu gối",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Tất dài đến đầu gối hoặc trên đầu gối",
+      "donVi": null,
+      "tuKhoa": [
+        "Tất dài đến đầu gối",
+        "trên đầu gối"
+      ],
+      "nguon": "tieuDe.611530",
+      "trich": "611530 Tất dài đến đầu gối hoặc trên đầu gối dùng cho phụ nữ, có độ mảnh mỗi sợi đơn dưới 67 decitex",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "611530",
+      "thuTu": 5,
+      "dieuKien": "dùng cho phụ nữ",
+      "fact": "dungCho",
+      "op": "CONG_DUNG",
+      "value": "phụ nữ",
+      "donVi": null,
+      "tuKhoa": [
+        "phụ nữ"
+      ],
+      "nguon": "tieuDe.611530",
+      "trich": "611530 Tất dài đến đầu gối hoặc trên đầu gối dùng cho phụ nữ, có độ mảnh mỗi sợi đơn dưới 67 decitex",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "611530",
+      "thuTu": 5,
+      "dieuKien": "có độ mảnh mỗi sợi đơn dưới 67 decitex",
+      "fact": "doManh",
+      "op": "<",
+      "value": 67,
+      "donVi": "decitex",
+      "nguon": "tieuDe.611530",
+      "trich": "611530 Tất dài đến đầu gối hoặc trên đầu gối dùng cho phụ nữ, có độ mảnh mỗi sợi đơn dưới 67 decitex",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "611594",
+      "thuTu": 6,
+      "dieuKien": "Từ lông cừu hoặc lông động vật loại mịn",
+      "fact": "loaiSoiDet",
+      "op": "TRONG",
+      "value": [
+        "LEN_LONG_DONG_VAT_MIN"
+      ],
+      "donVi": null,
+      "nguon": "tax.61159400",
+      "trich": "61159400 - - Từ lông cừu hoặc lông động vật loại mịn",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "611595",
+      "thuTu": 7,
+      "dieuKien": "Từ bông",
+      "fact": "loaiSoiDet",
+      "op": "TRONG",
+      "value": [
+        "BONG"
+      ],
+      "donVi": null,
+      "nguon": "tax.61159500",
+      "trich": "61159500 - - Từ bông",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "611596",
+      "thuTu": 8,
+      "dieuKien": "Từ sợi tổng hợp",
+      "fact": "loaiSoiDet",
+      "op": "TRONG",
+      "value": [
+        "SOI_TONG_HOP"
+      ],
+      "donVi": null,
+      "tienLe": [
+        {
+          "so": "2748/TB-TCHQ",
+          "ma": "61159600"
+        }
+      ],
+      "nguon": "tax.61159600",
+      "trich": "61159600 - - Từ sợi tổng hợp",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "611599",
+      "thuTu": 9,
+      "dieuKien": "Từ các vật liệu dệt",
+      "fact": "vatLieuKhac",
+      "op": "TRONG",
+      "value": [
+        "VAT_LIEU_DET"
+      ],
+      "donVi": null,
+      "nguon": "tax.61159900",
+      "trich": "61159900 - - Từ các vật liệu dệt khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "611599",
+      "thuTu": 9,
+      "phanConLai": true,
+      "nguon": "tax.61159900",
+      "trich": "61159900 - - Từ các vật liệu dệt khác",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
   "dong8": [
     {
       "hs": "61151010",
@@ -456,6 +716,10 @@
     "tax.61159500",
     "tax.61159600",
     "tax.61159900",
+    "tieuDe.611510",
+    "tieuDe.61152",
+    "tieuDe.611529",
+    "tieuDe.611530",
     "wco.611521"
   ],
   "phienBan": "HS2022",
@@ -466,8 +730,8 @@
     "ms": 6
   },
   "kiemTra": {
-    "tong": 24,
-    "dat": 24,
+    "tong": 42,
+    "dat": 42,
     "loai": 0,
     "nguonBiCat": [
       "phan61.phan (46130→25000)"
@@ -480,6 +744,12 @@
         "tieuChi6",
         "phamViLoaiKhac"
       ]
+    },
+    "tieuChi6": {
+      "khuon": "g6@1",
+      "soMuc": 18,
+      "soPhanNhom": 9,
+      "cong": "scripts/kiem-tieu-chi-6.mjs"
     }
   }
 }
