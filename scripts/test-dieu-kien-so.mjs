@@ -557,6 +557,58 @@ const ST8544 = {
   check('15c ngược: chỉ plastic thiếu ĐK trong → 84812090 vẫn THIEU duongKinhTrong',
     r90p.ketQua === 'THIEU' && (r90p.thieu || []).some((t) => t.fact === 'duongKinhTrong'),
     j({ ketQua: r90p.ketQua, thieu: r90p.thieu }));
+
+  // 16. OZV-2070: gỡ 4 ca chotLoaiKhacSai toàn biểu (84812020, 59039010, 59039090, 73063029) mà giữ xanh AR3000-03
+  const { chotDong8 } = require('../lib/so-tay-gates.js');
+  // 16a. 84812020 (DONG_CO_TEN): câu nguyên văn liệt kê 2 phương án bằng "hoặc" → CHOT 84812020; ngược: AR3000-03 nhựa+nhôm → không chốt 84812020
+  const TXT_84812020 = 'Van dùng trong truyền động dầu thủy lực hoặc khí nén: Bằng đồng hoặc hợp kim đồng, có đường kính trong không quá 2,5 cm, hoặc bằng plastic, có đường kính trong từ 1 cm đến 2,5 cm';
+  const kq84812020 = chotDong8({ hs: '848120', productText: TXT_84812020 });
+  const kqArChot = chotDong8({ hs: '848120', productText: DESC_AR });
+  check('16a 84812020 thuận: câu nguyên văn 2 phương án "hoặc" (đồng ≤ 2,5 cm hoặc plastic 1–2,5 cm) → CHOT 84812020',
+    kq84812020.ketQua === 'CHOT' && kq84812020.hs === '84812020',
+    j(kq84812020));
+  check('16a-ngược 84812020: AR3000-03 nhựa+nhôm không khớp "bằng plastic" của 84812020 → không chốt 84812020',
+    kqArChot.hs !== '84812020',
+    j(kqArChot));
+
+  // 16b. 59039010 (DONG_CO_TEN) & 59039090 (THIEU_DU_KIEN) + quan hệ cha–con nylon/polyamit ⊂ plastic
+  const TXT_59039010 = 'Vải dệt đã được ngâm tẩm, tráng, phủ hoặc ép với plastic, trừ các loại thuộc nhóm 59.02. - Loại khác: Vải canvas đã được ngâm tẩm, tráng, phủ hoặc ép với nylon hoặc các polyamit khác';
+  const TXT_59039090_THIEU = 'Vải dệt đã được ngâm tẩm, tráng, phủ hoặc ép với plastic, trừ các loại thuộc nhóm 59.02. - Loại khác';
+  const kq59039010 = chotDong8({ hs: '590390', productText: TXT_59039010 });
+  const kq59039090Thieu = chotDong8({ hs: '590390', productText: TXT_59039090_THIEU });
+  const kq59039090Lk = chotDong8({ hs: '590390', productText: `${TXT_59039090_THIEU}, không phải Vải canvas, không phải bằng plastic` });
+  check('16b 59039010 thuận: Vải canvas ngâm tẩm/tráng/phủ nylon/polyamit dưới tiêu đề plastic → CHOT 59039010',
+    kq59039010.ketQua === 'CHOT' && kq59039010.hs === '59039010'
+    && one({ fact: 'chatLieu', op: 'LA', value: 'plastic' }, fact('chatLieu', [{ viTri: 'CHINH', chatLieu: 'plastic' }, { viTri: 'CHINH', chatLieu: 'nylon' }])).trangThai === 'THOA',
+    j(kq59039010));
+  check('16b-ngược 59039090: thiếu dữ kiện không tự chốt LOAI_KHAC 59039090; loại trừ rõ mới ra LOAI_KHAC 59039090',
+    kq59039090Thieu.ketQua !== 'LOAI_KHAC' && kq59039090Thieu.ketQua !== 'CHOT'
+    && kq59039090Lk.ketQua === 'LOAI_KHAC' && kq59039090Lk.hs === '59039090',
+    j([kq59039090Thieu, kq59039090Lk]));
+
+  // 16c. 73063029 (THIEU_DU_KIEN): tiêu đề nhánh 7306302 "Ống thép được mạ đồng, tráng nhựa flo ... hoặc kẽm cromat"
+  const TXT_7306302_THIEU = 'Các loại ống, ống dẫn và thanh hình rỗng khác, bằng sắt hoặc thép (ví dụ, nối hở hoặc hàn, tán đinh hoặc ghép bằng cách tương tự) (+). - Loại khác, được hàn, có mặt cắt ngang hình tròn, bằng sắt hoặc thép không hợp kim: Ống thép được mạ đồng, tráng nhựa flo (fluororesin) hoặc kẽm cromat có đường kính ngoài không quá 15 mm';
+  const TXT_73063021 = `${TXT_7306302_THIEU}: Với đường kính ngoài dưới 12,5 mm`;
+  const TXT_73063029_LK = 'Các loại ống, ống dẫn và thanh hình rỗng khác, bằng sắt hoặc thép (ví dụ, nối hở hoặc hàn, tán đinh hoặc ghép bằng cách tương tự) (+). - Loại khác, được hàn, có mặt cắt ngang hình tròn, bằng sắt hoặc thép không hợp kim, mạ đồng, đường kính 13,75mm';
+  const kq73063029Thieu = chotDong8({ hs: '730630', productText: TXT_7306302_THIEU });
+  const kq73063021 = chotDong8({ hs: '730630', productText: TXT_73063021 });
+  const kq73063029Lk = chotDong8({ hs: '730630', productText: TXT_73063029_LK });
+  const rCl7306302 = DK.danhGiaTuChu({ fact: 'chatLieu', op: 'LA', value: 'sắt thép' }, TXT_7306302_THIEU, '7306302');
+  check('16c 73063029 thuận: thiếu dữ kiện ở nhánh 7306302 không tự chốt LOAI_KHAC 73063029; kẽm cromat là lớp mạ không làm TRAI sắt thép',
+    kq73063029Thieu.ketQua === 'THIEU_SO_LIEU'
+    && rCl7306302.trangThai === 'THOA',
+    j([kq73063029Thieu, rCl7306302]));
+  check('16c-ngược 73063021/73063029: có đường kính ngoài < 12,5 mm → CHOT 73063021; đường kính 13,75 mm → LOAI_KHAC 73063029',
+    kq73063021.ketQua === 'CHOT' && kq73063021.hs === '73063021'
+    && kq73063029Lk.ketQua === 'LOAI_KHAC' && kq73063029Lk.hs === '73063029',
+    j([kq73063021, kq73063029Lk]));
+
+  // 16d. ReDoS ~40.000 từ lặp < 2 giây (quy tắc 6b)
+  const t0 = Date.now();
+  const chuoiDai2070 = `${Array.from({ length: 10000 }, () => 'tráng nhựa flo hoặc kẽm').join(' ')}: ${TXT_84812020}`;
+  const kqReDoS2070 = chotDong8({ hs: '848120', productText: chuoiDai2070 });
+  const dt = Date.now() - t0;
+  check(`16d ReDoS ~40.000 từ lặp chạy dưới 2000ms (thực tế ${dt}ms)`, dt < 2000 && kqReDoS2070.hs === '84812020', `${dt}ms`);
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);
