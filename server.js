@@ -145,6 +145,8 @@ function warmUpHandlers() {
     const { buildTaxLookup } = require('./lib/tax-lookup');
     buildTaxLookup('72052100');
   } catch { /* bỏ qua nếu môi trường test cô lập thiếu bảng phụ */ }
+  // HS_TIM_TRUOC=goi: dựng sẵn cạnh ngang (vài giây) trước khi nhận khách; công tắc khác thì không nạp gì.
+  try { if (require('./lib/tim-truoc').batGoi()) require('./lib/do-thi/khoi-phan-biet').lamNong(); } catch (e) { console.warn('[goi-phan-biet] không dựng sẵn được:', e.message); }
   return loaded;
 }
 
