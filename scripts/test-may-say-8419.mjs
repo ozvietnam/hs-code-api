@@ -26,6 +26,7 @@ const rootDir = join(dirname(fileURLToPath(import.meta.url)), '..');
 const require = createRequire(join(rootDir, 'package.json'));
 const { expandSearchQuery } = require('./lib/search-query-expand');
 const { searchCandidates } = require('./lib/search-utils');
+const { cauPhanBietNhom } = require('./lib/hoi-theo-so-tay');
 
 let passed = 0;
 let failed = 0;
@@ -139,6 +140,71 @@ for (const q of ['máy sấy sinh tố 350w 220v', 'máy sấy hoa quả']) {
     '[OZV-2079 ReDoS] 40.000 token lặp có dấu câu chạy < 2000ms',
     elapsed < 2000 && bigRes.keywordTokens.includes('nén') && bigRes.keywordTokens.includes('ar3000-03'),
     `elapsed = ${elapsed}ms`
+  );
+}
+
+// OZV-2085 — Cạnh loại trừ 2 chiều 76.06 / 76.16 <-> 84.19 / 87.08 cho câu thực địa
+// "bộ tản nhiệt, model 65k-50l, chất liệu hợp kim nhôm"
+{
+  const qTanNhiet = 'bộ tản nhiệt, model 65k-50l, chất liệu hợp kim nhôm';
+
+  const pb7606 = cauPhanBietNhom('7606', ['7606', '8419', '8708'], qTanNhiet);
+  check(
+    '[OZV-2085 thuận] 7606 đứng đầu với [7606, 8419, 8708] sinh đủ 2 câu phân biệt sang 87.08 và 84.19 từ phan76.phan',
+    pb7606.length === 2 &&
+      pb7606.every((q) => q.canCu === 'so-tay' && q.nguon === 'phan76.phan') &&
+      pb7606.some((q) => /87\.08/.test(q.questionVi) && /76\.06/.test(q.questionVi)) &&
+      pb7606.some((q) => /84\.19/.test(q.questionVi) && /76\.06/.test(q.questionVi)),
+    `pb7606 = ${JSON.stringify(pb7606)}`
+  );
+
+  const pb8419_7606 = cauPhanBietNhom('8419', ['8419', '7606', '8708'], qTanNhiet);
+  check(
+    '[OZV-2085 thuận] 8419 đứng đầu với [8419, 7606, 8708] sinh đủ 2 câu phân biệt (84.19<->87.08 và 76.06<->84.19)',
+    pb8419_7606.length === 2 &&
+      pb8419_7606.some((q) => q.nguon === 'ch84.chuong' && /87\.08/.test(q.questionVi)) &&
+      pb8419_7606.some((q) => q.nguon === 'phan76.phan' && /76\.06/.test(q.questionVi) && /84\.19/.test(q.questionVi)),
+    `pb8419_7606 = ${JSON.stringify(pb8419_7606)}`
+  );
+
+  const pb8708_7606 = cauPhanBietNhom('8708', ['8708', '7606', '8419'], qTanNhiet);
+  check(
+    '[OZV-2085 thuận] 8708 đứng đầu với [8708, 7606, 8419] sinh đủ 2 câu phân biệt (87.08<->84.19 và 76.06<->87.08)',
+    pb8708_7606.length === 2 &&
+      pb8708_7606.some((q) => q.nguon === 'phan87.phan' && /84\.19/.test(q.questionVi)) &&
+      pb8708_7606.some((q) => q.nguon === 'phan76.phan' && /76\.06/.test(q.questionVi) && /87\.08/.test(q.questionVi)),
+    `pb8708_7606 = ${JSON.stringify(pb8708_7606)}`
+  );
+
+  const pb7616 = cauPhanBietNhom('7616', ['7616', '8419', '8708'], qTanNhiet);
+  check(
+    '[OZV-2085 thuận] 7616 đứng đầu với [7616, 8419, 8708] sinh đủ 2 câu phân biệt sang 87.08 và 84.19 từ phan76.phan',
+    pb7616.length === 2 &&
+      pb7616.every((q) => q.canCu === 'so-tay' && q.nguon === 'phan76.phan') &&
+      pb7616.some((q) => /87\.08/.test(q.questionVi) && /76\.16/.test(q.questionVi)) &&
+      pb7616.some((q) => /84\.19/.test(q.questionVi) && /76\.16/.test(q.questionVi)),
+    `pb7616 = ${JSON.stringify(pb7616)}`
+  );
+
+  const pb8419_7616 = cauPhanBietNhom('8419', ['8419', '7616', '8708'], qTanNhiet);
+  const pb8708_7616 = cauPhanBietNhom('8708', ['8708', '7616', '8419'], qTanNhiet);
+  check(
+    '[OZV-2085 thuận] 8419 và 8708 đứng đầu với 7616 đều sinh đủ câu phân biệt 2 chiều với 76.16',
+    pb8419_7616.length === 2 &&
+      pb8419_7616.some((q) => q.nguon === 'phan76.phan' && /76\.16/.test(q.questionVi) && /84\.19/.test(q.questionVi)) &&
+      pb8708_7616.length === 2 &&
+      pb8708_7616.some((q) => q.nguon === 'phan76.phan' && /76\.16/.test(q.questionVi) && /87\.08/.test(q.questionVi)),
+    `pb8419_7616 = ${JSON.stringify(pb8419_7616)}, pb8708_7616 = ${JSON.stringify(pb8708_7616)}`
+  );
+
+  // Chiều đối chứng / ngược: mô tả tấm hợp kim nhôm hoặc máy sấy hoa quả không chạm "bộ tản nhiệt"
+  const pbTamNhom7606 = cauPhanBietNhom('7606', ['7606', '8419', '8708'], 'tấm hợp kim nhôm 5082 dày 3mm');
+  const pbTamNhom7616 = cauPhanBietNhom('7616', ['7616', '8419', '8708'], 'tấm hợp kim nhôm 5082 dày 3mm');
+  const pbMaySay = cauPhanBietNhom('8419', ['8419', '7606', '7616', '8708'], 'máy sấy hoa quả 350w');
+  check(
+    '[OZV-2085 đối chứng] câu "tấm hợp kim nhôm 5082 dày 3mm" và "máy sấy hoa quả 350w" không sinh câu hỏi tản nhiệt oan',
+    pbTamNhom7606.length === 0 && pbTamNhom7616.length === 0 && pbMaySay.length === 0,
+    `7606=${pbTamNhom7606.length}, 7616=${pbTamNhom7616.length}, 8419=${pbMaySay.length}`
   );
 }
 
