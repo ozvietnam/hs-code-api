@@ -17,8 +17,8 @@ import path from 'node:path';
   st8481.dong8 = (st8481.dong8 || []).map((d) => (d.hs in old848110 ? { ...d, dieuKienSo: old848110[d.hs] } : d));
   st8481.dieuKienNut = (st8481.dieuKienNut || []).filter((n) => !String(n.id || '').startsWith('848110'));
   fs.writeFileSync(path.join(TEST_DATA_DIR, 'so-tay/8481.json'), JSON.stringify(st8481));
-  // OZV-2178: nạp sớm 8449/8479 trước khi nhomLienQuanSoTay dựng chỉ mục _canhSoTay lần đầu.
-  for (const nh of ['8449', '8479']) {
+  // OZV-2178 / OZV-2181: nạp sớm 8449/8479/8483 trước khi nhomLienQuanSoTay dựng chỉ mục _canhSoTay lần đầu.
+  for (const nh of ['8449', '8479', '8483']) {
     fs.copyFileSync(path.join('data', 'so-tay', `${nh}.json`), path.join(TEST_DATA_DIR, 'so-tay', `${nh}.json`));
   }
 }
@@ -812,6 +812,167 @@ assert('"mũ giày bằng vải lưới, đế EVA" → không hỏi upper/sole'
       (ht183.nhanh || []).every((n) => String(n.nguon || '').startsWith('do-thi:C5:')) &&
       ['8449', '8479'].every((h) => (ht183.dapAnDieuKien || '').includes(`→ nhóm ${h} (`)),
     { trangThai: ht183.trangThai, distinctDk183, nhanh: ht183.nhanh, dapAnDieuKien: ht183.dapAnDieuKien }
+  );
+}
+
+// ───────────── OZV-2181: cạnh loại trừ 2 chiều 84.79 <-> 84.83 cho ca 132 ─────────────
+// "Con lăn đỡ trục cán bằng thép hợp kim dùng cho dây chuyền công nghiệp"
+{
+  const S2181 = require('../lib/so-tay.js');
+  const { loadSoTay: loadSoTay2181, soTayGates: soTayGates2181, nhomLienQuanSoTay: nhomLienQuan2181 } = require('../lib/so-tay-gates.js');
+  const { cauPhanBietNhom: cauPhanBiet2181 } = require('../lib/hoi-theo-so-tay.js');
+  const D2181 = require('../lib/do-thi/index.js');
+  const { phanTichHoiTruoc4So: hoiTruoc2181, TRANG_THAI_4SO: TT2181 } = require('../lib/do-thi/hoi-truoc-4so.js');
+  const ROOT2181 = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+
+  fs.mkdirSync(path.join(TEST_DATA_DIR, 'so-tay'), { recursive: true });
+  for (const nh of ['8479', '8483']) {
+    fs.copyFileSync(path.join(ROOT2181, 'data', 'so-tay', `${nh}.json`), path.join(TEST_DATA_DIR, 'so-tay', `${nh}.json`));
+  }
+  D2181.datLai();
+
+  const moTaCa132 = 'Con lăn đỡ trục cán bằng thép hợp kim dùng cho dây chuyền công nghiệp';
+
+  const s8479b = JSON.parse(fs.readFileSync(path.join(ROOT2181, 'data', 'so-tay', '8479.json'), 'utf8'));
+  const s8483 = JSON.parse(fs.readFileSync(path.join(ROOT2181, 'data', 'so-tay', '8483.json'), 'utf8'));
+  const v8479b = S2181.verifySoTay(s8479b, '8479');
+  const v8483 = S2181.verifySoTay(s8483, '8483');
+  assert(
+    '[OZV-2181 verifySoTay] sổ tay 8479 và 8483 đạt 100% (0 mục bị loại)',
+    v8479b.loai.length === 0 && v8483.loai.length === 0,
+    { loai8479: v8479b.loai, loai8483: v8483.loai }
+  );
+
+  const st8479b = loadSoTay2181('8479');
+  const st8483 = loadSoTay2181('8483');
+  const lt8479to8483 = (st8479b?.loaiTru || []).find((x) => x.sangNhom === '8483');
+  const lt8483to8479 = (st8483?.loaiTru || []).find((x) => x.sangNhom === '8479');
+  assert(
+    '[OZV-2181 căn cứ] sổ tay 8479 và 8483 có mục loaiTru 2 chiều 8479 <-> 8483 kèm canCuLoaiTru nguyên văn từ nhom8479.nhom/nhom8483.nhom đạt checkItem',
+    Boolean(
+      lt8479to8483 &&
+        lt8479to8483.nguon === 'nhom8479.nhom' &&
+        lt8479to8483.canCuLoaiTru?.nguon === 'nhom8483.nhom' &&
+        !String(lt8479to8483.dieuKien || '').includes(';') &&
+        S2181.checkItem('loaiTru', lt8479to8483, S2181.sourcesFor('8479'), '8479') === null
+    ) &&
+      Boolean(
+        lt8483to8479 &&
+          lt8483to8479.nguon === 'nhom8483.nhom' &&
+          lt8483to8479.canCuLoaiTru?.nguon === 'nhom8479.nhom' &&
+          !String(lt8483to8479.dieuKien || '').includes(';') &&
+          lt8483to8479.dieuKien !== lt8479to8483.dieuKien &&
+          S2181.checkItem('loaiTru', lt8483to8479, S2181.sourcesFor('8483'), '8483') === null
+      ),
+    { lt8479to8483, lt8483to8479 }
+  );
+
+  const c5Tu8479 = D2181.canhTu('8479', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8483');
+  const c5Tu8483 = D2181.canhTu('8483', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8479');
+  const c6Tu8479 = D2181.canhTu('8479', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '8483');
+  const c6Tu8483 = D2181.canhTu('8483', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '8479');
+  const giua8479_8483 = D2181.canhGiuaNhomConSong(['8479', '8483']).filter((e) => e.loai === 'C5' || e.loai === 'C6');
+  const mrTu8479 = D2181.moRongUngVien(['8479'], moTaCa132, { toiDa: 10 });
+  const mrTu8483 = D2181.moRongUngVien(['8483'], moTaCa132, { toiDa: 10 });
+  assert(
+    '[OZV-2181 đồ thị 2 chiều] bảng cạnh có C5/C6 8479<->8483, canhGiuaNhomConSong >= 2 và moRongUngVien kéo 2 chiều cho ca 132',
+    c5Tu8479.some((e) => e.nguon === 'nhom8479.nhom' && e.canCuLoaiTru?.nguon === 'nhom8483.nhom') &&
+      c5Tu8483.some((e) => e.nguon === 'nhom8483.nhom' && e.canCuLoaiTru?.nguon === 'nhom8479.nhom') &&
+      c6Tu8479.length >= 1 &&
+      c6Tu8483.length >= 1 &&
+      giua8479_8483.length >= 2 &&
+      mrTu8479.some((x) => x.nhom === '8483') &&
+      mrTu8483.some((x) => x.nhom === '8479'),
+    { c5Tu8479: c5Tu8479.length, c5Tu8483: c5Tu8483.length, giua: giua8479_8483.length, mrTu8479, mrTu8483 }
+  );
+
+  assert(
+    '[OZV-2181 nhomLienQuanSoTay] liên kết hai chiều 8479 <-> 8483',
+    nhomLienQuan2181('8479').includes('8483') && nhomLienQuan2181('8483').includes('8479'),
+    { rel8479: nhomLienQuan2181('8479'), rel8483: nhomLienQuan2181('8483') }
+  );
+
+  const pb8479 = cauPhanBiet2181('8479', ['8479', '8483'], moTaCa132);
+  assert(
+    '[OZV-2181 thuận 8479->8483] 8479 đứng đầu với [8479, 8483] sinh câu phân biệt từ nhom8479.nhom trỏ sang 84.83',
+    pb8479.length === 1 &&
+      pb8479[0].loai === 'PHAN_BIET_NHOM' &&
+      pb8479[0].canCu === 'so-tay' &&
+      pb8479[0].nguon === 'nhom8479.nhom' &&
+      /84\.83/.test(pb8479[0].questionVi) &&
+      /84\.79/.test(pb8479[0].questionVi),
+    { pb8479 }
+  );
+
+  const pb8483 = cauPhanBiet2181('8483', ['8483', '8479'], moTaCa132);
+  assert(
+    '[OZV-2181 thuận 8483->8479] 8483 đứng đầu với [8483, 8479] sinh câu phân biệt từ nhom8483.nhom trỏ sang 84.79',
+    pb8483.length === 1 &&
+      pb8483[0].loai === 'PHAN_BIET_NHOM' &&
+      pb8483[0].canCu === 'so-tay' &&
+      pb8483[0].nguon === 'nhom8483.nhom' &&
+      /84\.79/.test(pb8483[0].questionVi) &&
+      /84\.83/.test(pb8483[0].questionVi),
+    { pb8483 }
+  );
+
+  const g8479To8483 = soTayGates2181({
+    hs: '84798910',
+    productText: 'Con lăn đỡ trục cán bằng thép hợp kim là gối đỡ trục hoặc thân ổ dùng để đỡ trục truyền lực trong dây chuyền công nghiệp',
+    productName: 'Con lăn đỡ trục cán gối đỡ',
+    candidateHeadings: ['8479', '8483'],
+  });
+  const g8483To8479 = soTayGates2181({
+    hs: '84833090',
+    productText: 'Con lăn đỡ trục cán bằng thép hợp kim là máy hoặc thiết bị cơ khí có chức năng riêng biệt chưa được chi tiết hoặc ghi ở nhóm khác của Chương 84',
+    productName: 'Con lăn đỡ trục cán chức năng riêng biệt',
+    candidateHeadings: ['8483', '8479'],
+  });
+  assert(
+    '[OZV-2181 thuận soTayGates] kích hoạt SO_TAY_LOAI_TRU đúng cả 2 chiều 8479 -> 8483 và 8483 -> 8479',
+    (g8479To8483.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8483')) &&
+      (g8483To8479.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8479')),
+    { g8479To8483: g8479To8483.challenges, g8483To8479: g8483To8479.challenges }
+  );
+
+  const dcHopSo8479 = cauPhanBiet2181('8479', ['8479', '8483'], 'Hộp số điều tốc dùng cho xe thuộc nhóm 87.11');
+  const dcHopSo8483 = cauPhanBiet2181('8483', ['8483', '8479'], 'Hộp số điều tốc dùng cho xe thuộc nhóm 87.11');
+  const dcRobot8479 = cauPhanBiet2181('8479', ['8479', '8483'], 'Robot công nghiệp đa năng có chức năng riêng biệt');
+  const dcRobot8483 = cauPhanBiet2181('8483', ['8483', '8479'], 'Robot công nghiệp đa năng có chức năng riêng biệt');
+  const dcGate8479 = soTayGates2181({
+    hs: '84798910',
+    productText: 'Robot công nghiệp đa năng có chức năng riêng biệt',
+    productName: 'Robot công nghiệp đa năng',
+    candidateHeadings: ['8479', '8483'],
+  });
+  const dcGate8483 = soTayGates2181({
+    hs: '84834090',
+    productText: 'Hộp số điều tốc dùng cho xe thuộc nhóm 87.11',
+    productName: 'Hộp số điều tốc xe',
+    candidateHeadings: ['8483', '8479'],
+  });
+  assert(
+    '[OZV-2181 đối chứng] hộp số xe và robot công nghiệp không hỏi oan / không kéo oan 84.79 <-> 84.83',
+    dcHopSo8479.length === 0 &&
+      dcHopSo8483.length === 0 &&
+      dcRobot8479.length === 0 &&
+      dcRobot8483.length === 0 &&
+      !(dcGate8479.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8483')) &&
+      !(dcGate8483.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8479')) &&
+      !D2181.moRongUngVien(['8479'], 'Robot công nghiệp đa năng có chức năng riêng biệt').some((x) => x.nhom === '8483') &&
+      !D2181.moRongUngVien(['8483'], 'Hộp số điều tốc dùng cho xe thuộc nhóm 87.11').some((x) => x.nhom === '8479'),
+    { dcHopSo8479, dcHopSo8483, dcRobot8479, dcRobot8483 }
+  );
+
+  const ht132 = hoiTruoc2181({ moTa: moTaCa132, ungVien: ['8479', '8483'] });
+  const distinctDk132 = new Set((ht132.nhanh || []).map((n) => n.dieuKien)).size === 2;
+  assert(
+    '[OZV-2181 hoi-truoc-4so] ca 132 với [8479, 8483] trả CHUA_CHOT_NHOM_HOI_TRUOC với 2 nhánh điều kiện phân biệt từ cạnh C5',
+    ht132.trangThai === TT2181.CHUA_CHOT_NHOM_HOI_TRUOC &&
+      distinctDk132 &&
+      (ht132.nhanh || []).every((n) => String(n.nguon || '').startsWith('do-thi:C5:')) &&
+      ['8479', '8483'].every((h) => (ht132.dapAnDieuKien || '').includes(`→ nhóm ${h} (`)),
+    { trangThai: ht132.trangThai, distinctDk132, nhanh: ht132.nhanh, dapAnDieuKien: ht132.dapAnDieuKien }
   );
 }
 
