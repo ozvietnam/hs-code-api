@@ -316,5 +316,90 @@ for (const c of fixture.ca) {
   );
 }
 
+// OZV-2138 — Cạnh loại trừ 2 chiều 87.14 <-> 87.08 cho ca 148 tầng 4 số
+// "Nắp ốp đèn soi biển số cho xe máy / nhựa ABS mạ crom / ốp đèn soi biển số xe máy"
+{
+  const S = require('../lib/so-tay.js');
+  const { loadSoTay } = require('../lib/so-tay-gates.js');
+  const { cauPhanBietNhom } = require('../lib/hoi-theo-so-tay.js');
+  const D = require('../lib/do-thi/index.js');
+  const q148 = 'Nắp ốp đèn soi biển số cho xe máy / nhựa ABS mạ crom / ốp đèn soi biển số xe máy';
+
+  const st8714 = loadSoTay('8714');
+  const st8708 = loadSoTay('8708');
+  const lt8714 = (st8714?.loaiTru || []).find((x) => x.sangNhom === '8708');
+  const lt8708 = (st8708?.loaiTru || []).find((x) => x.sangNhom === '8714');
+  check(
+    '[OZV-2138 căn cứ] sổ tay 8714 và 8708 có mục loaiTru 2 chiều 8714 <-> 8708 kèm canCuLoaiTru nguyên văn đạt checkItem',
+    Boolean(
+      lt8714 &&
+        lt8714.canCuLoaiTru?.nguon === 'nhom8708.nhom' &&
+        S.checkItem('loaiTru', lt8714, S.sourcesFor('8714'), '8714') === null
+    ) &&
+      Boolean(
+        lt8708 &&
+          lt8708.canCuLoaiTru?.nguon === 'nhom8714.nhom' &&
+          S.checkItem('loaiTru', lt8708, S.sourcesFor('8708'), '8708') === null
+      ),
+    { lt8714, lt8708 }
+  );
+
+  const c5Tu8714 = D.canhTu('8714', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8708');
+  const c5Tu8708 = D.canhTu('8708', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8714');
+  const mrTu8714 = D.moRongUngVien(['8714'], q148);
+  const mrTu8708 = D.moRongUngVien(['8708'], q148);
+  check(
+    '[OZV-2138 đồ thị 2 chiều] bảng cạnh có C5 8714->8708 & 8708->8714 và moRongUngVien kéo 2 chiều cho ca 148',
+    c5Tu8714.length >= 1 &&
+      c5Tu8708.length >= 1 &&
+      mrTu8714.some((x) => x.nhom === '8708') &&
+      mrTu8708.some((x) => x.nhom === '8714'),
+    { c5Tu8714: c5Tu8714.length, c5Tu8708: c5Tu8708.length, mrTu8714, mrTu8708 }
+  );
+
+  const pb8714 = cauPhanBietNhom('8714', ['8714', '8708'], q148);
+  check(
+    '[OZV-2138 thuận 8714->8708] 8714 đứng đầu với [8714, 8708] sinh câu phân biệt từ nhom8714.nhom trỏ sang 87.08',
+    pb8714.length === 1 &&
+      pb8714[0].loai === 'PHAN_BIET_NHOM' &&
+      pb8714[0].canCu === 'so-tay' &&
+      pb8714[0].nguon === 'nhom8714.nhom' &&
+      /87\.08/.test(pb8714[0].questionVi) &&
+      /87\.14/.test(pb8714[0].questionVi),
+    { pb8714 }
+  );
+
+  const pb8708 = cauPhanBietNhom('8708', ['8708', '8714'], q148);
+  check(
+    '[OZV-2138 thuận 8708->8714] 8708 đứng đầu với [8708, 8714] sinh câu phân biệt từ nhom8708.nhom trỏ sang 87.14',
+    pb8708.length === 1 &&
+      pb8708[0].loai === 'PHAN_BIET_NHOM' &&
+      pb8708[0].canCu === 'so-tay' &&
+      pb8708[0].nguon === 'nhom8708.nhom' &&
+      /87\.14/.test(pb8708[0].questionVi) &&
+      /87\.08/.test(pb8708[0].questionVi),
+    { pb8708 }
+  );
+
+  const dcVoLang8714 = cauPhanBietNhom('8714', ['8714', '8708'], 'Vô lăng xe ô tô con bọc da');
+  const dcVoLang8708 = cauPhanBietNhom('8708', ['8708', '8714'], 'Vô lăng xe ô tô con bọc da');
+  const dcBanDap8714 = cauPhanBietNhom('8714', ['8714', '8708'], 'Bàn đạp xe đạp thể thao bằng hợp kim nhôm');
+  const dcBanDap8708 = cauPhanBietNhom('8708', ['8708', '8714'], 'Bàn đạp xe đạp thể thao bằng hợp kim nhôm');
+  const dcTuiKhi8714 = cauPhanBietNhom('8714', ['8714', '8708'], 'Túi khí an toàn lắp tại trần xe ô tô');
+  const dcTuiKhi8708 = cauPhanBietNhom('8708', ['8708', '8714'], 'Túi khí an toàn lắp tại trần xe ô tô');
+  check(
+    '[OZV-2138 đối chứng] vô lăng xe ô tô, bàn đạp xe đạp và túi khí an toàn không hỏi oan 87.14 <-> 87.08',
+    dcVoLang8714.length === 0 &&
+      dcVoLang8708.length === 0 &&
+      dcBanDap8714.length === 0 &&
+      dcBanDap8708.length === 0 &&
+      dcTuiKhi8714.length === 0 &&
+      dcTuiKhi8708.length === 0 &&
+      !D.moRongUngVien(['8714'], 'Bàn đạp xe đạp thể thao bằng hợp kim nhôm').some((x) => x.nhom === '8708') &&
+      !D.moRongUngVien(['8708'], 'Vô lăng xe ô tô con bọc da').some((x) => x.nhom === '8714'),
+    { dcVoLang8714, dcVoLang8708, dcBanDap8714, dcBanDap8708, dcTuiKhi8714, dcTuiKhi8708 }
+  );
+}
+
 console.log(`\nphân biệt vật liệu ở tầng tiêu đề 6 số (OZV-558): ${passed} PASS, ${failed} FAIL`);
 process.exit(failed ? 1 : 0);
