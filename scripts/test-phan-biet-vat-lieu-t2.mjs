@@ -928,5 +928,157 @@ check(
   );
 }
 
-console.log(`\nOZV-2109 / OZV-2118 / OZV-2121 / OZV-2129 / OZV-2144 / OZV-2153 cạnh loại trừ 2 chiều: ${passed} PASS, ${failed} FAIL`);
+// ─────────────────────────────────────────────────────────────────────────────
+// OZV-2162 — Kiểm tra cạnh loại trừ 2 chiều 84.49 <-> 85.15 cho ca 183 tầng 4 số:
+// "Máy dập quai hàn khẩu trang / None / dập quai hàn khẩu trang" (nhomNhan: ["8449", "8515"], heNhom: "8515").
+{
+  const moTaCa183 = 'Máy dập quai hàn khẩu trang / None / dập quai hàn khẩu trang';
+
+  // 1. Căn cứ pháp lý nguyên văn
+  const s8449 = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'so-tay', '8449.json'), 'utf8'));
+  const s8515 = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'so-tay', '8515.json'), 'utf8'));
+  const v8449 = S.verifySoTay(s8449, '8449');
+  const v8515 = S.verifySoTay(s8515, '8515');
+  check(
+    '[OZV-2162 verifySoTay] sổ tay 8449 và 8515 đạt 100% (0 mục bị loại)',
+    v8449.loai.length === 0 && v8515.loai.length === 0,
+    { loai8449: v8449.loai, loai8515: v8515.loai }
+  );
+
+  const st8449 = loadSoTay('8449');
+  const st8515 = loadSoTay('8515');
+  const lt8449 = (st8449?.loaiTru || []).find((x) => x.sangNhom === '8515');
+  const lt8515 = (st8515?.loaiTru || []).find((x) => x.sangNhom === '8449');
+  check(
+    '[OZV-2162 căn cứ] sổ tay 8449 và 8515 có mục loaiTru 2 chiều 8449 <-> 8515 kèm canCuLoaiTru nguyên văn đạt checkItem',
+    Boolean(
+      lt8449 &&
+        lt8449.nguon === 'nhom8449.nhom' &&
+        lt8449.canCuLoaiTru?.nguon === 'nhom8515.nhom' &&
+        S.checkItem('loaiTru', lt8449, S.sourcesFor('8449'), '8449') === null
+    ) &&
+      Boolean(
+        lt8515 &&
+          lt8515.nguon === 'nhom8515.nhom' &&
+          lt8515.canCuLoaiTru?.nguon === 'nhom8449.nhom' &&
+          S.checkItem('loaiTru', lt8515, S.sourcesFor('8515'), '8515') === null
+      ),
+    { lt8449, lt8515 }
+  );
+
+  // 2. Bảng cạnh đồ thị 2 chiều C5/C6 và mở rộng ứng viên
+  const c5Tu8449 = D.canhTu('8449', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8515');
+  const c5Tu8515 = D.canhTu('8515', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8449');
+  const c6Tu8449 = D.canhTu('8449', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '8515');
+  const c6Tu8515 = D.canhTu('8515', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '8449');
+  const giua8449_8515 = D.canhGiuaNhomConSong(['8449', '8515']).filter((e) => e.loai === 'C5' || e.loai === 'C6');
+  const mrTu8449 = D.moRongUngVien(['8449'], moTaCa183, { toiDa: 10 });
+  const mrTu8515 = D.moRongUngVien(['8515'], moTaCa183, { toiDa: 10 });
+  check(
+    '[OZV-2162 đồ thị 2 chiều] bảng cạnh có C5/C6 8449<->8515, canhGiuaNhomConSong >= 2 và moRongUngVien kéo 2 chiều cho ca 183',
+    c5Tu8449.some((e) => e.nguon === 'nhom8449.nhom' && e.canCuLoaiTru?.nguon === 'nhom8515.nhom') &&
+      c5Tu8515.some((e) => e.nguon === 'nhom8515.nhom' && e.canCuLoaiTru?.nguon === 'nhom8449.nhom') &&
+      c6Tu8449.length >= 1 &&
+      c6Tu8515.length >= 1 &&
+      giua8449_8515.length >= 2 &&
+      mrTu8449.some((x) => x.nhom === '8515') &&
+      mrTu8515.some((x) => x.nhom === '8449'),
+    { c5Tu8449: c5Tu8449.length, c5Tu8515: c5Tu8515.length, giua: giua8449_8515.length, mrTu8449, mrTu8515 }
+  );
+
+  const rel8449 = nhomLienQuanSoTay('8449');
+  const rel8515 = nhomLienQuanSoTay('8515');
+  check(
+    '[OZV-2162 nhomLienQuanSoTay] liên kết hai chiều 8449 <-> 8515',
+    rel8449.includes('8515') && rel8515.includes('8449'),
+    { rel8449, rel8515 }
+  );
+
+  // 3. Thuận 2 chiều: cauPhanBietNhom và soTayGates
+  const pb8449 = cauPhanBietNhom('8449', ['8449', '8515'], moTaCa183);
+  check(
+    '[OZV-2162 thuận 8449->8515] 8449 đứng đầu với [8449, 8515] sinh câu phân biệt từ nhom8449.nhom trỏ sang 85.15',
+    pb8449.length === 1 &&
+      pb8449[0].loai === 'PHAN_BIET_NHOM' &&
+      pb8449[0].canCu === 'so-tay' &&
+      pb8449[0].nguon === 'nhom8449.nhom' &&
+      /85\.15/.test(pb8449[0].questionVi) &&
+      /84\.49/.test(pb8449[0].questionVi),
+    { pb8449 }
+  );
+
+  const pb8515 = cauPhanBietNhom('8515', ['8515', '8449'], moTaCa183);
+  check(
+    '[OZV-2162 thuận 8515->8449] 8515 đứng đầu với [8515, 8449] sinh câu phân biệt từ nhom8515.nhom trỏ sang 84.49',
+    pb8515.length === 1 &&
+      pb8515[0].loai === 'PHAN_BIET_NHOM' &&
+      pb8515[0].canCu === 'so-tay' &&
+      pb8515[0].nguon === 'nhom8515.nhom' &&
+      /84\.49/.test(pb8515[0].questionVi) &&
+      /85\.15/.test(pb8515[0].questionVi),
+    { pb8515 }
+  );
+
+  const g8449To8515 = soTayGates({
+    hs: '84490000',
+    productText: moTaCa183,
+    productName: moTaCa183,
+    candidateHeadings: ['8449', '8515'],
+  });
+  const g8515To8449 = soTayGates({
+    hs: '85158090',
+    productText: moTaCa183,
+    productName: moTaCa183,
+    candidateHeadings: ['8515', '8449'],
+  });
+  check(
+    '[OZV-2162 thuận soTayGates] kích hoạt SO_TAY_LOAI_TRU đúng cả 2 chiều 8449 -> 8515 và 8515 -> 8449',
+    (g8449To8515.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8515')) &&
+      (g8515To8449.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8449')),
+    { g8449To8515: g8449To8515.challenges, g8515To8449: g8515To8449.challenges }
+  );
+
+  // 4. Đối chứng (ca âm): hàng không trùng từ khoá điều kiện không hỏi oan / không kéo oan
+  const dcHan8449 = cauPhanBietNhom('8449', ['8449', '8515'], 'Máy hàn hồ quang tay');
+  const dcHan8515 = cauPhanBietNhom('8515', ['8515', '8449'], 'Máy hàn hồ quang tay');
+  const dcNi8449 = cauPhanBietNhom('8449', ['8449', '8515'], 'Máy sản xuất nỉ phớt bằng tấm kim loại');
+  const dcNi8515 = cauPhanBietNhom('8515', ['8515', '8449'], 'Máy sản xuất nỉ phớt bằng tấm kim loại');
+  const dcGate8449 = soTayGates({
+    hs: '84490000',
+    productText: 'Máy sản xuất nỉ phớt bằng tấm kim loại',
+    productName: 'Máy sản xuất nỉ phớt bằng tấm kim loại',
+    candidateHeadings: ['8449', '8515'],
+  });
+  const dcGate8515 = soTayGates({
+    hs: '85153100',
+    productText: 'Máy hàn hồ quang tay',
+    productName: 'Máy hàn hồ quang tay',
+    candidateHeadings: ['8515', '8449'],
+  });
+  check(
+    '[OZV-2162 đối chứng] máy hàn hồ quang và máy sản xuất nỉ phớt không hỏi oan / không kéo oan 84.49 <-> 85.15',
+    dcHan8449.length === 0 &&
+      dcHan8515.length === 0 &&
+      dcNi8449.length === 0 &&
+      dcNi8515.length === 0 &&
+      !(dcGate8449.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8515')) &&
+      !(dcGate8515.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8449')) &&
+      !D.moRongUngVien(['8449'], 'Máy sản xuất nỉ phớt bằng tấm kim loại').some((x) => x.nhom === '8515') &&
+      !D.moRongUngVien(['8515'], 'Máy hàn hồ quang tay').some((x) => x.nhom === '8449'),
+    { dcHan8449, dcHan8515, dcNi8449, dcNi8515 }
+  );
+
+  // 5. phanTichHoiTruoc4So tách 2 nhánh điều kiện riêng biệt cho ca 183
+  const ht183 = phanTichHoiTruoc4So({ moTa: moTaCa183, ungVien: ['8449', '8515'] });
+  const distinctDk183 = new Set((ht183.nhanh || []).map((n) => n.dieuKien)).size === 2;
+  check(
+    '[OZV-2162 hoi-truoc-4so] ca 183 với [8449, 8515] trả CHUA_CHOT_NHOM_HOI_TRUOC với 2 nhánh điều kiện phân biệt',
+    ht183.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC &&
+      distinctDk183 &&
+      ['8449', '8515'].every((h) => (ht183.dapAnDieuKien || '').includes(`→ nhóm ${h} (`)),
+    { trangThai: ht183.trangThai, distinctDk183, dapAnDieuKien: ht183.dapAnDieuKien }
+  );
+}
+
+console.log(`\nOZV-2109 / OZV-2118 / OZV-2121 / OZV-2129 / OZV-2144 / OZV-2153 / OZV-2162 cạnh loại trừ 2 chiều: ${passed} PASS, ${failed} FAIL`);
 process.exit(failed ? 1 : 0);
