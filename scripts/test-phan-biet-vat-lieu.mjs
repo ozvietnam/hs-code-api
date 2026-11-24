@@ -691,5 +691,159 @@ for (const c of fixture.ca) {
   );
 }
 
+// OZV-2177 — Cạnh loại trừ 2 chiều 54.02 <-> 54.04 cho ca 196 tầng 4 số
+// "Sợi filament tổng hợp / Polyamide (Nylon) / Dùng để gia công lõi dây câu" (nhomNhan: ["5402"])
+{
+  const S = require('../lib/so-tay.js');
+  const { loadSoTay, soTayGates, nhomLienQuanSoTay } = require('../lib/so-tay-gates.js');
+  const { cauPhanBietNhom } = require('../lib/hoi-theo-so-tay.js');
+  const D = require('../lib/do-thi/index.js');
+  const { phanTichHoiTruoc4So, TRANG_THAI_4SO } = require('../lib/do-thi/hoi-truoc-4so.js');
+  D.datLai();
+
+  const moTaCa196 = 'Sợi filament tổng hợp / Polyamide (Nylon) / Dùng để gia công lõi dây câu';
+  const s5402 = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'so-tay', '5402.json'), 'utf8'));
+  const s5404 = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'so-tay', '5404.json'), 'utf8'));
+  const v5402 = S.verifySoTay(s5402, '5402');
+  const v5404 = S.verifySoTay(s5404, '5404');
+  check(
+    '[OZV-2177 verifySoTay] sổ tay 5402 và 5404 đạt 100% (0 mục bị loại)',
+    v5402.loai.length === 0 && v5404.loai.length === 0 && v5402.dat === v5402.tong && v5404.dat === v5404.tong,
+    { loai5402: v5402.loai, loai5404: v5404.loai, tong5402: v5402.tong, tong5404: v5404.tong }
+  );
+
+  const st5402 = loadSoTay('5402');
+  const st5404 = loadSoTay('5404');
+  const lt5402 = (st5402?.loaiTru || []).find((x) => x.sangNhom === '5404');
+  const lt5404 = (st5404?.loaiTru || []).find((x) => x.sangNhom === '5402');
+  check(
+    '[OZV-2177 căn cứ] sổ tay 5402 và 5404 có mục loaiTru 2 chiều 5402 <-> 5404 kèm canCuLoaiTru nguyên văn đạt checkItem',
+    Boolean(
+      lt5402 &&
+        lt5402.nguon === 'nhom5402.nhom' &&
+        lt5402.canCuLoaiTru?.nguon === 'nhom5404.nhom' &&
+        lt5402.dieuKien !== lt5404?.dieuKien &&
+        !/;/.test(lt5402.dieuKien || '') &&
+        S.checkItem('loaiTru', lt5402, S.sourcesFor('5402'), '5402') === null
+    ) &&
+      Boolean(
+        lt5404 &&
+          lt5404.nguon === 'nhom5404.nhom' &&
+          lt5404.canCuLoaiTru?.nguon === 'nhom5402.nhom' &&
+          !/;/.test(lt5404.dieuKien || '') &&
+          S.checkItem('loaiTru', lt5404, S.sourcesFor('5404'), '5404') === null
+      ),
+    { lt5402, lt5404 }
+  );
+
+  const c5Tu5402 = D.canhTu('5402', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '5404');
+  const c5Tu5404 = D.canhTu('5404', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '5402');
+  const c6Tu5402 = D.canhTu('5402', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '5404');
+  const c6Tu5404 = D.canhTu('5404', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '5402');
+  const giua5402_5404 = D.canhGiuaNhomConSong(['5402', '5404']).filter((e) => e.loai === 'C5' || e.loai === 'C6');
+  const mrTu5402 = D.moRongUngVien(['5402'], moTaCa196);
+  const mrTu5404 = D.moRongUngVien(['5404'], moTaCa196);
+  check(
+    '[OZV-2177 đồ thị 2 chiều] bảng cạnh có C5/C6 5402<->5404, canhGiuaNhomConSong >= 2 và moRongUngVien kéo 2 chiều cho ca 196',
+    c5Tu5402.some((e) => e.nguon === 'nhom5402.nhom' && e.canCuLoaiTru?.nguon === 'nhom5404.nhom') &&
+      c5Tu5404.some((e) => e.nguon === 'nhom5404.nhom' && e.canCuLoaiTru?.nguon === 'nhom5402.nhom') &&
+      c6Tu5402.length >= 1 &&
+      c6Tu5404.length >= 1 &&
+      giua5402_5404.length >= 2 &&
+      mrTu5402.some((x) => x.nhom === '5404') &&
+      mrTu5404.some((x) => x.nhom === '5402'),
+    { c5Tu5402: c5Tu5402.length, c5Tu5404: c5Tu5404.length, giua: giua5402_5404.length, mrTu5402, mrTu5404 }
+  );
+
+  check(
+    '[OZV-2177 nhomLienQuanSoTay] liên kết hai chiều 5402 <-> 5404',
+    nhomLienQuanSoTay('5402').includes('5404') && nhomLienQuanSoTay('5404').includes('5402'),
+    { rel5402: nhomLienQuanSoTay('5402'), rel5404: nhomLienQuanSoTay('5404') }
+  );
+
+  const pb5402 = cauPhanBietNhom('5402', ['5402', '5404'], moTaCa196);
+  check(
+    '[OZV-2177 thuận 5402->5404] 5402 đứng đầu với [5402, 5404] sinh câu phân biệt từ nhom5402.nhom trỏ sang 54.04',
+    pb5402.length === 1 &&
+      pb5402[0].loai === 'PHAN_BIET_NHOM' &&
+      pb5402[0].canCu === 'so-tay' &&
+      pb5402[0].nguon === 'nhom5402.nhom' &&
+      /54\.04/.test(pb5402[0].questionVi) &&
+      /54\.02/.test(pb5402[0].questionVi),
+    { pb5402 }
+  );
+
+  const pb5404 = cauPhanBietNhom('5404', ['5404', '5402'], moTaCa196);
+  check(
+    '[OZV-2177 thuận 5404->5402] 5404 đứng đầu với [5404, 5402] sinh câu phân biệt từ nhom5404.nhom trỏ sang 54.02',
+    pb5404.length === 1 &&
+      pb5404[0].loai === 'PHAN_BIET_NHOM' &&
+      pb5404[0].canCu === 'so-tay' &&
+      pb5404[0].nguon === 'nhom5404.nhom' &&
+      /54\.02/.test(pb5404[0].questionVi) &&
+      /54\.04/.test(pb5404[0].questionVi),
+    { pb5404 }
+  );
+
+  const g5402To5404 = soTayGates({
+    hs: '54024500',
+    productText: moTaCa196,
+    productName: moTaCa196,
+    candidateHeadings: ['5402', '5404'],
+  });
+  const g5404To5402 = soTayGates({
+    hs: '54041900',
+    productText: moTaCa196,
+    productName: moTaCa196,
+    candidateHeadings: ['5404', '5402'],
+  });
+  check(
+    '[OZV-2177 thuận soTayGates] kích hoạt SO_TAY_LOAI_TRU đúng cả 2 chiều 5402 -> 5404 và 5404 -> 5402',
+    (g5402To5404.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('5404')) &&
+      (g5404To5402.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('5402')),
+    { g5402To5404: g5402To5404.challenges, g5404To5402: g5404To5402.challenges }
+  );
+
+  const dcTo5402 = cauPhanBietNhom('5402', ['5402', '5404'], 'Tô filament tổng hợp có chiều dài trên 2 mét thuộc nhóm 55.01');
+  const dcTo5404 = cauPhanBietNhom('5404', ['5404', '5402'], 'Tô filament tổng hợp có chiều dài trên 2 mét thuộc nhóm 55.01');
+  const dcLuoiCau5402 = cauPhanBietNhom('5402', ['5402', '5404'], 'Lưỡi câu cá bằng thép carbon thuộc nhóm 95.07');
+  const dcLuoiCau5404 = cauPhanBietNhom('5404', ['5404', '5402'], 'Lưỡi câu cá bằng thép carbon thuộc nhóm 95.07');
+  const dcGate5402 = soTayGates({
+    hs: '54024500',
+    productText: 'Tô filament tổng hợp có chiều dài trên 2 mét thuộc nhóm 55.01',
+    productName: 'Tô filament tổng hợp có chiều dài trên 2 mét thuộc nhóm 55.01',
+    candidateHeadings: ['5402', '5404'],
+  });
+  const dcGate5404 = soTayGates({
+    hs: '54041900',
+    productText: 'Lưỡi câu cá bằng thép carbon thuộc nhóm 95.07',
+    productName: 'Lưỡi câu cá bằng thép carbon thuộc nhóm 95.07',
+    candidateHeadings: ['5404', '5402'],
+  });
+  check(
+    '[OZV-2177 đối chứng] tô filament tổng hợp trên 2 mét và lưỡi câu cá không hỏi oan / không kéo oan 54.02 <-> 54.04',
+    dcTo5402.length === 0 &&
+      dcTo5404.length === 0 &&
+      dcLuoiCau5402.length === 0 &&
+      dcLuoiCau5404.length === 0 &&
+      !(dcGate5402.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('5404')) &&
+      !(dcGate5404.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('5402')) &&
+      !D.moRongUngVien(['5402'], 'Tô filament tổng hợp có chiều dài trên 2 mét thuộc nhóm 55.01').some((x) => x.nhom === '5404') &&
+      !D.moRongUngVien(['5404'], 'Lưỡi câu cá bằng thép carbon thuộc nhóm 95.07').some((x) => x.nhom === '5402'),
+    { dcTo5402, dcTo5404, dcLuoiCau5402, dcLuoiCau5404 }
+  );
+
+  const ht196 = phanTichHoiTruoc4So({ moTa: moTaCa196, ungVien: ['5402', '5404'] });
+  const distinctDk196 = new Set((ht196.nhanh || []).map((n) => n.dieuKien)).size === 2;
+  check(
+    '[OZV-2177 hoi-truoc-4so] ca 196 với [5402, 5404] trả CHUA_CHOT_NHOM_HOI_TRUOC với 2 nhánh điều kiện phân biệt từ đồ thị',
+    ht196.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC &&
+      distinctDk196 &&
+      (ht196.nhanh || []).every((n) => /^do-thi:C[57]:/.test(String(n.nguon || ''))) &&
+      ['5402', '5404'].every((h) => (ht196.dapAnDieuKien || '').includes(`→ nhóm ${h} (`)),
+    { trangThai: ht196.trangThai, distinctDk196, nhanh: ht196.nhanh, dapAnDieuKien: ht196.dapAnDieuKien }
+  );
+}
+
 console.log(`\nphân biệt vật liệu ở tầng tiêu đề 6 số (OZV-558): ${passed} PASS, ${failed} FAIL`);
 process.exit(failed ? 1 : 0);
