@@ -1686,5 +1686,156 @@ const ketQuaSong = (raw = VAN) => ketQuaGia('848180', raw, {}, ['848120']);
     { ht2: ht2.dapAnDieuKien, ht3: ht3.dapAnDieuKien });
 }
 
+// 22) OZV-2203 — cạnh loại trừ 2 chiều 87.14 <-> 94.05 cho ca 148 tầng 4 số «Nắp ốp đèn soi biển số cho xe máy / nhựa ABS mạ crom»
+{
+  const S = require('../lib/so-tay.js');
+  const D = require('../lib/do-thi/index.js');
+  const { phanTichHoiTruoc4So, TRANG_THAI_4SO } = require('../lib/do-thi/hoi-truoc-4so.js');
+  const q148 = 'Nắp ốp đèn soi biển số cho xe máy / nhựa ABS mạ crom';
+  const q148Full = 'Nắp ốp đèn soi biển số cho xe máy / nhựa ABS mạ crom / ốp đèn soi biển số xe máy';
+  const cum4 = ['8708', '3926', '8714', '9405'];
+  for (const nh of cum4) {
+    fs.copyFileSync(path.join('data/so-tay', `${nh}.json`), path.join(TEST_DATA_DIR, 'so-tay', `${nh}.json`));
+  }
+  delete require.cache[require.resolve('../lib/so-tay-gates.js')];
+  const { soTayGates, nhomLienQuanSoTay, loadSoTay: loadSoTay22 } = require('../lib/so-tay-gates.js');
+  D.datLai();
+
+  const st8714 = loadSoTay22('8714');
+  const st9405 = loadSoTay22('9405');
+  const v8714 = S.verifySoTay(st8714, '8714');
+  const v9405 = S.verifySoTay(st9405, '9405');
+  check('OZV-2203 (1/9 verifySoTay): sổ tay 8714 và 9405 đạt 100% (0 mục bị loại)',
+    v8714.loai.length === 0 &&
+      v9405.loai.length === 0 &&
+      v8714.dat === v8714.tong &&
+      v9405.dat === v9405.tong &&
+      st8714.kiemTra?.tong === v8714.tong &&
+      st8714.kiemTra?.dat === v8714.dat &&
+      st8714.kiemTra?.loai === 0 &&
+      st9405.kiemTra?.tong === v9405.tong &&
+      st9405.kiemTra?.dat === v9405.dat &&
+      st9405.kiemTra?.loai === 0,
+    { loai8714: v8714.loai, loai9405: v9405.loai, tong8714: v8714.tong, tong9405: v9405.tong });
+
+  const lt8714 = (st8714?.loaiTru || []).find((x) => x.sangNhom === '9405');
+  const lt9405 = (st9405?.loaiTru || []).find((x) => x.sangNhom === '8714');
+  check('OZV-2203 (2/9 căn cứ): sổ tay 8714 và 9405 có loaiTru 2 chiều kèm canCuLoaiTru nguyên văn đạt checkItem',
+    Boolean(
+      lt8714 &&
+        lt8714.nguon === 'phan87.phan' &&
+        lt8714.canCuLoaiTru?.nguon === 'nhom9405.nhom' &&
+        S.checkItem('loaiTru', lt8714, S.sourcesFor('8714'), '8714') === null
+    ) &&
+      Boolean(
+        lt9405 &&
+          lt9405.nguon === 'nhom9405.nhom' &&
+          lt9405.canCuLoaiTru?.nguon === 'nhom8714.nhom' &&
+          S.checkItem('loaiTru', lt9405, S.sourcesFor('9405'), '9405') === null
+      ) &&
+      lt8714.dieuKien !== lt9405.dieuKien &&
+      !/;/.test(lt8714.dieuKien) &&
+      !/;/.test(lt9405.dieuKien),
+    { lt8714, lt9405 });
+
+  const c5Tu8714 = D.canhTu('8714', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '9405');
+  const c5Tu9405 = D.canhTu('9405', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8714');
+  const c6Tu8714 = D.canhTu('8714', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '9405');
+  const c6Tu9405 = D.canhTu('9405', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '8714');
+  const giua = D.canhGiuaNhomConSong(['8714', '9405']).filter((e) => e.loai === 'C5' || e.loai === 'C6');
+  const mrTu8714 = D.moRongUngVien(['8714'], q148);
+  const mrTu9405 = D.moRongUngVien(['9405'], q148);
+  const mrFull8714 = D.moRongUngVien(['8714'], q148Full);
+  const mrFull9405 = D.moRongUngVien(['9405'], q148Full);
+  check('OZV-2203 (3/9 đồ thị 2 chiều): bảng cạnh C5/C6 8714↔9405, canhGiuaNhomConSong và moRongUngVien kéo 2 chiều cho ca 148',
+    c5Tu8714.some((e) => e.nguon === 'phan87.phan' && e.canCuLoaiTru?.nguon === 'nhom9405.nhom') &&
+      c5Tu9405.some((e) => e.nguon === 'nhom9405.nhom' && e.canCuLoaiTru?.nguon === 'nhom8714.nhom') &&
+      c6Tu8714.length >= 1 &&
+      c6Tu9405.length >= 1 &&
+      giua.length >= 2 &&
+      mrTu8714.some((x) => x.nhom === '9405') &&
+      mrTu9405.some((x) => x.nhom === '8714') &&
+      mrFull8714.some((x) => x.nhom === '9405') &&
+      mrFull9405.some((x) => x.nhom === '8714'),
+    { c5Tu8714: c5Tu8714.length, c5Tu9405: c5Tu9405.length, giua: giua.length, mrTu8714, mrTu9405 });
+
+  check('OZV-2203 (4/9 nhomLienQuanSoTay): liên kết hai chiều 8714 ↔ 9405 và 8714 liên kết đủ cụm [8708, 3926, 9405]',
+    nhomLienQuanSoTay('8714').includes('9405') &&
+      nhomLienQuanSoTay('9405').includes('8714') &&
+      ['8708', '3926', '9405'].every((h) => nhomLienQuanSoTay('8714').includes(h) && nhomLienQuanSoTay(h).includes('8714')),
+    { rel8714: nhomLienQuanSoTay('8714'), rel9405: nhomLienQuanSoTay('9405') });
+
+  const pb8714 = H.cauPhanBietNhom('8714', ['8714', '9405'], q148);
+  const pb8714Full = H.cauPhanBietNhom('8714', ['8714', '9405'], q148Full);
+  check('OZV-2203 (5/9 thuận 8714 → 9405): 8714 đứng đầu với [8714, 9405] sinh câu PHAN_BIET_NHOM từ phan87.phan sang 94.05',
+    pb8714.length === 1 &&
+      pb8714[0].loai === 'PHAN_BIET_NHOM' &&
+      pb8714[0].canCu === 'so-tay' &&
+      pb8714[0].nguon === 'phan87.phan' &&
+      /94\.05/.test(pb8714[0].questionVi) &&
+      /87\.14/.test(pb8714[0].questionVi) &&
+      pb8714Full.length === 1 &&
+      /94\.05/.test(pb8714Full[0].questionVi),
+    { pb8714, pb8714Full });
+
+  const pb9405 = H.cauPhanBietNhom('9405', ['9405', '8714'], q148);
+  const pb9405Full = H.cauPhanBietNhom('9405', ['9405', '8714'], q148Full);
+  check('OZV-2203 (6/9 thuận 9405 → 8714): 9405 đứng đầu với [9405, 8714] sinh câu PHAN_BIET_NHOM từ nhom9405.nhom sang 87.14',
+    pb9405.length === 1 &&
+      pb9405[0].loai === 'PHAN_BIET_NHOM' &&
+      pb9405[0].canCu === 'so-tay' &&
+      pb9405[0].nguon === 'nhom9405.nhom' &&
+      /87\.14/.test(pb9405[0].questionVi) &&
+      /94\.05/.test(pb9405[0].questionVi) &&
+      pb9405Full.length === 1 &&
+      /87\.14/.test(pb9405Full[0].questionVi),
+    { pb9405, pb9405Full });
+
+  const g8714 = soTayGates({ hs: '87141090', productText: q148, productName: q148, pool: [{ h4: '9405', from: 'test' }] });
+  const g9405 = soTayGates({ hs: '94059290', productText: q148, productName: q148, pool: [{ h4: '8714', from: 'test' }] });
+  check('OZV-2203 (7/9 soTayGates 2 chiều): bật cổng SO_TAY_LOAI_TRU cả 2 chiều 87.14 ↔ 94.05 trên ca 148',
+    (g8714.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '9405') &&
+      (g9405.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '8714'),
+    { g8714: g8714.challenges, g9405: g9405.challenges });
+
+  const dcYenXe = 'Yên xe máy bọc da tổng hợp dùng cho xe môtô';
+  const dcPhanhXe = 'Phanh đĩa thủy lực dùng cho xe môtô hai bánh';
+  const dcDenChum = 'Bộ đèn chùm pha lê treo trần chiếu sáng phòng khách';
+  const pbYen8714 = H.cauPhanBietNhom('8714', ['8714', '9405'], dcYenXe);
+  const pbYen9405 = H.cauPhanBietNhom('9405', ['9405', '8714'], dcYenXe);
+  const pbPhanh8714 = H.cauPhanBietNhom('8714', ['8714', '9405'], dcPhanhXe);
+  const pbPhanh9405 = H.cauPhanBietNhom('9405', ['9405', '8714'], dcPhanhXe);
+  const pbChum8714 = H.cauPhanBietNhom('8714', ['8714', '9405'], dcDenChum);
+  const pbChum9405 = H.cauPhanBietNhom('9405', ['9405', '8714'], dcDenChum);
+  const gDc8714 = soTayGates({ hs: '87141010', productText: dcYenXe, productName: dcYenXe });
+  const gDc9405 = soTayGates({ hs: '94051999', productText: dcDenChum, productName: dcDenChum });
+  check('OZV-2203 (8/9 đối chứng): yên xe máy, phanh đĩa xe môtô và đèn chùm phòng khách không hỏi/kéo/bật cổng oan 87.14 ↔ 94.05',
+    pbYen8714.length === 0 &&
+      pbYen9405.length === 0 &&
+      pbPhanh8714.length === 0 &&
+      pbPhanh9405.length === 0 &&
+      pbChum8714.length === 0 &&
+      pbChum9405.length === 0 &&
+      !(gDc8714.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '9405') &&
+      !(gDc9405.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '8714') &&
+      !D.moRongUngVien(['8714'], dcYenXe).some((x) => x.nhom === '9405') &&
+      !D.moRongUngVien(['8714'], dcPhanhXe).some((x) => x.nhom === '9405') &&
+      !D.moRongUngVien(['9405'], dcDenChum).some((x) => x.nhom === '8714'),
+    { pbYen8714, pbYen9405, pbPhanh8714, pbPhanh9405, pbChum8714, pbChum9405, gDc8714: gDc8714.challenges, gDc9405: gDc9405.challenges });
+
+  const ht2 = phanTichHoiTruoc4So({ moTa: q148, ungVien: ['8714', '9405'] });
+  const ht4 = phanTichHoiTruoc4So({ moTa: q148, ungVien: cum4 });
+  check('OZV-2203 (9/9 phanTichHoiTruoc4So): tách đủ nhánh điều kiện cho [8714, 9405] và toàn cụm 4 nhóm [8708, 3926, 8714, 9405] trên ca 148',
+    ht2.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC &&
+      (ht2.nhanh || []).every((n) => String(n.nguon || '').startsWith('do-thi:C5:')) &&
+      new Set((ht2.nhanh || []).map((n) => n.dieuKien)).size === 2 &&
+      Boolean(ht2.dapAnDieuKien && ht2.dapAnDieuKien.includes('→ nhóm 8714 (') && ht2.dapAnDieuKien.includes('→ nhóm 9405 (')) &&
+      ht4.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC &&
+      (ht4.nhanh || []).every((n) => /^do-thi:C[57]:/.test(String(n.nguon || ''))) &&
+      new Set((ht4.nhanh || []).map((n) => n.dieuKien)).size === 4 &&
+      cum4.every((h) => ht4.dapAnDieuKien?.includes(`→ nhóm ${h} (`)),
+    { ht2: ht2.dapAnDieuKien, ht4: ht4.dapAnDieuKien });
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
