@@ -93,6 +93,18 @@ export function phanTichThamSo(argv = process.argv.slice(2)) {
     return null;
   };
 
+  const chiBoRaw = layGiaTri('chi-bo');
+  let chiBo = null;
+  if (typeof chiBoRaw === 'string' && chiBoRaw.trim()) {
+    const validNames = ['van52', 'van30', 'chuaKhai', 's7'];
+    chiBo = chiBoRaw.split(',').map((s) => s.trim());
+    const invalid = chiBo.filter((s) => !validNames.includes(s));
+    if (invalid.length > 0) {
+      console.error(`Tham số --chi-bo không hợp lệ: ${invalid.join(', ')}. Các tên hợp lệ: ${validNames.join(', ')}`);
+      process.exit(2);
+    }
+  }
+
   const jsonOpt = layGiaTri('json');
   const baoCaoOpt = layGiaTri('ghi-bao-cao');
   const gioiHanRaw = layGiaTri('gioi-han');
@@ -115,6 +127,7 @@ export function phanTichThamSo(argv = process.argv.slice(2)) {
     jsonPath: typeof jsonOpt === 'string' ? path.resolve(jsonOpt) : null,
     baoCaoPath: typeof baoCaoOpt === 'string' ? path.resolve(baoCaoOpt) : null,
     gioiHan,
+    chiBo,
   };
 }
 
@@ -591,7 +604,23 @@ export async function doBoTimTruoc(opts = {}) {
       if (batTxl) process.env.HS_TIEN_XU_LY = 'on';
       else delete process.env.HS_TIEN_XU_LY;
 
-      const van52Res = await chayMotBo({
+      const runOrDummy = async (name, args) => {
+        if (opts.chiBo && !opts.chiBo.includes(name)) {
+          return {
+            n: 0,
+            coUngVien: { so: 0, tyLe: 0 },
+            top1_4: { so: 0, tyLe: 0 },
+            top3_4: { so: 0, tyLe: 0 },
+            top5_4: { so: 0, tyLe: 0 },
+            pn6_1: { so: 0, tyLe: 0 },
+            pn6_3: { so: 0, tyLe: 0 },
+            doTreMs: { medianMs: 0, p95Ms: 0, maxMs: 0, tongMs: 0 },
+          };
+        }
+        return await chayMotBo(args);
+      };
+
+      const van52Res = await runOrDummy('van52', {
         rows: van52,
         mapPayload: mapRaw,
         ttOpts: batTxl ? extras.thuongOpts : {},
@@ -599,14 +628,14 @@ export async function doBoTimTruoc(opts = {}) {
       });
       van52Res.tongTrongTep = van52All.length;
 
-      const van30Res = await chayMotBo({
+      const van30Res = await runOrDummy('van30', {
         rows: van30,
         mapPayload: mapRaw,
         ttOpts: batTxl ? extras.thuongOpts : {},
       });
       van30Res.tongTrongTep = van30All.length;
 
-      const chuaKhaiRes = await chayMotBo({
+      const chuaKhaiRes = await runOrDummy('chuaKhai', {
         rows: chuaKhai,
         mapPayload: mapRaw,
         // Bộ này lấy từ thông báo phân loại có trong kho tiền lệ: loại đúng thông báo của ca đang đo (không thì tự tìm thấy chính mình).
@@ -621,7 +650,7 @@ export async function doBoTimTruoc(opts = {}) {
       const s7TheoBienThe = {};
       for (const bt of variants) {
         const items = s7BienTheInputs[bt];
-        const res = await chayMotBo({
+        const res = await runOrDummy('s7', {
           rows: items,
           mapPayload: (it) => it.payload,
           getTruth: (it) => it.row.maDung,
