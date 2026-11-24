@@ -92,7 +92,66 @@
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
-  "tieuChi6": [],
+  "tieuChi6": [
+    {
+      "hs6": "621210",
+      "thuTu": 1,
+      "dieuKien": "Xu chiêng",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Xu chiêng",
+      "donVi": null,
+      "tuKhoa": [
+        "Xu chiêng"
+      ],
+      "nguon": "tieuDe.621210",
+      "trich": "621210 Xu chiêng",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "621220",
+      "thuTu": 2,
+      "dieuKien": "Gen và quần gen",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": [
+        "Gen",
+        "quần gen"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "Gen",
+        "quần gen"
+      ],
+      "nguon": "tieuDe.621220",
+      "trich": "621220 Gen và quần gen",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "621230",
+      "thuTu": 3,
+      "dieuKien": "Áo nịt toàn thân (corselette)",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Áo nịt toàn thân (corselette)",
+      "donVi": null,
+      "tuKhoa": [
+        "Áo nịt toàn thân",
+        "corselette"
+      ],
+      "nguon": "tieuDe.621230",
+      "trich": "621230 Áo nịt toàn thân (corselette)",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "621290",
+      "thuTu": 4,
+      "phanConLai": true,
+      "nguon": "tieuDe.621290",
+      "trich": "621290 Loại khác",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
   "dong8": [
     {
       "hs": "62121011",
@@ -684,6 +743,10 @@
     "tax.62129019",
     "tax.62129092",
     "tax.62129099",
+    "tieuDe.621210",
+    "tieuDe.621220",
+    "tieuDe.621230",
+    "tieuDe.621290",
     "wco-op.621210.1",
     "wco-op.621290.1",
     "wco-op.621290.2"
@@ -696,8 +759,8 @@
     "ms": 6
   },
   "kiemTra": {
-    "tong": 32,
-    "dat": 32,
+    "tong": 37,
+    "dat": 37,
     "loai": 0,
     "nguonBiCat": [
       "phan62.phan (46130→25000)"
@@ -710,6 +773,12 @@
         "tieuChi6",
         "phamViLoaiKhac"
       ]
+    },
+    "tieuChi6": {
+      "khuon": "g6@1",
+      "soMuc": 4,
+      "soPhanNhom": 4,
+      "cong": "scripts/kiem-tieu-chi-6.mjs"
     }
   },
   "yKienWcoDayDu": false,

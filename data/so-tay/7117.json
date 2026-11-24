@@ -46,32 +46,61 @@
   "tieuChi6": [
     {
       "hs6": "711711",
-      "fact": "la_bang_kim_loai_co_ban",
-      "op": "=",
-      "value": true,
+      "thuTu": 1,
+      "dieuKien": "Bằng kim loại cơ bản, đã hoặc chưa mạ kim loại quý",
+      "fact": "chatLieu",
+      "op": "LA",
+      "value": "kim loại",
       "donVi": null,
-      "nguon": "wco.711711",
-      "trich": "Jewellery; imitation, cuff links and studs, of base metal, whether or not plated with precious metal",
+      "nguon": "tieuDe.71171",
+      "trich": "71171 Bằng kim loại cơ bản, đã hoặc chưa mạ kim loại quý",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "711711",
+      "thuTu": 1,
+      "dieuKien": "Khuy măng sét và khuy rời",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": [
+        "Khuy măng sét",
+        "khuy rời"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "Khuy măng sét",
+        "khuy rời"
+      ],
+      "nguon": "tieuDe.711711",
+      "trich": "711711 Khuy măng sét và khuy rời",
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs6": "711719",
-      "fact": "la_bang_kim_loai_co_ban",
-      "op": "=",
-      "value": true,
+      "thuTu": 2,
+      "dieuKien": "Bằng kim loại cơ bản, đã hoặc chưa mạ kim loại quý",
+      "fact": "chatLieu",
+      "op": "LA",
+      "value": "kim loại",
       "donVi": null,
-      "nguon": "wco.711719",
-      "trich": "Jewellery; imitation, (excluding cuff links and studs), of base metal, whether or not plated with precious metal",
+      "nguon": "tieuDe.71171",
+      "trich": "71171 Bằng kim loại cơ bản, đã hoặc chưa mạ kim loại quý",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "711719",
+      "thuTu": 2,
+      "phanConLai": true,
+      "nguon": "tieuDe.711719",
+      "trich": "711719 Loại khác",
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs6": "711790",
-      "fact": "khong_phai_bang_kim_loai_co_ban",
-      "op": "=",
-      "value": true,
-      "donVi": null,
-      "nguon": "wco.711790",
-      "trich": "Jewellery; imitation, of other than base metal, whether or not plated with precious metal",
+      "thuTu": 3,
+      "phanConLai": true,
+      "nguon": "tieuDe.711790",
+      "trich": "711790 Loại khác",
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
@@ -533,6 +562,10 @@
     "tax.71179020",
     "tax.71179094",
     "tax.71179099",
+    "tieuDe.71171",
+    "tieuDe.711711",
+    "tieuDe.711719",
+    "tieuDe.711790",
     "wco.711711",
     "wco.711719",
     "wco.711790"
@@ -545,10 +578,16 @@
     "ms": 1
   },
   "kiemTra": {
-    "tong": 17,
-    "dat": 17,
+    "tong": 20,
+    "dat": 20,
     "loai": 0,
-    "nguonBiCat": []
+    "nguonBiCat": [],
+    "tieuChi6": {
+      "khuon": "g6@1",
+      "soMuc": 5,
+      "soPhanNhom": 3,
+      "cong": "scripts/kiem-tieu-chi-6.mjs"
+    }
   },
   "dieuKienNut": [
     {

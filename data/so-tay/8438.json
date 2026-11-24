@@ -419,7 +419,142 @@
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
-  "tieuChi6": [],
+  "tieuChi6": [
+    {
+      "hs6": "843810",
+      "thuTu": 1,
+      "dieuKien": "Máy làm bánh và máy để sản xuất mỳ macaroni, spaghetti hoặc các sản phẩm tương tự",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": [
+        "Máy làm bánh",
+        "máy để sản xuất mỳ macaroni",
+        "spaghetti"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "làm bánh",
+        "mỳ macaroni",
+        "spaghetti"
+      ],
+      "nguon": "tax.84381000",
+      "trich": "84381000 - Máy làm bánh và máy để sản xuất mỳ macaroni, spaghetti hoặc các sản phẩm tương tự",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "843820",
+      "thuTu": 2,
+      "dieuKien": "Máy sản xuất mứt kẹo, ca cao hoặc sô cô la",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": [
+        "Máy sản xuất mứt kẹo",
+        "ca cao",
+        "sô cô la"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "mứt kẹo",
+        "ca cao",
+        "sô cô la"
+      ],
+      "nguon": "tieuDe.843820",
+      "trich": "843820 Máy sản xuất mứt kẹo, ca cao hoặc sô cô la",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "843830",
+      "thuTu": 3,
+      "dieuKien": "Máy sản xuất đường",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Máy sản xuất đường",
+      "donVi": null,
+      "tuKhoa": [
+        "sản xuất đường"
+      ],
+      "nguon": "tieuDe.843830",
+      "trich": "843830 Máy sản xuất đường",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "843840",
+      "thuTu": 4,
+      "dieuKien": "Máy sản xuất bia",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Máy sản xuất bia",
+      "donVi": null,
+      "tuKhoa": [
+        "sản xuất bia"
+      ],
+      "nguon": "tax.84384000",
+      "trich": "84384000 - Máy sản xuất bia",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "843850",
+      "thuTu": 5,
+      "dieuKien": "Máy chế biến thịt gia súc hoặc gia cầm",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Máy chế biến thịt gia súc hoặc gia cầm",
+      "donVi": null,
+      "tuKhoa": [
+        "chế biến thịt gia súc",
+        "gia cầm"
+      ],
+      "nguon": "tax.84385000",
+      "trich": "84385000 - Máy chế biến thịt gia súc hoặc gia cầm",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "843860",
+      "thuTu": 6,
+      "dieuKien": "Máy chế biến hoa quả, quả hạch hoặc rau",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": [
+        "Máy chế biến hoa quả",
+        "quả hạch",
+        "rau"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "hoa quả",
+        "quả hạch",
+        "rau"
+      ],
+      "tienLe": [
+        {
+          "so": "18693/TB-CHQ",
+          "ma": "84386000"
+        }
+      ],
+      "nguon": "tax.84386000",
+      "trich": "84386000 - Máy chế biến hoa quả, quả hạch hoặc rau",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "843890",
+      "thuTu": 7,
+      "dieuKien": "Bộ phận",
+      "fact": "laBoPhan",
+      "op": "CO",
+      "donVi": null,
+      "nguon": "tieuDe.843890",
+      "trich": "843890 Bộ phận",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "843880",
+      "thuTu": 8,
+      "phanConLai": true,
+      "nguon": "tieuDe.843880",
+      "trich": "843880 Máy khác",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
   "dong8": [
     {
       "hs": "84381000",
@@ -1123,8 +1258,12 @@
     "tax.84389021",
     "tax.84389022",
     "tax.84389029",
+    "tieuDe.843820",
+    "tieuDe.843830",
+    "tieuDe.843880",
     "tieuDe.8438801",
     "tieuDe.8438802",
+    "tieuDe.843890",
     "tieuDe.8438901",
     "tieuDe.8438902",
     "wco-op.843860.1",
@@ -1140,9 +1279,9 @@
     "ms": 8
   },
   "kiemTra": {
-    "tong": 79,
-    "dat": 79,
-    "loai": 2,
+    "tong": 87,
+    "dat": 87,
+    "loai": 0,
     "nguonBiCat": [],
     "nangCap": {
       "luc": "2026-10-11",
@@ -1152,6 +1291,12 @@
         "tieuChi6",
         "phamViLoaiKhac"
       ]
+    },
+    "tieuChi6": {
+      "khuon": "g6@1",
+      "soMuc": 8,
+      "soPhanNhom": 8,
+      "cong": "scripts/kiem-tieu-chi-6.mjs"
     }
   },
   "yKienWcoDayDu": false,

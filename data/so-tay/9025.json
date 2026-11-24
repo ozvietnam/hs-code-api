@@ -98,7 +98,97 @@
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
-  "tieuChi6": [],
+  "tieuChi6": [
+    {
+      "hs6": "902511",
+      "thuTu": 1,
+      "dieuKien": "Nhiệt kế và hỏa kế",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": [
+        "Nhiệt kế",
+        "hỏa kế"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "Nhiệt kế",
+        "hỏa kế"
+      ],
+      "nguon": "tieuDe.90251",
+      "trich": "Nhiệt kế và hỏa kế, không kết hợp với các dụng cụ khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "902511",
+      "thuTu": 1,
+      "chuaSoHoa": "Thiếu khoá cho điều kiện không kết hợp với các dụng cụ khác",
+      "nguon": "tieuDe.90251",
+      "trich": "Nhiệt kế và hỏa kế, không kết hợp với các dụng cụ khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "902511",
+      "thuTu": 1,
+      "chuaSoHoa": "Thiếu khoá cho điều kiện chứa chất lỏng và đọc trực tiếp",
+      "nguon": "tax.90251100",
+      "trich": "Chứa chất lỏng, để đọc trực tiếp",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "902519",
+      "thuTu": 2,
+      "dieuKien": "Nhiệt kế và hỏa kế",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": [
+        "Nhiệt kế",
+        "hỏa kế"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "Nhiệt kế",
+        "hỏa kế"
+      ],
+      "nguon": "tieuDe.90251",
+      "trich": "Nhiệt kế và hỏa kế, không kết hợp với các dụng cụ khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "902519",
+      "thuTu": 2,
+      "chuaSoHoa": "Thiếu khoá cho điều kiện không kết hợp với các dụng cụ khác",
+      "nguon": "tieuDe.90251",
+      "trich": "Nhiệt kế và hỏa kế, không kết hợp với các dụng cụ khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "902519",
+      "thuTu": 2,
+      "phanConLai": true,
+      "nguon": "tieuDe.902519",
+      "trich": "902519 Loại khác",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "902590",
+      "thuTu": 3,
+      "dieuKien": "Bộ phận và phụ kiện",
+      "fact": "laBoPhan",
+      "op": "CO",
+      "donVi": null,
+      "nguon": "tax.90259000",
+      "trich": "Bộ phận và phụ kiện",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "902580",
+      "thuTu": 4,
+      "phanConLai": true,
+      "nguon": "tax.90258000",
+      "trich": "Dụng cụ khác",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
   "dong8": [
     {
       "hs": "90251100",
@@ -283,9 +373,13 @@
   },
   "dungTuNguon": [
     "nhom9025.nhom",
+    "tax.90251100",
     "tax.90251911",
     "tax.90251920",
+    "tax.90258000",
     "tax.90259000",
+    "tieuDe.90251",
+    "tieuDe.902519",
     "tieuDe.9025191",
     "wco.902511",
     "wco.902519",
@@ -299,8 +393,8 @@
     "ms": 6
   },
   "kiemTra": {
-    "tong": 21,
-    "dat": 21,
+    "tong": 29,
+    "dat": 29,
     "loai": 0,
     "nguonBiCat": [],
     "nangCap": {
@@ -311,6 +405,12 @@
         "tieuChi6",
         "phamViLoaiKhac"
       ]
+    },
+    "tieuChi6": {
+      "khuon": "g6@1",
+      "soMuc": 8,
+      "soPhanNhom": 4,
+      "cong": "scripts/kiem-tieu-chi-6.mjs"
     }
   },
   "dieuKienNut": [

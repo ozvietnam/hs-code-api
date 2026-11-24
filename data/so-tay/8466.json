@@ -177,7 +177,137 @@
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
-  "tieuChi6": [],
+  "tieuChi6": [
+    {
+      "hs6": "846610",
+      "thuTu": 1,
+      "dieuKien": "Bộ phận kẹp dụng cụ và đầu cắt ren tự mở",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": [
+        "Bộ phận kẹp dụng cụ",
+        "đầu cắt ren tự mở"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "kẹp dụng cụ",
+        "đầu cắt ren tự mở"
+      ],
+      "nguon": "tieuDe.846610",
+      "trich": "Bộ phận kẹp dụng cụ và đầu cắt ren tự mở",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "846620",
+      "thuTu": 2,
+      "dieuKien": "Bộ phận kẹp sản phẩm",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": "Bộ phận kẹp sản phẩm",
+      "donVi": null,
+      "tuKhoa": [
+        "kẹp sản phẩm"
+      ],
+      "nguon": "tieuDe.846620",
+      "trich": "Bộ phận kẹp sản phẩm",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "846630",
+      "thuTu": 3,
+      "dieuKien": "Đầu chia độ và những bộ phận phụ trợ chuyên dùng khác dùng cho máy",
+      "fact": "tenLoai",
+      "op": "TEN_LOAI",
+      "value": [
+        "Đầu chia độ",
+        "bộ phận phụ trợ chuyên dùng"
+      ],
+      "donVi": null,
+      "tuKhoa": [
+        "Đầu chia độ",
+        "bộ phận phụ trợ chuyên dùng"
+      ],
+      "nguon": "tax.84663000",
+      "trich": "Đầu chia độ và những bộ phận phụ trợ chuyên dùng khác dùng cho máy",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "846630",
+      "thuTu": 3,
+      "dieuKien": "dùng cho máy",
+      "fact": "dungCho",
+      "op": "CONG_DUNG",
+      "value": "máy",
+      "donVi": null,
+      "tuKhoa": [
+        "phụ trợ"
+      ],
+      "nguon": "tax.84663000",
+      "trich": "Đầu chia độ và những bộ phận phụ trợ chuyên dùng khác dùng cho máy",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "846691",
+      "thuTu": 4,
+      "dieuKien": "Dùng cho máy thuộc nhóm 84.64",
+      "fact": "dungCho",
+      "op": "CONG_DUNG",
+      "value": "máy thuộc nhóm 84.64",
+      "donVi": null,
+      "tuKhoa": [
+        "84.64"
+      ],
+      "nguon": "tax.84669100",
+      "trich": "Dùng cho máy thuộc nhóm 84.64",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "846692",
+      "thuTu": 5,
+      "dieuKien": "Dùng cho máy thuộc nhóm 84.65",
+      "fact": "dungCho",
+      "op": "CONG_DUNG",
+      "value": "máy thuộc nhóm 84.65",
+      "donVi": null,
+      "tuKhoa": [
+        "84.65"
+      ],
+      "nguon": "tax.84669200",
+      "trich": "Dùng cho máy thuộc nhóm 84.65",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "846693",
+      "thuTu": 6,
+      "dieuKien": "Dùng cho máy thuộc các nhóm từ 84.56 đến 84.61",
+      "fact": "dungCho",
+      "op": "CONG_DUNG",
+      "value": "máy thuộc các nhóm từ 84.56 đến 84.61",
+      "donVi": null,
+      "tuKhoa": [
+        "từ 84.56 đến 84.61"
+      ],
+      "nguon": "tieuDe.846693",
+      "trich": "Dùng cho máy thuộc các nhóm từ 84.56 đến 84.61",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "846694",
+      "thuTu": 7,
+      "dieuKien": "Dùng cho máy thuộc nhóm 84.62 hoặc 84.63",
+      "fact": "dungCho",
+      "op": "CONG_DUNG",
+      "value": "máy thuộc nhóm 84.62 hoặc 84.63",
+      "donVi": null,
+      "tuKhoa": [
+        "84.62",
+        "84.63"
+      ],
+      "nguon": "tax.84669400",
+      "trich": "Dùng cho máy thuộc nhóm 84.62 hoặc 84.63",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
   "dong8": [
     {
       "hs": "84661010",
@@ -596,6 +726,9 @@
     "tax.84669340",
     "tax.84669390",
     "tax.84669400",
+    "tieuDe.846610",
+    "tieuDe.846620",
+    "tieuDe.846693",
     "wco-op.846610.1"
   ],
   "phienBan": "HS2022",
@@ -607,8 +740,8 @@
     "ms": 6
   },
   "kiemTra": {
-    "tong": 34,
-    "dat": 34,
+    "tong": 42,
+    "dat": 42,
     "loai": 0,
     "nguonBiCat": [],
     "nangCap": {
@@ -619,6 +752,12 @@
         "tieuChi6",
         "phamViLoaiKhac"
       ]
+    },
+    "tieuChi6": {
+      "khuon": "g6@1",
+      "soMuc": 8,
+      "soPhanNhom": 7,
+      "cong": "scripts/kiem-tieu-chi-6.mjs"
     }
   },
   "yKienWcoDayDu": false

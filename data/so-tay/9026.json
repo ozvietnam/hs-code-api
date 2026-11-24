@@ -134,7 +134,78 @@
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
-  "tieuChi6": [],
+  "tieuChi6": [
+    {
+      "hs6": "902610",
+      "thuTu": 1,
+      "dieuKien": "Để đo hoặc kiểm tra lưu lượng hoặc mức của chất lỏng",
+      "fact": "congDung",
+      "op": "CONG_DUNG",
+      "value": "đo hoặc kiểm tra lưu lượng hoặc mức của chất lỏng",
+      "donVi": null,
+      "tuKhoa": [
+        "lưu lượng",
+        "mức của chất lỏng"
+      ],
+      "kiemChung": [
+        {
+          "hoi": "Thiết bị có bộ phận nhạy cảm với các biến đổi của đại lượng cần đo (như màng ngăn, bán dẫn) làm dịch chuyển một kim hoặc chỉ báo, hoặc biến đổi thành tín hiệu điện không?",
+          "nguon": "nhom9026.nhom",
+          "trich": "Các thiết bị đo hoặc kiểm tra thường được trang bị một bộ phận nhạy cảm với các biến đổi của đại lượng cần đo (ví dụ như ống Bourdon, màng ngăn, ống gió, bán dẫn) làm dịch chuyển một kim hoặc chỉ báo. Ở một số thiết bị, các biến đổi này được biến đổi thành tín hiệu điện."
+        }
+      ],
+      "nguon": "tieuDe.902610",
+      "trich": "902610 Để đo hoặc kiểm tra lưu lượng hoặc mức của chất lỏng",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "902620",
+      "thuTu": 2,
+      "dieuKien": "Để đo hoặc kiểm tra áp suất",
+      "fact": "congDung",
+      "op": "CONG_DUNG",
+      "value": "đo hoặc kiểm tra áp suất",
+      "donVi": null,
+      "tuKhoa": [
+        "áp suất"
+      ],
+      "kiemChung": [
+        {
+          "hoi": "Thiết bị có bộ phận nhạy cảm với các biến đổi của đại lượng cần đo (như ống Bourdon, màng ngăn, bán dẫn) làm dịch chuyển một kim hoặc chỉ báo, hoặc biến đổi thành tín hiệu điện không?",
+          "nguon": "nhom9026.nhom",
+          "trich": "Các thiết bị đo hoặc kiểm tra thường được trang bị một bộ phận nhạy cảm với các biến đổi của đại lượng cần đo (ví dụ như ống Bourdon, màng ngăn, ống gió, bán dẫn) làm dịch chuyển một kim hoặc chỉ báo. Ở một số thiết bị, các biến đổi này được biến đổi thành tín hiệu điện."
+        }
+      ],
+      "tienLe": [
+        {
+          "so": "46173/TB-CHQ",
+          "ma": "90262090"
+        }
+      ],
+      "nguon": "tieuDe.902620",
+      "trich": "902620 Để đo hoặc kiểm tra áp suất",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "902690",
+      "thuTu": 3,
+      "dieuKien": "Bộ phận và phụ kiện",
+      "fact": "laBoPhan",
+      "op": "CO",
+      "donVi": null,
+      "nguon": "tax.90269000",
+      "trich": "90269000 - Bộ phận và phụ kiện",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "902680",
+      "thuTu": 4,
+      "phanConLai": true,
+      "nguon": "tax.90268000",
+      "trich": "90268000 - Thiết bị hoặc dụng cụ khác",
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
   "dong8": [
     {
       "hs": "90261050",
@@ -348,6 +419,8 @@
     "tax.90262050",
     "tax.90268000",
     "tax.90269000",
+    "tieuDe.902610",
+    "tieuDe.902620",
     "wco-op.902620.1",
     "wco.902610",
     "wco.902620",
@@ -361,9 +434,9 @@
     "ms": 5
   },
   "kiemTra": {
-    "tong": 26,
-    "dat": 25,
-    "loai": 1,
+    "tong": 28,
+    "dat": 28,
+    "loai": 0,
     "nguonBiCat": [],
     "nangCap": {
       "luc": "2026-10-11",
@@ -373,6 +446,12 @@
         "tieuChi6",
         "phamViLoaiKhac"
       ]
+    },
+    "tieuChi6": {
+      "khuon": "g6@1",
+      "soMuc": 4,
+      "soPhanNhom": 4,
+      "cong": "scripts/kiem-tieu-chi-6.mjs"
     }
   },
   "yKienWcoDayDu": false
