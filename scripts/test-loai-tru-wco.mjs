@@ -116,4 +116,71 @@ kiem('ca ngược: cổng công khai lib/wco-op.js#view vẫn chặn 392490/4 (h
     JSON.stringify({ pbNguoc4014, pbNguoc3926 }));
 }
 
+// 5. OZV-2116 — ca 172 tầng 4 số: Máy xay bột khô → cạnh loại trừ 2 chiều 84.37 ↔ 84.79
+{
+  const H = require('../lib/hoi-theo-so-tay.js');
+  const { soTayGates, nhomLienQuanSoTay } = require('../lib/so-tay-gates.js');
+  const { phanTichHoiTruoc4So, TRANG_THAI_4SO } = require('../lib/do-thi/hoi-truoc-4so.js');
+  const st8437 = docJson('data/so-tay/8437.json');
+  const st8479 = docJson('data/so-tay/8479.json');
+  const muc8437 = (st8437.loaiTru || []).find((x) => x.sangNhom === '8479' && /máy xay bột khô/i.test(x.dieuKien || ''));
+  const muc8479 = (st8479.loaiTru || []).find((x) => x.sangNhom === '8437' && /máy xay bột khô/i.test(x.dieuKien || ''));
+  kiem('OZV-2116: sổ tay 8437↔8479 có loaiTru 2 chiều + canCuLoaiTru nguyên văn (checkItem đạt)',
+    Boolean(muc8437 && muc8479)
+    && muc8437.nguon === 'nhom8437.nhom'
+    && muc8437.canCuLoaiTru?.nguon === 'nhom8479.nhom'
+    && muc8479.nguon === 'nhom8479.nhom'
+    && muc8479.canCuLoaiTru?.nguon === 'nhom8437.nhom'
+    && checkItem('loaiTru', muc8437, sourcesFor('8437'), '8437') === null
+    && checkItem('loaiTru', muc8479, sourcesFor('8479'), '8479') === null,
+    JSON.stringify({ muc8437: Boolean(muc8437), muc8479: Boolean(muc8479) }));
+  kiem('OZV-2116: dieuKien hai chiều 8437↔8479 tách biệt cho hoi-truoc-4so',
+    Boolean(muc8437 && muc8479)
+    && muc8437.dieuKien !== muc8479.dieuKien
+    && !/;/.test(muc8437.dieuKien)
+    && !/;/.test(muc8479.dieuKien),
+    JSON.stringify({ dk8437: muc8437?.dieuKien, dk8479: muc8479?.dieuKien }));
+
+  const moTa172 = 'Máy xay bột khô / thép không gỉ / xay bột khô trong công nghiệp chế biến thức ăn cho động vật';
+  const c5_8437 = D.canhTu('8437', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8479');
+  const c5_8479 = D.canhTu('8479', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8437');
+  const giua = D.canhGiuaNhomConSong(['8437', '8479']).filter((e) => e.loai === 'C5' || e.loai === 'C6');
+  const mr8437 = D.moRongUngVien(['8437'], moTa172);
+  const mr8479 = D.moRongUngVien(['8479'], moTa172);
+  kiem('OZV-2116: đồ thị C5/C6 + canhGiuaNhomConSong + moRongUngVien + nhomLienQuanSoTay nối 2 chiều 8437↔8479',
+    c5_8437.length >= 1
+    && c5_8479.length >= 1
+    && giua.length >= 2
+    && mr8437.some((x) => x.nhom === '8479')
+    && mr8479.some((x) => x.nhom === '8437')
+    && nhomLienQuanSoTay('8437').includes('8479')
+    && nhomLienQuanSoTay('8479').includes('8437'),
+    JSON.stringify({ c5_8437: c5_8437.length, c5_8479: c5_8479.length, giua: giua.length }));
+
+  const pb8437 = H.cauPhanBietNhom('8437', ['8437', '8479'], moTa172);
+  const pb8479 = H.cauPhanBietNhom('8479', ['8479', '8437'], moTa172);
+  const g8437 = soTayGates({ hs: '84378059', productText: moTa172, productName: 'Máy xay bột khô', candidateHeadings: ['8437', '8479'] });
+  const g8479 = soTayGates({ hs: '84798210', productText: moTa172, productName: 'Máy xay bột khô', candidateHeadings: ['8479', '8437'] });
+  const ht172 = phanTichHoiTruoc4So({ moTa: moTa172, ungVien: ['8437', '8479'] });
+  kiem('OZV-2116 (thuận): cauPhanBietNhom, soTayGates và phanTichHoiTruoc4So hoạt động đúng 2 chiều cho ca 172',
+    pb8437.length === 1 && pb8437[0].nguon === 'nhom8437.nhom' && /84\.79/.test(pb8437[0].questionVi)
+    && pb8479.length === 1 && pb8479[0].nguon === 'nhom8479.nhom' && /84\.37/.test(pb8479[0].questionVi)
+    && (g8437.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '8479')
+    && (g8479.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '8437')
+    && ht172.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC
+    && new Set((ht172.nhanh || []).map((n) => n.dieuKien)).size === 2,
+    JSON.stringify({ pb8437, pb8479, ht172: ht172.dapAnDieuKien }));
+
+  const pbNguoc8437 = H.cauPhanBietNhom('8437', ['8437', '8479'], 'Máy đánh bóng gạo hoạt động bằng điện');
+  const pbNguoc8479 = H.cauPhanBietNhom('8479', ['8479', '8437'], 'Máy làm mát không khí bằng bay hơi');
+  const gNguoc8437 = soTayGates({ hs: '84378051', productText: 'Máy đánh bóng gạo hoạt động bằng điện', productName: 'Máy đánh bóng gạo hoạt động bằng điện' });
+  const gNguoc8479 = soTayGates({ hs: '84796000', productText: 'Máy làm mát không khí bằng bay hơi', productName: 'Máy làm mát không khí bằng bay hơi' });
+  kiem('OZV-2116 (đối chứng): máy đánh bóng gạo / máy làm mát không khí không hỏi oan và không bật oan 84.37↔84.79',
+    pbNguoc8437.length === 0
+    && pbNguoc8479.length === 0
+    && !(gNguoc8437.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '8479')
+    && !(gNguoc8479.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '8437'),
+    JSON.stringify({ pbNguoc8437, pbNguoc8479 }));
+}
+
 xong();
