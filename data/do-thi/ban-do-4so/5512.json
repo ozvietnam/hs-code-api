@@ -1,0 +1,114 @@
+{
+  "nhom": "5512",
+  "khuon": "bd4@1",
+  "nguonLoai": "AI_NHAP",
+  "chamCheo": "SUA",
+  "taoBoi": {
+    "provider": "google-studio",
+    "model": "gemini-4-hydrogen",
+    "goi": "30c9bf5229d0"
+  },
+  "kieuNhom": "THEO_VAT_LIEU",
+  "hoSo": {
+    "chucNang": [
+      {
+        "y": "dùng làm vải dệt trang trí",
+        "trich": "vải dệt trang trí",
+        "nguon": "ct.5512.1"
+      },
+      {
+        "y": "dùng làm vải trải bàn",
+        "trich": "vải trải bàn",
+        "nguon": "ct.5512.1"
+      },
+      {
+        "y": "dùng làm khăn tắm",
+        "trich": "khăn tắm",
+        "nguon": "ct.5512.1"
+      }
+    ],
+    "coChe": [],
+    "dangVatLy": [
+      {
+        "y": "dạng vải dệt",
+        "trich": "các loại vải dệt",
+        "nguon": "ct.5512.1"
+      },
+      {
+        "y": "dạng vải dệt thoi",
+        "trich": "vải dệt thoi từ Chương 50 đến 55",
+        "nguon": "phan:50:chu_giai:2d~5"
+      }
+    ],
+    "chatLieu": [
+      {
+        "y": "làm từ xơ staple tổng hợp từ 85% trở lên",
+        "trich": "tỷ trọng xơ staple tổng hợp từ 85% trở lên",
+        "nguon": "ct.5512.1"
+      }
+    ],
+    "oDauAiDung": [
+      {
+        "y": "dùng trong may mặc quần áo",
+        "trich": "được dùng trong may mặc quần áo",
+        "nguon": "ct.5512.1"
+      }
+    ],
+    "hangDuocNeu": [],
+    "dieuKienBatBuoc": [
+      {
+        "y": "tỷ trọng xơ staple tổng hợp từ 85% trở lên",
+        "trich": "có tỷ trọng xơ staple tổng hợp từ 85% trở lên",
+        "nguon": "ct.5512.1"
+      }
+    ]
+  },
+  "canh": [
+    {
+      "den": "3005",
+      "loai": "LOAI_TRU",
+      "dacDiem": "đã tẩm thuốc hoặc đóng gói bán lẻ làm băng y tế hay là vải dệt thoi thường",
+      "neu": "là vải dệt thoi không phải băng tẩm thuốc hoặc băng đóng gói bán lẻ cho y tế",
+      "thi": "5512",
+      "conNeu": "là băng bằng vải đã thấm tráng dược chất dùng cho y tế, phẫu thuật, nha khoa hoặc thú y",
+      "thiKia": "3005",
+      "canCu": [
+        {
+          "nguon": "ct.5512.2",
+          "trich": "Băng, đã tẩm thuốc hoặc đã đóng gói để bán lẻ thì bị loại trừ (nhóm 30.05)."
+        },
+        {
+          "nguon": "ct.3005.1",
+          "trich": "băng và các loại sản phẩm tương tự bằng vải…đã được thấm hoặc tráng bằng dược chất…với mục đích sử dụng cho y tế, phẫu thuật, nha khoa hoặc thú y."
+        }
+      ],
+      "quyTac": "QT1"
+    },
+    {
+      "den": "5407",
+      "loai": "PHAN_BIET",
+      "dacDiem": "cấu trúc sợi dệt vải thuộc Chương 55 (từ xơ cắt ngắn) hay Chương 54 (sợi liên tục)",
+      "neu": "dệt từ xơ cắt ngắn tổng hợp có tỷ trọng từ 85% trở lên",
+      "thi": "5512",
+      "conNeu": "dệt từ sợi multifilament không xoắn hoặc xoắn dưới 5 vòng/m thuộc Chương 54",
+      "thiKia": "5407",
+      "canCu": [
+        {
+          "nguon": "ct.5512.1",
+          "trich": "có tỷ trọng xơ staple tổng hợp từ 85% trở lên"
+        },
+        {
+          "nguon": "phan:50:chu_giai:3b~2",
+          "trich": "Tô (tow) filament nhân tạo thuộc Chương 55 và sợi multifilament không xoắn…hoặc xoắn dưới 5 vòng xoắn trên mét thuộc Chương 54"
+        }
+      ],
+      "quyTac": "QT1"
+    }
+  ],
+  "khongChac": [
+    "Gói không chứa Phần (I)(C) của Chú giải tổng quát Phần XI định nghĩa cách dệt của vải dệt thoi nhóm 5512",
+    "Gói không liệt kê tên loại vải cụ thể thuộc nhóm 5512 ngoài mô tả chung tại ct.5512.1",
+    "Gói không có phần chú giải chi tiết mô tả nhóm 54.07 ngoài liệt kê các phân nhóm"
+  ],
+  "chamCheoGhiChu": "[gemma4:31b, máy GPU nhà] Cạnh 1 bị hổng logic: nếu hàng hóa là băng đóng gói bán lẻ nhưng không tẩm thuốc thì không thỏa mãn cả 'neu' lẫn 'conNeu'. | canh[0].conNeu: Thiếu điều kiện 'đóng gói bán lẻ' để loại trừ sang 3005. Theo ct.5512.2, cả băng 'đã tẩm thuốc' và 'đã đóng gói để bán lẻ' đều bị loại trừ sang nhóm 30.05, nhưng conNeu chỉ nhắc đến 'thấm tráng dược chất'."
+}

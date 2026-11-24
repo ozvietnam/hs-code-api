@@ -1,0 +1,88 @@
+{
+  "nhom": "5207",
+  "khuon": "bd4@1",
+  "nguonLoai": "AI_NHAP",
+  "chamCheo": "SUA",
+  "taoBoi": {
+    "provider": "google-studio",
+    "model": "gemini-4-hydrogen",
+    "goi": "30c9bf5229d0"
+  },
+  "kieuNhom": "THEO_VAT_LIEU",
+  "hoSo": {
+    "chucNang": [],
+    "coChe": [],
+    "dangVatLy": [
+      {
+        "y": "đã đóng gói để bán lẻ",
+        "trich": "đóng gói để bán lẻ",
+        "nguon": "ct.5207.1"
+      },
+      {
+        "y": "dạng sợi có số đo từ 20.000 decitex trở xuống",
+        "trich": "Từ bông hay các xơ (1) Số đo từ 20.000 decitex trở xuống Chương 52 hoặc 53",
+        "nguon": "phan:50:chu_giai:2b~8"
+      }
+    ],
+    "chatLieu": [
+      {
+        "y": "làm từ sợi bông",
+        "trich": "sợi bông",
+        "nguon": "ct.5207.1"
+      }
+    ],
+    "oDauAiDung": [],
+    "hangDuocNeu": [
+      {
+        "ten": "sợi bông đóng gói để bán lẻ",
+        "trich": "sợi bông",
+        "nguon": "ct.5207.1"
+      }
+    ],
+    "dieuKienBatBuoc": [
+      {
+        "y": "đóng gói bán lẻ phù hợp Phần (I)(B)(3) Chú giải tổng quát Phần XI",
+        "trich": "khi đóng gói để bán lẻ, ở các dạng và phù hợp với các điều kiện được mô tả trong Phần (I) (B) (3) của Chú giải Tổng quát Phần XI.",
+        "nguon": "ct.5207.1"
+      },
+      {
+        "y": "độ mảnh từ 20.000 decitex trở xuống",
+        "trich": "Từ bông hay các xơ (1) Số đo từ 20.000 decitex trở xuống Chương 52 hoặc 53",
+        "nguon": "phan:50:chu_giai:2b~8"
+      }
+    ]
+  },
+  "canh": [
+    {
+      "den": "5204",
+      "loai": "LOAI_TRU",
+      "dacDiem": "đã xử lý hoàn tất và xoắn cuối chữ Z để làm chỉ khâu hay sợi bông bán lẻ khác",
+      "neu": "là sợi bông đóng gói để bán lẻ phù hợp Phần (I)(B)(3), không phải chỉ khâu",
+      "thi": "5207",
+      "conNeu": "đã xử lý hoàn tất và có xoắn hình chữ Z cuối cùng để dễ sử dụng làm chỉ khâu",
+      "thiKia": "5204",
+      "canCu": [
+        {
+          "nguon": "ct.5207.1",
+          "trich": "sợi bông (trừ chỉ khâu) khi đóng gói để bán lẻ, ở các dạng và phù hợp với các điều kiện được mô tả trong Phần (I) (B) (3) của Chú giải Tổng quát Phần XI."
+        },
+        {
+          "nguon": "ct.5204.1",
+          "trich": "chỉ khâu làm từ bông ở các dạng và phù hợp với điều kiện đã được mô tả trong Phần (I) (B) (4) của Chú giải Tổng quát Phần XI."
+        },
+        {
+          "nguon": "phan:50:chu_giai:2c~7",
+          "trich": "Với xoắn hình chữ “Z” cuối cùng.…sử dụng sợi dệt được dễ dàng như là chỉ khâu"
+        }
+      ],
+      "quyTac": "QT1"
+    }
+  ],
+  "khongChac": [
+    "Gói không có phần nội dung chi tiết Bảng II của Phần (I)(B)(3) nêu các quy cách đóng gói bán lẻ",
+    "Gói bị thiếu phần đầu của Phần (I)(B)(4) nêu giới hạn trọng lượng trên lõi của chỉ khâu",
+    "Gói không nêu chức năng hoặc cơ chế sử dụng cụ thể của sợi bông nhóm 5207",
+    "Gói không nêu đối tượng hoặc nơi sử dụng cụ thể của sợi bông nhóm 5207"
+  ],
+  "chamCheoGhiChu": "[gemma4:31b, máy GPU nhà] HoSo đúng, chiều cạnh đúng, nhưng dacDiem của cạnh bị áp đặt đặc tính của nhóm 5204 lên nhóm 5207. | canh[0].dacDiem: suy rộng đặc điểm 'xoắn cuối chữ Z' cho sợi bông bán lẻ; luật chỉ quy định đặc điểm này để 'sử dụng sợi dệt được dễ dàng như là chỉ khâu' [phan:50:chu_giai:2c~7], còn sợi bông bán lẻ nhóm 5207 chỉ yêu cầu đóng gói bán lẻ phù hợp điều kiện [ct.5207.1]"
+}

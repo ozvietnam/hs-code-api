@@ -1,0 +1,86 @@
+{
+  "nhom": "5510",
+  "khuon": "bd4@1",
+  "nguonLoai": "AI_NHAP",
+  "chamCheo": "DUYET",
+  "taoBoi": {
+    "provider": "google-studio",
+    "model": "gemini-4-hydrogen",
+    "goi": "30c9bf5229d0"
+  },
+  "kieuNhom": "THEO_VAT_LIEU",
+  "hoSo": {
+    "chucNang": [],
+    "coChe": [],
+    "dangVatLy": [
+      {
+        "y": "sợi đơn, sợi xe hoặc sợi cáp cuốn trong các lõi",
+        "trich": "Sợi đơn, sợi xe hay sợi cáp làm từ vật liệu dệt bất kỳ đã cuốn trong các lõi",
+        "nguon": "phan:50:chu_giai:2g~2"
+      },
+      {
+        "y": "sợi từ xơ nhân tạo có số đo từ 10.000 decitex trở xuống",
+        "trich": "Từ xơ nhân tạo…Số đo từ 10.000 decitex trở xuống Chương 54 hoặc 55",
+        "nguon": "phan:50:chu_giai:2b~8"
+      }
+    ],
+    "chatLieu": [
+      {
+        "y": "làm từ xơ nhân tạo",
+        "trich": "Từ xơ nhân tạo…Số đo từ 10.000 decitex trở xuống Chương 54 hoặc 55",
+        "nguon": "phan:50:chu_giai:2b~8"
+      }
+    ],
+    "oDauAiDung": [
+      {
+        "y": "sử dụng trong công nghiệp dệt",
+        "trich": "đã được chỉ rõ để sử dụng trong công nghiệp dệt",
+        "nguon": "phan:50:chu_giai:2g~2"
+      }
+    ],
+    "hangDuocNeu": [],
+    "dieuKienBatBuoc": [
+      {
+        "y": "áp dụng Chú giải chi tiết nhóm 55.09 một cách tương tự",
+        "trich": "Chú giải chi tiết của nhóm 55.09 được áp dụng, một cách tương tự, với các mặt hàng của nhóm này.",
+        "nguon": "ct.5510.1"
+      },
+      {
+        "y": "số đo từ 10.000 decitex trở xuống",
+        "trich": "Số đo từ 10.000 decitex trở xuống Chương 54 hoặc 55",
+        "nguon": "phan:50:chu_giai:2b~8"
+      }
+    ]
+  },
+  "canh": [
+    {
+      "den": "7019",
+      "loai": "LOAI_TRU",
+      "dacDiem": "bản chất vật liệu là xơ nhân tạo dệt hay sợi thủy tinh",
+      "neu": "làm từ xơ nhân tạo dệt thuộc Chương 55 (không phải sợi thủy tinh)",
+      "thi": "5510",
+      "conNeu": "là sợi thủy tinh hoặc sản phẩm hỗn hợp có đặc tính như sản phẩm dệt từ sợi thủy tinh",
+      "thiKia": "7019",
+      "canCu": [
+        {
+          "nguon": "chuong:55:chu_giai:1d~2",
+          "trich": "(d) Sợi thủy tinh và các mặt hàng từ sợi thủy tinh của nhóm 70.19."
+        },
+        {
+          "nguon": "phan:50:chu_giai:2d~2",
+          "trich": "(d) Sợi thuỷ tinh, sợi, vải và các mặt hàng làm từ chúng, và các loại sản phẩm hỗn hợp làm…từ sợi thuỷ tinh và sợi dệt có đặc tính như sản phẩm dệt từ sợi thuỷ tinh (Chương 70)"
+        },
+        {
+          "nguon": "ct.7019.1",
+          "trich": "bao gồm chính sợi thủy tinh và sợi thủy tinh (kể cả bông thủy tinh như đã được định nghĩa trong Chú giải 4 của Chương này) được làm thành các dạng khác nhau"
+        }
+      ],
+      "quyTac": "QT1"
+    }
+  ],
+  "khongChac": [
+    "Chú giải chi tiết 5510 dẫn chiếu sang nhóm 55.09 nhưng gói không chứa nội dung nhóm 55.09 nên thiếu chức năng, cơ chế và tên hàng cụ thể",
+    "Thuật ngữ xơ staple tái tạo chỉ xuất hiện ở tên nhóm không có id trong gói"
+  ],
+  "chamCheoGhiChu": "[gemma4:31b, máy GPU nhà] Các đặc điểm vật lý, chất liệu và điều kiện bắt buộc khớp chính xác với Chú giải Phần XI và Chú giải Chương 55. Cạnh loại trừ nhóm 70.19 đúng logic và chiều. | "
+}
