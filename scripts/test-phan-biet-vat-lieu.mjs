@@ -999,5 +999,159 @@ for (const c of fixture.ca) {
   );
 }
 
+// OZV-2188 — Cạnh loại trừ 2 chiều 85.35 <-> 85.36 cho ca 103 tầng 4 số
+// "Đầu nối tín hiệu cho cáp dẹt"
+{
+  const S = require('../lib/so-tay.js');
+  const { loadSoTay, soTayGates, nhomLienQuanSoTay } = require('../lib/so-tay-gates.js');
+  const { cauPhanBietNhom } = require('../lib/hoi-theo-so-tay.js');
+  const D = require('../lib/do-thi/index.js');
+  const { phanTichHoiTruoc4So, TRANG_THAI_4SO } = require('../lib/do-thi/hoi-truoc-4so.js');
+  D.datLai();
+
+  const moTaCa103 = 'Đầu nối tín hiệu cho cáp dẹt';
+  const s8535 = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'so-tay', '8535.json'), 'utf8'));
+  const s8536 = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'so-tay', '8536.json'), 'utf8'));
+  const v8535 = S.verifySoTay(s8535, '8535');
+  const v8536 = S.verifySoTay(s8536, '8536');
+  check(
+    '[OZV-2188 verifySoTay] sổ tay 8535 và 8536 đạt 100% (0 mục bị loại)',
+    v8535.loai.length === 0 && v8536.loai.length === 0 && v8535.dat === v8535.tong && v8536.dat === v8536.tong,
+    { loai8535: v8535.loai, loai8536: v8536.loai, tong8535: v8535.tong, tong8536: v8536.tong }
+  );
+
+  const st8535 = loadSoTay('8535');
+  const st8536 = loadSoTay('8536');
+  const lt8535 = (st8535?.loaiTru || []).find((x) => x.sangNhom === '8536');
+  const lt8536 = (st8536?.loaiTru || []).find((x) => x.sangNhom === '8535');
+  check(
+    '[OZV-2188 căn cứ] sổ tay 8535 và 8536 có mục loaiTru 2 chiều 8535 <-> 8536 kèm canCuLoaiTru nguyên văn đạt checkItem',
+    Boolean(
+      lt8535 &&
+        lt8535.nguon === 'nhom8535.nhom' &&
+        lt8535.canCuLoaiTru?.nguon === 'nhom8536.nhom' &&
+        lt8535.dieuKien !== lt8536?.dieuKien &&
+        !/;/.test(lt8535.dieuKien || '') &&
+        S.checkItem('loaiTru', lt8535, S.sourcesFor('8535'), '8535') === null
+    ) &&
+      Boolean(
+        lt8536 &&
+          lt8536.nguon === 'nhom8536.nhom' &&
+          lt8536.canCuLoaiTru?.nguon === 'nhom8535.nhom' &&
+          !/;/.test(lt8536.dieuKien || '') &&
+          S.checkItem('loaiTru', lt8536, S.sourcesFor('8536'), '8536') === null
+      ),
+    { lt8535, lt8536 }
+  );
+
+  const c5Tu8535 = D.canhTu('8535', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8536');
+  const c5Tu8536 = D.canhTu('8536', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8535');
+  const c6Tu8535 = D.canhTu('8535', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '8536');
+  const c6Tu8536 = D.canhTu('8536', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '8535');
+  const giua8535_8536 = D.canhGiuaNhomConSong(['8535', '8536']).filter((e) => e.loai === 'C5' || e.loai === 'C6');
+  const mrTu8535 = D.moRongUngVien(['8535'], moTaCa103);
+  const mrTu8536 = D.moRongUngVien(['8536'], moTaCa103);
+  check(
+    '[OZV-2188 đồ thị 2 chiều] bảng cạnh có C5/C6 8535<->8536, canhGiuaNhomConSong >= 2 và moRongUngVien kéo 2 chiều cho ca 103',
+    c5Tu8535.some((e) => e.nguon === 'nhom8535.nhom' && e.canCuLoaiTru?.nguon === 'nhom8536.nhom') &&
+      c5Tu8536.some((e) => e.nguon === 'nhom8536.nhom' && e.canCuLoaiTru?.nguon === 'nhom8535.nhom') &&
+      c6Tu8535.length >= 1 &&
+      c6Tu8536.length >= 1 &&
+      giua8535_8536.length >= 2 &&
+      mrTu8535.some((x) => x.nhom === '8536') &&
+      mrTu8536.some((x) => x.nhom === '8535'),
+    { c5Tu8535: c5Tu8535.length, c5Tu8536: c5Tu8536.length, giua: giua8535_8536.length, mrTu8535, mrTu8536 }
+  );
+
+  check(
+    '[OZV-2188 nhomLienQuanSoTay] liên kết hai chiều 8535 <-> 8536',
+    nhomLienQuanSoTay('8535').includes('8536') && nhomLienQuanSoTay('8536').includes('8535'),
+    { rel8535: nhomLienQuanSoTay('8535'), rel8536: nhomLienQuanSoTay('8536') }
+  );
+
+  const pb8535 = cauPhanBietNhom('8535', ['8535', '8536'], moTaCa103);
+  check(
+    '[OZV-2188 thuận 8535->8536] 8535 đứng đầu với [8535, 8536] sinh câu phân biệt từ nhom8535.nhom trỏ sang 85.36',
+    pb8535.length === 1 &&
+      pb8535[0].loai === 'PHAN_BIET_NHOM' &&
+      pb8535[0].canCu === 'so-tay' &&
+      pb8535[0].nguon === 'nhom8535.nhom' &&
+      /85\.36/.test(pb8535[0].questionVi) &&
+      /85\.35/.test(pb8535[0].questionVi),
+    { pb8535 }
+  );
+
+  const pb8536 = cauPhanBietNhom('8536', ['8536', '8535'], moTaCa103);
+  check(
+    '[OZV-2188 thuận 8536->8535] 8536 đứng đầu với [8536, 8535] sinh câu phân biệt từ nhom8536.nhom trỏ sang 85.35',
+    pb8536.length === 1 &&
+      pb8536[0].loai === 'PHAN_BIET_NHOM' &&
+      pb8536[0].canCu === 'so-tay' &&
+      pb8536[0].nguon === 'nhom8536.nhom' &&
+      /85\.35/.test(pb8536[0].questionVi) &&
+      /85\.36/.test(pb8536[0].questionVi),
+    { pb8536 }
+  );
+
+  const g8535To8536 = soTayGates({
+    hs: '85359090',
+    productText: moTaCa103,
+    productName: moTaCa103,
+    candidateHeadings: ['8535', '8536'],
+  });
+  const g8536To8535 = soTayGates({
+    hs: '85369099',
+    productText: moTaCa103,
+    productName: moTaCa103,
+    candidateHeadings: ['8536', '8535'],
+  });
+  check(
+    '[OZV-2188 thuận soTayGates] kích hoạt SO_TAY_LOAI_TRU đúng cả 2 chiều 8535 -> 8536 và 8536 -> 8535',
+    (g8535To8536.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8536')) &&
+      (g8536To8535.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8535')),
+    { g8535To8536: g8535To8536.challenges, g8536To8535: g8536To8535.challenges }
+  );
+
+  const dcChongSet8535 = cauPhanBietNhom('8535', ['8535', '8536'], 'Bộ chống sét hoạt động theo nguyên lý phóng xạ thuộc nhóm 90.22');
+  const dcChongSet8536 = cauPhanBietNhom('8536', ['8536', '8535'], 'Bộ chống sét hoạt động theo nguyên lý phóng xạ thuộc nhóm 90.22');
+  const dcChotCua8535 = cauPhanBietNhom('8535', ['8535', '8536'], 'Chốt cửa có gắn công tắc thuộc nhóm 83.01');
+  const dcChotCua8536 = cauPhanBietNhom('8536', ['8536', '8535'], 'Chốt cửa có gắn công tắc thuộc nhóm 83.01');
+  const dcGate8535 = soTayGates({
+    hs: '85354000',
+    productText: 'Bộ chống sét hoạt động theo nguyên lý phóng xạ thuộc nhóm 90.22',
+    productName: 'Bộ chống sét hoạt động theo nguyên lý phóng xạ thuộc nhóm 90.22',
+    candidateHeadings: ['8535', '8536'],
+  });
+  const dcGate8536 = soTayGates({
+    hs: '85365099',
+    productText: 'Chốt cửa có gắn công tắc thuộc nhóm 83.01',
+    productName: 'Chốt cửa có gắn công tắc thuộc nhóm 83.01',
+    candidateHeadings: ['8536', '8535'],
+  });
+  check(
+    '[OZV-2188 đối chứng] bộ chống sét phóng xạ và chốt cửa gắn công tắc không hỏi oan / không kéo oan 85.35 <-> 85.36',
+    dcChongSet8535.length === 0 &&
+      dcChongSet8536.length === 0 &&
+      dcChotCua8535.length === 0 &&
+      dcChotCua8536.length === 0 &&
+      !(dcGate8535.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8536')) &&
+      !(dcGate8536.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8535')) &&
+      !D.moRongUngVien(['8535'], 'Bộ chống sét hoạt động theo nguyên lý phóng xạ thuộc nhóm 90.22').some((x) => x.nhom === '8536') &&
+      !D.moRongUngVien(['8536'], 'Chốt cửa có gắn công tắc thuộc nhóm 83.01').some((x) => x.nhom === '8535'),
+    { dcChongSet8535, dcChongSet8536, dcChotCua8535, dcChotCua8536 }
+  );
+
+  const ht103 = phanTichHoiTruoc4So({ moTa: moTaCa103, ungVien: ['8535', '8536'] });
+  const distinctDk103 = new Set((ht103.nhanh || []).map((n) => n.dieuKien)).size === 2;
+  check(
+    '[OZV-2188 hoi-truoc-4so] ca 103 với [8535, 8536] trả CHUA_CHOT_NHOM_HOI_TRUOC với 2 nhánh điều kiện phân biệt từ đồ thị',
+    ht103.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC &&
+      distinctDk103 &&
+      (ht103.nhanh || []).every((n) => /^do-thi:C[567]:/.test(String(n.nguon || ''))) &&
+      ['8535', '8536'].every((h) => (ht103.dapAnDieuKien || '').includes(`→ nhóm ${h} (`)),
+    { trangThai: ht103.trangThai, distinctDk103, nhanh: ht103.nhanh, dapAnDieuKien: ht103.dapAnDieuKien }
+  );
+}
+
 console.log(`\nphân biệt vật liệu ở tầng tiêu đề 6 số (OZV-558): ${passed} PASS, ${failed} FAIL`);
 process.exit(failed ? 1 : 0);
