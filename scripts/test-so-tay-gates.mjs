@@ -1389,5 +1389,123 @@ check('trangThaiDong8.veMoHinh: 73181510 chấm trọn nhãn "Đường kính ng
     JSON.stringify({ distinct2, distinct5, ht2: ht2.dapAnDieuKien, ht5: ht5.dapAnDieuKien }));
 }
 
+// ── OZV-2205: cạnh loại trừ 2 chiều 59.03 <-> 59.02 cho ca 124 «Vải gió dệt kim / None / None» ──
+{
+  const S = require('../lib/so-tay.js');
+  const D = require('../lib/do-thi/index.js');
+  const { cauPhanBietNhom } = require('../lib/hoi-theo-so-tay.js');
+  const { phanTichHoiTruoc4So, TRANG_THAI_4SO } = require('../lib/do-thi/hoi-truoc-4so.js');
+  const { dataPath } = require('../lib/data-paths.js');
+  fs.mkdirSync(dataPath('so-tay'), { recursive: true });
+  for (const h of ['5903', '5902']) {
+    fs.copyFileSync(path.join('data', 'so-tay', `${h}.json`), dataPath('so-tay', `${h}.json`));
+  }
+  D.datLai();
+
+  const moTa124 = 'Vải gió dệt kim / None / None';
+  const hangThuan5903 =
+    'Vải gió dệt kim thuộc dạng vải mành dùng làm lốp từ sợi có độ bền cao';
+  const hangThuan5902 =
+    'Vải gió dệt kim đã ngâm tẩm, phủ, tráng hoặc ép với plastic nhìn thấy bằng mắt thường';
+  const hangDcBang = 'Băng, đã tẩm thuốc hoặc đóng gói để bán lẻ';
+  const hangDcNhan = 'Các loại nhãn, phù hiệu và các mặt hàng tương tự, dệt kim hoặc móc';
+
+  const s5903 = JSON.parse(fs.readFileSync(path.join('data', 'so-tay', '5903.json'), 'utf8'));
+  const s5902 = JSON.parse(fs.readFileSync(path.join('data', 'so-tay', '5902.json'), 'utf8'));
+  const v5903 = S.verifySoTay(s5903, '5903');
+  const v5902 = S.verifySoTay(s5902, '5902');
+  check('[OZV-2205 verifySoTay] sổ tay 5903 và 5902 đạt 100% (0 mục bị loại)',
+    v5903.loai.length === 0 && v5902.loai.length === 0
+    && v5903.tong === s5903.kiemTra.tong && v5903.dat === s5903.kiemTra.dat
+    && v5902.tong === s5902.kiemTra.tong && v5902.dat === s5902.kiemTra.dat,
+    JSON.stringify({ loai5903: v5903.loai.slice(0, 2), loai5902: v5902.loai.slice(0, 2) }));
+
+  const lt5903 = (loadSoTay('5903')?.loaiTru || []).find((x) => x.sangNhom === '5902');
+  const lt5902 = (loadSoTay('5902')?.loaiTru || []).find((x) => x.sangNhom === '5903');
+  check('[OZV-2205 canCuLoaiTru] loaiTru 2 chiều 5903 <-> 5902 kèm canCuLoaiTru nguyên văn đạt checkItem',
+    Boolean(lt5903 && lt5903.nguon === 'nhom5903.nhom' && lt5903.canCuLoaiTru?.nguon === 'nhom5902.nhom'
+      && !/;/.test(lt5903.dieuKien || '')
+      && S.checkItem('loaiTru', lt5903, S.sourcesFor('5903'), '5903') === null)
+    && Boolean(lt5902 && lt5902.nguon === 'nhom5902.nhom' && lt5902.canCuLoaiTru?.nguon === 'nhom5903.nhom'
+      && !/;/.test(lt5902.dieuKien || '')
+      && lt5903.dieuKien !== lt5902.dieuKien
+      && S.checkItem('loaiTru', lt5902, S.sourcesFor('5902'), '5902') === null),
+    JSON.stringify({ lt5903, lt5902 }));
+
+  const c5Tu5903 = D.canhTu('5903', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '5902');
+  const c5Tu5902 = D.canhTu('5902', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '5903');
+  const c6Tu5903 = D.canhTu('5903', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '5902');
+  const c6Tu5902 = D.canhTu('5902', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '5903');
+  const giua = D.canhGiuaNhomConSong(['5903', '5902']).filter((e) => e.loai === 'C5' || e.loai === 'C6');
+  const mr5903 = D.moRongUngVien(['5903'], moTa124, { toiDa: 10 });
+  const mr5902 = D.moRongUngVien(['5902'], moTa124, { toiDa: 10 });
+  check('[OZV-2205 đồ thị 2 chiều] C5/C6 5903<->5902, canhGiuaNhomConSong >= 2 và moRongUngVien kéo 2 chiều cho ca 124',
+    c5Tu5903.some((e) => e.nguon === 'nhom5903.nhom' && e.canCuLoaiTru?.nguon === 'nhom5902.nhom')
+    && c5Tu5902.some((e) => e.nguon === 'nhom5902.nhom' && e.canCuLoaiTru?.nguon === 'nhom5903.nhom')
+    && c6Tu5903.length >= 1 && c6Tu5902.length >= 1 && giua.length >= 2
+    && mr5903.some((x) => x.nhom === '5902') && mr5902.some((x) => x.nhom === '5903'),
+    JSON.stringify({
+      c5: c5Tu5903.length, c5r: c5Tu5902.length, giua: giua.length,
+      mr5903: mr5903.map((x) => x.nhom), mr5902: mr5902.map((x) => x.nhom),
+    }));
+
+  const rel5903 = [...new Set((loadSoTay('5903')?.loaiTru || []).flatMap((x) => String(x.sangNhom || '').split(/[|,;\s]+/).map((t) => t.replace(/\D/g, '').slice(0, 4)).filter((t) => t.length === 4)))];
+  const rel5902 = [...new Set((loadSoTay('5902')?.loaiTru || []).flatMap((x) => String(x.sangNhom || '').split(/[|,;\s]+/).map((t) => t.replace(/\D/g, '').slice(0, 4)).filter((t) => t.length === 4)))];
+  check('[OZV-2205 nhomLienQuanSoTay] liên kết hai chiều 5903 <-> 5902',
+    rel5903.includes('5902') && rel5902.includes('5903'),
+    JSON.stringify({ rel5903, rel5902 }));
+
+  const pb5903 = cauPhanBietNhom('5903', ['5903', '5902'], moTa124);
+  const pb5902 = cauPhanBietNhom('5902', ['5902', '5903'], moTa124);
+  check('[OZV-2205 cauPhanBietNhom] 5903 đứng đầu sinh câu phân biệt 59.03↔59.02 từ nhom5903.nhom',
+    pb5903.length >= 1 && pb5903[0].loai === 'PHAN_BIET_NHOM' && pb5903[0].canCu === 'so-tay'
+    && pb5903[0].nguon === 'nhom5903.nhom' && /59\.02/.test(pb5903[0].questionVi) && /59\.03/.test(pb5903[0].questionVi),
+    JSON.stringify(pb5903));
+  check('[OZV-2205 cauPhanBietNhom] 5902 đứng đầu sinh câu phân biệt 59.02↔59.03 từ nhom5902.nhom',
+    pb5902.length >= 1 && pb5902[0].loai === 'PHAN_BIET_NHOM' && pb5902[0].canCu === 'so-tay'
+    && pb5902[0].nguon === 'nhom5902.nhom' && /59\.03/.test(pb5902[0].questionVi) && /59\.02/.test(pb5902[0].questionVi),
+    JSON.stringify(pb5902));
+
+  const g5903 = soTayGates({
+    hs: '59031090',
+    productText: hangThuan5903,
+    productName: hangThuan5903,
+    candidateHeadings: ['5903', '5902'],
+  });
+  const g5902 = soTayGates({
+    hs: '59021011',
+    productText: hangThuan5902,
+    productName: hangThuan5902,
+    candidateHeadings: ['5902', '5903'],
+  });
+  check('[OZV-2205 soTayGates] kích hoạt SO_TAY_LOAI_TRU đúng cả 2 chiều 5903 -> 5902 và 5902 -> 5903',
+    (g5903.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('5902'))
+    && (g5902.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('5903')),
+    JSON.stringify({ g5903: g5903.challenges, g5902: g5902.challenges }));
+
+  const dcPb5903 = cauPhanBietNhom('5903', ['5903', '5902'], hangDcBang);
+  const dcPb5902 = cauPhanBietNhom('5902', ['5902', '5903'], hangDcNhan);
+  const dcG5903 = soTayGates({
+    hs: '59031010', productText: hangDcBang, productName: hangDcBang, candidateHeadings: ['5903', '5902'],
+  });
+  const dcG5902 = soTayGates({
+    hs: '59021011', productText: hangDcNhan, productName: hangDcNhan, candidateHeadings: ['5902', '5903'],
+  });
+  check('[OZV-2205 đối chứng] băng tẩm thuốc và nhãn phù hiệu không hỏi oan / không kéo oan 59.03 <-> 59.02',
+    dcPb5903.length === 0 && dcPb5902.length === 0
+    && !(dcG5903.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('5902'))
+    && !(dcG5902.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('5903'))
+    && !D.moRongUngVien(['5903'], hangDcBang).some((x) => x.nhom === '5902')
+    && !D.moRongUngVien(['5902'], hangDcNhan).some((x) => x.nhom === '5903'),
+    JSON.stringify({ dcPb5903, dcPb5902 }));
+
+  const ht124 = phanTichHoiTruoc4So({ moTa: moTa124, ungVien: ['5903', '5902'] });
+  const distinctDk = new Set((ht124.nhanh || []).map((n) => n.dieuKien)).size === 2;
+  check('[OZV-2205 hoi-truoc-4so] ca 124 với [5903, 5902] trả CHUA_CHOT_NHOM_HOI_TRUOC với 2 nhánh điều kiện phân biệt',
+    ht124.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC && distinctDk
+    && ['5903', '5902'].every((h) => (ht124.dapAnDieuKien || '').includes(`→ nhóm ${h} (`)),
+    JSON.stringify({ trangThai: ht124.trangThai, distinctDk, dapAnDieuKien: ht124.dapAnDieuKien }));
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
