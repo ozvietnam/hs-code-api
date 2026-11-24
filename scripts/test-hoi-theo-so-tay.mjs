@@ -353,5 +353,22 @@ const ketQuaSong = (raw = VAN) => ketQuaGia('848180', raw, {}, ['848120']);
     pbNguoc);
 }
 
+// 9) OZV-2072: headingHints 8419/8708/7604 cho «bộ tản nhiệt» — đẩy 84195020 lên top-1 khi có «hợp kim nhôm»
+{
+  const { expandSearchQuery } = require('../lib/search-query-expand.js');
+  const { searchCandidates } = require('../lib/search-utils.js');
+  const moTaNhieu = 'bộ tản nhiệt, model 65k-50l, chất liệu hợp kim nhôm';
+  const hints = expandSearchQuery(moTaNhieu).headingHints || [];
+  check('OZV-2072: expandSearchQuery(bộ tản nhiệt… hợp kim nhôm).headingHints có 8419, 8708, 7604',
+    hints.includes('8419') && hints.includes('8708') && hints.includes('7604'),
+    hints);
+  const top10 = searchCandidates(moTaNhieu, { topCandidates: 10 }).map((c) => c.hsCode);
+  check('OZV-2072: searchCandidates top-1 = 84195020 và top-10 có cả nhóm 8419 lẫn 7604',
+    top10[0] === '84195020'
+    && top10.some((hs) => String(hs).startsWith('8419'))
+    && top10.some((hs) => String(hs).startsWith('7604')),
+    top10);
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
