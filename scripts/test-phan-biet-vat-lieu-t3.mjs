@@ -123,5 +123,93 @@ const msRedos = Date.now() - t0;
 check(`ReDoS: 40.000 từ lặp (${REDOS_LAU.length} ký tự) chạy ${msRedos} ms (< 2000 ms)`,
   msRedos < 2000, { msRedos, ketRedos });
 
+// ─────────────────────────────────────────────────────────────────────────────
+// OZV-2102 — Cạnh loại trừ 2 chiều 82.01 ↔ 70.19 cho ca 38 tầng 4 số ('Sào rút / sợi thủy tinh / hái hoa quả')
+{
+  const D = require('../lib/do-thi/index.js');
+  const ST = require('../lib/so-tay.js');
+  const H = require('../lib/hoi-theo-so-tay.js');
+  const { soTayGates, nhomLienQuanSoTay } = require('../lib/so-tay-gates.js');
+
+  const s8201 = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'so-tay', '8201.json'), 'utf8'));
+  const s7019 = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'so-tay', '7019.json'), 'utf8'));
+  const v8201 = ST.verifySoTay(s8201, '8201');
+  const v7019 = ST.verifySoTay(s7019, '7019');
+  check('OZV-2102: verifySoTay 8201 và 7019 đạt 100% (0 mục bị loại)',
+    v8201.loai.length === 0 && v7019.loai.length === 0,
+    { loai8201: v8201.loai, loai7019: v7019.loai });
+
+  const c5_8201_7019 = D.canhTu('8201', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '7019');
+  const c5_7019_8201 = D.canhTu('7019', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8201');
+  const c6_7019_8201 = D.canhTu('7019', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '8201');
+  const c6_8201_7019 = D.canhTu('8201', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '7019');
+  check('OZV-2102: đồ thị 2 chiều C5/C6 giữa 8201 ↔ 7019 giữ đủ trích nguồn + canCuLoaiTru',
+    c5_8201_7019.some((e) => e.nguon === 'nhom8201.nhom' && e.canCuLoaiTru?.nguon === 'nhom7019.nhom')
+    && c5_7019_8201.some((e) => e.nguon === 'nhom7019.nhom' && e.canCuLoaiTru?.nguon === 'nhom8201.nhom')
+    && c6_7019_8201.length >= 1
+    && c6_8201_7019.length >= 1,
+    { c5_8201_7019: c5_8201_7019.length, c5_7019_8201: c5_7019_8201.length });
+
+  const moTaCa38 = 'Sào rút / sợi thủy tinh / hái hoa quả';
+  const mo8201 = D.moRongUngVien(['8201'], moTaCa38, { toiDa: 10 });
+  const mo7019 = D.moRongUngVien(['7019'], moTaCa38, { toiDa: 10 });
+  check('OZV-2102: moRongUngVien kéo 2 chiều 8201 ↔ 7019 trên ca 38 "Sào rút / sợi thủy tinh / hái hoa quả"',
+    mo8201.some((x) => x.nhom === '7019') && mo7019.some((x) => x.nhom === '8201'),
+    { tu8201: mo8201.map((x) => x.nhom), tu7019: mo7019.map((x) => x.nhom) });
+
+  const rel8201 = nhomLienQuanSoTay('8201');
+  const rel7019 = nhomLienQuanSoTay('7019');
+  check('OZV-2102: nhomLienQuanSoTay hai chiều 8201 ↔ 7019',
+    rel8201.includes('7019') && rel7019.includes('8201'),
+    { rel8201, rel7019 });
+
+  const g8201To7019 = soTayGates({
+    hs: '82019000',
+    productText: 'Thân sào bằng sợi thủy tinh đơn thuần chưa gắn đầu dụng cụ nông nghiệp',
+    productName: 'Thân sào bằng sợi thủy tinh đơn thuần chưa gắn đầu dụng cụ nông nghiệp',
+    candidateHeadings: ['8201', '7019'],
+  });
+  const g7019To8201 = soTayGates({
+    hs: '70199090',
+    productText: 'Dụng cụ cầm tay sử dụng trong nông nghiệp hái hoa quả có đầu cắt gắn trên sào rút bằng sợi thủy tinh',
+    productName: 'Dụng cụ cầm tay sử dụng trong nông nghiệp hái hoa quả có đầu cắt gắn trên sào rút bằng sợi thủy tinh',
+    candidateHeadings: ['7019', '8201'],
+  });
+  check('OZV-2102 (thuận soTayGates): kích hoạt SO_TAY_LOAI_TRU đúng cả 2 chiều 8201 → 7019 và 7019 → 8201',
+    (g8201To7019.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('7019'))
+    && (g7019To8201.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8201')),
+    { g8201To7019: g8201To7019.challenges, g7019To8201: g7019To8201.challenges });
+
+  const gDoi8201 = soTayGates({
+    hs: '82011000',
+    productText: 'Mai và xẻng bằng thép dùng trong nông nghiệp',
+    productName: 'Mai và xẻng bằng thép dùng trong nông nghiệp',
+    candidateHeadings: ['8201', '7019'],
+  });
+  const gDoi7019 = soTayGates({
+    hs: '70198010',
+    productText: 'Len thủy tinh cách nhiệt dạng cuộn',
+    productName: 'Len thủy tinh cách nhiệt dạng cuộn',
+    candidateHeadings: ['7019', '8201'],
+  });
+  check('OZV-2102 (đối chứng soTayGates): hàng thật của 8201 (mai và xẻng) và 7019 (len thủy tinh) không kích hoạt oan 8201 ↔ 7019',
+    !(gDoi8201.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('7019'))
+    && !(gDoi7019.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8201')),
+    { gDoi8201: gDoi8201.challenges, gDoi7019: gDoi7019.challenges });
+
+  const pb8201 = H.cauPhanBietNhom('8201', ['8201', '7019'], moTaCa38);
+  const pb7019 = H.cauPhanBietNhom('7019', ['7019', '8201'], moTaCa38);
+  check('OZV-2102 (thuận cauPhanBietNhom): sinh câu PHAN_BIET_NHOM 2 chiều 82.01 ↔ 70.19 cho ca 38',
+    pb8201.length === 1 && pb8201[0].nguon === 'nhom8201.nhom' && /70\.19/.test(pb8201[0].questionVi)
+    && pb7019.length === 1 && pb7019[0].nguon === 'nhom7019.nhom' && /82\.01/.test(pb7019[0].questionVi),
+    { pb8201, pb7019 });
+
+  const pbDoi8201 = H.cauPhanBietNhom('8201', ['8201', '7019'], 'Mai và xẻng bằng thép dùng trong nông nghiệp');
+  const pbDoi7019 = H.cauPhanBietNhom('7019', ['7019', '8201'], 'Len thủy tinh cách nhiệt dạng cuộn');
+  check('OZV-2102 (đối chứng cauPhanBietNhom): không hỏi oan 82.01 ↔ 70.19 trên hàng không liên quan',
+    pbDoi8201.length === 0 && pbDoi7019.length === 0,
+    { pbDoi8201, pbDoi7019 });
+}
+
 console.log(`\nvật liệu tổng hợp (composite) — OZV-581 / OZV-540 PA-3: ${passed} PASS, ${failed} FAIL`);
 process.exit(failed ? 1 : 0);
