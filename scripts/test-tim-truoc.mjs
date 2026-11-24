@@ -180,6 +180,18 @@ const hBat = await chay('气动电磁阀 4V210-08', [R1_VAN_8412, R2_VAN], [], {
 const hTat = await chay('气动电磁阀 4V210-08', [R1_VAN_8412, R2_VAN], []);
 check('CA NGƯỢC: tên chữ Hán BẬT → đầu vào vòng 1 trùng từng byte với lượt TẮT, engine.timTruoc ghi BO_QUA_TEN_CHU_HAN', hBat.calls[0].user === hTat.calls[0].user && hBat.out.engine.timTruoc?.trangThai === 'BO_QUA_TEN_CHU_HAN');
 
+// ───────────────────────── 7. HS_TIM_TRUOC=goi: gói phân biệt ở vòng 2 (kế hoạch đồ thị mục 5 bước 4) ─────────────────────────
+const KP = require('../lib/do-thi/khoi-phan-biet.js');
+const goi = await chay(VAN, [R1_VAN_8412, R2_VAN], OZ_VAN, { HS_TIM_TRUOC: 'goi' });
+check('GOI: đầu vào vòng 1 trùng từng byte với on; lời dặn hệ thống hai vòng không đổi', goi.calls[0].user === toiThieu.calls[0].user && sha(goi.calls[0].system) === sha(tat.calls[0].system) && sha(goi.calls[1].system) === sha(tat.calls[1].system));
+check('GOI: đầu vào vòng 2 = gói vòng 2 cũ + đúng một khối phân biệt ở cuối', goi.calls[1].user.startsWith(`${tat.calls[1].user}\n\n${KP.NHAN}:\n`) && goi.calls[1].user.split(KP.NHAN).length === 2, goi.calls[1].user.slice(-600));
+check('GOI: engine.goiPhanBiet ghi nhóm còn sống (8412 vòng 1 đứng đầu, có 8481, tối đa 3) và kyTu ≤ 7000', goi.out.engine.goiPhanBiet?.nhom[0] === '8412' && goi.out.engine.goiPhanBiet.nhom.includes('8481') && goi.out.engine.goiPhanBiet.nhom.length <= 3 && goi.out.engine.goiPhanBiet.kyTu > 0 && goi.out.engine.goiPhanBiet.kyTu <= 7000, JSON.stringify(goi.out.engine.goiPhanBiet));
+check('GOI: module không chọn mã — mã cuối vẫn là mã vòng 2 đưa ra', goi.out.results?.[0]?.hs === '84812090', goi.out.results?.[0]?.hs);
+check('CA NGƯỢC: on / tắt không có khối phân biệt, không có engine.goiPhanBiet', [tat, bat, toiThieu].every((x) => !x.calls.some((c) => c.user.includes(KP.NHAN)) && !('goiPhanBiet' in x.out.engine)));
+check('CA NGƯỢC: chỉ một nhóm còn sống → khối rỗng', KP.khoiPhanBiet([{ heading4: '8481' }], []).khoi === '' && KP.khoiPhanBiet(null, undefined).khoi === '');
+check('nhóm còn sống: vòng 1 trước, bỏ trùng, tối đa 3, bỏ giá trị lạ', JSON.stringify(KP.nhomConSong([{ heading4: '84.12' }, { heading4: null }, {}], ['8481', '8412', 'x', '8414', '8424'])) === '["8412","8481","8414"]');
+check('mọi dòng trong khối chỉ nối hai nhóm còn sống', KP.khoiPhanBiet([{ heading4: '8412' }], ['8481']).khoi.split('\n').slice(1).every((d) => /\(8412-8481\)/.test(d)));
+
 // Chi phí thêm vào vòng 1 / vòng 2 của ca van (in ra để dán vào PR — không phải phép kiểm).
 console.log(`CHI_PHI (NAP=5) ca van: vòng 1 +${bat.calls[0].user.length - tat.calls[0].user.length} ký tự (${tat.calls[0].user.length} → ${bat.calls[0].user.length}); gói vòng 2 +${bat.calls[1].user.length - tat.calls[1].user.length} ký tự (${tat.calls[1].user.length} → ${bat.calls[1].user.length}); nhóm trong gather ${tat.out.candidates.headings.length} → ${bat.out.candidates.headings.length}; tìm trước ${bat.out.engine.timTruoc.ms} ms`);
 console.log(`CHI_PHI (NAP=5) ca kính: vòng 1 +${kBat.calls[0].user.length - kTat.calls[0].user.length} ký tự; gói vòng 2 +${kBat.calls[1].user.length - kTat.calls[1].user.length} ký tự (${kTat.calls[1].user.length} → ${kBat.calls[1].user.length}); nhóm trong gather ${kTat.out.candidates.headings.length} → ${kBat.out.candidates.headings.length}; tìm trước ${kBat.out.engine.timTruoc.ms} ms`);
