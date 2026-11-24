@@ -182,5 +182,151 @@ assert('nhãn câu hỏi là "mũ giày", không còn "mũi giày"', Boolean(qUp
 r = await call({ hs: '64029990', productText: 'Giày thể thao, mũ giày bằng vải lưới, đế EVA' });
 assert('"mũ giày bằng vải lưới, đế EVA" → không hỏi upper/sole', !keys(r).includes('upperMaterial') && !keys(r).includes('soleMaterial'), keys(r));
 
+
+// ───────────── OZV-2131: cạnh loại trừ 2 chiều 85.36 <-> 85.42 cho ca 138 ─────────────
+// "Module cảm biến chuyển động / None / Phát hiện chuyển động" (nhomNhan: ["8536"], heNhom: "8542").
+{
+  const S2131 = require('../lib/so-tay.js');
+  const { loadSoTay: loadSoTay2131, soTayGates: soTayGates2131, nhomLienQuanSoTay: nhomLienQuan2131 } = require('../lib/so-tay-gates.js');
+  const { cauPhanBietNhom: cauPhanBiet2131 } = require('../lib/hoi-theo-so-tay.js');
+  const D2131 = require('../lib/do-thi/index.js');
+  const { phanTichHoiTruoc4So: hoiTruoc2131, TRANG_THAI_4SO: TT2131 } = require('../lib/do-thi/hoi-truoc-4so.js');
+  const ROOT2131 = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+
+  // test-isolate đã tạo TEST_DATA_DIR/so-tay (chỉ 8481) → dataReadPath('so-tay') đọc thư mục đó và
+  // che mất sổ tay gốc khi dựng bảng cạnh. Chép 8536/8542 vào isolate rồi datLai().
+  fs.mkdirSync(path.join(TEST_DATA_DIR, 'so-tay'), { recursive: true });
+  for (const nh of ['8536', '8542']) {
+    fs.copyFileSync(path.join(ROOT2131, 'data', 'so-tay', `${nh}.json`), path.join(TEST_DATA_DIR, 'so-tay', `${nh}.json`));
+  }
+  D2131.datLai();
+
+  const moTaCa138 = 'Module cảm biến chuyển động / None / Phát hiện chuyển động';
+  const moTaKhop138 = 'Module cảm biến chuyển động, công tắc đóng ngắt chuyển mạch phát hiện chuyển động';
+
+  const s8536 = JSON.parse(fs.readFileSync(path.join(ROOT2131, 'data', 'so-tay', '8536.json'), 'utf8'));
+  const s8542 = JSON.parse(fs.readFileSync(path.join(ROOT2131, 'data', 'so-tay', '8542.json'), 'utf8'));
+  const v8536 = S2131.verifySoTay(s8536, '8536');
+  const v8542 = S2131.verifySoTay(s8542, '8542');
+  assert(
+    '[OZV-2131 verifySoTay] sổ tay 8536 và 8542 đạt 100% (0 mục bị loại)',
+    v8536.loai.length === 0 && v8542.loai.length === 0,
+    { loai8536: v8536.loai, loai8542: v8542.loai }
+  );
+
+  const st8536 = loadSoTay2131('8536');
+  const st8542 = loadSoTay2131('8542');
+  const lt8536 = (st8536?.loaiTru || []).find((x) => x.sangNhom === '8542');
+  const lt8542 = (st8542?.loaiTru || []).find((x) => x.sangNhom === '8536');
+  assert(
+    '[OZV-2131 căn cứ] sổ tay 8536 và 8542 có mục loaiTru 2 chiều 8536 <-> 8542 từ ch85.chuong đạt checkItem',
+    Boolean(
+      lt8536 &&
+        lt8536.nguon === 'ch85.chuong' &&
+        S2131.checkItem('loaiTru', lt8536, S2131.sourcesFor('8536'), '8536') === null
+    ) &&
+      Boolean(
+        lt8542 &&
+          lt8542.nguon === 'ch85.chuong' &&
+          S2131.checkItem('loaiTru', lt8542, S2131.sourcesFor('8542'), '8542') === null
+      ),
+    { lt8536, lt8542 }
+  );
+
+  const c5Tu8536 = D2131.canhTu('8536', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8542');
+  const c5Tu8542 = D2131.canhTu('8542', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8536');
+  const c6Tu8536 = D2131.canhTu('8536', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '8542');
+  const c6Tu8542 = D2131.canhTu('8542', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '8536');
+  const giua8536_8542 = D2131.canhGiuaNhomConSong(['8536', '8542']).filter((e) => e.loai === 'C5' || e.loai === 'C6');
+  const mrTu8536 = D2131.moRongUngVien(['8536'], moTaKhop138, { toiDa: 10 });
+  const mrTu8542 = D2131.moRongUngVien(['8542'], moTaKhop138, { toiDa: 10 });
+  assert(
+    '[OZV-2131 đồ thị 2 chiều] bảng cạnh có C5/C6 8536<->8542, canhGiuaNhomConSong >= 2 và moRongUngVien kéo 2 chiều cho ca 138',
+    c5Tu8536.some((e) => e.nguon === 'ch85.chuong') &&
+      c5Tu8542.some((e) => e.nguon === 'ch85.chuong') &&
+      c6Tu8536.length >= 1 &&
+      c6Tu8542.length >= 1 &&
+      giua8536_8542.length >= 2 &&
+      mrTu8536.some((x) => x.nhom === '8542') &&
+      mrTu8542.some((x) => x.nhom === '8536'),
+    { c5Tu8536: c5Tu8536.length, c5Tu8542: c5Tu8542.length, giua: giua8536_8542.length, mrTu8536, mrTu8542 }
+  );
+
+  assert(
+    '[OZV-2131 nhomLienQuanSoTay] liên kết hai chiều 8536 <-> 8542',
+    nhomLienQuan2131('8536').includes('8542') && nhomLienQuan2131('8542').includes('8536'),
+    { rel8536: nhomLienQuan2131('8536'), rel8542: nhomLienQuan2131('8542') }
+  );
+
+  const pb8536 = cauPhanBiet2131('8536', ['8536', '8542'], moTaKhop138);
+  assert(
+    '[OZV-2131 thuận 8536->8542] 8536 đứng đầu với [8536, 8542] sinh câu phân biệt từ ch85.chuong trỏ sang 85.42',
+    pb8536.length === 1 &&
+      pb8536[0].loai === 'PHAN_BIET_NHOM' &&
+      pb8536[0].canCu === 'so-tay' &&
+      pb8536[0].nguon === 'ch85.chuong' &&
+      /85\.42/.test(pb8536[0].questionVi) &&
+      /85\.36/.test(pb8536[0].questionVi),
+    { pb8536 }
+  );
+
+  const pb8542 = cauPhanBiet2131('8542', ['8542', '8536'], moTaKhop138);
+  assert(
+    '[OZV-2131 thuận 8542->8536] 8542 đứng đầu với [8542, 8536] sinh câu phân biệt từ ch85.chuong trỏ sang 85.36',
+    pb8542.length === 1 &&
+      pb8542[0].loai === 'PHAN_BIET_NHOM' &&
+      pb8542[0].canCu === 'so-tay' &&
+      pb8542[0].nguon === 'ch85.chuong' &&
+      /85\.36/.test(pb8542[0].questionVi) &&
+      /85\.42/.test(pb8542[0].questionVi),
+    { pb8542 }
+  );
+
+  const g8536To8542 = soTayGates2131({
+    hs: '85365099',
+    productText: 'Mạch tích hợp điện tử IC đơn khối lai đa chip MCO thỏa Chú giải 12(b) Chương 85',
+    productName: 'Mạch tích hợp điện tử IC đơn khối',
+    candidateHeadings: ['8536', '8542'],
+  });
+  const g8542To8536 = soTayGates2131({
+    hs: '85423100',
+    productText: 'Cảm biến chuyển động dạng mô-đun đóng ngắt chuyển mạch công tắc dùng cho mạch điện áp không quá 1000 V',
+    productName: 'Module cảm biến chuyển động',
+    candidateHeadings: ['8542', '8536'],
+  });
+  assert(
+    '[OZV-2131 thuận soTayGates] kích hoạt SO_TAY_LOAI_TRU đúng cả 2 chiều 8536 -> 8542 và 8542 -> 8536',
+    (g8536To8542.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8542')) &&
+      (g8542To8536.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8536')),
+    { g8536To8542: g8536To8542.challenges, g8542To8536: g8542To8536.challenges }
+  );
+
+  // Tránh chữ "cắm" (→ cam) vì khớp nhầm âm tiết đầu "cảm" của điều kiện loại trừ.
+  const dcBienAp8536 = cauPhanBiet2131('8536', ['8536', '8542'], 'Máy biến áp điện nguồn 220V');
+  const dcBienAp8542 = cauPhanBiet2131('8542', ['8542', '8536'], 'Máy biến áp điện nguồn 220V');
+  const dcDram8536 = cauPhanBiet2131('8536', ['8536', '8542'], 'Bộ nhớ DRAM bán dẫn');
+  const dcDram8542 = cauPhanBiet2131('8542', ['8542', '8536'], 'Bộ nhớ DRAM bán dẫn');
+  assert(
+    '[OZV-2131 đối chứng] máy biến áp và bộ nhớ DRAM không hỏi oan / không kéo oan 85.36 <-> 85.42',
+    dcBienAp8536.length === 0 &&
+      dcBienAp8542.length === 0 &&
+      dcDram8536.length === 0 &&
+      dcDram8542.length === 0 &&
+      !D2131.moRongUngVien(['8536'], 'Máy biến áp điện nguồn 220V').some((x) => x.nhom === '8542') &&
+      !D2131.moRongUngVien(['8542'], 'Bộ nhớ DRAM bán dẫn').some((x) => x.nhom === '8536'),
+    { dcBienAp8536, dcBienAp8542, dcDram8536, dcDram8542 }
+  );
+
+  const ht138 = hoiTruoc2131({ moTa: moTaCa138, ungVien: ['8536', '8542'] });
+  const distinctDk138 = new Set((ht138.nhanh || []).map((n) => n.dieuKien)).size === 2;
+  assert(
+    '[OZV-2131 hoi-truoc-4so] ca 138 với [8536, 8542] trả CHUA_CHOT_NHOM_HOI_TRUOC với 2 nhánh điều kiện phân biệt',
+    ht138.trangThai === TT2131.CHUA_CHOT_NHOM_HOI_TRUOC &&
+      distinctDk138 &&
+      ['8536', '8542'].every((h) => (ht138.dapAnDieuKien || '').includes(`→ nhóm ${h} (`)),
+    { trangThai: ht138.trangThai, distinctDk138, dapAnDieuKien: ht138.dapAnDieuKien }
+  );
+}
+
 console.log(`\n${passed} passed, ${failed} failed`);
 process.exit(failed ? 1 : 0);
