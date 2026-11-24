@@ -4609,6 +4609,93 @@
    "gir": "GIR 1 + GIR 6",
    "basis": "RULE_TABLE",
    "sourceVi": "Biểu thuế 85168010/030/090 (điện trở đốt nóng bằng điện). Chú giải nhóm 85.33 loại trừ heating resistors → 85.16. conflicts.json 85168090↔8533. OZV-2038: thực địa 24/11 «điện trở 8*60 mm, điện áp 220v, công suất 150w» · 2 lượt · 1 ra 8 số lệch 85169040 / 1 dừng 6 số; search top 8533; không có mục từ điển."
+  },
+  {
+   "id": "dong-ho-do-ap-do-dong-chong-mat-pha",
+   "titleVi": "Đồng hồ đo điện áp / dòng điện và thiết bị chống mất pha (tủ điện 3 pha)",
+   "terms": [
+    "đồng hồ đo dòng",
+    "đồng hồ đo điện áp",
+    "đồng hồ đo dòng điện",
+    "đồng hồ đo áp đo dòng",
+    "chống mất pha",
+    "rơ le chống mất pha",
+    "rơ le bảo vệ mất pha",
+    "bộ bảo vệ mất pha"
+   ],
+   "excludeIfAny": [
+    "áp suất",
+    "ap suat",
+    "pressure",
+    "manometer",
+    "đeo tay",
+    "deo tay",
+    "xem giờ",
+    "xem gio",
+    "wristwatch",
+    "công tơ",
+    "cong to",
+    "kWh",
+    "đếm vòng",
+    "dem vong"
+   ],
+   "excludeReasonVi": "«Đồng hồ đo áp suất» là dụng cụ đo áp suất lưu chất (nhóm 90.26), không phải đồng hồ đo điện áp. Đồng hồ đeo tay / xem giờ thuộc Chương 91. Công tơ điện năng thuộc 90.28; đồng hồ đếm vòng/tốc độ thuộc 90.29. Mục này chỉ cho dụng cụ đo đại lượng điện và rơ le/bảo vệ mất pha trên tủ điện.",
+   "candidates": [
+    {
+     "hs": "90303390",
+     "whenVi": "Đồng hồ / dụng cụ đo điện áp hoặc dòng điện (vôn kế, ampe kế) gắn tủ, không có thiết bị ghi — lá «Loại khác» 9030.33.90.",
+     "confidence": "high"
+    },
+    {
+     "hs": "90303100",
+     "whenVi": "Máy đo đa năng điện áp/dòng điện (và có thể thêm điện trở) không bao gồm thiết bị ghi — 9030.31.00.",
+     "confidence": "medium"
+    },
+    {
+     "hs": "85363090",
+     "whenVi": "Thiết bị bảo vệ mạch điện chống mất pha, điện áp ≤ 1.000 V — lá «Loại khác» 8536.30.90.",
+     "confidence": "medium"
+    },
+    {
+     "hs": "85364990",
+     "whenVi": "Rơ le bảo vệ mất pha, điện áp > 60 V — lá «Loại khác» 8536.49.90.",
+     "confidence": "medium"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "9110",
+     "whyVi": "Nhóm 91.10 là bộ máy đồng hồ đeo tay / đồng hồ xem giờ (Chương 91). Cụm «đồng hồ» trong câu đo điện không phải máy đồng hồ thời gian — search thô kéo 91101100 là bẫy thực địa OZV-2089."
+    },
+    {
+     "prefix": "9105",
+     "whyVi": "9105 là đồng hồ báo thức / đồng hồ bàn tường (xem giờ) — không phải dụng cụ đo điện."
+    },
+    {
+     "prefix": "9102",
+     "whyVi": "9102 là đồng hồ đeo tay hoàn chỉnh — không phải dụng cụ đo điện áp/dòng."
+    },
+    {
+     "prefix": "9026",
+     "whyVi": "Nhóm 90.26 là dụng cụ đo hoặc kiểm tra áp suất của chất lỏng hoặc khí. «Đồng hồ đo áp» trong câu tủ điện 3 pha là đo điện áp, không phải áp suất lưu chất."
+    },
+    {
+     "prefix": "9028",
+     "whyVi": "9028 là công tơ điện năng (đếm kWh), khác dụng cụ đo điện áp/dòng tức thời nhóm 90.30."
+    },
+    {
+     "prefix": "9029",
+     "whyVi": "9029 là đồng hồ đếm vòng / tốc độ / sản lượng — không phải vôn kế/ampe kế."
+    }
+   ],
+   "askVi": [
+    "Hàng là đồng hồ/dụng cụ đo điện áp hoặc dòng điện (vôn kế, ampe kế), hay là rơ le / bộ bảo vệ chống mất pha?",
+    "Nếu là dụng cụ đo: chỉ đo một đại lượng (áp hoặc dòng) hay đo đa năng? Có thiết bị ghi (logger) không?",
+    "Nếu là bảo vệ mất pha: điện áp làm việc ≤ 1.000 V (→ xem 8536.30) hay rơ le điện áp > 60 V (→ xem 8536.49)?"
+   ],
+   "gir": "GIR 1 + GIR 6",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Chú giải nhóm 90.30 Phần (B) (dụng cụ đo đại lượng điện: dòng điện, điện áp) và Chú giải nhóm 85.36 Phần (I)(C) / (II) (rơ le điện áp, thiết bị bảo vệ mạch điện). OZV-2089: thực địa «đồng hồ đo áp, đo dòng, chống mất pha , 3pha -380v» search thô kéo 91101100 / 90262090. Không đặt term trần «đồng hồ đo áp» trong trade-synonyms vì hs-aliases gắn cụm đó → 9026 (đo áp suất); phân biệt bằng «đồng hồ đo điện áp» / «đồng hồ đo áp đo dòng» + excludeIfAny «áp suất»."
   }
  ],
  "updatedAt": "2026-11-24"

@@ -1240,6 +1240,59 @@ console.log('\n== Ứng viên cấp nhóm: cộng điểm cho lá khớp lời v
   }
 }
 
+// OZV-2089 — thực địa «đồng hồ đo áp, đo dòng, chống mất pha , 3pha -380v»
+// không bị «đồng hồ» kéo sang 9110 (bộ máy đồng hồ đeo tay) / 9026 (đồng hồ đo áp suất).
+{
+  const TEN =
+    'đồng hồ đo áp, đo dòng, chống mất pha , 3pha -380v';
+  check(
+    'OZV-2089 câu thực địa khớp mục dong-ho-do-ap-do-dong-chong-mat-pha',
+    lookupTradeTerms(TEN).matches.some((m) => m.entryId === 'dong-ho-do-ap-do-dong-chong-mat-pha'),
+  );
+  {
+    const hints = tradeClassifyHints(TEN);
+    check(
+      'OZV-2089 tradeClassifyHints preferHeadings có 9030 và 8536',
+      hints.preferHeadings.includes('9030') && hints.preferHeadings.includes('8536'),
+      `nhận ${hints.preferHeadings.join(',') || '[]'}`,
+    );
+    check(
+      'OZV-2089 tradeClassifyHints avoidPrefixes có 9110 và 9026',
+      hints.avoidPrefixes.includes('9110') && hints.avoidPrefixes.includes('9026'),
+      `nhận ${hints.avoidPrefixes.join(',') || '[]'}`,
+    );
+    check(
+      'OZV-2089 preferCodes có 90303390 (high)',
+      hints.preferCodes.some((c) => c.hs === '90303390' && c.confidence === 'high'),
+      `nhận ${hints.preferCodes.map((c) => `${c.hs}:${c.confidence}`).join(',')}`,
+    );
+  }
+  {
+    const top = searchCandidates(TEN, { topCandidates: 5 }).map((c) => c.hsCode);
+    check(
+      'OZV-2089 searchCandidates top-1 = 90303390',
+      top[0] === '90303390',
+      `nhận ${top.join(',') || '[]'}`,
+    );
+    check(
+      'OZV-2089 searchCandidates top-5 không còn 9110*',
+      top.every((hs) => !String(hs).startsWith('9110')),
+      `nhận ${top.join(',') || '[]'}`,
+    );
+  }
+  for (const q of [
+    'đồng hồ đeo tay cơ tự động',
+    'đồng hồ đo áp suất khí nén 10 bar',
+  ]) {
+    check(
+      `OZV-2089 đối chứng «${q}» không kích hoạt dong-ho-do-ap-do-dong-chong-mat-pha`,
+      !(lookupTradeTerms(q).matches || []).some(
+        (m) => m.entryId === 'dong-ho-do-ap-do-dong-chong-mat-pha',
+      ),
+    );
+  }
+}
+
 console.log('\n== Thống kê ==');
 {
   const s = tradeTermStats();
