@@ -17,8 +17,8 @@ import path from 'node:path';
   st8481.dong8 = (st8481.dong8 || []).map((d) => (d.hs in old848110 ? { ...d, dieuKienSo: old848110[d.hs] } : d));
   st8481.dieuKienNut = (st8481.dieuKienNut || []).filter((n) => !String(n.id || '').startsWith('848110'));
   fs.writeFileSync(path.join(TEST_DATA_DIR, 'so-tay/8481.json'), JSON.stringify(st8481));
-  // OZV-2178 / OZV-2181 / OZV-2185 / OZV-2195 / OZV-2198 / OZV-2204: nạp sớm trước khi nhomLienQuanSoTay dựng chỉ mục _canhSoTay lần đầu.
-  for (const nh of ['8449', '8479', '8483', '8515', '5903', '5907', '8541', '8543', '8539', '9013']) {
+  // OZV-2178 / OZV-2181 / OZV-2185 / OZV-2195 / OZV-2198 / OZV-2204 / OZV-2211: nạp sớm trước khi nhomLienQuanSoTay dựng chỉ mục _canhSoTay lần đầu.
+  for (const nh of ['4016', '8449', '8479', '8483', '8515', '5903', '5907', '8541', '8543', '8539', '9013']) {
     fs.copyFileSync(path.join('data', 'so-tay', `${nh}.json`), path.join(TEST_DATA_DIR, 'so-tay', `${nh}.json`));
   }
 }
@@ -1864,6 +1864,179 @@ assert('"mũ giày bằng vải lưới, đế EVA" → không hỏi upper/sole'
       distinctDk162Full,
       nhanhFull: ht162Full.nhanh,
     }
+  );
+}
+
+// ───────────── OZV-2211: cạnh loại trừ 2 chiều 40.16 <-> 84.79 cho ca thực địa 24h 'núm hút mbs-15, silicon, đường kính lỗ 2,5mm' ─────────────
+{
+  const S2211 = require('../lib/so-tay.js');
+  const { loadSoTay: loadSoTay2211, soTayGates: soTayGates2211, nhomLienQuanSoTay: nhomLienQuan2211 } = require('../lib/so-tay-gates.js');
+  const { cauPhanBietNhom: cauPhanBiet2211 } = require('../lib/hoi-theo-so-tay.js');
+  const D2211 = require('../lib/do-thi/index.js');
+  const { phanTichHoiTruoc4So: hoiTruoc2211, TRANG_THAI_4SO: TT2211 } = require('../lib/do-thi/hoi-truoc-4so.js');
+  const ROOT2211 = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+
+  fs.mkdirSync(path.join(TEST_DATA_DIR, 'so-tay'), { recursive: true });
+  for (const nh of ['4016', '8479']) {
+    fs.copyFileSync(path.join(ROOT2211, 'data', 'so-tay', `${nh}.json`), path.join(TEST_DATA_DIR, 'so-tay', `${nh}.json`));
+  }
+  D2211.datLai();
+
+  const moTaMbs15 = 'núm hút mbs-15, silicon, đường kính lỗ 2,5mm';
+  const moTaVp16ps = 'núm hút vp16ps, silicon, đường kính lỗ 2,2mm';
+  const moTaYs310 = 'núm hút ys3-10, silicon, đường kính lỗ 3mm';
+
+  const s4016 = JSON.parse(fs.readFileSync(path.join(ROOT2211, 'data', 'so-tay', '4016.json'), 'utf8'));
+  const s8479 = JSON.parse(fs.readFileSync(path.join(ROOT2211, 'data', 'so-tay', '8479.json'), 'utf8'));
+  const v4016 = S2211.verifySoTay(s4016, '4016');
+  const v8479 = S2211.verifySoTay(s8479, '8479');
+  assert(
+    '[OZV-2211 verifySoTay] sổ tay 4016 và 8479 đạt 100% (0 mục bị loại) và kiemTra khớp',
+    v4016.loai.length === 0 &&
+      v4016.dat === v4016.tong &&
+      s4016.kiemTra?.tong === v4016.tong &&
+      s4016.kiemTra?.dat === v4016.dat &&
+      v8479.loai.length === 0 &&
+      v8479.dat === v8479.tong &&
+      s8479.kiemTra?.tong === v8479.tong &&
+      s8479.kiemTra?.dat === v8479.dat,
+    { loai4016: v4016.loai, loai8479: v8479.loai, kt4016: s4016.kiemTra, v4016, kt8479: s8479.kiemTra, v8479 }
+  );
+
+  const st4016 = loadSoTay2211('4016');
+  const st8479 = loadSoTay2211('8479');
+  const lt4016 = (st4016?.loaiTru || []).find((x) => x.sangNhom === '8479' && x.canCuLoaiTru?.nguon === 'nhom8479.nhom');
+  const lt8479 = (st8479?.loaiTru || []).find((x) => x.sangNhom === '4016' && x.canCuLoaiTru?.nguon === 'nhom4016.nhom');
+  assert(
+    '[OZV-2211 căn cứ] sổ tay 4016 và 8479 có mục loaiTru 2 chiều 4016 <-> 8479 kèm canCuLoaiTru nguyên văn đạt checkItem',
+    Boolean(
+      lt4016 &&
+        lt4016.nguon === 'ch40.chuong' &&
+        lt4016.canCuLoaiTru?.nguon === 'nhom8479.nhom' &&
+        !String(lt4016.dieuKien || '').includes(';') &&
+        S2211.checkItem('loaiTru', lt4016, S2211.sourcesFor('4016'), '4016') === null
+    ) &&
+      Boolean(
+        lt8479 &&
+          lt8479.nguon === 'phan84.phan' &&
+          lt8479.canCuLoaiTru?.nguon === 'nhom4016.nhom' &&
+          !String(lt8479.dieuKien || '').includes(';') &&
+          lt8479.dieuKien !== lt4016.dieuKien &&
+          S2211.checkItem('loaiTru', lt8479, S2211.sourcesFor('8479'), '8479') === null
+      ),
+    { lt4016, lt8479 }
+  );
+
+  const c5Tu4016 = D2211.canhTu('4016', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8479');
+  const c5Tu8479 = D2211.canhTu('8479', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '4016');
+  const c6Tu4016 = D2211.canhTu('4016', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '8479');
+  const c6Tu8479 = D2211.canhTu('8479', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '4016');
+  const giua4016_8479 = D2211.canhGiuaNhomConSong(['4016', '8479']).filter((e) => e.loai === 'C5' || e.loai === 'C6');
+  const mrTu4016 = D2211.moRongUngVien(['4016'], moTaMbs15, { toiDa: 10 });
+  const mrTu8479 = D2211.moRongUngVien(['8479'], moTaMbs15, { toiDa: 10 });
+  const mrVpTu8479 = D2211.moRongUngVien(['8479'], moTaVp16ps, { toiDa: 10 });
+  const mrYsTu8479 = D2211.moRongUngVien(['8479'], moTaYs310, { toiDa: 10 });
+  assert(
+    '[OZV-2211 đồ thị 2 chiều] bảng cạnh có C5/C6 4016<->8479, canhGiuaNhomConSong >= 2 và moRongUngVien kéo 2 chiều cho cả 3 ca núm hút',
+    c5Tu4016.some((e) => e.nguon === 'ch40.chuong' && e.canCuLoaiTru?.nguon === 'nhom8479.nhom') &&
+      c5Tu8479.some((e) => e.nguon === 'phan84.phan' && e.canCuLoaiTru?.nguon === 'nhom4016.nhom') &&
+      c6Tu4016.length >= 1 &&
+      c6Tu8479.length >= 1 &&
+      giua4016_8479.length >= 2 &&
+      mrTu4016.some((x) => x.nhom === '8479') &&
+      mrTu8479.some((x) => x.nhom === '4016') &&
+      mrVpTu8479.some((x) => x.nhom === '4016') &&
+      mrYsTu8479.some((x) => x.nhom === '4016'),
+    { c5Tu4016: c5Tu4016.length, c5Tu8479: c5Tu8479.length, giua: giua4016_8479.length, mrTu4016, mrTu8479 }
+  );
+
+  assert(
+    '[OZV-2211 nhomLienQuanSoTay] liên kết hai chiều 4016 <-> 8479',
+    nhomLienQuan2211('4016').includes('8479') && nhomLienQuan2211('8479').includes('4016'),
+    { rel4016: nhomLienQuan2211('4016'), rel8479: nhomLienQuan2211('8479') }
+  );
+
+  const pb4016 = cauPhanBiet2211('4016', ['4016', '8479'], moTaMbs15);
+  assert(
+    '[OZV-2211 thuận 4016->8479] 4016 đứng đầu với [4016, 8479] sinh câu phân biệt từ ch40.chuong trỏ sang 84.79',
+    pb4016.length === 1 &&
+      pb4016[0].loai === 'PHAN_BIET_NHOM' &&
+      pb4016[0].canCu === 'so-tay' &&
+      pb4016[0].nguon === 'ch40.chuong' &&
+      /84\.79/.test(pb4016[0].questionVi) &&
+      /40\.16/.test(pb4016[0].questionVi),
+    { pb4016 }
+  );
+
+  const pb8479 = cauPhanBiet2211('8479', ['8479', '4016'], moTaMbs15);
+  assert(
+    '[OZV-2211 thuận 8479->4016] 8479 đứng đầu với [8479, 4016] sinh câu phân biệt từ phan84.phan trỏ sang 40.16',
+    pb8479.length === 1 &&
+      pb8479[0].loai === 'PHAN_BIET_NHOM' &&
+      pb8479[0].canCu === 'so-tay' &&
+      pb8479[0].nguon === 'phan84.phan' &&
+      /40\.16/.test(pb8479[0].questionVi) &&
+      /84\.79/.test(pb8479[0].questionVi),
+    { pb8479 }
+  );
+
+  const g4016To8479 = soTayGates2211({
+    hs: '40169959',
+    productText: moTaMbs15,
+    productName: 'núm hút mbs-15',
+    candidateHeadings: ['4016', '8479'],
+  });
+  const g8479To4016 = soTayGates2211({
+    hs: '84799090',
+    productText: moTaMbs15,
+    productName: 'núm hút mbs-15',
+    candidateHeadings: ['8479', '4016'],
+  });
+  assert(
+    '[OZV-2211 thuận soTayGates] kích hoạt SO_TAY_LOAI_TRU đúng cả 2 chiều 4016 -> 8479 và 8479 -> 4016 cho ca núm hút mbs-15',
+    (g4016To8479.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8479')) &&
+      (g8479To4016.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('4016')),
+    { g4016To8479: g4016To8479.challenges, g8479To4016: g8479To4016.challenges }
+  );
+
+  const dcGioang4016 = cauPhanBiet2211('4016', ['4016', '8479'], 'Gioăng vòng đệm cao su NBR làm kín mặt bích đường ống');
+  const dcGioang8479 = cauPhanBiet2211('8479', ['8479', '4016'], 'Gioăng vòng đệm cao su NBR làm kín mặt bích đường ống');
+  const dcRobot4016 = cauPhanBiet2211('4016', ['4016', '8479'], 'Rô bốt công nghiệp 6 bậc tự do lắp ráp linh kiện điện tử');
+  const dcRobot8479 = cauPhanBiet2211('8479', ['8479', '4016'], 'Rô bốt công nghiệp 6 bậc tự do lắp ráp linh kiện điện tử');
+  const dcGate4016 = soTayGates2211({
+    hs: '40169390',
+    productText: 'Gioăng vòng đệm cao su NBR làm kín mặt bích đường ống',
+    productName: 'Gioăng vòng đệm cao su NBR',
+    candidateHeadings: ['4016', '8479'],
+  });
+  const dcGate8479 = soTayGates2211({
+    hs: '84795000',
+    productText: 'Rô bốt công nghiệp 6 bậc tự do lắp ráp linh kiện điện tử',
+    productName: 'Rô bốt công nghiệp 6 bậc tự do',
+    candidateHeadings: ['8479', '4016'],
+  });
+  assert(
+    '[OZV-2211 đối chứng] gioăng vòng đệm cao su và rô bốt công nghiệp không hỏi oan / không kéo oan 40.16 <-> 84.79',
+    dcGioang4016.length === 0 &&
+      dcGioang8479.length === 0 &&
+      dcRobot4016.length === 0 &&
+      dcRobot8479.length === 0 &&
+      !(dcGate4016.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8479')) &&
+      !(dcGate8479.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('4016')) &&
+      !D2211.moRongUngVien(['4016'], 'Gioăng vòng đệm cao su NBR làm kín mặt bích đường ống').some((x) => x.nhom === '8479') &&
+      !D2211.moRongUngVien(['8479'], 'Rô bốt công nghiệp 6 bậc tự do lắp ráp linh kiện điện tử').some((x) => x.nhom === '4016'),
+    { dcGioang4016, dcGioang8479, dcRobot4016, dcRobot8479 }
+  );
+
+  const htMbs15 = hoiTruoc2211({ moTa: moTaMbs15, ungVien: ['4016', '8479'] });
+  const distinctDkMbs15 = new Set((htMbs15.nhanh || []).map((n) => n.dieuKien)).size === 2;
+  assert(
+    '[OZV-2211 hoi-truoc-4so] ca núm hút mbs-15 với [4016, 8479] trả CHUA_CHOT_NHOM_HOI_TRUOC với 2 nhánh điều kiện phân biệt từ cạnh C5',
+    htMbs15.trangThai === TT2211.CHUA_CHOT_NHOM_HOI_TRUOC &&
+      distinctDkMbs15 &&
+      (htMbs15.nhanh || []).every((n) => String(n.nguon || '').startsWith('do-thi:C5:')) &&
+      ['4016', '8479'].every((h) => (htMbs15.dapAnDieuKien || '').includes(`→ nhóm ${h} (`)),
+    { trangThai: htMbs15.trangThai, distinctDkMbs15, nhanh: htMbs15.nhanh, dapAnDieuKien: htMbs15.dapAnDieuKien }
   );
 }
 
