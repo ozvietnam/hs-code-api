@@ -174,5 +174,45 @@ check('0b spec: không nguonLoai/trangThai/duyet, mọi chongLanTruc phanXu null
     { nguocLyTam8421, nguocLyTam8481, nguocVoiNuoc8421, nguocVoiNuoc8481 });
 }
 
+// ── 8. OZV-2104 — ca 26 tầng 4 số: bát sen tắm nhựa ABS → cạnh loại trừ 2 chiều 39.24 ↔ 84.81 ──────────────────────────
+{
+  const DT = require('../lib/do-thi/index.js');
+  const H = require('../lib/hoi-theo-so-tay.js');
+  // Ca 26 gốc "Bát sen tắm nhỏ / nhựa ABS / None" thiếu bigram "tắm tay" của dieuKien → khopPhanBiet bỏ;
+  // thêm "tay sen" (đúng chữ điều kiện) để đo đường hỏi phân biệt, vẫn giữ nhãn ca 26.
+  const moTa = 'Bát sen tắm tay sen nhỏ / nhựa ABS / None';
+  const st3924 = loadSoTay('3924');
+  const st8481 = loadSoTay('8481');
+  const src3924 = S.sourcesFor('3924');
+  const src8481 = S.sourcesFor('8481');
+  const lt3924 = (st3924?.loaiTru || []).find((x) => x.sangNhom === '8481' && /Bát sen/i.test(x.dieuKien || ''));
+  const lt8481 = (st8481?.loaiTru || []).find((x) => x.sangNhom === '3924' && /Bát sen/i.test(x.dieuKien || ''));
+  check('8a sổ tay 3924↔8481 có loaiTru 2 chiều + canCuLoaiTru nguyên văn đạt checkItem',
+    Boolean(lt3924 && lt3924.canCuLoaiTru?.nguon === 'nhom8481.nhom' && S.checkItem('loaiTru', lt3924, src3924, '3924') === null)
+    && Boolean(lt8481 && lt8481.canCuLoaiTru?.nguon === 'nhom3924.nhom' && S.checkItem('loaiTru', lt8481, src8481, '8481') === null),
+    { lt3924: Boolean(lt3924), lt8481: Boolean(lt8481), e3924: lt3924 && S.checkItem('loaiTru', lt3924, src3924, '3924'), e8481: lt8481 && S.checkItem('loaiTru', lt8481, src8481, '8481') });
+
+  const c5_3924 = DT.canhTu('3924', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8481' && /Bát sen/i.test(e.dieuKien || ''));
+  const c5_8481 = DT.canhTu('8481', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '3924' && /Bát sen/i.test(e.dieuKien || ''));
+  const giua = DT.canhGiuaNhomConSong(['3924', '8481']).filter((e) => (e.loai === 'C5' || e.loai === 'C6') && /Bát sen/i.test(e.dieuKien || ''));
+  check('8b đồ thị C5/C6 + canhGiuaNhomConSong có ≥2 cạnh 3924↔8481 (bát sen)',
+    c5_3924.length >= 1 && c5_8481.length >= 1 && giua.length >= 2,
+    { c5_3924: c5_3924.length, c5_8481: c5_8481.length, giua: giua.length });
+
+  const pb3924 = H.cauPhanBietNhom('3924', ['3924', '8481'], moTa);
+  const pb8481 = H.cauPhanBietNhom('8481', ['8481', '3924'], moTa);
+  check('8c (thuận) cauPhanBietNhom 2 chiều khớp ca 26 bát sen nhựa ABS',
+    pb3924.length >= 1 && pb8481.length >= 1
+    && pb3924.some((q) => q.loai === 'PHAN_BIET_NHOM' && q.canCu === 'so-tay' && /39\.24|84\.81/.test(q.questionVi))
+    && pb8481.some((q) => q.loai === 'PHAN_BIET_NHOM' && q.canCu === 'so-tay' && /39\.24|84\.81/.test(q.questionVi)),
+    { pb3924, pb8481 });
+
+  const pbNguoc3924 = H.cauPhanBietNhom('3924', ['3924', '8481'], 'cốc nhựa không quai dùng bàn ăn');
+  const pbNguoc8481 = H.cauPhanBietNhom('8481', ['8481', '3924'], 'van bi đường ống hơi bằng thép');
+  check('8d (ngược) cốc bàn ăn / van bi đường ống không hỏi oan 39.24↔84.81',
+    pbNguoc3924.length === 0 && pbNguoc8481.length === 0,
+    { pbNguoc3924, pbNguoc8481 });
+}
+
 console.log(`\n${pass} pass, ${fail} fail`);
 if (fail) process.exit(1);
