@@ -250,4 +250,73 @@ kiem('ca ngược: cổng công khai lib/wco-op.js#view vẫn chặn 392490/4 (h
     JSON.stringify({ pbNguoc8477, pbNguoc8479 }));
 }
 
+// 7. OZV-2137 — ca 113 tầng 4 số: Dây buộc trang trí tóc → cạnh loại trừ 2 chiều 96.15 ↔ 39.26
+{
+  const H = require('../lib/hoi-theo-so-tay.js');
+  const { soTayGates, nhomLienQuanSoTay } = require('../lib/so-tay-gates.js');
+  const { phanTichHoiTruoc4So, TRANG_THAI_4SO } = require('../lib/do-thi/hoi-truoc-4so.js');
+  const st9615 = docJson('data/so-tay/9615.json');
+  const st3926 = docJson('data/so-tay/3926.json');
+  const muc9615 = (st9615.loaiTru || []).find((x) => x.sangNhom === '3926' && /dây buộc trang trí tóc/i.test(x.dieuKien || ''));
+  const muc3926 = (st3926.loaiTru || []).find((x) => x.sangNhom === '9615' && /dây buộc trang trí tóc/i.test(x.dieuKien || ''));
+  kiem('OZV-2137: sổ tay 9615↔3926 có loaiTru 2 chiều + canCuLoaiTru nguyên văn (checkItem đạt)',
+    Boolean(muc9615 && muc3926)
+    && muc9615.nguon === 'nhom9615.nhom'
+    && muc9615.canCuLoaiTru?.nguon === 'nhom3926.nhom'
+    && muc3926.nguon === 'ch39.chuong'
+    && muc3926.canCuLoaiTru?.nguon === 'nhom9615.nhom'
+    && checkItem('loaiTru', muc9615, sourcesFor('9615'), '9615') === null
+    && checkItem('loaiTru', muc3926, sourcesFor('3926'), '3926') === null,
+    JSON.stringify({ muc9615: Boolean(muc9615), muc3926: Boolean(muc3926) }));
+  kiem('OZV-2137: dieuKien hai chiều 9615↔3926 tách biệt cho hoi-truoc-4so',
+    Boolean(muc9615 && muc3926)
+    && muc9615.dieuKien !== muc3926.dieuKien
+    && !/;/.test(muc9615.dieuKien)
+    && !/;/.test(muc3926.dieuKien),
+    JSON.stringify({ dk9615: muc9615?.dieuKien, dk3926: muc3926?.dieuKien }));
+
+  const moTa113 = 'Dây buộc trang trí tóc / nhựa / trang trí tóc';
+  const c5_9615 = D.canhTu('9615', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '3926');
+  const c5_3926 = D.canhTu('3926', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '9615');
+  const giua = D.canhGiuaNhomConSong(['9615', '3926']).filter((e) => e.loai === 'C5' || e.loai === 'C6');
+  const mr9615 = D.moRongUngVien(['9615'], moTa113);
+  const mr3926 = D.moRongUngVien(['3926'], moTa113);
+  kiem('OZV-2137: đồ thị C5/C6 + canhGiuaNhomConSong + moRongUngVien + nhomLienQuanSoTay nối 2 chiều 9615↔3926',
+    c5_9615.length >= 1
+    && c5_3926.length >= 1
+    && giua.length >= 2
+    && mr9615.some((x) => x.nhom === '3926')
+    && mr3926.some((x) => x.nhom === '9615')
+    && nhomLienQuanSoTay('9615').includes('3926')
+    && nhomLienQuanSoTay('3926').includes('9615'),
+    JSON.stringify({ c5_9615: c5_9615.length, c5_3926: c5_3926.length, giua: giua.length }));
+
+  const pb9615 = H.cauPhanBietNhom('9615', ['9615', '3926'], moTa113);
+  const pb3926 = H.cauPhanBietNhom('3926', ['3926', '9615'], moTa113);
+  const g9615 = soTayGates({ hs: '96151130', productText: moTa113, productName: 'Dây buộc trang trí tóc', candidateHeadings: ['9615', '3926'] });
+  const g3926 = soTayGates({ hs: '39269099', productText: moTa113, productName: 'Dây buộc trang trí tóc', candidateHeadings: ['3926', '9615'] });
+  const ht113 = phanTichHoiTruoc4So({ moTa: moTa113, ungVien: ['9615', '3926'] });
+  kiem('OZV-2137 (thuận): cauPhanBietNhom, soTayGates và phanTichHoiTruoc4So hoạt động đúng 2 chiều cho ca 113',
+    pb9615.length === 1 && pb9615[0].nguon === 'nhom9615.nhom' && /39\.26/.test(pb9615[0].questionVi)
+    && pb3926.length === 1 && pb3926[0].nguon === 'ch39.chuong' && /96\.15/.test(pb3926[0].questionVi)
+    && (g9615.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '3926')
+    && (g3926.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '9615')
+    && ht113.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC
+    && new Set((ht113.nhanh || []).map((n) => n.dieuKien)).size === 2,
+    JSON.stringify({ pb9615, pb3926, ht113: ht113.dapAnDieuKien }));
+
+  const pbNguoc9615 = H.cauPhanBietNhom('9615', ['9615', '3926'], 'Lược chải tóc bằng cao su cứng');
+  const pbNguoc3926 = H.cauPhanBietNhom('3926', ['3926', '9615'], 'Phao cho lưới đánh cá bằng plastic');
+  const gNguoc9615 = soTayGates({ hs: '96151120', productText: 'Lược chải tóc bằng cao su cứng', productName: 'Lược chải tóc bằng cao su cứng' });
+  const gNguoc3926 = soTayGates({ hs: '39269010', productText: 'Phao cho lưới đánh cá bằng plastic', productName: 'Phao cho lưới đánh cá bằng plastic' });
+  kiem('OZV-2137 (đối chứng): lược chải tóc cao su cứng / phao lưới đánh cá không hỏi oan và không bật oan 96.15↔39.26',
+    pbNguoc9615.length === 0
+    && pbNguoc3926.length === 0
+    && !(gNguoc9615.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '3926')
+    && !(gNguoc3926.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '9615')
+    && !D.moRongUngVien(['9615'], 'Lược chải tóc bằng cao su cứng').some((x) => x.nhom === '3926')
+    && !D.moRongUngVien(['3926'], 'Phao cho lưới đánh cá bằng plastic').some((x) => x.nhom === '9615'),
+    JSON.stringify({ pbNguoc9615, pbNguoc3926 }));
+}
+
 xong();
