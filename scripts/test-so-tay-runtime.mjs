@@ -2,12 +2,16 @@
 import './test-isolate-data.mjs';
 /** lib/so-tay-runtime.js: sổ tay lúc chạy ở chế độ CỐ VẤN — đính vào phản hồi, không đổi mã đã chọn. */
 import fs from 'node:fs';
+import path from 'node:path';
 import { createRequire } from 'node:module';
+import { fileURLToPath } from 'node:url';
 import { nhomChuaCoSoTay } from './nhom-chua-co-so-tay.mjs';
 const require = createRequire(import.meta.url);
 const { dataPath } = require('../lib/data-paths.js');
 const rt = require('../lib/so-tay-runtime.js');
 const T = require('../lib/hs-tree.js');
+const S = require('../lib/so-tay.js');
+const GOC = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
 let passed = 0; let failed = 0;
 const assert = (name, ok, extra = '') => { console.log(`${ok ? 'PASS' : 'FAIL'} ${name}${ok ? '' : ` ${extra}`}`); if (ok) passed += 1; else failed += 1; };
@@ -159,6 +163,62 @@ assert('dữ liệu thật: không có trường nguyên văn nào lọt ra (ch�
   assert('máy nghi đối chiếu cả tầng 6 số: "Phao nhựa cho lưới đánh cá" khai 39269099 → khớp 39269010', k.some((x) => x.hs === '39269010'), JSON.stringify(k));
   const one = rt.loaiKhac('85044090');
   assert('một tầng (85044090): truTheoTang 1 tầng, anhEmCoTen ≡ namedSiblingLeaves như cũ', one.truTheoTang.length === 1 && one.anhEmCoTen.map((a) => a.hs).join() === T.namedSiblingLeaves('85044090').join() && one.anhEmCoTen.every((a) => a.tang === '850440'), JSON.stringify(one.anhEmCoTen));
+}
+
+// ───────────── OZV-2201: cạnh loại trừ 2 chiều 60.04 <-> 60.03 (ca 124 Vải gió dệt kim) ─────────────
+{
+  const s6003 = JSON.parse(fs.readFileSync(path.join(GOC, 'data', 'so-tay', '6003.json'), 'utf8'));
+  const s6004 = JSON.parse(fs.readFileSync(path.join(GOC, 'data', 'so-tay', '6004.json'), 'utf8'));
+  const v6003 = S.verifySoTay(s6003, '6003');
+  const v6004 = S.verifySoTay(s6004, '6004');
+  assert('[OZV-2201 verify] sổ tay 6003 và 6004 đạt 100% (0 mục bị loại)',
+    v6003.loai.length === 0 && v6004.loai.length === 0 && v6003.dat === v6003.tong && v6004.dat === v6004.tong
+      && s6003.kiemTra.tong === v6003.tong && s6003.kiemTra.dat === v6003.dat
+      && s6004.kiemTra.tong === v6004.tong && s6004.kiemTra.dat === v6004.dat,
+    JSON.stringify({ v6003: { tong: v6003.tong, dat: v6003.dat, loai: v6003.loai }, v6004: { tong: v6004.tong, dat: v6004.dat, loai: v6004.loai } }));
+
+  const lt6004 = (s6004.loaiTru || []).find((x) => x.sangNhom === '6003');
+  const lt6003 = (s6003.loaiTru || []).find((x) => x.sangNhom === '6004');
+  assert('[OZV-2201 căn cứ] loaiTru 2 chiều 6004 <-> 6003 kèm canCuLoaiTru nguyên văn đạt checkItem',
+    Boolean(lt6004 && lt6004.nguon === 'nhom6004.nhom' && lt6004.canCuLoaiTru?.nguon === 'nhom6003.nhom'
+      && lt6004.dieuKien !== lt6003?.dieuKien && !/;/.test(lt6004.dieuKien || '')
+      && /không quá 30 cm/.test(lt6004.dieuKien) && /không quá 5%/.test(lt6004.dieuKien)
+      && S.checkItem('loaiTru', lt6004, S.sourcesFor('6004'), '6004') === null)
+      && Boolean(lt6003 && lt6003.nguon === 'nhom6003.nhom' && lt6003.canCuLoaiTru?.nguon === 'nhom6004.nhom'
+        && !/;/.test(lt6003.dieuKien || '') && /trên 30 cm/.test(lt6003.dieuKien) && /từ 5% trở lên/.test(lt6003.dieuKien)
+        && S.checkItem('loaiTru', lt6003, S.sourcesFor('6003'), '6003') === null),
+    JSON.stringify({ lt6004, lt6003 }));
+
+  // Runtime cố vấn: ghi fixture 2 chiều vào kho tạm, advise phải đưa canGiaiTrinh sang nhóm kia khi là ứng viên.
+  fs.mkdirSync(dataPath('so-tay'), { recursive: true });
+  fs.writeFileSync(dataPath('so-tay', '6004.json'), JSON.stringify({
+    nhom: '6004', phienBan: 'HS2022', yKienWcoDayDu: false, yKienWco: [],
+    loaiTru: [{ ...lt6004, nguonLoai: 'AI_DA_KIEM' }],
+  }));
+  fs.writeFileSync(dataPath('so-tay', '6003.json'), JSON.stringify({
+    nhom: '6003', phienBan: 'HS2022', yKienWcoDayDu: false, yKienWco: [],
+    loaiTru: [{ ...lt6003, nguonLoai: 'AI_DA_KIEM' }],
+  }));
+  rt.reset();
+  const thuan = rt.advise({
+    topHs: '60041010',
+    candidates: ['6003', '6004', '6005'],
+    sanPham: { tenHang: 'Vải gió dệt kim khổ rộng không quá 30 cm, không chứa sợi đàn hồi' },
+  });
+  const doi = rt.advise({
+    topHs: '60031000',
+    candidates: ['6004', '6003', '6005'],
+    sanPham: { tenHang: 'Vải gió dệt kim khổ rộng trên 30 cm chứa từ 5% sợi đàn hồi' },
+  });
+  assert('[OZV-2201 thuận runtime] 6004 + ứng viên 6003 → canGiaiTrinh LOAI_TRU_SANG_NHOM sang 6003',
+    thuan?.trangThai === 'CO_SO_TAY' && thuan.canGiaiTrinh.some((x) => x.loai === 'LOAI_TRU_SANG_NHOM' && x.sangNhom === '6003'),
+    JSON.stringify(thuan?.canGiaiTrinh));
+  assert('[OZV-2201 đối chứng runtime] 6003 + ứng viên 6004 → canGiaiTrinh LOAI_TRU_SANG_NHOM sang 6004; không kéo oan khi thiếu ứng viên',
+    doi?.trangThai === 'CO_SO_TAY' && doi.canGiaiTrinh.some((x) => x.loai === 'LOAI_TRU_SANG_NHOM' && x.sangNhom === '6004')
+      && !rt.advise({ topHs: '60041010', candidates: ['6005'] }).canGiaiTrinh.some((x) => x.sangNhom === '6003'),
+    JSON.stringify(doi?.canGiaiTrinh));
+  fs.rmSync(dataPath('so-tay'), { recursive: true, force: true });
+  rt.reset();
 }
 
 console.log(`\n${passed}/${passed + failed} passed`);
