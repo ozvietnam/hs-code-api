@@ -889,5 +889,123 @@ check('trangThaiDong8.veMoHinh: 73181510 chấm trọn nhãn "Đường kính ng
     dtReDoS1944 < 2000 && kqReDoS1944.hs === '98492812', `${dtReDoS1944}ms`);
 }
 
+// ── OZV-2163: cạnh loại trừ 2 chiều 76.16 <-> 84.79 cho ca 132 «Bộ bàn trượt bằng tay / nhôm / gá thiết bị máy công nghiệp căn chỉnh bằng tay» ──
+{
+  const S = require('../lib/so-tay.js');
+  const D = require('../lib/do-thi/index.js');
+  const { cauPhanBietNhom } = require('../lib/hoi-theo-so-tay.js');
+  const { phanTichHoiTruoc4So, TRANG_THAI_4SO } = require('../lib/do-thi/hoi-truoc-4so.js');
+  const { dataPath } = require('../lib/data-paths.js');
+  // Các khối test trước (OZV-8716/8414) đã mkdir dataPath('so-tay') chỉ với 1–2 tệp → readdir
+  // của canhSoTay/dungBangCanh chỉ thấy thư mục isolate. Chép 7616+8479 vào isolate trước khi dựng đồ thị.
+  fs.mkdirSync(dataPath('so-tay'), { recursive: true });
+  for (const h of ['7616', '8479']) {
+    fs.copyFileSync(path.join('data', 'so-tay', `${h}.json`), dataPath('so-tay', `${h}.json`));
+  }
+  D.datLai();
+
+  const moTa132 = 'Bộ bàn trượt bằng tay / nhôm / gá thiết bị máy công nghiệp căn chỉnh bằng tay';
+  const moTaKhop132 =
+    'Bộ bàn trượt bằng tay bằng nhôm gá thiết bị máy công nghiệp căn chỉnh bằng tay có chức năng riêng biệt dùng chung cho nhiều loại máy; tấm nhôm hoặc thanh nhôm gá thiết bị không có cơ cấu bàn trượt dịch chuyển';
+  const hangNguon7616 = 'Đinh tán bằng nhôm dùng trong cơ khí';
+  const hangNguon8479 = 'Máy ép đẳng nhiệt lạnh dùng trong công nghiệp';
+  const hangDich7616 = 'Tấm nhôm hoặc thanh nhôm gá thiết bị không có cơ cấu bàn trượt dịch chuyển';
+
+  // 1. verifySoTay + checkItem canCuLoaiTru nguyên văn
+  const s7616 = JSON.parse(fs.readFileSync(path.join('data', 'so-tay', '7616.json'), 'utf8'));
+  const s8479 = JSON.parse(fs.readFileSync(path.join('data', 'so-tay', '8479.json'), 'utf8'));
+  const v7616 = S.verifySoTay(s7616, '7616');
+  const v8479 = S.verifySoTay(s8479, '8479');
+  check('[OZV-2163 verifySoTay] sổ tay 7616 và 8479 đạt 100% (0 mục bị loại)',
+    v7616.loai.length === 0 && v8479.loai.length === 0,
+    JSON.stringify({ loai7616: v7616.loai.slice(0, 2), loai8479: v8479.loai.slice(0, 2) }));
+
+  const lt7616 = (loadSoTay('7616')?.loaiTru || []).find((x) => x.sangNhom === '8479');
+  const lt8479 = (loadSoTay('8479')?.loaiTru || []).find((x) => x.sangNhom === '7616');
+  check('[OZV-2163 canCuLoaiTru] loaiTru 2 chiều 7616 <-> 8479 kèm canCuLoaiTru nguyên văn đạt checkItem',
+    Boolean(lt7616 && lt7616.nguon === 'phan76.phan' && lt7616.canCuLoaiTru?.nguon === 'nhom8479.nhom'
+      && S.checkItem('loaiTru', lt7616, S.sourcesFor('7616'), '7616') === null)
+    && Boolean(lt8479 && lt8479.nguon === 'nhom8479.nhom' && lt8479.canCuLoaiTru?.nguon === 'nhom7616.nhom'
+      && S.checkItem('loaiTru', lt8479, S.sourcesFor('8479'), '8479') === null),
+    JSON.stringify({ lt7616, lt8479 }));
+
+  // 2. Đồ thị C5/C6 2 chiều + moRongUngVien
+  const c5Tu7616 = D.canhTu('7616', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8479');
+  const c5Tu8479 = D.canhTu('8479', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '7616');
+  const c6Tu7616 = D.canhTu('7616', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '8479');
+  const c6Tu8479 = D.canhTu('8479', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '7616');
+  const giua = D.canhGiuaNhomConSong(['7616', '8479']).filter((e) => e.loai === 'C5' || e.loai === 'C6');
+  const mr7616 = D.moRongUngVien(['7616'], moTaKhop132, { toiDa: 10 });
+  const mr8479 = D.moRongUngVien(['8479'], moTaKhop132, { toiDa: 10 });
+  check('[OZV-2163 đồ thị 2 chiều] C5/C6 7616<->8479, canhGiuaNhomConSong >= 2 và moRongUngVien kéo 2 chiều cho ca 132',
+    c5Tu7616.some((e) => e.nguon === 'phan76.phan' && e.canCuLoaiTru?.nguon === 'nhom8479.nhom')
+    && c5Tu8479.some((e) => e.nguon === 'nhom8479.nhom' && e.canCuLoaiTru?.nguon === 'nhom7616.nhom')
+    && c6Tu7616.length >= 1 && c6Tu8479.length >= 1 && giua.length >= 2
+    && mr7616.some((x) => x.nhom === '8479') && mr8479.some((x) => x.nhom === '7616'),
+    JSON.stringify({ c5: c5Tu7616.length, c5r: c5Tu8479.length, giua: giua.length, mr7616: mr7616.map((x) => x.nhom), mr8479: mr8479.map((x) => x.nhom) }));
+
+  // 3. nhomLienQuanSoTay 2 chiều — đọc trực tiếp loaiTru (tránh cache canhSoTay bị đầu độc bởi thư mục isolate thiếu tệp)
+  const rel7616 = [...new Set((loadSoTay('7616')?.loaiTru || []).flatMap((x) => String(x.sangNhom || '').split(/[|,;\s]+/).map((t) => t.replace(/\D/g, '').slice(0, 4)).filter((t) => t.length === 4)))];
+  const rel8479 = [...new Set((loadSoTay('8479')?.loaiTru || []).flatMap((x) => String(x.sangNhom || '').split(/[|,;\s]+/).map((t) => t.replace(/\D/g, '').slice(0, 4)).filter((t) => t.length === 4)))];
+  check('[OZV-2163 nhomLienQuanSoTay] liên kết hai chiều 7616 <-> 8479',
+    rel7616.includes('8479') && rel8479.includes('7616'),
+    JSON.stringify({ rel7616, rel8479 }));
+
+  // 4. cauPhanBietNhom 2 chiều
+  const pb7616 = cauPhanBietNhom('7616', ['7616', '8479'], moTaKhop132);
+  const pb8479 = cauPhanBietNhom('8479', ['8479', '7616'], moTaKhop132);
+  check('[OZV-2163 cauPhanBietNhom] 7616 đứng đầu sinh câu phân biệt 76.16↔84.79 từ phan76.phan',
+    pb7616.length >= 1 && pb7616[0].loai === 'PHAN_BIET_NHOM' && pb7616[0].canCu === 'so-tay'
+    && pb7616[0].nguon === 'phan76.phan' && /84\.79/.test(pb7616[0].questionVi) && /76\.16/.test(pb7616[0].questionVi),
+    JSON.stringify(pb7616));
+  check('[OZV-2163 cauPhanBietNhom] 8479 đứng đầu sinh câu phân biệt 84.79↔76.16 (2 chiều)',
+    pb8479.length >= 1 && pb8479[0].loai === 'PHAN_BIET_NHOM' && pb8479[0].canCu === 'so-tay'
+    && /84\.79/.test(pb8479[0].questionVi) && /76\.16/.test(pb8479[0].questionVi),
+    JSON.stringify(pb8479));
+
+  // 5. soTayGates 2 chiều
+  const g7616 = soTayGates({
+    hs: '76169990',
+    productText: moTaKhop132,
+    productName: moTaKhop132,
+    candidateHeadings: ['7616', '8479'],
+  });
+  const g8479 = soTayGates({
+    hs: '84798970',
+    productText: hangDich7616,
+    productName: hangDich7616,
+    candidateHeadings: ['8479', '7616'],
+  });
+  check('[OZV-2163 soTayGates] kích hoạt SO_TAY_LOAI_TRU đúng cả 2 chiều 7616 -> 8479 và 8479 -> 7616',
+    (g7616.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8479'))
+    && (g8479.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('7616')),
+    JSON.stringify({ g7616: g7616.challenges, g8479: g8479.challenges }));
+
+  // 6. Ca đối chứng không hỏi oan
+  const dcPb7616 = cauPhanBietNhom('7616', ['7616', '8479'], hangNguon7616);
+  const dcPb8479 = cauPhanBietNhom('8479', ['8479', '7616'], hangNguon8479);
+  const dcG7616 = soTayGates({
+    hs: '76161010', productText: hangNguon7616, productName: hangNguon7616, candidateHeadings: ['7616', '8479'],
+  });
+  const dcG8479 = soTayGates({
+    hs: '84798300', productText: hangNguon8479, productName: hangNguon8479, candidateHeadings: ['8479', '7616'],
+  });
+  check('[OZV-2163 đối chứng] đinh tán nhôm và máy ép đẳng nhiệt không hỏi oan / không kéo oan 76.16 <-> 84.79',
+    dcPb7616.length === 0 && dcPb8479.length === 0
+    && !(dcG7616.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8479'))
+    && !(dcG8479.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('7616'))
+    && !D.moRongUngVien(['7616'], hangNguon7616).some((x) => x.nhom === '8479')
+    && !D.moRongUngVien(['8479'], hangNguon8479).some((x) => x.nhom === '7616'),
+    JSON.stringify({ dcPb7616, dcPb8479 }));
+
+  // 7. phanTichHoiTruoc4So
+  const ht132 = phanTichHoiTruoc4So({ moTa: moTa132, ungVien: ['7616', '8479'] });
+  const distinctDk = new Set((ht132.nhanh || []).map((n) => n.dieuKien)).size === 2;
+  check('[OZV-2163 hoi-truoc-4so] ca 132 với [7616, 8479] trả CHUA_CHOT_NHOM_HOI_TRUOC với 2 nhánh điều kiện phân biệt',
+    ht132.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC && distinctDk
+    && ['7616', '8479'].every((h) => (ht132.dapAnDieuKien || '').includes(`→ nhóm ${h} (`)),
+    JSON.stringify({ trangThai: ht132.trangThai, distinctDk, dapAnDieuKien: ht132.dapAnDieuKien }));
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
