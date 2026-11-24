@@ -495,5 +495,124 @@ check(`ReDoS: 40.000 từ lặp (${REDOS_LAU.length} ký tự) chạy ${msRedos}
     { trangThai: ht157.trangThai, distinctDk157, tuCanhDoThi157, dapAnDieuKien: ht157.dapAnDieuKien });
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// OZV-2141 — Cạnh loại trừ 2 chiều 69.13 ↔ 94.03 cho ca 143 tầng 4 số
+// ('Kệ trưng bày / Sứ / Trang trí không gian, trưng bày sản phẩm')
+{
+  const D = require('../lib/do-thi/index.js');
+  const ST = require('../lib/so-tay.js');
+  const H = require('../lib/hoi-theo-so-tay.js');
+  const { soTayGates, nhomLienQuanSoTay } = require('../lib/so-tay-gates.js');
+  const { phanTichHoiTruoc4So, TRANG_THAI_4SO } = require('../lib/do-thi/hoi-truoc-4so.js');
+  D.datLai();
+
+  const s6913 = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'so-tay', '6913.json'), 'utf8'));
+  const s9403 = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'so-tay', '9403.json'), 'utf8'));
+  const v6913 = ST.verifySoTay(s6913, '6913');
+  const v9403 = ST.verifySoTay(s9403, '9403');
+  check('OZV-2141: verifySoTay 6913 và 9403 đạt 100% (0 mục bị loại)',
+    v6913.loai.length === 0 && v9403.loai.length === 0,
+    { loai6913: v6913.loai, loai9403: v9403.loai });
+
+  const lt6913 = (s6913.loaiTru || []).find((x) => x.sangNhom === '9403');
+  const lt9403 = (s9403.loaiTru || []).find((x) => x.sangNhom === '6913');
+  check('OZV-2141: sổ tay có loaiTru 2 chiều 6913 ↔ 9403 kèm canCuLoaiTru nguyên văn đạt checkItem',
+    Boolean(
+      lt6913
+      && lt6913.canCuLoaiTru?.nguon === 'nhom9403.nhom'
+      && ST.checkItem('loaiTru', lt6913, ST.sourcesFor('6913'), '6913') === null
+    )
+    && Boolean(
+      lt9403
+      && lt9403.canCuLoaiTru?.nguon === 'nhom6913.nhom'
+      && ST.checkItem('loaiTru', lt9403, ST.sourcesFor('9403'), '9403') === null
+    ),
+    { lt6913, lt9403 });
+
+  const c5_6913_9403 = D.canhTu('6913', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '9403');
+  const c5_9403_6913 = D.canhTu('9403', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '6913');
+  const c6_9403_6913 = D.canhTu('9403', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '6913');
+  const c6_6913_9403 = D.canhTu('6913', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '9403');
+  check('OZV-2141: đồ thị 2 chiều C5/C6 giữa 6913 ↔ 9403 giữ đủ trích nguồn + canCuLoaiTru',
+    c5_6913_9403.some((e) => e.nguon === 'nhom6913.nhom' && e.canCuLoaiTru?.nguon === 'nhom9403.nhom')
+    && c5_9403_6913.some((e) => e.nguon === 'nhom9403.nhom' && e.canCuLoaiTru?.nguon === 'nhom6913.nhom')
+    && c6_9403_6913.length >= 1
+    && c6_6913_9403.length >= 1,
+    { c5_6913_9403: c5_6913_9403.length, c5_9403_6913: c5_9403_6913.length });
+
+  const moTaCa143 = 'Kệ trưng bày / Sứ / Trang trí không gian, trưng bày sản phẩm';
+  const mo6913 = D.moRongUngVien(['6913'], moTaCa143, { toiDa: 10 });
+  const mo9403 = D.moRongUngVien(['9403'], moTaCa143, { toiDa: 10 });
+  check('OZV-2141: moRongUngVien kéo 2 chiều 6913 ↔ 9403 trên ca 143 "Kệ trưng bày / Sứ"',
+    mo6913.some((x) => x.nhom === '9403') && mo9403.some((x) => x.nhom === '6913'),
+    { tu6913: mo6913.map((x) => x.nhom), tu9403: mo9403.map((x) => x.nhom) });
+
+  const rel6913 = nhomLienQuanSoTay('6913');
+  const rel9403 = nhomLienQuanSoTay('9403');
+  check('OZV-2141: nhomLienQuanSoTay hai chiều 6913 ↔ 9403',
+    rel6913.includes('9403') && rel9403.includes('6913'),
+    { rel6913, rel9403 });
+
+  const g6913To9403 = soTayGates({
+    hs: '69139090',
+    productText: 'Kệ trưng bày bằng sứ đặt sàn hoặc treo tường có ngăn',
+    productName: 'Kệ trưng bày bằng sứ đặt sàn hoặc treo tường có ngăn',
+    candidateHeadings: ['6913', '9403'],
+  });
+  const g9403To6913 = soTayGates({
+    hs: '94036090',
+    productText: 'Kệ trưng bày bằng sứ mang tính trang trí đế đặt bàn',
+    productName: 'Kệ trưng bày bằng sứ mang tính trang trí đế đặt bàn',
+    candidateHeadings: ['9403', '6913'],
+  });
+  check('OZV-2141 (thuận soTayGates): kích hoạt SO_TAY_LOAI_TRU đúng cả 2 chiều 6913 → 9403 và 9403 → 6913',
+    (g6913To9403.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('9403'))
+    && (g9403To6913.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('6913')),
+    { g6913To9403: g6913To9403.challenges, g9403To6913: g9403To6913.challenges });
+
+  const gDoi6913 = soTayGates({
+    hs: '69139090',
+    productText: 'Tượng sứ trang trí nội thất nhỏ để bàn',
+    productName: 'Tượng sứ trang trí nội thất nhỏ để bàn',
+    candidateHeadings: ['6913', '9403'],
+  });
+  const gDoi9403 = soTayGates({
+    hs: '94036090',
+    productText: 'Tủ gỗ văn phòng có ngăn kéo',
+    productName: 'Tủ gỗ văn phòng có ngăn kéo',
+    candidateHeadings: ['9403', '6913'],
+  });
+  check('OZV-2141 (đối chứng soTayGates): tượng sứ trang trí và tủ gỗ văn phòng không kích hoạt oan 6913 ↔ 9403',
+    !(gDoi6913.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('9403'))
+    && !(gDoi9403.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('6913')),
+    { gDoi6913: gDoi6913.challenges, gDoi9403: gDoi9403.challenges });
+
+  const pb6913 = H.cauPhanBietNhom('6913', ['6913', '9403'], moTaCa143);
+  const pb9403 = H.cauPhanBietNhom('9403', ['9403', '6913'], moTaCa143);
+  check('OZV-2141 (thuận cauPhanBietNhom): sinh câu PHAN_BIET_NHOM 2 chiều 69.13 ↔ 94.03 cho ca 143',
+    pb6913.length === 1 && pb6913[0].nguon === 'nhom6913.nhom' && /94\.03/.test(pb6913[0].questionVi)
+    && pb9403.length === 1 && pb9403[0].nguon === 'nhom9403.nhom' && /69\.13/.test(pb9403[0].questionVi),
+    { pb6913, pb9403 });
+
+  const pbDoi6913 = H.cauPhanBietNhom('6913', ['6913', '9403'], 'Tượng sứ trang trí nội thất nhỏ để bàn');
+  const pbDoi9403 = H.cauPhanBietNhom('9403', ['9403', '6913'], 'Tủ gỗ văn phòng có ngăn kéo');
+  check('OZV-2141 (đối chứng cauPhanBietNhom & moRongUngVien): không hỏi oan / không kéo oan 69.13 ↔ 94.03 trên hàng không liên quan',
+    pbDoi6913.length === 0
+    && pbDoi9403.length === 0
+    && !D.moRongUngVien(['6913'], 'Tượng sứ trang trí nội thất nhỏ để bàn').some((x) => x.nhom === '9403')
+    && !D.moRongUngVien(['9403'], 'Tủ gỗ văn phòng có ngăn kéo').some((x) => x.nhom === '6913'),
+    { pbDoi6913, pbDoi9403 });
+
+  const ht143 = phanTichHoiTruoc4So({ moTa: moTaCa143, ungVien: ['6913', '9403'] });
+  const distinctDk143 = new Set((ht143.nhanh || []).map((n) => n.dieuKien)).size === 2;
+  const tuCanhDoThi143 = (ht143.nhanh || []).length === 2 && (ht143.nhanh || []).every((n) => String(n.nguon || '').startsWith('do-thi:'));
+  check('OZV-2141 (hoi-truoc-4so): ca 143 với [6913, 9403] trả CHUA_CHOT_NHOM_HOI_TRUOC với 2 nhánh điều kiện phân biệt từ cạnh đồ thị',
+    ht143.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC
+    && distinctDk143
+    && tuCanhDoThi143
+    && ['6913', '9403'].every((h) => (ht143.dapAnDieuKien || '').includes(`→ nhóm ${h} (`)),
+    { trangThai: ht143.trangThai, distinctDk143, tuCanhDoThi143, dapAnDieuKien: ht143.dapAnDieuKien });
+}
+
 console.log(`\nvật liệu tổng hợp (composite) — OZV-581 / OZV-540 PA-3: ${passed} PASS, ${failed} FAIL`);
 process.exit(failed ? 1 : 0);
