@@ -417,6 +417,16 @@ function taoChiMucNghiaS7TrongRam() {
   };
 }
 
+/** Hai tên gần trùng: phần chữ chung chiếm >= 80% tên ngắn hơn (>= 4 chữ). Dùng để loại bản ghi của chính hàng đang đo. */
+const ganTrungTen = (a, b) => {
+  const t = (x) => [...new Set(chuanTenGon(x).split(' ').filter((w) => w.length > 1))];
+  const [A, B] = [t(a), t(b)].sort((x, y) => x.length - y.length);
+  if (A.length < 4) return false;
+  const S = new Set(B);
+  return A.filter((w) => S.has(w)).length / A.length >= 0.8;
+};
+const chuanTenGon = (x) => String(x || '').toLowerCase().replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
+
 /** Chạy timTruoc trên một danh sách ca và chấm điểm + độ trễ (không lưu tên hàng Oz). */
 async function chayMotBo({ rows, mapPayload, getTruth, ttOpts = {}, laVan52 = false }) {
   let coUngVien = 0;
@@ -435,7 +445,7 @@ async function chayMotBo({ rows, mapPayload, getTruth, ttOpts = {}, laVan52 = fa
     const truth6 = truth.slice(0, 6);
 
     const t0 = performance.now();
-    const res = await timTruocMod.timTruoc(payload, ttOpts);
+    const res = await timTruocMod.timTruoc(payload, typeof ttOpts === 'function' ? ttOpts(row) : ttOpts);
     times.push(performance.now() - t0);
 
     const tomTat = res?.tomTat || {};
@@ -599,7 +609,12 @@ export async function doBoTimTruoc(opts = {}) {
       const chuaKhaiRes = await chayMotBo({
         rows: chuaKhai,
         mapPayload: mapRaw,
-        ttOpts: batTxl ? extras.thuongOpts : {},
+        // Bộ này lấy từ thông báo phân loại có trong kho tiền lệ: loại đúng thông báo của ca đang đo (không thì tự tìm thấy chính mình).
+        ttOpts: (row) => ({
+          locTb: (x) => !String(x.precedent?.tbTchqNumber || x.tbTchqNumber || '').includes(String(row.nguonDong))
+            && !ganTrungTen(x.precedent?.productNameRaw || x.precedent?.productName || x.productName, row.tenHang),
+          ...(batTxl ? { embedFn: extras.embedFnChuaKhai(row) } : {}),
+        }),
       });
       chuaKhaiRes.tongTrongTep = chuaKhaiAll.length;
 
@@ -650,6 +665,10 @@ export async function doBoTimTruoc(opts = {}) {
         coModelNghia = false;
       }
 
+      if (!coModelNghia) {
+        console.error('THIẾU MÔ HÌNH NGHĨA: lượt ON chỉ đo tiền xử lý câu, không có tìm theo nghĩa. Không được báo số này là tìm theo nghĩa.');
+        process.exitCode = 3;
+      }
       const idxThuong = coModelNghia ? embedPool.taiChiMucNghia() : null;
       const idxS7 = coModelNghia ? taoChiMucNghiaS7TrongRam() : null;
 
@@ -669,6 +688,16 @@ export async function doBoTimTruoc(opts = {}) {
 
       const onRes = await chayCheDo(true, {
         thuongOpts: { embedFn: embedFnThuong },
+        embedFnChuaKhai: (row) => {
+          const khoa = chuanTenGon(row.tenHang).slice(0, 30);
+          return async (cau) => {
+            const r = await embedFnThuong(cau);
+            if (!r) return r;
+            const muc = (r.muc || []).filter((m) => chuanTenGon(m.ten).slice(0, 30) !== khoa && !(m.nguon === 'tb' && ganTrungTen(m.ten, row.tenHang)));
+            const n4 = new Set(muc.map((m) => nz(m.hs || m.nhom4).slice(0, 4)));
+            return { ...r, muc, nhom4: (r.nhom4 || []).filter((n) => n4.has(nz(n.ma).slice(0, 4))) };
+          };
+        },
         s7Opts: { locOz: locOzS7, tuDien: tuDienS7, embedFn: embedFnS7 },
       });
 
