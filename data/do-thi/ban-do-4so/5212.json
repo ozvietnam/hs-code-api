@@ -1,0 +1,105 @@
+{
+  "nhom": "5212",
+  "khuon": "bd4@1",
+  "nguonLoai": "AI_NHAP",
+  "chamCheo": "DUYET",
+  "taoBoi": {
+    "provider": "google-studio",
+    "model": "gemini-4-hydrogen",
+    "goi": "df72d2d8d800"
+  },
+  "kieuNhom": "CON_LAI",
+  "hoSo": {
+    "chucNang": [],
+    "coChe": [],
+    "dangVatLy": [
+      {
+        "y": "các loại vải dệt thoi",
+        "trich": "các loại vải dệt thoi (như đã định nghĩa trong Phần (I) (C) của Chú giải tổng quát Phần XI) làm từ sợi bông",
+        "nguon": "ct.5212.1"
+      }
+    ],
+    "chatLieu": [
+      {
+        "y": "làm từ sợi bông",
+        "trich": "làm từ sợi bông",
+        "nguon": "ct.5212.1"
+      },
+      {
+        "y": "dệt từ sợi đã được pha",
+        "trich": "vải dệt từ sợi đã được pha",
+        "nguon": "ct.5212.1"
+      }
+    ],
+    "oDauAiDung": [],
+    "hangDuocNeu": [
+      {
+        "ten": "vải dệt từ sợi đã được pha",
+        "trich": "vải dệt từ sợi đã được pha",
+        "nguon": "ct.5212.1"
+      }
+    ],
+    "dieuKienBatBuoc": [
+      {
+        "y": "không thuộc nhóm trước của Chương 52",
+        "trich": "không bao gồm các vải thuộc nhóm trước của Chương này hoặc được chỉ rõ hay nằm trong mục thứ hai của Phần XI",
+        "nguon": "ct.5212.1"
+      }
+    ]
+  },
+  "canh": [
+    {
+      "den": "3005",
+      "loai": "LOAI_TRU",
+      "dacDiem": "tẩm thuốc hoặc đóng gói bán lẻ dùng cho y tế",
+      "neu": "băng dùng trong y tế, đã tẩm thuốc hay đã đóng gói để bán lẻ",
+      "thi": "3005",
+      "conNeu": "vải dệt thoi từ sợi bông thông thường",
+      "thiKia": "5212",
+      "canCu": [
+        {
+          "nguon": "ct.5212.2",
+          "trich": "Băng dùng trong y tế, đã tẩm thuốc hay đã đóng gói để bán lẻ thì bị loại khỏi nhóm này (nhóm 30.05)."
+        }
+      ],
+      "quyTac": "QT1"
+    },
+    {
+      "den": "5309",
+      "loai": "PHAN_BIET",
+      "dacDiem": "tỷ trọng pha trộn giữa sợi lanh và sợi bông",
+      "neu": "tỷ trọng sợi lanh và đay cộng lại trội hơn và tỷ lệ lanh trội hơn đay",
+      "thi": "5309",
+      "conNeu": "vải dệt thoi pha từ bông được phân loại theo bông",
+      "thiKia": "5212",
+      "canCu": [
+        {
+          "nguon": "phan:50:chu_giai:2c~4",
+          "trich": "Hàng dệt này không được phân loại trong nhóm 52.12 (vải dệt thoi khác từ bông) nhưng lại được phân loại trong nhóm 53.09 (vải dệt thoi từ sợi lanh)."
+        }
+      ],
+      "quyTac": "QT1"
+    },
+    {
+      "den": "5210",
+      "loai": "PHAN_BIET",
+      "dacDiem": "tỷ lệ pha với xơ nhân tạo và định lượng vải bông",
+      "neu": "hàm lượng bông dưới 85%, pha với xơ nhân tạo, định lượng không quá 200 g/m2",
+      "thi": "5210",
+      "conNeu": "vải dệt thoi từ sợi bông pha loại khác",
+      "thiKia": "5212",
+      "canCu": [
+        {
+          "nguon": "ct.5212.1",
+          "trich": "không bao gồm các vải thuộc nhóm trước của Chương này"
+        }
+      ],
+      "quyTac": "QT1"
+    }
+  ],
+  "khongChac": [
+    "nhóm không định nghĩa theo cơ chế vận hành",
+    "chú giải không giới hạn đối tượng hoặc nơi sử dụng cụ thể"
+  ],
+  "chamCheoGhiChu": "[gemma4:31b, máy GPU nhà] Các cạnh phân biệt với 3005, 5309 và 5210 đều đúng nghĩa và đúng chiều theo đoạn luật trích dẫn. | "
+}
