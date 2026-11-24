@@ -1436,5 +1436,165 @@ if (fs.existsSync(boChuanPath)) {
   );
 }
 
+// OZV-2207 — Cạnh loại trừ 2 chiều 90.13 <-> 85.15 cho ca 162 tầng 4 số
+// ('Đầu chiếu tia Laser / Chiếu tia sáng chấm đỏ')
+{
+  const S = require('../lib/so-tay.js');
+  const { loadSoTay, soTayGates, nhomLienQuanSoTay } = require('../lib/so-tay-gates.js');
+  const { cauPhanBietNhom } = require('../lib/hoi-theo-so-tay.js');
+  const D = require('../lib/do-thi/index.js');
+  D.datLai();
+
+  const q162 = 'Đầu chiếu tia Laser / Chiếu tia sáng chấm đỏ';
+  const q162Full = 'Đầu chiếu tia Laser / None / Chiếu tia sáng chấm đỏ';
+  const st9013 = loadSoTay('9013');
+  const st8515 = loadSoTay('8515');
+  const v9013 = S.verifySoTay(st9013, '9013');
+  const v8515 = S.verifySoTay(st8515, '8515');
+  check(
+    '[OZV-2207 verifySoTay] sổ tay 9013 và 8515 đạt 100% (0 mục không kiểm được nguồn)',
+    v9013.loai.length === 0 && v8515.loai.length === 0
+      && v9013.dat === v9013.tong && st9013.kiemTra?.tong === v9013.tong && st9013.kiemTra?.dat === v9013.dat
+      && v8515.dat === v8515.tong && st8515.kiemTra?.tong === v8515.tong && st8515.kiemTra?.dat === v8515.dat,
+    JSON.stringify({ loai9013: v9013.loai, loai8515: v8515.loai, tong9013: v9013.tong, tong8515: v8515.tong }),
+  );
+
+  const lt9013 = (st9013?.loaiTru || []).find((x) => x.sangNhom === '8515' && x.canCuLoaiTru?.nguon === 'nhom8515.nhom' && /đầu chiếu tia laser/i.test(x.dieuKien || ''));
+  const lt8515 = (st8515?.loaiTru || []).find((x) => x.sangNhom === '9013' && x.canCuLoaiTru?.nguon === 'nhom9013.nhom' && /đầu chiếu tia laser/i.test(x.dieuKien || ''));
+  check(
+    '[OZV-2207 căn cứ] sổ tay 9013 và 8515 có mục loaiTru 2 chiều 9013 <-> 8515 kèm canCuLoaiTru nguyên văn đạt checkItem',
+    Boolean(lt9013 && lt9013.nguon === 'nhom9013.nhom' && S.checkItem('loaiTru', lt9013, S.sourcesFor('9013'), '9013') === null)
+      && Boolean(lt8515 && lt8515.nguon === 'nhom8515.nhom' && S.checkItem('loaiTru', lt8515, S.sourcesFor('8515'), '8515') === null)
+      && lt9013.dieuKien !== lt8515.dieuKien
+      && !/;/.test(lt9013.dieuKien)
+      && !/;/.test(lt8515.dieuKien),
+    JSON.stringify({ lt9013, lt8515 }),
+  );
+
+  const c5Tu9013 = D.canhTu('9013', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8515');
+  const c5Tu8515 = D.canhTu('8515', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '9013');
+  const c6Tu9013 = D.canhTu('9013', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '8515');
+  const c6Tu8515 = D.canhTu('8515', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '9013');
+  const mrTu9013 = D.moRongUngVien(['9013'], q162, { toiDa: 10 });
+  const mrTu8515 = D.moRongUngVien(['8515'], q162, { toiDa: 10 });
+  const rel9013 = nhomLienQuanSoTay('9013');
+  const rel8515 = nhomLienQuanSoTay('8515');
+  check(
+    '[OZV-2207 đồ thị 2 chiều] bảng cạnh có C5/C6 9013<->8515, nhomLienQuanSoTay 2 chiều và moRongUngVien kéo 2 chiều cho ca 162',
+    c5Tu9013.some((e) => e.nguon === 'nhom9013.nhom' && e.canCuLoaiTru?.nguon === 'nhom8515.nhom')
+      && c5Tu8515.some((e) => e.nguon === 'nhom8515.nhom' && e.canCuLoaiTru?.nguon === 'nhom9013.nhom')
+      && c6Tu9013.length >= 1
+      && c6Tu8515.length >= 1
+      && rel9013.includes('8515')
+      && rel8515.includes('9013')
+      && mrTu9013.some((x) => x.nhom === '8515')
+      && mrTu8515.some((x) => x.nhom === '9013'),
+    JSON.stringify({ c5Tu9013: c5Tu9013.length, c5Tu8515: c5Tu8515.length, mrTu9013, mrTu8515 }),
+  );
+
+  const ht162 = phanTichHoiTruoc4So({ moTa: q162, ungVien: ['9013', '8515'] });
+  const distinctDk162 = new Set((ht162.nhanh || []).map((n) => n.dieuKien)).size === 2;
+  const ht162Cum = phanTichHoiTruoc4So({ moTa: q162, ungVien: ['9013', '8486', '8515', '8517'] });
+  const distinctDk162Cum = new Set((ht162Cum.nhanh || []).map((n) => n.dieuKien)).size === 4;
+  check(
+    '[OZV-2207 hoi-truoc-4so] ca 162 Đầu chiếu tia Laser tách nhánh điều kiện riêng biệt cho [9013, 8515] và cụm 4 nhóm [9013, 8486, 8515, 8517]',
+    ht162.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC
+      && distinctDk162
+      && Boolean(ht162.dapAnDieuKien && ht162.dapAnDieuKien.includes('→ nhóm 9013 (') && ht162.dapAnDieuKien.includes('→ nhóm 8515 ('))
+      && Boolean(ht162.cauHoi)
+      && ht162Cum.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC
+      && distinctDk162Cum
+      && ['9013', '8486', '8515', '8517'].every((h) => (ht162Cum.dapAnDieuKien || '').includes(`→ nhóm ${h} (`)),
+    JSON.stringify({ trangThai: ht162.trangThai, distinctDk162, distinctDk162Cum, dapAnDieuKien: ht162.dapAnDieuKien }),
+  );
+
+  const pb9013 = cauPhanBietNhom('9013', ['9013', '8515'], q162);
+  const pb8515 = cauPhanBietNhom('8515', ['8515', '9013'], q162);
+  check(
+    '[OZV-2207 thuận cauPhanBietNhom] sinh câu hỏi phân biệt 2 chiều 90.13 <-> 85.15 cho ca 162 Đầu chiếu tia Laser',
+    pb9013.length === 1
+      && pb9013[0].loai === 'PHAN_BIET_NHOM'
+      && pb9013[0].canCu === 'so-tay'
+      && pb9013[0].nguon === 'nhom9013.nhom'
+      && /85\.15/.test(pb9013[0].questionVi)
+      && /90\.13/.test(pb9013[0].questionVi)
+      && pb8515.length === 1
+      && pb8515[0].loai === 'PHAN_BIET_NHOM'
+      && pb8515[0].canCu === 'so-tay'
+      && pb8515[0].nguon === 'nhom8515.nhom'
+      && /90\.13/.test(pb8515[0].questionVi)
+      && /85\.15/.test(pb8515[0].questionVi),
+    JSON.stringify({ pb9013, pb8515 }),
+  );
+
+  const g9013To8515 = soTayGates({
+    hs: '90132000',
+    productText: q162,
+    productName: q162,
+    pool: [{ h4: '8515', from: 'test' }],
+  });
+  const g8515To9013 = soTayGates({
+    hs: '85158090',
+    productText: q162,
+    productName: q162,
+    pool: [{ h4: '9013', from: 'test' }],
+  });
+  const g9013Full = soTayGates({
+    hs: '90132000',
+    productText: q162Full,
+    productName: q162Full,
+    pool: [{ h4: '8515', from: 'test' }],
+  });
+  const g8515Full = soTayGates({
+    hs: '85158090',
+    productText: q162Full,
+    productName: q162Full,
+    pool: [{ h4: '9013', from: 'test' }],
+  });
+  check(
+    '[OZV-2207 thuận soTayGates] kích hoạt SO_TAY_LOAI_TRU đúng cả 2 chiều 9013 -> 8515 và 8515 -> 9013 trên ca 162',
+    (g9013To8515.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8515'))
+      && (g8515To9013.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('9013'))
+      && (g9013Full.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8515'))
+      && (g8515Full.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('9013')),
+    JSON.stringify({ g9013To8515: g9013To8515.challenges, g8515To9013: g8515To9013.challenges }),
+  );
+
+  const dcKinhNgam = 'Kính ngắm để lắp vào vũ khí săn bắn';
+  const dcMoHan = 'Mỏ hàn sắt và súng hàn điện cầm tay 60W';
+  const dcMayHanHoQuang = 'Máy hàn hồ quang dùng điện xoay chiều, kiểu biến thế';
+  const dcKinh9013 = cauPhanBietNhom('9013', ['9013', '8515'], dcKinhNgam);
+  const dcKinh8515 = cauPhanBietNhom('8515', ['8515', '9013'], dcKinhNgam);
+  const dcMo9013 = cauPhanBietNhom('9013', ['9013', '8515'], dcMoHan);
+  const dcMo8515 = cauPhanBietNhom('8515', ['8515', '9013'], dcMoHan);
+  const dcHq9013 = cauPhanBietNhom('9013', ['9013', '8515'], dcMayHanHoQuang);
+  const dcHq8515 = cauPhanBietNhom('8515', ['8515', '9013'], dcMayHanHoQuang);
+  const gDoi9013 = soTayGates({
+    hs: '90131010',
+    productText: dcKinhNgam,
+    productName: dcKinhNgam,
+  });
+  const gDoi8515 = soTayGates({
+    hs: '85151100',
+    productText: dcMoHan,
+    productName: dcMoHan,
+  });
+  check(
+    '[OZV-2207 đối chứng] kính ngắm vũ khí, mỏ hàn sắt và máy hàn hồ quang biến thế không hỏi oan / không kéo oan 90.13 <-> 85.15',
+    dcKinh9013.length === 0
+      && dcKinh8515.length === 0
+      && dcMo9013.length === 0
+      && dcMo8515.length === 0
+      && dcHq9013.length === 0
+      && dcHq8515.length === 0
+      && !D.moRongUngVien(['9013'], dcKinhNgam).some((x) => x.nhom === '8515')
+      && !D.moRongUngVien(['8515'], dcMoHan).some((x) => x.nhom === '9013')
+      && !D.moRongUngVien(['8515'], dcMayHanHoQuang).some((x) => x.nhom === '9013')
+      && !(gDoi9013.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8515'))
+      && !(gDoi8515.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('9013')),
+    JSON.stringify({ dcKinh9013, dcKinh8515, dcMo9013, dcMo8515, dcHq9013, dcHq8515, gDoi9013: gDoi9013.challenges, gDoi8515: gDoi8515.challenges }),
+  );
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
