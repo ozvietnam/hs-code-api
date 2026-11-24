@@ -638,6 +638,7 @@ export async function doBoTimTruoc(opts = {}) {
       const chuaKhaiRes = await runOrDummy('chuaKhai', {
         rows: chuaKhai,
         mapPayload: mapRaw,
+        // Bộ này lấy từ thông báo phân loại có trong kho tiền lệ: loại đúng thông báo của ca đang đo (không thì tự tìm thấy chính mình).
         ttOpts: (row) => ({
           locTb: (x) => !String(x.precedent?.tbTchqNumber || x.tbTchqNumber || '').includes(String(row.nguonDong))
             && !ganTrungTen(x.precedent?.productNameRaw || x.precedent?.productName || x.productName, row.tenHang),
