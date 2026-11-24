@@ -71,4 +71,40 @@ kiem('ca ngược: cổng công khai lib/wco-op.js#view vẫn chặn 392490/4 (h
   wcoOp.view(wcoOp.get('392490/4')) === null
   && checkItem('loaiTru', { dieuKien: 'test', sangNhom: '76', nguon: 'nhom7603.nhom', trich: 'Chương 76' }, { 'nhom7603.nhom': 'Chương 76' }, '7603') === 'nhom-dich-trung-nhom-nay');
 
+// 4. OZV-2099 — ca 82 tầng 4 số: gặm nướu trẻ em / cao su silicone → cạnh loại trừ 2 chiều 40.14 ↔ 39.26
+{
+  const H = require('../lib/hoi-theo-so-tay.js');
+  const st4014 = docJson('data/so-tay/4014.json');
+  const st3926 = docJson('data/so-tay/3926.json');
+  const muc4014 = (st4014.loaiTru || []).find((x) => x.sangNhom === '3926' && /gặm nướu/i.test(x.dieuKien || ''));
+  const muc3926 = (st3926.loaiTru || []).find((x) => x.sangNhom === '4014' && /gặm nướu/i.test(x.dieuKien || ''));
+  kiem('OZV-2099: sổ tay 4014↔3926 có loaiTru 2 chiều + canCuLoaiTru nguyên văn (checkItem đạt)',
+    Boolean(muc4014 && muc3926)
+    && checkItem('loaiTru', muc4014, sourcesFor('4014'), '4014') === null
+    && checkItem('loaiTru', muc3926, sourcesFor('3926'), '3926') === null,
+    JSON.stringify({ muc4014: Boolean(muc4014), muc3926: Boolean(muc3926) }));
+
+  const c5_4014 = D.canhTu('4014', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '3926' && /gặm nướu/i.test(e.dieuKien || ''));
+  const c5_3926 = D.canhTu('3926', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '4014' && /gặm nướu/i.test(e.dieuKien || ''));
+  const giua = D.canhGiuaNhomConSong(['4014', '3926']).filter((e) => (e.loai === 'C5' || e.loai === 'C6') && /gặm nướu/i.test(e.dieuKien || ''));
+  kiem('OZV-2099: đồ thị C5/C6 + canhGiuaNhomConSong có cạnh 4014↔3926 (gặm nướu)',
+    c5_4014.length >= 1 && c5_3926.length >= 1 && giua.length >= 2,
+    JSON.stringify({ c5_4014: c5_4014.length, c5_3926: c5_3926.length, giua: giua.length }));
+
+  const moTa = 'Gặm nướu cho trẻ em / cao su silicone / trẻ mọc răng';
+  const pb4014 = H.cauPhanBietNhom('4014', ['4014', '3926'], moTa);
+  const pb3926 = H.cauPhanBietNhom('3926', ['3926', '4014'], moTa);
+  kiem('OZV-2099 (thuận): cauPhanBietNhom 2 chiều khớp ca 82 gặm nướu / silicone',
+    pb4014.length >= 1 && pb3926.length >= 1
+    && pb4014.some((q) => q.loai === 'PHAN_BIET_NHOM' && q.canCu === 'so-tay' && /39\.26|40\.14/.test(q.questionVi))
+    && pb3926.some((q) => q.loai === 'PHAN_BIET_NHOM' && q.canCu === 'so-tay' && /39\.26|40\.14/.test(q.questionVi)),
+    JSON.stringify({ pb4014, pb3926 }));
+
+  const pbNguoc4014 = H.cauPhanBietNhom('4014', ['4014', '3926'], 'bao tránh thai bằng cao su lưu hoá');
+  const pbNguoc3926 = H.cauPhanBietNhom('3926', ['3926', '4014'], 'phao cho lưới đánh cá bằng plastic');
+  kiem('OZV-2099 (ngược): bao tránh thai / phao lưới đánh cá không hỏi oan 40.14↔39.26',
+    pbNguoc4014.length === 0 && pbNguoc3926.length === 0,
+    JSON.stringify({ pbNguoc4014, pbNguoc3926 }));
+}
+
 xong();
