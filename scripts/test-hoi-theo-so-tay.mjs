@@ -404,5 +404,39 @@ const ketQuaSong = (raw = VAN) => ketQuaGia('848180', raw, {}, ['848120']);
     { kqDoi1, kqDoi2 });
 }
 
+// 11) OZV-2108: cạnh loại trừ 2 chiều 84.77 ↔ 84.22 cho ca 10 tầng 4 số «Máy đúc thổi túi cột khí / None / Thổi khí nén vào túi tạo xốp cột khí»
+{
+  const moTa = 'Máy đúc thổi túi cột khí / None / Thổi khí nén vào túi tạo xốp cột khí';
+  const pb8477 = H.cauPhanBietNhom('8477', ['8477', '8422'], moTa);
+  check('OZV-2108 (thuận 8477 → 8422): 8477 đứng đầu với [8477, 8422] sinh câu PHAN_BIET_NHOM từ nhom8477.nhom sang 84.22',
+    pb8477.length === 1
+    && pb8477[0].loai === 'PHAN_BIET_NHOM'
+    && pb8477[0].canCu === 'so-tay'
+    && pb8477[0].nguon === 'nhom8477.nhom'
+    && /84\.22/.test(pb8477[0].questionVi)
+    && /84\.77/.test(pb8477[0].questionVi)
+    && Boolean(pb8477[0].trich),
+    pb8477);
+
+  const pb8422 = H.cauPhanBietNhom('8422', ['8422', '8477'], moTa);
+  check('OZV-2108 (thuận 8422 → 8477): 8422 đứng đầu với [8422, 8477] sinh câu PHAN_BIET_NHOM từ nhom8422.nhom sang 84.77',
+    pb8422.length === 1
+    && pb8422[0].loai === 'PHAN_BIET_NHOM'
+    && pb8422[0].canCu === 'so-tay'
+    && pb8422[0].nguon === 'nhom8422.nhom'
+    && /84\.77/.test(pb8422[0].questionVi)
+    && /84\.22/.test(pb8422[0].questionVi)
+    && Boolean(pb8422[0].trich),
+    pb8422);
+
+  const doi1 = 'máy rửa bát đĩa dùng trong gia đình';
+  const doi2 = 'máy làm sạch hoặc làm khô chai lọ thủy tinh';
+  const kqDoi1 = [...H.cauPhanBietNhom('8477', ['8477', '8422'], doi1), ...H.cauPhanBietNhom('8422', ['8422', '8477'], doi1)];
+  const kqDoi2 = [...H.cauPhanBietNhom('8422', ['8422', '8477'], doi2), ...H.cauPhanBietNhom('8477', ['8477', '8422'], doi2)];
+  check('OZV-2108 (đối chứng): "máy rửa bát đĩa dùng trong gia đình" và "máy làm sạch hoặc làm khô chai lọ thủy tinh" không hỏi oan 84.77 ↔ 84.22',
+    kqDoi1.length === 0 && kqDoi2.length === 0,
+    { kqDoi1, kqDoi2 });
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
