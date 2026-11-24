@@ -370,5 +370,39 @@ const ketQuaSong = (raw = VAN) => ketQuaGia('848180', raw, {}, ['848120']);
     top10);
 }
 
+// 10) OZV-2090: cạnh loại trừ 2 chiều 90.26 ↔ 90.30 cho câu thực địa «đồng hồ đo áp, đo dòng, chống mất pha , 3pha -380v»
+{
+  const moTa = 'đồng hồ đo áp, đo dòng, chống mất pha , 3pha -380v';
+  const pb9030 = H.cauPhanBietNhom('9030', ['9030', '9026'], moTa);
+  check('OZV-2090 (thuận 9030 → 9026): 9030 đứng đầu với [9030, 9026] sinh câu PHAN_BIET_NHOM từ nhom9030.nhom sang 90.26',
+    pb9030.length === 1
+    && pb9030[0].loai === 'PHAN_BIET_NHOM'
+    && pb9030[0].canCu === 'so-tay'
+    && pb9030[0].nguon === 'nhom9030.nhom'
+    && /90\.26/.test(pb9030[0].questionVi)
+    && /90\.30/.test(pb9030[0].questionVi)
+    && Boolean(pb9030[0].trich),
+    pb9030);
+
+  const pb9026 = H.cauPhanBietNhom('9026', ['9026', '9030'], moTa);
+  check('OZV-2090 (thuận 9026 → 9030): 9026 đứng đầu với [9026, 9030] sinh câu PHAN_BIET_NHOM từ nhom9026.nhom sang 90.30',
+    pb9026.length === 1
+    && pb9026[0].loai === 'PHAN_BIET_NHOM'
+    && pb9026[0].canCu === 'so-tay'
+    && pb9026[0].nguon === 'nhom9026.nhom'
+    && /90\.30/.test(pb9026[0].questionVi)
+    && /90\.26/.test(pb9026[0].questionVi)
+    && Boolean(pb9026[0].trich),
+    pb9026);
+
+  const doi1 = 'máy hiện sóng số 100MHz';
+  const doi2 = 'cảm biến đo mức nước siêu âm';
+  const kqDoi1 = [...H.cauPhanBietNhom('9030', ['9030', '9026'], doi1), ...H.cauPhanBietNhom('9026', ['9026', '9030'], doi1)];
+  const kqDoi2 = [...H.cauPhanBietNhom('9026', ['9026', '9030'], doi2), ...H.cauPhanBietNhom('9030', ['9030', '9026'], doi2)];
+  check('OZV-2090 (đối chứng): "máy hiện sóng số 100MHz" và "cảm biến đo mức nước siêu âm" không hỏi oan 90.26 ↔ 90.30',
+    kqDoi1.length === 0 && kqDoi2.length === 0,
+    { kqDoi1, kqDoi2 });
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
