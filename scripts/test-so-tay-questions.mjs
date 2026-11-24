@@ -17,6 +17,10 @@ import path from 'node:path';
   st8481.dong8 = (st8481.dong8 || []).map((d) => (d.hs in old848110 ? { ...d, dieuKienSo: old848110[d.hs] } : d));
   st8481.dieuKienNut = (st8481.dieuKienNut || []).filter((n) => !String(n.id || '').startsWith('848110'));
   fs.writeFileSync(path.join(TEST_DATA_DIR, 'so-tay/8481.json'), JSON.stringify(st8481));
+  // OZV-2178: nạp sớm 8449/8479 trước khi nhomLienQuanSoTay dựng chỉ mục _canhSoTay lần đầu.
+  for (const nh of ['8449', '8479']) {
+    fs.copyFileSync(path.join('data', 'so-tay', `${nh}.json`), path.join(TEST_DATA_DIR, 'so-tay', `${nh}.json`));
+  }
 }
 /**
  * POST /api/so-tay-questions — câu hỏi phân loại TẤT ĐỊNH lấy từ sổ tay thật.
@@ -647,6 +651,167 @@ assert('"mũ giày bằng vải lưới, đế EVA" → không hỏi upper/sole'
       (ht169.nhanh || []).every((n) => String(n.nguon || '').startsWith('do-thi:C5:')) &&
       ['8512', '8536'].every((h) => (ht169.dapAnDieuKien || '').includes(`→ nhóm ${h} (`)),
     { trangThai: ht169.trangThai, distinctDk169, nhanh: ht169.nhanh, dapAnDieuKien: ht169.dapAnDieuKien }
+  );
+}
+
+// ───────────── OZV-2178: cạnh loại trừ 2 chiều 84.49 <-> 84.79 cho ca 183 ─────────────
+// "Máy dập quai hàn khẩu trang / None / dập quai hàn khẩu trang" (nhomNhan: ["8449","8515"], ungVien đứng đầu 8479).
+{
+  const S2178 = require('../lib/so-tay.js');
+  const { loadSoTay: loadSoTay2178, soTayGates: soTayGates2178, nhomLienQuanSoTay: nhomLienQuan2178 } = require('../lib/so-tay-gates.js');
+  const { cauPhanBietNhom: cauPhanBiet2178 } = require('../lib/hoi-theo-so-tay.js');
+  const D2178 = require('../lib/do-thi/index.js');
+  const { phanTichHoiTruoc4So: hoiTruoc2178, TRANG_THAI_4SO: TT2178 } = require('../lib/do-thi/hoi-truoc-4so.js');
+  const ROOT2178 = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+
+  fs.mkdirSync(path.join(TEST_DATA_DIR, 'so-tay'), { recursive: true });
+  for (const nh of ['8449', '8479']) {
+    fs.copyFileSync(path.join(ROOT2178, 'data', 'so-tay', `${nh}.json`), path.join(TEST_DATA_DIR, 'so-tay', `${nh}.json`));
+  }
+  D2178.datLai();
+
+  const moTaCa183 = 'Máy dập quai hàn khẩu trang / None / dập quai hàn khẩu trang';
+
+  const s8449 = JSON.parse(fs.readFileSync(path.join(ROOT2178, 'data', 'so-tay', '8449.json'), 'utf8'));
+  const s8479 = JSON.parse(fs.readFileSync(path.join(ROOT2178, 'data', 'so-tay', '8479.json'), 'utf8'));
+  const v8449 = S2178.verifySoTay(s8449, '8449');
+  const v8479 = S2178.verifySoTay(s8479, '8479');
+  assert(
+    '[OZV-2178 verifySoTay] sổ tay 8449 và 8479 đạt 100% (0 mục bị loại)',
+    v8449.loai.length === 0 && v8479.loai.length === 0,
+    { loai8449: v8449.loai, loai8479: v8479.loai }
+  );
+
+  const st8449 = loadSoTay2178('8449');
+  const st8479 = loadSoTay2178('8479');
+  const lt8449 = (st8449?.loaiTru || []).find((x) => x.sangNhom === '8479');
+  const lt8479 = (st8479?.loaiTru || []).find((x) => x.sangNhom === '8449');
+  assert(
+    '[OZV-2178 căn cứ] sổ tay 8449 và 8479 có mục loaiTru 2 chiều 8449 <-> 8479 kèm canCuLoaiTru nguyên văn từ nhom8449.nhom/nhom8479.nhom đạt checkItem',
+    Boolean(
+      lt8449 &&
+        lt8449.nguon === 'nhom8449.nhom' &&
+        lt8449.canCuLoaiTru?.nguon === 'nhom8479.nhom' &&
+        !String(lt8449.dieuKien || '').includes(';') &&
+        S2178.checkItem('loaiTru', lt8449, S2178.sourcesFor('8449'), '8449') === null
+    ) &&
+      Boolean(
+        lt8479 &&
+          lt8479.nguon === 'nhom8479.nhom' &&
+          lt8479.canCuLoaiTru?.nguon === 'nhom8449.nhom' &&
+          !String(lt8479.dieuKien || '').includes(';') &&
+          lt8479.dieuKien !== lt8449.dieuKien &&
+          S2178.checkItem('loaiTru', lt8479, S2178.sourcesFor('8479'), '8479') === null
+      ),
+    { lt8449, lt8479 }
+  );
+
+  const c5Tu8449 = D2178.canhTu('8449', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8479');
+  const c5Tu8479 = D2178.canhTu('8479', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8449');
+  const c6Tu8449 = D2178.canhTu('8449', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '8479');
+  const c6Tu8479 = D2178.canhTu('8479', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '8449');
+  const giua8449_8479 = D2178.canhGiuaNhomConSong(['8449', '8479']).filter((e) => e.loai === 'C5' || e.loai === 'C6');
+  const mrTu8449 = D2178.moRongUngVien(['8449'], moTaCa183, { toiDa: 10 });
+  const mrTu8479 = D2178.moRongUngVien(['8479'], moTaCa183, { toiDa: 10 });
+  assert(
+    '[OZV-2178 đồ thị 2 chiều] bảng cạnh có C5/C6 8449<->8479, canhGiuaNhomConSong >= 2 và moRongUngVien kéo 2 chiều cho ca 183',
+    c5Tu8449.some((e) => e.nguon === 'nhom8449.nhom' && e.canCuLoaiTru?.nguon === 'nhom8479.nhom') &&
+      c5Tu8479.some((e) => e.nguon === 'nhom8479.nhom' && e.canCuLoaiTru?.nguon === 'nhom8449.nhom') &&
+      c6Tu8449.length >= 1 &&
+      c6Tu8479.length >= 1 &&
+      giua8449_8479.length >= 2 &&
+      mrTu8449.some((x) => x.nhom === '8479') &&
+      mrTu8479.some((x) => x.nhom === '8449'),
+    { c5Tu8449: c5Tu8449.length, c5Tu8479: c5Tu8479.length, giua: giua8449_8479.length, mrTu8449, mrTu8479 }
+  );
+
+  assert(
+    '[OZV-2178 nhomLienQuanSoTay] liên kết hai chiều 8449 <-> 8479',
+    nhomLienQuan2178('8449').includes('8479') && nhomLienQuan2178('8479').includes('8449'),
+    { rel8449: nhomLienQuan2178('8449'), rel8479: nhomLienQuan2178('8479') }
+  );
+
+  const pb8449 = cauPhanBiet2178('8449', ['8449', '8479'], moTaCa183);
+  assert(
+    '[OZV-2178 thuận 8449->8479] 8449 đứng đầu với [8449, 8479] sinh câu phân biệt từ nhom8449.nhom trỏ sang 84.79',
+    pb8449.length === 1 &&
+      pb8449[0].loai === 'PHAN_BIET_NHOM' &&
+      pb8449[0].canCu === 'so-tay' &&
+      pb8449[0].nguon === 'nhom8449.nhom' &&
+      /84\.79/.test(pb8449[0].questionVi) &&
+      /84\.49/.test(pb8449[0].questionVi),
+    { pb8449 }
+  );
+
+  const pb8479 = cauPhanBiet2178('8479', ['8479', '8449'], moTaCa183);
+  assert(
+    '[OZV-2178 thuận 8479->8449] 8479 đứng đầu với [8479, 8449] sinh câu phân biệt từ nhom8479.nhom trỏ sang 84.49',
+    pb8479.length === 1 &&
+      pb8479[0].loai === 'PHAN_BIET_NHOM' &&
+      pb8479[0].canCu === 'so-tay' &&
+      pb8479[0].nguon === 'nhom8479.nhom' &&
+      /84\.49/.test(pb8479[0].questionVi) &&
+      /84\.79/.test(pb8479[0].questionVi),
+    { pb8479 }
+  );
+
+  const g8449To8479 = soTayGates2178({
+    hs: '84490000',
+    productText: 'Máy dập quai hàn khẩu trang là thiết bị cơ khí có chức năng riêng biệt chưa được chi tiết hoặc ghi ở nhóm khác của Chương 84',
+    productName: 'Máy dập quai hàn khẩu trang chức năng riêng biệt',
+    candidateHeadings: ['8449', '8479'],
+  });
+  const g8479To8449 = soTayGates2178({
+    hs: '84798910',
+    productText: 'Máy dập quai hàn khẩu trang bằng ép hoặc dập cơ khí gắn quai vào mặt hàng làm từ phớt hoặc vải không dệt',
+    productName: 'Máy dập quai hàn khẩu trang ép cơ khí',
+    candidateHeadings: ['8479', '8449'],
+  });
+  assert(
+    '[OZV-2178 thuận soTayGates] kích hoạt SO_TAY_LOAI_TRU đúng cả 2 chiều 8449 -> 8479 và 8479 -> 8449',
+    (g8449To8479.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8479')) &&
+      (g8479To8449.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8449')),
+    { g8449To8479: g8449To8479.challenges, g8479To8449: g8479To8449.challenges }
+  );
+
+  const dcPhot8449 = cauPhanBiet2178('8449', ['8449', '8479'], 'Máy sản xuất nỉ phớt bằng tấm kim loại có rãnh');
+  const dcPhot8479 = cauPhanBiet2178('8479', ['8479', '8449'], 'Máy sản xuất nỉ phớt bằng tấm kim loại có rãnh');
+  const dcRobot8449 = cauPhanBiet2178('8449', ['8449', '8479'], 'Robot công nghiệp đa năng có chức năng riêng biệt');
+  const dcRobot8479 = cauPhanBiet2178('8479', ['8479', '8449'], 'Robot công nghiệp đa năng có chức năng riêng biệt');
+  const dcGate8449 = soTayGates2178({
+    hs: '84490000',
+    productText: 'Máy sản xuất nỉ phớt bằng tấm kim loại có rãnh',
+    productName: 'Máy sản xuất nỉ phớt',
+    candidateHeadings: ['8449', '8479'],
+  });
+  const dcGate8479 = soTayGates2178({
+    hs: '84798910',
+    productText: 'Robot công nghiệp đa năng có chức năng riêng biệt',
+    productName: 'Robot công nghiệp đa năng',
+    candidateHeadings: ['8479', '8449'],
+  });
+  assert(
+    '[OZV-2178 đối chứng] máy sản xuất nỉ phớt và robot công nghiệp không hỏi oan / không kéo oan 84.49 <-> 84.79',
+    dcPhot8449.length === 0 &&
+      dcPhot8479.length === 0 &&
+      dcRobot8449.length === 0 &&
+      dcRobot8479.length === 0 &&
+      !(dcGate8449.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8479')) &&
+      !(dcGate8479.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8449')) &&
+      !D2178.moRongUngVien(['8449'], 'Máy sản xuất nỉ phớt bằng tấm kim loại có rãnh').some((x) => x.nhom === '8479') &&
+      !D2178.moRongUngVien(['8479'], 'Robot công nghiệp đa năng có chức năng riêng biệt').some((x) => x.nhom === '8449'),
+    { dcPhot8449, dcPhot8479, dcRobot8449, dcRobot8479 }
+  );
+
+  const ht183 = hoiTruoc2178({ moTa: moTaCa183, ungVien: ['8479', '8449'] });
+  const distinctDk183 = new Set((ht183.nhanh || []).map((n) => n.dieuKien)).size === 2;
+  assert(
+    '[OZV-2178 hoi-truoc-4so] ca 183 với [8479, 8449] trả CHUA_CHOT_NHOM_HOI_TRUOC với 2 nhánh điều kiện phân biệt từ cạnh C5',
+    ht183.trangThai === TT2178.CHUA_CHOT_NHOM_HOI_TRUOC &&
+      distinctDk183 &&
+      (ht183.nhanh || []).every((n) => String(n.nguon || '').startsWith('do-thi:C5:')) &&
+      ['8449', '8479'].every((h) => (ht183.dapAnDieuKien || '').includes(`→ nhóm ${h} (`)),
+    { trangThai: ht183.trangThai, distinctDk183, nhanh: ht183.nhanh, dapAnDieuKien: ht183.dapAnDieuKien }
   );
 }
 
