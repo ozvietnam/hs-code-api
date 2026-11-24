@@ -217,6 +217,23 @@ const CAP_7 = [
     hangNguonSach: 'Mâm cặp máy tiện 3 chấu tự định tâm',
     nguonDich: 'nhom7616.nhom',
   },
+  // OZV-2147: 56.07 ↔ 56.01 (ca 152: Dây diều / xơ tổng hợp / thả và điều khiển diều)
+  {
+    tu: '5607',
+    toi: '5601',
+    hangDungDich: 'Mền xơ và xơ vụn từ xơ tổng hợp chiều dài không quá 5 mm',
+    moTaMoRong: 'Dây diều / xơ tổng hợp / thả và điều khiển diều',
+    hangNguonSach: 'Dây thừng bện từ sợi polypropylen dùng buộc tàu',
+    nguonDich: 'nhom5601.nhom',
+  },
+  {
+    tu: '5601',
+    toi: '5607',
+    hangDungDich: 'Dây diều bện từ xơ tổng hợp dùng thả và điều khiển diều',
+    moTaMoRong: 'Dây diều / xơ tổng hợp / thả và điều khiển diều',
+    hangNguonSach: 'Mền xơ bông dùng làm đệm và vật liệu bao gói',
+    nguonDich: 'nhom5607.nhom',
+  },
 ];
 
 // 1. Đồ thị hai chiều C5 / C6 + moRongUngVien + nhomLienQuanSoTay
@@ -292,6 +309,10 @@ const CA_BIEN_NGUON = [
   { hs: '85318011', target: '8518', ten: 'Chuông cửa điện tử có dây 220V' },
   { hs: '85183010', target: '8531', ten: 'Tai nghe có khung chụp qua đầu' },
   { hs: '85182110', target: '8531', ten: 'Loa thùng hội trường công suất 300W' },
+  { hs: '56075090', target: '5601', ten: 'Dây thừng bện từ sợi polypropylen dùng buộc tàu' },
+  { hs: '56074100', target: '5601', ten: 'Dây xe để buộc hoặc đóng kiện từ polyetylen' },
+  { hs: '56012100', target: '5607', ten: 'Mền xơ bông dùng làm đệm và vật liệu bao gói' },
+  { hs: '56012210', target: '5607', ten: 'Tô đầu lọc thuốc lá chứa tow axetat' },
 ];
 for (const b of CA_BIEN_NGUON) {
   const g = soTayGates({ hs: b.hs, productText: b.ten, productName: b.ten });
@@ -751,6 +772,82 @@ for (const b of CA_BIEN_NGUON) {
     check('OZV-2132 (ngược): "Đinh tán bằng nhôm", "Mâm cặp máy tiện 3 chấu" và "Bàn kẹp phôi bằng thép" không hỏi oan 76.16↔84.66',
       pbNguoc7616.length === 0 && pbNguoc8466.length === 0 && pbNguoc8466BanKep.length === 0,
       JSON.stringify({ pbNguoc7616, pbNguoc8466, pbNguoc8466BanKep }));
+  } finally {
+    if (prevFlag === undefined) delete process.env.HS_HOI_THEO_SO_TAY;
+    else process.env.HS_HOI_THEO_SO_TAY = prevFlag;
+  }
+}
+
+// 10. OZV-2147: ca 152 tầng 4 số «Dây diều / xơ tổng hợp / thả và điều khiển diều» (dừng 6 số 560750 hoặc 560122)
+//     sinh đủ câu hỏi phân biệt nhóm 4 số và nhánh hỏi trước tầng 4 số giữa 56.07 ↔ 56.01, kèm ca ngược.
+{
+  const moTa = 'Dây diều / xơ tổng hợp / thả và điều khiển diều';
+  const prevFlag = process.env.HS_HOI_THEO_SO_TAY;
+  process.env.HS_HOI_THEO_SO_TAY = 'on';
+  try {
+    const out5607 = {
+      status: 'NEED_FACTS',
+      results: [{ hs: '560750', confidence: 54, hsLevel: 6 }],
+      nextAction: {
+        type: 'ASK_USER',
+        questions: [
+          { attribute: null, questionVi: 'Hàng là dây xe, dây thừng, dây bện hoặc cáp từ xơ tổng hợp hay là mền xơ, xơ vụn, bụi xơ, nút xơ, bi xơ?' },
+        ],
+      },
+      dossier: {
+        product: { nameVi: 'Dây diều từ xơ tổng hợp dùng thả và điều khiển diều' },
+        hypotheses: [
+          { chapter: '56', heading4: '5607', subheading6: '560750', confidence: 54 },
+          { chapter: '56', heading4: '5601', subheading6: '560122', confidence: 36 },
+        ],
+      },
+      missingStructured: [],
+    };
+    const kq5607 = H.apDung(out5607, { rawAttrs: { tenHang: moTa } });
+    const qs5607 = kq5607.nextAction?.questions || [];
+    const pb5607 = qs5607.filter((q) => q.loai === 'PHAN_BIET_NHOM');
+    check('OZV-2147 (thuận · dừng 560750): sinh câu PHAN_BIET_NHOM (56.07↔56.01 từ nhom5607.nhom) có đủ canCu/nguon/trich',
+      kq5607.nextAction?.canCuCauHoi === 'so-tay'
+      && pb5607.length >= 1
+      && pb5607.some((q) => q.canCu === 'so-tay' && q.nguon === 'nhom5607.nhom' && /56\.01/.test(q.questionVi)),
+      JSON.stringify(qs5607));
+
+    const out5601 = {
+      ...out5607,
+      results: [{ hs: '560122', confidence: 52, hsLevel: 6 }],
+      dossier: {
+        ...out5607.dossier,
+        hypotheses: [
+          { chapter: '56', heading4: '5601', subheading6: '560122', confidence: 52 },
+          { chapter: '56', heading4: '5607', subheading6: '560750', confidence: 38 },
+        ],
+      },
+    };
+    const kq5601 = H.apDung(out5601, { rawAttrs: { tenHang: moTa } });
+    const pb5601 = (kq5601.nextAction?.questions || []).filter((q) => q.loai === 'PHAN_BIET_NHOM');
+    check('OZV-2147 (thuận · dừng 560122): sinh câu PHAN_BIET_NHOM (56.01↔56.07 từ nhom5601.nhom) có đủ canCu/nguon/trich',
+      kq5601.nextAction?.canCuCauHoi === 'so-tay'
+      && pb5601.length >= 1
+      && pb5601.some((q) => q.canCu === 'so-tay' && q.nguon === 'nhom5601.nhom' && /56\.07/.test(q.questionVi)),
+      JSON.stringify(pb5601));
+
+    const ht = phanTichHoiTruoc4So({ moTa, ungVien: ['5607', '5601'] });
+    check('OZV-2147 (hoi-truoc-4so): phanTichHoiTruoc4So tách 2 nhánh 5607 và 5601 từ cạnh đồ thị C5 có đủ căn cứ nhom5601.nhom / nhom5607.nhom',
+      ht.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC
+      && ht.nhanh.length === 2
+      && ht.nhanh.some((n) => n.nhom === '5607' && /^do-thi:/.test(n.nguon) && /nhom5601\.nhom/.test(n.canCu) && !n.dieuKien.includes(';'))
+      && ht.nhanh.some((n) => n.nhom === '5601' && /^do-thi:/.test(n.nguon) && /nhom5607\.nhom/.test(n.canCu) && !n.dieuKien.includes(';'))
+      && ht.nhanh[0].dieuKien !== ht.nhanh[1].dieuKien
+      && /nhóm 5607/.test(ht.dapAnDieuKien || '')
+      && /nhóm 5601/.test(ht.dapAnDieuKien || ''),
+      JSON.stringify(ht));
+
+    const pbNguoc5607 = H.cauPhanBietNhom('5607', ['5607', '5601'], 'Dây thừng bện từ sợi polypropylen dùng buộc tàu');
+    const pbNguoc5601Men = H.cauPhanBietNhom('5601', ['5601', '5607'], 'Mền xơ bông dùng làm đệm và vật liệu bao gói');
+    const pbNguoc5601To = H.cauPhanBietNhom('5601', ['5601', '5607'], 'Tô đầu lọc thuốc lá chứa tow axetat');
+    check('OZV-2147 (ngược): "Dây thừng bện từ sợi polypropylen", "Mền xơ bông dùng làm đệm" và "Tô đầu lọc thuốc lá" không hỏi oan 56.07↔56.01',
+      pbNguoc5607.length === 0 && pbNguoc5601Men.length === 0 && pbNguoc5601To.length === 0,
+      JSON.stringify({ pbNguoc5607, pbNguoc5601Men, pbNguoc5601To }));
   } finally {
     if (prevFlag === undefined) delete process.env.HS_HOI_THEO_SO_TAY;
     else process.env.HS_HOI_THEO_SO_TAY = prevFlag;
