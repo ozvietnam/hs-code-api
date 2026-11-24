@@ -517,5 +517,97 @@ const ketQuaSong = (raw = VAN) => ketQuaGia('848180', raw, {}, ['848120']);
     { dcBanLe7318, dcBanLe8302, dcBuLong7318, dcBuLong8302, dcThanhTreo7318, dcThanhTreo8302 });
 }
 
+// 13) OZV-2142 — cạnh loại trừ 2 chiều 61.03 <-> 61.11 cho ca 176 tầng 4 số «Bộ quần áo trẻ em / dệt kim cotton 90%, polyester 5% / None»
+{
+  const S = require('../lib/so-tay.js');
+  const D = require('../lib/do-thi/index.js');
+  const { phanTichHoiTruoc4So, TRANG_THAI_4SO } = require('../lib/do-thi/hoi-truoc-4so.js');
+  const q176 = 'Bộ quần áo trẻ em / dệt kim cotton 90%, polyester 5% / None';
+  for (const nh of ['6103', '6104', '6111']) {
+    fs.copyFileSync(path.join('data/so-tay', `${nh}.json`), path.join(TEST_DATA_DIR, 'so-tay', `${nh}.json`));
+  }
+  D.datLai();
+
+  const st6103 = loadSoTay('6103');
+  const st6111 = loadSoTay('6111');
+  const lt6103 = (st6103?.loaiTru || []).find((x) => x.sangNhom === '6111');
+  const lt6111 = (st6111?.loaiTru || []).find((x) => x.sangNhom === '6103');
+  check('OZV-2142 (căn cứ): sổ tay 6103 và 6111 có loaiTru 2 chiều kèm canCuLoaiTru nguyên văn đạt checkItem',
+    Boolean(
+      lt6103 &&
+        lt6103.nguon === 'ch61.chuong' &&
+        lt6103.canCuLoaiTru?.nguon === 'nhom6111.nhom' &&
+        S.checkItem('loaiTru', lt6103, S.sourcesFor('6103'), '6103') === null
+    ) &&
+      Boolean(
+        lt6111 &&
+          lt6111.nguon === 'nhom6111.nhom' &&
+          lt6111.canCuLoaiTru?.nguon === 'nhom6103.nhom' &&
+          S.checkItem('loaiTru', lt6111, S.sourcesFor('6111'), '6111') === null
+      ) &&
+      lt6103.dieuKien !== lt6111.dieuKien,
+    { lt6103, lt6111 });
+
+  const c5Tu6103 = D.canhTu('6103', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '6111');
+  const c5Tu6111 = D.canhTu('6111', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '6103');
+  const mrTu6103 = D.moRongUngVien(['6103'], q176);
+  const mrTu6111 = D.moRongUngVien(['6111'], q176);
+  check('OZV-2142 (đồ thị 2 chiều): bảng cạnh C5 6103↔6111 và moRongUngVien kéo 2 chiều cho ca 176',
+    c5Tu6103.length >= 1 &&
+      c5Tu6111.length >= 1 &&
+      mrTu6103.some((x) => x.nhom === '6111') &&
+      mrTu6111.some((x) => x.nhom === '6103'),
+    { c5Tu6103: c5Tu6103.length, c5Tu6111: c5Tu6111.length, mrTu6103, mrTu6111 });
+
+  const ht2 = phanTichHoiTruoc4So({ moTa: q176, ungVien: ['6103', '6111'] });
+  const ht3 = phanTichHoiTruoc4So({ moTa: q176, ungVien: ['6103', '6104', '6111'] });
+  check('OZV-2142 (phanTichHoiTruoc4So): tách đủ nhánh điều kiện theo cạnh C5 cho [6103, 6111] và [6103, 6104, 6111] trên ca 176',
+    ht2.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC &&
+      (ht2.nhanh || []).every((n) => String(n.nguon || '').startsWith('do-thi:C5:')) &&
+      new Set((ht2.nhanh || []).map((n) => n.dieuKien)).size === 2 &&
+      Boolean(ht2.dapAnDieuKien && ht2.dapAnDieuKien.includes('→ nhóm 6103 (') && ht2.dapAnDieuKien.includes('→ nhóm 6111 (')) &&
+      ht3.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC &&
+      new Set((ht3.nhanh || []).map((n) => n.dieuKien)).size === 3 &&
+      ['6103', '6104', '6111'].every((h) => ht3.dapAnDieuKien?.includes(`→ nhóm ${h} (`)),
+    { ht2: ht2.dapAnDieuKien, ht3: ht3.dapAnDieuKien });
+
+  const pb6103 = H.cauPhanBietNhom('6103', ['6103', '6111'], q176);
+  check('OZV-2142 (thuận 6103 → 6111): 6103 đứng đầu với [6103, 6111] sinh câu PHAN_BIET_NHOM từ ch61.chuong sang 61.11',
+    pb6103.length === 1 &&
+      pb6103[0].loai === 'PHAN_BIET_NHOM' &&
+      pb6103[0].canCu === 'so-tay' &&
+      pb6103[0].nguon === 'ch61.chuong' &&
+      /61\.11/.test(pb6103[0].questionVi) &&
+      /61\.03/.test(pb6103[0].questionVi),
+    pb6103);
+
+  const pb6111 = H.cauPhanBietNhom('6111', ['6111', '6103'], q176);
+  check('OZV-2142 (thuận 6111 → 6103): 6111 đứng đầu với [6111, 6103] sinh câu PHAN_BIET_NHOM từ nhom6111.nhom sang 61.03',
+    pb6111.length === 1 &&
+      pb6111[0].loai === 'PHAN_BIET_NHOM' &&
+      pb6111[0].canCu === 'so-tay' &&
+      pb6111[0].nguon === 'nhom6111.nhom' &&
+      /61\.03/.test(pb6111[0].questionVi) &&
+      /61\.11/.test(pb6111[0].questionVi),
+    pb6111);
+
+  const dcQuanDai6103 = H.cauPhanBietNhom('6103', ['6103', '6111'], 'Quần dài nam dệt kim từ bông');
+  const dcQuanDai6111 = H.cauPhanBietNhom('6111', ['6111', '6103'], 'Quần dài nam dệt kim từ bông');
+  const dcJacket6103 = H.cauPhanBietNhom('6103', ['6103', '6111'], 'Áo jacket nam dệt kim từ lông cừu');
+  const dcJacket6111 = H.cauPhanBietNhom('6111', ['6111', '6103'], 'Áo jacket nam dệt kim từ lông cừu');
+  const dcGangTay6103 = H.cauPhanBietNhom('6103', ['6103', '6111'], 'Găng tay trẻ sơ sinh dệt kim từ bông');
+  const dcGangTay6111 = H.cauPhanBietNhom('6111', ['6111', '6103'], 'Găng tay trẻ sơ sinh dệt kim từ bông');
+  check('OZV-2142 (đối chứng): quần dài nam, áo jacket nam và găng tay trẻ sơ sinh không hỏi oan 61.03 ↔ 61.11',
+    dcQuanDai6103.length === 0 &&
+      dcQuanDai6111.length === 0 &&
+      dcJacket6103.length === 0 &&
+      dcJacket6111.length === 0 &&
+      dcGangTay6103.length === 0 &&
+      dcGangTay6111.length === 0 &&
+      !D.moRongUngVien(['6103'], 'Quần dài nam dệt kim từ bông').some((x) => x.nhom === '6111') &&
+      !D.moRongUngVien(['6111'], 'Găng tay trẻ sơ sinh dệt kim từ bông').some((x) => x.nhom === '6103'),
+    { dcQuanDai6103, dcQuanDai6111, dcJacket6103, dcJacket6111, dcGangTay6103, dcGangTay6111 });
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
