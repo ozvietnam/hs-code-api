@@ -4015,6 +4015,135 @@
    "sourceVi": "Biểu thuế 2026 phân nhóm 8539.52 «Bóng đèn đi-ốt phát quang (LED)»: 85395210 Loại đầu đèn ren xoáy; 85395290 Loại khác. OZV-1332: câu khách «bóng đèn led tròn đuôi e27» — prod REVIEW 94054290; search lệch 85391010. Mục den-led-cam-tuong đã exclude «bóng đèn» nhưng chưa inject 85395210 → thêm mục riêng + chotSom + avoid 9405/853910."
   },
   {
+   "id": "bong-den-led",
+   "titleVi": "Bóng đèn đi-ốt phát quang (LED) — phân nhóm 8539.52 (chưa rõ loại đui)",
+   "terms": [
+    "bóng đèn led",
+    "bong den led",
+    "bóng đèn đi-ốt phát quang",
+    "bong den di-ot phat quang",
+    "bóng đèn đi ốt phát quang",
+    "bong den di ot phat quang",
+    "bóng đèn led tròn",
+    "bong den led tron",
+    "bóng led tròn",
+    "bong led tron",
+    "bóng đèn led bulb",
+    "bong den led bulb",
+    "led bulb",
+    "led lamp"
+   ],
+   "excludeIfAny": [
+    "e27",
+    "đuôi xoáy",
+    "duoi xoay",
+    "đui xoáy",
+    "dui xoay",
+    "đầu ren",
+    "dau ren",
+    "ren xoáy",
+    "ren xoay",
+    "cắm tường",
+    "cam tuong",
+    "gắn tường",
+    "gan tuong",
+    "đèn tường",
+    "den tuong",
+    "đèn bàn",
+    "den ban",
+    "đèn chùm",
+    "den chum",
+    "đèn trần",
+    "den tran",
+    "đèn âm trần",
+    "den am tran",
+    "đèn thả",
+    "den tha",
+    "đèn đường",
+    "den duong",
+    "bộ đèn",
+    "bo den",
+    "đèn ngủ",
+    "den ngu",
+    "hình gấu",
+    "hinh gau",
+    "hình thỏ",
+    "hinh tho",
+    "chip led",
+    "module led",
+    "mô-đun led",
+    "mo-dun led",
+    "mô đun led",
+    "mo dun led",
+    "led strip",
+    "dải led",
+    "dai led",
+    "dây led",
+    "day led",
+    "màn hình led",
+    "man hinh led",
+    "tivi led",
+    "tv led",
+    "đèn pha",
+    "den pha",
+    "đèn xe",
+    "den xe",
+    "đèn ô tô",
+    "den o to",
+    "xe máy",
+    "xe có động cơ",
+    "cảm biến",
+    "cam bien",
+    "ft-s13"
+   ],
+   "excludeReasonVi": "Đã nêu rõ đầu ren xoáy (E27/đui xoáy/đầu ren) → nhường cho mục bong-den-led-duoi-e27 chốt thẳng 8539.52.10. Bộ đèn hoàn chỉnh (đèn bàn, đèn tường, đèn chùm, đèn trần, đèn ngủ…) thuộc nhóm 94.05. Mô-đun/chip LED không có đầu đèn để gắn vào đui → 8539.51 hoặc 8541.41; đèn xe → 85.12 / 8539.10.",
+   "candidates": [
+    {
+     "hs": "85395210",
+     "whenVi": "Bóng đèn đi-ốt phát quang (LED) có đầu đèn ren xoáy (đui xoáy E27, E14, E40) để lắp hoặc thay thế vào đui đèn — mã 8539.52.10",
+     "confidence": "medium"
+    },
+    {
+     "hs": "85395290",
+     "whenVi": "Bóng đèn đi-ốt phát quang (LED) có đầu đèn loại khác không phải ren xoáy (đui cài/gài B22, đui ghim G4/G9/GU10/MR16, bóng tuýp LED hai đầu G13 T5/T8…) — mã 8539.52.90",
+     "confidence": "medium"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "8540",
+     "whyVi": "8540 là đèn điện tử và ống điện tử dùng nhiệt điện tử, ca-tốt lạnh hoặc quang ca-tốt (ống đèn hình CRT, ống vi sóng…) — Chú giải nhóm 85.39 mục (d) loại trừ nhóm 85.40; bóng đèn chiếu sáng LED thuộc 8539.52."
+    },
+    {
+     "prefix": "7011",
+     "whyVi": "7011 là vỏ thủy tinh bóng đèn (dạng bầu hoặc ống) chưa lắp bộ phận phát sáng — Chú giải Chương 85 và Chú giải nhóm 85.39 mục (a) loại trừ vỏ thủy tinh thuộc 70.11; bóng đèn LED hoàn chỉnh thuộc 8539.52."
+    },
+    {
+     "prefix": "853910",
+     "whyVi": "8539.10 là đèn pha gắn kín (sealed beam lamp units) dùng cho xe Chương 87 — alias tờ khai cũ «bong den led» từng trỏ nhầm 85391010; bóng đèn LED chiếu sáng thông thường thuộc 8539.52."
+    },
+    {
+     "prefix": "853951",
+     "whyVi": "8539.51 là mô-đun đi-ốt phát quang (LED) không có đầu đèn (đuôi) để lắp/thay thế vào đui đèn (Chú giải 11 Chương 85); hàng đã gọi là «bóng đèn LED» có đầu đèn thuộc 8539.52."
+    },
+    {
+     "prefix": "85392",
+     "whyVi": "8539.21–8539.29 là bóng đèn dây tóc / halogen vonfram — chữ «bóng đèn» kèm công suất (vd 9W, ≤60W) dễ kéo dòng đèn dây tóc chiếu sáng gia dụng lên đầu; bóng đèn LED thuộc 8539.52."
+    },
+    {
+     "prefix": "85393",
+     "whyVi": "8539.31–8539.39 là bóng đèn phóng điện / huỳnh quang — khác nguyên lý nguồn sáng đi-ốt phát quang (LED) thuộc 8539.52."
+    }
+   ],
+   "askVi": [
+    "Bóng đèn LED này dùng loại đầu đèn (đui) nào: đầu đèn ren xoáy (E27/E14/E40 → 8539.52.10) hay đui cài/gài (B22), đui ghim (GU10/G9/MR16), bóng tuýp hai đầu (T5/T8 → 8539.52.90)?",
+    "Hàng là bóng đèn LED rời có đầu đèn để lắp/thay thế vào đui (8539.52), mô-đun LED không có đầu đèn (8539.51), hay là bộ đèn chiếu sáng hoàn chỉnh (đèn bàn/đèn tường/đèn trần/đèn chùm → 94.05)?"
+   ],
+   "gir": "GIR 1 + GIR 6 + Chú giải 11 Chương 85",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế 2026 nhóm 85.39 phân nhóm 8539.52 «Đèn đi-ốt phát quang (LED)»: 8539.52.10 «Loại đầu đèn ren xoáy» vs 8539.52.90 «Loại khác». Chú giải 11 Chương 85 và Chú giải nhóm 85.39 phân biệt bóng đèn LED có đầu đèn (8539.52) với mô-đun LED không có đầu đèn (8539.51), loại trừ vỏ thủy tinh (70.11) và đèn/ống điện tử CRT (85.40). OZV-2068: ca thực địa 24/11 «bóng đèn led 9w» (top 24h · 2 lượt · 0 ra 8 số / 0 dừng 6 số) chưa nêu loại đui → dẫn về 8539.52 kèm cả 85395210 và 85395290 (confidence medium, không chotSom) + askVi hỏi loại đui."
+  },
+  {
    "id": "vo-chup-loa-non-loa",
    "titleVi": "Vỏ chụp loa / nón loa (speaker cone) bằng nhựa — bộ phận 8518.90.90",
    "terms": [

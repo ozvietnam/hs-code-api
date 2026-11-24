@@ -142,6 +142,8 @@ console.log('\n== Câu hỏi thật của khách phải ra đúng mã (kho Oz kh
     ['industrial vacuum cleaner Nilfisk model VHW310', ['85081100', '85081910', '85081990']],
     // OZV-2015 — túi sưởi điện gia dụng: trước search top 85362020; chốt 63011000
     ['túi sưởi điện gia dụng', ['63011000']],
+    // OZV-2068 — bóng đèn led 9w: dẫn về 8539.52 (85395210 / 85395290), loại 85391010 / 8540 / 7011
+    ['bóng đèn led 9w', ['85395210', '85395290']],
   ];
   for (const [q, want] of cases) {
     const top2 = searchCandidates(q, { topCandidates: 2 }).map((c) => c.hsCode);
@@ -1074,6 +1076,88 @@ console.log('\n== Ứng viên cấp nhóm: cộng điểm cho lá khớp lời v
     check(
       'OZV-2038 search top không còn 85331010 / 85169040 (bẫy mạch / phụ tùng)',
       r.every((c) => c.hsCode !== '85331010' && c.hsCode !== '85169040'),
+      r.map((c) => c.hsCode).join(','),
+    );
+  }
+}
+
+// OZV-2068 — bóng đèn led 9w (chưa rõ đui): dẫn về 8539.52 (85395210 + 85395290, không chotSom), kèm askVi hỏi loại đui, avoid 8540/7011/853910
+{
+  const TEN = 'bóng đèn led 9w';
+  check(
+    'OZV-2068 câu khách bóng đèn led 9w khớp mục bong-den-led',
+    lookupTradeTerms(TEN).matches.some((m) => m.entryId === 'bong-den-led'),
+  );
+  check(
+    'OZV-2068 không dấu bong den led 9w vẫn khớp mục bong-den-led',
+    lookupTradeTerms('bong den led 9w').matches.some((m) => m.entryId === 'bong-den-led'),
+  );
+  // Ca đối chứng: có e27 → nhường cho bong-den-led-duoi-e27 (chotSom 85395210), tắt bong-den-led
+  {
+    const hitE27 = lookupTradeTerms('bóng đèn led e27 9w');
+    check(
+      'OZV-2068 đối chứng bóng đèn led e27 9w khớp bong-den-led-duoi-e27 (chotSom 85395210)',
+      (hitE27.matches || []).some((m) => m.entryId === 'bong-den-led-duoi-e27' && m.chotSom === true),
+    );
+    check(
+      'OZV-2068 đối chứng bóng đèn led e27 9w tắt bong-den-led (excluded)',
+      !(hitE27.matches || []).some((m) => m.entryId === 'bong-den-led')
+        && (hitE27.excluded || []).some((e) => e.entryId === 'bong-den-led'),
+    );
+  }
+  // Ca ngược: đèn tường / bộ đèn 94.05, mô-đun LED 8539.51, đèn xe, cảm biến không kích hoạt bong-den-led
+  for (const q of [
+    'đèn led cắm tường hình gấu',
+    'mô-đun led',
+    'module led cob',
+    'chip led smd 2835',
+    'bóng đèn led đèn bàn học',
+    'bóng đèn led đèn tường trang trí',
+    'bóng đèn led đèn chùm phòng khách',
+    'bộ đèn led âm trần 9w',
+    'bóng đèn pha led xe ô tô',
+    'cảm biến quang FT-S13 24V',
+  ]) {
+    check(
+      `OZV-2068 «${q}» không kích hoạt mục bong-den-led`,
+      !(lookupTradeTerms(q).matches || []).some((m) => m.entryId === 'bong-den-led'),
+    );
+  }
+  {
+    const m = lookupTradeTerms(TEN).matches.find((x) => x.entryId === 'bong-den-led');
+    const cands = (m?.candidates || []).map((c) => c.hsCode || c.hs);
+    check(
+      'OZV-2068 đưa đủ 2 ứng viên phân nhóm 8539.52 (85395210 và 85395290)',
+      cands.includes('85395210') && cands.includes('85395290'),
+      cands.join(','),
+    );
+    check(
+      'OZV-2068 không ép chotSom và không gán confidence high khi chưa rõ đui đèn',
+      m?.chotSom !== true && (m?.candidates || []).every((c) => c.confidence !== 'high'),
+    );
+    check(
+      'OZV-2068 có askVi phân biệt loại đui (ren xoáy E27/E14 vs đui cài/ghim/tuýp) và bộ đèn 94.05',
+      (m?.askVi || []).some((a) => /ren xoáy|E27/i.test(a) && /B22|GU10|tuýp/i.test(a))
+        && (m?.askVi || []).some((a) => /94\.05/.test(a)),
+      (m?.askVi || []).join(' | '),
+    );
+    check(
+      'OZV-2068 avoid loại 8540 (đèn điện tử CRT), 7011 (vỏ thủy tinh), 853910 (bóng pha xe), 853951 (mô-đun LED)',
+      ['8540', '7011', '853910', '853951'].every((p) => (m?.avoid || []).some((a) => String(a.prefix) === p)),
+      (m?.avoid || []).map((a) => a.prefix).join(','),
+    );
+  }
+  {
+    const r = searchCandidates(TEN, { topCandidates: 5 });
+    const top2 = r.slice(0, 2).map((c) => c.hsCode);
+    check(
+      'OZV-2068 search "bóng đèn led 9w" top 2 là 85395210 và 85395290',
+      top2.includes('85395210') && top2.includes('85395290'),
+      r.map((c) => c.hsCode).join(','),
+    );
+    check(
+      'OZV-2068 search "bóng đèn led 9w" không còn 85391010 / 8540* / 7011*',
+      r.every((c) => c.hsCode !== '85391010' && !c.hsCode.startsWith('8540') && !c.hsCode.startsWith('7011')),
       r.map((c) => c.hsCode).join(','),
     );
   }
