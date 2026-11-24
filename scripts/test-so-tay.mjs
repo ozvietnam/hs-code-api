@@ -204,5 +204,89 @@ assert('loaiTru mà câu nguồn chỉ nói "thường thuộc nhóm" bị loạ
   );
 }
 
+// ── OZV-2145: Cạnh loại trừ 2 chiều 59.11 <-> 59.07 cho ca 195 'Cổ bạt mềm khớp nối ống gió' ──
+{
+  const { loadSoTay, soTayGates, nhomLienQuanSoTay } = require('../lib/so-tay-gates.js');
+  const { cauPhanBietNhom } = require('../lib/hoi-theo-so-tay.js');
+  const { phanTichHoiTruoc4So, TRANG_THAI_4SO } = require('../lib/do-thi/hoi-truoc-4so.js');
+  const D = require('../lib/do-thi/index.js');
+  D.datLai();
+
+  const moTa195 = 'Cổ bạt mềm / Vải canvas phủ silicon chống cháy / Khớp nối ống gió';
+  const st5911 = loadSoTay('5911');
+  const st5907 = loadSoTay('5907');
+  const lt5911 = (st5911?.loaiTru || []).find((x) => x.sangNhom === '5907' && x.canCuLoaiTru?.nguon === 'nhom5907.nhom' && /vải canvas|silicon/i.test(x.dieuKien || ''));
+  const lt5907 = (st5907?.loaiTru || []).find((x) => x.sangNhom === '5911' && x.canCuLoaiTru?.nguon === 'nhom5911.nhom' && /cổ bạt mềm|khớp nối ống gió/i.test(x.dieuKien || ''));
+  const v5911 = verifySoTay(st5911, '5911', sourcesFor('5911'));
+  const v5907 = verifySoTay(st5907, '5907', sourcesFor('5907'));
+  assert(
+    'OZV-2145: sổ tay 5911 và 5907 có loaiTru 2 chiều 5911 <-> 5907 kèm canCuLoaiTru nguyên văn đạt 100% checkItem & verifySoTay',
+    Boolean(lt5911 && lt5911.nguon === 'nhom5911.nhom' && checkItem('loaiTru', lt5911, sourcesFor('5911'), '5911') === null)
+      && Boolean(lt5907 && lt5907.nguon === 'nhom5907.nhom' && checkItem('loaiTru', lt5907, sourcesFor('5907'), '5907') === null)
+      && lt5911.dieuKien !== lt5907.dieuKien
+      && !/;/.test(lt5911.dieuKien)
+      && !/;/.test(lt5907.dieuKien)
+      && v5911.loai.length === 0 && v5911.dat === v5911.tong && st5911.kiemTra?.tong === v5911.tong && st5911.kiemTra?.dat === v5911.dat
+      && v5907.loai.length === 0 && v5907.dat === v5907.tong && st5907.kiemTra?.tong === v5907.tong && st5907.kiemTra?.dat === v5907.dat,
+    JSON.stringify({ lt5911: Boolean(lt5911), lt5907: Boolean(lt5907), loai5911: v5911.loai, loai5907: v5907.loai }),
+  );
+
+  const c5Tu5911 = D.canhTu('5911', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '5907');
+  const c5Tu5907 = D.canhTu('5907', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '5911');
+  const c6Tu5911 = D.canhTu('5911', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '5907');
+  const c6Tu5907 = D.canhTu('5907', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '5911');
+  const giua = D.canhGiuaNhomConSong(['5911', '5907']).filter((e) => e.loai === 'C5' || e.loai === 'C6');
+  const mrTu5911 = D.moRongUngVien(['5911'], moTa195);
+  const mrTu5907 = D.moRongUngVien(['5907'], moTa195);
+  assert(
+    'OZV-2145: đồ thị C5/C6, canhGiuaNhomConSong, nhomLienQuanSoTay và moRongUngVien nối 2 chiều 5911 <-> 5907 cho ca 195',
+    c5Tu5911.some((e) => e.nguon === 'nhom5911.nhom' && e.canCuLoaiTru?.nguon === 'nhom5907.nhom')
+      && c5Tu5907.some((e) => e.nguon === 'nhom5907.nhom' && e.canCuLoaiTru?.nguon === 'nhom5911.nhom')
+      && c6Tu5911.length >= 1
+      && c6Tu5907.length >= 1
+      && giua.length >= 2
+      && nhomLienQuanSoTay('5911').includes('5907')
+      && nhomLienQuanSoTay('5907').includes('5911')
+      && mrTu5911.some((x) => x.nhom === '5907')
+      && mrTu5907.some((x) => x.nhom === '5911'),
+    JSON.stringify({ c5Tu5911: c5Tu5911.length, c5Tu5907: c5Tu5907.length, mrTu5911, mrTu5907 }),
+  );
+
+  const pb5911 = cauPhanBietNhom('5911', ['5911', '5907'], moTa195);
+  const pb5907 = cauPhanBietNhom('5907', ['5907', '5911'], moTa195);
+  const g5911 = soTayGates({ hs: '59119090', productText: moTa195, productName: moTa195, pool: [{ h4: '5907', from: 'test' }] });
+  const g5907 = soTayGates({ hs: '59070060', productText: moTa195, productName: moTa195, pool: [{ h4: '5911', from: 'test' }] });
+  const ht195 = phanTichHoiTruoc4So({ moTa: moTa195, ungVien: ['5911', '5907'] });
+  assert(
+    'OZV-2145 (thuận): cauPhanBietNhom, soTayGates và phanTichHoiTruoc4So hoạt động đúng 2 chiều 59.11 <-> 59.07 cho ca 195',
+    pb5911.length === 1 && pb5911[0].canCu === 'so-tay' && pb5911[0].nguon === 'nhom5911.nhom' && /59\.07/.test(pb5911[0].questionVi)
+      && pb5907.length === 1 && pb5907[0].canCu === 'so-tay' && pb5907[0].nguon === 'nhom5907.nhom' && /59\.11/.test(pb5907[0].questionVi)
+      && (g5911.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '5907')
+      && (g5907.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '5911')
+      && ht195.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC
+      && new Set((ht195.nhanh || []).map((n) => n.dieuKien)).size === 2
+      && Boolean(ht195.dapAnDieuKien && ht195.dapAnDieuKien.includes('→ nhóm 5911 (') && ht195.dapAnDieuKien.includes('→ nhóm 5907 ('))
+      && Boolean(ht195.cauHoi),
+    JSON.stringify({ pb5911, pb5907, g5911: g5911.challenges, g5907: g5907.challenges, ht195: ht195.dapAnDieuKien }),
+  );
+
+  const dcMiengDem = 'Miếng đệm và miếng chèn bằng phớt dùng làm kín trục máy';
+  const dcPhongCanh = 'Phông cảnh vẽ cho rạp hát và phông trường quay';
+  const pbDc5911 = cauPhanBietNhom('5911', ['5911', '5907'], dcMiengDem);
+  const pbDc5907 = cauPhanBietNhom('5907', ['5907', '5911'], dcPhongCanh);
+  const gDc5911 = soTayGates({ hs: '59119010', productText: dcMiengDem, productName: dcMiengDem });
+  const gDc5907 = soTayGates({ hs: '59070090', productText: dcPhongCanh, productName: dcPhongCanh });
+  assert(
+    'OZV-2145 (đối chứng): miếng đệm phớt kỹ thuật và phông cảnh trường quay không hỏi oan / không kéo oan 59.11 <-> 59.07',
+    pbDc5911.length === 0
+      && pbDc5907.length === 0
+      && !(gDc5911.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '5907')
+      && !(gDc5907.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '5911')
+      && !D.moRongUngVien(['5911'], dcMiengDem).some((x) => x.nhom === '5907')
+      && !D.moRongUngVien(['5907'], dcPhongCanh).some((x) => x.nhom === '5911'),
+    JSON.stringify({ pbDc5911, pbDc5907, gDc5911: gDc5911.challenges, gDc5907: gDc5907.challenges }),
+  );
+}
+
 console.log(`\n${passed}/${passed + failed} passed`);
 process.exit(failed ? 1 : 0);
