@@ -133,6 +133,132 @@ for (const tc of MAU_PHAN_VAN) {
   check('dinhDangDapAnDieuKien: mảng rỗng trả null', true);
 }
 
+// 3b. OZV-2123 — Cạnh loại trừ 2 chiều 85.39 <-> 94.05 cho ca 146 tầng 4 số
+// ('Đèn LED dạng dải / None / Trang trí Decor thay đổi không gian phòng')
+{
+  const S = require('../lib/so-tay.js');
+  const { loadSoTay, soTayGates, nhomLienQuanSoTay } = require('../lib/so-tay-gates.js');
+  const { cauPhanBietNhom } = require('../lib/hoi-theo-so-tay.js');
+  const D = require('../lib/do-thi/index.js');
+  D.datLai();
+
+  const q146 = 'Đèn LED dạng dải / None / Trang trí Decor thay đổi không gian phòng';
+  const st8539 = loadSoTay('8539');
+  const st9405 = loadSoTay('9405');
+  const v8539 = S.verifySoTay(st8539, '8539');
+  const v9405 = S.verifySoTay(st9405, '9405');
+  check(
+    '[OZV-2123 verifySoTay] sổ tay 8539 và 9405 đạt 100% (0 mục không kiểm được nguồn)',
+    v8539.loai.length === 0 && v9405.loai.length === 0,
+    JSON.stringify({ loai8539: v8539.loai, loai9405: v9405.loai }),
+  );
+
+  const lt8539 = (st8539?.loaiTru || []).find((x) => x.sangNhom === '9405' && x.canCuLoaiTru?.nguon === 'nhom9405.nhom');
+  const lt9405 = (st9405?.loaiTru || []).find((x) => x.sangNhom === '8539' && x.canCuLoaiTru?.nguon === 'nhom8539.nhom');
+  check(
+    '[OZV-2123 căn cứ] sổ tay 8539 và 9405 có mục loaiTru 2 chiều 8539 <-> 9405 kèm canCuLoaiTru nguyên văn đạt checkItem',
+    Boolean(lt8539 && lt8539.nguon === 'nhom8539.nhom' && S.checkItem('loaiTru', lt8539, S.sourcesFor('8539'), '8539') === null)
+      && Boolean(lt9405 && lt9405.nguon === 'nhom9405.nhom' && S.checkItem('loaiTru', lt9405, S.sourcesFor('9405'), '9405') === null)
+      && lt8539.dieuKien !== lt9405.dieuKien,
+    JSON.stringify({ lt8539, lt9405 }),
+  );
+
+  const c5Tu8539 = D.canhTu('8539', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '9405');
+  const c5Tu9405 = D.canhTu('9405', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8539');
+  const c6Tu8539 = D.canhTu('8539', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '9405');
+  const c6Tu9405 = D.canhTu('9405', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '8539');
+  const mrTu8539 = D.moRongUngVien(['8539'], q146);
+  const mrTu9405 = D.moRongUngVien(['9405'], q146);
+  const rel8539 = nhomLienQuanSoTay('8539');
+  const rel9405 = nhomLienQuanSoTay('9405');
+  check(
+    '[OZV-2123 đồ thị 2 chiều] bảng cạnh có C5/C6 8539<->9405, nhomLienQuanSoTay 2 chiều và moRongUngVien kéo 2 chiều cho ca 146',
+    c5Tu8539.some((e) => e.nguon === 'nhom8539.nhom' && e.canCuLoaiTru?.nguon === 'nhom9405.nhom')
+      && c5Tu9405.some((e) => e.nguon === 'nhom9405.nhom' && e.canCuLoaiTru?.nguon === 'nhom8539.nhom')
+      && c6Tu8539.length >= 1
+      && c6Tu9405.length >= 1
+      && rel8539.includes('9405')
+      && rel9405.includes('8539')
+      && mrTu8539.some((x) => x.nhom === '9405')
+      && mrTu9405.some((x) => x.nhom === '8539'),
+    JSON.stringify({ c5Tu8539: c5Tu8539.length, c5Tu9405: c5Tu9405.length, mrTu8539, mrTu9405 }),
+  );
+
+  const ht146 = phanTichHoiTruoc4So({ moTa: q146, ungVien: ['8539', '9405'] });
+  const distinctDk146 = new Set((ht146.nhanh || []).map((n) => n.dieuKien)).size === 2;
+  check(
+    '[OZV-2123 hoi-truoc-4so] ca 146 Đèn LED dạng dải tách 2 nhánh điều kiện riêng biệt cho [8539, 9405]',
+    ht146.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC
+      && distinctDk146
+      && Boolean(ht146.dapAnDieuKien && ht146.dapAnDieuKien.includes('→ nhóm 8539 (') && ht146.dapAnDieuKien.includes('→ nhóm 9405 ('))
+      && Boolean(ht146.cauHoi),
+    JSON.stringify({ trangThai: ht146.trangThai, distinctDk146, dapAnDieuKien: ht146.dapAnDieuKien }),
+  );
+
+  const pb8539 = cauPhanBietNhom('8539', ['8539', '9405'], q146);
+  const pb9405 = cauPhanBietNhom('9405', ['9405', '8539'], q146);
+  check(
+    '[OZV-2123 thuận cauPhanBietNhom] sinh câu hỏi phân biệt 2 chiều 85.39 <-> 94.05 cho ca 146 Đèn LED dạng dải',
+    pb8539.length === 1
+      && pb8539[0].loai === 'PHAN_BIET_NHOM'
+      && pb8539[0].canCu === 'so-tay'
+      && pb8539[0].nguon === 'nhom8539.nhom'
+      && /94\.05/.test(pb8539[0].questionVi)
+      && /85\.39/.test(pb8539[0].questionVi)
+      && pb9405.length === 1
+      && pb9405[0].loai === 'PHAN_BIET_NHOM'
+      && pb9405[0].canCu === 'so-tay'
+      && pb9405[0].nguon === 'nhom9405.nhom'
+      && /85\.39/.test(pb9405[0].questionVi)
+      && /94\.05/.test(pb9405[0].questionVi),
+    JSON.stringify({ pb8539, pb9405 }),
+  );
+
+  const g8539To9405 = soTayGates({
+    hs: '85395100',
+    productText: 'Đèn LED dải trang trí phòng có phích cắm và điều khiển hoàn chỉnh',
+    productName: 'Đèn LED dải trang trí phòng có phích cắm và điều khiển hoàn chỉnh',
+  });
+  const g9405To8539 = soTayGates({
+    hs: '94054290',
+    productText: 'Đèn LED dải chỉ là dải mạch LED trần làm nguồn sáng điện',
+    productName: 'Đèn LED dải chỉ là dải mạch LED trần làm nguồn sáng điện',
+  });
+  check(
+    '[OZV-2123 thuận soTayGates] kích hoạt SO_TAY_LOAI_TRU đúng cả 2 chiều 8539 -> 9405 và 9405 -> 8539',
+    (g8539To9405.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('9405'))
+      && (g9405To8539.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8539')),
+    JSON.stringify({ g8539To9405: g8539To9405.challenges, g9405To8539: g9405To8539.challenges }),
+  );
+
+  const dcPha8539 = cauPhanBietNhom('8539', ['8539', '9405'], 'Đèn pha gắn kín dùng cho xe có động cơ thuộc Chương 87');
+  const dcPha9405 = cauPhanBietNhom('9405', ['9405', '8539'], 'Đèn pha gắn kín dùng cho xe có động cơ thuộc Chương 87');
+  const dcBao8539 = cauPhanBietNhom('8539', ['8539', '9405'], 'Đèn bão đốt bằng dầu hỏa xách tay');
+  const dcBao9405 = cauPhanBietNhom('9405', ['9405', '8539'], 'Đèn bão đốt bằng dầu hỏa xách tay');
+  const gDoi8539 = soTayGates({
+    hs: '85395210',
+    productText: 'Bóng đèn LED tròn đuôi xoáy E27, 9W, 220V',
+    productName: 'Bóng đèn LED tròn đuôi xoáy E27, 9W, 220V',
+  });
+  const gDoi9405 = soTayGates({
+    hs: '94055011',
+    productText: 'Đèn bão đốt bằng dầu hỏa xách tay',
+    productName: 'Đèn bão đốt bằng dầu hỏa xách tay',
+  });
+  check(
+    '[OZV-2123 đối chứng] đèn pha gắn kín ô tô, bóng đèn LED tròn E27 và đèn bão dầu hỏa không hỏi oan / không kéo oan 85.39 <-> 94.05',
+    dcPha8539.length === 0
+      && dcPha9405.length === 0
+      && dcBao8539.length === 0
+      && dcBao9405.length === 0
+      && !D.moRongUngVien(['8539'], 'Đèn pha gắn kín dùng cho xe có động cơ thuộc Chương 87').some((x) => x.nhom === '9405')
+      && !D.moRongUngVien(['9405'], 'Đèn bão đốt bằng dầu hỏa xách tay').some((x) => x.nhom === '8539')
+      && !(gDoi8539.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('9405'))
+      && !(gDoi9405.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8539')),
+    JSON.stringify({ dcPha8539, dcPha9405, dcBao8539, dcBao9405, gDoi8539: gDoi8539.challenges, gDoi9405: gDoi9405.challenges }),
+  );
+}
+
 // 4. Kiểm tra có điều kiện trên data/bo-chuan/4so-v1.jsonl nếu đã gộp từ #1644
 const boChuanPath = new URL('../data/bo-chuan/4so-v1.jsonl', import.meta.url);
 if (fs.existsSync(boChuanPath)) {
