@@ -1007,5 +1007,118 @@ check('trangThaiDong8.veMoHinh: 73181510 chấm trọn nhãn "Đường kính ng
     JSON.stringify({ trangThai: ht132.trangThai, distinctDk, dapAnDieuKien: ht132.dapAnDieuKien }));
 }
 
+// ── OZV-2174: cạnh loại trừ 2 chiều 59.03 <-> 60.01 cho ca 124 «Vải gió dệt kim / None / None» ──
+{
+  const S = require('../lib/so-tay.js');
+  const D = require('../lib/do-thi/index.js');
+  const { cauPhanBietNhom } = require('../lib/hoi-theo-so-tay.js');
+  const { phanTichHoiTruoc4So, TRANG_THAI_4SO } = require('../lib/do-thi/hoi-truoc-4so.js');
+  const { dataPath } = require('../lib/data-paths.js');
+  fs.mkdirSync(dataPath('so-tay'), { recursive: true });
+  for (const h of ['5903', '6001']) {
+    fs.copyFileSync(path.join('data', 'so-tay', `${h}.json`), dataPath('so-tay', `${h}.json`));
+  }
+  D.datLai();
+
+  const moTa124 = 'Vải gió dệt kim / None / None';
+  const hangThuan5903 =
+    'Vải gió dệt kim nổi vòng (pile) hoặc móc, kể cả đã ngâm tẩm, tráng, phủ hoặc ép lớp';
+  const hangThuan6001 =
+    'Vải gió dệt kim hoặc móc đã ngâm tẩm, tráng, phủ hoặc ép với plastic thuộc nhóm 59.03';
+  const hangDcBang = 'Băng đã tẩm thuốc hoặc đóng gói để bán lẻ';
+  const hangDcNhan = 'Nhãn phù hiệu dệt kim hoặc móc thuộc nhóm 58.07';
+
+  const s5903 = JSON.parse(fs.readFileSync(path.join('data', 'so-tay', '5903.json'), 'utf8'));
+  const s6001 = JSON.parse(fs.readFileSync(path.join('data', 'so-tay', '6001.json'), 'utf8'));
+  const v5903 = S.verifySoTay(s5903, '5903');
+  const v6001 = S.verifySoTay(s6001, '6001');
+  check('[OZV-2174 verifySoTay] sổ tay 5903 và 6001 đạt 100% (0 mục bị loại)',
+    v5903.loai.length === 0 && v6001.loai.length === 0,
+    JSON.stringify({ loai5903: v5903.loai.slice(0, 2), loai6001: v6001.loai.slice(0, 2) }));
+
+  const lt5903 = (loadSoTay('5903')?.loaiTru || []).find((x) => x.sangNhom === '6001');
+  const lt6001 = (loadSoTay('6001')?.loaiTru || []).find((x) => x.sangNhom === '5903');
+  check('[OZV-2174 canCuLoaiTru] loaiTru 2 chiều 5903 <-> 6001 kèm canCuLoaiTru nguyên văn đạt checkItem',
+    Boolean(lt5903 && lt5903.nguon === 'ch59.chuong' && lt5903.canCuLoaiTru?.nguon === 'nhom6001.nhom'
+      && !/;/.test(lt5903.dieuKien || '')
+      && S.checkItem('loaiTru', lt5903, S.sourcesFor('5903'), '5903') === null)
+    && Boolean(lt6001 && lt6001.nguon === 'ch60.chuong' && lt6001.canCuLoaiTru?.nguon === 'nhom5903.nhom'
+      && !/;/.test(lt6001.dieuKien || '')
+      && lt5903.dieuKien !== lt6001.dieuKien
+      && S.checkItem('loaiTru', lt6001, S.sourcesFor('6001'), '6001') === null),
+    JSON.stringify({ lt5903, lt6001 }));
+
+  const c5Tu5903 = D.canhTu('5903', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '6001');
+  const c5Tu6001 = D.canhTu('6001', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '5903');
+  const c6Tu5903 = D.canhTu('5903', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '6001');
+  const c6Tu6001 = D.canhTu('6001', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '5903');
+  const giua = D.canhGiuaNhomConSong(['5903', '6001']).filter((e) => e.loai === 'C5' || e.loai === 'C6');
+  const mr5903 = D.moRongUngVien(['5903'], moTa124, { toiDa: 10 });
+  const mr6001 = D.moRongUngVien(['6001'], moTa124, { toiDa: 10 });
+  check('[OZV-2174 đồ thị 2 chiều] C5/C6 5903<->6001, canhGiuaNhomConSong >= 2 và moRongUngVien kéo 2 chiều cho ca 124',
+    c5Tu5903.some((e) => e.nguon === 'ch59.chuong' && e.canCuLoaiTru?.nguon === 'nhom6001.nhom')
+    && c5Tu6001.some((e) => e.nguon === 'ch60.chuong' && e.canCuLoaiTru?.nguon === 'nhom5903.nhom')
+    && c6Tu5903.length >= 1 && c6Tu6001.length >= 1 && giua.length >= 2
+    && mr5903.some((x) => x.nhom === '6001') && mr6001.some((x) => x.nhom === '5903'),
+    JSON.stringify({ c5: c5Tu5903.length, c5r: c5Tu6001.length, giua: giua.length, mr5903: mr5903.map((x) => x.nhom), mr6001: mr6001.map((x) => x.nhom) }));
+
+  const rel5903 = [...new Set((loadSoTay('5903')?.loaiTru || []).flatMap((x) => String(x.sangNhom || '').split(/[|,;\s]+/).map((t) => t.replace(/\D/g, '').slice(0, 4)).filter((t) => t.length === 4)))];
+  const rel6001 = [...new Set((loadSoTay('6001')?.loaiTru || []).flatMap((x) => String(x.sangNhom || '').split(/[|,;\s]+/).map((t) => t.replace(/\D/g, '').slice(0, 4)).filter((t) => t.length === 4)))];
+  check('[OZV-2174 nhomLienQuanSoTay] liên kết hai chiều 5903 <-> 6001',
+    rel5903.includes('6001') && rel6001.includes('5903'),
+    JSON.stringify({ rel5903, rel6001 }));
+
+  const pb5903 = cauPhanBietNhom('5903', ['5903', '6001'], moTa124);
+  const pb6001 = cauPhanBietNhom('6001', ['6001', '5903'], moTa124);
+  check('[OZV-2174 cauPhanBietNhom] 5903 đứng đầu sinh câu phân biệt 59.03↔60.01 từ ch59.chuong',
+    pb5903.length >= 1 && pb5903[0].loai === 'PHAN_BIET_NHOM' && pb5903[0].canCu === 'so-tay'
+    && pb5903[0].nguon === 'ch59.chuong' && /60\.01/.test(pb5903[0].questionVi) && /59\.03/.test(pb5903[0].questionVi),
+    JSON.stringify(pb5903));
+  check('[OZV-2174 cauPhanBietNhom] 6001 đứng đầu sinh câu phân biệt 60.01↔59.03 từ ch60.chuong',
+    pb6001.length >= 1 && pb6001[0].loai === 'PHAN_BIET_NHOM' && pb6001[0].canCu === 'so-tay'
+    && pb6001[0].nguon === 'ch60.chuong' && /59\.03/.test(pb6001[0].questionVi) && /60\.01/.test(pb6001[0].questionVi),
+    JSON.stringify(pb6001));
+
+  const g5903 = soTayGates({
+    hs: '59031090',
+    productText: hangThuan5903,
+    productName: hangThuan5903,
+    candidateHeadings: ['5903', '6001'],
+  });
+  const g6001 = soTayGates({
+    hs: '60011000',
+    productText: hangThuan6001,
+    productName: hangThuan6001,
+    candidateHeadings: ['6001', '5903'],
+  });
+  check('[OZV-2174 soTayGates] kích hoạt SO_TAY_LOAI_TRU đúng cả 2 chiều 5903 -> 6001 và 6001 -> 5903',
+    (g5903.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('6001'))
+    && (g6001.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('5903')),
+    JSON.stringify({ g5903: g5903.challenges, g6001: g6001.challenges }));
+
+  const dcPb5903 = cauPhanBietNhom('5903', ['5903', '6001'], hangDcBang);
+  const dcPb6001 = cauPhanBietNhom('6001', ['6001', '5903'], hangDcNhan);
+  const dcG5903 = soTayGates({
+    hs: '59031010', productText: hangDcBang, productName: hangDcBang, candidateHeadings: ['5903', '6001'],
+  });
+  const dcG6001 = soTayGates({
+    hs: '60011000', productText: hangDcNhan, productName: hangDcNhan, candidateHeadings: ['6001', '5903'],
+  });
+  check('[OZV-2174 đối chứng] băng tẩm thuốc và nhãn phù hiệu không hỏi oan / không kéo oan 59.03 <-> 60.01',
+    dcPb5903.length === 0 && dcPb6001.length === 0
+    && !(dcG5903.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('6001'))
+    && !(dcG6001.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('5903'))
+    && !D.moRongUngVien(['5903'], hangDcBang).some((x) => x.nhom === '6001')
+    && !D.moRongUngVien(['6001'], hangDcNhan).some((x) => x.nhom === '5903'),
+    JSON.stringify({ dcPb5903, dcPb6001 }));
+
+  const ht124 = phanTichHoiTruoc4So({ moTa: moTa124, ungVien: ['5903', '6001'] });
+  const distinctDk = new Set((ht124.nhanh || []).map((n) => n.dieuKien)).size === 2;
+  check('[OZV-2174 hoi-truoc-4so] ca 124 với [5903, 6001] trả CHUA_CHOT_NHOM_HOI_TRUOC với 2 nhánh điều kiện phân biệt',
+    ht124.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC && distinctDk
+    && ['5903', '6001'].every((h) => (ht124.dapAnDieuKien || '').includes(`→ nhóm ${h} (`)),
+    JSON.stringify({ trangThai: ht124.trangThai, distinctDk, dapAnDieuKien: ht124.dapAnDieuKien }));
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
