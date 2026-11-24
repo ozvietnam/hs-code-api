@@ -537,5 +537,159 @@ for (const c of fixture.ca) {
   );
 }
 
+// OZV-2168 — Cạnh loại trừ 2 chiều 60.04 <-> 60.05 cho ca 124 tầng 4 số
+// "Vải gió dệt kim / None / None" (nhomNhan: ["5903","6001","6004","6005","6006"])
+{
+  const S = require('../lib/so-tay.js');
+  const { loadSoTay, soTayGates, nhomLienQuanSoTay } = require('../lib/so-tay-gates.js');
+  const { cauPhanBietNhom } = require('../lib/hoi-theo-so-tay.js');
+  const D = require('../lib/do-thi/index.js');
+  const { phanTichHoiTruoc4So, TRANG_THAI_4SO } = require('../lib/do-thi/hoi-truoc-4so.js');
+  D.datLai();
+
+  const moTaCa124 = 'Vải gió dệt kim / None / None';
+  const s6004 = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'so-tay', '6004.json'), 'utf8'));
+  const s6005 = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'so-tay', '6005.json'), 'utf8'));
+  const v6004 = S.verifySoTay(s6004, '6004');
+  const v6005 = S.verifySoTay(s6005, '6005');
+  check(
+    '[OZV-2168 verifySoTay] sổ tay 6004 và 6005 đạt 100% (0 mục bị loại)',
+    v6004.loai.length === 0 && v6005.loai.length === 0 && v6004.dat === v6004.tong && v6005.dat === v6005.tong,
+    { loai6004: v6004.loai, loai6005: v6005.loai, tong6004: v6004.tong, tong6005: v6005.tong }
+  );
+
+  const st6004 = loadSoTay('6004');
+  const st6005 = loadSoTay('6005');
+  const lt6004 = (st6004?.loaiTru || []).find((x) => x.sangNhom === '6005');
+  const lt6005 = (st6005?.loaiTru || []).find((x) => x.sangNhom === '6004');
+  check(
+    '[OZV-2168 căn cứ] sổ tay 6004 và 6005 có mục loaiTru 2 chiều 6004 <-> 6005 kèm canCuLoaiTru nguyên văn đạt checkItem',
+    Boolean(
+      lt6004 &&
+        lt6004.nguon === 'nhom6004.nhom' &&
+        lt6004.canCuLoaiTru?.nguon === 'nhom6005.nhom' &&
+        lt6004.dieuKien !== lt6005?.dieuKien &&
+        !/;/.test(lt6004.dieuKien || '') &&
+        S.checkItem('loaiTru', lt6004, S.sourcesFor('6004'), '6004') === null
+    ) &&
+      Boolean(
+        lt6005 &&
+          lt6005.nguon === 'nhom6005.nhom' &&
+          lt6005.canCuLoaiTru?.nguon === 'nhom6004.nhom' &&
+          !/;/.test(lt6005.dieuKien || '') &&
+          S.checkItem('loaiTru', lt6005, S.sourcesFor('6005'), '6005') === null
+      ),
+    { lt6004, lt6005 }
+  );
+
+  const c5Tu6004 = D.canhTu('6004', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '6005');
+  const c5Tu6005 = D.canhTu('6005', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '6004');
+  const c6Tu6004 = D.canhTu('6004', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '6005');
+  const c6Tu6005 = D.canhTu('6005', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '6004');
+  const giua6004_6005 = D.canhGiuaNhomConSong(['6004', '6005']).filter((e) => e.loai === 'C5' || e.loai === 'C6');
+  const mrTu6004 = D.moRongUngVien(['6004'], moTaCa124, { toiDa: 10 });
+  const mrTu6005 = D.moRongUngVien(['6005'], moTaCa124, { toiDa: 10 });
+  check(
+    '[OZV-2168 đồ thị 2 chiều] bảng cạnh có C5/C6 6004<->6005, canhGiuaNhomConSong >= 2 và moRongUngVien kéo 2 chiều cho ca 124',
+    c5Tu6004.some((e) => e.nguon === 'nhom6004.nhom' && e.canCuLoaiTru?.nguon === 'nhom6005.nhom') &&
+      c5Tu6005.some((e) => e.nguon === 'nhom6005.nhom' && e.canCuLoaiTru?.nguon === 'nhom6004.nhom') &&
+      c6Tu6004.length >= 1 &&
+      c6Tu6005.length >= 1 &&
+      giua6004_6005.length >= 2 &&
+      mrTu6004.some((x) => x.nhom === '6005') &&
+      mrTu6005.some((x) => x.nhom === '6004'),
+    { c5Tu6004: c5Tu6004.length, c5Tu6005: c5Tu6005.length, giua: giua6004_6005.length, mrTu6004, mrTu6005 }
+  );
+
+  check(
+    '[OZV-2168 nhomLienQuanSoTay] liên kết hai chiều 6004 <-> 6005',
+    nhomLienQuanSoTay('6004').includes('6005') && nhomLienQuanSoTay('6005').includes('6004'),
+    { rel6004: nhomLienQuanSoTay('6004'), rel6005: nhomLienQuanSoTay('6005') }
+  );
+
+  const pb6004 = cauPhanBietNhom('6004', ['6004', '6005'], moTaCa124);
+  check(
+    '[OZV-2168 thuận 6004->6005] 6004 đứng đầu với [6004, 6005] sinh câu phân biệt từ nhom6004.nhom trỏ sang 60.05',
+    pb6004.length === 1 &&
+      pb6004[0].loai === 'PHAN_BIET_NHOM' &&
+      pb6004[0].canCu === 'so-tay' &&
+      pb6004[0].nguon === 'nhom6004.nhom' &&
+      /60\.05/.test(pb6004[0].questionVi) &&
+      /60\.04/.test(pb6004[0].questionVi),
+    { pb6004 }
+  );
+
+  const pb6005 = cauPhanBietNhom('6005', ['6005', '6004'], moTaCa124);
+  check(
+    '[OZV-2168 thuận 6005->6004] 6005 đứng đầu với [6005, 6004] sinh câu phân biệt từ nhom6005.nhom trỏ sang 60.04',
+    pb6005.length === 1 &&
+      pb6005[0].loai === 'PHAN_BIET_NHOM' &&
+      pb6005[0].canCu === 'so-tay' &&
+      pb6005[0].nguon === 'nhom6005.nhom' &&
+      /60\.04/.test(pb6005[0].questionVi) &&
+      /60\.05/.test(pb6005[0].questionVi),
+    { pb6005 }
+  );
+
+  const g6004To6005 = soTayGates({
+    hs: '60041010',
+    productText: 'Vải gió dệt kim sợi dọc khổ rộng trên 30 cm, không chứa hoặc chứa dưới 5% sợi đàn hồi hoặc sợi cao su',
+    productName: 'Vải gió dệt kim sợi dọc khổ rộng trên 30 cm, không chứa hoặc chứa dưới 5% sợi đàn hồi hoặc sợi cao su',
+    candidateHeadings: ['6004', '6005'],
+  });
+  const g6005To6004 = soTayGates({
+    hs: '60052100',
+    productText: 'Vải gió dệt kim hoặc móc khổ rộng trên 30 cm chứa từ 5% trở lên theo trọng lượng sợi đàn hồi hoặc sợi cao su',
+    productName: 'Vải gió dệt kim hoặc móc khổ rộng trên 30 cm chứa từ 5% trở lên theo trọng lượng sợi đàn hồi hoặc sợi cao su',
+    candidateHeadings: ['6005', '6004'],
+  });
+  check(
+    '[OZV-2168 thuận soTayGates] kích hoạt SO_TAY_LOAI_TRU đúng cả 2 chiều 6004 -> 6005 và 6005 -> 6004',
+    (g6004To6005.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('6005')) &&
+      (g6005To6004.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('6004')),
+    { g6004To6005: g6004To6005.challenges, g6005To6004: g6005To6004.challenges }
+  );
+
+  const dcBang6004 = cauPhanBietNhom('6004', ['6004', '6005'], 'Băng đã tẩm thuốc hoặc đóng gói để bán lẻ');
+  const dcBang6005 = cauPhanBietNhom('6005', ['6005', '6004'], 'Băng đã tẩm thuốc hoặc đóng gói để bán lẻ');
+  const dcTheu6004 = cauPhanBietNhom('6004', ['6004', '6005'], 'Vải thêu thuộc nhóm 58.10');
+  const dcTheu6005 = cauPhanBietNhom('6005', ['6005', '6004'], 'Vải thêu thuộc nhóm 58.10');
+  const dcGate6004 = soTayGates({
+    hs: '60041010',
+    productText: 'Băng đã tẩm thuốc hoặc đóng gói để bán lẻ',
+    productName: 'Băng đã tẩm thuốc hoặc đóng gói để bán lẻ',
+    candidateHeadings: ['6004', '6005'],
+  });
+  const dcGate6005 = soTayGates({
+    hs: '60052200',
+    productText: 'Vải thêu thuộc nhóm 58.10',
+    productName: 'Vải thêu thuộc nhóm 58.10',
+    candidateHeadings: ['6005', '6004'],
+  });
+  check(
+    '[OZV-2168 đối chứng] băng tẩm thuốc và vải thêu không hỏi oan / không kéo oan 60.04 <-> 60.05',
+    dcBang6004.length === 0 &&
+      dcBang6005.length === 0 &&
+      dcTheu6004.length === 0 &&
+      dcTheu6005.length === 0 &&
+      !(dcGate6004.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('6005')) &&
+      !(dcGate6005.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('6004')) &&
+      !D.moRongUngVien(['6004'], 'Băng đã tẩm thuốc hoặc đóng gói để bán lẻ').some((x) => x.nhom === '6005') &&
+      !D.moRongUngVien(['6005'], 'Vải thêu thuộc nhóm 58.10').some((x) => x.nhom === '6004'),
+    { dcBang6004, dcBang6005, dcTheu6004, dcTheu6005 }
+  );
+
+  const ht124 = phanTichHoiTruoc4So({ moTa: moTaCa124, ungVien: ['6004', '6005'] });
+  const distinctDk124 = new Set((ht124.nhanh || []).map((n) => n.dieuKien)).size === 2;
+  check(
+    '[OZV-2168 hoi-truoc-4so] ca 124 với [6004, 6005] trả CHUA_CHOT_NHOM_HOI_TRUOC với 2 nhánh điều kiện phân biệt từ cạnh C5',
+    ht124.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC &&
+      distinctDk124 &&
+      (ht124.nhanh || []).every((n) => String(n.nguon || '').startsWith('do-thi:C5:')) &&
+      ['6004', '6005'].every((h) => (ht124.dapAnDieuKien || '').includes(`→ nhóm ${h} (`)),
+    { trangThai: ht124.trangThai, distinctDk124, nhanh: ht124.nhanh, dapAnDieuKien: ht124.dapAnDieuKien }
+  );
+}
+
 console.log(`\nphân biệt vật liệu ở tầng tiêu đề 6 số (OZV-558): ${passed} PASS, ${failed} FAIL`);
 process.exit(failed ? 1 : 0);
