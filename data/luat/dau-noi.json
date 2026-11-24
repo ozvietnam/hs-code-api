@@ -76,6 +76,7 @@
       "ghiChu": "ADR-0002, kế hoạch docs/ke-hoach-do-thi-tri-thuc-hs.md. GIAI ĐOẠN 1: chỉ dựng + cổng máy scripts/test-bang-canh.mjs. 25/11/2026: /api/classify đọc sau HS_TIM_TRUOC=goi (mặc định tắt), các đường khác khai 'khong'; mỗi lần nối sửa bảng này trong cùng PR. lib/do-thi/dung-bang-canh.js đọc thẳng data/so-tay/ nên cũng là module đọc kho soTayNhom. Cổng test-bang-canh đỏ khi có tệp ngoài lib/do-thi/ nạp bảng cạnh mà đường của nó chưa khai 'co'. C16 (23/11/2026): cạnh Phân-biệt-theo-nghĩa dựng từ data/do-thi/ban-do-4so/ (AI_NHAP qua cổng bd4@1; lib/do-thi/ban-do-4so.js, scripts/goi-soan-ban-do-4so.mjs, kiem-ban-do-4so.mjs, nap-ban-do-4so.mjs) — module soạn dữ liệu, không đường khách nào nạp; bậc 1 chỉ khi chamCheo=DUYET và mọi căn cứ còn nguyên văn. G6 (21/11/2026): thêm cạnh C10 Tách-phân-nhóm (+ khoá dữ kiện C13) dựng từ tieuChi6 của sổ tay; khuôn g6@1 và cổng soạn nằm ở lib/do-thi/tieu-chi-6.js (scripts/kiem-tieu-chi-6.mjs, scripts/goi-soan-tieu-chi-6.mjs, scripts/test-tieu-chi-6.mjs) — module soạn dữ liệu, không đường khách nào nạp. tieuChi6 nằm trong kho soTayNhom: đường nào đọc nó xem ghi chú kho soTayNhom.",
       "moDun": [
         "lib/do-thi/ban-do-4so.js",
+        "lib/do-thi/ba-buoc.js",
         "lib/do-thi/chu-giai-2-phan-xvi.js",
         "lib/do-thi/dung-bang-canh.js",
         "lib/do-thi/goi-phan-biet.js",
@@ -89,7 +90,7 @@
         "lib/do-thi/tieu-chi-6.js",
         "lib/do-thi/tu-khoa.js",
         "lib/do-thi/tu-soat.js",
-        "lib/do-thi/ba-buoc.js"
+        "lib/do-thi/xuong-6so.js"
       ],
       "hamKhongDocKho": [
         "tuKhoa",
