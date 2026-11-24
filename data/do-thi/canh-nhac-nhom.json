@@ -1,42 +1,47 @@
 {
 "khuon": "c17@1",
 "nguonLoai": "AI_NHAP",
-"moTa": "Cặp nhóm mà chú giải chi tiết nhắc tên nhau nhưng bảng cạnh cũ chưa có. Trích nguyên văn lấy bằng máy; quanHe gắn bằng gemma4:31b, chưa soát.",
+"moTa": "Cặp nhóm mà chú giải chi tiết nhắc tên nhau nhưng bảng cạnh cũ chưa có. Trích nguyên văn lấy bằng máy. quanHe: gemma4:31b gắn hai lượt, gemini-4-neon gắn lại kèm đoạn văn phía trước; chỉ giữ nhãn khi Neon trùng ít nhất một lượt, nếu không thì DAN_CHIEU và chuaChac=true. Chưa ai duyệt.",
 "canh": [
 {
 "tu": "0201",
 "den": "0102",
-"quanHe": "NGUYEN_LIEU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.0201.1",
-"trich": "Nhóm này gồm thịt tươi hoặc ướp lạnh của động vật họ trâu bò nuôi hoặc hoang thuộc nhóm 01.02."
+"trich": "Nhóm này gồm thịt tươi hoặc ướp lạnh của động vật họ trâu bò nuôi hoặc hoang thuộc nhóm 01.02.",
+"chuaChac": true
 },
 {
 "tu": "0202",
 "den": "0102",
-"quanHe": "NGUYEN_LIEU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.0202.1",
-"trich": "Nhóm này gồm thịt đông lạnh của động vật họ trâu bò nuôi hoặc hoang thuộc nhóm 01.02."
+"trich": "Nhóm này gồm thịt đông lạnh của động vật họ trâu bò nuôi hoặc hoang thuộc nhóm 01.02.",
+"chuaChac": true
 },
 {
 "tu": "0205",
 "den": "0101",
-"quanHe": "NGUYEN_LIEU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.0205.1",
-"trich": "Nhóm này gồm thịt tươi, ướp lạnh hoặc đông lạnh của những động vật mà khi còn sống được phân loại vào nhóm 01.01."
+"trich": "Nhóm này gồm thịt tươi, ướp lạnh hoặc đông lạnh của những động vật mà khi còn sống được phân loại vào nhóm 01.01.",
+"chuaChac": true
 },
 {
 "tu": "0207",
 "den": "0105",
-"quanHe": "NGUYEN_LIEU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.0207.1",
-"trich": "Nhóm này chỉ bao gồm thịt và phụ phẩm ăn được sau giết mổ, tươi, ướp lạnh hoặc đông lạnh của gia cầm nuôi mà khi sống, được phân loại vào nhóm 01.05."
+"trich": "Nhóm này chỉ bao gồm thịt và phụ phẩm ăn được sau giết mổ, tươi, ướp lạnh hoặc đông lạnh của gia cầm nuôi mà khi sống, được phân loại vào nhóm 01.05.",
+"chuaChac": true
 },
 {
 "tu": "0208",
 "den": "0106",
-"quanHe": "NGUYEN_LIEU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.0208.1",
-"trich": "Nhóm này bao gồm thịt và phụ phẩm dạng thịt sau giết mổ của động vật thuộc nhóm 01.06, miễn là chúng thích hợp dùng làm thức ăn cho người (ví dụ, thỏ, thỏ rừng, ếch, tuần lộc, hải ly, cá voi, rùa)."
+"trich": "Nhóm này bao gồm thịt và phụ phẩm dạng thịt sau giết mổ của động vật thuộc nhóm 01.06, miễn là chúng thích hợp dùng làm thức ăn cho người (ví dụ, thỏ, thỏ rừng, ếch, tuần lộc, hải ly, cá voi, rùa).",
+"chuaChac": true
 },
 {
 "tu": "0209",
@@ -97,16 +102,18 @@
 {
 "tu": "0710",
 "den": "0701",
-"quanHe": "PHAN_BIET",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.0710.1",
-"trich": "Nhóm này bao gồm các loại rau đông lạnh mà khi ở dạng tươi hoặc ướp lạnh thì được phân loại vào các nhóm từ 07.01 đến 07.09."
+"trich": "Nhóm này bao gồm các loại rau đông lạnh mà khi ở dạng tươi hoặc ướp lạnh thì được phân loại vào các nhóm từ 07.01 đến 07.09.",
+"chuaChac": true
 },
 {
 "tu": "0710",
 "den": "0709",
-"quanHe": "NGUYEN_LIEU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.0710.1",
-"trich": "Nhóm này bao gồm các loại rau đông lạnh mà khi ở dạng tươi hoặc ướp lạnh thì được phân loại vào các nhóm từ 07.01 đến 07.09."
+"trich": "Nhóm này bao gồm các loại rau đông lạnh mà khi ở dạng tươi hoặc ướp lạnh thì được phân loại vào các nhóm từ 07.01 đến 07.09.",
+"chuaChac": true
 },
 {
 "tu": "0712",
@@ -190,7 +197,8 @@
 "den": "1006",
 "quanHe": "DAN_CHIEU",
 "nguon": "ct.1104.3",
-"trich": "trình nghiền hoặc cán hạt ngũ cốc nguyên dạng (đã hoặc chưa xay bỏ vỏ) hoặc các loại hạt ngũ cốc đã qua nghiền thô hoặc các sản phẩm được nêu trong Mục (2) và (3) dưới đây và nêu trong Mục (2) đến (5) của Chú giải nhóm 10.06. Trong quá trình chế"
+"trich": "trình nghiền hoặc cán hạt ngũ cốc nguyên dạng (đã hoặc chưa xay bỏ vỏ) hoặc các loại hạt ngũ cốc đã qua nghiền thô hoặc các sản phẩm được nêu trong Mục (2) và (3) dưới đây và nêu trong Mục (2) đến (5) của Chú giải nhóm 10.06. Trong quá trình chế",
+"chuaChac": true
 },
 {
 "tu": "1207",
@@ -328,7 +336,7 @@
 {
 "tu": "1602",
 "den": "0504",
-"quanHe": "PHAN_BIET",
+"quanHe": "LOAI_TRU",
 "nguon": "ct.1602.5",
 "trich": "(3) Thịt và phụ phẩm dạng thịt sau giết mổ đã chế biến hoặc bảo quản bằng các phương pháp khác không nêu trong Chương 2 hoặc nhóm 05.04, kể cả các sản phẩm này chỉ được bao bột hoặc vụn bánh mì, trộn nấm củ hoặc thêm gia vị (ví dụ, với cả tiêu và muối) hoặc được làm đồn"
 },
@@ -351,14 +359,16 @@
 "den": "1404",
 "quanHe": "DAN_CHIEU",
 "nguon": "ct.1905.32",
-"trich": "Chú giải Chi tiết nhóm 14.04)."
+"trich": "Chú giải Chi tiết nhóm 14.04).",
+"chuaChac": true
 },
 {
 "tu": "2005",
 "den": "0711",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2005.6",
-"trich": "(Ô liu được bảo quản tạm thời trong nước muối được phân loại trong nhóm 07.11- xem Chú giải chi tiết của nhóm đó)."
+"trich": "(Ô liu được bảo quản tạm thời trong nước muối được phân loại trong nhóm 07.11- xem Chú giải chi tiết của nhóm đó).",
+"chuaChac": true
 },
 {
 "tu": "2009",
@@ -391,16 +401,18 @@
 {
 "tu": "2106",
 "den": "0401",
-"quanHe": "NGUYEN_LIEU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2106.7",
-"trich": "Các loại bột từ bột mịn, bột thô, tinh bột, chiết xuất malt hoặc từ các sản phẩm của các nhóm từ 04.01 đến 04.04, có hoặc không cho thêm ca cao, thuộc nhóm 18.06 hoặc 19.01 tuỳ theo hàm lượng ca cao (xem Chú giải Tổng quát Chương 19). Cá"
+"trich": "Các loại bột từ bột mịn, bột thô, tinh bột, chiết xuất malt hoặc từ các sản phẩm của các nhóm từ 04.01 đến 04.04, có hoặc không cho thêm ca cao, thuộc nhóm 18.06 hoặc 19.01 tuỳ theo hàm lượng ca cao (xem Chú giải Tổng quát Chương 19). Cá",
+"chuaChac": true
 },
 {
 "tu": "2106",
 "den": "0404",
-"quanHe": "NGUYEN_LIEU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2106.7",
-"trich": "Các loại bột từ bột mịn, bột thô, tinh bột, chiết xuất malt hoặc từ các sản phẩm của các nhóm từ 04.01 đến 04.04, có hoặc không cho thêm ca cao, thuộc nhóm 18.06 hoặc 19.01 tuỳ theo hàm lượng ca cao (xem Chú giải Tổng quát Chương 19). Các loại bột"
+"trich": "Các loại bột từ bột mịn, bột thô, tinh bột, chiết xuất malt hoặc từ các sản phẩm của các nhóm từ 04.01 đến 04.04, có hoặc không cho thêm ca cao, thuộc nhóm 18.06 hoặc 19.01 tuỳ theo hàm lượng ca cao (xem Chú giải Tổng quát Chương 19). Các loại bột",
+"chuaChac": true
 },
 {
 "tu": "2206",
@@ -589,7 +601,8 @@
 "den": "3825",
 "quanHe": "DAN_CHIEU",
 "nguon": "ct.2814.1",
-"trich": "Amoniac thu được hoặc từ sản xuất khí ga lỏng amoniac không tinh khiết trong lọc khí than hoặc trong chế biến than cốc (xem Chú giải Chi tiết nhóm 38.25, Phần (A) (3)), hoặc bằng phương pháp tổng hợp từ hydro và nitơ."
+"trich": "Amoniac thu được hoặc từ sản xuất khí ga lỏng amoniac không tinh khiết trong lọc khí than hoặc trong chế biến than cốc (xem Chú giải Chi tiết nhóm 38.25, Phần (A) (3)), hoặc bằng phương pháp tổng hợp từ hydro và nitơ.",
+"chuaChac": true
 },
 {
 "tu": "2815",
@@ -601,16 +614,18 @@
 {
 "tu": "2817",
 "den": "2841",
-"quanHe": "NGUYEN_LIEU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2817.5",
-"trich": "Dạng zincat của nhóm 28.41 tương ứng với dạng oxit lưỡng tính."
+"trich": "Dạng zincat của nhóm 28.41 tương ứng với dạng oxit lưỡng tính.",
+"chuaChac": true
 },
 {
 "tu": "2818",
 "den": "2841",
-"quanHe": "NGUYEN_LIEU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2818.11",
-"trich": "Aluminat của nhóm 28.41 tương ứng với hydroxit lưỡng tính này."
+"trich": "Aluminat của nhóm 28.41 tương ứng với hydroxit lưỡng tính này.",
+"chuaChac": true
 },
 {
 "tu": "2818",
@@ -622,16 +637,18 @@
 {
 "tu": "2819",
 "den": "2841",
-"quanHe": "NGUYEN_LIEU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2819.2",
-"trich": "(1) Crom trioxit (crom (VI) oxit hoặc crom anhydrit (CrO3) (bị hiểu sai là \"axit cromic\", vì nó có thể tạo ra cromat thuộc nhóm 28.41). Dạng hình kim hoặc dạng phiến màu đỏ hoặc da cam; chảy rữa; rất dễ hòa tan trong nước; tỷ trọng khoảng 2,8. Khi kết hợp với rượu tạo"
+"trich": "(1) Crom trioxit (crom (VI) oxit hoặc crom anhydrit (CrO3) (bị hiểu sai là \"axit cromic\", vì nó có thể tạo ra cromat thuộc nhóm 28.41). Dạng hình kim hoặc dạng phiến màu đỏ hoặc da cam; chảy rữa; rất dễ hòa tan trong nước; tỷ trọng khoảng 2,8. Khi kết hợp với rượu tạo",
+"chuaChac": true
 },
 {
 "tu": "2821",
 "den": "2841",
-"quanHe": "NGUYEN_LIEU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2821.9",
-"trich": "Nó là hydroxit lưỡng tính, sau khi oxy hóa, cho dạng ferat thuộc nhóm 28.41."
+"trich": "Nó là hydroxit lưỡng tính, sau khi oxy hóa, cho dạng ferat thuộc nhóm 28.41.",
+"chuaChac": true
 },
 {
 "tu": "2822",
@@ -678,23 +695,26 @@
 {
 "tu": "2825",
 "den": "2826",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2825.84",
-"trich": "Một vài loại muối kép hoặc muối phức được đề cập một cách đặc biệt trong các nhóm từ 28.26 đến 28.41; ví dụ, fluorosilicat, fluoroborat và các dạng phức khác của muối flo (nhóm 28.26), phèn (nhóm 28.33), xyanua phức (nhóm 28."
+"trich": "Một vài loại muối kép hoặc muối phức được đề cập một cách đặc biệt trong các nhóm từ 28.26 đến 28.41; ví dụ, fluorosilicat, fluoroborat và các dạng phức khác của muối flo (nhóm 28.26), phèn (nhóm 28.33), xyanua phức (nhóm 28.",
+"chuaChac": true
 },
 {
 "tu": "2825",
 "den": "2833",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2825.84",
-"trich": "Một vài loại muối kép hoặc muối phức được đề cập một cách đặc biệt trong các nhóm từ 28.26 đến 28.41; ví dụ, fluorosilicat, fluoroborat và các dạng phức khác của muối flo (nhóm 28.26), phèn (nhóm 28.33), xyanua phức (nhóm 28.37). Đối với các loại muối kép hoặc muối phức không được ghi rõ, xem Chú giải Chi tiết của nhóm 28.42."
+"trich": "Một vài loại muối kép hoặc muối phức được đề cập một cách đặc biệt trong các nhóm từ 28.26 đến 28.41; ví dụ, fluorosilicat, fluoroborat và các dạng phức khác của muối flo (nhóm 28.26), phèn (nhóm 28.33), xyanua phức (nhóm 28.37). Đối với các loại muối kép hoặc muối phức không được ghi rõ, xem Chú giải Chi tiết của nhóm 28.42.",
+"chuaChac": true
 },
 {
 "tu": "2825",
 "den": "2837",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2825.84",
-"trich": "t vài loại muối kép hoặc muối phức được đề cập một cách đặc biệt trong các nhóm từ 28.26 đến 28.41; ví dụ, fluorosilicat, fluoroborat và các dạng phức khác của muối flo (nhóm 28.26), phèn (nhóm 28.33), xyanua phức (nhóm 28.37). Đối với các loại muối kép hoặc muối phức không được ghi rõ, xem Chú giải Chi tiết của nhóm 28.42."
+"trich": "t vài loại muối kép hoặc muối phức được đề cập một cách đặc biệt trong các nhóm từ 28.26 đến 28.41; ví dụ, fluorosilicat, fluoroborat và các dạng phức khác của muối flo (nhóm 28.26), phèn (nhóm 28.33), xyanua phức (nhóm 28.37). Đối với các loại muối kép hoặc muối phức không được ghi rõ, xem Chú giải Chi tiết của nhóm 28.42.",
+"chuaChac": true
 },
 {
 "tu": "2825",
@@ -776,9 +796,10 @@
 {
 "tu": "2825",
 "den": "9001",
-"quanHe": "PHAN_BIET",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2825.94",
-"trich": "ể nuôi cấy (trừ các bộ phận quang học) có trọng lượng không nhỏ hơn 2,5g mỗi tinh thể, của halogenua của kim loại kiềm hoặc kim loại kiềm thổ (nhóm 38.24); khi chúng ở dạng bộ phận quang học, chúng được phân loại ở nhóm 90.01."
+"trich": "ể nuôi cấy (trừ các bộ phận quang học) có trọng lượng không nhỏ hơn 2,5g mỗi tinh thể, của halogenua của kim loại kiềm hoặc kim loại kiềm thổ (nhóm 38.24); khi chúng ở dạng bộ phận quang học, chúng được phân loại ở nhóm 90.01.",
+"chuaChac": true
 },
 {
 "tu": "2826",
@@ -846,9 +867,10 @@
 {
 "tu": "2830",
 "den": "3824",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2830.19",
-"trich": "Xử lý nóng với Na2CO3 tạo ra “khoáng kermes”, chứa thành phần cơ bản là antimon trisulphua và natri pyro- antimonat và được sử dụng trong y học (nhóm 38.24)."
+"trich": "Xử lý nóng với Na2CO3 tạo ra “khoáng kermes”, chứa thành phần cơ bản là antimon trisulphua và natri pyro- antimonat và được sử dụng trong y học (nhóm 38.24).",
+"chuaChac": true
 },
 {
 "tu": "2832",
@@ -888,44 +910,50 @@
 {
 "tu": "2834",
 "den": "2808",
-"quanHe": "NGUYEN_LIEU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2834.9",
-"trich": "Ngoài các loại trừ đã nêu trong phần giới thiệu ở Phân Chương này, nhóm này bao gồm nitrat, các muối kim loại của axit HNO3 (nhóm 28.08), trừ amoni nitrat và natri nitrat, tinh khiết hoặc không tinh khiết (nhóm 31.02 hoặc 31.05). (Xem các loại trừ khác dưới đây)."
+"trich": "Ngoài các loại trừ đã nêu trong phần giới thiệu ở Phân Chương này, nhóm này bao gồm nitrat, các muối kim loại của axit HNO3 (nhóm 28.08), trừ amoni nitrat và natri nitrat, tinh khiết hoặc không tinh khiết (nhóm 31.02 hoặc 31.05). (Xem các loại trừ khác dưới đây).",
+"chuaChac": true
 },
 {
 "tu": "2834",
 "den": "2811",
-"quanHe": "NGUYEN_LIEU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2834.2",
-"trich": "Ngoài các loại trừ đã nêu trong phần giới thiệu của Phân Chương này, nhóm này bao gồm nitrit, muối kim loại của axit nitrơ (HNO2) (nhóm 28.11)."
+"trich": "Ngoài các loại trừ đã nêu trong phần giới thiệu của Phân Chương này, nhóm này bao gồm nitrit, muối kim loại của axit nitrơ (HNO2) (nhóm 28.11).",
+"chuaChac": true
 },
 {
 "tu": "2835",
 "den": "2809",
-"quanHe": "NGUYEN_LIEU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2835.13",
-"trich": "Ngoài các loại trừ nêu trong phần giới thiệu của Phân Chương này, nhóm này bao gồm phosphat và polyphosphat kim loại có nguồn gốc từ axit của nhóm 28.09, nghĩa là:"
+"trich": "Ngoài các loại trừ nêu trong phần giới thiệu của Phân Chương này, nhóm này bao gồm phosphat và polyphosphat kim loại có nguồn gốc từ axit của nhóm 28.09, nghĩa là:",
+"chuaChac": true
 },
 {
 "tu": "2835",
 "den": "2811",
-"quanHe": "NGUYEN_LIEU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2835.2",
-"trich": "Ngoài các loại trừ được liệt kê trong phần giới thiệu của Phân Chương này, nhóm này bao gồm phosphinat (hypophosphit), các muối kim loại của axit phosphinic (hypophosphorous) (H3PO2) (nhóm 28.11)."
+"trich": "Ngoài các loại trừ được liệt kê trong phần giới thiệu của Phân Chương này, nhóm này bao gồm phosphinat (hypophosphit), các muối kim loại của axit phosphinic (hypophosphorous) (H3PO2) (nhóm 28.11).",
+"chuaChac": true
 },
 {
 "tu": "2836",
 "den": "2811",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2836.4",
-"trich": "(CO2) được xếp vào nhóm 28.11."
+"trich": "(CO2) được xếp vào nhóm 28.11.",
+"chuaChac": true
 },
 {
 "tu": "2837",
 "den": "2811",
-"quanHe": "NGUYEN_LIEU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2837.3",
-"trich": "Xyanua là dạng muối kim loại của hydro xyanua (axit cyanhydric) (HCN) (nhóm 28.11)."
+"trich": "Xyanua là dạng muối kim loại của hydro xyanua (axit cyanhydric) (HCN) (nhóm 28.11).",
+"chuaChac": true
 },
 {
 "tu": "2837",
@@ -937,23 +965,26 @@
 {
 "tu": "2839",
 "den": "2811",
-"quanHe": "NGUYEN_LIEU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2839.1",
-"trich": "oài các loại trừ như đã nêu trong phần giới thiệu của Phân Chương này, nhóm này bao gồm silicat, muối kim loại của các dạng axit silicic khác nhau, không phân lập được ở trạng thái tự do và được chuyển hóa từ SiO2 (nhóm 28.11)."
+"trich": "oài các loại trừ như đã nêu trong phần giới thiệu của Phân Chương này, nhóm này bao gồm silicat, muối kim loại của các dạng axit silicic khác nhau, không phân lập được ở trạng thái tự do và được chuyển hóa từ SiO2 (nhóm 28.11).",
+"chuaChac": true
 },
 {
 "tu": "2839",
 "den": "3824",
 "quanHe": "DAN_CHIEU",
 "nguon": "ct.2839.4",
-"trich": "không bị thối rữa; cũng như là tác nhân làm đông cứng trong chế phẩm xi măng chống ăn mòn, matit hoặc đá nhân tạo; cho sản xuất các chế phẩm tẩy rửa; tẩy sạch kim loại; các sản phẩm chống gỉ (xem Chủ giải Chi tiết nhóm 38.24)."
+"trich": "không bị thối rữa; cũng như là tác nhân làm đông cứng trong chế phẩm xi măng chống ăn mòn, matit hoặc đá nhân tạo; cho sản xuất các chế phẩm tẩy rửa; tẩy sạch kim loại; các sản phẩm chống gỉ (xem Chủ giải Chi tiết nhóm 38.24).",
+"chuaChac": true
 },
 {
 "tu": "2840",
 "den": "2810",
-"quanHe": "NGUYEN_LIEU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2840.2",
-"trich": "Ngoài các loại trừ nêu trong phần giới thiệu của Phân Chương này, nhóm này bao gồm borat, muối kim loại của các dạng axit boric khác nhau, phần lớn là axit boric thông dụng hoặc axit orthoboric (H3BO3) (nhóm 28.10)."
+"trich": "Ngoài các loại trừ nêu trong phần giới thiệu của Phân Chương này, nhóm này bao gồm borat, muối kim loại của các dạng axit boric khác nhau, phần lớn là axit boric thông dụng hoặc axit orthoboric (H3BO3) (nhóm 28.10).",
+"chuaChac": true
 },
 {
 "tu": "2841",
@@ -972,16 +1003,18 @@
 {
 "tu": "2842",
 "den": "2811",
-"quanHe": "NGUYEN_LIEU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2842.19",
-"trich": "Đây là dạng muối kim loại của axit asenic; asenit là các muối của axit asenious, và asenat là muối của asenic (nhóm 28.11). Chúng là chất độc mạnh. Ví dụ là:"
+"trich": "Đây là dạng muối kim loại của axit asenic; asenit là các muối của axit asenious, và asenat là muối của asenic (nhóm 28.11). Chúng là chất độc mạnh. Ví dụ là:",
+"chuaChac": true
 },
 {
 "tu": "2842",
 "den": "3206",
 "quanHe": "DAN_CHIEU",
 "nguon": "ct.2842.24",
-"trich": "Chú giải Chi tiết nhóm 32.06)."
+"trich": "Chú giải Chi tiết nhóm 32.06).",
+"chuaChac": true
 },
 {
 "tu": "2853",
@@ -993,7 +1026,7 @@
 {
 "tu": "2903",
 "den": "3904",
-"quanHe": "LOAI_TRU",
+"quanHe": "NGUYEN_LIEU",
 "nguon": "ct.2903.15",
 "trich": "Chất khí, có mùi cloroform; tồn tại ở dạng chất lỏng trong các bình chứa bằng thép; được dùng trong sản xuất poly(vinylclorua) của nhóm 39.04."
 },
@@ -1056,16 +1089,18 @@
 {
 "tu": "2921",
 "den": "2905",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2921.5",
-"trich": "muối nitrat, axetat, citrat) và các dẫn xuất thay thế của amin (ví dụ, các dẫn xuất halogen hóa, sulphonat hóa, nitro hóa hoặc nitroso hóa); nhưng loại trừ các dẫn xuất thay thế có chứa nhóm chức có oxy của các nhóm từ 29.05 đến 29.20, và các dạng muối của nó (nhóm 29.22). Nhóm này cũng không bao gồm các dẫn xuất thay thế có một hoặc nhiều nguyên tử hydro c"
+"trich": "muối nitrat, axetat, citrat) và các dẫn xuất thay thế của amin (ví dụ, các dẫn xuất halogen hóa, sulphonat hóa, nitro hóa hoặc nitroso hóa); nhưng loại trừ các dẫn xuất thay thế có chứa nhóm chức có oxy của các nhóm từ 29.05 đến 29.20, và các dạng muối của nó (nhóm 29.22). Nhóm này cũng không bao gồm các dẫn xuất thay thế có một hoặc nhiều nguyên tử hydro c",
+"chuaChac": true
 },
 {
 "tu": "2921",
 "den": "2920",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2921.5",
-"trich": "at, axetat, citrat) và các dẫn xuất thay thế của amin (ví dụ, các dẫn xuất halogen hóa, sulphonat hóa, nitro hóa hoặc nitroso hóa); nhưng loại trừ các dẫn xuất thay thế có chứa nhóm chức có oxy của các nhóm từ 29.05 đến 29.20, và các dạng muối của nó (nhóm 29.22). Nhóm này cũng không bao gồm các dẫn xuất thay thế có một hoặc nhiều nguyên tử hydro của chức am"
+"trich": "at, axetat, citrat) và các dẫn xuất thay thế của amin (ví dụ, các dẫn xuất halogen hóa, sulphonat hóa, nitro hóa hoặc nitroso hóa); nhưng loại trừ các dẫn xuất thay thế có chứa nhóm chức có oxy của các nhóm từ 29.05 đến 29.20, và các dạng muối của nó (nhóm 29.22). Nhóm này cũng không bao gồm các dẫn xuất thay thế có một hoặc nhiều nguyên tử hydro của chức am",
+"chuaChac": true
 },
 {
 "tu": "2922",
@@ -1077,9 +1112,10 @@
 {
 "tu": "2922",
 "den": "2905",
-"quanHe": "NGUYEN_LIEU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2922.2",
-"trich": "Vì thế, Nhóm này bao gồm các hợp chất amino là dẫn xuất thay thế của các amin có chứa chức oxy thuộc các nhóm từ 29.05 đến 29.20, và các este và muối của chúng."
+"trich": "Vì thế, Nhóm này bao gồm các hợp chất amino là dẫn xuất thay thế của các amin có chứa chức oxy thuộc các nhóm từ 29.05 đến 29.20, và các este và muối của chúng.",
+"chuaChac": true
 },
 {
 "tu": "2922",
@@ -1091,9 +1127,10 @@
 {
 "tu": "2922",
 "den": "2920",
-"quanHe": "NGUYEN_LIEU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2922.2",
-"trich": "Vì thế, Nhóm này bao gồm các hợp chất amino là dẫn xuất thay thế của các amin có chứa chức oxy thuộc các nhóm từ 29.05 đến 29.20, và các este và muối của chúng."
+"trich": "Vì thế, Nhóm này bao gồm các hợp chất amino là dẫn xuất thay thế của các amin có chứa chức oxy thuộc các nhóm từ 29.05 đến 29.20, và các este và muối của chúng.",
+"chuaChac": true
 },
 {
 "tu": "2922",
@@ -1168,14 +1205,14 @@
 {
 "tu": "2928",
 "den": "2908",
-"quanHe": "DAN_CHIEU",
+"quanHe": "LOAI_TRU",
 "nguon": "ct.2928.4",
 "trich": "Nitrosophenol, là đồng phân hỗ biến của quinon oxim, và nitrosoamin là đồng phân hỗ biến của quinoneimin oxim, bị loại trừ khỏi nhóm này (xem Chú giải Chi tiết nhóm 29.08 và 29.21)"
 },
 {
 "tu": "2928",
 "den": "2921",
-"quanHe": "DAN_CHIEU",
+"quanHe": "LOAI_TRU",
 "nguon": "ct.2928.4",
 "trich": "Nitrosophenol, là đồng phân hỗ biến của quinon oxim, và nitrosoamin là đồng phân hỗ biến của quinoneimin oxim, bị loại trừ khỏi nhóm này (xem Chú giải Chi tiết nhóm 29.08 và 29.21)"
 },
@@ -1238,233 +1275,266 @@
 {
 "tu": "2942",
 "den": "2905",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2942.140",
-"trich": "Acyclic alcohols and their 3 29.05 halogenated, sulphonated, nitrated or nitrosated derivatives UNSATURATED"
+"trich": "Acyclic alcohols and their 3 29.05 halogenated, sulphonated, nitrated or nitrosated derivatives UNSATURATED",
+"chuaChac": true
 },
 {
 "tu": "2942",
 "den": "2906",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2942.145",
-"trich": "Cyclic alcohols and their 29.06 halogenated, sulphonated, nitrated or nitrosated derivatives CYCLANIC, CYCLENIC OR CYCLOTERPENIC ALCOHOLS AND THEIR"
+"trich": "Cyclic alcohols and their 29.06 halogenated, sulphonated, nitrated or nitrosated derivatives CYCLANIC, CYCLENIC OR CYCLOTERPENIC ALCOHOLS AND THEIR",
+"chuaChac": true
 },
 {
 "tu": "2942",
 "den": "2907",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2942.148",
-"trich": "29.07 Phenols; phenol-alcohols"
+"trich": "29.07 Phenols; phenol-alcohols",
+"chuaChac": true
 },
 {
 "tu": "2942",
 "den": "2909",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2942.158",
-"trich": "VI- 2907 (29.07) (C) (3) Bisphenol A -3 Ethers, ether-alcohols, ether- phenols, ether-alcohol-phenols, alcohol peroxides, ether peroxides, acetal and hemiacetal 29.09 peroxide, ketone peroxides (whether or not chemically defined), and their halogenated, sulphonated, nitrated or nitrosated derivatives"
+"trich": "VI- 2907 (29.07) (C) (3) Bisphenol A -3 Ethers, ether-alcohols, ether- phenols, ether-alcohol-phenols, alcohol peroxides, ether peroxides, acetal and hemiacetal 29.09 peroxide, ketone peroxides (whether or not chemically defined), and their halogenated, sulphonated, nitrated or nitrosated derivatives",
+"chuaChac": true
 },
 {
 "tu": "2942",
 "den": "2910",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2942.165",
-"trich": "Epoxides, epoxyalcohols, epoxyphenols and epoxyethers, 29.10 with a three-membered ring, and their halogenated, sulphonated, nitrated or nitrosated derivatives"
+"trich": "Epoxides, epoxyalcohols, epoxyphenols and epoxyethers, 29.10 with a three-membered ring, and their halogenated, sulphonated, nitrated or nitrosated derivatives",
+"chuaChac": true
 },
 {
 "tu": "2942",
 "den": "2911",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2942.168",
-"trich": "Acetals and hemiacetals, whether or not with other oxygen 29.11 function, and their halogenated, sulphonated, nitrated or nitrosated derivatives VI- ACETALS AND 2911 (A) HEMIACETALS -1 Aldehydes, wh"
+"trich": "Acetals and hemiacetals, whether or not with other oxygen 29.11 function, and their halogenated, sulphonated, nitrated or nitrosated derivatives VI- ACETALS AND 2911 (A) HEMIACETALS -1 Aldehydes, wh",
+"chuaChac": true
 },
 {
 "tu": "2942",
 "den": "2912",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2942.168",
-"trich": "hether or not with other oxygen 29.11 function, and their halogenated, sulphonated, nitrated or nitrosated derivatives VI- ACETALS AND 2911 (A) HEMIACETALS -1 Aldehydes, whether or not with other oxygen function; cyclic 29.12 polymers of aldehydes; paraformaldehyde VI- 2912 (A) ALDEHYDES -2"
+"trich": "hether or not with other oxygen 29.11 function, and their halogenated, sulphonated, nitrated or nitrosated derivatives VI- ACETALS AND 2911 (A) HEMIACETALS -1 Aldehydes, whether or not with other oxygen function; cyclic 29.12 polymers of aldehydes; paraformaldehyde VI- 2912 (A) ALDEHYDES -2",
+"chuaChac": true
 },
 {
 "tu": "2942",
 "den": "2914",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2942.176",
-"trich": "Ketones and quinones, whether 29.14 or not with other oxygen function, and their halogenated,"
+"trich": "Ketones and quinones, whether 29.14 or not with other oxygen function, and their halogenated,",
+"chuaChac": true
 },
 {
 "tu": "2942",
 "den": "2916",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2942.192",
-"trich": "VI- 2915 (V) (a) n-Butyric acid -5 Unsaturated acyclic monocarboxylic acids, cyclic monocarboxylic acids, their 29.16 anhydrides, halides, peroxides and peroxyacids; their halogenated, sulphonated, nitrated or nitrosated derivatives UNSATURATED ACYCLIC"
+"trich": "VI- 2915 (V) (a) n-Butyric acid -5 Unsaturated acyclic monocarboxylic acids, cyclic monocarboxylic acids, their 29.16 anhydrides, halides, peroxides and peroxyacids; their halogenated, sulphonated, nitrated or nitrosated derivatives UNSATURATED ACYCLIC",
+"chuaChac": true
 },
 {
 "tu": "2942",
 "den": "2918",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2942.206",
-"trich": "Carboxylic acids with additional oxygen function and their anhydrides, halides, peroxides 29.18 and peroxyacids; their halogenated, sulphonated, nitrated or nitrosated derivatives CARBOXYLIC ACIDS WITH ALCOHOL FUNCTION AND"
+"trich": "Carboxylic acids with additional oxygen function and their anhydrides, halides, peroxides 29.18 and peroxyacids; their halogenated, sulphonated, nitrated or nitrosated derivatives CARBOXYLIC ACIDS WITH ALCOHOL FUNCTION AND",
+"chuaChac": true
 },
 {
 "tu": "2942",
 "den": "2919",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2942.216",
-"trich": "Phosphoric esters and their salts, (VI- including lactophosphates; their 2919 29.19 halogenated, sulphonated, -1) nitrated or nitrosated derivatives"
+"trich": "Phosphoric esters and their salts, (VI- including lactophosphates; their 2919 29.19 halogenated, sulphonated, -1) nitrated or nitrosated derivatives",
+"chuaChac": true
 },
 {
 "tu": "2942",
 "den": "2920",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2942.218",
-"trich": "Esters of other inorganic acids of non-metals (excluding esters of 29.20 hydrogen halides) and their salts; their halogenated, sulphonated, nitrated or nitrosated derivatives"
+"trich": "Esters of other inorganic acids of non-metals (excluding esters of 29.20 hydrogen halides) and their salts; their halogenated, sulphonated, nitrated or nitrosated derivatives",
+"chuaChac": true
 },
 {
 "tu": "2942",
 "den": "2921",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2942.233",
-"trich": "VI- 2921 29.21 Amine-function compounds -1 ACYCLIC MONOAMINES"
+"trich": "VI- 2921 29.21 Amine-function compounds -1 ACYCLIC MONOAMINES",
+"chuaChac": true
 },
 {
 "tu": "2942",
 "den": "2922",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2942.244",
-"trich": "Oxygen-function amino- 29.22 compounds AMINO-ALCOHOLS, THEIR"
+"trich": "Oxygen-function amino- 29.22 compounds AMINO-ALCOHOLS, THEIR",
+"chuaChac": true
 },
 {
 "tu": "2942",
 "den": "2923",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2942.256",
-"trich": "Quaternary ammonium salts and hydroxides; lecithins and other 29.23 phosphoaminolipids, whether or not chemically defined VI- 2923 (1) Choline (Choline hydroxide) -1"
+"trich": "Quaternary ammonium salts and hydroxides; lecithins and other 29.23 phosphoaminolipids, whether or not chemically defined VI- 2923 (1) Choline (Choline hydroxide) -1",
+"chuaChac": true
 },
 {
 "tu": "2942",
 "den": "2924",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2942.258",
-"trich": "Carboxyamide-function 29.24 compounds; amide-function compounds of carbonic acid"
+"trich": "Carboxyamide-function 29.24 compounds; amide-function compounds of carbonic acid",
+"chuaChac": true
 },
 {
 "tu": "2942",
 "den": "2925",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2942.260",
-"trich": "VI- 2924 (1) (ii) Diethyldiphenylurea -2 Carboxy imide-function compounds (including saccharin 29.25 and its salts) and imine-function compounds"
+"trich": "VI- 2924 (1) (ii) Diethyldiphenylurea -2 Carboxy imide-function compounds (including saccharin 29.25 and its salts) and imine-function compounds",
+"chuaChac": true
 },
 {
 "tu": "2942",
 "den": "2926",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2942.268",
-"trich": "29.26 Nitrile-function compounds"
+"trich": "29.26 Nitrile-function compounds",
+"chuaChac": true
 },
 {
 "tu": "2942",
 "den": "2927",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2942.271",
-"trich": "(VI- (19 alpha-Phenylacetoacetonitrile 2926 (29.26) ) (APAAN) -1) Diazo-, azo- or azoxy- 29.27 compounds"
+"trich": "(VI- (19 alpha-Phenylacetoacetonitrile 2926 (29.26) ) (APAAN) -1) Diazo-, azo- or azoxy- 29.27 compounds",
+"chuaChac": true
 },
 {
 "tu": "2942",
 "den": "2928",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2942.277",
-"trich": "Organic derivatives of hydrazine 29.28 or of hydroxylamine"
+"trich": "Organic derivatives of hydrazine 29.28 or of hydroxylamine",
+"chuaChac": true
 },
 {
 "tu": "2942",
 "den": "2929",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2942.280",
-"trich": "Compounds with other nitrogen 29.29 function VI- 2929 (1) Isocyanates -1 ORGANO-INORGANIC COMPOUNDS, S-Ch. X HETEROCYCLIC General COMPOUNDS, NUCLEIC ACIDS AND THEIR SALTS"
+"trich": "Compounds with other nitrogen 29.29 function VI- 2929 (1) Isocyanates -1 ORGANO-INORGANIC COMPOUNDS, S-Ch. X HETEROCYCLIC General COMPOUNDS, NUCLEIC ACIDS AND THEIR SALTS",
+"chuaChac": true
 },
 {
 "tu": "2942",
 "den": "2930",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2942.324",
-"trich": "Compounds with C-S 29.30 Organo-sulphur compounds bond VI- DITHIOCARBONATES ROC(S)SR1 R1 = Metal 2930 (A) (XANTHATES) or an organic radical -3"
+"trich": "Compounds with C-S 29.30 Organo-sulphur compounds bond VI- DITHIOCARBONATES ROC(S)SR1 R1 = Metal 2930 (A) (XANTHATES) or an organic radical -3",
+"chuaChac": true
 },
 {
 "tu": "2942",
 "den": "2931",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2942.333",
-"trich": "Other organo-inorganic 29.31 compounds VI- Compounds with C-P 2931 (3) Organo-phosphorus compounds bond -1"
+"trich": "Other organo-inorganic 29.31 compounds VI- Compounds with C-P 2931 (3) Organo-phosphorus compounds bond -1",
+"chuaChac": true
 },
 {
 "tu": "2942",
 "den": "2933",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2942.354",
-"trich": "Pa Head Description in the Explanatory Paragraph Chemical Structure ge ing Notes Heterocyclic compounds with 29.33 nitrogen hetero-atom(s) only Compounds containing an (See structure of pyrazole VI- unfused pyrazole ring (whether against page VI-293"
+"trich": "Pa Head Description in the Explanatory Paragraph Chemical Structure ge ing Notes Heterocyclic compounds with 29.33 nitrogen hetero-atom(s) only Compounds containing an (See structure of pyrazole VI- unfused pyrazole ring (whether against page VI-293",
+"chuaChac": true
 },
 {
 "tu": "2942",
 "den": "2934",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2942.376",
-"trich": "Nucleic acids and their salts, 29.34 whether or not chemically"
+"trich": "Nucleic acids and their salts, 29.34 whether or not chemically",
+"chuaChac": true
 },
 {
 "tu": "2942",
 "den": "2935",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2942.384",
-"trich": "VI- 2935 29.35 Sulphonamides -1"
+"trich": "VI- 2935 29.35 Sulphonamides -1",
+"chuaChac": true
 },
 {
 "tu": "2942",
 "den": "2937",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2942.388",
-"trich": "Hormones, prostaglandins, thromboxanes and leukotrienes, natural or reproduced by synthesis; derivatives and 29.37 structural analogues thereof, including chain modified polypeptides, used primarily as hormones Analogues of hormones,"
+"trich": "Hormones, prostaglandins, thromboxanes and leukotrienes, natural or reproduced by synthesis; derivatives and 29.37 structural analogues thereof, including chain modified polypeptides, used primarily as hormones Analogues of hormones,",
+"chuaChac": true
 },
 {
 "tu": "2942",
 "den": "2938",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2942.406",
-"trich": "(Glycosides, natural or reproduced by synthesis, and 29.38 their salts, ethers, esters and other derivatives"
+"trich": "(Glycosides, natural or reproduced by synthesis, and 29.38 their salts, ethers, esters and other derivatives",
+"chuaChac": true
 },
 {
 "tu": "2942",
 "den": "2939",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2942.409",
-"trich": "Vegetable alkaloids, natural or reproduced by synthesis, and 29.39 their salts, ethers, esters and other derivatives ALKALOIDS OF OPIUM AND"
+"trich": "Vegetable alkaloids, natural or reproduced by synthesis, and 29.39 their salts, ethers, esters and other derivatives ALKALOIDS OF OPIUM AND",
+"chuaChac": true
 },
 {
 "tu": "2942",
 "den": "2940",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2942.425",
-"trich": "(IJ) coccinelline (insect), varacin (marine) and procyanine (bacterial) Sugars, chemically pure, other than sucrose, lactose, maltose, glucose and fructose; sugar 29.40 ethers, sugar acetals and sugar esters, and their salts, other than products of heading 29.37, 29.38 or 29.39 SUGARS, CHEMICALLY"
+"trich": "(IJ) coccinelline (insect), varacin (marine) and procyanine (bacterial) Sugars, chemically pure, other than sucrose, lactose, maltose, glucose and fructose; sugar 29.40 ethers, sugar acetals and sugar esters, and their salts, other than products of heading 29.37, 29.38 or 29.39 SUGARS, CHEMICALLY",
+"chuaChac": true
 },
 {
 "tu": "2942",
 "den": "2941",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.2942.432",
-"trich": "29.41 Antibiotics"
+"trich": "29.41 Antibiotics",
+"chuaChac": true
 },
 {
 "tu": "3003",
 "den": "1211",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.3003.9",
-"trich": "(6) Hỗn hợp dùng làm thuốc của các cây hoặc các bộ phận của cây thuộc nhóm 12.11."
+"trich": "(6) Hỗn hợp dùng làm thuốc của các cây hoặc các bộ phận của cây thuộc nhóm 12.11.",
+"chuaChac": true
 },
 {
 "tu": "3003",
 "den": "2802",
-"quanHe": "PHAN_BIET",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.3003.7",
-"trich": "o lưu huỳnh được phân loại vào nhóm 30.04 nếu như đã được đóng gói theo liều lượng hoặc đóng gói để bán lẻ với mục đích sử dụng để phòng bệnh hoặc chữa bệnh, còn trong tất cả các trường hợp khác nó sẽ được phân vào nhóm 28.02. Keo kim loại quý dạng đơn được phân loại vào nhóm 28.43 cho dù có dùng làm thuốc hay không. Tuy nhiên, hỗn hợp keo các kim loại quý h"
+"trich": "o lưu huỳnh được phân loại vào nhóm 30.04 nếu như đã được đóng gói theo liều lượng hoặc đóng gói để bán lẻ với mục đích sử dụng để phòng bệnh hoặc chữa bệnh, còn trong tất cả các trường hợp khác nó sẽ được phân vào nhóm 28.02. Keo kim loại quý dạng đơn được phân loại vào nhóm 28.43 cho dù có dùng làm thuốc hay không. Tuy nhiên, hỗn hợp keo các kim loại quý h",
+"chuaChac": true
 },
 {
 "tu": "3003",
@@ -1525,37 +1595,42 @@
 {
 "tu": "3102",
 "den": "3105",
-"quanHe": "PHAN_BIET",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.3102.1",
-"trich": "Nhóm này chỉ áp dụng cho các mặt hàng sau, với điều kiện chúng không tạo thành dạng nhất định hoặc đóng gói sẵn như đã mô tả trong nhóm 31.05:"
+"trich": "Nhóm này chỉ áp dụng cho các mặt hàng sau, với điều kiện chúng không tạo thành dạng nhất định hoặc đóng gói sẵn như đã mô tả trong nhóm 31.05:",
+"chuaChac": true
 },
 {
 "tu": "3103",
 "den": "3105",
-"quanHe": "PHAN_BIET",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.3103.1",
-"trich": "Nhóm này chỉ áp dụng cho các mặt hàng sau, với điều kiện chúng không tạo thành dạng hoặc đóng gói như mô tả trong nhóm 31.05:"
+"trich": "Nhóm này chỉ áp dụng cho các mặt hàng sau, với điều kiện chúng không tạo thành dạng hoặc đóng gói như mô tả trong nhóm 31.05:",
+"chuaChac": true
 },
 {
 "tu": "3104",
 "den": "3105",
-"quanHe": "PHAN_BIET",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.3104.1",
-"trich": "Nhóm này chỉ áp dụng cho các loại hàng hóa, với điều kiện chúng không được tạo thành dạng hoặc được đóng gói như mô tả ở nhóm 31.05:"
+"trich": "Nhóm này chỉ áp dụng cho các loại hàng hóa, với điều kiện chúng không được tạo thành dạng hoặc được đóng gói như mô tả ở nhóm 31.05:",
+"chuaChac": true
 },
 {
 "tu": "3105",
 "den": "3102",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.3105.3",
-"trich": "Cần lưu ý rằng, nhóm này không bao gồm những hợp chất hóa học đã được xác định về mặt hóa học không được ghi trong nhóm từ 31.02 đến 31.04 ngay cả khi chúng được sử dụng như là phân bón (ví dụ, nitrat kali (nhóm 28.34), kali phosphat (nhóm 28.35))."
+"trich": "Cần lưu ý rằng, nhóm này không bao gồm những hợp chất hóa học đã được xác định về mặt hóa học không được ghi trong nhóm từ 31.02 đến 31.04 ngay cả khi chúng được sử dụng như là phân bón (ví dụ, nitrat kali (nhóm 28.34), kali phosphat (nhóm 28.35)).",
+"chuaChac": true
 },
 {
 "tu": "3105",
 "den": "3104",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.3105.3",
-"trich": "Cần lưu ý rằng, nhóm này không bao gồm những hợp chất hóa học đã được xác định về mặt hóa học không được ghi trong nhóm từ 31.02 đến 31.04 ngay cả khi chúng được sử dụng như là phân bón (ví dụ, nitrat kali (nhóm 28.34), kali phosphat (nhóm 28.35))."
+"trich": "Cần lưu ý rằng, nhóm này không bao gồm những hợp chất hóa học đã được xác định về mặt hóa học không được ghi trong nhóm từ 31.02 đến 31.04 ngay cả khi chúng được sử dụng như là phân bón (ví dụ, nitrat kali (nhóm 28.34), kali phosphat (nhóm 28.35)).",
+"chuaChac": true
 },
 {
 "tu": "3204",
@@ -1588,9 +1663,10 @@
 {
 "tu": "3206",
 "den": "3815",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.3206.10",
-"trich": "được xếp vào nhóm khác (ví dụ, nhóm 38.15, 38.24). Dioxit titan không được xử lý bề mặt và không được trộn lẫn được phân loại vào nhóm 28.23."
+"trich": "được xếp vào nhóm khác (ví dụ, nhóm 38.15, 38.24). Dioxit titan không được xử lý bề mặt và không được trộn lẫn được phân loại vào nhóm 28.23.",
+"chuaChac": true
 },
 {
 "tu": "3208",
@@ -1609,9 +1685,10 @@
 {
 "tu": "3301",
 "den": "3202",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.3301.18",
-"trich": "ược chiết xuất được cắt phân đoạn hoặc biến đổi khác (trừ quá trình khử terpenic hydrocarbon), đến mức thành phần của sản phẩm được tạo ra cho thấy rõ sự khác biệt so với sản phẩm gốc, thì bị loại trừ (thường thuộc nhóm 32.02). Nhóm này cũng loại trừ các chế phẩm được đóng gói với chất pha loãng hoặc các chất mang như là dầu thực vật, dextroza hoặc tinh bột"
+"trich": "ược chiết xuất được cắt phân đoạn hoặc biến đổi khác (trừ quá trình khử terpenic hydrocarbon), đến mức thành phần của sản phẩm được tạo ra cho thấy rõ sự khác biệt so với sản phẩm gốc, thì bị loại trừ (thường thuộc nhóm 32.02). Nhóm này cũng loại trừ các chế phẩm được đóng gói với chất pha loãng hoặc các chất mang như là dầu thực vật, dextroza hoặc tinh bột",
+"chuaChac": true
 },
 {
 "tu": "3303",
@@ -1637,9 +1714,10 @@
 {
 "tu": "3307",
 "den": "3805",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.3307.23",
-"trich": "p Pennyroyal Bitter almond Hyacinth Pepper, black Bitter orange Hyssop Peppermint Bois de rose Jasmine Petitgrain Broom Jonquil Pimento Cajuput Juniper (Allspice) Pine needle (but not pinewood - heading Calamus Kuromoji 38.05) Camphor Laurel Rose Cananga Lavandin Rosemary Canella Lavender Rue Cara way Lemon Sage Cassia Lemongrass Sandalwood Cassie Lime (Lime"
+"trich": "p Pennyroyal Bitter almond Hyacinth Pepper, black Bitter orange Hyssop Peppermint Bois de rose Jasmine Petitgrain Broom Jonquil Pimento Cajuput Juniper (Allspice) Pine needle (but not pinewood - heading Calamus Kuromoji 38.05) Camphor Laurel Rose Cananga Lavandin Rosemary Canella Lavender Rue Cara way Lemon Sage Cassia Lemongrass Sandalwood Cassie Lime (Lime",
+"chuaChac": true
 },
 {
 "tu": "3404",
@@ -1658,35 +1736,35 @@
 {
 "tu": "3506",
 "den": "3901",
-"quanHe": "LOAI_TRU",
+"quanHe": "NGUYEN_LIEU",
 "nguon": "ct.3506.10",
 "trich": "(4) Các chế phẩm được pha chế đặc biệt dùng như chất dính, bao gồm các polyme hoặc các hỗn hợp của chúng thuộc các nhóm từ 39.01 đến 39.13, ngoài các chất được cho phép thêm vào các sản phẩm thuộc Chương 39 (chất độn, chất hóa dẻo plastic, dung môi, thuốc mầu, vv"
 },
 {
 "tu": "3506",
 "den": "3913",
-"quanHe": "LOAI_TRU",
+"quanHe": "NGUYEN_LIEU",
 "nguon": "ct.3506.10",
 "trich": "(4) Các chế phẩm được pha chế đặc biệt dùng như chất dính, bao gồm các polyme hoặc các hỗn hợp của chúng thuộc các nhóm từ 39.01 đến 39.13, ngoài các chất được cho phép thêm vào các sản phẩm thuộc Chương 39 (chất độn, chất hóa dẻo plastic, dung môi, thuốc mầu, vv...), có c"
 },
 {
 "tu": "3704",
 "den": "3702",
-"quanHe": "PHAN_BIET",
+"quanHe": "NGUYEN_LIEU",
 "nguon": "ct.3704.1",
 "trich": "Nhóm này bao gồm tấm, phim, giấy, bìa và vật liệu dệt để tạo ảnh được đề cập trong nhóm 37.01, 37.02 hoặc 37.03, với điều kiện những loại này đã phơi sáng nhưng chưa tráng. Những loại này có thể là âm bản hoặc dương bản (có thể đảo ngư"
 },
 {
 "tu": "3705",
 "den": "3701",
-"quanHe": "PHAN_BIET",
+"quanHe": "NGUYEN_LIEU",
 "nguon": "ct.3705.1",
 "trich": "Nhóm này bao gồm tấm để tạo ảnh và phim tạo ảnh thuộc nhóm 37.01 hoặc 37.02 sau khi phơi sáng và đã tráng, với điều kiện là, nếu có các dãy lỗ kéo phim, chúng thuộc loại dùng để sao lại hoặc chiếu nh"
 },
 {
 "tu": "3705",
 "den": "3702",
-"quanHe": "PHAN_BIET",
+"quanHe": "NGUYEN_LIEU",
 "nguon": "ct.3705.1",
 "trich": "Nhóm này bao gồm tấm để tạo ảnh và phim tạo ảnh thuộc nhóm 37.01 hoặc 37.02 sau khi phơi sáng và đã tráng, với điều kiện là, nếu có các dãy lỗ kéo phim, chúng thuộc loại dùng để sao lại hoặc chiếu những hình ản"
 },
@@ -1777,28 +1855,28 @@
 {
 "tu": "3909",
 "den": "3916",
-"quanHe": "PHAN_BIET",
+"quanHe": "LOAI_TRU",
 "nguon": "ct.3909.11",
 "trich": "ác resitol ở dạng bột đúc khuôn, và cuối cùng, sau khi phản ứng kết thúc, là các resite, thông thường ở dạng thành phẩm chẳng hạn như dạng tấm, phiến, que, ống hoặc các sản phẩm khác, nói chung được phân loại ở các nhóm 39.16 đến 39.26."
 },
 {
 "tu": "3909",
 "den": "3926",
-"quanHe": "PHAN_BIET",
+"quanHe": "LOAI_TRU",
 "nguon": "ct.3909.11",
 "trich": "ở dạng bột đúc khuôn, và cuối cùng, sau khi phản ứng kết thúc, là các resite, thông thường ở dạng thành phẩm chẳng hạn như dạng tấm, phiến, que, ống hoặc các sản phẩm khác, nói chung được phân loại ở các nhóm 39.16 đến 39.26."
 },
 {
 "tu": "3910",
 "den": "2710",
-"quanHe": "NGUYEN_LIEU",
+"quanHe": "LOAI_TRU",
 "nguon": "ct.3910.3",
 "trich": "Các chế phẩm bôi trơn bao gồm các hỗn hợp chứa dầu hoặc mỡ silicon thuộc nhóm 27.10 hoặc 34.03 tùy từng trường hợp cụ thể (xem phần Chú giải chi tiết tương ứng)."
 },
 {
 "tu": "3910",
 "den": "3403",
-"quanHe": "NGUYEN_LIEU",
+"quanHe": "LOAI_TRU",
 "nguon": "ct.3910.3",
 "trich": "Các chế phẩm bôi trơn bao gồm các hỗn hợp chứa dầu hoặc mỡ silicon thuộc nhóm 27.10 hoặc 34.03 tùy từng trường hợp cụ thể (xem phần Chú giải chi tiết tương ứng)."
 },
@@ -1896,7 +1974,7 @@
 {
 "tu": "4002",
 "den": "3911",
-"quanHe": "PHAN_BIET",
+"quanHe": "LOAI_TRU",
 "nguon": "ct.4002.16",
 "trich": "Không nên nhầm lẫn chúng với polysulphides thuộc nhóm 39.11 (xem Chú giải nhóm đó)."
 },
@@ -1938,9 +2016,10 @@
 {
 "tu": "4106",
 "den": "4104",
-"quanHe": "PHAN_BIET",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.4106.5",
-"trich": "Nhóm này cũng bao gồm da sống không có lông hoặc đã khử lông của tất cả các loại động vật chưa đề cập đến trong các nhóm 41.04 và 41.05, chúng được gia công cùng cách như da sống và da, bì của những nhóm đó (xem Chú giải Tổng quát của Chương này)."
+"trich": "Nhóm này cũng bao gồm da sống không có lông hoặc đã khử lông của tất cả các loại động vật chưa đề cập đến trong các nhóm 41.04 và 41.05, chúng được gia công cùng cách như da sống và da, bì của những nhóm đó (xem Chú giải Tổng quát của Chương này).",
+"chuaChac": true
 },
 {
 "tu": "4106",
@@ -1952,28 +2031,31 @@
 {
 "tu": "4113",
 "den": "4107",
-"quanHe": "PHAN_BIET",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.4113.4",
-"trich": "Nhóm này cũng bao gồm sản phẩm da thuộc từ da sống không có lông hoặc đã khử lông của tất cả các loại động vật chưa đề cập đến trong các nhóm 41.07 và 41.12, chúng được gia công cùng cách với da sống của những nhóm đó (xem Chú giải Tổng quát của Chương này)."
+"trich": "Nhóm này cũng bao gồm sản phẩm da thuộc từ da sống không có lông hoặc đã khử lông của tất cả các loại động vật chưa đề cập đến trong các nhóm 41.07 và 41.12, chúng được gia công cùng cách với da sống của những nhóm đó (xem Chú giải Tổng quát của Chương này).",
+"chuaChac": true
 },
 {
 "tu": "4205",
 "den": "4114",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.4205.8",
-"trich": "ng dầu với mép có răng cưa hoặc được ráp lại (tuy nhiên, da thuộc đã xử lý bề mặt bằng dầu không bị cắt thành hình dạng đặc biệt hoặc với mép có răng cưa, ví dụ, cho việc sử dụng như vật lau bụi, được phân loại vào nhóm 41.14); dụng cụ đánh bóng móng tay được bọc với da hoẵng; các miếng được cắt thành hình dạng cho các mặt hàng bằng da thuộc hoặc da thuộc tổ"
+"trich": "ng dầu với mép có răng cưa hoặc được ráp lại (tuy nhiên, da thuộc đã xử lý bề mặt bằng dầu không bị cắt thành hình dạng đặc biệt hoặc với mép có răng cưa, ví dụ, cho việc sử dụng như vật lau bụi, được phân loại vào nhóm 41.14); dụng cụ đánh bóng móng tay được bọc với da hoẵng; các miếng được cắt thành hình dạng cho các mặt hàng bằng da thuộc hoặc da thuộc tổ",
+"chuaChac": true
 },
 {
 "tu": "4205",
 "den": "8448",
-"quanHe": "NGUYEN_LIEU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.4205.5",
-"trich": "(2) Đai treo, miếng đệm, lược chải bằng da thuộc dùng cho máy cuộn bông, vải nền kim chải bằng da thuộc (vải nền kim chải có gắn kim thuộc nhóm 84.48), dây đai go và các mặt hàng bằng da thuộc khác dùng cho máy dệt vải; bánh, vòng bịt, vòng đệm,"
+"trich": "(2) Đai treo, miếng đệm, lược chải bằng da thuộc dùng cho máy cuộn bông, vải nền kim chải bằng da thuộc (vải nền kim chải có gắn kim thuộc nhóm 84.48), dây đai go và các mặt hàng bằng da thuộc khác dùng cho máy dệt vải; bánh, vòng bịt, vòng đệm,",
+"chuaChac": true
 },
 {
 "tu": "4301",
 "den": "0102",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.4301.2",
 "trich": "(a) Động vật họ trâu bò (kể cả trâu) (tức là, động vật thuộc nhóm 01.02, xem Chú giải chi tiết của nhóm đó)."
 },
@@ -1994,9 +2076,10 @@
 {
 "tu": "4302",
 "den": "4301",
-"quanHe": "PHAN_BIET",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.4302.7",
-"trich": "Cần chú ý rằng da còn lông các loại, bị loại trừ khỏi nhóm 43.01 (như da ngựa loại nhỏ, da bê và da cừu), thuộc nhóm này nếu đã thuộc hoặc chuội."
+"trich": "Cần chú ý rằng da còn lông các loại, bị loại trừ khỏi nhóm 43.01 (như da ngựa loại nhỏ, da bê và da cừu), thuộc nhóm này nếu đã thuộc hoặc chuội.",
+"chuaChac": true
 },
 {
 "tu": "4405",
@@ -2015,9 +2098,10 @@
 {
 "tu": "4410",
 "den": "4409",
-"quanHe": "PHAN_BIET",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.4410.13",
-"trich": "Các sản phẩm thuộc nhóm này vẫn được phân loại ở đây dù chúng đã hay chưa được gia công để tạo thành các hình dạng được quy định đối với các mặt hàng của nhóm 44.09, được uốn cong, tạo sóng, đục lỗ, được cắt hoặc tạo thành các hình dáng trừ hình vuông hay hình chữ nhật và dù chúng đã hoặc chưa bị g"
+"trich": "Các sản phẩm thuộc nhóm này vẫn được phân loại ở đây dù chúng đã hay chưa được gia công để tạo thành các hình dạng được quy định đối với các mặt hàng của nhóm 44.09, được uốn cong, tạo sóng, đục lỗ, được cắt hoặc tạo thành các hình dáng trừ hình vuông hay hình chữ nhật và dù chúng đã hoặc chưa bị g",
+"chuaChac": true
 },
 {
 "tu": "4414",
@@ -2050,9 +2134,10 @@
 {
 "tu": "4504",
 "den": "4503",
-"quanHe": "NGUYEN_LIEU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.4504.6",
-"trich": "Lie kết dính được sử dụng để làm ra các sản phẩm cùng loại như các sản phẩm đã nêu trong nhóm 45.03 nhưng, trong khi nó hiếm khi được sử dụng để làm nút, nắp đậy, nó được dùng thường xuyên hơn lie tự nhiên để làm đệm tròn lót dưới các"
+"trich": "Lie kết dính được sử dụng để làm ra các sản phẩm cùng loại như các sản phẩm đã nêu trong nhóm 45.03 nhưng, trong khi nó hiếm khi được sử dụng để làm nút, nắp đậy, nó được dùng thường xuyên hơn lie tự nhiên để làm đệm tròn lót dưới các",
+"chuaChac": true
 },
 {
 "tu": "4801",
@@ -2134,16 +2219,18 @@
 {
 "tu": "4810",
 "den": "4821",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.4810.3",
-"trich": "Nếu chúng bị cắt thành bất kỳ hình dạng nào khác, chúng thuộc các nhóm sau của Chương này (ví dụ, 48.17, 48.21 hoặc 48.23)."
+"trich": "Nếu chúng bị cắt thành bất kỳ hình dạng nào khác, chúng thuộc các nhóm sau của Chương này (ví dụ, 48.17, 48.21 hoặc 48.23).",
+"chuaChac": true
 },
 {
 "tu": "4817",
 "den": "4823",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.4817.5",
-"trich": "Thẻ trơn không được gia công như vậy thì được phân loại vào nhóm 48.02, 48.10, 4811 hoặc 48.23, tuỳ trường hợp cụ thể."
+"trich": "Thẻ trơn không được gia công như vậy thì được phân loại vào nhóm 48.02, 48.10, 4811 hoặc 48.23, tuỳ trường hợp cụ thể.",
+"chuaChac": true
 },
 {
 "tu": "4820",
@@ -2197,7 +2284,7 @@
 {
 "tu": "5001",
 "den": "5002",
-"quanHe": "DAN_CHIEU",
+"quanHe": "NGUYEN_LIEU",
 "nguon": "ct.5001.1",
 "trich": "Nhóm này chỉ áp dụng cho những loại kén có thể quay tơ cho loại tơ thô như đã phân loại trong nhóm 50.02, loại trừ kén không quay tơ được (nhóm 50.03)."
 },
@@ -2500,7 +2587,8 @@
 "den": "5606",
 "quanHe": "DAN_CHIEU",
 "nguon": "ct.5702.10",
-"trich": "Đặc tính chính của chúng là bề mặt nổi vòng được sản xuất bằng việc sử dụng các loại sợi sơnin (xem Chú giải chi tiết nhóm 56.06). Các loại sợi này có thể được dùng như một sản phẩm dệt ngang bổ sung vào theo cách thông thường; trong một số trường hợp các đoạn sợ"
+"trich": "Đặc tính chính của chúng là bề mặt nổi vòng được sản xuất bằng việc sử dụng các loại sợi sơnin (xem Chú giải chi tiết nhóm 56.06). Các loại sợi này có thể được dùng như một sản phẩm dệt ngang bổ sung vào theo cách thông thường; trong một số trường hợp các đoạn sợ",
+"chuaChac": true
 },
 {
 "tu": "5702",
@@ -2526,9 +2614,10 @@
 {
 "tu": "5801",
 "den": "5702",
-"quanHe": "PHAN_BIET",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.5801.10",
-"trich": "Vải sơnin rất giống với loại thảm sơnin thuộc nhóm 57.02; giống như những loại này, bề mặt nổi vòng của chúng (thường là cả hai mặt) được sản xuất bằng sợi bằng sợi sơnin. Thông thường, chúng"
+"trich": "Vải sơnin rất giống với loại thảm sơnin thuộc nhóm 57.02; giống như những loại này, bề mặt nổi vòng của chúng (thường là cả hai mặt) được sản xuất bằng sợi bằng sợi sơnin. Thông thường, chúng",
+"chuaChac": true
 },
 {
 "tu": "5806",
@@ -2638,44 +2727,48 @@
 {
 "tu": "6106",
 "den": "5903",
-"quanHe": "NGUYEN_LIEU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.6106.9",
-"trich": "(b) Áo được làm từ các loại vải thuộc các nhóm 59.03, 59.06 hoặc 59.07 (nhóm 61.13)."
+"trich": "(b) Áo được làm từ các loại vải thuộc các nhóm 59.03, 59.06 hoặc 59.07 (nhóm 61.13).",
+"chuaChac": true
 },
 {
 "tu": "6106",
 "den": "5906",
-"quanHe": "NGUYEN_LIEU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.6106.9",
-"trich": "(b) Áo được làm từ các loại vải thuộc các nhóm 59.03, 59.06 hoặc 59.07 (nhóm 61.13)."
+"trich": "(b) Áo được làm từ các loại vải thuộc các nhóm 59.03, 59.06 hoặc 59.07 (nhóm 61.13).",
+"chuaChac": true
 },
 {
 "tu": "6106",
 "den": "5907",
-"quanHe": "NGUYEN_LIEU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.6106.9",
-"trich": "(b) Áo được làm từ các loại vải thuộc các nhóm 59.03, 59.06 hoặc 59.07 (nhóm 61.13)."
+"trich": "(b) Áo được làm từ các loại vải thuộc các nhóm 59.03, 59.06 hoặc 59.07 (nhóm 61.13).",
+"chuaChac": true
 },
 {
 "tu": "6106",
 "den": "6102",
-"quanHe": "PHAN_BIET",
+"quanHe": "LOAI_TRU",
 "nguon": "ct.6106.6",
 "trich": "- Có dây thắt lưng kẻ gân nổi hoặc có dây, đai khác thắt ở gấu áo, hoặc có trung bình dưới 10 mũi khâu/1 cm dài theo mỗi chiều; nhóm 61.02 hoặc 61.10."
 },
 {
 "tu": "6106",
 "den": "6104",
-"quanHe": "PHAN_BIET",
+"quanHe": "LOAI_TRU",
 "nguon": "ct.6106.5",
 "trich": "- Có túi ở phía dưới thắt lưng; như áo jacket thuộc nhóm 61.04, hoặc áo (cardigan) thuộc nhóm 61.10."
 },
 {
 "tu": "6113",
 "den": "5811",
-"quanHe": "NGUYEN_LIEU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.6113.5",
-"trich": "(a) Quần áo được may từ các sản phẩm dệt đã chần dạng chiếc thuộc nhóm 58.11 (thường thuộc các nhóm 61.01 hoặc 61.02). Xem Chú giải phân nhóm ở cuối phần Chú giải tổng quát của Chương này."
+"trich": "(a) Quần áo được may từ các sản phẩm dệt đã chần dạng chiếc thuộc nhóm 58.11 (thường thuộc các nhóm 61.01 hoặc 61.02). Xem Chú giải phân nhóm ở cuối phần Chú giải tổng quát của Chương này.",
+"chuaChac": true
 },
 {
 "tu": "6113",
@@ -2771,9 +2864,10 @@
 {
 "tu": "6210",
 "den": "5811",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.6210.6",
-"trich": "(b) Áo quần làm từ các sản phẩm dệt đã chần ở dạng chiếc thuộc nhóm 58.11 (thường được phân loại vào nhóm 62.01 hoặc 62.02). Xem Chú giải phân nhóm ở cuối phần"
+"trich": "(b) Áo quần làm từ các sản phẩm dệt đã chần ở dạng chiếc thuộc nhóm 58.11 (thường được phân loại vào nhóm 62.01 hoặc 62.02). Xem Chú giải phân nhóm ở cuối phần",
+"chuaChac": true
 },
 {
 "tu": "6210",
@@ -2855,7 +2949,7 @@
 {
 "tu": "6404",
 "den": "6403",
-"quanHe": "PHAN_BIET",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.6404.1",
 "trich": "iày, dép có phần mũ (xem Chú giải tổng quát, Phần (D)) được làm bằng vật liệu dệt và có đế ngoài (xem Chú giải tổng quát, Phần (C)) được làm bằng các loại vật liệu giống các vật liệu dùng làm đế của giày, dép thuộc nhóm 64.03 (xem Chú giải của nhóm đó)."
 },
@@ -2904,16 +2998,18 @@
 {
 "tu": "6903",
 "den": "6911",
-"quanHe": "PHAN_BIET",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.6903.10",
-"trich": ".v) và việc phân loại không bị ảnh hưởng bởi bản chất của các sản phẩm gốm, sứ được dùng trong quá trình sản xuất chúng, ngoại trừ trường hợp bộ đồ ăn, bộ đồ nhà bếp, đồ gia dụng và đồ sứ vệ sinh khác, được xếp vào nhóm 69.11 khi bằng sứ (china) và nhóm 69.12 nếu thuộc loại đồ gốm, sứ khác."
+"trich": ".v) và việc phân loại không bị ảnh hưởng bởi bản chất của các sản phẩm gốm, sứ được dùng trong quá trình sản xuất chúng, ngoại trừ trường hợp bộ đồ ăn, bộ đồ nhà bếp, đồ gia dụng và đồ sứ vệ sinh khác, được xếp vào nhóm 69.11 khi bằng sứ (china) và nhóm 69.12 nếu thuộc loại đồ gốm, sứ khác.",
+"chuaChac": true
 },
 {
 "tu": "6903",
 "den": "6912",
-"quanHe": "PHAN_BIET",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.6903.10",
-"trich": "hưởng bởi bản chất của các sản phẩm gốm, sứ được dùng trong quá trình sản xuất chúng, ngoại trừ trường hợp bộ đồ ăn, bộ đồ nhà bếp, đồ gia dụng và đồ sứ vệ sinh khác, được xếp vào nhóm 69.11 khi bằng sứ (china) và nhóm 69.12 nếu thuộc loại đồ gốm, sứ khác."
+"trich": "hưởng bởi bản chất của các sản phẩm gốm, sứ được dùng trong quá trình sản xuất chúng, ngoại trừ trường hợp bộ đồ ăn, bộ đồ nhà bếp, đồ gia dụng và đồ sứ vệ sinh khác, được xếp vào nhóm 69.11 khi bằng sứ (china) và nhóm 69.12 nếu thuộc loại đồ gốm, sứ khác.",
+"chuaChac": true
 },
 {
 "tu": "6907",
@@ -2967,9 +3063,10 @@
 {
 "tu": "7004",
 "den": "7003",
-"quanHe": "PHAN_BIET",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.7004.3",
-"trich": "Nhìn chung, kính thuộc nhóm này có thể có các độ dày khác nhau nhưng mỏng hơn so với thủy tinh đúc thuộc nhóm 70.03. Loại này có thể được phủ màu hoặc làm mờ đục toàn bộ, hoặc được tráng lớp phản chiếu với thủy tinh có màu khác khi gia công hoặc có t"
+"trich": "Nhìn chung, kính thuộc nhóm này có thể có các độ dày khác nhau nhưng mỏng hơn so với thủy tinh đúc thuộc nhóm 70.03. Loại này có thể được phủ màu hoặc làm mờ đục toàn bộ, hoặc được tráng lớp phản chiếu với thủy tinh có màu khác khi gia công hoặc có t",
+"chuaChac": true
 },
 {
 "tu": "7005",
@@ -3044,9 +3141,10 @@
 {
 "tu": "7017",
 "den": "7018",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.7017.10",
-"trich": "70.18 - Hạt bi thủy tinh, thủy tinh giả ngọc trai, thủy tinh giả đá quý hoặc đá bán quý và các đồ vật nhỏ tương tự bằng thủy tinh, và các sả"
+"trich": "70.18 - Hạt bi thủy tinh, thủy tinh giả ngọc trai, thủy tinh giả đá quý hoặc đá bán quý và các đồ vật nhỏ tương tự bằng thủy tinh, và các sả",
+"chuaChac": true
 },
 {
 "tu": "7017",
@@ -3184,79 +3282,90 @@
 {
 "tu": "7114",
 "den": "7113",
-"quanHe": "PHAN_BIET",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.7114.2",
-"trich": "Nói chung những hàng hóa này nhiều hơn các đồ kim hoàn thuộc nhóm 71.13; bao gồm:"
+"trich": "Nói chung những hàng hóa này nhiều hơn các đồ kim hoàn thuộc nhóm 71.13; bao gồm:",
+"chuaChac": true
 },
 {
 "tu": "7118",
 "den": "7103",
-"quanHe": "NGUYEN_LIEU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.7118.15",
-"trich": "Danh mục các loại đá quý hoặc bán quý được xếp trong nhóm 71.03"
+"trich": "Danh mục các loại đá quý hoặc bán quý được xếp trong nhóm 71.03",
+"chuaChac": true
 },
 {
 "tu": "7205",
 "den": "7206",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.7205.23",
-"trich": "(1) Thỏi đúc hoặc các dạng thô khác như thanh, cọc, khối, cục bao gồm cả thép ở trạng thái nấu chảy (nhóm 72.06)."
+"trich": "(1) Thỏi đúc hoặc các dạng thô khác như thanh, cọc, khối, cục bao gồm cả thép ở trạng thái nấu chảy (nhóm 72.06).",
+"chuaChac": true
 },
 {
 "tu": "7205",
 "den": "7207",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.7205.24",
-"trich": "(2) Bán thành phẩm như cán thô, phôi thanh, cốt thép tròn, tấm, thanh, mảnh được tạo hình thô bằng phương pháp rèn, kể cả phôi để tạo các sản phẩm dạng góc, khuôn hoặc hình (nhóm 72.07)."
+"trich": "(2) Bán thành phẩm như cán thô, phôi thanh, cốt thép tròn, tấm, thanh, mảnh được tạo hình thô bằng phương pháp rèn, kể cả phôi để tạo các sản phẩm dạng góc, khuôn hoặc hình (nhóm 72.07).",
+"chuaChac": true
 },
 {
 "tu": "7205",
 "den": "7208",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.7205.25",
-"trich": "(3) Các sản phẩm được cán phẳng (nhóm 72.08 tới 72.12)."
+"trich": "(3) Các sản phẩm được cán phẳng (nhóm 72.08 tới 72.12).",
+"chuaChac": true
 },
 {
 "tu": "7205",
 "den": "7212",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.7205.25",
-"trich": "(3) Các sản phẩm được cán phẳng (nhóm 72.08 tới 72.12)."
+"trich": "(3) Các sản phẩm được cán phẳng (nhóm 72.08 tới 72.12).",
+"chuaChac": true
 },
 {
 "tu": "7205",
 "den": "7213",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.7205.26",
-"trich": "(4) Thanh và que, cán nóng, ở dạng cuộn cuốn không đều (nhóm 72.13) và các thanh và que khác (nhóm 72.14 hoặc 72.15)"
+"trich": "(4) Thanh và que, cán nóng, ở dạng cuộn cuốn không đều (nhóm 72.13) và các thanh và que khác (nhóm 72.14 hoặc 72.15)",
+"chuaChac": true
 },
 {
 "tu": "7205",
 "den": "7214",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.7205.26",
-"trich": "(4) Thanh và que, cán nóng, ở dạng cuộn cuốn không đều (nhóm 72.13) và các thanh và que khác (nhóm 72.14 hoặc 72.15)"
+"trich": "(4) Thanh và que, cán nóng, ở dạng cuộn cuốn không đều (nhóm 72.13) và các thanh và que khác (nhóm 72.14 hoặc 72.15)",
+"chuaChac": true
 },
 {
 "tu": "7205",
 "den": "7215",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.7205.26",
-"trich": "(4) Thanh và que, cán nóng, ở dạng cuộn cuốn không đều (nhóm 72.13) và các thanh và que khác (nhóm 72.14 hoặc 72.15)"
+"trich": "(4) Thanh và que, cán nóng, ở dạng cuộn cuốn không đều (nhóm 72.13) và các thanh và que khác (nhóm 72.14 hoặc 72.15)",
+"chuaChac": true
 },
 {
 "tu": "7205",
 "den": "7216",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.7205.27",
-"trich": "(5) Góc, khuôn và hình (nhóm 72.16)."
+"trich": "(5) Góc, khuôn và hình (nhóm 72.16).",
+"chuaChac": true
 },
 {
 "tu": "7205",
 "den": "7217",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.7205.28",
-"trich": "(6) Dây (nhóm 72.17)."
+"trich": "(6) Dây (nhóm 72.17).",
+"chuaChac": true
 },
 {
 "tu": "7207",
@@ -3352,16 +3461,18 @@
 {
 "tu": "7217",
 "den": "7218",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.7217.23",
-"trich": "Phân chương này bao gồm thép không gỉ theo các dạng được nêu tại nhóm 72.18 tới 72.23."
+"trich": "Phân chương này bao gồm thép không gỉ theo các dạng được nêu tại nhóm 72.18 tới 72.23.",
+"chuaChac": true
 },
 {
 "tu": "7217",
 "den": "7223",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.7217.23",
-"trich": "Phân chương này bao gồm thép không gỉ theo các dạng được nêu tại nhóm 72.18 tới 72.23."
+"trich": "Phân chương này bao gồm thép không gỉ theo các dạng được nêu tại nhóm 72.18 tới 72.23.",
+"chuaChac": true
 },
 {
 "tu": "7218",
@@ -3429,9 +3540,10 @@
 {
 "tu": "7223",
 "den": "7206",
-"quanHe": "PHAN_BIET",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.7223.7",
-"trich": "Tất cả các sản phẩm này có thể đã được gia công với điều kiện là chúng không có các đặc tính của sản phẩm thuộc các nhóm khác (xem Chú giải các nhóm 72.06 tới 72.17)."
+"trich": "Tất cả các sản phẩm này có thể đã được gia công với điều kiện là chúng không có các đặc tính của sản phẩm thuộc các nhóm khác (xem Chú giải các nhóm 72.06 tới 72.17).",
+"chuaChac": true
 },
 {
 "tu": "7223",
@@ -3471,9 +3583,10 @@
 {
 "tu": "7308",
 "den": "7314",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.7308.1",
-"trich": "Các kết cấu như vậy đôi khi lắp vào các sản phẩm thuộc các nhóm khác ví dụ như các tấm dây kim loại đan hoặc sản phẩm dạng lưới được tạo hình bằng phương pháp đột dập và kéo giãn thành lưới thuộc nhóm 73.14. Các bộ phận rời của cấu kiện bao gồm cả vòng kẹp và các khí cụ khác được thiết kế đặc biệt để lắp ráp những kết cấu xây dựng kim loại"
+"trich": "Các kết cấu như vậy đôi khi lắp vào các sản phẩm thuộc các nhóm khác ví dụ như các tấm dây kim loại đan hoặc sản phẩm dạng lưới được tạo hình bằng phương pháp đột dập và kéo giãn thành lưới thuộc nhóm 73.14. Các bộ phận rời của cấu kiện bao gồm cả vòng kẹp và các khí cụ khác được thiết kế đặc biệt để lắp ráp những kết cấu xây dựng kim loại",
+"chuaChac": true
 },
 {
 "tu": "7403",
@@ -4017,14 +4130,14 @@
 {
 "tu": "8007",
 "den": "7304",
-"quanHe": "PHAN_BIET",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.8007.10",
 "trich": "Các sản phẩm này giống như các hàng hóa bằng sắt hoặc thép được nêu trong Chú giải Chi tiết của các nhóm từ 73.04 đến 73.07."
 },
 {
 "tu": "8007",
 "den": "7307",
-"quanHe": "PHAN_BIET",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.8007.10",
 "trich": "Các sản phẩm này giống như các hàng hóa bằng sắt hoặc thép được nêu trong Chú giải Chi tiết của các nhóm từ 73.04 đến 73.07."
 },
@@ -4157,37 +4270,42 @@
 {
 "tu": "8207",
 "den": "8430",
-"quanHe": "PHAN_BIET",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.8207.6",
-"trich": "Nhóm này cũng có các dụng cụ sử dụng để khoan đá hoặc máy khoan đất nhóm 84.30."
+"trich": "Nhóm này cũng có các dụng cụ sử dụng để khoan đá hoặc máy khoan đất nhóm 84.30.",
+"chuaChac": true
 },
 {
 "tu": "8207",
 "den": "8457",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.8207.3",
-"trich": "(B) Dụng cụ cơ khí thuộc từ nhóm 84.57 đến nhóm 84.65 hoặc thuộc nhóm 84.79 theo phần chú giải 7 thuộc Chương 84,"
+"trich": "(B) Dụng cụ cơ khí thuộc từ nhóm 84.57 đến nhóm 84.65 hoặc thuộc nhóm 84.79 theo phần chú giải 7 thuộc Chương 84,",
+"chuaChac": true
 },
 {
 "tu": "8207",
 "den": "8465",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.8207.3",
-"trich": "(B) Dụng cụ cơ khí thuộc từ nhóm 84.57 đến nhóm 84.65 hoặc thuộc nhóm 84.79 theo phần chú giải 7 thuộc Chương 84,"
+"trich": "(B) Dụng cụ cơ khí thuộc từ nhóm 84.57 đến nhóm 84.65 hoặc thuộc nhóm 84.79 theo phần chú giải 7 thuộc Chương 84,",
+"chuaChac": true
 },
 {
 "tu": "8207",
 "den": "8467",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.8207.4",
-"trich": "(C) Các dụng cụ thuộc nhóm 84.67,"
+"trich": "(C) Các dụng cụ thuộc nhóm 84.67,",
+"chuaChac": true
 },
 {
 "tu": "8207",
 "den": "8479",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.8207.3",
-"trich": "(B) Dụng cụ cơ khí thuộc từ nhóm 84.57 đến nhóm 84.65 hoặc thuộc nhóm 84.79 theo phần chú giải 7 thuộc Chương 84,"
+"trich": "(B) Dụng cụ cơ khí thuộc từ nhóm 84.57 đến nhóm 84.65 hoặc thuộc nhóm 84.79 theo phần chú giải 7 thuộc Chương 84,",
+"chuaChac": true
 },
 {
 "tu": "8306",
@@ -4201,7 +4319,8 @@
 "den": "9002",
 "quanHe": "DAN_CHIEU",
 "nguon": "ct.8306.25",
-"trich": "Nhóm này còn bao gồm cả gương kim loại (không kể các phần tử quang học, xem chú giải chi tiết nhóm 90.01 và 90.02), ví dụ: gương treo tường hoặc gương bỏ túi và gương chiếu hậu, thường chế tạo bằng thép, hoặc crom, ni-ken hoặc thép mạ bạc, hoặc làm"
+"trich": "Nhóm này còn bao gồm cả gương kim loại (không kể các phần tử quang học, xem chú giải chi tiết nhóm 90.01 và 90.02), ví dụ: gương treo tường hoặc gương bỏ túi và gương chiếu hậu, thường chế tạo bằng thép, hoặc crom, ni-ken hoặc thép mạ bạc, hoặc làm",
+"chuaChac": true
 },
 {
 "tu": "8306",
@@ -4255,16 +4374,18 @@
 {
 "tu": "8404",
 "den": "8403",
-"quanHe": "NGUYEN_LIEU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.8404.1",
-"trich": "(A) THIẾT BỊ PHỤ TRỢ DÙNG CHO CÁC LOẠI NỒI HƠI THUỘC NHÓM 84.02 HOẶC 84.03"
+"trich": "(A) THIẾT BỊ PHỤ TRỢ DÙNG CHO CÁC LOẠI NỒI HƠI THUỘC NHÓM 84.02 HOẶC 84.03",
+"chuaChac": true
 },
 {
 "tu": "8405",
 "den": "8421",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.8405.12",
-"trich": "Nếu được trình bày riêng rẽ, chúng sẽ được phân loại vào các nhóm phù hợp với chúng (ví dụ cho máy lọc, nhóm 84.21)."
+"trich": "Nếu được trình bày riêng rẽ, chúng sẽ được phân loại vào các nhóm phù hợp với chúng (ví dụ cho máy lọc, nhóm 84.21).",
+"chuaChac": true
 },
 {
 "tu": "8412",
@@ -4304,9 +4425,10 @@
 {
 "tu": "8415",
 "den": "8414",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.8415.20",
-"trich": "Các bộ phận khác của máy điều hoà không khí, bất kể chúng được thiết kế để lắp thành máy dạng một khối gắn liền hoặc không, được phân loại theo các quy định của Chú giải 2(a) của Phần XVI (nhóm 84.14, 84.18, 84.19, 84.21, 84.79,...) hoặc, nếu Chú giải 2(a) không áp"
+"trich": "Các bộ phận khác của máy điều hoà không khí, bất kể chúng được thiết kế để lắp thành máy dạng một khối gắn liền hoặc không, được phân loại theo các quy định của Chú giải 2(a) của Phần XVI (nhóm 84.14, 84.18, 84.19, 84.21, 84.79,...) hoặc, nếu Chú giải 2(a) không áp",
+"chuaChac": true
 },
 {
 "tu": "8416",
@@ -4353,23 +4475,26 @@
 {
 "tu": "8426",
 "den": "7308",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.8426.22",
-"trich": "Nếu không, các thành phần kết cấu này được phân loại vào nhóm 73.08."
+"trich": "Nếu không, các thành phần kết cấu này được phân loại vào nhóm 73.08.",
+"chuaChac": true
 },
 {
 "tu": "8426",
 "den": "8425",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.8426.10",
-"trich": "Đế đẩy có thể được phân loại trong các nhóm từ 84.25 đến 84.30 bởi vì chúng có thể được trang bị với một vài bộ phận làm việc khác, được phân loại theo Chú giải 3 phần XVI hoặc Quy tác ph"
+"trich": "Đế đẩy có thể được phân loại trong các nhóm từ 84.25 đến 84.30 bởi vì chúng có thể được trang bị với một vài bộ phận làm việc khác, được phân loại theo Chú giải 3 phần XVI hoặc Quy tác ph",
+"chuaChac": true
 },
 {
 "tu": "8426",
 "den": "8428",
-"quanHe": "PHAN_BIET",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.8426.18",
-"trich": "MÁY ĐA CHỨC NĂNG Ngoài việc thực hiện các chức năng được miêu tả trong Nhóm này hoặc nhóm 84.25, 84.27 hoặc 84.28, nhiều máy cũng có thể thực hiện các chức năng được diễn tả trong nhóm 84.29 hoặc 84.30 (như đào, lấp đất, khoan,...). Các máy này đượ"
+"trich": "MÁY ĐA CHỨC NĂNG Ngoài việc thực hiện các chức năng được miêu tả trong Nhóm này hoặc nhóm 84.25, 84.27 hoặc 84.28, nhiều máy cũng có thể thực hiện các chức năng được diễn tả trong nhóm 84.29 hoặc 84.30 (như đào, lấp đất, khoan,...). Các máy này đượ",
+"chuaChac": true
 },
 {
 "tu": "8426",
@@ -4381,9 +4506,10 @@
 {
 "tu": "8426",
 "den": "8430",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.8426.10",
-"trich": "Đế đẩy có thể được phân loại trong các nhóm từ 84.25 đến 84.30 bởi vì chúng có thể được trang bị với một vài bộ phận làm việc khác, được phân loại theo Chú giải 3 phần XVI hoặc Quy tác phân loại 3("
+"trich": "Đế đẩy có thể được phân loại trong các nhóm từ 84.25 đến 84.30 bởi vì chúng có thể được trang bị với một vài bộ phận làm việc khác, được phân loại theo Chú giải 3 phần XVI hoặc Quy tác phân loại 3(",
+"chuaChac": true
 },
 {
 "tu": "8428",
@@ -4395,7 +4521,7 @@
 {
 "tu": "8430",
 "den": "8425",
-"quanHe": "LOAI_TRU",
+"quanHe": "PHAN_BIET",
 "nguon": "ct.8430.9",
 "trich": "Cơ cấu đẩy có khả năng được phân loại trong một vài nhóm từ 84.25 đến 84.30 bởi vì chúng có thể được trang bị với một vài bộ phận làm việc khác nhau, được phân loại theo Chú giải 3 Phần XVI hoặc áp dụ"
 },
@@ -4423,9 +4549,10 @@
 {
 "tu": "8430",
 "den": "8604",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.8430.5",
-"trich": "Các loại máy xúc..., được phân loại trong nhóm 86.04 nếu chúng được lắp trên các toa tàu hoặc toa chở hàng, loại thích hợp để nối vào một đoàn tàu trên một tuyến đường sắt có khoảng ray b"
+"trich": "Các loại máy xúc..., được phân loại trong nhóm 86.04 nếu chúng được lắp trên các toa tàu hoặc toa chở hàng, loại thích hợp để nối vào một đoàn tàu trên một tuyến đường sắt có khoảng ray b",
+"chuaChac": true
 },
 {
 "tu": "8431",
@@ -4444,9 +4571,10 @@
 {
 "tu": "8432",
 "den": "8704",
-"quanHe": "PHAN_BIET",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.8432.9",
-"trich": "Nguyên lý phân loại như vậy cũng được áp dụng trong trường hợp khi một loại thiết bị kéo khác được thay thế cho máy kéo (ví dụ một loại máy được phân trong nhóm 87.04), hoặc khi một cái máy xới quay (rotary hoe) được lắp trên trục điều khiển của máy kéo trục đơn, thay thế bánh xe, do đó mà nó hoạt độ"
+"trich": "Nguyên lý phân loại như vậy cũng được áp dụng trong trường hợp khi một loại thiết bị kéo khác được thay thế cho máy kéo (ví dụ một loại máy được phân trong nhóm 87.04), hoặc khi một cái máy xới quay (rotary hoe) được lắp trên trục điều khiển của máy kéo trục đơn, thay thế bánh xe, do đó mà nó hoạt độ",
+"chuaChac": true
 },
 {
 "tu": "8433",
@@ -4465,37 +4593,42 @@
 {
 "tu": "8434",
 "den": "7309",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.8434.28",
-"trich": "không được gắn với thiết bị nhiệt hoặc thiết bị cơ khí được phân loại như những vật dụng của vật liệu cấu thành (ví dụ, nhóm 73.09, 73.10, 74.19, 76.11 hoặc 76.12)."
+"trich": "không được gắn với thiết bị nhiệt hoặc thiết bị cơ khí được phân loại như những vật dụng của vật liệu cấu thành (ví dụ, nhóm 73.09, 73.10, 74.19, 76.11 hoặc 76.12).",
+"chuaChac": true
 },
 {
 "tu": "8434",
 "den": "7310",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.8434.28",
-"trich": "không được gắn với thiết bị nhiệt hoặc thiết bị cơ khí được phân loại như những vật dụng của vật liệu cấu thành (ví dụ, nhóm 73.09, 73.10, 74.19, 76.11 hoặc 76.12)."
+"trich": "không được gắn với thiết bị nhiệt hoặc thiết bị cơ khí được phân loại như những vật dụng của vật liệu cấu thành (ví dụ, nhóm 73.09, 73.10, 74.19, 76.11 hoặc 76.12).",
+"chuaChac": true
 },
 {
 "tu": "8434",
 "den": "7419",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.8434.28",
-"trich": "không được gắn với thiết bị nhiệt hoặc thiết bị cơ khí được phân loại như những vật dụng của vật liệu cấu thành (ví dụ, nhóm 73.09, 73.10, 74.19, 76.11 hoặc 76.12)."
+"trich": "không được gắn với thiết bị nhiệt hoặc thiết bị cơ khí được phân loại như những vật dụng của vật liệu cấu thành (ví dụ, nhóm 73.09, 73.10, 74.19, 76.11 hoặc 76.12).",
+"chuaChac": true
 },
 {
 "tu": "8434",
 "den": "7611",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.8434.28",
-"trich": "không được gắn với thiết bị nhiệt hoặc thiết bị cơ khí được phân loại như những vật dụng của vật liệu cấu thành (ví dụ, nhóm 73.09, 73.10, 74.19, 76.11 hoặc 76.12)."
+"trich": "không được gắn với thiết bị nhiệt hoặc thiết bị cơ khí được phân loại như những vật dụng của vật liệu cấu thành (ví dụ, nhóm 73.09, 73.10, 74.19, 76.11 hoặc 76.12).",
+"chuaChac": true
 },
 {
 "tu": "8434",
 "den": "7612",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.8434.28",
-"trich": "không được gắn với thiết bị nhiệt hoặc thiết bị cơ khí được phân loại như những vật dụng của vật liệu cấu thành (ví dụ, nhóm 73.09, 73.10, 74.19, 76.11 hoặc 76.12)."
+"trich": "không được gắn với thiết bị nhiệt hoặc thiết bị cơ khí được phân loại như những vật dụng của vật liệu cấu thành (ví dụ, nhóm 73.09, 73.10, 74.19, 76.11 hoặc 76.12).",
+"chuaChac": true
 },
 {
 "tu": "8436",
@@ -4521,9 +4654,10 @@
 {
 "tu": "8439",
 "den": "8441",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.8439.34",
-"trich": "c nhóm khác của chương này (ví dụ, máy lọc để thu hồi sợi và vật liệu mang từ khối nước thải (nhóm 84.21), máy cán các loại (để làm mịn giấy, tráng giấy, trang trí giấy bằng hình nổi...) (nhóm 84.20), máy cắt giấy (nhóm 84.41)). Với điều kiện chúng được hiện diện cùng trong một tổ hợp, các máy phụ trợ như vậy được phân loại cùng với các máy liên hợp trong nh"
+"trich": "c nhóm khác của chương này (ví dụ, máy lọc để thu hồi sợi và vật liệu mang từ khối nước thải (nhóm 84.21), máy cán các loại (để làm mịn giấy, tráng giấy, trang trí giấy bằng hình nổi...) (nhóm 84.20), máy cắt giấy (nhóm 84.41)). Với điều kiện chúng được hiện diện cùng trong một tổ hợp, các máy phụ trợ như vậy được phân loại cùng với các máy liên hợp trong nh",
+"chuaChac": true
 },
 {
 "tu": "8442",
@@ -4549,14 +4683,14 @@
 {
 "tu": "8445",
 "den": "8446",
-"quanHe": "PHAN_BIET",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.8445.6",
 "trich": ",và chuẩn bị sợi dệt để sử dụng trên các máy thuộc nhóm 84.46 hoặc 84.47."
 },
 {
 "tu": "8445",
 "den": "8447",
-"quanHe": "PHAN_BIET",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.8445.6",
 "trich": ",và chuẩn bị sợi dệt để sử dụng trên các máy thuộc nhóm 84.46 hoặc 84.47."
 },
@@ -4670,63 +4804,72 @@
 "den": "8480",
 "quanHe": "DAN_CHIEU",
 "nguon": "ct.8479.118",
-"trich": "y định chung liên quan đến việc phân loại các bộ phận (Xem chú giải tổng quát của phần XVI), nhóm này cũng bao gồm các bộ phận của máy móc thuộc nhóm, kể cả khuôn trừ những bộ phận đã được ghi ở nơi khác (đặc biệt, nhóm 84.80)"
+"trich": "y định chung liên quan đến việc phân loại các bộ phận (Xem chú giải tổng quát của phần XVI), nhóm này cũng bao gồm các bộ phận của máy móc thuộc nhóm, kể cả khuôn trừ những bộ phận đã được ghi ở nơi khác (đặc biệt, nhóm 84.80)",
+"chuaChac": true
 },
 {
 "tu": "8481",
 "den": "3926",
-"quanHe": "NGUYEN_LIEU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.8481.16",
-"trich": "Chúng được phân loại theo vật liệu cấu thành (nhóm 39.26, 71.15, 73.26, 74.19, 75.08, 76.16,v.v.. )."
+"trich": "Chúng được phân loại theo vật liệu cấu thành (nhóm 39.26, 71.15, 73.26, 74.19, 75.08, 76.16,v.v.. ).",
+"chuaChac": true
 },
 {
 "tu": "8481",
 "den": "7115",
-"quanHe": "NGUYEN_LIEU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.8481.16",
-"trich": "Chúng được phân loại theo vật liệu cấu thành (nhóm 39.26, 71.15, 73.26, 74.19, 75.08, 76.16,v.v.. )."
+"trich": "Chúng được phân loại theo vật liệu cấu thành (nhóm 39.26, 71.15, 73.26, 74.19, 75.08, 76.16,v.v.. ).",
+"chuaChac": true
 },
 {
 "tu": "8481",
 "den": "7326",
-"quanHe": "NGUYEN_LIEU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.8481.16",
-"trich": "Chúng được phân loại theo vật liệu cấu thành (nhóm 39.26, 71.15, 73.26, 74.19, 75.08, 76.16,v.v.. )."
+"trich": "Chúng được phân loại theo vật liệu cấu thành (nhóm 39.26, 71.15, 73.26, 74.19, 75.08, 76.16,v.v.. ).",
+"chuaChac": true
 },
 {
 "tu": "8481",
 "den": "7419",
-"quanHe": "NGUYEN_LIEU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.8481.16",
-"trich": "Chúng được phân loại theo vật liệu cấu thành (nhóm 39.26, 71.15, 73.26, 74.19, 75.08, 76.16,v.v.. )."
+"trich": "Chúng được phân loại theo vật liệu cấu thành (nhóm 39.26, 71.15, 73.26, 74.19, 75.08, 76.16,v.v.. ).",
+"chuaChac": true
 },
 {
 "tu": "8481",
 "den": "7508",
-"quanHe": "NGUYEN_LIEU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.8481.16",
-"trich": "Chúng được phân loại theo vật liệu cấu thành (nhóm 39.26, 71.15, 73.26, 74.19, 75.08, 76.16,v.v.. )."
+"trich": "Chúng được phân loại theo vật liệu cấu thành (nhóm 39.26, 71.15, 73.26, 74.19, 75.08, 76.16,v.v.. ).",
+"chuaChac": true
 },
 {
 "tu": "8481",
 "den": "7616",
-"quanHe": "NGUYEN_LIEU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.8481.16",
-"trich": "Chúng được phân loại theo vật liệu cấu thành (nhóm 39.26, 71.15, 73.26, 74.19, 75.08, 76.16,v.v.. )."
+"trich": "Chúng được phân loại theo vật liệu cấu thành (nhóm 39.26, 71.15, 73.26, 74.19, 75.08, 76.16,v.v.. ).",
+"chuaChac": true
 },
 {
 "tu": "8483",
 "den": "7325",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.8483.20",
-"trich": "tòa nhà; nhưng miếng đệm, đĩa hoặc giá đỡ công xon , v.v.., không được gắn với một thân ổ dùng ổ lăn(hoặc bản thân chúng cũng không thiết kế để chứa một ổ bi) được phân loại theo vật liệu cấu thành (thường phân vào nhóm 73.25 hoặc 73.26)"
+"trich": "tòa nhà; nhưng miếng đệm, đĩa hoặc giá đỡ công xon , v.v.., không được gắn với một thân ổ dùng ổ lăn(hoặc bản thân chúng cũng không thiết kế để chứa một ổ bi) được phân loại theo vật liệu cấu thành (thường phân vào nhóm 73.25 hoặc 73.26)",
+"chuaChac": true
 },
 {
 "tu": "8483",
 "den": "7326",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.8483.20",
-"trich": "ưng miếng đệm, đĩa hoặc giá đỡ công xon , v.v.., không được gắn với một thân ổ dùng ổ lăn(hoặc bản thân chúng cũng không thiết kế để chứa một ổ bi) được phân loại theo vật liệu cấu thành (thường phân vào nhóm 73.25 hoặc 73.26)"
+"trich": "ưng miếng đệm, đĩa hoặc giá đỡ công xon , v.v.., không được gắn với một thân ổ dùng ổ lăn(hoặc bản thân chúng cũng không thiết kế để chứa một ổ bi) được phân loại theo vật liệu cấu thành (thường phân vào nhóm 73.25 hoặc 73.26)",
+"chuaChac": true
 },
 {
 "tu": "8487",
@@ -4794,9 +4937,10 @@
 {
 "tu": "8525",
 "den": "8523",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.8525.19",
-"trich": "mera kỹ thuật số và camera ghi video, hình ảnh được ghi lên một thiết bị lưu trữ bên trong hoặc lên các phương tiện lưu trữ khác (ví dụ, băng từ, phương tiện quang học, phương tiện bán dẫn hoặc phương tiện khác của nhóm 85.23). Chúng có thể bao gồm một bộ biến đổi tín hiệu tương tự/ kỹ thuật số (ADC) và một cổng đầu ra cung cấp phương tiện để gửi hình ảnh tớ"
+"trich": "mera kỹ thuật số và camera ghi video, hình ảnh được ghi lên một thiết bị lưu trữ bên trong hoặc lên các phương tiện lưu trữ khác (ví dụ, băng từ, phương tiện quang học, phương tiện bán dẫn hoặc phương tiện khác của nhóm 85.23). Chúng có thể bao gồm một bộ biến đổi tín hiệu tương tự/ kỹ thuật số (ADC) và một cổng đầu ra cung cấp phương tiện để gửi hình ảnh tớ",
+"chuaChac": true
 },
 {
 "tu": "8525",
@@ -4843,14 +4987,14 @@
 {
 "tu": "8534",
 "den": "8532",
-"quanHe": "DAN_CHIEU",
+"quanHe": "LOAI_TRU",
 "nguon": "ct.8534.7",
 "trich": "(ví dụ các nhóm 85.04, 85.16, 85.32 hoặc 85.33)."
 },
 {
 "tu": "8534",
 "den": "8533",
-"quanHe": "DAN_CHIEU",
+"quanHe": "LOAI_TRU",
 "nguon": "ct.8534.7",
 "trich": "(ví dụ các nhóm 85.04, 85.16, 85.32 hoặc 85.33)."
 },
@@ -4899,9 +5043,10 @@
 {
 "tu": "8608",
 "den": "4421",
-"quanHe": "NGUYEN_LIEU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.8608.13",
-"trich": "không có tính chất cơ khí (ví dụ, biển báo giới hạn tốc độ, chỉ hướng, độ dốc...); những biển báo này được phân loại theo nguyên liệu cấu thành của chúng (ví dụ, trong các nhóm 44.21 hoặc 83.10)."
+"trich": "không có tính chất cơ khí (ví dụ, biển báo giới hạn tốc độ, chỉ hướng, độ dốc...); những biển báo này được phân loại theo nguyên liệu cấu thành của chúng (ví dụ, trong các nhóm 44.21 hoặc 83.10).",
+"chuaChac": true
 },
 {
 "tu": "8706",
@@ -4920,14 +5065,14 @@
 {
 "tu": "8708",
 "den": "8701",
-"quanHe": "PHAN_BIET",
+"quanHe": "NGUYEN_LIEU",
 "nguon": "ct.8708.1",
 "trich": "Nhóm này bao gồm toàn bộ các phụ tùng và bộ phận phụ trợ của xe cơ giới từ nhóm 87.01 đến 87.05, với điều kiện là chúng phải đáp ứng cả hai điều kiện sau đây:"
 },
 {
 "tu": "8708",
 "den": "8705",
-"quanHe": "PHAN_BIET",
+"quanHe": "NGUYEN_LIEU",
 "nguon": "ct.8708.1",
 "trich": "Nhóm này bao gồm toàn bộ các phụ tùng và bộ phận phụ trợ của xe cơ giới từ nhóm 87.01 đến 87.05, với điều kiện là chúng phải đáp ứng cả hai điều kiện sau đây:"
 },
@@ -4962,16 +5107,18 @@
 {
 "tu": "8908",
 "den": "8901",
-"quanHe": "NGUYEN_LIEU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.8908.1",
-"trich": "Nhóm này chỉ bao gồm những tàu thuyền và các cấu kiện nổi khác thuộc các nhóm từ 89.01 đến 89.07, ở dạng để phá huỷ. Thường đây là những tàu thuyền đã bị hư hỏng, cũ nát, đôi khi đã tháo các thiết bị, máy móc, v.v.."
+"trich": "Nhóm này chỉ bao gồm những tàu thuyền và các cấu kiện nổi khác thuộc các nhóm từ 89.01 đến 89.07, ở dạng để phá huỷ. Thường đây là những tàu thuyền đã bị hư hỏng, cũ nát, đôi khi đã tháo các thiết bị, máy móc, v.v..",
+"chuaChac": true
 },
 {
 "tu": "8908",
 "den": "8907",
-"quanHe": "NGUYEN_LIEU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.8908.1",
-"trich": "Nhóm này chỉ bao gồm những tàu thuyền và các cấu kiện nổi khác thuộc các nhóm từ 89.01 đến 89.07, ở dạng để phá huỷ. Thường đây là những tàu thuyền đã bị hư hỏng, cũ nát, đôi khi đã tháo các thiết bị, máy móc, v.v.."
+"trich": "Nhóm này chỉ bao gồm những tàu thuyền và các cấu kiện nổi khác thuộc các nhóm từ 89.01 đến 89.07, ở dạng để phá huỷ. Thường đây là những tàu thuyền đã bị hư hỏng, cũ nát, đôi khi đã tháo các thiết bị, máy móc, v.v..",
+"chuaChac": true
 },
 {
 "tu": "9001",
@@ -5137,9 +5284,10 @@
 {
 "tu": "9033",
 "den": "8487",
-"quanHe": "LOAI_TRU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.9033.6",
-"trich": "(2) Những mặt hàng trong Chú giải 2(a), bản thân chúng tạo thành các mặt hàng thiết bị, máy móc, dụng cụ thuộc bất cứ nhóm riêng nào của Chương 90 hoặc của Chương 84, Chương 85 hoặc Chương 91 (ngoại trừ các nhóm 84.87, 85.48 hoặc 90.33). Vì"
+"trich": "(2) Những mặt hàng trong Chú giải 2(a), bản thân chúng tạo thành các mặt hàng thiết bị, máy móc, dụng cụ thuộc bất cứ nhóm riêng nào của Chương 90 hoặc của Chương 84, Chương 85 hoặc Chương 91 (ngoại trừ các nhóm 84.87, 85.48 hoặc 90.33). Vì",
+"chuaChac": true
 },
 {
 "tu": "9033",
@@ -5214,7 +5362,7 @@
 {
 "tu": "9106",
 "den": "9112",
-"quanHe": "DAN_CHIEU",
+"quanHe": "LOAI_TRU",
 "nguon": "ct.9106.26",
 "trich": "Nhóm này không bao gồm những mặt hàng sau đây nếu được trình bày riêng: vỏ cho các thiết bị mô tả ở trên (được phân loại vào nhóm 91.12 hoặc vào các nhóm tương ứng với chúng, xem Chú giải nhóm 91.12), máy đồng hồ cá nhân hoặc đồng hồ thời gian (các nhóm từ 91.08 đến 91."
 },
@@ -5375,14 +5523,15 @@
 {
 "tu": "9601",
 "den": "9305",
-"quanHe": "NGUYEN_LIEU",
+"quanHe": "DAN_CHIEU",
 "nguon": "ct.9601.3",
-"trich": "Vì vậy, các phím đàn pianô và các mảnh gắn vào báng súng được xếp lần lượt vào nhóm 92.09 và 93.05. Tuy nhiên, các chất liệu đã gia công nhưng"
+"trich": "Vì vậy, các phím đàn pianô và các mảnh gắn vào báng súng được xếp lần lượt vào nhóm 92.09 và 93.05. Tuy nhiên, các chất liệu đã gia công nhưng",
+"chuaChac": true
 },
 {
 "tu": "9601",
 "den": "9602",
-"quanHe": "PHAN_BIET",
+"quanHe": "LOAI_TRU",
 "nguon": "ct.9601.1",
 "trich": "Nhóm này liên quan đến các chất liệu có nguồn gốc động vật (trừ chất liệu nêu trong nhóm 96.02) đã gia công chủ yếu bằng chạm trổ hoặc cắt gọt. Phần lớn trong số này cũng có thể được tạo hình."
 },

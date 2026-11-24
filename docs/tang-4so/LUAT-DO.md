@@ -39,3 +39,9 @@ CEO chốt ngày 23/11/2026. Bổ sung cho ADR-0004. Mọi agent làm việc tr�
 7. **Thu gọn hồ sơ, không cắt ứng viên (23/11, vòng 4b).** Mỗi nhóm: tên + chú giải chi tiết chỉ giữ đoạn đầu (phạm vi), đoạn có chữ của hàng (>= 2 từ khoá) và đoạn loại trừ/trỏ sang ứng viên khác; nhóm đáng xét còn lại và nhóm do đồ thị kéo thêm chỉ tên + phạm vi; nhóm ngoài tập đáng xét chỉ tên. Khoản nối chỉ xét giữa các nhóm đáng xét (10 nhóm khớp hàng nhất + 4 ứng viên gốc đầu + 5 nhóm đồ thị điểm cao nhất), mỗi cặp tối đa 2 khoản, một trích dẫn chỉ in một lần (C5 / C7 / phanBiet / điều khoản trùng chữ), tiền lệ chỉ lấy khi cặp chưa có khoản luật. Khoản định nghĩa quá 1.500 ký tự mà chỉ nêu cả Chương/Phần thì bỏ.
 8. **Kiểm độc lập.** Phần mở rộng một bước đã chỉnh trên 11 ca v1; bộ v2 (40 ca sai vòng 0) là bộ kiểm không chỉnh thêm: `kiem_do_thi.py --ca-sai docs/tang-4so/ca-sai-v2-vong0.json --bo-chuan data/bo-chuan/4so-v2.jsonl`. Kết quả không được dùng để chỉnh trọng số rồi báo lại trên chính bộ đó.
 9. **Thiếu dữ liệu luật** ghi ở `docs/tang-4so/thieu-du-lieu-luat.md` (danh sách Phần chưa có chú giải Phần). Lỗi dữ liệu tách điều khoản sửa bằng `scripts/tang-4so/sua_dieu_khoan_tang2.py`, không sửa tay.
+
+## Chốt kèm giả định (CEO chọn A, 24/11/2026)
+Câu hỏi đã hỏi: "rơ le bán dẫn, đóng cắt tải trong hệ thống điều khiển tự động", không ghi điện áp (8536 tới 1.000V, 8535 trên 1.000V). CEO chọn chốt 8536 và ghi rõ giả định, không hỏi lại.
+- Chỉ chốt khi đúng một nhánh gần như luôn đúng và mọi nhánh khác hiếm; luôn ghi giả định và nhóm nếu giả định sai.
+- Nhiều nhánh cùng hay gặp thì vẫn trả lời có điều kiện.
+- Công cụ: scripts/tang-4so/gia_dinh.py (người xét không thấy mã nhóm, nhãn). Chưa vào đường khách; câu chữ cho khách chờ CEO duyệt.
