@@ -819,5 +819,254 @@ const ketQuaSong = (raw = VAN) => ketQuaGia('848180', raw, {}, ['848120']);
     { pbVoi5909, pbVoi5911, pbDem5909, pbDem5911, pbRay5909, pbRay5911, gDc5909: gDc5909.challenges, gDc5911: gDc5911.challenges });
 }
 
+// 16) OZV-2169 — cạnh loại trừ 2 chiều 59.11 <-> 63.07 cho ca 195 tầng 4 số «Cổ bạt mềm / Vải canvas phủ silicon chống cháy / Khớp nối ống gió»
+{
+  const S = require('../lib/so-tay.js');
+  const D = require('../lib/do-thi/index.js');
+  const { soTayGates, nhomLienQuanSoTay } = require('../lib/so-tay-gates.js');
+  const { phanTichHoiTruoc4So, TRANG_THAI_4SO } = require('../lib/do-thi/hoi-truoc-4so.js');
+  const q195 = 'Cổ bạt mềm / Vải canvas phủ silicon chống cháy / Khớp nối ống gió';
+  for (const nh of ['5911', '6307', '5909', '5907']) {
+    fs.copyFileSync(path.join('data/so-tay', `${nh}.json`), path.join(TEST_DATA_DIR, 'so-tay', `${nh}.json`));
+  }
+  D.datLai();
+
+  const st5911 = loadSoTay('5911');
+  const st6307 = loadSoTay('6307');
+  const v5911 = S.verifySoTay(st5911, '5911');
+  const v6307 = S.verifySoTay(st6307, '6307');
+  const lt5911 = (st5911?.loaiTru || []).find((x) => x.sangNhom === '6307');
+  const lt6307 = (st6307?.loaiTru || []).find((x) => x.sangNhom === '5911');
+  check('OZV-2169 (verifySoTay & canCuLoaiTru): sổ tay 5911 và 6307 có loaiTru 2 chiều kèm canCuLoaiTru nguyên văn đạt checkItem và verifySoTay 100%',
+    Boolean(
+      lt5911 &&
+        lt5911.nguon === 'ch59.chuong' &&
+        lt5911.canCuLoaiTru?.nguon === 'nhom6307.nhom' &&
+        S.checkItem('loaiTru', lt5911, S.sourcesFor('5911'), '5911') === null
+    ) &&
+      Boolean(
+        lt6307 &&
+          lt6307.nguon === 'ch63.chuong' &&
+          lt6307.canCuLoaiTru?.nguon === 'nhom5911.nhom' &&
+          S.checkItem('loaiTru', lt6307, S.sourcesFor('6307'), '6307') === null
+      ) &&
+      lt5911.dieuKien !== lt6307.dieuKien &&
+      !/;/.test(lt5911.dieuKien) &&
+      !/;/.test(lt6307.dieuKien) &&
+      v5911.loai.length === 0 && v5911.dat === v5911.tong && st5911.kiemTra?.tong === v5911.tong && st5911.kiemTra?.dat === v5911.dat &&
+      v6307.loai.length === 0 && v6307.dat === v6307.tong && st6307.kiemTra?.tong === v6307.tong && st6307.kiemTra?.dat === v6307.dat,
+    { lt5911, lt6307, loai5911: v5911.loai, loai6307: v6307.loai });
+
+  const c5Tu5911 = D.canhTu('5911', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '6307');
+  const c5Tu6307 = D.canhTu('6307', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '5911');
+  const c6Tu5911 = D.canhTu('5911', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '6307');
+  const c6Tu6307 = D.canhTu('6307', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '5911');
+  const giua = D.canhGiuaNhomConSong(['5911', '6307']).filter((e) => e.loai === 'C5' || e.loai === 'C6');
+  const mrTu5911 = D.moRongUngVien(['5911'], q195);
+  const mrTu6307 = D.moRongUngVien(['6307'], q195);
+  check('OZV-2169 (đồ thị 2 chiều & nhomLienQuanSoTay): bảng cạnh C5/C6 5911↔6307, canhGiuaNhomConSong, nhomLienQuanSoTay và moRongUngVien kéo 2 chiều cho ca 195',
+    c5Tu5911.some((e) => e.nguon === 'ch59.chuong' && e.canCuLoaiTru?.nguon === 'nhom6307.nhom') &&
+      c5Tu6307.some((e) => e.nguon === 'ch63.chuong' && e.canCuLoaiTru?.nguon === 'nhom5911.nhom') &&
+      c6Tu5911.length >= 1 &&
+      c6Tu6307.length >= 1 &&
+      giua.length >= 2 &&
+      nhomLienQuanSoTay('5911').includes('6307') &&
+      nhomLienQuanSoTay('6307').includes('5911') &&
+      mrTu5911.some((x) => x.nhom === '6307') &&
+      mrTu6307.some((x) => x.nhom === '5911'),
+    { c5Tu5911: c5Tu5911.length, c5Tu6307: c5Tu6307.length, giua: giua.length, mrTu5911, mrTu6307 });
+
+  const ht2 = phanTichHoiTruoc4So({ moTa: q195, ungVien: ['5911', '6307'] });
+  const ht3 = phanTichHoiTruoc4So({ moTa: q195, ungVien: ['5909', '5911', '6307'] });
+  check('OZV-2169 (phanTichHoiTruoc4So): tách đủ nhánh điều kiện theo cạnh C5 cho [5911, 6307] và [5909, 5911, 6307] trên ca 195',
+    ht2.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC &&
+      (ht2.nhanh || []).every((n) => String(n.nguon || '').startsWith('do-thi:C5:')) &&
+      new Set((ht2.nhanh || []).map((n) => n.dieuKien)).size === 2 &&
+      Boolean(ht2.dapAnDieuKien && ht2.dapAnDieuKien.includes('→ nhóm 5911 (') && ht2.dapAnDieuKien.includes('→ nhóm 6307 (')) &&
+      ht3.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC &&
+      new Set((ht3.nhanh || []).map((n) => n.dieuKien)).size === 3 &&
+      ['5909', '5911', '6307'].every((h) => ht3.dapAnDieuKien?.includes(`→ nhóm ${h} (`)),
+    { ht2: ht2.dapAnDieuKien, ht3: ht3.dapAnDieuKien });
+
+  const pb5911 = H.cauPhanBietNhom('5911', ['5911', '6307'], q195);
+  check('OZV-2169 (thuận 5911 → 6307): 5911 đứng đầu với [5911, 6307] sinh câu PHAN_BIET_NHOM từ ch59.chuong sang 63.07',
+    pb5911.length === 1 &&
+      pb5911[0].loai === 'PHAN_BIET_NHOM' &&
+      pb5911[0].canCu === 'so-tay' &&
+      pb5911[0].nguon === 'ch59.chuong' &&
+      /63\.07/.test(pb5911[0].questionVi) &&
+      /59\.11/.test(pb5911[0].questionVi),
+    pb5911);
+
+  const pb6307 = H.cauPhanBietNhom('6307', ['6307', '5911'], q195);
+  check('OZV-2169 (thuận 6307 → 5911): 6307 đứng đầu với [6307, 5911] sinh câu PHAN_BIET_NHOM từ ch63.chuong sang 59.11',
+    pb6307.length === 1 &&
+      pb6307[0].loai === 'PHAN_BIET_NHOM' &&
+      pb6307[0].canCu === 'so-tay' &&
+      pb6307[0].nguon === 'ch63.chuong' &&
+      /59\.11/.test(pb6307[0].questionVi) &&
+      /63\.07/.test(pb6307[0].questionVi),
+    pb6307);
+
+  const g5911 = soTayGates({ hs: '59119090', productText: q195, productName: q195, pool: [{ h4: '6307', from: 'test' }] });
+  const g6307 = soTayGates({ hs: '63079090', productText: q195, productName: q195, pool: [{ h4: '5911', from: 'test' }] });
+  check('OZV-2169 (soTayGates 2 chiều): bật cổng SO_TAY_LOAI_TRU cả 2 chiều 59.11 ↔ 63.07 trên ca 195',
+    (g5911.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '6307') &&
+      (g6307.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '5911'),
+    { g5911: g5911.challenges, g6307: g6307.challenges });
+
+  const dcAoCuu = 'Áo cứu sinh và đai cứu sinh bằng vật liệu dệt';
+  const dcCo = 'Cờ đuôi nheo dùng trong ngành hàng hải';
+  const dcDem = 'Miếng đệm và miếng chèn bằng phớt dùng làm kín trục máy';
+  const dcRay = 'Vải dùng để rây sàng bột trong công nghiệp';
+  const pbAo5911 = H.cauPhanBietNhom('5911', ['5911', '6307'], dcAoCuu);
+  const pbAo6307 = H.cauPhanBietNhom('6307', ['6307', '5911'], dcAoCuu);
+  const pbCo5911 = H.cauPhanBietNhom('5911', ['5911', '6307'], dcCo);
+  const pbCo6307 = H.cauPhanBietNhom('6307', ['6307', '5911'], dcCo);
+  const pbDem5911 = H.cauPhanBietNhom('5911', ['5911', '6307'], dcDem);
+  const pbDem6307 = H.cauPhanBietNhom('6307', ['6307', '5911'], dcDem);
+  const pbRay5911 = H.cauPhanBietNhom('5911', ['5911', '6307'], dcRay);
+  const pbRay6307 = H.cauPhanBietNhom('6307', ['6307', '5911'], dcRay);
+  const gDc5911 = soTayGates({ hs: '59119010', productText: dcDem, productName: dcDem });
+  const gDc6307 = soTayGates({ hs: '63072000', productText: dcAoCuu, productName: dcAoCuu });
+  check('OZV-2169 (đối chứng): áo cứu sinh, cờ đuôi nheo, miếng đệm phớt và vải rây sàng không hỏi/kéo/bật cổng oan 59.11 ↔ 63.07',
+    pbAo5911.length === 0 &&
+      pbAo6307.length === 0 &&
+      pbCo5911.length === 0 &&
+      pbCo6307.length === 0 &&
+      pbDem5911.length === 0 &&
+      pbDem6307.length === 0 &&
+      pbRay5911.length === 0 &&
+      pbRay6307.length === 0 &&
+      !(gDc5911.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '6307') &&
+      !(gDc6307.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '5911') &&
+      !D.moRongUngVien(['6307'], dcAoCuu).some((x) => x.nhom === '5911') &&
+      !D.moRongUngVien(['5911'], dcDem).some((x) => x.nhom === '6307') &&
+      !D.moRongUngVien(['5911'], dcRay).some((x) => x.nhom === '6307'),
+    { pbAo5911, pbAo6307, pbCo5911, pbCo6307, pbDem5911, pbDem6307, pbRay5911, pbRay6307, gDc5911: gDc5911.challenges, gDc6307: gDc6307.challenges });
+}
+
+// 17) OZV-2175 — cạnh loại trừ 2 chiều 59.09 <-> 63.07 cho ca 195 tầng 4 số «Cổ bạt mềm / Vải canvas phủ silicon chống cháy / Khớp nối ống gió»
+{
+  const S = require('../lib/so-tay.js');
+  const D = require('../lib/do-thi/index.js');
+  const { soTayGates, nhomLienQuanSoTay } = require('../lib/so-tay-gates.js');
+  const { phanTichHoiTruoc4So, TRANG_THAI_4SO } = require('../lib/do-thi/hoi-truoc-4so.js');
+  const q195 = 'Cổ bạt mềm / Vải canvas phủ silicon chống cháy / Khớp nối ống gió';
+  for (const nh of ['5909', '6307', '5911', '5907']) {
+    fs.copyFileSync(path.join('data/so-tay', `${nh}.json`), path.join(TEST_DATA_DIR, 'so-tay', `${nh}.json`));
+  }
+  D.datLai();
+
+  const st5909 = loadSoTay('5909');
+  const st6307 = loadSoTay('6307');
+  const v5909 = S.verifySoTay(st5909, '5909');
+  const v6307 = S.verifySoTay(st6307, '6307');
+  const lt5909 = (st5909?.loaiTru || []).find((x) => x.sangNhom === '6307');
+  const lt6307 = (st6307?.loaiTru || []).find((x) => x.sangNhom === '5909');
+  check('OZV-2175 (verifySoTay & canCuLoaiTru): sổ tay 5909 và 6307 có loaiTru 2 chiều kèm canCuLoaiTru nguyên văn đạt checkItem và verifySoTay 100%',
+    Boolean(
+      lt5909 &&
+        lt5909.nguon === 'nhom5909.nhom' &&
+        lt5909.canCuLoaiTru?.nguon === 'nhom6307.nhom' &&
+        S.checkItem('loaiTru', lt5909, S.sourcesFor('5909'), '5909') === null
+    ) &&
+      Boolean(
+        lt6307 &&
+          lt6307.nguon === 'ch63.chuong' &&
+          lt6307.canCuLoaiTru?.nguon === 'nhom5909.nhom' &&
+          S.checkItem('loaiTru', lt6307, S.sourcesFor('6307'), '6307') === null
+      ) &&
+      lt5909.dieuKien !== lt6307.dieuKien &&
+      !/;/.test(lt5909.dieuKien) &&
+      !/;/.test(lt6307.dieuKien) &&
+      v5909.loai.length === 0 && v5909.dat === v5909.tong && st5909.kiemTra?.tong === v5909.tong && st5909.kiemTra?.dat === v5909.dat &&
+      v6307.loai.length === 0 && v6307.dat === v6307.tong && st6307.kiemTra?.tong === v6307.tong && st6307.kiemTra?.dat === v6307.dat,
+    { lt5909, lt6307, loai5909: v5909.loai, loai6307: v6307.loai });
+
+  const c5Tu5909 = D.canhTu('5909', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '6307');
+  const c5Tu6307 = D.canhTu('6307', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '5909');
+  const c6Tu5909 = D.canhTu('5909', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '6307');
+  const c6Tu6307 = D.canhTu('6307', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '5909');
+  const giua = D.canhGiuaNhomConSong(['5909', '6307']).filter((e) => e.loai === 'C5' || e.loai === 'C6');
+  const mrTu5909 = D.moRongUngVien(['5909'], q195);
+  const mrTu6307 = D.moRongUngVien(['6307'], q195);
+  check('OZV-2175 (đồ thị 2 chiều & nhomLienQuanSoTay): bảng cạnh C5/C6 5909↔6307, canhGiuaNhomConSong, nhomLienQuanSoTay và moRongUngVien kéo 2 chiều cho ca 195',
+    c5Tu5909.some((e) => e.nguon === 'nhom5909.nhom' && e.canCuLoaiTru?.nguon === 'nhom6307.nhom') &&
+      c5Tu6307.some((e) => e.nguon === 'ch63.chuong' && e.canCuLoaiTru?.nguon === 'nhom5909.nhom') &&
+      c6Tu5909.length >= 1 &&
+      c6Tu6307.length >= 1 &&
+      giua.length >= 2 &&
+      nhomLienQuanSoTay('5909').includes('6307') &&
+      nhomLienQuanSoTay('6307').includes('5909') &&
+      mrTu5909.some((x) => x.nhom === '6307') &&
+      mrTu6307.some((x) => x.nhom === '5909'),
+    { c5Tu5909: c5Tu5909.length, c5Tu6307: c5Tu6307.length, giua: giua.length, mrTu5909, mrTu6307 });
+
+  const ht2 = phanTichHoiTruoc4So({ moTa: q195, ungVien: ['5909', '6307'] });
+  const ht3 = phanTichHoiTruoc4So({ moTa: q195, ungVien: ['5909', '5911', '6307'] });
+  check('OZV-2175 (phanTichHoiTruoc4So): tách đủ nhánh điều kiện theo cạnh C5 cho [5909, 6307] và [5909, 5911, 6307] trên ca 195',
+    ht2.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC &&
+      (ht2.nhanh || []).every((n) => String(n.nguon || '').startsWith('do-thi:C5:')) &&
+      new Set((ht2.nhanh || []).map((n) => n.dieuKien)).size === 2 &&
+      Boolean(ht2.dapAnDieuKien && ht2.dapAnDieuKien.includes('→ nhóm 5909 (') && ht2.dapAnDieuKien.includes('→ nhóm 6307 (')) &&
+      ht3.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC &&
+      new Set((ht3.nhanh || []).map((n) => n.dieuKien)).size === 3 &&
+      ['5909', '5911', '6307'].every((h) => ht3.dapAnDieuKien?.includes(`→ nhóm ${h} (`)),
+    { ht2: ht2.dapAnDieuKien, ht3: ht3.dapAnDieuKien });
+
+  const pb5909 = H.cauPhanBietNhom('5909', ['5909', '6307'], q195);
+  check('OZV-2175 (thuận 5909 → 6307): 5909 đứng đầu với [5909, 6307] sinh câu PHAN_BIET_NHOM từ nhom5909.nhom sang 63.07',
+    pb5909.length === 1 &&
+      pb5909[0].loai === 'PHAN_BIET_NHOM' &&
+      pb5909[0].canCu === 'so-tay' &&
+      pb5909[0].nguon === 'nhom5909.nhom' &&
+      /63\.07/.test(pb5909[0].questionVi) &&
+      /59\.09/.test(pb5909[0].questionVi),
+    pb5909);
+
+  const pb6307 = H.cauPhanBietNhom('6307', ['6307', '5909'], q195);
+  check('OZV-2175 (thuận 6307 → 5909): 6307 đứng đầu với [6307, 5909] sinh câu PHAN_BIET_NHOM từ ch63.chuong sang 59.09',
+    pb6307.length === 1 &&
+      pb6307[0].loai === 'PHAN_BIET_NHOM' &&
+      pb6307[0].canCu === 'so-tay' &&
+      pb6307[0].nguon === 'ch63.chuong' &&
+      /59\.09/.test(pb6307[0].questionVi) &&
+      /63\.07/.test(pb6307[0].questionVi),
+    pb6307);
+
+  const g5909 = soTayGates({ hs: '59090090', productText: q195, productName: q195, pool: [{ h4: '6307', from: 'test' }] });
+  const g6307 = soTayGates({ hs: '63079090', productText: q195, productName: q195, pool: [{ h4: '5909', from: 'test' }] });
+  check('OZV-2175 (soTayGates 2 chiều): bật cổng SO_TAY_LOAI_TRU cả 2 chiều 59.09 ↔ 63.07 trên ca 195',
+    (g5909.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '6307') &&
+      (g6307.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '5909'),
+    { g5909: g5909.challenges, g6307: g6307.challenges });
+
+  const dcVoi = 'Vòi cứu hỏa bằng vật liệu dệt dày khít';
+  const dcAoCuu = 'Áo cứu sinh và đai cứu sinh bằng vật liệu dệt';
+  const dcCo = 'Cờ đuôi nheo dùng trong ngành hàng hải';
+  const pbVoi5909 = H.cauPhanBietNhom('5909', ['5909', '6307'], dcVoi);
+  const pbVoi6307 = H.cauPhanBietNhom('6307', ['6307', '5909'], dcVoi);
+  const pbAo5909 = H.cauPhanBietNhom('5909', ['5909', '6307'], dcAoCuu);
+  const pbAo6307 = H.cauPhanBietNhom('6307', ['6307', '5909'], dcAoCuu);
+  const pbCo5909 = H.cauPhanBietNhom('5909', ['5909', '6307'], dcCo);
+  const pbCo6307 = H.cauPhanBietNhom('6307', ['6307', '5909'], dcCo);
+  const gDc5909 = soTayGates({ hs: '59090010', productText: dcVoi, productName: dcVoi });
+  const gDc6307 = soTayGates({ hs: '63072000', productText: dcAoCuu, productName: dcAoCuu });
+  check('OZV-2175 (đối chứng): vòi cứu hỏa, áo cứu sinh và cờ đuôi nheo không hỏi/kéo/bật cổng oan 59.09 ↔ 63.07',
+    pbVoi5909.length === 0 &&
+      pbVoi6307.length === 0 &&
+      pbAo5909.length === 0 &&
+      pbAo6307.length === 0 &&
+      pbCo5909.length === 0 &&
+      pbCo6307.length === 0 &&
+      !(gDc5909.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '6307') &&
+      !(gDc6307.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '5909') &&
+      !D.moRongUngVien(['5909'], dcVoi).some((x) => x.nhom === '6307') &&
+      !D.moRongUngVien(['6307'], dcAoCuu).some((x) => x.nhom === '5909') &&
+      !D.moRongUngVien(['6307'], dcCo).some((x) => x.nhom === '5909'),
+    { pbVoi5909, pbVoi6307, pbAo5909, pbAo6307, pbCo5909, pbCo6307, gDc5909: gDc5909.challenges, gDc6307: gDc6307.challenges });
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);

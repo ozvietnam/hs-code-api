@@ -468,5 +468,92 @@ assert('loaiTru mà câu nguồn chỉ nói "thường thuộc nhóm" bị loạ
   );
 }
 
+// ── OZV-2173: Cạnh loại trừ 2 chiều 60.05 <-> 60.06 cho ca 124 'Vải gió dệt kim' ──
+{
+  const { loadSoTay, soTayGates, nhomLienQuanSoTay } = require('../lib/so-tay-gates.js');
+  const { cauPhanBietNhom } = require('../lib/hoi-theo-so-tay.js');
+  const { phanTichHoiTruoc4So, TRANG_THAI_4SO } = require('../lib/do-thi/hoi-truoc-4so.js');
+  const D = require('../lib/do-thi/index.js');
+  D.datLai();
+
+  const moTa124 = 'Vải gió dệt kim / None / None';
+  const st6005 = loadSoTay('6005');
+  const st6006 = loadSoTay('6006');
+  const lt6005 = (st6005?.loaiTru || []).find((x) => x.sangNhom === '6006' && x.canCuLoaiTru?.nguon === 'nhom6006.nhom' && /vải gió dệt kim/i.test(x.dieuKien || ''));
+  const lt6006 = (st6006?.loaiTru || []).find((x) => x.sangNhom === '6005' && x.canCuLoaiTru?.nguon === 'nhom6005.nhom' && /vải gió dệt kim/i.test(x.dieuKien || ''));
+  const v6005 = verifySoTay(st6005, '6005', sourcesFor('6005'));
+  const v6006 = verifySoTay(st6006, '6006', sourcesFor('6006'));
+  assert(
+    'OZV-2173: sổ tay 6005 và 6006 có loaiTru 2 chiều 6005 <-> 6006 kèm canCuLoaiTru nguyên văn đạt 100% checkItem & verifySoTay',
+    Boolean(lt6005 && lt6005.nguon === 'nhom6005.nhom' && checkItem('loaiTru', lt6005, sourcesFor('6005'), '6005') === null)
+      && Boolean(lt6006 && lt6006.nguon === 'nhom6006.nhom' && checkItem('loaiTru', lt6006, sourcesFor('6006'), '6006') === null)
+      && lt6005.dieuKien !== lt6006.dieuKien
+      && !/;/.test(lt6005.dieuKien)
+      && !/;/.test(lt6006.dieuKien)
+      && v6005.loai.length === 0 && v6005.dat === v6005.tong && st6005.kiemTra?.tong === v6005.tong && st6005.kiemTra?.dat === v6005.dat
+      && v6006.loai.length === 0 && v6006.dat === v6006.tong && st6006.kiemTra?.tong === v6006.tong && st6006.kiemTra?.dat === v6006.dat,
+    JSON.stringify({ lt6005: Boolean(lt6005), lt6006: Boolean(lt6006), loai6005: v6005.loai, loai6006: v6006.loai, tong6005: v6005.tong, tong6006: v6006.tong }),
+  );
+
+  const c5Tu6005 = D.canhTu('6005', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '6006');
+  const c5Tu6006 = D.canhTu('6006', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '6005');
+  const c6Tu6005 = D.canhTu('6005', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '6006');
+  const c6Tu6006 = D.canhTu('6006', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '6005');
+  const giua = D.canhGiuaNhomConSong(['6005', '6006']).filter((e) => e.loai === 'C5' || e.loai === 'C6');
+  const mrTu6005 = D.moRongUngVien(['6005'], moTa124);
+  const mrTu6006 = D.moRongUngVien(['6006'], moTa124);
+  assert(
+    'OZV-2173: đồ thị C5/C6, canhGiuaNhomConSong, nhomLienQuanSoTay và moRongUngVien nối 2 chiều 6005 <-> 6006 cho ca 124',
+    c5Tu6005.some((e) => e.nguon === 'nhom6005.nhom' && e.canCuLoaiTru?.nguon === 'nhom6006.nhom')
+      && c5Tu6006.some((e) => e.nguon === 'nhom6006.nhom' && e.canCuLoaiTru?.nguon === 'nhom6005.nhom')
+      && c6Tu6005.length >= 1
+      && c6Tu6006.length >= 1
+      && giua.length >= 2
+      && nhomLienQuanSoTay('6005').includes('6006')
+      && nhomLienQuanSoTay('6006').includes('6005')
+      && mrTu6005.some((x) => x.nhom === '6006')
+      && mrTu6006.some((x) => x.nhom === '6005'),
+    JSON.stringify({ c5Tu6005: c5Tu6005.length, c5Tu6006: c5Tu6006.length, mrTu6005, mrTu6006 }),
+  );
+
+  const pb6005 = cauPhanBietNhom('6005', ['6005', '6006'], moTa124);
+  const pb6006 = cauPhanBietNhom('6006', ['6006', '6005'], moTa124);
+  const g6005 = soTayGates({ hs: '60053690', productText: moTa124, productName: moTa124, pool: [{ h4: '6006', from: 'test' }] });
+  const g6006 = soTayGates({ hs: '60063290', productText: moTa124, productName: moTa124, pool: [{ h4: '6005', from: 'test' }] });
+  const ht124 = phanTichHoiTruoc4So({ moTa: moTa124, ungVien: ['6005', '6006'] });
+  assert(
+    'OZV-2173 (thuận): cauPhanBietNhom, soTayGates và phanTichHoiTruoc4So hoạt động đúng 2 chiều 60.05 <-> 60.06 cho ca 124',
+    pb6005.length === 1 && pb6005[0].canCu === 'so-tay' && pb6005[0].nguon === 'nhom6005.nhom' && /60\.06/.test(pb6005[0].questionVi)
+      && pb6006.length === 1 && pb6006[0].canCu === 'so-tay' && pb6006[0].nguon === 'nhom6006.nhom' && /60\.05/.test(pb6006[0].questionVi)
+      && (g6005.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '6006')
+      && (g6006.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '6005')
+      && ht124.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC
+      && new Set((ht124.nhanh || []).map((n) => n.dieuKien)).size === 2
+      && Boolean(ht124.dapAnDieuKien && ht124.dapAnDieuKien.includes('→ nhóm 6005 (') && ht124.dapAnDieuKien.includes('→ nhóm 6006 ('))
+      && Boolean(ht124.cauHoi),
+    JSON.stringify({ pb6005, pb6006, g6005: g6005.challenges, g6006: g6006.challenges, ht124: ht124.dapAnDieuKien }),
+  );
+
+  const dcBangTamThuoc = 'Băng đã tẩm thuốc hoặc đóng gói để bán lẻ';
+  const dcVaiTheu = 'Vải thêu thuộc nhóm 58.10';
+  const dcThamDetKim = 'Các loại thảm dệt kim và thảm trải sàn';
+  const pbDc6005 = cauPhanBietNhom('6005', ['6005', '6006'], dcBangTamThuoc);
+  const pbDc6006 = cauPhanBietNhom('6006', ['6006', '6005'], dcVaiTheu);
+  const pbDcTham6005 = cauPhanBietNhom('6005', ['6005', '6006'], dcThamDetKim);
+  const gDc6005 = soTayGates({ hs: '60052100', productText: dcBangTamThuoc, productName: dcBangTamThuoc });
+  const gDc6006 = soTayGates({ hs: '60062200', productText: dcVaiTheu, productName: dcVaiTheu });
+  assert(
+    'OZV-2173 (đối chứng): băng tẩm thuốc, vải thêu và thảm dệt kim không hỏi oan / không kéo oan 60.05 <-> 60.06',
+    pbDc6005.length === 0
+      && pbDc6006.length === 0
+      && pbDcTham6005.length === 0
+      && !(gDc6005.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '6006')
+      && !(gDc6006.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '6005')
+      && !D.moRongUngVien(['6005'], dcBangTamThuoc).some((x) => x.nhom === '6006')
+      && !D.moRongUngVien(['6006'], dcVaiTheu).some((x) => x.nhom === '6005'),
+    JSON.stringify({ pbDc6005, pbDc6006, pbDcTham6005, gDc6005: gDc6005.challenges, gDc6006: gDc6006.challenges }),
+  );
+}
+
 console.log(`\n${passed}/${passed + failed} passed`);
 process.exit(failed ? 1 : 0);

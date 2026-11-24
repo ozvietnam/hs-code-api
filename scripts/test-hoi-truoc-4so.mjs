@@ -666,5 +666,142 @@ if (fs.existsSync(boChuanPath)) {
   );
 }
 
+// 8. OZV-2167 — Cạnh loại trừ 2 chiều 84.66 <-> 84.79 cho ca 132 tầng 4 số
+// ('Bộ bàn trượt bằng tay / nhôm / gá thiết bị máy công nghiệp căn chỉnh bằng tay')
+{
+  const S = require('../lib/so-tay.js');
+  const { loadSoTay, soTayGates, nhomLienQuanSoTay } = require('../lib/so-tay-gates.js');
+  const { cauPhanBietNhom } = require('../lib/hoi-theo-so-tay.js');
+  const D = require('../lib/do-thi/index.js');
+  D.datLai();
+
+  const q132 = 'Bộ bàn trượt bằng tay / nhôm / gá thiết bị máy công nghiệp căn chỉnh bằng tay';
+  const st8466 = loadSoTay('8466');
+  const st8479 = loadSoTay('8479');
+  const v8466 = S.verifySoTay(st8466, '8466');
+  const v8479 = S.verifySoTay(st8479, '8479');
+  check(
+    '[OZV-2167 verifySoTay] sổ tay 8466 và 8479 đạt 100% (0 mục không kiểm được nguồn)',
+    v8466.loai.length === 0 && v8479.loai.length === 0,
+    JSON.stringify({ loai8466: v8466.loai, loai8479: v8479.loai }),
+  );
+
+  const lt8466 = (st8466?.loaiTru || []).find((x) => x.sangNhom === '8479' && x.canCuLoaiTru?.nguon === 'nhom8479.nhom' && /bàn trượt/i.test(x.dieuKien || ''));
+  const lt8479 = (st8479?.loaiTru || []).find((x) => x.sangNhom === '8466' && x.canCuLoaiTru?.nguon === 'nhom8466.nhom' && /bàn trượt/i.test(x.dieuKien || ''));
+  check(
+    '[OZV-2167 căn cứ] sổ tay 8466 và 8479 có mục loaiTru 2 chiều 8466 <-> 8479 kèm canCuLoaiTru nguyên văn đạt checkItem',
+    Boolean(lt8466 && lt8466.nguon === 'nhom8466.nhom' && S.checkItem('loaiTru', lt8466, S.sourcesFor('8466'), '8466') === null)
+      && Boolean(lt8479 && lt8479.nguon === 'nhom8479.nhom' && S.checkItem('loaiTru', lt8479, S.sourcesFor('8479'), '8479') === null)
+      && lt8466.dieuKien !== lt8479.dieuKien
+      && !/;/.test(lt8466.dieuKien)
+      && !/;/.test(lt8479.dieuKien),
+    JSON.stringify({ lt8466: Boolean(lt8466), lt8479: Boolean(lt8479) }),
+  );
+
+  const c5Tu8466 = D.canhTu('8466', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8479');
+  const c5Tu8479 = D.canhTu('8479', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8466');
+  const c6Tu8466 = D.canhTu('8466', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '8479');
+  const c6Tu8479 = D.canhTu('8479', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '8466');
+  const mrTu8466 = D.moRongUngVien(['8466'], q132);
+  const mrTu8479 = D.moRongUngVien(['8479'], q132);
+  const rel8466 = nhomLienQuanSoTay('8466');
+  const rel8479 = nhomLienQuanSoTay('8479');
+  check(
+    '[OZV-2167 đồ thị 2 chiều] bảng cạnh có C5/C6 8466<->8479, nhomLienQuanSoTay 2 chiều và moRongUngVien kéo 2 chiều cho ca 132',
+    c5Tu8466.some((e) => e.nguon === 'nhom8466.nhom' && e.canCuLoaiTru?.nguon === 'nhom8479.nhom')
+      && c5Tu8479.some((e) => e.nguon === 'nhom8479.nhom' && e.canCuLoaiTru?.nguon === 'nhom8466.nhom')
+      && c6Tu8466.length >= 1
+      && c6Tu8479.length >= 1
+      && rel8466.includes('8479')
+      && rel8479.includes('8466')
+      && mrTu8466.some((x) => x.nhom === '8479')
+      && mrTu8479.some((x) => x.nhom === '8466'),
+    JSON.stringify({ c5Tu8466: c5Tu8466.length, c5Tu8479: c5Tu8479.length, mrTu8466, mrTu8479 }),
+  );
+
+  const ht132 = phanTichHoiTruoc4So({ moTa: q132, ungVien: ['8466', '8479'] });
+  const distinctDk132 = new Set((ht132.nhanh || []).map((n) => n.dieuKien)).size === 2;
+  const ht132Full = phanTichHoiTruoc4So({ moTa: q132, ungVien: ['7616', '8466', '8479'] });
+  const distinctDk132Full = new Set((ht132Full.nhanh || []).map((n) => n.dieuKien)).size === 3;
+  check(
+    '[OZV-2167 hoi-truoc-4so] ca 132 Bộ bàn trượt bằng tay tách nhánh điều kiện riêng biệt cho [8466, 8479] và [7616, 8466, 8479]',
+    ht132.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC
+      && distinctDk132
+      && Boolean(ht132.dapAnDieuKien && ht132.dapAnDieuKien.includes('→ nhóm 8466 (') && ht132.dapAnDieuKien.includes('→ nhóm 8479 ('))
+      && Boolean(ht132.cauHoi)
+      && ht132Full.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC
+      && distinctDk132Full
+      && ['7616', '8466', '8479'].every((h) => (ht132Full.dapAnDieuKien || '').includes(`→ nhóm ${h} (`)),
+    JSON.stringify({ trangThai: ht132.trangThai, distinctDk132, distinctDk132Full, dapAnDieuKien: ht132.dapAnDieuKien }),
+  );
+
+  const pb8466 = cauPhanBietNhom('8466', ['8466', '8479'], q132);
+  const pb8479 = cauPhanBietNhom('8479', ['8479', '8466'], q132);
+  check(
+    '[OZV-2167 thuận cauPhanBietNhom] sinh câu hỏi phân biệt 2 chiều 84.66 <-> 84.79 cho ca 132 Bộ bàn trượt bằng tay',
+    pb8466.length === 1
+      && pb8466[0].loai === 'PHAN_BIET_NHOM'
+      && pb8466[0].canCu === 'so-tay'
+      && pb8466[0].nguon === 'nhom8466.nhom'
+      && /84\.79/.test(pb8466[0].questionVi)
+      && /84\.66/.test(pb8466[0].questionVi)
+      && pb8479.length === 1
+      && pb8479[0].loai === 'PHAN_BIET_NHOM'
+      && pb8479[0].canCu === 'so-tay'
+      && pb8479[0].nguon === 'nhom8479.nhom'
+      && /84\.66/.test(pb8479[0].questionVi)
+      && /84\.79/.test(pb8479[0].questionVi),
+    JSON.stringify({ pb8466, pb8479 }),
+  );
+
+  const g8466To8479 = soTayGates({
+    hs: '84663000',
+    productText: q132,
+    productName: 'Bộ bàn trượt bằng tay',
+    candidateHeadings: ['8466', '8479'],
+  });
+  const g8479To8466 = soTayGates({
+    hs: '84798970',
+    productText: q132,
+    productName: 'Bộ bàn trượt bằng tay',
+    candidateHeadings: ['8479', '8466'],
+  });
+  check(
+    '[OZV-2167 thuận soTayGates] kích hoạt SO_TAY_LOAI_TRU đúng cả 2 chiều 8466 -> 8479 và 8479 -> 8466',
+    (g8466To8479.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8479'))
+      && (g8479To8466.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8466')),
+    JSON.stringify({ g8466To8479: g8466To8479.challenges, g8479To8466: g8479To8466.challenges }),
+  );
+
+  const dcMamCap = 'Mâm cặp 3 chấu tự định tâm dùng cho máy tiện kim loại';
+  const dcLamMat = 'Máy làm mát không khí bằng bay hơi dùng trong nhà xưởng';
+  const dcMc8466 = cauPhanBietNhom('8466', ['8466', '8479'], dcMamCap);
+  const dcMc8479 = cauPhanBietNhom('8479', ['8479', '8466'], dcMamCap);
+  const dcLm8466 = cauPhanBietNhom('8466', ['8466', '8479'], dcLamMat);
+  const dcLm8479 = cauPhanBietNhom('8479', ['8479', '8466'], dcLamMat);
+  const gDoi8466 = soTayGates({
+    hs: '84662090',
+    productText: dcMamCap,
+    productName: dcMamCap,
+  });
+  const gDoi8479 = soTayGates({
+    hs: '84796000',
+    productText: dcLamMat,
+    productName: dcLamMat,
+  });
+  check(
+    '[OZV-2167 đối chứng] mâm cặp máy tiện và máy làm mát không khí bay hơi không hỏi oan / không kéo oan 84.66 <-> 84.79',
+    dcMc8466.length === 0
+      && dcMc8479.length === 0
+      && dcLm8466.length === 0
+      && dcLm8479.length === 0
+      && !D.moRongUngVien(['8466'], dcMamCap).some((x) => x.nhom === '8479')
+      && !D.moRongUngVien(['8479'], dcLamMat).some((x) => x.nhom === '8466')
+      && !(gDoi8466.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8479'))
+      && !(gDoi8479.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8466')),
+    JSON.stringify({ dcMc8466, dcMc8479, dcLm8466, dcLm8479, gDoi8466: gDoi8466.challenges, gDoi8479: gDoi8479.challenges }),
+  );
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
