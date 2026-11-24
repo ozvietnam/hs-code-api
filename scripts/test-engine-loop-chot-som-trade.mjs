@@ -65,6 +65,25 @@ for (const c of CA) {
   check('giác hút không chotSom → earlyExitChotTuTrade null', ee === null, ee);
 }
 
+// OZV-2068: «bóng đèn led 9w» (chưa rõ đui xoáy hay đui ghim/cài) khớp bong-den-led nhưng KHÔNG chotSom → null;
+// đối chứng «bóng đèn led e27 9w» có đui E27 vẫn khớp bong-den-led-duoi-e27 high+chotSom → CHOT 85395210.
+{
+  const hints9w = tradeClassifyHints('bóng đèn led 9w');
+  const ee9w = earlyExitChotTuTrade(hints9w, 'bóng đèn led 9w');
+  check(
+    'OZV-2068 bóng đèn led 9w (chưa rõ đui) khớp bong-den-led nhưng không chotSom → earlyExitChotTuTrade null',
+    hints9w.matches.some((m) => m.entryId === 'bong-den-led') && ee9w === null,
+    { matches: hints9w.matches.map((m) => m.entryId), ee9w },
+  );
+  const hintsE27 = tradeClassifyHints('bóng đèn led e27 9w');
+  const eeE27 = earlyExitChotTuTrade(hintsE27, 'bóng đèn led e27 9w');
+  check(
+    'OZV-2068 đối chứng bóng đèn led e27 9w vẫn earlyExitChotTuTrade CHOT 85395210',
+    eeE27?.decision === 'CHOT' && eeE27?.hs === '85395210' && eeE27?._tradeEarly?.entryId === 'bong-den-led-duoi-e27',
+    eeE27,
+  );
+}
+
 for (const c of CA) {
   llmCalls = [];
   const out = await classifyLoop({ tenHang: c.ten }, { mic: false, crossCheck: false, timeoutMs: 8000 });
