@@ -165,6 +165,23 @@ const CAP_7 = [
     hangNguonSach: 'Nồi áp suất bằng thép không gỉ dùng cho nhà bếp',
     nguonDich: 'nhom8210.nhom',
   },
+  // OZV-2122: 25.08 ↔ 38.24 (Đất bentonite cho chó mèo đi vệ sinh — thuần → 2508; đã thêm hương liệu/phụ gia → 3824)
+  {
+    tu: '2508',
+    toi: '3824',
+    hangDungDich: 'Đất bentonite cho chó mèo đi vệ sinh đã thêm hương liệu',
+    moTaMoRong: 'Đất bentonite cho chó mèo đi vệ sinh / Bentonite / Vệ sinh thú cưng đã thêm hương liệu',
+    hangNguonSach: 'Bentonite nghiền dùng lọc dầu và tẩy dầu mỡ',
+    nguonDich: 'nhom3824.nhom',
+  },
+  {
+    tu: '3824',
+    toi: '2508',
+    hangDungDich: 'Đất bentonite chỉ nghiền tạo hạt chưa thêm hương liệu',
+    moTaMoRong: 'Đất bentonite cho chó mèo đi vệ sinh / Bentonite / chỉ nghiền tạo hạt chưa thêm hương liệu',
+    hangNguonSach: 'Chế phẩm hóa học hỗn hợp dùng làm chất gắn lõi đúc',
+    nguonDich: 'nhom2508.nhom',
+  },
 ];
 
 // 1. Đồ thị hai chiều C5 / C6 + moRongUngVien + nhomLienQuanSoTay
@@ -234,6 +251,8 @@ const CA_BIEN_NGUON = [
   { hs: '82100000', target: '7323', ten: 'Dụng cụ đánh trứng cơ khí có bánh răng quay tay' },
   { hs: '73239310', target: '8210', ten: 'Nồi hấp bằng thép không gỉ dùng cho nhà bếp' },
   { hs: '73231000', target: '8210', ten: 'Bùi nhùi bằng thép dùng cọ nồi' },
+  { hs: '25084090', target: '3824', ten: 'Bentonite nghiền dùng lọc dầu và tẩy dầu mỡ' },
+  { hs: '38249999', target: '2508', ten: 'Chế phẩm hóa học hỗn hợp dùng làm chất gắn lõi đúc' },
 ];
 for (const b of CA_BIEN_NGUON) {
   const g = soTayGates({ hs: b.hs, productText: b.ten, productName: b.ten });
@@ -483,6 +502,70 @@ for (const b of CA_BIEN_NGUON) {
     check('OZV-2097 (ngược): "máy xay cà phê bằng tay" và "nồi áp suất bằng thép không gỉ" không hỏi oan 82.10↔73.23',
       pbNguoc8210.length === 0 && pbNguoc7323.length === 0,
       JSON.stringify({ pbNguoc8210, pbNguoc7323 }));
+  } finally {
+    if (prevFlag === undefined) delete process.env.HS_HOI_THEO_SO_TAY;
+    else process.env.HS_HOI_THEO_SO_TAY = prevFlag;
+  }
+}
+
+// 7. OZV-2122: ca 190 tầng 4 số «Đất bentonite cho chó mèo đi vệ sinh / Bentonite / Vệ sinh thú cưng»
+//    sinh đủ câu hỏi phân biệt nhóm 4 số có căn cứ chú giải nguyên văn giữa 25.08 ↔ 38.24, kèm ca ngược.
+{
+  const moTa = 'Đất bentonite cho chó mèo đi vệ sinh / Bentonite / Vệ sinh thú cưng đã thêm hương liệu';
+  const prevFlag = process.env.HS_HOI_THEO_SO_TAY;
+  process.env.HS_HOI_THEO_SO_TAY = 'on';
+  try {
+    const out2508 = {
+      status: 'NEED_FACTS',
+      results: [{ hs: '250840', confidence: 54, hsLevel: 6 }],
+      nextAction: {
+        type: 'ASK_USER',
+        questions: [
+          { attribute: null, questionVi: 'Đất bentonite thuần nghiền/tạo hạt hay đã thêm hương liệu/chất phụ gia?' },
+        ],
+      },
+      dossier: {
+        product: { nameVi: 'Đất bentonite cho chó mèo đi vệ sinh' },
+        hypotheses: [
+          { chapter: '25', heading4: '2508', subheading6: '250840', confidence: 54 },
+          { chapter: '38', heading4: '3824', subheading6: '382499', confidence: 36 },
+        ],
+      },
+      missingStructured: [],
+    };
+    const kq2508 = H.apDung(out2508, { rawAttrs: { tenHang: moTa } });
+    const qs2508 = kq2508.nextAction?.questions || [];
+    const pb2508 = qs2508.filter((q) => q.loai === 'PHAN_BIET_NHOM');
+    check('OZV-2122 (thuận · dừng 250840): sinh câu PHAN_BIET_NHOM (25.08↔38.24 từ ch25.chuong) có đủ canCu/nguon/trich',
+      kq2508.nextAction?.canCuCauHoi === 'so-tay'
+      && pb2508.length >= 1
+      && pb2508.some((q) => q.canCu === 'so-tay' && q.nguon === 'ch25.chuong' && /38\.24/.test(q.questionVi)),
+      JSON.stringify(qs2508));
+
+    const out3824 = {
+      ...out2508,
+      results: [{ hs: '382499', confidence: 51, hsLevel: 6 }],
+      dossier: {
+        ...out2508.dossier,
+        hypotheses: [
+          { chapter: '38', heading4: '3824', subheading6: '382499', confidence: 51 },
+          { chapter: '25', heading4: '2508', subheading6: '250840', confidence: 39 },
+        ],
+      },
+    };
+    const kq3824 = H.apDung(out3824, { rawAttrs: { tenHang: moTa } });
+    const pb3824 = (kq3824.nextAction?.questions || []).filter((q) => q.loai === 'PHAN_BIET_NHOM');
+    check('OZV-2122 (thuận · dừng 382499): sinh câu PHAN_BIET_NHOM (38.24↔25.08 từ ch38.chuong) có đủ canCu/nguon/trich',
+      kq3824.nextAction?.canCuCauHoi === 'so-tay'
+      && pb3824.length >= 1
+      && pb3824.some((q) => q.canCu === 'so-tay' && q.nguon === 'ch38.chuong' && /25\.08/.test(q.questionVi)),
+      JSON.stringify(pb3824));
+
+    const pbNguoc2508 = H.cauPhanBietNhom('2508', ['2508', '3824'], 'Bentonite nghiền dùng lọc dầu và tẩy dầu mỡ');
+    const pbNguoc3824 = H.cauPhanBietNhom('3824', ['3824', '2508'], 'Chế phẩm hóa học hỗn hợp dùng làm chất gắn lõi đúc');
+    check('OZV-2122 (ngược): "Bentonite nghiền lọc dầu" và "chế phẩm gắn lõi đúc" không hỏi oan 25.08↔38.24',
+      pbNguoc2508.length === 0 && pbNguoc3824.length === 0,
+      JSON.stringify({ pbNguoc2508, pbNguoc3824 }));
   } finally {
     if (prevFlag === undefined) delete process.env.HS_HOI_THEO_SO_TAY;
     else process.env.HS_HOI_THEO_SO_TAY = prevFlag;
