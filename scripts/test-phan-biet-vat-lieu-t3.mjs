@@ -211,5 +211,95 @@ check(`ReDoS: 40.000 từ lặp (${REDOS_LAU.length} ký tự) chạy ${msRedos}
     { pbDoi8201, pbDoi7019 });
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// OZV-2112 — Cạnh loại trừ 2 chiều 85.43 ↔ 84.71 cho ca 47 tầng 4 số
+// ('Bộ xử lý hình ảnh / None / xử lý hình ảnh cho màn hình LED')
+{
+  const D = require('../lib/do-thi/index.js');
+  const ST = require('../lib/so-tay.js');
+  const H = require('../lib/hoi-theo-so-tay.js');
+  const { soTayGates, nhomLienQuanSoTay } = require('../lib/so-tay-gates.js');
+  D.datLai();
+
+  const s8543 = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'so-tay', '8543.json'), 'utf8'));
+  const s8471 = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'so-tay', '8471.json'), 'utf8'));
+  const v8543 = ST.verifySoTay(s8543, '8543');
+  const v8471 = ST.verifySoTay(s8471, '8471');
+  check('OZV-2112: verifySoTay 8543 và 8471 đạt 100% (0 mục bị loại)',
+    v8543.loai.length === 0 && v8471.loai.length === 0,
+    { loai8543: v8543.loai, loai8471: v8471.loai });
+
+  const c5_8543_8471 = D.canhTu('8543', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8471');
+  const c5_8471_8543 = D.canhTu('8471', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8543');
+  const c6_8471_8543 = D.canhTu('8471', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '8543');
+  const c6_8543_8471 = D.canhTu('8543', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '8471');
+  check('OZV-2112: đồ thị 2 chiều C5/C6 giữa 8543 ↔ 8471 giữ đủ trích nguồn + canCuLoaiTru',
+    c5_8543_8471.some((e) => e.nguon === 'nhom8543.nhom' && e.canCuLoaiTru?.nguon === 'nhom8471.nhom')
+    && c5_8471_8543.some((e) => e.nguon === 'nhom8471.nhom' && e.canCuLoaiTru?.nguon === 'nhom8543.nhom')
+    && c6_8471_8543.length >= 1
+    && c6_8543_8471.length >= 1,
+    { c5_8543_8471: c5_8543_8471.length, c5_8471_8543: c5_8471_8543.length });
+
+  const moTaCa47 = 'Bộ xử lý hình ảnh / None / xử lý hình ảnh cho màn hình LED';
+  const mo8543 = D.moRongUngVien(['8543'], moTaCa47, { toiDa: 10 });
+  const mo8471 = D.moRongUngVien(['8471'], moTaCa47, { toiDa: 10 });
+  check('OZV-2112: moRongUngVien kéo 2 chiều 8543 ↔ 8471 trên ca 47 "Bộ xử lý hình ảnh / xử lý hình ảnh cho màn hình LED"',
+    mo8543.some((x) => x.nhom === '8471') && mo8471.some((x) => x.nhom === '8543'),
+    { tu8543: mo8543.map((x) => x.nhom), tu8471: mo8471.map((x) => x.nhom) });
+
+  const rel8543 = nhomLienQuanSoTay('8543');
+  const rel8471 = nhomLienQuanSoTay('8471');
+  check('OZV-2112: nhomLienQuanSoTay hai chiều 8543 ↔ 8471',
+    rel8543.includes('8471') && rel8471.includes('8543'),
+    { rel8543, rel8471 });
+
+  const g8543To8471 = soTayGates({
+    hs: '85437090',
+    productText: 'Bộ xử lý hình ảnh xử lý hình ảnh cho màn hình LED là máy xử lý dữ liệu tự động đáp ứng Chú giải 6(A)',
+    productName: 'Bộ xử lý hình ảnh xử lý hình ảnh cho màn hình LED là máy xử lý dữ liệu tự động đáp ứng Chú giải 6(A)',
+    candidateHeadings: ['8543', '8471'],
+  });
+  const g8471To8543 = soTayGates({
+    hs: '84718090',
+    productText: 'Bộ xử lý hình ảnh xử lý hình ảnh cho màn hình LED chỉ có chức năng riêng xử lý chia tín hiệu video',
+    productName: 'Bộ xử lý hình ảnh xử lý hình ảnh cho màn hình LED chỉ có chức năng riêng xử lý chia tín hiệu video',
+    candidateHeadings: ['8471', '8543'],
+  });
+  check('OZV-2112 (thuận soTayGates): kích hoạt SO_TAY_LOAI_TRU đúng cả 2 chiều 8543 → 8471 và 8471 → 8543',
+    (g8543To8471.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8471'))
+    && (g8471To8543.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8543')),
+    { g8543To8471: g8543To8471.challenges, g8471To8543: g8471To8543.challenges });
+
+  const gDoi8543 = soTayGates({
+    hs: '85431000',
+    productText: 'Máy gia tốc hạt dùng trong phòng thí nghiệm',
+    productName: 'Máy gia tốc hạt dùng trong phòng thí nghiệm',
+    candidateHeadings: ['8543', '8471'],
+  });
+  const gDoi8471 = soTayGates({
+    hs: '84713020',
+    productText: 'Máy tính xách tay dạng notebook dùng văn phòng',
+    productName: 'Máy tính xách tay dạng notebook dùng văn phòng',
+    candidateHeadings: ['8471', '8543'],
+  });
+  check('OZV-2112 (đối chứng soTayGates): hàng thật của 8543 (máy gia tốc hạt) và 8471 (máy tính xách tay) không kích hoạt oan 8543 ↔ 8471',
+    !(gDoi8543.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8471'))
+    && !(gDoi8471.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8543')),
+    { gDoi8543: gDoi8543.challenges, gDoi8471: gDoi8471.challenges });
+
+  const pb8543 = H.cauPhanBietNhom('8543', ['8543', '8471'], moTaCa47);
+  const pb8471 = H.cauPhanBietNhom('8471', ['8471', '8543'], moTaCa47);
+  check('OZV-2112 (thuận cauPhanBietNhom): sinh câu PHAN_BIET_NHOM 2 chiều 85.43 ↔ 84.71 cho ca 47',
+    pb8543.length === 1 && pb8543[0].nguon === 'nhom8543.nhom' && /84\.71/.test(pb8543[0].questionVi)
+    && pb8471.length === 1 && pb8471[0].nguon === 'nhom8471.nhom' && /85\.43/.test(pb8471[0].questionVi),
+    { pb8543, pb8471 });
+
+  const pbDoi8543 = H.cauPhanBietNhom('8543', ['8543', '8471'], 'Máy gia tốc hạt dùng trong phòng thí nghiệm');
+  const pbDoi8471 = H.cauPhanBietNhom('8471', ['8471', '8543'], 'Máy tính xách tay dạng notebook dùng văn phòng');
+  check('OZV-2112 (đối chứng cauPhanBietNhom): không hỏi oan 85.43 ↔ 84.71 trên hàng không liên quan',
+    pbDoi8543.length === 0 && pbDoi8471.length === 0,
+    { pbDoi8543, pbDoi8471 });
+}
+
 console.log(`\nvật liệu tổng hợp (composite) — OZV-581 / OZV-540 PA-3: ${passed} PASS, ${failed} FAIL`);
 process.exit(failed ? 1 : 0);
