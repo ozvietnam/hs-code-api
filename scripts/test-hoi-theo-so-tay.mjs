@@ -609,5 +609,93 @@ const ketQuaSong = (raw = VAN) => ketQuaGia('848180', raw, {}, ['848120']);
     { dcQuanDai6103, dcQuanDai6111, dcJacket6103, dcJacket6111, dcGangTay6103, dcGangTay6111 });
 }
 
+// 14) OZV-2152 — cạnh loại trừ 2 chiều 63.07 <-> 58.02 cho ca 134 tầng 4 số «Khăn lau xe / Vải cotton / Lau xe»
+{
+  const S = require('../lib/so-tay.js');
+  const D = require('../lib/do-thi/index.js');
+  const { phanTichHoiTruoc4So, TRANG_THAI_4SO } = require('../lib/do-thi/hoi-truoc-4so.js');
+  const q134 = 'Khăn lau xe / Vải cotton / Lau xe';
+  for (const nh of ['6307', '5802']) {
+    fs.copyFileSync(path.join('data/so-tay', `${nh}.json`), path.join(TEST_DATA_DIR, 'so-tay', `${nh}.json`));
+  }
+  D.datLai();
+
+  const st6307 = loadSoTay('6307');
+  const st5802 = loadSoTay('5802');
+  const lt6307 = (st6307?.loaiTru || []).find((x) => x.sangNhom === '5802');
+  const lt5802 = (st5802?.loaiTru || []).find((x) => x.sangNhom === '6307');
+  check('OZV-2152 (căn cứ): sổ tay 6307 và 5802 có loaiTru 2 chiều kèm canCuLoaiTru nguyên văn đạt checkItem',
+    Boolean(
+      lt6307 &&
+        lt6307.nguon === 'nhom6307.nhom' &&
+        lt6307.canCuLoaiTru?.nguon === 'nhom5802.nhom' &&
+        S.checkItem('loaiTru', lt6307, S.sourcesFor('6307'), '6307') === null
+    ) &&
+      Boolean(
+        lt5802 &&
+          lt5802.nguon === 'nhom5802.nhom' &&
+          lt5802.canCuLoaiTru?.nguon === 'nhom6307.nhom' &&
+          S.checkItem('loaiTru', lt5802, S.sourcesFor('5802'), '5802') === null
+      ) &&
+      lt6307.dieuKien !== lt5802.dieuKien,
+    { lt6307, lt5802 });
+
+  const c5Tu6307 = D.canhTu('6307', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '5802');
+  const c5Tu5802 = D.canhTu('5802', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '6307');
+  const mrTu6307 = D.moRongUngVien(['6307'], q134);
+  const mrTu5802 = D.moRongUngVien(['5802'], q134);
+  check('OZV-2152 (đồ thị 2 chiều): bảng cạnh C5 6307↔5802 và moRongUngVien kéo 2 chiều cho ca 134',
+    c5Tu6307.length >= 1 &&
+      c5Tu5802.length >= 1 &&
+      mrTu6307.some((x) => x.nhom === '5802') &&
+      mrTu5802.some((x) => x.nhom === '6307'),
+    { c5Tu6307: c5Tu6307.length, c5Tu5802: c5Tu5802.length, mrTu6307, mrTu5802 });
+
+  const ht2 = phanTichHoiTruoc4So({ moTa: q134, ungVien: ['6307', '5802'] });
+  check('OZV-2152 (phanTichHoiTruoc4So): tách đủ nhánh điều kiện theo cạnh C5 cho [6307, 5802] trên ca 134',
+    ht2.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC &&
+      (ht2.nhanh || []).every((n) => String(n.nguon || '').startsWith('do-thi:C5:')) &&
+      new Set((ht2.nhanh || []).map((n) => n.dieuKien)).size === 2 &&
+      Boolean(ht2.dapAnDieuKien && ht2.dapAnDieuKien.includes('→ nhóm 6307 (') && ht2.dapAnDieuKien.includes('→ nhóm 5802 (')),
+    { ht2: ht2.dapAnDieuKien });
+
+  const pb6307 = H.cauPhanBietNhom('6307', ['6307', '5802'], q134);
+  check('OZV-2152 (thuận 6307 → 5802): 6307 đứng đầu với [6307, 5802] sinh câu PHAN_BIET_NHOM từ nhom6307.nhom sang 58.02',
+    pb6307.length === 1 &&
+      pb6307[0].loai === 'PHAN_BIET_NHOM' &&
+      pb6307[0].canCu === 'so-tay' &&
+      pb6307[0].nguon === 'nhom6307.nhom' &&
+      /58\.02/.test(pb6307[0].questionVi) &&
+      /63\.07/.test(pb6307[0].questionVi),
+    pb6307);
+
+  const pb5802 = H.cauPhanBietNhom('5802', ['5802', '6307'], q134);
+  check('OZV-2152 (thuận 5802 → 6307): 5802 đứng đầu với [5802, 6307] sinh câu PHAN_BIET_NHOM từ nhom5802.nhom sang 63.07',
+    pb5802.length === 1 &&
+      pb5802[0].loai === 'PHAN_BIET_NHOM' &&
+      pb5802[0].canCu === 'so-tay' &&
+      pb5802[0].nguon === 'nhom5802.nhom' &&
+      /63\.07/.test(pb5802[0].questionVi) &&
+      /58\.02/.test(pb5802[0].questionVi),
+    pb5802);
+
+  const dcAoCuu6307 = H.cauPhanBietNhom('6307', ['6307', '5802'], 'Áo cứu sinh và đai cứu sinh bằng vật liệu dệt');
+  const dcAoCuu5802 = H.cauPhanBietNhom('5802', ['5802', '6307'], 'Áo cứu sinh và đai cứu sinh bằng vật liệu dệt');
+  const dcCo6307 = H.cauPhanBietNhom('6307', ['6307', '5802'], 'Cờ đuôi nheo dùng trong ngành hàng hải');
+  const dcCo5802 = H.cauPhanBietNhom('5802', ['5802', '6307'], 'Cờ đuôi nheo dùng trong ngành hàng hải');
+  const dcTham6307 = H.cauPhanBietNhom('6307', ['6307', '5802'], 'Tấm thảm chần nổi vòng dùng để trải sàn');
+  const dcTham5802 = H.cauPhanBietNhom('5802', ['5802', '6307'], 'Tấm thảm chần nổi vòng dùng để trải sàn');
+  check('OZV-2152 (đối chứng): áo cứu sinh, cờ đuôi nheo và thảm chần không hỏi/kéo oan 63.07 ↔ 58.02',
+    dcAoCuu6307.length === 0 &&
+      dcAoCuu5802.length === 0 &&
+      dcCo6307.length === 0 &&
+      dcCo5802.length === 0 &&
+      dcTham6307.length === 0 &&
+      dcTham5802.length === 0 &&
+      !D.moRongUngVien(['6307'], 'Áo cứu sinh và đai cứu sinh bằng vật liệu dệt').some((x) => x.nhom === '5802') &&
+      !D.moRongUngVien(['5802'], 'Tấm thảm chần nổi vòng dùng để trải sàn').some((x) => x.nhom === '6307'),
+    { dcAoCuu6307, dcAoCuu5802, dcCo6307, dcCo5802, dcTham6307, dcTham5802 });
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
