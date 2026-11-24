@@ -377,5 +377,96 @@ assert('loaiTru mà câu nguồn chỉ nói "thường thuộc nhóm" bị loạ
   );
 }
 
+// ── OZV-2165: Cạnh loại trừ 2 chiều 61.04 <-> 61.11 cho ca 176 'Bộ quần áo trẻ em' ──
+{
+  const { loadSoTay, soTayGates, nhomLienQuanSoTay } = require('../lib/so-tay-gates.js');
+  const { cauPhanBietNhom } = require('../lib/hoi-theo-so-tay.js');
+  const { phanTichHoiTruoc4So, TRANG_THAI_4SO } = require('../lib/do-thi/hoi-truoc-4so.js');
+  const D = require('../lib/do-thi/index.js');
+  D.datLai();
+
+  const moTa176 = 'Bộ quần áo trẻ em / dệt kim cotton 90%, polyester 5% / None';
+  const moTa99 = 'Váy liền thân trẻ em gái / Vải dệt kim sợi tổng hợp / Trang phục trẻ em';
+  const st6104 = loadSoTay('6104');
+  const st6111 = loadSoTay('6111');
+  const lt6104 = (st6104?.loaiTru || []).find((x) => x.sangNhom === '6111' && x.canCuLoaiTru?.nguon === 'nhom6111.nhom' && /trẻ em gái|86 cm/i.test(x.dieuKien || ''));
+  const lt6111 = (st6111?.loaiTru || []).find((x) => x.sangNhom === '6104' && x.canCuLoaiTru?.nguon === 'nhom6104.nhom' && /trẻ em gái|86 cm/i.test(x.dieuKien || ''));
+  const v6104 = verifySoTay(st6104, '6104', sourcesFor('6104'));
+  const v6111 = verifySoTay(st6111, '6111', sourcesFor('6111'));
+  assert(
+    'OZV-2165: sổ tay 6104 và 6111 có loaiTru 2 chiều 6104 <-> 6111 kèm canCuLoaiTru nguyên văn đạt 100% checkItem & verifySoTay',
+    Boolean(lt6104 && lt6104.nguon === 'ch61.chuong' && checkItem('loaiTru', lt6104, sourcesFor('6104'), '6104') === null)
+      && Boolean(lt6111 && lt6111.nguon === 'nhom6111.nhom' && checkItem('loaiTru', lt6111, sourcesFor('6111'), '6111') === null)
+      && lt6104.dieuKien !== lt6111.dieuKien
+      && !/;/.test(lt6104.dieuKien)
+      && !/;/.test(lt6111.dieuKien)
+      && v6104.loai.length === 0 && v6104.dat === v6104.tong && st6104.kiemTra?.tong === v6104.tong && st6104.kiemTra?.dat === v6104.dat
+      && v6111.loai.length === 0 && v6111.dat === v6111.tong && st6111.kiemTra?.tong === v6111.tong && st6111.kiemTra?.dat === v6111.dat,
+    JSON.stringify({ lt6104: Boolean(lt6104), lt6111: Boolean(lt6111), loai6104: v6104.loai, loai6111: v6111.loai, tong6104: v6104.tong, tong6111: v6111.tong }),
+  );
+
+  const c5Tu6104 = D.canhTu('6104', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '6111');
+  const c5Tu6111 = D.canhTu('6111', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '6104');
+  const c6Tu6104 = D.canhTu('6104', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '6111');
+  const c6Tu6111 = D.canhTu('6111', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '6104');
+  const giua = D.canhGiuaNhomConSong(['6104', '6111']).filter((e) => e.loai === 'C5' || e.loai === 'C6');
+  const mrTu6104 = D.moRongUngVien(['6104'], moTa176);
+  const mrTu6111 = D.moRongUngVien(['6111'], moTa176);
+  assert(
+    'OZV-2165: đồ thị C5/C6, canhGiuaNhomConSong, nhomLienQuanSoTay và moRongUngVien nối 2 chiều 6104 <-> 6111 cho ca 176',
+    c5Tu6104.some((e) => e.nguon === 'ch61.chuong' && e.canCuLoaiTru?.nguon === 'nhom6111.nhom')
+      && c5Tu6111.some((e) => e.nguon === 'nhom6111.nhom' && e.canCuLoaiTru?.nguon === 'nhom6104.nhom')
+      && c6Tu6104.length >= 1
+      && c6Tu6111.length >= 1
+      && giua.length >= 2
+      && nhomLienQuanSoTay('6104').includes('6111')
+      && nhomLienQuanSoTay('6111').includes('6104')
+      && mrTu6104.some((x) => x.nhom === '6111')
+      && mrTu6111.some((x) => x.nhom === '6104'),
+    JSON.stringify({ c5Tu6104: c5Tu6104.length, c5Tu6111: c5Tu6111.length, mrTu6104, mrTu6111 }),
+  );
+
+  const pb6104 = cauPhanBietNhom('6104', ['6104', '6111'], moTa176);
+  const pb6111 = cauPhanBietNhom('6111', ['6111', '6104'], moTa176);
+  const g6104 = soTayGates({ hs: '61042200', productText: moTa176, productName: moTa176, pool: [{ h4: '6111', from: 'test' }] });
+  const g6111 = soTayGates({ hs: '61112000', productText: moTa176, productName: moTa176, pool: [{ h4: '6104', from: 'test' }] });
+  const ht176 = phanTichHoiTruoc4So({ moTa: moTa176, ungVien: ['6104', '6111'] });
+  const ht99 = phanTichHoiTruoc4So({ moTa: moTa99, ungVien: ['6104', '6111'] });
+  assert(
+    'OZV-2165 (thuận): cauPhanBietNhom, soTayGates và phanTichHoiTruoc4So hoạt động đúng 2 chiều 61.04 <-> 61.11 cho ca 176 (và ca 99)',
+    pb6104.length === 1 && pb6104[0].canCu === 'so-tay' && pb6104[0].nguon === 'ch61.chuong' && /61\.11/.test(pb6104[0].questionVi)
+      && pb6111.length === 1 && pb6111[0].canCu === 'so-tay' && pb6111[0].nguon === 'nhom6111.nhom' && /61\.04/.test(pb6111[0].questionVi)
+      && (g6104.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '6111')
+      && (g6111.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '6104')
+      && ht176.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC
+      && new Set((ht176.nhanh || []).map((n) => n.dieuKien)).size === 2
+      && Boolean(ht176.dapAnDieuKien && ht176.dapAnDieuKien.includes('→ nhóm 6104 (') && ht176.dapAnDieuKien.includes('→ nhóm 6111 ('))
+      && Boolean(ht176.cauHoi)
+      && ht99.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC
+      && Boolean(ht99.dapAnDieuKien && ht99.dapAnDieuKien.includes('→ nhóm 6104 (') && ht99.dapAnDieuKien.includes('→ nhóm 6111 (')),
+    JSON.stringify({ pb6104, pb6111, g6104: g6104.challenges, g6111: g6111.challenges, ht176: ht176.dapAnDieuKien, ht99: ht99.dapAnDieuKien }),
+  );
+
+  const dcVayNu = 'Váy dài nữ dệt kim từ sợi tổng hợp dùng cho người lớn';
+  const dcJacketNu = 'Áo jacket nữ dệt kim từ lông cừu';
+  const dcGangTay = 'Găng tay trẻ sơ sinh dệt kim từ bông';
+  const pbDc6104 = cauPhanBietNhom('6104', ['6104', '6111'], dcVayNu);
+  const pbDc6111 = cauPhanBietNhom('6111', ['6111', '6104'], dcGangTay);
+  const pbDcJacket6104 = cauPhanBietNhom('6104', ['6104', '6111'], dcJacketNu);
+  const gDc6104 = soTayGates({ hs: '61044300', productText: dcVayNu, productName: dcVayNu });
+  const gDc6111 = soTayGates({ hs: '61112000', productText: dcGangTay, productName: dcGangTay });
+  assert(
+    'OZV-2165 (đối chứng): váy dài nữ, áo jacket nữ và găng tay trẻ sơ sinh không hỏi oan / không kéo oan 61.04 <-> 61.11',
+    pbDc6104.length === 0
+      && pbDc6111.length === 0
+      && pbDcJacket6104.length === 0
+      && !(gDc6104.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '6111')
+      && !(gDc6111.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && x.target === '6104')
+      && !D.moRongUngVien(['6104'], dcVayNu).some((x) => x.nhom === '6111')
+      && !D.moRongUngVien(['6111'], dcGangTay).some((x) => x.nhom === '6104'),
+    JSON.stringify({ pbDc6104, pbDc6111, pbDcJacket6104, gDc6104: gDc6104.challenges, gDc6111: gDc6111.challenges }),
+  );
+}
+
 console.log(`\n${passed}/${passed + failed} passed`);
 process.exit(failed ? 1 : 0);
