@@ -221,5 +221,158 @@ assert('dữ liệu thật: không có trường nguyên văn nào lọt ra (ch�
   rt.reset();
 }
 
+// ───────────── OZV-2210: cạnh loại trừ 2 chiều 85.36 <-> 85.04 (ca 103 Rơ le bán dẫn) ─────────────
+{
+  const D = require('../lib/do-thi/index.js');
+  const { soTayGates, loadSoTay } = require('../lib/so-tay-gates.js');
+  const { cauPhanBietNhom } = require('../lib/hoi-theo-so-tay.js');
+  const { phanTichHoiTruoc4So, TRANG_THAI_4SO } = require('../lib/do-thi/hoi-truoc-4so.js');
+
+  fs.mkdirSync(dataPath('so-tay'), { recursive: true });
+  for (const h of ['8536', '8504', '8535']) {
+    fs.copyFileSync(path.join(GOC, 'data', 'so-tay', `${h}.json`), dataPath('so-tay', `${h}.json`));
+  }
+  D.datLai();
+
+  const moTa103 = 'Rơ le bán dẫn / None / Đóng cắt tải trong hệ thống điều khiển tự động';
+  const hangThuan8536 = 'Rơ le bán dẫn đóng cắt tải trong hệ thống điều khiển tự động dùng cho điện áp không quá 1000 V';
+  const hangThuan8504 = 'Rơ le bán dẫn thực chất là máy biến áp, thiết bị biến đổi tĩnh điện hoặc cuộn cảm thuộc nhóm 85.04';
+  const hangDcOCam = 'Băng dính y tế đã đóng gói để bán lẻ';
+  const hangDcBienDong = 'Nhãn phù hiệu dệt kim hoặc móc bằng cotton';
+
+  const s8536 = JSON.parse(fs.readFileSync(path.join(GOC, 'data', 'so-tay', '8536.json'), 'utf8'));
+  const s8504 = JSON.parse(fs.readFileSync(path.join(GOC, 'data', 'so-tay', '8504.json'), 'utf8'));
+  const v8536 = S.verifySoTay(s8536, '8536');
+  const v8504 = S.verifySoTay(s8504, '8504');
+  assert('[OZV-2210 verifySoTay] sổ tay 8536 và 8504 đạt 100% (0 mục bị loại)',
+    v8536.loai.length === 0 && v8504.loai.length === 0
+    && v8536.tong === s8536.kiemTra.tong && v8536.dat === s8536.kiemTra.dat
+    && v8504.tong === s8504.kiemTra.tong && v8504.dat === s8504.kiemTra.dat,
+    JSON.stringify({ loai8536: v8536.loai.slice(0, 2), loai8504: v8504.loai.slice(0, 2), v8536: { tong: v8536.tong, dat: v8536.dat }, v8504: { tong: v8504.tong, dat: v8504.dat } }));
+
+  const lt8536 = (s8536.loaiTru || []).find((x) => x.sangNhom === '8504' && x.canCuLoaiTru);
+  const lt8504 = (s8504.loaiTru || []).find((x) => x.sangNhom === '8536' && x.canCuLoaiTru);
+  assert('[OZV-2210 canCuLoaiTru] loaiTru 2 chiều 8536 <-> 8504 kèm canCuLoaiTru nguyên văn đạt checkItem',
+    Boolean(lt8536 && lt8536.nguon === 'nhom8536.nhom' && lt8536.canCuLoaiTru?.nguon === 'nhom8504.nhom'
+      && lt8536.dieuKien !== lt8504?.dieuKien && !/;/.test(lt8536.dieuKien || '')
+      && /Rơ le bán dẫn/.test(lt8536.dieuKien) && /máy biến áp|biến đổi tĩnh|cuộn cảm/.test(lt8536.dieuKien)
+      && S.checkItem('loaiTru', lt8536, S.sourcesFor('8536'), '8536') === null)
+    && Boolean(lt8504 && lt8504.nguon === 'nhom8504.nhom' && lt8504.canCuLoaiTru?.nguon === 'nhom8536.nhom'
+      && !/;/.test(lt8504.dieuKien || '') && /Rơ le bán dẫn/.test(lt8504.dieuKien) && /1000/.test(lt8504.dieuKien)
+      && S.checkItem('loaiTru', lt8504, S.sourcesFor('8504'), '8504') === null),
+    JSON.stringify({ lt8536, lt8504 }));
+
+  const c5Tu8536 = D.canhTu('8536', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8504');
+  const c5Tu8504 = D.canhTu('8504', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8536');
+  const c6Tu8536 = D.canhTu('8536', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '8504');
+  const c6Tu8504 = D.canhTu('8504', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '8536');
+  const giua = D.canhGiuaNhomConSong(['8536', '8504']).filter((e) => e.loai === 'C5' || e.loai === 'C6');
+  const mr8536 = D.moRongUngVien(['8536'], moTa103, { toiDa: 10 });
+  const mr8504 = D.moRongUngVien(['8504'], moTa103, { toiDa: 10 });
+  assert('[OZV-2210 đồ thị 2 chiều] C5/C6 8536<->8504, canhGiuaNhomConSong >= 2 và moRongUngVien kéo 2 chiều cho ca 103',
+    c5Tu8536.some((e) => e.nguon === 'nhom8536.nhom' && e.canCuLoaiTru?.nguon === 'nhom8504.nhom')
+    && c5Tu8504.some((e) => e.nguon === 'nhom8504.nhom' && e.canCuLoaiTru?.nguon === 'nhom8536.nhom')
+    && c6Tu8536.length >= 1 && c6Tu8504.length >= 1 && giua.length >= 2
+    && mr8536.some((x) => x.nhom === '8504') && mr8504.some((x) => x.nhom === '8536'),
+    JSON.stringify({
+      c5: c5Tu8536.length, c5r: c5Tu8504.length, giua: giua.length,
+      mr8536: mr8536.map((x) => x.nhom), mr8504: mr8504.map((x) => x.nhom),
+    }));
+
+  const rel8536 = [...new Set((loadSoTay('8536')?.loaiTru || []).flatMap((x) => String(x.sangNhom || '').split(/[|,;\s]+/).map((t) => t.replace(/\D/g, '').slice(0, 4)).filter((t) => t.length === 4)))];
+  const rel8504 = [...new Set((loadSoTay('8504')?.loaiTru || []).flatMap((x) => String(x.sangNhom || '').split(/[|,;\s]+/).map((t) => t.replace(/\D/g, '').slice(0, 4)).filter((t) => t.length === 4)))];
+  assert('[OZV-2210 nhomLienQuanSoTay] liên kết hai chiều 8536 <-> 8504',
+    rel8536.includes('8504') && rel8504.includes('8536'),
+    JSON.stringify({ rel8536, rel8504 }));
+
+  const pb8536 = cauPhanBietNhom('8536', ['8536', '8504'], moTa103);
+  const pb8504 = cauPhanBietNhom('8504', ['8504', '8536'], moTa103);
+  assert('[OZV-2210 cauPhanBietNhom] 8536 đứng đầu sinh câu phân biệt 85.36↔85.04 từ nhom8536.nhom',
+    pb8536.length >= 1 && pb8536[0].loai === 'PHAN_BIET_NHOM' && pb8536[0].canCu === 'so-tay'
+    && pb8536[0].nguon === 'nhom8536.nhom' && /85\.04/.test(pb8536[0].questionVi) && /85\.36/.test(pb8536[0].questionVi),
+    JSON.stringify(pb8536));
+  assert('[OZV-2210 cauPhanBietNhom] 8504 đứng đầu sinh câu phân biệt 85.04↔85.36 từ nhom8504.nhom',
+    pb8504.length >= 1 && pb8504[0].loai === 'PHAN_BIET_NHOM' && pb8504[0].canCu === 'so-tay'
+    && pb8504[0].nguon === 'nhom8504.nhom' && /85\.36/.test(pb8504[0].questionVi) && /85\.04/.test(pb8504[0].questionVi),
+    JSON.stringify(pb8504));
+
+  const g8536 = soTayGates({
+    hs: '85364900',
+    productText: hangThuan8504,
+    productName: hangThuan8504,
+    candidateHeadings: ['8536', '8504'],
+  });
+  const g8504 = soTayGates({
+    hs: '85044090',
+    productText: hangThuan8536,
+    productName: hangThuan8536,
+    candidateHeadings: ['8504', '8536'],
+  });
+  assert('[OZV-2210 soTayGates] kích hoạt SO_TAY_LOAI_TRU đúng cả 2 chiều 8536 -> 8504 và 8504 -> 8536',
+    (g8536.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8504'))
+    && (g8504.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8536')),
+    JSON.stringify({ g8536: g8536.challenges, g8504: g8504.challenges }));
+
+  const dcPb8536 = cauPhanBietNhom('8536', ['8536', '8504'], hangDcOCam);
+  const dcPb8504 = cauPhanBietNhom('8504', ['8504', '8536'], hangDcBienDong);
+  const dcG8536 = soTayGates({
+    hs: '85366900', productText: hangDcOCam, productName: hangDcOCam, candidateHeadings: ['8536', '8504'],
+  });
+  const dcG8504 = soTayGates({
+    hs: '85044090', productText: hangDcBienDong, productName: hangDcBienDong, candidateHeadings: ['8504', '8536'],
+  });
+  assert('[OZV-2210 đối chứng] băng dính y tế / nhãn phù hiệu không hỏi oan / không kéo oan 85.36 <-> 85.04',
+    dcPb8536.length === 0 && dcPb8504.length === 0
+    && !(dcG8536.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8504'))
+    && !(dcG8504.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8536'))
+    && !D.moRongUngVien(['8536'], hangDcOCam).some((x) => x.nhom === '8504')
+    && !D.moRongUngVien(['8504'], hangDcBienDong).some((x) => x.nhom === '8536'),
+    JSON.stringify({ dcPb8536, dcPb8504 }));
+
+  const htDoi = phanTichHoiTruoc4So({ moTa: moTa103, ungVien: ['8536', '8504'] });
+  const distinctDoi = new Set((htDoi.nhanh || []).map((n) => n.dieuKien)).size === 2;
+  assert('[OZV-2210 hoi-truoc-4so] ca 103 với [8536, 8504] trả CHUA_CHOT_NHOM_HOI_TRUOC với 2 nhánh điều kiện phân biệt',
+    htDoi.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC && distinctDoi
+    && ['8536', '8504'].every((h) => (htDoi.dapAnDieuKien || '').includes(`→ nhóm ${h} (`)),
+    JSON.stringify({ trangThai: htDoi.trangThai, distinctDoi, dapAnDieuKien: htDoi.dapAnDieuKien }));
+
+  const htBa = phanTichHoiTruoc4So({ moTa: moTa103, ungVien: ['8535', '8536', '8504'] });
+  assert('[OZV-2210 hoi-truoc-4so] ca 103 với [8535, 8536, 8504] vẫn tách nhánh hỏi trước (không chốt sớm)',
+    htBa.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC
+    && (htBa.nhanh || []).length >= 2
+    && ['8536', '8504'].every((h) => (htBa.dapAnDieuKien || '').includes(`→ nhóm ${h} (`)),
+    JSON.stringify({ trangThai: htBa.trangThai, nhanh: (htBa.nhanh || []).length, dapAnDieuKien: htBa.dapAnDieuKien }));
+
+  // Runtime cố vấn: fixture 2 chiều → canGiaiTrinh sang nhóm kia khi là ứng viên.
+  fs.writeFileSync(dataPath('so-tay', '8536.json'), JSON.stringify({
+    nhom: '8536', phienBan: 'HS2022', yKienWcoDayDu: false, yKienWco: [],
+    loaiTru: [{ ...lt8536, nguonLoai: 'AI_DA_KIEM' }],
+  }));
+  fs.writeFileSync(dataPath('so-tay', '8504.json'), JSON.stringify({
+    nhom: '8504', phienBan: 'HS2022', yKienWcoDayDu: false, yKienWco: [],
+    loaiTru: [{ ...lt8504, nguonLoai: 'AI_DA_KIEM' }],
+  }));
+  rt.reset();
+  const thuan = rt.advise({
+    topHs: '85364900',
+    candidates: ['8536', '8504', '8535'],
+    sanPham: { tenHang: hangThuan8504 },
+  });
+  const doi = rt.advise({
+    topHs: '85044090',
+    candidates: ['8504', '8536', '8535'],
+    sanPham: { tenHang: hangThuan8536 },
+  });
+  assert('[OZV-2210 thuận runtime] 8536 + ứng viên 8504 → canGiaiTrinh LOAI_TRU_SANG_NHOM sang 8504',
+    thuan?.trangThai === 'CO_SO_TAY' && thuan.canGiaiTrinh.some((x) => x.loai === 'LOAI_TRU_SANG_NHOM' && x.sangNhom === '8504'),
+    JSON.stringify(thuan?.canGiaiTrinh));
+  assert('[OZV-2210 đối chứng runtime] 8504 + ứng viên 8536 → canGiaiTrinh LOAI_TRU_SANG_NHOM sang 8536; không kéo oan khi thiếu ứng viên',
+    doi?.trangThai === 'CO_SO_TAY' && doi.canGiaiTrinh.some((x) => x.loai === 'LOAI_TRU_SANG_NHOM' && x.sangNhom === '8536')
+      && !rt.advise({ topHs: '85364900', candidates: ['8535'] }).canGiaiTrinh.some((x) => x.sangNhom === '8504'),
+    JSON.stringify(doi?.canGiaiTrinh));
+  fs.rmSync(dataPath('so-tay'), { recursive: true, force: true });
+  rt.reset();
+}
+
 console.log(`\n${passed}/${passed + failed} passed`);
 process.exit(failed ? 1 : 0);
