@@ -182,7 +182,7 @@ try {
     `${JSON.stringify({
       id: 'chuong:99:cg:1',
       loai: 'CHU_GIAI',
-      lop: 'PHAP_LY_CHINH',
+      lop: 'LUAT',
       cha: null,
       so: '1',
       nguyenVan: 'Chương này không bao gồm:\n(a) Đồ chơi đặc biệt bằng nhựa tổng hợp;\n(b) Bàn chải đánh răng gắn động cơ.',
@@ -191,11 +191,29 @@ try {
     })}\n${JSON.stringify({
       id: 'chuong:99:cg:2',
       loai: 'CHU_GIAI',
-      lop: 'PHAP_LY_CHINH',
+      lop: 'LUAT',
       cha: null,
       so: '2',
       nguyenVan: 'Chương này chỉ bao gồm đinh tán hợp kim titan.',
       nguon: { vanBan: 'Chú giải test', ban: 'HS2022', trang: 100 },
+      hieuLuc: { tu: null, den: null },
+    })}\n${JSON.stringify({
+      id: 'chuong:99:kq:1',
+      loai: 'KHAI_QUAT',
+      lop: 'HUONG_DAN',
+      cha: null,
+      so: null,
+      nguyenVan: 'Đoạn khái quát thử ưu tiên lớp cho sản phẩm mẫu thử thứ tự.',
+      nguon: { vanBan: 'Chú giải test', ban: 'HS2022', trang: 101 },
+      hieuLuc: { tu: null, den: null },
+    })}\n${JSON.stringify({
+      id: 'chuong:99:cg:3',
+      loai: 'CHU_GIAI',
+      lop: 'LUAT',
+      cha: null,
+      so: '3',
+      nguyenVan: 'Chú giải pháp lý cho sản phẩm mẫu thử thứ tự.',
+      nguon: { vanBan: 'Chú giải test', ban: 'HS2022', trang: 102 },
       hieuLuc: { tu: null, den: null },
     })}\n`,
   );
@@ -242,6 +260,13 @@ try {
     'mock: câu bao gồm không loại trừ có chieu === "NHAC"',
     kqNhac.tong === 1 && kqNhac.cuaVao[0].chieu === 'NHAC',
     kqNhac,
+  );
+
+  const kqUuTien = timLuat('mẫu thử thứ tự', { thuMuc: tmpDir });
+  kiem(
+    'mock: khi cùng điểm khớp, lớp LUAT xếp trước lớp HUONG_DAN',
+    kqUuTien.tong === 2 && kqUuTien.cuaVao[0].lop === 'LUAT' && kqUuTien.cuaVao[1].lop === 'HUONG_DAN',
+    kqUuTien.cuaVao.map((x) => ({ nut: x.nut, lop: x.lop })),
   );
 
   const kqTb = timLuat('khoa_doc_nhat_tien_le_m41', { thuMuc: tmpDir });
