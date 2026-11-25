@@ -30,5 +30,9 @@ const w = notesCoverageWarning('00000000');
 assert('mã không có chú giải → cảnh báo notes-incomplete có mô tả + cách xử lý', w && w.id === 'notes-incomplete' && w.description && w.fix);
 assert('nhóm bản 2022 không còn lưu ý lệch HS 2017', !notesCoverage('84713020').caveats.some((c) => /HS 2017/.test(c)));
 
+// OZV-2289: Phần VII (ch.39–40) không bị coi là "có chú giải Phần" do văn bản Phần VI gán nhầm trong bản trích
+assert('Phần VII (ch.39) báo không có chú giải Phần — không nhận văn bản Phần VI gán nhầm', notesCoverage('39021000').phan.coChuGiai === false);
+assert('Phần VI (ch.28) vẫn có chú giải Phần', notesCoverage('28030000').phan.coChuGiai === true);
+
 console.log(`\n${passed}/${passed + failed} passed`);
 process.exit(failed ? 1 : 0);
