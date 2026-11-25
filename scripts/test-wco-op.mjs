@@ -17,9 +17,10 @@ import { applyInferred } from './wco-op-apply-inferred.mjs';
 import { numericParity, numberTokens } from './wco-op-check-vi.mjs';
 import { markOrdConflicts, leadingNumber } from './wco-op-ordcheck.mjs';
 import { join as joinVi, fmtHs, citation } from './wco-op-join-vi.mjs';
+import { fileURLToPath } from 'url';
 
 const require = createRequire(import.meta.url);
-const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const { dataPath } = require('../lib/data-paths.js');
 const wco = require('../lib/wco-op.js');
 

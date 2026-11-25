@@ -6,6 +6,7 @@
 import { readFileSync, writeFileSync, existsSync } from 'fs';
 import { join } from 'path';
 import { createRequire } from 'module';
+import { pathToFileURL } from 'url';
 const require = createRequire(import.meta.url);
 const { lookup } = require('../lib/plhq-registry.js');
 
@@ -90,4 +91,4 @@ async function main() {
   console.log(`[ok] issue: ${url}`);
 }
 
-if (process.argv[1] && import.meta.url === `file://${process.argv[1]}`) main();
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1] || '').href) main();

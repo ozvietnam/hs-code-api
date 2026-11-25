@@ -6,7 +6,7 @@
 // bản ghi registry phải trỏ về một ứng viên; không lặp; tốc độ gọi lịch sự (≤ 5 % khoảng cách < 500 ms).
 import fs from 'node:fs';
 import { dirname, join } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { pathToFileURL, fileURLToPath } from 'node:url';
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const arg = (k, d) => { const a = process.argv.find((x) => x.startsWith(`--${k}=`)); return a ? a.slice(k.length + 3) : d; };
 
@@ -88,7 +88,7 @@ export function kiem(dir, { ungVien = null } = {}) {
   return { loi, canhBao, tomTat };
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (import.meta.url === pathToFileURL(process.argv[1] || '').href) {
   const dir = join(ROOT, arg('dir', 'data/shtt'));
   const uvPath = join(ROOT, arg('ung-vien', 'data/shtt/ung-vien-nhan-hieu.json'));
   const ungVien = fs.existsSync(uvPath) ? JSON.parse(fs.readFileSync(uvPath, 'utf8')).ungVien : null;

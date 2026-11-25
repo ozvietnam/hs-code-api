@@ -7,6 +7,7 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'url';
 
 /** Các "số" của một đoạn văn: chuỗi chữ số liên tiếp, bỏ dấu phân cách thập phân/nghìn (11.5 = 11,5 = 115). Không tính số thứ tự đầu dòng "1." */
 export function numberTokens(text) {
@@ -44,4 +45,4 @@ function main() {
   if (flagged.length) console.log(JSON.stringify(flagged.slice(0, 60)));
 }
 
-if (process.argv[1] && path.resolve(process.argv[1]) === new URL(import.meta.url).pathname) main();
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) main();

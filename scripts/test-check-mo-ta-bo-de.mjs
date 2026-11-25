@@ -19,9 +19,10 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { spawnSync } from 'node:child_process';
 import { createRequire } from 'node:module';
+import { fileURLToPath } from 'url';
 
 const require = createRequire(import.meta.url);
-const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const CHECK = path.join(ROOT, 'scripts', 'check-mo-ta-bo-de.mjs');
 const BIEU = 'data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz';
 const TIEU_DE = 'data/bieu-thue/2026.04.05/tieu-de.jsonl.gz';

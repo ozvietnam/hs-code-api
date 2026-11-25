@@ -7,6 +7,7 @@
 //   node scripts/demand-issue.mjs --from <tệp>    → đọc tệp JSON cục bộ
 import { readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
+import { pathToFileURL } from 'node:url';
 
 const require = createRequire(import.meta.url);
 const URL_DEMAND = process.env.HS_DEMAND_URL || 'https://hs-kb.uythacnhapkhau.com/api/demand';
@@ -58,7 +59,7 @@ export function renderIssue(d, { limit = 40 } = {}) {
   return lines.join('\n') + '\n';
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (Boolean(process.argv[1]) && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const i = process.argv.indexOf('--from');
   let d;
   if (i >= 0) d = JSON.parse(readFileSync(process.argv[i + 1], 'utf8'));

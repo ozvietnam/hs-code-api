@@ -7,8 +7,9 @@ import path from 'node:path';
 import zlib from 'node:zlib';
 import { execFileSync } from 'node:child_process';
 import { createRequire } from 'node:module';
+import { fileURLToPath } from 'url';
 
-export const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
 /** Bỏ dấu tiếng Việt + hạ chữ thường (đ → d). */
 export function fold(s) {

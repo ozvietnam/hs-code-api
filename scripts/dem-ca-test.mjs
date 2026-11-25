@@ -21,6 +21,7 @@
 // Thoát 0 khi log ĐỦ bằng chứng xanh; thoát 1 khi thiếu/đỏ (dùng được làm cổng trong script khác).
 
 import { readFileSync } from 'node:fs';
+import { pathToFileURL } from 'url';
 
 /**
  * Dấu một ca test lẻ.
@@ -190,6 +191,6 @@ function chinh(argv) {
   return xanh ? 0 : 1;
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (import.meta.url === pathToFileURL(process.argv[1] || '').href) {
   process.exit(chinh(process.argv));
 }

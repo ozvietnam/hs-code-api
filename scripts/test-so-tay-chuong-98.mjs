@@ -20,9 +20,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { createRequire } from 'node:module';
+import { fileURLToPath } from 'url';
 
 const require = createRequire(import.meta.url);
-const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const S = require('../lib/so-tay.js');
 const T = require('../lib/hs-tree.js');
 
@@ -131,9 +132,23 @@ check('4b thiếu tham số thì hướng dẫn, không ghi bừa', maThoat2 ===
 // Khi chưa có khung trong thư mục nguồn (dựng cwd cách ly chưa có 9808.json): lượt đầu phải ghi, lượt sau (thiếu --force) phải GIỮ bản vừa ghi.
 const tmpRoot4c = path.join(WRITE, 'root-4c');
 fs.mkdirSync(path.join(tmpRoot4c, 'data', 'so-tay'), { recursive: true });
+// Gốc data cách ly phải "thấy" phần còn lại của `data/` nhưng KHÔNG thấy `so-tay`.
+// Windows từ chối `symlinkSync` (EPERM) khi máy chưa bật Developer Mode, còn `junction` và nối cứng
+// thì không cần đặc quyền. Linux vẫn đi đúng nhánh symlink cũ nên hành vi không đổi.
+const noiGoc = (nguon, dich) => {
+  const laThuMuc = fs.statSync(nguon).isDirectory();
+  if (process.platform !== 'win32') { fs.symlinkSync(nguon, dich, laThuMuc ? 'dir' : 'file'); return; }
+  if (laThuMuc) { fs.symlinkSync(nguon, dich, 'junction'); return; }
+  try {
+    fs.linkSync(nguon, dich);
+  } catch (e) {
+    if (e.code !== 'EPERM' && e.code !== 'EXDEV') throw e;
+    fs.copyFileSync(nguon, dich);
+  }
+};
 for (const entry of fs.readdirSync(path.join(ROOT, 'data'))) {
   if (entry === 'so-tay') continue;
-  fs.symlinkSync(path.join(ROOT, 'data', entry), path.join(tmpRoot4c, 'data', entry));
+  noiGoc(path.join(ROOT, 'data', entry), path.join(tmpRoot4c, 'data', entry));
 }
 const chay4c = (...args) => execFileSync(process.execPath, [path.join(ROOT, 'scripts', 'so-tay-chuong-98.mjs'), ...args], {
   cwd: tmpRoot4c,
