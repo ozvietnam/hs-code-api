@@ -81,6 +81,8 @@ check('cấm nhập chỉ hàng đã qua sử dụng → Lưu ý', classifyPolic
   check('tạm ngừng TNTX kèm điều kiện hàng cũ → vẫn không nói "Cấm nhập khẩu"', tq[0]?.level === 'INFO' && !/cấm nhập/i.test(tq[0]?.text), JSON.stringify(tq[0]));
   const tk = listingLines([L({ loaiTacDong: 'KHAC', dieuKien: 'Tạm ngừng kinh doanh tạm nhập, tái xuất, chuyển khẩu phế liệu (không phải cấm nhập khẩu)', soHieu: '18/2024/TT-BCT', mucRuiRo: null })]);
   check('nguồn đã sửa sang KHAC → vẫn nhãn "Tạm ngừng…", mức Thông tin', tk[0]?.level === 'INFO' && /^Tạm ngừng kinh doanh tạm nhập/.test(tk[0]?.text), JSON.stringify(tk[0]));
+  const tp = listingLines([L({ loaiTacDong: 'KHAC', dieuKien: 'Tạm ngừng kinh doanh tạm nhập, tái xuất', soHieu: '18/2024/TT-BCT', mucRuiRo: null, match: { level: 'HS4', code: '2520' } })]);
+  check('khớp theo nhóm → giữ chữ "Có thể"', /^Có thể: tạm ngừng/.test(tp[0]?.text || ''), JSON.stringify(tp[0]));
   const kh = listingLines([L({ loaiTacDong: 'KHAC', dieuKien: null, soHieu: '292/2026/NĐ-CP', mucRuiRo: null })]);
   check('CA NGƯỢC: KHAC không phải tạm ngừng TNTX → vẫn "Danh mục liên quan"', /^Danh mục liên quan/.test(kh[0]?.text || ''), JSON.stringify(kh[0]));
   const kc = listingLines([L({ loaiTacDong: 'CAM_NHAP_KHAU', dieuKien: 'Chỉ áp dụng đối với kim cương thô xung đột', mucRuiRo: null })]);
