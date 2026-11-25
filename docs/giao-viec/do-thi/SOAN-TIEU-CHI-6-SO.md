@@ -130,7 +130,8 @@ Không chắc một điều thì KHÔNG ghi. Thiếu một `tuKhoa` không sao; 
 
 ## 4. Cổng máy sẽ trả về những lỗi này
 
-Chạy: `node scripts/kiem-tieu-chi-6.mjs --tep=<tệp của bạn>`. Danh sách đầy đủ: `--ma-loi`.
+Chạy: `node scripts/kiem-tieu-chi-6.mjs --tep=<tệp của bạn>`. Bảng dưới là bảng tra nhanh theo luật; nguồn duy nhất của danh sách
+mã là `MA_LOI` / `CANH_BAO` trong `lib/do-thi/tieu-chi-6.js`, in đầy đủ bằng `node scripts/kiem-tieu-chi-6.mjs --ma-loi`.
 
 | Mã lỗi | Bạn đã làm gì | Sửa |
 |---|---|---|
@@ -144,10 +145,12 @@ Chạy: `node scripts/kiem-tieu-chi-6.mjs --tep=<tệp của bạn>`. Danh sách
 | `THIEU_DIEU_KIEN_TANG` | Phân nhóm trong một tầng có tên mà không có mục trích `tieuDe.<thuocTang>` | L7 |
 | `KHOA_DU_KIEN_LA` / `SAI_KHOA_THUOC_TINH` | `fact` tự đặt / `tenLoai` nhận một thuộc tính | L8, L9 |
 | `KHOA_RONG_HON_LUAT` | Khoá / giá trị `tu-vung@2` rộng hơn chữ luật (`gốm sứ` cho chỉ "sứ", `sắt thép` cho chỉ "sắt"/"thép", `kim loại` cho kim loại cụ thể, `chatLieu` làm rơi chữ thu hẹp như "tổng hợp"/"xốp"/"lưu hóa", hoặc `tinhDanHoi` cho chỉ "sợi đàn hồi" / trừ "sợi cao su") | L9; chọn khoá hẹp đúng luật hoặc khai `chuaSoHoa` |
+| `KHOA_HEP_HON_LUAT` | Khoá / giá trị `tu-vung@2` hẹp hơn chữ luật: luật nói cả họ mà bạn chọn một thứ trong họ (`chatLieu: "vải dệt"` khi luật nêu "vật liệu dệt" — làm rơi vải không dệt/nỉ; một kim loại cụ thể hoặc `kimLoaiCoBanKhac` cho "kim loại cơ bản"; khoá polyme chuyên biệt / `PLASTIC_XOP` cho "plastic" chung) | L9; dùng khoá đúng tầm chữ luật: `vatLieuKhac: "VAT_LIEU_DET"`, `chatLieu: "kim loại"`, `chatLieu: "plastic"`. Cùng khoá `kim loại` là RỘNG nếu luật chỉ nêu một kim loại cụ thể — rộng/hẹp xét theo `trich`, không xét theo khoá |
 | `TEN_LOAI_SAU_GIOI_TU` / `TEN_CO_CHU_KHAC` | `tenLoai` nhận thứ đứng sau "dùng cho" / `value` còn chữ "khác" | L8 |
 | `LIET_KE_MOT_CHUOI` | Một chuỗi gói cả danh sách | L10 |
 | `GIA_TRI_RONG` / `KE_CA_LA_DIEU_KIEN` / `TACH_LIET_KE` | "các loại tương tự" trong value / tên trong "kể cả" thành mục riêng / các tên của một câu tách thành nhiều mục | L10 |
 | `THIEU_VE_TRU` / `TU_KHOA_TRONG_VE_TRU` | Bỏ vế loại trừ ("trừ …", "nhưng không bao gồm …", "không kể …") / lấy thứ bị loại làm dấu hiệu | L11 |
+| `KHOA_NGUOC_VE_TRU` | Mục khẳng định (`op` `TRONG` / `LA` / `CO`) chọn khoá ĐỌC ra thứ nằm ở vế loại trừ mà không khớp phần khẳng định của câu `trich` — đảo ngược vế trừ. Bắt cả khoá có kiểu (số, có–không, liệt kê), không chỉ chữ trong `value` / `tuKhoa` | L11; khoá của mục khẳng định phải đọc phần khẳng định; thứ bị trừ chuyển sang mục `chieu: "PHAI_KHONG"` hoặc `dieuKienTru` |
 | `TIEU_DE_CHI_LAC` / `TU_KHOA_QUA_CHUNG` / `TRUNG_DIEU_KIEN` | `tuKhoa` dùng chữ của phân nhóm khác / chữ chung / hai phân nhóm giống nhau | L12 |
 | `THU_TU_KHONG_CAN_CU` | `uuTien` không phải câu luật nói ưu tiên | L13 |
 | `THIEU_VE_GIOI_HAN` | Một vế của tiêu đề / tầng không có mục nào mang | L14 |
