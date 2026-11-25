@@ -11,7 +11,6 @@ const require = createRequire(import.meta.url);
 process.env.HS_API_TOKEN = 'llm-test-token';
 process.env.HS_ACCESS_LOG = '0';
 delete process.env.HS_PUBLIC_LLM;
-delete process.env.HS_MATCH_PUBLIC;
 const { createServer } = require('../server.js');
 const { PUBLIC_LLM_ENDPOINTS, publicLlmEnabled } = require('../lib/public-llm.js');
 const { PUBLIC_ENDPOINTS } = require('../lib/public-access.js');

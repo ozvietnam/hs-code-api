@@ -22,7 +22,7 @@ const require = createRequire(import.meta.url);
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 
 for (const k of ['GEMINI_API_KEY', 'GEMINI_FREE_KEYS', 'HERMES_API_KEY', 'MINIMAX_API_KEY', 'OPENROUTER_API_KEY',
-  'LLM_NO_TRAIN_PROVIDERS', 'HS_LLM_PRIVATE_ALL', 'HS_PUBLIC_LLM', 'HS_MATCH_PUBLIC']) delete process.env[k];
+  'LLM_NO_TRAIN_PROVIDERS', 'HS_LLM_PRIVATE_ALL', 'HS_PUBLIC_LLM']) delete process.env[k];
 process.env.HS_API_TOKEN = 'test-token';
 process.env.HS_SERVICE_TOKENS = 'cong-oz:khoa-cong';
 process.env.HS_ACCESS_LOG = '0';

@@ -18,7 +18,6 @@ process.env.HS_SERVICE_TOKENS = 'cong-oz:khoa-cong,erp:khoa-erp';
 process.env.HS_ACCESS_LOG = '0';
 process.env.HS_CLASSIFY_CROSSCHECK = '0';
 delete process.env.HS_PUBLIC_LLM;
-delete process.env.HS_MATCH_PUBLIC;
 delete process.env.LLM_PRICE_TABLE;
 
 let pass = 0;

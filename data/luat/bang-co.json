@@ -213,6 +213,19 @@
       }
     },
     {
+      "ten": "HS_CONG_VAT_LIEU",
+      "macDinh": "tắt",
+      "macDinhBat": false,
+      "loai": "cong-tac",
+      "doiQuyetDinhLLM": true,
+      "chu": "QT",
+      "mucDich": "Cổng vòng 2 SO_TAY_VAT_LIEU (lib/cong-vat-lieu.js, móc ở lib/so-tay-gates.js, #1650): kiểm tra điều kiện vật liệu trong dieuKienVao của sổ tay nhóm 4 số, thêm challenge khi vật liệu đọc được (từ tu-vung@2 chatLieu/vatLieuKhac hoặc trường hiểu hàng) trái vật liệu của nhóm. Chỉ on / 1 / true mới bật.",
+      "chungCu": {
+        "tep": "lib/cong-vat-lieu.js",
+        "doan": "process.env.HS_CONG_VAT_LIEU || '').trim());"
+      }
+    },
+    {
       "ten": "HS_CONTEXT_SEARCH",
       "macDinh": "bật",
       "macDinhBat": true,
@@ -758,19 +771,6 @@
       "chungCu": {
         "tep": "lib/tien-le-thay-the.js",
         "doan": "process.env.HS_LOC_TB_THAY_THE === 'false' || !ds.length) {"
-      }
-    },
-    {
-      "ten": "HS_MATCH_PUBLIC",
-      "macDinh": "tắt",
-      "macDinhBat": false,
-      "loai": "cong-tac",
-      "doiQuyetDinhLLM": false,
-      "chu": "QT (quản trị server)",
-      "mucDich": "Hành vi cũ: mở riêng /api/match không cần khoá.",
-      "chungCu": {
-        "tep": "lib/auth.js",
-        "doan": "process.env.HS_MATCH_PUBLIC === 'true') {"
       }
     },
     {
