@@ -33,7 +33,7 @@ kiem('tổng 290 nút (21 TEN + 202 CG + 33 CGPN + 34 KQ)',
   nuts.filter((x) => x.loai === 'KHAI_QUAT').length === 34
 );
 
-const banChu = docBanChu(process.env.LUAT_GOC_TXT, 'phan');
+const banChu = process.env.LUAT_GOC_TXT ? docBanChu(process.env.LUAT_GOC_TXT, 'phan') : [];
 const kqKiem = kiemKho('phan', rawLines, {
   vanBan: banChu.length ? banChu : null,
   kyVong: batBuoc.phan || null,
