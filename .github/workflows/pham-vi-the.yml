@@ -1,0 +1,30 @@
+name: Pham vi the mong
+# PR mang mã [M-xx] chỉ được đụng tệp của thẻ (docs/mong/phan-cong.json). Chạy mã của `main`, không chạy mã của PR.
+on:
+  pull_request_target:
+    types: [opened, reopened, synchronize, edited, ready_for_review]
+permissions:
+  contents: read
+  pull-requests: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+jobs:
+  pham-vi:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: gh api --paginate "repos/$KHO/pulls/$SO/files" --jq '.[].filename' > /tmp/tep.txt && node scripts/kiem-pham-vi-the.mjs "$TIEU_DE" "$NHANH" < /tmp/tep.txt
+        env:
+          GH_TOKEN: ${{ github.token }}
+          KHO: ${{ github.repository }}
+          SO: ${{ github.event.pull_request.number }}
+          TIEU_DE: ${{ github.event.pull_request.title }}
+          NHANH: ${{ github.event.pull_request.head.ref }}
