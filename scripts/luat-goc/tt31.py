@@ -225,6 +225,8 @@ def so_chu(kho, tt):
     return ('KHAC_NGHIA_NGHI' if any(k['nghi'] for k in khac) else 'KHAC_CHU'), khac
 
 def main():
+    if any('"soCongBao"' in l for f in ('phan', 'chuong') for l in open(f'{GOC}/data/luat-goc/{f}.jsonl', encoding='utf8')):
+        raise SystemExit('Kho đã đặt theo TT31 (tt31-ap.py). So lại sẽ ra toàn GIONG và mất trường kho. Muốn dựng lại: lấy phan.jsonl, chuong.jsonl ở b0c7fe98.')
     ap = argparse.ArgumentParser(); ap.add_argument('--txt', default='~/luat-goc-txt-m10'); ap.add_argument('--ra', default=f'{GOC}/data/luat-goc/doi-chieu-tt31'); ap.add_argument('--bao', action='store_true')
     a = ap.parse_args(); tep = os.path.join(os.path.expanduser(a.txt), 'dong.jsonl')
     K = doc_kho(); V, N = doc_khoi(tep, 'vi'), doc_khoi(tep, 'en'); bao = []

@@ -26,13 +26,15 @@ def dong(cu,moi):
     for i,(w,p) in enumerate(mc):
         if i and '\n' in cu[mc[i-1][1]+len(mc[i-1][0]):p] and i in anh: cat[anh[i]]=cu[mc[i-1][1]+len(mc[i-1][0]):p].count('\n')
     return ''.join((('\n'*cat[j]) if j in cat else (' ' if j else ''))+w for j,(w,_) in enumerate(mm))
+# TT31 in lỗi chữ, hoặc chỉ khác dấu chú thích (1) cuối bảng: giữ bản in CGCT (cùng một câu luật)
+GIU={'chuong:95:cg:1:e','chuong:95:cg:1:v','chuong:38:cg:2:A','chuong:38:cg:2:B','chuong:86:cg:2:a','chuong:86:cg:2:b','chuong:86:cg:2:c'}
 tong={}
 for k in ('phan','chuong'):
     D={r['id']:r for r in map(json.loads,open(G+f'doi-chieu-tt31/{k}.jsonl'))}; ra=[]; n=0
     for l in open(G+k+'.jsonl'):
         sep=(', ',': ') if '": "' in l[:40] else (',',':')
         x=json.loads(l); goc=l.rstrip('\n'); d=D.get(x['id'])
-        if d and d.get('vi') and not d.get('bangAnh') and not x['nguon'].get('soCongBao'):
+        if d and x['id'] not in GIU and d.get('vi') and not d.get('bangAnh') and not x['nguon'].get('soCongBao'):
             v=d['vi']
             if x['id']=='chuong:48:cg:5' and 'chuong:48:cg:5:A' in D and not re.match(r'.*\(A\)',v): v=v+'\n'+D['chuong:48:cg:5:A']['vi']
             v=sach(v)
@@ -40,7 +42,7 @@ for k in ('phan','chuong'):
                 d['kho']=x['nguyenVan']; d['trangKho']=x['nguon'].get('trang') # giu chu ban in CGCT de doi chieu
                 x['nguyenVan']=re.sub(r' (\([A-Z]\))\n',r'\n\1 ',dong(x['nguyenVan'],v)); x['nguon']={'vanBan':VB,'ban':'HS2022','trang':d['trangCongBao'],'soCongBao':d['soCongBao']}
                 x['hieuLuc']={'tu':'2022-12-30','den':None}
-                if d.get('banKhopAnh')=='KHO': x['ghiChu']='Bản tiếng Anh TT31: '+d['en']+' — bản in CGCT dịch sát hơn (doi-chieu-tt31).'
+                if d.get('banKhopAnh') in ('KHO','KHONG_BAN_NAO'): x['ghiChu']='Bản tiếng Anh TT31: '+d['en']+(' — bản in CGCT dịch sát hơn (doi-chieu-tt31).' if d['banKhopAnh']=='KHO' else ' — cả hai bản Việt đều chưa sát.')
                 n+=1
         ra.append(goc if x==json.loads(goc) else json.dumps(x,ensure_ascii=False,separators=sep))
     tong[k]=n
