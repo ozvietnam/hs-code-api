@@ -24,6 +24,21 @@
    "sau": [],
    "nguoi": "QT"
   },
+  "M-10": {
+   "ten": "Chú giải pháp lý theo TT31/2022 (Công báo song ngữ): đối chiếu từng khoản",
+   "lop": 1,
+   "tep": [
+    "data/luat-goc/doi-chieu-tt31/**",
+    "scripts/luat-goc/tt31*.mjs",
+    "scripts/luat-goc/tt31*.py"
+   ],
+   "sau": [
+    "M-11",
+    "M-13"
+   ],
+   "nguoi": "QT",
+   "thuTuCuaNguoi": 1
+  },
   "M-11": {
    "ten": "21 Phần: chú giải Phần bản HS 2022, mỗi Phần một nút gốc",
    "lop": 1,
@@ -167,7 +182,10 @@
     "lib/gir-notes.js",
     "lib/notes-coverage.js",
     "api/notes.js",
-    "scripts/test-chu-giai-goc.mjs"
+    "scripts/test-chu-giai-goc.mjs",
+    "scripts/test-gir-notes.mjs",
+    "scripts/test-nguon-loai.mjs",
+    "scripts/test-notes-3-tang.mjs"
    ],
    "sau": [
     "M-11",
