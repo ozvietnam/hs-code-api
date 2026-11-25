@@ -86,6 +86,7 @@
         "lib/do-thi/khoi-phan-biet.js",
         "lib/do-thi/luot-hai.js",
         "lib/do-thi/luot-mot.js",
+        "lib/do-thi/phai-doc.js",
         "lib/do-thi/phan-con-lai.js",
         "lib/do-thi/song-sinh-vat-lieu.js",
         "lib/do-thi/tien-le-ung-ho.js",
@@ -475,7 +476,15 @@
       "loai": "tra-cuu",
       "congGoi": true,
       "llm": false,
-      "ghiChu": "Gộp các resource chỉ đọc qua routes.json (precedents, evidence-pack, wco-opinions, tree, policy-procedures, ktcn-regime…) và nhóm quản trị. Thêm resource mới: xem luật 2 trong CLAUDE.md (mặc định kín)."
+      "ghiChu": "Gộp các resource chỉ đọc qua routes.json (precedents, evidence-pack, wco-opinions, tree, policy-procedures, ktcn-regime…) và nhóm quản trị. Thêm resource mới: xem luật 2 trong CLAUDE.md (mặc định kín). 25/11/2026: /api/tree trả thêm phaiDoc (lib/do-thi/phai-doc.js) — đọc bảng cạnh, chỉ cạnh luật, tra cứu, không ra mã.",
+      "doc": {
+        "bangCanh": {
+          "trangThai": "co",
+          "qua": ["lib/do-thi/phai-doc.js"],
+          "co": [],
+          "ghiChu": "ADR-0005: /api/tree trả phaiDoc, chỉ cạnh luật (loại trừ, phân biệt đã chấm chéo, nhắc nhóm, WCO), không ra mã, không tờ khai."
+        }
+      }
     },
     {
       "duong": "/api/tariff",
