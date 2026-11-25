@@ -93,11 +93,16 @@ for (const h4 of dsNhom) {
     }
     if (nl.cha) tongCoCha += 1;
     if (nl.dan) tongCoDan += 1;
-    if (!nl.biRutChoVua && typeof nl.nguyenVan === 'string') {
-      const goc = kho.theoId.get(nl.id);
-      if (!goc || chuanText(goc.nguyenVan) !== chuanText(nl.nguyenVan)) {
+    if (typeof nl.nguyenVan === 'string') {
+      if (nl.nguyenVan.length === 0) {
         loiNgoaiKho += 1;
-        if (!mauLoi) mauLoi = { h4, nlId: nl.id, lyDo: 'nguyenVan lech kho luat goc' };
+        if (!mauLoi) mauLoi = { h4, nlId: nl.id, lyDo: 'nguyenVan rong' };
+      } else {
+        const goc = kho.theoId.get(nl.id);
+        if (!goc || chuanText(goc.nguyenVan) !== chuanText(nl.nguyenVan)) {
+          loiNgoaiKho += 1;
+          if (!mauLoi) mauLoi = { h4, nlId: nl.id, lyDo: 'nguyenVan lech kho luat goc' };
+        }
       }
     }
   }
@@ -185,7 +190,7 @@ const r8481Full = goiNotes({ hs: '8481', level: 'all', full: '1' });
 const phan8481Full = (r8481Full.body?.chain || []).find((e) => e.level === 'SECTION');
 kiem(
   '8481 full=1: PHẦN có KHÁI QUÁT CHUNG và nutLuat giữ đủ nguyên văn',
-  Boolean(phan8481Full && /KHÁI QUÁT CHUNG/.test(phan8481Full.noteVi || '') && r8481Full.body?.nutLuat?.every((n) => !n.biRutChoVua)),
+  Boolean(phan8481Full && /KHÁI QUÁT CHUNG/.test(phan8481Full.noteVi || '') && r8481Full.body?.nutLuat?.every((n) => typeof n.nguyenVan === 'string' && n.nguyenVan.length > 0)),
 );
 
 const r81 = goiNotes({ chapter: '81' });

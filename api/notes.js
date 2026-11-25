@@ -3,11 +3,10 @@
 
 const { requireAuthUnlessPublic } = require('../lib/public-access');
 const { setCors, handleOptions } = require('../lib/cors');
-const { normalizeHs } = require('../lib/data');
 const { buildNoteChain, buildChapterNote } = require('../lib/gir-notes');
 const { notesCoverage } = require('../lib/notes-coverage');
 const { senFor } = require('../lib/sen');
-const { napKho, docNutTheoId, nutLuatCho } = require('../lib/chu-giai-goc');
+const { normalizeHs, napKho, docNutTheoId, nutLuatCho } = require('../lib/chu-giai-goc');
 
 const SIZE_CAP = 29500;
 
@@ -29,12 +28,25 @@ function rutGonNutChoVua(dsNut, tangGiua, giuNguyenVan = false, rutDanId = false
     }));
 }
 
+function urlFullTheoThamSo({ hsCode, heading, chapNum, level }) {
+  const thamSo = hsCode
+    ? `hs=${hsCode}`
+    : heading
+      ? `heading=${String(heading).trim()}`
+      : chapNum && chapNum !== 'NaN'
+        ? `chapter=${chapNum}`
+        : 'hs=';
+  return `/api/notes?${thamSo}${level ? `&level=${level}` : ''}&full=1`;
+}
+
 // Giữ trần ~30.000 ký tự JSON cho ERP khi !full: giữ nguyên id/lop/nguon/trang/cha/dan của nutLuat, chỉ thu phần lặp.
-function gioiHanKichThuoc(payload, hsCode) {
+function gioiHanKichThuoc(payload, { hsCode, heading, chapNum } = {}) {
   if (JSON.stringify(payload).length <= SIZE_CAP) return payload;
+  const fullUrl = urlFullTheoThamSo({ hsCode, heading, chapNum });
+  const headingFullUrl = urlFullTheoThamSo({ hsCode, heading, chapNum, level: 'HEADING' });
   const gocNut = Array.isArray(payload.nutLuat) ? payload.nutLuat : null;
   if (gocNut && gocNut.length > 0) {
-    payload.nutLuatDayDu = `/api/notes?hs=${hsCode || 'X'}&full=1`;
+    payload.nutLuatDayDu = fullUrl;
     payload.nutLuatTongSo = gocNut.length;
     // Bậc 1: giữ nguyên văn tầng đang hỏi (HEADING/SUBHEADING/NATIONAL/SEN), giữ 6 trường cốt lõi Phần/Chương
     payload.nutLuat = gocNut.map((n) => (['HEADING', 'SUBHEADING', 'NATIONAL', 'SEN'].includes(n.tang) ? n : {
@@ -84,7 +96,7 @@ function gioiHanKichThuoc(payload, hsCode) {
     const h = (payload.chain || []).find((e) => e.level === 'HEADING' && e.noteVi);
     if (!h) break;
     h.noteVi = lim
-      ? `${String(h.noteVi).slice(0, lim).replace(/\s+\S*$/, '')}… [cắt cho vừa trần ~30.000 ký tự — toàn văn: /api/notes?hs=${hsCode}&level=HEADING&full=1]`
+      ? `${String(h.noteVi).slice(0, lim).replace(/\s+\S*$/, '')}… [cắt cho vừa trần ~30.000 ký tự — toàn văn: ${headingFullUrl}]`
       : null;
     h.biCatChoVua = true;
     daCatHeading = true;
@@ -99,7 +111,7 @@ function gioiHanKichThuoc(payload, hsCode) {
     payload.coverage.gaps = [...(payload.coverage.gaps || []), {
       id: 'heading-note-shortened-for-size',
       tang: 'NHOM',
-      description: `Chú giải nhóm bị cắt ngắn cho vừa trần ~30.000 ký tự của phản hồi — toàn văn: /api/notes?hs=${hsCode}&level=HEADING&full=1.`,
+      description: `Chú giải nhóm bị cắt ngắn cho vừa trần ~30.000 ký tự của phản hồi — toàn văn: ${headingFullUrl}.`,
     }];
   }
   return payload;
@@ -154,11 +166,12 @@ module.exports = function handler(req, res) {
 
   const hsCode = hs ? normalizeHs(hs) : null;
   const chapterFromHs = hsCode ? String(parseInt(hsCode.slice(0, 2), 10)) : null;
-  const chapNum = chapter
-    ? String(parseInt(chapter, 10))
+  const parsedChap = chapter
+    ? parseInt(chapter, 10)
     : heading
-      ? String(parseInt(String(heading || '').replace(/\./g, '').slice(0, 2), 10))
-      : chapterFromHs;
+      ? parseInt(String(heading || '').replace(/\./g, '').slice(0, 2), 10)
+      : parseInt(chapterFromHs || '', 10);
+  const chapNum = Number.isFinite(parsedChap) ? String(parsedChap) : null;
 
   if (hsCode && (levelFilter === 'all' || levelFilter)) {
     const chain = buildNoteChain(hsCode, { levelFilter: levelFilter || 'all', full: muonFull });
@@ -180,7 +193,7 @@ module.exports = function handler(req, res) {
       nutLuat,
       source: 'GIR 5-level chain (kho luật gốc: phan, chuong, nhom, phan-nhom, sen, bieu)',
     };
-    if (!muonFull) payload = gioiHanKichThuoc(payload, hsCode);
+    if (!muonFull) payload = gioiHanKichThuoc(payload, { hsCode, heading, chapNum });
     return res.status(200).json(payload);
   }
 
@@ -189,8 +202,8 @@ module.exports = function handler(req, res) {
   if (!chapEntry) {
     return res.status(404).json({
       found: false,
-      chapter: parseInt(chapNum, 10),
-      message: `Dữ liệu kho luật gốc không có Chương ${chapNum}.`,
+      chapter: Number.isFinite(parsedChap) ? parsedChap : null,
+      message: `Dữ liệu kho luật gốc không có Chương ${chapNum || String(chapter || heading || hs || '').trim()}.`,
     });
   }
 
@@ -204,7 +217,7 @@ module.exports = function handler(req, res) {
   const nutLuat = nutLuatCho({ chapter: chapNum, heading, hs: hsCode, full: muonFull });
   let payload = {
     found: true,
-    chapter: parseInt(chapNum, 10),
+    chapter: parsedChap,
     hsCode,
     content,
     coverage: notesCoverage(hsCode || String(heading || '').replace(/\D/g, '') || String(chapNum).padStart(2, '0')),
@@ -213,6 +226,6 @@ module.exports = function handler(req, res) {
     nutLuat,
     source: chapEntry.sourceDocument || 'Kho luật gốc HS 2022 (chuong.jsonl)',
   };
-  if (!muonFull) payload = gioiHanKichThuoc(payload, hsCode);
+  if (!muonFull) payload = gioiHanKichThuoc(payload, { hsCode, heading, chapNum });
   return res.status(200).json(payload);
 };

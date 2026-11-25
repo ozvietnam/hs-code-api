@@ -22,7 +22,7 @@ const sum = EN.getNoteSummaryForHs('85044090');
 assert('explanatoryNote (classify/suggest/engine-loop) mang nguonLoai AI_CHUA_KIEM + ghiChu', sum && sum.nguonLoai === 'AI_CHUA_KIEM' && /chưa kiểm/.test(sum.ghiChu) && EN.NGUON_LOAI === 'AI_CHUA_KIEM', sum);
 const chain = require('../lib/gir-notes.js').buildNoteChain('85044090');
 const nat = chain.find((n) => n.level === 'NATIONAL');
-assert('/api/notes chuỗi chú giải: cấp NATIONAL (từ explanatory-notes) mang nguonLoai AI_CHUA_KIEM; cấp trên không gắn nhãn AI', nat && nat.nguonLoai === 'AI_CHUA_KIEM' && chain.filter((n) => n.level !== 'NATIONAL').every((n) => !n.nguonLoai), chain.map((n) => n.level));
+assert('/api/notes chuỗi chú giải (M-21): toàn bộ 5 tầng từ kho luật gốc, không còn AI_CHUA_KIEM hay boTro ở bất kỳ tầng nào', Boolean(nat && /bieu\.jsonl/.test(nat.sourceDocument || '')) && chain.every((n) => !n.nguonLoai && !n.boTro && !/explanatory-notes/i.test(n.sourceDocument || '')), chain.map((n) => ({ level: n.level, nguonLoai: n.nguonLoai, src: n.sourceDocument })));
 const lb = require('../lib/legal-basis.js').canCuPhapLy({ status: 'REVIEW', topHs: '85044090' }).cacBuoc[1].taiLieu[0];
 assert('canCuPhapLy 6.1.a dựa nguyên văn chú giải nhóm (chu-giai-heading#nhom), nêu nhóm + toàn văn, ghi rõ explanatoryNote là AI chưa kiểm', lb.id === '6.1.a' && lb.trangThai === 'CO_NOI_DUNG' && lb.nhom === '8504' && lb.toanVan === true && /AI_CHUA_KIEM/.test(lb.ghiChu) && !/explanatoryNote\)/.test(lb.nguon), lb);
 const lb9 = require('../lib/legal-basis.js').canCuPhapLy({ status: 'REVIEW', topHs: '98010000' }).cacBuoc[1].taiLieu[0];
