@@ -12,6 +12,7 @@ const { kiem, xong } = boKiem('test-phai-doc');
 const {
   phaiDoc,
   datLai,
+  xayChiMuc,
   thongKeCanhCu,
   phanChuongCuaNhom,
   khopCanhCuTrongPhamVi,
@@ -240,12 +241,38 @@ try {
   else process.env.HS_API_TOKEN = prevToken;
 }
 
+// ── 7b. Kiểm chỉ mục dựng sẵn (xayChiMuc) khớp 100% đọc thẳng + CA NGƯỢC sai sig ──
+const tmpCmDir = fs.mkdtempSync(path.join(os.tmpdir(), 'phai-doc-cm-'));
+try {
+  const tepCm = path.join(tmpCmDir, 'chi-muc.json');
+  const kqBuild = xayChiMuc({ tepChiMuc: tepCm });
+  datLai();
+  let khopChiMuc = Boolean(kqBuild && fs.existsSync(tepCm) && kqBuild.soCanhNhac > 0);
+  for (const ma of ['7616', '8481', '8536', '761610', 'chuong:76', 'sen:1511:1']) {
+    const a = JSON.stringify(phaiDoc(ma, { dungChiMuc: false }));
+    const b = JSON.stringify(phaiDoc(ma, { tepChiMuc: tepCm }));
+    if (a !== b) khopChiMuc = false;
+  }
+  kiem('xayChiMuc() sinh chỉ mục cho kết quả phaiDoc() y hệt 100% chế độ đọc thẳng', khopChiMuc);
+
+  // CA NGƯỢC: chỉ mục sai sig vẫn tự lùi sang đọc thẳng an toàn
+  const cmSai = JSON.parse(fs.readFileSync(tepCm, 'utf8'));
+  cmSai.sig = 'sig-gia-khong-khop';
+  fs.writeFileSync(tepCm, JSON.stringify(cmSai));
+  datLai();
+  const rFallback = phaiDoc('7616', { tepChiMuc: tepCm });
+  kiem('CA NGƯỢC chỉ mục sai sig tự lùi đọc thẳng an toàn', Boolean(rFallback && rFallback.id === 'bieu:7616' && muc(rFallback, 'CHU_GIAI_NHOM').muc.length > 0));
+  datLai();
+} finally {
+  fs.rmSync(tmpCmDir, { recursive: true, force: true });
+}
+
 // ── 8. Giữ kiểm tách luật và bổ trợ trong /api/notes ──────────────────────────
 const G = require('../lib/gir-notes.js');
-const cg = JSON.parse(fs.readFileSync(new URL('../data/chu-giai-heading.json', import.meta.url), 'utf8'));
 const nh = G.buildNoteChain('54080000').find((e) => e.level === 'HEADING');
-kiem('noteVi của nhóm không còn đoạn AI soạn', !/Phân biệt:/.test(nh.noteVi) && nh.noteVi.startsWith(String(cg['5408'].nhom).trim().slice(0, 60)));
-kiem('đoạn AI soạn nằm riêng ở boTro, nhãn AI_CHUA_KIEM', nh.boTro?.[0]?.nhan === 'AI_CHUA_KIEM' && /KHÔNG phải luật/.test(nh.boTro[0].ghiChu));
+const sauM21 = /nhom\.jsonl/.test(nh.sourceDocument || '');
+kiem('noteVi của nhóm không còn đoạn AI soạn', !/Phân biệt:/.test(nh.noteVi) && (sauM21 ? Boolean(nh.noteVi && nh.noteVi.length > 50) : nh.noteVi.startsWith(String(JSON.parse(fs.readFileSync(new URL('../data/chu-giai-heading.json', import.meta.url), 'utf8'))['5408'].nhom).trim().slice(0, 60))));
+kiem('đoạn AI soạn nằm riêng ở boTro hoặc đã gỡ hẳn theo M-21', sauM21 ? (!nh.boTro && !nh.nguonLoai) : (nh.boTro?.[0]?.nhan === 'AI_CHUA_KIEM' && /KHÔNG phải luật/.test(nh.boTro[0].ghiChu)));
 
 if (process.argv.includes('--thong-ke')) {
   console.log('\n=== THỐNG KÊ M-34 v2 (phai-doc) ===');
