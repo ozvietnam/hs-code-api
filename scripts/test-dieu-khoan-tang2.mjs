@@ -19,6 +19,7 @@ const docJson = (p) => JSON.parse(fs.readFileSync(path.join(GOC, p), 'utf8'));
 const dieuKhoan = docJson('data/luat/dieu-khoan-tang2.json');
 const chuGiaiChuong = docJson('data/chu-giai-chuong.json');
 const chuGiaiHeading = docJson('data/chu-giai-heading.json');
+const hsSections = docJson('data/hs-sections.json');
 
 const KIEU_HOP_LE = new Set(['LOAI_TRU', 'DINH_NGHIA_PHAM_VI', 'QUY_TAC_PHAN_LOAI', 'DIEU_KIEN', 'KHAC']);
 const CU_PHAP_E = /không bao gồm|không áp dụng|loại trừ/i;
@@ -101,6 +102,45 @@ function canhBao(ten, danhSach) {
     '(f) Không có điều khoản dính đoạn TỔNG QUÁT của WCO',
     dinhTongQuat.length === 0,
     `${dinhTongQuat.length} mục: ${dinhTongQuat.slice(0, 10).join(', ')}`,
+  );
+}
+
+// (g) khoản Phần: apChoChuong phải đủ mọi Chương của Phần trong hs-sections.json
+// (không dựng dải từ chương có trường `phan` — Chương 54 từng bị rơi vì phan rỗng)
+{
+  const chuongTheoGan = new Map();
+  for (const s of hsSections.sections || []) {
+    const chs = (s.chapters || []).map(String);
+    if (!chs.length) continue;
+    chuongTheoGan.set(chs[0], chs); // gan Phần = Chương đầu (50 → XI, 72 → XV, …)
+  }
+  const loi = [];
+  let phanXi = 0;
+  let phanXiDu54 = 0;
+  for (const x of dieuKhoan) {
+    if (x.cap !== 'phan') continue;
+    const can = chuongTheoGan.get(String(x.gan));
+    if (!can) continue;
+    const co = (x.apChoChuong || []).map(String);
+    const thieu = can.filter((c) => !co.includes(c));
+    const thua = co.filter((c) => !can.includes(c));
+    if (thieu.length || thua.length) {
+      loi.push(`${x.id}: thieu=[${thieu.join(',')}] thua=[${thua.join(',')}]`);
+    }
+    if (String(x.gan) === '50') {
+      phanXi += 1;
+      if (co.includes('54')) phanXiDu54 += 1;
+    }
+  }
+  ca(
+    '(g) apChoChuong Phần khớp hs-sections (không rơi chương giữa dải)',
+    loi.length === 0,
+    `${loi.length} mục lệch, ví dụ: ${loi.slice(0, 5).join('; ')}`,
+  );
+  ca(
+    '(g) Phần XI (gan 50): mọi khoản có Chương 54',
+    phanXi > 0 && phanXiDu54 === phanXi,
+    `${phanXiDu54}/${phanXi} khoản có "54"`,
   );
 }
 
