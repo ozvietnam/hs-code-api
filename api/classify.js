@@ -21,6 +21,7 @@ const { ganHoSoClassify, chuanDinhDanh, cheDoHieuLuc: cheDoHoSoHieuLuc, ghiBoQua
 const { cacheBat, khoaCache, docCache, ghiCache, donPhienBanCu, phienBanDuLieu } = require('../lib/classify-cache');
 // OZV-1144 / OZV-1211 (G5 · OZV-760) — kho đáp án: HS_KHO_DAP_AN=off|shadow|on (mặc định off; on chỉ trả bản DUYET).
 const { cheDoKhoDapAn, soiBong, traTuKho } = require('../lib/kho-dap-an');
+const { batDoThi } = require('../lib/tim-truoc');
 
 /** `supplierHs`: {code, source?, url?} hoặc chuỗi mã. Trả null khi không đủ 6 chữ số. */
 function parseSupplierHs(v) {
@@ -225,12 +226,14 @@ async function handler(req, res) {
       // OZV-507 việc 1 — cache kết quả theo hash hồ sơ (đã đo bước 0: 13,6% lượt trùng ≥ 10%, OZV-511).
       // Chỉ khoá dịch vụ; debug/holdout đổi shape + ngữ cảnh ⇒ bỏ qua cache. Lượt cold giữ nguyên hành vi
       // (không đụng dòng nào phía trên); lượt trúng trả nguyên phản hồi + cached:true, KHÔNG gọi LLM.
-      const dungCache = cacheBat() && !debug && !wantsEvalHoldout(req);
+      // HS_TIM_TRUOC=do-thi (mặc định TẮT): không trả đáp án cũ từ cache / kho đáp án — chúng có thể sinh ở chế độ khác, chưa qua cổng ADR-0004.
+      const doThi = batDoThi();
+      const dungCache = !doThi && cacheBat() && !debug && !wantsEvalHoldout(req);
       // OZV-1144 / OZV-1211 — kho đáp án: shadow|on ghi sau động cơ (fire-and-forget); on còn đọc TRƯỚC và trả DUYET.
       // Bỏ qua debug/holdout (điều 7 mục 3 thiết kế). Lọc riêng tư nằm trong lib/kho-dap-an.js.
       const cheDoKho = cheDoKhoDapAn();
       const ghiKho = (cheDoKho === 'shadow' || cheDoKho === 'on') && !debug && !wantsEvalHoldout(req);
-      const dungKhoOn = cheDoKho === 'on' && !debug && !wantsEvalHoldout(req);
+      const dungKhoOn = !doThi && cheDoKho === 'on' && !debug && !wantsEvalHoldout(req);
       const dauVaoKho = (ghiKho || dungKhoOn)
         ? { ...attrs, thuongHieu: body?.thuongHieu || body?.brand || null, model: body?.model || null, xuatXu: body?.xuatXu || body?.origin || null }
         : null;

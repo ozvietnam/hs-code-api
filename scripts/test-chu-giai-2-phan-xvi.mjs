@@ -11,7 +11,7 @@
  *   4. Không đường khách hàng nào nạp module này ở bước dựng bảng.
  */
 import { createRequire } from 'node:module';
-import { doc, docJson, baoDong, tepMa, boKiem } from './lib-luat.mjs';
+import { doc, docJson, baoDongBo, tepMa, boKiem } from './lib-luat.mjs';
 
 const require = createRequire(import.meta.url);
 const { kiem, xong } = boKiem('test-chu-giai-2-phan-xvi');
@@ -116,8 +116,8 @@ kiem('lib/do-thi/chu-giai-2-phan-xvi.js được khai trong dau-noi.json (kho.ba
   (dauNoi.kho?.bangCanh?.moDun || []).includes('lib/do-thi/chu-giai-2-phan-xvi.js'));
 
 const duongKhachNap = [...tepMa('api'), 'lib/classify.js', 'lib/engine-loop.js', 'lib/llm-tier.js', 'lib/llm.mjs']
-  .filter((t) => baoDong(t).has('lib/do-thi/chu-giai-2-phan-xvi.js'));
-kiem('không đường khách hàng nào nạp lib/do-thi/chu-giai-2-phan-xvi.js ở việc này',
+  .filter((t) => baoDongBo(t, (tu, den) => tu === 'lib/do-thi/bac-thang.js' && den === 'lib/do-thi/chu-giai-2-phan-xvi.js').has('lib/do-thi/chu-giai-2-phan-xvi.js'));
+kiem('đường khách chỉ nạp chu-giai-2-phan-xvi.js qua một cửa: lib/do-thi/bac-thang.js (HS_TIM_TRUOC=do-thi, mặc định TẮT)',
   duongKhachNap.length === 0, duongKhachNap.join(', '));
 
 // ── 3. Kiểm đủ các ca bắt buộc và ca ngược của #1636 ──────────────────────────────────────────────────────────

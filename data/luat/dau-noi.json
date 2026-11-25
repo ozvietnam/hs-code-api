@@ -73,10 +73,11 @@
       "ten": "Bảng cạnh đồ thị tri thức HS (C5, C6, C7, C8, C10 + C13, C11, C16 + chỉ mục C1 gộp; hàm C14)",
       "duLieu": "dựng trong RAM từ data/so-tay/, data/confusion-pairs.json, data/precedents.json, cây biểu thuế và các kho cụm từ; số đếm ở data/do-thi/thong-ke.json",
       "dauVet": [],
-      "ghiChu": "ADR-0002, kế hoạch docs/ke-hoach-do-thi-tri-thuc-hs.md. GIAI ĐOẠN 1: chỉ dựng + cổng máy scripts/test-bang-canh.mjs. 25/11/2026: /api/classify đọc sau HS_TIM_TRUOC=goi hoặc do-thi (mặc định tắt; do-thi = lib/do-thi/duong-do-thi.js ráp bước 3–8, đọc thêm tieuChi6 g6@1 qua diXuong6 và tienLeUngHo), các đường khác khai 'khong'; mỗi lần nối sửa bảng này trong cùng PR. lib/do-thi/dung-bang-canh.js đọc thẳng data/so-tay/ nên cũng là module đọc kho soTayNhom. Cổng test-bang-canh đỏ khi có tệp ngoài lib/do-thi/ nạp bảng cạnh mà đường của nó chưa khai 'co'. C16 (23/11/2026): cạnh Phân-biệt-theo-nghĩa dựng từ data/do-thi/ban-do-4so/ (AI_NHAP qua cổng bd4@1; lib/do-thi/ban-do-4so.js, scripts/goi-soan-ban-do-4so.mjs, kiem-ban-do-4so.mjs, nap-ban-do-4so.mjs) — module soạn dữ liệu, không đường khách nào nạp; bậc 1 chỉ khi chamCheo=DUYET và mọi căn cứ còn nguyên văn. G6 (21/11/2026): thêm cạnh C10 Tách-phân-nhóm (+ khoá dữ kiện C13) dựng từ tieuChi6 của sổ tay; khuôn g6@1 và cổng soạn nằm ở lib/do-thi/tieu-chi-6.js (scripts/kiem-tieu-chi-6.mjs, scripts/goi-soan-tieu-chi-6.mjs, scripts/test-tieu-chi-6.mjs) — module soạn dữ liệu, không đường khách nào nạp. tieuChi6 nằm trong kho soTayNhom: đường nào đọc nó xem ghi chú kho soTayNhom.",
+      "ghiChu": "ADR-0002, kế hoạch docs/ke-hoach-do-thi-tri-thuc-hs.md. GIAI ĐOẠN 1: chỉ dựng + cổng máy scripts/test-bang-canh.mjs. 25/11/2026: /api/classify đọc sau HS_TIM_TRUOC=goi hoặc do-thi (mặc định tắt; do-thi = lib/do-thi/duong-do-thi.js chọn nhóm 4 số bước 3–5 rồi lib/do-thi/bac-thang.js đi 4→6→8 bước 6–7 — đọc tieuChi6 g6@1 qua diXuong6, chotDong8, hoi-truoc-4so.js lấy câu hỏi bậc 4, chu-giai-2-phan-xvi.js kiểm bộ phận rơi vào Phần XV; đầu ra qua lib/cong-adr-0004.js; tienLeUngHo chỉ cảnh báo), các đường khác khai 'khong'; mỗi lần nối sửa bảng này trong cùng PR. lib/do-thi/dung-bang-canh.js đọc thẳng data/so-tay/ nên cũng là module đọc kho soTayNhom. Cổng test-bang-canh đỏ khi có tệp ngoài lib/do-thi/ nạp bảng cạnh mà đường của nó chưa khai 'co'. C16 (23/11/2026): cạnh Phân-biệt-theo-nghĩa dựng từ data/do-thi/ban-do-4so/ (AI_NHAP qua cổng bd4@1; lib/do-thi/ban-do-4so.js, scripts/goi-soan-ban-do-4so.mjs, kiem-ban-do-4so.mjs, nap-ban-do-4so.mjs) — module soạn dữ liệu, không đường khách nào nạp; bậc 1 chỉ khi chamCheo=DUYET và mọi căn cứ còn nguyên văn. G6 (21/11/2026): thêm cạnh C10 Tách-phân-nhóm (+ khoá dữ kiện C13) dựng từ tieuChi6 của sổ tay; khuôn g6@1 và cổng soạn nằm ở lib/do-thi/tieu-chi-6.js (scripts/kiem-tieu-chi-6.mjs, scripts/goi-soan-tieu-chi-6.mjs, scripts/test-tieu-chi-6.mjs) — module soạn dữ liệu, không đường khách nào nạp. tieuChi6 nằm trong kho soTayNhom: đường nào đọc nó xem ghi chú kho soTayNhom.",
       "moDun": [
         "lib/do-thi/ban-do-4so.js",
         "lib/do-thi/ba-buoc.js",
+        "lib/do-thi/bac-thang.js",
         "lib/do-thi/chu-giai-2-phan-xvi.js",
         "lib/do-thi/dung-bang-canh.js",
         "lib/do-thi/duong-do-thi.js",
@@ -516,15 +517,15 @@
   ],
   "nhanhBoQua": [
     {
-      "ten": "doThiChot",
+      "ten": "bacThangChot",
       "duong": "/api/classify",
       "tep": "lib/engine-loop.js",
-      "dauVet": "doThiChot: true",
+      "dauVet": "bacThangChot: true",
       "boQua": [
         "soPn6"
       ],
       "the": "OZV-2228",
-      "lyDo": "Sau HS_TIM_TRUOC=do-thi (mặc định TẮT): nhóm 4 số chốt bằng căn cứ trích nguyên văn (lượt hai), phân nhóm chốt bằng cạnh g6@1, dòng 8 số là dòng duy nhất hoặc chotDong8 chốt ⇒ bỏ lời AI vòng 2. Chỉ rẽ khi: không thuộc mã từ điển cấm, không có tín hiệu tất định trái nhóm (chot-som-co-kiem), tiền lệ không phản đối và không lệch (tienLeUngHo), qua đủ cổng G1–G8. Bị bỏ: lượt AI vòng 2 đọc gói sổ tay + chú giải. Số đúng/sai trên máy thật CHƯA đo."
+      "lyDo": "Sau HS_TIM_TRUOC=do-thi (mặc định TẮT): không gọi vòng 1 / vòng 2. Nhóm 4 số chốt ở lượt hai bằng căn cứ trích nguyên văn; từ nhóm đi bậc thang 4→6→8 (lib/do-thi/bac-thang.js): cạnh g6@1 + chotDong8, cấp nào luật không quyết được thì một lời AI chỉ thấy các dòng cùng cấp, máy kiểm câu trích; thiếu dữ kiện thì dừng hỏi. Mọi đầu ra qua kiemCongAdr0004 (congRa). Chốt chặn G1–G8, từ điển, bảng quyết định, tiền lệ chỉ chặn / cảnh báo, không đổi mã. Bị bỏ: lượt AI vòng 2 đọc gói sổ tay + sổ PN6 + chú giải nhóm. Không trả từ cache / kho đáp án, không chốt sớm từ điển, B1b không chạy lại. Số đúng/sai trên máy thật CHƯA đo."
     },
     {
       "ten": "earlyExitHoiTuR1",
@@ -648,6 +649,11 @@
       {
         "tep": "lib/conflict-resolver.js",
         "canCu": "bang-quyet-dinh"
+      },
+      {
+        "tep": "lib/do-thi/bac-thang.js",
+        "canCu": "so-tay, bieu-thue",
+        "ghiChu": "Sau HS_TIM_TRUOC=do-thi (mặc định TẮT): câu hỏi dừng ở từng bậc, máy dựng từ chữ nguyên văn của biểu thuế / chú giải, dữ kiện của cạnh C10 và chotDong8, và hoi-truoc-4so.js ở bậc 4. Lời AI (dữ kiện còn thiếu) chỉ vào engine.bacThang, không thành câu hỏi."
       }
     ],
     "chuyenTiep": [
