@@ -1,7 +1,9 @@
 import fs from 'node:fs';
 import { execFileSync } from 'node:child_process';
-const REPO = process.env.REPO || new URL("..", import.meta.url).pathname;
-const OUT = process.env.OUT || process.env.HOME + "/cham-cheo-gpu";
+import { fileURLToPath } from 'node:url';
+import { homedir } from 'node:os';
+const REPO = process.env.REPO || fileURLToPath(new URL('..', import.meta.url));
+const OUT = process.env.OUT || homedir() + "/cham-cheo-gpu";
 const CHAT_URL = (process.env.OLLAMA_URL || "").replace(/\/$/, "") + "/api/chat"; // repo public: không ghi IP nội bộ; OLLAMA_URL đặt trong môi trường
 if (!process.env.OLLAMA_URL) { console.error("Thiếu OLLAMA_URL (Ollama máy GPU nhà)"); process.exit(2); }
 const ds = process.argv[2] ? process.argv[2].split(',') : fs.readdirSync(REPO + '/data/do-thi/ban-do-4so').filter(f => /^\d{4}\.json$/.test(f)).map(f => f.slice(0, 4)).sort();

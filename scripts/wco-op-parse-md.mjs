@@ -19,8 +19,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { loadWcoCodes, validate, assertIgnored } from './wco-op-parse.mjs';
+import { fileURLToPath } from 'url';
 
-const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const arg = (n, d = null) => { const a = process.argv.find((x) => x.startsWith(`--${n}=`)); return a ? a.slice(n.length + 3) : d; };
 
 const OCR_DIGIT = { O: '0', o: '0', I: '1', l: '1', '|': '1', S: '5' };
@@ -205,4 +206,4 @@ function main() {
   console.log(`  ${of}\n  ${rf}  ← báo cáo không chứa chữ WCO, dán gửi được`);
 }
 
-if (process.argv[1] && path.resolve(process.argv[1]) === new URL(import.meta.url).pathname) main();
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) main();

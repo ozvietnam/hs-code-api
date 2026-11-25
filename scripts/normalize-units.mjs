@@ -8,12 +8,13 @@
  */
 import fs from 'fs';
 import { createRequire } from 'module';
+import { pathToFileURL } from 'url';
 const require = createRequire(import.meta.url);
 const { dataPath, dataReadPath } = require('../lib/data-paths.js');
 
 export const normalizeUnit = (s) => String(s ?? '').replace(/\s*\/\s*/g, '/').replace(/\s+/g, ' ').trim();
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (import.meta.url === pathToFileURL(process.argv[1] || '').href) {
   const tax = JSON.parse(fs.readFileSync(dataReadPath('tax.json'), 'utf8'));
   let n = 0;
   for (const r of Object.values(tax)) {

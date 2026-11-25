@@ -23,6 +23,7 @@
  */
 import fs from 'fs';
 import { createRequire } from 'module';
+import { pathToFileURL } from 'url';
 const require = createRequire(import.meta.url);
 const { dataPath, dataReadPath } = require('../lib/data-paths.js');
 const { getDocByCode } = require('../lib/legal-docs.js');
@@ -93,7 +94,7 @@ function csvCell(v) {
   return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (import.meta.url === pathToFileURL(process.argv[1] || '').href) {
   const enriched = JSON.parse(fs.readFileSync(dataReadPath('tax-enriched.json'), 'utf8'));
   const tax = JSON.parse(fs.readFileSync(dataReadPath('tax.json'), 'utf8'));
   const queue = buildQueue(enriched, tax);

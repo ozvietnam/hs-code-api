@@ -13,9 +13,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { createRequire } from 'node:module';
+import { pathToFileURL, fileURLToPath } from 'url';
 
 const require = createRequire(import.meta.url);
-const GOC = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+const GOC = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const G6 = require('../lib/do-thi/tieu-chi-6.js');
 const { dataReadPath } = require('../lib/data-paths.js');
 
@@ -48,7 +49,7 @@ export function nhomKhuonG6() {
   return ra;
 }
 
-const laChinh = process.argv[1] && import.meta.url.endsWith(process.argv[1].replace(/^.*\//, ''));
+const laChinh = Boolean(process.argv[1]) && import.meta.url === pathToFileURL(process.argv[1]).href;
 if (laChinh) {
   process.chdir(GOC);
   if (co('--ma-loi')) {

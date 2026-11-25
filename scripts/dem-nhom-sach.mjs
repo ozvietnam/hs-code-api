@@ -23,7 +23,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { createRequire } from 'node:module';
-import { fileURLToPath } from 'node:url';
+import { pathToFileURL, fileURLToPath } from 'node:url';
 import { Worker, isMainThread, parentPort, workerData } from 'node:worker_threads';
 import { sinhCaNhom } from './bo-kiem-luat.mjs';
 import { kiemCongAnhEm } from './cong-anh-em.mjs';
@@ -315,7 +315,7 @@ export async function demNhomSach(opts = {}) {
 if (!isMainThread && workerData?.workerMode) {
   const res = (workerData.nhoms || []).map((h4) => danhGiaNhomV1(h4));
   parentPort.postMessage(res);
-} else if (import.meta.url === `file://${process.argv[1]}`) {
+} else if (import.meta.url === pathToFileURL(process.argv[1] || '').href) {
   const argv = {};
   const rawArgs = process.argv.slice(2);
   for (let i = 0; i < rawArgs.length; i++) {

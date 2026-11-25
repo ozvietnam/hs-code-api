@@ -22,8 +22,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
+import { fileURLToPath } from 'url';
 
-const GOC = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+const GOC = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const TEP_CHUOI = new Set(['lib/llm-tier.js', 'lib/llm.mjs', 'lib/gemini.js', 'lib/customs-prompt.js', 'lib/prompt-version.js']);
 const RE_GOI_LLM = /\bcallLLM\w*\s*\(|\bcallLlm\w*\s*\(|\bgenerateContent\s*\(|\b(?:const|let)\s+(?:SYSTEM|SYS)_?[A-Z0-9_]*\s*=/;
 
@@ -96,4 +97,4 @@ function chay() {
   return 1;
 }
 
-if (process.argv[1] && path.resolve(process.argv[1]) === new URL(import.meta.url).pathname) process.exit(chay());
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) process.exit(chay());

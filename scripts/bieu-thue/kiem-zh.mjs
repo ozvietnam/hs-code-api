@@ -5,7 +5,7 @@
 // và sha256 nằm trong raw-index.json; mọi hs6 của tax.json phải được kể đến (có tên hoặc nằm trong thieu.jsonl).
 import fs from 'node:fs';
 import { dirname, join } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { pathToFileURL, fileURLToPath } from 'node:url';
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const arg = (k, d) => { const a = process.argv.find((x) => x.startsWith(`--${k}=`)); return a ? a.slice(k.length + 3) : d; };
 
@@ -77,7 +77,7 @@ export function kiem(dir, { hs6 = null } = {}) {
   return { loi, canhBao, tomTat };
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (import.meta.url === pathToFileURL(process.argv[1] || '').href) {
   const dir = join(ROOT, arg('dir', 'data/bieu-thue/zh'));
   const taxPath = join(ROOT, arg('tax', 'data/tax.json'));
   const hs6 = fs.existsSync(taxPath) ? [...new Set(Object.keys(JSON.parse(fs.readFileSync(taxPath, 'utf8'))).map((k) => k.replace(/\D/g, '').slice(0, 6)))] : null;

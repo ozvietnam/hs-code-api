@@ -27,9 +27,10 @@ import './test-isolate-data.mjs';
 import { createRequire } from 'node:module';
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'url';
 
 const require = createRequire(import.meta.url);
-const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const TV = require('../lib/tu-vung.js');
 const { loiVeSo, cumKhangDinh, cumPhuDinhNhom } = await import('./bo-kiem-luat.mjs');
 

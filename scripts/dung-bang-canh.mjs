@@ -16,9 +16,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { createRequire } from 'node:module';
+import { pathToFileURL, fileURLToPath } from 'url';
 
 const require = createRequire(import.meta.url);
-const GOC = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+const GOC = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 process.chdir(GOC);
 
 const co = (c) => process.argv.includes(c);
@@ -120,7 +121,7 @@ export function tepXepHang(bang = b) {
   };
 }
 
-const laChinh = process.argv[1] && import.meta.url.endsWith(process.argv[1].replace(/^.*\//, ''));
+const laChinh = Boolean(process.argv[1]) && import.meta.url === pathToFileURL(process.argv[1]).href;
 if (laChinh) {
   if (co('--bam')) { console.log(b.bam); process.exit(0); }
   const ghi = (tep, noiDung) => { fs.mkdirSync(path.dirname(path.join(GOC, tep)), { recursive: true }); fs.writeFileSync(path.join(GOC, tep), `${JSON.stringify(noiDung, null, 2)}\n`, 'utf8'); console.log(`đã ghi ${tep}`); };

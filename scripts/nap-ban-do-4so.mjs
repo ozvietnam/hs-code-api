@@ -10,9 +10,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { createRequire } from 'node:module';
 import { docDaNap, inKetQua } from './kiem-ban-do-4so.mjs';
+import { fileURLToPath } from 'node:url';
 
 const require = createRequire(import.meta.url);
-const GOC = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+const GOC = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const B = require('../lib/do-thi/ban-do-4so.js');
 const thamSo = (ten) => { const a = process.argv.find((x) => x.startsWith(`--${ten}=`)); return a ? a.slice(ten.length + 3) : null; };
 

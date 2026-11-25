@@ -10,6 +10,7 @@
  */
 import fs from 'fs';
 import { createRequire } from 'module';
+import { pathToFileURL } from 'url';
 const require = createRequire(import.meta.url);
 const { dataPath, dataReadPath } = require('../lib/data-paths.js');
 const { tenZhOf } = require('../lib/bieu-thue-zh.js');
@@ -25,7 +26,7 @@ export function buildSearchIndex(tax) {
   }));
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (import.meta.url === pathToFileURL(process.argv[1] || '').href) {
   const tax = JSON.parse(fs.readFileSync(dataReadPath('tax.json'), 'utf8'));
   const index = buildSearchIndex(tax);
   fs.writeFileSync(dataPath('search.json'), JSON.stringify(index));

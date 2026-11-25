@@ -13,9 +13,12 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { createRequire } from 'node:module';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const require = createRequire(import.meta.url);
-const GOC = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+const GOC = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+// Tính TRƯỚC khi chdir: `argv[1]` tương đối được giải theo thư mục lúc khởi động, không theo GOC.
+const laChinh = Boolean(process.argv[1]) && import.meta.url === pathToFileURL(process.argv[1]).href;
 process.chdir(GOC);
 const G6 = require('../lib/do-thi/tieu-chi-6.js');
 const S = require('../lib/so-tay.js');
@@ -59,7 +62,7 @@ export function apVaoSoTay(banSoan, { thu = false } = {}) {
   return { ghi: !thu, kq, h4, tep: path.relative(GOC, tep) };
 }
 
-const laChinh = process.argv[1] && import.meta.url.endsWith(process.argv[1].replace(/^.*\//, ''));
+// `laChinh` đã tính ở đầu tệp (trước `process.chdir`).
 if (laChinh) {
   const tepAp = thamSo('ap'); const nhom = thamSo('nhom');
   if (tepAp) {

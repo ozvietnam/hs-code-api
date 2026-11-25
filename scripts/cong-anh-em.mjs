@@ -11,6 +11,7 @@
  */
 import fs from 'node:fs';
 import { createRequire } from 'node:module';
+import { pathToFileURL } from 'url';
 
 const require = createRequire(import.meta.url);
 
@@ -237,7 +238,7 @@ export function kiemCongAnhEm(nhom4, mucOverride = null) {
   };
 }
 
-const isMain = import.meta.url === `file://${process.argv[1]}`;
+const isMain = import.meta.url === pathToFileURL(process.argv[1] || '').href;
 if (isMain) {
   const nhom = String(argv.nhom || '8539').trim();
   const kq = kiemCongAnhEm(nhom);

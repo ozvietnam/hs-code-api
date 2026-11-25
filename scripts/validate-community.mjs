@@ -18,7 +18,7 @@
  *        (không tham số = quét toàn bộ data/community/)
  */
 import { readFileSync, readdirSync, existsSync, statSync } from 'fs';
-import { join, dirname, relative } from 'path';
+import { join, dirname, relative, isAbsolute } from 'path';
 import { fileURLToPath } from 'url';
 import { createRequire } from 'module';
 
@@ -413,7 +413,9 @@ function listFiles(dir) {
 }
 
 const args = process.argv.slice(2);
-const files = args.length ? args.map((a) => (a.startsWith('/') ? a : join(root, a))) : listFiles(COMMUNITY_DIR);
+// `startsWith('/')` chỉ nhận đường dẫn tuyệt đối kiểu Linux — trên Windows `C:\Temp\…` bị nối
+// thành `<repo>\C:\Temp\…` rồi ENOENT. isAbsolute hiểu cả hai, nên Linux không đổi hành vi.
+const files = args.length ? args.map((a) => (isAbsolute(a) ? a : join(root, a))) : listFiles(COMMUNITY_DIR);
 
 if (files.length === 0) {
   console.log('Không có tệp đóng góp nào trong data/community/ — bỏ qua.');

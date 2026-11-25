@@ -42,8 +42,12 @@ kiem('id cạnh không trùng', new Set(canh.map((e) => e.id)).size === canh.len
 const moCoi = canh.filter((e) => !D.coNut(e.tu) || !D.coNut(e.toi));
 kiem('0 cạnh mồ côi (hai đầu đều là nhóm / phân nhóm / dòng còn trong biểu thuế)', moCoi.length === 0, moCoi.slice(0, 5).map((e) => `${e.id}`).join(', '));
 kiem('không cạnh nào tự trỏ vào chính nó', !canh.some((e) => e.tu === e.toi));
-const bacSai = canh.filter((e) => (['C5', 'C6', 'C7', 'C9', 'C11', 'LOAI_TRU'].includes(e.loai) && e.bac !== 1) || (e.loai === 'C8' && e.bac === 1) || (e.loai === 'WCO' && e.bac !== (e.headingSuspect ? 2 : 1)));
-kiem('thứ bậc: C5/C6/C7/C9/C11/LOAI_TRU bậc 1; WCO sạch bậc 1 & nghi ngờ OCR bậc 2; C8 không bao giờ bậc 1', bacSai.length === 0, bacSai.slice(0, 3).map((e) => e.id).join(', '));
+const haiVe = (e) => ['C5', 'C6'].includes(e.loai) && e.soat !== undefined;
+const bacSai = canh.filter((e) => (haiVe(e) && e.bac !== (e.soat === 'DUNG' ? 1 : 4)) || (!haiVe(e) && ['C5', 'C6', 'C7', 'C9', 'C11', 'LOAI_TRU'].includes(e.loai) && e.bac !== 1) || (e.loai === 'C8' && e.bac === 1) || (e.loai === 'WCO' && e.bac !== (e.headingSuspect ? 2 : 1)));
+kiem('thứ bậc: cạnh hai vế chưa tự chứng minh chỉ bậc 1 khi đã soát DUNG, không thì bậc 4; C5/C6/C7/C9/C11/LOAI_TRU bậc 1; WCO sạch bậc 1 & nghi ngờ OCR bậc 2; C8 không bao giờ bậc 1', bacSai.length === 0, bacSai.slice(0, 3).map((e) => e.id).join(', '));
+const goc = new Map(canh.filter((e) => e.loai === 'C5').map((e) => [e.id, e]));
+kiem('C6 mang cùng bậc và cùng kết quả soát với C5 gốc', canh.filter((e) => e.loai === 'C6').every((e) => goc.get(e.goc) && goc.get(e.goc).bac === e.bac && goc.get(e.goc).soat === e.soat));
+kiem('cạnh C5 có canCuLoaiTru mà trích không nêu mã nhóm đích đều có trường soat', canh.filter((e) => e.loai === 'C5' && e.canCuLoaiTru && !e.trich.includes(`${e.toi.slice(0, 2)}.${e.toi.slice(2, 4)}`)).every((e) => e.soat !== undefined));
 const c8ChuaDuyet = canh.filter((e) => e.loai === 'C8' && e.nguonKho === 'confusion-pairs' && e.daDuyet !== true && e.bac !== 4);
 kiem('C8 từ từ điển chưa duyệt mang bậc 4 (chỉ gợi ý), không lẫn vào bậc thông báo phân loại', c8ChuaDuyet.length === 0);
 

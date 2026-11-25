@@ -26,7 +26,10 @@ tên tiếng Anh của WCO. Nó không ghi thứ tự xét, không có chỗ cho
    khi dòng lá chính là phân nhóm. Dòng 8 số thường, tiêu đề 7 số, tầng không mã vẫn bị loại.
 4. **Thứ tự xét do máy xếp** (`thuTuMay`): theo mã; phân nhóm dư trần cuối tầng; phân nhóm có `uuTien` lên đầu. Người / AI soạn
    không ghi `thuTu`. Lý do: lần thử đầu, mô hình rẻ ghi sai `thuTu` ở cả 3 nhóm và không tự sửa được.
-5. **Một cổng máy trước khi ghi:** `scripts/kiem-tieu-chi-6.mjs` (lõi `lib/do-thi/tieu-chi-6.js`), 30 mã lỗi + 3 cảnh báo (từ 21/11/2026 thêm CHI_HOI_MUC_DICH + cảnh báo CONG_DUNG_THIEU_DAC_TINH_KIEM_CHUNG: hỏi đặc tính kiểm chứng được, không hỏi mục đích tự nhận — CEO duyệt).
+5. **Một cổng máy trước khi ghi:** `scripts/kiem-tieu-chi-6.mjs` (lõi `lib/do-thi/tieu-chi-6.js`). Danh sách mã lỗi và cảnh báo
+   khai tại `MA_LOI` / `CANH_BAO` trong chính tệp lõi đó, xem bằng `node scripts/kiem-tieu-chi-6.mjs --ma-loi` — đó là nguồn
+   duy nhất, tài liệu không chép lại con số để khỏi lệch mỗi lần thêm mã. Từ 21/11/2026 thêm CHI_HOI_MUC_DICH + cảnh báo
+   CONG_DUNG_THIEU_DAC_TINH_KIEM_CHUNG: hỏi đặc tính kiểm chứng được, không hỏi mục đích tự nhận — CEO duyệt.
    `scripts/goi-soan-tieu-chi-6.mjs --ap` chỉ ghi `data/so-tay/` khi 0 lỗi. `npm test` chạy cổng trên mọi sổ tay mang khuôn g6@1
    và chạy `scripts/test-tieu-chi-6.mjs` (mỗi mã lỗi có ít nhất một ca tiêm).
 6. **Mục đã áp mang nhãn `AI_DA_KIEM`**, không phải nhãn duyệt. `lib/ho-so/duong-di.js` chỉ đọc `tieuChi6` đã duyệt, nên mục mới

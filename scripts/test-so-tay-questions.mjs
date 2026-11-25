@@ -28,6 +28,7 @@ import path from 'node:path';
  * đúng đặc điểm; nhóm không có sổ tay → coSoTay:false (không 500); đầu vào xấu → 400.
  */
 import { createRequire } from 'node:module';
+import { fileURLToPath } from 'url';
 const require = createRequire(import.meta.url);
 
 let passed = 0; let failed = 0;
@@ -195,7 +196,7 @@ assert('"mũ giày bằng vải lưới, đế EVA" → không hỏi upper/sole'
   const { cauPhanBietNhom: cauPhanBiet2131 } = require('../lib/hoi-theo-so-tay.js');
   const D2131 = require('../lib/do-thi/index.js');
   const { phanTichHoiTruoc4So: hoiTruoc2131, TRANG_THAI_4SO: TT2131 } = require('../lib/do-thi/hoi-truoc-4so.js');
-  const ROOT2131 = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+  const ROOT2131 = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
   // test-isolate đã tạo TEST_DATA_DIR/so-tay (chỉ 8481) → dataReadPath('so-tay') đọc thư mục đó và
   // che mất sổ tay gốc khi dựng bảng cạnh. Chép 8536/8542 vào isolate rồi datLai().
@@ -340,7 +341,7 @@ assert('"mũ giày bằng vải lưới, đế EVA" → không hỏi upper/sole'
   const { cauPhanBietNhom: cauPhanBiet2133 } = require('../lib/hoi-theo-so-tay.js');
   const D2133 = require('../lib/do-thi/index.js');
   const { phanTichHoiTruoc4So: hoiTruoc2133, TRANG_THAI_4SO: TT2133 } = require('../lib/do-thi/hoi-truoc-4so.js');
-  const ROOT2133 = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+  const ROOT2133 = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
   fs.mkdirSync(path.join(TEST_DATA_DIR, 'so-tay'), { recursive: true });
   for (const nh of ['8536', '8541']) {
@@ -501,7 +502,7 @@ assert('"mũ giày bằng vải lưới, đế EVA" → không hỏi upper/sole'
   const { cauPhanBietNhom: cauPhanBiet2151 } = require('../lib/hoi-theo-so-tay.js');
   const D2151 = require('../lib/do-thi/index.js');
   const { phanTichHoiTruoc4So: hoiTruoc2151, TRANG_THAI_4SO: TT2151 } = require('../lib/do-thi/hoi-truoc-4so.js');
-  const ROOT2151 = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+  const ROOT2151 = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
   fs.mkdirSync(path.join(TEST_DATA_DIR, 'so-tay'), { recursive: true });
   for (const nh of ['8512', '8536']) {
@@ -662,7 +663,7 @@ assert('"mũ giày bằng vải lưới, đế EVA" → không hỏi upper/sole'
   const { cauPhanBietNhom: cauPhanBiet2178 } = require('../lib/hoi-theo-so-tay.js');
   const D2178 = require('../lib/do-thi/index.js');
   const { phanTichHoiTruoc4So: hoiTruoc2178, TRANG_THAI_4SO: TT2178 } = require('../lib/do-thi/hoi-truoc-4so.js');
-  const ROOT2178 = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+  const ROOT2178 = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
   fs.mkdirSync(path.join(TEST_DATA_DIR, 'so-tay'), { recursive: true });
   for (const nh of ['8449', '8479']) {
@@ -823,7 +824,7 @@ assert('"mũ giày bằng vải lưới, đế EVA" → không hỏi upper/sole'
   const { cauPhanBietNhom: cauPhanBiet2181 } = require('../lib/hoi-theo-so-tay.js');
   const D2181 = require('../lib/do-thi/index.js');
   const { phanTichHoiTruoc4So: hoiTruoc2181, TRANG_THAI_4SO: TT2181 } = require('../lib/do-thi/hoi-truoc-4so.js');
-  const ROOT2181 = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+  const ROOT2181 = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
   fs.mkdirSync(path.join(TEST_DATA_DIR, 'so-tay'), { recursive: true });
   for (const nh of ['8479', '8483']) {
@@ -984,7 +985,7 @@ assert('"mũ giày bằng vải lưới, đế EVA" → không hỏi upper/sole'
   const { cauPhanBietNhom: cauPhanBiet2185 } = require('../lib/hoi-theo-so-tay.js');
   const D2185 = require('../lib/do-thi/index.js');
   const { phanTichHoiTruoc4So: hoiTruoc2185, TRANG_THAI_4SO: TT2185 } = require('../lib/do-thi/hoi-truoc-4so.js');
-  const ROOT2185 = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+  const ROOT2185 = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
   fs.mkdirSync(path.join(TEST_DATA_DIR, 'so-tay'), { recursive: true });
   for (const nh of ['8479', '8515']) {
@@ -1146,7 +1147,7 @@ assert('"mũ giày bằng vải lưới, đế EVA" → không hỏi upper/sole'
   const { cauPhanBietNhom: cauPhanBiet2195 } = require('../lib/hoi-theo-so-tay.js');
   const D2195 = require('../lib/do-thi/index.js');
   const { phanTichHoiTruoc4So: hoiTruoc2195, TRANG_THAI_4SO: TT2195 } = require('../lib/do-thi/hoi-truoc-4so.js');
-  const ROOT2195 = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+  const ROOT2195 = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
   fs.mkdirSync(path.join(TEST_DATA_DIR, 'so-tay'), { recursive: true });
   for (const nh of ['5903', '5907']) {
@@ -1311,7 +1312,7 @@ assert('"mũ giày bằng vải lưới, đế EVA" → không hỏi upper/sole'
   const { cauPhanBietNhom: cauPhanBiet2198 } = require('../lib/hoi-theo-so-tay.js');
   const D2198 = require('../lib/do-thi/index.js');
   const { phanTichHoiTruoc4So: hoiTruoc2198, TRANG_THAI_4SO: TT2198 } = require('../lib/do-thi/hoi-truoc-4so.js');
-  const ROOT2198 = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+  const ROOT2198 = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
   fs.mkdirSync(path.join(TEST_DATA_DIR, 'so-tay'), { recursive: true });
   for (const nh of ['8541', '8543', '9013']) {
@@ -1498,7 +1499,7 @@ assert('"mũ giày bằng vải lưới, đế EVA" → không hỏi upper/sole'
   const { cauPhanBietNhom: cauPhanBiet2204 } = require('../lib/hoi-theo-so-tay.js');
   const D2204 = require('../lib/do-thi/index.js');
   const { phanTichHoiTruoc4So: hoiTruoc2204, TRANG_THAI_4SO: TT2204 } = require('../lib/do-thi/hoi-truoc-4so.js');
-  const ROOT2204 = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+  const ROOT2204 = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
   fs.mkdirSync(path.join(TEST_DATA_DIR, 'so-tay'), { recursive: true });
   for (const nh of ['8541', '8539', '9013']) {
@@ -1669,7 +1670,7 @@ assert('"mũ giày bằng vải lưới, đế EVA" → không hỏi upper/sole'
   const { cauPhanBietNhom: cauPhanBiet2206 } = require('../lib/hoi-theo-so-tay.js');
   const D2206 = require('../lib/do-thi/index.js');
   const { phanTichHoiTruoc4So: hoiTruoc2206, TRANG_THAI_4SO: TT2206 } = require('../lib/do-thi/hoi-truoc-4so.js');
-  const ROOT2206 = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+  const ROOT2206 = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
   fs.mkdirSync(path.join(TEST_DATA_DIR, 'so-tay'), { recursive: true });
   for (const nh of ['9013', '8541', '8543', '8539']) {
@@ -1874,7 +1875,7 @@ assert('"mũ giày bằng vải lưới, đế EVA" → không hỏi upper/sole'
   const { cauPhanBietNhom: cauPhanBiet2211 } = require('../lib/hoi-theo-so-tay.js');
   const D2211 = require('../lib/do-thi/index.js');
   const { phanTichHoiTruoc4So: hoiTruoc2211, TRANG_THAI_4SO: TT2211 } = require('../lib/do-thi/hoi-truoc-4so.js');
-  const ROOT2211 = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+  const ROOT2211 = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
   fs.mkdirSync(path.join(TEST_DATA_DIR, 'so-tay'), { recursive: true });
   for (const nh of ['4016', '8479']) {

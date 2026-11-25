@@ -21,9 +21,10 @@ import './test-isolate-data.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import { createRequire } from 'node:module';
+import { fileURLToPath } from 'url';
 
 const require = createRequire(import.meta.url);
-const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const { chotDong8 } = require('../lib/so-tay-gates.js');
 
 const fixture = JSON.parse(fs.readFileSync(path.join(ROOT, 'tests', 'phan-biet-vat-lieu-t3-composite.json'), 'utf8'));
@@ -615,125 +616,15 @@ check(`ReDoS: 40.000 từ lặp (${REDOS_LAU.length} ký tự) chạy ${msRedos}
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// OZV-2149 — Cạnh loại trừ 2 chiều 25.08 ↔ 25.05 cho ca 190 tầng 4 số
-// ('Đất bentonite cho chó mèo đi vệ sinh / Bentonite / Vệ sinh thú cưng')
+// OZV-2149 (sửa 25/11 sau soát #1822) — 25.05 → 25.08 cho đất sét bentonite, MỘT chiều. Chiều 25.08 → 25.05 ("bentonite là cát") đã xoá: cát vốn
+// không thuộc 25.08, cạnh đó hỏi khách câu vô nghĩa và kéo oan 25.08 cho hàng cát.
 {
-  const D = require('../lib/do-thi/index.js');
-  const ST = require('../lib/so-tay.js');
-  const H = require('../lib/hoi-theo-so-tay.js');
-  const { soTayGates, nhomLienQuanSoTay } = require('../lib/so-tay-gates.js');
-  const { phanTichHoiTruoc4So, TRANG_THAI_4SO } = require('../lib/do-thi/hoi-truoc-4so.js');
-  D.datLai();
-
-  const s2508 = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'so-tay', '2508.json'), 'utf8'));
-  const s2505 = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'so-tay', '2505.json'), 'utf8'));
-  const v2508 = ST.verifySoTay(s2508, '2508');
-  const v2505 = ST.verifySoTay(s2505, '2505');
-  check('OZV-2149: verifySoTay 2508 và 2505 đạt 100% (0 mục bị loại)',
-    v2508.loai.length === 0 && v2505.loai.length === 0,
-    { loai2508: v2508.loai, loai2505: v2505.loai });
-
-  const lt2508 = (s2508.loaiTru || []).find((x) => x.sangNhom === '2505');
-  const lt2505 = (s2505.loaiTru || []).find((x) => x.sangNhom === '2508');
-  check('OZV-2149: sổ tay có loaiTru 2 chiều 2508 ↔ 2505 kèm canCuLoaiTru nguyên văn đạt checkItem',
-    Boolean(
-      lt2508
-      && lt2508.canCuLoaiTru?.nguon === 'nhom2505.nhom'
-      && ST.checkItem('loaiTru', lt2508, ST.sourcesFor('2508'), '2508') === null
-      && !lt2508.dieuKien.includes(';')
-    )
-    && Boolean(
-      lt2505
-      && lt2505.canCuLoaiTru?.nguon === 'nhom2508.nhom'
-      && ST.checkItem('loaiTru', lt2505, ST.sourcesFor('2505'), '2505') === null
-      && !lt2505.dieuKien.includes(';')
-      && lt2508.dieuKien !== lt2505.dieuKien
-    ),
-    { lt2508, lt2505 });
-
-  const c5_2508_2505 = D.canhTu('2508', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '2505');
-  const c5_2505_2508 = D.canhTu('2505', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '2508');
-  const c6_2505_2508 = D.canhTu('2505', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '2508');
-  const c6_2508_2505 = D.canhTu('2508', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '2505');
-  check('OZV-2149: đồ thị 2 chiều C5/C6 giữa 2508 ↔ 2505 giữ đủ trích nguồn + canCuLoaiTru',
-    c5_2508_2505.some((e) => e.nguon === 'nhom2508.nhom' && e.canCuLoaiTru?.nguon === 'nhom2505.nhom')
-    && c5_2505_2508.some((e) => e.nguon === 'nhom2505.nhom' && e.canCuLoaiTru?.nguon === 'nhom2508.nhom')
-    && c6_2505_2508.length >= 1
-    && c6_2508_2505.length >= 1,
-    { c5_2508_2505: c5_2508_2505.length, c5_2505_2508: c5_2505_2508.length });
-
-  const moTaCa190 = 'Đất bentonite cho chó mèo đi vệ sinh / Bentonite / Vệ sinh thú cưng';
-  const mo2508 = D.moRongUngVien(['2508'], moTaCa190, { toiDa: 10 });
-  const mo2505 = D.moRongUngVien(['2505'], moTaCa190, { toiDa: 10 });
-  check('OZV-2149: moRongUngVien kéo 2 chiều 2508 ↔ 2505 trên ca 190 "Đất bentonite cho chó mèo đi vệ sinh"',
-    mo2508.some((x) => x.nhom === '2505') && mo2505.some((x) => x.nhom === '2508'),
-    { tu2508: mo2508.map((x) => x.nhom), tu2505: mo2505.map((x) => x.nhom) });
-
-  const rel2508 = nhomLienQuanSoTay('2508');
-  const rel2505 = nhomLienQuanSoTay('2505');
-  check('OZV-2149: nhomLienQuanSoTay hai chiều 2508 ↔ 2505',
-    rel2508.includes('2505') && rel2505.includes('2508'),
-    { rel2508, rel2505 });
-
-  const g2508To2505 = soTayGates({
-    hs: '25081000',
-    productText: 'Đất bentonite cho chó mèo đi vệ sinh là các loại cát tự nhiên như cát silic hoặc cát thạch anh',
-    productName: 'Đất bentonite cho chó mèo đi vệ sinh là các loại cát tự nhiên như cát silic hoặc cát thạch anh',
-    candidateHeadings: ['2508', '2505'],
-  });
-  const g2505To2508 = soTayGates({
-    hs: '25059000',
-    productText: 'Đất bentonite cho chó mèo đi vệ sinh là đất sét bentonite tự nhiên nghiền tạo hạt chưa pha hương liệu',
-    productName: 'Đất bentonite cho chó mèo đi vệ sinh là đất sét bentonite tự nhiên nghiền tạo hạt chưa pha hương liệu',
-    candidateHeadings: ['2505', '2508'],
-  });
-  check('OZV-2149 (thuận soTayGates): kích hoạt SO_TAY_LOAI_TRU đúng cả 2 chiều 2508 → 2505 và 2505 → 2508',
-    (g2508To2505.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('2505'))
-    && (g2505To2508.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('2508')),
-    { g2508To2505: g2508To2505.challenges, g2505To2508: g2505To2508.challenges });
-
-  const gDoi2508 = soTayGates({
-    hs: '25083000',
-    productText: 'Đất sét chịu lửa dùng sản xuất gạch chịu lửa trong lò công nghiệp',
-    productName: 'Đất sét chịu lửa dùng sản xuất gạch chịu lửa trong lò công nghiệp',
-    candidateHeadings: ['2508', '2505'],
-  });
-  const gDoi2505 = soTayGates({
-    hs: '25051000',
-    productText: 'Cát oxit silic và cát thạch anh tự nhiên dùng trong ngành công nghiệp kính',
-    productName: 'Cát oxit silic và cát thạch anh tự nhiên dùng trong ngành công nghiệp kính',
-    candidateHeadings: ['2505', '2508'],
-  });
-  check('OZV-2149 (đối chứng soTayGates): đất sét chịu lửa và cát thạch anh tự nhiên không kích hoạt oan 2508 ↔ 2505',
-    !(gDoi2508.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('2505'))
-    && !(gDoi2505.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('2508')),
-    { gDoi2508: gDoi2508.challenges, gDoi2505: gDoi2505.challenges });
-
-  const pb2508 = H.cauPhanBietNhom('2508', ['2508', '2505'], moTaCa190);
-  const pb2505 = H.cauPhanBietNhom('2505', ['2505', '2508'], moTaCa190);
-  check('OZV-2149 (thuận cauPhanBietNhom): sinh câu PHAN_BIET_NHOM 2 chiều 25.08 ↔ 25.05 cho ca 190',
-    pb2508.length === 1 && pb2508[0].nguon === 'nhom2508.nhom' && /25\.05/.test(pb2508[0].questionVi)
-    && pb2505.length === 1 && pb2505[0].nguon === 'nhom2505.nhom' && /25\.08/.test(pb2505[0].questionVi),
-    { pb2508, pb2505 });
-
-  const pbDoi2508 = H.cauPhanBietNhom('2508', ['2508', '2505'], 'Đất sét chịu lửa dùng sản xuất gạch chịu lửa trong lò công nghiệp');
-  const pbDoi2505 = H.cauPhanBietNhom('2505', ['2505', '2508'], 'Cát oxit silic và cát thạch anh tự nhiên dùng trong ngành công nghiệp kính');
-  check('OZV-2149 (đối chứng cauPhanBietNhom & moRongUngVien): không hỏi oan / không kéo oan 25.08 ↔ 25.05 trên hàng không liên quan',
-    pbDoi2508.length === 0
-    && pbDoi2505.length === 0
-    && !D.moRongUngVien(['2508'], 'Đất sét chịu lửa dùng sản xuất gạch chịu lửa trong lò công nghiệp').some((x) => x.nhom === '2505')
-    && !D.moRongUngVien(['2505'], 'Cát oxit silic và cát thạch anh tự nhiên dùng trong ngành công nghiệp kính').some((x) => x.nhom === '2508'),
-    { pbDoi2508, pbDoi2505 });
-
-  const ht190 = phanTichHoiTruoc4So({ moTa: moTaCa190, ungVien: ['2508', '2505'] });
-  const distinctDk190 = new Set((ht190.nhanh || []).map((n) => n.dieuKien)).size === 2;
-  const tuCanhDoThi190 = (ht190.nhanh || []).length === 2 && (ht190.nhanh || []).every((n) => String(n.nguon || '').startsWith('do-thi:C5:'));
-  check('OZV-2149 (hoi-truoc-4so): ca 190 với [2508, 2505] trả CHUA_CHOT_NHOM_HOI_TRUOC với 2 nhánh điều kiện phân biệt từ cạnh C5',
-    ht190.trangThai === TRANG_THAI_4SO.CHUA_CHOT_NHOM_HOI_TRUOC
-    && distinctDk190
-    && tuCanhDoThi190
-    && ['2508', '2505'].every((h) => (ht190.dapAnDieuKien || '').includes(`→ nhóm ${h} (`)),
-    { trangThai: ht190.trangThai, distinctDk190, tuCanhDoThi190, dapAnDieuKien: ht190.dapAnDieuKien });
+  const D = require('../lib/do-thi'); const H = require('../lib/hoi-theo-so-tay.js');
+  const BEN = 'Đất bentonite cho chó mèo đi vệ sinh / Bentonite / Vệ sinh thú cưng'; const CAT = 'Cát oxit silic và cát thạch anh tự nhiên dùng trong ngành công nghiệp kính';
+  check('OZV-2149: C5 25.05 → 25.08 còn đủ trích nguồn, chiều ngược không còn',
+    D.canhTu('2505', 'C5', { toiDa: Infinity }).some((e) => e.toi === '2508' && e.nguon === 'nhom2505.nhom') && !D.canhTu('2508', 'C5', { toiDa: Infinity }).some((e) => e.toi === '2505'));
+  check('OZV-2149: bentonite đang ở 25.05 thì kéo và hỏi sang 25.08', D.moRongUngVien(['2505'], BEN, { toiDa: 10 }).some((x) => x.nhom === '2508') && H.cauPhanBietNhom('2505', ['2505', '2508'], BEN).some((x) => /25\.08/.test(x.questionVi)));
+  check('OZV-2149 (ca ngược): hàng cát không bị kéo sang 25.08, không câu nào hỏi bentonite có phải cát không', !D.moRongUngVien(['2505'], CAT).some((x) => x.nhom === '2508') && H.cauPhanBietNhom('2508', ['2508', '2505'], BEN).every((x) => !/cát/.test(x.questionVi)));
 }
 
 console.log(`\nvật liệu tổng hợp (composite) — OZV-581 / OZV-540 PA-3: ${passed} PASS, ${failed} FAIL`);

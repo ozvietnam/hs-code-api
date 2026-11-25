@@ -1,0 +1,24 @@
+# Các cổng máy trong scripts/ so sánh byte đích (sha256 của tệp sinh ra, sơ đồ Mermaid
+# sinh từ data/luat/dau-noi.json). Không có dòng này, một bản clone trên Windows với
+# core.autocrlf=true (mặc định của Git for Windows) nhận tệp văn bản đổi CRLF và làm đỏ
+# các cổng đó dù dữ liệu trong repo không sai chút nào.
+* text=auto eol=lf
+
+# Nhị phân: giữ nguyên từng byte, không đổi kết thúc dòng, không sửa encoding.
+*.gz binary
+*.bin binary
+*.zip binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.webp binary
+*.pdf binary
+*.woff binary
+*.woff2 binary
+
+# Ngoại lệ có chủ đích: biểu này đang lưu CRLF trong git, nên `-text` = không chuyển
+# đổi gì. Ép LF (kể cả eol=crlf) khiến git báo tệp modified ở mọi bản clone và sinh
+# diff ~2.400 dòng cho một thay đổi không liên quan tới code.
+docs/giao-viec/tb-tchq-uu-tien-3.csv -text

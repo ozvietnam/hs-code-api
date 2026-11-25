@@ -22,7 +22,7 @@ import { chromium } from 'playwright-core';
 import { createRequire } from 'node:module';
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { writeRaw, appendRecord, readJsonl, TEP, log, UA, DIR_SHTT, sleep } from './lib-common.mjs';
 
 const require = createRequire(import.meta.url);
@@ -220,6 +220,6 @@ async function main() {
   log(`XONG: found=${found} notFound=${notFound} errs=${errs} trong ${Math.round((Date.now() - t0) / 1000)}s`);
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (import.meta.url === pathToFileURL(process.argv[1] || '').href) {
   main().catch((e) => { console.error('FATAL:', e); process.exit(1); });
 }
