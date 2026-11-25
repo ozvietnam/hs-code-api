@@ -45,8 +45,8 @@ LUAT_GOC_TXT=<thư mục riêng> node scripts/kiem-luat-goc.mjs thong-bao
 - Có `LUAT_GOC_TXT` (`thong-bao.txt` = ghép toàn văn, sha256 đầu vào `b8016849…e318`): **2.270 nút có toàn văn: 0 lỗi. 814 lỗi đều ở nút `chuaDoiChieu`.** Cổng hiện còn in FAIL tới khi QT cho bỏ qua các nút này. `moTaKhaiBao` chạy qua cùng phép so: 2.137 nút, 0 lỗi.
 - Điều phải biết về con số 0 lỗi: bản chữ đối chiếu chính là nguồn rút (một lần đọc), nên nó chứng minh không thêm, không sửa chữ; không chứng minh bản cào giống bản ký. Cổng so theo câu; cả đoạn liền một mạch là 1.554 nút, còn lại do nhãn nhà sản xuất bị bỏ tên hoặc khác dấu câu nối.
 - Mã: 2.268/2.270 nút có `maLucBanHanh` in ngay trong mục kết quả. Hai nút còn lại: 1811/2020 (in 32082090, đã được 2174/TB-TCHQ đính chính; câu đính chính nguyên văn ở `dinhChinh.trich`) và 3408/2024 (bản chữ bị che mất mã; mã theo kho cũ).
-- Đọc tay 34 nút rút ngẫu nhiên (hạt 1907): cả 34 đúng ranh mục, đúng hàng, đúng câu kết luận. Một nút lúc đó còn mẩu khai báo vô nghĩa (181/2021), đã sửa thành `null` cho cả kho.
-- Độc lập với nguồn rút: mô tả kho cũ (người khác cào từ luatvietnam, tracuuhs) so với toàn văn, 1.924 nút nguyên vẹn. Ngày đầu văn bản khác kho: 1 nút (530/TB-TCHQ 2018).
+- Đọc tay 34 nút rút ngẫu nhiên (hạt 1907): đọc đầu và cuối đoạn (đoạn dài lược phần giữa), cả 34 đúng ranh mục, đúng hàng, đúng câu kết luận. Một nút lúc đó còn mẩu khai báo vô nghĩa (181/2021), đã sửa thành `null` cho cả kho.
+- Kiểm thêm, không hoàn toàn độc lập (một phần kho cũ cũng cào từ tracuuhs): mô tả kho cũ so với toàn văn, 1.924 nút nguyên vẹn. Ngày đầu văn bản khác kho: 1 nút (530/TB-TCHQ 2018).
 
 ## Bốn danh sách của thẻ
 
