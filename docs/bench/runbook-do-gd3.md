@@ -1,121 +1,146 @@
-# Runbook đo Giai đoạn 3 trên máy chủ thật (`scripts/do-do-thi-gd3.mjs`)
+# Runbook đo Giai đoạn 3 qua kênh đo riêng (`scripts/do-do-thi-gd3.mjs`)
 
-Tài liệu hướng dẫn **QT (quản trị server)** chạy công cụ đo Giai đoạn 3 trên container máy thật (`.120`), dùng đúng chuỗi mô hình đang phục vụ khách qua Cổng OZ (luật **L1**, `docs/luat-duong-khach.md`), và đối chiếu kết quả với điều kiện nhận GĐ3 trong [`docs/ke-hoach-do-thi-tri-thuc-hs.md`](../ke-hoach-do-thi-tri-thuc-hs.md) (mục 2, mục 6 GĐ3, mục 9).
+Tài liệu hướng dẫn **QT (quản trị server)** chạy công cụ đo Giai đoạn 3 bằng chuỗi mô hình thật qua **container đo / kênh đo riêng** và **khoá API đo riêng**, tuân thủ luật **L1** (`docs/luat-duong-khach.md`), **Luật đo 23/11** (`docs/tang-4so/LUAT-DO.md`) và điều kiện nhận GĐ3 trong [`docs/ke-hoach-do-thi-tri-thuc-hs.md`](../ke-hoach-do-thi-tri-thuc-hs.md) (mục 2, mục 6 GĐ3, mục 9).
 
-> **Nguyên tắc L1:** Không sửa mã nguồn hay tệp dữ liệu trong repo khi đo. Mọi tệp kết quả JSON/Markdown ghi ra `/tmp/` (ngoài repo, không commit dữ liệu hay dump tờ khai Oz).
-
----
-
-## 1. Kiểm tra trước khi đo (trong container `hs-code-api`)
-
-1. Kiểm tra tải CPU (số đầu của `/proc/loadavg` phải thấp hơn số lõi, nếu cao sẽ làm p95 bị méo):
-   ```bash
-   docker exec hs-code-api cat /proc/loadavg
-   ```
-2. Kiểm tra `SOURCE_COMMIT` / `HS_COMMIT` và chuỗi mô hình đang chạy qua `/api/health`:
-   ```bash
-   curl -sS http://127.0.0.1:3000/api/health | jq '{commit, llm: .checks.llm}'
-   ```
-   - Đảm bảo `llm.private.ok == true` trong nhánh `checks.llm` (có `minimax` hoặc khoá không huấn luyện hợp lệ).
-   - Nếu Gemini trả phí đang lỗi `402` hoặc bị ngắt mạch, xử lý theo [`docs/viec/yeu-cau-2026-11-16-tat-gemini-402-va-kho-dap-an.md`](../viec/yeu-cau-2026-11-16-tat-gemini-402-va-kho-dap-an.md) trước khi đo để tránh nhiễu độ trễ.
+> [!CAUTION]
+> **CẤM chạy `--llm that` trong container đang phục vụ khách (`hs-code-api`) hoặc bằng khoá API đang phục vụ khách.**
+> - Mọi lượt đo `--llm that` **bắt buộc** chạy trong **container đo / kênh đo riêng** (ví dụ `hs-code-api-bench`) dùng **khoá API đo riêng**, tuyệt đối không dùng chung quota hay tranh CPU/mạng với container phục vụ khách thật.
+> - **Luật đo 23/11 (`docs/tang-4so/LUAT-DO.md`):** chỉ đo lại các ca còn sai — **đã bỏ mặc định 300 ca** khi chạy `--llm that`. Khi truyền `--llm that`, bắt buộc phải kèm `--bo <tệp jsonl>` hoặc `--gioi-han <n>` (thiếu cả hai script sẽ thoát mã `1`).
+> - **Riêng tư & giữ sạch repo:** bộ `v3-gan-nhan.jsonl` (mô tả lấy từ tờ khai khách hàng) và mọi tệp kết quả `/tmp/gd3-*.json`, `/tmp/gd3-*.md` **bắt buộc giữ ngoài repo**, tuyệt đối không commit vào repo công khai. Không sửa mã nguồn hay tệp dữ liệu trong repo khi đo.
 
 ---
 
-## 2. Biến môi trường cần có khi chạy `--llm that`
+## 1. Chuẩn bị kênh đo riêng và kiểm tra trước khi đo
 
-Script `scripts/do-do-thi-gd3.mjs` chạy trực tiếp bên trong container nên kế thừa sẵn env của tiến trình server (`MINIMAX_API_KEY`, `LOOP_MODEL`, `LLM_STEP_*`, `HS_CLASSIFY_ENGINE=loop`, `HS_SO_TAY`, `HS_CHOT_SOM_CO_KIEM`, `HS_GON_DAU_RA`, `HS_MAX_VONG_SUA`…).
+1. Dựng hoặc chọn **container đo riêng** (tách khỏi container phục vụ khách `hs-code-api`, gắn khoá API đo riêng và biến môi trường nền giống máy thật):
+   ```bash
+   CONTAINER_DO=hs-code-api-bench
+   ```
+2. Kiểm tra tải CPU trên máy chạy container đo (số đầu của `/proc/loadavg` phải thấp hơn số lõi, tránh làm p95 bị méo):
+   ```bash
+   docker exec "$CONTAINER_DO" cat /proc/loadavg
+   ```
+3. Kiểm tra commit và trạng thái chuỗi mô hình của kênh đo riêng qua `/api/health` của container đo (không kiểm bằng container khách):
+   ```bash
+   docker exec "$CONTAINER_DO" curl -sS http://127.0.0.1:3000/api/health | jq '{commit, llm: .checks.llm}'
+   ```
+   - Đảm bảo `llm.private.ok == true` trong nhánh `checks.llm` (dùng khoá đo riêng hợp lệ, không huấn luyện).
+   - Nếu Gemini trả phí đang lỗi `402` hoặc bị ngắt mạch trên kênh đo, xử lý theo [`docs/viec/yeu-cau-2026-11-16-tat-gemini-402-va-kho-dap-an.md`](../viec/yeu-cau-2026-11-16-tat-gemini-402-va-kho-dap-an.md) trước khi đo để tránh nhiễu độ trễ.
 
-| Biến | Giá trị khi chạy script | Ghi chú |
+---
+
+## 2. Cấu hình nền (`nen`) và biến môi trường khi chạy `--llm that`
+
+Script `scripts/do-do-thi-gd3.mjs` chạy ở chế độ mặc định `--che-do ca-hai` sẽ tự so **`nen` vs BẬT**:
+- **`nen` (nền thật khách hàng):** giữ nguyên **mọi** cờ `HS_*` đang đặt trong `process.env` của kênh đo (máy thật đang chạy: `HS_TIM_TRUOC=on`, `HS_TIM_TRUOC_NAP=0`, `HS_CHOT_SOM_CO_KIEM=on`, `HS_HOI_THEO_SO_TAY=on`, `HS_SO_TAY=full`, `HS_CLASSIFY_ENGINE=loop`).
+- **BẬT (`goi` hoặc `ba-buoc`):** chỉ ghi đè `HS_TIM_TRUOC=goi` (hoặc chạy phần `ba-buoc`) **lên trên cùng tập cờ nền env**, giúp đo đúng chênh lệch công bằng so với cấu hình khách hàng đang chạy thật.
+- **`tat` (tuỳ chọn `--che-do tat`):** chỉ dùng khi cần đo đường tắt hẳn `HS_TIM_TRUOC` cho đối chiếu L1.
+
+| Biến | Giá trị trên kênh đo riêng | Ghi chú |
 |---|---|---|
-| `HS_CLASSIFY_ENGINE` | `loop` | Script tự đặt `loop` trong tiến trình đo |
-| `HS_LLM_PRIVATE_ALL` | `true` | Script tự đặt `true` nếu chưa đặt — bắt buộc để dữ liệu Oz (`s7`, `van30`) chỉ đi nhà cung cấp không huấn luyện |
-| `HS_TIM_TRUOC` | tự xoay vòng | Script tự chạy 2 lượt: **TẮT** (xoá biến trong tiến trình) và **BẬT** (`HS_TIM_TRUOC=goi`) — **không cần sửa env container đang phục vụ khách** |
-| `HS_EVAL_EXCLUDE_HOLDOUT` | `1` (tuỳ chọn) | Riêng bộ S-7 `de-rieng-300.jsonl`, script đã tự bọc `ozSearch` để loại toàn bộ danh sách cách ly S-7 (`de-rieng-danh-sach-loai.json`, 607 dòng) |
+| `MINIMAX_API_KEY` (và các khoá LLM khác) | **Khoá đo riêng** | Tuyệt đối không dùng khoá đang phục vụ khách |
+| `HS_CLASSIFY_ENGINE` | `loop` | Giữ nguyên từ env kênh đo |
+| `HS_TIM_TRUOC` | `on` (trong `nen`) | `nen` đọc nguyên từ env (`on`); nhánh BẬT (`goi`) chỉ ghi đè thành `goi` trong lúc chạy nhánh BẬT |
+| `HS_TIM_TRUOC_NAP` | `0` | Giữ nguyên từ env kênh đo |
+| `HS_CHOT_SOM_CO_KIEM` | `on` | Giữ nguyên từ env kênh đo |
+| `HS_HOI_THEO_SO_TAY` | `on` | Giữ nguyên từ env kênh đo |
+| `HS_SO_TAY` | `full` | Giữ nguyên từ env kênh đo |
+| `HS_LLM_PRIVATE_ALL` | `true` | Script tự đặt `true` nếu chưa đặt — bắt buộc để dữ liệu Oz chỉ đi nhà cung cấp không huấn luyện |
+| `HS_EVAL_EXCLUDE_HOLDOUT` | `1` (tuỳ chọn) | Nếu có chạy mẫu S-7 (`--chi-bo s7 --gioi-han <n>`), script tự lọc loại toàn bộ 607 dòng holdout |
 
 ---
 
-## 3. Các lệnh chạy từng bước (từ nhẹ tới nặng)
+## 3. Các lệnh chạy trên container đo riêng (bắt buộc `--bo` hoặc `--gioi-han`)
 
-### Bước A — Chạy thử nhanh trên `van52` (5 lượt TẮT + 5 lượt BẬT)
-Kiểm tra kết nối chuỗi mô hình thật và độ ổn định ca van 5/2 trước khi chạy bộ lớn:
+> Mọi lệnh `--llm that` dưới đây đều truyền `--che-do ca-hai` (tự so `nen` vs BẬT) và **bắt buộc** có `--bo` hoặc `--gioi-han` theo Luật đo 23/11. Các tệp dữ liệu riêng như `v3-gan-nhan.jsonl` đặt ngoài repo (ví dụ `/tmp/v3-gan-nhan.jsonl` hoặc mount chỉ đọc vào `/srv/bench/v3-gan-nhan.jsonl` trong container đo).
+
+### Bước A — Chạy thử nhanh `van52` (5 lượt `nen` + 5 lượt BẬT)
+Kiểm tra kết nối khoá đo riêng, cờ nền `nen` đang giữ và độ ổn định ca van 5/2:
 
 ```bash
-docker exec hs-code-api node scripts/do-do-thi-gd3.mjs \
+docker exec "$CONTAINER_DO" node scripts/do-do-thi-gd3.mjs \
   --llm that \
+  --che-do ca-hai \
   --chi-bo van52 \
+  --gioi-han 5 \
   --gian 1500 \
   --json /tmp/gd3-van52.json \
   --ghi-bao-cao /tmp/gd3-van52.md \
   --che-pII
 ```
 
-- **Ước tính:** 10 lượt classify (5 TẮT + 5 BẬT) · ~20–25 lượt gọi AI · **~3–7 phút**.
+- **Ước tính:** 10 lượt classify (5 `nen` + 5 BẬT) · ~20–25 lượt gọi AI · **~3–7 phút**.
 
-### Bước B — Bộ 30 ca van khí nén (`van30`)
+### Bước B — Đo tập ca còn sai / bộ `v3-gan-nhan.jsonl` (ngoài repo)
+
+Đặt tệp `v3-gan-nhan.jsonl` (hoặc tệp danh sách ca còn sai của vòng trước) **ngoài repo**, ví dụ `/tmp/v3-gan-nhan.jsonl`, rồi truyền `--bo`:
 
 ```bash
-docker exec hs-code-api node scripts/do-do-thi-gd3.mjs \
+docker exec "$CONTAINER_DO" node scripts/do-do-thi-gd3.mjs \
   --llm that \
+  --che-do ca-hai \
+  --chi-bo bo \
+  --bo /tmp/v3-gan-nhan.jsonl \
+  --gian 1500 \
+  --json /tmp/gd3-v3.json \
+  --ghi-bao-cao /tmp/gd3-v3.md \
+  --che-pII
+```
+
+- Khi truyền `--bo <tệp>` mà không truyền `--chi-bo`, script cũng mặc định chỉ chạy đúng bộ `--bo` đó (không kéo bộ S-7 300 ca).
+- Nếu muốn so thêm luồng 3 bước `lib/do-thi/ba-buoc.js` song song với `goi`, thêm `--phuong-an ca-hai`.
+
+### Bước C — Lấy mẫu nhỏ `van30` hoặc `s7` có giới hạn rõ (`--gioi-han`)
+
+Theo Luật đo 23/11, không chạy cả bộ 300 ca S-7 mặc định; khi cần kiểm tra có kiểm soát, luôn giới hạn số ca bằng `--gioi-han`:
+
+```bash
+# Kiểm tra van30 (30 ca)
+docker exec "$CONTAINER_DO" node scripts/do-do-thi-gd3.mjs \
+  --llm that \
+  --che-do ca-hai \
   --chi-bo van30 \
+  --gioi-han 30 \
   --gian 1500 \
   --json /tmp/gd3-van30.json \
   --ghi-bao-cao /tmp/gd3-van30.md \
   --che-pII
-```
 
-- **Ước tính:** 60 lượt classify (30 TẮT + 30 BẬT) · ~120–140 lượt gọi AI · **~20–35 phút**.
-
-### Bước C — Đủ 3 bộ GĐ3 (`van52` + `van30` + `s7` 300 ca)
-
-> Nên chạy trong `tmux` / `screen` hoặc nền với log ngoài repo vì bộ S-7 300 ca chạy 2 chế độ mất vài giờ. Nếu muốn chạy kiểm thử nhanh trước trên 30 ca S-7, thêm `--nhanh` hoặc `--gioi-han=30`.
-
-```bash
-docker exec hs-code-api node scripts/do-do-thi-gd3.mjs \
+# Kiểm tra mẫu nhỏ S-7 (ví dụ 30 ca có chỉ định --gioi-han)
+docker exec "$CONTAINER_DO" node scripts/do-do-thi-gd3.mjs \
   --llm that \
+  --che-do ca-hai \
+  --chi-bo s7 \
+  --gioi-han 30 \
   --gian 1500 \
-  --json /tmp/gd3-full.json \
-  --ghi-bao-cao /tmp/gd3-full.md \
-  --che-pII \
-  > /tmp/gd3-full.log 2>&1
+  --json /tmp/gd3-s7-30.json \
+  --ghi-bao-cao /tmp/gd3-s7-30.md \
+  --che-pII
 ```
 
-- **Ước tính tổng (đủ 3 bộ × 2 chế độ TẮT + `goi`):**
-  - Tổng số lượt classify: `(5 + 30 + 300) × 2 = 670` lượt.
-  - Số lượt gọi AI ước tính: trung bình ~2,0–2,3 lượt/ca → **~1.340–1.550 lượt AI**.
-  - Tổng thời gian ước tính (với trung vị 20–30 s/lượt + `--gian 1500` ms): **~3,5–5,5 giờ**.
-  - Có thể tách riêng từng bộ (`--chi-bo s7`, `--chi-bo van30`, `--chi-bo van52`) để chủ động thời gian.
+### Tự kiểm offline trên Mac/CI (`--llm gia`)
 
-### Bước D — Chạy thêm bộ v3 QT gắn nhãn (`--bo`) hoặc so sánh `ba-buoc`
+Trên Mac hoặc CI vẫn chạy tiện bằng `--llm gia` (chặn mạng 100%, không cần `--bo`/`--gioi-han` bắt buộc):
 
 ```bash
-# Đo riêng bộ v3 đặt tại /tmp/bo-4so-v3.jsonl
-docker exec -i hs-code-api node scripts/do-do-thi-gd3.mjs \
-  --llm that \
-  --chi-bo bo \
-  --bo /tmp/bo-4so-v3.jsonl \
-  --json /tmp/gd3-v3.json \
-  --ghi-bao-cao /tmp/gd3-v3.md \
-  --che-pII
-
-# (Tuỳ chọn) Đo thêm luồng 3 bước lib/do-thi/ba-buoc.js song song với `goi`:
-#   --phuong-an ca-hai
+node scripts/do-do-thi-gd3.mjs --llm gia --gioi-han 10 --che-do ca-hai --phuong-an ca-hai --che-pII
 ```
 
 ---
 
 ## 4. Cách đọc kết quả theo điều kiện nhận GĐ3
 
-Mở `/tmp/gd3-full.md` (hoặc mục `danhGiaTieuChiGd3` trong `/tmp/gd3-full.json`). Chỉ nhận GĐ3 khi **cả 4 điều kiện** đều đạt trên máy chủ thật với `--llm that`:
+Mở tệp báo cáo Markdown (ví dụ `/tmp/gd3-v3.md` hoặc `/tmp/gd3-van52.md`) và kiểm tra mục `Cờ nền đang giữ (nen)` để xác nhận đúng 5 cờ nền đang có trong env trước khi đối chiếu bảng `nen` vs BẬT:
 
 | # | Thước đo | Ngưỡng nhận GĐ3 | Ý nghĩa khi không đạt |
 |---|---|---|---|
-| 1 | **S-7 300 ca — Đúng nhóm 4 số** | **BẬT > TẮT** (hơn nền) | Kiểm tra mục `Bị loại ở L1 (rủi ro 1)`: nếu tỉ lệ này cao, AI lượt 1 đang loại mất nhóm đúng mà `timTruoc` đã tìm thấy |
+| 1 | **Đúng nhóm 4 số** | **BẬT > `nen`** | Kiểm tra mục `Bị loại ở L1 (rủi ro 1)`: nếu tỉ lệ này cao, AI lượt 1 đang loại mất nhóm đúng mà `timTruoc` đã tìm thấy |
 | 2 | **Van 5/2 (5 lượt) — Ổn định** | **5/5 lượt đúng nhóm `8481`** | Còn dao động sang `8412` / `848180` → kiểm tra gói phân biệt `8412-8481` và xem lượt 1 có giữ `8481` không |
 | 3 | **Thời gian — Trung vị** | **≤ 45 s** | Chậm quá trần: kiểm tra `chuoiMoHinh.daDung`, `luotAi.trungBinh` (có bị vòng sửa lặp lại không) |
 | 4 | **Thời gian — p95** | **≤ 80 s** | Rủi ro chạm trần cắt **85 s** của động cơ / Cloudflare (~95–100 s) khiến khách nhận lỗi |
 
 ### Các chỉ số chẩn đoán kèm theo
-- **Bị loại ở L1 (rủi ro 1 mục 9):** `số ca có nhóm đúng trong ứng viên trước L1 nhưng không còn sau L1 / số ca có nhóm đúng trong ứng viên trước L1`. Cần giữ thấp; nếu cao, xem lại vì sao lượt 1 loại nhóm đúng hoặc mất khỏi trần 3 nhóm của `nhomConSong`.
+- **Bị loại ở L1 (rủi ro 1 mục 9):** `số ca có nhóm đúng trong ứng viên trước L1 nhưng không còn sau L1 / số ca có nhóm đúng trong ứng viên trước L1`. Ở cả `nen` (khi `HS_TIM_TRUOC=on`) lẫn BẬT (`goi`/`ba-buoc`), chỉ số này đều được tính để so sánh công bằng.
 - **Ký tự gói AI nhận:**
   - Lượt 1 (`V1` / khối tìm trước): đối chiếu ngưỡng thiết kế **~1.300 ký tự** (`timTruoc.khoi ≤ 1.500`, `luotMot ≤ 1.300`).
   - Gói phân biệt (`goiPhanBiet`): đối chiếu ngưỡng **6–7 nghìn ký tự** (trần cứng `7.000`).
@@ -125,6 +150,6 @@ Mở `/tmp/gd3-full.md` (hoặc mục `danhGiaTieuChiGd3` trong `/tmp/gd3-full.j
 
 ## 5. Xử lý sau đo
 
-- **Đạt cả 4 điều kiện trên máy chủ thật:** mới xem xét giữ/bật `HS_TIM_TRUOC=goi` (theo quy trình L1 và báo cáo kèm `gitSha`, `chuoiMoHinh`, số lượt mẫu, ngày đo).
-- **Chưa đạt bất kỳ điều kiện nào:** giữ `HS_TIM_TRUOC` ở trạng thái **TẮT** trên máy chủ thật; gửi lại bảng Markdown + số lỗi/nguyên nhân (nhóm bị loại ở L1, p95, provider timeout) để sửa trước khi bật lại.
-- **Dọn tệp tạm:** giữ tệp kết quả ở `/tmp/`, không đưa vào kho mã nguồn.
+- **Đạt cả ngưỡng so với `nen` trên kênh đo riêng:** mới xem xét trình QT bật `HS_TIM_TRUOC=goi` (theo quy trình L1 và báo cáo kèm `gitSha`, `chuoiMoHinh`, tập cờ nền `coNen`, số lượt mẫu, ngày đo).
+- **Chưa đạt bất kỳ điều kiện nào:** giữ nguyên cấu hình nền trên máy thật (`HS_TIM_TRUOC=on`); gửi lại bảng Markdown (không chứa mô tả hàng/PII) + số lỗi/nguyên nhân gốc theo Luật đo 23/11 để sửa trước khi đo lại đúng các ca còn sai.
+- **Dọn tệp tạm:** giữ `v3-gan-nhan.jsonl` và mọi `/tmp/gd3-*` ở ngoài repo, không bao giờ đưa vào kho mã nguồn.

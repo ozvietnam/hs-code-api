@@ -3,26 +3,32 @@
  * scripts/do-do-thi-gd3.mjs — Bộ đo Giai đoạn 3 đồ thị tri thức HS (chọn nhóm 4 số).
  *
  * Chạy đường chọn nhóm 4 số ở chế độ:
- *   - TẮT: đường hiện tại (HS_TIM_TRUOC tắt)
- *   - BẬT: `HS_TIM_TRUOC=goi` (classifyLoop + GÓI PHÂN BIỆT, PR #1825) và/hoặc `ba-buoc` (lib/do-thi/ba-buoc.js, PR #1841)
+ *   - `nen`: giữ nguyên mọi cờ `HS_*` đang đặt trong `process.env` (nền thật khách hàng đang nhận:
+ *            `HS_TIM_TRUOC=on`, `HS_TIM_TRUOC_NAP=0`, `HS_CHOT_SOM_CO_KIEM=on`, `HS_HOI_THEO_SO_TAY=on`, `HS_SO_TAY=full`)
+ *   - `bat`: `HS_TIM_TRUOC=goi` (classifyLoop + GÓI PHÂN BIỆT, PR #1825) và/hoặc `ba-buoc` (lib/do-thi/ba-buoc.js, PR #1841)
+ *            ghi đè chỉ phần GĐ3 lên trên cùng tập cờ nền env
+ *   - `tat`: tắt hẳn `HS_TIM_TRUOC` (chỉ dùng khi chủ đích đo đường tắt hẳn cho L1)
+ *   - Mặc định `--che-do=ca-hai`: chạy `nen` + `bat` (so sánh `nen` vs BẬT).
  *
  * Bộ mẫu:
  *   - `van52` : scripts/ca-do/van-5-2.jsonl (van 5/2 lặp 5 lượt — đo độ ổn định)
  *   - `van30` : scripts/ca-do/van-khi-nen-30.jsonl (30 ca van khí nén)
  *   - `s7`    : scripts/ca-do/de-rieng-300.jsonl (300 ca S-7 để riêng, lọc loại Oz holdout cùng nguồn GĐ2)
- *   - `bo`    : tuỳ chọn `--bo <tệp jsonl>` (ví dụ bộ v3 QT gắn nhãn)
+ *   - `bo`    : tuỳ chọn `--bo <tệp jsonl>` (ví dụ bộ v3 QT gắn nhãn hoặc danh sách ca còn sai)
  *
- * Luật L1 / riêng tư:
+ * Luật L1 / Luật đo 23/11 (`docs/tang-4so/LUAT-DO.md`) / riêng tư:
  *   - Chỉ đọc, không sửa đường khách (lib/, api/, data/).
  *   - Mặc định `--llm gia` (tất định, 0 mạng, chặn fetch) để tự kiểm trên Mac/CI.
- *   - `--llm that`: chỉ chạy trên máy chủ thật qua chuỗi mô hình thật; tự đặt HS_LLM_PRIVATE_ALL=true với dữ liệu Oz.
+ *   - `--llm that`: CẤM chạy trong container phục vụ khách hoặc bằng khoá API của khách; chỉ chạy trên container/kênh đo riêng
+ *     với khoá đo riêng. BỎ mặc định 300 ca: bắt buộc truyền `--bo <tệp>` hoặc `--gioi-han <n>`, thiếu thì thoát mã 1.
+ *     Tự đặt HS_LLM_PRIVATE_ALL=true với dữ liệu Oz.
  *   - Zero-PII: không bao giờ in tên hàng / mô tả tờ khai Oz hay khoá bí mật ra stdout, JSON hay Markdown.
  *
  * Dùng:
  *   node scripts/do-do-thi-gd3.mjs --llm gia --gioi-han=10
  *   node scripts/do-do-thi-gd3.mjs --llm gia --phuong-an=ca-hai --chi-bo=van52,van30
- *   node scripts/do-do-thi-gd3.mjs --llm that --json /tmp/gd3-that.json --ghi-bao-cao /tmp/gd3-that.md --che-pII
- *   node scripts/do-do-thi-gd3.mjs --llm that --bo /tmp/4so-v3.jsonl --chi-bo=bo
+ *   node scripts/do-do-thi-gd3.mjs --llm that --gioi-han=5 --chi-bo=van52 --che-do=ca-hai --json /tmp/gd3-van52.json --ghi-bao-cao /tmp/gd3-van52.md --che-pII
+ *   node scripts/do-do-thi-gd3.mjs --llm that --bo /tmp/v3-gan-nhan.jsonl --che-do=ca-hai --che-pII
  */
 import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
@@ -49,12 +55,20 @@ const { goiPhanBiet } = require('../lib/do-thi/goi-phan-biet.js');
 const { nhomConSong } = require('../lib/do-thi/khoi-phan-biet.js');
 
 export const DICH_GD3 = Object.freeze({
-  s7_dung_nhom4: 'Hơn nền TẮT trên S-7 300 ca (mục 6 GĐ3)',
+  s7_dung_nhom4: 'Hơn nền (nen) trên bộ đo S-7 / ca còn sai (mục 6 GĐ3, luật đo 23/11)',
   van52_on_dinh: '5/5 đúng nhóm 8481 (mục 6 GĐ3)',
   do_tre_trung_vi: '<= 45 s (45.000 ms, mục 2 & 6 GĐ3)',
   do_tre_p95: '<= 80 s (80.000 ms, dưới trần cắt 85 s)',
   luot_mot_ky_tu: '~1.300 ký tự (khối tìm trước <= 1.500 / lượt một <= 1.300)',
   goi_phan_biet_ky_tu: '6-7 nghìn ký tự (trần 7.000)',
+});
+
+export const CO_NEN_MAY_THAT = Object.freeze({
+  HS_TIM_TRUOC: 'on',
+  HS_TIM_TRUOC_NAP: '0',
+  HS_CHOT_SOM_CO_KIEM: 'on',
+  HS_HOI_THEO_SO_TAY: 'on',
+  HS_SO_TAY: 'full',
 });
 
 const BO_HOP_LE = ['van52', 'van30', 's7', 'bo'];
@@ -191,8 +205,8 @@ export function phanTichThamSo(argv = process.argv.slice(2)) {
 
   const cheDoRaw = layGiaTri('che-do');
   const cheDo = cheDoRaw == null ? 'ca-hai' : String(cheDoRaw).trim().toLowerCase();
-  if (!['ca-hai', 'tat', 'bat'].includes(cheDo)) {
-    throw new Error(`Tham số --che-do không hợp lệ: "${cheDoRaw}". Chỉ nhận: ca-hai | tat | bat`);
+  if (!['ca-hai', 'nen', 'tat', 'bat'].includes(cheDo)) {
+    throw new Error(`Tham số --che-do không hợp lệ: "${cheDoRaw}". Chỉ nhận: ca-hai | nen | tat | bat`);
   }
 
   const phuongAnRaw = layGiaTri('phuong-an');
@@ -246,6 +260,12 @@ export function phanTichThamSo(argv = process.argv.slice(2)) {
   const jsonOpt = layGiaTri('json');
   const baoCaoOpt = layGiaTri('ghi-bao-cao');
 
+  if (llm === 'that' && !boPath && !gioiHan) {
+    throw new Error(
+      'Luật đo 23/11 (docs/tang-4so/LUAT-DO.md): khi chạy --llm that không được chạy mặc định cả bộ 300 ca; bắt buộc truyền --bo <tệp jsonl> (chỉ đo ca còn sai) hoặc --gioi-han <n>.',
+    );
+  }
+
   return {
     llm,
     cheDo,
@@ -289,6 +309,27 @@ export function layTrangThaiCo() {
     out[k] = process.env[k] !== undefined && process.env[k] !== '' ? String(process.env[k]) : '(mặc định)';
   }
   return out;
+}
+
+/** Ghi lại toàn bộ cờ nền đang có trong `process.env` (giữ nguyên cho chế độ `nen`) và đối chiếu với cờ nền máy thật. */
+export function layThongTinCoNen() {
+  const tatCaCoTheoDoi = layTrangThaiCo();
+  const coNenMayThat = {};
+  const khacMayThat = [];
+  for (const [k, kyVong] of Object.entries(CO_NEN_MAY_THAT)) {
+    const hienHanh = process.env[k] !== undefined && process.env[k] !== '' ? String(process.env[k]) : null;
+    coNenMayThat[k] = hienHanh ?? '(chưa đặt — theo mặc định mã)';
+    if (hienHanh !== kyVong) {
+      khacMayThat.push({ co: k, hienHanh: hienHanh ?? '(chưa đặt)', mayThat: kyVong });
+    }
+  }
+  return {
+    daGiuNguyenEnv: true,
+    docTuProcessEnv: true,
+    coNenMayThat,
+    khacMayThat,
+    tatCaCoTheoDoi,
+  };
 }
 
 /** Tạo danh sách mã 8 số hợp lệ đầu tiên thuộc một nhóm 4 số để làm fallback an toàn cho LLM giả. */
@@ -486,7 +527,7 @@ export function taoLlmGia() {
  * Tổng hợp chỉ số cho một bộ ca trên một chế độ chạy.
  * Tất cả các trường đều thuần số / mã 4-6 số, tuyệt đối không chứa tên hàng Oz.
  */
-export function tinhChiSoBo(banGhis, { laVan52 = false, coUngVienTruocL1 = false } = {}) {
+export function tinhChiSoBo(banGhis, { laVan52 = false, coUngVienTruocL1 = false, coGoiPhanBiet = coUngVienTruocL1 } = {}) {
   const n = banGhis.length;
   let loi = 0;
   let coMa = 0;
@@ -568,7 +609,7 @@ export function tinhChiSoBo(banGhis, { laVan52 = false, coUngVienTruocL1 = false
     biLoaiOLuot1: coUngVienTruocL1
       ? { so: biLoaiL1, mauSo: mauBiLoaiL1, tyLe: tyLe(biLoaiL1, mauBiLoaiL1) }
       : null,
-    biLoaiKhoiGoiPhanBiet: coUngVienTruocL1
+    biLoaiKhoiGoiPhanBiet: (coUngVienTruocL1 && coGoiPhanBiet)
       ? { so: biLoaiGoiPb, mauSo: mauBiLoaiL1, tyLe: tyLe(biLoaiGoiPb, mauBiLoaiL1) }
       : null,
     doTreMs: {
@@ -627,14 +668,24 @@ function tinhDelta(off, on) {
   };
 }
 
-/** Chạy một bộ mẫu qua classifyLoop (mode `tat` hoặc `goi`). */
+/** Chạy một bộ mẫu qua classifyLoop (mode `nen`, `tat`, hoặc `goi`). */
 async function chayBoQuaClassifyLoop({ caList, cheDo, optsRun, isOzPrivate, wrapCtx }) {
   const banGhis = [];
   const prevTimTruoc = process.env.HS_TIM_TRUOC;
+  let timTruocDangBat = false;
+  let goiPbDangBat = false;
 
   try {
-    if (cheDo === 'goi') process.env.HS_TIM_TRUOC = 'goi';
-    else delete process.env.HS_TIM_TRUOC;
+    if (cheDo === 'goi') {
+      process.env.HS_TIM_TRUOC = 'goi';
+    } else if (cheDo === 'tat') {
+      delete process.env.HS_TIM_TRUOC;
+    }
+    // cheDo === 'nen': giữ nguyên hoàn toàn HS_TIM_TRUOC và mọi cờ HS_* trong process.env
+
+    const timTruocVal = String(process.env.HS_TIM_TRUOC || '').trim();
+    timTruocDangBat = /^(on|1|true|goi)$/i.test(timTruocVal);
+    goiPbDangBat = /^goi$/i.test(timTruocVal);
 
     for (let i = 0; i < caList.length; i += 1) {
       const ca = caList[i];
@@ -685,13 +736,13 @@ async function chayBoQuaClassifyLoop({ caList, cheDo, optsRun, isOzPrivate, wrap
       ])];
       const goiPbNhoms = Array.isArray(res?.engine?.goiPhanBiet?.nhom)
         ? res.engine.goiPhanBiet.nhom
-        : (cheDo === 'goi' ? nhomConSong(res?.dossier?.hypotheses, ungVienTruoc) : []);
+        : (goiPbDangBat ? nhomConSong(res?.dossier?.hypotheses, ungVienTruoc) : []);
 
       const truthHit = (ds) => ca.nhomDung.some((t) => ds.includes(t));
-      const coTrongUngVienTruocL1 = cheDo === 'goi' && truthHit(ungVienTruoc);
+      const coTrongUngVienTruocL1 = timTruocDangBat && truthHit(ungVienTruoc);
       const coTrongR1 = truthHit(r1Nhoms);
       const biLoaiOLuot1 = coTrongUngVienTruocL1 && !coTrongR1;
-      const biLoaiKhoiGoiPhanBiet = coTrongUngVienTruocL1 && !truthHit(goiPbNhoms);
+      const biLoaiKhoiGoiPhanBiet = goiPbDangBat && coTrongUngVienTruocL1 && !truthHit(goiPbNhoms);
 
       const lastCall = theoDoi.calls[theoDoi.calls.length - 1] || null;
       banGhis.push({
@@ -721,7 +772,7 @@ async function chayBoQuaClassifyLoop({ caList, cheDo, optsRun, isOzPrivate, wrap
     else process.env.HS_TIM_TRUOC = prevTimTruoc;
   }
 
-  return banGhis;
+  return { banGhis, timTruocDangBat, goiPbDangBat };
 }
 
 /** Tham số gọi LLM cho bước `ba-buoc`, thống nhất model MiniMax với `lib/engine-loop.js`. */
@@ -825,10 +876,11 @@ async function chayBoQuaBaBuoc({ caList, optsRun, isOzPrivate, locOzFn, llmCalle
   return banGhis;
 }
 
-/** Đánh giá sơ bộ các ngưỡng nhận Giai đoạn 3 (lưu ý: chỉ có hiệu lực L1 khi chạy `--llm that` trên máy chủ thật). */
-export function danhGiaDieuKienGd3({ llm, s7Tat, s7Bat, van52Bat }) {
+/** Đánh giá sơ bộ các ngưỡng nhận Giai đoạn 3 (lưu ý: chỉ có hiệu lực L1 khi chạy `--llm that` trên kênh đo riêng). */
+export function danhGiaDieuKienGd3({ llm, s7Nen, s7Tat, s7Bat, van52Bat }) {
   const laBanThat = llm === 'that';
-  const s7HonNen = (s7Tat && s7Bat) ? s7Bat.dungNhom4.tyLe > s7Tat.dungNhom4.tyLe : null;
+  const s7Goc = s7Nen || s7Tat;
+  const s7HonNen = (s7Goc && s7Bat) ? s7Bat.dungNhom4.tyLe > s7Goc.dungNhom4.tyLe : null;
   const van52Dat55 = van52Bat?.van52 ? van52Bat.van52.dungNhom8481 === van52Bat.van52.soLuot && van52Bat.van52.soLuot >= 5 : null;
   const boDoTre = s7Bat || van52Bat;
   const trungViDat = boDoTre ? boDoTre.doTreMs.medianMs <= 45000 : null;
@@ -836,6 +888,7 @@ export function danhGiaDieuKienGd3({ llm, s7Tat, s7Bat, van52Bat }) {
 
   return {
     chiThamKhaoViLlmGia: !laBanThat,
+    soSanhVoi: s7Nen ? 'nen' : (s7Tat ? 'tat' : null),
     s7HonNen,
     van52Dat55,
     trungViDuoi45s: trungViDat,
@@ -860,6 +913,12 @@ export async function chayBenchGd3(opts = {}) {
     gianMs: opts.gianMs ?? (opts.llm === 'that' ? 1500 : 0),
     nganSachMs: opts.nganSachMs || 85000,
   };
+
+  if (thamSo.llm === 'that' && !thamSo.boPath && !thamSo.gioiHan) {
+    throw new Error(
+      'Luật đo 23/11 (docs/tang-4so/LUAT-DO.md): khi chạy --llm that không được chạy mặc định cả bộ 300 ca; bắt buộc truyền --bo <tệp jsonl> (chỉ đo ca còn sai) hoặc --gioi-han <n>.',
+    );
+  }
 
   const dsLoai = taiDanhSachLoai();
   const locOzS7 = (item) => !laCaKin(item, dsLoai);
@@ -899,12 +958,15 @@ export async function chayBenchGd3(opts = {}) {
 
   const chonDatasets = thamSo.chiBo
     ? datasets.filter((d) => thamSo.chiBo.includes(d.key))
-    : datasets;
+    : (boAll ? datasets.filter((d) => d.key === 'bo') : datasets);
 
   // Lưu trạng thái env & module để hoàn nguyên tuyệt đối
   const envBackup = {};
   const ENV_ISOLATE = ['HS_TIM_TRUOC', 'HS_TIM_TRUOC_NAP', 'HS_TIEN_XU_LY', 'HS_TIM_CGCT', 'HS_SO_TAY', 'HS_CHOT_SOM_CO_KIEM', 'HS_HOI_THEO_SO_TAY', 'HS_CLASSIFY_FAST_FIRST', 'HS_CLASSIFY_ENGINE', 'HS_LLM_PRIVATE_ALL', 'MIC_OFF', 'ZAI_WEB_FACTS'];
   for (const k of ENV_ISOLATE) envBackup[k] = process.env[k];
+
+  // Ghi nhận nguyên vẹn cờ nền hiện hành từ process.env trước khi thiết lập chế độ offline/private
+  const coNen = layThongTinCoNen();
 
   const origFetch = globalThis.fetch;
   const origCallLlm = llmTier.callLLMJson;
@@ -916,14 +978,9 @@ export async function chayBenchGd3(opts = {}) {
   const providersDaDung = {};
 
   try {
-    process.env.HS_CLASSIFY_ENGINE = 'loop';
-
     if (thamSo.llm === 'gia') {
-      if (!thamSo.giuCo) {
-        for (const k of ['HS_TIM_TRUOC', 'HS_TIM_TRUOC_NAP', 'HS_TIEN_XU_LY', 'HS_TIM_CGCT', 'HS_SO_TAY', 'HS_CHOT_SOM_CO_KIEM', 'HS_HOI_THEO_SO_TAY', 'HS_CLASSIFY_FAST_FIRST']) {
-          delete process.env[k];
-        }
-      }
+      // Giữ nguyên mọi cờ HS_* trong process.env để chế độ `nen` đọc đúng env hiện hành;
+      // chỉ tắt MIC/ZAI và chặn fetch để đảm bảo chạy ngoại tuyến tuyệt đối.
       process.env.MIC_OFF = '1';
       process.env.ZAI_WEB_FACTS = 'off';
 
@@ -960,7 +1017,8 @@ export async function chayBenchGd3(opts = {}) {
       return res;
     };
 
-    const chayTat = thamSo.cheDo === 'ca-hai' || thamSo.cheDo === 'tat';
+    const chayNen = thamSo.cheDo === 'ca-hai' || thamSo.cheDo === 'nen';
+    const chayTat = thamSo.cheDo === 'tat';
     const chayBat = thamSo.cheDo === 'ca-hai' || thamSo.cheDo === 'bat';
     const chayGoi = chayBat && (thamSo.phuongAn === 'goi' || thamSo.phuongAn === 'ca-hai');
     const chayBaBuocFlag = chayBat && (thamSo.phuongAn === 'ba-buoc' || thamSo.phuongAn === 'ca-hai');
@@ -985,21 +1043,37 @@ export async function chayBenchGd3(opts = {}) {
         tep: ds.tep,
         n: ds.rows.length,
         tongTrongTep: ds.tongTrongTep,
+        nen: null,
         tat: null,
         bat_goi: null,
         bat_ba_buoc: null,
+        delta_so_voi: null,
         delta_goi: null,
         delta_ba_buoc: null,
       };
 
-      if (chayTat) {
-        const logs = await chayBoQuaClassifyLoop({ caList: ds.rows, cheDo: 'tat', optsRun: thamSo, isOzPrivate: ds.isOzPrivate, wrapCtx });
-        entry.tat = { ...tinhChiSoBo(logs, { laVan52: ds.laVan52, coUngVienTruocL1: false }), tongTrongTep: ds.tongTrongTep };
+      if (chayNen) {
+        const kqLoop = await chayBoQuaClassifyLoop({ caList: ds.rows, cheDo: 'nen', optsRun: thamSo, isOzPrivate: ds.isOzPrivate, wrapCtx });
+        entry.nen = {
+          ...tinhChiSoBo(kqLoop.banGhis, {
+            laVan52: ds.laVan52,
+            coUngVienTruocL1: kqLoop.timTruocDangBat,
+            coGoiPhanBiet: kqLoop.goiPbDangBat,
+          }),
+          tongTrongTep: ds.tongTrongTep,
+        };
       }
+      if (chayTat) {
+        const kqLoop = await chayBoQuaClassifyLoop({ caList: ds.rows, cheDo: 'tat', optsRun: thamSo, isOzPrivate: ds.isOzPrivate, wrapCtx });
+        entry.tat = { ...tinhChiSoBo(kqLoop.banGhis, { laVan52: ds.laVan52, coUngVienTruocL1: false }), tongTrongTep: ds.tongTrongTep };
+      }
+      const gocDelta = entry.nen || entry.tat;
+      if (gocDelta) entry.delta_so_voi = entry.nen ? 'nen' : 'tat';
+
       if (chayGoi) {
-        const logs = await chayBoQuaClassifyLoop({ caList: ds.rows, cheDo: 'goi', optsRun: thamSo, isOzPrivate: ds.isOzPrivate, wrapCtx });
-        entry.bat_goi = { ...tinhChiSoBo(logs, { laVan52: ds.laVan52, coUngVienTruocL1: true }), tongTrongTep: ds.tongTrongTep };
-        if (entry.tat) entry.delta_goi = tinhDelta(entry.tat, entry.bat_goi);
+        const kqLoop = await chayBoQuaClassifyLoop({ caList: ds.rows, cheDo: 'goi', optsRun: thamSo, isOzPrivate: ds.isOzPrivate, wrapCtx });
+        entry.bat_goi = { ...tinhChiSoBo(kqLoop.banGhis, { laVan52: ds.laVan52, coUngVienTruocL1: true, coGoiPhanBiet: true }), tongTrongTep: ds.tongTrongTep };
+        if (gocDelta) entry.delta_goi = tinhDelta(gocDelta, entry.bat_goi);
       }
       if (chayBaBuocFlag) {
         const logs = await chayBoQuaBaBuoc({
@@ -1009,8 +1083,8 @@ export async function chayBenchGd3(opts = {}) {
           locOzFn: ds.laS7 ? locOzS7 : null,
           llmCaller: llmTier.callLLMJson,
         });
-        entry.bat_ba_buoc = { ...tinhChiSoBo(logs, { laVan52: ds.laVan52, coUngVienTruocL1: true }), tongTrongTep: ds.tongTrongTep };
-        if (entry.tat) entry.delta_ba_buoc = tinhDelta(entry.tat, entry.bat_ba_buoc);
+        entry.bat_ba_buoc = { ...tinhChiSoBo(logs, { laVan52: ds.laVan52, coUngVienTruocL1: true, coGoiPhanBiet: true }), tongTrongTep: ds.tongTrongTep };
+        if (gocDelta) entry.delta_ba_buoc = tinhDelta(gocDelta, entry.bat_ba_buoc);
       }
 
       ketQuaBo[ds.key] = entry;
@@ -1039,10 +1113,10 @@ export async function chayBenchGd3(opts = {}) {
 
     const danhGia = {
       goi: chayGoi
-        ? danhGiaDieuKienGd3({ llm: thamSo.llm, s7Tat: ketQuaBo.s7?.tat, s7Bat: ketQuaBo.s7?.bat_goi, van52Bat: ketQuaBo.van52?.bat_goi })
+        ? danhGiaDieuKienGd3({ llm: thamSo.llm, s7Nen: ketQuaBo.s7?.nen, s7Tat: ketQuaBo.s7?.tat, s7Bat: ketQuaBo.s7?.bat_goi, van52Bat: ketQuaBo.van52?.bat_goi })
         : null,
       baBuoc: chayBaBuocFlag
-        ? danhGiaDieuKienGd3({ llm: thamSo.llm, s7Tat: ketQuaBo.s7?.tat, s7Bat: ketQuaBo.s7?.bat_ba_buoc, van52Bat: ketQuaBo.van52?.bat_ba_buoc })
+        ? danhGiaDieuKienGd3({ llm: thamSo.llm, s7Nen: ketQuaBo.s7?.nen, s7Tat: ketQuaBo.s7?.tat, s7Bat: ketQuaBo.s7?.bat_ba_buoc, van52Bat: ketQuaBo.van52?.bat_ba_buoc })
         : null,
     };
 
@@ -1054,7 +1128,8 @@ export async function chayBenchGd3(opts = {}) {
       gitSha: docGitSha(),
       thamSo,
       chuoiMoHinh,
-      co: layTrangThaiCo(),
+      co: coNen.tatCaCoTheoDoi,
+      coNen,
       mang: {
         daChanFetch: thamSo.llm === 'gia',
         lanGoiFetchBiChan: fetchBiChan,
@@ -1088,17 +1163,29 @@ export function dinhDangBaoCaoMarkdown(kq) {
   const modelOrder = (kq.chuoiMoHinh?.order || []).join(' → ') || '—';
   const usedPv = Object.entries(kq.chuoiMoHinh?.daDung || {}).map(([p, c]) => `${p}:${c}`).join(', ') || '—';
 
+  const coNenMayThatStr = Object.entries(kq.coNen?.coNenMayThat || {})
+    .map(([k, v]) => `\`${k}=${v}\``)
+    .join(', ')
+    || `\`HS_TIM_TRUOC=${kq.co.HS_TIM_TRUOC}\`, \`HS_TIM_TRUOC_NAP=${kq.co.HS_TIM_TRUOC_NAP}\`, \`HS_CHOT_SOM_CO_KIEM=${kq.co.HS_CHOT_SOM_CO_KIEM}\`, \`HS_HOI_THEO_SO_TAY=${kq.co.HS_HOI_THEO_SO_TAY}\`, \`HS_SO_TAY=${kq.co.HS_SO_TAY}\``;
+
   const lines = [
-    `# Đo Giai đoạn 3 — Chọn nhóm 4 số (${kq.thamSo.llm === 'gia' ? 'LLM giả, tự kiểm offline' : 'LLM thật qua chuỗi máy chủ'})`,
+    `# Đo Giai đoạn 3 — Chọn nhóm 4 số (${kq.thamSo.llm === 'gia' ? 'LLM giả, tự kiểm offline' : 'LLM thật qua kênh đo riêng'})`,
     '',
     `- **Git SHA:** ${shaStr} · **Thời điểm:** ${kq.thoiDiem} · **Tổng thời gian:** ${kq.tongMs} ms`,
     `- **Chuỗi mô hình:** ${modelOrder} · **Đã gọi:** ${usedPv}`,
     `- **Tham số:** \`--llm ${kq.thamSo.llm}\` · \`--che-do ${kq.thamSo.cheDo}\` · \`--phuong-an ${kq.thamSo.phuongAn}\` · S-7 loại ${kq.s7KiemTra.soDongOzBiLoaiS7}/${kq.s7KiemTra.tongDongOzGold} dòng holdout`,
-    `- **Cờ chính:** \`HS_CLASSIFY_ENGINE=${kq.co.HS_CLASSIFY_ENGINE}\`, \`HS_SO_TAY=${kq.co.HS_SO_TAY}\`, \`HS_CHOT_SOM_CO_KIEM=${kq.co.HS_CHOT_SOM_CO_KIEM}\`, \`HS_TIEN_XU_LY=${kq.co.HS_TIEN_XU_LY}\`, \`HS_LLM_PRIVATE_ALL=${kq.co.HS_LLM_PRIVATE_ALL}\``,
+    `- **Cờ nền đang giữ (\`nen\`, đọc nguyên env):** ${coNenMayThatStr}`,
+    `- **Cờ bổ sung:** \`HS_CLASSIFY_ENGINE=${kq.co.HS_CLASSIFY_ENGINE}\`, \`HS_TIEN_XU_LY=${kq.co.HS_TIEN_XU_LY}\`, \`HS_LLM_PRIVATE_ALL=${kq.co.HS_LLM_PRIVATE_ALL}\``,
   ];
 
+  if (kq.coNen?.khacMayThat?.length) {
+    lines.push(
+      `- **Lưu ý cờ nền:** đang đọc nguyên \`process.env\` hiện hành (${kq.coNen.khacMayThat.map((x) => `\`${x.co}=${x.hienHanh}\` ≠ máy thật \`${x.mayThat}\``).join('; ')}).`,
+    );
+  }
+
   if (kq.thamSo.llm === 'gia') {
-    lines.push(`- **Lưu ý L1:** đang chạy \`--llm gia\` (chặn mạng, ${kq.mang.lanGoiFetchBiChan} fetch bị chặn). Số này chỉ dùng tự kiểm cơ chế trên Mac/CI, KHÔNG dùng thay số đo máy chủ thật.`);
+    lines.push(`- **Lưu ý L1:** đang chạy \`--llm gia\` (chặn mạng, ${kq.mang.lanGoiFetchBiChan} fetch bị chặn). Số này chỉ dùng tự kiểm cơ chế trên Mac/CI, KHÔNG dùng thay số đo kênh đo riêng.`);
   }
 
   lines.push(
@@ -1127,20 +1214,24 @@ export function dinhDangBaoCaoMarkdown(kq) {
   };
 
   for (const [, bo] of Object.entries(kq.ketQua)) {
-    inDong(bo.ten, 'TẮT (nền)', bo.tat);
+    inDong(bo.ten, '`nen` (env)', bo.nen);
+    inDong(bo.ten, 'TẮT (tắt tìm trước)', bo.tat);
     inDong(bo.ten, 'BẬT (`goi`)', bo.bat_goi);
     inDong(bo.ten, 'BẬT (`ba-buoc`)', bo.bat_ba_buoc);
   }
 
   const deltas = [];
+  let coNenDelta = false;
   for (const [, bo] of Object.entries(kq.ketQua)) {
-    if (bo.delta_goi) deltas.push([bo.ten, '`goi` vs TẮT', bo.delta_goi]);
-    if (bo.delta_ba_buoc) deltas.push([bo.ten, '`ba-buoc` vs TẮT', bo.delta_ba_buoc]);
+    const gocNhan = bo.delta_so_voi === 'tat' ? 'TẮT' : '`nen`';
+    if (bo.delta_so_voi === 'nen') coNenDelta = true;
+    if (bo.delta_goi) deltas.push([bo.ten, `\`goi\` vs ${gocNhan}`, bo.delta_goi]);
+    if (bo.delta_ba_buoc) deltas.push([bo.ten, `\`ba-buoc\` vs ${gocNhan}`, bo.delta_ba_buoc]);
   }
   if (deltas.length) {
     lines.push(
       '',
-      '## Chênh lệch BẬT − TẮT',
+      coNenDelta ? '## Chênh lệch BẬT − `nen`' : '## Chênh lệch BẬT − TẮT',
       '',
       '| Bộ mẫu | So sánh | Δ đúng nhóm 4 (pp) | Δ trong R1 (pp) | Δ trung vị (ms) | Δ p95 (ms) | Δ lượt AI/ca | Δ ký tự V1 | Δ ký tự V2 |',
       '|---|---|---:|---:|---:|---:|---:|---:|---:|',
@@ -1154,11 +1245,12 @@ export function dinhDangBaoCaoMarkdown(kq) {
   const dg = kq.danhGiaTieuChiGd3?.goi || kq.danhGiaTieuChiGd3?.baBuoc;
   if (dg) {
     const fmtDg = (v) => (v === true ? 'ĐẠT' : v === false ? 'CHƯA ĐẠT' : 'CHƯA ĐO');
+    const nhanGoc = dg.soSanhVoi === 'tat' ? 'nền TẮT' : 'nền (`nen`)';
     lines.push(
       '',
       `## Đối chiếu điều kiện nhận GĐ3 (${dg.chiThamKhaoViLlmGia ? 'chỉ tham khảo — chạy LLM giả' : 'đo LLM thật'})`,
       '',
-      `- S-7 300 ca hơn nền TẮT: **${fmtDg(dg.s7HonNen)}**`,
+      `- S-7 hơn ${nhanGoc}: **${fmtDg(dg.s7HonNen)}**`,
       `- Van 5/2 đạt 5/5 nhóm \`8481\`: **${fmtDg(dg.van52Dat55)}**`,
       `- Thời gian trung vị ≤ 45 s: **${fmtDg(dg.trungViDuoi45s)}**`,
       `- Thời gian p95 ≤ 80 s: **${fmtDg(dg.p95Duoi80s)}**`,
