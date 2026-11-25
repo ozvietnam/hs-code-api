@@ -18,7 +18,7 @@ node scripts/luat-goc/cau.mjs phan chuong
 - **Chữ lấy từ chính kho cũ**: bỏ khoảng trắng, ghép nút mới = ghép nút cũ (script dừng nếu sai). Dòng `***` kho cũ không chép thì không thêm, chỉ dùng làm ranh giới. Đoạn ngắt qua trang được nối (50 chỗ, `--bao` in ra).
 - **id** đánh số lại liên tục `…:kq:n` (NGU_PHAP không đổi). `so` = số hiệu in. `cha` = đoạn dẫn kết bằng `:`, mục hoặc tiêu đề chứa nó; không có thì Phần / Chương / Phân chương. Dòng TỔNG QUÁT là một nút, không làm cha. Cây dựng bằng `dung_cay` của M-14; 17 chỗ sửa `cha` tay và 1 chỗ nối tay nằm trong script, có trang và lý do, không đổi chữ.
 - Mục không có `dan` (64 + 103): dưới tiêu đề không phải câu dẫn ("(I) CÁC CHƯƠNG 50 ĐẾN 55"), hoặc Phần XI tr.1140 "(a)…(g)" câu dẫn in dấu chấm (có `cha` là câu đó).
-- Kiểm: 0 mục nằm dưới câu kết "không bao gồm:" mà thiếu `dan` (75 câu dẫn loại trừ, 363 mục); 0 nút hai mục đầu dòng; đã đọc cây Phần VI, VII, XI, XV, XVI, XVII và Chương 28, 29, 39, 60, 69, 71, 72, 73, 84.
+- Kiểm: 0 mục nằm dưới câu kết "không bao gồm:" mà thiếu `dan` (71 câu dẫn loại trừ, 363 mục); 0 nút hai mục đầu dòng; đã đọc cây Phần VI, VII, XI, XV, XVI, XVII và Chương 28, 29, 39, 60, 69, 71, 72, 73, 84.
 - Bản in thiếu số "(h)" ở Phần XV tr.1494: đoạn "Các bộ phận của giày, dép…" là con của câu dẫn, `so` null.
 
 **Hệ quả**
