@@ -1,0 +1,34 @@
+# Danh sách test nhạy cảm Windows — dùng cho .github/workflows/windows.yml
+# (chạy khi bấm tay + một lần mỗi tuần, KHÔNG phải check bắt buộc của PR).
+# Phạm vi theo QT ở #1850 (bình luận 25/11, chốt lại #1851): chỉ gồm
+# test-nhan-dien-module, test-danh-sach-test và các test từng dính lỗi Windows (#1852, #1868).
+# Chạy bằng chính bộ chạy của repo:
+#   node scripts/chay-danh-sach-test.mjs --danh-sach=scripts/danh-sach-test-windows.txt --khong-dung
+# Ba lớp lỗi chỉ Windows mới thấy (issue #1851): C:\C:\… từ .pathname; cổng in 0 byte
+# exit 0 (main-guard không chạy); chmod/symlink theo ngữ nghĩa NTFS.
+
+# 2 cổng nhận-diện module / danh sách test (QT chỉ định đích danh)
+node scripts/test-nhan-dien-module.mjs
+node scripts/test-danh-sach-test.mjs
+
+# 16 test đã sửa lỗi Windows ở #1852: .pathname → fileURLToPath, main-guard, hoặc skip chmod trên NTFS
+node scripts/test-ban-dung.mjs
+node scripts/test-ca-doi-chung-vat-lieu.mjs
+node scripts/test-check-mo-ta-bo-de.mjs
+node scripts/test-check-so-tay-bien.mjs
+node scripts/test-chot-trung-ten.mjs
+node scripts/test-kiem-ban-do-4so.mjs
+node scripts/test-legal-basis.mjs
+node scripts/test-loi-ve-so.mjs
+node scripts/test-nguon-loai.mjs
+node scripts/test-phan-biet-vat-lieu-t3.mjs
+node scripts/test-phan-biet-vat-lieu.mjs
+node scripts/test-quet-khoa-nhan-viec.mjs
+node scripts/test-so-tay-chuong-98.mjs
+node scripts/test-so-tay-phan-nhom-6so.mjs
+node scripts/test-so-tay-questions.mjs
+node scripts/test-wco-op.mjs
+
+# 2 test spawn công cụ đã sửa main-guard ở #1868 (đỏ trên Windows trước đây, nay xanh)
+node scripts/test-import-customs-danh-muc.mjs
+node scripts/test-kho-dap-an.mjs
