@@ -128,8 +128,10 @@ kiem('ca khoá: từ 841221 có đường về 848120 trong ≤ 3 bước, có �
 kiem('đường đi chỉ gồm bước nối tiếp nhau', Boolean(d3) && d3.buoc.every((s, i) => i === 0 || d3.buoc[i - 1].toi === s.tu) && d3.buoc[0].tu === '841221');
 
 // ── 6. Hai chế độ đi cạnh ngang + trần ─────────────────────────────────────────────────────────────────────────
-const mo1 = D.moRongUngVien(['8412'], 'van điện từ khí nén 5/2, cuộn coil 24VDC');
-kiem('moRongUngVien: mô tả "van điện từ khí nén 5/2…" với ứng viên chỉ có 8412 ⇒ kéo được 8481', mo1.some((x) => x.nhom === '8481' && x.loai === 'C6' && chu(x.trich)), JSON.stringify(mo1.map((x) => x.nhom)));
+const mo1 = D.moRongUngVien(['8412'], 'van trượt cho động cơ hơi nước, thân gang');
+kiem('moRongUngVien: mô tả khớp điều kiện "Van trượt cho động cơ hơi nước" với ứng viên 8412 ⇒ kéo được 8481 qua C6', mo1.some((x) => x.nhom === '8481' && x.loai === 'C6' && chu(x.trich)), JSON.stringify(mo1.map((x) => x.nhom)));
+const mo1Khac = D.moRongUngVien(['8412'], 'van điện từ khí nén 5/2, cuộn coil 24VDC');
+kiem('ca ngược: mô tả "van điện từ khí nén 5/2…" KHÔNG khớp điều kiện "Van trượt cho động cơ hơi nước" ⇒ không kéo oan 8481', !mo1Khac.some((x) => x.nhom === '8481'), JSON.stringify(mo1Khac.map((x) => x.nhom)));
 const mo2 = D.moRongUngVien(['8412'], 'xi lanh thuỷ lực tác động kép, hành trình 200 mm');
 kiem('ca ngược: mô tả xi lanh thuỷ lực thuần ⇒ KHÔNG kéo 8481', !mo2.some((x) => x.nhom === '8481'), JSON.stringify(mo2.map((x) => x.nhom)));
 kiem('moRongUngVien: có trần (toiDa) và không trả nhóm đã là ứng viên', D.moRongUngVien(['8412', '8481'], 'van điện từ khí nén', { toiDa: 2 }).length <= 2 && !D.moRongUngVien(['8412', '8481'], 'van điện từ khí nén').some((x) => ['8412', '8481'].includes(x.nhom)));
