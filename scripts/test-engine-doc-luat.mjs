@@ -2,7 +2,7 @@
 'use strict';
 
 // scripts/test-engine-doc-luat.mjs
-// Bộ test ngoại tuyến cho M-52 (#1920): 14 kịch bản trên mô tả Chương 76 tự soạn + goiLLM giả định.
+// Bộ test ngoại tuyến cho M-52 (#1920): kịch bản Chương 76 tự soạn + trần prompt với kho thật (30 cụm tìm tự nghĩ) + goiLLM giả định.
 // Tuyệt đối không gọi LLM thật, không đọc tệp benchmark/dữ liệu khách.
 
 import assert from 'node:assert/strict';
@@ -14,6 +14,7 @@ const {
   KHO_THIEU_MAC_DINH,
 } = require('../lib/engine-doc-luat');
 const { kiemSoVet, napNguonCau } = require('../lib/so-vet');
+const { phaiDoc } = require('../lib/do-thi/phai-doc');
 
 const nguonCau = napNguonCau();
 
@@ -31,6 +32,26 @@ function traLoiKiemToanKhong(duLieu, chuKhach = 'đinh tán bằng hợp kim nh�
       chuKhach,
     })),
   };
+}
+
+/** Trả lời LOC giả: giữ các nhóm bài kiểm cần, bỏ phần còn lại gộp một lý do. */
+function traLoiLoc(goi, uuTien = ['7318', '7604', '7610', '7616']) {
+  const ids = goi.duLieu.ungVien.map((u) => u.h4);
+  const giu = uuTien.filter((h) => ids.includes(h));
+  if (!giu.length && goi.duLieu.tongLuot === 1) giu.push(...ids.slice(0, 1));
+  return {
+    hanhDong: 'GIU',
+    nhomGiu: giu,
+    boQua: [{ lyDo: 'Nhóm của hàng khác, bài kiểm giả lập', nhom: ids.filter((h) => !giu.includes(h)) }],
+  };
+}
+
+/** chayDocLuat có sẵn lời đáp LOC; bài kiểm nào muốn tự đáp LOC thì gọi thẳng chayDocLuat. */
+function chayThu(opts) {
+  return chayDocLuat({
+    ...opts,
+    goiLLM: async (buoc, goi) => (buoc === 'LOC' ? traLoiLoc(goi) : opts.goiLLM(buoc, goi)),
+  });
 }
 
 let passed = 0;
@@ -64,7 +85,7 @@ async function runAll() {
   // 1. Đủ dữ kiện → 8 số (7616 -> 761610 -> 76161090) + đạt kiemSoVet + đo lượt/ký tự
   await test('1. Đủ dữ kiện Chương 76 -> 8 số 76161090 đạt kiemSoVet', async () => {
     const nhietDoSeen = [];
-    const res = await chayDocLuat({
+    const res = await chayThu({
       moTa: 'Đinh tán rỗng bằng hợp kim nhôm, dùng để ghép nối các tấm kim loại trong lắp ráp thân vỏ máy',
       goiLLM: async (buoc, goi) => {
         nhietDoSeen.push(goi.nhietDo);
@@ -74,7 +95,7 @@ async function runAll() {
               { y: 'đinh tán bằng hợp kim nhôm', chuKhach: 'Đinh tán rỗng bằng hợp kim nhôm' },
             ],
             chuaBiet: [],
-            cumTim: ['đinh tán nhôm'],
+            cumTim: ['đinh tán'],
           };
         }
         if (buoc === 'CHON_UNG_VIEN') {
@@ -146,7 +167,7 @@ async function runAll() {
   // 2. Mô tả rỗng → dừng HOI ở bậc 0
   await test('2. Mô tả rỗng -> dừng HOI ở bậc 0, không đoán mã', async () => {
     let called = 0;
-    const res = await chayDocLuat({
+    const res = await chayThu({
       moTa: '   ',
       goiLLM: async () => { called += 1; return {}; },
     });
@@ -161,7 +182,7 @@ async function runAll() {
 
   // 3. Tìm rỗng -> dừng HOI ở bậc 0
   await test('3. Tìm rỗng từ timLuat -> dừng HOI ở bậc 0, đạt kiemSoVet', async () => {
-    const res = await chayDocLuat({
+    const res = await chayThu({
       moTa: 'Vật mẫu xyzabc999 không rõ chất liệu và công dụng',
       goiLLM: async (buoc) => {
         assert.equal(buoc, 'VAO_CUA');
@@ -184,7 +205,7 @@ async function runAll() {
   await test('4. TIM_LAI tối đa 2 lần, lần 3 bị chặn và ép sửa sang DOC_KY', async () => {
     let uvCount = 0;
     let promptLan3 = '';
-    const res = await chayDocLuat({
+    const res = await chayThu({
       moTa: 'Đinh tán nhôm loại rỗng chuyên lắp ráp',
       goiLLM: async (buoc, goi) => {
         if (buoc === 'VAO_CUA') {
@@ -197,7 +218,7 @@ async function runAll() {
         if (buoc === 'CHON_UNG_VIEN') {
           uvCount += 1;
           if (uvCount <= 2) {
-            return { hanhDong: 'TIM_LAI', cumTim: ['đinh tán nhôm'] };
+            return { hanhDong: 'TIM_LAI', cumTim: ['đinh tán'] };
           }
           if (uvCount === 3) {
             // Cố xin TIM_LAI lần 3 (khi choPhepTimLai === false) → phải bị từ chối và gọi sửa 1 lần
@@ -263,7 +284,7 @@ async function runAll() {
   await test('5. CHON_UNG_VIEN thiếu boQua cho nhóm còn lại bị từ chối và bắt bổ sung', async () => {
     let uvLan = 0;
     let loiThay = '';
-    const res = await chayDocLuat({
+    const res = await chayThu({
       moTa: 'Đinh tán bằng nhôm dùng trong lắp ráp',
       goiLLM: async (buoc, goi) => {
         if (buoc === 'VAO_CUA') {
@@ -337,7 +358,7 @@ async function runAll() {
   await test('6. Gộp theo cauId (gopTheoCau=true) và chia nhiều lô <= cauMoiLuotKiem', async () => {
     const loSizes = [];
     const seenCauIds = new Set();
-    const res = await chayDocLuat({
+    const res = await chayThu({
       moTa: 'Đinh tán bằng nhôm rỗng',
       gioiHan: { cauMoiLuotKiem: 10 },
       goiLLM: async (buoc, goi) => {
@@ -412,7 +433,7 @@ async function runAll() {
   await test('7. XUONG_CAP chỉ mở 1 cấp con trực tiếp (không lộ cháu) và chặn nhảy cấp', async () => {
     const promptsCap1 = [];
     let lanCap1 = 0;
-    const res = await chayDocLuat({
+    const res = await chayThu({
       moTa: 'Đinh tán nhôm rỗng đầu tròn',
       goiLLM: async (buoc, goi) => {
         if (buoc === 'VAO_CUA') {
@@ -505,7 +526,7 @@ async function runAll() {
         tachVoi: [{ voi: 'bieu:76169', y: 'nhóm chốt/đinh tán (7616.10) vs sản phẩm khác (7616.9)', cau: ['bieu:761610#1'] }],
       }],
     ]);
-    const res = await chayDocLuat({
+    const res = await chayThu({
       moTa: 'Đinh tán bằng nhôm',
       kho: {
         tomTat: fakeTomTat,
@@ -520,7 +541,7 @@ async function runAll() {
           };
         }
         if (buoc === 'CHON_UNG_VIEN') {
-          sawTomTatUv = goi.prompt.includes('tóm tắt(BO_TRO)');
+          sawTomTatUv = goi.prompt.includes('tóm tắt(BO_TRO');
           const uvs = goi.duLieu.ungVien.map((u) => u.h4);
           return {
             hanhDong: 'DOC_KY',
@@ -578,7 +599,7 @@ async function runAll() {
   // 9. CHUYEN_HUONG khi cạnh loại trừ THOA (7604 -> nhom:7604:ct:3#1 -> 7610) & cấm chọn lại 7604
   await test('9. CHUYEN_HUONG 7604 -> 7610 khi THOA loại trừ, cấm chọn lại nhóm đã loại', async () => {
     let lanChon4 = 0;
-    const res = await chayDocLuat({
+    const res = await chayThu({
       moTa: 'Khung cửa bằng thanh nhôm định hình đã gia công sẵn thành kết cấu lắp dựng',
       goiLLM: async (buoc, goi) => {
         if (buoc === 'VAO_CUA') {
@@ -669,7 +690,7 @@ async function runAll() {
 
   // 10. CHUA_BIET ở bước KIEM → dừng HOI ở bậc 4 kèm 2 nhánh phân vân
   await test('10. CHUA_BIET ở KIEM -> dừng HOI ở bậc 4, đạt kiemSoVet', async () => {
-    const res = await chayDocLuat({
+    const res = await chayThu({
       moTa: 'Thanh nhôm cắt sẵn kích thước',
       goiLLM: async (buoc, goi) => {
         if (buoc === 'VAO_CUA') {
@@ -714,14 +735,14 @@ async function runAll() {
 
   // 11. HOI ở bước XUONG_CAP (dừng ở 761610 khi thiếu dữ kiện phân tách 8 số)
   await test('11. HOI ở XUONG_CAP (bậc 8, dừng tại 761610) đạt kiemSoVet', async () => {
-    const res = await chayDocLuat({
+    const res = await chayThu({
       moTa: 'Chi tiết ghép nối bằng nhôm (chưa rõ là bu lông, đinh hay đinh tán)',
       goiLLM: async (buoc, goi) => {
         if (buoc === 'VAO_CUA') {
           return {
             banChat: [{ y: 'chi tiết ghép nối bằng nhôm', chuKhach: 'Chi tiết ghép nối bằng nhôm' }],
             chuaBiet: ['dạng ren hay không ren, là đinh hay đinh tán'],
-            cumTim: ['đinh tán nhôm'],
+            cumTim: ['đinh tán'],
           };
         }
         if (buoc === 'CHON_UNG_VIEN') {
@@ -778,7 +799,7 @@ async function runAll() {
   await test('12. QUAY_LUI từ 76169 về 7616 đòi lyDo và chốt 76161090 đạt kiemSoVet', async () => {
     let daVao76169 = false;
     let thuThieuLyDo = false;
-    const res = await chayDocLuat({
+    const res = await chayThu({
       moTa: 'Đinh tán nhôm loại rỗng',
       goiLLM: async (buoc, goi) => {
         if (buoc === 'VAO_CUA') {
@@ -815,7 +836,7 @@ async function runAll() {
               quyTacGir: 'QT6',
               trich: [{ cauId: 'bieu:76169#1', doan: cauGoc('bieu:76169#1') }],
               chuKhach: 'Đinh tán nhôm',
-              daSoKhongChon: [],
+              daSoKhongChon: [{ nut: 'bieu:761610', viSaoKhongChon: 'Chưa thấy là đinh tán (bài kiểm đi nhầm)' }],
             };
           }
           if (goi.duLieu.nut === 'bieu:76169') {
@@ -877,7 +898,7 @@ async function runAll() {
   await test('13. Cấm QT3 khi chỉ còn 1 nhóm sống và ép sửa về QT1', async () => {
     let lanC4 = 0;
     let promptLan2 = '';
-    const res = await chayDocLuat({
+    const res = await chayThu({
       moTa: 'Đinh tán bằng nhôm nguyên khối',
       goiLLM: async (buoc, goi) => {
         if (buoc === 'VAO_CUA') {
@@ -1009,7 +1030,7 @@ async function runAll() {
 
     // 14a: Lần 1 kiểm sổ giả lỗi -> SUA_BUOC cứu được -> KET_LUAN
     let suaCountA = 0;
-    const resA = await chayDocLuat({
+    const resA = await chayThu({
       moTa: 'Đinh tán nhôm',
       kho: {
         kiemSoVetFn: (sv, opts) => {
@@ -1034,7 +1055,7 @@ async function runAll() {
 
     // 14b: SUA_BUOC vẫn hỏng -> SO_KHONG_DAT (ma=null, bac=0)
     let suaCountB = 0;
-    const resB = await chayDocLuat({
+    const resB = await chayThu({
       moTa: 'Đinh tán nhôm',
       kho: {
         kiemSoVetFn: (sv) => ({
@@ -1057,6 +1078,291 @@ async function runAll() {
     assert.equal(resB.ma, null);
     assert.ok(resB.loiSo.length > 0);
     return resA;
+  });
+
+  // ── QT soát #1955: LOC / CHON, trần prompt, chú giải Phần Chương một lần, CHI_SANG ─────────────────────────────
+  const coCauLoaiChiSang = 'nhom:7604:ct:3#1';
+
+  await test('15. LOC: nhóm chỉ được nhắc ở câu loại trừ của nhóm khác vẫn có mặt kèm đúng câu đó', async () => {
+    let dong = null;
+    let chieu = null;
+    await chayDocLuat({
+      moTa: 'Thanh nhôm làm kết cấu',
+      kho: {
+        timLuatFn: () => ({ cuaVao: [{ nut: 'nhom:7604:ct:3', cauId: coCauLoaiChiSang, cau: cauGoc(coCauLoaiChiSang), chieu: 'LOAI', kho: 'nhom', lop: 'HUONG_DAN' }] }),
+      },
+      goiLLM: async (buoc, goi) => {
+        if (buoc === 'VAO_CUA') return { banChat: [{ y: 'thanh nhôm', chuKhach: 'Thanh nhôm' }], cumTim: ['kết cấu'] };
+        dong = goi.duLieu.ungVien.find((u) => u.h4 === '7610');
+        chieu = /7610[\s\S]*?nhom:7604:ct:3#1\|CHI_SANG/.test(goi.prompt);
+        return { hanhDong: 'HOI', cauHoi: 'dừng ở đây' };
+      },
+    });
+    assert.ok(dong, '7610 phải có mặt');
+    assert.deepEqual(dong.cauNhac.map((e) => [e.cauId, e.chieu]), [[coCauLoaiChiSang, 'CHI_SANG']]);
+    assert.equal(chieu, true);
+  });
+
+  await test('16. LOC: mỗi nhóm ≤ 2 câu, mỗi câu ≤ 220 ký tự và là nguyên văn; bỏ gộp theo lý do; sót nhóm bị trả lại', async () => {
+    let lan = 0;
+    let soLanLoc = 0;
+    const res = await chayDocLuat({
+      moTa: 'Đinh tán bằng nhôm',
+      goiLLM: async (buoc, goi) => {
+        if (buoc === 'VAO_CUA') return { banChat: [{ y: 'đinh tán nhôm', chuKhach: 'Đinh tán bằng nhôm' }], cumTim: ['đinh tán', 'bằng nhôm', 'nhôm thanh'] };
+        if (buoc === 'LOC') {
+          soLanLoc += 1;
+          assert.ok(goi.duLieu.ungVien.length > 8);
+          const h4s = goi.duLieu.ungVien.map((u) => u.h4);
+          assert.deepEqual(h4s, [...h4s].sort(), 'xếp theo số nhóm, không xếp hạng');
+          assert.equal(goi.prompt.includes('tóm tắt'), false, 'LOC không đưa tóm tắt');
+          for (const u of goi.duLieu.ungVien) {
+            assert.ok(u.cauNhac.length >= 1 && u.cauNhac.length <= 2);
+            for (const e of u.cauNhac) {
+              assert.ok(e.doan.length <= 220, `${e.cauId}: ${e.doan.length}`);
+              for (const m of e.doan.split('…').map((x) => x.trim()).filter(Boolean)) {
+                assert.ok(cauGoc(e.cauId).replace(/\s+/g, ' ').includes(m), `${e.cauId} không nguyên văn: ${m}`);
+              }
+            }
+          }
+          const kq = traLoiLoc(goi);
+          lan += 1;
+          if (lan === 1) return { ...kq, boQua: [{ ...kq.boQua[0], nhom: kq.boQua[0].nhom.slice(1) }] };
+          assert.match(goi.prompt, /LẦN TRƯỚC BỊ TRẢ LẠI VÌ: LOC: thiếu giải thích vì sao bỏ nhóm còn lại/);
+          assert.match(goi.prompt, /BÀI LÀM TRƯỚC/);
+          return kq;
+        }
+        if (buoc === 'CHON_UNG_VIEN') {
+          assert.ok(goi.duLieu.ungVien.length <= 8);
+          return { hanhDong: 'HOI', cauHoi: 'dừng ở đây' };
+        }
+        throw new Error(buoc);
+      },
+    });
+    assert.equal(soLanLoc, 2);
+    const loc = res.so.cacBuoc.find((b) => b.loai === 'LOC');
+    assert.equal(loc.quyetDinh.trangThai, 'LOC_GIU');
+    assert.equal(loc.quyetDinh.boQua.length, 1);
+    assert.equal(kiemSoVet(res.so).dat, true);
+  });
+
+  const khoiTomTat = (n) => 'Câu tóm tắt giả dài để ép chia lượt. '.repeat(Math.ceil(n / 38)).slice(0, n);
+  const tomTatTo = (gom, khong) => new Map([...nguonCau.nutTheoId.keys()].filter((id) => /^bieu:\d{4}$/.test(id)).map((id) => [id, {
+    nut: id,
+    gom: [{ y: khoiTomTat(gom), cau: [`${id}#1`] }, { y: 'Ý CHỈ DỰA CÂU PHẦN', cau: ['phan:XV:cg:3#1'] }],
+    khongGom: [{ y: khoiTomTat(khong), cau: [`${id}#1`], den: ['99.99'] }],
+    tachVoi: [{ voi: 'bieu:9999', y: 'TÁCH VỚI NHÓM KHÔNG XÉT', cau: [] }],
+  }]));
+
+  /** goiLLM giả đi hết đường: giữ theo `uuTien`, KIEM toàn KHONG, xuống nút con đầu tiên. Ghi lại mọi prompt. */
+  const diHetDuong = (cumTim, { chon, prompts }) => async (buoc, goi) => {
+    prompts.push({ buoc, n: goi.prompt.length, prompt: goi.prompt });
+    const ck = 'Hàng thử';
+    if (buoc === 'VAO_CUA') return { banChat: [{ y: 'hàng thử', chuKhach: ck }], cumTim };
+    if (buoc === 'LOC') {
+      const ids = goi.duLieu.ungVien.map((u) => u.h4);
+      return traLoiLoc(goi, chon ? chon(ids, 8) : ids.slice(0, 8));
+    }
+    if (buoc === 'CHON_UNG_VIEN') {
+      const ids = goi.duLieu.ungVien.map((u) => u.h4);
+      return traLoiLoc(goi, chon ? chon(ids, 3) : ids.slice(-3));
+    }
+    if (buoc === 'KIEM') return traLoiKiemToanKhong(goi.duLieu, 'KHACH_KHONG_NEU');
+    if (buoc === 'DOC_CAP' || buoc === 'DOC_THEM') return { cauDeCap: [] };
+    if (buoc === 'CHON_NHOM_4') {
+      const [a, ...con] = goi.duLieu.nhomSong;
+      return { hanhDong: 'CHON', nutDich: a, quyTacGir: 'Quy tắc 1', trich: [{ cauId: `${a}#1`, doan: cauGoc(`${a}#1`) }], chuKhach: ck, daSoKhongChon: con.map((nut) => ({ nut, viSaoKhongChon: 'thử' })) };
+    }
+    if (buoc === 'XUONG_CAP') {
+      const [a, ...con] = goi.duLieu.capDuoi;
+      const cid = cauGoc(`${a.id}#1`).trim().length >= 6 ? `${a.id}#1` : `${goi.duLieu.nut}#1`;
+      return { hanhDong: 'CHON', nutDich: a.id, quyTacGir: 'QT6', trich: [{ cauId: cid, doan: cauGoc(cid) }], chuKhach: ck, daSoKhongChon: con.map((c) => ({ nut: c.id, viSaoKhongChon: 'thử' })) };
+    }
+    throw new Error(`${buoc}: ${goi.prompt.slice(0, 600)}`);
+  };
+  const coNut = (p, id) => p.includes(`\n* ${id} (`);
+
+  const CUM_30 = [
+    'bằng sắt hoặc thép', 'máy bơm', 'động cơ điện', 'bằng plastic', 'vải dệt thoi', 'đồ nội thất',
+    'thiết bị quang học', 'hợp chất hữu cơ', 'cao su lưu hoá', 'giấy và bìa', 'phụ tùng xe', 'dụng cụ cầm tay',
+    'bằng gỗ', 'thuỷ tinh', 'sản phẩm gốm', 'thực phẩm chế biến', 'dầu thực vật', 'phân bón',
+    'mỹ phẩm', 'chất màu', 'van và vòi', 'ổ lăn', 'máy giặt', 'đèn điện',
+    'cáp điện', 'đồ chơi trẻ em', 'giày dép', 'túi xách', 'bộ phận của máy', 'kết cấu nhôm',
+  ];
+  await test('17. Trần prompt: 30 cụm tìm tự nghĩ trên kho thật, mọi bước ≤ 60.000 ký tự, sổ đạt', async () => {
+    let lonNhat = { n: 0 };
+    let chiaCo = 0;
+    for (let i = 0; i < CUM_30.length; i += 6) {
+      const prompts = [];
+      const res = await chayDocLuat({ moTa: 'Hàng thử trần prompt', kho: { tomTat: tomTatTo(6000, 5000) }, goiLLM: diHetDuong(CUM_30.slice(i, i + 6), { prompts }) });
+      assert.equal(res.trangThai, 'KET_LUAN', JSON.stringify(res.loiSo).slice(0, 400));
+      assert.equal(kiemSoVet(res.so).dat, true);
+      for (const p of prompts) if (p.n > lonNhat.n) lonNhat = p;
+      chiaCo += res.thongKeBuoc.reduce((t, e) => t + e.soLuotChia, 0);
+      const chonUv = prompts.find((p) => p.buoc === 'CHON_UNG_VIEN').prompt;
+      assert.equal(chonUv.includes('Ý CHỈ DỰA CÂU PHẦN'), false, 'bỏ ý gồm chỉ dựa câu Phần/Chương');
+      assert.equal(chonUv.includes('TÁCH VỚI NHÓM KHÔNG XÉT'), false, 'tachVoi chỉ với nhóm đang xét');
+      assert.ok(chonUv.includes('không gồm:'));
+    }
+    assert.ok(lonNhat.n <= 60000, `${lonNhat.buoc}: ${lonNhat.n}`);
+    assert.ok(chiaCo > 0, 'phải có lượt chia do vượt trần');
+    console.log(`  (prompt lớn nhất: ${lonNhat.buoc} ${lonNhat.n} ký tự; lượt chia thêm: ${chiaCo})`);
+  });
+
+  await test('18. Trần prompt ở nhóm nặng nhất (39.01, 32.04, 29.37, 40.01, 61.09, 84.19): chia lượt theo nút, không cắt chữ, đọc đủ', async () => {
+    for (const bo of [['3901', '3204', '2937'], ['4001', '6109', '8419']]) {
+      const prompts = [];
+      const res = await chayDocLuat({
+        moTa: 'Hàng thử nhóm nặng',
+        kho: { timLuatFn: () => ({ cuaVao: bo.map((h) => ({ nut: `bieu:${h}`, cauId: `bieu:${h}#1`, cau: cauGoc(`bieu:${h}#1`), chieu: 'NHAC', kho: 'bieu', lop: 'LUAT' })) }) },
+        goiLLM: diHetDuong(['thử'], { prompts }),
+      });
+      assert.equal(res.trangThai, 'KET_LUAN', JSON.stringify(res.loiSo).slice(0, 400));
+      assert.ok(prompts.every((p) => p.n <= 60000));
+      assert.ok(res.thongKeBuoc.some((e) => e.soLuotChia > 0));
+      // Mọi câu ghi daDoc đều có mặt trọn vẹn trong một prompt.
+      const tat = prompts.map((p) => p.prompt).join('\n');
+      for (const b of res.so.cacBuoc) {
+        if (!['KIEM', 'CHON', 'KET_LUAN'].includes(b.loai)) continue;
+        for (const cid of b.daDoc) assert.ok(tat.includes(`[${cid}] ${cauGoc(cid).replace(/\s+/g, ' ').trim()}`), `daDoc ${cid} chưa từng đưa trọn`);
+      }
+    }
+  });
+
+  await test('19. Chú giải Phần/Chương chỉ đưa một lần cho các nhóm cùng Phần/Chương; câu chung KHONG dùng lại', async () => {
+    const prompts = [];
+    const res = await chayDocLuat({
+      moTa: 'Hàng thử ba nhóm nhôm',
+      kho: { timLuatFn: () => ({ cuaVao: ['7604', '7610', '7616'].map((h) => ({ nut: `bieu:${h}`, cauId: `bieu:${h}#1`, cau: cauGoc(`bieu:${h}#1`), chieu: 'NHAC', kho: 'bieu', lop: 'LUAT' })) }) },
+      goiLLM: diHetDuong(['nhôm'], { prompts }),
+    });
+    assert.equal(res.trangThai, 'KET_LUAN');
+    const pd = phaiDoc('bieu:7604', { dayDu: true });
+    const chung = pd.trinhTu.find((s) => s.buoc === 'CHU_GIAI_PHAN').muc.filter((m) => m.lop === 'LUAT').map((m) => m.id);
+    assert.ok(chung.length > 10);
+    for (const id of chung) {
+      const lan = prompts.filter((p) => coNut(p.prompt, id)).length;
+      assert.equal(lan, 1, `${id} đưa ${lan} lần`);
+    }
+    const kiems = res.so.cacBuoc.filter((b) => b.loai === 'KIEM');
+    assert.equal(kiems.length, 3);
+    assert.equal(kiems[0].quyetDinh.cauDungLai, 0);
+    assert.ok(kiems[1].quyetDinh.cauDungLai > 5 && kiems[2].quyetDinh.cauDungLai > 5);
+    assert.equal(kiemSoVet(res.so).dat, true);
+  });
+
+  await test('20. chuKhach bịa, trích câu chưa đưa, chuyển hướng ngoài đích của câu: đều bị trả lại', async () => {
+    const loi = [];
+    const chay1 = async (sua) => {
+      const prompts = [];
+      const goc = diHetDuong(['nhôm'], { prompts });
+      let dem = 0;
+      const res = await chayDocLuat({
+        moTa: 'Hàng thử nhôm',
+        kho: { timLuatFn: () => ({ cuaVao: [{ nut: 'bieu:7604', cauId: 'bieu:7604#1', cau: cauGoc('bieu:7604#1'), chieu: 'NHAC', kho: 'bieu', lop: 'LUAT' }] }) },
+        goiLLM: async (buoc, goi) => {
+          const kq = await goc(buoc, goi);
+          const moi = sua(buoc, goi, kq, dem);
+          if (moi) { dem += 1; return moi; }
+          return kq;
+        },
+      });
+      loi.push(res.thongKeBuoc.flatMap((e) => e.biTraLai));
+      return res;
+    };
+    await chay1((b, g, kq, d) => (b === 'CHON_NHOM_4' && d < 1 ? { ...kq, chuKhach: 'nhôm đúc nguyên khối' } : null));
+    assert.match(loi.at(-1)[0], /không có nguyên văn trong mô tả khách/);
+    await chay1((b, g, kq, d) => (b === 'CHON_NHOM_4' && d < 1 ? { ...kq, trich: [{ cauId: 'bieu:9403#1', doan: cauGoc('bieu:9403#1') }] } : null));
+    assert.match(loi.at(-1)[0], /CHƯA được đưa cho đọc/);
+    await chay1((b, g, kq, d) => (b === 'KIEM' && d < 1 && g.duLieu.loCau.some((c) => c.cauId === coCauLoaiChiSang)
+      ? { kiemCanh: kq.kiemCanh.map((k) => (k.cauId === coCauLoaiChiSang ? { ...k, ketQua: 'THOA', chuKhach: 'Hàng thử nhôm' } : k)), chuyenHuong: { nutDich: 'bieu:9403' } }
+      : null));
+    assert.match(loi.at(-1)[0], /không phải đích của câu THOA/);
+    await chay1((b, g, kq, d) => (b === 'XUONG_CAP' && d < 1 ? { ...kq, trich: [{ cauId: 'gir:6#1', doan: cauGoc('gir:6#1') }] } : null));
+    assert.match(loi.at(-1)[0], /chỉ có lời Quy tắc 6/);
+    await chay1((b, g, kq, d) => (b === 'XUONG_CAP' && d < 1 ? { ...kq, daSoKhongChon: [] } : null));
+    assert.match(loi.at(-1)[0], /sót nút cùng cấp/);
+    await chay1((b, g, kq, d) => (b === 'KIEM' && d < 1 ? { ...kq, docThem: ['bieu:0101'] } : null));
+    assert.match(loi.at(-1)[0], /docThem "0101" không phải nhóm được câu nào/);
+  });
+
+  await test('21. Câu loại trừ chỉ sang cả Chương: các nhóm của Chương đó đi qua LOC, không đoán nhóm', async () => {
+    const prompts = [];
+    const goc = diHetDuong(['nhôm'], { prompts });
+    let cauSangChuong = null;
+    let daLocChuong = null;
+    const res = await chayDocLuat({
+      moTa: 'Hàng thử nhôm',
+      kho: { timLuatFn: () => ({ cuaVao: [{ nut: 'bieu:7604', cauId: 'bieu:7604#1', cau: cauGoc('bieu:7604#1'), chieu: 'NHAC', kho: 'bieu', lop: 'LUAT' }] }) },
+      goiLLM: async (buoc, goi) => {
+        if (buoc === 'KIEM' && goi.duLieu.nut === 'bieu:7604' && !cauSangChuong) {
+          const c = goi.duLieu.loCau.find((x) => x.cacDich.every((d) => d === 'chuong:94'));
+          if (c) {
+            cauSangChuong = c.cauId;
+            const kq = traLoiKiemToanKhong(goi.duLieu, 'Hàng thử nhôm');
+            kq.kiemCanh.find((k) => k.cauId === c.cauId).ketQua = 'THOA';
+            kq.chuyenHuong = { nutDich: 'chuong:94', trich: [{ cauId: c.cauId, doan: cauGoc(c.cauId) }], lyDo: 'Câu loại chỉ sang Chương 94' };
+            return kq;
+          }
+        }
+        if (cauSangChuong && ['LOC', 'CHON_UNG_VIEN'].includes(buoc)) daLocChuong = goi.duLieu.ungVien.map((u) => u.h4);
+        return goc(buoc, goi);
+      },
+    });
+    assert.ok(cauSangChuong, 'kho phải có câu Phần XV loại sang Chương 94');
+    assert.ok(daLocChuong?.length >= 5 && daLocChuong.every((h) => h.startsWith('94')), String(daLocChuong));
+    assert.equal(res.trangThai, 'KET_LUAN', JSON.stringify(res.loiSo).slice(0, 300));
+    assert.ok(res.ma.startsWith('94'));
+    assert.equal(kiemSoVet(res.so).dat, true);
+  });
+
+  await test('23. Chú giải "nội dung nhóm 73.08 được áp dụng": docThem đưa chú giải 73.08, câu kê tới được CHON_NHOM_4 và XUONG_CAP, 73.08 không thành ứng viên', async () => {
+    const prompts = [];
+    const goc = diHetDuong(['nhôm'], { prompts });
+    const res = await chayDocLuat({
+      moTa: 'Hàng thử nhôm',
+      kho: { timLuatFn: () => ({ cuaVao: [{ nut: 'bieu:7610', cauId: 'bieu:7610#1', cau: cauGoc('bieu:7610#1'), chieu: 'NHAC', kho: 'bieu', lop: 'LUAT' }] }) },
+      goiLLM: async (buoc, goi) => {
+        const kq = await goc(buoc, goi);
+        if (buoc === 'KIEM') return { ...kq, docThem: ['bieu:7308'] };
+        if (buoc === 'DOC_THEM') return { cauDeCap: [{ cauId: 'nhom:7308:ct:1#1', y: 'áp dụng' }] };
+        return kq;
+      },
+    });
+    assert.equal(res.trangThai, 'KET_LUAN', JSON.stringify(res.loiSo).slice(0, 300));
+    assert.equal(prompts.filter((p) => p.buoc === 'DOC_THEM').length, 1);
+    for (const b of ['CHON_NHOM_4', 'XUONG_CAP']) assert.ok(prompts.find((p) => p.buoc === b).prompt.includes('[nhom:7308:ct:1#1]'), b);
+    assert.deepEqual(res.so.ungVienSauQt1, ['7610']);
+    assert.deepEqual(res.so.cacBuoc.find((b) => b.loai === 'KIEM').quyetDinh.docThem, ['bieu:7308']);
+    assert.equal(kiemSoVet(res.so).dat, true);
+  });
+
+  await test('24. Cụm có dấu không nhận câu chỉ khớp khi bỏ dấu (nhôm ~ nhóm)', async () => {
+    let h4s = [];
+    await chayDocLuat({
+      moTa: 'Hàng thử nhôm',
+      kho: {
+        timLuatFn: () => ({ cuaVao: [
+          { nut: 'bieu:7616', cauId: 'bieu:7616#1', cau: cauGoc('bieu:7616#1'), chieu: 'NHAC', kieuKhop: 'CUM_CHUAN' },
+          { nut: 'bieu:3401', cauId: 'bieu:3401#1', cau: cauGoc('bieu:3401#1'), chieu: 'NHAC', kieuKhop: 'DU_TU_KHONG_DAU' },
+        ] }),
+      },
+      goiLLM: async (buoc, goi) => {
+        if (buoc === 'VAO_CUA') return { banChat: [{ y: 'x', chuKhach: 'nhôm' }], cumTim: ['sản phẩm nhôm'] };
+        h4s = goi.duLieu.ungVien.map((u) => u.h4);
+        return { hanhDong: 'HOI', cauHoi: 'dừng' };
+      },
+    });
+    assert.deepEqual(h4s, ['7616']);
+  });
+
+  await test('22. Vượt trần ký tự hay vượt số lượt thì trả SO_KHONG_DAT, không ném lỗi, không trả mã', async () => {
+    const r1 = await chayDocLuat({ moTa: 'Hàng thử nhôm', gioiHan: { tranKyTuPrompt: 300 }, goiLLM: async () => ({}) });
+    assert.equal(r1.trangThai, 'SO_KHONG_DAT');
+    assert.match(r1.loiSo[0], /PROMPT_VUOT_TRAN/);
+    const r2 = await chayDocLuat({ moTa: 'Hàng thử nhôm', gioiHan: { toiDaLuotLLM: 1 }, goiLLM: diHetDuong(['nhôm thanh'], { prompts: [] }) });
+    assert.equal(r2.trangThai, 'SO_KHONG_DAT');
+    assert.equal(r2.ma, null);
   });
 
   console.log(`\n=== KET QUA: ${passed} passed, ${failed} failed ===`);
