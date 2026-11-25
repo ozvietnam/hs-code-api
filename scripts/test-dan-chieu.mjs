@@ -79,6 +79,8 @@ const danhSachMau = [
   { id: 'bieu:847130', loai: 'TEN', nguyenVan: 'Xách tay dưới 10 kg' },
   { id: 'bieu:847141', loai: 'TEN', nguyenVan: 'Loại khác gồm CPU' },
   { id: 'bieu:85235111', loai: 'TEN', nguyenVan: 'Thẻ nhớ' },
+  { id: 'bieu:85235115', loai: 'TEN', nguyenVan: 'Thẻ nhớ mẫu 15' },
+  { id: 'bieu:85235120', loai: 'TEN', nguyenVan: 'Thẻ nhớ mẫu 20' },
   { id: 'nhom:7317:ct:1', loai: 'CHU_GIAI_CHI_TIET', nguyenVan: 'Không bao gồm bu lông nhóm 73.18 hoặc máy Chương 84 theo Chú giải 2(b) Phần XVI.' },
 ];
 const khoMau = taoKhoNut(danhSachMau);
@@ -107,6 +109,9 @@ const khoMau = taoKhoNut(danhSachMau);
 
   const r6 = rutDanChieuCau('Các phân nhóm từ 8471.30 đến 8471.41 gồm cả dòng mẫu.', { id: 'chuong:84:kq:1#1', nutId: 'chuong:84:kq:1', khoNut: khoMau });
   check('ca đúng: khoảng phân nhóm 6 số mở rộng trên bieu', JSON.stringify(r6.canh.map((e) => e.den).sort()) === JSON.stringify(['bieu:847130', 'bieu:847141']));
+
+  const r7 = rutDanChieuCau('Phân nhóm 8523.51.11 đến .51.20.', { id: 'chuong:85:kq:1#1', nutId: 'chuong:85:kq:1', khoNut: khoMau });
+  check('ca đúng: khoảng rút gọn 8 số .51.20 mở rộng đúng', JSON.stringify(r7.canh.map((e) => e.den).sort()) === JSON.stringify(['bieu:85235111', 'bieu:85235115', 'bieu:85235120']), JSON.stringify(r7.canh.map((e) => e.den)));
 }
 
 // 2. Ca ngược (số lượng, kích thước, năm, tiêu chuẩn, văn bản, từ tiếng Việt thông thường)
