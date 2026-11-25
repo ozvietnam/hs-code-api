@@ -145,6 +145,8 @@ Tờ khai Excel của Oz (riêng tư)  →  import + embed vector       →  oz-
 
 ## 6. Đang CẦN GÌ TIẾP?
 
+> **Định hướng & hiện trạng mới nhất (25/11/2026):** xem luật phân loại cao nhất [`ADR-0004`](decisions/0004-quy-trinh-phan-loai-chuan-6-quy-tac.md), kế hoạch đồ thị tri thức [`docs/ke-hoach-do-thi-tri-thuc-hs.md`](ke-hoach-do-thi-tri-thuc-hs.md), biên bản soát dữ liệu [`docs/soat-du-lieu-2026-11.md`](soat-du-lieu-2026-11.md) và bàn giao ca [`docs/activeContext.md`](activeContext.md).
+
 Toàn bộ roadmap ở **GitHub Issue #34** (single source of truth). Tóm tắt việc làm dần:
 
 1. **Verify nốt các văn bản pháp luật còn lại** — hiện **chỉ còn 2/109 văn bản chưa verify tiêu đề** (107/109 đã verify); thêm tiêu đề mới vào `legal-doc-titles.json` rồi chạy `node scripts/apply-verified-titles.mjs`.

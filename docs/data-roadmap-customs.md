@@ -4,6 +4,8 @@
 
 **Cập nhật:** 2026-07-07
 
+> **Lưu ý (25/11/2026):** Tài liệu này lập từ **07/2026** (giữ nguyên làm tư liệu lịch sử). Lộ trình phân loại và tiêu chí đo hiện hành tuân theo luật cao nhất [`ADR-0004`](decisions/0004-quy-trinh-phan-loai-chuan-6-quy-tac.md) và [`docs/ke-hoach-do-thi-tri-thuc-hs.md`](ke-hoach-do-thi-tri-thuc-hs.md).
+
 ---
 
 ## Trạng thái triển khai

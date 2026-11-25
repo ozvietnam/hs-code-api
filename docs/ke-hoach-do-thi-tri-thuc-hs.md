@@ -196,3 +196,14 @@ Không soạn tay hàng nghìn cạnh cho hàng hiếm, vì phải bảo trì m�
 
 1. Duyệt hướng và thứ tự giai đoạn ở mục 6.
 2. Giai đoạn 6 cần mô hình mạnh để soát cạnh do máy soạn nháp. Dùng nguồn nào là quyết định về hạn mức, QT sẽ trình riêng kèm số lượng cạnh cần soát sau giai đoạn 1.
+
+---
+
+## Cập nhật thực thi 25/11/2026
+
+> Văn bản 21/11/2026 phía trên được giữ nguyên văn bản CEO đã duyệt; mục này chỉ ghi nhận các quyết định thực thi đã chốt tới 25/11/2026.
+
+- **Phối hợp với ADR-0004 (CEO duyệt 22/11/2026):** [`docs/decisions/0004-quy-trinh-phan-loai-chuan-6-quy-tac.md`](decisions/0004-quy-trinh-phan-loai-chuan-6-quy-tac.md) là luật cao nhất; đồ thị tri thức và `tieuChi6` phục vụ quy trình 6 Quy tắc và phép đo bậc thang T1/T2/T3.
+- **Giai đoạn 2 đạt mục tiêu tìm ứng viên không cần `moRongUngVien`:** đo ngoại tuyến không AI đạt top-5 93,0% (≥ 92%) và 6 số trong 3 ứng viên đạt 87,7%–90,3% (≥ 76%) trên S-7 300 ca ([`docs/bench/do-thi-gd2-khong-ai-2026-11-24.md`](bench/do-thi-gd2-khong-ai-2026-11-24.md)), tốc độ tiền xử lý rút xuống dưới ngưỡng ≤ 100 ms ở PR `#1869` (QT duyệt 25/11, chờ gộp). PR `#1875` đã đóng ngày 25/11 theo quyết định của QT: cạnh C5/C6 chỉ dùng ở **Giai đoạn 3** để phân biệt giữa các ứng viên đã có, không dùng để kéo thêm nhóm vào danh sách ứng viên.
+- **Giai đoạn 3 & công cụ đo:** đã dựng khung mô-đun cô lập (`lib/do-thi/khoi-phan-biet.js`) và chuẩn bị công cụ đo qua Cổng thật trên kênh đo riêng (PR `#1866`, thêm chế độ `nen` giữ nguyên cờ máy thật và giữ bộ kiểm `v3` ngoài repo).
+- **Lộ trình gộp/gỡ công tắc `HS_*` (mục 6.1):** kiểm kê 79 cờ và đề xuất lộ trình gộp về một công tắc đồ thị + giảm dần số cờ đã ghi tại [`docs/van-hanh/de-xuat-gop-cong-tac-2026-11.md`](van-hanh/de-xuat-gop-cong-tac-2026-11.md) (PR `#1865`, đã gộp 25/11).

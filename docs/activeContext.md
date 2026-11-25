@@ -5,6 +5,15 @@ ADR, thẻ. Lộ trình dài hạn: `docs/backlog/README.md` và bảng việc P
 
 ---
 
+## 25/11/2026 — Cập nhật bàn giao ca (đồng bộ sau GĐ2 & ADR-0004)
+
+- **Luật cao nhất hiệu lực:** [`ADR-0004`](decisions/0004-quy-trinh-phan-loai-chuan-6-quy-tac.md) (CEO duyệt 22/11/2026) — đi đúng trình tự 6 Quy tắc, đo bậc thang T1/T2/T3; vòng sửa tầng 4 số theo [`docs/tang-4so/LUAT-DO.md`](tang-4so/LUAT-DO.md).
+- **Trạng thái cờ `HS_*`:** nguồn sự thật về mặc định mã, `Dockerfile` và cờ bóng là [`data/luat/bang-co.json`](../data/luat/bang-co.json) (L8). Trên máy thật, QT xác nhận (bình luận PR `#1866`, 25/11) môi trường đang đặt `HS_TIM_TRUOC=on`, `HS_TIM_TRUOC_NAP=0`, `HS_CHOT_SOM_CO_KIEM=on`, `HS_HOI_THEO_SO_TAY=on`, `HS_SO_TAY=full` (mặc định trong mã của 3 cờ đồ thị đầu vẫn là `tắt`/`off` theo `bang-co.json`); trạng thái `HS_HO_SO` chốt tắt bóng ở PR `#1884`. Kiểm kê & lộ trình gộp/gỡ 79 → 45 cờ xem [`docs/van-hanh/de-xuat-gop-cong-tac-2026-11.md`](van-hanh/de-xuat-gop-cong-tac-2026-11.md) (`#1865`, đã gộp).
+- **Tiến độ đồ thị (GĐ1–GĐ5):** GĐ1 bảng cạnh xong; GĐ2 đạt mục tiêu tiền xử lý (`#1869` QT duyệt 25/11 chờ gộp; bỏ `moRongUngVien` theo `#1875` đã đóng — cạnh C5/C6 chỉ dùng ở GĐ3 để phân biệt giữa các ứng viên đã có); GĐ3–5 đã dựng cô lập chờ đo qua Cổng thật trên kênh đo riêng (`#1866`); bộ kiểm `v3` giữ ngoài repo.
+- **Việc song song còn nợ ([`docs/soat-du-lieu-2026-11.md`](soat-du-lieu-2026-11.md)):** đối chiếu phụ lục `31/2026/QĐ-TTg` (749 dòng `cs` dẫn `23/2019/QĐ-TTg`) + `49/2026/TT-BXD` (1.315 dòng `cs` dẫn `12/2022`/`62/2024/TT-BGTVT`) trong `tax.json`; bổ sung tiền lệ sau `20/08/2026` (gồm ký hiệu `TB-KĐHQ`); chuẩn bị hạn **31/12/2026** (hết hạn kéo dài GTGT 8% và MFN xăng dầu 0% theo NQ 43/2026/NQ-CP).
+
+---
+
 ## 21/11/2026 — Mẫu tiêu chí 6 số (G6-0 / G6-1): 8481, 8412 + cổng máy (ADR-0003)
 
 **Đã làm (PR nhánh `qt/G6-0-mau-tieu-chi-6-so`, PR #1549, trên main sau #1539):** `tieuChi6` khuôn g6@1 cho 8481 (6 mục) và 8412

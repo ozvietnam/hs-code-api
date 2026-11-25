@@ -13,6 +13,7 @@ kho tri thức ở đây thay vì đoán từ trí nhớ.
 >    hỏi gửi khách, cờ `HS_*`, chạy bóng) + **Sơ đồ Mermaid luồng đường khách & cổng máy** (tự sinh bằng `npm run gen:diagrams`, chống lệch bằng `test-so-do-mermaid.mjs`). Có cổng máy trong `npm test`; phạm là đỏ.
 > 3. [`CLAUDE.md`](CLAUDE.md) — quy ước sửa code, cách chạy test, cổng gộp PR.
 > 4. [`docs/decisions/`](docs/decisions/) — quyết định đã chốt. Có quyết định mới thì ghi một ADR.
+> 4b. **Ưu tiên cao nhất — [`docs/decisions/0004-quy-trinh-phan-loai-chuan-6-quy-tac.md`](docs/decisions/0004-quy-trinh-phan-loai-chuan-6-quy-tac.md)** (ADR-0004, luật cao nhất CEO duyệt 22/11/2026): quy trình phân loại chuẩn theo 6 Quy tắc và phép đo bậc thang T1/T2/T3; xem thêm [`docs/van-hanh/de-xuat-gop-cong-tac-2026-11.md`](docs/van-hanh/de-xuat-gop-cong-tac-2026-11.md) (kiểm kê & lộ trình gộp công tắc `HS_*`).
 > 5. [`docs/ke-hoach-do-thi-tri-thuc-hs.md`](docs/ke-hoach-do-thi-tri-thuc-hs.md) — kế hoạch đồ thị tri thức (ADR-0002, CEO duyệt 21/11/2026): bảng cạnh `lib/do-thi/`, cổng `scripts/test-bang-canh.mjs`. Giai đoạn 1 chưa nối đường khách nào.
 >
 > Hai bảng trả lời thay cho việc đọc lại mã: `data/luat/dau-noi.json` (đường nào đọc sổ tay / sổ PN6 / tiền lệ,
@@ -230,6 +231,8 @@ dữ kiện theo chương).
 ---
 
 ## 5. Độ chính xác thật — hãy trung thực với người dùng
+
+> **Lưu ý về phép đo:** Các con số dưới đây là **số nền lịch sử trước ADR-0004** (đo đoán thẳng 8 số một lần trên nhãn tờ khai cũ). Hiện phép đo mới áp dụng bậc thang **T1 (4 số) / T2 (4 → 6 số) / T3 (6 → 8 số)** của [`ADR-0004`](docs/decisions/0004-quy-trinh-phan-loai-chuan-6-quy-tac.md) (dừng hỏi đúng chỗ khi thiếu dữ kiện thay vì đoán 8 số một lần).
 
 Đo trên 57 tờ khai thật, phủ 50 chương HS:
 
