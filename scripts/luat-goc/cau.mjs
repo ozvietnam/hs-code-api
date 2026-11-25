@@ -29,6 +29,7 @@ export function tachCau(v) {
     if (c === '.' && (/\d$/.test(truoc) && /^\d/.test(sau))) continue; //           73.17 · 1.000
     if (c === '.' && TAT.test(truoc)) continue;
     if (c === '.' && /(?:^|\n)\s*\d{1,2}$/.test(v.slice(0, i))) continue; //          "1." đầu khoản
+    if (/^\s+\(/.test(sau) && !DAU_MUC.test(sau)) continue; //                     ". (nhóm 96.04)." là đuôi của câu trước
     if (/^["”’»)\]]*\s+["“(‘«]?[\p{Lu}\d(–-]/u.test(sau)) { const m = /^["”’»)\]]*/.exec(sau)[0].length; cat.add(i + 1 + m); }
   }
   // gộp khoảng trắng vào câu trước; bỏ câu chỉ có khoảng trắng

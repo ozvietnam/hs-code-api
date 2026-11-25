@@ -6,6 +6,7 @@ const cat = (v) => tachCau(v).map(([a, b]) => v.slice(a, b));
 for (const v of ['A.', '', 'Nhóm này gồm:\n\n(1) Đinh;\n\n(2) Vít (nhóm 73.18). Câu hai.', 'x\n\n\ny', '   đầu trắng. Sau.']) kiem(`ghép lại đúng ${JSON.stringify(v).slice(0, 30)}`, cat(v).join('') === v);
 kiem('không cắt ở 73.17, 1.000 g, v.v.', cat('Các hàng thuộc nhóm 73.17 và 73.18, nặng 1.000 g, v.v. của nhóm.').length === 1);
 kiem('cắt hai câu', cat('Nhóm này gồm đinh. Không gồm vít.').length === 2);
+kiem('". (nhóm 96.04)." đi cùng câu trước', cat('Sàng thô và sàng tay. (nhóm 96.04). Câu hai.').length === 2);
 kiem('cắt mục đánh số sau xuống dòng', cat('Không bao gồm:\n(a) Vải (nhóm 58.09).\n(ij) Sàng.').length === 3);
 kiem('CA NGƯỢC số đầu khoản "1. Chương này" không thành câu riêng', cat('1. Chương này không bao gồm:').length === 1);
 const N = (id, nguyenVan, o = {}) => JSON.stringify({ id, loai: 'CHU_GIAI_CHI_TIET', nguyenVan, cha: null, ...o });
