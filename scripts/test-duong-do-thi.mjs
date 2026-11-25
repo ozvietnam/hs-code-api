@@ -93,6 +93,13 @@ for (const [ten, tl] of hong) {
 // 7. Dữ kiện xuống 6 số chỉ đọc chữ khách, không đọc suy đoán của AI
 kiem('moTaKhach chỉ lấy trường khách khai', DT.moTaKhach({ tenHang: 'A', chatLieu: 'B', product: { nameVi: 'BỊA' }, imageTexts: [{ text: 'tem' }] }) === 'A. B. tem');
 kiem('nhóm chưa có cạnh g6@1 → CHUA_CO_CANH, không đoán', DT.xuong6('8481', 'van', () => ({ tieuChi6: [{ hs6: '848120' }] })).trangThai === 'CHUA_CO_CANH');
+{
+  const g = require('../lib/so-tay-gates.js');
+  const x = DT.xuong6('8536', 'Rơ le bán dẫn. Đóng cắt tải trong hệ thống điều khiển tự động', g.loadSoTay);
+  kiem('rơ le bán dẫn không ghi điện áp: cạnh còn nhiều phân nhóm → có câu hỏi điện áp', x.trangThai === 'CAN_HOI' && DT.cauHoiCuaCanh(x).some((c) => /điện áp/i.test(c)), JSON.stringify([x, DT.cauHoiCuaCanh(x)]));
+  kiem('CA NGƯỢC: chỉ thiếu tên loại / công dụng → không sinh câu hỏi', DT.cauHoiCuaCanh({ trangThai: 'CAN_HOI', ungVien: ['a', 'b'], thieu: ['tenLoai', 'congDung'] }).length === 0);
+  kiem('CA NGƯỢC: đã chốt → không hỏi', DT.cauHoiCuaCanh({ trangThai: 'CHOT', ungVien: [], thieu: ['dienAp'] }).length === 0);
+}
 // 8. Ứng viên: tới 10 nhóm ở do-thi, mức khác giữ đúng danh sách cũ
 {
   process.env.HS_TIM_TRUOC = 'on'; const a = await tt.timTruoc(HANG);
