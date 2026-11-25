@@ -4,7 +4,7 @@
  *   (a) mọi id duy nhất                          — ĐỎ nếu trùng
  *   (b) mọi kieu thuộc tập hợp lệ, không còn CHUA_XEP — ĐỎ nếu sai
  *   (c) mọi nguyenVan (bỏ khác biệt khoảng trắng) có nguyên văn trong chu-giai-chuong.json ở đúng chương gan — CẢNH BÁO
- *   (d) mọi mã 4 chữ số trong dich là nhóm có thật (khoá của chu-giai-heading.json) — CẢNH BÁO
+ *   (d) mọi mã 4 chữ số trong dich là nhóm có thật (khoá của chu-giai-heading.json) — ĐỎ nếu sai
  *   (e) LOAI_TRU của cap "chuong", vung "chu_giai" phải có "không bao gồm"/"không áp dụng"/"loại trừ" — CẢNH BÁO
  *   (f) dan/nguyenVan dính đoạn TỔNG QUÁT        — ĐỎ nếu còn dính
  * Chạy: node scripts/test-dieu-khoan-tang2.mjs  → in "N ca xanh, M ca đỏ"; exit 1 nếu có đỏ.
@@ -72,7 +72,7 @@ function canhBao(ten, danhSach) {
   canhBao('(c) nguyenVan không khớp nguyên văn trong chu-giai-chuong', loi);
 }
 
-// (d) mã 4 chữ số trong dich là nhóm có thật (cảnh báo)
+// (d) mã 4 chữ số trong dich là nhóm có thật (cổng cứng)
 {
   const nhom = new Set(Object.keys(chuGiaiHeading));
   const loi = [];
@@ -81,7 +81,7 @@ function canhBao(ten, danhSach) {
       if (/^\d{4}$/.test(ma) && !nhom.has(ma)) loi.push(`${x.id} -> ${ma}`);
     }
   }
-  canhBao('(d) mã dich 4 chữ số không phải nhóm có thật', loi);
+  ca('(d) mọi mã dich 4 chữ số là nhóm có thật', loi.length === 0, `${loi.length} mục: ${loi.slice(0, 10).join('; ')}`);
 }
 
 // (e) LOAI_TRU chương chú giải phải có cụm loại trừ (cảnh báo)
