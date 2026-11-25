@@ -20,6 +20,7 @@ kiem('cha không có', /cha "phan:I" không có/.test(loi([nut({ cha: 'phan:I' }
 kiem('dính tiêu đề chương khác', /dính tiêu đề Chương 55/.test(loi([nut({ id: 'nhom:5408:ct:1', loai: 'CHU_GIAI_CHI_TIET', lop: 'HUONG_DAN', nguyenVan: 'vải\nChương 55\nXơ sợi' })])));
 kiem('không nguyên văn', /không nguyên văn/.test(loi([nut({ nguyenVan: 'Câu này không có trong văn bản gốc.' })], { vanBan: ['Kim loại cơ bản và sản phẩm'] })));
 kiem('nguyên văn có ở MỘT trong các bản chữ là đạt', loi([nut({})], { vanBan: ['khác', 'x Kim loại cơ bản y'] }) === '');
+fs.writeFileSync(path.join(os.tmpdir(), 'mong-noi.txt'), 'gồm cao-\nlanh và cát'); kiem('dấu nối cuối dòng không tính là khác', loi([nut({ nguyenVan: 'gồm cao-lanh và cát' })], { vanBan: docBanChu(os.tmpdir(), 'mong-noi') }) === '');
 kiem('làm phẳng: bỏ số trang đầu/cuối trang, giữ số trong câu', phang('12\nnặng\n100\ngam\n13\f\n14\ntiếp') === 'nặng\n100\ngam\ntiếp');
 const tm = fs.mkdtempSync(path.join(os.tmpdir(), 'mong-')); fs.writeFileSync(path.join(tm, 'cgct-hs2022.txt'), 'a'); fs.writeFileSync(path.join(tm, 'cgct-hs2022-layout.txt'), 'b');
 kiem('làm phẳng: số trang kiểu "— 541 —"', phang('a với\n\n  — 541 —\n\f b') === 'a với\n b');

@@ -27,9 +27,11 @@ export function phang(tho) {
 export function docBanChu(thuMuc, kho) {
   const rieng = path.join(thuMuc, `${kho}.txt`);
   const ds = fs.existsSync(rieng) ? [rieng] : KHO_CGCT.has(kho) && fs.existsSync(thuMuc) ? fs.readdirSync(thuMuc).filter((f) => /^cgct-hs2022.*\.txt$/.test(f)).map((f) => path.join(thuMuc, f)) : [];
-  return ds.map((f) => gon(phang(fs.readFileSync(f, 'utf8'))));
+  return ds.map((f) => chuanSo(phang(fs.readFileSync(f, 'utf8'))));
 }
 const gon = (s) => String(s).normalize('NFC').replace(/\s+/g, ' ').trim();
+// So nguyên văn: khoảng trắng quanh dấu nối không tính (bản in ngắt dòng "cao-\nlanh"); mọi chữ khác phải khớp.
+const chuanSo = (s) => gon(s).replace(/ ?([-–—/]) ?/g, '$1');
 
 /** @returns {{loi: string[], canhBao: string[], soNut: number}} */
 export function kiemKho(ten, dong, { vanBan = null, kyVong = null } = {}) {
@@ -51,8 +53,8 @@ export function kiemKho(ten, dong, { vanBan = null, kyVong = null } = {}) {
     if (!x.nguon?.vanBan || !x.nguon?.ban) loi.push(`${o}: thiếu nguon.vanBan / nguon.ban`);
     if (!('trang' in (x.nguon || {}))) loi.push(`${o}: thiếu nguon.trang (không biết thì null)`);
     if (!x.hieuLuc || !('tu' in x.hieuLuc) || !('den' in x.hieuLuc)) loi.push(`${o}: thiếu hieuLuc.tu / den`);
-    if (vanBan && vanBan.length && !vanBan.some((b) => b.includes(gon(v)))) {
-      const cau = gon(v).split(/(?<=[.;:])\s+/).filter((c) => c.length >= 12); const truot = cau.filter((c) => !vanBan.some((b) => b.includes(c)));
+    if (vanBan && vanBan.length && !vanBan.some((b) => b.includes(chuanSo(v)))) {
+      const cau = chuanSo(v).split(/(?<=[.;:])\s+/).filter((c) => c.length >= 12); const truot = cau.filter((c) => !vanBan.some((b) => b.includes(c)));
       if (truot.length) loi.push(`${o}: không nguyên văn — "${truot[0].slice(0, 80)}"`);
     }
   });
