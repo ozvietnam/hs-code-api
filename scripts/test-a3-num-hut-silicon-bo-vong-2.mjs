@@ -169,34 +169,33 @@ for (const [moTa, ma] of [
 
 // ── 3. Hàm thuần tienLeOzDanDau & tinHieuTraiNhom (lib/chot-som-co-kiem.js) ──
 {
-  // 3a. Khử trùng cùng bản ghi (hs + name) xuất hiện ở nhiều cụm searchVi
+  // 3a. Giữ nguyên hành vi tienLeOzDanDau của origin/main (không khử trùng hs+name để không làm mất cờ review.needed của ca ổ cắm 8532/8536)
   const ozTrungBanGhi = [
     { q: 'núm hút silicon', hs: '84439930', name: 'Núm hút giấy', oz: 2, cov: 100 },
     { q: 'núm hút vp16ps silicon', hs: '84439930', name: 'Núm hút giấy', oz: 2, cov: 100 },
     { q: 'núm hút chân không', hs: '40169959', name: 'Núm hút chân không', oz: 2, cov: 67 },
   ];
+  const leadGoc = cs.tienLeOzDanDau(ozTrungBanGhi);
   check(
-    '[3a thuận] cùng 1 bản ghi 84439930 "Núm hút giấy" (oz=2) lặp ở 2 cụm searchVi → khử trùng còn 2 (<3) → null',
-    cs.tienLeOzDanDau(ozTrungBanGhi) === null,
-    cs.tienLeOzDanDau(ozTrungBanGhi),
+    '[3a giữ nguyên tienLeOzDanDau] tienLeOzDanDau giữ nguyên cách cộng trọng số của origin/main (nhom 8443, soToKhai 4)',
+    leadGoc?.nhom === '8443' && leadGoc?.soToKhai === 4,
+    leadGoc,
   );
 
-  // Ca ngược 3a: 2 bản ghi KHÁC tên cùng nhóm 8443 (2 + 2 = 4 ≥ 3) → vẫn đạt ngưỡng
-  const ozHaiBanGhiKhacTen = [
+  // Ca ngược 3a: dưới ngưỡng 3 tờ khai → null
+  const ozDuoiNguong = [
     { q: 'q1', hs: '84439930', name: 'Núm hút giấy máy in offset', oz: 2, cov: 100 },
-    { q: 'q2', hs: '84439930', name: 'Quả lô kéo giấy máy in', oz: 2, cov: 100 },
   ];
-  const leadKhacTen = cs.tienLeOzDanDau(ozHaiBanGhiKhacTen);
   check(
-    '[3a ca ngược] 2 bản ghi khác tên cùng nhóm 8443 (2+2=4 tờ khai) → vẫn trả nhom 8443, soToKhai 4',
-    leadKhacTen?.nhom === '8443' && leadKhacTen?.soToKhai === 4,
-    leadKhacTen,
+    '[3a ca ngược] tổng tờ khai khớp ≥75% dưới 3 (oz=2) → tienLeOzDanDau trả null',
+    cs.tienLeOzDanDau(ozDuoiNguong) === null,
+    cs.tienLeOzDanDau(ozDuoiNguong),
   );
 
   // 3b. Lọc avoidPrefixes của tradeHints ở mục tiền lệ Oz trong tinHieuTraiNhom
   const gatheredAvoid8443 = {
     headings: ['4016', '3926'],
-    ozPrecedents: ozHaiBanGhiKhacTen,
+    ozPrecedents: ozTrungBanGhi,
     mic: null,
     tradeHints: {
       entryIds: ['giac-hut-chan-khong-vacuum-pad'],
