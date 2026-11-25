@@ -14,9 +14,9 @@ Tài liệu hướng dẫn **QT (quản trị server)** chạy công cụ đo Gi
    ```
 2. Kiểm tra `SOURCE_COMMIT` / `HS_COMMIT` và chuỗi mô hình đang chạy qua `/api/health`:
    ```bash
-   curl -sS http://127.0.0.1:3000/api/health | jq '{commit, llm: .llm}'
+   curl -sS http://127.0.0.1:3000/api/health | jq '{commit, llm: .checks.llm}'
    ```
-   - Đảm bảo `llm.private.ok == true` (có `minimax` hoặc khoá không huấn luyện hợp lệ).
+   - Đảm bảo `llm.private.ok == true` trong nhánh `checks.llm` (có `minimax` hoặc khoá không huấn luyện hợp lệ).
    - Nếu Gemini trả phí đang lỗi `402` hoặc bị ngắt mạch, xử lý theo [`docs/viec/yeu-cau-2026-11-16-tat-gemini-402-va-kho-dap-an.md`](../viec/yeu-cau-2026-11-16-tat-gemini-402-va-kho-dap-an.md) trước khi đo để tránh nhiễu độ trễ.
 
 ---

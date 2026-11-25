@@ -25,6 +25,7 @@ import {
   danhGiaDieuKienGd3,
   dinhDangBaoCaoMarkdown,
   phanTichThamSo,
+  taoTuyChonLlmBaBuoc,
   tinhChiSoBo,
 } from './do-do-thi-gd3.mjs';
 
@@ -193,6 +194,21 @@ try {
     van52Bat: { van52: { dungNhom8481: 5, soLuot: 5 }, doTreMs: { medianMs: 25000, p95Ms: 40000 } },
   });
   kiem('danhGiaDieuKienGd3 trả datTatCa=true khi --llm that đạt đủ 4 ngưỡng', dgThat.datTatCa === true, dgThat);
+
+  // Kiểm tra tuỳ chọn model MiniMax cho nhánh ba-buoc khớp với lib/engine-loop.js
+  const prevLoopModel = process.env.LOOP_MODEL;
+  delete process.env.LOOP_MODEL;
+  const optMacDinh = taoTuyChonLlmBaBuoc('luot-mot', 85000);
+  process.env.LOOP_MODEL = 'MiniMax-M3.1';
+  const optTuyChinh = taoTuyChonLlmBaBuoc('luot-hai', 85000);
+  if (prevLoopModel === undefined) delete process.env.LOOP_MODEL;
+  else process.env.LOOP_MODEL = prevLoopModel;
+  kiem(
+    'taoTuyChonLlmBaBuoc truyền minimax.model khớp LOOP_MODEL || MiniMax-M3',
+    optMacDinh.minimax?.model === 'MiniMax-M3' && optTuyChinh.minimax?.model === 'MiniMax-M3.1'
+      && optMacDinh.maxTokens === 1200 && optTuyChinh.maxTokens === 1500,
+    { optMacDinh, optTuyChinh },
+  );
 
   // ── 4. Bộ tuỳ chọn --bo <tệp jsonl> ──────────────────────────────────────────────────────
   const boJson = path.join(tmpDir, 'bo-out.json');

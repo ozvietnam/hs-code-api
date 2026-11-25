@@ -724,6 +724,18 @@ async function chayBoQuaClassifyLoop({ caList, cheDo, optsRun, isOzPrivate, wrap
   return banGhis;
 }
 
+/** Tham số gọi LLM cho bước `ba-buoc`, thống nhất model MiniMax với `lib/engine-loop.js`. */
+export function taoTuyChonLlmBaBuoc(ten, nganSachMs = 85000) {
+  return {
+    step: ten,
+    minimax: { model: process.env.LOOP_MODEL || 'MiniMax-M3' },
+    tier: 'standard',
+    maxTokens: ten === 'luot-mot' ? 1200 : 1500,
+    timeoutMs: Math.min(45000, nganSachMs),
+    temperature: 0.1,
+  };
+}
+
 /** Chạy một bộ mẫu qua `lib/do-thi/ba-buoc.js` (chọn nhóm 4 số ba bước GĐ3). */
 async function chayBoQuaBaBuoc({ caList, optsRun, isOzPrivate, locOzFn, llmCaller }) {
   const banGhis = [];
@@ -735,13 +747,7 @@ async function chayBoQuaBaBuoc({ caList, optsRun, isOzPrivate, locOzFn, llmCalle
 
     const calls = [];
     const goiLLM = async (ten, yeuCau) => {
-      const execLlm = () => llmCaller(SYS_BA_BUOC, yeuCau, {
-        step: ten,
-        tier: 'standard',
-        maxTokens: ten === 'luot-mot' ? 1200 : 1500,
-        timeoutMs: Math.min(45000, optsRun.nganSachMs),
-        temperature: 0.1,
-      });
+      const execLlm = () => llmCaller(SYS_BA_BUOC, yeuCau, taoTuyChonLlmBaBuoc(ten, optsRun.nganSachMs));
       const res = isOzPrivate ? await withPrivateData(execLlm) : await withHangHoa(execLlm);
       calls.push({
         step: ten,
