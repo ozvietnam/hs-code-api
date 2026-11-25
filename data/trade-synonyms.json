@@ -4712,7 +4712,69 @@
    "gir": "GIR 1 + GIR 6",
    "basis": "RULE_TABLE",
    "sourceVi": "Chú giải nhóm 90.30 Phần (B) (dụng cụ đo đại lượng điện: dòng điện, điện áp) và Chú giải nhóm 85.36 Phần (I)(C) / (II) (rơ le điện áp, thiết bị bảo vệ mạch điện). OZV-2089: thực địa «đồng hồ đo áp, đo dòng, chống mất pha , 3pha -380v» search thô kéo 91101100 / 90262090. Không đặt term trần «đồng hồ đo áp» trong trade-synonyms vì hs-aliases gắn cụm đó → 9026 (đo áp suất); phân biệt bằng «đồng hồ đo điện áp» / «đồng hồ đo áp đo dòng» + excludeIfAny «áp suất»."
+  },
+  {
+   "id": "thiet-bi-ngam-qua-cua",
+   "titleVi": "Thiết bị ngắm qua cửa / mắt thần cửa / ống nhòm gắn cửa (door viewer)",
+   "terms": [
+    "ống nhòm gắn cửa",
+    "ống nhòm cửa",
+    "ống nhòm gắn cửa gỗ",
+    "mắt thần cửa",
+    "mắt thần gắn cửa",
+    "thiết bị ngắm qua cửa",
+    "ngắm qua cửa",
+    "door viewer",
+    "door peephole",
+    "peephole door"
+   ],
+   "excludeIfAny": [
+    "ống nhòm hai mắt",
+    "binoculars",
+    "kính thiên văn",
+    "telescope",
+    "kính tiềm vọng",
+    "kính ngắm súng",
+    "vũ khí"
+   ],
+   "excludeReasonVi": "Ống nhòm hai mắt / kính thiên văn cầm tay thuộc nhóm 90.05; kính ngắm vũ khí / kính tiềm vọng thuộc 9013.10 — khác thiết bị ngắm qua cửa (mắt thần) lắp trên cánh cửa.",
+   "candidates": [
+    {
+     "hs": "90138090",
+     "whenVi": "Thiết bị ngắm qua cửa (mắt thần / ống nhòm gắn cửa) — Chú giải nhóm 90.05 mục (d) loại trừ sang nhóm 90.13; trong 9013 không khớp kính ngắm vũ khí (9013.10), laser (9013.20) hay thiết bị quang sửa lỗi mạch in (9013.80.10) → dòng loại khác 9013.80.90",
+     "confidence": "high"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "9005",
+     "whyVi": "Chú giải nhóm 90.05 mục (d): thiết bị ngắm qua cửa bị loại trừ khỏi 90.05, phân loại nhóm 90.13."
+    },
+    {
+     "prefix": "6403",
+     "whyVi": "6403 là giày dép — từ «cửa»/«gỗ» làm search kéo nhầm khi thiếu từ điển (đo live 25/11 timTruoc có 6403)."
+    },
+    {
+     "prefix": "7610",
+     "whyVi": "7610 là kết cấu nhôm xây dựng (khung cửa sổ/cửa đi) — khác dụng cụ quang học gắn cửa."
+    },
+    {
+     "prefix": "8302",
+     "whyVi": "8302 là phụ kiện kim loại gắn cửa (bản lề, tay nắm) — mắt thần cửa là dụng cụ quang học, không phải phụ kiện kim loại thông thường."
+    },
+    {
+     "prefix": "7306",
+     "whyVi": "7306 là ống thép — nhiễu search khi câu có «ống»."
+    }
+   ],
+   "askVi": [
+    "Có phải mắt thần / thiết bị ngắm lắp trên cánh cửa để nhìn ra ngoài (không phải ống nhòm cầm tay)?"
+   ],
+   "chotSom": true,
+   "gir": "GIR 1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Chú giải chi tiết nhóm 90.05 mục (d) «Thiết bị ngắm qua cửa (nhóm 90.13)» — đã có trong data/so-tay/9005.json (NGUOI_DUYET). Biểu thuế: 90138090 «Loại khác» trong 9013.80. Thực địa 25/11 (OZV-2247): câu «ống nhòm gắn cửa gỗ» search thô kéo 6403/7610/7306; 2/3 lượt dừng NEED_FACTS 6 số, 1 lượt chốt 90138090. Thêm từ điển để ổn định nhóm 9013 và chặn 9005 theo chú giải."
   }
  ],
- "updatedAt": "2026-11-24"
+ "updatedAt": "2026-11-25T05:47:07Z"
 }

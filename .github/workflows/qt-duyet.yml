@@ -1,0 +1,40 @@
+name: Khoa gop - QT duyet
+
+# Khoá gộp cho PR đụng mã chạy đường khách — xem .github/qt-duyet/qt-duyet.mjs.
+# AN TOÀN: pull_request_target + issue_comment có quyền ghi trạng thái, nên workflow CHỈ checkout `main`,
+# KHÔNG BAO GIỜ checkout hay chạy mã của PR, và không đưa nội dung PR / bình luận vào dòng lệnh.
+on:
+  pull_request_target:
+    types: [opened, reopened, synchronize, ready_for_review, edited]
+  issue_comment:
+    types: [created, edited, deleted]
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: read
+  issues: read
+  statuses: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.event.issue.number || github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  khoa:
+    if: ${{ github.event_name != 'issue_comment' || github.event.issue.pull_request }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node .github/qt-duyet/qt-duyet.mjs
+        env:
+          GH_TOKEN: ${{ github.token }}
