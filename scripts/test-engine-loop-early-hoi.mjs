@@ -333,7 +333,7 @@ for (const decision of ['CHOT', 'HOI']) {
     caVan.out.soTay?.outcome === 'DA_TRA_KHONG_NGHI',
     JSON.stringify(caVan.out.soTay));
 
-  // Kiểm riêng đường sổ tay phân nhóm 6 số + đường tiền lệ TB-TCHQ 851/852 khi không có tradeHints:
+  // Kiểm riêng đường tiền lệ TB-TCHQ 851/852 khi không có tradeHints (tiêu đề phân nhóm 6 số + TB-TCHQ cùng trỏ 848120):
   const kpnSoTay = kiemPhanNhomEarlyHoi({
     ee: { hs: '848180' },
     r1: R1_VAN_52,
@@ -342,9 +342,26 @@ for (const decision of ['CHOT', 'HOI']) {
     product: R1_VAN_52.product,
     productText: VAN_52.tenHang,
   });
-  check('OZV-1707 kiemPhanNhomEarlyHoi (không tradeHints): sổ tay / tiêu đề phân nhóm 6 số đổi 848180 → 848120',
-    kpnSoTay.ok === true && kpnSoTay.hs6 === '848120' && kpnSoTay.nguon === 'so-tay-phan-nhom-6',
+  check('OZV-1707 kiemPhanNhomEarlyHoi (không tradeHints): tiền lệ TB-TCHQ 851/852 + tiêu đề phân nhóm 6 số đổi 848180 → 848120',
+    kpnSoTay.ok === true && kpnSoTay.hs6 === '848120' && kpnSoTay.nguon === 'tien-le-tb-tchq',
     JSON.stringify(kpnSoTay));
+
+  // OZV-2242 (#1870): khớp chữ tên phân nhóm anh em đơn độc (không có tiền lệ/bảng/từ điển xác nhận phân nhóm anh em đó)
+  // → không tự ghi đè lựa chọn vòng 1, trả ok=false (SO_TAY_PHAN_NHOM_6_NGHI) để leo vòng 2 LLM:
+  const kpnDonDoc = kiemPhanNhomEarlyHoi({
+    ee: { hs: '320419' },
+    r1: {
+      product: { nameVi: 'Thuốc màu hữu cơ dạng lỏng', purpose: 'tạo màu trong dung môi', material: 'hợp chất màu hữu cơ tổng hợp tan trong dung môi' },
+      hypotheses: [{ chapter: '32', heading4: '3204', subheading6: '320419', confidence: 90 }],
+    },
+    raw: { tenHang: 'Thuốc màu hữu cơ dạng lỏng MCF18, dùng tạo màu cho dung môi' },
+    gathered: { headings: ['3204'], tradeHints: null, ozPrecedents: [] },
+    product: { nameVi: 'Thuốc màu hữu cơ dạng lỏng', form: 'hoàn chỉnh' },
+    productText: 'Thuốc màu hữu cơ dạng lỏng MCF18, dùng tạo màu cho dung môi',
+  });
+  check('OZV-2242 (#1870) kiemPhanNhomEarlyHoi: khớp chữ tên đơn độc (320417 khớp "thuốc màu" khi R1 chọn 320419) → ok=false (SO_TAY_PHAN_NHOM_6_NGHI) để leo vòng 2, không tự đổi sang 320417',
+    kpnDonDoc.ok === false && kpnDonDoc.lyDo === 'SO_TAY_PHAN_NHOM_6_NGHI',
+    JSON.stringify(kpnDonDoc));
 
   const tb852 = (precedentsData['84812090'] || []).find((e) => /^852\b/.test(String(e.tbTchqNumber || '')));
   const g852 = tb852 ? doGiongTenHang({ tenHang: VAN_52.tenHang, moTa: VAN_52.tenHang }, tb852.productName) : null;

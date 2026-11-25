@@ -398,8 +398,6 @@ const MIEN_TRU_MO_COI = {
     'ĐỎ ngưỡng thời gian: wall < 2000 ms, đo 2648 ms trên Windows (6 pass / 1 fail). Không nới ngưỡng — QT quyết (#1850).',
   'test-do-do-thi-gd2.mjs':
     'ĐỎ ngân sách thời gian nội bộ subMs < 30000, đo 75405 ms cho 2 lượt (13 pass / 1 fail). Nhãn "chạy nhanh < 15s" trong tệp không đúng trên máy đo. Không nới ngưỡng — QT quyết.',
-  'test-engine-loop-ma-du-kien.mjs':
-    'ĐỎ 5 ca hành vi OZV-1388: mong results[0] = 32041900 duKien=true, nhận 320417 NEED_FACTS. Đo trên main cũ a9118a5c cũng 7 pass / 5 fail ⇒ hỏng sẵn, không do engine mới. Không sửa lib/engine-loop.js (QT cấm).',
   'test-ozv-590-khong-ra-ma.mjs':
     'ĐỎ 2 ca replay 50 ca: #30 (82089000) và #45 (87141090) mong khongRaMa=true nhưng nhận mã. Đo trên main cũ a9118a5c cũng 26 pass / 2 fail, đúng hai ca đó ⇒ hỏng sẵn. Không sửa nhãn/ngưỡng — QT quyết (#1850).',
 };
