@@ -157,7 +157,7 @@ async function runAll() {
     assert.ok(res.soLuotLLM >= 6, `Phải >= 6 lượt LLM, nhận ${res.soLuotLLM}`);
     assert.ok(res.soKyTuDaDoc > 1000, 'Phải đo soKyTuDaDoc thực');
     assert.ok(nhietDoSeen.every((t) => t === 0), 'Mọi lượt LLM phải đặt nhietDo = 0');
-    assert.ok(res.thieuKho.includes(KHO_THIEU_MAC_DINH.NGHIA_CANH));
+    assert.equal(res.thieuKho.includes(KHO_THIEU_MAC_DINH.NGHIA_CANH), false); //  M-33 đã ở main
     assert.ok(res.thieuKho.includes(KHO_THIEU_MAC_DINH.TOM_TAT));
     assert.ok(res.thieuKho.includes(KHO_THIEU_MAC_DINH.TIM_NGHIA));
     assert.equal(kiemSoVet(res.so).dat, true);
@@ -591,7 +591,7 @@ async function runAll() {
     assert.equal(sawTachVoi, true);
     assert.equal(res.thieuKho.includes(KHO_THIEU_MAC_DINH.TOM_TAT), false);
     assert.equal(res.thieuKho.includes(KHO_THIEU_MAC_DINH.TIM_NGHIA), false);
-    assert.equal(res.thieuKho.includes(KHO_THIEU_MAC_DINH.NGHIA_CANH), true);
+    assert.equal(res.thieuKho.includes(KHO_THIEU_MAC_DINH.NGHIA_CANH), false);
     assert.equal(kiemSoVet(res.so).dat, true);
     return res;
   });
@@ -1324,7 +1324,7 @@ async function runAll() {
       kho: { timLuatFn: () => ({ cuaVao: [{ nut: 'bieu:7610', cauId: 'bieu:7610#1', cau: cauGoc('bieu:7610#1'), chieu: 'NHAC', kho: 'bieu', lop: 'LUAT' }] }) },
       goiLLM: async (buoc, goi) => {
         const kq = await goc(buoc, goi);
-        if (buoc === 'KIEM') return { ...kq, docThem: ['bieu:7308'] };
+        if (buoc === 'KIEM') return /73\.08/.test(goi.prompt) ? { ...kq, docThem: ['bieu:7308'] } : kq;
         if (buoc === 'DOC_THEM') return { cauDeCap: [{ cauId: 'nhom:7308:ct:1#1', y: 'áp dụng' }] };
         return kq;
       },
@@ -1335,6 +1335,22 @@ async function runAll() {
     assert.deepEqual(res.so.ungVienSauQt1, ['7610']);
     assert.deepEqual(res.so.cacBuoc.find((b) => b.loai === 'KIEM').quyetDinh.docThem, ['bieu:7308']);
     assert.equal(kiemSoVet(res.so).dat, true);
+  });
+
+  await test('25. Tầng 4 số không hỏi câu chú giải phân nhóm; Chương 98 không vào LOC', async () => {
+    const { layCanhKiemBatBuoc, napNguonCau } = require('../lib/so-vet');
+    const { phaiDoc } = require('../lib/do-thi/phai-doc');
+    const ng = napNguonCau();
+    const bat = (id) => layCanhKiemBatBuoc(phaiDoc(id, { dayDu: true }), ng).canh;
+    assert.ok(bat('bieu:8481').length > 0);
+    assert.equal(bat('bieu:8481').filter((c) => /:cgpn/.test(c.tuNut) || /^bieu:8481\d/.test(c.nutDich)).length, 0);
+    let h4s = [];
+    await chayDocLuat({
+      moTa: 'Van đồng',
+      kho: { timLuatFn: () => ({ cuaVao: ['bieu:8481', 'bieu:9818'].map((nut) => ({ nut, cauId: `${nut}#1`, cau: cauGoc(`${nut}#1`) || 'van', chieu: 'NHAC', kieuKhop: 'CUM_CHUAN' })) }) },
+      goiLLM: async (buoc, goi) => { if (buoc === 'VAO_CUA') return { banChat: [{ y: 'x', chuKhach: 'Van' }], cumTim: ['van'] }; h4s = goi.duLieu.ungVien.map((u) => u.h4); throw new Error('dung'); },
+    }).catch(() => {});
+    assert.deepEqual(h4s, ['8481']);
   });
 
   await test('24. Cụm có dấu không nhận câu chỉ khớp khi bỏ dấu (nhôm ~ nhóm)', async () => {
