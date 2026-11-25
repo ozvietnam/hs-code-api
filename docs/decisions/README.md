@@ -12,3 +12,4 @@ Mỗi quyết định thật (chọn kiến trúc, bỏ / hoãn tính năng, đ�
 
 Quyết định cấp công ty (văn phòng OZ) nằm ở Gitea `ozvietnam/oz-infra-codex`, không chép về đây.
 - [ADR-0004](0004-quy-trinh-phan-loai-chuan-6-quy-tac.md): quy trình phân loại chuẩn theo 6 Quy tắc (luật cao nhất, CEO duyệt 22/11/2026)
+- [0005](0005-repo-la-ban-do-luat-llm-la-nguoi-doc.md) — Repo là bản đồ luật và trình tự đọc; LLM là người đọc và phán đoán (CEO 25/11/2026)
