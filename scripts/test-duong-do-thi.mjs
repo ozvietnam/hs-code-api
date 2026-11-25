@@ -17,6 +17,7 @@ const { classifyLoop } = require('../lib/engine-loop.js');
 const DT = require('../lib/do-thi/duong-do-thi.js');
 const tt = require('../lib/tim-truoc.js');
 const { goiPhanBiet } = require('../lib/do-thi/goi-phan-biet.js');
+const SS = require('../lib/do-thi/song-sinh-vat-lieu.js');
 
 const HANG = { tenHang: 'Van điện từ khí nén 5/2, cuộn coil 24VDC, thân nhôm' };
 const R1_CU = { product: { nameVi: 'Van điện từ khí nén 5/2', purpose: 'điều khiển khí nén', material: 'nhôm', form: 'hoàn chỉnh', evidence: {} }, hypotheses: [{ chapter: '84', heading4: '8481', subheading6: '848120', why: 'van', confidence: 80 }], verify: { searchVi: ['van điện từ'], codes8: ['84812090'], unknowns: [] } };
@@ -34,7 +35,7 @@ function gia(traLoi) {
   };
   return buoc;
 }
-const idTrongGoi = (u, nhom) => [...u.matchAll(/\[([^\]]+)\] \((\d{4})-(\d{4})\)/g)].filter((m) => m[2] === nhom || m[3] === nhom).map((m) => m[1])[0];
+const idTrongGoi = (u, nhom) => [...u.matchAll(/\[([^\]]+)\] \((\d{4})-(\d{4})\)/g)].filter((m) => (m[2] === nhom || m[3] === nhom) && m[2] !== m[3]).map((m) => m[1])[0];
 const luotMotDung = (u) => ({ duKien: [{ khoa: 'ten', giaTri: 'van', trichKhach: 'van điện từ khí nén' }], nhom: [...u.split('ỨNG VIÊN:')[1].matchAll(/^- (\d{4})/gm)].map((m) => m[1]).slice(0, 3), lyDoNgoai: '' });
 const luotHaiDung = (u) => ({ nhom: '8481', canCu: [idTrongGoi(u, '8481')].filter(Boolean), thieu: [], lyDo: 'van điều khiển dòng khí' });
 const DAY_DU = { luot_mot: luotMotDung, luot_hai: luotHaiDung, understand: R1_CU, gir: R2 };
@@ -85,10 +86,29 @@ for (const [ten, tl] of hong) {
   const cd = (r) => ({ chotDong8: () => r, dong8DuyNhat: () => null, productText: 'van' });
   kiem('dapAn8: chotDong8 CHOT → có đáp án kèm căn cứ', DT.dapAn8({ kq, ...cd({ checked: true, ketQua: 'CHOT', hs: '84812090' }) })?.hs === '84812090');
   for (const r of [{ checked: true, ketQua: 'THIEU_SO_LIEU' }, { checked: true, ketQua: 'TRANH_CAP' }, { checked: true, ketQua: 'LOAI_KHAC', hs: '84812090' }, { checked: false }, null]) kiem(`CA NGƯỢC dapAn8: chotDong8=${r?.ketQua || r} → null`, DT.dapAn8({ kq, ...cd(r) }) === null);
+  kiem('CA NGƯỢC dapAn8: chỉ trích tên nhóm → null', DT.dapAn8({ kq: { ...kq, luotHai: { ...kq.luotHai, canCu: ['TEN:8481'] } }, ...cd({ checked: true, ketQua: 'CHOT', hs: '84812090' }) }) === null);
   kiem('CA NGƯỢC dapAn8: cạnh 6 số chưa chốt → null', DT.dapAn8({ kq: { ...kq, xuong6: { trangThai: 'CAN_HOI', chot: null } }, ...cd({ checked: true, ketQua: 'CHOT', hs: '84812090' }) }) === null);
   kiem('CA NGƯỢC dapAn8: còn thiếu dữ kiện → null', DT.dapAn8({ kq: { ...kq, luotHai: { ...kq.luotHai, thieu: ['a'] } }, ...cd({ checked: true, ketQua: 'CHOT', hs: '84812090' }) }) === null);
 }
 // 7. Dữ kiện xuống 6 số chỉ đọc chữ khách, không đọc suy đoán của AI
 kiem('moTaKhach chỉ lấy trường khách khai', DT.moTaKhach({ tenHang: 'A', chatLieu: 'B', product: { nameVi: 'BỊA' }, imageTexts: [{ text: 'tem' }] }) === 'A. B. tem');
 kiem('nhóm chưa có cạnh g6@1 → CHUA_CO_CANH, không đoán', DT.xuong6('8481', 'van', () => ({ tieuChi6: [{ hs6: '848120' }] })).trangThai === 'CHUA_CO_CANH');
+// 8. Ứng viên: tới 10 nhóm ở do-thi, mức khác giữ đúng danh sách cũ
+{
+  process.env.HS_TIM_TRUOC = 'on'; const a = await tt.timTruoc(HANG);
+  process.env.HS_TIM_TRUOC = 'do-thi'; const b = await tt.timTruoc(HANG);
+  kiem('do-thi: khối vòng 1 và tomTat.nhom giống hệt on', a.khoi === b.khoi && JSON.stringify(a.tomTat.nhom) === JSON.stringify(b.tomTat.nhom));
+  kiem('do-thi: danh sách rộng giữ nguyên thứ tự 5 nhóm đầu, dài hơn, ≤ 10', b.mucRong.length > a.mucRong.length && b.mucRong.length <= 10 && a.mucRong.every((m, i) => b.mucRong[i].nhom === m.nhom), `${a.mucRong.length} ${b.mucRong.length}`);
+}
+// 9. Cùng vật, khác vật liệu
+kiem('bu lông nhôm: thêm 7616 (biểu viết liền "bulông")', SS.nhomSongSinh(['7318', '9603'], { tenHang: 'Bu lông nhôm M6 x 20' }).some((x) => x.nhom === '7616'));
+kiem('bu lông đồng: thêm 7415', SS.nhomSongSinh(['7318'], { tenHang: 'Bu lông đồng M8' }).some((x) => x.nhom === '7415'));
+kiem('CA NGƯỢC bu lông inox: đã có 7318 đúng vật liệu → không thêm', SS.nhomSongSinh(['7318'], { tenHang: 'Bu lông inox 304 M8' }).length === 0);
+kiem('CA NGƯỢC không nêu vật liệu → không thêm', SS.nhomSongSinh(['7318'], { tenHang: 'Bu lông M6' }).length === 0);
+kiem('CA NGƯỢC chương đọc từ tên chương: "kim loại" chung không trỏ chương nào', !SS.chuongTheoVatLieu().has('kim loại') && SS.chuongTheoVatLieu().get('nhôm')?.join() === '76');
+// 10. Gói lượt hai: id ngắn, map về id gốc, cặp không có cạnh vẫn có tên nhóm
+{
+  const x = DT.goiChoLuotHai(['7318', '9603'], { tran: 7000 });
+  kiem('gói: id ngắn K1.., có câu tên nhóm nguyên văn, map về id gốc', x.gon.muc.length >= 2 && x.gon.muc.every((m) => /^K\d+$/.test(m.id)) && x.gon.muc.every((m) => x.goc.muc.some((g) => g.id === x.maGoc.get(m.id))) && !/C\d+:\d{4}>/.test(x.gon.vanBan));
+}
 xong();
