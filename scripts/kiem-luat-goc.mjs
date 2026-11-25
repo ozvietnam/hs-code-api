@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 // scripts/kiem-luat-goc.mjs — cổng máy cho data/luat-goc/*.jsonl (khuôn nut-luat@1, docs/mong/khuon-nut-luat.md). Tất định, không mạng, không AI.
 //   node scripts/kiem-luat-goc.mjs [kho…]            không nêu kho: mọi kho đang có
-//   LUAT_GOC_TXT=<thư mục>                            có <kho>.txt (chữ rút từ PDF) thì đối chiếu nguyên văn từng câu
+//   LUAT_GOC_TXT=<thư mục>    đối chiếu nguyên văn từng câu với <kho>.txt, hoặc (kho lấy từ PDF chú giải chi tiết) mọi cgct-hs2022*.txt.
+//                             Đặt biến mà không có bản chữ nào cho kho ⇒ ĐỎ, không âm thầm bỏ qua. Không đặt ⇒ dòng kết quả ghi CHƯA ĐỐI CHIẾU.
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -17,6 +18,17 @@ export const NGU_PHAP = new RegExp([
   `^chuong:\\d{2}(?::(?:cg|cgpn|cgbs)${D}|:kq:\\d+)?$`,
   `^nhom:\\d{4}:ct:\\d+$`, `^pn:\\d{6}:ct:\\d+$`, `^sen:\\d{4,8}:\\d+$`, `^wco:\\d{6}:\\d+$`, `^bieu:\\d{2,8}$`, `^tb:[\\w.-]+:\\d{4,8}$`,
 ].join('|'));
+const KHO_CGCT = new Set(['phan', 'chuong', 'nhom', 'phan-nhom']);
+/** Làm phẳng bản chữ: bỏ dòng chỉ có số trang ở đầu / cuối trang, nối dòng. Không bỏ chữ nào khác. */
+export function phang(tho) {
+  return String(tho).split('\f').map((t) => { const d = t.split('\n'); const rong = (x) => !x.trim() || /^\s*\d{1,4}\s*$/.test(x); while (d.length && rong(d[0])) d.shift(); while (d.length && rong(d[d.length - 1])) d.pop(); return d.join('\n'); }).join('\n');
+}
+/** Các bản chữ để đối chiếu một kho; [] khi không có. */
+export function docBanChu(thuMuc, kho) {
+  const rieng = path.join(thuMuc, `${kho}.txt`);
+  const ds = fs.existsSync(rieng) ? [rieng] : KHO_CGCT.has(kho) && fs.existsSync(thuMuc) ? fs.readdirSync(thuMuc).filter((f) => /^cgct-hs2022.*\.txt$/.test(f)).map((f) => path.join(thuMuc, f)) : [];
+  return ds.map((f) => gon(phang(fs.readFileSync(f, 'utf8'))));
+}
 const gon = (s) => String(s).normalize('NFC').replace(/\s+/g, ' ').trim();
 
 /** @returns {{loi: string[], canhBao: string[], soNut: number}} */
@@ -39,8 +51,8 @@ export function kiemKho(ten, dong, { vanBan = null, kyVong = null } = {}) {
     if (!x.nguon?.vanBan || !x.nguon?.ban) loi.push(`${o}: thiếu nguon.vanBan / nguon.ban`);
     if (!('trang' in (x.nguon || {}))) loi.push(`${o}: thiếu nguon.trang (không biết thì null)`);
     if (!x.hieuLuc || !('tu' in x.hieuLuc) || !('den' in x.hieuLuc)) loi.push(`${o}: thiếu hieuLuc.tu / den`);
-    if (vanBan && !vanBan.includes(gon(v))) {
-      const cau = gon(v).split(/(?<=[.;:])\s+/).filter((c) => c.length >= 12); const truot = cau.filter((c) => !vanBan.includes(c));
+    if (vanBan && vanBan.length && !vanBan.some((b) => b.includes(gon(v)))) {
+      const cau = gon(v).split(/(?<=[.;:])\s+/).filter((c) => c.length >= 12); const truot = cau.filter((c) => !vanBan.some((b) => b.includes(c)));
       if (truot.length) loi.push(`${o}: không nguyên văn — "${truot[0].slice(0, 80)}"`);
     }
   });
@@ -56,9 +68,10 @@ function main() {
   for (const k of kho) {
     const f = path.join(THU_MUC, `${k}.jsonl`);
     if (!fs.existsSync(f)) { console.log(`FAIL ${k}: chưa có tệp`); do_ += 1; continue; }
-    const t = process.env.LUAT_GOC_TXT && path.join(process.env.LUAT_GOC_TXT, `${k}.txt`);
-    const r = kiemKho(k, fs.readFileSync(f, 'utf8').split('\n').filter((x) => x.trim()), { vanBan: t && fs.existsSync(t) ? gon(fs.readFileSync(t, 'utf8')) : null, kyVong: tatKv[k] || null });
-    console.log(`${r.loi.length ? 'FAIL' : 'PASS'} ${k}: ${r.soNut} nút, ${r.loi.length} lỗi, ${r.canhBao.length} cảnh báo`);
+    const banChu = process.env.LUAT_GOC_TXT ? docBanChu(process.env.LUAT_GOC_TXT, k) : null;
+    if (banChu && !banChu.length) { console.log(`FAIL ${k}: đã đặt LUAT_GOC_TXT nhưng không có bản chữ cho kho này (cần ${k}.txt)`); do_ += 1; continue; }
+    const r = kiemKho(k, fs.readFileSync(f, 'utf8').split('\n').filter((x) => x.trim()), { vanBan: banChu, kyVong: tatKv[k] || null });
+    console.log(`${r.loi.length ? 'FAIL' : 'PASS'} ${k}: ${r.soNut} nút, ${r.loi.length} lỗi, ${r.canhBao.length} cảnh báo — ${banChu ? `đối chiếu ${banChu.length} bản chữ` : 'CHƯA ĐỐI CHIẾU nguyên văn'}`);
     for (const l of r.loi.slice(0, 40)) console.log(`  ✗ ${l}`); for (const l of r.canhBao.slice(0, 10)) console.log(`  ! ${l}`);
     do_ += r.loi.length ? 1 : 0;
   }

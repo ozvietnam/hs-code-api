@@ -2,7 +2,9 @@
 // scripts/test-mong.mjs — cổng kho luật gốc và cổng phạm vi thẻ (docs/mong). Tất định, không mạng, không AI.
 import fs from 'node:fs';
 import { boKiem } from './lib-luat.mjs';
-import { kiemKho, NGU_PHAP } from './kiem-luat-goc.mjs';
+import os from 'node:os';
+import path from 'node:path';
+import { kiemKho, NGU_PHAP, phang, docBanChu } from './kiem-luat-goc.mjs';
 import { kiemPhamVi, trungSoHuu } from './kiem-pham-vi-the.mjs';
 
 const { kiem, xong } = boKiem('test-mong');
@@ -16,7 +18,12 @@ kiem('trùng id', /trùng id/.test(loi([nut({}), nut({})])));
 kiem('thiếu nguồn / trang / hiệu lực', /nguon\.vanBan/.test(loi([nut({ nguon: {} })])) && /hieuLuc/.test(loi([nut({ hieuLuc: null })])));
 kiem('cha không có', /cha "phan:I" không có/.test(loi([nut({ cha: 'phan:I' })])));
 kiem('dính tiêu đề chương khác', /dính tiêu đề Chương 55/.test(loi([nut({ id: 'nhom:5408:ct:1', loai: 'CHU_GIAI_CHI_TIET', lop: 'HUONG_DAN', nguyenVan: 'vải\nChương 55\nXơ sợi' })])));
-kiem('không nguyên văn', /không nguyên văn/.test(loi([nut({ nguyenVan: 'Câu này không có trong văn bản gốc.' })], { vanBan: 'Kim loại cơ bản và sản phẩm' })));
+kiem('không nguyên văn', /không nguyên văn/.test(loi([nut({ nguyenVan: 'Câu này không có trong văn bản gốc.' })], { vanBan: ['Kim loại cơ bản và sản phẩm'] })));
+kiem('nguyên văn có ở MỘT trong các bản chữ là đạt', loi([nut({})], { vanBan: ['khác', 'x Kim loại cơ bản y'] }) === '');
+kiem('làm phẳng: bỏ số trang đầu/cuối trang, giữ số trong câu', phang('12\nnặng\n100\ngam\n13\f\n14\ntiếp') === 'nặng\n100\ngam\ntiếp');
+const tm = fs.mkdtempSync(path.join(os.tmpdir(), 'mong-')); fs.writeFileSync(path.join(tm, 'cgct-hs2022.txt'), 'a'); fs.writeFileSync(path.join(tm, 'cgct-hs2022-layout.txt'), 'b');
+kiem('kho từ PDF đọc mọi bản cgct-hs2022*, kho khác cần tệp riêng', docBanChu(tm, 'phan').length === 2 && docBanChu(tm, 'gir').length === 0);
+fs.writeFileSync(path.join(tm, 'gir.txt'), 'c'); kiem('có <kho>.txt thì dùng đúng tệp đó', docBanChu(tm, 'gir').join() === 'c');
 kiem('thiếu nút bắt buộc', /thiếu nút bắt buộc phan:XV:cg:9/.test(loi([nut({})], { kyVong: { 'phan:XV:cg:9': 'v' } })));
 kiem('phân công: không hai thẻ song song cùng sở hữu một mẫu tệp', trungSoHuu(pc).length === 0, trungSoHuu(pc).join('; '));
 kiem('phân công: thẻ chờ đều có thật', Object.values(pc.the).every((t) => t.sau.every((s) => pc.the[s])));
