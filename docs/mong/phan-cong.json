@@ -1,0 +1,454 @@
+{
+ "khuon": "phan-cong@1",
+ "ghiChu": "Mỗi thẻ sở hữu riêng tệp của mình. PR [M-xx] đụng tệp ngoài thẻ là đỏ (scripts/kiem-pham-vi-the.mjs). Hai thẻ cùng mẫu tệp thì thẻ sau phải khai thẻ trước ở `sau`. data/luat/dau-noi.json chỉ để khai mô-đun mới của thẻ ở kho.bangCanh.moDun và đường đọc.",
+ "chung": [
+  "scripts/danh-sach-test.txt",
+  "data/luat/dau-noi.json",
+  "docs/mong/the/**",
+  "data/lop-kho.json",
+  "data/SOURCES.json"
+ ],
+ "the": {
+  "M-01": {
+   "ten": "Khuôn, cổng, phân công",
+   "lop": 0,
+   "tep": [
+    "docs/mong/khuon-nut-luat.md",
+    "docs/mong/phan-cong.json",
+    "data/luat-goc/bat-buoc.json",
+    "scripts/kiem-luat-goc.mjs",
+    "scripts/kiem-pham-vi-the.mjs",
+    "scripts/test-mong.mjs",
+    ".github/workflows/pham-vi-the.yml"
+   ],
+   "sau": [],
+   "nguoi": "QT"
+  },
+  "M-11": {
+   "ten": "21 Phần: chú giải Phần bản HS 2022, mỗi Phần một nút gốc",
+   "lop": 1,
+   "tep": [
+    "data/luat-goc/phan.jsonl",
+    "scripts/luat-goc/phan*.mjs",
+    "scripts/luat-goc/phan*.py",
+    "docs/mong/the/M-*-phan.md"
+   ],
+   "sau": [
+    "M-01"
+   ],
+   "nguoi": "agy",
+   "thuTuCuaNguoi": 1
+  },
+  "M-12": {
+   "ten": "Sáu quy tắc tổng quát: nguyên văn và chú giải chi tiết",
+   "lop": 1,
+   "tep": [
+    "data/luat-goc/gir.jsonl",
+    "scripts/luat-goc/gir*.mjs",
+    "scripts/luat-goc/gir*.py",
+    "docs/mong/the/M-*-gir.md"
+   ],
+   "sau": [
+    "M-01"
+   ],
+   "nguoi": "agy",
+   "thuTuCuaNguoi": 2
+  },
+  "M-13": {
+   "ten": "Chú giải 97 Chương: tách luật khỏi khái quát, đủ mọi chương",
+   "lop": 1,
+   "tep": [
+    "data/luat-goc/chuong.jsonl",
+    "scripts/luat-goc/chuong*.mjs",
+    "scripts/luat-goc/chuong*.py",
+    "docs/mong/the/M-*-chuong.md"
+   ],
+   "sau": [
+    "M-01"
+   ],
+   "nguoi": "QT + Studio",
+   "thuTuCuaNguoi": 1
+  },
+  "M-14": {
+   "ten": "Chú giải chi tiết 1.228 nhóm: tách đoạn, sạch phụ lục và lỗi chữ",
+   "lop": 1,
+   "tep": [
+    "data/luat-goc/nhom.jsonl",
+    "scripts/luat-goc/nhom*.mjs",
+    "scripts/luat-goc/nhom*.py",
+    "docs/mong/the/M-*-nhom.md"
+   ],
+   "sau": [
+    "M-01"
+   ],
+   "nguoi": "zcode",
+   "thuTuCuaNguoi": 1
+  },
+  "M-15": {
+   "ten": "Chú giải chi tiết phân nhóm: thành nút riêng",
+   "lop": 1,
+   "tep": [
+    "data/luat-goc/phan-nhom.jsonl",
+    "scripts/luat-goc/phan-nhom*.mjs",
+    "scripts/luat-goc/phan-nhom*.py",
+    "docs/mong/the/M-*-phan-nhom.md"
+   ],
+   "sau": [
+    "M-01"
+   ],
+   "nguoi": "QT + Studio",
+   "thuTuCuaNguoi": 2
+  },
+  "M-16": {
+   "ten": "Chú giải bổ sung SEN 2022: một kho, đủ và đúng mã",
+   "lop": 1,
+   "tep": [
+    "data/luat-goc/sen.jsonl",
+    "scripts/luat-goc/sen*.mjs",
+    "scripts/luat-goc/sen*.py",
+    "docs/mong/the/M-*-sen.md"
+   ],
+   "sau": [
+    "M-01"
+   ],
+   "nguoi": "zcode",
+   "thuTuCuaNguoi": 3
+  },
+  "M-17": {
+   "ten": "Ý kiến phân loại WCO: tách phần tin cậy, để riêng phần nghi",
+   "lop": 1,
+   "tep": [
+    "data/luat-goc/wco.jsonl",
+    "scripts/luat-goc/wco*.mjs",
+    "scripts/luat-goc/wco*.py",
+    "docs/mong/the/M-*-wco.md"
+   ],
+   "sau": [
+    "M-01"
+   ],
+   "nguoi": "zcode",
+   "thuTuCuaNguoi": 5
+  },
+  "M-18": {
+   "ten": "Tên nhóm, phân nhóm, dòng: cây cấp gạch từ biểu thuế",
+   "lop": 1,
+   "tep": [
+    "data/luat-goc/bieu.jsonl",
+    "scripts/luat-goc/bieu*.mjs",
+    "scripts/luat-goc/bieu*.py",
+    "docs/mong/the/M-*-bieu.md"
+   ],
+   "sau": [
+    "M-01"
+   ],
+   "nguoi": "zcode",
+   "thuTuCuaNguoi": 2
+  },
+  "M-19": {
+   "ten": "Thông báo kết quả phân loại: làm sạch, xếp đúng lớp tiền lệ",
+   "lop": 1,
+   "tep": [
+    "data/luat-goc/thong-bao.jsonl",
+    "scripts/luat-goc/thong-bao*.mjs",
+    "scripts/luat-goc/thong-bao*.py",
+    "docs/mong/the/M-*-thong-bao.md"
+   ],
+   "sau": [
+    "M-01"
+   ],
+   "nguoi": "zcode",
+   "thuTuCuaNguoi": 4
+  },
+  "M-21": {
+   "ten": "`/api/notes` đọc kho luật gốc",
+   "lop": 2,
+   "tep": [
+    "lib/chu-giai-goc.js",
+    "lib/gir-notes.js",
+    "lib/notes-coverage.js",
+    "api/notes.js",
+    "scripts/test-chu-giai-goc.mjs",
+    "scripts/test-gir-notes.mjs",
+    "scripts/test-nguon-loai.mjs",
+    "scripts/test-notes-3-tang.mjs"
+   ],
+   "sau": [
+    "M-11",
+    "M-13",
+    "M-14",
+    "M-15",
+    "M-16"
+   ],
+   "nguoi": "zcode",
+   "thuTuCuaNguoi": 8
+  },
+  "M-22": {
+   "ten": "Bỏ lời AI và trường nhiễm khỏi mọi ngữ cảnh đưa cho LLM",
+   "lop": 2,
+   "tep": [
+    "lib/classify.js",
+    "lib/gir.js",
+    "lib/tim-cgct.js",
+    "scripts/test-khong-lan-ai.mjs"
+   ],
+   "sau": [
+    "M-21"
+   ],
+   "nguoi": "zcode",
+   "thuTuCuaNguoi": 9
+  },
+  "M-23": {
+   "ten": "Bảng lớp kho và cổng chống lẫn",
+   "lop": 2,
+   "tep": [
+    "data/lop-kho.json",
+    "scripts/test-lop-kho.mjs",
+    "docs/mong/lop-kho.md"
+   ],
+   "sau": [
+    "M-01"
+   ],
+   "nguoi": "zcode",
+   "thuTuCuaNguoi": 6
+  },
+  "M-24": {
+   "ten": "Xoá trường nhiễm và kho trùng",
+   "lop": 2,
+   "tep": [
+    "data/chu-giai-heading.json",
+    "data/explanatory-notes.json",
+    "data/legal-notes-enriched.json",
+    "data/notes.json",
+    "lib/so-tay.js",
+    "lib/hs-tree-sources.js",
+    "lib/legal-basis.js"
+   ],
+   "sau": [
+    "M-21",
+    "M-22",
+    "M-23"
+   ],
+   "nguoi": "zcode",
+   "thuTuCuaNguoi": 10
+  },
+  "M-31": {
+   "ten": "Tách từng câu, từng ý của toàn bộ kho luật gốc (GPU)",
+   "lop": 3,
+   "tep": [
+    "data/luat-goc/cau/**",
+    "scripts/luat-goc/cau*.mjs"
+   ],
+   "sau": [
+    "M-11",
+    "M-13",
+    "M-14",
+    "M-15"
+   ],
+   "nguoi": "QT + GPU",
+   "thuTuCuaNguoi": 1
+  },
+  "M-32": {
+   "ten": "Rút mọi dẫn chiếu thành cạnh, tất định",
+   "lop": 3,
+   "tep": [
+    "lib/do-thi/dan-chieu.js",
+    "scripts/test-dan-chieu.mjs"
+   ],
+   "sau": [
+    "M-11",
+    "M-13",
+    "M-14",
+    "M-15"
+   ],
+   "nguoi": "agy",
+   "thuTuCuaNguoi": 3
+  },
+  "M-33": {
+   "ten": "Cạnh chuyển hướng có điều kiện: nút – điều kiện – nút đích, hai người soát độc lập",
+   "lop": 3,
+   "tep": [
+    "data/luat-goc/nghia-canh/**",
+    "scripts/luat-goc/nghia*.mjs"
+   ],
+   "sau": [
+    "M-31",
+    "M-32"
+   ],
+   "nguoi": "QT + GPU + agy phiếu 2",
+   "thuTuCuaNguoi": 2
+  },
+  "M-34": {
+   "ten": "`phai-doc`: chạm một nút kéo ra hết",
+   "lop": 3,
+   "tep": [
+    "lib/do-thi/phai-doc.js",
+    "scripts/test-phai-doc.mjs",
+    "api/dataset.js",
+    "data/luat-goc/phan-chuong-nhom.json"
+   ],
+   "sau": [
+    "M-21",
+    "M-32"
+   ],
+   "nguoi": "agy",
+   "thuTuCuaNguoi": 4
+  },
+  "M-35": {
+   "ten": "Đổi mã nguồn cũ sang id nút luật",
+   "lop": 3,
+   "tep": [
+    "lib/do-thi/doi-ma-nguon.js",
+    "data/luat-goc/doi-ma.json",
+    "scripts/test-doi-ma-nguon.mjs"
+   ],
+   "sau": [
+    "M-11",
+    "M-13",
+    "M-14",
+    "M-15",
+    "M-16",
+    "M-17",
+    "M-18"
+   ],
+   "nguoi": "zcode",
+   "thuTuCuaNguoi": 7
+  },
+  "M-41": {
+   "ten": "`/api/search` trả nút luật có nhắc tới hàng",
+   "lop": 4,
+   "tep": [
+    "lib/tim-luat.js",
+    "api/search.js",
+    "scripts/test-tim-luat.mjs"
+   ],
+   "sau": [
+    "M-32",
+    "M-34",
+    "M-37"
+   ],
+   "nguoi": "agy",
+   "thuTuCuaNguoi": 5
+  },
+  "M-42": {
+   "ten": "Cổng MCP: công cụ và lời dẫn theo trình tự luật (kho ozplugin)",
+   "lop": 4,
+   "tep": [
+    "(ozplugin) apps/gateway/src/tools/tra-*.ts",
+    "(ozplugin) apps/gateway/src/tools/tim-ma-hs.ts",
+    "(ozplugin) apps/gateway/src/huong-dan.ts"
+   ],
+   "sau": [
+    "M-34",
+    "M-41"
+   ],
+   "nguoi": "GĐ Cổng, QT soát",
+   "thuTuCuaNguoi": 1
+  },
+  "M-51": {
+   "ten": "Sổ ghi vết từng bước",
+   "lop": 5,
+   "tep": [
+    "lib/so-vet/**",
+    "scripts/test-so-vet.mjs"
+   ],
+   "sau": [
+    "M-34"
+   ],
+   "nguoi": "QT",
+   "thuTuCuaNguoi": 1
+  },
+  "M-52": {
+   "ten": "`phan_loai_hs` đọc luật trước, kết luận sau",
+   "lop": 5,
+   "tep": [
+    "lib/engine-doc-luat.js",
+    "scripts/test-engine-doc-luat.mjs"
+   ],
+   "sau": [
+    "M-51",
+    "M-41",
+    "M-33",
+    "M-36"
+   ],
+   "nguoi": "QT",
+   "thuTuCuaNguoi": 2
+  },
+  "M-61": {
+   "ten": "Gỡ phần máy đè LLM và mã cũ",
+   "lop": 6,
+   "tep": [
+    "lib/engine-loop.js",
+    "lib/trade-*.js",
+    "lib/chot-som-co-kiem.js",
+    "lib/tim-truoc.js",
+    "data/luat/bang-co.json"
+   ],
+   "sau": [
+    "M-52"
+   ],
+   "nguoi": "QT",
+   "thuTuCuaNguoi": 3
+  },
+  "M-36": {
+   "ten": "Tóm tắt nút: gồm gì, loại gì, tách với ai – rút từ luật, có trích",
+   "lop": 3,
+   "tep": [
+    "data/luat-goc/tom-tat/**",
+    "scripts/luat-goc/tom-tat*.mjs"
+   ],
+   "sau": [
+    "M-11",
+    "M-13",
+    "M-14",
+    "M-15",
+    "M-18"
+   ],
+   "nguoi": "QT + Studio",
+   "thuTuCuaNguoi": 3
+  },
+  "M-37": {
+   "ten": "Chỉ mục nghĩa trên nút luật (cửa vào)",
+   "lop": 3,
+   "tep": [
+    "lib/chi-muc-luat.js",
+    "scripts/luat-goc/chi-muc*.mjs",
+    "scripts/test-chi-muc-luat.mjs",
+    "data/luat-goc/chi-muc/**"
+   ],
+   "sau": [
+    "M-14",
+    "M-31"
+   ],
+   "nguoi": "QT + GPU",
+   "thuTuCuaNguoi": 3
+  },
+  "M-10": {
+   "ten": "Chú giải pháp lý theo TT31/2022 (Công báo song ngữ): đối chiếu từng khoản",
+   "lop": 1,
+   "tep": [
+    "data/luat-goc/doi-chieu-tt31/**",
+    "scripts/luat-goc/tt31*.mjs",
+    "scripts/luat-goc/tt31*.py",
+    "data/luat-goc/phan.jsonl",
+    "data/luat-goc/chuong.jsonl",
+    "data/luat-goc/cau/phan.jsonl",
+    "data/luat-goc/cau/chuong.jsonl",
+    "data/luat-goc/doi-ma.json",
+    "scripts/luat-goc/phan-test.mjs",
+    "scripts/luat-goc/kq-tach.py",
+    "lib/do-thi/doi-ma-nguon.js",
+    "data/luat-goc/nghia-canh/phan.jsonl",
+    "data/luat-goc/nghia-canh/chuong.jsonl"
+   ],
+   "sau": [
+    "M-11",
+    "M-13",
+    "M-31",
+    "M-35",
+    "M-33"
+   ],
+   "nguoi": "QT",
+   "thuTuCuaNguoi": 1
+  }
+ }
+}
