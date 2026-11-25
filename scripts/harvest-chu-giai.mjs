@@ -6,9 +6,10 @@
 //                                  phan_biet, tinh_chat, sen, dieu_kien, nguon } }  (~1.200 nhóm)
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const SRC = '/Users/ozvietnamdesktop/Documents/Claude/Projects/hs-knowledge-api/public/kg';
-const OUT = path.join(path.dirname(new URL(import.meta.url).pathname), '..', 'data');
+const OUT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'data');
 
 const nz = (s) => String(s || '').replace(/\D/g, '');
 const joinArr = (v) => (Array.isArray(v) ? v.filter(Boolean).map(String).join(' ') : '');

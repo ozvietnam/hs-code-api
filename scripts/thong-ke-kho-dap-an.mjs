@@ -18,6 +18,7 @@
 
 import fs from 'node:fs';
 import { createRequire } from 'node:module';
+import { pathToFileURL } from 'node:url';
 
 const require = createRequire(import.meta.url);
 
@@ -120,7 +121,7 @@ async function main() {
   }
 }
 
-const laChayTrucTiep = import.meta.url === `file://${process.argv[1]}`;
+const laChayTrucTiep = import.meta.url === pathToFileURL(process.argv[1] || '').href;
 if (laChayTrucTiep) {
   main().catch((e) => { console.error(`thong-ke-kho-dap-an lỗi: ${e.message}`); process.exit(1); });
 }

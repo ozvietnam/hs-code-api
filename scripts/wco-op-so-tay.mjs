@@ -13,8 +13,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { createRequire } from 'node:module';
-import { fileURLToPath } from 'node:url';
-
+import { fileURLToPath, pathToFileURL } from 'node:url';
 const require = createRequire(import.meta.url);
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const { verifySoTay, checkYKienWco, fingerprint } = require('../lib/so-tay.js');
@@ -84,4 +83,4 @@ function main() {
   for (const x of [...skipped, ...rejected]) console.log('  BỎ', x.nguon, x.lyDo);
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) main();
+if (import.meta.url === pathToFileURL(process.argv[1] || '').href) main();

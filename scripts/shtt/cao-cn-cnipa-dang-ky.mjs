@@ -8,6 +8,7 @@ import { chromium } from 'playwright-core';
 import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { writeRaw, log, UA, DIR_SHTT } from './lib-common.mjs';
+import { pathToFileURL } from 'node:url';
 
 const CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 const URL = 'https://wcjs.sbj.cnipa.gov.cn/';
@@ -50,6 +51,6 @@ async function main() {
   log('đã ghi _cnipa-status.json', trangThai);
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (import.meta.url === pathToFileURL(process.argv[1] || '').href) {
   main().catch((e) => { console.error('FATAL:', e); process.exit(1); });
 }

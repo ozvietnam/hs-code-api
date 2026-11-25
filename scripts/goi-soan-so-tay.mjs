@@ -11,9 +11,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { createRequire } from 'node:module';
+import { fileURLToPath } from 'node:url';
 
 const require = createRequire(import.meta.url);
-const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const { sourcesFor } = require('../lib/so-tay.js');
 const { taxData } = require('../lib/data.js');
 const T = require('../lib/hs-tree.js');

@@ -9,9 +9,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { createRequire } from 'node:module';
-
+import { fileURLToPath, pathToFileURL } from 'node:url';
 const require = createRequire(import.meta.url);
-const GOC = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+const GOC = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const B = require('../lib/do-thi/ban-do-4so.js');
 const thamSo = (ten) => { const a = process.argv.find((x) => x.startsWith(`--${ten}=`)); return a ? a.slice(ten.length + 3) : null; };
 const co = (c) => process.argv.includes(c);
@@ -28,7 +28,7 @@ export function inKetQua(kq) {
   console.log(`nhóm xanh: ${kq.nhomXanh.join(", ") || "(không)"} · nhóm đỏ: ${kq.nhomDo.join(", ") || "(không)"} · ${kq.loi.length} lỗi đỏ, ${kq.vang.length} cảnh báo vàng${bo ? ` · bỏ mục lỗi: ${bo}` : ""}`);
 }
 
-const laChinh = process.argv[1] && import.meta.url.endsWith(process.argv[1].replace(/^.*\//, ''));
+const laChinh = Boolean(process.argv[1]) && import.meta.url === pathToFileURL(process.argv[1]).href;
 if (laChinh) {
   if (co('--ma-loi')) { for (const [k, v] of Object.entries(B.MA_LOI)) console.log(`${k}\t${v}`); for (const [k, v] of Object.entries(B.CANH_BAO)) console.log(`${k} (vàng)\t${v}`); process.exit(0); }
   const tep = process.argv.slice(2).find((a) => !a.startsWith('--')); const tepGoi = thamSo('goi');

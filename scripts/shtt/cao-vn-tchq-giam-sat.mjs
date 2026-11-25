@@ -18,7 +18,7 @@
 import { chromium } from 'playwright-core';
 import { existsSync, readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { writeRaw, appendRecord, TEP, log, UA, DIR_SHTT } from './lib-common.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
@@ -65,6 +65,6 @@ async function main() {
   log(`Đã ghi CHAN status vào ${metaPath}`);
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (import.meta.url === pathToFileURL(process.argv[1] || '').href) {
   main().catch((e) => { console.error('FATAL:', e); process.exit(1); });
 }

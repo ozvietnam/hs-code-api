@@ -22,8 +22,9 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const NHOM = process.env.NHOM ? process.env.NHOM.split(',') : null;
 const RAW = path.join(ROOT, 'tmp/so-tay/raw');
 const SRC = path.join(ROOT, 'tmp/so-tay/nguon');
