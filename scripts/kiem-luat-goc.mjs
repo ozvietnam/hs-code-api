@@ -35,7 +35,7 @@ const chuanSo = (s) => gon(s).replace(/ ?([-–—/]) ?/g, '$1');
 
 /** @returns {{loi: string[], canhBao: string[], soNut: number}} */
 export function kiemKho(ten, dong, { vanBan = null, kyVong = null } = {}) {
-  const loi = []; const canhBao = []; const ids = new Map(); const nut = [];
+  const loi = []; const canhBao = []; const ids = new Map(); const nut = []; let chua = 0;
   dong.forEach((l, i) => {
     let x; try { x = JSON.parse(l); } catch { loi.push(`dòng ${i + 1}: không phải JSON`); return; }
     nut.push(x); const o = x.id || `dòng ${i + 1}`;
@@ -54,14 +54,15 @@ export function kiemKho(ten, dong, { vanBan = null, kyVong = null } = {}) {
     if (!x.nguon?.vanBan || !x.nguon?.ban) loi.push(`${o}: thiếu nguon.vanBan / nguon.ban`);
     if (!('trang' in (x.nguon || {}))) loi.push(`${o}: thiếu nguon.trang (không biết thì null)`);
     if (!x.hieuLuc || !('tu' in x.hieuLuc) || !('den' in x.hieuLuc)) loi.push(`${o}: thiếu hieuLuc.tu / den`);
-    if (vanBan && vanBan.length && !vanBan.some((b) => b.includes(chuanSo(v)))) {
+    if (x.chuaDoiChieu !== undefined && (x.chuaDoiChieu !== true || x.lop !== 'TIEN_LE')) loi.push(`${o}: chuaDoiChieu chỉ dành cho lop TIEN_LE`);
+    if (x.chuaDoiChieu === true && x.lop === 'TIEN_LE') { chua += 1; } else if (vanBan && vanBan.length && !vanBan.some((b) => b.includes(chuanSo(v)))) {
       const cau = chuanSo(v).split(/(?<=[.;:])\s+/).filter((c) => c.length >= 12); const truot = cau.filter((c) => !vanBan.some((b) => b.includes(c)));
       if (truot.length) loi.push(`${o}: không nguyên văn — "${truot[0].slice(0, 80)}"`);
     }
   });
   for (const x of nut) if (x.cha != null && !ids.has(x.cha)) loi.push(`${x.id}: cha "${x.cha}" không có`);
   if (kyVong) for (const [id, vi] of Object.entries(kyVong)) if (!ids.has(id)) loi.push(`thiếu nút bắt buộc ${id} (${vi})`);
-  return { loi, canhBao, soNut: nut.length };
+  return { loi, canhBao, soNut: nut.length, chuaDoiChieu: chua };
 }
 
 function main() {
@@ -74,7 +75,7 @@ function main() {
     const banChu = process.env.LUAT_GOC_TXT ? docBanChu(process.env.LUAT_GOC_TXT, k) : null;
     if (banChu && !banChu.length) { console.log(`FAIL ${k}: đã đặt LUAT_GOC_TXT nhưng không có bản chữ cho kho này (cần ${k}.txt)`); do_ += 1; continue; }
     const r = kiemKho(k, fs.readFileSync(f, 'utf8').split('\n').filter((x) => x.trim()), { vanBan: banChu, kyVong: tatKv[k] || null });
-    console.log(`${r.loi.length ? 'FAIL' : 'PASS'} ${k}: ${r.soNut} nút, ${r.loi.length} lỗi, ${r.canhBao.length} cảnh báo — ${banChu ? `đối chiếu ${banChu.length} bản chữ` : 'CHƯA ĐỐI CHIẾU nguyên văn'}`);
+    console.log(`${r.loi.length ? 'FAIL' : 'PASS'} ${k}: ${r.soNut} nút, ${r.loi.length} lỗi, ${r.canhBao.length} cảnh báo — ${banChu ? `đối chiếu ${banChu.length} bản chữ` : 'CHƯA ĐỐI CHIẾU nguyên văn'}${r.chuaDoiChieu ? ` · ${r.chuaDoiChieu} nút tiền lệ chưa có toàn văn` : ''}`);
     for (const l of r.loi.slice(0, 40)) console.log(`  ✗ ${l}`); for (const l of r.canhBao.slice(0, 10)) console.log(`  ! ${l}`);
     do_ += r.loi.length ? 1 : 0;
   }
