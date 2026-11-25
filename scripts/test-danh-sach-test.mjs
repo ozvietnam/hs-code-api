@@ -396,20 +396,10 @@ const MIEN_TRU_MO_COI = {
     'Đồ dùng chung, không phải cổng: import side-effect đặt HS_DATA_DIR sang thư mục tạm, 0 ca kiểm, được 263 tệp khác import.',
   'test-a3-early-exit-coc-latency.mjs':
     'ĐỎ ngưỡng thời gian: wall < 2000 ms, đo 2648 ms trên Windows (6 pass / 1 fail). Không nới ngưỡng — QT quyết (#1850).',
-  'test-cuon-chieu-v1.mjs':
-    'ĐỎ vì khuôn lấy .pathname từ URL module cho ra C:\\C:\\… → ENOENT data/so-tay/8412.json, in 0 ca. Sửa thuộc #1846, không phải việc của cổng này.',
   'test-do-do-thi-gd2.mjs':
     'ĐỎ ngân sách thời gian nội bộ subMs < 30000, đo 75405 ms cho 2 lượt (13 pass / 1 fail). Nhãn "chạy nhanh < 15s" trong tệp không đúng trên máy đo. Không nới ngưỡng — QT quyết.',
-  'test-import-customs-danh-muc.mjs':
-    'ĐỎ 1 ca: mong CLI thoát 1 khi dữ liệu thiếu, nhận exit 0 vì scripts/import-customs-danh-muc.mjs dùng main-guard ghép file:// với argv[1] nên main() không chạy trên Windows (đo: stdout 0 byte, exit 0). Sửa thuộc #1846.',
-  'test-kho-dap-an.mjs':
-    'ĐỎ 6 ca: scripts/thong-ke-kho-dap-an.mjs cùng main-guard chết nên JSON.parse(stdout) trượt. Thí nghiệm một biến số trên bản sao: guard cũ 0 byte, đổi sang pathToFileURL 532 byte JSON. Sửa thuộc #1846.',
-  'test-loai-tru-nhom.mjs':
-    'ĐỎ vì khuôn lấy .pathname từ URL module → ENOENT C:\\C:\\… data/so-tay/5402.json, in 0 ca. Sửa thuộc #1846.',
   'test-ozv-590-khong-ra-ma.mjs':
     'ĐỎ 2 ca replay 50 ca: #30 (82089000) và #45 (87141090) mong khongRaMa=true nhưng nhận mã. Đo trên main cũ a9118a5c cũng 26 pass / 2 fail, đúng hai ca đó ⇒ hỏng sẵn. Không sửa nhãn/ngưỡng — QT quyết (#1850).',
-  'test-phan-biet-vat-lieu-t2.mjs':
-    'ĐỎ vì khuôn lấy .pathname từ URL module → ENOENT C:\\C:\\… data/so-tay/6103.json, in 0 ca. Sửa thuộc #1846.',
 };
 
 const tepTestScripts = fs
