@@ -9,7 +9,7 @@ ADR, thẻ. Lộ trình dài hạn: `docs/backlog/README.md` và bảng việc P
 
 **Đã làm (PR nhánh `qt/G6-0-mau-tieu-chi-6-so`, PR #1549, trên main sau #1539):** `tieuChi6` khuôn g6@1 cho 8481 (6 mục) và 8412
 (12 mục), áp bằng `node scripts/goi-soan-tieu-chi-6.mjs --ap`. Bảng cạnh thêm loại C10 (3.186 cạnh từ 511 nhóm; 14 cạnh mang
-khoá dữ kiện C13). Cổng `scripts/kiem-tieu-chi-6.mjs` (30 mã lỗi, 3 cảnh báo; vòng 2 thêm phủ vế; 21/11 thêm luật hỏi đặc tính CHI_HOI_MUC_DICH) + `scripts/test-tieu-chi-6.mjs` trong `npm test`.
+khoá dữ kiện C13). Cổng `scripts/kiem-tieu-chi-6.mjs` (mã lỗi + cảnh báo khai tại `lib/do-thi/tieu-chi-6.js`, xem `--ma-loi`; vòng 2 thêm phủ vế; 21/11 thêm luật hỏi đặc tính CHI_HOI_MUC_DICH) + `scripts/test-tieu-chi-6.mjs` trong `npm test`.
 Hướng dẫn cho AI soạn: [`docs/giao-viec/do-thi/SOAN-TIEU-CHI-6-SO.md`](giao-viec/do-thi/SOAN-TIEU-CHI-6-SO.md).
 
 **CHƯA đổi đầu vào LLM nào.** `soTayBlock()` (khối sổ tay vòng 2) không đọc `tieuChi6`. `HS_HOI_THEO_SO_TAY` (đang tắt) khi bật
