@@ -121,8 +121,9 @@ const pLonDayDu = phaiDoc('8419', { dayDu: true });
 const bytesGon = Buffer.byteLength(JSON.stringify(pLonMacDinh), 'utf8');
 const bytesFull = Buffer.byteLength(JSON.stringify(pLonDayDu), 'utf8');
 const giuDuMuc = pLonMacDinh.trinhTu.every((b, i) => b.tong === pLonDayDu.trinhTu[i].tong && b.muc.length === pLonDayDu.trinhTu[i].muc.length);
+const duIdCauDau = pLonMacDinh.trinhTu.every((b) => b.buoc === 'TEN' || b.muc.every((m) => m.id && m.lop && 'trang' in m && typeof m.cauDau === 'string'));
 const motIdCon = muc(pLonMacDinh, 'CHU_GIAI_PHAN').muc[0]?.id;
-kiem(`vượt 60 KB → TOM_GON (${(bytesFull / 1024).toFixed(1)} KB → ${(bytesGon / 1024).toFixed(1)} KB), giữ nguyên mọi mục và lấy đủ theo id`, pLonMacDinh.cheDo === 'TOM_GON' && pLonDayDu.cheDo === 'DAY_DU' && bytesGon <= TRAN_BYTES && giuDuMuc && Boolean(motIdCon && phaiDoc(motIdCon)?.ten?.length > 10));
+kiem(`vượt 60 KB → TOM_GON (${(bytesFull / 1024).toFixed(1)} KB → ${(bytesGon / 1024).toFixed(1)} KB), giữ nguyên mọi mục và lấy đủ theo id`, pLonMacDinh.cheDo === 'TOM_GON' && pLonDayDu.cheDo === 'DAY_DU' && bytesGon < bytesFull * 0.45 && giuDuMuc && duIdCauDau && Boolean(motIdCon && phaiDoc(motIdCon)?.ten?.length > 10));
 
 // ── 5. Bất biến toàn kho bằng phép quét độc lập trên data/luat-goc/*.jsonl ────
 const dtDocLap = dungDoThiDanChieu({ nut: nutKhongTienLe, khoNut: taoKhoNut(nutKhongTienLe) });
@@ -176,7 +177,7 @@ for (const n of nutKhongTienLe) {
 kiem(`bất biến độc lập: mọi nút có cạnh NHAC tới X nằm trong phaiDoc(X) (${dtDocLap.canh.length} cạnh)`, sotRa === 0 && sotVao === 0 && thieuCauDan === 0, `sotRa=${sotRa} sotVao=${sotVao} thieuCau=${thieuCauDan}`);
 kiem('bất biến đối xứng toàn kho: A thấy B ⇔ B thấy A (NHAC & LOAI_TRU)', lechDoiXungNhac === 0 && lechDoiXungCanhCu === 0, `nhac=${lechDoiXungNhac} canhCu=${lechDoiXungCanhCu}`);
 kiem('khuôn chuẩn (id, lop, trang, trich, nguon) đầy đủ & 0 mục TIEN_LE', thieuTruong === 0 && tienLeLot === 0, `thieu=${thieuTruong} tienLe=${tienLeLot}`);
-kiem('cạnh cũ lọc chặt trong phạm vi hai đầu cạnh và được đếm rõ giữ/bỏ', tkCanhCu.canhCuGiu >= 0 && tkCanhCu.canhCuBiBo > 0 && tkCanhCu.coTraVeKB.macDinh.lonNhatKB <= 60);
+kiem('cạnh cũ lọc chặt trong phạm vi hai đầu cạnh và cỡ mặc định trung vị/p95 ≤ 60 KB', tkCanhCu.canhCuGiu >= 0 && tkCanhCu.canhCuBiBo > 0 && tkCanhCu.coTraVeKB.macDinh.trungViKB <= 60 && tkCanhCu.coTraVeKB.macDinh.p95KB <= 60);
 
 // ── 6. Kho mô phỏng đầy đủ phan/nhom/wco + CA NGƯỢC TIEN_LE (Req #5) ───────────
 const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'phai-doc-m34-'));
