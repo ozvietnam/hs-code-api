@@ -48,7 +48,7 @@ export function dungCay({ cgct = null } = {}) {
   const maLa = [...theoMa.keys()].filter((m) => m.length === 8);
   const nhom = new Map(); for (const m of maLa) for (const k of [m.slice(0, 4), m.slice(0, 5), m.slice(0, 6), m.slice(0, 7)]) nhom.set(k, (nhom.get(k) || 0) + 1);
 
-  // ── 2. id ── tiêu đề không mã: mã 6 số (biểu không in dòng mã) / 5 số / 7 số khi tập dòng dưới nó đúng bằng tập mã cùng tiền tố; còn lại `bieu:00<dòng 5 số>`
+  // ── 2. id ── tiêu đề không mã: mã 6 số (biểu không in dòng mã) / 5 số / 7 số khi tập dòng dưới nó đúng bằng tập mã cùng tiền tố; còn lại `<id nút cha>:td<n>`, n = thứ tự in (từ 1) trong các tiêu đề mang id :td của cùng cha
   const idDung = new Set(maLa.concat([...theoMa.keys()])); const dung = new Map();
   for (const n of nut.filter((x) => !x.ma)) {
     const L = la(n); if (!L.length) { if (n.r > 19054) { bao.dongThieuMa.push({ r: n.r, chu: n.chu, maIn: n.maIn }); n.la = []; } continue; }
@@ -61,7 +61,7 @@ export function dungCay({ cgct = null } = {}) {
     const chon = ds.find((n) => khop.get(n.r) === p) || ds[0];
     for (const n of ds) if (n !== chon) n.tienTo = null;
   }
-  const ID = (n) => `bieu:${n.ma || n.tienTo || `00${String(n.r).padStart(5, '0')}`}`;
+  const dem = new Map(); const ID = (n, cha) => { if (n.tienTo) return `bieu:${n.tienTo}`; dem.set(cha, (dem.get(cha) || 0) + 1); return `${cha}:td${dem.get(cha)}`; };
 
   // ── 3. xuất nút ──
   const nguon = (r) => ({ vanBan: `Biểu thuế XNK (${tk.tep}, sheet ${tk.sheetChinh})`, ban: PHIEN_BAN, trang: null, dong: r });
@@ -94,11 +94,11 @@ export function dungCay({ cgct = null } = {}) {
       let y = coId.get(`bieu:${m}`); while (y && y.id !== `bieu:${m.slice(0, 6)}`) y = y.cha ? coId.get(y.cha) : null;
       if (!y) Object.assign(coId.get(`bieu:${m}`), { ngoaiPhanNhom: true, ghiChu: `biểu in dòng này ngoài tiêu đề phân nhóm ${cham(m.slice(0, 6))} (theo số gạch); giữ theo số gạch in` });
     } else if (m && m.length === 6) cha = taoNut(`bieu:${m}`, cha, cham(m), n, 'PHAN_NHOM', n.ma ? {} : { khongMa: true }).id;
-    else if (n.la && !n.la.length) cha = taoNut(ID(n), cha, null, n, n.maIn ? 'DONG_THIEU_MA' : 'TIEU_DE_QUOC_GIA', { khongMa: true, idTheoDong: true, ...(n.maIn ? { maIn: n.maIn, ghiChu: 'biểu in mã 7 chữ số, không có mã 8 số trong data/tax.json; không đoán mã' } : {}) }).id;
+    else if (n.la && !n.la.length) cha = taoNut(ID(n, cha), cha, null, n, n.maIn ? 'DONG_THIEU_MA' : 'TIEU_DE_QUOC_GIA', { khongMa: true, maIn: n.maIn || null, ...(n.maIn ? { ghiChu: 'biểu in mã 7 chữ số, không có mã 8 số trong data/tax.json; không đoán mã' } : {}) }).id;
     else {
       const pn6 = n.la.every((x) => x.startsWith(n.la[0].slice(0, 6))) ? n.la[0].slice(0, 6) : null;
       const tang = pn6 && tangCua(pn6).nut.has(`${pn6}~r${n.r}`) ? `${pn6}~r${n.r}` : null;
-      cha = taoNut(ID(n), cha, null, n, pn6 ? 'TIEU_DE_QUOC_GIA' : 'TIEU_DE_PHAN_NHOM', { khongMa: true, ...(n.tienTo ? {} : { idTheoDong: true }), ...(tang ? { tang } : {}) }).id;
+      cha = taoNut(ID(n, cha), cha, null, n, pn6 ? 'TIEU_DE_QUOC_GIA' : 'TIEU_DE_PHAN_NHOM', { khongMa: true, maIn: null, ...(tang ? { tang } : {}) }).id;
     }
     for (const c of n.con) di(c, cha);
   };
@@ -130,7 +130,8 @@ function main() {
   const txt = thamSo('--txt');
   if (txt) { fs.mkdirSync(txt, { recursive: true }); const { tatCa } = docDong(); fs.writeFileSync(path.join(txt, 'bieu.txt'), `${tatCa.map((x) => x.chu).join('\n')}\n`); }
   const dem = {}; for (const x of ra) dem[x.cap] = (dem[x.cap] || 0) + 1;
-  for (const k of ['sen', 'loaiKhac', 'loaiKhacCoVe', 'dauCong', 'cungDong', 'khongMa', 'idTheoDong', 'tuBanIn', 'suyRa', 'gachBieu', 'dongLap', 'tang']) dem[k] = ra.filter((x) => x[k]).length;
+  for (const k of ['sen', 'loaiKhac', 'loaiKhacCoVe', 'dauCong', 'cungDong', 'khongMa', 'tuBanIn', 'suyRa', 'gachBieu', 'dongLap', 'tang']) dem[k] = ra.filter((x) => x[k]).length;
+  dem.td = ra.filter((x) => /:td\d+$/.test(x.id)).length;
   console.log(JSON.stringify({ tong: ra.length, ...dem, dongBieu: dong.length }, null, 1));
   console.log(JSON.stringify(bao));
 }
