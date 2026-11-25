@@ -24,21 +24,6 @@
    "sau": [],
    "nguoi": "QT"
   },
-  "M-10": {
-   "ten": "Chú giải pháp lý theo TT31/2022 (Công báo song ngữ): đối chiếu từng khoản",
-   "lop": 1,
-   "tep": [
-    "data/luat-goc/doi-chieu-tt31/**",
-    "scripts/luat-goc/tt31*.mjs",
-    "scripts/luat-goc/tt31*.py"
-   ],
-   "sau": [
-    "M-11",
-    "M-13"
-   ],
-   "nguoi": "QT",
-   "thuTuCuaNguoi": 1
-  },
   "M-11": {
    "ten": "21 Phần: chú giải Phần bản HS 2022, mỗi Phần một nút gốc",
    "lop": 1,
@@ -436,6 +421,29 @@
    ],
    "nguoi": "QT + GPU",
    "thuTuCuaNguoi": 3
+  },
+  "M-10": {
+   "ten": "Chú giải pháp lý theo TT31/2022 (Công báo song ngữ): đối chiếu từng khoản",
+   "lop": 1,
+   "tep": [
+    "data/luat-goc/doi-chieu-tt31/**",
+    "scripts/luat-goc/tt31*.mjs",
+    "scripts/luat-goc/tt31*.py",
+    "data/luat-goc/phan.jsonl",
+    "data/luat-goc/chuong.jsonl",
+    "data/luat-goc/cau/phan.jsonl",
+    "data/luat-goc/cau/chuong.jsonl",
+    "data/luat-goc/doi-ma.json",
+    "scripts/luat-goc/phan-test.mjs"
+   ],
+   "sau": [
+    "M-11",
+    "M-13",
+    "M-31",
+    "M-35"
+   ],
+   "nguoi": "QT",
+   "thuTuCuaNguoi": 1
   }
  }
 }
