@@ -45,18 +45,21 @@ Theo ADR-0004 và ADR-0005. Thay cho phần "lộ trình" của `docs/ke-hoach-d
 - Một **mã câu luật** dùng chung. Tách câu (GPU đang chạy); mọi cạnh trỏ tới mã câu.
 - `phai-doc` kéo đủ: chú giải Phần, Chương, nhóm, phân nhóm, điều khoản, loại trừ hai chiều, định nghĩa, dẫn chiếu, SEN, WCO, dòng cùng cấp.
 - Vá 47 chỗ nhắc nhóm chưa có cạnh; dẫn chiếu tới Phần, Chương và tới Chú giải đánh số cũng là cạnh.
+- **Cạnh chuyển hướng có điều kiện** (nút – điều kiện – nút đích) và **tóm tắt nút** (gồm gì, loại gì, trích câu nào): hai phần này là lõi, xem `docs/mong/nghien-cuu-do-thi-hs.md`.
+- **Chỉ mục nghĩa trên nút luật**, kèm đường dẫn cha; chỉ để tìm cửa vào.
 - Nhãn loại ý do AI gắn là **gợi ý**, không phải điều kiện để cạnh tồn tại: câu nhắc tới đâu thì có cạnh tới đó.
 - *Xong khi:* số chỗ nhắc tới mà không có cạnh = 0 trên toàn kho; chạm A thấy B thì chạm B thấy A.
 
 ### Lớp 4. MCP trả luật, không trả đống mã — 3 ngày
 - `tra_cay_hs`: `phaiDoc` (#1898). `tra_chu_giai`: đúng nút, kèm đường đi tiếp.
-- `tim_ma_hs`: trả **nút luật có nhắc tới hàng** kèm câu nhắc; bỏ tờ khai, bỏ từ điển khỏi thứ hạng.
+- `tim_ma_hs`: trả **nút luật có nhắc tới hàng** kèm câu nhắc (tìm theo nghĩa và theo chữ trên nút luật); bỏ tờ khai, bỏ từ điển khỏi thứ hạng.
 - Viết lại lời dẫn của Cổng thành trình tự ADR-0004.
 - *Xong khi:* không công cụ tra cứu nào trả tờ khai hay lời AI lẫn trong luật.
 
 **MỐC QUYẾT ĐỊNH (sau lớp 4):** anh chọn 10 mặt hàng. Một LLM tốt, chỉ dùng MCP, đi từng bước và nộp sổ ghi vết. Soát bằng luật, không bằng tờ khai. Nếu chuỗi trích dẫn không dẫn tới kết luận đứng được thì **bỏ hẳn phần phân loại, chỉ giữ kho luật làm công cụ tra cứu**.
 
 ### Lớp 5. Quy trình từng bước có ghi vết — 5–7 ngày
+- Vòng **Vào cửa → Chọn → Kiểm → Chuyển hướng / Quay lui / Hỏi**, từng cấp gạch, LLM chỉ thấy các nút cùng cấp của đúng nhánh.
 - Mỗi bước: đề cập · đã đọc · trích · quyết định · mã khác đã so · quy tắc. Repo ghi sổ, kiểm câu trích có thật, kiểm nút bắt buộc đã đọc (dùng `lib/cong-adr-0004.js` có sẵn).
 - `phan_loai_hs` chạy theo đường này: **đọc luật trước, kết luận sau**.
 - *Xong khi:* không kết quả nào ra khỏi Cổng mà thiếu sổ ghi vết.

@@ -257,7 +257,7 @@
    "thuTuCuaNguoi": 3
   },
   "M-33": {
-   "ten": "Nghĩa của cạnh: loại trừ, điều kiện, phân biệt, định nghĩa – hai người soát độc lập",
+   "ten": "Cạnh chuyển hướng có điều kiện: nút – điều kiện – nút đích, hai người soát độc lập",
    "lop": 3,
    "tep": [
     "data/luat-goc/nghia-canh/**",
@@ -315,7 +315,8 @@
    ],
    "sau": [
     "M-32",
-    "M-34"
+    "M-34",
+    "M-37"
    ],
    "nguoi": "agy",
    "thuTuCuaNguoi": 5
@@ -357,7 +358,9 @@
    ],
    "sau": [
     "M-51",
-    "M-41"
+    "M-41",
+    "M-33",
+    "M-36"
    ],
    "nguoi": "QT",
    "thuTuCuaNguoi": 2
@@ -376,6 +379,39 @@
     "M-52"
    ],
    "nguoi": "QT",
+   "thuTuCuaNguoi": 3
+  },
+  "M-36": {
+   "ten": "Tóm tắt nút: gồm gì, loại gì, tách với ai – rút từ luật, có trích",
+   "lop": 3,
+   "tep": [
+    "data/luat-goc/tom-tat/**",
+    "scripts/luat-goc/tom-tat*.mjs"
+   ],
+   "sau": [
+    "M-11",
+    "M-13",
+    "M-14",
+    "M-15",
+    "M-18"
+   ],
+   "nguoi": "QT + Studio",
+   "thuTuCuaNguoi": 3
+  },
+  "M-37": {
+   "ten": "Chỉ mục nghĩa trên nút luật (cửa vào)",
+   "lop": 3,
+   "tep": [
+    "lib/chi-muc-luat.js",
+    "scripts/luat-goc/chi-muc*.mjs",
+    "scripts/test-chi-muc-luat.mjs",
+    "data/luat-goc/chi-muc/**"
+   ],
+   "sau": [
+    "M-14",
+    "M-31"
+   ],
+   "nguoi": "QT + GPU",
    "thuTuCuaNguoi": 3
   }
  }
