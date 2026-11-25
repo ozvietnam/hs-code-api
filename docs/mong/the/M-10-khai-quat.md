@@ -24,3 +24,6 @@ node scripts/luat-goc/cau.mjs phan chuong
 **Hệ quả**
 - `doi-ma.json` dựng lại. Sửa `doi-ma-nguon.js` (M-35): `phan:NN` là số CHƯƠNG (50 → Phần XI), không phải số Phần (hàm cũ ra "L", "VI" cho chương 06); nối nhiều nút cho `phanNN.phan`; mối nối trước gạch đầu dòng; câu dẫn lặp lấy chỗ gần nhất. Không sửa thì 32 trích qua nhiều đoạn bị ghi nhầm là LUẬT CŨ.
 - `nghia-canh` (M-33, #1956): bảng đổi câu và việc bỏ phiếu lại ở `~/ng3` trên máy dev; không bịa phiếu.
+
+## Bỏ phiếu lại nghĩa cạnh (QT, 26/11 03:30)
+417 câu / 1.167 cạnh đổi câu dẫn: hai mô hình đọc lại với câu dẫn mới; 1.010 cạnh khớp (324 LOAI_SANG, 106 PHAN_VE), 157 CHUA_RO. `nghia.mjs --kiem` PASS 19.509 cạnh.
