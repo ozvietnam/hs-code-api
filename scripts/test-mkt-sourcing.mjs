@@ -19,7 +19,7 @@ const require = createRequire(import.meta.url);
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 
 for (const k of ['GEMINI_API_KEY', 'GEMINI_FREE_KEYS', 'HERMES_API_KEY', 'MINIMAX_API_KEY', 'OPENROUTER_API_KEY', 'DEEPSEEK_API_KEY',
-  'LLM_NO_TRAIN_PROVIDERS', 'HS_LLM_PRIVATE_ALL', 'HS_MATCH_PUBLIC', 'HS_MKT_SOURCING', 'HS_MKT_SOURCING_RPM', 'HS_MKT_SOURCING_CONCURRENCY']) delete process.env[k];
+  'LLM_NO_TRAIN_PROVIDERS', 'HS_LLM_PRIVATE_ALL', 'HS_MKT_SOURCING', 'HS_MKT_SOURCING_RPM', 'HS_MKT_SOURCING_CONCURRENCY']) delete process.env[k];
 process.env.HS_API_TOKEN = 'test-token';
 process.env.HS_SERVICE_TOKENS = 'oz-mkt:khoa-mkt';
 process.env.HS_PUBLIC_LLM = 'true'; // kể cả khi 4 endpoint LLM đang mở công khai, sourcing vẫn KÍN

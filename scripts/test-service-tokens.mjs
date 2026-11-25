@@ -12,7 +12,6 @@ process.env.HS_SERVICE_TOKENS = 'cong-oz:khoa-cong,erp:khoa:co:dau:hai-cham';
 process.env.HS_ACCESS_LOG = '0';
 process.env.HS_CLASSIFY_CROSSCHECK = '0';
 delete process.env.HS_PUBLIC_LLM;
-delete process.env.HS_MATCH_PUBLIC;
 
 const { requireAuth, serviceCaller } = require('../lib/auth.js');
 const { recordUsage } = require('../lib/usage-context.js');
