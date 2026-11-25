@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:tho-hs-01-20261120#soat-850440-v1",
-    "ngay": "2026-11-20",
-    "ghiChu": "OZV-1652: gắn thêm tenLoai Bộ chỉnh lưu vào 85044030 để chốt tất định DONG_CO_TEN 85044030 và LOAI_TRU_LOAI_KHAC 85044090; cổng --kiem XANH 0 lỗi 0 DỪNG",
-    "bam": "8ec35889347df204fe674adf67c245928325beed8581653c2e017e85ae88de4c"
+    "phien": "paperclip:tho-hs-03-ozv-2254",
+    "ngay": "2026-11-25",
+    "ghiChu": "OZV-1652: gắn thêm tenLoai Bộ chỉnh lưu vào 85044030 để chốt tất định DONG_CO_TEN 85044030 và LOAI_TRU_LOAI_KHAC 85044090; cổng --kiem XANH 0 lỗi 0 DỪNG; OZV-2254: gộp ngưỡng kVA vào tenLoai 85044020 — hết hỏi kVA thừa cho mọi bộ biến đổi tĩnh điện",
+    "bam": "730720b0638c9c26b776318b451d63cba982f6ee285c2268205f2974b5dc95a7"
   },
   "dieuKienNut": [
     {
@@ -67,13 +67,7 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Máy nạp ắc qui"
-        },
-        {
-          "fact": "congSuatBieuKien",
-          "op": ">",
-          "value": 100,
-          "donVi": "kVA"
+          "value": "Máy nạp ắc qui, pin có công suất danh định trên 100 kVA"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -180,7 +174,7 @@
     {
       "ma": "85044020",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85044020 \"Máy nạp ắc qui, pin có công suất danh định trên 100 kVA\" ⇒ tenLoai \"Máy nạp ắc qui\" + congSuatBieuKien > 100 kVA"
+      "ghiChu": "OZV-2254: tax.85044020 gộp thành MỘT vế tenLoai đúng nguyên văn dòng biểu (gồm ngưỡng >100 kVA). Tách congSuatBieuKien riêng khiến mọi hàng 8504.40 (servo, bộ nguồn 260W…) bị hỏi kVA — hỏi thừa; ngưỡng công suất nằm trong câu «Hàng có phải là máy nạp… trên 100 kVA?»."
     },
     {
       "ma": "85044030",
