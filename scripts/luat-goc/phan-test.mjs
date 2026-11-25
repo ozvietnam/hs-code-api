@@ -25,11 +25,11 @@ const nuts = rawLines.map((l) => JSON.parse(l));
 const byId = new Map(nuts.map((n) => [n.id, n]));
 const batBuoc = JSON.parse(fs.readFileSync(pBatBuoc, 'utf8'));
 
-kiem('tổng 290 nút (21 TEN + 202 CG + 33 CGPN + 34 KQ)',
-  nuts.length === 290 &&
+kiem('tổng 293 nút (21 TEN + 204 CG + 34 CGPN + 34 KQ)',
+  nuts.length === 293 &&
   nuts.filter((x) => x.loai === 'TEN').length === 21 &&
-  nuts.filter((x) => x.loai === 'CHU_GIAI').length === 202 &&
-  nuts.filter((x) => x.loai === 'CHU_GIAI_PHAN_NHOM').length === 33 &&
+  nuts.filter((x) => x.loai === 'CHU_GIAI').length === 204 &&
+  nuts.filter((x) => x.loai === 'CHU_GIAI_PHAN_NHOM').length === 34 &&
   nuts.filter((x) => x.loai === 'KHAI_QUAT').length === 34
 );
 
@@ -92,7 +92,19 @@ kiem('phan:XI:kq:3 và kq:5 giữ đủ BẢNG I và BẢNG II',
 const lotAnh = SUA_TAY.anhTrangTrinh.filter((a) =>
   nuts.some((n) => n.nguyenVan.includes(a.chu))
 );
-kiem('không sót chú thích ảnh trang trí HQKV8 nào trong 290 nút', lotAnh.length === 0, JSON.stringify(lotAnh));
+kiem('không sót chú thích ảnh trang trí HQKV8 nào trong 293 nút', lotAnh.length === 0, JSON.stringify(lotAnh));
+
+// Kiểm tra nút đoạn kết (:ket): cha = khoản, so: null, đứng sau các điểm con, nút khoản chỉ giữ câu dẫn
+const idxOf = new Map(nuts.map((n, i) => [n.id, i]));
+kiem('nút đoạn kết :ket hợp lệ (so=null, đứng sau điểm con, không còn doanSau)',
+  ['phan:XV:cg:2', 'phan:XVII:cg:5', 'phan:XI:cgpn:1:g'].every((cha) => {
+    const ket = byId.get(`${cha}:ket`);
+    const nutCha = byId.get(cha);
+    const conThuong = nuts.filter((n) => n.cha === cha && !n.id.endsWith(':ket'));
+    const maxConIdx = Math.max(...conThuong.map((c) => idxOf.get(c.id)));
+    return ket && ket.cha === cha && ket.so === null && idxOf.get(ket.id) > maxConIdx && /:\s*$/.test(nutCha?.nguyenVan || '');
+  }) && nuts.every((n) => n.doanSau === undefined)
+);
 
 // Unit test ngoại tuyến cho phan-trich.mjs: tách La Mã (i),(ii) vs chữ cái (v), tách 6 (A) không chấm
 const fakePages = new Array(8).fill('');

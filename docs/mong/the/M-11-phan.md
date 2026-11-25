@@ -1,17 +1,17 @@
 # Báo cáo thẻ M-11 (#1899): 21 Phần HS 2022 (`phan:I`..`phan:XXI`)
 
-- **Nhánh:** `mong/m-11-phan` (tách từ `origin/mong/m-01-cong`)
-- **Đầu ra dữ liệu:** `data/luat-goc/phan.jsonl` (**290 nút**, khuôn `nut-luat@1`)
-- **SHA-256 (khớp 2 lần chạy liên tiếp):** `ca242081b818d0b51ab74c79b982652b840a9f2440d0aff0e8e86a8b24977974`
+- **Nhánh:** `mong/m-11-phan` (tách từ `origin/mong/m-01-cong`, đã merge `origin/mong/m-01-ket`)
+- **Đầu ra dữ liệu:** `data/luat-goc/phan.jsonl` (**293 nút**, khuôn `nut-luat@1`)
+- **SHA-256 (khớp 2 lần chạy liên tiếp):** `ad6d8fcd66c8c7648be640d128dda82753471387fcfd5f08dd847dee2a542b7e`
 - **Bộ trích tất định:** `scripts/luat-goc/phan-trich.mjs`
 - **Bộ kiểm ngoại tuyến CI:** `scripts/luat-goc/phan-test.mjs` (đã đăng ký vào giữa `scripts/danh-sach-test.txt`)
 - **Nguồn gốc:** `cgct-hs2022.txt` (cùng bản đối chiếu `cgct-hs2022-layout.txt` và `cgct-hs2022-raw.txt`, tổng 2.409 trang PDF HQKV8 bản HS 2022)
 
 ---
 
-## 1. Thống kê toàn kho `data/luat-goc/phan.jsonl` (290 nút)
+## 1. Thống kê toàn kho `data/luat-goc/phan.jsonl` (293 nút)
 
-Phân bố theo `loai`: `TEN` = **21**, `CHU_GIAI` = **202**, `CHU_GIAI_PHAN_NHOM` = **33**, `KHAI_QUAT` = **34**.
+Phân bố theo `loai`: `TEN` = **21**, `CHU_GIAI` = **204**, `CHU_GIAI_PHAN_NHOM` = **34**, `KHAI_QUAT` = **34** (bao gồm 3 nút đoạn kết `:ket` với `so: null`: `phan:XI:cgpn:1:g:ket`, `phan:XV:cg:2:ket`, `phan:XVII:cg:5:ket`).
 
 | Phần | Phạm vi Chương | Trang PDF | Tổng nút | `TEN` | `CHU_GIAI` | `CHU_GIAI_PHAN_NHOM` | `KHAI_QUAT` | Ghi chú cấu trúc |
 |---|---|---:|---:|---:|---:|---:|---:|---|
@@ -25,13 +25,13 @@ Phân bố theo `loai`: `TEN` = **21**, `CHU_GIAI` = **202**, `CHU_GIAI_PHAN_NHO
 | `phan:VIII` | Ch. 41–43 | 951..951 | 1 | 1 | 0 | 0 | 0 | Chỉ có tiêu đề Phần |
 | `phan:IX` | Ch. 44–46 | 980..980 | 1 | 1 | 0 | 0 | 0 | Chỉ có tiêu đề Phần |
 | `phan:X` | Ch. 47–49 | 1061..1061 | 1 | 1 | 0 | 0 | 0 | Chỉ có tiêu đề Phần |
-| `phan:XI` | Ch. 50–63 | 1126..1150 | 137 | 1 | 92 | 33 | 11 | CG 1..15 + CGPN 1..2 + Tổng quát (gồm Bảng I, II) |
+| `phan:XI` | Ch. 50–63 | 1126..1150 | 138 | 1 | 92 | 34 | 11 | CG 1..15 + CGPN 1..2 (gồm `:1:g:ket`) + Tổng quát (gồm Bảng I, II) |
 | `phan:XII` | Ch. 64–67 | 1338..1338 | 1 | 1 | 0 | 0 | 0 | Chỉ có tiêu đề Phần |
 | `phan:XIII` | Ch. 68–70 | 1366..1366 | 1 | 1 | 0 | 0 | 0 | Chỉ có tiêu đề Phần |
 | `phan:XIV` | Ch. 71 | 1451..1451 | 1 | 1 | 0 | 0 | 0 | Chỉ có tiêu đề Phần |
-| `phan:XV` | Ch. 72–83 | 1488..1494 | 45 | 1 | 40 | 0 | 4 | CG 1..9 + Tổng quát (intro + A, B, C) |
+| `phan:XV` | Ch. 72–83 | 1488..1494 | 46 | 1 | 41 | 0 | 4 | CG 1..9 (gồm `:2:ket`) + Tổng quát (intro + A, B, C) |
 | `phan:XVI` | Ch. 84–85 | 1682..1692 | 41 | 1 | 30 | 0 | 10 | CG 1..6 + Khái quát chung (I)..(X) |
-| `phan:XVII` | Ch. 86–89 | 2095..2101 | 26 | 1 | 22 | 0 | 3 | CG 1..5 + Tổng quát (I)..(III) |
+| `phan:XVII` | Ch. 86–89 | 2095..2101 | 27 | 1 | 23 | 0 | 3 | CG 1..5 (gồm `:5:ket`) + Tổng quát (I)..(III) |
 | `phan:XVIII` | Ch. 90–92 | 2164..2164 | 1 | 1 | 0 | 0 | 0 | Chỉ có tiêu đề Phần |
 | `phan:XIX` | Ch. 93 | 2325..2325 | 1 | 1 | 0 | 0 | 0 | Chỉ có tiêu đề Phần |
 | `phan:XX` | Ch. 94–96 | 2335..2335 | 1 | 1 | 0 | 0 | 0 | Chỉ có tiêu đề Phần |
@@ -67,10 +67,10 @@ Bóc toàn bộ trường `.phan` của các chương trong `data/chu-giai-chuon
 
 ## 3. Tự đọc tay kiểm chi tiết 3 Phần trọng tâm (XV, XVI, XVII)
 
-### 3.1. Phần XV (`phan:XV`, tr.1488..1494 — 45 nút)
-- **`phan:XV:cg:1`..`cg:9` (40 nút):**
+### 3.1. Phần XV (`phan:XV`, tr.1488..1494 — 46 nút)
+- **`phan:XV:cg:1`..`cg:9` (41 nút):**
   - `phan:XV:cg:1:m` giữ nguyên danh mục mới HS 2022 (`chân để loại một chân (monopod), hai chân (bipod), ba chân (tripod)...`, khác chữ `"chân đế"` ở bản cũ).
-  - `phan:XV:cg:2` có `phan:XV:cg:2:a` giữ nguyên văn `(nhóm 90.21)` cho sản phẩm cấy ghép y tế; hai đoạn quy định phạm vi tiếp theo sau mục `(c)` (`"Từ Chương 73 đến Chương 76..."` và `"Theo nội dung trên..."`) được gắn đúng về nút cha `phan:XV:cg:2` qua `SUA_TAY.doanVeNutCha` thay vì rơi nhầm vào `:2:c`.
+  - `phan:XV:cg:2` giữ nguyên vẹn câu dẫn kết bằng dấu `:` (`"2. Trong Danh mục này, khái niệm “các bộ phận có công dụng chung” có nghĩa:"`); `phan:XV:cg:2:a` giữ nguyên `(nhóm 90.21)`; hai đoạn tiếp theo sau mục `(c)` (`"Từ Chương 73 đến Chương 76..."` và `"Theo nội dung trên..."`) được tách thành nút riêng **`phan:XV:cg:2:ket`** (`cha: "phan:XV:cg:2"`, `so: null`, đứng sau `:2:c`) qua `SUA_TAY.doanKetKhoan`.
   - `phan:XV:cg:8:a` tách đúng thành `:i` (`Tất cả phế liệu...`) và `:ii` (`các sản phẩm bằng kim loại chắc chắn không thể sử dụng được...`) theo chuẩn HS 2022.
   - `phan:XV:cg:9` tách đủ `a` (Thanh và que), `b` (Dạng hình), `c` (Dây — tỷ lệ `trên 1/10 chiều rộng`), `d` (Tấm, lá, dải và lá mỏng), `e` (Ống và ống dẫn). (Bản cũ trong `chu-giai-chuong.json` từng mất/khác nhiều chỗ ở mục 8 và 9).
 - **`phan:XV:kq:1..4` (4 nút `TỔNG QUÁT`):**
@@ -85,10 +85,10 @@ Bóc toàn bộ trường `.phan` của các chương trong `data/chu-giai-chuon
 - **`phan:XVI:kq:1..10` (`KHÁI QUÁT CHUNG`, 10 nút):**
   - Khôi phục đủ đoạn cuối mục `(IX)` và toàn bộ mục `(X) PHẾ LIỆU VÀ PHẾ THẢI ĐIỆN VÀ ĐIỆN TỬ (Chú giải phần 6)` trên tr.1692 (bản cũ bị cắt cụt ngang giữa mục `(IX)`).
 
-### 3.3. Phần XVII (`phan:XVII`, tr.2095..2101 — 26 nút)
-- **`phan:XVII:cg:1`..`cg:5` (22 nút):**
+### 3.3. Phần XVII (`phan:XVII`, tr.2095..2101 — 27 nút)
+- **`phan:XVII:cg:1`..`cg:5` (23 nút):**
   - `phan:XVII:cg:2:k` giữ thuật ngữ HS 2022 `Đèn (luminaires) và bộ đèn... thuộc nhóm 94.05`.
-  - `phan:XVII:cg:5` (tr.2096) chuẩn hóa đúng bản HS 2022 (`chạy trên đất`, `chạy trên nước` thay vì cụm dịch cũ `không tiếp đất`/`không tiếp nước`), và hai đoạn giải thích bộ phận đệm không khí sau `(c)` (`"Bộ phận và phụ kiện..."` và `"Các bộ phận cố định và khớp nối..."`) được trả về nút cha `phan:XVII:cg:5` qua `SUA_TAY.doanVeNutCha`.
+  - `phan:XVII:cg:5` giữ nguyên câu dẫn kết bằng dấu `:` theo bản HS 2022 (`chạy trên đất`, `chạy trên nước`), và hai đoạn giải thích bộ phận đệm không khí sau `(c)` (`"Bộ phận và phụ kiện..."` và `"Các bộ phận cố định và khớp nối..."`) được tách thành nút riêng **`phan:XVII:cg:5:ket`** (`cha: "phan:XVII:cg:5"`, `so: null`, đứng sau `:5:c`) qua `SUA_TAY.doanKetKhoan`.
 - **`phan:XVII:kq:1..3` (`TỔNG QUÁT`, 3 nút):** Đủ `(I)`, `(II)`, `(III)` kể cả đoạn mở rộng trò chơi công viên giải trí/công viên nước ở `(I)(c)` và danh mục ví dụ loại trừ `(1)..(12)` ở `(III)`.
 
 ---
@@ -117,7 +117,7 @@ Mỗi Phần đều có một dòng chú thích ảnh phong cảnh Quảng Ninh 
 
 1. **`SUA_TAY.anhTrangTrinh`:** Loại 21 dòng chú thích ảnh HQKV8 (bảng Mục 4). Khẳng định nếu thiếu dòng nào ở bản nguồn mới thì dừng báo lỗi ngay.
 2. **`SUA_TAY.chuGiaiKhongCham` (tr.1684):** Chú giải 6 Phần XVI trong PDF viết `"6 (A)..."` thiếu dấu chấm sau số `6`; chuẩn hóa đầu mục nút cha là `"6."` để không kích nhầm cảnh báo dính số trang.
-3. **`SUA_TAY.doanVeNutCha` (5 đoạn ở tr.1127, tr.1489, tr.2096):** Đưa các đoạn giải thích chung đi liền sau liệt kê `(a)..(c)` / `(A)` về đúng nút cha (`phan:XI:cg:2:A`, `phan:XV:cg:2`, `phan:XVII:cg:5`).
+3. **`SUA_TAY.doanKetKhoan` (5 đoạn trên tr.1133, tr.1489, tr.2096):** Tách các đoạn giải thích chung đi liền sau các điểm con thành 3 nút `:ket` (`cha` = khoản, `so: null`, đứng ngay sau điểm con cuối): `phan:XI:cgpn:1:g:ket` (`tr.1133`), `phan:XV:cg:2:ket` (`tr.1489`), `phan:XVII:cg:5:ket` (`tr.2096`).
 4. **`SUA_TAY.bangPhanXI` (tr.1139–1140 `BẢNG I` và tr.1141–1142 `BẢNG II`):** Trong bản `cgct-hs2022.txt` (stream), các ô của Bảng I và Bảng II 3 cột bị xếp xen dòng; bộ trích lấy nguyên văn từng dòng đã căn cột từ `cgct-hs2022-layout.txt` (không thêm chữ hay sửa chính tả) để đọc đúng hàng và qua đối chiếu 3 bản chữ 0 lỗi.
 5. **Dị bản chính tả & hình ảnh có sẵn trong PDF gốc HQKV8 (giữ nguyên văn, không tự sửa):**
    - `phan:XI:cg:1:b` (tr.1126): PDF in lặp `"(b) (b) Tóc người..."`.
@@ -129,7 +129,7 @@ Mỗi Phần đều có một dòng chú thích ảnh phong cảnh Quảng Ninh 
 
 ## 6. Kiểm chứng đã chạy
 
-- `node scripts/luat-goc/phan-trich.mjs --ghi` (chạy 2 lần): cùng ra 290 nút, SHA-256 giống hệt nhau `ca242081b818d0b51ab74c79b982652b840a9f2440d0aff0e8e86a8b24977974`.
-- `LUAT_GOC_TXT="$HOME/luat-goc-txt" node scripts/kiem-luat-goc.mjs phan`: `PASS phan: 290 nút, 0 lỗi, 0 cảnh báo — đối chiếu 3 bản chữ`.
-- `node scripts/luat-goc/phan-test.mjs` (cả khi có và không có `LUAT_GOC_TXT`): `16 passed, 0 failed`.
+- `node scripts/luat-goc/phan-trich.mjs --ghi` (chạy 2 lần): cùng ra 293 nút, SHA-256 giống hệt nhau `ad6d8fcd66c8c7648be640d128dda82753471387fcfd5f08dd847dee2a542b7e`.
+- `LUAT_GOC_TXT="$HOME/luat-goc-txt" node scripts/kiem-luat-goc.mjs phan`: `PASS phan: 293 nút, 0 lỗi, 0 cảnh báo — đối chiếu 3 bản chữ`.
+- `env -u LUAT_GOC_TXT node scripts/luat-goc/phan-test.mjs` và `LUAT_GOC_TXT="$HOME/luat-goc-txt" node scripts/luat-goc/phan-test.mjs`: đều `17 passed, 0 failed`.
 - `node scripts/test-danh-sach-test.mjs`: `18/18 passed, 0 failed` (đảm bảo `phan-test.mjs` chèn ở giữa danh sách, không đặt cuối).

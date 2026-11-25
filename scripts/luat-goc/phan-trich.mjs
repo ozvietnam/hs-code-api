@@ -46,12 +46,12 @@ export const SUA_TAY = {
   chuGiaiKhongCham: [
     { phan: 'XVI', trang: 1684, mau: /^6\s+\(A\)\s+/, lyDo: 'Chú giải 6 Phần XVI thiếu dấu chấm sau số 6 (viết "6 (A)")' },
   ],
-  doanVeNutCha: [
-    { phan: 'XI', trang: 1127, nutCha: 'phan:XI:cg:2:A', batDau: 'Khi không có một vật liệu dệt nào chiếm khối lượng trội hơn', lyDo: 'Đoạn kết của mục 2(A) Phần XI không có thụt đầu dòng riêng' },
-    { phan: 'XV', trang: 1489, nutCha: 'phan:XV:cg:2', batDau: 'Từ Chương 73 đến Chương 76', lyDo: 'Hai đoạn tiếp theo sau mục (c) thuộc thẳng Chú giải 2 Phần XV' },
-    { phan: 'XV', trang: 1489, nutCha: 'phan:XV:cg:2', batDau: 'Theo nội dung trên và theo Chú giải 1 của Chương 83', lyDo: 'Đoạn cuối Chú giải 2 Phần XV tiếp sau đoạn "Từ Chương 73..."' },
-    { phan: 'XVII', trang: 2096, nutCha: 'phan:XVII:cg:5', batDau: 'Bộ phận và phụ kiện của các phương tiện chạy trên đệm không khí', lyDo: 'Hai đoạn tiếp theo sau mục (c) thuộc thẳng Chú giải 5 Phần XVII' },
-    { phan: 'XVII', trang: 2096, nutCha: 'phan:XVII:cg:5', batDau: 'Các bộ phận cố định và khớp nối của đường ray tàu chạy trên đệm không khí', lyDo: 'Đoạn cuối Chú giải 5 Phần XVII' },
+  doanKetKhoan: [
+    { phan: 'XI', trang: 1133, nutCha: 'phan:XI:cgpn:1:g', batDau: '(Trong mọi trường hợp, các loại sợi dùng làm sợi biên hoặc sợi đầu tấm', lyDo: 'Đoạn kết của Chú giải phân nhóm 1(g) Phần XI sau (iii), tách thành phan:XI:cgpn:1:g:ket' },
+    { phan: 'XV', trang: 1489, nutCha: 'phan:XV:cg:2', batDau: 'Từ Chương 73 đến Chương 76', lyDo: 'Hai đoạn tiếp theo sau mục (c) thuộc Chú giải 2 Phần XV, tách thành phan:XV:cg:2:ket' },
+    { phan: 'XV', trang: 1489, nutCha: 'phan:XV:cg:2', batDau: 'Theo nội dung trên và theo Chú giải 1 của Chương 83', lyDo: 'Đoạn thứ hai của phan:XV:cg:2:ket' },
+    { phan: 'XVII', trang: 2096, nutCha: 'phan:XVII:cg:5', batDau: 'Bộ phận và phụ kiện của các phương tiện chạy trên đệm không khí', lyDo: 'Hai đoạn tiếp theo sau mục (c) thuộc Chú giải 5 Phần XVII, tách thành phan:XVII:cg:5:ket' },
+    { phan: 'XVII', trang: 2096, nutCha: 'phan:XVII:cg:5', batDau: 'Các bộ phận cố định và khớp nối của đường ray tàu chạy trên đệm không khí', lyDo: 'Đoạn thứ hai của phan:XVII:cg:5:ket' },
   ],
   bangPhanXI: {
     trangBangI: [1139, 1140],
@@ -214,8 +214,8 @@ function phanTichChuGiai(dong, { phanId, prefix, loai }) {
     return node;
   };
 
-  const ensureParentChain = (targetLevel, trang, firstLineNumToken = null) => {
-    const rank = { num: 1, upper: 2, lower: 3, roman: 4 };
+  const ensureParentChain = (targetLevel) => {
+    const rank = { num: 1, upper: 2, lower: 3, roman: 4, ket: 5 };
     while (stack.length && rank[stack[stack.length - 1].level] >= rank[targetLevel]) {
       stack.pop();
     }
@@ -224,14 +224,21 @@ function phanTichChuGiai(dong, { phanId, prefix, loai }) {
 
   for (const item of dong) {
     const { trang, text } = item;
-    // Kiểm tra đoạn cuối quay về nút cha theo SUA_TAY
-    const tailRule = SUA_TAY.doanVeNutCha.find((r) => r.trang === trang && text.startsWith(r.batDau));
-    if (tailRule) {
-      const target = nuts.find((n) => n.id === tailRule.nutCha);
-      if (!target) throw new Error(`Không tìm thấy nút cha "${tailRule.nutCha}" trên tr.${trang}`);
-      // Đưa stack về đúng cấp của target
-      while (stack.length && stack[stack.length - 1].node.id !== tailRule.nutCha) stack.pop();
-      target.parts.push('\n' + text);
+    // Tách đoạn kết sau các điểm con thành nút riêng <cha>:ket (cha = khoản, so: null)
+    const ketRule = SUA_TAY.doanKetKhoan.find((r) => r.trang === trang && text.startsWith(r.batDau));
+    if (ketRule) {
+      const chaNode = nuts.find((n) => n.id === ketRule.nutCha);
+      if (!chaNode) throw new Error(`Không tìm thấy nút khoản "${ketRule.nutCha}" trên tr.${trang}`);
+      while (stack.length && stack[stack.length - 1].node.id !== ketRule.nutCha) stack.pop();
+      const ketId = `${ketRule.nutCha}:ket`;
+      let ketNode = nuts.find((n) => n.id === ketId);
+      if (!ketNode) {
+        ketNode = { id: ketId, loai: chaNode.loai, lop: 'LUAT', cha: ketRule.nutCha, so: null, parts: [text], trang };
+        nuts.push(ketNode);
+      } else {
+        ketNode.parts.push('\n' + text);
+      }
+      stack.push({ level: 'ket', token: 'ket', node: ketNode });
       continue;
     }
 
