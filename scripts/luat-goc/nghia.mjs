@@ -78,7 +78,7 @@ function main() {
   if (a[0] === '--ghep') {
     const P = a.slice(1, 3).map((f) => new Map(docJsonl(f).map((x) => [`${x.cau}\0${x.den}`, x]))); const dem = {};
     for (const v of V.values()) for (const c of v.canh) {
-      const k = `${v.cau}\0${c.den}`; const [p1, p2] = P.map((m) => m.get(k)); if (!p1 || !p2) { dem.thieuPhieu = (dem.thieuPhieu || 0) + 1; continue; }
+      const k = `${v.cau}\0${c.den}`; const [p1, p2] = P.map((m) => m.get(k)); if (!p1 || !p2) { dem.thieuPhieu = (dem.thieuPhieu || 0) + 1; console.log(JSON.stringify({ tu: v.cau, den: c.den, trangThai: 'CHUA_RO', vi: 'thiếu phiếu', phieu: [p1, p2].filter(Boolean).map(({ loai, dieuKien, mo }) => ({ loai, dieuKien, mo })) })); continue; }
       const r = ghep(v, c.den, p1, p2); const n = r.trangThai === 'KHOP' ? r.loai : 'CHUA_RO'; dem[n] = (dem[n] || 0) + 1;
       console.log(JSON.stringify({ tu: v.cau, den: c.den, ...r, phieu: [p1, p2].map(({ loai, dieuKien, mo }) => ({ loai, dieuKien, mo })) }));
     }
