@@ -69,6 +69,17 @@ console.log('3. Máy nạp ắc qui: không còn ép hỏi kVA khi chưa rõ tê
   check('mô tả chung 850440 không thiếu congSuatBieuKien', !miss.includes('congSuatBieuKien'), JSON.stringify(miss));
 }
 
+console.log('4. Rào ngược: đã khớp tên máy nạp → vẫn hỏi congSuatBieuKien');
+{
+  const cd = chotDong8({ hs: '850440', productText: 'máy nạp ắc qui công nghiệp' });
+  const miss = (cd.missingFacts || []).map((m) => m.fact);
+  check(
+    'máy nạp ắc qui → thiếu congSuatBieuKien (ngưỡng >100 kVA còn riêng)',
+    miss.includes('congSuatBieuKien'),
+    JSON.stringify({ ketQua: cd.ketQua, miss }),
+  );
+}
+
 if (failed) {
   console.error(`\nFAILED ${failed}`);
   process.exit(1);

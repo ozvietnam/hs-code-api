@@ -125,8 +125,7 @@ check('phân nhóm chưa số hóa ranh giới → KHONG_THE_CHOT (điểm mù)'
 
 // #195 chốt dòng — 3 hành vi sau đọc tay 18 ca oan (13/10); OZV-1660 cập nhật sau PR #1495 duyệt ranh giới 850440:
 cd = chotDong8({ hs: '85044090', productText: 'Bộ nguồn 260W, đầu vào AC100-240V' });
-// OZV-2254: 85044020 gộp ngưỡng >100 kVA vào tenLoai (hết hỏi kVA thừa) ⇒ phủ định dòng .20 bằng
-// «không phải máy nạp ắc qui», không còn dựa vào «1 kVA» để TRAI vế số.
+// OZV-2254: phủ định dòng .20 bằng «không phải máy nạp ắc qui» (tenLoai tách riêng; kVA chỉ hỏi khi tên khớp).
 const cd85044090Trai = chotDong8({
   hs: '85044090',
   productText: 'Bộ nguồn 260W, không phải bộ nguồn cấp điện liên tục, không phải máy nạp ắc qui, không phải bộ chỉnh lưu, không phải bộ nghịch lưu',
