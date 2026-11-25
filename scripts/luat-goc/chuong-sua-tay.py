@@ -22,7 +22,7 @@ SUA = [
 ]
 DOI = [
  {'trang': 1605, 'dau': 'Fe+ Si (Sẳt', 'moi': True, 'lyDo': 'hàng bảng'},
- {'trang': 1262, 'dau': 'Tuy nhiên, nhóm này không áp dụng cho các tấm', 'toi': 'chuong:59:cg:5', 'khoi': True, 'lyDo': 'đoạn kết của cả khoản 5; lời dẫn khoản 5 in không có dấu hai chấm nên để thành khối riêng không số (cg:5:2)'},
+ {'trang': 1262, 'dau': 'Tuy nhiên, nhóm này không áp dụng cho các tấm', 'toi': 'chuong:59:cg:5', 'lyDo': 'đoạn kết của cả khoản 5'},
  {'trang': 103, 'dau': 'Ngũ cốc Hàm', 'toi': 'chuong:11:cg:2', 'lyDo': 'bảng thuộc cả khoản 2 (Cột 2–5 dùng ở (A) và (B))'},
  {'trang': 103, 'dau': '(1) (2)', 'lyDo': 'số cột của bảng, không phải điểm'},
  {'trang': 1605, 'dau': '(1) Các nguyên tố khác, ví dụ', 'moi': True, 'lyDo': 'chú thích bảng, không phải điểm'},

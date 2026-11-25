@@ -3,7 +3,7 @@
 Tất định, không mạng, không AI. Trang = thứ tự khối \\f (trùng số trang in "— N —").
   python3 scripts/luat-goc/chuong.py [--txt ~/luat-goc-txt/cgct-hs2022.txt] [--ra data/luat-goc/chuong.jsonl] [--phang <tệp chuong.txt cho LUAT_GOC_TXT>] [--bao]
 Nút cha giữ lời dẫn và đoạn kết của chính nó, nút con giữ chữ của con: mỗi chữ chỉ nằm ở một nút.
-Đoạn nằm sau nút con được ghi ở doanSau: [{sauNut, tu}] (tu = vị trí ký tự bắt đầu đoạn trong nguyenVan).
+Đoạn in sau các điểm con là nút riêng …:ket.
 """
 import argparse, json, os, re, sys, unicodedata
 from collections import Counter
@@ -94,6 +94,7 @@ def noi(a, b):
     return a + ' ' + b
 
 class Nut:
+    TR = 0   # trang của dòng đang đọc
     def __init__(s, id, cha, so, trang, kieu=None, gt=None, cot=0):
         s.id, s.cha, s.so, s.trang, s.kieu, s.gt, s.cot = id, cha, so, trang, kieu, gt, cot
         s.doan = []   # [(text, sauNut|None)]
@@ -101,7 +102,7 @@ class Nut:
     def them(s, l, moi, sau=None):
         t = re.sub(r'[  ]{2,}', '  ', l.strip()) if moi == 'bang' else re.sub(r'\s+', ' ', l.strip())
         if not s.doan or moi or (sau and s.doan[-1][1] != sau):
-            s.doan.append([t, sau])
+            s.doan.append([t, sau, Nut.TR])
         else: s.doan[-1][0] = noi(s.doan[-1][0], t)
 
 MOC = [('so', re.compile(r'^(\d{1,2})\s?(?:\.\s?[-–]|\.|[-–])\s*(?=\D)')), ('ngoac', re.compile(r'^\(?([a-zđ]{1,4}|[A-Z]|\d{1,2})\)\s*')), ]
@@ -141,7 +142,7 @@ def tach(goc, dong, co, nuts, bao, giu=(), toi={}, doi=()):
         if cha: cha.con.append(x.id); cha.cuoiCon[kieu] = v
         return x
     for trang, l in dong:
-        t = l.strip(); cot = len(l) - len(l.lstrip()); chon = None
+        t = l.strip(); cot = len(l) - len(l.lstrip()); chon = None; Nut.TR = trang
         dm = next((d for d in doi if d['trang'] == trang and re.sub(r'\s+', ' ', t).startswith(d['dau'])), None); bo = bool(dm)
         if dm: dm['da'] = True
         moc = [] if bo else cac_moc(t)
@@ -157,13 +158,13 @@ def tach(goc, dong, co, nuts, bao, giu=(), toi={}, doi=()):
             for kieu, v, e in moc:
                 if kieu == 'so': kieu = 's2'
                 if v == DAU[kieu] and ngan:
-                    # danh sách mở lại trong cùng nút: khối thứ 2, không số in
-                    k = next((q for q in range(len(ngan)) if kieu in ngan[q].cuoiCon), None)
-                    if k is not None and (k == len(ngan) - 1):
-                        P = ngan[k]; dan = P.doan.pop() if P.doan and P.doan[-1][1] else None
-                        if not dan or any(z.startswith(P.id + ':2') for z in P.con): sys.exit(f'{P.id} tr{trang}: danh sách mở lại không rõ lời dẫn: {t[:60]}')
-                        y = mo(P, 'khoi', '2', False, t, cot, e, dtr); y.doan = [[dan[0], None]]; y.so = None; y.soCha = P.so
-                        bao.append(f'KHỐI {y.id} tr{trang}: {dan[0][:80]}')
+                    # danh sách mở sau một đoạn không số in sau điểm con: đoạn đó thành nút ket và giữ danh sách
+                    P = ngan[-1]; dan = [z for z in P.doan if z[1]]
+                    if dan and P.con and dan[-1][1] == P.con[-1]:
+                        P.doan = [z for z in P.doan if z[1] != P.con[-1]]; dan = [z for z in dan if z[1] == P.con[-1]]
+                        y = mo(P, 'khoi', 'ket', False, t, cot, e, dan[0][2]); y.doan = [[z[0], None, z[2]] for z in dan]; y.soCha = P.so
+                        bao.append(f'KET có danh sách {y.id} tr{dan[0][2]}: {dan[0][0][:80]}')
+                    elif kieu in P.cuoiCon: sys.exit(f'{P.id} tr{trang}: danh sách mở lại không rõ lời dẫn: {t[:60]}')
                     chon = (kieu, v, e, len(ngan) - 1, True); break
         if chon:
             kieu, v, e, k, _ = chon
@@ -182,9 +183,6 @@ def tach(goc, dong, co, nuts, bao, giu=(), toi={}, doi=()):
             if not ngan: ds.append((trang, t)); truoc = t; continue
             if cac_moc(t) and not dm: bao.append(f'MỐC BỎ {ngan[-1].id} tr{trang} cột {cot}: …{truoc[-40:]} ‖ {t[:60]}')
             if dm and dm.get('toi'): del ngan[[z.id for z in ngan].index(dm['toi']) + 1:]
-            if dm and dm.get('khoi'):
-                P = ngan[-1]; y = mo(P, 'khoi', '2', False, t, cot, 0, trang); y.soCha = P.so; y.them(l, True); y.cuoi = cot; truoc = t; dtr = trang
-                bao.append(f'KHỐI {y.id} tr{trang}: {t[:80]}'); continue
             x = ngan[-1]
             thuong = t[0].islower()
             lien = thuong or not re.search(r'[.;:…]["”)]?$|[;:.,]\s*(?:hoặc|và)$', truoc) and not re.match(r'^(BẢNG|Bảng)\b', t)
@@ -204,6 +202,30 @@ def tach(goc, dong, co, nuts, bao, giu=(), toi={}, doi=()):
             x.them(l, moi, sau); x.cuoi = cot; dtr = trang
         truoc = t; tbang = not chon and bang
     return ds
+
+def tach_ket(nuts):
+    """đoạn in sau các điểm con -> nút riêng …:ket (nhiều đoạn rời nhau: ket:1, ket:2), đứng ngay sau điểm con trước nó."""
+    def duoi(i):   # chỉ số sau nút cuối cùng trong cây con của nuts[i]
+        j = i + 1
+        while j < len(nuts) and nuts[j].id.startswith(nuts[i].id + ':'): j += 1
+        return j
+    for P in list(nuts):
+        nhom = {}
+        for z in P.doan:
+            if z[1]: nhom.setdefault(z[1], []).append(z)
+        P.doan = [z for z in P.doan if not z[1]]
+        for sau, zs in nhom.items():
+            y = Nut(f'{P.id}:ket~{sau}', P.id, None, zs[0][2], 'khoi', 'ket'); y.doan = [[z[0], None, z[2]] for z in zs]; y.soCha = None
+            nuts.insert(duoi(next(i for i, x in enumerate(nuts) if x.id == sau)), y)
+        ket = [x for x in nuts if x.cha == P.id and x.kieu == 'khoi']
+        for k, y in enumerate(ket, 1):
+            cu = y.id; moi = f'{P.id}:ket' + (f':{k}' if len(ket) > 1 else '')
+            if cu == moi: continue
+            for x in nuts:
+                if x.id.startswith(cu + ':') and x is not y: x.id = moi + x.id[len(cu):]
+                if x.cha and (x.cha == cu or x.cha.startswith(cu + ':')): x.cha = moi + x.cha[len(cu):]
+            y.id = moi
+    return nuts
 
 def khai_quat(dong):
     """gộp khái quát thành đoạn: mỗi đoạn lề trái một nút, danh sách đi cùng lời dẫn của nó."""
@@ -264,6 +286,7 @@ def main():
                     x = Nut(f'{goc}:kq:{q}', goc, None, n); x.doan = [['\n'.join(doan), None]]; nuts.append(x)
             else:
                 thua = tach(f'{goc}:{k}', d, goc, nuts, bao, GIU, TOI, DOI)
+                tach_ket(nuts)
                 if thua: bao.append(f'!! {goc}:{k} chữ trước khoản 1: {thua}')
         so_ngoai = len(nuts); pcd = []
         for _, so, tn, dk in [x for x in PCS if x[0] == c]:
@@ -281,14 +304,9 @@ def main():
         A = Counter(g(''.join(l for k, d in muc for _, l in d if not RE_SAO.match(l)))); B = Counter(g(''.join(d[0] for x in nuts[:so_ngoai] for d in x.doan)))
         if A != B: bao.append(f'!! {goc}: lệch chữ thiếu {dict(A-B)} thừa {dict(B-A)}')
         for x in nuts:
-            v = ''; ds = []
-            for t, sau in x.doan:
-                if v: v += '\n'
-                if sau and (not ds or ds[-1]['sauNut'] != sau): ds.append({'sauNut': sau, 'tu': len(v)})
-                v += t
+            v = '\n'.join(z[0] for z in x.doan)
             loai, lop = ('TEN', 'LUAT') if x.id == goc or re.search(r':pc:[IVX]+$', x.id) else ('KHAI_QUAT', 'HUONG_DAN') if ':kq:' in x.id else ('CHU_GIAI_PHAN_NHOM', 'LUAT') if ':cgpn:' in x.id else ('CHU_GIAI', 'LUAT')
             r = {'id': x.id, 'loai': loai, 'cha': x.cha, 'so': x.so, 'nguyenVan': v, 'lop': lop, 'nguon': {'vanBan': NGUON, 'ban': 'HS2022', 'trang': x.trang}, 'hieuLuc': {'tu': None, 'den': None}}
-            if ds: r['doanSau'] = ds
             het_nut.append(r)
     for d in DOI:
         if not d.get('da'): sys.exit(f'sua-tay DOI không dùng: {d}')
