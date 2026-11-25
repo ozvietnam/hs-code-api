@@ -1,0 +1,46 @@
+name: Windows checks (weekly + manual)
+
+# QT chốt phạm vi #1851 (bình luận #1850 ngày 25/11): KHÔNG chạy `npm test` đầy đủ trên
+# Windows cho mỗi PR (~26 phút, PR nào cũng phải chờ). Workflow RIÊNG, chỉ chạy khi bấm tay
+# (workflow_dispatch) và một lần mỗi tuần; KHÔNG là check bắt buộc, không chặn PR khác.
+# Chỉ gồm các test từng dính lỗi Windows (#1852, #1868) + 2 cổng nhận-diện/danh sách.
+# Ba lớp lỗi chỉ Windows mới thấy (issue #1851): `C:\C:\…` từ .pathname; cổng in 0 byte
+# exit 0 (nhánh main() không chạy); chmod/symlink theo ngữ nghĩa quyền NTFS.
+# Danh sách test: scripts/danh-sach-test-windows.txt (20 lệnh, dẫn xuất từ #1852/#1868).
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Một lần mỗi tuần: Chủ nhật 18:00 UTC = Thứ hai 01:00 giờ Việt Nam (UTC+7).
+    # Schedule chỉ chạy từ nhánh mặc định (main) sau khi PR này được gộp.
+    - cron: '0 18 * * 0'
+
+# Không phải check của PR nên không nhóm theo số PR; nhóm theo workflow+ref để lượt bấm
+# tay mới huỷ lượt tuần đang chạy dở, tránh chồng lượt trên cùng nhánh.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      # `--include=dev` tường minh (như test-all.yml): vài test cần xlsx/pdf-parse/pglite;
+      # thiếu thì chết kiểu "Cannot find module" trông như máy thiếu gói (OZV-272).
+      # ONNXRUNTIME_NODE_INSTALL=skip: bỏ tải CUDA postinstall, CI không cần (PR #424).
+      - run: npm ci --include=dev --no-audit --no-fund
+        env:
+          ONNXRUNTIME_NODE_INSTALL: skip
+      # Chạy tập con bằng chính bộ chạy của repo (--danh-sach=), --khong-dung để chạy hết
+      # 20 lệnh rồi tổng kết lệnh lỗi. Mỗi lệnh in [N/20]; chỉ xanh khi mọi lệnh thành công
+      # và bộ chạy in "ALL TESTS PASSED". Tầng test không dùng secret, không gọi mạng.
+      - name: Run Windows-sensitive tests
+        shell: bash
+        run: node scripts/chay-danh-sach-test.mjs --danh-sach=scripts/danh-sach-test-windows.txt --khong-dung
