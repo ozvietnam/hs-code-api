@@ -122,6 +122,7 @@ const khoMau = taoKhoNut(danhSachMau);
     ['tiêu chuẩn kỹ thuật', 'Thử nghiệm theo ISO 1234.56 - Phần 2: Tỷ lệ, ASTM D1234.56, C.I. 7749.10 và TCVN 5678.90.'],
     ['chữ "phần" thường & "chương" thường', 'Phần mềm xử lý 2 phần lúa mì, chiếm phần lớn ở phần 1 của chương trình quy tắc chung trong nhóm 4 số.'],
     ['số thập phân hoá học / thông số', 'Hàm lượng 85.42% tính theo trọng lượng khô, áp suất 1200.50 kPa.'],
+    ['công thức toán / phần xi lanh', 'Định lượng cơ bản (g/m2) x 28.22 – 186.2 (từ 13.23 – 94.64) trong dung tích phần xi lanh ±39.04%.'],
   ];
   for (const [ten, cau] of caNguoc) {
     const r = rutDanChieuCau(cau, { id: 'chuong:84:kq:9#1', nutId: 'chuong:84:kq:9', khoNut: khoMau });
@@ -129,6 +130,14 @@ const khoMau = taoKhoNut(danhSachMau);
   }
   const r6Moi = rutDanChieuCau('Phân nhóm 27.14.10, nhóm 4811.70, Chú giải 1(g) cho Phần XV và Chú giải 3 cho Phần XVII, Chú giải 1(c) Chương 41 (xem Chương 41 và Chú giải 2(b) Chương đó), Chú giải 5(B)(ii) và (iii) của Chương 40 và Chương 29 (Phân chương I đến II).', { id: 'chuong:84:kq:9#2', nutId: 'chuong:84:kq:9', khoNut: khoMau });
   check('ca đúng mở rộng: 27.14.10, nhóm 4811.70, cho Phần XV, Chương đó, điểm 5(B)(iii), Phân chương trong ngoặc', JSON.stringify(r6Moi.canh.map((e) => e.den).sort()) === JSON.stringify(['phan:XV:cg:1:g', 'phan:XVII:cg:3']) && JSON.stringify(r6Moi.khongTonTai.map((x) => x.den).sort()) === JSON.stringify(['bieu:271410', 'bieu:481170', 'chuong:29:pc:I', 'chuong:29:pc:II', 'chuong:40:cg:5:B:ii', 'chuong:40:cg:5:B:iii', 'chuong:41', 'chuong:41:cg:1:c', 'chuong:41:cg:2:b']), JSON.stringify({ canh: r6Moi.canh.map((e) => e.den), thieu: r6Moi.khongTonTai.map((x) => x.den) }));
+
+  const rQt = rutDanChieuCau('Các nhóm 12.01 đến 12.07 hay 85.01, 85.04, hoặc 85.26, từ 15.04 và từ 84.68 đến 84.71, nhóm 22.03 (bia), 22.04 (vang) và 22.05, nhóm thích hợp như 73.17, 73.18, NHÓM 71.06 đối với bạc và 71.08 đối với vàng, heading 38.23, (thuộc 85.18), 29.11, 29.14. 29.18 và 29.22, Chú giải Phân nhóm 1 của Chương 84 và chú giải 8b Phần XV.', { id: 'chuong:85:kq:2#1', nutId: 'chuong:85:kq:2', khoNut: khoMau });
+  const rQtGot = new Set([...rQt.canh.map((e) => e.den), ...rQt.khongTonTai.map((x) => x.den)]);
+  const rQtWant = ['bieu:1201', 'bieu:1207', 'bieu:8501', 'bieu:8504', 'bieu:8526', 'bieu:1504', 'bieu:8468', 'bieu:8470', 'bieu:8471', 'bieu:2203', 'bieu:2204', 'bieu:2205', 'bieu:7317', 'bieu:7318', 'bieu:7106', 'bieu:7108', 'bieu:3823', 'bieu:8518', 'bieu:2911', 'bieu:2914', 'bieu:2918', 'bieu:2922', 'chuong:84:cgpn:1', 'phan:XV:cg:8:b'];
+  check('ca đúng mẫu QT: hay, phẩy+hoặc, xen chú thích (), từ..đến giữa dãy, heading, thuộc, đối với, dấu chấm hỏng, 8b Phần XV', rQtWant.every((k) => rQtGot.has(k)), JSON.stringify(rQtWant.filter((k) => !rQtGot.has(k))));
+
+  const rNguoc = rutDanChieuCau('Chi tiết hoá ở nhóm 74.11 đến 71.18 và plastic (Chương\n\n39).', { id: 'nhom:7411:ct:1#1', nutId: 'nhom:7411:ct:1', khoNut: khoMau });
+  check('ca đúng khoảng ngược 74.11 đến 71.18 + xuống dòng sau Chương: đủ cạnh tới 71.18, có nghiLoiIn và chuong:39', rNguoc.nghiLoiIn.length === 1 && rNguoc.khongTonTai.some((x) => x.den === 'bieu:7118' && x.nghiLoiIn) && rNguoc.canh.some((e) => e.den === 'chuong:39'), JSON.stringify({ loi: rNguoc.nghiLoiIn, thieu: rNguoc.khongTonTai, canh: rNguoc.canh }));
 }
 
 // 3. Đích không tồn tại & quy tắc đồ thị (hai chiều, không tự trỏ, không gán nghĩa, đọc M-31)
@@ -153,33 +162,135 @@ const khoMau = taoKhoNut(danhSachMau);
   check('không dùng hs-tree trong dan-chieu.js', !/require\([^)]*hs-tree/.test(fs.readFileSync(new URL('../lib/do-thi/dan-chieu.js', import.meta.url), 'utf8')));
 }
 
-// 4. Bộ kiểm sót độc lập trên phần văn bản còn lại ngoài vungDaKhoa
-export function kiemBoSot(doThi) {
-  const sot = [];
-  const kiem = [
-    ['nhom', /\b(?:từ\s+)?(?:các\s+)?[Nn]hóm(?:\s+hàng)?\s+(?:từ\s+)?(?:\d{2}\.\d{2}|\d{4})(?![\p{L}\p{N}_])/gu],
-    ['phan_nhom', /\b(?:từ\s+)?(?:các\s+)?[Pp]hân\s+[Nn]hóm(?:\s+từ)?\s+\d{4}\.\d{2}/gu],
-    ['chuong', /\b(?:từ\s+)?(?:các\s+)?[Cc]hương(?:\s+từ)?\s+\d{1,2}(?!\.\d)(?![\p{L}\p{N}_])/gu],
-    ['phan', /\b(?:từ\s+)?(?:các\s+)?[Pp]hần(?:\s+từ)?\s+(?:XXI|XX|XIX|XVIII|XVII|XVI|XV|XIV|XIII|XII|XI|X|IX|VIII|VII|VI|V|IV|III|II|I)(?![\p{L}\p{N}_])/gu],
-    ['quy_tac', /\b(?:các\s+)?[Qq]uy\s+[Tt]ắc(?:\s+[Tt]ổng\s+[Qq]uát)?\s+[1-6](?![\p{L}\p{N}_])/gu],
-    ['chu_giai', /\b[Cc]hú\s+[Gg]iải(?:\s+(?:phân\s+nhóm|bổ\s+sung|Phần))?\s+(?:\(\d{1,2}\)|\d{1,2})\s*(?:\([a-zA-Zđ0-9]+\))*\s*(?:của\s+|thuộc\s+)?(?:Phần|Chương)/gu],
-  ];
-  for (const [cauId, tt] of doThi.vungTheoCau.entries()) {
-    const chars = [...tt.text];
-    for (const [a, b] of tt.vungDaKhoa) {
-      for (let i = a; i < b && i < chars.length; i += 1) chars[i] = ' ';
+// 4. Phép quét thô độc lập (KHÔNG dùng hàm của dan-chieu.js, đối chiếu trực tiếp cạnh + ghi lý do loại bỏ máy đọc được)
+export function lyDoLoaiBoTho(nut, loai, raw, idx, len) {
+  const v = nut.nguyenVan || '';
+  const truoc = v.slice(Math.max(0, idx - 30), idx);
+  const sau = v.slice(idx + len, idx + len + 25);
+  if (loai === 'nhom') {
+    if (/(?:±|[×x*÷=]\s*$|%\s*-?\s*$|:\s*±)/i.test(truoc) || /^\s*(?:[-–]\s*\d{2,3}\.\d|%|\s*(?:mmHg|mm|cm|dm|km|µm|nm|mg|kg|ml|g|l|m|kV|mA|Ah|Wh|kW|MW|W|V|kHz|MHz|GHz|Hz|kPa|MPa|GPa|Pa|bar|mbar|atm|psi|rpm|dB|mol|mmol|cal|kcal|kJ|ohm|dpi|cc|ppm|ppb)(?![\p{L}\p{N}_]))/iu.test(sau)) {
+      return 'so_do_cong_thuc';
     }
-    const conLai = chars.join('');
-    for (const [loai, re] of kiem) {
-      re.lastIndex = 0;
-      let m;
-      while ((m = re.exec(conLai)) !== null) {
-        if (loai === 'phan' && m.index > 0 && /[\p{L}\p{N}_]/u.test(conLai[m.index - 1])) continue;
-        sot.push({ cauId, loai, match: m[0], context: tt.text.slice(Math.max(0, m.index - 20), m.index + m[0].length + 25) });
+    if (/^(?:ISO|CAS|C\.I\.?|TCVN|ASTM|IEC|DIN|JIS|AISI|SAE|EN)\s*[-–:/]?\s*$/iu.test(truoc)) {
+      return 'tieu_de_chuan_ky_thuat';
+    }
+    if (nut.id.startsWith('sen:') && /(?:^|\n)\s*\d{2}\.\d{2}(?:\s*(?:[-–]\s*\d{2}\.\d{2}|\d{2}\.\d{2})+)?\s+[A-ZĐ“"]/u.test(v.slice(Math.max(0, idx - 35), idx + len + 35))) {
+      return 'tieu_de_sen_nhieu_nhom';
+    }
+    if (nut.id.startsWith('nhom:')) {
+      const cuaSo = v.slice(Math.max(0, idx - 35), idx + len + 35);
+      const coDauViet = /[àáảãạăằắẳẵặâầấẩẫậđèéẻẽẹêềếểễệìíỉĩịòóỏõọôồốổỗộơờớởỡợùúủũụưừứửữựỳýỷỹỵ]/i.test(cuaSo);
+      if (!coDauViet && /[A-Za-z]{4,}/.test(cuaSo)) {
+        return 'nhom_tam_phu_luc_anh_va_dinh_tieu_de';
+      }
+      if (/(?:^|\s)(?:\d{4}|\d{2}\.\d{2})\s+[-–]\s+[A-ZĐ]/u.test(v.slice(Math.max(0, idx - 10), idx + len + 45))) {
+        return 'nhom_tam_dinh_dong_nhom_ke';
       }
     }
+    if (/\bNhôm\s*$/u.test(truoc)) {
+      return 'loi_ocr_tu_neo';
+    }
   }
-  return sot;
+  if (loai === 'phan') {
+    if (!/^(XXI|XX|XIX|XVIII|XVII|XVI|XV|XIV|XIII|XII|XI|X|IX|VIII|VII|VI|V|IV|III|II|I)$/.test(raw.split(/\s+/).pop())) {
+      return 'tu_thong_thuong_khong_in_hoa';
+    }
+  }
+  return null;
+}
+
+export function quetThoDocLap(doThi, { nut, khoNut }) {
+  const coTheoNut = new Map();
+  for (const e of doThi.canh) {
+    if (!coTheoNut.has(e.tuNut)) coTheoNut.set(e.tuNut, new Set());
+    coTheoNut.get(e.tuNut).add(e.den);
+  }
+  for (const t of doThi.khongTonTai) {
+    if (!coTheoNut.has(t.tuNut)) coTheoNut.set(t.tuNut, new Set());
+    coTheoNut.get(t.tuNut).add(t.den);
+  }
+
+  const thongKe = {
+    nhom: { tong: 0, coCanh: 0, loaiBo: {} },
+    chuong: { tong: 0, coCanh: 0, loaiBo: {} },
+    phan: { tong: 0, coCanh: 0, loaiBo: {} },
+    chu_giai: { tong: 0, coCanh: 0, loaiBo: {} },
+  };
+  const sot = [];
+  const loaiBoMau = [];
+
+  for (const n of nut) {
+    const v = n.nguyenVan || '';
+    const tapCo = coTheoNut.get(n.id) || new Set();
+    const laChinhMinh = (d) => n.loai === 'TEN' && (n.id === d || n.id.startsWith(d + ':'));
+
+    // 1. Mọi NN.NN có trong kho bieu
+    for (const m of v.matchAll(/(?<![\d.])(\d{2}\.\d{2})(?![\d.])/g)) {
+      const code = m[1].replace('.', '');
+      if (!khoNut.nhomSet.has(code)) continue;
+      thongKe.nhom.tong += 1;
+      const d = `bieu:${code}`;
+      if (tapCo.has(d) || laChinhMinh(d)) {
+        thongKe.nhom.coCanh += 1;
+        continue;
+      }
+      const lyDo = lyDoLoaiBoTho(n, 'nhom', m[1], m.index, m[1].length);
+      if (lyDo) {
+        thongKe.nhom.loaiBo[lyDo] = (thongKe.nhom.loaiBo[lyDo] || 0) + 1;
+        if (loaiBoMau.length < 40) loaiBoMau.push({ loai: 'nhom', id: n.id, raw: m[1], lyDo, ctx: v.slice(Math.max(0, m.index - 25), m.index + 30).replace(/\s+/g, ' ') });
+      } else {
+        sot.push({ id: n.id, loai: 'nhom', raw: m[1], ctx: v.slice(Math.max(0, m.index - 25), m.index + 35).replace(/\s+/g, ' ') });
+      }
+    }
+
+    // 2. Mọi Chương N có trong kho chuong
+    for (const m of v.matchAll(/(?<![\p{L}\p{N}_])chương\s+(\d{1,2})(?!\.\d)(?![\p{L}\p{N}_])/giu)) {
+      const ch = m[1].padStart(2, '0');
+      if (!khoNut.chuongCo.has(ch)) continue;
+      thongKe.chuong.tong += 1;
+      const d = `chuong:${ch}`;
+      const khop = [...tapCo].some((x) => x === d || x.startsWith(`${d}:`));
+      if (khop || laChinhMinh(d) || n.id === d) {
+        thongKe.chuong.coCanh += 1;
+        continue;
+      }
+      sot.push({ id: n.id, loai: 'chuong', raw: m[0], ctx: v.slice(Math.max(0, m.index - 20), m.index + 30).replace(/\s+/g, ' ') });
+    }
+
+    // 3. Mọi Phần X (quét thô không phân biệt hoa/thường để tự kiểm cả chữ thường)
+    for (const m of v.matchAll(/(?<![\p{L}\p{N}_])phần\s+(XXI|XX|XIX|XVIII|XVII|XVI|XV|XIV|XIII|XII|XI|X|IX|VIII|VII|VI|V|IV|III|II|I)(?![\p{L}\p{N}_])/giu)) {
+      const p = m[1].toUpperCase();
+      if (!khoNut.phanCo.has(p)) continue;
+      thongKe.phan.tong += 1;
+      const d = `phan:${p}`;
+      const khop = [...tapCo].some((x) => x === d || x.startsWith(`${d}:`));
+      if (khop || laChinhMinh(d) || n.id === d) {
+        thongKe.phan.coCanh += 1;
+        continue;
+      }
+      const lyDo = lyDoLoaiBoTho(n, 'phan', m[0], m.index, m[0].length);
+      if (lyDo) {
+        thongKe.phan.loaiBo[lyDo] = (thongKe.phan.loaiBo[lyDo] || 0) + 1;
+        if (loaiBoMau.length < 40) loaiBoMau.push({ loai: 'phan', id: n.id, raw: m[0], lyDo, ctx: v.slice(Math.max(0, m.index - 20), m.index + 30).replace(/\s+/g, ' ') });
+      } else {
+        sot.push({ id: n.id, loai: 'phan', raw: m[0], ctx: v.slice(Math.max(0, m.index - 20), m.index + 30).replace(/\s+/g, ' ') });
+      }
+    }
+
+    // 4. Mọi Chú giải đánh số
+    for (const m of v.matchAll(/(?<![\p{L}\p{N}_])chú\s+giải\s+(?:phân\s+nhóm\s+|bổ\s+sung\s+|phần\s+)?(?:\((\d{1,2})\)|(\d{1,2}))(?![\d.])/giu)) {
+      const num = m[1] || m[2];
+      thongKe.chu_giai.tong += 1;
+      const khop = [...tapCo].some((x) => x.includes(`:cg:${num}`) || x.includes(`:cgpn:${num}`) || x.includes(`:cgbs:${num}`));
+      if (khop) {
+        thongKe.chu_giai.coCanh += 1;
+        continue;
+      }
+      sot.push({ id: n.id, loai: 'chu_giai', raw: m[0], ctx: v.slice(Math.max(0, m.index - 15), m.index + 45).replace(/\s+/g, ' ') });
+    }
+  }
+
+  return { thongKe, sot, loaiBoMau };
 }
 
 // 5. Khi truyền --thu-muc hoặc kho thật đã nằm trên đĩa (data/luat-goc/bieu.jsonl), chạy kiểm toàn kho
@@ -194,14 +305,22 @@ if (thuMucKho) {
   const nhomTamPath = idxNhomTam >= 0 ? path.resolve(args[idxNhomTam + 1]) : fileURLToPath(new URL('../data/chu-giai-heading.json', import.meta.url));
   const { nut, cau, khoNut, coNhomJsonl } = docKhoLuatGoc(thuMucKho, { nhomTam: nhomTamPath, coCau: true });
   const dt = dungDoThiDanChieu({ nut, cau: cau.length ? cau : null, khoNut });
-  const sot = kiemBoSot(dt);
+  const ketQuaTho = quetThoDocLap(dt, { nut, khoNut });
   check(`kho thật (${dt.thongKe.soNut} nút, ${coNhomJsonl ? 'có nhom.jsonl' : 'kèm .nhom tạm'}): khớp hai chiều 100%`, dt.thongKe.khopHaiChieu, JSON.stringify(dt.thongKe));
   check(`kho thật: có >= 1000 cạnh dẫn chiếu thực tế`, dt.thongKe.soCanh >= 1000, `soCanh=${dt.thongKe.soCanh}`);
-  check(`kho thật: chỗ nhắc tới không bắt được (sót ngữ pháp) = 0`, sot.length === 0, `sot=${sot.length}: ${JSON.stringify(sot.slice(0, 5))}`);
+  check(`kho thật: phép quét thô độc lập 4 loại (nhóm/Chương/Phần/Chú giải) sót = 0`, ketQuaTho.sot.length === 0, `sot=${ketQuaTho.sot.length}: ${JSON.stringify(ketQuaTho.sot.slice(0, 8))}`);
 
   if (baoCao) {
     console.log('\n=== BÁO CÁO M-32 TRÊN KHO THẬT ===');
     console.log(JSON.stringify(dt.thongKe, null, 2));
+    console.log('\n=== PHÉP QUÉT THÔ ĐỘC LẬP ===');
+    console.log(JSON.stringify(ketQuaTho.thongKe, null, 2));
+    console.log(`\n=== NGHI LỖI IN KHOẢNG NGƯỢC (${dt.nghiLoiIn.length}) ===`);
+    for (const g of dt.nghiLoiIn) console.log(`- ${g.tu}: "${g.trich}" (${g.tuMa} -> ${g.denMa})`);
+    if (ketQuaTho.loaiBoMau.length) {
+      console.log(`\n=== MẪU LOẠI BỎ ĐỌC ĐƯỢC (${ketQuaTho.loaiBoMau.length} mẫu đầu) ===`);
+      for (const b of ketQuaTho.loaiBoMau.slice(0, 25)) console.log(`- [${b.loai}] ${b.id} | ${b.raw} | ${b.lyDo} | ${b.ctx}`);
+    }
     const theoDich = new Map();
     for (const t of dt.khongTonTai) {
       if (!theoDich.has(t.den)) theoDich.set(t.den, []);
@@ -211,9 +330,9 @@ if (thuMucKho) {
     for (const [den, ds] of [...theoDich.entries()].sort((a, b) => a[0].localeCompare(b[0]))) {
       console.log(`- ${den} (${ds.length}x): vd ${ds[0].tu} | "${ds[0].trich}" | ${ds[0].cau.slice(0, 140)}`);
     }
-    if (sot.length) {
-      console.log(`\n=== MẪU SÓT (${sot.length}) ===`);
-      for (const s of sot.slice(0, 30)) console.log(`- ${s.cauId} [${s.loai}]: ${s.match} || ${s.context}`);
+    if (ketQuaTho.sot.length) {
+      console.log(`\n=== MẪU SÓT ĐỘC LẬP (${ketQuaTho.sot.length}) ===`);
+      for (const s of ketQuaTho.sot.slice(0, 40)) console.log(`- ${s.id} [${s.loai}]: ${s.raw} || ${s.ctx}`);
     }
   }
 }
