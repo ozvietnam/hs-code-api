@@ -3180,6 +3180,12 @@
     "giác hút chân không",
     "giắc hút chân không",
     "núm hút chân không",
+    "núm hút",
+    "núm hút silicon",
+    "núm hút silicone",
+    "giác hút silicon",
+    "giác hút silicone",
+    "vacuum suction cup",
     "vacuum pad",
     "vacuum pads",
     "smc zp",
@@ -3205,9 +3211,15 @@
     "nâng kính",
     "điện thoại",
     "núm vú",
-    "hút sữa"
+    "hút sữa",
+    "bình sữa",
+    "núm ti",
+    "ti giả",
+    "ty ngậm",
+    "trẻ em",
+    "em bé"
    ],
-   "excludeReasonVi": "Cánh gạt/bơm/máy đóng gói/van hút là máy hoặc bộ phận máy nén·bơm (84.14/84.22/84.81) — khác miếng giác/núm cao su·nhựa dùng kẹp hút linh kiện. Đồ chơi (95.03), giá đỡ điện thoại/móc dán tường (giác hút chỉ là phụ kiện của hàng khác), dụng cụ nâng kính, núm vú/hút sữa (đồ trẻ em) phân loại theo hàng chính, không theo miếng giác hút.",
+   "excludeReasonVi": "Cánh gạt/bơm/máy đóng gói/van hút là máy hoặc bộ phận máy nén·bơm (84.14/84.22/84.81) — khác miếng giác/núm cao su·nhựa dùng kẹp hút linh kiện. Đồ chơi (95.03), giá đỡ điện thoại/móc dán tường (giác hút chỉ là phụ kiện của hàng khác), dụng cụ nâng kính, núm vú/núm ti/bình sữa/hút sữa (đồ trẻ em — Chú giải nhóm 39.24 mục (D) nêu đích danh núm vú bình trẻ em) phân loại theo hàng chính, không theo miếng giác hút.",
    "candidates": [
     {
      "hs": "40169999",
@@ -3241,15 +3253,19 @@
     {
      "prefix": "8422",
      "whyVi": "8422 là máy đóng gói (kể cả máy hút chân không đóng túi) — khác giác hút rời."
+    },
+    {
+     "prefix": "3924",
+     "whyVi": "Chú giải nhóm 39.24 chỉ gồm bộ đồ ăn, đồ bếp, đồ gia dụng và đồ vệ sinh bằng plastic (mục (D) nêu núm vú bình trẻ em) — núm/giác hút đầu máy dùng cho mục đích kỹ thuật, không phải đồ gia dụng/vệ sinh. Chữ «núm» khớp «núm vú» là từ vựng trượt (OZV-2225)."
     }
    ],
    "askVi": [
-    "Giác/núm hút bằng cao su lưu hóa, nhựa, hay thân kim loại/nhôm?",
+    "Giác/núm hút bằng cao su lưu hóa, nhựa (kể cả silicon), hay thân kim loại/nhôm?",
     "Là miếng giác/núm thay thế để kẹp hút linh kiện — không phải bơm chân không hay cánh gạt bơm?"
    ],
    "gir": "GIR 1",
    "basis": "RULE_TABLE",
-   "sourceVi": "Kho tờ khai Oz (oz-gold): SMC ZP/ZP2/ZP3 «giác/giắc/núm hút chân không» đa số khai 4016.99.99 hoặc 4016.99.59 (cao su lưu hóa), bản nhựa → 3926.90.99. Chú giải nhóm 40.16: vật phẩm cao su lưu hóa khác; 84.14 là bơm/máy nén và bộ phận — không phủ miếng giác hút. Đo A2/khách 16/11 câu «giác hút chân không smc zp-905-08eu» API thô NEEDS_EXPERT + top 841490*."
+   "sourceVi": "Kho tờ khai Oz (oz-gold): SMC ZP/ZP2/ZP3 «giác/giắc/núm hút chân không» đa số khai 4016.99.99 hoặc 4016.99.59 (cao su lưu hóa), bản nhựa → 3926.90.99. Chú giải nhóm 40.16: vật phẩm cao su lưu hóa khác; 84.14 là bơm/máy nén và bộ phận — không phủ miếng giác hút. Đo A2/khách 16/11 câu «giác hút chân không smc zp-905-08eu» API thô NEEDS_EXPERT + top 841490*. Thực địa 24/11 (OZV-2225): 3/4 câu khách «núm hút <mã model>, silicon» không có chữ «chân không» → không khớp mục, AI kéo về 3924.90 hỏi bô/núm vú; thêm «núm hút» + biến thể silicon, chặn 3924 theo Chú giải nhóm 39.24 (A)-(D) và 40.16 mục (9) «các mặt hàng khác dùng cho mục đích kỹ thuật (kể cả các bộ phận và phụ kiện của máy móc và thiết bị thuộc phần XVI và của các thiết bị và máy móc thuộc Chương 90)»."
   },
   {
    "id": "day-dai-truyen-luc",
