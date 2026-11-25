@@ -66,3 +66,7 @@ Ngoài phạm vi (không phải nút luật, không đổi): `wco.*` 4.178 lư�
 1. `data/luat/dau-noi.json` và tệp báo cáo này nằm ngoài 4 tệp sở hữu của M-35 trong `docs/mong/phan-cong.json` — QT cần thêm `data/luat/dau-noi.json` và `docs/mong/the/M-35-*.md` vào `tep` của M-35 (hoặc gộp rồi tự sửa), nếu không cổng phạm vi thẻ đỏ 2 tệp này.
 2. Kho nhom dùng bản tạm `1dd2dadc`: khi QT gộp M-14 (và M-11/15/16), chạy `node lib/do-thi/doi-ma-nguon.js --xay-dung` để dựng lại bảng, rồi commit trong cùng PR.
 3. Trích lưu trong bảng cắt 200 ký tự (đã làm phẳng): hai trích chỉ khác nhau sau ký tự thứ 200 gộp về một dòng — dòng bảng đổi thắng danh sách luật cũ (107 dòng gộp, 8 dòng luật cũ trùng khóa được hấp thụ).
+
+## Dựng lại trên kho theo đoạn (QT, 25/11 23:50)
+
+Kho `nhom.jsonl` tách theo đoạn in nên một trích cũ có thể trải nhiều nút. Thêm phép `nhieuNut` (nối nguyên văn các nút liền nhau theo thứ tự in; `moi` + `moiKem`). Kết quả: đổi được 31.063 / 31.402 trích (1.343 trích nhiều nút), còn **339 trích luật cũ** (bản trước ghi 572).

@@ -64,6 +64,12 @@ for (const r of banDo) {
   if (!n) { khongNut += 1; continue; }
   // trich lưu 120 ký tự nên gachDoan (đoạn sau có thể bị cắt) và cuChuaNut (nút dài hơn trích lưu) chỉ kiểm đích
   if (r.kiem === 'gachDoan' || r.kiem === 'cuChuaNut' || r.kiem === 'tonTai') continue;
+  if (r.kiem === 'nhieuNut') { // nối các nút đích theo thứ tự in: mọi mảnh của trích (mảnh cuối có thể bị cắt ở 200 ký tự) thấy nguyên văn, đúng thứ tự
+    const noi = [r.moi, ...(r.moiKem || [])].map((id) => nut.get(id)); if (noi.some((x) => !x)) { khongNut += 1; continue; }
+    const v = chuanSo(noi.map((x) => x.nguyenVan).join(' ')); let vt = 0;
+    for (const m of r.trich.split(/…|\.\.\./).map((x) => x.trim()).filter((x) => x.length >= 8)) { const j = v.indexOf(m, vt); if (j < 0) { khongTrich += 1; if (khongTrich < 4) console.log('lệch', r.cu, m.slice(0, 80)); break; } vt = j + m.length; }
+    continue;
+  }
   let kq = coTrong(r.trich, n.nguyenVan);
   if (!kq && r.kiem === 'boMaDau') {
     const doanDau = r.trich.replace(/^\d{6,10}\s*[-–—]*\s*/, '').split(/\u2026|\.\.\./)[0];
@@ -140,6 +146,8 @@ kiem('hàm đổi trả LUAT_CU cho trích không còn thấy trong bản 2022',
   return kq.trangThai === 'LUAT_CU';
 })());
 kiem('CA NGƯỢC: mã lạ trả KHONG_RO, không bịa', doiMaNguon('abc.xyz').trangThai === 'KHONG_RO' && doiMaNguon('ch61.chuong').trangThai === 'KHONG_RO');
+const rNoi = banDo.find((x) => x.kiem === 'nhieuNut' && x.moiKem && !/\u2026/.test(x.trich));
+kiem('trích trải nhiều nút: trả nút đầu và các nút kèm', (() => { const q = doiMaNguon(rNoi.cu, rNoi.trich); return q.trangThai === 'DOI' && q.idMoi === rNoi.moi && q.idKem?.length === rNoi.moiKem.length; })());
 kiem('CA NGƯỢC: thiếu mã trả KHONG_RO', doiMaNguon('').trangThai === 'KHONG_RO');
 
 xong();
