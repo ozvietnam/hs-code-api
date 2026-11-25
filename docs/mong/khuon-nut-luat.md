@@ -27,7 +27,7 @@ Mọi thẻ lớp 1 ghi ra JSONL, mỗi dòng một nút, ở `data/luat-goc/<kh
 | Phân chương (Ch. 28, 29, 39, 63, 69, 71, 72…) | `chuong:28:pc:II` (tên), Tổng quát `chuong:28:pc:II:kq:1` – thuộc M-13, kể cả khi in sau nhóm đầu |
 | Chú giải chi tiết nhóm | `nhom:7616:ct:1` (đoạn, theo thứ tự) |
 | Chú giải chi tiết phân nhóm | `pn:761610:ct:1` |
-| SEN | `sen:76169920:1` |
+| SEN | `sen:76169920:1` (mã 4–8 số); áp cho cả chương `sen:chuong:87:1`, cả Phần `sen:phan:XI:1`, lời nói đầu `sen:md:1` |
 | Ý kiến WCO | `wco:852852:6` |
 | Tên trong biểu | `bieu:7616`, `bieu:76161`, `bieu:76161020` |
 | Thông báo phân loại | `tb:851-2023:84812090` |
