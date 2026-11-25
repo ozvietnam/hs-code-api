@@ -45,6 +45,7 @@ export function kiemKho(ten, dong, { vanBan = null, kyVong = null } = {}) {
     if (!LOP.has(x.lop)) loi.push(`${o}: lop lạ "${x.lop}"`);
     const v = x.nguyenVan;
     if (typeof v !== 'string' || !gon(v)) { loi.push(`${o}: thiếu nguyên văn`); return; }
+    if (x.doanSau !== undefined) loi.push(`${o}: bỏ doanSau, tách thành nút …:ket`);
     if (v !== v.normalize('NFC')) loi.push(`${o}: chưa NFC`);
     if (/[\u0000-\u0008\u000b\u000c\u000e-\u001f�]/.test(v)) loi.push(`${o}: ký tự hỏng`);
     if (/(?:^|\n)\s*\d{1,4}\s*(?:\n|$)/.test(v) && x.loai !== 'TEN') canhBao.push(`${o}: nghi dính số trang`);
