@@ -15,8 +15,9 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const NHOM = (process.env.NHOM || '2843,2844,2845,2846,2847,2849').split(',');
 const STOP_RAW = ['hàng', 'này', 'là', 'các', 'và', 'hoặc', 'của', 'cho', 'những', 'một', 'được',
   'trong', 'thuộc', 'đã', 'chưa', 'không', 'có', 'làm', 'để', 'với', 'từ', 'đến', 'nhóm', 'như',

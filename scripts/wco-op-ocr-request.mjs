@@ -10,7 +10,7 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { loadWcoCodes } from './wco-op-parse.mjs';
 import { printedOrd } from './wco-op-ordcheck.mjs';
 
@@ -101,4 +101,4 @@ function main() {
   console.log(`cụm ${runs.length}, ý kiến ${runs.reduce((a, r) => a + r.items.length, 0)} → ${arg('out', 'docs/giao-viec/wco-op-ocr-lai.md')}`);
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) main();
+if (import.meta.url === pathToFileURL(process.argv[1] || '').href) main();
