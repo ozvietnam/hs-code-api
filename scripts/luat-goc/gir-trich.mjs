@@ -55,7 +55,7 @@ function flushLines(lines) {
   for (let i = 0; i < lines.length; i++) {
     const t = lines[i];
     if (i === 0) out.push(t);
-    else if (/^(?:\(\d+\)|[-•]|\(a\)|\(b\)|\(c\)|\(i+\)|\(iv\)|Các ví dụ:|Phân loại vào|CHÚ GIẢI|\()/.test(t) || /:$/.test(lines[i - 1])) {
+    else if (/^(?:\(\d+\)|[-•]|\(a\)|\(b\)|\(c\)|\(i+\)|\(iv\)|Các ví dụ:|Phân loại vào|CHÚ GIẢI|\((?:[IVX]+\)|Các |Hỗn |Hộp,|Bao ))/.test(t) || /:$/.test(lines[i - 1])) {
       out.push('\n' + t);
     } else {
       out.push(' ' + t);

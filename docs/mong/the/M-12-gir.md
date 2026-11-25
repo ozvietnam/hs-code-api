@@ -2,7 +2,7 @@
 
 - **Nhánh:** `mong/m-12-gir` (tách từ `origin/mong/m-01-ket`)
 - **Đầu ra dữ liệu:** `data/luat-goc/gir.jsonl` (**54 nút**, khuôn `nut-luat@1`: **13 `QUY_TAC`** + **41 `CHU_GIAI_CHI_TIET`**)
-- **SHA-256 `gir.jsonl` (khớp 2 lần chạy liên tiếp):** `96a50481c9d805f6ca4e469ef3de8a90defa89ecc8a549d75eff4dc4b9c08d40`
+- **SHA-256 `gir.jsonl` (khớp 2 lần chạy liên tiếp):** `b45e7a5edcafdcd2e376dd0aab1a14b1a3f3a1d6fce32d919f8cc43035f300e9`
 - **Bộ trích tất định:** `scripts/luat-goc/gir-trich.mjs`
 - **Bộ kiểm ngoại tuyến CI:** `scripts/luat-goc/gir-test.mjs` (đã đăng ký vào giữa `scripts/danh-sach-test.txt`)
 
@@ -38,9 +38,9 @@ Toàn bộ dữ liệu được trích **trực tiếp từ Công báo điện t
 
 | Quy tắc / Nhóm | Nút `QUY_TAC` (`lop: LUAT`) | Trang CB | Nút `CHU_GIAI_CHI_TIET` (`lop: HUONG_DAN`) | Trang CB | Chú giải mục nguồn |
 |---|---|---:|---|---:|---|
-| Quy tắc 1 | `gir:1` | 50 | `gir:1:ct:1..5` (5 nút) | 51..53 | `CHÚ GIẢI QUY TẮC 1` `(I)..(V)` |
-| Quy tắc 2 | `gir:2` | 52 | — | — | Đề mục `QUY TẮC 2` |
-| Quy tắc 2(a) | `gir:2:a` | 52 | `gir:2:a:ct:1..9` (9 nút) | 53..57 | Chưa hoàn chỉnh `(I)..(IV)` + chưa lắp ráp `(V)..(IX)` |
+| Quy tắc 1 | `gir:1` | 50 | `gir:1:ct:1..5` (5 nút) | 51..52 | `CHÚ GIẢI QUY TẮC 1` `(I)..(V)` |
+| Quy tắc 2 | `gir:2` | 53 | — | — | Đề mục `QUY TẮC 2` |
+| Quy tắc 2(a) | `gir:2:a` | 53 | `gir:2:a:ct:1..9` (9 nút) | 54..57 | Chưa hoàn chỉnh `(I)..(IV)` + chưa lắp ráp `(V)..(IX)` |
 | Quy tắc 2(b) | `gir:2:b` | 54 | `gir:2:b:ct:1..4` (4 nút) | 57..59 | Hỗn hợp và hợp chất `(X)..(XIII)` |
 | Quy tắc 3 | `gir:3` | 59 | `gir:3:ct:1..2` (2 nút) | 60..61 | Tổng quan Quy tắc 3 `(I)..(II)` |
 | Quy tắc 3(a) | `gir:3:a` | 59 | `gir:3:a:ct:1..3` (3 nút) | 61..63 | Đặc trưng nhất `(III)..(V)` |
@@ -64,7 +64,7 @@ Toàn bộ dữ liệu được trích **trực tiếp từ Công báo điện t
 1. **`lib/gir.js` là bản diễn lại ngắn (~1–3 câu/quy tắc), không phải nguyên văn Thông tư `31/2022/TT-BTC`:**
    - `GIR_RULES['1'].textVi` tóm còn 2 câu và bỏ cụm điều kiện pháp lý cuối `"và theo các quy tắc dưới đây nếu các nhóm hoặc các Chú giải đó không có yêu cầu nào khác"`.
    - `GIR_RULES['3a'].textVi` bỏ toàn bộ đoạn thứ hai rất quan trọng của Quy tắc 3(a) về trường hợp hai hay nhiều nhóm chỉ liên quan đến *một phần* của nguyên liệu/bộ bán lẻ thì phải coi là *"thể hiện đặc trưng ngang nhau"*.
-   - `GIR_RULES['3b']` dùng cụm *"đặc trưng cơ bản"*, trong khi nguyên văn TT `31/2022/TT-BTC` là *"tính chất cơ bản"* (`"bộ phận cấu thành tạo ra tính chất cơ bản của chúng, trong chừng mực tiêu chí này được áp dụng"`).
+   - `GIR_RULES['3b']` dùng cụm *"đặc trưng cơ bản"*, trong khi nguyên văn điều văn `gir:3:b` của TT `31/2022/TT-BTC` là *"đặc tính cơ bản"* (`"bộ phận cấu thành tạo ra đặc tính cơ bản của chúng, trong chừng mực tiêu chí này được áp dụng"`; cụm *"tính chất cơ bản"* xuất hiện trong `Chú giải Quy tắc 3(b)` `(VII)–(VIII)` và `Quy tắc 5(a)`).
    - `GIR_RULES['5']` gộp chung `5(a)` và `5(b)` vào một khóa `'5'` (mất cấu trúc tách `5(a)` / `5(b)` và cụm loại trừ bao bì *có tính chất cơ bản nổi trội hơn*).
    - `GIR_RULES['6']` không chứa đoạn cuối `"Theo Quy tắc này thì các chú giải phần và chương có liên quan cũng được áp dụng, trừ khi nội dung mô tả trong phân nhóm có những yêu cầu khác"`.
 2. **`lib/gir.js` hoàn toàn không có 41 nút `CHU_GIAI_CHI_TIET`:** thiếu toàn bộ ví dụ chính thức của WCO/BTC (điều kiện `"phôi"`, `"chưa lắp ráp"`, 3 điều kiện bắt buộc của `"bộ được đóng gói để bán lẻ"`, ví dụ 1(a)/(b) bộ spaghetti/sandwich vs chọn đồ rời không phải bộ, 5 điều kiện bao bì 5(a), và quy tắc 1-gạch/2-gạch ở Quy tắc 6).
@@ -73,7 +73,7 @@ Toàn bộ dữ liệu được trích **trực tiếp từ Công báo điện t
 
 ## 4. Kiểm chứng đã chạy
 
-- `node scripts/luat-goc/gir-trich.mjs --ghi` (chạy 2 lần): cùng ra 54 nút, SHA-256 `96a50481c9d805f6ca4e469ef3de8a90defa89ecc8a549d75eff4dc4b9c08d40`.
+- `node scripts/luat-goc/gir-trich.mjs --ghi` (chạy 2 lần): cùng ra 54 nút, SHA-256 `b45e7a5edcafdcd2e376dd0aab1a14b1a3f3a1d6fce32d919f8cc43035f300e9`.
 - `LUAT_GOC_TXT="$HOME/luat-goc-txt" node scripts/kiem-luat-goc.mjs gir`: `PASS gir: 54 nút, 0 lỗi, 0 cảnh báo — đối chiếu 1 bản chữ`.
 - `env -u LUAT_GOC_TXT node scripts/luat-goc/gir-test.mjs`: `7 passed, 0 failed` (`EXIT=0`).
 - `LUAT_GOC_TXT="$HOME/luat-goc-txt" node scripts/luat-goc/gir-test.mjs`: `7 passed, 0 failed` (`EXIT=0`).
