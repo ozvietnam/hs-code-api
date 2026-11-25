@@ -76,7 +76,7 @@ def dong_sen(muc):
     theo_ma = defaultdict(list)
     for l in (GOC / 'data/luat-goc/sen.jsonl').read_text().splitlines():
         x = json.loads(l)
-        if x['id'].startswith('sen:'):
+        if re.match(r'sen:\d', x['id']):
             theo_ma[x['id'].split(':')[1]].append(x['id'])
     ra = []
     for k in sorted(t):
@@ -87,9 +87,9 @@ def dong_sen(muc):
         rong = [i for n in (7, 6, 5, 4) for i in tung[n]]
         cap = []  # mục cấp Chương 87 / Phần XI: bản in không có mã; nhận theo đúng thuật ngữ in kèm "(SEN)" trong tên dòng
         if k[:2] == '87' and 'CKD' in ten:
-            cap.append('chuong:87:cgbs:1')
+            cap.append('sen:chuong:87:1')
         if k[:2] == '87' and 'khối lượng toàn bộ theo thiết kế (SEN)' in ten:
-            cap.append('chuong:87:cgbs:2')
+            cap.append('sen:chuong:87:2')
         batik = 50 <= int(k[:2]) <= 63 and 'batik truyền thống' in ten.lower()
         if tung[8]:
             kl = 'đúng mã'
@@ -98,12 +98,12 @@ def dong_sen(muc):
         elif cap:
             kl = 'SEN cấp Chương 87'
         elif batik:
-            kl = 'SEN cấp Phần XI (batik), chờ id'
+            kl = 'SEN cấp Phần XI phủ (batik)'
         elif tung[4]:
             kl = 'cấp 4 số phủ'
         else:
             kl = 'KHÔNG CÓ'
-        ids = tung[8] + rong + cap + (['(Phần XI – batik)'] if batik else [])
+        ids = tung[8] + rong + cap + (['sen:phan:XI:1'] if batik else [])
         ra.append((k, ten, kl, ids))
     return ra
 
@@ -123,7 +123,7 @@ def main():
         if x[2] in ('KHÔNG CÓ', 'SEN cấp Chương 87'):
             print('  ', x[0], x[1], '→', x[2], x[3])
     if '--ghi' in sys.argv:
-        o = ['# M-16 – kết luận từng dòng biểu có "(SEN)"', '', f'{len(ds)} dòng, máy sinh bằng `scripts/luat-goc/sen-doi-chieu.py`, không sửa tay. "Đúng mã" = có mục in đúng mã 8 số. "Phủ" = mục in mã ngắn hơn chứa dòng; phủ theo mã, chưa xét nội dung mục có nói về dòng.', '']
+        o = ['# M-16 – kết luận từng dòng biểu có "(SEN)"', '', f'{len(ds)} dòng, máy sinh bằng `scripts/luat-goc/sen-doi-chieu.py`, không sửa tay. "Đúng mã" = có mục in đúng mã 8 số. "Phủ" = mục in mã ngắn hơn chứa dòng; phủ theo mã, chưa xét nội dung mục có nói về dòng. Chương 87 và Phần XI: phủ cấp Chương / cấp Phần (bản in không có mã), nhận theo thuật ngữ in kèm "(SEN)" trong tên dòng.', '']
         for kl in dict.fromkeys(x[2] for x in sorted(ds, key=lambda x: x[2] == 'đúng mã')):
             nhom = [x for x in ds if x[2] == kl]
             o += [f'## {kl}: {len(nhom)}', '', '| Dòng | Tên in trong biểu | Nút |', '|---|---|---|']

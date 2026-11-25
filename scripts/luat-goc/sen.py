@@ -5,10 +5,10 @@ Bản gốc: phụ lục kèm CV 3866/TCHQ-TXNK (24/07/2023), tệp Word 55.807.
 (sha256 ccc50ef8b84d31cfd74b7f586d126b0d8a2817c5495fdfff47ec882ea47207e7). KHÔNG commit.
     soffice --headless --convert-to docx:"MS Word 2007 XML" <tệp .doc>
     python3 scripts/luat-goc/sen.py <tệp .docx>            ghi data/luat-goc/sen.jsonl
-    python3 scripts/luat-goc/sen.py <tệp .docx> --cap-phan  in mục cấp Phần (bản in không có mã, khuôn chưa có id)
 
 Bảng hai cột: trái tiếng Việt, phải tiếng Anh. Hàng có ô giữa trống → lấy nửa trái. Hàng không chia đôi
 (hình kèm lời song ngữ, bảng số liệu song ngữ, đoạn ngoài bảng) → chép cả hàng như in.
+Mục không in mã: `sen:chuong:NN:n`, `sen:phan:<LA MÃ>:n`; lời nói đầu: `sen:md:n` (6 điểm đánh số).
 Mỗi mã in ra một nút, cùng `apChung` khi một mục áp nhiều mã (như kho phân nhóm).
 """
 import json
@@ -23,10 +23,12 @@ GOC = Path(__file__).resolve().parents[2]
 W = '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}'
 HINH = ''
 VAN_BAN = 'Chú giải bổ sung (SEN) của AHTN 2022 (phụ lục kèm CV 3866/TCHQ-TXNK ngày 24/07/2023), phần tiếng Việt'
+BAN_HANH = '2023-07-24'  # ngày ban hành in trên phụ lục; bản in không có ngày hiệu lực riêng
 MA = r'(?:\d{4}\.\d{2}\.\d{2}|\d{6}\.\d{2}|\d{4}\.\d{2}|\d{2}\.\d{2})'
 DONG_MA = re.compile(rf'(?:{MA}[\s;,–-]*)+$')
 KHOANG = re.compile(rf'(\d{{2}}\.\d{{2}})\s*[-–]\s*(\d{{2}}\.\d{{2}})$')
 DAU_MUC = re.compile(r'(CHƯƠNG \d+|PHẦN [IVX]+)\b')
+DIEM_MD = re.compile(r'(\d)\. ')
 CHUA_CO = re.compile(r'Hiện chưa có Chú giải bổ sung cho Chương này|Chương này được dành để sử dụng trong Hệ thống hài hòa sau này', re.I)
 VIET = re.compile('[ăđơưạảấầẩẫậắằẳẵặẹẻẽếềểễệỉịọỏốồổỗộớờởỡợụủứừửữựỳỵỷỹ]|[^\\W\\d_][àáâãèéêìíòóôõùúý]', re.I)
 
@@ -126,7 +128,7 @@ def doc_hang(tep):
 
 def doc_muc(tep):
     """Mục theo thứ tự in: {so, ma, dong, hinh, dau} — dau: CHƯƠNG / PHẦN đang đứng."""
-    muc, cur, dau = [], None, None
+    muc, cur, dau, loi_dau = [], None, None, False
     chua_co = []
     for h in doc_hang(tep):
         t = ' '.join(h['trai'])
@@ -137,7 +139,12 @@ def doc_muc(tep):
             muc.append(cur)
             continue
         if dau is None:
-            continue  # lời nói đầu, bảng viết tắt
+            # Lời nói đầu: lấy các điểm đánh số. Bỏ câu miễn trừ trách nhiệm (hành chính) và bảng viết tắt.
+            loi_dau = (loi_dau or t == 'LỜI NÓI ĐẦU') and t != 'VIẾT TẮT VÀ KÝ HIỆU'
+            d = DIEM_MD.match(t)
+            if loi_dau and d:
+                muc.append({'so': d.group(1), 'ma': None, 'dong': h['dong'], 'hinh': 0, 'dau': 'md'})
+            continue
         if DONG_MA.match(t) and h['n'] == 3:
             cur = {'so': t, 'ma': tach_ma(t), 'dong': [], 'hinh': 0, 'dau': dau}
             muc.append(cur)
@@ -186,10 +193,8 @@ def tao_nut(muc, biet):
     dem, nut = {}, []
     for m in muc:
         if not m['ma']:
-            c = re.match(r'CHƯƠNG (\d+)$', m['so'])
-            if not c:
-                continue  # cấp Phần: khuôn chưa có id
-            goc = f'chuong:{int(c.group(1)):02d}:cgbs'
+            loai, _, so_ = m['dau'].partition(' ')
+            goc = {'md': 'sen:md', 'CHƯƠNG': f'sen:chuong:{so_.zfill(2)}', 'PHẦN': f'sen:phan:{so_}'}[loai]
             dem[goc] = dem.get(goc, 0) + 1
             khoa = [(f'{goc}:{dem[goc]}', None)]
         else:
@@ -199,13 +204,13 @@ def tao_nut(muc, biet):
                 khoa.append((f'sen:{ma}:{dem[ma]}', ma))
         for id_, ma in khoa:
             # mục cấp chương: bản in không có số hiệu, dòng "CHƯƠNG NN" là tiêu đề chung nên không ghép vào nguyên văn
-            x = {'id': id_, 'loai': 'SEN', 'cha': None, 'so': m['so'] if ma else None,
+            x = {'id': id_, 'loai': 'SEN', 'cha': None, 'so': m['so'] if ma or m['dau'] == 'md' else None,
                  'nguyenVan': '\n'.join(([m['so']] if ma else []) + m['dong']),
                  'lop': 'HUONG_DAN', 'nguon': {'vanBan': VAN_BAN, 'ban': 'AHTN2022', 'trang': m['trang']},
-                 'hieuLuc': {'tu': None, 'den': None}}
+                 'hieuLuc': {'tu': BAN_HANH, 'den': None}}
             if m['ma'] and len(m['ma']) > 1:
                 x['apChung'] = m['ma']
-            gc = [] if ma else ['SEN đặt ở đầu chương, bản in không có mã']
+            gc = [] if ma or m['dau'] == 'md' else ['SEN đặt ở đầu Chương / Phần, bản in không có mã']
             gc += [GHI_CHU_MUC[m['so']]] if m['so'] in GHI_CHU_MUC else []
             if ma and ma not in biet:
                 gc.append(f'mã in {ma} không có trong biểu hiện hành (data/tax.json); giữ theo bản in')
@@ -222,11 +227,6 @@ def main():
         sys.exit(__doc__)
     muc, chua_co = doc_muc(sys.argv[1])
     trang_theo_kho_cu(muc)
-    if '--cap-phan' in sys.argv:
-        for m in muc:
-            if not m['ma'] and m['so'].startswith('PHẦN'):
-                print('\n'.join([f'### {m["so"]} (trang {m["trang"]})'] + m['dong']))
-        return
     _, biet = bieu()
     nut = tao_nut(muc, biet)
     (GOC / 'data/luat-goc/sen.jsonl').write_text(''.join(json.dumps(x, ensure_ascii=False, separators=(',', ':')) + '\n' for x in nut))

@@ -1,6 +1,6 @@
 # M-16 – kết luận từng dòng biểu có "(SEN)"
 
-971 dòng, máy sinh bằng `scripts/luat-goc/sen-doi-chieu.py`, không sửa tay. "Đúng mã" = có mục in đúng mã 8 số. "Phủ" = mục in mã ngắn hơn chứa dòng; phủ theo mã, chưa xét nội dung mục có nói về dòng.
+971 dòng, máy sinh bằng `scripts/luat-goc/sen-doi-chieu.py`, không sửa tay. "Đúng mã" = có mục in đúng mã 8 số. "Phủ" = mục in mã ngắn hơn chứa dòng; phủ theo mã, chưa xét nội dung mục có nói về dòng. Chương 87 và Phần XI: phủ cấp Chương / cấp Phần (bản in không có mã), nhận theo thuật ngữ in kèm "(SEN)" trong tên dòng.
 
 ## KHÔNG CÓ: 8
 
@@ -266,91 +266,91 @@
 | 40012140 | RSS hạng 4 (SEN) | sen:400121:1 |
 | 40012150 | RSS hạng 5 (SEN) | sen:400121:1 |
 
-## SEN cấp Phần XI (batik), chờ id: 53
+## SEN cấp Phần XI phủ (batik): 53
 
 | Dòng | Tên in trong biểu | Nút |
 |---|---|---|
-| 50071030 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 50072030 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 50079030 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 51121110 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 51121910 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 52085110 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 52085210 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 52085910 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 52095110 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 52095210 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 52095910 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 52105110 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 52105910 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 52115110 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 52115210 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 52115910 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 52121510 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 52122510 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 53110010 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 62031911 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 62031921 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 62032210 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 62033210 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 62041210 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 62041911 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 62042210 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 62043210 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 62043911 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 62044210 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 62044910 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 62045210 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 62045910 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 62052010 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 62059091 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 62061010 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 62063010 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 62072110 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 62082110 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 62082910 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 62089110 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 62089210 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 62132010 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 62139011 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 62139091 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 62141010 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 62143010 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 62144010 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 62149010 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 62151010 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 62152010 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 62159010 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 63013010 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
-| 63025110 | Được in bằng phương pháp batik truyền thống (SEN) | (Phần XI – batik) |
+| 50071030 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 50072030 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 50079030 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 51121110 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 51121910 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 52085110 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 52085210 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 52085910 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 52095110 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 52095210 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 52095910 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 52105110 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 52105910 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 52115110 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 52115210 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 52115910 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 52121510 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 52122510 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 53110010 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 62031911 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 62031921 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 62032210 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 62033210 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 62041210 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 62041911 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 62042210 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 62043210 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 62043911 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 62044210 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 62044910 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 62045210 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 62045910 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 62052010 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 62059091 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 62061010 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 62063010 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 62072110 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 62082110 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 62082910 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 62089110 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 62089210 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 62132010 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 62139011 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 62139091 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 62141010 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 62143010 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 62144010 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 62149010 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 62151010 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 62152010 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 62159010 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 63013010 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
+| 63025110 | Được in bằng phương pháp batik truyền thống (SEN) | sen:phan:XI:1 |
 
 ## SEN cấp Chương 87: 23
 
 | Dòng | Tên in trong biểu | Nút |
 |---|---|---|
-| 87012110 | Dạng CKD (SEN) | chuong:87:cgbs:1 |
-| 87012210 | Dạng CKD (SEN) | chuong:87:cgbs:1 |
-| 87012310 | Dạng CKD (SEN) | chuong:87:cgbs:1 |
-| 87012410 | Dạng CKD (SEN) | chuong:87:cgbs:1 |
-| 87012910 | Dạng CKD (SEN) | chuong:87:cgbs:1 |
-| 87029033 | Loại khác, có khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn | sen:8702:1, chuong:87:cgbs:2 |
-| 87029080 | Loại khác, có khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn | sen:8702:1, chuong:87:cgbs:2 |
-| 87042246 | Ô tô bọc thép để chở hàng hóa có giá trị, khối lượng toàn bộ theo thiết kế (SEN) trên 6 tấn nhưng không quá 10 tấn | sen:8704:1, chuong:87:cgbs:2 |
-| 87042247 | Ô tô bọc thép để chở hàng hóa có giá trị, khối lượng toàn bộ theo thiết kế (SEN) trên 10 tấn nhưng không quá 20 tấn | sen:8704:1, chuong:87:cgbs:2 |
-| 87043248 | Loại khác, khối lượng toàn bộ theo thiết kế (SEN) trên 6 tấn nhưng không quá 10 tấn | sen:8704:1, chuong:87:cgbs:2 |
-| 87044246 | Ô tô bọc thép để chở hàng hóa có giá trị, khối lượng toàn bộ theo thiết kế (SEN) trên 6 tấn nhưng không quá 10 tấn | sen:8704:1, chuong:87:cgbs:2 |
-| 87044247 | Ô tô bọc thép để chở hàng hóa có giá trị, khối lượng toàn bộ theo thiết kế (SEN) trên 10 tấn nhưng không quá 20 tấn | sen:8704:1, chuong:87:cgbs:2 |
-| 87045248 | Loại khác, khối lượng toàn bộ theo thiết kế (SEN) trên 6 tấn nhưng không quá 10 tấn | sen:8704:1, chuong:87:cgbs:2 |
-| 87049010 | Dạng CKD (SEN) | sen:8704:1, chuong:87:cgbs:1 |
-| 87060022 | Loại khác, dùng cho xe có khối lượng toàn bộ theo thiết kế (SEN) không quá 24 tấn | chuong:87:cgbs:2 |
-| 87060023 | Loại khác, dùng cho xe có khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn | chuong:87:cgbs:2 |
-| 87060041 | Dùng cho xe có khối lượng toàn bộ theo thiết kế (SEN) không quá 24 tấn | chuong:87:cgbs:2 |
-| 87060042 | Dùng cho xe có khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn | chuong:87:cgbs:2 |
-| 87087033 | Dùng cho xe tự đổ được thiết kế để sử dụng trên các loại đường không phải đường quốc lộ có khối lượng toàn bộ theo thiết kế (SEN) trên 45 tấn | chuong:87:cgbs:2 |
-| 87113030 | Loại khác, dạng CKD (SEN) | chuong:87:cgbs:1 |
-| 87114020 | Loại khác, dạng CKD (SEN) | chuong:87:cgbs:1 |
-| 87115020 | Dạng CKD (SEN) | chuong:87:cgbs:1 |
-| 87119060 | Loại khác, dạng CKD (SEN) | chuong:87:cgbs:1 |
+| 87012110 | Dạng CKD (SEN) | sen:chuong:87:1 |
+| 87012210 | Dạng CKD (SEN) | sen:chuong:87:1 |
+| 87012310 | Dạng CKD (SEN) | sen:chuong:87:1 |
+| 87012410 | Dạng CKD (SEN) | sen:chuong:87:1 |
+| 87012910 | Dạng CKD (SEN) | sen:chuong:87:1 |
+| 87029033 | Loại khác, có khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn | sen:8702:1, sen:chuong:87:2 |
+| 87029080 | Loại khác, có khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn | sen:8702:1, sen:chuong:87:2 |
+| 87042246 | Ô tô bọc thép để chở hàng hóa có giá trị, khối lượng toàn bộ theo thiết kế (SEN) trên 6 tấn nhưng không quá 10 tấn | sen:8704:1, sen:chuong:87:2 |
+| 87042247 | Ô tô bọc thép để chở hàng hóa có giá trị, khối lượng toàn bộ theo thiết kế (SEN) trên 10 tấn nhưng không quá 20 tấn | sen:8704:1, sen:chuong:87:2 |
+| 87043248 | Loại khác, khối lượng toàn bộ theo thiết kế (SEN) trên 6 tấn nhưng không quá 10 tấn | sen:8704:1, sen:chuong:87:2 |
+| 87044246 | Ô tô bọc thép để chở hàng hóa có giá trị, khối lượng toàn bộ theo thiết kế (SEN) trên 6 tấn nhưng không quá 10 tấn | sen:8704:1, sen:chuong:87:2 |
+| 87044247 | Ô tô bọc thép để chở hàng hóa có giá trị, khối lượng toàn bộ theo thiết kế (SEN) trên 10 tấn nhưng không quá 20 tấn | sen:8704:1, sen:chuong:87:2 |
+| 87045248 | Loại khác, khối lượng toàn bộ theo thiết kế (SEN) trên 6 tấn nhưng không quá 10 tấn | sen:8704:1, sen:chuong:87:2 |
+| 87049010 | Dạng CKD (SEN) | sen:8704:1, sen:chuong:87:1 |
+| 87060022 | Loại khác, dùng cho xe có khối lượng toàn bộ theo thiết kế (SEN) không quá 24 tấn | sen:chuong:87:2 |
+| 87060023 | Loại khác, dùng cho xe có khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn | sen:chuong:87:2 |
+| 87060041 | Dùng cho xe có khối lượng toàn bộ theo thiết kế (SEN) không quá 24 tấn | sen:chuong:87:2 |
+| 87060042 | Dùng cho xe có khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn | sen:chuong:87:2 |
+| 87087033 | Dùng cho xe tự đổ được thiết kế để sử dụng trên các loại đường không phải đường quốc lộ có khối lượng toàn bộ theo thiết kế (SEN) trên 45 tấn | sen:chuong:87:2 |
+| 87113030 | Loại khác, dạng CKD (SEN) | sen:chuong:87:1 |
+| 87114020 | Loại khác, dạng CKD (SEN) | sen:chuong:87:1 |
+| 87115020 | Dạng CKD (SEN) | sen:chuong:87:1 |
+| 87119060 | Loại khác, dạng CKD (SEN) | sen:chuong:87:1 |
 
 ## đúng mã: 646
 
@@ -966,8 +966,8 @@
 | 87112013 | Xe “pocket motorcycle” (SEN) | sen:87112013:1 |
 | 87112091 | Xe mô tô địa hình (SEN) | sen:87112091:1 |
 | 87112093 | Xe “pocket motorcycle” (SEN) | sen:87112093:1 |
-| 87113011 | Dạng CKD (SEN) | sen:87113011:1, chuong:87:cgbs:1 |
-| 87114011 | Dạng CKD (SEN) | sen:87114011:1, chuong:87:cgbs:1 |
+| 87113011 | Dạng CKD (SEN) | sen:87113011:1, sen:chuong:87:1 |
+| 87114011 | Dạng CKD (SEN) | sen:87114011:1, sen:chuong:87:1 |
 | 87114019 | Loại khác (SEN) | sen:87114019:1 |
 | 87116012 | Xe "kick scooter"; xe tự cân bằng "self-balancing cycle"; xe "pocket motorcycle” (SEN) | sen:87116012:1 |
 | 87116092 | Xe "kick scooter"; xe tự cân bằng "self-balancing cycle"; xe "pocket motorcycle” (SEN) | sen:87116092:1 |
