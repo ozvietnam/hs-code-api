@@ -73,6 +73,21 @@ check('cấm nhập chỉ hàng đã qua sử dụng → Lưu ý', classifyPolic
     JSON.stringify(camThuong[0]?.text),
   );
 }
+{
+  // QT 25/11: bảng nguồn ghi CAM_NHAP_KHAU cho văn bản chỉ tạm ngừng tạm nhập tái xuất / cấm có điều kiện / hạn ngạch.
+  const tn = listingLines([L({ loaiTacDong: 'CAM_NHAP_KHAU', dieuKien: null, soHieu: '18/2024/TT-BCT', mucRuiRo: null, ten: 'Quy định về danh mục phế liệu tạm ngừng kinh doanh tạm nhập, tái xuất, chuyển khẩu' })]);
+  check('tạm ngừng TNTX → Thông tin, không nói "Cấm nhập khẩu"', tn[0]?.level === 'INFO' && !/cấm nhập/i.test(tn[0]?.text), JSON.stringify(tn[0]));
+  const tq = listingLines([L({ loaiTacDong: 'CAM_NHAP_KHAU', dieuKien: 'Chỉ áp dụng đối với hàng hóa đã qua sử dụng', soHieu: '18/2024/TT-BCT', mucRuiRo: null, ten: 'Quy định về danh mục phế liệu tạm ngừng kinh doanh tạm nhập, tái xuất, chuyển khẩu' })]);
+  check('tạm ngừng TNTX kèm điều kiện hàng cũ → vẫn không nói "Cấm nhập khẩu"', tq[0]?.level === 'INFO' && !/cấm nhập/i.test(tq[0]?.text), JSON.stringify(tq[0]));
+  const kc = listingLines([L({ loaiTacDong: 'CAM_NHAP_KHAU', dieuKien: 'Chỉ áp dụng đối với kim cương thô xung đột', mucRuiRo: null })]);
+  check('cấm chỉ cho một loại trong mã → Lưu ý kèm điều kiện', kc[0]?.level === 'NOTICE' && /có điều kiện \(Chỉ áp dụng/.test(kc[0]?.text), JSON.stringify(kc[0]));
+  const hai = listingLines([L({ loaiTacDong: 'CAM_NHAP_KHAU', dieuKien: 'Chỉ áp dụng đối với loại A', mucRuiRo: null }), L({ loaiTacDong: 'CAM_NHAP_KHAU', dieuKien: '', mucRuiRo: null })]);
+  check('cấm có điều kiện không nuốt lệnh cấm vô điều kiện cùng văn bản', hai.some((x) => x.level === 'BLOCKING') && hai.length === 2, JSON.stringify(hai));
+  const hn = listingLines([L({ loaiTacDong: 'GIAY_PHEP', dieuKien: 'Hạn ngạch thuế quan nhập khẩu theo cam kết WTO', mucRuiRo: null })]);
+  check('hạn ngạch thuế quan → Lưu ý, không phải "Phải có giấy phép"', hn[0]?.level === 'NOTICE' && hn[0]?.flag === null && /hạn ngạch/.test(hn[0]?.text), JSON.stringify(hn[0]));
+  const qs = listingLines([L({ loaiTacDong: 'CAM_NHAP_KHAU', dieuKien: 'cấm xuất khẩu, cấm nhập khẩu; chỉ áp dụng loại chuyên dùng quân sự', soHieu: '173/2018/TT-BQP', mucRuiRo: null })]);
+  check('CA NGƯỢC: cấm quân sự (điều kiện không mở đầu bằng "Chỉ") vẫn BLOCKING', qs[0]?.level === 'BLOCKING', JSON.stringify(qs[0]));
+}
 check('cắt giảm kiểm tra → Thông tin', classifyPolicy('', {}, [L({ loaiTacDong: 'CAT_GIAM_KIEM_TRA' })]).policyLevel === 'INFO');
 check('trùng văn bản+thủ tục: bỏ dòng khớp nhóm khi đã khớp 8 số', listingLines([L({}), L({ match: { level: 'HS6', code: '853669' } })]).length === 1);
 check('cờ: hợp quy → requiresInspection', listingLines([L({})])[0].flag === 'requiresInspection');
