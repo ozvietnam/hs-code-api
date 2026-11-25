@@ -22,6 +22,7 @@ kiem('không nguyên văn', /không nguyên văn/.test(loi([nut({ nguyenVan: 'C�
 kiem('nguyên văn có ở MỘT trong các bản chữ là đạt', loi([nut({})], { vanBan: ['khác', 'x Kim loại cơ bản y'] }) === '');
 kiem('làm phẳng: bỏ số trang đầu/cuối trang, giữ số trong câu', phang('12\nnặng\n100\ngam\n13\f\n14\ntiếp') === 'nặng\n100\ngam\ntiếp');
 const tm = fs.mkdtempSync(path.join(os.tmpdir(), 'mong-')); fs.writeFileSync(path.join(tm, 'cgct-hs2022.txt'), 'a'); fs.writeFileSync(path.join(tm, 'cgct-hs2022-layout.txt'), 'b');
+kiem('làm phẳng: số trang kiểu "— 541 —"', phang('a với\n\n  — 541 —\n\f b') === 'a với\n b');
 kiem('kho từ PDF đọc mọi bản cgct-hs2022*, kho khác cần tệp riêng', docBanChu(tm, 'phan').length === 2 && docBanChu(tm, 'gir').length === 0);
 fs.writeFileSync(path.join(tm, 'gir.txt'), 'c'); kiem('có <kho>.txt thì dùng đúng tệp đó', docBanChu(tm, 'gir').join() === 'c');
 kiem('thiếu nút bắt buộc', /thiếu nút bắt buộc phan:XV:cg:9/.test(loi([nut({})], { kyVong: { 'phan:XV:cg:9': 'v' } })));

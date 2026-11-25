@@ -21,7 +21,7 @@ export const NGU_PHAP = new RegExp([
 const KHO_CGCT = new Set(['phan', 'chuong', 'nhom', 'phan-nhom']);
 /** Làm phẳng bản chữ: bỏ dòng chỉ có số trang ở đầu / cuối trang, nối dòng. Không bỏ chữ nào khác. */
 export function phang(tho) {
-  return String(tho).split('\f').map((t) => { const d = t.split('\n'); const rong = (x) => !x.trim() || /^\s*\d{1,4}\s*$/.test(x); while (d.length && rong(d[0])) d.shift(); while (d.length && rong(d[d.length - 1])) d.pop(); return d.join('\n'); }).join('\n');
+  return String(tho).split('\f').map((t) => { const d = t.split('\n'); const rong = (x) => !x.trim() || /^\s*[—–-]?\s*\d{1,4}\s*[—–-]?\s*$/.test(x); while (d.length && rong(d[0])) d.shift(); while (d.length && rong(d[d.length - 1])) d.pop(); return d.join('\n'); }).join('\n');
 }
 /** Các bản chữ để đối chiếu một kho; [] khi không có. */
 export function docBanChu(thuMuc, kho) {
