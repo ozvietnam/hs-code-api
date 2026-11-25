@@ -400,8 +400,6 @@ const MIEN_TRU_MO_COI = {
     'ĐỎ vì khuôn lấy .pathname từ URL module cho ra C:\\C:\\… → ENOENT data/so-tay/8412.json, in 0 ca. Sửa thuộc #1846, không phải việc của cổng này.',
   'test-do-do-thi-gd2.mjs':
     'ĐỎ ngân sách thời gian nội bộ subMs < 30000, đo 75405 ms cho 2 lượt (13 pass / 1 fail). Nhãn "chạy nhanh < 15s" trong tệp không đúng trên máy đo. Không nới ngưỡng — QT quyết.',
-  'test-engine-loop-ma-du-kien.mjs':
-    'ĐỎ 5 ca hành vi OZV-1388: mong results[0] = 32041900 duKien=true, nhận 320417 NEED_FACTS. Đo trên main cũ a9118a5c cũng 7 pass / 5 fail ⇒ hỏng sẵn, không do engine mới. Không sửa lib/engine-loop.js (QT cấm).',
   'test-import-customs-danh-muc.mjs':
     'ĐỎ 1 ca: mong CLI thoát 1 khi dữ liệu thiếu, nhận exit 0 vì scripts/import-customs-danh-muc.mjs dùng main-guard ghép file:// với argv[1] nên main() không chạy trên Windows (đo: stdout 0 byte, exit 0). Sửa thuộc #1846.',
   'test-kho-dap-an.mjs':
