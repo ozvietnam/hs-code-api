@@ -64,7 +64,7 @@ kiem('mọi nút đều khớp NGU_PHAP, đúng lớp LUAT/HUONG_DAN và cha là
     if (n.loai === 'KHAI_QUAT' && n.lop !== 'HUONG_DAN') return false;
     if (n.loai !== 'KHAI_QUAT' && n.lop !== 'LUAT') return false;
     if (n.cha !== null && (!byId.has(n.cha) || !n.id.startsWith(`${n.cha}:`))) return false;
-    return n.nguon?.ban === 'HS2022' && Number.isInteger(n.nguon?.trang) && n.nguon.trang >= 8;
+    return n.nguon?.ban === 'HS2022' && Number.isInteger(n.nguon?.trang) && n.nguon.trang >= (n.nguon.soCongBao ? 1 : 8); // chữ theo TT31: trang Công báo
   })
 );
 
