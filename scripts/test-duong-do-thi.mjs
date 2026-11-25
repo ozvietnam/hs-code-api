@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 /**
- * Đường đồ thị (HS_TIM_TRUOC=do-thi, kế hoạch đồ thị mục 5 bước 3–8): ráp đúng, không đủ căn cứ thì về vòng 1, tắt thì như cũ.
+ * Đường đồ thị (HS_TIM_TRUOC=do-thi, kế hoạch đồ thị mục 5 bước 3–8): ráp đúng, không đủ căn cứ thì DỪNG HỎI (không về vòng 1), tắt thì
+ * như cũ. Bậc thang 4→6→8 và cửa ra ADR-0004: scripts/test-bac-thang.mjs.
  * LLM giả, không mạng. Đây là kiểm CƠ CHẾ; số đúng/sai phải đo bằng chuỗi mô hình máy thật (L1).
  */
 import './test-isolate-data.mjs';
@@ -16,7 +17,6 @@ const llm = require('../lib/llm-tier.js');
 const { classifyLoop } = require('../lib/engine-loop.js');
 const DT = require('../lib/do-thi/duong-do-thi.js');
 const tt = require('../lib/tim-truoc.js');
-const { goiPhanBiet } = require('../lib/do-thi/goi-phan-biet.js');
 const SS = require('../lib/do-thi/song-sinh-vat-lieu.js');
 
 const HANG = { tenHang: 'Van điện từ khí nén 5/2, cuộn coil 24VDC, thân nhôm' };
@@ -37,8 +37,9 @@ function gia(traLoi) {
 }
 const idTrongGoi = (u, nhom) => [...u.matchAll(/\[([^\]]+)\] \((\d{4})-(\d{4})\)/g)].filter((m) => (m[2] === nhom || m[3] === nhom) && m[2] !== m[3]).map((m) => m[1])[0];
 const luotMotDung = (u) => ({ duKien: [{ khoa: 'ten', giaTri: 'van', trichKhach: 'van điện từ khí nén' }], nhom: [...u.split('ỨNG VIÊN:')[1].matchAll(/^- (\d{4})/gm)].map((m) => m[1]).slice(0, 3), lyDoNgoai: '' });
-const luotHaiDung = (u) => ({ nhom: '8481', canCu: [idTrongGoi(u, '8481')].filter(Boolean), thieu: [], lyDo: 'van điều khiển dòng khí' });
-const DAY_DU = { luot_mot: luotMotDung, luot_hai: luotHaiDung, understand: R1_CU, gir: R2 };
+const tenTrongGoi = (u, nhom) => [...u.matchAll(/\[([^\]]+)\] \((\d{4})-(\d{4})\)/g)].find((m) => m[2] === nhom && m[3] === nhom)?.[1];
+const luotHaiDung = (u) => ({ nhom: '8481', canCu: [tenTrongGoi(u, '8481'), idTrongGoi(u, '8481')].filter(Boolean), thieu: [], lyDo: 'van điều khiển dòng khí' });
+const DAY_DU = { luot_mot: luotMotDung, luot_hai: luotHaiDung, bac_thang: { dong: '', thieu: ['đường kính trong'] }, understand: R1_CU, gir: R2 };
 const chay = async (che, traLoi, hang = HANG) => { if (che) process.env.HS_TIM_TRUOC = che; else delete process.env.HS_TIM_TRUOC; const buoc = gia(traLoi); const out = await classifyLoop(hang, { mic: false }); return { out, buoc }; };
 
 // 0. Công tắc
@@ -53,42 +54,29 @@ for (const v of ['', 'on', 'goi']) {
 }
 // 2. Thuận: hai lượt đồ thị thay vòng 1
 const thuan = await chay('do-thi', DAY_DU);
-kiem('do-thi thuận: lượt một → lượt hai, KHÔNG gọi vòng 1 (understand)', thuan.buoc[0] === 'luot_mot' && thuan.buoc[1] === 'luot_hai' && !thuan.buoc.includes('understand'), thuan.buoc.join(','));
-kiem('do-thi thuận: nhóm 8481, mã có mặt, engine ghi bước + giờ', thuan.out.engine.doThi?.nhom === '8481' && thuan.out.results[0]?.hs.startsWith('8481') && thuan.out.engine.doThi.luot.length === 2 && Number.isFinite(thuan.out.engine.phases.doThiMs), JSON.stringify(thuan.out.engine.doThi));
+kiem('do-thi thuận: lượt một → lượt hai → bậc thang, KHÔNG gọi vòng 1 (understand) / vòng 2 (gir)', thuan.buoc[0] === 'luot_mot' && thuan.buoc[1] === 'luot_hai' && thuan.buoc.slice(2).every((b) => b === 'bac_thang') && !thuan.buoc.some((b) => ['understand', 'gir'].includes(b)), thuan.buoc.join(','));
+kiem('do-thi thuận: nhóm 8481, mã có mặt, engine ghi bước + giờ', thuan.out.engine.doThi?.nhom === '8481' && thuan.out.results[0]?.hs.startsWith('8481') && thuan.out.results[0].hs === thuan.out.engine.bacThang.ma && thuan.out.engine.doThi.luot.length >= 2 && Number.isFinite(thuan.out.engine.phases.doThiMs), JSON.stringify(thuan.out.engine.doThi));
 kiem('do-thi thuận: có tự soát + hồ sơ căn cứ (bước 8), căn cứ là trích nguyên văn', ['CAO', 'VUA', 'THAP'].includes(thuan.out.engine.tuSoat?.doTin) && thuan.out.dossier.canCuDoThi?.[0]?.canCu?.[0]?.trich?.length > 5, JSON.stringify(thuan.out.engine.tuSoat));
-// 3. Không đủ căn cứ → về vòng 1, vẫn ra mã
+// 3. Không đủ căn cứ ở bậc 4 → dừng hỏi (không về vòng 1); AI lỗi → thử lại
 const hong = [
-  ['lượt một hỏng khuôn', { ...DAY_DU, luot_mot: { nhom: [] } }],
-  ['lượt hai bịa id căn cứ', { ...DAY_DU, luot_hai: { nhom: '8481', canCu: ['C5:bia'], thieu: [], lyDo: '' } }],
-  ['lượt hai không căn cứ', { ...DAY_DU, luot_hai: { nhom: '8481', canCu: [], thieu: [], lyDo: '' } }],
-  ['lượt hai chọn nhóm ngoài gói', { ...DAY_DU, luot_hai: { nhom: '0101', canCu: ['x'], thieu: [], lyDo: '' } }],
-  ['mạng lỗi ở lượt hai', { ...DAY_DU, luot_hai: new Error('mang loi') }],
+  ['lượt hai bịa id căn cứ', { ...DAY_DU, luot_hai: { nhom: '8481', canCu: ['C5:bia'], thieu: [], lyDo: '' } }, 'ASK_USER'],
+  ['lượt hai không căn cứ', { ...DAY_DU, luot_hai: { nhom: '8481', canCu: [], thieu: [], lyDo: '' } }, 'ASK_USER'],
+  ['lượt hai chọn nhóm ngoài gói', { ...DAY_DU, luot_hai: { nhom: '0101', canCu: ['x'], thieu: [], lyDo: '' } }, 'ASK_USER'],
+  ['mạng lỗi ở lượt hai', { ...DAY_DU, luot_hai: new Error('mang loi') }, 'RETRY'],
 ];
-for (const [ten, tl] of hong) {
+for (const [ten, tl, kieu] of hong) {
   const { out, buoc } = await chay('do-thi', tl);
-  const biaThiRoi = ten === 'lượt một hỏng khuôn' ? true : (/VE_DUONG_CU/.test(out.engine.doThi?.trangThai || '') && buoc.includes('understand'));
-  kiem(`CA NGƯỢC ${ten}: không chốt bừa, vẫn ra kết quả`, biaThiRoi && out.results?.length > 0 && (buoc.includes('understand') || out.engine.doThi?.canCu?.length > 0), `${out.engine.doThi?.trangThai} ${buoc.join(',')}`);
+  kiem(`CA NGƯỢC ${ten}: không mã, ${kieu}, không gọi vòng 1 / vòng 2`, /^KHONG_DU_CAN_CU/.test(out.engine.doThi?.trangThai || '') && out.results.length === 0 && out.nextAction?.type === kieu && !buoc.some((b) => ['understand', 'gir'].includes(b)), `${out.engine.doThi?.trangThai} ${out.nextAction?.type} ${buoc.join(',')}`);
 }
-// 4. Tên toàn chữ Hán → tìm trước bỏ qua → vòng 1 như cũ
+// 4. Tên toàn chữ Hán → tìm trước không ra ứng viên → dừng hỏi ở bậc 4
 {
   const { buoc, out } = await chay('do-thi', DAY_DU, { tenHang: '电磁阀' });
-  kiem('tên chữ Hán: bỏ qua đồ thị, vòng 1 như cũ', buoc[0] === 'understand' && /^BO_QUA/.test(out.engine.doThi?.trangThai || ''), `${out.engine.doThi?.trangThai} ${buoc.join(',')}`);
+  kiem('tên chữ Hán: không ứng viên → dừng hỏi, không đoán', buoc.length === 0 && /^BO_QUA/.test(out.engine.doThi?.trangThai || '') && out.status === 'NEED_FACTS' && out.results.length === 0 && out.nextAction.questions.length > 0, `${out.engine.doThi?.trangThai} ${buoc.join(',')}`);
 }
-// 5. Thiếu dữ kiện → không chốt 8 số tất định
+// 5. Lượt hai còn thiếu dữ kiện để chọn nhóm → dừng hỏi ở bậc 4
 {
-  const { out } = await chay('do-thi', { ...DAY_DU, luot_hai: (u) => ({ ...luotHaiDung(u), thieu: ['kiểu truyền động'] }) });
-  kiem('còn thiếu dữ kiện: không bỏ vòng 2 bằng đường tất định', !(out.engine.gates || []).some((x) => x.doThiChot === true), JSON.stringify(out.engine.gates?.map((x) => x.doThiChot)));
-}
-// 6. dapAn8: mọi điều kiện phải đủ
-{
-  const goi = goiPhanBiet(['8481', '8412']);
-  const kq = { goi, luotHai: { ok: true, nhom: '8481', canCu: [goi.muc[0].id], thieu: [], lyDo: 'x' }, xuong6: { trangThai: 'CHOT', chot: '848120' } };
-  const cd = (r) => ({ chotDong8: () => r, dong8DuyNhat: () => null, productText: 'van' });
-  kiem('dapAn8: chotDong8 CHOT → có đáp án kèm căn cứ', DT.dapAn8({ kq, ...cd({ checked: true, ketQua: 'CHOT', hs: '84812090' }) })?.hs === '84812090');
-  for (const r of [{ checked: true, ketQua: 'THIEU_SO_LIEU' }, { checked: true, ketQua: 'TRANH_CAP' }, { checked: true, ketQua: 'LOAI_KHAC', hs: '84812090' }, { checked: false }, null]) kiem(`CA NGƯỢC dapAn8: chotDong8=${r?.ketQua || r} → null`, DT.dapAn8({ kq, ...cd(r) }) === null);
-  kiem('CA NGƯỢC dapAn8: chỉ trích tên nhóm → null', DT.dapAn8({ kq: { ...kq, luotHai: { ...kq.luotHai, canCu: ['TEN:8481'] } }, ...cd({ checked: true, ketQua: 'CHOT', hs: '84812090' }) }) === null);
-  kiem('CA NGƯỢC dapAn8: cạnh 6 số chưa chốt → null', DT.dapAn8({ kq: { ...kq, xuong6: { trangThai: 'CAN_HOI', chot: null } }, ...cd({ checked: true, ketQua: 'CHOT', hs: '84812090' }) }) === null);
-  kiem('CA NGƯỢC dapAn8: còn thiếu dữ kiện → null', DT.dapAn8({ kq: { ...kq, luotHai: { ...kq.luotHai, thieu: ['a'] } }, ...cd({ checked: true, ketQua: 'CHOT', hs: '84812090' }) }) === null);
+  const { out, buoc } = await chay('do-thi', { ...DAY_DU, luot_hai: (u) => ({ ...luotHaiDung(u), thieu: ['kiểu truyền động'] }) });
+  kiem('còn thiếu dữ kiện ở bậc 4: không mã, không đi bậc thang', out.results.length === 0 && out.engine.bacThang?.lyDoDung === 'THIEU_DU_KIEN_BAC_4' && !buoc.includes('bac_thang'), JSON.stringify(out.engine.bacThang?.lyDoDung));
 }
 // 7. Dữ kiện xuống 6 số chỉ đọc chữ khách, không đọc suy đoán của AI
 kiem('moTaKhach chỉ lấy trường khách khai', DT.moTaKhach({ tenHang: 'A', chatLieu: 'B', product: { nameVi: 'BỊA' }, imageTexts: [{ text: 'tem' }] }) === 'A. B. tem');
@@ -131,9 +119,6 @@ kiem('CA NGƯỢC chương đọc từ tên chương: "kim loại" chung không 
   const G6 = require('../lib/do-thi/tieu-chi-6.js');
   const r = G6.diXuong6('8501', S('8501').tieuChi6, 'Động cơ điện một chiều 24V 500W');
   kiem('diXuong6: mọi dòng chiTiet có traiCung kiểu boolean, trái cứng ⇒ trái', r.chiTiet.every((q) => typeof q.traiCung === 'boolean' && (!q.traiCung || q.trangThai === 'TRAI')));
-  const kb = DT.khoiVong2({ luotHai: { nhom: '6104' }, xuong6: vay }, S);
-  kiem('khối vòng 2: nêu phân nhóm khớp kèm câu luật nguyên văn', /KHỚP 610443: "/.test(kb), kb.slice(0, 200));
-  kiem('CA NGƯỢC khối vòng 2: không chốt, không loại → chuỗi rỗng', DT.khoiVong2({ luotHai: { nhom: '8523' }, xuong6: { chot: null, loai: [] } }, S) === '' && DT.khoiVong2(null) === '');
 }
 // 12. Nghỉ gọi lại không vượt hạn chót lượt (LOOP_PROVIDER=gemini): trước đây 85 s kéo thành 135 s
 {
