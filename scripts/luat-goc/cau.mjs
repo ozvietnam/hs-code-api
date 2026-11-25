@@ -45,7 +45,8 @@ export function tachCau(v) {
 const HET_HAI_CHAM = /:\s*$/u;
 /**
  * Câu kèm `dan`: id câu DẪN ("Nhóm này không bao gồm:") của mục liệt kê. Mục "(a) Vải dệt…" đứng một mình thì không biết là gồm hay loại.
- * Nút đoạn (…:ct:n, …:kq:n): câu dẫn có thể nằm ở đoạn trước cùng nhóm. Nút có cha: câu dẫn là câu cuối của cha nếu kết bằng dấu hai chấm.
+ * Nút có cha: câu dẫn là câu cuối của cha nếu kết bằng dấu hai chấm (chỉ cho mục; đoạn văn thường không thừa kế: "Mặt khác, nhóm này bao gồm…").
+ * Nút đoạn (…:ct:n, …:kq:n) không ghi cha: câu dẫn có thể nằm ở đoạn trước cùng nhóm.
  */
 export function tachKho(dong) {
   const ra = []; const cuoi = new Map(); const danNhom = new Map();
@@ -54,16 +55,16 @@ export function tachKho(dong) {
     const doan = x.loai === 'TEN' ? [[0, v.length]] : tachCau(v);
     const nhom = /^(.*:(?:ct|kq)):\d+$/.exec(x.id)?.[1] || null;
     const cuaCha = x.cha && cuoi.get(x.cha)?.haiCham ? cuoi.get(x.cha).id : null;
-    let dan = nhom ? danNhom.get(nhom) || null : cuaCha;
+    let dan = x.cha || !nhom ? cuaCha : danNhom.get(nhom) || null; //   kho đã ghi cha thì theo cha, không đoán theo thứ tự đoạn
     doan.forEach(([tu, den], i) => {
-      const c = v.slice(tu, den); const id = `${x.id}#${i + 1}`; const laMuc = DAU_MUC.test(c); const dauDoan = i === 0 || /\n\s*$/.test(v.slice(0, tu));
+      const c = v.slice(tu, den); const id = `${x.id}#${i + 1}`; const laMuc = DAU_MUC.test(c) || (i === 0 && !!x.so && !!x.cha); const dauDoan = i === 0 || /\n\s*$/.test(v.slice(0, tu));
       if (!laMuc && dauDoan && (nhom || i > 0)) dan = null; //   đoạn văn mới, không phải mục: hết phạm vi câu dẫn
       const haiCham = HET_HAI_CHAM.test(c);
       ra.push({ id, tu, den, ...(dan ? { dan } : {}) });
       if (haiCham) dan = id;
       cuoi.set(x.id, { id, haiCham });
     });
-    if (nhom) danNhom.set(nhom, dan);
+    if (nhom) danNhom.set(nhom, x.cha ? null : dan);
   }
   return ra;
 }

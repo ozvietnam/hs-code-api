@@ -13,6 +13,10 @@ const k = tachKho([N('nhom:7616:ct:1', 'Nhóm này gồm đinh.'), N('nhom:7616:
 const d = Object.fromEntries(k.map((c) => [c.id, c.dan]));
 kiem('mục nối câu dẫn ở đoạn trước', d['nhom:7616:ct:3#1'] === 'nhom:7616:ct:2#1' && d['nhom:7616:ct:4#1'] === 'nhom:7616:ct:2#1' && d['nhom:7616:ct:4#2'] === 'nhom:7616:ct:2#1');
 kiem('CA NGƯỢC đoạn văn mới hết phạm vi câu dẫn', d['nhom:7616:ct:5#1'] === undefined && d['nhom:7616:ct:1#1'] === undefined);
+const k3 = tachKho([N('nhom:1:ct:1', 'Không bao gồm:'), N('nhom:1:ct:2', '(a) X, kể cả:', { cha: 'nhom:1:ct:1', so: '(a)' }), N('nhom:1:ct:3', '(i) Y.', { cha: 'nhom:1:ct:2', so: '(i)' }), N('nhom:1:ct:4', '(b) Z.', { cha: 'nhom:1:ct:1', so: '(b)' }), N('nhom:1:ct:5', 'Mặt khác, nhóm này bao gồm W.', { cha: 'nhom:1:ct:4' })]);
+const d3 = Object.fromEntries(k3.map((c) => [c.id, c.dan]));
+kiem('danh sách lồng: mục theo cha, không theo thứ tự', d3['nhom:1:ct:3#1'] === 'nhom:1:ct:2#1' && d3['nhom:1:ct:4#1'] === 'nhom:1:ct:1#1' && d3['nhom:1:ct:2#1'] === 'nhom:1:ct:1#1');
+kiem('CA NGƯỢC đoạn văn dưới mục không thừa kế câu loại trừ', d3['nhom:1:ct:5#1'] === undefined);
 const c2 = tachKho([N('phan:XV:cg:1', '1. Phần này không bao gồm:', { loai: 'CHU_GIAI' }), N('phan:XV:cg:1:a', '(a) Sơn;', { loai: 'CHU_GIAI', cha: 'phan:XV:cg:1' }), N('phan:XV:cg:2', '2. Khái niệm A.', { loai: 'CHU_GIAI' })]);
 kiem('nút con nối câu dẫn của cha', c2[1].dan === 'phan:XV:cg:1#1' && c2[2].dan === undefined);
 const dk = [N('nhom:7616:ct:1', 'A b. C d.')]; const dc = tachKho(dk).map((x) => JSON.stringify(x));

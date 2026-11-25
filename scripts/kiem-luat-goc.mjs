@@ -16,7 +16,11 @@ export const NGU_PHAP = new RegExp([
   `^gir:[1-6](?::[a-c])?(?::ct:\\d+)?$`,
   `^phan:[IVX]+(?::(?:cg|cgpn)${D}|:kq:\\d+)?$`,
   `^chuong:\\d{2}(?::(?:cg|cgpn|cgbs)${D}|:kq:\\d+|:pc:[IVX]+(?::kq:\\d+)?)?$`,
+<<<<<<< HEAD
   `^nhom:\\d{4}:ct:\\d+$`, `^pn:\\d{6}:ct:\\d+$`, `^sen:\\d{4,8}:\\d+$`, `^wco:\\d{6}:\\d+$`, `^bieu:\\d{2,8}$`, `^tb:[\\w.-]+:\\d{4,8}$`,
+=======
+  `^nhom:\\d{4}:ct:\\d+$`, `^pn:\\d{6}:ct:\\d+$`, `^sen:(?:\\d{4,8}|chuong:\\d{2}|phan:[IVX]+|md):\\d+$`, `^wco:\\d{6}:\\d+$`, `^bieu:\\d{2,8}(?::td\\d+)*$`, `^tb:[\\w.-]+:\\d{4,8}$`,
+>>>>>>> origin/main
 ].join('|'));
 const KHO_CGCT = new Set(['phan', 'chuong', 'nhom', 'phan-nhom']);
 /** Làm phẳng bản chữ: bỏ dòng chỉ có số trang ở đầu / cuối trang, nối dòng. Không bỏ chữ nào khác. */
@@ -45,6 +49,7 @@ export function kiemKho(ten, dong, { vanBan = null, kyVong = null } = {}) {
     if (!LOP.has(x.lop)) loi.push(`${o}: lop lạ "${x.lop}"`);
     const v = x.nguyenVan;
     if (typeof v !== 'string' || !gon(v)) { loi.push(`${o}: thiếu nguyên văn`); return; }
+    if (x.doanSau !== undefined) loi.push(`${o}: bỏ doanSau, tách thành nút …:ket`);
     if (v !== v.normalize('NFC')) loi.push(`${o}: chưa NFC`);
     if (/[\u0000-\u0008\u000b\u000c\u000e-\u001f�]/.test(v)) loi.push(`${o}: ký tự hỏng`);
     if (/(?:^|\n)\s*\d{1,4}\s*(?:\n|$)/.test(v) && x.loai !== 'TEN') canhBao.push(`${o}: nghi dính số trang`);
