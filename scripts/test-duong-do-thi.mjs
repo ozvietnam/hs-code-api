@@ -118,4 +118,34 @@ kiem('CA NGƯỢC chương đọc từ tên chương: "kim loại" chung không 
   const x = DT.goiChoLuotHai(['7318', '9603'], { tran: 7000 });
   kiem('gói: id ngắn K1.., có câu tên nhóm nguyên văn, map về id gốc', x.gon.muc.length >= 2 && x.gon.muc.every((m) => /^K\d+$/.test(m.id)) && x.gon.muc.every((m) => x.goc.muc.some((g) => g.id === x.maGoc.get(m.id))) && !/C\d+:\d{4}>/.test(x.gon.vanBan));
 }
+// 11. Bước 6: "không khớp chữ" khác "trái"; "loại khác" chỉ chốt khi mọi anh em trái cứng
+{
+  const S = require('../lib/so-tay-gates.js').loadSoTay;
+  const usb = DT.xuong6('8523', 'Thẻ nhớ USB. lưu trữ dữ liệu điện tử', S);
+  kiem('thẻ nhớ USB: không chốt "loại khác" 852380, phân nhóm 852351 còn trong danh sách xét', usb.chot === null && usb.ungVien.includes('852351'), JSON.stringify(usb).slice(0, 200));
+  const noi = DT.xuong6('7323', 'Bộ nồi bằng thép không gỉ. thép không gỉ, tay cầm nhựa. đồ dùng nhà bếp', S);
+  kiem('nồi inox tay cầm nhựa: không chốt "loại khác" 732399, còn 732393', noi.chot === null && noi.ungVien.includes('732393'), JSON.stringify(noi).slice(0, 200));
+  const vay = DT.xuong6('6104', 'Váy liền thân trẻ em gái. Vải dệt kim sợi tổng hợp. Trang phục trẻ em', S);
+  kiem('CA NGƯỢC váy liền thân sợi tổng hợp: vẫn chốt 610443 (khớp tiêu chí có tên riêng)', vay.trangThai === 'CHOT' && vay.chot === '610443', JSON.stringify(vay).slice(0, 200));
+  // Bộ tiêu chí giả: hai phân nhóm theo số đo, một phần còn lại
+  const G6 = require('../lib/do-thi/tieu-chi-6.js');
+  const r = G6.diXuong6('8501', S('8501').tieuChi6, 'Động cơ điện một chiều 24V 500W');
+  kiem('diXuong6: mọi dòng chiTiet có traiCung kiểu boolean, trái cứng ⇒ trái', r.chiTiet.every((q) => typeof q.traiCung === 'boolean' && (!q.traiCung || q.trangThai === 'TRAI')));
+  const kb = DT.khoiVong2({ luotHai: { nhom: '6104' }, xuong6: vay }, S);
+  kiem('khối vòng 2: nêu phân nhóm khớp kèm câu luật nguyên văn', /KHỚP 610443: "/.test(kb), kb.slice(0, 200));
+  kiem('CA NGƯỢC khối vòng 2: không chốt, không loại → chuỗi rỗng', DT.khoiVong2({ luotHai: { nhom: '8523' }, xuong6: { chot: null, loai: [] } }, S) === '' && DT.khoiVong2(null) === '');
+}
+// 12. Nghỉ gọi lại không vượt hạn chót lượt (LOOP_PROVIDER=gemini): trước đây 85 s kéo thành 135 s
+{
+  const { execFileSync } = await import('node:child_process');
+  const ma = `
+    const T = require('./lib/llm-tier.js'); let n = 0;
+    T.callLLMJson = async () => { n += 1; throw new Error('gemini timeout'); };
+    const { callWithFallback } = require('./lib/engine-loop.js');
+    const t = Date.now();
+    callWithFallback('s', 'u', { step: 'understand', timeoutMs: 1000, hanChotMs: Date.now() + 6000 }, []).catch(() => console.log(JSON.stringify({ ms: Date.now() - t, n }))).finally(() => process.exit(0));`;
+  const env = { ...process.env, LOOP_PROVIDER: 'gemini' }; delete env.MINIMAX_API_KEY;
+  const ra = JSON.parse(execFileSync(process.execPath, ['-e', ma], { env, cwd: new URL('..', import.meta.url).pathname, encoding: 'utf8' }).trim().split('\n').pop());
+  kiem('còn 6 s tới hạn chót: không nghỉ 5 s để gọi lại', ra.ms < 1500 && ra.n === 1, JSON.stringify(ra));
+}
 xong();
