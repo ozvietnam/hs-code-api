@@ -35,4 +35,8 @@ Số điểm viết thường, theo thứ tự in: `cg:1:a:ii`. Khoản bổ sun
 
 **Ranh giới để không chồng nhau:** "Chú giải" và "Chú giải bổ sung" → kho Phần/Chương. "Chú giải phân nhóm" của Phần/Chương → cùng kho Phần/Chương (`cgpn`). "Chú giải chi tiết phân nhóm" (trong chú giải nhóm) → kho phân nhóm. "Khái quát chung" → `kq`, lớp `HUONG_DAN`.
 
+**Trường thêm được phép (không bắt buộc):** `nguon.trangDen` (trang cuối khi nút qua trang) · `apChung` (mảng mã phân nhóm cùng chịu một đoạn) · `ghiChu` (sự thật về bản in: mã in không còn trong biểu, nghi lỗi in – giữ theo bản in, không sửa) · `thieu` (phần chỉ có hình/công thức không rút được chữ, kèm trang).
+
+Đoạn trong chú giải nhóm nói về phân nhóm nhưng **không nêu mã** (72.12 trang 1528, 72.17 trang 1534): thuộc kho nhóm (M-14), không đoán mã. Đoạn giải thích phân nhóm nằm trong phần Khái quát của Phần/Chương: thuộc `kq` của M-11 / M-13.
+
 Cổng: `node scripts/kiem-luat-goc.mjs <kho>`.
