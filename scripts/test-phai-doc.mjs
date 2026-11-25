@@ -1,51 +1,196 @@
 #!/usr/bin/env node
-// scripts/test-phai-doc.mjs — lib/do-thi/phai-doc.js: chạm một nút kéo ra hết những gì luật nối tới (ADR-0005). Tất định, không mạng, không AI.
+// scripts/test-phai-doc.mjs — M-34 (#1915): kiểm phai-doc đọc thẳng kho luat-goc theo ADR-0004 & ADR-0005.
+// Tất định, không mạng, không AI.
 import { createRequire } from 'node:module';
 import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
 import { boKiem } from './lib-luat.mjs';
 
 const require = createRequire(import.meta.url);
 const { kiem, xong } = boKiem('test-phai-doc');
-const { phaiDoc } = require('../lib/do-thi/phai-doc.js');
-const cg = JSON.parse(fs.readFileSync(new URL('../data/chu-giai-heading.json', import.meta.url), 'utf8'));
-const muc = (p, b) => p.trinhTu.find((x) => x.buoc === b);
-const nut4 = (p, b) => new Set(muc(p, b).muc.map((m) => m.nut.slice(0, 4)));
+const { phaiDoc, datLai, thongKeCanhCu } = require('../lib/do-thi/phai-doc.js');
+const { docKhoLuatGoc, dungDoThiDanChieu, taoKhoNut } = require('../lib/do-thi/dan-chieu.js');
 
-const p = phaiDoc('7616');
-kiem('7616: loại trừ ra gồm 58.09 và 96.04', nut4(p, 'LOAI_TRU_RA').has('5809') && nut4(p, 'LOAI_TRU_RA').has('9604'));
-kiem('7616: loại trừ vào có 48.21 (chú giải 48.21 đẩy nhãn kim loại sang)', nut4(p, 'LOAI_TRU_VAO').has('4821'));
-kiem('7616: nhắc tới 73.17, 73.18 (câu "được mô tả trong các chú giải nhóm 73.17 và 73.18")', nut4(p, 'NHAC_TOI').has('7317') && nut4(p, 'NHAC_TOI').has('7318'));
-kiem('7318: được 76.16 nhắc (chiều vào)', nut4(phaiDoc('7318'), 'DUOC_NHAC').has('7616'));
-kiem('cấp dưới đúng cấp gạch: 7616 → 761610 và 76169, không nhảy xuống 8 số', p.capDuoi.map((x) => x.ma).join() === '761610,76169');
-kiem('Quy tắc 6: 761610 chỉ so với anh em cùng cấp', phaiDoc('761610').cungCap.map((x) => x.ma).join() === '76169' && /Quy tắc 6/.test(phaiDoc('761610').quyTac));
-kiem('CA NGƯỢC: mã không có trong biểu / quá ngắn → null', phaiDoc('0000') === null && phaiDoc('76') === null && phaiDoc('') === null && phaiDoc(null) === null);
-kiem('gọi hai lần ra giống hệt', JSON.stringify(phaiDoc('8536')) === JSON.stringify(phaiDoc('8536')));
+const muc = (p, b) => p?.trinhTu?.find((x) => x.buoc === b);
+const nutIds = (p, b) => new Set((muc(p, b)?.muc || []).map((m) => m.nut));
 
-// Bất biến trên toàn kho
-const H = Object.keys(cg); const tat = new Map(H.map((h) => [h, phaiDoc(h)]).filter(([, x]) => x));
-let thieuTrich = 0; let toKhai = 0; let lechChieu = 0;
-for (const [h, x] of tat) {
-  for (const b of x.trinhTu) for (const m of b.muc) { if (!m.trich || !m.nguon) thieuTrich += 1; if (/to[_\s-]?khai|oz-gold/i.test(`${m.nguon}`)) toKhai += 1; }
-  if (muc(x, 'LOAI_TRU_RA').conLai) continue;
-  for (const m of muc(x, 'LOAI_TRU_RA').muc) { const k = tat.get(m.nut.slice(0, 4)); if (k && m.nut.length === 4 && !muc(k, 'LOAI_TRU_VAO').conLai && !nut4(k, 'LOAI_TRU_VAO').has(h)) lechChieu += 1; }
+const THU_TU_ADR0004 = [
+  'TEN',
+  'CHU_GIAI_PHAN',
+  'CHU_GIAI_CHUONG',
+  'CHU_GIAI_PHAN_CHUONG',
+  'LOAI_TRU_RA',
+  'LOAI_TRU_VAO',
+  'NHAC_TOI',
+  'DUOC_NHAC',
+  'PHAN_BIET',
+  'PHAN_BIET_NGHIA',
+  'CHU_GIAI_NHOM',
+  'CHU_GIAI_PHAN_NHOM',
+  'SEN',
+  'WCO',
+];
+
+// ── 1. Tách khỏi hs-tree & sạch đối chiếu M-23 ────────────────────────────────
+const srcPhaiDoc = fs.readFileSync(new URL('../lib/do-thi/phai-doc.js', import.meta.url), 'utf8')
+  .replace(/\/\*[\s\S]*?\*\//g, '')
+  .replace(/^\s*\/\/.*$/gm, '');
+kiem('phai-doc.js đọc docKhoLuatGoc & dungDoThiDanChieu, không require hs-tree', !/hs-tree/.test(srcPhaiDoc) && /docKhoLuatGoc/.test(srcPhaiDoc));
+kiem('phai-doc.js không chứa C8 / C1 / tienLeUngHo / oz-gold / precedents', !/['"`](?:C8|C1)['"`]|tienLeUngHo|oz-gold|precedents/.test(srcPhaiDoc));
+
+// ── 2. Thứ tự ADR-0004, id & mã trần, cungCap/capDuoi từ bieu.jsonl ─────────
+const p7616 = phaiDoc('7616');
+const p7616Id = phaiDoc('bieu:7616');
+kiem('nhận cả mã trần lẫn id (7616 === bieu:7616) và gọi 2 lần giống hệt', p7616 && JSON.stringify(p7616) === JSON.stringify(p7616Id) && JSON.stringify(phaiDoc('8536')) === JSON.stringify(phaiDoc('8536')));
+kiem('thứ tự trình tự khớp chuẩn ADR-0004 (14 bước)', p7616.trinhTu.map((b) => b.buoc).join() === THU_TU_ADR0004.join());
+kiem('nhận các id không phải mã 4-8 số (bieu:76, chuong:76, chuong:76:cgpn:1, chuong:76:kq:1, bieu:1511903:td1, sen:1511:1)', Boolean(phaiDoc('bieu:76') && phaiDoc('chuong:76') && phaiDoc('chuong:76:cgpn:1') && phaiDoc('chuong:76:kq:1') && phaiDoc('bieu:1511903:td1') && phaiDoc('sen:1511:1')));
+kiem('cấp dưới đúng cấp gạch từ bieu.jsonl: 7616 → 761610 và 76169', p7616.capDuoi.map((x) => x.ma).join() === '761610,76169' && p7616.capDuoi.every((x) => x.id && x.lop && 'trang' in x));
+const p761610 = phaiDoc('761610');
+kiem('Quy tắc 6 & cungCap: 761610 chỉ so với 76169 từ bieu.jsonl', p761610.cungCap.map((x) => x.ma).join() === '76169' && /Quy tắc 6/.test(p761610.quyTac));
+kiem('CA NGƯỢC: mã không có trong biểu / quá ngắn → null', phaiDoc('0000') === null && phaiDoc('76') === null && phaiDoc('') === null && phaiDoc(null) === null && phaiDoc('bieu:99999999') === null);
+
+// ── 3. Chú giải Chương (cg trước, kq sau), Phân chương, CGPN, SEN & không cắt ─
+const mChuong76 = muc(p7616, 'CHU_GIAI_CHUONG').muc;
+const idxFirstKq = mChuong76.findIndex((m) => /:kq:/.test(m.id));
+kiem('7616: CHU_GIAI_CHUONG có cg/cgbs/cgpn đúng chỗ và cg đứng trước kq', idxFirstKq >= 0 && mChuong76.slice(0, idxFirstKq).every((m) => !/:kq:/.test(m.id)) && mChuong76.slice(idxFirstKq).every((m) => /:kq:/.test(m.id)));
+const p2801 = phaiDoc('2801');
+const p7219 = phaiDoc('7219');
+kiem('Phân chương áp cho nút: 2801 → chuong:28:pc:I, 7219 → chuong:72:pc:III', p2801.phanChuong === 'I' && muc(p2801, 'CHU_GIAI_PHAN_CHUONG').muc.some((m) => m.id === 'chuong:28:pc:I') && p7219.phanChuong === 'III' && muc(p7219, 'CHU_GIAI_PHAN_CHUONG').muc.some((m) => m.id === 'chuong:72:pc:III'));
+const p010221 = phaiDoc('010221');
+kiem('CHU_GIAI_PHAN_NHOM & SEN: 010221 có pn:010221:ct:1; 1511 có sen:1511:1 không bị cắt chữ', muc(p010221, 'CHU_GIAI_PHAN_NHOM').muc.some((m) => m.id === 'pn:010221:ct:1') && muc(phaiDoc('1511'), 'SEN').muc.some((m) => m.id === 'sen:1511:1' && !m.trich.endsWith('…')));
+
+// kiểm tra chú giải dài > 600 ký tự KHÔNG bị cắt
+const pCh29 = phaiDoc('2934');
+const mucDai = muc(pCh29, 'CHU_GIAI_CHUONG').muc.find((m) => m.trich.length > 600);
+kiem('trần mục không cắt chú giải pháp lý (> 600 ký tự giữ nguyên vẹn)', Boolean(mucDai && !mucDai.trich.endsWith('…')));
+
+// ── 4. Bất biến toàn kho bằng phép quét độc lập trên data/luat-goc/*.jsonl ────
+const khoRaw = docKhoLuatGoc('data/luat-goc');
+const nutKhongTienLe = khoRaw.nut.filter((n) => n.lop !== 'TIEN_LE' && !String(n.id).startsWith('tb:'));
+const dtDocLap = dungDoThiDanChieu({ nut: nutKhongTienLe, khoNut: taoKhoNut(nutKhongTienLe) });
+const pdCache = new Map();
+const getPd = (id) => { if (!pdCache.has(id)) pdCache.set(id, phaiDoc(id)); return pdCache.get(id); };
+
+let sotRa = 0; let sotVao = 0; let thieuTruong = 0; let tienLeLot = 0; let thieuCauDan = 0;
+const nutLienQuan = new Set();
+for (const e of dtDocLap.canh) {
+  nutLienQuan.add(e.tuNut);
+  nutLienQuan.add(e.den);
+  const a = getPd(e.tuNut);
+  const b = getPd(e.den);
+  const raHit = muc(a, 'NHAC_TOI')?.muc.find((m) => m.nut === e.den && m.cauDan === e.tu);
+  const vaoHit = muc(b, 'DUOC_NHAC')?.muc.find((m) => m.nut === e.tuNut && m.cauDan === e.tu);
+  if (!raHit) sotRa += 1;
+  if (!vaoHit) sotVao += 1;
+  if ((raHit && (!raHit.cau || !raHit.cauDan)) || (vaoHit && (!vaoHit.cau || !vaoHit.cauDan))) thieuCauDan += 1;
 }
-kiem('mọi mục đều có câu trích và nguồn', thieuTrich === 0, String(thieuTrich));
-kiem('không mục nào lấy từ tờ khai', toKhai === 0, String(toKhai));
-kiem('A loại trừ sang B thì chạm B cũng thấy A', lechChieu === 0, String(lechChieu));
 
-// Chú giải nhóm (toàn văn) nhắc nhóm nào thì chạm nhóm phải thấy nhóm đó. Con số là nợ đã biết: chỉ được GIẢM.
-const NO_DA_BIET = 48;
-let no = 0; const ds = [];
-for (const [h, x] of tat) {
-  const co = new Set(x.trinhTu.flatMap((b) => b.muc.map((m) => m.nut.slice(0, 4))));
-  for (const k of new Set([...String(cg[h].nhom || '').matchAll(/(?<![\d.,])(\d{2})\.(\d{2})(?![\d.]\d|\d)/g)].map((a) => a[1] + a[2]))) if (k !== h && tat.has(k) && !co.has(k)) { no += 1; ds.push(`${h}→${k}`); }
+let lechDoiXungNhac = 0;
+for (const id of nutLienQuan) {
+  const p = getPd(id);
+  for (const b of p.trinhTu) {
+    for (const m of b.muc) {
+      if (!m.id || !m.lop || !('trang' in m) || !m.trich || !m.nguon) thieuTruong += 1;
+      if (m.lop === 'TIEN_LE' || String(m.id).startsWith('tb:')) tienLeLot += 1;
+    }
+  }
+  for (const m of muc(p, 'NHAC_TOI').muc) {
+    const q = getPd(m.den);
+    if (!q || !muc(q, 'DUOC_NHAC').muc.some((v) => v.tuNut === m.tuNut && v.den === m.den && v.cauDan === m.cauDan)) {
+      lechDoiXungNhac += 1;
+    }
+  }
 }
-kiem(`câu chú giải nhắc nhóm mà chưa có cạnh: ${no} ≤ ${NO_DA_BIET}`, no <= NO_DA_BIET, ds.slice(0, 20).join(' '));
-if (process.argv.includes('--no')) console.log(ds.join(' '));
 
-// Tách luật và bổ trợ trong /api/notes
+let lechDoiXungCanhCu = 0;
+const tkCanhCu = thongKeCanhCu();
+for (const n of nutKhongTienLe) {
+  if (!n.id.startsWith('bieu:') || n.cap !== 'NHOM') continue;
+  const p = getPd(n.id);
+  for (const m of muc(p, 'LOAI_TRU_RA').muc) {
+    const q = getPd(m.nut);
+    if (!q || !muc(q, 'LOAI_TRU_VAO').muc.some((v) => v.nut === n.id || (v.nut.startsWith('bieu:') && v.nut.slice(5, 9) === n.id.slice(5)))) {
+      lechDoiXungCanhCu += 1;
+    }
+  }
+}
+
+kiem(`bất biến độc lập: mọi nút có cạnh NHAC tới X nằm trong phaiDoc(X) (${dtDocLap.canh.length} cạnh)`, sotRa === 0 && sotVao === 0 && thieuCauDan === 0, `sotRa=${sotRa} sotVao=${sotVao} thieuCau=${thieuCauDan}`);
+kiem('bất biến đối xứng toàn kho: A thấy B ⇔ B thấy A (NHAC & LOAI_TRU)', lechDoiXungNhac === 0 && lechDoiXungCanhCu === 0, `nhac=${lechDoiXungNhac} canhCu=${lechDoiXungCanhCu}`);
+kiem('khuôn chuẩn (id, lop, trang, trich, nguon) đầy đủ & 0 mục TIEN_LE', thieuTruong === 0 && tienLeLot === 0, `thieu=${thieuTruong} tienLe=${tienLeLot}`);
+kiem('cạnh cũ không khớp nguyên văn luat-goc bị lọc bỏ khỏi phaiDoc và được đếm', tkCanhCu.canhCuGiu > 0 && tkCanhCu.canhCuBiBo > 0);
+
+// ── 5. Kho mô phỏng đầy đủ phan/nhom/wco + CA NGƯỢC TIEN_LE (Req #5) ───────────
+const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'phai-doc-m34-'));
+try {
+  const bieuMock = [
+    { id: 'bieu:73', loai: 'TEN', cha: null, so: '73', nguyenVan: 'Các sản phẩm bằng sắt hoặc thép', lop: 'LUAT', nguon: { vanBan: 'Biểu thuế test', ban: '2026', trang: null }, hieuLuc: { tu: '2026-01-01', den: null }, cap: 'CHUONG', gach: null },
+    { id: 'bieu:7318', loai: 'TEN', cha: 'bieu:73', so: '73.18', nguyenVan: 'Vít, bu lông...', lop: 'LUAT', nguon: { vanBan: 'Biểu thuế test', ban: '2026', trang: null }, hieuLuc: { tu: '2026-01-01', den: null }, cap: 'NHOM', gach: 0 },
+    { id: 'bieu:76', loai: 'TEN', cha: null, so: '76', nguyenVan: 'Nhôm và sản phẩm bằng nhôm', lop: 'LUAT', nguon: { vanBan: 'Biểu thuế test', ban: '2026', trang: null }, hieuLuc: { tu: '2026-01-01', den: null }, cap: 'CHUONG', gach: null },
+    { id: 'bieu:7616', loai: 'TEN', cha: 'bieu:76', so: '76.16', nguyenVan: 'Các sản phẩm khác bằng nhôm', lop: 'LUAT', nguon: { vanBan: 'Biểu thuế test', ban: '2026', trang: null }, hieuLuc: { tu: '2026-01-01', den: null }, cap: 'NHOM', gach: 0 },
+    { id: 'bieu:761699', loai: 'TEN', cha: 'bieu:7616', so: '7616.99', nguyenVan: '- Loại khác', lop: 'LUAT', nguon: { vanBan: 'Biểu thuế test', ban: '2026', trang: null }, hieuLuc: { tu: '2026-01-01', den: null }, cap: 'PHAN_NHOM', gach: 1 },
+  ];
+  const phanMock = [
+    { id: 'phan:XV:kq:1', loai: 'KHAI_QUAT', cha: 'phan:XV', so: null, nguyenVan: 'Phần XV Khái quát: kim loại cơ bản.', lop: 'HUONG_DAN', nguon: { vanBan: 'HS2022', ban: 'HS2022', trang: 901 }, hieuLuc: { tu: null, den: null } },
+    { id: 'phan:XV:cg:1', loai: 'CHU_GIAI', cha: 'phan:XV', so: '1', nguyenVan: '1. Phần này không bao gồm hàng loại trừ ở nhóm khác.', lop: 'LUAT', nguon: { vanBan: 'HS2022', ban: 'HS2022', trang: 900 }, hieuLuc: { tu: null, den: null } },
+    { id: 'phan:XV:cgpn:1', loai: 'CHU_GIAI_PHAN_NHOM', cha: 'phan:XV', so: '1', nguyenVan: 'Chú giải phân nhóm Phần XV test.', lop: 'LUAT', nguon: { vanBan: 'HS2022', ban: 'HS2022', trang: 902 }, hieuLuc: { tu: null, den: null } },
+  ];
+  const nhomMock = [
+    { id: 'nhom:7616:ct:1', loai: 'CHU_GIAI_CHI_TIET', cha: null, so: '76.16', nguyenVan: 'Chú giải 76.16: vật liệu tương tự được mô tả trong chú giải nhóm 73.18.', lop: 'HUONG_DAN', nguon: { vanBan: 'HS2022', ban: 'HS2022', trang: 1200 }, hieuLuc: { tu: null, den: null } },
+  ];
+  const wcoMock = [
+    { id: 'wco:761699:1', loai: 'Y_KIEN_WCO', cha: null, so: '7616.99/1', nguyenVan: 'Aluminium product opinion 7616.99/1.', lop: 'HUONG_DAN', nguon: { vanBan: 'WCO', ban: 'HS2022', trang: 45 }, hieuLuc: { tu: null, den: null } },
+  ];
+  const tbMock = [
+    { id: 'tb:1234:7616', loai: 'THONG_BAO', cha: null, so: '1234/TB-TCHQ', nguyenVan: 'Thông báo tiền lệ nhắc nhóm 76.16 và 73.18.', lop: 'TIEN_LE', nguon: { vanBan: 'TB-TCHQ', ban: '2024', trang: 1 }, hieuLuc: { tu: '2024-01-01', den: null } },
+  ];
+  const viet = (ten, arr) => fs.writeFileSync(path.join(tmpDir, ten), `${arr.map((x) => JSON.stringify(x)).join('\n')}\n`);
+  viet('bieu.jsonl', bieuMock);
+  viet('phan.jsonl', phanMock);
+  viet('nhom.jsonl', nhomMock);
+  viet('wco.jsonl', wcoMock);
+  viet('thong-bao.jsonl', tbMock);
+
+  const m7616 = phaiDoc('7616', { thuMuc: tmpDir });
+  const m7318 = phaiDoc('7318', { thuMuc: tmpDir });
+  const mPhan = muc(m7616, 'CHU_GIAI_PHAN').muc;
+  kiem('CA NGƯỢC TIEN_LE: phaiDoc(tb:...) === null và không lọt vào phaiDoc(7616)/phaiDoc(7318)', phaiDoc('tb:1234:7616', { thuMuc: tmpDir }) === null && !nutIds(m7616, 'DUOC_NHAC').has('tb:1234:7616') && !nutIds(m7318, 'DUOC_NHAC').has('tb:1234:7616'));
+  kiem('đọc đủ phan.jsonl (cg trước kq), nhom.jsonl, wco.jsonl và cạnh NHAC hai chiều', mPhan.map((m) => m.id).join() === 'phan:XV:cg:1,phan:XV:kq:1' && muc(m7616, 'CHU_GIAI_NHOM').muc[0]?.id === 'nhom:7616:ct:1' && muc(m7616, 'WCO').muc[0]?.id === 'wco:761699:1' && nutIds(m7616, 'NHAC_TOI').has('bieu:7318') && muc(m7318, 'DUOC_NHAC').muc.some((x) => x.tuNut === 'nhom:7616:ct:1'));
+  datLai();
+} finally {
+  fs.rmSync(tmpDir, { recursive: true, force: true });
+}
+
+// ── 6. Kiểm tích hợp /api/dataset?resource=phai_doc ────────────────────────────
+const datasetHandler = require('../api/dataset.js');
+const prevToken = process.env.HS_API_TOKEN;
+process.env.HS_API_TOKEN = 'test-m34-token';
+try {
+  const goiApi = async (query) => {
+    const res = { _s: 0, _j: null, _h: {}, setHeader(k, v) { this._h[k] = v; }, status(c) { this._s = c; return this; }, json(p) { this._j = p; return this; } };
+    await datasetHandler({ method: 'GET', url: '/api/dataset', query, headers: { authorization: 'Bearer test-m34-token' } }, res);
+    return res;
+  };
+  const rOk = await goiApi({ resource: 'phai_doc', hs: '7616' });
+  const r404 = await goiApi({ resource: 'phai_doc', id: 'bieu:99999999' });
+  const r400 = await goiApi({ resource: 'phai_doc' });
+  kiem('api/dataset resource=phai_doc: 200 hợp lệ, 404 không thấy, 400 thiếu tham số', rOk._s === 200 && rOk._j.found === true && rOk._j.id === 'bieu:7616' && r404._s === 404 && r400._s === 400);
+} finally {
+  if (prevToken === undefined) delete process.env.HS_API_TOKEN;
+  else process.env.HS_API_TOKEN = prevToken;
+}
+
+// ── 7. Giữ kiểm tách luật và bổ trợ trong /api/notes ──────────────────────────
 const G = require('../lib/gir-notes.js');
+const cg = JSON.parse(fs.readFileSync(new URL('../data/chu-giai-heading.json', import.meta.url), 'utf8'));
 const nh = G.buildNoteChain('54080000').find((e) => e.level === 'HEADING');
 kiem('noteVi của nhóm không còn đoạn AI soạn', !/Phân biệt:/.test(nh.noteVi) && nh.noteVi.startsWith(String(cg['5408'].nhom).trim().slice(0, 60)));
 kiem('đoạn AI soạn nằm riêng ở boTro, nhãn AI_CHUA_KIEM', nh.boTro?.[0]?.nhan === 'AI_CHUA_KIEM' && /KHÔNG phải luật/.test(nh.boTro[0].ghiChu));
+
+if (process.argv.includes('--thong-ke')) {
+  console.log('\n=== THỐNG KÊ M-34 (phai-doc) ===');
+  console.log(JSON.stringify({ ...tkCanhCu, nutCoCanhNhac: nutLienQuan.size, sotRa, sotVao, lechDoiXungNhac, lechDoiXungCanhCu }, null, 2));
+}
+
 xong();
