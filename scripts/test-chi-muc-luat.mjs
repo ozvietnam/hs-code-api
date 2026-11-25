@@ -32,10 +32,11 @@ const KHO = {
   nhom: [N('nhom:7616:ct:1', 'CHU_GIAI_CHI_TIET', 'Nhóm này bao gồm tất cả các sản phẩm bằng nhôm chưa được nêu cụ thể hơn. Ví dụ ống nhôm đã gia công.', { lop: 'HUONG_DAN' }),
     N('nhom:7616:ct:2', 'CHU_GIAI_CHI_TIET', 'Nhóm này không bao gồm:', { lop: 'HUONG_DAN' }), N('nhom:7616:ct:3', 'CHU_GIAI_CHI_TIET', '(a) Đinh vít bằng đồng (nhóm 74.15).', { lop: 'HUONG_DAN' }),
     N('nhom:7616:ct:4', 'CHU_GIAI_CHI_TIET', '(b) Bu lông.', { lop: 'HUONG_DAN' }),
+    N('nhom:7616:ct:6', 'CHU_GIAI_CHI_TIET', 'Nhóm này gồm các loại ống dẫn bằng nhôm đã hàn. Đai.', { lop: 'HUONG_DAN' }),
     N('nhom:7616:ct:5', 'BO_TRO', 'Từ điển tên thương mại: nồi chiên không dầu là đồ dùng nhà bếp bằng nhôm.', { lop: 'BO_TRO' })],
   'phan-nhom': [N('pn:761610:ct:1', 'CHU_GIAI_CHI_TIET', 'Phân nhóm 7616.10 gồm đinh, đinh mũ, ghim bằng nhôm.', { lop: 'HUONG_DAN' })],
   sen: [N('sen:76169920:1', 'SEN', 'Các loại ống nhôm đã gia công hình ống tròn dùng trong xây dựng.', { lop: 'HUONG_DAN' })],
-  bieu: [bieu('bieu:76', 'CHUONG', 'Nhôm và các sản phẩm bằng nhôm'), bieu('bieu:7616', 'NHOM', 'Các sản phẩm khác bằng nhôm', { cha: 'bieu:76', so: '76.16' }),
+  bieu: [bieu('bieu:76', 'CHUONG', 'Nhôm và các sản phẩm bằng nhôm'), bieu('bieu:98', 'CHUONG', 'Quy định riêng của Việt Nam'), bieu('bieu:9829', 'NHOM', 'Hàn, bằng thép không gỉ', { cha: 'bieu:98', so: '98.29' }), bieu('bieu:7616', 'NHOM', 'Các sản phẩm khác bằng nhôm', { cha: 'bieu:76', so: '76.16' }),
     bieu('bieu:76161', 'TIEU_DE_PHAN_NHOM', '- Đinh, đinh mũ, ghim:', { cha: 'bieu:7616' }), bieu('bieu:761610', 'PHAN_NHOM', '- - Đinh, đinh mũ và ghim', { cha: 'bieu:76161', so: '7616.10' }),
     bieu('bieu:76161000', 'DONG', '- - - Đinh loại thường', { cha: 'bieu:761610' }), bieu('bieu:76169920', 'DONG', '- - - Ống nhôm loại khác', { cha: 'bieu:7616' })],
   gir: [N('gir:1', 'QUY_TAC', 'QUY TẮC 1 Tên của Phần, Chương chỉ để dễ tra cứu.')],
@@ -64,6 +65,9 @@ kiem('CA NGƯỢC không nút BO_TRO (nhom:7616:ct:5)', !ids.some((x) => x.start
 kiem('CA NGƯỢC không dòng biểu 8 số, không tiêu đề biểu không mã', !ids.some((x) => /^bieu:\d{7,}/.test(x)) && !ids.includes('bieu:76161#1'));
 kiem('CA NGƯỢC câu dẫn trần ("Nhóm này không bao gồm:") không thành mục; mục con thì có', !ids.includes('nhom:7616:ct:2#1') && ids.includes('nhom:7616:ct:3#1') && ids.includes('phan:XV:cg:1:a#1'));
 kiem('CA NGƯỢC SEN 8 số chỉ là nút SEN, không kéo dòng biểu 8 số', ids.filter((x) => /\d{8}/.test(x)).every((x) => x.startsWith('sen:')));
+kiem('CA NGƯỢC Chương 98 (riêng Việt Nam) không vào chỉ mục', !ids.some((x) => x.startsWith('bieu:98')) && ids.includes('bieu:76#1'));
+kiem('mảnh ngắn (< 30 ký tự) ngoài biểu gộp vào câu liền trước cùng nút, không bỏ chữ', ids.includes('nhom:7616:ct:6#1') && !ids.includes('nhom:7616:ct:6#2') && JSON.stringify(r1.gom['nhom:7616:ct:6#1']) === JSON.stringify(['nhom:7616:ct:6#1', 'nhom:7616:ct:6#2']));
+kiem('mảnh ngắn đầu nút (không có câu liền trước cùng nút) vẫn là mục riêng; tên biểu ngắn không gộp', ids.includes('nhom:7616:ct:4#1') && ids.includes('bieu:7616#1'));
 kiem('kho không nằm trong danh sách (gir, wco, thong-bao) không bị đọc', !L.KHO.includes('gir') && !L.KHO.includes('wco') && !L.KHO.includes('thong-bao'));
 kiem('laNutCam: TIEN_LE, BO_TRO, THUC_TE, ocr, tb:, wco:', [{ id: 'x:1', lop: 'TIEN_LE' }, { id: 'x:2', lop: 'BO_TRO' }, { id: 'x:3', lop: 'THUC_TE' }, { id: 'x:4', ocr: true }, { id: 'tb:1' }, { id: 'wco:1' }].every(L.laNutCam) && !L.laNutCam({ id: 'nhom:1:ct:1', lop: 'HUONG_DAN' }));
 
@@ -85,7 +89,8 @@ L.datLai();
 const t1 = await L.timNghia('ống nhôm đã gia công', { thuMuc: thu, sections, embedder: hoiGia, limit: 5 });
 const nutDau = t1.ketQua[0];
 kiem('tìm: trạng thái OK, có kết quả, nút đầu là câu nhắc ống nhôm', t1.trangThai === 'OK' && t1.ketQua.length > 0 && /^(nhom:7616:ct:1|sen:76169920:1)$/.test(nutDau.nut), JSON.stringify(t1.ketQua.map((x) => x.nut)));
-kiem('mỗi kết quả có id câu thật, chữ = nguyenVan.slice(tu,den)', t1.ketQua.every((n) => n.cau.length && n.cau.every((c) => { const cau = L.docJsonl(path.join(thu, 'cau', `${n.kho}.jsonl`)).find((x) => x.id === c.id); const nut = L.docJsonl(path.join(thu, `${n.kho}.jsonl`)).find((x) => x.id === n.nut); return cau && nut && L.gon(nut.nguyenVan.slice(cau.tu, cau.den)) === c.chu; })));
+const chuThat = (kho, id) => { const cau = L.docJsonl(path.join(thu, 'cau', `${kho}.jsonl`)).find((x) => x.id === id); const nut = L.docJsonl(path.join(thu, `${kho}.jsonl`)).find((x) => x.id === id.slice(0, id.lastIndexOf('#'))); return cau && nut ? L.gon(nut.nguyenVan.slice(cau.tu, cau.den)) : null; };
+kiem('mỗi kết quả có id câu thật, chữ = nguyenVan.slice(tu,den) (mục gộp: các câu nối bằng một dấu cách)', t1.ketQua.every((n) => n.cau.length && n.cau.every((c) => c.chu === (c.gom || [c.id]).map((x) => chuThat(n.kho, x)).join(' ') && chuThat(n.kho, c.id))));
 kiem('gộp theo nút: mỗi nút một lần, ≤ 3 câu nhắc', new Set(t1.ketQua.map((n) => n.nut)).size === t1.ketQua.length && t1.ketQua.every((n) => n.cau.length <= 3));
 kiem('kết quả có nút + đường dẫn cha + câu dẫn của mục con', nutDau.duongDan.length >= 3 && (() => { /* mục (a) có câu dẫn */ return true; })());
 const t2 = await L.timNghia('đinh vít bằng đồng', { thuMuc: thu, sections, embedder: hoiGia, limit: 5 });
@@ -154,8 +159,8 @@ kiem('CA NGƯỢC đường khách (api/, lib/ khác) không nạp chi-muc-luat'
     const nay = L.napChiMuc(goc);
     if (nay.trangThai === 'OK') {
       const lai = thuMuc({ goc: L.GOC_MAC_DINH, sections: L.SECTIONS_MAC_DINH }).muc.map((m) => m.id);
-      kiem('chỉ mục thật: dựng lại danh sách (không cần mô hình) ra đúng id.json', meta.gop?.bat ? lai.length >= dsId.length : JSON.stringify(lai) === JSON.stringify(dsId), `${lai.length} vs ${dsId.length}`);
-    } else console.log(`INFO chỉ mục thật ở trạng thái ${nay.trangThai} (${nay.lyDo || ''}) — dựng lại: node scripts/luat-goc/chi-muc.mjs`);
+      kiem('chỉ mục thật: dựng lại danh sách (không cần mô hình) ra đúng id.json', meta.gop?.bat ? lai.length >= dsId.length : JSON.stringify(lai.filter(Boolean)) === JSON.stringify(dsId), `${lai.length} vs ${dsId.length}`);
+    } else kiem(`chỉ mục thật phải còn mới (trạng thái ${nay.trangThai})`, false, `${nay.lyDo || ''}${nay.tepLech ? ` — tệp lệch: ${nay.tepLech.join(', ')}` : ''} → DỰNG LẠI: node scripts/luat-goc/chi-muc.mjs (khoảng 15 phút CPU) rồi commit data/luat-goc/chi-muc/`);
   }
 }
 fs.rmSync(tam, { recursive: true, force: true });

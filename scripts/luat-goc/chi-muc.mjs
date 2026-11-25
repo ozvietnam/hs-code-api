@@ -4,7 +4,7 @@
 //   node scripts/luat-goc/chi-muc.mjs --kiem     không ghi: dựng vào bộ nhớ, so với tệp đang có (id + vec sha256)
 //
 // Nguồn: câu (data/luat-goc/cau/*.jsonl, M-31) của phan, chuong, nhom, phan-nhom, sen + TÊN nút biểu cấp chương / nhóm / phân nhóm 6 số.
-// Không có: gir, wco (bản scan OCR), thong-bao (tiền lệ), dòng 8 số, tiêu đề biểu không mã, câu dẫn trần ("Nhóm này không bao gồm:").
+// Không có: Chương 98 (riêng VN), gir, wco (bản scan OCR), thong-bao (tiền lệ), dòng 8 số, tiêu đề biểu không mã, câu dẫn trần ("Nhóm này không bao gồm:").
 // Chữ nhúng = "passage: đường dẫn cha (Phần › Chương › Nhóm) | câu dẫn | câu". Mô hình: Xenova/multilingual-e5-small q8 (lib/embed-pool.js), CPU.
 // Lưu int8 chuẩn hoá 384 chiều. Tất định: thứ tự mục = thứ tự kho; mẻ nhúng xếp theo (độ dài chữ, vị trí) cố định.
 // Quá 25 MB thì GỘP: các câu NGẮN (< 80 ký tự) liền nhau, cùng một câu dẫn và cùng đường dẫn cha thành một mục (id = câu đầu; id.json.gom ghi các câu).
@@ -24,8 +24,8 @@ export function gopMuc(muc) {
   const ra = []; let cur = null;
   for (const m of muc) {
     const ngan = m.chu.length < NGAN && m.danId;
-    if (cur && ngan && cur.ngan && m.kho === cur.kho && m.danId === cur.danId && m.duong.join('›') === cur.duong.join('›')) { cur.gom.push(m.id); cur.chu += ` ${m.chu}`; continue; }
-    cur = { ...m, gom: [m.id], ngan: !!ngan }; ra.push(cur);
+    if (cur && ngan && cur.ngan && m.kho === cur.kho && m.danId === cur.danId && m.duong.join('›') === cur.duong.join('›')) { cur.gom.push(...(m.gom || [m.id])); cur.chu += ` ${m.chu}`; continue; }
+    cur = { ...m, gom: m.gom || [m.id], ngan: !!ngan }; ra.push(cur);
   }
   return ra.map(({ ngan, ...r }) => r);
 }
@@ -75,10 +75,12 @@ export async function dungChiMuc({ goc = L.GOC_MAC_DINH, sections = L.SECTIONS_M
   }
   const ids = muc.map((m) => m.id); const gom = {}; for (const m of muc) if (m.gom && m.gom.length > 1) gom[m.id] = m.gom;
   const vecBuf = Buffer.from(vec.buffer, vec.byteOffset, vec.byteLength);
-  const idJson = `${JSON.stringify(gopLai ? { ids, gom } : ids)}\n`;
+  const idJson = `${JSON.stringify({ ids, gom })}\n`;
   const meta = {
     khuon: L.KHUON, moHinh: 'Xenova/multilingual-e5-small', dtype: 'q8', tienTo: { kho: L.TIEN_TO_PASSAGE.trim(), hoi: 'query:' }, dim: L.DIM, scale: L.SCALE, luu: 'int8, chuẩn hoá L2 trước khi lượng tử',
     soMuc: muc.length, soMucTheoKho: demKho, soCauKhoNguon: demNutCau, nutBiCam: nutCam,
+    gomManh: { nguong: L.NGAN_MANH, muc: Object.keys(gom).length, cach: `mục ngoài biểu dưới ${L.NGAN_MANH} ký tự gộp vào câu liền trước cùng nút; id mục = id câu đầu, id.json.gom ghi các câu; không bỏ chữ` },
+    loaiTru: 'Chương 98 (mục riêng của Việt Nam)',
     gop: gopLai ? { bat: true, truoc: truocGop, sau: muc.length, cach: `câu ngắn (< ${NGAN} ký tự) liền nhau, cùng một câu dẫn và cùng đường dẫn cha gộp một mục; id = câu đầu, id.json.gom ghi các câu` } : { bat: false, nguong: nguongByte },
     chuNhung: 'đường dẫn cha (Phần › Chương › Nhóm[ › Phân nhóm]) | câu dẫn | câu',
     vecSha256: L.sha256(vecBuf), idSha256: L.sha256(Buffer.from(idJson)), nguon: L.shaNguon(goc, sections),
