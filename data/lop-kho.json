@@ -1,0 +1,1168 @@
+{
+  "khuon": "lop-kho@1",
+  "capNhat": "2026-11-25",
+  "ghiChu": "M-23 (#1910): Bảng phân lớp 100% kho dữ liệu dưới data/ và cấu hình cổng chống lẫn scripts/test-lop-kho.mjs.",
+  "lopHopLe": [
+    "LUAT",
+    "RUT_TU_LUAT",
+    "BO_TRO",
+    "TIEN_LE",
+    "THUC_TE",
+    "KY_THUAT"
+  ],
+  "dinhNghiaLop": {
+    "LUAT": "Văn bản quy phạm pháp luật, chú giải HS 2022, SEN AHTN 2022, ý kiến WCO gốc, biểu thuế hiện hành và văn bản chuyên ngành gốc.",
+    "RUT_TU_LUAT": "Cấu trúc/tổng hợp rút từ văn bản luật CHỈ KHI mỗi mục có trích nguyên văn máy kiểm được và không do AI tự diễn (nếu không chứng minh được trích nguyên văn thì xuống BO_TRO).",
+    "BO_TRO": "Từ điển, đồng nghĩa, tên thương mại, bản dịch không chính thức, diễn giải/bảng tổng hợp AI chưa chứng minh từng mục có trích, cặp dễ nhầm, phân loại vật liệu, nhãn tiếng Trung/Anh.",
+    "TIEN_LE": "Thông báo kết quả phân loại của Hải quan (TB-TCHQ, thong-bao.jsonl, precedents.json, án lệ quốc tế); mô-đun luật không nạp, chỉ bước kiểm cuối được nạp.",
+    "THUC_TE": "Tờ khai nội bộ OZ, ánh xạ sản phẩm thực tế, nhật ký phản hồi người dùng và bộ chuẩn gán nhãn đánh giá.",
+    "KY_THUAT": "Chỉ mục tìm kiếm/vector, snapshot phiên bản biểu thuế, báo cáo đo/soát lỗi, hàng đợi tác vụ, nhật ký hệ thống, lời dẫn prompt và cấu hình cổng."
+  },
+  "moDunLuatCamLan": [
+    {
+      "tep": "lib/chu-giai-goc.js",
+      "vaiTro": "Đọc trực tiếp kho luật gốc cho /api/notes (sắp tạo ở M-21)",
+      "tuyChon": true,
+      "ngoaiLeChuyenTiep": null
+    },
+    {
+      "tep": "lib/do-thi/phai-doc.js",
+      "vaiTro": "Chạm một nút kéo ra đủ quy tắc, loại trừ, chú giải và WCO (ADR-0005 / M-34)",
+      "tuyChon": false,
+      "ngoaiLeChuyenTiep": {
+        "theGo": "M-34",
+        "moTa": "Trước M-34, phai-doc.js lấy cạnh qua cầu tạm lib/do-thi/index.js → lib/do-thi/dung-bang-canh.js (module tổng hợp cả đồ thị cũ). phai-doc.js KHÔNG được đọc trực tiếp BO_TRO/THUC_TE, LOAI phải không chứa C8/C1, và không gọi tienLeUngHo.",
+        "tepTrungGianDuocPhep": [
+          "lib/do-thi/index.js",
+          "lib/do-thi/dung-bang-canh.js",
+          "lib/do-thi/phan-con-lai.js",
+          "lib/do-thi/tu-khoa.js",
+          "lib/wco-op.js",
+          "lib/hs-tree.js",
+          "lib/hs-tree-sources.js",
+          "lib/data-paths.js",
+          "lib/data.js"
+        ],
+        "camLoailCanhTrongPhaiDoc": ["C8", "C1"],
+        "camTenTrongPhaiDoc": ["tienLeUngHo", "confusion-pairs", "precedents", "synonyms", "oz-gold"]
+      }
+    },
+    {
+      "tep": "lib/do-thi/dan-chieu.js",
+      "vaiTro": "Ngữ pháp dẫn chiếu tất định trên kho luật gốc (M-32)",
+      "tuyChon": true,
+      "ngoaiLeChuyenTiep": null
+    },
+    {
+      "tep": "lib/sen.js",
+      "vaiTro": "Đọc Chú giải bổ sung SEN 2022",
+      "tuyChon": false,
+      "ngoaiLeChuyenTiep": null
+    },
+    {
+      "tep": "lib/wco-op.js",
+      "vaiTro": "Đọc Tuyển tập ý kiến phân loại WCO",
+      "tuyChon": false,
+      "ngoaiLeChuyenTiep": {
+        "theGo": "M-21 / chuẩn hóa bản dịch WCO",
+        "moTa": "lib/wco-op.js chỉ đọc data/wco-op/opinions.json (LUAT) làm nguồn gốc và được phép đọc duy nhất data/wco-op/vi.json (BO_TRO — bản dịch máy không chính thức có cảnh báo kèm theo); mọi kho BO_TRO/THUC_TE/TIEN_LE khác đều bị chặn.",
+        "tepDuLieuDuocPhep": ["data/wco-op/vi.json"]
+      }
+    }
+  ],
+  "muc": [
+    {
+      "duongDan": "data/SOURCES.json",
+      "lop": "KY_THUAT",
+      "aiDoc": [],
+      "moTa": "Danh mục nguồn dữ liệu công khai và ghi công giấy phép."
+    },
+    {
+      "duongDan": "data/accuracy-latest.json",
+      "lop": "KY_THUAT",
+      "aiDoc": [],
+      "moTa": "Kết quả đo độ chính xác benchmark gần nhất."
+    },
+    {
+      "duongDan": "data/accuracy-report-2026-05-28.json",
+      "lop": "KY_THUAT",
+      "aiDoc": [],
+      "moTa": "Báo cáo đo độ chính xác lịch sử ngày 2026-05-28."
+    },
+    {
+      "duongDan": "data/alias-benchmark-latest.json",
+      "lop": "KY_THUAT",
+      "aiDoc": [],
+      "moTa": "Kết quả benchmark đối sánh alias."
+    },
+    {
+      "duongDan": "data/anti-patterns.json",
+      "lop": "BO_TRO",
+      "aiDoc": ["lib/compliance-data.js", "lib/data.js"],
+      "moTa": "Danh sách bẫy suy luận thường gặp do team đúc kết."
+    },
+    {
+      "duongDan": "data/attribute-frames.json",
+      "lop": "BO_TRO",
+      "aiDoc": ["lib/attribute-frames.js", "lib/tu-vung.js"],
+      "moTa": "Khung thuộc tính sản phẩm trích theo họ hàng hóa."
+    },
+    {
+      "duongDan": "data/attribute-synonyms-zh.json",
+      "lop": "BO_TRO",
+      "aiDoc": ["lib/tu-vung.js", "lib/zh-specs.js"],
+      "moTa": "Từ đồng nghĩa thuộc tính tiếng Trung phục vụ đọc thông số TQ."
+    },
+    {
+      "duongDan": "data/attributes.json",
+      "lop": "BO_TRO",
+      "aiDoc": ["lib/attributes.js", "lib/classify.js", "lib/decision-tables.js", "lib/evidence-pack.js", "lib/tu-vung.js"],
+      "moTa": "Từ điển thuộc tính kỹ thuật (xếp BO_TRO vì chưa chứng minh từng mục có trích nguyên văn luật)."
+    },
+    {
+      "duongDan": "data/audit-log.jsonl",
+      "lop": "KY_THUAT",
+      "aiDoc": ["lib/admin-update.js"],
+      "moTa": "Nhật ký thao tác cập nhật dữ liệu của admin."
+    },
+    {
+      "duongDan": "data/bench-matrix-latest.json",
+      "lop": "KY_THUAT",
+      "aiDoc": [],
+      "moTa": "Ma trận tổng hợp kết quả benchmark theo mô hình."
+    },
+    {
+      "duongDan": "data/brand-product-map.json",
+      "lop": "BO_TRO",
+      "aiDoc": ["lib/do-thi/dung-bang-canh.js"],
+      "moTa": "Ánh xạ tên thương hiệu sang nhóm/mặt hàng gợi ý."
+    },
+    {
+      "duongDan": "data/chapter-declaration-fields.json",
+      "lop": "BO_TRO",
+      "aiDoc": ["lib/attribute-frames.js", "lib/compliance-data.js", "lib/declaration-check.js", "lib/tu-vung.js"],
+      "moTa": "Trường khai báo hải quan gợi ý theo Chương."
+    },
+    {
+      "duongDan": "data/chapter-specific-rules.json",
+      "lop": "BO_TRO",
+      "aiDoc": ["lib/classify.js", "lib/compliance-data.js", "lib/data.js"],
+      "moTa": "Quy tắc phân loại theo đặc thù từng Chương (xếp BO_TRO vì chưa chứng minh từng mục có trích nguyên văn luật)."
+    },
+    {
+      "duongDan": "data/chu-giai-chuong.json",
+      "lop": "BO_TRO",
+      "aiDoc": ["lib/classify.js", "lib/do-thi/dung-bang-canh.js", "lib/do-thi/hoi-truoc-4so.js", "lib/evidence-pack.js", "lib/gir-notes.js", "lib/ho-so/cong-ranh-gioi.js", "lib/hs-tree-sources.js", "lib/hs-tree.js", "lib/nguon-loai.js", "lib/notes-coverage.js", "lib/so-tay.js", "lib/soat-luat-re.js"],
+      "moTa": "Kho chú giải Chương/Phần cũ — .phan là bản cũ không nguồn, thay bằng data/luat-goc/phan.jsonl (thiếu Chú giải 9 Phần XV…).",
+      "truongLan": {
+        "chuong": "LUAT",
+        "phan": "BO_TRO",
+        "nguon_toan_van": "KY_THUAT",
+        "phien_ban": "KY_THUAT"
+      }
+    },
+    {
+      "duongDan": "data/chu-giai-heading.json",
+      "lop": "BO_TRO",
+      "aiDoc": ["lib/classify.js", "lib/declaration-options.js", "lib/do-thi/ban-do-4so.js", "lib/do-thi/chu-giai-2-phan-xvi.js", "lib/do-thi/hoi-truoc-4so.js", "lib/evidence-pack.js", "lib/gir-notes.js", "lib/gir.js", "lib/ho-so/cong-ranh-gioi.js", "lib/hs-tree-sources.js", "lib/hs-tree.js", "lib/legal-basis.js", "lib/nguon-loai.js", "lib/notes-coverage.js", "lib/so-tay.js", "lib/tim-cgct.js"],
+      "moTa": "Kho chú giải nhóm cũ — lẫn nguyên văn (nhom, nhom_day_du, ten_nhom, sen) với bao_gom/khong_bao_gom/loai_tru dính chữ chương sau, chữ lặp và tinh_chat/phan_biet (BO_TRO).",
+      "truongLan": {
+        "nhom": "LUAT",
+        "nhom_day_du": "LUAT",
+        "ten_nhom": "LUAT",
+        "sen": "LUAT",
+        "bao_gom": "BO_TRO",
+        "khong_bao_gom": "BO_TRO",
+        "loai_tru": "BO_TRO",
+        "tinh_chat": "BO_TRO",
+        "phan_biet": "BO_TRO",
+        "nguon": "KY_THUAT",
+        "nguon_toan_van": "KY_THUAT",
+        "phien_ban": "KY_THUAT",
+        "sen_nguon": "KY_THUAT"
+      }
+    },
+    {
+      "duongDan": "data/conflict-tables.json",
+      "lop": "BO_TRO",
+      "aiDoc": ["lib/classify.js", "lib/evidence-pack.js", "lib/gir.js"],
+      "moTa": "Bảng xung đột ranh giới nhóm do team biên soạn."
+    },
+    {
+      "duongDan": "data/conflict-worklist.json",
+      "lop": "KY_THUAT",
+      "aiDoc": [],
+      "moTa": "Danh sách cặp xung đột chờ rà soát."
+    },
+    {
+      "duongDan": "data/conflicts.json",
+      "lop": "BO_TRO",
+      "aiDoc": ["lib/classify.js", "lib/data.js", "lib/ho-so/duong-di.js", "lib/hs-tree-sources.js", "lib/nguon-loai.js"],
+      "moTa": "Kho xung đột giữa các nhóm/phân nhóm."
+    },
+    {
+      "duongDan": "data/confusion-pairs.json",
+      "lop": "BO_TRO",
+      "aiDoc": ["lib/confusion-pairs.js", "lib/do-thi/dung-bang-canh.js"],
+      "moTa": "Từ điển cặp mã dễ nhầm (AI/team thu thập, đa phần verified=false)."
+    },
+    {
+      "duongDan": "data/customs-types.json",
+      "lop": "LUAT",
+      "aiDoc": [],
+      "moTa": "Danh mục mã loại hình xuất nhập khẩu theo QĐ 1357/QĐ-TCHQ."
+    },
+    {
+      "duongDan": "data/data-freshness.json",
+      "lop": "KY_THUAT",
+      "aiDoc": ["lib/data-freshness.js"],
+      "moTa": "Nhật ký hạn đối chiếu độ tươi của từng nguồn dữ liệu."
+    },
+    {
+      "duongDan": "data/data-quality-report.json",
+      "lop": "KY_THUAT",
+      "aiDoc": ["api/dataset.js"],
+      "moTa": "Báo cáo chất lượng độ phủ dữ liệu phục vụ /api/dataset."
+    },
+    {
+      "duongDan": "data/destination-facts.json",
+      "lop": "BO_TRO",
+      "aiDoc": ["api/destination-facts.js"],
+      "moTa": "Thông tin tham khảo nhập khẩu nước đích (không phải căn cứ pháp lý chốt)."
+    },
+    {
+      "duongDan": "data/dictionary-progress.json",
+      "lop": "KY_THUAT",
+      "aiDoc": [],
+      "moTa": "Sổ tiến độ soạn sổ tay theo nhóm 4 số."
+    },
+    {
+      "duongDan": "data/dictionary-queue.json",
+      "lop": "KY_THUAT",
+      "aiDoc": [],
+      "moTa": "Hàng đợi soạn từ điển/sổ tay của agent."
+    },
+    {
+      "duongDan": "data/english-product-map.json",
+      "lop": "BO_TRO",
+      "aiDoc": ["lib/do-thi/dung-bang-canh.js"],
+      "moTa": "Từ điển tên sản phẩm tiếng Anh sang nhóm HS."
+    },
+    {
+      "duongDan": "data/error-log.jsonl",
+      "lop": "KY_THUAT",
+      "aiDoc": ["lib/error-monitor.js"],
+      "moTa": "Nhật ký lỗi runtime hệ thống."
+    },
+    {
+      "duongDan": "data/explanatory-notes.json",
+      "lop": "BO_TRO",
+      "aiDoc": ["lib/data.js", "lib/explanatory-notes-index.js", "lib/hs-tree-sources.js", "lib/nguon-loai.js", "lib/tim-cgct.js"],
+      "moTa": "Chỉ mục chú giải theo mã 8 số (câu cụt, gán giả cấp 8 số, trộn HS 2017 — xuống BO_TRO).",
+      "truongLan": {
+        "noteVi": "BO_TRO",
+        "noteType": "KY_THUAT",
+        "sourceFile": "KY_THUAT"
+      }
+    },
+    {
+      "duongDan": "data/feedback.jsonl",
+      "lop": "THUC_TE",
+      "aiDoc": ["lib/admin-overview.js", "lib/feedback-store.js", "lib/learned-corrections.js", "lib/ml-log.js"],
+      "moTa": "Nhật ký phản hồi sửa mã thực tế của người dùng."
+    },
+    {
+      "duongDan": "data/glossary-xnk.json",
+      "lop": "BO_TRO",
+      "aiDoc": [],
+      "moTa": "Bảng thuật ngữ xuất nhập khẩu giải thích cho người dùng."
+    },
+    {
+      "duongDan": "data/heading-declaration-fields.json",
+      "lop": "BO_TRO",
+      "aiDoc": ["lib/compliance-data.js", "lib/declaration-check.js", "lib/tu-vung.js"],
+      "moTa": "Trường khai báo gợi ý theo nhóm 4 số."
+    },
+    {
+      "duongDan": "data/hs-aliases.json",
+      "lop": "BO_TRO",
+      "aiDoc": ["lib/do-thi/dung-bang-canh.js"],
+      "moTa": "Từ điển tên gọi khác (aliases) cho mã HS."
+    },
+    {
+      "duongDan": "data/hs-context.json",
+      "lop": "BO_TRO",
+      "aiDoc": ["lib/hs-breadcrumb.js", "lib/nguon-loai.js"],
+      "moTa": "Ngữ cảnh rút gọn cây HS từ loai-khac-index.json (chưa chứng minh từng mục có trích nguyên văn luật — xếp BO_TRO)."
+    },
+    {
+      "duongDan": "data/hs-declaration-mine-queue.json",
+      "lop": "KY_THUAT",
+      "aiDoc": [],
+      "moTa": "Hàng đợi khai thác trường khai báo."
+    },
+    {
+      "duongDan": "data/hs-declaration-overrides.json",
+      "lop": "BO_TRO",
+      "aiDoc": ["lib/compliance-data.js"],
+      "moTa": "Bảng ghi đè trường khai báo theo nhóm/mã cụ thể."
+    },
+    {
+      "duongDan": "data/hs-sections.json",
+      "lop": "LUAT",
+      "aiDoc": ["lib/do-thi/dung-bang-canh.js", "lib/hs-tree.js", "lib/nguon-loai.js", "lib/so-tay.js"],
+      "moTa": "Danh mục 21 Phần và ánh xạ Phần ↔ Chương theo hệ thống HS."
+    },
+    {
+      "duongDan": "data/iso-3166-vn.json",
+      "lop": "KY_THUAT",
+      "aiDoc": ["lib/compliance-data.js", "lib/data.js"],
+      "moTa": "Bảng mã quốc gia ISO-3166 song ngữ phục vụ chính sách C/O và thuế."
+    },
+    {
+      "duongDan": "data/kdtv-010124-xac-minh.json",
+      "lop": "LUAT",
+      "aiDoc": ["lib/kdtv-010124.js"],
+      "moTa": "Phụ lục I Thông tư 01/2024/TT-BNNPTNT (kiểm dịch thực vật, dẫn nguồn Công báo)."
+    },
+    {
+      "duongDan": "data/ktcn-regime-2026.json",
+      "lop": "BO_TRO",
+      "aiDoc": ["lib/demand-signals.js", "lib/policy-regime.js"],
+      "moTa": "Khung kiểm tra chuyên ngành 2026 tổng hợp (chưa chứng minh từng mục có trích nguyên văn — xếp BO_TRO)."
+    },
+    {
+      "duongDan": "data/legacy-knowledge.sample.json",
+      "lop": "KY_THUAT",
+      "aiDoc": [],
+      "moTa": "Tệp mẫu kiểm định định dạng tri thức legacy."
+    },
+    {
+      "duongDan": "data/legal-doc-titles.json",
+      "lop": "KY_THUAT",
+      "aiDoc": [],
+      "moTa": "Bảng tiêu đề 110+ văn bản pháp luật đã xác minh từ nguồn chính thống."
+    },
+    {
+      "duongDan": "data/legal-docs.json",
+      "lop": "RUT_TU_LUAT",
+      "aiDoc": ["lib/legal-docs.js"],
+      "moTa": "Chỉ mục văn bản pháp lý trích từ tax.json và tax-enriched.json."
+    },
+    {
+      "duongDan": "data/legal-notes-enriched.json",
+      "lop": "BO_TRO",
+      "aiDoc": ["lib/hs-tree-sources.js", "lib/nguon-loai.js"],
+      "moTa": "Kho chú giải làm giàu cũ — câu cụt, gán giả cấp 8 số, trộn HS 2017; trộn chú giải gốc (LUAT) với diễn giải AI (BO_TRO).",
+      "truongLan": {
+        "chu_giai_nhom": "LUAT",
+        "sen": "LUAT",
+        "bao_gom": "BO_TRO",
+        "khong_bao_gom": "BO_TRO",
+        "loai_tru": "BO_TRO",
+        "tinh_chat": "BO_TRO",
+        "phan_biet": "BO_TRO",
+        "nguon_phap_ly": "KY_THUAT",
+        "_src": "KY_THUAT"
+      }
+    },
+    {
+      "duongDan": "data/legal-status-issues.json",
+      "lop": "KY_THUAT",
+      "aiDoc": [],
+      "moTa": "Danh sách cảnh báo tình trạng hiệu lực văn bản pháp lý."
+    },
+    {
+      "duongDan": "data/legal-status-miss.jsonl",
+      "lop": "KY_THUAT",
+      "aiDoc": ["api/dataset.js"],
+      "moTa": "Nhật ký văn bản thiếu trạng thái hiệu lực phục vụ thống kê dataset."
+    },
+    {
+      "duongDan": "data/loai-khac-corpus.jsonl",
+      "lop": "BO_TRO",
+      "aiDoc": [],
+      "moTa": "Corpus các dòng dư (Loại khác) — xếp BO_TRO trừ khi chứng minh từng mục có trích nguyên văn."
+    },
+    {
+      "duongDan": "data/loai-khac-enriched.json",
+      "lop": "BO_TRO",
+      "aiDoc": ["lib/nguon-loai.js"],
+      "moTa": "Ví dụ minh họa làm giàu cho các dòng Loại khác theo Chương."
+    },
+    {
+      "duongDan": "data/loai-khac-index.json",
+      "lop": "BO_TRO",
+      "aiDoc": ["lib/hs-tree-sources.js", "lib/loai-khac-classifier.js", "lib/nguon-loai.js"],
+      "moTa": "Chỉ mục dòng residual — xếp BO_TRO trừ khi chứng minh từng mục có trích nguyên văn."
+    },
+    {
+      "duongDan": "data/loai-khac-products-stats.json",
+      "lop": "KY_THUAT",
+      "aiDoc": ["lib/loai-khac-products.js"],
+      "moTa": "Thống kê phân bố sản phẩm dòng Loại khác."
+    },
+    {
+      "duongDan": "data/loai-khac-products.jsonl",
+      "lop": "BO_TRO",
+      "aiDoc": ["lib/loai-khac-products.js"],
+      "moTa": "Danh sách mặt hàng thuộc dòng Loại khác — xếp BO_TRO trừ khi chứng minh từng mục có trích nguyên văn."
+    },
+    {
+      "duongDan": "data/lop-kho.json",
+      "lop": "KY_THUAT",
+      "aiDoc": [],
+      "moTa": "Bảng phân lớp 6 lớp của toàn bộ kho dữ liệu và cấu hình cổng chống lẫn (M-23)."
+    },
+    {
+      "duongDan": "data/material-fallback-headings.json",
+      "lop": "BO_TRO",
+      "aiDoc": ["lib/declaration-options.js"],
+      "moTa": "Danh sách nhóm dự phòng theo vật liệu cho bộ phận/phụ kiện."
+    },
+    {
+      "duongDan": "data/mechanisms.json",
+      "lop": "BO_TRO",
+      "aiDoc": [],
+      "moTa": "Từ điển cơ cấu/nguyên lý vận hành dùng để tách với tên loại sản phẩm."
+    },
+    {
+      "duongDan": "data/mic-hs-map.json",
+      "lop": "THUC_TE",
+      "aiDoc": ["lib/mic-signal.js"],
+      "moTa": "Ánh xạ sản phẩm thực tế quản lý Bộ TT&TT (MIC) sang mã HS tín hiệu."
+    },
+    {
+      "duongDan": "data/mic-products.json",
+      "lop": "THUC_TE",
+      "aiDoc": [],
+      "moTa": "Tập mẫu chứng từ/sản phẩm MIC để kiểm tín hiệu công nghệ thông tin."
+    },
+    {
+      "duongDan": "data/ministries-vn.json",
+      "lop": "KY_THUAT",
+      "aiDoc": [],
+      "moTa": "Danh mục tên đầy đủ các Bộ/ngành quản lý chuyên ngành Việt Nam."
+    },
+    {
+      "duongDan": "data/mixture-rules.json",
+      "lop": "BO_TRO",
+      "aiDoc": [],
+      "moTa": "Quy tắc xử lý hỗn hợp biên soạn — xếp BO_TRO trừ khi chứng minh từng mục có trích nguyên văn."
+    },
+    {
+      "duongDan": "data/nguon-chan.json",
+      "lop": "KY_THUAT",
+      "aiDoc": ["lib/dinh-danh-tim-web.js"],
+      "moTa": "Danh sách chặn nguồn tên miền rác cho bước tìm web định danh hàng."
+    },
+    {
+      "duongDan": "data/nice-hs-map.json",
+      "lop": "BO_TRO",
+      "aiDoc": ["lib/trademark-watch.js"],
+      "moTa": "Bảng quy đổi nhóm nhãn hiệu Nice sang nhóm HS tương ứng."
+    },
+    {
+      "duongDan": "data/noise-labels-zh.json",
+      "lop": "KY_THUAT",
+      "aiDoc": ["lib/source-filter.js"],
+      "moTa": "Nhãn nhiễu tiếng Trung cần lọc bỏ khỏi đầu vào mô tả hàng."
+    },
+    {
+      "duongDan": "data/notes.json",
+      "lop": "RUT_TU_LUAT",
+      "aiDoc": ["lib/classify.js", "lib/do-thi/hoi-truoc-4so.js"],
+      "moTa": "Chú giải Chương gộp phẳng (sẽ thay bằng kho luat-goc qua /api/notes ở M-21).",
+      "truongLan": {
+        "*": "RUT_TU_LUAT"
+      }
+    },
+    {
+      "duongDan": "data/oz-declarations.meta.json",
+      "lop": "KY_THUAT",
+      "aiDoc": [],
+      "moTa": "Siêu dữ liệu thống kê đợt nhập tờ khai nội bộ OZ."
+    },
+    {
+      "duongDan": "data/oz-gold-final.jsonl",
+      "lop": "THUC_TE",
+      "aiDoc": ["lib/do-thi/tieu-chi-6.js", "lib/oz-precedent-search.js"],
+      "moTa": "Kho tờ khai chuẩn nội bộ OZ (tuyệt đối không dùng làm căn cứ luật)."
+    },
+    {
+      "duongDan": "data/parts-zh.json",
+      "lop": "BO_TRO",
+      "aiDoc": ["lib/extract-specs.js", "lib/heading-lexicon.js", "lib/tu-vung.js"],
+      "moTa": "Từ điển linh kiện/bộ phận tiếng Trung."
+    },
+    {
+      "duongDan": "data/pattern-promotions.jsonl",
+      "lop": "THUC_TE",
+      "aiDoc": ["lib/feedback-store.js", "lib/learned-corrections.js"],
+      "moTa": "Nhật ký đề xuất quy tắc học từ phản hồi sửa mã thực tế."
+    },
+    {
+      "duongDan": "data/plhq-bench-latest.json",
+      "lop": "KY_THUAT",
+      "aiDoc": [],
+      "moTa": "Kết quả benchmark văn bản pháp luật hải quan gần nhất."
+    },
+    {
+      "duongDan": "data/plhq-hs-index.json",
+      "lop": "RUT_TU_LUAT",
+      "aiDoc": ["lib/kdtv-010124.js", "lib/plhq-registry.js"],
+      "moTa": "Chỉ mục văn bản chính sách chuyên ngành theo mã HS rút từ plhq-registry.json."
+    },
+    {
+      "duongDan": "data/plhq-registry.json",
+      "lop": "LUAT",
+      "aiDoc": ["lib/plhq-registry.js"],
+      "moTa": "Sổ đăng ký văn bản quy phạm pháp luật hải quan chính thức (oz-wiki-plhq)."
+    },
+    {
+      "duongDan": "data/policy-name-rules.json",
+      "lop": "RUT_TU_LUAT",
+      "aiDoc": ["lib/policy-name-match.js"],
+      "moTa": "Quy tắc khớp tên hàng cho các mặt hàng quản lý chính sách."
+    },
+    {
+      "duongDan": "data/policy-procedures.json",
+      "lop": "RUT_TU_LUAT",
+      "aiDoc": ["lib/policy-procedures.js"],
+      "moTa": "Thủ tục kiểm tra chuyên ngành rút từ văn bản quản lý nhà nước."
+    },
+    {
+      "duongDan": "data/precedents.json",
+      "lop": "TIEN_LE",
+      "aiDoc": ["lib/classify.js", "lib/data.js", "lib/declaration-check.js", "lib/do-thi/tieu-chi-6.js", "lib/ho-so/hieu-chinh.js", "lib/hs-tree-sources.js", "lib/kiem-truoc-chot.js", "lib/nguon-loai.js"],
+      "moTa": "Thông báo phân loại Hải quan TB-TCHQ (lớp TIEN_LE — chỉ bước kiểm cuối được nạp) kèm trường dễ nhầm biên soạn.",
+      "truongLan": {
+        "tbTchqNumber": "TIEN_LE",
+        "outcome": "TIEN_LE",
+        "girRule": "TIEN_LE",
+        "productName": "TIEN_LE",
+        "technicalSpec": "TIEN_LE",
+        "confusedWith": "BO_TRO",
+        "sourceFile": "KY_THUAT",
+        "sourceUrl": "KY_THUAT"
+      }
+    },
+    {
+      "duongDan": "data/radar-van-ban-da-xu-ly.json",
+      "lop": "KY_THUAT",
+      "aiDoc": [],
+      "moTa": "Danh sách URL Công báo đã quét bởi radar văn bản."
+    },
+    {
+      "duongDan": "data/search.json",
+      "lop": "KY_THUAT",
+      "aiDoc": ["lib/do-thi/dung-bang-canh.js", "lib/suggest-evidence.js"],
+      "moTa": "Chỉ mục tìm nhanh 11.871 dòng biểu thuế Việt-Anh-Trung."
+    },
+    {
+      "duongDan": "data/sen-2022.json",
+      "lop": "LUAT",
+      "aiDoc": ["lib/ho-so/cong-ranh-gioi.js", "lib/ho-so/hieu-chinh.js", "lib/hs-tree-sources.js", "lib/nguon-loai.js", "lib/sen.js", "lib/so-tay.js"],
+      "moTa": "Chú giải bổ sung SEN AHTN 2022 theo CV 3866/TCHQ-TXNK."
+    },
+    {
+      "duongDan": "data/substance-duties.json",
+      "lop": "RUT_TU_LUAT",
+      "aiDoc": ["lib/substance-duties.js"],
+      "moTa": "Nghĩa vụ pháp lý theo chất hóa học rút từ nghị định/thông tư tiền chất, hóa chất."
+    },
+    {
+      "duongDan": "data/synonyms.json",
+      "lop": "BO_TRO",
+      "aiDoc": ["lib/do-thi/dung-bang-canh.js", "lib/precedent-search.js"],
+      "moTa": "Từ điển từ đồng nghĩa tên hàng thương mại sang mã HS."
+    },
+    {
+      "duongDan": "data/tax-enriched.json",
+      "lop": "RUT_TU_LUAT",
+      "aiDoc": ["lib/admin-overview.js", "lib/admin-update.js", "lib/enriched-data.js", "lib/hs-tree-sources.js", "lib/kg-stats.js", "lib/nguon-loai.js"],
+      "moTa": "Kho chính sách làm giàu theo mã 8 số — trộn cảnh báo AI với dấu hiệu văn bản pháp lý.",
+      "truongLan": {
+        "warnings": "RUT_TU_LUAT",
+        "enrichedAt": "KY_THUAT",
+        "enrichModel": "KY_THUAT"
+      }
+    },
+    {
+      "duongDan": "data/tax.json",
+      "lop": "LUAT",
+      "aiDoc": ["lib/admin-update.js", "lib/classify.js", "lib/data.js", "lib/declaration-check.js", "lib/do-thi/dung-bang-canh.js", "lib/ho-so/cong-ranh-gioi.js", "lib/ho-so/hieu-chinh.js", "lib/kho-dap-an.js", "lib/nguon-loai.js", "lib/search-utils.js", "lib/so-tay.js", "lib/tariff-mutations.js", "lib/tien-le-thay-the.js", "lib/tim-cgct.js"],
+      "moTa": "Biểu thuế xuất nhập khẩu 11.871 dòng (mô tả hàng, thuế suất, chính sách mặt hàng)."
+    },
+    {
+      "duongDan": "data/thue-tam-thoi.json",
+      "lop": "LUAT",
+      "aiDoc": ["lib/declaration-check.js", "lib/thue-tam-thoi.js"],
+      "moTa": "Quyết định áp dụng thuế phòng vệ thương mại / thuế tạm thời hiện hành."
+    },
+    {
+      "duongDan": "data/tien-le-thay-the.json",
+      "lop": "TIEN_LE",
+      "aiDoc": ["lib/nguon-loai.js", "lib/tien-le-thay-the.js"],
+      "moTa": "Bảng TB-TCHQ đã bị cơ quan Hải quan sửa đổi hoặc thay thế (thuộc lớp TIEN_LE)."
+    },
+    {
+      "duongDan": "data/trade-synonyms.json",
+      "lop": "BO_TRO",
+      "aiDoc": ["lib/do-thi/dung-bang-canh.js"],
+      "moTa": "Từ điển tên thương mại, từ lóng và tên gọi ngoài thị trường."
+    },
+    {
+      "duongDan": "data/trademark-watch.json",
+      "lop": "BO_TRO",
+      "aiDoc": ["lib/trademark-watch.js"],
+      "moTa": "Danh sách nhãn hiệu dễ gây nhiễu khi định danh sản phẩm."
+    },
+    {
+      "duongDan": "data/tu-dien-tien-xu-ly.json",
+      "lop": "BO_TRO",
+      "aiDoc": ["lib/tien-xu-ly.js"],
+      "moTa": "Từ điển tiền xử lý chuẩn hóa từ ngữ tiếng Việt/Trung/Anh và viết tắt."
+    },
+    {
+      "duongDan": "data/units-tchq.json",
+      "lop": "LUAT",
+      "aiDoc": ["lib/compliance-data.js", "lib/data.js"],
+      "moTa": "Danh mục đơn vị tính chuẩn của Tổng cục Hải quan."
+    },
+    {
+      "duongDan": "data/vn-product-synonyms.json",
+      "lop": "BO_TRO",
+      "aiDoc": ["lib/do-thi/dung-bang-canh.js"],
+      "moTa": "Từ điển tên hàng tiếng Việt đặc thù sang mã HS."
+    },
+    {
+      "duongDan": "data/wco-hs-international.csv",
+      "lop": "LUAT",
+      "aiDoc": ["lib/attribute-frames.js", "lib/ho-so/cong-ranh-gioi.js", "lib/hs-tree.js", "lib/nguon-loai.js", "lib/so-tay-gates.js", "lib/so-tay.js"],
+      "moTa": "Danh mục mô tả HS quốc tế 2-4-6 số gốc tiếng Anh (WCO)."
+    },
+    {
+      "duongDan": "data/bench/**",
+      "lop": "KY_THUAT",
+      "aiDoc": ["lib/nguon-loai.js"],
+      "moTa": "Bộ ca đo, baseline và báo cáo kiểm định benchmark (tuyệt đối không đưa vào suy luận sản phẩm)."
+    },
+    {
+      "duongDan": "data/bieu-thue/README.md",
+      "lop": "KY_THUAT",
+      "aiDoc": [],
+      "moTa": "Tài liệu hướng dẫn cấu trúc bộ dữ liệu biểu thuế."
+    },
+    {
+      "duongDan": "data/bieu-thue/van-ban-bieu-thue.json",
+      "lop": "LUAT",
+      "aiDoc": [],
+      "moTa": "Tổng hợp căn cứ văn bản pháp quy ban hành các dòng biểu thuế."
+    },
+    {
+      "duongDan": "data/bieu-thue/2026.04.05/**",
+      "lop": "LUAT",
+      "aiDoc": ["lib/bieu-thue-2026.js", "lib/bieu-thue.js", "lib/ho-so/cong-ranh-gioi.js", "lib/hs-tree.js", "lib/so-tay.js"],
+      "moTa": "Cây biểu thuế XNK 2026.04.05 chuẩn hóa theo cấp gạch."
+    },
+    {
+      "duongDan": "data/bieu-thue/zh/**",
+      "lop": "BO_TRO",
+      "aiDoc": ["lib/bieu-thue-zh.js"],
+      "moTa": "Đối chiếu tên mã HS6 tiếng Trung phục vụ đọc nguồn Trung Quốc."
+    },
+    {
+      "duongDan": "data/bo-chuan/HUONG-DAN-GAN-NHAN.md",
+      "lop": "KY_THUAT",
+      "aiDoc": [],
+      "moTa": "Tài liệu hướng dẫn gán nhãn bộ chuẩn 4 số."
+    },
+    {
+      "duongDan": "data/bo-chuan/*.json",
+      "lop": "THUC_TE",
+      "aiDoc": [],
+      "moTa": "Bộ chuẩn gán nhãn đánh giá (metadata JSON)."
+    },
+    {
+      "duongDan": "data/bo-chuan/*.jsonl",
+      "lop": "THUC_TE",
+      "aiDoc": [],
+      "moTa": "Bộ ca thực tế gán nhãn 4 số kiểm định độ chính xác."
+    },
+    {
+      "duongDan": "data/community/examples/**",
+      "lop": "TIEN_LE",
+      "aiDoc": [],
+      "moTa": "Ví dụ minh họa thông báo phân loại Hải quan (TIEN_LE)."
+    },
+    {
+      "duongDan": "data/community/intl-precedents/**",
+      "lop": "TIEN_LE",
+      "aiDoc": [],
+      "moTa": "Án lệ phân loại quốc tế CBP/ABF (lớp TIEN_LE)."
+    },
+    {
+      "duongDan": "data/community/mic/**",
+      "lop": "THUC_TE",
+      "aiDoc": [],
+      "moTa": "Lô sản phẩm chứng từ MIC từ cộng đồng."
+    },
+    {
+      "duongDan": "data/community/tb-tchq/**",
+      "lop": "TIEN_LE",
+      "aiDoc": [],
+      "moTa": "Kho lô thông báo phân loại TB-TCHQ đóng góp (lớp TIEN_LE)."
+    },
+    {
+      "duongDan": "data/community-parked/**",
+      "lop": "TIEN_LE",
+      "aiDoc": [],
+      "moTa": "Tiền lệ TB-TCHQ biểu cũ và lô chờ kiểm định (lớp TIEN_LE)."
+    },
+    {
+      "duongDan": "data/decision-tables/**",
+      "lop": "BO_TRO",
+      "aiDoc": ["lib/decision-tables.js", "lib/nguon-loai.js"],
+      "moTa": "Bảng quyết định phân loại biên soạn theo nhóm (xếp BO_TRO trừ khi chứng minh từng mục có trích nguyên văn)."
+    },
+    {
+      "duongDan": "data/do-thi/ban-do-4so/*.json",
+      "lop": "RUT_TU_LUAT",
+      "aiDoc": ["lib/do-thi/ban-do-4so.js", "lib/do-thi/dung-bang-canh.js"],
+      "moTa": "Cạnh phân biệt 4 số (AI_NHAP qua cổng bd4@1; chỉ cạnh chamCheo=DUYET mới ở bậc luật).",
+      "truongLan": {
+        "canh": "RUT_TU_LUAT",
+        "hoSo": "THUC_TE",
+        "chamCheo": "KY_THUAT",
+        "nguonLoai": "KY_THUAT"
+      }
+    },
+    {
+      "duongDan": "data/do-thi/c4-model-hang.json",
+      "lop": "BO_TRO",
+      "aiDoc": [],
+      "moTa": "Chỉ dấu gợi ý hàng hóa theo mô hình (tiền lệ/tên model)."
+    },
+    {
+      "duongDan": "data/do-thi/canh-nhac-nhom.json",
+      "lop": "RUT_TU_LUAT",
+      "aiDoc": ["lib/do-thi/dung-bang-canh.js"],
+      "moTa": "Cạnh C17 chú giải nhóm nhắc nhóm — trích nguyên văn kết hợp nhãn quanHe do LLM gắn.",
+      "truongLan": {
+        "trich": "LUAT",
+        "quanHe": "BO_TRO",
+        "nguonLoai": "KY_THUAT"
+      }
+    },
+    {
+      "duongDan": "data/do-thi/chi-muc-nghia.bin",
+      "lop": "KY_THUAT",
+      "aiDoc": ["lib/embed-pool.js"],
+      "moTa": "Chỉ mục nhị phân embedding tìm nhanh đường vào."
+    },
+    {
+      "duongDan": "data/do-thi/chi-muc-nghia.meta.json",
+      "lop": "KY_THUAT",
+      "aiDoc": ["lib/embed-pool.js"],
+      "moTa": "Siêu dữ liệu chỉ mục embedding nghĩa."
+    },
+    {
+      "duongDan": "data/do-thi/soat-canh-hai-ve/**",
+      "lop": "KY_THUAT",
+      "aiDoc": [],
+      "moTa": "Lô soát cạnh hai vế đồ thị 4 số."
+    },
+    {
+      "duongDan": "data/do-thi/soat-studio/**",
+      "lop": "KY_THUAT",
+      "aiDoc": [],
+      "moTa": "Lô kết quả soát chéo studio."
+    },
+    {
+      "duongDan": "data/do-thi/thong-ke.json",
+      "lop": "KY_THUAT",
+      "aiDoc": [],
+      "moTa": "Số đếm thống kê bảng cạnh đồ thị."
+    },
+    {
+      "duongDan": "data/do-thi/xep-hang-luong-hang.json",
+      "lop": "THUC_TE",
+      "aiDoc": [],
+      "moTa": "Xếp hạng tần suất luồng hàng từ dữ liệu tờ khai thực tế."
+    },
+    {
+      "duongDan": "data/gd0/**",
+      "lop": "KY_THUAT",
+      "aiDoc": ["lib/embed-pool.js"],
+      "moTa": "Chỉ mục và kết quả đo giai đoạn 0 embedding e5-small."
+    },
+    {
+      "duongDan": "data/ho-so/hieu-chinh-tien-le.json",
+      "lop": "THUC_TE",
+      "aiDoc": ["lib/ho-so/hieu-chinh.js"],
+      "moTa": "Hiệu chỉnh tiền lệ trên hồ sơ tờ khai thực tế."
+    },
+    {
+      "duongDan": "data/ho-so/lat-1.json",
+      "lop": "THUC_TE",
+      "aiDoc": [],
+      "moTa": "Lát cắt đo thực tế lượt 1 từ tờ khai OZ."
+    },
+    {
+      "duongDan": "data/ho-so/lat-2.json",
+      "lop": "THUC_TE",
+      "aiDoc": [],
+      "moTa": "Lát cắt đo thực tế lượt 2."
+    },
+    {
+      "duongDan": "data/ho-so/phan-biet-vat-lieu/**",
+      "lop": "RUT_TU_LUAT",
+      "aiDoc": ["lib/ho-so/phan-biet-vat-lieu.js"],
+      "moTa": "Hồ sơ phân biệt vật liệu trích theo nhóm từ chú giải."
+    },
+    {
+      "duongDan": "data/ho-so/ranh-gioi/**",
+      "lop": "RUT_TU_LUAT",
+      "aiDoc": ["lib/dieu-kien-so.js", "lib/ho-so/duong-di.js", "lib/so-tay-gates.js"],
+      "moTa": "Hồ sơ ranh giới phân nhóm 6 số duyệt theo khuôn ranh-gioi@1."
+    },
+    {
+      "duongDan": "data/hs/customs-danh-muc-2026-11-13.json",
+      "lop": "LUAT",
+      "aiDoc": ["api/dataset.js", "lib/compliance-data.js"],
+      "moTa": "Danh mục mã HS gốc đối chiếu từ Cổng Hải quan Việt Nam ngày 2026-11-13."
+    },
+    {
+      "duongDan": "data/hs/ten-khac-2026-11-13.json",
+      "lop": "BO_TRO",
+      "aiDoc": ["lib/customs-prompt.js", "lib/kho-dap-an.js", "lib/shtt-client.js"],
+      "moTa": "Chênh lệch mô tả giữa Hải quan và biểu thuế bổ trợ nhận diện."
+    },
+    {
+      "duongDan": "data/kho-dap-an/**",
+      "lop": "THUC_TE",
+      "aiDoc": ["api/classify.js", "lib/ho-so/api.js"],
+      "moTa": "Seed ca thực tế đã duyệt cho kho đáp án."
+    },
+    {
+      "duongDan": "data/legacy-hs-mapping/**",
+      "lop": "KY_THUAT",
+      "aiDoc": ["lib/legacy-hs-mapping.js", "lib/nguon-loai.js", "lib/tien-le-thay-the.js"],
+      "moTa": "Bảng chuyển đổi mã HS cũ 8 số sang biểu hiện hành."
+    },
+    {
+      "duongDan": "data/loai-khac-products/**",
+      "lop": "BO_TRO",
+      "aiDoc": [],
+      "moTa": "Sản phẩm phân rã cho các dòng Loại khác theo Chương (xếp BO_TRO trừ khi chứng minh từng mục có trích nguyên văn)."
+    },
+    {
+      "duongDan": "data/luat/bang-co.json",
+      "lop": "KY_THUAT",
+      "aiDoc": [],
+      "moTa": "Bảng đăng ký toàn bộ cờ HS_* (L2)."
+    },
+    {
+      "duongDan": "data/luat/chu-giai-2-phan-xvi.json",
+      "lop": "RUT_TU_LUAT",
+      "aiDoc": ["lib/do-thi/chu-giai-2-phan-xvi.js"],
+      "moTa": "Bảng phân loại bộ phận theo Chú giải 2 Phần XVI — phần trich là RUT_TU_LUAT (gốc là .phan cũ); tomTat/moTa là BO_TRO.",
+      "truongLan": {
+        "nguyenVan": "LUAT",
+        "trich": "RUT_TU_LUAT",
+        "trichBoSung": "RUT_TU_LUAT",
+        "tomTat": "BO_TRO",
+        "moTa": "BO_TRO",
+        "phienBan": "KY_THUAT",
+        "nguonGoc": "KY_THUAT"
+      }
+    },
+    {
+      "duongDan": "data/luat/dau-noi.json",
+      "lop": "KY_THUAT",
+      "aiDoc": [],
+      "moTa": "Bảng đấu nối API ↔ kho tri thức (L4)."
+    },
+    {
+      "duongDan": "data/luat/dieu-khoan-bo-sung.json",
+      "lop": "LUAT",
+      "aiDoc": [],
+      "moTa": "Điều khoản pháp lý bổ sung theo nguồn công văn/biểu thuế."
+    },
+    {
+      "duongDan": "data/luat/dieu-khoan-tang2.json",
+      "lop": "RUT_TU_LUAT",
+      "aiDoc": [],
+      "moTa": "Điều khoản tầng 2 rút từ chú giải để kéo theo nhánh (còn 361 dòng TỔNG QUÁT gắn nhầm nhãn chú giải – xem M-35)."
+    },
+    {
+      "duongDan": "data/luat-goc/bat-buoc.json",
+      "lop": "KY_THUAT",
+      "aiDoc": [],
+      "moTa": "Danh sách nút neo bắt buộc của cổng kiểm kho luật gốc (M-01)."
+    },
+    {
+      "duongDan": "data/luat-goc/bieu.jsonl",
+      "lop": "LUAT",
+      "aiDoc": [],
+      "moTa": "Kho nguyên văn tên Chương/Nhóm/Phân nhóm/Dòng theo cấp gạch (M-18)."
+    },
+    {
+      "duongDan": "data/luat-goc/chuong.jsonl",
+      "lop": "LUAT",
+      "aiDoc": [],
+      "moTa": "Kho nguyên văn Chú giải 97 Chương (M-13)."
+    },
+    {
+      "duongDan": "data/luat-goc/gir.jsonl",
+      "lop": "LUAT",
+      "aiDoc": [],
+      "moTa": "Kho nguyên văn 6 Quy tắc tổng quát và 41 Chú giải chi tiết (M-12)."
+    },
+    {
+      "duongDan": "data/luat-goc/phan.jsonl",
+      "lop": "LUAT",
+      "aiDoc": [],
+      "tuyChon": true,
+      "moTa": "Kho nguyên văn Chú giải 21 Phần (M-11, chờ gộp)."
+    },
+    {
+      "duongDan": "data/luat-goc/nhom.jsonl",
+      "lop": "LUAT",
+      "aiDoc": [],
+      "tuyChon": true,
+      "moTa": "Kho nguyên văn Chú giải chi tiết nhóm (M-14, chờ gộp)."
+    },
+    {
+      "duongDan": "data/luat-goc/phan-chuong-nhom.json",
+      "lop": "LUAT",
+      "aiDoc": ["lib/do-thi/phai-doc.js"],
+      "moTa": "Bảng 33 phân chương (I, II, III…) → dải nhóm 4 số rút từ bản in Chú giải Chương HS 2022 (M-34)."
+    },
+    {
+      "duongDan": "data/luat-goc/phan-nhom.jsonl",
+      "lop": "LUAT",
+      "aiDoc": [],
+      "tuyChon": true,
+      "moTa": "Kho nguyên văn Chú giải chi tiết phân nhóm (M-15, chờ gộp)."
+    },
+    {
+      "duongDan": "data/luat-goc/sen.jsonl",
+      "lop": "LUAT",
+      "aiDoc": [],
+      "tuyChon": true,
+      "moTa": "Kho nguyên văn SEN 2022 (M-16, chờ gộp)."
+    },
+    {
+      "duongDan": "data/luat-goc/wco.jsonl",
+      "lop": "LUAT",
+      "aiDoc": [],
+      "tuyChon": true,
+      "moTa": "Kho nguyên văn Ý kiến WCO phân loại (M-17, chờ gộp)."
+    },
+    {
+      "duongDan": "data/luat-goc/thong-bao.jsonl",
+      "lop": "TIEN_LE",
+      "aiDoc": [],
+      "tuyChon": true,
+      "moTa": "Kho Thông báo kết quả phân loại làm sạch — lớp TIEN_LE riêng (chỉ bước kiểm cuối được nạp; M-19, chờ gộp)."
+    },
+    {
+      "duongDan": "data/luat-goc/doi-ma.json",
+      "lop": "KY_THUAT",
+      "aiDoc": [],
+      "tuyChon": true,
+      "moTa": "Bảng ánh xạ id nguồn cũ sang id nút luật mới (M-35, chờ gộp)."
+    },
+    {
+      "duongDan": "data/luat-goc/cau/**",
+      "lop": "RUT_TU_LUAT",
+      "aiDoc": [],
+      "tuyChon": true,
+      "moTa": "Chỉ mục vị trí tách câu nguyên văn (M-31, chờ gộp)."
+    },
+    {
+      "duongDan": "data/luat-goc/nghia-canh/**",
+      "lop": "RUT_TU_LUAT",
+      "aiDoc": [],
+      "tuyChon": true,
+      "moTa": "Cạnh chuyển hướng có điều kiện (M-33, chờ gộp)."
+    },
+    {
+      "duongDan": "data/luat-goc/tom-tat/**",
+      "lop": "BO_TRO",
+      "aiDoc": [],
+      "tuyChon": true,
+      "moTa": "Tóm tắt nút gồm/loại sinh hỗ trợ (xếp BO_TRO theo thẻ M-36 ghi rõ; M-36, chờ gộp)."
+    },
+    {
+      "duongDan": "data/luat-goc/chi-muc/**",
+      "lop": "KY_THUAT",
+      "aiDoc": [],
+      "tuyChon": true,
+      "moTa": "Chỉ mục nghĩa/vector tìm kiếm trên nút luật (lớp KY_THUAT; M-37, chờ gộp)."
+    },
+    {
+      "duongDan": "data/oz-export/README.md",
+      "lop": "KY_THUAT",
+      "aiDoc": [],
+      "moTa": "Tài liệu quy định bảo mật đối với thư mục dữ liệu nội bộ oz-export."
+    },
+    {
+      "duongDan": "data/oz-export/*.json",
+      "lop": "THUC_TE",
+      "aiDoc": [],
+      "tuyChon": true,
+      "moTa": "Dữ liệu xuất tờ khai nội bộ OZ (tuyệt đối không commit)."
+    },
+    {
+      "duongDan": "data/oz-export/*.jsonl",
+      "lop": "THUC_TE",
+      "aiDoc": [],
+      "tuyChon": true,
+      "moTa": "Dữ liệu xuất tờ khai nội bộ OZ dạng JSONL (tuyệt đối không commit)."
+    },
+    {
+      "duongDan": "data/prompts/**",
+      "lop": "KY_THUAT",
+      "aiDoc": ["lib/prompt-version.js"],
+      "moTa": "Lời dẫn prompt LLM đánh phiên bản (L1)."
+    },
+    {
+      "duongDan": "data/shtt/bao-cao.json",
+      "lop": "KY_THUAT",
+      "aiDoc": [],
+      "moTa": "Báo cáo đợt quét dữ liệu nhãn hiệu sở hữu trí tuệ."
+    },
+    {
+      "duongDan": "data/shtt/khong-tim-thay.jsonl",
+      "lop": "KY_THUAT",
+      "aiDoc": [],
+      "moTa": "Danh sách nhãn hiệu không tra cứu được trong đợt quét."
+    },
+    {
+      "duongDan": "data/shtt/raw-index.json",
+      "lop": "KY_THUAT",
+      "aiDoc": [],
+      "moTa": "Chỉ mục quét thô tra cứu SHTT."
+    },
+    {
+      "duongDan": "data/shtt/ung-vien-nhan-hieu.*",
+      "lop": "BO_TRO",
+      "aiDoc": [],
+      "moTa": "Ứng viên nhãn hiệu thương mại trích lọc bổ trợ nhận diện brand."
+    },
+    {
+      "duongDan": "data/shtt/vn-ipvietnam-dang-ky.jsonl",
+      "lop": "BO_TRO",
+      "aiDoc": [],
+      "moTa": "Nhãn hiệu đã đăng ký tại Cục SHTT Việt Nam phục vụ lọc tên riêng."
+    },
+    {
+      "duongDan": "data/so-tay/[0-9][0-9][0-9][0-9].json",
+      "lop": "RUT_TU_LUAT",
+      "aiDoc": ["api/so-tay-questions.js", "lib/dieu-kien-so.js", "lib/do-thi/dung-bang-canh.js", "lib/ho-so/duong-di.js", "lib/hoi-theo-so-tay.js", "lib/so-tay-gates.js", "lib/so-tay-runtime.js"],
+      "moTa": "Sổ tay phân loại theo từng nhóm 4 số — phần có trich (phamVi, dieuKienVao, loaiTru, tieuChi6, dong8) là RUT_TU_LUAT; op, value, hoi (câu hỏi) và phanBiet là BO_TRO.",
+      "truongLan": {
+        "phamVi": "RUT_TU_LUAT",
+        "dieuKienVao": "RUT_TU_LUAT",
+        "loaiTru": "RUT_TU_LUAT",
+        "tieuChi6": "RUT_TU_LUAT",
+        "dong8": "RUT_TU_LUAT",
+        "op": "BO_TRO",
+        "value": "BO_TRO",
+        "hoi": "BO_TRO",
+        "phanBiet": "BO_TRO",
+        "cay": "KY_THUAT",
+        "dungTuNguon": "KY_THUAT",
+        "taoBoi": "KY_THUAT",
+        "kiemTra": "KY_THUAT"
+      }
+    },
+    {
+      "duongDan": "data/so-tay/_bao-cao.json",
+      "lop": "KY_THUAT",
+      "aiDoc": [],
+      "moTa": "Báo cáo tổng hợp tiến độ kiểm tra sổ tay."
+    },
+    {
+      "duongDan": "data/so-tay/dieu-kien-so-draft.json",
+      "lop": "KY_THUAT",
+      "aiDoc": [],
+      "moTa": "Tệp nháp đề xuất điều kiện số dòng 8 số chờ người soát (#195, chỉ phục vụ script sinh/ốp sổ tay)."
+    },
+    {
+      "duongDan": "data/so-tay/bao-cao/**",
+      "lop": "KY_THUAT",
+      "aiDoc": [],
+      "moTa": "Các lô báo cáo chạy kho và rà soát sổ tay."
+    },
+    {
+      "duongDan": "data/taxonomy/**",
+      "lop": "BO_TRO",
+      "aiDoc": ["lib/material-taxonomy.js", "lib/retrieve-candidates.js"],
+      "moTa": "Phân loại vật liệu chuyên ngành (hóa chất, xơ, kim loại, polymer, cao su, dệt, gỗ)."
+    },
+    {
+      "duongDan": "data/tu-vung/ten-khac-*.json",
+      "lop": "BO_TRO",
+      "aiDoc": ["lib/dieu-kien-so.js", "lib/do-thi/dung-bang-canh.js", "lib/tu-vung.js"],
+      "moTa": "Kho tên khác và tên thương mại bổ trợ theo từng nhóm 4 số."
+    },
+    {
+      "duongDan": "data/tu-vung/tu-vung@*.json",
+      "lop": "RUT_TU_LUAT",
+      "aiDoc": ["lib/dieu-kien-so.js", "lib/do-thi/tieu-chi-6.js", "lib/tu-vung.js"],
+      "moTa": "Từ vựng tiêu chí kỹ thuật chuẩn hóa theo khuôn tu-vung@1/tu-vung@2."
+    },
+    {
+      "duongDan": "data/tu-vung/anh-xa-cu.json",
+      "lop": "KY_THUAT",
+      "aiDoc": [],
+      "moTa": "Bảng ánh xạ từ khóa cũ sang tu-vung mới."
+    },
+    {
+      "duongDan": "data/tu-vung/cham-cheo-studio.json",
+      "lop": "KY_THUAT",
+      "aiDoc": [],
+      "moTa": "Kết quả chấm chéo từ vựng bởi studio."
+    },
+    {
+      "duongDan": "data/van-ban-chuyen-nganh/**",
+      "lop": "LUAT",
+      "aiDoc": ["lib/ho-so/cong-ranh-gioi.js", "lib/so-tay.js"],
+      "moTa": "Toàn văn văn bản quy chuẩn chuyên ngành (TT 08/2021/TT-BNNPTNT...)."
+    },
+    {
+      "duongDan": "data/versions/**",
+      "lop": "KY_THUAT",
+      "aiDoc": ["api/tariff.js", "lib/tariff-versions.js"],
+      "moTa": "Các snapshot lịch sử và chỉ mục phiên bản biểu thuế."
+    },
+    {
+      "duongDan": "data/wco-op/README.md",
+      "lop": "KY_THUAT",
+      "aiDoc": [],
+      "moTa": "Tài liệu hướng dẫn bản quyền và nguồn kho ý kiến WCO."
+    },
+    {
+      "duongDan": "data/wco-op/opinions.json",
+      "lop": "LUAT",
+      "aiDoc": ["lib/attribute-frames.js", "lib/do-thi/ban-do-4so.js", "lib/do-thi/dung-bang-canh.js", "lib/do-thi/phai-doc.js", "lib/hs-tree-sources.js", "lib/nguon-loai.js", "lib/precedent-search.js", "lib/so-tay.js", "lib/wco-op.js"],
+      "moTa": "Tuyển tập ý kiến phân loại WCO HS 2022 nguyên văn tiếng Anh (bản quyền WCO, Oz đã trả phí)."
+    },
+    {
+      "duongDan": "data/wco-op/vi.json",
+      "lop": "BO_TRO",
+      "aiDoc": ["lib/wco-op.js"],
+      "moTa": "Bản dịch tiếng Việt không chính thức từ wco-op/opinions.json (máy dịch + soát mẫu, gắn cảnh báo không chính thức — xếp BO_TRO)."
+    },
+    {
+      "duongDan": "data/wco-op/so-tay-trich.json",
+      "lop": "RUT_TU_LUAT",
+      "aiDoc": ["lib/so-tay.js"],
+      "moTa": "Đoạn trích nguyên văn ý kiến WCO dùng trong sổ tay."
+    }
+  ]
+}
