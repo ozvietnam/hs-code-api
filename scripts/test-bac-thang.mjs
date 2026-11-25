@@ -155,6 +155,37 @@ const soi = (hs6, tenLoai) => [...(tenLoai ? [{ hs6, fact: 'tenLoai', op: 'TEN_L
   const r = await chay({ nhom: '9617', moTa: 'Cốc giữ nhiệt chân không', denBac: 6 });
   kiem('nhóm không chia phân nhóm (xxxx.00): tầng 6 theo tên nhóm, không hỏi thừa', r.ma === '961700' && datCong(r) && r.vet[0].cach === 'CON_DUY_NHAT');
 }
+// ── 6b. B0 đọc đúng chữ khách (sổ tay giả, chotDong8 giả) ────────────────────────────────────────────────────────
+{
+  const g = require('../lib/so-tay-gates.js'); const goc = g.chotDong8;
+  const dk = (hs, dieuKienSo) => ({ hs, dieuKienSo });
+  const tenLoai = (v) => [{ fact: 'tenLoai', op: 'TEN_LOAI', value: v }];
+  const chot8 = (hs, v) => { g.chotDong8 = () => ({ checked: true, ketQua: 'CHOT', hs, dieuKien: tenLoai(v), traNguon: [] }); };
+  chot8('17023010', 'Glucoza');
+  const S1 = () => ({ dong8: [dk('17023010', tenLoai('Glucoza'))] });
+  const a1 = await chay({ nhom: '1702', hs6: '170230', moTa: 'Xiro Glucoza', docSoTay: S1 });
+  kiem('CA NGƯỢC tên dòng anh em ("Xirô glucoza") nằm trọn trong chữ khách → chưa phân biệt, hỏi', a1.ma === '170230', a1.ma);
+  const a2 = await chay({ nhom: '1702', hs6: '170230', moTa: 'Glucoza dạng bột', docSoTay: S1 });
+  kiem('thuận: chữ khách chỉ khớp một dòng → 17023010', a2.ma === '17023010' && datCong(a2), `${a2.ma} ${a2.lyDoDung}`);
+  chot8('21069030', 'Kem không sữa');
+  const S2 = () => ({ dong8: [dk('21069030', tenLoai('Kem không sữa'))] });
+  const b1 = await chay({ nhom: '2106', hs6: '210690', moTa: 'Bột pudding có thành phần chính là kem không sữa, đường', docSoTay: S2 });
+  kiem('CA NGƯỢC tên loại khớp ở THÀNH PHẦN, không phải tên hàng → không chốt', b1.ma === '210690', b1.ma);
+  const b2 = await chay({ nhom: '2106', hs6: '210690', moTa: 'Kem không sữa dạng bột', docSoTay: S2 });
+  kiem('thuận: tên hàng là kem không sữa → 21069030', b2.ma === '21069030', `${b2.ma} ${b2.lyDoDung}`);
+  g.chotDong8 = () => ({ checked: true, ketQua: 'THIEU_SO_LIEU', missingFacts: [] });
+  const S3 = () => ({ dong8: [dk('72162110', [{ fact: 'hamLuongCarbon', op: '<', value: 0.6, donVi: '%' }])] });
+  const c1x = await chay({ nhom: '7216', hs6: '721621', moTa: 'Thép hình chữ L, hàm lượng carbon C<0,6%', docSoTay: S3 });
+  kiem('CA NGƯỢC khách nêu khoảng "C<0,6%": không đọc thành 0,6% rồi loại dòng "dưới 0,6%"', c1x.ma === '721621', `${c1x.ma} ${c1x.lyDoDung}`);
+  const c2x = await chay({ nhom: '7216', hs6: '721621', moTa: 'Thép hình chữ L, hàm lượng carbon 0,8%', docSoTay: S3 });
+  kiem('thuận: khách nêu giá trị 0,8% → loại cứng dòng "dưới 0,6%", còn "Loại khác" 72162190', c2x.ma === '72162190' && datCong(c2x), `${c2x.ma} ${c2x.lyDoDung}`);
+  g.chotDong8 = goc;
+  const V = so6([{ hs6: '848120', fact: 'dungCho', op: 'CONG_DUNG', value: ['truyền động khí nén'], tuKhoa: ['khí nén'], uuTien: { nguon: 'ch84.chuong', trich: 'x' }, nguon: 'tieuDe.848120', trich: 'Van dùng trong truyền động dầu thủy lực hoặc khí nén' }]);
+  const d1 = await chay({ nhom: '8481', tenHang: 'Màng van nổ', moTa: 'Màng van nổ. Teflon. đóng mở khí nén', docSoTay: V, denBac: 6 });
+  kiem('CA NGƯỢC cạnh chỉ có công dụng, danh từ đầu ("màng") không phải hàng tên nhóm gọi → không chốt', d1.ma === '8481', d1.ma);
+  const d2 = await chay({ nhom: '8481', tenHang: 'Van điện từ', moTa: 'Van điện từ. nhôm. truyền động khí nén', docSoTay: V, denBac: 6 });
+  kiem('thuận: danh từ đầu là "van" → 848120', d2.ma === '848120' && datCong(d2), `${d2.ma} ${d2.lyDoDung}`);
+}
 // ── 7. Cửa ra congRa ─────────────────────────────────────────────────────────────────────────────────────────────
 {
   const bt = await chay({ ...DH, goiLLM: ai(c1, c2) });
