@@ -303,4 +303,12 @@ node scripts/test-truc-vat-lieu.mjs
 node scripts/test-understand-failfast.mjs
 node scripts/test-vat-3-muc-va-freshness.mjs
 node scripts/test-cau-hoi-cho-khach.mjs
+# 5 tệp kiểm đăng ký thêm (#1850 việc 1): 3 tệp sửa khuôn .pathname (cuon-chieu-v1,
+# loai-tru-nhom, phan-biet-vat-lieu-t2) + 2 tệp spawn công cụ đã sửa main-guard ở #1868
+# (import-customs-danh-muc, kho-dap-an). Bỏ khỏi MIEN_TRU_MO_COI. Đặt trước lệnh tự kiểm cuối tệp.
+node scripts/test-cuon-chieu-v1.mjs
+node scripts/test-import-customs-danh-muc.mjs
+node scripts/test-kho-dap-an.mjs
+node scripts/test-loai-tru-nhom.mjs
+node scripts/test-phan-biet-vat-lieu-t2.mjs
 node scripts/test-danh-sach-test.mjs
