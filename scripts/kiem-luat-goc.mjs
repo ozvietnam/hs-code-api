@@ -16,7 +16,7 @@ export const NGU_PHAP = new RegExp([
   `^gir:[1-6](?::[a-c])?(?::ct:\\d+)?$`,
   `^phan:[IVX]+(?::(?:cg|cgpn)${D}|:kq:\\d+)?$`,
   `^chuong:\\d{2}(?::(?:cg|cgpn|cgbs)${D}|:kq:\\d+|:pc:[IVX]+(?::kq:\\d+)?)?$`,
-  `^nhom:\\d{4}:ct:\\d+$`, `^pn:\\d{6}:ct:\\d+$`, `^sen:(?:\\d{4,8}|chuong:\\d{2}|phan:[IVX]+|md):\\d+$`, `^wco:\\d{6}:\\d+$`, `^bieu:\\d{2,8}$`, `^tb:[\\w.-]+:\\d{4,8}$`,
+  `^nhom:\\d{4}:ct:\\d+$`, `^pn:\\d{6}:ct:\\d+$`, `^sen:(?:\\d{4,8}|chuong:\\d{2}|phan:[IVX]+|md):\\d+$`, `^wco:\\d{6}:\\d+$`, `^bieu:\\d{2,8}(?::td\\d+)*$`, `^tb:[\\w.-]+:\\d{4,8}$`,
 ].join('|'));
 const KHO_CGCT = new Set(['phan', 'chuong', 'nhom', 'phan-nhom']);
 /** Làm phẳng bản chữ: bỏ dòng chỉ có số trang ở đầu / cuối trang, nối dòng. Không bỏ chữ nào khác. */

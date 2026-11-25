@@ -29,7 +29,7 @@ Mọi thẻ lớp 1 ghi ra JSONL, mỗi dòng một nút, ở `data/luat-goc/<kh
 | Chú giải chi tiết phân nhóm | `pn:761610:ct:1` |
 | SEN | `sen:76169920:1` (mã 4–8 số); áp cho cả chương `sen:chuong:87:1`, cả Phần `sen:phan:XI:1`, lời nói đầu `sen:md:1` |
 | Ý kiến WCO | `wco:852852:6` |
-| Tên trong biểu | `bieu:7616`, `bieu:76161`, `bieu:76161020` |
+| Tên trong biểu | `bieu:7616`, `bieu:76161`, `bieu:76161020`; tiêu đề **không mã**: `<id nút cha>:td<n>` (thứ tự in trong cha) |
 | Thông báo phân loại | `tb:851-2023:84812090` |
 
 Số điểm viết thường, theo thứ tự in: `cg:1:a:ii`. Khoản bổ sung Việt Nam/SEN trong chú giải chương: `chuong:NN:cgbs:1`.
