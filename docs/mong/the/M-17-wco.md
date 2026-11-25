@@ -18,7 +18,7 @@ Chạy lại (tất định): `node scripts/luat-goc/wco.mjs` · `node scripts/k
 | Mã không còn trong biểu | 0 |
 | Thiếu trang / thiếu năm | 0 / 0 |
 
-**Khôi phục 74** (bảng `KHOI_PHUC` trong `wco.mjs`): ý kiến nghi nằm dưới biển **một mã**; OCR thứ hai đọc ra biển + số in, **và** xem mắt từng cái trên ảnh trang (51 trang) thấy đúng biển, số, năm, câu mở đầu: 74/74. Script tự từ chối nếu bảng này lệch bảng ảnh. `so` / id theo bản in, `nguon.khoId` giữ id cũ của kho, `ghiChu` ghi trang ảnh. Hai cái đủ mã + số mà **để lại**: 271490/2 (trùng id, bản in hai biển 2714.90 cùng số 1), 852871/1 (máy đọc 1, mắt thấy 4).
+**Khôi phục 74** (bảng `KHOI_PHUC` trong `wco.mjs`): ý kiến nghi nằm dưới biển **một mã**; OCR thứ hai đọc ra biển + số in, **và** xem mắt từng cái trên ảnh trang (48 trang) thấy đúng biển, số, năm, câu mở đầu: 74/74. Script tự từ chối nếu bảng này lệch bảng ảnh. `so` / id theo bản in, `nguon.khoId` giữ id cũ của kho, `ghiChu` ghi trang ảnh. Hai cái đủ mã + số mà **để lại**: 271490/2 (trùng id, bản in hai biển 2714.90 cùng số 1), 852871/1 (máy đọc 1, mắt thấy 4).
 
 Ba ý kiến ảnh bác:
 - **8431.49/1**: ảnh trang 264 in đây là 8431.49/**2** (bộ tản nhiệt nhôm); /1 là "Track link assembly", kho để ở 842890/2 (nay là `wco:843149:1`, khôi phục; **nội dung khác** `wco-op.843149.1` mà sổ tay đang trích). Chữ kho mở đầu "1. 2. Aluminium…".
