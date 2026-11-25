@@ -123,7 +123,8 @@
     },
     "explanatory-notes.json": {
       "kind": "MASTER",
-      "descriptionVi": "Chú giải chi tiết (EN) — CHƯA GHI NHẬN — cần bổ sung nguồn gốc"
+      "descriptionVi": "Chỉ mục 'bao gồm' TIẾNG VIỆT theo mã 8 số (8.203 mục) — nhập từ legacy/data/bao_gom_index.json của repo ozvietnam/hs-knowledge-api (URL trong scripts/import-legacy.mjs). Mỗi mục: noteVi + noteType='bao_gom' + level='national' + sourceFile='bao_gom_index.json'; 8.203/8.203 mục đúng khuôn này, KHÔNG có mục noteEn nào — nhãn cũ 'Chú giải chi tiết (EN)' là sai (đo 25/11/2026). Chạy lại builtBy cần mạng vì script fetch JSON từ raw.githubusercontent.com.",
+      "builtBy": "scripts/import-legacy.mjs"
     },
     "feedback.jsonl": {
       "kind": "RUNTIME_LOG",
@@ -247,7 +248,7 @@
     },
     "notes.json": {
       "kind": "MASTER",
-      "descriptionVi": "Chú giải chương (song ngữ, bóc từ PDF) — Danh mục TT 31/2022/TT-BTC; thiếu chương 50,52,53,75,76,78–81"
+      "descriptionVi": "Chú giải chương (song ngữ, bóc từ PDF) — Danh mục TT 31/2022/TT-BTC; phủ 92/97 chương trong dải 1–97, thiếu 50, 52, 53, 81 và 77. Chương 77 để trống trong danh mục HS nên nguồn chính data/chu-giai-chuong.json cũng không có khoá 77 (repo coi 'Chương 77' là nút không tồn tại — ca ngược C9 trong scripts/test-bang-canh.mjs). Các chương 75, 76, 78, 79, 80 CÓ đủ; ghi nhận cũ 'thiếu 75,76,78–81' là sai (đo lại 25/11/2026 qua lib/data.js)."
     },
     "oz-declarations.meta.json": {
       "kind": "REPORT",
