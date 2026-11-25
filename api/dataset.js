@@ -391,7 +391,8 @@ module.exports = async function handler(req, res) {
       if (!q) {
         return res.status(400).json({ error: 'Thiếu ?id hoặc ?hs (ví dụ ?id=bieu:7616 hoặc ?hs=761610)' });
       }
-      const kq = phaiDoc(q);
+      const dayDu = String(req.query.dayDu || '') === '1';
+      const kq = phaiDoc(q, { dayDu });
       if (!kq) {
         return res.status(404).json({ found: false, query: q, message: 'Không tìm thấy nút luật hợp lệ trong data/luat-goc' });
       }
