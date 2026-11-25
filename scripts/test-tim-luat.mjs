@@ -13,6 +13,7 @@ import Module from 'node:module';
 import { createRequire } from 'node:module';
 import { execFileSync } from 'node:child_process';
 import { boKiem } from './lib-luat.mjs';
+import { tachKho } from './luat-goc/cau.mjs';
 
 const require = createRequire(import.meta.url);
 const ROOT = path.resolve(new URL('..', import.meta.url).pathname);
@@ -125,6 +126,7 @@ kiem(
       && typeof m.cau === 'string' && m.cau.length > 0
       && (m.dan === null || (typeof m.dan.id === 'string' && typeof m.dan.cau === 'string'))
       && (m.chieu === 'LOAI' || m.chieu === 'NHAC')
+      && m.chieuCachLay === 'CAU_DAN'
       && typeof m.lop === 'string' && m.lop !== 'TIEN_LE'
       && tapKhoChoPhep.has(m.kho)
       && 'trang' in m
@@ -174,48 +176,66 @@ kiem(
 );
 kiem(`dữ liệu thật: câu nhắc thông thường ghi chieu === "NHAC" (${cacCauNgoaiLoai.length} câu gặp)`, cacCauNgoaiLoai.length > 0);
 
-// ── 4 & 5. Kho tạm: kiểm dan + LOAI, CA NGƯỢC bỏ thong-bao/TIEN_LE/wco, CA NGƯỢC rỗng không đoán ─────────
+// ── 4 & 5. Kho tạm: kiểm cau/, dan + LOAI, CA NGƯỢC thiếu cau/, bỏ thong-bao/TIEN_LE/wco, rỗng không đoán ──
 const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'm41-tim-luat-'));
+const tmpThieuCau = fs.mkdtempSync(path.join(os.tmpdir(), 'm41-thieu-cau-'));
 try {
+  const chuongDong = `${JSON.stringify({
+    id: 'chuong:99:cg:1',
+    loai: 'CHU_GIAI',
+    lop: 'LUAT',
+    cha: null,
+    so: '1',
+    nguyenVan: 'Chương này không bao gồm:\n(a) Đồ chơi đặc biệt bằng nhựa tổng hợp;\n(b) Bàn chải đánh răng gắn động cơ.',
+    nguon: { vanBan: 'Chú giải test', ban: 'HS2022', trang: 99 },
+    hieuLuc: { tu: null, den: null },
+  })}\n${JSON.stringify({
+    id: 'chuong:99:cg:2',
+    loai: 'CHU_GIAI',
+    lop: 'LUAT',
+    cha: null,
+    so: '2',
+    nguyenVan: 'Chương này chỉ bao gồm đinh tán hợp kim titan.',
+    nguon: { vanBan: 'Chú giải test', ban: 'HS2022', trang: 100 },
+    hieuLuc: { tu: null, den: null },
+  })}\n${JSON.stringify({
+    id: 'chuong:99:kq:1',
+    loai: 'KHAI_QUAT',
+    lop: 'HUONG_DAN',
+    cha: null,
+    so: null,
+    nguyenVan: 'Đoạn khái quát thử ưu tiên lớp cho sản phẩm mẫu thử thứ tự.',
+    nguon: { vanBan: 'Chú giải test', ban: 'HS2022', trang: 101 },
+    hieuLuc: { tu: null, den: null },
+  })}\n${JSON.stringify({
+    id: 'chuong:99:cg:3',
+    loai: 'CHU_GIAI',
+    lop: 'LUAT',
+    cha: null,
+    so: '3',
+    nguyenVan: 'Chú giải pháp lý cho sản phẩm mẫu thử thứ tự.',
+    nguon: { vanBan: 'Chú giải test', ban: 'HS2022', trang: 102 },
+    hieuLuc: { tu: null, den: null },
+  })}\n`;
+  fs.writeFileSync(path.join(tmpDir, 'chuong.jsonl'), chuongDong);
+  fs.mkdirSync(path.join(tmpDir, 'cau'), { recursive: true });
   fs.writeFileSync(
-    path.join(tmpDir, 'chuong.jsonl'),
-    `${JSON.stringify({
-      id: 'chuong:99:cg:1',
-      loai: 'CHU_GIAI',
-      lop: 'LUAT',
-      cha: null,
-      so: '1',
-      nguyenVan: 'Chương này không bao gồm:\n(a) Đồ chơi đặc biệt bằng nhựa tổng hợp;\n(b) Bàn chải đánh răng gắn động cơ.',
-      nguon: { vanBan: 'Chú giải test', ban: 'HS2022', trang: 99 },
-      hieuLuc: { tu: null, den: null },
-    })}\n${JSON.stringify({
-      id: 'chuong:99:cg:2',
-      loai: 'CHU_GIAI',
-      lop: 'LUAT',
-      cha: null,
-      so: '2',
-      nguyenVan: 'Chương này chỉ bao gồm đinh tán hợp kim titan.',
-      nguon: { vanBan: 'Chú giải test', ban: 'HS2022', trang: 100 },
-      hieuLuc: { tu: null, den: null },
-    })}\n${JSON.stringify({
-      id: 'chuong:99:kq:1',
-      loai: 'KHAI_QUAT',
-      lop: 'HUONG_DAN',
-      cha: null,
-      so: null,
-      nguyenVan: 'Đoạn khái quát thử ưu tiên lớp cho sản phẩm mẫu thử thứ tự.',
-      nguon: { vanBan: 'Chú giải test', ban: 'HS2022', trang: 101 },
-      hieuLuc: { tu: null, den: null },
-    })}\n${JSON.stringify({
-      id: 'chuong:99:cg:3',
-      loai: 'CHU_GIAI',
-      lop: 'LUAT',
-      cha: null,
-      so: '3',
-      nguyenVan: 'Chú giải pháp lý cho sản phẩm mẫu thử thứ tự.',
-      nguon: { vanBan: 'Chú giải test', ban: 'HS2022', trang: 102 },
-      hieuLuc: { tu: null, den: null },
-    })}\n`,
+    path.join(tmpDir, 'cau', 'chuong.jsonl'),
+    `${tachKho(chuongDong.split('\n').filter(Boolean)).map((c) => JSON.stringify(c)).join('\n')}\n`,
+  );
+  fs.writeFileSync(path.join(tmpThieuCau, 'chuong.jsonl'), chuongDong);
+
+  let loiThieuCau = '';
+  try {
+    datLai();
+    timLuat('đinh tán', { thuMuc: tmpThieuCau });
+  } catch (err) {
+    loiThieuCau = String(err?.message || err);
+  }
+  kiem(
+    'CA NGƯỢC thiếu tệp kho câu -> báo lỗi rõ, không tự tách câu',
+    /Thiếu tệp kho câu/.test(loiThieuCau),
+    loiThieuCau,
   );
   fs.writeFileSync(
     path.join(tmpDir, 'thong-bao.jsonl'),
@@ -284,6 +304,7 @@ try {
   );
 } finally {
   fs.rmSync(tmpDir, { recursive: true, force: true });
+  fs.rmSync(tmpThieuCau, { recursive: true, force: true });
   datLai();
 }
 
@@ -305,11 +326,11 @@ const maKhongChuThich = maNguon
   .split('\n')
   .filter((l) => !/^\s*(?:\/\/|\*|\/\*)/.test(l))
   .join('\n');
-for (const cam of ['thong-bao', 'oz-gold', 'precedents', 'trade-synonyms', 'synonyms', 'hs-aliases', 'confusion-pairs', 'hs-tree', 'callLLM', 'callLlm']) {
+for (const cam of ['thong-bao', 'oz-gold', 'precedents', 'trade-synonyms', 'synonyms', 'hs-aliases', 'confusion-pairs', 'hs-tree', 'callLLM', 'callLlm', 'scripts/', 'cau.mjs']) {
   kiem(`tĩnh: lib/tim-luat.js không tham chiếu "${cam}"`, !maKhongChuThich.includes(cam));
 }
 
-// ── 6. Chỗ cắm M-37 (timNghia) & tất định ──────────────────────────────────────────────────────────────────
+// ── 6. Chỗ cắm M-37 (timNghia), M-33 (nghiaCanh) & tất định ────────────────────────────────────────────────
 kiem(
   'mặc định M-37 timNghia ở trạng thái CHUA_CAM',
   rLuat.body?.timNghia?.trangThai === 'CHUA_CAM' && rLuat.body?.timNghia?.choCam === 'M-37',
@@ -322,15 +343,24 @@ kiem(
   kqCamNghia.timNghia?.trangThai === 'DA_CAM' && kqCamNghia.timNghia?.ketQua?.[0]?.nut === 'bieu:9603',
 );
 
+const kqCamCanh = timLuat('đinh tán', {
+  limit: 2,
+  nghiaCanh: () => 'LOAI',
+});
+kiem(
+  'gắn hàm mock nghiaCanh (M-33) ghi đè chieu và đánh dấu chieuCachLay === "NGHIA_CANH"',
+  kqCamCanh.cuaVao.length > 0 && kqCamCanh.cuaVao.every((m) => m.chieu === 'LOAI' && m.chieuCachLay === 'NGHIA_CANH'),
+);
+
 const lan1 = JSON.stringify(timLuat('đinh tán', { limit: 15 }));
 const lan2 = JSON.stringify(timLuat('đinh tán', { limit: 15 }));
 kiem('tất định 100%: hai lần gọi liên tiếp giống nhau từng byte', lan1 === lan2);
 
 kiem(
-  'xacDinhChieu nhận diện đúng câu loại trừ không cần dan',
-  xacDinhChieu('Nhóm này không bao gồm mặt hàng bằng thủy tinh.', [], 25) === 'LOAI'
-    && xacDinhChieu('Vải dệt (trừ vải tráng phủ nhựa).', [], 18) === 'LOAI'
-    && xacDinhChieu('Nhóm này bao gồm đinh, đinh ghim bằng sắt.', [], 20) === 'NHAC',
+  'xacDinhChieu: loại khi mở đầu loại trừ, giữ NHAC khi "trừ" nằm trong ngoặc giữa câu',
+  xacDinhChieu('Nhóm này không bao gồm mặt hàng bằng thủy tinh.', []) === 'LOAI'
+    && xacDinhChieu('Vải dệt (trừ vải tráng phủ nhựa).', []) === 'NHAC'
+    && xacDinhChieu('Nhóm này bao gồm đinh, đinh ghim bằng sắt.', []) === 'NHAC',
 );
 
 if (process.argv.includes('--thong-ke')) {
