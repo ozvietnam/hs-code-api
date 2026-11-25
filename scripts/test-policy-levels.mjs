@@ -47,6 +47,32 @@ check('danh mục khớp 8 số: công bố hợp quy → BLOCKING, bật cờ',
 check('danh mục khớp theo nhóm 4/6 số → chỉ Lưu ý', classifyPolicy('', {}, [L({ match: { level: 'HS4', code: '8536' } })]).policyLevel === 'NOTICE');
 check('danh mục hết hiệu lực → bỏ', classifyPolicy('', {}, [L({ active: false })]).policyLines.length === 0);
 check('cấm nhập chỉ hàng đã qua sử dụng → Lưu ý', classifyPolicy('', {}, [L({ loaiTacDong: 'CAM_NHAP_KHAU', dieuKien: 'Chỉ cấm hàng ĐÃ QUA SỬ DỤNG' })]).policyLevel === 'NOTICE');
+{
+  const qsdExact = listingLines([L({ loaiTacDong: 'CAM_NHAP_KHAU', dieuKien: 'Chỉ áp dụng đối với hàng tiêu dùng đã qua sử dụng', soHieu: '48/2026/TT-BCT', mucRuiRo: null })]);
+  check(
+    'nhãn CAM_NHAP_KHAU + QSD (khớp 8 số) nói rõ hàng đã qua sử dụng',
+    qsdExact[0]?.text === 'Cấm nhập khẩu hàng đã qua sử dụng — 48/2026/TT-BCT',
+    JSON.stringify(qsdExact[0]?.text),
+  );
+  const qsdPrefix = listingLines([L({
+    loaiTacDong: 'CAM_NHAP_KHAU',
+    dieuKien: 'Chỉ áp dụng đối với hàng tiêu dùng đã qua sử dụng',
+    soHieu: '48/2026/TT-BCT',
+    mucRuiRo: null,
+    match: { level: 'HS4', code: '8516' },
+  })]);
+  check(
+    'nhãn CAM_NHAP_KHAU + QSD (khớp nhóm) nói rõ hàng đã qua sử dụng',
+    qsdPrefix[0]?.text === 'Có thể: cấm nhập khẩu hàng đã qua sử dụng — 48/2026/TT-BCT',
+    JSON.stringify(qsdPrefix[0]?.text),
+  );
+  const camThuong = listingLines([L({ loaiTacDong: 'CAM_NHAP_KHAU', dieuKien: '', soHieu: '99/2099/TT-XYZ', mucRuiRo: null })]);
+  check(
+    'nhãn CAM_NHAP_KHAU không điều kiện QSD giữ nguyên',
+    camThuong[0]?.text === 'Cấm nhập khẩu — 99/2099/TT-XYZ',
+    JSON.stringify(camThuong[0]?.text),
+  );
+}
 check('cắt giảm kiểm tra → Thông tin', classifyPolicy('', {}, [L({ loaiTacDong: 'CAT_GIAM_KIEM_TRA' })]).policyLevel === 'INFO');
 check('trùng văn bản+thủ tục: bỏ dòng khớp nhóm khi đã khớp 8 số', listingLines([L({}), L({ match: { level: 'HS6', code: '853669' } })]).length === 1);
 check('cờ: hợp quy → requiresInspection', listingLines([L({})])[0].flag === 'requiresInspection');
