@@ -19,7 +19,7 @@ permissions:
   statuses: write
 
 concurrency:
-  group: qt-duyet-${{ github.event.pull_request.number || github.event.issue.number || 'quet' }}
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.event.issue.number || github.ref }}
   cancel-in-progress: false
 
 jobs:
