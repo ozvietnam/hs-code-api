@@ -1868,13 +1868,15 @@ assert('"mũ giày bằng vải lưới, đế EVA" → không hỏi upper/sole'
   );
 }
 
-// ───────────── OZV-2211: cạnh loại trừ 2 chiều 40.16 <-> 84.79 cho ca thực địa 24h 'núm hút mbs-15, silicon, đường kính lỗ 2,5mm' ─────────────
+// ───────────── OZV-2211 (sửa theo OZV-2233 / #1831): 84.79 → 40.16 MỘT chiều cho núm/giác hút chân không bằng cao su lưu hóa ─────────────
+// Chiều ngược 40.16 → 84.79 ("núm hút bằng cao su cứng...") đã xoá (kết luận SAI ở lo-03.json): Chú giải 1(a) Phần XVI loại trừ bộ phận máy
+// bằng cao su lưu hóa trừ cao su cứng khỏi Phần XVI về 40.16; giữ chiều 40.16 → 84.79 làm soTayGates('401699') bắn oan SO_TAY_LOAI_TRU:8479
+// trên mọi câu núm hút silicon và ép chạy vòng 2 thừa ~33 giây.
 {
   const S2211 = require('../lib/so-tay.js');
   const { loadSoTay: loadSoTay2211, soTayGates: soTayGates2211, nhomLienQuanSoTay: nhomLienQuan2211 } = require('../lib/so-tay-gates.js');
   const { cauPhanBietNhom: cauPhanBiet2211 } = require('../lib/hoi-theo-so-tay.js');
   const D2211 = require('../lib/do-thi/index.js');
-  const { phanTichHoiTruoc4So: hoiTruoc2211, TRANG_THAI_4SO: TT2211 } = require('../lib/do-thi/hoi-truoc-4so.js');
   const ROOT2211 = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
   fs.mkdirSync(path.join(TEST_DATA_DIR, 'so-tay'), { recursive: true });
@@ -1906,23 +1908,16 @@ assert('"mũ giày bằng vải lưới, đế EVA" → không hỏi upper/sole'
 
   const st4016 = loadSoTay2211('4016');
   const st8479 = loadSoTay2211('8479');
-  const lt4016 = (st4016?.loaiTru || []).find((x) => x.sangNhom === '8479' && x.canCuLoaiTru?.nguon === 'nhom8479.nhom');
+  const lt4016 = (st4016?.loaiTru || []).find((x) => x.sangNhom === '8479');
   const lt8479 = (st8479?.loaiTru || []).find((x) => x.sangNhom === '4016' && x.canCuLoaiTru?.nguon === 'nhom4016.nhom');
   assert(
-    '[OZV-2211 căn cứ] sổ tay 4016 và 8479 có mục loaiTru 2 chiều 4016 <-> 8479 kèm canCuLoaiTru nguyên văn đạt checkItem',
-    Boolean(
-      lt4016 &&
-        lt4016.nguon === 'ch40.chuong' &&
-        lt4016.canCuLoaiTru?.nguon === 'nhom8479.nhom' &&
-        !String(lt4016.dieuKien || '').includes(';') &&
-        S2211.checkItem('loaiTru', lt4016, S2211.sourcesFor('4016'), '4016') === null
-    ) &&
+    '[OZV-2211/2233 căn cứ] sổ tay 8479 có mục loaiTru 8479 -> 4016 kèm canCuLoaiTru nguyên văn đạt checkItem; chiều sai 4016 -> 8479 đã xoá',
+    !lt4016 &&
       Boolean(
         lt8479 &&
           lt8479.nguon === 'phan84.phan' &&
           lt8479.canCuLoaiTru?.nguon === 'nhom4016.nhom' &&
           !String(lt8479.dieuKien || '').includes(';') &&
-          lt8479.dieuKien !== lt4016.dieuKien &&
           S2211.checkItem('loaiTru', lt8479, S2211.sourcesFor('8479'), '8479') === null
       ),
     { lt4016, lt8479 }
@@ -1931,42 +1926,24 @@ assert('"mũ giày bằng vải lưới, đế EVA" → không hỏi upper/sole'
   const c5Tu4016 = D2211.canhTu('4016', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '8479');
   const c5Tu8479 = D2211.canhTu('8479', 'C5', { toiDa: Infinity }).filter((e) => e.toi === '4016');
   const c6Tu4016 = D2211.canhTu('4016', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '8479');
-  const c6Tu8479 = D2211.canhTu('8479', 'C6', { toiDa: Infinity }).filter((e) => e.toi === '4016');
-  const giua4016_8479 = D2211.canhGiuaNhomConSong(['4016', '8479']).filter((e) => e.loai === 'C5' || e.loai === 'C6');
-  const mrTu4016 = D2211.moRongUngVien(['4016'], moTaMbs15, { toiDa: 10 });
   const mrTu8479 = D2211.moRongUngVien(['8479'], moTaMbs15, { toiDa: 10 });
   const mrVpTu8479 = D2211.moRongUngVien(['8479'], moTaVp16ps, { toiDa: 10 });
   const mrYsTu8479 = D2211.moRongUngVien(['8479'], moTaYs310, { toiDa: 10 });
   assert(
-    '[OZV-2211 đồ thị 2 chiều] bảng cạnh có C5/C6 4016<->8479, canhGiuaNhomConSong >= 2 và moRongUngVien kéo 2 chiều cho cả 3 ca núm hút',
-    c5Tu4016.some((e) => e.nguon === 'ch40.chuong' && e.canCuLoaiTru?.nguon === 'nhom8479.nhom') &&
+    '[OZV-2211/2233 đồ thị] bảng cạnh có C5 8479->4016 và C6 đảo 4016->8479, moRongUngVien từ 8479 kéo 4016 cho cả 3 ca núm hút',
+    c5Tu4016.length === 0 &&
       c5Tu8479.some((e) => e.nguon === 'phan84.phan' && e.canCuLoaiTru?.nguon === 'nhom4016.nhom') &&
       c6Tu4016.length >= 1 &&
-      c6Tu8479.length >= 1 &&
-      giua4016_8479.length >= 2 &&
-      mrTu4016.some((x) => x.nhom === '8479') &&
       mrTu8479.some((x) => x.nhom === '4016') &&
       mrVpTu8479.some((x) => x.nhom === '4016') &&
       mrYsTu8479.some((x) => x.nhom === '4016'),
-    { c5Tu4016: c5Tu4016.length, c5Tu8479: c5Tu8479.length, giua: giua4016_8479.length, mrTu4016, mrTu8479 }
+    { c5Tu4016: c5Tu4016.length, c5Tu8479: c5Tu8479.length, c6Tu4016: c6Tu4016.length, mrTu8479 }
   );
 
   assert(
-    '[OZV-2211 nhomLienQuanSoTay] liên kết hai chiều 4016 <-> 8479',
+    '[OZV-2211 nhomLienQuanSoTay] vẫn liên kết hai chiều 4016 <-> 8479 nhờ cạnh 8479 -> 4016',
     nhomLienQuan2211('4016').includes('8479') && nhomLienQuan2211('8479').includes('4016'),
     { rel4016: nhomLienQuan2211('4016'), rel8479: nhomLienQuan2211('8479') }
-  );
-
-  const pb4016 = cauPhanBiet2211('4016', ['4016', '8479'], moTaMbs15);
-  assert(
-    '[OZV-2211 thuận 4016->8479] 4016 đứng đầu với [4016, 8479] sinh câu phân biệt từ ch40.chuong trỏ sang 84.79',
-    pb4016.length === 1 &&
-      pb4016[0].loai === 'PHAN_BIET_NHOM' &&
-      pb4016[0].canCu === 'so-tay' &&
-      pb4016[0].nguon === 'ch40.chuong' &&
-      /84\.79/.test(pb4016[0].questionVi) &&
-      /40\.16/.test(pb4016[0].questionVi),
-    { pb4016 }
   );
 
   const pb8479 = cauPhanBiet2211('8479', ['8479', '4016'], moTaMbs15);
@@ -1994,8 +1971,8 @@ assert('"mũ giày bằng vải lưới, đế EVA" → không hỏi upper/sole'
     candidateHeadings: ['8479', '4016'],
   });
   assert(
-    '[OZV-2211 thuận soTayGates] kích hoạt SO_TAY_LOAI_TRU đúng cả 2 chiều 4016 -> 8479 và 8479 -> 4016 cho ca núm hút mbs-15',
-    (g4016To8479.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8479')) &&
+    '[OZV-2211/2233 soTayGates] kích hoạt SO_TAY_LOAI_TRU chiều 8479 -> 4016 và KHÔNG bắn oan chiều 4016 -> 8479 cho ca núm hút mbs-15',
+    !(g4016To8479.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('8479')) &&
       (g8479To4016.challenges || []).some((x) => x.gate === 'SO_TAY_LOAI_TRU' && String(x.target || '').includes('4016')),
     { g4016To8479: g4016To8479.challenges, g8479To4016: g8479To4016.challenges }
   );
@@ -2027,17 +2004,6 @@ assert('"mũ giày bằng vải lưới, đế EVA" → không hỏi upper/sole'
       !D2211.moRongUngVien(['4016'], 'Gioăng vòng đệm cao su NBR làm kín mặt bích đường ống').some((x) => x.nhom === '8479') &&
       !D2211.moRongUngVien(['8479'], 'Rô bốt công nghiệp 6 bậc tự do lắp ráp linh kiện điện tử').some((x) => x.nhom === '4016'),
     { dcGioang4016, dcGioang8479, dcRobot4016, dcRobot8479 }
-  );
-
-  const htMbs15 = hoiTruoc2211({ moTa: moTaMbs15, ungVien: ['4016', '8479'] });
-  const distinctDkMbs15 = new Set((htMbs15.nhanh || []).map((n) => n.dieuKien)).size === 2;
-  assert(
-    '[OZV-2211 hoi-truoc-4so] ca núm hút mbs-15 với [4016, 8479] trả CHUA_CHOT_NHOM_HOI_TRUOC với 2 nhánh điều kiện phân biệt từ cạnh C5',
-    htMbs15.trangThai === TT2211.CHUA_CHOT_NHOM_HOI_TRUOC &&
-      distinctDkMbs15 &&
-      (htMbs15.nhanh || []).every((n) => String(n.nguon || '').startsWith('do-thi:C5:')) &&
-      ['4016', '8479'].every((h) => (htMbs15.dapAnDieuKien || '').includes(`→ nhóm ${h} (`)),
-    { trangThai: htMbs15.trangThai, distinctDkMbs15, nhanh: htMbs15.nhanh, dapAnDieuKien: htMbs15.dapAnDieuKien }
   );
 }
 
