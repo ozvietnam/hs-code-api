@@ -586,6 +586,18 @@
         "ghiChu": "Kế hoạch mục 4.5: phép kiểm tiền lệ (C14 ủng hộ + không bị cạnh bậc 1 hay thông báo phân loại phản đối — trường biPhanDoi) sẽ áp cho CẢ BỐN nhánh dừng sớm, không chỉ nhánh dừng sớm để hỏi. Giai đoạn 1 mới có hàm, chưa nhánh nào gọi."
       },
       "lyDo": "Chốt sớm theo từ điển tên thương mại (mục high + chotSom, OZV-1356): bỏ cả vòng 1, gather đầy đủ và vòng 2 — không đọc sổ tay, không tra tiền lệ theo mô tả. Sau cờ HS_CHOT_SOM_CO_KIEM (mặc định TẮT, L11): trước khi rẽ, kiểm tín hiệu tất định trái nhóm 4 số có sẵn không cần mạng (tb-tchq khớp tên hàng, so-tay-loai-tru); có thì không chốt sớm, đi vòng 1 → gather → vòng 2. Còn rẽ khi cờ bật thì kết quả ghi soTay.daTra:false + lyDoChuaTra 'chot-som-tu-dien'. Cờ tắt thì giữ nguyên hành vi cũ."
+    },
+    {
+      "ten": "hoiTheoGiaThuyetNhomDich",
+      "duong": "/api/classify",
+      "tep": "lib/engine-loop.js",
+      "dauVet": "function hoiTheoGiaThuyetNhomDich(",
+      "boQua": [
+        "soTayNhom",
+        "chuGiai"
+      ],
+      "the": "OZV-2224",
+      "lyDo": "Sau cờ HS_CHOT_SOM_CO_KIEM: dừng sớm HOI bị chặn CHỈ vì sổ tay nhóm đứng đầu loại trừ tên hàng sang nhóm khác (mọi tín hiệu là so-tay-loai-tru, không có tiền lệ Oz / TB-TCHQ / shop trái chiều) và vòng 1 có đúng MỘT nhóm đích trong giả thuyết ⇒ máy đổi đáp án HOI sang giả thuyết đó, chạy lại đủ cổng G1–G8 (cổng sổ tay G8 tất định ĐÃ chạy trên mã mới; thiếu chú giải nhóm mới thì nạp tất định qua napNhomTatDinh) và bỏ vòng 2. Bị bỏ: lượt AI vòng 2 đọc gói sổ tay + chú giải của nhóm mới để lập luận, và lượt giải trình sổ tay. Tiền lệ theo mô tả và chú giải nhóm vòng 1 đã nạp ở gather() trước nhánh; sổ PN6 vòng 2 cũng không đọc nên không tính là bỏ. Kết quả ghi soTay.nhanhToiUu (congSoTayG8 DA_CHAY, aiDocSoTayVaChuGiai + giaiTrinhSoTay CHUA_CHAY) và soTay.lyDoChuaTra 'hoiTheoGiaThuyetNhomDich'. Ca thực địa 25/11 cảm biến quang e3sct11: bỏ 32–51 giây vòng 2, vòng 2 cũng chỉ đổi sang đúng giả thuyết 853650 của vòng 1 rồi HOI."
     }
   ],
   "noiDungCauHoi": {

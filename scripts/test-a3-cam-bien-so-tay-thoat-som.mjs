@@ -73,6 +73,12 @@ check('BẬT: ca cảm biến — sổ tay 85.41 chặn 854140 (chanChotSom ch�
 check('BẬT: 0 lượt vòng 2, dừng sớm HOI trên 853650 (đổi từ 854140, nguồn so-tay-loai-tru)', a.gir === 0 && a.gates.some((g) => g.earlyExitHoi === true && g.hs === '853650' && g.doiTu === '854140' && g.nguon === 'so-tay-loai-tru'), tom(a));
 check('BẬT: status NEED_FACTS, kết quả đứng đầu 853650', a.out.status === 'NEED_FACTS' && String(a.out.results?.[0]?.hs || '').startsWith('853650'), tom(a));
 check('BẬT: câu hỏi khách vẫn có câu của vòng 1 (linh kiện bán dẫn / đóng ngắt)', JSON.stringify(a.out.missing || []).includes('linh kiện bán dẫn cảm quang'), tom(a));
+// L11.2: kết quả ghi rõ bước nào đã chạy / CHƯA chạy trên nhánh tối ưu, không để giá trị khởi tạo.
+const st = a.out.soTay || {};
+check('BẬT (L11.2): soTay ghi nhánh hoiTheoGiaThuyetNhomDich — cổng G8 ĐÃ chạy trên mã mới, AI đọc sổ tay + giải trình CHƯA chạy, daTra:false kèm lyDoChuaTra = tên nhánh, outcome không còn giá trị khởi tạo',
+  st.nhanhToiUu?.ten === 'hoiTheoGiaThuyetNhomDich' && st.nhanhToiUu.congSoTayG8 === 'DA_CHAY' && st.nhanhToiUu.aiDocSoTayVaChuGiai === 'CHUA_CHAY' && st.nhanhToiUu.giaiTrinhSoTay === 'CHUA_CHAY'
+  && st.daTra === false && st.lyDoChuaTra === 'hoiTheoGiaThuyetNhomDich' && !['NONE', 'CHUA_TRA'].includes(st.outcome),
+  JSON.stringify({ nhanhToiUu: st.nhanhToiUu, daTra: st.daTra, lyDoChuaTra: st.lyDoChuaTra, outcome: st.outcome }));
 
 const b = await run(R1(HYP.slice(0, 2)), BAT);
 check('BẬT, CA NGƯỢC: vòng 1 không có giả thuyết 8536 → đi vòng 2 như cũ (≥1 lượt AI), không có earlyExitHoi:true', b.gir >= 1 && !b.gates.some((g) => g.earlyExitHoi === true), tom(b));
