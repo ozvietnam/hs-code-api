@@ -15,7 +15,7 @@ const D = '(?::[0-9]{1,3}|:[a-zđ]{1,3}|:ij|:[ivx]{1,5}|:[A-Z])+';
 export const NGU_PHAP = new RegExp([
   `^gir:[1-6](?::[a-c])?(?::ct:\\d+)?$`,
   `^phan:[IVX]+(?::(?:cg|cgpn)${D}|:kq:\\d+)?$`,
-  `^chuong:\\d{2}(?::(?:cg|cgpn|cgbs)${D}|:kq:\\d+)?$`,
+  `^chuong:\\d{2}(?::(?:cg|cgpn|cgbs)${D}|:kq:\\d+|:pc:[IVX]+(?::kq:\\d+)?)?$`,
   `^nhom:\\d{4}:ct:\\d+$`, `^pn:\\d{6}:ct:\\d+$`, `^sen:\\d{4,8}:\\d+$`, `^wco:\\d{6}:\\d+$`, `^bieu:\\d{2,8}$`, `^tb:[\\w.-]+:\\d{4,8}$`,
 ].join('|'));
 const KHO_CGCT = new Set(['phan', 'chuong', 'nhom', 'phan-nhom']);

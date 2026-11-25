@@ -24,6 +24,7 @@ Mọi thẻ lớp 1 ghi ra JSONL, mỗi dòng một nút, ở `data/luat-goc/<kh
 | Quy tắc tổng quát | `gir:1`, `gir:2:a`; chú giải chi tiết `gir:2:a:ct:1` |
 | Phần | `phan:XV` (tên), `phan:XV:cg:9:c`, `phan:XV:cgpn:1:a`, `phan:XV:kq:1` |
 | Chương | `chuong:76`, `chuong:76:cg:2`, `chuong:76:cgpn:1:a`, `chuong:76:kq:1` |
+| Phân chương (Ch. 28, 29, 39, 63, 69, 71, 72…) | `chuong:28:pc:II` (tên), Tổng quát `chuong:28:pc:II:kq:1` – thuộc M-13, kể cả khi in sau nhóm đầu |
 | Chú giải chi tiết nhóm | `nhom:7616:ct:1` (đoạn, theo thứ tự) |
 | Chú giải chi tiết phân nhóm | `pn:761610:ct:1` |
 | SEN | `sen:76169920:1` |
@@ -35,8 +36,10 @@ Số điểm viết thường, theo thứ tự in: `cg:1:a:ii`. Khoản bổ sun
 
 **Ranh giới để không chồng nhau:** "Chú giải" và "Chú giải bổ sung" → kho Phần/Chương. "Chú giải phân nhóm" của Phần/Chương → cùng kho Phần/Chương (`cgpn`). "Chú giải chi tiết phân nhóm" (trong chú giải nhóm) → kho phân nhóm. "Khái quát chung" → `kq`, lớp `HUONG_DAN`.
 
-**Trường thêm được phép (không bắt buộc):** `nguon.trangDen` (trang cuối khi nút qua trang) · `apChung` (mảng mã phân nhóm cùng chịu một đoạn) · `ghiChu` (sự thật về bản in: mã in không còn trong biểu, nghi lỗi in – giữ theo bản in, không sửa) · `thieu` (phần chỉ có hình/công thức không rút được chữ, kèm trang).
+**Trường thêm được phép (không bắt buộc):** `nguon.trangDen` (trang cuối khi nút qua trang) · `apChung` (mảng mã phân nhóm cùng chịu một đoạn) · `ghiChu` (sự thật về bản in: mã in không còn trong biểu, nghi lỗi in – giữ theo bản in, không sửa) · `doanSau` (đoạn tiếp của khoản nằm sau các điểm con) · `thieu` (phần chỉ có hình/công thức không rút được chữ, kèm trang).
 
 Đoạn trong chú giải nhóm nói về phân nhóm nhưng **không nêu mã** (72.12 trang 1528, 72.17 trang 1534): thuộc kho nhóm (M-14), không đoán mã. Đoạn giải thích phân nhóm nằm trong phần Khái quát của Phần/Chương: thuộc `kq` của M-11 / M-13.
+
+Chương 77 để dự phòng, bản in không có chữ: không tạo nút.
 
 Cổng: `node scripts/kiem-luat-goc.mjs <kho>`.

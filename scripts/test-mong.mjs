@@ -9,7 +9,7 @@ import { kiemPhamVi, trungSoHuu } from './kiem-pham-vi-the.mjs';
 
 const { kiem, xong } = boKiem('test-mong');
 const pc = JSON.parse(fs.readFileSync(new URL('../docs/mong/phan-cong.json', import.meta.url), 'utf8'));
-for (const id of ['gir:1', 'gir:2:a', 'gir:2:a:ct:1', 'phan:XV', 'phan:XV:cg:9:c', 'phan:XV:cg:1:ij', 'chuong:76:cgpn:1:a:ii', 'nhom:7616:ct:3', 'pn:761610:ct:1', 'sen:76169920:1', 'wco:852852:6', 'bieu:76161', 'tb:851-2023:84812090']) kiem(`id hợp lệ ${id}`, NGU_PHAP.test(id));
+for (const id of ['gir:1', 'gir:2:a', 'gir:2:a:ct:1', 'phan:XV', 'phan:XV:cg:9:c', 'phan:XV:cg:1:ij', 'chuong:76:cgpn:1:a:ii', 'chuong:28:pc:II', 'chuong:28:pc:II:kq:3', 'nhom:7616:ct:3', 'pn:761610:ct:1', 'sen:76169920:1', 'wco:852852:6', 'bieu:76161', 'tb:851-2023:84812090']) kiem(`id hợp lệ ${id}`, NGU_PHAP.test(id));
 for (const id of ['', 'phan:15', 'chuong:7', 'nhom:761:ct:1', 'nhom:7616', 'gir:7', 'bieu:7', 'phan:XV:cg']) kiem(`CA NGƯỢC id sai "${id}"`, !NGU_PHAP.test(id));
 const nut = (o) => JSON.stringify({ id: 'phan:XV', loai: 'TEN', lop: 'LUAT', cha: null, so: null, nguyenVan: 'Kim loại cơ bản', nguon: { vanBan: 'x', ban: 'HS2022', trang: 1 }, hieuLuc: { tu: null, den: null }, ...o });
 const loi = (ds, o) => kiemKho('t', ds, o).loi.join(' | ');
