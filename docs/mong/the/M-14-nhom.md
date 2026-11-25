@@ -1,73 +1,54 @@
 # M-14 Chú giải chi tiết 1.228 nhóm
 
-Kho: `data/luat-goc/nhom.jsonl`. Script tất định: `scripts/luat-goc/nhom-tach.py`. Nguồn duy nhất: bản chữ pdftotext của "Chú giải chi tiết HS 2022 Toàn tập" (`~/luat-goc-txt/cgct-hs2022.txt`, trang = khối `\f`, từ 1); mã nhóm đối chiếu `data/tax.json`. Không mạng, không AI, không đọc kết quả AI.
+Kho: `data/luat-goc/nhom.jsonl`, **một đoạn in một nút**. Tất định, không mạng, không AI. Nguồn duy nhất: PDF "Chú giải chi tiết HS 2022 Toàn tập"; mã nhóm đối chiếu `data/tax.json`.
 
 ```
-python3 scripts/luat-goc/nhom-tach.py ~/luat-goc-txt/cgct-hs2022.txt            # ghi nhom.jsonl + tự kiểm
-python3 scripts/luat-goc/nhom-tach.py ~/luat-goc-txt/cgct-hs2022.txt --doi-chieu # thêm đối chiếu kho cũ .nhom
-LUAT_GOC_TXT=~/luat-goc-txt node scripts/kiem-luat-goc.mjs nhom                 # cổng
+# một lần, ở máy có PDF và poppler (PDF Word có sẵn cây cấu trúc: mỗi đoạn một thẻ P, mỗi tiêu đề nhóm một thẻ H4)
+pdfinfo -struct-text "Chu giai HS 2022 Toan tap (HQKV8).pdf" > struct.txt
+python3 scripts/luat-goc/nhom-doan-in.py struct.txt > ~/luat-goc-txt/doan-in-hs2022.tsv      # sha256 87f8ceb4…669ae
+python3 scripts/luat-goc/nhom-tach.py ~/luat-goc-txt/cgct-hs2022.txt ~/luat-goc-txt/doan-in-hs2022.tsv   # ghi nhom.jsonl
+python3 scripts/luat-goc/nhom-kiem.py ~/luat-goc-txt/cgct-hs2022.txt [nhom.jsonl của 1dd2dadc]            # bất biến
+LUAT_GOC_TXT=~/luat-goc-txt node scripts/kiem-luat-goc.mjs nhom                              # cổng
 ```
-
-Chạy lại hai lần ra cùng một tệp (đã đối chiếu byte). Script KHÔNG ghi `nhom.txt` vào `~/luat-goc-txt/` để cổng đọc thẳng bản chữ gốc, tránh đối chiếu vòng.
 
 ## Số đếm
-- **1.231 nút / 1.228 nhóm** — đủ 1.228 nhóm có `.nhom` trong kho cũ, không thiếu, không thừa. Ba nhóm có 2 đoạn in discontinuous: `nhom:2937:ct:2` (thân in tiếp sau phụ lục tiếng Anh, trang 625–628), `nhom:7212:ct:2` và `nhom:7217:ct:2` (đoạn không nêu mã phân nhóm, QT chỉ định ở #1902).
-- 41 nhóm trong biểu không có nút, đều là nhóm 98xx — bản in không có chú giải cho các nhóm này (kho cũ cũng rỗng). Chương 77 để dự phòng: bản in không có chữ, không tạo nút (đúng khuôn).
-- 20 nhóm chỉ được in tham chiếu `[NN.NN]` không kèm chữ (6503, 6908, 7012, 7414, 7416, 7417, 7803, 7805, 7906, 8004, 8005, 8006, 8469, 8520, 8803, 9009, 9203, 9204, 9501, 9502 — trang 1353, 1402, 1425, 1594, 1619, 1620, 1625, 1630, 1912, 2029, 2150, 2191, 2313, 2356): các mã này không còn trong biểu hiện hành, kho cũ cũng rỗng ⇒ **THIẾU theo bản in, không bịa nút**.
-- Nút ngắn nhất: `nhom:2716:ct:1` = "Không chú giải." (trang 326, nguyên văn bản in); `nhom:7613:ct:1` = "Xem chú giải nhóm 73.11". 907 nút trải hơn 1 trang (có `nguon.trangDen`).
+- **20.706 nút / 1.228 nhóm**; 15.285 nút có `cha`, 12.135 nút có `so`, 2.200 nút kết bằng `:`, 372 nút qua trang (`trangDen`), 0 nút thiếu trang. Sâu nhất 8 tầng.
+- 41 nhóm 98xx không có nút; 20 dòng tham chiếu `[NN.NN]` không tạo nút; Chương 77 không có chữ.
+- Phụ lục tiếng Anh không vào nút: 29.37 (trang 595–625, thân in tiếp từ mục (C)), 29.42 (642–682), 33.07 (759–761), 44.21 (1014–1049), 71.18 (1482–1487).
 
-## Cách cắt
-- Tiêu đề nhóm nhận đủ các dạng in: `10.01 -`, `29.41-` (dính gạch), `38.13- -`, `90.20 -Máy…`, `29.31.` (chấm), `38.07 `, `74.04 ` (không dấu nối), `8706 -` (in mã 4 số). Dạng không dấu nối buộc có dấu tiếng Việt để không nhặt dòng mã và dòng bảng tiếng Anh.
-- **Chống giả tiêu đề**: bản in xếp nhóm theo thứ tự tăng dần trong từng chương nên tiêu đề chỉ được nhận khi nối tiếp thứ tự (cùng chương, mã lớn hơn nhóm vừa in; nhóm đầu chương sau dòng "Chương N:"). Điều này chặn dòng văn bản như "85.15. Những máy được thiết kế chỉ dùng để cắt…" (trang 1910, tham chiếu nhóm đứng đầu dòng) giả làm tiêu đề — nếu không sẽ cắt hỏng 8468/8514/8515.
-- **Danh sách mã HS ngay sau tiêu đề thuộc M-18**: bỏ qua dòng mã 6 số (các dạng `1001.11 - -`, `29.38.10 -`, `7607 11`, `3209 90`), dòng mức `- Loại khác:`, và dòng nối tiếp viết thường của chúng. Thân bắt đầu tại dòng viết hoa/`(` đầu tiên sau đó.
-- **Khối "Chú giải [chi tiết] phân nhóm" thuộc M-15** (kể cả `Chú giải Phân nhóm` viết hoa lẫn lộn, trang 1163; và khối không có dòng tiêu đề 6903/9030 bắt đầu thẳng bằng "Phân nhóm NNNN.NN"): cắt trước tiêu đề khối và trước dòng mã phân nhóm. Đoạn không nêu mã phân nhóm nào: 72.12 (trang 1528) và 72.17 (trang 1534) nhận vào nút nhóm theo chỉ dẫn QT; đoạn "Với mục đích của các phân nhóm thuộc nhóm 72.10" (trang 1525) tự nêu phạm vi nên M-15 đã nhận (có nút `pn:7210xx`), không nhận ở đây.
-- Cắt trước Chương/PHẦN/Phân chương/TỔNG QUÁT/"Chú giải." của chương (M-11/M-13), trước `[NN.NN]`, trước phụ lục tiếng Anh. "Chuong 33" (trang 748, bản in thiếu dấu) vẫn nhận là biên giới chương.
-- Dòng số trang chỉ bỏ ở đầu/cuối trang — **đúng như `phang()` của cổng**; mọi dòng giữa trang (kể cả ô số của bảng, trang 927–928) và dấu trang trí `*`, `***` được giữ nguyên văn, để đối chiếu từng câu khớp liền mạch.
+## Ranh giới đoạn lấy từ đâu
+Không đoán từ dòng: PDF do Word xuất có cây cấu trúc (tagged). Bỏ khoảng trắng, dải chữ của cây trùng bản `-layout` từng ký tự ở 1.230/1.231 thân nhóm (trừ bảng in cột 28.05). Kiểm bằng toạ độ (`pdftotext -bbox-layout`), hai dòng liền nhau cùng trang:
+- trong một đoạn: 28.6 nghìn cặp, cách 16–22 pt (95% đúng 19 pt) – **không cặp nào ≥ 24 pt** trừ 9 cặp đo lệch dòng ⇒ không có hai đoạn bị nhập một;
+- giữa hai đoạn: 21–28 pt; 403 cặp < 21 pt: xem 40 cặp, đều là mục `-`/(n) xếp sít, tiêu đề ngắn hoặc dòng câu dẫn lặp (toạ độ khớp nhầm) – ranh giới đúng.
 
-## Tiêu đề nhóm ở đâu trong nút
-`so` = nguyên văn dòng tiêu đề (đã nối dòng ngắt); `nguyenVan` = thân đoạn. Lý do: tiêu đề và thân bị danh sách mã HS chen giữa trong bản in, gộp lại sẽ làm câu đầu trespass qua danh sách mã và rơi ở bước đối chiếu nguyên văn từng câu của cổng (70 nút đỏ khi thử gộp). Mã nhóm đã có trong `id` (`nhom:NNNN:ct:N`), phạm vi đoạn vẫn trọn từ tiêu đề (nằm trong nút, ở `so`) đến trước nhóm kế tiếp.
+Luật thêm:
+1. Đoạn bị ngắt qua trang được nối (362 chỗ): đoạn sau mở bằng chữ thường, hoặc đoạn trước chưa hết câu và dòng cuối đầy dòng, hoặc hai nửa tiêu đề CHỮ HOA.
+2. Câu dẫn kết bằng `:` in liền cuối một đoạn văn thường, ngay trước danh sách ⇒ nút riêng. Mục (A), (1)… kết bằng `:` giữ nguyên một nút và là cha của danh sách con.
+3. Dấu trang trí (`***`, `º º`), dòng chỉ có "hoặc", dòng chấm gắn cuối đoạn trước sau `\n`. Bảng = một nút, mỗi hàng một dòng.
+4. `cha`: ngăn xếp số hiệu (I)(A)(1)(a)(i), I., A., 1., a., `-`; (ij) gộp i–j; (i)/(I) đọc La Mã hay chữ cái theo mục kế. Mục đầu danh sách: cha là câu dẫn `:` ngay trước, không thì mục / tiêu đề ngay trước, không thì cùng cha với đoạn trước. Đoạn văn giữa hai mục cùng danh sách: cha là mục trước. Tiêu đề CHỮ HOA (có hoặc không số hiệu, "BỘ PHẬN") là cha tới tiêu đề cùng cấp. Đoạn sau mục **cuối**: theo nếp của các mục trước; "Nhóm này không bao gồm:" ở cuối nhóm trả về gốc (`null`), trừ khi mục trước cũng có danh sách loại trừ riêng.
+5. `tenIn` (nút đầu) = tiêu đề in trọn; `so` = số hiệu in của mục.
 
-## Phụ lục tiếng Anh tách riêng (KHÔNG vào nguyenVan)
+Tiêu đề: 1.228/1.228 có `tenIn`; so tên nhóm ở `bieu.jsonl`: 1.000 trùng khít, 223 lệch vài chữ dịch, 5 bản in khác hẳn tên biểu (95.08, 96.20, 27.16, 40.11, 84.62 – đã xem, tiêu đề trọn). 83 nhóm có mảnh tiêu đề / danh sách mã lọt vào thân bản 1dd2dadc (93.02 "93.04."; 02.07, 03.02, 03.03 cả danh sách mã) đã bỏ.
 
-| Nhóm | Trang | Dòng mở đầu | Nội dung |
-|---|---|---|---|
-| 29.37 | 595–625 | `List of steroids used primarily for their hormone function*` | bảng steroid + LIST OF NARCOTIC DRUGS AND PSYCHOTROPIC SUBSTANCES + bảng Name/HS subheading/CAS No.; thân nhóm in tiếp ở mục (C) trang 625 → `ct:2` |
-| 29.42 | 642–682 | `LIST OF PRECURSORS AND ESSENTIAL CHEMICALS…` | bảng tiền chất cuối Chương 29, tới trước "Chương 30" |
-| 33.07 | 759–761 | `ANNEX` (List of the principal essential oils… of heading 33.01) | danh sách tinh dầu cuối Chương 33, tới trước "Chương 34" |
-| 44.21 | 1014–1049 | `ANNEX` (APPELLATION OF CERTAIN TROPICAL WOODS) | bảng tên gỗ nhiệt đới (kèm "Ghi chú:" tiếng Việt của chính phụ lục), tới trước "Chương 45" |
-| 71.18 | 1482–1487 | `PHỤ LỤC` | bảng đá quý/bán quý song ngữ, tới trước "Chương 72" |
+## Bất biến (`nhom-kiem.py`)
+- **(a)** 20.705/20.706 nút là dải liền, đúng thứ tự trong bản `-layout` (còn lại: một nút bảng 28.05). So chữ bản 1dd2dadc theo nhóm: 1.084 y hệt; 75 chỉ bớt mảnh tiêu đề / mã ở đầu; 60 chỉ khác dấu nối cuối dòng; 2 được trả lại đoạn bị nuốt vào tiêu đề (29.11, 65.01); 29.20 bớt ba đoạn "Phân-Chương IX…" (thuộc `chuong:29:pc:IX`, kho M-13 đã có); 2837, 2921, 2931, 2937, 2939 cùng chữ khác thứ tự dòng công thức; 40.01 thêm ô "60 60 50 40 30" của bảng bị rơi.
+  - Dấu nối: bản 1dd2dadc dựng từ bản chữ `-agy` nên mất dấu nối thật ở cuối dòng ("1400-1800°C" thành "14001800°C", "ortho-benzened…"). Bản này theo `-layout`, `-raw` và cây PDF (ba nguồn khớp nhau).
+- **(b)** 0 nút có hai câu dẫn trái chiều; 0 nút có hai mục đánh số ở đầu dòng. Liệt kê **viết liền trong câu** giữ nguyên, không tách: 34.02 ct:2, 58.04 ct:4, 84.56 ct:11 (và vài chỗ "(i)… và (ii)…", "(a)… hoặc (b)…" trong 13.02, 29.37, 38.09, 84.43, 85.19, 90.25, 96.19).
+- **(c)** 0 vi phạm: cha đứng trước, cùng nhóm, không vòng; số thứ tự liền; trang không lùi.
+- **(d)** So dấu `\n\n` của `.nhom` (1.186 nhóm trùng chữ): 19.463 ranh giới chung, 880 chỉ có ở kho cũ, 262 chỉ có ở kho mới (lệch 5,5%); 631 nhóm trùng mọi ranh giới. 42 nhóm chữ khác (kho cũ dính nhóm khác / bảng) không so được ranh giới.
+  - *Chỉ kho cũ*: cắt theo đầu dòng – 460 giữa câu, 420 ở câu bắt đầu đúng đầu dòng (dòng trước đầy dòng, cách dòng 19 pt ⇒ bản in không xuống đoạn). *Chỉ kho mới*: "BỘ PHẬN" bị kho cũ dính vào đoạn sau, và câu dẫn tách theo luật 2.
+  - Đã xem tay 42 nhóm lệch nhiều nhất và 42 nhóm ngẫu nhiên có lệch: chỉ gặp hai nguyên nhân trên; đọc cả cây 7616, 9302, 8205, 8536, 8481, 8471, 3926, 6307, 2106, 8708, 9403, 4418 và 0102, 1905, 2309, 2844, 3402, 8414, 8443, 9018, 9503.
+- Không trùng kho khác (phan, chuong, phan-nhom): 0 nút. Mọi đoạn in còn lại ngoài kho là tên / chú giải Chương–Phần, danh sách mã, phụ lục, chú thích ảnh.
+- `cau.mjs` (M-31) chạy thử trên kho này: PASS; mục trong danh sách loại trừ có `dan` đúng câu dẫn 2.817/2.910. Phần lệch do `cau.mjs` bỏ qua `cha` với nút `:ct:` khi danh sách lồng nhau / có đoạn xen; nên dùng `cha` trước.
 
-## Sửa tay (trong `sua_tay()` của script, mỗi mục có trang + lý do, không đổi chữ văn bản gốc)
-- **7302**: tiêu đề in `37.02-` tại trang 1543 giữa Chương 73 — lỗi in của nhóm 73.02 (danh sách mã ngay dưới là 7302.10/30/40/90; nhóm 37.02 thật ở trang 804). Giữ nguyên dòng in trong `so`, nút là `nhom:7302`, kèm `ghiChu`.
-- **9029**: tiêu đề in `90.20 -Máy đếm…` tại trang 2263 sau nhóm 90.28 — lỗi in của nhóm 90.29 (danh sách mã 9029.10/90; nhóm 90.20 thật ở trang 2226). Như trên.
-- **2937**: dòng `(C) PROSTAGLANDINS…` trang 625 chấm dứt vùng phụ lục, mở `ct:2`.
-- **7212/7217**: nhận đoạn không nêu mã làm `ct:2` kèm `ghiChu` chỉ dẫn QT.
+## Sửa tay (trong `sua_tay()`, có trang và lý do, không đổi chữ)
+- **7302** (trang 1543, tiêu đề in `37.02-`), **9029** (trang 2263, in `90.20 -Máy đếm…`): nút theo mã trong danh sách mã ngay dưới, kèm `ghiChu`.
+- **2937**: "(C) PROSTAGLANDINS…" trang 625 mở lại thân sau phụ lục (ct:63). **7212** ct:3, **7217** ct:15: đoạn không nêu mã phân nhóm, theo chỉ dẫn QT ở #1902.
+- Không có sửa tay ranh giới đoạn.
 
-## Chỗ nghi trong bản in (chép nguyên, không sửa)
-- 2716 in "(nhóm không bắt buộc)" trong tên nhóm; 7613 thân chỉ là câu viện dẫn "Xem chú giải nhóm 73.11"; 6911 "Xem phần chú giải chi tiết của nhóm 69.12."
-- Bảng cao su 40.01 (trang 927–928) in lặp dòng tiêu đề bảng ở đầu trang 928; bảng 28.05 (họ đất hiếm) in cột dọc từng ô một dòng — giữ nguyên bố cục dòng của bản chữ.
-
-## Đối chiếu kho cũ `data/chu-giai-heading.json` `.nhom`
-- **Đủ**: 1.228 nhóm cũ có `.nhom` ⇔ 1.228 nhóm có nút; chiều ngược lại 0 nhóm mới thừa.
-- **"Mới có, cũ không": 0 câu** — kho mới không có câu nào không thấy trong kho cũ.
-- "Cũ có, mới không": 205/1.228 nhóm (16,7%) có câu của kho cũ không thấy trong kho mới — **toàn bộ rơi vào 6 lý do có căn cứ** (định vị từng câu về vùng bản chữ):
-
-| Lý do | Số câu | Ghi chú |
-|---|---|---|
-| Khối "Chú giải phân nhóm" (tiêu đề + nội dung) | 309 + 256 | thuộc M-15 (PR #1925) |
-| Phụ lục tiếng Anh | 479 + 48 | 5 vùng bảng trên |
-| Khái quát Phân chương dính vào nhóm trước | 120 | thuộc M-13 (PR #1927) |
-| Kho cũ dính chữ nhóm khác | 70 | 2938 chứa 67 câu của 29.39 (QT đã chỉ ở #1902: "đoạn 29.39 nằm ở 2938, đoạn 29.37 nằm ở 2939"); 7017 chứa 2 câu của 70.18; 6308 chứa 1 câu tên Phần |
-| Danh sách mã HS (M-18) dính trong cũ | 3 | 2934/5407/6305 |
-| Văn bản cũ không có trong bản chữ (trích bảng khác trật tự cột) | 129 | 125 câu bảng gỗ 4421; còn lại bảng 28.05, công thức 2837/2921/7118 — đều CÓ trong nút mới theo đúng trật tự dòng bản chữ (đã soát) | 
-
-- **Lệch không giải thích được: 0 nhóm (0%)** — dưới ngưỡng 1%.
-- Kho cũ còn gắn lệch nội dung phân nhóm cho 5402 (tên nhóm 54.03), 7118 (phụ lục đá quý), 7415 ("[74.16] [74.17]") — bản mới cắt đúng theo bản in.
-
-## Kiểm
-- Cổng: `LUAT_GOC_TXT=~/luat-goc-txt node scripts/kiem-luat-goc.mjs nhom` → **PASS, 1.231 nút, 0 lỗi, 0 cảnh báo, đối chiếu 3 bản chữ** (cgct-hs2022.txt, -layout, -raw).
-- Tự kiểm trong script: mọi dòng của mọi nút nằm trong bản chữ đúng thứ tự (chỉ bỏ dòng số trang đầu/cuối trang) — PASS.
-- `npm test`: exit 0, `=== ALL TESTS PASSED ===`. Không viết bài kiểm mới (thẻ M-01/M-15 cùng lớp cũng chỉ dùng cổng `kiem-luat-goc.mjs`); không đụng `scripts/danh-sach-test.txt`.
-
-## Tiến độ
-- 2026-11-25: nhận thẻ, dựng `nhom-tach.py` + `nhom.jsonl` 1.231 nút/1.228 nhóm, cổng PASS 0 lỗi 0 cảnh báo, đối chiếu kho cũ xong (0 lệch không lý do), mở PR nháp.
+## Chỗ chưa chắc
+- Khoảng 12 đoạn có thể bị ngắt qua trang **đúng chỗ hết câu** (dòng cuối trang đầy dòng, kết bằng "."): không phân biệt được với đoạn hết thật, để nguyên hai nút (ví dụ 19.01, 51.05, 97.04).
+- `cha` của đoạn đứng sau mục cuối danh sách là suy theo nếp (bản in không thụt đoạn tiếp của mục): chữ không đổi, chỉ `cha` có thể là mục cuối hay cấp trên.
+- Số hiệu in sai thứ tự giữ nguyên, xếp cùng danh sách (32 chỗ: 2841 "(j)…(g)", 8501 "(í)", 7106 "(II)" lặp, 2844 hai "(c)", 8708 thiếu (M)…).
+- Dòng trống chữ trong bản in (85.18 "………") giữ nguyên.
+- Công thức / hình không có chữ trong PDF (Chương 29, 57) không rút được.
