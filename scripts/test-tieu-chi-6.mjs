@@ -1201,5 +1201,174 @@ kiem('#1586 (7009.91/92 & phân nhóm không phải DU): 7009 qua cổng với 0
       { vChua, vDa });
   }
 }
+
+// ── 12. Gỡ 3 nút nghẽn cổng tieuChi6: tầng 1 gạch suy ra không tên (85235), "không dẻo"+KHOA_NEN (730711), vế loại trừ tầng đứng trước (85285/73072) ──
+{
+  const S = require('../lib/so-tay.js');
+
+  // (1) Tầng 1 gạch suy ra không tên (8523.5): cho phép 852359 nhắc điều kiện tầng từ nhom8523.nhom khi mọi anh em có tên cùng tầng mang y hệt
+  {
+    const st8523 = doc('data/so-tay/8523.json');
+    const mucTang = (hs6) => ({
+      hs6,
+      dieuKien: 'PHƯƠNG TIỆN LƯU TRỮ THÔNG TIN BÁN DẪN',
+      fact: 'tenLoai',
+      op: 'TEN_LOAI',
+      value: 'PHƯƠNG TIỆN LƯU TRỮ THÔNG TIN BÁN DẪN',
+      tuKhoa: ['phương tiện lưu trữ thông tin bán dẫn', 'thông tin bán dẫn'],
+      nguon: 'nhom8523.nhom',
+      trich: '(C) PHƯƠNG TIỆN LƯU TRỮ THÔNG TIN BÁN DẪN',
+    });
+    const dsKhongTang = sao(st8523.tieuChi6)
+      .map(({ thuTu: _t, nguonLoai: _n, ...r }) => r)
+      .filter((x) => !(x.nguon === 'nhom8523.nhom' && /^\(C\)/.test(x.trich || '')));
+    const dsMoi = G6.ganThuTu('8523', [...dsKhongTang, mucTang('852351'), mucTang('852352'), mucTang('852359')]);
+    const kqOk = G6.kiemTieuChi6('8523', dsMoi, { toKhai: false });
+    const vOk = S.verifySoTay({ ...st8523, tieuChi6: dsMoi }, '8523');
+    const dxTruoc = G6.diXuong6('8523', G6.ganThuTu('8523', dsKhongTang), 'Thiết bị lưu trữ dữ liệu');
+    const dxSau = G6.diXuong6('8523', dsMoi, 'Thiết bị lưu trữ dữ liệu');
+    const dxBanDan = G6.diXuong6('8523', dsMoi, 'Phương tiện lưu trữ thông tin bán dẫn');
+
+    const dsThieuAe = dsMoi.filter((x) => !(x.hs6 === '852352' && x.nguon === 'nhom8523.nhom'));
+    const dsLechVal = sao(dsMoi);
+    dsLechVal.find((x) => x.hs6 === '852359' && x.nguon === 'nhom8523.nhom').value = 'THÔNG TIN BÁN DẪN';
+    const dsNguonAo = sao(dsMoi);
+    dsNguonAo.find((x) => x.hs6 === '852359' && x.nguon === 'nhom8523.nhom').nguon = 'tieuDe.85235';
+    const dsTangKhac = [...sao(dsMoi), mucTang('852380')];
+
+    kiem('G6-1 tầng 1 gạch suy ra không tên (8523.5): thuận 0 lỗi + verifySoTay 0 loại + diXuong6 hết chốt oan 852359 khi thiếu bán dẫn; ca ngược vẫn đỏ DU_MANG_DIEU_KIEN / NGUON_KHONG_TON_TAI',
+      kqOk.loi.length === 0
+      && vOk.loai.length === 0
+      && dxTruoc.trangThai === 'DUNG_CHOT' && dxTruoc.hs6 === '852359'
+      && dxSau.hs6 !== '852359'
+      && dxBanDan.trangThai === 'DUNG_CHOT' && dxBanDan.hs6 === '852359'
+      && G6.kiemTieuChi6('8523', dsThieuAe, { toKhai: false }).loi.some((l) => l.ma === 'DU_MANG_DIEU_KIEN' && l.hs6 === '852359')
+      && G6.kiemTieuChi6('8523', dsLechVal, { toKhai: false }).loi.some((l) => l.ma === 'DU_MANG_DIEU_KIEN' && l.hs6 === '852359')
+      && G6.kiemTieuChi6('8523', dsNguonAo, { toKhai: false }).loi.some((l) => l.ma === 'NGUON_KHONG_TON_TAI' && l.hs6 === '852359')
+      && G6.kiemTieuChi6('8523', dsTangKhac, { toKhai: false }).loi.some((l) => l.ma === 'DU_MANG_DIEU_KIEN' && l.hs6 === '852380'),
+      JSON.stringify({ kqOk: kqOk.loi, vOk: vOk.loai, dxTruoc: dxTruoc.hs6, dxSau: dxSau.hs6, dxBanDan: dxBanDan.hs6 }));
+  }
+
+  // (2) Bổ ngữ "không dẻo" & KHOA_NEN (730711): cho phép chatLieu "gang" kèm chuaSoHoa nêu rõ "không dẻo"; thiếu chuaSoHoa hoặc chuaSoHoa mơ hồ vẫn đỏ KHOA_RONG_HON_LUAT
+  {
+    const ds7307 = [
+      { hs6: '730711', dieuKien: 'Phụ kiện dạng đúc', fact: 'tenLoai', op: 'TEN_LOAI', value: 'Phụ kiện dạng đúc', tuKhoa: ['phụ kiện dạng đúc', 'dạng đúc'], nguon: 'tieuDe.73071', trich: '73071 Phụ kiện dạng đúc' },
+      { hs6: '730711', dieuKien: 'Bằng gang đúc không dẻo', fact: 'chatLieu', op: 'LA', value: 'gang', tuKhoa: ['gang đúc không dẻo'], nguon: 'tieuDe.730711', trich: '730711 Bằng gang đúc không dẻo' },
+      { hs6: '730711', chuaSoHoa: 'thiếu khoá phân biệt gang đúc không dẻo với gang đúc dẻo', nguon: 'tieuDe.730711', trich: '730711 Bằng gang đúc không dẻo' },
+      { hs6: '730719', dieuKien: 'Phụ kiện dạng đúc', fact: 'tenLoai', op: 'TEN_LOAI', value: 'Phụ kiện dạng đúc', tuKhoa: ['phụ kiện dạng đúc', 'dạng đúc'], nguon: 'tieuDe.73071', trich: '73071 Phụ kiện dạng đúc' },
+      { hs6: '730719', phanConLai: true, nguon: 'tax.73071900', trich: '73071900 - - Loại khác' },
+      ...['730721', '730722', '730723', '730729'].flatMap((hs6) => [
+        { hs6, dieuKien: 'bằng thép không gỉ', fact: 'chatLieu', op: 'LA', value: 'thép không gỉ', tuKhoa: ['thép không gỉ'], nguon: 'tieuDe.73072', trich: '73072 Loại khác, bằng thép không gỉ' },
+        { hs6, dieuKien: 'không phải phụ kiện dạng đúc', fact: 'tenLoai', op: 'TEN_LOAI', value: 'Phụ kiện dạng đúc', chieu: 'PHAI_KHONG', tuKhoa: ['phụ kiện dạng đúc', 'dạng đúc'], nguon: 'tieuDe.73071', trich: '73071 Phụ kiện dạng đúc' },
+      ]),
+      { hs6: '730721', dieuKien: 'Mặt bích', fact: 'tenLoai', op: 'TEN_LOAI', value: 'Mặt bích', tuKhoa: ['mặt bích'], nguon: 'tieuDe.730721', trich: '730721 Mặt bích' },
+      { hs6: '730722', dieuKien: 'Ống khuỷu, khuỷu nối ống và măng sông', fact: 'tenLoai', op: 'TEN_LOAI', value: ['Ống khuỷu', 'khuỷu nối ống', 'măng sông'], tuKhoa: ['ống khuỷu', 'khuỷu nối ống', 'măng sông'], nguon: 'tieuDe.730722', trich: '730722 Ống khuỷu, khuỷu nối ống và măng sông, loại có ren để ghép nối' },
+      { hs6: '730722', dieuKien: 'loại có ren để ghép nối', fact: 'coRen', op: 'CO', tuKhoa: ['có ren'], nguon: 'tieuDe.730722', trich: '730722 Ống khuỷu, khuỷu nối ống và măng sông, loại có ren để ghép nối' },
+      { hs6: '730723', chuaSoHoa: 'thiếu khoá kiểu ghép nối hàn giáp mối', nguon: 'tieuDe.730723', trich: '730723 Loại hàn giáp mối' },
+      { hs6: '730729', phanConLai: true, nguon: 'tieuDe.730729', trich: '730729 Loại khác' },
+      ...['730791', '730792', '730793', '730799'].map((hs6) => ({ hs6, dieuKien: 'không phải phụ kiện dạng đúc', fact: 'tenLoai', op: 'TEN_LOAI', value: 'Phụ kiện dạng đúc', chieu: 'PHAI_KHONG', tuKhoa: ['phụ kiện dạng đúc', 'dạng đúc'], nguon: 'tieuDe.73071', trich: '73071 Phụ kiện dạng đúc' })),
+      { hs6: '730791', dieuKien: 'Mặt bích', fact: 'tenLoai', op: 'TEN_LOAI', value: 'Mặt bích', tuKhoa: ['mặt bích'], nguon: 'tieuDe.730791', trich: '730791 Mặt bích' },
+      { hs6: '730792', dieuKien: 'Ống khuỷu, khuỷu nối ống và măng sông', fact: 'tenLoai', op: 'TEN_LOAI', value: ['Ống khuỷu', 'khuỷu nối ống', 'măng sông'], tuKhoa: ['ống khuỷu', 'khuỷu nối ống', 'măng sông'], nguon: 'tieuDe.730792', trich: '730792 Ống khuỷu, khuỷu nối ống và măng sông, loại có ren để ghép nối' },
+      { hs6: '730792', dieuKien: 'loại có ren để ghép nối', fact: 'coRen', op: 'CO', tuKhoa: ['có ren'], nguon: 'tieuDe.730792', trich: '730792 Ống khuỷu, khuỷu nối ống và măng sông, loại có ren để ghép nối' },
+      { hs6: '730793', chuaSoHoa: 'thiếu khoá kiểu ghép nối hàn giáp mối', nguon: 'tieuDe.730793', trich: '730793 Loại hàn giáp mối' },
+      { hs6: '730799', phanConLai: true, nguon: 'tieuDe.730799', trich: '730799 Loại khác' },
+    ];
+    const st7307 = doc('data/so-tay/7307.json');
+    const ds7307Xep = G6.ganThuTu('7307', ds7307);
+    const kq7307 = G6.kiemTieuChi6('7307', ds7307Xep, { toKhai: false });
+    const v7307 = S.verifySoTay({ ...st7307, tieuChi6: ds7307Xep }, '7307');
+    const ds7307BoChua = ds7307Xep.filter((x) => !(x.hs6 === '730711' && x.chuaSoHoa));
+    const ds7307MoHo = sao(ds7307Xep);
+    ds7307MoHo.find((x) => x.hs6 === '730711' && x.chuaSoHoa).chuaSoHoa = 'thiếu khoá bổ sung';
+    const kq7323Chua = G6.kiemTieuChi6('7323', [{ hs6: '732391', chuaSoHoa: 'thiếu chất liệu', nguon: 'tax.73239100', trich: '73239100 - - Bằng gang đúc, chưa tráng men' }], { toKhai: false });
+    const st7323 = doc('data/so-tay/7323.json').tieuChi6;
+    const ds7323Luoi = [
+      ...sao(st7323),
+      { hs6: '732391', chuaSoHoa: 'lười khai thêm dù không thiếu khoá', nguon: 'tax.73239100', trich: 'Bằng gang đúc' },
+    ];
+    const kq7323Luoi = G6.kiemTieuChi6('7323', ds7323Luoi, { toKhai: false });
+    const dx7307Gang = G6.diXuong6('7307', ds7307Xep, 'Phụ kiện dạng đúc bằng gang');
+    const dx7307MatBichDuc = G6.diXuong6('7307', ds7307Xep, 'Mặt bích dạng đúc bằng thép không gỉ');
+
+    kiem('G6-2/3 7307 ("không dẻo"+KHOA_NEN & loại trừ tầng 73071): thuận 0 lỗi + verifySoTay 0 loại + cảnh báo THIEU_KHOA_TU_VUNG@730711 + diXuong6 dừng hỏi đúng; ca ngược bỏ/mơ hồ chuaSoHoa đỏ KHOA_RONG_HON_LUAT; 7323.91 khai lười chuaSoHoa (đã có chatLieu gang) vẫn đỏ CHUA_SO_HOA_CO_KHOA',
+      kq7307.loi.length === 0
+      && v7307.loai.length === 0
+      && kq7307.canhBao.some((c) => c.ma === 'THIEU_KHOA_TU_VUNG' && c.hs6 === '730711')
+      && dx7307Gang.trangThai === 'DUNG_HOI'
+      && dx7307MatBichDuc.trangThai === 'DUNG_HOI' && dx7307MatBichDuc.hs6 !== '730721'
+      && G6.kiemTieuChi6('7307', ds7307BoChua, { toKhai: false }).loi.some((l) => l.ma === 'KHOA_RONG_HON_LUAT' && l.hs6 === '730711')
+      && G6.kiemTieuChi6('7307', ds7307MoHo, { toKhai: false }).loi.some((l) => l.ma === 'KHOA_RONG_HON_LUAT' && l.hs6 === '730711')
+      && kq7323Chua.loi.some((l) => l.ma === 'CHUA_SO_HOA_CO_KHOA' && l.hs6 === '732391')
+      && kq7323Luoi.loi.some((l) => l.ma === 'CHUA_SO_HOA_CO_KHOA' && l.hs6 === '732391')
+      && Boolean(G6.khoaRongHonLuat('chatLieu', 'cao su', '400821 Từ cao su không xốp'))
+      && Boolean(G6.khoaRongHonLuat('chatLieu', 'sắt thép', '730431 Bằng sắt hoặc thép không hợp kim')),
+      JSON.stringify({ kq7307: kq7307.loi, v7307: v7307.loai, kq7323Luoi: kq7323Luoi.loi, dx7307Gang: dx7307Gang.trangThai, dx7307MatBichDuc: dx7307MatBichDuc.trangThai }));
+  }
+
+  // (3) Vế loại trừ tầng 1 gạch đứng trước (8528.5x loại trừ 8528.4)
+  {
+    const st8528 = doc('data/so-tay/8528.json');
+    const kc8528 = [{ hoi: 'Thiết bị có kết nối với bộ dò tín hiệu truyền hình để thu tín hiệu truyền hình không?', nguon: 'nhom8528.nhom', trich: 'Màn hình và máy chiếu có thể năng nhận nhiều tín hiệu từ các nguồn khác nhau. Tuy nhiên, nếu chúng kết nối với bộ dò tín hiệu truyền hình thì được xem như thiết bị thu dùng trong truyền hình.' }];
+    const ds8528 = G6.ganThuTu('8528', [
+      { hs6: '852842', dieuKien: 'Màn hình sử dụng ống đèn hình tia ca-tốt', fact: 'tenLoai', op: 'TEN_LOAI', value: 'Màn hình sử dụng ống đèn hình tia ca-tốt', tuKhoa: ['ống đèn hình tia ca-tốt'], nguon: 'tieuDe.85284', trich: '85284 Màn hình sử dụng ống đèn hình tia ca-tốt' },
+      { hs6: '852842', dieuKien: 'Có khả năng kết nối trực tiếp', fact: 'coKetNoiMayTinh', op: 'CO', tuKhoa: ['kết nối trực tiếp'], nguon: 'tax.85284200', trich: 'Có khả năng kết nối trực tiếp và được thiết kế để dùng cho máy xử lý dữ liệu tự động thuộc nhóm 84.71' },
+      { hs6: '852842', dieuKien: 'được thiết kế để dùng cho máy xử lý dữ liệu tự động thuộc nhóm 84.71', fact: 'dungCho', op: 'CONG_DUNG', value: 'máy xử lý dữ liệu tự động thuộc nhóm 84.71', tuKhoa: ['84.71'], nguon: 'tax.85284200', trich: 'Có khả năng kết nối trực tiếp và được thiết kế để dùng cho máy xử lý dữ liệu tự động thuộc nhóm 84.71' },
+      { hs6: '852849', dieuKien: 'Màn hình sử dụng ống đèn hình tia ca-tốt', fact: 'tenLoai', op: 'TEN_LOAI', value: 'Màn hình sử dụng ống đèn hình tia ca-tốt', tuKhoa: ['ống đèn hình tia ca-tốt'], nguon: 'tieuDe.85284', trich: '85284 Màn hình sử dụng ống đèn hình tia ca-tốt' },
+      { hs6: '852849', phanConLai: true, nguon: 'tieuDe.852849', trich: '852849 Loại khác' },
+      { hs6: '852852', dieuKien: 'Màn hình', fact: 'tenLoai', op: 'TEN_LOAI', value: 'Màn hình', tuKhoa: ['Màn hình'], nguon: 'tieuDe.85285', trich: '85285 Màn hình khác' },
+      { hs6: '852852', dieuKien: 'không sử dụng ống đèn hình tia ca-tốt', fact: 'tenLoai', op: 'TEN_LOAI', value: 'Màn hình sử dụng ống đèn hình tia ca-tốt', chieu: 'PHAI_KHONG', tuKhoa: ['ống đèn hình tia ca-tốt', 'tia ca-tốt'], nguon: 'tieuDe.85284', trich: '85284 Màn hình sử dụng ống đèn hình tia ca-tốt' },
+      { hs6: '852852', dieuKien: 'Có khả năng kết nối trực tiếp', fact: 'coKetNoiMayTinh', op: 'CO', tuKhoa: ['kết nối trực tiếp'], nguon: 'tax.85285200', trich: 'Có khả năng kết nối trực tiếp và được thiết kế để dùng cho máy xử lý dữ liệu tự động thuộc nhóm 84.71' },
+      { hs6: '852852', dieuKien: 'được thiết kế để dùng cho máy xử lý dữ liệu tự động thuộc nhóm 84.71', fact: 'dungCho', op: 'CONG_DUNG', value: 'máy xử lý dữ liệu tự động thuộc nhóm 84.71', tuKhoa: ['84.71'], nguon: 'tax.85285200', trich: 'Có khả năng kết nối trực tiếp và được thiết kế để dùng cho máy xử lý dữ liệu tự động thuộc nhóm 84.71' },
+      { hs6: '852859', dieuKien: 'Màn hình', fact: 'tenLoai', op: 'TEN_LOAI', value: 'Màn hình', tuKhoa: ['Màn hình'], nguon: 'tieuDe.85285', trich: '85285 Màn hình khác' },
+      { hs6: '852859', dieuKien: 'không sử dụng ống đèn hình tia ca-tốt', fact: 'tenLoai', op: 'TEN_LOAI', value: 'Màn hình sử dụng ống đèn hình tia ca-tốt', chieu: 'PHAI_KHONG', tuKhoa: ['ống đèn hình tia ca-tốt', 'tia ca-tốt'], nguon: 'tieuDe.85284', trich: '85284 Màn hình sử dụng ống đèn hình tia ca-tốt' },
+      { hs6: '852859', phanConLai: true, nguon: 'tieuDe.852859', trich: '852859 Loại khác' },
+      { hs6: '852862', dieuKien: 'Máy chiếu', fact: 'tenLoai', op: 'TEN_LOAI', value: 'Máy chiếu', tuKhoa: ['máy chiếu'], nguon: 'tieuDe.85286', trich: '85286 Máy chiếu' },
+      { hs6: '852862', dieuKien: 'Có khả năng kết nối trực tiếp', fact: 'coKetNoiMayTinh', op: 'CO', tuKhoa: ['kết nối trực tiếp'], nguon: 'tax.85286200', trich: 'Có khả năng kết nối trực tiếp và được thiết kế để dùng cho máy xử lý dữ liệu tự động thuộc nhóm 84.71' },
+      { hs6: '852869', dieuKien: 'Máy chiếu', fact: 'tenLoai', op: 'TEN_LOAI', value: 'Máy chiếu', tuKhoa: ['máy chiếu'], nguon: 'tieuDe.85286', trich: '85286 Máy chiếu' },
+      { hs6: '852869', phanConLai: true, nguon: 'tieuDe.852869', trich: '852869 Loại khác' },
+      { hs6: '852871', dieuKien: 'Thiết bị thu', fact: 'tenLoai', op: 'TEN_LOAI', value: 'Thiết bị thu', tuKhoa: ['thiết bị thu'], nguon: 'tieuDe.85287', trich: '85287 Thiết bị thu dùng trong truyền hình, có hoặc không gắn với thiết bị thu thanh sóng vô tuyến hoặc thiết bị ghi hoặc tái tạo âm thanh hoặc hình ảnh' },
+      { hs6: '852871', dieuKien: 'dùng trong truyền hình', fact: 'dungCho', op: 'CONG_DUNG', value: 'truyền hình', tuKhoa: ['truyền hình'], kiemChung: kc8528, nguon: 'tieuDe.85287', trich: '85287 Thiết bị thu dùng trong truyền hình, có hoặc không gắn với thiết bị thu thanh sóng vô tuyến hoặc thiết bị ghi hoặc tái tạo âm thanh hoặc hình ảnh' },
+      { hs6: '852871', chuaSoHoa: 'thiếu khoá không thiết kế để gắn màn ảnh', nguon: 'tieuDe.852871', trich: '852871 Không thiết kế để gắn với thiết bị hiển thị video hoặc màn ảnh' },
+      { hs6: '852872', dieuKien: 'Thiết bị thu', fact: 'tenLoai', op: 'TEN_LOAI', value: 'Thiết bị thu', tuKhoa: ['thiết bị thu'], nguon: 'tieuDe.85287', trich: '85287 Thiết bị thu dùng trong truyền hình, có hoặc không gắn với thiết bị thu thanh sóng vô tuyến hoặc thiết bị ghi hoặc tái tạo âm thanh hoặc hình ảnh' },
+      { hs6: '852872', dieuKien: 'dùng trong truyền hình', fact: 'dungCho', op: 'CONG_DUNG', value: 'truyền hình', tuKhoa: ['truyền hình'], kiemChung: kc8528, nguon: 'tieuDe.85287', trich: '85287 Thiết bị thu dùng trong truyền hình, có hoặc không gắn với thiết bị thu thanh sóng vô tuyến hoặc thiết bị ghi hoặc tái tạo âm thanh hoặc hình ảnh' },
+      { hs6: '852872', dieuKien: 'màu', fact: 'mauHienThi', op: 'TRONG', value: ['MAU'], tuKhoa: ['màu'], nguon: 'tieuDe.852872', trich: '852872 Loại khác, màu' },
+      { hs6: '852872', phanConLai: true, nguon: 'tieuDe.852872', trich: '852872 Loại khác, màu' },
+      { hs6: '852873', dieuKien: 'Thiết bị thu', fact: 'tenLoai', op: 'TEN_LOAI', value: 'Thiết bị thu', tuKhoa: ['thiết bị thu'], nguon: 'tieuDe.85287', trich: '85287 Thiết bị thu dùng trong truyền hình, có hoặc không gắn với thiết bị thu thanh sóng vô tuyến hoặc thiết bị ghi hoặc tái tạo âm thanh hoặc hình ảnh' },
+      { hs6: '852873', dieuKien: 'dùng trong truyền hình', fact: 'dungCho', op: 'CONG_DUNG', value: 'truyền hình', tuKhoa: ['truyền hình'], kiemChung: kc8528, nguon: 'tieuDe.85287', trich: '85287 Thiết bị thu dùng trong truyền hình, có hoặc không gắn với thiết bị thu thanh sóng vô tuyến hoặc thiết bị ghi hoặc tái tạo âm thanh hoặc hình ảnh' },
+      { hs6: '852873', dieuKien: 'đơn sắc', fact: 'mauHienThi', op: 'TRONG', value: ['DON_SAC'], tuKhoa: ['đơn sắc'], nguon: 'tax.85287300', trich: '85287300 - - Loại khác, đơn sắc' },
+      { hs6: '852873', phanConLai: true, nguon: 'tax.85287300', trich: '85287300 - - Loại khác, đơn sắc' },
+    ]);
+    const kq8528 = G6.kiemTieuChi6('8528', ds8528, { toKhai: false });
+    const v8528 = S.verifySoTay({ ...st8528, tieuChi6: ds8528 }, '8528');
+    const ds8528KhongTru = ds8528.filter((x) => !(x.hs6 === '852852' && x.nguon === 'tieuDe.85284'));
+    const dxCrtTruoc = G6.diXuong6('8528', ds8528KhongTru, 'Màn hình sử dụng ống đèn hình tia ca-tốt có khả năng kết nối trực tiếp với máy xử lý dữ liệu tự động thuộc nhóm 84.71');
+    const dxCrtSau = G6.diXuong6('8528', ds8528, 'Màn hình sử dụng ống đèn hình tia ca-tốt có khả năng kết nối trực tiếp với máy xử lý dữ liệu tự động thuộc nhóm 84.71');
+    const dxLcdKhongSuDung = G6.diXuong6('8528', ds8528, 'Màn hình LCD không sử dụng ống đèn hình tia ca-tốt có khả năng kết nối trực tiếp với máy xử lý dữ liệu tự động thuộc nhóm 84.71');
+    const dxThieuThongSo = G6.diXuong6('8528', ds8528, 'Màn hình 24 inch có khả năng kết nối trực tiếp với máy xử lý dữ liệu tự động thuộc nhóm 84.71');
+
+    // Ca ngược:
+    const dsKhangDinh = sao(ds8528);
+    delete dsKhangDinh.find((x) => x.hs6 === '852852' && x.nguon === 'tieuDe.85284').chieu;
+    const dsTangSau = sao(ds8528);
+    Object.assign(dsTangSau.find((x) => x.hs6 === '852852' && x.nguon === 'tieuDe.85284'), { nguon: 'tieuDe.85286', trich: '85286 Máy chiếu', value: 'Máy chiếu', dieuKien: 'Máy chiếu', tuKhoa: ['máy chiếu'] });
+    const dsTangCoTen = [...sao(ds8528), { hs6: '852862', dieuKien: 'Màn hình', fact: 'tenLoai', op: 'TEN_LOAI', value: 'Màn hình', chieu: 'PHAI_KHONG', tuKhoa: ['ống đèn hình tia ca-tốt'], nguon: 'tieuDe.85284', trich: '85284 Màn hình sử dụng ống đèn hình tia ca-tốt' }];
+    const dsPnKhac = sao(ds8528);
+    Object.assign(dsPnKhac.find((x) => x.hs6 === '852852' && x.nguon === 'tieuDe.85284'), { nguon: 'tieuDe.852849', trich: '852849 Loại khác', value: 'Loại khác', dieuKien: 'Loại khác', tuKhoa: ['loại khác'] });
+
+    kiem('G6-3 8528 ("Màn hình khác" loại trừ tầng 85284): thuận 0 lỗi + verifySoTay 0 loại + diXuong6 CRT không thỏa 852852/852859 & "không sử dụng ống đèn..." giữ 852852 THOA & thiếu CRT/LCD dừng hỏi; ca ngược khẳng định / tầng sau / tầng CO_TEN / phân nhóm 6 số đều đỏ NGUON_LAC_PHAN_NHOM',
+      kq8528.loi.length === 0
+      && v8528.loai.length === 0
+      && dxCrtTruoc.chiTiet.find((c) => c.hs6 === '852852').trangThai === 'THOA'
+      && dxCrtSau.chiTiet.find((c) => c.hs6 === '852852').trangThai === 'TRAI'
+      && dxCrtSau.chiTiet.find((c) => c.hs6 === '852859').trangThai === 'TRAI'
+      && dxLcdKhongSuDung.chiTiet.find((c) => c.hs6 === '852852').trangThai === 'THOA'
+      && dxThieuThongSo.trangThai === 'DUNG_HOI'
+      && G6.kiemTieuChi6('8528', dsKhangDinh, { toKhai: false }).loi.some((l) => l.ma === 'NGUON_LAC_PHAN_NHOM' && l.hs6 === '852852')
+      && G6.kiemTieuChi6('8528', dsTangSau, { toKhai: false }).loi.some((l) => l.ma === 'NGUON_LAC_PHAN_NHOM' && l.hs6 === '852852')
+      && G6.kiemTieuChi6('8528', dsTangCoTen, { toKhai: false }).loi.some((l) => l.ma === 'NGUON_LAC_PHAN_NHOM' && l.hs6 === '852862')
+      && G6.kiemTieuChi6('8528', dsPnKhac, { toKhai: false }).loi.some((l) => l.ma === 'NGUON_LAC_PHAN_NHOM' && l.hs6 === '852852'),
+      JSON.stringify({ kq8528: kq8528.loi, v8528: v8528.loai, dxCrtTruoc: dxCrtTruoc.chiTiet.find((c) => c.hs6 === '852852'), dxCrtSau: dxCrtSau.trangThai, dxLcdKhongSuDung: dxLcdKhongSuDung.chiTiet.find((c) => c.hs6 === '852852'), dxThieuThongSo: dxThieuThongSo.trangThai }));
+  }
+}
 void os;
 xong();
