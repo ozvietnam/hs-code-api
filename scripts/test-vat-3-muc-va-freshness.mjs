@@ -205,7 +205,10 @@ check(
   repExpiringOnly.warnings,
 );
 
-const repDue = freshnessReport(at('2026-12-01'));
+// Ngày DUE tính từ chính bản khai (hạn của nguồn sổ plhq + 1 ngày): ghi cứng '2026-12-01' làm bài đỏ mỗi lần đồng bộ dữ liệu.
+const hanPlhq = require('../data/data-freshness.json').sources.plhqRegistry;
+const ngayDue = new Date(Date.parse(`${hanPlhq.lastCheckedAt}T00:00:00Z`) + (hanPlhq.checkEveryDays + 2) * 86400000).toISOString().slice(0, 10);
+const repDue = freshnessReport(at(ngayDue));
 check(
   'freshnessReport() khi có nguồn DUE ⇒ ok=false',
   repDue.sources.some((s) => s.status === 'DUE') && repDue.ok === false,
