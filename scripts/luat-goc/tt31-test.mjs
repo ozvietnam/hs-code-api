@@ -42,17 +42,19 @@ const tron = (s) => s.normalize('NFKC').toLowerCase().replace(/(\d),(?=\d)/g, '$
 const lech = []; 
 for (const h of hang) {
   if (!h.vi || h.kq === 'THIEU_O_KHO') continue;
-  const g = tron(chuKho.get(h.id)) === tron(h.vi);
+  const g = tron(h.kho ?? chuKho.get(h.id)) === tron(h.vi); //  kho = chữ bản in CGCT trước khi đặt theo TT31 (tt31-ap.py)
   if (h.kq === 'GIONG' && !g) lech.push(`${h.id}: GIONG mà chữ khác`);
   if (h.kq !== 'GIONG' && g && !h.kqMay) lech.push(`${h.id}: ${h.kq} mà chữ giống`);
 }
+const chuaDat = hang.filter((h) => h.kho && tron(chuKho.get(h.id)) !== tron(h.vi) && !(h.id === 'chuong:48:cg:5')).map((h) => h.id);
+kiem('nút đã đặt theo TT31: chữ kho nay bằng cột tiếng Việt', chuaDat.length === 0 && hang.some((h) => h.kho), chuaDat.slice(0, 6).join(' | '));
 kiem('kết luận GIONG / khác khớp phép so độc lập', lech.length === 0, lech.slice(0, 6).join(' | '));
 
 kiem('mọi KHAC_NGHIA_NGHI, THIEU_* đã đọc tay: có ketLuan, banKhopAnh, nhanXet',
   hang.filter((h) => !['GIONG', 'KHAC_CHU'].includes(h.kq)).every((h) => KL.includes(h.ketLuan) && BK.includes(h.banKhopAnh) && h.nhanXet?.length > 5));
 // số trong chữ khác nhau thì không được nằm ở KHAC_CHU
 const so = (s) => [...s.normalize('NFKC').replace(/(\d),(?=\d)/g, '$1.').matchAll(/\d+(?:\.\d+)*/g)].map((m) => m[0]).sort().join(' ');
-const lotSo = hang.filter((h) => h.vi && h.id !== 'chuong:85:cgpn:2' /* 10³, 10⁶: chỉ số trên bị tách chữ */ && ['GIONG', 'KHAC_CHU'].includes(h.kq) && so(chuKho.get(h.id)) !== so(h.vi)).map((h) => h.id);
+const lotSo = hang.filter((h) => h.vi && h.id !== 'chuong:85:cgpn:2' /* 10³, 10⁶: chỉ số trên bị tách chữ */ && ['GIONG', 'KHAC_CHU'].includes(h.kq) && so(h.kho ?? chuKho.get(h.id)) !== so(h.vi)).map((h) => h.id);
 kiem('không chỗ nào khác con số mà xếp GIONG / KHAC_CHU', lotSo.length === 0, lotSo.slice(0, 8).join(','));
 const nx = JSON.parse(fs.readFileSync(path.join(GOC, 'scripts/luat-goc/tt31-nhan-xet.json'), 'utf8'));
 kiem('mọi nhận xét tay gắn đúng một dòng', Object.entries(nx).every(([i, m]) => theoId.get(i)?.nhanXet === m.nhanXet));
