@@ -14,3 +14,6 @@ Người soạn: Gemini (agy, gói thuê bao) theo `tom-tat.mjs --goi`; người
 QT đọc tay toàn Chương 76 trước khi chạy cả bộ; soát Gemma bắt đúng lỗi thật (bỏ sót ngoại lệ, gán nhầm nút chú giải chương cho một nhóm, tách với nút khác cha).
 
 Còn thiếu: 56 nhóm (phần lớn Chương 28, 29, 69, 72) soạn lại theo chữ TT31 chờ hạn mức Gemini; 87.03 hai nhánh. Danh sách ở `/tmp/rap36.out` của lần ghép.
+
+## Đợt 2 (06:20)
+Soạn lại 81 nhóm theo chữ TT31 và chia 4 nhóm lớn (87.03, 87.04, 84.09, 84.24) theo nhánh; soát lại. Còn 0 ý chờ soát, 3 ý mất câu. Ý giữ: 51975.
