@@ -51,6 +51,7 @@ export function boChuThichAnToan(src) {
       if (st === -1) break;
       const before = line.slice(0, st);
       if (/\/[^/\n]*$/.test(before) && !before.trimEnd().endsWith('return')) break; // tránh biểu thức chính quy
+      if (/['"`][^'"`\n]*$/.test(before) && /^[^'"`\n]*['"`]/.test(line.slice(st + 2))) break; // tránh "/*" trong chuỗi
       const en = line.indexOf('*/', st + 2);
       if (en === -1) {
         inBlock = true;
@@ -72,9 +73,6 @@ export function quetTruongNhiem(maNguon) {
   for (let idx = 0; idx < dong.length; idx += 1) {
     const line = dong[idx];
     for (const m of line.matchAll(RE_TRUONG_NHIEM)) {
-      // Loại trừ khoá sinh ID động kiểu `phan_biet_${nhom}` trong bộ sinh câu hỏi sổ tay nếu không phải thuộc tính đọc dữ liệu.
-      const sau = line.slice(m.index + m[0].length);
-      if (sau.startsWith('_$')) continue;
       ds.push({ truong: m[0], dong: idx + 1, mau: line.trim().slice(0, 120) });
     }
   }
@@ -135,10 +133,10 @@ const hn8481 = classify.headingNotes('8481');
 const hn9503 = classify.headingNotes('9503');
 kiem(
   'classify.headingNotes("8481") trả nguyên văn từ luật gốc, rỗng 4 trường nhiễm rời, nguồn không phải kho cũ',
-  Boolean(hn8481.nhom) && hn8481.nhom.includes('84.81') || hn8481.nhom.includes('Vòi, van') || hn8481.nhom.length > 50
-    ? (hn8481.khongBaoGom === '' && hn8481.loaiTru === '' && hn8481.tinhChat === '' && hn8481.phanBiet === ''
-       && Boolean(hn8481.chuong) && !/chu-giai-heading\.json/.test(hn8481.nguon || ''))
-    : false,
+  Boolean(hn8481.nhom)
+    && (hn8481.nhom.includes('84.81') || hn8481.nhom.includes('Vòi, van') || hn8481.nhom.length > 50)
+    && hn8481.khongBaoGom === '' && hn8481.loaiTru === '' && hn8481.tinhChat === '' && hn8481.phanBiet === ''
+    && Boolean(hn8481.chuong) && !/chu-giai-heading\.json/.test(hn8481.nguon || ''),
   JSON.stringify({ len: hn8481.nhom?.length, chLen: hn8481.chuong?.length, nguon: hn8481.nguon }),
 );
 kiem(
