@@ -186,10 +186,11 @@
       "loiCauHoi": {
         "trangThai": "co",
         "co": [
-          "HS_HOI_THEO_SO_TAY"
+          "HS_HOI_THEO_SO_TAY",
+          "HS_CA_UU_TIEN_PHAN_DONG"
         ],
         "the": "OZV-1707",
-        "ghiChu": "Đã nối (PR #1523) nhưng sau cờ HS_HOI_THEO_SO_TAY MẶC ĐỊNH TẮT. Cờ tắt thì câu hỏi gửi khách vẫn là questions / unknowns do LLM viết (lib/engine-loop.js). Trưa 21/11 QT bật thử rồi tắt (nhóm sai ở nhánh dừng sớm ⇒ câu hỏi sai hàng); không bật lại trước khi sửa OZV-1707 (L3 bổ sung). Nhóm chưa có sổ tay vẫn rơi về câu LLM (nextAction.canCuCauHoi = 'llm')."
+        "ghiChu": "Đã nối (PR #1523) nhưng sau cờ HS_HOI_THEO_SO_TAY MẶC ĐỊNH TẮT. Cờ tắt thì câu hỏi gửi khách vẫn là questions / unknowns do LLM viết (lib/engine-loop.js). Trưa 21/11 QT bật thử rồi tắt (nhóm sai ở nhánh dừng sớm ⇒ câu hỏi sai hàng); không bật lại trước khi sửa OZV-1707 (L3 bổ sung). Nhóm chưa có sổ tay vẫn rơi về câu LLM (nextAction.canCuCauHoi = 'llm'). Cờ con HS_CA_UU_TIEN_PHAN_DONG (OZV-2310, mặc định TẮT): bật thì câu phân dòng la_*/chọn dòng được ưu tiên lên đầu khi lõi đã hỏi DONG_BIEU."
       }
     },
     {
@@ -480,7 +481,9 @@
       "doc": {
         "bangCanh": {
           "trangThai": "co",
-          "qua": ["lib/do-thi/phai-doc.js"],
+          "qua": [
+            "lib/do-thi/phai-doc.js"
+          ],
           "co": [],
           "ghiChu": "ADR-0005: /api/tree trả phaiDoc, chỉ cạnh luật (loại trừ, phân biệt đã chấm chéo, nhắc nhóm, WCO), không ra mã, không tờ khai."
         }

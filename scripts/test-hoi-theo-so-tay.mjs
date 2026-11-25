@@ -1837,5 +1837,47 @@ const ketQuaSong = (raw = VAN) => ketQuaGia('848180', raw, {}, ['848120']);
     { ht2: ht2.dapAnDieuKien, ht4: ht4.dapAnDieuKien });
 }
 
+{
+  // ── OZV-2310 (BẬC 1, cụm khách hỏi nhiều nhất): cờ HS_CA_UU_TIEN_PHAN_DONG — khi lõi đã hỏi dữ kiện DONG_BIEU mà
+  // phân nhóm còn dòng mang điều kiện TÊN LOẠI/CÔNG DỤNG chưa chấm được (CHUA_BIET) thì vẫn sinh câu phân dòng
+  // la_*/chọn dòng và ĐẶT LÊN ĐẦU. Ca gốc biên bản OZV-2308: "bộ điều khiển gr2030-la1…" tại 8537.10 vòng 1 chỉ hỏi
+  // 3 dữ kiện cấu trúc (coBoXuLyLapTrinh/chiHoacChuYeu/loaiDongDien), khách hết vòng vẫn dừng 6 số (11/14 lượt).
+  const T1 = 'bộ điều khiển gr2030-la1, điện áp 220v, công suất 3kw, dùng cho động cơ bước';
+  const T2 = `${T1}, có bộ xử lý lập trình được, chuyên dùng, dòng điện xoay chiều 1A`;
+  const cuPD = process.env.HS_CA_UU_TIEN_PHAN_DONG;
+  const cuHoi = process.env.HS_HOI_THEO_SO_TAY;
+  process.env.HS_HOI_THEO_SO_TAY = 'on';
+  try {
+    delete process.env.HS_CA_UU_TIEN_PHAN_DONG;
+    const g1 = [], g2 = [];
+    const tat1 = H.cauDong8({ h4: '8537', maXet: '853710', text: T1, ghiPn6: g1 });
+    const tat2 = H.cauDong8({ h4: '8537', maXet: '853710', text: T2, ghiPn6: g2 });
+    check('OZV-2310 cờ TẮT (2/2): vòng 1 y như main — chỉ 3 câu DONG_BIEU, không la_*, stats không mang dấu cờ; vòng 2 vẫn la_* như cũ',
+      JSON.stringify(tat1.map((q) => q.key)) === JSON.stringify(['coBoXuLyLapTrinh', 'chiHoacChuYeu', 'loaiDongDien']) &&
+      g1[0].ketQuaLoi === 'THIEU_SO_LIEU' && !('uuTienPhanDong' in g1[0]) &&
+      tat2.length === 3 && tat2.every((q) => String(q.key).startsWith('la_')) && g2[0].ketQuaLoi === 'DIEU_KIEN_DONG',
+      { tat1: tat1.map((q) => q.key), tat2: tat2.map((q) => q.key), g1, g2 });
+
+    process.env.HS_CA_UU_TIEN_PHAN_DONG = 'on';
+    const g3 = [], g4 = [];
+    const bat1 = H.cauDong8({ h4: '8537', maXet: '853710', text: T1, ghiPn6: g3 });
+    const bat2 = H.cauDong8({ h4: '8537', maXet: '853710', text: T2, ghiPn6: g4 });
+    check('OZV-2310 cờ BẬT vòng 1: câu phân dòng la_* lên ĐẦU thay 3 câu DONG_BIEU — khách về tới 8 số trong 1 vòng, stats ghi dấu cờ',
+      bat1.length === 3 && bat1.every((q) => String(q.key).startsWith('la_')) &&
+      JSON.stringify(bat1.map((q) => q.key)) !== JSON.stringify(tat1.map((q) => q.key)) &&
+      g3[0].ketQuaLoi === 'THIEU_SO_LIEU' && typeof g3[0].uuTienPhanDong === 'number' && g3[0].uuTienPhanDong >= bat1.length,
+      { bat1: bat1.map((q) => q.key), g3 });
+    check('OZV-2310 cờ BẬT vòng 2: lõi không hỏi DONG_BIEU thì thứ tự giữ nguyên như cờ TẮT (la_* cuối), stats không ghi dấu cờ',
+      JSON.stringify(bat2.map((q) => q.key)) === JSON.stringify(tat2.map((q) => q.key)) && !('uuTienPhanDong' in g4[0]),
+      { bat2: bat2.map((q) => q.key) });
+    check('OZV-2310 cờ BẬT: câu la_* có căn cứ ranh-gioi-pn6 + trích đúng dòng biểu + lựa chọn Có/Không (luật câu hỏi có căn cứ)',
+      bat1.every((q) => q.canCu === 'ranh-gioi-pn6' && (q.trich || '').length > 0 && JSON.stringify(q.options) === JSON.stringify(['Có', 'Không', 'Chưa rõ'])),
+      bat1.map((q) => [q.key, q.canCu, (q.trich || '').slice(0, 50)]));
+  } finally {
+    if (cuPD == null) delete process.env.HS_CA_UU_TIEN_PHAN_DONG; else process.env.HS_CA_UU_TIEN_PHAN_DONG = cuPD;
+    if (cuHoi == null) delete process.env.HS_HOI_THEO_SO_TAY; else process.env.HS_HOI_THEO_SO_TAY = cuHoi;
+  }
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
