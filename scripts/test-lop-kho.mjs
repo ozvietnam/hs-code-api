@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 // scripts/test-lop-kho.mjs — Cổng máy M-23 (#1910): kiểm 100% tệp data/ có lớp (data/lop-kho.json)
-// và mô-đun luật KHÔNG được nạp kho BO_TRO hoặc THUC_TE. Chạy ngoại tuyến, không mạng, không AI.
+// và mô-đun luật KHÔNG được nạp kho BO_TRO, THUC_TE hoặc TIEN_LE. Chạy ngoại tuyến, không mạng, không AI.
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { GOC, co, doc, docJson, boKiem } from './lib-luat.mjs';
 
-const LOP_CAM = new Set(['BO_TRO', 'THUC_TE']);
+const LOP_CAM = new Set(['BO_TRO', 'THUC_TE', 'TIEN_LE']);
 
 /** Chuyển mẫu đường dẫn trong lop-kho.json sang RegExp đối chiếu đường dẫn tương đối kiểu POSIX. */
 export function reCuaMau(mau) {
@@ -148,7 +148,7 @@ export function kiemBangLopKho(lopKho, tepData) {
   return { loi, theoLop };
 }
 
-/** Kiểm mô-đun luật không nạp tệp lớp BO_TRO / THUC_TE (trực tiếp hay gián tiếp ngoài ngoại lệ chuyển tiếp có kiểm soát). */
+/** Kiểm mô-đun luật không nạp tệp lớp BO_TRO / THUC_TE / TIEN_LE (trực tiếp hay gián tiếp ngoài ngoại lệ có kiểm soát). */
 export function kiemMoDunLuat(lopKho, { tepGia = null } = {}) {
   const loi = [];
   for (const cfg of lopKho.moDunLuatCamLan || []) {
@@ -159,6 +159,7 @@ export function kiemMoDunLuat(lopKho, { tepGia = null } = {}) {
     }
     const ngoaiLe = cfg.ngoaiLeChuyenTiep;
     const boQua = new Set(ngoaiLe?.tepTrungGianDuocPhep || []);
+    const tepDuLieuDuocPhep = new Set(ngoaiLe?.tepDuLieuDuocPhep || []);
 
     // Kiểm nội dung chính mô-đun đối với ngoại lệ chuyển tiếp
     const rawSelf = tepGia?.has(cfg.tep) ? tepGia.get(cfg.tep) : doc(cfg.tep);
@@ -199,6 +200,7 @@ export function kiemMoDunLuat(lopKho, { tepGia = null } = {}) {
         });
         for (const m of khopMuc) {
           if (LOP_CAM.has(m.lop)) {
+            if (ngoaiLe && modTep === cfg.tep && tepDuLieuDuocPhep.has(refChuan)) continue;
             const kieu = modTep === cfg.tep ? 'trực tiếp' : `gián tiếp qua ${modTep}`;
             loi.push(`${cfg.tep} nạp kho ${m.lop} (${m.duongDan}) ${kieu} [tham chiếu ${dataRef}]`);
           }
@@ -216,7 +218,7 @@ const tepData = quetTepData();
 
 const { loi: loiBang, theoLop } = kiemBangLopKho(lopKho, tepData);
 kiem(`100% tệp data/ có lớp trong data/lop-kho.json (${tepData.length} tệp thật, không thiếu/không trùng)`, loiBang.length === 0, loiBang.slice(0, 10).join(' | '));
-kiem('tổng số tệp theo 5 lớp khớp tổng số tệp thật', Object.values(theoLop).reduce((a, b) => a + b, 0) === tepData.length, JSON.stringify(theoLop));
+kiem('tổng số tệp theo 6 lớp khớp tổng số tệp thật', Object.values(theoLop).reduce((a, b) => a + b, 0) === tepData.length, JSON.stringify(theoLop));
 
 const tepLanTrongYeu = [
   'data/chu-giai-heading.json',
@@ -229,6 +231,7 @@ const tepLanTrongYeu = [
   'data/do-thi/canh-nhac-nhom.json',
   'data/do-thi/ban-do-4so/*.json',
   'data/precedents.json',
+  'data/luat/chu-giai-2-phan-xvi.json',
 ];
 const thieuTruongLan = tepLanTrongYeu.filter((d) => !lopKho.muc.find((m) => m.duongDan === d && m.truongLan));
 kiem(`mọi kho lẫn trọng yếu (${tepLanTrongYeu.length} mục) đều ghi rõ trường lẫn`, thieuTruongLan.length === 0, thieuTruongLan.join(', '));
@@ -273,7 +276,19 @@ const ca6 = kiemBangLopKho(
   },
   tepData,
 );
-kiem('CA NGƯỢC 6: trùng duongDan hoặc khai lớp ngoài 5 lớp chuẩn ⇒ ĐỎ', ca6.loi.some((x) => x.includes('trùng duongDan')) && ca6.loi.some((x) => x.includes('SAI_LOP')));
+kiem('CA NGƯỢC 6: trùng duongDan hoặc khai lớp ngoài 6 lớp chuẩn ⇒ ĐỎ', ca6.loi.some((x) => x.includes('trùng duongDan')) && ca6.loi.some((x) => x.includes('SAI_LOP')));
+
+const ca7 = kiemMoDunLuat(lopKho, {
+  tepGia: new Map([
+    ['lib/chu-giai-goc.js', "const tb = require('fs').readFileSync('data/precedents.json', 'utf8');"],
+    ['lib/do-thi/dan-chieu.js', "const { dataReadPath } = require('./data-paths'); dataReadPath('luat-goc', 'thong-bao.jsonl');"],
+  ]),
+});
+kiem(
+  'CA NGƯỢC 7: mô-đun luật nạp precedents.json hoặc luat-goc/thong-bao.jsonl (TIEN_LE) ⇒ ĐỎ',
+  ca7.some((x) => x.includes('TIEN_LE') && x.includes('data/precedents.json'))
+    && ca7.some((x) => x.includes('TIEN_LE') && x.includes('luat-goc/thong-bao.jsonl')),
+);
 
 if (process.argv.includes('--thong-ke')) {
   console.log('\n=== THỐNG KÊ M-23 (data/lop-kho.json) ===');
