@@ -387,6 +387,55 @@ ca(
   tepThieu.slice(0, 5),
 );
 
+// ── 1b. Chiều ngược (#1850): mọi scripts/test-*.mjs phải được danh sách gọi ────────────────────
+// Quy tắc 3 chỉ kiểm chiều "danh sách → tệp phải tồn tại". Chiều ngược thiếu nên 23 tệp mang tên
+// test không cổng nào gọi vẫn lọt qua CI. Miễn trừ bắt buộc kèm lý do từng tệp, và không được
+// trùng với danh sách (miễn trừ cho tệp đã đăng ký là miễn trừ chết, phải xoá).
+const MIEN_TRU_MO_COI = {
+  'test-isolate-data.mjs':
+    'Đồ dùng chung, không phải cổng: import side-effect đặt HS_DATA_DIR sang thư mục tạm, 0 ca kiểm, được 263 tệp khác import.',
+  'test-a3-early-exit-coc-latency.mjs':
+    'ĐỎ ngưỡng thời gian: wall < 2000 ms, đo 2648 ms trên Windows (6 pass / 1 fail). Không nới ngưỡng — QT quyết (#1850).',
+  'test-cuon-chieu-v1.mjs':
+    'ĐỎ vì khuôn lấy .pathname từ URL module cho ra C:\\C:\\… → ENOENT data/so-tay/8412.json, in 0 ca. Sửa thuộc #1846, không phải việc của cổng này.',
+  'test-do-do-thi-gd2.mjs':
+    'ĐỎ ngân sách thời gian nội bộ subMs < 30000, đo 75405 ms cho 2 lượt (13 pass / 1 fail). Nhãn "chạy nhanh < 15s" trong tệp không đúng trên máy đo. Không nới ngưỡng — QT quyết.',
+  'test-engine-loop-ma-du-kien.mjs':
+    'ĐỎ 5 ca hành vi OZV-1388: mong results[0] = 32041900 duKien=true, nhận 320417 NEED_FACTS. Đo trên main cũ a9118a5c cũng 7 pass / 5 fail ⇒ hỏng sẵn, không do engine mới. Không sửa lib/engine-loop.js (QT cấm).',
+  'test-import-customs-danh-muc.mjs':
+    'ĐỎ 1 ca: mong CLI thoát 1 khi dữ liệu thiếu, nhận exit 0 vì scripts/import-customs-danh-muc.mjs dùng main-guard ghép file:// với argv[1] nên main() không chạy trên Windows (đo: stdout 0 byte, exit 0). Sửa thuộc #1846.',
+  'test-kho-dap-an.mjs':
+    'ĐỎ 6 ca: scripts/thong-ke-kho-dap-an.mjs cùng main-guard chết nên JSON.parse(stdout) trượt. Thí nghiệm một biến số trên bản sao: guard cũ 0 byte, đổi sang pathToFileURL 532 byte JSON. Sửa thuộc #1846.',
+  'test-loai-tru-nhom.mjs':
+    'ĐỎ vì khuôn lấy .pathname từ URL module → ENOENT C:\\C:\\… data/so-tay/5402.json, in 0 ca. Sửa thuộc #1846.',
+  'test-ozv-590-khong-ra-ma.mjs':
+    'ĐỎ 2 ca replay 50 ca: #30 (82089000) và #45 (87141090) mong khongRaMa=true nhưng nhận mã. Đo trên main cũ a9118a5c cũng 26 pass / 2 fail, đúng hai ca đó ⇒ hỏng sẵn. Không sửa nhãn/ngưỡng — QT quyết (#1850).',
+  'test-phan-biet-vat-lieu-t2.mjs':
+    'ĐỎ vì khuôn lấy .pathname từ URL module → ENOENT C:\\C:\\… data/so-tay/6103.json, in 0 ca. Sửa thuộc #1846.',
+};
+
+const tepTestScripts = fs
+  .readdirSync(path.join(GOC, 'scripts'))
+  .filter((f) => /^test-.*\.mjs$/.test(f))
+  .sort();
+const tepDuocGoi = new Set(
+  danhSach.flatMap((x) => [...x.lenh.matchAll(/scripts\/(test-[A-Za-z0-9._-]+\.mjs)/g)].map((m) => m[1])),
+);
+const moCoi = tepTestScripts.filter((f) => !tepDuocGoi.has(f) && !(f in MIEN_TRU_MO_COI));
+ca(
+  `mọi scripts/test-*.mjs (${tepTestScripts.length} tệp) đều được danh-sach-test.txt gọi hoặc nằm trong miễn trừ có lý do`,
+  moCoi.length === 0,
+  moCoi,
+);
+const mienTruHong = Object.entries(MIEN_TRU_MO_COI)
+  .filter(([f, lyDo]) => !fs.existsSync(path.join(GOC, 'scripts', f)) || !String(lyDo).trim() || tepDuocGoi.has(f))
+  .map(([f]) => f);
+ca(
+  `mỗi mục miễn trừ (${Object.keys(MIEN_TRU_MO_COI).length} tệp) còn tồn tại, có lý do, và không trùng với danh sách`,
+  mienTruHong.length === 0,
+  mienTruHong,
+);
+
 // ── 2. Kiểm hành vi runner qua subprocess với danh sách tạm ────────────────────────────────────
 const RUNNER = path.join(GOC, 'scripts', 'chay-danh-sach-test.mjs');
 const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 's8-runner-'));
