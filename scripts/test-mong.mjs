@@ -17,6 +17,7 @@ kiem('nút đúng: 0 lỗi', loi([nut({})]) === '');
 kiem('trùng id', /trùng id/.test(loi([nut({}), nut({})])));
 kiem('thiếu nguồn / trang / hiệu lực', /nguon\.vanBan/.test(loi([nut({ nguon: {} })])) && /hieuLuc/.test(loi([nut({ hieuLuc: null })])));
 kiem('doanSau bị từ chối', /bỏ doanSau/.test(loi([nut({ doanSau: ['x'] })])));
+kiem('chuaDoiChieu: tiền lệ được bỏ qua đối chiếu, luật thì không', loi([nut({ id: 'tb:1-2020:84812090', loai: 'THONG_BAO', lop: 'TIEN_LE', chuaDoiChieu: true, nguyenVan: 'lạ lạ lạ lạ lạ lạ' })], { vanBan: ['x'] }) === '' && /chỉ dành cho lop TIEN_LE/.test(loi([nut({ chuaDoiChieu: true })])));
 kiem('cha không có', /cha "phan:I" không có/.test(loi([nut({ cha: 'phan:I' })])));
 kiem('dính tiêu đề chương khác', /dính tiêu đề Chương 55/.test(loi([nut({ id: 'nhom:5408:ct:1', loai: 'CHU_GIAI_CHI_TIET', lop: 'HUONG_DAN', nguyenVan: 'vải\nChương 55\nXơ sợi' })])));
 kiem('không nguyên văn', /không nguyên văn/.test(loi([nut({ nguyenVan: 'Câu này không có trong văn bản gốc.' })], { vanBan: ['Kim loại cơ bản và sản phẩm'] })));
