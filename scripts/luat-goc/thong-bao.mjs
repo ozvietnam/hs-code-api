@@ -1,11 +1,16 @@
 #!/usr/bin/env node
 // scripts/luat-goc/thong-bao.mjs — data/precedents.json → data/luat-goc/thong-bao.jsonl (khuôn nut-luat@1, lớp TIEN_LE) + docs/mong/the/M-19-tung-dong-thong-bao.md.
 // Tất định, không mạng, không AI, không tờ khai, không đọc legacy-hs-mapping (không suy mã mới). Mỗi bản ghi kho cũ ra đúng một kết cục.
-//   node scripts/luat-goc/thong-bao.mjs [--kiem]     --kiem: chỉ so với tệp đang có, lệch thì thoát 1
+// Nút có toàn văn: nguyenVan = mục kết quả, moTaKhaiBao = mục tên hàng khai báo, chép từ toàn văn. Không có toàn văn: chữ kho cũ, chuaDoiChieu:true.
+//   node scripts/luat-goc/thong-bao.mjs <thư mục toàn văn> [--kiem]     --kiem: chỉ so với tệp đang có, lệch thì thoát 1
 import fs from 'node:fs';
 import path from 'node:path';
 import { GOC, doc, docDong, chat, gon } from './thong-bao-doc.mjs';
 import { BANG_CHUNG, THAY_THE } from './thong-bao-du-lieu-bang-chung.mjs';
+import { docToanVan, rut, boTen, so8 } from './thong-bao-toan-van.mjs';
+
+const tmGoc = process.argv[2]; if (!tmGoc || tmGoc.startsWith('--') || !fs.existsSync(tmGoc)) { console.error('thiếu thư mục toàn văn (tracuuhs-detail*.json)'); process.exit(2); }
+const toanVan = docToanVan(tmGoc);
 
 const NGUONG_LECH = 60; // % cụm chữ của mô tả có trong toàn văn; dưới mức này là chữ không thuộc thông báo
 const LY_DO = {
@@ -28,10 +33,11 @@ const GIU_CHO = /^Hàng hóa thuộc nhóm \d{4} - xem|^\[SKIP|^Tại bảng|ch�
 const trong = (s) => GIU_CHO.test(gon(s)) || chat(gon(s).replace(/\(?(?:chi tiết )?theo phụ lục đính kèm\)?/gi, '').replace(/của tờ khai/gi, '').replace(/[\d,.\s-]+/g, '')).length < 4;
 // Kho cũ có ghi ba lần đính chính; nội dung lấy đúng trong bản ghi (precedents.json#32082090[13], #38249999[318], #38249999[128]), không suy.
 const DINH_CHINH = {
-  '1811/TB-TCHQ|2020': { boi: '2174/TB-TCHQ', ngay: '2020-04-03', maCu: '32082090', ma: '32089090' },
+  '1811/TB-TCHQ|2020': { boi: '2174/TB-TCHQ', ngay: '2020-04-03', maCu: '32082090', ma: '32089090', trich: 'phân nhóm 3208.90 “- Loại khác”, mã số 3208.90.90 “- - Loại khác”' },
   '1909/TB-TCHQ|2020': { boi: '131/TB-TCHQ', ngay: '2021-01-12', maCu: null, ma: '38249999' },
   '1182/TB-TCHQ|2018': { boi: '1377/TB-TCHQ', ngay: null, maCu: null, ma: '38249999' },
 };
+for (const [k, v] of Object.entries(DINH_CHINH)) if (v.trich && !(toanVan.get(`${v.boi}|${k.split('|')[1]}`) || []).some((x) => x.chu.includes(v.trich))) throw new Error(`câu đính chính ${v.boi} không có trong toàn văn`);
 const LA_DINH_CHINH = new Set(Object.entries(DINH_CHINH).map(([k, v]) => `${v.boi}|${k.split('|')[1]}`));
 const CO_QUAN = { 'TB-TCHQ': 'Tổng cục Hải quan', 'TB-CHQ': 'Cục Hải quan' };
 
@@ -57,29 +63,39 @@ const soSanh = (a, b) => { const p = hang(a); const q = hang(b); for (let i = 0;
 const thayTheo = new Map(); const biThay = new Map(); const them = (m, k, v) => { if (!m.has(k)) m.set(k, []); if (!m.get(k).some((y) => y.so === v.so && y.ngay === v.ngay)) m.get(k).push(v); };
 for (const m of doc('data/tien-le-thay-the.json').muc) {
   const cu = `${m.cu.soHieu}|${m.cu.ngay.slice(0, 4)}`; const moi = `${m.moi.soHieu}|${m.moi.ngay.slice(0, 4)}`;
-  them(biThay, cu, { so: m.moi.soHieu, ngay: m.moi.ngay, trich: m.canCu.trich, canCu: 'data/tien-le-thay-the.json' }); them(thayTheo, moi, { so: m.cu.soHieu, ngay: m.cu.ngay });
+  them(biThay, cu, { so: m.moi.soHieu, ngay: m.moi.ngay, trich: m.canCu.trich, canCu: 'data/tien-le-thay-the.json' }); them(thayTheo, moi, { so: m.cu.soHieu, ngay: m.cu.ngay, trich: m.canCu.trich, canCu: 'data/tien-le-thay-the.json' });
 }
-for (const m of THAY_THE) { them(biThay, `${m.cu}|${m.ngayCu.slice(0, 4)}`, { so: m.moi, ngay: m.ngayMoi, trich: m.trich, canCu: `toàn văn ${m.moi} năm ${m.namMoi}` }); them(thayTheo, `${m.moi}|${m.namMoi}`, { so: m.cu, ngay: m.ngayCu }); }
+for (const m of THAY_THE) { them(biThay, `${m.cu}|${m.ngayCu.slice(0, 4)}`, { so: m.moi, ngay: m.ngayMoi, trich: m.trich, canCu: `toàn văn ${m.moi} năm ${m.namMoi}` }); them(thayTheo, `${m.moi}|${m.namMoi}`, { so: m.cu, ngay: m.ngayCu, trich: m.trich, canCu: 'toàn văn' }); }
+// Câu căn cứ lấy từ toàn văn khi có (câu ở tien-le-thay-the.json có khi qua công cụ đọc web).
+for (const [k, ds] of thayTheo) for (const y of ds) { const t = THAY_THE.find((m) => `${m.moi}|${m.namMoi}` === k && m.cu === y.so && m.ngayCu === y.ngay); if (t) { y.trich = t.trich; y.canCu = 'toàn văn'; } }
 
 const nut = []; const dungThay = new Set();
 for (const [id, ds] of [...nhom].sort((a, b) => { const [, x, m] = a[0].split(':'); const [, y, n] = b[0].split(':'); return m < n ? -1 : m > n ? 1 : x.split('-').at(-1) - y.split('-').at(-1) || parseInt(x, 10) - parseInt(y, 10) || (x < y ? -1 : 1); })) {
   const xep = [...ds].sort(soSanh); const x = xep[0]; const b = BANG_CHUNG[x.viTri] || {}; for (const y of xep.slice(1)) bo(y, 'GOP_TRUNG', id); ketCuc.set(x.viTri, { ly: 'NUT', them: id });
   const khoa = `${x.soDay}|${x.nam}`; const ngay = xep.find((y) => y.ngay)?.ngay || null; const loai = xep.find((y) => y.loaiTB)?.loaiTB || null; const dc = DINH_CHINH[khoa]; const bt = biThay.get(khoa) || []; const tt = thayTheo.get(khoa) || [];
   if (bt.length) dungThay.add(khoa); const bieuGoc = xep.find((y) => y.bieu)?.bieu || null;
-  // Kết luận: chỉ giữ khi là chữ thông báo (khuôn "thuộc nhóm … mã số …"), không phải câu giữ chỗ "Theo TB-TCHQ …: …", và không lệch toàn văn.
-  const kl = [x, ...xep].find((y) => { const c = BANG_CHUNG[y.viTri] || {}; return /thuộc\s+nhóm|thuộc\s+\d\d\.\d\d|phân nhóm|mã số/i.test(y.ketLuan) && !/^Theo TB-T?CHQ|Xem TB-T?CHQ|Căn cứ: TB-T?CHQ/.test(y.ketLuan) && !(c.k < 80); });
-  const gc = [];
+  const tv = rut(toanVan.get(khoa), x.ma); const nv = tv && boTen(tv.kq); const kbRut = tv?.kb ? boTen(tv.kb) : null; if (kbRut?.boCau && kbRut.chu.length < tv.kb.length / 2) kbRut.chu = ''; // câu nêu hàng nằm chung với tên doanh nghiệp: để trống, không giữ mẩu thừa
+  const coTv = Boolean(nv && nv.chu.length > 30 && (tv.coMa || dc?.maCu || /thuộc\s+(?:nhóm|phân nhóm)/i.test(nv.chu)));
+  // Kết luận kho cũ: chỉ cho nút không có toàn văn, chỉ khi là chữ thông báo ("thuộc nhóm … mã số …"), không phải câu giữ chỗ.
+  const kl = coTv ? null : [x, ...xep].find((y) => /thuộc\s+nhóm|thuộc\s+\d\d\.\d\d|phân nhóm|mã số/i.test(y.ketLuan) && !/^Theo TB-T?CHQ|Xem TB-T?CHQ|Căn cứ: TB-T?CHQ/.test(y.ketLuan));
+  const gc = []; const thieu = [];
   if (x.maTu === 'outcome') gc.push(`kho cũ để dưới khoá ${x.khoa}`); if (x.maTu === 'hsCodeGoc') gc.push(`kho cũ để dưới mã dẫn nối ${x.khoa}`);
-  if (x.namTu === 'url') gc.push('năm lấy từ địa chỉ nguồn'); if (x.khongSo) gc.push('số lấy từ source.reference của kho cũ'); if (b.g) gc.push(`ngày đầu văn bản trong toàn văn: ${b.g}`); if (b.m === 0) gc.push('toàn văn không in mã 8 số (bị cắt)');
+  if (x.namTu === 'url') gc.push('năm lấy từ địa chỉ nguồn'); if (x.khongSo) gc.push('số lấy từ source.reference của kho cũ'); if (b.g) gc.push(`ngày đầu văn bản trong toàn văn: ${b.g}`);
+  if (coTv) {
+    if (!tv.coMa && !dc?.maCu) gc.push('bản toàn văn bị che mất mã 8 số; mã theo kho cũ'); if (!tv.coMa && dc?.maCu) gc.push(`mục kết quả in mã ${dc.maCu}, đã được ${dc.boi} đính chính`);
+    if (nv.boNsx || kbRut?.boNsx) thieu.push('tên nhà sản xuất (không chép tên doanh nghiệp)'); if (nv.boCau) thieu.push(`${nv.boCau} câu có tên doanh nghiệp ở mục kết quả`); if (kbRut?.boCau) thieu.push(`${kbRut.boCau} câu có tên doanh nghiệp ở mục khai báo`);
+    if (/##/.test(nv.chu + (kbRut?.chu || ''))) thieu.push('chỗ bản chữ nguồn đã che (##…##)');
+  }
+  if (!coTv && toanVan.has(khoa)) gc.push('có toàn văn nhưng mục kết quả bị che mất kết luận; giữ chữ kho cũ');
   nut.push({
-    id, loai: 'THONG_BAO', cha: null, so: x.soDay, nguyenVan: String(x.moTa).normalize('NFC').trim(), lop: 'TIEN_LE',
-    nguon: { vanBan: `Thông báo ${x.soDay}${ngay ? ` ngày ${ngay}` : ` năm ${x.nam}`}`, ban: bieuGoc ? `biểu ${bieuGoc} (kho ghi)` : 'theo ngày ban hành (kho không ghi biểu)', trang: null, url: x.url, tep: x.tep },
+    id, loai: 'THONG_BAO', cha: null, so: x.soDay, nguyenVan: coTv ? nv.chu : String(x.moTa).normalize('NFC').trim(), lop: 'TIEN_LE',
+    ...(coTv ? { moTaKhaiBao: kbRut?.chu || null } : { chuaDoiChieu: true, ketLuan: kl ? kl.ketLuan.normalize('NFC').trim() : null }),
+    nguon: { vanBan: `Thông báo ${x.soDay}${ngay ? ` ngày ${ngay}` : ` năm ${x.nam}`}`, ban: bieuGoc ? `biểu ${bieuGoc} (kho ghi)` : 'theo ngày ban hành (kho không ghi biểu)', trang: null, url: x.url, ...(coTv && { tep: tv.tep, sha256: tv.sha256 }), tepKhoCu: x.tep },
     hieuLuc: { tu: ngay, den: bt.map((y) => y.ngay).filter(Boolean).sort()[0] || null },
     ngay, nam: x.nam, coQuan: CO_QUAN[x.kyHieu], loaiThongBao: loai, maLucBanHanh: x.ma, conTrongBieu: x.ma.length === 8 ? bieu.has(x.ma) : dauBieu.has(x.ma),
-    thayThe: tt, biThay: bt, ...(dc && { dinhChinh: { boi: dc.boi, ngay: dc.ngay, ...(dc.maCu && { maTruocDinhChinh: dc.maCu }) } }),
-    ketLuan: kl ? kl.ketLuan.normalize('NFC').trim() : null,
-    doiChieu: b.n === undefined ? (b.p === 1 ? 'MA_KHOP_PDF_QUET' : b.p ? 'MA_LECH_PDF_QUET' : 'KHONG_CO_BAN_GOC') : b.N ? 'NGUYEN_VEN' : 'KHOP_MOT_PHAN', phuToanVan: b.n ?? null, ...(b.p && b.p !== 1 && { maPdfQuet: b.p }),
-    khoCu: xep.map((y) => y.viTri), ...(gc.length && { ghiChu: gc.join('; ') }),
+    thayThe: tt.map((y) => `${y.so}/${y.ngay.slice(0, 4)}`), ...(tt.length && { thayTheCanCu: tt.map((y) => ({ so: y.so, ngay: y.ngay, trich: y.trich, canCu: y.canCu })) }), biThay: bt,
+    ...(dc && { dinhChinh: { boi: dc.boi, ngay: dc.ngay, ...(dc.maCu && { maTruocDinhChinh: dc.maCu }), ...(dc.trich && { trich: dc.trich }) } }),
+    ...(b.p && b.p !== 1 && { maPdfQuet: b.p }), khoCu: xep.map((y) => y.viTri), ...(thieu.length && { thieu: thieu.join('; ') }), ...(gc.length && { ghiChu: gc.join('; ') }),
   });
 }
 const ra = `${nut.map((x) => JSON.stringify(x)).join('\n')}\n`;
@@ -103,11 +119,14 @@ for (const [k, v] of nhieu) {
 }
 L.push('', `## ${nhieu.length} thông báo kho cũ gắn nhiều khoá mã (cùng số + cùng trường năm)`, '', '| Lớp | Thông báo |', '|---|---:|', ...Object.entries(lopNhieu).sort().map(([a, b]) => `| ${a} | ${b} |`), '', '| Lớp | Số, năm | Khoá kho cũ → mã lúc ban hành → kết cục |', '|---|---|---|');
 for (const [lop, k, v] of dn.sort((a, b) => (a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0))) L.push(`| ${lop[0]} | ${k.replace('|', ', ')} | ${v.map((x) => `${x.khoa}${x.ma !== x.khoa ? ` → ${x.ma}` : ''}: ${kq(x)}`).join('<br>')} |`);
+const maTv = (x) => { const ds = toanVan.get(`${x.soDay}|${x.nam}`); if (!ds) return 'không có toàn văn'; return rut(ds, x.ma)?.coMa ? `in ${x.ma}` : 'không thấy mã'; };
+for (const [tu, ten] of [['outcome', 'để sai khoá (outcome khác khoá)'], ['hsCodeGoc', 'để dưới mã dẫn nối (hsCodeGoc)']]) { const ds = dong.filter((x) => x.maTu === tu); L.push('', `## ${ds.length} bản ghi ${ten}`, '', '| Vị trí | Số, năm | Mã lúc ban hành | Toàn văn, mục kết quả | Kết cục |', '|---|---|---|---|---|', ...ds.map((x) => `| ${x.viTri} | ${x.soDay}, ${x.nam} | ${x.ma} | ${maTv(x)} | ${kq(x)} |`)); }
+const pq = nut.filter((x) => x.maPdfQuet); L.push('', `## ${pq.length} nút bản đọc PDF quét cho mã khác`, '', 'Không có toàn văn chữ; giữ mã kho, `chuaDoiChieu:true`.', '', '| Nút | Mã PDF quét | Mô tả kho |', '|---|---|---|', ...pq.map((x) => `| \`${x.id}\` | ${x.maPdfQuet} | ${o(x.nguyenVan).slice(0, 120)} |`));
 for (const [ly, moTa] of Object.entries(LY_DO)) { if (ly === 'NUOC_NGOAI' || ly === 'GOP_TRUNG') continue; const ds = dong.filter((x) => ketCuc.get(x.viTri).ly === ly); L.push('', `## ${ly}: ${ds.length}`, '', moTa, '', '| Vị trí | Số | Năm | Mã | Bằng chứng / nguồn |', '|---|---|---|---|---|', ...ds.map((x) => `| ${x.viTri} | ${x.soDay} | ${x.nam ?? ''} | ${x.ma} | ${o(['LOI_AGENT'].includes(ly) ? `${x.nguoi}; ${ketCuc.get(x.viTri).them}; ${x.url}` : ketCuc.get(x.viTri).them)} |`)); }
 const gop = dong.filter((x) => ketCuc.get(x.viTri).ly === 'GOP_TRUNG'); L.push('', `## GOP_TRUNG: ${gop.length}`, '', 'Từng bản ghi nằm ở trường `khoCu` của nút (phần tử đầu là bản được giữ chữ).', '', '## Thay thế', '', '| Thông báo bị thay | Bị thay bởi | Có nút | Căn cứ |', '|---|---|---|---|', ...[...biThay].sort().map(([k, v]) => `| ${k.replace('|', ', ')} | ${v.map((y) => `${y.so} (${y.ngay})`).join(', ')} | ${dungThay.has(k) ? 'có, đã ghi `hieuLuc.den`' : 'không có trong kho'} | ${v[0].canCu} |`));
 const bc = `${L.join('\n')}\n`;
 const f1 = path.join(GOC, 'data/luat-goc/thong-bao.jsonl'); const f2 = path.join(GOC, 'docs/mong/the/M-19-tung-dong-thong-bao.md');
 if (process.argv.includes('--kiem')) { const khac = [[f1, ra], [f2, bc]].filter(([f, s]) => !fs.existsSync(f) || fs.readFileSync(f, 'utf8') !== s); console.log(khac.length ? `LỆCH: ${khac.map((x) => x[0]).join(', ')}` : 'KHỚP'); process.exit(khac.length ? 1 : 0); }
 fs.writeFileSync(f1, ra); fs.writeFileSync(f2, bc);
-const c = (f) => nut.filter(f).length; const dd = {}; for (const x of nut) dd[x.doiChieu] = (dd[x.doiChieu] || 0) + 1;
-console.log(JSON.stringify({ tong: dong.length, dem, lopNhieu, conTrongBieu: c((x) => x.conTrongBieu), khongCon: c((x) => !x.conTrongBieu), coNgay: c((x) => x.ngay), coKetLuan: c((x) => x.ketLuan), biThay: c((x) => x.biThay.length), thayThe: c((x) => x.thayThe.length), thieuUrl: c((x) => !x.nguon.url), doiChieu: dd, ngayKhacToanVan: c((x) => /ngày đầu văn bản/.test(x.ghiChu || '')), namTuUrl: c((x) => /năm lấy từ/.test(x.ghiChu || '')), soNguon: c((x) => /source\.reference/.test(x.ghiChu || '')), khacKhoa: c((x) => /kho cũ để dưới/.test(x.ghiChu || '')), cucHaiQuan: c((x) => x.coQuan === 'Cục Hải quan') }, null, 1));
+const c = (f) => nut.filter(f).length;
+console.log(JSON.stringify({ tong: dong.length, dem, lopNhieu, toanVan: c((x) => !x.chuaDoiChieu), chuaDoiChieu: c((x) => x.chuaDoiChieu), coKhaiBao: c((x) => x.moTaKhaiBao), maTrongKetQua: c((x) => !x.chuaDoiChieu && so8(x.nguyenVan).includes(x.maLucBanHanh)), matMa: nut.filter((x) => /mất mã|đã được/.test(x.ghiChu || '')).map((x) => x.id), nsx: c((x) => /nhà sản xuất/.test(x.thieu || '')), boCau: c((x) => /câu có tên/.test(x.thieu || '')), che: c((x) => /che \(/.test(x.thieu || '')), conTrongBieu: c((x) => x.conTrongBieu), khongCon: c((x) => !x.conTrongBieu), biThay: c((x) => x.biThay.length), thayThe: c((x) => x.thayThe.length) }, null, 1));

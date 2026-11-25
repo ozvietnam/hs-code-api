@@ -1,11 +1,13 @@
 # M-19 – Thông báo kết quả phân loại (`data/luat-goc/thong-bao.jsonl`)
 
-Rút tất định từ `data/precedents.json` (4.908 bản ghi). Không dùng tờ khai, không dùng `legacy-hs-mapping`, không AI. Lớp `TIEN_LE`: chỉ để kiểm ở bước cuối (ADR-0004). Từng dòng: `M-19-tung-dong-thong-bao.md`.
+Danh mục thông báo, mã lúc ban hành, bảng cân: từ `data/precedents.json` (4.908 bản ghi). **Chữ: từ toàn văn thông báo cho 2.270 nút**; 815 nút không có toàn văn dùng được thì giữ chữ kho cũ, `chuaDoiChieu: true`. Không dùng tờ khai, không dùng `legacy-hs-mapping`, không AI. Lớp `TIEN_LE`: chỉ để kiểm ở bước cuối (ADR-0004). Từng dòng: `M-19-tung-dong-thong-bao.md`.
 
 ```
-node scripts/luat-goc/thong-bao.mjs            # dựng kho + bảng từng dòng (không cần bản gốc)
-node scripts/luat-goc/thong-bao.mjs --kiem     # dựng lại, so từng byte
-node scripts/luat-goc/thong-bao-bang-chung.mjs <thư mục toàn văn> [--ban-chu <thong-bao.txt>]   # đo lại, chỉ chạy nơi có toàn văn
+G=<thư mục có tracuuhs-detail*.json>            # 126 tệp, 2.737 bản toàn văn, 2.300 thông báo; ngoài repo
+node scripts/luat-goc/thong-bao.mjs $G           # dựng kho + bảng từng dòng
+node scripts/luat-goc/thong-bao.mjs $G --kiem    # dựng lại, so từng byte
+node scripts/luat-goc/thong-bao-bang-chung.mjs $G --ban-chu <thư mục riêng>/thong-bao.txt
+LUAT_GOC_TXT=<thư mục riêng> node scripts/kiem-luat-goc.mjs thong-bao
 ```
 
 ## Bảng cân
@@ -24,35 +26,27 @@ node scripts/luat-goc/thong-bao-bang-chung.mjs <thư mục toàn văn> [--ban-ch
 | MA_BI_DINH_CHINH: 1811/TB-TCHQ để dưới 32082090 | 1 |
 | **Cộng** | **4.908** |
 
-"Để riêng" là không vào kho luật gốc; bản ghi vẫn nguyên trong kho cũ, có số, mã, địa chỉ nguồn trong bảng từng dòng để lấy lại bằng nguyên văn.
+"Để riêng" là không vào kho luật gốc; bản ghi vẫn nguyên trong kho cũ, có số, mã, địa chỉ nguồn (hoặc bằng chứng) trong bảng từng dòng để lấy lại bằng nguyên văn.
 
 ## Quy ước
 
 - id `tb:<số>-<năm>:<mã lúc ban hành>` cho `TB-TCHQ`; ký hiệu khác ghi vào số: `tb:20639.TB-CHQ-2026:…`. Số 119 và 223 năm 2025 có ở cả hai ký hiệu, nên không dùng số trần cho `TB-CHQ`.
 - Cùng thông báo, cùng mã, nhiều mặt hàng thì dùng hậu tố `_b`, `_c` sau năm (`tb:851-2023_b:84812090`). **Hiện không có nút nào cần:** trong 1.356 bản ghi gộp không có cặp nào cùng một tệp nguồn mà mô tả khác hàng; khác nhau là do hai người cào lấy hai mục của một thông báo.
 - `maLucBanHanh`: `hsCodeGoc` nếu kho ghi; không thì `outcome` khi khác khoá; không thì khoá. 42 nút kho cũ để dưới khoá khác (mã dẫn nối hoặc khoá sai), ghi ở `ghiChu`. Không nút nào mang mã dẫn nối.
-- `nguyenVan` = mô tả hàng đúng như kho giữ, kể cả dấu nối " — ", " - ", nhãn "TM:" và chữ "doanh nghiệp" kho cũ đã thay tên công ty. Nhiều bản thì giữ bản nguyên vẹn nhất so với toàn văn, rồi bản dài hơn.
-- `ketLuan` = câu "thuộc nhóm … mã số …" của kho; 70 nút `null` (kho chỉ có câu giữ chỗ). Đã cắt hai câu kho cũ gắn thêm: "Dẫn nối … OZV-400", "Đính chính tại Thông báo …".
+- **Nút có toàn văn:** `nguyenVan` = trọn mục "Kết quả phân loại" / "Kết quả xác định trước mã số" (mô tả + câu kết luận mã), từ sau tiêu đề tới trước "Thông báo này có hiệu lực…"; `moTaKhaiBao` = mục "Tên hàng theo khai báo" / "Hàng hóa đề nghị xác định trước mã số" (2.137 nút; 133 nút `null`). Chỉ gộp khoảng trắng. `nguon.tep`, `nguon.sha256` = tệp và mã băm của chính toàn văn (trường `noi_dung`, NFC); `nguon.tepKhoCu` = tệp kho cũ. Nhiều bản toàn văn thì lấy bản có mã ở mục kết quả, ít chỗ che nhất, rồi thứ tự tệp.
+- **Không chép tên doanh nghiệp** (ghi ở `thieu`): 732 nút giữ nhãn "Nhà sản xuất:" nhưng bỏ phần tên; 217 nút bỏ câu có tên (17 ở mục kết quả, 203 ở mục khai báo; mục khai báo mất quá nửa thì để `null`). 15 nút bản chữ nguồn đã che sẵn (`##DN##`), giữ nguyên dấu che. Câu có mã kết luận không bao giờ bị bỏ. Tên không kèm dấu hiệu (Ltd, TNHH, NSX…) máy không nhận ra.
+- **815 nút `chuaDoiChieu: true`:** `nguyenVan` = mô tả hàng của kho cũ, `ketLuan` = câu "thuộc nhóm … mã số …" của kho cũ (đã cắt hai câu kho cũ gắn thêm "Dẫn nối … OZV-400", "Đính chính tại Thông báo …"). 813 không có toàn văn; 2 có toàn văn nhưng bản chữ bị che mất kết luận (5439/2022, 3349/2024).
+- `thayThe: ["<số/năm>"]`, câu nguyên văn ở `thayTheCanCu`; chiều ngược ở `biThay`.
 - `conTrongBieu` theo `data/tax.json`: 2.816 còn, 269 không còn (104 mã). `trang` null mọi nút. `hieuLuc.tu` = ngày ban hành (3.067 nút; 18 nút kho không có ngày). 15 nút lấy năm từ địa chỉ nguồn.
 
 ## Đối chiếu
 
-**Cổng:** `PASS thong-bao: 3085 nút, 0 lỗi, 0 cảnh báo — CHƯA ĐỐI CHIẾU nguyên văn`.
-
-**Với `LUAT_GOC_TXT` thì ĐỎ: 2.759 nút.** Bản chữ là toàn văn 2.300 thông báo (2.737 bản, 126 tệp cào tracuuhs của oz-wiki, sha256 `b8016849…e318`), nằm ngoài repo vì có tên, địa chỉ, mã số thuế doanh nghiệp. 813 nút đỏ vì không có toàn văn; số còn lại vì kho cũ ghép hai mục ("tên khai báo — tên theo cấu tạo") bằng dấu nối không có trong văn bản, cổng so liền câu nên trượt. Không sửa chữ để qua cổng.
-
-Đo riêng, **toàn bộ** 2.272 nút có toàn văn, không lấy mẫu:
-
-| | Nút |
-|---|---:|
-| Mọi mảnh mô tả có nguyên vẹn (chỉ bỏ khoảng trắng, dấu câu) | 1.924 |
-| Khớp một phần: phủ 78–100% cụm 6 ký tự (thiếu chữ, "doanh nghiệp" thay tên, lỗi gõ) | 348 |
-| Số đầu văn bản in đúng số của nút | 2.250 (22 văn bản mất phần đầu) |
-| Tách được mã ở mục kết luận và **khớp `maLucBanHanh`** | 1.566/1.567 |
-
-Mã lệch duy nhất là 1811/TB-TCHQ, đã được 2174/TB-TCHQ đính chính. 705 văn bản còn lại không tách được mã theo mẫu, nhưng mã của nút có in trong văn bản, trừ 4 nút toàn văn bị cắt mất mã (5439/2022, 3349/2024, 3408/2024, 2411/2018). 32 nút rút ngẫu nhiên (hạt 19): 22 đọc cạnh mục kết luận, đúng hàng cả 22; 10 nút còn lại đoạn in ra là phần cuối văn bản, chỉ dựa vào số phủ 92–99%. Ngày đầu văn bản khác kho: 1 nút (530/TB-TCHQ 2018), ghi ở `ghiChu`.
-
-Không có toàn văn: 813 nút (chủ yếu luatvietnam 718, thuvienphapluat 80). Bản đọc PDF quét của 2 nút cho mã khác hẳn (`tb:2791-2018:72283010`, `tb:92-2019:72299020`): PDF nói hàng khác, nghi tệp PDF lệch năm; giữ mã kho, ghi `maPdfQuet`.
+- Không đặt `LUAT_GOC_TXT`: PASS, 3.085 nút, 0 lỗi.
+- Có `LUAT_GOC_TXT` (`thong-bao.txt` = ghép toàn văn, sha256 đầu vào `b8016849…e318`): **2.270 nút có toàn văn: 0 lỗi. 814 lỗi đều ở nút `chuaDoiChieu`.** Cổng hiện còn in FAIL tới khi QT cho bỏ qua các nút này. `moTaKhaiBao` chạy qua cùng phép so: 2.137 nút, 0 lỗi.
+- Điều phải biết về con số 0 lỗi: bản chữ đối chiếu chính là nguồn rút (một lần đọc), nên nó chứng minh không thêm, không sửa chữ; không chứng minh bản cào giống bản ký. Cổng so theo câu; cả đoạn liền một mạch là 1.554 nút, còn lại do nhãn nhà sản xuất bị bỏ tên hoặc khác dấu câu nối.
+- Mã: 2.268/2.270 nút có `maLucBanHanh` in ngay trong mục kết quả. Hai nút còn lại: 1811/2020 (in 32082090, đã được 2174/TB-TCHQ đính chính; câu đính chính nguyên văn ở `dinhChinh.trich`) và 3408/2024 (bản chữ bị che mất mã; mã theo kho cũ).
+- Đọc tay 34 nút rút ngẫu nhiên (hạt 1907): cả 34 đúng ranh mục, đúng hàng, đúng câu kết luận. Một nút lúc đó còn mẩu khai báo vô nghĩa (181/2021), đã sửa thành `null` cho cả kho.
+- Độc lập với nguồn rút: mô tả kho cũ (người khác cào từ luatvietnam, tracuuhs) so với toàn văn, 1.924 nút nguyên vẹn. Ngày đầu văn bản khác kho: 1 nút (530/TB-TCHQ 2018).
 
 ## Bốn danh sách của thẻ
 
@@ -69,10 +63,15 @@ Không có toàn văn: 813 nút (chủ yếu luatvietnam 718, thuvienphapluat 80
 - **1097/TB-TCHQ 2020**: bản hiện hành đã sạch (819UV / Phenylbis…), toàn văn khớp.
 - **23 câu "thay thế Thông báo …"** trong toàn văn, 11 câu chưa có trong `data/tien-le-thay-the.json`. Tổng 25 thông báo bị thay, 16 có nút (`biThay`, `hieuLuc.den` = ngày thông báo mới). Thêm từ toàn văn: 814/2018, 1629/2020, 1900/2020, 3119/2018, 5523/2024 — kho cũ vẫn coi là còn hiệu lực.
 
-## Chỗ chưa chắc, cần QT quyết
+## Danh sách theo toàn văn (bảng ở tệp từng dòng)
 
-1. `nguyenVan` theo kho cũ nên không qua cổng có đối chiếu. Muốn PASS thật: rút thẳng mục "Tên gọi theo cấu tạo, công dụng" từ 2.300 toàn văn, và xin bản gốc cho 813 nút còn lại.
-2. 202 LOI_AGENT, 138 công văn, 39 không năm: có số và địa chỉ, có thể lấy lại. Công văn chưa có `loai` trong khuôn. Ranh giới LOI_AGENT đặt theo nhóm người cào (`agent-tbtchq-ch8*`, `-dot5-*`, `-thep-hoachat`) và dấu "→"; 27 bản ghi của nhóm này có toàn văn thì phủ 38–86%, không bản nào nguyên vẹn. 172 bản ghi không có toàn văn để kiểm.
-3. Ngưỡng 60% của LECH_TOAN_VAN là lựa chọn; từ 60 đến dưới 80% còn 2 nút (`tb:1142-2018:28170010`, `tb:4466-2023:38122000`), đọc cạnh toàn văn: đúng hàng.
-4. Ít nhất 23 nút có toàn văn in thêm một mã Chương 98 (9811, 9837); nút chỉ giữ mã 1–97, câu đầy đủ có trong toàn văn.
+- 14 bản ghi sai khoá: toàn văn in đúng `outcome` cả 14. 51 bản ghi dưới mã dẫn nối: 36 toàn văn in đúng mã cũ, 15 không có toàn văn.
+- 2 nút PDF quét cho mã khác (`tb:2791-2018:72283010`, `tb:92-2019:72299020`): không có toàn văn chữ; tệp PDF nói hàng khác hẳn (keo Loctite, cáp Aruba), PDF không đọc được số hiệu. Không rõ nên giữ mã kho, `chuaDoiChieu`, ghi `maPdfQuet`.
+
+## Chỗ chưa chắc
+
+1. 815 nút chưa đối chiếu: luatvietnam 718, thuvienphapluat 80, còn lại 17. Cần bản gốc.
+2. 15 LECH_TOAN_VAN vẫn để riêng như lần trước, dù toàn văn có sẵn: nay chữ lấy từ toàn văn nên có thể nạp lại. Một phần KHONG_MO_TA và LOI_AGENT cũng vậy. Chờ QT.
+3. 202 LOI_AGENT phân theo nhóm người cào (`agent-tbtchq-ch8*`, `-dot5-*`, `-thep-hoachat`) và dấu "→"; 172 không có toàn văn để kiểm. 138 công văn chưa có `loai` trong khuôn.
+4. 23 nút in thêm một mã Chương 98 (9811, 9837) trong kết luận: có trong `nguyenVan`, không thành trường.
 5. Hiệu lực chỉ biết qua câu thay thế có chữ. Không suy hết hạn theo thời hạn xác định trước mã số.
