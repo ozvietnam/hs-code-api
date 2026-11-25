@@ -510,7 +510,7 @@
         "doan": "process.env.HS_HO_SO || '').trim().toLowerCase();"
       },
       "bong": {
-        "dangChayMayThat": true,
+        "dangChayMayThat": false,
         "batTu": "2026-11-16",
         "chu": "GĐ hs-code-api",
         "ngayXet": "2026-11-27",
@@ -518,7 +518,7 @@
         "laySoODau": "GET /api/admin/ho-so-shadow hoặc `docker exec hs-code-api node scripts/bao-cao-shadow.mjs --ben-goi=cong-oz,erp` (docs/van-hanh/bat-ho-so-shadow.md mục 4.6)",
         "tieuChiBat": "Đủ 5 ngày làm việc số đo sạch tính từ 21/11 (sau #1514, #1516). Trên lượt khách thật (cong-oz, erp), theo từng phân nhóm: tỉ lệ dựng được và tỉ lệ bản nháp do chủ chốt ngưỡng trước ngày xét; chi phí LLM mỗi lượt đã ghi. Chủ trình QT, QT quyết bật on theo phân nhóm.",
         "tieuChiTat": "Đường trả lời khách chậm thêm, lỗi tăng, hoặc tới ngày xét mà số lượt khách thật quá ít để kết luận.",
-        "ghiChu": "Ngày xét và ngưỡng là tạm (QT đặt 21/11). Số đo trước 21/11 không dùng: thiếu bên gọi, thiếu lượt bỏ qua, và chạy bóng còn chặn đường trả lời."
+        "ghiChu": "QT quyết TẮT 25/11 theo tieuChiTat (quá ít lượt khách để kết luận): 21/11→25/11 có 40 lượt cong-oz/erp, 31 dựng được, bản nháp 30/31 (96,8%: thiếu dữ kiện 22, mâu thuẫn 7). Điểm đáng giữ cho GĐ5: dữ kiện quyết định 46/47 có trong chuỗi mới, 18/47 trong mô tả cũ. Nối lại ở GĐ5 của kế hoạch đồ thị. Trước đó: Ngày xét và ngưỡng là tạm (QT đặt 21/11). Số đo trước 21/11 không dùng: thiếu bên gọi, thiếu lượt bỏ qua, và chạy bóng còn chặn đường trả lời."
       }
     },
     {

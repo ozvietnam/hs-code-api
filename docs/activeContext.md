@@ -78,8 +78,8 @@ cho sổ tay / chú giải; sửa `tieuChi6`.
 
 **Hạn sắp tới:**
 
-- **27/11/2026 — `HS_HO_SO=shadow` tới ngày xét.** Chủ (GĐ hs-code-api) lấy số theo `bang-co.json`, quyết bật / tắt /
-  gia hạn. Chưa quyết thì `npm test` đỏ cho mọi PR. Ngày và ngưỡng là QT đặt tạm; chủ chỉnh trước ngày xét.
+- ~~27/11/2026 — `HS_HO_SO=shadow` tới ngày xét~~ → **QT quyết TẮT 25/11** (40 lượt, bản nháp 96,8%, quá ít để kết luận;
+  số ở `bang-co.json`). Động cơ hồ sơ giữ nguyên mã, nối lại ở giai đoạn 5 của kế hoạch đồ thị.
 
 **Người gộp PR kế tiếp cần biết:**
 
