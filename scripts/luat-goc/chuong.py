@@ -66,6 +66,28 @@ def vung(tr):
         ra[c] = (o, het)
     return ra
 
+RE_PC = re.compile(r'^\s*(?:PHÂN CHƯƠNG|Phân[ -][Cc]hương)\s+([IVX]+|1)\s*:\s*[A-ZĐÀ-Ỹ]{2}')
+PC = {28: 6, 29: 13, 39: 2, 63: 3, 69: 2, 71: 3, 72: 4}   # số Phân chương đếm trong PDF; lệch thì dừng
+LA_MA = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII', 'XIII']
+
+def phan_chuong(tr, bd):
+    """(chương, số in) -> (dòng tên, dòng Tổng quát): từ tiêu đề Phân chương tới trước nhóm kế, kể cả khi in sau nhóm đầu."""
+    ds = []; c = None; mo = None
+    for n, t in enumerate(tr, 1):
+        for l in dong_trang(t, n):
+            c2 = next((k for k, v in bd.items() if v == n), None)
+            if c2: c = c2
+            if c and RE_PC.match(l): mo = [c, RE_PC.match(l)[1], [(n, l)], []]; ds.append(mo); continue
+            if not mo: continue
+            if re.match(r'^\s*%02d\.\d\d\s*[-–—]\s*\S' % mo[0], l): mo = None; continue
+            if not mo[3] and not RE_KQ.match(l) and l.strip().isupper(): mo[2].append((n, l))
+            else: mo[3].append((n, l))
+    for k, so in PC.items():
+        d = [LA_MA.index('I' if x[1] == '1' else x[1]) + 1 for x in ds if x[0] == k]
+        if d != list(range(1, so + 1)): sys.exit(f'Phân chương {k}: {d}')
+    if len(ds) != sum(PC.values()): sys.exit('Phân chương ở chương lạ')
+    return ds
+
 def noi(a, b):
     """nối hai dòng bị ngắt."""
     if re.search(r'\w-$', a) and not re.match(r'(hoặc|và)\b', b): return a + b
@@ -189,7 +211,7 @@ def khai_quat(dong):
     for trang, l in dong:
         t = l.strip(); cot = len(l) - len(l.lstrip())
         if RE_SAO.match(l): sao = True; continue
-        tieu = bool(RE_KQ.match(l) or RE_CGPN.match(l) or RE_CGCT.match(l) or re.match(r'^(PHÂN CHƯƠNG|Phân [Cc]hương) [IVX1]+\b', t))
+        tieu = bool(RE_KQ.match(l) or RE_CGPN.match(l) or RE_CGCT.match(l))
         het = bool(re.search(r'[.:;…!]["”)\]]*$', truoc)) or (len(truoc) < 60 and not re.match(r'[\d(a-zà-ỹ]', t))
         if ds and ds[-1][2] and t.isupper() and not tieu: ds[-1][1][-1] = noi(ds[-1][1][-1], t); truoc = t; continue
         bang = bool(re.search(r'\S\s{3,}\S', l)) and (len(re.sub(r'\s{3,}', '', l)) < 75 or not l.startswith(' ') and len(l) > 105)
@@ -217,10 +239,12 @@ def main():
     sua = {}
     if os.path.exists(a.sua): exec(compile(open(a.sua, encoding='utf8').read(), a.sua, 'exec'), sua)
     SUA = sua.get('SUA', []); GIU = set(sua.get('GIU', [])); TOI = sua.get('TOI', {}); DOI = sua.get('DOI', [])
-    tr = doc(a.txt, SUA); V = vung(tr); bao = []; het_nut = []; phang = []
+    tr = doc(a.txt, SUA); V = vung(tr); PCS = phan_chuong(tr, {c: o[0][0][0] for c, o in V.items()}); bao = []; het_nut = []; phang = []
     for c in sorted(V):
         o, het = V[c]; C = f'{c:02d}'; goc = f'chuong:{C}'
         muc = [('ten', [])]
+        k0 = next((q for q, (n, l) in enumerate(o) if RE_PC.match(l)), None)
+        pc1 = o[k0:] if k0 is not None else []; o = o[:k0] if k0 is not None else o   # Phân chương I đứng trước nhóm đầu: ghi ở pc
         for n, l in o:
             if muc[-1][0] == 'kq': muc[-1][1].append((n, l)); continue
             if RE_KQ.match(l) or RE_CGCT.match(l): muc.append(('kq', [(n, l)])); continue
@@ -241,9 +265,20 @@ def main():
             else:
                 thua = tach(f'{goc}:{k}', d, goc, nuts, bao, GIU, TOI, DOI)
                 if thua: bao.append(f'!! {goc}:{k} chữ trước khoản 1: {thua}')
+        so_ngoai = len(nuts); pcd = []
+        for _, so, tn, dk in [x for x in PCS if x[0] == c]:
+            z = ''
+            for n, l in tn: z = noi(z, l.strip()) if z else l.strip()
+            y = Nut(f'{goc}:pc:{"I" if so == "1" else so}', goc, so, tn[0][0]); y.doan = [[re.sub(r'\s+', ' ', z), None]]; nuts.append(y); con = []
+            for q, (n, doan) in enumerate(khai_quat(dk), 1):
+                x = Nut(f'{y.id}:kq:{q}', y.id, None, n); x.doan = [['\n'.join(doan), None]]; nuts.append(x); con.append(x)
+            gg = lambda z: re.sub(r'\s', '', z)
+            if Counter(gg(''.join(l for _, l in tn + dk if not RE_SAO.match(l)))) != Counter(gg(''.join(d[0] for x in [y] + con for d in x.doan))): bao.append(f'!! {y.id}: lệch chữ')
+            if not pcd and pc1 and [l for _, l in pc1] != [l for _, l in tn + dk]: bao.append(f'!! {y.id}: khác đoạn trước nhóm đầu')
+            pcd.append(y)
         # kiểm không mất chữ: mọi chữ trong vùng đều nằm ở đúng một nút
         g = lambda z: re.sub(r'\s', '', z)
-        A = Counter(g(''.join(l for k, d in muc for _, l in d if not RE_SAO.match(l)))); B = Counter(g(''.join(d[0] for x in nuts for d in x.doan)))
+        A = Counter(g(''.join(l for k, d in muc for _, l in d if not RE_SAO.match(l)))); B = Counter(g(''.join(d[0] for x in nuts[:so_ngoai] for d in x.doan)))
         if A != B: bao.append(f'!! {goc}: lệch chữ thiếu {dict(A-B)} thừa {dict(B-A)}')
         for x in nuts:
             v = ''; ds = []
@@ -251,7 +286,7 @@ def main():
                 if v: v += '\n'
                 if sau and (not ds or ds[-1]['sauNut'] != sau): ds.append({'sauNut': sau, 'tu': len(v)})
                 v += t
-            loai, lop = ('TEN', 'LUAT') if x.id == goc else ('KHAI_QUAT', 'HUONG_DAN') if ':kq:' in x.id else ('CHU_GIAI_PHAN_NHOM', 'LUAT') if ':cgpn:' in x.id else ('CHU_GIAI', 'LUAT')
+            loai, lop = ('TEN', 'LUAT') if x.id == goc or re.search(r':pc:[IVX]+$', x.id) else ('KHAI_QUAT', 'HUONG_DAN') if ':kq:' in x.id else ('CHU_GIAI_PHAN_NHOM', 'LUAT') if ':cgpn:' in x.id else ('CHU_GIAI', 'LUAT')
             r = {'id': x.id, 'loai': loai, 'cha': x.cha, 'so': x.so, 'nguyenVan': v, 'lop': lop, 'nguon': {'vanBan': NGUON, 'ban': 'HS2022', 'trang': x.trang}, 'hieuLuc': {'tu': None, 'den': None}}
             if ds: r['doanSau'] = ds
             het_nut.append(r)
