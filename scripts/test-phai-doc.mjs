@@ -67,7 +67,7 @@ const idxFirstKq = mChuong76.findIndex((m) => /:kq:/.test(m.id));
 kiem('7616: CHU_GIAI_CHUONG có cg/cgbs/cgpn đúng chỗ và cg đứng trước kq', idxFirstKq >= 0 && mChuong76.slice(0, idxFirstKq).every((m) => !/:kq:/.test(m.id)) && mChuong76.slice(idxFirstKq).every((m) => /:kq:/.test(m.id)));
 
 // Kiểm chứng data/luat-goc/phan-chuong-nhom.json: mọi nhóm của 7 Chương thuộc đúng 1 phân chương, không hở không chồng, khớp chuong.jsonl
-const khoRaw = docKhoLuatGoc('data/luat-goc');
+const khoRaw = docKhoLuatGoc('data/luat-goc', { coCau: true });
 const nutKhongTienLe = khoRaw.nut.filter((n) => n.lop !== 'TIEN_LE' && !String(n.id).startsWith('tb:'));
 const theoIdRaw = new Map(nutKhongTienLe.map((n) => [n.id, n]));
 const bangPc = docBangPhanChuongNhom(path.resolve('data/luat-goc'));
@@ -126,7 +126,7 @@ const motIdCon = muc(pLonMacDinh, 'CHU_GIAI_PHAN').muc[0]?.id;
 kiem(`vượt 60 KB → TOM_GON (${(bytesFull / 1024).toFixed(1)} KB → ${(bytesGon / 1024).toFixed(1)} KB), giữ nguyên mọi mục và lấy đủ theo id`, pLonMacDinh.cheDo === 'TOM_GON' && pLonDayDu.cheDo === 'DAY_DU' && bytesGon < bytesFull * 0.45 && giuDuMuc && duIdCauDau && Boolean(motIdCon && phaiDoc(motIdCon)?.ten?.length > 10));
 
 // ── 5. Bất biến toàn kho bằng phép quét độc lập trên data/luat-goc/*.jsonl ────
-const dtDocLap = dungDoThiDanChieu({ nut: nutKhongTienLe, khoNut: taoKhoNut(nutKhongTienLe) });
+const dtDocLap = dungDoThiDanChieu({ nut: nutKhongTienLe, khoNut: taoKhoNut(nutKhongTienLe), cau: khoRaw.cau });
 const pdCache = new Map();
 const getPd = (id) => { if (!pdCache.has(id)) pdCache.set(id, phaiDoc(id, { dayDu: true })); return pdCache.get(id); };
 
