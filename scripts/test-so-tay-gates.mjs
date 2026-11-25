@@ -125,9 +125,10 @@ check('phân nhóm chưa số hóa ranh giới → KHONG_THE_CHOT (điểm mù)'
 
 // #195 chốt dòng — 3 hành vi sau đọc tay 18 ca oan (13/10); OZV-1660 cập nhật sau PR #1495 duyệt ranh giới 850440:
 cd = chotDong8({ hs: '85044090', productText: 'Bộ nguồn 260W, đầu vào AC100-240V' });
+// OZV-2254: phủ định dòng .20 bằng «không phải máy nạp ắc qui» (tenLoai tách riêng; kVA chỉ hỏi khi tên khớp).
 const cd85044090Trai = chotDong8({
   hs: '85044090',
-  productText: 'Bộ nguồn 260W, công suất biểu kiến 1 kVA, không phải bộ nguồn cấp điện liên tục, không phải bộ chỉnh lưu, không phải bộ nghịch lưu',
+  productText: 'Bộ nguồn 260W, không phải bộ nguồn cấp điện liên tục, không phải máy nạp ắc qui, không phải bộ chỉnh lưu, không phải bộ nghịch lưu',
 });
 check('8504.40 có 2 dòng Loại khác → thiếu dữ kiện thì THIEU_SO_LIEU (không tự chốt .19/.90); bác bỏ 4 dòng có tên vẫn KHONG_THE_CHOT (nhieu-dong-loai-khac)',
   cd.ketQua === 'THIEU_SO_LIEU' && !cd.hs
@@ -144,7 +145,7 @@ check('4011 ngưỡng VÀNH không lấy đường kính ngoài → không tự 
 cd = chotDong8({ hs: '85044019', productText: 'Bộ đổi nguồn 30W dùng cho tủ điện' });
 const cd85044019Trai = chotDong8({
   hs: '85044019',
-  productText: 'Bộ đổi nguồn 30W dùng cho tủ điện, công suất biểu kiến 1 kVA, không phải bộ nguồn cấp điện liên tục, không phải bộ chỉnh lưu, không phải bộ nghịch lưu',
+  productText: 'Bộ đổi nguồn 30W dùng cho tủ điện, không phải bộ nguồn cấp điện liên tục, không phải máy nạp ắc qui, không phải bộ chỉnh lưu, không phải bộ nghịch lưu',
 });
 check('8504.40 chọn .19 (LK trong) cũng không tự chốt — thiếu dữ kiện trả THIEU_SO_LIEU, bác bỏ 4 dòng có tên trả KHONG_THE_CHOT',
   cd.ketQua === 'THIEU_SO_LIEU' && !cd.hs && cd85044019Trai.ketQua === 'KHONG_THE_CHOT',
