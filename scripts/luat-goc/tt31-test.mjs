@@ -56,7 +56,7 @@ kiem('mọi KHAC_NGHIA_NGHI, THIEU_* đã đọc tay: có ketLuan, banKhopAnh, n
 const so = (s) => [...s.normalize('NFKC').replace(/(\d),(?=\d)/g, '$1.').matchAll(/\d+(?:\.\d+)*/g)].map((m) => m[0]).sort().join(' ');
 const lotSo = hang.filter((h) => h.vi && h.id !== 'chuong:85:cgpn:2' /* 10³, 10⁶: chỉ số trên bị tách chữ */ && ['GIONG', 'KHAC_CHU'].includes(h.kq) && so(h.kho ?? chuKho.get(h.id)) !== so(h.vi)).map((h) => h.id);
 kiem('không chỗ nào khác con số mà xếp GIONG / KHAC_CHU', lotSo.length === 0, lotSo.slice(0, 8).join(','));
-const nx = JSON.parse(fs.readFileSync(path.join(GOC, 'scripts/luat-goc/tt31-nhan-xet.json'), 'utf8'));
+const nx = JSON.parse(fs.readFileSync(path.join(GOC, 'data/luat-goc/doi-chieu-tt31/nhan-xet.json'), 'utf8'));
 kiem('mọi nhận xét tay gắn đúng một dòng', Object.entries(nx).every(([i, m]) => theoId.get(i)?.nhanXet === m.nhanXet));
 
 // mẫu đã đọc tay

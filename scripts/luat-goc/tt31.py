@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """M-10 bước 2: ghép từng khoản chú giải của Danh mục kèm Thông tư 31/2022/TT-BTC (hai cột Việt / Anh) với nút cg / cgpn / cgbs của kho.
-Vào : ~/luat-goc-txt-m10/dong.jsonl (do tt31-cot.py dựng), data/luat-goc/{phan,chuong}.jsonl, scripts/luat-goc/tt31-nhan-xet.json
+Vào : ~/luat-goc-txt-m10/dong.jsonl (do tt31-cot.py dựng), data/luat-goc/{phan,chuong}.jsonl, data/luat-goc/doi-chieu-tt31/nhan-xet.json
 Ra  : data/luat-goc/doi-chieu-tt31/{phan,chuong}.jsonl
 Ghép theo SỐ KHOẢN (dãy mốc "1." "(a)" "(ij)" … theo thứ tự in, so dãy với dãy id của kho), KHÔNG theo độ giống chữ.
 Chữ chép nguyên, chỉ nối dòng. Tất định, không mạng, không AI.
@@ -232,7 +232,7 @@ def main():
     K = doc_kho(); V, N = doc_khoi(tep, 'vi'), doc_khoi(tep, 'en'); bao = []
     if set(V) != set(K) or set(N) != set(K): bao.append(('KHOI_LECH', sorted(set(V) ^ set(K)), sorted(set(N) ^ set(K))))
     vi, en = cat(K, V, 'vi', bao), cat(K, N, 'en', bao)
-    nx_tep = f'{GOC}/scripts/luat-goc/tt31-nhan-xet.json'
+    nx_tep = f'{GOC}/data/luat-goc/doi-chieu-tt31/nhan-xet.json'
     nx = json.load(open(nx_tep, encoding='utf8')) if os.path.exists(nx_tep) else {}
     dem = collections.Counter(); os.makedirs(a.ra, exist_ok=True); dung_nx = set(); het = []
     for f in ('phan', 'chuong'):
