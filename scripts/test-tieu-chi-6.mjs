@@ -48,6 +48,20 @@ kiem('mẫu 8481: mọi phân nhóm 6 số của biểu thuế có mặt (6/6), 
 kiem('mẫu 8412: 7/7 phân nhóm; 841229, 841239, 841280 khai phanConLai', kq12.thongKe.soPhanNhom === 7 && ['841229', '841239', '841280'].every((h) => MAU['8412'].tieuChi6.some((x) => x.hs6 === h && x.phanConLai === true)));
 kiem('mẫu có phép đo trên tờ khai mẫu (số dòng > 0, đúng + sai + không kết luận = tổng)', [kq81, kq12].every((k) => k.thongKe.toKhai.tong > 0 && k.thongKe.toKhai.dung + k.thongKe.toKhai.sai + k.thongKe.toKhai.khongKetLuan === k.thongKe.toKhai.tong));
 
+// Tầng một gạch khuyết dòng trong biểu thuế (8523.5 — nút suy ra không tên): phần còn lại 852359 được nhắc điều kiện tầng
+// lấy từ chú giải nhóm, CHỈ KHI mọi phân nhóm anh em có tên cùng tầng mang đúng điều kiện đó.
+{
+  const goc = doc('data/so-tay/8523.json').tieuChi6;
+  const laTang = (x) => x.nguon === 'nhom8523.nhom' && /^\(C\)/.test(x.trich || '');
+  const loiDu = (ds) => G6.kiemTieuChi6('8523', ds, { toKhai: false }).loi.filter((l) => l.ma === 'DU_MANG_DIEU_KIEN' && l.hs6 === '852359').length;
+  kiem('8523: 852359 nhắc điều kiện tầng suy ra giống mọi anh em → qua cổng', goc.some((x) => x.hs6 === '852359' && laTang(x)) && loiDu(sao(goc)) === 0);
+  kiem('CA NGƯỢC: một anh em (852352) không mang điều kiện tầng → 852359 bị chặn', loiDu(sao(goc).filter((x) => !(x.hs6 === '852352' && laTang(x)))) === 1);
+  const lech = sao(goc); lech.find((x) => x.hs6 === '852359' && laTang(x)).value = 'THÔNG TIN BÁN DẪN';
+  kiem('CA NGƯỢC: giá trị lệch với anh em → 852359 bị chặn', loiDu(lech) === 1);
+  const le = sao(goc); const m = sao(le.find((x) => x.hs6 === '852359' && laTang(x))); m.hs6 = '852380'; le.push(m);
+  kiem('CA NGƯỢC: phần còn lại của tầng khác (852380) mượn điều kiện này → bị chặn', G6.kiemTieuChi6('8523', le, { toKhai: false }).loi.some((l) => l.ma === 'DU_MANG_DIEU_KIEN' && l.hs6 === '852380'));
+}
+
 // ── 2. TIÊM LỖI: sửa mẫu thành từng kiểu sai → cổng đỏ ĐÚNG mã lỗi ──────────────────────────────────────────────
 const DS_6704_CHUAN = [
   { hs6: '670411', nguon: 'tieuDe.67041', trich: '67041 Bằng vật liệu dệt tổng hợp', chuaSoHoa: 'thiếu khoá cho vật liệu dệt tổng hợp' },
