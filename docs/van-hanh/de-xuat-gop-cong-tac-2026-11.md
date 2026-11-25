@@ -25,8 +25,8 @@
 |---|---|---:|---:|---|
 | **(a)** Đã bật thật lâu | Mặc định bật hoặc đặt bật lâu dài trong `Dockerfile` / prod (≥ 3–8 tuần ổn định), không còn nhu cầu quay lui | **13** | 4 | Gỡ cờ khỏi `bang-co.json` và mã, giữ nguyên hành vi đang bật |
 | **(b)** Tắt và không dùng | Mặc định tắt bị thay thế bởi cơ chế mới, hoặc nằm trong đường động cơ cũ `lib/classify.js` đã vô hiệu trên prod | **7** | 4 | Gỡ cả cờ lẫn nhánh mã chết / không dùng |
-| **(c)** Cờ tạm đồ thị / giai đoạn | Phục vụ rollout từng giai đoạn của đồ thị tri thức (GĐ2–4), `HS_HO_SO` (GĐ5), K2 soát tờ khai, kho đáp án / định danh | **14** | 11 | Gộp cụm đồ thị về 1 công tắc (`hs_do_thi`) và gỡ dần theo điều kiện nhận GĐ2/3/4/5/7 |
-| **(d)** Cờ vận hành lâu dài | Bảo mật/token, đóng khẩn cấp công khai/chi phí, quyền riêng tư, hạ tầng server, timeout/rate-limit, cách ly bench/test | **45** | 4 | **Giữ** lâu dài |
+| **(c)** Cờ tạm đồ thị / giai đoạn | Phục vụ rollout từng giai đoạn của đồ thị tri thức (GĐ2–4), `HS_HO_SO` (GĐ5), K2 soát tờ khai, kho đáp án / định danh | **14** | 10 | Gộp cụm đồ thị về 1 công tắc (`hs_do_thi`) và gỡ dần theo điều kiện nhận GĐ2/3/4/5/7 |
+| **(d)** Cờ vận hành lâu dài | Bảo mật/token, đóng khẩn cấp công khai/chi phí, quyền riêng tư, hạ tầng server, timeout/rate-limit, cách ly bench/test | **45** | 5 | **Giữ** lâu dài |
 | **Tổng cộng** | Khớp `data/luat/bang-co.json` tại `d561ae11` | **79** | **23** | Giảm dần **79 → 66 → 61 → 54 → 46 → 45** |
 
 ### 1.2 Năm cờ (cụm cờ) đáng gỡ nhất
