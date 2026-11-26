@@ -15,6 +15,7 @@ const { matchProducts } = require('../lib/product-match');
 const { appendAccess } = require('../lib/access-log');
 const { filterChapter98 } = require('../lib/chapter98');
 const { confusionAlertsFor } = require('../lib/confusion-pairs');
+const { timLuat } = require('../lib/tim-luat');
 
 function parseBody(req) {
   let body = req.body;
@@ -94,6 +95,19 @@ module.exports = function handler(req, res) {
   }
 
   const limitNum = Math.min(parseInt(limit, 10) || 20, 50);
+  const cheDo = String(req.query.che_do || '').trim();
+  if (cheDo === 'luat') {
+    const startedLuat = Date.now();
+    const kq = timLuat(q, { limit: limitNum });
+    appendAccess({
+      route: '/api/search',
+      ms: Date.now() - startedLuat,
+      querySnippet: String(q).slice(0, 80),
+      hsCode: null,
+      cheDo: 'luat',
+    });
+    return res.status(200).json(kq);
+  }
   const onlyCS = cs_only === '1' || cs_only === 'true';
   // Dữ kiện tường minh cho bảng quyết định: ?facts={"thicknessMm":2,"form":"coil"}.
   // Câu hỏi ở clarifyingQuestionsVi nói cần thuộc tính nào; ERP trả lời bằng đúng tên đó.
