@@ -1,711 +1,711 @@
 {
- "phienBan": 1,
- "moTa": "Bảng đấu nối — nguồn sự thật: đường vào nào đọc kho tri thức nào, sau cờ nào, câu hỏi gửi khách dựng ở đâu (docs/luat-duong-khach.md L2, L4). Cổng máy: scripts/test-dau-noi.mjs, scripts/test-cau-hoi-co-can-cu.mjs.",
- "capNhat": "2026-11-21, theo origin/main f258816d (đã có PR #1520, #1523, #1524, #1528; thêm HS_TIM_TRUOC); thêm kho bangCanh (ADR-0002, giai đoạn 1: chưa đường nào đọc)",
- "cachDoc": {
-  "napMuonHam": "Tệp nạp module đọc kho chỉ để mượn một hàm KHÔNG đọc kho. Khai đích danh tệp + tên hàm; tên hàm phải nằm trong kho.<tên>.hamKhongDocKho. Cổng đỏ nếu tệp đó lấy thêm hàm khác.",
-  "loai": "phan-loai = ra mã HS hoặc hỏi khách về hàng (bắt buộc khai đủ 4 kho + loiCauHoi). soan-thao = viết mô tả / hồ sơ / soát trên mã đã có. tra-cuu = chỉ đọc dữ liệu, không LLM quyết định.",
-  "congGoi": "true = Cổng OZ (ozplugin) có gọi đường này. Lấy bằng grep '/api/' trong repo ozplugin ngày 21/11/2026; đổi Cổng thì cập nhật.",
-  "trangThai": "co = mã của đường này nạp module đọc kho (cổng máy kiểm bằng đồ thị require). khong = không nạp. Với đường có 'mode' (chung tệp xử lý với đường khác) cổng không tách được theo nhánh: 'khong' phải kèm lyDo, người soát kiểm.",
-  "co": "Các cờ HS_* chặn việc đọc kho trên đường này. Mặc định từng cờ xem data/luat/bang-co.json.",
-  "gioiHan": "Cổng chứng minh mã NẠP ĐƯỢC kho, không chứng minh mọi nhánh lúc chạy đều DÙNG. Nhánh bỏ qua đã biết khai ở nhanhBoQua."
- },
- "kho": {
-  "soTayNhom": {
-   "ten": "Sổ tay nhóm 4 số",
-   "duLieu": "data/so-tay/<nhóm 4 số>.json",
-   "dauVet": [
-    "dataReadPath(`so-tay/${",
-    "dataReadPath('so-tay'",
-    "'data', 'so-tay'"
-   ],
-   "moDun": [
-    "lib/so-tay-gates.js",
-    "lib/so-tay-runtime.js",
-    "lib/dieu-kien-so.js",
-    "lib/hs-tree-sources.js",
-    "lib/tu-vung.js",
-    "lib/do-thi/dung-bang-canh.js"
-   ],
-   "hamKhongDocKho": [
-    "productHead"
-   ]
+  "phienBan": 1,
+  "moTa": "Bảng đấu nối — nguồn sự thật: đường vào nào đọc kho tri thức nào, sau cờ nào, câu hỏi gửi khách dựng ở đâu (docs/luat-duong-khach.md L2, L4). Cổng máy: scripts/test-dau-noi.mjs, scripts/test-cau-hoi-co-can-cu.mjs.",
+  "capNhat": "2026-11-21, theo origin/main f258816d (đã có PR #1520, #1523, #1524, #1528; thêm HS_TIM_TRUOC); thêm kho bangCanh (ADR-0002, giai đoạn 1: chưa đường nào đọc)",
+  "cachDoc": {
+    "napMuonHam": "Tệp nạp module đọc kho chỉ để mượn một hàm KHÔNG đọc kho. Khai đích danh tệp + tên hàm; tên hàm phải nằm trong kho.<tên>.hamKhongDocKho. Cổng đỏ nếu tệp đó lấy thêm hàm khác.",
+    "loai": "phan-loai = ra mã HS hoặc hỏi khách về hàng (bắt buộc khai đủ 4 kho + loiCauHoi). soan-thao = viết mô tả / hồ sơ / soát trên mã đã có. tra-cuu = chỉ đọc dữ liệu, không LLM quyết định.",
+    "congGoi": "true = Cổng OZ (ozplugin) có gọi đường này. Lấy bằng grep '/api/' trong repo ozplugin ngày 21/11/2026; đổi Cổng thì cập nhật.",
+    "trangThai": "co = mã của đường này nạp module đọc kho (cổng máy kiểm bằng đồ thị require). khong = không nạp. Với đường có 'mode' (chung tệp xử lý với đường khác) cổng không tách được theo nhánh: 'khong' phải kèm lyDo, người soát kiểm.",
+    "co": "Các cờ HS_* chặn việc đọc kho trên đường này. Mặc định từng cờ xem data/luat/bang-co.json.",
+    "gioiHan": "Cổng chứng minh mã NẠP ĐƯỢC kho, không chứng minh mọi nhánh lúc chạy đều DÙNG. Nhánh bỏ qua đã biết khai ở nhanhBoQua."
   },
-  "soPn6": {
-   "ten": "Sổ ranh giới phân nhóm 6 số (đã DUYET)",
-   "duLieu": "data/ho-so/ranh-gioi/<phân nhóm 6 số>.json",
-   "dauVet": [
-    "dataReadPath(`ho-so/ranh-gioi/"
-   ],
-   "moDun": [
-    "lib/so-tay-gates.js",
-    "lib/dieu-kien-so.js"
-   ],
-   "hamKhongDocKho": [
-    "productHead"
-   ]
-  },
-  "tienLe": {
-   "ten": "Tiền lệ (TB-TCHQ, tờ khai Oz, tiền lệ Trung Quốc)",
-   "duLieu": "data/precedents.json, kho tờ khai Oz, data/…",
-   "dauVet": [],
-   "ghiChu": "data/precedents.json nạp qua lib/data.js mà gần như đường nào cũng nạp, nên không dò bằng dấu vết được. Tính là 'đọc tiền lệ' khi nạp một trong các máy tìm tiền lệ dưới đây.",
-   "moDun": [
-    "lib/precedent-search.js",
-    "lib/oz-precedent-search.js",
-    "lib/tien-le-trung-tim.js"
-   ]
-  },
-  "chuGiai": {
-   "ten": "Chú giải chương / nhóm đưa vào lập luận",
-   "duLieu": "data/luat-goc/{phan,chuong,nhom,phan-nhom,sen,bieu,gir}.jsonl (M-21: lib/chu-giai-goc.js đọc trực tiếp kho luật gốc; trước đây là data/chu-giai-heading.json, data/chu-giai-chuong.json, data/notes.json, data/explanatory-notes.json)",
-   "dauVet": [],
-   "ghiChu": "lib/hs-tree.js cũng mở chu-giai-heading.json nhưng chỉ để lấy tên nút cây, không tính. Tính là 'đọc chú giải' khi nạp một trong các module dưới đây.",
-   "moDun": [
-    "lib/chu-giai-goc.js",
-    "lib/gir-notes.js",
-    "lib/notes-coverage.js",
-    "lib/evidence-pack.js",
-    "lib/classify.js",
-    "lib/tim-cgct.js"
-   ]
-  },
-  "bangCanh": {
-   "ten": "Bảng cạnh đồ thị tri thức HS (C5, C6, C7, C8, C10 + C13, C11, C16 + chỉ mục C1 gộp; hàm C14)",
-   "duLieu": "dựng trong RAM từ data/so-tay/, data/confusion-pairs.json, data/precedents.json, cây biểu thuế và các kho cụm từ; số đếm ở data/do-thi/thong-ke.json",
-   "dauVet": [],
-   "ghiChu": "ADR-0002, kế hoạch docs/ke-hoach-do-thi-tri-thuc-hs.md. GIAI ĐOẠN 1: chỉ dựng + cổng máy scripts/test-bang-canh.mjs. 25/11/2026: /api/classify đọc sau HS_TIM_TRUOC=goi hoặc do-thi (mặc định tắt; do-thi = lib/do-thi/duong-do-thi.js ráp bước 3–8, đọc thêm tieuChi6 g6@1 qua diXuong6 và tienLeUngHo), các đường khác khai 'khong'; mỗi lần nối sửa bảng này trong cùng PR. lib/do-thi/dung-bang-canh.js đọc thẳng data/so-tay/ nên cũng là module đọc kho soTayNhom. Cổng test-bang-canh đỏ khi có tệp ngoài lib/do-thi/ nạp bảng cạnh mà đường của nó chưa khai 'co'. C16 (23/11/2026): cạnh Phân-biệt-theo-nghĩa dựng từ data/do-thi/ban-do-4so/ (AI_NHAP qua cổng bd4@1; lib/do-thi/ban-do-4so.js, scripts/goi-soan-ban-do-4so.mjs, kiem-ban-do-4so.mjs, nap-ban-do-4so.mjs) — module soạn dữ liệu, không đường khách nào nạp; bậc 1 chỉ khi chamCheo=DUYET và mọi căn cứ còn nguyên văn. G6 (21/11/2026): thêm cạnh C10 Tách-phân-nhóm (+ khoá dữ kiện C13) dựng từ tieuChi6 của sổ tay; khuôn g6@1 và cổng soạn nằm ở lib/do-thi/tieu-chi-6.js (scripts/kiem-tieu-chi-6.mjs, scripts/goi-soan-tieu-chi-6.mjs, scripts/test-tieu-chi-6.mjs) — module soạn dữ liệu, không đường khách nào nạp. tieuChi6 nằm trong kho soTayNhom: đường nào đọc nó xem ghi chú kho soTayNhom. M-35 (25/11/2026): thêm lib/do-thi/doi-ma-nguon.js — đổi mã nguồn cũ sang id nút luật theo bảng data/luat-goc/doi-ma.json (khuôn doi-ma@1, cổng scripts/test-doi-ma-nguon.mjs); module tra bảng đổi, không đường khách nào nạp, chạy lại bằng --xay-dung khi QT gộp các kho lớp 1.",
-   "moDun": [
-    "lib/do-thi/ban-do-4so.js",
-    "lib/do-thi/ba-buoc.js",
-    "lib/do-thi/chu-giai-2-phan-xvi.js",
-    "lib/do-thi/doi-ma-nguon.js",
-    "lib/do-thi/dan-chieu.js",
-    "lib/do-thi/dung-bang-canh.js",
-    "lib/do-thi/duong-do-thi.js",
-    "lib/do-thi/goi-phan-biet.js",
-    "lib/do-thi/hoi-truoc-4so.js",
-    "lib/do-thi/index.js",
-    "lib/do-thi/khoi-phan-biet.js",
-    "lib/do-thi/luot-hai.js",
-    "lib/do-thi/luot-mot.js",
-    "lib/do-thi/phai-doc.js",
-    "lib/do-thi/phan-con-lai.js",
-    "lib/do-thi/song-sinh-vat-lieu.js",
-    "lib/do-thi/tien-le-ung-ho.js",
-    "lib/do-thi/tieu-chi-6.js",
-    "lib/do-thi/tu-khoa.js",
-    "lib/do-thi/tu-soat.js",
-    "lib/do-thi/xuong-6so.js"
-   ],
-   "hamKhongDocKho": [
-    "tuKhoa",
-    "khopDieuKien",
-    "tapTuMoTa",
-    "khongDau"
-   ]
-  }
- },
- "loiCauHoi": {
-  "ghiChu": "Lõi câu hỏi chung (L2): lib/so-tay-cau-hoi.js sinh câu tất định từ sổ; lib/hoi-theo-so-tay.js dựng lại câu hỏi của /api/classify theo sổ (PR #1523). Đường khai loiCauHoi 'co' phải nạp một trong các tệp này.",
-  "moDun": [
-   "lib/so-tay-cau-hoi.js",
-   "lib/hoi-theo-so-tay.js"
-  ]
- },
- "duong": [
-  {
-   "duong": "/api/classify",
-   "tep": "api/classify.js",
-   "loai": "phan-loai",
-   "congGoi": true,
-   "llm": true,
-   "doc": {
+  "kho": {
     "soTayNhom": {
-     "trangThai": "co",
-     "qua": [
-      "lib/so-tay-gates.js",
-      "lib/so-tay-runtime.js"
-     ],
-     "co": [
-      "HS_CLASSIFY_ENGINE",
-      "HS_SO_TAY",
-      "HS_SOTAY_RUNTIME"
-     ],
-     "ghiChu": "Động cơ hai vòng: cổng nghi (gates) + khối sổ tay trong gói vòng 2 (full). Khối soTay cố vấn trong phản hồi qua so-tay-runtime. Sổ tay vào câu hỏi gửi khách chỉ khi bật HS_HOI_THEO_SO_TAY (xem loiCauHoi). Sau cờ HS_TIM_TRUOC (mặc định TẮT): lib/tim-truoc.js đọc thêm cạnh nhóm↔nhóm hai chiều của sổ tay (loaiTru / phanBiet, so-tay-gates.js nhomLienQuanSoTay) TRƯỚC vòng 1 để nêu tối đa 2 nhóm dễ nhầm trong khối ứng viên của vòng 1 (và nạp chúng vào gather() khi HS_TIM_TRUOC_NAP > 0; mặc định 0 = không nạp); chỉ khi HS_SO_TAY khác off."
+      "ten": "Sổ tay nhóm 4 số",
+      "duLieu": "data/so-tay/<nhóm 4 số>.json",
+      "dauVet": [
+        "dataReadPath(`so-tay/${",
+        "dataReadPath('so-tay'",
+        "'data', 'so-tay'"
+      ],
+      "moDun": [
+        "lib/so-tay-gates.js",
+        "lib/so-tay-runtime.js",
+        "lib/dieu-kien-so.js",
+        "lib/hs-tree-sources.js",
+        "lib/tu-vung.js",
+        "lib/do-thi/dung-bang-canh.js"
+      ],
+      "hamKhongDocKho": [
+        "productHead"
+      ]
     },
     "soPn6": {
-     "trangThai": "co",
-     "qua": [
-      "lib/so-tay-gates.js"
-     ],
-     "co": [
-      "HS_SO_TAY",
-      "HS_SO_TAY_DONG"
-     ],
-     "ghiChu": "Chỉ qua bảng dòng 8 số của cổng sổ tay (dong8HieuLuc). Máy chốt dòng sau HS_SO_TAY_DONG đang tắt. Sổ PN6 vào câu hỏi gửi khách chỉ khi bật HS_HOI_THEO_SO_TAY (xem loiCauHoi)."
+      "ten": "Sổ ranh giới phân nhóm 6 số (đã DUYET)",
+      "duLieu": "data/ho-so/ranh-gioi/<phân nhóm 6 số>.json",
+      "dauVet": [
+        "dataReadPath(`ho-so/ranh-gioi/"
+      ],
+      "moDun": [
+        "lib/so-tay-gates.js",
+        "lib/dieu-kien-so.js"
+      ],
+      "hamKhongDocKho": [
+        "productHead"
+      ]
     },
     "tienLe": {
-     "trangThai": "co",
-     "qua": [
-      "lib/precedent-search.js",
-      "lib/oz-precedent-search.js"
-     ],
-     "co": [],
-     "ghiChu": "Mặc định: tiền lệ chỉ được tìm SAU vòng 1 (gather) và vào gói vòng 2; nhóm của TB-TCHQ chỉ được thêm khi độ giống ≥ 0,6 và tên hàng khớp, tờ khai Oz không thêm nhóm. Sau cờ HS_TIM_TRUOC (mặc định TẮT): lib/tim-truoc.js tìm TB-TCHQ + tờ khai Oz + biểu thuế + từ điển tên thương mại + cặp dễ nhầm theo mô tả TRƯỚC vòng 1, đưa top 5 nhóm kèm bằng chứng vào đầu vào vòng 1; chỉ khi HS_TIM_TRUOC_NAP > 0 (mặc định 0) mới nạp thêm các nhóm đó vào gather (không qua cổng 0,6). Sau cờ HS_TIEN_XU_LY (mặc định TẮT, #1596): lib/tien-xu-ly.js chuẩn hoá / mở viết tắt / sửa lỗi gõ / khôi phục dấu / bóc 5 trường cho các câu tìm trước + truy hồi theo nghĩa qua singleton lib/embed-pool.js (chỉ đọc data/tu-dien-tien-xu-ly.json, không chạm kho sổ tay/tiền lệ khác). Sau cờ HS_TIM_CGCT (mặc định TẮT, #1645): khi HS_TIM_TRUOC bật, lib/tim-truoc.js gọi lib/tim-cgct.js tìm thêm theo tên nhóm, chú giải chi tiết (data/chu-giai-heading.json, data/explanatory-notes.json), biểu thuế Việt/Anh và đồ thị phân biệt, nâng trần ứng viên từ 5 lên tối đa 10 (không chạm data/so-tay/ hay lib/do-thi/). Tên hàng có chữ Hán thì bỏ qua (engine.timTruoc.trangThai ghi lý do)."
+      "ten": "Tiền lệ (TB-TCHQ, tờ khai Oz, tiền lệ Trung Quốc)",
+      "duLieu": "data/precedents.json, kho tờ khai Oz, data/…",
+      "dauVet": [],
+      "ghiChu": "data/precedents.json nạp qua lib/data.js mà gần như đường nào cũng nạp, nên không dò bằng dấu vết được. Tính là 'đọc tiền lệ' khi nạp một trong các máy tìm tiền lệ dưới đây.",
+      "moDun": [
+        "lib/precedent-search.js",
+        "lib/oz-precedent-search.js",
+        "lib/tien-le-trung-tim.js"
+      ]
     },
     "chuGiai": {
-     "trangThai": "co",
-     "qua": [
-      "lib/notes-coverage.js",
-      "lib/chu-giai-goc.js",
-      "lib/classify.js",
-      "lib/tim-cgct.js"
-     ],
-     "co": [],
-     "ghiChu": "Mặc định: lib/notes-coverage.js (lib/chu-giai-goc.js) + lib/classify.js. Sau cờ HS_TIM_CGCT (mặc định TẮT, #1645): khi HS_TIM_TRUOC bật, lib/tim-cgct.js tìm thêm ứng viên theo tên nhóm, chu-giai-heading.json, explanatory-notes.json và tax.json trước vòng 1 (cờ tắt thì không gọi)."
+      "ten": "Chú giải chương / nhóm đưa vào lập luận",
+      "duLieu": "data/luat-goc/{phan,chuong,nhom,phan-nhom,sen,bieu,gir}.jsonl (M-21: lib/chu-giai-goc.js đọc trực tiếp kho luật gốc; trước đây là data/chu-giai-heading.json, data/chu-giai-chuong.json, data/notes.json, data/explanatory-notes.json)",
+      "dauVet": [],
+      "ghiChu": "lib/hs-tree.js cũng mở chu-giai-heading.json nhưng chỉ để lấy tên nút cây, không tính. Tính là 'đọc chú giải' khi nạp một trong các module dưới đây.",
+      "moDun": [
+        "lib/chu-giai-goc.js",
+        "lib/gir-notes.js",
+        "lib/notes-coverage.js",
+        "lib/evidence-pack.js",
+        "lib/classify.js",
+        "lib/tim-cgct.js"
+      ]
     },
     "bangCanh": {
-     "trangThai": "co",
-     "qua": [
-      "lib/do-thi/khoi-phan-biet.js",
-      "lib/do-thi/goi-phan-biet.js"
-     ],
-     "co": [
-      "HS_TIM_TRUOC"
-     ],
-     "ghiChu": "Giai đoạn 3 bước 4, chỉ khi HS_TIM_TRUOC=goi (mặc định TẮT): lib/engine-loop.js nối khối trích dẫn phân biệt giữa tối đa 3 nhóm còn sống vào đầu vào vòng 2; không chọn mã, không đổi lời dặn hệ thống. Giá trị on / 1 / true không nạp. Cạnh ngang dựng sẵn lúc khởi động (server.js) khi bật.",
-     "napMuonHam": {
-      "tep": "lib/hoi-theo-so-tay.js",
-      "chiDung": [
-       "tuKhoa",
-       "khopDieuKien",
-       "tapTuMoTa",
-       "khongDau"
+      "ten": "Bảng cạnh đồ thị tri thức HS (C5, C6, C7, C8, C10 + C13, C11, C16 + chỉ mục C1 gộp; hàm C14)",
+      "duLieu": "dựng trong RAM từ data/so-tay/, data/confusion-pairs.json, data/precedents.json, cây biểu thuế và các kho cụm từ; số đếm ở data/do-thi/thong-ke.json",
+      "dauVet": [],
+      "ghiChu": "ADR-0002, kế hoạch docs/ke-hoach-do-thi-tri-thuc-hs.md. GIAI ĐOẠN 1: chỉ dựng + cổng máy scripts/test-bang-canh.mjs. 25/11/2026: /api/classify đọc sau HS_TIM_TRUOC=goi hoặc do-thi (mặc định tắt; do-thi = lib/do-thi/duong-do-thi.js ráp bước 3–8, đọc thêm tieuChi6 g6@1 qua diXuong6 và tienLeUngHo), các đường khác khai 'khong'; mỗi lần nối sửa bảng này trong cùng PR. lib/do-thi/dung-bang-canh.js đọc thẳng data/so-tay/ nên cũng là module đọc kho soTayNhom. Cổng test-bang-canh đỏ khi có tệp ngoài lib/do-thi/ nạp bảng cạnh mà đường của nó chưa khai 'co'. C16 (23/11/2026): cạnh Phân-biệt-theo-nghĩa dựng từ data/do-thi/ban-do-4so/ (AI_NHAP qua cổng bd4@1; lib/do-thi/ban-do-4so.js, scripts/goi-soan-ban-do-4so.mjs, kiem-ban-do-4so.mjs, nap-ban-do-4so.mjs) — module soạn dữ liệu, không đường khách nào nạp; bậc 1 chỉ khi chamCheo=DUYET và mọi căn cứ còn nguyên văn. G6 (21/11/2026): thêm cạnh C10 Tách-phân-nhóm (+ khoá dữ kiện C13) dựng từ tieuChi6 của sổ tay; khuôn g6@1 và cổng soạn nằm ở lib/do-thi/tieu-chi-6.js (scripts/kiem-tieu-chi-6.mjs, scripts/goi-soan-tieu-chi-6.mjs, scripts/test-tieu-chi-6.mjs) — module soạn dữ liệu, không đường khách nào nạp. tieuChi6 nằm trong kho soTayNhom: đường nào đọc nó xem ghi chú kho soTayNhom. M-35 (25/11/2026): thêm lib/do-thi/doi-ma-nguon.js — đổi mã nguồn cũ sang id nút luật theo bảng data/luat-goc/doi-ma.json (khuôn doi-ma@1, cổng scripts/test-doi-ma-nguon.mjs); module tra bảng đổi, không đường khách nào nạp, chạy lại bằng --xay-dung khi QT gộp các kho lớp 1.",
+      "moDun": [
+        "lib/do-thi/ban-do-4so.js",
+        "lib/do-thi/ba-buoc.js",
+        "lib/do-thi/chu-giai-2-phan-xvi.js",
+        "lib/do-thi/doi-ma-nguon.js",
+        "lib/do-thi/dan-chieu.js",
+        "lib/do-thi/dung-bang-canh.js",
+        "lib/do-thi/duong-do-thi.js",
+        "lib/do-thi/goi-phan-biet.js",
+        "lib/do-thi/hoi-truoc-4so.js",
+        "lib/do-thi/index.js",
+        "lib/do-thi/khoi-phan-biet.js",
+        "lib/do-thi/luot-hai.js",
+        "lib/do-thi/luot-mot.js",
+        "lib/do-thi/phai-doc.js",
+        "lib/do-thi/phan-con-lai.js",
+        "lib/do-thi/song-sinh-vat-lieu.js",
+        "lib/do-thi/tien-le-ung-ho.js",
+        "lib/do-thi/tieu-chi-6.js",
+        "lib/do-thi/tu-khoa.js",
+        "lib/do-thi/tu-soat.js",
+        "lib/do-thi/xuong-6so.js"
       ],
-      "lyDo": "Sau cờ HS_HOI_THEO_SO_TAY: mượn hàm rút / khớp từ khoá (thuần, không dựng bảng cạnh, không đọc kho) để chỉ hỏi câu loại trừ / phân biệt nhóm khi điều kiện của chính dòng đó khớp mô tả hàng — cùng hàm sinh tuKhoaDieuKien của C5/C6 và luật khớp của moRongUngVien."
-     }
+      "hamKhongDocKho": [
+        "tuKhoa",
+        "khopDieuKien",
+        "tapTuMoTa",
+        "khongDau"
+      ]
     }
-   },
-   "loiCauHoi": {
-    "trangThai": "co",
-    "co": [
-     "HS_HOI_THEO_SO_TAY"
+  },
+  "loiCauHoi": {
+    "ghiChu": "Lõi câu hỏi chung (L2): lib/so-tay-cau-hoi.js sinh câu tất định từ sổ; lib/hoi-theo-so-tay.js dựng lại câu hỏi của /api/classify theo sổ (PR #1523). Đường khai loiCauHoi 'co' phải nạp một trong các tệp này.",
+    "moDun": [
+      "lib/so-tay-cau-hoi.js",
+      "lib/hoi-theo-so-tay.js"
+    ]
+  },
+  "duong": [
+    {
+      "duong": "/api/classify",
+      "tep": "api/classify.js",
+      "loai": "phan-loai",
+      "congGoi": true,
+      "llm": true,
+      "doc": {
+        "soTayNhom": {
+          "trangThai": "co",
+          "qua": [
+            "lib/so-tay-gates.js",
+            "lib/so-tay-runtime.js"
+          ],
+          "co": [
+            "HS_CLASSIFY_ENGINE",
+            "HS_SO_TAY",
+            "HS_SOTAY_RUNTIME"
+          ],
+          "ghiChu": "Động cơ hai vòng: cổng nghi (gates) + khối sổ tay trong gói vòng 2 (full). Khối soTay cố vấn trong phản hồi qua so-tay-runtime. Sổ tay vào câu hỏi gửi khách chỉ khi bật HS_HOI_THEO_SO_TAY (xem loiCauHoi). Sau cờ HS_TIM_TRUOC (mặc định TẮT): lib/tim-truoc.js đọc thêm cạnh nhóm↔nhóm hai chiều của sổ tay (loaiTru / phanBiet, so-tay-gates.js nhomLienQuanSoTay) TRƯỚC vòng 1 để nêu tối đa 2 nhóm dễ nhầm trong khối ứng viên của vòng 1 (và nạp chúng vào gather() khi HS_TIM_TRUOC_NAP > 0; mặc định 0 = không nạp); chỉ khi HS_SO_TAY khác off."
+        },
+        "soPn6": {
+          "trangThai": "co",
+          "qua": [
+            "lib/so-tay-gates.js"
+          ],
+          "co": [
+            "HS_SO_TAY",
+            "HS_SO_TAY_DONG"
+          ],
+          "ghiChu": "Chỉ qua bảng dòng 8 số của cổng sổ tay (dong8HieuLuc). Máy chốt dòng sau HS_SO_TAY_DONG đang tắt. Sổ PN6 vào câu hỏi gửi khách chỉ khi bật HS_HOI_THEO_SO_TAY (xem loiCauHoi)."
+        },
+        "tienLe": {
+          "trangThai": "co",
+          "qua": [
+            "lib/precedent-search.js",
+            "lib/oz-precedent-search.js"
+          ],
+          "co": [],
+          "ghiChu": "Mặc định: tiền lệ chỉ được tìm SAU vòng 1 (gather) và vào gói vòng 2; nhóm của TB-TCHQ chỉ được thêm khi độ giống ≥ 0,6 và tên hàng khớp, tờ khai Oz không thêm nhóm. Sau cờ HS_TIM_TRUOC (mặc định TẮT): lib/tim-truoc.js tìm TB-TCHQ + tờ khai Oz + biểu thuế + từ điển tên thương mại + cặp dễ nhầm theo mô tả TRƯỚC vòng 1, đưa top 5 nhóm kèm bằng chứng vào đầu vào vòng 1; chỉ khi HS_TIM_TRUOC_NAP > 0 (mặc định 0) mới nạp thêm các nhóm đó vào gather (không qua cổng 0,6). Sau cờ HS_TIEN_XU_LY (mặc định TẮT, #1596): lib/tien-xu-ly.js chuẩn hoá / mở viết tắt / sửa lỗi gõ / khôi phục dấu / bóc 5 trường cho các câu tìm trước + truy hồi theo nghĩa qua singleton lib/embed-pool.js (chỉ đọc data/tu-dien-tien-xu-ly.json, không chạm kho sổ tay/tiền lệ khác). Sau cờ HS_TIM_CGCT (mặc định TẮT, #1645): khi HS_TIM_TRUOC bật, lib/tim-truoc.js gọi lib/tim-cgct.js tìm thêm theo tên nhóm, chú giải chi tiết (data/chu-giai-heading.json, data/explanatory-notes.json), biểu thuế Việt/Anh và đồ thị phân biệt, nâng trần ứng viên từ 5 lên tối đa 10 (không chạm data/so-tay/ hay lib/do-thi/). Tên hàng có chữ Hán thì bỏ qua (engine.timTruoc.trangThai ghi lý do)."
+        },
+        "chuGiai": {
+          "trangThai": "co",
+          "qua": [
+            "lib/notes-coverage.js",
+            "lib/chu-giai-goc.js",
+            "lib/classify.js",
+            "lib/tim-cgct.js"
+          ],
+          "co": [],
+          "ghiChu": "Mặc định: lib/notes-coverage.js (lib/chu-giai-goc.js) + lib/classify.js. Sau cờ HS_TIM_CGCT (mặc định TẮT, #1645): khi HS_TIM_TRUOC bật, lib/tim-cgct.js tìm thêm ứng viên theo tên nhóm, chu-giai-heading.json, explanatory-notes.json và tax.json trước vòng 1 (cờ tắt thì không gọi)."
+        },
+        "bangCanh": {
+          "trangThai": "co",
+          "qua": [
+            "lib/do-thi/khoi-phan-biet.js",
+            "lib/do-thi/goi-phan-biet.js"
+          ],
+          "co": [
+            "HS_TIM_TRUOC"
+          ],
+          "ghiChu": "Giai đoạn 3 bước 4, chỉ khi HS_TIM_TRUOC=goi (mặc định TẮT): lib/engine-loop.js nối khối trích dẫn phân biệt giữa tối đa 3 nhóm còn sống vào đầu vào vòng 2; không chọn mã, không đổi lời dặn hệ thống. Giá trị on / 1 / true không nạp. Cạnh ngang dựng sẵn lúc khởi động (server.js) khi bật.",
+          "napMuonHam": {
+            "tep": "lib/hoi-theo-so-tay.js",
+            "chiDung": [
+              "tuKhoa",
+              "khopDieuKien",
+              "tapTuMoTa",
+              "khongDau"
+            ],
+            "lyDo": "Sau cờ HS_HOI_THEO_SO_TAY: mượn hàm rút / khớp từ khoá (thuần, không dựng bảng cạnh, không đọc kho) để chỉ hỏi câu loại trừ / phân biệt nhóm khi điều kiện của chính dòng đó khớp mô tả hàng — cùng hàm sinh tuKhoaDieuKien của C5/C6 và luật khớp của moRongUngVien."
+          }
+        }
+      },
+      "loiCauHoi": {
+        "trangThai": "co",
+        "co": [
+          "HS_HOI_THEO_SO_TAY"
+        ],
+        "the": "OZV-1707",
+        "ghiChu": "Đã nối (PR #1523) nhưng sau cờ HS_HOI_THEO_SO_TAY MẶC ĐỊNH TẮT. Cờ tắt thì câu hỏi gửi khách vẫn là questions / unknowns do LLM viết (lib/engine-loop.js). Trưa 21/11 QT bật thử rồi tắt (nhóm sai ở nhánh dừng sớm ⇒ câu hỏi sai hàng); không bật lại trước khi sửa OZV-1707 (L3 bổ sung). Nhóm chưa có sổ tay vẫn rơi về câu LLM (nextAction.canCuCauHoi = 'llm')."
+      }
+    },
+    {
+      "duong": "/api/identify",
+      "tep": "api/identify.js",
+      "loai": "phan-loai",
+      "congGoi": true,
+      "llm": true,
+      "ghiChu": "Sau cờ HS_KHO_DINH_DANH (mặc định off): lib/identify.js gọi lib/kho-dinh-danh.js#chayBongNeuCan → soiBong/docKho (Postgres dd_*). off = no-op; shadow = log số đo, không đổi frame khách; on trả từ kho = PR sau. Kho này không thuộc 5 kho trong mục kho{} (sổ tay/PN6/tiền lệ/chú giải/bảng cạnh).",
+      "doc": {
+        "soTayNhom": {
+          "trangThai": "khong",
+          "the": "OZV-1670",
+          "lyDo": "Định danh không đọc sổ tay. Không tự suy nhóm (L3): nhóm chỉ nhận từ bên gọi để lọc trường khai.",
+          "napMuonHam": {
+            "tep": "lib/xac-minh-nguon.js",
+            "chiDung": [
+              "productHead"
+            ],
+            "lyDo": "Mượn hàm tách danh từ chính của tên hàng (productHead) để siết khớp nguồn web (PR #1520). Hàm này không mở tệp sổ nào."
+          }
+        },
+        "soPn6": {
+          "trangThai": "khong",
+          "the": "OZV-1670",
+          "lyDo": "Định danh không đọc sổ ranh giới; không tự suy phân nhóm (L3).",
+          "napMuonHam": {
+            "tep": "lib/xac-minh-nguon.js",
+            "chiDung": [
+              "productHead"
+            ],
+            "lyDo": "Mượn hàm tách danh từ chính của tên hàng (productHead) để siết khớp nguồn web (PR #1520). Hàm này không mở tệp sổ nào."
+          }
+        },
+        "tienLe": {
+          "trangThai": "khong",
+          "lyDo": "Định danh chỉ xác định hàng là gì, chưa ra mã."
+        },
+        "chuGiai": {
+          "trangThai": "khong",
+          "lyDo": "Định danh chỉ xác định hàng là gì, chưa ra mã."
+        },
+        "bangCanh": {
+          "trangThai": "khong",
+          "lyDo": "Giai đoạn 1 của ADR-0002 chỉ dựng bảng cạnh và cổng máy; chưa nối vào đường nào. Giai đoạn 2–4 mới nối, sau công tắc mặc định tắt."
+        }
+      },
+      "loiCauHoi": {
+        "trangThai": "khong",
+        "the": "OZV-1670",
+        "lyDo": "Câu hỏi dựng trong lib/identify.js từ khung thuộc tính theo chương (data/attribute-frames.json), lọc bằng danh mục trường khai của nhóm khi bên gọi truyền nhóm. Câu hỏi theo sổ tay hiện đi đường: định danh → phan_loai_hs → so_tay_questions. PR #1517 thử nối bằng cách cho LLM đoán nhóm, đã hoàn nguyên (#1519)."
+      }
+    },
+    {
+      "duong": "/api/so-tay-questions",
+      "tep": "api/so-tay-questions.js",
+      "loai": "phan-loai",
+      "congGoi": true,
+      "llm": false,
+      "doc": {
+        "soTayNhom": {
+          "trangThai": "co",
+          "qua": [
+            "lib/so-tay-gates.js"
+          ],
+          "co": [],
+          "ghiChu": "Tất định, không phụ thuộc HS_SO_TAY."
+        },
+        "soPn6": {
+          "trangThai": "co",
+          "qua": [
+            "lib/so-tay-gates.js"
+          ],
+          "co": [],
+          "ghiChu": "Qua chotDong8 → dong8HieuLuc."
+        },
+        "tienLe": {
+          "trangThai": "khong",
+          "lyDo": "Chỉ sinh câu hỏi từ sổ; mã do bên gọi đưa vào."
+        },
+        "chuGiai": {
+          "trangThai": "khong",
+          "lyDo": "Chỉ sinh câu hỏi từ sổ; mã do bên gọi đưa vào."
+        },
+        "bangCanh": {
+          "trangThai": "khong",
+          "lyDo": "Giai đoạn 1 của ADR-0002 chỉ dựng bảng cạnh và cổng máy; chưa nối vào đường nào. Giai đoạn 2–4 mới nối, sau công tắc mặc định tắt."
+        }
+      },
+      "loiCauHoi": {
+        "trangThai": "co",
+        "ghiChu": "Gọi thẳng lib/so-tay-cau-hoi.js, không sau cờ nào."
+      }
+    },
+    {
+      "duong": "/api/suggest",
+      "tep": "api/suggest.js",
+      "loai": "phan-loai",
+      "congGoi": false,
+      "llm": true,
+      "doc": {
+        "soTayNhom": {
+          "trangThai": "co",
+          "qua": [
+            "lib/so-tay-runtime.js",
+            "lib/so-tay-gates.js"
+          ],
+          "co": [
+            "HS_SOTAY_RUNTIME",
+            "HS_SO_TAY"
+          ],
+          "ghiChu": "Khối soTay cố vấn (so-tay-runtime) và cảnh báo dòng 8 số (subheading-check, residual-guard qua trangThaiDong8, sau HS_SO_TAY). Không đổi mã đã chọn."
+        },
+        "soPn6": {
+          "trangThai": "co",
+          "qua": [
+            "lib/so-tay-gates.js"
+          ],
+          "co": [
+            "HS_SO_TAY"
+          ],
+          "ghiChu": "Chỉ gián tiếp trong cảnh báo dòng 8 số."
+        },
+        "tienLe": {
+          "trangThai": "co",
+          "qua": [
+            "lib/precedent-search.js",
+            "lib/oz-precedent-search.js"
+          ],
+          "co": []
+        },
+        "chuGiai": {
+          "trangThai": "co",
+          "qua": [
+            "lib/notes-coverage.js",
+            "lib/chu-giai-goc.js"
+          ],
+          "co": []
+        },
+        "bangCanh": {
+          "trangThai": "khong",
+          "lyDo": "Giai đoạn 1 của ADR-0002 chỉ dựng bảng cạnh và cổng máy; chưa nối vào đường nào. Giai đoạn 2–4 mới nối, sau công tắc mặc định tắt."
+        }
+      },
+      "loiCauHoi": {
+        "trangThai": "khong",
+        "lyDo": "Hỏi theo bảng quyết định (lib/decision-tables.js, lib/conflict-resolver.js — người soạn, có văn bản gốc) qua lib/suggest-status.js. Nguồn có căn cứ nhưng chưa đi qua lõi sổ tay. Cổng OZ không gọi đường này."
+      }
+    },
+    {
+      "duong": "/api/suggest/batch",
+      "tep": "api/suggest.js",
+      "mode": "batch",
+      "loai": "phan-loai",
+      "congGoi": false,
+      "llm": true,
+      "nhu": "/api/suggest"
+    },
+    {
+      "duong": "/api/match",
+      "tep": "api/search.js",
+      "mode": "match",
+      "loai": "phan-loai",
+      "congGoi": false,
+      "llm": true,
+      "doc": {
+        "soTayNhom": {
+          "trangThai": "khong",
+          "lyDo": "Khớp sản phẩm ERP với mã bằng tìm kiếm; không đọc kho này."
+        },
+        "soPn6": {
+          "trangThai": "khong",
+          "lyDo": "Khớp sản phẩm ERP với mã bằng tìm kiếm; không đọc kho này."
+        },
+        "tienLe": {
+          "trangThai": "khong",
+          "lyDo": "Khớp sản phẩm ERP với mã bằng tìm kiếm; không đọc kho này."
+        },
+        "chuGiai": {
+          "trangThai": "khong",
+          "lyDo": "Khớp sản phẩm ERP với mã bằng tìm kiếm; không đọc kho này."
+        },
+        "bangCanh": {
+          "trangThai": "khong",
+          "lyDo": "Giai đoạn 1 của ADR-0002 chỉ dựng bảng cạnh và cổng máy; chưa nối vào đường nào. Giai đoạn 2–4 mới nối, sau công tắc mặc định tắt."
+        }
+      },
+      "loiCauHoi": {
+        "trangThai": "khong-hoi"
+      }
+    },
+    {
+      "duong": "/api/extract-specs",
+      "tep": "api/classify.js",
+      "mode": "extract_specs",
+      "loai": "soan-thao",
+      "congGoi": false,
+      "llm": true,
+      "ghiChu": "Trích thông số từ mô tả; không ra mã, không hỏi khách."
+    },
+    {
+      "duong": "/api/declaration-check",
+      "tep": "api/classify.js",
+      "mode": "check",
+      "loai": "soan-thao",
+      "congGoi": true,
+      "llm": true,
+      "ghiChu": "Soát tờ khai trên mã đã khai. Có dùng sổ tay nhóm + bảng dòng 8 số (lib/declaration-check.js gọi chotDong8, soTayGates) cho mục K2."
+    },
+    {
+      "duong": "/api/describe",
+      "tep": "api/describe.js",
+      "loai": "soan-thao",
+      "congGoi": true,
+      "llm": true,
+      "ghiChu": "Viết mô tả khai báo trên mã đã có. Hồ sơ phân loại gắn thêm sau cờ HS_HO_SO."
+    },
+    {
+      "duong": "/api/declaration-sheet",
+      "tep": "api/describe.js",
+      "mode": "sheet",
+      "loai": "soan-thao",
+      "congGoi": false,
+      "llm": true,
+      "ghiChu": "Phiếu khai. Câu hỏi là trường khai còn thiếu (lib/declaration-sheet.js)."
+    },
+    {
+      "duong": "/api/ho-so",
+      "tep": "api/describe.js",
+      "mode": "ho_so",
+      "loai": "soan-thao",
+      "congGoi": false,
+      "llm": true,
+      "ghiChu": "Hồ sơ phân loại, sau cờ HS_HO_SO. Đọc sổ ranh giới qua lib/ho-so/*."
+    },
+    {
+      "duong": "/api/dispute-draft",
+      "tep": "api/describe.js",
+      "mode": "dispute",
+      "loai": "soan-thao",
+      "congGoi": true,
+      "llm": true,
+      "ghiChu": "Soạn hồ sơ giải trình."
+    },
+    {
+      "duong": "/api/mkt/sourcing-assist",
+      "tep": "api/describe.js",
+      "mode": "sourcing",
+      "loai": "soan-thao",
+      "congGoi": true,
+      "llm": true,
+      "ghiChu": "Trợ giúp tìm nguồn, sau cờ HS_MKT_SOURCING."
+    },
+    {
+      "duong": "/api/search",
+      "tep": "api/search.js",
+      "loai": "tra-cuu",
+      "congGoi": true,
+      "llm": false
+    },
+    {
+      "duong": "/api/tax",
+      "tep": "api/tax.js",
+      "loai": "tra-cuu",
+      "congGoi": true,
+      "llm": false
+    },
+    {
+      "duong": "/api/notes",
+      "tep": "api/notes.js",
+      "loai": "tra-cuu",
+      "congGoi": true,
+      "llm": false
+    },
+    {
+      "duong": "/api/destination-facts",
+      "tep": "api/destination-facts.js",
+      "loai": "tra-cuu",
+      "congGoi": true,
+      "llm": false
+    },
+    {
+      "duong": "/api/dataset",
+      "tep": "api/dataset.js",
+      "loai": "tra-cuu",
+      "congGoi": true,
+      "llm": false,
+      "ghiChu": "Gộp các resource chỉ đọc qua routes.json (precedents, evidence-pack, wco-opinions, tree, policy-procedures, ktcn-regime…) và nhóm quản trị. Thêm resource mới: xem luật 2 trong CLAUDE.md (mặc định kín). 25/11/2026: /api/tree trả thêm phaiDoc (lib/do-thi/phai-doc.js) — đọc bảng cạnh, chỉ cạnh luật, tra cứu, không ra mã.",
+      "doc": {
+        "bangCanh": {
+          "trangThai": "co",
+          "qua": [
+            "lib/do-thi/phai-doc.js"
+          ],
+          "co": [],
+          "ghiChu": "ADR-0005: /api/tree trả phaiDoc, chỉ cạnh luật (loại trừ, phân biệt đã chấm chéo, nhắc nhóm, WCO), không ra mã, không tờ khai."
+        }
+      }
+    },
+    {
+      "duong": "/api/tariff",
+      "tep": "api/tariff.js",
+      "loai": "tra-cuu",
+      "congGoi": false,
+      "llm": false
+    },
+    {
+      "duong": "/api/customs-types",
+      "tep": "api/customs-types.js",
+      "loai": "tra-cuu",
+      "congGoi": false,
+      "llm": false
+    },
+    {
+      "duong": "/api/kg_chapter",
+      "tep": "api/kg_chapter.js",
+      "loai": "tra-cuu",
+      "congGoi": false,
+      "llm": false
+    },
+    {
+      "duong": "/api/feedback",
+      "tep": "api/feedback.js",
+      "loai": "tra-cuu",
+      "congGoi": false,
+      "llm": false,
+      "ghiChu": "Ghi phản hồi, cần khoá."
+    },
+    {
+      "duong": "/api/health",
+      "tep": "api/health.js",
+      "loai": "tra-cuu",
+      "congGoi": false,
+      "llm": false
+    },
+    {
+      "duong": "/api/ho-so-ma",
+      "tep": "api/ho-so-ma.js",
+      "loai": "tra-cuu",
+      "congGoi": true,
+      "llm": false,
+      "doc": {
+        "bangCanh": {
+          "trangThai": "co",
+          "qua": [
+            "lib/ho-so-ma/ghep.js"
+          ],
+          "co": [],
+          "ghiChu": "tra.js bọc ghep.hoSo — ghep nạp bảng cạnh (napLuat) để dựng đường đi Phần→Chương→NHOM→PHAN_NHOM→DONG; chỉ đọc, không nối đường chọn mã."
+        }
+      }
+    }
+  ],
+  "nhanhBoQua": [
+    {
+      "ten": "doThiChot",
+      "duong": "/api/classify",
+      "tep": "lib/engine-loop.js",
+      "dauVet": "doThiChot: true",
+      "boQua": [
+        "soPn6"
+      ],
+      "the": "OZV-2228",
+      "lyDo": "Sau HS_TIM_TRUOC=do-thi (mặc định TẮT): nhóm 4 số chốt bằng căn cứ trích nguyên văn (lượt hai), phân nhóm chốt bằng cạnh g6@1, dòng 8 số là dòng duy nhất hoặc chotDong8 chốt ⇒ bỏ lời AI vòng 2. Chỉ rẽ khi: không thuộc mã từ điển cấm, không có tín hiệu tất định trái nhóm (chot-som-co-kiem), tiền lệ không phản đối và không lệch (tienLeUngHo), qua đủ cổng G1–G8. Bị bỏ: lượt AI vòng 2 đọc gói sổ tay + chú giải. Số đúng/sai trên máy thật CHƯA đo."
+    },
+    {
+      "ten": "earlyExitHoiTuR1",
+      "duong": "/api/classify",
+      "tep": "lib/engine-loop.js",
+      "dauVet": "function earlyExitHoiTuR1(",
+      "boQua": [
+        "soTayNhom",
+        "soPn6"
+      ],
+      "the": "OZV-1707",
+      "phepKiemTienLe": {
+        "ham": "lib/do-thi/tien-le-ung-ho.js tienLeUngHo()",
+        "trangThai": "chua-noi",
+        "adr": "ADR-0002",
+        "ghiChu": "Kế hoạch mục 4.5: phép kiểm tiền lệ (C14 ủng hộ + không bị cạnh bậc 1 hay thông báo phân loại phản đối — trường biPhanDoi) sẽ áp cho CẢ BỐN nhánh dừng sớm, không chỉ nhánh dừng sớm để hỏi. Giai đoạn 1 mới có hàm, chưa nhánh nào gọi."
+      },
+      "lyDo": "Vòng 1 khai unknowns thì động cơ dừng, hỏi khách, bỏ vòng 2. Khối sổ tay của vòng 2 không được đọc dù HS_SO_TAY=full; câu hỏi là unknowns của LLM, trừ khi bật HS_HOI_THEO_SO_TAY (hậu xử lý dựng lại câu hỏi theo sổ, không đổi mã). Ca thật 21/11: van khí nén 5/2 có 2 TB-TCHQ trùng khít ra 848120, nhánh này dừng ở 848180 (sáng) rồi 8412.21 (trưa, khi bật HS_HOI_THEO_SO_TAY khách bị hỏi theo sổ nhóm 84.12 — QT tắt cờ). Phạm L11: bỏ bước đọc tri thức dù có tín hiệu tất định trái kết luận. soTay.outcome ở nhánh này còn nguyên giá trị khởi tạo 'NONE' — đọc là CHƯA TRA, không phải 'đã tra, không có' (L6). Từ PR #1528: sau cờ HS_CHOT_SOM_CO_KIEM (mặc định TẮT) nhánh này KHÔNG rẽ khi hồ sơ vụ việc có tín hiệu tất định trái nhóm 4 số (lib/chot-som-co-kiem.js: tien-le-oz, tb-tchq, made-in-china, so-tay-loai-tru) — đi vòng 2 như đường thường; còn rẽ thì kết quả ghi soTay.daTra:false + lyDoChuaTra 'dung-som-hoi'. Cờ tắt thì vẫn bỏ qua như cũ. Giới hạn: truy hồi TB-TCHQ theo mô tả chưa khớp chữ khách 'van điện từ' với tên thông báo 'van truyền động bằng khí nén … solenoid', nên tín hiệu tb-tchq chưa bắn cho chính ca van."
+    },
+    {
+      "ten": "earlyExitChotTuConflict",
+      "duong": "/api/classify",
+      "tep": "lib/engine-loop.js",
+      "dauVet": "function earlyExitChotTuConflict(",
+      "boQua": [
+        "soTayNhom",
+        "soPn6"
+      ],
+      "the": "OZV-1707",
+      "phepKiemTienLe": {
+        "ham": "lib/do-thi/tien-le-ung-ho.js tienLeUngHo()",
+        "trangThai": "chua-noi",
+        "adr": "ADR-0002",
+        "ghiChu": "Kế hoạch mục 4.5: phép kiểm tiền lệ (C14 ủng hộ + không bị cạnh bậc 1 hay thông báo phân loại phản đối — trường biPhanDoi) sẽ áp cho CẢ BỐN nhánh dừng sớm, không chỉ nhánh dừng sớm để hỏi. Giai đoạn 1 mới có hàm, chưa nhánh nào gọi."
+      },
+      "lyDo": "Bảng xung đột đã duyệt chốt được từ văn bản thì động cơ CHOT tất định và bỏ vòng 2 (OZV-1317). Khối sổ tay của vòng 2 không được đọc; cổng máy G8 có chạy trên đáp án dựng sẵn. Sau cờ HS_CHOT_SOM_CO_KIEM (mặc định TẮT, L11): trước khi rẽ, kiểm tín hiệu tất định trái nhóm 4 số (lib/chot-som-co-kiem.js: tien-le-oz, tb-tchq, made-in-china, so-tay-loai-tru); có thì nạp nhóm trái chiều và đi vòng 2. Còn rẽ khi cờ bật thì kết quả ghi soTay.daTra:false + lyDoChuaTra 'dung-som-bang-xung-dot'. Cờ tắt thì giữ nguyên hành vi cũ."
+    },
+    {
+      "ten": "fastFirstUngVien",
+      "duong": "/api/classify",
+      "tep": "lib/engine-loop.js",
+      "dauVet": "function fastFirstUngVien(",
+      "boQua": [
+        "soTayNhom",
+        "soPn6"
+      ],
+      "the": "OZV-1707",
+      "phepKiemTienLe": {
+        "ham": "lib/do-thi/tien-le-ung-ho.js tienLeUngHo()",
+        "trangThai": "chua-noi",
+        "adr": "ADR-0002",
+        "ghiChu": "Kế hoạch mục 4.5: phép kiểm tiền lệ (C14 ủng hộ + không bị cạnh bậc 1 hay thông báo phân loại phản đối — trường biPhanDoi) sẽ áp cho CẢ BỐN nhánh dừng sớm, không chỉ nhánh dừng sớm để hỏi. Giai đoạn 1 mới có hàm, chưa nhánh nào gọi."
+      },
+      "lyDo": "Fast-first (HS_CLASSIFY_FAST_FIRST, OZV-570): vòng 1 tắt suy nghĩ + một nguồn độc lập xác nhận thì dựng đáp án CHOT và bỏ lời GIR vòng 2. Khối sổ tay của vòng 2 không được đọc; cổng máy G8 có chạy. Sau cờ HS_CHOT_SOM_CO_KIEM (mặc định TẮT, L11): trước khi rẽ, kiểm tín hiệu tất định trái nhóm 4 số (lib/chot-som-co-kiem.js); có thì nạp nhóm trái chiều và đi vòng 2. Còn rẽ khi cờ bật thì kết quả ghi soTay.daTra:false + lyDoChuaTra 'fast-first'. Cờ tắt thì giữ nguyên hành vi cũ."
+    },
+    {
+      "ten": "earlyExitChotTuTrade",
+      "duong": "/api/classify",
+      "tep": "lib/engine-loop.js",
+      "dauVet": "function earlyExitChotTuTrade(",
+      "boQua": [
+        "soTayNhom",
+        "soPn6",
+        "tienLe",
+        "chuGiai"
+      ],
+      "the": "OZV-1707",
+      "phepKiemTienLe": {
+        "ham": "lib/do-thi/tien-le-ung-ho.js tienLeUngHo()",
+        "trangThai": "chua-noi",
+        "adr": "ADR-0002",
+        "ghiChu": "Kế hoạch mục 4.5: phép kiểm tiền lệ (C14 ủng hộ + không bị cạnh bậc 1 hay thông báo phân loại phản đối — trường biPhanDoi) sẽ áp cho CẢ BỐN nhánh dừng sớm, không chỉ nhánh dừng sớm để hỏi. Giai đoạn 1 mới có hàm, chưa nhánh nào gọi."
+      },
+      "lyDo": "Chốt sớm theo từ điển tên thương mại (mục high + chotSom, OZV-1356): bỏ cả vòng 1, gather đầy đủ và vòng 2 — không đọc sổ tay, không tra tiền lệ theo mô tả. Sau cờ HS_CHOT_SOM_CO_KIEM (mặc định TẮT, L11): trước khi rẽ, kiểm tín hiệu tất định trái nhóm 4 số có sẵn không cần mạng (tb-tchq khớp tên hàng, so-tay-loai-tru); có thì không chốt sớm, đi vòng 1 → gather → vòng 2. Còn rẽ khi cờ bật thì kết quả ghi soTay.daTra:false + lyDoChuaTra 'chot-som-tu-dien'. Cờ tắt thì giữ nguyên hành vi cũ."
+    },
+    {
+      "ten": "hoiTheoGiaThuyetNhomDich",
+      "duong": "/api/classify",
+      "tep": "lib/engine-loop.js",
+      "dauVet": "function hoiTheoGiaThuyetNhomDich(",
+      "boQua": [
+        "soTayNhom",
+        "chuGiai"
+      ],
+      "the": "OZV-2228",
+      "lyDo": "Sau cờ HS_CHOT_SOM_CO_KIEM: dừng sớm HOI bị chặn CHỈ vì sổ tay nhóm đứng đầu loại trừ tên hàng sang nhóm khác (mọi tín hiệu là so-tay-loai-tru, không có tiền lệ Oz / TB-TCHQ / shop trái chiều): (1) vòng 1 có đúng MỘT nhóm đích trong giả thuyết (OZV-2224) ⇒ máy đổi đáp án HOI sang giả thuyết đó; (2) sổ tay nhóm đứng đầu loại trừ cùng cụm tên hàng sang ≥ 2 nhóm đích (OZV-2228, vd 90.31 loại trừ 'cảm biến quang' sang 90.32 và 85.36) ⇒ giữ mã HOI tạm (không chọn nhóm thay khách), đưa câu hỏi từ questionVi của các mệnh đề loại trừ lên đầu để hỏi khách giữa các nhóm đích; cả hai đều chạy đủ cổng G1–G8 (cổng sổ tay G8 tất định ĐÃ chạy; thiếu chú giải nhóm thì nạp tất định qua napNhomTatDinh) và bỏ vòng 2. Bị bỏ: lượt AI vòng 2 đọc gói sổ tay + chú giải để lập luận, và lượt giải trình sổ tay. Tiền lệ theo mô tả và chú giải nhóm vòng 1 đã nạp ở gather() trước nhánh; sổ PN6 vòng 2 cũng không đọc nên không tính là bỏ. Kết quả ghi soTay.nhanhToiUu (congSoTayG8 DA_CHAY, aiDocSoTayVaChuGiai + giaiTrinhSoTay CHUA_CHAY) và soTay.lyDoChuaTra 'hoiTheoGiaThuyetNhomDich'. Ca thực địa 25/11 cảm biến quang e3sct11: bỏ 32–51 giây vòng 2 khi rơi 85.41 (OZV-2224) và 39,3 giây vòng 2 khi rơi 90.31 (OZV-2228)."
+    }
+  ],
+  "noiDungCauHoi": {
+    "ghiChu": "Mọi tệp trong lib/, api/ có dựng câu hỏi (mẫu 'questionVi:'). loi = sinh câu từ nguồn có căn cứ (L2). chuyenTiep = chỉ chuyển câu đã dựng ở nơi khác hoặc dựng thông báo kỹ thuật. ngoaiLe = dựng câu ngoài lõi, phải có thẻ; danh sách chỉ được NGẮN đi (trần cứng trong scripts/test-cau-hoi-co-can-cu.mjs).",
+    "loi": [
+      {
+        "tep": "lib/so-tay-cau-hoi.js",
+        "canCu": "so-tay, ranh-gioi-pn6, truong-khai-nhom",
+        "ghiChu": "Lõi tất định. api/so-tay-questions.js chỉ gọi tệp này."
+      },
+      {
+        "tep": "lib/hoi-theo-so-tay.js",
+        "canCu": "so-tay, ranh-gioi-pn6, truong-khai-nhom, bieu-thue",
+        "ghiChu": "Dựng lại câu hỏi của /api/classify theo sổ, sau cờ HS_HOI_THEO_SO_TAY."
+      },
+      {
+        "tep": "lib/so-tay-gates.js",
+        "canCu": "so-tay",
+        "ghiChu": "Câu giải trình của cổng sổ tay (gửi AI ở lượt giải trình), trích điều kiện từ sổ."
+      },
+      {
+        "tep": "lib/declaration-fields.js",
+        "canCu": "truong-khai-nhom"
+      },
+      {
+        "tep": "lib/declaration-sheet.js",
+        "canCu": "truong-khai-nhom",
+        "ghiChu": "Câu hỏi cho ô phiếu khai còn thiếu, theo danh mục trường khai."
+      },
+      {
+        "tep": "lib/decision-tables.js",
+        "canCu": "bang-quyet-dinh",
+        "ghiChu": "data/conflict-tables.json, người soạn, có văn bản gốc."
+      },
+      {
+        "tep": "lib/conflict-resolver.js",
+        "canCu": "bang-quyet-dinh"
+      }
     ],
-    "the": "OZV-1707",
-    "ghiChu": "Đã nối (PR #1523) nhưng sau cờ HS_HOI_THEO_SO_TAY MẶC ĐỊNH TẮT. Cờ tắt thì câu hỏi gửi khách vẫn là questions / unknowns do LLM viết (lib/engine-loop.js). Trưa 21/11 QT bật thử rồi tắt (nhóm sai ở nhánh dừng sớm ⇒ câu hỏi sai hàng); không bật lại trước khi sửa OZV-1707 (L3 bổ sung). Nhóm chưa có sổ tay vẫn rơi về câu LLM (nextAction.canCuCauHoi = 'llm')."
-   }
-  },
-  {
-   "duong": "/api/identify",
-   "tep": "api/identify.js",
-   "loai": "phan-loai",
-   "congGoi": true,
-   "llm": true,
-   "ghiChu": "Sau cờ HS_KHO_DINH_DANH (mặc định off): lib/identify.js gọi lib/kho-dinh-danh.js#chayBongNeuCan → soiBong/docKho (Postgres dd_*). off = no-op; shadow = log số đo, không đổi frame khách; on trả từ kho = PR sau. Kho này không thuộc 5 kho trong mục kho{} (sổ tay/PN6/tiền lệ/chú giải/bảng cạnh).",
-   "doc": {
-    "soTayNhom": {
-     "trangThai": "khong",
-     "the": "OZV-1670",
-     "lyDo": "Định danh không đọc sổ tay. Không tự suy nhóm (L3): nhóm chỉ nhận từ bên gọi để lọc trường khai.",
-     "napMuonHam": {
-      "tep": "lib/xac-minh-nguon.js",
-      "chiDung": [
-       "productHead"
-      ],
-      "lyDo": "Mượn hàm tách danh từ chính của tên hàng (productHead) để siết khớp nguồn web (PR #1520). Hàm này không mở tệp sổ nào."
-     }
-    },
-    "soPn6": {
-     "trangThai": "khong",
-     "the": "OZV-1670",
-     "lyDo": "Định danh không đọc sổ ranh giới; không tự suy phân nhóm (L3).",
-     "napMuonHam": {
-      "tep": "lib/xac-minh-nguon.js",
-      "chiDung": [
-       "productHead"
-      ],
-      "lyDo": "Mượn hàm tách danh từ chính của tên hàng (productHead) để siết khớp nguồn web (PR #1520). Hàm này không mở tệp sổ nào."
-     }
-    },
-    "tienLe": {
-     "trangThai": "khong",
-     "lyDo": "Định danh chỉ xác định hàng là gì, chưa ra mã."
-    },
-    "chuGiai": {
-     "trangThai": "khong",
-     "lyDo": "Định danh chỉ xác định hàng là gì, chưa ra mã."
-    },
-    "bangCanh": {
-     "trangThai": "khong",
-     "lyDo": "Giai đoạn 1 của ADR-0002 chỉ dựng bảng cạnh và cổng máy; chưa nối vào đường nào. Giai đoạn 2–4 mới nối, sau công tắc mặc định tắt."
-    }
-   },
-   "loiCauHoi": {
-    "trangThai": "khong",
-    "the": "OZV-1670",
-    "lyDo": "Câu hỏi dựng trong lib/identify.js từ khung thuộc tính theo chương (data/attribute-frames.json), lọc bằng danh mục trường khai của nhóm khi bên gọi truyền nhóm. Câu hỏi theo sổ tay hiện đi đường: định danh → phan_loai_hs → so_tay_questions. PR #1517 thử nối bằng cách cho LLM đoán nhóm, đã hoàn nguyên (#1519)."
-   }
-  },
-  {
-   "duong": "/api/so-tay-questions",
-   "tep": "api/so-tay-questions.js",
-   "loai": "phan-loai",
-   "congGoi": true,
-   "llm": false,
-   "doc": {
-    "soTayNhom": {
-     "trangThai": "co",
-     "qua": [
-      "lib/so-tay-gates.js"
-     ],
-     "co": [],
-     "ghiChu": "Tất định, không phụ thuộc HS_SO_TAY."
-    },
-    "soPn6": {
-     "trangThai": "co",
-     "qua": [
-      "lib/so-tay-gates.js"
-     ],
-     "co": [],
-     "ghiChu": "Qua chotDong8 → dong8HieuLuc."
-    },
-    "tienLe": {
-     "trangThai": "khong",
-     "lyDo": "Chỉ sinh câu hỏi từ sổ; mã do bên gọi đưa vào."
-    },
-    "chuGiai": {
-     "trangThai": "khong",
-     "lyDo": "Chỉ sinh câu hỏi từ sổ; mã do bên gọi đưa vào."
-    },
-    "bangCanh": {
-     "trangThai": "khong",
-     "lyDo": "Giai đoạn 1 của ADR-0002 chỉ dựng bảng cạnh và cổng máy; chưa nối vào đường nào. Giai đoạn 2–4 mới nối, sau công tắc mặc định tắt."
-    }
-   },
-   "loiCauHoi": {
-    "trangThai": "co",
-    "ghiChu": "Gọi thẳng lib/so-tay-cau-hoi.js, không sau cờ nào."
-   }
-  },
-  {
-   "duong": "/api/suggest",
-   "tep": "api/suggest.js",
-   "loai": "phan-loai",
-   "congGoi": false,
-   "llm": true,
-   "doc": {
-    "soTayNhom": {
-     "trangThai": "co",
-     "qua": [
-      "lib/so-tay-runtime.js",
-      "lib/so-tay-gates.js"
-     ],
-     "co": [
-      "HS_SOTAY_RUNTIME",
-      "HS_SO_TAY"
-     ],
-     "ghiChu": "Khối soTay cố vấn (so-tay-runtime) và cảnh báo dòng 8 số (subheading-check, residual-guard qua trangThaiDong8, sau HS_SO_TAY). Không đổi mã đã chọn."
-    },
-    "soPn6": {
-     "trangThai": "co",
-     "qua": [
-      "lib/so-tay-gates.js"
-     ],
-     "co": [
-      "HS_SO_TAY"
-     ],
-     "ghiChu": "Chỉ gián tiếp trong cảnh báo dòng 8 số."
-    },
-    "tienLe": {
-     "trangThai": "co",
-     "qua": [
-      "lib/precedent-search.js",
-      "lib/oz-precedent-search.js"
-     ],
-     "co": []
-    },
-    "chuGiai": {
-     "trangThai": "co",
-     "qua": [
-      "lib/notes-coverage.js",
-      "lib/chu-giai-goc.js"
-     ],
-     "co": []
-    },
-    "bangCanh": {
-     "trangThai": "khong",
-     "lyDo": "Giai đoạn 1 của ADR-0002 chỉ dựng bảng cạnh và cổng máy; chưa nối vào đường nào. Giai đoạn 2–4 mới nối, sau công tắc mặc định tắt."
-    }
-   },
-   "loiCauHoi": {
-    "trangThai": "khong",
-    "lyDo": "Hỏi theo bảng quyết định (lib/decision-tables.js, lib/conflict-resolver.js — người soạn, có văn bản gốc) qua lib/suggest-status.js. Nguồn có căn cứ nhưng chưa đi qua lõi sổ tay. Cổng OZ không gọi đường này."
-   }
-  },
-  {
-   "duong": "/api/suggest/batch",
-   "tep": "api/suggest.js",
-   "mode": "batch",
-   "loai": "phan-loai",
-   "congGoi": false,
-   "llm": true,
-   "nhu": "/api/suggest"
-  },
-  {
-   "duong": "/api/match",
-   "tep": "api/search.js",
-   "mode": "match",
-   "loai": "phan-loai",
-   "congGoi": false,
-   "llm": true,
-   "doc": {
-    "soTayNhom": {
-     "trangThai": "khong",
-     "lyDo": "Khớp sản phẩm ERP với mã bằng tìm kiếm; không đọc kho này."
-    },
-    "soPn6": {
-     "trangThai": "khong",
-     "lyDo": "Khớp sản phẩm ERP với mã bằng tìm kiếm; không đọc kho này."
-    },
-    "tienLe": {
-     "trangThai": "khong",
-     "lyDo": "Khớp sản phẩm ERP với mã bằng tìm kiếm; không đọc kho này."
-    },
-    "chuGiai": {
-     "trangThai": "khong",
-     "lyDo": "Khớp sản phẩm ERP với mã bằng tìm kiếm; không đọc kho này."
-    },
-    "bangCanh": {
-     "trangThai": "khong",
-     "lyDo": "Giai đoạn 1 của ADR-0002 chỉ dựng bảng cạnh và cổng máy; chưa nối vào đường nào. Giai đoạn 2–4 mới nối, sau công tắc mặc định tắt."
-    }
-   },
-   "loiCauHoi": {
-    "trangThai": "khong-hoi"
-   }
-  },
-  {
-   "duong": "/api/extract-specs",
-   "tep": "api/classify.js",
-   "mode": "extract_specs",
-   "loai": "soan-thao",
-   "congGoi": false,
-   "llm": true,
-   "ghiChu": "Trích thông số từ mô tả; không ra mã, không hỏi khách."
-  },
-  {
-   "duong": "/api/declaration-check",
-   "tep": "api/classify.js",
-   "mode": "check",
-   "loai": "soan-thao",
-   "congGoi": true,
-   "llm": true,
-   "ghiChu": "Soát tờ khai trên mã đã khai. Có dùng sổ tay nhóm + bảng dòng 8 số (lib/declaration-check.js gọi chotDong8, soTayGates) cho mục K2."
-  },
-  {
-   "duong": "/api/describe",
-   "tep": "api/describe.js",
-   "loai": "soan-thao",
-   "congGoi": true,
-   "llm": true,
-   "ghiChu": "Viết mô tả khai báo trên mã đã có. Hồ sơ phân loại gắn thêm sau cờ HS_HO_SO."
-  },
-  {
-   "duong": "/api/declaration-sheet",
-   "tep": "api/describe.js",
-   "mode": "sheet",
-   "loai": "soan-thao",
-   "congGoi": false,
-   "llm": true,
-   "ghiChu": "Phiếu khai. Câu hỏi là trường khai còn thiếu (lib/declaration-sheet.js)."
-  },
-  {
-   "duong": "/api/ho-so",
-   "tep": "api/describe.js",
-   "mode": "ho_so",
-   "loai": "soan-thao",
-   "congGoi": false,
-   "llm": true,
-   "ghiChu": "Hồ sơ phân loại, sau cờ HS_HO_SO. Đọc sổ ranh giới qua lib/ho-so/*."
-  },
-  {
-   "duong": "/api/dispute-draft",
-   "tep": "api/describe.js",
-   "mode": "dispute",
-   "loai": "soan-thao",
-   "congGoi": true,
-   "llm": true,
-   "ghiChu": "Soạn hồ sơ giải trình."
-  },
-  {
-   "duong": "/api/mkt/sourcing-assist",
-   "tep": "api/describe.js",
-   "mode": "sourcing",
-   "loai": "soan-thao",
-   "congGoi": true,
-   "llm": true,
-   "ghiChu": "Trợ giúp tìm nguồn, sau cờ HS_MKT_SOURCING."
-  },
-  {
-   "duong": "/api/search",
-   "tep": "api/search.js",
-   "loai": "tra-cuu",
-   "congGoi": true,
-   "llm": false
-  },
-  {
-   "duong": "/api/tax",
-   "tep": "api/tax.js",
-   "loai": "tra-cuu",
-   "congGoi": true,
-   "llm": false
-  },
-  {
-   "duong": "/api/notes",
-   "tep": "api/notes.js",
-   "loai": "tra-cuu",
-   "congGoi": true,
-   "llm": false
-  },
-  {
-   "duong": "/api/destination-facts",
-   "tep": "api/destination-facts.js",
-   "loai": "tra-cuu",
-   "congGoi": true,
-   "llm": false
-  },
-  {
-   "duong": "/api/dataset",
-   "tep": "api/dataset.js",
-   "loai": "tra-cuu",
-   "congGoi": true,
-   "llm": false,
-   "ghiChu": "Gộp các resource chỉ đọc qua routes.json (precedents, evidence-pack, wco-opinions, tree, policy-procedures, ktcn-regime…) và nhóm quản trị. Thêm resource mới: xem luật 2 trong CLAUDE.md (mặc định kín). 25/11/2026: /api/tree trả thêm phaiDoc (lib/do-thi/phai-doc.js) — đọc bảng cạnh, chỉ cạnh luật, tra cứu, không ra mã.",
-   "doc": {
-    "bangCanh": {
-     "trangThai": "co",
-     "qua": [
-      "lib/do-thi/phai-doc.js"
-     ],
-     "co": [],
-     "ghiChu": "ADR-0005: /api/tree trả phaiDoc, chỉ cạnh luật (loại trừ, phân biệt đã chấm chéo, nhắc nhóm, WCO), không ra mã, không tờ khai."
-    }
-   }
-  },
-  {
-   "duong": "/api/tariff",
-   "tep": "api/tariff.js",
-   "loai": "tra-cuu",
-   "congGoi": false,
-   "llm": false
-  },
-  {
-   "duong": "/api/customs-types",
-   "tep": "api/customs-types.js",
-   "loai": "tra-cuu",
-   "congGoi": false,
-   "llm": false
-  },
-  {
-   "duong": "/api/kg_chapter",
-   "tep": "api/kg_chapter.js",
-   "loai": "tra-cuu",
-   "congGoi": false,
-   "llm": false
-  },
-  {
-   "duong": "/api/feedback",
-   "tep": "api/feedback.js",
-   "loai": "tra-cuu",
-   "congGoi": false,
-   "llm": false,
-   "ghiChu": "Ghi phản hồi, cần khoá."
-  },
-  {
-   "duong": "/api/health",
-   "tep": "api/health.js",
-   "loai": "tra-cuu",
-   "congGoi": false,
-   "llm": false
-  },
-  {
-   "duong": "/api/ho-so-ma",
-   "tep": "api/ho-so-ma.js",
-   "loai": "tra-cuu",
-   "congGoi": true,
-   "llm": false,
-   "doc": {
-    "bangCanh": {
-     "trangThai": "co",
-     "qua": [
-      "lib/ho-so-ma/ghep.js"
-     ],
-     "co": [],
-     "ghiChu": "tra.js bọc ghep.hoSo — ghep nạp bảng cạnh (napLuat) để dựng đường đi Phần→Chương→NHOM→PHAN_NHOM→DONG; chỉ đọc, không nối đường chọn mã."
-    }
-   }
+    "chuyenTiep": [
+      {
+        "tep": "lib/suggest-status.js",
+        "ghiChu": "Chuyển câu của bảng quyết định vào nextAction; tự dựng duy nhất câu báo 'câu trả lời chưa hợp lệ'."
+      }
+    ],
+    "ngoaiPhamViCong": "Cổng chỉ dò mẫu 'questionVi:' (tên trường câu hỏi của /api/classify, /api/suggest, /api/identify, /api/so-tay-questions). Động cơ hồ sơ (lib/ho-so/*, sau cờ HS_HO_SO) trả câu hỏi ở hoSo.ketLuan.cauHoi, lấy từ cauHoiPhanBiet của sổ ranh giới PN6 — có căn cứ nhưng là đường riêng, cổng này chưa dò.",
+    "ngoaiLe": [
+      {
+        "tep": "lib/engine-loop.js",
+        "the": "OZV-1707",
+        "lyDo": "questions của vòng 2 và unknowns của vòng 1 (earlyExitHoiTuR1) do LLM viết, đổ thẳng vào nextAction.questions khi HS_HOI_THEO_SO_TAY tắt (mặc định) hoặc nhóm chưa có sổ. Gỡ khi cờ đã bật trên máy thật, đo đạt, và câu LLM chỉ còn ở ghi chú."
+      },
+      {
+        "tep": "lib/identify.js",
+        "the": "OZV-1670",
+        "lyDo": "Câu hỏi theo khung thuộc tính của chương (bảng theo chương), chưa qua lõi sổ tay."
+      },
+      {
+        "tep": "lib/classify-guards.js",
+        "the": "OZV-1707",
+        "lyDo": "Động cơ cũ (không chạy khi HS_CLASSIFY_ENGINE=loop): chuyển trường khai còn thiếu, nhưng khi không có thì đổ chuỗi 'missing' của LLM thành câu hỏi."
+      }
+    ]
   }
- ],
- "nhanhBoQua": [
-  {
-   "ten": "doThiChot",
-   "duong": "/api/classify",
-   "tep": "lib/engine-loop.js",
-   "dauVet": "doThiChot: true",
-   "boQua": [
-    "soPn6"
-   ],
-   "the": "OZV-2228",
-   "lyDo": "Sau HS_TIM_TRUOC=do-thi (mặc định TẮT): nhóm 4 số chốt bằng căn cứ trích nguyên văn (lượt hai), phân nhóm chốt bằng cạnh g6@1, dòng 8 số là dòng duy nhất hoặc chotDong8 chốt ⇒ bỏ lời AI vòng 2. Chỉ rẽ khi: không thuộc mã từ điển cấm, không có tín hiệu tất định trái nhóm (chot-som-co-kiem), tiền lệ không phản đối và không lệch (tienLeUngHo), qua đủ cổng G1–G8. Bị bỏ: lượt AI vòng 2 đọc gói sổ tay + chú giải. Số đúng/sai trên máy thật CHƯA đo."
-  },
-  {
-   "ten": "earlyExitHoiTuR1",
-   "duong": "/api/classify",
-   "tep": "lib/engine-loop.js",
-   "dauVet": "function earlyExitHoiTuR1(",
-   "boQua": [
-    "soTayNhom",
-    "soPn6"
-   ],
-   "the": "OZV-1707",
-   "phepKiemTienLe": {
-    "ham": "lib/do-thi/tien-le-ung-ho.js tienLeUngHo()",
-    "trangThai": "chua-noi",
-    "adr": "ADR-0002",
-    "ghiChu": "Kế hoạch mục 4.5: phép kiểm tiền lệ (C14 ủng hộ + không bị cạnh bậc 1 hay thông báo phân loại phản đối — trường biPhanDoi) sẽ áp cho CẢ BỐN nhánh dừng sớm, không chỉ nhánh dừng sớm để hỏi. Giai đoạn 1 mới có hàm, chưa nhánh nào gọi."
-   },
-   "lyDo": "Vòng 1 khai unknowns thì động cơ dừng, hỏi khách, bỏ vòng 2. Khối sổ tay của vòng 2 không được đọc dù HS_SO_TAY=full; câu hỏi là unknowns của LLM, trừ khi bật HS_HOI_THEO_SO_TAY (hậu xử lý dựng lại câu hỏi theo sổ, không đổi mã). Ca thật 21/11: van khí nén 5/2 có 2 TB-TCHQ trùng khít ra 848120, nhánh này dừng ở 848180 (sáng) rồi 8412.21 (trưa, khi bật HS_HOI_THEO_SO_TAY khách bị hỏi theo sổ nhóm 84.12 — QT tắt cờ). Phạm L11: bỏ bước đọc tri thức dù có tín hiệu tất định trái kết luận. soTay.outcome ở nhánh này còn nguyên giá trị khởi tạo 'NONE' — đọc là CHƯA TRA, không phải 'đã tra, không có' (L6). Từ PR #1528: sau cờ HS_CHOT_SOM_CO_KIEM (mặc định TẮT) nhánh này KHÔNG rẽ khi hồ sơ vụ việc có tín hiệu tất định trái nhóm 4 số (lib/chot-som-co-kiem.js: tien-le-oz, tb-tchq, made-in-china, so-tay-loai-tru) — đi vòng 2 như đường thường; còn rẽ thì kết quả ghi soTay.daTra:false + lyDoChuaTra 'dung-som-hoi'. Cờ tắt thì vẫn bỏ qua như cũ. Giới hạn: truy hồi TB-TCHQ theo mô tả chưa khớp chữ khách 'van điện từ' với tên thông báo 'van truyền động bằng khí nén … solenoid', nên tín hiệu tb-tchq chưa bắn cho chính ca van."
-  },
-  {
-   "ten": "earlyExitChotTuConflict",
-   "duong": "/api/classify",
-   "tep": "lib/engine-loop.js",
-   "dauVet": "function earlyExitChotTuConflict(",
-   "boQua": [
-    "soTayNhom",
-    "soPn6"
-   ],
-   "the": "OZV-1707",
-   "phepKiemTienLe": {
-    "ham": "lib/do-thi/tien-le-ung-ho.js tienLeUngHo()",
-    "trangThai": "chua-noi",
-    "adr": "ADR-0002",
-    "ghiChu": "Kế hoạch mục 4.5: phép kiểm tiền lệ (C14 ủng hộ + không bị cạnh bậc 1 hay thông báo phân loại phản đối — trường biPhanDoi) sẽ áp cho CẢ BỐN nhánh dừng sớm, không chỉ nhánh dừng sớm để hỏi. Giai đoạn 1 mới có hàm, chưa nhánh nào gọi."
-   },
-   "lyDo": "Bảng xung đột đã duyệt chốt được từ văn bản thì động cơ CHOT tất định và bỏ vòng 2 (OZV-1317). Khối sổ tay của vòng 2 không được đọc; cổng máy G8 có chạy trên đáp án dựng sẵn. Sau cờ HS_CHOT_SOM_CO_KIEM (mặc định TẮT, L11): trước khi rẽ, kiểm tín hiệu tất định trái nhóm 4 số (lib/chot-som-co-kiem.js: tien-le-oz, tb-tchq, made-in-china, so-tay-loai-tru); có thì nạp nhóm trái chiều và đi vòng 2. Còn rẽ khi cờ bật thì kết quả ghi soTay.daTra:false + lyDoChuaTra 'dung-som-bang-xung-dot'. Cờ tắt thì giữ nguyên hành vi cũ."
-  },
-  {
-   "ten": "fastFirstUngVien",
-   "duong": "/api/classify",
-   "tep": "lib/engine-loop.js",
-   "dauVet": "function fastFirstUngVien(",
-   "boQua": [
-    "soTayNhom",
-    "soPn6"
-   ],
-   "the": "OZV-1707",
-   "phepKiemTienLe": {
-    "ham": "lib/do-thi/tien-le-ung-ho.js tienLeUngHo()",
-    "trangThai": "chua-noi",
-    "adr": "ADR-0002",
-    "ghiChu": "Kế hoạch mục 4.5: phép kiểm tiền lệ (C14 ủng hộ + không bị cạnh bậc 1 hay thông báo phân loại phản đối — trường biPhanDoi) sẽ áp cho CẢ BỐN nhánh dừng sớm, không chỉ nhánh dừng sớm để hỏi. Giai đoạn 1 mới có hàm, chưa nhánh nào gọi."
-   },
-   "lyDo": "Fast-first (HS_CLASSIFY_FAST_FIRST, OZV-570): vòng 1 tắt suy nghĩ + một nguồn độc lập xác nhận thì dựng đáp án CHOT và bỏ lời GIR vòng 2. Khối sổ tay của vòng 2 không được đọc; cổng máy G8 có chạy. Sau cờ HS_CHOT_SOM_CO_KIEM (mặc định TẮT, L11): trước khi rẽ, kiểm tín hiệu tất định trái nhóm 4 số (lib/chot-som-co-kiem.js); có thì nạp nhóm trái chiều và đi vòng 2. Còn rẽ khi cờ bật thì kết quả ghi soTay.daTra:false + lyDoChuaTra 'fast-first'. Cờ tắt thì giữ nguyên hành vi cũ."
-  },
-  {
-   "ten": "earlyExitChotTuTrade",
-   "duong": "/api/classify",
-   "tep": "lib/engine-loop.js",
-   "dauVet": "function earlyExitChotTuTrade(",
-   "boQua": [
-    "soTayNhom",
-    "soPn6",
-    "tienLe",
-    "chuGiai"
-   ],
-   "the": "OZV-1707",
-   "phepKiemTienLe": {
-    "ham": "lib/do-thi/tien-le-ung-ho.js tienLeUngHo()",
-    "trangThai": "chua-noi",
-    "adr": "ADR-0002",
-    "ghiChu": "Kế hoạch mục 4.5: phép kiểm tiền lệ (C14 ủng hộ + không bị cạnh bậc 1 hay thông báo phân loại phản đối — trường biPhanDoi) sẽ áp cho CẢ BỐN nhánh dừng sớm, không chỉ nhánh dừng sớm để hỏi. Giai đoạn 1 mới có hàm, chưa nhánh nào gọi."
-   },
-   "lyDo": "Chốt sớm theo từ điển tên thương mại (mục high + chotSom, OZV-1356): bỏ cả vòng 1, gather đầy đủ và vòng 2 — không đọc sổ tay, không tra tiền lệ theo mô tả. Sau cờ HS_CHOT_SOM_CO_KIEM (mặc định TẮT, L11): trước khi rẽ, kiểm tín hiệu tất định trái nhóm 4 số có sẵn không cần mạng (tb-tchq khớp tên hàng, so-tay-loai-tru); có thì không chốt sớm, đi vòng 1 → gather → vòng 2. Còn rẽ khi cờ bật thì kết quả ghi soTay.daTra:false + lyDoChuaTra 'chot-som-tu-dien'. Cờ tắt thì giữ nguyên hành vi cũ."
-  },
-  {
-   "ten": "hoiTheoGiaThuyetNhomDich",
-   "duong": "/api/classify",
-   "tep": "lib/engine-loop.js",
-   "dauVet": "function hoiTheoGiaThuyetNhomDich(",
-   "boQua": [
-    "soTayNhom",
-    "chuGiai"
-   ],
-   "the": "OZV-2228",
-   "lyDo": "Sau cờ HS_CHOT_SOM_CO_KIEM: dừng sớm HOI bị chặn CHỈ vì sổ tay nhóm đứng đầu loại trừ tên hàng sang nhóm khác (mọi tín hiệu là so-tay-loai-tru, không có tiền lệ Oz / TB-TCHQ / shop trái chiều): (1) vòng 1 có đúng MỘT nhóm đích trong giả thuyết (OZV-2224) ⇒ máy đổi đáp án HOI sang giả thuyết đó; (2) sổ tay nhóm đứng đầu loại trừ cùng cụm tên hàng sang ≥ 2 nhóm đích (OZV-2228, vd 90.31 loại trừ 'cảm biến quang' sang 90.32 và 85.36) ⇒ giữ mã HOI tạm (không chọn nhóm thay khách), đưa câu hỏi từ questionVi của các mệnh đề loại trừ lên đầu để hỏi khách giữa các nhóm đích; cả hai đều chạy đủ cổng G1–G8 (cổng sổ tay G8 tất định ĐÃ chạy; thiếu chú giải nhóm thì nạp tất định qua napNhomTatDinh) và bỏ vòng 2. Bị bỏ: lượt AI vòng 2 đọc gói sổ tay + chú giải để lập luận, và lượt giải trình sổ tay. Tiền lệ theo mô tả và chú giải nhóm vòng 1 đã nạp ở gather() trước nhánh; sổ PN6 vòng 2 cũng không đọc nên không tính là bỏ. Kết quả ghi soTay.nhanhToiUu (congSoTayG8 DA_CHAY, aiDocSoTayVaChuGiai + giaiTrinhSoTay CHUA_CHAY) và soTay.lyDoChuaTra 'hoiTheoGiaThuyetNhomDich'. Ca thực địa 25/11 cảm biến quang e3sct11: bỏ 32–51 giây vòng 2 khi rơi 85.41 (OZV-2224) và 39,3 giây vòng 2 khi rơi 90.31 (OZV-2228)."
-  }
- ],
- "noiDungCauHoi": {
-  "ghiChu": "Mọi tệp trong lib/, api/ có dựng câu hỏi (mẫu 'questionVi:'). loi = sinh câu từ nguồn có căn cứ (L2). chuyenTiep = chỉ chuyển câu đã dựng ở nơi khác hoặc dựng thông báo kỹ thuật. ngoaiLe = dựng câu ngoài lõi, phải có thẻ; danh sách chỉ được NGẮN đi (trần cứng trong scripts/test-cau-hoi-co-can-cu.mjs).",
-  "loi": [
-   {
-    "tep": "lib/so-tay-cau-hoi.js",
-    "canCu": "so-tay, ranh-gioi-pn6, truong-khai-nhom",
-    "ghiChu": "Lõi tất định. api/so-tay-questions.js chỉ gọi tệp này."
-   },
-   {
-    "tep": "lib/hoi-theo-so-tay.js",
-    "canCu": "so-tay, ranh-gioi-pn6, truong-khai-nhom, bieu-thue",
-    "ghiChu": "Dựng lại câu hỏi của /api/classify theo sổ, sau cờ HS_HOI_THEO_SO_TAY."
-   },
-   {
-    "tep": "lib/so-tay-gates.js",
-    "canCu": "so-tay",
-    "ghiChu": "Câu giải trình của cổng sổ tay (gửi AI ở lượt giải trình), trích điều kiện từ sổ."
-   },
-   {
-    "tep": "lib/declaration-fields.js",
-    "canCu": "truong-khai-nhom"
-   },
-   {
-    "tep": "lib/declaration-sheet.js",
-    "canCu": "truong-khai-nhom",
-    "ghiChu": "Câu hỏi cho ô phiếu khai còn thiếu, theo danh mục trường khai."
-   },
-   {
-    "tep": "lib/decision-tables.js",
-    "canCu": "bang-quyet-dinh",
-    "ghiChu": "data/conflict-tables.json, người soạn, có văn bản gốc."
-   },
-   {
-    "tep": "lib/conflict-resolver.js",
-    "canCu": "bang-quyet-dinh"
-   }
-  ],
-  "chuyenTiep": [
-   {
-    "tep": "lib/suggest-status.js",
-    "ghiChu": "Chuyển câu của bảng quyết định vào nextAction; tự dựng duy nhất câu báo 'câu trả lời chưa hợp lệ'."
-   }
-  ],
-  "ngoaiPhamViCong": "Cổng chỉ dò mẫu 'questionVi:' (tên trường câu hỏi của /api/classify, /api/suggest, /api/identify, /api/so-tay-questions). Động cơ hồ sơ (lib/ho-so/*, sau cờ HS_HO_SO) trả câu hỏi ở hoSo.ketLuan.cauHoi, lấy từ cauHoiPhanBiet của sổ ranh giới PN6 — có căn cứ nhưng là đường riêng, cổng này chưa dò.",
-  "ngoaiLe": [
-   {
-    "tep": "lib/engine-loop.js",
-    "the": "OZV-1707",
-    "lyDo": "questions của vòng 2 và unknowns của vòng 1 (earlyExitHoiTuR1) do LLM viết, đổ thẳng vào nextAction.questions khi HS_HOI_THEO_SO_TAY tắt (mặc định) hoặc nhóm chưa có sổ. Gỡ khi cờ đã bật trên máy thật, đo đạt, và câu LLM chỉ còn ở ghi chú."
-   },
-   {
-    "tep": "lib/identify.js",
-    "the": "OZV-1670",
-    "lyDo": "Câu hỏi theo khung thuộc tính của chương (bảng theo chương), chưa qua lõi sổ tay."
-   },
-   {
-    "tep": "lib/classify-guards.js",
-    "the": "OZV-1707",
-    "lyDo": "Động cơ cũ (không chạy khi HS_CLASSIFY_ENGINE=loop): chuyển trường khai còn thiếu, nhưng khi không có thì đổ chuỗi 'missing' của LLM thành câu hỏi."
-   }
-  ]
- }
 }
