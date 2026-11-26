@@ -3,7 +3,7 @@
  * scripts/test-dieu-khoan-tang2.mjs — kiểm tầng 2 (điều khoản chú giải Phần/Chương HS).
  *   (a) mọi id duy nhất                          — ĐỎ nếu trùng
  *   (b) mọi kieu thuộc tập hợp lệ, không còn CHUA_XEP — ĐỎ nếu sai
- *   (c) mọi nguyenVan (bỏ khác biệt khoảng trắng) có nguyên văn trong chu-giai-chuong.json ở đúng chương gan — CẢNH BÁO
+ *   (c) mọi nguyenVan và dan (bỏ khác biệt khoảng trắng) khớp nguyên văn phần trước TỔNG QUÁT trong chu-giai-chuong.json ở đúng chương gan — ĐỎ nếu sai
  *   (d) mọi mã 4 chữ số trong dich là nhóm có thật (khoá của chu-giai-heading.json) — ĐỎ nếu sai
  *   (e) LOAI_TRU của cap "chuong", vung "chu_giai" phải có "không bao gồm"/"không áp dụng"/"loại trừ" — CẢNH BÁO
  *   (f) dan/nguyenVan dính đoạn TỔNG QUÁT        — ĐỎ nếu còn dính
@@ -58,18 +58,27 @@ function canhBao(ten, danhSach) {
   ca('(b) không còn CHUA_XEP', conChua === 0, `còn ${conChua} mục`);
 }
 
-// (c) nguyenVan có trong chú giải chương đúng gan (cảnh báo)
+// (c) mọi nguyenVan và dan khớp nguyên văn phần trước TỔNG QUÁT trong chú giải chương đúng gan (cổng cứng)
 {
   const loi = [];
   for (const x of dieuKhoan) {
     const entry = chuGiaiChuong[x.gan];
     const truong = x.cap === 'phan' ? 'phan' : 'chuong';
-    const vanBan = entry ? chuan(entry[truong]) : null;
-    if (vanBan === null || !vanBan.includes(chuan(x.nguyenVan))) {
+    const goc = entry && typeof entry[truong] === 'string' ? entry[truong] : null;
+    const vanBan = goc !== null ? chuan(goc.split('TỔNG QUÁT')[0]) : null;
+    const nv = chuan(x.nguyenVan);
+    const dan = chuan(x.dan);
+    const khopNv = Boolean(vanBan && nv && vanBan.includes(nv));
+    const khopDan = !dan || Boolean(vanBan && vanBan.includes(dan));
+    if (!khopNv || !khopDan) {
       loi.push(`${x.id} (gan=${x.gan}, truong=${truong})`);
     }
   }
-  canhBao('(c) nguyenVan không khớp nguyên văn trong chu-giai-chuong', loi);
+  ca(
+    '(c) mọi nguyenVan và dan khớp nguyên văn phần trước TỔNG QUÁT trong chu-giai-chuong',
+    loi.length === 0,
+    `${loi.length} mục: ${loi.slice(0, 10).join('; ')}`,
+  );
 }
 
 // (d) mã 4 chữ số trong dich là nhóm có thật (cổng cứng)

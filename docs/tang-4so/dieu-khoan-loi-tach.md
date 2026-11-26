@@ -17,9 +17,9 @@ Chỉ số là vị trí trong mảng `dieu-khoan-tang2.json` (không dùng `id`
 | 1572 | chuong:95:chu_giai_phan_nhom:1e | 9501 | Nhóm có thật (nguyên văn có "[95.01]"), nhưng `chu-giai-heading.json` không có khoá 9501. Chương 95 chỉ có 6 khoá. |
 | 1572 | chuong:95:chu_giai_phan_nhom:1e | 9502 | Như trên, nguyên văn có "[95.02]", heading thiếu khoá 9502. |
 
-## (c) Nguyên văn không khớp chú giải chương
+## (c) Nguyên văn và lời dẫn khớp phần chú giải pháp lý trước `TỔNG QUÁT` (cổng cứng)
 
-0 mục. Không có mục đỏ hoặc cảnh báo ở (c).
+0 mục lệch. Toàn bộ `1.237` mục trong `data/luat/dieu-khoan-tang2.json` đều có `nguyenVan` và `dan` khớp nguyên văn 100% chuỗi con trong phần chú giải pháp lý **trước** tiêu đề `TỔNG QUÁT` của `data/chu-giai-chuong.json` (đã nâng mục `(c)` trong `scripts/test-dieu-khoan-tang2.mjs` từ cảnh báo thành cổng kiểm cứng `PASS`).
 
 ## (a) Id trùng (đỏ, chưa sửa)
 
@@ -35,6 +35,11 @@ Chỉ số là vị trí trong mảng `dieu-khoan-tang2.json` (không dùng `id`
 - `0` mục còn dính `TỔNG QUÁT` (46 mục ở `nguyenVan`, 164 mục ở `dan` đều đã sạch).
 - Toàn bộ 1.597 mục trong `data/luat/dieu-khoan-tang2.json` vẫn có `nguyenVan` khớp nguyên văn 100% chuỗi con trong `data/chu-giai-chuong.json` (0 cảnh báo ở mục `(c)`).
 - Nâng mục `(f)` trong `scripts/test-dieu-khoan-tang2.mjs` từ cảnh báo thành ca kiểm cứng `PASS` thứ 4.
+
+**Xử lý triệt để khoản con giả sau `TỔNG QUÁT` và khôi phục chú giải đơn cuối chương (OZV-2390):**
+- Loại bỏ toàn bộ **397 mục** có `nguyenVan` (`(a)... (b)...`) nằm **sau** tiêu đề `TỔNG QUÁT` trong `data/chu-giai-chuong.json` (gồm 134 mục thuộc 11 cụm tiền tố đã có sẵn khoản con pháp lý thật trước `TỔNG QUÁT` và 263 mục thuộc 37 cụm chú giải pháp lý đơn cuối chương/phân nhóm bị bộ tách cũ nuốt vào `dan`).
+- Khôi phục **37 chú giải pháp lý đơn cuối chương/phân nhóm** thành 37 bản ghi đơn duy nhất với `dan: ""`, `nguyenVan` trích đầy đủ không bị cắt 300 ký tự từ phần văn bản trước `TỔNG QUÁT` (trong đó sửa cụm `chuong:63:chu_giai:1a..1e` thành `chuong:63:chu_giai_phan_nhom:1`, `vung: "chu_giai_phan_nhom"`), cập nhật `dich` và `kieu`, đồng thời đánh số lại `id` trùng trong `scripts/tang-4so/sua_dieu_khoan_tang2.py`.
+- Tổng số điều khoản sau khi làm sạch còn **1.237 mục** (100% `nguyenVan` và `dan` nằm trước `TỔNG QUÁT`).
 
 ### Bảng ví dụ điển hình đã làm sạch
 
