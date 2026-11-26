@@ -4905,6 +4905,63 @@
    "gir": "GIR 1",
    "basis": "RULE_TABLE",
    "sourceVi": "Biểu thuế VN 8408.90.91 'Dùng cho máy thuộc nhóm 84.29 hoặc 84.30' (MFN 10) vs .51 '>100 kW cùng mục đích' (MFN 5) vs .10 '≤18,65 kW' (MFN 25). Ca thật 26/11/2026: diesel 58 kW vỏ sắt 1200×800×1000mm, không nhãn hiệu, NSX Wuquanda Machinery (TQ) cho máy xúc lật; ACFTA CN 0% Form E. 8408.20 chia lá theo dung tích xi-lanh (84082093/94/95/96), không có .99."
+  },
+  {
+   "id": "ban-mach-da-lap-rap",
+   "titleVi": "Bản mạch điện tử đã lắp ráp (PCBA) — phân theo sản phẩm cuối/chức năng, không có mã chung",
+   "terms": [
+    "bản mạch điện tử",
+    "bản mạch tích hợp",
+    "PCBA",
+    "mạch in đã lắp ráp",
+    "tấm mạch in đã lắp ráp",
+    "bản mạch in đã gắn linh kiện"
+   ],
+   "excludeIfAny": [
+    "chưa lắp",
+    "trắng",
+    "bare pcb"
+   ],
+   "excludeReasonVi": "Bản mạch in TRẮNG (chưa gắn linh kiện) thuộc 8534.00, không phải PCBA.",
+   "candidates": [
+    {
+     "hs": "85371019",
+     "whenVi": "Bản mạch đã lắp thực hiện chức năng RIÊNG: bảng điều khiển/chuyển mạch ≤1000V (vd TB 1159: 2 main + 4 mạch in mềm, chưa nạp phần mềm, có chân cắm → 8537.10.19)",
+     "confidence": "medium"
+    },
+    {
+     "hs": "85299054",
+     "whenVi": "Bản mạch bộ phận của TV (chuyển đổi nguồn + xử lý tín hiệu — TB 6740) → dòng riêng 'tấm mạch in đã lắp ráp dùng cho nhóm 85.28, máy thu truyền hình'",
+     "confidence": "medium"
+    },
+    {
+     "hs": "85299055",
+     "whenVi": "Bản mạch bộ phận thiết bị 85.28 khác (máy chiếu: formatter/main/POGO board — TB 5075/5076/5525) — MFN 0%",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84733010",
+     "whenVi": "Bản mạch đã lắp ráp là bộ phận máy XỬ LÝ DỮ LIỆU 8471 (PCBA của máy tính) — dòng đích danh",
+     "confidence": "medium"
+    },
+    {
+     "hs": "85340090",
+     "whenVi": "Bản mạch in phổ dụng chưa thực hiện chức năng riêng (chỉ kết nối/mang linh kiện thụ động, không phải bộ phận thiết bị cụ thể)",
+     "confidence": "low"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "8542",
+     "whyVi": "8542 là vi mạch tích hợp (IC) nguyên bản — PCBA là bảng mạch gắn linh kiện, không phải IC."
+    }
+   ],
+   "askVi": [
+    "Bản mạch này là BỘ PHẬN của thiết bị nào (máy tính → 8473.30.10; TV/máy chiếu → 8529.90.5x) hay tự thực hiện chức năng riêng (điều khiển/chuyển mạch → 8537.10.19)? Chưa gắn linh kiện → 8534.00?"
+   ],
+   "gir": "Chú giải 3(b) Phần XVI + EN 85.34",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Ca thật 26/11: khách xin phân tích PCBA. 5 tiền lệ kho: TB 1159 (→8537.10.19, MFN 15%), TB 6740 (→8529.90.54 TV, MFN 5%), TB 5075+5076+5525 (→8529.90.55 máy chiếu, MFN 0%; POGO board → 8536.90.94 MFN 25%). Quy tắc: PCBA theo thiết bị cuối hoặc chức năng riêng — không có mã chung."
   }
  ],
  "updatedAt": "2026-11-26"
