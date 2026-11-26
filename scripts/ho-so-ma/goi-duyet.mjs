@@ -8,12 +8,13 @@
 //
 // CHỈ TỪ LUẬT: không dữ liệu khách, không tờ khai, không tiền lệ, không lời AI.
 
+import { fileURLToPath } from 'node:url';
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { napLuat } from '../../lib/ho-so-ma/ghep.js';
 
-const GOC = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..', '..');
+const GOC = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
 const HO_SO = path.join(GOC, 'data', 'ho-so-ma');
 const LUAT = path.join(GOC, 'data', 'luat-goc');
 const CAU = path.join(LUAT, 'cau');
