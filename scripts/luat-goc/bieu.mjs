@@ -6,6 +6,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { createRequire } from 'node:module';
+import { fileURLToPath } from 'node:url';
 import { docDong, GOC, PHIEN_BAN } from './bieu-doc.mjs';
 import { docBanIn } from './bieu-ban-in.mjs';
 
@@ -135,4 +136,4 @@ function main() {
   console.log(JSON.stringify({ tong: ra.length, ...dem, dongBieu: dong.length }, null, 1));
   console.log(JSON.stringify(bao));
 }
-if (process.argv[1] && import.meta.url.endsWith(path.basename(process.argv[1]))) main();
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) main();
