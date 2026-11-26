@@ -121,7 +121,8 @@ const pLonMacDinh = phaiDoc('8419');
 const pLonDayDu = phaiDoc('8419', { dayDu: true });
 const bytesGon = Buffer.byteLength(JSON.stringify(pLonMacDinh), 'utf8');
 const bytesFull = Buffer.byteLength(JSON.stringify(pLonDayDu), 'utf8');
-const giuDuMuc = pLonMacDinh.trinhTu.every((b, i) => b.tong === pLonDayDu.trinhTu[i].tong && b.muc.length === pLonDayDu.trinhTu[i].muc.length);
+const demMuc = (b) => b.muc.reduce((n, m) => n + (Array.isArray(m.gom) ? m.gom.length : 1), 0); // khái quát gộp: đếm từng đoạn trong gom
+const giuDuMuc = pLonMacDinh.trinhTu.every((b, i) => b.tong === pLonDayDu.trinhTu[i].tong && demMuc(b) === pLonDayDu.trinhTu[i].muc.length);
 const duIdCauDau = pLonMacDinh.trinhTu.every((b) => b.buoc === 'TEN' || b.muc.every((m) => m.id && m.lop && 'trang' in m && typeof m.cauDau === 'string'));
 const motIdCon = muc(pLonMacDinh, 'CHU_GIAI_PHAN').muc[0]?.id;
 kiem(`vượt 60 KB → TOM_GON (${(bytesFull / 1024).toFixed(1)} KB → ${(bytesGon / 1024).toFixed(1)} KB), giữ nguyên mọi mục và lấy đủ theo id`, pLonMacDinh.cheDo === 'TOM_GON' && pLonDayDu.cheDo === 'DAY_DU' && bytesGon < bytesFull * 0.45 && giuDuMuc && duIdCauDau && Boolean(motIdCon && phaiDoc(motIdCon)?.ten?.length > 10));
