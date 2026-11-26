@@ -24,6 +24,7 @@ node scripts/test-tieu-chi-6.mjs
 node scripts/test-van-ban-quan-ly.mjs
 node scripts/test-conflict-resolver.mjs
 node scripts/test-search.mjs
+node scripts/test-tim-luat.mjs
 node scripts/test-search-low-match.mjs
 node scripts/test-hs-aliases.mjs
 node scripts/test-trade-synonyms.mjs
@@ -209,6 +210,7 @@ node scripts/test-a3-so-tay-hai-nhom-dich.mjs
 node scripts/test-tim-truoc.mjs
 node scripts/test-duong-do-thi.mjs
 node scripts/test-phai-doc.mjs
+node scripts/test-chu-giai-goc.mjs
 node scripts/test-chapter-declaration-fields.mjs
 node scripts/test-declaration-group-853650.mjs
 node scripts/test-b1b-web.mjs
@@ -297,8 +299,17 @@ node scripts/test-dan-chieu.mjs
 node scripts/test-lop-kho.mjs
 node scripts/luat-goc/phan-test.mjs
 node scripts/luat-goc/cau-test.mjs
+node scripts/luat-goc/tom-tat-test.mjs
+node scripts/luat-goc/tom-tat.mjs --kiem
+node scripts/luat-goc/nghia-test.mjs
+node scripts/luat-goc/nghia.mjs --kiem
+node scripts/test-ho-so-ma.mjs
+node scripts/ho-so-ma/nguong-test.mjs
+node scripts/ho-so-ma/nguong-84-test.mjs
+node scripts/ho-so-ma/nguong-85-test.mjs
 node scripts/luat-goc/cau.mjs --kiem
 node scripts/luat-goc/gir-test.mjs
+node scripts/luat-goc/tt31-test.mjs
 node scripts/luat-goc/wco-test.mjs
 node scripts/test-nhan-dien-module.mjs
 # 13 tệp mồ côi được kiểm xanh + ngoại tuyến trên main d561ae11 (#1850), thêm theo thứ tự abc
@@ -326,4 +337,5 @@ node scripts/test-loai-tru-nhom.mjs
 node scripts/test-phan-biet-vat-lieu-t2.mjs
 node scripts/test-gd2-toc-do-parity.mjs
 node scripts/test-do-do-thi-gd3.mjs
+node scripts/test-so-vet.mjs
 node scripts/test-danh-sach-test.mjs

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // scripts/kiem-luat-goc.mjs — cổng máy cho data/luat-goc/*.jsonl (khuôn nut-luat@1, docs/mong/khuon-nut-luat.md). Tất định, không mạng, không AI.
 //   node scripts/kiem-luat-goc.mjs [kho…]            không nêu kho: mọi kho đang có
-//   LUAT_GOC_TXT=<thư mục>    đối chiếu nguyên văn từng câu với <kho>.txt, hoặc (kho lấy từ PDF chú giải chi tiết) mọi cgct-hs2022*.txt.
+//   LUAT_GOC_TXT=<thư mục>    đối chiếu nguyên văn từng câu với <kho>.txt, hoặc (kho lấy từ PDF chú giải chi tiết) mọi cgct-hs2022*.txt và tt31-vi.txt (cột tiếng Việt Công báo TT31/2022, M-10).
 //                             Đặt biến mà không có bản chữ nào cho kho ⇒ ĐỎ, không âm thầm bỏ qua. Không đặt ⇒ dòng kết quả ghi CHƯA ĐỐI CHIẾU.
 import fs from 'node:fs';
 import path from 'node:path';
@@ -26,7 +26,7 @@ export function phang(tho) {
 /** Các bản chữ để đối chiếu một kho; [] khi không có. */
 export function docBanChu(thuMuc, kho) {
   const rieng = path.join(thuMuc, `${kho}.txt`);
-  const ds = fs.existsSync(rieng) ? [rieng] : KHO_CGCT.has(kho) && fs.existsSync(thuMuc) ? fs.readdirSync(thuMuc).filter((f) => /^cgct-hs2022.*\.txt$/.test(f)).map((f) => path.join(thuMuc, f)) : [];
+  const ds = fs.existsSync(rieng) ? [rieng] : KHO_CGCT.has(kho) && fs.existsSync(thuMuc) ? fs.readdirSync(thuMuc).filter((f) => /^(cgct-hs2022.*|tt31-vi)\.txt$/.test(f)).map((f) => path.join(thuMuc, f)) : [];
   return ds.map((f) => chuanSo(phang(fs.readFileSync(f, 'utf8'))));
 }
 const gon = (s) => String(s).normalize('NFC').replace(/\s+/g, ' ').trim();

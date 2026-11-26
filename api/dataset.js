@@ -95,7 +95,7 @@ module.exports = async function handler(req, res) {
 
   try {
     if (resource === 'kg_stats') {
-      res.setHeader('Cache-Control', 'public, max-age=3600, stale-while-revalidate=600');
+      res.setHeader('Cache-Control', 'private, max-age=3600');
       return res.status(200).json(kgStatsPayload());
     }
 
@@ -384,6 +384,22 @@ module.exports = async function handler(req, res) {
       });
     }
 
+    // M-34 (#1915): tra cứu trình tự phải đọc theo ADR-0004 từ kho luật gốc (chỉ nhận id nút hoặc mã HS, không nhận mô tả hàng).
+    if (resource === 'phai_doc') {
+      const { phaiDoc } = require('../lib/do-thi/phai-doc');
+      const q = String(req.query.id || req.query.hs || '').trim();
+      if (!q) {
+        return res.status(400).json({ error: 'Thiếu ?id hoặc ?hs (ví dụ ?id=bieu:7616 hoặc ?hs=761610)' });
+      }
+      const dayDu = String(req.query.dayDu || '') === '1';
+      const kq = phaiDoc(q, { dayDu });
+      if (!kq) {
+        return res.status(404).json({ found: false, query: q, message: 'Không tìm thấy nút luật hợp lệ trong data/luat-goc' });
+      }
+      res.setHeader('Cache-Control', 'private, max-age=3600');
+      return res.status(200).json({ found: true, ...kq });
+    }
+
     if (resource === 'wco_opinions') {
       const wco = require('../lib/wco-op');
       const hs = String(req.query.hs || '').replace(/\D/g, '');
@@ -615,7 +631,7 @@ module.exports = async function handler(req, res) {
 
       // Summary mode: ?stats=1 → tổng quan + queue ưu tiên đào (không cần hs)
       if (String(req.query.stats || '') === '1' && !hs) {
-        res.setHeader('Cache-Control', 'public, max-age=3600, stale-while-revalidate=600');
+        res.setHeader('Cache-Control', 'private, max-age=3600');
         return res.status(200).json(getStatsSummary());
       }
 

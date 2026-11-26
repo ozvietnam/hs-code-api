@@ -58,10 +58,11 @@
     },
     "chuGiai": {
       "ten": "Chú giải chương / nhóm đưa vào lập luận",
-      "duLieu": "data/luat-goc/{bieu,chuong,nhom,phan-nhom,sen}.jsonl (M-22), lib/chu-giai-goc.js (M-21)",
+      "duLieu": "data/luat-goc/{phan,chuong,nhom,phan-nhom,sen,bieu,gir}.jsonl (M-21: lib/chu-giai-goc.js đọc trực tiếp kho luật gốc; M-22: lib/tim-cgct.js đọc {bieu,chuong,nhom,phan-nhom,sen} thay chú giải AI cũ; trước đây là data/chu-giai-heading.json, data/chu-giai-chuong.json, data/notes.json, data/explanatory-notes.json)",
       "dauVet": [],
       "ghiChu": "lib/hs-tree.js cũng mở chu-giai-heading.json nhưng chỉ để lấy tên nút cây, không tính. Tính là 'đọc chú giải' khi nạp một trong các module dưới đây.",
       "moDun": [
+        "lib/chu-giai-goc.js",
         "lib/gir-notes.js",
         "lib/notes-coverage.js",
         "lib/evidence-pack.js",
@@ -156,12 +157,13 @@
         "chuGiai": {
           "trangThai": "co",
           "qua": [
-            "lib/gir-notes.js",
+            "lib/notes-coverage.js",
+            "lib/chu-giai-goc.js",
             "lib/classify.js",
             "lib/tim-cgct.js"
           ],
           "co": [],
-          "ghiChu": "Mặc định: lib/gir-notes.js + lib/classify.js (đọc kho luật gốc). Sau cờ HS_TIM_CGCT (mặc định TẮT, #1645, M-22): khi HS_TIM_TRUOC bật, lib/tim-cgct.js tìm thêm ứng viên theo kho luật gốc (data/luat-goc/*.jsonl) và tax.json trước vòng 1 (cờ tắt thì không gọi)."
+          "ghiChu": "Mặc định: lib/notes-coverage.js (lib/chu-giai-goc.js) + lib/classify.js. Sau cờ HS_TIM_CGCT (mặc định TẮT, #1645, M-22): khi HS_TIM_TRUOC bật, lib/tim-cgct.js tìm thêm ứng viên theo kho luật gốc (data/luat-goc/*.jsonl) và tax.json trước vòng 1 (cờ tắt thì không gọi)."
         },
         "bangCanh": {
           "trangThai": "co",
@@ -326,7 +328,8 @@
         "chuGiai": {
           "trangThai": "co",
           "qua": [
-            "lib/gir-notes.js"
+            "lib/notes-coverage.js",
+            "lib/chu-giai-goc.js"
           ],
           "co": []
         },
