@@ -4,6 +4,8 @@
  "chung": [
   "scripts/danh-sach-test.txt",
   "data/luat/dau-noi.json",
+  "docs/mong/the/**",
+  "data/lop-kho.json",
   "data/SOURCES.json"
  ],
  "the": {
@@ -165,7 +167,10 @@
     "lib/gir-notes.js",
     "lib/notes-coverage.js",
     "api/notes.js",
-    "scripts/test-chu-giai-goc.mjs"
+    "scripts/test-chu-giai-goc.mjs",
+    "scripts/test-gir-notes.mjs",
+    "scripts/test-nguon-loai.mjs",
+    "scripts/test-notes-3-tang.mjs"
    ],
    "sau": [
     "M-11",
@@ -278,7 +283,9 @@
    "tep": [
     "lib/do-thi/phai-doc.js",
     "scripts/test-phai-doc.mjs",
-    "api/dataset.js"
+    "api/dataset.js",
+    "data/luat-goc/phan-chuong-nhom.json",
+    "package.json"
    ],
    "sau": [
     "M-21",
@@ -415,6 +422,34 @@
    ],
    "nguoi": "QT + GPU",
    "thuTuCuaNguoi": 3
+  },
+  "M-10": {
+   "ten": "Chú giải pháp lý theo TT31/2022 (Công báo song ngữ): đối chiếu từng khoản",
+   "lop": 1,
+   "tep": [
+    "data/luat-goc/doi-chieu-tt31/**",
+    "scripts/luat-goc/tt31*.mjs",
+    "scripts/luat-goc/tt31*.py",
+    "data/luat-goc/phan.jsonl",
+    "data/luat-goc/chuong.jsonl",
+    "data/luat-goc/cau/phan.jsonl",
+    "data/luat-goc/cau/chuong.jsonl",
+    "data/luat-goc/doi-ma.json",
+    "scripts/luat-goc/phan-test.mjs",
+    "scripts/luat-goc/kq-tach.py",
+    "lib/do-thi/doi-ma-nguon.js",
+    "data/luat-goc/nghia-canh/phan.jsonl",
+    "data/luat-goc/nghia-canh/chuong.jsonl"
+   ],
+   "sau": [
+    "M-11",
+    "M-13",
+    "M-31",
+    "M-35",
+    "M-33"
+   ],
+   "nguoi": "QT",
+   "thuTuCuaNguoi": 1
   }
  }
 }

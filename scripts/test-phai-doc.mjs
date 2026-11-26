@@ -12,6 +12,7 @@ const { kiem, xong } = boKiem('test-phai-doc');
 const {
   phaiDoc,
   datLai,
+  xayChiMuc,
   thongKeCanhCu,
   phanChuongCuaNhom,
   khopCanhCuTrongPhamVi,
@@ -67,7 +68,7 @@ const idxFirstKq = mChuong76.findIndex((m) => /:kq:/.test(m.id));
 kiem('7616: CHU_GIAI_CHUONG có cg/cgbs/cgpn đúng chỗ và cg đứng trước kq', idxFirstKq >= 0 && mChuong76.slice(0, idxFirstKq).every((m) => !/:kq:/.test(m.id)) && mChuong76.slice(idxFirstKq).every((m) => /:kq:/.test(m.id)));
 
 // Kiểm chứng data/luat-goc/phan-chuong-nhom.json: mọi nhóm của 7 Chương thuộc đúng 1 phân chương, không hở không chồng, khớp chuong.jsonl
-const khoRaw = docKhoLuatGoc('data/luat-goc');
+const khoRaw = docKhoLuatGoc('data/luat-goc', { coCau: true });
 const nutKhongTienLe = khoRaw.nut.filter((n) => n.lop !== 'TIEN_LE' && !String(n.id).startsWith('tb:'));
 const theoIdRaw = new Map(nutKhongTienLe.map((n) => [n.id, n]));
 const bangPc = docBangPhanChuongNhom(path.resolve('data/luat-goc'));
@@ -120,13 +121,14 @@ const pLonMacDinh = phaiDoc('8419');
 const pLonDayDu = phaiDoc('8419', { dayDu: true });
 const bytesGon = Buffer.byteLength(JSON.stringify(pLonMacDinh), 'utf8');
 const bytesFull = Buffer.byteLength(JSON.stringify(pLonDayDu), 'utf8');
-const giuDuMuc = pLonMacDinh.trinhTu.every((b, i) => b.tong === pLonDayDu.trinhTu[i].tong && b.muc.length === pLonDayDu.trinhTu[i].muc.length);
+const demMuc = (b) => b.muc.reduce((n, m) => n + (Array.isArray(m.gom) ? m.gom.length : 1), 0); // khái quát gộp: đếm từng đoạn trong gom
+const giuDuMuc = pLonMacDinh.trinhTu.every((b, i) => b.tong === pLonDayDu.trinhTu[i].tong && demMuc(b) === pLonDayDu.trinhTu[i].muc.length);
 const duIdCauDau = pLonMacDinh.trinhTu.every((b) => b.buoc === 'TEN' || b.muc.every((m) => m.id && m.lop && 'trang' in m && typeof m.cauDau === 'string'));
 const motIdCon = muc(pLonMacDinh, 'CHU_GIAI_PHAN').muc[0]?.id;
 kiem(`vượt 60 KB → TOM_GON (${(bytesFull / 1024).toFixed(1)} KB → ${(bytesGon / 1024).toFixed(1)} KB), giữ nguyên mọi mục và lấy đủ theo id`, pLonMacDinh.cheDo === 'TOM_GON' && pLonDayDu.cheDo === 'DAY_DU' && bytesGon < bytesFull * 0.45 && giuDuMuc && duIdCauDau && Boolean(motIdCon && phaiDoc(motIdCon)?.ten?.length > 10));
 
 // ── 5. Bất biến toàn kho bằng phép quét độc lập trên data/luat-goc/*.jsonl ────
-const dtDocLap = dungDoThiDanChieu({ nut: nutKhongTienLe, khoNut: taoKhoNut(nutKhongTienLe) });
+const dtDocLap = dungDoThiDanChieu({ nut: nutKhongTienLe, khoNut: taoKhoNut(nutKhongTienLe), cau: khoRaw.cau });
 const pdCache = new Map();
 const getPd = (id) => { if (!pdCache.has(id)) pdCache.set(id, phaiDoc(id, { dayDu: true })); return pdCache.get(id); };
 
@@ -240,12 +242,38 @@ try {
   else process.env.HS_API_TOKEN = prevToken;
 }
 
+// ── 7b. Kiểm chỉ mục dựng sẵn (xayChiMuc) khớp 100% đọc thẳng + CA NGƯỢC sai sig ──
+const tmpCmDir = fs.mkdtempSync(path.join(os.tmpdir(), 'phai-doc-cm-'));
+try {
+  const tepCm = path.join(tmpCmDir, 'chi-muc.json');
+  const kqBuild = xayChiMuc({ tepChiMuc: tepCm });
+  datLai();
+  let khopChiMuc = Boolean(kqBuild && fs.existsSync(tepCm) && kqBuild.soCanhNhac > 0);
+  for (const ma of ['7616', '8481', '8536', '761610', 'chuong:76', 'sen:1511:1']) {
+    const a = JSON.stringify(phaiDoc(ma, { dungChiMuc: false }));
+    const b = JSON.stringify(phaiDoc(ma, { tepChiMuc: tepCm }));
+    if (a !== b) khopChiMuc = false;
+  }
+  kiem('xayChiMuc() sinh chỉ mục cho kết quả phaiDoc() y hệt 100% chế độ đọc thẳng', khopChiMuc);
+
+  // CA NGƯỢC: chỉ mục sai sig vẫn tự lùi sang đọc thẳng an toàn
+  const cmSai = JSON.parse(fs.readFileSync(tepCm, 'utf8'));
+  cmSai.sig = 'sig-gia-khong-khop';
+  fs.writeFileSync(tepCm, JSON.stringify(cmSai));
+  datLai();
+  const rFallback = phaiDoc('7616', { tepChiMuc: tepCm });
+  kiem('CA NGƯỢC chỉ mục sai sig tự lùi đọc thẳng an toàn', Boolean(rFallback && rFallback.id === 'bieu:7616' && muc(rFallback, 'CHU_GIAI_NHOM').muc.length > 0));
+  datLai();
+} finally {
+  fs.rmSync(tmpCmDir, { recursive: true, force: true });
+}
+
 // ── 8. Giữ kiểm tách luật và bổ trợ trong /api/notes ──────────────────────────
 const G = require('../lib/gir-notes.js');
-const cg = JSON.parse(fs.readFileSync(new URL('../data/chu-giai-heading.json', import.meta.url), 'utf8'));
 const nh = G.buildNoteChain('54080000').find((e) => e.level === 'HEADING');
-kiem('noteVi của nhóm không còn đoạn AI soạn', !/Phân biệt:/.test(nh.noteVi) && nh.noteVi.startsWith(String(cg['5408'].nhom).trim().slice(0, 60)));
-kiem('đoạn AI soạn nằm riêng ở boTro, nhãn AI_CHUA_KIEM', nh.boTro?.[0]?.nhan === 'AI_CHUA_KIEM' && /KHÔNG phải luật/.test(nh.boTro[0].ghiChu));
+const sauM21 = /nhom\.jsonl/.test(nh.sourceDocument || '');
+kiem('noteVi của nhóm không còn đoạn AI soạn', !/Phân biệt:/.test(nh.noteVi) && (sauM21 ? Boolean(nh.noteVi && nh.noteVi.length > 50) : nh.noteVi.startsWith(String(JSON.parse(fs.readFileSync(new URL('../data/chu-giai-heading.json', import.meta.url), 'utf8'))['5408'].nhom).trim().slice(0, 60))));
+kiem('đoạn AI soạn nằm riêng ở boTro hoặc đã gỡ hẳn theo M-21', sauM21 ? (!nh.boTro && !nh.nguonLoai) : (nh.boTro?.[0]?.nhan === 'AI_CHUA_KIEM' && /KHÔNG phải luật/.test(nh.boTro[0].ghiChu)));
 
 if (process.argv.includes('--thong-ke')) {
   console.log('\n=== THỐNG KÊ M-34 v2 (phai-doc) ===');

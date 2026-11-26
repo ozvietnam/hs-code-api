@@ -93,6 +93,8 @@ const khoMau = taoKhoNut(danhSachMau);
 
   const rLien = rutDanChieuCau('montelukast (INN) (nhóm73.17)).', { id: 'nhom:2937:ct:122#1', nutId: 'nhom:2937:ct:122', khoNut: khoMau });
   check('bản in viết liền "nhóm73.17" vẫn thành cạnh', rLien.canh.some((e) => e.den === 'bieu:7317'), JSON.stringify(rLien.canh));
+  const rTa = rutDanChieuCau('On a vehicle of headings 73.17 to 73.18 see also.', { id: 'wco:870899:1#1', nutId: 'wco:870899:1', khoNut: khoMau });
+  check('tiếng Anh "headings 73.17 to 73.18" thành cạnh hai đầu', rTa.canh.some((e) => e.den === 'bieu:7317') && (rTa.canh.some((e) => e.den === 'bieu:7318') || rTa.khongTonTai.some((e) => e.den === 'bieu:7318')), JSON.stringify(rTa));
   const r2 = rutDanChieuCau('Phân loại vào Chương 84 hoặc Phần XVI theo Quy tắc 3(b) và phân nhóm 8471.30.', { id: 'chuong:85:cg:1#1', nutId: 'chuong:85:cg:1', khoNut: khoMau });
   const dens2 = r2.canh.map((e) => e.den).sort();
   check('ca đúng: Chương + Phần + Quy tắc 3(b) + Phân nhóm 6 số', JSON.stringify(dens2) === JSON.stringify(['bieu:847130', 'chuong:84', 'gir:3:b', 'phan:XVI']), JSON.stringify(dens2));
