@@ -12,6 +12,7 @@ import {
   dungBanGhiNguongChuong,
   ghiKhoNguongChuong,
   kiemDaiAnhEm,
+  kiemDonViDaiLuong,
   laCauViDuHoacBangMau,
   parseSoVn,
 } from './nguong-rut.mjs';
@@ -35,15 +36,22 @@ function test(ten, fn) {
 
 const L = napLuatCong();
 const khoThuc = kiemKhoHoSo();
+const banGhi84 = khoThuc.banGhi.filter((x) => /^nguong\/(?:XVI|84)\.jsonl$/.test(x._tep || ''));
 
 // 1. Khuôn và số lượng bản ghi Chương 84 + Phần XVI
 test('1. Kho data/ho-so-ma/nguong/{XVI,84}.jsonl qua khuôn ho-so-ma@1 với 0 lỗi', () => {
   assert.equal(khoThuc.loi.length, 0, khoThuc.loi.join('; '));
-  assert.equal(khoThuc.banGhi.length, 317);
-  assert.equal(khoThuc.banGhi.filter((x) => x.nut === 'phan:XVI').length, 2);
-  assert.ok(khoThuc.banGhi.some((x) => x.nut === 'bieu:848240' && x.nguong?.donVi === 'lần'));
-  assert.ok(khoThuc.banGhi.some((x) => x.nut === 'bieu:8470' && x.nguong?.den === 170));
-  assert.ok(khoThuc.banGhi.some((x) => x.nut === 'bieu:845210' && x.nguong?.den === 120));
+  assert.equal(banGhi84.length, 317);
+  assert.equal(banGhi84.filter((x) => x.nut === 'phan:XVI').length, 2);
+  assert.ok(banGhi84.some((x) => x.nut === 'bieu:848240' && x.nguong?.donVi === 'lần'));
+  assert.ok(banGhi84.some((x) => x.nut === 'bieu:8470' && x.nguong?.den === 170));
+  assert.ok(banGhi84.some((x) => x.nut === 'bieu:845210' && x.nguong?.den === 120));
+  // Kiểm tra riêng 84603110 sau góp ý QT: tách đúng công suất (kW) và đường kính chuôi (mm)
+  const r84603110 = banGhi84.filter((x) => x.nut === 'bieu:84603110');
+  assert.equal(r84603110.length, 2);
+  assert.ok(r84603110.some((x) => x.nguong?.daiLuong === 'công suất' && x.nguong?.donVi === 'kW' && x.nguong?.den === 0.74));
+  assert.ok(r84603110.some((x) => x.nguong?.daiLuong === 'đường kính chuôi' && x.nguong?.donVi === 'mm' && x.nguong?.den === 3.175));
+  assert.equal(kiemDonViDaiLuong(banGhi84).length, 0);
 });
 
 // 2. Cổng 4 (TRÍCH) & Cổng 5 (VÂN TAY) phạm vi 84 đạt 100%
@@ -60,11 +68,11 @@ test('3. Cổng 3 (ANH EM) không có lỗi NGUONG chồng/hở/voi và 86 cụm
   const r3 = chayCong({ phamVi: ['84'], cong: [3], L });
   const loiNguong = r3.cong[3].loi.filter((x) => /NGUONG chồng dải|: dải |: voi /.test(x));
   assert.equal(loiNguong.length, 0, loiNguong.join('; '));
-  const dai = kiemDaiAnhEm(khoThuc.banGhi, L);
+  const dai = kiemDaiAnhEm(banGhi84, L);
   assert.equal(dai.loi.length, 0, dai.loi.join('; '));
   assert.ok(dai.cumDaKiem.length >= 80);
   // Kiểm tra ca hở giữa 8408.90.10 (<= 18,65) và .5 (> 100) đã được .9 ("Loại khác") bù kín (18,65; 100]
-  const r8408909 = khoThuc.banGhi.find((x) => x.nut === 'bieu:8408909');
+  const r8408909 = banGhi84.find((x) => x.nut === 'bieu:8408909');
   assert.ok(r8408909 && r8408909.nguong.tu === 18.65 && r8408909.nguong.den === 100);
   assert.ok(/^phuDinh: bieu:84089010/.test(r8408909.ghiChu || ''));
 });
@@ -76,7 +84,7 @@ test('4. Đối chiếu 258 tệp tham khảo data/ho-so/ranh-gioi/84*.json — 
   assert.equal(files.length, 258);
   const coNutHoacCon = (ma) => {
     const pre = `bieu:${ma}`;
-    return khoThuc.banGhi.some((r) => r.nut === pre || (r.nut.startsWith(pre) && (r.nut[pre.length] === ':' || /^\d/.test(r.nut[pre.length] || ''))));
+    return banGhi84.some((r) => r.nut === pre || (r.nut.startsWith(pre) && (r.nut[pre.length] === ':' || /^\d/.test(r.nut[pre.length] || ''))));
   };
   let kiem = 0;
   for (const f of files) {
@@ -95,7 +103,7 @@ test('4. Đối chiếu 258 tệp tham khảo data/ho-so/ranh-gioi/84*.json — 
 
 // 5. Không chứa tiền lệ tb:, WCO wco: hay thông số ví dụ
 test('5. Không chứa tiền lệ (tb:), WCO (wco:) hay dữ liệu khách trong kho ngưỡng Chương 84', () => {
-  for (const r of khoThuc.banGhi) {
+  for (const r of banGhi84) {
     assert.equal(/^(?:tb|wco|gir):/.test(r.cau), false, `${r.id}: cấm trích ${r.cau}`);
     assert.ok(['LUAT', 'HUONG_DAN'].includes(r.lop), `${r.id}: lớp lạ ${r.lop}`);
   }
@@ -166,6 +174,15 @@ test('6. Ca ngược: cổng phát hiện đúng chồng dải, hở dải, voi 
     assert.ok(rSai.cong[4].loi.some((x) => x.includes('trích không nguyên văn')));
     assert.ok(rSai.cong[4].loi.some((x) => x.includes('dữ kiện "thuộc tính bịa')));
     assert.ok(rSai.cong[5].loi.some((x) => x.includes('vân tay lệch')));
+
+    // 6d. Lệch đơn vị với đại lượng (vd: công suất gắn mm, đường kính gắn kW)
+    const loiDonVi = kiemDonViDaiLuong([
+      mk('bieu:84603110', { id: 'hs:bieu:84603110:9902', nguong: { daiLuong: 'công suất', donVi: 'mm', tu: null, den: 3.175, gomTu: false, gomDen: true } }),
+      mk('bieu:84603110', { id: 'hs:bieu:84603110:9903', nguong: { daiLuong: 'đường kính chuôi', donVi: 'kW', tu: null, den: 0.35, gomTu: false, gomDen: true } }),
+    ]);
+    assert.equal(loiDonVi.length, 2, `Kỳ vọng bắt 2 ca lệch đơn vị-đại lượng, nhận ${loiDonVi.length}`);
+    assert.ok(loiDonVi.some((x) => x.includes('công suất') && x.includes('mm')));
+    assert.ok(loiDonVi.some((x) => x.includes('đường kính chuôi') && x.includes('kW')));
   } finally {
     fs.rmSync(tmp, { recursive: true, force: true });
   }

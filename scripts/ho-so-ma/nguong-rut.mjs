@@ -61,27 +61,10 @@ export function tachNguongDongBieu(txt, hCode = '') {
   const reUpper = new RegExp(`(?:từ\\s+${NUM_RE}\\s*${UNIT_RE}\\s+trở\\s+xuống|(?:không\\s+(?:vượt\\s+)?quá|tối\\s+đa|dưới|nhỏ\\s+hơn)\\s+${NUM_RE}\\s*${UNIT_RE})`, 'gi');
 
   const suyDaiLuong = (doan, fullPart, donVi) => {
-    const pre = fullPart.slice(0, doan.index).toLowerCase();
-    const s = fullPart.toLowerCase();
-    if (/công suất làm lạnh/.test(pre) || /công suất làm lạnh/.test(s)) return 'công suất làm lạnh';
-    if (/công suất làm mát/.test(pre) || /công suất làm mát/.test(s)) return 'công suất làm mát';
-    if (/công suất trục/.test(pre) || /spindle power/.test(s)) return 'công suất trục';
-    if (/công suất hơi nước/.test(pre) || /công suất hơi nước/.test(s)) return 'công suất hơi nước';
-    if (/công suất hơi/.test(pre) || /công suất hơi/.test(s)) return 'công suất hơi';
-    if (/công suất đầu ra/.test(pre) || /công suất đầu ra/.test(s)) return 'công suất đầu ra';
-    if (/công suất lọc/.test(pre) || /công suất lọc/.test(s)) return 'công suất lọc';
-    if (/công suất/.test(pre) || /công suất/.test(s) || ['kW', 'MW', 'W'].includes(donVi)) return 'công suất';
-    if (/dung tích làm việc/.test(pre) || /dung tích làm việc/.test(s)) return 'dung tích làm việc trên một chu kỳ';
-    if (/dung tích xi\s*lanh/.test(pre) || /dung tích xi\s*lanh/.test(s) || /dung tích xilanh/.test(pre) || donVi === 'cc') return 'dung tích xi lanh';
-    if (/dung tích/.test(pre) || /dung tích/.test(s)) return 'dung tích';
-    if (/lưu lượng không khí/.test(pre) || /lưu lượng khí/.test(pre)) return 'lưu lượng không khí của mỗi dàn bay hơi';
-    if (/lưu lượng/.test(pre) || /lưu lượng/.test(s) || donVi === 'm³/h' || donVi === 'lít/giờ') return 'lưu lượng';
-    if (/sức chứa/.test(pre) || /sức chứa/.test(s)) return 'sức chứa vải khô mỗi lần';
-    if (/khả năng cân/.test(pre) || /khả năng cân/.test(s)) return 'khả năng cân tối đa';
-    if (/lực rung/.test(pre) || /lực rung/.test(s)) return 'lực rung của trống tính theo khối lượng';
-    if (/lực đẩy/.test(pre) || /lực đẩy/.test(s)) return 'lực đẩy';
-    if (/độ nhạy/.test(s) || donVi === 'cg') return 'độ nhạy cân';
-    if (/tốc độ quay/.test(pre) || /tốc độ quay/.test(s) || donVi === 'vòng/phút') return 'tốc độ quay';
+    // Chỉ xét cửa sổ cục bộ ngay trước mệnh đề số để không dính đại lượng của vế trước (vd 8460.31.10)
+    const rawPre = fullPart.slice(0, doan.index);
+    const localStart = Math.max(0, rawPre.lastIndexOf(','), rawPre.lastIndexOf(' với '), rawPre.lastIndexOf(' và '), doan.index - 85);
+    const pre = rawPre.slice(localStart).toLowerCase();
     if (/đường kính chuôi/.test(pre)) return 'đường kính chuôi';
     if (/đường kính trục cuốn/.test(pre)) return 'đường kính trục cuốn';
     if (/đường kính trong cửa nạp và cửa thoát/.test(pre)) return 'đường kính trong cửa nạp và cửa thoát';
@@ -91,15 +74,34 @@ export function tachNguongDongBieu(txt, hCode = '') {
     if (/đường kính cửa hút/.test(pre)) return 'đường kính cửa hút';
     if (/đường kính trong/.test(pre)) return 'đường kính trong';
     if (/đường kính ngoài/.test(pre)) return 'đường kính ngoài';
-    if (/đường kính/.test(pre) || /đường kính/.test(s)) return 'đường kính';
-    if (/chiều ngang tối đa/.test(pre) || /chiều ngang tối đa/.test(s)) return 'kích thước chiều ngang tối đa';
-    if (/khổ rộng/.test(pre) || /khổ rộng/.test(s)) return 'khổ rộng vải dệt';
+    if (/đường kính/.test(pre)) return 'đường kính';
+    if (/chiều ngang tối đa/.test(pre)) return 'kích thước chiều ngang tối đa';
+    if (/khổ rộng/.test(pre)) return 'khổ rộng vải dệt';
     if (/chiều rộng/.test(pre)) return 'chiều rộng';
-    if (/bán kính gia công tiện/.test(pre) || /bán kính gia công tiện/.test(s)) return 'bán kính gia công tiện';
+    if (/bán kính gia công tiện/.test(pre)) return 'bán kính gia công tiện';
     if (/độ dày/.test(pre) || donVi === 'micron') return 'độ dày màng lọc';
     if (/một chiều/.test(pre)) return 'kích thước một chiều giấy không gấp';
     if (/chiều kia/.test(pre)) return 'kích thước chiều kia giấy không gấp';
-    if (/khối lượng/.test(pre) || /khối lượng/.test(s) || donVi === 'kg') return 'khối lượng';
+    if (/công suất làm lạnh/.test(pre)) return 'công suất làm lạnh';
+    if (/công suất làm mát/.test(pre)) return 'công suất làm mát';
+    if (/công suất trục/.test(pre) || (/spindle power/i.test(pre) && ['kW', 'MW', 'W'].includes(donVi))) return 'công suất trục';
+    if (/công suất hơi nước/.test(pre)) return 'công suất hơi nước';
+    if (/công suất hơi/.test(pre)) return 'công suất hơi';
+    if (/công suất đầu ra/.test(pre)) return 'công suất đầu ra';
+    if (/công suất lọc/.test(pre)) return 'công suất lọc';
+    if (/công suất/.test(pre) || ['kW', 'MW', 'W'].includes(donVi)) return 'công suất';
+    if (/dung tích làm việc/.test(pre)) return 'dung tích làm việc trên một chu kỳ';
+    if (/dung tích xi\s*lanh/.test(pre) || /dung tích xilanh/.test(pre) || donVi === 'cc') return 'dung tích xi lanh';
+    if (/dung tích/.test(pre)) return 'dung tích';
+    if (/lưu lượng không khí/.test(pre) || /lưu lượng khí/.test(pre)) return 'lưu lượng không khí của mỗi dàn bay hơi';
+    if (/lưu lượng/.test(pre) || donVi === 'm³/h' || donVi === 'lít/giờ') return 'lưu lượng';
+    if (/sức chứa/.test(pre)) return 'sức chứa vải khô mỗi lần';
+    if (/khả năng cân/.test(pre)) return 'khả năng cân tối đa';
+    if (/lực rung/.test(pre)) return 'lực rung của trống tính theo khối lượng';
+    if (/lực đẩy/.test(pre)) return 'lực đẩy';
+    if (/độ nhạy/.test(pre) || donVi === 'cg') return 'độ nhạy cân';
+    if (/tốc độ quay/.test(pre) || donVi === 'vòng/phút') return 'tốc độ quay';
+    if (/khối lượng/.test(pre) || donVi === 'kg') return 'khối lượng';
     return `thông số (${donVi})`;
   };
 
@@ -726,20 +728,55 @@ export function kiemDaiAnhEm(banGhi, L) {
   return { cumDaKiem, loi };
 }
 
+/** Cổng kiểm tra đơn vị khớp đại lượng: phát hiện mọi NGUONG lệch loại đơn vị (vd công suất + mm, đường kính + kW). */
+export function kiemDonViDaiLuong(banGhi) {
+  const loi = [];
+  for (const r of banGhi || []) {
+    if (!r || r.loai !== 'NGUONG' || !r.nguong) continue;
+    const dl = chuanKhoang(r.nguong.daiLuong).toLowerCase();
+    const dv = chuanKhoang(r.nguong.donVi ?? '');
+    if (!dv) continue;
+    if (/công suất hơi/.test(dl) && dv !== 'tấn/giờ') {
+      loi.push(`${r.id}: daiLuong "${r.nguong.daiLuong}" không khớp đơn vị "${dv}"`);
+    } else if (/công suất lọc/.test(dl) && dv !== 'lít/giờ') {
+      loi.push(`${r.id}: daiLuong "${r.nguong.daiLuong}" không khớp đơn vị "${dv}"`);
+    } else if (/^công suất\b/.test(dl) && !/hơi|lọc/.test(dl) && /^(?:mm|cm|m|micron|lít|ml|cc|kg|tấn|cg)$/i.test(dv)) {
+      loi.push(`${r.id}: daiLuong "${r.nguong.daiLuong}" cấm đi với đơn vị "${dv}"`);
+    } else if (/(?:đường kính|chiều dài|chiều rộng|chiều dày|chiều ngang|khổ rộng|bán kính|độ dày|kích thước)/.test(dl) && !/^(?:mm|cm|m|micron|lần|%)$/i.test(dv)) {
+      loi.push(`${r.id}: daiLuong "${r.nguong.daiLuong}" cấm đi với đơn vị "${dv}"`);
+    } else if (/dung sai tương đối/.test(dl) && dv !== '%') {
+      loi.push(`${r.id}: daiLuong "${r.nguong.daiLuong}" phải dùng "%", nhận "${dv}"`);
+    } else if (/dung tích/.test(dl) && !/^(?:cc|lít|ml)$/i.test(dv)) {
+      loi.push(`${r.id}: daiLuong "${r.nguong.daiLuong}" cấm đi với đơn vị "${dv}"`);
+    } else if (/lưu lượng/.test(dl) && !/^(?:m³\/h|m3\/phút|lít\/giờ)$/i.test(dv)) {
+      loi.push(`${r.id}: daiLuong "${r.nguong.daiLuong}" cấm đi với đơn vị "${dv}"`);
+    } else if (/(?:khối lượng|trọng lượng|sức chứa|khả năng cân|lực rung)/.test(dl) && !/^(?:kg|tấn|%)$/i.test(dv)) {
+      loi.push(`${r.id}: daiLuong "${r.nguong.daiLuong}" cấm đi với đơn vị "${dv}"`);
+    }
+  }
+  return loi;
+}
+
+const tepTheoChuong = (ch2) => (ch2 === '84' ? new Set(['nguong/XVI.jsonl', 'nguong/84.jsonl']) : new Set([`nguong/${ch2}.jsonl`]));
+
 function main() {
   const argv = process.argv.slice(2);
   const idx = (k) => { const i = argv.indexOf(k); return i >= 0 ? argv[i + 1] : null; };
   const chuong = idx('--chuong') || '84';
   const luat = path.resolve(idx('--luat') || G.LUAT_MAC_DINH);
   const hoSo = path.resolve(idx('--ho-so') || G.HO_SO_MAC_DINH);
+  const tepCh = tepTheoChuong(String(chuong).padStart(2, '0'));
+  const locChuong = (banGhi) => banGhi.filter((x) => tepCh.has(x._tep || '') && x.loai === 'NGUONG');
 
   if (argv.includes('--tao')) {
     const { L, daGhi, ghiNhanLuat } = ghiKhoNguongChuong(chuong, { luat, hoSo });
     const kho = kiemKhoHoSo(hoSo);
-    const dai = kiemDaiAnhEm(kho.banGhi, L);
-    console.log(`Đã tạo kho M-74 Chương ${chuong}:`, JSON.stringify({ daGhi, khuonLoi: kho.loi.length, cumKiem: dai.cumDaKiem.length, daiLoi: dai.loi.length, ghiNhan: ghiNhanLuat.length }));
-    if (kho.loi.length || dai.loi.length) {
-      for (const l of [...kho.loi, ...dai.loi]) console.error('  ✗', l);
+    const dsCh = locChuong(kho.banGhi);
+    const dai = kiemDaiAnhEm(dsCh, L);
+    const dvLoi = kiemDonViDaiLuong(dsCh);
+    console.log(`Đã tạo kho M-74 Chương ${chuong}:`, JSON.stringify({ daGhi, khuonLoi: kho.loi.length, cumKiem: dai.cumDaKiem.length, daiLoi: dai.loi.length, dvLoi: dvLoi.length, ghiNhan: ghiNhanLuat.length }));
+    if (kho.loi.length || dai.loi.length || dvLoi.length) {
+      for (const l of [...kho.loi, ...dai.loi, ...dvLoi]) console.error('  ✗', l);
       process.exit(1);
     }
     return;
@@ -748,26 +785,31 @@ function main() {
   if (argv.includes('--bao-cao')) {
     const L = napLuatCong(luat);
     const kho = kiemKhoHoSo(hoSo);
-    const dai = kiemDaiAnhEm(kho.banGhi, L);
+    const dsCh = locChuong(kho.banGhi);
+    const dai = kiemDaiAnhEm(dsCh, L);
+    const dvLoi = kiemDonViDaiLuong(dsCh);
     console.log(JSON.stringify({
-      tongBanGhi: kho.banGhi.length,
+      tongBanGhi: dsCh.length,
       khuonLoi: kho.loi,
       cumKiem: dai.cumDaKiem.length,
       phuKin: dai.cumDaKiem.filter((x) => x.phuKin).length,
       daiLoi: dai.loi,
+      dvLoi,
     }, null, 2));
     return;
   }
 
   const L = napLuatCong(luat);
   const kho = kiemKhoHoSo(hoSo);
+  const dsCh = locChuong(kho.banGhi);
   const rCong45 = chayCong({ luat, hoSo, phamVi: [chuong], cong: [4, 5], L });
   const rCong3 = chayCong({ luat, hoSo, phamVi: [chuong], cong: [3], L });
   const loiNguongC3 = rCong3.cong[3].loi.filter((x) => /NGUONG chồng dải|: dải |: voi /.test(x));
-  const dai = kiemDaiAnhEm(kho.banGhi, L);
+  const dai = kiemDaiAnhEm(dsCh, L);
+  const dvLoi = kiemDonViDaiLuong(dsCh);
 
   let coLoi = 0;
-  console.log(`${kho.loi.length ? 'FAIL' : 'PASS'} khuôn M-74 C${chuong}: ${kho.banGhi.length} bản ghi, ${kho.loi.length} lỗi`);
+  console.log(`${kho.loi.length ? 'FAIL' : 'PASS'} khuôn M-74 C${chuong}: ${dsCh.length} bản ghi C${chuong}, ${kho.loi.length} lỗi`);
   for (const l of kho.loi) { console.log(`  ✗ ${l}`); coLoi = 1; }
   for (const k of [4, 5]) {
     const c = rCong45.cong[k];
@@ -778,6 +820,8 @@ function main() {
   for (const l of loiNguongC3) { console.log(`  ✗ ${l}`); coLoi = 1; }
   console.log(`${dai.loi.length ? 'FAIL' : 'PASS'} kiểm dải NGUONG (${dai.cumDaKiem.length} cụm anh em, ${dai.cumDaKiem.filter((x) => x.phuKin).length} phủ kín): ${dai.loi.length} lỗi`);
   for (const l of dai.loi) { console.log(`  ✗ ${l}`); coLoi = 1; }
+  console.log(`${dvLoi.length ? 'FAIL' : 'PASS'} cổng đơn vị khớp đại lượng (${dsCh.length} NGUONG C${chuong}): ${dvLoi.length} lỗi`);
+  for (const l of dvLoi) { console.log(`  ✗ ${l}`); coLoi = 1; }
   process.exit(coLoi);
 }
 
