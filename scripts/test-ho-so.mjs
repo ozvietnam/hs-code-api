@@ -2,18 +2,18 @@
 // scripts/test-ho-so.mjs — M-71 (#1963): bài kiểm khuôn ho-so-ma@1, năm cổng hồ sơ và máy ghép theo đường đi.
 // Dữ liệu giả nhỏ dựng trong thư mục tạm: vài nút Chương 76 với câu, câu tách và cạnh nghĩa lấy THẬT từ data/luat-goc;
 // hồ sơ đúng dựng tay theo luật ở dưới; mỗi cổng có ca ngược. Thêm hai ca trên kho thật với hồ sơ rỗng.
-// Tất định, không mạng, không AI, không đụng data/ho-so.
+// Tất định, không mạng, không AI, không đụng data/ho-so-ma.
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
-import { chayCong, napLuatCong, vanTay, dinhCau } from './ho-so/cong.mjs';
-import { kiemBanGhi } from './ho-so/khuon.mjs';
+import { chayCong, napLuatCong, vanTay, dinhCau } from './ho-so-ma/cong.mjs';
+import { kiemBanGhi } from './ho-so-ma/khuon.mjs';
 
 const require = createRequire(import.meta.url);
-const G = require('../lib/ho-so/ghep.js');
+const G = require('../lib/ho-so-ma/ghep.js');
 const GOC = fileURLToPath(new URL('..', import.meta.url));
 const LUAT_THAT = path.join(GOC, 'data/luat-goc');
 let dat = 0; let hong = 0;
@@ -23,7 +23,7 @@ const kiem = (t, d, c = '') => { if (d) { dat += 1; console.log(`PASS ${t}`); } 
 const TAM = fs.mkdtempSync(path.join(os.tmpdir(), 'ho-so-'));
 const LUAT = path.join(TAM, 'luat-goc');
 const NUT_CHON = new Set([
-  'phan:XV', 'chuong:76', 'chuong:76:kq:24',
+  'phan:XV', 'chuong:76', 'chuong:76:kq:24', 'chuong:28:pc:I:kq:2', // kq:2 Phân chương I Ch. 28: cạnh LOAI_SANG thật đi vào chuong:76
   'bieu:76', 'bieu:7602', 'bieu:760200', 'bieu:76020000', 'bieu:7614',
   'bieu:5605', 'bieu:5607', 'bieu:8311', 'bieu:8544', 'bieu:9209', // đích loại trừ ở chương khác
   ...Array.from({ length: 8 }, (_, i) => `nhom:7605:ct:${i + 1}`),
@@ -41,9 +41,11 @@ for (const kho of ['phan', 'chuong', 'bieu', 'nhom']) {
 fs.copyFileSync(path.join(LUAT_THAT, 'phan-chuong-nhom.json'), path.join(LUAT, 'phan-chuong-nhom.json'));
 const idCau = new Set(fs.readdirSync(path.join(LUAT, 'cau')).flatMap((f) => docDong(path.join(LUAT, 'cau', f)).map((l) => JSON.parse(l).id)));
 const canh = fs.readdirSync(path.join(LUAT_THAT, 'nghia-canh')).flatMap((f) => docDong(path.join(LUAT_THAT, 'nghia-canh', f))).filter((l) => idCau.has(JSON.parse(l).tu));
-fs.writeFileSync(path.join(LUAT, 'nghia-canh', 'gia.jsonl'), `${canh.join('\n')}\n`);
+// Kho thật chưa có cạnh CHUA_RO nào đi vào Chương 76: thêm MỘT cạnh giả (chỉ trong bài kiểm) để thử nhánh cảnh báo.
+const CANH_GIA = JSON.stringify({ tu: 'chuong:28:pc:I:kq:2#2', den: 'bieu:7602', trangThai: 'CHUA_RO', vi: 'GOM / LOAI_SANG', phieu: [{ mo: 'gia', loai: 'GOM' }, { mo: 'gia', loai: 'LOAI_SANG' }] });
+fs.writeFileSync(path.join(LUAT, 'nghia-canh', 'gia.jsonl'), `${[...canh, CANH_GIA].join('\n')}\n`);
 kiem('kho giả lấy đủ nút thật', [...NUT_CHON].every((id) => daChon.has(id)) && daChon.has('bieu:76051910'), [...NUT_CHON].filter((id) => !daChon.has(id)));
-kiem('kho giả có cạnh LOAI_SANG thật (nhom:7605:ct:7#1 → bieu:8544, kq:24 → chuong:82)', canh.some((l) => l.includes('"nhom:7605:ct:7#1"') && l.includes('bieu:8544')) && canh.some((l) => l.includes('chuong:76:kq:24#1') && l.includes('chuong:82')));
+kiem('kho giả có cạnh LOAI_SANG thật (nhom:7605:ct:7#1 → bieu:8544, kq:24 → chuong:82, đi vào: Ch.28 kq:2#2 → chuong:76)', canh.some((l) => l.includes('"nhom:7605:ct:7#1"') && l.includes('bieu:8544')) && canh.some((l) => l.includes('chuong:76:kq:24#1') && l.includes('chuong:82')) && canh.some((l) => l.includes('"chuong:28:pc:I:kq:2#2"') && l.includes('"den":"chuong:76"') && l.includes('KHOP')));
 
 // ---------- 2. Hồ sơ đúng, dựng tay theo luật ----------
 const L = napLuatCong(LUAT);
@@ -52,7 +54,7 @@ const demId = new Map();
 const vd = (nut, loai, cau, them = {}) => {
   const n = L.nut.get(cau.split('#')[0]); const k = (demId.get(nut) || 0) + 1; demId.set(nut, k);
   const chu = chuCau(cau);
-  return { id: `hs:${nut}:${k}`, nut, loai, dieuKien: them.dieuKien || chu.replace(/^[-\s]+/, '').replace(/\s+/g, ' ').slice(0, 280), trich: them.trich || chu, cau, ...(them.den ? { den: them.den } : {}), ...(them.voi ? { voi: them.voi } : {}), ...(them.nguong ? { nguong: them.nguong } : {}), duKien: them.duKien || [], lop: n.lop, nguon: n.nguon, van: vanTay(chu), trangThai: them.trangThai || 'KHOP' };
+  return { id: `hs:${nut}:${k}`, nut, loai, dieuKien: them.dieuKien || chu.replace(/^[-\s]+/, '').replace(/\s+/g, ' ').slice(0, 280), trich: them.trich || chu, cau, ...(them.tu ? { tu: them.tu } : {}), ...(them.den ? { den: them.den } : {}), ...(them.voi ? { voi: them.voi } : {}), ...(them.nguong ? { nguong: them.nguong } : {}), duKien: them.duKien || [], lop: n.lop, nguon: n.nguon, van: vanTay(chu), trangThai: them.trangThai || 'KHOP' };
 };
 const bq = (nut, cau, lyDo) => { const k = (demId.get(nut) || 0) + 1; demId.set(nut, k); return { id: `hs:${nut}:${k}`, nut, loai: 'BO_QUA', cau, lyDo, van: vanTay(chuCau(cau)) }; };
 const TEN_THAM_KHAO = 'Tên Phần / Chương chỉ để dễ tra cứu (Quy tắc 1), không tạo điều kiện';
@@ -60,6 +62,10 @@ function dungHoSoDung() {
   demId.clear();
   const ds = [bq('phan:XV', 'phan:XV#1', TEN_THAM_KHAO), bq('chuong:76', 'chuong:76#1', TEN_THAM_KHAO), bq('chuong:76', 'bieu:76#1', 'Tên Chương trong biểu, cùng nghĩa tên Chương, chỉ để tra cứu (Quy tắc 1)')];
   ds.push(vd('chuong:76', 'KHONG_DUOC_LA', 'chuong:76:kq:24#1', { dieuKien: 'Không phải mặt hàng xếp trong Chương 82 hoặc 83', trich: 'ngoại trừ các mặt hàng được xếp trong chương 82 hoặc 83', den: ['chuong:82', 'chuong:83'] }));
+  const VAO = 'chuong:28:pc:I:kq:2#2';
+  ds.push(vd('chuong:76', 'PHAI_LA', VAO, { dieuKien: 'Kim loại cơ bản (Chương 28 loại sang các Chương kim loại cơ bản)', tu: VAO }));
+  // Anh em cùng Chương cũng là "nơi khác": chú giải 76.05 (c) loại sang 76.14 ⇒ 76.14 phải có PHAI_LA mang tu câu đó.
+  ds.push(vd('bieu:7614', 'PHAI_LA', 'nhom:7605:ct:5#1', { dieuKien: 'Dây bện tao, cáp và hàng hoá khác của nhóm 76.14 (theo chú giải 76.05)', tu: 'nhom:7605:ct:5#1' }));
   for (let i = 3; i <= 8; i += 1) {
     const c = `nhom:7605:ct:${i}#1`; const den = canh.map((l) => JSON.parse(l)).filter((e) => e.tu === c && e.loai === 'LOAI_SANG').map((e) => e.den);
     ds.push(vd('bieu:7605', 'KHONG_DUOC_LA', c, { dieuKien: `Không phải: ${chuCau(c).replace(/^\(\w\)\s*/, '')}`, den }));
@@ -100,6 +106,7 @@ const xanh = (r, tru = []) => (tru.includes(0) || !r.khuon.length) && Object.ent
 for (const pv of [['chuong:76'], ['phan:XV'], ['7605'], ['76051910'], ['760519']]) {
   const r = chay(KHO_DUNG, { phamVi: pv });
   kiem(`hồ sơ đúng xanh cả 5 cổng — phạm vi ${pv[0]} (${Object.values(r.cong).map((c) => c.soKiem).join('/')} mục)`, xanh(r) && r.cong[1].soKiem > 0 && r.cong[3].soKiem > 0, { khuon: r.khuon, ...loiCong(r) });
+  if (pv[0] === 'chuong:76') kiem('cạnh CHUA_RO đi vào (Ch.28 → 7602) chỉ cảnh báo, không đỏ', r.cong[2].canhBao.length === 1 && /đi vào, CHUA_RO/.test(r.cong[2].canhBao[0]), r.cong[2].canhBao);
 }
 {
   const r = chay(KHO_DUNG, { phamVi: [] });
@@ -131,6 +138,16 @@ caNguoc('thiếu câu HUONG_DAN có cạnh loại trừ (nhom:7605:ct:6#1)', ghi
 caNguoc('cạnh loại trừ có vấn đề nhưng đích sai (8544 → 8311)', ghiKho(sua((x) => { if (x.cau === 'nhom:7605:ct:7#1') x.den = ['bieu:8311']; return x; })), 2, /nhom:7605:ct:7#1 → bieu:8544/);
 caNguoc('cạnh loại trừ chỉ có BỎ QUA', ghiKho(sua((x) => (x.cau === 'nhom:7605:ct:8#1' ? { id: x.id, nut: x.nut, loai: 'BO_QUA', cau: x.cau, lyDo: 'Ví dụ ngược: bỏ qua câu loại trừ', van: x.van } : x))), 2, /nhom:7605:ct:8#1 → bieu:9209/);
 caNguoc('cạnh LOAI_SANG mà vấn đề ghi PHAI_LA', ghiKho(sua((x) => { if (x.cau === 'chuong:76:kq:24#1') x.loai = 'PHAI_LA'; return x; })), 2, /chuong:76:kq:24#1 → chuong:82 \(LOAI_SANG\) chưa có vấn đề KHONG_DUOC_LA/);
+const laVao = (x) => x.tu === 'chuong:28:pc:I:kq:2#2';
+caNguoc('cạnh LOAI_SANG đi vào chuong:76 chưa có PHAI_LA ở nút đích', ghiKho(sua((x) => (laVao(x) ? null : x))), 2, /chuong:28:pc:I:kq:2#2 → chuong:76 \(đi vào, LOAI_SANG\) chưa có PHAI_LA/);
+caNguoc('cạnh đi vào từ anh em (76.05 (c) → 76.14) chưa có PHAI_LA ở 76.14', ghiKho(sua((x) => (x.tu === 'nhom:7605:ct:5#1' ? null : x))), 2, /nhom:7605:ct:5#1 → bieu:7614 \(đi vào, LOAI_SANG\)/);
+caNguoc('PHAI_LA đi vào thiếu tu ⇒ trích câu ngoài đường đi', ghiKho(sua((x) => { if (laVao(x)) delete x.tu; return x; })), 4, /câu chuong:28:pc:I:kq:2#2 thuộc chuong:28:pc:I, không nằm trên đường đi của chuong:76/, { tru: [2] });
+caNguoc('PHAI_LA mang tu nhưng đặt ở nút không phải đích cạnh', ghiKho(sua((x) => { if (laVao(x)) { x.nut = 'bieu:7605'; x.id = 'hs:bieu:7605:99'; } return x; })), 4, /tu chuong:28:pc:I:kq:2#2 không có cạnh LOAI_SANG \/ PHAN_VE nào đi vào bieu:7605/, { tru: [2] });
+{
+  const r = chay(ghiKho(sua((x) => (laVao(x) ? null : x))), { phamVi: ['7605'], chiTrong: true });
+  kiem('--chi-trong nhóm 76.05: cạnh đi vào cấp Chương không đòi', xanh(r), loiCong(r));
+}
+kiem('CA NGƯỢC khuôn: tu khác cau', kiemBanGhi({ ...DUNG.find(laVao), tu: 'chuong:28:pc:I:kq:2#1' }).some((l) => /tu phải là id câu nguồn/.test(l)));
 // Cổng 3 ANH EM
 caNguoc('hai nhóm anh em chưa tách (7602 / 7605)', ghiKho(sua((x) => (x.loai === 'TACH_ANH_EM' && x.nut === 'bieu:7602' && x.voi[0] === 'bieu:7605' ? null : x))), 3, /bieu:7602 và bieu:7605 .*chưa có TACH_ANH_EM/);
 caNguoc('hai anh em trùng bộ điều kiện (76051910 / 76051990)', ghiKho(sua((x) => { if (/^bieu:760519[19]0$/.test(x.nut)) { x.dieuKien = 'Điều kiện giống hệt'; x.loai = x.loai === 'TACH_ANH_EM' ? 'PHAI_LA' : x.loai; delete x.voi; } return x; }).concat([vd('bieu:76051910', 'TACH_ANH_EM', 'bieu:76051910#1', { dieuKien: 'Điều kiện giống hệt', voi: ['bieu:76051990'] }), vd('bieu:76051990', 'TACH_ANH_EM', 'bieu:76051990#1', { dieuKien: 'Điều kiện giống hệt', voi: ['bieu:76051910'] })])), 3, /bieu:76051910 và bieu:76051990: trùng bộ điều kiện/);
@@ -162,15 +179,15 @@ caNguoc('vân tay ghi sai', ghiKho(sua((x) => { if (x.nut === 'bieu:76051990' &&
 // Khuôn
 caNguoc('khuôn: loại lạ LOAI_TRU', ghiKho(sua((x) => { if (x.cau === 'nhom:7605:ct:3#1') x.loai = 'LOAI_TRU'; return x; })), 0, /loai lạ "LOAI_TRU"/, { tru: [1, 2] });
 caNguoc('khuôn: KHONG_DUOC_LA thiếu den', ghiKho(sua((x) => { if (x.cau === 'nhom:7605:ct:4#1') delete x.den; return x; })), 0, /KHONG_DUOC_LA phải có den/, { tru: [1, 2] });
-caNguoc('khuôn: trangThai lạ', ghiKho(sua((x) => { if (x.nut === 'bieu:7614') x.trangThai = 'OK'; return x; })), 0, /trangThai lạ "OK"/, { tru: [1, 3] });
-caNguoc('khuôn: trường lạ', ghiKho(sua((x) => { if (x.nut === 'bieu:7614' && x.loai === 'PHAI_LA') x.tuKhoa = ['nhôm']; return x; })), 0, /trường lạ "tuKhoa"/, { tru: [1, 3] });
+caNguoc('khuôn: trangThai lạ', ghiKho(sua((x) => { if (x.nut === 'bieu:7614') x.trangThai = 'OK'; return x; })), 0, /trangThai lạ "OK"/, { tru: [1, 2, 3] });
+caNguoc('khuôn: trường lạ', ghiKho(sua((x) => { if (x.nut === 'bieu:7614' && x.loai === 'PHAI_LA') x.tuKhoa = ['nhôm']; return x; })), 0, /trường lạ "tuKhoa"/, { tru: [1, 2, 3] });
 caNguoc('khuôn: BỎ QUA thiếu lý do', ghiKho(sua((x) => { if (x.loai === 'BO_QUA' && x.nut === 'phan:XV') delete x.lyDo; return x; })), 0, /BỎ QUA phải có lyDo/, { tru: [1] });
 caNguoc('khuôn: NGUONG dải rỗng (tu > den)', ghiKho(sua((x) => { if (x.nut === 'bieu:760511' && x.loai === 'NGUONG') x.nguong.den = 3; return x; })), 0, /nguong rỗng/, { tru: [3] });
 caNguoc('khuôn: nút ghi sai tệp (8 số trong tệp nhóm)', ghiKho(DUNG, { tepRieng: (x) => (x.nut === 'bieu:76051910' ? 'nhom/7605.jsonl' : null) }), 0, /nút bieu:76051910 không được ghi ở tệp này \(đúng: dong\/76051910\.jsonl/, { tru: [1, 2, 3] });
 caNguoc('khuôn: trùng id', ghiKho([...DUNG, { ...DUNG.find((x) => x.nut === 'bieu:7614'), dieuKien: 'Bản sao' }]), 0, /trùng id hs:bieu:7614:1/);
 {
-  const goc = ghiKho(DUNG); fs.mkdirSync(path.join(goc, 'ranh-gioi'), { recursive: true }); fs.writeFileSync(path.join(goc, 'ranh-gioi', '760519.json'), '{}'); fs.writeFileSync(path.join(goc, 'lat-1.json'), '[]');
-  kiem('khuôn bỏ qua kho cũ cùng gốc data/ho-so (ranh-gioi, lat-*) — không đọc, không đỏ', xanh(chay(goc)));
+  const goc = ghiKho(DUNG); fs.mkdirSync(path.join(goc, 'ranh-gioi'), { recursive: true }); fs.writeFileSync(path.join(goc, 'lat-1.json'), '[]');
+  kiem('CA NGƯỢC khuôn: thư mục / tệp lạ ở gốc kho hồ sơ ⇒ đỏ', ['ranh-gioi', 'lat-1.json'].every((t) => chay(goc).khuon.some((l) => l.startsWith(`${t}: lạ ở gốc`))));
   fs.mkdirSync(path.join(goc, 'dong'), { recursive: true }); fs.writeFileSync(path.join(goc, 'dong', 'ghi-chu.md'), 'x');
   kiem('CA NGƯỢC khuôn: tệp lạ trong thư mục hồ sơ ⇒ đỏ', chay(goc).khuon.some((l) => /dong\/ghi-chu\.md: tệp lạ/.test(l)));
 }
@@ -186,6 +203,7 @@ caNguoc('khuôn: dòng không phải JSON', ghiKho([...DUNG, 'không phải json
   kiem('ghép: anh em ở mỗi cấp', c6.anhEm.map((a) => a.nut).join() === 'bieu:760511' && c8.anhEm.map((a) => a.nut).join() === 'bieu:76051990' && c4.anhEm.map((a) => a.nut).sort().join() === 'bieu:7602,bieu:7614', { c4: c4.anhEm, c6: c6.anhEm, c8: c8.anhEm });
   kiem('ghép: vấn đề nằm ở nút sinh ra nó, gom cả tệp ngưỡng', c6.vanDe.some((x) => x.loai === 'NGUONG') && c4.vanDe.filter((x) => x.loai === 'KHONG_DUOC_LA').length === 6 && h.duong.every((c) => c.vanDe.every((x) => x.nut === c.nut)));
   kiem('ghép: không chép — bản ghi trả về đúng như trong kho', c8.vanDe.every((x) => JSON.stringify(x) === JSON.stringify(DUNG.find((y) => y.id === x.id))));
+  kiem('ghép: PHAI_LA của cạnh đi vào nằm ở cấp Chương', h.duong[1].vanDe.some((x) => x.loai === 'PHAI_LA' && x.tu === 'chuong:28:pc:I:kq:2#2'));
   kiem('ghép: cấp Phần chỉ có BỎ QUA thì không vào vanDe, không tính thiếu', h.duong[0].vanDe.length === 0 && h.duong[0].soBoQua === 1 && !h.duong[0].thieu);
   const h4 = G.hoSo('7605', { luat: LUAT, hoSo: KHO_DUNG }); const h6 = G.hoSo('760519', { luat: LUAT, hoSo: KHO_DUNG });
   kiem('ghép 4 và 6 số dừng đúng cấp', h4.duong.at(-1).cap === 'NHOM' && h6.duong.at(-1).cap === 'PHAN_NHOM' && h6.duong.length === 5);
@@ -197,7 +215,7 @@ caNguoc('khuôn: dòng không phải JSON', ghiKho([...DUNG, 'không phải json
 
 // ---------- 6. Dòng lệnh ----------
 {
-  const cong = path.join(GOC, 'scripts/ho-so/cong.mjs'); const khuon = path.join(GOC, 'scripts/ho-so/khuon.mjs');
+  const cong = path.join(GOC, 'scripts/ho-so-ma/cong.mjs'); const khuon = path.join(GOC, 'scripts/ho-so-ma/khuon.mjs');
   const a = spawnSync(process.execPath, [cong, '--luat', LUAT, '--ho-so', KHO_DUNG, '--pham-vi', '76'], { encoding: 'utf8' });
   const b = spawnSync(process.execPath, [cong, '--luat', LUAT, '--ho-so', ghiKho(sua((x) => (x.cau === 'phan:XV#1' ? null : x))), '--pham-vi', '7605', '--cong', '1'], { encoding: 'utf8' });
   const c = spawnSync(process.execPath, [khuon, '--ho-so', KHO_DUNG], { encoding: 'utf8' });

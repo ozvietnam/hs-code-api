@@ -2,7 +2,7 @@
 
 Khâu 3, ADR-0006 (cùng ADR-0004, ADR-0005), kế hoạch `docs/ke-hoach-ho-so-ma.md`, thẻ M-71 (#1963).
 
-Mỗi mã 8 số có một **hồ sơ vấn đề** dựng **chỉ từ luật**: phải là gì, không được là gì (chuyển đi đâu), khác anh em ở đâu, ngưỡng số, dữ kiện cần biết, vấn đề chỉ liệt kê được. Không có mô tả hàng, tờ khai, tiền lệ, lời AI hay trí nhớ. Vấn đề **lưu ở nút sinh ra nó**; hồ sơ của một mã do máy **ghép dọc đường đi** (`lib/ho-so/ghep.js`). Luật đổi câu nào thì vân tay câu đó đổi, cổng 5 đỏ đúng các vấn đề dính câu đó.
+Mỗi mã 8 số có một **hồ sơ vấn đề** dựng **chỉ từ luật**: phải là gì, không được là gì (chuyển đi đâu), khác anh em ở đâu, ngưỡng số, dữ kiện cần biết, vấn đề chỉ liệt kê được. Không có mô tả hàng, tờ khai, tiền lệ, lời AI hay trí nhớ. Vấn đề **lưu ở nút sinh ra nó**; hồ sơ của một mã do máy **ghép dọc đường đi** (`lib/ho-so-ma/ghep.js`). Luật đổi câu nào thì vân tay câu đó đổi, cổng 5 đỏ đúng các vấn đề dính câu đó.
 
 ## 1. Một VẤN ĐỀ
 
@@ -23,6 +23,7 @@ Mỗi dòng JSONL một bản ghi. Mỗi vấn đề **một điều kiện đơ
 | `dieuKien` | Một câu ngắn, một dòng, ≤ 300 ký tự, nói đúng một điều kiện |
 | `trich` | Chép nguyên văn một đoạn của câu `cau` (so sau khi chuẩn hoá khoảng trắng như `scripts/kiem-luat-goc.mjs`). Không sửa chữ cho đẹp |
 | `cau` | id câu trong `data/luat-goc/cau` (dạng `<id nút>#<số>`). Cấm câu tiền lệ `tb:` |
+| `tu` | Chỉ ở `PHAI_LA` sinh từ **cạnh đi vào** (câu ở nơi khác loại/phân hàng sang nút này): id câu nguồn, phải trùng `cau` — trích chính câu nguồn đó |
 | `den` | Mảng id nút đích (`bieu:` / `chuong:` / `phan:` / `gir:`). **Bắt buộc** với `KHONG_DUOC_LA` (chuyển đi đâu); được có ở `PHAI_LA`, `CHI_LIET_KE`; loại khác không mang |
 | `voi` | Mảng id anh em cùng cha. **Bắt buộc** với `TACH_ANH_EM`; được có ở `NGUONG` |
 | `nguong` | Chỉ `NGUONG`: `{daiLuong, donVi, tu, den, gomTu, gomDen}` — `tu`/`den` là số hoặc `null` (vô cùng), ít nhất một số |
@@ -55,11 +56,11 @@ Câu có sức pháp lý trên đường đi mà **không tạo điều kiện**
 | `NGUONG` | Ngưỡng số phân dải anh em trên một đại lượng có chữ trong luật | "Kích thước mặt cắt ngang lớn nhất trên 7 mm" |
 | `CHI_LIET_KE` | Vấn đề chỉ liệt kê được, không quy được về điều kiện máy kiểm: Quy tắc 2(a), 3(b), bộ phận, đa chức năng, "chủ yếu dùng cho", "đặc tính cơ bản" — để tầng so với mô tả khách (LLM mạnh) cân nhắc | Chú giải 2 Phần XVI |
 
-Câu được trích: câu của chính nút, của nút phía trên trên đường đi, hoặc câu áp chung (`gir:`, `sen:md:`). Riêng `TACH_ANH_EM` và `NGUONG` được trích câu của anh em cùng cha ("Loại khác" phủ định anh em có tên).
+Câu được trích: câu của chính nút, của nút phía trên trên đường đi, hoặc câu áp chung (`gir:`, `sen:md:`). Riêng `TACH_ANH_EM` và `NGUONG` được trích câu của anh em cùng cha ("Loại khác" phủ định anh em có tên). `PHAI_LA` mang `tu` được trích câu ở nơi khác khi kho `nghia-canh` có cạnh `LOAI_SANG` / `PHAN_VE` (hoặc `CHUA_RO`) từ câu đó tới đúng nút này.
 
 ## 4. Nơi lưu
 
-`data/ho-so/<thư mục>/<khoá>.jsonl`, theo nút sinh ra vấn đề:
+`data/ho-so-ma/<thư mục>/<khoá>.jsonl`, theo nút sinh ra vấn đề. Gốc `data/ho-so-ma/` chỉ có bảy thư mục dưới đây (thứ khác ở gốc là khuôn đỏ):
 
 | Thư mục | Nút | Khoá tệp | Thẻ ghi |
 |---|---|---|---|
@@ -71,21 +72,23 @@ Câu được trích: câu của chính nút, của nút phía trên trên đư�
 | `nguong/` | `NGUONG` của mọi cấp | Chương (`76`) hoặc Phần (`XV`) | M-74 |
 | `liet-ke/` | `CHI_LIET_KE` của mọi cấp | Chương hoặc Phần | M-75 |
 
-`data/ho-so/` còn chứa kho cũ của hồ sơ phân loại (`ranh-gioi/`, `phan-biet-vat-lieu/`, `lat-*.json`, `hieu-chinh-tien-le.json` — có tệp lớp `THUC_TE`). Khuôn, cổng và máy ghép **chỉ đọc bảy thư mục trên**. Thẻ đầu tiên ghi tệp vào một thư mục phải khai lớp ở `data/lop-kho.json` (`RUT_TU_LUAT`).
+Kho riêng, tách hẳn đồ cũ: `data/ho-so/` và `lib/ho-so/` là hồ sơ phân loại cũ (có tệp lớp `THUC_TE`), khuôn này không đọc. Thẻ đầu tiên ghi tệp vào một thư mục phải khai lớp ở `data/lop-kho.json` (`RUT_TU_LUAT`).
 
-## 5. Năm cổng (`scripts/ho-so/cong.mjs`)
+**Nguyên liệu tham khảo `data/ho-so/ranh-gioi/` (`ranh-gioi@1`, điều kiện số bậc 6 → 8):** chỉ dùng làm gợi ý khi tách `NGUONG` / `TACH_ANH_EM` (M-74, M-76). Một điều kiện lấy từ đó **chỉ được nhận** khi viết lại thành vấn đề có `trich` khớp nguyên văn câu luật trong `data/luat-goc` (qua cổng 4) và `duKien` có nguyên chữ trong câu. Không nhận thẳng, không chép `dieuKienSo` / `fact` sang hồ sơ.
+
+## 5. Năm cổng (`scripts/ho-so-ma/cong.mjs`)
 
 Chạy theo phạm vi: `--pham-vi 76 | chuong:76 | phan:XV | chuong:28:pc:II | 7605 | 760519 | 76051910` (lặp được). Mặc định phạm vi gồm cả các cấp phía trên (đường đi đầy đủ); `--chi-trong` chỉ xét bên trong phạm vi — thẻ tách một cấp dùng cái này. Không có phạm vi: chỉ chạy khuôn + cổng 4, 5 trên mọi bản ghi.
 
 1. **ĐỦ** — mọi câu trên đường đi mà nút nguồn lớp `LUAT`, hoặc lớp `HUONG_DAN` và câu có cạnh `LOAI_SANG` / `PHAN_VE` / `DINH_NGHIA` (hay `CHUA_RO` có một trong ba) trong `data/luat-goc/nghia-canh`, đã có ít nhất một vấn đề hoặc một BỎ QUA trích câu đó. Câu `HUONG_DAN` không có cạnh như vậy (ví dụ câu dẫn "Nhóm này không bao gồm:") không bắt buộc.
-2. **LOẠI** — mọi cạnh xuất phát từ câu trên đường đi: `LOAI_SANG` cần vấn đề `KHONG_DUOC_LA` cùng câu có `den` chứa đích cạnh; `PHAN_VE` và `CHUA_RO` (phiếu có `LOAI_SANG` hoặc `PHAN_VE`) cần `KHONG_DUOC_LA` hoặc `PHAI_LA` cùng câu, `den` chứa đích. BỎ QUA không thay được.
+2. **LOẠI** — *Cạnh đi ra* (từ câu trên đường đi): `LOAI_SANG` cần vấn đề `KHONG_DUOC_LA` cùng câu có `den` chứa đích cạnh; `PHAN_VE` và `CHUA_RO` (phiếu có `LOAI_SANG` hoặc `PHAN_VE`) cần `KHONG_DUOC_LA` hoặc `PHAI_LA` cùng câu, `den` chứa đích. BỎ QUA không thay được. *Cạnh đi vào* (câu ở nơi khác — không phải chính nút đích, nút trên hay nút dưới nó; anh em cùng Chương cũng là nơi khác — đích là nút trên đường đi): `LOAI_SANG` / `PHAN_VE` trạng thái `KHOP` cần `PHAI_LA` ở nút đích mang `tu` = câu nguồn; `CHUA_RO` chỉ **cảnh báo**, không đỏ.
 3. **ANH EM** — mỗi cặp nút cùng cha (trong phạm vi; ở chế độ đường đi đủ thì thêm cặp nút trên đường đi với anh em của nó) có `TACH_ANH_EM` giữa hai nút hoặc `NGUONG` cùng đại lượng, cùng đơn vị, không chồng dải. Đỏ khi: chưa tách; `NGUONG` chồng; hai anh em trùng bộ điều kiện (`loai` + `dieuKien`); `voi` trỏ ra ngoài anh em; mọi anh em cùng có `NGUONG` trên một đại lượng mà dải hở giữa chừng.
 4. **TRÍCH** — `cau` có thật trong kho câu, không phải tiền lệ; `trich` nằm nguyên văn trong chữ câu; `lop`, `nguon` khớp nút nguồn; mỗi `duKien` có nguyên chữ trong câu; câu thuộc đường đi của `nut` (mục 3); `den`, `voi` là nút có thật.
-5. **VÂN TAY** — `van` = sha256 chữ câu hiện hành. Lệch thì đỏ kèm lệnh `node scripts/ho-so/cong.mjs --dinh-cau '<câu>'` (in chữ mới, vân tay mới và mọi bản ghi dính câu) để thẻ tách của cấp đó dựng lại đúng phần đó.
+5. **VÂN TAY** — `van` = sha256 chữ câu hiện hành. Lệch thì đỏ kèm lệnh `node scripts/ho-so-ma/cong.mjs --dinh-cau '<câu>'` (in chữ mới, vân tay mới và mọi bản ghi dính câu) để thẻ tách của cấp đó dựng lại đúng phần đó.
 
-Khuôn: `node scripts/ho-so/khuon.mjs`. Bài kiểm: `node scripts/test-ho-so.mjs` (dữ liệu giả Chương 76, câu thật, ca ngược cho từng cổng).
+Khuôn: `node scripts/ho-so-ma/khuon.mjs`. Bài kiểm: `node scripts/test-ho-so.mjs` (dữ liệu giả Chương 76, câu thật, ca ngược cho từng cổng).
 
-## 6. Máy ghép (`lib/ho-so/ghep.js`)
+## 6. Máy ghép (`lib/ho-so-ma/ghep.js`)
 
 `hoSo(ma, {luat, hoSo})` nhận mã 4/6/8 số (`"7605.19.10"` được), trả:
 

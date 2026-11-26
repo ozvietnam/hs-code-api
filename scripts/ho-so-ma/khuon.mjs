@@ -1,15 +1,15 @@
 #!/usr/bin/env node
-// scripts/ho-so/khuon.mjs — M-71 (#1963): kiểm từng bản ghi hồ sơ vấn đề theo khuôn ho-so-ma@1 (docs/mong/khuon-ho-so-ma.md)
-// và chỗ đặt tệp data/ho-so/<thư mục>/<khoá>.jsonl. Chỉ kiểm hình thức; đối chiếu với luật là việc của cong.mjs.
+// scripts/ho-so-ma/khuon.mjs — M-71 (#1963): kiểm từng bản ghi hồ sơ vấn đề theo khuôn ho-so-ma@1 (docs/mong/khuon-ho-so-ma.md)
+// và chỗ đặt tệp data/ho-so-ma/<thư mục>/<khoá>.jsonl. Chỉ kiểm hình thức; đối chiếu với luật là việc của cong.mjs.
 // Tất định, không mạng, không AI.
-//   node scripts/ho-so/khuon.mjs [--ho-so <thư mục>]
+//   node scripts/ho-so-ma/khuon.mjs [--ho-so <thư mục>]
 import fs from 'node:fs';
 import path from 'node:path';
 import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
 
 const require = createRequire(import.meta.url);
-const G = require('../../lib/ho-so/ghep.js');
+const G = require('../../lib/ho-so-ma/ghep.js');
 
 export const LOAI = Object.freeze(['PHAI_LA', 'KHONG_DUOC_LA', 'TACH_ANH_EM', 'DINH_NGHIA', 'NGUONG', 'CHI_LIET_KE']);
 export const BO_QUA = 'BO_QUA';
@@ -20,7 +20,7 @@ const RE_CAU = /^(?:gir|phan|chuong|nhom|pn|bieu|sen|wco|tb):[^#\s]+#\d+$/;
 const RE_DICH = /^(?:phan:[IVX]+|chuong:\d{2}(?::pc:[IVX]+)?|bieu:\d{2,8}(?::td\d+)*|gir:[1-6](?::[a-c])?)$/;
 const RE_ANH_EM = /^(?:chuong:\d{2}(?::pc:[IVX]+)?|bieu:\d{4,8}(?::td\d+)*)$/;
 const RE_VAN = /^[0-9a-f]{64}$/;
-const TRUONG_VAN_DE = new Set(['id', 'nut', 'loai', 'dieuKien', 'trich', 'cau', 'den', 'voi', 'nguong', 'duKien', 'lop', 'nguon', 'van', 'trangThai', 'phieu', 'ghiChu']);
+const TRUONG_VAN_DE = new Set(['id', 'nut', 'loai', 'dieuKien', 'trich', 'cau', 'tu', 'den', 'voi', 'nguong', 'duKien', 'lop', 'nguon', 'van', 'trangThai', 'phieu', 'ghiChu']);
 const TRUONG_BO_QUA = new Set(['id', 'nut', 'loai', 'cau', 'lyDo', 'van', 'ghiChu']);
 const CO_DEN = new Set(['KHONG_DUOC_LA', 'PHAI_LA', 'CHI_LIET_KE']);
 const CO_VOI = new Set(['TACH_ANH_EM', 'NGUONG']);
@@ -70,6 +70,10 @@ export function kiemBanGhi(x) {
       for (const k of Object.keys(n)) if (!['daiLuong', 'donVi', 'tu', 'den', 'gomTu', 'gomDen'].includes(k)) loi.push(`${o}: nguong có trường lạ "${k}"`);
     }
   }
+  if (x.tu !== undefined) {
+    if (x.loai !== 'PHAI_LA') loi.push(`${o}: chỉ PHAI_LA của cạnh đi vào mang tu`);
+    else if (!RE_CAU.test(x.tu) || x.tu !== x.cau) loi.push(`${o}: tu phải là id câu nguồn của cạnh đi vào và trùng cau (trích câu nguồn)`);
+  }
   if (x.phieu !== undefined && !Array.isArray(x.phieu)) loi.push(`${o}: phieu phải là mảng`);
   return loi;
 }
@@ -94,8 +98,7 @@ export function kiemTep(tuongDoi, noiDung) {
 export function kiemKhoHoSo(goc = G.HO_SO_MAC_DINH) {
   const loi = []; const banGhi = []; let soTep = 0;
   if (!fs.existsSync(goc)) return { loi, banGhi, soTep };
-  // data/ho-so còn chứa kho cũ của hồ sơ phân loại (ranh-gioi/, phan-biet-vat-lieu/, lat-*.json — có tệp THUC_TE):
-  // khuôn này chỉ đọc bảy thư mục của ho-so-ma@1, không chạm phần còn lại.
+  for (const e of fs.readdirSync(goc, { withFileTypes: true })) if (!e.isDirectory() || !G.THU_MUC.includes(e.name)) loi.push(`${e.name}: lạ ở gốc kho hồ sơ (chỉ ${G.THU_MUC.join(', ')})`);
   for (const tm of G.THU_MUC) {
     if (!fs.existsSync(path.join(goc, tm))) continue;
     for (const f of fs.readdirSync(path.join(goc, tm)).sort()) {

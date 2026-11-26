@@ -1,16 +1,17 @@
 #!/usr/bin/env node
-// scripts/ho-so/cong.mjs — M-71 (#1963, ADR-0006): năm cổng máy của hồ sơ vấn đề mã 8 số. Tất định, không mạng, không AI.
+// scripts/ho-so-ma/cong.mjs — M-71 (#1963, ADR-0006): năm cổng máy của hồ sơ vấn đề mã 8 số. Tất định, không mạng, không AI.
 //   (1) ĐỦ       mọi câu có sức pháp lý trên đường đi đã thành vấn đề hoặc có BỎ QUA kèm lý do
-//   (2) LOẠI     mọi cạnh LOAI_SANG / PHAN_VE / CHUA_RO (M-33) xuất phát từ câu trên đường đi có vấn đề tương ứng, đích khớp
+//   (2) LOẠI     mọi cạnh LOAI_SANG / PHAN_VE / CHUA_RO (M-33) xuất phát từ câu trên đường đi có vấn đề tương ứng, đích khớp;
+//                cạnh ĐI VÀO (câu ở nơi khác, đích trên đường đi, KHOP) có PHAI_LA ở nút đích mang tu = câu nguồn; CHUA_RO đi vào chỉ cảnh báo
 //   (3) ANH EM   mỗi cặp nút cùng cha được tách (TACH_ANH_EM hoặc NGUONG không chồng); không hai anh em trùng bộ điều kiện; dải không hở
 //   (4) TRÍCH    trích nguyên văn câu, id câu thật, lop / nguon khớp nút nguồn, dữ kiện có trong chữ luật, câu thuộc đường đi của nút
 //   (5) VÂN TAY  van = sha256 chữ câu hiện hành; lệch thì đỏ kèm lệnh dựng lại
 //
-//   node scripts/ho-so/cong.mjs --pham-vi <76 | chuong:76 | phan:XV | chuong:28:pc:II | 7605 | 760519 | 76051910 | bieu:…> [--pham-vi …]
+//   node scripts/ho-so-ma/cong.mjs --pham-vi <76 | chuong:76 | phan:XV | chuong:28:pc:II | 7605 | 760519 | 76051910 | bieu:…> [--pham-vi …]
 //        [--chi-trong]  chỉ câu / anh em bên trong phạm vi, bỏ các cấp phía trên (cho thẻ tách từng cấp)
-//        [--cong 1,2,3,4,5] [--luat <data/luat-goc>] [--ho-so <data/ho-so>]
+//        [--cong 1,2,3,4,5] [--luat <data/luat-goc>] [--ho-so <data/ho-so-ma>]
 //   Không --pham-vi: chỉ chạy khuôn + cổng 4, 5 trên mọi bản ghi (cổng 1–3 cần phạm vi).
-//   node scripts/ho-so/cong.mjs --dinh-cau <id câu>   in chữ câu hiện hành, vân tay mới và mọi bản ghi dính câu đó (để dựng lại)
+//   node scripts/ho-so-ma/cong.mjs --dinh-cau <id câu>   in chữ câu hiện hành, vân tay mới và mọi bản ghi dính câu đó (để dựng lại)
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
@@ -19,7 +20,7 @@ import { fileURLToPath } from 'node:url';
 import { kiemKhoHoSo, BO_QUA } from './khuon.mjs';
 
 const require = createRequire(import.meta.url);
-const G = require('../../lib/ho-so/ghep.js');
+const G = require('../../lib/ho-so-ma/ghep.js');
 const { CHUONG_SANG_PHAN } = require('../../lib/do-thi/dan-chieu.js');
 
 // Cùng phép chuẩn hoá với scripts/kiem-luat-goc.mjs (gon + chuanSo): NFC, gộp khoảng trắng, bỏ khoảng trắng quanh dấu nối.
@@ -32,7 +33,7 @@ const LOAI_CANH_BAT_BUOC = new Set(['LOAI_SANG', 'PHAN_VE', 'DINH_NGHIA']); // c
 
 /** Nạp đủ luật cho cổng: nút (chữ, lop, nguon), câu (tu/den), cạnh nghĩa, cây. */
 export function napLuatCong(thuMuc = G.LUAT_MAC_DINH) {
-  const nut = new Map(); const cau = new Map(); const canhTheoTu = new Map();
+  const nut = new Map(); const cau = new Map(); const canhTheoTu = new Map(); const canhTheoDen = new Map();
   for (const f of fs.readdirSync(thuMuc).filter((x) => x.endsWith('.jsonl') && !KHO_BO.has(x)).sort()) {
     for (const n of G.docJsonl(path.join(thuMuc, f))) if (n.lop !== 'TIEN_LE') nut.set(n.id, { lop: n.lop, nguon: n.nguon?.vanBan ?? null, v: n.nguyenVan });
   }
@@ -45,11 +46,11 @@ export function napLuatCong(thuMuc = G.LUAT_MAC_DINH) {
   const tmCanh = path.join(thuMuc, 'nghia-canh');
   if (fs.existsSync(tmCanh)) {
     for (const f of fs.readdirSync(tmCanh).filter((x) => x.endsWith('.jsonl')).sort()) {
-      for (const e of G.docJsonl(path.join(tmCanh, f))) { if (!canhTheoTu.has(e.tu)) canhTheoTu.set(e.tu, []); canhTheoTu.get(e.tu).push(e); }
+      for (const e of G.docJsonl(path.join(tmCanh, f))) { if (!canhTheoTu.has(e.tu)) canhTheoTu.set(e.tu, []); canhTheoTu.get(e.tu).push(e); if (!canhTheoDen.has(e.den)) canhTheoDen.set(e.den, []); canhTheoDen.get(e.den).push(e); }
     }
   }
   const chuCau = (id) => { const c = cau.get(id); return c ? nut.get(c.nut).v.slice(c.tu, c.den) : null; };
-  return { thuMuc, nut, cau, canhTheoTu, chuCau, cay: G.napLuat(thuMuc) };
+  return { thuMuc, nut, cau, canhTheoTu, canhTheoDen, chuCau, cay: G.napLuat(thuMuc) };
 }
 
 /** Loại vấn đề một cạnh đòi; null = cạnh không thuộc cổng 2. */
@@ -58,6 +59,18 @@ export function loaiCanhDoi(e) {
   if (e.loai === 'LOAI_SANG') return ['KHONG_DUOC_LA'];
   if (e.loai === 'PHAN_VE') return ['KHONG_DUOC_LA', 'PHAI_LA'];
   return null;
+}
+/** Cạnh đi vào nút đích: 'DO' = phải có PHAI_LA, 'CANH_BAO' = CHUA_RO chỉ cảnh báo, null = không xét. */
+export function loaiCanhVao(e) {
+  if (e.trangThai === 'CHUA_RO') return /LOAI_SANG|PHAN_VE/.test(e.vi || '') ? 'CANH_BAO' : null;
+  return e.trangThai === 'KHOP' && (e.loai === 'LOAI_SANG' || e.loai === 'PHAN_VE') ? 'DO' : null;
+}
+/** Câu nguồn ở "nơi khác" so với nút đích: không phải chính nút, không phải nút trên/dưới nó trên cùng đường đi, không áp chung. */
+function laNoiKhac(cauId, den, L) {
+  const chu = G.chuCuaCau(cauId);
+  if (!chu || chu === G.CHUNG) return false;
+  if ((G.duongDiNut(chu, L.cay) || []).some((x) => x.nut === den)) return false;
+  return !G.trenCua(den, L.cay).includes(chu) && chu !== den;
 }
 const canhTaoDieuKien = (e) => (e.trangThai === 'CHUA_RO' ? /LOAI_SANG|PHAN_VE|DINH_NGHIA/.test(e.vi || '') : LOAI_CANH_BAT_BUOC.has(e.loai));
 
@@ -100,7 +113,7 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
   const N = new Set(); const NTrong = new Set();
   for (const p of pv) { for (const id of p.duoi) { N.add(id); NTrong.add(id); } if (!chiTrong) for (const id of p.tren) N.add(id); }
   const ra = {
-    1: { ten: 'ĐỦ', loi: [], soKiem: 0 }, 2: { ten: 'LOẠI', loi: [], soKiem: 0 }, 3: { ten: 'ANH EM', loi: [], soKiem: 0 },
+    1: { ten: 'ĐỦ', loi: [], soKiem: 0 }, 2: { ten: 'LOẠI', loi: [], canhBao: [], soKiem: 0 }, 3: { ten: 'ANH EM', loi: [], soKiem: 0 },
     4: { ten: 'TRÍCH', loi: [], soKiem: 0 }, 5: { ten: 'VÂN TAY', loi: [], soKiem: 0 },
   };
   const ngan = (t) => (t.length > 90 ? `${t.slice(0, 90)}…` : t).replace(/\n/g, ' ');
@@ -127,6 +140,16 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
         ra[2].soKiem += 1;
         const co = (theoCau.get(c) || []).some((x) => doi.includes(x.loai) && (x.den || []).includes(e.den));
         if (!co) ra[2].loi.push(`${c} → ${e.den} (${e.trangThai === 'CHUA_RO' ? `CHUA_RO ${e.vi}` : e.loai}) chưa có vấn đề ${doi.join(' / ')} với den chứa ${e.den}`);
+      }
+    }
+    // Cạnh đi vào: đích là nút trên đường đi, câu nguồn ở nơi khác.
+    for (const den of N) {
+      for (const e of L.canhTheoDen.get(den) || []) {
+        const k = loaiCanhVao(e);
+        if (!k || !L.cau.has(e.tu) || !laNoiKhac(e.tu, den, L)) continue;
+        const co = (vanDeTheoNut.get(den) || []).some((x) => x.loai === 'PHAI_LA' && x.tu === e.tu);
+        if (co) { ra[2].soKiem += 1; continue; }
+        if (k === 'DO') { ra[2].soKiem += 1; ra[2].loi.push(`${e.tu} → ${den} (đi vào, ${e.loai}) chưa có PHAI_LA ở ${den} mang tu ${e.tu}`); } else ra[2].canhBao.push(`${e.tu} → ${den} (đi vào, CHUA_RO ${e.vi}) chưa có PHAI_LA — cảnh báo, chờ hai phiếu khớp`);
       }
     }
   }
@@ -209,8 +232,10 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
       const chu0 = G.chuCuaCau(x.cau);
       const tren = new Set(G.trenCua(x.nut, L.cay));
       const anhEm = new Set(G.anhEmCua(x.nut, L.cay));
+      const vao = x.tu !== undefined && (L.canhTheoTu.get(x.cau) || []).some((e) => e.den === x.nut && loaiCanhVao(e));
+      if (x.tu !== undefined && !vao) ra[4].loi.push(`${x.id}: tu ${x.tu} không có cạnh LOAI_SANG / PHAN_VE nào đi vào ${x.nut}`);
       const dungCho = x.loai === BO_QUA ? chu0 === x.nut
-        : chu0 === G.CHUNG || chu0 === x.nut || tren.has(chu0) || ((x.loai === 'TACH_ANH_EM' || x.loai === 'NGUONG') && anhEm.has(chu0));
+        : vao || chu0 === G.CHUNG || chu0 === x.nut || tren.has(chu0) || ((x.loai === 'TACH_ANH_EM' || x.loai === 'NGUONG') && anhEm.has(chu0));
       if (!dungCho) ra[4].loi.push(`${x.id}: câu ${x.cau} thuộc ${chu0 || '(ngoài hồ sơ)'}, không nằm trên đường đi của ${x.nut}${x.loai === BO_QUA ? ' (BỎ QUA phải ghi ở đúng nút của câu)' : ''}`);
       if (x.loai === BO_QUA) continue;
       const cs = chuanSo(chu); const csThuong = cs.toLowerCase();
@@ -226,7 +251,7 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
       const chu = /^tb:/.test(x.cau) ? null : L.chuCau(x.cau);
       if (chu === null) continue; // id câu hỏng đã đỏ ở cổng 4
       ra[5].soKiem += 1;
-      if (vanTay(chu) !== x.van) ra[5].loi.push(`${x.id}: vân tay lệch câu ${x.cau} (luật đổi chữ) — dựng lại: node scripts/ho-so/cong.mjs --dinh-cau '${x.cau}' rồi tách lại vấn đề của ${x.nut}`);
+      if (vanTay(chu) !== x.van) ra[5].loi.push(`${x.id}: vân tay lệch câu ${x.cau} (luật đổi chữ) — dựng lại: node scripts/ho-so-ma/cong.mjs --dinh-cau '${x.cau}' rồi tách lại vấn đề của ${x.nut}`);
     }
   }
   return { khuon: kho.loi, soBanGhi: kho.banGhi.length, phamVi: pv.map((p) => p.goc), cong: Object.fromEntries(cong.map((k) => [k, ra[k]])) };
@@ -253,8 +278,9 @@ function main() {
   const nhan = r.phamVi.length ? `phạm vi ${r.phamVi.join(', ')}${a.includes('--chi-trong') ? ' (chỉ trong)' : ''}` : 'mọi bản ghi';
   for (const [k, c] of Object.entries(r.cong)) {
     if (!r.phamVi.length && Number(k) <= 3) { console.log(`---- cổng ${k} ${c.ten}: cần --pham-vi`); continue; }
-    console.log(`${c.loi.length ? 'FAIL' : 'PASS'} cổng ${k} ${c.ten} — ${nhan}: ${c.soKiem} mục kiểm, ${c.loi.length} lỗi`);
+    console.log(`${c.loi.length ? 'FAIL' : 'PASS'} cổng ${k} ${c.ten} — ${nhan}: ${c.soKiem} mục kiểm, ${c.loi.length} lỗi${c.canhBao?.length ? `, ${c.canhBao.length} cảnh báo` : ''}`);
     for (const l of c.loi.slice(0, 40)) console.log(`  ✗ ${l}`);
+    for (const l of (c.canhBao || []).slice(0, 20)) console.log(`  ! ${l}`);
     if (c.loi.length > 40) console.log(`  … còn ${c.loi.length - 40} lỗi`);
     if (c.loi.length) do_ = 1;
   }
