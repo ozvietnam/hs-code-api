@@ -10,6 +10,7 @@ console.error = () => {};
 const { lexiconFor, lexiconForKeys, labelKept, promptLine } = require('../lib/heading-lexicon');
 const { filterSources, isNoiseLabel, MISC_MAX } = require('../lib/source-filter');
 const { extractSpecs } = require('../lib/extract-specs');
+const { keysForLabel } = require('../lib/zh-specs');
 
 let pass = 0;
 let fail = 0;
@@ -107,15 +108,20 @@ const { signalsFromSheet } = require('../lib/demand-signals');
 const sig = signalsFromSheet({ sheet: { hsCode: '90049010', heading: { code: '9004' }, fields: [], missing: [], trademark: {}, extraction: { filter: ex.filter } }, mapped: { hsListings: [], policyLines: [] }, specsZh: [] });
 check('LABEL_UNKNOWN: 功能 / 眼镜结构 kèm nhóm 9004 (包装 đã chuyển NOISE #141)', ['功能', '眼镜结构'].every((z) => sig.some((s) => s.t === 'LABEL_UNKNOWN' && s.k === z && s.m.heading === '9004')) && !sig.some((s) => s.t === 'LABEL_UNKNOWN' && s.k === '包装'), JSON.stringify(sig.filter((s) => s.t === 'LABEL_UNKNOWN')));
 
-// #141: đồng nghĩa ZH gắn khoá chuẩn sẵn có (không tạo khoá mới)
+// #141: đồng nghĩa ZH gắn khoá chuẩn sẵn có (không tạo khoá mới).
+// KHÔNG gắn 规格→dimensions: tiền tố SKU 已选规格(度数) sẽ khớp nhầm dimensions (CI PR #2298).
 const synZh = require('../data/attribute-synonyms-zh.json').keys;
-check('141: 规格→dimensions; 型式/品种→form; 克重→netWeight; 塑料材质分类/塑料新料占比→polymerType',
-  synZh.dimensions.zh.includes('规格')
+check('141: 型式/品种→form; 克重→netWeight; 塑料材质分类/塑料新料占比→polymerType; KHÔNG 规格→dimensions',
+  !synZh.dimensions.zh.includes('规格')
   && ['型式', '品种'].every((z) => synZh.form.zh.includes(z))
   && synZh.netWeight.zh.includes('克重')
   && ['塑料材质分类', '塑料新料占比'].every((z) => synZh.polymerType.zh.includes(z)));
 const lg141 = lexiconFor(null);
-check('141: từ điển toàn cục nhận 规格/克重/塑料材质分类 (không nhận nhãn rác 专利)', labelKept(lg141, '规格') && labelKept(lg141, '克重') && labelKept(lg141, '塑料材质分类') && !labelKept(lg141, '专利'));
+check('141: từ điển toàn cục nhận 克重/塑料材质分类 (không nhận nhãn rác 专利; 规格 không gắn dimensions)', labelKept(lg141, '克重') && labelKept(lg141, '塑料材质分类') && !labelKept(lg141, '专利') && !labelKept(lg141, '规格'));
+check('141: 已选规格(度数) → lensPower (không bị 规格 đè thành dimensions)', (() => {
+  const k = keysForLabel('已选规格(度数)');
+  return k.includes('lensPower') && !k.includes('dimensions');
+})());
 
 // 11. Tắt lọc bằng env → gói như cũ
 process.env.HS_SOURCE_FILTER = '0';
