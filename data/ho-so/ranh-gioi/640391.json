@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:ozv-1794#soat-640391",
-    "ngay": "2026-11-22",
-    "ghiChu": "Chuẩn hoá theo traVe (OZV-1794)",
-    "bam": "47a80a431d8efb06390a6559419fc89f5b862359b2165c589249150b803091da"
+    "phien": "paperclip:tho-hs-03#soat-640391-ozv-2347",
+    "ngay": "2026-11-26",
+    "ghiChu": "OZV-2347: bỏ chatLieu LA gỗ — chữ «kim loại» trong vế phủ định gây chat-lieu-hon-hop; giữ tenLoai + coLotDeBenTrong/coMuiKimLoaiBaoVe KHONG",
+    "bam": "4ebbb7ffa0437c4212db6d395901541f1a9c7677134e564fc7fe12b8d7834264"
   },
   "dieuKienNut": [],
   "dong8": [
@@ -28,11 +28,6 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "có đế bằng gỗ"
-        },
-        {
-          "fact": "chatLieu",
-          "op": "LA",
-          "value": "gỗ"
         },
         {
           "fact": "coLotDeBenTrong",
@@ -85,7 +80,7 @@
     {
       "ma": "64039110",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.64039110 \"Giày, dép có đế bằng gỗ, không có lót đế bên trong hoặc mũi gắn kim loại bảo vệ\" (EN \"Footwear made on a base or platform of wood, not having an inner sole or protective metal toe cap\") ⇒ tenLoai \"có đế bằng gỗ\" + chatLieu LA \"gỗ\" + coLotDeBenTrong KHONG + coMuiKimLoaiBaoVe KHONG (phủ đủ hai vế phủ định không có lót đế bên trong và không có mũi gắn kim loại bảo vệ)."
+      "ghiChu": "tax.64039110 \"Giày, dép có đế bằng gỗ, không có lót đế bên trong hoặc mũi gắn kim loại bảo vệ\" ⇒ tenLoai \"có đế bằng gỗ\" + coLotDeBenTrong KHONG + coMuiKimLoaiBaoVe KHONG. Bỏ chatLieu LA gỗ (OZV-2347): chữ biểu có «kim loại» trong vế phủ định ⇒ tu-vung đọc gỗ+kim loại ở CHINH → chat-lieu-hon-hop TRAI cả ca dong-co-ten."
     },
     {
       "ma": "64039120",
