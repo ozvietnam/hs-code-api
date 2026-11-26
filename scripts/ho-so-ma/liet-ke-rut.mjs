@@ -119,6 +119,20 @@ const DAC_TA_RIENG_C84 = {
   'pn:854913:ct:1#2': 'Hỏi pin/bộ pin/ắc quy điện thuộc phân nhóm 8549.13 có ở trạng thái chỉ phù hợp để thu hồi, tái chế, thải bỏ hoặc không còn khả năng nạp lại/tích điện không',
   'pn:854914:ct:1#2': 'Hỏi pin/bộ pin/ắc quy điện thuộc phân nhóm 8549.14 có ở trạng thái chỉ phù hợp để thu hồi, tái chế, thải bỏ hoặc không còn khả năng nạp lại/tích điện không',
   'pn:854919:ct:1#2': 'Hỏi pin/bộ pin/ắc quy điện thuộc phân nhóm 8549.19 có ở trạng thái chỉ phù hợp để thu hồi, tái chế, thải bỏ hoặc không còn khả năng nạp lại/tích điện không',
+
+  // Phần VII & Chương 39
+  'phan:VII:cg:1#1': 'Với hàng hóa đóng bộ có cấu thành thuộc Phần VII để trộn với nhau: hỏi bộ cấu thành có đóng gói rõ ràng dùng cùng nhau, trình bày cùng nhau và nhận biết bổ sung cho nhau không',
+  'phan:VII:cg:2#1': 'Với hàng bằng plastic/cao su đã in (trừ 39.18, 39.19): hỏi việc in có chỉ đơn thuần là phụ trợ cho công dụng chính hay đóng vai trò chính để xét chuyển Chương 49',
+  'phan:VII:kq:3#2': 'Với bộ cấu thành thuộc Phần VII đóng gói để bán lẻ: hỏi áp dụng Quy tắc 3(b) xác định đặc tính cơ bản như thế nào',
+  'phan:VII:kq:5#2': 'Hỏi việc in trên sản phẩm plastic/cao su có phục vụ công dụng chính hay plastic/cao su chỉ đóng vai trò trung gian để in (xếp Chương 49)',
+  'chuong:39:kq:94#1': 'Hỏi sản phẩm plastic qua nhiều công đoạn nêu tại Chú giải Chương 39 có còn giữ được đặc tính cơ bản của mặt hàng bằng plastic không',
+  'chuong:39:kq:97#1': 'Hỏi sản phẩm giấy hoặc bìa giấy phủ plastic mỏng hai mặt có còn giữ đặc trưng cơ bản của giấy/bìa giấy để loại khỏi Chương 39 (xếp nhóm 48.11) không',
+  'nhom:3913:ct:5#2': 'Hỏi chất thêm vào polyme tự nhiên nhóm 39.13 có làm sản phẩm đặc biệt thích hợp cho công dụng cụ thể hơn là cho công dụng chung không',
+  'nhom:3922:ct:2#1': 'Hỏi bình xả nước bằng plastic thuộc nhóm 39.22 có được phân loại cùng dù đi kèm hoặc không kèm bộ phận của chúng không',
+  'nhom:3926:ct:3#2': 'Hỏi mũ trùm đầu bằng plastic có thể tháo rời có được trình bày đi kèm với áo mưa bằng plastic của mũ đó để xếp chung nhóm 39.26 không',
+  'nhom:3926:ct:10#1': 'Hỏi dây đai băng truyền/băng tải/dây curoa kèm theo máy móc mà chúng được thiết kế có xếp theo máy móc đó (như Phần XVI) không',
+  'sen:39229011:1#11': 'Hỏi bộ phận bình xả nước thuộc 3922.90.11 có phải phần bên trong hoặc thân bình là phần không tách rời của hệ thống bình xả theo SEN không',
+  'sen:39231020:1#1': 'Hỏi hộp, hòm, thùng thưa thuộc 3923.10.20 có hình dạng đặc biệt hoặc được thiết kế đặc biệt thích hợp để đóng gói, vận chuyển tấm bán dẫn mỏng, màn hoặc lưới quang không',
 };
 
 /** Các câu ghi BO_QUA có lý do rõ ràng thay vì CHI_LIET_KE. */
@@ -203,9 +217,29 @@ const DAC_TA_BO_QUA_RIENG_C84 = {
   'nhom:8543:ct:1#2': 'Mục loại trừ hàng hóa dùng điện đã mô tả cụ thể hơn ở Chương 84 và Chương 90 (thuộc cạnh LOAI_SANG)',
   'nhom:8548:ct:3#1': 'Mục loại trừ bộ phận đã thuộc nhóm trước Chương 85 hoặc Chú giải 1 Phần XVI',
   'nhom:8549:ct:12#1': 'Giải thích thuật ngữ "mục đích ban đầu" trong Chú giải 6 Phần XVI (DINH_NGHIA, trùng phan:XVI:kq:106#1)',
+
+  // Phần VII & Chương 39
+  'phan:VII#1': 'Tiêu đề Phần VII chỉ dùng để tra cứu (Quy tắc 1), không tạo câu hỏi mở',
+  'bieu:39#1': 'Tên Chương 39 trong biểu thuế, trùng tiêu đề Chương 39',
+  'chuong:39#1': 'Tiêu đề Chương 39 chỉ dùng để tra cứu (Quy tắc 1), không tạo câu hỏi mở',
+  'chuong:39:cg:2:q#1': 'Mục loại trừ đích danh mặt hàng Phần XII (thuộc cạnh KHONG_DUOC_LA)',
+  'chuong:39:cg:2:s#1': 'Mục loại trừ đích danh mặt hàng Phần XVI (thuộc cạnh KHONG_DUOC_LA)',
+  'chuong:39:cg:2:t#1': 'Mục loại trừ đích danh phụ tùng Phần XVII (thuộc cạnh KHONG_DUOC_LA)',
+  'chuong:39:cg:2:w#1': 'Mục loại trừ đích danh mặt hàng Chương 92 (thuộc cạnh KHONG_DUOC_LA)',
+  'chuong:39:kq:72#1': 'Mục loại trừ chế phẩm làm ma tít sang nhóm 32.14 (thuộc cạnh LOAI_SANG)',
+  'chuong:39:kq:105#1': 'Mục loại trừ chế phẩm dính và keo bán lẻ trọng lượng tịnh <= 1 kg sang nhóm 35.06 (thuộc cạnh KHONG_DUOC_LA)',
+  'nhom:3901:ct:2#2': 'Mô tả công dụng minh họa của LDPE (bao gói thực phẩm, đồ gia dụng), không phải điều kiện phân loại ranh giới',
+  'nhom:3903:ct:5#1': 'Mô tả ứng dụng minh họa của SAN trong sản xuất đồ gia dụng/linh kiện, không tạo tiêu chí ranh giới riêng',
+  'nhom:3905:ct:2#1': 'Giải thích đặc tính vật lý mềm dẻo của poly(vinyl acetate), không tạo câu hỏi phân loại mở',
+  'nhom:3910:ct:4#1': 'Mô tả ứng dụng phổ biến của nhựa silicon (vecni, chất phủ chịu nhiệt)',
+  'nhom:3910:ct:5#2': 'Ví dụ ứng dụng của silicon trong vòng đệm và vỏ bọc chịu nhiệt',
+  'nhom:3911:ct:3#3': 'Ví dụ ứng dụng sản phẩm đúc từ polysulphide (máy bay, ôtô, cánh bơm)',
+  'nhom:3915:ct:4#1': 'Mục loại trừ phế liệu plastic chứa kim loại quý sang nhóm 71.12 (thuộc cạnh KHONG_DUOC_LA)',
+  'sen:39229011:1#1': 'Câu dẫn giới thiệu các loại bồn cầu trong SEN 3922.90.11 (quy tắc bộ phận nằm ở sen:39229011:1#11)',
+  'sen:39269042:1#3': 'Mô tả đặc điểm thông thường của tấm che mặt bảo vệ mắt bằng plastic trong suốt',
 };
 
-/** Sinh câu hỏi CHI_LIET_KE tự nhiên (KHÔNG có nhãn [...]) cho dòng biểu thuế `bieu:84*`/`bieu:85*`. */
+/** Sinh câu hỏi CHI_LIET_KE tự nhiên (KHÔNG có nhãn [...]) cho dòng biểu thuế. */
 function sinhCauHoiBieu(cauId, txt) {
   const ma = cauId.split('#')[0].slice(5);
   const fullClean = txt.replace(/^(?:-\s*)+/, '').replace(/\s*\(SEN\)\s*$/i, '').trim();
@@ -225,7 +259,10 @@ function sinhCauHoiBieu(cauId, txt) {
   if (/chưa hoàn chỉnh|chưa hoàn thiện|chưa lắp ráp|tháo rời/i.test(clean)) {
     return `Hỏi hàng hóa tại mã ${ma} ở trạng thái chưa lắp ráp hoặc chưa hoàn chỉnh có đáp ứng tiêu chí hàng chưa lắp ráp / mang đặc trưng cơ bản theo "${clean}" không`;
   }
-  return `Hỏi hàng hóa tại mã ${ma} có phải bộ phận đặc trưng thuộc nhóm máy tương ứng (không thuộc bộ phận công dụng chung Phần XV hay nhóm bộ phận khác) theo "${clean}" không`;
+  if (/^bieu:(?:84|85)/.test(cauId)) {
+    return `Hỏi hàng hóa tại mã ${ma} có phải bộ phận đặc trưng thuộc nhóm máy tương ứng (không thuộc bộ phận công dụng chung Phần XV hay nhóm bộ phận khác) theo "${clean}" không`;
+  }
+  return `Hỏi hàng hóa tại mã ${ma} có phải bộ phận đặc trưng phù hợp quy tắc phân loại của dòng ("${clean}") không`;
 }
 
 /** Phân loại tự động nhưng tất định một câu `nhom:84*` khớp RE_KICH_HOAT_LIET_KE thành CHI_LIET_KE hoặc BO_QUA. */
@@ -279,18 +316,22 @@ function phanLoaiCauNhom(cauId, chu0, txt, L) {
   return { boQua: false, dieuKien };
 }
 
+/** Bổ sung các câu Phần VII cốt lõi khi chạy cho Chương 39 hoặc 40 mà giữ nguyên quét Chương 84/85. */
+const CAU_BO_SUNG_PHAN_VII = ['phan:VII:cg:1#1', 'phan:VII:cg:2#1', 'phan:VII:kq:3#2', 'phan:VII:kq:5#2'];
+
 /** Quét mọi câu khớp RE_KICH_HOAT_LIET_KE trên đường đi Chương ch2 (LOẠI BỎ wco:, tb:, gir: theo lệnh QT). */
 export function quetCauKichHoatChuong(L, chuong) {
   const ch2 = String(chuong).padStart(2, '0');
   const pv = giaiPhamVi(ch2, L);
   const N = new Set([...pv.duoi, ...pv.tren]);
+  const extraSet = ['39', '40'].includes(ch2) ? new Set(CAU_BO_SUNG_PHAN_VII) : new Set();
   const ketQua = [];
   for (const cid of [...L.cau.keys()].sort()) {
     if (/^(?:wco|tb|gir):/.test(cid)) continue;
     const chu0 = G.chuCuaCau(cid);
     if (!chu0 || !N.has(chu0)) continue;
     const txt = chuanKhoang(L.chuCau(cid) || '');
-    if (RE_KICH_HOAT_LIET_KE.test(txt)) {
+    if (RE_KICH_HOAT_LIET_KE.test(txt) || extraSet.has(cid)) {
       ketQua.push({ cau: cid, chu0, kho: cid.split(':')[0], txt });
     }
   }
@@ -442,7 +483,11 @@ export function kiemPhuLietKeChuong(banGhi, L, chuong) {
   return { tongCauKichHoat: ds.length, daPhu: ds.length - thieu.length, thieu };
 }
 
-const tepTheoChuong = (ch2) => (['84', '85'].includes(ch2) ? new Set(['liet-ke/XVI.jsonl', `liet-ke/${ch2}.jsonl`]) : new Set([`liet-ke/${ch2}.jsonl`]));
+const tepTheoChuong = (ch2) => {
+  if (['84', '85'].includes(ch2)) return new Set(['liet-ke/XVI.jsonl', `liet-ke/${ch2}.jsonl`]);
+  if (['39', '40'].includes(ch2)) return new Set(['liet-ke/VII.jsonl', `liet-ke/${ch2}.jsonl`]);
+  return new Set([`liet-ke/${ch2}.jsonl`]);
+};
 
 function main() {
   const argv = process.argv.slice(2);
