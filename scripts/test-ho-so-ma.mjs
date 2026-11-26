@@ -9,7 +9,7 @@ import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
-import { chayCong, napLuatCong, vanTay, dinhCau } from './ho-so-ma/cong.mjs';
+import { chayCong, napLuatCong, vanTay, dinhCau, giaiToiCap } from './ho-so-ma/cong.mjs';
 import { kiemBanGhi } from './ho-so-ma/khuon.mjs';
 
 const require = createRequire(import.meta.url);
@@ -146,6 +146,45 @@ caNguoc('PHAI_LA mang tu nhưng đặt ở nút không phải đích cạnh', gh
 {
   const r = chay(ghiKho(sua((x) => (laVao(x) ? null : x))), { phamVi: ['7605'], chiTrong: true });
   kiem('--chi-trong nhóm 76.05: cạnh đi vào cấp Chương không đòi', xanh(r), loiCong(r));
+}
+// --toi-cap (M-73): thẻ tách một cấp chỉ xét tới cấp đó; nút sâu hơn (6, 8 số, tiêu đề 5 số) không vào cổng 1–3.
+{
+  const sau = (x) => /^bieu:\d{5,8}/.test(x.nut);
+  const kho4 = ghiKho(sua((x) => (sau(x) ? null : x)));
+  const r4 = chay(kho4, { phamVi: ['chuong:76'], chiTrong: true, toiCap: '4' });
+  kiem('--toi-cap 4: bỏ hết vấn đề 6/8 số, Chương 76 tới nhóm 4 số vẫn xanh', xanh(r4) && r4.cong[1].soKiem > 0 && r4.cong[3].soKiem === 3, loiCong(r4));
+  const rDu = chay(kho4, { phamVi: ['chuong:76'], chiTrong: true });
+  kiem('không --toi-cap: cùng kho đó đỏ ở cổng 1 và 3 (cấp 6/8 số đòi)', rDu.cong[1].loi.some((l) => /^bieu:7605\d+#1 /.test(l)) && rDu.cong[3].loi.length > 0, loiCong(rDu));
+  const rP = chay(ghiKho(sua((x) => (/^bieu:/.test(x.nut) ? null : x))), { phamVi: ['phan:XV'], chiTrong: true, toiCap: 'chuong' });
+  kiem('--toi-cap chuong: Phần XV tới cấp Chương không đòi nhóm 4 số', xanh(rP) && rP.cong[1].soKiem > 0, loiCong(rP));
+  caNguoc('--toi-cap 4 vẫn đòi tách hai nhóm anh em (7602 / 7614)', ghiKho(sua((x) => (sau(x) || (x.loai === 'TACH_ANH_EM' && x.nut === 'bieu:7602' && x.voi[0] === 'bieu:7614') ? null : x))), 3, /bieu:7602 và bieu:7614 .*chưa có TACH_ANH_EM/, { phamVi: ['chuong:76'], chiTrong: true, toiCap: '4' });
+  let nem = false; try { giaiToiCap('5'); } catch { nem = true; }
+  kiem('--toi-cap lạ (5) bị từ chối', nem && giaiToiCap('chuong') === 1 && giaiToiCap(4) === 2);
+}
+{
+  // Cạnh đi ra trỏ vào CÂU chú giải (không phải nút phân loại): khuôn không cho den như vậy ⇒ cổng 2 chỉ cảnh báo (M-73).
+  const luat3 = path.join(TAM, 'luat-canh-cau'); fs.cpSync(LUAT, luat3, { recursive: true });
+  fs.appendFileSync(path.join(luat3, 'nghia-canh', 'gia.jsonl'), `${JSON.stringify({ tu: 'chuong:76:kq:24#1', den: 'phan:XV:cg:1', trangThai: 'CHUA_RO', vi: 'LOAI_SANG / AP_DUNG', phieu: [{ mo: 'gia', loai: 'LOAI_SANG' }, { mo: 'gia', loai: 'AP_DUNG' }] })}\n`);
+  const r = chayCong({ luat: luat3, hoSo: KHO_DUNG, phamVi: ['chuong:76'] });
+  kiem('cạnh đi ra trỏ vào câu chú giải (phan:XV:cg:1) chỉ cảnh báo, không đỏ cổng 2', !r.cong[2].loi.length && r.cong[2].canhBao.some((l) => /phan:XV:cg:1 .*đích là câu chú giải/.test(l)), r.cong[2]);
+}
+// Quy ước đã chốt sau thử M-73: nơi chuyển KHONG_DUOC_LA không nằm trong chính nút; đích bên trong ⇒ cổng 2 đòi PHAI_LA; DINH_NGHIA có thuatNgu.
+caNguoc('KHONG_DUOC_LA chuyển vào nút con của chính nút (chuong:76 → 76.05)', ghiKho(sua((x) => { if (x.cau === 'chuong:76:kq:24#1') x.den = ['bieu:7605']; return x; })), 4, /nơi chuyển bieu:7605 nằm trong chính chuong:76/, { tru: [2] });
+{
+  const luat4 = path.join(TAM, 'luat-dich-trong'); fs.cpSync(LUAT, luat4, { recursive: true });
+  fs.appendFileSync(path.join(luat4, 'nghia-canh', 'gia.jsonl'), `${JSON.stringify({ tu: 'chuong:76:kq:24#1', den: 'bieu:7605', trangThai: 'KHOP', loai: 'LOAI_SANG' })}\n`);
+  const L4 = napLuatCong(luat4);
+  const r1 = chayCong({ luat: luat4, L: L4, hoSo: KHO_DUNG, phamVi: ['chuong:76'] });
+  kiem('cạnh LOAI_SANG tới nút con của nút chủ câu: cổng 2 đòi PHAI_LA (không đòi KHONG_DUOC_LA)', r1.cong[2].loi.some((l) => /chuong:76:kq:24#1 → bieu:7605 .*chưa có vấn đề PHAI_LA /.test(l)), r1.cong[2].loi);
+  const them = { ...DUNG.find((x) => x.cau === 'chuong:76:kq:24#1'), id: 'hs:chuong:76:99', loai: 'PHAI_LA', dieuKien: 'Thử: phân về 76.05', den: ['bieu:7605'] };
+  const r2 = chayCong({ luat: luat4, L: L4, hoSo: ghiKho([...DUNG, them]), phamVi: ['chuong:76'] });
+  kiem('… có PHAI_LA den chứa nút con thì cổng 2 xanh', !r2.cong[2].loi.length, r2.cong[2].loi);
+}
+{
+  const dn = { id: 'hs:chuong:76:98', nut: 'chuong:76', loai: 'DINH_NGHIA', dieuKien: 'Thử định nghĩa', trich: 'x', cau: 'chuong:76:kq:24#1', duKien: [], lop: 'HUONG_DAN', nguon: 'n', van: 'a'.repeat(64), trangThai: 'KHOP' };
+  kiem('CA NGƯỢC khuôn: DINH_NGHIA thiếu thuatNgu, loại khác mang thuatNgu', kiemBanGhi(dn).some((l) => /DINH_NGHIA phải có thuatNgu/.test(l)) && kiemBanGhi({ ...dn, loai: 'PHAI_LA', thuatNgu: 'x' }).some((l) => /chỉ DINH_NGHIA mang thuatNgu/.test(l)) && !kiemBanGhi({ ...dn, thuatNgu: 'mặt hàng' }).length);
+  const tn = { ...DUNG.find((x) => x.cau === 'chuong:76:kq:24#1'), id: 'hs:chuong:76:97', loai: 'DINH_NGHIA', thuatNgu: 'thuật ngữ không có' }; delete tn.den;
+  caNguoc('thuatNgu không có trong chữ câu', ghiKho([...DUNG, tn]), 4, /thuatNgu "thuật ngữ không có" không có nguyên chữ/);
 }
 kiem('CA NGƯỢC khuôn: tu khác cau', kiemBanGhi({ ...DUNG.find(laVao), tu: 'chuong:28:pc:I:kq:2#1' }).some((l) => /tu phải là id câu nguồn/.test(l)));
 // Cổng 3 ANH EM

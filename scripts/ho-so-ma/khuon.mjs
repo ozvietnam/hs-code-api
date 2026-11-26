@@ -20,7 +20,7 @@ const RE_CAU = /^(?:gir|phan|chuong|nhom|pn|bieu|sen|wco|tb):[^#\s]+#\d+$/;
 const RE_DICH = /^(?:phan:[IVX]+|chuong:\d{2}(?::pc:[IVX]+)?|bieu:\d{2,8}(?::td\d+)*|gir:[1-6](?::[a-c])?)$/;
 const RE_ANH_EM = /^(?:chuong:\d{2}(?::pc:[IVX]+)?|bieu:\d{4,8}(?::td\d+)*)$/;
 const RE_VAN = /^[0-9a-f]{64}$/;
-const TRUONG_VAN_DE = new Set(['id', 'nut', 'loai', 'dieuKien', 'trich', 'cau', 'tu', 'den', 'voi', 'nguong', 'duKien', 'lop', 'nguon', 'van', 'trangThai', 'phieu', 'ghiChu']);
+const TRUONG_VAN_DE = new Set(['id', 'nut', 'loai', 'dieuKien', 'trich', 'cau', 'tu', 'den', 'voi', 'nguong', 'thuatNgu', 'duKien', 'lop', 'nguon', 'van', 'trangThai', 'phieu', 'ghiChu']);
 const TRUONG_BO_QUA = new Set(['id', 'nut', 'loai', 'cau', 'lyDo', 'van', 'ghiChu']);
 const CO_DEN = new Set(['KHONG_DUOC_LA', 'PHAI_LA', 'CHI_LIET_KE']);
 const CO_VOI = new Set(['TACH_ANH_EM', 'NGUONG']);
@@ -57,6 +57,8 @@ export function kiemBanGhi(x) {
     if (!CO_VOI.has(x.loai)) loi.push(`${o}: loai ${x.loai} không mang voi`);
     else if (!Array.isArray(x.voi) || !x.voi.length || !x.voi.every((d) => RE_ANH_EM.test(d))) loi.push(`${o}: voi phải là mảng id nút anh em`);
   } else if (x.loai === 'TACH_ANH_EM') loi.push(`${o}: TACH_ANH_EM phải có voi (tách với anh em nào)`);
+  if (x.thuatNgu !== undefined && x.loai !== 'DINH_NGHIA') loi.push(`${o}: chỉ DINH_NGHIA mang thuatNgu`);
+  if (x.loai === 'DINH_NGHIA' && !chuoi(x.thuatNgu)) loi.push(`${o}: DINH_NGHIA phải có thuatNgu (thuật ngữ được định nghĩa, nguyên chữ luật)`);
   if (x.nguong !== undefined && x.loai !== 'NGUONG') loi.push(`${o}: chỉ NGUONG mang nguong`);
   if (x.loai === 'NGUONG') {
     const n = x.nguong;
