@@ -5010,7 +5010,81 @@
    "gir": "GIR 1 + EN 90.31",
    "basis": "RULE_TABLE",
    "sourceVi": "Ca thật 26/11: khách nhập load cell từ TQ (ảnh thanh kim loại có lỗ bắt + cổng cáp). Bẫy từ vựng: 'cảm biến trọng lượng' trả quặng borat (nhiễu), 'cân điện tử' trả cân 8423 — không thấy 9031.80.90."
+  },
+  {
+   "id": "voi-phun-rua-ly-ap-luc",
+   "titleVi": "Vòi phun rửa ly / thiết bị phun rửa bằng áp lực nước (8424.89)",
+   "terms": [
+    "vòi phun rửa ly",
+    "voi phun rua ly",
+    "vòi phun rửa chén",
+    "vòi phun rửa bát",
+    "vòi phun áp lực nước",
+    "voi phun ap luc nuoc",
+    "phun rửa ly",
+    "phun rửa chén bằng áp lực",
+    "pre-rinse spray",
+    "pre rinse spray",
+    "pre-rinse spray valve",
+    "glass washer spray",
+    "spray rinse glass"
+   ],
+   "excludeIfAny": [
+    "vòi nước lavabo",
+    "vòi lavabo",
+    "vòi bếp",
+    "basin tap",
+    "faucet",
+    "van bi",
+    "súng phun thuốc",
+    "thuốc trừ sâu",
+    "nông nghiệp",
+    "tưới vườn",
+    "sprinkler chữa cháy",
+    "chữa cháy"
+   ],
+   "excludeReasonVi": "Vòi nước lavabo/bếp là van/vòi điều chỉnh dòng (8481); súng phun nông nghiệp/tưới vườn thuộc nhánh 8424.41/8424.82 khác; sprinkler chữa cháy cũng 8424 nhưng không phải ca rửa ly.",
+   "candidates": [
+    {
+     "hs": "84248950",
+     "whenVi": "Thiết bị phun/xịt loại khác (không phải bình tay gia dụng ≤3L, không phải đầu bình phun gắn vòi đơn thuần, không phải dùng sản xuất PCB) — hoạt động bằng điện → 8424.89.50",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84248990",
+     "whenVi": "Cùng nhánh loại khác nhưng không hoạt động bằng điện → 8424.89.90",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84248920",
+     "whenVi": "Đúng là đầu bình phun/xịt có gắn vòi (không phải thiết bị phun hoàn chỉnh)",
+     "confidence": "low"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "8481",
+     "whyVi": "Chú giải 84.81 loại trừ đầu vòi phun / thiết bị phun tương tự sang 84.24; chữ «vòi» trong «vòi phun rửa… áp lực nước» không đủ để xếp van/vòi đường ống 8481. Search thô kéo 84818099 → lệch nhóm (OZV-2366)."
+    },
+    {
+     "prefix": "8456",
+     "whyVi": "8456 là máy cắt tia nước — chú giải 84.24 loại trừ máy cắt; ca rửa ly không phải cắt vật liệu."
+    },
+    {
+     "prefix": "8413",
+     "whyVi": "8413 là bơm — khác thiết bị phun thuộc 8424."
+    }
+   ],
+   "askVi": [
+    "Đây là thiết bị phun áp lực hoàn chỉnh (nhóm 84.24) hay chỉ béc/vòi gắn van điều chỉnh dòng (loại trừ chú giải 84.24 → 84.81)?",
+    "Hoạt động bằng điện hay không bằng điện? (ranh 8424.89.50 / 8424.89.90)",
+    "Có phải đầu bình phun/xịt có gắn vòi (8424.89.20) không?"
+   ],
+   "chotSom": false,
+   "gir": "GIR 1 + GIR 6",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Chú giải nhóm 84.24: máy/thiết bị phun bắn, phun rải hoặc phun áp lực chất lỏng dưới dạng tia/hạt nước. Chú giải 84.81 loại trừ đầu vòi phun dạng quay và thiết bị phun tương tự (→84.24). Biểu VN 84248950/90: Loại khác hoạt động bằng điện / không. OZV-2366 thực địa: «vòi phun rửa ly bằng áp lực nước» search kéo 8481; dừng 6 số hỏi hoatDongBangDien là đúng luật (THIEU_SO_LIEU), không phải hỏi thừa — cần ổn định vào 8424."
   }
  ],
- "updatedAt": "2026-11-26"
+ "updatedAt": "2026-11-26T09:55:00Z"
 }
