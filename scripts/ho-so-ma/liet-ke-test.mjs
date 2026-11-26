@@ -122,10 +122,14 @@ test('6. Ca ngược: phát hiện đúng thiếu phủ, trích sai, duKien bị
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'm75-neg-'));
   try {
     ghiKhoLietKe({ hoSo: tmp });
-    // 6a. Thiếu phủ khi bỏ bớt một câu kích hoạt khỏi tệp
+    // 6a. Thiếu phủ khi bỏ bớt một câu kích hoạt khỏi tệp (gồm mẫu đóng gói thành bộ / sử dụng cùng nhau Phần VI & Ch.34)
     const k0 = kiemKhoHoSo(tmp).banGhi.filter((x) => x.cau !== 'bieu:76169920#1');
     const phuThieu = kiemPhuLietKe(k0, L, '76');
     assert.ok(phuThieu.thieu.some((x) => x.cau === 'bieu:76169920#1'));
+    const phu34Thieu = kiemPhuLietKe([], L, '34');
+    assert.ok(phu34Thieu.thieu.some((x) => x.cau === 'phan:VI:cg:3#1'), 'Ca ngược: phải bắt được câu "đóng gói thành bộ" tại phan:VI:cg:3#1');
+    assert.ok(phu34Thieu.thieu.some((x) => x.cau === 'phan:VI:cg:3:a#1'), 'Ca ngược: phải bắt được câu "được sử dụng cùng nhau" tại phan:VI:cg:3:a#1');
+    assert.ok(phu34Thieu.thieu.some((x) => x.cau === 'bieu:3407#1'), 'Ca ngược: phải bắt được câu "đã đóng gói thành bộ để bán lẻ" tại bieu:3407#1');
 
     // 6b. Lỗi trích sai, duKien tự đặt, BO_QUA sai nút và vân tay lệch qua Cổng 4/5
     const chu = L.chuCau('bieu:76169920#1');

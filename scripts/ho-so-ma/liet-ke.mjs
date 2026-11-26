@@ -20,7 +20,7 @@ const G = require('../../lib/ho-so-ma/ghep.js');
 const sha256 = (s) => crypto.createHash('sha256').update(String(s), 'utf8').digest('hex');
 
 /** Cụm kích hoạt bắt buộc rà soát cho M-75 trên đường đi Chương 76 (Phần XV + Chương 76 + GIR 2/3). */
-export const RE_KICH_HOAT_LIET_KE = /(?:chủ yếu dùng|chủ yếu sử dụng|chủ yếu được dùng|chủ yếu được sử dụng|thích hợp dùng|phù hợp dùng|phù hợp để|loại phù hợp để|chuyên dùng|đặc biệt để|đa chức năng|nhiều chức năng|đặc tính cơ bản|đặc trưng cơ bản|thuộc tính cơ bản|tính chất chủ yếu|bộ hàng được đóng gói để bán lẻ|ở dạng bộ để bán lẻ|chưa hoàn chỉnh|chưa hoàn thiện|chưa lắp ráp|tháo rời|bộ phận có công dụng chung|công dụng chung|bộ phận của|các bộ phận của|phần\s*xvi\b|phần\s*xvii\b|chương\s*84\b|chương\s*85\b|incomplete|unassembled|disassembled|essential character|multi.?function|principally|suitable for)/i;
+export const RE_KICH_HOAT_LIET_KE = /(?:chủ yếu dùng|chủ yếu sử dụng|chủ yếu được dùng|chủ yếu được sử dụng|thích hợp dùng|phù hợp dùng|phù hợp để|loại phù hợp để|chuyên dùng|đặc biệt để|đa chức năng|nhiều chức năng|đặc tính cơ bản|đặc trưng cơ bản|thuộc tính cơ bản|tính chất chủ yếu|bộ hàng được đóng gói để bán lẻ|ở dạng bộ để bán lẻ|đóng gói thành bộ|được sử dụng cùng nhau|sử dụng cùng nhau|chưa hoàn chỉnh|chưa hoàn thiện|chưa lắp ráp|tháo rời|bộ phận có công dụng chung|công dụng chung|bộ phận của|các bộ phận của|phần\s*xvi\b|phần\s*xvii\b|chương\s*84\b|chương\s*85\b|incomplete|unassembled|disassembled|essential character|multi.?function|principally|suitable for)/i;
 
 /** Đặc tả vấn đề CHI_LIET_KE trên đường đi Chương 76 (gồm GIR 2/3 gắn ở phan:XV, Phần XV và các nút Chương 76). */
 export const DAC_TA_LIET_KE_76 = Object.freeze([
