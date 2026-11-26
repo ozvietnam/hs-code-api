@@ -41,11 +41,12 @@ const chuanDonVi = (dv) => {
   if (/^m3\/h$/i.test(s)) return 'm³/h';
   if (/^m³\/phút$/i.test(s)) return 'm3/phút';
   if (/^cm3$/i.test(s) || /^cm³$/i.test(s)) return 'cc';
+  if (/^(?:VDC|VAC)$/i.test(s)) return 'V';
   return s;
 };
 
 const NUM_RE = '(\\d+(?:\\.\\d{3})*(?:,\\d+)?|\\d+(?:,\\d+)?)';
-const UNIT_RE = '(kW|MW|W(?![a-zà-ỹ])|cc|cm3|cm³|tấn\\/giờ|tấn|kg|cg|m³\\/h|m3\\/h|m3\\/phút|m³\\/phút|lít\\/giờ|lít|ml|mm|cm|m(?![a-zà-ỹ])|kN|vòng\\/phút|micron|%)';
+const UNIT_RE = '(kvar(?![a-zà-ỹA-Z])|kVA(?![a-zà-ỹA-Z])|VA(?![a-zà-ỹA-Z])|kV(?![a-zà-ỹA-Z])|VDC|VAC|V(?![a-zà-ỹA-Z])|kW|MW|mW|W(?![a-zà-ỹA-Z])|mA|A(?![a-zà-ỹA-Z])|GHz|MHz|kHz|Hz|mAh|Ah|inch|cc|cm3|cm³|tấn\\/giờ|tấn|kg|cg|m³\\/h|m3\\/h|m3\\/phút|m³\\/phút|lít\\/giờ|lít|ml|mm|cm|m(?![a-zà-ỹA-Z])|kN|vòng\\/phút|micron|%)';
 
 /** Tách các điều kiện ngưỡng số từ một văn bản dòng biểu thuế `bieu:*`. */
 export function tachNguongDongBieu(txt, hCode = '') {
@@ -55,16 +56,18 @@ export function tachNguongDongBieu(txt, hCode = '') {
   // Chia câu theo '; ' hoặc ', hoặc ' để tránh trộn hai nhánh độc lập (vd 8414.30.40, 8481.20.20, 8409.99.37)
   const parts = cleaned.split(/\s*;\s*|\s*,\s*hoặc\s+|\s+và\s+có\s+|\s+với điều kiện là\s+/i);
 
-  const reRangeA = new RegExp(`trên\\s+${NUM_RE}\\s*${UNIT_RE}\\s+(?:nhưng\\s+không\\s+(?:vượt\\s+)?quá|đến)\\s+${NUM_RE}\\s*${UNIT_RE}`, 'gi');
-  const reRangeB = new RegExp(`từ\\s+${NUM_RE}\\s*${UNIT_RE}\\s+(?:trở\\s+lên,?\\s+nhưng\\s+không\\s+quá|đến)\\s+${NUM_RE}\\s*${UNIT_RE}`, 'gi');
-  const reLower = new RegExp(`(?:từ\\s+${NUM_RE}\\s*${UNIT_RE}\\s+trở\\s+lên|(?:vượt\\s+quá|lớn\\s+hơn|trên)\\s+${NUM_RE}\\s*${UNIT_RE})`, 'gi');
-  const reUpper = new RegExp(`(?:từ\\s+${NUM_RE}\\s*${UNIT_RE}\\s+trở\\s+xuống|(?:không\\s+(?:vượt\\s+)?quá|tối\\s+đa|dưới|nhỏ\\s+hơn)\\s+${NUM_RE}\\s*${UNIT_RE})`, 'gi');
+  const reRangeA = new RegExp(`trên\\s+${NUM_RE}\\s*${UNIT_RE}\\s+(?:nhưng\\s+(?:không\\s+(?:vượt\\s+)?quá|dưới|nhỏ\\s+hơn)|đến)\\s+${NUM_RE}\\s*${UNIT_RE}`, 'gi');
+  const reRangeB = new RegExp(`từ\\s+${NUM_RE}\\s*${UNIT_RE}\\s+(?:trở\\s+lên,?\\s+(?:nhưng\\s+(?:không\\s+(?:vượt\\s+)?quá|dưới|nhỏ\\s+hơn))|đến)\\s+${NUM_RE}\\s*${UNIT_RE}`, 'gi');
+  const reRangeC = new RegExp(`dải\\s+tần\\s+số\\s+${NUM_RE}\\s*${UNIT_RE}\\s+đến\\s+${NUM_RE}\\s*${UNIT_RE}`, 'gi');
+  const reLower = new RegExp(`(?:từ\\s+${NUM_RE}\\s*${UNIT_RE}\\s+trở\\s+lên|(?:vượt\\s+quá|lớn\\s+hơn|trên|tối\\s+thiểu|không\\s+dưới)\\s+${NUM_RE}\\s*${UNIT_RE})`, 'gi');
+  const reUpper = new RegExp(`(?:từ\\s+${NUM_RE}\\s*${UNIT_RE}\\s+trở\\s+xuống|(?:không\\s+(?:vượt\\s+)?quá|tối\\s+đa|dưới|nhỏ\\s+hơn|danh\\s+định\\s+đến)\\s+${NUM_RE}\\s*${UNIT_RE})`, 'gi');
 
   const suyDaiLuong = (doan, fullPart, donVi) => {
     // Chỉ xét cửa sổ cục bộ ngay trước mệnh đề số để không dính đại lượng của vế trước (vd 8460.31.10)
     const rawPre = fullPart.slice(0, doan.index);
     const localStart = Math.max(0, rawPre.lastIndexOf(','), rawPre.lastIndexOf(' với '), rawPre.lastIndexOf(' và '), doan.index - 85);
     const pre = rawPre.slice(localStart).toLowerCase();
+    if (/mỗi lõi có đường kính/.test(pre)) return 'đường kính lõi cáp';
     if (/đường kính chuôi/.test(pre)) return 'đường kính chuôi';
     if (/đường kính trục cuốn/.test(pre)) return 'đường kính trục cuốn';
     if (/đường kính trong cửa nạp và cửa thoát/.test(pre)) return 'đường kính trong cửa nạp và cửa thoát';
@@ -78,24 +81,38 @@ export function tachNguongDongBieu(txt, hCode = '') {
     if (/chiều ngang tối đa/.test(pre)) return 'kích thước chiều ngang tối đa';
     if (/khổ rộng/.test(pre)) return 'khổ rộng vải dệt';
     if (/chiều rộng/.test(pre)) return 'chiều rộng';
+    if (/chiều cao/.test(pre)) return 'chiều cao';
+    if (/đường chéo/.test(pre) || donVi === 'inch') return 'kích thước đường chéo màn ảnh';
+    if (/lân quang/.test(pre) && /bước/.test(pre)) return 'bước điểm lân quang';
     if (/bán kính gia công tiện/.test(pre)) return 'bán kính gia công tiện';
     if (/độ dày/.test(pre) || donVi === 'micron') return 'độ dày màng lọc';
-    if (/một chiều/.test(pre)) return 'kích thước một chiều giấy không gấp';
-    if (/chiều kia/.test(pre)) return 'kích thước chiều kia giấy không gấp';
+    if (/một chiều/.test(pre) && ['mm', 'cm', 'm'].includes(donVi)) return 'kích thước một chiều giấy không gấp';
+    if (/chiều kia/.test(pre) && ['mm', 'cm', 'm'].includes(donVi)) return 'kích thước chiều kia giấy không gấp';
+    if (/thể tích(?:\s+bên)?\s+ngoài/.test(pre)) return 'thể tích ngoài';
+    if (/tỷ lệ tiêu tán năng lượng/.test(pre)) return 'tỷ lệ tiêu tán năng lượng';
     if (/công suất làm lạnh/.test(pre)) return 'công suất làm lạnh';
     if (/công suất làm mát/.test(pre)) return 'công suất làm mát';
     if (/công suất trục/.test(pre) || (/spindle power/i.test(pre) && ['kW', 'MW', 'W'].includes(donVi))) return 'công suất trục';
     if (/công suất hơi nước/.test(pre)) return 'công suất hơi nước';
     if (/công suất hơi/.test(pre)) return 'công suất hơi';
     if (/công suất đầu ra/.test(pre)) return 'công suất đầu ra';
+    if (/công suất phản kháng/.test(pre) || donVi === 'kvar') return 'công suất phản kháng';
+    if (/công suất danh định/.test(pre)) return 'công suất danh định';
     if (/công suất lọc/.test(pre)) return 'công suất lọc';
-    if (/công suất/.test(pre) || ['kW', 'MW', 'W'].includes(donVi)) return 'công suất';
+    if (/đầu điện áp cao/.test(pre)) return 'đầu điện áp cao';
+    if (/điện áp đầu ra/.test(pre)) return 'điện áp đầu ra';
+    if (/điện áp/.test(pre) || ['kV', 'V'].includes(donVi)) return 'điện áp';
+    if (/công suất/.test(pre) || ['kW', 'MW', 'W', 'kVA', 'VA'].includes(donVi)) return 'công suất';
+    if (/dung lượng phóng điện/.test(pre) || ['Ah', 'mAh'].includes(donVi)) return 'dung lượng phóng điện';
+    if (/dòng điện danh định/.test(pre)) return 'dòng điện danh định';
+    if (/dòng điện/.test(pre) || ['A', 'mA'].includes(donVi)) return 'dòng điện';
+    if (/tần số/.test(pre) || ['Hz', 'kHz', 'MHz', 'GHz'].includes(donVi)) return 'tần số';
     if (/dung tích làm việc/.test(pre)) return 'dung tích làm việc trên một chu kỳ';
     if (/dung tích xi\s*lanh/.test(pre) || /dung tích xilanh/.test(pre) || donVi === 'cc') return 'dung tích xi lanh';
     if (/dung tích/.test(pre)) return 'dung tích';
     if (/lưu lượng không khí/.test(pre) || /lưu lượng khí/.test(pre)) return 'lưu lượng không khí của mỗi dàn bay hơi';
     if (/lưu lượng/.test(pre) || donVi === 'm³/h' || donVi === 'lít/giờ') return 'lưu lượng';
-    if (/sức chứa/.test(pre)) return 'sức chứa vải khô mỗi lần';
+    if (/sức chứa/.test(pre)) return ['lít', 'ml', 'cc'].includes(donVi) ? 'sức chứa túi/hộp chứa bụi' : 'sức chứa vải khô mỗi lần';
     if (/khả năng cân/.test(pre)) return 'khả năng cân tối đa';
     if (/lực rung/.test(pre)) return 'lực rung của trống tính theo khối lượng';
     if (/lực đẩy/.test(pre)) return 'lực đẩy';
@@ -107,7 +124,7 @@ export function tachNguongDongBieu(txt, hCode = '') {
 
   const trichTuKhoa = (doan, fullPart) => {
     // Mở rộng lấy từ danh từ chỉ đại lượng trước mệnh đề số để duKien có mặt trong trich & cau
-    const startIdx = Math.max(0, fullPart.slice(0, doan.index).search(/(?:công suất|dung tích|lưu lượng|sức chứa|khả năng cân|lực rung|lực đẩy|độ nhạy|tốc độ quay|đường kính|kích thước chiều ngang|khổ rộng|chiều rộng|bán kính|độ dày|một chiều|chiều kia|khối lượng)[^,;]*$/i));
+    const startIdx = Math.max(0, fullPart.slice(0, doan.index).search(/(?:kích thước chiều ngang tối đa|tỷ lệ tiêu tán năng lượng|công suất phản kháng|công suất danh định|công suất|dung tích|lưu lượng|sức chứa|khả năng cân|lực rung|lực đẩy|độ nhạy|tốc độ quay|thể tích(?: bên)? ngoài|đầu điện áp cao|điện áp đầu ra|điện áp|dòng điện danh định|dòng điện|dải tần số|tần số|dung lượng phóng điện|đường kính chuôi|đường kính trục cuốn|đường kính trong|đường kính ngoài|đường kính cửa hút|đường kính cửa nạp|đường kính|chiều ngang tối đa|khổ rộng|chiều rộng|chiều cao|đường chéo|bước|bán kính|độ dày|một chiều|chiều kia|khối lượng)[^,;]*$/i));
     const sub = fullPart.slice(startIdx, doan.index + doan[0].length).trim();
     return sub.length >= doan[0].length && sub.length <= 160 ? sub : doan[0];
   };
@@ -122,10 +139,37 @@ export function tachNguongDongBieu(txt, hCode = '') {
       continue;
     }
 
+    // Trường hợp đặc thù Chương 85
+    if (/^85/.test(hCode)) {
+      if (/170\s*mm\s*x\s*100\s*mm\s*x\s*45\s*mm/i.test(part)) {
+        const mDim = /kích thước không quá 170 mm x 100 mm x 45 mm/i.exec(part);
+        if (mDim) {
+          res.push({ daiLuong: 'kích thước chiều dài (8519.81.10)', donVi: 'mm', tu: null, den: 170, gomTu: false, gomDen: true, trich: mDim[0], duKien: ['kích thước', '170 mm'], part });
+          res.push({ daiLuong: 'kích thước chiều rộng (8519.81.10)', donVi: 'mm', tu: null, den: 100, gomTu: false, gomDen: true, trich: mDim[0], duKien: ['kích thước', '100 mm'], part });
+          res.push({ daiLuong: 'kích thước chiều dày (8519.81.10)', donVi: 'mm', tu: null, den: 45, gomTu: false, gomDen: true, trich: mDim[0], duKien: ['kích thước', '45 mm'], part });
+          continue;
+        }
+      }
+      if (/6 đường tín hiệu đầu vào trở lên/i.test(part)) {
+        const mSig = /có từ 6 đường tín hiệu đầu vào trở lên/i.exec(part);
+        if (mSig) {
+          res.push({ daiLuong: 'số đường tín hiệu đầu vào', donVi: 'đường', tu: 6, den: null, gomTu: true, gomDen: false, trich: mSig[0], duKien: ['6 đường tín hiệu đầu vào'], part });
+          continue;
+        }
+      }
+      if (/hai sợi hoặc hơn/i.test(part)) {
+        const mFib = /có hai sợi hoặc hơn/i.exec(part);
+        if (mFib) {
+          res.push({ daiLuong: 'số sợi cáp dữ liệu dẹt', donVi: 'sợi', tu: 2, den: null, gomTu: true, gomDen: false, trich: mFib[0], duKien: ['hai sợi hoặc hơn'], part });
+          continue;
+        }
+      }
+    }
+
     const spans = [];
     const overlapSpan = (s, e) => spans.some(([a, b]) => s < b && e > a);
 
-    for (const [re, kind] of [[reRangeA, 'rA'], [reRangeB, 'rB'], [reLower, 'lo'], [reUpper, 'hi']]) {
+    for (const [re, kind] of [[reRangeA, 'rA'], [reRangeB, 'rB'], [reRangeC, 'rC'], [reLower, 'lo'], [reUpper, 'hi']]) {
       re.lastIndex = 0;
       let m;
       while ((m = re.exec(part)) !== null) {
@@ -134,14 +178,23 @@ export function tachNguongDongBieu(txt, hCode = '') {
         if (overlapSpan(s, e)) continue;
         spans.push([s, e]);
         let item;
-        if (kind === 'rA' || kind === 'rB') {
-          const v1 = parseSoVn(m[1]);
-          const dv1 = chuanDonVi(m[2]);
+        if (kind === 'rA' || kind === 'rB' || kind === 'rC') {
+          let v1 = parseSoVn(m[1]);
+          let dv1 = chuanDonVi(m[2]);
           const v2 = parseSoVn(m[3]);
           const dv2 = chuanDonVi(m[4]);
-          if (v1 === null || v2 === null || dv1 !== dv2) continue;
-          const gomTu = kind === 'rB' && !/^trên/i.test(m[0]);
-          const gomDen = true;
+          if (v1 === null || v2 === null) continue;
+          if (dv1 === 'W' && dv2 === 'kW') {
+            v1 /= 1000;
+            dv1 = 'kW';
+          }
+          if (dv1 === 'V' && dv2 === 'kV') {
+            v1 /= 1000;
+            dv1 = 'kV';
+          }
+          if (dv1 !== dv2) continue;
+          const gomTu = kind === 'rC' || (kind === 'rB' && !/^trên/i.test(m[0]));
+          const gomDen = !/nhưng\s+(?:dưới|nhỏ\s+hơn)/i.test(m[0]);
           item = {
             daiLuong: suyDaiLuong(m, part, dv1),
             donVi: dv1,
@@ -156,7 +209,7 @@ export function tachNguongDongBieu(txt, hCode = '') {
           const val = parseSoVn(m[1] || m[3]);
           const dv = chuanDonVi(m[2] || m[4]);
           if (val === null) continue;
-          const gomTu = /^từ/i.test(m[0]);
+          const gomTu = /^(?:từ|tối\s+thiểu|không\s+dưới)/i.test(m[0]);
           item = { daiLuong: suyDaiLuong(m, part, dv), donVi: dv, tu: val, den: null, gomTu, gomDen: false, trich: trichTuKhoa(m, part), part };
         } else {
           const val = parseSoVn(m[1] || m[3]);
@@ -166,7 +219,7 @@ export function tachNguongDongBieu(txt, hCode = '') {
           item = { daiLuong: suyDaiLuong(m, part, dv), donVi: dv, tu: null, den: val, gomTu: false, gomDen, trich: trichTuKhoa(m, part), part };
         }
         // Rút duKien có thật trong `item.trich`
-        const dkMatch = /(?:công suất làm lạnh|công suất làm mát|công suất trục|công suất hơi nước|công suất hơi|công suất đầu ra|công suất lọc|công suất|dung tích làm việc|dung tích xi\s*lanh|dung tích xilanh|dung tích|lưu lượng không khí|lưu lượng khí|lưu lượng|sức chứa|khả năng cân tối đa|lực rung|lực đẩy|độ nhạy|tốc độ quay|đường kính chuôi|đường kính trục cuốn|đường kính trong|đường kính ngoài|đường kính cửa hút|đường kính cửa nạp|đường kính|chiều ngang tối đa|khổ rộng|chiều rộng|bán kính gia công tiện|độ dày|khối lượng)/i.exec(item.trich);
+        const dkMatch = /(?:tỷ lệ tiêu tán năng lượng|công suất làm lạnh|công suất làm mát|công suất trục|công suất hơi nước|công suất hơi|công suất đầu ra|công suất phản kháng|công suất danh định|công suất lọc|công suất|dung tích làm việc|dung tích xi\s*lanh|dung tích xilanh|dung tích|lưu lượng không khí|lưu lượng khí|lưu lượng|sức chứa|khả năng cân tối đa|lực rung|lực đẩy|độ nhạy|tốc độ quay|thể tích(?: bên)? ngoài|đầu điện áp cao|điện áp đầu ra|điện áp|dòng điện danh định|dòng điện|dải tần số|tần số|dung lượng phóng điện|đường kính chuôi|đường kính trục cuốn|đường kính trong|đường kính ngoài|đường kính cửa hút|đường kính cửa nạp|đường kính|chiều ngang tối đa|khổ rộng|chiều rộng|chiều cao|đường chéo|bước|bán kính gia công tiện|độ dày|khối lượng)/i.exec(item.trich);
         item.duKien = [dkMatch ? dkMatch[0] : m[0]];
         res.push(item);
       }
@@ -376,6 +429,75 @@ export function layDacTaPhiBieu84(L) {
   ].filter((x) => L.cau.has(x.cau));
 }
 
+/** Danh mục đặc tả ngưỡng phi-biểu (Chú giải Chương/Phân nhóm) cho Chương 85. */
+export function layDacTaPhiBieu85(L) {
+  return [
+    {
+      id: 'hs:bieu:8509:8501',
+      nut: 'bieu:8509',
+      cau: 'chuong:85:cg:4:b#1',
+      dieuKien: 'Chú giải 4(b) Chương 85: thiết bị cơ điện gia dụng nhóm 85.09 ngoài danh mục liệt kê (4(a)) phải có khối lượng không quá 20 kg',
+      trich: '(b) Các loại máy khác có khối lượng không quá 20 kg.',
+      nguong: { daiLuong: 'khối lượng thiết bị cơ điện gia dụng (CG 4(b) Ch.85)', donVi: 'kg', tu: null, den: 20, gomTu: false, gomDen: true },
+      duKien: ['khối lượng', '20 kg'],
+    },
+    {
+      id: 'hs:bieu:852581:8501',
+      nut: 'bieu:852581',
+      cau: 'chuong:85:cgpn:1#2',
+      dieuKien: 'Chú giải Phân nhóm 1 Chương 85: camera tốc độ cao 8525.81 có tốc độ ghi trên 0,5 mm mỗi micro giây',
+      trich: '- tốc độ ghi trên 0,5 mm mỗi micro giây;',
+      nguong: { daiLuong: 'tốc độ ghi (camera 8525.81)', donVi: 'mm/µs', tu: 0.5, den: null, gomTu: false, gomDen: false },
+      duKien: ['tốc độ ghi', '0,5 mm mỗi micro giây'],
+    },
+    {
+      id: 'hs:bieu:852581:8502',
+      nut: 'bieu:852581',
+      cau: 'chuong:85:cgpn:1#3',
+      dieuKien: 'Chú giải Phân nhóm 1 Chương 85: camera tốc độ cao 8525.81 có độ phân giải thời gian từ 50 nano giây trở xuống',
+      trich: '- độ phân giải thời gian từ 50 nano giây trở xuống;',
+      nguong: { daiLuong: 'độ phân giải thời gian (camera 8525.81)', donVi: 'ns', tu: null, den: 50, gomTu: false, gomDen: true },
+      duKien: ['độ phân giải thời gian', '50 nano giây'],
+    },
+    {
+      id: 'hs:bieu:852581:8503',
+      nut: 'bieu:852581',
+      cau: 'chuong:85:cgpn:1#4',
+      dieuKien: 'Chú giải Phân nhóm 1 Chương 85: camera tốc độ cao 8525.81 có tốc độ khung hình trên 225.000 khung hình mỗi giây',
+      trich: '- tốc độ khung hình trên 225.000 khung hình mỗi giây.',
+      nguong: { daiLuong: 'tốc độ khung hình (camera 8525.81)', donVi: 'khung/s', tu: 225000, den: null, gomTu: false, gomDen: false },
+      duKien: ['tốc độ khung hình', '225.000 khung hình mỗi giây'],
+    },
+    {
+      id: 'hs:bieu:852712:8501',
+      nut: 'bieu:852712',
+      cau: 'chuong:85:cgpn:4#1',
+      dieuKien: 'Chú giải Phân nhóm 4 Chương 85: radio cát sét bỏ túi 8527.12 có chiều dài không quá 170 mm (khổ 170 x 100 x 45 mm)',
+      trich: 'kích thước không quá 170 mm x 100 mm x 45 mm.',
+      nguong: { daiLuong: 'kích thước chiều dài (8527.12)', donVi: 'mm', tu: null, den: 170, gomTu: false, gomDen: true },
+      duKien: ['kích thước', '170 mm'],
+    },
+    {
+      id: 'hs:bieu:852712:8502',
+      nut: 'bieu:852712',
+      cau: 'chuong:85:cgpn:4#1',
+      dieuKien: 'Chú giải Phân nhóm 4 Chương 85: radio cát sét bỏ túi 8527.12 có chiều rộng không quá 100 mm (khổ 170 x 100 x 45 mm)',
+      trich: 'kích thước không quá 170 mm x 100 mm x 45 mm.',
+      nguong: { daiLuong: 'kích thước chiều rộng (8527.12)', donVi: 'mm', tu: null, den: 100, gomTu: false, gomDen: true },
+      duKien: ['kích thước', '100 mm'],
+    },
+    {
+      id: 'hs:bieu:852712:8503',
+      nut: 'bieu:852712',
+      cau: 'chuong:85:cgpn:4#1',
+      dieuKien: 'Chú giải Phân nhóm 4 Chương 85: radio cát sét bỏ túi 8527.12 có chiều dày không quá 45 mm (khổ 170 x 100 x 45 mm)',
+      trich: 'kích thước không quá 170 mm x 100 mm x 45 mm.',
+      nguong: { daiLuong: 'kích thước chiều dày (8527.12)', donVi: 'mm', tu: null, den: 45, gomTu: false, gomDen: true },
+      duKien: ['kích thước', '45 mm'],
+    },
+  ].filter((x) => L.cau.has(x.cau));
+}
+
 /** Tính phần bù trên ℝ của một danh sách khoảng rời nhau (nếu phần bù đúng 1 khoảng duy nhất). */
 function tinhBuMotKhoang(khoangList) {
   const sorted = [...khoangList].sort((a, b) => (a.tu ?? -Infinity) - (b.tu ?? -Infinity));
@@ -465,6 +587,32 @@ export function dungBanGhiNguongChuong(chuong, { luat = G.LUAT_MAC_DINH } = {}) 
     if (!N.has(cha) && !reBieu.test(cha)) continue;
     const con = G.conCua(cha, L.cay);
     if (con.length < 2) continue;
+
+    // Quy đổi W → kW và V → kV nếu trong cùng cụm anh em pha trộn cả hai đơn vị (vd 8501.31 <= 750 W bên cạnh 8501.32 > 750 W..75 kW)
+    if (ch2 !== '84') {
+      const dsAll = con.flatMap((id) => theoNut.get(id) || []);
+      if (dsAll.some((r) => r.nguong.donVi === 'kW') && dsAll.some((r) => r.nguong.donVi === 'W')) {
+        for (const r of dsAll) {
+          if (r.nguong.donVi === 'W') {
+            r.nguong.donVi = 'kW';
+            if (r.nguong.tu !== null) r.nguong.tu /= 1000;
+            if (r.nguong.den !== null) r.nguong.den /= 1000;
+            r.dieuKien = `${r.dieuKien} (quy đổi về kW để cùng trục anh em)`;
+          }
+        }
+      }
+      if (dsAll.some((r) => r.nguong.donVi === 'kV') && dsAll.some((r) => r.nguong.donVi === 'V')) {
+        for (const r of dsAll) {
+          if (r.nguong.donVi === 'V') {
+            r.nguong.donVi = 'kV';
+            if (r.nguong.tu !== null) r.nguong.tu /= 1000;
+            if (r.nguong.den !== null) r.nguong.den /= 1000;
+            r.dieuKien = `${r.dieuKien} (quy đổi về kV để cùng trục anh em)`;
+          }
+        }
+      }
+    }
+
     const pureLk = con.filter((id) => /^(?:-\s*)+Loại khác(?:\s*\(SEN\))?\s*:?\s*$/i.test(chuanKhoang(L.chuCau(`${id}#1`) || '')));
     const coNguong = con.filter((id) => (theoNut.get(id) || []).length > 0);
     const khongSoVaKhongLk = con.filter((id) => !(theoNut.get(id) || []).length && !pureLk.includes(id));
@@ -582,6 +730,27 @@ export function dungBanGhiNguongChuong(chuong, { luat = G.LUAT_MAC_DINH } = {}) 
       }
     }
 
+    // 2b'. Bù khoảng giữa cho bieu:85353090 ("Loại khác") dưới nhóm 85.35 (> 1 kV): (40; 66) kV
+    if (ch2 === '85' && cha === 'bieu:853530') {
+      const r1 = (theoNut.get('bieu:8535301') || [])[0];
+      const r2 = (theoNut.get('bieu:85353020') || [])[0];
+      if (r1 && r2) {
+        them({
+          nut: 'bieu:85353090',
+          cau: r1.cau,
+          loai: 'NGUONG',
+          voi: ['bieu:8535301', 'bieu:85353020'],
+          dieuKien: 'Nút 85353090 (Loại khác trong nhóm 85.35 > 1 kV): phủ định 8535301 (<= 40 kV) và 85353020 (>= 66 kV) nên điện áp (40; 66) kV',
+          trich: r1.trich,
+          nguong: { daiLuong: 'điện áp', donVi: 'kV', tu: 40, den: 66, gomTu: false, gomDen: false },
+          duKien: r1.duKien,
+          ghiChu: 'phuDinh: bieu:8535301, bieu:85353020 — Phần bù dải giữa (40; 66) kV trong phạm vi nhóm 85.35 (> 1.000 V) cho dòng Loại khác.',
+        });
+        r1.voi = ['bieu:85353020', 'bieu:85353090'];
+        r2.voi = ['bieu:8535301', 'bieu:85353090'];
+      }
+    }
+
     // 2c. Gắn voi cho mọi anh em chia cùng (daiLuong, donVi) mà trước đó chưa có voi
     const theoKhoaSau = new Map();
     for (const id of con) {
@@ -605,15 +774,23 @@ export function dungBanGhiNguongChuong(chuong, { luat = G.LUAT_MAC_DINH } = {}) 
     }
   }
 
-  // 3. Ghi nhận chỗ hở dải thực tế trong biểu thuế Chương 84 (ví dụ 8408.90 trước khi nối .909: <= 18.65 và > 100)
-  ghiNhanLuat.push({
-    loai: 'BU_KHOANG_GIUA_LOAI_KHAC',
-    moTa: 'bieu:840890: bieu:84089010 (<= 18,65 kW) và bieu:8408905 (> 100 kW) chừa khoảng giữa (18,65; 100] kW cho dòng bieu:8408909 ("Loại khác").',
-    cauLienQuan: ['bieu:84089010#1', 'bieu:8408905#1'],
-  });
+  // 3. Ghi nhận chỗ hở dải thực tế trong biểu thuế (Chương 84: 840890; Chương 85: 853530)
+  if (ch2 === '84') {
+    ghiNhanLuat.push({
+      loai: 'BU_KHOANG_GIUA_LOAI_KHAC',
+      moTa: 'bieu:840890: bieu:84089010 (<= 18,65 kW) và bieu:8408905 (> 100 kW) chừa khoảng giữa (18,65; 100] kW cho dòng bieu:8408909 ("Loại khác").',
+      cauLienQuan: ['bieu:84089010#1', 'bieu:8408905#1'],
+    });
+  } else if (ch2 === '85') {
+    ghiNhanLuat.push({
+      loai: 'BU_KHOANG_GIUA_LOAI_KHAC',
+      moTa: 'bieu:853530 (nhóm 85.35 > 1 kV): bieu:8535301 ((1; 40] kV) và bieu:85353020 (>= 66 kV) chừa khoảng giữa (40; 66) kV cho dòng bieu:85353090 ("Loại khác").',
+      cauLienQuan: ['bieu:8535301#1', 'bieu:85353020#1'],
+    });
+  }
 
   // 4. Hợp nhất các bản ghi phi-biểu (Phần XVI + Chú giải + SEN + Nhóm)
-  const phiBieu = ch2 === '84' ? layDacTaPhiBieu84(L) : [];
+  const phiBieu = ch2 === '84' ? layDacTaPhiBieu84(L) : ch2 === '85' ? layDacTaPhiBieu85(L) : [];
 
   // 5. Đóng gói theo khuôn ho-so-ma@1 & kiểm duKien/trich trước khi trả về
   const theoTep = new Map();
@@ -621,9 +798,10 @@ export function dungBanGhiNguongChuong(chuong, { luat = G.LUAT_MAC_DINH } = {}) 
   const allDrafts = [];
   for (const [, list] of theoNut) allDrafts.push(...list);
 
-  // Sắp theo nút để đánh ID hs:<nut>:84xx ổn định
+  // Sắp theo nút để đánh ID hs:<nut>:<ch*100+k> ổn định
   allDrafts.sort((a, b) => a.nut.localeCompare(b.nut) || a.nguong.daiLuong.localeCompare(b.nguong.daiLuong));
   const seqNut = new Map();
+  const idBase = Number(ch2) * 100;
 
   for (const d of [...phiBieu, ...allDrafts]) {
     const chu = L.chuCau(d.cau);
@@ -635,7 +813,7 @@ export function dungBanGhiNguongChuong(chuong, { luat = G.LUAT_MAC_DINH } = {}) 
     if (!id) {
       const k = (seqNut.get(d.nut) || 0) + 1;
       seqNut.set(d.nut, k);
-      id = `hs:${d.nut}:${8400 + k}`;
+      id = `hs:${d.nut}:${idBase + k}`;
     }
     const rec = {
       id,
@@ -740,17 +918,31 @@ export function kiemDonViDaiLuong(banGhi) {
       loi.push(`${r.id}: daiLuong "${r.nguong.daiLuong}" không khớp đơn vị "${dv}"`);
     } else if (/công suất lọc/.test(dl) && dv !== 'lít/giờ') {
       loi.push(`${r.id}: daiLuong "${r.nguong.daiLuong}" không khớp đơn vị "${dv}"`);
-    } else if (/^công suất\b/.test(dl) && !/hơi|lọc/.test(dl) && /^(?:mm|cm|m|micron|lít|ml|cc|kg|tấn|cg)$/i.test(dv)) {
+    } else if (/công suất phản kháng/.test(dl) && dv !== 'kvar') {
+      loi.push(`${r.id}: daiLuong "${r.nguong.daiLuong}" phải dùng "kvar", nhận "${dv}"`);
+    } else if (/^công suất\b/.test(dl) && !/hơi|lọc|phản kháng/.test(dl) && /^(?:mm|cm|m|micron|lít|ml|cc|kg|tấn|cg|V|kV|A|mA|Hz|MHz|kHz|GHz)$/i.test(dv)) {
       loi.push(`${r.id}: daiLuong "${r.nguong.daiLuong}" cấm đi với đơn vị "${dv}"`);
-    } else if (/(?:đường kính|chiều dài|chiều rộng|chiều dày|chiều ngang|khổ rộng|bán kính|độ dày|kích thước)/.test(dl) && !/^(?:mm|cm|m|micron|lần|%)$/i.test(dv)) {
+    } else if (/(?:điện áp|đầu điện áp)/.test(dl) && !/^(?:V|kV)$/i.test(dv)) {
+      loi.push(`${r.id}: daiLuong "${r.nguong.daiLuong}" phải dùng "V" hoặc "kV", nhận "${dv}"`);
+    } else if (/dòng điện/.test(dl) && !/^(?:A|mA)$/i.test(dv)) {
+      loi.push(`${r.id}: daiLuong "${r.nguong.daiLuong}" phải dùng "A" hoặc "mA", nhận "${dv}"`);
+    } else if (/tần số/.test(dl) && !/^(?:Hz|kHz|MHz|GHz)$/i.test(dv)) {
+      loi.push(`${r.id}: daiLuong "${r.nguong.daiLuong}" phải dùng đơn vị tần số, nhận "${dv}"`);
+    } else if (/dung lượng phóng điện/.test(dl) && !/^(?:Ah|mAh)$/i.test(dv)) {
+      loi.push(`${r.id}: daiLuong "${r.nguong.daiLuong}" phải dùng "Ah" hoặc "mAh", nhận "${dv}"`);
+    } else if (/(?:đường kính|chiều dài|chiều rộng|chiều cao|chiều dày|chiều ngang|khổ rộng|bán kính|độ dày|kích thước|bước điểm lân quang)/.test(dl) && !/^(?:mm|cm|m|micron|inch|lần|%)$/i.test(dv)) {
       loi.push(`${r.id}: daiLuong "${r.nguong.daiLuong}" cấm đi với đơn vị "${dv}"`);
     } else if (/dung sai tương đối/.test(dl) && dv !== '%') {
       loi.push(`${r.id}: daiLuong "${r.nguong.daiLuong}" phải dùng "%", nhận "${dv}"`);
+    } else if (/thể tích/.test(dl) && !/^(?:cc|lít|ml)$/i.test(dv)) {
+      loi.push(`${r.id}: daiLuong "${r.nguong.daiLuong}" cấm đi với đơn vị "${dv}"`);
     } else if (/dung tích/.test(dl) && !/^(?:cc|lít|ml)$/i.test(dv)) {
       loi.push(`${r.id}: daiLuong "${r.nguong.daiLuong}" cấm đi với đơn vị "${dv}"`);
     } else if (/lưu lượng/.test(dl) && !/^(?:m³\/h|m3\/phút|lít\/giờ)$/i.test(dv)) {
       loi.push(`${r.id}: daiLuong "${r.nguong.daiLuong}" cấm đi với đơn vị "${dv}"`);
-    } else if (/(?:khối lượng|trọng lượng|sức chứa|khả năng cân|lực rung)/.test(dl) && !/^(?:kg|tấn|%)$/i.test(dv)) {
+    } else if (/sức chứa túi/.test(dl) && !/^(?:lít|ml|cc|kg)$/i.test(dv)) {
+      loi.push(`${r.id}: daiLuong "${r.nguong.daiLuong}" cấm đi với đơn vị "${dv}"`);
+    } else if (/(?:khối lượng|trọng lượng|sức chứa vải|khả năng cân|lực rung)/.test(dl) && !/^(?:kg|tấn|%)$/i.test(dv)) {
       loi.push(`${r.id}: daiLuong "${r.nguong.daiLuong}" cấm đi với đơn vị "${dv}"`);
     }
   }
