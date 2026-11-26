@@ -108,7 +108,7 @@ check('xayChiMuc: bắt được mã 76051010', chi.ma.includes('76051010'));
 // ── 8. dữ liệu thật chương 76 (thẻ M-73): chưa nạp thì bỏ qua ──
 const thuc = path.join(ROOT, 'data', 'ho-so-ma');
 if (fs.existsSync(path.join(thuc, 'dong', '76051010.jsonl')) || fs.existsSync(path.join(thuc, 'nhom', '7605.jsonl'))) {
-  const phieuThat = phieuVanDe('760510', { luat: path.join(ROOT, 'data', 'luat-goc'), hoSo: thuc });
+  const phieuThat = phieuVanDe('76051100', { luat: path.join(ROOT, 'data', 'luat-goc'), hoSo: thuc });
   check('dữ liệu thật ch76: hồ sơ có đường đi', Array.isArray(phieuThat.duong) && phieuThat.duong.length >= 3);
 } else {
   console.log('(bỏ qua ca dữ liệu thật chương 76 — thẻ M-73 chưa nạp)');
