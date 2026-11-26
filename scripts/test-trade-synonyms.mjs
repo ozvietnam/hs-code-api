@@ -147,6 +147,10 @@ console.log('\n== Câu hỏi thật của khách phải ra đúng mã (kho Oz kh
     // OZV-2071 — thực địa 24h top 1: model AR3000-03 / AR3000 / AR4000-04 → 84812011 / 84812090
     ['ar3000-03', ['84812011', '84812090']],
     ['bộ lọc điều áp khí nén, model ar3000-03', ['84812011', '84812090']],
+    // OZV-2371 — chạc chia 3 hơi khí nén: trỏ về 7412 / 7307 / 3917, tránh lệch van 8481
+    ['chạc chia 3 hơi khí nén zonye ren 1/4', ['74122091', '73079990', '39174000']],
+    ['chạc ba khí nén', ['74122091', '73079990', '39174000']],
+    ['tê khí nén ren 1/4', ['74122091', '73079990', '39174000']],
   ];
   for (const [q, want] of cases) {
     const top2 = searchCandidates(q, { topCandidates: 2 }).map((c) => c.hsCode);

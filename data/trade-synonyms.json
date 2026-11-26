@@ -5024,6 +5024,70 @@
    "sourceVi": "Ca thật 26/11: khách xin phân tích PCBA. 5 tiền lệ kho: TB 1159 (→8537.10.19, MFN 15%), TB 6740 (→8529.90.54 TV, MFN 5%), TB 5075+5076+5525 (→8529.90.55 máy chiếu, MFN 0%; POGO board → 8536.90.94 MFN 25%). Quy tắc: PCBA theo thiết bị cuối hoặc chức năng riêng — không có mã chung."
   },
   {
+   "id": "chac-chia-phu-kien-ong",
+   "titleVi": "Chạc chia / cút nối / tê / phụ kiện đường ống (khí nén hoặc nước)",
+   "terms": [
+    "chạc chia",
+    "chạc ba",
+    "tê khí nén",
+    "cút nối",
+    "co nối",
+    "đầu chia khí",
+    "đầu chia hơi",
+    "phụ kiện ống",
+    "pipe fitting",
+    "tube fitting",
+    "chạc chia 3",
+    "chạc chữ y",
+    "tê chia khí",
+    "khớp nối ống"
+   ],
+   "excludeIfAny": [
+    "van",
+    "valve",
+    "điều áp",
+    "regulator",
+    "lọc khí",
+    "bộ lọc"
+   ],
+   "excludeReasonVi": "Nếu là van hoặc bộ điều áp/lọc khí hoàn chỉnh thì thuộc nhóm 8481 hoặc 8421, không phải phụ kiện ống đơn thuần (7307, 7412, 3917).",
+   "candidates": [
+    {
+     "hs": "74122091",
+     "whenVi": "Bằng hợp kim đồng / đồng thau (phụ kiện ống đồng)",
+     "confidence": "medium"
+    },
+    {
+     "hs": "73079990",
+     "whenVi": "Bằng sắt hoặc thép (phụ kiện ống sắt/thép)",
+     "confidence": "medium"
+    },
+    {
+     "hs": "39174000",
+     "whenVi": "Bằng chất dẻo / plastic",
+     "confidence": "medium"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "8481",
+     "whyVi": "Nhóm 8481 là van, vòi và các thiết bị tương đương (bao gồm van điều áp khí nén). Chạc chia / cút nối không có cơ cấu van điều chỉnh bên trong nên không thuộc 8481."
+    },
+    {
+     "prefix": "8421",
+     "whyVi": "Nhóm 8421 là máy và thiết bị lọc khí."
+    }
+   ],
+   "askVi": [
+    "Vật liệu chế tạo của chạc chia / phụ kiện là gì: đồng/đồng thau (7412), sắt/thép (7307) hay chất dẻo/plastic (3917)?",
+    "Hàng có gắn van điều chỉnh hoặc bộ phận chuyển động cơ khí bên trong không (nếu có van thì xét 8481)?"
+   ],
+   "chotSom": true,
+   "gir": "GIR 1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế 2026: nhóm 7412 (phụ kiện ống bằng đồng), nhóm 7307 (phụ kiện ống bằng sắt/thép), nhóm 3917 (phụ kiện ống bằng chất dẻo). Thực địa OZV-2371: 'chạc chia 3 hơi khí nén zonye ren 1/4' trước đây bị kéo nhầm sang van 8481 do thiếu từ điển. Phụ kiện ống nối khí nén/nước thuần túy phân loại theo vật liệu (chương 73, 74, 39), không phải van 8481."
+  },
+  {
    "id": "load-cell",
    "titleVi": "Cảm biến trọng lượng / load cell vs cân hoàn chỉnh",
    "terms": [
