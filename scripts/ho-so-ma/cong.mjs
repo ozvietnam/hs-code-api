@@ -271,8 +271,8 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
       for (const d of x.duKien) if (!csThuong.includes(chuanSo(d).toLowerCase())) ra[4].loi.push(`${x.id}: dữ kiện "${d}" không có trong chữ câu ${x.cau} (chỉ rút từ chữ luật)`);
       if (x.loai === 'KHONG_DUOC_LA') for (const d of x.den || []) if (G.trenCua(d, L.cay).includes(x.nut)) ra[4].loi.push(`${x.id}: nơi chuyển ${d} nằm trong chính ${x.nut} — KHONG_DUOC_LA phải chuyển ra ngoài nút (câu phân về nút con là PHAI_LA)`);
       if (x.loai === 'DINH_NGHIA' && x.thuatNgu) {
-        const dan = L.cau.get(x.cau).dan; const nen = `${csThuong} ${dan && L.chuCau(dan) ? chuanSo(L.chuCau(dan)).toLowerCase() : ''}`;
-        if (!nen.includes(chuanSo(x.thuatNgu).toLowerCase())) ra[4].loi.push(`${x.id}: thuatNgu "${x.thuatNgu}" không có nguyên chữ trong câu ${x.cau} hay câu dẫn`);
+        const dan = L.cau.get(x.cau).dan; const nen = `${chuanSo(nNguon.v).toLowerCase()} ${dan && L.chuCau(dan) ? chuanSo(L.chuCau(dan)).toLowerCase() : ''}`; // định nghĩa nhiều câu: thuật ngữ ở câu đầu của cùng nút
+        if (!nen.includes(chuanSo(x.thuatNgu).toLowerCase())) ra[4].loi.push(`${x.id}: thuatNgu "${x.thuatNgu}" không có nguyên chữ trong nút của câu ${x.cau} hay câu dẫn`);
       }
       for (const d of [...(x.den || []), ...(x.voi || [])]) if (!coThat(d)) ra[4].loi.push(`${x.id}: nút ${d} không có trong kho luật`);
     }
