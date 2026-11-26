@@ -433,6 +433,157 @@ try {
       && beeDedup1 === beeDedup2,
     { out1: resDedup1.stdout, out2: resDedup2.stdout, hasBullet: beeDedup1.includes('- **[#2201]** chuong:NN') },
   );
+
+  // ── 7. Hồi quy các ca đối kháng r2 (Wrapped lists/headings, oz-gold_*, .keys, git -C, YAML >-, symlink dir) ──
+  // 7a) Wrapped bullet list, numbered list, và heading đa dòng bị chặn
+  const negWrapped = copyNegRepo('wrapped-multiline');
+  fs.appendFileSync(
+    path.join(negWrapped, '.agents', 'skills', 'kiem-tra-xuat-xu', 'SKILL.md'),
+    [
+      '',
+      '- Run git push origin',
+      '  --force main',
+      '',
+      '1. Execute gh pr',
+      '   merge --squash',
+      '',
+      '### Run git push origin',
+      'main now',
+      '',
+    ].join('\n'),
+    'utf8',
+  );
+  const resNegWrapped = runCli(['--kiem', `--repo-dir=${negWrapped}`, `--plugin-dir=${absentPlugin}`]);
+  const wrappedErrors = resNegWrapped.stderr.split(/\r?\n/).filter((l) => l.includes('✗'));
+  kiem(
+    'hồi quy r2 #1: bắt đủ wrapped bullet list, numbered list, và heading đa dòng',
+    resNegWrapped.status !== 0 && wrappedErrors.length === 3,
+    { status: resNegWrapped.status, count: wrappedErrors.length, stderr: resNegWrapped.stderr },
+  );
+
+  // 7b) oz-gold_2025.csv, bare .keys, và git -C /repo push origin main + git --git-dir=/x push origin main
+  const negEdgeRegex = copyNegRepo('edge-regex');
+  fs.appendFileSync(
+    path.join(negEdgeRegex, '.agents', 'skills', 'kiem-tra-xuat-xu', 'SKILL.md'),
+    [
+      '',
+      'Inspect oz-gold_2025.csv for fixtures.',
+      'Archive .keys into release bundle.',
+      'Run git -C /repo push origin main now.',
+      'Run git --git-dir=/x push origin main now.',
+      '',
+    ].join('\n'),
+    'utf8',
+  );
+  const resNegEdgeRegex = runCli(['--kiem', `--repo-dir=${negEdgeRegex}`, `--plugin-dir=${absentPlugin}`]);
+  const edgeRegexErrors = resNegEdgeRegex.stderr.split(/\r?\n/).filter((l) => l.includes('✗'));
+  kiem(
+    'hồi quy r2 #2: bắt đủ oz-gold_2025.csv, bare .keys, git -C ... push ... main, git --git-dir=... push ... main',
+    resNegEdgeRegex.status !== 0 && edgeRegexErrors.length === 4,
+    { status: resNegEdgeRegex.status, count: edgeRegexErrors.length, stderr: resNegEdgeRegex.stderr },
+  );
+
+  // 7c) YAML >- và | multiline frontmatter chứa gh pr merge / git -C push main
+  const negYamlMl = copyNegRepo('yaml-multiline');
+  const yamlMlSkill = path.join(negYamlMl, '.agents', 'skills', 'kiem-tra-xuat-xu', 'SKILL.md');
+  fs.writeFileSync(
+    yamlMlSkill,
+    [
+      '---',
+      'name: kiem-tra-xuat-xu',
+      'description: >-',
+      '  Helper that runs gh pr',
+      '  merge automatically',
+      '---',
+      '',
+      '# Skill `kiem-tra-xuat-xu`',
+      '',
+      '## 1. Mục đích',
+      'Nội dung an toàn.',
+      '',
+      '## 2. Quy tắc',
+      'Nội dung an toàn.',
+      '',
+    ].join('\n'),
+    'utf8',
+  );
+  const yamlMlAgent = path.join(negYamlMl, '.agents', 'agents', 'oz-pr-auditor.md');
+  fs.writeFileSync(
+    yamlMlAgent,
+    [
+      '---',
+      'name: oz-pr-auditor',
+      'description: |',
+      '  Helper that runs git -C /repo push',
+      '  origin main automatically',
+      'tools:',
+      '  - view_file',
+      '---',
+      '',
+      '# Agent',
+      '',
+      '## 1. Mục đích',
+      'Nội dung an toàn.',
+      '',
+      '## 2. Quy tắc',
+      'Nội dung an toàn.',
+      '',
+    ].join('\n'),
+    'utf8',
+  );
+  const resNegYamlMl = runCli(['--kiem', `--repo-dir=${negYamlMl}`, `--plugin-dir=${absentPlugin}`]);
+  const yamlMlErrors = resNegYamlMl.stderr.split(/\r?\n/).filter((l) => l.includes('frontmatter "description"'));
+  kiem(
+    'hồi quy r2 #3: bắt YAML >- và | multiline frontmatter chứa gh pr merge / git -C push main',
+    resNegYamlMl.status !== 0 && yamlMlErrors.length === 2,
+    resNegYamlMl.stderr || resNegYamlMl.stdout,
+  );
+
+  // 7d) validateRepo không đọc qua thư mục cha là symlink trong pluginDir
+  const symParentPlug = path.join(tmpRoot, 'sym-parent-plugin');
+  copyDir(tmpPlugin, symParentPlug);
+  const extTargetDir = path.join(tmpRoot, 'external-skill-dir');
+  fs.mkdirSync(extTargetDir, { recursive: true });
+  const extSkillFile = path.join(extTargetDir, 'SKILL.md');
+  fs.copyFileSync(path.join(tmpRepo, '.agents', 'skills', 'ho-so-nguong', 'SKILL.md'), extSkillFile);
+  fs.chmodSync(extSkillFile, 0o000);
+  const plugSkillDir = path.join(symParentPlug, 'skills', 'ho-so-nguong');
+  fs.rmSync(plugSkillDir, { recursive: true, force: true });
+  fs.symlinkSync(extTargetDir, plugSkillDir);
+  const resSymParent = runCli(['--kiem', `--repo-dir=${tmpRepo}`, `--plugin-dir=${symParentPlug}`, '--bat-buoc-plugin']);
+  fs.chmodSync(extSkillFile, 0o644);
+  kiem(
+    'hồi quy r2 #4: validateRepo từ chối thư mục cha symlink trong pluginDir mà không readFileSync xuyên symlink',
+    resSymParent.status !== 0
+      && !resSymParent.stderr.includes('EACCES')
+      && resSymParent.stderr.includes('Lệch plugin (skills/ho-so-nguong/SKILL.md)')
+      && resSymParent.stderr.includes('symlink'),
+    resSymParent.stderr || resSymParent.stdout,
+  );
+
+  // 7e) Kiểm tra không báo nhầm (False-positive checks)
+  const fpRepo = copyNegRepo('false-positives');
+  fs.appendFileSync(
+    path.join(fpRepo, '.agents', 'skills', 'kiem-tra-xuat-xu', 'SKILL.md'),
+    [
+      '',
+      'Đẩy nhánh làm việc: `git push origin agy/my-feature`.',
+      'Tham khảo mẫu cấu hình `.env.example` và thuộc tính `obj.keys`.',
+      'Tuyệt đối không chạy `git push origin --force main`.',
+      '- Chạy git push origin',
+      '- Kiểm tra nhánh main sau đó',
+      '  - Lồng ghép: chạy git push origin',
+      '  - Lồng ghép tiếp: kiểm tra main',
+      '',
+    ].join('\n'),
+    'utf8',
+  );
+  const resFp = runCli(['--kiem', `--repo-dir=${fpRepo}`, `--plugin-dir=${absentPlugin}`]);
+  kiem(
+    'hồi quy r2 #5: không báo nhầm nhánh agy/*, .env.example, obj.keys, câu cấm --force main, hay 2 dòng list tách biệt',
+    resFp.status === 0,
+    resFp.stderr || resFp.stdout,
+  );
 } finally {
   fs.rmSync(tmpRoot, { recursive: true, force: true });
 }

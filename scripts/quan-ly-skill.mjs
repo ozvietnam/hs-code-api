@@ -16,9 +16,9 @@ export const SYNC_SUBDIRS = ['rules', 'agents', 'prompts', 'skills'];
 
 const RE_SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const RE_HS_TOKEN = /\bHS_[A-Z][A-Z0-9_]*[A-Z0-9]\b/g;
-const RE_PRIVATE_DATA = /(?:\boz-export\b|\boz-gold\b|(?:^|[\s`"'(,/=])\.keys\/|(?:^|[\s`"'(,/=])\.env(?:\.(?!example\b)[A-Za-z0-9_.-]+)?(?=$|[\s`"'),:;*]))/i;
+const RE_PRIVATE_DATA = /(?:\boz-export\b|\boz-gold[A-Za-z0-9_.-]*|(?<![A-Za-z0-9_.-])\.keys(?=$|[\s`"'),:;/*])|(?:^|[\s`"'(,/=])\.env(?:\.(?!example\b)[A-Za-z0-9_.-]+)?(?=$|[\s`"'),:;*]))/i;
 const RE_PRIVATE_GUARD = /(?:never|forbidden|prohibit|avoid|keep\b[^\n;]*\bout of git|cấm|tuyệt đối không|không bao giờ|không được|không đọc|không chạm|không đụng|không sửa|không commit|không push|không chạy|không lộ|không lọt|không dùng|không sử dụng|không nhắc|bảo vệ|tránh|chống rò rỉ|zero\b|scan[^\n]*trace|withPrivateData|forbiddenFiles)/i;
-const RE_DANGEROUS_GIT = /(?:\bgh\s+pr\s+merge\b|\bgit\s+push\b[^\n.;]*\bmain\b|\bpush\s+(?:thẳng|trực tiếp|directly)[^\n.;]*\bmain\b)/i;
+const RE_DANGEROUS_GIT = /(?:\bgh\s+pr\s+merge\b|\bgit(?:\s+-[^\s]+(?:\s+(?!-|\bpush\b)(?:"[^"\n]*"|'[^'\n]*'|[^\s;.`]+))?)*\s+push\b[^\n.;]*\bmain\b|\bpush\s+(?:thẳng|trực tiếp|directly)[^\n.;]*\bmain\b)/i;
 const RE_DANGEROUS_GUARD = /(?:never|forbidden|prohibit|avoid|cấm|tuyệt đối không|không tự|không bao giờ|không được|không chạy|do not|don't|chặn|chống|zero\b|never self-merge)/i;
 
 // ── CLI Parsing ─────────────────────────────────────────────────────────────────────────────────
@@ -613,6 +613,8 @@ export function validateRepo({
     }
 
     const reportedDangerousLines = new Set();
+    const reportedPrivateYamlKeys = new Set();
+    const reportedDangerousYamlKeys = new Set();
     for (const entry of logicalLines) {
       const { lineNo, text: line, inFrontmatter, yamlKey } = entry;
       // 1. Undeclared HS_* tokens
@@ -630,12 +632,14 @@ export function validateRepo({
       if (RE_PRIVATE_DATA.test(line)) {
         const safeYamlForbidden = inFrontmatter && yamlKey === 'forbiddenFiles';
         if (!safeYamlForbidden && !RE_PRIVATE_GUARD.test(line)) {
+          if (inFrontmatter && yamlKey) reportedPrivateYamlKeys.add(yamlKey);
           errors.push(`${relPath}:${lineNo}: Tham chiếu dữ liệu riêng tư ngoài ngữ cảnh cấm/bảo vệ`);
         }
       }
       // 3. Dangerous git merge/push commands outside explicit prohibition lines
       if (RE_DANGEROUS_GIT.test(line) && !RE_DANGEROUS_GUARD.test(line)) {
         reportedDangerousLines.add(lineNo);
+        if (inFrontmatter && yamlKey) reportedDangerousYamlKeys.add(yamlKey);
         errors.push(`${relPath}:${lineNo}: Chứa chỉ dẫn cho phép tự gộp PR hoặc push thẳng main ngoài ngữ cảnh cấm`);
       }
     }
@@ -660,9 +664,12 @@ export function validateRepo({
     for (const entry of logicalLines) {
       if (entry.inFrontmatter) continue;
       const t = entry.text.trim();
-      if (!t || /^```/.test(t) || /^(?:#+ |[-*] |\d+\. )/.test(entry.text)) {
+      if (!t || /^```/.test(t)) {
         flushChunk();
         continue;
+      }
+      if (/^(?:#+ |[-*] |\d+\. )/.test(t)) {
+        flushChunk();
       }
       if (!chunkParts.length) chunkStart = entry.lineNo;
       chunkParts.push(t);
@@ -679,6 +686,25 @@ export function validateRepo({
           if (RE_PRIVATE_DATA.test(af)) {
             errors.push(`${relPath}: allowedFiles không được phép chứa vùng dữ liệu riêng tư (${af})`);
           }
+        }
+      }
+      for (const [fmKey, fmVal] of Object.entries(fmData)) {
+        if (typeof fmVal !== 'string' || !fmVal.trim()) continue;
+        const collapsed = fmVal.replace(/\s+/g, ' ').trim();
+        if (
+          fmKey !== 'forbiddenFiles'
+          && !reportedPrivateYamlKeys.has(fmKey)
+          && RE_PRIVATE_DATA.test(collapsed)
+          && !RE_PRIVATE_GUARD.test(collapsed)
+        ) {
+          errors.push(`${relPath}: frontmatter "${fmKey}" tham chiếu dữ liệu riêng tư ngoài ngữ cảnh cấm/bảo vệ`);
+        }
+        if (
+          !reportedDangerousYamlKeys.has(fmKey)
+          && RE_DANGEROUS_GIT.test(collapsed)
+          && !RE_DANGEROUS_GUARD.test(collapsed)
+        ) {
+          errors.push(`${relPath}: frontmatter "${fmKey}" chứa chỉ dẫn cho phép tự gộp PR hoặc push thẳng main ngoài ngữ cảnh cấm`);
         }
       }
     }
@@ -834,13 +860,19 @@ export function validateRepo({
       for (const rf of repoFiles) {
         const src = path.join(repoSub, rf);
         const dst = path.join(plugSub, rf);
-        const dstStat = pathLstat(dst);
-        if (dstStat && dstStat.isSymbolicLink()) {
-          errors.push(`Lệch plugin (${sub}/${rf}): đích là symlink, cấm theo sau (${dst})`);
+        try {
+          assertNoSymlinksInRelativePath(plugSub, rf);
+        } catch (err) {
+          errors.push(`Lệch plugin (${sub}/${rf}): ${err.message}`);
           continue;
         }
+        const dstStat = pathLstat(dst);
         if (!dstStat) {
           errors.push(`Lệch plugin (${sub}/${rf}): thiếu trong ${pluginDir}`);
+          continue;
+        }
+        if (!dstStat.isFile()) {
+          errors.push(`Lệch plugin (${sub}/${rf}): đích không phải tệp thường (${dst})`);
           continue;
         }
         if (Buffer.compare(fs.readFileSync(src), fs.readFileSync(dst)) !== 0) {
