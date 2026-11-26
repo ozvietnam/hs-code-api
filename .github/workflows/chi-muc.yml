@@ -1,0 +1,47 @@
+name: Chi-muc luat (dung that + test)
+
+# M-37b (#2023): chi muc luat (data/luat-goc/chi-muc/) KHONG luu trong kho.
+# Job rieng nay dung that bang mo hinh e5 (~15-45 phut CPU tuy so nhan runner),
+# roi chay test-chi-muc-luat tren chi muc vua dung (phan "chi muc that" khong bo qua).
+# Khong nam trong cong bat buoc test/bench — khoi luong nang, chi chay khi kho luat
+# goc, script dung, thu vien chi muc hay workflow nay doi.
+on:
+  pull_request:
+    paths:
+      - 'data/luat-goc/**'
+      - 'lib/chi-muc-luat.js'
+      - 'scripts/luat-goc/**'
+      - '.github/workflows/chi-muc.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'data/luat-goc/**'
+      - 'lib/chi-muc-luat.js'
+      - 'scripts/luat-goc/**'
+      - '.github/workflows/chi-muc.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+jobs:
+  chi-muc:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      # Cache mo hinh e5 q8 (~50 MB) — khong tai lai tung luot.
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: hf-xenova-multilingual-e5-small-q8
+      - name: Cai dependency
+        run: npm install --no-audit --no-fund
+      - name: Dung chi muc that (data/luat-goc/chi-muc/)
+        run: npm run build:chi-muc-luat
+      - name: Test tren chi muc vua dung (39 ca + phan chi muc that)
+        run: node scripts/test-chi-muc-luat.mjs
