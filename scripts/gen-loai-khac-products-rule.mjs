@@ -1712,6 +1712,54 @@ const H6EN_DOMAINS = [
       ],
     },
   },
+  // ══════════════════════════════════════════════════════════════
+  // CH.10 — NGŨ CỐC (OZV-2353)
+  // ══════════════════════════════════════════════════════════════
+  // 10059099 residual: không phải popcorn, không phải ngô dùng cho người
+  {
+    match: /maize \(corn\), other than seed/i,
+    domain: {
+      type: 'Ngô hạt (không phải giống, không popcorn, không dùng làm thực phẩm người)',
+      items: [
+        'Ngô hạt vàng dent corn thức ăn chăn nuôi bao jumbo 1000kg',
+        'Ngô hạt nghiền thô (cracked corn) cho gia súc bao 50kg',
+        'Ngô hạt công nghiệp tinh bột (industrial maize) container 25 tấn',
+        'Ngô hạt khô độ ẩm ≤14% nguyên liệu thức ăn bao 40kg',
+        'Ngô hạt flint corn làm nguyên liệu lên men ethanol bao 50kg',
+        'Ngô hạt vàng feed grade protein ≥8% bao jumbo 500kg',
+        'Ngô hạt tách lõi (shelled maize) nguyên liệu công nghiệp bao 25kg',
+        'Ngô hạt sấy khô dùng ép dầu công nghiệp bao 50kg',
+        'Ngô hạt thô (raw yellow corn) nguyên liệu nhà máy thức ăn bao 40kg',
+        'Ngô hạt broken corn phụ phẩm sàng lọc feed bao 50kg',
+        'Ngô hạt độ ẩm 13% chuẩn xuất khẩu feed grade bao 50kg',
+        'Ngô hạt dent corn non-GMO nguyên liệu công nghiệp bao jumbo 1000kg',
+      ],
+    },
+  },
+  // ══════════════════════════════════════════════════════════════
+  // CH.15 — DẦU MỠ (OZV-2353)
+  // ══════════════════════════════════════════════════════════════
+  // 15099019 residual: dầu olive không virgin, đóng gói >30kg (sibling ≤30kg)
+  {
+    match: /olive oil and its fractions, other than virgin/i,
+    domain: {
+      type: 'Dầu ôliu không nguyên chất (không virgin), đóng gói >30kg',
+      items: [
+        'Dầu ôliu tinh luyện (refined olive oil) phuy thép 190kg',
+        'Dầu ôliu tinh luyện RBD acidity ≤0.3% IBC tote 1000L',
+        'Dầu ôliu hỗn hợp refined + virgin lampante phuy 200L',
+        'Dầu ôliu refined food-grade bom nhựa 210L (>30kg)',
+        'Phân đoạn olein dầu ôliu tinh luyện tank flexibag 20 tấn',
+        'Dầu ôliu tinh luyện (refined) drum 55 gallon (~200L)',
+        'Dầu ôliu không virgin acidity 0.5–1% phuy 190kg xuất khẩu',
+        'Dầu ôliu refined blend công nghiệp thực phẩm IBC 1000kg',
+        'Dầu ôliu tinh luyện đóng phuy 200L net weight ~180kg',
+        'Dầu ôliu fractions stearin tinh luyện bao jumbo 50kg',
+        'Dầu ôliu refined bulk flexitank 22 tấn không virgin',
+        'Dầu ôliu tinh luyện phuy thép 210L net >30kg FOB',
+      ],
+    },
+  },
   // Generic fallback
   {
     match: /n\.e\.c\.|not elsewhere/i,
