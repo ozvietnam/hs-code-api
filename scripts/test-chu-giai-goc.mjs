@@ -10,10 +10,11 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { createRequire } from 'node:module';
+import { fileURLToPath } from 'node:url';
 import { boKiem } from './lib-luat.mjs';
 
 const require = createRequire(import.meta.url);
-const ROOT = path.resolve(new URL('..', import.meta.url).pathname);
+const ROOT = path.resolve(fileURLToPath(new URL('..', import.meta.url)));
 
 process.env.HS_API_TOKEN = process.env.HS_API_TOKEN || 'test-m21-token';
 

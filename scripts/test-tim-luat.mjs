@@ -12,11 +12,12 @@ import path from 'node:path';
 import Module from 'node:module';
 import { createRequire } from 'node:module';
 import { execFileSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
 import { boKiem } from './lib-luat.mjs';
 import { tachKho } from './luat-goc/cau.mjs';
 
 const require = createRequire(import.meta.url);
-const ROOT = path.resolve(new URL('..', import.meta.url).pathname);
+const ROOT = path.resolve(fileURLToPath(new URL('..', import.meta.url)));
 
 const { timLuat, datLai, KHO_DUOC_TIM, xacDinhChieu, napChiMuc } = require('../lib/tim-luat');
 const { phaiDoc, datLai: datLaiPhaiDoc } = require('../lib/do-thi/phai-doc');
