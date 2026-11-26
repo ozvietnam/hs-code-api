@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:duyet-L12-20261111#soat-L12",
-    "ngay": "2026-11-11",
-    "ghiChu": "Đối chiếu VI+EN 19 dòng + 4 tầng: .20 HOAC đúng 'Fans and handscreens, frames and handles therefor, and parts thereof' ('kéo bằng tay' chỉ của màn che, khung/tay cầm/bộ phận dungCho quạt|màn che); .42 BO_VE 'sử dụng khi hàn' theo quy ước vế mở 392690 (hướng sai còn lại: mặt nạ bảo hộ không tương tự hàn vào .42 thay .49 — người soạn đã ghi); .93 bốn tên theo chữ biểu (tiền lệ 99/TB-TCHQ lệch đã có mục bảng 392690-01); viDuHang đọc từng cặp — 1 cặp chồng thật (phom giày công nghiệp 3926905↔3926908) có ví dụ thật, còn lại không có hàng thật hợp lý. Máy tách cắt 'Quạt và màn che kéo | bằng tay, khung và tay cầm…' (ghi cho tach-ve.js).",
-    "bam": "065ccd4726f354c4babeaa57d2759e54e86bfe7f3c57aa7be2af66df57250fc8"
+    "phien": "paperclip:tho-hs-03:20261127T0319#soat-392690-ozv2385",
+    "ngay": "2026-11-26",
+    "ghiChu": "OZV-2385: duyệt lại sau sửa 39269020 tenLoai màn che kéo bằng tay (bỏ cachDieuKhien gây hỏi van lạc đề).",
+    "bam": "aa07e71fa72045f5d15d331f71629e1b12ac6a8563f34ae4a5063356f86523ce"
   },
   "dieuKienNut": [
     {
@@ -767,6 +767,13 @@
       "ma": "392690",
       "loai": "QUYET_DINH",
       "ghiChu": "Claude 07/11/2026 (Q1, #1109): các cặp nhánh khác trục không có hàng thật thoả cả hai ⇒ chongLanTruc + khongCoHangThat (lý do từng cặp trong viDuHang). Lúc chạy hàng thoả cả hai ⇒ hỏi câu phân biệt."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "paperclip:tho-hs-03:20261127T0319#tra-392690-ozv2385",
+      "ngay": "2026-11-26",
+      "lyDo": "OZV-2385: sửa dieuKienSo 39269020 bỏ cachDieuKhien (gộp màn che kéo bằng tay) sau DUYET khiến bam lệch cong0-sua-sau-duyet; trả về để duyệt lại theo đúng chu trình."
     }
   ]
 }
