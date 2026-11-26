@@ -1,11 +1,10 @@
 #!/usr/bin/env node
 // scripts/ho-so-ma/goi-duyet.mjs — MÁY DỰNG GÓI DUYỆT hồ sơ vấn đề (M-78, #1970).
 //
-// Mỗi Chương trọng điểm: 30 vấn đề chọn ngẫu nhiên (seed cố định theo chương + ngày) + TOÀN BỘ vấn đề
-// LECH_PHIEU (hai mô hình đọc luật ra hai kết luận). Trình bày dễ đọc: câu luật nguyên văn +
-// câu hỏi lời thường + 3 ô đánh dấu Đúng / Sai / Không rõ. Người duyệt điền xong:
-//   node scripts/ho-so-ma/goi-duyet.mjs --doc-bang=<tệp đã điền>
-// máy đọc lại các ô đã đánh, in tóm tắt để sửa ngay tại nguồn.
+// Người duyệt KHÔNG so với hàng của ai. Họ chấm: vấn đề có RÚT ĐÚNG từ câu luật không.
+// Mỗi Chương trọng điểm: 30 vấn đề chọn ngẫu nhiên + TOÀN BỘ LECH_PHIEU + mọi vấn đề
+// trích không khớp câu luật (máy tự cắm cờ ⚠). Ô chấm: Rút đúng / Rút sai / Không rõ.
+// Người duyệt điền xong: --doc-bang=<tệp> đọc lại để sửa tại nguồn.
 //
 // CHỈ TỪ LUẬT: không dữ liệu khách, không tờ khai, không tiền lệ, không lời AI.
 
@@ -17,6 +16,7 @@ import { napLuat } from '../../lib/ho-so-ma/ghep.js';
 const GOC = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..', '..');
 const HO_SO = path.join(GOC, 'data', 'ho-so-ma');
 const LUAT = path.join(GOC, 'data', 'luat-goc');
+const CAU = path.join(LUAT, 'cau');
 const OUT = path.join(GOC, 'docs', 'ho-so', 'duyet');
 const THU = ['phan', 'chuong', 'nhom', 'phan-nhom', 'dong', 'nguong', 'liet-ke'];
 
@@ -28,21 +28,24 @@ const optToiDa = args.find((a) => a.startsWith('--toi-da='));
 
 const docJsonl = (f) => (fs.existsSync(f) ? fs.readFileSync(f, 'utf8').split('\n').filter((l) => l.trim()).map((l) => JSON.parse(l)) : []);
 
-// nút → bản ghi câu (nạp theo thư mục kho luật — mặc định data/luat-goc/cau)
+// ── nạp kho câu: id câu → {nut gốc (giữ nguyên id từ bản ghi cau), tu, den} ──
 const cauBanGhiCua = (luatDir) => {
   const map = new Map();
   const cauDir = path.join(luatDir, 'cau');
   if (fs.existsSync(cauDir)) {
     for (const tep of fs.readdirSync(cauDir)) {
       if (!tep.endsWith('.jsonl')) continue;
-      for (const r of docJsonl(path.join(cauDir, tep))) map.set(r.id, { tep: tep.replace('.jsonl', ''), tu: r.tu, den: r.den ?? null });
+      for (const r of docJsonl(path.join(cauDir, tep))) {
+        // GIỮ NGUYÊN nut gốc từ id câu — không quy về bieu (nhom:8415:ct:17 ≠ bieu:8415)
+        const nut = String(r.id || '').split('#')[0];
+        map.set(r.id, { nut, tep: tep.replace('.jsonl', ''), tu: r.tu, den: r.den ?? null });
+      }
     }
   }
   return map;
 };
-const cauBanGhi = cauBanGhiCua(LUAT);
 
-// nút → chữ nguyenVan đầy đủ (nạp theo thư mục kho luật — mặc định data/luat-goc)
+// ── nút → chữ nguyenVan đầy đủ (nạp từ data/luat-goc + các nhánh mong/* cho kho chưa merge) ──
 const nutChuCua = (luatDir) => {
   const map = new Map();
   for (const tep of ['bieu', 'chuong', 'phan', 'nhom', 'phan-nhom', 'gir']) {
@@ -51,35 +54,23 @@ const nutChuCua = (luatDir) => {
   }
   return map;
 };
-const nutChu = nutChuCua(LUAT);
 
-/** Câu luật nguyên văn của một id câu — cần bản ghi câu + nutChu của thư mục đang xét. */
+/** Câu luật nguyên văn của một id câu — tra thẳng nut gốc từ bản ghi cau, không quy đổi. */
 function cauChu(cauId, banGhi, nutChu) {
-  const nut = nutCuaCauId(cauId);
-  const chuFull = nutChu.get(nut);
+  const chuFull = nutChu.get(banGhi.nut);
   if (typeof chuFull !== 'string') return null;
   return chuFull.slice(banGhi.tu ?? 0, banGhi.den ?? chuFull.length);
 }
 
-/** Nút chủ của câu (giống ghep.chuCuaCau nhưng trả nguyên id nút trên cây bieu/chuong). */
-function nutCuaCauId(cauId) {
-  const nut = String(cauId || '').split('#')[0];
-  if (/^sen:md:/.test(nut)) return null;
-  if ((/^gir:/.test(nut))) return nut;
-  let m;
-  if ((m = /^phan:([IVX]+)(?::|$)/.exec(nut))) return `phan:${m[1]}`;
-  if ((m = /^chuong:(\d{2}):pc:([IVX]+)(?::|$)/.exec(nut))) return `chuong:${m[1]}:pc:${m[2]}`;
-  if ((m = /^chuong:(\d{2})(?::|$)/.exec(nut))) return `chuong:${m[1]}`;
-  if ((m = /^bieu:(\d{2})$/.exec(nut))) return `chuong:${m[1]}`;
-  if (/^bieu:\d{2,8}(?::td\d+)*$/.test(nut)) return nut;
-  if ((m = /^nhom:(\d{4}):/.exec(nut))) return `bieu:${m[1]}`;
-  if ((m = /^pn:(\d{6}):/.exec(nut))) return `bieu:${m[1]}`;
-  if ((m = /^sen:chuong:(\d{2}):/.exec(nut))) return `chuong:${m[1]}`;
-  if ((m = /^sen:phan:([IVX]+):/.exec(nut))) return `phan:${m[1]}`;
-  if ((m = /^sen:(\d{4,8}):/.exec(nut))) return `bieu:${m[1]}`;
-  if ((m = /^wco:(\d{6}):/.exec(nut))) return `bieu:${m[1]}`;
-  return null;
+/** Trích có nằm trong câu luật không (chuẩn hoá khoảng trắng như kiem-luat-goc). */
+const chuanHoa = (s) => String(s || '').replace(/\s+/g, ' ').trim();
+function trichNamTrongCau(r, cauChuText) {
+  if (!r.trich || !cauChuText) return false;
+  const c = chuanHoa(cauChuText);
+  return chuanHoa(r.trich) === c || c.includes(chuanHoa(r.trich));
 }
+
+const sha256 = (s) => crypto.createHash('sha256').update(s, 'utf8').digest('hex');
 
 // ── thu vấn đề của một Chương: đọc mọi tệp hồ sơ có chương này ──
 function thuVanDe(chuong, hoSoDir) {
@@ -129,37 +120,50 @@ function goi(chuong, ngay, soToiDa, opts = {}) {
   const L = napLuat(luatDir);
   const nutChu = nutChuCua(luatDir);
   const cauBanGhi = cauBanGhiCua(luatDir);
+
   const ds = thuVanDe(chuong, hoSoDir);
   const lech = ds.filter((r) => r.trangThai === 'LECH_PHIEU');
   const rng = mulberry32(Number(chuong) * 7919 + Number(ngay.replaceAll('-', '')));
   const conLai = ds.filter((r) => !lech.includes(r));
   const xao = [...conLai].sort(() => rng() - 0.5);
-  const chon = [...lech, ...xao.slice(0, Math.max(0, soToiDa - lech.length))];
+  const chon = [...lech, ...xao.slice(0, Math.max(0, soToiDa - lech.length))].map((r) => {
+    const banGhi = cauBanGhi.get(r.cau);
+    const nutChuBanGhi = banGhi ? nutChu : null;
+    const cau = banGhi && nutChuBanGhi ? cauChu(r.cau, banGhi, nutChuBanGhi) || '(câu không thấy trong nút — ghi nhận lỗi)' : '(không có bản ghi câu — ghi nhận lỗi)';
+    // M-78 điểm 3: máy tự cắm cờ — trích KHÔNG nằm trong câu luật ⇒ ⚠ + luôn đưa vào gói
+    const trichKhop = r.trich && cau !== '(không có bản ghi câu — ghi nhận lỗi)' && cau !== '(câu không thấy trong nút — ghi nhận lỗi)' ? trichNamTrongCau(r, cau) : true;
+    return { ...r, cauLuat: cau, trichLe: !trichNamTrongCau };
+  });
+  // M-78 điểm 3 (nâng cao): cả những mã trich không khớp (kể cả KHOP) luôn vào gói
+  const tatCaTrichLe = chon.filter((r) => r.trichLe === true);
+  const chonGomLe = [...chon];
+  const daCo = new Set(chonGomLe.map((r) => r.id));
+  for (const r of tatCaTrichLe) if (!daCo.has(r.id)) chonGomLe.push({ ...r, trichLe: true });
 
   const md = [
     `# Biên bản duyệt hồ sơ vấn đề — Chương ${chuong}`,
     ``,
     `Ngày: ${ngay} · Tổng vấn đề trong hồ sơ chương: ${ds.length} · Chọn: ${lech.length} lệch phiếu + ${chon.length - lech.length} ngẫu nhiên`,
     ``,
-    `**Cách duyệt:** với mỗi vấn đề, đánh dấu ✗ vào đúng một ô (Đúng / Sai / Không rõ) so với hàng của anh/chị.`,
+    `**Cách chấm:** Anh/chị đọc **câu luật nguyên văn**, rồi chấm dòng **Điều kiện** có nói đúng điều câu luật đòi không (đúng chiều, đúng số, đúng đơn vị, đúng mã).`,
     `**Chỉ từ luật:** không có mô tả hàng, tờ khai, tiền lệ hay dữ liệu khách.`,
     ``,
   ];
-  const traLoi = { chuong, ngay, soLuong: chon.length, muc: [] };
-  for (const [i, r] of chon.entries()) {
-    const banGhi = cauBanGhi.get(r.cau);
-    const cau = banGhi ? cauChu(r.cau, banGhi, nutChu) || '(câu không thấy trong nút — ghi nhận lỗi)' : '(không có bản ghi câu — ghi nhận lỗi)';
-    md.push(`---`, ``, `### ${i + 1}. ${r.id}`, ``, `- **Cấp nút:** ${r.nut}`, `- **Loại:** ${r.loai}`, `- **Câu hỏi:** ${cauHoi(r)}`, `- **Điều kiện:** ${r.dieuKien}`, ``, `> **Câu luật nguyên văn:** "${cau}"`, `> Nguồn: ${r.nguon || '(không ghi nguồn)'} · Vân tay: \`${(r.van || '').slice(0, 12)}\``, ``, `- [ ] **Đúng**  - [ ] **Sai**  - [ ] **Không rõ**`, ``);
+  const traLoi = { chuong, ngay, soLuong: chonGomLe.length, muc: [] };
+  for (const [i, r] of chonGomLe.entries()) {
+    const cau = r.cauLuat || '(không đọc được câu từ kho câu — ghi nhận lỗi)';
+    const canhBaoTrich = r.trichKhop === true ? `\n> ⚠ **trích không khớp câu luật** — kiểm tra nguồn` : '';
+    md.push(`---`, ``, `### ${i + 1}. ${r.id}`, ``, `- **Cấp nút:** ${r.nut}`, `- **Loại:** ${r.loai}`, `- **Điều kiện:** ${r.dieuKien}`, canhBaoTrich, ``, `> **Câu luật nguyên văn:** "${cau}"`, `> Nguồn: ${r.nguon || '(không ghi nguồn)'} · Vân tay: \`${(r.van || '').slice(0, 12)}\``, ``, `- [ ] **Rút đúng**  - [ ] **Rút sai**  - [ ] **Không rõ**`, r.trichLe ? `> ⚠ trích không khớp` : '', ``);
     traLoi.muc.push({ id: r.id, nut: r.nut, loai: r.loai, cau: r.cau });
   }
-  if (!chon.length) md.push('(không có vấn đề nào trong hồ sơ chương này)');
+  if (!chonGomLe.length) md.push('(không có vấn đề nào trong hồ sơ chương này)');
 
   fs.mkdirSync(outDir, { recursive: true });
   const tepMd = path.join(outDir, `chuong-${chuong}-${ngay}.md`);
   fs.writeFileSync(tepMd, md.join('\n') + '\n');
   const tepTraLoi = path.join(outDir, `chuong-${chuong}-${ngay}-tra-loi.json`);
   fs.writeFileSync(tepTraLoi, JSON.stringify(traLoi, null, 1) + '\n');
-  return { tepMd, tepTraLoi, so: chon.length, lech: lech.length, tong: ds.length };
+  return { tepMd, tepTraLoi, so: chonGomLe.length, lech: lech.length, tong: ds.length };
 }
 
 // ── đọc lại ô đã đánh ──
@@ -169,7 +173,7 @@ function docBang(tep) {
   const ket = [];
   for (const b of blok) {
     const id = /^(\S+) —/.exec(b)?.[1] || /^(\d+)\./m.exec(b)?.[1];
-    const dau = /\[x\] \*\*Đúng\*\*/i.test(b) ? 'DUNG' : /\[x\] \*\*Sai\*\*/i.test(b) ? 'SAI' : /\[x\] \*\*Không rõ\*\*/i.test(b) ? 'KHONG_RO' : null;
+    const dau = /\[x\] \*\*Rút đúng\*\*/i.test(b) ? 'DUNG' : /\[x\] \*\*Rút sai\*\*/i.test(b) ? 'SAI' : /\[x\] \*\*Không rõ\*\*/i.test(b) ? 'KHONG_RO' : null;
     if (id && dau) ket.push({ id, dau });
   }
   return ket;

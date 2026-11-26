@@ -52,12 +52,12 @@ check('goi: tệp md + tra-loi sinh đúng thư mục out', fs.existsSync(kq.tep
 // ── 2. nội dung gói: câu luật nguyên văn + câu hỏi lời thường + ô 3 lựa chọn ──
 const md = fs.readFileSync(kq.tepMd, 'utf8');
 check('gói: câu luật nguyên văn đầy đủ', md.includes(vanDong));
-check('gói: có 3 ô đánh dấu Đúng/Sai/Không rõ (mỗi vấn đề)', (md.match(/\[ \] \*\*Đúng\*\*/g) || []).length === 3);
+check('gói: có 3 ô đánh dấu Đúng/Sai/Không rõ (mỗi vấn đề)', (md.match(/\[ \] \*\*Rút đúng\*\*/g) || []).length === 3);
 check('gói: câu hỏi lời thường không dán mã HS thô', !/\bieu:854420\b/.test(md.split('---').find((b) => b.includes('Câu hỏi')) || ''));
 check('gói: LECH_PHIEU được chọn bất kể ngẫu nhiên', md.includes('LECH_PHIEU') === false && kq.so === 3);
 
 // ── 3. doc-bang: điền xong đọc lại đúng ô ──
-fs.writeFileSync(kq.tepMd, md.replace(/- \[ \] \*\*Đúng\*\*/, '- [x] **Đúng**'));
+fs.writeFileSync(kq.tepMd, md.replace(/- \[ \] \*\*Rút đúng\*\*/, '- [x] **Rút đúng**'));
 const ket = docBang(kq.tepMd);
 check('doc-bang: đọc lại ô Đúng đã đánh (1 ô)', ket.length === 1 && ket[0].dau === 'DUNG', JSON.stringify(ket));
 const kqTraLoi = JSON.parse(fs.readFileSync(kq.tepTraLoi, 'utf8'));
