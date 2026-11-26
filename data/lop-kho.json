@@ -759,13 +759,15 @@
       "duongDan": "data/do-thi/chi-muc-nghia.bin",
       "lop": "KY_THUAT",
       "aiDoc": ["lib/embed-pool.js"],
-      "moTa": "Chỉ mục nhị phân embedding tìm nhanh đường vào."
+      "tuyChon": true,
+      "moTa": "Chỉ mục nhị phân embedding tìm nhanh đường vào — sản phẩm dựng (M-37b #2023: không lưu kho; dựng bằng npm run build:chi-muc-nghia)."
     },
     {
       "duongDan": "data/do-thi/chi-muc-nghia.meta.json",
       "lop": "KY_THUAT",
       "aiDoc": ["lib/embed-pool.js"],
-      "moTa": "Siêu dữ liệu chỉ mục embedding nghĩa."
+      "tuyChon": true,
+      "moTa": "Siêu dữ liệu chỉ mục embedding nghĩa — sản phẩm dựng (M-37b #2023: không lưu kho)."
     },
     {
       "duongDan": "data/do-thi/soat-canh-hai-ve/**",
@@ -1030,8 +1032,8 @@
       "duongDan": "data/luat-goc/chi-muc/**",
       "lop": "RUT_TU_LUAT",
       "aiDoc": [],
-      "tuyChon": false,
-      "moTa": "Chỉ mục nghĩa (vec.bin int8, id.json, meta.json) dựng từ câu nguyên văn của kho luật gốc (phan, chuong, nhom, phan-nhom, sen, tên biểu); mỗi mục là id câu thật, meta ghi sha256 kho nguồn; không tiền lệ, không BO_TRO (M-37)."
+      "tuyChon": true,
+      "moTa": "Chỉ mục nghĩa (vec.bin int8, id.json, meta.json) dựng từ câu nguyên văn của kho luật gốc (phan, chuong, nhom, phan-nhom, sen, tên biểu); mỗi mục là id câu thật, meta ghi sha256 kho nguồn; không tiền lệ, không BO_TRO (M-37). M-37b #2023: sản phẩm dựng, không lưu kho — npm run build:chi-muc-luat; thiếu tệp → timNghia trả THIEU êm."
     },
     {
       "duongDan": "data/oz-export/README.md",
