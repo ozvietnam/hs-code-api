@@ -99,8 +99,10 @@ check("versions: current = v4-2026-11-21-pvtm, 11.871 dòng", cur?.id === "v4-20
 const sha = (p) => crypto.createHash("sha256").update(fs.readFileSync(p)).digest("hex");
 const fV4 = `data/versions/${cur?.file}`, fV3 = "data/versions/tax-2026-11-12-duong-1309.json";
 if (cur && fs.existsSync(fV4) && fs.existsSync(fV3)) {
-  check("snapshot v4 khớp checksum + trùng nội dung tax.json", cur.checksum === `sha256:${sha(fV4)}` && sha(fV4) === sha("data/tax.json"));
   const a = JSON.parse(fs.readFileSync(fV3, "utf8")), b = JSON.parse(fs.readFileSync(fV4, "utf8"));
+  const doiSauV4 = [];
+  for (const hs of Object.keys(b)) for (const f of new Set([...Object.keys(b[hs]), ...Object.keys(taxData[hs] || {})])) if (b[hs][f] !== taxData[hs]?.[f]) doiSauV4.push(`${hs}.${f}`);
+  check("snapshot v4 khớp checksum + trùng nội dung tax.json (trừ 26140010.cs sửa số hiệu #1987)", cur.checksum === `sha256:${sha(fV4)}` && (sha(fV4) === sha("data/tax.json") || JSON.stringify(doiSauV4) === JSON.stringify(["26140010.cs"])), doiSauV4);
   const doiCs = [], doiKhac = [];
   for (const hs of Object.keys(a)) for (const f of new Set([...Object.keys(a[hs]), ...Object.keys(b[hs] || {})])) if (a[hs][f] !== b[hs]?.[f]) (f === "cs" ? doiCs : doiKhac).push(`${hs}.${f}`);
   const mong = [...Object.values(HET).flat(), ...Object.values(CON_AP).flatMap((x) => x.ma)].sort();
