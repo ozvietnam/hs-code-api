@@ -536,13 +536,20 @@ try {
   const qVecMock = new Float32Array(384);
   qVecMock[10] = 1;
   const hitDisk = idxDisk ? ep.timTheoNghiaTrucTiep(qVecMock, idxDisk, { k: 5 }) : null;
+  // M-37b (#2023): chi-muc-nghia.bin là sản phẩm dựng, không lưu kho — có trên đĩa thì kiểm nạp thật;
+  // không có (clone sạch/CI) thì kiểm KHÔNG nạp kiểu int8 rác: phải là lớp dự phòng (gd0 centroid) hoặc null.
+  const coBinThat = fs.existsSync(path.join(process.cwd(), 'data', 'do-thi', 'chi-muc-nghia.bin'));
   check(
-    'taiChiMucNghia nạp sạch chi-muc-nghia.bin + .meta.json (Option B) trên đĩa',
-    idxDisk?.kieu === 'int8'
-      && idxDisk.count > 20000
-      && idxDisk.vectors.length === idxDisk.count * idxDisk.dim
-      && Boolean(hitDisk?.nhom4?.length === 5),
-    { kieu: idxDisk?.kieu, count: idxDisk?.count, dim: idxDisk?.dim, hits: hitDisk?.nhom4?.length },
+    coBinThat
+      ? 'taiChiMucNghia nạp sạch chi-muc-nghia.bin + .meta.json (Option B) trên đĩa'
+      : 'M-37b: đĩa không có chi-muc-nghia.bin → không nạp kiểu int8 rác (lớp dự phòng gd0 hoặc null)',
+    coBinThat
+      ? idxDisk?.kieu === 'int8'
+        && idxDisk.count > 20000
+        && idxDisk.vectors.length === idxDisk.count * idxDisk.dim
+        && Boolean(hitDisk?.nhom4?.length === 5)
+      : idxDisk == null || idxDisk.kieu !== 'int8',
+    { coTep: coBinThat, kieu: idxDisk?.kieu, count: idxDisk?.count, dim: idxDisk?.dim, hits: hitDisk?.nhom4?.length },
   );
 
   // Kiểm tra file .bin bị lệch kích thước/dim → trả null an toàn
