@@ -18,14 +18,16 @@ Mỗi dòng JSONL một bản ghi. Mỗi vấn đề **một điều kiện đơ
 | Trường | Luật |
 |---|---|
 | `id` | `hs:<nut>:<số>`, duy nhất toàn kho |
-| `nut` | Nút sinh ra vấn đề, trên đường đi: `phan:XV` · `chuong:76` · `chuong:28:pc:II` · `bieu:7605` (4) · `bieu:76051` (tiêu đề 5 số) · `bieu:760519` (6) · `bieu:7606123` / `bieu:…:td1` (tiêu đề 7 số) · `bieu:76051910` (8). Cấp Chương ghi `chuong:76`, không ghi `bieu:76` |
+| `nut` | Nút sinh ra vấn đề, trên đường đi: `gir:3:b` (Quy tắc tổng quát, `gir:<1-6>[:a-c]`, áp cho mọi mã) · `phan:XV` · `chuong:76` · `chuong:28:pc:II` · `bieu:7605` (4) · `bieu:76051` (tiêu đề 5 số) · `bieu:760519` (6) · `bieu:7606123` / `bieu:…:td1` (tiêu đề 7 số) · `bieu:76051910` (8). Cấp Chương ghi `chuong:76`, không ghi `bieu:76` |
 | `loai` | Một trong sáu loại ở mục 3 |
 | `dieuKien` | Một câu ngắn, một dòng, ≤ 300 ký tự, nói đúng một điều kiện |
 | `trich` | Chép nguyên văn một đoạn của câu `cau` (so sau khi chuẩn hoá khoảng trắng như `scripts/kiem-luat-goc.mjs`). Không sửa chữ cho đẹp |
 | `cau` | id câu trong `data/luat-goc/cau` (dạng `<id nút>#<số>`). Cấm câu tiền lệ `tb:` |
 | `tu` | Chỉ ở `PHAI_LA` sinh từ **cạnh đi vào** (câu ở nơi khác loại/phân hàng sang nút này): id câu nguồn, phải trùng `cau` — trích chính câu nguồn đó |
-| `den` | Mảng id nút đích (`bieu:` / `chuong:` / `phan:` / `gir:`). **Bắt buộc** với `KHONG_DUOC_LA` (chuyển đi đâu); được có ở `PHAI_LA`, `CHI_LIET_KE`; loại khác không mang |
+| `den` | Mảng id nút đích (`bieu:` / `chuong:` / `phan:` / `gir:`). **Bắt buộc** với `KHONG_DUOC_LA` (chuyển đi đâu); được có ở `PHAI_LA`, `CHI_LIET_KE`; loại khác không mang. Nơi chuyển của `KHONG_DUOC_LA` phải ở **ngoài** `nut`: câu đưa hàng về một nút nằm trong chính `nut` (Phần XV → Chương 82) là `PHAI_LA` mang `den` đó; câu trừ một hàng ra khỏi một quy tắc (không phải khỏi nút) là `CHI_LIET_KE` |
 | `voi` | Mảng id anh em cùng cha. **Bắt buộc** với `TACH_ANH_EM`; được có ở `NGUONG` |
+| `phuDinh` | Chỉ ở `TACH_ANH_EM` / `PHAI_LA` của dòng "Loại khác": mảng id anh em có tên mà dòng này phủ định. Mỗi phần tử phải là anh em cùng cha (cổng 4); cổng 3 tính cặp (nút, phần tử) là đã tách |
+| `thuatNgu` | Chỉ và **bắt buộc** ở `DINH_NGHIA`: thuật ngữ được định nghĩa, nguyên chữ trong câu hoặc câu dẫn (`"Dây"`, `"kim loại cơ bản"`). Mỗi điều kiện đơn của một định nghĩa là một vấn đề, cùng `thuatNgu`; máy ghép so hai phiếu `DINH_NGHIA` theo `thuatNgu` |
 | `nguong` | Chỉ `NGUONG`: `{daiLuong, donVi, tu, den, gomTu, gomDen}` — `tu`/`den` là số hoặc `null` (vô cùng), ít nhất một số |
 | `duKien` | Mảng **loại dữ kiện cần biết**, mỗi mục phải **có nguyên chữ trong câu luật** (`"hàm lượng nhôm"`, `"kích thước mặt cắt ngang lớn nhất"`, `"cách điện"`). Không tự đặt tên dữ kiện, không suy từ khoá → nhóm. Rỗng được |
 | `lop`, `nguon` | Chép từ nút nguồn của câu: `lop` (`LUAT` / `HUONG_DAN`), `nguon` = `nguon.vanBan` |
@@ -51,7 +53,7 @@ Câu có sức pháp lý trên đường đi mà **không tạo điều kiện**
 |---|---|---|
 | `PHAI_LA` | Điều kiện hàng phải thoả để vào nút (tên nhóm/phân nhóm/dòng, câu "nhóm này bao gồm") | `bieu:7605#1` "Dây nhôm" |
 | `KHONG_DUOC_LA` | Điều kiện loại ra khỏi nút, **kèm nơi chuyển** (`den`) | Chú giải chi tiết 76.05 (e) → 85.44 |
-| `TACH_ANH_EM` | Điểm khác giữa nút và một anh em cùng cha (`voi`); "Loại khác" = phủ định các anh em có tên | 7605.19.10 / 7605.19.90 |
+| `TACH_ANH_EM` | Điểm khác giữa nút và anh em cùng cha (`voi`). Quy ước: trích **tên của chính nút**, mỗi đoạn tên một vấn đề, `voi` gồm mọi anh em bị tách bởi đoạn đó; "Loại khác" trích chữ "khác", `voi` = các anh em có tên | 7605.19.10 / 7605.19.90 |
 | `DINH_NGHIA` | Định nghĩa thuật ngữ áp cho nút (chú giải định nghĩa "dây", "hợp kim nhôm") | Chú giải phân nhóm 1(b) Chương 76 |
 | `NGUONG` | Ngưỡng số phân dải anh em trên một đại lượng có chữ trong luật | "Kích thước mặt cắt ngang lớn nhất trên 7 mm" |
 | `CHI_LIET_KE` | Vấn đề chỉ liệt kê được, không quy được về điều kiện máy kiểm: Quy tắc 2(a), 3(b), bộ phận, đa chức năng, "chủ yếu dùng cho", "đặc tính cơ bản" — để tầng so với mô tả khách (LLM mạnh) cân nhắc | Chú giải 2 Phần XVI |
@@ -66,7 +68,8 @@ Câu được trích: câu của chính nút, của nút phía trên trên đư�
 |---|---|---|---|
 | `phan/` | `phan:XV` | `XV` | M-72 |
 | `chuong/` | `chuong:76`, `chuong:28:pc:II` | `76`, `28` | M-72 |
-| `nhom/` | nhóm 4 số và tiêu đề 5 số | `7605` | M-73 |
+| `nhom/` | nhóm 4 số (M-73); tiêu đề 5 số (M-76) | `7605` | M-73, M-76 |
+| mọi thư mục | `gir:*` (Quy tắc tổng quát) | `gir` (`liet-ke/gir.jsonl`, `phan/gir.jsonl`…) | M-72, M-75 |
 | `phan-nhom/` | 6 số và tiêu đề 7 số | `760519` | M-76 |
 | `dong/` | 8 số | `76051910` | M-76 |
 | `nguong/` | `NGUONG` của mọi cấp | Chương (`76`) hoặc Phần (`XV`) | M-74 |
@@ -78,12 +81,12 @@ Kho riêng, tách hẳn đồ cũ: `data/ho-so/` và `lib/ho-so/` là hồ sơ p
 
 ## 5. Năm cổng (`scripts/ho-so-ma/cong.mjs`)
 
-Chạy theo phạm vi: `--pham-vi 76 | chuong:76 | phan:XV | chuong:28:pc:II | 7605 | 760519 | 76051910` (lặp được). Mặc định phạm vi gồm cả các cấp phía trên (đường đi đầy đủ); `--chi-trong` chỉ xét bên trong phạm vi — thẻ tách một cấp dùng cái này. Không có phạm vi: chỉ chạy khuôn + cổng 4, 5 trên mọi bản ghi.
+Chạy theo phạm vi: `--pham-vi 76 | chuong:76 | phan:XV | chuong:28:pc:II | 7605 | 760519 | 76051910` (lặp được). Mặc định phạm vi gồm cả các cấp phía trên (đường đi đầy đủ); `--chi-trong` chỉ xét bên trong phạm vi — thẻ tách một cấp dùng cái này. `--toi-cap phan|chuong|4|6|8` chỉ xét nút tới cấp đó: nút sâu hơn không vào cổng 1–3, anh em sâu hơn không đòi tách (M-72 dùng `phan`/`chuong`, M-73 dùng `4`). **Tiêu đề 5 số xếp cùng bậc 6 số** (anh em của nó là phân nhóm 6 số) nên do M-76 tách, dù tệp vẫn ở `nhom/`. Không có phạm vi: chỉ chạy khuôn + cổng 4, 5 trên mọi bản ghi.
 
 1. **ĐỦ** — mọi câu trên đường đi mà nút nguồn lớp `LUAT`, hoặc lớp `HUONG_DAN` và câu có cạnh `LOAI_SANG` / `PHAN_VE` / `DINH_NGHIA` (hay `CHUA_RO` có một trong ba) trong `data/luat-goc/nghia-canh`, đã có ít nhất một vấn đề hoặc một BỎ QUA trích câu đó. Câu `HUONG_DAN` không có cạnh như vậy (ví dụ câu dẫn "Nhóm này không bao gồm:") không bắt buộc.
-2. **LOẠI** — *Cạnh đi ra* (từ câu trên đường đi): `LOAI_SANG` cần vấn đề `KHONG_DUOC_LA` cùng câu có `den` chứa đích cạnh; `PHAN_VE` và `CHUA_RO` (phiếu có `LOAI_SANG` hoặc `PHAN_VE`) cần `KHONG_DUOC_LA` hoặc `PHAI_LA` cùng câu, `den` chứa đích. BỎ QUA không thay được. *Cạnh đi vào* (câu ở nơi khác — không phải chính nút đích, nút trên hay nút dưới nó; anh em cùng Chương cũng là nơi khác — đích là nút trên đường đi): `LOAI_SANG` / `PHAN_VE` trạng thái `KHOP` cần `PHAI_LA` ở nút đích mang `tu` = câu nguồn; `CHUA_RO` chỉ **cảnh báo**, không đỏ.
+2. **LOẠI** — *Cạnh đi ra* (từ câu trên đường đi): `LOAI_SANG` cần vấn đề `KHONG_DUOC_LA` cùng câu có `den` chứa đích cạnh; `PHAN_VE` và `CHUA_RO` (phiếu có `LOAI_SANG` hoặc `PHAN_VE`) cần `KHONG_DUOC_LA` hoặc `PHAI_LA` cùng câu, `den` chứa đích. Đích nằm **trong** nút chủ của câu thì chỉ nhận `PHAI_LA`. Chỉ đòi khi đích cạnh là **nút phân loại** (`phan:` / `chuong:` / `bieu:` / `gir:`); cạnh trỏ vào câu chú giải (`phan:XV:cg:1`) chỉ cảnh báo. BỎ QUA không thay được. *Cạnh đi vào* (câu ở nơi khác — không phải chính nút đích, nút trên hay nút dưới nó; anh em cùng Chương cũng là nơi khác — đích là nút trên đường đi): `LOAI_SANG` / `PHAN_VE` trạng thái `KHOP` cần `PHAI_LA` ở nút đích mang `tu` = câu nguồn; `CHUA_RO` chỉ **cảnh báo**, không đỏ.
 3. **ANH EM** — mỗi cặp nút cùng cha (trong phạm vi; ở chế độ đường đi đủ thì thêm cặp nút trên đường đi với anh em của nó) có `TACH_ANH_EM` giữa hai nút hoặc `NGUONG` cùng đại lượng, cùng đơn vị, không chồng dải. Đỏ khi: chưa tách; `NGUONG` chồng; hai anh em trùng bộ điều kiện (`loai` + `dieuKien`); `voi` trỏ ra ngoài anh em; mọi anh em cùng có `NGUONG` trên một đại lượng mà dải hở giữa chừng.
-4. **TRÍCH** — `cau` có thật trong kho câu, không phải tiền lệ; `trich` nằm nguyên văn trong chữ câu; `lop`, `nguon` khớp nút nguồn; mỗi `duKien` có nguyên chữ trong câu; câu thuộc đường đi của `nut` (mục 3); `den`, `voi` là nút có thật.
+4. **TRÍCH** — bản ghi `gir:*` vào cổng 4, 5 ở mọi phạm vi và phải trích câu của chính quy tắc đó (`gir:3:b#…`, `gir:3:b:ct:…`); `phuDinh` là anh em thật; `cau` có thật trong kho câu, không phải tiền lệ; `trich` nằm nguyên văn trong chữ câu; `lop`, `nguon` khớp nút nguồn; mỗi `duKien` có nguyên chữ trong câu; `thuatNgu` có nguyên chữ trong câu hoặc câu dẫn; nơi chuyển của `KHONG_DUOC_LA` không nằm trong chính `nut`; câu thuộc đường đi của `nut` (mục 3); `den`, `voi` là nút có thật.
 5. **VÂN TAY** — `van` = sha256 chữ câu hiện hành. Lệch thì đỏ kèm lệnh `node scripts/ho-so-ma/cong.mjs --dinh-cau '<câu>'` (in chữ mới, vân tay mới và mọi bản ghi dính câu) để thẻ tách của cấp đó dựng lại đúng phần đó.
 
 Khuôn: `node scripts/ho-so-ma/khuon.mjs`. Bài kiểm: `node scripts/test-ho-so-ma.mjs` (dữ liệu giả Chương 76, câu thật, ca ngược cho từng cổng).
@@ -94,6 +97,7 @@ Khuôn: `node scripts/ho-so-ma/khuon.mjs`. Bài kiểm: `node scripts/test-ho-so
 
 ```js
 { khuon: 'ho-so-ma@1', ma: '76051910', soVanDe, thieu: ['DONG bieu:76051910: chưa có …'],
+  gir: { cap: 'GIR', lop: 'gir', vanDe: [mọi bản ghi nut gir:* ở <thư mục>/gir.jsonl], soBoQua, chuaKhop },  // áp cho mọi mã, tính vào soVanDe, không tính thieu
   duong: [ { cap: 'PHAN' | 'CHUONG' | 'PHAN_CHUONG' | 'NHOM' | 'TIEU_DE_5' | 'PHAN_NHOM' | 'TIEU_DE_7' | 'DONG',
              nut, ten, anhEm: [{nut, ten}], vanDe: [bản ghi y nguyên trong kho], soBoQua, chuaKhop: [id], thieu } ] }
 ```

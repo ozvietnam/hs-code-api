@@ -9,6 +9,8 @@
 //
 //   node scripts/ho-so-ma/cong.mjs --pham-vi <76 | chuong:76 | phan:XV | chuong:28:pc:II | 7605 | 760519 | 76051910 | bieu:…> [--pham-vi …]
 //        [--chi-trong]  chỉ câu / anh em bên trong phạm vi, bỏ các cấp phía trên (cho thẻ tách từng cấp)
+//        [--toi-cap phan|chuong|4|6|8]  chỉ xét nút tới cấp đó (gồm cả cấp đó): nút sâu hơn không vào cổng 1–3, anh em sâu hơn không đòi tách
+//                       (thẻ tách Phần/Chương dùng chuong, thẻ nhóm 4 số dùng 4; tiêu đề 5 số đi cùng cấp 6 số)
 //        [--cong 1,2,3,4,5] [--luat <data/luat-goc>] [--ho-so <data/ho-so-ma>]
 //   Không --pham-vi: chỉ chạy khuôn + cổng 4, 5 trên mọi bản ghi (cổng 1–3 cần phạm vi).
 //   node scripts/ho-so-ma/cong.mjs --dinh-cau <id câu>   in chữ câu hiện hành, vân tay mới và mọi bản ghi dính câu đó (để dựng lại)
@@ -40,7 +42,7 @@ export function napLuatCong(thuMuc = G.LUAT_MAC_DINH) {
   const tmCau = path.join(thuMuc, 'cau');
   if (fs.existsSync(tmCau)) {
     for (const f of fs.readdirSync(tmCau).filter((x) => x.endsWith('.jsonl') && !KHO_BO.has(x)).sort()) {
-      for (const c of G.docJsonl(path.join(tmCau, f))) { const nId = c.id.split('#')[0]; if (nut.has(nId)) cau.set(c.id, { nut: nId, tu: c.tu, den: c.den }); }
+      for (const c of G.docJsonl(path.join(tmCau, f))) { const nId = c.id.split('#')[0]; if (nut.has(nId)) cau.set(c.id, { nut: nId, tu: c.tu, den: c.den, dan: c.dan }); }
     }
   }
   const tmCanh = path.join(thuMuc, 'nghia-canh');
@@ -72,6 +74,9 @@ function laNoiKhac(cauId, den, L) {
   if ((G.duongDiNut(chu, L.cay) || []).some((x) => x.nut === den)) return false;
   return !G.trenCua(den, L.cay).includes(chu) && chu !== den;
 }
+/** Đích của cạnh là nút phân loại (nơi hàng chuyển tới được) — cùng ngữ pháp `den` của khuôn. Cạnh trỏ vào câu chú giải
+ *  (phan:XV:cg:1, chuong:64:cg:2) là dẫn chiếu tới câu luật, không phải nơi chuyển: cổng 2 chỉ cảnh báo, không đòi den. */
+const RE_NOI_CHUYEN = /^(?:phan:[IVX]+|chuong:\d{2}(?::pc:[IVX]+)?|bieu:\d{2,8}(?::td\d+)*|gir:[1-6](?::[a-c])?)$/;
 const canhTaoDieuKien = (e) => (e.trangThai === 'CHUA_RO' ? /LOAI_SANG|PHAN_VE|DINH_NGHIA/.test(e.vi || '') : LOAI_CANH_BAT_BUOC.has(e.loai));
 
 /** Phạm vi: nút gốc, các nút bên trong (gồm gốc), các nút phía trên. */
@@ -94,14 +99,26 @@ function chong(a, b) {
   const truoc = (x, y) => x.den !== null && y.tu !== null && (x.den < y.tu || (x.den === y.tu && !(x.gomDen && y.gomTu)));
   return !truoc(a, b) && !truoc(b, a);
 }
+/** Thứ bậc cấp nút để giới hạn --toi-cap. Tiêu đề 5 số xếp cùng bậc 6 số (anh em của nó là phân nhóm 6 số). */
+const BAC_CAP = { PHAN: 0, CHUONG: 1, PHAN_CHUONG: 1, NHOM: 2, TIEU_DE_5: 3, PHAN_NHOM: 3, TIEU_DE_7: 4, DONG: 4 };
+export const TOI_CAP = Object.freeze({ phan: 0, chuong: 1, 4: 2, 6: 3, 8: 4 });
+export function giaiToiCap(v) {
+  if (v === null || v === undefined) return null;
+  const k = String(v).trim().toLowerCase();
+  if (!(k in TOI_CAP)) throw new Error(`--toi-cap lạ "${v}" (chỉ ${Object.keys(TOI_CAP).join(' | ')})`);
+  return TOI_CAP[k];
+}
+const trongCap = (id, toiCap) => toiCap === null || (BAC_CAP[G.capCuaNut(id)] ?? 99) <= toiCap;
+
 const khoaNguong = (n) => `${chuanSo(n.daiLuong).toLowerCase()}|${chuanSo(n.donVi ?? '').toLowerCase()}`;
 
 /**
  * Chạy các cổng. Trả {khuon: string[], cong: {1..5: {ten, loi: string[], soKiem}}}.
- * @param {{luat?: string, hoSo?: string, phamVi?: string[], chiTrong?: boolean, cong?: number[], L?: object}} o
+ * @param {{luat?: string, hoSo?: string, phamVi?: string[], chiTrong?: boolean, toiCap?: string|number|null, cong?: number[], L?: object}} o
  */
-export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, phamVi = [], chiTrong = false, cong = [1, 2, 3, 4, 5], L = null } = {}) {
+export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, phamVi = [], chiTrong = false, toiCap = null, cong = [1, 2, 3, 4, 5], L = null } = {}) {
   L = L || napLuatCong(luat);
+  const cap = typeof toiCap === 'number' ? toiCap : giaiToiCap(toiCap);
   const kho = kiemKhoHoSo(hoSo);
   const tot = kho.banGhi.filter((x) => !x._hong);
   const theoCau = new Map(); const vanDeTheoNut = new Map();
@@ -111,7 +128,7 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
   }
   const pv = phamVi.map((p) => giaiPhamVi(p, L));
   const N = new Set(); const NTrong = new Set();
-  for (const p of pv) { for (const id of p.duoi) { N.add(id); NTrong.add(id); } if (!chiTrong) for (const id of p.tren) N.add(id); }
+  for (const p of pv) { for (const id of p.duoi) if (trongCap(id, cap)) { N.add(id); NTrong.add(id); } if (!chiTrong) for (const id of p.tren) N.add(id); }
   const ra = {
     1: { ten: 'ĐỦ', loi: [], soKiem: 0 }, 2: { ten: 'LOẠI', loi: [], canhBao: [], soKiem: 0 }, 3: { ten: 'ANH EM', loi: [], soKiem: 0 },
     4: { ten: 'TRÍCH', loi: [], soKiem: 0 }, 5: { ten: 'VÂN TAY', loi: [], soKiem: 0 },
@@ -135,9 +152,13 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
   if (pv.length && cong.includes(2)) {
     for (const c of S) {
       for (const e of L.canhTheoTu.get(c) || []) {
-        const doi = loaiCanhDoi(e);
+        let doi = loaiCanhDoi(e);
         if (!doi) continue;
+        if (!RE_NOI_CHUYEN.test(e.den)) { ra[2].canhBao.push(`${c} → ${e.den} (${e.trangThai === 'CHUA_RO' ? `CHUA_RO ${e.vi}` : e.loai}): đích là câu chú giải, không phải nơi chuyển — không đòi den`); continue; }
         ra[2].soKiem += 1;
+        // Đích nằm BÊN TRONG nút chủ của câu (Phần XV → Chương 82): không thể "loại khỏi" nút đó; câu phân về nút con ⇒ đòi PHAI_LA.
+        const chu = G.chuCuaCau(c);
+        if (chu && chu !== G.CHUNG && G.trenCua(e.den, L.cay).includes(chu)) doi = ['PHAI_LA'];
         const co = (theoCau.get(c) || []).some((x) => doi.includes(x.loai) && (x.den || []).includes(e.den));
         if (!co) ra[2].loi.push(`${c} → ${e.den} (${e.trangThai === 'CHUA_RO' ? `CHUA_RO ${e.vi}` : e.loai}) chưa có vấn đề ${doi.join(' / ')} với den chứa ${e.den}`);
       }
@@ -158,14 +179,14 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
     const nhom = []; // {cha, con[], chiVoi?: nút}
     const daCo = new Set();
     for (const id of NTrong) {
-      const con = G.conCua(id, L.cay);
+      const con = G.conCua(id, L.cay).filter((x) => trongCap(x, cap));
       if (con.length >= 2 && !daCo.has(id)) { daCo.add(id); nhom.push({ cha: id, con }); }
     }
     if (!chiTrong) {
       for (const p of pv) {
         for (const a of [...p.tren, p.goc]) {
           if (/^phan:/.test(a)) continue;
-          const ae = G.anhEmCua(a, L.cay);
+          const ae = G.anhEmCua(a, L.cay).filter((x) => trongCap(x, cap));
           if (ae.length) nhom.push({ cha: `cha của ${a}`, con: [a, ...ae], chiVoi: a });
         }
       }
@@ -181,7 +202,8 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
           const k = [A, B].sort().join('|');
           if (daCap.has(k)) continue;
           daCap.add(k); ra[3].soKiem += 1;
-          const tach = vd(A).some((x) => x.loai === 'TACH_ANH_EM' && x.voi.includes(B)) || vd(B).some((x) => x.loai === 'TACH_ANH_EM' && x.voi.includes(A));
+          const tachBoi = (P, Q) => vd(P).some((x) => (x.loai === 'TACH_ANH_EM' && x.voi.includes(Q)) || (x.phuDinh || []).includes(Q)); // phuDinh: "Loại khác" phủ định anh em có tên
+          const tach = tachBoi(A, B) || tachBoi(B, A);
           let tachNguong = false;
           for (const qa of vd(A).filter((x) => x.loai === 'NGUONG')) {
             for (const qb of vd(B).filter((x) => x.loai === 'NGUONG')) {
@@ -220,7 +242,7 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
   }
 
   // Cổng 4, 5: bản ghi của nút trong phạm vi (không phạm vi: mọi bản ghi).
-  const R = pv.length ? tot.filter((x) => N.has(x.nut)) : tot;
+  const R = pv.length ? tot.filter((x) => N.has(x.nut) || G.capCuaNut(x.nut) === 'GIR') : tot; // Quy tắc tổng quát nằm trên mọi đường đi
   const coThat = (id) => L.nut.has(id) || L.cay.theoId.has(id) || (/^chuong:(\d{2})$/.test(id) && !!CHUONG_SANG_PHAN[id.slice(7)]) || (/^phan:[IVX]+$/.test(id) && Object.values(CHUONG_SANG_PHAN).includes(id.slice(5)));
   if (cong.includes(4)) {
     for (const x of R) {
@@ -234,15 +256,24 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
       const anhEm = new Set(G.anhEmCua(x.nut, L.cay));
       const vao = x.tu !== undefined && (L.canhTheoTu.get(x.cau) || []).some((e) => e.den === x.nut && loaiCanhVao(e));
       if (x.tu !== undefined && !vao) ra[4].loi.push(`${x.id}: tu ${x.tu} không có cạnh LOAI_SANG / PHAN_VE nào đi vào ${x.nut}`);
-      const dungCho = x.loai === BO_QUA ? chu0 === x.nut
+      const nutCau = L.cau.get(x.cau).nut;
+      const laGir = G.capCuaNut(x.nut) === 'GIR';
+      const dungCho = laGir ? (nutCau === x.nut || nutCau.startsWith(`${x.nut}:`)) // Quy tắc tổng quát: câu của chính quy tắc đó
+        : x.loai === BO_QUA ? chu0 === x.nut
         : vao || chu0 === G.CHUNG || chu0 === x.nut || tren.has(chu0) || ((x.loai === 'TACH_ANH_EM' || x.loai === 'NGUONG') && anhEm.has(chu0));
-      if (!dungCho) ra[4].loi.push(`${x.id}: câu ${x.cau} thuộc ${chu0 || '(ngoài hồ sơ)'}, không nằm trên đường đi của ${x.nut}${x.loai === BO_QUA ? ' (BỎ QUA phải ghi ở đúng nút của câu)' : ''}`);
+      for (const d of x.phuDinh || []) if (!anhEm.has(d)) ra[4].loi.push(`${x.id}: phuDinh ${d} không phải anh em cùng cha của ${x.nut}`);
+      if (!dungCho) ra[4].loi.push(`${x.id}: câu ${x.cau} thuộc ${laGir ? nutCau : chu0 || '(ngoài hồ sơ)'}, không nằm trên đường đi của ${x.nut}${x.loai === BO_QUA ? ' (BỎ QUA phải ghi ở đúng nút của câu)' : ''}`);
       if (x.loai === BO_QUA) continue;
       const cs = chuanSo(chu); const csThuong = cs.toLowerCase();
       if (!cs.includes(chuanSo(x.trich))) ra[4].loi.push(`${x.id}: trích không nguyên văn câu ${x.cau} — "${ngan(x.trich)}"`);
       if (x.lop !== nNguon.lop) ra[4].loi.push(`${x.id}: lop ${x.lop} khác nút nguồn (${nNguon.lop})`);
       if (x.nguon !== nNguon.nguon) ra[4].loi.push(`${x.id}: nguon "${ngan(String(x.nguon))}" khác nút nguồn "${ngan(String(nNguon.nguon))}"`);
       for (const d of x.duKien) if (!csThuong.includes(chuanSo(d).toLowerCase())) ra[4].loi.push(`${x.id}: dữ kiện "${d}" không có trong chữ câu ${x.cau} (chỉ rút từ chữ luật)`);
+      if (x.loai === 'KHONG_DUOC_LA') for (const d of x.den || []) if (G.trenCua(d, L.cay).includes(x.nut)) ra[4].loi.push(`${x.id}: nơi chuyển ${d} nằm trong chính ${x.nut} — KHONG_DUOC_LA phải chuyển ra ngoài nút (câu phân về nút con là PHAI_LA)`);
+      if (x.loai === 'DINH_NGHIA' && x.thuatNgu) {
+        const dan = L.cau.get(x.cau).dan; const nen = `${chuanSo(nNguon.v).toLowerCase()} ${dan && L.chuCau(dan) ? chuanSo(L.chuCau(dan)).toLowerCase() : ''}`; // định nghĩa nhiều câu: thuật ngữ ở câu đầu của cùng nút
+        if (!nen.includes(chuanSo(x.thuatNgu).toLowerCase())) ra[4].loi.push(`${x.id}: thuatNgu "${x.thuatNgu}" không có nguyên chữ trong nút của câu ${x.cau} hay câu dẫn`);
+      }
       for (const d of [...(x.den || []), ...(x.voi || [])]) if (!coThat(d)) ra[4].loi.push(`${x.id}: nút ${d} không có trong kho luật`);
     }
   }
@@ -254,7 +285,7 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
       if (vanTay(chu) !== x.van) ra[5].loi.push(`${x.id}: vân tay lệch câu ${x.cau} (luật đổi chữ) — dựng lại: node scripts/ho-so-ma/cong.mjs --dinh-cau '${x.cau}' rồi tách lại vấn đề của ${x.nut}`);
     }
   }
-  return { khuon: kho.loi, soBanGhi: kho.banGhi.length, phamVi: pv.map((p) => p.goc), cong: Object.fromEntries(cong.map((k) => [k, ra[k]])) };
+  return { khuon: kho.loi, soBanGhi: kho.banGhi.length, phamVi: pv.map((p) => p.goc), toiCap: cap, cong: Object.fromEntries(cong.map((k) => [k, ra[k]])) };
 }
 
 /** Chữ câu, vân tay hiện hành và mọi bản ghi dính câu. */
@@ -271,11 +302,11 @@ function main() {
   const hoSo = path.resolve(lay('--ho-so')[0] || G.HO_SO_MAC_DINH);
   if (lay('--dinh-cau').length) { console.log(JSON.stringify(dinhCau(lay('--dinh-cau')[0], { luat, hoSo }), null, 2)); return; }
   const cong = lay('--cong')[0] ? lay('--cong')[0].split(',').map(Number) : [1, 2, 3, 4, 5];
-  const r = chayCong({ luat, hoSo, phamVi: lay('--pham-vi'), chiTrong: a.includes('--chi-trong'), cong });
+  const r = chayCong({ luat, hoSo, phamVi: lay('--pham-vi'), chiTrong: a.includes('--chi-trong'), toiCap: lay('--toi-cap')[0] ?? null, cong });
   let do_ = r.khuon.length ? 1 : 0;
   console.log(`${r.khuon.length ? 'FAIL' : 'PASS'} khuôn: ${r.soBanGhi} bản ghi, ${r.khuon.length} lỗi`);
   for (const l of r.khuon.slice(0, 30)) console.log(`  ✗ ${l}`);
-  const nhan = r.phamVi.length ? `phạm vi ${r.phamVi.join(', ')}${a.includes('--chi-trong') ? ' (chỉ trong)' : ''}` : 'mọi bản ghi';
+  const nhan = r.phamVi.length ? `phạm vi ${r.phamVi.join(', ')}${a.includes('--chi-trong') ? ' (chỉ trong)' : ''}${r.toiCap !== null ? ` (tới cấp ${lay('--toi-cap')[0]})` : ''}` : 'mọi bản ghi';
   for (const [k, c] of Object.entries(r.cong)) {
     if (!r.phamVi.length && Number(k) <= 3) { console.log(`---- cổng ${k} ${c.ten}: cần --pham-vi`); continue; }
     console.log(`${c.loi.length ? 'FAIL' : 'PASS'} cổng ${k} ${c.ten} — ${nhan}: ${c.soKiem} mục kiểm, ${c.loi.length} lỗi${c.canhBao?.length ? `, ${c.canhBao.length} cảnh báo` : ''}`);
