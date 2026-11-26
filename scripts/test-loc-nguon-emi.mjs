@@ -2,19 +2,26 @@
 /**
  * OZV-2369 — Bộ lọc nguồn / EMI line filter (CW4E-20A-S):
  * - Search/từ điển kéo 8543 (không lệch 8421 lọc dầu/xăng)
- * - phanBiet sổ tay 8504↔8543 khớp câu «lọc nguồn…» khi hai nhóm cùng ứng viên
- * - Cuộn cảm/choke riêng lẻ không kích câu lọc nguồn
+ * - Không khai phanBiet 8504↔8543 (không có đoạn trích đồng thời cả hai mã trong luật gốc)
+ * - verifySoTay 8504 + 8543 sạch loai
  */
 import { createRequire } from 'node:module';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { join, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const require = createRequire(import.meta.url);
 const { searchCandidates } = require('../lib/search-utils.js');
-const H = require('../lib/hoi-theo-so-tay.js');
 const { expandSearchQuery } = require('../lib/search-query-expand.js');
+const { verifySoTay } = require('../lib/so-tay.js');
 
+const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const MO_TA = 'lọc nguồn 20a loại 1 pha cw4e-20a-s';
-const UNG = ['8543', '8504', '8536', '8421'];
+
+function loadSoTay(h4) {
+  return JSON.parse(readFileSync(join(ROOT, 'data', 'so-tay', `${h4}.json`), 'utf8'));
+}
 
 function topHs(q, n = 10) {
   const r = searchCandidates(q, { limit: n });
@@ -36,7 +43,6 @@ function check(name, fn) {
 
 check('expandSearchQuery gắn gợi ý nhóm 8543 cho «lọc nguồn»', () => {
   const ex = expandSearchQuery(MO_TA);
-  const hints = ex.hintGroups4 || ex.groupHints || ex.hs4Hints || [];
   const blob = JSON.stringify(ex);
   assert.ok(blob.includes('8543'), `expand phải gợi 8543, được: ${blob.slice(0, 400)}`);
 });
@@ -50,26 +56,14 @@ check('searchCandidates top có 85437090, không để 8421 thắng', () => {
   if (i8421 >= 0) assert.ok(i8543 < i8421, `8543 phải trước 8421: ${hs.join(',')}`);
 });
 
-check('cauPhanBietNhom từ 8543/8504 hỏi lọc nguồn → 8543 / cuộn cảm → 8504', () => {
-  const a = H.cauPhanBietNhom('8543', UNG, MO_TA);
-  const b = H.cauPhanBietNhom('8504', UNG, MO_TA);
-  const all = [...a, ...b];
-  assert.ok(all.length >= 1, 'phải có ít nhất 1 câu phanBiet');
-  const hit = all.find((q) => /lọc nguồn|EMI|nhiễu/i.test(q.questionVi || ''));
-  assert.ok(hit, `không thấy câu lọc nguồn/EMI trong ${JSON.stringify(all)}`);
-  assert.match(hit.questionVi, /85\.43|8543/);
-  assert.match(hit.questionVi, /85\.04|8504/);
-  assert.ok(hit.canCu && hit.nguon, 'câu phải có canCu + nguon (L2)');
+check('verifySoTay 8543 không loai', () => {
+  const r = verifySoTay(loadSoTay('8543'), '8543');
+  assert.equal(r.loai.length, 0, `loai: ${JSON.stringify(r.loai)}`);
 });
 
-check('cuộn cảm riêng lẻ không kích câu lọc nguồn EMI', () => {
-  const moTaChoke = 'cuộn cảm common mode choke ferrite 10mH dùng mạch nguồn';
-  const all = [
-    ...H.cauPhanBietNhom('8504', UNG, moTaChoke),
-    ...H.cauPhanBietNhom('8543', UNG, moTaChoke),
-  ];
-  const hit = all.find((q) => /lọc nguồn|EMI line|lọc nhiễu EMI/i.test(q.questionVi || ''));
-  assert.equal(hit, undefined, `không được hỏi lọc nguồn cho choke: ${JSON.stringify(hit)}`);
+check('verifySoTay 8504 không loai', () => {
+  const r = verifySoTay(loadSoTay('8504'), '8504');
+  assert.equal(r.loai.length, 0, `loai: ${JSON.stringify(r.loai)}`);
 });
 
 check('ổn định search 3 lần cùng câu', () => {
