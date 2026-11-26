@@ -4,7 +4,7 @@ import './test-isolate-data.mjs';
 import { writeFileSync, mkdirSync } from 'fs';
 import { join } from 'path';
 import { createRequire } from 'module';
-import { rutGonDieuKhoan, GHI_NGUON_CC_BY } from './sync-plhq.mjs';
+import { rutGon, rutGonHsIndex, rutGonDieuKhoan, kiemTraManifest, GHI_NGUON_CC_BY } from './sync-plhq.mjs';
 
 const require = createRequire(import.meta.url);
 const { dataPath } = require('../lib/data-paths.js');
@@ -230,6 +230,159 @@ t('rutGonDieuKhoan: báo lỗi khi thiếu nguyen_van_nguon_a hoặc lệch majo
   && nemLoi(() => rutGonDieuKhoan({}))
   && nemLoi(() => rutGonDieuKhoan({ tom_tat_nhap: [] }))
   && nemLoi(() => rutGonDieuKhoan({ luoc_do_phien_ban: '2.0.0', nguyen_van_nguon_a: [] })));
+
+// Lược đồ 1.7.0: kiemTraManifest (SHA-256 + bytes + lop-kho@1) & id / van / phienBanAhtn / trangThaiDieu / xacMinh.chan
+import { createHash } from 'crypto';
+const regText = JSON.stringify({
+  luoc_do_phien_ban: '1.7.0',
+  lop_du_lieu: 'LUAT',
+  phien_ban: '2026-11-26',
+  van_ban: [
+    {
+      id: 'vb:45-2024-tt-bct',
+      van: 'a'.repeat(64),
+      so_hieu: '45/2024/TT-BCT',
+      ten: 'Test lệch số hiệu',
+      loai: 'THONG_TU',
+      co_quan: 'BCT',
+      tinh_trang: 'CON_HIEU_LUC',
+      slug: '45-2024-tt-bct',
+      xac_minh: {
+        muc: 'NGUON_A',
+        hieu_luc_da_doi_chieu: false,
+        ngay: '2026-10-04',
+        chan: { ma: 'SO_HIEU_LECH', viec_tiep: 'issue #1987', ngay: '2026-10-04' },
+      },
+    },
+    {
+      so_hieu: '11/2018/TT-BTTTT',
+      ten: 'Tương thích ngược 1.6.0',
+      loai: 'THONG_TU',
+      co_quan: 'BTTTT',
+      tinh_trang: 'CON_HIEU_LUC',
+      slug: '11-2018-tt-btttt',
+    },
+  ],
+});
+const shaOf = (s) => createHash('sha256').update(Buffer.from(s, 'utf8')).digest('hex');
+const manifestOk = {
+  luoc_do_phien_ban: '1.7.0',
+  chuan_lop_du_lieu: 'lop-kho@1',
+  tep: {
+    'registry.json': { sha256: shaOf(regText), bytes: Buffer.byteLength(regText, 'utf8'), lop_du_lieu: 'LUAT' },
+    'hs-index.json': { sha256: '0'.repeat(64), bytes: 2, lop_du_lieu: 'LUAT' },
+    'dieu-khoan.json': {
+      sha256: '0'.repeat(64), bytes: 2, lop_du_lieu: 'LUAT',
+      truong_lan: { nguyen_van_nguon_a: 'LUAT', tom_tat_nhap: 'BO_TRO' },
+    },
+    'hs-index-theo-ma.json': {
+      sha256: '0'.repeat(64), bytes: 2, lop_du_lieu: 'LUAT',
+      truong_lan: { ma: 'LUAT', canh_bao_ma: 'KY_THUAT', anh_xa_ahtn_cu: 'BO_TRO', tien_le_tb_tchq: 'TIEN_LE' },
+    },
+  },
+};
+const mfRes = kiemTraManifest(manifestOk, { 'registry.json': regText });
+t('kiemTraManifest: khớp SHA-256, bytes, lược đồ 1.7.0 và chuẩn lop-kho@1',
+  mfRes.schemaVersion === '1.7.0' && mfRes.chuanLopDuLieu === 'lop-kho@1' && mfRes.daKiem.includes('registry.json'),
+  JSON.stringify(mfRes));
+
+t('kiemTraManifest: chặn lệch SHA-256, lệch bytes, sai chuẩn lớp hoặc lệch major 2.0.0',
+  nemLoi(() => kiemTraManifest(manifestOk, { 'registry.json': `${regText} ` }))
+  && nemLoi(() => kiemTraManifest({ ...manifestOk, chuan_lop_du_lieu: 'lop-kho@2' }, {}))
+  && nemLoi(() => kiemTraManifest({ ...manifestOk, luoc_do_phien_ban: '2.0.0' }, {}))
+  && nemLoi(() => kiemTraManifest({
+    ...manifestOk,
+    tep: { ...manifestOk.tep, 'registry.json': { ...manifestOk.tep['registry.json'], lop_du_lieu: 'TIEN_LE' } },
+  }, {})));
+
+const rg170 = rutGon(JSON.parse(regText));
+t('rutGon 1.7.0: giữ id, van, xacMinh.chan và tương thích ngược 1.6.0',
+  rg170[0].id === 'vb:45-2024-tt-bct'
+  && rg170[0].van === 'a'.repeat(64)
+  && rg170[0].xacMinh.chan?.ma === 'SO_HIEU_LECH'
+  && rg170[1].id === 'vb:11-2018-tt-btttt'
+  && rg170[1].van === null
+  && rg170[1].xacMinh.chan === null
+  && nemLoi(() => rutGon({ luoc_do_phien_ban: '2.0.0', van_ban: [] })),
+  JSON.stringify(rg170));
+
+const hs170 = rutGonHsIndex({
+  luoc_do_phien_ban: '1.7.0',
+  van_ban: [{
+    so_hieu: '45/2023/TT-BCT',
+    slug: '45-2023-tt-bct',
+    ten: 'Khoáng sản XK',
+    tinh_trang: 'CON_HIEU_LUC',
+    bang: { tep: 'danh-muc/45-2023-tt-bct.csv', phien_ban_ahtn: 'AHTN_2022', da_doi_chieu: true },
+    dong: [{ ma_hs: '26140010', nut_bieu: 'bieu:26140010', van: 'b'.repeat(64), mo_ta: 'Inmenit', loai_tac_dong: 'KHAC' }],
+  }],
+});
+t('rutGonHsIndex 1.7.0: giữ table.phienBanAhtn, rows[].nutBieu và rows[].van',
+  hs170[0].table.phienBanAhtn === 'AHTN_2022'
+  && hs170[0].rows[0].nutBieu === 'bieu:26140010'
+  && hs170[0].rows[0].van === 'b'.repeat(64),
+  JSON.stringify(hs170));
+
+const dk170 = rutGonDieuKhoan({
+  ...dkSample,
+  luoc_do_phien_ban: '1.7.0',
+  nguyen_van_nguon_a: [{
+    ...dkSample.nguyen_van_nguon_a[0],
+    dieu_khoan: [{
+      id: 'vb:85-2026-tt-btc:d:4:k:1:dm:a',
+      van: 'c'.repeat(64),
+      dieu: 4,
+      khoan: 1,
+      diem: 'a',
+      noi_dung: 'Một mặt hàng có một mã số duy nhất.',
+      trang_thai_dieu: 'DA_SUA_DOI',
+      lich_su_tac_dong: [{ qh: 'sua_doi', tu: '99/2027/TT-BTC' }],
+    }],
+  }],
+});
+t('rutGonDieuKhoan 1.7.0: giữ id, van, trangThaiDieu và lichSuTacDong',
+  dk170[0].dieuKhoan[0].id === 'vb:85-2026-tt-btc:d:4:k:1:dm:a'
+  && dk170[0].dieuKhoan[0].van === 'c'.repeat(64)
+  && dk170[0].dieuKhoan[0].trangThaiDieu === 'DA_SUA_DOI'
+  && dk170[0].dieuKhoan[0].lichSuTacDong.length === 1,
+  JSON.stringify(dk170[0].dieuKhoan[0]));
+
+t('rutGonDieuKhoan mặc định trangThaiDieu = NGUYEN_BAN khi thiếu trường',
+  dkOut[0].dieuKhoan[0].trangThaiDieu === 'NGUYEN_BAN',
+  JSON.stringify(dkOut[0].dieuKhoan[0].trangThaiDieu));
+
+// Chứng minh main() dừng ghi khi manifest SHA-256 lệch (không ghi data/ khi verify fail)
+import { execFileSync } from 'child_process';
+import { mkdtempSync, rmSync } from 'fs';
+import { tmpdir } from 'os';
+import { dirname as _dirname } from 'path';
+import { fileURLToPath as _fileURLToPath } from 'url';
+const _repoRoot = join(_dirname(_fileURLToPath(import.meta.url)), '..');
+const tmpMfDir = mkdtempSync(join(tmpdir(), 'plhq-mf-fail-'));
+try {
+  writeFileSync(join(tmpMfDir, 'registry.json'), regText);
+  writeFileSync(join(tmpMfDir, 'manifest.json'), JSON.stringify({
+    ...manifestOk,
+    tep: { ...manifestOk.tep, 'registry.json': { sha256: 'f'.repeat(64), bytes: Buffer.byteLength(regText, 'utf8'), lop_du_lieu: 'LUAT' } },
+  }));
+  let mfExit = 0;
+  let mfOut = '';
+  try {
+    mfOut = execFileSync(process.execPath, [
+      'scripts/sync-plhq.mjs', '--check',
+      '--from', join(tmpMfDir, 'registry.json'),
+      '--manifest-from', join(tmpMfDir, 'manifest.json'),
+    ], { cwd: _repoRoot, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] });
+  } catch (e) {
+    mfExit = e.status ?? 1;
+    mfOut = `${e.stdout || ''}\n${e.stderr || ''}`;
+  }
+  t('sync-plhq.mjs dừng ghi và thoát mã != 0 khi manifest SHA-256 lệch',
+    mfExit !== 0 && mfOut.includes('CHANGED=false') && mfOut.includes('Dừng ghi bản chụp'),
+    JSON.stringify({ mfExit, mfOut }));
+} finally {
+  rmSync(tmpMfDir, { recursive: true, force: true });
+}
 
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
