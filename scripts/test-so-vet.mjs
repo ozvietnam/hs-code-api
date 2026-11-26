@@ -7,10 +7,11 @@ import os from 'node:os';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { createRequire } from 'node:module';
+import { fileURLToPath } from 'node:url';
 import { boKiem } from './lib-luat.mjs';
 
 const require = createRequire(import.meta.url);
-const ROOT = path.resolve(new URL('..', import.meta.url).pathname);
+const ROOT = path.resolve(fileURLToPath(new URL('..', import.meta.url)));
 
 const {
   KHUON_SO_VET,
