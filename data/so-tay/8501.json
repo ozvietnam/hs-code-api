@@ -3603,7 +3603,7 @@
     {
       "id": "850110~r14830",
       "nguon": "tieuDe.850110~r14830",
-      "trich": "850110~r14830 Động cơ một chiều",
+      "trich": "850110~r14830 Động cơ một chiều; 850110 Động cơ có công suất không quá 37,5 W",
       "dieuKienSo": [
         {
           "fact": "loaiDongDien",
@@ -3611,30 +3611,43 @@
           "value": [
             "MOT_CHIEU"
           ]
+        },
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 37.5,
+          "donVi": "W"
         }
       ],
       "nguonLoai": "CLAUDE_DUYET",
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot3",
-          "ngay": "2026-10-31",
-          "bam": "c127e5477b6ada8560e0eb6e171fece3342c3b8eb0379a6ac6f992ded27e15c3"
+          "phien": "claude-agent:ozv-2362-dong-co-buoc",
+          "ngay": "2026-11-26",
+          "bam": "d7748ad452dd312203319e41a831c19b5f5a5a5349c06a3d7da5b57f42412446"
         }
       }
     },
     {
       "id": "850110~r14839",
       "nguon": "tieuDe.850110~r14839",
-      "trich": "850110~r14839 Động cơ khác, kể cả động cơ vạn năng (một chiều/xoay chiều)",
-      "dieuKienSo": [],
+      "trich": "850110~r14839 Động cơ khác, kể cả động cơ vạn năng (một chiều/xoay chiều); 850110 Động cơ có công suất không quá 37,5 W",
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 37.5,
+          "donVi": "W"
+        }
+      ],
       "nguonLoai": "CLAUDE_DUYET",
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot3",
-          "ngay": "2026-10-31",
-          "bam": "c127e5477b6ada8560e0eb6e171fece3342c3b8eb0379a6ac6f992ded27e15c3"
+          "phien": "claude-agent:ozv-2362-dong-co-buoc",
+          "ngay": "2026-11-26",
+          "bam": "589bd958f6e840d52e85fe57632f52b2e54e8fe7fe68b978c527055e3f18e55b"
         }
       },
       "phanConLai": true
