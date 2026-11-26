@@ -7,11 +7,12 @@ import './test-isolate-data.mjs';
  *   2. Kiểm tối thiểu 3 ca âm tính (mô tả gần giống nhưng thuộc dòng anh em / nhóm khác hoặc thiếu số liệu)
  *      cho MỖI ca đã sửa — chứng minh không đoán bậy hay nới điều kiện bừa.
  *   3. Kiểm 2 ca còn lại (#30 82089000 dòng Loại khác trần, #45 87141090 dòng Loại khác còn nhánh
- *      CONG_DUNG tự do chưa phủ định) giữ nguyên hành vi an toàn (hỏi thêm hoặc không thể chốt,
- *      tuyệt đối không chốt sai).
+ *      CONG_DUNG tự do chưa phủ định): sau PR #1272 (OZV-630, bổ sung từ vựng L1 từ Chú giải 82.08(5)
+ *      và TB-TCHQ 435/436/438, CV 346/TCHQ-TXNK & 11704/TB-TCHQ), cả 2 ca chốt đúng mã 8 số
+ *      (#30 → 82089000, #45 → 87141090, khongRaMa=false, top1=true).
  *   4. Ca #24 (72082600): OZV-517 đôn mã tiền lệ TB-TCHQ 6629/TB-TCHQ lên vị trí 1 nên nay chốt
  *      ĐÚNG 72082600 (mô tả "3,6 mm" khớp dòng "chiều dày từ 3 mm đến dưới 4,75 mm") — chuyển từ
- *      nhóm "không ra mã" sang nhóm "chốt đúng", khung an toàn của #30/#45 giữ nguyên.
+ *      nhóm "không ra mã" sang nhóm "chốt đúng".
  */
 import fs from 'node:fs';
 import { createRequire } from 'node:module';
@@ -295,11 +296,11 @@ function check(name, ok, detail = '') {
     );
   }
 
-  for (const stt of [30, 45]) {
+  for (const [stt, expectedHs] of [[30, '82089000'], [45, '87141090']]) {
     const r = byStt[stt];
     check(
-      `Replay 50 ca — Ca #${stt} giữ nguyên khongRaMa=true (an toàn, không đoán bậy khi thiếu ngữ cảnh/loại trừ)`,
-      r && r.khongRaMa === true,
+      `Replay 50 ca — Ca #${stt} chốt đúng ${expectedHs} và khongRaMa=false (theo #1272 / OZV-630)`,
+      r && r.maDau === expectedHs && r.khongRaMa === false && r.top1 === true,
       JSON.stringify(r),
     );
   }

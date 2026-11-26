@@ -7,3 +7,6 @@
 - **Tuân thủ quy tắc QT:**
   - Chỉ giữ đúng tệp dữ liệu chương và tài liệu thẻ; dùng bộ kiểm chung [`scripts/ho-so-ma/liet-ke-test.mjs`](../../../scripts/ho-so-ma/liet-ke-test.mjs) và [`scripts/ho-so-ma/cong.mjs`](../../../scripts/ho-so-ma/cong.mjs) (Cổng 4/5).
   - Không chứa `gir:`, `wco:`, `tb:`; không đặt nhãn `[...]` ở đầu `dieuKien`; tách mục loại trừ/mô tả công dụng thông thường và liệt kê minh họa sang `BO_QUA` với lý do tường minh.
+
+## Rà soát bổ sung theo regex PR #2230
+- Dò mở rộng `LUAT` (regex PR #2230): trúng **1** câu, đã có trong `75.jsonl`: **1**, chưa ghi: **0** (bổ sung **1** bản ghi `BO_QUA`: `chuong:75:cgpn:2#1`). Tổng bản ghi sau rà: **7** (**1** `CHI_LIET_KE`, **6** `BO_QUA`).
