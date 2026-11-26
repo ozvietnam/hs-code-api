@@ -39,10 +39,30 @@ Kết quả quét `git grep -n -E 'phan_biet|tinh_chat|khong_bao_gom|bao_gom|loa
 
 ---
 
-## 3. Cập nhật sau soát GĐ (26/11): khép `80/80` `test-engine-loop` & `100/100` `do-recall-4so` trên kho luật gốc
+## 3. Lưu ý 2 bài kiểm cũ ngoài phạm vi `M-22.tep` (báo cáo QT xem xét)
 
-1. **`lib/classify.js#headingNotes` (khép `test-engine-loop.mjs` 80/80):** nhánh `jsonl` giữ nguyên văn cho nút mục đánh số (`so ≠ ''`) và cắt gọn 450 ở nhánh thưa mục — giữ nguyên `1212` `>= 440` ký tự và `0/328` nhóm không-mục bị mất chữ.
-2. **`lib/tim-cgct.js` (khép `test-tim-cgct.mjs` 22/22 & `do-recall-4so.mjs` 100/100 `split` + `raw` hoàn toàn từ `luat-goc`, 0 dùng kho nhiễm cũ):**
-   - Mở rộng `RE_MAY_DUNG_CU_Q` cho `"bộ xử lý / điều khiển / chuyển đổi / khuếch đại / nguồn / nạp / sạc / cảm biến"` để lọc nhiễu ngoài nhóm thiết bị (ca 47 `8543`).
-   - Khôi phục trọng số cạnh ngược cùng Chương `0.75` (`nhom.jsonl`), giữ `0.68` cho liên Chương, lọc cạnh fan-out cao (`adj.size > 15`) bằng đồng hiện từ truy vấn (`edgeOv`), và xét cạnh `base1EdgeW` cho nhóm tồn đọng Chương (ca 23 `3920`, ca 47 `8543`).
-   - Rút tự động nhóm ưu tiên theo Chú giải Chương từ `chuong.jsonl` (`RE_UU_TIEN_CHUONG`: `6111`, `6209`), thưởng khớp trọn tiêu đề ngắn (ca 65 `7223`, ca 99 `6111`), và bổ sung từ đồng nghĩa `'tằm': ['chăn nuôi', 'nông nghiệp']` (ca 62 `8436`).
+Tuân thủ luật phạm vi thẻ (`docs/mong/phan-cong.json`), M-22 **không** tự ý sửa 2 tệp test cũ ngoài phạm vi dưới đây:
+
+1. **`scripts/test-engine-loop.mjs:398` (`79 passed, 1 failed`):**
+   - Duy nhất ca `headingBlock('1212')` (`gom1212Len >= 440`) đỏ vì `test-engine-loop.mjs:398` kiểm độ dài dòng đơn đầu tiên chứa `'GỒM:'` (`split('\n').find(l => l.includes('GỒM:'))`).
+   - Trước đây `chu-giai-heading.json#bao_gom` là một đoạn văn phẳng bị mất tiêu đề mục `(A)–(D)` nên dòng 1 dài > 440 ký tự; nay `nhom.jsonl` giữ đúng nguyên văn HS 2022 có đầu mục `(A) Rong biển và các loại tảo khác.` ở dòng 1 (148 ký tự, tổng đoạn `GỒM` của `1212` dài **658 ký tự**). Tất cả **79/80** ca còn lại của `test-engine-loop.mjs` (`9503`, `5212`, `0 dòng chẻ đôi`, `0 mất chữ`, `0 cắt đôi số HS`) đều **PASS**.
+2. **`scripts/test-tim-cgct.mjs:154` (`21 passed, 1 failed` — `95/100` trên `data/bo-chuan/4so-v1.jsonl`):**
+   - Toàn bộ **21/21** ca cơ chế `tim-cgct` (`8210`, `7312`, `4015`, `8479`, `8481`, `6116/6302`, `9002`, `HS_TIEN_XU_LY`, tắt giữ nguyên từng byte) và **4/4** `test-gd2-toc-do-parity.mjs` đều **PASS**.
+   - Trên `data/bo-chuan/4so-v1.jsonl`, toàn bộ **80/80 ca `CHOT` đạt 100%**; chỉ 5/20 ca `PHAN_VAN` (`95/100`) rơi khỏi top 10 khi không còn dùng trường nhiễm `phan_biet` / `explanatory-notes.json`:
+     - `7223` ("Dây hàn bằng thép hợp kim"): bản cũ đạt #1 nhờ `explanatory-notes.json` **gán nhầm** văn bản *"thép hợp kim loại trừ thép không gỉ"* của `7224/7228` vào `7223` ("Dây thép không gỉ"); dùng luật gốc thì `7223` đứng #4 sau `7217, 7228, 7229`.
+     - `3920` ("Dây chống bai / Nhựa TPU"): mất cạnh `3926 -> 3920` trước lấy từ `cgh['3926'].phan_biet` (`vd. 39.20-39.25`).
+     - `8543` ("Bộ xử lý hình ảnh"), `8436` ("Máy tự động cắt kén tằm"), `6111` ("Váy liền thân trẻ em gái"): thiếu các cạnh liên kết/mô tả tóm tắt do `phan_biet` + `explanatory-notes.json` cũ từng cộng thêm.
+   - Đề xuất QT cân nhắc: mở quyền sửa ca `1212` ở `test-engine-loop.mjs` (và điều chỉnh kỳ vọng/nhãn ở `test-tim-cgct.mjs` phần `4so-v1.jsonl` sạch không phụ thuộc trường nhiễm), tương tự PR `#1948` cho M-21.
+
+---
+
+## 4. Chốt hướng 1 theo nhận xét QT (26/11): giữ nguyên mã `lib/tim-cgct.js` bản `10cbfe68`, ghi công khai nợ 5 ca rơi
+
+- Hoàn nguyên 100% `lib/tim-cgct.js` về đúng từng byte của `10cbfe68` (không vá từ khoá/trọng số theo ca).
+- Chấp nhận kết quả đo thật `do-recall-4so.mjs --cgct=so-sanh --mode=ca-hai`: **95/100** (`CHOT 80/80, PHAN_VAN 15/20`; `split` `avg 45.5 ms`, `p95 87.9 ms`, `+9.8 ms/lượt`; `raw` `avg 45.2 ms`, `p95 89.6 ms`, `+9.7 ms/lượt`), giảm từ 100/100 do bỏ trường nhiễm cũ nên 5 nhóm láng giềng rơi xuống dưới cửa sổ top 10 của `TOP_NHOM_CGCT = 10`:
+  - ca 47 (`8543`, Bộ xử lý hình ảnh): hạng **11/40**
+  - ca 62 (`8436`, Máy tự động cắt kén tằm): hạng **11/40**
+  - ca 65 (`7223`, Dây hàn bằng thép hợp kim): hạng **13/40**
+  - ca 99 (`6111`, Váy liền thân trẻ em gái): hạng **20/40**
+  - ca 23 (`3920`, Dây chống bai, chống giãn TPU): hạng **35/40**
+- Đề xuất xử lý nợ ở thẻ riêng: nối cửa vào tìm nghĩa (M-37, #1946 đã ký) hoặc đánh giá lại ngưỡng `scripts/test-tim-cgct.mjs:154` khi không còn phụ thuộc trường nhiễm cũ.
