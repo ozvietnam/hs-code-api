@@ -58,7 +58,7 @@ export function kiemBanGhi(x) {
     else if (!Array.isArray(x.voi) || !x.voi.length || !x.voi.every((d) => RE_ANH_EM.test(d))) loi.push(`${o}: voi phải là mảng id nút anh em`);
   } else if (x.loai === 'TACH_ANH_EM') loi.push(`${o}: TACH_ANH_EM phải có voi (tách với anh em nào)`);
   if (x.phuDinh !== undefined) {
-    if (!['TACH_ANH_EM', 'PHAI_LA'].includes(x.loai)) loi.push(`${o}: chỉ TACH_ANH_EM / PHAI_LA (dòng "Loại khác") mang phuDinh`);
+    if (!['TACH_ANH_EM', 'PHAI_LA', 'NGUONG'].includes(x.loai)) loi.push(`${o}: chỉ TACH_ANH_EM / PHAI_LA / NGUONG (dòng "Loại khác") mang phuDinh`);
     else if (!Array.isArray(x.phuDinh) || !x.phuDinh.length || !x.phuDinh.every((d) => RE_ANH_EM.test(d))) loi.push(`${o}: phuDinh phải là mảng id nút anh em bị phủ định`);
   }
   if (x.thuatNgu !== undefined && x.loai !== 'DINH_NGHIA') loi.push(`${o}: chỉ DINH_NGHIA mang thuatNgu`);
