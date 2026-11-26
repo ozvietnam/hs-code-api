@@ -15,12 +15,12 @@ export const LOAI = Object.freeze(['PHAI_LA', 'KHONG_DUOC_LA', 'TACH_ANH_EM', 'D
 export const BO_QUA = 'BO_QUA';
 export const TRANG_THAI = Object.freeze(['KHOP', 'LECH_PHIEU', 'VENH']);
 const LOP = new Set(['LUAT', 'HUONG_DAN']);
-const RE_NUT = /^(?:phan:[IVX]+|chuong:\d{2}(?::pc:[IVX]+)?|bieu:\d{4,8}(?::td\d+)*)$/;
+const RE_NUT = /^(?:gir:[1-6](?::[a-c])?|phan:[IVX]+|chuong:\d{2}(?::pc:[IVX]+)?|bieu:\d{4,8}(?::td\d+)*)$/;
 const RE_CAU = /^(?:gir|phan|chuong|nhom|pn|bieu|sen|wco|tb):[^#\s]+#\d+$/;
 const RE_DICH = /^(?:phan:[IVX]+|chuong:\d{2}(?::pc:[IVX]+)?|bieu:\d{2,8}(?::td\d+)*|gir:[1-6](?::[a-c])?)$/;
 const RE_ANH_EM = /^(?:chuong:\d{2}(?::pc:[IVX]+)?|bieu:\d{4,8}(?::td\d+)*)$/;
 const RE_VAN = /^[0-9a-f]{64}$/;
-const TRUONG_VAN_DE = new Set(['id', 'nut', 'loai', 'dieuKien', 'trich', 'cau', 'tu', 'den', 'voi', 'nguong', 'thuatNgu', 'duKien', 'lop', 'nguon', 'van', 'trangThai', 'phieu', 'ghiChu']);
+const TRUONG_VAN_DE = new Set(['id', 'nut', 'loai', 'dieuKien', 'trich', 'cau', 'tu', 'den', 'voi', 'nguong', 'thuatNgu', 'phuDinh', 'duKien', 'lop', 'nguon', 'van', 'trangThai', 'phieu', 'ghiChu']);
 const TRUONG_BO_QUA = new Set(['id', 'nut', 'loai', 'cau', 'lyDo', 'van', 'ghiChu']);
 const CO_DEN = new Set(['KHONG_DUOC_LA', 'PHAI_LA', 'CHI_LIET_KE']);
 const CO_VOI = new Set(['TACH_ANH_EM', 'NGUONG']);
@@ -57,6 +57,10 @@ export function kiemBanGhi(x) {
     if (!CO_VOI.has(x.loai)) loi.push(`${o}: loai ${x.loai} không mang voi`);
     else if (!Array.isArray(x.voi) || !x.voi.length || !x.voi.every((d) => RE_ANH_EM.test(d))) loi.push(`${o}: voi phải là mảng id nút anh em`);
   } else if (x.loai === 'TACH_ANH_EM') loi.push(`${o}: TACH_ANH_EM phải có voi (tách với anh em nào)`);
+  if (x.phuDinh !== undefined) {
+    if (!['TACH_ANH_EM', 'PHAI_LA'].includes(x.loai)) loi.push(`${o}: chỉ TACH_ANH_EM / PHAI_LA (dòng "Loại khác") mang phuDinh`);
+    else if (!Array.isArray(x.phuDinh) || !x.phuDinh.length || !x.phuDinh.every((d) => RE_ANH_EM.test(d))) loi.push(`${o}: phuDinh phải là mảng id nút anh em bị phủ định`);
+  }
   if (x.thuatNgu !== undefined && x.loai !== 'DINH_NGHIA') loi.push(`${o}: chỉ DINH_NGHIA mang thuatNgu`);
   if (x.loai === 'DINH_NGHIA' && !chuoi(x.thuatNgu)) loi.push(`${o}: DINH_NGHIA phải có thuatNgu (thuật ngữ được định nghĩa, nguyên chữ luật)`);
   if (x.nguong !== undefined && x.loai !== 'NGUONG') loi.push(`${o}: chỉ NGUONG mang nguong`);
@@ -83,7 +87,7 @@ export function kiemBanGhi(x) {
 /** Kiểm một tệp: từng dòng đúng khuôn, nút nằm đúng tệp, id không trùng trong tệp. tuongDoi = "<thư mục>/<khoá>.jsonl". */
 export function kiemTep(tuongDoi, noiDung) {
   const loi = []; const banGhi = [];
-  const m = /^([a-z-]+)\/([0-9A-Z]+)\.jsonl$/.exec(tuongDoi.split(path.sep).join('/'));
+  const m = /^([a-z-]+)\/([0-9A-Z]+|gir)\.jsonl$/.exec(tuongDoi.split(path.sep).join('/'));
   if (!m || !G.THU_MUC.includes(m[1])) return { loi: [`${tuongDoi}: tệp lạ (chỉ ${G.THU_MUC.map((t) => `${t}/<khoá>.jsonl`).join(', ')})`], banGhi };
   noiDung.split('\n').forEach((l, i) => {
     if (!l.trim()) return;

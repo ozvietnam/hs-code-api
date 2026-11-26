@@ -10,7 +10,7 @@ import { spawnSync } from 'node:child_process';
 import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
 import { chayCong, napLuatCong, vanTay, dinhCau, giaiToiCap } from './ho-so-ma/cong.mjs';
-import { kiemBanGhi } from './ho-so-ma/khuon.mjs';
+import { kiemBanGhi, kiemTep } from './ho-so-ma/khuon.mjs';
 
 const require = createRequire(import.meta.url);
 const G = require('../lib/ho-so-ma/ghep.js');
@@ -23,6 +23,7 @@ const kiem = (t, d, c = '') => { if (d) { dat += 1; console.log(`PASS ${t}`); } 
 const TAM = fs.mkdtempSync(path.join(os.tmpdir(), 'ho-so-'));
 const LUAT = path.join(TAM, 'luat-goc');
 const NUT_CHON = new Set([
+  'gir:3:b', // Quy tắc 3(b): nút gir trong hồ sơ
   'phan:XV', 'chuong:76', 'chuong:76:kq:24', 'chuong:28:pc:I:kq:2', // kq:2 Phân chương I Ch. 28: cạnh LOAI_SANG thật đi vào chuong:76
   'bieu:76', 'bieu:7602', 'bieu:760200', 'bieu:76020000', 'bieu:7614',
   'bieu:5605', 'bieu:5607', 'bieu:8311', 'bieu:8544', 'bieu:9209', // đích loại trừ ở chương khác
@@ -32,7 +33,7 @@ const chonNut = (n) => NUT_CHON.has(n.id) || /^bieu:7605/.test(n.id);
 const docDong = (f) => fs.readFileSync(f, 'utf8').split('\n').filter((l) => l.trim());
 fs.mkdirSync(path.join(LUAT, 'cau'), { recursive: true }); fs.mkdirSync(path.join(LUAT, 'nghia-canh'), { recursive: true });
 const daChon = new Set();
-for (const kho of ['phan', 'chuong', 'bieu', 'nhom']) {
+for (const kho of ['phan', 'chuong', 'bieu', 'nhom', 'gir']) {
   const dong = docDong(path.join(LUAT_THAT, `${kho}.jsonl`)).filter((l) => { const n = JSON.parse(l); if (chonNut(n)) { daChon.add(n.id); return true; } return false; });
   fs.writeFileSync(path.join(LUAT, `${kho}.jsonl`), `${dong.join('\n')}\n`);
   const cau = docDong(path.join(LUAT_THAT, 'cau', `${kho}.jsonl`)).filter((l) => daChon.has(JSON.parse(l).id.split('#')[0]));
@@ -87,7 +88,7 @@ function dungHoSoDung() {
   }
   return ds;
 }
-const tepCua = (x) => { const tm = x.loai === 'NGUONG' ? 'nguong' : G.thuMucCuaNut(x.nut); return `${tm}/${G.tepCuaNut(x.nut, tm)}.jsonl`; };
+const tepCua = (x) => { const tm = x.loai === 'NGUONG' ? 'nguong' : x.loai === 'CHI_LIET_KE' ? 'liet-ke' : G.thuMucCuaNut(x.nut); return `${tm}/${G.tepCuaNut(x.nut, tm)}.jsonl`; };
 let soKho = 0;
 function ghiKho(ds, { tepRieng = null } = {}) {
   soKho += 1; const goc = path.join(TAM, `ho-so-${soKho}`);
@@ -185,6 +186,28 @@ caNguoc('KHONG_DUOC_LA chuyển vào nút con của chính nút (chuong:76 → 7
   kiem('CA NGƯỢC khuôn: DINH_NGHIA thiếu thuatNgu, loại khác mang thuatNgu', kiemBanGhi(dn).some((l) => /DINH_NGHIA phải có thuatNgu/.test(l)) && kiemBanGhi({ ...dn, loai: 'PHAI_LA', thuatNgu: 'x' }).some((l) => /chỉ DINH_NGHIA mang thuatNgu/.test(l)) && !kiemBanGhi({ ...dn, thuatNgu: 'mặt hàng' }).length);
   const tn = { ...DUNG.find((x) => x.cau === 'chuong:76:kq:24#1'), id: 'hs:chuong:76:97', loai: 'DINH_NGHIA', thuatNgu: 'thuật ngữ không có' }; delete tn.den;
   caNguoc('thuatNgu không có trong chữ câu', ghiKho([...DUNG, tn]), 4, /thuatNgu "thuật ngữ không có" không có nguyên chữ/);
+}
+// (a) Nút gir:<số>: tệp <thư mục>/gir.jsonl, câu của chính quy tắc, máy ghép gộp vào hồ sơ mọi mã (lop "gir").
+{
+  const gir = vd('gir:3:b', 'CHI_LIET_KE', 'gir:3:b#1', { dieuKien: 'Hàng hỗn hợp / bộ: xét đặc tính cơ bản (Quy tắc 3(b))' });
+  kiem('khuôn nhận nut gir:3:b ở liet-ke/gir.jsonl, phan/gir.jsonl; từ chối ở liet-ke/76.jsonl', !kiemBanGhi(gir).length && !kiemTep('liet-ke/gir.jsonl', JSON.stringify(gir)).loi.length && !kiemTep('phan/gir.jsonl', JSON.stringify(gir)).loi.length && kiemTep('liet-ke/76.jsonl', JSON.stringify(gir)).loi.some((l) => /không được ghi ở tệp này/.test(l)) && kiemTep('liet-ke/gir2.jsonl', JSON.stringify(gir)).loi.length > 0);
+  const khoGir = ghiKho([...DUNG, gir]);
+  const r = chay(khoGir, { phamVi: ['7605'] });
+  kiem('hồ sơ có bản ghi gir: 5 cổng xanh (gir vào cổng 4, 5 trên mọi phạm vi)', xanh(r) && r.cong[4].soKiem === chay(KHO_DUNG, { phamVi: ['7605'] }).cong[4].soKiem + 1, loiCong(r));
+  const h = G.hoSo('76051910', { luat: LUAT, hoSo: khoGir });
+  kiem('máy ghép: hồ sơ mọi mã có tầng gir (lop "gir") chứa bản ghi gir:*, tính vào soVanDe', h.gir.cap === 'GIR' && h.gir.lop === 'gir' && h.gir.vanDe.some((x) => x.nut === 'gir:3:b') && G.hoSo('7614', { luat: LUAT, hoSo: khoGir }).gir.vanDe.length === 1 && h.soVanDe === G.hoSo('76051910', { luat: LUAT, hoSo: KHO_DUNG }).soVanDe + 1 && !h.thieu.some((t) => /GIR/.test(t)), h.gir);
+  caNguoc('bản ghi gir trích câu không phải của quy tắc đó', ghiKho([...DUNG, { ...gir, cau: 'chuong:76:kq:24#1', trich: 'chương 82', van: vanTay(chuCau('chuong:76:kq:24#1')), lop: 'HUONG_DAN', nguon: L.nut.get('chuong:76:kq:24').nguon }]), 4, /câu chuong:76:kq:24#1 thuộc chuong:76:kq:24, không nằm trên đường đi của gir:3:b/, { phamVi: ['7605'] });
+}
+// (c) phuDinh: dòng "Loại khác" phủ định anh em có tên ⇒ tính là đã tách cặp đó (cổng 3); phải là anh em thật (cổng 4).
+{
+  const boNg = (x) => !(x.loai === 'NGUONG' && /^bieu:76052[19]$/.test(x.nut));
+  const loaiKhac = { ...vd('bieu:760529', 'PHAI_LA', 'bieu:760529#1', { dieuKien: 'Loại khác: không phải dây có kích thước mặt cắt ngang lớn nhất trên 7 mm' }), phuDinh: ['bieu:760521'] };
+  const r1 = chay(ghiKho(sua((x) => (boNg(x) ? x : null))), { phamVi: ['760529'] });
+  kiem('bỏ NGUONG 760521/760529 ⇒ cổng 3 đỏ cặp đó (đối chứng)', r1.cong[3].loi.some((l) => /bieu:76052[19] và bieu:76052[19]/.test(l)), r1.cong[3].loi);
+  const r2 = chay(ghiKho([...sua((x) => (boNg(x) ? x : null)), loaiKhac]), { phamVi: ['760529'] });
+  kiem('… thêm PHAI_LA "Loại khác" mang phuDinh [760521] ⇒ cặp đã tách, cổng 3 xanh', !r2.cong[3].loi.length && !r2.cong[4].loi.length, loiCong(r2));
+  caNguoc('phuDinh trỏ nút không phải anh em', ghiKho([...DUNG, { ...loaiKhac, phuDinh: ['bieu:7614'] }]), 4, /phuDinh bieu:7614 không phải anh em cùng cha của bieu:760529/);
+  kiem('CA NGƯỢC khuôn: phuDinh ở DINH_NGHIA / mảng rỗng', kiemBanGhi({ ...loaiKhac, loai: 'DINH_NGHIA', thuatNgu: 'x' }).some((l) => /chỉ TACH_ANH_EM \/ PHAI_LA/.test(l)) && kiemBanGhi({ ...loaiKhac, phuDinh: [] }).some((l) => /phuDinh phải là mảng/.test(l)));
 }
 kiem('CA NGƯỢC khuôn: tu khác cau', kiemBanGhi({ ...DUNG.find(laVao), tu: 'chuong:28:pc:I:kq:2#1' }).some((l) => /tu phải là id câu nguồn/.test(l)));
 // Cổng 3 ANH EM

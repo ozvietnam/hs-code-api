@@ -202,7 +202,8 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
           const k = [A, B].sort().join('|');
           if (daCap.has(k)) continue;
           daCap.add(k); ra[3].soKiem += 1;
-          const tach = vd(A).some((x) => x.loai === 'TACH_ANH_EM' && x.voi.includes(B)) || vd(B).some((x) => x.loai === 'TACH_ANH_EM' && x.voi.includes(A));
+          const tachBoi = (P, Q) => vd(P).some((x) => (x.loai === 'TACH_ANH_EM' && x.voi.includes(Q)) || (x.phuDinh || []).includes(Q)); // phuDinh: "Loại khác" phủ định anh em có tên
+          const tach = tachBoi(A, B) || tachBoi(B, A);
           let tachNguong = false;
           for (const qa of vd(A).filter((x) => x.loai === 'NGUONG')) {
             for (const qb of vd(B).filter((x) => x.loai === 'NGUONG')) {
@@ -241,7 +242,7 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
   }
 
   // Cổng 4, 5: bản ghi của nút trong phạm vi (không phạm vi: mọi bản ghi).
-  const R = pv.length ? tot.filter((x) => N.has(x.nut)) : tot;
+  const R = pv.length ? tot.filter((x) => N.has(x.nut) || G.capCuaNut(x.nut) === 'GIR') : tot; // Quy tắc tổng quát nằm trên mọi đường đi
   const coThat = (id) => L.nut.has(id) || L.cay.theoId.has(id) || (/^chuong:(\d{2})$/.test(id) && !!CHUONG_SANG_PHAN[id.slice(7)]) || (/^phan:[IVX]+$/.test(id) && Object.values(CHUONG_SANG_PHAN).includes(id.slice(5)));
   if (cong.includes(4)) {
     for (const x of R) {
@@ -255,9 +256,13 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
       const anhEm = new Set(G.anhEmCua(x.nut, L.cay));
       const vao = x.tu !== undefined && (L.canhTheoTu.get(x.cau) || []).some((e) => e.den === x.nut && loaiCanhVao(e));
       if (x.tu !== undefined && !vao) ra[4].loi.push(`${x.id}: tu ${x.tu} không có cạnh LOAI_SANG / PHAN_VE nào đi vào ${x.nut}`);
-      const dungCho = x.loai === BO_QUA ? chu0 === x.nut
+      const nutCau = L.cau.get(x.cau).nut;
+      const laGir = G.capCuaNut(x.nut) === 'GIR';
+      const dungCho = laGir ? (nutCau === x.nut || nutCau.startsWith(`${x.nut}:`)) // Quy tắc tổng quát: câu của chính quy tắc đó
+        : x.loai === BO_QUA ? chu0 === x.nut
         : vao || chu0 === G.CHUNG || chu0 === x.nut || tren.has(chu0) || ((x.loai === 'TACH_ANH_EM' || x.loai === 'NGUONG') && anhEm.has(chu0));
-      if (!dungCho) ra[4].loi.push(`${x.id}: câu ${x.cau} thuộc ${chu0 || '(ngoài hồ sơ)'}, không nằm trên đường đi của ${x.nut}${x.loai === BO_QUA ? ' (BỎ QUA phải ghi ở đúng nút của câu)' : ''}`);
+      for (const d of x.phuDinh || []) if (!anhEm.has(d)) ra[4].loi.push(`${x.id}: phuDinh ${d} không phải anh em cùng cha của ${x.nut}`);
+      if (!dungCho) ra[4].loi.push(`${x.id}: câu ${x.cau} thuộc ${laGir ? nutCau : chu0 || '(ngoài hồ sơ)'}, không nằm trên đường đi của ${x.nut}${x.loai === BO_QUA ? ' (BỎ QUA phải ghi ở đúng nút của câu)' : ''}`);
       if (x.loai === BO_QUA) continue;
       const cs = chuanSo(chu); const csThuong = cs.toLowerCase();
       if (!cs.includes(chuanSo(x.trich))) ra[4].loi.push(`${x.id}: trích không nguyên văn câu ${x.cau} — "${ngan(x.trich)}"`);
