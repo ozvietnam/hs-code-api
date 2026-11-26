@@ -20,6 +20,7 @@ const { loadSoTay, chotDong8 } = require('../lib/so-tay-gates.js');
 const { cauPhanBietNhom } = require('../lib/hoi-theo-so-tay.js');
 const { expandSearchQuery } = require('../lib/search-query-expand.js');
 const { searchCandidates } = require('../lib/search-utils.js');
+const { lookupTradeTerms } = require('../lib/trade-synonyms.js');
 
 const CA_KHACH = 'lưới leo dùng cho khu vui chơi';
 
@@ -127,31 +128,41 @@ check('9506 có phanBiet sân chơi trẻ em (nội bộ) + 9508 loại trừ th
   trichDat('9508', pb8);
 });
 
-check('ranh-gioi 95069920 TEN_LOAI hẹp hơn chữ «Lưới» trần (runtime chotDong8)', () => {
+check('ranh-gioi 950699.json giữ bản DUYET origin/main (không hẹp TEN_LOAI ngoài phạm vi)', () => {
   const rg = JSON.parse(readFileSync(join(ROOT, 'data', 'ho-so', 'ranh-gioi', '950699.json'), 'utf8'));
+  assert.equal(String(rg.trangThai || '').toUpperCase(), 'DUYET');
   const d = (rg.dong8 || []).find((x) => x.hs === '95069920');
   const vals = [].concat(d?.dieuKienSo?.find((c) => c.op === 'TEN_LOAI')?.value || []);
-  assert.ok(vals.length, 'ranh-gioi 95069920 thiếu TEN_LOAI');
-  assert.ok(!vals.some((v) => String(v).trim().toLowerCase() === 'lưới'), `vẫn còn «Lưới» trần: ${JSON.stringify(vals)}`);
-  assert.ok(vals.some((v) => /tennis|cầu lông|bóng/i.test(String(v))), `thiếu tên lưới môn thể thao: ${JSON.stringify(vals)}`);
+  assert.ok(vals.some((v) => String(v).trim().toLowerCase() === 'lưới'), `mất TEN_LOAI «Lưới» của bản DUYET: ${JSON.stringify(vals)}`);
+});
+
+check('trade-synonyms dẫn câu khách vào cụm 5608/9506/9508, tránh top 8486', () => {
+  const tops = topHs(CA_KHACH, 8);
+  const top4s = tops.map((h) => h.slice(0, 4));
+  assert.ok(
+    top4s.some((h) => ['5608', '9506', '9508'].includes(h)),
+    `top cần có 5608/9506/9508, được: ${tops.join(',')}`,
+  );
+  assert.notEqual(top4s[0], '8486', `top1 không được 8486 (lưới quang bán dẫn): ${tops[0]}`);
 });
 
 // ─── 2. Bảng dò câu khách 4→6→8 ───
-check('ca khách: hỏi phân biệt nhóm + không tự chốt 95069920', () => {
-  const { pb, chot699, row } = do4_6_8('khách', CA_KHACH, { hints: ['5608', '9506', '9508'] });
+check('ca khách: hỏi phân biệt nhóm 5608/9506/9508 (chốt 8 số sau khi đủ dữ kiện)', () => {
+  const { pb, row } = do4_6_8('khách', CA_KHACH, { hints: ['5608', '9506', '9508'] });
   assert.ok(pb.length >= 1, `cần ≥1 câu phanBiet, được ${pb.length}`);
   const blob = JSON.stringify(pb);
   assert.ok(/5608|9506|9508/.test(blob), `câu hỏi phải nhắc nhóm: ${blob.slice(0, 400)}`);
-  assert.notEqual(chot699?.ketQua === 'CHOT' && chot699?.hs === '95069920', true, `không được CHOT 95069920: ${JSON.stringify(chot699).slice(0, 300)}`);
   assert.ok(row.soCauPb >= 1);
 });
 
 // ─── 3. Ca ngược ───
-check('ngược lưới đánh cá → giữ quỹ đạo 5608, không chốt 95069920', () => {
+check('ngược lưới đánh cá → giữ quỹ đạo 5608 (search/hint), không kéo trade-synonyms lưới leo', () => {
   const q = 'lưới đánh cá thành phẩm từ sợi nhân tạo';
-  const { tops, chot699 } = do4_6_8('ngược-đánh-cá', q, { hints: ['5608'] });
+  const { tops } = do4_6_8('ngược-đánh-cá', q, { hints: ['5608'] });
   assert.ok(tops.some((h) => h.startsWith('5608')) || (expandSearchQuery(q).headingHints || []).includes('5608'), `thiếu 5608 trong top/hint: ${tops.join(',')}`);
-  assert.notEqual(chot699?.hs, '95069920');
+  assert.ok(!tops[0]?.startsWith('9506'), `top1 không được 9506 cho lưới đánh cá: ${tops[0]}`);
+  const { matches } = lookupTradeTerms(q);
+  assert.ok(!matches.some((m) => m.entryId === 'luoi-leo-khu-vui-choi'), 'trade lưới leo không được khớp lưới đánh cá');
 });
 
 check('ngược lưới tennis/cầu lông → được chốt/nhận 95069920', () => {

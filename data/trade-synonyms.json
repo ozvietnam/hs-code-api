@@ -5144,6 +5144,74 @@
    "gir": "GIR 1 + GIR 6",
    "basis": "RULE_TABLE",
    "sourceVi": "Chú giải nhóm 84.24: máy/thiết bị phun bắn, phun rải hoặc phun áp lực chất lỏng dưới dạng tia/hạt nước. Chú giải 84.81 loại trừ đầu vòi phun dạng quay và thiết bị phun tương tự (→84.24). Biểu VN 84248950/90: Loại khác hoạt động bằng điện / không. OZV-2366 thực địa: «vòi phun rửa ly bằng áp lực nước» search kéo 8481; dừng 6 số hỏi hoatDongBangDien là đúng luật (THIEU_SO_LIEU), không phải hỏi thừa — cần ổn định vào 8424."
+  },
+  {
+   "id": "luoi-leo-khu-vui-choi",
+   "titleVi": "Lưới leo khu vui chơi / sân chơi — ranh giới 5608 ↔ 9506 ↔ 9508",
+   "terms": [
+    "lưới leo",
+    "lưới leo khu vui chơi",
+    "lưới dùng cho khu vui chơi",
+    "lưới khu vui chơi",
+    "lưới sân chơi",
+    "climbing net",
+    "playground climbing net",
+    "cargo net playground"
+   ],
+   "excludeIfAny": [
+    "lưới đánh cá",
+    "lưới cá",
+    "fishing net",
+    "lưới tennis",
+    "lưới cầu lông",
+    "lưới bóng chuyền",
+    "lưới bóng đá",
+    "lưới gôn",
+    "lưới golf",
+    "lưới lọc",
+    "wire mesh",
+    "lưới inox"
+   ],
+   "excludeReasonVi": "Lưới đánh cá thành phẩm thuộc 5608; lưới môn thể thao (tennis/cầu lông/…) thuộc 9506.99.20; lưới lọc kim loại thuộc 7314 — không phải lưới leo khu vui chơi.",
+   "candidates": [
+    {
+     "hs": "9506",
+     "whenVi": "Lưới/leo gắn thiết bị sân chơi trẻ em, dụng cụ tập luyện thể chất (dây leo/thang) hoặc lưới trò chơi thể thao thuộc nhóm 95.06 — cần hỏi thêm để chốt 8 số (950691 / 95069920 / 95069990…).",
+     "confidence": "medium"
+    },
+    {
+     "hs": "5608",
+     "whenVi": "Lưới đã hoàn thiện từ dây bện/thừng/cáp (hàng rào, túi lưới đựng bóng, lưới đánh cá) — chú giải 95.06 (d) dẫn về 56.08 khi là lưới hàng rào/túi lưới.",
+     "confidence": "medium"
+    },
+    {
+     "hs": "9508",
+     "whenVi": "Chỉ khi là trò chơi hội chợ / khu giải trí của nhóm 95.08 (không phải thiết bị 95.06).",
+     "confidence": "low"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "8486",
+     "whyVi": "8486 là thiết bị bán dẫn / lưới quang (reticle) trên đế phủ lớp cản quang — chữ «lưới» trong tên dòng thuế 8486.90 dễ kéo «lưới leo» sang máy bán dẫn; không liên quan lưới leo khu vui chơi."
+    },
+    {
+     "prefix": "8428",
+     "whyVi": "8428 có «cơ cấu kéo người… leo núi» — chữ «leo» dễ nhiễu; không phải lưới leo sân chơi."
+    },
+    {
+     "prefix": "7314",
+     "whyVi": "7314 là tấm/lưới kim loại dệt hoặc giãn — khác hoàn toàn lưới dệt từ dây bện/thừng hoặc lưới trò chơi Chương 95."
+    }
+   ],
+   "askVi": [
+    "Lưới đã hoàn thiện từ dây bện/thừng/cáp (nhóm 56.08) hay là thiết bị/dụng cụ thể thao–sân chơi thuộc Chương 95?",
+    "Nếu Chương 95: lưới môn thể thao (tennis/cầu lông/…) → 9506.99.20; dây leo/thang tập luyện → 9506.91; thiết bị sân chơi trẻ em (cầu trượt/đu/…) → thường 9506.99.90 — hàng thuộc nhánh nào?",
+    "Có phải trò chơi hội chợ / khu giải trí nhóm 95.08 (không phải thiết bị 95.06) không?"
+   ],
+   "gir": "1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Chú giải nhóm 56.08 loại trừ (c) lưới thể thao và các loại lưới khác thuộc Chương 95; chú giải nhóm 95.06 liệt kê lưới trò chơi (tennis, cầu lông,…) và thiết bị sân chơi trẻ em, đồng thời (d) dẫn lưới hàng rào/túi lưới về 56.08; chú giải 95.08 loại thiết bị 95.06 khỏi trò chơi hội chợ."
   }
  ],
  "updatedAt": "2026-11-26T09:55:00Z"
