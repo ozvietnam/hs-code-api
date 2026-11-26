@@ -6,6 +6,10 @@
 // - CẤM dùng tờ khai, dữ liệu khách hay tiền lệ (tb:) làm đáp án; mọi ca đo phải ghi căn cứ luật (canCuLuat) tồn tại thật trong data/luat-goc.
 // - Tách rạch ròi chiều NHAC (ứng viên dương) và LOAI (loại trừ): nút chỉ xuất hiện ở chiều LOAI KHÔNG được tính là trúng ứng viên.
 // - Chạy thật cửa vào M-41 (lib/tim-luat.js); mở sẵn chỗ cắm cho M-37 (timNghia) và M-52 (loc), mặc định CHUA_CAM.
+// - Kiểu ca CAP (cặp tranh chấp, biên bản QT 26/11): ca có `nhomCanCo` (≥2 nhóm 4 số) — ĐẠT khi MỌI nhóm
+//   trong cặp có mặt ở chiều NHAC Top-20. Không có "đáp án đúng", chỉ đo cửa vào có đưa đủ các nhóm cần so không.
+// - CLI `--m37`: cắm thật lib/chi-muc-luat.js timNghia (M-37, bất đồng bộ). Chỉ mục data/luat-goc/chi-muc
+//   nay dựng ở CI (#2030, .github/workflows/chi-muc.yml) — khi thiếu/cũ thì kênh báo THIEU_CHI_MUC, không lỗi.
 // - Tất định, không mạng, không AI.
 
 import fs from 'node:fs';
@@ -130,6 +134,23 @@ export const BO_THU_LUAT_MAU = Object.freeze([
     canCuLuat: ['bieu:9401'],
     ghiChu: 'Nhóm 94.01 (ghế ngồi có thể điều chỉnh độ cao); cần tìm nghĩa M-37.',
   },
+  // --- Ca CAP (cặp tranh chấp): không có "đáp án đúng", đạt khi MỌI nhóm trong cặp vào Top-20 NHAC ---
+  {
+    id: 'cap-01-may-tinh-bang-cam-ung',
+    loaiCa: 'CAP',
+    moTa: 'máy tính bảng có màn hình cảm ứng',
+    nhomCanCo: ['8471', '8537'],
+    canCuLuat: ['bieu:8471', 'bieu:8537'],
+    ghiChu: 'Máy xử lý dữ liệu (84.71) so bảng điều khiển bằng điện (85.37); cửa vào phải đưa đủ cả hai nhóm để so.',
+  },
+  {
+    id: 'cap-02-tu-dieu-khien-may-cong-cu',
+    loaiCa: 'CAP',
+    moTa: 'tủ điều khiển cho máy công cụ',
+    nhomCanCo: ['8457', '8537'],
+    canCuLuat: ['bieu:8457', 'bieu:8537'],
+    ghiChu: 'Chú giải 84.57 (tủ điều khiển máy công cụ) cạnh 85.37; cặp tranh chấp điển hình.',
+  },
   // --- Ca ngược: kiểm tra trung thực khi rỗng và không tính nhầm nút LOAI ---
   {
     id: 'nguoc-01-khong-ton-tai',
@@ -150,6 +171,15 @@ export const BO_THU_LUAT_MAU = Object.freeze([
     phanNhomDung: null,
     canCuLuat: ['bieu:7611'],
     ghiChu: 'Mô tả quá ngắn (< 2 ký tự chuẩn): cửa vào phải trả rỗng.',
+  },
+  {
+    id: 'nguoc-03-cap-rong-tren-cap',
+    loaiCa: 'NGUOC',
+    kieuNguoc: 'RONG_KHONG_DOAN',
+    moTa: 'vật thể hư cấu xyzzy cặp 9999',
+    nhomCanCo: ['8471', '8537'],
+    canCuLuat: ['bieu:8471', 'bieu:8537'],
+    ghiChu: 'Cặp tranh chấp + mô tả vô nghĩa: cửa vào phải trả rỗng (không đưa đủ cặp một cách máy móc).',
   },
 ]);
 
@@ -225,8 +255,8 @@ export function kiemBoDo(boDo, { tapNutLuat = null, thuMuc = THU_MUC_LUAT_MAC_DI
     if (typeof ca.moTa !== 'string' || !ca.moTa.trim()) {
       loi.push(`${nhan}: thiếu moTa.`);
     }
-    if (ca.loaiCa !== 'THUAN' && ca.loaiCa !== 'NGUOC') {
-      loi.push(`${nhan}: loaiCa phải là "THUAN" hoặc "NGUOC".`);
+    if (ca.loaiCa !== 'THUAN' && ca.loaiCa !== 'NGUOC' && ca.loaiCa !== 'CAP') {
+      loi.push(`${nhan}: loaiCa phải là "THUAN", "NGUOC" hoặc "CAP".`);
     }
 
     // Chặn nguồn khách / tờ khai / tiền lệ
@@ -253,6 +283,27 @@ export function kiemBoDo(boDo, { tapNutLuat = null, thuMuc = THU_MUC_LUAT_MAC_DI
       }
       if (ca.phanNhomDung !== null && ca.phanNhomDung !== undefined && !chuanMa(ca.phanNhomDung, 6)) {
         loi.push(`${nhan}: phanNhomDung "${ca.phanNhomDung}" không đủ 6 chữ số.`);
+      }
+    }
+
+    if (ca.loaiCa === 'CAP') {
+      if (!Array.isArray(ca.nhomCanCo) || ca.nhomCanCo.length < 2) {
+        loi.push(`${nhan}: ca CAP bắt buộc có nhomCanCo ≥ 2 nhóm 4 số.`);
+      } else {
+        const daCo = new Set();
+        for (const g of ca.nhomCanCo) {
+          const ma = chuanMa(g, 4);
+          if (!ma || String(g).length !== 4) {
+            loi.push(`${nhan}: nhomCanCo "${g}" không phải nhóm 4 chữ số.`);
+          } else if (daCo.has(ma)) {
+            loi.push(`${nhan}: nhomCanCo trùng nhóm "${ma}".`);
+          } else {
+            daCo.add(ma);
+            if (!Array.isArray(ca.canCuLuat) || !ca.canCuLuat.includes(`bieu:${ma}`)) {
+              loi.push(`${nhan}: ca CAP phải dẫn canCuLuat gồm "bieu:${ma}" (mỗi nhóm trong cặp).`);
+            }
+          }
+        }
       }
     }
   }
@@ -362,6 +413,31 @@ export function chamMotCa(ca, ungVien, { rong = false } = {}) {
     }
   }
 
+  // Ca CAP (cặp tranh chấp): ĐẠT khi MỌI nhóm trong nhomCanCo có mặt ở chiều NHAC Top-20.
+  // Không có "đáp án đúng"; nút chỉ xuất hiện ở chiều LOAI không tính.
+  if (ca.loaiCa === 'CAP') {
+    const nhomCanCo = (ca.nhomCanCo || []).map((g) => chuanMa(g, 4)).filter(Boolean);
+    const chiTietNhom = nhomCanCo.map((ma) => {
+      const idx = ungVien.xepHangNhom4Nhac.indexOf(ma);
+      const hang = idx >= 0 ? idx + 1 : null;
+      return { nhom4: ma, hang, co: hang !== null && hang <= 20, chiOLoai: hang === null && ungVien.tapNhom4Loai.includes(ma) };
+    });
+    const dat = chiTietNhom.length >= 2 && chiTietNhom.every((g) => g.co);
+    return {
+      id: ca.id,
+      loaiCa: 'CAP',
+      moTa: ca.moTa,
+      rong,
+      tongDong: ungVien.tongDong,
+      soDongNhac: ungVien.soDongNhac,
+      soDongLoai: ungVien.soDongLoai,
+      nhomCanCo: chiTietNhom,
+      soNhomCo: chiTietNhom.filter((g) => g.co).length,
+      dat,
+      top20Nhom4: ungVien.xepHangNhom4Nhac.slice(0, 20),
+    };
+  }
+
   const idx4 = nhomDung ? ungVien.xepHangNhom4Nhac.indexOf(nhomDung) : -1;
   const hangNhom4 = idx4 >= 0 ? idx4 + 1 : null;
   const idx6 = phanNhomDung ? ungVien.xepHangPhanNhom6Nhac.indexOf(phanNhomDung) : -1;
@@ -398,6 +474,7 @@ export function chamMotCa(ca, ungVien, { rong = false } = {}) {
 function tongHopKenh(ketQuaCa) {
   const thuan = ketQuaCa.filter((x) => x.loaiCa === 'THUAN');
   const nguoc = ketQuaCa.filter((x) => x.loaiCa === 'NGUOC');
+  const cap = ketQuaCa.filter((x) => x.loaiCa === 'CAP');
   const coYeuCau6 = thuan.filter((x) => x.phanNhomDung);
   const dem = (arr, fn) => arr.filter(fn).length;
   const tiLe = (tu, mau) => (mau > 0 ? Number(((tu / mau) * 100).toFixed(1)) : null);
@@ -408,25 +485,32 @@ function tongHopKenh(ketQuaCa) {
     tiLeTrungNhom4: tiLe(dem(thuan, (x) => x.coNhom4), thuan.length),
     trungTop5: dem(thuan, (x) => x.trongTop5),
     tiLeTop5: tiLe(dem(thuan, (x) => x.trongTop5), thuan.length),
-    trungTop10: dem(thuan, (x) => x.trongTop10),
-    tiLeTop10: tiLe(dem(thuan, (x) => x.trongTop10), thuan.length),
-    trungTop20: dem(thuan, (x) => x.trongTop20),
-    tiLeTop20: tiLe(dem(thuan, (x) => x.trongTop20), thuan.length),
+    trungTop10: dem(thuan, (x) => x.trungTop10),
+    tiLeTop10: tiLe(dem(thuan, (x) => x.trungTop10), thuan.length),
+    trungTop20: dem(thuan, (x) => x.trungTop20),
+    tiLeTop20: tiLe(dem(thuan, (x) => x.trungTop20), thuan.length),
     caRongTrenThuan: dem(thuan, (x) => x.rong),
     chiXuatHienOLoai: dem(thuan, (x) => x.chiXuatHienOLoai),
     soCaCoPhanNhom6: coYeuCau6.length,
     trungPhanNhom6: dem(coYeuCau6, (x) => x.coPhanNhom6 === true),
+    tongCaCap: cap.length,
+    capDat: dem(cap, (x) => x.dat),
+    tiLeCapDat: tiLe(dem(cap, (x) => x.dat), cap.length),
+    capTrungMotPhan: dem(cap, (x) => !x.dat && x.soNhomCo > 0),
+    capKhongNhomNao: dem(cap, (x) => !x.dat && x.soNhomCo === 0 && !x.rong),
     tongCaNguoc: nguoc.length,
     caNguocDat: dem(nguoc, (x) => x.dat),
   };
 }
 
 /**
- * Chạy thước đo cửa vào trên một bộ đo sạch (đã qua kiemBoDo).
+ * Chạy thước đo cửa vào trên một bộ đo sạch (đã qua kiemBoDo). Bất đồng bộ (kênh M-37 phải await).
  * - Kênh mặc định: `m41_tim_luat` (chạy thật lib/tim-luat.js).
  * - Kênh cắm thêm: `timNghia` (M-37) và `loc` (M-52); nếu không truyền thì báo CHUA_CAM.
+ *   Kênh M-37: hàm thật (lib/chi-muc-luat.js) bất đồng bộ và trả `{trangThai, ketQua}`; THIEU/CU/HONG
+ *   (chỉ mục vắng hoặc cũ — được dựng ở CI #2030) → kênh báo THIEU_CHI_MUC, không lỗi.
  */
-export function chayDoCuaVao({
+export async function chayDoCuaVao({
   boDo = BO_THU_LUAT_MAU,
   thuMuc = THU_MUC_LUAT_MAC_DINH,
   limit = 20,
@@ -456,26 +540,41 @@ export function chayDoCuaVao({
     chiTiet: kqM41,
   };
 
-  // 2. Kênh M-37 (tìm nghĩa trên nút luật — chỗ cắm sẵn)
+  // 2. Kênh M-37 (tìm nghĩa trên nút luật — lib/chi-muc-luat.js timNghia, bất đồng bộ)
   if (typeof timNghia === 'function') {
-    const kqM37 = boDo.map((ca) => {
-      const res = timNghia(ca.moTa, { thuMuc, limit }) || {};
+    const kqM37 = [];
+    let lechChiMuc = null;
+    for (const ca of boDo) {
+      const res = await timNghia(ca.moTa, { thuMuc, limit });
+      // Chỉ mục vắng/cũ/hỏng là lỗi cả kênh (dựng ở CI #2030) — báo THIEU_CHI_MUC, không lỗi, không chấm nửa chừng.
+      if (res && !Array.isArray(res) && res.trangThai && ['THIEU', 'CU', 'HONG'].includes(res.trangThai)) {
+        lechChiMuc = { trangThai: res.trangThai, lyDo: String(res.lyDo || '') };
+        break;
+      }
       const ds = Array.isArray(res) ? res : (res.cuaVao || res.ketQua || []);
       const uv = chuanHoaUngVien(ds);
-      return chamMotCa(ca, uv, { rong: ds.length === 0 });
-    });
-    kenh.m37_tim_nghia = {
-      trangThai: 'DA_CAM',
-      the: 'M-37',
-      moTa: 'Chỉ mục nghĩa trên nút luật',
-      tongHop: tongHopKenh(kqM37),
-      chiTiet: kqM37,
-    };
+      kqM37.push(chamMotCa(ca, uv, { rong: ds.length === 0 }));
+    }
+    kenh.m37_tim_nghia = lechChiMuc
+      ? {
+          trangThai: 'THIEU_CHI_MUC',
+          the: 'M-37',
+          moTa: `Chỉ mục nghĩa chưa dùng được (${lechChiMuc.trangThai}: ${lechChiMuc.lyDo}) — dựng: npm run build:chi-muc-luat`,
+          tongHop: null,
+          chiTiet: [],
+        }
+      : {
+          trangThai: 'DA_CAM',
+          the: 'M-37',
+          moTa: 'Chỉ mục nghĩa trên nút luật (lib/chi-muc-luat.js)',
+          tongHop: tongHopKenh(kqM37),
+          chiTiet: kqM37,
+        };
   } else {
     kenh.m37_tim_nghia = {
       trangThai: 'CHUA_CAM',
       the: 'M-37',
-      moTa: 'Chỗ cắm sẵn cho chỉ mục nghĩa M-37 (#1946 đang nháp).',
+      moTa: 'Chỗ cắm sẵn cho chỉ mục nghĩa M-37; dùng CLI --m37 để cắm thật.',
       tongHop: null,
       chiTiet: [],
     };
@@ -525,16 +624,17 @@ export function dinhDangBaoCaoMd(kq) {
   lines.push(`- **Bộ đo:** ${kq.tenBo} (${kq.tongCa} ca, limit=${kq.limit})`);
   lines.push(`- **Lưu ý:** ${kq.luuY}`);
   lines.push('');
-  lines.push('| Kênh | Thẻ | Trạng thái | Trúng nhóm 4 (NHAC) | Top-5 | Top-10 | Rỗng trên ca thuận | Ca ngược đạt |');
-  lines.push('|---|---|---|---|---|---|---|---|');
+  lines.push('| Kênh | Thẻ | Trạng thái | Trúng nhóm 4 (NHAC) | Top-5 | Top-10 | Đủ cặp CAP | Rỗng trên ca thuận | Ca ngược đạt |');
+  lines.push('|---|---|---|---|---|---|---|---|---|');
   for (const [ten, k] of Object.entries(kq.kenh)) {
     if (k.trangThai !== 'DA_CAM') {
-      lines.push(`| \`${ten}\` | ${k.the} | ${k.trangThai} | — | — | — | — | — |`);
+      lines.push(`| \`${ten}\` | ${k.the} | ${k.trangThai} | — | — | — | — | — | — |`);
       continue;
     }
     const t = k.tongHop;
+    const cap = t.tongCaCap > 0 ? `${t.capDat}/${t.tongCaCap} (${t.tiLeCapDat}%)` : '—';
     lines.push(
-      `| \`${ten}\` | ${k.the} | ${k.trangThai} | ${t.trungNhom4}/${t.tongCaThuan} (${t.tiLeTrungNhom4}%) | ${t.trungTop5}/${t.tongCaThuan} | ${t.trungTop10}/${t.tongCaThuan} | ${t.caRongTrenThuan} | ${t.caNguocDat}/${t.tongCaNguoc} |`
+      `| \`${ten}\` | ${k.the} | ${k.trangThai} | ${t.trungNhom4}/${t.tongCaThuan} (${t.tiLeTrungNhom4}%) | ${t.trungTop5}/${t.tongCaThuan} | ${t.trungTop10}/${t.tongCaThuan} | ${cap} | ${t.caRongTrenThuan} | ${t.caNguocDat}/${t.tongCaNguoc} |`
     );
   }
   lines.push('');
@@ -545,6 +645,8 @@ export function dinhDangBaoCaoMd(kq) {
   for (const c of kq.kenh.m41_tim_luat.chiTiet) {
     if (c.loaiCa === 'NGUOC') {
       lines.push(`| \`${c.id}\` | NGUOC (${c.kieuNguoc}) | — | — | ${c.dat ? 'ĐẠT' : 'HỎNG'} | tổng=${c.tongDong ?? 0} | ${c.lyDo} |`);
+    } else if (c.loaiCa === 'CAP') {
+      continue; // Ca CAP có bảng riêng bên dưới, không trộn vào bảng ca thuận
     } else {
       const hang = c.hangNhom4 ? `#${c.hangNhom4}` : (c.rong ? 'RỖNG' : 'KHÔNG THẤY');
       lines.push(
@@ -552,14 +654,32 @@ export function dinhDangBaoCaoMd(kq) {
       );
     }
   }
+  for (const [ten, k] of Object.entries(kq.kenh)) {
+    if (k.trangThai !== 'DA_CAM' || !(k.chiTiet || []).some((c) => c.loaiCa === 'CAP')) continue;
+    lines.push('');
+    lines.push(`## Chi tiết cặp tranh chấp (CAP) — kênh \`${ten}\``);
+    lines.push('');
+    lines.push('ĐẠT = mọi nhóm trong cặp có mặt ở chiều NHAC Top-20 (nút chỉ ở LOAI không tính).');
+    lines.push('');
+    lines.push('| Ca | Mô tả | Nhóm cần có | Nhóm có mặt (hạng NHAC) | Nhóm thiếu | ĐẠT | Top-10 nhóm NHAC |');
+    lines.push('|---|---|---|---|---|---|---|');
+    for (const c of k.chiTiet.filter((x) => x.loaiCa === 'CAP')) {
+      const coMat = (c.nhomCanCo || []).filter((g) => g.co).map((g) => `${g.nhom4}(#${g.hang})`);
+      const thieu = (c.nhomCanCo || []).filter((g) => !g.co).map((g) => `${g.nhom4}${g.chiOLoai ? ' (chỉ LOAI)' : ''}`);
+      lines.push(
+        `| \`${c.id}\` | ${c.moTa} | ${(c.nhomCanCo || []).map((g) => g.nhom4).join(', ')} | ${coMat.join(', ') || '—'} | ${thieu.join(', ') || '—'} | ${c.dat ? 'ĐẠT' : 'THIẾU'} | ${(c.top20Nhom4 || []).slice(0, 10).join(', ') || '—'} |`
+      );
+    }
+  }
   return `${lines.join('\n')}\n`;
 }
 
 function phanTichThamSo(argv) {
-  const out = { bo: null, limit: 20, json: false, baoCao: null, thuMuc: THU_MUC_LUAT_MAC_DINH };
+  const out = { bo: null, limit: 20, json: false, baoCao: null, thuMuc: THU_MUC_LUAT_MAC_DINH, m37: false };
   for (let i = 0; i < argv.length; i += 1) {
     const a = argv[i];
     if (a === '--json') out.json = true;
+    else if (a === '--m37') out.m37 = true;
     else if (a === '--bo' && argv[i + 1]) { out.bo = argv[i + 1]; i += 1; }
     else if (a === '--limit' && argv[i + 1]) { out.limit = Number.parseInt(argv[i + 1], 10) || 20; i += 1; }
     else if (a === '--bao-cao' && argv[i + 1]) { out.baoCao = argv[i + 1]; i += 1; }
@@ -568,23 +688,34 @@ function phanTichThamSo(argv) {
   return out;
 }
 
+// Khối CLI chạy trong async IIFE (không top-level await — giữ cho module require được từ CJS).
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  const opts = phanTichThamSo(process.argv.slice(2));
-  let boDo = BO_THU_LUAT_MAU;
-  let tenBo = 'BO_THU_LUAT_MAU (dựng thước từ data/luat-goc)';
-  if (opts.bo) {
-    const raw = JSON.parse(fs.readFileSync(path.resolve(opts.bo), 'utf8'));
-    boDo = Array.isArray(raw) ? raw : (raw.ca || raw.danhSach || []);
-    tenBo = path.basename(opts.bo);
-  }
-  const kq = chayDoCuaVao({ boDo, thuMuc: opts.thuMuc, limit: opts.limit, tenBo });
-  if (opts.baoCao) {
-    fs.mkdirSync(path.dirname(path.resolve(opts.baoCao)), { recursive: true });
-    fs.writeFileSync(path.resolve(opts.baoCao), dinhDangBaoCaoMd(kq), 'utf8');
-  }
-  if (opts.json) {
-    console.log(JSON.stringify(kq, null, 2));
-  } else {
-    console.log(dinhDangBaoCaoMd(kq));
-  }
+  (async () => {
+    const opts = phanTichThamSo(process.argv.slice(2));
+    let boDo = BO_THU_LUAT_MAU;
+    let tenBo = 'BO_THU_LUAT_MAU (dựng thước từ data/luat-goc)';
+    if (opts.bo) {
+      const raw = JSON.parse(fs.readFileSync(path.resolve(opts.bo), 'utf8'));
+      boDo = Array.isArray(raw) ? raw : (raw.ca || raw.danhSach || []);
+      tenBo = path.basename(opts.bo);
+    }
+    const wiring = {};
+    if (opts.m37) {
+      const { timNghia } = require(path.join(GOC, 'lib', 'chi-muc-luat.js'));
+      wiring.timNghia = timNghia;
+    }
+    const kq = await chayDoCuaVao({ boDo, thuMuc: opts.thuMuc, limit: opts.limit, tenBo, ...wiring });
+    if (opts.baoCao) {
+      fs.mkdirSync(path.dirname(path.resolve(opts.baoCao)), { recursive: true });
+      fs.writeFileSync(path.resolve(opts.baoCao), dinhDangBaoCaoMd(kq), 'utf8');
+    }
+    if (opts.json) {
+      console.log(JSON.stringify(kq, null, 2));
+    } else {
+      console.log(dinhDangBaoCaoMd(kq));
+    }
+  })().catch((e) => {
+    console.error('LỖI:', e && e.message);
+    process.exit(1);
+  });
 }
