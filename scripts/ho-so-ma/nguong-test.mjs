@@ -8,7 +8,7 @@ import path from 'node:path';
 import { createRequire } from 'node:module';
 import { chayCong, napLuatCong } from './cong.mjs';
 import { kiemKhoHoSo } from './khuon.mjs';
-import { DAC_TA_NGUONG_76, ghiKhoNguong, kiemDaiAnhEm } from './nguong.mjs';
+import { DAC_TA_NGUONG_76, dungBanGhiNguong, ghiKhoNguong, kiemDaiAnhEm } from './nguong.mjs';
 
 const require = createRequire(import.meta.url);
 const G = require('../../lib/ho-so-ma/ghep.js');
@@ -33,8 +33,10 @@ const khoThuc = kiemKhoHoSo();
 // 1. Kho M-74 tồn tại, đúng khuôn và phủ đủ đặc tả Chương 76 + Phần XV
 test('1. Kho data/ho-so-ma/nguong/{XV,76}.jsonl qua khuôn ho-so-ma@1 với 0 lỗi', () => {
   assert.equal(khoThuc.loi.length, 0, khoThuc.loi.join('; '));
-  const nguongRecords = khoThuc.banGhi.filter((x) => x.loai === 'NGUONG');
-  assert.equal(nguongRecords.length, DAC_TA_NGUONG_76.length);
+  assert.equal(khoThuc.banGhi.length, DAC_TA_NGUONG_76.length);
+  assert.ok(khoThuc.banGhi.some((x) => x.loai === 'DINH_NGHIA' && x.nut === 'bieu:76061233' && /5182/.test(x.dieuKien)));
+  assert.ok(khoThuc.banGhi.some((x) => x.loai === 'DINH_NGHIA' && x.nut === 'bieu:76061233' && /5082/.test(x.dieuKien)));
+  assert.equal(khoThuc.banGhi.some((x) => x.nut === 'bieu:76072010'), false, 'Không dựng NGUONG từ bảng thông số ví dụ 76072010');
 });
 
 // 2. Cổng 4 TRÍCH & Cổng 5 VÂN TAY phạm vi Chương 76 đạt 100%
@@ -56,7 +58,10 @@ test('3. Cổng 3 (ANH EM) không có lỗi NGUONG chồng/hở/voi và 9 cụm 
   assert.equal(dai.cumDaKiem.length, 9, `Kỳ vọng 9 cụm anh em Chương 76, nhận ${dai.cumDaKiem.length}`);
   assert.ok(dai.cumDaKiem.every((c) => c.phuKin), 'Mọi cụm anh em chia theo ngưỡng số phải phủ kín dải');
   assert.ok(dai.ghiNhanLuat.some((g) => g.loai === 'CHONG_SEN_VOI_LUAT'));
-  assert.ok(dai.ghiNhanLuat.some((g) => g.loai === 'HO_THONG_LE_SEN'));
+  for (const idKhac of ['hs:bieu:760519:7401', 'hs:bieu:76051990:7401', 'hs:bieu:760529:7401', 'hs:bieu:76052990:7401', 'hs:bieu:76141019:7401', 'hs:bieu:76149019:7401', 'hs:bieu:761699:7401']) {
+    const r = khoThuc.banGhi.find((x) => x.id === idKhac);
+    assert.ok(r && /^phuDinh: bieu:/.test(r.ghiChu || ''), `Thiếu đánh dấu phuDinh trên dòng Loại khác ${idKhac}`);
+  }
 });
 
 // 4. Đối chiếu tài liệu tham khảo data/ho-so/ranh-gioi/76*.json: mọi ngưỡng số đều có mặt với trich nguyên văn
@@ -161,6 +166,29 @@ test('6. Ca ngược: cổng phát hiện đúng chồng dải, hở dải, voi 
     assert.ok(rSai.cong[4].loi.some((x) => x.includes('trích không nguyên văn')));
     assert.ok(rSai.cong[4].loi.some((x) => x.includes('dữ kiện "thuộc tính tự đặt')));
     assert.ok(rSai.cong[5].loi.some((x) => x.includes('vân tay lệch')));
+
+    // 6d. Từ chối câu thông số ví dụ / bảng mẫu tham khảo khi ép dựng thành NGUONG
+    const badSample = dungBanGhiNguong({
+      dacTa: [
+        {
+          id: 'hs:bieu:76072010:9903',
+          nut: 'bieu:76072010',
+          cau: 'sen:76072010:1#8',
+          dieuKien: 'Thử đưa thông số ví dụ thành NGUONG',
+          trich: 'Bề rộng cuộn, mm',
+          duKien: ['Bề rộng cuộn'],
+        },
+        {
+          id: 'hs:bieu:76061233:9904',
+          nut: 'bieu:76061233',
+          cau: 'sen:76061233:1#2',
+          dieuKien: 'Thử đưa bảng thông lệ 5182/5082 thành NGUONG',
+          trich: 'Mangan',
+          duKien: ['Mangan'],
+        },
+      ],
+    });
+    assert.equal(badSample.loi.length, 2, `Kỳ vọng từ chối 2 câu ví dụ/bảng mẫu, nhận ${badSample.loi.length}`);
   } finally {
     fs.rmSync(tmp, { recursive: true, force: true });
   }

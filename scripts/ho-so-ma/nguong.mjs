@@ -19,6 +19,7 @@ const G = require('../../lib/ho-so-ma/ghep.js');
 const sha256 = (s) => crypto.createHash('sha256').update(String(s), 'utf8').digest('hex');
 const chuanKhoang = (s) => String(s || '').replace(/\s+/g, ' ').trim();
 const khoaNguong = (n) => `${chuanKhoang(n.daiLuong).toLowerCase()}|${chuanKhoang(n.donVi ?? '').toLowerCase()}`;
+export const laCauViDuHoacBangMau = (txt) => /(?:tấm ví dụ|ví dụ về|sản phẩm mẫu|thuộc tính nhiệt:|pound trên 1000 ft2|thường có các thành phần sau|hợp kim 5182\s+hợp kim 5082)/i.test(chuanKhoang(txt));
 
 /**
  * Danh mục đặc tả ngưỡng số rút trực tiếp từ câu luật trên đường đi Chương 76 (gồm Phần XV + Chương 76).
@@ -228,7 +229,7 @@ export const DAC_TA_NGUONG_76 = Object.freeze([
     trich: 'Kích thước mặt cắt ngang lớn nhất trên 7 mm',
     nguong: { daiLuong: 'kích thước mặt cắt ngang lớn nhất', donVi: 'mm', tu: null, den: 7, gomTu: false, gomDen: true },
     duKien: ['Kích thước mặt cắt ngang lớn nhất'],
-    ghiChu: 'Phần bù của 7605.11 theo quy tắc phân nhóm "Loại khác".',
+    ghiChu: 'phuDinh: bieu:760511 — Phần bù của 7605.11 theo quy tắc phân nhóm "Loại khác".',
   },
   {
     id: 'hs:bieu:76051100:7401',
@@ -258,7 +259,7 @@ export const DAC_TA_NGUONG_76 = Object.freeze([
     trich: 'Đường kính không quá 0,0508 mm',
     nguong: { daiLuong: 'đường kính', donVi: 'mm', tu: 0.0508, den: null, gomTu: false, gomDen: false },
     duKien: ['Đường kính'],
-    ghiChu: 'Phần bù của 7605.19.10; đồng thời kế thừa ngưỡng cha 7605.19 (kích thước mặt cắt ngang lớn nhất <= 7 mm).',
+    ghiChu: 'phuDinh: bieu:76051910 — Phần bù của 7605.19.10; kế thừa ngưỡng cha 7605.19 (mặt cắt <= 7 mm).',
   },
 
   // ── 7605.2: Dây hợp kim nhôm (760521 vs 760529; 76052910 vs 76052990) ────────────────────────
@@ -281,7 +282,7 @@ export const DAC_TA_NGUONG_76 = Object.freeze([
     trich: 'Kích thước mặt cắt ngang lớn nhất trên 7 mm',
     nguong: { daiLuong: 'kích thước mặt cắt ngang lớn nhất', donVi: 'mm', tu: null, den: 7, gomTu: false, gomDen: true },
     duKien: ['Kích thước mặt cắt ngang lớn nhất'],
-    ghiChu: 'Phần bù của 7605.21 theo quy tắc phân nhóm "Loại khác".',
+    ghiChu: 'phuDinh: bieu:760521 — Phần bù của 7605.21 theo quy tắc phân nhóm "Loại khác".',
   },
   {
     id: 'hs:bieu:76052100:7401',
@@ -311,10 +312,10 @@ export const DAC_TA_NGUONG_76 = Object.freeze([
     trich: 'Có đường kính không quá 0,254 mm',
     nguong: { daiLuong: 'đường kính', donVi: 'mm', tu: 0.254, den: null, gomTu: false, gomDen: false },
     duKien: ['đường kính'],
-    ghiChu: 'Phần bù của 7605.29.10; đồng thời kế thừa ngưỡng cha 7605.29 (kích thước mặt cắt ngang lớn nhất <= 7 mm).',
+    ghiChu: 'phuDinh: bieu:76052910 — Phần bù của 7605.29.10; kế thừa ngưỡng cha 7605.29 (mặt cắt <= 7 mm).',
   },
 
-  // ── 7606.12.3 & 7607.20: Chiều rộng > 1m, lá làm lon SEN, lá cách nhiệt SEN ───────────────────
+  // ── 7606.12.3: Chiều rộng > 1m, định nghĩa hợp kim 5082/5182 (DINH_NGHIA), lá làm lon SEN ───
   {
     id: 'hs:bieu:76061233:7401',
     nut: 'bieu:76061233',
@@ -329,36 +330,28 @@ export const DAC_TA_NGUONG_76 = Object.freeze([
   {
     id: 'hs:bieu:76061233:7402',
     nut: 'bieu:76061233',
+    loai: 'DINH_NGHIA',
     cau: 'sen:76061233:1#2',
-    dieuKien: 'Hợp kim 5082/5182 (7606.12.33 SEN) thường có hàm lượng nhôm (Al) trong khoảng 93,5% đến 96,0%',
-    trich: 'Nhôm, Al\t93,5 - 96,0\t93,5-96,0',
-    nguong: { daiLuong: 'hàm lượng nhôm (Al) tham khảo hợp kim 5082/5182', donVi: '%', tu: 93.5, den: 96.0, gomTu: true, gomDen: true },
-    duKien: ['Nhôm, Al'],
+    dieuKien: 'Định nghĩa mác hợp kim nhôm 5182 (SEN 7606.12.33): Al 93,5–96,0%; Mg 4,0–5,0%; Mn <= 0,15%; Cr <= 0,15%; Cu <= 0,15%; Fe <= 0,35%; Si <= 0,20%; Ti <= 0,10%; Zn <= 0,25%',
+    trich: 'Hợp kim 5182\tHợp kim 5082\nNhôm, Al\t93,5 - 96,0\t93,5-96,0\nCrôm, Cr\t<= 0,15\t<= 0,10\nĐồng, Cu\t<= 0,15\t<= 0,15\nSắt, Fe\t<= 0,35\t<= 0,35\nMagie, Mg\t4,0 - 5,0\t4,0 - 5,0\nMangan, Mn\t<= 0,15\t0,20 -0,50',
+    duKien: ['Hợp kim 5182', 'Nhôm, Al', 'Crôm, Cr', 'Magie, Mg', 'Mangan, Mn'],
+    ghiChu: 'Chuyển từ NGUONG sang DINH_NGHIA theo góp ý QT: nhận dạng riêng mác 5182.',
   },
   {
     id: 'hs:bieu:76061233:7403',
     nut: 'bieu:76061233',
+    loai: 'DINH_NGHIA',
     cau: 'sen:76061233:1#2',
-    dieuKien: 'Hợp kim 5082/5182 (7606.12.33 SEN) thường có hàm lượng magie (Mg) trong khoảng 4,0% đến 5,0%',
-    trich: 'Magie, Mg\t4,0 - 5,0\t4,0 - 5,0',
-    nguong: { daiLuong: 'hàm lượng magie (Mg) tham khảo hợp kim 5082/5182', donVi: '%', tu: 4.0, den: 5.0, gomTu: true, gomDen: true },
-    duKien: ['Magie, Mg'],
-  },
-  {
-    id: 'hs:bieu:76061233:7404',
-    nut: 'bieu:76061233',
-    cau: 'sen:76061233:1#2',
-    dieuKien: 'SEN 7606.12.33: mangan (Mn) ở hợp kim 5182 <= 0,15%, ở hợp kim 5082 từ 0,20% đến 0,50% (hở 0,15..0,20%)',
-    trich: 'Mangan, Mn\t<= 0,15\t0,20 -0,50',
-    nguong: { daiLuong: 'hàm lượng mangan (Mn) tham khảo hợp kim 5082/5182', donVi: '%', tu: null, den: 0.5, gomTu: false, gomDen: true },
-    duKien: ['Mangan, Mn'],
-    ghiChu: 'Khoảng 0,15% < Mn < 0,20% là vùng chuyển tiếp trên bảng thông lệ giữa hợp kim 5182 (<= 0,15%) và 5082 (0,20 - 0,50%).',
+    dieuKien: 'Định nghĩa mác hợp kim nhôm 5082 (SEN 7606.12.33): Al 93,5–96,0%; Mg 4,0–5,0%; Mn 0,20–0,50%; Cr <= 0,10%; Cu <= 0,15%; Fe <= 0,35%; Si <= 0,20%; Ti <= 0,10%; Zn <= 0,25%',
+    trich: 'Hợp kim 5182\tHợp kim 5082\nNhôm, Al\t93,5 - 96,0\t93,5-96,0\nCrôm, Cr\t<= 0,15\t<= 0,10\nĐồng, Cu\t<= 0,15\t<= 0,15\nSắt, Fe\t<= 0,35\t<= 0,35\nMagie, Mg\t4,0 - 5,0\t4,0 - 5,0\nMangan, Mn\t<= 0,15\t0,20 -0,50',
+    duKien: ['Hợp kim 5082', 'Nhôm, Al', 'Crôm, Cr', 'Magie, Mg', 'Mangan, Mn'],
+    ghiChu: 'Chuyển từ NGUONG sang DINH_NGHIA theo góp ý QT: nhận dạng riêng mác 5082.',
   },
   {
     id: 'hs:bieu:76061232:7401',
     nut: 'bieu:76061232',
     cau: 'sen:76061232:1#3',
-    dieuKien: 'SEN 7606.12.32 mô tả lá làm lon dạng cuộn thường có độ dày từ 0,175 mm đến không quá 0,432 mm (vùng <= 0,2 mm thuộc 76.07 theo Luật)',
+    dieuKien: 'SEN 7606.12.32 mô tả lá làm lon dạng cuộn có độ dày từ 0,175 mm đến không quá 0,432 mm (vùng <= 0,2 mm thuộc 76.07 theo Luật)',
     trich: 'độ dày từ 0,175 mm nhưng không quá 0,432 mm',
     nguong: { daiLuong: 'độ dày lá làm lon (SEN 7606.12.32)', donVi: 'mm', tu: 0.175, den: 0.432, gomTu: true, gomDen: true },
     duKien: ['độ dày'],
@@ -372,33 +365,6 @@ export const DAC_TA_NGUONG_76 = Object.freeze([
     trich: 'chiều rộng từ 254 mm nhưng không quá 1000 mm',
     nguong: { daiLuong: 'chiều rộng lá làm lon (SEN 7606.12.32)', donVi: 'mm', tu: 254, den: 1000, gomTu: true, gomDen: true },
     duKien: ['chiều rộng'],
-  },
-  {
-    id: 'hs:bieu:76072010:7401',
-    nut: 'bieu:76072010',
-    cau: 'sen:76072010:1#8',
-    dieuKien: 'SEN 7607.20.10 mô tả mẫu lá nhôm cách nhiệt dạng cuộn trọng lượng 16,35 pound trên 1000 ft2',
-    trich: 'Trọng lượng 16,35 pound trên 1000 ft2 dạng cuộn',
-    nguong: { daiLuong: 'trọng lượng lá nhôm cách nhiệt', donVi: 'pound/1000 ft2', tu: 16.35, den: 16.35, gomTu: true, gomDen: true },
-    duKien: ['Trọng lượng'],
-  },
-  {
-    id: 'hs:bieu:76072010:7402',
-    nut: 'bieu:76072010',
-    cau: 'sen:76072010:1#9',
-    dieuKien: 'SEN 7607.20.10 nêu chỉ số độ bức xạ nhiệt của nhôm lá mỏng cách nhiệt bằng 0,05',
-    trich: 'Độ bức xạ: 0,05',
-    nguong: { daiLuong: 'độ bức xạ nhiệt', donVi: null, tu: 0.05, den: 0.05, gomTu: true, gomDen: true },
-    duKien: ['Độ bức xạ'],
-  },
-  {
-    id: 'hs:bieu:76072010:7403',
-    nut: 'bieu:76072010',
-    cau: 'sen:76072010:1#9',
-    dieuKien: 'SEN 7607.20.10 nêu độ phản xạ nhiệt của nhôm lá mỏng cách nhiệt bằng 95%',
-    trich: 'Độ phản xạ: 95%',
-    nguong: { daiLuong: 'độ phản xạ nhiệt', donVi: '%', tu: 95, den: 95, gomTu: true, gomDen: true },
-    duKien: ['Độ phản xạ'],
   },
 
   // ── 7614.10.1 (có lõi thép) & 7614.90.1 (loại khác): Cáp 25,3 mm và 28,28 mm ───────────────────
@@ -431,7 +397,7 @@ export const DAC_TA_NGUONG_76 = Object.freeze([
     trich: 'Có đường kính trên 25,3 mm nhưng không quá 28,28 mm',
     nguong: { daiLuong: 'đường kính', donVi: 'mm', tu: 28.28, den: null, gomTu: false, gomDen: false },
     duKien: ['đường kính'],
-    ghiChu: 'Phần bù của 7614.10.11 và 7614.10.12 theo quy tắc "Loại khác".',
+    ghiChu: 'phuDinh: bieu:76141011, bieu:76141012 — Phần bù của 7614.10.11 và 7614.10.12 theo quy tắc "Loại khác".',
   },
   {
     id: 'hs:bieu:76149011:7401',
@@ -462,7 +428,7 @@ export const DAC_TA_NGUONG_76 = Object.freeze([
     trich: 'Có đường kính trên 25,3 mm nhưng không quá 28,28 mm',
     nguong: { daiLuong: 'đường kính', donVi: 'mm', tu: 28.28, den: null, gomTu: false, gomDen: false },
     duKien: ['đường kính'],
-    ghiChu: 'Phần bù của 7614.90.11 và 7614.90.12 theo quy tắc "Loại khác".',
+    ghiChu: 'phuDinh: bieu:76149011, bieu:76149012 — Phần bù của 7614.90.11 và 7614.90.12 theo quy tắc "Loại khác".',
   },
 
   // ── 7616.91 (Chú giải phân nhóm 2: dây <= 6 mm) & 7616.99.30 (đồng xèng > 1/10 đường kính) ──
@@ -486,7 +452,7 @@ export const DAC_TA_NGUONG_76 = Object.freeze([
     trich: 'kích thước mặt cắt ngang không quá 6 mm',
     nguong: { daiLuong: 'kích thước mặt cắt ngang', donVi: 'mm', tu: 6, den: null, gomTu: false, gomDen: false },
     duKien: ['kích thước mặt cắt ngang'],
-    ghiChu: 'Phần bù theo Chú giải phân nhóm 2 Chương 76 khi vật liệu làm lưới có mặt cắt trên 6 mm.',
+    ghiChu: 'phuDinh: bieu:761691 — Phần bù theo Chú giải phân nhóm 2 Chương 76 khi vật liệu làm lưới có mặt cắt trên 6 mm.',
   },
   {
     id: 'hs:bieu:76169930:7401',
@@ -508,9 +474,14 @@ export function dungBanGhiNguong({ luat = G.LUAT_MAC_DINH, dacTa = DAC_TA_NGUONG
   const loi = [];
 
   for (const d of dacTa) {
+    const loai = d.loai || 'NGUONG';
     const chu = L.chuCau(d.cau);
     if (chu === null) {
       loi.push(`${d.id}: không tìm thấy câu ${d.cau}`);
+      continue;
+    }
+    if (loai === 'NGUONG' && laCauViDuHoacBangMau(chu)) {
+      loi.push(`${d.id}: câu ${d.cau} là thông số ví dụ/bảng mẫu tham khảo — không được dựng thành NGUONG`);
       continue;
     }
     const nNguon = L.nut.get(L.cau.get(d.cau).nut);
@@ -522,12 +493,12 @@ export function dungBanGhiNguong({ luat = G.LUAT_MAC_DINH, dacTa = DAC_TA_NGUONG
     const rec = {
       id: d.id,
       nut: d.nut,
-      loai: 'NGUONG',
+      loai,
       dieuKien: d.dieuKien,
       trich: d.trich,
       cau: d.cau,
       ...(d.voi ? { voi: [...d.voi] } : {}),
-      nguong: { ...d.nguong },
+      ...(d.nguong ? { nguong: { ...d.nguong } } : {}),
       duKien: [...d.duKien],
       lop: nNguon.lop,
       nguon: nNguon.nguon,
@@ -640,15 +611,6 @@ export function kiemDaiAnhEm(banGhi, L) {
       cauLienQuan: [r7606?.cau, r7607.cau, r76061232.cau].filter(Boolean),
     });
   }
-  const rMn = theoNut.get('bieu:76061233')?.find((x) => x.nguong.daiLuong.includes('mangan'));
-  if (rMn) {
-    ghiNhanLuat.push({
-      loai: 'HO_THONG_LE_SEN',
-      moTa: 'SEN 7606.12.33: Mangan (Mn) hợp kim 5182 <= 0,15%, hợp kim 5082 0,20–0,50% — hở khoảng (0,15%; 0,20%) trên bảng thông lệ.',
-      cauLienQuan: [rMn.cau],
-    });
-  }
-
   return { cumDaKiem, loi, ghiNhanLuat };
 }
 
