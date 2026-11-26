@@ -4962,6 +4962,54 @@
    "gir": "Chú giải 3(b) Phần XVI + EN 85.34",
    "basis": "RULE_TABLE",
    "sourceVi": "Ca thật 26/11: khách xin phân tích PCBA. 5 tiền lệ kho: TB 1159 (→8537.10.19, MFN 15%), TB 6740 (→8529.90.54 TV, MFN 5%), TB 5075+5076+5525 (→8529.90.55 máy chiếu, MFN 0%; POGO board → 8536.90.94 MFN 25%). Quy tắc: PCBA theo thiết bị cuối hoặc chức năng riêng — không có mã chung."
+  },
+  {
+   "id": "load-cell",
+   "titleVi": "Cảm biến trọng lượng / load cell vs cân hoàn chỉnh",
+   "terms": [
+    "cảm biến trọng lượng",
+    "cảm biến cân",
+    "load cell",
+    "loadcell",
+    "thanh cảm biến cân",
+    "cảm biến tải"
+   ],
+   "excludeIfAny": [
+    "cân sàn",
+    "cân bàn",
+    "cân treo",
+    "máy cân"
+   ],
+   "excludeReasonVi": "CÂN HOÀN CHỈNH (có khay/màn hiển thị, dùng để cân) thuộc nhóm 8423 — load cell chỉ là phần tử dò lực-điện trở.",
+   "candidates": [
+    {
+     "hs": "90318090",
+     "whenVi": "Load cell nguyên chi tiết (thanh cắt lệch/thanh uốn, strain gauge, cổng cáp tín hiệu) tự là dụng cụ đo lực/trọng lượng — MFN 0%, VAT 8%; tiền lệ TB 4615 (cảm biến đất → 90318090)",
+     "confidence": "high"
+    },
+    {
+     "hs": "84238110",
+     "whenVi": "Chỉ khi nhập CÂN HOÀN CHỈNH điện tử dùng trong phòng thí nghiệm/bán lẻ (khay + màn hiển thị) — MFN 20%",
+     "confidence": "low"
+    },
+    {
+     "hs": "84232010",
+     "whenVi": "Cân hoàn chỉnh công nghiệp khác — MFN 0%",
+     "confidence": "low"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "842390",
+     "whyVi": "Phần tử dò của cân đã được 9031 mô tả cụ thể như dụng cụ đo (load cell tự chuyển lực thành tín hiệu đo) — không đổ về phụ kiện 8423.90 theo GIR 1."
+    }
+   ],
+   "askVi": [
+    "Nhập THANH CẢM BIẾN rời (load cell → 9031.80.90) hay CÂN HOÀN CHỈNH có khay/màn (→ 8423)?"
+   ],
+   "gir": "GIR 1 + EN 90.31",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Ca thật 26/11: khách nhập load cell từ TQ (ảnh thanh kim loại có lỗ bắt + cổng cáp). Bẫy từ vựng: 'cảm biến trọng lượng' trả quặng borat (nhiễu), 'cân điện tử' trả cân 8423 — không thấy 9031.80.90."
   }
  ],
  "updatedAt": "2026-11-26"
