@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// scripts/test-ho-so.mjs — M-71 (#1963): bài kiểm khuôn ho-so-ma@1, năm cổng hồ sơ và máy ghép theo đường đi.
+// scripts/test-ho-so-ma.mjs — M-71 (#1963): bài kiểm khuôn ho-so-ma@1, năm cổng hồ sơ và máy ghép theo đường đi.
 // Dữ liệu giả nhỏ dựng trong thư mục tạm: vài nút Chương 76 với câu, câu tách và cạnh nghĩa lấy THẬT từ data/luat-goc;
 // hồ sơ đúng dựng tay theo luật ở dưới; mỗi cổng có ca ngược. Thêm hai ca trên kho thật với hồ sơ rỗng.
 // Tất định, không mạng, không AI, không đụng data/ho-so-ma.

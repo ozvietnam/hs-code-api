@@ -86,7 +86,7 @@ Chạy theo phạm vi: `--pham-vi 76 | chuong:76 | phan:XV | chuong:28:pc:II | 7
 4. **TRÍCH** — `cau` có thật trong kho câu, không phải tiền lệ; `trich` nằm nguyên văn trong chữ câu; `lop`, `nguon` khớp nút nguồn; mỗi `duKien` có nguyên chữ trong câu; câu thuộc đường đi của `nut` (mục 3); `den`, `voi` là nút có thật.
 5. **VÂN TAY** — `van` = sha256 chữ câu hiện hành. Lệch thì đỏ kèm lệnh `node scripts/ho-so-ma/cong.mjs --dinh-cau '<câu>'` (in chữ mới, vân tay mới và mọi bản ghi dính câu) để thẻ tách của cấp đó dựng lại đúng phần đó.
 
-Khuôn: `node scripts/ho-so-ma/khuon.mjs`. Bài kiểm: `node scripts/test-ho-so.mjs` (dữ liệu giả Chương 76, câu thật, ca ngược cho từng cổng).
+Khuôn: `node scripts/ho-so-ma/khuon.mjs`. Bài kiểm: `node scripts/test-ho-so-ma.mjs` (dữ liệu giả Chương 76, câu thật, ca ngược cho từng cổng).
 
 ## 6. Máy ghép (`lib/ho-so-ma/ghep.js`)
 
