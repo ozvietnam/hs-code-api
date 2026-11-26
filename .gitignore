@@ -107,9 +107,7 @@ data/ho-so-shadow.jsonl
 # OZV-724: thời điểm dựng ảnh, sinh lúc docker build — không bao giờ commit
 .build-time
 
-# M-37b (#2023): chỉ mục nghĩa là SẢN PHẨM DỰNG, không lưu trong kho.
-# Dựng: node scripts/luat-goc/chi-muc.mjs (~15 phút CPU) và node scripts/dung-chi-muc-nghia.mjs.
-# Thiếu tệp → timNghia trả THIEU / embed-pool trả null êm; test bỏ qua phần chỉ mục thật.
+# M-37b (#2023): chỉ mục LUẬT (data/luat-goc/chi-muc/) là sản phẩm dựng, không lưu trong kho.
+# Dựng ở job CI riêng (chi-muc.yml) hoặc tay: npm run build:chi-muc-luat (~15 phút CPU, cần mô hình).
+# KHÔNG đụng data/do-thi/chi-muc-nghia.* — embed-pool nạp cho timTheoNghia, đường chọn mã của khách.
 data/luat-goc/chi-muc/
-data/do-thi/chi-muc-nghia.bin
-data/do-thi/chi-muc-nghia.meta.json

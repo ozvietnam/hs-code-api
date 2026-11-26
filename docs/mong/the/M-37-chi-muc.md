@@ -39,13 +39,15 @@ Mô hình `Xenova/multilingual-e5-small` q8, 384 chiều, tiền tố `passage: 
 
 ## Dựng lại, kiểm và cổng
 
-- **Tệp chỉ mục KHÔNG lưu trong kho** (M-37b, #2023): `data/luat-goc/chi-muc/` và `data/do-thi/chi-muc-nghia.*` là sản phẩm dựng, nằm trong `.gitignore`. Dựng bằng `npm run build:chi-muc-luat` (chính là `node scripts/luat-goc/chi-muc.mjs`, khoảng 15 phút CPU, cần mô hình e5 lần đầu tải từ HF) và `npm run build:chi-muc-nghia`. Thiếu tệp → `timNghia` trả `THIEU` êm, `embed-pool` trả `null` êm; phần "chỉ mục thật" của bài kiểm tự bỏ qua.
-- `npm run build:chi-muc-luat` dựng; `--kiem` dựng vào bộ nhớ rồi so id và sha256 vectơ với tệp đang có.
+- **Hai chỉ mục, hai chế độ** (M-37b, #2023):
+  - `data/luat-goc/chi-muc/` (vec.bin + id.json + meta.json) — **KHÔNG lưu trong kho** (giảm ~17,6MB binary). Không đường nào của khách đọc nó. Dựng bằng `npm run build:chi-muc-luat` (chính là `node scripts/luat-goc/chi-muc.mjs`, khoảng 15 phút CPU, cần mô hình e5 lần đầu tải từ HF). Job CI riêng `.github/workflows/chi-muc.yml` dựng thật rồi chạy `test-chi-muc-luat` trên chỉ mục vừa dựng; KHÔNG đưa vào `build` của máy chủ (nặng CPU, cần mô hình).
+  - `data/do-thi/chi-muc-nghia.{bin,meta.json}` — **giữ nguyên trong kho**: embed-pool nạp cho `timTheoNghia`, mà `lib/tim-truoc.js` gọi — đó là đường chọn mã của khách (biên bản QT 26/11); không thuộc thẻ M-37b.
+- Thiếu chỉ mục luật → `timNghia` trả `THIEU` êm (bỏ qua **có ghi rõ** ở test; job CI riêng vẫn dựng thật để kiểm). `npm run build:chi-muc-luat` dựng; `--kiem` dựng vào bộ nhớ rồi so id và sha256 vectơ với tệp đang có.
 - `meta.json` ghi số mục, mô hình, sha256 của 13 tệp nguồn (6 kho, 6 kho câu, `hs-sections.json`) và sha256 của `vec.bin` / `id.json`. Không có dấu thời gian.
 - Kho nguồn lệch sha so với `meta.nguon` → `timNghia` trả `{trangThai:"CU", tepLech:[…], ketQua:[]}`, không trả kết quả cũ. Thiếu tệp → `THIEU`; `vec.bin` sai sha → `HONG`; không nhúng được câu hỏi → `LOI`.
 - `scripts/test-chi-muc-luat.mjs` (39 ca, không mạng, không mô hình, vectơ giả; nằm trong `danh-sach-test.txt`): ca ngược TIEN_LE / BO_TRO / `tb:` lọt vào chỉ mục / WCO scan / dòng 8 số / tiêu đề không mã / sha lệch / `vec.bin` bị sửa / câu hỏi rỗng / không nhúng được / lib không đọc từ điển, tờ khai, tiền lệ / không đường khách nào nạp lib. Phần cuối kiểm chỉ mục thật (chỉ khi tệp có trên đĩa): dựng lại danh sách (không cần mô hình) ra đúng `id.json`.
-- **Chỉ mục cũ (nếu đang có trên đĩa) thì bài kiểm ĐỎ.** Kho nguồn lệch sha so với `meta.nguon` làm `test-chi-muc-luat` đỏ, kèm lời chỉ lệnh `DỰNG LẠI: npm run build:chi-muc-luat` — không cần commit tệp. Lúc chạy, `timNghia` vẫn trả `CU` và không trả kết quả cũ.
-- `data/lop-kho.json` khai `data/luat-goc/chi-muc/**` là lớp RUT_TU_LUAT, `tuyChon: true` (M-37b: sản phẩm dựng có thể vắng trên đĩa). Báo cáo này nằm ở `docs/mong/the/` (tệp chung).
+- **Chỉ mục cũ (nếu đang có trên đĩa) thì bài kiểm ĐỎ.** Kho nguồn lệch sha so với `meta.nguon` làm `test-chi-muc-luat` đỏ, kèm lời chỉ lệnh `DỰNG LẠI: npm run build:chi-muc-luat` — tệp không cần commit. Lúc chạy, `timNghia` vẫn trả `CU` và không trả kết quả cũ.
+- `data/lop-kho.json` khai `data/luat-goc/chi-muc/**` là lớp RUT_TU_LUAT, `tuyChon: true` (sản phẩm dựng có thể vắng trên đĩa máy dev; job CI riêng dựng thật). Báo cáo này nằm ở `docs/mong/the/` (tệp chung).
 
 ## 15 truy vấn bằng lời thường (tự nghĩ, không lấy từ bộ thử nào trong repo)
 
