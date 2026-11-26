@@ -2,7 +2,7 @@
 
 - **Thẻ gốc**: [#1968](https://github.com/ozvietnam/hs-code-api/issues/1968) · **PR nháp**: #1995 · **Nhánh**: `mong/m-76-tach-68`
 - **Chuẩn khuôn**: `ho-so-ma@1` (ADR-0006, khuôn M-71 `lib/ho-so-ma/ghep.js`, bổ sung #1981: `phuDinh`, `thuatNgu`)
-- **Đồng bộ nền**: `origin/main` (`578279fc` — đã gộp #1981, #1996, #1997)
+- **Đồng bộ nền**: `origin/main` (`9f3dd928` — đã gộp #1981, #1996, #1997)
 
 ## 1. Bố cục tệp và số liệu Chương 76
 
@@ -27,7 +27,7 @@ Theo khuôn M-71 (`lib/ho-so-ma/ghep.js`, mỗi mã một tệp — QT đã rút
 - **7 tiêu đề 5 số (`TIEU_DE_5`)**: `bieu:76042`, `bieu:76051`, `bieu:76052`, `bieu:76061`, `bieu:76069`, `bieu:76071`, `bieu:76169` ánh xạ sang `data/ho-so-ma/nhom/*.jsonl` (phạm vi M-73) nên M-76 không ghi lấn.
 - **Không chép lại** `NGUONG` (M-74), `CHI_LIET_KE` (M-75), câu ví dụ/mẫu SEN (`UltraTouch`, `0,175 mm`), tiền lệ `tb:`, ý kiến `wco:`, hay dữ liệu khách.
 
-## 4. Kết quả tự kiểm trên nền `origin/main` (`578279fc`)
+## 4. Kết quả tự kiểm trên nền `origin/main` (`9f3dd928`)
 
 - `node scripts/ho-so-ma/khuon.mjs` → **0 lỗi**
 - `node scripts/ho-so-ma/cong.mjs --pham-vi chuong:76 --cong 4,5` → **0 lỗi** (Cổng 4 TRÍCH + Cổng 5 VÂN TAY)
