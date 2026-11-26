@@ -178,13 +178,13 @@ const kqChiMucCu = await chayDoCuaVao({
 kiem('kênh M-37 chỉ mục cũ (CU) → THIEU_CHI_MUC kèm lyDo', kqChiMucCu.kenh.m37_tim_nghia.trangThai === 'THIEU_CHI_MUC' && kqChiMucCu.kenh.m37_tim_nghia.moTa.includes('CU'), kqChiMucCu.kenh.m37_tim_nghia);
 
 // 6. Bộ đo CAP thật: cặp tranh chấp qua cổng sạch + tổng hợp CAP trên kênh M-41
-// (nguồn 53 cặp CEO; MT-036 bị loại vì nhóm "2024"/"3387" không tồn tại trong biểu — cổng kiemBoDo chặn)
+// (nguồn 53 cặp CEO; MT-036 bỏ 2 mã rác 2024/3387 ở bên B theo quyết định QT)
 const boCap = JSON.parse(fs.readFileSync(path.join(GOC, 'data', 'do', 'cua-vao-cap-tranh-chap.json'), 'utf8'));
-kiem('bộ cặp tranh chấp có đúng 52 ca CAP (53 cặp nguồn trừ MT-036 nhóm không có thật)', Array.isArray(boCap) && boCap.length === 52 && boCap.every((c) => c.loaiCa === 'CAP'));
+kiem('bộ cặp tranh chấp có đúng 53 ca CAP (53 cặp nguồn CEO)', Array.isArray(boCap) && boCap.length === 53 && boCap.every((c) => c.loaiCa === 'CAP'));
 const kiemCap = kiemBoDo(boCap, { tapNutLuat: tapNut });
-kiem('bộ 52 cặp vượt cổng kiểm sạch (không tờ khai, nút luật thật)', kiemCap.hopLe, kiemCap.loi.slice(0, 5));
+kiem('bộ 53 cặp vượt cổng kiểm sạch (không tờ khai, nút luật thật)', kiemCap.hopLe, kiemCap.loi.slice(0, 5));
 const kqCap = await chayDoCuaVao({ boDo: boCap, limit: 20, tenBo: 'cua-vao-cap-tranh-chap.json' });
-kiem('chạy 52 cặp trên M-41: tổng hợp CAP ghi đủ 52 ca', kqCap.kenh.m41_tim_luat.tongHop.tongCaCap === 52, kqCap.kenh.m41_tim_luat.tongHop);
+kiem('chạy 53 cặp trên M-41: tổng hợp CAP ghi đủ 53 ca', kqCap.kenh.m41_tim_luat.tongHop.tongCaCap === 53, kqCap.kenh.m41_tim_luat.tongHop);
 kiem('BO_THU_LUAT_MAU tổng hợp được cả CAP (2 ca) trên M-41', (await chayDoCuaVao({ boDo: BO_THU_LUAT_MAU, limit: 20 })).kenh.m41_tim_luat.tongHop.tongCaCap === 2);
 
 // 7. Định dạng báo cáo Markdown & chạy CLI --json

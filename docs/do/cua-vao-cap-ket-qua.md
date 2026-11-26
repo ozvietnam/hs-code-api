@@ -1,62 +1,61 @@
 # Kết quả thước đo cửa vào — cặp tranh chấp (CAP) · M-79 (#1971)
 
-- **Ngày đo:** 2026-11-26 · **Máy:** .131 (32 nhân) · **Bộ đo:** `data/do/cua-vao-cap-tranh-chap.json` (52 ca CAP)
+- **Ngày đo:** 2026-11-26 · **Máy:** .131 (32 nhân) · **Bộ đo:** `data/do/cua-vao-cap-tranh-chap.json` (53 ca CAP)
 - **Lệnh chạy:** `node scripts/do-cua-vao.mjs --bo data/do/cua-vao-cap-tranh-chap.json --m37 --limit 20 --bao-cao docs/do/cua-vao-cap-ket-qua.md`
 - **Kênh:** `m41_tim_luat` (tìm chữ, lib/tim-luat.js) + `m37_tim_nghia` (tìm nghĩa, lib/chi-muc-luat.js — cắm bằng `--m37`). M-52 chưa cắm (CHUA_CAM).
 - **Chỉ mục M-37 dựng mới ngay trước khi đo:** 45.584 mục (16,7 MB, 978 giây, `npm run build:chi-muc-luat` — đúng quy trình M-37b #2030: chỉ mục không lưu kho, dựng lúc cần).
 - **Chân ái:** chỉ tên hàng + cặp nhóm 4 số từ bộ 53 cặp CEO; không công văn, không tiền lệ TB, không mã Hải quan ấn định.
 
-## 1. Bộ đo: 52/53 ca
+## 1. Bộ đo: 53/53 ca
 
-- **MT-036** — "Cảm biến từ (Magnetic Sensor / Reed / Hall Proximity)" — bị **LOẠI**: nhóm `"2024"` và `"3387"` không tồn tại trong biểu thuế (`cổng kiemBoDo` chặn `canCuLuat` trỏ nút không có thật). Lỗi dữ liệu nguồn; không tự sửa theo kiểu đoán, để QT quyết.
+- **MT-036** (`cap-36` — "Cảm biến từ (Magnetic Sensor / Reed / Hall Proximity)") — được **giữ lại** theo quyết định QT: `"2024"` và `"3387"` ở bên B gốc là số thông báo bị máy tách nhầm, đã bỏ theo QT, giữ bên B = `["8536"]` (`A[8536,8541,9031] vs B[8536]`, `nhomCanCo = ["8536", "8541", "9031"]`). Bộ đo đủ **53/53 cặp** (`cap-01`..`cap-53` khớp 1–1 với `MT-001`..`MT-053`).
 - Ca ngược kèm theo trong `BO_THU_LUAT_MAU`: mô tả vô nghĩa phải trả rỗng (đã xanh trên cả 2 kênh).
 
-## 2. Kết quả chính thức (moTa nguyên vẹn, tiêu chí biên bản: MỌI nhóm A∪B có mặt ở NHAC Top-20)
+## 2. Kết quả chính thức (truy vấn chữ Việt trần, tiêu chí C2: mỗi bên A, B có ≥1 nhóm ở NHAC Top-20)
 
-| Kênh | Đủ cặp (C1) | Ghi chú |
+| Kênh | Đạt hai bên (C2, chữ Việt trần) | Ghi chú |
 |---|---|---|
-| `m41_tim_luat` (tìm chữ) | **0/52 (0%)** | 51/52 ca rỗng hoàn toàn |
-| `m37_tim_nghia` (tìm nghĩa) | **5/52 (9,6%)** | cap-02, 07, 09, 14, 17 |
+| `m41_tim_luat` (tìm chữ) | **13/53 (24,5%)** | 27/53 ca rỗng; đạt: cap-15, 21, 23, 26, 29, 31, 33, 34, 39, 40, 47, 49, 52 |
+| `m37_tim_nghia` (tìm nghĩa) | **33/53 (62,3%)** | 0/53 ca rỗng; khớp đúng số QT đo tay 33/53 |
 
 ## 3. Ma trận tiêu chí — đối chiếu số QT đo tay (7/53 tìm chữ, 33/53 tìm nghĩa)
 
-Số đo tay của QT không ghi phương pháp, nên em đo lại cả ma trận: 2 biến thể truy vấn × 3 tiêu chí đạt.
+Số đo trên mẫu đủ 53 ca theo 2 biến thể truy vấn × 3 tiêu chí đạt (C2 + chữ Việt trần là số chính thức ở mục 2; C1/C3 giữ để tham khảo):
 
 | Biến thể truy vấn | Kênh | C1 đủ mọi nhóm A∪B | C2 mỗi bên A,B có ≥1 nhóm | C3 ≥1 nhóm bất kỳ |
 |---|---|---|---|---|
-| moTa nguyên vẹn | M-41 tìm chữ | 0/52 | 0/52 | 0/52 |
-| moTa nguyên vẹn | M-37 tìm nghĩa | **5/52** | 28/52 | 45/52 |
-| chữ Việt trần (bỏ ngoặc Anh, bỏ vế thuần Anh) | M-41 tìm chữ | 0/52 | 13/52 | 18/52 |
-| chữ Việt trần | M-37 tìm nghĩa | 5/52 | **33/52** | 47/52 |
+| moTa nguyên vẹn | M-41 tìm chữ | 0/53 (0%) | 0/53 (0%) | 0/53 (0%) |
+| moTa nguyên vẹn | M-37 tìm nghĩa | 5/53 (9,4%) | 28/53 (52,8%) | 45/53 (84,9%) |
+| chữ Việt trần (bỏ ngoặc Anh, bỏ vế thuần Anh) | M-41 tìm chữ | 0/53 (0%) | **13/53 (24,5%)** | 18/53 (34,0%) |
+| chữ Việt trần | M-37 tìm nghĩa | 5/53 (9,4%) | **33/53 (62,3%)** | 48/53 (90,6%) |
 
 **Đối chiếu:**
 
-- **Tìm nghĩa 33 — KHỚP ĐÚNG:** `chữ Việt trần + C2 + M-37` = **33/52**. Số QT đo tay là 33/53; cùng số tuyệt đối trên bộ 52 ca (MT-036 bị loại, vốn không thể đạt). ⇒ phương pháp QT đo tay = gõ chữ Việt (không mang theo phần Anh trong ngoặc) và chấm "mỗi bên cặp có ít nhất 1 nhóm đại diện".
-- **Tìm chữ 7 so 13:** cùng tiêu chí đó, M-41 = 13/52, QT ghi 7/53 — lệch 6 ca. Nguồn lệch khả dĩ: (a) QT đo tay trên kho luật gốc cũ — chỉ mục nghĩa đã lớn từ 45.164 → 45.584 mục giữa 2 lần đo, kết quả tìm chữ đổi theo kho; (b) chênh lệch cách gõ/chấm tay từng ca. Không có cách tái lập nào của em cho ra đúng 7 trên kho hiện tại, nên ghi nhận lệch này, không sửa số cho khớp.
+- **Tìm nghĩa 33/53 — KHỚP ĐÚNG:** `chữ Việt trần + C2 + M-37` = **33/53 (62,3%)**, khớp đúng số QT đo tay 33/53. Trên ca `cap-36` ("Cảm biến từ"), kênh nghĩa đưa `8541(#3)` vào Top-20 (nên C3 đạt 48/53) nhưng chưa đưa `8536` của bên B vào Top-20 nên C2 giữ nguyên 33/53.
+- **Tìm chữ 7/53 so 13/53:** cùng tiêu chí C2 + chữ Việt trần, M-41 = **13/53 (24,5%)**, QT ghi 7/53 — lệch 6 ca. Nguồn lệch khả dĩ: (a) QT đo tay trên kho luật gốc cũ — chỉ mục nghĩa đã lớn từ 45.164 → 45.584 mục giữa 2 lần đo, kết quả tìm chữ đổi theo kho; (b) chênh lệch cách gõ/chấm tay từng ca. Không có cách tái lập nào cho ra đúng 7 trên kho hiện tại, nên ghi nhận lệch này, không sửa số cho khớp.
 
 ## 4. Phát hiện chính
 
-1. **moTa song ngữ giết chết kênh tìm chữ.** 51/52 ca rỗng ở M-41 vì mô tả dạng "Việt (English)" / "Việt / English": `khopCau` đòi MỌI từ khóa (kể từ Anh "HMI", "Smartwatch", "Load cell") cùng xuất hiện trong một câu luật → không câu luật nào khớp. Bỏ phần Anh thì 18/52 ca có ít nhất 1 nhóm (C3). Khuyến nghị (thuộc thẻ M-41, không sửa trong M-79): `timLuat` nên tách mệnh đề trong ngoặc/đa vế thành các cụm truy vấn riêng, hoặc thước đo chuẩn hoá moTa về chữ Việt trần trước khi tìm chữ.
-2. **Kênh tìm nghĩa C1 (đủ mọi nhóm) chỉ 5/52** — nhóm đầu bảng (cảm biến áp suất/lưu lượng, UPS, PLC) ổn vì tên hàng gần nguyên văn chú giải; các cặp 3–4 nhóm thì khó đủ tuyệt đối. Tiêu chí C2 ("mỗi bên ≥1 nhóm") phản ánh tính dùng được của cửa vào đúng hơn — kênh nghĩa đạt 28→33/52.
+1. **moTa song ngữ giết chết kênh tìm chữ.** 52/53 ca rỗng ở M-41 khi truy vấn `moTa` nguyên vẹn vì mô tả dạng "Việt (English)" / "Việt / English": `khopCau` đòi MỌI từ khóa (kể từ Anh "HMI", "Smartwatch", "Load cell") cùng xuất hiện trong một câu luật → không câu luật nào khớp. Bỏ phần Anh về chữ Việt trần thì 18/53 ca có ít nhất 1 nhóm (C3) và 13/53 ca đạt C2. Khuyến nghị (thuộc thẻ M-41, không sửa trong M-79): `timLuat` nên tách mệnh đề trong ngoặc/đa vế thành các cụm truy vấn riêng, hoặc thước đo chuẩn hoá moTa về chữ Việt trần trước khi tìm chữ.
+2. **Kênh tìm nghĩa C1 (đủ mọi nhóm A∪B) chỉ 5/53** — nhóm đầu bảng (cảm biến áp suất/lưu lượng, UPS, PLC, robot hút bụi) ổn vì tên hàng gần nguyên văn chú giải; các cặp 3–5 nhóm thì khó đủ tuyệt đối. Tiêu chí C2 ("mỗi bên A, B có ≥1 nhóm") phản ánh tính dùng được của cửa vào đúng hơn — kênh nghĩa đạt 28/53 (nguyên vẹn) → **33/53 (chữ Việt trần)**.
 3. **Không ca nào bị nhiễu chiều LOAI** — nhóm tranh chấp không xuất hiện chỉ ở LOAI trên cả 2 kênh (trường `chiOLoai` = false toàn bộ).
 
 ## 5. Tái lập
 
 ```bash
-# trên .131 (worktree ~/hs-m79-run = main + nhánh m79-cua-vao-cap):
+# trên .131 (worktree nhánh m79-cua-vao-cap):
 npm run build:chi-muc-luat                                  # ~16 phút, 45.584 mục
 node scripts/do-cua-vao.mjs --bo data/do/cua-vao-cap-tranh-chap.json --m37 --limit 20 --bao-cao docs/do/cua-vao-cap-ket-qua.md
-# ma trận tiêu chí: node /tmp/m79-ma-tran-tieu-chi.cjs (bản lưu /tmp/m79-ma-tran.json)
 ```
 
 ---
 
-Dưới đây là thân báo cáo máy sinh từ thước (chi tiết từng ca):
+Dưới đây là thân báo cáo máy sinh từ thước (`moTa` nguyên vẹn, C1 mọi nhóm A∪B trong `nhomCanCo` cho 53 ca):
 
 | Kênh | Thẻ | Trạng thái | Trúng nhóm 4 (NHAC) | Top-5 | Top-10 | Đủ cặp CAP | Rỗng trên ca thuận | Ca ngược đạt |
 |---|---|---|---|---|---|---|---|---|
-| `m41_tim_luat` | M-41 | DA_CAM | 0/0 (null%) | 0/0 | 0/0 | 0/52 (0%) | 0 | 0/0 |
-| `m37_tim_nghia` | M-37 | DA_CAM | 0/0 (null%) | 0/0 | 0/0 | 5/52 (9.6%) | 0 | 0/0 |
+| `m41_tim_luat` | M-41 | DA_CAM | 0/0 (null%) | 0/0 | 0/0 | 0/53 (0%) | 0 | 0/0 |
+| `m37_tim_nghia` | M-37 | DA_CAM | 0/0 (null%) | 0/0 | 0/0 | 5/53 (9.4%) | 0 | 0/0 |
 | `m52_loc` | M-52 | CHUA_CAM | — | — | — | — | — | — |
 
 ## Chi tiết kênh M-41 (`lib/tim-luat.js`)
@@ -105,23 +104,24 @@ Dưới đây là thân báo cáo máy sinh từ thước (chi tiết từng ca)
 | `cap-33` | Bộ điều khiển chuyển động (Motion Controller) | 8471, 8537, 9032 | — | 8471, 8537, 9032 | THIẾU | — |
 | `cap-34` | Máy cắt plasma (Plasma Cutting Machine) | 8456, 8479, 8515 | — | 8456, 8479, 8515 | THIẾU | — |
 | `cap-35` | Cảm biến siêu âm (Ultrasonic Sensor) | 8536, 8543, 9031 | — | 8536, 8543, 9031 | THIẾU | — |
-| `cap-36` | Rơ-le trạng thái rắn (Solid State Relay – SSR) | 8536, 8537, 8541 | — | 8536, 8537, 8541 | THIẾU | — |
-| `cap-37` | Contactor điện từ (Electromagnetic Contactor) | 8504, 8536, 8537 | — | 8504, 8536, 8537 | THIẾU | — |
-| `cap-38` | Cảm biến dòng điện (Current Sensor / Transducer) | 8504, 8536, 9030, 9031 | — | 8504, 8536, 9030, 9031 | THIẾU | — |
-| `cap-39` | Máy hàn hồ quang (Arc Welding Machine – MMA/MIG/TIG) | 8456, 8479, 8515 | — | 8456, 8479, 8515 | THIẾU | — |
-| `cap-40` | Cảm biến nhiệt độ (Temperature Sensor / Thermocouple / RTD / PT100) | 8541, 8543, 9032, 9025, 9031 | — | 8541, 8543, 9032, 9025, 9031 | THIẾU | — |
-| `cap-41` | Van điện từ (Solenoid Valve) | 8505, 8536, 8537, 8481 | — | 8505, 8536, 8537, 8481 | THIẾU | — |
-| `cap-42` | Bộ lọc nhiễu EMI/EMC (EMI Filter / Noise Filter) | 8504, 8536, 8543 | — | 8504, 8536, 8543 | THIẾU | — |
-| `cap-43` | Máy cắt dây EDM (Wire Cut EDM) | 8456, 8479, 8515 | — | 8456, 8479, 8515 | THIẾU | — |
-| `cap-44` | Cảm biến độ rung (Vibration Sensor / Accelerometer) | 8541, 8543, 9031 | — | 8541, 8543, 9031 | THIẾU | — |
-| `cap-45` | Cảm biến mức (Level Sensor / Level Transmitter / Level Gauge) | 8536, 8543, 9032, 9026, 9031 | — | 8536, 8543, 9032, 9026, 9031 | THIẾU | — |
-| `cap-46` | Cảm biến khí (Gas Sensor / Gas Detector / Toxic Gas Sensor) | 8541, 8543, 9031, 9027 | — | 8541, 8543, 9031, 9027 | THIẾU | — |
-| `cap-47` | Bộ biến tần năng lượng mặt trời (Solar / PV Inverter) | 8501, 8504, 8537 | — | 8501, 8504, 8537 | THIẾU | — |
-| `cap-48` | Xi lanh khí nén (Pneumatic Cylinder / Air Cylinder) | 8479, 8481, 8501, 8412 | — | 8479, 8481, 8501, 8412 | THIẾU | — |
-| `cap-49` | Cảm biến mô-men xoắn (Torque Sensor / Torque Transducer) | 8423, 8543, 9029, 9031 | — | 8423, 8543, 9029, 9031 | THIẾU | — |
-| `cap-50` | Lò nung chảy thủy tinh bằng điện công nghiệp | 8417, 8479, 8516, 8514 | — | 8417, 8479, 8516, 8514 | THIẾU | — |
-| `cap-51` | Xi lanh thủy lực (Hydraulic Cylinder) | 8412, 8479, 8481 | — | 8412, 8479, 8481 | THIẾU | — |
-| `cap-52` | Cảm biến nhiệt độ nước làm mát xe máy | 8543, 9025, 9031, 8533 | — | 8543, 9025, 9031, 8533 | THIẾU | — |
+| `cap-36` | Cảm biến từ (Magnetic Sensor / Reed / Hall Proximity) | 8536, 8541, 9031 | — | 8536, 8541, 9031 | THIẾU | — |
+| `cap-37` | Rơ-le trạng thái rắn (Solid State Relay – SSR) | 8536, 8537, 8541 | — | 8536, 8537, 8541 | THIẾU | — |
+| `cap-38` | Contactor điện từ (Electromagnetic Contactor) | 8504, 8536, 8537 | — | 8504, 8536, 8537 | THIẾU | — |
+| `cap-39` | Cảm biến dòng điện (Current Sensor / Transducer) | 8504, 8536, 9030, 9031 | — | 8504, 8536, 9030, 9031 | THIẾU | — |
+| `cap-40` | Máy hàn hồ quang (Arc Welding Machine – MMA/MIG/TIG) | 8456, 8479, 8515 | — | 8456, 8479, 8515 | THIẾU | — |
+| `cap-41` | Cảm biến nhiệt độ (Temperature Sensor / Thermocouple / RTD / PT100) | 8541, 8543, 9032, 9025, 9031 | — | 8541, 8543, 9032, 9025, 9031 | THIẾU | — |
+| `cap-42` | Van điện từ (Solenoid Valve) | 8505, 8536, 8537, 8481 | — | 8505, 8536, 8537, 8481 | THIẾU | — |
+| `cap-43` | Bộ lọc nhiễu EMI/EMC (EMI Filter / Noise Filter) | 8504, 8536, 8543 | — | 8504, 8536, 8543 | THIẾU | — |
+| `cap-44` | Máy cắt dây EDM (Wire Cut EDM) | 8456, 8479, 8515 | — | 8456, 8479, 8515 | THIẾU | — |
+| `cap-45` | Cảm biến độ rung (Vibration Sensor / Accelerometer) | 8541, 8543, 9031 | — | 8541, 8543, 9031 | THIẾU | — |
+| `cap-46` | Cảm biến mức (Level Sensor / Level Transmitter / Level Gauge) | 8536, 8543, 9032, 9026, 9031 | — | 8536, 8543, 9032, 9026, 9031 | THIẾU | — |
+| `cap-47` | Cảm biến khí (Gas Sensor / Gas Detector / Toxic Gas Sensor) | 8541, 8543, 9031, 9027 | — | 8541, 8543, 9031, 9027 | THIẾU | — |
+| `cap-48` | Bộ biến tần năng lượng mặt trời (Solar / PV Inverter) | 8501, 8504, 8537 | — | 8501, 8504, 8537 | THIẾU | — |
+| `cap-49` | Xi lanh khí nén (Pneumatic Cylinder / Air Cylinder) | 8479, 8481, 8501, 8412 | — | 8479, 8481, 8501, 8412 | THIẾU | — |
+| `cap-50` | Cảm biến mô-men xoắn (Torque Sensor / Torque Transducer) | 8423, 8543, 9029, 9031 | — | 8423, 8543, 9029, 9031 | THIẾU | — |
+| `cap-51` | Lò nung chảy thủy tinh bằng điện công nghiệp | 8417, 8479, 8516, 8514 | — | 8417, 8479, 8516, 8514 | THIẾU | — |
+| `cap-52` | Xi lanh thủy lực (Hydraulic Cylinder) | 8412, 8479, 8481 | — | 8412, 8479, 8481 | THIẾU | — |
+| `cap-53` | Cảm biến nhiệt độ nước làm mát xe máy | 8543, 9025, 9031, 8533 | — | 8543, 9025, 9031, 8533 | THIẾU | — |
 
 ## Chi tiết cặp tranh chấp (CAP) — kênh `m37_tim_nghia`
 
@@ -164,20 +164,21 @@ Dưới đây là thân báo cáo máy sinh từ thước (chi tiết từng ca)
 | `cap-33` | Bộ điều khiển chuyển động (Motion Controller) | 8471, 8537, 9032 | 8471(#5), 8537(#8) | 9032 | THIẾU | 8428, 9014, 8530, 8412, 8471, 8483, 9029, 8537, 8608, 8541 |
 | `cap-34` | Máy cắt plasma (Plasma Cutting Machine) | 8456, 8479, 8515 | 8456(#3) | 8479, 8515 | THIẾU | 8461, 8462, 8456, 8485, 8444, 8433, 8465, 8451, 8205 |
 | `cap-35` | Cảm biến siêu âm (Ultrasonic Sensor) | 8536, 8543, 9031 | 9031(#1) | 8536, 8543 | THIẾU | 9031, 9021, 9030, 9015, 8531, 9018, 8456, 9026, 9209 |
-| `cap-36` | Rơ-le trạng thái rắn (Solid State Relay – SSR) | 8536, 8537, 8541 | — | 8536, 8537, 8541 | THIẾU | 8708, 8425, 8483, 8432, 8433, 7308, 8479 |
-| `cap-37` | Contactor điện từ (Electromagnetic Contactor) | 8504, 8536, 8537 | 8536(#5) | 8504, 8537 | THIẾU | 9030, 9029, 9015, 9033, 8536, 9032, 8547, 9012, 8505, 8501 |
-| `cap-38` | Cảm biến dòng điện (Current Sensor / Transducer) | 8504, 8536, 9030, 9031 | 8504(#4), 9030(#2) | 8536, 9031 | THIẾU | 9032, 9030, 9026, 8504, 9028 |
-| `cap-39` | Máy hàn hồ quang (Arc Welding Machine – MMA/MIG/TIG) | 8456, 8479, 8515 | 8515(#1) | 8456, 8479 | THIẾU | 8515, 9029, 8465, 9015, 9030, 9027, 9022, 9018, 9024, 9031 |
-| `cap-40` | Cảm biến nhiệt độ (Temperature Sensor / Thermocouple / RTD / PT100) | 8541, 8543, 9032, 9025, 9031 | 9032(#1), 9025(#2) | 8541, 8543, 9031 | THIẾU | 9032, 9025, 9026, 9027, 8418 |
-| `cap-41` | Van điện từ (Solenoid Valve) | 8505, 8536, 8537, 8481 | 8481(#1) | 8505, 8536, 8537 | THIẾU | 8481 |
-| `cap-42` | Bộ lọc nhiễu EMI/EMC (EMI Filter / Noise Filter) | 8504, 8536, 8543 | — | 8504, 8536, 8543 | THIẾU | 9030, 9033, 9012, 9018, 8473, 9001, 8537, 9032 |
-| `cap-43` | Máy cắt dây EDM (Wire Cut EDM) | 8456, 8479, 8515 | — | 8456, 8479, 8515 | THIẾU | 8510, 9029, 8505, 9030, 8544, 9507, 7308, 9027, 8462, 8536 |
-| `cap-44` | Cảm biến độ rung (Vibration Sensor / Accelerometer) | 8541, 8543, 9031 | 9031(#3) | 8541, 8543 | THIẾU | 9030, 9029, 9031, 9026, 8708, 8423 |
-| `cap-45` | Cảm biến mức (Level Sensor / Level Transmitter / Level Gauge) | 8536, 8543, 9032, 9026, 9031 | 9032(#2), 9026(#3) | 8536, 8543, 9031 | THIẾU | 9030, 9032, 9026, 9033 |
-| `cap-46` | Cảm biến khí (Gas Sensor / Gas Detector / Toxic Gas Sensor) | 8541, 8543, 9031, 9027 | 9027(#8) | 8541, 8543, 9031 | THIẾU | 8531, 8405, 4911, 9030, 9026, 9028, 8512, 9027, 8481, 8414 |
-| `cap-47` | Bộ biến tần năng lượng mặt trời (Solar / PV Inverter) | 8501, 8504, 8537 | 8501(#3), 8504(#1) | 8537 | THIẾU | 8504, 8541, 8501, 8525, 8514 |
-| `cap-48` | Xi lanh khí nén (Pneumatic Cylinder / Air Cylinder) | 8479, 8481, 8501, 8412 | 8479(#5), 8412(#6) | 8481, 8501 | THIẾU | 8414, 8408, 8425, 8407, 8479, 8412, 8703 |
-| `cap-49` | Cảm biến mô-men xoắn (Torque Sensor / Torque Transducer) | 8423, 8543, 9029, 9031 | 9031(#4) | 8423, 8543, 9029 | THIẾU | 8483, 8434, 9033, 9031, 9019, 8539, 9030, 8531, 8504, 8512 |
-| `cap-50` | Lò nung chảy thủy tinh bằng điện công nghiệp | 8417, 8479, 8516, 8514 | 8417(#2), 8514(#1) | 8479, 8516 | THIẾU | 8514, 8417, 8475, 8464 |
-| `cap-51` | Xi lanh thủy lực (Hydraulic Cylinder) | 8412, 8479, 8481 | 8412(#1), 8479(#3) | 8481 | THIẾU | 8412, 8425, 8479, 8410, 8483, 2523, 8407 |
-| `cap-52` | Cảm biến nhiệt độ nước làm mát xe máy | 8543, 9025, 9031, 8533 | 9025(#6) | 8543, 9031, 8533 | THIẾU | 8410, 8708, 8413, 8481, 8516, 9025, 8403, 8438, 8531 |
+| `cap-36` | Cảm biến từ (Magnetic Sensor / Reed / Hall Proximity) | 8536, 8541, 9031 | — | 8536, 8541, 9031 | THIẾU | 9030, 9029, 9033, 9014, 9032, 9026 |
+| `cap-37` | Rơ-le trạng thái rắn (Solid State Relay – SSR) | 8536, 8537, 8541 | — | 8536, 8537, 8541 | THIẾU | 8708, 8425, 8483, 8432, 8433, 7308, 8479 |
+| `cap-38` | Contactor điện từ (Electromagnetic Contactor) | 8504, 8536, 8537 | 8536(#5) | 8504, 8537 | THIẾU | 9030, 9029, 9015, 9033, 8536, 9032, 8547, 9012, 8505, 8501 |
+| `cap-39` | Cảm biến dòng điện (Current Sensor / Transducer) | 8504, 8536, 9030, 9031 | 8504(#4), 9030(#2) | 8536, 9031 | THIẾU | 9032, 9030, 9026, 8504, 9028 |
+| `cap-40` | Máy hàn hồ quang (Arc Welding Machine – MMA/MIG/TIG) | 8456, 8479, 8515 | 8515(#1) | 8456, 8479 | THIẾU | 8515, 9029, 8465, 9015, 9030, 9027, 9022, 9018, 9024, 9031 |
+| `cap-41` | Cảm biến nhiệt độ (Temperature Sensor / Thermocouple / RTD / PT100) | 8541, 8543, 9032, 9025, 9031 | 9032(#1), 9025(#2) | 8541, 8543, 9031 | THIẾU | 9032, 9025, 9026, 9027, 8418 |
+| `cap-42` | Van điện từ (Solenoid Valve) | 8505, 8536, 8537, 8481 | 8481(#1) | 8505, 8536, 8537 | THIẾU | 8481 |
+| `cap-43` | Bộ lọc nhiễu EMI/EMC (EMI Filter / Noise Filter) | 8504, 8536, 8543 | — | 8504, 8536, 8543 | THIẾU | 9030, 9033, 9012, 9018, 8473, 9001, 8537, 9032 |
+| `cap-44` | Máy cắt dây EDM (Wire Cut EDM) | 8456, 8479, 8515 | — | 8456, 8479, 8515 | THIẾU | 8510, 9029, 8505, 9030, 8544, 9507, 7308, 9027, 8462, 8536 |
+| `cap-45` | Cảm biến độ rung (Vibration Sensor / Accelerometer) | 8541, 8543, 9031 | 9031(#3) | 8541, 8543 | THIẾU | 9030, 9029, 9031, 9026, 8708, 8423 |
+| `cap-46` | Cảm biến mức (Level Sensor / Level Transmitter / Level Gauge) | 8536, 8543, 9032, 9026, 9031 | 9032(#2), 9026(#3) | 8536, 8543, 9031 | THIẾU | 9030, 9032, 9026, 9033 |
+| `cap-47` | Cảm biến khí (Gas Sensor / Gas Detector / Toxic Gas Sensor) | 8541, 8543, 9031, 9027 | 9027(#8) | 8541, 8543, 9031 | THIẾU | 8531, 8405, 4911, 9030, 9026, 9028, 8512, 9027, 8481, 8414 |
+| `cap-48` | Bộ biến tần năng lượng mặt trời (Solar / PV Inverter) | 8501, 8504, 8537 | 8501(#3), 8504(#1) | 8537 | THIẾU | 8504, 8541, 8501, 8525, 8514 |
+| `cap-49` | Xi lanh khí nén (Pneumatic Cylinder / Air Cylinder) | 8479, 8481, 8501, 8412 | 8479(#5), 8412(#6) | 8481, 8501 | THIẾU | 8414, 8408, 8425, 8407, 8479, 8412, 8703 |
+| `cap-50` | Cảm biến mô-men xoắn (Torque Sensor / Torque Transducer) | 8423, 8543, 9029, 9031 | 9031(#4) | 8423, 8543, 9029 | THIẾU | 8483, 8434, 9033, 9031, 9019, 8539, 9030, 8531, 8504, 8512 |
+| `cap-51` | Lò nung chảy thủy tinh bằng điện công nghiệp | 8417, 8479, 8516, 8514 | 8417(#2), 8514(#1) | 8479, 8516 | THIẾU | 8514, 8417, 8475, 8464 |
+| `cap-52` | Xi lanh thủy lực (Hydraulic Cylinder) | 8412, 8479, 8481 | 8412(#1), 8479(#3) | 8481 | THIẾU | 8412, 8425, 8479, 8410, 8483, 2523, 8407 |
+| `cap-53` | Cảm biến nhiệt độ nước làm mát xe máy | 8543, 9025, 9031, 8533 | 9025(#6) | 8543, 9031, 8533 | THIẾU | 8410, 8708, 8413, 8481, 8516, 9025, 8403, 8438, 8531 |
