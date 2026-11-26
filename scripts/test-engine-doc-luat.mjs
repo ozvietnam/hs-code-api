@@ -158,7 +158,9 @@ async function runAll() {
     assert.ok(res.soKyTuDaDoc > 1000, 'Phải đo soKyTuDaDoc thực');
     assert.ok(nhietDoSeen.every((t) => t === 0), 'Mọi lượt LLM phải đặt nhietDo = 0');
     assert.equal(res.thieuKho.includes(KHO_THIEU_MAC_DINH.NGHIA_CANH), false); //  M-33 đã ở main
-    assert.ok(res.thieuKho.includes(KHO_THIEU_MAC_DINH.TOM_TAT));
+    // Kho tóm tắt M-36 đã có sẵn trong data/luat-goc/tom-tat trên main (gộp sau khi nhánh cũ tách)
+    // nên thieuKho đúng là KHÔNG còn TOM_TAT; chiều nạp kho kiểm ở ca 8.
+    assert.equal(res.thieuKho.includes(KHO_THIEU_MAC_DINH.TOM_TAT), false);
     assert.ok(res.thieuKho.includes(KHO_THIEU_MAC_DINH.TIM_NGHIA));
     assert.equal(kiemSoVet(res.so).dat, true);
     return res;
