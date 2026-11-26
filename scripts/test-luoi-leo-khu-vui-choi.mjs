@@ -16,6 +16,7 @@ import { fileURLToPath } from 'node:url';
 const require = createRequire(import.meta.url);
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const S = require('../lib/so-tay.js');
+const C = require('../lib/ho-so/cong-ranh-gioi.js');
 const { loadSoTay, chotDong8 } = require('../lib/so-tay-gates.js');
 const { cauPhanBietNhom } = require('../lib/hoi-theo-so-tay.js');
 const { expandSearchQuery } = require('../lib/search-query-expand.js');
@@ -128,12 +129,17 @@ check('9506 có phanBiet sân chơi trẻ em (nội bộ) + 9508 loại trừ th
   trichDat('9508', pb8);
 });
 
-check('ranh-gioi 950699.json giữ bản DUYET origin/main (không hẹp TEN_LOAI ngoài phạm vi)', () => {
+check('OZV-2400 ranh-gioi 950699.json đạt cổng 0..5 (0 cảnh báo cong0/cong5) và 95069920 không đặt TEN_LOAI «Lưới» trần đứng một mình', () => {
   const rg = JSON.parse(readFileSync(join(ROOT, 'data', 'ho-so', 'ranh-gioi', '950699.json'), 'utf8'));
   assert.equal(String(rg.trangThai || '').toUpperCase(), 'DUYET');
+  const kq = C.kiemRanhGioi('950699', rg);
+  assert.equal(kq.hopLe, true, `950699 lỗi cổng: ${JSON.stringify(kq.loi)}`);
+  assert.equal(kq.loi.length, 0, JSON.stringify(kq.loi));
+  const cb05 = (kq.canhBao || []).filter((x) => /^cong[05]-/.test(x));
+  assert.equal(cb05.length, 0, `còn cảnh báo cong0/cong5: ${JSON.stringify(cb05)}`);
   const d = (rg.dong8 || []).find((x) => x.hs === '95069920');
-  const vals = [].concat(d?.dieuKienSo?.find((c) => c.op === 'TEN_LOAI')?.value || []);
-  assert.ok(vals.some((v) => String(v).trim().toLowerCase() === 'lưới'), `mất TEN_LOAI «Lưới» của bản DUYET: ${JSON.stringify(vals)}`);
+  const hoac = (d?.dieuKienSo || []).find((c) => c.op === 'HOAC');
+  assert.ok(hoac, `95069920 phải dùng HOAC gắn đích trò chơi cho «Lưới»: ${JSON.stringify(d?.dieuKienSo)}`);
 });
 
 check('trade-synonyms dẫn câu khách vào cụm 5608/9506/9508, tránh top 8486', () => {
@@ -147,29 +153,37 @@ check('trade-synonyms dẫn câu khách vào cụm 5608/9506/9508, tránh top 84
 });
 
 // ─── 2. Bảng dò câu khách 4→6→8 ───
-check('ca khách: hỏi phân biệt nhóm 5608/9506/9508 (chốt 8 số sau khi đủ dữ kiện)', () => {
-  const { pb, row } = do4_6_8('khách', CA_KHACH, { hints: ['5608', '9506', '9508'] });
+check('ca khách: hỏi phân biệt nhóm 5608/9506/9508 và chặn chốt sớm 95069920 ở 950699', () => {
+  const { pb, chot699, row } = do4_6_8('khách', CA_KHACH, { hints: ['5608', '9506', '9508'] });
   assert.ok(pb.length >= 1, `cần ≥1 câu phanBiet, được ${pb.length}`);
   const blob = JSON.stringify(pb);
   assert.ok(/5608|9506|9508/.test(blob), `câu hỏi phải nhắc nhóm: ${blob.slice(0, 400)}`);
+  assert.notEqual(chot699?.ketQua, 'CHOT', `không được CHOT sớm cho «${CA_KHACH}»: ${JSON.stringify(chot699)}`);
+  assert.notEqual(chot699?.hs, '95069920', `không được chốt 95069920 cho «${CA_KHACH}»: ${JSON.stringify(chot699)}`);
   assert.ok(row.soCauPb >= 1);
 });
 
 // ─── 3. Ca ngược ───
-check('ngược lưới đánh cá → giữ quỹ đạo 5608 (search/hint), không kéo trade-synonyms lưới leo', () => {
+check('ngược lưới đánh cá → giữ quỹ đạo 5608 (search/hint), không kéo trade-synonyms lưới leo và không chốt 95069920', () => {
   const q = 'lưới đánh cá thành phẩm từ sợi nhân tạo';
-  const { tops } = do4_6_8('ngược-đánh-cá', q, { hints: ['5608'] });
+  const { tops, chot699 } = do4_6_8('ngược-đánh-cá', q, { hints: ['5608'] });
   assert.ok(tops.some((h) => h.startsWith('5608')) || (expandSearchQuery(q).headingHints || []).includes('5608'), `thiếu 5608 trong top/hint: ${tops.join(',')}`);
   assert.ok(!tops[0]?.startsWith('9506'), `top1 không được 9506 cho lưới đánh cá: ${tops[0]}`);
+  assert.notEqual(chot699?.hs, '95069920', `lưới đánh cá không được chốt 95069920: ${JSON.stringify(chot699)}`);
   const { matches } = lookupTradeTerms(q);
   assert.ok(!matches.some((m) => m.entryId === 'luoi-leo-khu-vui-choi'), 'trade lưới leo không được khớp lưới đánh cá');
 });
 
-check('ngược lưới tennis/cầu lông → được chốt/nhận 95069920', () => {
+check('ngược lưới tennis/cầu lông và đệm/tấm ốp bảo vệ ống chân → được chốt/nhận 95069920', () => {
   const q = 'lưới tennis và lưới cầu lông cho sân thể thao';
   const { chot699 } = do4_6_8('ngược-tennis', q, { hints: ['9506'] });
   assert.equal(chot699?.ketQua, 'CHOT');
   assert.equal(chot699?.hs, '95069920');
+  for (const moTa of ['đệm bảo vệ ống chân dùng trong thể thao', 'tấm ốp bảo vệ ống chân bóng đá']) {
+    const cd = chotDong8({ hs: '950699', productText: moTa });
+    assert.equal(cd?.ketQua, 'CHOT', `${moTa} phải CHOT: ${JSON.stringify(cd)}`);
+    assert.equal(cd?.hs, '95069920', `${moTa} phải ra 95069920: ${JSON.stringify(cd)}`);
+  }
 });
 
 check('ngược dây thừng bện → 5607 (không kéo sang 9506 như lưới leo)', () => {
