@@ -13,3 +13,6 @@
 - `khuon.mjs`: 0 lỗi.
 - `cong.mjs` Cổng 3, 4, 5: 0 lỗi.
 - `liet-ke-test.mjs`, `test-ho-so-ma.mjs`, `test-ho-so-ma-tra.mjs`, `test-lop-kho.mjs`, `kiem-pham-vi-the.mjs`: ĐẠT.
+
+## Rà soát bổ sung theo regex PR #2230
+- Dò mở rộng `LUAT` (regex PR #2230): trúng **17** câu, đã có trong `88.jsonl`: **17**, chưa ghi: **0** (bổ sung **4** bản ghi `BO_QUA`: `chuong:88:cg:1#1`, `chuong:88:cg:1#3`, `chuong:88:cgpn:1#1`, `chuong:88:cgpn:2#1`). Tổng bản ghi sau rà: **38** (**15** `CHI_LIET_KE`, **23** `BO_QUA`).
