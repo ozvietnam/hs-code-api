@@ -450,6 +450,130 @@
    ],
    "nguoi": "QT",
    "thuTuCuaNguoi": 1
+  },
+  "M-71": {
+   "ten": "Khuôn ho-so-ma@1, cổng phủ – chia – trích – vân tay, máy ghép theo đường đi",
+   "lop": 3,
+   "tep": [
+    "scripts/ho-so/khuon*.mjs",
+    "scripts/ho-so/cong*.mjs",
+    "lib/ho-so/ghep.js",
+    "scripts/test-ho-so.mjs",
+    "docs/mong/khuon-ho-so-ma.md"
+   ],
+   "sau": [
+    "M-33",
+    "M-36"
+   ],
+   "nguoi": "QT",
+   "thuTuCuaNguoi": 1
+  },
+  "M-72": {
+   "ten": "Vấn đề cấp Phần, Chương: tách điều kiện đơn, hai phiếu độc lập",
+   "lop": 3,
+   "tep": [
+    "data/ho-so/phan/**",
+    "data/ho-so/chuong/**",
+    "scripts/ho-so/tach-pc*"
+   ],
+   "sau": [
+    "M-71"
+   ],
+   "nguoi": "QT + GPU + agy",
+   "thuTuCuaNguoi": 2
+  },
+  "M-73": {
+   "ten": "Vấn đề cấp nhóm 4 số: thử Chương 76 rồi cuốn chiếu",
+   "lop": 3,
+   "tep": [
+    "data/ho-so/nhom/**",
+    "scripts/ho-so/tach-nhom*"
+   ],
+   "sau": [
+    "M-71"
+   ],
+   "nguoi": "QT + GPU + agy",
+   "thuTuCuaNguoi": 3
+  },
+  "M-74": {
+   "ten": "Ngưỡng số và phân dải anh em",
+   "lop": 3,
+   "tep": [
+    "data/ho-so/nguong/**",
+    "scripts/ho-so/nguong*"
+   ],
+   "sau": [
+    "M-71"
+   ],
+   "nguoi": "agy",
+   "thuTuCuaNguoi": 1
+  },
+  "M-75": {
+   "ten": "Vấn đề chỉ liệt kê được (GIR 2a, 3b, bộ phận, đa chức năng, chủ yếu dùng cho)",
+   "lop": 3,
+   "tep": [
+    "data/ho-so/liet-ke/**",
+    "scripts/ho-so/liet-ke*"
+   ],
+   "sau": [
+    "M-71"
+   ],
+   "nguoi": "agy",
+   "thuTuCuaNguoi": 2
+  },
+  "M-76": {
+   "ten": "Cấp 6 và 8 số: tách anh em, Loại khác phủ định, SEN",
+   "lop": 3,
+   "tep": [
+    "data/ho-so/phan-nhom/**",
+    "data/ho-so/dong/**",
+    "scripts/ho-so/tach-68*"
+   ],
+   "sau": [
+    "M-71",
+    "M-73"
+   ],
+   "nguoi": "QT",
+   "thuTuCuaNguoi": 4
+  },
+  "M-77": {
+   "ten": "Tra hồ sơ: API đọc, cập nhật theo vân tay",
+   "lop": 3,
+   "tep": [
+    "lib/ho-so/tra.js",
+    "api/ho-so.js",
+    "scripts/test-ho-so-tra.mjs"
+   ],
+   "sau": [
+    "M-71"
+   ],
+   "nguoi": "agy",
+   "thuTuCuaNguoi": 3
+  },
+  "M-78": {
+   "ten": "Gói người duyệt mẫu theo Chương trọng điểm",
+   "lop": 3,
+   "tep": [
+    "docs/ho-so/duyet/**"
+   ],
+   "sau": [
+    "M-73"
+   ],
+   "nguoi": "QT",
+   "thuTuCuaNguoi": 5
+  },
+  "M-79": {
+   "ten": "Thước đo: mã đúng có trong danh sách ứng viên",
+   "lop": 3,
+   "tep": [
+    "scripts/do-cua-vao*.mjs",
+    "docs/do/cua-vao*.md"
+   ],
+   "sau": [
+    "M-41"
+   ],
+   "nguoi": "QT",
+   "thuTuCuaNguoi": 6
   }
  }
 }
