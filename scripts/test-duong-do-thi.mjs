@@ -5,6 +5,7 @@
  */
 import './test-isolate-data.mjs';
 import { createRequire } from 'node:module';
+import { fileURLToPath } from 'node:url';
 import { boKiem } from './lib-luat.mjs';
 
 const require = createRequire(import.meta.url);
@@ -145,7 +146,7 @@ kiem('CA NGƯỢC chương đọc từ tên chương: "kim loại" chung không 
     const t = Date.now();
     callWithFallback('s', 'u', { step: 'understand', timeoutMs: 1000, hanChotMs: Date.now() + 6000 }, []).catch(() => console.log(JSON.stringify({ ms: Date.now() - t, n }))).finally(() => process.exit(0));`;
   const env = { ...process.env, LOOP_PROVIDER: 'gemini' }; delete env.MINIMAX_API_KEY;
-  const ra = JSON.parse(execFileSync(process.execPath, ['-e', ma], { env, cwd: new URL('..', import.meta.url).pathname, encoding: 'utf8' }).trim().split('\n').pop());
+  const ra = JSON.parse(execFileSync(process.execPath, ['-e', ma], { env, cwd: fileURLToPath(new URL('..', import.meta.url)), encoding: 'utf8' }).trim().split('\n').pop());
   kiem('còn 6 s tới hạn chót: không nghỉ 5 s để gọi lại', ra.ms < 1500 && ra.n === 1, JSON.stringify(ra));
 }
 xong();

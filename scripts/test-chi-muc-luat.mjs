@@ -5,6 +5,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { createRequire } from 'node:module';
+import { fileURLToPath } from 'node:url';
 import { tachKho } from './luat-goc/cau.mjs';
 import { dungChiMuc, thuMuc } from './luat-goc/chi-muc.mjs';
 import { boKiem } from './lib-luat.mjs';
@@ -142,7 +143,7 @@ kiem('CA NGƯỢC không nhúng được câu hỏi → LOI, không trả gì', 
 const nguon = fs.readFileSync(new URL('../lib/chi-muc-luat.js', import.meta.url), 'utf8').split('\n').filter((l) => !/^\s*(\/\/|\*|\/\*)/.test(l)).join('\n');
 kiem('CA NGƯỢC lib không đọc từ điển / tờ khai / tiền lệ / biểu thuế / cây HS', !/tu-vung|precedents|tax\.json|to-khai|tokhai|hs-tree|do-thi|oz-gold|thong-bao|TIEN_LE_TEP/.test(nguon.replace(/'TIEN_LE'/g, '')));
 kiem('CA NGƯỢC đường khách (api/, lib/ khác) không nạp chi-muc-luat', (() => {
-  const dau = [new URL('../api', import.meta.url).pathname, new URL('../lib', import.meta.url).pathname]; let nap = [];
+  const dau = [fileURLToPath(new URL('../api', import.meta.url)), fileURLToPath(new URL('../lib', import.meta.url))]; let nap = [];
   const duyet = (d) => { for (const f of fs.existsSync(d) ? fs.readdirSync(d, { withFileTypes: true }) : []) { const p = path.join(d, f.name); if (f.isDirectory()) { if (f.name !== 'node_modules') duyet(p); } else if (/\.(js|mjs|cjs)$/.test(f.name) && !p.endsWith('chi-muc-luat.js') && /chi-muc-luat/.test(fs.readFileSync(p, 'utf8'))) nap.push(p); } };
   dau.forEach(duyet); nap = nap.filter((p) => !/tim-luat\.js$/.test(p)); return nap.length === 0;
 })());
