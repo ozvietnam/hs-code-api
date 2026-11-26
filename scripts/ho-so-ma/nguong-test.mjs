@@ -29,14 +29,15 @@ function test(ten, fn) {
 
 const L = napLuatCong();
 const khoThuc = kiemKhoHoSo();
+const banGhi76 = khoThuc.banGhi.filter((x) => /^nguong\/(?:XV|76)\.jsonl$/.test(x._tep || ''));
 
 // 1. Kho M-74 tồn tại, đúng khuôn và phủ đủ đặc tả Chương 76 + Phần XV
 test('1. Kho data/ho-so-ma/nguong/{XV,76}.jsonl qua khuôn ho-so-ma@1 với 0 lỗi', () => {
   assert.equal(khoThuc.loi.length, 0, khoThuc.loi.join('; '));
-  assert.equal(khoThuc.banGhi.length, DAC_TA_NGUONG_76.length);
-  assert.ok(khoThuc.banGhi.some((x) => x.loai === 'DINH_NGHIA' && x.nut === 'bieu:76061233' && /5182/.test(x.dieuKien)));
-  assert.ok(khoThuc.banGhi.some((x) => x.loai === 'DINH_NGHIA' && x.nut === 'bieu:76061233' && /5082/.test(x.dieuKien)));
-  assert.equal(khoThuc.banGhi.some((x) => x.nut === 'bieu:76072010'), false, 'Không dựng NGUONG từ bảng thông số ví dụ 76072010');
+  assert.equal(banGhi76.length, DAC_TA_NGUONG_76.length);
+  assert.ok(banGhi76.some((x) => x.loai === 'DINH_NGHIA' && x.nut === 'bieu:76061233' && /5182/.test(x.dieuKien)));
+  assert.ok(banGhi76.some((x) => x.loai === 'DINH_NGHIA' && x.nut === 'bieu:76061233' && /5082/.test(x.dieuKien)));
+  assert.equal(banGhi76.some((x) => x.nut === 'bieu:76072010'), false, 'Không dựng NGUONG từ bảng thông số ví dụ 76072010');
 });
 
 // 2. Cổng 4 TRÍCH & Cổng 5 VÂN TAY phạm vi Chương 76 đạt 100%
@@ -53,13 +54,13 @@ test('3. Cổng 3 (ANH EM) không có lỗi NGUONG chồng/hở/voi và 9 cụm 
   const r3 = chayCong({ phamVi: ['76'], cong: [3], L });
   const loiNguong = r3.cong[3].loi.filter((x) => /NGUONG chồng dải|: dải |: voi /.test(x));
   assert.equal(loiNguong.length, 0, loiNguong.join('; '));
-  const dai = kiemDaiAnhEm(khoThuc.banGhi, L);
+  const dai = kiemDaiAnhEm(banGhi76, L);
   assert.equal(dai.loi.length, 0, dai.loi.join('; '));
   assert.equal(dai.cumDaKiem.length, 9, `Kỳ vọng 9 cụm anh em Chương 76, nhận ${dai.cumDaKiem.length}`);
   assert.ok(dai.cumDaKiem.every((c) => c.phuKin), 'Mọi cụm anh em chia theo ngưỡng số phải phủ kín dải');
   assert.ok(dai.ghiNhanLuat.some((g) => g.loai === 'CHONG_SEN_VOI_LUAT'));
   for (const idKhac of ['hs:bieu:760519:7401', 'hs:bieu:76051990:7401', 'hs:bieu:760529:7401', 'hs:bieu:76052990:7401', 'hs:bieu:76141019:7401', 'hs:bieu:76149019:7401', 'hs:bieu:761699:7401']) {
-    const r = khoThuc.banGhi.find((x) => x.id === idKhac);
+    const r = banGhi76.find((x) => x.id === idKhac);
     assert.ok(r && /^phuDinh: bieu:/.test(r.ghiChu || ''), `Thiếu đánh dấu phuDinh trên dòng Loại khác ${idKhac}`);
   }
 });
@@ -70,7 +71,7 @@ test('4. Đối chiếu 18 tệp tham khảo data/ho-so/ranh-gioi/76*.json — m
   const files = fs.readdirSync(rgDir).filter((f) => f.startsWith('76') && f.endsWith('.json')).sort();
   assert.equal(files.length, 18);
   const byNut = new Map();
-  for (const r of khoThuc.banGhi) {
+  for (const r of banGhi76) {
     if (!byNut.has(r.nut)) byNut.set(r.nut, []);
     byNut.get(r.nut).push(r);
   }
@@ -91,7 +92,7 @@ test('4. Đối chiếu 18 tệp tham khảo data/ho-so/ranh-gioi/76*.json — m
 
 // 5. Không chứa dữ liệu khách / tờ khai / tiền lệ
 test('5. Không chứa tiền lệ (tb:) hay dữ liệu khách trong kho ngưỡng', () => {
-  for (const r of khoThuc.banGhi) {
+  for (const r of banGhi76) {
     assert.equal(/^tb:/.test(r.cau), false, `${r.id}: cấm trích tiền lệ`);
     assert.ok(['LUAT', 'HUONG_DAN'].includes(r.lop), `${r.id}: lớp lạ ${r.lop}`);
   }
