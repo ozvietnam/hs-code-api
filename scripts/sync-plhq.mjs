@@ -276,6 +276,8 @@ export async function main(args = process.argv.slice(2)) {
   console.log(`Thay đổi: +${ss.them.length} −${ss.bot.length} văn bản · ${ss.doiTinhTrang.length} đổi tình trạng · ${ss.doiKhac} văn bản sửa`);
 
   let hsDoi = false;
+  let hsPayload = null;
+  let coLoi = false;
   try {
     let hsRaw;
     let hsText = null;
@@ -299,23 +301,24 @@ export async function main(args = process.argv.slice(2)) {
       const soDong = docsHs.reduce((n, d) => n + d.rows.length, 0);
       console.log(`Bảng mã HS: ${docsHs.length} văn bản · ${soDong} dòng${hsDoi ? ' (có đổi)' : ''}`);
       if (!checkOnly && hsDoi) {
-        writeFileSync(OUT_HS, JSON.stringify({
+        hsPayload = {
           _comment: `Bản chụp bảng mã HS ↔ văn bản của kho cộng đồng oz-wiki-plhq. KHÔNG sửa tay — chạy node scripts/sync-plhq.mjs. lib/plhq-registry.js đọc tệp này. ${GHI_NGUON_CC_BY}.`,
           attribution: GHI_NGUON_CC_BY,
           source: hsFrom || URL_HS, repo: 'https://github.com/ozvietnam/oz-wiki-plhq', schema: 'docs/luoc-do-danh-muc-hs.md',
           schemaVersion: hsRaw.luoc_do_phien_ban || null, lopDuLieu: hsRaw.lop_du_lieu || 'LUAT',
           registryVersion: hsRaw.phien_ban || null, syncedAt: new Date().toISOString().slice(0, 10), documents: docsHs,
-        }, null, 1) + '\n');
-        console.log(`Đã ghi ${OUT_HS.slice(ROOT.length + 1)}`);
+        };
       }
     }
   } catch (e) {
     console.error(`Bảng mã HS: ${e.message}`);
     process.exitCode = 1;
+    coLoi = true;
   }
 
   // Tuỳ chọn opt-in điều khoản nguồn A — mặc định TẮT để workflow plhq-sync hằng ngày không đổi.
   let dkDoi = false;
+  let dkPayload = null;
   if (withDieuKhoan || dkFrom) {
     try {
       let dkRaw;
@@ -340,7 +343,7 @@ export async function main(args = process.argv.slice(2)) {
         const soDieu = docsDk.reduce((n, d) => n + d.dieuKhoan.length, 0);
         console.log(`Điều khoản nguồn A: ${docsDk.length} văn bản · ${soDieu} điều khoản${dkDoi ? ' (có đổi)' : ''}`);
         if (!checkOnly && dkDoi) {
-          writeFileSync(OUT_DK, JSON.stringify({
+          dkPayload = {
             _comment: `Bản chụp điều khoản NGUYEN_VAN_NGUON_A của kho cộng đồng oz-wiki-plhq (KHÔNG trộn TOM_TAT_NHAP). KHÔNG sửa tay — chạy node scripts/sync-plhq.mjs --with-dieu-khoan. ${GHI_NGUON_CC_BY}.`,
             attribution: GHI_NGUON_CC_BY,
             source: dkFrom || URL_DK,
@@ -352,17 +355,18 @@ export async function main(args = process.argv.slice(2)) {
             syncedAt: new Date().toISOString().slice(0, 10),
             total: docsDk.length,
             documents: docsDk,
-          }, null, 1) + '\n');
-          console.log(`Đã ghi ${OUT_DK.slice(ROOT.length + 1)}`);
+          };
         }
       }
     } catch (e) {
       console.error(`Điều khoản nguồn A: ${e.message}`);
       process.exitCode = 1;
+      coLoi = true;
     }
   }
 
-  // Kiểm tra dist/manifest.json (SHA-256 + bytes + chuẩn lop-kho@1) nếu có --manifest-from hoặc tải từ xa.
+  // Kiểm tra dist/manifest.json (SHA-256 + bytes + chuẩn lop-kho@1) TRƯỚC khi ghi bất kỳ tệp chụp nào.
+  let manifestLoi = false;
   if (manifestFrom || !from) {
     try {
       let manifestRaw = null;
@@ -380,10 +384,12 @@ export async function main(args = process.argv.slice(2)) {
     } catch (e) {
       console.error(`Manifest: ${e.message}`);
       process.exitCode = 1;
+      manifestLoi = true;
     }
   }
 
-  console.log(`CHANGED=${ss.coDoi || hsDoi || dkDoi}`);
+  const choPhepGhi = !checkOnly && !manifestLoi && !coLoi;
+  console.log(`CHANGED=${choPhepGhi ? (ss.coDoi || hsDoi || dkDoi) : (checkOnly && !manifestLoi && !coLoi ? (ss.coDoi || hsDoi || dkDoi) : false)}`);
   console.log(`LARGE=${lon}`);
   if (summaryFile) {
     const dongTomTat = [
@@ -400,6 +406,19 @@ export async function main(args = process.argv.slice(2)) {
     }
     dongTomTat.push(lon ? `\n**Thay đổi lớn** (bớt văn bản hoặc trên ${NGUONG_DOI_TINH_TRANG} văn bản đổi tình trạng) — cần người duyệt.` : '');
     writeFileSync(summaryFile, dongTomTat.join('\n') + '\n');
+  }
+  if (manifestLoi || coLoi) {
+    console.error('Dừng ghi bản chụp do kiểm tra dữ liệu/manifest thất bại.');
+    console.log('TOUCHED=false');
+    return;
+  }
+  if (!checkOnly && hsPayload) {
+    writeFileSync(OUT_HS, JSON.stringify(hsPayload, null, 1) + '\n');
+    console.log(`Đã ghi ${OUT_HS.slice(ROOT.length + 1)}`);
+  }
+  if (!checkOnly && dkPayload) {
+    writeFileSync(OUT_DK, JSON.stringify(dkPayload, null, 1) + '\n');
+    console.log(`Đã ghi ${OUT_DK.slice(ROOT.length + 1)}`);
   }
   if (!checkOnly && ss.coDoi) {
     writeFileSync(OUT, JSON.stringify(out, null, 1) + '\n');

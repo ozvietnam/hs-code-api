@@ -351,5 +351,38 @@ t('rutGonDieuKhoan mặc định trangThaiDieu = NGUYEN_BAN khi thiếu trườn
   dkOut[0].dieuKhoan[0].trangThaiDieu === 'NGUYEN_BAN',
   JSON.stringify(dkOut[0].dieuKhoan[0].trangThaiDieu));
 
+// Chứng minh main() dừng ghi khi manifest SHA-256 lệch (không ghi data/ khi verify fail)
+import { execFileSync } from 'child_process';
+import { mkdtempSync, rmSync } from 'fs';
+import { tmpdir } from 'os';
+import { dirname as _dirname } from 'path';
+import { fileURLToPath as _fileURLToPath } from 'url';
+const _repoRoot = join(_dirname(_fileURLToPath(import.meta.url)), '..');
+const tmpMfDir = mkdtempSync(join(tmpdir(), 'plhq-mf-fail-'));
+try {
+  writeFileSync(join(tmpMfDir, 'registry.json'), regText);
+  writeFileSync(join(tmpMfDir, 'manifest.json'), JSON.stringify({
+    ...manifestOk,
+    tep: { ...manifestOk.tep, 'registry.json': { sha256: 'f'.repeat(64), bytes: Buffer.byteLength(regText, 'utf8'), lop_du_lieu: 'LUAT' } },
+  }));
+  let mfExit = 0;
+  let mfOut = '';
+  try {
+    mfOut = execFileSync(process.execPath, [
+      'scripts/sync-plhq.mjs', '--check',
+      '--from', join(tmpMfDir, 'registry.json'),
+      '--manifest-from', join(tmpMfDir, 'manifest.json'),
+    ], { cwd: _repoRoot, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] });
+  } catch (e) {
+    mfExit = e.status ?? 1;
+    mfOut = `${e.stdout || ''}\n${e.stderr || ''}`;
+  }
+  t('sync-plhq.mjs dừng ghi và thoát mã != 0 khi manifest SHA-256 lệch',
+    mfExit !== 0 && mfOut.includes('CHANGED=false') && mfOut.includes('Dừng ghi bản chụp'),
+    JSON.stringify({ mfExit, mfOut }));
+} finally {
+  rmSync(tmpMfDir, { recursive: true, force: true });
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
