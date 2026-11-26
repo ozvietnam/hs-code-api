@@ -1383,6 +1383,219 @@ async function runAll() {
     assert.equal(r2.ma, null);
   });
 
+  // 26. QUAY_LUI lặp lại: sau khi về 7616, LLM cố chọn lại 76169 (nhánh đã bị bác) -> validator chặn, hỏi lại -> chọn 761610
+  await test('26. Chọn lại nhánh đã bị bác ở QUAY_LUI bị chặn và được hỏi lại, rồi đi tiếp 76161090', async () => {
+    let daVao76169 = false;
+    let lanTai7616 = 0;
+    let promptRetry = '';
+    const res = await chayThu({
+      moTa: 'Đinh tán nhôm loại rỗng',
+      goiLLM: async (buoc, goi) => {
+        if (buoc === 'VAO_CUA') {
+          return { banChat: [{ y: 'đinh tán nhôm', chuKhach: 'Đinh tán nhôm' }], chuaBiet: [], cumTim: ['đinh tán'] };
+        }
+        if (buoc === 'CHON_UNG_VIEN') {
+          const uvs = goi.duLieu.ungVien.map((u) => u.h4);
+          return {
+            hanhDong: 'DOC_KY',
+            nhomChon: ['7616'],
+            boQua: uvs.filter((h) => h !== '7616').map((h) => ({ nhom: h, lyDo: `Bỏ ${h}` })),
+          };
+        }
+        if (buoc === 'KIEM') return traLoiKiemToanKhong(goi.duLieu, 'Đinh tán nhôm');
+        if (buoc === 'CHON_NHOM_4') {
+          return {
+            hanhDong: 'CHON',
+            nutDich: 'bieu:7616',
+            quyTacGir: 'QT1',
+            trich: [{ cauId: 'bieu:7616#1', doan: cauGoc('bieu:7616#1') }],
+            chuKhach: 'Đinh tán nhôm',
+            daSoKhongChon: [],
+          };
+        }
+        if (buoc === 'XUONG_CAP') {
+          if (goi.duLieu.nut === 'bieu:7616' && !daVao76169) {
+            return {
+              hanhDong: 'CHON',
+              nutDich: 'bieu:76169',
+              quyTacGir: 'QT6',
+              trich: [{ cauId: 'bieu:76169#1', doan: cauGoc('bieu:76169#1') }],
+              chuKhach: 'Đinh tán nhôm',
+              daSoKhongChon: [{ nut: 'bieu:761610', viSaoKhongChon: 'Chưa thấy là đinh tán' }],
+            };
+          }
+          if (goi.duLieu.nut === 'bieu:76169') {
+            daVao76169 = true;
+            return {
+              hanhDong: 'QUAY_LUI',
+              nutDich: 'bieu:7616',
+              lyDo: 'Đinh tán được định danh trực tiếp ở nhánh 7616.10, không ở nhánh Loại khác 7616.9',
+              quyTacGir: 'QT6',
+              trich: [{ cauId: 'bieu:761610#1', doan: cauGoc('bieu:761610#1') }],
+              chuKhach: 'Đinh tán nhôm',
+            };
+          }
+          if (goi.duLieu.nut === 'bieu:7616' && daVao76169) {
+            lanTai7616 += 1;
+            if (lanTai7616 === 1) {
+              return {
+                hanhDong: 'CHON',
+                nutDich: 'bieu:76169',
+                quyTacGir: 'QT6',
+                trich: [{ cauId: 'bieu:76169#1', doan: cauGoc('bieu:76169#1') }],
+                chuKhach: 'Đinh tán nhôm',
+                daSoKhongChon: [{ nut: 'bieu:761610', viSaoKhongChon: 'Chưa thấy là đinh tán' }],
+              };
+            }
+            promptRetry = goi.prompt;
+            return {
+              hanhDong: 'CHON',
+              nutDich: 'bieu:761610',
+              quyTacGir: 'QT6',
+              trich: [{ cauId: 'bieu:761610#1', doan: cauGoc('bieu:761610#1') }],
+              chuKhach: 'Đinh tán nhôm',
+              daSoKhongChon: [{ nut: 'bieu:76169', viSaoKhongChon: 'Đã quay lui từ 76169 vì không phù hợp' }],
+            };
+          }
+          return {
+            hanhDong: 'CHON',
+            nutDich: 'bieu:76161090',
+            quyTacGir: 'QT6',
+            trich: [{ cauId: 'bieu:76161090#1', doan: cauGoc('bieu:76161090#1') }],
+            chuKhach: 'Đinh tán nhôm',
+            daSoKhongChon: [
+              { nut: 'bieu:76161010', viSaoKhongChon: 'Không phải đinh' },
+              { nut: 'bieu:76161020', viSaoKhongChon: 'Không phải bu lông/vít' },
+            ],
+          };
+        }
+        throw new Error(`Bước bất ngờ: ${buoc}`);
+      },
+    });
+    assert.equal(lanTai7616, 2);
+    assert.match(promptRetry, /LẦN TRƯỚC BỊ TRẢ LẠI/);
+    assert.match(promptRetry, /đã bị bác/);
+    assert.equal(res.trangThai, 'KET_LUAN');
+    assert.equal(res.ma, '76161090');
+    assert.ok(res.so.cacBuoc.some((b) => b.loai === 'QUAY_LUI' && b.quyetDinh.nutDich === 'bieu:7616'));
+    assert.equal(kiemSoVet(res.so).dat, true);
+    return res;
+  });
+
+  // 27. `bieu:` rỗng (thiếu số) ở XUONG_CAP: chuanNutBieu -> null -> validator chặn, hỏi lại, sửa được
+  await test('27. nutDich "bieu:" thiếu số bị validator trả lại kèm lỗi, lượt sửa chọn đúng 761610', async () => {
+    let lanTai7616 = 0;
+    let promptLan1 = '';
+    let promptRetry = '';
+    const res = await chayThu({
+      moTa: 'Đinh tán nhôm loại rỗng',
+      goiLLM: async (buoc, goi) => {
+        if (buoc === 'VAO_CUA') {
+          return { banChat: [{ y: 'đinh tán nhôm', chuKhach: 'Đinh tán nhôm' }], chuaBiet: [], cumTim: ['đinh tán'] };
+        }
+        if (buoc === 'CHON_UNG_VIEN') {
+          const uvs = goi.duLieu.ungVien.map((u) => u.h4);
+          return {
+            hanhDong: 'DOC_KY',
+            nhomChon: ['7616'],
+            boQua: uvs.filter((h) => h !== '7616').map((h) => ({ nhom: h, lyDo: `Bỏ ${h}` })),
+          };
+        }
+        if (buoc === 'KIEM') return traLoiKiemToanKhong(goi.duLieu, 'Đinh tán nhôm');
+        if (buoc === 'CHON_NHOM_4') {
+          return {
+            hanhDong: 'CHON',
+            nutDich: 'bieu:7616',
+            quyTacGir: 'QT1',
+            trich: [{ cauId: 'bieu:7616#1', doan: cauGoc('bieu:7616#1') }],
+            chuKhach: 'Đinh tán nhôm',
+            daSoKhongChon: [],
+          };
+        }
+        if (buoc === 'XUONG_CAP') {
+          if (goi.duLieu.nut === 'bieu:7616') {
+            lanTai7616 += 1;
+            if (lanTai7616 === 1) {
+              promptLan1 = goi.prompt;
+              return {
+                hanhDong: 'CHON',
+                nutDich: 'bieu:',
+                quyTacGir: 'QT6',
+                trich: [{ cauId: 'bieu:761610#1', doan: cauGoc('bieu:761610#1') }],
+                chuKhach: 'Đinh tán nhôm',
+                daSoKhongChon: [{ nut: 'bieu:76169', viSaoKhongChon: 'Không phải nhánh Loại khác' }],
+              };
+            }
+            promptRetry = goi.prompt;
+            return {
+              hanhDong: 'CHON',
+              nutDich: 'bieu:761610',
+              quyTacGir: 'QT6',
+              trich: [{ cauId: 'bieu:761610#1', doan: cauGoc('bieu:761610#1') }],
+              chuKhach: 'Đinh tán nhôm',
+              daSoKhongChon: [{ nut: 'bieu:76169', viSaoKhongChon: 'Không phải nhánh Loại khác' }],
+            };
+          }
+          return {
+            hanhDong: 'CHON',
+            nutDich: 'bieu:76161090',
+            quyTacGir: 'QT6',
+            trich: [{ cauId: 'bieu:76161090#1', doan: cauGoc('bieu:76161090#1') }],
+            chuKhach: 'Đinh tán nhôm',
+            daSoKhongChon: [
+              { nut: 'bieu:76161010', viSaoKhongChon: 'Không phải đinh' },
+              { nut: 'bieu:76161020', viSaoKhongChon: 'Không phải bu lông/vít' },
+            ],
+          };
+        }
+        throw new Error(`Bước bất ngờ: ${buoc}`);
+      },
+    });
+    assert.equal(lanTai7616, 2);
+    assert.equal(promptLan1.includes('LẦN TRƯỚC BỊ TRẢ LẠI'), false);
+    assert.match(promptRetry, /LẦN TRƯỚC BỊ TRẢ LẠI/);
+    assert.match(promptRetry, /nằm ngoài danh sách con cùng cấp/);
+    assert.equal(res.trangThai, 'KET_LUAN');
+    assert.equal(res.ma, '76161090');
+    assert.equal(kiemSoVet(res.so).dat, true);
+    return res;
+  });
+
+  // 28. HOI ở LOC của CHUYEN_HUONG chương: câu hỏi của LLM được đưa lên, không bị nuốt (test 21 là khuôn nền)
+  await test('28. LOC chương (choPhepTimLai=false) trả HOI -> câu hỏi LLM lên thẳng kết quả', async () => {
+    const goc = diHetDuong(['nhôm'], { prompts: [] });
+    let cauSangChuong = null;
+    const cauHoiCuaLLM = 'Khách chưa nêu hàng dùng làm gì: là ghế, tủ hay kết cấu dựng nhà? Hãy cho biết công dụng và vật liệu chính.';
+    let daHoilocChuong = false;
+    const res = await chayDocLuat({
+      moTa: 'Hàng thử nhôm',
+      kho: { timLuatFn: () => ({ cuaVao: [{ nut: 'bieu:7604', cauId: 'bieu:7604#1', cau: cauGoc('bieu:7604#1'), chieu: 'NHAC', kho: 'bieu', lop: 'LUAT' }] }) },
+      goiLLM: async (buoc, goi) => {
+        if (buoc === 'KIEM' && goi.duLieu.nut === 'bieu:7604' && !cauSangChuong) {
+          const c = goi.duLieu.loCau.find((x) => x.cacDich.every((d) => d === 'chuong:94'));
+          if (c) {
+            cauSangChuong = c.cauId;
+            const kq = traLoiKiemToanKhong(goi.duLieu, 'Hàng thử nhôm');
+            kq.kiemCanh.find((k) => k.cauId === c.cauId).ketQua = 'THOA';
+            kq.chuyenHuong = { nutDich: 'chuong:94', trich: [{ cauId: c.cauId, doan: cauGoc(c.cauId) }], lyDo: 'Câu loại chỉ sang Chương 94' };
+            return kq;
+          }
+        }
+        if (cauSangChuong && ['LOC', 'CHON_UNG_VIEN'].includes(buoc) && goi.duLieu.choPhepTimLai === false) {
+          daHoilocChuong = true;
+          return { hanhDong: 'HOI', cauHoi: cauHoiCuaLLM, duKienThieu: ['công dụng', 'vật liệu chính'] };
+        }
+        return goc(buoc, goi);
+      },
+    });
+    assert.equal(daHoilocChuong, true, 'LOC của chương 94 phải được gọi với choPhepTimLai=false');
+    assert.equal(res.trangThai, 'HOI', JSON.stringify(res).slice(0, 400));
+    assert.equal(res.bac, 4);
+    assert.equal(res.hoi.cauHoi, cauHoiCuaLLM, 'câu hỏi không được đè bằng MOI_NHOM_BI_LOAI');
+    assert.deepEqual(res.hoi.duKienThieu, ['công dụng', 'vật liệu chính']);
+    assert.ok(res.so.cacBuoc.some((b) => b.loai === 'HOI' && b.quyetDinh.cauHoi === cauHoiCuaLLM));
+  });
+
   console.log(`\n=== KET QUA: ${passed} passed, ${failed} failed ===`);
   if (process.argv.includes('--do')) {
     console.log('\n--- DO LUOT LLM & KY TU ---');
