@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // scripts/luat-goc/nghia-test.mjs — bài kiểm ghép hai phiếu nghĩa cạnh (M-33). Tất định, không mạng, không AI.
-import { viec, ghep, kiemPhieu, trongNguon, tuNhac } from './nghia.mjs';
+import { viec, ghep, kiemPhieu, trongNguon, tuNhac, phuDinhDich } from './nghia.mjs';
 let dat = 0; let hong = 0; const kiem = (t, d, c = '') => { if (d) { dat += 1; console.log(`PASS ${t}`); } else { hong += 1; console.log(`FAIL ${t} ${JSON.stringify(c)}`); } };
 const v = { cau: 'nhom:7616:ct:9#1', nguon: 'nhom:7616:ct:9', dan: ['Nhóm này không bao gồm:'], chu: '(a) Vải dệt thoi từ sợi kim loại (nhóm 58.09).', canh: [{ e: 'E1', den: 'bieu:5809' }] };
 const L = (dieuKien, loai = 'LOAI_SANG') => ({ loai, dieuKien }); const D = 'bieu:5809';
@@ -22,4 +22,9 @@ const nut = [{ id: 'nhom:7616:ct:8', nguyenVan: 'Không bao gồm:' }, { id: 'nh
 const cau = [{ id: 'nhom:7616:ct:8#1', tu: 0, den: 14 }, { id: 'nhom:7616:ct:9#1', tu: 0, den: 21, dan: 'nhom:7616:ct:8#1' }];
 const V = viec({ nut, cau, canh: [{ tu: 'nhom:7616:ct:9#1', tuNut: 'nhom:7616:ct:9', den: 'bieu:5809', trich: 'nhóm 58.09' }, { tu: 'bieu:5809#1', tuNut: 'bieu:5809', den: 'bieu:7616', trich: '' }] });
 kiem('việc mang câu dẫn; nguồn là biểu thì bỏ', V.length === 1 && V[0].dan[0] === 'Không bao gồm:' && V[0].canh[0].ten === 'Vải dệt thoi', V);
+// Câu phủ định đích (phan:XV:kq:25#3, đọc tay M-73): 73.22 là nơi bu lông KHÔNG về.
+const BL = 'Bu lông thì được phân loại tại nhóm 73.18 (đối với bu lông) mà không phải nhóm 73.22 (như là những phần của lò sưởi trung tâm).';
+kiem('máy phát hiện câu phủ định đích', phuDinhDich(BL, 'bieu:7322') && phuDinhDich('Vòng đệm thì được phân loại tại nhóm 73.20 mà không được phân loại 87.08', 'bieu:8708'));
+kiem('CA NGƯỢC đích được khẳng định, "chân không" không phải phủ định', !phuDinhDich(BL, 'bieu:7318') && !phuDinhDich('Các loại bình chân không khác thuộc nhóm 96.17', 'bieu:9617') && !phuDinhDich('không phải nhóm 73.221', 'bieu:7322'));
+kiem('CA NGƯỢC hai phiếu cùng nói phân về đích bị phủ định ⇒ CHUA_RO', (() => { const r = ghep({ ...vc, nguon: 'phan:XV:kq:25', chu: BL, dan: [] }, 'bieu:7322', L('Bu lông'), L('Bu lông')); return r.trangThai === 'CHUA_RO' && /phủ định/.test(r.vi); })());
 console.log(`nghia-test: ${dat} passed, ${hong} failed`); process.exit(hong ? 1 : 0);

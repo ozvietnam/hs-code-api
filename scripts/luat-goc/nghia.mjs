@@ -52,7 +52,23 @@ export function trongNguon(nguon, den) {
 export function tuNhac(nguon, den) { const m = /^(?:nhom|pn|sen):(\d{4,8})/.exec(nguon)?.[1]; return !!m && maCua(den) === m; }
 
 /** Ghép hai phiếu cùng một cạnh. Điều cốt lõi là có CHUYỂN HƯỚNG hay không; GOM / AP_DUNG / DINH_NGHIA lẫn nhau không đổi đường đi. */
+/** Mã của đích viết như trong chữ luật: bieu:7322 → "73.22", bieu:732210 → "7322.10", chuong:85 → "Chương 85". */
+function maViet(den) {
+  let m;
+  if ((m = /^bieu:(\d{2})(\d{2})$/.exec(den))) return `${m[1]}\\.${m[2]}`;
+  if ((m = /^bieu:(\d{4})(\d{2})(\d{2})?$/.exec(den))) return `${m[1]}\\.${m[2]}${m[3] ? `\\.?${m[3]}` : ''}`;
+  if ((m = /^chuong:(\d{2})$/.exec(den))) return `chương\\s+${Number(m[1])}`;
+  return null;
+}
+/** Câu PHỦ ĐỊNH đúng đích ("… mà không phải nhóm 73.22", "không được phân loại vào nhóm 87.08"): đích là nơi hàng KHÔNG về,
+ *  nên cạnh tới đích đó không thể là LOAI_SANG / PHAN_VE. (M-33 sửa sau đọc tay M-73.) */
+export function phuDinhDich(chu, den) {
+  const ma = maViet(den); if (!ma) return false;
+  return new RegExp(`(?<!chân )không\\s+(?:phải(?:\\s+là)?|được\\s+phân\\s+loại(?:\\s+(?:vào|ở|tại|trong))?)\\s+(?:(?:các\\s+)?(?:phân\\s+)?nhóm\\s+)?${ma}(?!\\d)`, 'i').test(chuan(chu));
+}
+
 export function ghep(v, den, p1, p2) {
+  if (phuDinhDich([...v.dan, v.chu].join(' '), den)) return { trangThai: 'CHUA_RO', vi: 'câu phủ định đích' };
   const ps = [p1, p2]; const nv = (p) => { const than = chuan([...v.dan, v.chu].join(' ')); const d = chuan(p?.dieuKien); return d.length >= 2 && than.includes(d) ? d : ''; };
   if (!ps.every((p) => LOAI.includes(p?.loai))) return { trangThai: 'CHUA_RO', vi: 'nhãn lạ' };
   const dk = ps.map(nv).sort((a, b) => b.length - a.length)[0]; //  bản nguyên văn dài nhất: thiếu chữ là mất điều kiện
@@ -89,6 +105,7 @@ function main() {
     for (const f of fs.existsSync(D) ? fs.readdirSync(D).filter((x) => x.endsWith('.jsonl')) : []) for (const x of docJsonl(path.join(D, f))) {
       n += 1; const v = V.get(x.tu); const loi = [];
       if (!v || !v.canh.some((c) => c.den === x.den)) loi.push('cạnh không có trong kho');
+      else if (x.trangThai === 'KHOP' && ['LOAI_SANG', 'PHAN_VE'].includes(x.loai) && phuDinhDich(v.chu, x.den)) loi.push('câu phủ định đích mà cạnh ghi ' + x.loai);
       else if (x.trangThai === 'KHOP') { if (!['LOAI_SANG', 'PHAN_VE', 'GOM', 'AP_DUNG', 'DINH_NGHIA', 'GIU'].includes(x.loai)) loi.push('nhãn lạ'); if (x.dieuKien && !chuan([...v.dan, v.chu].join(' ')).includes(x.dieuKien)) loi.push('điều kiện không nguyên văn'); if (['LOAI_SANG', 'PHAN_VE'].includes(x.loai) && !x.dieuKien) loi.push('thiếu điều kiện'); } else if (x.trangThai !== 'CHUA_RO') loi.push('trạng thái lạ');
       if (loi.length) { hong += 1; if (hong <= 10) console.log(`✗ ${x.tu} → ${x.den}: ${loi.join('; ')}`); }
     }
