@@ -73,6 +73,102 @@ check('ổn định search 3 lần cùng câu', () => {
   assert.ok(runs[0].startsWith('8543'), runs[0]);
 });
 
+// ─── OZV-2387: Đối chiếu 3 cụm câu khách còn lại trong top 24h ───
+process.env.HS_HOI_THEO_SO_TAY = 'on';
+const hoi = require('../lib/hoi-theo-so-tay.js');
+const { soTayGates } = require('../lib/so-tay-gates.js');
+const tax = JSON.parse(readFileSync(join(ROOT, 'data', 'tax.json'), 'utf8'));
+const anhEm = (prefix6) => Object.keys(tax).filter((h) => h.startsWith(prefix6)).sort();
+
+function cauHoiTuSoTay(tenHang, hs6, nhomList) {
+  return hoi.apDung({
+    status: 'NEED_FACTS',
+    results: [{ hs: hs6 }],
+    dossier: {
+      hypotheses: nhomList.map((h) => ({ heading4: h, subheading6: hs6.startsWith(h) ? hs6 : '' })),
+      alternatives: [],
+      product: {},
+      conditions: [],
+    },
+    nextAction: { type: 'ASK_USER', questions: [{ questionVi: 'LLM cũ — phải bị thay' }] },
+    missing: ['x'],
+  }, { rawAttrs: { tenHang } });
+}
+
+check('OZV-2387 verifySoTay 7412/7307/9506/5608/9508 không loai', () => {
+  for (const h of ['7412', '7307', '9506', '5608', '9508']) {
+    const r = verifySoTay(loadSoTay(h), h);
+    assert.equal(r.loai.length, 0, `${h} loai: ${JSON.stringify(r.loai)}`);
+  }
+});
+
+check('OZV-2387 cụm 1 «lưới leo dùng cho khu vui chơi»: anh em 950699/560819 và câu PHAN_BIET_NHOM 9506↔5608/9508', () => {
+  const q1 = 'lưới leo dùng cho khu vui chơi';
+  const ae950699 = anhEm('950699');
+  const ae560819 = anhEm('560819');
+  assert.deepEqual(ae950699, ['95069910', '95069920', '95069930', '95069990']);
+  assert.deepEqual(ae560819, ['56081920', '56081990']);
+  const r = cauHoiTuSoTay(q1, '950699', ['9506', '5608', '9508', '9503']);
+  const qs = r.nextAction?.questions || [];
+  assert.equal(r.nextAction?.canCuCauHoi, 'so-tay');
+  assert.ok(qs.some((x) => x.loai === 'PHAN_BIET_NHOM' && /56\.08/.test(x.questionVi) && /95\.06/.test(x.questionVi)));
+  assert.ok(qs.some((x) => x.loai === 'PHAN_BIET_NHOM' && /95\.08/.test(x.questionVi) && /95\.06/.test(x.questionVi)));
+});
+
+check('OZV-2387 cụm 2 «chạc chia 3 hơi khí nén zonye ren 1/4»: anh em 741220/730799 và hỏi PHAN_BIET_NHOM 74.12↔73.07 đứng đầu', () => {
+  const q2 = 'chạc chia 3 hơi khí nén zonye ren 1/4';
+  assert.deepEqual(anhEm('741220'), ['74122020', '74122091', '74122099']);
+  assert.deepEqual(anhEm('730799'), ['73079910', '73079990']);
+  for (const [top6, nhom] of [
+    ['741220', ['7412', '7307', '3917', '8412', '4009']],
+    ['730799', ['7307', '7412', '3917', '8412', '4009']],
+  ]) {
+    const r = cauHoiTuSoTay(q2, top6, nhom);
+    const qs = r.nextAction?.questions || [];
+    assert.equal(r.nextAction?.canCuCauHoi, 'so-tay');
+    assert.equal(qs[0]?.loai, 'PHAN_BIET_NHOM', `top=${top6} câu đầu phải là PHAN_BIET_NHOM: ${JSON.stringify(qs)}`);
+    assert.match(qs[0]?.questionVi || '', /74\.12[\s\S]*73\.07|73\.07[\s\S]*74\.12/);
+  }
+  const rVan = cauHoiTuSoTay(q2, '741220', ['7412', '7307', '8481']);
+  const qsVan = rVan.nextAction?.questions || [];
+  assert.ok(qsVan.some((x) => x.loai === 'PHAN_BIET_NHOM' && /84\.81/.test(x.questionVi)), JSON.stringify(qsVan));
+  // Ca ngược: bu lông không kích câu hỏi chạc chia 74.12↔73.07
+  const pbNguoc = hoi.cauPhanBietNhom('7412', ['7412', '7307'], 'bu lông đồng M8 lắp ống');
+  assert.equal(pbNguoc.length, 0, `ca ngược bu lông không được khớp chạc chia: ${JSON.stringify(pbNguoc)}`);
+});
+
+check('OZV-2387 cụm 3 «lọc nguồn 20a loại 1 pha cw4e-20a-s»: anh em 854370, hỏi PHAN_BIET_NHOM 85.43↔85.04/84.21 đứng đầu và không bắn nhầm soTayGates ở 85437090', () => {
+  const ae854370 = anhEm('854370');
+  assert.equal(ae854370.length, 8);
+  assert.ok(ae854370.includes('85437090'));
+  for (const [top6, nhom] of [
+    ['854370', ['8543', '8421', '8504', '8479', '8536']],
+    ['842129', ['8421', '8543', '8504', '8479', '8536']],
+    ['850440', ['8504', '8543', '8421', '8536']],
+  ]) {
+    const r = cauHoiTuSoTay(MO_TA, top6, nhom);
+    const qs = r.nextAction?.questions || [];
+    assert.equal(r.nextAction?.canCuCauHoi, 'so-tay');
+    assert.equal(qs[0]?.loai, 'PHAN_BIET_NHOM', `top=${top6} câu đầu phải là PHAN_BIET_NHOM: ${JSON.stringify(qs)}`);
+    assert.ok(qs.some((x) => x.loai === 'PHAN_BIET_NHOM' && /85\.04|84\.21/.test(x.questionVi) && /85\.43/.test(x.questionVi)));
+  }
+  const g8543 = soTayGates({ hs: '85437090', productText: MO_TA, productName: MO_TA });
+  assert.equal(
+    (g8543.challenges || []).filter((c) => c.gate === 'SO_TAY_LOAI_TRU').length,
+    0,
+    `không được bắn SO_TAY_LOAI_TRU oan trên 85437090 cho «${MO_TA}»: ${JSON.stringify(g8543.challenges)}`,
+  );
+  const gOnAp = soTayGates({
+    hs: '85437090',
+    productText: 'lọc nguồn ổn áp liên tục 220V cho thiết bị điện tử',
+    productName: 'lọc nguồn ổn áp liên tục 220V',
+  });
+  assert.ok(
+    (gOnAp.challenges || []).some((c) => c.gate === 'SO_TAY_LOAI_TRU' && c.target === '8504'),
+    `phải bắn SO_TAY_LOAI_TRU sang 8504 khi mô tả là «lọc nguồn ổn áp»: ${JSON.stringify(gOnAp.challenges)}`,
+  );
+});
+
 if (failed) {
   console.error(`\n${failed} failed`);
   process.exit(1);
