@@ -1,20 +1,24 @@
 # M-76 (#1968) — Cấp 6 và 8 số: tách anh em, Loại khác phủ định, chú giải SEN — Chương 76 (PR nháp)
 
-- **Khuôn áp dụng:** `ho-so-ma@1` ([`docs/mong/khuon-ho-so-ma.md`](../khuon-ho-so-ma.md), [`docs/decisions/0006-ho-so-van-de-ma-8-so.md`](../../decisions/0006-ho-so-van-de-ma-8-so.md))
-- **Kho dữ liệu (`RUT_TU_LUAT`, khai trong `data/lop-kho.json`):**
-  - `data/ho-so-ma/phan-nhom/*.jsonl`: **35 tệp** (35 phân nhóm 6 số + 6 tiêu đề 7 số gắn vào tệp phân nhóm 6 số tương ứng theo `lib/ho-so-ma/ghep.js`).
-  - `data/ho-so-ma/dong/*.jsonl`: **74 tệp** (74 dòng 8 số của Chương 76).
-  - **Tổng: 109 tệp, 130 bản ghi**, **0 bản `VENH`**, chỉ rút từ `data/luat-goc` (`bieu:76*`, `sen:76*`, `pn:760711:ct:1`). Không có dữ liệu khách, tờ khai, `tb:`, `wco:`, `gir:`, hay lời AI tự nghĩ.
-- **Phân bổ 130 bản ghi Chương 76:**
-  - **94 `TACH_ANH_EM`** (trong đó **31 dòng *"Loại khác"*** do máy sinh 100% tất định, phủ định đủ anh em có tên cùng cấp qua `ghiChu: "phuDinh: bieu:..."` — tương thích khuôn `main` hiện hành trước khi `#1981` gộp).
-  - **21 `BO_QUA`** cho các dòng con duy nhất lặp lại tên cấp cha (như `76011000`, `76020000`, `76071900`…) để qua Cổng 1 ĐỦ mà không nhân bản điều kiện cấp cha theo ADR-0006.
-  - **10 `DINH_NGHIA` từ chú giải SEN** (phủ đủ 10/10 dòng `sen:76*`: `76042110`, `76042120`, `76061232`, `76061233`, `76072010`, `76109030`, `76129010`, `76169920`, `76169930`, `76169951`), kèm `ghiChu: "nguon_sen: sen:..."`. Lọc sạch câu ví dụ/thông số hàng mẫu (`UltraTouch`, `16,35`, `0,175 mm`, *"Chúng có thể ở dạng..."*).
-  - **5 `PHAI_LA` từ chú giải phân nhóm** (`pn:760711:ct:1#1,2,4,5,7`): quy định các công đoạn xử lý bề mặt được phép ở phân nhóm `7607.11`.
-  - **Không trùng phạm vi M-74 / M-75:** không sinh bản ghi `NGUONG` (M-74) hay `CHI_LIET_KE` (M-75); dùng dải mã định danh `hs:<nut>:7601..7614` tránh va chạm ID.
-- **Đề xuất gửi QT về 7 nút tiêu đề 5 số (`TIEU_DE_5`, ngoài phạm vi `M-76`):**
-  - Theo `lib/ho-so-ma/ghep.js`, 7 nút tiêu đề 5 số của Chương 76 (`bieu:76042`, `bieu:76051`, `bieu:76052`, `bieu:76061`, `bieu:76069`, `bieu:76071`, `bieu:76169`) trỏ vào `data/ho-so-ma/nhom/*.jsonl` — thuộc phạm vi **M-73**, nằm ngoài `M-76.tep` trong `docs/mong/phan-cong.json`.
-  - Trong PR nháp này, công cụ giữ nguyên kỷ luật phạm vi (không ghi `data/ho-so-ma/nhom/`). Kết quả: 3 nhóm (`7604`, `7607`, `7616`) vẫn qua Cổng 3 nhờ có phân nhóm 6 số anh em cùng cấp; riêng **2 cặp thuần tiêu đề 5 số** (`76051/76052` ở nhóm `7605` và `76061/76069` ở nhóm `7606`) cần QT quyết định: để **M-73** làm, hay mở PR `[M-01]` cho phép `tach-68.mjs --gom-tieu-de-5` ghi thêm tiêu đề 5 số.
-- **Công cụ & kiểm chứng (tự động + ca ngược):**
+- **Khuôn áp dụng:** `ho-so-ma@1` mở rộng theo `#1981` (`phuDinh`, `thuatNgu`; [`docs/mong/khuon-ho-so-ma.md`](../khuon-ho-so-ma.md), [`docs/decisions/0006-ho-so-van-de-ma-8-so.md`](../../decisions/0006-ho-so-van-de-ma-8-so.md))
+- **Kho dữ liệu (`RUT_TU_LUAT`, khai trong `data/lop-kho.json` không đổi định dạng tệp):**
+  - `data/ho-so-ma/phan-nhom/76.jsonl`: **1 tệp cho cả Chương 76** (42 bản ghi phủ 35 phân nhóm 6 số + 6 tiêu đề 7 số + 1 định nghĩa chú giải phân nhóm `7607.11`).
+  - `data/ho-so-ma/dong/76.jsonl`: **1 tệp cho cả Chương 76** (84 bản ghi phủ đủ 74 dòng 8 số + 10 định nghĩa SEN).
+  - **Tổng: 2 tệp dữ liệu, 126 bản ghi**, **0 bản `VENH`**, chỉ rút từ `data/luat-goc` (`bieu:76*`, `sen:76*`, `pn:760711:ct:1`). Không có dữ liệu khách, tờ khai, `tb:`, `wco:`, `gir:`, hay lời AI tự nghĩ.
+- **Đã xử lý đủ 4 điểm QT trả trên #1995:**
+  1. `data/lop-kho.json`: giữ nguyên bản `main`, chỉ chèn thêm mục cho `data/ho-so-ma/phan-nhom/**` và `data/ho-so-ma/dong/**` (`+12/−0`), không định dạng lại tệp.
+  2. Gom 109 tệp lẻ thành **2 tệp theo chương** (`phan-nhom/76.jsonl` và `dong/76.jsonl`).
+  3. Chú giải phân nhóm `pn:760711:ct:1`: gộp thành **một `DINH_NGHIA` duy nhất** (`thuatNgu: "chưa gia công thêm"`, trích đủ câu dẫn và 4 mục `(1)–(4)`, không tách 5 `PHAI_LA`). Đã soát toàn Chương 76 (`pn:76*`, `sen:76*`, `chuong:76:cgpn:*`, `bieu:76*`): không có chú giải phân nhóm nào khác ở cấp 6–8 số (`chuong:76:cgpn:1–2` thuộc `chuong:76` của M-72 và đã có ngưỡng ở M-74).
+  4. Áp dụng khuôn `#1981`: toàn bộ **31 dòng *"Loại khác"*** ghi trường mảng `phuDinh` (giữ nguyên `voi`, bỏ `ghiChu: "phuDinh: ..."`); toàn bộ **11 `DINH_NGHIA`** (1 chú giải phân nhóm + 10 SEN) đều ghi `thuatNgu`.
+- **Phân bổ 126 bản ghi Chương 76:**
+  - **94 `TACH_ANH_EM`** (31 *"Loại khác"* có `phuDinh`).
+  - **21 `BO_QUA`** cho dòng con duy nhất lặp tên cấp cha (ADR-0006).
+  - **11 `DINH_NGHIA`** có `thuatNgu`: 1 từ `pn:760711:ct:1` + 10 từ `sen:76*` (đã lọc sạch câu ví dụ/thông số hàng mẫu `UltraTouch`, `16,35`, `0,175 mm`).
+- **Điểm cần QT / M-71 đồng bộ trước khi bỏ nháp:**
+  - `#1981` (khuôn `phuDinh`, `thuatNgu`) hiện chưa gộp vào `main`.
+  - `lib/ho-so-ma/ghep.js` (`tepCuaNut`, dòng 66–67) và `docs/mong/khuon-ho-so-ma.md` trên `main` hiện vẫn trả khoá 6/8 số thay vì mã chương `76` cho `phan-nhom/` và `dong/` (thuộc phạm vi M-71, ngoài `M-76.tep`).
+  - `cong.mjs` Cổng 4 ở `#1981` kiểm `trich` theo từng câu đơn `chuCau(x.cau)` và kiểm `thuatNgu` trên `nNguon.v + dan` (nên câu gộp `pn:760711:ct:1` có `thuatNgu: "chưa gia công thêm"` từ tên nút `bieu:760711` và trích 4 mục `(1)–(4)` cần M-71 chốt quy ước kiểm tương ứng).
+  - 7 nút tiêu đề 5 số (`bieu:76042, 76051, 76052, 76061, 76069, 76071, 76169`) trỏ về `nhom/*.jsonl` ngoài phạm vi `M-76` — chờ QT chốt giao M-73 hay mở `[M-01]`.
+- **Công cụ & kiểm chứng:**
   - [`scripts/ho-so-ma/tach-68.mjs`](../../../scripts/ho-so-ma/tach-68.mjs) (`--chuong 76 --tao|--kiem|--bao-cao [--gom-tieu-de-5]`)
-  - [`scripts/ho-so-ma/tach-68-test.mjs`](../../../scripts/ho-so-ma/tach-68-test.mjs) (20 ca xanh gồm 3 ca ngược: `TRUNG_TEN_ANH_EM`, `PHU_DINH_THIEU`, `VAN_TAY_LECH`; đã đăng ký trong `scripts/danh-sach-test.txt`).
-  - Xác minh toàn bộ cổng: `khuon.mjs` (0 lỗi), `cong.mjs` Cổng 4/5 (0 lỗi), Cổng 1 ĐỦ & Cổng 3 ANH EM xanh trên 35/35 phân nhóm 6 số, `test-ho-so-ma.mjs` (65/65), `test-lop-kho.mjs`, `kiem-pham-vi-the.mjs`, `kiem-pr-l1.mjs`.
+  - [`scripts/ho-so-ma/tach-68-test.mjs`](../../../scripts/ho-so-ma/tach-68-test.mjs) (24/24 ca xanh gồm 4 ca ngược `TRUNG_TEN_ANH_EM`, `PHU_DINH_THIEU`, `DINH_NGHIA_THIEU_THUAT_NGU`, `VAN_TAY_LECH`; đăng ký trong `scripts/danh-sach-test.txt`).
