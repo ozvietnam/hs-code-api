@@ -584,6 +584,45 @@ try {
     resFp.status === 0,
     resFp.stderr || resFp.stdout,
   );
+
+  // ── 8. Hồi quy các ca biên regex r3 (git -C ./repo, git -c k=v, .keys. cuối câu, và false-positives) ──
+  const negBoundaryR3 = copyNegRepo('boundary-r3');
+  fs.appendFileSync(
+    path.join(negBoundaryR3, '.agents', 'skills', 'kiem-tra-xuat-xu', 'SKILL.md'),
+    [
+      '',
+      'Run git -C ./repo push origin main now.',
+      'Run git -c http.sslVerify=false push origin main.',
+      'Archive .keys.',
+      '',
+    ].join('\n'),
+    'utf8',
+  );
+  const resNegBoundaryR3 = runCli(['--kiem', `--repo-dir=${negBoundaryR3}`, `--plugin-dir=${absentPlugin}`]);
+  const boundaryR3Errors = resNegBoundaryR3.stderr.split(/\r?\n/).filter((l) => l.includes('✗'));
+  kiem(
+    'hồi quy r3 #1: bắt đủ git -C ./repo push origin main, git -c http.sslVerify=false push origin main, và Archive .keys.',
+    resNegBoundaryR3.status !== 0 && boundaryR3Errors.length === 3,
+    { status: resNegBoundaryR3.status, count: boundaryR3Errors.length, stderr: resNegBoundaryR3.stderr },
+  );
+
+  const fpBoundaryR3 = copyNegRepo('fp-boundary-r3');
+  fs.appendFileSync(
+    path.join(fpBoundaryR3, '.agents', 'skills', 'kiem-tra-xuat-xu', 'SKILL.md'),
+    [
+      '',
+      'Run git -v. Check main.',
+      'Use `obj.keys.map(x => x)` and `Object.keys(foo)` for inspection.',
+      '',
+    ].join('\n'),
+    'utf8',
+  );
+  const resFpBoundaryR3 = runCli(['--kiem', `--repo-dir=${fpBoundaryR3}`, `--plugin-dir=${absentPlugin}`]);
+  kiem(
+    'hồi quy r3 #2: không báo nhầm Run git -v. Check main. và obj.keys.map(x => x) / Object.keys(foo)',
+    resFpBoundaryR3.status === 0,
+    resFpBoundaryR3.stderr || resFpBoundaryR3.stdout,
+  );
 } finally {
   fs.rmSync(tmpRoot, { recursive: true, force: true });
 }

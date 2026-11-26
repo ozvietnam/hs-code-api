@@ -16,9 +16,9 @@ export const SYNC_SUBDIRS = ['rules', 'agents', 'prompts', 'skills'];
 
 const RE_SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const RE_HS_TOKEN = /\bHS_[A-Z][A-Z0-9_]*[A-Z0-9]\b/g;
-const RE_PRIVATE_DATA = /(?:\boz-export\b|\boz-gold[A-Za-z0-9_.-]*|(?<![A-Za-z0-9_.-])\.keys(?=$|[\s`"'),:;/*])|(?:^|[\s`"'(,/=])\.env(?:\.(?!example\b)[A-Za-z0-9_.-]+)?(?=$|[\s`"'),:;*]))/i;
+const RE_PRIVATE_DATA = /(?:\boz-export\b|\boz-gold[A-Za-z0-9_.-]*|(?<![A-Za-z0-9_.-])\.keys(?=$|[\s`"'),:;/*!?]|\.(?=$|\s))|(?:^|[\s`"'(,/=])\.env(?:\.(?!example\b)[A-Za-z0-9_.-]+)?(?=$|[\s`"'),:;*]))/i;
 const RE_PRIVATE_GUARD = /(?:never|forbidden|prohibit|avoid|keep\b[^\n;]*\bout of git|cấm|tuyệt đối không|không bao giờ|không được|không đọc|không chạm|không đụng|không sửa|không commit|không push|không chạy|không lộ|không lọt|không dùng|không sử dụng|không nhắc|bảo vệ|tránh|chống rò rỉ|zero\b|scan[^\n]*trace|withPrivateData|forbiddenFiles)/i;
-const RE_DANGEROUS_GIT = /(?:\bgh\s+pr\s+merge\b|\bgit(?:\s+-[^\s]+(?:\s+(?!-|\bpush\b)(?:"[^"\n]*"|'[^'\n]*'|[^\s;.`]+))?)*\s+push\b[^\n.;]*\bmain\b|\bpush\s+(?:thẳng|trực tiếp|directly)[^\n.;]*\bmain\b)/i;
+const RE_DANGEROUS_GIT = /(?:\bgh\s+pr\s+merge\b|\bgit(?:\s+-[^\s]+(?:\s+(?!-|\bpush\b)(?:"[^"\n]*"|'[^'\n]*'|(?:[^\s;.`]|\.(?=[^\s;.`]))+))?)*\s+push\b[^\n.;]*\bmain\b|\bpush\s+(?:thẳng|trực tiếp|directly)[^\n.;]*\bmain\b)/i;
 const RE_DANGEROUS_GUARD = /(?:never|forbidden|prohibit|avoid|cấm|tuyệt đối không|không tự|không bao giờ|không được|không chạy|do not|don't|chặn|chống|zero\b|never self-merge)/i;
 
 // ── CLI Parsing ─────────────────────────────────────────────────────────────────────────────────
