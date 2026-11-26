@@ -759,13 +759,13 @@
       "duongDan": "data/do-thi/chi-muc-nghia.bin",
       "lop": "KY_THUAT",
       "aiDoc": ["lib/embed-pool.js"],
-      "moTa": "Chỉ mục nhị phân embedding tìm nhanh đường vào."
+      "moTa": "Chỉ mục nhị phân embedding tìm nhanh đường vào. Giữ trong kho (M-37b #2023: đường chọn mã của khách — embed-pool/tim-truoc nạp; không thuộc thẻ M-37b)."
     },
     {
       "duongDan": "data/do-thi/chi-muc-nghia.meta.json",
       "lop": "KY_THUAT",
       "aiDoc": ["lib/embed-pool.js"],
-      "moTa": "Siêu dữ liệu chỉ mục embedding nghĩa."
+      "moTa": "Siêu dữ liệu chỉ mục embedding nghĩa. Giữ trong kho (M-37b #2023)."
     },
     {
       "duongDan": "data/do-thi/soat-canh-hai-ve/**",
@@ -828,10 +828,46 @@
       "moTa": "Hồ sơ ranh giới phân nhóm 6 số duyệt theo khuôn ranh-gioi@1."
     },
     {
+      "duongDan": "data/ho-so-ma/phan/**",
+      "lop": "RUT_TU_LUAT",
+      "aiDoc": ["lib/ho-so-ma/ghep.js", "scripts/ho-so-ma/cong.mjs", "scripts/ho-so-ma/khuon.mjs", "scripts/ho-so-ma/tach-chung.mjs"],
+      "moTa": "Hồ sơ vấn đề cấp Phần (M-72, ho-so-ma@1): mỗi vấn đề một điều kiện đơn trích nguyên văn câu data/luat-goc (cổng 4), vân tay câu (cổng 5); hai phiếu mô hình chỉ đề xuất, trangThai KHOP/LECH_PHIEU. Không dữ liệu khách, không tiền lệ."
+    },
+    {
+      "duongDan": "data/ho-so-ma/chuong/**",
+      "lop": "RUT_TU_LUAT",
+      "aiDoc": ["lib/ho-so-ma/ghep.js", "scripts/ho-so-ma/cong.mjs", "scripts/ho-so-ma/khuon.mjs", "scripts/ho-so-ma/tach-chung.mjs"],
+      "moTa": "Hồ sơ vấn đề cấp Chương / Phân chương (M-72, ho-so-ma@1): mỗi vấn đề một điều kiện đơn trích nguyên văn câu data/luat-goc (cổng 4), vân tay câu (cổng 5); hai phiếu mô hình chỉ đề xuất, trangThai KHOP/LECH_PHIEU. Không dữ liệu khách, không tiền lệ."
+    },
+    {
+      "duongDan": "data/ho-so-ma/nhom/**",
+      "lop": "RUT_TU_LUAT",
+      "aiDoc": ["lib/ho-so-ma/ghep.js", "scripts/ho-so-ma/cong.mjs", "scripts/ho-so-ma/khuon.mjs", "scripts/ho-so-ma/tach-chung.mjs"],
+      "moTa": "Hồ sơ vấn đề cấp nhóm 4 số (M-73, ho-so-ma@1): mỗi vấn đề một điều kiện đơn trích nguyên văn câu data/luat-goc (cổng 4), vân tay câu (cổng 5); hai phiếu mô hình chỉ đề xuất, trangThai KHOP/LECH_PHIEU. Không dữ liệu khách, không tiền lệ."
+    },
+    {
+      "duongDan": "data/ho-so-ma/phan-nhom/**",
+      "lop": "RUT_TU_LUAT",
+      "aiDoc": ["lib/ho-so-ma/ghep.js", "scripts/ho-so-ma/cong.mjs", "scripts/ho-so-ma/khuon.mjs", "scripts/ho-so-ma/tach-68.mjs"],
+      "moTa": "Hồ sơ vấn đề cấp phân nhóm 6 số và tiêu đề 7 số (tách anh em, Loại khác phủ định, chú giải phân nhóm — M-76, ADR-0006)."
+    },
+    {
+      "duongDan": "data/ho-so-ma/dong/**",
+      "lop": "RUT_TU_LUAT",
+      "aiDoc": ["lib/ho-so-ma/ghep.js", "scripts/ho-so-ma/cong.mjs", "scripts/ho-so-ma/khuon.mjs", "scripts/ho-so-ma/tach-68.mjs"],
+      "moTa": "Hồ sơ vấn đề cấp dòng 8 số (tách anh em, Loại khác phủ định, SEN — M-76, ADR-0006)."
+    },
+    {
       "duongDan": "data/ho-so-ma/nguong/**",
       "lop": "RUT_TU_LUAT",
-      "aiDoc": ["lib/ho-so-ma/ghep.js", "scripts/ho-so-ma/cong.mjs", "scripts/ho-so-ma/khuon.mjs", "scripts/ho-so-ma/nguong.mjs"],
+      "aiDoc": ["lib/ho-so-ma/ghep.js", "scripts/ho-so-ma/cong.mjs", "scripts/ho-so-ma/khuon.mjs", "scripts/ho-so-ma/nguong.mjs", "scripts/ho-so-ma/nguong-rut.mjs"],
       "moTa": "Ngưỡng số và phân dải anh em trong hồ sơ vấn đề mã HS (M-74, ADR-0006)."
+    },
+    {
+      "duongDan": "data/ho-so-ma/liet-ke/**",
+      "lop": "RUT_TU_LUAT",
+      "aiDoc": ["lib/ho-so-ma/ghep.js", "scripts/ho-so-ma/cong.mjs", "scripts/ho-so-ma/khuon.mjs", "scripts/ho-so-ma/liet-ke.mjs"],
+      "moTa": "Vấn đề chỉ liệt kê được (GIR 2a/3b, bộ phận, đa chức năng, chủ yếu dùng cho) trong hồ sơ vấn đề mã HS (M-75, ADR-0006)."
     },
     {
       "duongDan": "data/hs/customs-danh-muc-2026-11-13.json",
@@ -1010,10 +1046,10 @@
     },
     {
       "duongDan": "data/luat-goc/chi-muc/**",
-      "lop": "KY_THUAT",
+      "lop": "RUT_TU_LUAT",
       "aiDoc": [],
       "tuyChon": true,
-      "moTa": "Chỉ mục nghĩa/vector tìm kiếm trên nút luật (lớp KY_THUAT; M-37, chờ gộp)."
+      "moTa": "Chỉ mục nghĩa (vec.bin int8, id.json, meta.json) dựng từ câu nguyên văn của kho luật gốc (phan, chuong, nhom, phan-nhom, sen, tên biểu); mỗi mục là id câu thật, meta ghi sha256 kho nguồn; không tiền lệ, không BO_TRO (M-37). M-37b #2023: sản phẩm dựng, không lưu kho — npm run build:chi-muc-luat; thiếu tệp → timNghia trả THIEU êm."
     },
     {
       "duongDan": "data/oz-export/README.md",
