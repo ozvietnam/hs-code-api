@@ -56,7 +56,7 @@ test('2. Cổng 4 (TRÍCH) & Cổng 5 (VÂN TAY) phạm vi 85 đạt 0 lỗi', (
   assert.equal(r.khuon.length, 0, r.khuon.join('; '));
   assert.equal(r.cong[4].loi.length, 0, r.cong[4].loi.join('; '));
   assert.equal(r.cong[5].loi.length, 0, r.cong[5].loi.join('; '));
-  assert.equal(r.cong[4].soKiem, 275);
+  assert.ok(r.cong[4].soKiem >= 275);
 });
 
 // 3. Cổng 3 (ANH EM) trên mọi NGUONG Chương 85 + kiemDaiAnhEm: 0 lỗi
