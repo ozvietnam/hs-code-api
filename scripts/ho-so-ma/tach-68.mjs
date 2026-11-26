@@ -4,11 +4,11 @@
 // Nguyên tắc (ADR-0006, #1968, khuôn #1981):
 // - Chỉ từ luật gốc (data/luat-goc): tên dòng biểu thuế (bieu), chú giải phân nhóm (phan-nhom), chú giải SEN (sen).
 // - CẤM: dữ liệu khách, tờ khai, tiền lệ (tb:), ý kiến WCO (wco:), lời AI tự nghĩ.
-// - Một tệp mỗi chương: `data/ho-so-ma/phan-nhom/<CC>.jsonl` và `data/ho-so-ma/dong/<CC>.jsonl` (như nguong/<CC>.jsonl).
+// - Mỗi mã một tệp theo khuôn M-71 (`lib/ho-so-ma/ghep.js`): `data/ho-so-ma/phan-nhom/<6 số>.jsonl` (gồm cả tiêu đề 7 số) và `data/ho-so-ma/dong/<8 số>.jsonl`.
 // - Dòng "Loại khác": máy sinh 100% tất định, ghi `phuDinh` (mảng anh em có tên bị phủ định) và giữ `voi` (toàn bộ anh em cùng cấp).
-// - Mọi bản ghi `DINH_NGHIA` (SEN và chú giải phân nhóm kiểu giải nghĩa) đều ghi `thuatNgu` theo khuôn #1981.
+// - Mọi bản ghi `DINH_NGHIA` (SEN và chú giải phân nhóm kiểu giải nghĩa) đều ghi `thuatNgu` nguyên chữ trong nút nguồn theo khuôn #1981.
 // - Không chép lại ngưỡng số M-74 (`NGUONG`) hay vấn đề chỉ liệt kê M-75 (`CHI_LIET_KE`); không lấy thông số hàng ví dụ/mẫu trong SEN.
-// - Mặc định chỉ ghi vào `data/ho-so-ma/phan-nhom/<CC>.jsonl` và `data/ho-so-ma/dong/<CC>.jsonl` (đúng phạm vi M-76 trong `docs/mong/phan-cong.json`);
+// - Mặc định chỉ ghi vào `data/ho-so-ma/phan-nhom/<6 số>.jsonl` và `data/ho-so-ma/dong/<8 số>.jsonl` (đúng phạm vi M-76 trong `docs/mong/phan-cong.json`);
 //   truyền `--gom-tieu-de-5` nếu QT mở [M-01] cho phép ghi tiêu đề 5 số vào `nhom/`.
 //
 // Dùng:
@@ -20,7 +20,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
-import { napLuatCong, vanTay, chuanSo } from './cong.mjs';
+import { napLuatCong, vanTay, chuanSo, chayCong } from './cong.mjs';
 import { kiemBanGhi } from './khuon.mjs';
 
 const require = createRequire(import.meta.url);
@@ -28,7 +28,6 @@ const G = require('../../lib/ho-so-ma/ghep.js');
 
 const RE_LOAI_KHAC = /^(?:loại\s+khác|khác)$/iu;
 const RE_CAU_VI_DU_SEN = /(?:tấm\s+ultratouch|trọng\s+lượng\s+\d|thuộc\s+tính\s+nhiệt\s*:|chúng\s+có\s+thể\s+ở\s+dạng|ví\s+dụ\s+như\s+mẫu)/iu;
-const RE_ANH_EM = /^(?:chuong:\d{2}(?::pc:[IVX]+)?|bieu:\d{4,8}(?::td\d+)*)$/;
 
 /** Bỏ dấu gạch đầu dòng biểu thuế ("- - - ") và dấu ":" cuối, giữ nguyên văn chữ bên trong. */
 export function boGachTen(ten) {
@@ -70,7 +69,7 @@ function catTheoTu(s, max) {
   return (idx > Math.floor(max * 0.5) ? cut.slice(0, idx) : cut).trim();
 }
 
-/** Rút 1–3 cụm dữ kiện ngắn nguyên văn từ đoạn trích (đảm bảo luôn khớp câu luật, không lệch ngoặc). */
+/** Rút 1–3 cụm dữ kiện ngắn nguyên văn từ đoạn trích (đảm bảo luôn khớp Cổng 4, không lệch ngoặc). */
 export function rutDuKienTuTrich(trich, chuCau) {
   const s = String(trich || '').trim();
   const csCau = chuanSo(chuCau).toLowerCase();
@@ -120,7 +119,7 @@ function laDongTieuDeSen(dong) {
   const t = dong.trim();
   if (!t) return true;
   if (/^\d{4}\.\d{2}\.\d{2}$/.test(t)) return true;
-  const boDonVi = t.replace(/\b\d+(?:[.,]\d+)?\s*(?:mm|cm|dm|km|m|kg|g|mg|ml|l|kw|w|v|a|hz|%)\b/giu, '');
+  const boDonVi = t.replace(/\b\d+(?:[.,]\d+)?\s*(?:mm|cm|dm|km|m|kg|g|mg|ml|l|kw|w|v|a|hz|%|cc)\b/giu, '');
   return !/[a-zàáảãạăắằẳẵặâấầẩẫậèéẻẽẹêếềểễệìíỉĩịòóỏõọôốồổỗộơớờởỡợùúủũụưứừửữựỳýỷỹỵđ]/u.test(boDonVi);
 }
 
@@ -141,28 +140,35 @@ export function catDinhNghiaSen(chuCau) {
   return s;
 }
 
-/** Rút thuật ngữ được định nghĩa (nguyên chữ trong nút SEN) để ghi trường `thuatNgu` (khuôn #1981). */
-export function rutThuatNguSen(chuCau, dinhNghia, toanVanNut) {
+/** Rút thuật ngữ được định nghĩa (nguyên chữ trong nút luật nguồn, khớp Cổng 4 cong.mjs). */
+export function rutThuatNguTuNut(chuCau, dinhNghia, toanVanNut, fallback = '') {
   const nen = chuanSo(toanVanNut || chuCau || '').toLowerCase();
   const kiem = (s) => {
     const clean = String(s || '').replace(/\s+/g, ' ').trim();
     return clean.length >= 2 && clean.length <= 80 && nen.includes(chuanSo(clean).toLowerCase()) ? clean : null;
   };
 
-  // 1. Mẫu "Thuật ngữ \"...\"" hoặc "Khái niệm \"...\""
-  const mQuote = /(?:thuật\s+ngữ|khái\s+niệm)\s*[""“]([^""”]{2,60})[""”]/iu.exec(dinhNghia || '');
+  // 1. Mẫu "Thuật ngữ \"...\"" hoặc "Khái niệm \"...\"" hoặc "được coi là \"...\""
+  const mQuote = /(?:thuật\s+ngữ|khái\s+niệm|cụm\s+từ|từ)\s*[""“']([^""”']{2,60})[""”']/iu.exec(dinhNghia || toanVanNut || '');
   if (mQuote && kiem(mQuote[1])) return mQuote[1].trim();
 
-  // 2. Chủ ngữ ngay trước "là một loại / là dạng / là các / dùng để chỉ / bao gồm" (loại bỏ "Đây" / "Loại này" / "Các đồ chứa")
-  const mSubj = /^([^.,:;]{3,60}?)\s+(?:là\s+(?:một\s+loại|dạng|các)|dùng\s+để\s+chỉ|của\s+bể\s+chứa)/iu.exec(dinhNghia || '');
+  // 2. Nếu fallback (ví dụ cụm từ trong tên phân nhóm như "chưa gia công thêm") có nguyên chữ trong nút nguồn
+  if (fallback && kiem(fallback)) return kiem(fallback);
+
+  // 3. Chủ ngữ ngay trước "là một loại / là dạng / là các / dùng để chỉ / bao gồm"
+  const mSubj = /^([^.,:;]{3,60}?)\s+(?:là\s+(?:một\s+loại|dạng|các|một\s+thiết\s+bị|thiết\s+bị|hệ\s+thống|sản\s+phẩm|loại)|dùng\s+để\s+chỉ|của\s+bể\s+chứa)/iu.exec(dinhNghia || '');
   if (mSubj) {
     const cand = mSubj[1].split(/\s+hoặc\s+/iu)[0].trim();
-    if (!/^(?:đây|loại\s+này|các\s+sản\s+phẩm|các\s+đồ\s+chứa)$/iu.test(cand) && kiem(cand)) {
+    if (!/^(?:đây|loại\s+này|các\s+sản\s+phẩm|các\s+đồ\s+chứa|nhóm\s+này|phân\s+nhóm\s+này|sản\s+phẩm\s+này)$/iu.test(cand) && kiem(cand)) {
       return cand;
     }
   }
 
-  // 3. Lấy cụm chính từ dòng tiêu đề SEN (nguyên chữ trong nút SEN, bỏ mã 8 số đầu)
+  // 4. Cụm "gia công hoặc xử lý bề mặt" / "gia công thêm" / "xử lý bề mặt" (gặp ở chú giải phân nhóm như 7607.11)
+  const mGiaCong = /(gia\s+công\s+hoặc\s+xử\s+lý\s+bề\s+mặt|chưa\s+gia\s+công\s+thêm|gia\s+công\s+bề\s+mặt|xử\s+lý\s+bề\s+mặt)/iu.exec(toanVanNut || dinhNghia || '');
+  if (mGiaCong && kiem(mGiaCong[1])) return mGiaCong[1].trim();
+
+  // 5. Lấy cụm chính từ dòng tiêu đề SEN (nguyên chữ trong nút SEN, bỏ mã 8 số đầu)
   const dongs = String(chuCau || '').split(/\r?\n/).map((x) => x.trim()).filter(Boolean);
   const tieuDe = dongs.find((d) => !/^\d{4}\.\d{2}\.\d{2}$/.test(d) && laDongTieuDeSen(d)) || '';
   if (tieuDe) {
@@ -176,18 +182,14 @@ export function rutThuatNguSen(chuCau, dinhNghia, toanVanNut) {
     if (kiem(phan)) return phan;
   }
 
-  // 4. Fallback: cụm đầu câu định nghĩa
-  return kiem(catTheoTu(dinhNghia || chuCau || '', 50)) || 'định nghĩa SEN';
-}
-
-/** Rút thuật ngữ được định nghĩa cho chú giải phân nhóm dạng cho phép xử lý/gia công (vd pn:760711:ct:1 → "chưa gia công thêm"). */
-export function rutThuatNguPhanNhom(tenNut, toanVanPn) {
-  const ten = boGachTen(tenNut);
-  const mChua = /(chưa\s+gia\s+công\s+thêm|chưa\s+được\s+gia\s+công\s+thêm)/iu.exec(ten);
-  if (mChua) return mChua[1].toLowerCase();
-  const mQuote = /(?:thuật\s+ngữ|khái\s+niệm)\s*[""“]([^""”]{2,60})[""”]/iu.exec(toanVanPn || '');
-  if (mQuote) return mQuote[1].trim();
-  return ten.length <= 60 ? ten : catTheoTu(ten, 60);
+  // 6. Fallback cuối: cụm đầu câu định nghĩa (luôn đảm bảo có nguyên chữ trong nút nguồn)
+  const sachDau = String(dinhNghia || chuCau || '')
+    .replace(/^Phân\s+nhóm\s+\d{4}\s*\d{2}\s*/iu, '')
+    .replace(/^\d{4}\.\d{2}\.\d{2}\s*/u, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+  const cum = sachDau.split(/[,.;:]/)[0].trim();
+  return kiem(cum) || kiem(catTheoTu(sachDau, 50)) || kiem(catTheoTu(toanVanNut || '', 40));
 }
 
 /** Dựng bản ghi cho một nút con cùng cấp (dùng chung cho cả kho thật và bài kiểm đơn vị). */
@@ -269,7 +271,7 @@ export function taoBanGhiAnhEm({
   };
 }
 
-/** Dựng một bản ghi DINH_NGHIA gộp cho chú giải phân nhóm kiểu giải nghĩa công đoạn được phép (như pn:760711:ct:1). */
+/** Dựng một bản ghi DINH_NGHIA gộp cho chú giải phân nhóm (pn:<6so>:ct:N), không chẻ thành nhiều PHAI_LA. */
 export function taoBanGhiDinhNghiaPhanNhom({ nut, tenNut, dsCauPn, L, soThuTu = 7610 }) {
   const cau1 = dsCauPn[0];
   const chu1 = L.chuCau(cau1);
@@ -277,25 +279,30 @@ export function taoBanGhiDinhNghiaPhanNhom({ nut, tenNut, dsCauPn, L, soThuTu = 
   if (!chu1 || !nPn) return null;
 
   const maNgan = nut.replace(/^bieu:/, '');
-  const thuatNgu = rutThuatNguPhanNhom(tenNut, nPn.v);
+  const tenSach = boGachTen(tenNut);
   const danSach = chu1.replace(/^Phân\s+nhóm\s+\d{4}\s*\d{2}\s*/iu, '').replace(/\s+/g, ' ').trim();
+  const trich = danSach && chuanSo(chu1).includes(chuanSo(danSach)) ? danSach : chu1.replace(/\s+/g, ' ').trim();
+  const thuatNgu = rutThuatNguTuNut(chu1, trich, nPn.v, tenSach);
+  if (!thuatNgu) return null;
+
   const cacMuc = dsCauPn
     .slice(1)
-    .map((cid) => (L.chuCau(cid) || '').replace(/\s+/g, ' ').trim())
-    .filter((s) => /^\(\d+\)\s/.test(s));
+    .map((cid) => ({ cid, text: (L.chuCau(cid) || '').replace(/\s+/g, ' ').trim() }))
+    .filter((m) => /^\(\d+\)\s/.test(m.text));
 
-  const trich = [danSach, ...cacMuc].join(' ').trim();
-  const tomTatMuc = cacMuc
-    .map((m) => {
-      const ngan = m.split(/[,.;]|\.\.\./)[0].trim();
-      return ngan;
-    })
-    .join('; ');
+  const tomTatMuc = cacMuc.map((m) => m.text.split(/[,.;]|\.\.\./)[0].trim()).join('; ');
+  const mChua = /(chưa\s+gia\s+công\s+thêm|chưa\s+được\s+gia\s+công\s+thêm)/iu.exec(tenSach);
+  const nhanGiaiNghia = mChua ? mChua[1].toLowerCase() : thuatNgu;
+
   const dieuKien = catGon(
     cacMuc.length
-      ? `Phân nhóm ${maNgan} ("${thuatNgu}"): sản phẩm vẫn thuộc phân nhóm nếu chỉ qua các xử lý bề mặt/gia công liệt kê (${tomTatMuc})`
-      : `Phân nhóm ${maNgan} ("${thuatNgu}"): ${danSach}`
+      ? `Phân nhóm ${maNgan} ("${nhanGiaiNghia}"): sản phẩm vẫn thuộc phân nhóm nếu chỉ qua các xử lý liệt kê (${tomTatMuc})`
+      : `Phân nhóm ${maNgan} ("${nhanGiaiNghia}"): ${trich}`
   );
+
+  const ghiChu = cacMuc.length
+    ? `Gộp câu dẫn ${cau1} và ${cacMuc.length} mục liệt kê (${cacMuc.map((m) => `#${m.cid.split('#')[1]}`).join(', ')}) trong cùng nút ${cau1.split('#')[0]}${mChua ? ` — giải nghĩa cụm "${mChua[1].toLowerCase()}"` : ''}`
+    : undefined;
 
   return {
     id: `hs:${nut}:${soThuTu}`,
@@ -305,47 +312,16 @@ export function taoBanGhiDinhNghiaPhanNhom({ nut, tenNut, dsCauPn, L, soThuTu = 
     dieuKien,
     trich,
     cau: cau1,
-    duKien: rutDuKienTuTrich(danSach, chu1),
+    duKien: rutDuKienTuTrich(trich, chu1),
     lop: nPn.lop,
     nguon: nPn.nguon,
     van: vanTay(chu1),
     trangThai: 'KHOP',
-    ...(cacMuc.length ? { ghiChu: `Gộp câu dẫn ${cau1} và ${cacMuc.length} mục liệt kê trong cùng nút ${cau1.split('#')[0]}` } : {}),
+    ...(ghiChu ? { ghiChu } : {}),
   };
 }
 
-/**
- * Kiểm bản ghi theo khuôn ho-so-ma@1 mở rộng (#1981: hỗ trợ `phuDinh` và `thuatNgu`).
- * Hoạt động nhất quán cả trước và sau khi #1981 gộp vào main.
- */
-export function kiemBanGhiKhuonMoi(x) {
-  // Kiểm các trường mới của #1981
-  const loi = [];
-  const o = x?.id || '(thiếu id)';
-  if (x && typeof x === 'object' && !Array.isArray(x)) {
-    if (x.phuDinh !== undefined) {
-      if (!['TACH_ANH_EM', 'PHAI_LA', 'NGUONG'].includes(x.loai)) {
-        loi.push(`${o}: chỉ TACH_ANH_EM / PHAI_LA / NGUONG (dòng "Loại khác") mang phuDinh`);
-      } else if (!Array.isArray(x.phuDinh) || !x.phuDinh.length || !x.phuDinh.every((d) => RE_ANH_EM.test(d))) {
-        loi.push(`${o}: phuDinh phải là mảng id nút anh em bị phủ định`);
-      }
-    }
-    if (x.thuatNgu !== undefined && x.loai !== 'DINH_NGHIA') {
-      loi.push(`${o}: chỉ DINH_NGHIA mang thuatNgu`);
-    }
-    if (x.loai === 'DINH_NGHIA' && (typeof x.thuatNgu !== 'string' || !x.thuatNgu.trim())) {
-      loi.push(`${o}: DINH_NGHIA phải có thuatNgu (thuật ngữ được định nghĩa, nguyên chữ luật)`);
-    }
-  }
-  // Chạy kiemBanGhi gốc, bỏ qua lỗi "trường lạ phuDinh/thuatNgu" nếu khuon.mjs trên main chưa gộp #1981
-  for (const e of kiemBanGhi(x)) {
-    if (/trường lạ "(?:phuDinh|thuatNgu)"/.test(e)) continue;
-    loi.push(e);
-  }
-  return loi;
-}
-
-/** Dựng toàn bộ bản ghi M-76 (cấp phân nhóm 6 số, tiêu đề 7 số, dòng 8 số; 1 tệp mỗi chương) cho một Chương. */
+/** Dựng toàn bộ bản ghi M-76 (cấp phân nhóm 6 số, tiêu đề 7 số, dòng 8 số; mỗi mã 1 tệp theo ghep.js) cho một Chương. */
 export function dungHoSoChuong68(chuong, { luat = G.LUAT_MAC_DINH, gomTieuDe5 = false, L = null } = {}) {
   const cc = String(chuong || '').padStart(2, '0');
   if (!/^\d{2}$/.test(cc)) throw new Error(`Mã chương không hợp lệ: "${chuong}"`);
@@ -356,7 +332,7 @@ export function dungHoSoChuong68(chuong, { luat = G.LUAT_MAC_DINH, gomTieuDe5 = 
     .filter((n) => reNut.test(n.id))
     .sort((a, b) => a.id.localeCompare(b.id));
 
-  const theoTep = new Map(); // "phan-nhom/76.jsonl" | "dong/76.jsonl" -> records[]
+  const theoTep = new Map(); // "phan-nhom/<6so>.jsonl" | "dong/<8so>.jsonl" -> records[]
   const tieuDe5BoQua = [];
   const thongKe = {
     chuong: cc,
@@ -372,19 +348,17 @@ export function dungHoSoChuong68(chuong, { luat = G.LUAT_MAC_DINH, gomTieuDe5 = 
 
   const them = (nutId, banGhi) => {
     const thuMuc = G.thuMucCuaNut(nutId);
-    if (!thuMuc) throw new Error(`Không xác định được thư mục cho nút ${nutId}`);
-    // Quy ước mới từ QT (#1995): 1 tệp mỗi chương cho phan-nhom/ và dong/ (như nguong/<CC>.jsonl, liet-ke/<CC>.jsonl)
-    const khoa = thuMuc === 'phan-nhom' || thuMuc === 'dong' ? cc : G.tepCuaNut(nutId, thuMuc);
-    if (!khoa) throw new Error(`Không xác định được tệp cho nút ${nutId}`);
+    const khoa = G.tepCuaNut(nutId, thuMuc);
+    if (!thuMuc || !khoa) throw new Error(`Không xác định được tệp cho nút ${nutId}`);
     const tep = `${thuMuc}/${khoa}.jsonl`;
     if (!theoTep.has(tep)) theoTep.set(tep, []);
     theoTep.get(tep).push(banGhi);
     thongKe.tongBanGhi += 1;
   };
 
-  // Bản đồ câu SEN & chú giải phân nhóm theo mã nút biểu
+  // Bản đồ câu SEN & chú giải phân nhóm theo mã nút biểu (nhóm theo nút gốc pn:<6so>:ct:<k>)
   const senTheoMa = new Map();
-  const pnTheoMa = new Map();
+  const pnTheoMa = new Map(); // bieu:<6so> -> Map<nutPnId, cauId[]>
   for (const cauId of L.cau.keys()) {
     const ms = /^sen:(\d{8}):\d+#(\d+)$/.exec(cauId);
     if (ms && ms[1].startsWith(cc)) {
@@ -392,11 +366,13 @@ export function dungHoSoChuong68(chuong, { luat = G.LUAT_MAC_DINH, gomTieuDe5 = 
       if (!senTheoMa.has(k)) senTheoMa.set(k, []);
       senTheoMa.get(k).push(cauId);
     }
-    const mp = /^pn:(\d{6}):ct:\d+#(\d+)$/.exec(cauId);
-    if (mp && mp[1].startsWith(cc)) {
-      const k = `bieu:${mp[1]}`;
-      if (!pnTheoMa.has(k)) pnTheoMa.set(k, []);
-      pnTheoMa.get(k).push(cauId);
+    const mp = /^(pn:(\d{6}):ct:\d+)#(\d+)$/.exec(cauId);
+    if (mp && mp[2].startsWith(cc)) {
+      const k = `bieu:${mp[2]}`;
+      if (!pnTheoMa.has(k)) pnTheoMa.set(k, new Map());
+      const nhom = pnTheoMa.get(k);
+      if (!nhom.has(mp[1])) nhom.set(mp[1], []);
+      nhom.get(mp[1]).push(cauId);
     }
   }
 
@@ -455,33 +431,40 @@ export function dungHoSoChuong68(chuong, { luat = G.LUAT_MAC_DINH, gomTieuDe5 = 
       if (chu1 && nSen && !laCauViDuSen(chu1)) {
         const dinhNghia = catDinhNghiaSen(chu1);
         const trich = chuanSo(chu1).includes(chuanSo(dinhNghia)) ? dinhNghia : chu1.trim();
-        const thuatNgu = rutThuatNguSen(chu1, trich, nSen.v);
-        them(n.id, {
-          id: `hs:${n.id}:7602`,
-          nut: n.id,
-          loai: 'DINH_NGHIA',
-          thuatNgu,
-          dieuKien: catGon(`Chú giải SEN ${n.id.replace(/^bieu:/, '')} ("${thuatNgu}"): ${trich}`),
-          trich,
-          cau: cau1,
-          duKien: rutDuKienTuTrich(trich, chu1),
-          lop: nSen.lop,
-          nguon: nSen.nguon,
-          van: vanTay(chu1),
-          trangThai: 'KHOP',
-          ghiChu: `nguon_sen: ${cau1.split('#')[0]}`,
-        });
-        thongKe.senVanDe += 1;
+        const thuatNgu = rutThuatNguTuNut(chu1, trich, nSen.v);
+        if (thuatNgu) {
+          them(n.id, {
+            id: `hs:${n.id}:7602`,
+            nut: n.id,
+            loai: 'DINH_NGHIA',
+            thuatNgu,
+            dieuKien: catGon(`Chú giải SEN ${n.id.replace(/^bieu:/, '')} ("${thuatNgu}"): ${trich}`),
+            trich,
+            cau: cau1,
+            duKien: rutDuKienTuTrich(trich, chu1),
+            lop: nSen.lop,
+            nguon: nSen.nguon,
+            van: vanTay(chu1),
+            trangThai: 'KHOP',
+            ghiChu: `nguon_sen: ${cau1.split('#')[0]}`,
+          });
+          thongKe.senVanDe += 1;
+        }
       }
     }
 
-    // Bổ sung chú giải phân nhóm (pn:<6so>:ct:1): gộp thành MỘT DINH_NGHIA kèm thuatNgu (không tách thành nhiều PHAI_LA)
-    const dsPn = (pnTheoMa.get(n.id) || []).sort((a, b) => Number(a.split('#')[1]) - Number(b.split('#')[1]));
-    if (dsPn.length) {
-      const bgPn = taoBanGhiDinhNghiaPhanNhom({ nut: n.id, tenNut: n.ten, dsCauPn: dsPn, L, soThuTu: 7610 });
-      if (bgPn) {
-        them(n.id, bgPn);
-        thongKe.phanNhomDinhNghia += 1;
+    // Bổ sung chú giải phân nhóm (pn:<6so>:ct:N): mỗi nút chú giải gộp thành MỘT DINH_NGHIA kèm thuatNgu
+    const nhomPn = pnTheoMa.get(n.id);
+    if (nhomPn) {
+      let seq = 7610;
+      for (const nutPnId of [...nhomPn.keys()].sort()) {
+        const dsCauPn = nhomPn.get(nutPnId).sort((a, b) => Number(a.split('#')[1]) - Number(b.split('#')[1]));
+        const bgPn = taoBanGhiDinhNghiaPhanNhom({ nut: n.id, tenNut: n.ten, dsCauPn, L, soThuTu: seq });
+        if (bgPn) {
+          them(n.id, bgPn);
+          seq += 1;
+          thongKe.phanNhomDinhNghia += 1;
+        }
       }
     }
   }
@@ -497,13 +480,14 @@ export function kiemPhuDinhChuong(theoTep, L) {
       if (r.loai !== 'TACH_ANH_EM') continue;
       const ten = L.cay.theoId.get(r.nut)?.ten || '';
       if (!laLoaiKhac(ten)) continue;
+      const anhEmCoTen = G.anhEmCua(r.nut, L.cay)
+        .filter((ae) => !laLoaiKhac(L.cay.theoId.get(ae)?.ten || ''))
+        .sort();
+      if (!anhEmCoTen.length) continue;
       if (!Array.isArray(r.phuDinh) || r.phuDinh.length === 0) {
         loi.push(`${tep}: ${r.id} (Loại khác) thiếu mảng phuDinh`);
         continue;
       }
-      const anhEmCoTen = G.anhEmCua(r.nut, L.cay)
-        .filter((ae) => !laLoaiKhac(L.cay.theoId.get(ae)?.ten || ''))
-        .sort();
       if (r.phuDinh.includes(r.nut)) {
         loi.push(`${tep}: ${r.id} tự đưa chính mình vào phuDinh`);
       }
@@ -518,59 +502,7 @@ export function kiemPhuDinhChuong(theoTep, L) {
   return loi;
 }
 
-/** Kiểm trích dẫn, nguồn, lớp, dữ kiện, thuật ngữ và vân tay sha256 cho toàn bộ bản ghi đã sinh (tương thích khuôn #1981). */
-export function kiemTrichVaVanTay(theoTep, L) {
-  const loi = [];
-  const daId = new Set();
-  for (const [tep, ds] of theoTep.entries()) {
-    for (const x of ds) {
-      if (daId.has(x.id)) loi.push(`${tep}: trùng id ${x.id}`);
-      daId.add(x.id);
-      if (/^tb:|^wco:/.test(x.cau || '')) {
-        loi.push(`${tep}: ${x.id} cấm trích ${x.cau}`);
-        continue;
-      }
-      const chu = L.chuCau(x.cau);
-      if (chu === null) {
-        loi.push(`${tep}: ${x.id} câu ${x.cau} không tồn tại trong kho luật gốc`);
-        continue;
-      }
-      if (vanTay(chu) !== x.van) {
-        loi.push(`${tep}: ${x.id} vân tay sha256 lệch câu ${x.cau}`);
-      }
-      if (x.loai === 'BO_QUA') continue;
-
-      const nNguon = L.nut.get(L.cau.get(x.cau).nut);
-      if (x.lop !== nNguon.lop) loi.push(`${tep}: ${x.id} sai lop (${x.lop} != ${nNguon.lop})`);
-      if (x.nguon !== nNguon.nguon) loi.push(`${tep}: ${x.id} sai nguon`);
-
-      // Với bản ghi gộp nhiều câu trong cùng nút chú giải phân nhóm (pn:*), kiểm từng câu trích có nguyên văn trong nút nguồn
-      const csCau = chuanSo(chu);
-      const csNut = chuanSo(nNguon.v);
-      const csTrich = chuanSo(x.trich);
-      const trichHopLe = /^pn:/.test(x.cau)
-        ? csTrich.split(/\s+(?=\(\d+\)\s)/).every((doan) => csNut.includes(doan.trim()))
-        : csCau.includes(csTrich);
-      if (!trichHopLe) loi.push(`${tep}: ${x.id} trich không nguyên văn trong ${x.cau}`);
-
-      for (const dk of x.duKien || []) {
-        if (!csCau.toLowerCase().includes(chuanSo(dk).toLowerCase())) {
-          loi.push(`${tep}: ${x.id} duKien "${dk}" không có trong chữ câu ${x.cau}`);
-        }
-      }
-
-      if (x.loai === 'DINH_NGHIA') {
-        const nenThuatNgu = `${csNut.toLowerCase()} ${chuanSo(L.cay.theoId.get(x.nut)?.ten || '').toLowerCase()}`;
-        if (!x.thuatNgu || !nenThuatNgu.includes(chuanSo(x.thuatNgu).toLowerCase())) {
-          loi.push(`${tep}: ${x.id} thuatNgu "${x.thuatNgu}" không có nguyên chữ trong nút luật/tên nút`);
-        }
-      }
-    }
-  }
-  return loi;
-}
-
-/** Ghi các tệp JSONL (1 tệp mỗi chương: phan-nhom/<CC>.jsonl, dong/<CC>.jsonl) ra thư mục data/ho-so-ma. */
+/** Ghi các tệp JSONL (mỗi mã một tệp: phan-nhom/<6 số>.jsonl, dong/<8 số>.jsonl) ra thư mục data/ho-so-ma. */
 export function ghiHoSo(theoTep, thuMucHoSo = G.HO_SO_MAC_DINH) {
   const daGhi = [];
   for (const [tepTuongDoi, ds] of [...theoTep.entries()].sort((a, b) => a[0].localeCompare(b[0]))) {
@@ -599,33 +531,32 @@ function main() {
 
   if (a.includes('--tao')) {
     const daGhi = ghiHoSo(kq.theoTep, hoSo);
-    console.log(`Đã ghi ${daGhi.length} tệp (${kq.thongKe.tongBanGhi} bản ghi) cho Chương ${kq.thongKe.chuong}: ${daGhi.join(', ')}`);
+    console.log(`Đã ghi ${daGhi.length} tệp (${kq.thongKe.tongBanGhi} bản ghi) cho Chương ${kq.thongKe.chuong}.`);
   }
 
   const loiKhuon = [];
   for (const [tep, ds] of kq.theoTep.entries()) {
     for (const r of ds) {
-      for (const e of kiemBanGhiKhuonMoi(r)) loiKhuon.push(`${tep}: ${e}`);
+      for (const e of kiemBanGhi(r)) loiKhuon.push(`${tep}: ${e}`);
     }
   }
   const loiPhuDinh = kiemPhuDinhChuong(kq.theoTep, L);
-  const loiTrichVan = kiemTrichVaVanTay(kq.theoTep, L);
 
   if (a.includes('--bao-cao') || (!a.includes('--tao') && !a.includes('--kiem'))) {
     console.log(JSON.stringify({
       thongKe: kq.thongKe,
-      cacTep: [...kq.theoTep.keys()].sort(),
+      soTep: kq.theoTep.size,
       tieuDe5BoQua: kq.tieuDe5BoQua,
       loiKhuon: loiKhuon.length,
       loiPhuDinh: loiPhuDinh.length,
-      loiTrichVan: loiTrichVan.length,
     }, null, 2));
   }
 
   if (a.includes('--kiem')) {
-    const tongLoi = loiKhuon.length + loiPhuDinh.length + loiTrichVan.length;
-    console.log(`${tongLoi === 0 ? 'PASS' : 'FAIL'} M-76 Chương ${kq.thongKe.chuong}: ${kq.thongKe.tongBanGhi} bản ghi, ${kq.theoTep.size} tệp | khuôn(#1981)=${loiKhuon.length} | phủ định=${loiPhuDinh.length} | trích&vân=${loiTrichVan.length}`);
-    for (const e of [...loiKhuon, ...loiPhuDinh, ...loiTrichVan].slice(0, 30)) {
+    const congKq = chayCong({ luat, hoSo, phamVi: [kq.thongKe.chuong], chiTrong: true, cong: [4, 5], L });
+    const tongLoi = loiKhuon.length + loiPhuDinh.length + congKq.khuon.length + congKq.cong[4].loi.length + congKq.cong[5].loi.length;
+    console.log(`${tongLoi === 0 ? 'PASS' : 'FAIL'} M-76 Chương ${kq.thongKe.chuong}: ${kq.thongKe.tongBanGhi} bản ghi, ${kq.theoTep.size} tệp | khuôn=${loiKhuon.length + congKq.khuon.length} | phủ định=${loiPhuDinh.length} | cổng4=${congKq.cong[4].loi.length} | cổng5=${congKq.cong[5].loi.length}`);
+    for (const e of [...loiKhuon, ...loiPhuDinh, ...congKq.khuon, ...congKq.cong[4].loi, ...congKq.cong[5].loi].slice(0, 30)) {
       console.log(`  ✗ ${e}`);
     }
     process.exit(tongLoi === 0 ? 0 : 1);
