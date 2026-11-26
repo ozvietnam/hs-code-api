@@ -452,6 +452,19 @@
       "dieuKienBat": "ĐANG TẮT trên máy thật. Trưa 21/11 QT bật thử rồi tắt: ca van khí nén 5/2 động cơ dừng sớm ở 8412.21, khách bị hỏi theo sổ nhóm 84.12. Chỉ bật lại sau khi nhánh dừng sớm sửa xong (OZV-1707), ca này ra đúng nhóm 84.81, và có số đúng nhóm 4 số của nhánh hỏi đo qua Cổng thật (L3 bổ sung, L11). Tối 21/11 18:27 bật lại (cùng HS_TIM_TRUOC): ca van ra đúng 848120 5/5 nhưng còn hỏi thừa phân nhóm 84.81 (4/5) và câu loại trừ lạc đề \"van trượt cho động cơ hơi nước\" (2/5) nên lại tắt; PR qt/hoi-theo-so-tay-loc sửa hai lỗi này, bật lại thì đo lại cùng bộ mẫu."
     },
     {
+      "ten": "HS_CA_UU_TIEN_PHAN_DONG",
+      "macDinh": "tắt",
+      "macDinhBat": false,
+      "loai": "cong-tac",
+      "doiQuyetDinhLLM": false,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Công tắc con của HS_HOI_THEO_SO_TAY (OZV-2310, BẬC 1 — cụm 'bộ điều khiển' 8537.10 hỏi nhiều nhất, 11/14 lượt dừng 6 số): khi lõi đã hỏi dữ kiện DONG_BIEU mà phân nhóm còn dòng mang điều kiện TÊN LOẠI/CÔNG DỤNG chưa chấm được (CHUA_BIET) thì vẫn sinh câu phân dòng và ĐẶT LÊN ĐẦU — khách về tới 8 số trong 1 vòng; dữ kiện cấu trúc còn thiếu hỏi vòng sau. Chỉ on / 1 / true mới bật.",
+      "chungCu": {
+        "tep": "lib/hoi-theo-so-tay.js",
+        "doan": "String(process.env.HS_CA_UU_TIEN_PHAN_DONG || '').trim());"
+      }
+    },
+    {
       "ten": "HS_CHOT_SOM_CO_KIEM",
       "macDinh": "tắt",
       "macDinhBat": false,
