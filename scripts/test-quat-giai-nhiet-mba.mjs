@@ -9,17 +9,18 @@ import './test-isolate-data.mjs';
  *  1. Căn cứ sổ tay 8414 qua cổng verifySoTay / quoteInSource, kiemCauHoiMucDich
  *     và khopCanhCuTrongPhamVi (data/luat-goc/phan.jsonl phan:XVI:kq:45).
  *  2. Bước 0 (4 số): khi 8414 và 8504 cùng là ứng viên cho câu khách thực địa
- *     «quạt giải nhiệt máy biến áp, model gfdd470-150», cauPhanBietNhom sinh câu
- *     phân biệt 84.14 ↔ 85.04 ở cả hai chiều (8414→8504 và 8504→8414) có canCu + nguon + trich.
+ *     «quạt giải nhiệt máy biến áp…» (đã nêu rõ mặt hàng là quạt), cauPhanBietNhom
+ *     KHÔNG sinh câu PHAN_BIET 84.14↔85.04 (OZV-2389 — thừa); vẫn giữ mục phanBiet
+ *     trong sổ tay để cạnh C7 / trích dẫn Chú giải 2 Phần XVI.
  *  3. Cổng loại trừ sổ tay (soTayGates + tinHieuTraiNhom): không bật nhầm trên câu
  *     quạt giải nhiệt máy biến áp ở 841459; bật đúng SO_TAY_LOAI_TRU 8414→8504 khi
  *     hàng là biến thế điện / tấm tản nhiệt / ống tản nhiệt của máy biến áp.
  *  4. Bước 4→6 số (diXuong6): «quạt giải nhiệt máy biến áp, model gfdd470-150»
  *     loại 841451 (quạt gia dụng ≤ 125W) và chốt đúng phân nhóm 841459.
  *  5. Bước 6→8 số (8414.59): chưa nêu công suất / lưới bảo vệ → dừng hỏi đúng
- *     congSuat (<= 125 kW), chiHoacChuYeu, coLuoiBaoVe (canCu ranh-gioi-pn6) kèm
- *     câu PHAN_BIET_NHOM 84.14↔85.04; khi có đủ dữ kiện → chốt đúng 84145941 / 84145991 /
- *     84145910 / 84145920 / 84145930.
+ *     congSuat (<= 125 kW), chiHoacChuYeu, coLuoiBaoVe (canCu ranh-gioi-pn6), KHÔNG
+ *     kèm PHAN_BIET quạt↔8504 (OZV-2389); khi có đủ dữ kiện → chốt đúng 84145941 /
+ *     84145991 / 84145910 / 84145920 / 84145930.
  *  6. Ca ngược (L3, ≥3 nhóm):
  *     - Quạt bàn / quạt trần gia dụng (841451 → 84145110 / 84145191)
  *     - Máy biến áp nguyên chiếc (8504 → hỏi điện áp 850433)
@@ -92,15 +93,17 @@ console.log('1. Sổ tay 8414 qua cổng quoteInSource / verifySoTay, kiemCauHoi
   );
 }
 
-console.log('2. Bước 0 (4 số): cauPhanBietNhom sinh câu phân biệt 84.14 ↔ 85.04 ở cả 2 chiều cho câu khách thực địa');
+console.log('2. Bước 0 (4 số): cauPhanBietNhom KHÔNG hỏi PHAN_BIET 84.14↔85.04 khi mô tả đã nêu rõ quạt (OZV-2389)');
 for (const q of CAU_THUC_DIA) {
   const tu8414 = H.cauPhanBietNhom('8414', ['8414', '8504'], q);
   const tu8504 = H.cauPhanBietNhom('8504', ['8504', '8414'], q);
-  check(`«${q}» từ 8414 sinh câu PHAN_BIET_NHOM 84.14↔85.04`, tu8414.length >= 1 && tu8414[0].loai === 'PHAN_BIET_NHOM', tu8414);
-  check(`«${q}» từ 8504 sinh câu PHAN_BIET_NHOM 84.14↔85.04`, tu8504.length >= 1 && tu8504[0].loai === 'PHAN_BIET_NHOM', tu8504);
-  for (const item of [...tu8414, ...tu8504]) {
-    check(`«${q.slice(0, 32)}» câu hỏi có canCu=so-tay + nguon=phan84.phan + trich`, item.canCu === 'so-tay' && item.nguon === 'phan84.phan' && Boolean(item.trich), item);
-  }
+  check(`«${q}» từ 8414 KHÔNG sinh câu PHAN_BIET_NHOM 84.14↔85.04 (đã nêu quạt)`, tu8414.length === 0, tu8414);
+  check(`«${q}» từ 8504 KHÔNG sinh câu PHAN_BIET_NHOM 84.14↔85.04 (đã nêu quạt)`, tu8504.length === 0, tu8504);
+}
+{
+  const qTam = 'tấm tản nhiệt của máy biến áp phân phối';
+  const tuTam = H.cauPhanBietNhom('8414', ['8414', '8504'], qTam);
+  check('ca ngược tấm tản nhiệt MBA: vẫn sinh câu PHAN_BIET_NHOM 84.14↔85.04 (loaiTru)', tuTam.length >= 1 && tuTam[0].loai === 'PHAN_BIET_NHOM' && tuTam[0].nguon === 'phan84.phan', tuTam);
 }
 
 console.log('3. Cổng loại trừ sổ tay (soTayGates + tinHieuTraiNhom): không bắn nhầm quạt ở 841459, bắn đúng khi hàng là biến thế/tấm tản nhiệt MBA');
@@ -113,8 +116,8 @@ for (const q of CAU_THUC_DIA) {
 }
 for (const [qMba, cumKhop] of [
   ['biến thế điện 3 pha 500kVA', 'biến thế điện'],
-  ['tấm tản nhiệt của máy biến áp phân phối', 'tấm tản nhiệt'],
-  ['ống tản nhiệt của máy biến áp', 'ống tản nhiệt'],
+  ['tấm tản nhiệt của máy biến áp phân phối', 'tấm tản'],
+  ['ống tản nhiệt của máy biến áp', 'ống tản'],
 ]) {
   const gSai = G.soTayGates({ hs: '841459', productText: qMba, productName: qMba });
   const ch8504 = (gSai.challenges || []).find((c) => c.gate === 'SO_TAY_LOAI_TRU' && c.target === '8504');
@@ -178,39 +181,13 @@ for (const q of CAU_THUC_DIA) {
   const outHoi8414 = H.apDung(fakeOut841459, { rawAttrs: { tenHang: q } });
   const qs8414 = outHoi8414.nextAction?.questions || [];
   check(
-    `«${q}» apDung(841459) hỏi cả PHAN_BIET_NHOM (84.14↔85.04) và DONG_8 (congSuat, chiHoacChuYeu, coLuoiBaoVe)`,
+    `«${q}» apDung(841459) hỏi DONG_8 (congSuat, chiHoacChuYeu, coLuoiBaoVe), KHÔNG hỏi PHAN_BIET quạt↔8504`,
     outHoi8414.nextAction?.canCuCauHoi === 'so-tay'
-      && qs8414[0]?.loai === 'PHAN_BIET_NHOM'
-      && qs8414[0]?.canCu === 'so-tay'
+      && !qs8414.some((x) => x.loai === 'PHAN_BIET_NHOM')
       && qs8414.some((x) => x.loai === 'DONG_8' && x.khoa === 'congSuat' && x.canCu === 'ranh-gioi-pn6')
       && qs8414.some((x) => x.loai === 'DONG_8' && x.khoa === 'chiHoacChuYeu' && x.canCu === 'ranh-gioi-pn6')
       && qs8414.some((x) => x.loai === 'DONG_8' && x.khoa === 'coLuoiBaoVe' && x.canCu === 'ranh-gioi-pn6'),
     qs8414,
-  );
-
-  // Khi vòng 1/2 nghiêng về 850490 (ứng viên 841459)
-  const fakeOut850490 = {
-    status: 'NEED_FACTS',
-    results: [{ hs: '850490' }],
-    dossier: {
-      product: { nameVi: q },
-      hypotheses: [
-        { heading4: '8504', subheading6: '850490' },
-        { heading4: '8414', subheading6: '841459' },
-      ],
-      alternatives: [{ hs: '841459' }],
-    },
-    nextAction: { type: 'ASK_USER', questions: [{ questionVi: 'Model là gì?' }] },
-  };
-  const outHoi8504 = H.apDung(fakeOut850490, { rawAttrs: { tenHang: q } });
-  const qs8504 = outHoi8504.nextAction?.questions || [];
-  check(
-    `«${q}» apDung(850490) vẫn hỏi PHAN_BIET_NHOM (84.14↔85.04) đứng đầu để không kẹt ở 8504.90`,
-    outHoi8504.nextAction?.canCuCauHoi === 'so-tay'
-      && qs8504[0]?.loai === 'PHAN_BIET_NHOM'
-      && qs8504[0]?.canCu === 'so-tay'
-      && qs8504[0]?.nguon === 'phan84.phan',
-    qs8504,
   );
 
   const cd41 = G.chotDong8({ hs: '841459', productText: `${q}, công suất 75 W, có lưới bảo vệ` });
