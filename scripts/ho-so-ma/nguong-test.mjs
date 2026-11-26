@@ -113,12 +113,40 @@ const tepChuong = fs.readdirSync(nguongDir).filter((f) => /^\d{2}\.jsonl$/.test(
 const dsChuong = tepChuong.map((f) => f.slice(0, 2));
 
 const tatCaNguong = khoThuc.banGhi.filter((x) => /^nguong\/.*\.jsonl$/.test(x._tep || ''));
-const banGhiTheoChuong = (ch) => {
+const banGhiTheoChuong = (ch, nguon = tatCaNguong) => {
   const phan = PHAN_CUA_CHUONG[ch];
   const re = phan
     ? new RegExp(`^nguong/(?:${phan}|${ch})\\.jsonl$`)
     : new RegExp(`^nguong/${ch}\\.jsonl$`);
-  return tatCaNguong.filter((x) => re.test(x._tep || ''));
+  return nguon.filter((x) => re.test(x._tep || ''));
+};
+
+/**
+ * Đối chiếu tài liệu tham khảo data/ho-so/ranh-gioi/<ch>*.json: mọi mã có dieuKienSo đều phải có bản ghi
+ * gắn vào nút bieu:<mã> (hoặc nút con của nó) trong kho ngưỡng. Trả về danh sách thông báo thiếu (rỗng = đủ).
+ * Ca 4 dùng hàm này làm cổng; ca 8 dùng lại đúng hàm này làm ca chẩn trên bản sao cách ly (OZV-2358).
+ */
+const doiChieuRanhGoi = (tatCa, dsCh, rgDir, allFiles) => {
+  const thieu = [];
+  for (const ch of dsCh) {
+    const bg = banGhiTheoChuong(ch, tatCa);
+    const coNutHoacCon = (ma) => {
+      const pre = `bieu:${ma}`;
+      return bg.some((r) => r.nut === pre || (r.nut.startsWith(pre) && (r.nut[pre.length] === ':' || /^\d/.test(r.nut[pre.length] || ''))));
+    };
+    const files = allFiles.filter((f) => f.startsWith(ch) && f.endsWith('.json')).sort();
+    for (const f of files) {
+      const j = JSON.parse(fs.readFileSync(path.join(rgDir, f), 'utf8'));
+      for (const d of [...(j.dieuKienNut || []), ...(j.dong8 || [])]) {
+        const coSo = (d.dieuKienSo || []).some((c) => typeof c.value === 'number' && !/phuongPhap/i.test(c.fact || ''));
+        if (coSo) {
+          const ma = d.hs || j.pn6;
+          if (!coNutHoacCon(ma)) thieu.push(`Chương ${ch}: thiếu NGUONG cho bieu:${ma} (tham khảo ${f})`);
+        }
+      }
+    }
+  }
+  return thieu;
 };
 const banGhiRiengChuong = (ch) => tatCaNguong.filter((x) => x._tep === `nguong/${ch}.jsonl`);
 
@@ -192,25 +220,8 @@ test('3. Cổng 3 (ANH EM) không có lỗi NGUONG chồng/hở/voi và cụm an
 // 4. Đối chiếu tài liệu tham khảo data/ho-so/ranh-gioi/<ch>*.json cho mọi chương đang có trong kho
 test('4. Đối chiếu data/ho-so/ranh-gioi/*.json cho mọi chương — mọi mã có dieuKienSo đều được phủ', () => {
   const rgDir = path.resolve(G.HO_SO_MAC_DINH, '..', 'ho-so', 'ranh-gioi');
-  const allFiles = fs.readdirSync(rgDir);
-  for (const ch of dsChuong) {
-    const bg = banGhiTheoChuong(ch);
-    const coNutHoacCon = (ma) => {
-      const pre = `bieu:${ma}`;
-      return bg.some((r) => r.nut === pre || (r.nut.startsWith(pre) && (r.nut[pre.length] === ':' || /^\d/.test(r.nut[pre.length] || ''))));
-    };
-    const files = allFiles.filter((f) => f.startsWith(ch) && f.endsWith('.json')).sort();
-    for (const f of files) {
-      const j = JSON.parse(fs.readFileSync(path.join(rgDir, f), 'utf8'));
-      for (const d of [...(j.dieuKienNut || []), ...(j.dong8 || [])]) {
-        const coSo = (d.dieuKienSo || []).some((c) => typeof c.value === 'number' && !/phuongPhap/i.test(c.fact || ''));
-        if (coSo) {
-          const ma = d.hs || j.pn6;
-          assert.ok(coNutHoacCon(ma), `Chương ${ch}: thiếu NGUONG cho bieu:${ma} (tham khảo ${f})`);
-        }
-      }
-    }
-  }
+  const thieu = doiChieuRanhGoi(tatCaNguong, dsChuong, rgDir, fs.readdirSync(rgDir));
+  assert.equal(thieu.length, 0, thieu.join('; '));
 });
 
 // 5. Không chứa dữ liệu khách / tờ khai / tiền lệ / WCO / GIR
@@ -354,6 +365,45 @@ test('7. ghiKhoNguong (C76) & ghiKhoNguongChuong("84"/"85") tái tạo tất đ�
     } finally {
       fs.rmSync(tmpCh, { recursive: true, force: true });
     }
+  }
+});
+
+// 8. Nghiệm thu OZV-2358 — ca chẩn 2 chiều trên bản sao cách ly của kho thật (luật 8: chỉ chạm thư mục tạm,
+//    không ghi vào data/). Sự việc 25/11/2026: PR nộp 39.jsonl treo ngưỡng ở nút cha 4 số, không cổng nào
+//    chặn lúc nộp, chỉ phát hiện khi đã lên main. Âm: bớt mọi dòng gắn một nút có dieuKienSo (chương 76)
+//    ⇒ cổng phải nêu đúng mã thiếu. Dương: bản sao nguyên vẹn ⇒ không thiếu nút nào.
+test('8. Nghiệm thu OZV-2358 trên bản sao cách ly: bớt nút NGUONG ⇒ đỏ đúng mã thiếu; nguyên vẹn ⇒ xanh', () => {
+  const rgDir = path.resolve(G.HO_SO_MAC_DINH, '..', 'ho-so', 'ranh-gioi');
+  const allFiles = fs.readdirSync(rgDir);
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'm74-2358-'));
+  try {
+    const dirSao = path.join(tmp, 'nguong');
+    fs.mkdirSync(dirSao, { recursive: true });
+    for (const f of fs.readdirSync(nguongDir)) {
+      if (f.endsWith('.jsonl')) fs.copyFileSync(path.join(nguongDir, f), path.join(dirSao, f));
+    }
+    // Dương: bản sao nguyên vẹn của kho thật ⇒ đối chiếu không thiếu nút nào
+    assert.equal(doiChieuRanhGoi(kiemKhoHoSo(tmp).banGhi, dsChuong, rgDir, allFiles).length, 0, 'Bản sao nguyên vẹn không được thiếu nút nào');
+
+    // Âm: bỏ nút NGUONG đầu tiên (theo thứ tự tệp ranh-gioi chương 76) vừa có dieuKienSo vừa có dòng trong kho
+    const tep76 = path.join(dirSao, '76.jsonl');
+    const dong = fs.readFileSync(tep76, 'utf8').split('\n').filter((x) => x.trim());
+    let maBo = null;
+    chay: for (const f of allFiles.filter((x) => x.startsWith('76') && x.endsWith('.json')).sort()) {
+      const j = JSON.parse(fs.readFileSync(path.join(rgDir, f), 'utf8'));
+      for (const d of [...(j.dieuKienNut || []), ...(j.dong8 || [])]) {
+        const coSo = (d.dieuKienSo || []).some((c) => typeof c.value === 'number' && !/phuongPhap/i.test(c.fact || ''));
+        const ma = coSo ? d.hs || j.pn6 : null;
+        if (ma && dong.some((x) => JSON.parse(x).nut === `bieu:${ma}`)) { maBo = ma; break chay; }
+      }
+    }
+    assert.ok(maBo, 'Phải tìm được mã có dieuKienSo và dòng NGUONG trong chương 76 của kho thật');
+    fs.writeFileSync(tep76, `${dong.filter((x) => JSON.parse(x).nut !== `bieu:${maBo}`).join('\n')}\n`);
+    const thieu = doiChieuRanhGoi(kiemKhoHoSo(tmp).banGhi, dsChuong, rgDir, allFiles);
+    assert.equal(thieu.length, 1, thieu.join('; '));
+    assert.ok(thieu[0].includes(`thiếu NGUONG cho bieu:${maBo}`), thieu.join('; '));
+  } finally {
+    fs.rmSync(tmp, { recursive: true, force: true });
   }
 });
 
