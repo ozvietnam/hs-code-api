@@ -160,7 +160,7 @@ kiem('CA NGƯỢC đường khách (api/, lib/ khác) không nạp chi-muc-luat'
     if (nay.trangThai === 'OK') {
       const lai = thuMuc({ goc: L.GOC_MAC_DINH, sections: L.SECTIONS_MAC_DINH }).muc.map((m) => m.id);
       kiem('chỉ mục thật: dựng lại danh sách (không cần mô hình) ra đúng id.json', meta.gop?.bat ? lai.length >= dsId.length : JSON.stringify(lai.filter(Boolean)) === JSON.stringify(dsId), `${lai.length} vs ${dsId.length}`);
-    } else kiem(`chỉ mục thật phải còn mới (trạng thái ${nay.trangThai})`, false, `${nay.lyDo || ''}${nay.tepLech ? ` — tệp lệch: ${nay.tepLech.join(', ')}` : ''} → DỰNG LẠI: node scripts/luat-goc/chi-muc.mjs (khoảng 15 phút CPU) rồi commit data/luat-goc/chi-muc/`);
+    } else kiem(`chỉ mục thật phải còn mới (trạng thái ${nay.trangThai})`, false, `${nay.lyDo || ''}${nay.tepLech ? ` — tệp lệch: ${nay.tepLech.join(', ')}` : ''} → DỰNG LẠI: npm run build:chi-muc-luat (khoảng 15 phút CPU). Tệp chỉ mục KHÔNG lưu trong kho (M-37b #2023), không cần commit.`);
   }
 }
 fs.rmSync(tam, { recursive: true, force: true });
