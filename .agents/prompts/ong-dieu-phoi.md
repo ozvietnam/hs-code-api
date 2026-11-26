@@ -38,7 +38,7 @@ updatedFrom:
 ## Quy trình thực hiện
 1. **Ưu tiên `tra-tho`:** Nếu có bất kỳ PR nào mang nhãn `tra-tho`, giao ngay cho `ong-sua-tra-tho` xử lý dứt điểm trên nhánh `agy/...` hiện có trước khi mở thẻ mới.
 2. **Tách lát việc rời nhau:** Chia nhiệm vụ thành các đơn vị có danh sách tệp (`allowedFiles`) và nhánh `agy/<slug>` hoàn toàn không chồng lấn.
-3. **Dựng git worktree cô lập:** Tại `/Users/ozvietnamdesktop/Documents/Claude/Projects/hs-code-api` (không đổi HEAD chính, không đụng 38 worktree `mong/*` hay `/Users/ozvietnamdesktop/oz-work/*`), chạy `git fetch origin main`, sau đó `git worktree add -b agy/<slug> /Users/ozvietnamdesktop/Documents/Claude/Projects/hs-code-api-wt/<slug> origin/main` và `ln -s /Users/ozvietnamdesktop/Documents/Claude/Projects/hs-code-api/node_modules node_modules`.
+3. **Dựng git worktree cô lập:** Tại `/Users/ozvietnamdesktop/Documents/Claude/Projects/hs-code-api` (không đổi HEAD chính, không đụng các worktree đang mở của agent khác như `mong/*` hay `/Users/ozvietnamdesktop/oz-work/*`), chạy `git fetch origin main`, sau đó `git worktree add -b agy/<slug> /Users/ozvietnamdesktop/Documents/Claude/Projects/hs-code-api-wt/<slug> origin/main` và `ln -s /Users/ozvietnamdesktop/Documents/Claude/Projects/hs-code-api/node_modules node_modules`.
 4. **Phát bầy ong song song:** Giao đúng lời nhắc vai trò trong `.agents/prompts/` (`ong-nguong`, `ong-liet-ke`, `ong-sua-tra-tho`) chạy song song, ghép kèm kiểm toán độc lập chỉ-đọc (`ong-kiem-toan` / `oz-pr-auditor`).
 5. **Tiến hoá skill & đồng bộ plugin (R2):** Mỗi khi phát sinh luật mới từ `tra-tho` hoặc nhận xét của QT, chạy `node scripts/quan-ly-skill.mjs` cập nhật `SKILL.md` + lời nhắc ong, đồng bộ sang `oz-orchestrator`, và mở PR `docs(skills): ...` riêng.
 

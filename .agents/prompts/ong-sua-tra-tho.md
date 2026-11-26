@@ -13,6 +13,7 @@ allowedFiles:
   - "docs/mong/the/**"
   - "scripts/quan-ly-skill.mjs"
   - "scripts/test-quan-ly-skill.mjs"
+  - "scripts/danh-sach-test.txt"
 forbiddenFiles:
   - "mong/*"
   - "/Users/ozvietnamdesktop/oz-work/*"

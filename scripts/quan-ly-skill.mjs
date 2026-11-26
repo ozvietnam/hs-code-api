@@ -16,10 +16,10 @@ export const SYNC_SUBDIRS = ['rules', 'agents', 'prompts', 'skills'];
 
 const RE_SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const RE_HS_TOKEN = /\bHS_[A-Z][A-Z0-9_]*[A-Z0-9]\b/g;
-const RE_PRIVATE_DATA = /(?:data\/oz-export|oz-gold|(?:^|[\s`"'(\/])\.env(?=$|[\s`"'),:;]))/i;
-const RE_PRIVATE_GUARD = /(?:never|forbidden|prohibit|cấm|không|tuyệt đối không|zero|chống rò rỉ|scan.*trace|withPrivateData|forbiddenFiles|riêng tư|rò rỉ|leak)/i;
-const RE_DANGEROUS_GIT = /(?:gh\s+pr\s+merge|\bgit\s+push\b[^\n]*\bmain\b|push\s+(?:thẳng|trực tiếp|directly)[^\n]*\bmain\b)/i;
-const RE_DANGEROUS_GUARD = /(?:never|forbidden|prohibit|cấm|tuyệt đối không|không tự|không bao giờ|không chạy|do not|don't|chặn|zero|never self-merge)/i;
+const RE_PRIVATE_DATA = /(?:\boz-export\b|\boz-gold\b|(?:^|[\s`"'(,/=])\.keys\/|(?:^|[\s`"'(,/=])\.env(?:\.(?!example\b)[A-Za-z0-9_.-]+)?(?=$|[\s`"'),:;*]))/i;
+const RE_PRIVATE_GUARD = /(?:never|forbidden|prohibit|avoid|keep\b[^\n;]*\bout of git|cấm|tuyệt đối không|không bao giờ|không được|không đọc|không chạm|không đụng|không sửa|không commit|không push|không chạy|không lộ|không lọt|không dùng|không sử dụng|không nhắc|bảo vệ|tránh|chống rò rỉ|zero\b|scan[^\n]*trace|withPrivateData|forbiddenFiles)/i;
+const RE_DANGEROUS_GIT = /(?:\bgh\s+pr\s+merge\b|\bgit\s+push\b[^\n.;]*\bmain\b|\bpush\s+(?:thẳng|trực tiếp|directly)[^\n.;]*\bmain\b)/i;
+const RE_DANGEROUS_GUARD = /(?:never|forbidden|prohibit|avoid|cấm|tuyệt đối không|không tự|không bao giờ|không được|không chạy|do not|don't|chặn|chống|zero\b|never self-merge)/i;
 
 // ── CLI Parsing ─────────────────────────────────────────────────────────────────────────────────
 
@@ -144,14 +144,66 @@ function normalizeText(s) {
 
 // ── File Walk & Copy Helpers ────────────────────────────────────────────────────────────────────
 
-function listFilesRecursive(rootDir) {
-  const out = [];
-  if (!fs.existsSync(rootDir)) return out;
+function pathLstat(p) {
+  try {
+    return fs.lstatSync(p);
+  } catch {
+    return null;
+  }
+}
+
+function findSymlinksRecursive(rootDir) {
+  const symlinks = [];
+  const rootStat = pathLstat(rootDir);
+  if (!rootStat) return symlinks;
+  if (rootStat.isSymbolicLink()) {
+    symlinks.push('.');
+    return symlinks;
+  }
+  if (!rootStat.isDirectory()) return symlinks;
+
   const walk = (dir) => {
     const entries = fs.readdirSync(dir, { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name));
     for (const ent of entries) {
       if (ent.name.startsWith('.DS_Store')) continue;
       const full = path.join(dir, ent.name);
+      if (ent.isSymbolicLink()) {
+        symlinks.push(path.relative(rootDir, full).split(path.sep).join('/'));
+      } else if (ent.isDirectory()) {
+        walk(full);
+      }
+    }
+  };
+  walk(rootDir);
+  return symlinks;
+}
+
+function assertNoSymlinksInRelativePath(baseDir, relPath) {
+  const baseStat = pathLstat(baseDir);
+  if (baseStat && baseStat.isSymbolicLink()) {
+    throw new Error(`Từ chối thao tác qua symlink: ${baseDir}`);
+  }
+  const parts = relPath.split('/').filter(Boolean);
+  let cur = baseDir;
+  for (const part of parts) {
+    cur = path.join(cur, part);
+    const st = pathLstat(cur);
+    if (st && st.isSymbolicLink()) {
+      throw new Error(`Từ chối ghi đè hoặc đọc qua symlink tại đích: ${cur}`);
+    }
+  }
+}
+
+function listFilesRecursive(rootDir) {
+  const out = [];
+  const rootStat = pathLstat(rootDir);
+  if (!rootStat || rootStat.isSymbolicLink() || !rootStat.isDirectory()) return out;
+  const walk = (dir) => {
+    const entries = fs.readdirSync(dir, { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name));
+    for (const ent of entries) {
+      if (ent.name.startsWith('.DS_Store')) continue;
+      const full = path.join(dir, ent.name);
+      if (ent.isSymbolicLink()) continue;
       if (ent.isDirectory()) walk(full);
       else if (ent.isFile()) out.push(path.relative(rootDir, full).split(path.sep).join('/'));
     }
@@ -167,7 +219,7 @@ function readJsonLesson(jsonPath) {
   return JSON.parse(fs.readFileSync(abs, 'utf8'));
 }
 
-export function createSkill({ repoDir = DEFAULT_REPO_DIR, ten, moTa, mucDich }) {
+export function createSkill({ repoDir = DEFAULT_REPO_DIR, ten, moTa, mucDich, dryRun = false }) {
   if (!ten || !RE_SLUG.test(ten)) {
     throw new Error(`Tên skill không hợp lệ (chỉ dùng chữ thường/số/gạch ngang): "${ten || ''}"`);
   }
@@ -212,9 +264,11 @@ export function createSkill({ repoDir = DEFAULT_REPO_DIR, ten, moTa, mucDich }) 
     '',
   ].join('\n');
 
-  fs.mkdirSync(skillDir, { recursive: true });
-  fs.writeFileSync(skillPath, content, 'utf8');
-  return { skillPath, created: true };
+  if (!dryRun) {
+    fs.mkdirSync(skillDir, { recursive: true });
+    fs.writeFileSync(skillPath, content, 'utf8');
+  }
+  return { skillPath, created: !dryRun, dryRun };
 }
 
 export function upgradeSkill({
@@ -224,6 +278,7 @@ export function upgradeSkill({
   quyTac,
   pr,
   viDu,
+  dryRun = false,
 }) {
   if (!ten || !RE_SLUG.test(ten)) {
     throw new Error(`Tên skill không hợp lệ: "${ten || ''}"`);
@@ -265,9 +320,9 @@ export function upgradeSkill({
     const block = original.slice(startIdx, endIdx);
 
     let updatedBlock = block;
-    // Update rule line if changed
+    // Update rule line if changed (callback avoids $& / $$ / $1 replacement expansion)
     if (/^- \*\*Quy tắc:\*\* .*$/m.test(updatedBlock)) {
-      updatedBlock = updatedBlock.replace(/^- \*\*Quy tắc:\*\* .*$/m, `- **Quy tắc:** ${ruleClean}`);
+      updatedBlock = updatedBlock.replace(/^- \*\*Quy tắc:\*\* .*$/m, () => `- **Quy tắc:** ${ruleClean}`);
     } else {
       updatedBlock = `${updatedBlock.trimEnd()}\n- **Quy tắc:** ${ruleClean}\n`;
     }
@@ -287,8 +342,8 @@ export function upgradeSkill({
     if (!updatedBlock.endsWith('\n')) updatedBlock += '\n';
 
     const nextContent = original.slice(0, startIdx) + updatedBlock + original.slice(endIdx);
-    if (nextContent !== original) fs.writeFileSync(skillPath, nextContent, 'utf8');
-    return { skillPath, updated: nextContent !== original, ruleNumber: Number(existing[1]) };
+    if (!dryRun && nextContent !== original) fs.writeFileSync(skillPath, nextContent, 'utf8');
+    return { skillPath, updated: nextContent !== original, ruleNumber: Number(existing[1]), dryRun };
   }
 
   const nextNum = maxNum + 1;
@@ -308,7 +363,7 @@ export function upgradeSkill({
   const sec3Match = /\n(?:---\s*\n+)?##\s+(?:3\.|Các Bước|Quy trình|Lệnh)/i.exec(original);
   const placeholder = /\n\*\(Các luật mới rút ra[\s\S]*?\*\)\s*\n/;
   if (placeholder.test(original)) {
-    nextContent = original.replace(placeholder, `${newBlock}\n`);
+    nextContent = original.replace(placeholder, () => `${newBlock}\n`);
   } else if (sec3Match) {
     const pos = sec3Match.index;
     nextContent = `${original.slice(0, pos).trimEnd()}\n${newBlock}\n${original.slice(pos).replace(/^\n+/, '')}`;
@@ -316,8 +371,8 @@ export function upgradeSkill({
     nextContent = `${original.trimEnd()}\n${newBlock}`;
   }
 
-  fs.writeFileSync(skillPath, nextContent, 'utf8');
-  return { skillPath, updated: true, ruleNumber: nextNum };
+  if (!dryRun) fs.writeFileSync(skillPath, nextContent, 'utf8');
+  return { skillPath, updated: true, ruleNumber: nextNum, dryRun };
 }
 
 export function createPrompt({
@@ -330,6 +385,7 @@ export function createPrompt({
   forbiddenFiles = ['api/**', 'lib/**', 'data/prompts/**', 'lib/llm-tier.js', 'lib/llm.mjs', 'data/oz-export/**', 'oz-gold*', '.env'],
   gates = ['node scripts/quan-ly-skill.mjs --kiem', 'node scripts/dem-ca-test.mjs <log>'],
   updatedFrom = [],
+  dryRun = false,
 }) {
   if (!ten || !RE_SLUG.test(ten)) {
     throw new Error(`Tên lời nhắc chú ong không hợp lệ: "${ten || ''}"`);
@@ -388,9 +444,11 @@ export function createPrompt({
     '',
   ].join('\n');
 
-  fs.mkdirSync(promptDir, { recursive: true });
-  fs.writeFileSync(promptPath, content, 'utf8');
-  return { promptPath, created: true };
+  if (!dryRun) {
+    fs.mkdirSync(promptDir, { recursive: true });
+    fs.writeFileSync(promptPath, content, 'utf8');
+  }
+  return { promptPath, created: !dryRun, dryRun };
 }
 
 function updateYamlListField(rawYaml, fieldName, newItem) {
@@ -440,6 +498,7 @@ export function upgradePrompt({
   ten,
   quyTac,
   nguon,
+  dryRun = false,
 }) {
   if (!ten || !RE_SLUG.test(ten)) {
     throw new Error(`Tên lời nhắc chú ong không hợp lệ: "${ten || ''}"`);
@@ -466,14 +525,23 @@ export function upgradePrompt({
   const bulletLine = srcClean ? `- **[${srcClean}]** ${ruleClean}` : `- ${ruleClean}`;
   let nextBody = parsed.body;
 
-  // Idempotency check across checklist lines
-  const alreadyPresent = nextBody
-    .split(/\r?\n/)
-    .some((l) => normalizeText(l).includes(normalizeText(ruleClean)));
+  const secRegex = /(^##\s+Luật bắt buộc[^\n]*\n)([\s\S]*?)(?=\n##\s+|(?![\s\S]))/m;
+  const secMatch = secRegex.exec(nextBody);
+
+  // Compare normalized checklist bullet rule text (stripping `- **[#ref]** ` prefix) inside the checklist section
+  const normTarget = normalizeText(ruleClean);
+  const stripChecklistBullet = (line) => {
+    const m = /^\s*[-*]\s+(?:\*\*\[[^\]]+\]\*\*\s*)?(.*)$/.exec(line);
+    return m ? normalizeText(m[1]) : null;
+  };
+  const alreadyPresent = secMatch
+    ? secMatch[2]
+        .split(/\r?\n/)
+        .map(stripChecklistBullet)
+        .some((item) => item !== null && item === normTarget)
+    : false;
 
   if (!alreadyPresent) {
-    const secRegex = /(^##\s+Luật bắt buộc[^\n]*\n)([\s\S]*?)(?=\n##\s+|(?![\s\S]))/m;
-    const secMatch = secRegex.exec(nextBody);
     if (secMatch) {
       const insertPos = secMatch.index + secMatch[0].length;
       const prefix = nextBody.slice(0, insertPos).trimEnd();
@@ -485,8 +553,8 @@ export function upgradePrompt({
   }
 
   const nextContent = `---\n${nextYaml}\n---\n${nextBody}`;
-  if (nextContent !== original) fs.writeFileSync(promptPath, nextContent, 'utf8');
-  return { promptPath, updated: nextContent !== original };
+  if (!dryRun && nextContent !== original) fs.writeFileSync(promptPath, nextContent, 'utf8');
+  return { promptPath, updated: nextContent !== original, dryRun };
 }
 
 // ── Validation (`--kiem`) ───────────────────────────────────────────────────────────────────────
@@ -505,6 +573,10 @@ export function validateRepo({
     return { ok: false, errors: [`Thiếu thư mục ${agentsRoot}`], warnings, checkedFiles };
   }
 
+  for (const sym of findSymlinksRecursive(agentsRoot)) {
+    errors.push(`.agents/${sym === '.' ? '' : sym}: Cấm symlink bên trong .agents/`);
+  }
+
   // Load allowed HS_* flags from data/luat/bang-co.json
   const bangCoPath = path.join(repoDir, 'data', 'luat', 'bang-co.json');
   const allowedFlags = new Set();
@@ -521,13 +593,28 @@ export function validateRepo({
     const fmLineCount = fmMatch ? fmMatch[0].split(/\r?\n/).length - 1 : 0;
     const lines = content.split(/\r?\n/);
     let currentYamlKey = '';
+
+    // Build logical lines joining trailing backslash continuations (`\\\n`) outside frontmatter
+    const logicalLines = [];
     for (let idx = 0; idx < lines.length; idx += 1) {
-      const line = lines[idx];
-      const inFrontmatter = idx < fmLineCount;
+      const startIdx = idx;
+      let combined = lines[idx];
+      const inFrontmatter = startIdx < fmLineCount;
       if (inFrontmatter) {
-        const kv = /^([A-Za-z0-9_]+):/.exec(line);
+        const kv = /^([A-Za-z0-9_]+):/.exec(lines[idx]);
         if (kv) currentYamlKey = kv[1];
       }
+      const yamlKeyAtStart = currentYamlKey;
+      while (!inFrontmatter && /\\\s*$/.test(combined) && idx + 1 < lines.length) {
+        idx += 1;
+        combined = `${combined.replace(/\\\s*$/, ' ')}${lines[idx].trimStart()}`;
+      }
+      logicalLines.push({ lineNo: startIdx + 1, text: combined, inFrontmatter, yamlKey: yamlKeyAtStart });
+    }
+
+    const reportedDangerousLines = new Set();
+    for (const entry of logicalLines) {
+      const { lineNo, text: line, inFrontmatter, yamlKey } = entry;
       // 1. Undeclared HS_* tokens
       for (const m of line.matchAll(RE_HS_TOKEN)) {
         const token = m[0];
@@ -536,21 +623,53 @@ export function validateRepo({
           continue;
         }
         if (!allowedFlags.has(token)) {
-          errors.push(`${relPath}:${idx + 1}: Nhắc cờ "${token}" chưa khai báo trong data/luat/bang-co.json`);
+          errors.push(`${relPath}:${lineNo}: Nhắc cờ "${token}" chưa khai báo trong data/luat/bang-co.json`);
         }
       }
       // 2. Private customer data paths outside explicit prohibition/guard lines or YAML forbiddenFiles
       if (RE_PRIVATE_DATA.test(line)) {
-        const safeYamlForbidden = inFrontmatter && currentYamlKey === 'forbiddenFiles';
+        const safeYamlForbidden = inFrontmatter && yamlKey === 'forbiddenFiles';
         if (!safeYamlForbidden && !RE_PRIVATE_GUARD.test(line)) {
-          errors.push(`${relPath}:${idx + 1}: Tham chiếu dữ liệu riêng tư ngoài ngữ cảnh cấm/bảo vệ`);
+          errors.push(`${relPath}:${lineNo}: Tham chiếu dữ liệu riêng tư ngoài ngữ cảnh cấm/bảo vệ`);
         }
       }
       // 3. Dangerous git merge/push commands outside explicit prohibition lines
       if (RE_DANGEROUS_GIT.test(line) && !RE_DANGEROUS_GUARD.test(line)) {
-        errors.push(`${relPath}:${idx + 1}: Chứa chỉ dẫn cho phép tự gộp PR hoặc push thẳng main ngoài ngữ cảnh cấm`);
+        reportedDangerousLines.add(lineNo);
+        errors.push(`${relPath}:${lineNo}: Chứa chỉ dẫn cho phép tự gộp PR hoặc push thẳng main ngoài ngữ cảnh cấm`);
       }
     }
+
+    // 4. Multi-line command/prose chunks without trailing backslash (e.g., `git push origin\nmain`)
+    let chunkStart = 0;
+    let chunkParts = [];
+    const flushChunk = () => {
+      if (chunkParts.length > 1) {
+        const joined = chunkParts.join(' ');
+        if (
+          !reportedDangerousLines.has(chunkStart)
+          && RE_DANGEROUS_GIT.test(joined)
+          && !RE_DANGEROUS_GUARD.test(joined)
+        ) {
+          errors.push(`${relPath}:${chunkStart}: Chứa chỉ dẫn đa dòng cho phép tự gộp PR hoặc push thẳng main ngoài ngữ cảnh cấm`);
+        }
+      }
+      chunkStart = 0;
+      chunkParts = [];
+    };
+    for (const entry of logicalLines) {
+      if (entry.inFrontmatter) continue;
+      const t = entry.text.trim();
+      if (!t || /^```/.test(t) || /^(?:#+ |[-*] |\d+\. )/.test(entry.text)) {
+        flushChunk();
+        continue;
+      }
+      if (!chunkParts.length) chunkStart = entry.lineNo;
+      chunkParts.push(t);
+      if (/[.;!?]$/.test(t)) flushChunk();
+    }
+    flushChunk();
+
     const fmData = fm?.data;
     if (fmData) {
       if (fmData.autoMerge === true) errors.push(`${relPath}: frontmatter cấm autoMerge: true`);
@@ -678,20 +797,49 @@ export function validateRepo({
     }
   }
 
+  // 4b. Scan all remaining text/markdown/script files under .agents/{rules,agents,prompts,skills}
+  const checkedSet = new Set(checkedFiles);
+  for (const sub of SYNC_SUBDIRS) {
+    const subDir = path.join(agentsRoot, sub);
+    for (const rf of listFilesRecursive(subDir)) {
+      const rel = `.agents/${sub}/${rf}`;
+      if (checkedSet.has(rel)) continue;
+      checkedSet.add(rel);
+      checkedFiles.push(rel);
+      const buf = fs.readFileSync(path.join(subDir, rf));
+      if (!buf.includes(0)) {
+        const content = buf.toString('utf8');
+        const fm = parseFrontmatter(content);
+        checkSafety(rel, content, fm.ok ? fm : null);
+      }
+    }
+  }
+
   // 5. Parity check with pluginDir
   let pluginChecked = false;
-  if (pluginDir && fs.existsSync(pluginDir)) {
+  const plugRootStat = pluginDir ? pathLstat(pluginDir) : null;
+  if (plugRootStat && plugRootStat.isSymbolicLink()) {
+    errors.push(`Thư mục plugin là symlink, cấm theo sau: ${pluginDir}`);
+  } else if (pluginDir && fs.existsSync(pluginDir)) {
     pluginChecked = true;
     for (const sub of SYNC_SUBDIRS) {
       const repoSub = path.join(agentsRoot, sub);
       const plugSub = path.join(pluginDir, sub);
+      for (const sym of findSymlinksRecursive(plugSub)) {
+        errors.push(`Symlink không hợp lệ trong plugin (${pluginDir}/${sub}/${sym})`);
+      }
       const repoFiles = new Set(listFilesRecursive(repoSub));
       const plugFiles = new Set(listFilesRecursive(plugSub));
 
       for (const rf of repoFiles) {
         const src = path.join(repoSub, rf);
         const dst = path.join(plugSub, rf);
-        if (!fs.existsSync(dst)) {
+        const dstStat = pathLstat(dst);
+        if (dstStat && dstStat.isSymbolicLink()) {
+          errors.push(`Lệch plugin (${sub}/${rf}): đích là symlink, cấm theo sau (${dst})`);
+          continue;
+        }
+        if (!dstStat) {
           errors.push(`Lệch plugin (${sub}/${rf}): thiếu trong ${pluginDir}`);
           continue;
         }
@@ -725,23 +873,37 @@ export function syncPlugin({
   if (!fs.existsSync(agentsRoot)) {
     throw new Error(`Thiếu thư mục ${agentsRoot}`);
   }
+  const repoSymlinks = findSymlinksRecursive(agentsRoot);
+  if (repoSymlinks.length > 0) {
+    throw new Error(`Phát hiện symlink không hợp lệ trong .agents/: ${repoSymlinks.join(', ')}`);
+  }
+  const plugRootStat = pathLstat(pluginDir);
+  if (plugRootStat && plugRootStat.isSymbolicLink()) {
+    throw new Error(`Từ chối đồng bộ vì pluginDir là symlink: ${pluginDir}`);
+  }
+
   const copied = [];
   const unchanged = [];
   const removed = [];
 
-  if (!dryRun) fs.mkdirSync(pluginDir, { recursive: true });
-
   for (const sub of SYNC_SUBDIRS) {
     const repoSub = path.join(agentsRoot, sub);
     const plugSub = path.join(pluginDir, sub);
+    const plugSymlinks = findSymlinksRecursive(plugSub);
+    if (plugSymlinks.length > 0) {
+      throw new Error(`Từ chối ghi đè hoặc theo sau symlink trong plugin (${plugSub}): ${plugSymlinks.join(', ')}`);
+    }
+
     const repoFiles = listFilesRecursive(repoSub);
     const repoSet = new Set(repoFiles);
 
     for (const rel of repoFiles) {
       const src = path.join(repoSub, rel);
       const dst = path.join(plugSub, rel);
+      assertNoSymlinksInRelativePath(plugSub, rel);
       const srcBuf = fs.readFileSync(src);
-      const same = fs.existsSync(dst) && Buffer.compare(srcBuf, fs.readFileSync(dst)) === 0;
+      const dstStat = pathLstat(dst);
+      const same = Boolean(dstStat && dstStat.isFile()) && Buffer.compare(srcBuf, fs.readFileSync(dst)) === 0;
       if (same) {
         unchanged.push(`${sub}/${rel}`);
       } else {
@@ -772,6 +934,7 @@ function main() {
   const { flags, multi } = parseArgs(process.argv.slice(2));
   const repoDir = flags['repo-dir'] ? path.resolve(flags['repo-dir']) : DEFAULT_REPO_DIR;
   const pluginDir = flags['plugin-dir'] ? path.resolve(flags['plugin-dir']) : DEFAULT_PLUGIN_DIR;
+  const dryRun = Boolean(flags['dry-run']);
   const lesson = flags['tu-json'] ? readJsonLesson(flags['tu-json']) : null;
 
   let ranAction = false;
@@ -783,8 +946,9 @@ function main() {
       ten: flags.ten || lesson?.skill || lesson?.ten,
       moTa: flags['mo-ta'] || lesson?.moTa,
       mucDich: flags['muc-dich'] || lesson?.mucDich,
+      dryRun,
     });
-    console.log(`PASS tao-skill: ${path.relative(repoDir, res.skillPath)}`);
+    console.log(`PASS tao-skill${res.dryRun ? ' (DRY_RUN)' : ''}: ${path.relative(repoDir, res.skillPath)}`);
   }
 
   if (flags['cap-nhat-skill']) {
@@ -796,8 +960,9 @@ function main() {
       quyTac: flags['quy-tac'] || lesson?.quyTac,
       pr: flags.pr || lesson?.pr,
       viDu: flags['vi-du'] || lesson?.viDu,
+      dryRun,
     });
-    console.log(`PASS cap-nhat-skill: ${path.relative(repoDir, res.skillPath)} (Luật ${res.ruleNumber}, changed=${res.updated})`);
+    console.log(`PASS cap-nhat-skill${res.dryRun ? ' (DRY_RUN)' : ''}: ${path.relative(repoDir, res.skillPath)} (Luật ${res.ruleNumber}, changed=${res.updated})`);
   }
 
   if (flags['tao-loi-nhac']) {
@@ -812,8 +977,9 @@ function main() {
       forbiddenFiles: lesson?.forbiddenFiles,
       gates: lesson?.gates,
       updatedFrom: lesson?.updatedFrom || (lesson?.nguon ? [lesson.nguon] : []),
+      dryRun,
     });
-    console.log(`PASS tao-loi-nhac: ${path.relative(repoDir, res.promptPath)}`);
+    console.log(`PASS tao-loi-nhac${res.dryRun ? ' (DRY_RUN)' : ''}: ${path.relative(repoDir, res.promptPath)}`);
   }
 
   if (flags['cap-nhat-loi-nhac']) {
@@ -823,8 +989,9 @@ function main() {
       ten: flags.ten || lesson?.loiNhac || lesson?.bee || lesson?.ten,
       quyTac: flags['quy-tac'] || lesson?.quyTacLoiNhac || lesson?.quyTac,
       nguon: flags.nguon || lesson?.nguon || lesson?.pr,
+      dryRun,
     });
-    console.log(`PASS cap-nhat-loi-nhac: ${path.relative(repoDir, res.promptPath)} (changed=${res.updated})`);
+    console.log(`PASS cap-nhat-loi-nhac${res.dryRun ? ' (DRY_RUN)' : ''}: ${path.relative(repoDir, res.promptPath)} (changed=${res.updated})`);
   }
 
   // Standalone --tu-json convenience when no explicit --tao-*/--cap-nhat-* flag is given
@@ -838,8 +1005,9 @@ function main() {
         quyTac: lesson.quyTac,
         pr: lesson.pr,
         viDu: lesson.viDu,
+        dryRun,
       });
-      console.log(`PASS cap-nhat-skill (tu-json): ${path.relative(repoDir, res.skillPath)} (Luật ${res.ruleNumber}, changed=${res.updated})`);
+      console.log(`PASS cap-nhat-skill (tu-json${res.dryRun ? ', DRY_RUN' : ''}): ${path.relative(repoDir, res.skillPath)} (Luật ${res.ruleNumber}, changed=${res.updated})`);
     }
     if ((lesson.loiNhac || lesson.bee) && (lesson.quyTacLoiNhac || lesson.quyTac)) {
       ranAction = true;
@@ -848,16 +1016,17 @@ function main() {
         ten: lesson.loiNhac || lesson.bee,
         quyTac: lesson.quyTacLoiNhac || lesson.quyTac,
         nguon: lesson.nguon || lesson.pr,
+        dryRun,
       });
-      console.log(`PASS cap-nhat-loi-nhac (tu-json): ${path.relative(repoDir, res.promptPath)} (changed=${res.updated})`);
+      console.log(`PASS cap-nhat-loi-nhac (tu-json${res.dryRun ? ', DRY_RUN' : ''}): ${path.relative(repoDir, res.promptPath)} (changed=${res.updated})`);
     }
   }
 
   if (flags['dong-bo']) {
     ranAction = true;
-    const res = syncPlugin({ repoDir, pluginDir, dryRun: Boolean(flags['dry-run']) });
+    const res = syncPlugin({ repoDir, pluginDir, dryRun });
     console.log(
-      `PASS dong-bo${res.dryRun ? ' (dry-run)' : ''}: copied=${res.copied.length}, unchanged=${res.unchanged.length}, removed=${res.removed.length} -> ${res.pluginDir}`,
+      `PASS dong-bo${res.dryRun ? ' (DRY_RUN)' : ''}: copied=${res.copied.length}, unchanged=${res.unchanged.length}, removed=${res.removed.length} -> ${res.pluginDir}`,
     );
     for (const c of res.copied) console.log(`  + ${c}`);
     for (const r of res.removed) console.log(`  - ${r}`);
