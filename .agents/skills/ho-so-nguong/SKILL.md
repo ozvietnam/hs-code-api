@@ -132,3 +132,6 @@ node scripts/dem-ca-test.mjs "/tmp/m74-c${CH}.log"
 # 3. Kiểm tra cứng phạm vi 2 tệp của thẻ M-74
 git diff --name-only origin/main...HEAD | node scripts/kiem-pham-vi-the.mjs "[M-74] Ngưỡng chương ${CH}" "agy/m-74-c${CH}"
 ```
+
+## Đánh số id (bắt buộc, 27/11)
+- id bản ghi M-74 có dạng `hs:<nut>:74NN` (đuôi bắt đầu bằng 74), KHÔNG đánh theo số chương. Lý do: PR M-74 và M-75 cùng chương đánh 91xx → trùng `hs:chuong:91:9101` giữa nguong/91 và liet-ke/91, cổng khuôn đỏ cho mọi PR sau (sửa ở #2300). Trước khi nộp, kiểm id không trùng với tệp anh em đã có trên main.
