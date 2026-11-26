@@ -4853,7 +4853,59 @@
    "gir": "GIR 1 + GIR 6",
    "basis": "RULE_TABLE",
    "sourceVi": "Biểu thuế 85437090 «Loại khác» trong 8543.70 (máy điện có chức năng riêng). OZV-2360/2361 thực địa 26/11: «vòng đeo tay nhận diện 254x32» search thô kéo 3926/8471, cửa sổ không có 8543/9031; classify hỏi nhánh 3926.90 (polymerType) — sai hướng. Thêm từ điển kéo 8543.70.90 (+ 9031.80.90 trong cửa sổ) và chặn 3926/7116 khi câu có nhận diện/RFID/wearable."
+  },
+  {
+   "id": "dong-co-diesel-may-xuc",
+   "titleVi": "Động cơ diesel cho máy xúc/bulldozer (84.29/84.30) — ma trận công suất × mục đích của 8408.90",
+   "terms": [
+    "động cơ máy xúc",
+    "động cơ diesel máy xúc lật",
+    "engine excavator",
+    "động cơ bulldozer",
+    "động cơ máy đào",
+    "động cơ diesel công nghiệp"
+   ],
+   "excludeIfAny": [
+    "động cơ xe tải",
+    "động cơ ô tô",
+    "động cơ tàu"
+   ],
+   "excludeReasonVi": "Động cơ dùng cho xe của CHƯƠNG 87 (ô tô, xe tải) thuộc 8408.20 — không phải 8408.90.",
+   "candidates": [
+    {
+     "hs": "84089091",
+     "whenVi": "Công suất ≤ 100 kW + dùng cho máy nhóm 84.29/84.30 (máy xúc lật, bulldozer, máy đào đắp) — MFN 10%, TT 15%. Ca thật 26/11: diesel 58 kW Wuquanda cho máy xúc lật",
+     "confidence": "high"
+    },
+    {
+     "hs": "84089051",
+     "whenVi": "Công suất TRÊN 100 kW + dùng cho máy 84.29/84.30 — MFN chỉ 5% (dòng ưu đãi theo mục đích) — BẪY: động cơ lớn hơn khai nhầm .91 mất 5 điểm",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84089099",
+     "whenVi": "Loại khác ≤100 kW KHÔNG dùng cho 84.29/84.30 (máy phát, tàu thuyền, công nghiệp chung) — MFN 10%",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84082096",
+     "whenVi": "Chỉ khi dùng cho XE CHƯƠNG 87 (ô tô, xe tải) → 8408.20 (lá theo dung tích xi-lanh, vd 8408.20.96 trên 3.500cc)",
+     "confidence": "low"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "8431",
+     "whyVi": "Động cơ được heading 8408 mô tả cụ thể — không đổ về phụ tùng 8431.20 (máy đào) theo GIR 1."
+    }
+   ],
+   "askVi": [
+    "Công suất kW bao nhiêu (18,65 / 100 là ngưỡng tách dòng)? Dùng cho máy gì (xe chương 87 → 8408.20; máy đào đắp 84.29/84.30 → dòng .91/.51; khác → .99)?"
+   ],
+   "gir": "GIR 1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế VN 8408.90.91 'Dùng cho máy thuộc nhóm 84.29 hoặc 84.30' (MFN 10) vs .51 '>100 kW cùng mục đích' (MFN 5) vs .10 '≤18,65 kW' (MFN 25). Ca thật 26/11/2026: diesel 58 kW vỏ sắt 1200×800×1000mm, không nhãn hiệu, NSX Wuquanda Machinery (TQ) cho máy xúc lật; ACFTA CN 0% Form E. 8408.20 chia lá theo dung tích xi-lanh (84082093/94/95/96), không có .99."
   }
  ],
- "updatedAt": "2026-11-26T06:43:38Z"
+ "updatedAt": "2026-11-26"
 }
