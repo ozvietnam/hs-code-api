@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot4",
-    "ngay": "2026-10-31",
-    "ghiChu": "Xanh trên main sau #708 (soát cùng đợt). .30: \"bằng gang đúc\" là chất liệu của ống/phụ kiện ĐÍCH (EN \"hubless cast iron pipes and pipe fittings\"), gắn vào dungCho chuỗi con nguyên văn trọn đích là đúng QUY-TRINH 3.11; giữ một chuỗi \"các ống không có đầu nối và phụ kiện ghép nối bằng gang đúc\" chấp nhận được: đích là hệ ống + phụ kiện mà bộ kẹp nối với nhau (không phải danh sách hàng thay thế của chính hàng), tách mảng làm mất \"gang đúc\" của ống; lúc chạy đích đọc là tập con ⇒ CHUA_BIET, đích vật liệu khác ⇒ TRAI. chatLieu thép không gỉ của bộ kẹp; \"đã lắp với măng sông cao su\" giữ trong tenLoai nguyên cụm (quy ước #665). .70 HOAC theo quyết định GĐ (#708). .20 Máng/chén + congDung. Tiền lệ 7326.90.99 (8941 khoá cáp, 4142 bộ chống rung, 185 khay ly…) cùng chiều, không lệch.",
-    "bam": "eaf4103e658c7dd3d1e86a2512cc730303320a300bd6706b3d27fda51aa898dc"
+    "phien": "paperclip:tho-hs-01#soat-732690-ozv-2349",
+    "ngay": "2026-11-26",
+    "ghiChu": "OZV-2349: bỏ chatLieu LA \"thép không gỉ\" ở .30 — giá trị ngoài danh mục vật liệu chuẩn (thép/sắt/gang gộp thành \"kim loại\") nên luôn TRAI, giết chính ca dong-co-ten 73269030; chất liệu đã nằm nguyên cụm trong tenLoai. Giữ nguyên (1) dungFor trọn đích \"bằng gang đúc\", (3) măng sông cao su trong tenLoai (#665).",
+    "bam": "f4ba3beaf15e2e4426c00688484e372c85a0dc2099c15acfaab924e02ab3902f"
   },
   "dieuKienNut": [],
   "dong8": [
@@ -62,11 +62,6 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Bộ kẹp bằng thép không gỉ đã lắp với măng sông cao su"
-        },
-        {
-          "fact": "chatLieu",
-          "op": "LA",
-          "value": "thép không gỉ"
         },
         {
           "fact": "dungCho",
@@ -165,7 +160,7 @@
     {
       "ma": "73269030",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.73269030 \"Bộ kẹp bằng thép không gỉ đã lắp với măng sông cao su dùng cho các ống không có đầu nối và phụ kiện ghép nối bằng gang đúc(SEN)\"; chữ Anh \"Stainless steel clamp assemblies with rubber sleeves of a kind used for hubless cast iron pipes and pipe fittings\". (1) \"bằng gang đúc\" là chất liệu của ỐNG/PHỤ KIỆN ĐÍCH, không phải của bộ kẹp (bản thợ PR #642 đọc sai) ⇒ theo QUY-TRINH 3.11 \"chất liệu của hàng ĐÍCH thuộc về đích\": dungCho chuỗi con nguyên văn trọn đích \"các ống không có đầu nối và phụ kiện ghép nối bằng gang đúc\" (giữ cả \"phụ kiện ghép nối\" bản thợ bỏ và \"bằng gang đúc\"). Không tách thành mảng [\"các ống không có đầu nối\",\"phụ kiện ghép nối bằng gang đúc\"]: \"gang đúc\" chung cho cả ống (chữ Anh \"cast iron pipes\"), tách ra thì ống không đầu nối bằng nhựa cũng thoả ⇒ rộng hơn chữ. Với bộ so âm tiết, đích khai chỉ \"ống gang đúc không đầu nối\" (tập con của chuỗi) ⇒ CHUA_BIET (không bị loại oan), đích bằng vật liệu khác (\"ống nhựa …\") ⇒ TRAI. (2) Chất liệu của chính bộ kẹp ⇒ chatLieu LA \"thép không gỉ\". (3) vế \"đã lắp với măng sông cao su\" (\"with rubber sleeves\") không có khoá ⇒ giữ trong tenLoai nguyên cụm \"Bộ kẹp bằng thép không gỉ đã lắp với măng sông cao su\" (chuỗi con nguyên văn — cách GĐ chấp nhận ở #665), không bỏ vế, không BO_VE."
+      "ghiChu": "tax.73269030 \"Bộ kẹp bằng thép không gỉ đã lắp với măng sông cao su dùng cho các ống không có đầu nối và phụ kiện ghép nối bằng gang đúc(SEN)\"; chữ Anh \"Stainless steel clamp assemblies with rubber sleeves of a kind used for hubless cast iron pipes and pipe fittings\". (1) \"bằng gang đúc\" là chất liệu của ỐNG/PHỤ KIỆN ĐÍCH, không phải của bộ kẹp (bản thợ PR #642 đọc sai) ⇒ theo QUY-TRINH 3.11 \"chất liệu của hàng ĐÍCH thuộc về đích\": dungFor (dungCho) chuỗi con nguyên văn trọn đích \"các ống không có đầu nối và phụ kiện ghép nối bằng gang đúc\" (giữ cả \"phụ kiện ghép nối\" bản thợ bỏ và \"bằng gang đúc\"). Không tách thành mảng [\"các ống không có đầu nối\",\"phụ kiện ghép nối bằng gang đúc\"]: \"gang đúc\" chung cho cả ống (chữ Anh \"cast iron pipes\"), tách ra thì ống không đầu nối bằng nhựa cũng thoả ⇒ rộng hơn chữ. Với bộ so âm tiết, đích khai chỉ \"ống gang đúc không đầu nối\" (tập con của chuỗi) ⇒ CHUA_BIET (không bị loại oan), đích bằng vật liệu khác (\"ống nhựa …\") ⇒ TRAI. (2) Bỏ chatLieu LA \"thép không gỉ\" (OZV-2349): giá trị không nằm trong danh mục vật liệu chuẩn của máy (chatLieuTrong gộp thép/sắt/gang ⇒ \"kim loại\") ⇒ điều kiện không bao giờ THOA mà luôn TRAI trên mọi ca của nhóm (chữ ten6 \"bằng sắt hoặc thép\" đảm bảo luôn đọc được vật liệu) ⇒ chính dòng .30 bị loại ở ca của nó; chất liệu \"thép không gỉ\" của bộ kẹp nằm sẵn nguyên cụm trong tenLoai \"Bộ kẹp bằng thép không gỉ đã lắp với măng sông cao su\". (3) vế \"đã lắp với măng sông cao su\" (\"with rubber sleeves\") không có khoá ⇒ giữ trong tenLoai nguyên cụm (chuỗi con nguyên văn — cách GĐ chấp nhận ở #665), không bỏ vế, không BO_VE."
     },
     {
       "ma": "73269060",
