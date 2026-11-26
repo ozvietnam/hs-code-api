@@ -1760,6 +1760,234 @@ const H6EN_DOMAINS = [
       ],
     },
   },
+  // 15119042/15119049 residual (OZV-2280): dầu cọ + phân đoạn không crude, không hóa chỉnh,
+  // bán rời >25kg (sibling ≤25kg; thể rắn 15119041; IV 30–40 là 15119031) → đo chính 15119049
+  {
+    match: /palm oil and its fractions, other than crude/i,
+    domain: {
+      type: 'Dầu cọ và phân đoạn lỏng (olein/PMF) bán rời, đóng gói >25kg',
+      items: [
+        'Dầu cọ olein RBD IV56 phuy thép 200L (khối lượng tịnh 180kg)',
+        'Dầu cọ olein RBD IV57 chở tank container 21 tấn',
+        'Dầu cọ olein siêu (super olein IV62) flexitank 20 tấn',
+        'Phân đoạn giữa dầu cọ PMF (palm mid-fraction) IBC tote 1000L',
+        'Dầu cọ kỹ thuật nguyên liệu xà phòng (soap grade) phuy 200L',
+        'Dầu cọ nến (candle grade) IV58 phuy 190kg',
+        'Dầu cọ cosmetic grade nguyên liệu mỹ phẩm tank 18 tấn',
+        'Dầu cọ nguyên liệu sản xuất axit palmitic (oleochemical) bồn 20 tấn',
+        'Dầu cọ tinning grade dùng mạ thiếc nhúng nhóng phuy 200L',
+        'Dầu cọ bôi trơn công nghiệp (lubricant grade) phuy 190kg',
+        'Dầu cọ olein RBD food-grade bán rời (bulk) xe bồn 22 tấn',
+        'Dầu cọ đỏ tinh luyện giàu carotenoid (red palm olein) phuy 200L',
+      ],
+    },
+  },
+  // 15132913/15132914/15132996/15132997 residual (OZV-2280): dầu hạt cọ/ba-ba-su KHÔNG crude,
+  // KHÔNG phân đoạn thể rắn, KHÔNG RBD đóng thùng nhỏ (đó là sibling) → tinh luyện/bulk/kỹ thuật
+  {
+    match: /palm kernel or babassu oil and their fractions, other than crude/i,
+    domain: {
+      type: 'Dầu hạt cọ / dầu ba-ba-su tinh luyện dạng lỏng, bán rời (bulk)',
+      items: [
+        'Dầu hạt cọ (palm kernel oil) tinh luyện phuy 200L 185kg',
+        'Dầu hạt cọ công nghiệp nguyên liệu xà phòng (soap grade) tank 20 tấn',
+        'Dầu hạt cọ cosmetic grade nguyên liệu mỹ phẩm phuy 190kg',
+        'Dầu hạt cọ nguyên liệu margarine và shortening bồn 21 tấn',
+        'Dầu hạt cọ (PKO) food grade IBC tote 1000L',
+        'Dầu ba-ba-su (babassu oil) tinh luyện nguyên liệu mỹ phẩm phuy 180kg',
+        'Dầu ba-ba-su hữu cơ certified organic tank container 18 tấn',
+        'Dầu hạt cọ dùng socola coating dạng thay thế bơ ca cao (CBS) phuy 200L',
+        'Dầu hạt cọ nguyên liệu nến (candle grade) phuy 190kg',
+        'Dầu hạt cọ bôi trơn dạng lỏng (lubricant grade) phuy 200L',
+        'Dầu hạt cọ nguyên liệu oleochemical bồn tank 20 tấn',
+        'Dầu hạt cọ tinh luyện chở flexitank 20 tấn',
+      ],
+    },
+  },
+  // 15152919/15152999 residual (OZV-2280): dầu ngô không crude, KHÔNG phân đoạn thể rắn
+  {
+    match: /maize \(corn\) oil and its fractions, other than crude/i,
+    domain: {
+      type: 'Dầu ngô tinh luyện (chai lẻ + bán rời)',
+      items: [
+        'Dầu ngô tinh luyện chai PET 900ml lốc 12',
+        'Dầu ngô chai PET 1.8L thùng 6 chai',
+        'Dầu ngô can nhựa 5L (jerry can)',
+        'Dầu ngô tinh luyện phuy 200L 190kg',
+        'Dầu ngô nguyên liệu margarine tank container 20 tấn',
+        'Dầu ngô hữu cơ ép lạnh (organic cold-pressed) chai 250ml lốc 24',
+        'Dầu ngô không cholesterol chai 1L lốc 12',
+        'Dầu ngô (corn oil) food grade IBC tote 1000L',
+        'Dầu ngô tinh luyện giàu vitamin E chai 500ml',
+        'Dầu ngô thức ăn chăn nuôi (feed grade) phuy 190kg',
+        'Dầu ngô chiên sâu (fryer grade) phuy 200L',
+        'Dầu ngô tinh luyện chai 2L lốc 6',
+      ],
+    },
+  },
+  // 19021990 residual (OZV-2280): pasta KHÔNG trứng, KHÔNG nhân — không phải bún gạo/miến (sibling)
+  {
+    match: /pasta, uncooked \(excluding that containing eggs\), not stuffed/i,
+    domain: {
+      type: 'Mì Ý (pasta durum) khô không trứng, không nhân',
+      items: [
+        'Mì Ý sợi spaghettini n°3 durum 500g',
+        'Mì Ý sợi linguine n°7 lúa cứng khô 500g',
+        'Mì Ý sợi penne rigate durum 500g',
+        'Mì Ý sợi fusilli tricolore 500g',
+        'Mì Ý sợi rigatoni durum 500g',
+        'Mì Ý tổ chim (nests) tagliatelle khô 250g',
+        'Mì Ý sợi angel hair capellini n°1 500g',
+        'Mì Ý nguyên cám (whole wheat) penne 500g',
+        'Mì Ý không gluten penne từ bột gạo ngô 400g',
+        'Mì Ý sợi bucatini durum 500g',
+        'Mì Ý lá lasagne khô durum 500g',
+        'Mì Ý sợi orecchiette durum 500g',
+      ],
+    },
+  },
+  // 19049090 residual (OZV-2280): ngũ cốc dạng hạt sơ chế — KHÔNG ngô (nhóm khác), KHÔNG chế phẩm gạo (sibling)
+  {
+    match: /cereal or cereal products \(excluding maize\), in grain form, pre-cooked or otherwise prepared/i,
+    domain: {
+      type: 'Ngũ cốc dạng hạt đã sơ chế (yến mạch, bulgur, kiều mạch…)',
+      items: [
+        'Yến mạch ăn liền (instant oatmeal) hương gói 40g lốc 10',
+        'Yến mạch cán dày (rolled oats) túi 1kg',
+        'Yến mạch cắt thép (steel cut oats) túi 680g',
+        'Bulgur lúa mì hạt nứt túi 500g',
+        'Kiều mạch hạt rang chín (kasha) túi 800g',
+        'Quinoa hạt đã sơ chế (pre-cooked) túi 250g',
+        'Ngũ cốc đa hạt sơ chế (lúa mì, lúa mạch, mạch đen) túi 1kg',
+        'Lúa mì pearl (lúa mạch tròn) sơ chế túi 1kg',
+        'Hạt kê (millet) xát vỏ sơ chế túi 500g',
+        'Farro lúa mì hạt sơ chế túi 500g',
+        'Lúa mạch pearl (barley) sơ chế túi 1kg',
+        'Ngũ cốc hạt nảy mầm (sprouted wheat berries) túi 500g',
+      ],
+    },
+  },
+  // 20052019/20052099 residual (OZV-2280): khoai tây chế biến KHÔNG dấm, KHÔNG đông lạnh,
+  // KHÔNG bán lẻ bao bì kín khí (sibling) → hộp thiếc/lọ/catering
+  {
+    match: /potatoes, prepared or preserved otherwise than by vinegar or acetic acid, not frozen/i,
+    domain: {
+      type: 'Khoai tây chế biến đóng hộp/lọ (không dấm, không đông lạnh)',
+      items: [
+        'Khoai tây nguyên củ hộp thiếc 425g',
+        'Khoai tây lát hộp thiếc 425g',
+        'Khoai tây nghiền (mashed potatoes) hộp thiếc 400g',
+        'Khoai tây hộp thủy tinh 720ml',
+        'Khoai tây nghiền túi aseptic 1kg catering',
+        'Khoai tây chiên par-fry bảo quản lạnh không đông lạnh bao 5kg',
+        'Khoai tây muối ớt đóng hộp 300g',
+        'Khoai tây hầm đóng lọ (stewed) 500g',
+        'Khoai tây nguyên củ ngâm muối (brined) can 5kg',
+        'Khoai tây nghiền hương bơ hộp thiếc 425g',
+      ],
+    },
+  },
+  // 20081999 residual (OZV-2280): nhóm hạt còn lại (trừ lạc, trừ hạt điều/đã rang là sibling)
+  // — regex bám mệnh đề "(excluding ground-nuts except in mixtures)" chỉ có ở nhóm 2008.19
+  {
+    match: /excluding ground-nuts except in mixtures/i,
+    domain: {
+      type: 'Hạt dinh dưỡng chế biến có đường/gia vị (không điều, không lạc)',
+      items: [
+        'Hạt dẻ cười rang muối bao 1kg hũ PET',
+        'Hạnh nhân rang bơ mật ong hũ 500g',
+        'Hạt óc chó tẩm đường hương vani gói 250g',
+        'Hạt mắc ca rang muối loại A hũ 680g',
+        'Hỗn hợp 4 loại hạt dinh dưỡng (óc chó, hạnh nhân, mắc ca, hạt điều rang muối) túi 500g',
+        'Hạt dẻ Trung Quốc luộc đường túi hút chân không 800g',
+        'Hạnh nhân tẩm ớt cay (hot & spicy almonds) túi 200g',
+        'Hạt bí (pepita) rang gia vị wasabi túi 150g',
+        'Hồ đào rang bơ maple (maple pecans) hộp 340g',
+        'Hạt dẻ cười tẩm muối ớt bơ hộp thiếc 850g',
+      ],
+    },
+  },
+  // 24031919/24031999 residual (OZV-2280): thuốc lá sợi cho TẪU — không ang hoon, không lá
+  // chế biến cho sản xuất thuốc điếu (sibling), không shisha (water pipe)
+  {
+    match: /smoking, other than water pipe tobacco/i,
+    domain: {
+      type: 'Thuốc lá sợi cho tẩu (pipe tobacco) các blend',
+      items: [
+        'Thuốc lá tẩu Black Cavendish hộp thiếc 100g',
+        'Thuốc lá sợi tẩu hương vanilla gói 50g',
+        'Pipe tobacco aromatic blend hương anh đào túi 30g',
+        'Thuốc lá tẩu Virginia Gold sợi khô gói 100g',
+        'Pipe tobacco Burley light sợi khô hộp 50g',
+        'Thuốc lá tẩu dạng bánh ép (pressed flake) hộp thiếc 100g',
+        'Thuốc lá tẩu hữu cơ (organic pipe tobacco) túi 50g',
+        'Pipe tobacco blend kiểu Nam Phi túi 30g',
+        'Thuốc lá tẩu sợi thô (loose cut) gói lớn 500g',
+        'Thuốc lá tẩu hương mật ong (honeydew) gói 50g',
+        'Pipe tobacco ribbon cut hương kem túi 50g',
+      ],
+    },
+  },
+  // 25010099 residual (OZV-2280): NaCl TINH KHIẾT ≥99.5% (sibling là muối thực phẩm, muối mỏ,
+  // nước biển, NaCl 60–97% i-ốt, NaCl ≥97%) — dùng chỉ 99.5%+ để tách khỏi sibling ≥97%
+  {
+    match: /pure sodium chloride/i,
+    domain: {
+      type: 'Muối NaCl tinh khiết ≥99.5% (thực phẩm/dược/kỹ thuật)',
+      items: [
+        'Muối NaCl tinh khiết 99.5% nguyên liệu thực phẩm pharma bao 25kg',
+        'Muối sodium chloride tinh khiết phân tích (AR grade) chai 500g',
+        'Muối NaCl tinh khiết dùng điện phân bao 1 tấn',
+        'Muối tinh khiết vi sinh (life science grade) chai 1kg',
+        'Muối NaCl tái kết tinh (recrystallized) 99.8% bao 25kg',
+        'Muối tinh khiết nuôi trồng thủy sản 99.6% bao 50kg',
+        'Muối NaCl dược liệu (pharmaceutical grade) 99.9% bao 25kg',
+        'Muối viên tinh khiết làm mềm nước (softener pellets 99.5%) bao 20kg',
+        'Dung dịch muối NaCl tinh khiết 25% (brine) can 25L',
+        'Nước muối tinh khiết (pure brine) IBC 1000L',
+      ],
+    },
+  },
+  // 36049090 residual (OZV-2280): đạn tín hiệu/pháo chống mưa — tránh nguyên văn "Pháo hiệu",
+  // "Pháo thăng thiên", "pháo hoa nhỏ đồ chơi" (sibling)
+  {
+    match: /signalling flares, rain rockets, fog signals/i,
+    domain: {
+      type: 'Đạn tín hiệu hàng hải/hàng không + pháo chống mưa (trừ pháo hoa)',
+      items: [
+        'Đạn tín hiệu hàng hải cầm tay đỏ (red handheld flare) ống 30cm',
+        'Đạn tín hiệu dù đỏ (parachute flare) hộp 6 viên',
+        'Đạn pháo chống mưa (rain rocket) chống mưa đá 800mm',
+        'Tín hiệu sương mù (fog signal) loại nổ 60 giây',
+        'Đạn tín hiệu khói cam nổi (orange smoke float) hàng hải',
+        'Đạn tín hiệu chiếu sáng ban đêm ống nhôm',
+        'Đạn tín hiệu đường sắt (railway track torpedo) cảnh báo',
+        'Đạn pháo chống mưa hai nòng dùng nông nghiệp',
+        'Đạn tín hiệu cháy chậm màu trắng hàng hải',
+        'Đạn tín hiệu khói nổi (buoyant smoke) chuẩn SOLAS',
+      ],
+    },
+  },
+  // 40121290 residual (OZV-2280): lốp TÁI SINH xe khách/xe tải cỡ rộng >450mm
+  // (sibling ≤450mm) — chỉ dùng size bề rộng >450mm
+  {
+    match: /of a kind used on motor buses or lorries/i,
+    domain: {
+      type: 'Lốp tái sinh xe khách/xe tải cỡ rộng trên 450mm',
+      items: [
+        'Lốp tái sinh xe tải 455/55R22.5 16PR',
+        'Lốp tái sinh sơ mi rơ moóc 455/40R22.5 16PR',
+        'Lốp tái sinh đầu kéo 495/45R22.5 20PR',
+        'Lốp tái sinh xe tải hạng nặng 560/60R22.5',
+        'Lốp tái sinh xe ben 20.5R25',
+        'Lốp tái sinh xe ben hạng nặng 23.5R25',
+        'Lốp tái sinh xe chở quặng 24.00R35',
+        'Lốp tái sinh xe tải siêu trường 27.00R49',
+        'Lốp tái sinh xe ben 25 tấn 26.5R25',
+        'Lốp tái sinh xe ben khối lượng lớn 18.00R33',
+      ],
+    },
+  },
   // Generic fallback
   {
     match: /n\.e\.c\.|not elsewhere/i,
