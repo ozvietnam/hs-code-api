@@ -107,6 +107,18 @@ const DAC_TA_RIENG_C84 = {
   'sen:84145910:1#1': 'Hỏi quạt 8414.59.10 có phải loại chỉ sử dụng hoặc chủ yếu sử dụng để làm mát bộ vi xử lý, thiết bị viễn thông hoặc hệ thống xử lý dữ liệu tự động 84.71 không',
   'sen:84239030:1#2': 'Với bộ phận dùng chung giữa cân xe có động cơ và các loại cân điện tử khác khi không xác định được mục đích sử dụng cụ thể: áp dụng Quy tắc 3(c) để xếp vào nhóm cuối cùng theo thứ tự đánh số',
   'sen:84513010:1#4': 'Hỏi máy ép/là 8451.30.10 có được thiết kế đặc biệt để sử dụng trong nhà (gia đình) theo SEN không',
+
+  // Chương 85 & SEN 85
+  'chuong:85:kq:6#1': 'Hỏi thiết bị hoặc linh kiện điện làm bằng sứ hoặc thủy tinh có phải vỏ bóng đèn thủy tinh thuộc nhóm 70.11 không (nếu không thuộc 70.11 vẫn xếp Chương 85 khác Chương 84)',
+  'chuong:85:kq:19#1': 'Hỏi mô đun nhớ điện tử (ngoài nhóm 85.23 và MCOs 85.42) có thích hợp để chỉ dùng hoặc chủ yếu dùng với máy xử lý dữ liệu tự động để phân loại vào nhóm 84.73 như bộ phận máy không',
+  'chuong:85:kq:20#1': 'Hỏi mô đun nhớ điện tử có thích hợp để chỉ dùng hoặc chủ yếu dùng với một máy cụ thể hoặc một số máy trong cùng nhóm để phân loại như bộ phận của máy hoặc nhóm máy đó không',
+  'chuong:85:kq:27#1': 'Hỏi bộ phận không dùng điện thích hợp để chỉ dùng hoặc chủ yếu dùng cho máy hoặc thiết bị điện cụ thể thuộc Chương 85 có xếp cùng máy đó hay vào các nhóm bộ phận 85.03, 85.22, 85.29, 85.38 không',
+  'sen:85371013:1#1': 'Hỏi bảng điều khiển (gồm cả mạch in PCBs) thuộc 8537.10.13 có phải loại thích hợp dùng cho hàng hóa của nhóm 84.15, 84.18, 84.50, 85.08, 85.09 hoặc 85.16 theo SEN không',
+  'pn:854911:ct:1#2': 'Hỏi pin/bộ pin/ắc quy điện thuộc phân nhóm 8549.11 có ở trạng thái chỉ phù hợp để thu hồi, tái chế, thải bỏ hoặc không còn khả năng nạp lại/tích điện không',
+  'pn:854912:ct:1#2': 'Hỏi pin/bộ pin/ắc quy điện thuộc phân nhóm 8549.12 có ở trạng thái chỉ phù hợp để thu hồi, tái chế, thải bỏ hoặc không còn khả năng nạp lại/tích điện không',
+  'pn:854913:ct:1#2': 'Hỏi pin/bộ pin/ắc quy điện thuộc phân nhóm 8549.13 có ở trạng thái chỉ phù hợp để thu hồi, tái chế, thải bỏ hoặc không còn khả năng nạp lại/tích điện không',
+  'pn:854914:ct:1#2': 'Hỏi pin/bộ pin/ắc quy điện thuộc phân nhóm 8549.14 có ở trạng thái chỉ phù hợp để thu hồi, tái chế, thải bỏ hoặc không còn khả năng nạp lại/tích điện không',
+  'pn:854919:ct:1#2': 'Hỏi pin/bộ pin/ắc quy điện thuộc phân nhóm 8549.19 có ở trạng thái chỉ phù hợp để thu hồi, tái chế, thải bỏ hoặc không còn khả năng nạp lại/tích điện không',
 };
 
 /** Các câu ghi BO_QUA có lý do rõ ràng thay vì CHI_LIET_KE. */
@@ -167,9 +179,33 @@ const DAC_TA_BO_QUA_RIENG_C84 = {
   'chuong:84:kq:55#2': 'Dẫn chiếu chung tới Chú giải 3 và 4 Phần XVI',
   'chuong:84:kq:59#1': 'Câu dẫn vào Chú giải 6(E) trước nội dung xét tại kq:62#1',
   'sen:84239030:1#1': 'Danh mục ví dụ minh họa bộ phận cân điện tử của SEN 8423.90.30, phần quy tắc 3(c) nằm ở sen:84239030:1#2',
+
+  // Chương 85
+  'chuong:85#1': 'Tiêu đề Chương 85 chỉ dùng để tra cứu (Quy tắc 1), không tạo câu hỏi mở',
+  'bieu:85#1': 'Tên Chương 85 trong biểu thuế, trùng tiêu đề Chương 85',
+  'chuong:85:kq:4#1': 'Mục dẫn chiếu ranh giới máy Chương 84 chạy điện sang Chú giải tổng quát Chương 84',
+  'chuong:85:kq:5#1': 'Mục dẫn chiếu loại trừ chung đã tách tại Chú giải tổng quát Phần XVI',
+  'chuong:85:kq:18#1': 'Câu dẫn áp dụng Chú giải 2 Phần XVI cho mô đun nhớ điện tử (quy tắc chi tiết nằm ở kq:19#1 và kq:20#1)',
+  'chuong:85:kq:22#1': 'Mục liệt kê ngoại lệ thiết bị nhiệt điện thuộc Chương 84 hoặc nhóm 90.18 (định danh đích danh)',
+  'chuong:85:kq:24#1': 'Câu dẫn chiếu chung sang Chú giải chi tiết tổng quát Phần XVI về bộ phận',
+  'chuong:85:kq:26#1': 'Mục dẫn chiếu bộ phận thuộc Chương 84 (84.13, 84.14, 84.81, 84.82, 84.83)',
+  'nhom:8513:ct:10#1': 'Ví dụ minh họa đèn kiểm tra gắn dải băng đầu trong nhóm 85.13',
+  'nhom:8513:ct:10#4': 'Mục loại trừ đích danh đèn y tế sang nhóm 90.18 (thuộc cạnh KHONG_DUOC_LA)',
+  'nhom:8515:ct:48#1': 'Mục loại trừ đích danh máy hàn vật liệu bán dẫn sang nhóm 84.86 (thuộc cạnh KHONG_DUOC_LA)',
+  'nhom:8523:ct:28#1': 'Mục loại trừ mô đun nhớ điện tử sang Chú giải 2 Phần XVI / 84.73 / 85.42 (đã tách tại chuong:85:kq:19#1, 20#1)',
+  'nhom:8526:ct:17#1': 'Mục loại trừ đích danh xe chuyên dùng lắp rađa sang nhóm 87.05 (thuộc cạnh KHONG_DUOC_LA)',
+  'nhom:8527:ct:12#1': 'Mục loại trừ đích danh xe chuyên dùng lắp thiết bị thu sóng sang nhóm 87.05 (thuộc cạnh KHONG_DUOC_LA)',
+  'nhom:8528:ct:34#1': 'Mục loại trừ đích danh xe chuyên dùng lắp thiết bị thu truyền hình sang nhóm 87.05 (thuộc cạnh KHONG_DUOC_LA)',
+  'nhom:8529:ct:12#1': 'Mục loại trừ đích danh bộ phận nhóm 85.17/85.25–85.28 về nhóm 85.17 (đã tách tại phan:XVI:cg:2:b#2)',
+  'nhom:8530:ct:7#3': 'Mục loại trừ bộ phận của thiết bị gắn vào đầu máy khỏi nhóm 85.30 (thuộc cạnh KHONG_DUOC_LA)',
+  'nhom:8542:ct:51#1': 'Câu dẫn chiếu sang Chú giải 2(b) và 2(c) Phần XVI về phân loại bộ phận',
+  'nhom:8542:ct:52#2': 'Câu dẫn chiếu lặp tới Chú giải 2 Phần XVI (quy tắc đã tách ở chuong:85:kq:19#1, 20#1)',
+  'nhom:8543:ct:1#2': 'Mục loại trừ hàng hóa dùng điện đã mô tả cụ thể hơn ở Chương 84 và Chương 90 (thuộc cạnh LOAI_SANG)',
+  'nhom:8548:ct:3#1': 'Mục loại trừ bộ phận đã thuộc nhóm trước Chương 85 hoặc Chú giải 1 Phần XVI',
+  'nhom:8549:ct:12#1': 'Giải thích thuật ngữ "mục đích ban đầu" trong Chú giải 6 Phần XVI (DINH_NGHIA, trùng phan:XVI:kq:106#1)',
 };
 
-/** Sinh câu hỏi CHI_LIET_KE tự nhiên (KHÔNG có nhãn [...]) cho dòng biểu thuế `bieu:84*`. */
+/** Sinh câu hỏi CHI_LIET_KE tự nhiên (KHÔNG có nhãn [...]) cho dòng biểu thuế `bieu:84*`/`bieu:85*`. */
 function sinhCauHoiBieu(cauId, txt) {
   const ma = cauId.split('#')[0].slice(5);
   const fullClean = txt.replace(/^(?:-\s*)+/, '').replace(/\s*\(SEN\)\s*$/i, '').trim();
@@ -185,6 +221,9 @@ function sinhCauHoiBieu(cauId, txt) {
   }
   if (/chuyên dùng/i.test(clean)) {
     return `Hỏi hàng hóa tại mã ${ma} có được thiết kế chuyên dùng theo tiêu chí của dòng (${clean}) hay không`;
+  }
+  if (/chưa hoàn chỉnh|chưa hoàn thiện|chưa lắp ráp|tháo rời/i.test(clean)) {
+    return `Hỏi hàng hóa tại mã ${ma} ở trạng thái chưa lắp ráp hoặc chưa hoàn chỉnh có đáp ứng tiêu chí hàng chưa lắp ráp / mang đặc trưng cơ bản theo "${clean}" không`;
   }
   return `Hỏi hàng hóa tại mã ${ma} có phải bộ phận đặc trưng thuộc nhóm máy tương ứng (không thuộc bộ phận công dụng chung Phần XV hay nhóm bộ phận khác) theo "${clean}" không`;
 }
@@ -403,17 +442,23 @@ export function kiemPhuLietKeChuong(banGhi, L, chuong) {
   return { tongCauKichHoat: ds.length, daPhu: ds.length - thieu.length, thieu };
 }
 
+const tepTheoChuong = (ch2) => (['84', '85'].includes(ch2) ? new Set(['liet-ke/XVI.jsonl', `liet-ke/${ch2}.jsonl`]) : new Set([`liet-ke/${ch2}.jsonl`]));
+
 function main() {
   const argv = process.argv.slice(2);
   const idx = (k) => { const i = argv.indexOf(k); return i >= 0 ? argv[i + 1] : null; };
   const chuong = idx('--chuong') || '84';
+  const ch2 = String(chuong).padStart(2, '0');
   const luat = path.resolve(idx('--luat') || G.LUAT_MAC_DINH);
   const hoSo = path.resolve(idx('--ho-so') || G.HO_SO_MAC_DINH);
+  const tepCh = tepTheoChuong(ch2);
+  const locChuong = (banGhi) => banGhi.filter((x) => tepCh.has(x._tep || ''));
 
   if (argv.includes('--tao')) {
     const { L, daGhi, tongKichHoat } = ghiKhoLietKeChuong(chuong, { luat, hoSo });
     const kho = kiemKhoHoSo(hoSo);
-    const phu = kiemPhuLietKeChuong(kho.banGhi, L, chuong);
+    const dsCh = locChuong(kho.banGhi);
+    const phu = kiemPhuLietKeChuong(dsCh, L, chuong);
     console.log(`Đã tạo kho M-75 Chương ${chuong}:`, JSON.stringify({ daGhi, khuonLoi: kho.loi.length, tongKichHoat, ...phu }));
     if (kho.loi.length || phu.thieu.length) {
       for (const l of kho.loi) console.error('  ✗', l);
@@ -425,19 +470,21 @@ function main() {
   if (argv.includes('--bao-cao')) {
     const L = napLuatCong(luat);
     const kho = kiemKhoHoSo(hoSo);
-    const phu = kiemPhuLietKeChuong(kho.banGhi, L, chuong);
-    const clk = kho.banGhi.filter((x) => x.loai === 'CHI_LIET_KE');
-    const bq = kho.banGhi.filter((x) => x.loai === BO_QUA);
+    const dsCh = locChuong(kho.banGhi);
+    const phu = kiemPhuLietKeChuong(dsCh, L, chuong);
+    const clk = dsCh.filter((x) => x.loai === 'CHI_LIET_KE');
+    const bq = dsCh.filter((x) => x.loai === BO_QUA);
     console.log(JSON.stringify({ chiLietKe: clk.length, boQua: bq.length, phu }, null, 2));
     return;
   }
 
   const L = napLuatCong(luat);
   const kho = kiemKhoHoSo(hoSo);
+  const dsCh = locChuong(kho.banGhi);
   const rCong45 = chayCong({ luat, hoSo, phamVi: [chuong], cong: [4, 5], L });
-  const phu = kiemPhuLietKeChuong(kho.banGhi, L, chuong);
+  const phu = kiemPhuLietKeChuong(dsCh, L, chuong);
   let coLoi = 0;
-  console.log(`${kho.loi.length ? 'FAIL' : 'PASS'} khuôn M-75 C${chuong}: ${kho.banGhi.length} bản ghi, ${kho.loi.length} lỗi`);
+  console.log(`${kho.loi.length ? 'FAIL' : 'PASS'} khuôn M-75 C${chuong}: ${dsCh.length} bản ghi, ${kho.loi.length} lỗi`);
   for (const l of kho.loi) { console.log(`  ✗ ${l}`); coLoi = 1; }
   for (const k of [4, 5]) {
     const c = rCong45.cong[k];
