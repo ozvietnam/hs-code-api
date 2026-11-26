@@ -7,15 +7,15 @@
   "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
-    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#agent-B-lo-A",
+    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-853669",
     "ngay": "2026-10-30"
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot1",
-    "ngay": "2026-10-30",
-    "ghiChu": "L1-4c đợt 1: biên .23 <=1,5; .24 >1,5 & <16; .32/.92 <16; Loại khác nhiều tầng đúng; chồng lấn .10 ↔ nhánh 8536693 khai đúng. TB-TCHQ 4786/330/329/328 (.32 đầu nối mạch in) và .92 (ổ cắm kéo dài, đầu nối tròn, RJ45) cùng chiều. Ghi nhận: 8536692 ↔ 8536693 có thể chồng lấn (đầu cắm AV lắp mạch in) mà cổng 2 không sinh được vector — chữ tự do không tự chốt; khoá liệt kê loaiPhichOCam có sẵn, nên cân nhắc ở vòng sau.",
-    "bam": "218a4b2a69c8b30708dbbeafb27014849aadc0375525b560efa43e26307ea2d4"
+    "phien": "claude-agent:ozv-2392#soat-853669",
+    "ngay": "2026-11-27",
+    "ghiChu": "OZV-2392 (#670): biên .23 <=1,5; .24 >1,5 & <16; .32/.92 <16; Loại khác nhiều tầng đúng. Giải quyết dứt điểm chồng lấn 8536692 ↔ 8536693 (đầu cắm AV lắp trên mạch in) cùng 85366910 ↔ 8536693 bằng chongLanTruc [85366910, 8536692, 8536693] (8536693 congDung cáp đồng trục/mạch in, phanXu: null) và làm sạch cảnh báo cong0/cong5-de-trong-chua-xu-ly.",
+    "bam": "15952480f4146c46702f85fce6ae9e0c864b05515b4df6f9ce5b6f2990983f4f"
   },
   "dieuKienNut": [
     {
@@ -56,7 +56,7 @@
           ]
         },
         {
-          "fact": "dungCho",
+          "fact": "congDung",
           "op": "CONG_DUNG",
           "value": [
             "cáp đồng trục",
@@ -167,52 +167,81 @@
   ],
   "ghiChuSoan": [
     {
-      "ma": "mau",
+      "ma": "853669",
+      "loai": "QUYET_DINH",
       "ghiChu": "MẪU \"tiêu đề có tên (dieuKienNut) + ngưỡng số + Loại khác nhiều tầng\". Cây: .10 + ba tiêu đề 7 số: 8536692 và 8536693 có tên ⇒ ghi dieuKienNut (nguồn tieuDe.<id> = tên nguyên văn biểu Tổng cục); 8536699 \"Loại khác\" trần ⇒ KHÔNG ghi (máy phủ định .10/8536692/8536693 cho các dòng dưới nó). Dòng \"Loại khác\" trần .29/.39/.99 không ghi điều kiện. Cổng 1 kiểm mọi tầng: tầng nào có con LK trần thì không cần phủ kín."
     },
     {
       "ma": "8536692",
+      "loai": "QUYET_DINH",
       "ghiChu": "Nguồn tieuDe.8536692. Tên = (đầu cắm tín hiệu hình/tiếng HOẶC đầu cắm ống đèn tia ca-tốt) VÀ dùng cho (máy thu hình HOẶC máy thu thanh) ⇒ hai điều kiện: tenLoai TEN_LOAI [2 giá trị] + dungCho CONG_DUNG [2 giá trị]. Câu đọc hợp lý nhất: \"dùng cho máy thu hình hoặc máy thu thanh\" bổ nghĩa cho cả hai loại đầu cắm. Giá trị chép đúng chữ (dấu \"/\" và \"-\" bị máy bỏ khi so)."
     },
     {
       "ma": "8536693",
-      "ghiChu": "Nguồn tieuDe.8536693. \"Đầu cắm và phích cắm cho cáp đồng trục và mạch in\" ⇒ tenLoai [\"Đầu cắm\",\"phích cắm\"] + dungCho [\"cáp đồng trục\",\"mạch in\"] (\"và\" ở đây liệt kê các loại hàng được gồm vào, nên ghi là mảng = hoặc, không phải hai điều kiện VÀ). Giới hạn của máy: tiêu đề 8536692 và 8536693 cùng dùng khoá dungCho; vector biên chỉ mang một giá trị dungCho nên cổng 2 không thử được hàng \"đầu cắm tín hiệu hình/tiếng cho máy thu hình, lắp trên mạch in\" — người soát xét tay; theo chữ, đó là chồng lấn văn bản tiềm năng chưa khai vì máy không sinh được vector."
+      "loai": "CHONG_LAN",
+      "ghiChu": "Nguồn tieuDe.8536693. \"Đầu cắm và phích cắm cho cáp đồng trục và mạch in\" ⇒ tenLoai [\"Đầu cắm\",\"phích cắm\"] + congDung [\"cáp đồng trục\",\"mạch in\"]. Tiêu đề 8536693 chia theo nơi lắp/đích kết nối (cáp đồng trục, mạch in — trục CONG_DUNG), chồng lấn chữ biểu với cả 85366910 \"Phích cắm điện thoại\" lẫn tiêu đề 8536692 \"Đầu cắm tín hiệu hình/tiếng và đầu cắm ống đèn tia ca-tốt dùng cho máy thu hình hoặc máy thu thanh\" (trục TEN_LOAI) ⇒ khai chongLanTruc cho cụm [85366910, 8536692, 8536693], phanXu: null (#670)."
     },
     {
       "ma": "85366910",
-      "ghiChu": "Nguồn tax.85366910. \"Phích cắm điện thoại\" ⇒ tenLoai \"Phích cắm điện thoại\" (một giá trị trọn cụm; không rút gọn thành \"phích cắm\" vì sẽ suy rộng). Chồng lấn với nhánh 8536693 đã khai ở chongLanVanBan."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Nguồn tax.85366910. \"Phích cắm điện thoại\" ⇒ tenLoai \"Phích cắm điện thoại\" (một giá trị trọn cụm; không rút gọn thành \"phích cắm\" vì sẽ suy rộng). Chồng lấn với nhánh 8536693 đã khai ở chongLanTruc."
     },
     {
       "ma": "85366923",
+      "loai": "QUYET_DINH",
       "ghiChu": "Nguồn tax.85366923. \"không quá 1,5 A\" ⇒ dongDien <= 1.5 A (value số thập phân dùng dấu chấm trong JSON; máy nhận \"1,5\" trong trích)."
     },
     {
       "ma": "85366924",
+      "loai": "QUYET_DINH",
       "ghiChu": "Nguồn tax.85366924. \"trên 1,5 A nhưng dưới 16 A\" ⇒ hai điều kiện cùng khoá: dongDien > 1.5 A VÀ dongDien < 16 A. Biên 1,5 A khớp .23 (<=) nên không lỗ hổng/không chồng; từ 16 A trở lên rơi về .29 \"Loại khác\"."
     },
     {
       "ma": "85366932",
+      "loai": "QUYET_DINH",
       "ghiChu": "Nguồn tax.85366932. \"Dòng điện dưới 16 A\" ⇒ dongDien < 16 A. Điều kiện tiêu đề cha 8536693 do máy ghép theo đường đi, không chép lại vào dòng."
     },
     {
       "ma": "85366992",
+      "loai": "QUYET_DINH",
       "ghiChu": "Nguồn tax.85366992, dưới tiêu đề 8536699 \"Loại khác\" trần. \"Dòng điện dưới 16 A\" ⇒ dongDien < 16 A; phần \"không thuộc .10/8536692/8536693\" do máy phủ định."
     }
   ],
-  "chongLanVanBan": [
+  "chongLanTruc": [
     {
-      "cap": [
+      "nhanh": [
         "85366910",
-        "85366932"
+        "8536692",
+        "8536693"
       ],
-      "lyDo": "Chữ biểu: .10 \"Phích cắm điện thoại\" (theo LOẠI phích) và tiêu đề 8536693 \"Đầu cắm và phích cắm cho cáp đồng trục và mạch in\" (theo NƠI LẮP) không loại trừ nhau — phích cắm điện thoại lắp trên mạch in thoả cả hai. Không có câu nào trong biểu/SEN/chú giải nhóm 85.36 nói thứ tự; TB-TCHQ trong precedents.json (4786, 330, 329, 328/TB-TCHQ → 85366932: đầu nối bo mạch điện thoại) xếp đầu nối mạch in vào .32 nhưng không phân xử với .10 ⇒ không ghi uuTien."
-    },
-    {
-      "cap": [
-        "85366910",
-        "85366939"
+      "truc": {
+        "8536692": "TEN_LOAI",
+        "8536693": "CONG_DUNG",
+        "85366910": "TEN_LOAI"
+      },
+      "cauHoiPhanBiet": "Mặt hàng thuộc nhánh \"Phích cắm điện thoại\" (85366910), nhánh \"Đầu cắm tín hiệu hình/tiếng và đầu cắm ống đèn tia ca-tốt dùng cho máy thu hình hoặc máy thu thanh\" (8536692), hay nhánh \"Đầu cắm và phích cắm cho cáp đồng trục và mạch in\" (8536693)?",
+      "trich": {
+        "8536692": "8536692 Đầu cắm tín hiệu hình/tiếng và đầu cắm ống đèn tia ca-tốt dùng cho máy thu hình hoặc máy thu thanh",
+        "8536693": "8536693 Đầu cắm và phích cắm cho cáp đồng trục và mạch in",
+        "85366910": "85366910 - - - Phích cắm điện thoại"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "85366910",
+            "8536693"
+          ],
+          "hang": "Phích cắm điện thoại để kết nối mạch in"
+        },
+        {
+          "cap": [
+            "8536692",
+            "8536693"
+          ],
+          "hang": "Đầu cắm tín hiệu hình tiếng dùng cho máy thu hình để lắp trên mạch in"
+        }
       ],
-      "lyDo": "Cùng lý do cặp .10/.32, nhánh dòng điện ≥ 16 A (85366939 \"Loại khác\" dưới tiêu đề 8536693). Trích hai nhánh rẽ: 85366910 \"Phích cắm điện thoại\" ↔ 8536693 \"Đầu cắm và phích cắm cho cáp đồng trục và mạch in\"."
+      "phanXu": null
     }
   ]
 }
