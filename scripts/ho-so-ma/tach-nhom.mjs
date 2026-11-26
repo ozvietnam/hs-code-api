@@ -16,7 +16,7 @@ async function main() {
   ];
   if (!nuts.length || nuts.some((n) => G.capCuaNut(n) !== 'NHOM' || !L0.theoId.has(n))) { console.error('cần --chuong NN hoặc --nhom NNNN có thật'); process.exit(2); }
   if (t.xemGoi) { const L = napLuatCong(t.luat); for (const n of nuts) { const g = dungGoi(n, L); console.log(loiHoi(g, chiaLuot(g)[0])); } return; }
-  const r = await chay({ nuts, viec: t.viec, hoSo: t.hoSo, luat: t.luat, chiGhep: t.chiGhep, mo: t.mo });
+  const r = await chay({ nuts, viec: t.viec, hoSo: t.hoSo, luat: t.luat, chiThuMuc: ['nhom'], chiGhep: t.chiGhep, mo: t.mo });
   console.log(JSON.stringify({ soBanGhi: r.banGhi.length, ...r.tk, loiMay: r.loiMay.length, loiPhieu: r.loiPhieu.length, tep: r.tep }));
 }
 if (process.argv[1] === fileURLToPath(import.meta.url)) main().catch((e) => { console.error(e); process.exit(1); });

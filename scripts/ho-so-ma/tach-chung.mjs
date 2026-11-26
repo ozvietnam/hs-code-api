@@ -306,9 +306,8 @@ export function chuanPhieu(mo, kq, goi, luot, L) {
     if (denLa.length) loi.push(`${mo}: bỏ den không có thật ${denLa.join(', ')} (${c.k})`);
     if (['KHONG_DUOC_LA', 'PHAI_LA', 'CHI_LIET_KE'].includes(loaiThat) && den.length) x.den = den;
     if (loai === 'DINH_NGHIA') {
-      const tn = gon(p.thuatNgu); const nen = chuanSo(`${L.chuCau(c.id)} ${(c.dan || []).join(' ')}`).toLowerCase();
-      if (!tn || !nen.includes(chuanSo(tn).toLowerCase())) { loi.push(`${mo}: DINH_NGHIA thiếu thuatNgu nguyên chữ ở ${c.k} ("${tn}")`); continue; }
-      x.thuatNgu = tn;
+      const tn = gon(p.thuatNgu); const nen = chuanSo(`${L.nut.get(L.cau.get(c.id).nut).v} ${(c.dan || []).join(' ')}`).toLowerCase();
+      x.thuatNgu = tn && nen.includes(chuanSo(tn).toLowerCase()) ? tn : null; // trống: lấy của DINH_NGHIA cùng nút cùng phiếu (thuNguCungNut)
     }
     if (loai === 'KHONG_DUOC_LA' && !den.length) { loi.push(`${mo}: KHONG_DUOC_LA không có den hợp lệ ở ${c.k}`); continue; }
     if (['TACH_ANH_EM', 'NGUONG'].includes(loai)) {
@@ -367,6 +366,21 @@ export function gopTrongPhieu(ds, L, dsKhac = []) {
   return ra;
 }
 
+/** DINH_NGHIA của một phiếu chưa có thuatNgu: lấy thuatNgu của DINH_NGHIA cùng phiếu, cùng nút câu (định nghĩa nhiều câu:
+ *  "(a) Thanh và que Các sản phẩm…" #1, các câu sau #2, #3 không nhắc lại thuật ngữ). Không có thì bỏ, ghi lỗi. */
+export function thuNguCungNut(ds, loi = [], dsKhac = []) {
+  const nutCau = (x) => x.cau.slice(0, x.cau.lastIndexOf('#'));
+  return ds.filter((x) => {
+    if (x.loai !== 'DINH_NGHIA' || x.thuatNgu) return true;
+    const ban = ds.find((y) => y.loai === 'DINH_NGHIA' && y.thuatNgu && nutCau(y) === nutCau(x));
+    if (ban) { x.thuatNgu = ban.thuatNgu; return true; }
+    // Phiếu này không nêu thuật ngữ ở cả nút: mượn nhãn (chữ luật, đã kiểm nguyên văn) của phiếu kia cùng nút; ghi lại.
+    const muon = dsKhac.find((y) => y.loai === 'DINH_NGHIA' && y.thuatNgu && nutCau(y) === nutCau(x));
+    if (muon) { x.thuatNgu = muon.thuatNgu; x._muonTN = true; return true; }
+    loi.push(`${x.mo}: DINH_NGHIA thiếu thuatNgu nguyên chữ ở ${x.cau}`); return false;
+  });
+}
+
 export function ghepPhieu(dsA, dsB) {
   const ra = []; const tk = { khop: 0, lechHaiBen: 0, lechMotBen: 0, boQua: 0 };
   const dungA = new Set(); const dungB = new Set();
@@ -384,7 +398,8 @@ export function ghepPhieu(dsA, dsB) {
     if (!cuaA.length || !cuaB.length) continue;
     const [min, kia] = cuaA.length > cuaB.length || (cuaA.length === cuaB.length && cuaA[0].mo === 'agy') ? [cuaA, cuaB] : [cuaB, cuaA];
     for (const q of cum) (vdA.includes(q) ? dungA : dungB).add(q);
-    for (const q of min) { ra.push({ nut: q.nut, loai: 'DINH_NGHIA', dieuKien: q.dieuKien, trich: q.trich, cau: q.cau, thuatNgu: q.thuatNgu, duKien: q.duKien, trangThai: 'KHOP', phieu: [gonPhieu(q), ...kia.map(gonPhieu)] }); tk.khop += 1; }
+    const muon = cum.some((q) => q._muonTN);
+    for (const q of min) { ra.push({ nut: q.nut, loai: 'DINH_NGHIA', dieuKien: q.dieuKien, trich: q.trich, cau: q.cau, thuatNgu: q.thuatNgu, duKien: q.duKien, trangThai: 'KHOP', phieu: [gonPhieu(q), ...kia.map(gonPhieu)], ...(muon ? { ghiChu: 'thuatNgu của một phiếu mượn từ phiếu kia (phiếu đó không nêu thuật ngữ ở cả nút)' } : {}) }); tk.khop += 1; }
   }
   for (const a of vdA) {
     if (dungA.has(a)) continue;
@@ -496,11 +511,14 @@ export function tepCua(x) {
 }
 
 /** Ghi bản ghi vào kho: bỏ mọi bản ghi cũ của các nút trong `nuts`, thêm bản ghi mới. Trả danh sách tệp đã đụng. */
-export function ghiKho(banGhi, nuts, hoSo = G.HO_SO_MAC_DINH) {
+export function ghiKho(banGhi, nuts, hoSo = G.HO_SO_MAC_DINH, chiThuMuc = null) {
+  // chiThuMuc: chỉ đụng tệp của các thư mục này (thẻ cấp nào ghi thư mục cấp đó; nguong/, liet-ke/ là của M-74, M-75)
+  if (chiThuMuc) banGhi = banGhi.filter((x) => chiThuMuc.includes(tepCua(x).split('/')[0]));
   const nutSet = new Set(nuts); const theoTep = new Map();
   for (const x of banGhi) { const t = tepCua(x); if (!theoTep.has(t)) theoTep.set(t, []); theoTep.get(t).push(x); }
   const dung = new Set(theoTep.keys());
   for (const tm of G.THU_MUC) {
+    if (chiThuMuc && !chiThuMuc.includes(tm)) continue;
     const d = path.join(hoSo, tm); if (!fs.existsSync(d)) continue;
     for (const f of fs.readdirSync(d)) { const t = `${tm}/${f}`; const cu = G.docJsonl(path.join(d, f)); if (cu.some((x) => nutSet.has(x.nut))) dung.add(t); }
   }
@@ -515,7 +533,10 @@ export function ghiKho(banGhi, nuts, hoSo = G.HO_SO_MAC_DINH) {
 }
 
 /** Chạy trọn: dựng gói từng nút, hỏi hai mô hình (song song giữa hai nhà, tuần tự trong một nhà), ghép, ghi. */
-export async function chay({ nuts, viec, hoSo = G.HO_SO_MAC_DINH, luat = G.LUAT_MAC_DINH, anhEm = (nut) => G.capCuaNut(nut) === 'NHOM', chiGhep = false, coS = 18, mo = MO, log = console.log }) {
+/** Loại vấn đề do thẻ khác làm chủ: NGUONG (M-74), CHI_LIET_KE (M-75). Máy tách vẫn hỏi, nhưng không ghi; số đếm ở bao-cao.json. */
+export const LOAI_THE_KHAC = Object.freeze(['NGUONG', 'CHI_LIET_KE']);
+
+export async function chay({ nuts, viec, chiThuMuc = null, boLoai = LOAI_THE_KHAC, hoSo = G.HO_SO_MAC_DINH, luat = G.LUAT_MAC_DINH, anhEm = (nut) => G.capCuaNut(nut) === 'NHOM', chiGhep = false, coS = 18, mo = MO, log = console.log }) {
   const L = napLuatCong(luat);
   fs.mkdirSync(viec, { recursive: true });
   const viecs = [];
@@ -547,13 +568,17 @@ export async function chay({ nuts, viec, hoSo = G.HO_SO_MAC_DINH, luat = G.LUAT_
         const c = chuanPhieu(m, r, v.goi, v.luot, L); ps[m].push(...c.ra); loiPhieu.push(...c.loi.map((l) => `${nut} lượt ${v.i + 1}: ${l}`));
       }
     }
+    { const g0 = ps.gemma.map((x) => ({ ...x })); const a0 = ps.agy.map((x) => ({ ...x }));
+      ps.gemma = thuNguCungNut(ps.gemma, loiPhieu, thuNguCungNut(a0, [])); ps.agy = thuNguCungNut(ps.agy, loiPhieu, thuNguCungNut(g0, [])); }
     const g = ghepPhieu(gopTrongPhieu(ps.gemma, L, ps.agy), gopTrongPhieu(ps.agy, L, ps.gemma));
     for (const k of Object.keys(tk)) tk[k] += g.tk[k];
     tatCa.push(...g.ra);
   }
-  const banGhi = hoanTat(tatCa, L);
-  const tep = ghiKho(banGhi, nuts, hoSo);
-  fs.writeFileSync(path.join(viec, 'bao-cao.json'), JSON.stringify({ nuts, tk, soBanGhi: banGhi.length, loiMay, loiPhieu, tep }, null, 2));
+  const boRa = tatCa.filter((x) => boLoai.includes(x.loai));
+  const banGhi = hoanTat(tatCa.filter((x) => !boLoai.includes(x.loai)), L);
+  const tep = ghiKho(banGhi, nuts, hoSo, chiThuMuc);
+  if (boRa.length) fs.writeFileSync(path.join(viec, 'loai-the-khac.jsonl'), `${boRa.map((x) => JSON.stringify(x)).join('\n')}\n`);
+  fs.writeFileSync(path.join(viec, 'bao-cao.json'), JSON.stringify({ nuts, tk, soBanGhi: banGhi.length, soLoaiTheKhac: boRa.length, loiMay, loiPhieu, tep }, null, 2));
   return { banGhi, tk, loiMay, loiPhieu, tep };
 }
 
