@@ -25,6 +25,8 @@ check('9004: giữ 镜片材质/镜框材质/度数/品牌/货号/产品类别',
 check('9004: nhãn ghép bộ phận 镜框颜色 (parts × màu) là nhãn keep', l9004.keepLabelsZh.has('镜框颜色') && labelKept(l9004, '镜框颜色'));
 check('9004: 脸型/风格/上市年份/季节 không thuộc thư viện', !['脸型', '适合脸型', '风格', '上市年份/季节', '流行元素分类'].some((z) => labelKept(l9004, z)));
 check('9004: nhãn rác toàn cục nhận diện được (≥40 nhãn)', ['脸型', '风格', '上市年份/季节', '是否跨境出口专供货源', '销售渠道类型', '省份'].every(isNoiseLabel) && Object.keys(require('../data/noise-labels-zh.json').labels).length >= 40);
+// #141 (2026-11-26): lô nhãn rác Cao/Vừa từ nhu cầu hàng thật
+check('141: nhãn rác mới (专利/价格段/加印LOGO/贸易属性/包装/箱装数量…)', ['专利', '专利类型', '价格段', '加印LOGO', '贸易属性', '产品等级', '最快出货时间', '出售状态', '吊牌', '箱装数量', '收纳场景', '商品特性', '加工方式', '包装', '包装方式', '包装形式', '包装种类'].every(isNoiseLabel));
 check('9004: 镜片折射率 (bộ phận + phần lạ) KHÔNG keep (tránh khớp giả tròng)', !labelKept(l9004, '镜片折射率'));
 check('9004: dòng prompt "Ô cần cho nhóm này" có key: labelVi', /^Ô cần cho nhóm này: .*lensMaterial: Chất liệu tròng kính/.test(promptLine(l9004)), promptLine(l9004));
 check('cache: cùng nhóm trả cùng đối tượng', lexiconFor('90049010') === lexiconFor('9004'));
@@ -54,10 +56,10 @@ const K1688 = [
 ];
 const f1 = filterSources({ hsCode: '90049010', specs: K1688, skuLines: [{ key: '已选规格(镜框颜色)', value: '金色' }] });
 const keptKeys = f1.specs.map((s) => s.key);
-check('1688: rác bị bỏ với lý do NOISE', ['上市年份/季节', '是否跨境出口专供货源', '脸型', '适合脸型', '风格', '风格分类', '流行元素分类'].every((z) => f1.dropped.some((d) => d.label === z && d.reason === 'NOISE')) && !keptKeys.includes('脸型'), JSON.stringify(f1.dropped));
+check('1688: rác bị bỏ với lý do NOISE', ['上市年份/季节', '是否跨境出口专供货源', '脸型', '适合脸型', '风格', '风格分类', '流行元素分类', '包装'].every((z) => f1.dropped.some((d) => d.label === z && d.reason === 'NOISE')) && !keptKeys.includes('脸型'), JSON.stringify(f1.dropped));
 check('1688: SKU đang chọn luôn giữ', keptKeys.includes('已选规格(镜框颜色)'));
 check('1688: số + đơn vị giữ dù nhãn lạ (奇怪标签: 147mm, 重量 25.8g)', keptKeys.includes('奇怪标签') && keptKeys.includes('重量'));
-check('1688: 功能 / 镜片功能 / 眼镜结构 / 包装 → misc (AI thấy, từ điển không đọc)', ['功能', '镜片功能', '眼镜结构', '包装'].every((z) => f1.miscLabels.includes(z)) && f1.misc.includes('功能：防蓝光'), JSON.stringify(f1.miscLabels));
+check('1688: 功能 / 镜片功能 / 眼镜结构 → misc (AI thấy, từ điển không đọc); 包装 là NOISE (#141)', ['功能', '镜片功能', '眼镜结构'].every((z) => f1.miscLabels.includes(z)) && !f1.miscLabels.includes('包装') && f1.misc.includes('功能：防蓝光'), JSON.stringify(f1.miscLabels));
 check('1688: stats specsIn 25 / specsKept ≤ 14, giảm ≥ 40 % dòng', f1.stats.specsIn === 25 && f1.stats.specsKept <= 14, JSON.stringify(f1.stats));
 check('1688: ô bắt buộc nhóm còn nguồn (镜片材质, 镜框材质, 产品类别, 货号, 品牌)', ['镜片材质', '镜框材质', '产品类别', '货号', '品牌', '度数', '镜框颜色', '产地', '适用人群'].every((z) => keptKeys.includes(z)));
 
@@ -103,7 +105,17 @@ check('không hsCode: không dòng ô nhóm, không filter.source heading', !/Ô
 // 10. Tín hiệu nhu cầu LABEL_UNKNOWN từ misc (không định danh)
 const { signalsFromSheet } = require('../lib/demand-signals');
 const sig = signalsFromSheet({ sheet: { hsCode: '90049010', heading: { code: '9004' }, fields: [], missing: [], trademark: {}, extraction: { filter: ex.filter } }, mapped: { hsListings: [], policyLines: [] }, specsZh: [] });
-check('LABEL_UNKNOWN: 功能 / 眼镜结构 / 包装 kèm nhóm 9004', ['功能', '眼镜结构', '包装'].every((z) => sig.some((s) => s.t === 'LABEL_UNKNOWN' && s.k === z && s.m.heading === '9004')), JSON.stringify(sig.filter((s) => s.t === 'LABEL_UNKNOWN')));
+check('LABEL_UNKNOWN: 功能 / 眼镜结构 kèm nhóm 9004 (包装 đã chuyển NOISE #141)', ['功能', '眼镜结构'].every((z) => sig.some((s) => s.t === 'LABEL_UNKNOWN' && s.k === z && s.m.heading === '9004')) && !sig.some((s) => s.t === 'LABEL_UNKNOWN' && s.k === '包装'), JSON.stringify(sig.filter((s) => s.t === 'LABEL_UNKNOWN')));
+
+// #141: đồng nghĩa ZH gắn khoá chuẩn sẵn có (không tạo khoá mới)
+const synZh = require('../data/attribute-synonyms-zh.json').keys;
+check('141: 规格→dimensions; 型式/品种→form; 克重→netWeight; 塑料材质分类/塑料新料占比→polymerType',
+  synZh.dimensions.zh.includes('规格')
+  && ['型式', '品种'].every((z) => synZh.form.zh.includes(z))
+  && synZh.netWeight.zh.includes('克重')
+  && ['塑料材质分类', '塑料新料占比'].every((z) => synZh.polymerType.zh.includes(z)));
+const lg141 = lexiconFor(null);
+check('141: từ điển toàn cục nhận 规格/克重/塑料材质分类 (không nhận nhãn rác 专利)', labelKept(lg141, '规格') && labelKept(lg141, '克重') && labelKept(lg141, '塑料材质分类') && !labelKept(lg141, '专利'));
 
 // 11. Tắt lọc bằng env → gói như cũ
 process.env.HS_SOURCE_FILTER = '0';

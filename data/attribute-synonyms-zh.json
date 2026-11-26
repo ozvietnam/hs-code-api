@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "updated": "2026-10-09",
+  "updated": "2026-11-26",
   "license": "CC BY 4.0 — dữ liệu mở của hs-code-api, dùng lại xin ghi nguồn",
   "note": "Từ điển nhãn thông số trên trang Taobao/Tmall/1688/Alibaba (tiếng Trung) → khóa trường khai báo chuẩn của hs-code-api (data/chapter-declaration-fields.json). Khóa trùng tên với data/attributes.json được dùng chung. Dùng cho: nhận diện thông số đã có (danh sách còn thiếu), rút thông số từ chữ (/api/extract-specs), và cho ozsource/ERP đặt tên khóa thống nhất. Mỗi mục zh liệt kê nhãn hay gặp; khớp theo nhãn đứng trước dấu ':' hoặc '：'.",
   "keys": {
@@ -77,7 +77,9 @@
       "zh": [
         "塑料材质",
         "塑料种类",
-        "树脂类型"
+        "树脂类型",
+        "塑料材质分类",
+        "塑料新料占比"
       ]
     },
     "rubberType": {
@@ -301,7 +303,8 @@
         "规格尺寸",
         "长宽高",
         "产品规格",
-        "整机尺寸"
+        "整机尺寸",
+        "规格"
       ],
       "unitHint": "mm/cm"
     },
@@ -405,7 +408,9 @@
         "形状",
         "形态",
         "产品形态",
-        "剂型"
+        "剂型",
+        "型式",
+        "品种"
       ]
     },
     "dosageForm": {
@@ -681,7 +686,8 @@
         "产品净重",
         "重量",
         "产品重量",
-        "毛重"
+        "毛重",
+        "克重"
       ],
       "unitHint": "kg/g",
       "noteVi": "Không thuộc danh mục trường khai báo theo nhóm; dùng cho mô tả ECUS và vận chuyển. 毛重 là trọng lượng cả bì."
