@@ -20,7 +20,7 @@ const G = require('../../lib/ho-so-ma/ghep.js');
 const sha256 = (s) => crypto.createHash('sha256').update(String(s), 'utf8').digest('hex');
 
 /** Cụm kích hoạt bắt buộc rà soát cho M-75 trên đường đi Chương 76 (Phần XV + Chương 76 + GIR 2/3). */
-export const RE_KICH_HOAT_LIET_KE = /(?:chủ yếu dùng|chủ yếu sử dụng|chủ yếu được dùng|chủ yếu được sử dụng|thích hợp dùng|phù hợp dùng|phù hợp để|loại phù hợp để|chuyên dùng|đặc biệt để|đa chức năng|nhiều chức năng|đặc tính cơ bản|đặc trưng cơ bản|thuộc tính cơ bản|tính chất chủ yếu|bộ hàng được đóng gói để bán lẻ|ở dạng bộ để bán lẻ|đóng gói thành bộ|được sử dụng cùng nhau|sử dụng cùng nhau|chưa hoàn chỉnh|chưa hoàn thiện|chưa lắp ráp|tháo rời|bộ phận có công dụng chung|công dụng chung|bộ phận của|các bộ phận của|phần\s*xvi\b|phần\s*xvii\b|chương\s*84\b|chương\s*85\b|incomplete|unassembled|disassembled|essential character|multi.?function|principally|suitable for)/i;
+export const RE_KICH_HOAT_LIET_KE = /(?:chủ yếu dùng|chủ yếu sử dụng|chủ yếu được dùng|chủ yếu được sử dụng|thích hợp dùng|thích hợp cho|phù hợp dùng|phù hợp để|loại phù hợp để|dùng làm|dùng cho|loại dùng làm|loại dùng để|là loại dùng để|loại sử dụng để|được sử dụng như|dùng trong công nghiệp|đóng gói thành bộ|được sử dụng cùng nhau|sử dụng cùng nhau|chuyên dùng|đặc biệt để|đa chức năng|nhiều chức năng|đặc tính cơ bản|đặc trưng cơ bản|thuộc tính cơ bản|tính chất chủ yếu|bộ hàng được đóng gói để bán lẻ|ở dạng bộ để bán lẻ|chưa hoàn chỉnh|chưa hoàn thiện|chưa lắp ráp|tháo rời|bộ phận có công dụng chung|công dụng chung|bộ phận của|các bộ phận của|phần\s*xvi\b|phần\s*xvii\b|chương\s*84\b|chương\s*85\b|incomplete|unassembled|disassembled|essential character|multi.?function|principally|suitable for)/i;
 
 /** Đặc tả vấn đề CHI_LIET_KE trên đường đi Chương 76 (gồm GIR 2/3 gắn ở phan:XV, Phần XV và các nút Chương 76). */
 export const DAC_TA_LIET_KE_76 = Object.freeze([
@@ -74,6 +74,15 @@ export const DAC_TA_LIET_KE_76 = Object.freeze([
     dieuKien: '[Bộ phận công dụng chung vs 90.21] Hỏi vật kẹp/vít/tán/lò xo kim loại có thiết kế đặc biệt để chuyên dùng cấy ghép y tế, phẫu thuật, nha khoa, thú y (90.21) không',
     trich: 'trừ các sản phẩm được thiết kế đặc biệt để chuyên dùng cấy ghép trong y tế, phẫu thuật, nha khoa hoặc thú y (nhóm 90.21)',
     duKien: ['thiết kế đặc biệt', 'chuyên dùng', 'y tế'],
+  },
+  {
+    id: 'hs:phan:XV:7513',
+    nut: 'phan:XV',
+    cau: 'phan:XV:cg:2:b#1',
+    den: ['bieu:9114'],
+    dieuKien: 'Hỏi lò xo hoặc lá lò xo kim loại cơ bản có phải dây cót dùng cho đồng hồ cá nhân hoặc đồng hồ thời gian khác (nhóm 91.14) không',
+    trich: 'trừ dây cót dùng cho đồng hồ cá nhân hoặc đồng hồ thời gian khác (nhóm 91.14)',
+    duKien: ['dùng cho đồng hồ cá nhân'],
   },
   {
     id: 'hs:phan:XV:7509',
@@ -254,6 +263,30 @@ export const DAC_TA_LIET_KE_76 = Object.freeze([
     trich: 'Nhôm bịt đầu ống loại phù hợp dùng để sản xuất bút chì',
     duKien: ['loại phù hợp dùng để sản xuất bút chì'],
   },
+  {
+    id: 'hs:bieu:76042930:7501',
+    nut: 'bieu:76042930',
+    cau: 'bieu:76042930#1',
+    dieuKien: 'Hỏi dạng hình chữ Y bằng nhôm dạng cuộn có dùng cho dây khóa kéo (7604.29.30) không',
+    trich: 'Dạng hình chữ Y dùng cho dây khóa kéo, ở dạng cuộn',
+    duKien: ['dùng cho dây khóa kéo'],
+  },
+  {
+    id: 'hs:bieu:76109030:7501',
+    nut: 'bieu:76109030',
+    cau: 'bieu:76109030#1',
+    dieuKien: 'Hỏi mái phao trong hoặc mái phao ngoài bằng nhôm có dùng cho bể chứa xăng dầu (7610.90.30) không',
+    trich: 'Mái phao trong hoặc mái phao ngoài dùng cho bể chứa xăng dầu',
+    duKien: ['dùng cho bể chứa xăng dầu'],
+  },
+  {
+    id: 'hs:bieu:76169940:7501',
+    nut: 'bieu:76169940',
+    cau: 'bieu:76169940#1',
+    dieuKien: 'Hỏi ống chỉ, lõi suốt, guồng quay tơ và sản phẩm tương tự bằng nhôm có dùng cho sợi dệt (7616.99.40) không',
+    trich: 'Ống chỉ, lõi suốt, guồng quay tơ và sản phẩm tương tự dùng cho sợi dệt',
+    duKien: ['dùng cho sợi dệt'],
+  },
 ]);
 
 /**
@@ -284,6 +317,12 @@ export const DAC_TA_BO_QUA_LIET_KE_76 = Object.freeze([
   { cau: 'sen:76061232:1#5', lyDo: 'Mô tả thông lệ nguyên tố hợp kim chủ yếu (Mg) ở đáy/nắp lon 7606.12.32, không đặt câu hỏi mở' },
   { cau: 'sen:76129010:1#1', lyDo: 'Câu mở đầu SEN 7612.90.10 lặp tên dòng biểu thuế đã được ghi ở hs:bieu:76129010:7501' },
   { cau: 'sen:76169920:1#1', lyDo: 'Giải thích SEN 7616.99.20 cho nút đã được ghi ở hs:bieu:76169920:7501' },
+  { cau: 'chuong:76:kq:4#2', lyDo: 'Mô tả quy trình điện phân sản xuất nhôm nguyên thủy bằng điện cực than, không đặt tiêu chí phân loại hàng hóa' },
+  { cau: 'nhom:7602:ct:2#2', lyDo: 'Câu mô tả công dụng thường gặp trong luyện kim, nhóm 76.02 không đặt điều kiện công dụng' },
+  { cau: 'nhom:7604:ct:3#1', lyDo: 'Mục loại trừ thanh và dạng hình kết cấu sang nhóm 76.10 (đã ghi ở hs:bieu:7610:7501)' },
+  { cau: 'nhom:7612:ct:2#3', lyDo: 'Ví dụ minh họa đồ chứa hình ống (tân dược, kem đánh răng), không phải điều kiện ranh giới bắt buộc' },
+  { cau: 'nhom:7616:ct:9#1', lyDo: 'Mục loại trừ vải dệt thoi từ sợi kim loại trang trí nội thất sang nhóm 58.09' },
+  { cau: 'sen:76109030:1#1', lyDo: 'Giải thích SEN 7610.90.30 cho nút đã được ghi ở hs:bieu:76109030:7501' },
 ]);
 
 const chuanKhoang = (s) => String(s || '').replace(/\s+/g, ' ').trim();

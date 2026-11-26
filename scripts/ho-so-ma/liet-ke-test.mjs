@@ -8,7 +8,7 @@ import path from 'node:path';
 import { createRequire } from 'node:module';
 import { chayCong, napLuatCong } from './cong.mjs';
 import { BO_QUA, kiemKhoHoSo } from './khuon.mjs';
-import { DAC_TA_LIET_KE_76, ghiKhoLietKe, kiemPhuLietKe, kiemTrungTenToTien } from './liet-ke.mjs';
+import { DAC_TA_LIET_KE_76, ghiKhoLietKe, kiemPhuLietKe, kiemTrungTenToTien, quetCauKichHoat } from './liet-ke.mjs';
 
 const require = createRequire(import.meta.url);
 const G = require('../../lib/ho-so-ma/ghep.js');
@@ -130,6 +130,19 @@ test('6. Ca ngược: phát hiện đúng thiếu phủ, trích sai, duKien bị
     assert.ok(phu34Thieu.thieu.some((x) => x.cau === 'phan:VI:cg:3#1'), 'Ca ngược: phải bắt được câu "đóng gói thành bộ" tại phan:VI:cg:3#1');
     assert.ok(phu34Thieu.thieu.some((x) => x.cau === 'phan:VI:cg:3:a#1'), 'Ca ngược: phải bắt được câu "được sử dụng cùng nhau" tại phan:VI:cg:3:a#1');
     assert.ok(phu34Thieu.thieu.some((x) => x.cau === 'bieu:3407#1'), 'Ca ngược: phải bắt được câu "đã đóng gói thành bộ để bán lẻ" tại bieu:3407#1');
+
+    // Ca ngược cụm kích hoạt mở rộng (#2125/#2128/#2130/#2133/#2105): phải quét trúng & báo thiếu nếu chưa phủ
+    const hit26 = quetCauKichHoat(L, '26').map((x) => x.cau);
+    assert.ok(hit26.includes('chuong:26:cg:3:a#1'), 'Phải bắt được "dùng trong công nghiệp" ở chuong:26:cg:3:a#1');
+    assert.ok(hit26.includes('chuong:26:cg:3:b#1'), 'Phải bắt được "là loại dùng để" ở chuong:26:cg:3:b#1');
+    const phu26Thieu = kiemPhuLietKe([{ loai: 'CHI_LIET_KE', cau: 'chuong:26:cg:3:a#1' }], L, '26');
+    assert.ok(phu26Thieu.thieu.some((x) => x.cau === 'chuong:26:cg:3:b#1'), 'Ca ngược Ch.26: thiếu chuong:26:cg:3:b#1 phải bị báo thiếu');
+    assert.ok(quetCauKichHoat(L, '31').some((x) => x.cau === 'bieu:31031110#1' && x.txt.includes('dùng làm')));
+    assert.ok(quetCauKichHoat(L, '31').some((x) => x.cau === 'chuong:31:cg:6#1' && x.txt.includes('được sử dụng như')));
+    assert.ok(quetCauKichHoat(L, '34').some((x) => x.cau === 'bieu:3407#1' && x.txt.includes('đóng gói thành bộ')));
+    assert.ok(quetCauKichHoat(L, '36').some((x) => x.cau === 'chuong:36:cg:2:b#1' && x.txt.includes('loại sử dụng để')));
+    assert.ok(quetCauKichHoat(L, '36').some((x) => x.cau === 'bieu:36069020#1' && x.txt.includes('dùng cho')));
+    assert.ok(quetCauKichHoat(L, '43').some((x) => x.cau === 'bieu:4301#1' && x.txt.includes('thích hợp cho')));
 
     // 6b. Lỗi trích sai, duKien tự đặt, BO_QUA sai nút và vân tay lệch qua Cổng 4/5
     const chu = L.chuCau('bieu:76169920#1');
