@@ -485,7 +485,9 @@
       "doc": {
         "bangCanh": {
           "trangThai": "co",
-          "qua": ["lib/do-thi/phai-doc.js"],
+          "qua": [
+            "lib/do-thi/phai-doc.js"
+          ],
           "co": [],
           "ghiChu": "ADR-0005: /api/tree trả phaiDoc, chỉ cạnh luật (loại trừ, phân biệt đã chấm chéo, nhắc nhóm, WCO), không ra mã, không tờ khai."
         }
@@ -526,6 +528,23 @@
       "loai": "tra-cuu",
       "congGoi": false,
       "llm": false
+    },
+    {
+      "duong": "/api/ho-so-ma",
+      "tep": "api/ho-so-ma.js",
+      "loai": "tra-cuu",
+      "congGoi": true,
+      "llm": false,
+      "doc": {
+        "bangCanh": {
+          "trangThai": "co",
+          "qua": [
+            "lib/ho-so-ma/ghep.js"
+          ],
+          "co": [],
+          "ghiChu": "tra.js bọc ghep.hoSo — ghep nạp bảng cạnh (napLuat) để dựng đường đi Phần→Chương→NHOM→PHAN_NHOM→DONG; chỉ đọc, không nối đường chọn mã."
+        }
+      }
     }
   ],
   "nhanhBoQua": [

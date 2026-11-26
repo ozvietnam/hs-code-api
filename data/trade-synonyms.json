@@ -4774,7 +4774,86 @@
    "gir": "GIR 1",
    "basis": "RULE_TABLE",
    "sourceVi": "Chú giải chi tiết nhóm 90.05 mục (d) «Thiết bị ngắm qua cửa (nhóm 90.13)» — đã có trong data/so-tay/9005.json (NGUOI_DUYET). Biểu thuế: 90138090 «Loại khác» trong 9013.80. Thực địa 25/11 (OZV-2247): câu «ống nhòm gắn cửa gỗ» search thô kéo 6403/7610/7306; 2/3 lượt dừng NEED_FACTS 6 số, 1 lượt chốt 90138090. Thêm từ điển để ổn định nhóm 9013 và chặn 9005 theo chú giải."
+  },
+  {
+   "id": "vong-deo-tay-rfid-nhan-dien",
+   "titleVi": "Vòng đeo tay nhận diện / RFID wearable (khách sạn, sự kiện, kiểm soát ra vào)",
+   "terms": [
+    "vòng đeo tay nhận diện",
+    "vòng tay nhận diện",
+    "vòng đeo tay RFID",
+    "vòng tay RFID",
+    "vòng RFID",
+    "bracelet RFID",
+    "RFID bracelet",
+    "RFID wristband",
+    "wristband RFID",
+    "identification wristband",
+    "identification bracelet",
+    "wearable RFID"
+   ],
+   "excludeIfAny": [
+    "vàng",
+    "bạc",
+    "mã não",
+    "đá quý",
+    "kim cương",
+    "ngọc trai",
+    "máy đọc RFID",
+    "RFID reader",
+    "đầu đọc RFID",
+    "thẻ RFID cứng",
+    "RFID card",
+    "smart card"
+   ],
+   "excludeReasonVi": "Vòng trang sức kim loại/đá quý thuộc 71.13–71.16; máy đọc / thẻ RFID dạng card thuộc nhóm khác (thường 8471/8523) — khác vòng đeo tay wearable nhận diện người.",
+   "candidates": [
+    {
+     "hs": "85437090",
+     "whenVi": "Vòng đeo tay có mạch điện tử / chip RFID hoặc chức năng nhận diện điện tử độc lập — thiết bị điện có chức năng riêng không thuộc nhóm khác của Chương 85 → dòng loại khác 8543.70.90 (tiền lệ Oz có tờ khai 85437090 cho vòng đeo nhận diện).",
+     "confidence": "high"
+    },
+    {
+     "hs": "90318090",
+     "whenVi": "Nếu bản chất là dụng cụ đo/kiểm (cảm biến gắn cổ tay đo đại lượng) chứ không phải máy điện chức năng riêng → cân nhắc 9031.80.90; để trong cửa sổ ứng viên cùng 8543 để hỏi thêm khi thiếu dữ kiện.",
+     "confidence": "medium"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "3926",
+     "whyVi": "3926 là sản phẩm nhựa «loại khác» — vòng chỉ in chữ/Tyvek không chip có thể vào đây, nhưng câu có «nhận diện/RFID/wearable» mà thiếu 8543 trong cửa sổ thì máy hỏi nhánh nhựa sai hướng (đo OZV-2360)."
+    },
+    {
+     "prefix": "7116",
+     "whyVi": "7116 là đồ trang sức đá quý — tiền lệ «vòng đeo tay mã não» nhiễu khi câu chỉ có «vòng đeo tay»."
+    },
+    {
+     "prefix": "7117",
+     "whyVi": "7117 là đồ trang sức giả — khác vòng nhận diện điện tử."
+    },
+    {
+     "prefix": "8471",
+     "whyVi": "8471 là máy xử lý dữ liệu tự động — search thô «nhận diện» dễ kéo card/ADP."
+    },
+    {
+     "prefix": "8517",
+     "whyVi": "8517 là thiết bị viễn thông — giả thuyết mạch truyền thông khi chưa có 8543 trong cửa sổ."
+    },
+    {
+     "prefix": "6307",
+     "whyVi": "6307 là hàng dệt khác — nhiễu nếu vòng bằng vải sự kiện không chip."
+    }
+   ],
+   "askVi": [
+    "Vòng có gắn chip / mạch RFID (hoặc NFC) không, hay chỉ là vòng nhựa/giấy in thông tin?",
+    "Công dụng chính: nhận diện người (khách sạn/sự kiện/bệnh viện) hay đo/cảm biến đại lượng?"
+   ],
+   "chotSom": true,
+   "gir": "GIR 1 + GIR 6",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế 85437090 «Loại khác» trong 8543.70 (máy điện có chức năng riêng). OZV-2360/2361 thực địa 26/11: «vòng đeo tay nhận diện 254x32» search thô kéo 3926/8471, cửa sổ không có 8543/9031; classify hỏi nhánh 3926.90 (polymerType) — sai hướng. Thêm từ điển kéo 8543.70.90 (+ 9031.80.90 trong cửa sổ) và chặn 3926/7116 khi câu có nhận diện/RFID/wearable."
   }
  ],
- "updatedAt": "2026-11-25T05:47:07Z"
+ "updatedAt": "2026-11-26T06:43:38Z"
 }
