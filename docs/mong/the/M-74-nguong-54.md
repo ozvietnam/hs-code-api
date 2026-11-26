@@ -1,0 +1,12 @@
+# M-74 (#1966) — Ngưỡng số và phân dải anh em — Chương 54
+
+- **Khuôn áp dụng:** `ho-so-ma@1` ([`docs/mong/khuon-ho-so-ma.md`](../khuon-ho-so-ma.md), [`docs/decisions/0006-ho-so-van-de-ma-8-so.md`](../../decisions/0006-ho-so-van-de-ma-8-so.md))
+- **Kho dữ liệu (`RUT_TU_LUAT`, theo `data/lop-kho.json` trên `main`):**
+  - `data/ho-so-ma/nguong/54.jsonl`: **32 bản ghi** (**29 `NGUONG`**, **0 `DINH_NGHIA`**, **3 `TACH_ANH_EM`**, **3** bản ghi "Loại khác" gắn mảng `phuDinh`).
+  - Ghi rõ nhánh HOẶC theo loại/dạng sợi tại `5402`–`5405` (Luật 3): `5402`/`5403` chỉ áp `< 67 decitex` cho riêng sợi monofilament (`>= 67 decitex` sang `54.04`/`54.05`, multifilament không giới hạn độ mảnh); `5404` và `5405`/`540500`/`54050000` tách rõ `[nhánh monofilament: độ mảnh >= 67 decitex VÀ kích thước mặt cắt ngang <= 1 mm]` HOẶC `[nhánh dải: dải và dạng tương tự có chiều rộng bề mặt <= 5 mm]`.
+- **Thống kê đối soát tự kiểm số + đơn vị (Luật 6 — skill `ho-so-nguong`):**
+  - **Chú giải pháp lý + dòng biểu (`chuong:54:cg*`, `bieu:54*`):** trúng **22 câu** → **21 câu đã xử lý** thành **29 bản ghi `NGUONG`** (`5402`, `540231`/`00`, `540232`/`00`, `54024`, `54025`, `5403`, `540331`, `540332`, `5404` [×3], `5405` [×3], `540500` [×3], `54050000` [×3], `54074`–`54078`, `540761`, `54082`) kèm **3 bản ghi `TACH_ANH_EM` (`phuDinh`)** tại `540769`, `54079`, `54083` (Luật 1 & 2); **1 câu bỏ qua hợp lệ** (`chuong:54:cg:2#1` chỉ chứa số hiệu nhóm/chương `54.02`, `54.03`, `Chương 55`, không phải ngưỡng đo lường).
+  - **Chú giải chi tiết & SEN (`chuong:54:kq*`, `nhom:54*`, `pn:54*`, `sen:54*`):** trúng **23 câu**, toàn bộ bỏ qua hợp lệ (`11` câu `nhom:5402/5404/5407/5408` nhắc lại ngưỡng đã rút ở dòng biểu `LUAT` hoặc dẫn chiếu ngưỡng tô `2 m` của Ch.55 / vật liệu tết bện `46.01`; `7` câu `chuong:54:kq:10..16,27` giải thích cấu trúc đại phân tử monome chung; `5` câu còn lại chỉ trúng số hiệu mã HS / số thứ tự chú giải).
+  - **Tham khảo `data/ho-so/ranh-gioi/54*.json`:** **16 tệp** (`0` điều kiện số bị sót; `doiChieuRanhGoi` đạt `0` thiếu). Toàn bộ 32 bản ghi gắn đúng nút `bieu:54*` và mang khoảng số giữ lại tại nút (Luật 4, 5, 7).
+- **Tuân thủ quy tắc QT:**
+  - Không lấy thông số ví dụ, bảng mẫu hay ước lượng; trích đúng câu của chính nút; không gắn `gir:`, `wco:`, `tb:`; dùng bộ kiểm chung [`scripts/ho-so-ma/nguong-test.mjs`](../../../scripts/ho-so-ma/nguong-test.mjs) và [`scripts/ho-so-ma/cong.mjs`](../../../scripts/ho-so-ma/cong.mjs).
