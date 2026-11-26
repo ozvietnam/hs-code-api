@@ -18,12 +18,14 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
-import { GOC, doc, boKiem, co, napTrucTiep } from './lib-luat.mjs';
+import { GOC, doc, boKiem, co, napTrucTiep, tepMa } from './lib-luat.mjs';
 
 const { kiem, xong } = boKiem('test-nhan-dien-module');
+const TU = 'scripts/test-nhan-dien-module.mjs';
+const RE_ONE_SHOT = /^scripts\/apply-review-lo[^/]*\.mjs$/;
 
 const KHUON = [
-  ['duong-dan-tu-URL', /new URL\(import\.meta\.url\)\.pathname/],
+  ['duong-dan-tu-URL', /new URL\((?:[^)]*,\s*)?import\.meta\.url\)\.pathname/],
   ['file-template-thieu-gach', /`file:\/\/\$\{[^}]*argv\[\d\][^}]*\}`/],
   ['endsWith-tren-URL', /import\.meta\.url\.endsWith\(/],
   // nhận "tuyệt đối" bằng dấu `/` đầu chuỗi: đúng trên Linux, sai trên Windows (`C:\Temp\…`).
@@ -73,14 +75,25 @@ export function timKhuonXau(danhSach) {
   return ra;
 }
 
+/**
+ * Mọi công cụ .js/.mjs còn sống trong scripts/ (đệ quy cả thư mục con như scripts/luat-goc/),
+ * loại trừ các tệp one-shot scripts/apply-review-lo*.mjs và chính cổng này.
+ */
+export function congCuSongScripts() {
+  return tepMa('scripts').filter((f) => f !== TU && !RE_ONE_SHOT.test(f));
+}
+
 const cay = baoDongCayTest();
+const congCuScripts = congCuSongScripts();
 
 // __MAU_XAU_START__ — những chuỗi dưới đây CỐ TÌNH sai để thử bộ nhận mẫu; chỉ khối giữa hai
 // marker được miễn quét, phần còn lại của tệp này vẫn bị quét như mọi tệp khác.
 const MAU = {
   'duong-dan-tu-URL': {
     xau: "const GOC = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');",
+    xau2: "const ROOT = path.resolve(new URL('..', import.meta.url).pathname);",
     tot: "const GOC = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');",
+    tot2: "const ROOT = path.resolve(fileURLToPath(new URL('..', import.meta.url)));",
   },
   'file-template-thieu-gach': {
     xau: 'if (import.meta.url === `file://${process.argv[1]}`) { main(); }',
@@ -97,15 +110,21 @@ const MAU = {
 };
 // __MAU_XAU_END__
 
-const TU = 'scripts/test-nhan-dien-module.mjs';
 const cayQuet = cay.filter((f) => f !== TU);
 const xau = timKhuonXau(cayQuet);
+const xauScripts = timKhuonXau(congCuScripts);
 kiem(`bao đóng 'npm test' quét được (${cay.length} tệp)`, cay.length > 400, `chỉ ${cay.length} — có thể broken traversal`);
 kiem('đúng một tệp được miễn quét, và đó là chính cổng này',
   cay.includes(TU) && cay.length - cayQuet.length === 1, `cay=${cay.length} quet=${cayQuet.length}`);
 kiem('không tệp nào trong bao đóng dùng khuôn đường dẫn chỉ chạy trên Linux',
   xau.length === 0,
   xau.slice(0, 8).map((x) => `${x.tep}:${x.khuon}`).join(' '));
+kiem(`toàn bộ công cụ sống trong scripts/ quét được (${congCuScripts.length} tệp, gồm cả thư mục con)`,
+  congCuScripts.length > 500 && congCuScripts.some((f) => f.startsWith('scripts/luat-goc/')) && !congCuScripts.includes(TU) && !congCuScripts.some((f) => RE_ONE_SHOT.test(f)),
+  `chỉ ${congCuScripts.length} tệp`);
+kiem('không công cụ sống nào trong scripts/ dùng khuôn đường dẫn chỉ chạy trên Linux',
+  xauScripts.length === 0,
+  xauScripts.slice(0, 8).map((x) => `${x.tep}:${x.khuon}`).join(' '));
 const ngoaiMau = doc(TU).replace(/__MAU_XAU_START__[\s\S]*?__MAU_XAU_END__/g, '');
 kiem('mã thật của chính cổng cũng sạch ngoài khối mẫu', timKhuonXauDoan(ngoaiMau).length === 0, timKhuonXauDoan(ngoaiMau).join(' '));
 
@@ -114,6 +133,11 @@ for (const [ten, re] of KHUON) {
   kiem(`ca ngược: khuôn ${ten} phát hiện được mã cố tình sai`, re.test(MAU[ten].xau));
   kiem(`ca thuận: khuôn ${ten} không báo nhầm mã đã sửa đúng`, !re.test(MAU[ten].tot));
 }
+const reUrl = KHUON.find(([ten]) => ten === 'duong-dan-tu-URL')[1];
+kiem('ca ngược: khuôn duong-dan-tu-URL phát hiện biến thể 2 đối số (đường dẫn tương đối + import.meta.url)',
+  reUrl.test(MAU['duong-dan-tu-URL'].xau2));
+kiem('ca thuận: khuôn duong-dan-tu-URL không báo nhầm biến thể 2 đối số bọc fileURLToPath',
+  !reUrl.test(MAU['duong-dan-tu-URL'].tot2));
 
 // .gitattributes: các cổng sha256/Mermaid so byte đích, nên tệp văn bản phải là LF trên Windows.
 const coRau = fs.existsSync(path.join(GOC, '.gitattributes'));
@@ -128,5 +152,5 @@ const duoi = doc('scripts/lib-luat.mjs');
 kiem('lib-luat.mjs tính GOC bằng fileURLToPath (đồ dùng chung của mọi cổng)',
   /fileURLToPath\(import\.meta\.url\)/.test(duoi) && timKhuonXau(['scripts/lib-luat.mjs']).length === 0);
 
-console.log(`cổng nhận-diện module: ${cay.length} tệp trong bao đóng, ${xau.length} vi phạm`);
+console.log(`cổng nhận-diện module: ${cay.length} tệp trong bao đóng, ${congCuScripts.length} công cụ sống trong scripts/, ${xau.length + xauScripts.length} vi phạm`);
 xong();
