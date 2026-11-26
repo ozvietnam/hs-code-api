@@ -7,7 +7,7 @@ import './test-isolate-data.mjs';
  * 392690 trong khi giả thuyết còn 8523; sổ tay cũ hỏi van/điều khiển hoặc nhánh
  * vệ sinh–an toàn–công nghiệp, bỏ câu hỏi chip của trade-synonyms. Vá sổ tay
  * 3926: (1) phanBiet vòng đeo tay nhận diện ↔ 85235910; (2) bỏ fact
- * cachDieuKhien ở 39269020 trong so-tay + data/ho-so/ranh-gioi/392690.json (nguồn câu «Van/thiết bị được điều khiển…»).
+ * cachDieuKhien ở 39269020 trong so-tay + hồ sơ ranh giới 392690 (nguồn câu «Van/thiết bị được điều khiển…»).
  *
  * Cụm 3 «quạt giải nhiệt máy biến áp»: dừng 841459 là đúng luật (chia lưới bảo
  * vệ / chuyên dùng) — chỉ kiểm anh em 8 số trong biểu, không sửa sổ 8414 ở
