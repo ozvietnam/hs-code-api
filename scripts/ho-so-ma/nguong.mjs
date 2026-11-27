@@ -146,6 +146,26 @@ export const DAC_TA_NGUONG_76 = Object.freeze([
     nguong: { daiLuong: 'tổng hàm lượng các nguyên tố khác trong hợp kim nhôm', donVi: '%', tu: 1, den: null, gomTu: false, gomDen: false },
     duKien: ['tổng hàm lượng của các nguyên tố khác', 'tính theo khối lượng'],
   },
+  {
+    id: 'hs:chuong:76:7408',
+    nut: 'chuong:76',
+    loai: 'DINH_NGHIA',
+    thuatNgu: 'Nhôm, không hợp kim',
+    cau: 'chuong:76:cgpn:1:a#1',
+    dieuKien: 'Chú giải phân nhóm 1(a) Chương 76 định nghĩa "Nhôm, không hợp kim": hàm lượng Al >= 99%, Fe+Si <= 1%, mỗi nguyên tố khác <= 0,1% (ngoại lệ Cu 0,1..0,2% nếu Cr, Mn <= 0,05%)',
+    trich: '(a) Nhôm, không hợp kim',
+    duKien: ['Nhôm, không hợp kim'],
+  },
+  {
+    id: 'hs:chuong:76:7409',
+    nut: 'chuong:76',
+    loai: 'DINH_NGHIA',
+    thuatNgu: 'Hợp kim nhôm',
+    cau: 'chuong:76:cgpn:1:b#1',
+    dieuKien: 'Chú giải phân nhóm 1(b) Chương 76 định nghĩa "Hợp kim nhôm": vật liệu kim loại có hàm lượng nhôm trội hơn từng nguyên tố khác và vượt giới hạn bảng 1(a) hoặc tổng nguyên tố khác > 1%',
+    trich: '(b) Hợp kim nhôm',
+    duKien: ['Hợp kim nhôm'],
+  },
 
   // ── 76.06 vs 76.07: Chiều dày 0,2 mm ──────────────────────────────────────────────────────────
   {
@@ -225,6 +245,7 @@ export const DAC_TA_NGUONG_76 = Object.freeze([
     nut: 'bieu:760519',
     cau: 'bieu:760511#1',
     voi: ['bieu:760511'],
+    phuDinh: ['bieu:760511'],
     dieuKien: 'Dây nhôm không hợp kim 7605.19 (Loại khác) có kích thước mặt cắt ngang lớn nhất không quá 7 mm',
     trich: 'Kích thước mặt cắt ngang lớn nhất trên 7 mm',
     nguong: { daiLuong: 'kích thước mặt cắt ngang lớn nhất', donVi: 'mm', tu: null, den: 7, gomTu: false, gomDen: true },
@@ -255,6 +276,7 @@ export const DAC_TA_NGUONG_76 = Object.freeze([
     nut: 'bieu:76051990',
     cau: 'bieu:76051910#1',
     voi: ['bieu:76051910'],
+    phuDinh: ['bieu:76051910'],
     dieuKien: 'Dòng 7605.19.90 (Loại khác của 7605.19) áp dụng cho dây có đường kính trên 0,0508 mm',
     trich: 'Đường kính không quá 0,0508 mm',
     nguong: { daiLuong: 'đường kính', donVi: 'mm', tu: 0.0508, den: null, gomTu: false, gomDen: false },
@@ -278,6 +300,7 @@ export const DAC_TA_NGUONG_76 = Object.freeze([
     nut: 'bieu:760529',
     cau: 'bieu:760521#1',
     voi: ['bieu:760521'],
+    phuDinh: ['bieu:760521'],
     dieuKien: 'Dây hợp kim nhôm 7605.29 (Loại khác) có kích thước mặt cắt ngang lớn nhất không quá 7 mm',
     trich: 'Kích thước mặt cắt ngang lớn nhất trên 7 mm',
     nguong: { daiLuong: 'kích thước mặt cắt ngang lớn nhất', donVi: 'mm', tu: null, den: 7, gomTu: false, gomDen: true },
@@ -308,6 +331,7 @@ export const DAC_TA_NGUONG_76 = Object.freeze([
     nut: 'bieu:76052990',
     cau: 'bieu:76052910#1',
     voi: ['bieu:76052910'],
+    phuDinh: ['bieu:76052910'],
     dieuKien: 'Dòng 7605.29.90 (Loại khác của 7605.29) áp dụng cho dây hợp kim nhôm có đường kính trên 0,254 mm',
     trich: 'Có đường kính không quá 0,254 mm',
     nguong: { daiLuong: 'đường kính', donVi: 'mm', tu: 0.254, den: null, gomTu: false, gomDen: false },
@@ -355,7 +379,7 @@ export const DAC_TA_NGUONG_76 = Object.freeze([
     cau: 'sen:76061232:1#3',
     dieuKien: 'SEN 7606.12.32 mô tả lá làm lon dạng cuộn có độ dày từ 0,175 mm đến không quá 0,432 mm (vùng <= 0,2 mm thuộc 76.07 theo Luật)',
     trich: 'độ dày từ 0,175 mm nhưng không quá 0,432 mm',
-    nguong: { daiLuong: 'độ dày lá làm lon (SEN 7606.12.32)', donVi: 'mm', tu: 0.175, den: 0.432, gomTu: true, gomDen: true },
+    nguong: { daiLuong: 'độ dày (lá làm lon)', donVi: 'mm', tu: 0.175, den: 0.432, gomTu: true, gomDen: true },
     duKien: ['độ dày'],
     ghiChu: 'CẢNH BÁO CHỒNG LẤN PHÁP LÝ: SEN ghi 0,175..0,432 mm chồng lên nhóm 76.07 (<= 0,2 mm) ở đoạn [0,175; 0,2] mm; theo biểu thuế 76.06 bắt buộc > 0,2 mm.',
   },
@@ -365,8 +389,41 @@ export const DAC_TA_NGUONG_76 = Object.freeze([
     cau: 'sen:76061232:1#3',
     dieuKien: 'SEN 7606.12.32 mô tả lá làm lon dạng cuộn có chiều rộng từ 254 mm đến không quá 1000 mm',
     trich: 'chiều rộng từ 254 mm nhưng không quá 1000 mm',
-    nguong: { daiLuong: 'chiều rộng lá làm lon (SEN 7606.12.32)', donVi: 'mm', tu: 254, den: 1000, gomTu: true, gomDen: true },
+    nguong: { daiLuong: 'chiều rộng (lá làm lon)', donVi: 'mm', tu: 254, den: 1000, gomTu: true, gomDen: true },
     duKien: ['chiều rộng'],
+  },
+  {
+    id: 'hs:bieu:76061232:7403',
+    nut: 'bieu:76061232',
+    loai: 'BO_QUA',
+    cau: 'sen:76061232:1#4',
+    lyDo: 'Câu SEN nêu độ bền kéo điển hình (262 MPa) của thân lon nhôm hợp kim mangan, chỉ là mô tả thông thường không phải ngưỡng phân loại bắt buộc (Luật 6)',
+  },
+  {
+    id: 'hs:bieu:76061232:7404',
+    nut: 'bieu:76061232',
+    loai: 'BO_QUA',
+    cau: 'sen:76061232:1#5',
+    lyDo: 'Câu SEN nêu độ bền kéo điển hình (345 Mpa) của đáy/nắp lon nhôm hợp kim magiê, chỉ là mô tả thông thường không phải ngưỡng phân loại bắt buộc (Luật 6)',
+  },
+  {
+    id: 'hs:bieu:76061239:7401',
+    nut: 'bieu:76061239',
+    loai: 'TACH_ANH_EM',
+    cau: 'bieu:76061239#1',
+    voi: ['bieu:76061232', 'bieu:76061233', 'bieu:76061234', 'bieu:76061235'],
+    phuDinh: ['bieu:76061232', 'bieu:76061233', 'bieu:76061234', 'bieu:76061235'],
+    dieuKien: 'Dòng 7606.12.39 (Loại khác dưới 7606.12.3): hợp kim nhôm dạng lá không thuộc lá làm lon (.32), lá hợp kim 5082/5182 rộng > 1 m dạng cuộn (.33), tấm litô (.34) hoặc đã gia công bề mặt (.35)',
+    trich: '- - - - Loại khác',
+    duKien: ['Loại khác'],
+    ghiChu: 'phuDinh: bieu:76061232, bieu:76061233, bieu:76061234, bieu:76061235 — Điều kiện ghép (lá làm lon .32, hợp kim 5082/5182 dạng cuộn rộng > 1 m .33, tấm litô .34, gia công bề mặt .35), không gán ngưỡng đảo chiều theo Luật 2.',
+  },
+  {
+    id: 'hs:bieu:76129010:7401',
+    nut: 'bieu:76129010',
+    loai: 'BO_QUA',
+    cau: 'sen:76129010:1#5',
+    lyDo: 'Câu SEN liệt kê cỡ dung tích thương mại tiêu chuẩn minh họa (5L..50L…) của thùng sữa tươi, không đặt ngưỡng phân loại mới ngoài ngưỡng <= 300 lít của nhóm 76.12 (Luật 6)',
   },
 
   // ── 7614.10.1 (có lõi thép) & 7614.90.1 (loại khác): Cáp 25,3 mm và 28,28 mm ───────────────────
@@ -395,6 +452,7 @@ export const DAC_TA_NGUONG_76 = Object.freeze([
     nut: 'bieu:76141019',
     cau: 'bieu:76141012#1',
     voi: ['bieu:76141011', 'bieu:76141012'],
+    phuDinh: ['bieu:76141011', 'bieu:76141012'],
     dieuKien: 'Cáp nhôm có lõi thép 7614.10.19 (Loại khác) có đường kính trên 28,28 mm',
     trich: 'Có đường kính trên 25,3 mm nhưng không quá 28,28 mm',
     nguong: { daiLuong: 'đường kính', donVi: 'mm', tu: 28.28, den: null, gomTu: false, gomDen: false },
@@ -426,6 +484,7 @@ export const DAC_TA_NGUONG_76 = Object.freeze([
     nut: 'bieu:76149019',
     cau: 'bieu:76149012#1',
     voi: ['bieu:76149011', 'bieu:76149012'],
+    phuDinh: ['bieu:76149011', 'bieu:76149012'],
     dieuKien: 'Cáp nhôm loại khác 7614.90.19 (Loại khác) có đường kính trên 28,28 mm',
     trich: 'Có đường kính trên 25,3 mm nhưng không quá 28,28 mm',
     nguong: { daiLuong: 'đường kính', donVi: 'mm', tu: 28.28, den: null, gomTu: false, gomDen: false },
@@ -448,13 +507,14 @@ export const DAC_TA_NGUONG_76 = Object.freeze([
   {
     id: 'hs:bieu:761699:7401',
     nut: 'bieu:761699',
-    cau: 'chuong:76:cgpn:2#1',
+    loai: 'TACH_ANH_EM',
+    cau: 'bieu:761699#1',
     voi: ['bieu:761691'],
-    dieuKien: 'Tấm đan, phên, lưới, rào làm từ sợi có kích thước mặt cắt ngang trên 6 mm không thuộc 7616.91 nên sang 7616.99',
-    trich: 'kích thước mặt cắt ngang không quá 6 mm',
-    nguong: { daiLuong: 'kích thước mặt cắt ngang', donVi: 'mm', tu: 6, den: null, gomTu: false, gomDen: false },
-    duKien: ['kích thước mặt cắt ngang'],
-    ghiChu: 'phuDinh: bieu:761691 — Phần bù theo Chú giải phân nhóm 2 Chương 76 khi vật liệu làm lưới có mặt cắt trên 6 mm.',
+    phuDinh: ['bieu:761691'],
+    dieuKien: 'Phân nhóm 7616.99 (Loại khác dưới 7616.9): sản phẩm khác bằng nhôm không phải tấm đan, phên, lưới và rào bằng dây nhôm mặt cắt ngang <= 6 mm (phủ định điều kiện ghép của 7616.91)',
+    trich: '- - Loại khác:',
+    duKien: ['Loại khác'],
+    ghiChu: 'phuDinh: bieu:761691 — Điều kiện ghép (tấm đan/phên/lưới/rào + dây mặt cắt ngang <= 6 mm theo Chú giải phân nhóm 2 Chương 76), không gán thuần NGUONG > 6 mm theo Luật 2 De Morgan.',
   },
   {
     id: 'hs:bieu:76169930:7401',
@@ -466,6 +526,18 @@ export const DAC_TA_NGUONG_76 = Object.freeze([
     nguong: { daiLuong: 'tỉ lệ chiều dày / đường kính', donVi: 'lần', tu: 0.1, den: null, gomTu: false, gomDen: false },
     duKien: ['chiều dày', 'đường kính'],
     ghiChu: 'Nếu đồng xèng hình tròn có chiều dày <= 1/10 đường kính thì không đạt điều kiện định danh 7616.99.30.',
+  },
+  {
+    id: 'hs:bieu:76169990:7401',
+    nut: 'bieu:76169990',
+    loai: 'TACH_ANH_EM',
+    cau: 'bieu:76169990#1',
+    voi: ['bieu:76169920', 'bieu:76169930', 'bieu:76169940', 'bieu:7616995', 'bieu:76169960', 'bieu:76169970', 'bieu:76169980'],
+    phuDinh: ['bieu:76169920', 'bieu:76169930', 'bieu:76169940', 'bieu:7616995', 'bieu:76169960', 'bieu:76169970', 'bieu:76169980'],
+    dieuKien: 'Dòng 7616.99.90 (Loại khác dưới 7616.99): sản phẩm khác bằng nhôm không thuộc các dòng định danh đứng trước (kể cả đồng xèng hình tròn chiều dày <= 1/10 đường kính không đạt điều kiện 7616.99.30)',
+    trich: '- - - Loại khác',
+    duKien: ['Loại khác'],
+    ghiChu: 'phuDinh: bieu:76169920, bieu:76169930, bieu:76169940, bieu:7616995, bieu:76169960, bieu:76169970, bieu:76169980 — 7616.99.30 ghép điều kiện đồng xèng hình tròn + tỉ lệ chiều dày/đường kính > 1/10 cùng các anh em định danh khác, không gán ngưỡng đảo chiều theo Luật 2.',
   },
 ]);
 
@@ -492,23 +564,34 @@ export function dungBanGhiNguong({ luat = G.LUAT_MAC_DINH, dacTa = DAC_TA_NGUONG
       loi.push(`${d.id}: nút ${d.nut} không thuộc thư mục nguong/`);
       continue;
     }
-    const rec = {
-      id: d.id,
-      nut: d.nut,
-      loai,
-      dieuKien: d.dieuKien,
-      trich: d.trich,
-      cau: d.cau,
-      ...(d.voi ? { voi: [...d.voi] } : {}),
-      ...(d.nguong ? { nguong: { ...d.nguong } } : {}),
-      ...(d.thuatNgu ? { thuatNgu: d.thuatNgu } : {}),
-      duKien: [...d.duKien],
-      lop: nNguon.lop,
-      nguon: nNguon.nguon,
-      van: sha256(chu),
-      trangThai: 'KHOP',
-      ...(d.ghiChu ? { ghiChu: d.ghiChu } : {}),
-    };
+    const rec = loai === 'BO_QUA'
+      ? {
+          id: d.id,
+          nut: d.nut,
+          loai: 'BO_QUA',
+          cau: d.cau,
+          lyDo: d.lyDo,
+          van: sha256(chu),
+          ...(d.ghiChu ? { ghiChu: d.ghiChu } : {}),
+        }
+      : {
+          id: d.id,
+          nut: d.nut,
+          loai,
+          dieuKien: d.dieuKien,
+          trich: d.trich,
+          cau: d.cau,
+          ...(d.voi ? { voi: [...d.voi] } : {}),
+          ...(d.phuDinh ? { phuDinh: [...d.phuDinh] } : {}),
+          ...(d.nguong ? { nguong: { ...d.nguong } } : {}),
+          ...(d.thuatNgu ? { thuatNgu: d.thuatNgu } : {}),
+          duKien: [...d.duKien],
+          lop: nNguon.lop,
+          nguon: nNguon.nguon,
+          van: sha256(chu),
+          trangThai: 'KHOP',
+          ...(d.ghiChu ? { ghiChu: d.ghiChu } : {}),
+        };
     const rel = `nguong/${key}.jsonl`;
     if (!theoTep.has(rel)) theoTep.set(rel, []);
     theoTep.get(rel).push(rec);
@@ -622,11 +705,12 @@ function main() {
   const idx = (k) => { const i = argv.indexOf(k); return i >= 0 ? argv[i + 1] : null; };
   const luat = path.resolve(idx('--luat') || G.LUAT_MAC_DINH);
   const hoSo = path.resolve(idx('--ho-so') || G.HO_SO_MAC_DINH);
+  const loc76 = (banGhi) => banGhi.filter((x) => /^nguong\/(?:XV|76)\.jsonl$/.test(x._tep || ''));
 
   if (argv.includes('--tao')) {
     const { L, daGhi } = ghiKhoNguong({ luat, hoSo });
     const kho = kiemKhoHoSo(hoSo);
-    const dai = kiemDaiAnhEm(kho.banGhi, L);
+    const dai = kiemDaiAnhEm(loc76(kho.banGhi), L);
     console.log('Đã tạo kho M-74:', JSON.stringify({ daGhi, khuonLoi: kho.loi.length, cumKiem: dai.cumDaKiem.length, daiLoi: dai.loi.length }));
     if (kho.loi.length || dai.loi.length) process.exit(1);
     return;
@@ -635,9 +719,10 @@ function main() {
   if (argv.includes('--bao-cao')) {
     const L = napLuatCong(luat);
     const kho = kiemKhoHoSo(hoSo);
-    const dai = kiemDaiAnhEm(kho.banGhi, L);
+    const ds76 = loc76(kho.banGhi);
+    const dai = kiemDaiAnhEm(ds76, L);
     console.log(JSON.stringify({
-      soBanGhi: kho.banGhi.filter((x) => x.loai === 'NGUONG').length,
+      soBanGhi: ds76.filter((x) => x.loai === 'NGUONG').length,
       khuonLoi: kho.loi,
       cumDaKiem: dai.cumDaKiem,
       daiLoi: dai.loi,
@@ -652,7 +737,7 @@ function main() {
   const rCong45 = chayCong({ luat, hoSo, phamVi: ['76'], cong: [4, 5], L });
   const rCong3 = chayCong({ luat, hoSo, phamVi: ['76'], cong: [3], L });
   const loiNguongC3 = rCong3.cong[3].loi.filter((x) => /NGUONG chồng dải|: dải |: voi /.test(x));
-  const dai = kiemDaiAnhEm(kho.banGhi, L);
+  const dai = kiemDaiAnhEm(loc76(kho.banGhi), L);
 
   let coLoi = 0;
   console.log(`${kho.loi.length ? 'FAIL' : 'PASS'} khuôn M-74: ${kho.banGhi.length} bản ghi, ${kho.loi.length} lỗi`);

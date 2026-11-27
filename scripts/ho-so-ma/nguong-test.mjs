@@ -199,13 +199,22 @@ test('3. Cổng 3 (ANH EM) không có lỗi NGUONG chồng/hở/voi và cụm an
 
   const banGhi76 = banGhiTheoChuong('76');
   const dai76 = kiemDaiAnhEm76(banGhi76, L);
-  assert.equal(dai76.cumDaKiem.length, 9, `Kỳ vọng 9 cụm anh em Chương 76, nhận ${dai76.cumDaKiem.length}`);
+  assert.equal(dai76.cumDaKiem.length, 8, `Kỳ vọng 8 cụm anh em Chương 76, nhận ${dai76.cumDaKiem.length}`);
   assert.ok(dai76.cumDaKiem.every((c) => c.phuKin), 'Mọi cụm anh em Chương 76 phải phủ kín dải');
   assert.ok(dai76.ghiNhanLuat.some((g) => g.loai === 'CHONG_SEN_VOI_LUAT'));
-  for (const idKhac of ['hs:bieu:760519:7401', 'hs:bieu:76051990:7401', 'hs:bieu:760529:7401', 'hs:bieu:76052990:7401', 'hs:bieu:76141019:7401', 'hs:bieu:76149019:7401', 'hs:bieu:761699:7401']) {
+  for (const idKhac of ['hs:bieu:760519:7401', 'hs:bieu:76051990:7401', 'hs:bieu:760529:7401', 'hs:bieu:76052990:7401', 'hs:bieu:76061239:7401', 'hs:bieu:76141019:7401', 'hs:bieu:76149019:7401', 'hs:bieu:761699:7401', 'hs:bieu:76169990:7401']) {
     const r = banGhi76.find((x) => x.id === idKhac);
-    assert.ok(r && /^phuDinh: bieu:/.test(r.ghiChu || ''), `Thiếu đánh dấu phuDinh trên dòng Loại khác ${idKhac}`);
+    assert.ok(r && Array.isArray(r.phuDinh) && r.phuDinh.length > 0 && /^phuDinh: bieu:/.test(r.ghiChu || ''), `Thiếu đánh dấu phuDinh trên dòng Loại khác ${idKhac}`);
   }
+  for (const idDeMorgan of ['hs:bieu:76061239:7401', 'hs:bieu:761699:7401', 'hs:bieu:76169990:7401']) {
+    const r = banGhi76.find((x) => x.id === idDeMorgan);
+    assert.equal(r?.loai, 'TACH_ANH_EM', `Dòng điều kiện ghép ${idDeMorgan} phải là TACH_ANH_EM (Luật 2 De Morgan)`);
+  }
+  assert.equal(
+    banGhi76.filter((x) => x.loai === 'NGUONG' && /(?:^|[^\d])76(?:\.\d{2}|\d{2})/.test(x.nguong?.daiLuong || '')).length,
+    0,
+    'Cấm gắn mã HS Chương 76 vào nguong.daiLuong',
+  );
 
   if (dsChuong.includes('84')) {
     const banGhi84 = banGhiTheoChuong('84');
