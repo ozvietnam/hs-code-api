@@ -2,7 +2,7 @@
 
 - **Khuôn áp dụng:** `ho-so-ma@1` ([`docs/mong/khuon-ho-so-ma.md`](../khuon-ho-so-ma.md), [`docs/decisions/0006-ho-so-van-de-ma-8-so.md`](../../decisions/0006-ho-so-van-de-ma-8-so.md))
 - **Kho dữ liệu (`RUT_TU_LUAT`, khai trong `data/lop-kho.json`):**
-  - `data/ho-so-ma/nguong/85.jsonl`: **282 bản ghi** toàn Chương 85 (**`270 NGUONG`**, **`9 TACH_ANH_EM`**, **`3 BO_QUA`**; trong đó phạm vi **Gói 1 `85.01–85.04`** đã rà ngược theo 8 Luật M-74 gồm **126 bản ghi**: `114 NGUONG`, `9 TACH_ANH_EM`, `3 BO_QUA`, `22` bản ghi có mảng `phuDinh`; phần `chuong:85` và `85.05–85.49` giữ nguyên 156 bản ghi nền từng byte).
+  - `data/ho-so-ma/nguong/85.jsonl`: **289 bản ghi** toàn Chương 85 (**`268 NGUONG`**, **`17 TACH_ANH_EM`**, **`4 BO_QUA`**; đã hoàn tất rà ngược theo 8 Luật M-74 cho **Gói 1 `85.01–85.04`** [126 bản ghi] và **Gói 2 `85.05–85.19`** [45 bản ghi: `36 NGUONG`, `8 TACH_ANH_EM`, `1 BO_QUA`, `13` bản ghi có `phuDinh`]; giữ nguyên 100% từng byte **244 bản ghi** ngoài Gói 2 gồm `126` bản ghi Gói 1 và `118` bản ghi còn lại của `85.21–85.49`).
   - Phần XVI (`data/ho-so-ma/nguong/XVI.jsonl`) giữ nguyên từ Chương 84 (**y hệt từng byte**), không sinh bản ghi thừa hay trùng lặp.
   - Không chứa dữ liệu khách, tờ khai, `tb:`, `wco:`, `gir:`, hay thông số ví dụ tham khảo.
 - **Đơn vị & quy đổi trục anh em bổ sung cho Chương 85:**
@@ -66,7 +66,7 @@
 
 - **Kiểm phân dải anh em (`kiemDaiAnhEm` + Cổng 3):**
   - **Phạm vi Gói 1 (`85.01–85.04`):** **36 cụm anh em**: **31 cụm phủ kín `(-∞, +∞)`** (bao gồm cụm `bieu:850432` mới gộp lại sau khi xóa mã HS khỏi `daiLuong`), **5 cụm hữu hạn đúng cấu trúc biểu** (`850132`, `850152`, `850162`, `850212`, `8504219`). **`0` lỗi chồng dải, `0` lỗi hở dải, `0` lỗi `voi`/`phuDinh`, `0` lỗi đơn vị.**
-  - **Toàn Chương 85:** **80 cụm anh em**: **70 cụm phủ kín `(-∞, +∞)`**, **10 cụm hữu hạn đúng cấu trúc biểu** (`850132`, `850152`, `850162`, `850212`, `8504219`, `853929`, `854442`, `8544429`, `854460`, và `853530` đã bù kín khoảng giữa `(40; 66) kV` vào `bieu:85353090` *"Loại khác"* với `phuDinh: bieu:8535301, bieu:85353020` dưới nhóm 85.35 `> 1 kV`). **`0` lỗi chồng dải, `0` lỗi hở dải, `0` lỗi `voi`, `0` lỗi đơn vị.**
+  - **Toàn Chương 85:** **78 cụm anh em**: **68 cụm phủ kín `(-∞, +∞)`**, **10 cụm hữu hạn đúng cấu trúc biểu** (`850132`, `850152`, `850162`, `850212`, `8504219`, `853929`, `854442`, `8544429`, `854460`, và `853530` đã bù kín khoảng giữa `(40; 66) kV` vào `bieu:85353090` *"Loại khác"* với `phuDinh: bieu:8535301, bieu:85353020` dưới nhóm 85.35 `> 1 kV`). **`0` lỗi chồng dải, `0` lỗi hở dải, `0` lỗi `voi`, `0` lỗi đơn vị.**
 - **Đối chiếu `data/ho-so/ranh-gioi/85*.json` (chỉ-đọc):**
   - Phạm vi Gói 1 (`8501..8504*.json`): **29 tệp** (**72 dòng `dieuKienSo`**) đều được phủ đầy đủ (`0` thiếu).
   - Toàn Chương 85: **163/163 tệp** (**155 dòng `dieuKienSo`**) đều đã đối chiếu và có bản ghi tương ứng tại nút hoặc nút con trực tiếp (`0` thiếu).
@@ -74,3 +74,59 @@
   - [`scripts/ho-so-ma/cong.mjs`](../../../scripts/ho-so-ma/cong.mjs) (`--pham-vi chuong:85 --cong 4,5`)
   - [`scripts/ho-so-ma/nguong-rut.mjs`](../../../scripts/ho-so-ma/nguong-rut.mjs) (`--chuong 85 --kiem`)
   - [`scripts/test-ho-so-ma.mjs`](../../../scripts/test-ho-so-ma.mjs), [`scripts/test-ho-so-ma-tra.mjs`](../../../scripts/test-ho-so-ma-tra.mjs), [`scripts/test-lop-kho.mjs`](../../../scripts/test-lop-kho.mjs), [`scripts/test-dieu-kien.mjs`](../../../scripts/test-dieu-kien.mjs)
+
+---
+
+## Rà ngược theo 8 Luật M-74 — Gói 2 (`85.05–85.19`)
+
+> Phạm vi gồm toàn bộ **15 nhóm 4 số** từ `85.05` đến `85.19` (`8505..8519`), bao gồm 2 nhóm vàng `85.16` và `85.17` (không đụng `dieu-kien/` hay `bang-anh-em/`). Giữ nguyên 100% từng byte **244 bản ghi** ngoài Gói 2 (`126` bản ghi Gói 1 đã gộp ở #2462 + `118` bản ghi còn lại của `85.21–85.49`).
+
+### 1. Biến động bản ghi phạm vi `85.05–85.19`
+
+| Chỉ tiêu (phạm vi `bieu:8505*..8519*`) | Nền `origin/main` | Sau rà ngược Gói 2 | Biến động |
+|---|---:|---:|---|
+| Tổng bản ghi gói `85.05–85.19` | 38 | **45** | **`+7` thêm / `33` sửa / `0` bỏ** |
+| `NGUONG` | 38 | **36** | Chuyển 2 bản ghi đảo sai De Morgan (`8507109:td2`, `8507209:td2`) sang `TACH_ANH_EM` (giữ `id` cũ) |
+| `DINH_NGHIA` | 0 | **0** | Chú giải 3 & 5 Ch.85 (`85.07`, `85.17`) định nghĩa định tính, không đặt ngưỡng số |
+| `TACH_ANH_EM` | 0 | **8** | 2 chuyển từ `NGUONG` sai De Morgan + 6 thêm mới (`850819`, `85181019`, `85182990`, `85184090`, `85185090`, `8519819`) |
+| `BO_QUA` | 0 | **1** | `hs:bieu:8515:7401` cho `nhom:8515:ct:7#5` (*"Hàn thau thường khoảng trên 450 °C"*, Luật 6) |
+| Bản ghi có trường mảng `phuDinh` | 0 | **13** | 3 `NGUONG` `"Loại khác"` thuần (`8506`) + 8 `TACH_ANH_EM` De Morgan + 2 `NGUONG` `loaiKhacCoVe` (`85184040`, `85185020`) |
+| `NGUONG` chứa `"thông số"` trong `daiLuong` | 13 | **0** | **Sạch 100%** (12 ở `8507` + 1 ở `85181011:8503`) |
+| `NGUONG` chứa mã HS trong `daiLuong` | 3 | **0** | **Sạch 100%** (`85198110:8501..8503`, đồng thời xóa `"Ch.85"` khỏi `8509:8501`) |
+| Nhóm vàng `85.16` & `85.17` | 0 | **0** | Xác nhận `0` ngưỡng số pháp lý/CGCT/SEN và `0` tham chiếu `nguong` từ `dieu-kien/85.jsonl` |
+
+### 2. Các điểm chuẩn hoá chính trong Gói 2 (`85.05–85.19`)
+
+- **Xóa sạch 13 đại lượng mơ hồ `"thông số"` & 3 mã HS trong `daiLuong` (Luật 3):**
+  - **Nhóm `85.07` (12 bản ghi: `85071092`, `85071095..99`, `85072094..99`):** thay `"thông số (cm)"` bằng đúng đại lượng vật lý nguyên văn **`"chiều cao (không bao gồm đầu cực và tay cầm)"`** (`cm`), thống nhất 1 chuỗi trên cả 4 cụm anh em (`8507109:td1`, `8507109:td2`, `8507209:td1`, `8507209:td2`, mỗi cụm phủ kín `<= 13`, `(13; 23]`, `> 23 cm`).
+  - **Nhóm `85.18` (`hs:bieu:85181011:8503`):** thay `"thông số (mm)"` bằng **`"chiều cao"`** (`<= 3 mm`), sửa `trich: "cao không quá 3 mm"` và `duKien: ["cao không quá 3 mm"]` khớp nguyên văn `bieu:85181011#1`.
+  - **Nhóm `85.19` (`hs:bieu:85198110:8501..8503`):** bỏ mã `(8519.81.10)` khỏi `daiLuong` → `"kích thước chiều dài / chiều rộng / chiều dày (máy ghi âm cassette bỏ túi)"` (`<= 170 / 100 / 45 mm`).
+  - **Nhóm `85.09` (`hs:bieu:8509:8501`):** đổi `"khối lượng thiết bị cơ điện gia dụng (CG 4(b) Ch.85)"` → `"khối lượng (thiết bị cơ điện gia dụng ngoài danh mục liệt kê)"` (`<= 20 kg`), làm rõ nhánh 4(b) (các máy liệt kê ở 4(a) không giới hạn khối lượng).
+- **Chuyển 2 ca đảo sai De Morgan sang `TACH_ANH_EM` + `phuDinh` (Luật 2 — giữ `id` cũ):**
+  - `hs:bieu:8507109:td2:8501` & `hs:bieu:8507209:td2:8501` (`- - - Loại khác:`): anh em `td1` ghép *(điện áp danh định `6 V` hoặc `12 V` VÀ dung lượng phóng điện `<= 200 Ah`)*. Phản ví dụ: ắc quy axit-chì điện áp `24 V` (hoặc `2 V`) dung lượng `100 Ah` (`<= 200 Ah`) vẫn thuộc `td2` → cấm gắn `NGUONG > 200 Ah`; chuyển sang `TACH_ANH_EM` kèm `phuDinh: ["bieu:8507109:td1"]` / `["bieu:8507209:td1"]`.
+- **Phủ đủ 100% nút `"Loại khác"` / phần bù dưới cha có `NGUONG` (Luật 1 & 2):**
+  - Bổ sung mảng `phuDinh` cho 3 dòng `"Loại khác"` thuần 1 chiều thể tích ở `85.06`: `8506109`, `85066090`, `85068090` (và 2 dòng `loaiKhacCoVe` ở `85.18`: `85184040`, `85185020`).
+  - Thêm mới **6 `TACH_ANH_EM` + `phuDinh`** (`hs:<nut>:7401`) cho 6 nút phần bù điều kiện ghép/đa chiều đang thiếu bản ghi: `bieu:850819`, `bieu:85181019` (`Micro khác`), `bieu:85182990`, `bieu:85184090`, `bieu:85185090`, `bieu:8519819`.
+- **Con số mô tả thông thường (Luật 6 & 8):**
+  - Ghi **`BO_QUA`** `hs:bieu:8515:7401` tại `nut: "bieu:8515"` cho câu `nhom:8515:ct:7#5` (*"Hàn thau thường khoảng trên 450 °C..."*).
+
+### 3. Bảng đối soát câu chứa chữ số + đơn vị theo Luật 6 (`85.05–85.19`)
+
+| Nguồn câu (`85.05–85.19`) | Trúng số + đơn vị | Đã rút `NGUONG` / `DINH_NGHIA` | Ghi `BO_QUA` | Bỏ qua hợp lệ (nhắc lại luật / ví dụ) | Chi tiết đối soát |
+|---|---:|---:|---:|---:|---|
+| Pháp lý Ch.85 (`chuong:85:cg:4:b#1`) | 1 | 1 | 0 | 0 | `hs:bieu:8509:8501` (`<= 20 kg` cho nhánh 4(b) nhóm `85.09`, đúng Luật 7) |
+| Dòng biểu `bieu:8506*` | 3 | 3 | 0 | 0 | `8506101`, `85066010`, `85068030` (`<= 300 cm3`) + 3 phần bù `NGUONG` `"Loại khác"` (`phuDinh`) |
+| Dòng biểu `bieu:8507*` | 14 | 14 | 0 | 0 | `8507109:td1`, `8507209:td1` (`6 V`/`12 V`, `<= 200 Ah`) + 12 dòng chiều cao (`<= 13`, `(13; 23]`, `> 23 cm`) |
+| Dòng biểu `bieu:8508*` | 2 | 2 | 0 | 0 | `850811` & `85081100` (`<= 1.500 W`, `<= 20 lít` = 4 bản ghi `NGUONG`) + `TACH_ANH_EM` `850819` |
+| Dòng biểu `bieu:8518*` | 5 | 5 | 0 | 0 | `85181011` (3 chiều), `85182920` (2 chiều), `85184040` (`>= 6 đường`), `85185010` (`>= 240 W`), `85185020` (`50..100 V`) |
+| Dòng biểu `bieu:8519*` | 1 | 1 | 0 | 0 | `85198110` (`170 x 100 x 45 mm` = 3 bản ghi `NGUONG`) + `TACH_ANH_EM` `8519819` |
+| Dòng biểu `8505, 8509..8517` (gồm vàng `85.16`, `85.17`) | 0 | 0 | 0 | 0 | Chỉ chứa số hiệu nhóm/chương tham chiếu (`90.18`, `87.01–.05`, `85.39`, `85.12`, `85.45`, `84.71`, ...) |
+| CGCT / SEN `85.09` (`nhom:8509:ct:9#1`) | 1 | 0 | 0 | 1 | Nhắc lại ngưỡng `<= 20 kg` đã rút từ Chú giải pháp lý `chuong:85:cg:4:b#1` (`hs:bieu:8509:8501`) |
+| CGCT / SEN `85.15` (`nhom:8515:ct:7#5`) | 1 | 0 | **1** | 0 | Ghi `BO_QUA` `hs:bieu:8515:7401` (*"Hàn thau thường khoảng trên 450 °C"*) |
+| CGCT / SEN `85.05..85.08`, `85.10..85.14`, **`85.16`**, **`85.17`**, `85.18`, `85.19` | 0 | 0 | 0 | 0 | 0 câu chứa ngưỡng số+đơn vị (các chữ số còn lại chỉ là số đếm bộ phận/kỹ thuật như `"02 van"`, `"2 tấm"`, `"MP3"`, số hiệu nhóm) |
+| **Tổng Gói 2 (`85.05–85.19`)** | **28** | **26** | **1** | **1** | **28/28 câu đã đối soát, `0` bỏ sót** |
+
+### 4. Kiểm phân dải anh em & đối chiếu `ranh-gioi` (`85.05–85.19`)
+
+- **Cụm anh em trong Gói 2 (`kiemDaiAnhEm` + Cổng 3):** **7 cụm anh em**, **7/7 phủ kín `(-∞, +∞)`** (`850610`, `850660`, `850680`, `8507109:td1`, `8507109:td2`, `8507209:td1`, `8507209:td2`), **`0` chồng dải, `0` hở dải, `0` lỗi `voi`/`phuDinh`, `0` lỗi đơn vị**.
+- **Đối chiếu `data/ho-so/ranh-gioi/8505..8519*.json` (chỉ-đọc):** **55 tệp** (**20 dòng `dieuKienSo`** trên `8506`, `8507`, `8518`) đều được phủ đầy đủ (`0` thiếu; `8516*.json` và `8517*.json` có `0` `dieuKienSo`).
