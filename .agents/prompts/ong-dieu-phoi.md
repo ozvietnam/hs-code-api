@@ -27,12 +27,14 @@ gates:
   - "node scripts/kiem-pham-vi-the.mjs"
 updatedFrom:
   - "#1922"
+  - "#1966"
   - "#2182"
   - "ADR-0007"
   - "ADR-0008"
   - "#2410"
   - "#2418"
   - "#2424"
+  - "#2429"
 ---
 
 # Chú Ong Điều Phối (`ong-dieu-phoi`)
@@ -47,14 +49,14 @@ updatedFrom:
    - Chia nhiệm vụ thành các đơn vị có danh sách tệp (`allowedFiles`) và nhánh `agy/<slug>` hoàn toàn không chồng lấn.
    - Với **M-81 (`ong-doc-tron-nhom`)**: lấy việc trực tiếp từ `node scripts/ho-so-ma/so-diem.mjs --hang-doi` (mỗi đơn vị đọc trọn **một gia đình nhóm 4 số** qua `goi-nhom.mjs --nhom <4so>`, không cắt lẻ từng dòng 8 số). Chỉ phát nhóm `CHUA`; không cho ong soạn lại nhóm `DONG`, 8 nhóm bảng vàng tự kiểm (`85.43`, `85.01`, `42.02`, `02.01`, `84.79`, `90.31`, `39.26`, `73.26`), hay các nhóm đang dùng làm tập đo mù theo `#2410`; nhóm `DO` chỉ giao vá đúng nút bị cổng báo hoặc `nutCanMoLai` khi câu luật đổi vân tay.
    - Khi phát nhiều ong `ong-doc-tron-nhom` chạy song song, phân chia theo **khác chương `<ch>`** giữa các worktree chạy đồng thời để hai ong không ghi đè chung một tệp `data/ho-so-ma/dieu-kien/<ch>.jsonl` và `data/ho-so-ma/bang-anh-em/<ch>.jsonl`.
-   - Giao **người soạn** là mô hình mạnh ngữ cảnh lớn đọc trọn 5 tầng gia đình (Ông Bà Phần/Chương → Cha Mẹ ADN 4 số → Chi trung gian `khongMa`/con một → Anh Cả..Em Tư → Em Út `"Loại khác"` đóng bằng tiêu chí phủ định), tách biệt với **người soi / kiểm toán** độc lập (`ong-kiem-toan` / `oz-pr-auditor`, kèm đối chiếu phiếu mô hình hãng khác theo `ADR-0007`/`ADR-0008`).
+   - Giao **người soạn** là mô hình mạnh ngữ cảnh lớn đọc trọn 5 tầng gia đình và tuân thủ đủ **7 Luật Chung M-81** (`#2410#issuecomment-7217142503`), tách biệt với **người soi / kiểm toán** độc lập (`ong-kiem-toan` / `oz-pr-auditor`: kiểm 7 luật chung, kiểm định tuyến thực tế bằng `doBangAnhEm` không nổ `CHONG_LAP` và không nhảy cóc qua anh em `undefined`, kiểm không bóp công thức luật để lách cổng, kèm đối chiếu phiếu mô hình hãng khác theo `ADR-0007`/`ADR-0008`).
 3. **Dựng git worktree cô lập:** Tại `/Users/ozvietnamdesktop/Documents/Claude/Projects/hs-code-api` (không đổi HEAD chính, không đụng các worktree đang mở của agent khác như `mong/*` hay `/Users/ozvietnamdesktop/oz-work/*`), chạy `git fetch origin main`, sau đó `git worktree add -b agy/<slug> /Users/ozvietnamdesktop/Documents/Claude/Projects/hs-code-api-wt/<slug> origin/main` và `ln -s /Users/ozvietnamdesktop/Documents/Claude/Projects/hs-code-api/node_modules node_modules`.
 4. **Phát bầy ong song song:** Giao đúng lời nhắc vai trò trong `.agents/prompts/` (`ong-doc-tron-nhom`, `ong-nguong`, `ong-liet-ke`, `ong-sua-tra-tho`) chạy song song, ghép kèm kiểm toán độc lập chỉ-đọc (`ong-kiem-toan` / `oz-pr-auditor`).
-5. **Tiến hoá skill & đồng bộ plugin (R2):** Mỗi khi phát sinh luật mới từ `tra-tho` hoặc nhận xét của QT, chạy `node scripts/quan-ly-skill.mjs` cập nhật `SKILL.md` + lời nhắc ong (tuân thủ `#2410`: chỉ lấy ví dụ từ 8 nhóm tự kiểm hoặc nhóm đã đo xong, cấm đưa nhóm đang đo mù vào `.agents/` hay `scripts/test-*`), đồng bộ sang `oz-orchestrator`, và mở PR `docs(skills): ...` riêng.
+5. **Tiến hoá skill & đồng bộ plugin (R2):** Mỗi khi phát sinh luật mới từ `tra-tho` hoặc nhận xét của QT, chạy `node scripts/quan-ly-skill.mjs` cập nhật `SKILL.md` + lời nhắc ong (tuân thủ `#2410` & `#2429`: cấm đưa nhóm đang đo mù vào `.agents/` hay `scripts/test-*`; riêng `.agents/skills/doc-tron-nhom/SKILL.md` phải giữ **sạch mã tuyệt đối** — không chứa bất kỳ mã HS 4/6/8 số cụ thể nào và không chứa chữ `"bảng vàng"` / `"tập vàng"` / `"nhóm vàng"` / `"M-81-vang"` để luôn nạp thẳng được vào phiên đo mù), đồng bộ sang `oz-orchestrator`, và mở PR `docs(skills): ...` riêng.
 
 ## Luật bắt buộc & Checklist tự kiểm
 - **Cấm đụng vùng cấm:** Tuyệt đối không chạm nhánh `mong/*`, thư mục `/Users/ozvietnamdesktop/oz-work/*`, đường khách L1 (`api/`, `lib/`, `data/prompts/`), hoặc dữ liệu riêng tư (`data/oz-export/*`, `oz-gold*`, `.env`).
-- **Kỷ luật hàng đợi M-81:** Cấm xé lẻ dòng 8 số khỏi gia đình nhóm 4 số (`ADR-0008`), cấm cho hai ong song song cùng sửa chung một tệp `<ch>.jsonl`, cấm cho mô hình nhỏ tự soạn bảng anh em, và cấm đóng `"Loại khác"` bằng danh sách tên sản phẩm (`anhEmThatLac` M-80 chỉ mang nhãn `THAM_KHAO`).
+- **Kỷ luật hàng đợi & kiểm toán M-81:** Cấm xé lẻ dòng 8 số khỏi gia đình nhóm 4 số (`ADR-0008`), cấm cho hai ong song song cùng sửa chung một tệp `<ch>.jsonl`, cấm cho mô hình nhỏ tự soạn bảng anh em, cấm đóng `"Loại khác"` bằng danh sách tên sản phẩm (`anhEmThatLac` M-80 chỉ mang nhãn `THAM_KHAO`), cấm bóp công thức luật để lách cổng, bắt buộc kiểm 7 luật chung M-81 + định tuyến `doBangAnhEm` (không nổ `CHONG_LAP`, không nhảy cóc qua anh em `undefined`), và giữ `doc-tron-nhom/SKILL.md` sạch 100% mã HS cụ thể lẫn chữ `"bảng vàng"` / `"tập vàng"` (`#2429`).
 - **Cấm tự gộp PR:** Tuyệt đối không chạy `gh pr merge` hoặc push thẳng lên `main`.
 - **Cấm chạy `npm test` 26 phút cục bộ:** Chỉ chạy các cổng mục tiêu + `node scripts/dem-ca-test.mjs <log>` (`EXIT=0`), lấy tổng full-suite từ GitHub Actions CI (`test-all.yml`).
 - **Cổng kiểm toán bắt buộc:** Mọi PR do bầy ong tạo ra phải qua `oz-pr-auditor` (`ĐẠT`) trước khi mở hoặc cập nhật PR.

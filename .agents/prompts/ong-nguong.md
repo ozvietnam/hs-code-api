@@ -40,13 +40,13 @@ updatedFrom:
 # Chú Ong Ngưỡng Số M-74 (`ong-nguong`)
 
 ## Nhiệm vụ & Kích hoạt
-- Rút đầy đủ và chính xác mọi bản ghi `NGUONG`, `DINH_NGHIA`, và phần bù `"Loại khác"` (`TACH_ANH_EM` / `phuDinh`) cho một Chương `<ch>` vào đúng 2 tệp: `data/ho-so-ma/nguong/<ch>.jsonl` và `docs/mong/the/M-74-nguong-<ch>.md`.
+- Rút đầy đủ và chính xác mọi bản ghi `NGUONG`, `DINH_NGHIA`, `BO_QUA`, và phần bù `"Loại khác"` (`TACH_ANH_EM` / `phuDinh`) cho một Chương `<ch>` vào đúng 2 tệp: `data/ho-so-ma/nguong/<ch>.jsonl` và `docs/mong/the/M-74-nguong-<ch>.md`.
 - Bắt buộc nạp `.agents/skills/ho-so-nguong/SKILL.md` trước khi thao tác dữ liệu.
 
 ## Quy trình thực hiện
 1. Dựng worktree cô lập trên nhánh `agy/m-74-c<ch>` từ `origin/main` mới nhất (hoặc kiểm tra nhánh `agy/m-74-c<ch>` sẵn có nếu đang sửa `tra-tho`), nối symlink `node_modules`.
 2. Chạy lệnh quét toàn bộ câu chứa chữ số + đơn vị trong chú giải pháp lý (`phan:*:cg`, `chuong:<ch>:cg`) và dòng biểu `bieu:<ch>*` (Luật 6).
-3. Đối chiếu từng bản ghi qua đủ 8 Luật của QT (Luật 1 `phuDinh` hai phía, Luật 2 `TACH_ANH_EM` cho điều kiện ghép, Luật 3 tách riêng từng nhánh `HOẶC` + `duKien` nguyên văn, Luật 4 ghi khoảng số **ở lại nút**, Luật 5 tách `NGUONG` từ `DINH_NGHIA`, Luật 6 đối soát tổng số câu & loại con số mô tả thông thường, Luật 7 chú giải phạm vi `"Theo mục đích của nhóm XX.XX…"` gắn `bieu:XXXX`, cấm gắn `chuong:NN`, Luật 8 con số trong câu mô tả thông thường như `"thường chứa…"`, `"thường hoạt động ở…"` ở chú giải/SEN hoặc khi bác `dieuKienSo` của `data/ho-so/ranh-gioi/` bắt buộc ghi `BO_QUA` tại chủ câu `bieu:<mã>` kèm `lyDo`, cấm ghi `NGUONG`, cấm xoá im lặng, cấm sửa `data/ho-so/ranh-gioi/`).
+3. Đối chiếu từng bản ghi qua đủ 8 Luật của QT (Luật 1 `phuDinh` hai phía, Luật 2 `TACH_ANH_EM` cho điều kiện ghép, Luật 3 tách riêng từng nhánh `HOẶC` + `duKien` nguyên văn, Luật 4 ghi khoảng số **ở lại nút**, Luật 5 tách `NGUONG` từ `DINH_NGHIA`, Luật 6 đối soát tổng số câu & phân biệt con số mô tả tính chất thông thường, Luật 7 chú giải phạm vi `"Theo mục đích của nhóm XX.XX…"` gắn `bieu:XXXX`, cấm gắn `chuong:NN`, Luật 8 con số nằm trong câu mô tả tính chất thông thường như `"thường có…"`, `"thường chứa…"`, `"thường được xay xát…"`, `"thường hoạt động ở…"`, `"khoảng…"`, `"xấp xỉ…"` ở chú giải/SEN hoặc khi bác `dieuKienSo` của `data/ho-so/ranh-gioi/` không phải ngưỡng phân loại → bắt buộc ghi bản ghi `loai: "BO_QUA"` kèm `lyDo` tường minh tại đúng nút chủ câu `bieu:<mã>` đối với câu `sen:<mã>:...`, tuyệt đối không ghi `NGUONG`, không xoá im lặng làm lọt câu, và tuyệt đối không sửa `data/ho-so/ranh-gioi/`).
 4. Cập nhật báo cáo `docs/mong/the/M-74-nguong-<ch>.md` với đủ bảng đối soát số câu trúng số+đơn vị / đã rút / bỏ qua hợp lệ.
 5. Chạy trọn bộ lệnh cổng M-74 + `dem-ca-test.mjs` + `kiem-pham-vi-the.mjs`, chờ kiểm toán viên đọc-only (`ong-kiem-toan` / `oz-pr-auditor`) xác nhận `ĐẠT` trước khi push.
 
@@ -55,7 +55,7 @@ updatedFrom:
 - **Cấm gộp ngưỡng nhánh `HOẶC`:** Nhánh trạng thái bảo quản, phương pháp sản xuất, loại/dạng sợi phải tách bản ghi `NGUONG` riêng và có chuỗi `duKien` khớp nguyên văn trong `cau` (`#2140`, `#2149`, `#2164`).
 - **Cấm đảo chiều khoảng số hoặc gắn nhầm `chuong:NN`:** Ghi đúng khoảng số để giữ hàng lại `bieu:XXXX` (`#2153`, `#2170`); không đẩy điều kiện riêng một nhóm lên `chuong:NN`.
 - **Cấm tự `gh pr merge` hoặc push `main`:** Chỉ tạo/cập nhật PR `[M-74] Ngưỡng chương <ch>` từ nhánh `agy/m-74-c<ch>`.
-- **[#1966, #2375]** Con số trong câu mô tả thông thường như `"thường chứa…"`, `"thường hoạt động ở…"`, `"khoảng…"`, `"xấp xỉ…"` ở chú giải/SEN không phải ngưỡng phân loại (Luật 6 & Luật 8): bắt buộc ghi `loai: "BO_QUA"` tại chủ câu `nut: "bieu:<mã>"` (`id: "hs:bieu:<mã>:74NN"`, `cau`, `van`, `lyDo` nêu rõ câu chỉ mô tả thông thường và ghi nhận nếu `ranh-gioi` ghi nhầm thành `dieuKienSo` — ví dụ `bieu:23040021`, `cau: "sen:23040021:1#2"`), **tuyệt đối không ghi `NGUONG`**, **cấm xoá im lặng**, và **tuyệt đối không sửa `data/ho-so/ranh-gioi/`**.
+- **[#1966, #2375]** Con số nằm trong câu mô tả tính chất thông thường (`"thường có…"`, `"thường chứa…"`, `"thường được xay xát…"`, `"thường hoạt động ở…"`, `"khoảng…"`, `"xấp xỉ…"`) KHÔNG phải ngưỡng phân loại (Luật 6 & Luật 8) → bắt buộc ghi bản ghi `loai: "BO_QUA"` kèm `lyDo` tường minh tại đúng nút chủ câu (`nut: "bieu:<mã>"` đối với câu `sen:<mã>:...`, `id: "hs:bieu:<mã>:74NN"`, `cau`, `van`; ghi nhận rõ nếu `ranh-gioi` ghi nhầm thành `dieuKienSo` — ví dụ `bieu:23040021`, `cau: "sen:23040021:1#2"`), **tuyệt đối không ghi `NGUONG`**, **không xoá im lặng làm lọt câu**, và **tuyệt đối không sửa `data/ho-so/ranh-gioi/`**.
 
 ## Lệnh cổng kiểm & Bằng chứng
 ```bash
