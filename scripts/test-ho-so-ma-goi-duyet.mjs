@@ -556,7 +556,7 @@ check('M-78 nutChuCua: nạp được câu sen:* nguyên văn từ sen.jsonl', m
   });
 
   check(
-    'goiM81 trên kho thật 12 nhóm vàng: đúng 9 cặp VUNG_CHONG (39:1, 84:3, 85:5) + 11 cặp GIAI_CHONG chờ duyệt (85.17:4 + 85.43:7 = 17 bản ghi) + 3 bảng HO_PHU (8501, 870840, 870850) + 0 lỗi câu luật',
+    'goiM81 trên kho thật 12 nhóm vàng: đúng 9 cặp VUNG_CHONG (39:1, 84:3, 85:5) + 11 cặp GIAI_CHONG chờ duyệt (85.17:4 + 85.43:7 = 17 bản ghi) + 1 bảng HO_PHU (8501) + 0 lỗi câu luật',
     kqThat.soVungChong === 9
     && kqThat.theoChuong['39']?.vungChong === 1
     && kqThat.theoChuong['84']?.vungChong === 3
@@ -564,10 +564,10 @@ check('M-78 nutChuCua: nạp được câu sen:* nguyên văn từ sen.jsonl', m
     && kqThat.soGiaiChong === 11
     && kqThat.soBanGhiGiaiChong === 17
     && kqThat.theoChuong['85']?.giaiChong === 11
-    && kqThat.soHoPhu === 3
-    && JSON.stringify(kqThat.dsHoPhu.map((x) => x.idPhieu)) === JSON.stringify(['M81-HP-8501', 'M81-HP-870840', 'M81-HP-870850'])
+    && kqThat.soHoPhu === 1
+    && JSON.stringify(kqThat.dsHoPhu.map((x) => x.idPhieu)) === JSON.stringify(['M81-HP-8501'])
     && kqThat.theoChuong['85']?.hoPhu === 1
-    && kqThat.theoChuong['87']?.hoPhu === 2
+    && (kqThat.theoChuong['87']?.hoPhu ?? 0) === 0
     && kqThat.soNghiaThuong > 0
     && kqThat.loiCau.length === 0
     && !mdThat.includes('không tìm thấy câu')

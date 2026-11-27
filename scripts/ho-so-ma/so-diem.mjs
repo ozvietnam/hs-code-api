@@ -273,10 +273,25 @@ export function chamDiemNhom(nhom4HoacNut, ctx = {}) {
     } else if (ct.vanTay && vanTay(chu) !== ct.vanTay) {
       ghiLechCau(ct.nguon, ct.nut, ct.id, 'CANH_TRANH vân tay câu đã đổi');
     }
-    for (const p of ct.phepThu || []) {
+      for (const p of ct.phepThu || []) {
       const pNguon = typeof p === 'string' ? p : p?.nguon;
       if (pNguon && c.L.chuCau(pNguon) === null) {
         ghiLechCau(pNguon, ct.nut, ct.id, 'CANH_TRANH phepThu không còn trong kho luật');
+      }
+    }
+  }
+
+  for (const b of c.bangAnhEmTheoCha.values()) {
+    if (!b.vanTayCau || typeof b.vanTayCau !== 'object') continue;
+    const thuocNhom = cayIds.has(b.cha) || (b.anhEm || []).some((ae) => cayIds.has(ae.nut));
+    if (!thuocNhom) continue;
+    for (const [cid, vt] of Object.entries(b.vanTayCau)) {
+      if (cauDoiVanTaySet.has(cid)) continue;
+      const bChu = /^(?:tb|wco):/.test(cid || '') ? null : c.L.chuCau(cid);
+      if (bChu === null) {
+        ghiLechCau(cid, b.cha, `bang-anh-em(${b.cha})`, 'vanTayCau không còn trong kho luật');
+      } else if (vanTay(bChu) !== vt) {
+        ghiLechCau(cid, b.cha, `bang-anh-em(${b.cha})`, 'vân tay câu vanTayCau đã đổi');
       }
     }
   }

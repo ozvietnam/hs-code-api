@@ -1035,12 +1035,44 @@ function chungMinhPhuKinCoDieuKienCha(con, dkTheoNut, nguongById, chaDks, chuoiC
   return proven && !aborted && validParentCount > 0;
 }
 
-/** Kiểm phân hoạch kín theo cấu trúc dòng biểu thuế (không đọc/đoán chữ trong `d.tap`):
- *  Cụm Nguyên chiếc + Phần bù có tên cho hàng nguyên chiếc (`laPhanBuCoTen`) + nhánh "Bộ phận (và phụ kiện)". */
-function chungMinhPhanHoachCauTruc(con, dkTheoNut, nguongById = new Map(), opts = {}) {
+const CUM_BO_PHAN_CHUOI_CHA = Object.freeze([
+  'bộ phận và phụ kiện của nó',
+  'bộ phận và phụ kiện của chúng',
+  'bộ phận của nó',
+  'bộ phận của chúng',
+]);
+
+/** Tìm câu biểu/chương từ nút cha ngược lên tới cấp Chương (không vượt lên Phần) có nêu nguyên văn một trong 4 cụm bộ phận đóng (ADR-0009 mục 6). */
+export function timCauBoPhanTrenChuoiCha(chaId, L) {
+  if (!chaId || !L || typeof L.chuCau !== 'function') return null;
+  const duongGoc = (L.cay && G.duongDiNut(chaId, L.cay)) || [{ cap: G.capCuaNut(chaId), nut: chaId }];
+  const duong = duongGoc.filter((b) => b && b.cap !== 'PHAN' && !/^phan:/.test(b.nut || ''));
+  for (const b of [...duong].reverse()) {
+    const mCh = /^chuong:(\d{2})$/.exec(b.nut || '');
+    const ungVien = mCh ? [`${b.nut}#1`, `bieu:${mCh[1]}#1`] : [`${b.nut}#1`];
+    for (const cauId of ungVien) {
+      const chu = L.chuCau(cauId);
+      if (chu === null || chu === undefined) continue;
+      const cs = chuanSo(chu).toLowerCase();
+      for (const cum of CUM_BO_PHAN_CHUOI_CHA) {
+        if (cs.includes(cum)) {
+          return { cauId, trich: cum };
+        }
+      }
+      break;
+    }
+  }
+  return null;
+}
+
+/** Kiểm phân hoạch kín theo danh sách đóng quy ước cấu trúc dòng biểu thuế (ADR-0009 mục 6 — không đọc/đoán chữ trong `d.tap`):
+ *  Cụm Nguyên chiếc + Phần bù có tên cho hàng nguyên chiếc (`laPhanBuCoTen`) + nhánh "Bộ phận (và phụ kiện)",
+ *  chỉ khi lời văn một nút trên chuỗi cha (từ nút cha tới tên Chương, không lấy tên Phần) nêu nguyên văn cụm bộ phận. */
+export function chungMinhPhanHoachCauTruc(con, dkTheoNut, nguongById = new Map(), opts = {}) {
   const { L = null, bieuMeta = null } = opts;
-  if (!L || !Array.isArray(con) || con.length < 3) return false;
-  if (con.some((id) => !(dkTheoNut.get(id) || []).length)) return false;
+  if (!L || !Array.isArray(con) || con.length < 3) return null;
+  if (con.some((id) => !(dkTheoNut.get(id) || []).length)) return null;
+  const chaId = opts.chaId || (con[0] ? L.cay?.theoId?.get(con[0])?.cha : null) || null;
 
   const boNgoac = (s) => boGachTen(s).replace(/\s*\([^)]*\)/gu, ' ').replace(/\s+/g, ' ').trim();
   const tenNut = (id) => L.cay?.theoId?.get(id)?.ten || bieuMeta?.get(id)?.nguyenVan || '';
@@ -1089,10 +1121,19 @@ function chungMinhPhanHoachCauTruc(con, dkTheoNut, nguongById = new Map(), opts 
       if (!/^(?:các\s+)?bộ\s+phận(?:\s+và\s+phụ\s+kiện)?$/iu.test(boNgoac(tenNut(id)))) return false;
       return layCacVeDayDu(id).some(laVeKhongThuHep);
     });
-    if (coPhanBuNguyenChiec && coNhanhBoPhan) return true;
+    if (coPhanBuNguyenChiec && coNhanhBoPhan) {
+      const canCu = timCauBoPhanTrenChuoiCha(chaId, L);
+      if (canCu) {
+        if (opts.outCanCu && typeof opts.outCanCu === 'object') {
+          opts.outCanCu.cauBoPhan = canCu.cauId;
+          opts.outCanCu.trichBoPhan = canCu.trich;
+        }
+        return { dat: true, cauCanCu: canCu.cauId, trichCanCu: canCu.trich };
+      }
+    }
   }
 
-  return false;
+  return null;
 }
 
 /** Kiểm chứng minh phủ kín phạm vi cha khi nhóm KHÔNG có nút "Loại khác". */
@@ -1377,7 +1418,8 @@ export function taoBangChoCha(chaId, L, duLieu) {
 
   const co = new Set();
   const coLoaiKhac = anhEm.some((x) => x.laLoaiKhac);
-  if (!coLoaiKhac && !chungMinhPhuKin(con, dkTheoNut, nguongById, dkTheoNut.get(chaId) || [], dksDuongCha, { chaId, L, bieuMeta, truTheoNut })) co.add('HO_PHU');
+  const outCanCu = {};
+  if (!coLoaiKhac && !chungMinhPhuKin(con, dkTheoNut, nguongById, dkTheoNut.get(chaId) || [], dksDuongCha, { chaId, L, bieuMeta, truTheoNut, outCanCu })) co.add('HO_PHU');
 
   for (let i = 0; i < coTen.length; i += 1) {
     for (let j = i + 1; j < coTen.length; j += 1) {
@@ -1420,6 +1462,9 @@ export function taoBangChoCha(chaId, L, duLieu) {
           if (typeof tdId === 'string' && tdId && !/^(?:tb|wco):/.test(tdId)) cauIds.add(tdId);
         }
       }
+    }
+    if (typeof outCanCu.cauBoPhan === 'string' && outCanCu.cauBoPhan && !/^(?:tb|wco):/.test(outCanCu.cauBoPhan)) {
+      cauIds.add(outCanCu.cauBoPhan);
     }
     for (const cauId of [...cauIds].sort()) {
       const chu = L.chuCau(cauId);

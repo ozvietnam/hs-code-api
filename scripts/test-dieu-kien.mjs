@@ -33,6 +33,8 @@ import {
   coNguonTapDuHopLe,
   moRongCayCon,
   laCauCapDuoiCon,
+  timCauBoPhanTrenChuoiCha,
+  chungMinhPhanHoachCauTruc,
 } from './ho-so-ma/bang-anh-em.mjs';
 import { chayCong, napLuatCong, parseCongArg, vanTay, chuanSo, cacNutCungDong } from './ho-so-ma/cong.mjs';
 import {
@@ -1844,9 +1846,9 @@ const KHO_CHUAN = ghiHoSoTam({
   const L_VANG12 = napLuatCong(LUAT_THAT);
   const metaVang12 = napBieuMeta(LUAT_THAT);
 
-  // 13A. Sổ điểm 12 nhóm trên kho thật: 10 nhóm đạt DONG; đúng 2 nhóm 8501 & 8708 báo DO duy nhất ở Cổng 7 (HO_PHU trung thực trên 3 bảng bieu:8501, bieu:870840, bieu:870850), 0 VUNG_CHONG, khớp vân tay bang-anh-em
-  const NHOM_DONG_10 = ['0201', '3004', '3926', '4202', '6110', '7326', '8479', '8517', '8543', '9031'];
-  const NHOM_HO_PHU_2 = ['8501', '8708'];
+  // 13A. Sổ điểm 12 nhóm trên kho thật: 11/12 nhóm đạt DONG (kể cả 8708); chỉ duy nhất 8501 báo DO ở Cổng 7 (HO_PHU trung thực trên đúng 1 bảng bieu:8501 do không có câu luật đóng miền "vạn năng"), 0 VUNG_CHONG, khớp vân tay bang-anh-em
+  const NHOM_DONG_11 = ['0201', '3004', '3926', '4202', '6110', '7326', '8479', '8517', '8543', '8708', '9031'];
+  const NHOM_HO_PHU_1 = ['8501'];
   const sdVang12 = chamSoDiem({
     luat: LUAT_THAT,
     hoSo: HO_SO_THAT,
@@ -1874,23 +1876,23 @@ const KHO_CHUAN = ghiHoSoTam({
   }
   dsChaHoPhu.sort();
 
-  kiem('HỒI QUY 12 BẢNG VÀNG (so-diem): 10 nhóm đạt DONG; 8501 & 8708 báo DO duy nhất do HO_PHU trung thực trên đúng 3 bảng [8501, 870840, 870850], 0 VUNG_CHONG, khớp vân tay bang-anh-em',
+  kiem('HỒI QUY 12 BẢNG VÀNG (so-diem): 11/12 nhóm đạt DONG (kể cả 8708); duy nhất 8501 báo DO do HO_PHU trung thực trên đúng 1 bảng [bieu:8501], 0 VUNG_CHONG, khớp vân tay bang-anh-em',
     sdVang12.loiKho.length === 0
-    && sdVang12.dong === 10
-    && sdVang12.do === 2
+    && sdVang12.dong === 11
+    && sdVang12.do === 1
     && tongBangVang === 176
-    && JSON.stringify(dsChaHoPhu) === JSON.stringify(['bieu:8501', 'bieu:870840', 'bieu:870850'])
+    && JSON.stringify(dsChaHoPhu) === JSON.stringify(['bieu:8501'])
     && soBangVungChong === 0
-    && NHOM_DONG_10.every((n4) => {
+    && NHOM_DONG_11.every((n4) => {
       const r = nhomByMa.get(n4);
       return r && r.trangThai === 'DONG' && r.congLoi.length === 0 && !r.bangAnhEmCu && r.cauDoiVanTay.length === 0;
     })
-    && NHOM_HO_PHU_2.every((n4) => {
+    && NHOM_HO_PHU_1.every((n4) => {
       const r = nhomByMa.get(n4);
       return r
         && r.trangThai === 'DO'
         && JSON.stringify(r.congLoi) === JSON.stringify([7])
-        && r.loi.length > 0 && r.loi.every((l) => /^\[Cổng 7\] .*HO_PHU/.test(l))
+        && r.loi.length === 1 && /^\[Cổng 7\] bieu:8501: HO_PHU/.test(r.loi[0])
         && !r.bangAnhEmCu
         && r.cauDoiVanTay.length === 0;
     }),
@@ -3414,6 +3416,148 @@ const KHO_CHUAN = ghiHoSoTam({
     && rDtHut.cong[7].loi.some((l) => /bieu:420222.*HO_PHU/.test(l))
     && rDt2DkHut.cong[7].loi.some((l) => /bieu:420222.*HO_PHU/.test(l)),
     { ok7: rDtPhuKin.cong[7].loi, ok8: rDtPhuKin.cong[8], co: bangDtPhuKin.co, hut7: rDtHut.cong[7].loi, hut2Dk: rDt2DkHut.cong[7].loi });
+
+  // PROBE 6 (Soát lớp hai lần 2 #2452 — ADR-0009 mục 6):
+  //   - Ca dương: bieu:9031 qua Cổng 7 nhờ căn cứ chuong:90#1 ("bộ phận và phụ kiện của chúng"), lưu vào bang-anh-em.vanTayCau
+  //   - Ca âm đối kháng: xoá cụm bộ phận khỏi chuong:90#1 & bieu:90#1 nhưng cố tình chèn vào phan:XVIII#1 (kiểm ranh giới "tới tên Chương, không lấy tên Phần")
+  //     -> timCauBoPhanTrenChuoiCha & chungMinhPhanHoachCauTruc trả null, Cổng 7 bắt ĐỎ bieu:9031: HO_PHU!
+  const L_THAT_P6 = napLuatCong(LUAT_THAT);
+  const metaThatP6 = napBieuMeta(LUAT_THAT);
+  const dk90List = docDong(path.join(GOC, 'data/ho-so-ma/dieu-kien/90.jsonl'))
+    .map((l) => JSON.parse(l))
+    .filter((r) => r.loai === 'DIEU_KIEN');
+  const dkTheoNut90 = new Map();
+  for (const r of dk90List) {
+    if (!dkTheoNut90.has(r.nut)) dkTheoNut90.set(r.nut, []);
+    dkTheoNut90.get(r.nut).push(r);
+  }
+  const nguong90Map = new Map(
+    docDong(path.join(GOC, 'data/ho-so-ma/nguong/90.jsonl')).map((l) => {
+      const o = JSON.parse(l);
+      return [o.id, o];
+    }),
+  );
+  const con9031 = ['bieu:903110', 'bieu:903120', 'bieu:90314', 'bieu:903180', 'bieu:903190'];
+  const kqCanCu9031 = chungMinhPhanHoachCauTruc(con9031, dkTheoNut90, nguong90Map, {
+    chaId: 'bieu:9031',
+    L: L_THAT_P6,
+    bieuMeta: metaThatP6,
+  });
+  const bang9031That = docDong(path.join(GOC, 'data/ho-so-ma/bang-anh-em/90.jsonl'))
+    .map((l) => JSON.parse(l))
+    .find((b) => b.cha === 'bieu:9031');
+
+  const luatProbe6 = path.join(TAM, 'luat-probe6');
+  fs.mkdirSync(path.join(luatProbe6, 'cau'), { recursive: true });
+  fs.mkdirSync(path.join(luatProbe6, 'nghia-canh'), { recursive: true });
+  const chuCh90KhongBp = 'Chương 90: Dụng cụ và thiết bị quang học, nhiếp ảnh, điện ảnh, đo lường, kiểm tra, chính xác, y tế hoặc phẫu thuật';
+  const chuBieu90KhongBp = 'Dụng cụ và thiết bị quang học, nhiếp ảnh, điện ảnh, đo lường, kiểm tra, chính xác, y tế hoặc phẫu thuật';
+  const chuPhan18CoBp = 'PHẦN XVIII: DỤNG CỤ VÀ THIẾT BỊ ĐO LƯỜNG, KIỂM TRA; CÁC BỘ PHẬN VÀ PHỤ KIỆN CỦA CHÚNG';
+  for (const f of fs.readdirSync(LUAT_THAT)) {
+    const src = path.join(LUAT_THAT, f);
+    if (!fs.statSync(src).isFile()) continue;
+    if (f === 'chuong.jsonl') {
+      const infoCh90 = L_THAT_P6.cau.get('chuong:90#1');
+      const lines = docDong(src).map((l) => {
+        const o = JSON.parse(l);
+        if (o.id === infoCh90.nut) {
+          o.nguyenVan = `${o.nguyenVan.slice(0, infoCh90.tu)}${chuCh90KhongBp}${o.nguyenVan.slice(infoCh90.den)}`;
+        }
+        return JSON.stringify(o);
+      });
+      fs.writeFileSync(path.join(luatProbe6, f), `${lines.join('\n')}\n`, 'utf8');
+    } else if (f === 'bieu.jsonl') {
+      const lines = docDong(src).map((l) => {
+        const o = JSON.parse(l);
+        if (o.id === 'bieu:90') o.nguyenVan = chuBieu90KhongBp;
+        return JSON.stringify(o);
+      });
+      fs.writeFileSync(path.join(luatProbe6, f), `${lines.join('\n')}\n`, 'utf8');
+    } else if (f === 'phan.jsonl') {
+      const infoPhan18 = L_THAT_P6.cau.get('phan:XVIII#1');
+      const lines = docDong(src).map((l) => {
+        const o = JSON.parse(l);
+        if (o.id === infoPhan18.nut) {
+          o.nguyenVan = `${o.nguyenVan.slice(0, infoPhan18.tu)}${chuPhan18CoBp}${o.nguyenVan.slice(infoPhan18.den)}`;
+        }
+        return JSON.stringify(o);
+      });
+      fs.writeFileSync(path.join(luatProbe6, f), `${lines.join('\n')}\n`, 'utf8');
+    } else {
+      fs.symlinkSync(src, path.join(luatProbe6, f));
+    }
+  }
+  for (const f of fs.readdirSync(path.join(LUAT_THAT, 'cau'))) {
+    const src = path.join(LUAT_THAT, 'cau', f);
+    if (!fs.statSync(src).isFile()) continue;
+    if (f === 'chuong.jsonl') {
+      const infoCh90 = L_THAT_P6.cau.get('chuong:90#1');
+      const delta = chuCh90KhongBp.length - (infoCh90.den - infoCh90.tu);
+      const lines = docDong(src).map((l) => {
+        const o = JSON.parse(l);
+        if (o.id === 'chuong:90#1') return JSON.stringify({ ...o, den: o.den + delta });
+        if (L_THAT_P6.cau.get(o.id)?.nut === infoCh90.nut && o.tu >= infoCh90.den) {
+          return JSON.stringify({ ...o, tu: o.tu + delta, den: o.den + delta });
+        }
+        return l;
+      });
+      fs.writeFileSync(path.join(luatProbe6, 'cau', f), `${lines.join('\n')}\n`, 'utf8');
+    } else if (f === 'bieu.jsonl') {
+      const lines = docDong(src).map((l) => {
+        const o = JSON.parse(l);
+        if (o.id === 'bieu:90#1') return JSON.stringify({ ...o, tu: 0, den: chuBieu90KhongBp.length });
+        return l;
+      });
+      fs.writeFileSync(path.join(luatProbe6, 'cau', f), `${lines.join('\n')}\n`, 'utf8');
+    } else if (f === 'phan.jsonl') {
+      const infoPhan18 = L_THAT_P6.cau.get('phan:XVIII#1');
+      const delta = chuPhan18CoBp.length - (infoPhan18.den - infoPhan18.tu);
+      const lines = docDong(src).map((l) => {
+        const o = JSON.parse(l);
+        if (o.id === 'phan:XVIII#1') return JSON.stringify({ ...o, den: o.den + delta });
+        if (L_THAT_P6.cau.get(o.id)?.nut === infoPhan18.nut && o.tu >= infoPhan18.den) {
+          return JSON.stringify({ ...o, tu: o.tu + delta, den: o.den + delta });
+        }
+        return l;
+      });
+      fs.writeFileSync(path.join(luatProbe6, 'cau', f), `${lines.join('\n')}\n`, 'utf8');
+    } else {
+      fs.symlinkSync(src, path.join(luatProbe6, 'cau', f));
+    }
+  }
+  for (const f of fs.readdirSync(path.join(LUAT_THAT, 'nghia-canh'))) {
+    const src = path.join(LUAT_THAT, 'nghia-canh', f);
+    if (fs.statSync(src).isFile()) fs.symlinkSync(src, path.join(luatProbe6, 'nghia-canh', f));
+  }
+  const L_PROBE6 = napLuatCong(luatProbe6);
+  const metaProbe6 = napBieuMeta(luatProbe6);
+  const canCuP6Am = timCauBoPhanTrenChuoiCha('bieu:9031', L_PROBE6);
+  const kqPhanHoachP6Am = chungMinhPhanHoachCauTruc(con9031, dkTheoNut90, nguong90Map, {
+    chaId: 'bieu:9031',
+    L: L_PROBE6,
+    bieuMeta: metaProbe6,
+  });
+  const rProbe6Am = chayCong({
+    luat: luatProbe6,
+    hoSo: path.join(GOC, 'data/ho-so-ma'),
+    phamVi: ['bieu:9031'],
+    chiTrong: true,
+    cong: [5, 7],
+    L: L_PROBE6,
+    bieuMeta: metaProbe6,
+  });
+
+  kiem('PROBE 6 (ADR-0009 mục 6 — căn cứ câu bộ phận từ cha tới Chương, cấm mượn Phần): 9031 trả chuong:90#1 lưu vào vanTayCau; xoá khỏi Chương dù chèn vào Phần XVIII ⇒ Cổng 5 & Cổng 7 đều ĐỎ HO_PHU',
+    kqCanCu9031?.dat === true
+    && kqCanCu9031?.cauCanCu === 'chuong:90#1'
+    && kqCanCu9031?.trichCanCu === 'bộ phận và phụ kiện của chúng'
+    && bang9031That?.vanTayCau?.['chuong:90#1'] === vanTay(L_THAT_P6.chuCau('chuong:90#1'))
+    && L_PROBE6.chuCau('phan:XVIII#1')?.toLowerCase().includes('bộ phận và phụ kiện của chúng') === true
+    && canCuP6Am === null
+    && kqPhanHoachP6Am === null
+    && rProbe6Am.cong[5].loi.some((l) => /bang-anh-em\(bieu:9031\): vanTayCau lệch câu chuong:90#1/.test(l))
+    && rProbe6Am.cong[7].loi.some((l) => /bieu:9031.*HO_PHU/.test(l)),
+    { kqCanCu9031, vt90: bang9031That?.vanTayCau?.['chuong:90#1'], canCuP6Am, c5: rProbe6Am.cong[5].loi, c7: rProbe6Am.cong[7].loi });
 }
 
 fs.rmSync(TAM, { recursive: true, force: true });
