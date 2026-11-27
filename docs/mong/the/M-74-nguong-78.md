@@ -14,10 +14,10 @@
   - Tất cả `id` tuân chuẩn `hs:<nut>:74NN`, `0` trùng lặp trên toàn kho `data/ho-so-ma/` (đã đối chiếu cả `liet-ke/78.jsonl`, `chuong/78.jsonl`, `phan-nhom/78*.jsonl`). Không chứa dữ liệu khách, tờ khai, `tb:`, `wco:`, `gir:`.
 - **Đối soát câu chứa chữ số + đơn vị & `ranh-gioi` (Luật 6 & 8):**
   - Tổng câu trúng biểu thức số + đơn vị (Pháp lý Phần XV + Chú giải Chương 78 + Dòng biểu `bieu:78*`): **4/4 câu** đều đã phủ:
-    - Pháp lý Phần XV (`phan:XV:cg*`): **1/1** câu (`phan:XV:cg:8:b#1`) đã có trong `data/ho-so-ma/nguong/XV.jsonl` (cùng 5 bản ghi tỉ lệ khác của Phần XV).
+    - Pháp lý Phần XV (`phan:XV:cg*`): **1/1** câu (`phan:XV:cg:8:b#1`) đã có trong `data/ho-so-ma/nguong/XV.jsonl` (2 bản ghi `hs:phan:XV:7402–7403`, cùng 4 bản ghi tỉ lệ khác của Phần XV trong tổng 6 bản ghi).
     - Pháp lý Chương 78 (`chuong:78:cg*` & `cgpn*`): **1/1** câu (`chuong:78:cgpn:1#1`) đã rút đủ `1 DINH_NGHIA` + `13 NGUONG`.
     - Dòng biểu thuế (`bieu:78*`, 27 câu): **2/2** câu (`bieu:780411#1`, `bieu:78041110#1`) đã rút đủ thành `NGUONG` cùng các nút phần bù `780419` và `78041190`.
-  - Chú giải tổng quát (`chuong:78:kq*`, 25 câu), chú giải chi tiết nhóm (`nhom:78*`, 22 câu), chú giải phân nhóm (`phan-nhom:78*`, 0 câu) và SEN (`sen:78*`, 0 câu): **0/47** câu chứa số + đơn vị hay con số mô tả thông thường (các chữ số xuất hiện chỉ là số thứ tự mục `(1)`–`(5)` và số hiệu chương/nhóm/chú giải dẫn chiếu) → **0** câu bị sót, **0** `BO_QUA`.
+  - Chú giải tổng quát (`chuong:78:kq*`, 26 câu), chú giải chi tiết nhóm (`nhom:78*`, 23 câu), chú giải phân nhóm (`phan-nhom:78*`, 0 câu) và SEN (`sen:78*`, 0 câu): **0/49** câu chứa số + đơn vị hay con số mô tả thông thường (các chữ số xuất hiện chỉ là số thứ tự mục `(1)`–`(5)` và số hiệu chương/nhóm/chú giải dẫn chiếu) → **0** câu bị sót, **0** `BO_QUA`.
   - Đối chiếu `data/ho-so/ranh-gioi/78*.json`: **2/2 tệp** (`780411.json`, `780600.json`), trong đó **1/1 nút mang `dieuKienSo` dạng số** (`bieu:78041110`, `doDay <= 0.15 mm` ở `780411.json`; `780600.json` chỉ gồm điều kiện định tính `TEN_LOAI`/`CONG_DUNG`) đã phủ 100% (`0` thiếu dưới Cổng 4 `nguong-test.mjs`). Không chỉnh sửa `data/ho-so/ranh-gioi/`.
 - **Kiểm phân dải anh em (`kiemDaiAnhEm` + `kiemDonViDaiLuong` + Cổng 3):**
   - **1 cụm anh em** phân dải thuần 1 đại lượng (`bieu:780411`: `bieu:78041110` `<= 0,15 mm` & `bieu:78041190` `> 0,15 mm`, dùng chung `daiLuong: "chiều dày"`, `donVi: "mm"`), **1/1 cụm phủ kín** `(-∞, +∞)`, `0` chồng dải, `0` hở dải, `0` lỗi `voi`/`phuDinh`, `0` lỗi đơn vị khớp đại lượng, `0/16` `NGUONG` chứa mã HS trong `daiLuong`.
