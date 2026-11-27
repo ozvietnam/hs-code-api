@@ -18,7 +18,7 @@ Rút đầy đủ, chính xác mọi ngưỡng định lượng bắt buộc (`N
 
 ---
 
-## 2. Bảy Luật Bắt Buộc Của QT (Danh sách lỗi cấm & Ví dụ PR thật)
+## 2. Tám Luật Bắt Buộc Của QT (Danh sách lỗi cấm & Ví dụ PR thật)
 
 ### Luật 1 — Đủ hai phía: có ngưỡng ở anh em cụ thể thì `"Loại khác"` phải có bản ghi bù (`phuDinh`)
 - **Quy tắc:** Mọi nhóm anh em cùng cấp mà có ít nhất một dòng mang ngưỡng số thì dòng anh em `"Loại khác"` cùng cha bắt buộc phải có bản ghi phần bù (`phuDinh` liệt kê đủ mã các nút anh em cụ thể đứng trước).
@@ -74,6 +74,11 @@ Rút đầy đủ, chính xác mọi ngưỡng định lượng bắt buộc (`N
   - `#2170` Chú giải 7(a) Ch.59 liệt kê hàng thuộc `59.11` → phải gắn `bieu:5911`, cấm gắn `chuong:59`.
   - Chú giải 1 Ch.55 (`"Theo mục đích của nhóm 55.01 và 55.02…"`) chỉ áp cho `55.01`/`55.02` → gắn `bieu:5501` / `bieu:5502`, không gắn `chuong:55`.
 
+### Luật 8 — Khi bác một điều kiện số của `data/ho-so/ranh-gioi/`, bắt buộc ghi `BO_QUA` tại đúng nút kèm lý do (cấm xoá im lặng)
+- **Quy tắc:** Cổng 4 của `scripts/ho-so-ma/nguong-test.mjs` (`doiChieuRanhGoi`) đối chiếu `data/ho-so/ranh-gioi/<ch>*.json` và đòi mọi mã có `dieuKienSo` phải có ít nhất một bản ghi gắn vào `nut: "bieu:<mã>"` (hoặc nút con của nó) trong `data/ho-so-ma/nguong/<ch>.jsonl`. Khi bác/bỏ một điều kiện số của `ranh-gioi` (ví dụ câu SEN hoặc chú giải chỉ mô tả thông thường `"thường chứa…"`, `"khoảng…"` theo Luật 6), **TUYỆT ĐỐI KHÔNG** sửa tệp `data/ho-so/ranh-gioi/` (kho hồ sơ cũ đường khách còn đọc) và **CẤM xoá im lặng**; bắt buộc thêm bản ghi `loai: "BO_QUA"` tại đúng `nut: "bieu:<mã>"` (`id: "hs:bieu:<mã>:74NN"`, `cau`, `van` SHA-256 64 hex) kèm `lyDo` nêu rõ vì sao câu không đặt ngưỡng phân loại và ghi nhận tệp `ranh-gioi` ghi nhầm thành điều kiện số.
+- **Lỗi cấm (PR thật / nhận xét QT):**
+  - `#2375` (Ch.23, `bieu:23040021`, `cau: "sen:23040021:1#2"`): câu SEN `"Sản phẩm thường chứa…"` (độ ẩm `≤ 12%`, protein `≥ 46%`, béo `< 1,5%`, xơ `≤ 7%`, tro `≤ 6,5%`) là mô tả thông thường (Luật 6), nhưng `data/ho-so/ranh-gioi/230400.json` ghi nhầm thành `dieuKienSo`. Khi bỏ 5 bản ghi `NGUONG` tại `bieu:23040021` mà xoá im lặng thì `nguong-test.mjs` ca 4 đỏ (`thiếu NGUONG cho bieu:23040021`). Sửa đúng: thêm bản ghi `BO_QUA` tại `nut: "bieu:23040021"`, `cau: "sen:23040021:1#2"`, `id: "hs:bieu:23040021:74NN"`, `lyDo: "Câu SEN mô tả thông thường (Sản phẩm thường chứa…), không đặt ngưỡng phân loại (Luật 6); tham khảo ranh-gioi/230400.json ghi nhầm thành điều kiện số"`.
+
 ---
 
 ## 3. Các Bước Thực Hiện Chuẩn
@@ -81,12 +86,13 @@ Rút đầy đủ, chính xác mọi ngưỡng định lượng bắt buộc (`N
 1. **Chuẩn bị nhánh sạch trên worktree cô lập:**
    `git checkout -B agy/m-74-c<ch> origin/main` (hoặc `git checkout agy/m-74-c<ch>` khi vá PR `tra-tho` — thêm commit mới nối tiếp, không force-push).
 2. **Quét toàn diện câu có số + đơn vị & `ranh-gioi`:** Chạy lệnh tự kiểm ở Mục 4 để liệt kê toàn bộ ứng viên trong chương `<ch>`.
-3. **Soạn `data/ho-so-ma/nguong/<ch>.jsonl` kiểm chiếu từng bản ghi qua đủ 7 Luật:**
+3. **Soạn `data/ho-so-ma/nguong/<ch>.jsonl` kiểm chiếu từng bản ghi qua đủ 8 Luật:**
    - Kiểm tra nút gắn (`bieu:XXXX` vs `chuong:NN` theo Luật 7).
    - Kiểm tra chiều khoảng số ở lại nút (Luật 4).
    - Tách từng nhánh `HOẶC` + `duKien` phân nhánh (Luật 3).
    - Tách `NGUONG` từ `DINH_NGHIA` (Luật 5).
    - Bổ sung đầy đủ anh em `"Loại khác"` (`phuDinh` theo Luật 1; `TACH_ANH_EM` không khoảng số nếu điều kiện ghép theo Luật 2).
+   - Khi bác một điều kiện số của `data/ho-so/ranh-gioi/<ch>*.json` (ví dụ câu SEN `"thường chứa…"` theo Luật 6), bắt buộc ghi bản ghi `BO_QUA` tại đúng `nut: "bieu:<mã>"` kèm `lyDo` (Luật 8 — cấm xoá im lặng).
    - Mọi `trich` khớp nguyên văn từng ký tự trong câu `cau` và `van` khớp SHA-256 64 hex.
 4. **Ghi báo cáo `docs/mong/the/M-74-nguong-<ch>.md`:** Nêu rõ tổng số bản ghi (`NGUONG`, `DINH_NGHIA`, `TACH_ANH_EM`), số `phuDinh`, và thống kê số câu trúng số+đơn vị / số câu đã xử lý (Luật 6).
 5. **Chạy trọn bộ lệnh tự kiểm & kiểm toán độc lập `oz-pr-auditor`** đạt `APPROVE` trước khi `git push` và báo `XONG` / `CẬP NHẬT` trên `#1966`.
