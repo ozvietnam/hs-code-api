@@ -371,7 +371,7 @@ test('7. ghiKhoNguong (C76) & ghiKhoNguongChuong("84"/"85") tái tạo tất đ�
       ghiKhoNguongChuong(ch, { hoSo: tmpCh });
       const kTmpCh = kiemKhoHoSo(tmpCh);
       assert.equal(kTmpCh.loi.length, 0);
-      const kyVong = ch === '84' ? banGhiTheoChuong(ch).length : banGhiRiengChuong(ch).length;
+      const kyVong = [...r.theoTep.values()].reduce((s, a) => s + a.length, 0);
       assert.equal(kTmpCh.banGhi.length, kyVong);
     } finally {
       fs.rmSync(tmpCh, { recursive: true, force: true });
