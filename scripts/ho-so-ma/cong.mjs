@@ -234,6 +234,17 @@ function kiemTapDuNguonTrenBanGhi(x, idRec, L, { laGir, tren, cungDongSet, ngan 
       dsLoi.push(`${idRec}: tapDuTrich không nguyên văn câu ${tdNguon} — "${ngan(String(tdTrich ?? ''))}"`);
     }
   }
+  if (Array.isArray(x.tapDu)) {
+    const dsTrichChuan = capTd
+      .map(([, tdTrich]) => (typeof tdTrich === 'string' ? chuanSo(tdTrich).toLowerCase() : ''))
+      .filter(Boolean);
+    for (const rawVal of x.tapDu) {
+      const vChuan = chuanSo(String(rawVal ?? '')).toLowerCase();
+      if (!vChuan || !dsTrichChuan.some((tr) => tr.includes(vChuan))) {
+        dsLoi.push(`${idRec}: giá trị tapDu "${rawVal}" không xuất hiện nguyên văn trong bất kỳ tapDuTrich nào`);
+      }
+    }
+  }
 }
 
 /**

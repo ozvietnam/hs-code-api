@@ -498,6 +498,36 @@ check('M-78 nutChuCua: nạp được câu sen:* nguyên văn từ sen.jsonl', m
     && runDoc.stdout.includes('Kết luận:'),
     JSON.stringify({ gen: runGen.stdout + runGen.stderr, doc: runDoc.stdout + runDoc.stderr }),
   );
+
+  // Kiểm Nhóm IV (HO_PHU -> [M81-HP-...]) và docBang đọc lại phiếu M81-HP-...
+  const hoSo81Hp = path.join(tmp, 'ho-so-81-hp');
+  fs.mkdirSync(path.join(hoSo81Hp, 'dieu-kien'), { recursive: true });
+  const dk02KhongTapDu = dk02.map(({ tapDu: _td, tapDuNguon: _tdn, tapDuTrich: _tdt, ...rest }) => rest);
+  fs.writeFileSync(path.join(hoSo81Hp, 'dieu-kien', '02.jsonl'), dk02KhongTapDu.map((x) => JSON.stringify(x)).join('\n') + '\n');
+  const out81Hp = path.join(tmp, 'out-81-hp');
+  const kqHp = goiM81('2026-11-27', { hoSo: hoSo81Hp, luat: luat81, docsDir: null, out: out81Hp });
+  const mdHp = fs.readFileSync(kqHp.tepMd, 'utf8');
+  const tepHpDien = path.join(out81Hp, 'm81-hp-dien.md');
+  fs.writeFileSync(
+    tepHpDien,
+    mdHp.replace(
+      /(### \[M81-HP-0201\][\s\S]*?)- \[ \] \*\*Đúng\*\*  - \[ \] \*\*Sai\*\*  - \[ \] \*\*Cần thêm\*\*\n- \*\*Kết luận người duyệt:\*\* /,
+      '$1- [x] **Đúng**  - [ ] **Sai**  - [ ] **Cần thêm**\n- **Kết luận người duyệt:** Đã rà soát nghiệp vụ phân nhóm 02.01.',
+    ),
+    'utf8',
+  );
+  const ketHp = docBang(tepHpDien);
+  check(
+    'goiM81 & docBang (Nhóm IV HO_PHU): sinh phiếu [M81-HP-0201] khi thiếu nguồn tapDu và đọc lại chuẩn kết luận người duyệt',
+    kqHp.soHoPhu === 1
+    && kqHp.dsHoPhu[0]?.idPhieu === 'M81-HP-0201'
+    && mdHp.includes('### [M81-HP-0201] bieu:0201 — Bảng anh em chưa chứng minh phủ kín')
+    && ketHp.length === 1
+    && ketHp[0].id === 'M81-HP-0201'
+    && ketHp[0].dau === 'DUNG'
+    && /02\.01/.test(ketHp[0].ketLuan),
+    JSON.stringify({ soHoPhu: kqHp.soHoPhu, ketHp }),
+  );
 }
 
 // ── C. Kiểm gói M-81 trên kho thật hiện hành (xuất ra tmp, không ghi vào repo) ──
@@ -526,7 +556,7 @@ check('M-78 nutChuCua: nạp được câu sen:* nguyên văn từ sen.jsonl', m
   });
 
   check(
-    'goiM81 trên kho thật 12 nhóm vàng: đúng 9 cặp VUNG_CHONG (39:1, 84:3, 85:5) + 11 cặp GIAI_CHONG chờ duyệt (85.17:4 + 85.43:7 = 17 bản ghi) + 0 lỗi câu luật',
+    'goiM81 trên kho thật 12 nhóm vàng: đúng 9 cặp VUNG_CHONG (39:1, 84:3, 85:5) + 11 cặp GIAI_CHONG chờ duyệt (85.17:4 + 85.43:7 = 17 bản ghi) + 3 bảng HO_PHU (8501, 870840, 870850) + 0 lỗi câu luật',
     kqThat.soVungChong === 9
     && kqThat.theoChuong['39']?.vungChong === 1
     && kqThat.theoChuong['84']?.vungChong === 3
@@ -534,6 +564,10 @@ check('M-78 nutChuCua: nạp được câu sen:* nguyên văn từ sen.jsonl', m
     && kqThat.soGiaiChong === 11
     && kqThat.soBanGhiGiaiChong === 17
     && kqThat.theoChuong['85']?.giaiChong === 11
+    && kqThat.soHoPhu === 3
+    && JSON.stringify(kqThat.dsHoPhu.map((x) => x.idPhieu)) === JSON.stringify(['M81-HP-8501', 'M81-HP-870840', 'M81-HP-870850'])
+    && kqThat.theoChuong['85']?.hoPhu === 1
+    && kqThat.theoChuong['87']?.hoPhu === 2
     && kqThat.soNghiaThuong > 0
     && kqThat.loiCau.length === 0
     && !mdThat.includes('không tìm thấy câu')
@@ -542,6 +576,8 @@ check('M-78 nutChuCua: nạp được câu sen:* nguyên văn từ sen.jsonl', m
       soVungChong: kqThat.soVungChong,
       soGiaiChong: kqThat.soGiaiChong,
       soBanGhiGiaiChong: kqThat.soBanGhiGiaiChong,
+      soHoPhu: kqThat.soHoPhu,
+      dsHoPhu: kqThat.dsHoPhu?.map((x) => x.idPhieu),
       soNghiaThuong: kqThat.soNghiaThuong,
       tongNghiaThuong: kqThat.tongNghiaThuong,
       loiCau: kqThat.loiCau,

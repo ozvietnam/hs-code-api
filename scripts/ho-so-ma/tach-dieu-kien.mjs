@@ -25,7 +25,7 @@ Quy tắc tách trọn nhóm bốn số (một lượt):
    - \`ve\` (số nguyên >= 0): dấu ";" hoặc "hoặc" phân nhánh thay thế => \`ve\` tăng dần (\`1, 2, ...\`). Các điều kiện đồng thời ("và") => CÙNG \`ve\`. Đặt \`ve: 0\` cho điều kiện chung áp lên mọi vế (như mệnh đề loại trừ chung của Phần/Chương/Nhóm áp lên toàn nút).
    - \`phu\` (boolean): \`true\` khi mang nghĩa phủ định ("trừ...", "không kể...", "không phải...") hoặc phủ định phần bù đối với anh em / ngưỡng đứng trước.
    - \`kieu\`:
-     * \`GIA_TRI\`: ưu tiên dùng khi các anh em cùng phân chia trên một chiều thuộc tính theo chữ luật (cấm hạ thành \`CO_KHONG\` làm mất trục); BẮT BUỘC kèm \`truc\` (\`<tên trục cục bộ theo chữ luật>\`, một dòng) và \`tap\` (mảng chuỗi nguyên văn). Đặt \`daTri: true\` CHỈ khi một mặt hàng có thể mang đồng thời nhiều giá trị trên trục đó; mặc định \`false\` (đơn trị). Nếu khai \`tapDu\` cho trục đơn trị (\`!daTri\`), BẮT BUỘC kèm \`tapDuNguon\` (id câu chú giải/quy tắc hoặc lời văn nút cha làm căn cứ miền đóng; cấm trích dòng biểu của chính anh em con, cấm \`tb:\`/\`wco:\`) và \`tapDuTrich\` nguyên văn. Cấm \`nguong\`.
+     * \`GIA_TRI\`: ưu tiên dùng khi các anh em cùng phân chia trên một chiều thuộc tính theo chữ luật (cấm hạ thành \`CO_KHONG\` làm mất trục); BẮT BUỘC kèm \`truc\` (\`<tên trục cục bộ theo chữ luật>\`, một dòng) và \`tap\` (mảng chuỗi nguyên văn). Đặt \`daTri: true\` CHỈ khi một mặt hàng có thể mang đồng thời nhiều giá trị trên trục đó; mặc định \`false\` (đơn trị). Nếu khai \`tapDu\` cho trục đơn trị (\`!daTri\`), BẮT BUỘC kèm \`tapDuNguon\` (id câu chú giải/quy tắc hoặc lời văn nút cha làm căn cứ miền đóng; cấm trích dòng biểu của chính anh em con, cấm \`tb:\`/\`wco:\`) và \`tapDuTrich\` nguyên văn (mỗi giá trị trong \`tapDu\` bắt buộc xuất hiện nguyên văn trong ít nhất một \`tapDuTrich\`; không có câu luật liệt kê đủ miền thì không khai \`tapDu\`). Cấm \`nguong\`.
      * \`SO\`: ngưỡng số, BẮT BUỘC trỏ \`nguong\` = id bản ghi NGUONG đã có trong danh mục M-74 (không lặp số; cấm \`tap\`, \`truc\`, \`daTri\`). Nhánh "… khác" đứng sau anh em có ngưỡng phải giữ đủ điều kiện \`phu: true\` trên ngưỡng đó nếu chữ luật loại trừ dải trước.
      * \`CO_KHONG\`: chỉ dùng cho mệnh đề có/không độc lập không tạo thành trục giá trị chung giữa các anh em (cấm \`nguong\`, \`tap\`, \`truc\`, \`daTri\`).
    - \`mo\` (ưu tiên tra định nghĩa/mô tả trong gói trước, chỉ dùng \`NGHIA_THUONG\` khi kho luật thực sự không giải nghĩa):
@@ -440,6 +440,16 @@ export function chuanHoaDieuKien(rawList, nut, L, { batDauSo = 8101, nguongSanCo
             tapDuNguonVanTay = Object.fromEntries(vtEntries);
           } else {
             loi.push(`${nut}: tapDuNguon và tapDuTrich phải đi theo cặp đối xứng`);
+            continue;
+          }
+          const dsTrichChuan = (Array.isArray(tapDuTrich) ? tapDuTrich : [tapDuTrich])
+            .map((t) => chuanSo(t).toLowerCase());
+          const thieuVal = dsTapDu.find((rawVal) => {
+            const vChuan = chuanSo(rawVal).toLowerCase();
+            return !vChuan || !dsTrichChuan.some((tr) => tr.includes(vChuan));
+          });
+          if (thieuVal !== undefined) {
+            loi.push(`${nut}: giá trị tapDu "${thieuVal}" không xuất hiện nguyên văn trong bất kỳ tapDuTrich nào`);
             continue;
           }
         }
