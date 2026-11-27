@@ -8,7 +8,7 @@
 //   (5) VÂN TAY  van = sha256 chữ câu hiện hành; lệch thì đỏ kèm lệnh dựng lại
 //   (6) TÁCH     mỗi nút có tên >= 1 DIEU_KIEN; số vế >= số đoạn tách bởi ";" trong tên; trich nguyên văn, vanTay khớp, NGUONG thật
 //   (7) PHỦ      nhóm không có "Loại khác" phải chứng minh phủ kín phạm vi cha; không chứng minh được -> HO_PHU
-//   (8) CHỒNG    rời nhau khi cùng trục SO/GIA_TRI hoặc một bên phu bên kia (hoặc GIAI_CHONG); còn lại CHUA_CHUNG_MINH_TACH (đếm, không chặn); VUNG_CHONG chưa giải -> chặn
+//   (8) CHỒNG    rời nhau khi cùng trục SO không giao, cùng trục GIA_TRI đơn trị (!daTri) khác tập, hoặc cặp phu bù nhau theo cấu trúc (hoặc GIAI_CHONG); trục đa trị (daTri: true) khác tập -> CHUA_CHUNG_MINH_TACH (đếm, không chặn); VUNG_CHONG (kể cả chồng khoảng SO cùng đại lượng) chưa giải -> chặn
 //   (9) HỎI      cauHoiToiThieu sinh được cho mọi "Loại khác"; không nút nào thiếu chuỗi cha
 //  (10) DÒ       mỗi ca thử ví dụ chú giải/SEN chạy qua bảng anh em ra đúng đích hoặc rẽ nhánh đúng dữ kiện thiếu
 //  (11) MỞ       100% DIEU_KIEN có mo hợp lệ; NGHIA_THUONG đếm đủ và có cauHoi (không đòi về 0)
@@ -32,10 +32,10 @@ import {
   laLoaiKhacThuan,
   demDoanChamPhay,
   haiNutRoiNhau,
+  laChongSoTrungTruc,
   chungMinhPhuKin,
   taoBangChoCha,
   doBangAnhEm,
-  chongKhoang,
   khoaNguong,
 } from './bang-anh-em.mjs';
 
@@ -333,8 +333,23 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
     }
   }
 
-  // Cổng 4, 5: bản ghi cũ của nút trong phạm vi (không phạm vi: mọi bản ghi).
+  // Cổng 4, 5: chạy cho MỌI bản ghi trong phạm vi — gồm cả bản ghi cũ và DIEU_KIEN / GIAI_CHONG / CANH_TRANH (ADR-0009 mục 4; không phạm vi: mọi bản ghi).
   const R = pv.length ? totCu.filter((x) => N.has(x.nut) || G.capCuaNut(x.nut) === 'GIR') : totCu; // Quy tắc tổng quát nằm trên mọi đường đi
+  const R_DK = pv.length ? totDk.filter((x) => N.has(x.nut) || G.capCuaNut(x.nut) === 'GIR') : totDk;
+  const R_GC = pv.length ? totGc.filter((x) => N.has(x.nut)) : totGc;
+  const R_CT = pv.length ? totCt.filter((x) => N.has(x.nut)) : totCt;
+  const R_MOI = [...R_DK, ...R_GC, ...R_CT];
+  const chayMoi = cong.some((k) => k >= 6);
+  const canBieuMeta = chayMoi || (cong.includes(4) && R_DK.length > 0);
+  const bieuMeta = canBieuMeta ? (bieuMetaDaNap || napBieuMeta(L.thuMuc)) : null;
+  const cungDongNguoc = new Map();
+  if (bieuMeta) {
+    for (const [id, m] of bieuMeta) {
+      if (!m?.cungDong) continue;
+      if (!cungDongNguoc.has(m.cungDong)) cungDongNguoc.set(m.cungDong, []);
+      cungDongNguoc.get(m.cungDong).push(id);
+    }
+  }
   const coThat = (id) => L.nut.has(id) || L.cay.theoId.has(id) || (/^chuong:(\d{2})$/.test(id) && !!CHUONG_SANG_PHAN[id.slice(7)]) || (/^phan:[IVX]+$/.test(id) && Object.values(CHUONG_SANG_PHAN).includes(id.slice(5)));
   if (cong.includes(4)) {
     for (const x of R) {
@@ -368,6 +383,58 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
       }
       for (const d of [...(x.den || []), ...(x.voi || [])]) if (!coThat(d)) ra[4].loi.push(`${x.id}: nút ${d} không có trong kho luật`);
     }
+    for (const x of R_MOI) {
+      ra[4].soKiem += 1;
+      const idRec = x.id || `${x.loai}(${x.nut})`;
+      if (/^tb:/.test(x.nguon || '')) { ra[4].loi.push(`${idRec}: trích câu tiền lệ ${x.nguon} — hồ sơ không chứa tiền lệ`); continue; }
+      const chu = L.chuCau(x.nguon);
+      if (chu === null) { ra[4].loi.push(`${idRec}: nguon ${x.nguon} không có trong kho luật gốc`); continue; }
+      if (!chuanSo(chu).includes(chuanSo(x.trich))) {
+        ra[4].loi.push(`${idRec}: trich không nguyên văn câu ${x.nguon} — "${ngan(x.trich)}"`);
+      }
+      if (x.loai === 'DIEU_KIEN') {
+        const chu0 = G.chuCuaCau(x.nguon);
+        const tren = new Set(G.trenCua(x.nut, L.cay));
+        const anhEm = new Set(G.anhEmCua(x.nut, L.cay));
+        const vao = (L.canhTheoTu.get(x.nguon) || []).some((e) => e.den === x.nut && loaiCanhVao(e));
+        const laGir = G.capCuaNut(x.nut) === 'GIR';
+        const nutCau = L.cau.get(x.nguon).nut;
+        const cungDongSet = laGir ? null : new Set(cacNutCungDong(x.nut, L, bieuMeta, cungDongNguoc));
+        const dungDuong = laGir
+          ? (nutCau === x.nut || nutCau.startsWith(`${x.nut}:`))
+          : vao || chu0 === G.CHUNG || chu0 === x.nut || tren.has(chu0) || anhEm.has(chu0) || cungDongSet.has(chu0);
+        if (!dungDuong) ra[4].loi.push(`${idRec}: nguon ${x.nguon} thuộc ${chu0 || nutCau}, không nằm trên đường đi của ${x.nut}`);
+        if (x.mo === 'DINH_NGHIA_LUAT' || x.mo === 'MO_TA_HUONG_DAN') {
+          const mnIds = Array.isArray(x.moNguon) ? x.moNguon : (x.moNguon ? [x.moNguon] : []);
+          for (const mnId of mnIds) {
+            if (/^tb:/.test(mnId)) ra[4].loi.push(`${idRec}: moNguon không được trích tiền lệ ${mnId}`);
+            else if (L.chuCau(mnId) === null) ra[4].loi.push(`${idRec}: moNguon ${mnId} không có trong kho luật gốc`);
+          }
+        }
+      } else if (x.loai === 'GIAI_CHONG') {
+        const conCha = new Set(G.conCua(x.nut, L.cay));
+        if (!conCha.has(x.cap[0]) || !conCha.has(x.cap[1])) {
+          ra[4].loi.push(`${idRec}: GIAI_CHONG cap [${x.cap.join(', ')}] không phải anh em con trực tiếp của ${x.nut}`);
+        }
+        for (const d of x.cap) if (!coThat(d)) ra[4].loi.push(`${idRec}: nút ${d} không có trong kho luật`);
+      } else if (x.loai === 'CANH_TRANH') {
+        for (const d of x.nhomCanhTranh || []) {
+          if (!coThat(d)) ra[4].loi.push(`${idRec}: nhomCanhTranh "${d}" không có trong kho luật`);
+        }
+        for (const p of x.phepThu || []) {
+          const pNguon = typeof p === 'string' ? p : p?.nguon;
+          if (/^tb:/.test(pNguon || '')) {
+            ra[4].loi.push(`${idRec}: phepThu không trích tiền lệ ${pNguon}`);
+            continue;
+          }
+          const pChu = L.chuCau(pNguon);
+          if (pChu === null) ra[4].loi.push(`${idRec}: phepThu "${pNguon}" không có trong kho luật`);
+          else if (typeof p === 'object' && !chuanSo(pChu).includes(chuanSo(p.trich))) {
+            ra[4].loi.push(`${idRec}: phepThu "${pNguon}" trích không nguyên văn`);
+          }
+        }
+      }
+    }
   }
   if (cong.includes(5)) {
     for (const x of R) {
@@ -376,21 +443,33 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
       ra[5].soKiem += 1;
       if (vanTay(chu) !== x.van) ra[5].loi.push(`${x.id}: vân tay lệch câu ${x.cau} (luật đổi chữ) — dựng lại: node scripts/ho-so-ma/cong.mjs --dinh-cau '${x.cau}' rồi tách lại vấn đề của ${x.nut}`);
     }
+    for (const x of R_MOI) {
+      const idRec = x.id || `${x.loai}(${x.nut})`;
+      const chu = /^tb:/.test(x.nguon || '') ? null : L.chuCau(x.nguon);
+      if (chu !== null) {
+        ra[5].soKiem += 1;
+        if (!x.vanTay || vanTay(chu) !== x.vanTay) {
+          ra[5].loi.push(`${idRec}: vân tay ${x.vanTay ? 'lệch' : 'thiếu cho'} câu ${x.nguon} (luật đổi chữ) — dựng lại: node scripts/ho-so-ma/cong.mjs --dinh-cau '${x.nguon}' rồi cập nhật ${x.nut}`);
+        }
+      }
+      if (x.loai === 'DIEU_KIEN' && x.moNguonVanTay !== undefined) {
+        const capMn = typeof x.moNguonVanTay === 'string'
+          ? (typeof x.moNguon === 'string' ? [[x.moNguon, x.moNguonVanTay]] : [])
+          : (x.moNguonVanTay && typeof x.moNguonVanTay === 'object' ? Object.entries(x.moNguonVanTay) : []);
+        for (const [mnId, vt] of capMn) {
+          const mnChu = /^tb:/.test(mnId || '') ? null : L.chuCau(mnId);
+          if (mnChu === null) continue;
+          ra[5].soKiem += 1;
+          if (vanTay(mnChu) !== vt) {
+            ra[5].loi.push(`${idRec}: moNguonVanTay lệch câu ${mnId} (luật đổi chữ)`);
+          }
+        }
+      }
+    }
   }
 
   // ---------- Cổng 6..12 (M-81, ADR-0007 mục 4) ----------
-  const chayMoi = cong.some((k) => k >= 6);
   if (chayMoi) {
-    const bieuMeta = bieuMetaDaNap || napBieuMeta(L.thuMuc);
-    const cungDongNguoc = new Map();
-    for (const [id, m] of bieuMeta) {
-      if (!m?.cungDong) continue;
-      if (!cungDongNguoc.has(m.cungDong)) cungDongNguoc.set(m.cungDong, []);
-      cungDongNguoc.get(m.cungDong).push(id);
-    }
-    const R_DK = pv.length ? totDk.filter((x) => N.has(x.nut) || G.capCuaNut(x.nut) === 'GIR') : totDk;
-    const R_GC = pv.length ? totGc.filter((x) => N.has(x.nut)) : totGc;
-    const R_CT = pv.length ? totCt.filter((x) => N.has(x.nut)) : totCt;
 
     const nhomMoi = [];
     const daNhomMoi = new Set();
@@ -509,6 +588,10 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
           ra[8].loi.push(`${g.id || g.nut}: GIAI_CHONG trich không nguyên văn câu ${g.nguon}`);
           continue;
         }
+        if (g.vanTay !== undefined && vanTay(chu) !== g.vanTay) {
+          ra[8].loi.push(`${g.id || g.nut}: GIAI_CHONG vanTay lệch câu ${g.nguon}`);
+          continue;
+        }
         giaiChongHopLe.add(`${g.nut}|${[...g.cap].sort().join('|')}`);
       }
       const vungChongSet = new Set(
@@ -538,14 +621,8 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
               ra[8].dem.roiNhau += 1;
               continue;
             }
-            // Kiểm thêm nếu hai nút cùng chỉ có 1 vế, 1 điều kiện SO cùng trục nhưng dải SỐ chồng nhau thật
-            let chongSoTrungTruc = false;
-            if (dksA.length === 1 && dksB.length === 1 && dksA[0].kieu === 'SO' && dksB[0].kieu === 'SO' && !dksA[0].phu && !dksB[0].phu) {
-              const na = nguongById.get(dksA[0].nguong)?.nguong;
-              const nb = nguongById.get(dksB[0].nguong)?.nguong;
-              if (na && nb && khoaNguong(na) === khoaNguong(nb) && chongKhoang(na, nb)) chongSoTrungTruc = true;
-            }
-            if (chongSoTrungTruc) {
+            // Kiểm thêm chồng số chứng minh được bằng máy (ADR-0009 mục 3: đồng bộ cờ VUNG_CHONG với bang-anh-em.mjs)
+            if (laChongSoTrungTruc(dksA, dksB, nguongById)) {
               ra[8].dem.vungChong += 1;
               ra[8].loi.push(`${g.cha}: VUNG_CHONG giữa ${A} và ${B} chưa có GIAI_CHONG trích luật`);
             } else {
@@ -709,6 +786,8 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
         const chu = L.chuCau(ct.nguon);
         if (chu === null || !chuanSo(chu).includes(chuanSo(ct.trich))) {
           ra[12].loi.push(`${ct.id || ct.nut}: CANH_TRANH trich không nguyên văn câu ${ct.nguon}`);
+        } else if (ct.vanTay !== undefined && vanTay(chu) !== ct.vanTay) {
+          ra[12].loi.push(`${ct.id || ct.nut}: CANH_TRANH vanTay lệch câu ${ct.nguon}`);
         }
         for (const d of ct.nhomCanhTranh || []) {
           if (!coThat(d)) ra[12].loi.push(`${ct.id || ct.nut}: nhomCanhTranh "${d}" không có trong kho luật`);

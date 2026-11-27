@@ -91,11 +91,7 @@ const chuanTruc = (d) => (d?.truc ? chuanSo(d.truc).toLowerCase() : '');
 const chuanTap = (tap) => new Set((tap || []).map((v) => chuanSo(v).toLowerCase()).filter(Boolean));
 const tapBangNhau = (sa, sb) => sa.size === sb.size && [...sa].every((v) => sb.has(v));
 const tapTapCon = (con, cha) => con.size > 0 && [...con].every((v) => cha.has(v));
-const khoaTrucGiaTri = (d) => (
-  chuanTruc(d)
-    ? `truc:${chuanTruc(d)}`
-    : (chuanCauHoi(d?.cauHoi) ? `cau:${chuanCauHoi(d.cauHoi)}` : `nguon:${d?.nguon || ''}`)
-);
+const khoaTrucGiaTri = (d) => (chuanTruc(d) ? `truc:${chuanTruc(d)}` : '');
 
 function khoangChua(ngoai, trong) {
   if (!ngoai || !trong) return false;
@@ -106,37 +102,42 @@ function khoangChua(ngoai, trong) {
   return duTu && duDen;
 }
 
-/** Hai điều kiện là phủ định bù nhau trên cùng trục/câu. */
+/** Hai điều kiện là phủ định bù nhau theo cấu trúc (ADR-0009 mục 1: cấm so chuỗi con `trich`). */
 export function laPhuCuaNhau(a, b, nguongById = new Map()) {
-  if (!a || !b || a.phu === b.phu) return false;
-  if (a.kieu === 'SO' && b.kieu === 'SO') {
+  if (!a || !b || Boolean(a.phu) === Boolean(b.phu) || a.kieu !== b.kieu) return false;
+  if (a.kieu === 'SO') {
     if (a.nguong && a.nguong === b.nguong) return true;
     const na = nguongById.get(a.nguong)?.nguong;
     const nb = nguongById.get(b.nguong)?.nguong;
-    if (na && nb && khoaNguong(na) === khoaNguong(nb)
-      && na.tu === nb.tu && na.den === nb.den && na.gomTu === nb.gomTu && na.gomDen === nb.gomDen) {
-      return true;
-    }
+    return Boolean(
+      na && nb
+      && khoaNguong(na) === khoaNguong(nb)
+      && na.tu === nb.tu && na.den === nb.den
+      && na.gomTu === nb.gomTu && na.gomDen === nb.gomDen,
+    );
   }
-  if (a.kieu === 'GIA_TRI' && b.kieu === 'GIA_TRI') {
+  if (a.kieu === 'GIA_TRI') {
     const ta = chuanTruc(a);
     const tb = chuanTruc(b);
-    const cungTruc = (ta && tb)
-      ? ta === tb
-      : (Boolean(chuanCauHoi(a.cauHoi)) && chuanCauHoi(a.cauHoi) === chuanCauHoi(b.cauHoi));
-    if (cungTruc && tapBangNhau(chuanTap(a.tap), chuanTap(b.tap))) return true;
+    return Boolean(ta && ta === tb && tapBangNhau(chuanTap(a.tap), chuanTap(b.tap)));
   }
-  if (a.nguon && a.nguon === b.nguon) {
-    const ta = chuanSo(a.trich).toLowerCase();
-    const tb = chuanSo(b.trich).toLowerCase();
-    if (ta && tb && (ta === tb || ta.includes(tb) || tb.includes(ta))) return true;
-  }
-  if (a.kieu === b.kieu && chuanCauHoi(a.cauHoi) && chuanCauHoi(a.cauHoi) === chuanCauHoi(b.cauHoi)) {
-    if (a.kieu === 'GIA_TRI') return tapBangNhau(chuanTap(a.tap), chuanTap(b.tap));
-    if (a.kieu === 'SO') return a.nguong === b.nguong;
-    return true;
+  if (a.kieu === 'CO_KHONG') {
+    const qa = chuanCauHoi(a.cauHoi);
+    const qb = chuanCauHoi(b.cauHoi);
+    return Boolean(qa && qa === qb);
   }
   return false;
+}
+
+/** Hai nút mỗi bên đúng 1 điều kiện SO không phu, cùng đại lượng + đơn vị, khoảng số giao nhau (ADR-0009 mục 3). */
+export function laChongSoTrungTruc(dksA, dksB, nguongById = new Map()) {
+  const a = (dksA || []).filter((d) => d && (!d.loai || d.loai === 'DIEU_KIEN'));
+  const b = (dksB || []).filter((d) => d && (!d.loai || d.loai === 'DIEU_KIEN'));
+  if (a.length !== 1 || b.length !== 1) return false;
+  if (a[0].kieu !== 'SO' || b[0].kieu !== 'SO' || a[0].phu || b[0].phu) return false;
+  const na = nguongById.get(a[0].nguong)?.nguong;
+  const nb = nguongById.get(b[0].nguong)?.nguong;
+  return Boolean(na && nb && khoaNguong(na) === khoaNguong(nb) && chongKhoang(na, nb));
 }
 
 /** Hai nhánh VÀ (một vế) rời nhau chứng minh được bằng máy. */
@@ -156,10 +157,7 @@ export function veRoiNhau(veA, veB, nguongById = new Map()) {
       if (a.kieu === 'GIA_TRI' && b.kieu === 'GIA_TRI') {
         const ta = chuanTruc(a);
         const tb = chuanTruc(b);
-        const cungTruc = (ta && tb)
-          ? ta === tb
-          : ((a.nguon && a.nguon === b.nguon) || (chuanCauHoi(a.cauHoi) && chuanCauHoi(a.cauHoi) === chuanCauHoi(b.cauHoi)));
-        if (cungTruc) {
+        if (ta && ta === tb) {
           const sa = chuanTap(a.tap);
           const sb = chuanTap(b.tap);
           if (!a.phu && !b.phu && !a.daTri && !b.daTri && sa.size && sb.size && ![...sa].some((v) => sb.has(v))) return true;
@@ -240,9 +238,9 @@ function chungMinhHangDungLogic(con, dkTheoNut, nguongById) {
         ? `SO:${khoaNguong(ng)}|${ng.tu}|${ng.den}|${ng.gomTu}|${ng.gomDen}`
         : `SO_ID:${d.nguong}`;
     } else if (d.kieu === 'GIA_TRI') {
-      const tk = chuanTruc(d) || chuanCauHoi(d.cauHoi) || d.nguon;
+      const tk = chuanTruc(d);
       const tapK = [...chuanTap(d.tap)].sort().join('\u0001');
-      key = `GT:${tk}|${tapK}`;
+      if (tk && tapK) key = `GT:${tk}|${tapK}`;
     } else {
       const q = chuanCauHoi(d.cauHoi);
       if (q) key = `CK_Q:${q}`;
@@ -252,7 +250,7 @@ function chungMinhHangDungLogic(con, dkTheoNut, nguongById) {
       varOfId.set(d.id, idx);
       return idx;
     }
-    // Khớp thêm theo laPhuCuaNhau (ví dụ CO_KHONG cùng nguồn có trích lồng nhau nhưng câu hỏi viết khác)
+    // Khớp dự phòng theo laPhuCuaNhau theo cấu trúc (ADR-0009 mục 1)
     for (let i = 0; i < vars.length; i += 1) {
       if (laPhuCuaNhau(d, vars[i], nguongById)) {
         varOfId.set(d.id, i);
@@ -426,6 +424,7 @@ export function chungMinhPhuKin(con, dkTheoNut, nguongById = new Map(), chaDks =
     const tapChaTheoTruc = new Map();
     for (const d of chaGiaTri) {
       const k = khoaTrucGiaTri(d);
+      if (!k) continue;
       if (!tapChaTheoTruc.has(k)) tapChaTheoTruc.set(k, new Set());
       for (const v of d.tap) tapChaTheoTruc.get(k).add(chuanSo(v).toLowerCase());
     }
@@ -593,7 +592,12 @@ export function taoBangChoCha(chaId, L, duLieu) {
         co.add('VUNG_CHONG');
         continue;
       }
-      if (!haiNutRoiNhau(dkTheoNut.get(coTen[i]) || [], dkTheoNut.get(coTen[j]) || [], nguongById)) {
+      const dksA = dkTheoNut.get(coTen[i]) || [];
+      const dksB = dkTheoNut.get(coTen[j]) || [];
+      if (haiNutRoiNhau(dksA, dksB, nguongById)) continue;
+      if (laChongSoTrungTruc(dksA, dksB, nguongById)) {
+        co.add('VUNG_CHONG');
+      } else {
         co.add('CHUA_CHUNG_MINH_TACH');
       }
     }

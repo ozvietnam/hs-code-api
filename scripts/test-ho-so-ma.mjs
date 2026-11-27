@@ -296,13 +296,15 @@ caNguoc('khuôn: dòng không phải JSON', ghiKho([...DUNG, 'không phải json
   kiem('kho thật: đường đi Chương có Phân chương (28.11 thuộc Phân chương II)', h.duong.some((c) => c.cap === 'PHAN_CHUONG' && c.nut === 'chuong:28:pc:II') && h.thieu.length === h.duong.length, h.duong.map((c) => c.nut));
 }
 
-// ---------- 8. Tương thích ngược M-81: dieu-kien/ và bang-anh-em/ cùng tồn tại với kho cũ ----------
+// ---------- 8. Tương thích ngược M-81 + Cổng 4 & 5 kiểm cả DIEU_KIEN / GIAI_CHONG / CANH_TRANH (ADR-0009 mục 4) ----------
 {
   const khoChung = ghiKho(DUNG);
   const chu7605 = chuCau('bieu:7605#1');
+  const chu760511 = chuCau('bieu:760511#1');
+  const chuCt7 = chuCau('nhom:7605:ct:7#1');
   fs.mkdirSync(path.join(khoChung, 'dieu-kien'), { recursive: true });
   fs.mkdirSync(path.join(khoChung, 'bang-anh-em'), { recursive: true });
-  fs.writeFileSync(path.join(khoChung, 'dieu-kien', '76.jsonl'), `${JSON.stringify({
+  const dk76 = {
     id: 'hs:bieu:7605:8101',
     nut: 'bieu:7605',
     loai: 'DIEU_KIEN',
@@ -315,13 +317,48 @@ caNguoc('khuôn: dòng không phải JSON', ghiKho([...DUNG, 'không phải json
     trich: chu7605,
     nguon: 'bieu:7605#1',
     vanTay: vanTay(chu7605),
-  })}\n`);
+  };
+  const gc76 = {
+    id: 'hs:bieu:76051:8151',
+    nut: 'bieu:76051',
+    loai: 'GIAI_CHONG',
+    cap: ['bieu:760511', 'bieu:760519'],
+    cach: 'NGUONG',
+    trich: 'Kích thước mặt cắt ngang lớn nhất trên 7 mm',
+    nguon: 'bieu:760511#1',
+    vanTay: vanTay(chu760511),
+  };
+  const ct76 = {
+    id: 'hs:bieu:7605:8171',
+    nut: 'bieu:7605',
+    loai: 'CANH_TRANH',
+    nhomCanhTranh: ['bieu:8544'],
+    phepThu: [{ nguon: 'nhom:7605:ct:7#1', trich: 'cách điện' }],
+    trich: 'cách điện',
+    nguon: 'nhom:7605:ct:7#1',
+    vanTay: vanTay(chuCt7),
+  };
+  fs.writeFileSync(path.join(khoChung, 'dieu-kien', '76.jsonl'), `${[dk76, gc76, ct76].map((x) => JSON.stringify(x)).join('\n')}\n`);
+  const rNen = chay(KHO_DUNG, { phamVi: ['chuong:76'] });
   const rMacDinh = chay(khoChung, { phamVi: ['chuong:76'] });
   const r611 = chay(khoChung, { phamVi: ['bieu:7605'], chiTrong: true, cong: [11] });
   const hGhep = G.hoSo('7605.19.10', { luat: LUAT, hoSo: khoChung });
-  kiem('tương thích ngược M-81: kho có cả dieu-kien/ vẫn xanh mặc định cổng 1–5, chạy được cổng 11, ghep.js không đổi',
-    xanh(rMacDinh) && !r611.cong[11].loi.length && r611.cong[11].dem.tong === 1 && hGhep.thieu.length === 0,
+  kiem('tương thích ngược M-81: kho có cả DIEU_KIEN/GIAI_CHONG/CANH_TRANH xanh cổng 1–5 (cổng 4 & 5 đếm thêm +3), chạy được cổng 11, ghep.js không đổi',
+    xanh(rMacDinh)
+    && rMacDinh.cong[4].soKiem === rNen.cong[4].soKiem + 3
+    && rMacDinh.cong[5].soKiem === rNen.cong[5].soKiem + 3
+    && !r611.cong[11].loi.length && r611.cong[11].dem.tong === 1 && hGhep.thieu.length === 0,
     { macDinh: loiCong(rMacDinh), c11: r611.cong[11] });
+
+  // Cổng 4 & 5 bắt lỗi trich sai / vanTay lệch trên GIAI_CHONG & CANH_TRANH ở chế độ mặc định
+  const khoSaiGc = ghiKho(DUNG);
+  fs.mkdirSync(path.join(khoSaiGc, 'dieu-kien'), { recursive: true });
+  fs.writeFileSync(path.join(khoSaiGc, 'dieu-kien', '76.jsonl'), `${JSON.stringify({ ...gc76, trich: 'chữ bịa không nguyên văn', vanTay: '0'.repeat(64) })}\n`);
+  const rSaiGc = chay(khoSaiGc, { phamVi: [] });
+  kiem('CA NGƯỢC cổng 4 & 5 trên GIAI_CHONG (không --pham-vi): trich sai & vanTay lệch ⇒ đỏ cả cổng 4 và cổng 5',
+    rSaiGc.cong[4].loi.some((l) => l.startsWith('hs:bieu:76051:8151:'))
+    && rSaiGc.cong[5].loi.some((l) => l.startsWith('hs:bieu:76051:8151:')),
+    loiCong(rSaiGc));
 }
 
 fs.rmSync(TAM, { recursive: true, force: true });

@@ -26,6 +26,8 @@ import {
   chungMinhPhuKin,
   chiaVeDieuKien,
   haiNutRoiNhau,
+  laPhuCuaNhau,
+  laChongSoTrungTruc,
 } from './ho-so-ma/bang-anh-em.mjs';
 import { chayCong, napLuatCong, parseCongArg, vanTay, chuanSo, cacNutCungDong } from './ho-so-ma/cong.mjs';
 import {
@@ -247,6 +249,7 @@ const DUNG_8543 = [
     phepThu: ['nhom:8479:ct:5#1', 'nhom:8479:ct:6#1', 'nhom:8479:ct:7#1'],
     trich: 'Không thể phân loại trong bất kỳ một nhóm cụ thể nào khác của chương này',
     nguon: 'nhom:8479:ct:4#1',
+    vanTay: vanTay(L.chuCau('nhom:8479:ct:4#1')),
   },
 ];
 
@@ -1491,6 +1494,175 @@ const KHO_CHUAN = ghiHoSoTam({
     && r2308Thieu.cong[6].loi.length === 3
     && r2308Thieu.cong[12].loi.length === 3,
     { cd2308, sd4: sd2308_4.congLoi, sd6: sd2308_6.congLoi, sd8: sd2308_8.congLoi, thieu6: r2308Thieu.cong[6].loi.length, thieu12: r2308Thieu.cong[12].loi.length });
+}
+
+// ---------- 12. Hồi quy 5 điểm soát PR #2424 theo ADR-0009 ----------
+{
+  // 12A. Điểm 1 & Điểm 5: laPhuCuaNhau chỉ xét theo cấu trúc, bỏ so chuỗi con trich & nhánh chết veRoiNhau
+  // Ca âm đúng nguyên văn QT: A trich: "plastic" (phu: false), B phu: true, trich: "plastic gia cố" cùng nguon
+  const luatPlastic = path.join(TAM, 'luat-plastic');
+  fs.cpSync(LUAT, luatPlastic, { recursive: true });
+  const cauPlasticTxt = '- - Mặt ngoài bằng plastic hoặc plastic gia cố:';
+  fs.writeFileSync(
+    path.join(luatPlastic, 'bieu.jsonl'),
+    `${docDong(path.join(luatPlastic, 'bieu.jsonl')).map((l) => {
+      const o = JSON.parse(l);
+      if (o.id === 'bieu:420222') o.nguyenVan = cauPlasticTxt;
+      return JSON.stringify(o);
+    }).join('\n')}\n`,
+  );
+  fs.writeFileSync(
+    path.join(luatPlastic, 'cau', 'bieu.jsonl'),
+    `${docDong(path.join(luatPlastic, 'cau', 'bieu.jsonl')).map((l) => {
+      const o = JSON.parse(l);
+      if (o.id === 'bieu:420222#1') { o.tu = 0; o.den = cauPlasticTxt.length; }
+      return JSON.stringify(o);
+    }).join('\n')}\n`,
+  );
+  const L_PLASTIC = napLuatCong(luatPlastic);
+
+  const dkChaPlastic = dkWith(L_PLASTIC, 'bieu:420222', 1, 1, false, 'CO_KHONG', 'NGHIA_THUONG', 'Mặt ngoài bằng plastic hoặc plastic gia cố?', 'Mặt ngoài bằng plastic hoặc plastic gia cố', 'bieu:420222#1');
+  const dkPlasticA_ck = dkWith(L_PLASTIC, 'bieu:42022210', 1, 1, false, 'CO_KHONG', 'NGHIA_THUONG', 'Mặt ngoài bằng plastic?', 'plastic', 'bieu:420222#1');
+  const dkPlasticB_ck = dkWith(L_PLASTIC, 'bieu:42022220', 1, 1, true, 'CO_KHONG', 'NGHIA_THUONG', 'Mặt ngoài bằng plastic gia cố?', 'plastic gia cố', 'bieu:420222#1');
+  const dkPlasticA_gt = dkWith(L_PLASTIC, 'bieu:42022210', 1, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Chất liệu mặt ngoài?', 'plastic', 'bieu:420222#1', { truc: 'chất liệu mặt ngoài', tap: ['plastic'] });
+  const dkPlasticB_gt = dkWith(L_PLASTIC, 'bieu:42022220', 1, 1, true, 'GIA_TRI', 'NGHIA_THUONG', 'Chất liệu mặt ngoài?', 'plastic gia cố', 'bieu:420222#1', { truc: 'chất liệu mặt ngoài', tap: ['plastic gia cố'] });
+
+  const khoPlasticCk = ghiHoSoTam({ dkList: [dkChaPlastic, dkPlasticA_ck, dkPlasticB_ck] });
+  const rPlasticCk = chayCong({ luat: luatPlastic, hoSo: khoPlasticCk, phamVi: ['bieu:420222'], chiTrong: true, cong: [4, 5, 6, 7, 8], L: L_PLASTIC });
+  const bangPlasticCk = dungBangAnhEm({ chuong: '42', chaIds: ['bieu:420222'], luat: luatPlastic, hoSo: khoPlasticCk, L: L_PLASTIC }).bang[0];
+
+  const khoPlasticGt = ghiHoSoTam({ dkList: [dkChaPlastic, dkPlasticA_gt, dkPlasticB_gt] });
+  const rPlasticGt = chayCong({ luat: luatPlastic, hoSo: khoPlasticGt, phamVi: ['bieu:420222'], chiTrong: true, cong: [4, 5, 6, 7, 8], L: L_PLASTIC });
+
+  // Kiểm thêm GIA_TRI khác truc nhưng cùng cauHoi + cùng tap + cùng nguon => KHÔNG bù, KHÔNG rời; cùng cấu trúc => bù
+  const dkKhacTruc1 = dkWith(L_PLASTIC, 'bieu:42022210', 1, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Chất liệu?', 'plastic', 'bieu:420222#1', { truc: 'mặt ngoài', tap: ['plastic'] });
+  const dkKhacTruc2 = dkWith(L_PLASTIC, 'bieu:42022220', 1, 1, true, 'GIA_TRI', 'NGHIA_THUONG', 'Chất liệu?', 'plastic', 'bieu:420222#1', { truc: 'lớp lót', tap: ['plastic'] });
+  const dkKhacTruc3 = { ...dkKhacTruc2, phu: false, tap: ['plastic gia cố'] };
+  const dkCungTrucBu = { ...dkKhacTruc1, id: 'hs:bieu:42022220:8101', nut: 'bieu:42022220', phu: true };
+  const dkCungCauBu = { ...dkPlasticA_ck, id: 'hs:bieu:42022220:8101', nut: 'bieu:42022220', phu: true };
+
+  kiem('ADR-0009 Điểm 1 & 5 (plastic vs KHÔNG plastic gia cố): không coi chuỗi con trich là bù ⇒ cổng 7 đỏ HO_PHU & cổng 8 báo CHUA_CHUNG_MINH_TACH',
+    laPhuCuaNhau(dkPlasticA_ck, dkPlasticB_ck) === false
+    && laPhuCuaNhau(dkPlasticA_gt, dkPlasticB_gt) === false
+    && laPhuCuaNhau(dkKhacTruc1, dkKhacTruc2) === false
+    && laPhuCuaNhau(dkKhacTruc1, dkCungTrucBu) === true
+    && laPhuCuaNhau(dkPlasticA_ck, dkCungCauBu) === true
+    && haiNutRoiNhau([dkKhacTruc1], [dkKhacTruc3]) === false
+    && !rPlasticCk.cong[4].loi.length && !rPlasticCk.cong[5].loi.length && !rPlasticCk.cong[6].loi.length
+    && rPlasticCk.cong[7].loi.some((l) => /HO_PHU/.test(l))
+    && rPlasticCk.cong[8].dem.roiNhau === 0 && rPlasticCk.cong[8].dem.chuaChungMinhTach === 1
+    && bangPlasticCk.co.includes('HO_PHU') && bangPlasticCk.co.includes('CHUA_CHUNG_MINH_TACH')
+    && !rPlasticGt.cong[4].loi.length && !rPlasticGt.cong[5].loi.length && !rPlasticGt.cong[6].loi.length
+    && rPlasticGt.cong[7].loi.some((l) => /HO_PHU/.test(l))
+    && rPlasticGt.cong[8].dem.roiNhau === 0 && rPlasticGt.cong[8].dem.chuaChungMinhTach === 1,
+    { c6Ck: rPlasticCk.cong[6], c7Ck: rPlasticCk.cong[7], c8Ck: rPlasticCk.cong[8], co: bangPlasticCk.co, c7Gt: rPlasticGt.cong[7], c8Gt: rPlasticGt.cong[8] });
+
+  // 12B. Điểm 2: Cổng 4 (TRÍCH) & Cổng 5 (VÂN TAY) chạy cho mọi bản ghi DIEU_KIEN / GIAI_CHONG / CANH_TRANH
+  const gc45Ok = {
+    id: 'hs:bieu:854370:8151',
+    nut: 'bieu:854370',
+    loai: 'GIAI_CHONG',
+    cap: ['bieu:85437030', 'bieu:85437050'],
+    cach: 'QUY_TAC_3',
+    trich: 'Máy, thiết bị điện có chức năng phiên dịch hoặc từ điển',
+    nguon: 'bieu:85437030#1',
+    vanTay: vanTay(L.chuCau('bieu:85437030#1')),
+  };
+  const ct45Ok = {
+    id: 'hs:bieu:8543:8171',
+    nut: 'bieu:8543',
+    loai: 'CANH_TRANH',
+    nhomCanhTranh: ['bieu:8479', 'bieu:8543'],
+    phepThu: [{ nguon: 'nhom:8479:ct:5#1', trich: 'cách thức hoạt động' }],
+    trich: 'Không thể phân loại trong bất kỳ một nhóm cụ thể nào khác của chương này',
+    nguon: 'nhom:8479:ct:4#1',
+    vanTay: vanTay(L.chuCau('nhom:8479:ct:4#1')),
+  };
+  const dk45Ok = dk('bieu:85437030', 1, 1, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Có chức năng phiên dịch không?', 'có chức năng phiên dịch', 'bieu:85437030#1', {
+    moNguon: 'bieu:85437030#1',
+    moNguonVanTay: vanTay(L.chuCau('bieu:85437030#1')),
+  });
+  const kho45Ok = ghiHoSoTam({ dkList: [dk45Ok, gc45Ok, ct45Ok] });
+  const r45NoPv = chayCong({ luat: LUAT, hoSo: kho45Ok, phamVi: [], cong: [4, 5], L });
+  const r45Pv = chayCong({ luat: LUAT, hoSo: kho45Ok, phamVi: ['bieu:8543'], chiTrong: true, cong: [4, 5], L });
+
+  // Ca âm Cổng 4: trich sai trên DIEU_KIEN, GIAI_CHONG, CANH_TRANH và phepThu[].trich
+  const kho4Sai = ghiHoSoTam({
+    dkList: [
+      { ...dk45Ok, trich: 'chữ bịa ở DIEU_KIEN' },
+      { ...gc45Ok, trich: 'chữ bịa ở GIAI_CHONG' },
+      { ...ct45Ok, trich: 'chữ bịa ở CANH_TRANH', phepThu: [{ nguon: 'nhom:8479:ct:5#1', trich: 'phép thử bịa' }] },
+    ],
+  });
+  const r4Sai = chayCong({ luat: LUAT, hoSo: kho4Sai, phamVi: [], cong: [4, 5], L });
+
+  // Ca âm Cổng 5: vanTay lệch trên DIEU_KIEN, GIAI_CHONG, CANH_TRANH và thiếu vanTay trên GIAI_CHONG
+  const kho5Sai = ghiHoSoTam({
+    dkList: [
+      { ...dk45Ok, vanTay: '1'.repeat(64) },
+      { ...gc45Ok, vanTay: '2'.repeat(64) },
+      { ...ct45Ok, vanTay: '3'.repeat(64) },
+      { id: 'hs:bieu:854370:8152', nut: 'bieu:854370', loai: 'GIAI_CHONG', cap: ['bieu:85437010', 'bieu:85437030'], cach: 'QUY_TAC_3', trich: 'Máy, thiết bị điện có chức năng phiên dịch hoặc từ điển', nguon: 'bieu:85437030#1' },
+    ],
+  });
+  const r5Sai = chayCong({ luat: LUAT, hoSo: kho5Sai, phamVi: [], cong: [4, 5], L });
+
+  kiem('ADR-0009 Điểm 2 (Cổng 4 & 5): kiểm trọn DIEU_KIEN, GIAI_CHONG, CANH_TRANH (cả phepThu & vanTay lệch/thiếu)',
+    !r45NoPv.khuon.length && !r45NoPv.cong[4].loi.length && !r45NoPv.cong[5].loi.length
+    && r45NoPv.cong[4].soKiem === 3 && r45NoPv.cong[5].soKiem === 4
+    && !r45Pv.cong[4].loi.length && !r45Pv.cong[5].loi.length && r45Pv.cong[4].soKiem === 3
+    && r4Sai.cong[4].loi.length === 4 && !r4Sai.cong[5].loi.length
+    && ['hs:bieu:85437030:8101:', 'hs:bieu:854370:8151:', 'hs:bieu:8543:8171:'].every((p) => r4Sai.cong[4].loi.some((l) => l.startsWith(p)))
+    && !r5Sai.cong[4].loi.length && r5Sai.cong[5].loi.length === 4
+    && ['hs:bieu:85437030:8101:', 'hs:bieu:854370:8151:', 'hs:bieu:8543:8171:', 'hs:bieu:854370:8152:'].every((p) => r5Sai.cong[5].loi.some((l) => l.startsWith(p))),
+    { r45NoPv: r45NoPv.cong, r4Sai: r4Sai.cong, r5Sai: r5Sai.cong });
+
+  // 12C. Điểm 3: chongSoTrungTruc gắn cùng cờ VUNG_CHONG ở cả bang-anh-em.mjs và Cổng 8; có GIAI_CHONG thì gỡ cả hai
+  const ngSoLe10 = { ...ng5W, id: 'hs:bieu:42022210:7401', nut: 'bieu:42022210', cau: 'bieu:85011022#1', nguong: { daiLuong: 'công suất', donVi: 'W', tu: null, den: 10, gomTu: false, gomDen: true } };
+  const ngSoGt5 = { ...ng5W, id: 'hs:bieu:42022220:7401', nut: 'bieu:42022220', cau: 'bieu:85011022#1', nguong: { daiLuong: 'công suất', donVi: 'W', tu: 5, den: null, gomTu: false, gomDen: false } };
+  const dkSo1 = dk('bieu:42022210', 1, 1, false, 'SO', 'NGUONG', 'Công suất <= 10 W?', 'công suất không quá 5 W', 'bieu:85011022#1', { nguong: ngSoLe10.id });
+  const dkSo2 = dk('bieu:42022220', 1, 1, false, 'SO', 'NGUONG', 'Công suất > 5 W?', 'công suất không quá 5 W', 'bieu:85011022#1', { nguong: ngSoGt5.id });
+  const khoSoChong = ghiHoSoTam({ dkList: [dkSo1, dkSo2], nguongList: [ngSoLe10, ngSoGt5] });
+  const r8Chong = chayCong({ luat: LUAT, hoSo: khoSoChong, phamVi: ['bieu:420222'], chiTrong: true, cong: [8], L });
+  const bangSoChong = dungBangAnhEm({ chuong: '42', chaIds: ['bieu:420222'], luat: LUAT, hoSo: khoSoChong, L }).bang[0];
+
+  const gcSoGiai = {
+    id: 'hs:bieu:420222:8151',
+    nut: 'bieu:420222',
+    loai: 'GIAI_CHONG',
+    cap: ['bieu:42022210', 'bieu:42022220'],
+    cach: 'NGUONG',
+    trich: 'Mặt ngoài bằng tấm plastic hoặc vật liệu dệt',
+    nguon: 'bieu:420222#1',
+    vanTay: vanTay(L.chuCau('bieu:420222#1')),
+  };
+  const khoSoDaGiai = ghiHoSoTam({ dkList: [dkSo1, dkSo2, gcSoGiai], nguongList: [ngSoLe10, ngSoGt5] });
+  const r8SoDaGiai = chayCong({ luat: LUAT, hoSo: khoSoDaGiai, phamVi: ['bieu:420222'], chiTrong: true, cong: [8], L });
+  const bangSoDaGiai = dungBangAnhEm({ chuong: '42', chaIds: ['bieu:420222'], luat: LUAT, hoSo: khoSoDaGiai, L }).bang[0];
+
+  kiem('ADR-0009 Điểm 3 (laChongSoTrungTruc): khoảng SO giao nhau gắn VUNG_CHONG khớp 100% giữa bang-anh-em.co và Cổng 8; có GIAI_CHONG thì gỡ cả hai',
+    laChongSoTrungTruc([dkSo1], [dkSo2], new Map([[ngSoLe10.id, ngSoLe10], [ngSoGt5.id, ngSoGt5]])) === true
+    && r8Chong.cong[8].dem.vungChong === 1 && r8Chong.cong[8].dem.chuaChungMinhTach === 0
+    && r8Chong.cong[8].loi.some((l) => /VUNG_CHONG/.test(l))
+    && bangSoChong.co.includes('VUNG_CHONG') && !bangSoChong.co.includes('CHUA_CHUNG_MINH_TACH')
+    && !r8SoDaGiai.cong[8].loi.length && r8SoDaGiai.cong[8].dem.giaiChong === 1 && r8SoDaGiai.cong[8].dem.vungChong === 0
+    && !bangSoDaGiai.co.includes('VUNG_CHONG') && !bangSoDaGiai.co.includes('CHUA_CHUNG_MINH_TACH'),
+    { c8: r8Chong.cong[8], coChong: bangSoChong.co, c8Giai: r8SoDaGiai.cong[8], coGiai: bangSoDaGiai.co });
+
+  // 12D. Điểm 4: trục đa trị daTri:true trên cả Cổng 8 lẫn bang-anh-em.co (không báo roiNhau)
+  const dkDt1 = dk('bieu:42022210', 1, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Hoạt chất?', 'tấm plastic', 'bieu:42022210#1', { truc: 'hoạt chất', daTri: true, tap: ['tấm plastic'] });
+  const dkDt2 = dk('bieu:42022220', 1, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Hoạt chất?', 'vật liệu dệt', 'bieu:42022220#1', { truc: 'hoạt chất', daTri: true, tap: ['vật liệu dệt'] });
+  const khoDt = ghiHoSoTam({ dkList: [dkDt1, dkDt2] });
+  const r8Dt = chayCong({ luat: LUAT, hoSo: khoDt, phamVi: ['bieu:420222'], chiTrong: true, cong: [8], L });
+  const bangDt = dungBangAnhEm({ chuong: '42', chaIds: ['bieu:420222'], luat: LUAT, hoSo: khoDt, L }).bang[0];
+
+  kiem('ADR-0009 Điểm 4 (trục đa trị daTri:true): tập GIA_TRI khác nhau trả CHUA_CHUNG_MINH_TACH ở cả Cổng 8 và bang-anh-em.co, roiNhau=0',
+    r8Dt.cong[8].dem.roiNhau === 0
+    && r8Dt.cong[8].dem.chuaChungMinhTach === 1
+    && !r8Dt.cong[8].loi.length
+    && r8Dt.cong[8].canhBao.some((c) => /CHUA_CHUNG_MINH_TACH/.test(c))
+    && bangDt.co.includes('CHUA_CHUNG_MINH_TACH'),
+    { c8: r8Dt.cong[8], co: bangDt.co });
 }
 
 fs.rmSync(TAM, { recursive: true, force: true });

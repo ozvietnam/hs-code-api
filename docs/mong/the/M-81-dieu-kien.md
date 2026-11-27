@@ -1,6 +1,6 @@
 # M-81 (#2410, PR 1) — Khuôn `DIEU_KIEN`, gói nhóm 4 số, bảng anh em, sổ điểm, cổng 6–12 & skill `doc-tron-nhom`
 
-- **Quyết định kiến trúc:** [`docs/decisions/0007-dieu-kien-nguyen-tu-bang-anh-em.md`](../../decisions/0007-dieu-kien-nguyen-tu-bang-anh-em.md) (ADR-0007, `#2409`) và `ADR-0008` (`#2418` — triển khai theo cả nhóm 4 số, thêm `truc`, `moNguon`, `ve: 0`, bổ sung `daTri` theo `#issuecomment-7210034900`).
+- **Quyết định kiến trúc:** [`docs/decisions/0007-dieu-kien-nguyen-tu-bang-anh-em.md`](../../decisions/0007-dieu-kien-nguyen-tu-bang-anh-em.md) (ADR-0007, `#2409`), [`docs/decisions/0008-trien-khai-m81-theo-nhom-4-so.md`](../../decisions/0008-trien-khai-m81-theo-nhom-4-so.md) (ADR-0008, `#2418`) và [`docs/decisions/0009-lam-ro-cong-7-8.md`](../../decisions/0009-lam-ro-cong-7-8.md) (ADR-0009, `#2425` — bù theo cấu trúc, trục đa trị `daTri`, chồng số `VUNG_CHONG`, cổng 4 & 5 chạy cho cả `DIEU_KIEN`/`GIAI_CHONG`/`CANH_TRANH`).
 - **Phạm vi PR 1:** Chỉ gồm mã công cụ, khuôn, cổng kiểm, bài kiểm ngoại tuyến và skill `doc-tron-nhom` (thay thế `ho-so-dieu-kien`). **Không** chứa dữ liệu chương thật của PR 2 trong `data/ho-so-ma/dieu-kien/` hay `data/ho-so-ma/bang-anh-em/`, không sửa `lib/ho-so-ma/ghep.js`, đường khách (`lib/`, `api/`, `data/prompts/`), hay `data/lop-kho.json`.
 
 ## 1. Thành phần bàn giao trong PR 1
