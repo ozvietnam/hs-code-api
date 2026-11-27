@@ -46,12 +46,12 @@ const tang = (chain, level) => (chain || []).find((e) => e.level === level) || n
   check('8481: chain không lặp toàn văn Chương (đã có ở content)', chEnt && chEnt.noteVi === null && /content/.test(chEnt.ghiChu || ''), chEnt);
 }
 
-// ---- 5401: mượn chú giải Phần XI từ chương cùng Phần ----
+// ---- 5401: Phần XI đọc trực tiếp từ phan.jsonl (không mượn chương khác) ----
 {
   const r = await get({ hs: '5401' });
   const phan = tang(r._j?.chain, 'SECTION');
-  check('5401: PHẦN là Phần XI có chú giải thật (mượn chương cùng Phần)', phan && phan.code === 'XI' && (phan.noteVi || '').length > 5000, phan && { code: phan.code, len: phan.noteVi?.length });
-  check('5401: ghi rõ mượn của chương nào', !!phan?.muonChuongCungPhan, phan?.muonChuongCungPhan);
+  check('5401: PHẦN là Phần XI có chú giải thật từ phan.jsonl', phan && phan.code === 'XI' && (phan.noteVi || '').length > 5000, phan && { code: phan.code, len: phan.noteVi?.length });
+  check('5401: ca ngược không còn muonChuongCungPhan (Phần không mượn chương khác)', Boolean(phan && !('muonChuongCungPhan' in phan) && /phan\.jsonl/.test(phan.sourceDocument || '')), phan);
 }
 
 // ---- 2501: Phần V không có chú giải trong biểu gốc — nói thẳng ----
@@ -66,7 +66,7 @@ const tang = (chain, level) => (chain || []).find((e) => e.level === level) || n
 {
   const r = await get({ chapter: '52' });
   check('52: 200 + content có "Chú giải phân nhóm" từ bản 2022', r._s === 200 && r._j.found === true && /Chú giải phân nhóm/.test(r._j.content || ''), r._j?.content?.slice(0, 80));
-  check('52: nguồn ghi rõ bản HS 2022', /chu-giai-chuong\.json/.test(r._j?.source || ''), r._j?.source);
+  check('52: nguồn ghi rõ bản HS 2022 (chuong.jsonl)', /HS\s*2022/i.test(r._j?.source || '') && /chuong\.jsonl/.test(r._j?.source || ''), r._j?.source);
 }
 
 // ---- Chương 81: biểu gốc không có chú giải chương → nói thẳng, không trả tiêu đề làm chú giải ----

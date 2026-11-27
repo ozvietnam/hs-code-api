@@ -270,10 +270,12 @@ const g12 = G6.goiSoan('8412');
 kiem('gói soạn 8412: phân nhóm là dòng lá (841221) có nguồn tên tax.84122100; tầng một gạch 84122 có tieuDe', g12.phanNhom.find((p) => p.hs6 === '841221').nguonTen === 'tax.84122100' && 'tax.84122100' in g12.nguon && 'tieuDe.84122' in g12.nguon);
 kiem('gói soạn: mọi khoá gợi ý đều có trong tu-vung và ghi op hợp lệ', g1.khoaGoiY.length >= 5 && g1.khoaGoiY.every((k) => k.khoa && k.op.length > 0) && ['tenLoai', 'dungCho', 'laBoPhan'].every((k) => g1.khoaGoiY.some((x) => x.khoa === k)));
 
-// ── 8. Không đường khách nào nạp module cổng / gói soạn ─────────────────────────────────────────────────────────
-const { tepMa, baoDong } = await import('./lib-luat.mjs');
-const nap = [...tepMa('api'), 'server.js'].filter((t) => [...baoDong(t)].some((x) => x === 'lib/do-thi/tieu-chi-6.js'));
-kiem('không route nào trong api/ nạp lib/do-thi/tieu-chi-6.js (cổng soạn dữ liệu, không phải đường khách)', nap.length === 0, nap.join(', '));
+// ── 8. Đường khách chỉ được chạm module cổng qua duong-do-thi.js (bước 6 của kế hoạch, sau HS_TIM_TRUOC=do-thi mặc định tắt) và chỉ lấy diXuong6 ──
+const { tepMa, baoDongBo, tenLayTu } = await import('./lib-luat.mjs');
+const CUA_VAO = 'lib/do-thi/duong-do-thi.js';
+const nap = [...tepMa('api'), 'server.js'].filter((t) => [...baoDongBo(t, (tu) => tu === CUA_VAO)].some((x) => x === 'lib/do-thi/tieu-chi-6.js'));
+kiem('không route nào trong api/ nạp lib/do-thi/tieu-chi-6.js ngoài lối vào duong-do-thi.js', nap.length === 0, nap.join(', '));
+kiem('duong-do-thi.js chỉ lấy diXuong6 từ module cổng (không lấy gói soạn, không lấy cổng kiểm)', tenLayTu(CUA_VAO, 'lib/do-thi/tieu-chi-6.js')?.join() === 'diXuong6', String(tenLayTu(CUA_VAO, 'lib/do-thi/tieu-chi-6.js')));
 // ── 9. #1583 (KHOA_RONG_HON_LUAT, dieuKienTru, tách vế loại trừ) + #1586 (phân nhóm không phải DU thiếu điều kiện riêng) ──
 kiem('ca ngược #1583: 6704 / 6913 (chuaSoHoa) và 6004 (hamLuongSoiDanHoi >= 5% + dieuKienTru ["sợi cao su"]) đạt 0 lỗi',
   ['6704', '6913', '6004'].every((h) => tiem(h, () => {}).loi.length === 0),

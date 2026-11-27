@@ -1,19 +1,21 @@
 #!/usr/bin/env node
 import './test-isolate-data.mjs';
 /**
- * Hồi quy OZV-2250 (tách từ ca thực địa OZV-2247):
+ * Hồi quy OZV-2250 (tách từ ca thực địa OZV-2247, công tắc con HS_KHONG_HOI_LAI_DIEN_AP mặc định TẮT):
  * Khách đã ghi điện áp trong tên hàng / mô tả («bộ điều khiển gr2030-la1, điện áp 220v, công suất»)
  * nhưng vòng 1 rút gọn `product.nameVi` thành «bộ điều khiển» và đẩy «220V» vào `product.keySpecs`,
  * khiến `out.missingStructured` vẫn chứa `voltage` và tầng `lib/hoi-theo-so-tay.js` đẩy nguyên xi câu
  * «Điện áp của hàng là gì? (V, kV)» ra `nextAction.questions`.
  *
  * Kiểm:
- *  1. Ca thực địa «bộ điều khiển gr2030-la1, điện áp 220v, công suất» (dừng ở 853710):
+ *  0. Kỷ luật cờ `HS_KHONG_HOI_LAI_DIEN_AP`: mặc định TẮT (`batKhongHoiLaiDienAp() === false`),
+ *     khi TẮT giữ nguyên hành vi `origin/main` (vẫn còn câu điện áp ở `missingStructured`).
+ *  1. Ca thực địa «bộ điều khiển gr2030-la1, điện áp 220v, công suất» (dừng ở 853710) khi BẬT cờ:
  *     - KHÔNG còn câu hỏi điện áp trong `nextAction.questions` / `missing`.
- *     - Các câu hỏi dữ kiện thực sự còn thiếu của 853710 (PLC/vi điều khiển, chuyên dùng hay dùng chung) vẫn giữ nguyên.
+ *     - Các câu hỏi dữ kiện thực sự còn thiếu của 853710 (PLC/vi điều khiển, chuyên dùng hay dùng chung, AC/DC) vẫn giữ nguyên.
  *  2. Luật tổng quát (không hardcode theo model): mọi cách ghi số + đơn vị điện áp (V, kV, mV, VAC, VDC, volt, vôn,
  *     dải 100-240VAC, cặp 220/380V, tiền tố DC24V/AC220V, số thập phân 0.4kV / 3,7V, hoặc nằm ở `product.keySpecs`)
- *     đều được nhận là đã có điện áp (`daCo('voltage', ...)` / `daCo('dienAp', ...)` / `isPresent('voltage', ...)`).
+ *     đều được nhận là đã có điện áp (`daCo('voltage', ...)` / `daCo('dienAp', ...)`).
  *  3. Ca đối chứng (L3):
  *     - Mô tả KHÔNG có điện áp («bộ điều khiển gr2030-la1, công suất 500w») → máy VẪN hỏi điện áp.
  *     - Mô tả chỉ có chữ «điện áp» suông không kèm số («bộ điều khiển điện áp gr2030-la1», «ổn định điện áp») →
@@ -24,8 +26,6 @@ import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
 const hoiTheoSoTay = require('../lib/hoi-theo-so-tay.js');
-const { isPresent } = require('../lib/attributes.js');
-const { missingStructured } = require('../lib/declaration-fields.js');
 
 let passed = 0;
 let failed = 0;
@@ -38,6 +38,18 @@ function check(name, ok, extra = '') {
     console.log(`  FAIL ${name}${extra ? ` — ${typeof extra === 'string' ? extra : JSON.stringify(extra).slice(0, 300)}` : ''}`);
   }
 }
+
+const voiCo = (giaTri, fn) => {
+  const cu = process.env.HS_KHONG_HOI_LAI_DIEN_AP;
+  if (giaTri == null) delete process.env.HS_KHONG_HOI_LAI_DIEN_AP;
+  else process.env.HS_KHONG_HOI_LAI_DIEN_AP = giaTri;
+  try {
+    return fn();
+  } finally {
+    if (cu === undefined) delete process.env.HS_KHONG_HOI_LAI_DIEN_AP;
+    else process.env.HS_KHONG_HOI_LAI_DIEN_AP = cu;
+  }
+};
 
 /** Dựng kết quả động cơ tại 853710 giống hệt hồ sơ thực địa OZV-2247 (vòng 1 rút gọn nameVi = "bộ điều khiển"). */
 function dungHoSo853710({ tenHang, keySpecs = [], missingKeys = ['voltage'] }) {
@@ -93,12 +105,33 @@ const coHoiDienAp = (res) =>
     (q) => q.khoa === 'voltage' || q.khoa === 'dienAp' || q.khoa === 'dien_ap' || /điện\s*áp\s*của\s*hàng\s*là\s*gì/iu.test(q.questionVi || ''),
   ) || (res?.missing || []).some((m) => /điện\s*áp\s*của\s*hàng\s*là\s*gì/iu.test(String(m || '')));
 
-const prevFlag = process.env.HS_HOI_THEO_SO_TAY;
+const prevSoTay = process.env.HS_HOI_THEO_SO_TAY;
+const prevDienAp = process.env.HS_KHONG_HOI_LAI_DIEN_AP;
 process.env.HS_HOI_THEO_SO_TAY = 'on';
 
 try {
-  // ── 1. Ca thực địa OZV-2250: khách đã ghi "điện áp 220v" trong tên hàng ───────────────────────────────────────────
-  console.log('\n── 1. Ca thực địa: «bộ điều khiển gr2030-la1, điện áp 220v, công suất» ──');
+  // ── 0. Kỷ luật công tắc HS_KHONG_HOI_LAI_DIEN_AP (mặc định TẮT = y như origin/main) ───────────────────────────────
+  console.log('\n── 0. Công tắc HS_KHONG_HOI_LAI_DIEN_AP (mặc định TẮT = y như origin/main) ──');
+  check('cờ HS_KHONG_HOI_LAI_DIEN_AP mặc định TẮT', voiCo(null, () => hoiTheoSoTay.batKhongHoiLaiDienAp()) === false);
+  check('cờ HS_KHONG_HOI_LAI_DIEN_AP="off" vẫn TẮT', voiCo('off', () => hoiTheoSoTay.batKhongHoiLaiDienAp()) === false);
+  check('cờ HS_KHONG_HOI_LAI_DIEN_AP="on" BẬT', voiCo('on', () => hoiTheoSoTay.batKhongHoiLaiDienAp()) === true);
+  check('cờ HS_KHONG_HOI_LAI_DIEN_AP="1" BẬT', voiCo('1', () => hoiTheoSoTay.batKhongHoiLaiDienAp()) === true);
+  {
+    const { out, rawAttrs } = dungHoSo853710({
+      tenHang: 'bộ điều khiển gr2030-la1, điện áp 220v, công suất',
+      keySpecs: [{ k: 'Điện áp', v: '220V', evidence: 'điện áp 220v' }],
+    });
+    const resTat = voiCo(null, () => hoiTheoSoTay.apDung(out, { rawAttrs }));
+    check(
+      'cờ TẮT (mặc định): giữ nguyên hành vi origin/main (vẫn còn câu "Điện áp của hàng là gì? (V, kV)")',
+      coHoiDienAp(resTat),
+      resTat.nextAction.questions.map((q) => q.questionVi),
+    );
+  }
+
+  // ── 1. Ca thực địa OZV-2250 khi BẬT cờ: khách đã ghi "điện áp 220v" trong tên hàng ─────────────────────────────────
+  console.log('\n── 1. Ca thực địa (cờ BẬT): «bộ điều khiển gr2030-la1, điện áp 220v, công suất» ──');
+  process.env.HS_KHONG_HOI_LAI_DIEN_AP = 'on';
   {
     const { out, rawAttrs } = dungHoSo853710({
       tenHang: 'bộ điều khiển gr2030-la1, điện áp 220v, công suất',
@@ -120,6 +153,11 @@ try {
     check(
       'ca thực địa: giữ nguyên câu hỏi chuyên dùng hay dùng chung (chiHoacChuYeu) của 853710',
       dsKhoa.includes('chiHoacChuYeu') && qs.some((q) => /chuyên dùng|chỉ dùng hoặc chủ yếu dùng/iu.test(q.questionVi)),
+      dsKhoa,
+    );
+    check(
+      'ca thực địa: giữ nguyên câu hỏi loại dòng điện AC/DC (loaiDongDien) của 853710',
+      dsKhoa.includes('loaiDongDien') && qs.some((q) => /một chiều.*xoay chiều|DC.*AC|AC.*DC/iu.test(q.questionVi)),
       dsKhoa,
     );
   }
@@ -145,9 +183,9 @@ try {
   for (const moTa of CA_CO_DIEN_AP) {
     check(`daCo("voltage", "${moTa}") === true`, hoiTheoSoTay.daCo('voltage', moTa) === true, moTa);
     check(`daCo("dienAp", "${moTa}") === true`, hoiTheoSoTay.daCo('dienAp', moTa) === true, moTa);
-    check(`isPresent("voltage", "${moTa}") === true`, isPresent('voltage', { tenHang: moTa }) === true, moTa);
-    const ms = missingStructured('853710', { tenHang: moTa }).map((f) => f.key);
-    check(`missingStructured("853710", "${moTa}") không còn đòi voltage`, !ms.includes('voltage'), ms);
+    const { out, rawAttrs } = dungHoSo853710({ tenHang: moTa, keySpecs: [] });
+    const res = hoiTheoSoTay.apDung(out, { rawAttrs });
+    check(`apDung("${moTa}") không còn hỏi lại điện áp`, !coHoiDienAp(res), res.nextAction.questions);
   }
 
   // Trường hợp tên hàng không lặp lại nhưng vòng 1 đã bóc vào `product.keySpecs`
@@ -174,9 +212,7 @@ try {
   ];
   for (const moTa of CA_CHUA_CO_DIEN_AP) {
     check(`đối chứng daCo("voltage", "${moTa}") === false`, hoiTheoSoTay.daCo('voltage', moTa) === false, moTa);
-    check(`đối chứng isPresent("voltage", "${moTa}") === false`, isPresent('voltage', { tenHang: moTa }) === false, moTa);
-    const ms = missingStructured('853710', { tenHang: moTa }).map((f) => f.key);
-    check(`đối chứng missingStructured("853710", "${moTa}") vẫn đòi voltage`, ms.includes('voltage'), ms);
+    check(`đối chứng daCo("dienAp", "${moTa}") === false`, hoiTheoSoTay.daCo('dienAp', moTa) === false, moTa);
     const { out, rawAttrs } = dungHoSo853710({ tenHang: moTa, keySpecs: [] });
     const res = hoiTheoSoTay.apDung(out, { rawAttrs });
     check(
@@ -192,17 +228,18 @@ try {
     const chuoiDai = Array.from({ length: 10000 }, (_, i) => `dien ap ${i}00.55 - ${i}99.99`).join(' ');
     const t0 = Date.now();
     const kqDaCo = hoiTheoSoTay.daCo('voltage', chuoiDai);
-    const kqAttr = isPresent('voltage', { tenHang: chuoiDai });
     const dt = Date.now() - t0;
     check(
       `ReDoS (~40.000 token không đơn vị): chạy xong trong ${dt} ms (< 2000 ms) và không khớp nhầm`,
-      dt < 2000 && kqDaCo === false && kqAttr === false,
-      { dt, kqDaCo, kqAttr },
+      dt < 2000 && kqDaCo === false,
+      { dt, kqDaCo },
     );
   }
 } finally {
-  if (prevFlag === undefined) delete process.env.HS_HOI_THEO_SO_TAY;
-  else process.env.HS_HOI_THEO_SO_TAY = prevFlag;
+  if (prevSoTay === undefined) delete process.env.HS_HOI_THEO_SO_TAY;
+  else process.env.HS_HOI_THEO_SO_TAY = prevSoTay;
+  if (prevDienAp === undefined) delete process.env.HS_KHONG_HOI_LAI_DIEN_AP;
+  else process.env.HS_KHONG_HOI_LAI_DIEN_AP = prevDienAp;
 }
 
 console.log(`\nKết quả: ${passed} passed, ${failed} failed`);

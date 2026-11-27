@@ -4774,7 +4774,509 @@
    "gir": "GIR 1",
    "basis": "RULE_TABLE",
    "sourceVi": "Chú giải chi tiết nhóm 90.05 mục (d) «Thiết bị ngắm qua cửa (nhóm 90.13)» — đã có trong data/so-tay/9005.json (NGUOI_DUYET). Biểu thuế: 90138090 «Loại khác» trong 9013.80. Thực địa 25/11 (OZV-2247): câu «ống nhòm gắn cửa gỗ» search thô kéo 6403/7610/7306; 2/3 lượt dừng NEED_FACTS 6 số, 1 lượt chốt 90138090. Thêm từ điển để ổn định nhóm 9013 và chặn 9005 theo chú giải."
+  },
+  {
+   "id": "vong-deo-tay-rfid-nhan-dien",
+   "titleVi": "Vòng đeo tay có chip RFID/NFC (khách sạn, sự kiện, kiểm soát ra vào) — tag không tiếp xúc nhóm 85.23",
+   "terms": [
+    "vòng đeo tay RFID",
+    "vòng tay RFID",
+    "vòng RFID",
+    "vòng đeo tay NFC",
+    "vòng tay NFC",
+    "bracelet RFID",
+    "RFID bracelet",
+    "RFID wristband",
+    "wristband RFID",
+    "NFC wristband",
+    "wearable RFID",
+    "nhận diện RFID",
+    "nhận diện có chip"
+   ],
+   "excludeIfAny": [
+    "vàng",
+    "bạc",
+    "mã não",
+    "đá quý",
+    "kim cương",
+    "ngọc trai",
+    "máy đọc RFID",
+    "RFID reader",
+    "đầu đọc RFID",
+    "thẻ RFID cứng",
+    "RFID card",
+    "smart card"
+   ],
+   "excludeReasonVi": "Vòng trang sức kim loại/đá quý thuộc 71.13–71.17; máy đọc RFID thuộc 8471/8517; thẻ RFID dạng card có mục riêng — khác vòng đeo tay gắn tag.",
+   "candidates": [
+    {
+     "hs": "85235910",
+     "whenVi": "Vòng gắn tag RFID/NFC thụ động (chip + ăng-ten, không pin, không mạch khác) — «Thẻ không tiếp xúc (dạng card và dạng tag)» 8523.59.10. Chú giải chi tiết nhóm 85.43, loại trừ (e): «“Thẻ thông minh” (kể cả thẻ không tiếp xúc hoặc tag) được định nghĩa trong Chú giải 6 (b) Chương này (nhóm 85.23)».",
+     "confidence": "high"
+    },
+    {
+     "hs": "85235200",
+     "whenVi": "Nếu tag đáp ứng đúng Chú giải 6 (b) Chương 85 về «thẻ thông minh» (mạch tích hợp điện tử dạng chip có bộ nhớ, có thể kèm ăng-ten, không có phần tử mạch chủ động nào khác) → 8523.52.00; cần dữ kiện chip của nhà sản xuất.",
+     "confidence": "medium"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "8543",
+     "whyVi": "Chú giải chi tiết nhóm 85.43, loại trừ (e): «“Thẻ thông minh” (kể cả thẻ không tiếp xúc hoặc tag) được định nghĩa trong Chú giải 6 (b) Chương này (nhóm 85.23)» — tag RFID không thuộc 8543 (OZV-2368 đảo OZV-2361: dồn 8543 làm lõi dừng PN6 854370 và hỏi 6 nhánh máy điện không dính vòng đeo tay)."
+    },
+    {
+     "prefix": "7116",
+     "whyVi": "7116 là đồ trang sức đá quý — tiền lệ «vòng đeo tay mã não» nhiễu khi câu chỉ có «vòng đeo tay»."
+    },
+    {
+     "prefix": "7117",
+     "whyVi": "7117 là đồ trang sức giả — khác vòng gắn tag nhận diện."
+    },
+    {
+     "prefix": "8471",
+     "whyVi": "8471 là máy xử lý dữ liệu tự động — search thô «nhận diện» dễ kéo card/ADP."
+    }
+   ],
+   "askVi": [
+    "Chip trong vòng là tag RFID/NFC thụ động (không pin, chỉ chip + ăng-ten) hay có pin/mạch điện tử khác (đèn, cảm biến)?"
+   ],
+   "chotSom": true,
+   "gir": "GIR 1 + GIR 6",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Chú giải chi tiết nhóm 85.43 loại trừ (e) và Chú giải nhóm 85.23 («Thẻ thông minh» gồm cả «thẻ cảm ứng (proximity card) hoặc … (tag)» nếu đáp ứng Chú giải 6 (b)) — data/chu-giai-heading.json. Biểu thuế 85235910 «Thẻ không tiếp xúc (dạng card và dạng tag)», 85235200 «Thẻ thông minh». OZV-2368 (thực địa 26/11: 10/10 lượt «vòng đeo tay nhận diện 254x32/206x32» dừng PN6 854370) đảo hướng 8543 của OZV-2361."
+  },
+  {
+   "id": "vong-deo-tay-nhan-dien-chua-ro-chip",
+   "titleVi": "Vòng đeo tay nhận diện (bệnh viện, sự kiện) chưa nói có chip — hỏi chip trước, không chip thì theo chất liệu",
+   "terms": [
+    "vòng đeo tay nhận diện",
+    "vòng tay nhận diện",
+    "vòng nhận diện",
+    "vòng đeo tay bệnh nhân",
+    "vòng tay bệnh nhân",
+    "vòng đeo tay sự kiện",
+    "identification wristband",
+    "identification bracelet",
+    "ID wristband",
+    "hospital wristband"
+   ],
+   "excludeIfAny": [
+    "RFID",
+    "NFC",
+    "chip",
+    "vàng",
+    "bạc",
+    "mã não",
+    "đá quý",
+    "kim cương",
+    "ngọc trai",
+    "smart watch",
+    "đồng hồ thông minh"
+   ],
+   "excludeReasonVi": "Câu đã nói có chip RFID/NFC → mục vong-deo-tay-rfid-nhan-dien (85.23); trang sức → Chương 71; vòng đeo thông minh có màn hình/Bluetooth → 85.17.",
+   "candidates": [
+    {
+     "hs": "39269099",
+     "whenVi": "Vòng nhựa (PVC, PP, vinyl, silicone…) chỉ in/ghi thông tin, không chip — sản phẩm bằng plastic loại khác 3926.90.99.",
+     "confidence": "medium"
+    },
+    {
+     "hs": "85235910",
+     "whenVi": "Nếu vòng có gắn tag RFID/NFC thụ động → «Thẻ không tiếp xúc (dạng tag)» 8523.59.10 (Chú giải chi tiết nhóm 85.43, loại trừ (e): «“Thẻ thông minh” (kể cả thẻ không tiếp xúc hoặc tag) được định nghĩa trong Chú giải 6 (b) Chương này (nhóm 85.23)»).",
+     "confidence": "medium"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "8543",
+     "whyVi": "Chú giải chi tiết nhóm 85.43, loại trừ (e): «“Thẻ thông minh” (kể cả thẻ không tiếp xúc hoặc tag) được định nghĩa trong Chú giải 6 (b) Chương này (nhóm 85.23)» — vòng không chip càng không phải máy điện; dồn 8543 làm lõi hỏi 6 nhánh máy điện sai hướng (OZV-2368)."
+    },
+    {
+     "prefix": "7116",
+     "whyVi": "7116 là đồ trang sức đá quý — nhiễu khi câu chỉ có «vòng đeo tay»."
+    },
+    {
+     "prefix": "7117",
+     "whyVi": "7117 là đồ trang sức giả — khác vòng nhận diện."
+    },
+    {
+     "prefix": "8471",
+     "whyVi": "8471 là máy xử lý dữ liệu tự động — search thô «nhận diện» dễ kéo card/ADP."
+    }
+   ],
+   "askVi": [
+    "Vòng có gắn chip RFID/NFC không, hay chỉ là vòng in/ghi thông tin?",
+    "Nếu không chip: vòng làm bằng gì — nhựa (PVC/PP/vinyl/silicone), giấy tổng hợp (Tyvek), hay vải dệt?"
+   ],
+   "chotSom": false,
+   "gir": "GIR 1 + GIR 6",
+   "basis": "RULE_TABLE",
+   "sourceVi": "OZV-2368: tên hàng «vòng đeo tay nhận diện 254x32 / 206x32» (cỡ vòng ID bệnh viện/sự kiện) không cho biết có chip — phải hỏi. Có tag → 85235910 (Chú giải 85.23 + loại trừ (e) nhóm 85.43). Không chip, bằng nhựa → 39269099 «Loại khác» của 3926.90. Giấy tổng hợp / vải chưa có dòng chốt trong mục này — để lõi đọc chú giải 4821/6307 khi khách trả lời."
+  },
+  {
+   "id": "dong-co-diesel-may-xuc",
+   "titleVi": "Động cơ diesel cho máy xúc/bulldozer (84.29/84.30) — ma trận công suất × mục đích của 8408.90",
+   "terms": [
+    "động cơ máy xúc",
+    "động cơ diesel máy xúc lật",
+    "engine excavator",
+    "động cơ bulldozer",
+    "động cơ máy đào",
+    "động cơ diesel công nghiệp"
+   ],
+   "excludeIfAny": [
+    "động cơ xe tải",
+    "động cơ ô tô",
+    "động cơ tàu"
+   ],
+   "excludeReasonVi": "Động cơ dùng cho xe của CHƯƠNG 87 (ô tô, xe tải) thuộc 8408.20 — không phải 8408.90.",
+   "candidates": [
+    {
+     "hs": "84089091",
+     "whenVi": "Công suất ≤ 100 kW + dùng cho máy nhóm 84.29/84.30 (máy xúc lật, bulldozer, máy đào đắp) — MFN 10%, TT 15%. Ca thật 26/11: diesel 58 kW Wuquanda cho máy xúc lật",
+     "confidence": "high"
+    },
+    {
+     "hs": "84089051",
+     "whenVi": "Công suất TRÊN 100 kW + dùng cho máy 84.29/84.30 — MFN chỉ 5% (dòng ưu đãi theo mục đích) — BẪY: động cơ lớn hơn khai nhầm .91 mất 5 điểm",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84089099",
+     "whenVi": "Loại khác ≤100 kW KHÔNG dùng cho 84.29/84.30 (máy phát, tàu thuyền, công nghiệp chung) — MFN 10%",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84082096",
+     "whenVi": "Chỉ khi dùng cho XE CHƯƠNG 87 (ô tô, xe tải) → 8408.20 (lá theo dung tích xi-lanh, vd 8408.20.96 trên 3.500cc)",
+     "confidence": "low"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "8431",
+     "whyVi": "Động cơ được heading 8408 mô tả cụ thể — không đổ về phụ tùng 8431.20 (máy đào) theo GIR 1."
+    }
+   ],
+   "askVi": [
+    "Công suất kW bao nhiêu (18,65 / 100 là ngưỡng tách dòng)? Dùng cho máy gì (xe chương 87 → 8408.20; máy đào đắp 84.29/84.30 → dòng .91/.51; khác → .99)?"
+   ],
+   "gir": "GIR 1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế VN 8408.90.91 'Dùng cho máy thuộc nhóm 84.29 hoặc 84.30' (MFN 10) vs .51 '>100 kW cùng mục đích' (MFN 5) vs .10 '≤18,65 kW' (MFN 25). Ca thật 26/11/2026: diesel 58 kW vỏ sắt 1200×800×1000mm, không nhãn hiệu, NSX Wuquanda Machinery (TQ) cho máy xúc lật; ACFTA CN 0% Form E. 8408.20 chia lá theo dung tích xi-lanh (84082093/94/95/96), không có .99."
+  },
+  {
+   "id": "ban-mach-da-lap-rap",
+   "titleVi": "Bản mạch điện tử đã lắp ráp (PCBA) — phân theo sản phẩm cuối/chức năng, không có mã chung",
+   "terms": [
+    "bản mạch điện tử",
+    "bản mạch tích hợp",
+    "PCBA",
+    "mạch in đã lắp ráp",
+    "tấm mạch in đã lắp ráp",
+    "bản mạch in đã gắn linh kiện"
+   ],
+   "excludeIfAny": [
+    "chưa lắp",
+    "trắng",
+    "bare pcb"
+   ],
+   "excludeReasonVi": "Bản mạch in TRẮNG (chưa gắn linh kiện) thuộc 8534.00, không phải PCBA.",
+   "candidates": [
+    {
+     "hs": "85371019",
+     "whenVi": "Bản mạch đã lắp thực hiện chức năng RIÊNG: bảng điều khiển/chuyển mạch ≤1000V (vd TB 1159: 2 main + 4 mạch in mềm, chưa nạp phần mềm, có chân cắm → 8537.10.19)",
+     "confidence": "medium"
+    },
+    {
+     "hs": "85299054",
+     "whenVi": "Bản mạch bộ phận của TV (chuyển đổi nguồn + xử lý tín hiệu — TB 6740) → dòng riêng 'tấm mạch in đã lắp ráp dùng cho nhóm 85.28, máy thu truyền hình'",
+     "confidence": "medium"
+    },
+    {
+     "hs": "85299055",
+     "whenVi": "Bản mạch bộ phận thiết bị 85.28 khác (máy chiếu: formatter/main/POGO board — TB 5075/5076/5525) — MFN 0%",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84733010",
+     "whenVi": "Bản mạch đã lắp ráp là bộ phận máy XỬ LÝ DỮ LIỆU 8471 (PCBA của máy tính) — dòng đích danh",
+     "confidence": "medium"
+    },
+    {
+     "hs": "85340090",
+     "whenVi": "Bản mạch in phổ dụng chưa thực hiện chức năng riêng (chỉ kết nối/mang linh kiện thụ động, không phải bộ phận thiết bị cụ thể)",
+     "confidence": "low"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "8542",
+     "whyVi": "8542 là vi mạch tích hợp (IC) nguyên bản — PCBA là bảng mạch gắn linh kiện, không phải IC."
+    }
+   ],
+   "askVi": [
+    "Bản mạch này là BỘ PHẬN của thiết bị nào (máy tính → 8473.30.10; TV/máy chiếu → 8529.90.5x) hay tự thực hiện chức năng riêng (điều khiển/chuyển mạch → 8537.10.19)? Chưa gắn linh kiện → 8534.00?"
+   ],
+   "gir": "Chú giải 3(b) Phần XVI + EN 85.34",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Ca thật 26/11: khách xin phân tích PCBA. 5 tiền lệ kho: TB 1159 (→8537.10.19, MFN 15%), TB 6740 (→8529.90.54 TV, MFN 5%), TB 5075+5076+5525 (→8529.90.55 máy chiếu, MFN 0%; POGO board → 8536.90.94 MFN 25%). Quy tắc: PCBA theo thiết bị cuối hoặc chức năng riêng — không có mã chung."
+  },
+  {
+   "id": "chac-chia-phu-kien-ong",
+   "titleVi": "Chạc chia / cút nối / tê / phụ kiện đường ống (khí nén hoặc nước)",
+   "terms": [
+    "chạc chia",
+    "chạc ba",
+    "tê khí nén",
+    "cút nối",
+    "co nối",
+    "đầu chia khí",
+    "đầu chia hơi",
+    "phụ kiện ống",
+    "pipe fitting",
+    "tube fitting",
+    "chạc chia 3",
+    "chạc chữ y",
+    "tê chia khí",
+    "khớp nối ống"
+   ],
+   "excludeIfAny": [
+    "van",
+    "valve",
+    "điều áp",
+    "regulator",
+    "lọc khí",
+    "bộ lọc"
+   ],
+   "excludeReasonVi": "Nếu là van hoặc bộ điều áp/lọc khí hoàn chỉnh thì thuộc nhóm 8481 hoặc 8421, không phải phụ kiện ống đơn thuần (7307, 7412, 3917).",
+   "candidates": [
+    {
+     "hs": "74122091",
+     "whenVi": "Bằng hợp kim đồng / đồng thau (phụ kiện ống đồng)",
+     "confidence": "medium"
+    },
+    {
+     "hs": "73079990",
+     "whenVi": "Bằng sắt hoặc thép (phụ kiện ống sắt/thép)",
+     "confidence": "medium"
+    },
+    {
+     "hs": "39174000",
+     "whenVi": "Bằng chất dẻo / plastic",
+     "confidence": "medium"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "8481",
+     "whyVi": "Nhóm 8481 là van, vòi và các thiết bị tương đương (bao gồm van điều áp khí nén). Chạc chia / cút nối không có cơ cấu van điều chỉnh bên trong nên không thuộc 8481."
+    },
+    {
+     "prefix": "8421",
+     "whyVi": "Nhóm 8421 là máy và thiết bị lọc khí."
+    }
+   ],
+   "askVi": [
+    "Vật liệu chế tạo của chạc chia / phụ kiện là gì: đồng/đồng thau (7412), sắt/thép (7307) hay chất dẻo/plastic (3917)?",
+    "Hàng có gắn van điều chỉnh hoặc bộ phận chuyển động cơ khí bên trong không (nếu có van thì xét 8481)?"
+   ],
+   "chotSom": true,
+   "gir": "GIR 1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế 2026: nhóm 7412 (phụ kiện ống bằng đồng), nhóm 7307 (phụ kiện ống bằng sắt/thép), nhóm 3917 (phụ kiện ống bằng chất dẻo). Thực địa OZV-2371: 'chạc chia 3 hơi khí nén zonye ren 1/4' trước đây bị kéo nhầm sang van 8481 do thiếu từ điển. Phụ kiện ống nối khí nén/nước thuần túy phân loại theo vật liệu (chương 73, 74, 39), không phải van 8481."
+  },
+  {
+   "id": "load-cell",
+   "titleVi": "Cảm biến trọng lượng / load cell vs cân hoàn chỉnh",
+   "terms": [
+    "cảm biến trọng lượng",
+    "cảm biến cân",
+    "load cell",
+    "loadcell",
+    "thanh cảm biến cân",
+    "cảm biến tải"
+   ],
+   "excludeIfAny": [
+    "cân sàn",
+    "cân bàn",
+    "cân treo",
+    "máy cân"
+   ],
+   "excludeReasonVi": "CÂN HOÀN CHỈNH (có khay/màn hiển thị, dùng để cân) thuộc nhóm 8423 — load cell chỉ là phần tử dò lực-điện trở.",
+   "candidates": [
+    {
+     "hs": "90318090",
+     "whenVi": "Load cell nguyên chi tiết (thanh cắt lệch/thanh uốn, strain gauge, cổng cáp tín hiệu) tự là dụng cụ đo lực/trọng lượng — MFN 0%, VAT 8%; tiền lệ TB 4615 (cảm biến đất → 90318090)",
+     "confidence": "high"
+    },
+    {
+     "hs": "84238110",
+     "whenVi": "Chỉ khi nhập CÂN HOÀN CHỈNH điện tử dùng trong phòng thí nghiệm/bán lẻ (khay + màn hiển thị) — MFN 20%",
+     "confidence": "low"
+    },
+    {
+     "hs": "84232010",
+     "whenVi": "Cân hoàn chỉnh công nghiệp khác — MFN 0%",
+     "confidence": "low"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "842390",
+     "whyVi": "Phần tử dò của cân đã được 9031 mô tả cụ thể như dụng cụ đo (load cell tự chuyển lực thành tín hiệu đo) — không đổ về phụ kiện 8423.90 theo GIR 1."
+    }
+   ],
+   "askVi": [
+    "Nhập THANH CẢM BIẾN rời (load cell → 9031.80.90) hay CÂN HOÀN CHỈNH có khay/màn (→ 8423)?"
+   ],
+   "gir": "GIR 1 + EN 90.31",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Ca thật 26/11: khách nhập load cell từ TQ (ảnh thanh kim loại có lỗ bắt + cổng cáp). Bẫy từ vựng: 'cảm biến trọng lượng' trả quặng borat (nhiễu), 'cân điện tử' trả cân 8423 — không thấy 9031.80.90."
+  },
+  {
+   "id": "voi-phun-rua-ly-ap-luc",
+   "titleVi": "Vòi phun rửa ly / thiết bị phun rửa bằng áp lực nước (8424.89)",
+   "terms": [
+    "vòi phun rửa ly",
+    "voi phun rua ly",
+    "vòi phun rửa chén",
+    "vòi phun rửa bát",
+    "vòi phun áp lực nước",
+    "voi phun ap luc nuoc",
+    "phun rửa ly",
+    "phun rửa chén bằng áp lực",
+    "pre-rinse spray",
+    "pre rinse spray",
+    "pre-rinse spray valve",
+    "glass washer spray",
+    "spray rinse glass"
+   ],
+   "excludeIfAny": [
+    "vòi nước lavabo",
+    "vòi lavabo",
+    "vòi bếp",
+    "basin tap",
+    "faucet",
+    "van bi",
+    "súng phun thuốc",
+    "thuốc trừ sâu",
+    "nông nghiệp",
+    "tưới vườn",
+    "sprinkler chữa cháy",
+    "chữa cháy"
+   ],
+   "excludeReasonVi": "Vòi nước lavabo/bếp là van/vòi điều chỉnh dòng (8481); súng phun nông nghiệp/tưới vườn thuộc nhánh 8424.41/8424.82 khác; sprinkler chữa cháy cũng 8424 nhưng không phải ca rửa ly.",
+   "candidates": [
+    {
+     "hs": "84248950",
+     "whenVi": "Thiết bị phun/xịt loại khác (không phải bình tay gia dụng ≤3L, không phải đầu bình phun gắn vòi đơn thuần, không phải dùng sản xuất PCB) — hoạt động bằng điện → 8424.89.50",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84248990",
+     "whenVi": "Cùng nhánh loại khác nhưng không hoạt động bằng điện → 8424.89.90",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84248920",
+     "whenVi": "Đúng là đầu bình phun/xịt có gắn vòi (không phải thiết bị phun hoàn chỉnh)",
+     "confidence": "low"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "8481",
+     "whyVi": "Chú giải 84.81 loại trừ đầu vòi phun / thiết bị phun tương tự sang 84.24; chữ «vòi» trong «vòi phun rửa… áp lực nước» không đủ để xếp van/vòi đường ống 8481. Search thô kéo 84818099 → lệch nhóm (OZV-2366)."
+    },
+    {
+     "prefix": "8456",
+     "whyVi": "8456 là máy cắt tia nước — chú giải 84.24 loại trừ máy cắt; ca rửa ly không phải cắt vật liệu."
+    },
+    {
+     "prefix": "8413",
+     "whyVi": "8413 là bơm — khác thiết bị phun thuộc 8424."
+    }
+   ],
+   "askVi": [
+    "Đây là thiết bị phun áp lực hoàn chỉnh (nhóm 84.24) hay chỉ béc/vòi gắn van điều chỉnh dòng (loại trừ chú giải 84.24 → 84.81)?",
+    "Hoạt động bằng điện hay không bằng điện? (ranh 8424.89.50 / 8424.89.90)",
+    "Có phải đầu bình phun/xịt có gắn vòi (8424.89.20) không?"
+   ],
+   "chotSom": false,
+   "gir": "GIR 1 + GIR 6",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Chú giải nhóm 84.24: máy/thiết bị phun bắn, phun rải hoặc phun áp lực chất lỏng dưới dạng tia/hạt nước. Chú giải 84.81 loại trừ đầu vòi phun dạng quay và thiết bị phun tương tự (→84.24). Biểu VN 84248950/90: Loại khác hoạt động bằng điện / không. OZV-2366 thực địa: «vòi phun rửa ly bằng áp lực nước» search kéo 8481; dừng 6 số hỏi hoatDongBangDien là đúng luật (THIEU_SO_LIEU), không phải hỏi thừa — cần ổn định vào 8424."
+  },
+  {
+   "id": "luoi-leo-khu-vui-choi",
+   "titleVi": "Lưới leo khu vui chơi / sân chơi — ranh giới 5608 ↔ 9506 ↔ 9508",
+   "terms": [
+    "lưới leo",
+    "lưới leo khu vui chơi",
+    "lưới dùng cho khu vui chơi",
+    "lưới khu vui chơi",
+    "lưới sân chơi",
+    "climbing net",
+    "playground climbing net",
+    "cargo net playground"
+   ],
+   "excludeIfAny": [
+    "lưới đánh cá",
+    "lưới cá",
+    "fishing net",
+    "lưới tennis",
+    "lưới cầu lông",
+    "lưới bóng chuyền",
+    "lưới bóng đá",
+    "lưới gôn",
+    "lưới golf",
+    "lưới lọc",
+    "wire mesh",
+    "lưới inox"
+   ],
+   "excludeReasonVi": "Lưới đánh cá thành phẩm thuộc 5608; lưới môn thể thao (tennis/cầu lông/…) thuộc 9506.99.20; lưới lọc kim loại thuộc 7314 — không phải lưới leo khu vui chơi.",
+   "candidates": [
+    {
+     "hs": "9506",
+     "whenVi": "Lưới/leo gắn thiết bị sân chơi trẻ em, dụng cụ tập luyện thể chất (dây leo/thang) hoặc lưới trò chơi thể thao thuộc nhóm 95.06 — cần hỏi thêm để chốt 8 số (950691 / 95069920 / 95069990…).",
+     "confidence": "medium"
+    },
+    {
+     "hs": "5608",
+     "whenVi": "Lưới đã hoàn thiện từ dây bện/thừng/cáp (hàng rào, túi lưới đựng bóng, lưới đánh cá) — chú giải 95.06 (d) dẫn về 56.08 khi là lưới hàng rào/túi lưới.",
+     "confidence": "medium"
+    },
+    {
+     "hs": "9508",
+     "whenVi": "Chỉ khi là trò chơi hội chợ / khu giải trí của nhóm 95.08 (không phải thiết bị 95.06).",
+     "confidence": "low"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "8486",
+     "whyVi": "8486 là thiết bị bán dẫn / lưới quang (reticle) trên đế phủ lớp cản quang — chữ «lưới» trong tên dòng thuế 8486.90 dễ kéo «lưới leo» sang máy bán dẫn; không liên quan lưới leo khu vui chơi."
+    },
+    {
+     "prefix": "8428",
+     "whyVi": "8428 có «cơ cấu kéo người… leo núi» — chữ «leo» dễ nhiễu; không phải lưới leo sân chơi."
+    },
+    {
+     "prefix": "7314",
+     "whyVi": "7314 là tấm/lưới kim loại dệt hoặc giãn — khác hoàn toàn lưới dệt từ dây bện/thừng hoặc lưới trò chơi Chương 95."
+    }
+   ],
+   "askVi": [
+    "Lưới đã hoàn thiện từ dây bện/thừng/cáp (nhóm 56.08) hay là thiết bị/dụng cụ thể thao–sân chơi thuộc Chương 95?",
+    "Nếu Chương 95: lưới môn thể thao (tennis/cầu lông/…) → 9506.99.20; dây leo/thang tập luyện → 9506.91; thiết bị sân chơi trẻ em (cầu trượt/đu/…) → thường 9506.99.90 — hàng thuộc nhánh nào?",
+    "Có phải trò chơi hội chợ / khu giải trí nhóm 95.08 (không phải thiết bị 95.06) không?"
+   ],
+   "gir": "1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Chú giải nhóm 56.08 loại trừ (c) lưới thể thao và các loại lưới khác thuộc Chương 95; chú giải nhóm 95.06 liệt kê lưới trò chơi (tennis, cầu lông,…) và thiết bị sân chơi trẻ em, đồng thời (d) dẫn lưới hàng rào/túi lưới về 56.08; chú giải 95.08 loại thiết bị 95.06 khỏi trò chơi hội chợ."
   }
  ],
- "updatedAt": "2026-11-25T05:47:07Z"
+ "updatedAt": "2026-11-26T09:55:00Z"
 }
