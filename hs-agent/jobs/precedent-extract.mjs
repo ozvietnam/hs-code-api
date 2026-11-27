@@ -8,6 +8,7 @@ import { SYSTEM_PROMPT, buildUserPrompt, verifyRecords } from '../lib/extract.mj
 import { load, save } from '../lib/store.mjs';
 import { prepareWorktree, removeWorktree, classifyChanges, commit, push, openPullRequest } from '../lib/workspace.mjs';
 import { runGate, gateTable } from '../lib/gate.mjs';
+import { pickItems } from '../lib/queue-pick.mjs';
 import { today } from '../lib/log.mjs';
 
 function articleText(html) {
@@ -17,13 +18,9 @@ function articleText(html) {
 
 export default async function precedentExtract({ cfg, log, budget, dryRun }) {
   const queue = load('queue', { items: [] });
-  const todo = queue.items.filter((i) => {
-    if (i.kind !== 'classification') return false;
-    if (i.state === 'new' || i.state === 'retry') return true;
-    // Pick stale no-conclusion items (attempts < maxAttemptsPerDoc) so they get retried
-    if (i.state === 'no-conclusion' && (i.attempts || 0) < (cfg.maxAttemptsPerDoc || 3)) return true;
-    return false;
-  }).slice(0, cfg.maxDocsPerRun);
+  // Chọn văn bản: new/retry/no-conclusion(stale) + hồi sinh `rejected` (xem lib/queue-pick.mjs).
+  // `rejected` trước đây bị loại vĩnh viễn ⇒ tiền lệ đã trích đúng nhưng bị kiểm loại oan rơi mất.
+  const todo = pickItems(queue.items, cfg, { mark: !dryRun });
   if (!todo.length) return { status: 'idle', lines: ['Hàng đợi trống.'] };
   if (!configuredProviders('standard').length) {
     return { status: 'waiting', lines: [`${todo.length}+ văn bản chờ trích nhưng chưa có khóa LLM nào trong /etc/hs-agent/env.`] };
@@ -37,6 +34,7 @@ export default async function precedentExtract({ cfg, log, budget, dryRun }) {
     for (const item of todo) {
       budget.checkTime();
       item.attempts = (item.attempts || 0) + 1;
+      const revivedTag = item.reviveCount ? ' [hồi sinh]' : '';
       try {
         const { html } = await fetchPage(item.url, { budget });
         const text = articleText(html);
@@ -48,16 +46,16 @@ export default async function precedentExtract({ cfg, log, budget, dryRun }) {
         if (v.noConclusion) {
           item.state = 'no-conclusion';
           item.note = String(v.noConclusion).slice(0, 200);
-          docLines.push(`- ${item.ref}: không kết luận mã — ${item.note}`);
+          docLines.push(`- ${item.ref}${revivedTag}: không kết luận mã — ${item.note}`);
         } else if (!v.records.length) {
           item.state = item.attempts >= cfg.maxAttemptsPerDoc ? 'rejected' : 'retry';
           item.note = v.rejected.map((r) => `${r.hsCode}: ${r.why}`).join('; ').slice(0, 300) || 'LLM không trả bản ghi';
-          docLines.push(`- ${item.ref}: 0 bản ghi qua kiểm (${item.note})`);
+          docLines.push(`- ${item.ref}${revivedTag}: 0 bản ghi qua kiểm (${item.note})`);
         } else {
           item.state = 'extracted';
           item.records = v.records.length;
           records.push(...v.records);
-          docLines.push(`- [${item.ref}](${item.url}) → ${v.records.map((r) => r.hsCode).join(', ')}${v.rejected.length ? ` · bỏ ${v.rejected.length} (${v.rejected.map((r) => r.why).join('; ')})` : ''}`);
+          docLines.push(`- [${item.ref}](${item.url})${revivedTag} → ${v.records.map((r) => r.hsCode).join(', ')}${v.rejected.length ? ` · bỏ ${v.rejected.length} (${v.rejected.map((r) => r.why).join('; ')})` : ''}`);
         }
       } catch (e) {
         if (e.code === 'LLM_ALL_FAILED' || e.code === 'LLM_NOT_CONFIGURED' || e.kind) {

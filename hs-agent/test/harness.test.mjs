@@ -13,6 +13,7 @@ import { join } from 'path';
 import { parseBench } from '../jobs/bench-night.mjs';
 import { findIssues, reconcile, ownerOf } from '../jobs/watchdog.mjs';
 import { parseBody, parseJsonLoose } from '../lib/llm.mjs';
+import { pickItems } from '../lib/queue-pick.mjs';
 
 const repo = resolve(dirname(fileURLToPath(import.meta.url)), '..', '..');
 let pass = 0;
@@ -163,6 +164,33 @@ t('parseBody: bỏ đuôi data: [DONE]', parseBody('{"choices":[{"message":{"con
 t('parseBody: JSON thường vẫn đọc được', parseBody('{"a":1}').a === 1);
 t('parseBody: rác → {}', Object.keys(parseBody('<html>')).length === 0);
 t('parseJsonLoose: bỏ <think>, đọc khối ```json', parseJsonLoose('<think>nghĩ {x}</think>\n```json\n{"coKetLuan":false}\n```').coKetLuan === false);
+
+// --- chọn văn bản cho J2: hồi sinh `rejected` (tiền lệ bị kiểm loại oan không được rơi vĩnh viễn)
+{
+  const NOW = Date.parse('2026-11-28T02:00:00Z');
+  const cfgP = { maxDocsPerRun: 15, maxAttemptsPerDoc: 3, reviveMaxPerRun: 5, reviveCooldownHours: 168 };
+  const mk = (state, extra = {}) => ({ kind: 'classification', state, ref: 'x', attempts: 0, ...extra });
+
+  t('pickItems: new/retry được pick', pickItems([mk('new'), mk('retry')], cfgP, { now: NOW }).length === 2);
+  t('pickItems: no-conclusion attempts < max được pick', pickItems([mk('no-conclusion', { attempts: 1 })], cfgP, { now: NOW }).length === 1);
+  t('pickItems: no-conclusion attempts >= max KHÔNG pick', pickItems([mk('no-conclusion', { attempts: 3 })], cfgP, { now: NOW }).length === 0);
+  t('pickItems: rejected KHÔNG được pick (hồi sinh tắt)', pickItems([mk('rejected')], { ...cfgP, reviveMaxPerRun: 0 }, { now: NOW }).length === 0);
+  t('pickItems: rejected được hồi sinh khi bật', pickItems([mk('rejected', { attempts: 5 })], cfgP, { now: NOW }).length === 1);
+  t('pickItems: hồi sinh tôn trọng cooldown', pickItems([mk('rejected', { revivedAt: '2026-11-27T02:00:00Z' })], cfgP, { now: NOW }).length === 0);
+  t('pickItems: hồi sinh sau cooldown thì pick lại', pickItems([mk('rejected', { revivedAt: '2026-11-01T02:00:00Z' })], cfgP, { now: NOW }).length === 1);
+  t('pickItems: giới hạn reviveMaxPerRun', pickItems([...Array(9)].map(() => mk('rejected')), cfgP, { now: NOW }).length === 5);
+  t('pickItems: ưu tiên văn bản mới trước hồi sinh', (() => {
+    const p = pickItems([mk('rejected'), mk('new')], { ...cfgP, maxDocsPerRun: 1 }, { now: NOW });
+    return p.length === 1 && p[0].state === 'new';
+  })());
+  t('pickItems: không vượt maxDocsPerRun', pickItems([...Array(20)].map(() => mk('new')), cfgP, { now: NOW }).length === 15);
+  t('pickItems: mark đặt revivedAt + attempts hạn cuối', (() => {
+    const it = mk('rejected', { attempts: 9 });
+    pickItems([it], cfgP, { now: NOW, mark: true });
+    return it.revivedAt === '2026-11-28T02:00:00.000Z' && it.attempts === 2 && it.reviveCount === 1;
+  })());
+  t('pickItems: không phải classification thì bỏ qua', pickItems([{ kind: 'other', state: 'new' }], cfgP, { now: NOW }).length === 0);
+}
 
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
