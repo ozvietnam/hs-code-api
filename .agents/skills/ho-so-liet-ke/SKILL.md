@@ -50,7 +50,7 @@ Gắn vào đúng nút (`bieu:*` hoặc `chuong:<ch>`) mọi vấn đề phân l
 
 ### Luật 4 — Tự dò `/dùng|sử dụng|phù hợp|thích hợp/` trên toàn bộ chú giải pháp lý + dòng biểu và ghi số đối soát
 - **Quy tắc:** Bộ biểu thức `RE_KICH_HOAT_LIET_KE` của cổng chỉ là mức sàn tối thiểu (nhiều dòng biểu hoặc chú giải pháp lý viết `"loại dùng trong…"`, `"dùng làm…"`, `"sử dụng như…"`, `"phù hợp với…"`, `"thích hợp để…"`, `"Các bộ phận, đồ trang trí và đồ phụ trợ cho…"` không lọt vào regex hẹp).
-- Trước khi chốt tệp, bắt buộc chạy lệnh dò mở rộng `/dùng|sử dụng|phù hợp|thích hợp|bộ phận|chưa lắp ráp|chưa hoàn chỉnh|chưa hoàn thiện|đặc trưng cơ bản|ở dạng bộ|để nhân giống|nhân giống|để gieo trồng|gieo trồng|để làm|để chế biến|để sản xuất|thức ăn chăn nuôi|thức ăn gia súc|dùng cho người|ăn được|(?<!theo )mục đích(?! của)|để trồng|để gieo|hạt giống|cây giống|con giống|giống(?! như| nhau| với| hệt)/i` trên **toàn bộ chú giải pháp lý (`chuong` phần `cg`/`cgpn`) và dòng biểu (`bieu`)** của chương, xét duyệt từng câu trúng, bổ sung đủ các câu đặt điều kiện thật vào `<ch>.jsonl`, và ghi số lượng đối soát vào `docs/mong/the/M-75-liet-ke-<ch>.md`.
+- Trước khi chốt tệp, bắt buộc chạy lệnh dò mở rộng `/dùng|sử dụng|phù hợp|thích hợp|bộ phận|chưa lắp ráp|chưa hoàn chỉnh|chưa hoàn thiện|đặc trưng cơ bản|ở dạng bộ|để nhân giống|nhân giống|để gieo trồng|gieo trồng|để làm|để chế biến|để sản xuất|thức ăn chăn nuôi|thức ăn gia súc|dùng cho người|ăn được|để (hít|ngậm|nhai|uống|bôi|tiêm|xịt|đắp|rửa|tắm|làm sạch)|(?<!theo )mục đích(?! của)|để trồng|để gieo|hạt giống|cây giống|con giống|giống(?! như| nhau| với| hệt)/i` trên **toàn bộ chú giải pháp lý (`chuong` phần `cg`/`cgpn`) và dòng biểu (`bieu`)** của chương, xét duyệt từng câu trúng, bổ sung đủ các câu đặt điều kiện thật vào `<ch>.jsonl`, và ghi số lượng đối soát vào `docs/mong/the/M-75-liet-ke-<ch>.md`.
 - **Lỗi cấm (PR thật bị trả vì bỏ sót):**
   - `#2125` (Ch.26), `#2128` (Ch.31), `#2130` (Ch.36), `#2133` (Ch.43): chỉ chạy theo `RE_KICH_HOAT_LIET_KE` nên bỏ sót các dòng biểu / chú giải pháp lý có điều kiện `"dùng…"` / `"sử dụng…"` / `"phù hợp…"`.
 
@@ -83,7 +83,7 @@ import { napLuatCong } from "./scripts/ho-so-ma/cong.mjs";
 import { laNutConTrungTenToTien } from "./scripts/ho-so-ma/liet-ke.mjs";
 const ch = String(process.argv[1]).padStart(2, "0");
 const luat = napLuatCong();
-const reMoRong = /dùng|sử dụng|phù hợp|thích hợp|bộ phận|chưa lắp ráp|chưa hoàn chỉnh|chưa hoàn thiện|đặc trưng cơ bản|ở dạng bộ|để nhân giống|nhân giống|để gieo trồng|gieo trồng|để làm|để chế biến|để sản xuất|thức ăn chăn nuôi|thức ăn gia súc|dùng cho người|ăn được|(?<!theo )mục đích(?! của)|để trồng|để gieo|hạt giống|cây giống|con giống|giống(?! như| nhau| với| hệt)/i;
+const reMoRong = /dùng|sử dụng|phù hợp|thích hợp|bộ phận|chưa lắp ráp|chưa hoàn chỉnh|chưa hoàn thiện|đặc trưng cơ bản|ở dạng bộ|để nhân giống|nhân giống|để gieo trồng|gieo trồng|để làm|để chế biến|để sản xuất|thức ăn chăn nuôi|thức ăn gia súc|dùng cho người|ăn được|để (hít|ngậm|nhai|uống|bôi|tiêm|xịt|đắp|rửa|tắm|làm sạch)|(?<!theo )mục đích(?! của)|để trồng|để gieo|hạt giống|cây giống|con giống|giống(?! như| nhau| với| hệt)/i;
 const ids = [...luat.cau.keys()].filter(id => {
   if (id.startsWith(`chuong:${ch}:cg`)) return true;
   if (!new RegExp(`^bieu:${ch}\\d`).test(id)) return false;
