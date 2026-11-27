@@ -25,14 +25,22 @@ export function buildUserPrompt({ title, text }) {
 
 const fold = (s) => String(s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd');
 
+/**
+ * Mã HS có xuất hiện NGUYÊN VĂN trong toàn văn không.
+ *
+ * Mã nhóm/phân nhóm trong văn bản hải quan được VIẾT theo cặp 2 chữ số:
+ * "nhóm 85.01", "phân nhóm 39.19", "mã 8504.40.90", "85044090".
+ * Nên mã phải khớp theo CẶP 2 SỐ (85|04|40|90), không theo nhóm 4-2-2
+ * (8504|40|90) — nhóm 4-2-2 không khớp "85.01" nên mọi công văn chỉ kết
+ * luận tới NHÓM bị loại oan ("mã không xuất hiện nguyên văn").
+ * Dấu chấm giữa các cặp là TUỲ CHỌN → khớp cả "85.01" lẫn "8501".
+ */
 export function codeAppears(code, text) {
   const d = String(code || '').replace(/\D/g, '');
   if (![4, 6, 8, 10].includes(d.length)) return false;
-  const parts = d.length === 4 ? [d] :
-                d.length === 6 ? [d.slice(0, 4), d.slice(4)] :
-                d.length === 8 ? [d.slice(0, 4), d.slice(4, 6), d.slice(6)] :
-                [d.slice(0, 4), d.slice(4, 6), d.slice(6, 8), d.slice(8)];
-  const re = new RegExp(`(?<![\\d])${parts.join('[.\\s]?')}(?![\\d])`);
+  const pairs = [];
+  for (let i = 0; i < d.length; i += 2) pairs.push(d.slice(i, i + 2));
+  const re = new RegExp(`(?<![\\d])${pairs.join('[.\\s]?')}(?![\\d])`);
   return re.test(String(text || ''));
 }
 
