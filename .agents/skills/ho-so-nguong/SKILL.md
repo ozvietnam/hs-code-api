@@ -23,7 +23,7 @@ Rút đầy đủ, chính xác mọi ngưỡng định lượng bắt buộc (`N
 ### Luật 1 — Đủ hai phía: có ngưỡng ở anh em cụ thể thì `"Loại khác"` phải có bản ghi bù (`phuDinh`)
 - **Quy tắc:** Mọi nhóm anh em cùng cấp mà có ít nhất một dòng mang ngưỡng số thì dòng anh em `"Loại khác"` cùng cha bắt buộc phải có bản ghi phần bù (`phuDinh` liệt kê đủ mã các nút anh em cụ thể đứng trước).
 - **Lỗi cấm (PR thật bị trả):**
-  - `#2118` (`3004509` thiếu bản ghi bù `phuDinh` cho `30045010` / `3004502`).
+  - `#2118` (nút tiêu đề trung gian `"Loại khác"` ở Ch.30 thiếu bản ghi bù `phuDinh` cho các dòng anh em mang ngưỡng số đứng trước).
   - `#2123` (`37029890` thiếu bản ghi bù cho các dòng khổ/chiều dài cụ thể cùng phân nhóm).
   - `#2127` (`25010099` thiếu bản ghi bù cho các dòng hàm lượng NaCl cụ thể).
 
