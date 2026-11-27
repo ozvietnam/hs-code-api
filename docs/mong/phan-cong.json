@@ -1,8 +1,12 @@
 {
  "khuon": "phan-cong@1",
- "ghiChu": "Mỗi thẻ sở hữu riêng tệp của mình. PR [M-xx] đụng tệp ngoài thẻ là đỏ (scripts/kiem-pham-vi-the.mjs). Hai thẻ cùng mẫu tệp thì thẻ sau phải khai thẻ trước ở `sau`.",
+ "ghiChu": "Mỗi thẻ sở hữu riêng tệp của mình. PR [M-xx] đụng tệp ngoài thẻ là đỏ (scripts/kiem-pham-vi-the.mjs). Hai thẻ cùng mẫu tệp thì thẻ sau phải khai thẻ trước ở `sau`. data/luat/dau-noi.json chỉ để khai mô-đun mới của thẻ ở kho.bangCanh.moDun và đường đọc.",
  "chung": [
-  "scripts/danh-sach-test.txt"
+  "scripts/danh-sach-test.txt",
+  "data/luat/dau-noi.json",
+  "docs/mong/the/**",
+  "data/lop-kho.json",
+  "data/SOURCES.json"
  ],
  "the": {
   "M-01": {
@@ -163,7 +167,10 @@
     "lib/gir-notes.js",
     "lib/notes-coverage.js",
     "api/notes.js",
-    "scripts/test-chu-giai-goc.mjs"
+    "scripts/test-chu-giai-goc.mjs",
+    "scripts/test-gir-notes.mjs",
+    "scripts/test-nguon-loai.mjs",
+    "scripts/test-notes-3-tang.mjs"
    ],
    "sau": [
     "M-11",
@@ -276,7 +283,9 @@
    "tep": [
     "lib/do-thi/phai-doc.js",
     "scripts/test-phai-doc.mjs",
-    "api/dataset.js"
+    "api/dataset.js",
+    "data/luat-goc/phan-chuong-nhom.json",
+    "package.json"
    ],
    "sau": [
     "M-21",
@@ -413,6 +422,191 @@
    ],
    "nguoi": "QT + GPU",
    "thuTuCuaNguoi": 3
+  },
+  "M-10": {
+   "ten": "Chú giải pháp lý theo TT31/2022 (Công báo song ngữ): đối chiếu từng khoản",
+   "lop": 1,
+   "tep": [
+    "data/luat-goc/doi-chieu-tt31/**",
+    "scripts/luat-goc/tt31*.mjs",
+    "scripts/luat-goc/tt31*.py",
+    "data/luat-goc/phan.jsonl",
+    "data/luat-goc/chuong.jsonl",
+    "data/luat-goc/cau/phan.jsonl",
+    "data/luat-goc/cau/chuong.jsonl",
+    "data/luat-goc/doi-ma.json",
+    "scripts/luat-goc/phan-test.mjs",
+    "scripts/luat-goc/kq-tach.py",
+    "lib/do-thi/doi-ma-nguon.js",
+    "data/luat-goc/nghia-canh/phan.jsonl",
+    "data/luat-goc/nghia-canh/chuong.jsonl"
+   ],
+   "sau": [
+    "M-11",
+    "M-13",
+    "M-31",
+    "M-35",
+    "M-33"
+   ],
+   "nguoi": "QT",
+   "thuTuCuaNguoi": 1
+  },
+  "M-71": {
+   "ten": "Khuôn ho-so-ma@1, cổng phủ – chia – trích – vân tay, máy ghép theo đường đi",
+   "lop": 3,
+   "tep": [
+    "scripts/ho-so-ma/khuon*.mjs",
+    "scripts/ho-so-ma/cong*.mjs",
+    "lib/ho-so-ma/ghep.js",
+    "scripts/test-ho-so-ma.mjs",
+    "docs/mong/khuon-ho-so-ma.md",
+    "data/ho-so-ma/nguong/76.jsonl",
+    "scripts/ho-so-ma/nguong.mjs"
+   ],
+   "sau": [
+    "M-33",
+    "M-36"
+   ],
+   "nguoi": "QT",
+   "thuTuCuaNguoi": 1
+  },
+  "M-72": {
+   "ten": "Vấn đề cấp Phần, Chương: tách điều kiện đơn, hai phiếu độc lập",
+   "lop": 3,
+   "tep": [
+    "data/ho-so-ma/phan/**",
+    "data/ho-so-ma/chuong/**",
+    "scripts/ho-so-ma/tach-pc*"
+   ],
+   "sau": [
+    "M-71"
+   ],
+   "nguoi": "QT + GPU + agy",
+   "thuTuCuaNguoi": 2
+  },
+  "M-73": {
+   "ten": "Vấn đề cấp nhóm 4 số: thử Chương 76 rồi cuốn chiếu",
+   "lop": 3,
+   "tep": [
+    "data/ho-so-ma/nhom/**",
+    "scripts/ho-so-ma/tach-nhom*",
+    "scripts/ho-so-ma/tach-chung.mjs",
+    "scripts/ho-so-ma/tach-pc.mjs",
+    "scripts/test-tach-ho-so-ma.mjs"
+   ],
+   "sau": [
+    "M-71"
+   ],
+   "nguoi": "QT + GPU + agy",
+   "thuTuCuaNguoi": 3
+  },
+  "M-74": {
+   "ten": "Ngưỡng số và phân dải anh em",
+   "lop": 3,
+   "tep": [
+    "data/ho-so-ma/nguong/**",
+    "scripts/ho-so-ma/nguong*"
+   ],
+   "sau": [
+    "M-71"
+   ],
+   "nguoi": "agy",
+   "thuTuCuaNguoi": 1
+  },
+  "M-75": {
+   "ten": "Vấn đề chỉ liệt kê được (GIR 2a, 3b, bộ phận, đa chức năng, chủ yếu dùng cho)",
+   "lop": 3,
+   "tep": [
+    "data/ho-so-ma/liet-ke/**",
+    "scripts/ho-so-ma/liet-ke*"
+   ],
+   "sau": [
+    "M-71"
+   ],
+   "nguoi": "agy",
+   "thuTuCuaNguoi": 2
+  },
+  "M-76": {
+   "ten": "Cấp 6 và 8 số: tách anh em, Loại khác phủ định, SEN",
+   "lop": 3,
+   "tep": [
+    "data/ho-so-ma/phan-nhom/**",
+    "data/ho-so-ma/dong/**",
+    "scripts/ho-so-ma/tach-68*"
+   ],
+   "sau": [
+    "M-71",
+    "M-73"
+   ],
+   "nguoi": "QT",
+   "thuTuCuaNguoi": 4
+  },
+  "M-77": {
+   "ten": "Tra hồ sơ: API đọc, cập nhật theo vân tay",
+   "lop": 3,
+   "tep": [
+    "lib/ho-so-ma/tra.js",
+    "api/ho-so-ma.js",
+    "scripts/test-ho-so-ma-tra.mjs",
+    "data/luat/dau-noi.json"
+   ],
+   "sau": [
+    "M-71"
+   ],
+   "nguoi": "agy",
+   "thuTuCuaNguoi": 3
+  },
+  "M-78": {
+   "ten": "Gói người duyệt mẫu theo Chương trọng điểm",
+   "lop": 3,
+   "tep": [
+    "docs/ho-so/duyet/**",
+    "scripts/ho-so-ma/goi-duyet*",
+    "scripts/test-ho-so-ma-goi-duyet.mjs",
+    "scripts/danh-sach-test.txt"
+   ],
+   "sau": [
+    "M-73"
+   ],
+   "nguoi": "QT",
+   "thuTuCuaNguoi": 5
+  },
+  "M-79": {
+   "ten": "Thước đo: mã đúng có trong danh sách ứng viên",
+   "lop": 3,
+   "tep": [
+    "scripts/do-cua-vao*.mjs",
+    "docs/do/cua-vao*.md",
+    "data/do/cua-vao-cap-tranh-chap.json"
+   ],
+   "sau": [
+    "M-41"
+   ],
+   "nguoi": "QT",
+   "thuTuCuaNguoi": 6
+  },
+  "M-81": {
+   "ten": "Điều kiện nguyên tử + bảng anh em — Loại khác đóng bằng tiêu chí (ADR-0007, ADR-0008)",
+   "lop": 3,
+   "tep": [
+    "docs/decisions/0007-*.md",
+    "scripts/ho-so-ma/goi-nhom*",
+    "scripts/ho-so-ma/so-diem*",
+    "scripts/ho-so-ma/bang-anh-em*",
+    "scripts/ho-so-ma/tach-dieu-kien*",
+    "scripts/ho-so-ma/so-phieu-dieu-kien*",
+    "scripts/ho-so-ma/khuon*.mjs",
+    "scripts/ho-so-ma/cong*.mjs",
+    "scripts/test-ho-so-ma.mjs",
+    "scripts/test-dieu-kien*.mjs",
+    "data/ho-so-ma/dieu-kien/**",
+    "data/ho-so-ma/bang-anh-em/**",
+    ".agents/skills/doc-tron-nhom/**"
+   ],
+   "sau": [
+    "M-71"
+   ],
+   "nguoi": "agy"
   }
  }
 }

@@ -7,7 +7,7 @@
   "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
-    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#agent-B-lo-A",
+    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-853641",
     "ngay": "2026-10-30"
   },
   "duyet": {
@@ -106,27 +106,33 @@
   ],
   "ghiChuSoan": [
     {
-      "ma": "mau",
+      "ma": "853641",
+      "loai": "QUYET_DINH",
       "ghiChu": "MẪU \"chồng lấn do chính chữ biểu (CHONG_LAN_VAN_BAN)\" + \"Loại khác nhiều tầng\". Cấu trúc: 4 dòng anh em (.10–.40) + tiêu đề 8536419 \"Loại khác\" trần chứa .91 và .99. Hai cặp chồng lấn được KHAI ở chongLanVanBan (có lyDo) ⇒ cổng 2 hạ thành cảnh báo cong2-chong-lan-van-ban; nếu không khai thì cổng 2 đỏ. Runtime: cặp này không bao giờ tự chốt (cả hai THOA ⇒ TRANH_CAP; tầng hồ sơ trả CANH_BAO + câu hỏi). Cặp .20/.30 KHÔNG chồng lấn (cùng khoá dungCho, giá trị khác nhau) nên không khai — khai thừa thì cổng 2 đỏ cong2-chong-lan-van-ban-thua."
     },
     {
       "ma": "85364110",
+      "loai": "QUYET_DINH",
       "ghiChu": "Nguồn tax.85364110. \"Rơ le kỹ thuật số\" ⇒ loaiRoLe (LIET_KE) op TRONG [\"KY_THUAT_SO\"]; cổng 3 kiểm mẫu cachDoc của giá trị (\"kỹ thuật số\") có trong trích. Dùng LIET_KE thay vì TEN_LOAI vì từ vựng có sẵn giá trị đóng cho loại rơ le ⇒ chấm TẤT ĐỊNH."
     },
     {
       "ma": "85364120",
+      "loai": "QUYET_DINH",
       "ghiChu": "Nguồn tax.85364120. \"Của loại sử dụng trong các thiết bị sóng vô tuyến\" ⇒ dungCho \"thiết bị sóng vô tuyến\" (chữ có trong trích). Không có khoá đóng cho đích dùng nên dùng CONG_DUNG (không tất định)."
     },
     {
       "ma": "85364130",
+      "loai": "QUYET_DINH",
       "ghiChu": "Nguồn tax.85364130. \"Của loại sử dụng cho quạt điện\" ⇒ dungCho \"quạt điện\"."
     },
     {
       "ma": "85364140",
+      "loai": "QUYET_DINH",
       "ghiChu": "Nguồn tax.85364140. Dòng \"Loại khác, dòng điện dưới 16 A\" là \"Loại khác, <vế>\": chỉ ghi điều kiện của VẾ (\"dưới 16 A\" ⇒ dongDien < 16 A); phần \"Loại khác\" (không phải .10/.20/.30) do luật đi của máy tự phủ định anh em — không tự ghi phủ định."
     },
     {
       "ma": "85364191",
+      "loai": "QUYET_DINH",
       "ghiChu": "Nguồn tax.85364191, nằm dưới tiêu đề 8536419 \"Loại khác\" trần (tiêu đề LK trần không ghi điều kiện, không có mục dieuKienNut). \"Rơ le bán dẫn hoặc rơ le điện từ\" ⇒ loaiRoLe TRONG [\"BAN_DAN\",\"DIEN_TU\"] (mảng = hoặc); \"điện áp không quá 28 V\" ⇒ dienAp <= 28 V (cổng 3 đọc được \"không quá 28 V\" và đối chiếu biên). Hai điều kiện trong mảng dieuKienSo = VÀ, đúng nghĩa câu."
     }
   ],

@@ -36,6 +36,14 @@
   ],
   "phanBiet": [
     {
+      "hoi": "Chạc chia hoặc phụ kiện ghép nối ống làm bằng đồng hay hợp kim đồng (nhóm 74.12), không phải phụ kiện ghép nối ống bằng sắt hoặc thép thuộc nhóm 73.07?",
+      "neuCo": "7412",
+      "neuKhong": "7307",
+      "nguon": "nhom7412.nhom",
+      "trich": "Chú giải Chi tiết nhóm 73.07 áp dụng, với những sửa đổi phù hợp, cho nhóm này.",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
       "hoi": "Là bu lông và đai ốc dùng để lắp ráp hoặc cố định ống và ống dẫn?",
       "neuCo": "7415",
       "neuKhong": "7412",
@@ -44,7 +52,7 @@
       "nguonLoai": "NGUOI_DUYET"
     },
     {
-      "hoi": "Là ống nối lắp ghép với vòi nước, van?",
+      "hoi": "Chạc chia, ống nối hoặc phụ kiện ghép nối ống có lắp ghép với vòi nước, van?",
       "neuCo": "8481",
       "neuKhong": "7412",
       "nguon": "nhom7412.nhom",
@@ -110,33 +118,35 @@
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:tho-hs-02#soat-741220",
-          "ngay": "2026-11-21",
-          "bam": "ab19a83ef8557dbbc01b5a0cc9cabd86bb8c2f7232febc23268350b4c030574d"
+          "phien": "paperclip:tho-hs-03#soat-741220-ozv-2346",
+          "ngay": "2026-11-26",
+          "bam": "8c16528830c868e63e79154403ee09edb01db04c7bda1ca5ef8af56e3f63c895"
         }
       }
     },
     {
       "hs": "74122091",
-      "dieuKien": "chất liệu (theo vị trí): kẽm",
+      "dieuKien": "tên loại hàng: đồng thau hoặc hợp kim đồng - kẽm",
       "nguon": "tax.74122091",
       "trich": "74122091 - - - Bằng hợp kim đồng - kẽm (đồng thau)",
       "nguonLoai": "CLAUDE_DUYET",
       "loaiKhac": false,
       "dieuKienSo": [
         {
-          "fact": "chatLieu",
-          "op": "LA",
-          "value": "kẽm",
-          "viTri": "CHINH"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "đồng thau",
+            "hợp kim đồng - kẽm"
+          ]
         }
       ],
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
-          "phien": "claude-agent:tho-hs-02#soat-741220",
-          "ngay": "2026-11-21",
-          "bam": "ab19a83ef8557dbbc01b5a0cc9cabd86bb8c2f7232febc23268350b4c030574d"
+          "phien": "paperclip:tho-hs-03#soat-741220-ozv-2346",
+          "ngay": "2026-11-26",
+          "bam": "8c16528830c868e63e79154403ee09edb01db04c7bda1ca5ef8af56e3f63c895"
         }
       }
     },
@@ -247,8 +257,8 @@
     "ms": 2
   },
   "kiemTra": {
-    "tong": 14,
-    "dat": 14,
+    "tong": 15,
+    "dat": 15,
     "loai": 0,
     "nguonBiCat": []
   }

@@ -57,12 +57,12 @@
     },
     "chu-giai-chuong.json": {
       "kind": "MASTER",
-      "descriptionVi": "Chú giải chương/phần — thu hoạch từ KG — `chuong` = toàn văn chú giải chương HS 2022 (scripts/import-chu-giai-pdf.py)",
+      "descriptionVi": "Chú giải chương/phần (tệp phẳng cũ trước M-21; /api/notes nay đọc data/luat-goc/{phan,chuong}.jsonl) — trường `chuong` gộp Chú giải pháp lý Chương (Phụ lục I TT 31/2022/TT-BTC, Điều 15 Luật SHTT) và phần Tổng quát từ bản dịch tiếng Việt Chú giải chi tiết HS 2022 (kèm CV 1810/TCHQ-TXNK 2024, HQKV8) (scripts/import-chu-giai-pdf.py); trường `phan` là bản thu hoạch KG cũ (BO_TRO)",
       "builtBy": "scripts/harvest-chu-giai.mjs"
     },
     "chu-giai-heading.json": {
       "kind": "MASTER",
-      "descriptionVi": "Chú giải nhóm 4 số (1.269 nhóm) — thu hoạch từ KG + làm giàu điểm phân biệt; `nhom` = toàn văn Chú giải chi tiết HS 2022 (scripts/import-chu-giai-pdf.py), `sen` = SEN 2022 (scripts/import-sen-pdf.py)",
+      "descriptionVi": "Chú giải nhóm 4 số (1.269 nhóm, tệp hỗn hợp cũ; /api/notes nay đọc data/luat-goc/nhom.jsonl) — `nhom` = toàn văn bản dịch tiếng Việt Chú giải chi tiết nhóm HS 2022 (kèm CV 1810/TCHQ-TXNK 2024, HQKV8, dịch từ WCO Explanatory Notes HS 2022; scripts/import-chu-giai-pdf.py), `sen` = SEN AHTN 2022 (CV 3866/TCHQ-TXNK ngày 24/07/2023; scripts/import-sen-pdf.py), các trường bao_gom/khong_bao_gom/loai_tru/tinh_chat/phan_biet là tóm tắt AI/KG cũ (BO_TRO, AI_CHUA_KIEM)",
       "builtBy": "scripts/harvest-chu-giai.mjs"
     },
     "conflict-tables.json": {
@@ -425,6 +425,10 @@
       "kind": "DERIVED",
       "descriptionVi": "Metadata (model, chiều, scale, danh sách 21.314 mục hs/nguon/ten) cho do-thi/chi-muc-nghia.bin (#1596)",
       "builtBy": "scripts/dung-chi-muc-nghia.mjs"
+    },
+    "lop-kho.json": {
+      "kind": "CONFIG",
+      "descriptionVi": "Bảng phân lớp 6 lớp (LUAT, RUT_TU_LUAT, BO_TRO, TIEN_LE, THUC_TE, KY_THUAT) cho 100% tệp dưới data/ và cấu hình cổng chống lẫn scripts/test-lop-kho.mjs (M-23, #1910)"
     }
   }
 }

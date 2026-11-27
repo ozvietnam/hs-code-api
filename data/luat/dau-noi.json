@@ -58,10 +58,11 @@
     },
     "chuGiai": {
       "ten": "Chú giải chương / nhóm đưa vào lập luận",
-      "duLieu": "data/chu-giai-heading.json, data/chu-giai-chuong.json, data/notes.json, data/explanatory-notes.json",
+      "duLieu": "data/luat-goc/{phan,chuong,nhom,phan-nhom,sen,bieu,gir}.jsonl (M-21: lib/chu-giai-goc.js đọc trực tiếp kho luật gốc; trước đây là data/chu-giai-heading.json, data/chu-giai-chuong.json, data/notes.json, data/explanatory-notes.json)",
       "dauVet": [],
       "ghiChu": "lib/hs-tree.js cũng mở chu-giai-heading.json nhưng chỉ để lấy tên nút cây, không tính. Tính là 'đọc chú giải' khi nạp một trong các module dưới đây.",
       "moDun": [
+        "lib/chu-giai-goc.js",
         "lib/gir-notes.js",
         "lib/notes-coverage.js",
         "lib/evidence-pack.js",
@@ -73,11 +74,13 @@
       "ten": "Bảng cạnh đồ thị tri thức HS (C5, C6, C7, C8, C10 + C13, C11, C16 + chỉ mục C1 gộp; hàm C14)",
       "duLieu": "dựng trong RAM từ data/so-tay/, data/confusion-pairs.json, data/precedents.json, cây biểu thuế và các kho cụm từ; số đếm ở data/do-thi/thong-ke.json",
       "dauVet": [],
-      "ghiChu": "ADR-0002, kế hoạch docs/ke-hoach-do-thi-tri-thuc-hs.md. GIAI ĐOẠN 1: chỉ dựng + cổng máy scripts/test-bang-canh.mjs. 25/11/2026: /api/classify đọc sau HS_TIM_TRUOC=goi hoặc do-thi (mặc định tắt; do-thi = lib/do-thi/duong-do-thi.js ráp bước 3–8, đọc thêm tieuChi6 g6@1 qua diXuong6 và tienLeUngHo), các đường khác khai 'khong'; mỗi lần nối sửa bảng này trong cùng PR. lib/do-thi/dung-bang-canh.js đọc thẳng data/so-tay/ nên cũng là module đọc kho soTayNhom. Cổng test-bang-canh đỏ khi có tệp ngoài lib/do-thi/ nạp bảng cạnh mà đường của nó chưa khai 'co'. C16 (23/11/2026): cạnh Phân-biệt-theo-nghĩa dựng từ data/do-thi/ban-do-4so/ (AI_NHAP qua cổng bd4@1; lib/do-thi/ban-do-4so.js, scripts/goi-soan-ban-do-4so.mjs, kiem-ban-do-4so.mjs, nap-ban-do-4so.mjs) — module soạn dữ liệu, không đường khách nào nạp; bậc 1 chỉ khi chamCheo=DUYET và mọi căn cứ còn nguyên văn. G6 (21/11/2026): thêm cạnh C10 Tách-phân-nhóm (+ khoá dữ kiện C13) dựng từ tieuChi6 của sổ tay; khuôn g6@1 và cổng soạn nằm ở lib/do-thi/tieu-chi-6.js (scripts/kiem-tieu-chi-6.mjs, scripts/goi-soan-tieu-chi-6.mjs, scripts/test-tieu-chi-6.mjs) — module soạn dữ liệu, không đường khách nào nạp. tieuChi6 nằm trong kho soTayNhom: đường nào đọc nó xem ghi chú kho soTayNhom.",
+      "ghiChu": "ADR-0002, kế hoạch docs/ke-hoach-do-thi-tri-thuc-hs.md. GIAI ĐOẠN 1: chỉ dựng + cổng máy scripts/test-bang-canh.mjs. 25/11/2026: /api/classify đọc sau HS_TIM_TRUOC=goi hoặc do-thi (mặc định tắt; do-thi = lib/do-thi/duong-do-thi.js ráp bước 3–8, đọc thêm tieuChi6 g6@1 qua diXuong6 và tienLeUngHo), các đường khác khai 'khong'; mỗi lần nối sửa bảng này trong cùng PR. lib/do-thi/dung-bang-canh.js đọc thẳng data/so-tay/ nên cũng là module đọc kho soTayNhom. Cổng test-bang-canh đỏ khi có tệp ngoài lib/do-thi/ nạp bảng cạnh mà đường của nó chưa khai 'co'. C16 (23/11/2026): cạnh Phân-biệt-theo-nghĩa dựng từ data/do-thi/ban-do-4so/ (AI_NHAP qua cổng bd4@1; lib/do-thi/ban-do-4so.js, scripts/goi-soan-ban-do-4so.mjs, kiem-ban-do-4so.mjs, nap-ban-do-4so.mjs) — module soạn dữ liệu, không đường khách nào nạp; bậc 1 chỉ khi chamCheo=DUYET và mọi căn cứ còn nguyên văn. G6 (21/11/2026): thêm cạnh C10 Tách-phân-nhóm (+ khoá dữ kiện C13) dựng từ tieuChi6 của sổ tay; khuôn g6@1 và cổng soạn nằm ở lib/do-thi/tieu-chi-6.js (scripts/kiem-tieu-chi-6.mjs, scripts/goi-soan-tieu-chi-6.mjs, scripts/test-tieu-chi-6.mjs) — module soạn dữ liệu, không đường khách nào nạp. tieuChi6 nằm trong kho soTayNhom: đường nào đọc nó xem ghi chú kho soTayNhom. M-35 (25/11/2026): thêm lib/do-thi/doi-ma-nguon.js — đổi mã nguồn cũ sang id nút luật theo bảng data/luat-goc/doi-ma.json (khuôn doi-ma@1, cổng scripts/test-doi-ma-nguon.mjs); module tra bảng đổi, không đường khách nào nạp, chạy lại bằng --xay-dung khi QT gộp các kho lớp 1.",
       "moDun": [
         "lib/do-thi/ban-do-4so.js",
         "lib/do-thi/ba-buoc.js",
         "lib/do-thi/chu-giai-2-phan-xvi.js",
+        "lib/do-thi/doi-ma-nguon.js",
+        "lib/do-thi/dan-chieu.js",
         "lib/do-thi/dung-bang-canh.js",
         "lib/do-thi/duong-do-thi.js",
         "lib/do-thi/goi-phan-biet.js",
@@ -154,12 +157,13 @@
         "chuGiai": {
           "trangThai": "co",
           "qua": [
-            "lib/gir-notes.js",
+            "lib/notes-coverage.js",
+            "lib/chu-giai-goc.js",
             "lib/classify.js",
             "lib/tim-cgct.js"
           ],
           "co": [],
-          "ghiChu": "Mặc định: lib/gir-notes.js + lib/classify.js. Sau cờ HS_TIM_CGCT (mặc định TẮT, #1645): khi HS_TIM_TRUOC bật, lib/tim-cgct.js tìm thêm ứng viên theo tên nhóm, chu-giai-heading.json, explanatory-notes.json và tax.json trước vòng 1 (cờ tắt thì không gọi)."
+          "ghiChu": "Mặc định: lib/notes-coverage.js (lib/chu-giai-goc.js) + lib/classify.js. Sau cờ HS_TIM_CGCT (mặc định TẮT, #1645): khi HS_TIM_TRUOC bật, lib/tim-cgct.js tìm thêm ứng viên theo tên nhóm, chu-giai-heading.json, explanatory-notes.json và tax.json trước vòng 1 (cờ tắt thì không gọi)."
         },
         "bangCanh": {
           "trangThai": "co",
@@ -324,7 +328,8 @@
         "chuGiai": {
           "trangThai": "co",
           "qua": [
-            "lib/gir-notes.js"
+            "lib/notes-coverage.js",
+            "lib/chu-giai-goc.js"
           ],
           "co": []
         },
@@ -480,7 +485,9 @@
       "doc": {
         "bangCanh": {
           "trangThai": "co",
-          "qua": ["lib/do-thi/phai-doc.js"],
+          "qua": [
+            "lib/do-thi/phai-doc.js"
+          ],
           "co": [],
           "ghiChu": "ADR-0005: /api/tree trả phaiDoc, chỉ cạnh luật (loại trừ, phân biệt đã chấm chéo, nhắc nhóm, WCO), không ra mã, không tờ khai."
         }
@@ -521,6 +528,23 @@
       "loai": "tra-cuu",
       "congGoi": false,
       "llm": false
+    },
+    {
+      "duong": "/api/ho-so-ma",
+      "tep": "api/ho-so-ma.js",
+      "loai": "tra-cuu",
+      "congGoi": true,
+      "llm": false,
+      "doc": {
+        "bangCanh": {
+          "trangThai": "co",
+          "qua": [
+            "lib/ho-so-ma/ghep.js"
+          ],
+          "co": [],
+          "ghiChu": "tra.js bọc ghep.hoSo — ghep nạp bảng cạnh (napLuat) để dựng đường đi Phần→Chương→NHOM→PHAN_NHOM→DONG; chỉ đọc, không nối đường chọn mã."
+        }
+      }
     }
   ],
   "nhanhBoQua": [

@@ -7,15 +7,15 @@
   "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
-    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q",
+    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-961700",
     "ngay": "2026-10-30"
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot1",
-    "ngay": "2026-10-30",
-    "ghiChu": "L1-4c đợt 1: laBoPhan KHONG/CO phủ kín hai dòng; 'trừ ruột thủy tinh' là loại trừ cấp nhóm 9617 (tên nhóm), bỏ đúng; không TB-TCHQ 961700xx.",
-    "bam": "9e21217e9b5be6c2eb91c25569a693f9097e7a0a69386d9af6c7cddedd60f79c"
+    "phien": "cursor:tho-hs-03:20261126T1956#soat-ozv-2393",
+    "ngay": "2026-11-26",
+    "ghiChu": "OZV-2393: duyệt lại sau khi thêm phanConLai:false cho 96170010 — chữ \"các loại bình chân không khác\" là liệt kê cùng dòng (hàng hoàn chỉnh), không phải phần còn lại của 96170020 bộ phận; ranh giới vẫn laBoPhan KHONG/CO.",
+    "bam": "20c3704be82e042f903ba5d558e9b7f7e6c9968c0eff92a5f89b13314d1e726c"
   },
   "dieuKienNut": [],
   "dong8": [
@@ -29,7 +29,8 @@
           "op": "KHONG"
         }
       ],
-      "nguonLoai": "CLAUDE_DUYET"
+      "nguonLoai": "CLAUDE_DUYET",
+      "phanConLai": false
     },
     {
       "hs": "96170020",
@@ -47,15 +48,30 @@
   "ghiChuSoan": [
     {
       "ma": "961700",
-      "ghiChu": "CẤU TRÚC: 9617.00 có đúng hai dòng có tên (.10 hàng hoàn chỉnh / .20 bộ phận), không có dòng \"Loại khác\" ⇒ cổng 1 đòi hai điều kiện PHỦ KÍN nhau (mọi vector biên phải vào ít nhất một dòng). Ranh giới thật là \"hoàn chỉnh\" ↔ \"bộ phận\", nên dùng MỘT khoá CO_KHONG cho cả hai dòng: laBoPhan KHONG / CO — hai cực của cùng một khoá thì phủ kín và loại trừ nhau một cách tất định (không so chữ). Nguồn: chỉ tax.<chính dòng> (biểu 2026.04.05); 9617 không có SEN, chú giải nhóm không nói gì thêm về ranh giới 8 số."
+      "ghiChu": "CẤU TRÚC: 9617.00 có đúng hai dòng có tên (.10 hàng hoàn chỉnh / .20 bộ phận), không có dòng \"Loại khác\" ⇒ cổng 1 đòi hai điều kiện PHỦ KÍN nhau (mọi vector biên phải vào ít nhất một dòng). Ranh giới thật là \"hoàn chỉnh\" ↔ \"bộ phận\", nên dùng MỘT khoá CO_KHONG cho cả hai dòng: laBoPhan KHONG / CO — hai cực của cùng một khoá thì phủ kín và loại trừ nhau một cách tất định (không so chữ). Nguồn: chỉ tax.<chính dòng> (biểu 2026.04.05); 9617 không có SEN, chú giải nhóm không nói gì thêm về ranh giới 8 số.",
+      "loai": "QUYET_DINH"
     },
     {
       "ma": "96170010",
-      "ghiChu": "Nguồn tax.96170010, trích nguyên dòng. Chữ quyết định: \"hoàn chỉnh\" — là mẫu cachDocKhong của khoá laBoPhan (tu-vung@1) ⇒ op KHONG; cổng 3 đọc được \"hoàn chỉnh\" ⇒ cực KHONG khớp chữ. KHÔNG ghi tenLoai \"Phích chân không…\": tên đó là phạm vi của cả nhóm 9617 (cả .20 cũng là bộ phận của phích), ghi vào chỉ thêm so chữ tự do mà không tách được hai dòng."
+      "ghiChu": "Nguồn tax.96170010, trích nguyên dòng. Chữ quyết định: \"hoàn chỉnh\" — là mẫu cachDocKhong của khoá laBoPhan (tu-vung@1) ⇒ op KHONG; cổng 3 đọc được \"hoàn chỉnh\" ⇒ cực KHONG khớp chữ. KHÔNG ghi tenLoai \"Phích chân không…\": tên đó là phạm vi của cả nhóm 9617 (cả .20 cũng là bộ phận của phích), ghi vào chỉ thêm so chữ tự do mà không tách được hai dòng.",
+      "loai": "QUYET_DINH"
     },
     {
       "ma": "96170020",
-      "ghiChu": "Nguồn tax.96170020. \"Các bộ phận\" ⇒ laBoPhan CO (mẫu cachDoc \"bộ phận\"). Vế \"trừ ruột thủy tinh\" CỐ Ý KHÔNG số hoá: đó là loại trừ CẤP NHÓM (tên nhóm 9617 \"…bộ phận của chúng trừ ruột thủy tinh\" — ruột thủy tinh ra 7020), không phải ranh giới giữa .10 và .20. Nếu ghi {tenLoai TEN_LOAI \"ruột thủy tinh\", chieu PHAI_KHONG} thì vector \"bộ phận + ruột thủy tinh\" không vào dòng nào ⇒ cổng 1 đỏ \"khong-phu-kin\" — cổng phủ kín không diễn đạt được hàng nằm ngoài cả phân nhóm. Người duyệt: xác nhận bỏ vế này là đúng."
+      "ghiChu": "Nguồn tax.96170020. \"Các bộ phận\" ⇒ laBoPhan CO (mẫu cachDoc \"bộ phận\"). Vế \"trừ ruột thủy tinh\" CỐ Ý KHÔNG số hoá: đó là loại trừ CẤP NHÓM (tên nhóm 9617 \"…bộ phận của chúng trừ ruột thủy tinh\" — ruột thủy tinh ra 7020), không phải ranh giới giữa .10 và .20. Nếu ghi {tenLoai TEN_LOAI \"ruột thủy tinh\", chieu PHAI_KHONG} thì vector \"bộ phận + ruột thủy tinh\" không vào dòng nào ⇒ cổng 1 đỏ \"khong-phu-kin\" — cổng phủ kín không diễn đạt được hàng nằm ngoài cả phân nhóm. Người duyệt: xác nhận bỏ vế này là đúng.",
+      "loai": "QUYET_DINH"
+    },
+    {
+      "ma": "96170010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "phanConLai=false: chữ \"các loại bình chân không khác\" trong tax.96170010 là liệt kê cùng dòng với \"Phích chân không\" (cùng hàng hoàn chỉnh), không phải phần còn lại của anh em 96170020 \"Các bộ phận\". Ranh giới thật là hoàn chỉnh ↔ bộ phận (laBoPhan KHONG/CO); chữ \"khác\" ở đây không phủ định anh em."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "cursor:tho-hs-03:20261126T1955#soat-ozv-2393",
+      "ngay": "2026-11-26",
+      "lyDo": "OZV-2393: thêm phanConLai:false cho 96170010 (chữ khác là liệt kê cùng dòng, không phải phần còn lại anh em) — trả về để duyệt lại sau khi đổi nội dung."
     }
   ]
 }

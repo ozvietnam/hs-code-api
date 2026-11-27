@@ -50,6 +50,8 @@ Theo ADR-0004 và ADR-0005. Thay cho phần "lộ trình" của `docs/ke-hoach-d
 - Nhãn loại ý do AI gắn là **gợi ý**, không phải điều kiện để cạnh tồn tại: câu nhắc tới đâu thì có cạnh tới đó.
 - *Xong khi:* số chỗ nhắc tới mà không có cạnh = 0 trên toàn kho; chạm A thấy B thì chạm B thấy A.
 
+
+**Lớp 3 bổ sung — "Loại khác" đóng bằng tiêu chí (ADR-0007, thẻ M-81, CEO duyệt 27/11).** Mỗi dòng có tên tách thành điều kiện nguyên tử `DIEU_KIEN` (câu hỏi có/không, trích nguyên văn, nhãn kiểu và nhãn mở); máy sinh `bang-anh-em@1` cho 3.493 nút cha; cổng 6–12 (tách, phủ, chồng, hỏi, dò bằng ví dụ chú giải, mở, bù). Thử 4 nhóm (85.43, 85.01, 42.02, 02.01) rồi cuốn chiếu. Dừng khi: bảng đạt cổng 3.493/3.493; chữ mở đếm hết có câu hỏi; vùng chồng chưa giải giảm dần qua người duyệt. Thay bản nháp M-36 thẻ định danh (bỏ trục tách/phần bù).
 ### Lớp 4. MCP trả luật, không trả đống mã — 3 ngày
 - `tra_cay_hs`: `phaiDoc` (#1898). `tra_chu_giai`: đúng nút, kèm đường đi tiếp.
 - `tim_ma_hs`: trả **nút luật có nhắc tới hàng** kèm câu nhắc (tìm theo nghĩa và theo chữ trên nút luật); bỏ tờ khai, bỏ từ điển khỏi thứ hạng.
