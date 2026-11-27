@@ -228,7 +228,9 @@ test('4. Đối chiếu data/ho-so/ranh-gioi/*.json cho mọi chương — mọi
 test('5. Không chứa tiền lệ (tb:), WCO (wco:), GIR (gir:) hay dữ liệu khách trong kho ngưỡng', () => {
   for (const r of tatCaNguong) {
     assert.equal(/^(?:tb|wco|gir):/.test(r.cau), false, `${r.id}: cấm trích ${r.cau}`);
-    assert.ok(['LUAT', 'HUONG_DAN'].includes(r.lop), `${r.id}: lớp lạ ${r.lop}`);
+    if (r.loai !== 'BO_QUA') {
+      assert.ok(['LUAT', 'HUONG_DAN'].includes(r.lop), `${r.id}: lớp lạ ${r.lop}`);
+    }
   }
   assert.equal(laCauViDuHoacBangMau('Những loại máy này thường hoạt động dưới áp suất từ 3.000 đến 4.000 bars'), true);
   assert.equal(parseSoVn('22,38'), 22.38);

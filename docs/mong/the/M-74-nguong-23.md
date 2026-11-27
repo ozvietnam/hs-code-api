@@ -2,8 +2,8 @@
 
 ## Tổng quan
 - Chương **23** (Phế liệu và phế thải từ ngành công nghiệp thực phẩm; thức ăn gia súc đã chế biến).
-- Tổng số bản ghi: **24** (**18** `NGUONG`, **2** `DINH_NGHIA`, **4** `TACH_ANH_EM`, **4** nút nhận `phuDinh`).
-- Quy ước định danh: toàn bộ bản ghi dùng `id` dạng `hs:<nut>:74NN` (`7401`..`7406`), không trùng với bất kỳ tệp nào trong `data/ho-so-ma/**`.
+- Tổng số bản ghi: **25** (**18** `NGUONG`, **2** `DINH_NGHIA`, **4** `TACH_ANH_EM`, **1** `BO_QUA`, **4** nút nhận `phuDinh`).
+- Quy ước định danh: toàn bộ bản ghi dùng `id` dạng `hs:<nut>:74NN` (`7401`..`7408`), không trùng với bất kỳ tệp nào trong `data/ho-so-ma/**`.
 
 ## Đối soát rà soát số + đơn vị & `ranh-gioi` (Luật 1–7)
 - **Thống kê quét số + đơn vị (Luật 6):** Quét toàn bộ Phần IV + Chương 23 (`phan:IV`, `chuong:23`, `bieu:23*`, `nhom:23*`, `pn:23*`, `sen:23*`) trúng **11** câu chứa số + đơn vị (kèm **1** câu Chú giải phân nhóm `chuong:23:cgpn:1#1` dẫn chiếu định nghĩa có ngưỡng tại `chuong:12:cgpn:1#1` của Chương 12):
