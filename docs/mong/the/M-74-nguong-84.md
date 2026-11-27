@@ -3,15 +3,15 @@
 - **Khuôn áp dụng:** `ho-so-ma@1` ([`docs/mong/khuon-ho-so-ma.md`](../khuon-ho-so-ma.md), [`docs/decisions/0006-ho-so-van-de-ma-8-so.md`](../../decisions/0006-ho-so-van-de-ma-8-so.md))
 - **Kho dữ liệu (`RUT_TU_LUAT`, khai trong `data/lop-kho.json`):**
   - `data/ho-so-ma/nguong/XVI.jsonl`: **2 bản ghi `NGUONG`** ở `phan:XVI` (`phan:XVI:kq:41#1` dung sai bi thép 84.82: `<= 1%` và `<= 0,05 mm`) — giữ nguyên không chạm.
-  - `data/ho-so-ma/nguong/84.jsonl`: **395 bản ghi** (`313 NGUONG`, `74 TACH_ANH_EM`, `8 BO_QUA`) từ Chú giải Chương/Phân nhóm (`7`, `9`, `pn:4`), Phân nhóm/Nhóm/SEN và tên dòng biểu thuế `bieu:84*` (đã hoàn tất rà ngược **Gói 1: `84.01–84.12`**, **Gói 2: `84.13–84.20`**, **Gói 3: `84.21–84.35`** và **Gói 4: `84.36–84.50`**; giữ nguyên 100% từng byte **369 bản ghi** ngoài Gói 4 gồm `292` bản ghi Gói 1+2+3 và `77` bản ghi còn lại của `84.51–84.87` + phi-biểu ngoài Gói 4).
-  - **Tổng toàn Chương 84 + Phần XVI: 397 bản ghi**, không chứa dữ liệu khách, tờ khai, `tb:`, `wco:`, `gir:`, hay thông số ví dụ/bảng mẫu tham khảo.
+  - `data/ho-so-ma/nguong/84.jsonl`: **402 bản ghi** (`311 NGUONG`, `79 TACH_ANH_EM`, `12 BO_QUA`) từ Chú giải Chương/Phân nhóm (`7`, `9`, `pn:4`), Phân nhóm/Nhóm/SEN và tên dòng biểu thuế `bieu:84*` (đã hoàn tất rà ngược **Gói 1: `84.01–84.12`**, **Gói 2: `84.13–84.20`**, **Gói 3: `84.21–84.35`**, **Gói 4: `84.36–84.50`** và **Gói 5: `84.51–84.65`**; giữ nguyên 100% từng byte **373 bản ghi** ngoài Gói 5 gồm `318` bản ghi Gói 1+2+3+4 và `55` bản ghi còn lại của `84.66–84.87` + phi-biểu ngoài Gói 5).
+  - **Tổng toàn Chương 84 + Phần XVI: 404 bản ghi**, không chứa dữ liệu khách, tờ khai, `tb:`, `wco:`, `gir:`, hay thông số ví dụ/bảng mẫu tham khảo.
 - **Áp dụng đầy đủ 3 quy ước QT chốt sau Chương 76 & 8 Luật M-74:**
   1. **Không lấy thông số ví dụ / bảng mẫu tham khảo:** lọc bằng `laCauViDuHoacBangMau()` (loại các dải minh họa trong Chú giải như `nhom:8424` 3.000–4.000 bar, `nhom:8448` khoảng 0,1–2 mm, `nhom:8455` xấp xỉ 30–520 cm, `pn:842211` bảng kích thước đặt sàn, `pn:842441` ví dụ 3 bar/5 lít, `sen:84145930` ví dụ 0,5 m³/s).
   2. **Bảng thành phần hợp kim:** Chương 84 không có bảng thành phần mác hợp kim kiểu `5182/5082`.
   3. **Dòng *"Loại khác"* phủ định anh em:** kế thừa 55 bản ghi *"Loại khác"* phần bù 1 khoảng duy nhất (bao gồm ca lấp khoảng giữa `(18,65; 100] kW` ở `bieu:8408909` giữa `.9010 <= 18,65` và `.905 > 100`, cùng đồng thời `<= 21,10 kW` và `< 220 cc` ở `bieu:84143090`), nay đang được nâng cấp theo từng gói để bổ sung trường mảng `phuDinh`, tách `TACH_ANH_EM` De Morgan cho điều kiện ghép và ghi `BO_QUA` cho câu mô tả thông thường (Luật 1–8).
 - **Kiểm phân dải anh em & cặp đại lượng-đơn vị (`kiemDaiAnhEm` + `kiemDonViDaiLuong` + Cổng 3):**
   - Bắt cặp bắt buộc `daiLuong ↔ donVi` qua `kiemDonViDaiLuong()` (ví dụ chặn `công suất` gắn `mm`, `đường kính` gắn `kW`; giữ riêng `bieu:84603110` thành `công suất <= 0,74 kW` và `đường kính chuôi <= 3,175 mm`).
-  - Tổng toàn Chương 84: **82 cụm anh em `NGUONG`** (**76 cụm phủ kín `(-∞, +∞)`**, **6 cụm hữu hạn đúng cấu trúc biểu**: `840732` thừa hưởng `(50; 250] cc`; `841350/841360/841370`; `8415819`; `848180:td6`). **0 lỗi chồng dải, 0 lỗi hở dải, 0 lỗi `voi`.**
+  - Tổng toàn Chương 84: **80 cụm anh em `NGUONG`** (**74 cụm phủ kín `(-∞, +∞)`**, **6 cụm hữu hạn đúng cấu trúc biểu**: `840732` thừa hưởng `(50; 250] cc`; `841350/841360/841370`; `8415819`; `848180:td6`). **0 lỗi chồng dải, 0 lỗi hở dải, 0 lỗi `voi`.**
 - **Đối chiếu `data/ho-so/ranh-gioi/84*.json`:** **258/258 tệp** (**170 dòng `dieuKienSo`**) đều đã đối chiếu và có bản ghi tương ứng tại nút hoặc nút con trực tiếp (`0` thiếu).
 - **Công cụ & bài kiểm:**
   - [`scripts/ho-so-ma/nguong-rut.mjs`](../../../scripts/ho-so-ma/nguong-rut.mjs) (`--chuong 84 --kiem|--bao-cao`)
@@ -219,3 +219,56 @@
   - **Bỏ qua hợp lệ:** **1/19 câu** (`nhom:8443:ct:37#3` — `"Bản gốc chỉ cần được quét 1 lần để tạo ra nhiều bản copy"`, chỉ là mô tả quy trình quét số, không phải ngưỡng đo lường), cùng `487` câu chỉ có số thứ tự mục và dẫn chiếu mã HS.
 - **Đối chiếu chỉ-đọc `data/ho-so/ranh-gioi/8436..8450*.json`:** **36/36 tệp**, **4/4 dòng `dieuKienSo`** (`84501110`, `84501210`, `84501911`, `84501991`) đều được phủ 100% (`0` thiếu).
 - **10 nhóm không có ngưỡng định lượng trong Gói 4:** `84.36`, `84.37`, `84.38`, `84.39`, `84.40`, `84.41`, `84.42`, `84.44`, `84.45`, `84.49` (đã rà đủ 100% `bieu`/`nhom`/`pn`/`sen`).
+
+---
+
+## Rà ngược Gói 5 (`84.51–84.65`) — Hoàn tất theo 8 Luật M-74
+
+- **Phạm vi xử lý:** 15 nhóm tiếp theo Chương 84 (`84.51, 84.52, 84.53, 84.54, 84.55, 84.56, 84.57, 84.58, 84.59, 84.60, 84.61, 84.62, 84.63, 84.64, 84.65`). Giữ nguyên 100% từng byte **373 bản ghi** ngoài phạm vi `84.51–84.65` (`318` bản ghi Gói 1+2+3+4 đã gộp ở #2461/#2466/#2469/#2471 + `55` bản ghi còn lại của `84.66–84.87` và phi-biểu ngoài Gói 5).
+- **Sạch mã HS 100% trong `nguong.daiLuong` (Luật 3 — sửa trọn 3 điểm nóng `8452.10`):**
+  - `hs:bieu:845210:8401`: `"công suất đầu ra mô tơ điện (8452.10)"` → `"công suất đầu ra mô tơ điện"` (giữ `den: 120`, `donVi: "W"`, tương thích Ca 1 `nguong-test.mjs` dòng 171).
+  - `hs:bieu:845210:8402`: `"sức nặng đầu máy khâu không kèm mô tơ (8452.10)"` → `"sức nặng đầu máy khâu không kèm mô tơ"`.
+  - `hs:bieu:845210:8403`: `"tốc độ khâu (8452.10)"` → `"tốc độ khâu (máy khâu xung động hoặc vải xéc)"`.
+  - Rà sạch `0` mã HS bất kỳ và `0` `"thông số"` trong mọi `daiLuong` của Gói 5.
+- **Giữ tương thích tuyệt đối Ca 1 `nguong-test.mjs` (dòng 171–175):**
+  - `bieu:845210`: giữ `nguong.den === 120`.
+  - `bieu:84603110`: giữ đúng `2` bản ghi `NGUONG` với `daiLuong === "công suất"` (`donVi: "kW"`, `den: 0.74`) và `daiLuong === "đường kính chuôi"` (`donVi: "mm"`, `den: 3.175`).
+
+### 1. Thống kê trước / sau rà ngược (phạm vi `84.51–84.65`)
+
+| Chỉ số (phạm vi `84.51–84.65`) | Trước rà (`origin/main`) | Sau rà (Gói 5) | Biến động |
+|---|---:|---:|---|
+| Tổng bản ghi `84.51–84.65` | 22 | **29** | `+7` thêm, `16` sửa, `0` bỏ (`6` giữ nguyên); giữ nguyên 100% `id` nền `:8401/:8402/:8403` |
+| `NGUONG` | 22 | **20** | `-2` chuyển sang `TACH_ANH_EM` do lỗi De Morgan (`84519090:8401`, `84659290:8401`); `14` sửa chuẩn hóa (`3` phi-biểu `845210` sạch mã HS + Luật 3, `5` phần bù thuần 1 chiều bổ sung mảng `phuDinh`, `6` bản ghi điều kiện ghép bổ sung `voi`/`duKien`) |
+| `DINH_NGHIA` | 0 | **0** | Không có định nghĩa thuật ngữ chứa ngưỡng số trong `84.51–84.65` |
+| `TACH_ANH_EM` | 0 | **5** | `2` chuyển từ `NGUONG` sai De Morgan (giữ nguyên `id`: `hs:bieu:84519090:8401`, `hs:bieu:84659290:8401`) + `3` thêm mới (`hs:bieu:84522:7401`, `hs:bieu:84603190:7401`, `hs:bieu:84659590:7401`) |
+| `BO_QUA` | 0 | **4** | `+4` mới (Luật 6 & 8): `hs:bieu:84513010:7401` (`sen:84513010:1#4`), `hs:bieu:8455:7401` (`nhom:8455:ct:23#3`), `hs:bieu:8456:7401` (`nhom:8456:ct:39#2`), `hs:bieu:8456:7402` (`nhom:8456:ct:39#3`) |
+| Bản ghi mang trường mảng `phuDinh` | 0 | **10** | `5 NGUONG` phần bù thuần 1 chiều (`845129`, `84571090`, `84581190`, `84581990`, `84589990`) + `5 TACH_ANH_EM` (`84519090`, `84522`, `84603190`, `84659290`, `84659590`) |
+| `daiLuong` chứa mã HS (bất kỳ chương nào) / `"thông số"` | 3 / 0 | **0 / 0** | Sạch 100% |
+| Cụm anh em `NGUONG` (`kiemDaiAnhEm`) | 7 | **5** | **5/5 phủ kín `(-∞, +∞)`** (`84512`, `845710`, `845811`, `845819`, `845899`), **0 chồng**, **0 hở** (`-2` cụm ảo do gỡ lỗi De Morgan tại `845190` & `846592`; tổng Chương 84 đạt **80 cụm** (`74` phủ kín, `6` hữu hạn, khớp `>= 80` của `nguong-test.mjs` Ca 3)) |
+| Trùng `id` toàn kho `data/ho-so-ma/**/*.jsonl` | 0 | **0** | `0` va chạm (`id` thêm mới dùng đuôi `:7401/:7402`) |
+
+### 2. Chi tiết nâng cấp theo 8 Luật M-74 trong Gói 5
+
+1. **Luật 3 — Làm sạch mã HS `(8452.10)` và ghi rõ nhánh `HOẶC` tại `8452.10` (`pn:845210:ct:1#3..#5`):**
+   - Tách rõ 3 nhánh kỹ thuật của máy khâu gia đình `8452.10` (mục `b` mô tơ gắn kèm `<= 120 W`, mục `c` đầu máy không kèm mô tơ `<= 16 kg`, nhánh máy khâu xung động/vải xéc `<= 1.500 mũi/phút` kèm mô tơ gắn liền `<= 120 W`), nối `voi: ["bieu:84522"]`, sạch 100% mã `8452.10` khỏi `daiLuong`.
+   - Thêm `hs:bieu:84522:7401` (`TACH_ANH_EM`, `phuDinh: ["bieu:845210"]`) cho nhánh `- Máy khâu khác:` (tránh đảo ngưỡng sai De Morgan vì máy khâu công nghiệp có đầu máy `<= 16 kg` vẫn vào `8452.2`).
+2. **Luật 1 & 2 (De Morgan) — Sửa 2 lỗi đảo ngưỡng sai trong dữ liệu nền và khóa đủ 3 anh em `"Loại khác"` điều kiện ghép:**
+   - **`hs:bieu:84519090:8401` (`NGUONG → TACH_ANH_EM`, giữ nguyên `id`):** `8451.90` gồm bộ phận của toàn nhóm `84.51`, trong đó có máy là (`8451.30`), máy quấn/gấp/cắt vải (`8451.50`), máy hoàn tất (`8451.80`) không đo sức chứa theo kg vải khô mỗi lượt; bộ phận máy cắt vải `8451.50` vào `8451.90.90` nên cấm đảo `NGUONG > 10 kg`.
+   - **`hs:bieu:84659290:8401` (`NGUONG → TACH_ANH_EM`, giữ nguyên `id`):** `8465.92.10` ghép công dụng khắc vạch tấm mạch in/tấm dây in + đường kính chuôi `<= 3,175 mm`; máy phay gỗ dùng mũi chuôi `3 mm` vẫn vào `8465.92.90` nên cấm đảo `NGUONG > 3,175 mm`.
+   - **Thêm `hs:bieu:84603190:7401` & `hs:bieu:84659590:7401` (`TACH_ANH_EM`):** khóa phủ định cho 2 dòng ghép đa chiều `8460.31.10` (`<= 0,74 kW` VÀ chuôi `<= 3,175 mm` + đồ gá kẹp ống + mài mũi khoan carbua) và `8465.95.10` (`> 50.000 vòng/phút` VÀ chuôi `<= 3,175 mm` + khoan tấm mạch in).
+   - **5 phần bù thuần 1 chiều bổ sung mảng `phuDinh`:** `845129`, `84571090`, `84581190`, `84581990`, `84589990`.
+3. **Luật 6 & 8 — Ghi `BO_QUA` tường minh cho 4 câu thông số điển hình / minh họa:**
+   - `hs:bieu:84513010:7401` (`sen:84513010:1#4`): điện áp dân dụng điển hình `"120/240V"` trong SEN máy là trục đơn gia dụng.
+   - `hs:bieu:8455:7401` (`nhom:8455:ct:23#3`): kích thước xấp xỉ minh họa trục cán thép (`"độ dài xấp xỉ từ 30 tới 520cm và có đường kính từ 18 đến 137 cm"`).
+   - `hs:bieu:8456:7401` & `:7402` (`nhom:8456:ct:39#2,#3`): tốc độ phun điển hình `"gấp 2 đến 3 lần tốc độ âm thanh"` và áp suất điển hình `"3000 đến 4000 bar"` của máy cắt tia nước (tương ứng `nhom:8424:ct:2#2` ở Gói 3).
+
+### 3. Đối soát Luật 6, Luật 8 & `data/ho-so/ranh-gioi/8451..8465*.json`
+
+- **Quét 100% câu chứa số + đơn vị trong `bieu/nhom/pn/sen` (`84.51–84.65`):**
+  - **Tổng số câu trúng số + đơn vị:** **17 câu** (`10` câu tầng biểu `bieu:8451/8457/8458/8460/8465` + `7` câu tầng hướng dẫn `pn:845210:ct:1#3..#5`, `nhom:8455:ct:23#3`, `nhom:8456:ct:39#2..#3`, `sen:84513010:1#4`).
+  - **Đã rút thành bản ghi `NGUONG`:** **13/17 câu** (`10/10` câu tầng biểu sinh `12 NGUONG` trực tiếp do `84603110` và `84659510` mỗi nút có 2 chiều ghép + `3/3` câu `pn:845210:ct:1#3..#5` + `5 NGUONG` phần bù thuần 1 chiều = `20 NGUONG`).
+  - **Đã ghi `BO_QUA` tường minh (Luật 6 & 8):** **4/17 câu** (`sen:84513010:1#4`, `nhom:8455:ct:23#3`, `nhom:8456:ct:39#2`, `nhom:8456:ct:39#3`).
+  - **Bỏ qua hợp lệ ngoài số + đơn vị:** `nhom:8462:ct:22#2` (ví dụ số lượng con lăn `"từ 5 đến 11"` / `"thường từ 15 đến 23"`, không phải đại lượng đo lường) cùng `306` câu chỉ mang số thứ tự mục hoặc dẫn chiếu mã HS.
+- **Đối chiếu chỉ-đọc `data/ho-so/ranh-gioi/8451..8465*.json`:** **44/44 tệp**, **7/7 dòng `dieuKienSo`** (`84571010`, `84581110`, `84581910`, `84589910`, `84603110`, `84659210`, `84659510`) đều được phủ 100% (`0` thiếu).
+- **7 nhóm hoàn toàn không có bản ghi ngưỡng/bỏ qua trong Gói 5:** `84.53`, `84.54`, `84.59`, `84.61`, `84.62`, `84.63`, `84.64` (và `84.55`, `84.56` chỉ có `BO_QUA`; đã rà đủ 100% `bieu`/`nhom`/`pn`/`sen`).
