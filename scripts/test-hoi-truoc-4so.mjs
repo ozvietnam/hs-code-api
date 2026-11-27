@@ -1436,5 +1436,17 @@ if (fs.existsSync(boChuanPath)) {
   );
 }
 
+// ═══ OZV-2289: phapLyMap 'phan:<ch>' đọc kho luật gốc M-21 — ch.39/40 (Phần VII) nhận chú giải Phần VII THẬT, không lây văn bản Phần VI của chu-giai-chuong.json ═══
+{
+  const { taiKho } = require('../lib/do-thi/hoi-truoc-4so.js');
+  const { phapLyMap } = taiKho();
+  const p28 = phapLyMap.get('phan:28') || '';
+  const p39 = phapLyMap.get('phan:39') || '';
+  const p54 = phapLyMap.get('phan:54') || '';
+  check('[OZV-2289] phapLyMap phan:28 vẫn nguyên văn Phần VI (nhóm 28.44 hoặc 28.45)', /nhóm\s*28\.44 hoặc 28\.45/.test(p28), p28.slice(0, 80));
+  check('[OZV-2289] phapLyMap phan:39 là chú giải Phần VII THẬT (xếp thành bộ…), không lây văn bản Phần VI (28.44)', /xếp thành bộ từ hai hoặc nhiều phần/.test(p39) && !p39.includes('28.44'), p39.slice(0, 80));
+  check('[OZV-2289] phapLyMap phan:54 là chú giải Phần XI thật (Phần này không bao gồm), không lây văn bản Phần VI (28.44)', /Phần này không bao gồm/.test(p54) && !p54.includes('28.44'), p54.slice(0, 80));
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
