@@ -80,6 +80,46 @@ console.log('4. Rào ngược: đã khớp tên máy nạp → vẫn hỏi congS
   );
 }
 
+// QT OZV-2420 / OZV-2303: tenChuaKhop lọc OP_SO_PHU cả khi tên ở CHUA_BIET (không chỉ TRAI).
+// Khi mọi dòng tên chưa khớp và điều kiện số bị lọc → tuyệt đối không CHOT bừa;
+// cauDong8 vẫn sinh câu hỏi phân loại tên / chọn dòng.
+console.log('5. Mọi dòng tên CHUA_BIET / chưa khớp → không chốt bừa');
+{
+  const text = 'máy biến đổi tĩnh điện công nghiệp';
+  const cd = chotDong8({ hs: '850440', productText: text });
+  const q = cauDong8({ h4: '8504', maXet: '850440', text, ghiPn6: [] });
+  check(
+    '850440 mô tả chung → không CHOT và không có hs',
+    cd.ketQua !== 'CHOT' && cd.ketQua !== 'LOAI_KHAC' && !cd.hs,
+    JSON.stringify({ ketQua: cd.ketQua, hs: cd.hs, lyDo: cd.lyDo }),
+  );
+  check(
+    '850440 mô tả chung → vẫn hỏi phân loại (loaiBienDoiTinhDien)',
+    q.some((x) => x.key === 'loaiBienDoiTinhDien'),
+    JSON.stringify(q.map((x) => x.key)),
+  );
+}
+{
+  // 8539.22: mọi dòng có CONG_DUNG soChu=CHUA_BIET + điều kiện số congSuat → lọc OP_SO_PHU
+  // khiến missing=[] → KHONG_THE_CHOT (ranh-gioi-so-chu-khong-tat-dinh), không gắn hs.
+  const text = 'thiết bị công nghiệp';
+  const cd = chotDong8({ hs: '853922', productText: text });
+  const q = cauDong8({ h4: '8539', maXet: '853922', text, ghiPn6: [] });
+  const cauPhanLoai = q.filter(
+    (x) => x.key === 'loaiBienDoiTinhDien' || String(x.key || '').startsWith('la_') || x.canCu === 'ranh-gioi-pn6',
+  );
+  check(
+    '853922 mọi dòng tên CHUA_BIET → KHONG_THE_CHOT (không chốt bừa)',
+    cd.ketQua === 'KHONG_THE_CHOT' && !cd.hs && cd.lyDo === 'ranh-gioi-so-chu-khong-tat-dinh',
+    JSON.stringify({ ketQua: cd.ketQua, hs: cd.hs, lyDo: cd.lyDo, miss: cd.missingFacts }),
+  );
+  check(
+    '853922 → cauDong8 vẫn ≥1 câu hỏi phân loại tên/dòng',
+    cauPhanLoai.length >= 1,
+    JSON.stringify(q.map((x) => ({ key: x.key, canCu: x.canCu }))),
+  );
+}
+
 if (failed) {
   console.error(`\nFAILED ${failed}`);
   process.exit(1);
