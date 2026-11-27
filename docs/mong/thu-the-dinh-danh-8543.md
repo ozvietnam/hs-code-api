@@ -1,3 +1,5 @@
+Bảng đã được sửa theo phản biện 27/11 ở docs/mong/the/M-81-vang-8543.md
+
 # Thử tay thẻ định danh nút — nhóm 85.43, dòng 8543.70.90 "Loại khác"
 
 QT làm tay ngày 27/11/2026, theo bản nháp khuôn `dinh-danh@1` (M-36, #1923). Mục đích: trước khi giao máy chạy toàn biểu, tự làm một ca khó, ghi lại cách nghĩ, chỗ dễ sai, và tự phản biện ba câu CEO đặt.
