@@ -23,6 +23,7 @@ export const THU_MUC_DIEU_KIEN = 'dieu-kien';
 export const THU_MUC_BANG_ANH_EM = 'bang-anh-em';
 export const THU_MUC_HO_SO = Object.freeze([...G.THU_MUC, THU_MUC_DIEU_KIEN]);
 export const THU_MUC_KHO = Object.freeze([...THU_MUC_HO_SO, THU_MUC_BANG_ANH_EM]);
+export const TEN_TEP_THU_TU = 'thu-tu-cuon-chieu.json';
 export const BO_QUA = 'BO_QUA';
 export const TRANG_THAI = Object.freeze(['KHOP', 'LECH_PHIEU', 'VENH']);
 const LOP = new Set(['LUAT', 'HUONG_DAN']);
@@ -403,11 +404,50 @@ export function kiemTep(tuongDoi, noiDung) {
   return { loi, banGhi, bangAnhEm };
 }
 
+/** Kiểm định dạng tệp cấu hình data/ho-so-ma/thu-tu-cuon-chieu.json. [] = đúng khuôn. */
+export function kiemThuTuCuonChieu(noiDung) {
+  let parsed;
+  try {
+    parsed = JSON.parse(noiDung);
+  } catch {
+    return [`${TEN_TEP_THU_TU}: không phải JSON hợp lệ`];
+  }
+  let ds = null;
+  if (Array.isArray(parsed)) {
+    ds = parsed;
+  } else if (parsed && typeof parsed === 'object' && Array.isArray(parsed.thuTu)) {
+    ds = parsed.thuTu;
+  } else {
+    return [`${TEN_TEP_THU_TU}: phải là mảng hoặc đối tượng có mảng thuTu`];
+  }
+  const loi = [];
+  ds.forEach((muc, i) => {
+    let raw = null;
+    if (typeof muc === 'string') {
+      raw = muc;
+    } else if (muc && typeof muc === 'object' && !Array.isArray(muc) && typeof muc.nhom === 'string') {
+      raw = muc.nhom;
+    } else {
+      loi.push(`${TEN_TEP_THU_TU}: phần tử [${i}] phải là chuỗi mã nhóm 4 số hoặc đối tượng có trường nhom`);
+      return;
+    }
+    const gonMa = raw.trim();
+    if (!/^\d{2}\.?\d{2}$/.test(gonMa)) {
+      loi.push(`${TEN_TEP_THU_TU}: phần tử [${i}] mã nhóm "${raw}" không phải 4 chữ số hợp lệ`);
+    }
+  });
+  return loi;
+}
+
 /** Kiểm cả kho hồ sơ. Trả mọi bản ghi (bản ghi hỏng mang _hong) và bangAnhEm. Thư mục chưa có = kho rỗng. */
 export function kiemKhoHoSo(goc = G.HO_SO_MAC_DINH) {
   const loi = []; const banGhi = []; const bangAnhEm = []; let soTep = 0;
   if (!fs.existsSync(goc)) return { loi, banGhi, bangAnhEm, soTep };
   for (const e of fs.readdirSync(goc, { withFileTypes: true })) {
+    if (e.isFile() && e.name === TEN_TEP_THU_TU) {
+      loi.push(...kiemThuTuCuonChieu(fs.readFileSync(path.join(goc, e.name), 'utf8')));
+      continue;
+    }
     if (!e.isDirectory() || !THU_MUC_KHO.includes(e.name)) loi.push(`${e.name}: lạ ở gốc kho hồ sơ (chỉ ${THU_MUC_KHO.join(', ')})`);
   }
   for (const tm of THU_MUC_KHO) {
