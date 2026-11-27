@@ -1,9 +1,29 @@
-# M-74 (#1966) — Ngưỡng số và phân dải anh em — Chương 81
+# M-74 (#1966) — Rà ngược ngưỡng số và phân dải anh em — Chương 81
 
 - **Khuôn áp dụng:** `ho-so-ma@1` ([`docs/mong/khuon-ho-so-ma.md`](../khuon-ho-so-ma.md), [`docs/decisions/0006-ho-so-van-de-ma-8-so.md`](../../decisions/0006-ho-so-van-de-ma-8-so.md))
-- **Kho dữ liệu (`RUT_TU_LUAT`, theo `data/lop-kho.json` trên `main`):**
-  - `data/ho-so-ma/nguong/81.jsonl`: **10 bản ghi** (**10 `NGUONG`**, **0 `DINH_NGHIA`**, **5** bản ghi "Loại khác" gắn mảng `phuDinh`).
-- **Đối soát số + đơn vị & `ranh-gioi` (Luật 6):**
-  - Tổng câu trúng số+đơn vị (Phần XV + Chương 81 + dòng biểu): **5** (`phan:XV:cg:8:b#1` đã có trong `nguong/XV.jsonl`; **4/4** dòng biểu `810411`/`81041100`, `810610` cùng 3 phân nhóm `810921`/`810931`/`810991` dưới 1/500 đã rút thành bản ghi kèm đủ **5** phần bù `"Loại khác"` `phuDinh`: `810419`, `810690`, `810929`, `810939`, `810999`).
-- **Tuân thủ quy tắc QT:**
-  - Không lấy thông số ví dụ, bảng mẫu hay ước lượng; trích đúng câu của chính nút; không gắn `gir:`, `wco:`, `tb:`; dùng bộ kiểm chung [`scripts/ho-so-ma/nguong-test.mjs`](../../../scripts/ho-so-ma/nguong-test.mjs) và [`scripts/ho-so-ma/cong.mjs`](../../../scripts/ho-so-ma/cong.mjs).
+- **Kho dữ liệu (`RUT_TU_LUAT`, khai trong `data/lop-kho.json` trên `main`):**
+  - `data/ho-so-ma/nguong/81.jsonl`: **12 bản ghi** (**`10 NGUONG`**, **`0 DINH_NGHIA`**, **`0 TACH_ANH_EM`**, **`2 BO_QUA`**; **`5`** bản ghi `"Loại khác"` mang mảng `phuDinh`), nâng từ mốc nền `10` bản ghi trên `origin/main` (**`+2`** thêm mới, **`0`** sửa, **`0`** bỏ).
+  - **Sạch mã HS trong `daiLuong` (`0/10` `NGUONG` chứa mã dòng/nhóm `81xx`/`81.xx`):**
+    - Toàn bộ `10` bản ghi `NGUONG` dùng đúng một chuỗi `daiLuong` thuần vật lý cho từng cụm anh em cùng cha: `"hàm lượng magiê"` (`%`), `"hàm lượng bismut"` (`%`), `"tỉ lệ hafini so với zircon (1/500)"` (`lần`), không chứa mã HS, không đại lượng mơ hồ.
+  - **Luật 1 & Luật 2 (De Morgan — kiểm chứng cả 5 cụm có `phuDinh` và toàn bộ dòng `"Loại khác"` Chương 81):**
+    - Cả **5** bản ghi `"Loại khác"` có anh em mang ngưỡng số (`8104.19`, `8106.90`, `8109.29`, `8109.39`, `8109.99`) đều tách **thuần túy trên 1 đại lượng số duy nhất**, không kèm điều kiện định tính ghép hay đa chiều thông số → giữ `NGUONG` đảo chiều kèm `phuDinh` và `ghiChu: "phuDinh: bieu:..."` đúng Luật 1 & 2, không có phản ví dụ De Morgan, phủ kín `(-∞, +∞)`.
+    - Các nhóm còn lại (`81.01`–`81.03`, `81.05`, `81.08`, `81.10`–`81.13`, kể cả `8112.41`/`51`/`61`/`92` và các dòng con `8104.90`, `8106.10.90`, `8106.90.90`) không có anh em cùng cấp mang ngưỡng số riêng → không thiếu `phuDinh`.
+  - **Luật 3, 4, 5 & Luật 7:**
+    - Chương 81 không có Chú giải Chương/Phân nhóm riêng trong HS 2022 (các định nghĩa Bột `>= 90%` lọt rây `1 mm`, hợp kim kim loại cơ bản `>= 50%` và tỉ lệ chiều dày/chiều rộng `1/10` của thanh/que/dây/tấm/lá/dải/lá mỏng thuộc Chú giải `5(b)`, `8(b)`, `9` Phần XV và đã phủ đủ trong `data/ho-so-ma/nguong/XV.jsonl`).
+    - Cả `10/10` khoảng số `NGUONG` mô tả đúng miền ĐỂ Ở LẠI nút được gắn (Luật 4); `0` bản ghi `NGUONG` gắn sai cấp `chuong:81` (Luật 7).
+  - **Luật 6 & Luật 8 (`BO_QUA` cho mô tả tính chất thông thường tại đúng nút chủ câu):**
+    - Bổ sung **2 bản ghi `BO_QUA`** tại đúng nút chủ câu:
+      - `hs:bieu:8106:7401` (`nut: "bieu:8106"`, `cau: "nhom:8106:ct:4#1"`): `"một số có độ nóng chảy dưới 100 °C"` — mô tả tính chất thông thường của hợp kim dễ nóng chảy bismut, không đặt ngưỡng phân loại.
+      - `hs:bieu:8112:7401` (`nut: "bieu:8112"`, `cau: "nhom:8112:ct:22#1"`): `"điểm nóng chảy ở vào khoảng 30°C"` — mô tả tính chất vật lý thông thường của gali (`"khoảng…"`), không đặt ngưỡng phân loại.
+    - Không sửa `data/ho-so/ranh-gioi/`, không chứa tiền lệ `tb:`, ý kiến `wco:` (2 ý kiến `wco:811100`, `wco:811229` không dùng), `gir:` hay dữ liệu khách; `0` trùng `id` toàn kho `data/ho-so-ma/` (chuẩn `hs:<nut>:74NN`).
+- **Đối soát câu chứa chữ số + đơn vị / tỉ số theo Luật 6:**
+  - Pháp lý Phần XV (`phan:XV:cg*`): **4/4** câu trúng số+đơn vị/tỉ số (`cg:8:b#1`, `cg:9:a#3`, `cg:9:c#3`, `cg:9:d#1`) đã phủ trong `nguong/XV.jsonl`.
+  - Pháp lý Chương 81 (`chuong:81:cg*`, `cgpn*`, `kq*`) & `pn:81*` & `sen:81*`: **0** câu trúng số+đơn vị (tổng 10 câu `kq*`, 2 câu `pn:810411/810419`, 0 câu `sen:81*`).
+  - Dòng biểu thuế (`bieu:81*`): **9/9** câu trúng số+đơn vị/tỉ số (**5** nút phân nhóm 6 số gốc `8104.11`, `8106.10`, `8109.21`, `8109.31`, `8109.91` đã rút thành `5` `NGUONG` kèm `5` phần bù `"Loại khác"` `8104.19`, `8106.90`, `8109.29`, `8109.39`, `8109.99`; **4** dòng lá 8 số `-00` lặp nguyên văn cha 6 số: `8104.11.00`, `8109.21.00`, `8109.31.00`, `8109.91.00`).
+  - Chú giải chi tiết nhóm (`nhom:81*`, 214 câu): **2/2** câu chứa số+đơn vị đo lường (`nhom:8106:ct:4#1` `"dưới 100 °C"`, `nhom:8112:ct:22#1` `"khoảng 30°C"`) đã ghi `BO_QUA` hợp lệ tại đúng nút chủ câu (`bieu:8106`, `bieu:8112`); các chữ số còn lại chỉ là số hiệu chương/nhóm/chú giải, số thứ tự khoản `(1)`–`(4)` hoặc công thức hóa học `BeO2F2` — bỏ qua hợp lệ, **0** câu bị sót luật.
+- **Kiểm phân dải anh em (`kiemDaiAnhEm` + `kiemDonViDaiLuongTongQuat` + Cổng 3):**
+  - **5 cụm anh em** (`bieu:81041`, `bieu:8106`, `bieu:81092`, `bieu:81093`, `bieu:81099`), **5/5 cụm phủ kín**, `0` lỗi chồng dải, `0` lỗi hở dải, `0` lỗi `voi`/`phuDinh`, `0` lỗi đơn vị khớp đại lượng, `0/10` `NGUONG` mang mã HS trong `daiLuong`.
+- **Đối chiếu `data/ho-so/ranh-gioi/81*.json`:** **6/6 tệp** (`810199`, `810520`, `810610`, `810690`, `811100`, `811269` — **0** nút mang `dieuKienSo` dạng số), `0` thiếu dưới `doiChieuRanhGoi`.
+- **Công cụ & bài kiểm:**
+  - [`scripts/ho-so-ma/cong.mjs`](../../../scripts/ho-so-ma/cong.mjs) (`--pham-vi chuong:81 --cong 4,5`), [`scripts/ho-so-ma/nguong-rut.mjs`](../../../scripts/ho-so-ma/nguong-rut.mjs) (`--chuong 81 --kiem`)
+  - [`scripts/ho-so-ma/nguong-test.mjs`](../../../scripts/ho-so-ma/nguong-test.mjs), [`scripts/test-ho-so-ma.mjs`](../../../scripts/test-ho-so-ma.mjs), [`scripts/test-ho-so-ma-tra.mjs`](../../../scripts/test-ho-so-ma-tra.mjs), [`scripts/test-lop-kho.mjs`](../../../scripts/test-lop-kho.mjs)
