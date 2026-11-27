@@ -15,7 +15,7 @@
     "phien": "claude-agent:tho-hs-01#soat-lo-5d",
     "ngay": "2026-11-21",
     "ghiChu": "Đã chuẩn hoá dieuKienSo bám chữ biểu thuế",
-    "bam": "162d51df0f302132a2ccee8fdca7cd3b63329bcf26a3278e6819d6d85f87de29"
+    "bam": "7b83140e5ce9120c82b0e598c2a323e60d7f5b5ab4de36835e6951718d4a1b1b"
   },
   "dieuKienNut": [],
   "dong8": [
@@ -38,16 +38,42 @@
     },
     {
       "hs": "95069920",
-      "nguon": "tax.95069920",
-      "trich": "95069920 - - - Lưới (*), đệm bảo vệ ống chân và tấm ốp bảo vệ ống chân ",
+      "nguon": "nhom9506.nhom",
+      "trich": "(9) Lưới cho các trò chơi khác nhau (tennis, cầu lông, bóng chuyền, bóng đá, bóng rổ, ...) … tấm bảo vệ dùng trong môn cricket, tấm ốp bảo vệ ống chân",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "Lưới",
-            "đệm bảo vệ ống chân",
-            "tấm ốp bảo vệ ống chân"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Lưới"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "các trò chơi",
+                  "tennis",
+                  "cầu lông",
+                  "bóng chuyền",
+                  "bóng đá",
+                  "bóng rổ"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "tấm bảo vệ dùng trong môn cricket",
+                  "bảo vệ ống chân",
+                  "tấm ốp bảo vệ ống chân"
+                ]
+              }
+            ]
           ]
         }
       ],
@@ -83,7 +109,7 @@
     {
       "ma": "95069920",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.95069920 \"Lưới (*), đệm bảo vệ ống chân và tấm ốp bảo vệ ống chân\" ⇒ tenLoai [\"Lưới\",\"đệm bảo vệ ống chân\",\"tấm ốp bảo vệ ống chân\"] (ba danh từ hàng, \"(*)\" là dấu chú thích)"
+      "ghiChu": "tax.95069920 \"Lưới (*), đệm bảo vệ ống chân và tấm ốp bảo vệ ống chân\" (EN \"Nets, cricket pads and shin guards\"): chú thích \"(*)\" theo chú giải chi tiết nhóm 95.06 mục (B)(9) \"Lưới cho các trò chơi khác nhau (tennis, cầu lông, bóng chuyền, bóng đá, bóng rổ, ...)\" và mục (B)(13) \"tấm bảo vệ dùng trong môn cricket, tấm ốp bảo vệ ống chân\" (nhom9506.nhom) ⇒ HOAC 2 phương án: (1) tenLoai \"Lưới\" + dungCho [\"các trò chơi\",\"tennis\",\"cầu lông\",\"bóng chuyền\",\"bóng đá\",\"bóng rổ\"] để không đặt TEN_LOAI \"Lưới\" trần làm khớp sớm chữ \"lưới\" của \"lưới leo dùng cho khu vui chơi\" hay \"lưới đánh cá\" (OZV-2400); (2) tenLoai [\"tấm bảo vệ dùng trong môn cricket\",\"bảo vệ ống chân\",\"tấm ốp bảo vệ ống chân\"]."
     },
     {
       "ma": "95069930",

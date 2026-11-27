@@ -216,5 +216,15 @@ check('S-2 âm tính: ca đúng 84271000 / 85166090 / 12112010 không dính CBP-
   ['12112010', 'Rễ cây nhân sâm đã sấy khô được xay ra, đóng gói dạng túi lọc (2 gram/túi, 20 túi/ hộp'],
 ].every(([ma, moTa]) => (one({ maHs: [ma], moTa }).tienLe?.tienLeMaKhac || []).every((x) => (!x.quocGia || x.quocGia === 'VN') && !/CBP-CROSS-RULING|ABF-TCO/.test(String(x.loaiNguon || '')))));
 
+// ═══ 10. OZV-2289: .phan của chu-giai-chuong.json dán nhầm (ch.39/40 thuộc Phần VII nhưng mang văn bản Phần VI) — chú giải Phần phải lấy từ kho gốc M-21 ═══
+const dauHieuPhanVI = 'HOẶC CÁC NGÀNH CÔNG NGHIỆP LIÊN QUAN';
+const phanCua = (hs) => (one({ maHs: [hs], moTa: 'kiểm tra chú giải Phần' }).chuGiai?.items || []).filter((x) => x.cap === 'PHAN');
+const phan39 = phanCua('39011019');
+check('OZV-2289 âm tính: 39011019 (ch.39, Phần VII) không còn văn bản Phần VI dán nhầm (28.44/28.45)', phan39.length > 0 && phan39.every((x) => !String(x.nguyenVan).includes(dauHieuPhanVI) && !String(x.nguyenVan).includes('28.44')), phan39.map((x) => ({ ma: x.ma, nguon: x.nguon, head: String(x.nguyenVan).slice(0, 60) })));
+check('OZV-2289 dương tính: 39011019 nhận chú giải Phần VII THẬT từ kho gốc (xếp thành bộ…, nguon luat-goc/phan.jsonl)', phan39.some((x) => /xếp thành bộ từ hai hoặc nhiều phần/.test(String(x.nguyenVan)) && /luat-goc\/phan\.jsonl/.test(String(x.nguon))), phan39.map((x) => ({ ma: x.ma, nguon: x.nguon })));
+check('OZV-2289 dương tính: 28046100 (ch.28, Phần VI) vẫn nguyên văn chú giải Phần VI (nhóm 28.44 hoặc 28.45)', phanCua('28046100').some((x) => /nhóm\s*28\.44 hoặc 28\.45/.test(String(x.nguyenVan))), phanCua('28046100').map((x) => String(x.nguyenVan).slice(0, 80)));
+const goi54 = one({ maHs: ['54012010'], moTa: 'vải dệt từ sợi filament tổng hợp' });
+check('OZV-2289 băng qua: 54012010 (ch.54, Phần XI) gói vẫn dựng, chú giải Phần XI từ kho gốc không lẫn văn bản Phần VI', Boolean(goi54?.chuGiai?.items?.length) && phanCua('54012010').every((x) => !String(x.nguyenVan).includes(dauHieuPhanVI)), { soMuc: goi54?.chuGiai?.items?.length });
+
 console.log(`\n${passed}/${passed + failed} passed`);
 process.exit(failed ? 1 : 0);

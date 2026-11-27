@@ -1837,5 +1837,44 @@ const ketQuaSong = (raw = VAN) => ketQuaGia('848180', raw, {}, ['848120']);
     { ht2: ht2.dapAnDieuKien, ht4: ht4.dapAnDieuKien });
 }
 
+// ───────── OZV-2389: quạt giải nhiệt máy biến áp — không hỏi PHAN_BIET 8414↔8504 thừa ─────────
+{
+  const qQuat = 'quạt giải nhiệt máy biến áp, model gfdd470-150';
+  const demQuat = {};
+  const pbQuat = H.cauPhanBietNhom('8414', ['8414', '8504'], qQuat, demQuat);
+  check('OZV-2389 (thuận): «quạt giải nhiệt máy biến áp» + ứng viên 8504 → KHÔNG hỏi PHAN_BIET_NHOM', pbQuat.length === 0 && (demQuat.lacDe || 0) >= 1, { pbQuat, demQuat });
+
+  const outQuat = {
+    status: 'NEED_FACTS',
+    results: [{ hs: '841459', hsLevel: 6, confidence: 60, reason: 'thiếu dữ kiện dòng 8 số', duKien: true }],
+    missing: ['Model?'],
+    missingStructured: missingStructured('841459', { tenHang: qQuat }),
+    dossier: {
+      product: { nameVi: qQuat },
+      hypotheses: [
+        { heading4: '8414', subheading6: '841459', confidence: 80 },
+        { heading4: '8504', subheading6: '850490', confidence: 20 },
+      ],
+      alternatives: [{ hs: '850490' }],
+    },
+    nextAction: { type: 'ASK_USER', questions: [{ questionVi: 'Model là gì?' }] },
+  };
+  const kqQuat = await voi('on', () => H.apDung(outQuat, { rawAttrs: { tenHang: qQuat } }));
+  const qsQuat = kqQuat.nextAction?.questions || [];
+  check(
+    'OZV-2389 (thuận apDung 841459): chỉ hỏi tiêu chí phân nhánh 841459 (congSuat / chiHoacChuYeu / coLuoiBaoVe), không PHAN_BIET quạt↔8504',
+    kqQuat.nextAction?.canCuCauHoi === 'so-tay'
+      && !qsQuat.some((q) => q.loai === 'PHAN_BIET_NHOM')
+      && qsQuat.some((q) => q.loai === 'DONG_8' && q.khoa === 'congSuat')
+      && qsQuat.some((q) => q.loai === 'DONG_8' && q.khoa === 'chiHoacChuYeu')
+      && qsQuat.some((q) => q.loai === 'DONG_8' && q.khoa === 'coLuoiBaoVe'),
+    qsQuat.map((q) => ({ loai: q.loai, khoa: q.khoa, q: q.questionVi })),
+  );
+
+  const qTam = 'tấm tản nhiệt của máy biến áp phân phối';
+  const pbTam = H.cauPhanBietNhom('8414', ['8414', '8504'], qTam);
+  check('OZV-2389 (ngược): tấm tản nhiệt MBA vẫn hỏi PHAN_BIET_NHOM 8414↔8504 (loaiTru)', pbTam.length >= 1 && pbTam[0].loai === 'PHAN_BIET_NHOM', pbTam);
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
