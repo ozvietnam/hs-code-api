@@ -713,7 +713,7 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
           continue;
         }
         bangDuocPhu.add(startCha);
-        const kq = doBangAnhEm(startCha, gan, bangTheoCha, { L });
+        const kq = doBangAnhEm(startCha, gan, bangTheoCha, { L, nguongById, hoSo });
         for (const buoc of kq.duong || []) {
           const chaBuoc = L.cay.theoId.get(buoc)?.cha;
           if (chaBuoc && bangTheoCha.has(chaBuoc)) bangDuocPhu.add(chaBuoc);
