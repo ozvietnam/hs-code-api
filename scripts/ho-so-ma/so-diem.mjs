@@ -187,6 +187,18 @@ export function chamDiemNhom(nhom4HoacNut, ctx = {}) {
     loiSet.add(`${recId || nutId}: ${lyDo} (${cauId})`);
   };
 
+  // Thu thập vanTayCau từ bang-anh-em/<ch>.jsonl đã lưu trên đĩa (nếu có cho nhóm này)
+  const vanTayCauNhom = new Map();
+  for (const b of c.bangAnhEmTheoCha.values()) {
+    if (!b.vanTayCau || typeof b.vanTayCau !== 'object') continue;
+    const thuocNhom = cayIds.has(b.cha) || (b.anhEm || []).some((ae) => cayIds.has(ae.nut));
+    if (!thuocNhom) continue;
+    for (const [cid, vt] of Object.entries(b.vanTayCau)) {
+      if (!vanTayCauNhom.has(cid)) vanTayCauNhom.set(cid, []);
+      vanTayCauNhom.get(cid).push(vt);
+    }
+  }
+
   for (const r of dieuKien) {
     const chu = /^tb:/.test(r.nguon || '') ? null : c.L.chuCau(r.nguon);
     if (chu === null) {
@@ -203,7 +215,13 @@ export function chamDiemNhom(nhom4HoacNut, ctx = {}) {
         } else {
           const dnList = c.dinhNghiaTheoCau.get(mnId) || [];
           const vtHienTai = vanTay(mnChu);
-          if (dnList.some((dn) => dn.van && dn.van !== vtHienTai)) {
+          const lechDn = dnList.some((dn) => dn.van && dn.van !== vtHienTai);
+          const lechDk = (
+            (typeof r.moNguonVanTay === 'string' && typeof r.moNguon === 'string' && r.moNguon === mnId && r.moNguonVanTay !== vtHienTai)
+            || (Boolean(r.moNguonVanTay) && typeof r.moNguonVanTay === 'object' && Object.hasOwn(r.moNguonVanTay, mnId) && r.moNguonVanTay[mnId] !== vtHienTai)
+          );
+          const lechBang = (vanTayCauNhom.get(mnId) || []).some((vt) => vt !== vtHienTai);
+          if (lechDn || lechDk || lechBang) {
             ghiLechCau(mnId, r.nut, r.id, 'vân tay câu moNguon đã đổi');
           }
         }

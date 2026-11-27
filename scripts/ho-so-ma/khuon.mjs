@@ -34,10 +34,10 @@ const RE_VAN = /^[0-9a-f]{64}$/;
 const RE_ID_NGUONG = /^hs:.+:\d+$/;
 const TRUONG_VAN_DE = new Set(['id', 'nut', 'loai', 'dieuKien', 'trich', 'cau', 'tu', 'den', 'voi', 'nguong', 'thuatNgu', 'phuDinh', 'duKien', 'lop', 'nguon', 'van', 'trangThai', 'phieu', 'ghiChu']);
 const TRUONG_BO_QUA = new Set(['id', 'nut', 'loai', 'cau', 'lyDo', 'van', 'ghiChu']);
-const TRUONG_DIEU_KIEN = new Set(['id', 'nut', 'loai', 've', 'phu', 'kieu', 'truc', 'daTri', 'nguong', 'tap', 'mo', 'moNguon', 'cauHoi', 'trich', 'nguon', 'vanTay', 'trangThai', 'phieu', 'ghiChu']);
+const TRUONG_DIEU_KIEN = new Set(['id', 'nut', 'loai', 've', 'phu', 'kieu', 'truc', 'daTri', 'nguong', 'tap', 'mo', 'moNguon', 'moNguonVanTay', 'cauHoi', 'trich', 'nguon', 'vanTay', 'trangThai', 'phieu', 'ghiChu']);
 const TRUONG_GIAI_CHONG = new Set(['id', 'nut', 'loai', 'cap', 'cach', 'trich', 'nguon', 'vanTay', 'trangThai', 'phieu', 'ghiChu']);
 const TRUONG_CANH_TRANH = new Set(['id', 'nut', 'loai', 'nhomCanhTranh', 'phepThu', 'trich', 'nguon', 'vanTay', 'trangThai', 'phieu', 'ghiChu']);
-const TRUONG_BANG_ANH_EM = new Set(['khuon', 'cha', 'chuong', 'chuoiCha', 'anhEm', 'giaiChong', 'co', 'vanTay']);
+const TRUONG_BANG_ANH_EM = new Set(['khuon', 'cha', 'chuong', 'chuoiCha', 'anhEm', 'giaiChong', 'co', 'vanTayCau', 'vanTay']);
 const CO_DEN = new Set(['KHONG_DUOC_LA', 'PHAI_LA', 'CHI_LIET_KE']);
 const CO_VOI = new Set(['TACH_ANH_EM', 'NGUONG']);
 const chuoi = (v) => typeof v === 'string' && v.trim().length > 0;
@@ -102,6 +102,24 @@ function kiemDieuKien(x) {
     if (!hopLeMoNguon(x.moNguon)) loi.push(`${o}: mo ${x.mo} phải có moNguon là id câu định nghĩa/hướng dẫn hợp lệ (không tb:)`);
   } else if (x.moNguon !== undefined) {
     loi.push(`${o}: mo ${x.mo} không mang moNguon`);
+  }
+  if (x.moNguonVanTay !== undefined) {
+    if (x.mo !== 'DINH_NGHIA_LUAT' && x.mo !== 'MO_TA_HUONG_DAN') {
+      loi.push(`${o}: mo ${x.mo} không mang moNguonVanTay`);
+    } else if (typeof x.moNguon === 'string') {
+      const okStr = typeof x.moNguonVanTay === 'string' && RE_VAN.test(x.moNguonVanTay);
+      const okObj = Boolean(x.moNguonVanTay) && typeof x.moNguonVanTay === 'object' && !Array.isArray(x.moNguonVanTay)
+        && Object.keys(x.moNguonVanTay).length === 1
+        && Object.hasOwn(x.moNguonVanTay, x.moNguon)
+        && RE_VAN.test(x.moNguonVanTay[x.moNguon] || '');
+      if (!okStr && !okObj) loi.push(`${o}: moNguonVanTay phải là sha256 hex hoặc object { [cauId]: sha256 } khớp moNguon`);
+    } else if (Array.isArray(x.moNguon)) {
+      const mnSet = new Set(x.moNguon);
+      const okObj = Boolean(x.moNguonVanTay) && typeof x.moNguonVanTay === 'object' && !Array.isArray(x.moNguonVanTay)
+        && Object.entries(x.moNguonVanTay).every(([k, v]) => mnSet.has(k) && RE_VAN.test(v || ''))
+        && x.moNguon.every((mnId) => Object.hasOwn(x.moNguonVanTay, mnId));
+      if (!okObj) loi.push(`${o}: moNguonVanTay phải là object { [cauId]: sha256 } khớp mọi phần tử moNguon`);
+    }
   }
   if (!chuoi(x.cauHoi)) loi.push(`${o}: thiếu cauHoi`);
   else if (/\n/.test(x.cauHoi) || x.cauHoi.length > 300) loi.push(`${o}: cauHoi phải là một câu hỏi ngắn (một dòng, ≤ 300 ký tự)`);
@@ -203,6 +221,17 @@ export function kiemBangAnhEm(x) {
   if (x.giaiChong !== undefined && !Array.isArray(x.giaiChong)) loi.push(`${o}: giaiChong phải là mảng`);
   if (!Array.isArray(x.co) || !x.co.every((c) => CO_BANG_ANH_EM.includes(c))) {
     loi.push(`${o}: co chỉ gồm ${CO_BANG_ANH_EM.join(' | ')}`);
+  }
+  if (x.vanTayCau !== undefined) {
+    if (!x.vanTayCau || typeof x.vanTayCau !== 'object' || Array.isArray(x.vanTayCau)) {
+      loi.push(`${o}: vanTayCau phải là object { [cauId]: sha256 }`);
+    } else {
+      for (const [k, v] of Object.entries(x.vanTayCau)) {
+        if (!RE_CAU.test(k) || /^tb:/.test(k) || !RE_VAN.test(v || '')) {
+          loi.push(`${o}: vanTayCau["${k}"] không hợp lệ`);
+        }
+      }
+    }
   }
   if (!RE_VAN.test(x.vanTay || '')) loi.push(`${o}: vanTay phải là sha256 hex`);
   return loi;

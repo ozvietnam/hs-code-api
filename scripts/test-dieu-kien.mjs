@@ -27,11 +27,12 @@ import {
   chiaVeDieuKien,
   haiNutRoiNhau,
 } from './ho-so-ma/bang-anh-em.mjs';
-import { chayCong, napLuatCong, parseCongArg, vanTay, chuanSo } from './ho-so-ma/cong.mjs';
+import { chayCong, napLuatCong, parseCongArg, vanTay, chuanSo, cacNutCungDong } from './ho-so-ma/cong.mjs';
 import {
   tachDieuKienNut,
   tachDanhSachNut,
   chuanHoaDieuKien,
+  docBool,
   goiOpenAICompatible,
   rutJsonDieuKien,
   dungLoiHoiGoiNhom,
@@ -1313,6 +1314,183 @@ const KHO_CHUAN = ghiHoSoTam({
     && r8501RealCong.cong[11].loi.length === 0
     && r8501Sodiem.trangThai === 'DO' && r8501Sodiem.congLoi.includes(6),
     { n8543: vang8543Dk.length, n8501: vang8501Dk.length, khopNguyenVan, khuon: r8501RealCong.khuon.length, congLoi: r8501Sodiem.congLoi });
+}
+
+// ---------- 11. Hồi quy Challenger R3 (moNguon staleness, vungChong Gate 8, docBool, cacNutCungDong 2308) ----------
+{
+  // R3-1: moNguon staleness khi không có DINH_NGHIA M-72/73 (qua moNguonVanTay và qua bang-anh-em.vanTayCau)
+  const dkNormMn = chuanHoaDieuKien([
+    {
+      ve: 1, phu: false, kieu: 'CO_KHONG', mo: 'DINH_NGHIA_LUAT',
+      moNguon: 'chuong:02:kq:34#1',
+      cauHoi: 'Thịt có "có xương" không?', trich: 'có xương', nguon: 'bieu:020120#1',
+    },
+    {
+      ve: 2, phu: false, kieu: 'CO_KHONG', mo: 'DINH_NGHIA_LUAT',
+      moNguon: ['chuong:02:kq:34#1', 'chuong:02:kq:34#2'],
+      cauHoi: 'Thịt có "có xương" theo 2 câu?', trich: 'có xương', nguon: 'bieu:020120#1',
+    },
+  ], 'bieu:020120', L_VANG);
+  const vtKq1 = vanTay(L_VANG.chuCau('chuong:02:kq:34#1'));
+  const vtKq2 = vanTay(L_VANG.chuCau('chuong:02:kq:34#2'));
+  const mnKhuonBad1 = kiemBanGhi({ ...dkNormMn.banGhi[0], moNguonVanTay: 'not-sha256' });
+  const mnKhuonBad2 = kiemBanGhi({ ...dkNormMn.banGhi[1], moNguonVanTay: { 'chuong:02:kq:34#1': vtKq1 } });
+  const mnKhuonBad3 = kiemBanGhi({ ...dkVang('bieu:0201', 9, 1, false, 'CO_KHONG', 'NGHIA_THUONG', 'Hỏi?', 'Thịt', 'bieu:0201#1'), moNguonVanTay: vtKq1 });
+
+  // Tạo bản sao luật mutate chuong:02:kq:34#1 (không có DINH_NGHIA nào trong kho hồ sơ)
+  const luatMnDoi = path.join(TAM, 'luat-mn-doi');
+  fs.cpSync(LUAT_VANG, luatMnDoi, { recursive: true });
+  const chLines = fs.readFileSync(path.join(luatMnDoi, 'chuong.jsonl'), 'utf8').split('\n').filter(Boolean).map((l) => {
+    const o = JSON.parse(l);
+    if (o.id === 'chuong:02') o.nguyenVan = o.nguyenVan.replace('có xương', 'CÓ XƯƠNG (ĐÃ SỬA)');
+    return JSON.stringify(o);
+  });
+  fs.writeFileSync(path.join(luatMnDoi, 'chuong.jsonl'), `${chLines.join('\n')}\n`);
+  const cauChLines = fs.readFileSync(path.join(luatMnDoi, 'cau', 'chuong.jsonl'), 'utf8').split('\n').filter(Boolean).map((l) => {
+    const o = JSON.parse(l);
+    if (o.id === 'chuong:02:kq:34#1') {
+      const chuGoc = L_VANG.chuCau('chuong:02:kq:34#1');
+      const chuMoi = chuGoc.replace('có xương', 'CÓ XƯƠNG (ĐÃ SỬA)');
+      o.den = o.tu + chuMoi.length;
+    }
+    return JSON.stringify(o);
+  });
+  fs.writeFileSync(path.join(luatMnDoi, 'cau', 'chuong.jsonl'), `${cauChLines.join('\n')}\n`);
+  const L_MN_DOI = napLuatCong(luatMnDoi);
+
+  const VANG_0201_MN_VT = [
+    dkVang('bieu:0201', 1, 1, false, 'GIA_TRI', 'DINH_NGHIA_LUAT', 'Động vật thuộc loài nào?', 'động vật họ trâu bò', 'bieu:0201#1', { truc: 'loài', tap: ['động vật họ trâu bò'], moNguon: 'nhom:0201:ct:1#1' }),
+    dkVang('bieu:0201', 2, 1, false, 'GIA_TRI', 'MO_TA_HUONG_DAN', 'Sản phẩm là gì?', 'Thịt', 'bieu:0201#1', { truc: 'sản phẩm', tap: ['Thịt'], moNguon: 'chuong:02:kq:2#1' }),
+    dkVang('bieu:0201', 3, 1, false, 'GIA_TRI', 'DINH_NGHIA_LUAT', 'Trạng thái bảo quản là gì?', 'tươi hoặc ướp lạnh', 'bieu:0201#1', { truc: 'trạng thái', tap: ['tươi', 'ướp lạnh'], moNguon: 'chuong:02:kq:20#1' }),
+    dkVang('bieu:020110', 1, 1, false, 'GIA_TRI', 'DINH_NGHIA_LUAT', 'Thịt cả con/nửa con?', 'Thịt cả con và nửa con', 'bieu:020110#1', { truc: 'DANG', tap: ['cả con', 'nửa con'], moNguon: 'chuong:02:kq:2#1' }),
+    dkVang('bieu:020120', 1, 1, true, 'GIA_TRI', 'DINH_NGHIA_LUAT', 'Thịt cả con/nửa con?', 'Thịt pha có xương khác', 'bieu:020120#1', { truc: 'DANG', tap: ['cả con', 'nửa con'], moNguon: 'chuong:02:kq:2#1' }),
+    dkVang('bieu:020120', 2, 1, false, 'CO_KHONG', 'DINH_NGHIA_LUAT', 'Thịt có "có xương" không?', 'có xương', 'bieu:020120#1', { moNguon: 'chuong:02:kq:34#1', moNguonVanTay: vtKq1 }),
+    dkVang('bieu:020130', 1, 1, true, 'CO_KHONG', 'DINH_NGHIA_LUAT', 'Thịt có "có xương" không?', 'Thịt lọc không xương', 'bieu:020130#1', { moNguon: 'chuong:02:kq:34#1', moNguonVanTay: vtKq1 }),
+  ];
+  const khoMnVt = ghiHoSoTam({ dkList: VANG_0201_MN_VT });
+  const rMnVtDoi = chamDiemNhom('0201', { luat: luatMnDoi, hoSo: khoMnVt, L: L_MN_DOI });
+
+  // Trường hợp không có moNguonVanTay trên DIEU_KIEN, nhưng đã sinh bang-anh-em/02.jsonl (vanTayCau)
+  const VANG_0201_NO_MN_VT = VANG_0201_MN_VT.map(({ moNguonVanTay: _drop, ...rest }) => rest);
+  const khoMnBang = ghiHoSoTam({ dkList: VANG_0201_NO_MN_VT });
+  const rSinhBang02 = sinhBangAnhEm({ chuong: '02', chaIds: ['bieu:0201'], luat: LUAT_VANG, hoSo: khoMnBang, ghi: true });
+  const rMnBangDoi = chamDiemNhom('0201', { luat: luatMnDoi, hoSo: khoMnBang, L: L_MN_DOI });
+
+  kiem('HỒI QUY R3-1 (moNguon staleness): phát hiện đổi chữ moNguon qua moNguonVanTay và qua bang-anh-em.vanTayCau không cần DINH_NGHIA',
+    dkNormMn.banGhi.length === 2
+    && dkNormMn.banGhi[0].moNguonVanTay === vtKq1
+    && dkNormMn.banGhi[1].moNguonVanTay?.['chuong:02:kq:34#1'] === vtKq1
+    && dkNormMn.banGhi[1].moNguonVanTay?.['chuong:02:kq:34#2'] === vtKq2
+    && mnKhuonBad1.length > 0 && mnKhuonBad2.length > 0 && mnKhuonBad3.length > 0
+    && rMnVtDoi.trangThai === 'DO'
+    && rMnVtDoi.cauDoiVanTay.includes('chuong:02:kq:34#1')
+    && rMnVtDoi.nutCanMoLai.includes('bieu:020120') && rMnVtDoi.nutCanMoLai.includes('bieu:020130')
+    && rSinhBang02.bang[0]?.vanTayCau?.['chuong:02:kq:34#1'] === vtKq1
+    && rMnBangDoi.trangThai === 'DO'
+    && rMnBangDoi.cauDoiVanTay.includes('chuong:02:kq:34#1')
+    && rMnBangDoi.nutCanMoLai.includes('bieu:020120'),
+    { rMnVtDoi, rMnBangDoi, vanTayCau: rSinhBang02.bang[0]?.vanTayCau });
+
+  // R3-2: vungChong phải chặn Cổng 8 và so-diem DO kể cả khi haiNutRoiNhau === true (khớp bang-anh-em)
+  const vcRoiNhau = [{ nut: 'bieu:0201', cap: ['bieu:020120', 'bieu:020130'] }];
+  const r8VcRoi = chayCong({ luat: LUAT_VANG, hoSo: khoMnVt, phamVi: ['0201'], chiTrong: true, cong: [8], L: L_VANG, vungChong: vcRoiNhau });
+  const rSdVcRoi = chamDiemNhom('0201', { luat: LUAT_VANG, hoSo: khoMnVt, L: L_VANG, vungChong: vcRoiNhau });
+  const gc0201 = { id: 'hs:bieu:0201:8151', nut: 'bieu:0201', loai: 'GIAI_CHONG', cap: ['bieu:020120', 'bieu:020130'], cach: 'CHU_GIAI', trich: 'có xương', nguon: 'chuong:02:kq:34#1' };
+  const khoVcGiai = ghiHoSoTam({ dkList: [...VANG_0201_MN_VT, gc0201] });
+  const rSdVcGiai = chamDiemNhom('0201', { luat: LUAT_VANG, hoSo: khoVcGiai, L: L_VANG, vungChong: vcRoiNhau });
+
+  kiem('HỒI QUY R3-2 (vungChong Gate 8): VUNG_CHONG chặn cổng 8 và so-diem DO dù haiNutRoiNhau=true; có GIAI_CHONG -> DONG',
+    r8VcRoi.cong[8].dem.vungChong === 1
+    && r8VcRoi.cong[8].loi.some((l) => /VUNG_CHONG/.test(l))
+    && rSdVcRoi.trangThai === 'DO' && rSdVcRoi.congLoi.includes(8)
+    && rSdVcGiai.trangThai === 'DONG',
+    { c8: r8VcRoi.cong[8], sdVc: rSdVcRoi.congLoi, sdGiai: rSdVcGiai.trangThai });
+
+  // R3-3: docBool & chuanHoaDieuKien không ép 'false' -> true cho phu / daTri
+  const rBool = chuanHoaDieuKien([{
+    ve: 1,
+    phu: 'false',
+    kieu: 'GIA_TRI',
+    truc: 'chất liệu mặt ngoài',
+    daTri: 'false',
+    tap: ['tấm plastic'],
+    mo: 'NGHIA_THUONG',
+    cauHoi: 'Chất liệu mặt ngoài?',
+    trich: 'tấm plastic',
+    nguon: 'bieu:42022210#1',
+  }], 'bieu:42022210', L_VANG);
+  const rBoolBad = chuanHoaDieuKien([{
+    ve: 1,
+    phu: false,
+    kieu: 'GIA_TRI',
+    truc: 'chất liệu mặt ngoài',
+    daTri: 'co-the',
+    tap: ['tấm plastic'],
+    mo: 'NGHIA_THUONG',
+    cauHoi: 'Chất liệu mặt ngoài?',
+    trich: 'tấm plastic',
+    nguon: 'bieu:42022210#1',
+  }], 'bieu:42022210', L_VANG);
+  let docBoolErr = false;
+  try { docBool('khong-hop-le'); } catch { docBoolErr = true; }
+  kiem('HỒI QUY R3-3 (docBool): phu="false" & daTri="false" -> false, từ chối chuỗi boolean lạ',
+    docBool('false') === false && docBool('0') === false && docBool(0) === false && docBool('no') === false && docBool('không') === false
+    && docBool('true') === true && docBool('1') === true && docBool(1) === true && docBool('yes') === true && docBool('có') === true
+    && docBoolErr
+    && rBool.banGhi.length === 1 && rBool.banGhi[0].phu === false && rBool.banGhi[0].daTri === false
+    && rBoolBad.banGhi.length === 0 && rBoolBad.loi.some((e) => /daTri không hợp lệ/.test(e)),
+    { rBool, rBoolBad });
+
+  // R3-4: chuỗi cungDong / suyRa nhiều bước trên biểu thật (bieu:2308 -> bieu:230800 -> bieu:23080000)
+  const L_REAL = napLuatCong(LUAT_THAT);
+  const metaReal = napBieuMeta(LUAT_THAT);
+  const cd2308 = cacNutCungDong('bieu:2308', L_REAL, metaReal);
+  const cdCycle = cacNutCungDong('a', { cay: { con: new Map(), theoId: new Map() } }, new Map([
+    ['a', { cungDong: 'b' }],
+    ['b', { cungDong: 'a' }],
+  ]));
+  const taoBo2308 = (nutDat) => ghiHoSoTam({
+    dkList: [
+      {
+        id: `hs:${nutDat}:8101`,
+        nut: nutDat,
+        loai: 'DIEU_KIEN',
+        ve: 1,
+        phu: false,
+        kieu: 'CO_KHONG',
+        mo: 'NGHIA_THUONG',
+        cauHoi: 'Có phải nguyên liệu/phế liệu thực vật dùng làm thức ăn chăn nuôi chưa được chi tiết ở nơi khác không?',
+        trich: 'chưa được chi tiết hoặc ghi ở nơi khác',
+        nguon: `${nutDat}#1`,
+        vanTay: vanTay(L_REAL.chuCau(`${nutDat}#1`)),
+      },
+      {
+        id: `hs:${nutDat}:8171`,
+        nut: nutDat,
+        loai: 'CANH_TRANH',
+        nhomCanhTranh: ['bieu:1213', 'bieu:1214'],
+        phepThu: [`${nutDat}#1`],
+        trich: 'chưa được chi tiết hoặc ghi ở nơi khác',
+        nguon: `${nutDat}#1`,
+        vanTay: vanTay(L_REAL.chuCau(`${nutDat}#1`)),
+      },
+    ],
+  });
+  const sd2308_4 = chamDiemNhom('2308', { luat: LUAT_THAT, hoSo: taoBo2308('bieu:2308'), L: L_REAL, bieuMeta: metaReal });
+  const sd2308_6 = chamDiemNhom('2308', { luat: LUAT_THAT, hoSo: taoBo2308('bieu:230800'), L: L_REAL, bieuMeta: metaReal });
+  const sd2308_8 = chamDiemNhom('2308', { luat: LUAT_THAT, hoSo: taoBo2308('bieu:23080000'), L: L_REAL, bieuMeta: metaReal });
+  const r2308Thieu = chayCong({ luat: LUAT_THAT, hoSo: khoRongCho2308(), phamVi: ['2308'], chiTrong: true, cong: [6, 12], L: L_REAL, bieuMeta: metaReal });
+  function khoRongCho2308() { return ghiHoSoTam({ dkList: [] }); }
+
+  kiem('HỒI QUY R3-4 (cacNutCungDong 2308): đặt DIEU_KIEN + CANH_TRANH ở 2308, 230800 hoặc 23080000 đều DONG; thiếu -> đỏ cổng 6 & 12',
+    ['bieu:2308', 'bieu:230800', 'bieu:23080000'].every((id) => cd2308.includes(id))
+    && cdCycle.length === 2
+    && sd2308_4.trangThai === 'DONG'
+    && sd2308_6.trangThai === 'DONG'
+    && sd2308_8.trangThai === 'DONG'
+    && r2308Thieu.cong[6].loi.length === 3
+    && r2308Thieu.cong[12].loi.length === 3,
+    { cd2308, sd4: sd2308_4.congLoi, sd6: sd2308_6.congLoi, sd8: sd2308_8.congLoi, thieu6: r2308Thieu.cong[6].loi.length, thieu12: r2308Thieu.cong[12].loi.length });
 }
 
 fs.rmSync(TAM, { recursive: true, force: true });

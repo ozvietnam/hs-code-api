@@ -295,6 +295,25 @@ export function rutJsonDieuKien(text) {
   return rutJsonGoiNhom(text).dieuKien;
 }
 
+/** Chuyển đổi an toàn boolean (tránh Boolean('false') === true). */
+export function docBool(v, macDinh = false) {
+  if (v === undefined || v === null) return macDinh;
+  if (typeof v === 'boolean') return v;
+  if (typeof v === 'number') {
+    if (v === 1) return true;
+    if (v === 0) return false;
+    throw new Error(`giá trị boolean số không hợp lệ: ${v}`);
+  }
+  if (typeof v === 'string') {
+    const s = v.normalize('NFC').trim().toLowerCase();
+    if (!s) return macDinh;
+    if (s === 'true' || s === '1' || s === 'yes' || s === 'có' || s === 'co') return true;
+    if (s === 'false' || s === '0' || s === 'no' || s === 'không' || s === 'khong') return false;
+    throw new Error(`giá trị boolean chuỗi không hợp lệ: "${v}"`);
+  }
+  throw new Error(`kiểu boolean không hợp lệ: ${typeof v}`);
+}
+
 /** Chuẩn hoá đề xuất thô từ LLM thành các bản ghi DIEU_KIEN hợp lệ theo khuôn.mjs. */
 export function chuanHoaDieuKien(rawList, nut, L, { batDauSo = 8101, nguongSanCo = [], moHinh = null } = {}) {
   const banGhi = [];
@@ -318,16 +337,44 @@ export function chuanHoaDieuKien(rawList, nut, L, { batDauSo = 8101, nguongSanCo
       const parsedVe = Number.parseInt(item.ve, 10);
       if (Number.isInteger(parsedVe) && parsedVe >= 0) ve = parsedVe;
     }
-    const phu = Boolean(item.phu);
+    let phu;
+    try {
+      phu = docBool(item.phu, false);
+    } catch (err) {
+      loi.push(`${nut}: phu không hợp lệ (${err.message})`);
+      continue;
+    }
     const kieu = KIEU_DIEU_KIEN.includes(item.kieu) ? item.kieu : 'CO_KHONG';
     const mo = MO_DIEU_KIEN.includes(item.mo) ? item.mo : (kieu === 'SO' ? 'NGUONG' : 'NGHIA_THUONG');
     const truc = kieu === 'GIA_TRI' && item.truc !== undefined ? gon(item.truc) : undefined;
-    const daTri = kieu === 'GIA_TRI' && item.daTri !== undefined ? Boolean(item.daTri) : undefined;
+    let daTri;
+    if (kieu === 'GIA_TRI' && item.daTri !== undefined && item.daTri !== null && String(item.daTri).trim() !== '') {
+      try {
+        daTri = docBool(item.daTri, false);
+      } catch (err) {
+        loi.push(`${nut}: daTri không hợp lệ (${err.message})`);
+        continue;
+      }
+    }
     let moNguon;
+    let moNguonVanTay;
     if ((mo === 'DINH_NGHIA_LUAT' || mo === 'MO_TA_HUONG_DAN') && item.moNguon !== undefined) {
       moNguon = Array.isArray(item.moNguon)
         ? item.moNguon.map(gon).filter(Boolean)
         : gon(item.moNguon);
+      if (typeof moNguon === 'string' && moNguon && !/^tb:/.test(moNguon)) {
+        const mnChu = L.chuCau(moNguon);
+        if (mnChu !== null) moNguonVanTay = vanTay(mnChu);
+      } else if (Array.isArray(moNguon) && moNguon.length > 0) {
+        const entries = [];
+        let du = true;
+        for (const mnId of moNguon) {
+          const mnChu = /^tb:/.test(mnId) ? null : L.chuCau(mnId);
+          if (mnChu === null) { du = false; break; }
+          entries.push([mnId, vanTay(mnChu)]);
+        }
+        if (du) moNguonVanTay = Object.fromEntries(entries);
+      }
     }
     const cauHoi = gon(item.cauHoi || item.dieuKien || '').slice(0, 300);
     if (!cauHoi) { loi.push(`${nut}: thiếu cauHoi cho trích "${trich.slice(0, 40)}"`); continue; }
@@ -345,6 +392,7 @@ export function chuanHoaDieuKien(rawList, nut, L, { batDauSo = 8101, nguongSanCo
       ...(kieu === 'GIA_TRI' && Array.isArray(item.tap) ? { tap: item.tap.map(gon).filter(Boolean) } : {}),
       mo,
       ...(moNguon !== undefined ? { moNguon } : {}),
+      ...(moNguonVanTay !== undefined ? { moNguonVanTay } : {}),
       cauHoi,
       trich,
       nguon,

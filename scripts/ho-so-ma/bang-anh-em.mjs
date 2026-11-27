@@ -602,6 +602,25 @@ export function taoBangChoCha(chaId, L, duLieu) {
   const tatCaDk = [...dksChuoiCha, ...dkCoTen];
   if (tatCaDk.some((d) => d.mo === 'NGHIA_THUONG')) co.add('NGHIA_THUONG');
 
+  const tatCaDkChoVanTay = [...dksChuoiCha, ...con.flatMap((id) => dkTheoNut.get(id) || [])];
+  const vanTayCau = {};
+  if (typeof L?.chuCau === 'function') {
+    const cauIds = new Set();
+    for (const d of tatCaDkChoVanTay) {
+      if (typeof d?.nguon === 'string' && d.nguon && !/^tb:/.test(d.nguon)) cauIds.add(d.nguon);
+      if (typeof d?.moNguon === 'string' && d.moNguon && !/^tb:/.test(d.moNguon)) cauIds.add(d.moNguon);
+      else if (Array.isArray(d?.moNguon)) {
+        for (const mnId of d.moNguon) {
+          if (typeof mnId === 'string' && mnId && !/^tb:/.test(mnId)) cauIds.add(mnId);
+        }
+      }
+    }
+    for (const cauId of [...cauIds].sort()) {
+      const chu = L.chuCau(cauId);
+      if (chu !== null && chu !== undefined) vanTayCau[cauId] = sha256(chu);
+    }
+  }
+
   if (coLoaiKhac) {
     const lienQuan = new Set([chaId, ...con]);
     const coViDu = (viDu || []).some((vd) => {
@@ -621,6 +640,7 @@ export function taoBangChoCha(chaId, L, duLieu) {
     anhEm,
     giaiChong,
     co: coList,
+    ...(Object.keys(vanTayCau).length ? { vanTayCau } : {}),
   };
   return {
     ...payload,
@@ -805,11 +825,36 @@ export function doBangAnhEm(chaId, ganDieuKien, bangTheoCha, { L = null } = {}) 
   return { trangThai: 'DUNG_NUT', dich: hienTai, duong: daDi };
 }
 
+function napChuCauBang(thuMuc) {
+  if (!thuMuc || !fs.existsSync(thuMuc)) return null;
+  const nut = new Map();
+  const cau = new Map();
+  for (const f of fs.readdirSync(thuMuc).filter((x) => x.endsWith('.jsonl') && x !== 'thong-bao.jsonl').sort()) {
+    for (const n of G.docJsonl(path.join(thuMuc, f))) {
+      if (n.lop !== 'TIEN_LE' && typeof n.nguyenVan === 'string') nut.set(n.id, n.nguyenVan);
+    }
+  }
+  const tmCau = path.join(thuMuc, 'cau');
+  if (fs.existsSync(tmCau)) {
+    for (const f of fs.readdirSync(tmCau).filter((x) => x.endsWith('.jsonl') && x !== 'thong-bao.jsonl').sort()) {
+      for (const c of G.docJsonl(path.join(tmCau, f))) {
+        const nId = String(c.id || '').split('#')[0];
+        if (nut.has(nId)) cau.set(c.id, { nut: nId, tu: c.tu, den: c.den });
+      }
+    }
+  }
+  return (id) => {
+    const c = cau.get(id);
+    return c ? nut.get(c.nut).slice(c.tu, c.den) : null;
+  };
+}
+
 /** Chuẩn bị chỉ mục dữ liệu từ kho hồ sơ + luật để dựng bảng anh em. */
 export function chuanBiDuLieuBang({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, L = null, viDu = [], vungChong = [] } = {}) {
   const bieuMeta = napBieuMeta(luat);
   const cay = L?.cay || G.napLuat(luat);
-  const L_full = L ? { ...L, cay } : { thuMuc: luat, cay };
+  const chuCau = typeof L?.chuCau === 'function' ? L.chuCau : napChuCauBang(luat);
+  const L_full = L ? { ...L, cay, ...(chuCau ? { chuCau } : {}) } : { thuMuc: luat, cay, ...(chuCau ? { chuCau } : {}) };
   const kho = kiemKhoHoSo(hoSo);
   const dkTheoNut = new Map();
   const giaiChongTheoCha = new Map();

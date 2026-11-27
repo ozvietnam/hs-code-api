@@ -146,6 +146,41 @@ export function parseCongArg(raw) {
   return [...new Set(out)];
 }
 
+export function cacNutCungDong(nutId, L, bieuMeta, cungDongNguoc = null) {
+  if (!nutId) return [];
+  const daTham = new Set([nutId]);
+  const hangDoi = [nutId];
+  const them = (id) => {
+    if (id && !daTham.has(id)) {
+      daTham.add(id);
+      hangDoi.push(id);
+    }
+  };
+  while (hangDoi.length) {
+    const u = hangDoi.shift();
+    const m = bieuMeta?.get(u);
+    if (m?.cungDong) them(m.cungDong);
+    if (cungDongNguoc) {
+      for (const nguonId of cungDongNguoc.get(u) || []) them(nguonId);
+    } else if (bieuMeta) {
+      const chaM = m?.cha || L?.cay?.theoId?.get(u)?.cha;
+      if (chaM && bieuMeta.get(chaM)?.cungDong === u) them(chaM);
+      for (const conId of G.conCua(u, L.cay)) {
+        if (bieuMeta.get(conId)?.cungDong === u) them(conId);
+      }
+    }
+    const conU = G.conCua(u, L.cay);
+    if (conU.length === 1 && (m?.suyRa || bieuMeta?.get(conU[0])?.suyRa)) {
+      them(conU[0]);
+    }
+    const chaU = m?.cha || L?.cay?.theoId?.get(u)?.cha;
+    if (chaU && G.conCua(chaU, L.cay).length === 1 && (m?.suyRa || bieuMeta?.get(chaU)?.suyRa)) {
+      them(chaU);
+    }
+  }
+  return [...daTham];
+}
+
 /**
  * Chạy các cổng 1..12. Mặc định chỉ chạy cổng 1..5 để giữ tương thích 100% với các bài kiểm cũ.
  * @param {{luat?: string, hoSo?: string, phamVi?: string[], chiTrong?: boolean, toiCap?: string|number|null, cong?: number[], L?: object, viDu?: object[], vungChong?: object[]}} o
@@ -347,6 +382,12 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
   const chayMoi = cong.some((k) => k >= 6);
   if (chayMoi) {
     const bieuMeta = bieuMetaDaNap || napBieuMeta(L.thuMuc);
+    const cungDongNguoc = new Map();
+    for (const [id, m] of bieuMeta) {
+      if (!m?.cungDong) continue;
+      if (!cungDongNguoc.has(m.cungDong)) cungDongNguoc.set(m.cungDong, []);
+      cungDongNguoc.get(m.cungDong).push(id);
+    }
     const R_DK = pv.length ? totDk.filter((x) => N.has(x.nut) || G.capCuaNut(x.nut) === 'GIR') : totDk;
     const R_GC = pv.length ? totGc.filter((x) => N.has(x.nut)) : totGc;
     const R_CT = pv.length ? totCt.filter((x) => N.has(x.nut)) : totCt;
@@ -373,9 +414,10 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
         const vao = (L.canhTheoTu.get(x.nguon) || []).some((e) => e.den === x.nut && loaiCanhVao(e));
         const laGir = G.capCuaNut(x.nut) === 'GIR';
         const nutCau = L.cau.get(x.nguon).nut;
+        const cungDongSet = laGir ? null : new Set(cacNutCungDong(x.nut, L, bieuMeta, cungDongNguoc));
         const dungDuong = laGir
           ? (nutCau === x.nut || nutCau.startsWith(`${x.nut}:`))
-          : vao || chu0 === G.CHUNG || chu0 === x.nut || tren.has(chu0) || anhEm.has(chu0);
+          : vao || chu0 === G.CHUNG || chu0 === x.nut || tren.has(chu0) || anhEm.has(chu0) || cungDongSet.has(chu0);
         if (!dungDuong) ra[6].loi.push(`${x.id}: nguon ${x.nguon} thuộc ${chu0 || nutCau}, không nằm trên đường đi của ${x.nut}`);
         if (!chuanSo(chu).includes(chuanSo(x.trich))) ra[6].loi.push(`${x.id}: trich không nguyên văn câu ${x.nguon} — "${ngan(x.trich)}"`);
         if (vanTay(chu) !== x.vanTay) ra[6].loi.push(`${x.id}: vanTay lệch câu ${x.nguon}`);
@@ -408,9 +450,11 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
           if (laLoaiKhacThuan(id, L, bieuMeta)) continue;
           const meta = bieuMeta.get(id);
           const dksRieng = dkTheoNut.get(id) || [];
-          const dksHieuLuc = (dksRieng.length === 0 && meta?.cungDong && meta.cungDong === meta.cha && G.conCua(meta.cha, L.cay).length === 1)
-            ? (dkTheoNut.get(meta.cungDong) || [])
-            : dksRieng;
+          const cungDongIds = cacNutCungDong(id, L, bieuMeta, cungDongNguoc);
+          const cungDongSet = new Set(cungDongIds);
+          const dksHieuLuc = dksRieng.length > 0
+            ? dksRieng
+            : cungDongIds.flatMap((nid) => (nid === id ? [] : (dkTheoNut.get(nid) || [])));
           ra[6].soKiem += 1;
           if (dksHieuLuc.length === 0) {
             ra[6].loi.push(`${id}: nút có tên chưa có bản ghi DIEU_KIEN nào`);
@@ -427,7 +471,7 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
           }
           for (const d of dks0) {
             if (d.phu) continue;
-            const hopLeVe0 = !coVeDuong || soDoan <= 1 || veDuong.size >= 2 || G.chuCuaCau(d.nguon) !== id;
+            const hopLeVe0 = !coVeDuong || soDoan <= 1 || veDuong.size >= 2 || !cungDongSet.has(G.chuCuaCau(d.nguon));
             if (!hopLeVe0) {
               ra[6].loi.push(`${d.id}: ve: 0 chỉ đi với phu: true hoặc điều kiện chung của nút`);
             }
@@ -483,6 +527,11 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
               ra[8].dem.giaiChong += 1;
               continue;
             }
+            if (vungChongSet.has(`${g.cha}|${pairKey}`) || vungChongSet.has(`*|${pairKey}`)) {
+              ra[8].dem.vungChong += 1;
+              ra[8].loi.push(`${g.cha}: VUNG_CHONG giữa ${A} và ${B} chưa có GIAI_CHONG trích luật`);
+              continue;
+            }
             const dksA = dkTheoNut.get(A) || [];
             const dksB = dkTheoNut.get(B) || [];
             if (haiNutRoiNhau(dksA, dksB, nguongById)) {
@@ -496,7 +545,7 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
               const nb = nguongById.get(dksB[0].nguong)?.nguong;
               if (na && nb && khoaNguong(na) === khoaNguong(nb) && chongKhoang(na, nb)) chongSoTrungTruc = true;
             }
-            if (chongSoTrungTruc || vungChongSet.has(`${g.cha}|${pairKey}`) || vungChongSet.has(`*|${pairKey}`)) {
+            if (chongSoTrungTruc) {
               ra[8].dem.vungChong += 1;
               ra[8].loi.push(`${g.cha}: VUNG_CHONG giữa ${A} và ${B} chưa có GIAI_CHONG trích luật`);
             } else {
@@ -648,7 +697,8 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
           const ten = L.cay.theoId.get(id)?.ten || bieuMeta.get(id)?.nguyenVan || '';
           if (!RE_CHUA_CHI_TIET.test(ten)) continue;
           ra[12].soKiem += 1;
-          if (!(canhTranhTheoNut.get(id) || []).length) {
+          const cungDongIds = cacNutCungDong(id, L, bieuMeta, cungDongNguoc);
+          if (!cungDongIds.some((nid) => (canhTranhTheoNut.get(nid) || []).length > 0)) {
             ra[12].loi.push(`${id}: nhóm "chưa được chi tiết hoặc ghi ở nơi khác" chưa có bản ghi CANH_TRANH`);
           }
         }
