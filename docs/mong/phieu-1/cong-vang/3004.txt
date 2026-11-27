@@ -1,0 +1,99 @@
+FAIL khuôn: 84783 bản ghi, 636 lỗi
+  ✗ dieu-kien/02.jsonl:1: hs:bieu:0201:8101: kieu GIA_TRI phải có truc là tên trục một dòng không rỗng
+  ✗ dieu-kien/02.jsonl:1: hs:bieu:0201:8101: mo DINH_NGHIA_LUAT phải có moNguon là id câu định nghĩa/hướng dẫn hợp lệ (không tb:)
+  ✗ dieu-kien/02.jsonl:2: hs:bieu:0201:8102: kieu GIA_TRI phải có truc là tên trục một dòng không rỗng
+  ✗ dieu-kien/02.jsonl:2: hs:bieu:0201:8102: mo MO_TA_HUONG_DAN phải có moNguon là id câu định nghĩa/hướng dẫn hợp lệ (không tb:)
+  ✗ dieu-kien/02.jsonl:3: hs:bieu:0201:8103: kieu GIA_TRI phải có truc là tên trục một dòng không rỗng
+  ✗ dieu-kien/02.jsonl:3: hs:bieu:0201:8103: mo DINH_NGHIA_LUAT phải có moNguon là id câu định nghĩa/hướng dẫn hợp lệ (không tb:)
+  ✗ dieu-kien/02.jsonl:5: hs:bieu:020110:8101: kieu GIA_TRI phải có truc là tên trục một dòng không rỗng
+  ✗ dieu-kien/02.jsonl:5: hs:bieu:020110:8101: mo DINH_NGHIA_LUAT phải có moNguon là id câu định nghĩa/hướng dẫn hợp lệ (không tb:)
+  ✗ dieu-kien/02.jsonl:6: hs:bieu:020120:8101: kieu GIA_TRI phải có truc là tên trục một dòng không rỗng
+  ✗ dieu-kien/02.jsonl:6: hs:bieu:020120:8101: mo DINH_NGHIA_LUAT phải có moNguon là id câu định nghĩa/hướng dẫn hợp lệ (không tb:)
+  ✗ dieu-kien/02.jsonl:7: hs:bieu:020120:8102: mo DINH_NGHIA_LUAT phải có moNguon là id câu định nghĩa/hướng dẫn hợp lệ (không tb:)
+  ✗ dieu-kien/02.jsonl:8: hs:bieu:020130:8101: mo DINH_NGHIA_LUAT phải có moNguon là id câu định nghĩa/hướng dẫn hợp lệ (không tb:)
+  ✗ dieu-kien/30.jsonl:105: hs:bieu:3004:8201: id phải là hs:<nut>:81NN
+  ✗ dieu-kien/30.jsonl:106: hs:bieu:3004:8202: id phải là hs:<nut>:81NN
+  ✗ dieu-kien/30.jsonl:107: hs:bieu:3004:8203: id phải là hs:<nut>:81NN
+  ✗ dieu-kien/30.jsonl:108: hs:bieu:3004:8204: id phải là hs:<nut>:81NN
+  ✗ dieu-kien/30.jsonl:109: hs:bieu:300410:8201: trường lạ "tiep"
+  ✗ dieu-kien/30.jsonl:109: hs:bieu:300410:8201: trường lạ "canDuKien"
+  ✗ dieu-kien/30.jsonl:109: hs:bieu:300410:8201: id phải là hs:<nut>:81NN
+  ✗ dieu-kien/30.jsonl:110: hs:bieu:3004101:8201: trường lạ "tiep"
+  ✗ dieu-kien/30.jsonl:110: hs:bieu:3004101:8201: trường lạ "canDuKien"
+  ✗ dieu-kien/30.jsonl:110: hs:bieu:3004101:8201: id phải là hs:<nut>:81NN
+  ✗ dieu-kien/30.jsonl:111: hs:bieu:300420:8201: trường lạ "tiep"
+  ✗ dieu-kien/30.jsonl:111: hs:bieu:300420:8201: trường lạ "canDuKien"
+  ✗ dieu-kien/30.jsonl:111: hs:bieu:300420:8201: id phải là hs:<nut>:81NN
+  ✗ dieu-kien/30.jsonl:112: hs:bieu:300420:8202: trường lạ "tiep"
+  ✗ dieu-kien/30.jsonl:112: hs:bieu:300420:8202: trường lạ "canDuKien"
+  ✗ dieu-kien/30.jsonl:112: hs:bieu:300420:8202: id phải là hs:<nut>:81NN
+  ✗ dieu-kien/30.jsonl:113: hs:bieu:300420:8203: trường lạ "tiep"
+  ✗ dieu-kien/30.jsonl:113: hs:bieu:300420:8203: trường lạ "canDuKien"
+PASS cổng 6 TÁCH — phạm vi bieu:3004: 173 mục kiểm, 0 lỗi
+FAIL cổng 7 PHỦ — phạm vi bieu:3004: 27 mục kiểm, 1 lỗi
+  ✗ bieu:300410: HO_PHU — nhóm không có "Loại khác" nhưng chưa chứng minh phủ kín phạm vi cha
+PASS cổng 8 CHỒNG — phạm vi bieu:3004: 89 mục kiểm, 0 lỗi, 69 cảnh báo
+  ! bieu:3004: CHUA_CHUNG_MINH_TACH giữa bieu:300410 và bieu:30043 (cần phiếu hoặc GIAI_CHONG nếu gặp hàng chồng)
+  ! bieu:3004: CHUA_CHUNG_MINH_TACH giữa bieu:300410 và bieu:30044 (cần phiếu hoặc GIAI_CHONG nếu gặp hàng chồng)
+  ! bieu:3004: CHUA_CHUNG_MINH_TACH giữa bieu:300410 và bieu:300450 (cần phiếu hoặc GIAI_CHONG nếu gặp hàng chồng)
+  ! bieu:3004: CHUA_CHUNG_MINH_TACH giữa bieu:300410 và bieu:300460 (cần phiếu hoặc GIAI_CHONG nếu gặp hàng chồng)
+  ! bieu:300410: CHUA_CHUNG_MINH_TACH giữa bieu:3004101 và bieu:30041020 (cần phiếu hoặc GIAI_CHONG nếu gặp hàng chồng)
+  ! bieu:3004101: CHUA_CHUNG_MINH_TACH giữa bieu:30041015 và bieu:30041016 (cần phiếu hoặc GIAI_CHONG nếu gặp hàng chồng)
+  ! bieu:300420: CHUA_CHUNG_MINH_TACH giữa bieu:30042010 và bieu:3004203 (cần phiếu hoặc GIAI_CHONG nếu gặp hàng chồng)
+  ! bieu:300420: CHUA_CHUNG_MINH_TACH giữa bieu:30042010 và bieu:3004207 (cần phiếu hoặc GIAI_CHONG nếu gặp hàng chồng)
+  ! bieu:300420: CHUA_CHUNG_MINH_TACH giữa bieu:3004203 và bieu:3004207 (cần phiếu hoặc GIAI_CHONG nếu gặp hàng chồng)
+  ! bieu:30043: CHUA_CHUNG_MINH_TACH giữa bieu:300431 và bieu:300432 (cần phiếu hoặc GIAI_CHONG nếu gặp hàng chồng)
+  ! bieu:300432: CHUA_CHUNG_MINH_TACH giữa bieu:30043210 và bieu:30043240 (cần phiếu hoặc GIAI_CHONG nếu gặp hàng chồng)
+  ! bieu:30044: CHUA_CHUNG_MINH_TACH giữa bieu:300441 và bieu:300442 (cần phiếu hoặc GIAI_CHONG nếu gặp hàng chồng)
+  ! bieu:30044: CHUA_CHUNG_MINH_TACH giữa bieu:300441 và bieu:300443 (cần phiếu hoặc GIAI_CHONG nếu gặp hàng chồng)
+  ! bieu:30044: CHUA_CHUNG_MINH_TACH giữa bieu:300442 và bieu:300443 (cần phiếu hoặc GIAI_CHONG nếu gặp hàng chồng)
+  ! bieu:300449: CHUA_CHUNG_MINH_TACH giữa bieu:3004491 và bieu:3004495 (cần phiếu hoặc GIAI_CHONG nếu gặp hàng chồng)
+  ! bieu:300449: CHUA_CHUNG_MINH_TACH giữa bieu:3004491 và bieu:30044960 (cần phiếu hoặc GIAI_CHONG nếu gặp hàng chồng)
+  ! bieu:300449: CHUA_CHUNG_MINH_TACH giữa bieu:3004491 và bieu:30044970 (cần phiếu hoặc GIAI_CHONG nếu gặp hàng chồng)
+  ! bieu:300449: CHUA_CHUNG_MINH_TACH giữa bieu:3004491 và bieu:30044980 (cần phiếu hoặc GIAI_CHONG nếu gặp hàng chồng)
+  ! bieu:300449: CHUA_CHUNG_MINH_TACH giữa bieu:3004495 và bieu:30044960 (cần phiếu hoặc GIAI_CHONG nếu gặp hàng chồng)
+  ! bieu:300449: CHUA_CHUNG_MINH_TACH giữa bieu:3004495 và bieu:30044970 (cần phiếu hoặc GIAI_CHONG nếu gặp hàng chồng)
+PASS cổng 9 HỎI — phạm vi bieu:3004: 26 mục kiểm, 0 lỗi
+PASS cổng 10 DÒ — phạm vi bieu:3004: 0 mục kiểm, 0 lỗi, 26 cảnh báo
+  ! bieu:3004: THIEU_VI_DU — có "Loại khác" nhưng chưa có ca thử ví dụ chú giải/SEN
+  ! bieu:3004101: THIEU_VI_DU — có "Loại khác" nhưng chưa có ca thử ví dụ chú giải/SEN
+  ! bieu:300420: THIEU_VI_DU — có "Loại khác" nhưng chưa có ca thử ví dụ chú giải/SEN
+  ! bieu:3004203: THIEU_VI_DU — có "Loại khác" nhưng chưa có ca thử ví dụ chú giải/SEN
+  ! bieu:3004207: THIEU_VI_DU — có "Loại khác" nhưng chưa có ca thử ví dụ chú giải/SEN
+  ! bieu:3004209: THIEU_VI_DU — có "Loại khác" nhưng chưa có ca thử ví dụ chú giải/SEN
+  ! bieu:30043: THIEU_VI_DU — có "Loại khác" nhưng chưa có ca thử ví dụ chú giải/SEN
+  ! bieu:300432: THIEU_VI_DU — có "Loại khác" nhưng chưa có ca thử ví dụ chú giải/SEN
+  ! bieu:30044: THIEU_VI_DU — có "Loại khác" nhưng chưa có ca thử ví dụ chú giải/SEN
+  ! bieu:300449: THIEU_VI_DU — có "Loại khác" nhưng chưa có ca thử ví dụ chú giải/SEN
+  ! bieu:3004491: THIEU_VI_DU — có "Loại khác" nhưng chưa có ca thử ví dụ chú giải/SEN
+  ! bieu:3004495: THIEU_VI_DU — có "Loại khác" nhưng chưa có ca thử ví dụ chú giải/SEN
+  ! bieu:300450: THIEU_VI_DU — có "Loại khác" nhưng chưa có ca thử ví dụ chú giải/SEN
+  ! bieu:3004502: THIEU_VI_DU — có "Loại khác" nhưng chưa có ca thử ví dụ chú giải/SEN
+  ! bieu:3004509: THIEU_VI_DU — có "Loại khác" nhưng chưa có ca thử ví dụ chú giải/SEN
+  ! bieu:300460: THIEU_VI_DU — có "Loại khác" nhưng chưa có ca thử ví dụ chú giải/SEN
+  ! bieu:300490: THIEU_VI_DU — có "Loại khác" nhưng chưa có ca thử ví dụ chú giải/SEN
+  ! bieu:3004904: THIEU_VI_DU — có "Loại khác" nhưng chưa có ca thử ví dụ chú giải/SEN
+  ! bieu:3004905: THIEU_VI_DU — có "Loại khác" nhưng chưa có ca thử ví dụ chú giải/SEN
+  ! bieu:3004906: THIEU_VI_DU — có "Loại khác" nhưng chưa có ca thử ví dụ chú giải/SEN
+PASS cổng 11 MỞ — phạm vi bieu:3004: 104 mục kiểm, 0 lỗi, 56 cảnh báo
+  ! hs:bieu:30041015:8101: NGHIA_THUONG ("Chứa penicillin G (trừ penicillin G benzathin), phenoxymethyl penicillin hoặc muối của chú…") — có câu hỏi: "Hàng có chứa penicillin G, phenoxymethyl penicillin hoặc muối của chúng không?"
+  ! hs:bieu:30041015:8102: NGHIA_THUONG ("trừ penicillin G benzathin") — có câu hỏi: "Hàng có chứa penicillin G benzathin không?"
+  ! hs:bieu:30041016:8101: NGHIA_THUONG ("Chứa ampicillin, amoxycillin hoặc muối của chúng") — có câu hỏi: "Hàng có chứa ampicillin, amoxycillin hoặc muối của chúng không?"
+  ! hs:bieu:30041016:8102: NGHIA_THUONG ("dạng uống (*)") — có câu hỏi: "Thuốc có ở dạng uống (*) không? (ký hiệu (*) của biểu không có câu giải trong kho)"
+  ! hs:bieu:30042010:8101: NGHIA_THUONG ("Chứa gentamycin, lincomycin, sulphamethoxazole hoặc các dẫn xuất của chúng") — có câu hỏi: "Hàng có chứa gentamycin, lincomycin, sulphamethoxazole hoặc dẫn xuất của chúng không?"
+  ! hs:bieu:30042010:8102: NGHIA_THUONG ("dạng uống (*) hoặc dạng mỡ") — có câu hỏi: "Thuốc ở dạng nào? Có thuộc tập {uống, mỡ} không?"
+  ! hs:bieu:30042031:8101: NGHIA_THUONG ("Dạng uống (*)") — có câu hỏi: "Thuốc có ở dạng uống (*) không? (ký hiệu (*) của biểu không có câu giải trong kho)"
+  ! hs:bieu:30042032:8101: NGHIA_THUONG ("Dạng mỡ") — có câu hỏi: "Thuốc có ở dạng mỡ không?"
+  ! hs:bieu:30042071:8101: NGHIA_THUONG ("Dạng uống (*) hoặc dạng mỡ") — có câu hỏi: "Thuốc ở dạng nào? Có thuộc tập {uống, mỡ} không?"
+  ! hs:bieu:30042091:8101: NGHIA_THUONG ("Dạng uống (*) hoặc dạng mỡ") — có câu hỏi: "Thuốc ở dạng nào? Có thuộc tập {uống, mỡ} không?"
+  ! hs:bieu:30043210:8101: NGHIA_THUONG ("Chứa dexamethasone hoặc các dẫn xuất của chúng") — có câu hỏi: "Hàng có chứa dexamethasone hoặc dẫn xuất của nó không?"
+  ! hs:bieu:30043240:8101: NGHIA_THUONG ("Chứa hydrocortisone natri succinate hoặc fluocinolone acetonide") — có câu hỏi: "Hàng có chứa hydrocortisone natri succinate hoặc fluocinolone acetonide không?"
+  ! hs:bieu:300441:8101: NGHIA_THUONG ("Chứa ephedrine hoặc muối của nó") — có câu hỏi: "Hàng có chứa ephedrine hoặc muối của nó không?"
+  ! hs:bieu:300442:8101: NGHIA_THUONG ("Chứa pseudoephedrine (INN) hoặc muối của nó") — có câu hỏi: "Hàng có chứa pseudoephedrine (INN) hoặc muối của nó không?"
+  ! hs:bieu:300443:8101: NGHIA_THUONG ("Chứa norephedrine hoặc muối của nó") — có câu hỏi: "Hàng có chứa norephedrine hoặc muối của nó không?"
+  ! hs:bieu:30044911:8101: NGHIA_THUONG ("Dạng uống (*) hoặc tiêm") — có câu hỏi: "Thuốc ở dạng nào? Có thuộc tập {uống, tiêm} không?"
+  ! hs:bieu:30044951:8101: NGHIA_THUONG ("Dạng uống (*)") — có câu hỏi: "Thuốc có ở dạng uống (*) không? (ký hiệu (*) của biểu không có câu giải trong kho)"
+  ! hs:bieu:30044960:8102: NGHIA_THUONG ("dạng uống (*)") — có câu hỏi: "Thuốc có ở dạng uống (*) không? (ký hiệu (*) của biểu không có câu giải trong kho)"
+  ! hs:bieu:30044970:8101: NGHIA_THUONG ("Chứa atropine sulphate") — có câu hỏi: "Hàng có chứa atropine sulphate không?"
+  ! hs:bieu:30044980:8102: NGHIA_THUONG ("dùng để tiêm") — có câu hỏi: "Thuốc có ở dạng tiêm không?"
+PASS cổng 12 BÙ — phạm vi bieu:3004: 0 mục kiểm, 0 lỗi

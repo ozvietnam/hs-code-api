@@ -1,0 +1,43 @@
+FAIL khuôn: 84783 bản ghi, 636 lỗi
+  ✗ dieu-kien/02.jsonl:1: hs:bieu:0201:8101: kieu GIA_TRI phải có truc là tên trục một dòng không rỗng
+  ✗ dieu-kien/02.jsonl:1: hs:bieu:0201:8101: mo DINH_NGHIA_LUAT phải có moNguon là id câu định nghĩa/hướng dẫn hợp lệ (không tb:)
+  ✗ dieu-kien/02.jsonl:2: hs:bieu:0201:8102: kieu GIA_TRI phải có truc là tên trục một dòng không rỗng
+  ✗ dieu-kien/02.jsonl:2: hs:bieu:0201:8102: mo MO_TA_HUONG_DAN phải có moNguon là id câu định nghĩa/hướng dẫn hợp lệ (không tb:)
+  ✗ dieu-kien/02.jsonl:3: hs:bieu:0201:8103: kieu GIA_TRI phải có truc là tên trục một dòng không rỗng
+  ✗ dieu-kien/02.jsonl:3: hs:bieu:0201:8103: mo DINH_NGHIA_LUAT phải có moNguon là id câu định nghĩa/hướng dẫn hợp lệ (không tb:)
+  ✗ dieu-kien/02.jsonl:5: hs:bieu:020110:8101: kieu GIA_TRI phải có truc là tên trục một dòng không rỗng
+  ✗ dieu-kien/02.jsonl:5: hs:bieu:020110:8101: mo DINH_NGHIA_LUAT phải có moNguon là id câu định nghĩa/hướng dẫn hợp lệ (không tb:)
+  ✗ dieu-kien/02.jsonl:6: hs:bieu:020120:8101: kieu GIA_TRI phải có truc là tên trục một dòng không rỗng
+  ✗ dieu-kien/02.jsonl:6: hs:bieu:020120:8101: mo DINH_NGHIA_LUAT phải có moNguon là id câu định nghĩa/hướng dẫn hợp lệ (không tb:)
+  ✗ dieu-kien/02.jsonl:7: hs:bieu:020120:8102: mo DINH_NGHIA_LUAT phải có moNguon là id câu định nghĩa/hướng dẫn hợp lệ (không tb:)
+  ✗ dieu-kien/02.jsonl:8: hs:bieu:020130:8101: mo DINH_NGHIA_LUAT phải có moNguon là id câu định nghĩa/hướng dẫn hợp lệ (không tb:)
+  ✗ dieu-kien/30.jsonl:105: hs:bieu:3004:8201: id phải là hs:<nut>:81NN
+  ✗ dieu-kien/30.jsonl:106: hs:bieu:3004:8202: id phải là hs:<nut>:81NN
+  ✗ dieu-kien/30.jsonl:107: hs:bieu:3004:8203: id phải là hs:<nut>:81NN
+  ✗ dieu-kien/30.jsonl:108: hs:bieu:3004:8204: id phải là hs:<nut>:81NN
+  ✗ dieu-kien/30.jsonl:109: hs:bieu:300410:8201: trường lạ "tiep"
+  ✗ dieu-kien/30.jsonl:109: hs:bieu:300410:8201: trường lạ "canDuKien"
+  ✗ dieu-kien/30.jsonl:109: hs:bieu:300410:8201: id phải là hs:<nut>:81NN
+  ✗ dieu-kien/30.jsonl:110: hs:bieu:3004101:8201: trường lạ "tiep"
+  ✗ dieu-kien/30.jsonl:110: hs:bieu:3004101:8201: trường lạ "canDuKien"
+  ✗ dieu-kien/30.jsonl:110: hs:bieu:3004101:8201: id phải là hs:<nut>:81NN
+  ✗ dieu-kien/30.jsonl:111: hs:bieu:300420:8201: trường lạ "tiep"
+  ✗ dieu-kien/30.jsonl:111: hs:bieu:300420:8201: trường lạ "canDuKien"
+  ✗ dieu-kien/30.jsonl:111: hs:bieu:300420:8201: id phải là hs:<nut>:81NN
+  ✗ dieu-kien/30.jsonl:112: hs:bieu:300420:8202: trường lạ "tiep"
+  ✗ dieu-kien/30.jsonl:112: hs:bieu:300420:8202: trường lạ "canDuKien"
+  ✗ dieu-kien/30.jsonl:112: hs:bieu:300420:8202: id phải là hs:<nut>:81NN
+  ✗ dieu-kien/30.jsonl:113: hs:bieu:300420:8203: trường lạ "tiep"
+  ✗ dieu-kien/30.jsonl:113: hs:bieu:300420:8203: trường lạ "canDuKien"
+FAIL cổng 6 TÁCH — phạm vi bieu:6110: 26 mục kiểm, 1 lỗi
+  ✗ bieu:61101: nút có tên chưa có bản ghi DIEU_KIEN nào
+FAIL cổng 7 PHỦ — phạm vi bieu:6110: 2 mục kiểm, 1 lỗi
+  ✗ bieu:6110: HO_PHU — nhóm không có "Loại khác" nhưng chưa chứng minh phủ kín phạm vi cha
+PASS cổng 8 CHỒNG — phạm vi bieu:6110: 18 mục kiểm, 0 lỗi
+PASS cổng 9 HỎI — phạm vi bieu:6110: 1 mục kiểm, 0 lỗi
+PASS cổng 10 DÒ — phạm vi bieu:6110: 0 mục kiểm, 0 lỗi, 1 cảnh báo
+  ! bieu:61101: THIEU_VI_DU — có "Loại khác" nhưng chưa có ca thử ví dụ chú giải/SEN
+PASS cổng 11 MỞ — phạm vi bieu:6110: 14 mục kiểm, 0 lỗi, 2 cảnh báo
+  ! hs:bieu:611020:8101: NGHIA_THUONG ("Từ bông") — có câu hỏi: "Vật liệu dệt được chọn theo Chú giải phân nhóm 2 Phần XI có phải bông không?"
+  ! hs:bieu:611090:8103: NGHIA_THUONG ("khác") — có câu hỏi: "Vật liệu được chọn có phải bông không? (CÓ thì thuộc 6110.20)"
+PASS cổng 12 BÙ — phạm vi bieu:6110: 0 mục kiểm, 0 lỗi

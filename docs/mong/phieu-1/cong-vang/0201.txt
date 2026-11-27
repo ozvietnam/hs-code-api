@@ -1,0 +1,49 @@
+FAIL khuôn: 84783 bản ghi, 636 lỗi
+  ✗ dieu-kien/02.jsonl:1: hs:bieu:0201:8101: kieu GIA_TRI phải có truc là tên trục một dòng không rỗng
+  ✗ dieu-kien/02.jsonl:1: hs:bieu:0201:8101: mo DINH_NGHIA_LUAT phải có moNguon là id câu định nghĩa/hướng dẫn hợp lệ (không tb:)
+  ✗ dieu-kien/02.jsonl:2: hs:bieu:0201:8102: kieu GIA_TRI phải có truc là tên trục một dòng không rỗng
+  ✗ dieu-kien/02.jsonl:2: hs:bieu:0201:8102: mo MO_TA_HUONG_DAN phải có moNguon là id câu định nghĩa/hướng dẫn hợp lệ (không tb:)
+  ✗ dieu-kien/02.jsonl:3: hs:bieu:0201:8103: kieu GIA_TRI phải có truc là tên trục một dòng không rỗng
+  ✗ dieu-kien/02.jsonl:3: hs:bieu:0201:8103: mo DINH_NGHIA_LUAT phải có moNguon là id câu định nghĩa/hướng dẫn hợp lệ (không tb:)
+  ✗ dieu-kien/02.jsonl:5: hs:bieu:020110:8101: kieu GIA_TRI phải có truc là tên trục một dòng không rỗng
+  ✗ dieu-kien/02.jsonl:5: hs:bieu:020110:8101: mo DINH_NGHIA_LUAT phải có moNguon là id câu định nghĩa/hướng dẫn hợp lệ (không tb:)
+  ✗ dieu-kien/02.jsonl:6: hs:bieu:020120:8101: kieu GIA_TRI phải có truc là tên trục một dòng không rỗng
+  ✗ dieu-kien/02.jsonl:6: hs:bieu:020120:8101: mo DINH_NGHIA_LUAT phải có moNguon là id câu định nghĩa/hướng dẫn hợp lệ (không tb:)
+  ✗ dieu-kien/02.jsonl:7: hs:bieu:020120:8102: mo DINH_NGHIA_LUAT phải có moNguon là id câu định nghĩa/hướng dẫn hợp lệ (không tb:)
+  ✗ dieu-kien/02.jsonl:8: hs:bieu:020130:8101: mo DINH_NGHIA_LUAT phải có moNguon là id câu định nghĩa/hướng dẫn hợp lệ (không tb:)
+  ✗ dieu-kien/30.jsonl:105: hs:bieu:3004:8201: id phải là hs:<nut>:81NN
+  ✗ dieu-kien/30.jsonl:106: hs:bieu:3004:8202: id phải là hs:<nut>:81NN
+  ✗ dieu-kien/30.jsonl:107: hs:bieu:3004:8203: id phải là hs:<nut>:81NN
+  ✗ dieu-kien/30.jsonl:108: hs:bieu:3004:8204: id phải là hs:<nut>:81NN
+  ✗ dieu-kien/30.jsonl:109: hs:bieu:300410:8201: trường lạ "tiep"
+  ✗ dieu-kien/30.jsonl:109: hs:bieu:300410:8201: trường lạ "canDuKien"
+  ✗ dieu-kien/30.jsonl:109: hs:bieu:300410:8201: id phải là hs:<nut>:81NN
+  ✗ dieu-kien/30.jsonl:110: hs:bieu:3004101:8201: trường lạ "tiep"
+  ✗ dieu-kien/30.jsonl:110: hs:bieu:3004101:8201: trường lạ "canDuKien"
+  ✗ dieu-kien/30.jsonl:110: hs:bieu:3004101:8201: id phải là hs:<nut>:81NN
+  ✗ dieu-kien/30.jsonl:111: hs:bieu:300420:8201: trường lạ "tiep"
+  ✗ dieu-kien/30.jsonl:111: hs:bieu:300420:8201: trường lạ "canDuKien"
+  ✗ dieu-kien/30.jsonl:111: hs:bieu:300420:8201: id phải là hs:<nut>:81NN
+  ✗ dieu-kien/30.jsonl:112: hs:bieu:300420:8202: trường lạ "tiep"
+  ✗ dieu-kien/30.jsonl:112: hs:bieu:300420:8202: trường lạ "canDuKien"
+  ✗ dieu-kien/30.jsonl:112: hs:bieu:300420:8202: id phải là hs:<nut>:81NN
+  ✗ dieu-kien/30.jsonl:113: hs:bieu:300420:8203: trường lạ "tiep"
+  ✗ dieu-kien/30.jsonl:113: hs:bieu:300420:8203: trường lạ "canDuKien"
+FAIL cổng 6 TÁCH — phạm vi bieu:0201: 8 mục kiểm, 6 lỗi
+  ✗ bieu:020110: nút có tên chưa có bản ghi DIEU_KIEN nào
+  ✗ bieu:02011000: nút có tên chưa có bản ghi DIEU_KIEN nào
+  ✗ bieu:020120: nút có tên chưa có bản ghi DIEU_KIEN nào
+  ✗ bieu:02012000: nút có tên chưa có bản ghi DIEU_KIEN nào
+  ✗ bieu:020130: nút có tên chưa có bản ghi DIEU_KIEN nào
+  ✗ bieu:02013000: nút có tên chưa có bản ghi DIEU_KIEN nào
+FAIL cổng 7 PHỦ — phạm vi bieu:0201: 1 mục kiểm, 1 lỗi
+  ✗ bieu:0201: HO_PHU — nhóm không có "Loại khác" nhưng chưa chứng minh phủ kín phạm vi cha
+PASS cổng 8 CHỒNG — phạm vi bieu:0201: 3 mục kiểm, 0 lỗi, 3 cảnh báo
+  ! bieu:0201: CHUA_CHUNG_MINH_TACH giữa bieu:020110 và bieu:020120 (cần phiếu hoặc GIAI_CHONG nếu gặp hàng chồng)
+  ! bieu:0201: CHUA_CHUNG_MINH_TACH giữa bieu:020110 và bieu:020130 (cần phiếu hoặc GIAI_CHONG nếu gặp hàng chồng)
+  ! bieu:0201: CHUA_CHUNG_MINH_TACH giữa bieu:020120 và bieu:020130 (cần phiếu hoặc GIAI_CHONG nếu gặp hàng chồng)
+PASS cổng 9 HỎI — phạm vi bieu:0201: 0 mục kiểm, 0 lỗi
+PASS cổng 10 DÒ — phạm vi bieu:0201: 0 mục kiểm, 0 lỗi
+PASS cổng 11 MỞ — phạm vi bieu:0201: 1 mục kiểm, 0 lỗi, 1 cảnh báo
+  ! hs:bieu:0201:8104: NGHIA_THUONG ("không thích hợp làm thức ăn cho người") — có câu hỏi: "Hàng có thuộc loại không thích hợp làm thức ăn cho người không?"
+PASS cổng 12 BÙ — phạm vi bieu:0201: 0 mục kiểm, 0 lỗi
