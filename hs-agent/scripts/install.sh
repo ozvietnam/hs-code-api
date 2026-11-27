@@ -19,6 +19,13 @@ for d in .cache .npm .config; do install -d -o hsagent -g hsagent -m 700 "/home/
 
 install -m 644 "$APP/systemd/hs-agent@.service" "$UNIT_DIR/hs-agent@.service"
 for j in $JOBS; do install -m 644 "$APP/systemd/hs-agent-$j.timer" "$UNIT_DIR/hs-agent-$j.timer"; done
+
+# Script đồng bộ clone chuẩn về origin/main — cài ra NGOÀI repo.
+# Lý do: ExecStartPre gọi nó TRƯỚC khi repo được đồng bộ; nếu nó nằm trong repo
+# thì khi repo đang ở commit cũ (không có file đó) → ExecStartPre hỏng → không
+# bao giờ đồng bộ được. Ở đây bản trong repo chỉ là dự phòng.
+install -d -o hsagent -g hsagent -m 750 /srv/hs-agent/scripts
+install -m 755 "$APP/scripts/sync-main.sh" /srv/hs-agent/scripts/sync-main.sh
 systemctl daemon-reload
 
 # Bản clone chuẩn do hsagent sở hữu; admin (oz) đọc được mà không bị "dubious ownership".

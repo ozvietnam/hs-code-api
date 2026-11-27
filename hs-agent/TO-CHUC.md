@@ -40,6 +40,40 @@ chủ thể, sổ, cửa và trường học làm cho máy **bền**. Tệp này
 - Trước khi được mở PR dữ liệu của riêng mình: **sát hạch** — trích lại ≥ 30 tiền lệ đã có trong kho (biết đáp án),
   khớp mã HS ≥ 95 %, 0 lỗi lọc riêng tư (§2.10 điểm 5).
 
+### Clone chuẩn chạy code cũ — `pull --ff-only` hỏng âm thầm (27–28/11)
+
+**Gốc (đo được 28/11/2026):** `ExecStartPre` của unit `hs-agent@.service` là
+`git -C /srv/hs-code-api pull --ff-only --quiet`. Khi HEAD của clone chuẩn đứng trên
+một nhánh khác `main` (đo được: `agent/pr89-extract-only`) thì `pull --ff-only`
+**không bao giờ lên được main**:
+- nhánh đó còn trên remote ⇒ `pull` trả **mã 0** ("Already up to date") nhưng HEAD
+  không đổi — và dấu `-` của systemd bỏ qua lỗi ⇒ **job chạy bằng code cũ, im lặng**;
+- nhánh đó đã bị xoá trên remote ⇒ `pull` lỗi, `-` bỏ qua ⇒ y hệt.
+
+Đo được: `git -C /srv/hs-code-api rev-list --count HEAD..origin/main` = **2029 commit**;
+`git merge-base --is-ancestor HEAD origin/main` = **NO**. Hệ quả:
+- J2 chạy logic CŨ ⇒ bản vá **đã merge** không có hiệu lực (PR #2443 `codeAppears`
+  khớp cặp 2 số, PR #2459 hồi sinh `rejected`) ⇒ J2 vẫn 0 bản ghi;
+- `bench-night` đo trên commit 01/10 ⇒ 4 mức Top-1/Top-3 đóng băng;
+- `freshness` đọc dữ liệu cũ ⇒ báo `[DUE]` giả cho biểu thuế đã đối chiếu 12/11.
+
+**Sửa:** `hs-agent/scripts/sync-main.sh` thay `pull --ff-only`:
+- `fetch origin main` → checkout đúng commit của `origin/main` (ưu tiên fast-forward
+  trên nhánh local `main`, dự phòng detach đúng commit đích);
+- cây **bẩn** (sửa tay chưa commit, hoặc tệp chưa theo dõi mà main cũng có) ⇒
+  **không giẫm mất**, bỏ qua lượt này và ghi cảnh báo cho quản đốc;
+- kiểm chứng sau khi đồng bộ: HEAD phải bằng đích, nếu không → hoàn tác về commit cũ
+  (không để cây ở trạng thái nửa vời);
+- mọi lỗi → mã thoát **0** + thông điệp; job vẫn chạy bằng bản đang có (như cũ).
+
+Script được cài ra **NGOÀI repo** (`/srv/hs-agent/scripts/sync-main.sh`) vì
+`ExecStartPre` gọi nó *trước* khi repo được đồng bộ — nếu nó nằm trong repo thì
+khi repo đang ở commit cũ (không có file đó) thì không bao giờ đồng bộ được.
+
+**Còn lại (cần quản trị server):** sau khi unit mới được cài, clone chuẩn cần được
+đồng bộ một lần (`sudo bash /srv/hs-code-api/hs-agent/scripts/install.sh`) — từ đó
+mỗi lượt tự đồng bộ trước khi chạy.
+
 ### J2 chết 3 ngày — gốc + sửa (28/09)
 
 **Gốc (26–28/09):**

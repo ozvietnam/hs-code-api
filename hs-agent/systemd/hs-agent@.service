@@ -13,8 +13,20 @@ EnvironmentFile=/etc/hs-agent/env
 Environment=HS_AGENT_HOME=/srv/hs-agent HS_REPO=/srv/hs-code-api HS_RAW=/srv/hs-raw HS_PRIVATE=/srv/hs-private NODE_ENV=production
 WorkingDirectory=/srv/hs-code-api
 # Luôn chạy code harness mới nhất của main (main được bảo vệ → chỉ đổi qua PR đã duyệt).
-# Kéo thất bại (mạng, key) thì vẫn chạy bằng bản đang có — dấu '-' bỏ qua lỗi.
-ExecStartPre=-/usr/bin/git -C /srv/hs-code-api pull --ff-only --quiet
+#
+# KHÔNG dùng `git pull --ff-only`: khi HEAD của clone chuẩn đứng trên một nhánh
+# KHÔNG còn trên remote (đo được 28/11/2026: `agent/pr89-extract-only`, đã bị xoá
+# trên GitHub) thì pull hỏng ÂM THẦM (dấu '-' của systemd bỏ qua lỗi) → unit vẫn
+# chạy nhưng bằng code cũ: clone lệch origin/main 2029 commit, J2 chạy logic cũ
+# (bản vá đã merge không có hiệu lực), bench đóng băng, freshness báo DUE giả.
+#
+# sync-main.sh: checkout đúng origin/main, giữ nguyên cây bẩn (không giẫm mất việc
+# của người), không chặn job khi lỗi. Bản cài nằm NGOÀI repo (/srv/hs-agent/scripts)
+# để luôn tồn tại kể cả khi repo đang ở commit cũ; bản trong repo chỉ là dự phòng
+# (dòng sau). Hai dòng: dòng 1 đồng bộ, dòng 2 thấy HEAD đã đúng main thì chạy êm
+# (thoát 0, không đụng gì). Dấu '-' ⇒ thiếu script thì bỏ qua, job vẫn chạy.
+ExecStartPre=-/usr/bin/bash /srv/hs-agent/scripts/sync-main.sh
+ExecStartPre=-/usr/bin/bash /srv/hs-code-api/hs-agent/scripts/sync-main.sh
 ExecStart=/usr/bin/node /srv/hs-code-api/hs-agent/run.mjs %i
 TimeoutStartSec=3h
 Nice=10
