@@ -1,0 +1,143 @@
+{
+ "nhom": "4016",
+ "model": "gemma4:31b",
+ "he": "Bạn là NGƯỜI SOI trong dây chuyền số hoá luật phân loại HS Việt Nam. Người soạn đã viết điều kiện (DIEU_KIEN) cho từng dòng anh em cùng cấp của biểu thuế. Việc của bạn HẸP: chỉ soi bảng anh em dưới đây, KHÔNG soạn lại.\nTìm:\n(1) CHỒNG: cặp anh em mà một mặt hàng có thật có thể thoả ĐỒNG THỜI điều kiện của cả hai (theo điều kiện đã soạn), trong khi luật chỉ cho vào một dòng. Nêu mặt hàng ví dụ cụ thể và điều kiện nào thiếu để tách.\n(2) HỞ: mặt hàng có thật thuộc dòng cha nhưng không thoả dòng anh em nào.\nChỉ nêu khi chắc chắn có mặt hàng thật minh hoạ. Không nêu cặp đã bị điều kiện tách rõ (ví dụ một bên phủ định đúng điều kiện của bên kia).\nTrả về DUY NHẤT JSON: {\"chong\":[{\"a\":\"bieu:...\",\"b\":\"bieu:...\",\"matHang\":\"...\",\"lyDo\":\"...\"}],\"ho\":[{\"matHang\":\"...\",\"lyDo\":\"...\"}]}",
+ "ketQua": [
+  {
+   "cha": "bieu:4016",
+   "soAnhEm": 2,
+   "giay": 5,
+   "kq": {
+    "chong": [],
+    "ho": []
+   },
+   "loi": null,
+   "user": "Dòng cha: bieu:4016 (chuỗi: phan:VII > chuong:40 > bieu:4016)\nĐiều kiện của dòng cha:\n  vế 1: [Sản phẩm có làm toàn bộ bằng cao su (theo định nghĩa Chú giải 1 Chương 40) hoặc có đặc tính cơ bản của hàng hóa dẫn xuất từ cao su không?] VÀ [Cao su cấu thành sản phẩm đã được lưu hóa (có liên kết ngang với lưu huỳnh hoặc tác nhân lưu hóa khác) chưa?] VÀ KHÔNG[Sản phẩm có làm bằng cao su cứng (lưu hóa với tỷ lệ lưu huỳnh cao đến mức gần như không dẻo và không đàn hồi, như ebonit) không?] VÀ KHÔNG[Sản phẩm bằng cao su đã in hoa văn, ký tự hoặc biểu tượng tranh ảnh mà việc in không chỉ đơn thuần phụ trợ cho công dụng chính (thuộc Chương 49) phải không?] VÀ KHÔNG[Mặt hàng có phải là hàng hóa bằng nguyên liệu dệt hoặc sản phẩm dệt (kể cả vải dệt, nỉ, sản phẩm không dệt kết hợp cao su) thuộc Phần XI không?] VÀ KHÔNG[Mặt hàng có phải là giày dép hoặc các bộ phận của giày dép thuộc Chương 64 không?] VÀ KHÔNG[Mặt hàng có phải là mũ, vật đội đầu khác hoặc các bộ phận của chúng (kể cả mũ tắm) thuộc Chương 65 không?] VÀ KHÔNG[Mặt hàng có phải là sản phẩm hoàn chỉnh thuộc các Chương 90, 92, 94 hoặc 96 (không thuộc loại bộ phận cao su dẫn chiếu vào nhóm 40.16) không?] VÀ KHÔNG[Mặt hàng có phải là đệm, gối hoặc nệm bằng cao su xốp (kể cả tấm làm ấm giường bằng điện gắn bên trong bằng cao su xốp) thuộc nhóm 94.04 không?] VÀ KHÔNG[Mặt hàng có phải là đồ chơi, trò chơi hoặc dụng cụ, thiết bị thể thao và các bộ phận của nó thuộc Chương 95 không?] VÀ KHÔNG[Mặt hàng có phải là dụng cụ cầm giữ chân không gồm đế, tay cầm, cần chân không bằng kim loại cơ bản và đĩa cao su thuộc Phần XV không?] VÀ KHÔNG[Mặt hàng có phải là xuồng hoặc bè cao su thuộc Chương 89 không?] VÀ KHÔNG[Mặt hàng có thuộc các nhóm đứng trước trong Chương 40 (như 40.07 đến 40.15) hoặc các Chương khác trong Danh mục không?]\n\nCác dòng anh em:\n- bieu:401610 \"- Từ cao su xốp:\"\n  vế 1: [Sản phẩm có làm từ cao su xốp (có các lỗ rỗng hở hoặc kín phân tán trong toàn bộ khối cao su) không?]\n- bieu:40169 \"- Loại khác:\" (Loại khác)\n  (không có điều kiện)"
+  },
+  {
+   "cha": "bieu:401610",
+   "soAnhEm": 3,
+   "giay": 5,
+   "kq": {
+    "chong": [],
+    "ho": []
+   },
+   "loi": null,
+   "user": "Dòng cha: bieu:401610 (chuỗi: phan:VII > chuong:40 > bieu:4016 > bieu:401610)\nĐiều kiện của dòng cha:\n  vế 1: [Sản phẩm có làm từ cao su xốp (có các lỗ rỗng hở hoặc kín phân tán trong toàn bộ khối cao su) không?]\n\nCác dòng anh em:\n- bieu:40161010 \"- - Lót, đệm cho các sản phẩm may mặc hoặc cho các đồ phụ trợ của quần áo\"\n  vế 1: [Sản phẩm bằng cao su xốp có ở dạng lót, đệm không? → Lót, đệm] VÀ [Sản phẩm lót, đệm bằng cao su xốp có dùng cho các sản phẩm may mặc hoặc cho các đồ phụ trợ của quần áo không? → các sản phẩm may mặc/các đồ phụ trợ của quần áo]\n- bieu:40161020 \"- - Tấm, miếng ghép với nhau để lát nền và ốp tường\"\n  vế 1: [Sản phẩm bằng cao su xốp có ở dạng tấm, miếng ghép với nhau không? → Tấm, miếng ghép với nhau] VÀ [Tấm, miếng ghép bằng cao su xốp có dùng để lát nền và ốp tường không?]\n- bieu:40161090 \"- - Loại khác\" (Loại khác)\n  (không có điều kiện)"
+  },
+  {
+   "cha": "bieu:40169",
+   "soAnhEm": 6,
+   "giay": 20,
+   "kq": {
+    "chong": [],
+    "ho": []
+   },
+   "loi": null,
+   "user": "Dòng cha: bieu:40169 (chuỗi: phan:VII > chuong:40 > bieu:4016 > bieu:40169)\nĐiều kiện của dòng cha:\n  (không có điều kiện)\n\nCác dòng anh em:\n- bieu:401691 \"- - Tấm phủ sàn và tấm, đệm trải sàn (mat):\"\n  vế 1: [Sản phẩm có phải là tấm phủ sàn hoặc tấm, đệm trải sàn (mat) không? → Tấm phủ sàn/tấm, đệm trải sàn (mat)] VÀ KHÔNG[Sản phẩm có phải là thảm hình chữ nhật (kể cả hình vuông) cắt đơn giản từ tấm hoặc tờ cao su và không gia công thêm hơn mức gia công bề mặt (thuộc nhóm 40.08) không?]\n- bieu:401692 \"- - Tẩy:\"\n  vế 1: [Sản phẩm bằng cao su lưu hóa không cứng có phải là tẩy không?]\n- bieu:401693 \"- - Miếng đệm, vòng đệm và các miếng chèn khác:\"\n  vế 1: [Sản phẩm bằng cao su có phải là miếng đệm, vòng đệm hoặc miếng chèn khác không? → Miếng đệm/vòng đệm/các miếng chèn khác]\n- bieu:401694 \"- - Đệm chống va cho tàu thuyền hoặc ụ tàu, có hoặc không thể bơm hơi\"\n  vế 1: [Sản phẩm có phải là đệm chống va cho tàu thuyền hoặc ụ tàu (có hoặc không thể bơm hơi) không?]\n- bieu:401695 \"- - Các sản phẩm có thể bơm hơi khác\"\n  vế 1: [Sản phẩm có phải là sản phẩm có thể bơm hơi không?] VÀ KHÔNG[Sản phẩm có phải là tấm phủ sàn hoặc tấm, đệm trải sàn (mat) không? → Tấm phủ sàn/tấm, đệm trải sàn (mat)] VÀ KHÔNG[Sản phẩm bằng cao su lưu hóa không cứng có phải là tẩy không?] VÀ KHÔNG[Sản phẩm bằng cao su có phải là miếng đệm, vòng đệm hoặc miếng chèn khác không? → Miếng đệm/vòng đệm/các miếng chèn khác] VÀ KHÔNG[Sản phẩm có phải là đệm chống va cho tàu thuyền hoặc ụ tàu (có hoặc không thể bơm hơi) không?] VÀ KHÔNG[Sản phẩm có thể bơm hơi có thuộc nhóm 40.14 hoặc nhóm 63.06 không?]\n- bieu:401699 \"- - Loại khác:\" (Loại khác)\n  (không có điều kiện)"
+  },
+  {
+   "cha": "bieu:401691",
+   "soAnhEm": 3,
+   "giay": 12,
+   "kq": {
+    "chong": [
+     {
+      "a": "bieu:40169110",
+      "b": "bieu:40169120",
+      "matHang": "Thảm cao su ghép hình (puzzle mat)",
+      "lyDo": "Một tấm thảm ghép hình vừa thỏa mãn điều kiện là 'tấm, đệm (mat)' vừa thỏa mãn điều kiện là 'dạng tấm rời để ghép'. Cần bổ sung điều kiện 'không phải dạng rời để ghép' cho mã 40169110 để tách biệt."
+     }
+    ],
+    "ho": []
+   },
+   "loi": null,
+   "user": "Dòng cha: bieu:401691 (chuỗi: phan:VII > chuong:40 > bieu:4016 > bieu:40169 > bieu:401691)\nĐiều kiện của dòng cha:\n  vế 1: [Sản phẩm có phải là tấm phủ sàn hoặc tấm, đệm trải sàn (mat) không? → Tấm phủ sàn/tấm, đệm trải sàn (mat)] VÀ KHÔNG[Sản phẩm có phải là thảm hình chữ nhật (kể cả hình vuông) cắt đơn giản từ tấm hoặc tờ cao su và không gia công thêm hơn mức gia công bề mặt (thuộc nhóm 40.08) không?]\n\nCác dòng anh em:\n- bieu:40169110 \"- - - Tấm, đệm (mat)\"\n  vế 1: [Sản phẩm trải sàn có ở dạng tấm, đệm (mat) không? → Tấm, đệm (mat)]\n- bieu:40169120 \"- - - Dạng tấm rời để ghép\"\n  vế 1: [Sản phẩm trải sàn có ở dạng tấm rời để ghép không? → Dạng tấm rời để ghép]\n- bieu:40169190 \"- - - Loại khác\" (Loại khác)\n  (không có điều kiện)"
+  },
+  {
+   "cha": "bieu:401692",
+   "soAnhEm": 2,
+   "giay": 5,
+   "kq": {
+    "chong": [],
+    "ho": []
+   },
+   "loi": null,
+   "user": "Dòng cha: bieu:401692 (chuỗi: phan:VII > chuong:40 > bieu:4016 > bieu:40169 > bieu:401692)\nĐiều kiện của dòng cha:\n  vế 1: [Sản phẩm bằng cao su lưu hóa không cứng có phải là tẩy không?]\n\nCác dòng anh em:\n- bieu:40169210 \"- - - Đầu tẩy (eraser tips)\"\n  vế 1: [Tẩy bằng cao su có phải là đầu tẩy (eraser tips) không?]\n- bieu:40169290 \"- - - Loại khác\" (Loại khác)\n  (không có điều kiện)"
+  },
+  {
+   "cha": "bieu:401693",
+   "soAnhEm": 3,
+   "giay": 6,
+   "kq": {
+    "chong": [],
+    "ho": []
+   },
+   "loi": null,
+   "user": "Dòng cha: bieu:401693 (chuỗi: phan:VII > chuong:40 > bieu:4016 > bieu:40169 > bieu:401693)\nĐiều kiện của dòng cha:\n  vế 1: [Sản phẩm bằng cao su có phải là miếng đệm, vòng đệm hoặc miếng chèn khác không? → Miếng đệm/vòng đệm/các miếng chèn khác]\n\nCác dòng anh em:\n- bieu:40169310 \"- - - Loại dùng để cách điện cho các chân tụ điện (SEN)\"\n  vế 1: [Miếng đệm, vòng đệm hoặc miếng chèn có phải là loại vòng cao su nhỏ dùng để cách điện cho các chân tụ điện lắp trên tấm mạch in không?]\n- bieu:40169320 \"- - - Miếng đệm và vành khung tròn, loại dùng cho xe có động cơ thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11\"\n  vế 1: [Sản phẩm có ở dạng miếng đệm hoặc vành khung tròn không? → Miếng đệm/vành khung tròn] VÀ [Miếng đệm hoặc vành khung tròn có thuộc loại dùng cho xe có động cơ thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11 không? → 87.02/87.03/87.04/87.11]\n- bieu:40169390 \"- - - Loại khác\" (Loại khác)\n  (không có điều kiện)"
+  },
+  {
+   "cha": "bieu:401699",
+   "soAnhEm": 8,
+   "giay": 11,
+   "kq": {
+    "chong": [
+     {
+      "a": "bieu:4016991",
+      "b": "bieu:4016995",
+      "matHang": "Gioăng cao su cho động cơ xe ô tô",
+      "lyDo": "Mặt hàng vừa là bộ phận cho xe thuộc Chương 87, vừa là sản phẩm sử dụng cho thiết bị cơ khí/mục đích kỹ thuật."
+     },
+     {
+      "a": "bieu:40169960",
+      "b": "bieu:4016995",
+      "matHang": "Lót đường ray (rail pad)",
+      "lyDo": "Mặt hàng vừa là lót đường ray, vừa là sản phẩm sử dụng cho mục đích kỹ thuật."
+     },
+     {
+      "a": "bieu:40169970",
+      "b": "bieu:4016995",
+      "matHang": "Gối cầu cao su",
+      "lyDo": "Mặt hàng vừa là loại chịu lực xây dựng/cầu, vừa là sản phẩm sử dụng cho mục đích kỹ thuật."
+     }
+    ],
+    "ho": []
+   },
+   "loi": null,
+   "user": "Dòng cha: bieu:401699 (chuỗi: phan:VII > chuong:40 > bieu:4016 > bieu:40169 > bieu:401699)\nĐiều kiện của dòng cha:\n  (không có điều kiện)\n\nCác dòng anh em:\n- bieu:4016991 \"- - - Bộ phận và phụ kiện dùng cho xe thuộc Chương 87:\"\n  vế 1: [Sản phẩm có phải là bộ phận hoặc phụ kiện của xe không? → Bộ phận/phụ kiện] VÀ [Bộ phận hoặc phụ kiện có dùng cho xe thuộc Chương 87 không?]\n- bieu:40169920 \"- - - Bộ phận và phụ kiện của dù xoay thuộc nhóm 88.04\"\n  vế 1: [Sản phẩm có phải là bộ phận hoặc phụ kiện không? → Bộ phận/phụ kiện] VÀ [Bộ phận hoặc phụ kiện này có phải của dù xoay thuộc nhóm 88.04 không?]\n- bieu:40169930 \"- - - Dải cao su\"\n  vế 1: [Sản phẩm có phải là dải cao su (dây chun/dải vòng cao su) không?]\n- bieu:40169940 \"- - - Tấm, miếng rời ghép với nhau để ốp tường\"\n  vế 1: [Sản phẩm có ở dạng tấm, miếng rời ghép với nhau không?] VÀ [Tấm, miếng rời ghép với nhau (bằng cao su không xốp) có dùng để ốp tường không?]\n- bieu:4016995 \"- - - Các sản phẩm khác sử dụng cho máy hoặc các thiết bị điện hoặc cơ khí, hoặc cho các mục đích kỹ thuật khác:\"\n  vế 1: [Sản phẩm có sử dụng cho máy, các thiết bị điện, các thiết bị cơ khí hoặc cho các mục đích kỹ thuật khác không? → máy/các thiết bị điện/các thiết bị cơ khí/các mục đích kỹ thuật khác]\n- bieu:40169960 \"- - - Lót đường ray (rail pad)\"\n  vế 1: [Sản phẩm có phải là lót đường ray (rail pad) không?]\n- bieu:40169970 \"- - - Loại chịu lực xây dựng kể cả lực cầu\"\n  vế 1: [Sản phẩm có phải là loại chịu lực xây dựng (kể cả lực cầu) không?]\n- bieu:4016999 \"- - - Loại khác:\" (Loại khác)\n  (không có điều kiện)"
+  },
+  {
+   "cha": "bieu:4016991",
+   "soAnhEm": 8,
+   "giay": 54,
+   "kq": {
+    "chong": [],
+    "ho": []
+   },
+   "loi": null,
+   "user": "Dòng cha: bieu:4016991 (chuỗi: phan:VII > chuong:40 > bieu:4016 > bieu:40169 > bieu:401699 > bieu:4016991)\nĐiều kiện của dòng cha:\n  vế 1: [Sản phẩm có phải là bộ phận hoặc phụ kiện của xe không? → Bộ phận/phụ kiện] VÀ [Bộ phận hoặc phụ kiện có dùng cho xe thuộc Chương 87 không?]\n\nCác dòng anh em:\n- bieu:40169911 \"- - - - Dùng cho xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05, trừ viền cao su quanh kính cửa\"\n  vế 1: [Bộ phận hoặc phụ kiện có dùng cho xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05 không? → 87.02/87.03/87.04/87.05] VÀ KHÔNG[Sản phẩm có phải là viền cao su quanh kính cửa không?]\n- bieu:40169912 \"- - - - Dùng cho xe thuộc nhóm 87.11\"\n  vế 1: [Bộ phận hoặc phụ kiện có dùng cho xe thuộc nhóm 87.11 không? → 87.11]\n- bieu:40169913 \"- - - - Viền cao su quanh kính cửa, dùng cho xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04\"\n  vế 1: [Sản phẩm có phải là viền cao su quanh kính cửa không?] VÀ [Viền cao su quanh kính cửa có dùng cho xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04 không? → 87.02/87.03/87.04]\n- bieu:40169915 \"- - - - Dùng cho xe thuộc nhóm 87.09, 87.13, 87.15 hoặc 87.16\"\n  vế 1: [Bộ phận hoặc phụ kiện có dùng cho xe thuộc nhóm 87.09, 87.13, 87.15 hoặc 87.16 không? → 87.09/87.13/87.15/87.16]\n- bieu:40169916 \"- - - - Chắn bùn xe đạp (SEN)\"\n  vế 1: [Sản phẩm có phải là chắn bùn xe đạp không?]\n- bieu:40169917 \"- - - - Bộ phận của xe đạp (SEN)\"\n  vế 1: [Sản phẩm có phải là bộ phận cần thiết và không thể thiếu đối với việc vận hành của xe không? → Bộ phận] VÀ [Bộ phận này có dùng cho xe đạp không?]\n- bieu:40169918 \"- - - - Phụ kiện khác của xe đạp (SEN)\"\n  vế 1: [Sản phẩm có phải là phụ kiện chỉ hỗ trợ thêm cho hoạt động của xe không? → Phụ kiện] VÀ [Phụ kiện này có dùng cho xe đạp không?] VÀ KHÔNG[Sản phẩm có phải là chắn bùn xe đạp không?]\n- bieu:40169919 \"- - - - Loại khác\" (Loại khác)\n  (không có điều kiện)"
+  },
+  {
+   "cha": "bieu:4016995",
+   "soAnhEm": 5,
+   "giay": 26,
+   "kq": {
+    "chong": [],
+    "ho": []
+   },
+   "loi": null,
+   "user": "Dòng cha: bieu:4016995 (chuỗi: phan:VII > chuong:40 > bieu:4016 > bieu:40169 > bieu:401699 > bieu:4016995)\nĐiều kiện của dòng cha:\n  vế 1: [Sản phẩm có sử dụng cho máy, các thiết bị điện, các thiết bị cơ khí hoặc cho các mục đích kỹ thuật khác không? → máy/các thiết bị điện/các thiết bị cơ khí/các mục đích kỹ thuật khác]\n\nCác dòng anh em:\n- bieu:40169951 \"- - - - Trục lăn cao su\"\n  vế 1: [Sản phẩm có phải là trục lăn cao su không?]\n- bieu:40169952 \"- - - - Cốt làm lốp (Tyre mould bladders)(SEN)\"\n  vế 1: [Sản phẩm có phải là cốt làm lốp (tyre mould bladders) dạng tròn đặt bên trong khuôn lốp để bơm căng dưới áp suất cao không?]\n- bieu:40169953 \"- - - - Nắp chụp cách điện\"\n  vế 1: [Sản phẩm có phải là nắp chụp cách điện không?]\n- bieu:40169954 \"- - - - Vòng và vỏ bọc bằng cao su sử dụng cho hệ thống dây điện của ô tô\"\n  vế 1: [Sản phẩm có ở dạng vòng hoặc vỏ bọc bằng cao su không? → Vòng/vỏ bọc] VÀ [Vòng hoặc vỏ bọc bằng cao su có sử dụng cho hệ thống dây điện của ô tô không?]\n- bieu:40169959 \"- - - - Loại khác\" (Loại khác)\n  (không có điều kiện)"
+  },
+  {
+   "cha": "bieu:4016999",
+   "soAnhEm": 2,
+   "giay": 4,
+   "kq": {
+    "chong": [],
+    "ho": []
+   },
+   "loi": null,
+   "user": "Dòng cha: bieu:4016999 (chuỗi: phan:VII > chuong:40 > bieu:4016 > bieu:40169 > bieu:401699 > bieu:4016999)\nĐiều kiện của dòng cha:\n  (không có điều kiện)\n\nCác dòng anh em:\n- bieu:40169991 \"- - - - Khăn trải bàn\"\n  vế 1: [Sản phẩm có phải là khăn trải bàn bằng cao su không?]\n- bieu:40169999 \"- - - - Loại khác\" (Loại khác)\n  (không có điều kiện)"
+  }
+ ]
+}
