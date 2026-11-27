@@ -2,10 +2,10 @@
 
 - **Khuôn áp dụng:** `ho-so-ma@1` ([`docs/mong/khuon-ho-so-ma.md`](../khuon-ho-so-ma.md), [`docs/decisions/0006-ho-so-van-de-ma-8-so.md`](../../decisions/0006-ho-so-van-de-ma-8-so.md))
 - **Kho dữ liệu (`RUT_TU_LUAT`, khai trong `data/lop-kho.json`):**
-  - `data/ho-so-ma/nguong/72.jsonl`: **590 bản ghi** (**`464 NGUONG`**, **`22 DINH_NGHIA`**, **`92 TACH_ANH_EM`**, **`12 BO_QUA`**; tổng **`146` bản ghi mang mảng `phuDinh`**), nâng từ mốc nền `354` bản ghi (`+253` thêm mới, `35` sửa/chuyển loại, `17` gỡ bản ghi gắn sai nút/tầng 4 số).
-  - **Luật 1 & Luật 2 (De Morgan — sửa triệt để đảo ngưỡng sai và phủ kín 100% `"Loại khác"`):**
+  - `data/ho-so-ma/nguong/72.jsonl`: **593 bản ghi** (**`464 NGUONG`**, **`22 DINH_NGHIA`**, **`95 TACH_ANH_EM`**, **`12 BO_QUA`**; tổng **`149` bản ghi mang mảng `phuDinh`**), nâng từ mốc nền `354` bản ghi (`+256` thêm mới, `36` sửa/chuyển loại, `17` gỡ bản ghi gắn sai nút/tầng 4 số).
+  - **Luật 1 & Luật 2 (De Morgan — sửa triệt để đảo ngưỡng sai và phủ kín 100% `"Loại khác"` & phần bù `"… khác"`):**
     - Chuyển **22 bản ghi `"Loại khác"` bị đảo ngưỡng sai** sang `TACH_ANH_EM` kèm `phuDinh` thực chất (không gắn `nguong` đảo chiều): nhóm đai và dải / tấm phổ dụng SEN (`7211.90.19`, `7212.10.19`, `7212.10.99`, `7212.40.99`, `7212.50.19`, `7220.11.90`, `7220.12.90`, `7220.20.90`, `7220.90.90`, `7226.11.90`, `7226.19.90`, `7226.20.90`, `7226.91.90`, `7226.92.90`, `7226.99.9`), nhóm ghép hình dạng mặt cắt tròn + kích thước/carbon (`7213.10.90`, `7213.99`, `7214.99.9`, `7215.50.9`), nhóm ghép đa chiều nguyên tố C+Mn+P+S (`7214.91.19`, `7214.99.99` — bổ sung đủ `7214.99.91` vào `phuDinh`), và nhóm góc tạo hình nguội (`7216.91.90`).
-    - Bổ sung **70 bản ghi `TACH_ANH_EM` (`phuDinh`)** mới cho toàn bộ các nút `"Loại khác"` (kể cả dòng trung gian không mã và `"Loại khác, ..."`) đứng cùng cha với anh em mang `NGUONG` (phủ **100%**, `0` thiếu trên toàn cây `bieu.jsonl` Chương 72).
+    - Bổ sung **73 bản ghi `TACH_ANH_EM` (`phuDinh`)** mới cho toàn bộ các nút `"Loại khác"` (70 nút, kể cả dòng trung gian không mã và `"Loại khác, ..."`) và **3 nút phần bù có tên `"Dạng đai và dải khác(SEN)"`** (`7212.40.12`, `7212.50.24`, `7212.50.94` phủ định `7212.40.11`, `7212.50.23`, `7212.50.93` — tránh chồng dải `<= 400 mm` / `<= 25 mm`) đứng cùng cha với anh em mang `NGUONG` (phủ **100%**, `0` thiếu trên toàn cây `bieu.jsonl` Chương 72).
     - Giữ nguyên **54 bản ghi `NGUONG` đảo chiều thuần 1 đại lượng** (phân dải 1 chiều carbon / silic / chiều dày / chiều rộng / chiều cao / mặt cắt ngang / crôm phủ kín `(-∞, +∞)`).
   - **Luật 3 (tách nhánh `HOẶC` & xoá đại lượng mơ hồ):**
     - Thay toàn bộ `daiLuong: "thông số (mm)"` bằng `"kích thước mặt cắt ngang"` tại `7223.00.10`, `7223.00.90`, `7229.90.2`.
