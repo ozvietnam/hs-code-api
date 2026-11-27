@@ -29,6 +29,7 @@ import {
   laPhanBuCoTen,
   haiNutRoiNhau,
   laChongSoTrungTruc,
+  layTapDuHopLeTheoTruc,
   taoBanDoTruAnhEm,
   chiaVeDieuKien,
 } from './bang-anh-em.mjs';
@@ -566,7 +567,10 @@ function goiM81(ngay, opts = {}) {
     const gcCha = (gcTheoCha.get(chaId) || []).filter(
       (g) => gcCapHopLe.has(`${chaId}|${[...g.cap].sort().join('|')}`),
     );
-    const truTheoNut = taoBanDoTruAnhEm(chaId, con, L, bieuMeta, dkTheoNut, gcCha, nguongById);
+    const duongCha = G.duongDiNut(chaId, L.cay) || [];
+    const dksDuongCha = duongCha.flatMap((b) => dkTheoNut.get(b.nut) || []);
+    const tapDuTheoTruc = layTapDuHopLeTheoTruc(con, dkTheoNut, dkTheoNut.get(chaId) || [], dksDuongCha);
+    const truTheoNut = taoBanDoTruAnhEm(chaId, con, L, bieuMeta, dkTheoNut, gcCha, nguongById, { tapDuTheoTruc });
     for (let i = 0; i < coTen.length; i += 1) {
       for (let j = i + 1; j < coTen.length; j += 1) {
         const A = coTen[i];
@@ -578,7 +582,7 @@ function goiM81(ngay, opts = {}) {
         const dksA = dkTheoNut.get(A) || [];
         const dksB = dkTheoNut.get(B) || [];
         if (!dksA.length && !dksB.length) continue;
-        if (haiNutRoiNhau(dksA, dksB, nguongById)) continue;
+        if (haiNutRoiNhau(dksA, dksB, nguongById, { tapDuTheoTruc })) continue;
         if (laChongSoTrungTruc(dksA, dksB, nguongById)) {
           dangKyVungChong(chaId, A, B, {
             lyDo: 'Hai ngưỡng số cùng đại lượng có khoảng giá trị giao nhau trên Cổng 8 (`laChongSoTrungTruc`), chưa có `GIAI_CHONG`',

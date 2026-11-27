@@ -207,7 +207,7 @@ check('M-78 nutChuCua: nạp được câu sen:* nguyên văn từ sen.jsonl', m
   };
   fs.writeFileSync(path.join(hoSo81, 'nguong', '85.jsonl'), [ng10W, ngTren5W].map((x) => JSON.stringify(x)).join('\n') + '\n');
 
-  // Chương 02: NGHIA_THUONG nội tâm sạch (không phu, ve=1, !daTri, cặp 020120/020130 rời nhau theo GIA_TRI, không từ khoá mở)
+  // Chương 02: NGHIA_THUONG nội tâm sạch (không phu, ve=1, !daTri, cặp 020120/020130 rời nhau theo GIA_TRI có tapDu, không từ khoá mở)
   const dk02 = [
     {
       id: 'hs:bieu:020120:8101',
@@ -218,6 +218,7 @@ check('M-78 nutChuCua: nạp được câu sen:* nguyên văn từ sen.jsonl', m
       kieu: 'GIA_TRI',
       truc: 'tình trạng xương',
       tap: ['có xương'],
+      tapDu: ['có xương', 'không xương'],
       mo: 'NGHIA_THUONG',
       cauHoi: 'Thịt trâu bò thuộc dạng có xương hay không xương?',
       trich: 'Thịt pha có xương',
@@ -233,6 +234,7 @@ check('M-78 nutChuCua: nạp được câu sen:* nguyên văn từ sen.jsonl', m
       kieu: 'GIA_TRI',
       truc: 'tình trạng xương',
       tap: ['không xương'],
+      tapDu: ['có xương', 'không xương'],
       mo: 'DINH_NGHIA_LUAT',
       moNguon: 'bieu:020130#1',
       cauHoi: 'Thịt trâu bò thuộc dạng có xương hay không xương?',
