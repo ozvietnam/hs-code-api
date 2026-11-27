@@ -11,6 +11,7 @@
 //     I.   VUNG_CHONG chưa giải (chồng dải số, danh sách vungChong, hoặc bảng M-81-chuyen-*.md chưa có GIAI_CHONG)
 //     II.  GIAI_CHONG mang ghiChu cần người duyệt (CAN_NGUOI_DUYET / VUNG_CHONG / chờ duyệt / LECH_PHIEU), gom 1 phiếu/cặp
 //     III. NGHIA_THUONG ở vùng biên (hoặc toàn bộ khi bật --tat-ca-nghia-thuong)
+//     IV.  Bảng anh em HO_PHU chưa chứng minh phủ kín phạm vi cha (khi không có dòng "Loại khác")
 //   Xuất docs/mong/duyet/m81-<ngày>.md chia mục theo từng Chương (hoặc m81-ch<NN>-<ngày>.md khi lọc --chuong=NN).
 //
 // Người duyệt điền xong: --doc-bang=<tệp> đọc lại ô đã đánh (cả M-78 lẫn M-81 + Kết luận người duyệt).
@@ -29,8 +30,10 @@ import {
   laPhanBuCoTen,
   haiNutRoiNhau,
   laChongSoTrungTruc,
+  layTapDuHopLeTheoTruc,
   taoBanDoTruAnhEm,
   chiaVeDieuKien,
+  chungMinhPhuKin,
 } from './bang-anh-em.mjs';
 
 const require = createRequire(import.meta.url);
@@ -566,7 +569,10 @@ function goiM81(ngay, opts = {}) {
     const gcCha = (gcTheoCha.get(chaId) || []).filter(
       (g) => gcCapHopLe.has(`${chaId}|${[...g.cap].sort().join('|')}`),
     );
-    const truTheoNut = taoBanDoTruAnhEm(chaId, con, L, bieuMeta, dkTheoNut, gcCha, nguongById);
+    const duongCha = G.duongDiNut(chaId, L.cay) || [];
+    const dksDuongCha = duongCha.flatMap((b) => dkTheoNut.get(b.nut) || []);
+    const tapDuTheoTruc = layTapDuHopLeTheoTruc(con, dkTheoNut, dkTheoNut.get(chaId) || [], dksDuongCha, { L });
+    const truTheoNut = taoBanDoTruAnhEm(chaId, con, L, bieuMeta, dkTheoNut, gcCha, nguongById, { tapDuTheoTruc });
     for (let i = 0; i < coTen.length; i += 1) {
       for (let j = i + 1; j < coTen.length; j += 1) {
         const A = coTen[i];
@@ -578,7 +584,7 @@ function goiM81(ngay, opts = {}) {
         const dksA = dkTheoNut.get(A) || [];
         const dksB = dkTheoNut.get(B) || [];
         if (!dksA.length && !dksB.length) continue;
-        if (haiNutRoiNhau(dksA, dksB, nguongById)) continue;
+        if (haiNutRoiNhau(dksA, dksB, nguongById, { tapDuTheoTruc })) continue;
         if (laChongSoTrungTruc(dksA, dksB, nguongById)) {
           dangKyVungChong(chaId, A, B, {
             lyDo: 'Hai ngưỡng số cùng đại lượng có khoảng giá trị giao nhau trên Cổng 8 (`laChongSoTrungTruc`), chưa có `GIAI_CHONG`',
@@ -684,11 +690,40 @@ function goiM81(ngay, opts = {}) {
     (a, b) => a.chuong.localeCompare(b.chuong) || a.banGhi.nut.localeCompare(b.banGhi.nut) || a.banGhi.id.localeCompare(b.banGhi.id),
   );
 
+  // ── 3b. Gom Nhóm IV (Bảng anh em HO_PHU chưa chứng minh phủ kín) ──
+  const dsHoPhu = [];
+  for (const chaId of [...tapCha].sort()) {
+    const ch = G.chuongCuaNut(chaId);
+    if (!ch || (chuongLoc && ch !== chuongLoc)) continue;
+    const con = G.conCua(chaId, L.cay);
+    if (con.length < 2) continue;
+    if (!con.some((id) => (dkTheoNut.get(id) || []).length > 0)) continue;
+    if (con.some((id) => laLoaiKhacThuan(id, L, bieuMeta))) continue;
+    const gcCha = (gcTheoCha.get(chaId) || []).filter(
+      (g) => gcCapHopLe.has(`${chaId}|${[...g.cap].sort().join('|')}`),
+    );
+    const duongCha = G.duongDiNut(chaId, L.cay) || [];
+    const dksDuongCha = duongCha.flatMap((b) => dkTheoNut.get(b.nut) || []);
+    const tapDuTheoTruc = layTapDuHopLeTheoTruc(con, dkTheoNut, dkTheoNut.get(chaId) || [], dksDuongCha, { L });
+    const truTheoNut = taoBanDoTruAnhEm(chaId, con, L, bieuMeta, dkTheoNut, gcCha, nguongById, { tapDuTheoTruc });
+    if (!chungMinhPhuKin(con, dkTheoNut, nguongById, dkTheoNut.get(chaId) || [], dksDuongCha, { chaId, L, bieuMeta, truTheoNut })) {
+      dsHoPhu.push({
+        idPhieu: `M81-HP-${maNganNut(chaId)}`,
+        chuong: ch,
+        nhom4: nhom4CuaNut(chaId) || nhom4CuaNut(con[0]),
+        cha: chaId,
+        con,
+      });
+    }
+  }
+  dsHoPhu.sort((a, b) => a.chuong.localeCompare(b.chuong) || a.cha.localeCompare(b.cha));
+
   // ── 4. Gom theo Chương & kết xuất Markdown ──
   const tapChuong = new Set([
     ...dsVungChong.map((x) => x.chuong),
     ...dsGiaiChong.map((x) => x.chuong),
     ...dsNghiaThuong.map((x) => x.chuong),
+    ...dsHoPhu.map((x) => x.chuong),
   ]);
   if (chuongLoc) tapChuong.add(chuongLoc);
   const danhSachChuong = [...tapChuong].sort();
@@ -698,10 +733,12 @@ function goiM81(ngay, opts = {}) {
     const vc = dsVungChong.filter((x) => x.chuong === ch);
     const gc = dsGiaiChong.filter((x) => x.chuong === ch);
     const nt = dsNghiaThuong.filter((x) => x.chuong === ch);
+    const hp = dsHoPhu.filter((x) => x.chuong === ch);
     const nhomSet = new Set([
       ...vc.map((x) => x.nhom4),
       ...gc.map((x) => x.nhom4),
       ...nt.map((x) => x.nhom4),
+      ...hp.map((x) => x.nhom4),
     ].filter(Boolean));
     theoChuong[ch] = {
       chuong: ch,
@@ -709,13 +746,14 @@ function goiM81(ngay, opts = {}) {
       vungChong: vc.length,
       giaiChong: gc.length,
       nghiaThuong: nt.length,
-      tong: vc.length + gc.length + nt.length,
+      hoPhu: hp.length,
+      tong: vc.length + gc.length + nt.length + hp.length,
     };
   }
 
   const loiCau = [];
   const muc = [];
-  const tongPhieu = dsVungChong.length + dsGiaiChong.length + dsNghiaThuong.length;
+  const tongPhieu = dsVungChong.length + dsGiaiChong.length + dsNghiaThuong.length + dsHoPhu.length;
   const soBanGhiGc = dsGiaiChong.reduce((s, x) => s + x.banGhi.length, 0);
 
   const md = [
@@ -724,34 +762,35 @@ function goiM81(ngay, opts = {}) {
     `- **Ngày xuất gói:** ${ngayChuan}`,
     `- **Nguồn dữ liệu (tất định 100%, không AI, không mạng):** \`data/ho-so-ma/dieu-kien/*.jsonl\`, \`data/ho-so-ma/bang-anh-em/*.jsonl\`, \`data/ho-so-ma/nguong/*.jsonl\`, \`data/luat-goc/\` (không đọc tiền lệ \`tb:\`, không đọc dữ liệu khách hàng hay tờ khai).`,
     `- **Nguyên tắc duyệt (\`#2410#issuecomment-7219708144\`):** Gói này chỉ xuất phiếu để người làm nghề chấm **Đúng / Sai / Cần thêm** và ghi **Kết luận người duyệt** ngay dưới mỗi mục. Không tự sửa dữ liệu trong PR này; sau khi người duyệt trả lời xong mới mở PR cập nhật dữ liệu riêng (đọc lại tự động bằng \`node scripts/ho-so-ma/goi-duyet.mjs --doc-bang=<tệp>\`).`,
-    `- **Tổng hợp toàn gói:** **${tongPhieu} phiếu** gồm **${dsVungChong.length}** cặp \`VUNG_CHONG\` chưa giải · **${dsGiaiChong.length}** cặp \`GIAI_CHONG\` chờ duyệt (${soBanGhiGc} bản ghi) · **${dsNghiaThuong.length} / ${tongNghiaThuong}** điều kiện \`NGHIA_THUONG\` ở vùng biên${tatCaNghiaThuong ? ' (đang bật `--tat-ca-nghia-thuong`)' : ''}.`,
+    `- **Tổng hợp toàn gói:** **${tongPhieu} phiếu** gồm **${dsVungChong.length}** cặp \`VUNG_CHONG\` chưa giải · **${dsGiaiChong.length}** cặp \`GIAI_CHONG\` chờ duyệt (${soBanGhiGc} bản ghi) · **${dsNghiaThuong.length} / ${tongNghiaThuong}** điều kiện \`NGHIA_THUONG\` ở vùng biên${tatCaNghiaThuong ? ' (đang bật `--tat-ca-nghia-thuong`)' : ''} · **${dsHoPhu.length}** bảng anh em \`HO_PHU\` chờ duyệt.`,
     ``,
     `## Bảng tổng hợp theo Chương`,
     ``,
-    `| Chương | Nhóm 4 số có mục duyệt | I. \`VUNG_CHONG\` chưa giải | II. \`GIAI_CHONG\` chờ duyệt | III. \`NGHIA_THUONG\` vùng biên | Tổng phiếu |`,
-    `|---|---|---:|---:|---:|---:|`,
+    `| Chương | Nhóm 4 số có mục duyệt | I. \`VUNG_CHONG\` chưa giải | II. \`GIAI_CHONG\` chờ duyệt | III. \`NGHIA_THUONG\` vùng biên | IV. \`HO_PHU\` chờ duyệt | Tổng phiếu |`,
+    `|---|---|---:|---:|---:|---:|---:|`,
   ];
 
   for (const ch of danhSachChuong) {
     const tk = theoChuong[ch];
-    md.push(`| Chương ${ch} | ${tk.nhom4.map((n) => `\`${n}\``).join(', ') || '—'} | ${tk.vungChong} | ${tk.giaiChong} | ${tk.nghiaThuong} | **${tk.tong}** |`);
+    md.push(`| Chương ${ch} | ${tk.nhom4.map((n) => `\`${n}\``).join(', ') || '—'} | ${tk.vungChong} | ${tk.giaiChong} | ${tk.nghiaThuong} | ${tk.hoPhu} | **${tk.tong}** |`);
   }
-  md.push(`| **Tổng cộng** | **${danhSachChuong.length} chương** | **${dsVungChong.length}** | **${dsGiaiChong.length}** | **${dsNghiaThuong.length}** | **${tongPhieu}** |`, ``);
+  md.push(`| **Tổng cộng** | **${danhSachChuong.length} chương** | **${dsVungChong.length}** | **${dsGiaiChong.length}** | **${dsNghiaThuong.length}** | **${dsHoPhu.length}** | **${tongPhieu}** |`, ``);
 
   for (const ch of danhSachChuong) {
     const vcCh = dsVungChong.filter((x) => x.chuong === ch);
     const gcCh = dsGiaiChong.filter((x) => x.chuong === ch);
     const ntCh = dsNghiaThuong.filter((x) => x.chuong === ch);
+    const hpCh = dsHoPhu.filter((x) => x.chuong === ch);
     const tenChuong = gonMotDong(L.cay.theoId.get(`chuong:${ch}`)?.ten || L.cay.theoId.get(`bieu:${ch}`)?.ten || '');
 
     md.push(
       `## Chương ${ch}${tenChuong ? ` — ${tenChuong}` : ''}`,
       ``,
-      `Tổng mục cần duyệt trong Chương ${ch}: **${vcCh.length + gcCh.length + ntCh.length} phiếu** (\`VUNG_CHONG\` chưa giải: **${vcCh.length}** · \`GIAI_CHONG\` chờ duyệt: **${gcCh.length}** · \`NGHIA_THUONG\` vùng biên: **${ntCh.length}**).`,
+      `Tổng mục cần duyệt trong Chương ${ch}: **${vcCh.length + gcCh.length + ntCh.length + hpCh.length} phiếu** (\`VUNG_CHONG\` chưa giải: **${vcCh.length}** · \`GIAI_CHONG\` chờ duyệt: **${gcCh.length}** · \`NGHIA_THUONG\` vùng biên: **${ntCh.length}** · \`HO_PHU\` chờ duyệt: **${hpCh.length}**).`,
       ``,
     );
 
-    if (!vcCh.length && !gcCh.length && !ntCh.length) {
+    if (!vcCh.length && !gcCh.length && !ntCh.length && !hpCh.length) {
       md.push(`*(Không có mục cần người duyệt trong Chương ${ch})*`, ``);
       continue;
     }
@@ -874,6 +913,33 @@ function goiM81(ngay, opts = {}) {
         muc.push({ id: nt.idPhieu, dieuKienId: d.id, nhomMuc: 'NGHIA_THUONG', chuong: ch, nut: d.nut });
       }
     }
+
+    // Nhóm IV: Bảng anh em HO_PHU chưa chứng minh phủ kín
+    if (hpCh.length) {
+      md.push(`#### IV. Bảng anh em \`HO_PHU\` chưa chứng minh phủ kín — Chương ${ch} (${hpCh.length} phiếu)`, ``);
+      for (const hp of hpCh) {
+        const tenCha = tenBieuCuaNut(hp.cha, L, bieuMeta);
+        const cauChaId = L.cau.has(`${hp.cha}#1`) ? `${hp.cha}#1` : null;
+        md.push(
+          `### [${hp.idPhieu}] ${hp.cha} — Bảng anh em chưa chứng minh phủ kín`,
+          ``,
+          `- **Loại mục duyệt:** \`HO_PHU\` — nhóm không có dòng \`"Loại khác"\` nhưng chưa có câu luật đóng miền chứng minh phủ kín phạm vi cha`,
+          `- **Nút cha:** \`${hp.cha}\` (\`${dinhDangMaCham(hp.cha)}\`) — "${tenCha}"`,
+          ...(cauChaId ? [`  > **Câu biểu nút cha (\`${cauChaId}\`):** "${traCauLuatAnToan(cauChaId, L, loiCau)}"`] : []),
+          ...dinhDangDanhSachDieuKienNut(hp.cha, dkTheoNut, L, bieuMeta, nguongById, loiCau),
+          `- **Các nút anh em con trực tiếp (${hp.con.length} nút):**`,
+          ...hp.con.flatMap((cid) => dinhDangDanhSachDieuKienNut(cid, dkTheoNut, L, bieuMeta, nguongById, loiCau)),
+          `- **Câu hỏi cho người duyệt:** Các nhánh anh em con trên đã phủ kín thực tế phạm vi nút cha theo nghiệp vụ phân loại chưa, hay còn trường hợp hàng hoá hợp lệ của nút cha lọt giữa các nhánh (cần bổ sung căn cứ đóng miền / điều kiện)?`,
+          ``,
+          `- [ ] **Đúng**  - [ ] **Sai**  - [ ] **Cần thêm**`,
+          `- **Kết luận người duyệt:** `,
+          ``,
+          `---`,
+          ``,
+        );
+        muc.push({ id: hp.idPhieu, nhomMuc: 'HO_PHU', chuong: ch, cha: hp.cha, con: hp.con });
+      }
+    }
   }
 
   const noiDungMd = md.join('\n') + '\n';
@@ -900,6 +966,8 @@ function goiM81(ngay, opts = {}) {
     soBanGhiGiaiChong: soBanGhiGc,
     soNghiaThuong: dsNghiaThuong.length,
     tongNghiaThuong,
+    soHoPhu: dsHoPhu.length,
+    dsHoPhu,
     loiCau,
     theoChuong,
     muc,
@@ -981,7 +1049,7 @@ function main(argv = process.argv.slice(2)) {
     console.log(
       `gói duyệt M-81${kq.chuong ? ` (chương ${kq.chuong})` : ''}: ${kq.tongPhieu} phiếu `
       + `(VUNG_CHONG=${kq.soVungChong}, GIAI_CHONG=${kq.soGiaiChong} [${kq.soBanGhiGiaiChong} bản ghi], `
-      + `NGHIA_THUONG vùng biên=${kq.soNghiaThuong}/${kq.tongNghiaThuong})`,
+      + `NGHIA_THUONG vùng biên=${kq.soNghiaThuong}/${kq.tongNghiaThuong}, HO_PHU=${kq.soHoPhu})`,
     );
     console.log(`  ${kq.tepMd}`);
     if (kq.loiCau.length) {
