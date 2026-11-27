@@ -15,3 +15,4 @@ Quyết định cấp công ty (văn phòng OZ) nằm ở Gitea `ozvietnam/oz-in
 - [0006](0006-ho-so-van-de-ma-8-so.md) — Hồ sơ vấn đề của từng mã 8 số, tách khỏi dữ liệu khách (CEO 26/11/2026)
 - [0007](0007-dieu-kien-nguyen-tu-bang-anh-em.md) — Điều kiện nguyên tử và bảng anh em: "Loại khác" đóng bằng tiêu chí (CEO 27/11/2026)
 - [0005](0005-repo-la-ban-do-luat-llm-la-nguoi-doc.md) — Repo là bản đồ luật và trình tự đọc; LLM là người đọc và phán đoán (CEO 25/11/2026)
+- [0008](0008-trien-khai-m81-theo-nhom-4-so.md) — Triển khai M-81 theo cả nhóm 4 số: người soạn mạnh, tập vàng làm thước, thêm ô truc/moNguon/ve:0 (CEO 27/11/2026)
