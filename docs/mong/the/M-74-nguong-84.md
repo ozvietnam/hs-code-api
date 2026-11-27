@@ -3,8 +3,8 @@
 - **Khuôn áp dụng:** `ho-so-ma@1` ([`docs/mong/khuon-ho-so-ma.md`](../khuon-ho-so-ma.md), [`docs/decisions/0006-ho-so-van-de-ma-8-so.md`](../../decisions/0006-ho-so-van-de-ma-8-so.md))
 - **Kho dữ liệu (`RUT_TU_LUAT`, khai trong `data/lop-kho.json`):**
   - `data/ho-so-ma/nguong/XVI.jsonl`: **2 bản ghi `NGUONG`** ở `phan:XVI` (`phan:XVI:kq:41#1` dung sai bi thép 84.82: `<= 1%` và `<= 0,05 mm`) — giữ nguyên không chạm.
-  - `data/ho-so-ma/nguong/84.jsonl`: **402 bản ghi** (`311 NGUONG`, `79 TACH_ANH_EM`, `12 BO_QUA`) từ Chú giải Chương/Phân nhóm (`7`, `9`, `pn:4`), Phân nhóm/Nhóm/SEN và tên dòng biểu thuế `bieu:84*` (đã hoàn tất rà ngược **Gói 1: `84.01–84.12`**, **Gói 2: `84.13–84.20`**, **Gói 3: `84.21–84.35`**, **Gói 4: `84.36–84.50`** và **Gói 5: `84.51–84.65`**; giữ nguyên 100% từng byte **373 bản ghi** ngoài Gói 5 gồm `318` bản ghi Gói 1+2+3+4 và `55` bản ghi còn lại của `84.66–84.87` + phi-biểu ngoài Gói 5).
-  - **Tổng toàn Chương 84 + Phần XVI: 404 bản ghi**, không chứa dữ liệu khách, tờ khai, `tb:`, `wco:`, `gir:`, hay thông số ví dụ/bảng mẫu tham khảo.
+  - `data/ho-so-ma/nguong/84.jsonl`: **404 bản ghi** (`311 NGUONG`, `81 TACH_ANH_EM`, `12 BO_QUA`) từ Chú giải Chương/Phân nhóm (`7`, `9`, `pn:4`), Phân nhóm/Nhóm/SEN và tên dòng biểu thuế `bieu:84*` (đã hoàn tất rà ngược **Gói 1: `84.01–84.12`**, **Gói 2: `84.13–84.20`**, **Gói 3: `84.21–84.35`**, **Gói 4: `84.36–84.50`**, **Gói 5: `84.51–84.65`** và **Gói 6: `84.66–84.80`**; giữ nguyên 100% từng byte **394 bản ghi** ngoài Gói 6 gồm `347` bản ghi Gói 1+2+3+4+5 và `47` bản ghi còn lại của `84.81–84.87` + phi-biểu ngoài Gói 6).
+  - **Tổng toàn Chương 84 + Phần XVI: 406 bản ghi**, không chứa dữ liệu khách, tờ khai, `tb:`, `wco:`, `gir:`, hay thông số ví dụ/bảng mẫu tham khảo.
 - **Áp dụng đầy đủ 3 quy ước QT chốt sau Chương 76 & 8 Luật M-74:**
   1. **Không lấy thông số ví dụ / bảng mẫu tham khảo:** lọc bằng `laCauViDuHoacBangMau()` (loại các dải minh họa trong Chú giải như `nhom:8424` 3.000–4.000 bar, `nhom:8448` khoảng 0,1–2 mm, `nhom:8455` xấp xỉ 30–520 cm, `pn:842211` bảng kích thước đặt sàn, `pn:842441` ví dụ 3 bar/5 lít, `sen:84145930` ví dụ 0,5 m³/s).
   2. **Bảng thành phần hợp kim:** Chương 84 không có bảng thành phần mác hợp kim kiểu `5182/5082`.
@@ -272,3 +272,57 @@
   - **Bỏ qua hợp lệ ngoài số + đơn vị:** `nhom:8462:ct:22#2` (ví dụ số lượng con lăn `"từ 5 đến 11"` / `"thường từ 15 đến 23"`, không phải đại lượng đo lường) cùng `306` câu chỉ mang số thứ tự mục hoặc dẫn chiếu mã HS.
 - **Đối chiếu chỉ-đọc `data/ho-so/ranh-gioi/8451..8465*.json`:** **44/44 tệp**, **7/7 dòng `dieuKienSo`** (`84571010`, `84581110`, `84581910`, `84589910`, `84603110`, `84659210`, `84659510`) đều được phủ 100% (`0` thiếu).
 - **7 nhóm hoàn toàn không có bản ghi ngưỡng/bỏ qua trong Gói 5:** `84.53`, `84.54`, `84.59`, `84.61`, `84.62`, `84.63`, `84.64` (và `84.55`, `84.56` chỉ có `BO_QUA`; đã rà đủ 100% `bieu`/`nhom`/`pn`/`sen`).
+
+---
+
+## Rà ngược Gói 6 (`84.66–84.80`) — Hoàn tất theo 8 Luật M-74
+
+- **Phạm vi xử lý:** **14 nhóm 4 số** tiếp theo Chương 84 (`84.66, 84.67, 84.68, 84.70, 84.71, 84.72, 84.73, 84.74, 84.75, 84.76, 84.77, 84.78, 84.79, 84.80`; biểu thuế không có `84.69`), gồm **2 nhóm vàng `84.71` và `84.79`**. Giữ nguyên 100% từng byte **394 bản ghi** ngoài phạm vi `84.66–84.80` (`347` bản ghi Gói 1–5 đã gộp ở #2461/#2466/#2469/#2471/#2473 + `47` bản ghi còn lại của `84.81–84.87` và phi-biểu ngoài Gói 6).
+
+### 1. Biến động bản ghi phạm vi `84.66–84.80`
+
+| Chỉ tiêu (phạm vi `bieu:8466*..8480*`) | Nền `origin/main` | Sau rà ngược Gói 6 | Biến động |
+|---|---:|---:|---|
+| Tổng bản ghi gói `84.66–84.80` | 8 | **10** | **`+2` thêm / `6` sửa / `0` bỏ** (`2` giữ nguyên; cả tệp `84.jsonl`: `402 → 404`) |
+| `NGUONG` | 8 | **8** | Làm sạch mã HS trên 3 bản ghi `8470`, bổ sung `voi`/`duKien` trên `847130`, bổ sung mảng `phuDinh` trên `84743219`/`84743229` |
+| `DINH_NGHIA` | 0 | **0** | Chú giải 6, 8 & CGPN 2 Ch.84 (`84.71`, `84.79`) định nghĩa định tính, không đặt ngưỡng đo số |
+| `TACH_ANH_EM` | 0 | **2** | Thêm mới `hs:bieu:84714:7401` (phủ định De Morgan `8471.30`) & `hs:bieu:847190:7401` (`Loại khác` dưới `84.71`) |
+| `BO_QUA` | 0 | **0** | Không có câu CGCT mô tả tính chất thông thường kèm đơn vị đo vật lý trong 14 nhóm |
+| Bản ghi có trường mảng `phuDinh` | 0 | **4** | 2 `NGUONG` `"Loại khác"` thuần (`84743219`, `84743229`) + 2 `TACH_ANH_EM` (`84714`, `847190`) |
+| `NGUONG` chứa mã HS trong `daiLuong` | 3 | **0** | **Sạch 100%** (`hs:bieu:8470:8401..8403`) |
+| `NGUONG` chứa `"thông số"` trong `daiLuong` | 0 | **0** | Sạch 100% |
+
+### 2. Các điểm chuẩn hoá chính trong Gói 6 (`84.66–84.80`)
+
+- **Xóa sạch 3 mã HS trong `daiLuong` ở nhóm `84.70` & giữ nguyên tương thích Ca 1 `nguong-test.mjs` (Luật 3):**
+  - `hs:bieu:8470:8401..8403` (`cau: "chuong:84:cg:9#1"` — Chú giải 9 Chương 84, khổ loại bỏ túi `170 × 100 × 45 mm`): bỏ `(loại bỏ túi 84.70)` → đổi thành `"kích thước chiều dài (máy tính loại bỏ túi)"` (`<= 170 mm`), `"kích thước chiều rộng (máy tính loại bỏ túi)"` (`<= 100 mm`), `"kích thước chiều dày (máy tính loại bỏ túi)"` (`<= 45 mm`).
+  - Giữ nguyên `nut: "bieu:8470"`, `id` gốc và `den: 170` để đạt kiểm Ca 1 `nguong-test.mjs` (dòng 170: `x.nut === 'bieu:8470' && x.nguong?.den === 170`).
+- **Xác nhận & chuẩn hóa 2 nhóm vàng `84.71` và `84.79` (chỉ-đọc `dieu-kien/84.jsonl` [66 bản ghi] & `bang-anh-em/84.jsonl` [11 bản ghi] — `0` tham chiếu `nguong` trong phạm vi `84.66–84.80`):**
+  - **Nhóm vàng `84.71`:** `hs:bieu:847130:8401` (`<= 10 kg`) là điều kiện ghép *(loại xách tay VÀ khối lượng `<= 10 kg` VÀ gồm ít nhất một CPU, một bàn phím và một màn hình)*. Bổ sung `voi: ["bieu:84714"]`, `duKien: ["loại xách tay", "khối lượng"]` trên `847130`, đồng thời thêm mới **2 `TACH_ANH_EM` + `phuDinh`**:
+    - `hs:bieu:84714:7401` (`bieu:84714` *"- Máy xử lý dữ liệu tự động khác:"*): phủ định De Morgan điều kiện ghép của `8471.30` (cấm gắn `NGUONG > 10 kg` vì máy tính để bàn/all-in-one/mini-PC `<= 10 kg` vẫn thuộc `8471.41`/`8471.49`).
+    - `hs:bieu:847190:7401` (`bieu:847190` *"- Loại khác:"*): phủ định đồng thời 6 nhánh đứng trước (`847130`, `84714`, `847150`, `847160`, `847170`, `847180`), nhận nhánh đầu đọc từ/quang học và máy mã hóa dữ liệu sau dấu `;` của `84.71`.
+    - Đối soát `chuong:84:cgpn:2#1` (*khái niệm "hệ thống" của `8471.49` gồm ít nhất 1 CPU, 1 bộ nhập, 1 bộ xuất*): định nghĩa cấu thành định tính, không phải ngưỡng đo số.
+    - Đối soát `pn:847130:ct:1#1` (*"trọng lượng không quá 10 kg"*): nhắc lại ngưỡng pháp lý đã rút ở `hs:bieu:847130:8401` → bỏ qua hợp lệ; `nhom:8471:ct:16#2` (*"mã 6 bit tiêu chuẩn ISO"*): ví dụ minh họa mã ký tự trong ngoặc → bỏ qua hợp lệ.
+  - **Nhóm vàng `84.79`:** `0` ngưỡng số trên toàn bộ dòng biểu `bieu:8479*`; `0` `dieuKienSo` trong `ranh-gioi/8479*.json`; `nhom:8479:ct:93#1` chỉ là false-hit chữ `"Chương 82 và"`, `ct:113#2` chỉ mô tả cấu tạo cầu hành khách (*"02 hoặc nhiều hơn các đường dẫn hình chữ nhật lồng vào nhau"*), `0` ngưỡng số bị sót và không cần `BO_QUA`.
+- **Phủ đủ trường mảng `phuDinh` ở `84.74` (Luật 1):**
+  - Bổ sung mảng `phuDinh: ["bieu:84743211"]` trên `hs:bieu:84743219:8401` và `phuDinh: ["bieu:84743221"]` trên `hs:bieu:84743229:8401` (2 dòng `"Loại khác"` thuần 1 chiều `> 80 tấn/giờ`, đồng bộ với `ghiChu`).
+
+### 3. Bảng đối soát câu chứa chữ số + đơn vị theo Luật 6 (`84.66–84.80`)
+
+| Nguồn câu (`84.66–84.80`) | Trúng số + đơn vị | Đã rút `NGUONG` | Ghi `BO_QUA` | Bỏ qua hợp lệ (nhắc lại luật / ví dụ / false-hit) | Chi tiết đối soát |
+|---|---:|---:|---:|---:|---|
+| Pháp lý Chú giải 9 Ch.84 (`chuong:84:cg:9#1`) | 1 | 1 | 0 | 0 | `hs:bieu:8470:8401..8403` (`<= 170 x 100 x 45 mm`, đã xóa mã HS `84.70` khỏi `daiLuong`) |
+| Dòng biểu `bieu:8471*` (Nhóm vàng `84.71`) | 1 | 1 | 0 | 0 | `bieu:847130#1` (`<= 10 kg`) + 2 `TACH_ANH_EM` `84714`, `847190` |
+| Dòng biểu `bieu:8474*` | 2 | 2 | 0 | 0 | `bieu:84743211#1`, `bieu:84743221#1` (`<= 80 tấn/giờ`) + 2 phần bù `NGUONG` `84743219`, `84743229` (`phuDinh`) |
+| Dòng biểu 11 nhóm còn lại (`8466..8468, 8472, 8473, 8475..8480` gồm vàng `84.79`) | 0 | 0 | 0 | 0 | Chỉ chứa mã nhóm/phân nhóm dẫn chiếu (`84.56–84.65`, `84.70–84.72`, `85.15`, `85.17`, ...) |
+| CGCT phân nhóm `8471.30` (`pn:847130:ct:1#1`) | 1 | 0 | 0 | **1** | Nhắc lại ngưỡng `<= 10 kg` đã rút từ `bieu:847130#1` (`hs:bieu:847130:8401`) |
+| CGCT `84.71` (`nhom:8471:ct:16#2`) | 1 | 0 | 0 | **1** | Ví dụ minh họa hệ mã ký tự trong ngoặc (`"mã 6 bit tiêu chuẩn ISO"`), không phải ngưỡng phân loại |
+| CGCT `8466, 8476, 8477, 8479 (vàng), 8480` (`ct:1#1`, `8#2`, `19#1`, `pn:847621/29`, `8477:ct:3#1`, `8479:ct:93#1`, `8480:ct:5#3`) | 0 | 0 | 0 | 0 | Các hit thô (`82 và`, `84.67 và`, `84.25 v.v..`, `8476.21 và`, `69.03 và`, `82.07 vì`) đều là false-hit mã HS đứng trước chữ `v`, không có đơn vị đo; `8479:ct:113#2` & `8480:ct:33#2` chỉ có số đếm cấu tạo (`02` đường dẫn / khuôn); `0` câu SEN toàn gói |
+| **Tổng Gói 6 (`84.66–84.80`)** | **6** | **4** | **0** | **2** | **6/6 câu có số+đơn vị thực đã đối soát, `0` bỏ sót** |
+
+### 4. Kiểm phân dải anh em, Ca 1 `nguong-test.mjs` & đối chiếu `ranh-gioi` (`84.66–84.80`)
+
+- **Cụm anh em trong Gói 6 (`kiemDaiAnhEm` + Cổng 3):** **2/2 cụm phủ kín `(-∞, +∞)`** (`8474321`, `8474322` — `công suất (tấn/giờ)`), tổng toàn Chương 84 giữ nguyên **80 cụm** (`74` phủ kín, `6` hữu hạn, khớp `>= 80` của `nguong-test.mjs` Ca 3), **`0` chồng dải, `0` hở dải, `0` lỗi `voi`/`phuDinh`, `0` lỗi đơn vị**.
+- **Ca 1 `nguong-test.mjs` (dòng 170):** `banGhi84.some(x => x.nut === 'bieu:8470' && x.nguong?.den === 170)` → **`PASS`**.
+- **Tính lũy đẳng (`idempotent`):** Chạy `patch-c84-b6.mjs` lần 2 cho `editedCount: 0, insertedCount: 0`, đầu ra **khớp 100% từng byte** với lần 1; toàn bộ `394` dòng ngoài `84.66–84.80` giữ nguyên 100% từng byte.
+- **Đối chiếu `data/ho-so/ranh-gioi/8466..8480*.json` (chỉ-đọc):** **45 tệp** (**2 dòng `dieuKienSo`** trên `84743211`, `84743221`) đều được phủ đầy đủ (`0` thiếu).
