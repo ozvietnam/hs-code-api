@@ -1,7 +1,30 @@
-# M-74 (#1966) — Ngưỡng số và phân dải anh em — Chương 82
+# M-74 (#1966 / #2440) — Rà ngược ngưỡng số và phân dải anh em — Chương 82
 
 - **Khuôn áp dụng:** `ho-so-ma@1` ([`docs/mong/khuon-ho-so-ma.md`](../khuon-ho-so-ma.md), [`docs/decisions/0006-ho-so-van-de-ma-8-so.md`](../../decisions/0006-ho-so-van-de-ma-8-so.md))
-- **Kho dữ liệu (`RUT_TU_LUAT`, theo `data/lop-kho.json` trên `main`):**
-  - `data/ho-so-ma/nguong/82.jsonl`: **4 bản ghi** (**4 `NGUONG`**, **0** bản ghi "Loại khác" gắn mảng `phuDinh`).
-- **Tuân thủ quy tắc QT:**
-  - Không lấy thông số ví dụ, bảng mẫu hay ước lượng; trích đúng câu của chính nút; không gắn `gir:`, `wco:`, `tb:`; dùng bộ kiểm chung [`scripts/ho-so-ma/nguong-test.mjs`](../../../scripts/ho-so-ma/nguong-test.mjs) và [`scripts/ho-so-ma/cong.mjs`](../../../scripts/ho-so-ma/cong.mjs).
+- **Kho dữ liệu (`RUT_TU_LUAT`, khai trong `data/lop-kho.json`):**
+  - `data/ho-so-ma/nguong/82.jsonl`: **13 bản ghi** (**`10 NGUONG`**, **`0 DINH_NGHIA`**, **`1 TACH_ANH_EM`**, **`2 BO_QUA`**; tổng **`1` bản ghi mang mảng `phuDinh`**), nâng từ mốc nền `4` bản ghi trên `origin/main` (`+9` thêm mới, `4` sửa/chuẩn hoá, `0` bỏ).
+  - **Sạch mã HS trong `daiLuong` (100% — `0/10` `NGUONG` chứa mã dòng/nhóm `82xx`/`82.xx`) & xoá đại lượng mơ hồ (Luật 3):**
+    - Thay `daiLuong` mơ hồ `"thông số (cm)"` tại `bieu:82119330` bằng `"chiều dài lưỡi dao (dao nhíp)"`, ghi rõ nhánh `HOẶC` trong `dieuKien` (chỉ áp `>= 15 cm` cho nhánh `dao nhíp`; dao bấm tự động hoặc dao gấp thuộc `8211.93.30` bất kể chiều dài lưỡi) và đưa cụm nguyên văn `"dao nhíp"` vào `duKien`.
+    - Bổ sung nhánh `HOẶC` cho `bieu:820590` và `bieu:82059000` (`nhánh bộ dụng cụ cùng nhóm`: `>= 2 phân nhóm` thuộc nhóm này; các mặt hàng đơn lẻ Loại khác như đe, bệ rèn xách tay, bàn mài quay không đòi ngưỡng số phân nhóm).
+    - Bổ sung ngưỡng bộ dụng cụ đóng gói bán lẻ tại `bieu:8206`, `bieu:820600`, `bieu:82060000` (`>= 2 nhóm` khác nhau thuộc `82.02`–`82.05`, `daiLuong` không chứa mã HS).
+  - **Luật 1 & Luật 2 (De Morgan — phủ kín 100% `"Loại khác"` dưới cha có `NGUONG`):**
+    - Bổ sung `hs:bieu:82119390:7401` (`loai: "TACH_ANH_EM"`, `voi` + `phuDinh: ["bieu:8211932", "bieu:82119330"]`) cho dòng `- - - Loại khác` dưới cha `bieu:821193`. Không gắn ngưỡng đảo `< 15 cm` vì `8211.93.30` ghép loại dao + chiều dài lưỡi và `8211.93.2` xét công dụng nông/lâm/làm vườn (dao không cố định lưỡi loại khác dài `>= 15 cm` vẫn thuộc `8211.93.90`).
+  - **Luật 4 (chiều khoảng số ở lại nút) & Luật 7 (đúng nút phạm vi):**
+    - Kiểm chứng và làm rõ chiều ở lại `<= 10 kg` tại `bieu:8210`, `bieu:821000`, `bieu:82100000` (`tu: null, den: 10, gomDen: true`; ghi rõ ranh giới `> 10 kg → Chương 84` trong `dieuKien`).
+    - Rút Chú giải 3 Chương 82 (`chuong:82:cg:3#1`) gắn đúng vào nút `bieu:8215` (cấm treo lên `chuong:82` theo Luật 7): nhánh bộ gồm `>= 1` dao thuộc `82.11` và tỉ lệ số sản phẩm bộ đồ ăn (`82.15`) trên số dao (`82.11`) `>= 1 lần` thì ở lại `82.15`.
+  - **Luật 6 & Luật 8 (`BO_QUA` cho con số mô tả thông thường tại chủ câu):**
+    - Ghi **2 bản ghi `BO_QUA`** tại đúng chủ câu cho các câu chú giải chi tiết mang dấu hiệu mô tả thông thường (`"thường…"`): `hs:bieu:8201:7401` (`nhom:8201:ct:7#1`, `"thường bao gồm hai tay cầm được khớp với nhau bằng một chiếc chốt nằm ở 3/4 chiều dài của chúng"`) và `hs:bieu:8202:7401` (`nhom:8202:ct:16#1`, `"thường là dây thép đặc biệt được chập 3"` kèm loại trừ `73.12`). Không sửa `data/ho-so/ranh-gioi/`.
+  - Tất cả `id` tuân chuẩn `hs:<nut>:74NN`, `0` trùng lặp với `data/ho-so-ma/liet-ke/82.jsonl` hay bất kỳ tệp nào trong kho `data/ho-so-ma/`. Không chứa dữ liệu khách, tờ khai, `tb:`, `wco:`, `gir:`.
+- **Đối soát câu chứa chữ số + đơn vị theo Luật 6:**
+  - Pháp lý Phần XV (`phan:XV:cg*`): **1/1** câu (`phan:XV:cg:8:b#1`) đã phủ tại `nguong/XV.jsonl`.
+  - Pháp lý Chương 82 (`chuong:82:cg*` & `cgpn*`): **0** câu trúng đơn vị đo SI; **1/1** câu quy tắc định lượng tỉ lệ bộ (`chuong:82:cg:3#1`) đã rút thành `NGUONG` tại `bieu:8215` (**0** câu bỏ sót).
+  - Chú giải tổng quát (`chuong:82:kq*`): **0** câu chứa số+đơn vị đo lường (`chuong:82:kq:5#1` nhắc lại `82.06` đã phủ từ dòng biểu `LUAT`).
+  - Dòng biểu thuế (`bieu:82*`, 162 câu): **4/4** câu trúng số+đơn vị đo lường (`bieu:8210#1`, `821000#1`, `82100000#1`, `82119330#1`) và **5/5** câu định lượng số nhóm/phân nhóm trong bộ (`bieu:820590#1`, `82059000#1`, `8206#1`, `820600#1`, `82060000#1`) đều đã rút thành `NGUONG` (**9/9**, `0` câu bỏ sót). Các dòng `bieu:821510#1`/`82151000#1` (`"ít nhất một thứ đã được mạ kim loại quý"` — điều kiện định tính có/không) và `bieu:820150`/`820160` (`"một tay"`/`"hai tay"` — kiểu thao tác) thuộc `TACH_ANH_EM` M-76, không phải ngưỡng dải số.
+  - SEN Chương 82 (`sen:82*`): **0/0** câu.
+  - Chú giải chi tiết nhóm (`nhom:82*`, 249 câu): **2/2** câu trúng số+đơn vị đo (`nhom:8210:ct:1#1`, `nhom:8210:ct:4#1`, `<= 10 kg`) lặp lại ngưỡng `LUAT` đã rút tại `bieu:8210#1`; **2** câu mô tả cấu tạo thông thường (`nhom:8201:ct:7#1`, `nhom:8202:ct:16#1`) đã ghi `BO_QUA`; các câu còn lại có chữ số là số thứ tự mục, cấu tạo tiêu chuẩn (`1 lỗ trung tâm`, `2 lưỡi`, `4 lưỡi`, `2 mỏ`) hoặc nhắc lại `82.06` / Chú giải 3 — bỏ qua hợp lệ.
+- **Kiểm phân dải anh em (`kiemDaiAnhEm` + `kiemDonViDaiLuongTongQuat` + Cổng 3):**
+  - **0 cụm anh em** có `>= 2` nút `NGUONG` cùng `(daiLuong, donVi)` (`0` cụm phủ kín, `0` chồng, `0` hở — cụm duy nhất có `NGUONG` cùng cha là `bieu:821193` đã phủ phần bù `bieu:82119390` bằng `TACH_ANH_EM` De Morgan theo Luật 2), `0` lỗi `voi`/`phuDinh`, `0` lỗi đơn vị khớp đại lượng, `0/10` `NGUONG` mang mã HS trong `daiLuong`.
+- **Đối chiếu `data/ho-so/ranh-gioi/82*.json`:** **6/6 tệp** (`1` nút có điều kiện số `bieu:82119330` trong `821193.json`, nhánh `HOAC` `>= 15 cm`) đều được phủ 100% (`0` thiếu).
+- **Công cụ & bài kiểm:**
+  - [`scripts/ho-so-ma/cong.mjs`](../../../scripts/ho-so-ma/cong.mjs) (`--pham-vi chuong:82 --cong 4,5`), [`scripts/ho-so-ma/nguong-rut.mjs`](../../../scripts/ho-so-ma/nguong-rut.mjs) (`--chuong 82 --kiem`)
+  - [`scripts/ho-so-ma/nguong-test.mjs`](../../../scripts/ho-so-ma/nguong-test.mjs), [`scripts/test-ho-so-ma.mjs`](../../../scripts/test-ho-so-ma.mjs), [`scripts/test-ho-so-ma-tra.mjs`](../../../scripts/test-ho-so-ma-tra.mjs), [`scripts/test-lop-kho.mjs`](../../../scripts/test-lop-kho.mjs)
