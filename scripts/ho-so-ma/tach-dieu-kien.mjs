@@ -656,6 +656,180 @@ async function goiMoHinh(messages, meta, opts, cfg) {
   });
 }
 
+const chuanChuoiGop = (v) => chuanSo(String(v ?? ''));
+
+function chuanVeGop(v) {
+  if (v === 0 || v === '0') return 0;
+  if (Number.isInteger(v) && v >= 1) return v;
+  const parsed = Number.parseInt(v, 10);
+  if (Number.isInteger(parsed) && parsed >= 0) return parsed;
+  return v === undefined || v === null || gon(v) === '' ? 1 : gon(v);
+}
+
+function chuanBoolGop(v, macDinh = false) {
+  try {
+    return docBool(v, macDinh);
+  } catch {
+    return `RAW:${gon(v)}`;
+  }
+}
+
+/**
+ * Gộp kết quả thô `{ dieuKien, giaiChong, canhTranh }` từ các chunk của gói nhóm 4 số.
+ * - Khác khoá gộp: giữ cả hai, không cảnh báo.
+ * - Trùng khoá gộp và trùng toàn bộ nội dung chuẩn hoá còn lại: gộp bỏ bản lặp êm (chồng chuoiCha giữa goiCon).
+ * - Trùng khoá gộp nhưng khác nội dung còn lại: giữ cả hai VÀ ghi cảnh báo vào `canhBao` (chống mất dữ liệu âm thầm).
+ */
+export function gopKetQuaChunk(dsParsed, { nutMacDinh = '' } = {}) {
+  const dieuKien = [];
+  const giaiChong = [];
+  const canhTranh = [];
+  const canhBao = [];
+
+  const theoKhoaDk = new Map();
+  const theoKhoaGc = new Map();
+  const theoKhoaCt = new Map();
+
+  for (const parsed of dsParsed || []) {
+    if (!parsed || typeof parsed !== 'object') continue;
+
+    for (const d of Array.isArray(parsed.dieuKien) ? parsed.dieuKien : []) {
+      if (!d || typeof d !== 'object' || Array.isArray(d)) {
+        dieuKien.push(d);
+        continue;
+      }
+      const nut = gon(d.nut || '');
+      const ve = chuanVeGop(d.ve);
+      const phu = chuanBoolGop(d.phu, false);
+      const nguon = gon(d.nguon || d.cau || (nut ? `${nut}#1` : ''));
+      const trich = chuanChuoiGop(d.trich || '');
+      const cauHoi = chuanChuoiGop(d.cauHoi || d.dieuKien || '');
+      const kieu = KIEU_DIEU_KIEN.includes(d.kieu)
+        ? d.kieu
+        : (d.kieu === undefined || d.kieu === null || gon(d.kieu) === '' ? 'CO_KHONG' : gon(d.kieu));
+      const truc = kieu === 'GIA_TRI' ? chuanChuoiGop(d.truc || '') : '';
+      const tapSorted = kieu === 'GIA_TRI' && Array.isArray(d.tap)
+        ? [...new Set(d.tap.map(chuanChuoiGop).filter(Boolean))].sort()
+        : [];
+      const nguong = kieu === 'SO' ? gon(d.nguong || '') : '';
+
+      const khoaGop = JSON.stringify([nut, ve, phu, nguon, trich, cauHoi, kieu, truc, tapSorted, nguong]);
+
+      const daTri = kieu === 'GIA_TRI'
+        ? (d.daTri === undefined || d.daTri === null || gon(d.daTri) === '' ? false : chuanBoolGop(d.daTri, false))
+        : null;
+      const mo = MO_DIEU_KIEN.includes(d.mo)
+        ? d.mo
+        : (d.mo === undefined || d.mo === null || gon(d.mo) === '' ? (kieu === 'SO' ? 'NGUONG' : 'NGHIA_THUONG') : gon(d.mo));
+      let moNguon = null;
+      if ((mo === 'DINH_NGHIA_LUAT' || mo === 'MO_TA_HUONG_DAN') && d.moNguon !== undefined && d.moNguon !== null) {
+        const mnArr = [...new Set((Array.isArray(d.moNguon) ? d.moNguon : [d.moNguon]).map(gon).filter(Boolean))].sort();
+        if (mnArr.length) moNguon = mnArr;
+      }
+      let tapDuSorted = null;
+      if (kieu === 'GIA_TRI' && Array.isArray(d.tapDu)) {
+        const tdArr = [...new Set(d.tapDu.map(chuanChuoiGop).filter(Boolean))].sort();
+        if (tdArr.length) tapDuSorted = tdArr;
+      }
+      const ghiChuRaw = d.ghiChu === undefined || d.ghiChu === null ? '' : chuanChuoiGop(d.ghiChu);
+      const ghiChu = ghiChuRaw || null;
+      const noiDung = JSON.stringify({ daTri, mo, moNguon, tapDu: tapDuSorted, ghiChu });
+
+      if (!theoKhoaDk.has(khoaGop)) {
+        theoKhoaDk.set(khoaGop, new Set([noiDung]));
+        dieuKien.push(d);
+      } else {
+        const daCo = theoKhoaDk.get(khoaGop);
+        if (daCo.has(noiDung)) continue;
+        daCo.add(noiDung);
+        dieuKien.push(d);
+        canhBao.push(
+          `${nut || '(thiếu nut)'}: trùng khoá gộp DIEU_KIEN trên "${nguon}" ("${gon(d.cauHoi || d.dieuKien || '').slice(0, 80)}") nhưng khác nội dung — giữ cả hai`,
+        );
+      }
+    }
+
+    for (const g of Array.isArray(parsed.giaiChong) ? parsed.giaiChong : []) {
+      if (!g || typeof g !== 'object' || Array.isArray(g)) {
+        giaiChong.push(g);
+        continue;
+      }
+      const nut = gon(g.nut || nutMacDinh);
+      const sortedCap = Array.isArray(g.cap) ? [...new Set(g.cap.map(gon).filter(Boolean))].sort() : [];
+      const cach = CACH_GIAI_CHONG.includes(g.cach) ? g.cach : gon(g.cach || '');
+      const nguon = gon(g.nguon || '');
+      const trich = chuanChuoiGop(g.trich || '');
+      const ghiChuRaw = g.ghiChu === undefined || g.ghiChu === null ? '' : chuanChuoiGop(g.ghiChu);
+      const ghiChu = ghiChuRaw || null;
+
+      const khoaGc = JSON.stringify([nut, sortedCap, cach, nguon]);
+      const noiDungGc = JSON.stringify({ trich, ghiChu });
+
+      if (!theoKhoaGc.has(khoaGc)) {
+        theoKhoaGc.set(khoaGc, new Set([noiDungGc]));
+        giaiChong.push(g);
+      } else {
+        const daCo = theoKhoaGc.get(khoaGc);
+        if (daCo.has(noiDungGc)) continue;
+        daCo.add(noiDungGc);
+        giaiChong.push(g);
+        canhBao.push(
+          `${nut || '(thiếu nut)'}: trùng khoá gộp GIAI_CHONG cặp [${sortedCap.join(', ')}] trên "${nguon}" nhưng khác nội dung — giữ cả hai`,
+        );
+      }
+    }
+
+    for (const c of Array.isArray(parsed.canhTranh) ? parsed.canhTranh : []) {
+      if (!c || typeof c !== 'object' || Array.isArray(c)) {
+        canhTranh.push(c);
+        continue;
+      }
+      const nut = gon(c.nut || nutMacDinh);
+      const nhomCtSorted = Array.isArray(c.nhomCanhTranh)
+        ? [...new Set(c.nhomCanhTranh.map(gon).filter(Boolean))].sort()
+        : [];
+      const nguon = gon(c.nguon || '');
+      const trich = chuanChuoiGop(c.trich || '');
+      const phepThuSorted = Array.isArray(c.phepThu)
+        ? [...new Set(
+          c.phepThu
+            .map((p) => {
+              if (typeof p === 'string') {
+                const s = gon(p);
+                return s ? JSON.stringify(['str', s]) : '';
+              }
+              if (p && typeof p === 'object' && !Array.isArray(p)) {
+                return JSON.stringify(['obj', gon(p.nguon || ''), chuanChuoiGop(p.trich || '')]);
+              }
+              return '';
+            })
+            .filter(Boolean),
+        )].sort()
+        : [];
+      const ghiChuRaw = c.ghiChu === undefined || c.ghiChu === null ? '' : chuanChuoiGop(c.ghiChu);
+      const ghiChu = ghiChuRaw || null;
+
+      const khoaCt = JSON.stringify([nut, nhomCtSorted, nguon, trich]);
+      const noiDungCt = JSON.stringify({ phepThu: phepThuSorted, ghiChu });
+
+      if (!theoKhoaCt.has(khoaCt)) {
+        theoKhoaCt.set(khoaCt, new Set([noiDungCt]));
+        canhTranh.push(c);
+      } else {
+        const daCo = theoKhoaCt.get(khoaCt);
+        if (daCo.has(noiDungCt)) continue;
+        daCo.add(noiDungCt);
+        canhTranh.push(c);
+        canhBao.push(
+          `${nut || '(thiếu nut)'}: trùng khoá gộp CANH_TRANH trên "${nguon}" nhưng khác nội dung — giữ cả hai`,
+        );
+      }
+    }
+  }
+
+  return { dieuKien, giaiChong, canhTranh, canhBao };
+}
+
 /** Tách trọn một nhóm 4 số theo ADR-0008 (dùng gói đọc từ goi-nhom.mjs, tự chia goiCon khi vượt trần). */
 export async function tachGoiNhom(nhom4OrGoi, opts = {}) {
   const luat = opts.luat || G.LUAT_MAC_DINH;
@@ -680,34 +854,13 @@ export async function tachGoiNhom(nhom4OrGoi, opts = {}) {
     ? goi.goiCon
     : [null];
 
-  const mergedRaw = { dieuKien: [], giaiChong: [], canhTranh: [] };
-  const seenDk = new Set();
-  const seenGc = new Set();
-  const seenCt = new Set();
-
+  const dsParsed = [];
   for (const chunk of chunks) {
     const messages = dungLoiHoiGoiNhom(goi, { chunk });
     const rawText = await goiMoHinh(messages, { nhom: goi.nhom, nut: goi.nut, goi, chunk }, opts, cfg);
-    const parsed = rutJsonGoiNhom(rawText);
-    for (const d of parsed.dieuKien) {
-      const k = `${d?.nut}|${d?.ve}|${d?.phu}|${d?.nguon}|${d?.trich}`;
-      if (seenDk.has(k)) continue;
-      seenDk.add(k);
-      mergedRaw.dieuKien.push(d);
-    }
-    for (const g of parsed.giaiChong) {
-      const k = `${g?.nut}|${[...(g?.cap || [])].sort().join('|')}|${g?.nguon}`;
-      if (seenGc.has(k)) continue;
-      seenGc.add(k);
-      mergedRaw.giaiChong.push(g);
-    }
-    for (const c of parsed.canhTranh) {
-      const k = `${c?.nut}|${c?.nguon}|${c?.trich}`;
-      if (seenCt.has(k)) continue;
-      seenCt.add(k);
-      mergedRaw.canhTranh.push(c);
-    }
+    dsParsed.push(rutJsonGoiNhom(rawText));
   }
+  const { canhBao, ...mergedRaw } = gopKetQuaChunk(dsParsed, { nutMacDinh: goi.nut });
 
   const res = chuanHoaGoiNhom(mergedRaw, goi, L, {
     nguongSanCo: opts.nguongSanCo || goi.hoSoSanCo?.nguong || [],
@@ -724,6 +877,7 @@ export async function tachGoiNhom(nhom4OrGoi, opts = {}) {
     nhom: goi.nhom,
     goi,
     ...res,
+    canhBao,
   };
 }
 
@@ -787,6 +941,7 @@ async function main() {
     const khongChia = a.includes('--khong-chia');
     const banGhi = [];
     const loi = [];
+    const canhBao = [];
     for (const nhom of [...new Set(nhoms)]) {
       const r = await tachGoiNhom(nhom, {
         luat,
@@ -803,13 +958,15 @@ async function main() {
       });
       banGhi.push(...r.banGhi);
       loi.push(...r.loi);
+      canhBao.push(...(r.canhBao || []));
     }
     if (lay('--out')[0]) {
       const abs = path.resolve(lay('--out')[0]);
       fs.mkdirSync(path.dirname(abs), { recursive: true });
       fs.writeFileSync(abs, `${banGhi.map((x) => JSON.stringify(x)).join('\n')}${banGhi.length ? '\n' : ''}`, 'utf8');
     }
-    console.log(`Tách ${nhoms.length} nhóm 4 số: ${banGhi.length} bản ghi (${banGhi.filter((x) => x.loai === 'DIEU_KIEN').length} DIEU_KIEN, ${banGhi.filter((x) => x.loai === 'GIAI_CHONG').length} GIAI_CHONG, ${banGhi.filter((x) => x.loai === 'CANH_TRANH').length} CANH_TRANH), ${loi.length} lỗi`);
+    console.log(`Tách ${nhoms.length} nhóm 4 số: ${banGhi.length} bản ghi (${banGhi.filter((x) => x.loai === 'DIEU_KIEN').length} DIEU_KIEN, ${banGhi.filter((x) => x.loai === 'GIAI_CHONG').length} GIAI_CHONG, ${banGhi.filter((x) => x.loai === 'CANH_TRANH').length} CANH_TRANH), ${loi.length} lỗi${canhBao.length ? `, ${canhBao.length} cảnh báo` : ''}`);
+    for (const cb of canhBao.slice(0, 40)) console.log(`  ! ${cb}`);
     for (const l of loi.slice(0, 40)) console.log(`  ✗ ${l}`);
     if (!lay('--out')[0] && banGhi.length) {
       for (const x of banGhi) console.log(JSON.stringify(x));
