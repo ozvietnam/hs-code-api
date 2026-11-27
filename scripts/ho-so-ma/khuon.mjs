@@ -62,7 +62,7 @@ function kiemId81(x, loi, batBuoc = true) {
     if (batBuoc) loi.push(`${o}: thiếu id (phải là hs:<nut>:81NN)`);
     return;
   }
-  if (!chuoi(x.id) || !x.id.startsWith(`hs:${x.nut}:`) || !/^81\d{2,}$/.test(x.id.slice(`hs:${x.nut}:`.length))) {
+  if (!chuoi(x.id) || !x.id.startsWith(`hs:${x.nut}:`) || !/^8[1-9]\d{2,}$/.test(x.id.slice(`hs:${x.nut}:`.length))) {
     loi.push(`${o}: id phải là hs:<nut>:81NN`);
   }
 }
@@ -122,7 +122,7 @@ function kiemDieuKien(x) {
     }
   }
   if (!chuoi(x.cauHoi)) loi.push(`${o}: thiếu cauHoi`);
-  else if (/\n/.test(x.cauHoi) || x.cauHoi.length > 300) loi.push(`${o}: cauHoi phải là một câu hỏi ngắn (một dòng, ≤ 300 ký tự)`);
+  else if (/\n/.test(x.cauHoi) || x.cauHoi.length > 600) loi.push(`${o}: cauHoi phải là một câu hỏi ngắn (một dòng, ≤ 600 ký tự)`);
   if (!chuoi(x.trich)) loi.push(`${o}: thiếu trich`);
   if (!RE_CAU.test(x.nguon || '')) loi.push(`${o}: nguon sai ngữ pháp "${x.nguon}" (dạng <id nút>#<số câu>)`);
   if (!RE_VAN.test(x.vanTay || '')) loi.push(`${o}: vanTay phải là sha256 hex của chữ câu`);
