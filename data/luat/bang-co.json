@@ -466,6 +466,20 @@
       "dieuKienBat": "ĐANG TẮT, CHƯA đo qua Cổng thật. Chỉ có tác dụng khi HS_HOI_THEO_SO_TAY bật. Bật sau khi chạy bóng ca động cơ bước 60 W + bộ mẫu hỏi theo sổ tay (L3, L11), ghi số đúng 6 số trước/sau."
     },
     {
+      "ten": "HS_KHONG_HOI_LAI_DIEN_AP",
+      "macDinh": "tắt",
+      "macDinhBat": false,
+      "loai": "cong-tac",
+      "doiQuyetDinhLLM": false,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Con của HS_HOI_THEO_SO_TAY (OZV-2250): lọc bước (3) missingStructured của lib/hoi-theo-so-tay.js qua daCo(f.key, text) trên hoSoChu (gồm tenHang gốc của khách và product.keySpecs vòng 1), ánh xạ khoá trường khai tiếng Anh sang khoá sổ (voltage → dienAp…) và nhận số + đơn vị điện áp (V, kV, mV, VAC, VDC, volt, vôn…) để không hỏi lặp điện áp khi mô tả đã ghi. Chỉ on / 1 / true mới bật (PR #1879).",
+      "chungCu": {
+        "tep": "lib/hoi-theo-so-tay.js",
+        "doan": "process.env.HS_KHONG_HOI_LAI_DIEN_AP || '').trim());"
+      },
+      "dieuKienBat": "ĐANG TẮT, chỉ có tác dụng khi HS_HOI_THEO_SO_TAY bật. Ca gốc thực địa: «bộ điều khiển gr2030-la1, điện áp 220v, công suất» (dừng ở 853710) — khi bật không hỏi lại câu điện áp, giữ nguyên câu PLC/vi điều khiển và chuyên dùng."
+    },
+    {
       "ten": "HS_CHOT_SOM_CO_KIEM",
       "macDinh": "tắt",
       "macDinhBat": false,
