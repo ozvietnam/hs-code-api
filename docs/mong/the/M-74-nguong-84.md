@@ -3,15 +3,15 @@
 - **Khuôn áp dụng:** `ho-so-ma@1` ([`docs/mong/khuon-ho-so-ma.md`](../khuon-ho-so-ma.md), [`docs/decisions/0006-ho-so-van-de-ma-8-so.md`](../../decisions/0006-ho-so-van-de-ma-8-so.md))
 - **Kho dữ liệu (`RUT_TU_LUAT`, khai trong `data/lop-kho.json`):**
   - `data/ho-so-ma/nguong/XVI.jsonl`: **2 bản ghi `NGUONG`** ở `phan:XVI` (`phan:XVI:kq:41#1` dung sai bi thép 84.82: `<= 1%` và `<= 0,05 mm`) — giữ nguyên không chạm.
-  - `data/ho-so-ma/nguong/84.jsonl`: **375 bản ghi** (`310 NGUONG`, `61 TACH_ANH_EM`, `4 BO_QUA`) từ Chú giải Chương/Phân nhóm (`7`, `9`, `pn:4`), Phân nhóm/Nhóm/SEN và tên dòng biểu thuế `bieu:84*` (đã hoàn tất rà ngược **Gói 1: `84.01–84.12`** và **Gói 2: `84.13–84.20`**; giữ nguyên 100% từng byte **254 bản ghi** ngoài Gói 2 gồm `138` bản ghi Gói 1 và `116` bản ghi còn lại của `84.21–84.87` + phi-biểu ngoài Gói 2).
-  - **Tổng toàn Chương 84 + Phần XVI: 377 bản ghi**, không chứa dữ liệu khách, tờ khai, `tb:`, `wco:`, `gir:`, hay thông số ví dụ/bảng mẫu tham khảo.
+  - `data/ho-so-ma/nguong/84.jsonl`: **392 bản ghi** (`313 NGUONG`, `72 TACH_ANH_EM`, `7 BO_QUA`) từ Chú giải Chương/Phân nhóm (`7`, `9`, `pn:4`), Phân nhóm/Nhóm/SEN và tên dòng biểu thuế `bieu:84*` (đã hoàn tất rà ngược **Gói 1: `84.01–84.12`**, **Gói 2: `84.13–84.20`** và **Gói 3: `84.21–84.35`**; giữ nguyên 100% từng byte **359 bản ghi** ngoài Gói 3 gồm `259` bản ghi Gói 1+2 và `100` bản ghi còn lại của `84.36–84.87` + phi-biểu ngoài Gói 3).
+  - **Tổng toàn Chương 84 + Phần XVI: 394 bản ghi**, không chứa dữ liệu khách, tờ khai, `tb:`, `wco:`, `gir:`, hay thông số ví dụ/bảng mẫu tham khảo.
 - **Áp dụng đầy đủ 3 quy ước QT chốt sau Chương 76 & 8 Luật M-74:**
   1. **Không lấy thông số ví dụ / bảng mẫu tham khảo:** lọc bằng `laCauViDuHoacBangMau()` (loại các dải minh họa trong Chú giải như `nhom:8424` 3.000–4.000 bar, `nhom:8448` khoảng 0,1–2 mm, `nhom:8455` xấp xỉ 30–520 cm, `pn:842211` bảng kích thước đặt sàn, `pn:842441` ví dụ 3 bar/5 lít, `sen:84145930` ví dụ 0,5 m³/s).
   2. **Bảng thành phần hợp kim:** Chương 84 không có bảng thành phần mác hợp kim kiểu `5182/5082`.
   3. **Dòng *"Loại khác"* phủ định anh em:** kế thừa 55 bản ghi *"Loại khác"* phần bù 1 khoảng duy nhất (bao gồm ca lấp khoảng giữa `(18,65; 100] kW` ở `bieu:8408909` giữa `.9010 <= 18,65` và `.905 > 100`, cùng đồng thời `<= 21,10 kW` và `< 220 cc` ở `bieu:84143090`), nay đang được nâng cấp theo từng gói để bổ sung trường mảng `phuDinh`, tách `TACH_ANH_EM` De Morgan cho điều kiện ghép và ghi `BO_QUA` cho câu mô tả thông thường (Luật 1–8).
 - **Kiểm phân dải anh em & cặp đại lượng-đơn vị (`kiemDaiAnhEm` + `kiemDonViDaiLuong` + Cổng 3):**
   - Bắt cặp bắt buộc `daiLuong ↔ donVi` qua `kiemDonViDaiLuong()` (ví dụ chặn `công suất` gắn `mm`, `đường kính` gắn `kW`; giữ riêng `bieu:84603110` thành `công suất <= 0,74 kW` và `đường kính chuôi <= 3,175 mm`).
-  - Tổng toàn Chương 84: **81 cụm anh em `NGUONG`** (**75 cụm phủ kín `(-∞, +∞)`**, **6 cụm hữu hạn đúng cấu trúc biểu**: `840732` thừa hưởng `(50; 250] cc`; `841350/841360/841370`; `8415819`; `848180:td6`). **0 lỗi chồng dải, 0 lỗi hở dải, 0 lỗi `voi`.**
+  - Tổng toàn Chương 84: **82 cụm anh em `NGUONG`** (**76 cụm phủ kín `(-∞, +∞)`**, **6 cụm hữu hạn đúng cấu trúc biểu**: `840732` thừa hưởng `(50; 250] cc`; `841350/841360/841370`; `8415819`; `848180:td6`). **0 lỗi chồng dải, 0 lỗi hở dải, 0 lỗi `voi`.**
 - **Đối chiếu `data/ho-so/ranh-gioi/84*.json`:** **258/258 tệp** (**170 dòng `dieuKienSo`**) đều đã đối chiếu và có bản ghi tương ứng tại nút hoặc nút con trực tiếp (`0` thiếu).
 - **Công cụ & bài kiểm:**
   - [`scripts/ho-so-ma/nguong-rut.mjs`](../../../scripts/ho-so-ma/nguong-rut.mjs) (`--chuong 84 --kiem|--bao-cao`)
@@ -127,3 +127,50 @@
   - **Bỏ qua hợp lệ (lặp tiêu đề / số thứ tự / dẫn chiếu HS):** **1/69 câu** số+đơn vị (`sen:84195020:1#1` chỉ lặp tiêu đề `đường kính trong từ 3cm trở xuống` đã rút từ `bieu:84195020#1`), cùng `170` câu chỉ có số thứ tự mục, số hiệu mã HS (`84.13`–`84.20`, `87.02`–`87.04`…) hoặc số chân đầu nối (`3 chân hoặc 4 chân` ở `sen:84145910:1#8`).
 - **Đối chiếu chỉ-đọc `data/ho-so/ranh-gioi/8413..8420*.json`:** **45/45 tệp**, **54/54 dòng `dieuKienSo`** đều được phủ 100% (`0` thiếu).
 - **Nhóm không có ngưỡng định lượng trong Gói 2:** `84.16`, `84.17`, `84.20` (đã rà đủ 100% `bieu`/`nhom`/`pn`/`sen`).
+
+---
+
+## Rà ngược Gói 3 (`84.21–84.35`) — Hoàn tất theo 8 Luật M-74
+
+- **Phạm vi xử lý:** 15 nhóm tiếp theo Chương 84 (`84.21, 84.22, 84.23, 84.24, 84.25, 84.26, 84.27, 84.28, 84.29, 84.30, 84.31, 84.32, 84.33, 84.34, 84.35`). Giữ nguyên 100% từng byte **359 bản ghi** ngoài phạm vi `84.21–84.35` (`259` bản ghi Gói 1+2 đã gộp ở #2461/#2466 + `100` bản ghi còn lại của `84.36–84.87` và phi-biểu ngoài Gói 3).
+- **Sạch mã HS 100% trong `nguong.daiLuong` (kể cả mã ngoài Chương 84):**
+  - `hs:bieu:8423:8401`: gỡ mã `90.16` khỏi `daiLuong` (`"độ nhạy cân (nhạy <= 5 cg thuộc 90.16)"` → `"độ nhạy cân"`), chuyển giải thích ranh giới sang `dieuKien`/`ghiChu` và giữ đúng chiều ở lại nút `> 5 cg` (Luật 4).
+  - Rà sạch `0` mã HS bất kỳ (`84xx`, `82.10`, `90.16`…) và `0` `"thông số"` trong mọi `daiLuong` của Gói 3.
+
+### 1. Thống kê trước / sau rà ngược (phạm vi `84.21–84.35`)
+
+| Chỉ số (phạm vi `84.21–84.35`) | Trước rà (`origin/main`) | Sau rà (Gói 3) | Biến động |
+|---|---:|---:|---|
+| Tổng bản ghi `84.21–84.35` | 16 | **33** | `+17` thêm, `10` sửa, `0` bỏ (`6` giữ nguyên); giữ nguyên 100% `id` nền `:8401/:8402` |
+| `NGUONG` | 16 | **19** | `+3` mới (`hs:bieu:84294050:7401` xe lu rung `> 20 tấn` phủ định `8429.40.40`; `hs:bieu:842952:7401` & `hs:bieu:84295200:7401` quay đủ `>= 360 độ`); `10` sửa chuẩn hóa (`8423` sạch mã `90.16`, `842389` bổ sung mảng `phuDinh`, `8422` nêu rõ nhánh gia dụng, `8421`/`8424`/`8429`/`8433` bổ sung `voi` + nhánh định tính) |
+| `DINH_NGHIA` | 0 | **0** | Không có định nghĩa thuật ngữ chứa ngưỡng số trong `84.21–84.35` |
+| `TACH_ANH_EM` | 0 | **11** | `+11` mới (Luật 1 & 2 De Morgan): `84212290`, `84212990`, `84213990`, `84248940`, `84248950`, `84248990`, `84294090`, `842959`, `84339020`, `84339030`, `84339090` |
+| `BO_QUA` | 0 | **3** | `+3` mới (Luật 6 & 8): `hs:bieu:842211:7401` (`pn:842211:ct:1#2`), `hs:bieu:8424:7401` (`nhom:8424:ct:2#2`), `hs:bieu:842441:7401` (`pn:842441:ct:1#2`) |
+| Bản ghi mang trường mảng `phuDinh` | 0 | **13** | `2 NGUONG` phần bù thuần 1 chiều (`842389`, `84294050`) + `11 TACH_ANH_EM` điều kiện ghép |
+| `daiLuong` chứa mã HS (bất kỳ chương nào) / `"thông số"` | 1 / 0 | **0 / 0** | Sạch 100% |
+| Cụm anh em `NGUONG` (`kiemDaiAnhEm`) | 3 | **4** | **4/4 phủ kín `(-∞, +∞)`** (`842121`, `84238`, `842382`, thêm mới `842940` xe lu rung `<= 20` / `> 20 tấn`), **0 chồng**, **0 hở** |
+| Trùng `id` toàn kho `data/ho-so-ma/**/*.jsonl` | 0 | **0** | `0` va chạm (`id` thêm mới dùng đuôi `:7401`) |
+
+### 2. Chi tiết nâng cấp theo 8 Luật M-74 trong Gói 3
+
+1. **Luật 4 (chiều ở lại nút) & Luật 3 (sạch mã HS trong `daiLuong`):**
+   - `hs:bieu:8422:8401` (`nhom:8422:ct:15#1`): giữ miền `> 10 kg` ở lại `84.22` (`<= 10 kg` sang `82.10`), làm rõ chỉ áp dụng cho nhánh thiết bị cơ khí gia dụng (Luật 3 & 4).
+   - `hs:bieu:8423:8401` (`bieu:8423#1`): gỡ mã `90.16` khỏi `daiLuong` (`"độ nhạy cân"`), giữ miền `> 5 cg` ở lại `84.23` (`<= 5 cg` sang `90.16`).
+   - `hs:bieu:842952:7401` & `hs:bieu:84295200:7401` (`bieu:842952#1` / `bieu:84295200#1`): bổ sung ngưỡng bị lọt do viết `"360o"` (chữ `o` thường) — `góc quay cơ cấu phần trên >= 360 độ`, kèm phần bù `TACH_ANH_EM` tại `bieu:842959`.
+2. **Luật 1 & 2 — Phần bù thuần 1 chiều (`2 NGUONG` có `phuDinh`) & điều kiện ghép (`11 TACH_ANH_EM`):**
+   - **Thuần 1 chiều:** `hs:bieu:842389:8401` (`> 5.000 kg`, bổ sung mảng `phuDinh: ["bieu:842381", "bieu:842382"]`) và thêm mới `hs:bieu:84294050:7401` (`Các loại xe lu rung lăn đường khác`, `> 20 tấn`, `phuDinh: ["bieu:84294040"]`) → khép kín cụm `bieu:842940` cho xe lu rung.
+   - **Điều kiện ghép (`11 TACH_ANH_EM` mới, cấm gắn `NGUONG` đảo chiều):**
+     - `84.21` (`3`): `84212290` (bù cho máy lọc đồ uống bằng điện `> 500 lít/giờ`), `84212990` (bù cho màng lọc fluoropolyme `<= 140 micron` + `.10–.50`), `84213990` (bù cho bộ lọc khí vỏ thép không gỉ `<= 1,3 cm` + `.20`).
+     - `84.24` (`3`): `84248940`, `84248950`, `84248990` (bù cho bình phun bằng tay dùng trong gia đình `<= 3 lít` `.10` và `.20`).
+     - `84.29` (`2`): `84294090` (xe lu tĩnh/không rung — bù cho máy đầm `.30` và xe lu rung `.40/.50`), `842959` (bù cho gàu tự xúc phía trước `8429.51` và phần trên quay `360°` `8429.52`).
+     - `84.33` (`3`): `84339020`, `84339030`, `84339090` (bù cho bánh xe đẩy castor 2 chiều `(100; 250] mm` VÀ `> 30 mm` tại `8433.90.10`).
+
+### 3. Đối soát Luật 6, Luật 8 & `data/ho-so/ranh-gioi/8421..8435*.json`
+
+- **Quét 100% câu chứa số + đơn vị trong `bieu/nhom/pn/sen` (`84.21–84.35`):**
+  - **Tổng số câu trúng số + đơn vị (gồm cả `360o` ở `8429.52`):** **22 câu** (`15` câu tầng biểu `bieu:8421..8435` + `7` câu tầng hướng dẫn `nhom/pn/sen`).
+  - **Đã rút thành bản ghi `NGUONG`:** **16/22 câu** (`15/15` câu tầng biểu sinh `16 NGUONG` trực tiếp do `8433.90.10` có 2 chiều `mm`, cộng `1` câu `nhom:8422:ct:15#1` `> 10 kg`, cộng `2 NGUONG` phần bù thuần 1 chiều `842389` & `84294050` = `19 NGUONG`).
+  - **Đã ghi `BO_QUA` tường minh (Luật 6 & 8):** **3/22 câu** — `pn:842211:ct:1#2` (bảng kích thước máy rửa bát đặt sàn 65/95/70 cm → `hs:bieu:842211:7401`), `nhom:8424:ct:2#2` (`"thường hoạt động dưới áp suất từ 3.000 đến 4.000 bars"`, `"2 đến 3 lần"` → `hs:bieu:8424:7401`), `pn:842441:ct:1#2` (`"ví dụ, áp suất hoạt động 3 bars, công suất 5 lít"` → `hs:bieu:842441:7401`).
+  - **Bỏ qua hợp lệ (lặp ngưỡng đã rút ở biểu / số lượng đếm):** **3/22 câu** (`nhom:8423:ct:1#1` lặp `5 cg` của `bieu:8423#1`; `sen:84212960:1#1` lặp `140 micron` của `bieu:84212960#1`; `sen:84239030:1#1` nêu ví dụ loại bàn cân trục `"loại 2 bàn hoặc 4 bàn"` không phải ngưỡng đo lường), cùng `338` câu chỉ có dẫn chiếu mã HS và số thứ tự mục.
+- **Đối chiếu chỉ-đọc `data/ho-so/ranh-gioi/8421..8435*.json`:** **49/49 tệp**, **9/9 dòng `dieuKienSo`** đều được phủ 100% (`0` thiếu).
+- **9 nhóm không có ngưỡng định lượng trong Gói 3:** `84.25`, `84.26`, `84.27`, `84.28`, `84.30`, `84.31`, `84.32`, `84.34`, `84.35` (đã rà đủ 100% `bieu`/`nhom`/`pn`/`sen`).
