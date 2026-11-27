@@ -584,6 +584,27 @@
    ],
    "nguoi": "QT",
    "thuTuCuaNguoi": 6
+  },
+  "M-81": {
+   "ten": "Điều kiện nguyên tử + bảng anh em — Loại khác đóng bằng tiêu chí (ADR-0007)",
+   "lop": 3,
+   "tep": [
+    "docs/decisions/0007-*.md",
+    "scripts/ho-so-ma/bang-anh-em*",
+    "scripts/ho-so-ma/tach-dieu-kien*",
+    "scripts/ho-so-ma/so-phieu-dieu-kien*",
+    "scripts/ho-so-ma/khuon*.mjs",
+    "scripts/ho-so-ma/cong*.mjs",
+    "scripts/test-ho-so-ma.mjs",
+    "scripts/test-dieu-kien*.mjs",
+    "data/ho-so-ma/dieu-kien/**",
+    "data/ho-so-ma/bang-anh-em/**",
+    ".agents/skills/ho-so-dieu-kien/**"
+   ],
+   "sau": [
+    "M-71"
+   ],
+   "nguoi": "agy"
   }
  }
 }
