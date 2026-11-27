@@ -22,10 +22,10 @@ Chỉ đọc chữ luật công khai trong gói nhóm bốn số. Không bịa �
 Quy tắc tách trọn nhóm bốn số (một lượt):
 1. Đọc trọn cây biểu thuế trong gói (\`cayBieu\`, kể cả dòng trung gian không mã \`khongMa: true\`, và thừa kế con duy nhất \`suyRa: true\` / \`cungDong\` — đặt điều kiện ở nút cha sáu số, nút tám số con duy nhất tự thừa kế). Không đặt \`DIEU_KIEN\` cho dòng "Loại khác" thuần (\`loaiKhac: true\`), nhưng PHẢI tách cho dòng \`loaiKhacCoVe: true\` và nhánh phần bù có tên ("… khác").
 2. Tách nguyên tử từng điều kiện — mỗi đối tượng trong \`dieuKien\` chỉ kiểm đúng MỘT thuộc tính đơn (cấm gộp nhiều điều kiện vào một \`cauHoi\`) và mang rõ \`nut\` (\`bieu:...\`):
-   - \`ve\` (số nguyên >= 0): dấu ";" hoặc "hoặc" phân nhánh thay thế => \`ve\` tăng dần (\`1, 2, ...\`). Các điều kiện đồng thời ("và") => CÙNG \`ve\`. Đặt \`ve: 0\` cho điều kiện chung áp lên mọi vế (như mệnh đề loại trừ chung của Phần/Chương/Nhóm áp lên toàn nút).
+   - \`ve\` (số nguyên >= 0): dấu ";" hoặc "hoặc" phân nhánh thay thế => \`ve\` tăng dần (\`1, 2, ...\`). Các điều kiện đồng thời ("và") => CÙNG \`ve\`. Chỉ đặt \`ve: 0\` khi mệnh đề loại trừ thực sự áp chung toàn nút (như Chú giải Phần/Chương/Phân nhóm, hoặc câu loại trừ đứng ngoài mọi mục \`(A), (B)…\` / \`(I), (II)…\` của chú giải nhóm và đã chứng minh không loại mất hàng mà vế khác hay dòng biểu con ghi đích danh). Câu "nhóm này loại trừ / không bao gồm" đứng trong một mục \`(A), (B)…\` / \`(I), (II)…\` của chú giải nhóm chỉ gắn vào \`ve\` mà mục đó giải thích. Câu loại trừ theo thuộc tính chung (nơi dùng, quy mô, đối tượng dùng…) đúng bằng phủ định chữ định tính mà chỉ một vế mang thì gắn \`phu: true\` vào đúng vế đó hoặc ghi \`CANH_TRANH\`, CẤM \`ve: 0\` (chữ biểu thắng vị trí câu chú giải: \`ve: 0\` nào làm dòng con mất hàng của chính nó là sai phạm vi).
    - \`phu\` (boolean): \`true\` khi mang nghĩa phủ định ("trừ...", "không kể...", "không phải...") hoặc phủ định phần bù đối với anh em / ngưỡng đứng trước.
    - \`kieu\`:
-     * \`GIA_TRI\`: ưu tiên dùng khi các anh em cùng phân chia trên một chiều thuộc tính theo chữ luật (cấm hạ thành \`CO_KHONG\` làm mất trục); BẮT BUỘC kèm \`truc\` (\`<tên trục cục bộ theo chữ luật>\`, một dòng) và \`tap\` (mảng chuỗi nguyên văn). Đặt \`daTri: true\` CHỈ khi một mặt hàng có thể mang đồng thời nhiều giá trị trên trục đó; mặc định \`false\` (đơn trị). Cấm \`nguong\`.
+     * \`GIA_TRI\`: ưu tiên dùng khi các anh em cùng phân chia trên một chiều thuộc tính theo chữ luật (cấm hạ thành \`CO_KHONG\` làm mất trục); BẮT BUỘC kèm \`truc\` (\`<tên trục cục bộ theo chữ luật>\`, một dòng) và \`tap\` (mảng chuỗi nguyên văn). Đặt \`daTri: true\` CHỈ khi một mặt hàng có thể mang đồng thời nhiều giá trị trên trục đó; mặc định \`false\` (đơn trị). Nếu khai \`tapDu\` cho trục đơn trị (\`!daTri\`), BẮT BUỘC kèm \`tapDuNguon\` (id câu chú giải/quy tắc hoặc lời văn nút cha làm căn cứ miền đóng; cấm trích dòng biểu của chính anh em con, cấm \`tb:\`/\`wco:\`) và \`tapDuTrich\` nguyên văn (mỗi giá trị trong \`tapDu\` bắt buộc xuất hiện nguyên văn trong ít nhất một \`tapDuTrich\`; không có câu luật liệt kê đủ miền thì không khai \`tapDu\`). Cấm \`nguong\`.
      * \`SO\`: ngưỡng số, BẮT BUỘC trỏ \`nguong\` = id bản ghi NGUONG đã có trong danh mục M-74 (không lặp số; cấm \`tap\`, \`truc\`, \`daTri\`). Nhánh "… khác" đứng sau anh em có ngưỡng phải giữ đủ điều kiện \`phu: true\` trên ngưỡng đó nếu chữ luật loại trừ dải trước.
      * \`CO_KHONG\`: chỉ dùng cho mệnh đề có/không độc lập không tạo thành trục giá trị chung giữa các anh em (cấm \`nguong\`, \`tap\`, \`truc\`, \`daTri\`).
    - \`mo\` (ưu tiên tra định nghĩa/mô tả trong gói trước, chỉ dùng \`NGHIA_THUONG\` khi kho luật thực sự không giải nghĩa):
@@ -380,6 +380,82 @@ export function chuanHoaDieuKien(rawList, nut, L, { batDauSo = 8101, nguongSanCo
     const cauHoi = gon(item.cauHoi || item.dieuKien || '').slice(0, 600);
     if (!cauHoi) { loi.push(`${nut}: thiếu cauHoi cho trích "${trich.slice(0, 40)}"`); continue; }
 
+    let tapDu;
+    let tapDuNguon;
+    let tapDuTrich;
+    let tapDuNguonVanTay;
+    if (kieu === 'GIA_TRI' && !daTri && Array.isArray(item.tapDu)) {
+      const dsTapDu = item.tapDu.map(gon).filter(Boolean);
+      if (dsTapDu.length) {
+        tapDu = dsTapDu;
+        const coNguon = item.tapDuNguon !== undefined && item.tapDuNguon !== null && !(typeof item.tapDuNguon === 'string' && !gon(item.tapDuNguon));
+        const coTrich = item.tapDuTrich !== undefined && item.tapDuTrich !== null && !(typeof item.tapDuTrich === 'string' && !gon(item.tapDuTrich));
+        if (coNguon || coTrich) {
+          if (typeof item.tapDuNguon === 'string' && typeof item.tapDuTrich === 'string') {
+            const tdN = gon(item.tapDuNguon);
+            const tdChu = /^(?:tb|wco):/.test(tdN) ? null : L.chuCau(tdN);
+            if (tdChu === null) {
+              loi.push(`${nut}: tapDuNguon "${tdN}" không hợp lệ hoặc không tồn tại trong kho luật`);
+              continue;
+            }
+            const tdT = timTrichNguyenVan(item.tapDuTrich, tdChu);
+            if (!tdT) {
+              loi.push(`${nut}: tapDuTrich không nguyên văn câu ${tdN}`);
+              continue;
+            }
+            tapDuNguon = tdN;
+            tapDuTrich = tdT;
+            tapDuNguonVanTay = vanTay(tdChu);
+          } else if (
+            Array.isArray(item.tapDuNguon)
+            && Array.isArray(item.tapDuTrich)
+            && item.tapDuNguon.length > 0
+            && item.tapDuNguon.length === item.tapDuTrich.length
+          ) {
+            const dsN = [];
+            const dsT = [];
+            const vtEntries = [];
+            let loiTd = false;
+            for (let idx = 0; idx < item.tapDuNguon.length; idx += 1) {
+              const tdN = gon(item.tapDuNguon[idx]);
+              const tdChu = /^(?:tb|wco):/.test(tdN) ? null : L.chuCau(tdN);
+              if (tdChu === null) {
+                loi.push(`${nut}: tapDuNguon "${tdN}" không hợp lệ hoặc không tồn tại trong kho luật`);
+                loiTd = true;
+                break;
+              }
+              const tdT = timTrichNguyenVan(item.tapDuTrich[idx], tdChu);
+              if (!tdT) {
+                loi.push(`${nut}: tapDuTrich không nguyên văn câu ${tdN}`);
+                loiTd = true;
+                break;
+              }
+              dsN.push(tdN);
+              dsT.push(tdT);
+              vtEntries.push([tdN, vanTay(tdChu)]);
+            }
+            if (loiTd) continue;
+            tapDuNguon = dsN;
+            tapDuTrich = dsT;
+            tapDuNguonVanTay = Object.fromEntries(vtEntries);
+          } else {
+            loi.push(`${nut}: tapDuNguon và tapDuTrich phải đi theo cặp đối xứng`);
+            continue;
+          }
+          const dsTrichChuan = (Array.isArray(tapDuTrich) ? tapDuTrich : [tapDuTrich])
+            .map((t) => chuanSo(t).toLowerCase());
+          const thieuVal = dsTapDu.find((rawVal) => {
+            const vChuan = chuanSo(rawVal).toLowerCase();
+            return !vChuan || !dsTrichChuan.some((tr) => tr.includes(vChuan));
+          });
+          if (thieuVal !== undefined) {
+            loi.push(`${nut}: giá trị tapDu "${thieuVal}" không xuất hiện nguyên văn trong bất kỳ tapDuTrich nào`);
+            continue;
+          }
+        }
+      }
+    }
+
     const rec = {
       id: `hs:${nut}:${stt}`,
       nut,
@@ -391,6 +467,9 @@ export function chuanHoaDieuKien(rawList, nut, L, { batDauSo = 8101, nguongSanCo
       ...(daTri !== undefined ? { daTri } : {}),
       ...(kieu === 'SO' && item.nguong ? { nguong: gon(item.nguong) } : {}),
       ...(kieu === 'GIA_TRI' && Array.isArray(item.tap) ? { tap: item.tap.map(gon).filter(Boolean) } : {}),
+      ...(tapDu !== undefined ? { tapDu } : {}),
+      ...(tapDuNguon !== undefined ? { tapDuNguon, tapDuTrich } : {}),
+      ...(tapDuNguonVanTay !== undefined ? { tapDuNguonVanTay } : {}),
       mo,
       ...(moNguon !== undefined ? { moNguon } : {}),
       ...(moNguonVanTay !== undefined ? { moNguonVanTay } : {}),
@@ -409,6 +488,8 @@ export function chuanHoaDieuKien(rawList, nut, L, { batDauSo = 8101, nguongSanCo
           moDieuKien: mo,
           ...(truc !== undefined ? { truc } : {}),
           ...(daTri !== undefined ? { daTri } : {}),
+          ...(tapDu !== undefined ? { tapDu } : {}),
+          ...(tapDuNguon !== undefined ? { tapDuNguon, tapDuTrich } : {}),
           ...(moNguon !== undefined ? { moNguon } : {}),
         }],
       } : {}),
@@ -727,13 +808,34 @@ export function gopKetQuaChunk(dsParsed, { nutMacDinh = '' } = {}) {
         if (mnArr.length) moNguon = mnArr;
       }
       let tapDuSorted = null;
-      if (kieu === 'GIA_TRI' && Array.isArray(d.tapDu)) {
+      let tapDuCapNguon = null;
+      if (kieu === 'GIA_TRI' && daTri === false && Array.isArray(d.tapDu)) {
         const tdArr = [...new Set(d.tapDu.map(chuanChuoiGop).filter(Boolean))].sort();
-        if (tdArr.length) tapDuSorted = tdArr;
+        if (tdArr.length) {
+          tapDuSorted = tdArr;
+          if (typeof d.tapDuNguon === 'string' && typeof d.tapDuTrich === 'string') {
+            const n0 = gon(d.tapDuNguon);
+            const t0 = chuanChuoiGop(d.tapDuTrich);
+            if (n0 || t0) tapDuCapNguon = [JSON.stringify([n0, t0])];
+          } else if (Array.isArray(d.tapDuNguon) && Array.isArray(d.tapDuTrich) && d.tapDuNguon.length === d.tapDuTrich.length) {
+            const capArr = [...new Set(
+              d.tapDuNguon
+                .map((n, idx) => {
+                  const n0 = gon(n);
+                  const t0 = chuanChuoiGop(d.tapDuTrich[idx]);
+                  return (n0 || t0) ? JSON.stringify([n0, t0]) : '';
+                })
+                .filter(Boolean),
+            )].sort();
+            if (capArr.length) tapDuCapNguon = capArr;
+          } else if (d.tapDuNguon !== undefined || d.tapDuTrich !== undefined) {
+            tapDuCapNguon = ['LECH', d.tapDuNguon ?? null, d.tapDuTrich ?? null];
+          }
+        }
       }
       const ghiChuRaw = d.ghiChu === undefined || d.ghiChu === null ? '' : chuanChuoiGop(d.ghiChu);
       const ghiChu = ghiChuRaw || null;
-      const noiDung = JSON.stringify({ daTri, mo, moNguon, tapDu: tapDuSorted, ghiChu });
+      const noiDung = JSON.stringify({ daTri, mo, moNguon, tapDu: tapDuSorted, tapDuCapNguon, ghiChu });
 
       if (!theoKhoaDk.has(khoaGop)) {
         theoKhoaDk.set(khoaGop, new Set([noiDung]));

@@ -227,6 +227,25 @@ export function chamDiemNhom(nhom4HoacNut, ctx = {}) {
         }
       }
     }
+    if (r.tapDuNguon !== undefined) {
+      const tdIds = Array.isArray(r.tapDuNguon) ? r.tapDuNguon : [r.tapDuNguon];
+      for (const tdId of tdIds) {
+        const tdChu = /^(?:tb|wco):/.test(tdId || '') ? null : c.L.chuCau(tdId);
+        if (tdChu === null) {
+          ghiLechCau(tdId, r.nut, r.id, 'tapDuNguon không còn trong kho luật');
+        } else {
+          const vtHienTai = vanTay(tdChu);
+          const lechDk = (
+            (typeof r.tapDuNguonVanTay === 'string' && typeof r.tapDuNguon === 'string' && r.tapDuNguon === tdId && r.tapDuNguonVanTay !== vtHienTai)
+            || (Boolean(r.tapDuNguonVanTay) && typeof r.tapDuNguonVanTay === 'object' && Object.hasOwn(r.tapDuNguonVanTay, tdId) && r.tapDuNguonVanTay[tdId] !== vtHienTai)
+          );
+          const lechBang = (vanTayCauNhom.get(tdId) || []).some((vt) => vt !== vtHienTai);
+          if (lechDk || lechBang) {
+            ghiLechCau(tdId, r.nut, r.id, 'vân tay câu tapDuNguon đã đổi');
+          }
+        }
+      }
+    }
     if (r.kieu === 'SO' && r.nguong) {
       const ng = c.nguongById.get(r.nguong);
       if (ng?.cau) {
@@ -254,10 +273,25 @@ export function chamDiemNhom(nhom4HoacNut, ctx = {}) {
     } else if (ct.vanTay && vanTay(chu) !== ct.vanTay) {
       ghiLechCau(ct.nguon, ct.nut, ct.id, 'CANH_TRANH vân tay câu đã đổi');
     }
-    for (const p of ct.phepThu || []) {
+      for (const p of ct.phepThu || []) {
       const pNguon = typeof p === 'string' ? p : p?.nguon;
       if (pNguon && c.L.chuCau(pNguon) === null) {
         ghiLechCau(pNguon, ct.nut, ct.id, 'CANH_TRANH phepThu không còn trong kho luật');
+      }
+    }
+  }
+
+  for (const b of c.bangAnhEmTheoCha.values()) {
+    if (!b.vanTayCau || typeof b.vanTayCau !== 'object') continue;
+    const thuocNhom = cayIds.has(b.cha) || (b.anhEm || []).some((ae) => cayIds.has(ae.nut));
+    if (!thuocNhom) continue;
+    for (const [cid, vt] of Object.entries(b.vanTayCau)) {
+      if (cauDoiVanTaySet.has(cid)) continue;
+      const bChu = /^(?:tb|wco):/.test(cid || '') ? null : c.L.chuCau(cid);
+      if (bChu === null) {
+        ghiLechCau(cid, b.cha, `bang-anh-em(${b.cha})`, 'vanTayCau không còn trong kho luật');
+      } else if (vanTay(bChu) !== vt) {
+        ghiLechCau(cid, b.cha, `bang-anh-em(${b.cha})`, 'vân tay câu vanTayCau đã đổi');
       }
     }
   }
@@ -394,8 +428,11 @@ export function chamSoDiem(opts = {}) {
   if (chuong !== null && !/^\d{2}$/.test(chuong)) {
     throw new Error(`Mã chương không hợp lệ: "${opts.chuong}"`);
   }
-  const dsNhom = opts.nhom
-    ? [chuanNhom4(opts.nhom)]
+  const nhomList = Array.isArray(opts.nhom)
+    ? opts.nhom.map(chuanNhom4)
+    : (opts.nhom ? String(opts.nhom).split(',').map((s) => s.trim()).filter(Boolean).map(chuanNhom4) : null);
+  const dsNhom = nhomList && nhomList.length
+    ? [...new Set(nhomList)]
     : lietKeNhom4({ chuong, luat: ctx.luat, L: ctx.L });
 
   const nhom = dsNhom.map((n) => chamDiemNhom(n, ctx));
@@ -460,9 +497,11 @@ function main() {
     console.error(`Mã chương không hợp lệ: "${chuong}"`);
     process.exit(2);
   }
+  let dsNhomCli = null;
   if (nhomArg !== null) {
     try {
-      chuanNhom4(nhomArg);
+      dsNhomCli = String(nhomArg).split(',').map((s) => s.trim()).filter(Boolean).map(chuanNhom4);
+      if (!dsNhomCli.length) throw new Error(`Mã nhóm 4 số không hợp lệ: "${nhomArg}"`);
     } catch (err) {
       console.error(err.message);
       process.exit(2);
@@ -470,7 +509,7 @@ function main() {
   }
 
   if (hangDoiMode) {
-    const q = layHangDoi({ luat, hoSo, chuong, nhom: nhomArg, gioiHan, canhTranhMd, viDu, vungChong, batBuocTepBang });
+    const q = layHangDoi({ luat, hoSo, chuong, nhom: dsNhomCli, gioiHan, canhTranhMd, viDu, vungChong, batBuocTepBang });
     if (jsonMode) {
       console.log(JSON.stringify(q, null, 2));
     } else {
@@ -480,10 +519,10 @@ function main() {
     process.exit(kiemDong && q.do > 0 ? 1 : 0);
   }
 
-  const res = chamSoDiem({ luat, hoSo, chuong, nhom: nhomArg, canhTranhMd, viDu, vungChong, batBuocTepBang });
+  const res = chamSoDiem({ luat, hoSo, chuong, nhom: dsNhomCli, canhTranhMd, viDu, vungChong, batBuocTepBang });
   if (jsonMode) {
     console.log(JSON.stringify(res, null, 2));
-  } else if (nhomArg) {
+  } else if (dsNhomCli && dsNhomCli.length === 1) {
     const r = res.nhom[0];
     console.log(`${r.trangThai} ${r.nhom} (${r.nut}): DIEU_KIEN=${r.thongKe.dieuKien}, GIAI_CHONG=${r.thongKe.giaiChong}, CANH_TRANH=${r.thongKe.canhTranh}, congLoi=[${r.congLoi.join(',')}]`);
     if (r.cauDoiVanTay.length) console.log(`  câu đổi vân tay: ${r.cauDoiVanTay.join(', ')}`);
