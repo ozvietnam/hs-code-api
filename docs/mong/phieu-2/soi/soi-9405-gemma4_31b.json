@@ -1,0 +1,342 @@
+{
+ "nhom": "9405",
+ "model": "gemma4:31b",
+ "he": "Bạn là NGƯỜI SOI trong dây chuyền số hoá luật phân loại HS Việt Nam. Người soạn đã viết điều kiện (DIEU_KIEN) cho từng dòng anh em cùng cấp của biểu thuế. Việc của bạn HẸP: chỉ soi bảng anh em dưới đây, KHÔNG soạn lại.\nTìm:\n(1) CHỒNG: cặp anh em mà một mặt hàng có thật có thể thoả ĐỒNG THỜI điều kiện của cả hai (theo điều kiện đã soạn), trong khi luật chỉ cho vào một dòng. Nêu mặt hàng ví dụ cụ thể và điều kiện nào thiếu để tách.\n(2) HỞ: mặt hàng có thật thuộc dòng cha nhưng không thoả dòng anh em nào.\nChỉ nêu khi chắc chắn có mặt hàng thật minh hoạ. Không nêu cặp đã bị điều kiện tách rõ (ví dụ một bên phủ định đúng điều kiện của bên kia).\nTrả về DUY NHẤT JSON: {\"chong\":[{\"a\":\"bieu:...\",\"b\":\"bieu:...\",\"matHang\":\"...\",\"lyDo\":\"...\"}],\"ho\":[{\"matHang\":\"...\",\"lyDo\":\"...\"}]}",
+ "ketQua": [
+  {
+   "cha": "bieu:9405",
+   "soAnhEm": 7,
+   "giay": 55,
+   "kq": {
+    "chong": [
+     {
+      "a": "bieu:94053",
+      "b": "bieu:940550",
+      "matHang": "Dây đèn trang trí cây Nô-en loại không dùng điện (ví dụ: dùng hạt phát quang)",
+      "lyDo": "Mặt hàng này thỏa đồng thời điều kiện là 'Dây đèn dùng cho cây Nô-en' (94053) và điều kiện 'không hoạt động bằng điện' (940550). Cần bổ sung điều kiện 'hoạt động bằng điện' cho 94053 hoặc điều kiện 'không phải dây đèn dùng cho cây Nô-en' cho 940550 để tách."
+     }
+    ],
+    "ho": []
+   },
+   "loi": null,
+   "user": "Dòng cha: bieu:9405 (chuỗi: phan:XX > chuong:94 > bieu:9405)\nĐiều kiện của dòng cha:\n  vế 1: [Hàng hóa có phải đèn (luminaires) và bộ đèn (kể cả đèn pha và đèn rọi) không?] VÀ [Đèn và bộ đèn đó có thuộc loại chưa được chi tiết hoặc ghi ở nơi khác không?] VÀ KHÔNG[Hàng hóa có thuộc Chương 71 (vật liệu quý theo Chú giải 1 Chương 71) không?] VÀ KHÔNG[Hàng hóa có phải đèn hoặc nguồn sáng và bộ phận của chúng thuộc Chương 85 không?] VÀ KHÔNG[Hàng hóa có phải phụ tùng điện (như công tắc, đui đèn, dây, biến áp, tắc te, chấn lưu) được để riêng thuộc Chương 85 không?] VÀ KHÔNG[Hàng hóa có phải đèn (luminaires) và bộ đèn đồ chơi thuộc nhóm 95.03 không?] VÀ KHÔNG[Hàng hóa có phải đồ trang trí như đèn lồng kéo quân hoặc đèn lồng Trung Quốc (trừ dây đèn) thuộc nhóm 95.05 không?] VÀ KHÔNG[Hàng hóa có phải nến thuộc nhóm 34.06 không?] VÀ KHÔNG[Hàng hóa có phải đuốc nhựa thông thuộc nhóm 36.06 không?] VÀ KHÔNG[Hàng hóa có phải quả địa cầu in, có đèn sáng ở trong thuộc nhóm 49.05 không?] VÀ KHÔNG[Hàng hóa có phải bấc đèn được dệt, tết hoặc đan bằng vật liệu dệt thuộc nhóm 59.08 không?] VÀ KHÔNG[Hàng hóa có phải hạt thủy tinh hoặc đồ vật trang trí bằng thủy tinh xâu thành chuỗi nhằm trang trí cho chụp đèn thuộc nhóm 70.18 không?] VÀ KHÔNG[Hàng hóa có phải thiết bị chiếu sáng và thiết bị tín hiệu bằng điện dùng cho xe đạp và xe có động cơ thuộc nhóm 85.12 không?] VÀ KHÔNG[Hàng hóa có phải đèn xách tay thuộc nhóm 85.13 không?] VÀ KHÔNG[Hàng hóa có phải đèn dây tóc, đèn phóng điện (kể cả đèn pha hàn kín), bóng đèn hồ quang hoặc nguồn sáng đi-ốt phát quang thuộc nhóm 85.39 không?] VÀ KHÔNG[Hàng hóa có phải đèn chớp để chụp ảnh (kể cả bóng đèn phóng điện tử) thuộc nhóm 90.06 không?] VÀ KHÔNG[Hàng hóa có phải thiết bị báo sáng bằng chùm tia quang học thuộc nhóm 90.13 không?] VÀ KHÔNG[Hàng hóa có phải đèn để chẩn đoán, thăm dò, phát xạ dùng trong y tế thuộc nhóm 90.18 không?]\n  vế 2: [Hàng hóa có phải bộ phận của đèn và bộ đèn thuộc nhóm 94.05, chưa được chi tiết hoặc ghi ở nơi khác không?] VÀ KHÔNG[Hàng hóa có thuộc Chương 71 (vật liệu quý theo Chú giải 1 Chương 71) không?] VÀ KHÔNG[Hàng hóa có phải đèn hoặc nguồn sáng và bộ phận của chúng thuộc Chương 85 không?] VÀ KHÔNG[Hàng hóa có phải phụ tùng điện (như công tắc, đui đèn, dây, biến áp, tắc te, chấn lưu) được để riêng thuộc Chương 85 không?] VÀ KHÔNG[Hàng hóa có phải đèn (luminaires) và bộ đèn đồ chơi thuộc nhóm 95.03 không?] VÀ KHÔNG[Hàng hóa có phải đồ trang trí như đèn lồng kéo quân hoặc đèn lồng Trung Quốc (trừ dây đèn) thuộc nhóm 95.05 không?] VÀ KHÔNG[Hàng hóa có phải nến thuộc nhóm 34.06 không?] VÀ KHÔNG[Hàng hóa có phải đuốc nhựa thông thuộc nhóm 36.06 không?] VÀ KHÔNG[Hàng hóa có phải quả địa cầu in, có đèn sáng ở trong thuộc nhóm 49.05 không?] VÀ KHÔNG[Hàng hóa có phải bấc đèn được dệt, tết hoặc đan bằng vật liệu dệt thuộc nhóm 59.08 không?] VÀ KHÔNG[Hàng hóa có phải hạt thủy tinh hoặc đồ vật trang trí bằng thủy tinh xâu thành chuỗi nhằm trang trí cho chụp đèn thuộc nhóm 70.18 không?] VÀ KHÔNG[Hàng hóa có phải thiết bị chiếu sáng và thiết bị tín hiệu bằng điện dùng cho xe đạp và xe có động cơ thuộc nhóm 85.12 không?] VÀ KHÔNG[Hàng hóa có phải đèn xách tay thuộc nhóm 85.13 không?] VÀ KHÔNG[Hàng hóa có phải đèn dây tóc, đèn phóng điện (kể cả đèn pha hàn kín), bóng đèn hồ quang hoặc nguồn sáng đi-ốt phát quang thuộc nhóm 85.39 không?] VÀ KHÔNG[Hàng hóa có phải đèn chớp để chụp ảnh (kể cả bóng đèn phóng điện tử) thuộc nhóm 90.06 không?] VÀ KHÔNG[Hàng hóa có phải thiết bị báo sáng bằng chùm tia quang học thuộc nhóm 90.13 không?] VÀ KHÔNG[Hàng hóa có phải đèn để chẩn đoán, thăm dò, phát xạ dùng trong y tế thuộc nhóm 90.18 không?]\n  vế 3: [Hàng hóa có phải biển hiệu được chiếu sáng, biển đề tên được chiếu sáng và các loại tương tự không?] VÀ [Biển hiệu được chiếu sáng, biển đề tên được chiếu sáng và các loại tương tự đó có nguồn sáng cố định thường xuyên không?] VÀ KHÔNG[Hàng hóa có thuộc Chương 71 (vật liệu quý theo Chú giải 1 Chương 71) không?] VÀ KHÔNG[Hàng hóa có phải đèn hoặc nguồn sáng và bộ phận của chúng thuộc Chương 85 không?] VÀ KHÔNG[Hàng hóa có phải phụ tùng điện (như công tắc, đui đèn, dây, biến áp, tắc te, chấn lưu) được để riêng thuộc Chương 85 không?] VÀ KHÔNG[Hàng hóa có phải đèn (luminaires) và bộ đèn đồ chơi thuộc nhóm 95.03 không?] VÀ KHÔNG[Hàng hóa có phải đồ trang trí như đèn lồng kéo quân hoặc đèn lồng Trung Quốc (trừ dây đèn) thuộc nhóm 95.05 không?] VÀ KHÔNG[Hàng hóa có phải nến thuộc nhóm 34.06 không?] VÀ KHÔNG[Hàng hóa có phải đuốc nhựa thông thuộc nhóm 36.06 không?] VÀ KHÔNG[Hàng hóa có phải quả địa cầu in, có đèn sáng ở trong thuộc nhóm 49.05 không?] VÀ KHÔNG[Hàng hóa có phải bấc đèn được dệt, tết hoặc đan bằng vật liệu dệt thuộc nhóm 59.08 không?] VÀ KHÔNG[Hàng hóa có phải hạt thủy tinh hoặc đồ vật trang trí bằng thủy tinh xâu thành chuỗi nhằm trang trí cho chụp đèn thuộc nhóm 70.18 không?] VÀ KHÔNG[Hàng hóa có phải thiết bị chiếu sáng và thiết bị tín hiệu bằng điện dùng cho xe đạp và xe có động cơ thuộc nhóm 85.12 không?] VÀ KHÔNG[Hàng hóa có phải đèn xách tay thuộc nhóm 85.13 không?] VÀ KHÔNG[Hàng hóa có phải đèn dây tóc, đèn phóng điện (kể cả đèn pha hàn kín), bóng đèn hồ quang hoặc nguồn sáng đi-ốt phát quang thuộc nhóm 85.39 không?] VÀ KHÔNG[Hàng hóa có phải đèn chớp để chụp ảnh (kể cả bóng đèn phóng điện tử) thuộc nhóm 90.06 không?] VÀ KHÔNG[Hàng hóa có phải thiết bị báo sáng bằng chùm tia quang học thuộc nhóm 90.13 không?] VÀ KHÔNG[Hàng hóa có phải đèn để chẩn đoán, thăm dò, phát xạ dùng trong y tế thuộc nhóm 90.18 không?]\n  vế 4: [Hàng hóa có phải bộ phận của biển hiệu được chiếu sáng, biển đề tên được chiếu sáng hoặc các loại tương tự (có nguồn sáng cố định thường xuyên), chưa được chi tiết hoặc ghi ở nơi khác không?] VÀ KHÔNG[Hàng hóa có thuộc Chương 71 (vật liệu quý theo Chú giải 1 Chương 71) không?] VÀ KHÔNG[Hàng hóa có phải đèn hoặc nguồn sáng và bộ phận của chúng thuộc Chương 85 không?] VÀ KHÔNG[Hàng hóa có phải phụ tùng điện (như công tắc, đui đèn, dây, biến áp, tắc te, chấn lưu) được để riêng thuộc Chương 85 không?] VÀ KHÔNG[Hàng hóa có phải đèn (luminaires) và bộ đèn đồ chơi thuộc nhóm 95.03 không?] VÀ KHÔNG[Hàng hóa có phải đồ trang trí như đèn lồng kéo quân hoặc đèn lồng Trung Quốc (trừ dây đèn) thuộc nhóm 95.05 không?] VÀ KHÔNG[Hàng hóa có phải nến thuộc nhóm 34.06 không?] VÀ KHÔNG[Hàng hóa có phải đuốc nhựa thông thuộc nhóm 36.06 không?] VÀ KHÔNG[Hàng hóa có phải quả địa cầu in, có đèn sáng ở trong thuộc nhóm 49.05 không?] VÀ KHÔNG[Hàng hóa có phải bấc đèn được dệt, tết hoặc đan bằng vật liệu dệt thuộc nhóm 59.08 không?] VÀ KHÔNG[Hàng hóa có phải hạt thủy tinh hoặc đồ vật trang trí bằng thủy tinh xâu thành chuỗi nhằm trang trí cho chụp đèn thuộc nhóm 70.18 không?] VÀ KHÔNG[Hàng hóa có phải thiết bị chiếu sáng và thiết bị tín hiệu bằng điện dùng cho xe đạp và xe có động cơ thuộc nhóm 85.12 không?] VÀ KHÔNG[Hàng hóa có phải đèn xách tay thuộc nhóm 85.13 không?] VÀ KHÔNG[Hàng hóa có phải đèn dây tóc, đèn phóng điện (kể cả đèn pha hàn kín), bóng đèn hồ quang hoặc nguồn sáng đi-ốt phát quang thuộc nhóm 85.39 không?] VÀ KHÔNG[Hàng hóa có phải đèn chớp để chụp ảnh (kể cả bóng đèn phóng điện tử) thuộc nhóm 90.06 không?] VÀ KHÔNG[Hàng hóa có phải thiết bị báo sáng bằng chùm tia quang học thuộc nhóm 90.13 không?] VÀ KHÔNG[Hàng hóa có phải đèn để chẩn đoán, thăm dò, phát xạ dùng trong y tế thuộc nhóm 90.18 không?]\n\nCác dòng anh em:\n- bieu:94051 \"- Bộ đèn chùm và đèn điện trần hoặc đèn điện tường khác, trừ các loại được sử dụng ở các không gian mở công cộng hoặc đường phố lớn:\"\n  vế 1: [Hàng hóa thuộc nhóm đối tượng nào trong nhóm 94.05: Đèn và bộ đèn? → Đèn và bộ đèn] VÀ [Đèn và bộ đèn hoạt động bằng nguồn năng lượng nào: điện? → điện] VÀ [Đèn và bộ đèn thuộc chủng loại nào: Bộ đèn chùm và đèn điện trần hoặc đèn điện tường? → Bộ đèn chùm và đèn điện trần hoặc đèn điện tường] VÀ KHÔNG[Bộ đèn chùm, đèn điện trần hoặc đèn điện tường này có phải loại được sử dụng ở các không gian mở công cộng hoặc đường phố lớn không?]\n- bieu:94052 \"- Đèn bàn, đèn giường hoặc đèn cây dùng điện :\"\n  vế 1: [Hàng hóa thuộc nhóm đối tượng nào trong nhóm 94.05: Đèn và bộ đèn? → Đèn và bộ đèn] VÀ [Đèn và bộ đèn hoạt động bằng nguồn năng lượng nào: điện? → điện] VÀ [Đèn và bộ đèn thuộc chủng loại nào: Đèn bàn, đèn giường hoặc đèn cây? → Đèn bàn, đèn giường hoặc đèn cây]\n- bieu:94053 \"- Dây đèn dùng cho cây Nô-en:\"\n  vế 1: [Hàng hóa thuộc nhóm đối tượng nào trong nhóm 94.05: Đèn và bộ đèn? → Đèn và bộ đèn] VÀ [Đèn và bộ đèn thuộc chủng loại nào: Dây đèn dùng cho cây Nô-en? → Dây đèn dùng cho cây Nô-en]\n- bieu:94054 \"- Đèn và bộ đèn điện khác:\"\n  vế 1: [Hàng hóa thuộc nhóm đối tượng nào trong nhóm 94.05: Đèn và bộ đèn? → Đèn và bộ đèn] VÀ [Đèn và bộ đèn hoạt động bằng nguồn năng lượng nào: điện? → điện] VÀ KHÔNG[Đèn và bộ đèn thuộc chủng loại nào: Bộ đèn chùm và đèn điện trần hoặc đèn điện tường? → Bộ đèn chùm và đèn điện trần hoặc đèn điện tường] VÀ KHÔNG[Đèn và bộ đèn thuộc chủng loại nào: Đèn bàn, đèn giường hoặc đèn cây? → Đèn bàn, đèn giường hoặc đèn cây] VÀ KHÔNG[Đèn và bộ đèn thuộc chủng loại nào: Dây đèn dùng cho cây Nô-en? → Dây đèn dùng cho cây Nô-en]\n  vế 2: [Hàng hóa thuộc nhóm đối tượng nào trong nhóm 94.05: Đèn và bộ đèn? → Đèn và bộ đèn] VÀ [Đèn và bộ đèn hoạt động bằng nguồn năng lượng nào: điện? → điện] VÀ [Đèn và bộ đèn thuộc chủng loại nào: Bộ đèn chùm và đèn điện trần hoặc đèn điện tường? → Bộ đèn chùm và đèn điện trần hoặc đèn điện tường] VÀ [Bộ đèn chùm, đèn điện trần hoặc đèn điện tường này có phải loại được sử dụng ở các không gian mở công cộng hoặc đường phố lớn không?]\n- bieu:940550 \"- Đèn và bộ đèn không hoạt động bằng điện:\"\n  vế 1: [Hàng hóa thuộc nhóm đối tượng nào trong nhóm 94.05: Đèn và bộ đèn? → Đèn và bộ đèn] VÀ [Đèn và bộ đèn hoạt động bằng nguồn năng lượng nào: không hoạt động bằng điện? → không hoạt động bằng điện]\n- bieu:94056 \"- Biển hiệu được chiếu sáng, biển đề tên được chiếu sáng và các loại tương tự:\"\n  vế 1: [Hàng hóa thuộc nhóm đối tượng nào trong nhóm 94.05: Biển hiệu được chiếu sáng, biển đề tên được chiếu sáng và các loại tương tự? → Biển hiệu được chiếu sáng, biển đề tên được chiếu sáng và các loại tương tự]\n- bieu:94059 \"- Bộ phận:\"\n  vế 1: [Hàng hóa thuộc nhóm đối tượng nào trong nhóm 94.05: Bộ phận? → Bộ phận]"
+  },
+  {
+   "cha": "bieu:94051",
+   "soAnhEm": 2,
+   "giay": 6,
+   "kq": {
+    "chong": [],
+    "ho": []
+   },
+   "loi": null,
+   "user": "Dòng cha: bieu:94051 (chuỗi: phan:XX > chuong:94 > bieu:9405 > bieu:94051)\nĐiều kiện của dòng cha:\n  vế 1: [Hàng hóa thuộc nhóm đối tượng nào trong nhóm 94.05: Đèn và bộ đèn? → Đèn và bộ đèn] VÀ [Đèn và bộ đèn hoạt động bằng nguồn năng lượng nào: điện? → điện] VÀ [Đèn và bộ đèn thuộc chủng loại nào: Bộ đèn chùm và đèn điện trần hoặc đèn điện tường? → Bộ đèn chùm và đèn điện trần hoặc đèn điện tường] VÀ KHÔNG[Bộ đèn chùm, đèn điện trần hoặc đèn điện tường này có phải loại được sử dụng ở các không gian mở công cộng hoặc đường phố lớn không?]\n\nCác dòng anh em:\n- bieu:940511 \"- - Được thiết kế chỉ để sử dụng với các nguồn sáng đi-ốt phát quang (LED):\"\n  vế 1: [Bộ đèn chùm, đèn điện trần hoặc đèn điện tường có được thiết kế chỉ để sử dụng với các nguồn sáng đi-ốt phát quang (LED) không?]\n- bieu:940519 \"- - Loại khác:\" (Loại khác)\n  (không có điều kiện)"
+  },
+  {
+   "cha": "bieu:940511",
+   "soAnhEm": 2,
+   "giay": 5,
+   "kq": {
+    "chong": [],
+    "ho": []
+   },
+   "loi": null,
+   "user": "Dòng cha: bieu:940511 (chuỗi: phan:XX > chuong:94 > bieu:9405 > bieu:94051 > bieu:940511)\nĐiều kiện của dòng cha:\n  vế 1: [Bộ đèn chùm, đèn điện trần hoặc đèn điện tường có được thiết kế chỉ để sử dụng với các nguồn sáng đi-ốt phát quang (LED) không?]\n\nCác dòng anh em:\n- bieu:94051110 \"- - - Đèn cho phòng mổ\"\n  vế 1: [Đèn này có phải đèn cho phòng mổ không?]\n- bieu:9405119 \"- - - Loại khác:\" (Loại khác)\n  (không có điều kiện)"
+  },
+  {
+   "cha": "bieu:9405119",
+   "soAnhEm": 2,
+   "giay": 3,
+   "kq": {
+    "chong": [],
+    "ho": []
+   },
+   "loi": null,
+   "user": "Dòng cha: bieu:9405119 (chuỗi: phan:XX > chuong:94 > bieu:9405 > bieu:94051 > bieu:940511 > bieu:9405119)\nĐiều kiện của dòng cha:\n  (không có điều kiện)\n\nCác dòng anh em:\n- bieu:94051191 \"- - - - Đèn rọi\"\n  vế 1: [Đèn này có phải đèn rọi không?]\n- bieu:94051199 \"- - - - Loại khác\" (Loại khác)\n  (không có điều kiện)"
+  },
+  {
+   "cha": "bieu:940519",
+   "soAnhEm": 2,
+   "giay": 4,
+   "kq": {
+    "chong": [],
+    "ho": []
+   },
+   "loi": null,
+   "user": "Dòng cha: bieu:940519 (chuỗi: phan:XX > chuong:94 > bieu:9405 > bieu:94051 > bieu:940519)\nĐiều kiện của dòng cha:\n  (không có điều kiện)\n\nCác dòng anh em:\n- bieu:94051910 \"- - - Đèn cho phòng mổ\"\n  vế 1: [Đèn này có phải đèn cho phòng mổ không?]\n- bieu:9405199 \"- - - Loại khác:\" (Loại khác)\n  (không có điều kiện)"
+  },
+  {
+   "cha": "bieu:9405199",
+   "soAnhEm": 3,
+   "giay": 7,
+   "kq": {
+    "chong": [
+     {
+      "a": "bieu:94051991",
+      "b": "bieu:94051992",
+      "matHang": "Đèn rọi sử dụng bóng đèn huỳnh quang",
+      "lyDo": "Một mặt hàng có thể vừa là đèn rọi vừa gắn bóng đèn huỳnh quang, thỏa mãn đồng thời cả hai điều kiện."
+     }
+    ],
+    "ho": []
+   },
+   "loi": null,
+   "user": "Dòng cha: bieu:9405199 (chuỗi: phan:XX > chuong:94 > bieu:9405 > bieu:94051 > bieu:940519 > bieu:9405199)\nĐiều kiện của dòng cha:\n  (không có điều kiện)\n\nCác dòng anh em:\n- bieu:94051991 \"- - - - Đèn rọi\"\n  vế 1: [Đèn này có phải đèn rọi không?]\n- bieu:94051992 \"- - - - Đèn gắn bóng đèn huỳnh quang\"\n  vế 1: [Đèn này có phải đèn gắn bóng đèn huỳnh quang không?]\n- bieu:94051999 \"- - - - Loại khác\" (Loại khác)\n  (không có điều kiện)"
+  },
+  {
+   "cha": "bieu:94052",
+   "soAnhEm": 2,
+   "giay": 5,
+   "kq": {
+    "chong": [],
+    "ho": []
+   },
+   "loi": null,
+   "user": "Dòng cha: bieu:94052 (chuỗi: phan:XX > chuong:94 > bieu:9405 > bieu:94052)\nĐiều kiện của dòng cha:\n  vế 1: [Hàng hóa thuộc nhóm đối tượng nào trong nhóm 94.05: Đèn và bộ đèn? → Đèn và bộ đèn] VÀ [Đèn và bộ đèn hoạt động bằng nguồn năng lượng nào: điện? → điện] VÀ [Đèn và bộ đèn thuộc chủng loại nào: Đèn bàn, đèn giường hoặc đèn cây? → Đèn bàn, đèn giường hoặc đèn cây]\n\nCác dòng anh em:\n- bieu:940521 \"- - Được thiết kế chỉ để sử dụng với các nguồn sáng đi-ốt phát quang (LED):\"\n  vế 1: [Đèn bàn, đèn giường hoặc đèn cây dùng điện có được thiết kế chỉ để sử dụng với các nguồn sáng đi-ốt phát quang (LED) không?]\n- bieu:940529 \"- - Loại khác:\" (Loại khác)\n  (không có điều kiện)"
+  },
+  {
+   "cha": "bieu:940521",
+   "soAnhEm": 2,
+   "giay": 8,
+   "kq": {
+    "chong": [],
+    "ho": []
+   },
+   "loi": null,
+   "user": "Dòng cha: bieu:940521 (chuỗi: phan:XX > chuong:94 > bieu:9405 > bieu:94052 > bieu:940521)\nĐiều kiện của dòng cha:\n  vế 1: [Đèn bàn, đèn giường hoặc đèn cây dùng điện có được thiết kế chỉ để sử dụng với các nguồn sáng đi-ốt phát quang (LED) không?]\n\nCác dòng anh em:\n- bieu:94052110 \"- - - Đèn cho phòng mổ\"\n  vế 1: [Đèn này có phải đèn cho phòng mổ không?]\n- bieu:94052190 \"- - - Loại khác\" (Loại khác)\n  (không có điều kiện)"
+  },
+  {
+   "cha": "bieu:940529",
+   "soAnhEm": 2,
+   "giay": 5,
+   "kq": {
+    "chong": [],
+    "ho": []
+   },
+   "loi": null,
+   "user": "Dòng cha: bieu:940529 (chuỗi: phan:XX > chuong:94 > bieu:9405 > bieu:94052 > bieu:940529)\nĐiều kiện của dòng cha:\n  (không có điều kiện)\n\nCác dòng anh em:\n- bieu:94052910 \"- - - Đèn cho phòng mổ\"\n  vế 1: [Đèn này có phải đèn cho phòng mổ không?]\n- bieu:94052990 \"- - - Loại khác\" (Loại khác)\n  (không có điều kiện)"
+  },
+  {
+   "cha": "bieu:94053",
+   "soAnhEm": 2,
+   "giay": 4,
+   "kq": {
+    "chong": [],
+    "ho": []
+   },
+   "loi": null,
+   "user": "Dòng cha: bieu:94053 (chuỗi: phan:XX > chuong:94 > bieu:9405 > bieu:94053)\nĐiều kiện của dòng cha:\n  vế 1: [Hàng hóa thuộc nhóm đối tượng nào trong nhóm 94.05: Đèn và bộ đèn? → Đèn và bộ đèn] VÀ [Đèn và bộ đèn thuộc chủng loại nào: Dây đèn dùng cho cây Nô-en? → Dây đèn dùng cho cây Nô-en]\n\nCác dòng anh em:\n- bieu:940531 \"- - Được thiết kế chỉ để sử dụng với các nguồn sáng đi-ốt phát quang (LED)\"\n  vế 1: [Dây đèn dùng cho cây Nô-en có được thiết kế chỉ để sử dụng với các nguồn sáng đi-ốt phát quang (LED) không?]\n- bieu:940539 \"- - Loại khác\" (Loại khác)\n  (không có điều kiện)"
+  },
+  {
+   "cha": "bieu:94054",
+   "soAnhEm": 3,
+   "giay": 6,
+   "kq": {
+    "chong": [],
+    "ho": []
+   },
+   "loi": null,
+   "user": "Dòng cha: bieu:94054 (chuỗi: phan:XX > chuong:94 > bieu:9405 > bieu:94054)\nĐiều kiện của dòng cha:\n  vế 1: [Hàng hóa thuộc nhóm đối tượng nào trong nhóm 94.05: Đèn và bộ đèn? → Đèn và bộ đèn] VÀ [Đèn và bộ đèn hoạt động bằng nguồn năng lượng nào: điện? → điện] VÀ KHÔNG[Đèn và bộ đèn thuộc chủng loại nào: Bộ đèn chùm và đèn điện trần hoặc đèn điện tường? → Bộ đèn chùm và đèn điện trần hoặc đèn điện tường] VÀ KHÔNG[Đèn và bộ đèn thuộc chủng loại nào: Đèn bàn, đèn giường hoặc đèn cây? → Đèn bàn, đèn giường hoặc đèn cây] VÀ KHÔNG[Đèn và bộ đèn thuộc chủng loại nào: Dây đèn dùng cho cây Nô-en? → Dây đèn dùng cho cây Nô-en]\n  vế 2: [Hàng hóa thuộc nhóm đối tượng nào trong nhóm 94.05: Đèn và bộ đèn? → Đèn và bộ đèn] VÀ [Đèn và bộ đèn hoạt động bằng nguồn năng lượng nào: điện? → điện] VÀ [Đèn và bộ đèn thuộc chủng loại nào: Bộ đèn chùm và đèn điện trần hoặc đèn điện tường? → Bộ đèn chùm và đèn điện trần hoặc đèn điện tường] VÀ [Bộ đèn chùm, đèn điện trần hoặc đèn điện tường này có phải loại được sử dụng ở các không gian mở công cộng hoặc đường phố lớn không?]\n\nCác dòng anh em:\n- bieu:940541 \"- - Loại quang điện, được thiết kế chỉ để sử dụng với các nguồn sáng đi-ốt phát quang (LED):\"\n  vế 1: [Đèn và bộ đèn điện này có phải loại quang điện không?] VÀ [Đèn và bộ đèn điện này có được thiết kế chỉ để sử dụng với các nguồn sáng đi-ốt phát quang (LED) không?]\n- bieu:940542 \"- - Loại khác, được thiết kế chỉ để sử dụng với các nguồn sáng đi-ốt phát quang (LED):\"\n  vế 1: KHÔNG[Đèn và bộ đèn điện này có phải loại quang điện không?] VÀ [Đèn và bộ đèn điện này có được thiết kế chỉ để sử dụng với các nguồn sáng đi-ốt phát quang (LED) không?]\n- bieu:940549 \"- - Loại khác:\" (Loại khác)\n  (không có điều kiện)"
+  },
+  {
+   "cha": "bieu:940541",
+   "soAnhEm": 5,
+   "giay": 19,
+   "kq": {
+    "chong": [
+     {
+      "a": "bieu:94054110",
+      "b": "bieu:94054130",
+      "matHang": "Đèn pha LED dùng cho tàu thủy bằng kim loại cơ bản",
+      "lyDo": "Mặt hàng này vừa thỏa điều kiện là 'Đèn pha' (94054110), vừa thỏa điều kiện là 'đèn dùng cho tàu thủy bằng kim loại cơ bản' (94054130). Thiếu điều kiện loại trừ lẫn nhau giữa hai dòng này."
+     }
+    ],
+    "ho": []
+   },
+   "loi": null,
+   "user": "Dòng cha: bieu:940541 (chuỗi: phan:XX > chuong:94 > bieu:9405 > bieu:94054 > bieu:940541)\nĐiều kiện của dòng cha:\n  vế 1: [Đèn và bộ đèn điện này có phải loại quang điện không?] VÀ [Đèn và bộ đèn điện này có được thiết kế chỉ để sử dụng với các nguồn sáng đi-ốt phát quang (LED) không?]\n\nCác dòng anh em:\n- bieu:94054110 \"- - - Đèn pha\"\n  vế 1: [Đèn thuộc kiểu chiếu sáng nào: Đèn pha? → Đèn pha]\n- bieu:94054120 \"- - - Đèn rọi khác\"\n  vế 1: [Đèn thuộc kiểu chiếu sáng nào: Đèn rọi? → Đèn rọi] VÀ KHÔNG[Đèn thuộc kiểu chiếu sáng nào: Đèn pha? → Đèn pha]\n- bieu:94054130 \"- - - Đèn tín hiệu không nhấp nháy dùng cho sân bay; đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay, hoặc hải đăng, bằng kim loại cơ bản\"\n  vế 1: [Đèn có phải đèn tín hiệu không nhấp nháy dùng cho sân bay không?]\n  vế 2: [Đèn có phải đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay hoặc hải đăng không?] VÀ [Đèn đó có làm bằng kim loại cơ bản không?]\n- bieu:94054140 \"- - - Loại khác, được sử dụng ở nơi công cộng hoặc đường phố lớn; loại chiếu sáng bên ngoài khác\"\n  vế 1: KHÔNG[Đèn thuộc kiểu chiếu sáng nào: Đèn pha? → Đèn pha] VÀ KHÔNG[Đèn thuộc kiểu chiếu sáng nào: Đèn rọi? → Đèn rọi] VÀ KHÔNG[Đèn có phải đèn tín hiệu không nhấp nháy dùng cho sân bay không?] VÀ KHÔNG[Đèn có phải đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay hoặc hải đăng không?] VÀ [Đèn có được sử dụng ở nơi công cộng hoặc đường phố lớn không?]\n  vế 2: KHÔNG[Đèn thuộc kiểu chiếu sáng nào: Đèn pha? → Đèn pha] VÀ KHÔNG[Đèn thuộc kiểu chiếu sáng nào: Đèn rọi? → Đèn rọi] VÀ KHÔNG[Đèn có phải đèn tín hiệu không nhấp nháy dùng cho sân bay không?] VÀ [Đèn có phải đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay hoặc hải đăng không?] VÀ KHÔNG[Đèn đó có làm bằng kim loại cơ bản không?] VÀ [Đèn có được sử dụng ở nơi công cộng hoặc đường phố lớn không?]\n  vế 3: KHÔNG[Đèn thuộc kiểu chiếu sáng nào: Đèn pha? → Đèn pha] VÀ KHÔNG[Đèn thuộc kiểu chiếu sáng nào: Đèn rọi? → Đèn rọi] VÀ KHÔNG[Đèn có phải đèn tín hiệu không nhấp nháy dùng cho sân bay không?] VÀ KHÔNG[Đèn có phải đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay hoặc hải đăng không?] VÀ KHÔNG[Đèn có được sử dụng ở nơi công cộng hoặc đường phố lớn không?] VÀ [Đèn có phải loại chiếu sáng bên ngoài không?]\n  vế 4: KHÔNG[Đèn thuộc kiểu chiếu sáng nào: Đèn pha? → Đèn pha] VÀ KHÔNG[Đèn thuộc kiểu chiếu sáng nào: Đèn rọi? → Đèn rọi] VÀ KHÔNG[Đèn có phải đèn tín hiệu không nhấp nháy dùng cho sân bay không?] VÀ [Đèn có phải đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay hoặc hải đăng không?] VÀ KHÔNG[Đèn đó có làm bằng kim loại cơ bản không?] VÀ KHÔNG[Đèn có được sử dụng ở nơi công cộng hoặc đường phố lớn không?] VÀ [Đèn có phải loại chiếu sáng bên ngoài không?]\n- bieu:94054190 \"- - - Loại khác\" (Loại khác)\n  (không có điều kiện)"
+  },
+  {
+   "cha": "bieu:940542",
+   "soAnhEm": 7,
+   "giay": 41,
+   "kq": {
+    "chong": [
+     {
+      "a": "bieu:94054210",
+      "b": "bieu:94054230",
+      "matHang": "Đèn pha dùng cho tàu thủy bằng kim loại cơ bản",
+      "lyDo": "Mặt hàng này thỏa mãn đồng thời điều kiện là 'Đèn pha' của dòng 94054210 và điều kiện là 'đèn dùng cho tàu thủy... bằng kim loại cơ bản' của dòng 94054230."
+     }
+    ],
+    "ho": []
+   },
+   "loi": null,
+   "user": "Dòng cha: bieu:940542 (chuỗi: phan:XX > chuong:94 > bieu:9405 > bieu:94054 > bieu:940542)\nĐiều kiện của dòng cha:\n  vế 1: KHÔNG[Đèn và bộ đèn điện này có phải loại quang điện không?] VÀ [Đèn và bộ đèn điện này có được thiết kế chỉ để sử dụng với các nguồn sáng đi-ốt phát quang (LED) không?]\n\nCác dòng anh em:\n- bieu:94054210 \"- - - Đèn pha\"\n  vế 1: [Đèn thuộc kiểu chiếu sáng nào: Đèn pha? → Đèn pha]\n- bieu:94054220 \"- - - Đèn rọi khác\"\n  vế 1: [Đèn thuộc kiểu chiếu sáng nào: Đèn rọi? → Đèn rọi] VÀ KHÔNG[Đèn thuộc kiểu chiếu sáng nào: Đèn pha? → Đèn pha]\n- bieu:94054230 \"- - - Đèn tín hiệu không nhấp nháy dùng cho sân bay; đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay, hoặc hải đăng, bằng kim loại cơ bản\"\n  vế 1: [Đèn có phải đèn tín hiệu không nhấp nháy dùng cho sân bay không?]\n  vế 2: [Đèn có phải đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay hoặc hải đăng không?] VÀ [Đèn đó có làm bằng kim loại cơ bản không?]\n- bieu:94054240 \"- - - Đèn báo hiệu dùng cho thiết bị nhiệt điện gia dụng thuộc nhóm 85.16\"\n  vế 1: [Đèn có phải đèn báo hiệu dùng cho thiết bị nhiệt điện gia dụng thuộc nhóm 85.16 không?]\n- bieu:94054250 \"- - - Loại khác, được sử dụng ở nơi công cộng hoặc đường phố lớn\"\n  vế 1: KHÔNG[Đèn thuộc kiểu chiếu sáng nào: Đèn pha? → Đèn pha] VÀ KHÔNG[Đèn thuộc kiểu chiếu sáng nào: Đèn rọi? → Đèn rọi] VÀ KHÔNG[Đèn có phải đèn tín hiệu không nhấp nháy dùng cho sân bay không?] VÀ KHÔNG[Đèn có phải đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay hoặc hải đăng không?] VÀ KHÔNG[Đèn có phải đèn báo hiệu dùng cho thiết bị nhiệt điện gia dụng thuộc nhóm 85.16 không?] VÀ [Đèn có được sử dụng ở nơi công cộng hoặc đường phố lớn không?]\n  vế 2: KHÔNG[Đèn thuộc kiểu chiếu sáng nào: Đèn pha? → Đèn pha] VÀ KHÔNG[Đèn thuộc kiểu chiếu sáng nào: Đèn rọi? → Đèn rọi] VÀ KHÔNG[Đèn có phải đèn tín hiệu không nhấp nháy dùng cho sân bay không?] VÀ [Đèn có phải đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay hoặc hải đăng không?] VÀ KHÔNG[Đèn đó có làm bằng kim loại cơ bản không?] VÀ KHÔNG[Đèn có phải đèn báo hiệu dùng cho thiết bị nhiệt điện gia dụng thuộc nhóm 85.16 không?] VÀ [Đèn có được sử dụng ở nơi công cộng hoặc đường phố lớn không?]\n- bieu:94054260 \"- - - Loại chiếu sáng bên ngoài khác\"\n  vế 1: KHÔNG[Đèn thuộc kiểu chiếu sáng nào: Đèn pha? → Đèn pha] VÀ KHÔNG[Đèn thuộc kiểu chiếu sáng nào: Đèn rọi? → Đèn rọi] VÀ KHÔNG[Đèn có phải đèn tín hiệu không nhấp nháy dùng cho sân bay không?] VÀ KHÔNG[Đèn có phải đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay hoặc hải đăng không?] VÀ KHÔNG[Đèn có phải đèn báo hiệu dùng cho thiết bị nhiệt điện gia dụng thuộc nhóm 85.16 không?] VÀ KHÔNG[Đèn có được sử dụng ở nơi công cộng hoặc đường phố lớn không?] VÀ [Đèn có phải loại chiếu sáng bên ngoài không?]\n  vế 2: KHÔNG[Đèn thuộc kiểu chiếu sáng nào: Đèn pha? → Đèn pha] VÀ KHÔNG[Đèn thuộc kiểu chiếu sáng nào: Đèn rọi? → Đèn rọi] VÀ KHÔNG[Đèn có phải đèn tín hiệu không nhấp nháy dùng cho sân bay không?] VÀ [Đèn có phải đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay hoặc hải đăng không?] VÀ KHÔNG[Đèn đó có làm bằng kim loại cơ bản không?] VÀ KHÔNG[Đèn có phải đèn báo hiệu dùng cho thiết bị nhiệt điện gia dụng thuộc nhóm 85.16 không?] VÀ KHÔNG[Đèn có được sử dụng ở nơi công cộng hoặc đường phố lớn không?] VÀ [Đèn có phải loại chiếu sáng bên ngoài không?]\n- bieu:94054290 \"- - - Loại khác\" (Loại khác)\n  (không có điều kiện)"
+  },
+  {
+   "cha": "bieu:940549",
+   "soAnhEm": 7,
+   "giay": 29,
+   "kq": {
+    "chong": [
+     {
+      "a": "bieu:94054910",
+      "b": "bieu:94054990",
+      "matHang": "Đèn pha",
+      "lyDo": "Dòng 94054990 không có điều kiện loại trừ các dòng anh em phía trên, nên một mặt hàng là 'Đèn pha' sẽ thỏa mãn đồng thời điều kiện của bieu:94054910 và bieu:94054990."
+     }
+    ],
+    "ho": []
+   },
+   "loi": null,
+   "user": "Dòng cha: bieu:940549 (chuỗi: phan:XX > chuong:94 > bieu:9405 > bieu:94054 > bieu:940549)\nĐiều kiện của dòng cha:\n  (không có điều kiện)\n\nCác dòng anh em:\n- bieu:94054910 \"- - - Đèn pha\"\n  vế 1: [Đèn thuộc kiểu chiếu sáng nào: Đèn pha? → Đèn pha]\n- bieu:94054920 \"- - - Đèn rọi khác\"\n  vế 1: [Đèn thuộc kiểu chiếu sáng nào: Đèn rọi? → Đèn rọi] VÀ KHÔNG[Đèn thuộc kiểu chiếu sáng nào: Đèn pha? → Đèn pha]\n- bieu:94054930 \"- - - Đèn tín hiệu không nhấp nháy dùng cho sân bay; đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay, hoặc hải đăng, bằng kim loại cơ bản\"\n  vế 1: [Đèn có phải đèn tín hiệu không nhấp nháy dùng cho sân bay không?]\n  vế 2: [Đèn có phải đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay hoặc hải đăng không?] VÀ [Đèn đó có làm bằng kim loại cơ bản không?]\n- bieu:94054940 \"- - - Đèn báo hiệu dùng cho thiết bị nhiệt điện gia dụng thuộc nhóm 85.16\"\n  vế 1: [Đèn có phải đèn báo hiệu dùng cho thiết bị nhiệt điện gia dụng thuộc nhóm 85.16 không?]\n- bieu:94054950 \"- - - Loại khác, được sử dụng ở nơi công cộng hoặc đường phố lớn\"\n  vế 1: KHÔNG[Đèn thuộc kiểu chiếu sáng nào: Đèn pha? → Đèn pha] VÀ KHÔNG[Đèn thuộc kiểu chiếu sáng nào: Đèn rọi? → Đèn rọi] VÀ KHÔNG[Đèn có phải đèn tín hiệu không nhấp nháy dùng cho sân bay không?] VÀ KHÔNG[Đèn có phải đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay hoặc hải đăng không?] VÀ KHÔNG[Đèn có phải đèn báo hiệu dùng cho thiết bị nhiệt điện gia dụng thuộc nhóm 85.16 không?] VÀ [Đèn có được sử dụng ở nơi công cộng hoặc đường phố lớn không?]\n  vế 2: KHÔNG[Đèn thuộc kiểu chiếu sáng nào: Đèn pha? → Đèn pha] VÀ KHÔNG[Đèn thuộc kiểu chiếu sáng nào: Đèn rọi? → Đèn rọi] VÀ KHÔNG[Đèn có phải đèn tín hiệu không nhấp nháy dùng cho sân bay không?] VÀ [Đèn có phải đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay hoặc hải đăng không?] VÀ KHÔNG[Đèn đó có làm bằng kim loại cơ bản không?] VÀ KHÔNG[Đèn có phải đèn báo hiệu dùng cho thiết bị nhiệt điện gia dụng thuộc nhóm 85.16 không?] VÀ [Đèn có được sử dụng ở nơi công cộng hoặc đường phố lớn không?]\n- bieu:94054960 \"- - - Loại chiếu sáng bên ngoài khác\"\n  vế 1: KHÔNG[Đèn thuộc kiểu chiếu sáng nào: Đèn pha? → Đèn pha] VÀ KHÔNG[Đèn thuộc kiểu chiếu sáng nào: Đèn rọi? → Đèn rọi] VÀ KHÔNG[Đèn có phải đèn tín hiệu không nhấp nháy dùng cho sân bay không?] VÀ KHÔNG[Đèn có phải đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay hoặc hải đăng không?] VÀ KHÔNG[Đèn có phải đèn báo hiệu dùng cho thiết bị nhiệt điện gia dụng thuộc nhóm 85.16 không?] VÀ KHÔNG[Đèn có được sử dụng ở nơi công cộng hoặc đường phố lớn không?] VÀ [Đèn có phải loại chiếu sáng bên ngoài không?]\n  vế 2: KHÔNG[Đèn thuộc kiểu chiếu sáng nào: Đèn pha? → Đèn pha] VÀ KHÔNG[Đèn thuộc kiểu chiếu sáng nào: Đèn rọi? → Đèn rọi] VÀ KHÔNG[Đèn có phải đèn tín hiệu không nhấp nháy dùng cho sân bay không?] VÀ [Đèn có phải đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay hoặc hải đăng không?] VÀ KHÔNG[Đèn đó có làm bằng kim loại cơ bản không?] VÀ KHÔNG[Đèn có phải đèn báo hiệu dùng cho thiết bị nhiệt điện gia dụng thuộc nhóm 85.16 không?] VÀ KHÔNG[Đèn có được sử dụng ở nơi công cộng hoặc đường phố lớn không?] VÀ [Đèn có phải loại chiếu sáng bên ngoài không?]\n- bieu:94054990 \"- - - Loại khác\" (Loại khác)\n  (không có điều kiện)"
+  },
+  {
+   "cha": "bieu:940550",
+   "soAnhEm": 4,
+   "giay": 15,
+   "kq": {
+    "chong": [
+     {
+      "a": "bieu:9405501",
+      "b": "bieu:94055040",
+      "matHang": "Đèn bão đốt bằng dầu",
+      "lyDo": "Đèn bão thường hoạt động bằng cách đốt dầu, nên thỏa mãn đồng thời điều kiện của 9405501 (đốt bằng dầu) và 94055040 (đèn bão)."
+     },
+     {
+      "a": "bieu:9405501",
+      "b": "bieu:94055050",
+      "matHang": "Đèn thợ mỏ đốt bằng dầu",
+      "lyDo": "Đèn thợ mỏ có loại đốt bằng dầu/carbide, nên thỏa mãn đồng thời điều kiện của 9405501 (đốt bằng dầu) và 94055050 (đèn thợ mỏ)."
+     }
+    ],
+    "ho": []
+   },
+   "loi": null,
+   "user": "Dòng cha: bieu:940550 (chuỗi: phan:XX > chuong:94 > bieu:9405 > bieu:940550)\nĐiều kiện của dòng cha:\n  vế 1: [Hàng hóa thuộc nhóm đối tượng nào trong nhóm 94.05: Đèn và bộ đèn? → Đèn và bộ đèn] VÀ [Đèn và bộ đèn hoạt động bằng nguồn năng lượng nào: không hoạt động bằng điện? → không hoạt động bằng điện]\n\nCác dòng anh em:\n- bieu:9405501 \"- - Loại đốt bằng dầu:\"\n  vế 1: [Đèn và bộ đèn không hoạt động bằng điện này có phải loại đốt bằng dầu không?]\n- bieu:94055040 \"- - Đèn bão\"\n  vế 1: [Đèn không hoạt động bằng điện thuộc chủng loại nào: Đèn bão? → Đèn bão]\n- bieu:94055050 \"- - Đèn thợ mỏ và đèn thợ khai thác đá\"\n  vế 1: [Đèn không hoạt động bằng điện thuộc chủng loại nào: Đèn thợ mỏ hoặc đèn thợ khai thác đá? → Đèn thợ mỏ/đèn thợ khai thác đá]\n- bieu:94055090 \"- - Loại khác\" (Loại khác)\n  (không có điều kiện)"
+  },
+  {
+   "cha": "bieu:9405501",
+   "soAnhEm": 2,
+   "giay": 7,
+   "kq": {
+    "chong": [],
+    "ho": []
+   },
+   "loi": null,
+   "user": "Dòng cha: bieu:9405501 (chuỗi: phan:XX > chuong:94 > bieu:9405 > bieu:940550 > bieu:9405501)\nĐiều kiện của dòng cha:\n  vế 1: [Đèn và bộ đèn không hoạt động bằng điện này có phải loại đốt bằng dầu không?]\n\nCác dòng anh em:\n- bieu:94055011 \"- - - Bằng đồng sử dụng trong nghi lễ tôn giáo\"\n  vế 1: [Đèn đốt bằng dầu có làm bằng đồng không?] VÀ [Đèn đốt bằng dầu bằng đồng này có sử dụng trong nghi lễ tôn giáo không?]\n- bieu:94055019 \"- - - Loại khác\" (Loại khác)\n  (không có điều kiện)"
+  },
+  {
+   "cha": "bieu:94056",
+   "soAnhEm": 2,
+   "giay": 5,
+   "kq": {
+    "chong": [],
+    "ho": []
+   },
+   "loi": null,
+   "user": "Dòng cha: bieu:94056 (chuỗi: phan:XX > chuong:94 > bieu:9405 > bieu:94056)\nĐiều kiện của dòng cha:\n  vế 1: [Hàng hóa thuộc nhóm đối tượng nào trong nhóm 94.05: Biển hiệu được chiếu sáng, biển đề tên được chiếu sáng và các loại tương tự? → Biển hiệu được chiếu sáng, biển đề tên được chiếu sáng và các loại tương tự]\n\nCác dòng anh em:\n- bieu:940561 \"- - Được thiết kế chỉ để sử dụng với các nguồn sáng đi-ốt phát quang (LED):\"\n  vế 1: [Biển hiệu được chiếu sáng, biển đề tên được chiếu sáng và các loại tương tự có được thiết kế chỉ để sử dụng với các nguồn sáng đi-ốt phát quang (LED) không?]\n- bieu:940569 \"- - Loại khác:\" (Loại khác)\n  (không có điều kiện)"
+  },
+  {
+   "cha": "bieu:940561",
+   "soAnhEm": 2,
+   "giay": 5,
+   "kq": {
+    "chong": [],
+    "ho": []
+   },
+   "loi": null,
+   "user": "Dòng cha: bieu:940561 (chuỗi: phan:XX > chuong:94 > bieu:9405 > bieu:94056 > bieu:940561)\nĐiều kiện của dòng cha:\n  vế 1: [Biển hiệu được chiếu sáng, biển đề tên được chiếu sáng và các loại tương tự có được thiết kế chỉ để sử dụng với các nguồn sáng đi-ốt phát quang (LED) không?]\n\nCác dòng anh em:\n- bieu:94056110 \"- - - Biển cảnh báo, biển tên đường phố, biển báo giao thông và đường bộ\"\n  vế 1: [Biển hiệu được chiếu sáng này có phải biển cảnh báo, biển tên đường phố, biển báo giao thông và đường bộ không?]\n- bieu:94056190 \"- - - Loại khác\" (Loại khác)\n  (không có điều kiện)"
+  },
+  {
+   "cha": "bieu:940569",
+   "soAnhEm": 2,
+   "giay": 6,
+   "kq": {
+    "chong": [],
+    "ho": []
+   },
+   "loi": null,
+   "user": "Dòng cha: bieu:940569 (chuỗi: phan:XX > chuong:94 > bieu:9405 > bieu:94056 > bieu:940569)\nĐiều kiện của dòng cha:\n  (không có điều kiện)\n\nCác dòng anh em:\n- bieu:94056910 \"- - - Biển cảnh báo, biển tên đường phố, biển báo giao thông và đường bộ\"\n  vế 1: [Biển hiệu được chiếu sáng này có phải biển cảnh báo, biển tên đường phố, biển báo giao thông và đường bộ không?]\n- bieu:94056990 \"- - - Loại khác\" (Loại khác)\n  (không có điều kiện)"
+  },
+  {
+   "cha": "bieu:94059",
+   "soAnhEm": 3,
+   "giay": 22,
+   "kq": {
+    "chong": [
+     {
+      "a": "bieu:940591",
+      "b": "bieu:940592",
+      "matHang": "Chao đèn bằng thủy tinh có viền nhựa",
+      "lyDo": "Mặt hàng làm từ cả thủy tinh và plastic nên thỏa mãn đồng thời điều kiện của cả hai dòng, trong khi luật chỉ cho phép phân vào một mã."
+     }
+    ],
+    "ho": []
+   },
+   "loi": null,
+   "user": "Dòng cha: bieu:94059 (chuỗi: phan:XX > chuong:94 > bieu:9405 > bieu:94059)\nĐiều kiện của dòng cha:\n  vế 1: [Hàng hóa thuộc nhóm đối tượng nào trong nhóm 94.05: Bộ phận? → Bộ phận]\n\nCác dòng anh em:\n- bieu:940591 \"- - Bằng thủy tinh:\"\n  vế 1: [Bộ phận làm bằng vật liệu nào: thủy tinh? → thủy tinh]\n- bieu:940592 \"- - Bằng plastic:\"\n  vế 1: [Bộ phận làm bằng vật liệu nào: plastic? → plastic]\n- bieu:940599 \"- - Loại khác:\" (Loại khác)\n  (không có điều kiện)"
+  },
+  {
+   "cha": "bieu:940591",
+   "soAnhEm": 5,
+   "giay": 10,
+   "kq": {
+    "chong": [
+     {
+      "a": "bieu:94059120",
+      "b": "bieu:94059140",
+      "matHang": "Chao đèn hình cầu bằng thủy tinh dùng cho đèn rọi",
+      "lyDo": "Mặt hàng này thỏa mãn đồng thời điều kiện về công dụng (dùng cho đèn rọi) và điều kiện về hình dáng (chao đèn hình cầu)."
+     }
+    ],
+    "ho": []
+   },
+   "loi": null,
+   "user": "Dòng cha: bieu:940591 (chuỗi: phan:XX > chuong:94 > bieu:9405 > bieu:94059 > bieu:940591)\nĐiều kiện của dòng cha:\n  vế 1: [Bộ phận làm bằng vật liệu nào: thủy tinh? → thủy tinh]\n\nCác dòng anh em:\n- bieu:94059110 \"- - - Dùng cho đèn phòng mổ\"\n  vế 1: [Bộ phận bằng thủy tinh được dùng cho loại đèn nào: đèn phòng mổ? → đèn phòng mổ]\n- bieu:94059120 \"- - - Dùng cho đèn rọi\"\n  vế 1: [Bộ phận bằng thủy tinh được dùng cho loại đèn nào: đèn rọi? → đèn rọi]\n- bieu:94059140 \"- - - Chao đèn hình cầu hoặc thông phong đèn\"\n  vế 1: [Bộ phận bằng thủy tinh có phải chao đèn hình cầu hoặc thông phong đèn không?]\n- bieu:94059150 \"- - - Dùng cho đèn pha\"\n  vế 1: [Bộ phận bằng thủy tinh được dùng cho loại đèn nào: đèn pha? → đèn pha]\n- bieu:94059190 \"- - - Loại khác\" (Loại khác)\n  (không có điều kiện)"
+  },
+  {
+   "cha": "bieu:940592",
+   "soAnhEm": 4,
+   "giay": 31,
+   "kq": {
+    "chong": [
+     {
+      "a": "bieu:94059210",
+      "b": "bieu:94059220",
+      "matHang": "Chao đèn plastic cho đèn rọi phẫu thuật",
+      "lyDo": "Mặt hàng này vừa thỏa mãn điều kiện dùng cho đèn phòng mổ (94059210), vừa thỏa mãn điều kiện dùng cho đèn rọi (94059220) vì đèn phẫu thuật bản chất là một loại đèn rọi chuyên dụng."
+     }
+    ],
+    "ho": []
+   },
+   "loi": null,
+   "user": "Dòng cha: bieu:940592 (chuỗi: phan:XX > chuong:94 > bieu:9405 > bieu:94059 > bieu:940592)\nĐiều kiện của dòng cha:\n  vế 1: [Bộ phận làm bằng vật liệu nào: plastic? → plastic]\n\nCác dòng anh em:\n- bieu:94059210 \"- - - Dùng cho đèn phòng mổ\"\n  vế 1: [Bộ phận bằng plastic được dùng cho loại đèn nào: đèn phòng mổ? → đèn phòng mổ]\n- bieu:94059220 \"- - - Dùng cho đèn rọi\"\n  vế 1: [Bộ phận bằng plastic được dùng cho loại đèn nào: đèn rọi? → đèn rọi]\n- bieu:94059230 \"- - - Dùng cho đèn pha\"\n  vế 1: [Bộ phận bằng plastic được dùng cho loại đèn nào: đèn pha? → đèn pha]\n- bieu:94059290 \"- - - Loại khác\" (Loại khác)\n  (không có điều kiện)"
+  },
+  {
+   "cha": "bieu:940599",
+   "soAnhEm": 6,
+   "giay": 21,
+   "kq": {
+    "chong": [
+     {
+      "a": "bieu:94059910",
+      "b": "bieu:94059940",
+      "matHang": "Chụp đèn bằng vật liệu dệt dùng cho đèn rọi",
+      "lyDo": "Mặt hàng thỏa mãn đồng thời điều kiện là chụp đèn vật liệu dệt (94059910) và điều kiện dùng cho đèn rọi (94059940). Thiếu điều kiện loại trừ 'không dùng cho đèn pha/đèn rọi' ở dòng 94059910 hoặc loại trừ 'không phải chụp đèn' ở dòng 94059940."
+     },
+     {
+      "a": "bieu:94059920",
+      "b": "bieu:94059930",
+      "matHang": "Chụp đèn bằng nhựa cho đèn thuộc phân nhóm 9405.50.11",
+      "lyDo": "Mặt hàng thỏa mãn đồng thời điều kiện là chụp đèn vật liệu khác (94059920) và điều kiện là bộ phận của đèn 9405.50.11 (94059930). Thiếu điều kiện loại trừ 'không phải của đèn 9405.50.11/19' ở dòng 94059920 hoặc loại trừ 'không phải chụp đèn' ở dòng 94059930."
+     }
+    ],
+    "ho": []
+   },
+   "loi": null,
+   "user": "Dòng cha: bieu:940599 (chuỗi: phan:XX > chuong:94 > bieu:9405 > bieu:94059 > bieu:940599)\nĐiều kiện của dòng cha:\n  (không có điều kiện)\n\nCác dòng anh em:\n- bieu:94059910 \"- - - Chụp đèn bằng vật liệu dệt\"\n  vế 1: [Bộ phận có phải chụp đèn không?] VÀ [Chụp đèn làm bằng vật liệu nào: vật liệu dệt? → vật liệu dệt]\n- bieu:94059920 \"- - - Chụp đèn bằng vật liệu khác\"\n  vế 1: [Bộ phận có phải chụp đèn không?] VÀ KHÔNG[Chụp đèn làm bằng vật liệu nào: vật liệu dệt? → vật liệu dệt]\n- bieu:94059930 \"- - - Của đèn thuộc phân nhóm 9405.50.11 hoặc 9405.50.19\"\n  vế 1: [Bộ phận có phải của đèn thuộc phân nhóm 9405.50.11 hoặc 9405.50.19 không?]\n- bieu:94059940 \"- - - Dùng cho đèn pha hoặc đèn rọi\"\n  vế 1: [Bộ phận có dùng cho đèn pha hoặc đèn rọi không?]\n- bieu:94059950 \"- - - Loại khác, bằng gốm, sứ hoặc kim loại\"\n  vế 1: KHÔNG[Bộ phận có phải chụp đèn không?] VÀ KHÔNG[Bộ phận có phải của đèn thuộc phân nhóm 9405.50.11 hoặc 9405.50.19 không?] VÀ KHÔNG[Bộ phận có dùng cho đèn pha hoặc đèn rọi không?] VÀ [Bộ phận làm bằng vật liệu nào: gốm, sứ hoặc kim loại? → gốm/sứ/kim loại]\n- bieu:94059990 \"- - - Loại khác\" (Loại khác)\n  (không có điều kiện)"
+  }
+ ]
+}
