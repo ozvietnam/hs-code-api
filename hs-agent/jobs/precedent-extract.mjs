@@ -9,6 +9,7 @@ import { load, save } from '../lib/store.mjs';
 import { prepareWorktree, removeWorktree, classifyChanges, commit, push, openPullRequest } from '../lib/workspace.mjs';
 import { runGate, gateTable } from '../lib/gate.mjs';
 import { pickItems } from '../lib/queue-pick.mjs';
+import { closeNoConclusion } from '../lib/queue-close.mjs';
 import { today } from '../lib/log.mjs';
 
 function articleText(html) {
@@ -18,6 +19,13 @@ function articleText(html) {
 
 export default async function precedentExtract({ cfg, log, budget, dryRun }) {
   const queue = load('queue', { items: [] });
+  // Chốt văn bản đã hỏi LLM đủ số lần mà vẫn không kết luận mã (xem lib/queue-close.mjs).
+  // Không chốt thì mỗi lượt lại hỏi lại các mục `no-conclusion` còn attempts < max ⇒ đốt LLM vô ích.
+  const closed = closeNoConclusion(queue.items, cfg);
+  if (closed.length) {
+    log.info(`chốt ${closed.length} văn bản không kết luận mã (no-conclusion → done)`);
+    if (!dryRun) save('queue', queue);
+  }
   // Chọn văn bản: new/retry/no-conclusion(stale) + hồi sinh `rejected` (xem lib/queue-pick.mjs).
   // `rejected` trước đây bị loại vĩnh viễn ⇒ tiền lệ đã trích đúng nhưng bị kiểm loại oan rơi mất.
   const todo = pickItems(queue.items, cfg, { mark: !dryRun });
