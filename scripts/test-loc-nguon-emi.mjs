@@ -169,6 +169,58 @@ check('OZV-2387 cụm 3 «lọc nguồn 20a loại 1 pha cw4e-20a-s»: anh em 85
   );
 });
 
+// ─── OZV-2400: Khử câu hỏi phuongThucTruyenDan lạc đề ở 85437060 ───
+const C = require('../lib/ho-so/cong-ranh-gioi.js');
+const { chotDong8 } = require('../lib/so-tay-gates.js');
+
+check('OZV-2400 ranh-gioi 854370.json đạt cổng 0..5, 0 cảnh báo cong0/cong5 và không bật phuongThucTruyenDan ở 85437060', () => {
+  const rg = JSON.parse(readFileSync(join(ROOT, 'data', 'ho-so', 'ranh-gioi', '854370.json'), 'utf8'));
+  assert.equal(rg.trangThai, 'DUYET');
+  const kq = C.kiemRanhGioi('854370', rg);
+  assert.equal(kq.hopLe, true, `854370 lỗi cổng: ${JSON.stringify(kq.loi)}`);
+  assert.equal(kq.loi.length, 0, JSON.stringify(kq.loi));
+  const cb05 = (kq.canhBao || []).filter((x) => /^cong[05]-/.test(x));
+  assert.equal(cb05.length, 0, `còn cảnh báo cong0/cong5: ${JSON.stringify(cb05)}`);
+  const d60 = (rg.dong8 || []).find((x) => x.hs === '85437060');
+  assert.ok(!JSON.stringify(d60?.dieuKienSo || []).includes('phuongThucTruyenDan'), '85437060 không được giữ phuongThucTruyenDan');
+});
+
+check('OZV-2400 ca lọc nguồn EMI ở 854370 không còn câu hỏi phuongThucTruyenDan từ 85437060; ca ngược 85437060 vẫn chốt đúng', () => {
+  const cdEmi = chotDong8({ hs: '854370', productText: MO_TA });
+  assert.ok(
+    !(cdEmi.missingFacts || []).some((m) => m.fact === 'phuongThucTruyenDan'),
+    `chotDong8 không được đòi phuongThucTruyenDan: ${JSON.stringify(cdEmi.missingFacts)}`,
+  );
+  for (const nhom of [
+    ['8543', '8421', '8504', '8479', '8536'],
+    ['8543'],
+  ]) {
+    const r = cauHoiTuSoTay(MO_TA, '854370', nhom);
+    const qs = r.nextAction?.questions || [];
+    assert.ok(
+      !qs.some((q) => q.khoa === 'phuongThucTruyenDan' || /vô tuyến|hữu tuyến/i.test(q.questionVi || '')),
+      `không được hỏi phuongThucTruyenDan cho «${MO_TA}» (nhom=${nhom.join(',')}): ${JSON.stringify(qs)}`,
+    );
+  }
+  const cdTronAm = chotDong8({
+    hs: '854370',
+    productText: 'Thiết bị xử lý tín hiệu kỹ thuật số có khả năng kết nối với mạng không dây để trộn âm thanh',
+  });
+  assert.equal(cdTronAm.ketQua, 'CHOT');
+  assert.equal(cdTronAm.hs, '85437060');
+  const cdKetNoi = chotDong8({
+    hs: '854370',
+    productText: 'đầu nối điện được thiết kế đặc biệt để kết nối với mạng điện thoại',
+  });
+  assert.equal(cdKetNoi.ketQua, 'CHOT');
+  assert.equal(cdKetNoi.hs, '85437060');
+  const cdKhongKetNoi = chotDong8({
+    hs: '854370',
+    productText: 'máy đo cường độ tín hiệu được thiết kế đặc biệt cho điện thoại',
+  });
+  assert.notEqual(cdKhongKetNoi.hs, '85437060');
+});
+
 if (failed) {
   console.error(`\n${failed} failed`);
   process.exit(1);
