@@ -1,0 +1,50 @@
+PASS khuôn: 84675 bản ghi, 0 lỗi
+PASS cổng 6 TÁCH — phạm vi bieu:8501: 188 mục kiểm, 0 lỗi
+FAIL cổng 7 PHỦ — phạm vi bieu:8501: 33 mục kiểm, 4 lỗi
+  ✗ bieu:8501: HO_PHU — nhóm không có "Loại khác" nhưng chưa chứng minh phủ kín phạm vi cha
+  ✗ bieu:850131: HO_PHU — nhóm không có "Loại khác" nhưng chưa chứng minh phủ kín phạm vi cha
+  ✗ bieu:8501322: HO_PHU — nhóm không có "Loại khác" nhưng chưa chứng minh phủ kín phạm vi cha
+  ✗ bieu:8501323: HO_PHU — nhóm không có "Loại khác" nhưng chưa chứng minh phủ kín phạm vi cha
+PASS cổng 8 CHỒNG — phạm vi bieu:8501: 93 mục kiểm, 0 lỗi, 2 cảnh báo
+  ! bieu:850131: CHUA_CHUNG_MINH_TACH giữa bieu:85013160 và bieu:85013170 (cần phiếu hoặc GIAI_CHONG nếu gặp hàng chồng)
+  ! bieu:8501322: CHUA_CHUNG_MINH_TACH giữa bieu:85013224 và bieu:85013225 (cần phiếu hoặc GIAI_CHONG nếu gặp hàng chồng)
+PASS cổng 9 HỎI — phạm vi bieu:8501: 16 mục kiểm, 0 lỗi
+PASS cổng 10 DÒ — phạm vi bieu:8501: 0 mục kiểm, 0 lỗi, 16 cảnh báo
+  ! bieu:8501102: THIEU_VI_DU — có "Loại khác" nhưng chưa có ca thử ví dụ chú giải/SEN
+  ! bieu:8501104: THIEU_VI_DU — có "Loại khác" nhưng chưa có ca thử ví dụ chú giải/SEN
+  ! bieu:8501105: THIEU_VI_DU — có "Loại khác" nhưng chưa có ca thử ví dụ chú giải/SEN
+  ! bieu:8501109: THIEU_VI_DU — có "Loại khác" nhưng chưa có ca thử ví dụ chú giải/SEN
+  ! bieu:850110:td1: THIEU_VI_DU — có "Loại khác" nhưng chưa có ca thử ví dụ chú giải/SEN
+  ! bieu:850110:td2: THIEU_VI_DU — có "Loại khác" nhưng chưa có ca thử ví dụ chú giải/SEN
+  ! bieu:8501201: THIEU_VI_DU — có "Loại khác" nhưng chưa có ca thử ví dụ chú giải/SEN
+  ! bieu:8501202: THIEU_VI_DU — có "Loại khác" nhưng chưa có ca thử ví dụ chú giải/SEN
+  ! bieu:850133: THIEU_VI_DU — có "Loại khác" nhưng chưa có ca thử ví dụ chú giải/SEN
+  ! bieu:8501401: THIEU_VI_DU — có "Loại khác" nhưng chưa có ca thử ví dụ chú giải/SEN
+  ! bieu:8501402: THIEU_VI_DU — có "Loại khác" nhưng chưa có ca thử ví dụ chú giải/SEN
+  ! bieu:850151: THIEU_VI_DU — có "Loại khác" nhưng chưa có ca thử ví dụ chú giải/SEN
+  ! bieu:8501521: THIEU_VI_DU — có "Loại khác" nhưng chưa có ca thử ví dụ chú giải/SEN
+  ! bieu:8501522: THIEU_VI_DU — có "Loại khác" nhưng chưa có ca thử ví dụ chú giải/SEN
+  ! bieu:8501523: THIEU_VI_DU — có "Loại khác" nhưng chưa có ca thử ví dụ chú giải/SEN
+  ! bieu:850153: THIEU_VI_DU — có "Loại khác" nhưng chưa có ca thử ví dụ chú giải/SEN
+PASS cổng 11 MỞ — phạm vi bieu:8501: 106 mục kiểm, 0 lỗi, 60 cảnh báo
+  ! hs:bieu:8501:8104: NGHIA_THUONG ("Các nhóm từ 85.01 đến 85.04 không áp dụng cho các loại hàng hóa đã mô tả trong nhóm 85.11,…") — có câu hỏi: "Hàng hóa có thuộc các loại đã mô tả trong nhóm 85.11, 85.12, 85.40, 85.41 hoặc 85.42 không…"
+  ! hs:bieu:850110:8101: NGHIA_THUONG ("Động cơ") — có câu hỏi: "Sản phẩm có phải là động cơ điện không?"
+  ! hs:bieu:850110:td1:8101: NGHIA_THUONG ("Động cơ một chiều") — có câu hỏi: "Động cơ có phải là động cơ một chiều không?"
+  ! hs:bieu:8501102:8101: NGHIA_THUONG ("Động cơ bước") — có câu hỏi: "Động cơ có phải là động cơ bước không?"
+  ! hs:bieu:85011021:8101: NGHIA_THUONG ("Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16") — có câu hỏi: "Động cơ có phải loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16 kh…"
+  ! hs:bieu:85011022:8101: NGHIA_THUONG ("Loại khác") — có câu hỏi: "Động cơ có phải loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16 kh…"
+  ! hs:bieu:85011041:8101: NGHIA_THUONG ("Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16") — có câu hỏi: "Động cơ có phải loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16 kh…"
+  ! hs:bieu:850110:td2:8101: NGHIA_THUONG ("Động cơ khác") — có câu hỏi: "Động cơ có phải là động cơ một chiều thuần túy không?"
+  ! hs:bieu:850110:td2:8102: NGHIA_THUONG ("vạn năng (một chiều/xoay chiều)") — có câu hỏi: "Động cơ có phải là động cơ vạn năng (một chiều/xoay chiều) không?"
+  ! hs:bieu:8501105:8101: NGHIA_THUONG ("Động cơ bước") — có câu hỏi: "Động cơ có phải là động cơ bước không?"
+  ! hs:bieu:85011051:8101: NGHIA_THUONG ("Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16") — có câu hỏi: "Động cơ có phải loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16 kh…"
+  ! hs:bieu:85011091:8101: NGHIA_THUONG ("Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16") — có câu hỏi: "Động cơ có phải loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16 kh…"
+  ! hs:bieu:850120:8101: NGHIA_THUONG ("Động cơ") — có câu hỏi: "Sản phẩm có phải là động cơ điện không?"
+  ! hs:bieu:850120:8102: NGHIA_THUONG ("vạn năng một chiều/xoay chiều") — có câu hỏi: "Động cơ có phải loại vạn năng một chiều/xoay chiều không?"
+  ! hs:bieu:85012012:8101: NGHIA_THUONG ("Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16") — có câu hỏi: "Động cơ có phải loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16 kh…"
+  ! hs:bieu:85012021:8101: NGHIA_THUONG ("Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16") — có câu hỏi: "Động cơ có phải loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16 kh…"
+  ! hs:bieu:85013:8101: NGHIA_THUONG ("Động cơ") — có câu hỏi: "Sản phẩm có phải là động cơ điện không?"
+  ! hs:bieu:85013:8102: NGHIA_THUONG ("một chiều") — có câu hỏi: "Động cơ có phải là động cơ một chiều không?"
+  ! hs:bieu:85013:8103: NGHIA_THUONG ("máy phát điện") — có câu hỏi: "Sản phẩm có phải là máy phát điện không?"
+  ! hs:bieu:85013:8104: NGHIA_THUONG ("một chiều") — có câu hỏi: "Máy phát điện có phát dòng điện một chiều không?"
+PASS cổng 12 BÙ — phạm vi bieu:8501: 0 mục kiểm, 0 lỗi
