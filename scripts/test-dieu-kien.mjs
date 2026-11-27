@@ -1945,17 +1945,23 @@ const KHO_CHUAN = ghiHoSoTam({
 
 // ---------- 14. Hồi quy tổng quát Cổng 7 (nhị phân bù + chiếu biến cha) & Cổng 10 (chặn nhảy cóc qua undefined) ----------
 {
-  // 14A. laCapNhiPhanBuNhau: khớp phủ định tiếng Việt tổng quát trên trục 2 giá trị & từ chối danh từ ghép / tập con
-  kiem('Cổng 7 (laCapNhiPhanBuNhau): nhận diện "<X>" ↔ "không <động từ/giới từ> <X>" và loại trừ danh từ ghép / thu hẹp',
+  // 14A. laCapNhiPhanBuNhau: khớp phủ định tiếng Việt cùng lớp ngữ nghĩa & từ chối danh từ ghép / động từ thu hẹp / chéo lớp ngữ nghĩa
+  kiem('Cổng 7 (laCapNhiPhanBuNhau): nhận diện "<X>" ↔ "không <động từ cùng lớp> <X>" và từ chối danh từ ghép / thu hẹp / chéo lớp',
     laCapNhiPhanBuNhau('điện', 'không hoạt động bằng điện') === true
     && laCapNhiPhanBuNhau('không dùng điện', 'điện') === true
     && laCapNhiPhanBuNhau('dùng điện', 'không chạy bằng điện') === true
     && laCapNhiPhanBuNhau('có xương', 'không xương') === true
+    && laCapNhiPhanBuNhau('xương', 'không có xương') === true
+    && laCapNhiPhanBuNhau('làm bằng thép', 'không sản xuất từ thép') === true
     && laCapNhiPhanBuNhau('đã lắp ráp hoàn chỉnh', 'chưa lắp ráp hoàn chỉnh') === true
     && laCapNhiPhanBuNhau('gian', 'không gian') === false
     && laCapNhiPhanBuNhau('khí', 'không khí') === false
     && laCapNhiPhanBuNhau('plastic', 'không phải plastic gia cố') === false
-    && laCapNhiPhanBuNhau('không điện', 'không dùng điện') === false);
+    && laCapNhiPhanBuNhau('không điện', 'không dùng điện') === false
+    && laCapNhiPhanBuNhau('làm bằng thép', 'không gia cố bằng thép') === false
+    && laCapNhiPhanBuNhau('thép', 'không gia cố bằng thép') === false
+    && laCapNhiPhanBuNhau('làm bằng đường', 'không chứa đường') === false
+    && laCapNhiPhanBuNhau('có động cơ', 'không hoạt động bằng động cơ') === false);
 
   // 14B. Cổng 7 chứng minh phủ kín cho tầng có phần bù có tên + trục nhị phân ("hơi nước" vs "không hoạt động bằng hơi nước")
   //      + nhánh CO_KHONG tách riêng (PHU_TRANG, BO_PHAN) + cha có 16 biến boolean (vượt xa 2^15 nếu không chiếu biến cha)
@@ -2106,12 +2112,42 @@ const KHO_CHUAN = ghiHoSoTam({
   });
   const rSyn7ThuHep = chayCong({ luat: luatSyn7, hoSo: khoSyn7ThuHep, phamVi: ['bieu:8543'], chiTrong: true, cong: [7], L: L_SYN7, bieuMeta: metaSyn7 });
 
-  kiem('Cổng 7 (tổng hợp phần bù có tên + trục nhị phân + 16 biến cha): phủ kín 0 HO_PHU; mất nhánh bù hoặc thu hẹp phần bù ⇒ đỏ HO_PHU',
+  // Kiểm thêm tinhTruAnhEm: khi cùng cặp vừa có cach:'TRU' (nguon thuộc con dưới) vừa có cach:'CHU_GIAI', KHÔNG được rơi mất truAnhEm
+  const gcSyn7KemChuGiai = [
+    ...gcSyn7,
+    {
+      id: 'hs:bieu:8543:8161',
+      nut: 'bieu:8543',
+      loai: 'GIAI_CHONG',
+      cap: ['bieu:854310', 'bieu:854340'],
+      cach: 'CHU_GIAI',
+      trich: 'Thiết bị buồng kín kiểu treo',
+      nguon: 'bieu:854310#1',
+      vanTay: vanTay(L_SYN7.chuCau('bieu:854310#1')),
+    },
+  ];
+  const dkMapSyn7 = new Map();
+  for (const r of dkConSyn7) {
+    if (!dkMapSyn7.has(r.nut)) dkMapSyn7.set(r.nut, []);
+    dkMapSyn7.get(r.nut).push(r);
+  }
+  const tru40KemCg = tinhTruAnhEm(
+    'bieu:854340',
+    'bieu:8543',
+    ['bieu:854310', 'bieu:854320', 'bieu:854330', 'bieu:854340', 'bieu:854370', 'bieu:854390', 'bieu:854399'],
+    L_SYN7,
+    metaSyn7,
+    dkMapSyn7,
+    gcSyn7KemChuGiai,
+  );
+
+  kiem('Cổng 7 (tổng hợp phần bù có tên + trục nhị phân + 16 biến cha + TRU kèm CHU_GIAI): phủ kín 0 HO_PHU, giữ đủ truAnhEm; mất nhánh bù hoặc thu hẹp ⇒ đỏ HO_PHU',
     laPhanBuCoTen('bieu:854340', L_SYN7, metaSyn7) === true
+    && JSON.stringify(tru40KemCg) === JSON.stringify(['bieu:854310', 'bieu:854320', 'bieu:854330'])
     && rSyn7Ok.cong[7].loi.length === 0
     && rSyn7MatBu.cong[7].loi.some((l) => /bieu:8543.*HO_PHU/.test(l))
     && rSyn7ThuHep.cong[7].loi.some((l) => /bieu:8543.*HO_PHU/.test(l)),
-    { ok: rSyn7Ok.cong[7], matBu: rSyn7MatBu.cong[7].loi, thuHep: rSyn7ThuHep.cong[7].loi });
+    { tru40KemCg, ok: rSyn7Ok.cong[7], matBu: rSyn7MatBu.cong[7].loi, thuHep: rSyn7ThuHep.cong[7].loi });
 
   // 14C. Cổng 10 / doBangAnhEm: chặn chốt sớm khi anh em còn undefined (trục daTri:true, khác trục CHUA_CHUNG_MINH_TACH, GIAI_CHONG ngược thứ tự)
   //      và đối chứng đi thẳng DICH khi đã loại trừ chắc chắn (GIAI_CHONG xuôi thứ tự, !daTri, laPhuCuaNhau, SO rời dải, hoặc gán false)
@@ -2155,9 +2191,41 @@ const KHO_CHUAN = ghiHoSoTam({
   const kqKhacTrucUndef = doBangAnhEm('bieu:420222', { 'hs:bieu:420222:8101': true, 'hs:bieu:42022210:8101': true }, bangRouteKhacTruc);
   const kqKhacTrucFalse = doBangAnhEm('bieu:420222', { 'hs:bieu:420222:8101': true, 'hs:bieu:42022210:8101': true, 'hs:bieu:42022220:8101': false }, bangRouteKhacTruc);
 
-  // (3) GIAI_CHONG: nhánh đứng trên true + nhánh dưới undefined -> DICH; nhánh trên undefined + nhánh dưới true -> RE_NHANH
-  const gcRoute = {
+  // (3) GIAI_CHONG:
+  //     - cach:'TRU' có nguon thuộc nhánh dưới (42022220#1): trên true + dưới undefined -> DICH trên; trên undefined + dưới true -> RE_NHANH
+  //     - cach:'TRU' có nguon thuộc nhánh trên (42022210#1, nhánh trên tự trừ nhánh dưới): dưới true + trên undefined -> DICH dưới
+  //     - cach:'CHU_GIAI' / 'QUY_TAC_3' (đối xứng, nhánh sau có thể thắng nhánh trước): cả hai chiều một bên true + bên kia undefined -> BẮT BUỘC dừng RE_NHANH
+  const gcRouteTruDuoi = {
     id: 'hs:bieu:420222:8151',
+    nut: 'bieu:420222',
+    loai: 'GIAI_CHONG',
+    cap: ['bieu:42022210', 'bieu:42022220'],
+    cach: 'TRU',
+    trich: 'vật liệu dệt',
+    nguon: 'bieu:42022220#1',
+    vanTay: vanTay(L.chuCau('bieu:42022220#1')),
+  };
+  const khoRouteTruDuoi = ghiHoSoTam({ dkList: [...dkRouteKhacTruc, gcRouteTruDuoi] });
+  const bangRouteTruDuoi = new Map(dungBangAnhEm({ chuong: '42', chaIds: ['bieu:420222'], luat: LUAT, hoSo: khoRouteTruDuoi, L }).bang.map((b) => [b.cha, b]));
+  const kqTruTrenThang = doBangAnhEm('bieu:420222', { 'hs:bieu:42022210:8101': true }, bangRouteTruDuoi);
+  const kqTruDuoiChoTren = doBangAnhEm('bieu:420222', { 'hs:bieu:42022:8101': true, 'hs:bieu:420222:8101': true, 'hs:bieu:42022220:8101': true }, bangRouteTruDuoi);
+
+  const gcRouteTruTren = {
+    id: 'hs:bieu:420222:8152',
+    nut: 'bieu:420222',
+    loai: 'GIAI_CHONG',
+    cap: ['bieu:42022210', 'bieu:42022220'],
+    cach: 'TRU',
+    trich: 'tấm plastic',
+    nguon: 'bieu:42022210#1',
+    vanTay: vanTay(L.chuCau('bieu:42022210#1')),
+  };
+  const khoRouteTruTren = ghiHoSoTam({ dkList: [...dkRouteKhacTruc, gcRouteTruTren] });
+  const bangRouteTruTren = new Map(dungBangAnhEm({ chuong: '42', chaIds: ['bieu:420222'], luat: LUAT, hoSo: khoRouteTruTren, L }).bang.map((b) => [b.cha, b]));
+  const kqTruNguocDuoiThang = doBangAnhEm('bieu:420222', { 'hs:bieu:42022220:8101': true }, bangRouteTruTren);
+
+  const gcRouteCg = {
+    id: 'hs:bieu:420222:8153',
     nut: 'bieu:420222',
     loai: 'GIAI_CHONG',
     cap: ['bieu:42022210', 'bieu:42022220'],
@@ -2166,10 +2234,16 @@ const KHO_CHUAN = ghiHoSoTam({
     nguon: 'bieu:420222#1',
     vanTay: vanTay(L.chuCau('bieu:420222#1')),
   };
-  const khoRouteGc = ghiHoSoTam({ dkList: [...dkRouteKhacTruc, gcRoute] });
-  const bangRouteGc = new Map(dungBangAnhEm({ chuong: '42', chaIds: ['bieu:420222'], luat: LUAT, hoSo: khoRouteGc, L }).bang.map((b) => [b.cha, b]));
-  const kqGcTrenThang = doBangAnhEm('bieu:420222', { 'hs:bieu:42022210:8101': true }, bangRouteGc);
-  const kqGcDuoiChoTren = doBangAnhEm('bieu:420222', { 'hs:bieu:42022220:8101': true }, bangRouteGc);
+  const khoRouteCg = ghiHoSoTam({ dkList: [...dkRouteKhacTruc, gcRouteCg] });
+  const bangRouteCg = new Map(dungBangAnhEm({ chuong: '42', chaIds: ['bieu:420222'], luat: LUAT, hoSo: khoRouteCg, L }).bang.map((b) => [b.cha, b]));
+  const kqCgTrenChoDuoi = doBangAnhEm('bieu:420222', { 'hs:bieu:42022210:8101': true }, bangRouteCg);
+  const kqCgDuoiChoTren = doBangAnhEm('bieu:420222', { 'hs:bieu:42022220:8101': true }, bangRouteCg);
+
+  const gcRouteQt3 = { ...gcRouteCg, id: 'hs:bieu:420222:8154', cach: 'QUY_TAC_3' };
+  const khoRouteQt3 = ghiHoSoTam({ dkList: [...dkRouteKhacTruc, gcRouteQt3] });
+  const bangRouteQt3 = new Map(dungBangAnhEm({ chuong: '42', chaIds: ['bieu:420222'], luat: LUAT, hoSo: khoRouteQt3, L }).bang.map((b) => [b.cha, b]));
+  const kqQt3TrenChoDuoi = doBangAnhEm('bieu:420222', { 'hs:bieu:42022210:8101': true }, bangRouteQt3);
+  const kqQt3DuoiChoTren = doBangAnhEm('bieu:420222', { 'hs:bieu:42022220:8101': true }, bangRouteQt3);
 
   // (4) Đối chứng rời nhau hoàn toàn: (a) trục đơn trị !daTri; (b) laPhuCuaNhau; (c) SO rời dải
   const bangDonTri = new Map(dungBangAnhEm({ chuong: '42', chaIds: ['bieu:420222'], luat: LUAT, hoSo: KHO_CHUAN, L }).bang.map((b) => [b.cha, b]));
@@ -2195,7 +2269,32 @@ const KHO_CHUAN = ghiHoSoTam({
   const bangRouteSo = new Map(dungBangAnhEm({ chuong: '42', chaIds: ['bieu:420222'], luat: LUAT, hoSo: khoRouteSo, L }).bang.map((b) => [b.cha, b]));
   const kqSoRoiDich = doBangAnhEm('bieu:420222', { 'hs:bieu:42022220:8101': true }, bangRouteSo, { hoSo: khoRouteSo });
 
-  kiem('Cổng 10 & doBangAnhEm (chặn nhảy cóc qua undefined + đối chứng rời nhau / GIAI_CHONG): dừng RE_NHANH đúng thieuIds, đi thẳng DICH khi đã loại trừ',
+  // (5) thuThapIdChuaRoCongThuc: không hỏi thừa câu hỏi của anh em đã chứng minh rời nhau với nhánh true khi bị nhánh chuaRoChan trỏ truAnhEm
+  const dk3Ae = [
+    dkWith(L_SYN7, 'bieu:854310', 1, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Môi trường lắp đặt là gì?', 'Thiết bị buồng kín kiểu treo', 'bieu:854310#1', { truc: 'môi trường lắp đặt', tap: ['tàu thuyền'] }),
+    dkWith(L_SYN7, 'bieu:854320', 1, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Môi trường lắp đặt là gì?', 'Thiết bị để bàn', 'bieu:854320#1', { truc: 'môi trường lắp đặt', tap: ['nhà tắm'] }),
+    dkWith(L_SYN7, 'bieu:854330', 1, 1, false, 'CO_KHONG', 'NGHIA_THUONG', 'Có phải loại bơm hơi không?', 'Dây thiết bị', 'bieu:854330#1'),
+    dkWith(L_SYN7, 'bieu:854340', 1, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Môi trường lắp đặt là gì?', 'hơi nước', 'bieu:854340#1', { truc: 'môi trường lắp đặt', tap: ['phòng thí nghiệm'] }),
+    dkWith(L_SYN7, 'bieu:854370', 1, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Môi trường lắp đặt là gì?', 'không hoạt động bằng hơi nước', 'bieu:854370#1', { truc: 'môi trường lắp đặt', tap: ['xưởng đúc'] }),
+    dkWith(L_SYN7, 'bieu:854390', 1, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Môi trường lắp đặt là gì?', 'Cụm tín hiệu gắn nguồn cố định', 'bieu:854390#1', { truc: 'môi trường lắp đặt', tap: ['hầm lò'] }),
+    dkWith(L_SYN7, 'bieu:854399', 1, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Môi trường lắp đặt là gì?', 'Bộ phận', 'bieu:854399#1', { truc: 'môi trường lắp đặt', tap: ['kho lạnh'] }),
+    {
+      id: 'hs:bieu:8543:8159',
+      nut: 'bieu:8543',
+      loai: 'GIAI_CHONG',
+      cap: ['bieu:854310', 'bieu:854330'],
+      cach: 'TRU',
+      trich: 'Dây thiết bị',
+      nguon: 'bieu:854330#1',
+      vanTay: vanTay(L_SYN7.chuCau('bieu:854330#1')),
+    },
+  ];
+  const kho3Ae = ghiHoSoTam({ dkList: dk3Ae });
+  const bang3Ae = new Map(dungBangAnhEm({ chuong: '85', chaIds: ['bieu:8543'], luat: luatSyn7, hoSo: kho3Ae, L: L_SYN7 }).bang.map((b) => [b.cha, b]));
+  // 854320 ("nhà tắm") = true => 854310 ("tàu thuyền") đã rời nhau theo trục đơn trị; 854330 có truAnhEm:[854310] chỉ được hỏi 854330:8101, cấm hỏi 854310:8101!
+  const kqKhongHoiThua = doBangAnhEm('bieu:8543', { 'hs:bieu:854320:8101': true }, bang3Ae);
+
+  kiem('Cổng 10 & doBangAnhEm (chặn nhảy cóc qua undefined + phân biệt TRU một chiều với CHU_GIAI/QUY_TAC_3 + không hỏi thừa anh em đã rời nhau)',
     kqDaTriUndef.trangThai === 'RE_NHANH'
     && JSON.stringify(kqDaTriUndef.thieuIds) === JSON.stringify(['hs:bieu:42022210:8101'])
     && kqDaTriFalse.trangThai === 'DICH' && kqDaTriFalse.dich === 'bieu:42022220'
@@ -2204,20 +2303,36 @@ const KHO_CHUAN = ghiHoSoTam({
     && kqKhacTrucUndef.trangThai === 'RE_NHANH'
     && JSON.stringify(kqKhacTrucUndef.thieuIds) === JSON.stringify(['hs:bieu:42022220:8101'])
     && kqKhacTrucFalse.trangThai === 'DICH' && kqKhacTrucFalse.dich === 'bieu:42022210'
-    && kqGcTrenThang.trangThai === 'DICH' && kqGcTrenThang.dich === 'bieu:42022210'
-    && kqGcDuoiChoTren.trangThai === 'RE_NHANH'
-    && JSON.stringify(kqGcDuoiChoTren.thieuIds) === JSON.stringify(['hs:bieu:42022210:8101'])
+    && kqTruTrenThang.trangThai === 'DICH' && kqTruTrenThang.dich === 'bieu:42022210'
+    && kqTruDuoiChoTren.trangThai === 'RE_NHANH'
+    && JSON.stringify(kqTruDuoiChoTren.thieuIds) === JSON.stringify(['hs:bieu:42022210:8101'])
+    && kqTruNguocDuoiThang.trangThai === 'DICH' && kqTruNguocDuoiThang.dich === 'bieu:42022220'
+    && kqCgTrenChoDuoi.trangThai === 'RE_NHANH'
+    && JSON.stringify(kqCgTrenChoDuoi.thieuIds) === JSON.stringify(['hs:bieu:42022220:8101'])
+    && kqCgDuoiChoTren.trangThai === 'RE_NHANH'
+    && JSON.stringify(kqCgDuoiChoTren.thieuIds) === JSON.stringify(['hs:bieu:42022210:8101'])
+    && kqQt3TrenChoDuoi.trangThai === 'RE_NHANH'
+    && kqQt3DuoiChoTren.trangThai === 'RE_NHANH'
     && kqDonTriDich.trangThai === 'DICH' && kqDonTriDich.dich === 'bieu:42022210'
     && kqPhuDich.trangThai === 'DICH' && kqPhuDich.dich === 'bieu:42022220'
-    && kqSoRoiDich.trangThai === 'DICH' && kqSoRoiDich.dich === 'bieu:42022220',
+    && kqSoRoiDich.trangThai === 'DICH' && kqSoRoiDich.dich === 'bieu:42022220'
+    && kqKhongHoiThua.trangThai === 'RE_NHANH'
+    && JSON.stringify(kqKhongHoiThua.chuaRo) === JSON.stringify(['bieu:854330'])
+    && JSON.stringify(kqKhongHoiThua.thieuIds) === JSON.stringify(['hs:bieu:854330:8101']),
     {
       kqDaTriUndef,
       kqKhacTrucUndef,
-      kqGcTrenThang,
-      kqGcDuoiChoTren,
+      kqTruTrenThang,
+      kqTruDuoiChoTren,
+      kqTruNguocDuoiThang,
+      kqCgTrenChoDuoi,
+      kqCgDuoiChoTren,
+      kqQt3TrenChoDuoi,
+      kqQt3DuoiChoTren,
       kqDonTriDich,
       kqPhuDich,
       kqSoRoiDich,
+      kqKhongHoiThua,
     });
 }
 

@@ -160,8 +160,27 @@ function khoangChua(ngoai, trong) {
 }
 
 const RE_DANH_TU_GHEP_KHONG = /^không\s+(?:gian|khí|quân|phận|lực|trung|vận|cảng|ảnh)(?=$|\s|[,;:.!?()/-])/iu;
-const RE_DAN_DUONG_GIA_TRI = /^(?:có|dùng|sử\s+dụng|hoạt\s+động\s+bằng|chạy\s+bằng|vận\s+hành\s+bằng|làm\s+bằng|đốt\s+bằng)\s+(.+)$/iu;
-const RE_PHU_KHONG_GIA_TRI = /^không\s+(?:(?:phải(?:\s+là)?|có|chứa|dùng|sử\s+dụng|thuộc|bằng|qua|(?:được\s+)?(?:hoạt\s+động|chạy|vận\s+hành|làm|sản\s+xuất|chế\s+tạo|gia\s+cố|gắn|lắp(?:\s+ráp)?)\s+(?:bằng|với|từ))\s+)?(.+)$/iu;
+const RE_DUONG_VAN_HANH = /^(?:dùng|sử\s+dụng|(?:được\s+)?(?:hoạt\s+động|chạy|vận\s+hành|đốt)\s+bằng)\s+(.+)$/iu;
+const RE_AM_VAN_HANH = /^không\s+(?:dùng|sử\s+dụng|(?:được\s+)?(?:hoạt\s+động|chạy|vận\s+hành|đốt)\s+bằng)\s+(.+)$/iu;
+const RE_AM_VAN_HANH_TRAN = /^không\s+(?:dùng|sử\s+dụng|(?:được\s+)?(?:hoạt\s+động|chạy|vận\s+hành)\s+bằng)\s+(.+)$/iu;
+const RE_DUONG_SO_HUU = /^(?:có|chứa)\s+(.+)$/iu;
+const RE_AM_SO_HUU = /^không\s+(?:có|chứa)\s+(.+)$/iu;
+const RE_DUONG_CHAT_LIEU = /^(?:bằng|(?:được\s+)?(?:làm|sản\s+xuất|chế\s+tạo)\s+(?:bằng|từ))\s+(.+)$/iu;
+const RE_AM_CHAT_LIEU = /^không\s+(?:bằng|(?:được\s+)?(?:làm|sản\s+xuất|chế\s+tạo)\s+(?:bằng|từ))\s+(.+)$/iu;
+const RE_AM_LAM_BANG_TRAN = /^không\s+(?:bằng|(?:được\s+)?làm\s+(?:bằng|từ))\s+(.+)$/iu;
+const RE_AM_BAN_THE = /^không\s+phải(?:\s+là)?\s+(.+)$/iu;
+const RE_DONG_TU_THU_HEP = /^(?:(?:được\s+)?(?:gia\s+cố|gắn|lắp(?:\s+ráp)?|kết\s+hợp|pha(?:\s+trộn)?|phủ|tráng|bọc|xử\s+lý)\s+(?:bằng|với|từ))\s+/iu;
+
+function phanTichVeDuongNhiPhan(duong) {
+  let m = RE_DUONG_VAN_HANH.exec(duong);
+  if (m) return { nhom: 'VAN_HANH', goc: m[1].trim() };
+  m = RE_DUONG_SO_HUU.exec(duong);
+  if (m) return { nhom: 'SO_HUU', goc: m[1].trim() };
+  m = RE_DUONG_CHAT_LIEU.exec(duong);
+  if (m) return { nhom: 'CHAT_LIEU', goc: m[1].trim() };
+  if (RE_DONG_TU_THU_HEP.test(duong)) return { nhom: 'THU_HEP', goc: duong };
+  return { nhom: 'TRAN', goc: duong };
+}
 
 function laMotChieuNhiPhanBu(duong, am) {
   if (!duong || !am || duong === am) return false;
@@ -170,12 +189,27 @@ function laMotChieuNhiPhanBu(duong, am) {
   if (duong.startsWith('đã ') && am === `chưa ${duong.slice(3)}`) return true;
   if (RE_DANH_TU_GHEP_KHONG.test(am)) return false;
   if (am === `không ${duong}`) return true;
-  const mAm = RE_PHU_KHONG_GIA_TRI.exec(am);
-  if (!mAm) return false;
-  const gocAm = mAm[1].trim();
-  if (gocAm === duong) return true;
-  const mDuong = RE_DAN_DUONG_GIA_TRI.exec(duong);
-  return Boolean(mDuong && mDuong[1].trim() === gocAm);
+
+  const pDuong = phanTichVeDuongNhiPhan(duong);
+  if (pDuong.nhom === 'THU_HEP') return false;
+
+  if (pDuong.nhom === 'TRAN') {
+    for (const re of [RE_AM_BAN_THE, /^không\s+có\s+(.+)$/iu, RE_AM_VAN_HANH_TRAN, RE_AM_LAM_BANG_TRAN]) {
+      const m = re.exec(am);
+      if (m) return m[1].trim() === duong;
+    }
+    return false;
+  }
+
+  if (pDuong.nhom === 'SO_HUU' && duong.startsWith('có ') && am === `không ${pDuong.goc}`) {
+    return true;
+  }
+
+  const reAmTheoNhom = pDuong.nhom === 'VAN_HANH'
+    ? RE_AM_VAN_HANH
+    : (pDuong.nhom === 'SO_HUU' ? RE_AM_SO_HUU : RE_AM_CHAT_LIEU);
+  const mAm = reAmTheoNhom.exec(am);
+  return Boolean(mAm && mAm[1].trim() === pDuong.goc);
 }
 
 /** Nhận diện cặp giá trị nhị phân bù nhau trên trục GIA_TRI đơn trị (!daTri) có đúng 2 giá trị. */
@@ -411,11 +445,12 @@ export function tinhTruAnhEm(childId, chaId, con, L, bieuMeta, dkTheoNut, giaiCh
       capCoGcKhacTru.add(other);
     }
   }
+  const truTuGcSet = new Set(truTuGc);
   const ketQua = [];
   const them = (id) => {
     if (!id || id === childId || !conSet.has(id) || ketQua.includes(id)) return;
     if (laLoaiKhacThuan(id, L, bieuMeta)) return;
-    if (capCoGcKhacTru.has(id)) return;
+    if (!truTuGcSet.has(id) && capCoGcKhacTru.has(id)) return;
     if (haiNutRoiNhau(dkTheoNut.get(id) || [], dksChild, nguongById)) return;
     ketQua.push(id);
   };
@@ -1471,15 +1506,16 @@ function daRoiNhauKhiDinhTuyen(aeTrue, aeChuaRo, ganDieuKien, cauHoiById, ngMap)
   return veTrueList.some((vt) => veMoList.every((vu) => veRoiNhau(vt, vu, ngMap)));
 }
 
-function thuThapIdChuaRoCongThuc(congThuc, ganDieuKien, bang, outIds, _daTham = new Set()) {
+function thuThapIdChuaRoCongThuc(congThuc, ganDieuKien, bang, outIds, anhEmDaLoai = null, _daTham = new Set()) {
   if (!congThuc || typeof congThuc !== 'object' || _daTham.has(congThuc)) return;
   _daTham.add(congThuc);
   try {
     if (congThuc.loai === 'HOAC_CUA_VA') {
       for (const tid of congThuc.truAnhEm || []) {
+        if (anhEmDaLoai?.has(tid)) continue;
         const fTru = timCongThucAnhEm(tid, bang);
         if (fTru && danhGiaCongThuc(fTru, ganDieuKien, bang) === undefined) {
-          thuThapIdChuaRoCongThuc(fTru, ganDieuKien, bang, outIds, _daTham);
+          thuThapIdChuaRoCongThuc(fTru, ganDieuKien, bang, outIds, anhEmDaLoai, _daTham);
         }
       }
       const cacVe = congThuc.cacVe || [];
@@ -1539,8 +1575,6 @@ export function doBangAnhEm(chaId, ganDieuKien, bangTheoCha, { L = null, nguongB
 
     if (trung.length >= 1) {
       if (chuaRo.length > 0) {
-        const chonAe = trung[0];
-        const chonIdx = coTen.indexOf(chonAe);
         const cauHoiById = new Map();
         for (const ae of bang.anhEm || []) {
           for (const c of ae.cauHoiToiThieu || []) {
@@ -1549,20 +1583,27 @@ export function doBangAnhEm(chaId, ganDieuKien, bangTheoCha, { L = null, nguongB
         }
         const ngMap = layNguongChoBang(bang, nguongById, hoSo);
         const chuaRoChan = chuaRo.filter((u) => {
-          if (daRoiNhauKhiDinhTuyen(chonAe, u, ganDieuKien, cauHoiById, ngMap)) return false;
-          const uIdx = coTen.indexOf(u);
-          if (chonIdx < uIdx) {
-            const chonThangU = trung.every((t) => (
-              giai.has([t.nut, u.nut].sort().join('|'))
-              || daRoiNhauKhiDinhTuyen(t, u, ganDieuKien, cauHoiById, ngMap)
-            ));
-            if (chonThangU) return false;
-          }
+          if (trung.some((t) => daRoiNhauKhiDinhTuyen(t, u, ganDieuKien, cauHoiById, ngMap))) return false;
+          const biTruMotChieu = trung.some((t) => (
+            (u.congThuc?.truAnhEm || []).includes(t.nut)
+            || (bang.giaiChong || []).some((g) => (
+              g.cach === 'TRU'
+              && Array.isArray(g.cap)
+              && g.cap.includes(t.nut)
+              && g.cap.includes(u.nut)
+              && G.chuCuaCau(g.nguon || '') === u.nut
+            ))
+          ));
+          if (biTruMotChieu) return false;
           return true;
         });
         if (chuaRoChan.length > 0) {
+          const giuSet = new Set([...trung.map((x) => x.nut), ...chuaRoChan.map((x) => x.nut)]);
+          const anhEmDaLoai = new Set(coTen.map((x) => x.nut).filter((id) => !giuSet.has(id)));
           const idCanHoi = new Set();
-          for (const u of chuaRoChan) thuThapIdChuaRoCongThuc(u.congThuc, ganDieuKien, bang, idCanHoi);
+          for (const u of chuaRoChan) {
+            thuThapIdChuaRoCongThuc(u.congThuc, ganDieuKien, bang, idCanHoi, anhEmDaLoai);
+          }
           const tatCaCauHoi = gopCauHoi(...chuaRoChan.map((x) => x.cauHoiToiThieu));
           const cauHoi = tatCaCauHoi.filter((c) => idCanHoi.has(c.id));
           const thieuIds = cauHoi.length ? cauHoi.map((c) => c.id) : [...idCanHoi];
