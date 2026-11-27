@@ -569,7 +569,7 @@ function goiM81(ngay, opts = {}) {
     );
     const duongCha = G.duongDiNut(chaId, L.cay) || [];
     const dksDuongCha = duongCha.flatMap((b) => dkTheoNut.get(b.nut) || []);
-    const tapDuTheoTruc = layTapDuHopLeTheoTruc(con, dkTheoNut, dkTheoNut.get(chaId) || [], dksDuongCha);
+    const tapDuTheoTruc = layTapDuHopLeTheoTruc(con, dkTheoNut, dkTheoNut.get(chaId) || [], dksDuongCha, { L });
     const truTheoNut = taoBanDoTruAnhEm(chaId, con, L, bieuMeta, dkTheoNut, gcCha, nguongById, { tapDuTheoTruc });
     for (let i = 0; i < coTen.length; i += 1) {
       for (let j = i + 1; j < coTen.length; j += 1) {

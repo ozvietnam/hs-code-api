@@ -152,8 +152,10 @@ check('M-78 nutChuCua: nạp được câu sen:* nguyên văn từ sen.jsonl', m
     JSON.stringify({ id: 'phan:I', loai: 'TEN', lop: 'LUAT', nguyenVan: 'Động vật sống' }),
     JSON.stringify({ id: 'phan:XVI', loai: 'TEN', lop: 'LUAT', nguyenVan: 'Máy và trang thiết bị cơ khí; thiết bị điện' }),
   ].join('\n') + '\n');
+  const cgpn02 = 'Trong Chương này thịt pha gồm hai dạng có xương và không xương.';
   fs.writeFileSync(path.join(luat81, 'chuong.jsonl'), [
     JSON.stringify({ id: 'chuong:02', loai: 'TEN', lop: 'LUAT', nguyenVan: 'Thịt và phụ phẩm dạng thịt ăn được' }),
+    JSON.stringify({ id: 'chuong:02:cgpn:1', lop: 'LUAT', nguyenVan: cgpn02 }),
     JSON.stringify({ id: 'chuong:85', loai: 'TEN', lop: 'LUAT', nguyenVan: 'Máy điện và thiết bị điện' }),
   ].join('\n') + '\n');
   fs.writeFileSync(path.join(luat81, 'gir.jsonl'), [
@@ -166,6 +168,9 @@ check('M-78 nutChuCua: nạp được câu sen:* nguyên văn từ sen.jsonl', m
   fs.writeFileSync(path.join(luat81, 'bieu.jsonl'), bieuNodes.map((n) => JSON.stringify({ ...n, lop: 'LUAT' })).join('\n') + '\n');
 
   fs.writeFileSync(path.join(luat81, 'cau', 'bieu.jsonl'), bieuNodes.map((n) => JSON.stringify({ id: `${n.id}#1`, tu: 0, den: n.nguyenVan.length })).join('\n') + '\n');
+  fs.writeFileSync(path.join(luat81, 'cau', 'chuong.jsonl'), [
+    JSON.stringify({ id: 'chuong:02:cgpn:1#1', tu: 0, den: cgpn02.length }),
+  ].join('\n') + '\n');
   fs.writeFileSync(path.join(luat81, 'cau', 'gir.jsonl'), [
     JSON.stringify({ id: 'gir:3:a#1', tu: 0, den: gir3a.length }),
     JSON.stringify({ id: 'gir:6#1', tu: 0, den: gir6.length }),
@@ -219,6 +224,8 @@ check('M-78 nutChuCua: nạp được câu sen:* nguyên văn từ sen.jsonl', m
       truc: 'tình trạng xương',
       tap: ['có xương'],
       tapDu: ['có xương', 'không xương'],
+      tapDuNguon: 'chuong:02:cgpn:1#1',
+      tapDuTrich: 'có xương và không xương',
       mo: 'NGHIA_THUONG',
       cauHoi: 'Thịt trâu bò thuộc dạng có xương hay không xương?',
       trich: 'Thịt pha có xương',
@@ -235,6 +242,8 @@ check('M-78 nutChuCua: nạp được câu sen:* nguyên văn từ sen.jsonl', m
       truc: 'tình trạng xương',
       tap: ['không xương'],
       tapDu: ['có xương', 'không xương'],
+      tapDuNguon: 'chuong:02:cgpn:1#1',
+      tapDuTrich: 'có xương và không xương',
       mo: 'DINH_NGHIA_LUAT',
       moNguon: 'bieu:020130#1',
       cauHoi: 'Thịt trâu bò thuộc dạng có xương hay không xương?',

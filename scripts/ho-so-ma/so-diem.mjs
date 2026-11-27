@@ -227,6 +227,25 @@ export function chamDiemNhom(nhom4HoacNut, ctx = {}) {
         }
       }
     }
+    if (r.tapDuNguon !== undefined) {
+      const tdIds = Array.isArray(r.tapDuNguon) ? r.tapDuNguon : [r.tapDuNguon];
+      for (const tdId of tdIds) {
+        const tdChu = /^(?:tb|wco):/.test(tdId || '') ? null : c.L.chuCau(tdId);
+        if (tdChu === null) {
+          ghiLechCau(tdId, r.nut, r.id, 'tapDuNguon không còn trong kho luật');
+        } else {
+          const vtHienTai = vanTay(tdChu);
+          const lechDk = (
+            (typeof r.tapDuNguonVanTay === 'string' && typeof r.tapDuNguon === 'string' && r.tapDuNguon === tdId && r.tapDuNguonVanTay !== vtHienTai)
+            || (Boolean(r.tapDuNguonVanTay) && typeof r.tapDuNguonVanTay === 'object' && Object.hasOwn(r.tapDuNguonVanTay, tdId) && r.tapDuNguonVanTay[tdId] !== vtHienTai)
+          );
+          const lechBang = (vanTayCauNhom.get(tdId) || []).some((vt) => vt !== vtHienTai);
+          if (lechDk || lechBang) {
+            ghiLechCau(tdId, r.nut, r.id, 'vân tay câu tapDuNguon đã đổi');
+          }
+        }
+      }
+    }
     if (r.kieu === 'SO' && r.nguong) {
       const ng = c.nguongById.get(r.nguong);
       if (ng?.cau) {

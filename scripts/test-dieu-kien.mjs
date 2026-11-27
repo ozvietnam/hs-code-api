@@ -30,6 +30,9 @@ import {
   haiNutRoiNhau,
   laPhuCuaNhau,
   laChongSoTrungTruc,
+  coNguonTapDuHopLe,
+  moRongCayCon,
+  laCauCapDuoiCon,
 } from './ho-so-ma/bang-anh-em.mjs';
 import { chayCong, napLuatCong, parseCongArg, vanTay, chuanSo, cacNutCungDong } from './ho-so-ma/cong.mjs';
 import {
@@ -275,8 +278,8 @@ const DUNG_42022 = [
   dk('bieu:42022', 1, 1, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Có phải túi xách tay (kể cả có/không quai đeo vai, tay cầm) không?', 'Túi xách tay, có hoặc không có quai đeo vai, kể cả loại không có tay cầm', 'bieu:42022#1', { moNguon: 'bieu:42022#1' }),
   dk('bieu:420221', 1, 1, false, 'GIA_TRI', 'MO_TA_HUONG_DAN', CAU_HOI_MAT_NGOAI, 'Mặt ngoài bằng da thuộc hoặc da thuộc tổng hợp', 'bieu:420221#1', { truc: 'chất liệu mặt ngoài', tap: ['da thuộc', 'da thuộc tổng hợp'], moNguon: 'pn:420211:ct:1#1' }),
   dk('bieu:420222', 1, 1, false, 'GIA_TRI', 'MO_TA_HUONG_DAN', CAU_HOI_MAT_NGOAI, 'Mặt ngoài bằng tấm plastic hoặc vật liệu dệt', 'bieu:420222#1', { truc: 'chất liệu mặt ngoài', tap: ['tấm plastic', 'vật liệu dệt'], moNguon: 'bieu:420222#1' }),
-  dk('bieu:42022210', 1, 1, false, 'GIA_TRI', 'MO_TA_HUONG_DAN', CAU_HOI_MAT_NGOAI, 'Mặt ngoài bằng tấm plastic', 'bieu:42022210#1', { truc: 'chất liệu mặt ngoài', tap: ['tấm plastic'], tapDu: ['tấm plastic', 'vật liệu dệt'], moNguon: 'chuong:39:cg:1#2' }),
-  dk('bieu:42022220', 1, 1, false, 'GIA_TRI', 'MO_TA_HUONG_DAN', CAU_HOI_MAT_NGOAI, 'Mặt ngoài bằng vật liệu dệt', 'bieu:42022220#1', { truc: 'chất liệu mặt ngoài', tap: ['vật liệu dệt'], tapDu: ['tấm plastic', 'vật liệu dệt'], moNguon: 'chuong:39:cg:1#3' }),
+  dk('bieu:42022210', 1, 1, false, 'GIA_TRI', 'MO_TA_HUONG_DAN', CAU_HOI_MAT_NGOAI, 'Mặt ngoài bằng tấm plastic', 'bieu:42022210#1', { truc: 'chất liệu mặt ngoài', tap: ['tấm plastic'], tapDu: ['tấm plastic', 'vật liệu dệt'], tapDuNguon: 'bieu:420222#1', tapDuTrich: 'tấm plastic hoặc vật liệu dệt', moNguon: 'chuong:39:cg:1#2' }),
+  dk('bieu:42022220', 1, 1, false, 'GIA_TRI', 'MO_TA_HUONG_DAN', CAU_HOI_MAT_NGOAI, 'Mặt ngoài bằng vật liệu dệt', 'bieu:42022220#1', { truc: 'chất liệu mặt ngoài', tap: ['vật liệu dệt'], tapDu: ['tấm plastic', 'vật liệu dệt'], tapDuNguon: 'bieu:420222#1', tapDuTrich: 'tấm plastic hoặc vật liệu dệt', moNguon: 'chuong:39:cg:1#3' }),
 ];
 
 // 0201: nhóm KHÔNG có "Loại khác", chứng minh phủ kín bằng cặp bù phu (có xương / không xương)
@@ -920,6 +923,9 @@ const KHO_CHUAN = ghiHoSoTam({
 
 // 9B. Bảng vàng 85.01 (truc, NGUONG.daiLuong, 850110 tautology {A, ¬A ∨ B}, 850162 khoảng con, VUNG_CHONG vs CHUA_CHUNG_MINH_TACH)
 {
+  const TD_NGUON_8501 = ['nhom:8501:ct:3#2', 'nhom:8501:ct:19#1'];
+  const TD_TRICH_8501 = ['được thiết kế để hoạt động trên dòng một chiều hay xoay chiều', 'Có hai loại máy phát điện chính là máy phát một chiều (dynamos) và máy phát xoay chiều (alternators)'];
+  const CAU_HOI_MOT_PHA = 'Động cơ xoay chiều này có phải loại một pha (trái với loại đa pha — nhiều hơn một pha) không?';
   const VANG_8501 = [
     dkVang('bieu:8501', 1, 1, false, 'CO_KHONG', 'NGHIA_THUONG', 'Có phải động cơ điện hoặc máy phát điện không?', 'Động cơ điện và máy phát điện', 'bieu:8501#1'),
     dkVang('bieu:850110', 1, 1, false, 'GIA_TRI', 'DINH_NGHIA_LUAT', 'Loại máy là gì?', 'Động cơ', 'bieu:850110#1', { truc: 'loại máy', tap: ['Động cơ'], moNguon: 'nhom:8501:ct:2#1' }),
@@ -937,19 +943,19 @@ const KHO_CHUAN = ghiHoSoTam({
     dkVang('bieu:85011060', 1, 1, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Có phải động cơ hướng trục không?', 'Động cơ hướng trục', 'bieu:85011060#1', { moNguon: 'nhom:8501:ct:3#2' }),
     dkVang('bieu:85011091', 1, 1, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Có dùng cho hàng hóa nhóm 84.15..85.09 không?', 'Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09', 'bieu:85011091#1', { moNguon: 'bieu:85011091#1' }),
     dkVang('bieu:850120', 1, 1, false, 'GIA_TRI', 'DINH_NGHIA_LUAT', 'Loại máy là gì?', 'Động cơ', 'bieu:850120#1', { truc: 'loại máy', tap: ['Động cơ'], moNguon: 'nhom:8501:ct:2#1' }),
-    dkVang('bieu:850120', 2, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Dòng điện làm việc?', 'vạn năng một chiều/xoay chiều', 'bieu:850120#1', { truc: 'dòng điện làm việc', tap: ['vạn năng một chiều/xoay chiều'], tapDu: ['một chiều', 'xoay chiều', 'vạn năng một chiều/xoay chiều'] }),
+    dkVang('bieu:850120', 2, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Dòng điện làm việc?', 'vạn năng một chiều/xoay chiều', 'bieu:850120#1', { truc: 'dòng điện làm việc', tap: ['vạn năng một chiều/xoay chiều'], tapDu: ['một chiều', 'xoay chiều', 'vạn năng một chiều/xoay chiều'], tapDuNguon: TD_NGUON_8501, tapDuTrich: TD_TRICH_8501 }),
     dkVang('bieu:850120', 3, 1, false, 'SO', 'NGUONG', 'Công suất trên 37,5 W?', 'công suất trên 37,5 W', 'bieu:850120#1', { nguong: 'hs:bieu:850120:8501' }),
     dkVang('bieu:85013', 1, 1, false, 'GIA_TRI', 'DINH_NGHIA_LUAT', 'Loại máy?', 'Động cơ một chiều', 'bieu:85013#1', { truc: 'loại máy', tap: ['Động cơ'], moNguon: 'nhom:8501:ct:2#1' }),
-    dkVang('bieu:85013', 2, 1, false, 'GIA_TRI', 'MO_TA_HUONG_DAN', 'Dòng điện?', 'một chiều', 'bieu:85013#1', { truc: 'dòng điện làm việc', tap: ['một chiều'], tapDu: ['một chiều', 'xoay chiều', 'vạn năng một chiều/xoay chiều'], moNguon: 'nhom:8501:ct:3#2' }),
+    dkVang('bieu:85013', 2, 1, false, 'GIA_TRI', 'MO_TA_HUONG_DAN', 'Dòng điện?', 'một chiều', 'bieu:85013#1', { truc: 'dòng điện làm việc', tap: ['một chiều'], tapDu: ['một chiều', 'xoay chiều', 'vạn năng một chiều/xoay chiều'], tapDuNguon: TD_NGUON_8501, tapDuTrich: TD_TRICH_8501, moNguon: 'nhom:8501:ct:3#2' }),
     dkVang('bieu:85013', 3, 1, true, 'SO', 'NGUONG', 'Công suất <= 37,5 W?', 'Động cơ một chiều khác', 'bieu:85013#1', { nguong: 'hs:bieu:850110:8501' }),
     dkVang('bieu:850131', 1, 1, false, 'SO', 'NGUONG', 'Công suất không quá 750 W?', 'Công suất không quá 750 W', 'bieu:850131#1', { nguong: 'hs:bieu:850131:8501' }),
     dkVang('bieu:85013130', 1, 1, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Dùng cho nhóm 84.15..85.09?', 'Động cơ loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09', 'bieu:85013130#1', { moNguon: 'bieu:85013130#1' }),
     dkVang('bieu:85013160', 1, 1, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Dùng cho xe Chương 87?', 'Động cơ dùng cho xe của Chương 87', 'bieu:85013160#1', { moNguon: 'bieu:85013160#1' }),
-    dkVang('bieu:850140', 1, 1, false, 'GIA_TRI', 'MO_TA_HUONG_DAN', 'Dòng điện?', 'xoay chiều', 'bieu:850140#1', { truc: 'dòng điện làm việc', tap: ['xoay chiều'], tapDu: ['một chiều', 'xoay chiều', 'vạn năng một chiều/xoay chiều'], moNguon: 'nhom:8501:ct:3#2' }),
-    dkVang('bieu:850140', 2, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Số pha?', 'một pha', 'bieu:850140#1', { truc: 'số pha (động cơ xoay chiều)', tap: ['một pha'], tapDu: ['một pha', 'đa pha'] }),
+    dkVang('bieu:850140', 1, 1, false, 'GIA_TRI', 'MO_TA_HUONG_DAN', 'Dòng điện?', 'xoay chiều', 'bieu:850140#1', { truc: 'dòng điện làm việc', tap: ['xoay chiều'], tapDu: ['một chiều', 'xoay chiều', 'vạn năng một chiều/xoay chiều'], tapDuNguon: TD_NGUON_8501, tapDuTrich: TD_TRICH_8501, moNguon: 'nhom:8501:ct:3#2' }),
+    dkVang('bieu:850140', 2, 1, false, 'CO_KHONG', 'NGHIA_THUONG', CAU_HOI_MOT_PHA, 'một pha', 'bieu:850140#1'),
     dkVang('bieu:850140', 3, 1, true, 'SO', 'NGUONG', 'Công suất <= 37,5 W?', 'Động cơ xoay chiều khác', 'bieu:850140#1', { nguong: 'hs:bieu:850110:8501' }),
-    dkVang('bieu:85015', 1, 1, false, 'GIA_TRI', 'MO_TA_HUONG_DAN', 'Dòng điện?', 'xoay chiều', 'bieu:85015#1', { truc: 'dòng điện làm việc', tap: ['xoay chiều'], tapDu: ['một chiều', 'xoay chiều', 'vạn năng một chiều/xoay chiều'], moNguon: 'nhom:8501:ct:3#2' }),
-    dkVang('bieu:85015', 2, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Số pha?', 'đa pha', 'bieu:85015#1', { truc: 'số pha (động cơ xoay chiều)', tap: ['đa pha'], tapDu: ['một pha', 'đa pha'] }),
+    dkVang('bieu:85015', 1, 1, false, 'GIA_TRI', 'MO_TA_HUONG_DAN', 'Dòng điện?', 'xoay chiều', 'bieu:85015#1', { truc: 'dòng điện làm việc', tap: ['xoay chiều'], tapDu: ['một chiều', 'xoay chiều', 'vạn năng một chiều/xoay chiều'], tapDuNguon: TD_NGUON_8501, tapDuTrich: TD_TRICH_8501, moNguon: 'nhom:8501:ct:3#2' }),
+    dkVang('bieu:85015', 2, 1, true, 'CO_KHONG', 'NGHIA_THUONG', CAU_HOI_MOT_PHA, 'đa pha', 'bieu:85015#1'),
     dkVang('bieu:85015', 3, 1, true, 'SO', 'NGUONG', 'Công suất <= 37,5 W?', 'Động cơ xoay chiều khác', 'bieu:85015#1', { nguong: 'hs:bieu:850110:8501' }),
     dkVang('bieu:850162', 1, 1, false, 'SO', 'NGUONG', 'Công suất > 75 và <= 375 kVA?', 'Công suất trên 75 kVA nhưng không quá 375 kVA', 'bieu:850162#1', { nguong: 'hs:bieu:850162:8501' }),
     dkVang('bieu:85016210', 1, 1, false, 'SO', 'NGUONG', 'Công suất > 75 và <= 150 kVA?', 'Công suất trên 75 kVA nhưng không quá 150 kVA', 'bieu:85016210#1', { nguong: 'hs:bieu:85016210:8501' }),
@@ -1013,8 +1019,8 @@ const KHO_CHUAN = ghiHoSoTam({
     dkVang('bieu:42022', 1, 1, false, 'GIA_TRI', 'MO_TA_HUONG_DAN', 'Sản phẩm?', 'Túi xách tay', 'bieu:42022#1', { truc: 'loại hàng', tap: ['Túi xách tay'], moNguon: 'bieu:42022#1' }),
     dkVang('bieu:420221', 1, 1, false, 'GIA_TRI', 'DINH_NGHIA_LUAT', 'Chất liệu mặt ngoài?', 'da thuộc hoặc da thuộc tổng hợp', 'bieu:420221#1', { truc: 'chất liệu mặt ngoài', tap: ['da thuộc', 'da thuộc tổng hợp'], moNguon: 'pn:420211:ct:1#1' }),
     dkVang('bieu:420222', 1, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Chất liệu mặt ngoài?', 'tấm plastic hoặc vật liệu dệt', 'bieu:420222#1', { truc: 'chất liệu mặt ngoài', tap: ['tấm plastic', 'vật liệu dệt'] }),
-    dkVang('bieu:42022210', 1, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Chất liệu mặt ngoài?', 'tấm plastic', 'bieu:42022210#1', { truc: 'chất liệu mặt ngoài', tap: ['tấm plastic'], tapDu: ['tấm plastic', 'vật liệu dệt'] }),
-    dkVang('bieu:42022220', 1, 1, false, 'GIA_TRI', 'DINH_NGHIA_LUAT', 'Chất liệu mặt ngoài?', 'vật liệu dệt', 'bieu:42022220#1', { truc: 'chất liệu mặt ngoài', tap: ['vật liệu dệt'], tapDu: ['tấm plastic', 'vật liệu dệt'], moNguon: 'chuong:39:cg:1#3' }),
+    dkVang('bieu:42022210', 1, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Chất liệu mặt ngoài?', 'tấm plastic', 'bieu:42022210#1', { truc: 'chất liệu mặt ngoài', tap: ['tấm plastic'], tapDu: ['tấm plastic', 'vật liệu dệt'], tapDuNguon: 'bieu:420222#1', tapDuTrich: 'tấm plastic hoặc vật liệu dệt' }),
+    dkVang('bieu:42022220', 1, 1, false, 'GIA_TRI', 'DINH_NGHIA_LUAT', 'Chất liệu mặt ngoài?', 'vật liệu dệt', 'bieu:42022220#1', { truc: 'chất liệu mặt ngoài', tap: ['vật liệu dệt'], tapDu: ['tấm plastic', 'vật liệu dệt'], tapDuNguon: 'bieu:420222#1', tapDuTrich: 'tấm plastic hoặc vật liệu dệt', moNguon: 'chuong:39:cg:1#3' }),
     dkVang('bieu:42023', 1, 1, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Thường mang theo trong túi/túi xách tay?', 'Các đồ vật thuộc loại thường mang theo trong túi hoặc trong túi xách tay', 'bieu:42023#1', { moNguon: 'pn:420231:ct:2#1' }),
     { id: 'hs:bieu:4202:8109', nut: 'bieu:4202', loai: 'GIAI_CHONG', cap: ['bieu:42022', 'bieu:42023'], cach: 'CHU_GIAI', trich: 'Các phân nhóm này bao gồm những mặt hàng thuộc loại thường được đóng trong bao hoặc trong túi', nguon: 'pn:420231:ct:2#1' },
   ];
@@ -1076,8 +1082,8 @@ const KHO_CHUAN = ghiHoSoTam({
 {
   const dkDonTriNoTapDuA = [dk('bieu:42022210', 1, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Vật liệu?', 'tấm plastic', 'bieu:42022210#1', { truc: 'chất liệu mặt ngoài', tap: ['tấm plastic'], daTri: false })];
   const dkDonTriNoTapDuB = [dk('bieu:42022220', 1, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Vật liệu?', 'vật liệu dệt', 'bieu:42022220#1', { truc: 'chất liệu mặt ngoài', tap: ['vật liệu dệt'], daTri: false })];
-  const dkDonTriA = [{ ...dkDonTriNoTapDuA[0], tapDu: ['tấm plastic', 'vật liệu dệt'] }];
-  const dkDonTriB = [{ ...dkDonTriNoTapDuB[0], tapDu: ['tấm plastic', 'vật liệu dệt'] }];
+  const dkDonTriA = [{ ...dkDonTriNoTapDuA[0], tapDu: ['tấm plastic', 'vật liệu dệt'], tapDuNguon: 'bieu:420222#1', tapDuTrich: 'tấm plastic hoặc vật liệu dệt' }];
+  const dkDonTriB = [{ ...dkDonTriNoTapDuB[0], tapDu: ['tấm plastic', 'vật liệu dệt'], tapDuNguon: 'bieu:420222#1', tapDuTrich: 'tấm plastic hoặc vật liệu dệt' }];
   const dkDaTriA = [{ ...dkDonTriNoTapDuA[0], daTri: true }];
   const dkDaTriB = [{ ...dkDonTriNoTapDuB[0], daTri: true }];
 
@@ -1309,7 +1315,7 @@ const KHO_CHUAN = ghiHoSoTam({
   const gopGcCt = gopKetQuaChunk([
     {
       dieuKien: [
-        { nut: 'bieu:8543', ve: 1, phu: false, kieu: 'GIA_TRI', truc: 'loại máy', tap: ['máy điện', 'thiết bị điện'], tapDu: ['máy điện', 'thiết bị điện'], cauHoi: 'Loại máy?', trich: 'Máy và thiết bị điện', nguon: 'bieu:8543#1' },
+        { nut: 'bieu:8543', ve: 1, phu: false, kieu: 'GIA_TRI', truc: 'loại máy', tap: ['máy điện', 'thiết bị điện'], tapDu: ['máy điện', 'thiết bị điện'], tapDuNguon: 'bieu:8543#1', tapDuTrich: 'Máy và thiết bị điện', cauHoi: 'Loại máy?', trich: 'Máy và thiết bị điện', nguon: 'bieu:8543#1' },
       ],
       giaiChong: [
         { nut: 'bieu:854370', cap: ['bieu:85437030', 'bieu:85437050'], cach: 'CHU_GIAI', trich: 'chức năng phiên dịch', nguon: 'bieu:85437030#1' },
@@ -1320,7 +1326,7 @@ const KHO_CHUAN = ghiHoSoTam({
     },
     {
       dieuKien: [
-        { nut: 'bieu:8543', ve: 1, phu: false, kieu: 'GIA_TRI', truc: 'loại máy', tap: ['thiết bị điện', 'máy điện'], tapDu: ['thiết bị điện', 'máy điện'], cauHoi: 'Loại máy?', trich: 'Máy và thiết bị điện', nguon: 'bieu:8543#1' },
+        { nut: 'bieu:8543', ve: 1, phu: false, kieu: 'GIA_TRI', truc: 'loại máy', tap: ['thiết bị điện', 'máy điện'], tapDu: ['thiết bị điện', 'máy điện'], tapDuNguon: 'bieu:8543#1', tapDuTrich: 'Máy và thiết bị điện', cauHoi: 'Loại máy?', trich: 'Máy và thiết bị điện', nguon: 'bieu:8543#1' },
       ],
       giaiChong: [
         { nut: 'bieu:854370', cap: ['bieu:85437050', 'bieu:85437030'], cach: 'CHU_GIAI', trich: 'chức năng phiên dịch', nguon: 'bieu:85437030#1' },
@@ -2092,6 +2098,8 @@ const KHO_CHUAN = ghiHoSoTam({
     truc: 'chất liệu mặt ngoài',
     tap: ['tấm plastic'],
     tapDu: ['tấm plastic', 'vật liệu dệt'],
+    tapDuNguon: 'bieu:420222#1',
+    tapDuTrich: 'tấm plastic hoặc vật liệu dệt',
   });
   const recCkTapDu = dk('bieu:85437050', 1, 1, false, 'CO_KHONG', 'NGHIA_THUONG', 'Có phải bộ khuếch đại vi sóng không?', 'Bộ khuếch đại vi sóng', 'bieu:85437050#1', {
     tapDu: ['có', 'không'],
@@ -2122,6 +2130,8 @@ const KHO_CHUAN = ghiHoSoTam({
       truc: 'chất liệu mặt ngoài',
       tap: ['vật liệu dệt'],
       tapDu: ['tấm plastic', 'vật liệu dệt', 'cao su'],
+      tapDuNguon: 'bieu:420222#1',
+      tapDuTrich: 'tấm plastic hoặc vật liệu dệt',
     }),
   ];
   const rC6Lech = chayCong({ luat: LUAT, hoSo: ghiHoSoTam({ dkList: dkC6Lech }), phamVi: ['bieu:420222'], chiTrong: true, cong: [6], L });
@@ -2133,6 +2143,8 @@ const KHO_CHUAN = ghiHoSoTam({
       truc: 'chất liệu mặt ngoài',
       tap: ['vật liệu dệt'],
       tapDu: ['tấm plastic', 'vật liệu dệt'],
+      tapDuNguon: 'bieu:420222#1',
+      tapDuTrich: 'tấm plastic hoặc vật liệu dệt',
     }),
   ];
   const rC6DongNhat = chayCong({ luat: LUAT, hoSo: ghiHoSoTam({ dkList: dkC6DongNhat }), phamVi: ['bieu:420222'], chiTrong: true, cong: [6], L });
@@ -2143,6 +2155,8 @@ const KHO_CHUAN = ghiHoSoTam({
       truc: 'chất liệu mặt ngoài',
       tap: ['tấm plastic', 'vật liệu dệt'],
       tapDu: ['tấm plastic', 'vật liệu dệt'],
+      tapDuNguon: 'bieu:420222#1',
+      tapDuTrich: 'tấm plastic hoặc vật liệu dệt',
     }),
     dk('bieu:42022210', 1, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Mặt ngoài bằng chất liệu gì?', 'tấm plastic', 'bieu:42022210#1', {
       truc: 'chất liệu mặt ngoài',
@@ -2164,6 +2178,8 @@ const KHO_CHUAN = ghiHoSoTam({
       truc: 'chất liệu mặt ngoài',
       tap: ['tấm plastic', 'vật liệu dệt'],
       tapDu: ['tấm plastic', 'vật liệu dệt', 'cao su'],
+      tapDuNguon: 'bieu:420222#1',
+      tapDuTrich: 'tấm plastic hoặc vật liệu dệt',
     }),
     dk('bieu:42022210', 1, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Chất liệu mặt ngoài?', 'tấm plastic', 'bieu:42022210#1', { truc: 'chất liệu mặt ngoài', tap: ['tấm plastic'] }),
     dk('bieu:42022220', 1, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Chất liệu mặt ngoài?', 'vật liệu dệt', 'bieu:42022220#1', { truc: 'chất liệu mặt ngoài', tap: ['vật liệu dệt'] }),
@@ -2213,7 +2229,7 @@ const KHO_CHUAN = ghiHoSoTam({
   const luatSyn7 = path.join(TAM, 'luat-syn7');
   fs.cpSync(LUAT_VANG, luatSyn7, { recursive: true });
   const bieuSyn7Map = new Map([
-    ['bieu:8543', 'Thiết bị chuyên dụng và cụm tín hiệu gắn nguồn cố định; bộ phận của chúng, chưa được chi tiết hoặc ghi ở nơi khác'],
+    ['bieu:8543', 'Thiết bị chuyên dụng (dùng hơi nước hoặc không hoạt động bằng hơi nước) và cụm tín hiệu gắn nguồn cố định; bộ phận của chúng, chưa được chi tiết hoặc ghi ở nơi khác'],
     ['bieu:854310', '- Thiết bị buồng kín kiểu treo, trừ loại dùng ở khu vực công cộng:'],
     ['bieu:854320', '- Thiết bị để bàn dùng hơi nước:'],
     ['bieu:854330', '- Dây thiết bị dùng cho nghi lễ:'],
@@ -2340,7 +2356,9 @@ const KHO_CHUAN = ghiHoSoTam({
     dkWith(L_SYN7, 'bieu:854399', 1, 1, false, 'CO_KHONG', 'NGHIA_THUONG', Q_BP, 'Bộ phận', 'bieu:854399#1'),
   ];
   const dkConSyn7 = dkConSyn7KhongTapDu.map((r) => (
-    r.truc === 'nguồn vận hành' ? { ...r, tapDu: TAP_DU_NGUON } : r
+    r.truc === 'nguồn vận hành'
+      ? { ...r, tapDu: TAP_DU_NGUON, tapDuNguon: 'bieu:8543#1', tapDuTrich: 'dùng hơi nước hoặc không hoạt động bằng hơi nước' }
+      : r
   ));
   const gcSyn7 = ['bieu:854310', 'bieu:854320', 'bieu:854330'].map((aeId, idx) => ({
     id: `hs:bieu:8543:${8151 + idx}`,
@@ -2364,6 +2382,8 @@ const KHO_CHUAN = ghiHoSoTam({
       truc: 'nguồn vận hành',
       tap: TAP_DU_NGUON,
       tapDu: TAP_DU_NGUON,
+      tapDuNguon: 'bieu:8543#1',
+      tapDuTrich: 'dùng hơi nước hoặc không hoạt động bằng hơi nước',
     }),
   ];
   const khoSyn7ChaTapDu = ghiHoSoTam({ dkList: [...dkChaCoTapDu, ...dkConSyn7KhongTapDu, ...gcSyn7] });
@@ -2566,14 +2586,15 @@ const KHO_CHUAN = ghiHoSoTam({
 
   // (5) thuThapIdChuaRoCongThuc: không hỏi thừa câu hỏi của anh em đã chứng minh rời nhau với nhánh true khi bị nhánh chuaRoChan trỏ truAnhEm
   const TAP_DU_MOI_TRUONG = ['tàu thuyền', 'nhà tắm', 'phòng thí nghiệm', 'xưởng đúc', 'hầm lò', 'kho lạnh'];
+  const TD_MT = { tapDu: TAP_DU_MOI_TRUONG, tapDuNguon: 'bieu:8543#1', tapDuTrich: 'Thiết bị chuyên dụng' };
   const dk3Ae = [
-    dkWith(L_SYN7, 'bieu:854310', 1, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Môi trường lắp đặt là gì?', 'Thiết bị buồng kín kiểu treo', 'bieu:854310#1', { truc: 'môi trường lắp đặt', tap: ['tàu thuyền'], tapDu: TAP_DU_MOI_TRUONG }),
-    dkWith(L_SYN7, 'bieu:854320', 1, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Môi trường lắp đặt là gì?', 'Thiết bị để bàn', 'bieu:854320#1', { truc: 'môi trường lắp đặt', tap: ['nhà tắm'], tapDu: TAP_DU_MOI_TRUONG }),
+    dkWith(L_SYN7, 'bieu:854310', 1, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Môi trường lắp đặt là gì?', 'Thiết bị buồng kín kiểu treo', 'bieu:854310#1', { truc: 'môi trường lắp đặt', tap: ['tàu thuyền'], ...TD_MT }),
+    dkWith(L_SYN7, 'bieu:854320', 1, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Môi trường lắp đặt là gì?', 'Thiết bị để bàn', 'bieu:854320#1', { truc: 'môi trường lắp đặt', tap: ['nhà tắm'], ...TD_MT }),
     dkWith(L_SYN7, 'bieu:854330', 1, 1, false, 'CO_KHONG', 'NGHIA_THUONG', 'Có phải loại bơm hơi không?', 'Dây thiết bị', 'bieu:854330#1'),
-    dkWith(L_SYN7, 'bieu:854340', 1, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Môi trường lắp đặt là gì?', 'hơi nước', 'bieu:854340#1', { truc: 'môi trường lắp đặt', tap: ['phòng thí nghiệm'], tapDu: TAP_DU_MOI_TRUONG }),
-    dkWith(L_SYN7, 'bieu:854370', 1, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Môi trường lắp đặt là gì?', 'không hoạt động bằng hơi nước', 'bieu:854370#1', { truc: 'môi trường lắp đặt', tap: ['xưởng đúc'], tapDu: TAP_DU_MOI_TRUONG }),
-    dkWith(L_SYN7, 'bieu:854390', 1, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Môi trường lắp đặt là gì?', 'Cụm tín hiệu gắn nguồn cố định', 'bieu:854390#1', { truc: 'môi trường lắp đặt', tap: ['hầm lò'], tapDu: TAP_DU_MOI_TRUONG }),
-    dkWith(L_SYN7, 'bieu:854399', 1, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Môi trường lắp đặt là gì?', 'Bộ phận', 'bieu:854399#1', { truc: 'môi trường lắp đặt', tap: ['kho lạnh'], tapDu: TAP_DU_MOI_TRUONG }),
+    dkWith(L_SYN7, 'bieu:854340', 1, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Môi trường lắp đặt là gì?', 'hơi nước', 'bieu:854340#1', { truc: 'môi trường lắp đặt', tap: ['phòng thí nghiệm'], ...TD_MT }),
+    dkWith(L_SYN7, 'bieu:854370', 1, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Môi trường lắp đặt là gì?', 'không hoạt động bằng hơi nước', 'bieu:854370#1', { truc: 'môi trường lắp đặt', tap: ['xưởng đúc'], ...TD_MT }),
+    dkWith(L_SYN7, 'bieu:854390', 1, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Môi trường lắp đặt là gì?', 'Cụm tín hiệu gắn nguồn cố định', 'bieu:854390#1', { truc: 'môi trường lắp đặt', tap: ['hầm lò'], ...TD_MT }),
+    dkWith(L_SYN7, 'bieu:854399', 1, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Môi trường lắp đặt là gì?', 'Bộ phận', 'bieu:854399#1', { truc: 'môi trường lắp đặt', tap: ['kho lạnh'], ...TD_MT }),
     {
       id: 'hs:bieu:8543:8159',
       nut: 'bieu:8543',
@@ -2642,7 +2663,12 @@ const KHO_CHUAN = ghiHoSoTam({
   const r8KhongTapDu = chayCong({ luat: LUAT, hoSo: khoC8KhongTapDu, phamVi: ['bieu:420222'], chiTrong: true, cong: [8], L });
   const bang8KhongTapDu = dungBangAnhEm({ chuong: '42', chaIds: ['bieu:420222'], luat: LUAT, hoSo: khoC8KhongTapDu, L }).bang[0];
 
-  const dkC8CoTapDu = dkC8KhongTapDu.map((r) => ({ ...r, tapDu: ['tấm plastic', 'vật liệu dệt'] }));
+  const dkC8CoTapDu = dkC8KhongTapDu.map((r) => ({
+    ...r,
+    tapDu: ['tấm plastic', 'vật liệu dệt'],
+    tapDuNguon: 'bieu:420222#1',
+    tapDuTrich: 'tấm plastic hoặc vật liệu dệt',
+  }));
   const khoC8CoTapDu = ghiHoSoTam({ dkList: dkC8CoTapDu });
   const r8CoTapDu = chayCong({ luat: LUAT, hoSo: khoC8CoTapDu, phamVi: ['bieu:420222'], chiTrong: true, cong: [8], L });
   const bang8CoTapDu = dungBangAnhEm({ chuong: '42', chaIds: ['bieu:420222'], luat: LUAT, hoSo: khoC8CoTapDu, L }).bang[0];
@@ -2710,6 +2736,464 @@ const KHO_CHUAN = ghiHoSoTam({
       rankTop4: rRank8.cong[8].canhBao.slice(0, 4),
       cliCount: dongCanhBaoCli.length,
     });
+}
+
+// ---------- 15. Hồi quy bắt buộc tapDuNguon + tapDuTrich (Cổng 4, 6, 7, 8, Khuôn & tach-dieu-kien — #2441#issuecomment-7224035193) ----------
+{
+  const recBase = dk('bieu:42022210', 1, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Chất liệu mặt ngoài?', 'tấm plastic', 'bieu:42022210#1', {
+    truc: 'chất liệu mặt ngoài',
+    tap: ['tấm plastic'],
+    tapDu: ['tấm plastic', 'vật liệu dệt'],
+    tapDuNguon: 'bieu:420222#1',
+    tapDuTrich: 'tấm plastic hoặc vật liệu dệt',
+  });
+  const recArrOk = {
+    ...recBase,
+    tapDuNguon: ['bieu:420222#1', 'chuong:39:cg:1#2'],
+    tapDuTrich: ['tấm plastic hoặc vật liệu dệt', 'plastic'],
+  };
+
+  // Ca âm 4 (Khuôn): thiếu cặp, lệch độ dài mảng, mảng rỗng, lệch kiểu, trỏ tb:/wco:, hoặc đặt trên bản ghi không có tapDu / sai kiểu / daTri:true
+  const { tapDuTrich: _b1, ...thieuTrich } = recBase;
+  const { tapDuNguon: _b2, ...thieuNguon } = recBase;
+  const { tapDu: _b3, ...thieuTapDu } = recBase;
+  const lechDoDai = { ...recBase, tapDuNguon: ['bieu:420222#1', 'chuong:39:cg:1#2'], tapDuTrich: ['tấm plastic hoặc vật liệu dệt'] };
+  const mangRong = { ...recBase, tapDuNguon: [], tapDuTrich: [] };
+  const lechKieu = { ...recBase, tapDuNguon: ['bieu:420222#1'], tapDuTrich: 'tấm plastic hoặc vật liệu dệt' };
+  const troTb = { ...recBase, tapDuNguon: 'tb:1-2023:4202#1', tapDuTrich: 'tấm plastic' };
+  const troWco = { ...recBase, tapDuNguon: 'wco:420222:1#1', tapDuTrich: 'tấm plastic' };
+  const troWcoMang = { ...recBase, tapDuNguon: ['bieu:420222#1', 'wco:420222:1#1'], tapDuTrich: ['tấm plastic', 'vật liệu dệt'] };
+  const trenDaTri = { ...recBase, daTri: true };
+  const trenCk = {
+    ...dk('bieu:85437050', 1, 1, false, 'CO_KHONG', 'NGHIA_THUONG', 'Có phải bộ khuếch đại vi sóng không?', 'Bộ khuếch đại vi sóng', 'bieu:85437050#1'),
+    tapDuNguon: 'bieu:85437050#1',
+    tapDuTrich: 'Bộ khuếch đại vi sóng',
+  };
+  const chiCoTapDuKhongNguon = dk('bieu:42022210', 1, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Chất liệu?', 'tấm plastic', 'bieu:42022210#1', {
+    truc: 'chất liệu mặt ngoài',
+    tap: ['tấm plastic'],
+    tapDu: ['tấm plastic', 'vật liệu dệt'],
+  });
+
+  kiem('CA NGƯỢC 4 (Khuôn tapDuNguon/tapDuTrich): bắt thiếu cặp, lệch độ dài/kiểu, mảng rỗng, tb:/wco:, daTri/thiếu tapDu; cho phép tapDu không nguồn qua khuôn để Cổng 7 bắt HO_PHU',
+    kiemBanGhi(recBase).length === 0
+    && kiemBanGhi(recArrOk).length === 0
+    && kiemBanGhi(chiCoTapDuKhongNguon).length === 0
+    && kiemBanGhi(thieuTrich).some((l) => /đi theo cặp/.test(l))
+    && kiemBanGhi(thieuNguon).some((l) => /đi theo cặp/.test(l))
+    && kiemBanGhi(thieuTapDu).some((l) => /chỉ dùng khi kieu GIA_TRI đơn trị có khai tapDu/.test(l))
+    && kiemBanGhi(lechDoDai).some((l) => /cùng độ dài/.test(l))
+    && kiemBanGhi(mangRong).some((l) => /không rỗng/.test(l))
+    && kiemBanGhi(lechKieu).some((l) => /chuỗi đơn hoặc cùng là mảng/.test(l))
+    && kiemBanGhi(troTb).some((l) => /cấm tb: và wco:/.test(l))
+    && kiemBanGhi(troWco).some((l) => /cấm tb: và wco:/.test(l))
+    && kiemBanGhi(troWcoMang).some((l) => /cấm tb: và wco:/.test(l))
+    && kiemBanGhi(trenDaTri).some((l) => /đơn trị/.test(l))
+    && kiemBanGhi(trenCk).some((l) => /chỉ dùng khi kieu GIA_TRI đơn trị có khai tapDu/.test(l)),
+    {
+      thieuTrich: kiemBanGhi(thieuTrich),
+      lechDoDai: kiemBanGhi(lechDoDai),
+      troWco: kiemBanGhi(troWco),
+    });
+
+  // Dựng kho luật thu gọn không có "Loại khác" để thử Ca âm 1 ("một pha" / "đa pha" không nguồn), Ca âm 2 (vòng tròn), Ca âm 3 (sai trích), Ca dương
+  const luatPha = path.join(TAM, 'luat-pha');
+  fs.cpSync(LUAT, luatPha, { recursive: true });
+  const bieuPhaOverride = new Map([
+    ['bieu:420222', '- - Động cơ xoay chiều (gồm loại một pha hoặc đa pha):'],
+    ['bieu:42022210', '- - - Loại một pha'],
+    ['bieu:42022220', '- - - Loại đa pha'],
+  ]);
+  fs.writeFileSync(
+    path.join(luatPha, 'bieu.jsonl'),
+    `${docDong(path.join(luatPha, 'bieu.jsonl')).map((l) => {
+      const o = JSON.parse(l);
+      if (bieuPhaOverride.has(o.id)) o.nguyenVan = bieuPhaOverride.get(o.id);
+      return JSON.stringify(o);
+    }).join('\n')}\n`,
+    'utf8',
+  );
+  fs.writeFileSync(
+    path.join(luatPha, 'cau', 'bieu.jsonl'),
+    `${docDong(path.join(luatPha, 'cau', 'bieu.jsonl')).map((l) => {
+      const o = JSON.parse(l);
+      const nId = o.id.split('#')[0];
+      if (bieuPhaOverride.has(nId)) return JSON.stringify({ id: `${nId}#1`, tu: 0, den: bieuPhaOverride.get(nId).length });
+      return l;
+    }).join('\n')}\n`,
+    'utf8',
+  );
+  const L_PHA = napLuatCong(luatPha);
+
+  // Ca âm 1 (QT bắt buộc): khai tapDu: ["một pha", "đa pha"] nhưng KHÔNG có tapDuNguon / tapDuTrich -> Cổng 7 ĐỎ HO_PHU & Cổng 8 CHUA_CHUNG_MINH_TACH (roiNhau = 0)
+  const dkChaPha = dkWith(L_PHA, 'bieu:420222', 1, 1, false, 'CO_KHONG', 'NGHIA_THUONG', 'Có phải động cơ xoay chiều không?', 'Động cơ xoay chiều', 'bieu:420222#1');
+  const dkAm1A = dkWith(L_PHA, 'bieu:42022210', 1, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Số pha?', 'một pha', 'bieu:42022210#1', {
+    truc: 'số pha',
+    tap: ['một pha'],
+    tapDu: ['một pha', 'đa pha'],
+  });
+  const dkAm1B = dkWith(L_PHA, 'bieu:42022220', 1, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Số pha?', 'đa pha', 'bieu:42022220#1', {
+    truc: 'số pha',
+    tap: ['đa pha'],
+    tapDu: ['một pha', 'đa pha'],
+  });
+  const khoAm1 = ghiHoSoTam({ dkList: [dkChaPha, dkAm1A, dkAm1B] });
+  const rAm1 = chayCong({ luat: luatPha, hoSo: khoAm1, phamVi: ['bieu:420222'], chiTrong: true, cong: [4, 5, 6, 7, 8], L: L_PHA });
+  const bangAm1 = dungBangAnhEm({ chuong: '42', chaIds: ['bieu:420222'], luat: luatPha, hoSo: khoAm1, L: L_PHA }).bang[0];
+  const kqRouteAm1 = doBangAnhEm('bieu:420222', { 'hs:bieu:420222:8101': true, 'hs:bieu:42022210:8101': true }, new Map([['bieu:420222', bangAm1]]), { L: L_PHA });
+
+  kiem('CA NGƯỢC 1 (QT bắt buộc): tapDu ["một pha", "đa pha"] KHÔNG có tapDuNguon/tapDuTrich ⇒ Cổng 7 ĐỎ HO_PHU, Cổng 8 CHUA_CHUNG_MINH_TACH (roiNhau=0), doBangAnhEm dừng RE_NHANH',
+    rAm1.khuon.length === 0
+    && coNguonTapDuHopLe(dkAm1A, { L: L_PHA }) === false
+    && haiNutRoiNhau([dkAm1A], [dkAm1B], new Map(), { L: L_PHA }) === false
+    && rAm1.cong[7].loi.some((l) => /bieu:420222.*HO_PHU/.test(l))
+    && rAm1.cong[8].dem.roiNhau === 0
+    && rAm1.cong[8].dem.chuaChungMinhTach === 1
+    && bangAm1.co.includes('HO_PHU')
+    && bangAm1.co.includes('CHUA_CHUNG_MINH_TACH')
+    && kqRouteAm1.trangThai === 'RE_NHANH',
+    { c7: rAm1.cong[7].loi, c8: rAm1.cong[8], co: bangAm1.co, route: kqRouteAm1 });
+
+  // Ca âm 2 (Chống vòng tròn): khai tapDu kèm tapDuNguon trỏ vào chính dòng biểu của anh em con (bieu:<con>#1) -> Cổng 6 ĐỎ VÀ Cổng 7 ĐỎ HO_PHU
+  const dkAm2ConA = { ...dkAm1A, tapDuNguon: 'bieu:42022210#1', tapDuTrich: 'một pha' };
+  const dkAm2ConB = { ...dkAm1B, tapDuNguon: 'bieu:42022220#1', tapDuTrich: 'đa pha' };
+  const khoAm2Con = ghiHoSoTam({ dkList: [dkChaPha, dkAm2ConA, dkAm2ConB] });
+  const rAm2Con = chayCong({ luat: luatPha, hoSo: khoAm2Con, phamVi: ['bieu:420222'], chiTrong: true, cong: [4, 6, 7, 8], L: L_PHA });
+  const bangAm2Con = dungBangAnhEm({ chuong: '42', chaIds: ['bieu:420222'], luat: luatPha, hoSo: khoAm2Con, L: L_PHA }).bang[0];
+
+  const dkAm2Cha = dkWith(L_PHA, 'bieu:420222', 2, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Số pha?', 'Động cơ xoay chiều', 'bieu:420222#1', {
+    truc: 'số pha',
+    tap: ['một pha', 'đa pha'],
+    tapDu: ['một pha', 'đa pha'],
+    tapDuNguon: 'bieu:42022210#1',
+    tapDuTrich: 'một pha',
+  });
+  const khoAm2Cha = ghiHoSoTam({
+    dkList: [
+      dkChaPha,
+      dkAm2Cha,
+      { ...dkAm1A, tapDu: undefined },
+      { ...dkAm1B, tapDu: undefined },
+    ],
+  });
+  const rAm2Cha = chayCong({ luat: luatPha, hoSo: khoAm2Cha, phamVi: ['bieu:420222'], chiTrong: true, cong: [4, 6, 7, 8], L: L_PHA });
+
+  kiem('CA NGƯỢC 2 (Chống vòng tròn tự chứng minh): tapDuNguon trỏ dòng biểu của chính anh em con (bieu:<con>#1) ⇒ Cổng 6 ĐỎ, Cổng 7 ĐỎ HO_PHU, Cổng 8 roiNhau=0',
+    rAm2Con.cong[6].loi.some((l) => /trích dòng biểu của chính anh em con/.test(l))
+    && rAm2Con.cong[7].loi.some((l) => /bieu:420222.*HO_PHU/.test(l))
+    && rAm2Con.cong[8].dem.roiNhau === 0
+    && bangAm2Con.co.includes('HO_PHU')
+    && haiNutRoiNhau([dkAm2ConA], [dkAm2ConB], new Map(), { L: L_PHA }) === false
+    && rAm2Cha.cong[4].loi.some((l) => /không nằm trên đường đi/.test(l))
+    && rAm2Cha.cong[6].loi.some((l) => /trích dòng biểu của chính anh em con/.test(l)),
+    { c6Con: rAm2Con.cong[6].loi, c7Con: rAm2Con.cong[7].loi, c4Cha: rAm2Cha.cong[4].loi, c6Cha: rAm2Cha.cong[6].loi });
+
+  // Ca âm 3 (Cổng 4 kiểm trích & đường đi): tapDuTrich sai 1 chữ không nguyên văn -> Cổng 4 ĐỎ; tapDuNguon trỏ sang anh em kế bên -> Cổng 4 ĐỎ
+  const dkAm3SaiChuA = { ...dkAm1A, tapDuNguon: 'bieu:420222#1', tapDuTrich: 'một pha hay đa pha' }; // chữ thật là "một pha hoặc đa pha"
+  const dkAm3SaiChuB = { ...dkAm1B, tapDuNguon: 'bieu:420222#1', tapDuTrich: 'một pha hoặc đa pha' };
+  const khoAm3SaiChu = ghiHoSoTam({ dkList: [dkChaPha, dkAm3SaiChuA, dkAm3SaiChuB] });
+  const rAm3SaiChu = chayCong({ luat: luatPha, hoSo: khoAm3SaiChu, phamVi: ['bieu:420222'], chiTrong: true, cong: [4, 6, 7, 8], L: L_PHA });
+
+  const dkAm3NgoaiDuong = { ...dkAm1A, tapDuNguon: 'bieu:420221#1', tapDuTrich: 'da thuộc' };
+  const khoAm3NgoaiDuong = ghiHoSoTam({ dkList: [dkChaPha, dkAm3NgoaiDuong, dkAm3SaiChuB] });
+  const rAm3NgoaiDuong = chayCong({ luat: luatPha, hoSo: khoAm3NgoaiDuong, phamVi: ['bieu:420222'], chiTrong: true, cong: [4], L: L_PHA });
+
+  kiem('CA NGƯỢC 3 (Cổng 4 kiểm trích & đường đi): tapDuTrich sai 1 chữ hoặc tapDuNguon ngoài đường đi ⇒ Cổng 4 ĐỎ, Cổng 6 ĐỎ, Cổng 7 ĐỎ HO_PHU',
+    rAm3SaiChu.cong[4].loi.some((l) => /tapDuTrich không nguyên văn câu bieu:420222#1/.test(l))
+    && rAm3SaiChu.cong[6].loi.some((l) => /tapDuTrich không nguyên văn câu bieu:420222#1/.test(l))
+    && rAm3SaiChu.cong[7].loi.some((l) => /bieu:420222.*HO_PHU/.test(l))
+    && rAm3SaiChu.cong[8].dem.roiNhau === 0
+    && rAm3NgoaiDuong.cong[4].loi.some((l) => /tapDuNguon bieu:420221#1.*không nằm trên đường đi/.test(l)),
+    { c4SaiChu: rAm3SaiChu.cong[4].loi, c7SaiChu: rAm3SaiChu.cong[7].loi, c4Ngoai: rAm3NgoaiDuong.cong[4].loi });
+
+  // Ca dương: khai tapDu + tapDuNguon + tapDuTrich từ câu nút cha & chú giải chương trên đường đi -> Cổng 4, 5, 6, 7, 8 đều XANH (0 HO_PHU, roiNhau = 1) + tach-dieu-kien chuẩn hoá & gộp
+  const dkDuongA = {
+    ...dkAm1A,
+    tapDuNguon: ['bieu:420222#1', 'chuong:42:cg:3:A:a#1'],
+    tapDuTrich: ['một pha hoặc đa pha', 'các tấm plastic'],
+  };
+  const dkDuongB = {
+    ...dkAm1B,
+    tapDuNguon: ['bieu:420222#1', 'chuong:42:cg:3:A:a#1'],
+    tapDuTrich: ['một pha hoặc đa pha', 'các tấm plastic'],
+  };
+  const khoDuong = ghiHoSoTam({ dkList: [dkChaPha, dkDuongA, dkDuongB] });
+  const rDuong = chayCong({ luat: luatPha, hoSo: khoDuong, phamVi: ['bieu:420222'], chiTrong: true, cong: [4, 5, 6, 7, 8], L: L_PHA });
+  const bangDuong = dungBangAnhEm({ chuong: '42', chaIds: ['bieu:420222'], luat: luatPha, hoSo: khoDuong, L: L_PHA }).bang[0];
+  const kqRouteDuong = doBangAnhEm('bieu:420222', { 'hs:bieu:420222:8101': true, 'hs:bieu:42022210:8101': true }, new Map([['bieu:420222', bangDuong]]), { L: L_PHA });
+
+  const normTd = chuanHoaDieuKien([{
+    ve: 1,
+    phu: false,
+    kieu: 'GIA_TRI',
+    truc: 'số pha',
+    tap: ['một pha'],
+    tapDu: ['một pha', 'đa pha'],
+    tapDuNguon: ['bieu:420222#1', 'chuong:42:cg:3:A:a#1'],
+    tapDuTrich: ['"một pha hoặc đa pha."', '  các tấm plastic '],
+    mo: 'NGHIA_THUONG',
+    cauHoi: 'Số pha?',
+    trich: 'một pha',
+    nguon: 'bieu:42022210#1',
+  }], 'bieu:42022210', L_PHA, { moHinh: 'mock-td' });
+  const normTdSai = chuanHoaDieuKien([{
+    ve: 1,
+    phu: false,
+    kieu: 'GIA_TRI',
+    truc: 'số pha',
+    tap: ['một pha'],
+    tapDu: ['một pha', 'đa pha'],
+    tapDuNguon: 'bieu:420222#1',
+    tapDuTrich: 'câu trích bịa không có',
+    mo: 'NGHIA_THUONG',
+    cauHoi: 'Số pha?',
+    trich: 'một pha',
+    nguon: 'bieu:42022210#1',
+  }], 'bieu:42022210', L_PHA);
+
+  const { gopKetQuaChunk: gopChunkTd } = await import('./ho-so-ma/tach-dieu-kien.mjs');
+  const gopDaoCap = gopChunkTd([
+    { dieuKien: [{ nut: 'bieu:42022210', ve: 1, phu: false, kieu: 'GIA_TRI', truc: 'số pha', tap: ['một pha'], tapDu: ['một pha', 'đa pha'], tapDuNguon: ['bieu:420222#1', 'chuong:42:cg:3:A:a#1'], tapDuTrich: ['một pha hoặc đa pha', 'các tấm plastic'], cauHoi: 'Số pha?', trich: 'một pha', nguon: 'bieu:42022210#1' }] },
+    { dieuKien: [{ nut: 'bieu:42022210', ve: 1, phu: false, kieu: 'GIA_TRI', truc: 'số pha', tap: ['một pha'], tapDu: ['đa pha', 'một pha'], tapDuNguon: ['chuong:42:cg:3:A:a#1', 'bieu:420222#1'], tapDuTrich: ['các tấm plastic', 'một pha  hoặc đa pha'], cauHoi: 'Số pha?', trich: 'một pha', nguon: 'bieu:42022210#1' }] },
+  ]);
+  const gopKhacCap = gopChunkTd([
+    { dieuKien: [{ nut: 'bieu:42022210', ve: 1, phu: false, kieu: 'GIA_TRI', truc: 'số pha', tap: ['một pha'], tapDu: ['một pha', 'đa pha'], tapDuNguon: 'bieu:420222#1', tapDuTrich: 'một pha hoặc đa pha', cauHoi: 'Số pha?', trich: 'một pha', nguon: 'bieu:42022210#1' }] },
+    { dieuKien: [{ nut: 'bieu:42022210', ve: 1, phu: false, kieu: 'GIA_TRI', truc: 'số pha', tap: ['một pha'], tapDu: ['một pha', 'đa pha'], tapDuNguon: 'chuong:42:cg:3:A:a#1', tapDuTrich: 'các tấm plastic', cauHoi: 'Số pha?', trich: 'một pha', nguon: 'bieu:42022210#1' }] },
+  ]);
+
+  kiem('CA DƯƠNG (tapDu + tapDuNguon + tapDuTrich): Cổng 4, 5, 6, 7, 8 đều XANH (0 HO_PHU, roiNhau=1), doBangAnhEm đi thẳng DICH, tach-dieu-kien chuẩn hoá & gộp cặp nguồn đúng',
+    rDuong.khuon.length === 0
+    && [4, 5, 6, 7, 8].every((c) => rDuong.cong[c].loi.length === 0)
+    && rDuong.cong[8].dem.roiNhau === 1
+    && rDuong.cong[8].dem.chuaChungMinhTach === 0
+    && !bangDuong.co.includes('HO_PHU')
+    && !bangDuong.co.includes('CHUA_CHUNG_MINH_TACH')
+    && Boolean(bangDuong.vanTayCau?.['bieu:420222#1'])
+    && kqRouteDuong.trangThai === 'DICH' && kqRouteDuong.dich === 'bieu:42022210'
+    && normTd.banGhi.length === 1 && normTd.loi.length === 0
+    && normTd.banGhi[0].tapDuTrich[0] === 'một pha hoặc đa pha'
+    && normTd.banGhi[0].tapDuTrich[1] === 'các tấm plastic'
+    && normTd.banGhi[0].tapDuNguonVanTay?.['bieu:420222#1'] === vanTay(L_PHA.chuCau('bieu:420222#1'))
+    && normTd.banGhi[0].tapDuNguonVanTay?.['chuong:42:cg:3:A:a#1'] === vanTay(L_PHA.chuCau('chuong:42:cg:3:A:a#1'))
+    && normTdSai.banGhi.length === 0 && normTdSai.loi.some((l) => /tapDuTrich không nguyên văn/.test(l))
+    && gopDaoCap.dieuKien.length === 1 && gopDaoCap.canhBao.length === 0
+    && gopKhacCap.dieuKien.length === 2 && gopKhacCap.canhBao.length === 1,
+    { cong: rDuong.cong, co: bangDuong.co, normTd, gopDaoCap, gopKhacCap });
+
+  // PROBE 1 (Kiểm toán Vòng 1): con 6 số (bieu:420221) mượn cungDong đi xuống cháu 8 số (bieu:42022100#1) làm tapDuNguon
+  // -> Cổng 4, Cổng 6, Cổng 7 (HO_PHU) đều bắt ĐỎ, Cổng 8 roiNhau = 0 (cả khi có L và khi fallback tiền tố L=null)
+  const luatProbe1 = path.join(TAM, 'luat-probe1');
+  fs.cpSync(LUAT, luatProbe1, { recursive: true });
+  const chuChau42022100 = '- - - Với mặt ngoài bằng da thuộc hoặc bằng tấm plastic hay vật liệu dệt';
+  fs.writeFileSync(
+    path.join(luatProbe1, 'bieu.jsonl'),
+    `${docDong(path.join(luatProbe1, 'bieu.jsonl'))
+      .map((l) => JSON.parse(l))
+      .filter((o) => o.id !== 'bieu:420229' && o.id !== 'bieu:42022900')
+      .map((o) => JSON.stringify(o.id === 'bieu:42022100' ? { ...o, nguyenVan: chuChau42022100 } : o))
+      .join('\n')}\n`,
+    'utf8',
+  );
+  fs.writeFileSync(
+    path.join(luatProbe1, 'cau', 'bieu.jsonl'),
+    `${docDong(path.join(luatProbe1, 'cau', 'bieu.jsonl'))
+      .map((l) => JSON.parse(l))
+      .filter((o) => !o.id.startsWith('bieu:420229'))
+      .map((o) => JSON.stringify(o.id === 'bieu:42022100#1' ? { id: 'bieu:42022100#1', tu: 0, den: chuChau42022100.length } : o))
+      .join('\n')}\n`,
+    'utf8',
+  );
+  const L_PROBE1 = napLuatCong(luatProbe1);
+  const dkProbe1Cha = dkWith(L_PROBE1, 'bieu:42022', 1, 1, false, 'CO_KHONG', 'NGHIA_THUONG', 'Có phải túi xách không?', 'Túi xách', 'bieu:42022#1');
+  const dkProbe1A = dkWith(L_PROBE1, 'bieu:420221', 1, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Chất liệu mặt ngoài?', 'da thuộc', 'bieu:420221#1', {
+    truc: 'chất liệu mặt ngoài',
+    tap: ['da thuộc'],
+    tapDu: ['da thuộc', 'tấm plastic', 'vật liệu dệt'],
+    tapDuNguon: 'bieu:42022100#1',
+    tapDuTrich: 'da thuộc hoặc bằng tấm plastic hay vật liệu dệt',
+  });
+  const dkProbe1B = dkWith(L_PROBE1, 'bieu:420222', 1, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Chất liệu mặt ngoài?', 'tấm plastic hoặc vật liệu dệt', 'bieu:420222#1', {
+    truc: 'chất liệu mặt ngoài',
+    tap: ['tấm plastic', 'vật liệu dệt'],
+    tapDu: ['da thuộc', 'tấm plastic', 'vật liệu dệt'],
+    tapDuNguon: 'bieu:42022100#1',
+    tapDuTrich: 'da thuộc hoặc bằng tấm plastic hay vật liệu dệt',
+  });
+  const khoProbe1 = ghiHoSoTam({ dkList: [dkProbe1Cha, dkProbe1A, dkProbe1B] });
+  const rProbe1 = chayCong({ luat: luatProbe1, hoSo: khoProbe1, phamVi: ['bieu:42022'], chiTrong: true, toiCap: '6', cong: [4, 6, 7, 8], L: L_PROBE1 });
+  const bangProbe1 = dungBangAnhEm({ chuong: '42', chaIds: ['bieu:42022'], luat: luatProbe1, hoSo: khoProbe1, L: L_PROBE1 }).bang[0];
+  const conSet42022 = new Set(['bieu:420221', 'bieu:420222']);
+
+  kiem('PROBE 1 (Chặn cungDong đi xuống cháu 8 số & cây con đệ quy): con 6 số trích bieu:<cháu-8-số>#1 ⇒ Cổng 4, Cổng 6, Cổng 7 (HO_PHU) đều ĐỎ, Cổng 8 roiNhau=0',
+    moRongCayCon(conSet42022, L_PROBE1).has('bieu:42022100')
+    && laCauCapDuoiCon('bieu:42022100#1', conSet42022, { L: L_PROBE1 }) === true
+    && laCauCapDuoiCon('bieu:42022100#1', conSet42022, { L: null }) === true
+    && coNguonTapDuHopLe(dkProbe1A, { conSet: conSet42022, L: L_PROBE1 }) === false
+    && coNguonTapDuHopLe(dkProbe1A, { conSet: conSet42022, L: null }) === false
+    && haiNutRoiNhau([dkProbe1A], [dkProbe1B], new Map()) === false
+    && rProbe1.cong[4].loi.some((l) => /hs:bieu:420221:8101: tapDuNguon bieu:42022100#1.*không nằm trên đường đi của bieu:420221/.test(l))
+    && rProbe1.cong[6].loi.some((l) => /hs:bieu:420221:8101: tapDuNguon bieu:42022100#1.*không nằm trên đường đi của bieu:420221/.test(l))
+    && rProbe1.cong[6].loi.some((l) => /bieu:42022: tapDuNguon "bieu:42022100#1" trích dòng biểu của chính anh em con hoặc nguồn cấp dưới/.test(l))
+    && rProbe1.cong[7].loi.some((l) => /bieu:42022.*HO_PHU/.test(l))
+    && rProbe1.cong[8].dem.roiNhau === 0
+    && rProbe1.cong[8].dem.chuaChungMinhTach === 1
+    && bangProbe1.co.includes('HO_PHU')
+    && bangProbe1.co.includes('CHUA_CHUNG_MINH_TACH'),
+    { c4: rProbe1.cong[4].loi, c6: rProbe1.cong[6].loi, c7: rProbe1.cong[7].loi, c8: rProbe1.cong[8], co: bangProbe1.co });
+
+  // PROBE 2 (Kiểm toán Vòng 1): sửa chữ câu trong tapDuNguon ở bản sao luat-goc (giữ nguyên cụm tapDuTrich để Cổng 4 vẫn xanh)
+  // -> cả Cổng 5 (cong.mjs) lẫn so-diem.mjs (KHÔNG cần tệp bang-anh-em) đều báo ĐỎ / DO và mở lại đúng nutCanMoLai!
+  const vtKqProbe2 = vanTay(L_VANG.chuCau('chuong:02:kq:34#1'));
+  const tdVtBadKhongNguon = kiemBanGhi({ ...chiCoTapDuKhongNguon, tapDuNguonVanTay: vtKqProbe2 });
+  const tdVtBadHex = kiemBanGhi({ ...recBase, tapDuNguonVanTay: 'khong-phai-sha256' });
+  const tdVtBadThieuKey = kiemBanGhi({ ...recArrOk, tapDuNguonVanTay: { 'bieu:420222#1': vtKqProbe2 } });
+  const tdVtOkStr = kiemBanGhi({ ...recBase, tapDuNguonVanTay: vtKqProbe2 });
+  const tdVtOkObj = kiemBanGhi({ ...recArrOk, tapDuNguonVanTay: { 'bieu:420222#1': vtKqProbe2, 'chuong:39:cg:1#2': vtKqProbe2 } });
+
+  const luatProbe2Doi = path.join(TAM, 'luat-probe2-doi');
+  fs.cpSync(LUAT_VANG, luatProbe2Doi, { recursive: true });
+  const cauTargetId = 'chuong:02:kq:34#1';
+  const infoTarget = L_VANG.cau.get(cauTargetId);
+  const chuTargetGoc = L_VANG.chuCau(cauTargetId);
+  const hauToSua = ' (bổ sung sửa đổi văn bản luật)';
+  const chuTargetMoi = `${chuTargetGoc}${hauToSua}`;
+  const deltaLen = hauToSua.length;
+  fs.writeFileSync(
+    path.join(luatProbe2Doi, 'chuong.jsonl'),
+    `${docDong(path.join(luatProbe2Doi, 'chuong.jsonl')).map((l) => {
+      const o = JSON.parse(l);
+      if (o.id === infoTarget.nut) {
+        o.nguyenVan = `${o.nguyenVan.slice(0, infoTarget.tu)}${chuTargetMoi}${o.nguyenVan.slice(infoTarget.den)}`;
+      }
+      return JSON.stringify(o);
+    }).join('\n')}\n`,
+    'utf8',
+  );
+  fs.writeFileSync(
+    path.join(luatProbe2Doi, 'cau', 'chuong.jsonl'),
+    `${docDong(path.join(luatProbe2Doi, 'cau', 'chuong.jsonl')).map((l) => {
+      const o = JSON.parse(l);
+      if (o.id === cauTargetId) {
+        return JSON.stringify({ ...o, den: o.den + deltaLen });
+      }
+      if (L_VANG.cau.get(o.id)?.nut === infoTarget.nut && o.tu >= infoTarget.den) {
+        return JSON.stringify({ ...o, tu: o.tu + deltaLen, den: o.den + deltaLen });
+      }
+      return l;
+    }).join('\n')}\n`,
+    'utf8',
+  );
+  const L_PROBE2_DOI = napLuatCong(luatProbe2Doi);
+
+  const TAP_DU_0201 = ['cả con', 'nửa con', 'pha có xương khác', 'lọc không xương'];
+  const TD_0201 = {
+    tapDu: TAP_DU_0201,
+    tapDuNguon: cauTargetId,
+    tapDuTrich: 'có xương',
+    tapDuNguonVanTay: vtKqProbe2,
+  };
+  const dkProbe2List = [
+    dkVang('bieu:0201', 1, 1, false, 'GIA_TRI', 'DINH_NGHIA_LUAT', 'Động vật thuộc loài nào?', 'động vật họ trâu bò', 'bieu:0201#1', { truc: 'loài', tap: ['động vật họ trâu bò'], moNguon: 'nhom:0201:ct:1#1' }),
+    dkVang('bieu:0201', 2, 1, false, 'GIA_TRI', 'MO_TA_HUONG_DAN', 'Sản phẩm là gì?', 'Thịt', 'bieu:0201#1', { truc: 'sản phẩm', tap: ['Thịt'], moNguon: 'chuong:02:kq:2#1' }),
+    dkVang('bieu:0201', 3, 1, false, 'GIA_TRI', 'DINH_NGHIA_LUAT', 'Trạng thái bảo quản là gì?', 'tươi hoặc ướp lạnh', 'bieu:0201#1', { truc: 'trạng thái', tap: ['tươi', 'ướp lạnh'], moNguon: 'chuong:02:kq:20#1' }),
+    dkVang('bieu:020110', 1, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Kiểu pha lọc của thịt?', 'Thịt cả con và nửa con', 'bieu:020110#1', { truc: 'kiểu pha lọc', tap: ['cả con', 'nửa con'], ...TD_0201 }),
+    dkVang('bieu:020120', 1, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Kiểu pha lọc của thịt?', 'Thịt pha có xương khác', 'bieu:020120#1', { truc: 'kiểu pha lọc', tap: ['pha có xương khác'], ...TD_0201 }),
+    dkVang('bieu:020130', 1, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Kiểu pha lọc của thịt?', 'Thịt lọc không xương', 'bieu:020130#1', { truc: 'kiểu pha lọc', tap: ['lọc không xương'], ...TD_0201 }),
+  ];
+  const khoProbe2NoBang = ghiHoSoTam({ dkList: dkProbe2List });
+  const sdProbe2Goc = chamDiemNhom('0201', { luat: LUAT_VANG, hoSo: khoProbe2NoBang, L: L_VANG });
+  const rProbe2Doi = chayCong({ luat: luatProbe2Doi, hoSo: khoProbe2NoBang, phamVi: ['0201'], chiTrong: true, cong: [4, 5, 7], L: L_PROBE2_DOI });
+  const sdProbe2Doi = chamDiemNhom('0201', { luat: luatProbe2Doi, hoSo: khoProbe2NoBang, L: L_PROBE2_DOI });
+
+  // Kiểm bổ sung Cổng 5 bắt vanTayCau lệch trên bang-anh-em ngay cả khi bản ghi cũ chưa ghi tapDuNguonVanTay
+  const khoProbe2CoBang = ghiHoSoTam({
+    dkList: dkProbe2List.map(({ tapDuNguonVanTay: _b, ...rest }) => rest),
+  });
+  sinhBangAnhEm({ chuong: '02', chaIds: ['bieu:0201'], luat: LUAT_VANG, hoSo: khoProbe2CoBang, ghi: true });
+  const rProbe2Bang5 = chayCong({ luat: luatProbe2Doi, hoSo: khoProbe2CoBang, phamVi: ['0201'], chiTrong: true, cong: [5], L: L_PROBE2_DOI });
+
+  kiem('PROBE 2 (tapDuNguonVanTay ở Khuôn, Cổng 5 & so-diem không cần bang-anh-em): đổi chữ câu tapDuNguon ⇒ Cổng 5 ĐỎ, Cổng 7 HO_PHU, so-diem báo DO & mở lại đúng nutCanMoLai',
+    tdVtOkStr.length === 0 && tdVtOkObj.length === 0
+    && tdVtBadKhongNguon.some((l) => /không mang tapDuNguonVanTay/.test(l))
+    && tdVtBadHex.some((l) => /tapDuNguonVanTay phải là sha256 hex/.test(l))
+    && tdVtBadThieuKey.some((l) => /khớp mọi phần tử tapDuNguon/.test(l))
+    && !fs.existsSync(path.join(khoProbe2NoBang, 'bang-anh-em', '02.jsonl'))
+    && sdProbe2Goc.trangThai === 'DONG'
+    && rProbe2Doi.cong[4].loi.length === 0
+    && rProbe2Doi.cong[5].loi.some((l) => /tapDuNguonVanTay lệch câu chuong:02:kq:34#1/.test(l))
+    && rProbe2Doi.cong[7].loi.some((l) => /bieu:0201.*HO_PHU/.test(l))
+    && sdProbe2Doi.trangThai === 'DO'
+    && sdProbe2Doi.cauDoiVanTay.includes('chuong:02:kq:34#1')
+    && ['bieu:020110', 'bieu:020120', 'bieu:020130'].every((nId) => sdProbe2Doi.nutCanMoLai.includes(nId))
+    && rProbe2Bang5.cong[5].loi.some((l) => /bang-anh-em\(bieu:0201\): vanTayCau lệch câu chuong:02:kq:34#1/.test(l)),
+    { sdGoc: sdProbe2Goc.trangThai, c5: rProbe2Doi.cong[5].loi, c7: rProbe2Doi.cong[7].loi, sdDoi: sdProbe2Doi, c5Bang: rProbe2Bang5.cong[5].loi });
+
+  // PROBE 3 (Kiểm toán Vòng 1):
+  //   (a) con A trích sen:<conA>:1#1, con B trích sen:<conB>:1#1 (nguồn cấp dưới + lệch nguồn)
+  //   (b) hai anh em cùng trục khai tapDuNguon lệch nhau dù đều là câu tổ tiên hợp lệ
+  //   -> Cổng 6 ĐỎ, Cổng 7 ĐỎ HO_PHU, Cổng 8 roiNhau = 0!
+  const luatProbe3 = path.join(TAM, 'luat-probe3');
+  fs.cpSync(luatPha, luatProbe3, { recursive: true });
+  const senA = {
+    id: 'sen:42022210:1',
+    loai: 'SEN',
+    cha: null,
+    so: '4202.22.10',
+    nguyenVan: 'Phân nhóm này chỉ áp dụng cho loại một pha hoặc đa pha chuyên biệt.',
+    lop: 'HUONG_DAN',
+    nguon: { vanBan: 'SEN thử nghiệm', ban: 'AHTN2022', trang: 1 },
+    hieuLuc: { tu: '2023-07-24', den: null },
+  };
+  const senB = {
+    ...senA,
+    id: 'sen:42022220:1',
+    so: '4202.22.20',
+  };
+  const senLinesP3 = [...docDong(path.join(luatProbe3, 'sen.jsonl')), JSON.stringify(senA), JSON.stringify(senB)];
+  const cauSenLinesP3 = [
+    ...docDong(path.join(luatProbe3, 'cau', 'sen.jsonl')),
+    JSON.stringify({ id: 'sen:42022210:1#1', tu: 0, den: senA.nguyenVan.length }),
+    JSON.stringify({ id: 'sen:42022220:1#1', tu: 0, den: senB.nguyenVan.length }),
+  ];
+  fs.writeFileSync(path.join(luatProbe3, 'sen.jsonl'), `${senLinesP3.join('\n')}\n`, 'utf8');
+  fs.writeFileSync(path.join(luatProbe3, 'cau', 'sen.jsonl'), `${cauSenLinesP3.join('\n')}\n`, 'utf8');
+  const L_PROBE3 = napLuatCong(luatProbe3);
+
+  const dkP3SenA = { ...dkAm1A, tapDuNguon: 'sen:42022210:1#1', tapDuTrich: 'một pha hoặc đa pha' };
+  const dkP3SenB = { ...dkAm1B, tapDuNguon: 'sen:42022220:1#1', tapDuTrich: 'một pha hoặc đa pha' };
+  const khoP3Sen = ghiHoSoTam({ dkList: [dkChaPha, dkP3SenA, dkP3SenB] });
+  const rP3Sen = chayCong({ luat: luatProbe3, hoSo: khoP3Sen, phamVi: ['bieu:420222'], chiTrong: true, cong: [4, 6, 7, 8], L: L_PROBE3 });
+  const bangP3Sen = dungBangAnhEm({ chuong: '42', chaIds: ['bieu:420222'], luat: luatProbe3, hoSo: khoP3Sen, L: L_PROBE3 }).bang[0];
+  const conSet420222 = new Set(['bieu:42022210', 'bieu:42022220']);
+
+  const dkP3LechA = { ...dkAm1A, tapDuNguon: 'bieu:420222#1', tapDuTrich: 'một pha hoặc đa pha' };
+  const dkP3LechB = { ...dkAm1B, tapDuNguon: 'chuong:42:cg:3:A:a#1', tapDuTrich: 'các tấm plastic' };
+  const khoP3Lech = ghiHoSoTam({ dkList: [dkChaPha, dkP3LechA, dkP3LechB] });
+  const rP3Lech = chayCong({ luat: luatProbe3, hoSo: khoP3Lech, phamVi: ['bieu:420222'], chiTrong: true, cong: [4, 6, 7, 8], L: L_PROBE3 });
+  const bangP3Lech = dungBangAnhEm({ chuong: '42', chaIds: ['bieu:420222'], luat: luatProbe3, hoSo: khoP3Lech, L: L_PROBE3 }).bang[0];
+  const kqRouteP3Lech = doBangAnhEm('bieu:420222', { 'hs:bieu:420222:8101': true, 'hs:bieu:42022210:8101': true }, new Map([['bieu:420222', bangP3Lech]]), { L: L_PROBE3 });
+
+  kiem('PROBE 3 (Chặn sen:<con>:... & bắt buộc đồng nhất tapDuNguon giữa các anh em cùng trục): Cổng 6 ĐỎ, Cổng 7 ĐỎ HO_PHU, Cổng 8 roiNhau=0',
+    laCauCapDuoiCon('sen:42022210:1#1', conSet420222, { L: L_PROBE3 }) === true
+    && laCauCapDuoiCon('sen:42022210:1#1', conSet420222, { L: null }) === true
+    && coNguonTapDuHopLe(dkP3SenA, { conSet: conSet420222, L: L_PROBE3 }) === false
+    && coNguonTapDuHopLe(dkP3SenA, { conSet: conSet420222, L: null }) === false
+    && rP3Sen.cong[4].loi.length === 0
+    && rP3Sen.cong[6].loi.some((l) => /tapDuNguon "sen:42022210:1#1" trích dòng biểu của chính anh em con hoặc nguồn cấp dưới/.test(l))
+    && rP3Sen.cong[6].loi.some((l) => /khai tapDuNguon không thống nhất giữa các bản ghi/.test(l))
+    && rP3Sen.cong[7].loi.some((l) => /bieu:420222.*HO_PHU/.test(l))
+    && rP3Sen.cong[8].dem.roiNhau === 0
+    && bangP3Sen.co.includes('HO_PHU')
+    && bangP3Sen.co.includes('CHUA_CHUNG_MINH_TACH')
+    && haiNutRoiNhau([dkP3SenA], [dkP3SenB], new Map()) === false
+    && rP3Lech.cong[4].loi.length === 0
+    && rP3Lech.cong[6].loi.some((l) => /khai tapDuNguon không thống nhất giữa các bản ghi/.test(l))
+    && rP3Lech.cong[7].loi.some((l) => /bieu:420222.*HO_PHU/.test(l))
+    && rP3Lech.cong[8].dem.roiNhau === 0
+    && bangP3Lech.co.includes('HO_PHU')
+    && haiNutRoiNhau([dkP3LechA], [dkP3LechB], new Map(), { L: L_PROBE3 }) === false
+    && kqRouteP3Lech.trangThai === 'RE_NHANH',
+    { c6Sen: rP3Sen.cong[6].loi, c7Sen: rP3Sen.cong[7].loi, c6Lech: rP3Lech.cong[6].loi, c7Lech: rP3Lech.cong[7].loi, routeLech: kqRouteP3Lech });
 }
 
 fs.rmSync(TAM, { recursive: true, force: true });

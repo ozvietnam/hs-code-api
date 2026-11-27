@@ -34,7 +34,7 @@ const RE_VAN = /^[0-9a-f]{64}$/;
 const RE_ID_NGUONG = /^hs:.+:\d+$/;
 const TRUONG_VAN_DE = new Set(['id', 'nut', 'loai', 'dieuKien', 'trich', 'cau', 'tu', 'den', 'voi', 'nguong', 'thuatNgu', 'phuDinh', 'duKien', 'lop', 'nguon', 'van', 'trangThai', 'phieu', 'ghiChu']);
 const TRUONG_BO_QUA = new Set(['id', 'nut', 'loai', 'cau', 'lyDo', 'van', 'ghiChu']);
-const TRUONG_DIEU_KIEN = new Set(['id', 'nut', 'loai', 've', 'phu', 'kieu', 'truc', 'daTri', 'nguong', 'tap', 'tapDu', 'mo', 'moNguon', 'moNguonVanTay', 'cauHoi', 'trich', 'nguon', 'vanTay', 'trangThai', 'phieu', 'ghiChu']);
+const TRUONG_DIEU_KIEN = new Set(['id', 'nut', 'loai', 've', 'phu', 'kieu', 'truc', 'daTri', 'nguong', 'tap', 'tapDu', 'tapDuNguon', 'tapDuTrich', 'tapDuNguonVanTay', 'mo', 'moNguon', 'moNguonVanTay', 'cauHoi', 'trich', 'nguon', 'vanTay', 'trangThai', 'phieu', 'ghiChu']);
 const TRUONG_GIAI_CHONG = new Set(['id', 'nut', 'loai', 'cap', 'cach', 'trich', 'nguon', 'vanTay', 'trangThai', 'phieu', 'ghiChu']);
 const TRUONG_CANH_TRANH = new Set(['id', 'nut', 'loai', 'nhomCanhTranh', 'phepThu', 'trich', 'nguon', 'vanTay', 'trangThai', 'phieu', 'ghiChu']);
 const TRUONG_BANG_ANH_EM = new Set(['khuon', 'cha', 'chuong', 'chuoiCha', 'anhEm', 'giaiChong', 'co', 'vanTayCau', 'vanTay']);
@@ -74,6 +74,8 @@ function hopLeMoNguon(v) {
   if (cauHopLe(v)) return true;
   return Array.isArray(v) && v.length > 0 && v.every(cauHopLe);
 }
+
+const cauHopLeTapDu = (s) => typeof s === 'string' && RE_CAU.test(s) && !/^(?:tb|wco):/.test(s);
 
 function kiemDieuKien(x) {
   const loi = []; const o = x.id || '(thiếu id)';
@@ -117,6 +119,47 @@ function kiemDieuKien(x) {
     if (x.tapDu !== undefined) loi.push(`${o}: kieu ${x.kieu} không mang tapDu`);
     if (x.truc !== undefined) loi.push(`${o}: kieu ${x.kieu} không mang truc`);
     if (x.daTri !== undefined) loi.push(`${o}: kieu ${x.kieu} không mang daTri`);
+  }
+  if (x.tapDuNguon !== undefined || x.tapDuTrich !== undefined) {
+    if (x.kieu !== 'GIA_TRI' || x.daTri || x.tapDu === undefined) {
+      loi.push(`${o}: tapDuNguon/tapDuTrich chỉ dùng khi kieu GIA_TRI đơn trị có khai tapDu`);
+    }
+    if (x.tapDuNguon === undefined || x.tapDuTrich === undefined) {
+      loi.push(`${o}: tapDuNguon và tapDuTrich phải đi theo cặp`);
+    } else if (typeof x.tapDuNguon === 'string' && typeof x.tapDuTrich === 'string') {
+      if (!cauHopLeTapDu(x.tapDuNguon)) loi.push(`${o}: tapDuNguon phải là id câu luật hợp lệ (cấm tb: và wco:)`);
+      if (!chuoi(x.tapDuTrich)) loi.push(`${o}: tapDuTrich phải là chuỗi không rỗng`);
+    } else if (Array.isArray(x.tapDuNguon) && Array.isArray(x.tapDuTrich)) {
+      if (!x.tapDuNguon.length || !x.tapDuNguon.every(cauHopLeTapDu)) {
+        loi.push(`${o}: tapDuNguon mảng phải không rỗng và mọi phần tử là id câu luật hợp lệ (cấm tb: và wco:)`);
+      }
+      if (!x.tapDuTrich.length || !x.tapDuTrich.every(chuoi)) {
+        loi.push(`${o}: tapDuTrich mảng phải gồm các chuỗi không rỗng`);
+      }
+      if (x.tapDuTrich.length !== x.tapDuNguon.length) {
+        loi.push(`${o}: tapDuNguon và tapDuTrich mảng phải cùng độ dài (${x.tapDuNguon.length} vs ${x.tapDuTrich.length})`);
+      }
+    } else {
+      loi.push(`${o}: tapDuNguon và tapDuTrich phải cùng là chuỗi đơn hoặc cùng là mảng song song cùng độ dài >= 1`);
+    }
+  }
+  if (x.tapDuNguonVanTay !== undefined) {
+    if (x.tapDuNguon === undefined) {
+      loi.push(`${o}: không mang tapDuNguonVanTay khi chưa khai tapDuNguon`);
+    } else if (typeof x.tapDuNguon === 'string') {
+      const okStr = typeof x.tapDuNguonVanTay === 'string' && RE_VAN.test(x.tapDuNguonVanTay);
+      const okObj = Boolean(x.tapDuNguonVanTay) && typeof x.tapDuNguonVanTay === 'object' && !Array.isArray(x.tapDuNguonVanTay)
+        && Object.keys(x.tapDuNguonVanTay).length === 1
+        && Object.hasOwn(x.tapDuNguonVanTay, x.tapDuNguon)
+        && RE_VAN.test(x.tapDuNguonVanTay[x.tapDuNguon] || '');
+      if (!okStr && !okObj) loi.push(`${o}: tapDuNguonVanTay phải là sha256 hex hoặc object { [cauId]: sha256 } khớp tapDuNguon`);
+    } else if (Array.isArray(x.tapDuNguon)) {
+      const tdSet = new Set(x.tapDuNguon);
+      const okObj = Boolean(x.tapDuNguonVanTay) && typeof x.tapDuNguonVanTay === 'object' && !Array.isArray(x.tapDuNguonVanTay)
+        && Object.entries(x.tapDuNguonVanTay).every(([k, v]) => tdSet.has(k) && RE_VAN.test(v || ''))
+        && x.tapDuNguon.every((tdId) => Object.hasOwn(x.tapDuNguonVanTay, tdId));
+      if (!okObj) loi.push(`${o}: tapDuNguonVanTay phải là object { [cauId]: sha256 } khớp mọi phần tử tapDuNguon`);
+    }
   }
   if (!MO_DIEU_KIEN.includes(x.mo)) loi.push(`${o}: mo lạ "${x.mo}" (chỉ ${MO_DIEU_KIEN.join(' | ')})`);
   if (x.mo === 'DINH_NGHIA_LUAT' || x.mo === 'MO_TA_HUONG_DAN') {

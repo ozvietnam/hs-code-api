@@ -7,8 +7,8 @@
 //   (4) TRÍCH    trích nguyên văn câu, id câu thật, lop / nguon khớp nút nguồn, dữ kiện có trong chữ luật, câu thuộc đường đi của nút
 //   (5) VÂN TAY  van = sha256 chữ câu hiện hành; lệch thì đỏ kèm lệnh dựng lại
 //   (6) TÁCH     mỗi nút có tên >= 1 DIEU_KIEN; số vế >= số đoạn tách bởi ";" trong tên; trich nguyên văn, vanTay khớp, NGUONG thật
-//   (7) PHỦ      nhóm không có "Loại khác" phải chứng minh phủ kín phạm vi cha; không chứng minh được -> HO_PHU
-//   (8) CHỒNG    rời nhau khi cùng trục SO không giao, cùng trục GIA_TRI đơn trị (!daTri) có tapDu và khác tập, hoặc cặp phu bù nhau theo cấu trúc (hoặc GIAI_CHONG); thiếu tapDu hoặc daTri:true -> CHUA_CHUNG_MINH_TACH (xếp cặp cùng trục lên đầu, không chặn); VUNG_CHONG (kể cả chồng khoảng SO cùng đại lượng) chưa giải -> chặn
+//   (7) PHỦ      nhóm không có "Loại khác" phải chứng minh phủ kín phạm vi cha (tapDu phải có tapDuNguon + tapDuTrich); không chứng minh được -> HO_PHU
+//   (8) CHỒNG    rời nhau khi cùng trục SO không giao, cùng trục GIA_TRI đơn trị (!daTri) có tapDu kèm nguồn hợp lệ và khác tập, hoặc cặp phu bù nhau theo cấu trúc (hoặc GIAI_CHONG); thiếu tapDu/nguồn hoặc daTri:true -> CHUA_CHUNG_MINH_TACH (xếp cặp cùng trục lên đầu, không chặn); VUNG_CHONG (kể cả chồng khoảng SO cùng đại lượng) chưa giải -> chặn
 //   (9) HỎI      cauHoiToiThieu sinh được cho mọi "Loại khác"; không nút nào thiếu chuỗi cha
 //  (10) DÒ       mỗi ca thử ví dụ chú giải/SEN chạy qua bảng anh em ra đúng đích hoặc rẽ nhánh đúng dữ kiện thiếu
 //  (11) MỞ       100% DIEU_KIEN có mo hợp lệ; NGHIA_THUONG đếm đủ và có cauHoi (không đòi về 0)
@@ -35,6 +35,9 @@ import {
   haiNutRoiNhau,
   laChongSoTrungTruc,
   layTapDuHopLeTheoTruc,
+  moRongCayCon,
+  laCauCapDuoiCon,
+  khoaTapDuNguon,
   chungMinhPhuKin,
   taoBangChoCha,
   doBangAnhEm,
@@ -181,6 +184,56 @@ export function cacNutCungDong(nutId, L, bieuMeta, cungDongNguoc = null) {
     }
   }
   return [...daTham];
+}
+
+function layCapTapDu(x) {
+  if (x?.tapDuNguon === undefined && x?.tapDuTrich === undefined) return { hopLeCap: true, cap: [] };
+  if (typeof x.tapDuNguon === 'string' && typeof x.tapDuTrich === 'string') {
+    return { hopLeCap: true, cap: [[x.tapDuNguon, x.tapDuTrich]] };
+  }
+  if (
+    Array.isArray(x.tapDuNguon)
+    && Array.isArray(x.tapDuTrich)
+    && x.tapDuNguon.length > 0
+    && x.tapDuNguon.length === x.tapDuTrich.length
+  ) {
+    return { hopLeCap: true, cap: x.tapDuNguon.map((n, i) => [n, x.tapDuTrich[i]]) };
+  }
+  return { hopLeCap: false, cap: [] };
+}
+
+function kiemTapDuNguonTrenBanGhi(x, idRec, L, { laGir, tren, cungDongSet, ngan }, dsLoi) {
+  if (x.tapDuNguon === undefined && x.tapDuTrich === undefined) return;
+  const { hopLeCap, cap: capTd } = layCapTapDu(x);
+  if (!hopLeCap) {
+    dsLoi.push(`${idRec}: tapDuNguon và tapDuTrich phải đi theo cặp đối xứng`);
+    return;
+  }
+  for (const [tdNguon, tdTrich] of capTd) {
+    if (/^(?:tb|wco):/.test(tdNguon || '')) {
+      dsLoi.push(`${idRec}: tapDuNguon không được trích tb:/wco: (${tdNguon})`);
+      continue;
+    }
+    const tdChu = L.chuCau(tdNguon);
+    if (tdChu === null) {
+      dsLoi.push(`${idRec}: tapDuNguon ${tdNguon} không có trong kho luật gốc`);
+      continue;
+    }
+    const tdChu0 = G.chuCuaCau(tdNguon);
+    const tdVao = (L.canhTheoTu.get(tdNguon) || []).some((e) => e.den === x.nut && loaiCanhVao(e));
+    const tdNutCau = L.cau.get(tdNguon).nut;
+    // Không cho anhEm.has(tdChu0) và cấm mượn cungDongSet đi xuống nút nằm nghiêm ngặt bên dưới x.nut
+    const namDuoiNut = Boolean(tdChu0 && G.trenCua(tdChu0, L.cay).includes(x.nut));
+    const tdDungDuong = laGir
+      ? (tdNutCau === x.nut || tdNutCau.startsWith(`${x.nut}:`))
+      : !namDuoiNut && (/^gir:/.test(tdNguon) || tdVao || tdChu0 === G.CHUNG || tdChu0 === x.nut || tren.has(tdChu0) || Boolean(cungDongSet?.has(tdChu0)));
+    if (!tdDungDuong) {
+      dsLoi.push(`${idRec}: tapDuNguon ${tdNguon} thuộc ${tdChu0 || tdNutCau}, không nằm trên đường đi của ${x.nut}`);
+    }
+    if (typeof tdTrich !== 'string' || !tdTrich.trim() || !chuanSo(tdChu).includes(chuanSo(tdTrich))) {
+      dsLoi.push(`${idRec}: tapDuTrich không nguyên văn câu ${tdNguon} — "${ngan(String(tdTrich ?? ''))}"`);
+    }
+  }
 }
 
 /**
@@ -413,6 +466,7 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
             else if (L.chuCau(mnId) === null) ra[4].loi.push(`${idRec}: moNguon ${mnId} không có trong kho luật gốc`);
           }
         }
+        kiemTapDuNguonTrenBanGhi(x, idRec, L, { laGir, tren, cungDongSet, ngan }, ra[4].loi);
       } else if (x.loai === 'GIAI_CHONG') {
         const conCha = new Set(G.conCua(x.nut, L.cay));
         if (!conCha.has(x.cap[0]) || !conCha.has(x.cap[1])) {
@@ -465,6 +519,31 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
           if (vanTay(mnChu) !== vt) {
             ra[5].loi.push(`${idRec}: moNguonVanTay lệch câu ${mnId} (luật đổi chữ)`);
           }
+        }
+      }
+      if (x.loai === 'DIEU_KIEN' && x.tapDuNguonVanTay !== undefined) {
+        const capTdVt = typeof x.tapDuNguonVanTay === 'string'
+          ? (typeof x.tapDuNguon === 'string' ? [[x.tapDuNguon, x.tapDuNguonVanTay]] : [])
+          : (x.tapDuNguonVanTay && typeof x.tapDuNguonVanTay === 'object' ? Object.entries(x.tapDuNguonVanTay) : []);
+        for (const [tdId, vt] of capTdVt) {
+          const tdChu = /^(?:tb|wco):/.test(tdId || '') ? null : L.chuCau(tdId);
+          if (tdChu === null) continue;
+          ra[5].soKiem += 1;
+          if (vanTay(tdChu) !== vt) {
+            ra[5].loi.push(`${idRec}: tapDuNguonVanTay lệch câu ${tdId} (luật đổi chữ)`);
+          }
+        }
+      }
+    }
+    const R_BANG_5 = (kho.bangAnhEm || []).filter((b) => !b._hong && (!pv.length || (chiTrong ? NTrong.has(b.cha) : N.has(b.cha))));
+    for (const b of R_BANG_5) {
+      if (!b.vanTayCau || typeof b.vanTayCau !== 'object') continue;
+      for (const [cid, vt] of Object.entries(b.vanTayCau)) {
+        const bChu = /^tb:/.test(cid || '') ? null : L.chuCau(cid);
+        if (bChu === null) continue;
+        ra[5].soKiem += 1;
+        if (vanTay(bChu) !== vt) {
+          ra[5].loi.push(`bang-anh-em(${b.cha}): vanTayCau lệch câu ${cid} (luật đổi chữ)`);
         }
       }
     }
@@ -524,6 +603,7 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
             }
           }
         }
+        kiemTapDuNguonTrenBanGhi(x, x.id, L, { laGir, tren, cungDongSet, ngan }, ra[6].loi);
       }
       if (pv.length) {
         for (const id of NTrong) {
@@ -597,6 +677,30 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
             if (!chaCoTapDu && conTruc.some((d) => Array.isArray(d.tapDu)) && conTruc.some((d) => !Array.isArray(d.tapDu))) {
               ra[6].loi.push(`${g.cha}: trục "${t}" khai tapDu ở anh em thì phải khai trên mọi anh em cùng trục (hoặc khai một lần ở nút cha)`);
             }
+            const conSet = new Set(g.con);
+            const cayConSet = moRongCayCon(conSet, L);
+            const nutConTruc = [...new Set(conTruc.map((d) => d.nut))];
+            const laChaConCapDuoi = !chaCoTapDu
+              && nutConTruc.length === 1
+              && G.conCua(nutConTruc[0], L.cay).some((cid) => (
+                (dkTheoNut.get(cid) || []).some((cd) => cd.kieu === 'GIA_TRI' && typeof cd.truc === 'string' && chuanSo(cd.truc).toLowerCase() === t)
+              ));
+            if (!laChaConCapDuoi) {
+              for (const d of tatCaCoTapDu) {
+                const dsTdNguon = Array.isArray(d.tapDuNguon) ? d.tapDuNguon : (typeof d.tapDuNguon === 'string' ? [d.tapDuNguon] : []);
+                for (const tdNguon of dsTdNguon) {
+                  if (laCauCapDuoiCon(tdNguon, conSet, { L, cayConSet, cacNutCungTruc: nutConTruc })) {
+                    ra[6].loi.push(`${g.cha}: tapDuNguon "${tdNguon}" trích dòng biểu của chính anh em con hoặc nguồn cấp dưới (phải trích câu luật/chú giải hoặc lời văn nút cha)`);
+                  }
+                }
+              }
+              if (tatCaCoTapDu.some((d) => d.tapDuNguon !== undefined)) {
+                const khoaNguonSet = new Set(tatCaCoTapDu.map(khoaTapDuNguon));
+                if (khoaNguonSet.size > 1) {
+                  ra[6].loi.push(`${g.cha}: trục "${t}" khai tapDuNguon không thống nhất giữa các bản ghi`);
+                }
+              }
+            }
           }
         }
       }
@@ -609,7 +713,7 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
         if (g.con.some((id) => laLoaiKhacThuan(id, L, bieuMeta))) continue;
         const duongCha = G.duongDiNut(g.cha, L.cay) || [];
         const dksDuongCha = duongCha.flatMap((b) => dkTheoNut.get(b.nut) || []);
-        const tapDuTheoTruc = layTapDuHopLeTheoTruc(g.con, dkTheoNut, dkTheoNut.get(g.cha) || [], dksDuongCha);
+        const tapDuTheoTruc = layTapDuHopLeTheoTruc(g.con, dkTheoNut, dkTheoNut.get(g.cha) || [], dksDuongCha, { L });
         const truTheoNut = taoBanDoTruAnhEm(g.cha, g.con, L, bieuMeta, dkTheoNut, giaiChongTheoCha.get(g.cha) || [], nguongById, { tapDuTheoTruc });
         if (!chungMinhPhuKin(g.con, dkTheoNut, nguongById, dkTheoNut.get(g.cha) || [], dksDuongCha, { chaId: g.cha, L, bieuMeta, truTheoNut })) {
           ra[7].loi.push(`${g.cha}: HO_PHU — nhóm không có "Loại khác" nhưng chưa chứng minh phủ kín phạm vi cha`);
@@ -653,7 +757,7 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
         );
         const duongCha = G.duongDiNut(g.cha, L.cay) || [];
         const dksDuongCha = duongCha.flatMap((b) => dkTheoNut.get(b.nut) || []);
-        const tapDuTheoTruc = layTapDuHopLeTheoTruc(g.con, dkTheoNut, dkTheoNut.get(g.cha) || [], dksDuongCha);
+        const tapDuTheoTruc = layTapDuHopLeTheoTruc(g.con, dkTheoNut, dkTheoNut.get(g.cha) || [], dksDuongCha, { L });
         const truTheoNut = taoBanDoTruAnhEm(g.cha, g.con, L, bieuMeta, dkTheoNut, gcHopLeCha, nguongById, { tapDuTheoTruc });
         for (let i = 0; i < coTen.length; i += 1) {
           for (let j = i + 1; j < coTen.length; j += 1) {
