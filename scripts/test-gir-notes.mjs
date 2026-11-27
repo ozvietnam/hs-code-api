@@ -22,7 +22,7 @@ const chain = buildNoteChain('85171300');
 assert('chain has 5 levels', chain.length === 5);
 assert('section XVI for ch85', chain[0].code === 'XVI');
 assert('chapter 85', chain[1].code === '85');
-assert('national includes bao_gom', chain[4].noteType === 'INCLUDES');
+assert('national CLASSIFICATION_RULE from bieu.jsonl (no AI_CHUA_KIEM)', chain[4].noteType === 'CLASSIFICATION_RULE' && /bieu\.jsonl/.test(chain[4].sourceDocument || '') && !chain[4].nguonLoai);
 
 const cov = getNotesCoverage();
 assert('coverage has national', cov.byNational > 8000);

@@ -7,7 +7,7 @@
   "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
-    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#agent-B-lo-A",
+    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-830220",
     "ngay": "2026-10-30"
   },
   "duyet": {
@@ -49,12 +49,14 @@
   ],
   "ghiChuSoan": [
     {
-      "ma": "mau",
+      "ma": "830220",
+      "loai": "QUYET_DINH",
       "ghiChu": "MẪU \"ngưỡng số SO, một dòng có tên + một Loại khác trần\". Phân nhóm 2 dòng: 83022010 có tên, 83022090 \"Loại khác\" trần (gói --goi đánh dấu \"phần còn lại — không ghi điều kiện\") nên chỉ số hoá 83022010; máy tự phủ định nó cho 83022090."
     },
     {
       "ma": "83022010",
-      "ghiChu": "Nguồn tax.83022010 (chữ biểu Tổng cục, NGUYEN_VAN), trích nguyên dòng. \"trên 100 mm\" ⇒ op \">\" 100 mm; \"không quá 250 mm\" ⇒ op \"<=\" 250 mm (bảng biên LUAT-CHUNG: trên = >, không quá = <=). Khoá duongKinh (SO, donViChuan mm) — KHÔNG dùng duongKinhTrong (khoá đó dành cho \"đường kính trong/cửa nạp/cửa thoát\"). \"(bao gồm cả lốp)\" là cách ĐO đường kính, không phải điều kiện riêng: không có khoá từ vựng cho nó và không được bịa, nên chỉ ghi ở đây cho người khai/người soát. Lưu ý soát: tu-vung.docGiaTri không đọc được ngưỡng của câu này (cụm \"(bao gồm cả lốp)\" chen giữa \"đường kính\" và số) nên cổng 3 KHÔNG tự đối chiếu biên ≤/< — người soát phải đối chiếu tay."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Nguồn tax.83022010 (chữ biểu Tổng cục, NGUYEN_VAN), trích nguyên dòng. \"trên 100 mm\" ⇒ op \">\" 100 mm; \"không quá 250 mm\" ⇒ op \"<=\" 250 mm (bảng biên LUAT-CHUNG: trên = >, không quá = <=). Khoá duongKinh (SO, donViChuan mm) — KHÔNG dùng duongKinhTrong (khoá đó dành cho \"đường kính trong/cửa nạp/cửa thoát\"). \"(bao gồm cả lốp)\" là cách ĐO đường kính, không phải điều kiện riêng: không có khoá từ vựng cho nó và không được bịa — đã ghi ở đây. Cụm \"(bao gồm cả lốp)\" chen giữa \"đường kính\" và số nên tu-vung.docGiaTri không đọc được ngưỡng (cổng 3 cảnh báo cong3-bien-khong-doc-duoc là bình thường); biên >100 và <=250 đã đối chiếu tay với chữ biểu và khớp."
     }
   ]
 }

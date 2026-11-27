@@ -12,10 +12,10 @@
   },
   "duyet": {
     "boi": "CLAUDE_DUYET",
-    "phien": "claude-agent:tho-hs-02#soat-741220",
-    "ngay": "2026-11-21",
-    "ghiChu": "Đã chuẩn hoá dieuKienSo bám chữ biểu thuế",
-    "bam": "ab19a83ef8557dbbc01b5a0cc9cabd86bb8c2f7232febc23268350b4c030574d"
+    "phien": "paperclip:tho-hs-03#soat-741220-ozv-2346",
+    "ngay": "2026-11-26",
+    "ghiChu": "OZV-2346: sửa 74122091 từ chatLieu=kẽm sang tenLoai [đồng thau, hợp kim đồng - kẽm] — ca dong-co-ten đồng thau bị KHONG_THE_CHOT vì chat-lieu-hon-hop.",
+    "bam": "8c16528830c868e63e79154403ee09edb01db04c7bda1ca5ef8af56e3f63c895"
   },
   "dieuKienNut": [],
   "dong8": [
@@ -38,10 +38,12 @@
       "trich": "74122091 - - - Bằng hợp kim đồng - kẽm (đồng thau)",
       "dieuKienSo": [
         {
-          "fact": "chatLieu",
-          "op": "LA",
-          "value": "kẽm",
-          "viTri": "CHINH"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "đồng thau",
+            "hợp kim đồng - kẽm"
+          ]
         }
       ],
       "nguonLoai": "CLAUDE_DUYET"
@@ -63,7 +65,7 @@
     {
       "ma": "74122091",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.74122091: \"Bằng hợp kim đồng - kẽm (đồng thau)\" ⇒ chatLieu kẽm (phân nhóm 7412.20 đã là hợp kim đồng; thành phần kẽm tách hợp kim đồng - kẽm khỏi hợp kim đồng khác ở 74122099)"
+      "ghiChu": "tax.74122091: \"Bằng hợp kim đồng - kẽm (đồng thau)\" ⇒ tenLoai [đồng thau, hợp kim đồng - kẽm] (OZV-2346). Không dùng chatLieu LA kẽm: tu-vung đọc cả \"đồng\"+\"kẽm\" ở CHINH ⇒ chat-lieu-hon-hop TRAI trên đúng chữ biểu; \"đồng thau\" là cụm phân biệt với PN6 \"Bằng hợp kim đồng\"."
     }
   ]
 }

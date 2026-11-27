@@ -69,6 +69,13 @@ assert('getDocByCode tra được 37/2013/TT-BCT',
   Boolean(getDocByCode('37/2013/TT-BCT')) && /thuốc lá/i.test(getDocByCode('37/2013/TT-BCT').titleVi || ''));
 assert('getDocByCode tra được 6266/QĐ-BCA',
   Boolean(getDocByCode('6266/QĐ-BCA')) && /mất an toàn/i.test(getDocByCode('6266/QĐ-BCA').titleVi || ''));
+assert('getDocByCode tra được 45/2023/TT-BCT và 45/2023/TT-BCT-PL2 đã verify, gỡ 45/2024/TT-BCT (#1987)',
+  Boolean(getDocByCode('45/2023/TT-BCT')?.verified)
+  && Boolean(getDocByCode('45/2023/TT-BCT-PL2')?.verified)
+  && getDocByCode('45/2023/TT-BCT-PL2')?.issuedDate === '2023-12-29'
+  && getDocByCode('45/2023/TT-BCT-PL2')?.effectiveDate === '2024-02-15'
+  && !idx.documents['45/2024/TT-BCT']
+  && !idx.documents['45/2024/TT-BCT-PL2']);
 
 // ── data-quality-report.json ─────────────────────────────────────────────────
 

@@ -452,6 +452,20 @@
       "dieuKienBat": "ĐANG TẮT trên máy thật. Trưa 21/11 QT bật thử rồi tắt: ca van khí nén 5/2 động cơ dừng sớm ở 8412.21, khách bị hỏi theo sổ nhóm 84.12. Chỉ bật lại sau khi nhánh dừng sớm sửa xong (OZV-1707), ca này ra đúng nhóm 84.81, và có số đúng nhóm 4 số của nhánh hỏi đo qua Cổng thật (L3 bổ sung, L11). Tối 21/11 18:27 bật lại (cùng HS_TIM_TRUOC): ca van ra đúng 848120 5/5 nhưng còn hỏi thừa phân nhóm 84.81 (4/5) và câu loại trừ lạc đề \"van trượt cho động cơ hơi nước\" (2/5) nên lại tắt; PR qt/hoi-theo-so-tay-loc sửa hai lỗi này, bật lại thì đo lại cùng bộ mẫu."
     },
     {
+      "ten": "HS_6SO_DOI_ANH_EM",
+      "macDinh": "tắt",
+      "macDinhBat": false,
+      "loai": "cong-tac",
+      "doiQuyetDinhLLM": false,
+      "chu": "GĐ hs-code-api",
+      "mucDich": "Con của HS_HOI_THEO_SO_TAY (OZV-2367): khi 6 số AI chọn bị diXuong6 (lib/do-thi/tieu-chi-6.js) loại CỨNG vì dữ kiện khách mâu thuẫn mà có ĐÚNG MỘT phân nhóm anh em thoả, đổi mã đứng đầu của lượt hỏi sang anh em đó (chotDong8 chốt được dòng thì lấy dòng), dựng câu hỏi trên anh em; gộp câu hỏi trùng chữ. Ghi hoiTheoSoTay.doiAnhEm6 để chạy bóng. Ca gốc: động cơ bước 60 W kẹt 8501.10 → 8501.31.70.",
+      "chungCu": {
+        "tep": "lib/hoi-theo-so-tay.js",
+        "doan": "process.env.HS_6SO_DOI_ANH_EM || '').trim());"
+      },
+      "dieuKienBat": "ĐANG TẮT, CHƯA đo qua Cổng thật. Chỉ có tác dụng khi HS_HOI_THEO_SO_TAY bật. Bật sau khi chạy bóng ca động cơ bước 60 W + bộ mẫu hỏi theo sổ tay (L3, L11), ghi số đúng 6 số trước/sau."
+    },
+    {
       "ten": "HS_CHOT_SOM_CO_KIEM",
       "macDinh": "tắt",
       "macDinhBat": false,
