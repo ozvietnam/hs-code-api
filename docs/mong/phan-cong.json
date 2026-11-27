@@ -586,10 +586,12 @@
    "thuTuCuaNguoi": 6
   },
   "M-81": {
-   "ten": "Điều kiện nguyên tử + bảng anh em — Loại khác đóng bằng tiêu chí (ADR-0007)",
+   "ten": "Điều kiện nguyên tử + bảng anh em — Loại khác đóng bằng tiêu chí (ADR-0007, ADR-0008)",
    "lop": 3,
    "tep": [
     "docs/decisions/0007-*.md",
+    "scripts/ho-so-ma/goi-nhom*",
+    "scripts/ho-so-ma/so-diem*",
     "scripts/ho-so-ma/bang-anh-em*",
     "scripts/ho-so-ma/tach-dieu-kien*",
     "scripts/ho-so-ma/so-phieu-dieu-kien*",
@@ -599,7 +601,7 @@
     "scripts/test-dieu-kien*.mjs",
     "data/ho-so-ma/dieu-kien/**",
     "data/ho-so-ma/bang-anh-em/**",
-    ".agents/skills/ho-so-dieu-kien/**"
+    ".agents/skills/doc-tron-nhom/**"
    ],
    "sau": [
     "M-71"
