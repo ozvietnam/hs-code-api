@@ -118,16 +118,18 @@ try {
     'utf8',
   );
 
+  const skillBefore1 = fs.readFileSync(path.join(tmpRepo, '.agents', 'skills', 'ho-so-nguong', 'SKILL.md'), 'utf8');
+  const nextRuleNum = [...skillBefore1.matchAll(/^### Luật (\d+)\s*[—–-]/gm)].reduce((m, x) => Math.max(m, Number(x[1])), 0) + 1;
   const upSkill1 = runCli(['--cap-nhat-skill', `--repo-dir=${tmpRepo}`, `--tu-json=${lessonPath}`]);
   const skillAfter1 = fs.readFileSync(path.join(tmpRepo, '.agents', 'skills', 'ho-so-nguong', 'SKILL.md'), 'utf8');
   const upSkill2 = runCli(['--cap-nhat-skill', `--repo-dir=${tmpRepo}`, `--tu-json=${lessonPath}`]);
   const skillAfter2 = fs.readFileSync(path.join(tmpRepo, '.agents', 'skills', 'ho-so-nguong', 'SKILL.md'), 'utf8');
 
   kiem(
-    'nâng cấp skill từ --tu-json thêm Luật 8 và giữ nguyên nội dung khi chạy lại (idempotent)',
+    `nâng cấp skill từ --tu-json thêm Luật ${nextRuleNum} và giữ nguyên nội dung khi chạy lại (idempotent)`,
     upSkill1.status === 0
       && upSkill2.status === 0
-      && skillAfter1.includes('### Luật 8 — Kiểm đối chiếu nút phạm vi nhóm và nhánh HOẶC trước khi mở PR')
+      && skillAfter1.includes(`### Luật ${nextRuleNum} — Kiểm đối chiếu nút phạm vi nhóm và nhánh HOẶC trước khi mở PR`)
       && skillAfter1.includes('#2170')
       && skillAfter1 === skillAfter2,
     { status1: upSkill1.status, status2: upSkill2.status, equal: skillAfter1 === skillAfter2 },
