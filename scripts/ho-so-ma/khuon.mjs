@@ -34,7 +34,7 @@ const RE_VAN = /^[0-9a-f]{64}$/;
 const RE_ID_NGUONG = /^hs:.+:\d+$/;
 const TRUONG_VAN_DE = new Set(['id', 'nut', 'loai', 'dieuKien', 'trich', 'cau', 'tu', 'den', 'voi', 'nguong', 'thuatNgu', 'phuDinh', 'duKien', 'lop', 'nguon', 'van', 'trangThai', 'phieu', 'ghiChu']);
 const TRUONG_BO_QUA = new Set(['id', 'nut', 'loai', 'cau', 'lyDo', 'van', 'ghiChu']);
-const TRUONG_DIEU_KIEN = new Set(['id', 'nut', 'loai', 've', 'phu', 'kieu', 'truc', 'nguong', 'tap', 'mo', 'moNguon', 'cauHoi', 'trich', 'nguon', 'vanTay', 'trangThai', 'phieu', 'ghiChu']);
+const TRUONG_DIEU_KIEN = new Set(['id', 'nut', 'loai', 've', 'phu', 'kieu', 'truc', 'daTri', 'nguong', 'tap', 'mo', 'moNguon', 'cauHoi', 'trich', 'nguon', 'vanTay', 'trangThai', 'phieu', 'ghiChu']);
 const TRUONG_GIAI_CHONG = new Set(['id', 'nut', 'loai', 'cap', 'cach', 'trich', 'nguon', 'vanTay', 'trangThai', 'phieu', 'ghiChu']);
 const TRUONG_CANH_TRANH = new Set(['id', 'nut', 'loai', 'nhomCanhTranh', 'phepThu', 'trich', 'nguon', 'vanTay', 'trangThai', 'phieu', 'ghiChu']);
 const TRUONG_BANG_ANH_EM = new Set(['khuon', 'cha', 'chuong', 'chuoiCha', 'anhEm', 'giaiChong', 'co', 'vanTay']);
@@ -85,14 +85,17 @@ function kiemDieuKien(x) {
     if (!chuoi(x.nguong) || !RE_ID_NGUONG.test(x.nguong)) loi.push(`${o}: kieu SO phải có nguong là id bản ghi NGUONG (không lặp số)`);
     if (x.tap !== undefined) loi.push(`${o}: kieu SO không mang tap`);
     if (x.truc !== undefined) loi.push(`${o}: kieu SO không mang truc (lấy từ nguong.daiLuong)`);
+    if (x.daTri !== undefined) loi.push(`${o}: kieu SO không mang daTri`);
   } else if (x.kieu === 'GIA_TRI') {
     if (!chuoi(x.truc) || /\n/.test(x.truc)) loi.push(`${o}: kieu GIA_TRI phải có truc là tên trục một dòng không rỗng`);
+    if (x.daTri !== undefined && typeof x.daTri !== 'boolean') loi.push(`${o}: daTri phải là boolean`);
     if (!Array.isArray(x.tap) || !x.tap.length || !x.tap.every(chuoi)) loi.push(`${o}: kieu GIA_TRI phải có tap là mảng chuỗi không rỗng`);
     if (x.nguong !== undefined) loi.push(`${o}: kieu GIA_TRI không mang nguong`);
   } else {
     if (x.nguong !== undefined) loi.push(`${o}: kieu ${x.kieu} không mang nguong`);
     if (x.tap !== undefined) loi.push(`${o}: kieu ${x.kieu} không mang tap`);
     if (x.truc !== undefined) loi.push(`${o}: kieu ${x.kieu} không mang truc`);
+    if (x.daTri !== undefined) loi.push(`${o}: kieu ${x.kieu} không mang daTri`);
   }
   if (!MO_DIEU_KIEN.includes(x.mo)) loi.push(`${o}: mo lạ "${x.mo}" (chỉ ${MO_DIEU_KIEN.join(' | ')})`);
   if (x.mo === 'DINH_NGHIA_LUAT' || x.mo === 'MO_TA_HUONG_DAN') {

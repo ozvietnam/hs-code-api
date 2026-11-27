@@ -1,42 +1,46 @@
 #!/usr/bin/env node
-// scripts/ho-so-ma/tach-dieu-kien.mjs — M-81 (#2410, ADR-0007): tách điều kiện nguyên tử DIEU_KIEN qua cổng OpenAI-compatible.
+// scripts/ho-so-ma/tach-dieu-kien.mjs — M-81 (#2410, ADR-0007 + ADR-0008): tách điều kiện nguyên tử theo gói nhóm 4 số qua cổng OpenAI-compatible.
 // Chỉ gửi chữ luật công khai (không dữ liệu khách, không tiền lệ tb:, không khoá cứng hay IP nội bộ).
-//   node scripts/ho-so-ma/tach-dieu-kien.mjs --nut bieu:85437040 --url <...> --model <...> [--out <tep.jsonl>]
+//   node scripts/ho-so-ma/tach-dieu-kien.mjs --nhom 8543 --url <...> --model <...> [--out <tep.jsonl>]
 import fs from 'node:fs';
 import path from 'node:path';
 import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
 import { napLuatCong, chuanSo, vanTay } from './cong.mjs';
-import { kiemBanGhi, kiemKhoHoSo, KIEU_DIEU_KIEN, MO_DIEU_KIEN } from './khuon.mjs';
+import { kiemBanGhi, kiemKhoHoSo, KIEU_DIEU_KIEN, MO_DIEU_KIEN, CACH_GIAI_CHONG } from './khuon.mjs';
 import { laLoaiKhacThuan, napBieuMeta } from './bang-anh-em.mjs';
+import { dungGoiNhom, lietKeNhom4, DEFAULT_CANH_TRANH_MD, MAX_BYTES_MAC_DINH } from './goi-nhom.mjs';
 
 const require = createRequire(import.meta.url);
 const G = require('../../lib/ho-so-ma/ghep.js');
 
 const gon = (s) => String(s ?? '').normalize('NFC').replace(/\s+/g, ' ').trim();
 
-export const HUONG_DAN_TACH_DIEU_KIEN = `Bạn là chuyên gia số hoá luật phân loại HS thành điều kiện nguyên tử (khuôn ho-so-ma@1 / DIEU_KIEN, ADR-0007).
-Chỉ đọc chữ luật công khai trong gói. Không bịa điều kiện, không dùng kiến thức ngoài hay dữ liệu khách.
+export const HUONG_DAN_TACH_DIEU_KIEN = `Bạn là chuyên gia số hoá luật phân loại HS thành điều kiện nguyên tử (khuôn ho-so-ma@1 / DIEU_KIEN, GIAI_CHONG, CANH_TRANH — ADR-0007 & ADR-0008).
+Chỉ đọc chữ luật công khai trong gói nhóm 4 số. Không bịa điều kiện, không dùng kiến thức ngoài, không dùng tiền lệ tb: hay dữ liệu khách.
 
-Quy tắc tách:
-- Mỗi điều kiện nguyên tử là MỘT đối tượng JSON trong mảng \`dieuKien\`.
-- \`ve\` (số nguyên >= 0): dấu ";" hoặc "hoặc" giữa các nhánh thay thế => tạo \`ve\` tăng dần (1, 2, ...). Các điều kiện phải thoả đồng thời ("và") => dùng CÙNG \`ve\`. Đặt \`ve: 0\` cho điều kiện chung áp lên mọi vế (thường đi với \`phu: true\` cho "trừ..." ở cuối danh sách).
-- \`phu\` (boolean): \`true\` khi điều kiện mang nghĩa phủ định ("trừ...", "không kể...", "không phải...").
-- \`kieu\`:
-  - \`CO_KHONG\`: thuộc tính có/không (không đặt \`nguong\`, \`tap\` hay \`truc\`).
-  - \`SO\`: ngưỡng số, BẮT BUỘC trỏ \`nguong\` = id bản ghi NGUONG đã có trong danh sách M-74 nếu có (không lặp số, không đặt \`tap\` hay \`truc\` — trục lấy từ \`daiLuong\` của NGUONG).
-  - \`GIA_TRI\`: chọn một tập giá trị nguyên văn (BẮT BUỘC kèm \`truc\`: tên trục nguyên văn 1 dòng, ví dụ "loại dòng điện", "chất liệu mặt ngoài", và \`tap\`: mảng chuỗi nguyên văn).
-- \`mo\`: chọn một trong:
-  - \`DINH_NGHIA_LUAT\`: có định nghĩa pháp lý trong chú giải (BẮT BUỘC kèm \`moNguon\`: id câu định nghĩa hoặc mảng id câu định nghĩa trong kho luật, không \`tb:\`).
-  - \`NGUONG\`: có ngưỡng định lượng (không đặt \`moNguon\`).
-  - \`MO_TA_HUONG_DAN\`: có mô tả chi tiết trong chú giải hướng dẫn (BẮT BUỘC kèm \`moNguon\`: id câu hướng dẫn, không \`tb:\`).
-  - \`NGHIA_THUONG\`: chữ luật không có định nghĩa/ngưỡng ("vi sóng", "thiết kế đặc biệt", ..., không đặt \`moNguon\`).
-- \`cauHoi\`: một câu hỏi Có/Không ngắn gọn (1 dòng, <= 300 ký tự) về món hàng.
-- \`trich\`: chuỗi con NGUYÊN VĂN của câu \`nguon\`.
-- \`nguon\`: đúng id câu nguồn có trong gói (ví dụ \`bieu:85437040#1\`).
+Quy tắc tách trọn nhóm 4 số (một lượt):
+1. Đọc trọn cây biểu thuế trong gói (\`cayBieu\`, kể cả dòng trung gian không mã \`khongMa: true\`, và thừa kế con duy nhất \`suyRa: true\` / \`cungDong\` — đặt điều kiện ở nút cha 6 số, nút 8 số con duy nhất tự thừa kế). Không đặt \`DIEU_KIEN\` cho dòng "Loại khác" thuần (\`loaiKhac: true\`), nhưng PHẢI tách cho dòng \`loaiKhacCoVe: true\`.
+2. Mỗi điều kiện nguyên tử là MỘT đối tượng JSON trong \`dieuKien\` mang rõ \`nut\` (\`bieu:...\`):
+   - \`ve\` (số nguyên >= 0): dấu ";" hoặc "hoặc" phân nhánh thay thế => \`ve\` tăng dần (\`1, 2, ...\`). Các điều kiện đồng thời ("và") => CÙNG \`ve\`. Đặt \`ve: 0\` cho điều kiện chung áp lên mọi vế (thường đi với \`phu: true\` cho "trừ..." sau cả danh sách).
+   - \`phu\` (boolean): \`true\` khi mang nghĩa phủ định ("trừ...", "không kể...", "không phải...").
+   - \`kieu\`:
+     * \`CO_KHONG\`: thuộc tính có/không (cấm \`nguong\`, \`tap\`, \`truc\`, \`daTri\`).
+     * \`SO\`: ngưỡng số, BẮT BUỘC trỏ \`nguong\` = id bản ghi NGUONG đã có trong danh mục M-74 (không lặp số; cấm \`tap\`, \`truc\`, \`daTri\`).
+     * \`GIA_TRI\`: tập giá trị nguyên văn, BẮT BUỘC kèm \`truc\` (tên trục nguyên văn cục bộ trong gia đình anh em, 1 dòng, ví dụ "loại dòng điện", "chất liệu mặt ngoài") và \`tap\` (mảng chuỗi nguyên văn). Tuỳ chọn \`daTri: true\` CHỈ khi trục là đa trị (một món nhận nhiều giá trị cùng lúc như hoạt chất, nhiều công dụng, sợi pha); mặc định \`false\` (đơn trị). Cấm \`nguong\`.
+   - \`mo\`:
+     * \`DINH_NGHIA_LUAT\`: có định nghĩa pháp lý trong chú giải (BẮT BUỘC kèm \`moNguon\`: id câu định nghĩa hoặc mảng id câu định nghĩa trong kho luật, kể cả chéo chương; cấm \`tb:\`).
+     * \`MO_TA_HUONG_DAN\`: có mô tả chi tiết trong chú giải hướng dẫn / SEN (BẮT BUỘC kèm \`moNguon\`; cấm \`tb:\`).
+     * \`NGUONG\`: đi với ngưỡng định lượng (cấm \`moNguon\`).
+     * \`NGHIA_THUONG\`: chữ luật không có định nghĩa/ngưỡng (cấm \`moNguon\`).
+   - \`cauHoi\`: một câu hỏi Có/Không ngắn gọn (1 dòng, <= 300 ký tự).
+   - \`trich\`: chuỗi con NGUYÊN VĂN của câu \`nguon\`.
+   - \`nguon\`: đúng id câu nguồn có trong gói (ví dụ \`bieu:85437040#1\`).
+3. \`giaiChong\`: lập cho cặp anh em cùng cha có thể cùng thoả (\`{ nut, cap: [A, B], cach: "TRU"|"QUY_TAC_3"|"CHU_GIAI"|"NGUONG", trich, nguon }\`).
+4. \`canhTranh\`: lập cho nút mang "chưa được chi tiết hoặc ghi ở nơi khác" dùng danh sách \`CANH_TRANH\` trong gói (\`{ nut, nhomCanhTranh: [...], phepThu: [{ nguon, trich }], trich, nguon }\`).
 
 Trả về DUY NHẤT JSON hợp lệ dạng:
-{"dieuKien":[{"ve":1,"phu":false,"kieu":"CO_KHONG","mo":"NGHIA_THUONG","cauHoi":"...","trich":"...","nguon":"..."}]}`;
+{"dieuKien":[{"nut":"bieu:...","ve":1,"phu":false,"kieu":"CO_KHONG","mo":"NGHIA_THUONG","cauHoi":"...","trich":"...","nguon":"..."}],"giaiChong":[],"canhTranh":[]}`;
 
 /** Tìm đoạn trích nguyên văn trong chữ câu (tương thích logic timTrich của tach-chung.mjs). */
 export function timTrichNguyenVan(trich, chu) {
@@ -54,7 +58,7 @@ export function timTrichNguyenVan(trich, chu) {
   return cs.slice(i, i + t.length);
 }
 
-/** Dựng gói chữ luật công khai cho một nút (tuyệt đối không nạp dữ liệu khách hay tiền lệ tb:). */
+/** Dựng gói chữ luật công khai cho một nút đơn lẻ (tương thích kiểm thử đơn nút). */
 export function dungGoiTachDieuKien(nut, L, { nguongSanCo = [] } = {}) {
   const cauNut = [...L.cau.keys()]
     .filter((id) => G.chuCuaCau(id) === nut && !/^tb:/.test(id))
@@ -82,7 +86,7 @@ export function dungGoiTachDieuKien(nut, L, { nguongSanCo = [] } = {}) {
   };
 }
 
-/** Dựng cặp messages OpenAI-compatible để tách DIEU_KIEN cho một nút. */
+/** Dựng cặp messages OpenAI-compatible để tách DIEU_KIEN cho một nút đơn lẻ. */
 export function dungLoiHoiTachDieuKien(goi) {
   const dong = [
     `NÚT: ${goi.nut}`,
@@ -99,6 +103,123 @@ export function dungLoiHoiTachDieuKien(goi) {
     dong.push('', 'NGUONG M-74 ĐÃ CÓ (nếu dùng kieu="SO", bắt buộc trỏ đúng id dưới đây, không lặp số):');
     for (const g of goi.nguongSanCo) dong.push(`- ${g.id}: ${g.dieuKien}`);
   }
+  return [
+    { role: 'system', content: HUONG_DAN_TACH_DIEU_KIEN },
+    { role: 'user', content: dong.join('\n') },
+  ];
+}
+
+/** Dựng cặp messages OpenAI-compatible từ gói nhóm 4 số `goi-nhom@1` (hoặc một phần `goiCon`). */
+export function dungLoiHoiGoiNhom(goi, { chunk = null } = {}) {
+  const nodes = chunk
+    ? [...(chunk.chuoiCha || []), ...(chunk.cayCon || [])]
+    : (goi.cayBieu || []);
+  const anhEmList = chunk ? (chunk.nhomAnhEmCon || []) : (goi.nhomAnhEm || []);
+  const hoSo = chunk ? (chunk.hoSoCon || goi.hoSoSanCo) : goi.hoSoSanCo;
+  const cauList = chunk ? (chunk.cauCon || []) : (goi.cauTrongGoi || []);
+
+  const dong = [
+    `NHÓM 4 SỐ: ${goi.nhom} (${goi.nut}) — ${gon(goi.ten)}`,
+    `BỐI CẢNH: Phần ${goi.phan || '?'} · Chương ${goi.chuong || '?'}${goi.phanChuong ? ` · Phân chương ${goi.phanChuong}` : ''}`,
+    ...(chunk ? [`PHÂN ĐOẠN PHÂN NHÓM: ${chunk.nutPhanNhom} — ${gon(chunk.tenPhanNhom)}`] : []),
+    '',
+    'CÂY BIỂU THUẾ (giữ đủ dòng trung gian khongMa và thừa kế suyRa/cungDong):',
+  ];
+
+  for (const n of nodes) {
+    const flags = [];
+    if (n.khongMa) flags.push('khongMa');
+    if (n.loaiKhac) flags.push('loaiKhac');
+    if (n.loaiKhacCoVe) flags.push('loaiKhacCoVe');
+    if (n.suyRa) flags.push('suyRa');
+    if (n.cungDong) flags.push(`cungDong=${n.cungDong}`);
+    const pad = '  '.repeat(Math.max(0, (n.gach ?? 0)));
+    dong.push(`- ${pad}[${n.id}] (${n.cap || '?'}${flags.length ? `; ${flags.join(', ')}` : ''}): ${gon(n.ten)}`);
+  }
+
+  if (chunk?.anhEmCungCap?.length) {
+    dong.push('', 'ANH EM CÙNG CẤP VỚI PHÂN NHÓM NÀY (giữ ngữ cảnh tránh chồng):');
+    for (const ae of chunk.anhEmCungCap) {
+      dong.push(`- [${ae.id}]${ae.loaiKhac ? ' (loaiKhac)' : ''}: ${gon(ae.ten)}`);
+    }
+  }
+
+  if (anhEmList.length) {
+    dong.push('', 'GIA ĐÌNH ANH EM:');
+    for (const g of anhEmList) {
+      dong.push(`- Cha ${g.cha} (${gon(g.tenCha)}): ${g.con.map((c) => `${c.id}${c.loaiKhac ? '[LK]' : ''}`).join(' | ')}`);
+    }
+  }
+
+  const pushLuatNen = (tieuDe, items) => {
+    if (!items?.length) return;
+    dong.push('', `${tieuDe}:`);
+    for (const m of items) {
+      dong.push(`- [${m.id}] (${m.lop}): ${gon(m.trich)}`);
+    }
+  };
+  pushLuatNen('CHÚ GIẢI PHẦN', goi.luatNen?.phan);
+  pushLuatNen('CHÚ GIẢI CHƯƠNG', goi.luatNen?.chuong);
+  pushLuatNen('CHÚ GIẢI PHÂN CHƯƠNG', goi.luatNen?.phanChuong);
+  pushLuatNen('CHÚ GIẢI CHI TIẾT NHÓM', goi.luatNen?.nhomCt);
+  pushLuatNen('CHÚ GIẢI PHÂN NHÓM', goi.luatNen?.cgpn);
+  pushLuatNen('CHÚ GIẢI BỔ SUNG SEN', goi.luatNen?.sen);
+
+  if (goi.loaiTru?.ra?.length || goi.loaiTru?.vao?.length) {
+    dong.push('', 'CẠNH LOẠI TRỪ / DẪN CHIẾU (LOAI_TRU):');
+    for (const e of (goi.loaiTru.ra || []).slice(0, 40)) {
+      dong.push(`- [RA ${e.cauId || e.id || '?'} -> ${e.den}] ${gon(e.trich || e.cau)}`);
+    }
+    for (const e of (goi.loaiTru.vao || []).slice(0, 40)) {
+      dong.push(`- [VÀO ${e.cauId || e.tuNut || '?'} -> ${e.den}] ${gon(e.trich || e.cau)}`);
+    }
+  }
+
+  if (hoSo?.nguong?.length) {
+    dong.push('', 'NGUONG M-74 ĐÃ CÓ (khi kieu="SO", bắt buộc trỏ đúng id, không lặp số):');
+    for (const g of hoSo.nguong) {
+      dong.push(`- ${g.id} (${g.nut}): ${g.dieuKien} | daiLuong="${g.nguong?.daiLuong}" donVi=${g.nguong?.donVi ?? 'null'}`);
+    }
+  }
+  if (hoSo?.dinhNghia?.length) {
+    dong.push('', 'DINH_NGHIA M-72/73 ĐÃ CÓ (tham chiếu moNguon):');
+    for (const d of hoSo.dinhNghia.slice(0, 40)) {
+      dong.push(`- ${d.id} [${d.cau}] thuatNgu="${d.thuatNgu}": ${gon(d.dieuKien)}`);
+    }
+  }
+  if (hoSo?.lietKe?.length) {
+    dong.push('', 'CHI_LIET_KE M-75 ĐÃ CÓ:');
+    for (const l of hoSo.lietKe.slice(0, 30)) {
+      dong.push(`- ${l.id} [${l.cau}]: ${gon(l.dieuKien)}`);
+    }
+  }
+
+  if (goi.canhTranh?.muc?.length || goi.canhTranh?.canhTranhChung?.length) {
+    dong.push('', 'NHÓM CẠNH TRANH SẴN CÓ (từ M-81-canh-tranh.md):');
+    for (const m of goi.canhTranh.muc || []) {
+      const dsNhom = (m.canhTranh || []).map((c) => `${c.nhom}(${c.kieu})`).join(', ');
+      dong.push(`- ${m.nut}: [${dsNhom}]`);
+      for (const p of (m.phepThu || []).slice(0, 8)) {
+        dong.push(`  * phép thử [${p.nguon}]: ${gon(p.trich)}`);
+      }
+    }
+    for (const cc of goi.canhTranh.canhTranhChung || []) {
+      dong.push(`- ${cc.pham} chung: ${(cc.canhTranh || []).slice(0, 15).map((c) => c.nhom).join(', ')}`);
+    }
+  }
+
+  // Luôn liệt kê đầy đủ danh sách câu hợp lệ để mô hình trích đúng nguon & moNguon
+  const cauMap = new Map();
+  for (const c of goi.cauTrongGoi || []) cauMap.set(c.id, c);
+  for (const c of cauList) cauMap.set(c.id, c);
+  const dsCau = [...cauMap.values()].sort((a, b) => a.id.localeCompare(b.id));
+  if (dsCau.length) {
+    dong.push('', 'CÁC CÂU LUẬT HỢP LỆ TRONG GÓI (dùng làm nguon / moNguon):');
+    for (const c of dsCau) {
+      dong.push(`- [${c.id}]: ${gon(c.chu)}`);
+    }
+  }
+
   return [
     { role: 'system', content: HUONG_DAN_TACH_DIEU_KIEN },
     { role: 'user', content: dong.join('\n') },
@@ -129,8 +250,8 @@ function timKhoiJsonCanBang(s, startIdx) {
   return null;
 }
 
-/** Tách mảng JSON dieuKien từ chuỗi trả về của LLM. */
-export function rutJsonDieuKien(text) {
+/** Tách đối tượng `{ dieuKien, giaiChong, canhTranh }` từ chuỗi trả về của LLM. */
+export function rutJsonGoiNhom(text) {
   const raw = String(text || '').trim();
   const fenced = /```(?:json)?\s*([\s\S]*?)```/i.exec(raw);
   const s = (fenced ? fenced[1] : raw).trim();
@@ -151,18 +272,27 @@ export function rutJsonDieuKien(text) {
     }
     if (Array.isArray(parsed)) {
       if (parsed.length === 0 || (parsed[0] && typeof parsed[0] === 'object' && !Array.isArray(parsed[0]))) {
-        return parsed;
+        return { dieuKien: parsed, giaiChong: [], canhTranh: [] };
       }
       continue;
     }
     if (parsed && typeof parsed === 'object') {
-      const list = parsed.dieuKien || parsed.kq;
-      if (Array.isArray(list)) return list;
+      const dieuKien = parsed.dieuKien || parsed.kq;
+      const giaiChong = Array.isArray(parsed.giaiChong) ? parsed.giaiChong : [];
+      const canhTranh = Array.isArray(parsed.canhTranh) ? parsed.canhTranh : [];
+      if (Array.isArray(dieuKien)) {
+        return { dieuKien, giaiChong, canhTranh };
+      }
     }
   }
   if (!sawCandidate) throw new Error('Không tìm thấy JSON trong phản hồi mô hình');
   if (lastErr) throw lastErr;
   throw new Error('JSON thiếu mảng dieuKien');
+}
+
+/** Tách mảng JSON dieuKien từ chuỗi trả về của LLM (tương thích ngược). */
+export function rutJsonDieuKien(text) {
+  return rutJsonGoiNhom(text).dieuKien;
 }
 
 /** Chuẩn hoá đề xuất thô từ LLM thành các bản ghi DIEU_KIEN hợp lệ theo khuôn.mjs. */
@@ -192,6 +322,7 @@ export function chuanHoaDieuKien(rawList, nut, L, { batDauSo = 8101, nguongSanCo
     const kieu = KIEU_DIEU_KIEN.includes(item.kieu) ? item.kieu : 'CO_KHONG';
     const mo = MO_DIEU_KIEN.includes(item.mo) ? item.mo : (kieu === 'SO' ? 'NGUONG' : 'NGHIA_THUONG');
     const truc = kieu === 'GIA_TRI' && item.truc !== undefined ? gon(item.truc) : undefined;
+    const daTri = kieu === 'GIA_TRI' && item.daTri !== undefined ? Boolean(item.daTri) : undefined;
     let moNguon;
     if ((mo === 'DINH_NGHIA_LUAT' || mo === 'MO_TA_HUONG_DAN') && item.moNguon !== undefined) {
       moNguon = Array.isArray(item.moNguon)
@@ -209,6 +340,7 @@ export function chuanHoaDieuKien(rawList, nut, L, { batDauSo = 8101, nguongSanCo
       phu,
       kieu,
       ...(truc !== undefined ? { truc } : {}),
+      ...(daTri !== undefined ? { daTri } : {}),
       ...(kieu === 'SO' && item.nguong ? { nguong: gon(item.nguong) } : {}),
       ...(kieu === 'GIA_TRI' && Array.isArray(item.tap) ? { tap: item.tap.map(gon).filter(Boolean) } : {}),
       mo,
@@ -227,6 +359,7 @@ export function chuanHoaDieuKien(rawList, nut, L, { batDauSo = 8101, nguongSanCo
           kieu,
           moDieuKien: mo,
           ...(truc !== undefined ? { truc } : {}),
+          ...(daTri !== undefined ? { daTri } : {}),
           ...(moNguon !== undefined ? { moNguon } : {}),
         }],
       } : {}),
@@ -253,6 +386,149 @@ export function chuanHoaDieuKien(rawList, nut, L, { batDauSo = 8101, nguongSanCo
     banGhi.push(rec);
   }
   return { banGhi, loi };
+}
+
+/** Chuẩn hoá toàn bộ đầu ra `{ dieuKien, giaiChong, canhTranh }` của một gói nhóm 4 số. */
+export function chuanHoaGoiNhom(rawObj, goi, L, { nguongSanCo = null, moHinh = null } = {}) {
+  const obj = Array.isArray(rawObj)
+    ? { dieuKien: rawObj, giaiChong: [], canhTranh: [] }
+    : (rawObj || { dieuKien: [], giaiChong: [], canhTranh: [] });
+
+  const cayNutSet = new Set((goi.cayBieu || []).map((n) => n.id));
+  const cayThuTu = new Map((goi.cayBieu || []).map((n, idx) => [n.id, idx]));
+  const nguongList = nguongSanCo || goi.hoSoSanCo?.nguong || [];
+
+  const dieuKien = [];
+  const giaiChong = [];
+  const canhTranh = [];
+  const loi = [];
+
+  // 1. DIEU_KIEN gom theo nut trong goi.cayBieu
+  const theoNut = new Map();
+  for (const item of obj.dieuKien || []) {
+    if (!item || typeof item !== 'object') { loi.push(`${goi.nut}: phần tử dieuKien không phải object`); continue; }
+    const nut = gon(item.nut || '');
+    if (!nut || !cayNutSet.has(nut)) {
+      loi.push(`${goi.nut}: DIEU_KIEN nut "${nut || '(thiếu)'}" không thuộc cây nhóm ${goi.nhom}`);
+      continue;
+    }
+    if (!theoNut.has(nut)) theoNut.set(nut, []);
+    theoNut.get(nut).push(item);
+  }
+  const nutSapXep = [...theoNut.keys()].sort((a, b) => (cayThuTu.get(a) ?? 9999) - (cayThuTu.get(b) ?? 9999));
+  for (const nut of nutSapXep) {
+    const r = chuanHoaDieuKien(theoNut.get(nut), nut, L, { batDauSo: 8101, nguongSanCo: nguongList, moHinh });
+    dieuKien.push(...r.banGhi);
+    loi.push(...r.loi);
+  }
+
+  // 2. GIAI_CHONG
+  const sttGcTheoNut = new Map();
+  for (const item of obj.giaiChong || []) {
+    if (!item || typeof item !== 'object') { loi.push(`${goi.nut}: phần tử giaiChong không phải object`); continue; }
+    const nut = gon(item.nut || goi.nut);
+    if (!cayNutSet.has(nut)) {
+      loi.push(`${goi.nut}: GIAI_CHONG nut "${nut}" không thuộc cây nhóm ${goi.nhom}`);
+      continue;
+    }
+    const nguon = gon(item.nguon || '');
+    if (/^tb:/.test(nguon)) { loi.push(`${nut}: GIAI_CHONG từ chối tiền lệ ${nguon}`); continue; }
+    const chu = L.chuCau(nguon);
+    if (chu === null) { loi.push(`${nut}: GIAI_CHONG nguon "${nguon}" không có trong kho luật`); continue; }
+    const trich = timTrichNguyenVan(item.trich, chu);
+    if (!trich) { loi.push(`${nut}: GIAI_CHONG trich không nguyên văn câu ${nguon}`); continue; }
+    const cach = CACH_GIAI_CHONG.includes(item.cach) ? item.cach : gon(item.cach);
+    const cap = Array.isArray(item.cap) ? item.cap.map(gon).filter(Boolean) : [];
+    const conCha = new Set(G.conCua(nut, L.cay));
+    if (cap.length !== 2 || cap[0] === cap[1] || !conCha.has(cap[0]) || !conCha.has(cap[1])) {
+      loi.push(`${nut}: GIAI_CHONG cap [${cap.join(', ')}] không phải 2 anh em trực tiếp của ${nut}`);
+      continue;
+    }
+    const stt = (sttGcTheoNut.get(nut) || 8150) + 1;
+    sttGcTheoNut.set(nut, stt);
+    const rec = {
+      id: `hs:${nut}:${stt}`,
+      nut,
+      loai: 'GIAI_CHONG',
+      cap,
+      cach,
+      trich,
+      nguon,
+      vanTay: vanTay(chu),
+      ...(moHinh ? { phieu: [{ mo: moHinh, cap, cach, trich, nguon }] } : {}),
+    };
+    const err = kiemBanGhi(rec);
+    if (err.length) { loi.push(...err); continue; }
+    giaiChong.push(rec);
+  }
+
+  // 3. CANH_TRANH
+  const sttCtTheoNut = new Map();
+  for (const item of obj.canhTranh || []) {
+    if (!item || typeof item !== 'object') { loi.push(`${goi.nut}: phần tử canhTranh không phải object`); continue; }
+    const nut = gon(item.nut || goi.nut);
+    if (!cayNutSet.has(nut)) {
+      loi.push(`${goi.nut}: CANH_TRANH nut "${nut}" không thuộc cây nhóm ${goi.nhom}`);
+      continue;
+    }
+    const nguon = gon(item.nguon || '');
+    if (/^tb:/.test(nguon)) { loi.push(`${nut}: CANH_TRANH từ chối tiền lệ ${nguon}`); continue; }
+    const chu = L.chuCau(nguon);
+    if (chu === null) { loi.push(`${nut}: CANH_TRANH nguon "${nguon}" không có trong kho luật`); continue; }
+    const trich = timTrichNguyenVan(item.trich, chu);
+    if (!trich) { loi.push(`${nut}: CANH_TRANH trich không nguyên văn câu ${nguon}`); continue; }
+
+    const nhomCanhTranh = Array.isArray(item.nhomCanhTranh) ? item.nhomCanhTranh.map(gon).filter(Boolean) : [];
+    const phepThu = [];
+    let phepThuLoi = false;
+    for (const p of item.phepThu || []) {
+      if (typeof p === 'string') {
+        const pn = gon(p);
+        if (/^tb:/.test(pn) || L.chuCau(pn) === null) {
+          loi.push(`${nut}: CANH_TRANH phepThu "${pn}" không có trong kho luật`);
+          phepThuLoi = true;
+          break;
+        }
+        phepThu.push(pn);
+      } else if (p && typeof p === 'object') {
+        const pn = gon(p.nguon || '');
+        const pChu = /^tb:/.test(pn) ? null : L.chuCau(pn);
+        const pTrich = pChu ? timTrichNguyenVan(p.trich, pChu) : null;
+        if (!pTrich) {
+          loi.push(`${nut}: CANH_TRANH phepThu "${pn}" không hợp lệ hoặc không nguyên văn`);
+          phepThuLoi = true;
+          break;
+        }
+        phepThu.push({ nguon: pn, trich: pTrich });
+      }
+    }
+    if (phepThuLoi) continue;
+
+    const stt = (sttCtTheoNut.get(nut) || 8170) + 1;
+    sttCtTheoNut.set(nut, stt);
+    const rec = {
+      id: `hs:${nut}:${stt}`,
+      nut,
+      loai: 'CANH_TRANH',
+      nhomCanhTranh,
+      phepThu,
+      trich,
+      nguon,
+      vanTay: vanTay(chu),
+      ...(moHinh ? { phieu: [{ mo: moHinh, nhomCanhTranh, trich, nguon }] } : {}),
+    };
+    const err = kiemBanGhi(rec);
+    if (err.length) { loi.push(...err); continue; }
+    canhTranh.push(rec);
+  }
+
+  return {
+    banGhi: [...dieuKien, ...giaiChong, ...canhTranh],
+    dieuKien,
+    giaiChong,
+    canhTranh,
+    loi,
+  };
 }
 
 /** Đọc cấu hình cổng OpenAI-compatible từ đối số hoặc biến môi trường chuẩn (không hardcoded secret/IP). */
@@ -316,25 +592,100 @@ export async function goiOpenAICompatible({
   return content;
 }
 
-/** Tách điều kiện nguyên tử cho một nút. */
+async function goiMoHinh(messages, meta, opts, cfg) {
+  if (opts.callModel) {
+    return opts.callModel(messages, { ...meta, model: cfg.model });
+  }
+  return goiOpenAICompatible({
+    url: cfg.url,
+    model: cfg.model,
+    apiKey: cfg.apiKey,
+    messages,
+    temperature: opts.temperature ?? 0,
+    timeoutMs: opts.timeoutMs ?? 120000,
+    fetchImpl: opts.fetchImpl || globalThis.fetch,
+  });
+}
+
+/** Tách trọn một nhóm 4 số theo ADR-0008 (dùng gói đọc từ goi-nhom.mjs, tự chia goiCon khi vượt trần). */
+export async function tachGoiNhom(nhom4OrGoi, opts = {}) {
+  const luat = opts.luat || G.LUAT_MAC_DINH;
+  const hoSo = opts.hoSo || G.HO_SO_MAC_DINH;
+  const L = opts.L || napLuatCong(luat);
+  const goi = typeof nhom4OrGoi === 'string'
+    ? dungGoiNhom(nhom4OrGoi, {
+      luat,
+      hoSo,
+      L,
+      bieuMeta: opts.bieuMeta || null,
+      kho: opts.kho || null,
+      canhTranhMap: opts.canhTranhMap || null,
+      canhTranhMd: opts.canhTranhMd ?? DEFAULT_CANH_TRANH_MD,
+      maxBytes: opts.maxBytes ?? MAX_BYTES_MAC_DINH,
+      chiaTheo6So: Boolean(opts.chiaTheo6So),
+    })
+    : nhom4OrGoi;
+
+  const cfg = docCauHinhEndpoint(opts);
+  const chunks = (!opts.khongChia && Array.isArray(goi.goiCon) && goi.goiCon.length > 0)
+    ? goi.goiCon
+    : [null];
+
+  const mergedRaw = { dieuKien: [], giaiChong: [], canhTranh: [] };
+  const seenDk = new Set();
+  const seenGc = new Set();
+  const seenCt = new Set();
+
+  for (const chunk of chunks) {
+    const messages = dungLoiHoiGoiNhom(goi, { chunk });
+    const rawText = await goiMoHinh(messages, { nhom: goi.nhom, nut: goi.nut, goi, chunk }, opts, cfg);
+    const parsed = rutJsonGoiNhom(rawText);
+    for (const d of parsed.dieuKien) {
+      const k = `${d?.nut}|${d?.ve}|${d?.phu}|${d?.nguon}|${d?.trich}`;
+      if (seenDk.has(k)) continue;
+      seenDk.add(k);
+      mergedRaw.dieuKien.push(d);
+    }
+    for (const g of parsed.giaiChong) {
+      const k = `${g?.nut}|${[...(g?.cap || [])].sort().join('|')}|${g?.nguon}`;
+      if (seenGc.has(k)) continue;
+      seenGc.add(k);
+      mergedRaw.giaiChong.push(g);
+    }
+    for (const c of parsed.canhTranh) {
+      const k = `${c?.nut}|${c?.nguon}|${c?.trich}`;
+      if (seenCt.has(k)) continue;
+      seenCt.add(k);
+      mergedRaw.canhTranh.push(c);
+    }
+  }
+
+  const res = chuanHoaGoiNhom(mergedRaw, goi, L, {
+    nguongSanCo: opts.nguongSanCo || goi.hoSoSanCo?.nguong || [],
+    moHinh: cfg.model || opts.moHinh || null,
+  });
+
+  if (opts.out) {
+    const abs = path.resolve(opts.out);
+    fs.mkdirSync(path.dirname(abs), { recursive: true });
+    fs.writeFileSync(abs, `${res.banGhi.map((x) => JSON.stringify(x)).join('\n')}${res.banGhi.length ? '\n' : ''}`, 'utf8');
+  }
+
+  return {
+    nhom: goi.nhom,
+    goi,
+    ...res,
+  };
+}
+
+/** Tách điều kiện nguyên tử cho một nút (tương thích kiểm thử đơn nút). */
 export async function tachDieuKienNut(nut, L, opts = {}) {
   const nguongSanCo = opts.nguongSanCo || [];
   const goi = dungGoiTachDieuKien(nut, L, { nguongSanCo });
   const messages = dungLoiHoiTachDieuKien(goi);
   const cfg = docCauHinhEndpoint(opts);
 
-  const rawText = opts.callModel
-    ? await opts.callModel(messages, { nut, goi, model: cfg.model })
-    : await goiOpenAICompatible({
-      url: cfg.url,
-      model: cfg.model,
-      apiKey: cfg.apiKey,
-      messages,
-      temperature: opts.temperature ?? 0,
-      timeoutMs: opts.timeoutMs ?? 120000,
-      fetchImpl: opts.fetchImpl || globalThis.fetch,
-    });
-
+  const rawText = await goiMoHinh(messages, { nut, goi }, opts, cfg);
   const parsed = rutJsonDieuKien(rawText);
   return chuanHoaDieuKien(parsed, nut, L, {
     batDauSo: opts.batDauSo ?? 8101,
@@ -374,19 +725,54 @@ async function main() {
   const hoSo = path.resolve(lay('--ho-so')[0] || G.HO_SO_MAC_DINH);
   const L = napLuatCong(luat);
   const bieuMeta = napBieuMeta(luat);
+
+  const nhoms = [...lay('--nhom')];
+  if (lay('--chuong')[0] && !lay('--nut').length && !lay('--ds-nut').length) {
+    nhoms.push(...lietKeNhom4({ chuong: lay('--chuong')[0], luat, L }));
+  }
+
+  if (nhoms.length) {
+    const kho = kiemKhoHoSo(hoSo);
+    const canhTranhMd = lay('--canh-tranh')[0] ? path.resolve(lay('--canh-tranh')[0]) : DEFAULT_CANH_TRANH_MD;
+    const maxBytes = lay('--max-bytes')[0] ? Number(lay('--max-bytes')[0]) : MAX_BYTES_MAC_DINH;
+    const khongChia = a.includes('--khong-chia');
+    const banGhi = [];
+    const loi = [];
+    for (const nhom of [...new Set(nhoms)]) {
+      const r = await tachGoiNhom(nhom, {
+        luat,
+        hoSo,
+        L,
+        bieuMeta,
+        kho,
+        canhTranhMd,
+        maxBytes,
+        khongChia,
+        url: lay('--url')[0],
+        model: lay('--model')[0],
+        apiKeyEnv: lay('--api-key-env')[0],
+      });
+      banGhi.push(...r.banGhi);
+      loi.push(...r.loi);
+    }
+    if (lay('--out')[0]) {
+      const abs = path.resolve(lay('--out')[0]);
+      fs.mkdirSync(path.dirname(abs), { recursive: true });
+      fs.writeFileSync(abs, `${banGhi.map((x) => JSON.stringify(x)).join('\n')}${banGhi.length ? '\n' : ''}`, 'utf8');
+    }
+    console.log(`Tách ${nhoms.length} nhóm 4 số: ${banGhi.length} bản ghi (${banGhi.filter((x) => x.loai === 'DIEU_KIEN').length} DIEU_KIEN, ${banGhi.filter((x) => x.loai === 'GIAI_CHONG').length} GIAI_CHONG, ${banGhi.filter((x) => x.loai === 'CANH_TRANH').length} CANH_TRANH), ${loi.length} lỗi`);
+    for (const l of loi.slice(0, 40)) console.log(`  ✗ ${l}`);
+    if (!lay('--out')[0] && banGhi.length) {
+      for (const x of banGhi) console.log(JSON.stringify(x));
+    }
+    process.exit(loi.length ? 1 : 0);
+  }
+
   let nuts = [...lay('--nut')];
   if (lay('--ds-nut')[0]) nuts.push(...lay('--ds-nut')[0].split(',').map((s) => s.trim()).filter(Boolean));
-  if (lay('--chuong')[0]) {
-    const ch = String(lay('--chuong')[0]).padStart(2, '0');
-    nuts.push(
-      ...[...L.cay.theoId.keys()]
-        .filter((id) => id.startsWith(`bieu:${ch}`) && !/^bieu:\d{2}$/.test(id) && !laLoaiKhacThuan(id, L, bieuMeta))
-        .sort(),
-    );
-  }
   nuts = [...new Set(nuts)];
   if (!nuts.length) {
-    console.error('Thiếu --nut <id>, --ds-nut <id1,id2> hoặc --chuong <NN>');
+    console.error('Thiếu --nhom <4so>, --chuong <NN> (hoặc --nut / --ds-nut)');
     process.exit(2);
   }
   const r = await tachDanhSachNut(nuts, {

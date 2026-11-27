@@ -150,10 +150,10 @@ export function parseCongArg(raw) {
  * Chạy các cổng 1..12. Mặc định chỉ chạy cổng 1..5 để giữ tương thích 100% với các bài kiểm cũ.
  * @param {{luat?: string, hoSo?: string, phamVi?: string[], chiTrong?: boolean, toiCap?: string|number|null, cong?: number[], L?: object, viDu?: object[], vungChong?: object[]}} o
  */
-export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, phamVi = [], chiTrong = false, toiCap = null, cong = [1, 2, 3, 4, 5], L = null, viDu = [], vungChong = [] } = {}) {
+export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, phamVi = [], chiTrong = false, toiCap = null, cong = [1, 2, 3, 4, 5], L = null, kho: khoDaNap = null, bieuMeta: bieuMetaDaNap = null, dungBangTrongKho = true, viDu = [], vungChong = [] } = {}) {
   L = L || napLuatCong(luat);
   const cap = typeof toiCap === 'number' ? toiCap : giaiToiCap(toiCap);
-  const kho = kiemKhoHoSo(hoSo);
+  const kho = khoDaNap || kiemKhoHoSo(hoSo);
   const tot = kho.banGhi.filter((x) => !x._hong);
   const totCu = tot.filter((x) => !LOAI_DIEU_KIEN.includes(x.loai));
   const totDk = tot.filter((x) => x.loai === 'DIEU_KIEN');
@@ -346,7 +346,7 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
   // ---------- Cổng 6..12 (M-81, ADR-0007 mục 4) ----------
   const chayMoi = cong.some((k) => k >= 6);
   if (chayMoi) {
-    const bieuMeta = napBieuMeta(L.thuMuc);
+    const bieuMeta = bieuMetaDaNap || napBieuMeta(L.thuMuc);
     const R_DK = pv.length ? totDk.filter((x) => N.has(x.nut) || G.capCuaNut(x.nut) === 'GIR') : totDk;
     const R_GC = pv.length ? totGc.filter((x) => N.has(x.nut)) : totGc;
     const R_CT = pv.length ? totCt.filter((x) => N.has(x.nut)) : totCt;
@@ -510,8 +510,10 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
 
     // Dựng bảng anh em trong bộ nhớ (kết hợp bảng có sẵn trong kho) phục vụ Cổng 9 và 10
     const bangTheoCha = new Map();
-    for (const b of kho.bangAnhEm || []) {
-      if (!b._hong && (!pv.length || NTrong.has(b.cha))) bangTheoCha.set(b.cha, b);
+    if (dungBangTrongKho) {
+      for (const b of kho.bangAnhEm || []) {
+        if (!b._hong && (!pv.length || NTrong.has(b.cha))) bangTheoCha.set(b.cha, b);
+      }
     }
     const duLieuBang = { bieuMeta, dkTheoNut, giaiChongTheoCha, canhTranhTheoNut, nguongById, viDu, vungChong };
     for (const g of nhomMoi) {

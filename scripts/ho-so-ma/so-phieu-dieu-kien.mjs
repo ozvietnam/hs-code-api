@@ -46,6 +46,7 @@ function diemGiong(a, b) {
   if (a.kieu === 'SO' && a.nguong === b.nguong) diem += 1;
   if (a.kieu === 'GIA_TRI' && b.kieu === 'GIA_TRI') {
     if (a.truc && b.truc && chuanSo(a.truc).toLowerCase() === chuanSo(b.truc).toLowerCase()) diem += 1;
+    if (Boolean(a.daTri) === Boolean(b.daTri)) diem += 1;
     if (tapGiongNhau(a.tap, b.tap)) diem += 1;
   }
   if ((a.moNguon !== undefined || b.moNguon !== undefined) && moNguonGiongNhau(a.moNguon, b.moNguon)) diem += 1;
@@ -63,6 +64,9 @@ function lyDoKhac(a, b) {
     if (chuanSo(a.truc || '').toLowerCase() !== chuanSo(b.truc || '').toLowerCase()) {
       lyDo.push(`khác truc (${a.truc || '(thiếu)'} vs ${b.truc || '(thiếu)'})`);
     }
+    if (Boolean(a.daTri) !== Boolean(b.daTri)) {
+      lyDo.push(`khác daTri (${Boolean(a.daTri)} vs ${Boolean(b.daTri)})`);
+    }
     if (!tapGiongNhau(a.tap, b.tap)) lyDo.push('khác tap');
   }
   if ((a.mo === 'DINH_NGHIA_LUAT' || a.mo === 'MO_TA_HUONG_DAN' || b.mo === 'DINH_NGHIA_LUAT' || b.mo === 'MO_TA_HUONG_DAN' || a.moNguon !== undefined || b.moNguon !== undefined)
@@ -78,6 +82,7 @@ const tomTatPhieu = (r, macDinh) => ({
   phu: r.phu,
   kieu: r.kieu,
   ...(r.truc !== undefined ? { truc: r.truc } : {}),
+  ...(r.daTri !== undefined ? { daTri: Boolean(r.daTri) } : {}),
   ...(r.nguong !== undefined ? { nguong: r.nguong } : {}),
   ...(r.tap !== undefined ? { tap: r.tap } : {}),
   moDieuKien: r.mo,

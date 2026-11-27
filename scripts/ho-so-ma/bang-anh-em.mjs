@@ -162,7 +162,7 @@ export function veRoiNhau(veA, veB, nguongById = new Map()) {
         if (cungTruc) {
           const sa = chuanTap(a.tap);
           const sb = chuanTap(b.tap);
-          if (!a.phu && !b.phu && sa.size && sb.size && ![...sa].some((v) => sb.has(v))) return true;
+          if (!a.phu && !b.phu && !a.daTri && !b.daTri && sa.size && sb.size && ![...sa].some((v) => sb.has(v))) return true;
           if (!a.phu && b.phu && tapTapCon(sa, sb)) return true;
           if (a.phu && !b.phu && tapTapCon(sb, sa)) return true;
         }
@@ -178,6 +178,7 @@ export function chiaVeDieuKien(dks, truAnhEm = null) {
   const toItem = (d) => {
     const item = { id: d.id, phu: d.phu, kieu: d.kieu };
     if (d.truc !== undefined) item.truc = d.truc;
+    if (d.daTri !== undefined) item.daTri = d.daTri;
     if (d.nguong !== undefined) item.nguong = d.nguong;
     if (d.tap !== undefined) item.tap = [...d.tap];
     return item;
