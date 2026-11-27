@@ -8,6 +8,7 @@ import { SYSTEM_PROMPT, buildUserPrompt, verifyRecords } from '../lib/extract.mj
 import { load, save } from '../lib/store.mjs';
 import { prepareWorktree, removeWorktree, classifyChanges, commit, push, openPullRequest } from '../lib/workspace.mjs';
 import { runGate, gateTable } from '../lib/gate.mjs';
+import { closeNoConclusion } from '../lib/queue-close.mjs';
 import { today } from '../lib/log.mjs';
 
 function articleText(html) {
@@ -17,6 +18,13 @@ function articleText(html) {
 
 export default async function precedentExtract({ cfg, log, budget, dryRun }) {
   const queue = load('queue', { items: [] });
+  // Chốt văn bản đã hỏi LLM đủ số lần mà vẫn không kết luận mã (xem lib/queue-close.mjs).
+  // Không chốt thì mỗi lượt lại hỏi lại các mục `no-conclusion` còn attempts < max ⇒ đốt LLM vô ích.
+  const closed = closeNoConclusion(queue.items, cfg);
+  if (closed.length) {
+    log.info(`chốt ${closed.length} văn bản không kết luận mã (no-conclusion → done)`);
+    if (!dryRun) save('queue', queue);
+  }
   const todo = queue.items.filter((i) => {
     if (i.kind !== 'classification') return false;
     if (i.state === 'new' || i.state === 'retry') return true;

@@ -13,6 +13,7 @@ import { join } from 'path';
 import { parseBench } from '../jobs/bench-night.mjs';
 import { findIssues, reconcile, ownerOf } from '../jobs/watchdog.mjs';
 import { parseBody, parseJsonLoose } from '../lib/llm.mjs';
+import { closeNoConclusion } from '../lib/queue-close.mjs';
 
 const repo = resolve(dirname(fileURLToPath(import.meta.url)), '..', '..');
 let pass = 0;
@@ -154,6 +155,57 @@ t('parseBody: bỏ đuôi data: [DONE]', parseBody('{"choices":[{"message":{"con
 t('parseBody: JSON thường vẫn đọc được', parseBody('{"a":1}').a === 1);
 t('parseBody: rác → {}', Object.keys(parseBody('<html>')).length === 0);
 t('parseJsonLoose: bỏ <think>, đọc khối ```json', parseJsonLoose('<think>nghĩ {x}</think>\n```json\n{"coKetLuan":false}\n```').coKetLuan === false);
+
+// --- chốt văn bản `no-conclusion` (cơ quan hải quan không kết luận mã) để khỏi đốt LLM vô ích
+{
+  const NOW = Date.parse('2026-11-28T02:00:00Z');
+  const cfgC = { maxAttemptsNoConclusion: 2 };
+  const mk = (state, extra = {}) => ({ kind: 'classification', state, ref: 'x', attempts: 0, ...extra });
+
+  t('closeNoConclusion: attempts >= ngưỡng → done', (() => {
+    const it = mk('no-conclusion', { attempts: 2, note: 'hồ sơ chưa đủ' });
+    const closed = closeNoConclusion([it], cfgC, { now: NOW });
+    return closed.length === 1 && it.state === 'done' && it.closedAt === '2026-11-28T02:00:00.000Z';
+  })());
+  t('closeNoConclusion: attempts < ngưỡng → giữ nguyên', (() => {
+    const it = mk('no-conclusion', { attempts: 1 });
+    return closeNoConclusion([it], cfgC, { now: NOW }).length === 0 && it.state === 'no-conclusion';
+  })());
+  t('closeNoConclusion: ngưỡng 3 → attempts 2 chưa chốt, attempts 3 chốt', (() => {
+    const a = mk('no-conclusion', { attempts: 2 });
+    const b = mk('no-conclusion', { attempts: 3 });
+    const closed = closeNoConclusion([a, b], { maxAttemptsNoConclusion: 3 }, { now: NOW });
+    return closed.length === 1 && a.state === 'no-conclusion' && b.state === 'done';
+  })());
+  t('closeNoConclusion: không cfg → ngưỡng mặc định 2', (() => {
+    const a = mk('no-conclusion', { attempts: 1 });
+    const b = mk('no-conclusion', { attempts: 2 });
+    const closed = closeNoConclusion([a, b], {}, { now: NOW });
+    return closed.length === 1 && a.state === 'no-conclusion' && b.state === 'done';
+  })());
+  t('closeNoConclusion: KHÔNG đụng trạng thái khác', (() => {
+    const items = [mk('new'), mk('retry'), mk('rejected'), mk('extracted'), mk('done')];
+    const before = items.map((i) => i.state);
+    return closeNoConclusion(items, cfgC, { now: NOW }).length === 0 && items.every((i, k) => i.state === before[k]);
+  })());
+  t('closeNoConclusion: ghi chú giữ lý do + nhãn chốt', (() => {
+    const it = mk('no-conclusion', { attempts: 5, note: 'không có kết luận' });
+    closeNoConclusion([it], cfgC, { now: NOW });
+    return /không có kết luận/.test(it.note) && /chốt/.test(it.note);
+  })());
+  t('closeNoConclusion: mục đã chốt thì filter của J2 không pick lại', (() => {
+    const it = mk('no-conclusion', { attempts: 30 });
+    closeNoConclusion([it], cfgC, { now: NOW });
+    const queue = { items: [it] };
+    const picked = queue.items.filter((i) => {
+      if (i.kind !== 'classification') return false;
+      if (i.state === 'new' || i.state === 'retry') return true;
+      if (i.state === 'no-conclusion' && (i.attempts || 0) < (cfgC.maxAttemptsPerDoc || 3)) return true;
+      return false;
+    });
+    return picked.length === 0;
+  })());
+}
 
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
