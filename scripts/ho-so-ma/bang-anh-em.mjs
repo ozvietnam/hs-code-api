@@ -1703,6 +1703,61 @@ function thuThapIdChuaRoCongThuc(congThuc, ganDieuKien, bang, outIds, anhEmDaLoa
   }
 }
 
+function chonUngVienThangKhiChong(trung, giaiChong = []) {
+  if (trung.length <= 1) return trung[0]?.nut ?? null;
+  let conLai = [...trung];
+
+  // 1. Nhánh phần bù có tên ("khác" / "trừ…") khai cach === 'TRU' với nguon thuộc chính nút đó thua anh em còn lại
+  conLai = conLai.filter((u) => !conLai.some((t) => (
+    t.nut !== u.nut
+    && (
+      (u.congThuc?.truAnhEm || []).includes(t.nut)
+      || giaiChong.some((g) => (
+        g.cach === 'TRU'
+        && Array.isArray(g.cap)
+        && g.cap.includes(t.nut)
+        && g.cap.includes(u.nut)
+        && G.chuCuaCau(g.nguon || '') === u.nut
+      ))
+    )
+  )));
+  if (conLai.length === 1) return conLai[0].nut;
+  if (conLai.length === 0) conLai = [...trung];
+
+  // 2. Xét quan hệ thắng-thua từng cặp từ nguồn câu luật đi kèm trong GIAI_CHONG:
+  //    - Có câu biểu/chú giải đích danh của một bên (không phải TRU) -> bên được dẫn nguồn thắng.
+  //    - Chỉ dẫn Quy tắc 3(c) (gir:3:c#*) -> bên đứng sau theo thứ tự đánh số biểu thắng.
+  const biThua = new Set();
+  for (let i = 0; i < conLai.length; i += 1) {
+    for (let j = i + 1; j < conLai.length; j += 1) {
+      const A = conLai[i].nut;
+      const B = conLai[j].nut;
+      const gcCap = giaiChong.filter(
+        (g) => Array.isArray(g.cap) && g.cap.includes(A) && g.cap.includes(B) && g.cach !== 'TRU',
+      );
+      if (!gcCap.length) continue;
+      const thuocVeNut = (nguon, nutId) => {
+        const chu = G.chuCuaCau(nguon || '');
+        if (!chu) return false;
+        if (chu === nutId) return true;
+        const ma = nutId.replace(/^bieu:/, '');
+        return chu.startsWith(`bieu:${ma}`) || chu.startsWith(`pn:${ma}`) || chu.startsWith(`sen:${ma}`);
+      };
+      const danA = gcCap.some((g) => thuocVeNut(g.nguon, A));
+      const danB = gcCap.some((g) => thuocVeNut(g.nguon, B));
+      if (danA && !danB) {
+        biThua.add(B);
+      } else if (danB && !danA) {
+        biThua.add(A);
+      } else if (gcCap.some((g) => /^gir:3:c#/.test(g.nguon || '')) && !gcCap.some((g) => /^gir:3:[ab]/.test(g.nguon || ''))) {
+        biThua.add(A);
+      }
+    }
+  }
+  const thang = conLai.filter((x) => !biThua.has(x.nut));
+  return (thang[0] || conLai[0] || trung[0]).nut;
+}
+
 /** Định tuyến một ca thử { ganDieuKien } từ bảng cha `chaId` đi xuống tối đa qua các bảng con. */
 export function doBangAnhEm(chaId, ganDieuKien, bangTheoCha, { L = null, nguongById = null, hoSo = null } = {}) {
   let hienTai = chaId;
@@ -1785,7 +1840,7 @@ export function doBangAnhEm(chaId, ganDieuKien, bangTheoCha, { L = null, nguongB
           };
         }
       }
-      const chon = trung[0].nut;
+      const chon = chonUngVienThangKhiChong(trung, bang.giaiChong || []);
       daDi.push(chon);
       if (bangTheoCha.has(chon)) { hienTai = chon; continue; }
       return { trangThai: 'DICH', dich: chon, duong: daDi };
