@@ -28,7 +28,7 @@ python3 ~/qt-wt/m81-tmp2/viet-md2.py   # kiem nguyen van (moi trich) + MO_THEO_L
 
 ## 2. Bảng tổng
 
-**57 nút** 'chưa được chi tiết hoặc ghi ở nơi khác' (cổng 12); **QT đã đọc lại cả 57** (còn lại chưa đọc: 0). **3 nút chú giải nhóm không nêu nhóm cạnh tranh** ở chiều xuôi (3925, 8478, 2308) — cả 3 đều có cạnh tranh từ chiều ngược; 0 nút còn rỗng hoàn toàn. Cờ `MO_THEO_LUAT`: 19 nút. Ngoài cổng 12: 8 nút phần bù NỘI nhóm, 2 dương tính giả (mục 6).
+**57 nút** 'chưa được chi tiết hoặc ghi ở nơi khác' (cổng 12); **QT đã đọc lại cả 57** (còn lại chưa đọc: 0). **3 nút chú giải nhóm không nêu nhóm cạnh tranh** ở chiều xuôi (3925, 8478, 2308) — cả 3 đều có cạnh tranh từ chiều ngược; 0 nút còn rỗng hoàn toàn. Cờ `MO_THEO_LUAT`: 19 nút. **Lưu ý độ tin:** chiều xuôi đã đọc từng câu; **336 cạnh tranh chiều ngược mới soát theo mẫu, chưa đọc từng câu** — dùng làm danh sách phải đọc, không dùng làm căn cứ chốt. Ngoài cổng 12: 8 nút phần bù NỘI nhóm, 2 dương tính giả (mục 6).
 
 | # | Nút | Cấp | Số dòng 8 số | Lời văn (moTaVi, cắt 140 ký tự) | Cạnh tranh xuôi (LOAI_TRU/CHUYEN) | Chiều ngược | Phép thử riêng | Mở theo luật | QT đọc |
 |---:|---|---:|---:|---|---|---:|---:|---|---|
