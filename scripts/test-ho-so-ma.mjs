@@ -296,6 +296,33 @@ caNguoc('khuôn: dòng không phải JSON', ghiKho([...DUNG, 'không phải json
   kiem('kho thật: đường đi Chương có Phân chương (28.11 thuộc Phân chương II)', h.duong.some((c) => c.cap === 'PHAN_CHUONG' && c.nut === 'chuong:28:pc:II') && h.thieu.length === h.duong.length, h.duong.map((c) => c.nut));
 }
 
+// ---------- 8. Tương thích ngược M-81: dieu-kien/ và bang-anh-em/ cùng tồn tại với kho cũ ----------
+{
+  const khoChung = ghiKho(DUNG);
+  const chu7605 = chuCau('bieu:7605#1');
+  fs.mkdirSync(path.join(khoChung, 'dieu-kien'), { recursive: true });
+  fs.mkdirSync(path.join(khoChung, 'bang-anh-em'), { recursive: true });
+  fs.writeFileSync(path.join(khoChung, 'dieu-kien', '76.jsonl'), `${JSON.stringify({
+    id: 'hs:bieu:7605:8101',
+    nut: 'bieu:7605',
+    loai: 'DIEU_KIEN',
+    ve: 1,
+    phu: false,
+    kieu: 'CO_KHONG',
+    mo: 'MO_TA_HUONG_DAN',
+    cauHoi: 'Có phải dây nhôm không?',
+    trich: chu7605,
+    nguon: 'bieu:7605#1',
+    vanTay: vanTay(chu7605),
+  })}\n`);
+  const rMacDinh = chay(khoChung, { phamVi: ['chuong:76'] });
+  const r611 = chay(khoChung, { phamVi: ['bieu:7605'], chiTrong: true, cong: [11] });
+  const hGhep = G.hoSo('7605.19.10', { luat: LUAT, hoSo: khoChung });
+  kiem('tương thích ngược M-81: kho có cả dieu-kien/ vẫn xanh mặc định cổng 1–5, chạy được cổng 11, ghep.js không đổi',
+    xanh(rMacDinh) && !r611.cong[11].loi.length && r611.cong[11].dem.tong === 1 && hGhep.thieu.length === 0,
+    { macDinh: loiCong(rMacDinh), c11: r611.cong[11] });
+}
+
 fs.rmSync(TAM, { recursive: true, force: true });
 console.log(`test-ho-so: ${dat} passed, ${hong} failed`);
 process.exit(hong ? 1 : 0);
