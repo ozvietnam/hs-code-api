@@ -1,7 +1,32 @@
-# M-74 (#1966) — Ngưỡng số và phân dải anh em — Chương 72
+# M-74 (#1966 / #2440) — Rà ngược ngưỡng số và phân dải anh em — Chương 72
 
 - **Khuôn áp dụng:** `ho-so-ma@1` ([`docs/mong/khuon-ho-so-ma.md`](../khuon-ho-so-ma.md), [`docs/decisions/0006-ho-so-van-de-ma-8-so.md`](../../decisions/0006-ho-so-van-de-ma-8-so.md))
-- **Kho dữ liệu (`RUT_TU_LUAT`, theo `data/lop-kho.json` trên `main`):**
-  - `data/ho-so-ma/nguong/72.jsonl`: **354 bản ghi** (**341 `NGUONG`**, **13 `DINH_NGHIA`**, **76** bản ghi "Loại khác" gắn mảng `phuDinh`).
-- **Tuân thủ quy tắc QT:**
-  - Không lấy thông số ví dụ, bảng mẫu hay ước lượng; trích đúng câu của chính nút; không gắn `gir:`, `wco:`, `tb:`; dùng bộ kiểm chung [`scripts/ho-so-ma/nguong-test.mjs`](../../../scripts/ho-so-ma/nguong-test.mjs) và [`scripts/ho-so-ma/cong.mjs`](../../../scripts/ho-so-ma/cong.mjs).
+- **Kho dữ liệu (`RUT_TU_LUAT`, khai trong `data/lop-kho.json`):**
+  - `data/ho-so-ma/nguong/72.jsonl`: **590 bản ghi** (**`464 NGUONG`**, **`22 DINH_NGHIA`**, **`92 TACH_ANH_EM`**, **`12 BO_QUA`**; tổng **`146` bản ghi mang mảng `phuDinh`**), nâng từ mốc nền `354` bản ghi (`+253` thêm mới, `35` sửa/chuyển loại, `17` gỡ bản ghi gắn sai nút/tầng 4 số).
+  - **Luật 1 & Luật 2 (De Morgan — sửa triệt để đảo ngưỡng sai và phủ kín 100% `"Loại khác"`):**
+    - Chuyển **22 bản ghi `"Loại khác"` bị đảo ngưỡng sai** sang `TACH_ANH_EM` kèm `phuDinh` thực chất (không gắn `nguong` đảo chiều): nhóm đai và dải / tấm phổ dụng SEN (`7211.90.19`, `7212.10.19`, `7212.10.99`, `7212.40.99`, `7212.50.19`, `7220.11.90`, `7220.12.90`, `7220.20.90`, `7220.90.90`, `7226.11.90`, `7226.19.90`, `7226.20.90`, `7226.91.90`, `7226.92.90`, `7226.99.9`), nhóm ghép hình dạng mặt cắt tròn + kích thước/carbon (`7213.10.90`, `7213.99`, `7214.99.9`, `7215.50.9`), nhóm ghép đa chiều nguyên tố C+Mn+P+S (`7214.91.19`, `7214.99.99` — bổ sung đủ `7214.99.91` vào `phuDinh`), và nhóm góc tạo hình nguội (`7216.91.90`).
+    - Bổ sung **70 bản ghi `TACH_ANH_EM` (`phuDinh`)** mới cho toàn bộ các nút `"Loại khác"` (kể cả dòng trung gian không mã và `"Loại khác, ..."`) đứng cùng cha với anh em mang `NGUONG` (phủ **100%**, `0` thiếu trên toàn cây `bieu.jsonl` Chương 72).
+    - Giữ nguyên **54 bản ghi `NGUONG` đảo chiều thuần 1 đại lượng** (phân dải 1 chiều carbon / silic / chiều dày / chiều rộng / chiều cao / mặt cắt ngang / crôm phủ kín `(-∞, +∞)`).
+  - **Luật 3 (tách nhánh `HOẶC` & xoá đại lượng mơ hồ):**
+    - Thay toàn bộ `daiLuong: "thông số (mm)"` bằng `"kích thước mặt cắt ngang"` tại `7223.00.10`, `7223.00.90`, `7229.90.2`.
+    - Bổ sung nhánh `bieu:7203#1` (`độ tinh khiết sắt >= 99,94%`, tách rõ nhánh sắt tinh khiết khỏi sắt hoàn nguyên/sắt xốp), tách đủ 2 nhánh tỉ lệ dài/dày (`>= 10 lần` khi dày `< 4,75 mm` và `>= 2 lần` khi dày `>= 4,75 mm`) của `chuong:72:cg:1:k#3`, và gắn nhãn nhánh rõ cho `7212.50.14` (`dạng đai và dải SEN` vs `tấm phổ dụng SEN`).
+  - **Luật 5 & Luật 7 (đưa chú giải về đúng nút nhóm/phân nhóm & tách `NGUONG` từ `DINH_NGHIA` định lượng):**
+    - Gỡ **5 `NGUONG` gắn sai cấp `chuong:72`**: chuyển `cgpn:2#3` (`> 10%` mỗi nguyên tố khác hợp kim fero) về đúng `bieu:7202`; chuyển `cg:1:h#1` (Hạt sàng `1 mm` / `5 mm`) về `bieu:720510` (giữ `DINH_NGHIA` tại `chuong:72`); chuyển `cg:1:p#1` (Thanh và que rỗng `> 15..52 mm` + tỉ lệ trong/ngoài `<= 0,5 lần`) về `bieu:722880` (giữ `DINH_NGHIA` tại `chuong:72`); chuyển quy tắc quy đổi hình dạng `cg:1:k#5` (`>= 600 mm`) sang `DINH_NGHIA`.
+    - Tách đủ `NGUONG` từ các định nghĩa pháp lý Chú giải 1 & Chú giải Phân nhóm 1 Chương 72 gắn vào đúng nút sử dụng: Gang thỏi (`72.01`), Gang kính & Gang thỏi hợp kim (`7201.50`), Hợp kim fero (`72.02`), Thép (`chuong:72` nhánh CG 1(d)), Thép không gỉ (`7204.21`, `72.18`–`72.23`), Thép hợp kim khác (`chuong:72` 16 nhánh `HOẶC` CG 1(f)), Thép dễ cắt gọt (`7213.20`, `7214.30`, `7215.10`), Thép silic kỹ thuật điện (`7225.1`, `7226.1`), Thép gió (`7225.30.10/40.10/50.10/91.10/92.10/99.10`, `7226.20`, `7227.10`, `7228.10`, `7229.90.30`), Thép silic-mangan (`7228.20`, `7227.20`/`7229.20` nếu có trong biểu).
+  - **SEN & Chống treo `NGUONG` lên nút 4 số (OZV-2358) + Luật 6 & 8 (`BO_QUA`):**
+    - Gỡ **12 `NGUONG` SEN** treo sai lên 4 nút 4 số (`72.11`, `72.12`, `72.20`, `72.26`), thay bằng **6 `DINH_NGHIA`** (`DẠNG ĐAI VÀ DẢI`, `TẤM PHỔ DỤNG`) tại nút 4 số và đưa `NGUONG` SEN xuống đúng **16 dòng 8 số `(SEN)`** tương ứng (`7211.13.13/14/92/93`, `7211.14.16/17/94/95`, `7211.19.13/91`, `7212.40.12`, `7212.50.14/24/94`, `7212.60.11/91`); bổ sung ngưỡng diện tích mặt cắt ngang `>= 100 cm²` cho 3 dòng phôi dẹt `(SEN)` (`7207.12.10`, `7207.20.10`, `7207.20.91`).
+    - Ghi **12 bản ghi `BO_QUA`** (Luật 6 & 8) cho các câu mô tả thông thường, không đặt ngưỡng phân loại cứng: `sen:72172091:1#1` (`"thường có hàm lượng carbon từ 0,5% đến 0,85%"` tại `bieu:72172091`), `chuong:72:kq:47#3` (`"khoảng 900°C"` tại `chuong:72`), và 10 dòng liệt kê `"thành phần chung"` của que sản xuất que hàn (`sen:72139110:1#2..6`, `sen:72139910:1#2..6`, đã có `DINH_NGHIA` tại `1#1`). Không sửa `data/ho-so/ranh-gioi/`.
+  - Tất cả `id` tuân chuẩn `hs:<nut>:74NN`, `0` trùng lặp với `data/ho-so-ma/liet-ke/72.jsonl` hay bất kỳ tệp nào trong kho `data/ho-so-ma/`. Không chứa dữ liệu khách, tờ khai, `tb:`, `wco:`, `gir:`.
+- **Đối soát câu chứa chữ số + đơn vị theo Luật 6:**
+  - Pháp lý Phần XV (`phan:XV:cg*`): **1/1** câu đã phủ (`nguong/XV.jsonl`).
+  - Pháp lý Chương 72 (`chuong:72:cg*` & `cgpn*`): **51/51** câu trúng số+đơn vị đã rút thành bản ghi (**0** câu bỏ sót).
+  - Chú giải tổng quát (`chuong:72:kq*`): **1/1** câu (`chuong:72:kq:47#3`, `"khoảng 900°C"`) đã ghi `BO_QUA` hợp lệ.
+  - Dòng biểu thuế (`bieu:72*`): **216/216** câu trúng số+đơn vị đã rút thành bản ghi (**0** câu bỏ sót, gồm cả nhánh `99,94%` của `72.03`).
+  - SEN Chương 72 (`sen:72*`): **26/42** câu đã gắn bản ghi trực tiếp (`NGUONG` / `DINH_NGHIA` / `BO_QUA`); **16/42** câu còn lại là **3 dòng ví dụ minh hoạ** (`sen:72111415:1#10..12`), **1 câu tiêu đề tóm tắt đã tách đủ thành phần tại `#6..#8`** (`sen:72111415:1#1`), và **12 dòng lặp lại danh mục điều kiện/ví dụ** (`sen:7211/7212/7220/7226:1#4..5`, `sen:7211/7212:2#6..7`) mà ngưỡng chuẩn đã rút sạch từ câu định nghĩa chính `#1` — bỏ qua hợp lệ, `0` câu bị sót luật.
+  - Chú giải chi tiết nhóm (`nhom:72*`, 11 câu trúng số+đơn vị): toàn bộ là diễn giải/nhắc lại Chú giải Chương 72 hoặc mô tả thông thường (`thường chứa hơn 80%`, `thường dài 1 đến 2 m`, `thường dưới 0,5 mm`) — bỏ qua hợp lệ theo Luật 6.
+- **Kiểm phân dải anh em (`kiemDaiAnhEm` + `kiemDonViDaiLuong` + Cổng 3):**
+  - Toàn bộ cụm anh em 1 chiều đều `0` lỗi chồng dải, `0` lỗi hở dải, `0` lỗi `voi`/`phuDinh`, `0` lỗi đơn vị khớp đại lượng.
+- **Đối chiếu `data/ho-so/ranh-gioi/72*.json`:** **88/88 tệp** (**125 nút có `dieuKienSo`**) đều có bản ghi khớp tại chính nút (`0` thiếu dưới Cổng 4 `nguong-test.mjs`).
+- **Công cụ & bài kiểm:**
+  - [`scripts/ho-so-ma/cong.mjs`](../../../scripts/ho-so-ma/cong.mjs) (`--pham-vi chuong:72 --cong 4,5`)
+  - [`scripts/ho-so-ma/nguong-test.mjs`](../../../scripts/ho-so-ma/nguong-test.mjs), [`scripts/test-ho-so-ma.mjs`](../../../scripts/test-ho-so-ma.mjs), [`scripts/test-ho-so-ma-tra.mjs`](../../../scripts/test-ho-so-ma-tra.mjs), [`scripts/test-lop-kho.mjs`](../../../scripts/test-lop-kho.mjs)
