@@ -1,10 +1,27 @@
-# M-74 (#1966) — Ngưỡng số và phân dải anh em — Chương 78
+# M-74 (#1966) — Rà ngược ngưỡng số và phân dải anh em — Chương 78
 
 - **Khuôn áp dụng:** `ho-so-ma@1` ([`docs/mong/khuon-ho-so-ma.md`](../khuon-ho-so-ma.md), [`docs/decisions/0006-ho-so-van-de-ma-8-so.md`](../../decisions/0006-ho-so-van-de-ma-8-so.md))
-- **Kho dữ liệu (`RUT_TU_LUAT`, theo `data/lop-kho.json` trên `main`):**
-  - `data/ho-so-ma/nguong/78.jsonl`: **7 bản ghi** (**4 `NGUONG`**, **1 `DINH_NGHIA`**, **2 `TACH_ANH_EM`**, **3** bản ghi "Loại khác" gắn `phuDinh`).
-  - Áp dụng Luật 5 + Luật 7 & Luật 1 + Luật 2: giữ `DINH_NGHIA` ở `chuong:78`, chuyển `NGUONG` `>= 99,9%` sang `bieu:780110` kèm `TACH_ANH_EM` `phuDinh` cho `bieu:78019`; giữ `NGUONG` cho `7804.11` (`<= 0,2 mm`), `7804.11.10`/`7804.11.90` (`0,15 mm`), và chuyển `7804.19` thành `TACH_ANH_EM` `phuDinh` (xóa khoảng `> 0,2 mm` vì `7804.11` là điều kiện ghép dạng lá/dải/lá mỏng + chiều dày, còn tấm mỏng `<= 0,2 mm` vẫn thuộc `7804.19`).
-- **Đối soát số + đơn vị & `ranh-gioi` (Luật 6):**
-  - Tổng câu trúng số+đơn vị (Phần XV + Chương 78 pháp lý + dòng biểu): **4** (`phan:XV:cg:8:b#1` đã có trong `nguong/XV.jsonl`; **3/3** câu Chương 78 gồm `780411#1`, `78041110#1`, `chuong:78:cgpn:1#1` đã rút thành bản ghi; 0 tệp `ranh-gioi/78*.json`).
-- **Tuân thủ quy tắc QT:**
-  - Không lấy thông số ví dụ, bảng mẫu hay ước lượng; trích đúng câu của chính nút; không gắn `gir:`, `wco:`, `tb:`; dùng bộ kiểm chung [`scripts/ho-so-ma/nguong-test.mjs`](../../../scripts/ho-so-ma/nguong-test.mjs) và [`scripts/ho-so-ma/cong.mjs`](../../../scripts/ho-so-ma/cong.mjs).
+- **Kho dữ liệu (`RUT_TU_LUAT`, khai trong `data/lop-kho.json`):**
+  - `data/ho-so-ma/nguong/78.jsonl`: **19 bản ghi** (**`16 NGUONG`**, **`1 DINH_NGHIA`**, **`2 TACH_ANH_EM`**, **`0 BO_QUA`**; tổng **`3` bản ghi mang mảng `phuDinh`**), nâng từ mốc nền `7` bản ghi trên `origin/main` (`+12` thêm mới, `6` sửa/chuẩn hoá, `1` giữ nguyên, `0` bỏ).
+  - **Sạch mã HS trong `daiLuong` (Luật 3 — `0/16` `NGUONG` chứa mã dòng/nhóm `78xx`/`78.xx`):**
+    - Xoá mã `7801.10` khỏi `daiLuong` của `hs:bieu:780110:7401` (`"hàm lượng chì (Pb) trong chì tinh luyện"`). Toàn bộ các bản ghi `NGUONG` chỉ dùng tên đại lượng vật lý chuẩn kèm nhánh định tính, thống nhất chuỗi `daiLuong` giữa anh em cùng đại lượng (`"chiều dày"` + `"mm"` ở `7804.11.10` & `7804.11.90`).
+  - **Tách đủ bảng giới hạn tạp chất CGPN 1 Chương 78 (Luật 4, 5 & 7):**
+    - Giữ `1 DINH_NGHIA` `"chì tinh luyện"` tại `nut: "chuong:78"` (`hs:chuong:78:7401`) và tách đủ **`13 NGUONG`** gắn đúng nút phân nhóm `nut: "bieu:780110"` (cấm treo lên `chuong:78`): hàm lượng chì `Pb >= 99,9%` (`7401`) cùng đủ **12 dòng giới hạn tạp chất** trong BẢNG CGPN 1 (`Ag <= 0,02%`, `As <= 0,005%`, `Bi <= 0,05%`, `Ca <= 0,002%`, `Cd <= 0,002%`, `Cu <= 0,08%`, `Fe <= 0,002%`, `S <= 0,002%`, `Sb <= 0,005%`, `Sn <= 0,005%`, `Zn <= 0,002%`, và `mỗi nguyên tố khác (ví dụ Telua) <= 0,001%`, `7402`–`7413`). Mọi khoảng số đều ghi đúng chiều ở lại nút `bieu:780110`.
+  - **Phủ kín 100% `"Loại khác"` & De Morgan (Luật 1 & Luật 2):**
+    - **`bieu:78019`** (`TACH_ANH_EM`, `phuDinh: ["bieu:780110"]`): điều kiện ghép đa chiều (`Pb >= 99,9%` AND 12 giới hạn tạp chất) → không gán khoảng số đảo `< 99,9%` vì chì `>= 99,9%` nhưng vượt dù chỉ 1 tạp chất (vd `Bi > 0,05%`) vẫn thuộc `7801.9`.
+    - **`bieu:780419`** (`TACH_ANH_EM`, `phuDinh: ["bieu:780411"]`): điều kiện ghép (`Lá, dải và lá mỏng` + chiều dày trừ phần bồi `<= 0,2 mm`) → không gán khoảng số đảo `> 0,2 mm` vì tấm chì dày `<= 0,2 mm` vẫn thuộc `7804.19`.
+    - **`bieu:78041190`** (`NGUONG`, `phuDinh: ["bieu:78041110"]`): phủ định thuần 1 đại lượng chiều dày dưới `7804.11` (`> 0,15 mm` trong phạm vi cha `<= 0,2 mm`), trích đúng câu của chính nút `bieu:78041190#1` (`"- - - Loại khác"`).
+  - Tất cả `id` tuân chuẩn `hs:<nut>:74NN`, `0` trùng lặp trên toàn kho `data/ho-so-ma/` (đã đối chiếu cả `liet-ke/78.jsonl`, `chuong/78.jsonl`, `phan-nhom/78*.jsonl`). Không chứa dữ liệu khách, tờ khai, `tb:`, `wco:`, `gir:`.
+- **Đối soát câu chứa chữ số + đơn vị & `ranh-gioi` (Luật 6 & 8):**
+  - Tổng câu trúng biểu thức số + đơn vị (Pháp lý Phần XV + Chú giải Chương 78 + Dòng biểu `bieu:78*`): **4/4 câu** đều đã phủ:
+    - Pháp lý Phần XV (`phan:XV:cg*`): **1/1** câu (`phan:XV:cg:8:b#1`) đã có trong `data/ho-so-ma/nguong/XV.jsonl` (2 bản ghi `hs:phan:XV:7402–7403`, cùng 4 bản ghi tỉ lệ khác của Phần XV trong tổng 6 bản ghi).
+    - Pháp lý Chương 78 (`chuong:78:cg*` & `cgpn*`): **1/1** câu (`chuong:78:cgpn:1#1`) đã rút đủ `1 DINH_NGHIA` + `13 NGUONG`.
+    - Dòng biểu thuế (`bieu:78*`, 27 câu): **2/2** câu (`bieu:780411#1`, `bieu:78041110#1`) đã rút đủ thành `NGUONG` cùng các nút phần bù `780419` và `78041190`.
+  - Chú giải tổng quát (`chuong:78:kq*`, 26 câu), chú giải chi tiết nhóm (`nhom:78*`, 23 câu), chú giải phân nhóm (`phan-nhom:78*`, 0 câu) và SEN (`sen:78*`, 0 câu): **0/49** câu chứa số + đơn vị hay con số mô tả thông thường (các chữ số xuất hiện chỉ là số thứ tự mục `(1)`–`(5)` và số hiệu chương/nhóm/chú giải dẫn chiếu) → **0** câu bị sót, **0** `BO_QUA`.
+  - Đối chiếu `data/ho-so/ranh-gioi/78*.json`: **2/2 tệp** (`780411.json`, `780600.json`), trong đó **1/1 nút mang `dieuKienSo` dạng số** (`bieu:78041110`, `doDay <= 0.15 mm` ở `780411.json`; `780600.json` chỉ gồm điều kiện định tính `TEN_LOAI`/`CONG_DUNG`) đã phủ 100% (`0` thiếu dưới Cổng 4 `nguong-test.mjs`). Không chỉnh sửa `data/ho-so/ranh-gioi/`.
+- **Kiểm phân dải anh em (`kiemDaiAnhEm` + `kiemDonViDaiLuong` + Cổng 3):**
+  - **1 cụm anh em** phân dải thuần 1 đại lượng (`bieu:780411`: `bieu:78041110` `<= 0,15 mm` & `bieu:78041190` `> 0,15 mm`, dùng chung `daiLuong: "chiều dày"`, `donVi: "mm"`), **1/1 cụm phủ kín** `(-∞, +∞)`, `0` chồng dải, `0` hở dải, `0` lỗi `voi`/`phuDinh`, `0` lỗi đơn vị khớp đại lượng, `0/16` `NGUONG` chứa mã HS trong `daiLuong`.
+  - **2 cặp anh em điều kiện ghép/đa chiều** tách bằng `TACH_ANH_EM` gắn `phuDinh` (`bieu:780110`/`bieu:78019` và `bieu:780411`/`bieu:780419`).
+- **Công cụ & bài kiểm:**
+  - [`scripts/ho-so-ma/cong.mjs`](../../../scripts/ho-so-ma/cong.mjs) (`--pham-vi chuong:78 --cong 4,5`), [`scripts/ho-so-ma/nguong-rut.mjs`](../../../scripts/ho-so-ma/nguong-rut.mjs) (`--chuong 78 --kiem`)
+  - [`scripts/ho-so-ma/nguong-test.mjs`](../../../scripts/ho-so-ma/nguong-test.mjs), [`scripts/test-ho-so-ma.mjs`](../../../scripts/test-ho-so-ma.mjs), [`scripts/test-ho-so-ma-tra.mjs`](../../../scripts/test-ho-so-ma-tra.mjs), [`scripts/test-lop-kho.mjs`](../../../scripts/test-lop-kho.mjs)
