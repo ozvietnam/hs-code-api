@@ -1205,13 +1205,154 @@ const KHO_CHUAN = ghiHoSoTam({
     promptOk
     && parsedObj.dieuKien.length === 1
     && !rGoi.loi.length
+    && Array.isArray(rGoi.canhBao) && rGoi.canhBao.length === 0
     && rGoi.dieuKien.some((d) => d.nut === 'bieu:85437040' && d.daTri === true && d.phieu[0].daTri === true)
     && rGoi.giaiChong.length === 1
     && rGoi.canhTranh.length === 1
     && rGoi.banGhi.every((b) => kiemBanGhi(b).length === 0)
     && rBadNut.loi.some((l) => /không thuộc cây nhóm/.test(l))
     && rBadNut.loi.some((l) => /từ chối nguồn tiền lệ/.test(l)),
-    { loi: rGoi.loi, dk: rGoi.dieuKien.length, gc: rGoi.giaiChong.length, ct: rGoi.canhTranh.length, bad: rBadNut.loi });
+    { loi: rGoi.loi, canhBao: rGoi.canhBao, dk: rGoi.dieuKien.length, gc: rGoi.giaiChong.length, ct: rGoi.canhTranh.length, bad: rBadNut.loi });
+
+  // 10C-2. Chống mất dữ liệu âm thầm khi gộp chunk: cùng trích khác điều kiện, trùng khoá khác nội dung phụ, và lặp chuoiCha giữa goiCon
+  const { gopKetQuaChunk } = await import('./ho-so-ma/tach-dieu-kien.mjs');
+  const nguong8543GiaLap = [
+    { id: 'hs:bieu:8543:7401', nut: 'bieu:8543', dieuKien: 'Điện áp <= 50 V', nguong: { daiLuong: 'điện áp', donVi: 'V', tu: null, den: 50, gomTu: false, gomDen: true } },
+    { id: 'hs:bieu:8543:7402', nut: 'bieu:8543', dieuKien: 'Công suất <= 100 W', nguong: { daiLuong: 'công suất', donVi: 'W', tu: null, den: 100, gomTu: false, gomDen: true } },
+  ];
+  // (a) Năm điều kiện KHÁC NHAU (khác cauHoi / khác kieu, truc, tap / khác nguong) nhưng CÙNG nut, ve, phu, nguon, trich -> giữ đủ 5, 0 canhBao
+  const rCungTrich = await tachGoiNhom(goi8543Ct, {
+    luat: LUAT_THAT,
+    L: L_REAL,
+    khongChia: true,
+    nguongSanCo: nguong8543GiaLap,
+    moHinh: 'test-cung-trich',
+    callModel: async () => JSON.stringify({
+      dieuKien: [
+        { nut: 'bieu:8543', ve: 1, phu: false, kieu: 'CO_KHONG', mo: 'NGHIA_THUONG', cauHoi: 'Hàng hoá có phải là máy hoặc thiết bị điện không?', trich: 'Máy và thiết bị điện, có chức năng riêng', nguon: 'bieu:8543#1' },
+        { nut: 'bieu:8543', ve: 1, phu: false, kieu: 'CO_KHONG', mo: 'NGHIA_THUONG', cauHoi: 'Thiết bị điện đó có chức năng riêng độc lập không?', trich: 'Máy và thiết bị điện, có chức năng riêng', nguon: 'bieu:8543#1' },
+        { nut: 'bieu:8543', ve: 1, phu: false, kieu: 'GIA_TRI', truc: 'loại thiết bị trong nhóm', tap: ['máy điện', 'thiết bị điện'], mo: 'NGHIA_THUONG', cauHoi: 'Thuộc dạng máy điện hay thiết bị điện?', trich: 'Máy và thiết bị điện, có chức năng riêng', nguon: 'bieu:8543#1' },
+        { nut: 'bieu:8543', ve: 1, phu: false, kieu: 'SO', nguong: 'hs:bieu:8543:7401', mo: 'NGUONG', cauHoi: 'Thỏa ngưỡng thông số kỹ thuật áp dụng?', trich: 'Máy và thiết bị điện, có chức năng riêng', nguon: 'bieu:8543#1' },
+        { nut: 'bieu:8543', ve: 1, phu: false, kieu: 'SO', nguong: 'hs:bieu:8543:7402', mo: 'NGUONG', cauHoi: 'Thỏa ngưỡng thông số kỹ thuật áp dụng?', trich: 'Máy và thiết bị điện, có chức năng riêng', nguon: 'bieu:8543#1' },
+      ],
+      giaiChong: [],
+      canhTranh: [],
+    }),
+  });
+
+  // (b) Trùng khoá gộp (nut, ve, phu, nguon, trich, cauHoi, kieu, truc, tap) nhưng khác nội dung phụ (daTri / mo / moNguon) -> giữ đủ cả hai VÀ phát canhBao
+  const rTrungKhoaKhacNoiDung = await tachGoiNhom(goi8543Ct, {
+    luat: LUAT_THAT,
+    L: L_REAL,
+    khongChia: true,
+    moHinh: 'test-trung-khoa-khac-noi-dung',
+    callModel: async () => JSON.stringify({
+      dieuKien: [
+        { nut: 'bieu:85437040', ve: 1, phu: false, kieu: 'GIA_TRI', truc: 'loại tấm mạch', daTri: false, tap: ['PCB/PWBs(1)', 'PCAs(1)'], mo: 'NGHIA_THUONG', cauHoi: 'Dùng cho loại tấm mạch nào?', trich: 'tấm mạch PCB/PWBs(1) hoặc PCAs(1)', nguon: 'bieu:85437040#1' },
+        { nut: 'bieu:85437040', ve: 1, phu: false, kieu: 'GIA_TRI', truc: 'loại tấm mạch', daTri: true, tap: ['PCAs(1)', 'PCB/PWBs(1)'], mo: 'NGHIA_THUONG', cauHoi: 'Dùng cho loại tấm mạch nào?', trich: 'tấm mạch PCB/PWBs(1) hoặc PCAs(1)', nguon: 'bieu:85437040#1' },
+        { nut: 'bieu:8543', ve: 1, phu: false, kieu: 'CO_KHONG', mo: 'NGHIA_THUONG', cauHoi: 'Máy điện có chức năng riêng?', trich: 'Máy và thiết bị điện, có chức năng riêng', nguon: 'bieu:8543#1' },
+        { nut: 'bieu:8543', ve: 1, phu: false, kieu: 'CO_KHONG', mo: 'DINH_NGHIA_LUAT', moNguon: 'nhom:8543:ct:1#1', cauHoi: 'Máy điện có chức năng riêng?', trich: 'Máy và thiết bị điện, có chức năng riêng', nguon: 'bieu:8543#1' },
+        { nut: 'bieu:8543', ve: 1, phu: false, kieu: 'CO_KHONG', mo: 'DINH_NGHIA_LUAT', moNguon: 'nhom:8543:ct:2#1', cauHoi: 'Máy điện có chức năng riêng?', trich: 'Máy và thiết bị điện, có chức năng riêng', nguon: 'bieu:8543#1' },
+      ],
+      giaiChong: [],
+      canhTranh: [],
+    }),
+  });
+
+  // (c) Nhiều chunk goiCon trả lại chuoiCha/CANH_TRANH tương đương nghĩa:
+  //     (i) tap đảo thứ tự, (ii) moNguon "id#1" vs ["id#1"] & mảng đảo thứ tự,
+  //     (iii) CO_KHONG kèm tap:[], daTri:null, truc:"", nguong:"", moNguon thừa vs lược bỏ,
+  //     (iv) CANH_TRANH.phepThu đảo thứ tự -> tất cả gộp còn đúng 1 bản ghi mỗi mục, 0 canhBao
+  let demChunkLap = 0;
+  const rHaiChunkLap = await tachGoiNhom('8543', {
+    luat: LUAT_THAT,
+    hoSo: path.join(TAM, 'empty-hoso'),
+    L: L_REAL,
+    canhTranhMd: ctMdTam,
+    chiaTheo6So: true,
+    moHinh: 'test-lap-chunk',
+    callModel: async () => {
+      demChunkLap += 1;
+      const chan = demChunkLap % 2 === 0;
+      const space = chan ? '  ' : ' ';
+      return JSON.stringify({
+        dieuKien: [
+          // (i) GIA_TRI đảo thứ tự tap + chênh khoảng trắng + lược bỏ daTri:false
+          chan
+            ? { nut: 'bieu:8543', ve: 1, phu: false, kieu: 'GIA_TRI', truc: `loại${space}máy`, tap: ['thiết bị điện', 'máy điện'], mo: 'NGHIA_THUONG', cauHoi: `Máy${space}điện có chức năng riêng?`, trich: `Máy và${space}thiết bị điện, có chức năng riêng`, nguon: 'bieu:8543#1' }
+            : { nut: 'bieu:8543', ve: 1, phu: false, kieu: 'GIA_TRI', truc: 'loại máy', daTri: false, tap: ['máy điện', 'thiết bị điện'], mo: 'NGHIA_THUONG', cauHoi: 'Máy điện có chức năng riêng?', trich: 'Máy và thiết bị điện, có chức năng riêng', nguon: 'bieu:8543#1' },
+          // (ii-a) moNguon chuỗi đơn vs mảng 1 phần tử
+          chan
+            ? { nut: 'bieu:8543', ve: 2, phu: false, kieu: 'CO_KHONG', mo: 'DINH_NGHIA_LUAT', moNguon: ['nhom:8543:ct:1#1'], cauHoi: 'Thỏa định nghĩa chú giải nhóm?', trich: 'chức năng riêng', nguon: 'bieu:8543#1' }
+            : { nut: 'bieu:8543', ve: 2, phu: false, kieu: 'CO_KHONG', mo: 'DINH_NGHIA_LUAT', moNguon: 'nhom:8543:ct:1#1', cauHoi: 'Thỏa định nghĩa chú giải nhóm?', trich: 'chức năng riêng', nguon: 'bieu:8543#1' },
+          // (ii-b) moNguon mảng nhiều phần tử đảo thứ tự
+          chan
+            ? { nut: 'bieu:8543', ve: 3, phu: false, kieu: 'CO_KHONG', mo: 'MO_TA_HUONG_DAN', moNguon: ['nhom:8543:ct:1#2', 'nhom:8543:ct:1#1'], cauHoi: 'Thỏa mô tả hướng dẫn nhóm?', trich: 'chưa được chi tiết hoặc ghi ở nơi khác', nguon: 'bieu:8543#1' }
+            : { nut: 'bieu:8543', ve: 3, phu: false, kieu: 'CO_KHONG', mo: 'MO_TA_HUONG_DAN', moNguon: ['nhom:8543:ct:1#1', 'nhom:8543:ct:1#2'], cauHoi: 'Thỏa mô tả hướng dẫn nhóm?', trich: 'chưa được chi tiết hoặc ghi ở nơi khác', nguon: 'bieu:8543#1' },
+          // (iii) CO_KHONG mang tap:[], daTri:null, truc:"", nguong:"", moNguon thừa (mo=NGHIA_THUONG) + trường nháp ngoài khuôn vs lược bỏ
+          chan
+            ? { nut: 'bieu:8543', ve: 4, phu: false, kieu: 'CO_KHONG', mo: 'NGHIA_THUONG', cauHoi: 'Chưa ghi ở nơi khác trong chương?', trich: 'trong Chương này', nguon: 'bieu:8543#1' }
+            : { nut: 'bieu:8543', ve: 4, phu: false, kieu: 'CO_KHONG', tap: [], daTri: null, truc: '', nguong: '', mo: 'NGHIA_THUONG', moNguon: 'nhom:8543:ct:1#1', nhapTam: 'chunk-le', cauHoi: 'Chưa ghi ở nơi khác trong chương?', trich: 'trong Chương này', nguon: 'bieu:8543#1' },
+        ],
+        giaiChong: [],
+        // (iv) CANH_TRANH đảo thứ tự nhomCanhTranh và phepThu
+        canhTranh: [
+          chan
+            ? { nut: 'bieu:8543', nhomCanhTranh: ['bieu:8543', 'bieu:8479'], phepThu: ['nhom:8543:ct:1#1', 'nhom:8479:ct:5#1'], trich: 'Không thể phân loại trong bất kỳ một nhóm cụ thể nào khác của chương này', nguon: 'nhom:8479:ct:4#1' }
+            : { nut: 'bieu:8543', nhomCanhTranh: ['bieu:8479', 'bieu:8543'], phepThu: ['nhom:8479:ct:5#1', 'nhom:8543:ct:1#1'], trich: 'Không thể phân loại trong bất kỳ một nhóm cụ thể nào khác của chương này', nguon: 'nhom:8479:ct:4#1' },
+        ],
+      });
+    },
+  });
+  const gopGcCt = gopKetQuaChunk([
+    {
+      dieuKien: [
+        { nut: 'bieu:8543', ve: 1, phu: false, kieu: 'GIA_TRI', truc: 'loại máy', tap: ['máy điện', 'thiết bị điện'], tapDu: ['máy điện', 'thiết bị điện'], cauHoi: 'Loại máy?', trich: 'Máy và thiết bị điện', nguon: 'bieu:8543#1' },
+      ],
+      giaiChong: [
+        { nut: 'bieu:854370', cap: ['bieu:85437030', 'bieu:85437050'], cach: 'CHU_GIAI', trich: 'chức năng phiên dịch', nguon: 'bieu:85437030#1' },
+      ],
+      canhTranh: [
+        { nut: 'bieu:8543', nhomCanhTranh: ['bieu:8479', 'bieu:8543'], phepThu: [{ nguon: 'nhom:8479:ct:5#1', trich: 'Không thể phân loại' }, { nguon: 'nhom:8543:ct:1#1', trich: 'chức năng riêng' }], trich: 'Không thể phân loại', nguon: 'nhom:8479:ct:4#1' },
+      ],
+    },
+    {
+      dieuKien: [
+        { nut: 'bieu:8543', ve: 1, phu: false, kieu: 'GIA_TRI', truc: 'loại máy', tap: ['thiết bị điện', 'máy điện'], tapDu: ['thiết bị điện', 'máy điện'], cauHoi: 'Loại máy?', trich: 'Máy và thiết bị điện', nguon: 'bieu:8543#1' },
+      ],
+      giaiChong: [
+        { nut: 'bieu:854370', cap: ['bieu:85437050', 'bieu:85437030'], cach: 'CHU_GIAI', trich: 'chức năng phiên dịch', nguon: 'bieu:85437030#1' },
+        { nut: 'bieu:854370', cap: ['bieu:85437030', 'bieu:85437050'], cach: 'CHU_GIAI', trich: 'từ điển', nguon: 'bieu:85437030#1' },
+      ],
+      canhTranh: [
+        { nut: 'bieu:8543', nhomCanhTranh: ['bieu:8543', 'bieu:8479'], phepThu: [{ nguon: 'nhom:8543:ct:1#1', trich: 'chức năng  riêng' }, { nguon: 'nhom:8479:ct:5#1', trich: 'Không thể phân loại' }], trich: 'Không thể phân loại', nguon: 'nhom:8479:ct:4#1' },
+        { nut: 'bieu:8543', nhomCanhTranh: ['bieu:8479', 'bieu:8543'], phepThu: [{ nguon: 'nhom:8543:ct:1#1', trich: 'chức năng riêng' }], trich: 'Không thể phân loại', nguon: 'nhom:8479:ct:4#1' },
+      ],
+    },
+  ]);
+
+  kiem('gopKetQuaChunk & tachGoiNhom (ca âm M-81): cùng trích khác điều kiện giữ đủ 5/5, đảo thứ tự tap/moNguon/phepThu & trường rỗng CO_KHONG gộp sạch 0 canhBao, khác daTri/moNguon/GC/CT giữ cả hai + canhBao',
+    !rCungTrich.loi.length
+    && rCungTrich.dieuKien.length === 5
+    && rCungTrich.canhBao.length === 0
+    && !rTrungKhoaKhacNoiDung.loi.length
+    && rTrungKhoaKhacNoiDung.dieuKien.length === 5
+    && rTrungKhoaKhacNoiDung.canhBao.length === 3
+    && demChunkLap >= 2
+    && !rHaiChunkLap.loi.length
+    && rHaiChunkLap.dieuKien.length === 4
+    && rHaiChunkLap.canhTranh.length === 1
+    && rHaiChunkLap.canhBao.length === 0
+    && gopGcCt.dieuKien.length === 1
+    && gopGcCt.giaiChong.length === 2
+    && gopGcCt.canhTranh.length === 2
+    && gopGcCt.canhBao.length === 2,
+    {
+      cungTrich: { dk: rCungTrich.dieuKien.length, cb: rCungTrich.canhBao, loi: rCungTrich.loi },
+      khacNoiDung: { dk: rTrungKhoaKhacNoiDung.dieuKien.length, cb: rTrungKhoaKhacNoiDung.canhBao, loi: rTrungKhoaKhacNoiDung.loi },
+      haiChunkLap: { chunks: demChunkLap, dk: rHaiChunkLap.dieuKien.length, ct: rHaiChunkLap.canhTranh.length, cb: rHaiChunkLap.canhBao, loi: rHaiChunkLap.loi },
+      gopGcCt: { dk: gopGcCt.dieuKien.length, gc: gopGcCt.giaiChong.length, ct: gopGcCt.canhTranh.length, cb: gopGcCt.canhBao },
+    });
 }
 
 // 10D. so-diem.mjs (CHUA -> DO -> DONG -> đổi 1 câu luật mở lại ĐÚNG nút dính câu đó + CLI)
