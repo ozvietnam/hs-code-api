@@ -59,11 +59,11 @@ export function tepCuaNutKhuon(nutId, thuMuc) {
 function kiemId81(x, loi, batBuoc = true) {
   const o = x.id || '(thiếu id)';
   if (x.id === undefined) {
-    if (batBuoc) loi.push(`${o}: thiếu id (phải là hs:<nut>:81NN)`);
+    if (batBuoc) loi.push(`${o}: thiếu id (phải là hs:<nut>:8[1-9]NN)`);
     return;
   }
   if (!chuoi(x.id) || !x.id.startsWith(`hs:${x.nut}:`) || !/^8[1-9]\d{2,}$/.test(x.id.slice(`hs:${x.nut}:`.length))) {
-    loi.push(`${o}: id phải là hs:<nut>:81NN`);
+    loi.push(`${o}: id phải là hs:<nut>:8[1-9]NN`);
   }
 }
 

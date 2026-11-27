@@ -799,13 +799,36 @@ function chungMinhPhuKinCoDieuKienCha(con, dkTheoNut, nguongById, chaDks, chuoiC
 /** Kiểm các phân hoạch kín theo cấu trúc biểu thuế:
  *  (a) Cụm "X và/; bộ phận của nó/chúng" trên cùng một trục `GIA_TRI` đơn trị (`!daTri`), có nhánh "Bộ phận" và nhánh hàng nguyên chiếc (hoặc cặp chưa lắp + đã lắp hoàn chỉnh);
  *  (b) Cụm Nguyên chiếc + Bộ phận + Phần bù có tên (`laPhanBuCoTen`). */
-function chungMinhPhanHoachCauTruc(con, dkTheoNut, opts = {}) {
+function chungMinhPhanHoachCauTruc(con, dkTheoNut, nguongById = new Map(), opts = {}) {
   const { chaId = null, L = null, bieuMeta = null } = opts;
   if (!L || !Array.isArray(con) || con.length < 2) return false;
   if (con.some((id) => !(dkTheoNut.get(id) || []).length)) return false;
 
   const boNgoac = (s) => boGachTen(s).replace(/\s*\([^)]*\)/gu, ' ').replace(/\s+/g, ' ').trim();
   const tenNut = (id) => L.cay?.theoId?.get(id)?.ten || bieuMeta?.get(id)?.nguyenVan || '';
+  const layCacVeDayDu = (id) => {
+    const dks = dkTheoNut.get(id) || [];
+    const map = new Map(dks.map((d) => [d.id, d]));
+    return chiaVeDieuKien(dks).cacVe
+      .filter((v) => v.cacDieuKien.length > 0)
+      .map((v) => v.cacDieuKien.map((it) => map.get(it.id) || it));
+  };
+  const duPhuNguongTruoc = (idxCon, cacVeBu) => {
+    for (let i = 0; i < idxCon; i += 1) {
+      for (const veSo of layCacVeDayDu(con[i])) {
+        const dSoList = veSo.filter((d) => d.kieu === 'SO' && !d.phu);
+        if (!dSoList.length) continue;
+        const veSoPhiSo = veSo.filter((d) => d.kieu !== 'SO');
+        for (const veBu of cacVeBu) {
+          const veBuPhiSo = veBu.filter((d) => d.kieu !== 'SO');
+          if (veRoiNhau(veSoPhiSo, veBuPhiSo, nguongById)) continue;
+          const ok = dSoList.every((dSo) => veBu.some((dBu) => dBu.kieu === 'SO' && dBu.phu && laPhuCuaNhau(dSo, dBu, nguongById)));
+          if (!ok) return false;
+        }
+      }
+    }
+    return true;
+  };
 
   // (a) Cụm "X và/; bộ phận của nó/chúng" trên cùng trục GIA_TRI đơn trị (!daTri)
   const donGt = [];
@@ -848,21 +871,60 @@ function chungMinhPhanHoachCauTruc(con, dkTheoNut, opts = {}) {
       && !(dkTheoNut.get(id) || []).some((d) => d.kieu === 'SO' && !d.phu)
     ));
     if (dsPhanBu.length > 0) {
+      const laVeKhongThuHep = (ve) => (
+        ve.length > 0
+        && !ve.some((d) => !d.phu && (d.kieu === 'GIA_TRI' || d.kieu === 'SO'))
+        && ve.filter((d) => !d.phu && d.kieu === 'CO_KHONG').length <= 1
+      );
       // (b1) Phần bù có tên cho hàng nguyên chiếc + nhánh "Bộ phận (và phụ kiện)" (vd 84.79, 85.17, 85.43, 90.31)
-      const coPhanBuNguyenChiec = dsPhanBu.some((id) => !/bộ\s+phận/iu.test(boNgoac(tenNut(id))));
-      const coNhanhBoPhan = con.some((id) => /^(?:các\s+)?bộ\s+phận(?:\s+và\s+phụ\s+kiện)?$/iu.test(boNgoac(tenNut(id))));
+      const coPhanBuNguyenChiec = dsPhanBu.some((id) => {
+        if (/bộ\s+phận/iu.test(boNgoac(tenNut(id)))) return false;
+        const cacVe = layCacVeDayDu(id);
+        if (!cacVe.some(laVeKhongThuHep)) return false;
+        return duPhuNguongTruoc(con.indexOf(id), cacVe);
+      });
+      const coNhanhBoPhan = con.some((id) => {
+        if (!/^(?:các\s+)?bộ\s+phận(?:\s+và\s+phụ\s+kiện)?$/iu.test(boNgoac(tenNut(id)))) return false;
+        return layCacVeDayDu(id).some(laVeKhongThuHep);
+      });
       if (coPhanBuNguyenChiec && coNhanhBoPhan) return true;
 
-      // (b2) Cha dạng "<Hàng> và bộ phận của chúng" + nhánh hàng nguyên chiếc + nhánh bộ phận có tên + nhánh "Các bộ phận khác" trên cùng trục GIA_TRI đơn trị (vd 8708.99.2)
+      // (b2) Cha dạng "<Hàng> và bộ phận của chúng" + nhánh hàng nguyên chiếc khớp tên cha + nhánh "Các bộ phận khác" trên cùng trục GIA_TRI đơn trị (vd 8708.99.2)
       if (chaId) {
         const tCha = boNgoac(tenNut(chaId)).toLowerCase();
-        const coPhanBuBoPhan = dsPhanBu.some((id) => /bộ\s+phận\s+khác/iu.test(boNgoac(tenNut(id))));
-        if (/và\s+(?:các\s+)?bộ\s+phận\s+của\s+(?:nó|chúng)/iu.test(tCha) && coPhanBuBoPhan) {
+        const mCha = /^(.+?)\s+và\s+(?:các\s+)?bộ\s+phận\s+của\s+(?:nó|chúng)\s*[:;.]*$/iu.exec(tCha);
+        const dsPhanBuBoPhan = dsPhanBu.filter((id) => /bộ\s+phận\s+khác/iu.test(boNgoac(tenNut(id))));
+        if (mCha && dsPhanBuBoPhan.length > 0) {
+          const tenChinhCha = chuanSo(mCha[1]).toLowerCase().trim();
           const trucs = con.map((id) => {
             const gtPos = (dkTheoNut.get(id) || []).filter((d) => d.kieu === 'GIA_TRI' && !d.phu && !d.daTri && chuanTruc(d));
             return gtPos.length ? chuanTruc(gtPos[0]) : null;
           });
-          if (trucs.every(Boolean) && new Set(trucs).size === 1) return true;
+          if (trucs.every(Boolean) && new Set(trucs).size === 1) {
+            const truc0 = trucs[0];
+            const coConNguyenChiecKhopCha = con.some((id) => {
+              if (dsPhanBuBoPhan.includes(id)) return false;
+              return layCacVeDayDu(id).some((ve) => {
+                if (ve.length !== 1) return false;
+                const d = ve[0];
+                if (d.kieu !== 'GIA_TRI' || d.phu || d.daTri || chuanTruc(d) !== truc0) return false;
+                const tap = chuanTap(d.tap);
+                return tap.size === 1 && tap.has(tenChinhCha);
+              });
+            });
+            const coPhanBuBoPhanHopLe = dsPhanBuBoPhan.some((id) => {
+              const cacVe = layCacVeDayDu(id);
+              if (!cacVe.length || !duPhuNguongTruoc(con.indexOf(id), cacVe)) return false;
+              return cacVe.some((ve) => {
+                const duong = ve.filter((d) => !d.phu);
+                return duong.length === 1
+                  && duong[0].kieu === 'GIA_TRI'
+                  && !duong[0].daTri
+                  && chuanTruc(duong[0]) === truc0;
+              });
+            });
+            if (coConNguyenChiecKhopCha && coPhanBuBoPhanHopLe) return true;
+          }
         }
       }
     }
@@ -968,7 +1030,7 @@ export function chungMinhPhuKin(con, dkTheoNut, nguongById = new Map(), chaDks =
   if (chungMinhPhuKinCoDieuKienCha(con, dkTheoNut, nguongById, chaDks, chuoiChaDks, opts)) return true;
 
   // 5. Phân hoạch kín theo cấu trúc biểu thuế (Nguyên chiếc + Bộ phận / Phần bù có tên)
-  if (chungMinhPhanHoachCauTruc(con, dkTheoNut, opts)) return true;
+  if (chungMinhPhanHoachCauTruc(con, dkTheoNut, nguongById, opts)) return true;
 
   return false;
 }

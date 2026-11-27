@@ -183,10 +183,10 @@ const dkVang = (nut, stt, ve, phu, kieu, mo, cauHoi, trich, nguon, extra = {}) =
   kiem('khuon: DIEU_KIEN CO_KHONG / SO / GIA_TRI / ve=0 / moNguon[] hợp lệ', !kiemBanGhi(recOk).length && !kiemBanGhi(recSo).length && !kiemBanGhi(recGt).length && !kiemBanGhi(recVe0).length && !kiemBanGhi(recMnArr).length);
   kiem('khuon: GIAI_CHONG & CANH_TRANH hợp lệ', !kiemBanGhi(gcOk).length && !kiemBanGhi(ctOk).length);
 
-  kiem('khuon: chấp nhận hậu tố 8[1-9]d{2,} (8201, 81100) và từ chối id không phải 81NN (7401)',
+  kiem('khuon: chấp nhận hậu tố 8[1-9]d{2,} (8201, 81100) và từ chối id không phải 8[1-9]NN (7401)',
     !kiemBanGhi({ ...recOk, id: 'hs:bieu:85437050:8201' }).length
     && !kiemBanGhi({ ...recOk, id: 'hs:bieu:85437050:81100' }).length
-    && kiemBanGhi({ ...recOk, id: 'hs:bieu:85437050:7401' }).some((l) => /81NN/.test(l)));
+    && kiemBanGhi({ ...recOk, id: 'hs:bieu:85437050:7401' }).some((l) => /8\[1-9\]NN/.test(l)));
   kiem('khuon: từ chối ve < 0', kiemBanGhi({ ...recOk, ve: -1 }).some((l) => /ve phải là số nguyên >= 0/.test(l)));
   kiem('khuon: từ chối trường lạ trong DIEU_KIEN', kiemBanGhi({ ...recOk, la: 1 }).some((l) => /trường lạ "la"/.test(l)));
   kiem('khuon: từ chối kieu SO thiếu nguong, mang tap hoặc mang truc', kiemBanGhi({ ...recOk, kieu: 'SO' }).some((l) => /kieu SO phải có nguong/.test(l)) && kiemBanGhi({ ...recSo, tap: ['x'] }).some((l) => /kieu SO không mang tap/.test(l)) && kiemBanGhi({ ...recSo, truc: 'công suất' }).some((l) => /kieu SO không mang truc/.test(l)));
@@ -1894,11 +1894,46 @@ const KHO_CHUAN = ghiHoSoTam({
   )), nguong85);
   const rAm8501 = chayCong({ luat: LUAT_THAT, hoSo: khoAm8501, phamVi: ['bieu:8501'], chiTrong: true, cong: [7], L: L_VANG12, bieuMeta: metaVang12 });
 
-  kiem('HỒI QUY 12 BẢNG VÀNG (ca âm Cổng 7): thiếu anh em ở 870822, hạ GIA_TRI->CO_KHONG ở 870880, hoặc bỏ phu 37,5 W ở 8501 đều báo HO_PHU đỏ',
+  // Ca âm S1 (R2-1 b1): thêm điều kiện thu hẹp giả GIA_TRI tap:["chạy pin"] vào nhánh phần bù nguyên chiếc bieu:854370 -> bắt buộc báo HO_PHU đỏ
+  const khoAmS1 = taoHoSoTamTuThat('am-s1-854370', '85', (list) => [
+    ...list,
+    {
+      id: 'hs:bieu:854370:8199',
+      nut: 'bieu:854370',
+      loai: 'DIEU_KIEN',
+      ve: 1,
+      phu: false,
+      kieu: 'GIA_TRI',
+      truc: 'nguon_dien',
+      tap: ['chạy pin'],
+      mo: 'NGHIA_THUONG',
+      cauHoi: 'Máy có chạy pin không?',
+      trich: 'Máy và thiết bị khác',
+      nguon: 'bieu:854370#1',
+      vanTay: vanTay(L_VANG12.chuCau('bieu:854370#1')),
+    },
+  ], nguong85);
+  const rAmS1 = chayCong({ luat: LUAT_THAT, hoSo: khoAmS1, phamVi: ['bieu:8543'], chiTrong: true, cong: [7], L: L_VANG12, bieuMeta: metaVang12 });
+
+  // Ca âm S2 (R2-1 b2): đổi hs:bieu:87089921:8101 từ tap:["Thùng nhiên liệu"] thành tap:["Nắp phụ"] -> không khớp tên hàng chính của cha bieu:8708992 -> bắt buộc báo HO_PHU đỏ
+  const khoAmS2 = taoHoSoTamTuThat('am-s2-8708992', '87', (list) => list.map((r) => (
+    r.id === 'hs:bieu:87089921:8101' ? { ...r, tap: ['Nắp phụ'] } : r
+  )), nguong87);
+  const rAmS2 = chayCong({ luat: LUAT_THAT, hoSo: khoAmS2, phamVi: ['bieu:8708992'], chiTrong: true, cong: [7], L: L_VANG12, bieuMeta: metaVang12 });
+
+  kiem('HỒI QUY 12 BẢNG VÀNG (ca âm Cổng 7 + S1/S2): thiếu anh em 870822, hạ GIA_TRI 870880, bỏ phu 37,5 W 8501, thu hẹp giả 854370 (S1) và lệch tên nguyên chiếc 87089921 (S2) đều báo HO_PHU đỏ',
     rAm870822.cong[7].loi.some((l) => /bieu:870822.*HO_PHU/.test(l))
     && rAm870880.cong[7].loi.some((l) => /bieu:870880.*HO_PHU/.test(l))
-    && rAm8501.cong[7].loi.some((l) => /bieu:8501.*HO_PHU/.test(l)),
-    { am870822: rAm870822.cong[7].loi, am870880: rAm870880.cong[7].loi, am8501: rAm8501.cong[7].loi });
+    && rAm8501.cong[7].loi.some((l) => /bieu:8501.*HO_PHU/.test(l))
+    && rAmS1.cong[7].loi.some((l) => /bieu:8543.*HO_PHU/.test(l))
+    && rAmS2.cong[7].loi.some((l) => /bieu:8708992.*HO_PHU/.test(l)),
+    {
+      am870822: rAm870822.cong[7].loi,
+      am870880: rAm870880.cong[7].loi,
+      am8501: rAm8501.cong[7].loi,
+      amS1: rAmS1.cong[7].loi,
+      amS2: rAmS2.cong[7].loi,
+    });
 
   // 13E. Kiểm sạch lời nhắc HUONG_DAN_TACH_DIEU_KIEN (không dính 12 mã vàng, không chứa "bảng vàng" / "tập vàng")
   const RE_MA_VANG = /\b(?:02\.?01|30\.?04|39\.?26|42\.?02|61\.?10|73\.?26|84\.?79|85\.?01|85\.?17|85\.?43|87\.?08|90\.?31)\b/i;
