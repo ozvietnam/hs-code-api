@@ -24,6 +24,8 @@ import {
   danhGiaCongThuc,
   doBangAnhEm,
   chungMinhPhuKin,
+  chiaVeDieuKien,
+  haiNutRoiNhau,
 } from './ho-so-ma/bang-anh-em.mjs';
 import { chayCong, napLuatCong, parseCongArg, vanTay } from './ho-so-ma/cong.mjs';
 import {
@@ -60,7 +62,8 @@ fs.mkdirSync(path.join(LUAT, 'nghia-canh'), { recursive: true });
 const CHON_ID = (id) => (
   id === 'gir:3:b'
   || ['phan:I', 'phan:VIII', 'phan:XVI'].includes(id)
-  || ['chuong:02', 'chuong:42', 'chuong:85'].includes(id)
+  || ['chuong:02', 'chuong:39', 'chuong:42', 'chuong:85'].includes(id)
+  || id === 'chuong:39:cg:1'
   || id === 'bieu:02' || id === 'bieu:42' || id === 'bieu:85'
   || /^bieu:0201/.test(id)
   || id === 'bieu:4202' || /^bieu:42022/.test(id)
@@ -69,26 +72,62 @@ const CHON_ID = (id) => (
   || id === 'bieu:8543'
   || id === 'bieu:8479'
   || /^nhom:8479:ct:[1-7]$/.test(id)
+  || /^nhom:(0201|8501):/.test(id)
+  || /^pn:4202/.test(id)
+  || /^chuong:(02|42):(kq|cg):/.test(id)
+);
+
+const CHON_VANG_ID = (id) => (
+  id === 'gir:3:b'
+  || ['phan:I', 'phan:VIII', 'phan:XVI'].includes(id)
+  || /^chuong:(02|39|42|84|85)\b/.test(id)
+  || id === 'bieu:02' || id === 'bieu:42' || id === 'bieu:85'
+  || /^bieu:0201/.test(id)
+  || id === 'bieu:0207' || /^bieu:02074/.test(id)
+  || /^bieu:4202/.test(id)
+  || /^bieu:8501/.test(id)
+  || id === 'bieu:8543' || /^bieu:854330/.test(id) || /^bieu:854370/.test(id)
+  || id === 'bieu:8479'
+  || /^nhom:(0201|4202|8479|8501):/.test(id)
+  || /^pn:4202/.test(id)
+  || /^sen:(4202|8501)/.test(id)
 );
 
 const docDong = (p) => (fs.existsSync(p) ? fs.readFileSync(p, 'utf8').split('\n').filter((l) => l.trim()) : []);
-const daChon = new Set();
-for (const kho of ['phan', 'chuong', 'bieu', 'nhom', 'gir']) {
-  const lines = docDong(path.join(LUAT_THAT, `${kho}.jsonl`)).filter((l) => {
-    const o = JSON.parse(l);
-    if (CHON_ID(o.id)) { daChon.add(o.id); return true; }
-    return false;
-  });
-  fs.writeFileSync(path.join(LUAT, `${kho}.jsonl`), `${lines.join('\n')}${lines.length ? '\n' : ''}`);
-  const cauLines = docDong(path.join(LUAT_THAT, 'cau', `${kho}.jsonl`)).filter((l) => daChon.has(JSON.parse(l).id.split('#')[0]));
-  fs.writeFileSync(path.join(LUAT, 'cau', `${kho}.jsonl`), `${cauLines.join('\n')}${cauLines.length ? '\n' : ''}`);
+function taoKhoLuatTam(dir, chonFn) {
+  fs.mkdirSync(path.join(dir, 'cau'), { recursive: true });
+  fs.mkdirSync(path.join(dir, 'nghia-canh'), { recursive: true });
+  const daChon = new Set();
+  for (const kho of ['phan', 'chuong', 'bieu', 'nhom', 'phan-nhom', 'gir', 'sen']) {
+    const lines = docDong(path.join(LUAT_THAT, `${kho}.jsonl`)).filter((l) => {
+      const o = JSON.parse(l);
+      if (chonFn(o.id)) { daChon.add(o.id); return true; }
+      return false;
+    });
+    fs.writeFileSync(path.join(dir, `${kho}.jsonl`), `${lines.join('\n')}${lines.length ? '\n' : ''}`);
+    const cauPath = path.join(LUAT_THAT, 'cau', `${kho}.jsonl`);
+    const cauLines = fs.existsSync(cauPath)
+      ? docDong(cauPath).filter((l) => daChon.has(JSON.parse(l).id.split('#')[0]))
+      : [];
+    fs.writeFileSync(path.join(dir, 'cau', `${kho}.jsonl`), `${cauLines.join('\n')}${cauLines.length ? '\n' : ''}`);
+  }
+  fs.copyFileSync(path.join(LUAT_THAT, 'phan-chuong-nhom.json'), path.join(dir, 'phan-chuong-nhom.json'));
 }
-fs.copyFileSync(path.join(LUAT_THAT, 'phan-chuong-nhom.json'), path.join(LUAT, 'phan-chuong-nhom.json'));
+taoKhoLuatTam(LUAT, CHON_ID);
+const LUAT_VANG = path.join(TAM, 'luat-vang');
+taoKhoLuatTam(LUAT_VANG, CHON_VANG_ID);
 
 const L = napLuatCong(LUAT);
+const L_VANG = napLuatCong(LUAT_VANG);
 const bieuMeta = napBieuMeta(LUAT);
-const dk = (nut, stt, ve, phu, kieu, mo, cauHoi, trich, nguon, extra = {}) => {
-  const chu = L.chuCau(nguon);
+const NGUONG_8501 = docDong(path.join(GOC, 'data/ho-so-ma/nguong/85.jsonl'))
+  .map((l) => JSON.parse(l))
+  .filter((x) => /^bieu:8501/.test(x.nut));
+const NGUONG_4202 = docDong(path.join(GOC, 'data/ho-so-ma/nguong/42.jsonl'))
+  .map((l) => JSON.parse(l))
+  .filter((x) => /^bieu:4202/.test(x.nut));
+const dkWith = (luatObj, nut, stt, ve, phu, kieu, mo, cauHoi, trich, nguon, extra = {}) => {
+  const chu = luatObj.chuCau(nguon);
   return {
     id: `hs:${nut}:${8100 + stt}`,
     nut,
@@ -104,24 +143,38 @@ const dk = (nut, stt, ve, phu, kieu, mo, cauHoi, trich, nguon, extra = {}) => {
     vanTay: vanTay(chu),
   };
 };
+const dk = (nut, stt, ve, phu, kieu, mo, cauHoi, trich, nguon, extra = {}) => (
+  dkWith(L, nut, stt, ve, phu, kieu, mo, cauHoi, trich, nguon, extra)
+);
+const dkVang = (nut, stt, ve, phu, kieu, mo, cauHoi, trich, nguon, extra = {}) => (
+  dkWith(L_VANG, nut, stt, ve, phu, kieu, mo, cauHoi, trich, nguon, extra)
+);
 
 // ---------- 2. Kiểm khuôn (khuon.mjs) ----------
 {
   const recOk = dk('bieu:85437050', 1, 1, false, 'CO_KHONG', 'NGHIA_THUONG', 'Có phải bộ khuếch đại vi sóng không?', 'Bộ khuếch đại vi sóng', 'bieu:85437050#1');
   const recSo = dk('bieu:85011022', 1, 1, false, 'SO', 'NGUONG', 'Công suất không quá 5 W?', 'công suất không quá 5 W', 'bieu:85011022#1', { nguong: 'hs:bieu:85011022:7401' });
-  const recGt = dk('bieu:420221', 1, 1, false, 'GIA_TRI', 'MO_TA_HUONG_DAN', 'Chất liệu mặt ngoài là gì?', 'da thuộc hoặc da thuộc tổng hợp', 'bieu:420221#1', { tap: ['da thuộc', 'da thuộc tổng hợp'] });
+  const recGt = dk('bieu:420221', 1, 1, false, 'GIA_TRI', 'MO_TA_HUONG_DAN', 'Chất liệu mặt ngoài là gì?', 'da thuộc hoặc da thuộc tổng hợp', 'bieu:420221#1', { truc: 'chất liệu mặt ngoài', tap: ['da thuộc', 'da thuộc tổng hợp'], moNguon: 'pn:420211:ct:1#1' });
+  const recVe0 = dk('bieu:4202', 6, 0, true, 'CO_KHONG', 'NGHIA_THUONG', 'Có phải túi plastic dùng một lần không?', 'Túi làm bằng các tấm plastic, đã hoặc chưa in, có tay cầm, không được thiết kế để sử dụng lâu dài', 'chuong:42:cg:3:A:a#1');
+  const recMnArr = dk('bieu:020120', 2, 1, false, 'CO_KHONG', 'DINH_NGHIA_LUAT', 'Thịt có xương không?', 'có xương', 'bieu:020120#1', { moNguon: ['chuong:02:kq:34#1', 'chuong:02:kq:34#2'] });
   const gcOk = { id: 'hs:bieu:854370:8101', nut: 'bieu:854370', loai: 'GIAI_CHONG', cap: ['bieu:85437030', 'bieu:85437050'], cach: 'CHU_GIAI', trich: 'Máy, thiết bị điện có chức năng phiên dịch hoặc từ điển', nguon: 'bieu:85437030#1' };
   const ctOk = { id: 'hs:bieu:8543:8101', nut: 'bieu:8543', loai: 'CANH_TRANH', nhomCanhTranh: ['bieu:8479', 'bieu:8543'], phepThu: ['nhom:8479:ct:5#1', 'nhom:8479:ct:6#1', 'nhom:8479:ct:7#1'], trich: 'Không thể phân loại trong bất kỳ một nhóm cụ thể nào khác của chương này', nguon: 'nhom:8479:ct:4#1' };
 
-  kiem('khuon: DIEU_KIEN CO_KHONG / SO / GIA_TRI hợp lệ', !kiemBanGhi(recOk).length && !kiemBanGhi(recSo).length && !kiemBanGhi(recGt).length);
+  kiem('khuon: DIEU_KIEN CO_KHONG / SO / GIA_TRI / ve=0 / moNguon[] hợp lệ', !kiemBanGhi(recOk).length && !kiemBanGhi(recSo).length && !kiemBanGhi(recGt).length && !kiemBanGhi(recVe0).length && !kiemBanGhi(recMnArr).length);
   kiem('khuon: GIAI_CHONG & CANH_TRANH hợp lệ', !kiemBanGhi(gcOk).length && !kiemBanGhi(ctOk).length);
 
   kiem('khuon: từ chối id không phải 81NN', kiemBanGhi({ ...recOk, id: 'hs:bieu:85437050:7401' }).some((l) => /81NN/.test(l)));
+  kiem('khuon: từ chối ve < 0', kiemBanGhi({ ...recOk, ve: -1 }).some((l) => /ve phải là số nguyên >= 0/.test(l)));
   kiem('khuon: từ chối trường lạ trong DIEU_KIEN', kiemBanGhi({ ...recOk, la: 1 }).some((l) => /trường lạ "la"/.test(l)));
-  kiem('khuon: từ chối kieu SO thiếu nguong hoặc mang tap', kiemBanGhi({ ...recOk, kieu: 'SO' }).some((l) => /kieu SO phải có nguong/.test(l)) && kiemBanGhi({ ...recSo, tap: ['x'] }).some((l) => /kieu SO không mang tap/.test(l)));
+  kiem('khuon: từ chối kieu SO thiếu nguong, mang tap hoặc mang truc', kiemBanGhi({ ...recOk, kieu: 'SO' }).some((l) => /kieu SO phải có nguong/.test(l)) && kiemBanGhi({ ...recSo, tap: ['x'] }).some((l) => /kieu SO không mang tap/.test(l)) && kiemBanGhi({ ...recSo, truc: 'công suất' }).some((l) => /kieu SO không mang truc/.test(l)));
   kiem('khuon: từ chối kieu SO nhúng nguong object (phải trỏ id M-74)', kiemBanGhi({ ...recOk, kieu: 'SO', nguong: { tu: 0, den: 5 } }).some((l) => /id bản ghi NGUONG/.test(l)));
-  kiem('khuon: từ chối kieu GIA_TRI thiếu tap hoặc rỗng', kiemBanGhi({ ...recOk, kieu: 'GIA_TRI' }).some((l) => /tap/.test(l)) && kiemBanGhi({ ...recGt, tap: [] }).some((l) => /tap/.test(l)));
-  kiem('khuon: từ chối CO_KHONG mang nguong/tap', kiemBanGhi({ ...recOk, nguong: 'hs:bieu:1:7401' }).some((l) => /không mang nguong/.test(l)));
+  kiem('khuon: từ chối kieu GIA_TRI thiếu truc hoặc thiếu tap/rỗng', kiemBanGhi({ ...recOk, kieu: 'GIA_TRI' }).some((l) => /tap/.test(l)) && kiemBanGhi({ ...recGt, truc: undefined }).some((l) => /phải có truc/.test(l)) && kiemBanGhi({ ...recGt, tap: [] }).some((l) => /tap/.test(l)));
+  kiem('khuon: từ chối CO_KHONG mang nguong/tap/truc', kiemBanGhi({ ...recOk, nguong: 'hs:bieu:1:7401' }).some((l) => /không mang nguong/.test(l)) && kiemBanGhi({ ...recOk, truc: 'x' }).some((l) => /không mang truc/.test(l)));
+  kiem('khuon: từ chối DINH_NGHIA_LUAT/MO_TA_HUONG_DAN thiếu moNguon hoặc tb:, từ chối NGHIA_THUONG/NGUONG mang moNguon',
+    kiemBanGhi({ ...recGt, moNguon: undefined }).some((l) => /phải có moNguon/.test(l))
+    && kiemBanGhi({ ...recGt, mo: 'DINH_NGHIA_LUAT', moNguon: 'tb:1-2023:4202#1' }).some((l) => /moNguon/.test(l))
+    && kiemBanGhi({ ...recOk, moNguon: 'bieu:85437050#1' }).some((l) => /không mang moNguon/.test(l))
+    && kiemBanGhi({ ...recSo, moNguon: 'bieu:85011022#1' }).some((l) => /không mang moNguon/.test(l)));
   kiem('khuon: từ chối cauHoi nhiều dòng hoặc >300 ký tự', kiemBanGhi({ ...recOk, cauHoi: 'a\nb' }).some((l) => /cauHoi/.test(l)) && kiemBanGhi({ ...recOk, cauHoi: 'x'.repeat(301) }).some((l) => /cauHoi/.test(l)));
   kiem('khuon: từ chối GIAI_CHONG cap trùng nhau / cach lạ', kiemBanGhi({ ...gcOk, cap: ['bieu:85437030', 'bieu:85437030'] }).some((l) => /cap/.test(l)) && kiemBanGhi({ ...gcOk, cach: 'DOAN' }).some((l) => /cach lạ/.test(l)));
   kiem('khuon: từ chối CANH_TRANH phepThu rỗng / nhomCanhTranh rỗng', kiemBanGhi({ ...ctOk, phepThu: [] }).some((l) => /phepThu/.test(l)) && kiemBanGhi({ ...ctOk, nhomCanhTranh: [] }).some((l) => /nhomCanhTranh/.test(l)));
@@ -149,22 +202,22 @@ const ng5W = {
 
 const DUNG_8543 = [
   dk('bieu:8543', 1, 1, false, 'CO_KHONG', 'NGHIA_THUONG', 'Có phải máy hoặc thiết bị điện có chức năng riêng không?', 'Máy và thiết bị điện, có chức năng riêng', 'bieu:8543#1'),
-  dk('bieu:854370', 1, 1, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Có phải máy và thiết bị khác (không thuộc 8543.10–.40, không phải bộ phận)?', 'Máy và thiết bị khác', 'bieu:854370#1'),
-  dk('bieu:85437010', 1, 1, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Có phải máy cung cấp năng lượng cho hàng rào điện không?', 'Máy cung cấp năng lượng cho hàng rào điện', 'bieu:85437010#1'),
-  dk('bieu:8543702', 1, 1, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Có phải thiết bị điều khiển từ xa không?', 'Thiết bị điều khiển từ xa', 'bieu:8543702#1'),
-  dk('bieu:8543702', 2, 1, true, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Có phải thiết bị điều khiển từ xa bằng sóng radio (loại trừ)?', 'trừ thiết bị điều khiển từ xa bằng sóng radio', 'bieu:8543702#1'),
-  dk('bieu:85437021', 1, 1, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Có phải điều khiển từ xa hồng ngoại không dây cho máy chơi trò chơi điện tử video không?', 'Thiết bị điều khiển từ xa hồng ngoại không dây dùng cho máy chơi trò chơi điện tử video', 'bieu:85437021#1'),
-  dk('bieu:85437021', 2, 1, true, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Có phải bộ điều khiển trò chơi thuộc nhóm 95.04 (loại trừ)?', 'trừ bộ điều khiển trò chơi thuộc nhóm 95.04', 'bieu:85437021#1'),
-  dk('bieu:85437030', 1, 1, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Có chức năng phiên dịch hoặc từ điển không?', 'Máy, thiết bị điện có chức năng phiên dịch hoặc từ điển', 'bieu:85437030#1'),
+  dk('bieu:854370', 1, 1, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Có phải máy và thiết bị khác (không thuộc 8543.10–.40, không phải bộ phận)?', 'Máy và thiết bị khác', 'bieu:854370#1', { moNguon: 'bieu:854370#1' }),
+  dk('bieu:85437010', 1, 1, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Có phải máy cung cấp năng lượng cho hàng rào điện không?', 'Máy cung cấp năng lượng cho hàng rào điện', 'bieu:85437010#1', { moNguon: 'bieu:85437010#1' }),
+  dk('bieu:8543702', 1, 1, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Có phải thiết bị điều khiển từ xa không?', 'Thiết bị điều khiển từ xa', 'bieu:8543702#1', { moNguon: 'bieu:8543702#1' }),
+  dk('bieu:8543702', 2, 1, true, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Có phải thiết bị điều khiển từ xa bằng sóng radio (loại trừ)?', 'trừ thiết bị điều khiển từ xa bằng sóng radio', 'bieu:8543702#1', { moNguon: 'bieu:8543702#1' }),
+  dk('bieu:85437021', 1, 1, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Có phải điều khiển từ xa hồng ngoại không dây cho máy chơi trò chơi điện tử video không?', 'Thiết bị điều khiển từ xa hồng ngoại không dây dùng cho máy chơi trò chơi điện tử video', 'bieu:85437021#1', { moNguon: 'bieu:85437021#1' }),
+  dk('bieu:85437021', 2, 1, true, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Có phải bộ điều khiển trò chơi thuộc nhóm 95.04 (loại trừ)?', 'trừ bộ điều khiển trò chơi thuộc nhóm 95.04', 'bieu:85437021#1', { moNguon: 'bieu:85437021#1' }),
+  dk('bieu:85437030', 1, 1, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Có chức năng phiên dịch hoặc từ điển không?', 'Máy, thiết bị điện có chức năng phiên dịch hoặc từ điển', 'bieu:85437030#1', { moNguon: 'bieu:85437030#1' }),
   // 8543.70.40 có dấu ";" => tối thiểu 2 vế
-  dk('bieu:85437040', 1, 1, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Có phải máy tách bụi hoặc khử tĩnh điện chế tạo PCB/PWB/PCA không?', 'Máy tách bụi hoặc khử tĩnh điện trong quá trình chế tạo tấm mạch PCB/PWBs(1) hoặc PCAs(1)', 'bieu:85437040#1'),
-  dk('bieu:85437040', 2, 2, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Có phải máy làm đóng rắn vật liệu bằng tia cực tím sản xuất PCB/PWB/PCA không?', 'máy làm đóng rắn vật liệu bằng tia cực tím dùng trong sản xuất tấm mạch PCB/PWBs(1) hoặc PCAs(1)', 'bieu:85437040#1'),
+  dk('bieu:85437040', 1, 1, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Có phải máy tách bụi hoặc khử tĩnh điện chế tạo PCB/PWB/PCA không?', 'Máy tách bụi hoặc khử tĩnh điện trong quá trình chế tạo tấm mạch PCB/PWBs(1) hoặc PCAs(1)', 'bieu:85437040#1', { moNguon: 'bieu:85437040#1' }),
+  dk('bieu:85437040', 2, 2, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Có phải máy làm đóng rắn vật liệu bằng tia cực tím sản xuất PCB/PWB/PCA không?', 'máy làm đóng rắn vật liệu bằng tia cực tím dùng trong sản xuất tấm mạch PCB/PWBs(1) hoặc PCAs(1)', 'bieu:85437040#1', { moNguon: 'bieu:85437040#1' }),
   // 8543.70.50 có 3 đoạn ";" => 3 vế
   dk('bieu:85437050', 1, 1, false, 'CO_KHONG', 'NGHIA_THUONG', 'Có phải bộ khuếch đại vi sóng không?', 'Bộ khuếch đại vi sóng', 'bieu:85437050#1'),
-  dk('bieu:85437050', 2, 2, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Có phải máy ghi dữ liệu chuyến bay kỹ thuật số không?', 'máy ghi dữ liệu chuyến bay kỹ thuật số', 'bieu:85437050#1'),
-  dk('bieu:85437050', 3, 3, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Có phải đầu đọc điện tử di động chạy pin đọc/tái tạo văn bản, hình ảnh, âm thanh không?', 'đầu đọc điện tử di động hoạt động bằng pin để ghi và tái tạo văn bản, hình ảnh tĩnh hoặc tệp âm thanh', 'bieu:85437050#1'),
+  dk('bieu:85437050', 2, 2, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Có phải máy ghi dữ liệu chuyến bay kỹ thuật số không?', 'máy ghi dữ liệu chuyến bay kỹ thuật số', 'bieu:85437050#1', { moNguon: 'bieu:85437050#1' }),
+  dk('bieu:85437050', 3, 3, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Có phải đầu đọc điện tử di động chạy pin đọc/tái tạo văn bản, hình ảnh, âm thanh không?', 'đầu đọc điện tử di động hoạt động bằng pin để ghi và tái tạo văn bản, hình ảnh tĩnh hoặc tệp âm thanh', 'bieu:85437050#1', { moNguon: 'bieu:85437050#1' }),
   // 8543.70.60 có 2 đoạn ";" => 2 vế
-  dk('bieu:85437060', 1, 1, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Có phải thiết bị xử lý tín hiệu số kết nối mạng để trộn âm thanh không?', 'Thiết bị xử lý tín hiệu kỹ thuật số có khả năng kết nối với mạng có dây hoặc không dây để trộn âm thanh', 'bieu:85437060#1'),
+  dk('bieu:85437060', 1, 1, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Có phải thiết bị xử lý tín hiệu số kết nối mạng để trộn âm thanh không?', 'Thiết bị xử lý tín hiệu kỹ thuật số có khả năng kết nối với mạng có dây hoặc không dây để trộn âm thanh', 'bieu:85437060#1', { moNguon: 'bieu:85437060#1' }),
   dk('bieu:85437060', 2, 2, false, 'CO_KHONG', 'NGHIA_THUONG', 'Có được thiết kế đặc biệt để kết nối với thiết bị/mạng điện tín hoặc điện thoại không?', 'các sản phẩm được thiết kế đặc biệt để kết nối với thiết bị hoặc dụng cụ điện tín hoặc điện thoại hoặc với mạng điện tín hoặc điện thoại', 'bieu:85437060#1'),
   // CANH_TRANH cho 85.43 ("chưa được chi tiết hoặc ghi ở nơi khác")
   {
@@ -180,27 +233,27 @@ const DUNG_8543 = [
 
 // 8501.10.2: thử loaiKhacCoVe (85011022) + SO
 const DUNG_8501102 = [
-  dk('bieu:8501102', 1, 1, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Có phải động cơ bước không?', 'Động cơ bước', 'bieu:8501102#1'),
-  dk('bieu:85011021', 1, 1, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Có dùng cho hàng hoá nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16 không?', 'Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16', 'bieu:85011021#1'),
+  dk('bieu:8501102', 1, 1, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Có phải động cơ bước không?', 'Động cơ bước', 'bieu:8501102#1', { moNguon: 'nhom:8501:ct:12#2' }),
+  dk('bieu:85011021', 1, 1, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Có dùng cho hàng hoá nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16 không?', 'Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16', 'bieu:85011021#1', { moNguon: 'bieu:85011021#1' }),
   dk('bieu:85011022', 1, 1, false, 'SO', 'NGUONG', 'Công suất không quá 5 W?', 'công suất không quá 5 W', 'bieu:85011022#1', { nguong: 'hs:bieu:85011022:7401' }),
 ];
 
 // 4202.2: thử GIA_TRI trục chất liệu mặt ngoài + Loại khác + 420222 phủ kín tập GIA_TRI
 const CAU_HOI_MAT_NGOAI = 'Chất liệu mặt ngoài là vật liệu nào?';
 const DUNG_42022 = [
-  dk('bieu:42022', 1, 1, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Có phải túi xách tay (kể cả có/không quai đeo vai, tay cầm) không?', 'Túi xách tay, có hoặc không có quai đeo vai, kể cả loại không có tay cầm', 'bieu:42022#1'),
-  dk('bieu:420221', 1, 1, false, 'GIA_TRI', 'MO_TA_HUONG_DAN', CAU_HOI_MAT_NGOAI, 'Mặt ngoài bằng da thuộc hoặc da thuộc tổng hợp', 'bieu:420221#1', { tap: ['da thuộc', 'da thuộc tổng hợp'] }),
-  dk('bieu:420222', 1, 1, false, 'GIA_TRI', 'MO_TA_HUONG_DAN', CAU_HOI_MAT_NGOAI, 'Mặt ngoài bằng tấm plastic hoặc vật liệu dệt', 'bieu:420222#1', { tap: ['tấm plastic', 'vật liệu dệt'] }),
-  dk('bieu:42022210', 1, 1, false, 'GIA_TRI', 'MO_TA_HUONG_DAN', CAU_HOI_MAT_NGOAI, 'Mặt ngoài bằng tấm plastic', 'bieu:42022210#1', { tap: ['tấm plastic'] }),
-  dk('bieu:42022220', 1, 1, false, 'GIA_TRI', 'MO_TA_HUONG_DAN', CAU_HOI_MAT_NGOAI, 'Mặt ngoài bằng vật liệu dệt', 'bieu:42022220#1', { tap: ['vật liệu dệt'] }),
+  dk('bieu:42022', 1, 1, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Có phải túi xách tay (kể cả có/không quai đeo vai, tay cầm) không?', 'Túi xách tay, có hoặc không có quai đeo vai, kể cả loại không có tay cầm', 'bieu:42022#1', { moNguon: 'bieu:42022#1' }),
+  dk('bieu:420221', 1, 1, false, 'GIA_TRI', 'MO_TA_HUONG_DAN', CAU_HOI_MAT_NGOAI, 'Mặt ngoài bằng da thuộc hoặc da thuộc tổng hợp', 'bieu:420221#1', { truc: 'chất liệu mặt ngoài', tap: ['da thuộc', 'da thuộc tổng hợp'], moNguon: 'pn:420211:ct:1#1' }),
+  dk('bieu:420222', 1, 1, false, 'GIA_TRI', 'MO_TA_HUONG_DAN', CAU_HOI_MAT_NGOAI, 'Mặt ngoài bằng tấm plastic hoặc vật liệu dệt', 'bieu:420222#1', { truc: 'chất liệu mặt ngoài', tap: ['tấm plastic', 'vật liệu dệt'], moNguon: 'bieu:420222#1' }),
+  dk('bieu:42022210', 1, 1, false, 'GIA_TRI', 'MO_TA_HUONG_DAN', CAU_HOI_MAT_NGOAI, 'Mặt ngoài bằng tấm plastic', 'bieu:42022210#1', { truc: 'chất liệu mặt ngoài', tap: ['tấm plastic'], moNguon: 'chuong:39:cg:1#2' }),
+  dk('bieu:42022220', 1, 1, false, 'GIA_TRI', 'MO_TA_HUONG_DAN', CAU_HOI_MAT_NGOAI, 'Mặt ngoài bằng vật liệu dệt', 'bieu:42022220#1', { truc: 'chất liệu mặt ngoài', tap: ['vật liệu dệt'], moNguon: 'chuong:39:cg:1#3' }),
 ];
 
 // 0201: nhóm KHÔNG có "Loại khác", chứng minh phủ kín bằng cặp bù phu (có xương / không xương)
 const DUNG_0201 = [
-  dk('bieu:0201', 1, 1, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Có phải thịt động vật họ trâu bò tươi hoặc ướp lạnh không?', 'Thịt của động vật họ trâu bò, tươi hoặc ướp lạnh', 'bieu:0201#1'),
-  dk('bieu:020110', 1, 1, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Có phải thịt cả con hoặc nửa con không?', 'Thịt cả con và nửa con', 'bieu:020110#1'),
-  dk('bieu:020120', 1, 1, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Thịt có xương không?', 'Thịt pha có xương khác', 'bieu:020120#1'),
-  dk('bieu:020130', 1, 1, true, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Thịt có xương không?', 'Thịt lọc không xương', 'bieu:020130#1'),
+  dk('bieu:0201', 1, 1, false, 'CO_KHONG', 'DINH_NGHIA_LUAT', 'Có phải thịt động vật họ trâu bò tươi hoặc ướp lạnh không?', 'Thịt của động vật họ trâu bò, tươi hoặc ướp lạnh', 'bieu:0201#1', { moNguon: 'nhom:0201:ct:1#1' }),
+  dk('bieu:020110', 1, 1, false, 'CO_KHONG', 'DINH_NGHIA_LUAT', 'Có phải thịt cả con hoặc nửa con không?', 'Thịt cả con và nửa con', 'bieu:020110#1', { moNguon: 'chuong:02:kq:2#1' }),
+  dk('bieu:020120', 1, 1, false, 'CO_KHONG', 'DINH_NGHIA_LUAT', 'Thịt có xương không?', 'Thịt pha có xương khác', 'bieu:020120#1', { moNguon: 'chuong:02:kq:34#1' }),
+  dk('bieu:020130', 1, 1, true, 'CO_KHONG', 'DINH_NGHIA_LUAT', 'Thịt có xương không?', 'Thịt lọc không xương', 'bieu:020130#1', { moNguon: 'chuong:02:kq:34#1' }),
 ];
 
 let hoSoCount = 0;
@@ -492,7 +545,7 @@ const KHO_CHUAN = ghiHoSoTam({
   });
   const r7GtAnd = chayCong({ luat: LUAT, hoSo: khoGtThemAnd, phamVi: ['bieu:420222'], chiTrong: true, cong: [7], L });
   const khoGtLechTruc = ghiHoSoTam({
-    dkList: DUNG_42022.map((x) => (x.nut === 'bieu:42022210' ? { ...x, cauHoi: 'Màu sắc là gì?' } : x)),
+    dkList: DUNG_42022.map((x) => (x.nut === 'bieu:42022210' ? { ...x, truc: 'màu sắc', cauHoi: 'Màu sắc là gì?' } : x)),
   });
   const r7GtTruc = chayCong({ luat: LUAT, hoSo: khoGtLechTruc, phamVi: ['bieu:420222'], chiTrong: true, cong: [7], L });
   const dk42And = new Map([
@@ -558,6 +611,7 @@ const KHO_CHUAN = ghiHoSoTam({
             phu: false,
             kieu: 'CO_KHONG',
             mo: 'MO_TA_HUONG_DAN',
+            moNguon: 'bieu:85437050#1',
             cauHoi: 'Có phải máy ghi dữ liệu chuyến bay kỹ thuật số không?',
             trich: 'máy ghi dữ liệu chuyến bay kỹ thuật số',
             nguon: 'bieu:85437050#1',
@@ -567,6 +621,7 @@ const KHO_CHUAN = ghiHoSoTam({
             phu: false,
             kieu: 'CO_KHONG',
             mo: 'MO_TA_HUONG_DAN',
+            moNguon: 'bieu:85437050#1',
             cauHoi: 'Câu bịa không nguyên văn',
             trich: 'câu trích không tồn tại trong luật',
             nguon: 'bieu:85437050#1',
@@ -652,11 +707,11 @@ const KHO_CHUAN = ghiHoSoTam({
 {
   const p1 = [
     dk('bieu:85437050', 1, 1, false, 'CO_KHONG', 'NGHIA_THUONG', 'Có phải bộ khuếch đại vi sóng không?', 'Bộ khuếch đại vi sóng', 'bieu:85437050#1'),
-    dk('bieu:85437050', 2, 2, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Có phải máy ghi dữ liệu chuyến bay không?', 'máy ghi dữ liệu chuyến bay kỹ thuật số', 'bieu:85437050#1'),
+    dk('bieu:85437050', 2, 2, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Có phải máy ghi dữ liệu chuyến bay không?', 'máy ghi dữ liệu chuyến bay kỹ thuật số', 'bieu:85437050#1', { moNguon: 'bieu:85437050#1' }),
   ];
   const p2Khop = [
     dk('bieu:85437050', 9, 1, false, 'CO_KHONG', 'NGHIA_THUONG', 'Bộ khuếch đại vi sóng?', 'Bộ khuếch đại vi sóng', 'bieu:85437050#1'),
-    dk('bieu:85437050', 8, 2, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Máy ghi dữ liệu chuyến bay kỹ thuật số?', 'máy ghi dữ liệu chuyến bay', 'bieu:85437050#1'),
+    dk('bieu:85437050', 8, 2, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Máy ghi dữ liệu chuyến bay kỹ thuật số?', 'máy ghi dữ liệu chuyến bay', 'bieu:85437050#1', { moNguon: 'bieu:85437050#1' }),
   ];
   const kqKhop = soPhieuDieuKien(p1, p2Khop);
   kiem('so-phieu-dieu-kien: hai phiếu đồng thuận ⇒ KHOP 100%, giữ trich dài hơn & id 81NN',
@@ -666,7 +721,7 @@ const KHO_CHUAN = ghiHoSoTam({
   const p2Lech = [
     { ...p2Khop[0], phu: true }, // lệch phu
     // thiếu điều kiện 2 -> chỉ có ở phiếu 1, thêm điều kiện 3 chỉ có ở phiếu 2
-    dk('bieu:85437050', 3, 3, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Đầu đọc điện tử?', 'đầu đọc điện tử di động', 'bieu:85437050#1'),
+    dk('bieu:85437050', 3, 3, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Đầu đọc điện tử?', 'đầu đọc điện tử di động', 'bieu:85437050#1', { moNguon: 'bieu:85437050#1' }),
   ];
   const kqLech = soPhieuDieuKien(p1, p2Lech);
   kiem('so-phieu-dieu-kien: lệch phu + lệch một bên ⇒ LECH_PHIEU với lý do rõ',
@@ -695,6 +750,287 @@ const KHO_CHUAN = ghiHoSoTam({
   kiem('HỒI QUY 5 (soPhieuDieuKien): chuỗi con đứng trước không cướp khớp tuyệt đối ⇒ 1 KHOP, 1 LECH_PHIEU',
     kqOrder.thongKe.tong === 2 && kqOrder.thongKe.khop === 1 && kqOrder.thongKe.lechPhieu === 1,
     kqOrder);
+
+  // Kiểm soPhieuDieuKien bắt lệch truc và lệch moNguon
+  const pTruc1 = [dk('bieu:420221', 1, 1, false, 'GIA_TRI', 'DINH_NGHIA_LUAT', 'Chất liệu mặt ngoài?', 'da thuộc hoặc da thuộc tổng hợp', 'bieu:420221#1', { truc: 'chất liệu mặt ngoài', tap: ['da thuộc'], moNguon: 'pn:420211:ct:1#1' })];
+  const pTruc2 = [dk('bieu:420221', 2, 1, false, 'GIA_TRI', 'DINH_NGHIA_LUAT', 'Chất liệu mặt ngoài?', 'da thuộc hoặc da thuộc tổng hợp', 'bieu:420221#1', { truc: 'vật liệu chính', tap: ['da thuộc'], moNguon: 'chuong:39:cg:1#2' })];
+  const kqTrucLech = soPhieuDieuKien(pTruc1, pTruc2);
+  kiem('so-phieu-dieu-kien: bắt lệch truc và lệch moNguon ⇒ LECH_PHIEU',
+    kqTrucLech.thongKe.lechPhieu === 1
+    && kqTrucLech.lechChiTiet[0].lyDo.some((d) => /khác truc/.test(d))
+    && kqTrucLech.lechChiTiet[0].lyDo.some((d) => /khác moNguon/.test(d)),
+    kqTrucLech);
+}
+
+// ---------- 8. Hồi quy Challenger R2 ----------
+{
+  // R2-1A: multi-level chuoiCha với nút trung gian loaiKhac: true (8543309 -> 85433091, 85433099)
+  const dk854330 = [
+    dkVang('bieu:8543', 1, 1, false, 'CO_KHONG', 'NGHIA_THUONG', 'Máy điện có chức năng riêng?', 'Máy và thiết bị điện, có chức năng riêng', 'bieu:8543#1'),
+    dkVang('bieu:854330', 1, 1, false, 'CO_KHONG', 'NGHIA_THUONG', 'Máy dùng trong mạ điện, điện phân hoặc điện di?', 'Máy và thiết bị dùng trong mạ điện, điện phân hoặc điện di', 'bieu:854330#1'),
+    dkVang('bieu:85433020', 1, 1, false, 'CO_KHONG', 'NGHIA_THUONG', 'Thiết bị xử lý ướt PCB/PWBs?', 'Thiết bị xử lý ướt bằng phương pháp nhúng trong dung dịch hóa chất hoặc điện hóa', 'bieu:85433020#1'),
+    dkVang('bieu:85433091', 1, 1, false, 'CO_KHONG', 'NGHIA_THUONG', 'Máy mạ điện sản xuất mạch in?', 'Máy mạ điện và điện phân chỉ dùng hoặc chủ yếu dùng để sản xuất mạch in', 'bieu:85433091#1'),
+  ];
+  const kho854330 = ghiHoSoTam({ dkList: dk854330 });
+  const b8543309 = dungBangAnhEm({ chuong: '85', chaIds: ['bieu:8543309'], luat: LUAT_VANG, hoSo: kho854330, L: L_VANG }).bang[0];
+  const ae99 = b8543309.anhEm.find((x) => x.nut === 'bieu:85433099');
+  const ganBase = { 'hs:bieu:8543:8101': true, 'hs:bieu:854330:8101': true, 'hs:bieu:85433091:8101': false };
+  const evalExcl = danhGiaCongThuc(ae99.congThuc, { ...ganBase, 'hs:bieu:85433020:8101': true }, b8543309);
+  const evalOk = danhGiaCongThuc(ae99.congThuc, { ...ganBase, 'hs:bieu:85433020:8101': false }, b8543309);
+  kiem('HỒI QUY R2-1A (8543309): chuoiCha qua trung gian loaiKhac:true loại trừ 85433020=true -> false, false -> true',
+    evalExcl === false && evalOk === true && kiemBangAnhEm(b8543309).length === 0,
+    { evalExcl, evalOk, err: kiemBangAnhEm(b8543309) });
+
+  // R2-1B: multi-level chuoiCha với nút trung gian loaiKhacCoVe: true (020745 -> 02074510, 02074590)
+  const dk020745 = [
+    dkVang('bieu:02074', 1, 1, false, 'CO_KHONG', 'NGHIA_THUONG', 'Của vịt, ngan?', 'Của vịt, ngan', 'bieu:02074#1'),
+    dkVang('bieu:020741', 1, 1, false, 'CO_KHONG', 'NGHIA_THUONG', 'Chưa chặt mảnh, tươi hoặc ướp lạnh?', 'Chưa chặt mảnh, tươi hoặc ướp lạnh', 'bieu:020741#1'),
+    dkVang('bieu:020742', 1, 1, false, 'CO_KHONG', 'NGHIA_THUONG', 'Chưa chặt mảnh, đông lạnh?', 'Chưa chặt mảnh, đông lạnh', 'bieu:020742#1'),
+    dkVang('bieu:020743', 1, 1, false, 'CO_KHONG', 'NGHIA_THUONG', 'Gan béo, tươi hoặc ướp lạnh?', 'Gan béo, tươi hoặc ướp lạnh', 'bieu:020743#1'),
+    dkVang('bieu:020744', 1, 1, false, 'CO_KHONG', 'NGHIA_THUONG', 'Loại khác, tươi hoặc ướp lạnh?', 'tươi hoặc ướp lạnh', 'bieu:020744#1'),
+    dkVang('bieu:020745', 1, 1, false, 'CO_KHONG', 'NGHIA_THUONG', 'Đông lạnh?', 'đông lạnh', 'bieu:020745#1'),
+    dkVang('bieu:02074510', 1, 1, false, 'CO_KHONG', 'NGHIA_THUONG', 'Gan béo?', 'Gan béo', 'bieu:02074510#1'),
+  ];
+  const kho020745 = ghiHoSoTam({ dkList: dk020745 });
+  const b020745 = dungBangAnhEm({ chuong: '02', chaIds: ['bieu:020745'], luat: LUAT_VANG, hoSo: kho020745, L: L_VANG }).bang[0];
+  const ae02074590 = b020745.anhEm.find((x) => x.nut === 'bieu:02074590');
+  const gan020745Ok = {
+    'hs:bieu:02074:8101': true,
+    'hs:bieu:020745:8101': true,
+    'hs:bieu:020741:8101': false,
+    'hs:bieu:020742:8101': false,
+    'hs:bieu:020743:8101': false,
+    'hs:bieu:020744:8101': false,
+    'hs:bieu:02074510:8101': false,
+  };
+  const eval45Ok = danhGiaCongThuc(ae02074590.congThuc, gan020745Ok, b020745);
+  const eval45Excl = danhGiaCongThuc(ae02074590.congThuc, { ...gan020745Ok, 'hs:bieu:020741:8101': true }, b020745);
+  const eval45Undef = danhGiaCongThuc(ae02074590.congThuc, { ...gan020745Ok, 'hs:bieu:020741:8101': undefined }, b020745);
+  kiem('HỒI QUY R2-1B (020745): chuoiCha qua loaiKhacCoVe:true đánh giá đúng truAnhEm ngoài bang.anhEm',
+    eval45Ok === true && eval45Excl === false && eval45Undef === undefined && kiemBangAnhEm(b020745).length === 0,
+    { eval45Ok, eval45Excl, eval45Undef, err: kiemBangAnhEm(b020745) });
+
+  // R2-2: chuanHoaDieuKien phieu[0].mo === moHinh (không bị ghi đè bởi mo)
+  const rMoHinh = chuanHoaDieuKien([{
+    ve: 0,
+    phu: true,
+    kieu: 'CO_KHONG',
+    mo: 'MO_TA_HUONG_DAN',
+    moNguon: 'bieu:85437050#1',
+    cauHoi: 'Có phải bộ khuếch đại vi sóng không?',
+    trich: 'Bộ khuếch đại vi sóng',
+    nguon: 'bieu:85437050#1',
+  }], 'bieu:85437050', L, { moHinh: 'gpt-4o-test' });
+  kiem('HỒI QUY R2-2 (tach-dieu-kien): phieu[0].mo === moHinh, ve=0 & moNguon được giữ nguyên',
+    rMoHinh.banGhi.length === 1
+    && rMoHinh.banGhi[0].ve === 0
+    && rMoHinh.banGhi[0].moNguon === 'bieu:85437050#1'
+    && rMoHinh.banGhi[0].phieu[0].mo === 'gpt-4o-test'
+    && rMoHinh.banGhi[0].phieu[0].moDieuKien === 'MO_TA_HUONG_DAN',
+    rMoHinh);
+
+  // R2-3: rutJsonDieuKien không bị [1] hoặc [ghi chú] trước JSON đánh lừa
+  const prose1 = rutJsonDieuKien('Theo mục [1]:\n{"dieuKien":[{"ve":1,"trich":"x"}]}');
+  const prose2 = rutJsonDieuKien('Theo [ghi chú]:\n{"dieuKien":[{"ve":1,"trich":"x"}]}');
+  kiem('HỒI QUY R2-3 (rutJsonDieuKien): bỏ qua [1] và [ghi chú] trước {"dieuKien":[...]}',
+    Array.isArray(prose1) && prose1.length === 1 && prose1[0].trich === 'x'
+    && Array.isArray(prose2) && prose2.length === 1 && prose2[0].trich === 'x',
+    { prose1, prose2 });
+}
+
+// ---------- 9. Ba bộ ca thử Bảng Vàng (#2410 / #2412 / #2413): 02.01, 85.01, 42.02 ----------
+// 9A. Bảng vàng 02.01 (truc, moNguon, phủ kín 3 anh em {A, ¬A ∧ B, ¬B}, cổng 6/7/8/10)
+{
+  const CAU_HOI_DANG = 'Thịt có ở dạng cả con (thân thịt, có hoặc không có đầu) hoặc nửa con (thân thịt bổ dọc làm đôi) không?';
+  const CAU_HOI_XUONG = 'Thịt có "có xương" theo Chú giải phân nhóm Chương 2 không?';
+  const VANG_0201 = [
+    dkVang('bieu:0201', 1, 1, false, 'GIA_TRI', 'DINH_NGHIA_LUAT', 'Động vật thuộc loài nào?', 'động vật họ trâu bò', 'bieu:0201#1', { truc: 'loài', tap: ['động vật họ trâu bò'], moNguon: 'nhom:0201:ct:1#1' }),
+    dkVang('bieu:0201', 2, 1, false, 'GIA_TRI', 'MO_TA_HUONG_DAN', 'Sản phẩm là gì?', 'Thịt', 'bieu:0201#1', { truc: 'sản phẩm', tap: ['Thịt'], moNguon: 'chuong:02:kq:2#1' }),
+    dkVang('bieu:0201', 3, 1, false, 'GIA_TRI', 'DINH_NGHIA_LUAT', 'Trạng thái bảo quản là gì?', 'tươi hoặc ướp lạnh', 'bieu:0201#1', { truc: 'trạng thái', tap: ['tươi', 'ướp lạnh'], moNguon: 'chuong:02:kq:20#1' }),
+    dkVang('bieu:0201', 4, 1, true, 'CO_KHONG', 'NGHIA_THUONG', 'Có không thích hợp làm thức ăn cho người không?', 'không thích hợp làm thức ăn cho người', 'chuong:02:cg:1:a#1'),
+    dkVang('bieu:020110', 1, 1, false, 'GIA_TRI', 'DINH_NGHIA_LUAT', CAU_HOI_DANG, 'Thịt cả con và nửa con', 'bieu:020110#1', { truc: 'DANG', tap: ['cả con', 'nửa con'], moNguon: 'chuong:02:kq:2#1' }),
+    dkVang('bieu:020120', 1, 1, true, 'GIA_TRI', 'DINH_NGHIA_LUAT', CAU_HOI_DANG, 'Thịt pha có xương khác', 'bieu:020120#1', { truc: 'DANG', tap: ['cả con', 'nửa con'], moNguon: 'chuong:02:kq:2#1' }),
+    dkVang('bieu:020120', 2, 1, false, 'CO_KHONG', 'DINH_NGHIA_LUAT', CAU_HOI_XUONG, 'có xương', 'bieu:020120#1', { moNguon: ['chuong:02:kq:34#1', 'chuong:02:kq:34#2'] }),
+    dkVang('bieu:020130', 1, 1, true, 'CO_KHONG', 'DINH_NGHIA_LUAT', CAU_HOI_XUONG, 'không xương', 'bieu:020130#1', { moNguon: 'chuong:02:kq:34#1' }),
+  ];
+  const kho0201 = ghiHoSoTam({ dkList: VANG_0201 });
+  const viDu0201 = [
+    { trich: 'V02-01 cả con', ganDieuKien: { 'hs:bieu:020110:8101': true }, dich: 'bieu:02011000' },
+    { trich: 'V02-03 không rõ có xương', ganDieuKien: { 'hs:bieu:020110:8101': false, 'hs:bieu:020120:8101': false }, dich: null, duKien: ['hs:bieu:020120:8102'] },
+    { trich: 'V02-05 có xương', ganDieuKien: { 'hs:bieu:020110:8101': false, 'hs:bieu:020120:8101': false, 'hs:bieu:020120:8102': true, 'hs:bieu:020130:8101': true }, dich: 'bieu:02012000' },
+    { trich: 'V02-06 không xương', ganDieuKien: { 'hs:bieu:020110:8101': false, 'hs:bieu:020120:8101': false, 'hs:bieu:020120:8102': false, 'hs:bieu:020130:8101': false }, dich: 'bieu:02013000' },
+  ];
+  const r0201 = chayCong({ luat: LUAT_VANG, hoSo: kho0201, phamVi: ['bieu:0201'], chiTrong: true, cong: [6, 7, 8, 9, 10, 11], L: L_VANG, viDu: viDu0201 });
+  kiem('BẢNG VÀNG 02.01: cổng 6–11 XANH, cổng 7 phủ kín {A, ¬A ∧ B, ¬B}, cổng 8 roiNhau=2 & chuaChungMinhTach=1',
+    !r0201.khuon.length
+    && [6, 7, 8, 9, 10, 11].every((c) => !r0201.cong[c].loi.length)
+    && r0201.cong[8].dem.roiNhau === 2
+    && r0201.cong[8].dem.chuaChungMinhTach === 1
+    && r0201.cong[10].thieuViDu === 0,
+    { khuon: r0201.khuon, cong: r0201.cong });
+
+  const r0201HoPhu = chayCong({
+    luat: LUAT_VANG,
+    hoSo: ghiHoSoTam({ dkList: VANG_0201.filter((x) => x.nut !== 'bieu:020130').concat([dkVang('bieu:020130', 1, 1, false, 'CO_KHONG', 'NGHIA_THUONG', 'Khác?', 'Thịt lọc không xương', 'bieu:020130#1')]) }),
+    phamVi: ['bieu:0201'],
+    chiTrong: true,
+    cong: [7],
+    L: L_VANG,
+  });
+  kiem('BẢNG VÀNG 02.01 ca ngược: thiếu ¬B ⇒ cổng 7 đỏ HO_PHU', r0201HoPhu.cong[7].loi.some((l) => /HO_PHU/.test(l)), r0201HoPhu.cong[7].loi);
+}
+
+// 9B. Bảng vàng 85.01 (truc, NGUONG.daiLuong, 850110 tautology {A, ¬A ∨ B}, 850162 khoảng con, VUNG_CHONG vs CHUA_CHUNG_MINH_TACH)
+{
+  const VANG_8501 = [
+    dkVang('bieu:8501', 1, 1, false, 'CO_KHONG', 'NGHIA_THUONG', 'Có phải động cơ điện hoặc máy phát điện không?', 'Động cơ điện và máy phát điện', 'bieu:8501#1'),
+    dkVang('bieu:850110', 1, 1, false, 'GIA_TRI', 'DINH_NGHIA_LUAT', 'Loại máy là gì?', 'Động cơ', 'bieu:850110#1', { truc: 'loại máy', tap: ['Động cơ'], moNguon: 'nhom:8501:ct:2#1' }),
+    dkVang('bieu:850110', 2, 1, false, 'SO', 'NGUONG', 'Công suất không quá 37,5 W?', 'công suất không quá 37,5 W', 'bieu:850110#1', { nguong: 'hs:bieu:850110:8501' }),
+    dkVang('bieu:850110:td1', 1, 1, false, 'GIA_TRI', 'MO_TA_HUONG_DAN', 'Dòng điện làm việc?', 'một chiều', 'bieu:850110:td1#1', { truc: 'dòng điện làm việc', tap: ['một chiều'], moNguon: 'nhom:8501:ct:3#2' }),
+    dkVang('bieu:850110:td2', 1, 1, true, 'GIA_TRI', 'MO_TA_HUONG_DAN', 'Dòng điện làm việc là một chiều?', 'Động cơ khác', 'bieu:850110:td2#1', { truc: 'dòng điện làm việc', tap: ['một chiều'], moNguon: 'nhom:8501:ct:3#2' }),
+    dkVang('bieu:850110:td2', 2, 2, false, 'GIA_TRI', 'NGHIA_THUONG', 'Có phải động cơ vạn năng một chiều/xoay chiều không?', 'động cơ vạn năng (một chiều/xoay chiều)', 'bieu:850110:td2#1', { truc: 'dòng điện làm việc', tap: ['vạn năng một chiều/xoay chiều'] }),
+    dkVang('bieu:8501102', 1, 1, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Có phải động cơ bước không?', 'Động cơ bước', 'bieu:8501102#1', { moNguon: 'nhom:8501:ct:12#2' }),
+    dkVang('bieu:85011030', 1, 1, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Có phải động cơ hướng trục không?', 'Động cơ hướng trục', 'bieu:85011030#1', { moNguon: 'nhom:8501:ct:3#2' }),
+    dkVang('bieu:85011021', 1, 1, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Có dùng cho hàng hóa nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16 không?', 'Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16', 'bieu:85011021#1', { moNguon: 'bieu:85011021#1' }),
+    dkVang('bieu:85011022', 1, 1, false, 'SO', 'NGUONG', 'Công suất không quá 5 W?', 'công suất không quá 5 W', 'bieu:85011022#1', { nguong: 'hs:bieu:85011022:8501' }),
+    dkVang('bieu:85011041', 1, 1, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Có dùng cho hàng hóa nhóm 84.15..85.16 không?', 'Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16', 'bieu:85011041#1', { moNguon: 'bieu:85011041#1' }),
+    dkVang('bieu:8501105', 1, 1, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Có phải động cơ bước không?', 'Động cơ bước', 'bieu:8501105#1', { moNguon: 'nhom:8501:ct:12#2' }),
+    dkVang('bieu:85011051', 1, 1, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Có dùng cho hàng hóa nhóm 84.15..85.16 không?', 'Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16', 'bieu:85011051#1', { moNguon: 'bieu:85011051#1' }),
+    dkVang('bieu:85011060', 1, 1, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Có phải động cơ hướng trục không?', 'Động cơ hướng trục', 'bieu:85011060#1', { moNguon: 'nhom:8501:ct:3#2' }),
+    dkVang('bieu:85011091', 1, 1, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Có dùng cho hàng hóa nhóm 84.15..85.16 không?', 'Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16', 'bieu:85011091#1', { moNguon: 'bieu:85011091#1' }),
+    dkVang('bieu:850120', 1, 1, false, 'GIA_TRI', 'DINH_NGHIA_LUAT', 'Loại máy là gì?', 'Động cơ', 'bieu:850120#1', { truc: 'loại máy', tap: ['Động cơ'], moNguon: 'nhom:8501:ct:2#1' }),
+    dkVang('bieu:850120', 2, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Dòng điện làm việc?', 'vạn năng một chiều/xoay chiều', 'bieu:850120#1', { truc: 'dòng điện làm việc', tap: ['vạn năng một chiều/xoay chiều'] }),
+    dkVang('bieu:850120', 3, 1, false, 'SO', 'NGUONG', 'Công suất trên 37,5 W?', 'công suất trên 37,5 W', 'bieu:850120#1', { nguong: 'hs:bieu:850120:8501' }),
+    dkVang('bieu:85013', 1, 1, false, 'GIA_TRI', 'DINH_NGHIA_LUAT', 'Loại máy?', 'Động cơ một chiều', 'bieu:85013#1', { truc: 'loại máy', tap: ['Động cơ'], moNguon: 'nhom:8501:ct:2#1' }),
+    dkVang('bieu:85013', 2, 1, false, 'GIA_TRI', 'MO_TA_HUONG_DAN', 'Dòng điện?', 'một chiều', 'bieu:85013#1', { truc: 'dòng điện làm việc', tap: ['một chiều'], moNguon: 'nhom:8501:ct:3#2' }),
+    dkVang('bieu:85013', 3, 1, true, 'SO', 'NGUONG', 'Công suất <= 37,5 W?', 'Động cơ một chiều khác', 'bieu:85013#1', { nguong: 'hs:bieu:850110:8501' }),
+    dkVang('bieu:850131', 1, 1, false, 'SO', 'NGUONG', 'Công suất không quá 750 W?', 'Công suất không quá 750 W', 'bieu:850131#1', { nguong: 'hs:bieu:850131:8501' }),
+    dkVang('bieu:85013130', 1, 1, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Dùng cho nhóm 84.15..85.16?', 'Động cơ loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16', 'bieu:85013130#1', { moNguon: 'bieu:85013130#1' }),
+    dkVang('bieu:85013160', 1, 1, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Dùng cho xe Chương 87?', 'Động cơ dùng cho xe của Chương 87', 'bieu:85013160#1', { moNguon: 'bieu:85013160#1' }),
+    dkVang('bieu:850140', 1, 1, false, 'GIA_TRI', 'MO_TA_HUONG_DAN', 'Dòng điện?', 'xoay chiều', 'bieu:850140#1', { truc: 'dòng điện làm việc', tap: ['xoay chiều'], moNguon: 'nhom:8501:ct:3#2' }),
+    dkVang('bieu:850140', 2, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Số pha?', 'một pha', 'bieu:850140#1', { truc: 'số pha (động cơ xoay chiều)', tap: ['một pha'] }),
+    dkVang('bieu:850140', 3, 1, true, 'SO', 'NGUONG', 'Công suất <= 37,5 W?', 'Động cơ xoay chiều khác', 'bieu:850140#1', { nguong: 'hs:bieu:850110:8501' }),
+    dkVang('bieu:85015', 1, 1, false, 'GIA_TRI', 'MO_TA_HUONG_DAN', 'Dòng điện?', 'xoay chiều', 'bieu:85015#1', { truc: 'dòng điện làm việc', tap: ['xoay chiều'], moNguon: 'nhom:8501:ct:3#2' }),
+    dkVang('bieu:85015', 2, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Số pha?', 'đa pha', 'bieu:85015#1', { truc: 'số pha (động cơ xoay chiều)', tap: ['đa pha'] }),
+    dkVang('bieu:85015', 3, 1, true, 'SO', 'NGUONG', 'Công suất <= 37,5 W?', 'Động cơ xoay chiều khác', 'bieu:85015#1', { nguong: 'hs:bieu:850110:8501' }),
+    dkVang('bieu:850162', 1, 1, false, 'SO', 'NGUONG', 'Công suất > 75 và <= 375 kVA?', 'Công suất trên 75 kVA nhưng không quá 375 kVA', 'bieu:850162#1', { nguong: 'hs:bieu:850162:8501' }),
+    dkVang('bieu:85016210', 1, 1, false, 'SO', 'NGUONG', 'Công suất > 75 và <= 150 kVA?', 'Công suất trên 75 kVA nhưng không quá 150 kVA', 'bieu:85016210#1', { nguong: 'hs:bieu:85016210:8501' }),
+    dkVang('bieu:85016220', 1, 1, false, 'SO', 'NGUONG', 'Công suất > 150 và <= 375 kVA?', 'Công suất trên 150 kVA nhưng không quá 375 kVA', 'bieu:85016220#1', { nguong: 'hs:bieu:85016220:8501' }),
+    { id: 'hs:bieu:850110:8109', nut: 'bieu:850110', loai: 'GIAI_CHONG', cap: ['bieu:850110:td1', 'bieu:850110:td2'], cach: 'QUY_TAC_3', trich: 'kể cả động cơ vạn năng (một chiều/xoay chiều)', nguon: 'bieu:850110:td2#1' },
+  ];
+  const kho8501 = ghiHoSoTam({ dkList: VANG_8501, nguongList: NGUONG_8501 });
+  const r8501_10 = chayCong({ luat: LUAT_VANG, hoSo: kho8501, phamVi: ['bieu:850110'], chiTrong: true, cong: [6, 7, 8, 10], L: L_VANG, viDu: [
+    { trich: 'Động cơ bước thiếu DC5', cha: 'bieu:8501102', ganDieuKien: { 'hs:bieu:8501102:8101': true, 'hs:bieu:85011022:8101': true }, dich: null, duKien: ['hs:bieu:85011021:8101'] },
+    { trich: 'Loại khác dưới 8501102', cha: 'bieu:8501102', ganDieuKien: { 'hs:bieu:8501102:8101': true, 'hs:bieu:85011021:8101': false, 'hs:bieu:85011022:8101': false }, dich: 'bieu:85011029' },
+  ] });
+  const r8501_62 = chayCong({ luat: LUAT_VANG, hoSo: kho8501, phamVi: ['bieu:850162'], chiTrong: true, cong: [6, 7, 8, 10], L: L_VANG, viDu: [
+    { trich: 'Máy phát 100 kVA', ganDieuKien: { 'hs:bieu:85016210:8101': true, 'hs:bieu:85016220:8101': false }, dich: 'bieu:85016210' },
+  ] });
+  const r8501_20_40 = haiNutRoiNhau(VANG_8501.filter((x) => x.loai === 'DIEU_KIEN' && x.nut === 'bieu:850120'), VANG_8501.filter((x) => x.loai === 'DIEU_KIEN' && x.nut === 'bieu:850140'), new Map(NGUONG_8501.map((x) => [x.id, x])));
+  const r8501_40_5 = haiNutRoiNhau(VANG_8501.filter((x) => x.loai === 'DIEU_KIEN' && x.nut === 'bieu:850140'), VANG_8501.filter((x) => x.loai === 'DIEU_KIEN' && x.nut === 'bieu:85015'), new Map(NGUONG_8501.map((x) => [x.id, x])));
+  const r8501_10_3 = haiNutRoiNhau(VANG_8501.filter((x) => x.loai === 'DIEU_KIEN' && x.nut === 'bieu:850110'), VANG_8501.filter((x) => x.loai === 'DIEU_KIEN' && x.nut === 'bieu:85013'), new Map(NGUONG_8501.map((x) => [x.id, x])));
+  const r8501_vc = chayCong({
+    luat: LUAT_VANG,
+    hoSo: kho8501,
+    phamVi: ['bieu:850131'],
+    chiTrong: true,
+    cong: [8],
+    L: L_VANG,
+    vungChong: [{ nut: 'bieu:850131', cap: ['bieu:85013130', 'bieu:85013160'], moTa: 'Động cơ quạt làm mát xe' }],
+  });
+  const kho8501_ho = ghiHoSoTam({
+    dkList: VANG_8501,
+    nguongList: NGUONG_8501.map((n) => (n.id === 'hs:bieu:85016220:8501' ? { ...n, nguong: { ...n.nguong, den: 350 } } : n)),
+  });
+  const r8501_62_ho = chayCong({ luat: LUAT_VANG, hoSo: kho8501_ho, phamVi: ['bieu:850162'], chiTrong: true, cong: [7], L: L_VANG });
+
+  kiem('BẢNG VÀNG 85.01: 850110 {A, ¬A ∨ B} + 850162 khoảng con (75,375] phủ kín cổng 7, cổng 8 chứng minh rời nhau qua truc & phu SO',
+    !r8501_10.khuon.length && !r8501_62.khuon.length
+    && [6, 7, 8, 10].every((c) => !r8501_10.cong[c].loi.length && !r8501_62.cong[c].loi.length)
+    && r8501_10.cong[8].dem.chuaChungMinhTach >= 1
+    && r8501_20_40 && r8501_40_5 && r8501_10_3
+    && r8501_vc.cong[8].dem.vungChong === 1 && r8501_vc.cong[8].loi.some((l) => /VUNG_CHONG/.test(l))
+    && r8501_62_ho.cong[7].loi.some((l) => /HO_PHU/.test(l)),
+    { c10: r8501_10.cong, c62: r8501_62.cong, r20_40: r8501_20_40, r40_5: r8501_40_5, r10_3: r8501_10_3, vc: r8501_vc.cong[8], ho62: r8501_62_ho.cong[7] });
+}
+
+// 9C. Bảng vàng 42.02 (ve: 0 phân phối, moNguon chéo chương chuong:39:cg:1#2, truc phủ 420222, V42-13 NGOAI_PHAM_VI, 3-tầng Loại khác)
+{
+  const VANG_4202 = [
+    dkVang('bieu:4202', 1, 1, false, 'GIA_TRI', 'MO_TA_HUONG_DAN', 'Sản phẩm nhóm 1?', 'Hòm, vali, xắc đựng đồ nữ trang, cặp tài liệu, cặp sách, túi, cặp đeo vai cho học sinh, bao kính, bao ống nhòm, hộp camera, hộp nhạc cụ, bao súng, bao súng ngắn', 'bieu:4202#1', { truc: 'loại hàng', tap: ['Hòm, vali, hộp camera'], moNguon: 'nhom:4202:ct:3#2' }),
+    dkVang('bieu:4202', 2, 2, false, 'GIA_TRI', 'MO_TA_HUONG_DAN', 'Sản phẩm nhóm 2?', 'túi du lịch, túi đựng đồ ăn hoặc đồ uống có phủ lớp cách, túi đựng đồ vệ sinh cá nhân, ba lô, túi xách tay, túi đi chợ, xắc cốt, ví', 'bieu:4202#1', { truc: 'loại hàng', tap: ['túi xách tay, ví'], moNguon: 'nhom:4202:ct:4#3' }),
+    dkVang('bieu:4202', 3, 2, false, 'GIA_TRI', 'DINH_NGHIA_LUAT', 'Vật liệu sản xuất?', 'da thuộc hoặc da thuộc tổng hợp, bằng tấm plastic, bằng vật liệu dệt, bằng sợi lưu hóa hoặc bằng bìa', 'bieu:4202#1', { truc: 'vật liệu', tap: ['da thuộc hoặc da thuộc tổng hợp', 'tấm plastic', 'vật liệu dệt', 'sợi lưu hóa', 'bìa'], moNguon: 'nhom:4202:ct:4#1' }),
+    dkVang('bieu:4202', 4, 3, false, 'GIA_TRI', 'MO_TA_HUONG_DAN', 'Sản phẩm nhóm 2?', 'hộp đựng đồ trang sức, hộp đựng phấn, hộp đựng dao kéo', 'bieu:4202#1', { truc: 'loại hàng', tap: ['hộp đựng đồ trang sức'], moNguon: 'nhom:4202:ct:4#3' }),
+    dkVang('bieu:4202', 5, 3, false, 'GIA_TRI', 'NGHIA_THUONG', 'Vật liệu phủ?', 'được phủ toàn bộ hoặc chủ yếu bằng các vật liệu trên hoặc bằng giấy', 'bieu:4202#1', { truc: 'vật liệu phủ', tap: ['da thuộc', 'giấy'] }),
+    // ve: 0 loại trừ chung Chú giải 3(A)
+    dkVang('bieu:4202', 6, 0, true, 'CO_KHONG', 'NGHIA_THUONG', 'Có phải túi plastic có tay cầm dùng một lần (39.23)?', 'Túi làm bằng các tấm plastic, đã hoặc chưa in, có tay cầm, không được thiết kế để sử dụng lâu dài', 'chuong:42:cg:3:A:a#1'),
+    dkVang('bieu:4202', 7, 0, true, 'CO_KHONG', 'NGHIA_THUONG', 'Có phải sản phẩm bằng vật liệu tết bện (46.02)?', 'Sản phẩm bằng vật liệu tết bện', 'chuong:42:cg:3:A:b#1'),
+    dkVang('bieu:42021', 1, 1, false, 'GIA_TRI', 'MO_TA_HUONG_DAN', 'Sản phẩm?', 'Hòm, vali, xắc đựng đồ nữ trang, cặp tài liệu, cặp sách, túi, cặp đeo vai cho học sinh', 'bieu:42021#1', { truc: 'loại hàng', tap: ['Hòm, vali, cặp sách'], moNguon: 'nhom:4202:ct:3#2' }),
+    dkVang('bieu:420211', 1, 1, false, 'GIA_TRI', 'DINH_NGHIA_LUAT', 'Chất liệu mặt ngoài?', 'Mặt ngoài bằng da thuộc hoặc da thuộc tổng hợp', 'bieu:420211#1', { truc: 'chất liệu mặt ngoài', tap: ['da thuộc', 'da thuộc tổng hợp'], moNguon: 'pn:420211:ct:1#1' }),
+    dkVang('bieu:42021110', 1, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Loại hàng?', 'Vali hoặc túi, cặp', 'bieu:42021110#1', { truc: 'loại hàng', tap: ['Vali', 'túi, cặp'] }),
+    dkVang('bieu:42021110', 2, 1, false, 'SO', 'NGUONG', 'Chiều dài <= 56 cm?', '56cm', 'bieu:42021110#1', { nguong: 'hs:bieu:42021110:7401' }),
+    dkVang('bieu:420212', 1, 1, false, 'GIA_TRI', 'DINH_NGHIA_LUAT', 'Chất liệu mặt ngoài?', 'Mặt ngoài bằng plastic hoặc vật liệu dệt', 'bieu:420212#1', { truc: 'chất liệu mặt ngoài', tap: ['plastic', 'vật liệu dệt'], moNguon: 'chuong:39:cg:1#2' }),
+    dkVang('bieu:4202121', 1, 1, false, 'CO_KHONG', 'NGHIA_THUONG', 'Cặp đeo vai học sinh?', 'Túi, cặp đeo vai cho học sinh', 'bieu:4202121#1'),
+    dkVang('bieu:42021211', 1, 1, false, 'GIA_TRI', 'DINH_NGHIA_LUAT', 'Chất liệu mặt ngoài?', 'sợi lưu hóa', 'bieu:42021211#1', { truc: 'chất liệu mặt ngoài', tap: ['sợi lưu hóa'], moNguon: 'chuong:39:cg:1#2' }),
+    dkVang('bieu:42022', 1, 1, false, 'GIA_TRI', 'MO_TA_HUONG_DAN', 'Sản phẩm?', 'Túi xách tay', 'bieu:42022#1', { truc: 'loại hàng', tap: ['Túi xách tay'], moNguon: 'bieu:42022#1' }),
+    dkVang('bieu:420221', 1, 1, false, 'GIA_TRI', 'DINH_NGHIA_LUAT', 'Chất liệu mặt ngoài?', 'da thuộc hoặc da thuộc tổng hợp', 'bieu:420221#1', { truc: 'chất liệu mặt ngoài', tap: ['da thuộc', 'da thuộc tổng hợp'], moNguon: 'pn:420211:ct:1#1' }),
+    dkVang('bieu:420222', 1, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Chất liệu mặt ngoài?', 'tấm plastic hoặc vật liệu dệt', 'bieu:420222#1', { truc: 'chất liệu mặt ngoài', tap: ['tấm plastic', 'vật liệu dệt'] }),
+    dkVang('bieu:42022210', 1, 1, false, 'GIA_TRI', 'NGHIA_THUONG', 'Chất liệu mặt ngoài?', 'tấm plastic', 'bieu:42022210#1', { truc: 'chất liệu mặt ngoài', tap: ['tấm plastic'] }),
+    dkVang('bieu:42022220', 1, 1, false, 'GIA_TRI', 'DINH_NGHIA_LUAT', 'Chất liệu mặt ngoài?', 'vật liệu dệt', 'bieu:42022220#1', { truc: 'chất liệu mặt ngoài', tap: ['vật liệu dệt'], moNguon: 'chuong:39:cg:1#3' }),
+    dkVang('bieu:42023', 1, 1, false, 'CO_KHONG', 'MO_TA_HUONG_DAN', 'Thường mang theo trong túi/túi xách tay?', 'Các đồ vật thuộc loại thường mang theo trong túi hoặc trong túi xách tay', 'bieu:42023#1', { moNguon: 'pn:420231:ct:2#1' }),
+    { id: 'hs:bieu:4202:8109', nut: 'bieu:4202', loai: 'GIAI_CHONG', cap: ['bieu:42022', 'bieu:42023'], cach: 'CHU_GIAI', trich: 'Các phân nhóm này bao gồm những mặt hàng thuộc loại thường được đóng trong bao hoặc trong túi', nguon: 'pn:420231:ct:2#1' },
+  ];
+  const kho4202 = ghiHoSoTam({ dkList: VANG_4202, nguongList: NGUONG_4202 });
+  const bang4202Map = new Map(
+    dungBangAnhEm({ chuong: '42', chaIds: ['bieu:4202', 'bieu:42022', 'bieu:420222', 'bieu:42029', 'bieu:420299'], luat: LUAT_VANG, hoSo: kho4202, L: L_VANG }).bang.map((b) => [b.cha, b]),
+  );
+  const b4202 = bang4202Map.get('bieu:4202');
+  const b4202_selfStep = b4202.chuoiCha.find((c) => c.nut === 'bieu:4202');
+  const ve0Distributed = b4202_selfStep.congThuc.cacVe.length === 3
+    && b4202_selfStep.congThuc.cacVe.every((v) => v.ve >= 1
+      && v.cacDieuKien.some((x) => x.id === 'hs:bieu:4202:8106')
+      && v.cacDieuKien.some((x) => x.id === 'hs:bieu:4202:8107'));
+
+  // Nút chỉ có ve: 0 -> gom thành 1 vế
+  const onlyVe0Ct = chiaVeDieuKien([VANG_4202.find((x) => x.id === 'hs:bieu:4202:8106')]);
+  const onlyVe0Ok = onlyVe0Ct.cacVe.length === 1 && onlyVe0Ct.cacVe[0].ve === 1 && onlyVe0Ct.cacVe[0].cacDieuKien[0].id === 'hs:bieu:4202:8106';
+
+  const b420299 = bang4202Map.get('bieu:420299');
+  const lk42029990 = b420299.anhEm.find((x) => x.nut === 'bieu:42029990');
+  const askIds99 = new Set(lk42029990.cauHoiToiThieu.map((c) => c.id));
+  const hoi3TangOk = ['hs:bieu:4202:8106', 'hs:bieu:4202:8107', 'hs:bieu:42021:8101', 'hs:bieu:42022:8101', 'hs:bieu:42023:8101'].every((id) => askIds99.has(id));
+
+  const viDu4202 = [
+    { trich: 'V42-01 túi xách da thuộc', cha: 'bieu:42022', ganDieuKien: { 'hs:bieu:420221:8101': true, 'hs:bieu:420222:8101': false }, dich: 'bieu:42022100' },
+    { trich: 'V42-11 cặp học sinh thiếu mặt ngoài', cha: 'bieu:4202121', ganDieuKien: {}, dich: null, duKien: ['hs:bieu:42021211:8101'] },
+    { trich: 'V42-13 túi plastic dùng 1 lần (39.23)', cha: 'bieu:4202', ganDieuKien: { 'hs:bieu:4202:8106': true, 'hs:bieu:42022:8101': true }, ngoaiPhamVi: true },
+  ];
+  const r4202 = chayCong({ luat: LUAT_VANG, hoSo: kho4202, phamVi: ['bieu:42022', 'bieu:4202121', 'bieu:42021110'], chiTrong: true, cong: [6, 7, 8, 9, 10, 11], L: L_VANG, viDu: [viDu4202[0], viDu4202[1]] });
+  const r4202Root = chayCong({ luat: LUAT_VANG, hoSo: kho4202, phamVi: ['bieu:4202'], chiTrong: true, cong: [8, 9, 10], L: L_VANG, viDu: [viDu4202[2]] });
+
+  // Negative Gate 6 tests: (a) thiếu moNguon, (b) ve:0 phu:false thiếu ve:2 trên nút có ";"
+  const khoThieuMn = ghiHoSoTam({
+    dkList: VANG_4202.map((x) => (x.id === 'hs:bieu:42021211:8101' ? { ...x, moNguon: undefined } : x)),
+    nguongList: NGUONG_4202,
+  });
+  const r6ThieuMn = chayCong({ luat: LUAT_VANG, hoSo: khoThieuMn, phamVi: ['bieu:42021211'], chiTrong: true, cong: [6], L: L_VANG });
+  const khoVe0ThieuVe2 = ghiHoSoTam({
+    dkList: DUNG_8543.map((x) => (x.nut === 'bieu:85437040' ? (x.ve === 2 ? { ...x, ve: 0, phu: false } : x) : x)),
+  });
+  const r6Ve0ThieuVe2 = chayCong({ luat: LUAT, hoSo: khoVe0ThieuVe2, phamVi: ['bieu:854370'], chiTrong: true, cong: [6], L });
+
+  kiem('BẢNG VÀNG 42.02: ve:0 phân phối 3 vế + gom 1 vế, chuong:39 moNguon chéo chương, 420222 PHỦ, 3-tầng HỎI, V42-13 NGOAI_PHAM_VI',
+    ve0Distributed
+    && onlyVe0Ok
+    && hoi3TangOk
+    && !r4202.khuon.length
+    && [6, 7, 8, 9, 10, 11].every((c) => !r4202.cong[c].loi.length)
+    && [8, 9, 10].every((c) => !r4202Root.cong[c].loi.length)
+    && r4202Root.cong[8].dem.roiNhau >= 1
+    && r4202Root.cong[8].dem.giaiChong === 1
+    && r6ThieuMn.khuon.some((l) => /moNguon/.test(l))
+    && r6Ve0ThieuVe2.cong[6].loi.some((l) => /2 đoạn tách bởi ";"/.test(l)),
+    { ve0Distributed, onlyVe0Ok, hoi3TangOk, r4202: r4202.cong, r4202Root: r4202Root.cong, r6Mn: r6ThieuMn.khuon, r6Ve0: r6Ve0ThieuVe2.cong[6] });
 }
 
 fs.rmSync(TAM, { recursive: true, force: true });

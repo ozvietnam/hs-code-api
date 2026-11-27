@@ -310,6 +310,7 @@ caNguoc('khuôn: dòng không phải JSON', ghiKho([...DUNG, 'không phải json
     phu: false,
     kieu: 'CO_KHONG',
     mo: 'MO_TA_HUONG_DAN',
+    moNguon: 'nhom:7605:ct:1#1',
     cauHoi: 'Có phải dây nhôm không?',
     trich: chu7605,
     nguon: 'bieu:7605#1',

@@ -24,6 +24,14 @@ function tapGiongNhau(a, b) {
   return sa.length === sb.length && sa.every((v, i) => v === sb[i]);
 }
 
+const normMoNguon = (v) => (Array.isArray(v) ? v : (v ? [v] : [])).map((x) => chuanSo(x)).filter(Boolean).sort();
+const moNguonGiongNhau = (a, b) => {
+  const sa = normMoNguon(a);
+  const sb = normMoNguon(b);
+  return sa.length === sb.length && sa.every((v, i) => v === sb[i]);
+};
+const fmtMoNguon = (v) => (normMoNguon(v).join(',') || '(thiếu)');
+
 function diemGiong(a, b) {
   if (a.nut !== b.nut || a.nguon !== b.nguon) return -1;
   if (!trichChongNhau(a, b)) return -1;
@@ -36,7 +44,11 @@ function diemGiong(a, b) {
   if (a.mo === b.mo) diem += 1;
   if (a.ve === b.ve) diem += 1;
   if (a.kieu === 'SO' && a.nguong === b.nguong) diem += 1;
-  if (a.kieu === 'GIA_TRI' && tapGiongNhau(a.tap, b.tap)) diem += 1;
+  if (a.kieu === 'GIA_TRI' && b.kieu === 'GIA_TRI') {
+    if (a.truc && b.truc && chuanSo(a.truc).toLowerCase() === chuanSo(b.truc).toLowerCase()) diem += 1;
+    if (tapGiongNhau(a.tap, b.tap)) diem += 1;
+  }
+  if ((a.moNguon !== undefined || b.moNguon !== undefined) && moNguonGiongNhau(a.moNguon, b.moNguon)) diem += 1;
   return diem;
 }
 
@@ -47,7 +59,16 @@ function lyDoKhac(a, b) {
   if (a.mo !== b.mo) lyDo.push(`khác mo (${a.mo} vs ${b.mo})`);
   if (a.ve !== b.ve) lyDo.push(`khác ve (${a.ve} vs ${b.ve})`);
   if (a.kieu === 'SO' && b.kieu === 'SO' && a.nguong !== b.nguong) lyDo.push(`khác nguong (${a.nguong} vs ${b.nguong})`);
-  if (a.kieu === 'GIA_TRI' && b.kieu === 'GIA_TRI' && !tapGiongNhau(a.tap, b.tap)) lyDo.push('khác tap');
+  if (a.kieu === 'GIA_TRI' && b.kieu === 'GIA_TRI') {
+    if (chuanSo(a.truc || '').toLowerCase() !== chuanSo(b.truc || '').toLowerCase()) {
+      lyDo.push(`khác truc (${a.truc || '(thiếu)'} vs ${b.truc || '(thiếu)'})`);
+    }
+    if (!tapGiongNhau(a.tap, b.tap)) lyDo.push('khác tap');
+  }
+  if ((a.mo === 'DINH_NGHIA_LUAT' || a.mo === 'MO_TA_HUONG_DAN' || b.mo === 'DINH_NGHIA_LUAT' || b.mo === 'MO_TA_HUONG_DAN' || a.moNguon !== undefined || b.moNguon !== undefined)
+    && !moNguonGiongNhau(a.moNguon, b.moNguon)) {
+    lyDo.push(`khác moNguon (${fmtMoNguon(a.moNguon)} vs ${fmtMoNguon(b.moNguon)})`);
+  }
   return lyDo;
 }
 
@@ -56,9 +77,11 @@ const tomTatPhieu = (r, macDinh) => ({
   ve: r.ve,
   phu: r.phu,
   kieu: r.kieu,
+  ...(r.truc !== undefined ? { truc: r.truc } : {}),
   ...(r.nguong !== undefined ? { nguong: r.nguong } : {}),
   ...(r.tap !== undefined ? { tap: r.tap } : {}),
   moDieuKien: r.mo,
+  ...(r.moNguon !== undefined ? { moNguon: r.moNguon } : {}),
   cauHoi: r.cauHoi,
   trich: r.trich,
   nguon: r.nguon,

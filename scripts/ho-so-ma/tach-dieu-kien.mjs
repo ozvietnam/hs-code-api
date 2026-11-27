@@ -20,17 +20,17 @@ Chỉ đọc chữ luật công khai trong gói. Không bịa điều kiện, kh
 
 Quy tắc tách:
 - Mỗi điều kiện nguyên tử là MỘT đối tượng JSON trong mảng \`dieuKien\`.
-- \`ve\` (số nguyên >= 1): dấu ";" hoặc "hoặc" giữa các nhánh thay thế => tạo \`ve\` tăng dần (1, 2, ...). Các điều kiện phải thoả đồng thời ("và") => dùng CÙNG \`ve\`.
+- \`ve\` (số nguyên >= 0): dấu ";" hoặc "hoặc" giữa các nhánh thay thế => tạo \`ve\` tăng dần (1, 2, ...). Các điều kiện phải thoả đồng thời ("và") => dùng CÙNG \`ve\`. Đặt \`ve: 0\` cho điều kiện chung áp lên mọi vế (thường đi với \`phu: true\` cho "trừ..." ở cuối danh sách).
 - \`phu\` (boolean): \`true\` khi điều kiện mang nghĩa phủ định ("trừ...", "không kể...", "không phải...").
 - \`kieu\`:
-  - \`CO_KHONG\`: thuộc tính có/không (không đặt \`nguong\` hay \`tap\`).
-  - \`SO\`: ngưỡng số, BẮT BUỘC trỏ \`nguong\` = id bản ghi NGUONG đã có trong danh sách M-74 nếu có (không lặp số).
-  - \`GIA_TRI\`: chọn một tập giá trị nguyên văn (bắt buộc kèm \`tap\`: mảng chuỗi nguyên văn).
+  - \`CO_KHONG\`: thuộc tính có/không (không đặt \`nguong\`, \`tap\` hay \`truc\`).
+  - \`SO\`: ngưỡng số, BẮT BUỘC trỏ \`nguong\` = id bản ghi NGUONG đã có trong danh sách M-74 nếu có (không lặp số, không đặt \`tap\` hay \`truc\` — trục lấy từ \`daiLuong\` của NGUONG).
+  - \`GIA_TRI\`: chọn một tập giá trị nguyên văn (BẮT BUỘC kèm \`truc\`: tên trục nguyên văn 1 dòng, ví dụ "loại dòng điện", "chất liệu mặt ngoài", và \`tap\`: mảng chuỗi nguyên văn).
 - \`mo\`: chọn một trong:
-  - \`DINH_NGHIA_LUAT\`: có định nghĩa pháp lý trong chú giải.
-  - \`NGUONG\`: có ngưỡng định lượng.
-  - \`MO_TA_HUONG_DAN\`: có mô tả chi tiết trong chú giải hướng dẫn.
-  - \`NGHIA_THUONG\`: chữ luật không có định nghĩa/ngưỡng ("vi sóng", "thiết kế đặc biệt", ...).
+  - \`DINH_NGHIA_LUAT\`: có định nghĩa pháp lý trong chú giải (BẮT BUỘC kèm \`moNguon\`: id câu định nghĩa hoặc mảng id câu định nghĩa trong kho luật, không \`tb:\`).
+  - \`NGUONG\`: có ngưỡng định lượng (không đặt \`moNguon\`).
+  - \`MO_TA_HUONG_DAN\`: có mô tả chi tiết trong chú giải hướng dẫn (BẮT BUỘC kèm \`moNguon\`: id câu hướng dẫn, không \`tb:\`).
+  - \`NGHIA_THUONG\`: chữ luật không có định nghĩa/ngưỡng ("vi sóng", "thiết kế đặc biệt", ..., không đặt \`moNguon\`).
 - \`cauHoi\`: một câu hỏi Có/Không ngắn gọn (1 dòng, <= 300 ký tự) về món hàng.
 - \`trich\`: chuỗi con NGUYÊN VĂN của câu \`nguon\`.
 - \`nguon\`: đúng id câu nguồn có trong gói (ví dụ \`bieu:85437040#1\`).
@@ -134,16 +134,35 @@ export function rutJsonDieuKien(text) {
   const raw = String(text || '').trim();
   const fenced = /```(?:json)?\s*([\s\S]*?)```/i.exec(raw);
   const s = (fenced ? fenced[1] : raw).trim();
-  const iArr = s.indexOf('[');
-  const iObj = s.indexOf('{');
-  if (iArr < 0 && iObj < 0) throw new Error('Không tìm thấy JSON trong phản hồi mô hình');
-  const start = (iArr >= 0 && (iObj < 0 || iArr < iObj)) ? iArr : iObj;
-  const block = timKhoiJsonCanBang(s, start) ?? s.slice(start);
-  const parsed = JSON.parse(block);
-  if (Array.isArray(parsed)) return parsed;
-  const list = parsed?.dieuKien || parsed?.kq;
-  if (!Array.isArray(list)) throw new Error('JSON thiếu mảng dieuKien');
-  return list;
+  let lastErr = null;
+  let sawCandidate = false;
+  for (let i = 0; i < s.length; i += 1) {
+    const ch = s[i];
+    if (ch !== '{' && ch !== '[') continue;
+    sawCandidate = true;
+    const block = timKhoiJsonCanBang(s, i);
+    if (!block) continue;
+    let parsed;
+    try {
+      parsed = JSON.parse(block);
+    } catch (err) {
+      lastErr = err;
+      continue;
+    }
+    if (Array.isArray(parsed)) {
+      if (parsed.length === 0 || (parsed[0] && typeof parsed[0] === 'object' && !Array.isArray(parsed[0]))) {
+        return parsed;
+      }
+      continue;
+    }
+    if (parsed && typeof parsed === 'object') {
+      const list = parsed.dieuKien || parsed.kq;
+      if (Array.isArray(list)) return list;
+    }
+  }
+  if (!sawCandidate) throw new Error('Không tìm thấy JSON trong phản hồi mô hình');
+  if (lastErr) throw lastErr;
+  throw new Error('JSON thiếu mảng dieuKien');
 }
 
 /** Chuẩn hoá đề xuất thô từ LLM thành các bản ghi DIEU_KIEN hợp lệ theo khuôn.mjs. */
@@ -162,10 +181,23 @@ export function chuanHoaDieuKien(rawList, nut, L, { batDauSo = 8101, nguongSanCo
     const trich = timTrichNguyenVan(item.trich, chu);
     if (!trich) { loi.push(`${nut}: trich không nguyên văn câu ${nguon} ("${gon(item.trich).slice(0, 60)}")`); continue; }
 
-    const ve = Number.isInteger(item.ve) && item.ve >= 1 ? item.ve : Math.max(1, Number.parseInt(item.ve, 10) || 1);
+    let ve = 1;
+    if (item.ve === 0 || item.ve === '0') ve = 0;
+    else if (Number.isInteger(item.ve) && item.ve >= 1) ve = item.ve;
+    else {
+      const parsedVe = Number.parseInt(item.ve, 10);
+      if (Number.isInteger(parsedVe) && parsedVe >= 0) ve = parsedVe;
+    }
     const phu = Boolean(item.phu);
     const kieu = KIEU_DIEU_KIEN.includes(item.kieu) ? item.kieu : 'CO_KHONG';
     const mo = MO_DIEU_KIEN.includes(item.mo) ? item.mo : (kieu === 'SO' ? 'NGUONG' : 'NGHIA_THUONG');
+    const truc = kieu === 'GIA_TRI' && item.truc !== undefined ? gon(item.truc) : undefined;
+    let moNguon;
+    if ((mo === 'DINH_NGHIA_LUAT' || mo === 'MO_TA_HUONG_DAN') && item.moNguon !== undefined) {
+      moNguon = Array.isArray(item.moNguon)
+        ? item.moNguon.map(gon).filter(Boolean)
+        : gon(item.moNguon);
+    }
     const cauHoi = gon(item.cauHoi || item.dieuKien || '').slice(0, 300);
     if (!cauHoi) { loi.push(`${nut}: thiếu cauHoi cho trích "${trich.slice(0, 40)}"`); continue; }
 
@@ -176,14 +208,28 @@ export function chuanHoaDieuKien(rawList, nut, L, { batDauSo = 8101, nguongSanCo
       ve,
       phu,
       kieu,
+      ...(truc !== undefined ? { truc } : {}),
       ...(kieu === 'SO' && item.nguong ? { nguong: gon(item.nguong) } : {}),
       ...(kieu === 'GIA_TRI' && Array.isArray(item.tap) ? { tap: item.tap.map(gon).filter(Boolean) } : {}),
       mo,
+      ...(moNguon !== undefined ? { moNguon } : {}),
       cauHoi,
       trich,
       nguon,
       vanTay: vanTay(chu),
-      ...(moHinh ? { phieu: [{ mo: moHinh, trich, nguon, ve, phu, kieu, mo }] } : {}),
+      ...(moHinh ? {
+        phieu: [{
+          mo: moHinh,
+          trich,
+          nguon,
+          ve,
+          phu,
+          kieu,
+          moDieuKien: mo,
+          ...(truc !== undefined ? { truc } : {}),
+          ...(moNguon !== undefined ? { moNguon } : {}),
+        }],
+      } : {}),
     };
 
     if (rec.kieu === 'SO' && nguongSet.size && !nguongSet.has(rec.nguong)) {
@@ -194,6 +240,14 @@ export function chuanHoaDieuKien(rawList, nut, L, { batDauSo = 8101, nguongSanCo
     if (err.length) {
       loi.push(...err);
       continue;
+    }
+    if (moNguon !== undefined) {
+      const mnIds = Array.isArray(moNguon) ? moNguon : [moNguon];
+      const thieuMn = mnIds.find((mnId) => L.chuCau(mnId) === null);
+      if (thieuMn) {
+        loi.push(`${rec.id}: moNguon "${thieuMn}" không tồn tại trong kho luật`);
+        continue;
+      }
     }
     stt += 1;
     banGhi.push(rec);

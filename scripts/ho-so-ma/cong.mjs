@@ -379,7 +379,28 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
         if (!dungDuong) ra[6].loi.push(`${x.id}: nguon ${x.nguon} thuộc ${chu0 || nutCau}, không nằm trên đường đi của ${x.nut}`);
         if (!chuanSo(chu).includes(chuanSo(x.trich))) ra[6].loi.push(`${x.id}: trich không nguyên văn câu ${x.nguon} — "${ngan(x.trich)}"`);
         if (vanTay(chu) !== x.vanTay) ra[6].loi.push(`${x.id}: vanTay lệch câu ${x.nguon}`);
-        if (x.kieu === 'SO' && !nguongById.has(x.nguong)) ra[6].loi.push(`${x.id}: kieu SO trỏ nguong "${x.nguong}" không có trong hồ sơ NGUONG`);
+        if (!Number.isInteger(x.ve) || x.ve < 0) ra[6].loi.push(`${x.id}: ve phải là số nguyên >= 0`);
+        if (x.kieu === 'GIA_TRI' && (typeof x.truc !== 'string' || !x.truc.trim() || /\n/.test(x.truc))) {
+          ra[6].loi.push(`${x.id}: kieu GIA_TRI phải có truc hợp lệ`);
+        }
+        if (x.kieu === 'SO') {
+          const ngRec = nguongById.get(x.nguong);
+          if (!ngRec) ra[6].loi.push(`${x.id}: kieu SO trỏ nguong "${x.nguong}" không có trong hồ sơ NGUONG`);
+          else if (!ngRec.nguong?.daiLuong || typeof ngRec.nguong.daiLuong !== 'string' || !ngRec.nguong.daiLuong.trim()) {
+            ra[6].loi.push(`${x.id}: nguong "${x.nguong}" thiếu daiLuong`);
+          }
+        }
+        if (x.mo === 'DINH_NGHIA_LUAT' || x.mo === 'MO_TA_HUONG_DAN') {
+          const mnIds = Array.isArray(x.moNguon) ? x.moNguon : (x.moNguon ? [x.moNguon] : []);
+          if (!mnIds.length) {
+            ra[6].loi.push(`${x.id}: mo ${x.mo} thiếu moNguon`);
+          } else {
+            for (const mnId of mnIds) {
+              if (/^tb:/.test(mnId)) ra[6].loi.push(`${x.id}: moNguon không được trích tiền lệ ${mnId}`);
+              else if (L.chuCau(mnId) === null) ra[6].loi.push(`${x.id}: moNguon ${mnId} không có trong kho luật gốc`);
+            }
+          }
+        }
       }
       if (pv.length) {
         for (const id of NTrong) {
@@ -397,9 +418,19 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
           }
           const ten = L.cay.theoId.get(id)?.ten || meta?.nguyenVan || '';
           const soDoan = demDoanChamPhay(ten);
-          const cacVe = new Set(dksHieuLuc.map((d) => d.ve));
-          if (soDoan > 1 && cacVe.size < soDoan) {
-            ra[6].loi.push(`${id}: tên có ${soDoan} đoạn tách bởi ";" nhưng mới có ${cacVe.size} vế DIEU_KIEN`);
+          const veDuong = new Set(dksHieuLuc.filter((d) => d.ve >= 1).map((d) => d.ve));
+          const coVeDuong = veDuong.size > 0;
+          const dks0 = dksHieuLuc.filter((d) => d.ve === 0);
+          const soVeHieuLuc = coVeDuong ? veDuong.size : (dks0.length > 0 ? 1 : 0);
+          if (soDoan > 1 && soVeHieuLuc < soDoan) {
+            ra[6].loi.push(`${id}: tên có ${soDoan} đoạn tách bởi ";" nhưng mới có ${soVeHieuLuc} vế DIEU_KIEN`);
+          }
+          for (const d of dks0) {
+            if (d.phu) continue;
+            const hopLeVe0 = !coVeDuong || soDoan <= 1 || veDuong.size >= 2 || G.chuCuaCau(d.nguon) !== id;
+            if (!hopLeVe0) {
+              ra[6].loi.push(`${d.id}: ve: 0 chỉ đi với phu: true hoặc điều kiện chung của nút`);
+            }
           }
         }
       }
@@ -410,7 +441,9 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
       for (const g of nhomMoi) {
         ra[7].soKiem += 1;
         if (g.con.some((id) => laLoaiKhacThuan(id, L, bieuMeta))) continue;
-        if (!chungMinhPhuKin(g.con, dkTheoNut, nguongById, dkTheoNut.get(g.cha) || [])) {
+        const duongCha = G.duongDiNut(g.cha, L.cay) || [];
+        const dksDuongCha = duongCha.flatMap((b) => dkTheoNut.get(b.nut) || []);
+        if (!chungMinhPhuKin(g.con, dkTheoNut, nguongById, dkTheoNut.get(g.cha) || [], dksDuongCha)) {
           ra[7].loi.push(`${g.cha}: HO_PHU — nhóm không có "Loại khác" nhưng chưa chứng minh phủ kín phạm vi cha`);
         }
       }
@@ -516,7 +549,7 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
       for (const vd of viDu || []) {
         ra[10].soKiem += 1;
         const gan = vd.ganDieuKien || vd.gan || {};
-        const duongDich = vd.dich ? (G.duongDiNut(vd.dich, L.cay) || []).map((x) => x.nut) : [];
+        const duongDich = (vd.dich && vd.dich !== 'NGOAI_PHAM_VI') ? (G.duongDiNut(vd.dich, L.cay) || []).map((x) => x.nut) : [];
         const cacChaTrenDuong = duongDich.filter((id) => bangTheoCha.has(id));
         let startCha = vd.cha || null;
         if (!startCha && cacChaTrenDuong.length) {
@@ -531,6 +564,11 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
           for (const b of bangTheoCha.values()) {
             if (b.anhEm.some((ae) => ae.dieuKienIds.some((id) => keys.has(id)))) { startCha = b.cha; break; }
           }
+          if (!startCha) {
+            for (const b of bangTheoCha.values()) {
+              if ((b.chuoiCha || []).some((c) => (c.dieuKienIds || []).some((id) => keys.has(id)))) { startCha = b.cha; break; }
+            }
+          }
         }
         if (!startCha || !bangTheoCha.has(startCha)) {
           ra[10].loi.push(`ví dụ "${ngan(vd.trich || vd.dich || '')}": không tìm thấy bảng anh em cho đích ${vd.dich || vd.cha}`);
@@ -542,7 +580,11 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
           const chaBuoc = L.cay.theoId.get(buoc)?.cha;
           if (chaBuoc && bangTheoCha.has(chaBuoc)) bangDuocPhu.add(chaBuoc);
         }
-        if (vd.duKien?.length && !vd.dich) {
+        if (vd.ngoaiPhamVi || vd.dich === 'NGOAI_PHAM_VI') {
+          if (kq.trangThai !== 'NGOAI_PHAM_VI') {
+            ra[10].loi.push(`ví dụ ngoài phạm vi "${ngan(vd.trich || '')}": kỳ vọng NGOAI_PHAM_VI, bảng trả ${kq.trangThai} (${kq.dich || ''})`);
+          }
+        } else if (vd.duKien?.length && !vd.dich) {
           const thieuSet = new Set([...(kq.thieuIds || []), ...((kq.cauHoiToiThieu || []).map((c) => c.id))]);
           const khopThieu = kq.trangThai === 'RE_NHANH' && vd.duKien.some((d) => thieuSet.has(d) || (kq.cauHoiToiThieu || []).some((c) => chuanSo(c.cauHoi).toLowerCase().includes(chuanSo(d).toLowerCase())));
           if (!khopThieu) ra[10].loi.push(`ví dụ thiếu dữ kiện "${ngan(vd.trich || '')}": kỳ vọng rẽ nhánh hỏi [${vd.duKien.join(', ')}], nhận ${kq.trangThai}`);
@@ -574,7 +616,18 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
         if (x.mo === 'DINH_NGHIA_LUAT') ra[11].dem.dinhNghiaLuat += 1;
         else if (x.mo === 'NGUONG') ra[11].dem.nguong += 1;
         else if (x.mo === 'MO_TA_HUONG_DAN') ra[11].dem.moTaHuongDan += 1;
-        else if (x.mo === 'NGHIA_THUONG') {
+        if (x.mo === 'DINH_NGHIA_LUAT' || x.mo === 'MO_TA_HUONG_DAN') {
+          const mnIds = Array.isArray(x.moNguon) ? x.moNguon : (x.moNguon ? [x.moNguon] : []);
+          if (!mnIds.length) {
+            ra[11].loi.push(`${x.id}: mo ${x.mo} thiếu moNguon`);
+          } else {
+            for (const mnId of mnIds) {
+              if (/^tb:/.test(mnId)) ra[11].loi.push(`${x.id}: moNguon không được trích tiền lệ ${mnId}`);
+              else if (L.chuCau(mnId) === null) ra[11].loi.push(`${x.id}: moNguon ${mnId} không có trong kho luật gốc`);
+            }
+          }
+        }
+        if (x.mo === 'NGHIA_THUONG') {
           ra[11].dem.nghiaThuong += 1;
           if (!x.cauHoi || typeof x.cauHoi !== 'string' || !x.cauHoi.trim() || /\n/.test(x.cauHoi)) {
             ra[11].loi.push(`${x.id}: NGHIA_THUONG phải có cauHoi một dòng để dừng hỏi`);

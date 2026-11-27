@@ -34,7 +34,7 @@ const RE_VAN = /^[0-9a-f]{64}$/;
 const RE_ID_NGUONG = /^hs:.+:\d+$/;
 const TRUONG_VAN_DE = new Set(['id', 'nut', 'loai', 'dieuKien', 'trich', 'cau', 'tu', 'den', 'voi', 'nguong', 'thuatNgu', 'phuDinh', 'duKien', 'lop', 'nguon', 'van', 'trangThai', 'phieu', 'ghiChu']);
 const TRUONG_BO_QUA = new Set(['id', 'nut', 'loai', 'cau', 'lyDo', 'van', 'ghiChu']);
-const TRUONG_DIEU_KIEN = new Set(['id', 'nut', 'loai', 've', 'phu', 'kieu', 'nguong', 'tap', 'mo', 'cauHoi', 'trich', 'nguon', 'vanTay', 'trangThai', 'phieu', 'ghiChu']);
+const TRUONG_DIEU_KIEN = new Set(['id', 'nut', 'loai', 've', 'phu', 'kieu', 'truc', 'nguong', 'tap', 'mo', 'moNguon', 'cauHoi', 'trich', 'nguon', 'vanTay', 'trangThai', 'phieu', 'ghiChu']);
 const TRUONG_GIAI_CHONG = new Set(['id', 'nut', 'loai', 'cap', 'cach', 'trich', 'nguon', 'vanTay', 'trangThai', 'phieu', 'ghiChu']);
 const TRUONG_CANH_TRANH = new Set(['id', 'nut', 'loai', 'nhomCanhTranh', 'phepThu', 'trich', 'nguon', 'vanTay', 'trangThai', 'phieu', 'ghiChu']);
 const TRUONG_BANG_ANH_EM = new Set(['khuon', 'cha', 'chuong', 'chuoiCha', 'anhEm', 'giaiChong', 'co', 'vanTay']);
@@ -67,25 +67,39 @@ function kiemId81(x, loi, batBuoc = true) {
   }
 }
 
+function hopLeMoNguon(v) {
+  const cauHopLe = (s) => typeof s === 'string' && RE_CAU.test(s) && !/^tb:/.test(s);
+  if (cauHopLe(v)) return true;
+  return Array.isArray(v) && v.length > 0 && v.every(cauHopLe);
+}
+
 function kiemDieuKien(x) {
   const loi = []; const o = x.id || '(thiếu id)';
   for (const k of Object.keys(x)) if (!TRUONG_DIEU_KIEN.has(k)) loi.push(`${o}: trường lạ "${k}"`);
   if (!RE_NUT.test(x.nut || '')) loi.push(`${o}: nut sai ngữ pháp "${x.nut}"`);
   kiemId81(x, loi, true);
-  if (!Number.isInteger(x.ve) || x.ve < 1) loi.push(`${o}: ve phải là số nguyên >= 1`);
+  if (!Number.isInteger(x.ve) || x.ve < 0) loi.push(`${o}: ve phải là số nguyên >= 0`);
   if (typeof x.phu !== 'boolean') loi.push(`${o}: phu phải là boolean`);
   if (!KIEU_DIEU_KIEN.includes(x.kieu)) loi.push(`${o}: kieu lạ "${x.kieu}" (chỉ ${KIEU_DIEU_KIEN.join(' | ')})`);
   if (x.kieu === 'SO') {
     if (!chuoi(x.nguong) || !RE_ID_NGUONG.test(x.nguong)) loi.push(`${o}: kieu SO phải có nguong là id bản ghi NGUONG (không lặp số)`);
     if (x.tap !== undefined) loi.push(`${o}: kieu SO không mang tap`);
+    if (x.truc !== undefined) loi.push(`${o}: kieu SO không mang truc (lấy từ nguong.daiLuong)`);
   } else if (x.kieu === 'GIA_TRI') {
+    if (!chuoi(x.truc) || /\n/.test(x.truc)) loi.push(`${o}: kieu GIA_TRI phải có truc là tên trục một dòng không rỗng`);
     if (!Array.isArray(x.tap) || !x.tap.length || !x.tap.every(chuoi)) loi.push(`${o}: kieu GIA_TRI phải có tap là mảng chuỗi không rỗng`);
     if (x.nguong !== undefined) loi.push(`${o}: kieu GIA_TRI không mang nguong`);
   } else {
     if (x.nguong !== undefined) loi.push(`${o}: kieu ${x.kieu} không mang nguong`);
     if (x.tap !== undefined) loi.push(`${o}: kieu ${x.kieu} không mang tap`);
+    if (x.truc !== undefined) loi.push(`${o}: kieu ${x.kieu} không mang truc`);
   }
   if (!MO_DIEU_KIEN.includes(x.mo)) loi.push(`${o}: mo lạ "${x.mo}" (chỉ ${MO_DIEU_KIEN.join(' | ')})`);
+  if (x.mo === 'DINH_NGHIA_LUAT' || x.mo === 'MO_TA_HUONG_DAN') {
+    if (!hopLeMoNguon(x.moNguon)) loi.push(`${o}: mo ${x.mo} phải có moNguon là id câu định nghĩa/hướng dẫn hợp lệ (không tb:)`);
+  } else if (x.moNguon !== undefined) {
+    loi.push(`${o}: mo ${x.mo} không mang moNguon`);
+  }
   if (!chuoi(x.cauHoi)) loi.push(`${o}: thiếu cauHoi`);
   else if (/\n/.test(x.cauHoi) || x.cauHoi.length > 300) loi.push(`${o}: cauHoi phải là một câu hỏi ngắn (một dòng, ≤ 300 ký tự)`);
   if (!chuoi(x.trich)) loi.push(`${o}: thiếu trich`);
@@ -137,6 +151,8 @@ function kiemCanhTranh(x) {
   return loi;
 }
 
+const TRUONG_CHUOI_CHA = new Set(['nut', 'laLoaiKhac', 'congThuc', 'dieuKienIds', 'truCongThuc']);
+
 /** Kiểm khuôn một bảng bang-anh-em@1. [] = đúng khuôn. */
 export function kiemBangAnhEm(x) {
   if (!x || typeof x !== 'object' || Array.isArray(x)) return ['không phải đối tượng JSON'];
@@ -145,7 +161,29 @@ export function kiemBangAnhEm(x) {
   if (x.khuon !== 'bang-anh-em@1') loi.push(`${o}: khuon phải là "bang-anh-em@1", nhận "${x.khuon}"`);
   if (!RE_NUT.test(x.cha || '')) loi.push(`${o}: cha sai ngữ pháp "${x.cha}"`);
   if (!chuoi(x.chuong) || !/^(?:\d{2}|[IVX]+|gir)$/.test(x.chuong)) loi.push(`${o}: chuong sai ngữ pháp "${x.chuong}"`);
-  if (!Array.isArray(x.chuoiCha)) loi.push(`${o}: chuoiCha phải là mảng`);
+  if (!Array.isArray(x.chuoiCha)) {
+    loi.push(`${o}: chuoiCha phải là mảng`);
+  } else {
+    for (const cha of x.chuoiCha) {
+      if (!cha || typeof cha !== 'object' || Array.isArray(cha)) { loi.push(`${o}: phần tử chuoiCha không phải object`); continue; }
+      for (const k of Object.keys(cha)) if (!TRUONG_CHUOI_CHA.has(k)) loi.push(`${o}: chuoiCha[${cha.nut || '?'}] có trường lạ "${k}"`);
+      if (!RE_NUT.test(cha.nut || '')) loi.push(`${o}: chuoiCha.nut sai ngữ pháp "${cha.nut}"`);
+      if (typeof cha.laLoaiKhac !== 'boolean') loi.push(`${o}: chuoiCha[${cha.nut || '?'}].laLoaiKhac phải là boolean`);
+      if (!cha.congThuc || typeof cha.congThuc !== 'object' || Array.isArray(cha.congThuc)) loi.push(`${o}: chuoiCha[${cha.nut || '?'}].congThuc phải là object`);
+      if (!Array.isArray(cha.dieuKienIds) || !cha.dieuKienIds.every(chuoi)) loi.push(`${o}: chuoiCha[${cha.nut || '?'}].dieuKienIds phải là mảng id chuỗi`);
+      if (cha.truCongThuc !== undefined) {
+        if (!cha.truCongThuc || typeof cha.truCongThuc !== 'object' || Array.isArray(cha.truCongThuc)) {
+          loi.push(`${o}: chuoiCha[${cha.nut || '?'}].truCongThuc phải là object`);
+        } else {
+          for (const [k, v] of Object.entries(cha.truCongThuc)) {
+            if (!RE_NUT.test(k) || !v || typeof v !== 'object' || Array.isArray(v)) {
+              loi.push(`${o}: chuoiCha[${cha.nut || '?'}].truCongThuc["${k}"] không hợp lệ`);
+            }
+          }
+        }
+      }
+    }
+  }
   if (!Array.isArray(x.anhEm) || x.anhEm.length < 2) {
     loi.push(`${o}: anhEm phải là mảng có ít nhất 2 nút`);
   } else {

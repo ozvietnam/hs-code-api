@@ -87,21 +87,52 @@ export const chongKhoang = (a, b) => {
 export const khoaNguong = (n) => `${chuanSo(n.daiLuong).toLowerCase()}|${chuanSo(n.donVi ?? '').toLowerCase()}`;
 
 const chuanCauHoi = (s) => chuanSo(s).toLowerCase().replace(/[?？.]+$/, '').trim();
+const chuanTruc = (d) => (d?.truc ? chuanSo(d.truc).toLowerCase() : '');
+const chuanTap = (tap) => new Set((tap || []).map((v) => chuanSo(v).toLowerCase()).filter(Boolean));
+const tapBangNhau = (sa, sb) => sa.size === sb.size && [...sa].every((v) => sb.has(v));
+const tapTapCon = (con, cha) => con.size > 0 && [...con].every((v) => cha.has(v));
+const khoaTrucGiaTri = (d) => (
+  chuanTruc(d)
+    ? `truc:${chuanTruc(d)}`
+    : (chuanCauHoi(d?.cauHoi) ? `cau:${chuanCauHoi(d.cauHoi)}` : `nguon:${d?.nguon || ''}`)
+);
+
+function khoangChua(ngoai, trong) {
+  if (!ngoai || !trong) return false;
+  const duTu = ngoai.tu === null
+    || (trong.tu !== null && (trong.tu > ngoai.tu || (trong.tu === ngoai.tu && (!trong.gomTu || ngoai.gomTu))));
+  const duDen = ngoai.den === null
+    || (trong.den !== null && (trong.den < ngoai.den || (trong.den === ngoai.den && (!trong.gomDen || ngoai.gomDen))));
+  return duTu && duDen;
+}
 
 /** Hai điều kiện là phủ định bù nhau trên cùng trục/câu. */
-export function laPhuCuaNhau(a, b) {
+export function laPhuCuaNhau(a, b, nguongById = new Map()) {
   if (!a || !b || a.phu === b.phu) return false;
-  if (a.nguon === b.nguon) {
+  if (a.kieu === 'SO' && b.kieu === 'SO') {
+    if (a.nguong && a.nguong === b.nguong) return true;
+    const na = nguongById.get(a.nguong)?.nguong;
+    const nb = nguongById.get(b.nguong)?.nguong;
+    if (na && nb && khoaNguong(na) === khoaNguong(nb)
+      && na.tu === nb.tu && na.den === nb.den && na.gomTu === nb.gomTu && na.gomDen === nb.gomDen) {
+      return true;
+    }
+  }
+  if (a.kieu === 'GIA_TRI' && b.kieu === 'GIA_TRI') {
+    const ta = chuanTruc(a);
+    const tb = chuanTruc(b);
+    const cungTruc = (ta && tb)
+      ? ta === tb
+      : (Boolean(chuanCauHoi(a.cauHoi)) && chuanCauHoi(a.cauHoi) === chuanCauHoi(b.cauHoi));
+    if (cungTruc && tapBangNhau(chuanTap(a.tap), chuanTap(b.tap))) return true;
+  }
+  if (a.nguon && a.nguon === b.nguon) {
     const ta = chuanSo(a.trich).toLowerCase();
     const tb = chuanSo(b.trich).toLowerCase();
     if (ta && tb && (ta === tb || ta.includes(tb) || tb.includes(ta))) return true;
   }
   if (a.kieu === b.kieu && chuanCauHoi(a.cauHoi) && chuanCauHoi(a.cauHoi) === chuanCauHoi(b.cauHoi)) {
-    if (a.kieu === 'GIA_TRI') {
-      const sa = new Set((a.tap || []).map((v) => chuanSo(v).toLowerCase()));
-      const sb = new Set((b.tap || []).map((v) => chuanSo(v).toLowerCase()));
-      return sa.size === sb.size && [...sa].every((v) => sb.has(v));
-    }
+    if (a.kieu === 'GIA_TRI') return tapBangNhau(chuanTap(a.tap), chuanTap(b.tap));
     if (a.kieu === 'SO') return a.nguong === b.nguong;
     return true;
   }
@@ -112,18 +143,28 @@ export function laPhuCuaNhau(a, b) {
 export function veRoiNhau(veA, veB, nguongById = new Map()) {
   for (const a of veA) {
     for (const b of veB) {
-      if (laPhuCuaNhau(a, b)) return true;
-      if (a.kieu === 'SO' && b.kieu === 'SO' && !a.phu && !b.phu) {
+      if (laPhuCuaNhau(a, b, nguongById)) return true;
+      if (a.kieu === 'SO' && b.kieu === 'SO') {
         const na = nguongById.get(a.nguong)?.nguong;
         const nb = nguongById.get(b.nguong)?.nguong;
-        if (na && nb && khoaNguong(na) === khoaNguong(nb) && !chongKhoang(na, nb)) return true;
+        if (na && nb && khoaNguong(na) === khoaNguong(nb)) {
+          if (!a.phu && !b.phu && !chongKhoang(na, nb)) return true;
+          if (!a.phu && b.phu && khoangChua(nb, na)) return true;
+          if (a.phu && !b.phu && khoangChua(na, nb)) return true;
+        }
       }
-      if (a.kieu === 'GIA_TRI' && b.kieu === 'GIA_TRI' && !a.phu && !b.phu) {
-        const cungTruc = (a.nguon === b.nguon) || (chuanCauHoi(a.cauHoi) && chuanCauHoi(a.cauHoi) === chuanCauHoi(b.cauHoi));
+      if (a.kieu === 'GIA_TRI' && b.kieu === 'GIA_TRI') {
+        const ta = chuanTruc(a);
+        const tb = chuanTruc(b);
+        const cungTruc = (ta && tb)
+          ? ta === tb
+          : ((a.nguon && a.nguon === b.nguon) || (chuanCauHoi(a.cauHoi) && chuanCauHoi(a.cauHoi) === chuanCauHoi(b.cauHoi)));
         if (cungTruc) {
-          const sa = new Set((a.tap || []).map((v) => chuanSo(v).toLowerCase()));
-          const sb = new Set((b.tap || []).map((v) => chuanSo(v).toLowerCase()));
-          if (sa.size && sb.size && ![...sa].some((v) => sb.has(v))) return true;
+          const sa = chuanTap(a.tap);
+          const sb = chuanTap(b.tap);
+          if (!a.phu && !b.phu && sa.size && sb.size && ![...sa].some((v) => sb.has(v))) return true;
+          if (!a.phu && b.phu && tapTapCon(sa, sb)) return true;
+          if (a.phu && !b.phu && tapTapCon(sb, sa)) return true;
         }
       }
     }
@@ -131,20 +172,36 @@ export function veRoiNhau(veA, veB, nguongById = new Map()) {
   return false;
 }
 
-/** Gom danh sách DIEU_KIEN của một nút theo `ve` -> { loai: 'HOAC_CUA_VA', cacVe: [...] }. */
+/** Gom danh sách DIEU_KIEN của một nút theo `ve` -> { loai: 'HOAC_CUA_VA', cacVe: [...] }.
+ *  Quy ước ve: 0 = điều kiện chung áp cho mọi vế: nhân (AND) vào từng vế >= 1, hoặc gom thành 1 vế nếu chỉ có ve: 0. */
 export function chiaVeDieuKien(dks, truAnhEm = null) {
-  const theoVe = new Map();
-  const xep = [...(dks || [])].sort((a, b) => (a.ve - b.ve) || String(a.id).localeCompare(String(b.id)));
-  for (const d of xep) {
-    if (!theoVe.has(d.ve)) theoVe.set(d.ve, []);
+  const toItem = (d) => {
     const item = { id: d.id, phu: d.phu, kieu: d.kieu };
+    if (d.truc !== undefined) item.truc = d.truc;
     if (d.nguong !== undefined) item.nguong = d.nguong;
     if (d.tap !== undefined) item.tap = [...d.tap];
-    theoVe.get(d.ve).push(item);
+    return item;
+  };
+  const xep = [...(dks || [])]
+    .filter((d) => d && (!d.loai || d.loai === 'DIEU_KIEN'))
+    .sort((a, b) => (a.ve - b.ve) || String(a.id).localeCompare(String(b.id)));
+  const dks0 = xep.filter((d) => d.ve === 0).map(toItem);
+  const theoVe = new Map();
+  for (const d of xep) {
+    if (d.ve === 0) continue;
+    if (!theoVe.has(d.ve)) theoVe.set(d.ve, []);
+    theoVe.get(d.ve).push(toItem(d));
   }
-  const cacVe = [...theoVe.entries()]
-    .sort((a, b) => a[0] - b[0])
-    .map(([ve, cacDieuKien]) => ({ ve, cacDieuKien }));
+  let cacVe;
+  if (theoVe.size > 0) {
+    cacVe = [...theoVe.entries()]
+      .sort((a, b) => a[0] - b[0])
+      .map(([ve, cacDieuKien]) => ({ ve, cacDieuKien: dks0.length ? [...cacDieuKien, ...dks0] : cacDieuKien }));
+  } else if (dks0.length > 0) {
+    cacVe = [{ ve: 1, cacDieuKien: dks0 }];
+  } else {
+    cacVe = [];
+  }
   const ct = { loai: 'HOAC_CUA_VA', cacVe };
   if (Array.isArray(truAnhEm) && truAnhEm.length) ct.truAnhEm = [...truAnhEm];
   return ct;
@@ -152,8 +209,9 @@ export function chiaVeDieuKien(dks, truAnhEm = null) {
 
 /** Hai nút có tên rời nhau chứng minh được bằng máy (mọi cặp vế đều rời nhau). */
 export function haiNutRoiNhau(dksA, dksB, nguongById = new Map()) {
-  const va = chiaVeDieuKien(dksA).cacVe.map((v) => v.cacDieuKien);
-  const vb = chiaVeDieuKien(dksB).cacVe.map((v) => v.cacDieuKien);
+  const dkById = new Map([...(dksA || []), ...(dksB || [])].map((d) => [d.id, d]));
+  const va = chiaVeDieuKien(dksA).cacVe.map((v) => v.cacDieuKien.map((x) => dkById.get(x.id) || x));
+  const vb = chiaVeDieuKien(dksB).cacVe.map((v) => v.cacDieuKien.map((x) => dkById.get(x.id) || x));
   if (!va.length || !vb.length) return false;
   for (const a of va) {
     for (const b of vb) {
@@ -163,9 +221,145 @@ export function haiNutRoiNhau(dksA, dksB, nguongById = new Map()) {
   return true;
 }
 
+function chungMinhHangDungLogic(con, dkTheoNut, nguongById) {
+  const allDks = con.flatMap((id) => dkTheoNut.get(id) || []);
+  if (!allDks.length) return false;
+
+  // Nhóm các điều kiện thành biến boolean chuẩn hoá
+  const varOfId = new Map();
+  const varKeyIndex = new Map();
+  const vars = []; // đại diện đầu tiên của mỗi biến
+
+  const getVarIndex = (d) => {
+    if (varOfId.has(d.id)) return varOfId.get(d.id);
+    let key = null;
+    if (d.kieu === 'SO') {
+      const ng = nguongById.get(d.nguong)?.nguong;
+      key = ng
+        ? `SO:${khoaNguong(ng)}|${ng.tu}|${ng.den}|${ng.gomTu}|${ng.gomDen}`
+        : `SO_ID:${d.nguong}`;
+    } else if (d.kieu === 'GIA_TRI') {
+      const tk = chuanTruc(d) || chuanCauHoi(d.cauHoi) || d.nguon;
+      const tapK = [...chuanTap(d.tap)].sort().join('\u0001');
+      key = `GT:${tk}|${tapK}`;
+    } else {
+      const q = chuanCauHoi(d.cauHoi);
+      if (q) key = `CK_Q:${q}`;
+    }
+    if (key && varKeyIndex.has(key)) {
+      const idx = varKeyIndex.get(key);
+      varOfId.set(d.id, idx);
+      return idx;
+    }
+    // Khớp thêm theo laPhuCuaNhau (ví dụ CO_KHONG cùng nguồn có trích lồng nhau nhưng câu hỏi viết khác)
+    for (let i = 0; i < vars.length; i += 1) {
+      if (laPhuCuaNhau(d, vars[i], nguongById)) {
+        varOfId.set(d.id, i);
+        return i;
+      }
+    }
+    const idx = vars.length;
+    vars.push(d);
+    if (key) varKeyIndex.set(key, idx);
+    varOfId.set(d.id, idx);
+    return idx;
+  };
+
+  for (const d of allDks) getVarIndex(d);
+  const V = vars.length;
+  if (V === 0 || V > 12) return false;
+
+  const cacNhanh = [];
+  for (const id of con) {
+    const dks = dkTheoNut.get(id) || [];
+    const dkById = new Map(dks.map((d) => [d.id, d]));
+    for (const v of chiaVeDieuKien(dks).cacVe) {
+      if (!v.cacDieuKien.length) continue;
+      cacNhanh.push(v.cacDieuKien.map((item) => {
+        const full = dkById.get(item.id) || item;
+        return { idx: varOfId.get(full.id), phu: Boolean(full.phu) };
+      }));
+    }
+  }
+  if (!cacNhanh.length) return false;
+
+  const total = 1 << V;
+  for (let mask = 0; mask < total; mask += 1) {
+    let rowOk = false;
+    for (const nhanh of cacNhanh) {
+      let branchOk = true;
+      for (const lit of nhanh) {
+        const bit = ((mask >> lit.idx) & 1) === 1;
+        if (lit.phu ? bit : !bit) {
+          branchOk = false;
+          break;
+        }
+      }
+      if (branchOk) {
+        rowOk = true;
+        break;
+      }
+    }
+    if (!rowOk) return false;
+  }
+  return true;
+}
+
+function rangBuocChaTheoKhoa(ancDks, nguongById) {
+  const theoNut = new Map();
+  for (const d of ancDks || []) {
+    const k = d.nut || '__cha__';
+    if (!theoNut.has(k)) theoNut.set(k, []);
+    theoNut.get(k).push(d);
+  }
+  const mucTieu = new Map();
+  for (const dks of theoNut.values()) {
+    const veList = chiaVeDieuKien(dks).cacVe;
+    if (!veList.length) continue;
+    // Khoảng ràng buộc chỉ áp toàn nút nếu mọi vế của nút cha đều chứa ngưỡng SO đó
+    const dkById = new Map(dks.map((d) => [d.id, d]));
+    const giaoTheoVe = veList.map((v) => {
+      const m = new Map();
+      for (const item of v.cacDieuKien) {
+        const dk = dkById.get(item.id) || item;
+        if (dk.kieu !== 'SO' || dk.phu) continue;
+        const ng = nguongById.get(dk.nguong)?.nguong;
+        if (!ng) continue;
+        const kk = khoaNguong(ng);
+        m.set(kk, ng);
+      }
+      return m;
+    });
+    for (const [kk, ng0] of giaoTheoVe[0]) {
+      if (!giaoTheoVe.every((m) => m.has(kk))) continue;
+      for (const m of giaoTheoVe) {
+        const ng = m.get(kk);
+        const cur = mucTieu.get(kk) || { tu: null, den: null, gomTu: false, gomDen: false };
+        let tu = cur.tu;
+        let gomTu = cur.gomTu;
+        if (ng.tu !== null && (tu === null || ng.tu > tu || (ng.tu === tu && !ng.gomTu))) {
+          tu = ng.tu;
+          gomTu = ng.gomTu;
+        }
+        let den = cur.den;
+        let gomDen = cur.gomDen;
+        if (ng.den !== null && (den === null || ng.den < den || (ng.den === den && !ng.gomDen))) {
+          den = ng.den;
+          gomDen = ng.gomDen;
+        }
+        mucTieu.set(kk, { tu, den, gomTu, gomDen });
+      }
+      void ng0;
+    }
+  }
+  return mucTieu;
+}
+
 /** Kiểm chứng minh phủ kín phạm vi cha khi nhóm KHÔNG có nút "Loại khác". */
-export function chungMinhPhuKin(con, dkTheoNut, nguongById = new Map(), chaDks = []) {
-  // 1. Có cặp anh em bù nhau bởi `phu` (mỗi bên là điều kiện đơn 1 vế, 1 điều kiện)
+export function chungMinhPhuKin(con, dkTheoNut, nguongById = new Map(), chaDks = [], chuoiChaDks = []) {
+  // 1. Chứng minh hằng đúng logic (tautology) trên công thức các anh em (hỗ trợ cả đơn và đa điều kiện: 02.01, 850110)
+  if (chungMinhHangDungLogic(con, dkTheoNut, nguongById)) return true;
+  // Dự phòng cho trường hợp số biến lớn (>12): kiểm cặp đơn bù nhau bởi `phu`
   const don = new Map();
   for (const id of con) {
     const dks = dkTheoNut.get(id) || [];
@@ -174,11 +368,12 @@ export function chungMinhPhuKin(con, dkTheoNut, nguongById = new Map(), chaDks =
   const donIds = [...don.keys()];
   for (let i = 0; i < donIds.length; i += 1) {
     for (let j = i + 1; j < donIds.length; j += 1) {
-      if (laPhuCuaNhau(don.get(donIds[i]), don.get(donIds[j]))) return true;
+      if (laPhuCuaNhau(don.get(donIds[i]), don.get(donIds[j]), nguongById)) return true;
     }
   }
 
-  // 2. Mọi anh em đều có ngưỡng đơn kieu SO trên cùng (daiLuong, donVi) phủ kín (-∞, +∞)
+  // 2. Mọi anh em đều có ngưỡng đơn kieu SO trên cùng (daiLuong, donVi) phủ kín phạm vi cha (hoặc (-∞, +∞))
+  const mucTieuCha = rangBuocChaTheoKhoa([...(chuoiChaDks || []), ...(chaDks || [])], nguongById);
   const theoTruc = new Map();
   for (const id of con) {
     const dks = dkTheoNut.get(id) || [];
@@ -192,10 +387,14 @@ export function chungMinhPhuKin(con, dkTheoNut, nguongById = new Map(), chaDks =
     if (!theoTruc.has(kk)) theoTruc.set(kk, new Map());
     theoTruc.get(kk).set(id, ng);
   }
-  for (const m of theoTruc.values()) {
+  for (const [kk, m] of theoTruc) {
     if (m.size !== con.length) continue;
+    const target = mucTieuCha.get(kk) || { tu: null, den: null, gomTu: false, gomDen: false };
     const ds = [...m.values()].sort((a, b) => (a.tu ?? -Infinity) - (b.tu ?? -Infinity));
-    if (ds[0].tu !== null) continue;
+    const batDauDu = target.tu === null
+      ? ds[0].tu === null
+      : (ds[0].tu === null || ds[0].tu < target.tu || (ds[0].tu === target.tu && (ds[0].gomTu || !target.gomTu)));
+    if (!batDauDu) continue;
     let kin = true;
     let denHienTai = ds[0].den;
     let gomDenHienTai = ds[0].gomDen;
@@ -214,15 +413,18 @@ export function chungMinhPhuKin(con, dkTheoNut, nguongById = new Map(), chaDks =
         gomDenHienTai = b.gomDen;
       }
     }
-    if (kin && denHienTai === null) return true;
+    const ketThucDu = target.den === null
+      ? denHienTai === null
+      : (denHienTai === null || denHienTai > target.den || (denHienTai === target.den && (gomDenHienTai || !target.gomDen)));
+    if (kin && ketThucDu) return true;
   }
 
-  // 3. Tập GIA_TRI của các con phủ hết tập GIA_TRI do nút cha khai báo trên cùng trục
+  // 3. Tập GIA_TRI của các con phủ hết tập GIA_TRI do nút cha khai báo trên cùng `truc`
   const chaGiaTri = (chaDks || []).filter((d) => d.kieu === 'GIA_TRI' && !d.phu && Array.isArray(d.tap) && d.tap.length);
   if (chaGiaTri.length) {
     const tapChaTheoTruc = new Map();
     for (const d of chaGiaTri) {
-      const k = chuanCauHoi(d.cauHoi) || d.nguon;
+      const k = khoaTrucGiaTri(d);
       if (!tapChaTheoTruc.has(k)) tapChaTheoTruc.set(k, new Set());
       for (const v of d.tap) tapChaTheoTruc.get(k).add(chuanSo(v).toLowerCase());
     }
@@ -235,7 +437,7 @@ export function chungMinhPhuKin(con, dkTheoNut, nguongById = new Map(), chaDks =
         const veDon = chiaVeDieuKien(dks).cacVe
           .filter((v) => v.cacDieuKien.length === 1)
           .map((v) => dkById.get(v.cacDieuKien[0].id))
-          .filter((d) => d && d.kieu === 'GIA_TRI' && !d.phu && (chuanCauHoi(d.cauHoi) === k || d.nguon === k));
+          .filter((d) => d && d.kieu === 'GIA_TRI' && !d.phu && khoaTrucGiaTri(d) === k);
         const khop = veDon.filter((d) => (d.tap || []).some((v) => tapCha.has(chuanSo(v).toLowerCase())));
         if (khop.length) {
           soConKhop += 1;
@@ -290,19 +492,26 @@ export function taoBangChoCha(chaId, L, duLieu) {
   const duong = G.duongDiNut(chaId, L.cay) || [{ cap: G.capCuaNut(chaId), nut: chaId }];
   const chuoiCha = [];
   const dksChuoiCha = [];
+  const dksDuongCha = [];
   for (const buoc of duong) {
     const dks = dkTheoNut.get(buoc.nut) || [];
     const laLK = laLoaiKhacThuan(buoc.nut, L, bieuMeta);
     const meta = bieuMeta.get(buoc.nut);
     let truAnhEm = [];
+    const truCongThuc = {};
     if (laLK || (laLoaiKhacCoVe(buoc.nut, L, bieuMeta) && meta?.phamViTru?.length)) {
       const aeCha = meta?.phamViTru?.length
         ? meta.phamViTru
         : G.anhEmCua(buoc.nut, L.cay).filter((x) => !laLoaiKhacThuan(x, L, bieuMeta));
       truAnhEm = aeCha;
-      for (const aeId of aeCha) dksChuoiCha.push(...(dkTheoNut.get(aeId) || []));
+      for (const aeId of aeCha) {
+        const aeDks = dkTheoNut.get(aeId) || [];
+        dksChuoiCha.push(...aeDks);
+        truCongThuc[aeId] = chiaVeDieuKien(aeDks);
+      }
     }
     dksChuoiCha.push(...dks);
+    dksDuongCha.push(...dks);
     chuoiCha.push({
       nut: buoc.nut,
       laLoaiKhac: laLK,
@@ -310,6 +519,7 @@ export function taoBangChoCha(chaId, L, duLieu) {
         ? { loai: 'KHONG_HOP_VA_CHA', phuCua: truAnhEm, chuoiCha: [] }
         : chiaVeDieuKien(dks, truAnhEm.length ? truAnhEm : null),
       dieuKienIds: dks.map((x) => x.id),
+      ...(truAnhEm.length ? { truCongThuc } : {}),
     });
   }
   const chuoiChaDkIds = [...new Set(dksChuoiCha.map((x) => x.id))];
@@ -372,7 +582,7 @@ export function taoBangChoCha(chaId, L, duLieu) {
 
   const co = new Set();
   const coLoaiKhac = anhEm.some((x) => x.laLoaiKhac);
-  if (!coLoaiKhac && !chungMinhPhuKin(con, dkTheoNut, nguongById, dkTheoNut.get(chaId) || [])) co.add('HO_PHU');
+  if (!coLoaiKhac && !chungMinhPhuKin(con, dkTheoNut, nguongById, dkTheoNut.get(chaId) || [], dksDuongCha)) co.add('HO_PHU');
 
   for (let i = 0; i < coTen.length; i += 1) {
     for (let j = i + 1; j < coTen.length; j += 1) {
@@ -417,8 +627,34 @@ export function taoBangChoCha(chaId, L, duLieu) {
   };
 }
 
+function timCongThucAnhEm(nutId, bang, truCongThuc = null) {
+  if (truCongThuc && Object.hasOwn(truCongThuc, nutId)) return truCongThuc[nutId];
+  return bang?.anhEm?.find((x) => x.nut === nutId)?.congThuc || null;
+}
+
+function danhGiaBuocCha(cha, ganDieuKien, bang, _daTham) {
+  if (!cha?.congThuc) return undefined;
+  const ct = cha.congThuc;
+  if (ct.loai === 'KHONG_HOP_VA_CHA') {
+    let coChuaRo = false;
+    for (const aeId of ct.phuCua || []) {
+      const f = timCongThucAnhEm(aeId, bang, cha.truCongThuc);
+      if (!f) { coChuaRo = true; continue; }
+      const r = danhGiaCongThuc(f, ganDieuKien, bang, _daTham, cha.truCongThuc || null);
+      if (r === true) return false;
+      if (r === undefined) coChuaRo = true;
+    }
+    return coChuaRo ? undefined : true;
+  }
+  if (ct.loai === 'HOAC_CUA_VA') {
+    if (!ct.cacVe?.length && !ct.truAnhEm?.length) return undefined;
+    return danhGiaCongThuc(ct, ganDieuKien, bang, _daTham, cha.truCongThuc || null);
+  }
+  return undefined;
+}
+
 /** Đánh giá công thức một anh em với bản đồ gán { [dkId]: true | false } -> true | false | undefined. */
-export function danhGiaCongThuc(congThuc, ganDieuKien = {}, bang = null, _daTham = new Set()) {
+export function danhGiaCongThuc(congThuc, ganDieuKien = {}, bang = null, _daTham = new Set(), truCongThuc = null) {
   if (!congThuc || typeof congThuc !== 'object') return undefined;
   if (_daTham.has(congThuc)) return undefined;
   _daTham.add(congThuc);
@@ -427,12 +663,12 @@ export function danhGiaCongThuc(congThuc, ganDieuKien = {}, bang = null, _daTham
       let truChuaRo = false;
       if (Array.isArray(congThuc.truAnhEm) && congThuc.truAnhEm.length) {
         for (const tid of congThuc.truAnhEm) {
-          const ae = bang?.anhEm?.find((x) => x.nut === tid);
-          if (!ae) {
+          const fTru = timCongThucAnhEm(tid, bang, truCongThuc);
+          if (!fTru) {
             truChuaRo = true;
             continue;
           }
-          const r = danhGiaCongThuc(ae.congThuc, ganDieuKien, bang, _daTham);
+          const r = danhGiaCongThuc(fTru, ganDieuKien, bang, _daTham, truCongThuc);
           if (r === true) return false;
           if (r === undefined) truChuaRo = true;
         }
@@ -453,8 +689,10 @@ export function danhGiaCongThuc(congThuc, ganDieuKien = {}, bang = null, _daTham
       let coChuaRo = false;
       if (Array.isArray(bang?.chuoiCha) && bang.chuoiCha.length) {
         for (const cha of bang.chuoiCha) {
-          if (cha.laLoaiKhac || !cha.congThuc?.cacVe?.length) continue;
-          const rCha = danhGiaCongThuc(cha.congThuc, ganDieuKien, bang, _daTham);
+          if (!cha.congThuc) continue;
+          if (cha.congThuc.loai === 'HOAC_CUA_VA' && !cha.congThuc.cacVe?.length && !cha.congThuc.truAnhEm?.length) continue;
+          if (cha.congThuc.loai === 'KHONG_HOP_VA_CHA' && !(cha.congThuc.phuCua || []).length) continue;
+          const rCha = danhGiaBuocCha(cha, ganDieuKien, bang, _daTham);
           if (rCha === false) return false;
           if (rCha === undefined) coChuaRo = true;
         }
@@ -466,9 +704,9 @@ export function danhGiaCongThuc(congThuc, ganDieuKien = {}, bang = null, _daTham
       }
       const phuCua = congThuc.phuCua || [];
       for (const aeId of phuCua) {
-        const ae = bang?.anhEm?.find((x) => x.nut === aeId);
-        if (!ae) { coChuaRo = true; continue; }
-        const r = danhGiaCongThuc(ae.congThuc, ganDieuKien, bang, _daTham);
+        const f = timCongThucAnhEm(aeId, bang, truCongThuc);
+        if (!f) { coChuaRo = true; continue; }
+        const r = danhGiaCongThuc(f, ganDieuKien, bang, _daTham, truCongThuc);
         if (r === true) return false;
         if (r === undefined) coChuaRo = true;
       }
@@ -502,6 +740,12 @@ export function doBangAnhEm(chaId, ganDieuKien, bangTheoCha, { L = null } = {}) 
   for (let buoc = 0; buoc < 12; buoc += 1) {
     const bang = bangTheoCha.get(hienTai);
     if (!bang) return { trangThai: 'DUNG_NUT', dich: hienTai, duong: daDi };
+    for (const cha of bang.chuoiCha || []) {
+      const rCha = danhGiaBuocCha(cha, ganDieuKien, bang, new Set());
+      if (rCha === false) {
+        return { trangThai: 'NGOAI_PHAM_VI', cha: hienTai, nutLoai: cha.nut, duong: daDi };
+      }
+    }
     const coTen = bang.anhEm.filter((x) => !x.laLoaiKhac);
     const loaiKhac = bang.anhEm.filter((x) => x.laLoaiKhac);
 
