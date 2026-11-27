@@ -120,6 +120,20 @@ console.log('5. Mọi dòng tên CHUA_BIET / chưa khớp → không chốt bừ
   );
 }
 
+// OZV-2303 / PR #1940: dieuKienNut dienAp >= 66 kV của nút 8504331 không bị TEN_LOAI
+// dòng lá 85043311 («Biến áp thích ứng» CHUA_BIET) lọc mất.
+console.log('6. 850433: điều kiện nút tổ tiên dienAp vẫn hỏi khi tên dòng lá CHUA_BIET');
+{
+  const text = 'máy biến điện khô 3 pha công suất 100 kVA';
+  const cd = chotDong8({ hs: '850433', productText: text });
+  const miss = (cd.missingFacts || []).map((m) => m.fact);
+  check(
+    '850433 MBA → THIEU_SO_LIEU và thiếu dienAp (>= 66 kV)',
+    cd.ketQua === 'THIEU_SO_LIEU' && miss.includes('dienAp'),
+    JSON.stringify({ ketQua: cd.ketQua, miss, lyDo: cd.lyDo }),
+  );
+}
+
 if (failed) {
   console.error(`\nFAILED ${failed}`);
   process.exit(1);
