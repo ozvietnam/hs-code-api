@@ -105,8 +105,11 @@ function scrub(s) {
 function codeAppears(code, text) {
   const d = String(code || '').replace(/\D/g, '');
   if (![4, 6, 8, 10].includes(d.length)) return false;
-  const parts = d.length === 4 ? [d] : d.length === 6 ? [d.slice(0, 4), d.slice(4)] : d.length === 8 ? [d.slice(0, 4), d.slice(4, 6), d.slice(6)] : [d.slice(0, 4), d.slice(4, 6), d.slice(6, 8), d.slice(8)];
-  const re = new RegExp(`(?<!\\d)${parts.join('[.\\s]?')}(?!\\d)`);
+  // Khớp theo CẶP 2 số (85|04|40|90) — nhóm/phân nhóm trong công văn viết
+  // "nhóm 85.01", "phân nhóm 39.19"; khớp theo nhóm 4-2-2 sẽ loại oan mã nhóm.
+  const pairs = [];
+  for (let i = 0; i < d.length; i += 2) pairs.push(d.slice(i, i + 2));
+  const re = new RegExp(`(?<![\\d])${pairs.join('[.\\s]?')}(?![\\d])`);
   return re.test(String(text || ''));
 }
 function coverage(description, text) {

@@ -53,6 +53,15 @@ Căn cứ Chú giải 5 Chương 85, mặt hàng thuộc nhóm 85.04, phân nhó
 t('codeAppears: 8504.40.90 = 85044090', codeAppears('85044090', text));
 t('codeAppears: mã bịa không có', !codeAppears('85044019', text));
 t('codeAppears: không khớp giữa chuỗi số dài hơn', !codeAppears('8504', 'số 185044'));
+// Nhóm/phân nhóm trong công văn viết theo CẶP 2 số ("nhóm 85.01", "phân nhóm 39.19").
+// Khớp theo nhóm 4-2-2 sẽ loại oan mọi văn bản chỉ kết luận tới nhóm.
+t('codeAppears: nhóm viết "85.01" → mã 8501 khớp', codeAppears('8501', 'phân loại thuộc nhóm 85.01 "Máy và thiết bị điện"'));
+t('codeAppears: nhóm viết "8501" (không chấm) → mã 8501 khớp', codeAppears('8501', 'thuộc nhóm 8501'));
+t('codeAppears: phân nhóm viết "39.19" → mã 3919 khớp', codeAppears('3919', 'đã in thì phù hợp phân loại thuộc nhóm 39.19'));
+t('codeAppears: phân nhóm viết "85.44" → mã 8544 khớp', codeAppears('8544', 'thuộc nhóm 85.44 "Dây điện, cáp điện"'));
+t('codeAppears: nhóm 85.01 KHÔNG khớp mã 85044090 (khác hàng)', !codeAppears('85044090', 'thuộc nhóm 85.01'));
+t('codeAppears: mã 10 số theo cặp vẫn khớp', codeAppears('2517410010', 'mã 2517.41.00.10'));
+t('codeAppears: mã 8 số đọc từ mã 10 số vẫn khớp', codeAppears('25174100', 'mã 2517.41.00.10'));
 t('coverage: mô tả lấy từ văn bản ≥ 0,6', coverage('Thiết bị sạc không dây MagSafe Charger có mạch nghịch lưu, cuộn dây phát', text) >= 0.6);
 t('coverage: mô tả bịa < 0,6', coverage('Máy xúc lật bánh lốp động cơ diesel tải trọng 5 tấn', text) < 0.6);
 t('girRule: nhiều quy tắc → giữ quy tắc đầu, đúng mẫu validate-community', girRuleField('GIR 3(b) và GIR 6').girRule === 'GIR 3(b)' && girRuleField('gir 1, GIR 6').girRule === 'GIR 1');
