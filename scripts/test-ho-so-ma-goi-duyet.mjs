@@ -12,6 +12,7 @@ import crypto from 'node:crypto';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { createRequire } from 'node:module';
+import { napLuatCong } from './ho-so-ma/cong.mjs';
 
 const GOC = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DUYET_M78_THAT = path.join(GOC, 'docs', 'ho-so', 'duyet');
@@ -428,6 +429,43 @@ check('M-78 nutChuCua: nạp được câu sen:* nguyên văn từ sen.jsonl', m
     JSON.stringify(ketM81),
   );
 
+  // Ca âm docBang: đánh dấu >= 2 ô trên cùng một phiếu -> trả dau = 'NHIEU_DAU'
+  const tepNhieuDau = path.join(out81, 'm81-nhieu-dau.md');
+  fs.writeFileSync(
+    tepNhieuDau,
+    mdM81Gia.replace(
+      '- [ ] **Đúng**  - [ ] **Sai**  - [ ] **Cần thêm**',
+      '- [x] **Đúng**  - [x] **Sai**  - [ ] **Cần thêm**',
+    ),
+    'utf8',
+  );
+  const ketNhieuDau = docBang(tepNhieuDau);
+  check(
+    'CA NGƯỢC docBang: đánh dấu >= 2 ô trên cùng 1 phiếu ⇒ trả NHIEU_DAU (không nuốt lấy ô đầu)',
+    ketNhieuDau.length === 1 && ketNhieuDau[0].dau === 'NHIEU_DAU',
+    JSON.stringify(ketNhieuDau),
+  );
+
+  // Ca âm goiM81: truyền matHang chứa id câu ma -> bắt buộc ghi nhận vào loiCau và CLI thoát 1
+  const vcMaPath = path.join(tmp, 'vc-ma.jsonl');
+  const vcMa = [{
+    nut: 'bieu:854370',
+    cap: ['bieu:85437010', 'bieu:85437030'],
+    matHang: 'Thiết bị thử dẫn id câu ma (sen:99999999:1#1)',
+  }];
+  fs.writeFileSync(vcMaPath, `${JSON.stringify(vcMa[0])}\n`, 'utf8');
+  const kqIdMa = goiM81('2026-11-27', { hoSo: hoSo81, luat: luat81, docsDir: null, vungChong: vcMa, out: path.join(tmp, 'out-id-ma') });
+  const cliIdMa = spawnSync(
+    process.execPath,
+    [path.join(GOC, 'scripts/ho-so-ma/goi-duyet.mjs'), '--m81', '--ngay=2026-11-27', `--ho-so=${hoSo81}`, `--luat=${luat81}`, `--vung-chong=${vcMaPath}`, `--out=${path.join(tmp, 'out-id-ma-cli')}`],
+    { encoding: 'utf8' },
+  );
+  check(
+    'CA NGƯỢC goiM81: matHang chứa id câu ma (sen:99999999:1#1) ⇒ loiCau bắt đỏ và CLI thoát 1',
+    kqIdMa.loiCau.includes('sen:99999999:1#1') && cliIdMa.status === 1,
+    JSON.stringify({ loiCau: kqIdMa.loiCau, status: cliIdMa.status }),
+  );
+
   // Kiểm CLI --m81 --chuong=85 và --doc-bang qua spawnSync trong tmp
   const cliOut = path.join(tmp, 'out-cli');
   const runGen = spawnSync(
@@ -453,9 +491,29 @@ check('M-78 nutChuCua: nạp được câu sen:* nguyên văn từ sen.jsonl', m
 
 // ── C. Kiểm gói M-81 trên kho thật hiện hành (xuất ra tmp, không ghi vào repo) ──
 {
+  const LThat = napLuatCong(path.join(GOC, 'data', 'luat-goc'));
   const outKhoThat = path.join(tmp, 'out-kho-that');
-  const kqThat = goiM81('2026-11-27', { out: outKhoThat });
+  const kqThat = goiM81('2026-11-27', { L: LThat, out: outKhoThat });
   const mdThat = fs.readFileSync(kqThat.tepMd, 'utf8');
+  const tokenCauTrongMd = [...new Set(
+    [...mdThat.matchAll(/\b((?:gir|phan|chuong|nhom|pn|bieu|sen|wco|tb):[A-Za-z0-9:._-]+#\d+)\b/g)].map((m) => m[1]),
+  )];
+  const tokenCauMa = tokenCauTrongMd.filter((cid) => /^tb:/.test(cid) || LThat.chuCau(cid) === null);
+
+  const phieu8182 = mdThat.split('### [M81-VC-847981-847982]')[1]?.split(/^### /m)[0] || '';
+  const phieu8183 = mdThat.split('### [M81-VC-847981-847983]')[1]?.split(/^### /m)[0] || '';
+  const cacMaVc8501 = [
+    'M81-VC-85013130-85013160',
+    'M81-VC-85013221-85013224',
+    'M81-VC-85015211-85015212',
+    'M81-VC-85015221-85015222',
+    'M81-VC-85015231-85015232',
+  ];
+  const du5Phieu8501TuThan = cacMaVc8501.every((ma) => {
+    const p = mdThat.split(`### [${ma}]`)[1]?.split(/^### /m)[0] || '';
+    return p.includes('bieu:841520#1') && p.includes('Loại sử dụng cho người, trong xe có động cơ') && !p.includes('Như cặp #5');
+  });
+
   check(
     'goiM81 trên kho thật 12 nhóm vàng: đúng 9 cặp VUNG_CHONG (39:1, 84:3, 85:5) + 11 cặp GIAI_CHONG chờ duyệt (85.17:4 + 85.43:7 = 17 bản ghi) + 0 lỗi câu luật',
     kqThat.soVungChong === 9
@@ -479,6 +537,39 @@ check('M-78 nutChuCua: nạp được câu sen:* nguyên văn từ sen.jsonl', m
       theoChuong: kqThat.theoChuong,
     }),
   );
+
+  check(
+    'goiM81 trên kho thật: 100% token id câu trong Markdown tồn tại trong data/luat-goc/ (0 id câu ma, 0 tb:)',
+    tokenCauTrongMd.length > 0 && tokenCauMa.length === 0,
+    JSON.stringify({ tongToken: tokenCauTrongMd.length, tokenCauMa }),
+  );
+
+  check(
+    'goiM81 trên kho thật: [M81-VC-847981-847982] trích đúng nhom:8479:ct:66#1 (Máy phá gang), [M81-VC-847981-847983] dẫn đúng bieu:84798300#1 (0 sen ma), 5 phiếu 85.01 tự thân (0 "Như cặp #5")',
+    phieu8182.includes('nhom:8479:ct:66#1')
+    && phieu8182.includes('Máy phá gang và máy dập đặc biệt để đập vụn phế thải gang')
+    && !phieu8182.includes('nhom:8479:ct:25#1')
+    && phieu8183.includes('bieu:84798300#1')
+    && !phieu8183.includes('sen:84798300:1#1')
+    && !mdThat.includes('Như cặp #5')
+    && du5Phieu8501TuThan,
+    JSON.stringify({ ok8182: phieu8182.slice(0, 200), ok8183: phieu8183.slice(0, 200), du5Phieu8501TuThan }),
+  );
+
+  // Nếu docs/mong/duyet/m81-2026-11-27.md tồn tại trên đĩa, kiểm mọi token id câu trong tệp đó cũng tồn tại 100%
+  const tepGoiCamKet = path.join(GOC, 'docs', 'mong', 'duyet', 'm81-2026-11-27.md');
+  if (fs.existsSync(tepGoiCamKet)) {
+    const mdCamKet = fs.readFileSync(tepGoiCamKet, 'utf8');
+    const tokCamKet = [...new Set(
+      [...mdCamKet.matchAll(/\b((?:gir|phan|chuong|nhom|pn|bieu|sen|wco|tb):[A-Za-z0-9:._-]+#\d+)\b/g)].map((m) => m[1]),
+    )];
+    const maCamKet = tokCamKet.filter((cid) => /^tb:/.test(cid) || LThat.chuCau(cid) === null);
+    check(
+      'docs/mong/duyet/m81-2026-11-27.md: 100% token id câu có thật trong kho luật gốc & đồng bộ bản sinh mới',
+      maCamKet.length === 0 && mdCamKet === mdThat,
+      JSON.stringify({ maCamKet, sameAsGenerated: mdCamKet === mdThat }),
+    );
+  }
 }
 
 fs.rmSync(tmp, { recursive: true, force: true });

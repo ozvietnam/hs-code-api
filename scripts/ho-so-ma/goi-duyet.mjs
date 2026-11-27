@@ -769,18 +769,24 @@ function goiM81(ngay, opts = {}) {
           ...dinhDangDanhSachDieuKienNut(vc.nutA, dkTheoNut, L, bieuMeta, nguongById, loiCau),
           ...dinhDangDanhSachDieuKienNut(vc.nutB, dkTheoNut, L, bieuMeta, nguongById, loiCau),
         );
+        const daInCauVc = new Set([
+          ...(dkTheoNut.get(vc.nutA) || []).flatMap((d) => [d.nguon, ...(Array.isArray(d.moNguon) ? d.moNguon : (d.moNguon ? [d.moNguon] : []))]),
+          ...(dkTheoNut.get(vc.nutB) || []).flatMap((d) => [d.nguon, ...(Array.isArray(d.moNguon) ? d.moNguon : (d.moNguon ? [d.moNguon] : []))]),
+        ]);
         if (vc.matHangNguyenVan) {
           md.push(`- **Mặt hàng chồng cụ thể:** ${vc.matHangNguyenVan}`);
-          const cauPhuIds = [...vc.matHangNguyenVan.matchAll(/\b((?:gir|phan|chuong|nhom|pn|bieu|sen|wco):[^)#\s]+#\d+)\b/g)].map((m) => m[1]);
-          for (const cid of [...new Set(cauPhuIds)]) {
-            const chuPhu = L.chuCau(cid);
-            if (chuPhu !== null) {
-              md.push(`  > Câu dẫn chiếu liên quan (\`${cid}\`): "${gonMotDong(chuPhu)}"`);
-            }
-          }
         }
         if (vc.lyDoNguyenVan) {
           md.push(`- **Lý do chưa ghi \`GIAI_CHONG\`:** ${vc.lyDoNguyenVan}`);
+        }
+        const vanBanVc = `${vc.matHangNguyenVan || ''} ${vc.lyDoNguyenVan || ''}`;
+        const cauPhuIds = [...vanBanVc.matchAll(/\b((?:gir|phan|chuong|nhom|pn|bieu|sen|wco|tb):[A-Za-z0-9:._-]+#\d+)\b/g)].map((m) => m[1]);
+        for (const cid of [...new Set(cauPhuIds)]) {
+          const chuPhu = traCauLuatAnToan(cid, L, loiCau);
+          if (!daInCauVc.has(cid)) {
+            md.push(`  > Câu dẫn chiếu liên quan (\`${cid}\`): "${chuPhu}"`);
+            daInCauVc.add(cid);
+          }
         }
         md.push(
           `- **Câu hỏi cho người duyệt:** Khi mặt hàng thoả đồng thời hai nhánh trên, ưu tiên nhánh nào hoặc áp quy tắc/dữ kiện phân xử nào?`,
@@ -870,10 +876,19 @@ function goiM81(ngay, opts = {}) {
     }
   }
 
+  const noiDungMd = md.join('\n') + '\n';
+  // Chốt chặn cuối: quét toàn văn gói xuất đảm bảo mọi token id câu đều có thật trong kho luật gốc (không tb:, không id ma)
+  const tatCaTokenCau = [...noiDungMd.matchAll(/\b((?:gir|phan|chuong|nhom|pn|bieu|sen|wco|tb):[A-Za-z0-9:._-]+#\d+)\b/g)].map((m) => m[1]);
+  for (const cid of [...new Set(tatCaTokenCau)]) {
+    if (/^tb:/.test(cid) || L.chuCau(cid) === null) {
+      if (!loiCau.includes(cid)) loiCau.push(cid);
+    }
+  }
+
   fs.mkdirSync(outDir, { recursive: true });
   const tenTep = chuongLoc ? `m81-ch${chuongLoc}-${ngayChuan}.md` : `m81-${ngayChuan}.md`;
   const tepMd = path.join(outDir, tenTep);
-  fs.writeFileSync(tepMd, md.join('\n') + '\n', 'utf8');
+  fs.writeFileSync(tepMd, noiDungMd, 'utf8');
 
   return {
     tepMd,
@@ -902,13 +917,14 @@ function docBang(tep) {
       || /^(\S+) —/.exec(b)?.[1]
       || /^(\d+)\./m.exec(b)?.[1]
       || null;
-    const dau = /\[x\]\s*\*\*Rút đúng\*\*/iu.test(b) ? 'DUNG'
-      : /\[x\]\s*\*\*Rút sai\*\*/iu.test(b) ? 'SAI'
-      : /\[x\]\s*\*\*Không rõ\*\*/iu.test(b) ? 'KHONG_RO'
-      : /\[x\]\s*\*\*Đúng\*\*/iu.test(b) ? 'DUNG'
-      : /\[x\]\s*\*\*Sai\*\*/iu.test(b) ? 'SAI'
-      : /\[x\]\s*\*\*Cần thêm\*\*/iu.test(b) ? 'CAN_THEM'
-      : null;
+    const cacDau = [];
+    if (/\[x\]\s*\*\*Rút đúng\*\*/iu.test(b)) cacDau.push('DUNG');
+    if (/\[x\]\s*\*\*Rút sai\*\*/iu.test(b)) cacDau.push('SAI');
+    if (/\[x\]\s*\*\*Không rõ\*\*/iu.test(b)) cacDau.push('KHONG_RO');
+    if (/\[x\]\s*\*\*Đúng\*\*/iu.test(b)) cacDau.push('DUNG');
+    if (/\[x\]\s*\*\*Sai\*\*/iu.test(b)) cacDau.push('SAI');
+    if (/\[x\]\s*\*\*Cần thêm\*\*/iu.test(b)) cacDau.push('CAN_THEM');
+    const dau = cacDau.length > 1 ? 'NHIEU_DAU' : (cacDau[0] || null);
     const mKetLuan = /^-\s*\*\*Kết luận người duyệt:\*\*\s*(.*)$/mu.exec(b);
     const ketLuan = mKetLuan ? mKetLuan[1].trim() : '';
     if (id && dau) {
