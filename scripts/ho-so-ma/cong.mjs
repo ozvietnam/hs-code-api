@@ -520,10 +520,11 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
         const cacChaTrenDuong = duongDich.filter((id) => bangTheoCha.has(id));
         let startCha = vd.cha || null;
         if (!startCha && cacChaTrenDuong.length) {
-          const topBang = bangTheoCha.get(cacChaTrenDuong[0]);
-          const topIds = new Set(topBang.anhEm.flatMap((ae) => ae.dieuKienIds));
-          const dungTop = Object.keys(gan).some((id) => topIds.has(id));
-          startCha = dungTop ? cacChaTrenDuong[0] : cacChaTrenDuong.at(-1);
+          startCha = cacChaTrenDuong.find((chaId) => {
+            const b = bangTheoCha.get(chaId);
+            if (!b) return false;
+            return b.anhEm.some((ae) => (ae.dieuKienIds || []).some((id) => Object.hasOwn(gan, id)));
+          }) || cacChaTrenDuong.at(-1);
         }
         if (!startCha) {
           const keys = new Set([...Object.keys(gan), ...(vd.duKien || [])]);

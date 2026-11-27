@@ -105,19 +105,43 @@ export function dungLoiHoiTachDieuKien(goi) {
   ];
 }
 
+function timKhoiJsonCanBang(s, startIdx) {
+  const open = s[startIdx];
+  const close = open === '[' ? ']' : '}';
+  let depth = 0;
+  let inString = false;
+  let escape = false;
+  for (let i = startIdx; i < s.length; i += 1) {
+    const ch = s[i];
+    if (inString) {
+      if (escape) escape = false;
+      else if (ch === '\\') escape = true;
+      else if (ch === '"') inString = false;
+      continue;
+    }
+    if (ch === '"') { inString = true; continue; }
+    if (ch === open) depth += 1;
+    else if (ch === close) {
+      depth -= 1;
+      if (depth === 0) return s.slice(startIdx, i + 1);
+    }
+  }
+  return null;
+}
+
 /** Tách mảng JSON dieuKien từ chuỗi trả về của LLM. */
 export function rutJsonDieuKien(text) {
-  const s = String(text || '').trim().replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/i, '').trim();
-  if (s.startsWith('[')) {
-    const arr = JSON.parse(s);
-    if (!Array.isArray(arr)) throw new Error('JSON mảng không hợp lệ');
-    return arr;
-  }
-  const i = s.indexOf('{');
-  const j = s.lastIndexOf('}');
-  if (i < 0 || j < i) throw new Error('Không tìm thấy JSON trong phản hồi mô hình');
-  const obj = JSON.parse(s.slice(i, j + 1));
-  const list = obj.dieuKien || obj.kq;
+  const raw = String(text || '').trim();
+  const fenced = /```(?:json)?\s*([\s\S]*?)```/i.exec(raw);
+  const s = (fenced ? fenced[1] : raw).trim();
+  const iArr = s.indexOf('[');
+  const iObj = s.indexOf('{');
+  if (iArr < 0 && iObj < 0) throw new Error('Không tìm thấy JSON trong phản hồi mô hình');
+  const start = (iArr >= 0 && (iObj < 0 || iArr < iObj)) ? iArr : iObj;
+  const block = timKhoiJsonCanBang(s, start) ?? s.slice(start);
+  const parsed = JSON.parse(block);
+  if (Array.isArray(parsed)) return parsed;
+  const list = parsed?.dieuKien || parsed?.kq;
   if (!Array.isArray(list)) throw new Error('JSON thiếu mảng dieuKien');
   return list;
 }

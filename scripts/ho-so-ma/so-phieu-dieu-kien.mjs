@@ -28,6 +28,9 @@ function diemGiong(a, b) {
   if (a.nut !== b.nut || a.nguon !== b.nguon) return -1;
   if (!trichChongNhau(a, b)) return -1;
   let diem = 1;
+  const ta = trichChuan(a.trich);
+  const tb = trichChuan(b.trich);
+  if (ta && ta === tb) diem += 2;
   if (a.phu === b.phu) diem += 1;
   if (a.kieu === b.kieu) diem += 1;
   if (a.mo === b.mo) diem += 1;
@@ -68,20 +71,32 @@ const tomTatPhieu = (r, macDinh) => ({
 export function soPhieuDieuKien(phieu1, phieu2) {
   const ds1 = [...(phieu1 || [])].filter((x) => x && x.loai === 'DIEU_KIEN');
   const ds2 = [...(phieu2 || [])].filter((x) => x && x.loai === 'DIEU_KIEN');
+  const ungVien = [];
+  for (let i = 0; i < ds1.length; i += 1) {
+    for (let j = 0; j < ds2.length; j += 1) {
+      const d = diemGiong(ds1[i], ds2[j]);
+      if (d >= 0) {
+        const lenDiff = Math.abs(trichChuan(ds1[i].trich).length - trichChuan(ds2[j].trich).length);
+        ungVien.push({ i, j, d, lenDiff });
+      }
+    }
+  }
+  ungVien.sort((x, y) => (y.d - x.d) || (x.lenDiff - y.lenDiff) || (x.i - y.i) || (x.j - y.j));
+
+  const ghep1 = new Map();
   const daDung2 = new Set();
+  for (const c of ungVien) {
+    if (ghep1.has(c.i) || daDung2.has(c.j)) continue;
+    ghep1.set(c.i, c.j);
+    daDung2.add(c.j);
+  }
+
   const ketQuaTho = [];
   const lechChiTiet = [];
 
-  for (const a of ds1) {
-    let best = null;
-    for (let j = 0; j < ds2.length; j += 1) {
-      if (daDung2.has(j)) continue;
-      const b = ds2[j];
-      const d = diemGiong(a, b);
-      if (d < 0) continue;
-      if (!best || d > best.d) best = { b, j, d };
-    }
-    if (!best) {
+  for (let i = 0; i < ds1.length; i += 1) {
+    const a = ds1[i];
+    if (!ghep1.has(i)) {
       const ban = {
         ...a,
         trangThai: 'LECH_PHIEU',
@@ -93,8 +108,8 @@ export function soPhieuDieuKien(phieu1, phieu2) {
       continue;
     }
 
-    const { b, j } = best;
-    daDung2.add(j);
+    const j = ghep1.get(i);
+    const b = ds2[j];
     const lyDo = lyDoKhac(a, b);
     const chon = b.trich.length > a.trich.length ? b : a;
     if (lyDo.length === 0) {

@@ -21,6 +21,9 @@ import {
   taoBangChoCha,
   dungBangAnhEm,
   sinhBangAnhEm,
+  danhGiaCongThuc,
+  doBangAnhEm,
+  chungMinhPhuKin,
 } from './ho-so-ma/bang-anh-em.mjs';
 import { chayCong, napLuatCong, parseCongArg, vanTay } from './ho-so-ma/cong.mjs';
 import {
@@ -28,6 +31,7 @@ import {
   tachDanhSachNut,
   chuanHoaDieuKien,
   goiOpenAICompatible,
+  rutJsonDieuKien,
 } from './ho-so-ma/tach-dieu-kien.mjs';
 import { soPhieuDieuKien } from './ho-so-ma/so-phieu-dieu-kien.mjs';
 
@@ -259,6 +263,57 @@ const KHO_CHUAN = ghiHoSoTam({
   const ae22 = t8501102.anhEm.find((x) => x.nut === 'bieu:85011022');
   kiem('bang-anh-em: 85011022 (loaiKhacCoVe) giữ HOAC_CUA_VA + truAnhEm [85011021]', ae22.laLoaiKhac === false && ae22.congThuc.loai === 'HOAC_CUA_VA' && ae22.congThuc.truAnhEm.join(',') === 'bieu:85011021');
 
+  // Regression 1: truAnhEm tri-state trên loaiKhacCoVe (85011022)
+  const bang8501Map = new Map([[t8501102.cha, t8501102]]);
+  const eval22ChuaRo = danhGiaCongThuc(ae22.congThuc, { 'hs:bieu:85011022:8101': true }, t8501102);
+  const route22ChuaRo = doBangAnhEm('bieu:8501102', { 'hs:bieu:85011022:8101': true }, bang8501Map);
+  const eval22False = danhGiaCongThuc(ae22.congThuc, { 'hs:bieu:85011022:8101': false }, t8501102);
+  const route22Dung = doBangAnhEm('bieu:8501102', { 'hs:bieu:85011021:8101': false, 'hs:bieu:85011022:8101': true }, bang8501Map);
+  const route21Trung = doBangAnhEm('bieu:8501102', { 'hs:bieu:85011021:8101': true, 'hs:bieu:85011022:8101': true }, bang8501Map);
+  kiem('HỒI QUY 1 (truAnhEm tri-state): 85011021=undefined + 85011022=true -> undefined & RE_NHANH hỏi 85011021',
+    eval22ChuaRo === undefined
+    && route22ChuaRo.trangThai === 'RE_NHANH'
+    && route22ChuaRo.thieuIds.includes('hs:bieu:85011021:8101')
+    && eval22False === false
+    && route22Dung.trangThai === 'DICH' && route22Dung.dich === 'bieu:85011022'
+    && route21Trung.trangThai === 'DICH' && route21Trung.dich === 'bieu:85011021',
+    { eval22ChuaRo, route22ChuaRo, eval22False, route22Dung, route21Trung });
+
+  // Regression 2: KHONG_HOP_VA_CHA với cha phu:true & cha nhiều vế OR trên 85437029
+  const t8543702 = b85_1.bang.find((b) => b.cha === 'bieu:8543702');
+  const lk29 = t8543702.anhEm.find((x) => x.nut === 'bieu:85437029');
+  const gan29Ok = {
+    'hs:bieu:8543:8101': true,
+    'hs:bieu:854370:8101': true,
+    'hs:bieu:8543702:8101': true,
+    'hs:bieu:8543702:8102': false,
+    'hs:bieu:85437021:8101': false,
+  };
+  const eval29Ok = danhGiaCongThuc(lk29.congThuc, gan29Ok, t8543702);
+  const eval29ViPhamPhu = danhGiaCongThuc(lk29.congThuc, { ...gan29Ok, 'hs:bieu:8543702:8102': true }, t8543702);
+  const eval29ThieuCha = danhGiaCongThuc(lk29.congThuc, { 'hs:bieu:8543702:8101': true, 'hs:bieu:8543702:8102': false, 'hs:bieu:85437021:8101': false }, t8543702);
+  const bangOrCha = {
+    ...t8543702,
+    chuoiCha: t8543702.chuoiCha.map((c) => (c.nut === 'bieu:8543702'
+      ? {
+        ...c,
+        congThuc: {
+          loai: 'HOAC_CUA_VA',
+          cacVe: [
+            { ve: 1, cacDieuKien: [{ id: 'hs:bieu:8543702:8101', phu: false, kieu: 'CO_KHONG' }] },
+            { ve: 2, cacDieuKien: [{ id: 'hs:bieu:8543702:8102', phu: false, kieu: 'CO_KHONG' }] },
+          ],
+        },
+      }
+      : c)),
+  };
+  const eval29OrCha = danhGiaCongThuc(lk29.congThuc, { ...gan29Ok, 'hs:bieu:8543702:8101': false, 'hs:bieu:8543702:8102': true }, bangOrCha);
+  const eval29NoBang = danhGiaCongThuc({ loai: 'KHONG_HOP_VA_CHA', phuCua: [], chuoiCha: ['hs:bieu:8543:8101'] }, {});
+  const eval29NoBangFalse = danhGiaCongThuc({ loai: 'KHONG_HOP_VA_CHA', phuCua: [], chuoiCha: ['hs:bieu:8543:8101'] }, { 'hs:bieu:8543:8101': false });
+  kiem('HỒI QUY 2 (KHONG_HOP_VA_CHA): xử lý đúng cha phu:true, cha nhiều vế OR, truyền undefined khi thiếu cha và fallback không có bang',
+    eval29Ok === true && eval29ViPhamPhu === false && eval29ThieuCha === undefined && eval29OrCha === true && eval29NoBang === undefined && eval29NoBangFalse === false,
+    { eval29Ok, eval29ViPhamPhu, eval29ThieuCha, eval29OrCha, eval29NoBang, eval29NoBangFalse });
+
   const outRa = path.join(TAM, 'ra-bang');
   const s85 = sinhBangAnhEm({ chuong: '85', chaIds: ['bieu:854370'], luat: LUAT, hoSo: KHO_CHUAN, ra: outRa, ghi: true });
   const khoDocLai = kiemKhoHoSo(outRa);
@@ -410,6 +465,53 @@ const KHO_CHUAN = ghiHoSoTam({
   });
   kiem('CA NGƯỢC cổng 10: ví dụ chạy qua bảng lệch đích ⇒ đỏ', r10.cong[10].loi.length === 1 && /kỳ vọng bieu:85437090/.test(r10.cong[10].loi[0]), r10.cong[10]);
 
+  // Regression 3: Gate 10 DÒ >= 3 tầng (8543 -> 854370 -> 8543702 -> 85437021) không bỏ qua tầng giữa 854370
+  const r10_3tang = chayCong({
+    luat: LUAT,
+    hoSo: KHO_CHUAN,
+    phamVi: ['bieu:8543'],
+    chiTrong: true,
+    cong: [10],
+    L,
+    viDu: [{
+      trich: 'Bỏ khoá 8543 nhưng gán 85437010=true xung đột với đích 85437021',
+      ganDieuKien: { 'hs:bieu:85437010:8101': true, 'hs:bieu:85437021:8101': true },
+      dich: 'bieu:85437021',
+    }],
+  });
+  kiem('HỒI QUY 3 (cổng 10 startCha 3 tầng): vào tại 854370 và bắt lệch bieu:85437010 vs 85437021 ⇒ đỏ',
+    r10_3tang.cong[10].loi.length === 1 && /85437010/.test(r10_3tang.cong[10].loi[0]),
+    r10_3tang.cong[10]);
+
+  // Regression 4: chungMinhPhuKin GIA_TRI không bỏ qua điều kiện VÀ phụ hay lệch trục câu hỏi
+  const khoGtThemAnd = ghiHoSoTam({
+    dkList: [
+      ...DUNG_42022,
+      dk('bieu:42022210', 2, 1, false, 'CO_KHONG', 'NGHIA_THUONG', 'Có khoá kéo không?', 'tấm plastic', 'bieu:42022210#1'),
+    ],
+  });
+  const r7GtAnd = chayCong({ luat: LUAT, hoSo: khoGtThemAnd, phamVi: ['bieu:420222'], chiTrong: true, cong: [7], L });
+  const khoGtLechTruc = ghiHoSoTam({
+    dkList: DUNG_42022.map((x) => (x.nut === 'bieu:42022210' ? { ...x, cauHoi: 'Màu sắc là gì?' } : x)),
+  });
+  const r7GtTruc = chayCong({ luat: LUAT, hoSo: khoGtLechTruc, phamVi: ['bieu:420222'], chiTrong: true, cong: [7], L });
+  const dk42And = new Map([
+    ['bieu:42022210', [
+      ...DUNG_42022.filter((x) => x.nut === 'bieu:42022210'),
+      dk('bieu:42022210', 2, 1, false, 'CO_KHONG', 'NGHIA_THUONG', 'Có khoá kéo không?', 'tấm plastic', 'bieu:42022210#1'),
+    ]],
+    ['bieu:42022220', DUNG_42022.filter((x) => x.nut === 'bieu:42022220')],
+  ]);
+  const dk42Cha = DUNG_42022.filter((x) => x.nut === 'bieu:420222');
+  const directAndOk = chungMinhPhuKin(['bieu:42022210', 'bieu:42022220'], dk42And, new Map(), dk42Cha) === false;
+  const directOk = chungMinhPhuKin(['bieu:42022210', 'bieu:42022220'], new Map([
+    ['bieu:42022210', DUNG_42022.filter((x) => x.nut === 'bieu:42022210')],
+    ['bieu:42022220', DUNG_42022.filter((x) => x.nut === 'bieu:42022220')],
+  ]), new Map(), dk42Cha) === true;
+  kiem('HỒI QUY 4 (cổng 7 GIA_TRI): thêm điều kiện VÀ phụ hoặc lệch trục câu hỏi ⇒ đỏ HO_PHU',
+    directOk && directAndOk && r7GtAnd.cong[7].loi.some((l) => /HO_PHU/.test(l)) && r7GtTruc.cong[7].loi.some((l) => /HO_PHU/.test(l)),
+    { directOk, directAndOk, and: r7GtAnd.cong[7].loi, truc: r7GtTruc.cong[7].loi });
+
   // Cổng 11 ca ngược (NGHIA_THUONG thiếu câu hỏi hoặc mo lạ)
   const khoLoiMo = ghiHoSoTam({
     dkList: DUNG_8543.map((x) => (x.id === 'hs:bieu:85437050:8101' ? { ...x, cauHoi: '   ' } : x)),
@@ -531,6 +633,16 @@ const KHO_CHUAN = ghiHoSoTam({
     // Chuẩn hoá từ chối nguồn tiền lệ tb:
     const rTb = chuanHoaDieuKien([{ ve: 1, phu: false, kieu: 'CO_KHONG', mo: 'NGHIA_THUONG', cauHoi: 'Hỏi?', trich: 'x', nguon: 'tb:1-2023:85437050#1' }], 'bieu:85437050', L);
     kiem('tach-dieu-kien: chuanHoaDieuKien từ chối nguồn tiền lệ tb:', rTb.banGhi.length === 0 && rTb.loi.some((e) => /tiền lệ/.test(e)));
+
+    // Regression 6: rutJsonDieuKien tách được mảng JSON bọc chữ mở đầu + ```json ... ```
+    const wrappedFenced = 'Đây là kết quả tách điều kiện:\n```json\n[{"ve":1,"phu":false,"kieu":"CO_KHONG","mo":"NGHIA_THUONG","cauHoi":"Có phải bộ khuếch đại vi sóng không?","trich":"Bộ khuếch đại vi sóng","nguon":"bieu:85437050#1"}]\n```\nXin cảm ơn.';
+    const wrappedBare = 'Kết quả: [{"ve":1,"trich":"Bộ khuếch đại vi sóng"}] kết thúc.';
+    const arrFenced = rutJsonDieuKien(wrappedFenced);
+    const arrBare = rutJsonDieuKien(wrappedBare);
+    kiem('HỒI QUY 6 (rutJsonDieuKien): tách mảng JSON khi có chữ dẫn trước khối ```json hoặc [...] trần',
+      Array.isArray(arrFenced) && arrFenced.length === 1 && arrFenced[0].trich === 'Bộ khuếch đại vi sóng'
+      && Array.isArray(arrBare) && arrBare.length === 1 && arrBare[0].ve === 1,
+      { arrFenced, arrBare });
   } finally {
     srv.close();
   }
@@ -570,6 +682,19 @@ const KHO_CHUAN = ghiHoSoTam({
   const spKhop = spawnSync(process.execPath, [path.join(GOC, 'scripts/ho-so-ma/so-phieu-dieu-kien.mjs'), '--phieu-1', f1, '--phieu-2', f2, '--strict'], { encoding: 'utf8' });
   const spLech = spawnSync(process.execPath, [path.join(GOC, 'scripts/ho-so-ma/so-phieu-dieu-kien.mjs'), '--phieu-1', f1, '--phieu-2', f3, '--strict'], { encoding: 'utf8' });
   kiem('CLI so-phieu-dieu-kien --strict thoát 0 khi KHOP, thoát 1 khi LECH_PHIEU', spKhop.status === 0 && spLech.status === 1, { spKhop: spKhop.status, spLech: spLech.status });
+
+  // Regression 5: bản ghi chuỗi con đứng trước không cướp cặp khớp nguyên văn
+  const p1Order = [
+    dk('bieu:85437050', 1, 1, false, 'CO_KHONG', 'NGHIA_THUONG', 'Có dùng vi sóng không?', 'vi sóng', 'bieu:85437050#1'),
+    dk('bieu:85437050', 2, 1, true, 'CO_KHONG', 'NGHIA_THUONG', 'Trừ bộ khuếch đại vi sóng?', 'Bộ khuếch đại vi sóng', 'bieu:85437050#1'),
+  ];
+  const p2Order = [
+    dk('bieu:85437050', 7, 1, true, 'CO_KHONG', 'NGHIA_THUONG', 'Trừ bộ khuếch đại vi sóng?', 'Bộ khuếch đại vi sóng', 'bieu:85437050#1'),
+  ];
+  const kqOrder = soPhieuDieuKien(p1Order, p2Order);
+  kiem('HỒI QUY 5 (soPhieuDieuKien): chuỗi con đứng trước không cướp khớp tuyệt đối ⇒ 1 KHOP, 1 LECH_PHIEU',
+    kqOrder.thongKe.tong === 2 && kqOrder.thongKe.khop === 1 && kqOrder.thongKe.lechPhieu === 1,
+    kqOrder);
 }
 
 fs.rmSync(TAM, { recursive: true, force: true });
