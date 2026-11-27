@@ -6,7 +6,7 @@
 
 - **Nguồn chỉ mục C1:** đọc từ `lib/do-thi/index.js` (`bangCanh()`, `timCum()`), gộp 8 nguồn trong `KHO_C1` (6 kho ánh xạ mã trực tiếp + 2 kho cụm → cụm giải qua 6 kho trên); mọi đích kiểm tồn tại trong biểu thuế hiện hành bằng `coNut()`.
 - **Đối chiếu tờ khai OZ:** 5733 dòng từ `data/oz-gold-final.jsonl`, khớp nguyên cụm (không dấu, biên từ; chữ Hán khớp chuỗi con) trên `tenHang` và đếm số dòng có `hsCode` thuộc từng đích. Cột `Tổng TK (đích / toàn kho)` ghi số dòng ở các đích mâu thuẫn (dùng để xếp hạng) và tổng dòng chứa cụm đó trong toàn bộ `oz-gold-final.jsonl` (khi khác nhau).
-- **Đối chiếu thông báo phân loại:** 4897 thông báo `TB-TCHQ` từ `data/precedents.json`, khớp nguyên cụm trên `productName`/`description` và đếm số thông báo có mã kết quả thuộc từng đích.
+- **Đối chiếu thông báo phân loại:** 4903 thông báo `TB-TCHQ` từ `data/precedents.json`, khớp nguyên cụm trên `productName`/`description` và đếm số thông báo có mã kết quả thuộc từng đích.
 - **Luật phân loại (không phán xử):**
   - **(a)** Đúng 1 đích có `TK > 0` và `TB > 0`, mọi đích còn lại `TK = 0` và `TB = 0` → `nghi đích sai ở kho X`.
   - **(b)** Từ 2 đích trở lên đều có `TK > 0` → `cụm mơ hồ thật, cần dữ kiện phân biệt`.
@@ -174,14 +174,14 @@
 | 64 | `dep suc` | Nội bộ 1 kho | 11 | 0 | `6401` (hs-aliases): **1** TK / **0** TB<br>`6402` (hs-aliases): **5** TK / **0** TB<br>`6405` (hs-aliases): **5** TK / **0** TB | (b) cụm mơ hồ thật, cần dữ kiện phân biệt |
 | 65 | `dong ho do ap` | Liên kho (có giao nhóm) | 11 | 0 | `9026` (hs-aliases, vn-product-synonyms): **11** TK / **0** TB<br>`9030` (vn-product-synonyms): **0** TK / **0** TB | (d) chưa đủ căn cứ (chỉ 9026 có 11 TK, chưa có TB phân loại xác nhận) |
 | 66 | `giay nam` | Nội bộ 1 kho | 11 | 0 | `6402` (hs-aliases): **2** TK / **0** TB<br>`6403` (hs-aliases): **6** TK / **0** TB<br>`6404` (hs-aliases): **2** TK / **0** TB<br>`6405` (hs-aliases): **1** TK / **0** TB | (b) cụm mơ hồ thật, cần dữ kiện phân biệt |
-| 67 | `bo chuyen` | Nội bộ 1 kho | 10 | 8 | `8504` (hs-aliases): **5** TK / **8** TB<br>`8517` (hs-aliases): **2** TK / **0** TB<br>`9026` (hs-aliases): **2** TK / **0** TB<br>`9032` (hs-aliases): **1** TK / **0** TB | (b) cụm mơ hồ thật, cần dữ kiện phân biệt |
+| 67 | `bo chuyen` | Nội bộ 1 kho | 10 | 9 | `8504` (hs-aliases): **5** TK / **9** TB<br>`8517` (hs-aliases): **2** TK / **0** TB<br>`9026` (hs-aliases): **2** TK / **0** TB<br>`9032` (hs-aliases): **1** TK / **0** TB | (b) cụm mơ hồ thật, cần dữ kiện phân biệt |
 | 68 | `may tao` | Nội bộ 1 kho | 10 | 4 | `8479` (hs-aliases): **1** TK / **0** TB<br>`8543` (hs-aliases): **9** TK / **4** TB | (b) cụm mơ hồ thật, cần dữ kiện phân biệt |
 | 69 | `nut nhan` | Nội bộ 1 kho | 10 / 12 | 0 | `8536` (hs-aliases): **7** TK / **0** TB<br>`8537` (hs-aliases): **2** TK / **0** TB<br>`8538` (hs-aliases): **1** TK / **0** TB | (b) cụm mơ hồ thật, cần dữ kiện phân biệt |
 | 70 | `bon tam` | Nội bộ 1 kho | 10 | 0 | `3922` (hs-aliases): **8** TK / **0** TB<br>`6910` (hs-aliases): **2** TK / **0** TB | (b) cụm mơ hồ thật, cần dữ kiện phân biệt |
 | 71 | `giay the` | Nội bộ 1 kho | 10 | 0 | `6404` (hs-aliases): **6** TK / **0** TB<br>`6405` (hs-aliases): **4** TK / **0** TB | (b) cụm mơ hồ thật, cần dữ kiện phân biệt |
 | 72 | `giay the thao` | Liên kho (có giao nhóm) | 10 | 0 | `6404` (hs-aliases, vn-product-synonyms): **6** TK / **0** TB<br>`6405` (hs-aliases): **4** TK / **0** TB | (b) cụm mơ hồ thật, cần dữ kiện phân biệt |
 | 73 | `tu hap` | Nội bộ 1 kho | 10 | 0 | `8419` (hs-aliases): **8** TK / **0** TB<br>`8516` (hs-aliases): **2** TK / **0** TB | (b) cụm mơ hồ thật, cần dữ kiện phân biệt |
-| 74 | `bo chuyen doi` | Nội bộ 1 kho | 9 | 6 | `8504` (hs-aliases): **5** TK / **6** TB<br>`8517` (hs-aliases): **1** TK / **0** TB<br>`9026` (hs-aliases): **2** TK / **0** TB<br>`9032` (hs-aliases): **1** TK / **0** TB | (b) cụm mơ hồ thật, cần dữ kiện phân biệt |
+| 74 | `bo chuyen doi` | Nội bộ 1 kho | 9 | 7 | `8504` (hs-aliases): **5** TK / **7** TB<br>`8517` (hs-aliases): **1** TK / **0** TB<br>`9026` (hs-aliases): **2** TK / **0** TB<br>`9032` (hs-aliases): **1** TK / **0** TB | (b) cụm mơ hồ thật, cần dữ kiện phân biệt |
 | 75 | `hmi` | Nội bộ 1 kho | 9 | 1 | `8528` (english-product-map): **5** TK / **0** TB<br>`8537` (english-product-map): **4** TK / **1** TB | (b) cụm mơ hồ thật, cần dữ kiện phân biệt |
 | 76 | `day deo` | Nội bộ 1 kho | 9 / 11 | 0 | `5808` (hs-aliases): **3** TK / **0** TB<br>`6307` (hs-aliases): **4** TK / **0** TB<br>`9113` (hs-aliases): **2** TK / **0** TB | (b) cụm mơ hồ thật, cần dữ kiện phân biệt |
 | 77 | `khay dung` | Nội bộ 1 kho | 9 / 10 | 0 | `3924` (hs-aliases): **4** TK / **0** TB<br>`3926` (hs-aliases): **2** TK / **0** TB<br>`7323` (hs-aliases): **2** TK / **0** TB<br>`7616` (hs-aliases): **1** TK / **0** TB | (b) cụm mơ hồ thật, cần dữ kiện phân biệt |
