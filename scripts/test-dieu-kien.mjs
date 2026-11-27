@@ -17,6 +17,8 @@ import {
 import {
   napBieuMeta,
   laLoaiKhacThuan,
+  laPhanBuCoTen,
+  tinhTruAnhEm,
   demDoanChamPhay,
   taoBangChoCha,
   dungBangAnhEm,
@@ -31,6 +33,7 @@ import {
 } from './ho-so-ma/bang-anh-em.mjs';
 import { chayCong, napLuatCong, parseCongArg, vanTay, chuanSo, cacNutCungDong } from './ho-so-ma/cong.mjs';
 import {
+  HUONG_DAN_TACH_DIEU_KIEN,
   tachDieuKienNut,
   tachDanhSachNut,
   chuanHoaDieuKien,
@@ -180,7 +183,10 @@ const dkVang = (nut, stt, ve, phu, kieu, mo, cauHoi, trich, nguon, extra = {}) =
   kiem('khuon: DIEU_KIEN CO_KHONG / SO / GIA_TRI / ve=0 / moNguon[] hợp lệ', !kiemBanGhi(recOk).length && !kiemBanGhi(recSo).length && !kiemBanGhi(recGt).length && !kiemBanGhi(recVe0).length && !kiemBanGhi(recMnArr).length);
   kiem('khuon: GIAI_CHONG & CANH_TRANH hợp lệ', !kiemBanGhi(gcOk).length && !kiemBanGhi(ctOk).length);
 
-  kiem('khuon: từ chối id không phải 81NN', kiemBanGhi({ ...recOk, id: 'hs:bieu:85437050:7401' }).some((l) => /81NN/.test(l)));
+  kiem('khuon: chấp nhận hậu tố 8[1-9]d{2,} (8201, 81100) và từ chối id không phải 8[1-9]NN (7401)',
+    !kiemBanGhi({ ...recOk, id: 'hs:bieu:85437050:8201' }).length
+    && !kiemBanGhi({ ...recOk, id: 'hs:bieu:85437050:81100' }).length
+    && kiemBanGhi({ ...recOk, id: 'hs:bieu:85437050:7401' }).some((l) => /8\[1-9\]NN/.test(l)));
   kiem('khuon: từ chối ve < 0', kiemBanGhi({ ...recOk, ve: -1 }).some((l) => /ve phải là số nguyên >= 0/.test(l)));
   kiem('khuon: từ chối trường lạ trong DIEU_KIEN', kiemBanGhi({ ...recOk, la: 1 }).some((l) => /trường lạ "la"/.test(l)));
   kiem('khuon: từ chối kieu SO thiếu nguong, mang tap hoặc mang truc', kiemBanGhi({ ...recOk, kieu: 'SO' }).some((l) => /kieu SO phải có nguong/.test(l)) && kiemBanGhi({ ...recSo, tap: ['x'] }).some((l) => /kieu SO không mang tap/.test(l)) && kiemBanGhi({ ...recSo, truc: 'công suất' }).some((l) => /kieu SO không mang truc/.test(l)));
@@ -196,7 +202,10 @@ const dkVang = (nut, stt, ve, phu, kieu, mo, cauHoi, trich, nguon, extra = {}) =
     && kiemBanGhi({ ...recGt, mo: 'DINH_NGHIA_LUAT', moNguon: 'tb:1-2023:4202#1' }).some((l) => /moNguon/.test(l))
     && kiemBanGhi({ ...recOk, moNguon: 'bieu:85437050#1' }).some((l) => /không mang moNguon/.test(l))
     && kiemBanGhi({ ...recSo, moNguon: 'bieu:85011022#1' }).some((l) => /không mang moNguon/.test(l)));
-  kiem('khuon: từ chối cauHoi nhiều dòng hoặc >300 ký tự', kiemBanGhi({ ...recOk, cauHoi: 'a\nb' }).some((l) => /cauHoi/.test(l)) && kiemBanGhi({ ...recOk, cauHoi: 'x'.repeat(301) }).some((l) => /cauHoi/.test(l)));
+  kiem('khuon: chấp nhận cauHoi <= 600 ký tự một dòng và từ chối nhiều dòng hoặc >600 ký tự',
+    !kiemBanGhi({ ...recOk, cauHoi: 'x'.repeat(527) }).length
+    && kiemBanGhi({ ...recOk, cauHoi: 'a\nb' }).some((l) => /cauHoi/.test(l))
+    && kiemBanGhi({ ...recOk, cauHoi: 'x'.repeat(601) }).some((l) => /cauHoi/.test(l)));
   kiem('khuon: từ chối GIAI_CHONG cap trùng nhau / cach lạ', kiemBanGhi({ ...gcOk, cap: ['bieu:85437030', 'bieu:85437030'] }).some((l) => /cap/.test(l)) && kiemBanGhi({ ...gcOk, cach: 'DOAN' }).some((l) => /cach lạ/.test(l)));
   kiem('khuon: từ chối CANH_TRANH phepThu rỗng / nhomCanhTranh rỗng', kiemBanGhi({ ...ctOk, phepThu: [] }).some((l) => /phepThu/.test(l)) && kiemBanGhi({ ...ctOk, nhomCanhTranh: [] }).some((l) => /nhomCanhTranh/.test(l)));
 
@@ -1663,6 +1672,274 @@ const KHO_CHUAN = ghiHoSoTam({
     && r8Dt.cong[8].canhBao.some((c) => /CHUA_CHUNG_MINH_TACH/.test(c))
     && bangDt.co.includes('CHUA_CHUNG_MINH_TACH'),
     { c8: r8Dt.cong[8], co: bangDt.co });
+}
+
+// Bộ thử hồi quy 12 nhóm bảng vàng (02.01, 30.04, 39.26, 42.02, 61.10, 73.26, 84.79, 85.01, 85.17, 85.43, 87.08, 90.31) — từ nay chỉ dùng làm bộ thử hồi quy của cổng, KHÔNG dùng để đo mù nữa (#2410).
+{
+  const HO_SO_THAT = path.join(GOC, 'data/ho-so-ma');
+  const NHOM_VANG_12 = ['0201', '3004', '3926', '4202', '6110', '7326', '8479', '8501', '8517', '8543', '8708', '9031'];
+  const CHUONG_VANG_10 = ['02', '30', '39', '42', '61', '73', '84', '85', '87', '90'];
+  const L_VANG12 = napLuatCong(LUAT_THAT);
+  const metaVang12 = napBieuMeta(LUAT_THAT);
+
+  // 13A. Sổ điểm 12 nhóm vàng trên kho thật: 12/12 DONG, 0 DO, 0 HO_PHU, khớp vân tay bang-anh-em
+  const sdVang12 = chamSoDiem({
+    luat: LUAT_THAT,
+    hoSo: HO_SO_THAT,
+    batBuocTepBang: true,
+    L: L_VANG12,
+    bieuMeta: metaVang12,
+  });
+  const nhomByMa = new Map(sdVang12.nhom.map((x) => [x.nhom, x]));
+  const bangTheoChaThat = new Map();
+  let tongBangVang = 0;
+  let soBangHoPhu = 0;
+  let soBangVungChong = 0;
+  for (const ch of CHUONG_VANG_10) {
+    const pBang = path.join(HO_SO_THAT, 'bang-anh-em', `${ch}.jsonl`);
+    for (const dong of docDong(pBang)) {
+      const b = JSON.parse(dong);
+      bangTheoChaThat.set(b.cha, b);
+      const m = /^bieu:(\d{4})/.exec(b.cha || '');
+      if (m && NHOM_VANG_12.includes(m[1])) {
+        tongBangVang += 1;
+        if ((b.co || []).includes('HO_PHU')) soBangHoPhu += 1;
+        if ((b.co || []).includes('VUNG_CHONG')) soBangVungChong += 1;
+      }
+    }
+  }
+
+  kiem('HỒI QUY 12 BẢNG VÀNG (so-diem): cả 12 nhóm đạt DONG, 0 DO, 0 HO_PHU trên 176 bảng, khớp vân tay bang-anh-em',
+    sdVang12.loiKho.length === 0
+    && sdVang12.do === 0
+    && sdVang12.dong >= 12
+    && tongBangVang === 176
+    && soBangHoPhu === 0
+    && soBangVungChong === 0
+    && NHOM_VANG_12.every((n4) => {
+      const r = nhomByMa.get(n4);
+      return r && r.trangThai === 'DONG' && r.congLoi.length === 0 && !r.bangAnhEmCu && r.cauDoiVanTay.length === 0;
+    }),
+    {
+      dong: sdVang12.dong,
+      do: sdVang12.do,
+      loiKho: sdVang12.loiKho,
+      tongBangVang,
+      soBangHoPhu,
+      chuaDong: NHOM_VANG_12.filter((n4) => nhomByMa.get(n4)?.trangThai !== 'DONG'),
+    });
+
+  // 13B. Nhận diện phần bù có tên (laPhanBuCoTen), truAnhEm và cauHoiToiThieu
+  const nutPhanBuCoTen = [
+    'bieu:611090', 'bieu:84798', 'bieu:85013', 'bieu:850140', 'bieu:85015', 'bieu:85013170',
+    'bieu:85176', 'bieu:854370', 'bieu:87082', 'bieu:87089', 'bieu:90314', 'bieu:903180',
+  ];
+  const nutKhongPhaiPhanBuCoTen = [
+    'bieu:392640', // "Tượng nhỏ và các đồ trang trí khác" (liệt kê nội bộ "và các ... khác")
+    'bieu:847930', // "kể cả ... khác"
+    'bieu:870822', // "hoặc xe khác"
+    'bieu:870850', // "kết hợp với các bộ phận truyền động khác"
+    'bieu:8543',   // "chưa được chi tiết hoặc ghi ở nơi khác" (cổng 12, không phải anh em phần bù nội nhóm)
+    'bieu:870829', // "- - Loại khác:" (Loại khác thuần)
+    'bieu:85437090', // "Loại khác" thuần
+  ];
+  const layAe = (cha, con) => bangTheoChaThat.get(cha)?.anhEm?.find((x) => x.nut === con);
+  const ae854370 = layAe('bieu:8543', 'bieu:854370');
+  const ae85437090 = layAe('bieu:854370', 'bieu:85437090');
+  const ae903180 = layAe('bieu:9031', 'bieu:903180');
+  const ae90314990 = layAe('bieu:903149', 'bieu:90314990');
+  const ae84798 = layAe('bieu:8479', 'bieu:84798');
+  const ae84798969 = layAe('bieu:8479896', 'bieu:84798969');
+  const ids854370 = new Set((ae854370?.cauHoiToiThieu || []).map((c) => c.id));
+  const ids903180 = new Set((ae903180?.cauHoiToiThieu || []).map((c) => c.id));
+  const ids84798 = new Set((ae84798?.cauHoiToiThieu || []).map((c) => c.id));
+
+  kiem('HỒI QUY 12 BẢNG VÀNG (laPhanBuCoTen & cauHoiToiThieu): nhận diện đúng nhánh "… khác" và gom đủ câu hỏi anh em đứng trước',
+    nutPhanBuCoTen.every((id) => laPhanBuCoTen(id, L_VANG12, metaVang12) === true)
+    && nutKhongPhaiPhanBuCoTen.every((id) => laPhanBuCoTen(id, L_VANG12, metaVang12) === false)
+    && JSON.stringify(ae854370?.congThuc?.truAnhEm) === JSON.stringify(['bieu:854310', 'bieu:854320', 'bieu:854330', 'bieu:854340'])
+    && ['hs:bieu:854310:8101', 'hs:bieu:854320:8101', 'hs:bieu:854330:8101', 'hs:bieu:854340:8101'].every((id) => ids854370.has(id))
+    && ae854370?.cauHoiToiThieu?.length === 12
+    && ae85437090?.cauHoiToiThieu?.length === 35
+    && JSON.stringify(ae903180?.congThuc?.truAnhEm) === JSON.stringify(['bieu:903110', 'bieu:903120', 'bieu:90314'])
+    && ['hs:bieu:903110:8101', 'hs:bieu:903120:8101', 'hs:bieu:90314:8101'].every((id) => ids903180.has(id))
+    && ae903180?.cauHoiToiThieu?.length === 9
+    && ae90314990?.cauHoiToiThieu?.length === 17
+    && JSON.stringify(ae84798?.congThuc?.truAnhEm) === JSON.stringify(['bieu:847910', 'bieu:847920', 'bieu:847930', 'bieu:847940', 'bieu:847950', 'bieu:847960', 'bieu:84797'])
+    && ['hs:bieu:847910:8101', 'hs:bieu:847920:8101', 'hs:bieu:84797:8101'].every((id) => ids84798.has(id))
+    && ae84798?.cauHoiToiThieu?.length === 18
+    && ae84798969?.cauHoiToiThieu?.length === 36,
+    {
+      c854370: ae854370?.cauHoiToiThieu?.length,
+      c85437090: ae85437090?.cauHoiToiThieu?.length,
+      c903180: ae903180?.cauHoiToiThieu?.length,
+      c90314990: ae90314990?.cauHoiToiThieu?.length,
+      c84798: ae84798?.cauHoiToiThieu?.length,
+      c84798969: ae84798969?.cauHoiToiThieu?.length,
+    });
+
+  // 13C. Định tuyến doBangAnhEm trên bảng thật: máy có tên không CHONG_LAP với "… khác"; anh em trước undefined -> dừng RE_NHANH; ve:0 loại trừ -> NGOAI_PHAM_VI
+  const kq8543_20 = doBangAnhEm('bieu:8543', {
+    'hs:bieu:8543:8101': true, 'hs:bieu:8543:8102': true, 'hs:bieu:8543:8103': true, 'hs:bieu:8543:8104': false,
+    'hs:bieu:854310:8101': false,
+    'hs:bieu:854320:8101': true,
+    'hs:bieu:854330:8101': false, 'hs:bieu:854330:8102': false, 'hs:bieu:854330:8103': false,
+    'hs:bieu:854340:8101': false, 'hs:bieu:854340:8102': false,
+    'hs:bieu:854370:8101': true,
+    'hs:bieu:854390:8101': false,
+  }, bangTheoChaThat);
+
+  const kq8479_10 = doBangAnhEm('bieu:8479', {
+    'hs:bieu:8479:8101': true, 'hs:bieu:8479:8102': true, 'hs:bieu:8479:8103': false,
+    'hs:bieu:847910:8101': true, 'hs:bieu:84791010:8101': true, 'hs:bieu:84791020:8101': false,
+    'hs:bieu:847920:8101': false, 'hs:bieu:847930:8101': false, 'hs:bieu:847940:8101': false,
+    'hs:bieu:847950:8101': false, 'hs:bieu:847960:8101': false, 'hs:bieu:84797:8101': false,
+    'hs:bieu:84798:8101': true, 'hs:bieu:847990:8101': false,
+  }, bangTheoChaThat);
+
+  const kq9031_10 = doBangAnhEm('bieu:9031', {
+    'hs:bieu:9031:8101': false, 'hs:bieu:9031:8102': true, 'hs:bieu:9031:8103': false,
+    'hs:bieu:903110:8101': true, 'hs:bieu:903110:8102': true,
+    'hs:bieu:903120:8101': false, 'hs:bieu:90314:8101': false,
+    'hs:bieu:903180:8101': true, 'hs:bieu:903190:8101': false,
+  }, bangTheoChaThat);
+
+  const kq8517_11 = doBangAnhEm('bieu:8517', {
+    'hs:bieu:8517:8101': false, 'hs:bieu:8517:8102': false, 'hs:bieu:8517:8103': true,
+    'hs:bieu:85171:8101': true,
+    'hs:bieu:851711:8101': true, 'hs:bieu:851711:8102': true,
+    'hs:bieu:851713:8101': false, 'hs:bieu:851714:8101': false,
+    'hs:bieu:85176:8101': true, 'hs:bieu:85177:8101': false,
+  }, bangTheoChaThat);
+
+  const kqReNhanh8543 = doBangAnhEm('bieu:8543', {
+    'hs:bieu:8543:8101': true, 'hs:bieu:8543:8102': true, 'hs:bieu:8543:8103': true, 'hs:bieu:8543:8104': false,
+    // 8543.10..40 đều để undefined
+    'hs:bieu:854370:8101': true,
+    'hs:bieu:854390:8101': false,
+  }, bangTheoChaThat);
+
+  const kqReNhanh8501 = doBangAnhEm('bieu:8501', {
+    'hs:bieu:8501:8101': true, 'hs:bieu:8501:8103': false, 'hs:bieu:8501:8104': false,
+    'hs:bieu:850110:8101': true,
+    // công suất & dòng điện (8501.20 / 8501.3) để undefined
+  }, bangTheoChaThat);
+
+  const kqReNhanh9031 = doBangAnhEm('bieu:9031', {
+    'hs:bieu:9031:8101': false, 'hs:bieu:9031:8102': true, 'hs:bieu:9031:8103': false,
+    'hs:bieu:903110:8101': false,
+    // 9031.20 để undefined
+    'hs:bieu:90314:8101': true,
+    'hs:bieu:903180:8101': true,
+    'hs:bieu:903190:8101': false,
+  }, bangTheoChaThat);
+
+  const kqNgoai8708 = doBangAnhEm('bieu:8708', {
+    'hs:bieu:8708:8101': true, 'hs:bieu:8708:8102': true, 'hs:bieu:8708:8103': true,
+    'hs:bieu:8708:8104': true, // bị loại theo Chú giải 2 Phần XVII
+  }, bangTheoChaThat);
+
+  const kqNgoai6110 = doBangAnhEm('bieu:6110', {
+    'hs:bieu:6110:8101': true, 'hs:bieu:6110:8102': true,
+    'hs:bieu:6110:8106': true, // hàng may mặc trẻ sơ sinh <= 86 cm -> 61.11
+  }, bangTheoChaThat);
+
+  kiem('HỒI QUY 12 BẢNG VÀNG (doBangAnhEm): máy có tên đi thẳng không CHONG_LAP; anh em trước undefined -> RE_NHANH; ve:0 bị loại -> NGOAI_PHAM_VI',
+    kq8543_20.trangThai === 'DICH' && kq8543_20.dich === 'bieu:854320'
+    && kq8479_10.trangThai === 'DICH' && kq8479_10.dich === 'bieu:84791010'
+    && kq9031_10.trangThai === 'DICH' && kq9031_10.dich === 'bieu:903110'
+    && kq8517_11.trangThai === 'DICH' && kq8517_11.dich === 'bieu:851711'
+    && kqReNhanh8543.trangThai === 'RE_NHANH' && kqReNhanh8543.cha === 'bieu:8543' && !kqReNhanh8543.duong.includes('bieu:854370')
+    && kqReNhanh8501.trangThai === 'RE_NHANH' && kqReNhanh8501.cha === 'bieu:8501' && !kqReNhanh8501.duong.includes('bieu:85013')
+    && kqReNhanh9031.trangThai === 'RE_NHANH' && kqReNhanh9031.cha === 'bieu:9031' && !kqReNhanh9031.duong.includes('bieu:90314') && !kqReNhanh9031.duong.includes('bieu:903180')
+    && kqNgoai8708.trangThai === 'NGOAI_PHAM_VI' && kqNgoai8708.nutLoai === 'bieu:8708'
+    && kqNgoai6110.trangThai === 'NGOAI_PHAM_VI' && kqNgoai6110.nutLoai === 'bieu:6110',
+    { kq8543_20, kq8479_10, kq9031_10, kq8517_11, kqReNhanh8543, kqReNhanh8501, kqReNhanh9031, kqNgoai8708, kqNgoai6110 });
+
+  // 13D. Ca âm Cổng 7 trên bản sao kho tạm: (1) hụt giá trị ở 870822; (2) hạ GIA_TRI -> CO_KHONG ở 870880; (3) bỏ phu ngưỡng 37,5 W ở 8501 -> bắt buộc báo HO_PHU đỏ
+  const taoHoSoTamTuThat = (ten, ch, bienDoiDk, nguongList = []) => {
+    const dir = path.join(TAM, ten);
+    for (const sub of ['phan', 'chuong', 'nhom', 'phan-nhom', 'dong', 'nguong', 'liet-ke', 'dieu-kien']) {
+      fs.mkdirSync(path.join(dir, sub), { recursive: true });
+    }
+    if (nguongList.length) {
+      fs.writeFileSync(path.join(dir, 'nguong', `${ch}.jsonl`), `${nguongList.map((x) => JSON.stringify(x)).join('\n')}\n`);
+    }
+    const gocList = docDong(path.join(HO_SO_THAT, 'dieu-kien', `${ch}.jsonl`)).map((l) => JSON.parse(l));
+    const moiList = bienDoiDk(gocList);
+    fs.writeFileSync(path.join(dir, 'dieu-kien', `${ch}.jsonl`), `${moiList.map((x) => JSON.stringify(x)).join('\n')}\n`);
+    return dir;
+  };
+
+  const nguong87 = docDong(path.join(HO_SO_THAT, 'nguong', '87.jsonl')).map((l) => JSON.parse(l));
+  const nguong85 = docDong(path.join(HO_SO_THAT, 'nguong', '85.jsonl')).map((l) => JSON.parse(l));
+
+  // Ca âm 1: xoá 87.02 khỏi 87082230 (làm 870822 không phủ hết phạm vi cha 87.01..87.05)
+  const khoAm870822 = taoHoSoTamTuThat('am-870822', '87', (list) => list.map((r) => (
+    r.id === 'hs:bieu:87082230:8101' ? { ...r, tap: ['87.04'] } : r
+  )), nguong87);
+  const rAm870822 = chayCong({ luat: LUAT_THAT, hoSo: khoAm870822, phamVi: ['bieu:870822'], chiTrong: true, cong: [7], L: L_VANG12, bieuMeta: metaVang12 });
+
+  // Ca âm 2: hạ GIA_TRI của 8708801 & 8708809 thành CO_KHONG mất truc/tap
+  const khoAm870880 = taoHoSoTamTuThat('am-870880', '87', (list) => list.map((r) => {
+    if (r.id !== 'hs:bieu:8708801:8101' && r.id !== 'hs:bieu:8708809:8101') return r;
+    const { truc: _t, tap: _tap, daTri: _dt, ...rest } = r;
+    return { ...rest, kieu: 'CO_KHONG' };
+  }), nguong87);
+  const rAm870880 = chayCong({ luat: LUAT_THAT, hoSo: khoAm870880, phamVi: ['bieu:870880'], chiTrong: true, cong: [7], L: L_VANG12, bieuMeta: metaVang12 });
+
+  // Ca âm 3: bỏ phu ngưỡng 37,5 W trên 85013/850140/85015 (giống lỗi p1-8501)
+  const khoAm8501 = taoHoSoTamTuThat('am-8501', '85', (list) => list.filter((r) => (
+    !['hs:bieu:85013:8103', 'hs:bieu:850140:8104', 'hs:bieu:85015:8104'].includes(r.id)
+  )), nguong85);
+  const rAm8501 = chayCong({ luat: LUAT_THAT, hoSo: khoAm8501, phamVi: ['bieu:8501'], chiTrong: true, cong: [7], L: L_VANG12, bieuMeta: metaVang12 });
+
+  // Ca âm S1 (R2-1 b1): thêm điều kiện thu hẹp giả GIA_TRI tap:["chạy pin"] vào nhánh phần bù nguyên chiếc bieu:854370 -> bắt buộc báo HO_PHU đỏ
+  const khoAmS1 = taoHoSoTamTuThat('am-s1-854370', '85', (list) => [
+    ...list,
+    {
+      id: 'hs:bieu:854370:8199',
+      nut: 'bieu:854370',
+      loai: 'DIEU_KIEN',
+      ve: 1,
+      phu: false,
+      kieu: 'GIA_TRI',
+      truc: 'nguon_dien',
+      tap: ['chạy pin'],
+      mo: 'NGHIA_THUONG',
+      cauHoi: 'Máy có chạy pin không?',
+      trich: 'Máy và thiết bị khác',
+      nguon: 'bieu:854370#1',
+      vanTay: vanTay(L_VANG12.chuCau('bieu:854370#1')),
+    },
+  ], nguong85);
+  const rAmS1 = chayCong({ luat: LUAT_THAT, hoSo: khoAmS1, phamVi: ['bieu:8543'], chiTrong: true, cong: [7], L: L_VANG12, bieuMeta: metaVang12 });
+
+  // Ca âm S2 (R2-1 b2): đổi hs:bieu:87089921:8101 từ tap:["Thùng nhiên liệu"] thành tap:["Nắp phụ"] -> không khớp tên hàng chính của cha bieu:8708992 -> bắt buộc báo HO_PHU đỏ
+  const khoAmS2 = taoHoSoTamTuThat('am-s2-8708992', '87', (list) => list.map((r) => (
+    r.id === 'hs:bieu:87089921:8101' ? { ...r, tap: ['Nắp phụ'] } : r
+  )), nguong87);
+  const rAmS2 = chayCong({ luat: LUAT_THAT, hoSo: khoAmS2, phamVi: ['bieu:8708992'], chiTrong: true, cong: [7], L: L_VANG12, bieuMeta: metaVang12 });
+
+  kiem('HỒI QUY 12 BẢNG VÀNG (ca âm Cổng 7 + S1/S2): thiếu anh em 870822, hạ GIA_TRI 870880, bỏ phu 37,5 W 8501, thu hẹp giả 854370 (S1) và lệch tên nguyên chiếc 87089921 (S2) đều báo HO_PHU đỏ',
+    rAm870822.cong[7].loi.some((l) => /bieu:870822.*HO_PHU/.test(l))
+    && rAm870880.cong[7].loi.some((l) => /bieu:870880.*HO_PHU/.test(l))
+    && rAm8501.cong[7].loi.some((l) => /bieu:8501.*HO_PHU/.test(l))
+    && rAmS1.cong[7].loi.some((l) => /bieu:8543.*HO_PHU/.test(l))
+    && rAmS2.cong[7].loi.some((l) => /bieu:8708992.*HO_PHU/.test(l)),
+    {
+      am870822: rAm870822.cong[7].loi,
+      am870880: rAm870880.cong[7].loi,
+      am8501: rAm8501.cong[7].loi,
+      amS1: rAmS1.cong[7].loi,
+      amS2: rAmS2.cong[7].loi,
+    });
+
+  // 13E. Kiểm sạch lời nhắc HUONG_DAN_TACH_DIEU_KIEN (không dính 12 mã vàng, không chứa "bảng vàng" / "tập vàng")
+  const RE_MA_VANG = /\b(?:02\.?01|30\.?04|39\.?26|42\.?02|61\.?10|73\.?26|84\.?79|85\.?01|85\.?17|85\.?43|87\.?08|90\.?31)\b/i;
+  kiem('HỒI QUY 12 BẢNG VÀNG (lời nhắc sạch): HUONG_DAN_TACH_DIEU_KIEN không chứa bất kỳ mã nào thuộc 12 nhóm vàng hay chữ bảng vàng/tập vàng',
+    !RE_MA_VANG.test(HUONG_DAN_TACH_DIEU_KIEN) && !/bảng vàng|tập vàng/i.test(HUONG_DAN_TACH_DIEU_KIEN),
+    HUONG_DAN_TACH_DIEU_KIEN);
 }
 
 fs.rmSync(TAM, { recursive: true, force: true });

@@ -876,6 +876,18 @@
       "moTa": "Vấn đề chỉ liệt kê được (GIR 2a/3b, bộ phận, đa chức năng, chủ yếu dùng cho) trong hồ sơ vấn đề mã HS (M-75, ADR-0006)."
     },
     {
+      "duongDan": "data/ho-so-ma/dieu-kien/**",
+      "lop": "RUT_TU_LUAT",
+      "aiDoc": ["scripts/ho-so-ma/bang-anh-em.mjs", "scripts/ho-so-ma/cong.mjs", "scripts/ho-so-ma/khuon.mjs", "scripts/ho-so-ma/so-diem.mjs", "scripts/ho-so-ma/tach-dieu-kien.mjs"],
+      "moTa": "Điều kiện nguyên tử, quy tắc giải chồng và nhóm cạnh tranh rút từ chữ luật gốc kèm trích nguyên văn và vân tay sha256 (M-81, ADR-0007 & ADR-0008). Không dữ liệu khách, không tiền lệ."
+    },
+    {
+      "duongDan": "data/ho-so-ma/bang-anh-em/**",
+      "lop": "RUT_TU_LUAT",
+      "aiDoc": ["scripts/ho-so-ma/bang-anh-em.mjs", "scripts/ho-so-ma/cong.mjs", "scripts/ho-so-ma/khuon.mjs", "scripts/ho-so-ma/so-diem.mjs"],
+      "moTa": "Bảng quyết định gia đình anh em (bang-anh-em@1) dựng tất định từ DIEU_KIEN/GIAI_CHONG và cây luật gốc kèm vân tay câu nguồn (M-81, ADR-0007 & ADR-0008)."
+    },
+    {
       "duongDan": "data/hs/customs-danh-muc-2026-11-13.json",
       "lop": "LUAT",
       "aiDoc": ["api/dataset.js", "lib/compliance-data.js"],

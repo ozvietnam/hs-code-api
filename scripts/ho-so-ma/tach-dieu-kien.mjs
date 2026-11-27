@@ -17,27 +17,28 @@ const G = require('../../lib/ho-so-ma/ghep.js');
 const gon = (s) => String(s ?? '').normalize('NFC').replace(/\s+/g, ' ').trim();
 
 export const HUONG_DAN_TACH_DIEU_KIEN = `Bạn là chuyên gia số hoá luật phân loại HS thành điều kiện nguyên tử (khuôn ho-so-ma@1 / DIEU_KIEN, GIAI_CHONG, CANH_TRANH — ADR-0007 & ADR-0008).
-Chỉ đọc chữ luật công khai trong gói nhóm 4 số. Không bịa điều kiện, không dùng kiến thức ngoài, không dùng tiền lệ tb: hay dữ liệu khách.
+Chỉ đọc chữ luật công khai trong gói nhóm bốn số. Không bịa điều kiện, không dùng kiến thức ngoài, không dùng tiền lệ tb: hay dữ liệu khách.
 
-Quy tắc tách trọn nhóm 4 số (một lượt):
-1. Đọc trọn cây biểu thuế trong gói (\`cayBieu\`, kể cả dòng trung gian không mã \`khongMa: true\`, và thừa kế con duy nhất \`suyRa: true\` / \`cungDong\` — đặt điều kiện ở nút cha 6 số, nút 8 số con duy nhất tự thừa kế). Không đặt \`DIEU_KIEN\` cho dòng "Loại khác" thuần (\`loaiKhac: true\`), nhưng PHẢI tách cho dòng \`loaiKhacCoVe: true\`.
-2. Mỗi điều kiện nguyên tử là MỘT đối tượng JSON trong \`dieuKien\` mang rõ \`nut\` (\`bieu:...\`):
-   - \`ve\` (số nguyên >= 0): dấu ";" hoặc "hoặc" phân nhánh thay thế => \`ve\` tăng dần (\`1, 2, ...\`). Các điều kiện đồng thời ("và") => CÙNG \`ve\`. Đặt \`ve: 0\` cho điều kiện chung áp lên mọi vế (thường đi với \`phu: true\` cho "trừ..." sau cả danh sách).
-   - \`phu\` (boolean): \`true\` khi mang nghĩa phủ định ("trừ...", "không kể...", "không phải...").
+Quy tắc tách trọn nhóm bốn số (một lượt):
+1. Đọc trọn cây biểu thuế trong gói (\`cayBieu\`, kể cả dòng trung gian không mã \`khongMa: true\`, và thừa kế con duy nhất \`suyRa: true\` / \`cungDong\` — đặt điều kiện ở nút cha sáu số, nút tám số con duy nhất tự thừa kế). Không đặt \`DIEU_KIEN\` cho dòng "Loại khác" thuần (\`loaiKhac: true\`), nhưng PHẢI tách cho dòng \`loaiKhacCoVe: true\` và nhánh phần bù có tên ("… khác").
+2. Tách nguyên tử từng điều kiện — mỗi đối tượng trong \`dieuKien\` chỉ kiểm đúng MỘT thuộc tính đơn (cấm gộp nhiều điều kiện vào một \`cauHoi\`) và mang rõ \`nut\` (\`bieu:...\`):
+   - \`ve\` (số nguyên >= 0): dấu ";" hoặc "hoặc" phân nhánh thay thế => \`ve\` tăng dần (\`1, 2, ...\`). Các điều kiện đồng thời ("và") => CÙNG \`ve\`. Đặt \`ve: 0\` cho điều kiện chung áp lên mọi vế (như mệnh đề loại trừ chung của Phần/Chương/Nhóm áp lên toàn nút).
+   - \`phu\` (boolean): \`true\` khi mang nghĩa phủ định ("trừ...", "không kể...", "không phải...") hoặc phủ định phần bù đối với anh em / ngưỡng đứng trước.
    - \`kieu\`:
-     * \`CO_KHONG\`: thuộc tính có/không (cấm \`nguong\`, \`tap\`, \`truc\`, \`daTri\`).
-     * \`SO\`: ngưỡng số, BẮT BUỘC trỏ \`nguong\` = id bản ghi NGUONG đã có trong danh mục M-74 (không lặp số; cấm \`tap\`, \`truc\`, \`daTri\`).
-     * \`GIA_TRI\`: tập giá trị nguyên văn, BẮT BUỘC kèm \`truc\` (tên trục nguyên văn cục bộ trong gia đình anh em, 1 dòng, ví dụ "loại dòng điện", "chất liệu mặt ngoài") và \`tap\` (mảng chuỗi nguyên văn). Tuỳ chọn \`daTri: true\` CHỈ khi trục là đa trị (một món nhận nhiều giá trị cùng lúc như hoạt chất, nhiều công dụng, sợi pha); mặc định \`false\` (đơn trị). Cấm \`nguong\`.
-   - \`mo\`:
-     * \`DINH_NGHIA_LUAT\`: có định nghĩa pháp lý trong chú giải (BẮT BUỘC kèm \`moNguon\`: id câu định nghĩa hoặc mảng id câu định nghĩa trong kho luật, kể cả chéo chương; cấm \`tb:\`).
+     * \`GIA_TRI\`: ưu tiên dùng khi các anh em cùng phân chia trên một chiều thuộc tính theo chữ luật (cấm hạ thành \`CO_KHONG\` làm mất trục); BẮT BUỘC kèm \`truc\` (\`<tên trục cục bộ theo chữ luật>\`, một dòng) và \`tap\` (mảng chuỗi nguyên văn). Đặt \`daTri: true\` CHỈ khi một mặt hàng có thể mang đồng thời nhiều giá trị trên trục đó; mặc định \`false\` (đơn trị). Cấm \`nguong\`.
+     * \`SO\`: ngưỡng số, BẮT BUỘC trỏ \`nguong\` = id bản ghi NGUONG đã có trong danh mục M-74 (không lặp số; cấm \`tap\`, \`truc\`, \`daTri\`). Nhánh "… khác" đứng sau anh em có ngưỡng phải giữ đủ điều kiện \`phu: true\` trên ngưỡng đó nếu chữ luật loại trừ dải trước.
+     * \`CO_KHONG\`: chỉ dùng cho mệnh đề có/không độc lập không tạo thành trục giá trị chung giữa các anh em (cấm \`nguong\`, \`tap\`, \`truc\`, \`daTri\`).
+   - \`mo\` (ưu tiên tra định nghĩa/mô tả trong gói trước, chỉ dùng \`NGHIA_THUONG\` khi kho luật thực sự không giải nghĩa):
+     * \`DINH_NGHIA_LUAT\`: có định nghĩa pháp lý trong chú giải/SEN (BẮT BUỘC kèm \`moNguon\`: id câu hoặc mảng id câu định nghĩa hợp lệ, kể cả chéo chương; cấm \`tb:\`).
      * \`MO_TA_HUONG_DAN\`: có mô tả chi tiết trong chú giải hướng dẫn / SEN (BẮT BUỘC kèm \`moNguon\`; cấm \`tb:\`).
      * \`NGUONG\`: đi với ngưỡng định lượng (cấm \`moNguon\`).
-     * \`NGHIA_THUONG\`: chữ luật không có định nghĩa/ngưỡng (cấm \`moNguon\`).
-   - \`cauHoi\`: một câu hỏi Có/Không ngắn gọn (1 dòng, <= 300 ký tự).
+     * \`NGHIA_THUONG\`: chữ luật thông thường không có câu định nghĩa/hướng dẫn/ngưỡng trong kho (cấm \`moNguon\`).
+   - Áp đúng quy tắc chọn vật liệu/thành phần hoặc bộ phận theo Chú giải Phần/Chương trước khi so điều kiện phân nhóm con.
+   - \`cauHoi\`: một câu hỏi Có/Không đầy đủ ngữ cảnh pháp lý (một dòng, <= 600 ký tự).
    - \`trich\`: chuỗi con NGUYÊN VĂN của câu \`nguon\`.
-   - \`nguon\`: đúng id câu nguồn có trong gói (ví dụ \`bieu:85437040#1\`).
-3. \`giaiChong\`: lập cho cặp anh em cùng cha có thể cùng thoả (\`{ nut, cap: [A, B], cach: "TRU"|"QUY_TAC_3"|"CHU_GIAI"|"NGUONG", trich, nguon }\`).
-4. \`canhTranh\`: lập cho nút mang "chưa được chi tiết hoặc ghi ở nơi khác" dùng danh sách \`CANH_TRANH\` trong gói (\`{ nut, nhomCanhTranh: [...], phepThu: [{ nguon, trich }], trich, nguon }\`).
+   - \`nguon\`: đúng id câu nguồn có trong gói (ví dụ \`bieu:XXXXXXXX#1\`).
+3. \`giaiChong\`: rà soát đầy đủ mọi cặp anh em cùng cha có thể cùng thoả trên một mặt hàng thực tế để lập \`{ nut, cap: [A, B], cach: "TRU"|"QUY_TAC_3"|"CHU_GIAI"|"NGUONG", trich, nguon }\` đúng căn cứ luật (phân biệt rõ \`QUY_TAC_3\` với \`CHU_GIAI\`).
+4. \`canhTranh\`: bắt buộc lập cho mọi nút mang cụm "chưa được chi tiết hoặc ghi ở nơi khác" từ dữ liệu cạnh tranh trong gói (\`{ nut, nhomCanhTranh: ["bieu:...", ...], phepThu: [{ nguon, trich }], trich, nguon }\` — \`nhomCanhTranh\` phải là id nút hợp lệ).
 
 Trả về DUY NHẤT JSON hợp lệ dạng:
 {"dieuKien":[{"nut":"bieu:...","ve":1,"phu":false,"kieu":"CO_KHONG","mo":"NGHIA_THUONG","cauHoi":"...","trich":"...","nguon":"..."}],"giaiChong":[],"canhTranh":[]}`;
@@ -376,7 +377,7 @@ export function chuanHoaDieuKien(rawList, nut, L, { batDauSo = 8101, nguongSanCo
         if (du) moNguonVanTay = Object.fromEntries(entries);
       }
     }
-    const cauHoi = gon(item.cauHoi || item.dieuKien || '').slice(0, 300);
+    const cauHoi = gon(item.cauHoi || item.dieuKien || '').slice(0, 600);
     if (!cauHoi) { loi.push(`${nut}: thiếu cauHoi cho trích "${trich.slice(0, 40)}"`); continue; }
 
     const rec = {

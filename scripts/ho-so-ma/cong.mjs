@@ -30,6 +30,7 @@ import { kiemKhoHoSo, BO_QUA, LOAI_DIEU_KIEN, MO_DIEU_KIEN } from './khuon.mjs';
 import {
   napBieuMeta,
   laLoaiKhacThuan,
+  taoBanDoTruAnhEm,
   demDoanChamPhay,
   haiNutRoiNhau,
   laChongSoTrungTruc,
@@ -566,7 +567,8 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
         if (g.con.some((id) => laLoaiKhacThuan(id, L, bieuMeta))) continue;
         const duongCha = G.duongDiNut(g.cha, L.cay) || [];
         const dksDuongCha = duongCha.flatMap((b) => dkTheoNut.get(b.nut) || []);
-        if (!chungMinhPhuKin(g.con, dkTheoNut, nguongById, dkTheoNut.get(g.cha) || [], dksDuongCha)) {
+        const truTheoNut = taoBanDoTruAnhEm(g.cha, g.con, L, bieuMeta, dkTheoNut, giaiChongTheoCha.get(g.cha) || [], nguongById);
+        if (!chungMinhPhuKin(g.con, dkTheoNut, nguongById, dkTheoNut.get(g.cha) || [], dksDuongCha, { chaId: g.cha, L, bieuMeta, truTheoNut })) {
           ra[7].loi.push(`${g.cha}: HO_PHU — nhóm không có "Loại khác" nhưng chưa chứng minh phủ kín phạm vi cha`);
         }
       }
@@ -601,6 +603,10 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
       );
       for (const g of nhomMoi) {
         const coTen = g.con.filter((id) => !laLoaiKhacThuan(id, L, bieuMeta));
+        const gcHopLeCha = (giaiChongTheoCha.get(g.cha) || []).filter(
+          (x) => giaiChongHopLe.has(`${g.cha}|${[...x.cap].sort().join('|')}`),
+        );
+        const truTheoNut = taoBanDoTruAnhEm(g.cha, g.con, L, bieuMeta, dkTheoNut, gcHopLeCha, nguongById);
         for (let i = 0; i < coTen.length; i += 1) {
           for (let j = i + 1; j < coTen.length; j += 1) {
             const A = coTen[i]; const B = coTen[j];
@@ -613,6 +619,10 @@ export function chayCong({ luat = G.LUAT_MAC_DINH, hoSo = G.HO_SO_MAC_DINH, pham
             if (vungChongSet.has(`${g.cha}|${pairKey}`) || vungChongSet.has(`*|${pairKey}`)) {
               ra[8].dem.vungChong += 1;
               ra[8].loi.push(`${g.cha}: VUNG_CHONG giữa ${A} và ${B} chưa có GIAI_CHONG trích luật`);
+              continue;
+            }
+            if ((truTheoNut.get(A) || []).includes(B) || (truTheoNut.get(B) || []).includes(A)) {
+              ra[8].dem.roiNhau += 1;
               continue;
             }
             const dksA = dkTheoNut.get(A) || [];
