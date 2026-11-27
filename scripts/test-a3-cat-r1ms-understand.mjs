@@ -350,6 +350,41 @@ try {
       JSON.stringify({ fetchCalls, ngatSuyNghi: ngatSuyNghiTrangThai(), logCut }),
     );
     _resetNgatSuyNghi();
+
+    // Lượt đầu mạch gemini còn đóng (geminiLoop=true): bước 0 Gemini lỗi → bước 1 MiniMax trả JSON cụt (finish_reason=length)
+    // → kiemKhoa chặn (loiKiemKhoa=true) → đi thẳng xuống nhánh thinking-off gọi lại MiniMax-M3 (không đi nhầm vào if(geminiLoop)).
+    llmTier._internal.ngatMach.clear();
+    fetchCalls = [];
+    minimaxQueue = [
+      { __rawContent: '{"heading4":"9031","why":"cụt ở lượt đầu khi bước 0 Gemini trượt sang bước 1 MiniMax"}', finishReason: 'length' },
+      R1_LUOT_2,
+    ];
+    const logCutFirst = [];
+    const resCutFirst = await callWithFallback('sys', 'user', {
+      step: 'understand',
+      minimax: { model: 'MiniMax-M3' },
+      tier: 'premium',
+      geminiTimeoutMs: 5000,
+      geminiModelEnv: 'LOOP_GEMINI_MODEL',
+      maxTokens: 3500,
+      timeoutMs: 30000,
+      kiemKhoa: DU_KHOA.understand,
+    }, logCutFirst);
+    check(
+      'CA NGƯỢC (lượt đầu geminiLoop=true, bước 0 Gemini 402 trượt sang bước 1 MiniMax bị cụt JSON): rơi đúng nhánh thinking-off MiniMax-M3 và bật ngatSuyNghi',
+      resCutFirst?.fallback === true
+        && fetchCalls.length === 3
+        && fetchCalls[0].provider === 'gemini'
+        && fetchCalls[1].provider === 'minimax'
+        && fetchCalls[1].thinking === null
+        && fetchCalls[2].provider === 'minimax'
+        && fetchCalls[2].model === 'MiniMax-M3'
+        && fetchCalls[2].thinking?.type === 'disabled'
+        && logCutFirst.some((l) => l.fallback === 'thinking-off')
+        && ngatSuyNghiTrangThai().understand?.mo === true,
+      JSON.stringify({ fetchCalls, ngatSuyNghi: ngatSuyNghiTrangThai(), logCutFirst }),
+    );
+    _resetNgatSuyNghi();
   }
 
   // CA NGƯỢC: có tín hiệu tiền lệ Oz trái nhóm → leo vòng 2 (gir), cả vòng 1 và vòng 2 đều nhận MiniMax-M3 khi mạch gemini|* mở
