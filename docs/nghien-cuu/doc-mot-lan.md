@@ -38,25 +38,25 @@
 | Giai đoạn | Hạng mục | Mô hình thực chạy | Số lượt gọi LLM | Token vào / ra | Thời gian thực đo (`wall-clock`) | Đầu ra & Kiểm nguyên văn |
 |---|---|---|---:|---:|---:|---|
 | **Bước 0 — Đóng gói mù** | `goi-chuong(94)` + `6` `goi-nhom(9401..9406, --soan-mu)` (kèm nguyên văn `GIR 1–6`) | Tất định (`0` LLM) | `0` | `0 / 0` | `~6 s` | `7` gói luật đủ chữ + vân tay `sha256` (`0` `tb:`/`wco:`) |
-| **Bước 1 — Đọc Bậc 2 (`CHUONG`)** | `chuong.json` (Phần `XX`, Chương `94`) | `gemini-4-hydrogen-tiered-xhigh` | `1` | `66.328 / 65.004` | `267,99 s` (`~4,5 phút`) | `1` bản ghi `CHUONG` (`5` phạm vi, `16` loại trừ, `4` định nghĩa, `5` ưu tiên, `5` trục chính, `18` cạnh tranh, `6` `DIEM_MO_HO`) |
-| **Bước 2 — Đọc Bậc 4→6→8 (`6` nhóm)** | Đợt 1 (`94.05`, `94.01`, `94.03`) → Đợt 2 (`94.02`, `94.04`, `94.06`) | `gemini-4-hydrogen-tiered-xhigh` | `6` | `370.295 / 588.047` | `855,12 s` (`~14,3 phút`) | `6` tệp `9401..9406.json` (`0` sót nút có tên, `0` sót `timCgct`, riêng `94.05` chạy `535,95 s` sinh `142.309` token ra với `0` lỗi trích) |
+| **Bước 1 — Đọc Bậc 2 (`CHUONG`)** | `chuong.json` (Phần `XX`, Chương `94`) | `gemini-4-hydrogen-tiered-xhigh` | `1` | `66.328 / 65.004` | `267,99 s` (`~4,5 phút`) | `1` bản ghi `CHUONG` (`7` phạm vi, `16` loại trừ, `4` định nghĩa, `6` ưu tiên, `6` trục chính, `19` cạnh tranh, `6` `DIEM_MO_HO`) |
+| **Bước 2 — Đọc Bậc 4→6→8 (`6` nhóm)** | Đợt 1 (`94.05`, `94.01`, `94.03`) → Đợt 2 (`94.02`, `94.04`, `94.06`) | `gemini-4-hydrogen-tiered-xhigh` | `6` | `370.295 / 588.047` | `855,12 s` (`~14,3 phút`) | `6` tệp `9401..9406.json` (`457` bản ghi điều kiện/giải chồng/cạnh tranh sau chuẩn hoá Luật 1–4, `0` sót nút có tên, `0` sót `timCgct`, riêng `94.05` chạy `535,95 s` sinh `142.309` token ra với `0` lỗi trích) |
 | **Bước 3 — Phản biện 1 vòng** | Toàn bộ `77` `DIEM_MO_HO` của Chương 94 (chia `7` lô song song) | `gemini-4-argon-high` | `7` | `373.648 / 164.358` | `771,09 s` (`~12,9 phút`) | `77/77` phản biện độc lập kèm `chungMinh[]` nguyên văn (`0` lỗi trích câu nguồn) |
 | **Bước 4 — Chốt 1 vòng cuối** | Người đọc xem lại phản biện & chốt `77` `DIEM_MO_HO` (`7` lô song song) | `gemini-4-hydrogen-tiered-xhigh` | `7` | `436.308 / 411.477` | `597,00 s` (`~10,0 phút`) | Chốt `77` dòng `diem-mo-ho.jsonl` (`soVongPhanBien = 1`), đổi kết luận `9` điểm sang `CHƯA ĐỦ DỮ KIỆN` |
 | **Bước 5 — Hệ thống hoá & Kiểm máy** | `doc-mot-lan.mjs --dung-bang` & `--kiem --chuong 94` + sổ tay `94.md` | Tất định (`0` LLM) | `0` | `0 / 0` | `~5 s` | **`PASS 0 lỗi khuôn · 0 lỗi trích / 14.413 câu trích nguyên văn · 0 lỗi phủ`** (`54` mã 6 số: `24 ĐÚNG · 30 CHƯA ĐỦ DỮ KIỆN`; `127` mã 8 số: `45 ĐÚNG · 82 CHƯA ĐỦ DỮ KIỆN`) |
-| **Tổng toàn Chương 94** | **1 chương · 6 nhóm · 54 mã 6 số · 127 mã 8 số** | **`gemini-4-hydrogen-tiered-xhigh` + `gemini-4-argon-high`** | **`21` lượt đơn (`0` tool)** | **`1.246.579 / 1.228.886`** | **`2.490,19 s` (`~41,5 phút`)** | **`9` tệp kho `doc-mot-lan/94/` + `82` bẫy tra sai tại `docs/so-tay-tra-sai/94.md`** |
+| **Tổng toàn Chương 94** | **1 chương · 6 nhóm · 54 mã 6 số · 127 mã 8 số** | **`gemini-4-hydrogen-tiered-xhigh` + `gemini-4-argon-high`** | **`21` lượt đơn (`0` tool)** | **`1.246.579 / 1.228.886`** | **`2.490,19 s` (`~41,5 phút`)** | **`10` tệp kho `doc-mot-lan/94/` + `82` bẫy tra sai tại `docs/so-tay-tra-sai/94.md`** |
 
 *(Ghi chú phối hợp liên trạm trong cùng phiên M-82: ngoài `21` lượt của Chương 94, `agy` đã chạy thêm `3` lô song song `gemini-4-argon-high` trong `434 s` để phản biện độc lập 1 vòng cho toàn bộ `58` `DIEM_MO_HO` của Chương 40 trên `#2484` với `0` lỗi trích nguyên văn.)*
 
 #### 2.2 Chi tiết thời gian và quy mô từng nhóm 4 số của Chương 94
 
-| Nhóm 4 số | Tên nhóm (tóm tắt) | Thời gian đọc Bậc 4→6→8 | Token vào / ra | Số điều kiện & giải chồng (`dieuKien`) | Số điểm mơ hồ cấp nhóm |
+| Nhóm 4 số | Tên nhóm (tóm tắt) | Thời gian đọc Bậc 4→6→8 | Token vào / ra | Số điều kiện & giải chồng (`dieuKien` đã chuẩn hoá) | Số điểm mơ hồ cấp nhóm |
 |---|---|---:|---:|---:|---:|
-| **`94.01`** | Ghế ngồi (trừ nhóm `94.02`) và bộ phận | `412,54 s` | `69.697 / 104.172` | `141` (`116` `DIEU_KIEN` + `24` `GIAI_CHONG` + `1` `CANH_TRANH`) | `17` |
-| **`94.02`** | Đồ nội thất y tế, giải phẫu, nha khoa, thú y; ghế cắt tóc | `319,05 s` | `48.113 / 82.616` | `60` (`59` `DIEU_KIEN` + `0` `GIAI_CHONG` + `1` `CANH_TRANH`) | `11` |
-| **`94.03`** | Đồ nội thất khác và bộ phận | `373,40 s` | `73.466 / 99.503` | `102` (`82` `DIEU_KIEN` + `19` `GIAI_CHONG` + `1` `CANH_TRANH`) | `8` |
-| **`94.04`** | Khung đệm; bộ đồ giường, nệm, chăn, đệm ghế, gối | `310,02 s` | `49.608 / 77.315` | `33` (`30` `DIEU_KIEN` + `3` `GIAI_CHONG`) | `9` |
-| **`94.05`** | Đèn (`luminaires`) và bộ đèn; biển hiệu được chiếu sáng và bộ phận | `535,95 s` | `81.458 / 142.309` | `186` (`158` `DIEU_KIEN` + `27` `GIAI_CHONG` + `1` `CANH_TRANH`) | `18` |
-| **`94.06`** | Nhà lắp ghép | `319,07 s` | `47.953 / 82.132` | `36` (`30` `DIEU_KIEN` + `5` `GIAI_CHONG` + `1` `CANH_TRANH`) | `8` |
+| **`94.01`** | Ghế ngồi (trừ nhóm `94.02`) và bộ phận | `412,54 s` | `69.697 / 104.172` | `114` (`81` `DIEU_KIEN` + `32` `GIAI_CHONG` + `1` `CANH_TRANH`) | `17` |
+| **`94.02`** | Đồ nội thất y tế, giải phẫu, nha khoa, thú y; ghế cắt tóc | `319,05 s` | `48.113 / 82.616` | `59` (`59` `DIEU_KIEN` + `0` `GIAI_CHONG` + `0` `CANH_TRANH`) | `11` |
+| **`94.03`** | Đồ nội thất khác và bộ phận | `373,40 s` | `73.466 / 99.503` | `83` (`71` `DIEU_KIEN` + `11` `GIAI_CHONG` + `1` `CANH_TRANH`) | `8` |
+| **`94.04`** | Khung đệm; bộ đồ giường, nệm, chăn, đệm ghế, gối | `310,02 s` | `49.608 / 77.315` | `31` (`29` `DIEU_KIEN` + `1` `GIAI_CHONG` + `1` `CANH_TRANH`) | `9` |
+| **`94.05`** | Đèn (`luminaires`) và bộ đèn; biển hiệu được chiếu sáng và bộ phận | `535,95 s` | `81.458 / 142.309` | `139` (`109` `DIEU_KIEN` + `29` `GIAI_CHONG` + `1` `CANH_TRANH`) | `18` |
+| **`94.06`** | Nhà lắp ghép | `319,07 s` | `47.953 / 82.132` | `31` (`25` `DIEU_KIEN` + `5` `GIAI_CHONG` + `1` `CANH_TRANH`) | `8` |
 
 ---
 
@@ -103,6 +103,6 @@ Khi chạy `node scripts/ho-so-ma/doc-mot-lan.mjs --kiem --chuong 94`, bên cạ
 | **9** | `HỎI` | **`0`** | 100% nhánh `"Loại khác"` sinh được câu hỏi tối thiểu sạch |
 | **10** | `DÒ` | **`0`** | `0` lỗi cấu trúc dò bảng anh em |
 | **11** | `MỞ` | **`0`** | `374` điều kiện phân loại sạch (`76` `DINH_NGHIA_LUAT`, `118` `MO_TA_HUONG_DAN`, `180` `NGHIA_THUONG`) |
-| **12** | `BÙ` | `1` | Nhắc cấp `chuong:94` (các nhóm `9401..9406` đều đã có `CANH_TRANH` đầy đủ) |
+| **12** | `BÙ` | `1` | Nhắc cấp `chuong:94` (5 nhóm có phạm vi mở/dư `9401, 9403, 9404, 9405, 9406` đều có bản ghi `CANH_TRANH`, `soCanhTranh = 5`; riêng `9402` không phải nhóm dư và đã phủ đủ `nhom.canhTranh` / `nhom.khongCanhTranh`) |
 | **13** | `PHỦ CẠNH TRANH` | **`0`** | Phủ đủ 100% ứng viên `timCgct` trên cả 6 nhóm `94.01–94.06` |
 | **14** | `ĐỦ CHUỖI` | **`0`** | **`0` lỗi chuỗi và `thieuBangChungSai = 0` trên toàn bộ `127/127` dòng 8 số** |

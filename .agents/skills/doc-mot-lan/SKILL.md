@@ -1,6 +1,6 @@
 ---
 name: doc-mot-lan
-description: "Quy trình đọc một lần từ Chương (2 số) xuống Nhóm (4 số), Phân nhóm (6 số) và Dòng (8 số) theo tiêu chuẩn QT (ADR-0011, thẻ M-82): dựng gói đủ luật, mô hình mạnh đọc trọn một lần, mô hình mạnh khác dòng phản biện đúng 1 vòng cho mọi điểm mơ hồ, máy chỉ kiểm câu trích nguyên văn, kèm 3 luật đọc cốt tử từ thực chiến chấm bảng vàng."
+description: "Quy trình đọc một lần từ Chương (2 số) xuống Nhóm (4 số), Phân nhóm (6 số) và Dòng (8 số) theo tiêu chuẩn QT (ADR-0011, thẻ M-82): dựng gói đủ luật, mô hình mạnh đọc trọn một lần, mô hình mạnh khác dòng phản biện đúng 1 vòng cho mọi điểm mơ hồ, máy chỉ kiểm câu trích nguyên văn, kèm 4 luật đọc cốt tử từ thực chiến chấm bảng vàng."
 ---
 
 # Skill `doc-mot-lan` — Đọc Một Lần Từ Chương Xuống Dòng 8 Số Theo Tiêu Chuẩn QT (ADR-0011 · M-82)
@@ -65,7 +65,7 @@ Mọi bản ghi đều mang các trường gốc: `ma`, `ten` (nguyên văn bi�
 - **Quy tắc:** Mọi mệnh đề loại trừ đẩy hàng ra **ngoài nhóm 4 số đang xét** (chuyển sang nhóm 4 số khác hoặc chương khác) **bắt buộc đặt ở cấp nhóm 4 số** (`bieu:XXXX` với `ve: 0, phu: true` và trong `NHOM.loaiTru`). **Tuyệt đối cấm** gắn điều kiện loại trừ ngoại nhóm vào nút phân nhóm 6 số hay dòng 8 số con! Ở cấp 6/8 số chỉ đặt điều kiện loại trừ nội bộ khi lời văn chính dòng con đó ghi `"trừ..."` để nhường hàng cho một anh em khác **cùng nằm trong nhóm 4 số đó**.
 - **Lỗi cấm & Ví dụ thực tế (PR thật / nhận xét QT & thí điểm Chương 94):**
   - `#2484` (`40.16`, ca 36 *bộ gioăng 84.84* và 6 điều kiện loại trừ ngoại nhóm + đệm xốp sang `94.04`): Người đọc đặt các câu loại trừ sang `34.05`, Chương `57`, `40.08`, `84.84`, `40.14`, `63.06` và đệm cao su xốp sang `94.04` ở các nút con bên dưới `40.16`. Nghĩa câu luật đúng nhưng đặt sai tầng: khi chạy công thức phần bù `¬(Anh Cả ∨ Anh Hai …)`, món hàng bị loại khỏi nút con có tên nhưng không bị chặn ở cửa nhóm `40.16`, nên rơi thẳng vào dòng `"Loại khác"` ngay trong `40.16` (ca 36 bộ gioăng `84.84` bị tụt sai vào `4016.99.59`).
-  - Chương `94` (`94.05` & `94.06`): Toàn bộ 23 mệnh đề loại trừ ngoại nhóm của `94.05` (bóng đèn/mô-đun nguồn sáng sang `85.39`, chip LED sang `85.41`, đèn pin nguồn tự thân sang `85.13`, đèn xe cơ giới/xe đạp sang `85.12`, đèn khám y tế sang `90.18`, đèn flash chụp ảnh sang `90.06`, phụ tùng điện để riêng như chấn lưu/LED driver sang Chương `85`, hạt thuỷ tinh xâu chuỗi trang trí chụp đèn sang `70.18`, đèn lồng lễ hội sang `95.05`…) bắt buộc đặt toàn bộ tại cửa `bieu:9405` (`ve: 0, phu: true`). Ngược lại, mệnh đề *"trừ các loại được sử dụng ở các không gian mở công cộng hoặc đường phố lớn"* tại `bieu:94051` và mệnh đề loại nhà lắp ghép *"gói phẳng"* tại `bieu:940620` (`pn:940620:ct:1#1`) là loại trừ **nội nhóm** (đẩy sang anh em `9405.4x` và `9406.90` cùng nhóm) nên đặt đúng tại nút con `bieu:94051` và `bieu:940620`.
+  - Chương `94` (`94.05` & `94.06`): Toàn bộ 24 mệnh đề loại trừ ngoại nhóm của `94.05` (bóng đèn/mô-đun nguồn sáng sang `85.39`, chip LED sang `85.41`, đèn pin nguồn tự thân sang `85.13`, đèn xe cơ giới/xe đạp sang `85.12`, đèn khám y tế sang `90.18`, đèn flash chụp ảnh sang `90.06`, phụ tùng điện để riêng như chấn lưu/LED driver sang Chương `85`, hạt thuỷ tinh xâu chuỗi trang trí chụp đèn sang `70.18`, đèn lồng lễ hội sang `95.05`…) bắt buộc đặt toàn bộ tại cửa `bieu:9405` (`ve: 0, phu: true`). Ngược lại, mệnh đề *"trừ các loại được sử dụng ở các không gian mở công cộng hoặc đường phố lớn"* tại `bieu:94051` và mệnh đề loại nhà lắp ghép *"gói phẳng"* tại `bieu:940620` (`pn:940620:ct:1#1`) là loại trừ **nội nhóm** (đẩy sang anh em `9405.4x` và `9406.90` cùng nhóm) nên đặt đúng tại nút con `bieu:94051` và `bieu:940620`.
 
 ### Luật 3 — Mỗi trục chỉ chứa một loại giá trị; cấm gộp trục, cấm gộp ý và cấm rải `CO_KHONG` thay trục chung
 - **Quy tắc:**
@@ -96,5 +96,6 @@ node scripts/ho-so-ma/doc-mot-lan.mjs --dung-bang --chuong 94 --nguoi-doc <model
 node scripts/ho-so-ma/doc-mot-lan.mjs --kiem --chuong 94
 node scripts/ho-so-ma/khuon.mjs
 node scripts/test-doc-mot-lan.mjs
-node scripts/quan-ly-skill.mjs --kiem --plugin-dir=/tmp/khong-ton-tai-plugin
+node scripts/quan-ly-skill.mjs --dong-bo
+node scripts/quan-ly-skill.mjs --kiem --bat-buoc-plugin
 ```
