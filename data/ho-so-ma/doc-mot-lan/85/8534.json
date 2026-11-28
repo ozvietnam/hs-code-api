@@ -1,0 +1,842 @@
+{
+  "khuon": "doc-mot-lan-nhom@1",
+  "nhom": {
+    "ma": "8534",
+    "nut": "bieu:8534",
+    "ten": "Mạch in",
+    "nguoiDoc": "gemini-4-neon-high",
+    "ngayTao": "2026-11-28",
+    "vanTayGoi": "928c9a10ed38debab57f7ea90d000e4e656d4fa439fc83a00abbf30c15d07ed3",
+    "phamVi": [
+      {
+        "moTa": "Mạch in trần (mạch tạo trên tấm cách điện bằng quy trình in mạch hoặc kỹ thuật mạch điện màng với dây dẫn, tiếp điểm, phần tử thụ động được in, có thể gắn phần tử kết nối không qua in mạch).",
+        "canCu": [
+          {
+            "idCau": "bieu:8534#1",
+            "trich": "Mạch in"
+          },
+          {
+            "idCau": "chuong:85:cg:8#1",
+            "trich": "8. Theo mục đích của nhóm 85.34 “mạch in” là mạch được tạo ra trên một tấm cách điện bằng một quy trình in mạch nào đó (ví dụ, rập nổi, mạ, khắc axit) hoặc bằng kỹ thuật tạo “mạch điện màng”, các phần tử dẫn điện, các tiếp điểm hoặc các thành phần dùng cho mạch in khác (ví dụ, cuộn cảm, điện trở, tụ điện) đơn lẻ hoặc được liên kết theo sơ đồ mẫu đã thiết kế trước, trừ các phần tử có thể phát (tạo ra), chỉnh lưu, điều biến hoặc khuếch đại tín hiệu điện (ví dụ, các phần tử bán dẫn)."
+          },
+          {
+            "idCau": "chuong:85:cg:8#3",
+            "trich": "Tuy nhiên, những mạch in này có thể gắn với phần tử kết nối không qua quá trình in mạch."
+          }
+        ]
+      }
+    ],
+    "loaiTru": [
+      {
+        "nhom": "bieu:8542",
+        "dieuKien": "Mạch điện màng mỏng hoặc dày bao gồm cả phần tử chủ động và thụ động hợp thành trong cùng một quy trình công nghệ",
+        "canCu": [
+          {
+            "idCau": "chuong:85:cg:8#4",
+            "trich": "Mạch điện màng mỏng hoặc dày bao gồm phần tử chủ động và thụ động hợp thành trong cùng một quy trình công nghệ được phân loại trong nhóm 85.42."
+          }
+        ]
+      },
+      {
+        "nhom": "bieu:8548",
+        "dieuKien": "Mạch đã tổ hợp/gắn phần tử cơ khí hoặc linh kiện điện không hình thành trong quá trình in mạch (phân loại theo Chú giải 2 Phần XVI hoặc Chú giải 2 Chương 90)",
+        "canCu": [
+          {
+            "idCau": "chuong:85:cg:8#2",
+            "trich": "Thuật ngữ “mạch in” không bao gồm mạch đã tổ hợp với các phần tử trừ các phần tử đã được hình thành trong quá trình in mạch, và cũng không bao gồm điện trở, tụ điện hoặc cuộn cảm đơn lẻ hoặc bố trí ghép nối riêng biệt."
+          },
+          {
+            "idCau": "nhom:8534:ct:8#1",
+            "trich": "Các mạch mà trên đó những phần tử cơ khí hoặc những linh kiện điện đã được gắn hoặc được nối không được xem như những mạch in theo đúng nghĩa của nhóm này."
+          },
+          {
+            "idCau": "nhom:8534:ct:8#2",
+            "trich": "Nói chung, chúng được phân loại theo Chú giải 2 phần XVI hoặc chú giải 2 của chương 90, tùy trường hợp cụ thể."
+          }
+        ]
+      },
+      {
+        "nhom": "bieu:8533",
+        "dieuKien": "Điện trở đơn lẻ hoặc bố trí ghép nối riêng biệt (kể cả tạo bằng quy trình in)",
+        "canCu": [
+          {
+            "idCau": "chuong:85:cg:8#2",
+            "trich": "Thuật ngữ “mạch in” không bao gồm mạch đã tổ hợp với các phần tử trừ các phần tử đã được hình thành trong quá trình in mạch, và cũng không bao gồm điện trở, tụ điện hoặc cuộn cảm đơn lẻ hoặc bố trí ghép nối riêng biệt."
+          },
+          {
+            "idCau": "nhom:8534:ct:7#1",
+            "trich": "Các linh kiện thụ động riêng lẻ, như cuộn cảm, tụ điện và điện trở có được nhờ quá trình in bất kỳ nào đó mà không được xem là những mạch in thuộc nhóm này, nhưng chúng được phân loại vào những nhóm thích hợp riêng của chúng. (ví dụ các nhóm 85.04, 85.16, 85.32 hoặc 85.33)."
+          }
+        ]
+      },
+      {
+        "nhom": "bieu:8532",
+        "dieuKien": "Tụ điện đơn lẻ hoặc bố trí ghép nối riêng biệt (kể cả tạo bằng quy trình in)",
+        "canCu": [
+          {
+            "idCau": "chuong:85:cg:8#2",
+            "trich": "Thuật ngữ “mạch in” không bao gồm mạch đã tổ hợp với các phần tử trừ các phần tử đã được hình thành trong quá trình in mạch, và cũng không bao gồm điện trở, tụ điện hoặc cuộn cảm đơn lẻ hoặc bố trí ghép nối riêng biệt."
+          },
+          {
+            "idCau": "nhom:8534:ct:7#1",
+            "trich": "Các linh kiện thụ động riêng lẻ, như cuộn cảm, tụ điện và điện trở có được nhờ quá trình in bất kỳ nào đó mà không được xem là những mạch in thuộc nhóm này, nhưng chúng được phân loại vào những nhóm thích hợp riêng của chúng. (ví dụ các nhóm 85.04, 85.16, 85.32 hoặc 85.33)."
+          }
+        ]
+      },
+      {
+        "nhom": "bieu:8504",
+        "dieuKien": "Cuộn cảm đơn lẻ hoặc bố trí ghép nối riêng biệt (kể cả tạo bằng quy trình in)",
+        "canCu": [
+          {
+            "idCau": "chuong:85:cg:8#2",
+            "trich": "Thuật ngữ “mạch in” không bao gồm mạch đã tổ hợp với các phần tử trừ các phần tử đã được hình thành trong quá trình in mạch, và cũng không bao gồm điện trở, tụ điện hoặc cuộn cảm đơn lẻ hoặc bố trí ghép nối riêng biệt."
+          },
+          {
+            "idCau": "nhom:8534:ct:7#1",
+            "trich": "Các linh kiện thụ động riêng lẻ, như cuộn cảm, tụ điện và điện trở có được nhờ quá trình in bất kỳ nào đó mà không được xem là những mạch in thuộc nhóm này, nhưng chúng được phân loại vào những nhóm thích hợp riêng của chúng. (ví dụ các nhóm 85.04, 85.16, 85.32 hoặc 85.33)."
+          }
+        ]
+      },
+      {
+        "nhom": "bieu:8516",
+        "dieuKien": "Điện trở đốt nóng đơn lẻ tạo bằng quy trình in",
+        "canCu": [
+          {
+            "idCau": "nhom:8534:ct:7#1",
+            "trich": "Các linh kiện thụ động riêng lẻ, như cuộn cảm, tụ điện và điện trở có được nhờ quá trình in bất kỳ nào đó mà không được xem là những mạch in thuộc nhóm này, nhưng chúng được phân loại vào những nhóm thích hợp riêng của chúng. (ví dụ các nhóm 85.04, 85.16, 85.32 hoặc 85.33)."
+          }
+        ]
+      },
+      {
+        "nhom": "phan:XVI",
+        "dieuKien": "Các hàng hóa bị loại trừ chung khỏi Phần XVI (Chú giải 1 Phần XVI)",
+        "canCu": [
+          {
+            "idCau": "phan:XVI:cg:1#1",
+            "trich": "1. Phần này không bao gồm:"
+          },
+          {
+            "idCau": "phan:XVI:cg:1:g#1",
+            "trich": "(g) Các bộ phận có công dụng chung, như đã định nghĩa trong Chú giải 2 Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các hàng hóa tương tự bằng plastic (Chương 39);"
+          },
+          {
+            "idCau": "phan:XVI:cg:1:m#1",
+            "trich": "(m) Các sản phẩm thuộc Chương 90;"
+          }
+        ]
+      },
+      {
+        "nhom": "chuong:85",
+        "dieuKien": "Các hàng hóa bị loại trừ chung khỏi Chương 85 (Chú giải 1 Chương 85)",
+        "canCu": [
+          {
+            "idCau": "chuong:85:cg:1#1",
+            "trich": "1. Chương này không bao gồm:"
+          },
+          {
+            "idCau": "chuong:85:cg:1:c#1",
+            "trich": "(c) Máy và thiết bị của nhóm 84.86;"
+          },
+          {
+            "idCau": "chuong:85:cg:1:d#1",
+            "trich": "(d) Thiết bị hút chân không sử dụng trong lĩnh vực y tế, phẫu thuật, nha khoa hoặc thú y (nhóm 90.18);"
+          }
+        ]
+      }
+    ],
+    "dinhNghia": [
+      {
+        "thuatNgu": "mạch in",
+        "noiDung": "Mạch được tạo ra trên tấm cách điện bằng quy trình in mạch hoặc kỹ thuật mạch điện màng, chỉ gồm dây dẫn, tiếp điểm và phần tử thụ động được in (có thể gắn phần tử kết nối không qua in mạch), không gồm phần tử chủ động và không gồm mạch đã tổ hợp linh kiện rời.",
+        "canCu": [
+          {
+            "idCau": "chuong:85:cg:8#1",
+            "trich": "8. Theo mục đích của nhóm 85.34 “mạch in” là mạch được tạo ra trên một tấm cách điện bằng một quy trình in mạch nào đó (ví dụ, rập nổi, mạ, khắc axit) hoặc bằng kỹ thuật tạo “mạch điện màng”, các phần tử dẫn điện, các tiếp điểm hoặc các thành phần dùng cho mạch in khác (ví dụ, cuộn cảm, điện trở, tụ điện) đơn lẻ hoặc được liên kết theo sơ đồ mẫu đã thiết kế trước, trừ các phần tử có thể phát (tạo ra), chỉnh lưu, điều biến hoặc khuếch đại tín hiệu điện (ví dụ, các phần tử bán dẫn)."
+          },
+          {
+            "idCau": "chuong:85:cg:8#2",
+            "trich": "Thuật ngữ “mạch in” không bao gồm mạch đã tổ hợp với các phần tử trừ các phần tử đã được hình thành trong quá trình in mạch, và cũng không bao gồm điện trở, tụ điện hoặc cuộn cảm đơn lẻ hoặc bố trí ghép nối riêng biệt."
+          },
+          {
+            "idCau": "chuong:85:cg:8#3",
+            "trich": "Tuy nhiên, những mạch in này có thể gắn với phần tử kết nối không qua quá trình in mạch."
+          }
+        ]
+      }
+    ],
+    "canhTranh": [
+      {
+        "nhom": "bieu:8542",
+        "lyDo": "Theo Chú giải 8 Chương 85, mạch điện màng mỏng hoặc dày gồm cả phần tử chủ động và thụ động hợp thành trong cùng một quy trình công nghệ thuộc nhóm 85.42, không thuộc 85.34.",
+        "canCu": [
+          {
+            "idCau": "chuong:85:cg:8#4",
+            "trich": "Mạch điện màng mỏng hoặc dày bao gồm phần tử chủ động và thụ động hợp thành trong cùng một quy trình công nghệ được phân loại trong nhóm 85.42."
+          },
+          {
+            "idCau": "bieu:8542#1",
+            "trich": "Mạch điện tử tích hợp"
+          }
+        ]
+      },
+      {
+        "nhom": "bieu:8504",
+        "lyDo": "Cuộn cảm đơn lẻ hoặc ghép nối riêng biệt thu được bằng quy trình in không thuộc 85.34 mà thuộc nhóm 85.04.",
+        "canCu": [
+          {
+            "idCau": "chuong:85:cg:8#2",
+            "trich": "Thuật ngữ “mạch in” không bao gồm mạch đã tổ hợp với các phần tử trừ các phần tử đã được hình thành trong quá trình in mạch, và cũng không bao gồm điện trở, tụ điện hoặc cuộn cảm đơn lẻ hoặc bố trí ghép nối riêng biệt."
+          },
+          {
+            "idCau": "nhom:8534:ct:7#1",
+            "trich": "Các linh kiện thụ động riêng lẻ, như cuộn cảm, tụ điện và điện trở có được nhờ quá trình in bất kỳ nào đó mà không được xem là những mạch in thuộc nhóm này, nhưng chúng được phân loại vào những nhóm thích hợp riêng của chúng. (ví dụ các nhóm 85.04, 85.16, 85.32 hoặc 85.33)."
+          },
+          {
+            "idCau": "bieu:8504#1",
+            "trich": "Máy biến điện (máy biến áp và máy biến dòng), máy biến đổi điện tĩnh (ví dụ, bộ chỉnh lưu) và cuộn cảm"
+          }
+        ]
+      },
+      {
+        "nhom": "bieu:8532",
+        "lyDo": "Tụ điện đơn lẻ hoặc ghép nối riêng biệt thu được bằng quy trình in không thuộc 85.34 mà thuộc nhóm 85.32.",
+        "canCu": [
+          {
+            "idCau": "chuong:85:cg:8#2",
+            "trich": "Thuật ngữ “mạch in” không bao gồm mạch đã tổ hợp với các phần tử trừ các phần tử đã được hình thành trong quá trình in mạch, và cũng không bao gồm điện trở, tụ điện hoặc cuộn cảm đơn lẻ hoặc bố trí ghép nối riêng biệt."
+          },
+          {
+            "idCau": "nhom:8534:ct:7#1",
+            "trich": "Các linh kiện thụ động riêng lẻ, như cuộn cảm, tụ điện và điện trở có được nhờ quá trình in bất kỳ nào đó mà không được xem là những mạch in thuộc nhóm này, nhưng chúng được phân loại vào những nhóm thích hợp riêng của chúng. (ví dụ các nhóm 85.04, 85.16, 85.32 hoặc 85.33)."
+          },
+          {
+            "idCau": "bieu:8532#1",
+            "trich": "Tụ điện, loại có điện dung cố định, biến đổi hoặc điều chỉnh được (theo mức định trước)"
+          }
+        ]
+      },
+      {
+        "nhom": "bieu:8533",
+        "lyDo": "Điện trở đơn lẻ hoặc ghép nối riêng biệt thu được bằng quy trình in không thuộc 85.34 mà thuộc nhóm 85.33 (hoặc 85.16 nếu đốt nóng).",
+        "canCu": [
+          {
+            "idCau": "chuong:85:cg:8#2",
+            "trich": "Thuật ngữ “mạch in” không bao gồm mạch đã tổ hợp với các phần tử trừ các phần tử đã được hình thành trong quá trình in mạch, và cũng không bao gồm điện trở, tụ điện hoặc cuộn cảm đơn lẻ hoặc bố trí ghép nối riêng biệt."
+          },
+          {
+            "idCau": "nhom:8534:ct:7#1",
+            "trich": "Các linh kiện thụ động riêng lẻ, như cuộn cảm, tụ điện và điện trở có được nhờ quá trình in bất kỳ nào đó mà không được xem là những mạch in thuộc nhóm này, nhưng chúng được phân loại vào những nhóm thích hợp riêng của chúng. (ví dụ các nhóm 85.04, 85.16, 85.32 hoặc 85.33)."
+          },
+          {
+            "idCau": "bieu:8533#1",
+            "trich": "Điện trở (kể cả biến trở và chiết áp), trừ điện trở nung nóng"
+          }
+        ]
+      },
+      {
+        "nhom": "bieu:8516",
+        "lyDo": "Điện trở nung nóng đơn lẻ tạo bằng quy trình in không thuộc 85.34 mà thuộc nhóm 85.16.",
+        "canCu": [
+          {
+            "idCau": "nhom:8534:ct:7#1",
+            "trich": "Các linh kiện thụ động riêng lẻ, như cuộn cảm, tụ điện và điện trở có được nhờ quá trình in bất kỳ nào đó mà không được xem là những mạch in thuộc nhóm này, nhưng chúng được phân loại vào những nhóm thích hợp riêng của chúng. (ví dụ các nhóm 85.04, 85.16, 85.32 hoặc 85.33)."
+          },
+          {
+            "idCau": "bieu:8516#1",
+            "trich": "Dụng cụ điện đun nước nóng tức thời hoặc đun nước nóng có dự trữ và đun nước nóng kiểu nhúng; dụng cụ điện làm nóng không gian và làm nóng đất; dụng cụ nhiệt điện làm tóc (ví dụ, máy sấy tóc, máy uốn tóc, dụng cụ kẹp uốn tóc) và máy sấy làm khô tay; bàn là điện; dụng cụ nhiệt điện gia dụng khác; các loại điện trở đốt nóng bằng điện, trừ loại thuộc nhóm 85.45"
+          }
+        ]
+      },
+      {
+        "nhom": "bieu:8548",
+        "lyDo": "Mạch in đã gắn hoặc nối linh kiện điện/cơ khí (PCBA) không còn thuộc 85.34 mà phân loại theo Chú giải 2 Phần XVI (vào nhóm máy tương ứng hoặc 85.48 nếu không xác định được máy chủ).",
+        "canCu": [
+          {
+            "idCau": "chuong:85:cg:8#2",
+            "trich": "Thuật ngữ “mạch in” không bao gồm mạch đã tổ hợp với các phần tử trừ các phần tử đã được hình thành trong quá trình in mạch, và cũng không bao gồm điện trở, tụ điện hoặc cuộn cảm đơn lẻ hoặc bố trí ghép nối riêng biệt."
+          },
+          {
+            "idCau": "nhom:8534:ct:8#1",
+            "trich": "Các mạch mà trên đó những phần tử cơ khí hoặc những linh kiện điện đã được gắn hoặc được nối không được xem như những mạch in theo đúng nghĩa của nhóm này."
+          },
+          {
+            "idCau": "nhom:8534:ct:8#2",
+            "trich": "Nói chung, chúng được phân loại theo Chú giải 2 phần XVI hoặc chú giải 2 của chương 90, tùy trường hợp cụ thể."
+          },
+          {
+            "idCau": "phan:XVI:cg:2:c#1",
+            "trich": "(c) Tất cả các bộ phận khác được phân loại trong nhóm thích hợp như 84.09, 84.31, 84.48, 84.66, 84.73, 85.03, 85.22, 85.29 hoặc 85.38 hoặc, nếu không thì, phân loại vào nhóm 84.87 hoặc 85.48."
+          }
+        ]
+      }
+    ],
+    "khongCanhTranh": [
+      {
+        "nhom": "bieu:4602",
+        "lyDo": "Nhóm 46.02 là hàng mây tre, liễu gai và sản phẩm tết bện; nhiễu từ khóa \"Một mặt\".",
+        "canCu": [
+          {
+            "idCau": "bieu:4602#1",
+            "trich": "Hàng mây tre, liễu gai và các mặt hàng khác, làm trực tiếp từ vật liệu tết bện hoặc làm từ các mặt hàng thuộc nhóm 46.01; các sản phẩm từ cây họ mướp"
+          }
+        ]
+      },
+      {
+        "nhom": "bieu:4810",
+        "lyDo": "Nhóm 48.10 là giấy và bìa tráng cao lanh một hoặc hai mặt; nhiễu từ khóa \"Hai mặt\".",
+        "canCu": [
+          {
+            "idCau": "bieu:4810#1",
+            "trich": "Giấy và bìa, đã tráng một hoặc cả hai mặt bằng cao lanh (China clay) hoặc bằng các chất vô cơ khác, có hoặc không có chất kết dính, và không có lớp phủ tráng nào khác, có hoặc không nhuộm màu bề mặt, có hoặc không trang trí hoặc in bề mặt, ở dạng cuộn hoặc tờ hình chữ nhật (kể cả hình vuông), với mọi kích cỡ"
+          }
+        ]
+      },
+      {
+        "nhom": "bieu:7008",
+        "lyDo": "Nhóm 70.08 là kính hộp nhiều lớp; nhiễu từ khóa \"Nhiều lớp\".",
+        "canCu": [
+          {
+            "idCau": "bieu:7008#1",
+            "trich": "Kính hộp nhiều lớp"
+          }
+        ]
+      },
+      {
+        "nhom": "bieu:7007",
+        "lyDo": "Nhóm 70.07 là kính an toàn / kính dán nhiều lớp; nhiễu từ khóa \"Nhiều lớp\".",
+        "canCu": [
+          {
+            "idCau": "bieu:7007#1",
+            "trich": "Kính an toàn, bao gồm kính tôi hoặc kính dán nhiều lớp (laminated glass)"
+          }
+        ]
+      },
+      {
+        "nhom": "bieu:8484",
+        "lyDo": "Nhóm 84.84 là đệm và gioăng kim loại nhiều lớp; nhiễu từ khóa \"Nhiều lớp\".",
+        "canCu": [
+          {
+            "idCau": "bieu:8484#1",
+            "trich": "Đệm và gioăng tương tự làm bằng tấm kim loại mỏng kết hợp với các vật liệu khác hoặc bằng hai hoặc nhiều lớp kim loại; bộ hoặc một số chủng loại đệm và gioăng tương tự, thành phần khác nhau, được đóng trong các túi, bao hoặc đóng gói tương tự; bộ làm kín kiểu cơ khí"
+          }
+        ]
+      },
+      {
+        "nhom": "bieu:5811",
+        "lyDo": "Nhóm 58.11 là sản phẩm dệt đã chần nhiều lớp; nhiễu từ khóa \"Nhiều lớp\".",
+        "canCu": [
+          {
+            "idCau": "bieu:5811#1",
+            "trich": "Các sản phẩm dệt đã chần (quilted) dạng chiếc, bao gồm một hoặc nhiều lớp vật liệu dệt kết hợp với lớp đệm bằng cách khâu hoặc cách khác, trừ hàng thêu thuộc nhóm 58.10"
+          }
+        ]
+      },
+      {
+        "nhom": "bieu:4802",
+        "lyDo": "Nhóm 48.02 là giấy và bìa không tráng dùng để in, viết; nhiễu từ khóa \"Nhiều lớp\".",
+        "canCu": [
+          {
+            "idCau": "bieu:4802#1",
+            "trich": "Giấy và bìa không tráng, loại dùng để in, viết hoặc dùng cho các mục đích đồ bản khác, và giấy làm thẻ và giấy băng chưa đục lỗ, dạng cuộn hoặc tờ hình chữ nhật (kể cả hình vuông), kích thước bất kỳ, trừ giấy thuộc nhóm 48.01 hoặc 48.03; giấy và bìa sản xuất thủ công"
+          }
+        ]
+      }
+    ]
+  },
+  "dieuKien": [
+    {
+      "id": "hs:bieu:8534:8201",
+      "nut": "bieu:8534",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": false,
+      "kieu": "GIA_TRI",
+      "truc": "bản chất sản phẩm",
+      "tap": [
+        "mạch in trần (tạo bằng quy trình in mạch hoặc kỹ thuật mạch điện màng trên tấm cách điện)"
+      ],
+      "mo": "DINH_NGHIA_LUAT",
+      "moNguon": [
+        "chuong:85:cg:8#1",
+        "chuong:85:cg:8#3"
+      ],
+      "moNguonVanTay": {
+        "chuong:85:cg:8#1": "e0a47906a46bf13095f312a519ecbb2d5136296516ac3111a10776aca7f235e0",
+        "chuong:85:cg:8#3": "b0a300648740b3e207646643ac7ade4574cebca6518a963bf4fcf68280cc0628"
+      },
+      "cauHoi": "Sản phẩm có phải là mạch in tạo trên tấm cách điện bằng quy trình in mạch hoặc kỹ thuật mạch điện màng (chỉ gồm dây dẫn, tiếp điểm, phần tử thụ động được in, và có thể gắn phần tử kết nối không qua in mạch) không?",
+      "trich": "Mạch in",
+      "nguon": "bieu:8534#1",
+      "vanTay": "0fbd28ced19d582d2164cf18b58c6dbaf03e8da748a794d42128575ee793a0d2"
+    },
+    {
+      "id": "hs:bieu:8534:8202",
+      "nut": "bieu:8534",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "CO_KHONG",
+      "mo": "DINH_NGHIA_LUAT",
+      "moNguon": "chuong:85:cg:8#1",
+      "moNguonVanTay": "e0a47906a46bf13095f312a519ecbb2d5136296516ac3111a10776aca7f235e0",
+      "cauHoi": "Mạch có chứa phần tử chủ động (có thể phát, chỉnh lưu, điều biến hoặc khuếch đại tín hiệu điện như phần tử bán dẫn, điốt, triốt) không?",
+      "trich": "trừ các phần tử có thể phát (tạo ra), chỉnh lưu, điều biến hoặc khuếch đại tín hiệu điện (ví dụ, các phần tử bán dẫn)",
+      "nguon": "chuong:85:cg:8#1",
+      "vanTay": "e0a47906a46bf13095f312a519ecbb2d5136296516ac3111a10776aca7f235e0"
+    },
+    {
+      "id": "hs:bieu:8534:8203",
+      "nut": "bieu:8534",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "CO_KHONG",
+      "mo": "DINH_NGHIA_LUAT",
+      "moNguon": [
+        "chuong:85:cg:8#2",
+        "nhom:8534:ct:8#1",
+        "nhom:8534:ct:8#2"
+      ],
+      "moNguonVanTay": {
+        "chuong:85:cg:8#2": "68521abdacaa055141aa04cf80c10c96a71c89f7eace03bd43afcea1415535e6",
+        "nhom:8534:ct:8#1": "a4b391e4f9026af4d10622bec3ae1c197dc8fb422bba94ce52e6fbb672128488",
+        "nhom:8534:ct:8#2": "182991a9e1dd9382507b5b068fc1ff4d682ae2392c3499f3d1d56c064aa4f010"
+      },
+      "cauHoi": "Mạch in đã bị tổ hợp / gắn linh kiện điện hoặc phần tử cơ khí không hình thành trong quá trình in mạch (khác phần tử kết nối đơn thuần) thành bo mạch lắp ráp (PCBA) chưa?",
+      "trich": "Thuật ngữ “mạch in” không bao gồm mạch đã tổ hợp với các phần tử trừ các phần tử đã được hình thành trong quá trình in mạch",
+      "nguon": "chuong:85:cg:8#2",
+      "vanTay": "68521abdacaa055141aa04cf80c10c96a71c89f7eace03bd43afcea1415535e6"
+    },
+    {
+      "id": "hs:bieu:8534:8204",
+      "nut": "bieu:8534",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "CO_KHONG",
+      "mo": "DINH_NGHIA_LUAT",
+      "moNguon": [
+        "chuong:85:cg:8#2",
+        "nhom:8534:ct:7#1"
+      ],
+      "moNguonVanTay": {
+        "chuong:85:cg:8#2": "68521abdacaa055141aa04cf80c10c96a71c89f7eace03bd43afcea1415535e6",
+        "nhom:8534:ct:7#1": "44f66427fe30fa658c0e6f4269ba1124303043b96100e1892065d10bd779f97c"
+      },
+      "cauHoi": "Sản phẩm có phải là điện trở, tụ điện hoặc cuộn cảm đơn lẻ hoặc ghép nối riêng biệt (thuộc nhóm 85.04, 85.16, 85.32 hoặc 85.33) không?",
+      "trich": "và cũng không bao gồm điện trở, tụ điện hoặc cuộn cảm đơn lẻ hoặc bố trí ghép nối riêng biệt",
+      "nguon": "chuong:85:cg:8#2",
+      "vanTay": "68521abdacaa055141aa04cf80c10c96a71c89f7eace03bd43afcea1415535e6"
+    },
+    {
+      "id": "hs:bieu:8534:8205",
+      "nut": "bieu:8534",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "CO_KHONG",
+      "mo": "DINH_NGHIA_LUAT",
+      "moNguon": "chuong:85:cg:8#4",
+      "moNguonVanTay": "0f1116117c971166d86f53ec4dde00621cebcaae5b0d15ce0890d001a7cad824",
+      "cauHoi": "Sản phẩm có phải mạch điện màng mỏng hoặc dày gồm cả phần tử chủ động và thụ động hợp thành trong cùng một quy trình công nghệ (thuộc nhóm 85.42) không?",
+      "trich": "Mạch điện màng mỏng hoặc dày bao gồm phần tử chủ động và thụ động hợp thành trong cùng một quy trình công nghệ được phân loại trong nhóm 85.42.",
+      "nguon": "chuong:85:cg:8#4",
+      "vanTay": "0f1116117c971166d86f53ec4dde00621cebcaae5b0d15ce0890d001a7cad824"
+    },
+    {
+      "id": "hs:bieu:85340010:8201",
+      "nut": "bieu:85340010",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": false,
+      "kieu": "SO",
+      "nguong": "hs:bieu:85340010:1",
+      "mo": "NGUONG",
+      "cauHoi": "Mạch in có đúng 1 mặt dẫn điện (1 lớp in trên một mặt tấm cách điện) không?",
+      "trich": "- Một mặt",
+      "nguon": "bieu:85340010#1",
+      "vanTay": "46fa6e257627aa27a11fe3e5a3688802ff71474b1b95a2479f5efc23fe989b53"
+    },
+    {
+      "id": "hs:bieu:85340020:8201",
+      "nut": "bieu:85340020",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": false,
+      "kieu": "SO",
+      "nguong": "hs:bieu:85340020:1",
+      "mo": "NGUONG",
+      "cauHoi": "Mạch in có đúng 2 mặt dẫn điện (2 lớp in trên cả hai mặt tấm cách điện) không?",
+      "trich": "- Hai mặt",
+      "nguon": "bieu:85340020#1",
+      "vanTay": "7983c7b328d1f98743f2b8c39eafd87161610d5baac4eab548a341482acee2a4"
+    },
+    {
+      "id": "hs:bieu:85340030:8201",
+      "nut": "bieu:85340030",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": false,
+      "kieu": "SO",
+      "nguong": "hs:bieu:85340030:1",
+      "mo": "NGUONG",
+      "cauHoi": "Mạch in có trên 2 lớp dẫn điện (nhiều lớp, từ 3 lớp trở lên nối với nhau) không?",
+      "trich": "- Nhiều lớp",
+      "nguon": "bieu:85340030#1",
+      "vanTay": "d7ed4e8a09eefbf2dac68694d437fef10256a7560ece7905ad0fd383331f11dc"
+    },
+    {
+      "id": "hs:bieu:853400:8210",
+      "nut": "bieu:853400",
+      "loai": "GIAI_CHONG",
+      "cap": [
+        "bieu:85340010",
+        "bieu:85340020"
+      ],
+      "cach": "NGUONG",
+      "trich": "Mạch điện có thể được in lên một mặt hoặc cả hai mặt (mạch in 2 lớp)",
+      "nguon": "nhom:8534:ct:2#1",
+      "vanTay": "b7ac864f99d34f25fb85b0ba3a140f77d9816c0ff423b34b7bf935ad71fdf28a"
+    },
+    {
+      "id": "hs:bieu:853400:8211",
+      "nut": "bieu:853400",
+      "loai": "GIAI_CHONG",
+      "cap": [
+        "bieu:85340010",
+        "bieu:85340030"
+      ],
+      "cach": "NGUONG",
+      "trich": "Một vài mạch in có thể cấu tạo gồm nhiều lớp và được nối với nhau (mạch in nhiều lớp).",
+      "nguon": "nhom:8534:ct:2#2",
+      "vanTay": "463488d0ea36bb0c17dca1ce0619714d8f791a2f1115135782c770fd87a926a3"
+    },
+    {
+      "id": "hs:bieu:853400:8212",
+      "nut": "bieu:853400",
+      "loai": "GIAI_CHONG",
+      "cap": [
+        "bieu:85340020",
+        "bieu:85340030"
+      ],
+      "cach": "NGUONG",
+      "trich": "Một vài mạch in có thể cấu tạo gồm nhiều lớp và được nối với nhau (mạch in nhiều lớp).",
+      "nguon": "nhom:8534:ct:2#2",
+      "vanTay": "463488d0ea36bb0c17dca1ce0619714d8f791a2f1115135782c770fd87a926a3"
+    },
+    {
+      "id": "hs:bieu:853400:8213",
+      "nut": "bieu:853400",
+      "loai": "GIAI_CHONG",
+      "cap": [
+        "bieu:85340010",
+        "bieu:85340090"
+      ],
+      "cach": "TRU",
+      "trich": "- Loại khác",
+      "nguon": "bieu:85340090#1",
+      "vanTay": "e01a88a083c40bd1fd542463f0820ab9e51282aa553be12aea42f467146300fe"
+    },
+    {
+      "id": "hs:bieu:853400:8214",
+      "nut": "bieu:853400",
+      "loai": "GIAI_CHONG",
+      "cap": [
+        "bieu:85340020",
+        "bieu:85340090"
+      ],
+      "cach": "TRU",
+      "trich": "- Loại khác",
+      "nguon": "bieu:85340090#1",
+      "vanTay": "e01a88a083c40bd1fd542463f0820ab9e51282aa553be12aea42f467146300fe"
+    },
+    {
+      "id": "hs:bieu:853400:8215",
+      "nut": "bieu:853400",
+      "loai": "GIAI_CHONG",
+      "cap": [
+        "bieu:85340030",
+        "bieu:85340090"
+      ],
+      "cach": "TRU",
+      "trich": "- Loại khác",
+      "nguon": "bieu:85340090#1",
+      "vanTay": "e01a88a083c40bd1fd542463f0820ab9e51282aa553be12aea42f467146300fe"
+    },
+    {
+      "id": "hs:bieu:8534:8220",
+      "nut": "bieu:8534",
+      "loai": "CANH_TRANH",
+      "nhomCanhTranh": [
+        "bieu:8542",
+        "bieu:8504",
+        "bieu:8532",
+        "bieu:8533",
+        "bieu:8516",
+        "bieu:8548"
+      ],
+      "phepThu": [
+        {
+          "nhom": "bieu:8542",
+          "nguon": "chuong:85:cg:8#4",
+          "trich": "Mạch điện màng mỏng hoặc dày bao gồm phần tử chủ động và thụ động hợp thành trong cùng một quy trình công nghệ được phân loại trong nhóm 85.42.",
+          "vanTay": "0f1116117c971166d86f53ec4dde00621cebcaae5b0d15ce0890d001a7cad824"
+        },
+        {
+          "nhom": "bieu:8504",
+          "nguon": "nhom:8534:ct:7#1",
+          "trich": "Các linh kiện thụ động riêng lẻ, như cuộn cảm, tụ điện và điện trở có được nhờ quá trình in bất kỳ nào đó mà không được xem là những mạch in thuộc nhóm này, nhưng chúng được phân loại vào những nhóm thích hợp riêng của chúng. (ví dụ các nhóm 85.04, 85.16, 85.32 hoặc 85.33).",
+          "vanTay": "44f66427fe30fa658c0e6f4269ba1124303043b96100e1892065d10bd779f97c"
+        },
+        {
+          "nhom": "bieu:8532",
+          "nguon": "nhom:8534:ct:7#1",
+          "trich": "Các linh kiện thụ động riêng lẻ, như cuộn cảm, tụ điện và điện trở có được nhờ quá trình in bất kỳ nào đó mà không được xem là những mạch in thuộc nhóm này, nhưng chúng được phân loại vào những nhóm thích hợp riêng của chúng. (ví dụ các nhóm 85.04, 85.16, 85.32 hoặc 85.33).",
+          "vanTay": "44f66427fe30fa658c0e6f4269ba1124303043b96100e1892065d10bd779f97c"
+        },
+        {
+          "nhom": "bieu:8533",
+          "nguon": "nhom:8534:ct:7#1",
+          "trich": "Các linh kiện thụ động riêng lẻ, như cuộn cảm, tụ điện và điện trở có được nhờ quá trình in bất kỳ nào đó mà không được xem là những mạch in thuộc nhóm này, nhưng chúng được phân loại vào những nhóm thích hợp riêng của chúng. (ví dụ các nhóm 85.04, 85.16, 85.32 hoặc 85.33).",
+          "vanTay": "44f66427fe30fa658c0e6f4269ba1124303043b96100e1892065d10bd779f97c"
+        },
+        {
+          "nhom": "bieu:8516",
+          "nguon": "nhom:8534:ct:7#1",
+          "trich": "Các linh kiện thụ động riêng lẻ, như cuộn cảm, tụ điện và điện trở có được nhờ quá trình in bất kỳ nào đó mà không được xem là những mạch in thuộc nhóm này, nhưng chúng được phân loại vào những nhóm thích hợp riêng của chúng. (ví dụ các nhóm 85.04, 85.16, 85.32 hoặc 85.33).",
+          "vanTay": "44f66427fe30fa658c0e6f4269ba1124303043b96100e1892065d10bd779f97c"
+        },
+        {
+          "nhom": "bieu:8548",
+          "nguon": "nhom:8534:ct:8#2",
+          "trich": "Nói chung, chúng được phân loại theo Chú giải 2 phần XVI hoặc chú giải 2 của chương 90, tùy trường hợp cụ thể.",
+          "vanTay": "182991a9e1dd9382507b5b068fc1ff4d682ae2392c3499f3d1d56c064aa4f010"
+        }
+      ],
+      "khongCanhTranh": [
+        {
+          "nhom": "bieu:4602",
+          "nguon": "bieu:4602#1",
+          "trich": "Hàng mây tre, liễu gai và các mặt hàng khác, làm trực tiếp từ vật liệu tết bện hoặc làm từ các mặt hàng thuộc nhóm 46.01; các sản phẩm từ cây họ mướp",
+          "vanTay": "2e79df2644465cb3b2f84a52fab6865a114d4141c6230d7f547d2f271358b36e",
+          "lyDo": "Nhóm 46.02 là hàng mây tre, liễu gai và sản phẩm tết bện; nhiễu từ khóa \"Một mặt\"."
+        },
+        {
+          "nhom": "bieu:4810",
+          "nguon": "bieu:4810#1",
+          "trich": "Giấy và bìa, đã tráng một hoặc cả hai mặt bằng cao lanh (China clay) hoặc bằng các chất vô cơ khác, có hoặc không có chất kết dính, và không có lớp phủ tráng nào khác, có hoặc không nhuộm màu bề mặt, có hoặc không trang trí hoặc in bề mặt, ở dạng cuộn hoặc tờ hình chữ nhật (kể cả hình vuông), với mọi kích cỡ",
+          "vanTay": "6ed9f6be4e34ba3064135a918abb0e5e62874b3238cb1bd2da7fd83bc491e3cf",
+          "lyDo": "Nhóm 48.10 là giấy và bìa tráng cao lanh một hoặc hai mặt; nhiễu từ khóa \"Hai mặt\"."
+        },
+        {
+          "nhom": "bieu:7008",
+          "nguon": "bieu:7008#1",
+          "trich": "Kính hộp nhiều lớp",
+          "vanTay": "8d48b625537ec7599ad906323b4af90db8542963878a61323e490a32f790d7e5",
+          "lyDo": "Nhóm 70.08 là kính hộp nhiều lớp; nhiễu từ khóa \"Nhiều lớp\"."
+        },
+        {
+          "nhom": "bieu:7007",
+          "nguon": "bieu:7007#1",
+          "trich": "Kính an toàn, bao gồm kính tôi hoặc kính dán nhiều lớp (laminated glass)",
+          "vanTay": "4bf443f5ea6a0bac6143e44f6f1551ebf57ee7f51c2133767b192bac96166451",
+          "lyDo": "Nhóm 70.07 là kính an toàn / kính dán nhiều lớp; nhiễu từ khóa \"Nhiều lớp\"."
+        },
+        {
+          "nhom": "bieu:8484",
+          "nguon": "bieu:8484#1",
+          "trich": "Đệm và gioăng tương tự làm bằng tấm kim loại mỏng kết hợp với các vật liệu khác hoặc bằng hai hoặc nhiều lớp kim loại; bộ hoặc một số chủng loại đệm và gioăng tương tự, thành phần khác nhau, được đóng trong các túi, bao hoặc đóng gói tương tự; bộ làm kín kiểu cơ khí",
+          "vanTay": "befdb68ced9f70779a59f8ebc8534ca8693900e58c71000cc67d6e3ee16bba6f",
+          "lyDo": "Nhóm 84.84 là đệm và gioăng kim loại nhiều lớp; nhiễu từ khóa \"Nhiều lớp\"."
+        },
+        {
+          "nhom": "bieu:5811",
+          "nguon": "bieu:5811#1",
+          "trich": "Các sản phẩm dệt đã chần (quilted) dạng chiếc, bao gồm một hoặc nhiều lớp vật liệu dệt kết hợp với lớp đệm bằng cách khâu hoặc cách khác, trừ hàng thêu thuộc nhóm 58.10",
+          "vanTay": "bf5182e20a2708e9cc5168d0005491aad160223af953577d93c3b423cf52e18f",
+          "lyDo": "Nhóm 58.11 là sản phẩm dệt đã chần nhiều lớp; nhiễu từ khóa \"Nhiều lớp\"."
+        },
+        {
+          "nhom": "bieu:4802",
+          "nguon": "bieu:4802#1",
+          "trich": "Giấy và bìa không tráng, loại dùng để in, viết hoặc dùng cho các mục đích đồ bản khác, và giấy làm thẻ và giấy băng chưa đục lỗ, dạng cuộn hoặc tờ hình chữ nhật (kể cả hình vuông), kích thước bất kỳ, trừ giấy thuộc nhóm 48.01 hoặc 48.03; giấy và bìa sản xuất thủ công",
+          "vanTay": "670f34bc5960b5a94899f0ed51aeb2f1d021b39d8f332b8fe6b5d5eb85085b54",
+          "lyDo": "Nhóm 48.02 là giấy và bìa không tráng dùng để in, viết; nhiễu từ khóa \"Nhiều lớp\"."
+        }
+      ],
+      "trich": "Mạch in",
+      "nguon": "bieu:8534#1",
+      "vanTay": "0fbd28ced19d582d2164cf18b58c6dbaf03e8da748a794d42128575ee793a0d2"
+    }
+  ],
+  "ma8": [
+    {
+      "ma": "bieu:85340010",
+      "maSo": "85340010",
+      "cap": 8,
+      "ten": "- Một mặt",
+      "laLoaiKhac": false,
+      "ketQua": "ĐÚNG",
+      "lyDo": "Áp dụng cho mạch in trần thỏa mãn Chú giải 8 Chương 85 có mạch dẫn in trên 1 mặt (1 lớp).",
+      "cauHoi": null,
+      "canCu": [
+        {
+          "idCau": "bieu:8534#1",
+          "trich": "Mạch in"
+        },
+        {
+          "idCau": "chuong:85:cg:8#1",
+          "trich": "8. Theo mục đích của nhóm 85.34 “mạch in” là mạch được tạo ra trên một tấm cách điện bằng một quy trình in mạch nào đó (ví dụ, rập nổi, mạ, khắc axit) hoặc bằng kỹ thuật tạo “mạch điện màng”, các phần tử dẫn điện, các tiếp điểm hoặc các thành phần dùng cho mạch in khác (ví dụ, cuộn cảm, điện trở, tụ điện) đơn lẻ hoặc được liên kết theo sơ đồ mẫu đã thiết kế trước, trừ các phần tử có thể phát (tạo ra), chỉnh lưu, điều biến hoặc khuếch đại tín hiệu điện (ví dụ, các phần tử bán dẫn)."
+        },
+        {
+          "idCau": "bieu:85340010#1",
+          "trich": "- Một mặt"
+        }
+      ]
+    },
+    {
+      "ma": "bieu:85340020",
+      "maSo": "85340020",
+      "cap": 8,
+      "ten": "- Hai mặt",
+      "laLoaiKhac": false,
+      "ketQua": "ĐÚNG",
+      "lyDo": "Áp dụng cho mạch in trần thỏa mãn Chú giải 8 Chương 85 có mạch dẫn in trên 2 mặt (2 lớp).",
+      "cauHoi": null,
+      "canCu": [
+        {
+          "idCau": "bieu:8534#1",
+          "trich": "Mạch in"
+        },
+        {
+          "idCau": "chuong:85:cg:8#1",
+          "trich": "8. Theo mục đích của nhóm 85.34 “mạch in” là mạch được tạo ra trên một tấm cách điện bằng một quy trình in mạch nào đó (ví dụ, rập nổi, mạ, khắc axit) hoặc bằng kỹ thuật tạo “mạch điện màng”, các phần tử dẫn điện, các tiếp điểm hoặc các thành phần dùng cho mạch in khác (ví dụ, cuộn cảm, điện trở, tụ điện) đơn lẻ hoặc được liên kết theo sơ đồ mẫu đã thiết kế trước, trừ các phần tử có thể phát (tạo ra), chỉnh lưu, điều biến hoặc khuếch đại tín hiệu điện (ví dụ, các phần tử bán dẫn)."
+        },
+        {
+          "idCau": "bieu:85340020#1",
+          "trich": "- Hai mặt"
+        }
+      ]
+    },
+    {
+      "ma": "bieu:85340030",
+      "maSo": "85340030",
+      "cap": 8,
+      "ten": "- Nhiều lớp",
+      "laLoaiKhac": false,
+      "ketQua": "ĐÚNG",
+      "lyDo": "Áp dụng cho mạch in trần thỏa mãn Chú giải 8 Chương 85 có cấu tạo nhiều lớp (> 2 lớp dẫn điện nối với nhau).",
+      "cauHoi": null,
+      "canCu": [
+        {
+          "idCau": "bieu:8534#1",
+          "trich": "Mạch in"
+        },
+        {
+          "idCau": "chuong:85:cg:8#1",
+          "trich": "8. Theo mục đích của nhóm 85.34 “mạch in” là mạch được tạo ra trên một tấm cách điện bằng một quy trình in mạch nào đó (ví dụ, rập nổi, mạ, khắc axit) hoặc bằng kỹ thuật tạo “mạch điện màng”, các phần tử dẫn điện, các tiếp điểm hoặc các thành phần dùng cho mạch in khác (ví dụ, cuộn cảm, điện trở, tụ điện) đơn lẻ hoặc được liên kết theo sơ đồ mẫu đã thiết kế trước, trừ các phần tử có thể phát (tạo ra), chỉnh lưu, điều biến hoặc khuếch đại tín hiệu điện (ví dụ, các phần tử bán dẫn)."
+        },
+        {
+          "idCau": "bieu:85340030#1",
+          "trich": "- Nhiều lớp"
+        }
+      ]
+    },
+    {
+      "ma": "bieu:85340090",
+      "maSo": "85340090",
+      "cap": 8,
+      "ten": "- Loại khác",
+      "laLoaiKhac": true,
+      "ketQua": "CHƯA ĐỦ DỮ KIỆN",
+      "lyDo": "Dòng \"Loại khác\" trong 8534.00 chỉ áp dụng sau khi loại trừ 3 anh em cùng cấp đứng trên (8534.00.10 một mặt, 8534.00.20 hai mặt, 8534.00.30 nhiều lớp) và đảm bảo vẫn là mạch in trần theo Chú giải 8 Chương 85.",
+      "cauHoi": "Mạch in trần (đạt Chú giải 8 Chương 85) có cấu tạo số lớp/hình dạng thế nào mà không phải loại một mặt (8534.00.10), hai mặt (8534.00.20) hay nhiều lớp (8534.00.30)?",
+      "canCu": [
+        {
+          "idCau": "bieu:853400#1",
+          "trich": "Mạch in"
+        },
+        {
+          "idCau": "bieu:85340010#1",
+          "trich": "- Một mặt"
+        },
+        {
+          "idCau": "bieu:85340020#1",
+          "trich": "- Hai mặt"
+        },
+        {
+          "idCau": "bieu:85340030#1",
+          "trich": "- Nhiều lớp"
+        },
+        {
+          "idCau": "bieu:85340090#1",
+          "trich": "- Loại khác"
+        }
+      ]
+    }
+  ],
+  "diemMoHo": [
+    {
+      "id": "dmh:8534:1",
+      "nut": "bieu:8534",
+      "cauHoi": "Mạch in đã gắn thêm đầu nối, chân cắm hoặc thanh định vị cơ khí không qua quá trình in mạch vẫn ở 85.34 hay bị loại trừ sang bộ phận máy theo Chú giải 2 Phần XVI?",
+      "cachHieu": [
+        "Vẫn xếp vào 85.34 nếu chỉ gắn \"phần tử kết nối không qua quá trình in mạch\" (như đầu cắm, chân tiếp xúc, lỗ gắn kết nối) theo chuong:85:cg:8#3 và nhom:8534:ct:6#1.",
+        "Loại trừ khỏi 85.34 sang Chú giải 2 Phần XVI / Chương 90 nếu đã gắn linh kiện điện rời (IC, tụ, trở, công tắc...) hoặc phần tử cơ khí vượt quá phần tử kết nối đơn thuần theo chuong:85:cg:8#2 và nhom:8534:ct:8#1."
+      ],
+      "canCu": [
+        {
+          "idCau": "chuong:85:cg:8#2",
+          "trich": "Thuật ngữ “mạch in” không bao gồm mạch đã tổ hợp với các phần tử trừ các phần tử đã được hình thành trong quá trình in mạch, và cũng không bao gồm điện trở, tụ điện hoặc cuộn cảm đơn lẻ hoặc bố trí ghép nối riêng biệt."
+        },
+        {
+          "idCau": "chuong:85:cg:8#3",
+          "trich": "Tuy nhiên, những mạch in này có thể gắn với phần tử kết nối không qua quá trình in mạch."
+        },
+        {
+          "idCau": "nhom:8534:ct:6#1",
+          "trich": "Các mạch in có thể được tạo lỗ hoặc để gắn với các phần tử kết nối không được in hoặc để gắn những phần tử cơ khí hoặc để nối các linh kiện dẫn điện không được hình thành trong quá trình in."
+        },
+        {
+          "idCau": "nhom:8534:ct:8#1",
+          "trich": "Các mạch mà trên đó những phần tử cơ khí hoặc những linh kiện điện đã được gắn hoặc được nối không được xem như những mạch in theo đúng nghĩa của nhóm này."
+        }
+      ]
+    },
+    {
+      "id": "dmh:8534:2",
+      "nut": "bieu:853400",
+      "cauHoi": "Mạch in mềm (FPC), mạch in màng mỏng/dày thụ động đóng vỏ hoặc mạch in dạng trụ/nón được phân vào 8534.00.10/20/30 theo số lớp hay vào 8534.00.90 (\"Loại khác\")?",
+      "cachHieu": [
+        "Phân theo số mặt/số lớp dẫn điện (1 mặt → 8534.00.10, 2 mặt → 8534.00.20, từ 3 lớp trở lên → 8534.00.30) dù nền cứng hay nền dẻo/màng.",
+        "Phân vào 8534.00.90 nếu kết cấu không thể xác định theo tiêu chí một mặt / hai mặt / nhiều lớp phẳng thông thường (ví dụ dạng trụ, nón hoặc mạch màng có vỏ bọc đặc thù theo nhom:8534:ct:2#1, nhom:8534:ct:6#2)."
+      ],
+      "canCu": [
+        {
+          "idCau": "bieu:85340010#1",
+          "trich": "- Một mặt"
+        },
+        {
+          "idCau": "bieu:85340020#1",
+          "trich": "- Hai mặt"
+        },
+        {
+          "idCau": "bieu:85340030#1",
+          "trich": "- Nhiều lớp"
+        },
+        {
+          "idCau": "bieu:85340090#1",
+          "trich": "- Loại khác"
+        },
+        {
+          "idCau": "nhom:8534:ct:2#1",
+          "trich": "Tấm vật liệu cách điện cơ sở thường có dạng phẳng tuy nhiên cũng có thể dưới dạng trụ, nón...Mạch điện có thể được in lên một mặt hoặc cả hai mặt (mạch in 2 lớp)."
+        },
+        {
+          "idCau": "nhom:8534:ct:6#2",
+          "trich": "Thông thường, những mạch phim có vỏ bọc bằng chất dẻo, gốm hoặc kim loại, chúng gắn với những dây dẫn hoặc các đầu cực."
+        }
+      ]
+    }
+  ]
+}
