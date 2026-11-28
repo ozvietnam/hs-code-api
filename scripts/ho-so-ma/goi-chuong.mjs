@@ -17,17 +17,13 @@ import {
   dinhDangMucLuatNen,
   layNenUngVien,
   timCgctCoDem,
+  tachTu,
+  xayChiMucTimCgct,
 } from './goi-nhom.mjs';
-
-const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
-if (!process.env.HS_DATA_DIR) {
-  process.env.HS_DATA_DIR = path.join(REPO_ROOT, 'data');
-}
 
 const require = createRequire(import.meta.url);
 const G = require('../../lib/ho-so-ma/ghep.js');
 const { CHUONG_SANG_PHAN } = require('../../lib/do-thi/dan-chieu.js');
-const { tachTu, xayChiMuc: xayChiMucTimCgct } = require('../../lib/tim-cgct.js');
 
 const LOAI_CANH_GOI = new Set(['LOAI_SANG', 'PHAN_VE', 'DINH_NGHIA']);
 const TRAN_CGCT_MOI_TRUY_VAN = 3;

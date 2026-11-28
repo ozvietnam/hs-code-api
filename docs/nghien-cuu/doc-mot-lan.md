@@ -151,15 +151,28 @@ Sau khi QT chấm mù `40.16` v1 (`25 ĐÚNG · 11 CHƯA ĐỦ DỮ KIỆN · 2 
 8. **`dmh:9405:13` (`bieu:940550` — Đèn đốt bằng dầu `9405.50.1` giao thoa với Đèn bão `9405.50.40` và Đèn thợ mỏ `9405.50.50`):** Chuyển từ `"CHỐT KÈM GIẢ ĐỊNH"` sang **`CHƯA ĐỦ DỮ KIỆN`** khi chưa biết chủng loại đèn cụ thể (đèn bão, đèn thợ mỏ đốt dầu hay đèn dầu nghi lễ/thông thường).
 9. **`dmh:9406:5` (`bieu:940620` — Khối mô-đun xây dựng khung chịu lực bằng thép nhưng vỏ tường/sàn/mái bằng vật liệu khác):** Bác bỏ giả định chỉ nhìn khung thép để chốt `9406.20`; bắt buộc hỏi vật liệu của cả kết cấu chịu lực lẫn bao che theo `pn:940620:ct:1` → đổi sang **`CHƯA ĐỦ DỮ KIỆN`**.
 
-### 2.4 Kết quả QT chấm mù lần đọc đầu của `94.05` (`#2486`) & Nâng cấp Luật đọc 5
+### 2.4 Kết quả QT chấm mù hai vòng của `94.05` (`#2486`), Luật đọc 5 & Lịch sử vân tay gói (`vanTayGoi`)
 
-1. **Kết quả QT chấm mù lần đọc đầu (`d00938a77`):**
-   - **Ca thử:** **`13 ĐÚNG · 28 CHƯA ĐỦ DỮ KIỆN · 0 SAI → dùng 41 lần thì 0 lần ra mã sai`**; toàn bộ **`12/12` ca ngoài nhóm** đều bị chặn đúng ở nút `9405`.
-   - **Đối chiếu bảng vàng `94.05`:** Điều kiện vàng (`105`) tăng từ `85 / 20` (bản cũ) lên **`94 / 11`**; cặp chồng (`39`) đạt `32 / 7`. Luật 1 (không chốt sớm) và Luật 2 (toàn bộ loại trừ ngoài nhóm đặt ở nút nhóm `9405`) ăn ngay từ lượt đọc đầu.
+1. **Kết quả QT chấm mù lần đọc đầu (`d00938a77`) và sau lượt sửa một lượt (`39ecc74bb`):**
+   - **Ca thử mù:** **`13 ĐÚNG · 28 CHƯA ĐỦ DỮ KIỆN · 0 SAI → dùng 41 lần thì 0 lần ra mã sai`**; toàn bộ **`12/12` ca ngoài nhóm** đều bị chặn đúng ở nút `9405`.
+   - **Đối chiếu bảng vàng `94.05`:**
+     - Lần đọc đầu (`d00938a77`): Điều kiện vàng (`105`) tăng từ `85 / 20` (bản cũ) lên **`94 / 11`**; cặp chồng (`39`) đạt `32 / 7`.
+     - Sau 1 lượt sửa áp đủ 5 Luật đọc (`39ecc74bb`): **Nội dung ĐẠT — Điều kiện vàng đạt `104 / 105`, cặp chồng đạt `39 / 39` (`0` sót), dùng 41 lần thì `0` lần ra mã sai.**
 2. **5 điểm hoàn thiện một lượt trên `94.05` + 3 nâng cấp hệ thống giữ lại cho mọi chương:**
    - **Luật đọc 5 (Quy tắc 6 cho chữ `"khác"`):** Chữ `"khác"` ở `9405.41.20 / 9405.42.20 / 9405.49.20` (*"Đèn rọi khác"*) chỉ so với anh em cùng cấp 3 gạch đứng trên là *"Đèn pha"* (`.10`), không so chéo với nhánh `9405.1`; bổ sung `¬Đèn pha` + 3 cặp `GIAI_CHONG` `pha × rọi` và 2 cặp `.40 × .60` ở `9405.42` & `9405.49`.
    - **Tách trục loại đối tượng và kiểu hàng (Luật đọc 3):** Tách `nhomHang9405` thành `loaiDoiTuong9405` (`daTri: false`: đèn và bộ đèn | biển hiệu được chiếu sáng | bộ phận) và `kieuDen` (`daTri: false`); mở đủ 2 vùng chồng bộ phận *"dùng cho đèn rọi"* × *"dùng cho đèn pha"* ở `9405.91` (`9405.91.20 × 9405.91.50`) và `9405.92` (`9405.92.20 × 9405.92.30`).
-   - **Giữ nguyên phạm vi chú giải chung & gói kèm tên nhóm đích (Luật đọc 4 + `goi-nhom.mjs` + `doc-mot-lan.mjs`):** Giữ nguyên câu chung Chú giải `1(f)` Chương 94, bổ sung đủ 100% các mục `a..m` của Chú giải 1 Chương 94 và điều kiện *"chưa được chi tiết hoặc ghi ở nơi khác"* trên `bieu:9405#1`; `goi-nhom.mjs` tự động gói kèm câu tên nhóm 4 số đích bị chú giải đẩy hàng sang (`59.08, 85.16, 85.31…`) và cố định `vanTayGoi`; `doc-mot-lan.mjs` đối chiếu trực tiếp `vanTayGoi` trong `chuong.json` và `<nhóm>.json` với gói dựng lại.
+   - **Giữ nguyên phạm vi chú giải chung, gói kèm tên nhóm đích & cố định tuyệt đối `vanTayGoi` (`goi-nhom.mjs` + `goi-chuong.mjs` + `doc-mot-lan.mjs`):** Giữ nguyên câu chung Chú giải `1(f)` Chương 94, bổ sung đủ các mục `a..m` của Chú giải 1 Chương 94 và điều kiện *"chưa được chi tiết hoặc ghi ở nơi khác"* trên `bieu:9405#1`; `goi-nhom.mjs` xuất trực tiếp `goi.tenNhomDich` (`bieu:5908#1`, `bieu:8516#1`, `bieu:8531#1`…; trong `DIEU_KIEN` gắn ở `moNguon` để giữ `DIEU_KIEN.nguon` trên đường đi tổ tiên của Cổng 6/14) và bọc `chayVoiDataGoc()` quanh `tim-cgct.js` + `phai-doc.js` để `vanTayGoi` bất biến 100% kể cả khi môi trường chấm chạy khác thư mục (`cwd`) và đặt `HS_DATA_DIR` sang thư mục tạm rỗng.
+3. **Truy vết minh bạch gói đã đọc (`vanTayGoiLanDocDau` vs `vanTayGoi` hiện hành):**
+
+| Tệp hồ sơ | `vanTayGoiLanDocDau` (gói v1 lần đọc mù đầu) | `vanTayGoi` hiện hành (gói v3 có GIR 1–6 + `tenNhomDich`) | Phạm vi đọc trên gói cũ (v1) vs cập nhật trên gói hiện hành (v3) |
+|---|---|---|---|
+| `chuong.json` | `e642f4548841…` | `e642f4548841…` | Không đổi (`100%` đọc từ đầu trên gói đã có GIR 1–6, Chú giải Phần XX / Chương 94 và ứng viên `timCgct`). |
+| `9401.json` | `a4426c4cee9e…` | `890ddb517009…` | Lần đọc mù đầu (cây 4→6→8 + `17` `DIEM_MO_HO`) đọc trên v1; vòng 2 bổ sung đủ Chú giải 1 `a..m` & câu tên nhóm đích trên v3. |
+| `9402.json` | `0e7f6be68f92…` | `e4f13f354473…` | Lần đọc mù đầu (cây 4→6→8 + `11` `DIEM_MO_HO`) đọc trên v1; vòng 2 bổ sung đủ Chú giải 1 `a..m` & câu tên nhóm đích trên v3. |
+| `9403.json` | `7abedfc86930…` | `826fa96795bc…` | Lần đọc mù đầu (cây 4→6→8 + `8` `DIEM_MO_HO`) đọc trên v1; vòng 2 tách gộp ý Luật 3, phủ định anh em `9403.8` Luật 5, đủ Chú giải 1 `a..m` & tên nhóm đích trên v3. |
+| `9404.json` | `66c64bfc202c…` | `5d53468a9852…` | Lần đọc mù đầu (cây 4→6→8 + `9` `DIEM_MO_HO`) đọc trên v1; vòng 2 chuẩn hoá `daTri` Luật 3, phủ định anh em `9404.29` Luật 5, đủ Chú giải 1 `a..m` & tên nhóm đích trên v3. |
+| `9405.json` | `b536f5141d91…` | `6352d91d98cc…` | Lần đọc mù đầu (cây 4→6→8 + `18` `DIEM_MO_HO`) đọc trên v1; vòng 2 sửa trọn 5 mục (`9405.4x.20`, tách trục `loaiDoiTuong9405`/`kieuDen`, `.40×.60`, bộ phận rọi×pha, Chú giải 1 `a..m` & `moNguon` tên nhóm đích `59.08, 85.16, 85.31`) trên v3. |
+| `9406.json` | `28588fc19339…` | `486d90b0cad3…` | Lần đọc mù đầu (cây 4→6→8 + `8` `DIEM_MO_HO`) đọc trên v1; vòng 2 phủ định anh em `9406.90` Luật 5, đủ Chú giải 1 `a..m` & tên nhóm đích trên v3. |
 
 ### 2.5 Chẩn đoán Cổng 6–14 ở chế độ cảnh báo (Tham khảo theo `ADR-0011` mục 1)
 

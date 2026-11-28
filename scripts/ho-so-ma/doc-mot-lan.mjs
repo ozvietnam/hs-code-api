@@ -680,6 +680,13 @@ export function kiemDocMotLanChuong(chuongArg, opts = {}) {
       if (chuongObj.vanTayGoi !== goiChuong.vanTayGoi) {
         loiTrich.push(`doc-mot-lan/${ch}/chuong.json: vanTayGoi "${chuongObj.vanTayGoi}" không khớp gói chương dựng lại "${goiChuong.vanTayGoi}"`);
       }
+      if (chuongObj.vanTayGoiLanDocDau !== undefined) {
+        if (!/^[a-f0-9]{64}$/.test(String(chuongObj.vanTayGoiLanDocDau || ''))) {
+          loiTrich.push(`doc-mot-lan/${ch}/chuong.json: vanTayGoiLanDocDau phải là sha256 64 hex`);
+        } else if (chuongObj.vanTayGoiLanDocDau !== chuongObj.vanTayGoi && !gon(chuongObj.ghiChuVanTayGoi)) {
+          loiTrich.push(`doc-mot-lan/${ch}/chuong.json: vanTayGoi đổi sau lần đọc đầu nhưng thiếu ghiChuVanTayGoi nêu rõ phần nào đọc trên gói cũ`);
+        }
+      }
     } catch { /* đã bắt ở loiKhuon */ }
   }
 
@@ -703,6 +710,13 @@ export function kiemDocMotLanChuong(chuongArg, opts = {}) {
     const goiNhom = dungGoiNhom(ma4, { luat, hoSo, L, bieuMeta, soanMu: true });
     if (nhomObj.nhom?.vanTayGoi !== goiNhom.vanTayGoi) {
       loiTrich.push(`doc-mot-lan/${ch}/${ma4}.json: nhom.vanTayGoi "${nhomObj.nhom?.vanTayGoi}" không khớp gói nhóm dựng lại "${goiNhom.vanTayGoi}"`);
+    }
+    if (nhomObj.nhom?.vanTayGoiLanDocDau !== undefined) {
+      if (!/^[a-f0-9]{64}$/.test(String(nhomObj.nhom.vanTayGoiLanDocDau || ''))) {
+        loiTrich.push(`doc-mot-lan/${ch}/${ma4}.json: nhom.vanTayGoiLanDocDau phải là sha256 64 hex`);
+      } else if (nhomObj.nhom.vanTayGoiLanDocDau !== nhomObj.nhom?.vanTayGoi && !gon(nhomObj.nhom.ghiChuVanTayGoi)) {
+        loiTrich.push(`doc-mot-lan/${ch}/${ma4}.json: nhom.vanTayGoi đổi sau lần đọc đầu nhưng thiếu nhom.ghiChuVanTayGoi nêu rõ phần nào đọc trên gói cũ`);
+      }
     }
     const daXet = new Set([
       ...(nhomObj.nhom?.canhTranh || []),

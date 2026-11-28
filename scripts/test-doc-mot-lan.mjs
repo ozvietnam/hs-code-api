@@ -76,14 +76,26 @@ const cli9405Tmp = JSON.parse(
 const cli9405SoanMuTmp = JSON.parse(
   execFileSync(process.execPath, [path.join(GOC, 'scripts', 'ho-so-ma', 'goi-nhom.mjs'), '--nhom', '9405', '--soan-mu', '--tom-tat'], {
     cwd: os.tmpdir(),
+    env: { ...process.env, HS_DATA_DIR: os.tmpdir() },
+    encoding: 'utf8',
+  }),
+);
+const cliChuong94Tmp = JSON.parse(
+  execFileSync(process.execPath, [path.join(GOC, 'scripts', 'ho-so-ma', 'goi-chuong.mjs'), '--chuong', '94', '--tom-tat'], {
+    cwd: os.tmpdir(),
+    env: { ...process.env, HS_DATA_DIR: os.tmpdir() },
     encoding: 'utf8',
   }),
 );
 const cauIds9405Mu = new Set(goi9405Mu.cauTrongGoi.map((c) => c.id));
 ca(
-  'goi-nhom(9405): kèm nguyên văn GIR 1–6 + câu tên nhóm đích chú giải đẩy sang (59.08, 85.16, 85.31, 70.09, 83.03), đồng nhất vanTayGoi giữa hàm JS (--soan-mu) và CLI khác cwd',
+  'goi-nhom(9405) & goi-chuong(94): kèm GIR 1–6 + tenNhomDich (59.08, 85.16, 85.31, 70.09, 83.03), đồng nhất vanTayGoi kể cả khi cwd=tmpdir & HS_DATA_DIR=tmpdir',
   Array.isArray(goi9405Mu.gir)
     && goi9405Mu.gir.length >= 6
+    && Array.isArray(goi9405Mu.tenNhomDich)
+    && goi9405Mu.tenNhomDich.some((x) => x.nhom === '5908')
+    && goi9405Mu.tenNhomDich.some((x) => x.nhom === '8516')
+    && goi9405Mu.tenNhomDich.some((x) => x.nhom === '8531')
     && cauIds9405Mu.has('gir:1#1')
     && cauIds9405Mu.has('gir:3:a#1')
     && cauIds9405Mu.has('gir:3:c#1')
@@ -95,11 +107,18 @@ ca(
     && cauIds9405Mu.has('bieu:8303#1')
     && goi9405Mu.vanTayGoi === cli9405Tmp.vanTayGoi
     && goi9405Mu.vanTayGoi === cli9405SoanMuTmp.vanTayGoi
+    && goiCh94.vanTayGoi === cliChuong94Tmp.vanTayGoi
     && goi9405Mu.hoSoSanCo.daCo.dieuKien.length === 0
     && goi9405Mu.hoSoSanCo.nguong.length === 0
     && goi9405Mu.canhTranh === null
-    && goi9405Mu.canhTranhTimThay.length > 0,
-  { vanTayMu: goi9405Mu.vanTayGoi, vanTayCliTmp: cli9405Tmp.vanTayGoi, vanTayCliSoanMuTmp: cli9405SoanMuTmp.vanTayGoi },
+    && goi9405Mu.canhTranhTimThay.length === 25,
+  {
+    vanTayMu: goi9405Mu.vanTayGoi,
+    vanTayCliTmp: cli9405Tmp.vanTayGoi,
+    vanTayCliSoanMuTmp: cli9405SoanMuTmp.vanTayGoi,
+    vanTayChuong94: goiCh94.vanTayGoi,
+    vanTayChuong94Tmp: cliChuong94Tmp.vanTayGoi,
+  },
 );
 
 // ── 2. Kiểm khuôn chuẩn QT & máy kiểm nguyên văn trên chương nhỏ 13 trong os.tmpdir() ──────────────
@@ -319,6 +338,17 @@ try {
     kq13LechVanTay.loiTrich,
   );
   obj1302.nhom.vanTayGoi = vanTayCu1302;
+  obj1302.nhom.vanTayGoiLanDocDau = 'a'.repeat(64);
+  obj1302.nhom.ghiChuVanTayGoi = '';
+  fs.writeFileSync(path.join(dml13, '1302.json'), `${JSON.stringify(obj1302, null, 2)}\n`, 'utf8');
+  const kq13ThieuGhiChuGoi = kiemDocMotLanChuong('13', { luat: LUAT_THAT, hoSo: hoSoTmp, L, bieuMeta, canhBaoCong: false });
+  ca(
+    'ca ngược doc-mot-lan: gói đổi sau lần đọc đầu (vanTayGoiLanDocDau !== vanTayGoi) mà thiếu ghiChuVanTayGoi bị bắt đỏ',
+    kq13ThieuGhiChuGoi.ok === false && kq13ThieuGhiChuGoi.loiTrich.some((e) => e.includes('thiếu nhom.ghiChuVanTayGoi')),
+    kq13ThieuGhiChuGoi.loiTrich,
+  );
+  delete obj1302.nhom.vanTayGoiLanDocDau;
+  delete obj1302.nhom.ghiChuVanTayGoi;
   fs.writeFileSync(path.join(dml13, '1302.json'), `${JSON.stringify(obj1302, null, 2)}\n`, 'utf8');
 
   const ch13Lech = JSON.parse(fs.readFileSync(path.join(dml13, 'chuong.json'), 'utf8'));
@@ -337,9 +367,15 @@ try {
 // ── 3. Nếu kho thật đã có data/ho-so-ma/doc-mot-lan/94/ thì kiểm trực tiếp 100% ───────────────────
 if (fs.existsSync(path.join(HO_SO_THAT, 'doc-mot-lan', '94'))) {
   const kq94 = kiemDocMotLanChuong('94', { luat: LUAT_THAT, hoSo: HO_SO_THAT, L, bieuMeta, canhBaoCong: true });
+  const cliKiem94Tmp = execFileSync(
+    process.execPath,
+    [path.join(GOC, 'scripts', 'ho-so-ma', 'doc-mot-lan.mjs'), '--chuong', '94', '--kiem'],
+    { cwd: os.tmpdir(), env: { ...process.env, HS_DATA_DIR: os.tmpdir() }, encoding: 'utf8' },
+  );
   ca(
-    `kho thật data/ho-so-ma/doc-mot-lan/94/ đạt chuẩn QT & 100% trích nguyên văn (${kq94.thongKe?.tongCauTrichDaKiem || 0} câu trích)`,
+    `kho thật data/ho-so-ma/doc-mot-lan/94/ đạt chuẩn QT & 100% trích nguyên văn (${kq94.thongKe?.tongCauTrichDaKiem || 0} câu trích, kể cả CLI từ tmpdir + HS_DATA_DIR=tmpdir)`,
     kq94.ok === true
+      && cliKiem94Tmp.includes('PASS doc-mot-lan Chương 94: khuôn=0 lỗi, trích=0 lỗi, phủ=0 lỗi')
       && kq94.thongKe?.soBanGhiChuong === 1
       && kq94.thongKe?.soBanGhiNhom === 6
       && kq94.thongKe?.ma8So?.tong === 127

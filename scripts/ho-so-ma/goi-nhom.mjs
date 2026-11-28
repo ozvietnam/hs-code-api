@@ -12,20 +12,68 @@ import { napBieuMeta, boGachTen } from './bang-anh-em.mjs';
 import { kiemKhoHoSo, LOAI_DIEU_KIEN } from './khuon.mjs';
 
 const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
-if (!process.env.HS_DATA_DIR) {
-  process.env.HS_DATA_DIR = path.join(REPO_ROOT, 'data');
-}
+const REPO_DATA_DIR = path.join(REPO_ROOT, 'data');
 
 const require = createRequire(import.meta.url);
 const G = require('../../lib/ho-so-ma/ghep.js');
 const { phaiDoc } = require('../../lib/do-thi/phai-doc.js');
 const { CHUONG_SANG_PHAN } = require('../../lib/do-thi/dan-chieu.js');
-const {
+
+/**
+ * Thực thi hàm đọc chỉ mục kho tĩnh (`tim-cgct.js`, `phai-doc.js` -> `do-thi/index.js`) với `cwd = REPO_ROOT`
+ * và `HS_DATA_DIR = REPO_DATA_DIR` khi môi trường chấm bên ngoài đứng ở thư mục khác hoặc đặt `HS_DATA_DIR` vào
+ * thư mục tạm rỗng (nguyên nhân làm `timCgct` và `do-thi/index` trả thiếu cạnh, sinh `6c8cc15b…` / `f2b29f32…`).
+ * Khôi phục nguyên trạng `cwd` và `HS_DATA_DIR` ngay trong `finally`.
+ */
+function chayVoiDataGoc(fn) {
+  const dpPath = require.resolve('../../lib/data-paths.js');
+  const origCwd = process.cwd();
+  const origEnv = process.env.HS_DATA_DIR;
+  const canChuyenCwd = path.resolve(origCwd) !== REPO_ROOT;
+  const canChuyenEnv = Boolean(origEnv && !fs.existsSync(path.join(path.resolve(origEnv), 'tax.json')));
+  if (!canChuyenCwd && !canChuyenEnv) return fn();
+
+  const prevDpCache = require.cache[dpPath];
+  try {
+    if (canChuyenCwd) process.chdir(REPO_ROOT);
+    if (canChuyenEnv) process.env.HS_DATA_DIR = REPO_DATA_DIR;
+    delete require.cache[dpPath];
+    return fn();
+  } finally {
+    if (canChuyenCwd) {
+      try { process.chdir(origCwd); } catch { /* ignore */ }
+    }
+    if (canChuyenEnv) {
+      if (origEnv === undefined) delete process.env.HS_DATA_DIR;
+      else process.env.HS_DATA_DIR = origEnv;
+    }
+    if (prevDpCache) require.cache[dpPath] = prevDpCache;
+    else delete require.cache[dpPath];
+  }
+}
+
+function napTimCgctOnDinh() {
+  const tcPath = require.resolve('../../lib/tim-cgct.js');
+  let tc = require(tcPath);
+  let idx = chayVoiDataGoc(() => tc.xayChiMuc());
+  if (!idx || !idx.validHeadings || idx.validHeadings.size === 0) {
+    tc = chayVoiDataGoc(() => {
+      delete require.cache[tcPath];
+      const fresh = require(tcPath);
+      fresh.xayChiMuc();
+      return fresh;
+    });
+  }
+  return tc;
+}
+
+const _timCgctMod = napTimCgctOnDinh();
+export const {
   timCgct,
   tachTu,
   xayChiMuc: xayChiMucTimCgct,
   trichMaVaKhoang,
-} = require('../../lib/tim-cgct.js');
+} = _timCgctMod;
 export const DEFAULT_CANH_TRANH_MD = path.join(REPO_ROOT, 'docs', 'mong', 'the', 'M-81-canh-tranh.md');
 export const MAX_BYTES_MAC_DINH = 180 * 1024;
 export const TOP_K_CANH_TRANH_MAC_DINH = 10;
@@ -64,7 +112,10 @@ const TRAN_NGUON_TIM_MUC = 3;
 export function layPhaiDoc(nhom4, luat = G.LUAT_MAC_DINH) {
   const key = `${path.resolve(luat)}\0${nhom4}`;
   if (_phaiDocCache.has(key)) return _phaiDocCache.get(key);
-  const pd = phaiDoc(nhom4, { thuMuc: luat, dayDu: true });
+  const laLuatGocRepo = path.resolve(luat) === path.join(REPO_DATA_DIR, 'luat-goc');
+  const pd = laLuatGocRepo
+    ? chayVoiDataGoc(() => phaiDoc(nhom4, { thuMuc: luat, dayDu: true }))
+    : phaiDoc(nhom4, { thuMuc: luat, dayDu: true });
   _phaiDocCache.set(key, pd);
   return pd;
 }
@@ -890,7 +941,7 @@ export function dungGoiNhom(nhom4HoacNut, opts = {}) {
       if (L.cau.has(cid)) quetMa4TuChu(L.chuCau(cid));
     }
   }
-  luatNen.tenNhomDich = [...nhomDichSet]
+  const tenNhomDich = [...nhomDichSet]
     .sort()
     .map((m4) => {
       const nutDich = `bieu:${m4}`;
@@ -908,9 +959,24 @@ export function dungGoiNhom(nhom4HoacNut, opts = {}) {
         trich: tenDich,
         nguon: infoDich?.nguon ?? null,
         cauIds: cids,
+        cau: cids.map((cid) => {
+          const chu = L.chuCau(cid);
+          return { id: cid, nut: nutDich, chu, vanTay: vanTay(chu) };
+        }),
       };
     })
     .filter((x) => x.cauIds.length > 0);
+  luatNen.tenNhomDich = tenNhomDich;
+
+  const tenNhomDichByMa = new Map(tenNhomDich.map((x) => [x.nhom, x]));
+  for (const edge of [...loaiTruRa, ...loaiTruVao]) {
+    const mDen = /^(?:bieu|nhom|pn|sen):(\d{4})/.exec(String(edge.den || ''));
+    const mTu = /^(?:bieu|nhom|pn|sen):(\d{4})/.exec(String(edge.tuNut || ''));
+    const maDich = (mDen && mDen[1] !== nhom4 ? mDen[1] : null) || (mTu && mTu[1] !== nhom4 ? mTu[1] : null);
+    if (maDich && tenNhomDichByMa.has(maDich)) {
+      edge.cauTenNhomDich = [...tenNhomDichByMa.get(maDich).cauIds];
+    }
+  }
 
   // Ứng viên cạnh tranh tìm thấy qua máy tìm (ADR-0010 mục 2: chỉ nạp tài liệu phải đọc, KHÔNG đẩy vào loaiTru)
   const canhTranhTimThay = timCanhTranhTimThay(nhom4, {
@@ -1015,6 +1081,7 @@ export function dungGoiNhom(nhom4HoacNut, opts = {}) {
     ten,
     vanTayGoi,
     gir,
+    tenNhomDich,
     cayBieu,
     nhomAnhEm,
     luatNen,
