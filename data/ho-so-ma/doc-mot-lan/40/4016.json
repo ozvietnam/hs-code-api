@@ -2199,7 +2199,7 @@
       "mo": "MO_TA_HUONG_DAN",
       "moNguon": "nhom:4016:ct:12#1",
       "moNguonVanTay": "9c724b797dd3f5fbae1f6170c512f3b0fc929293e9d5a15ed2edeef932a77326",
-      "cauHoi": "Sản phẩm có phải là bộ phận của kết cấu xe thuộc Chương 87 không?",
+      "cauHoi": "Sản phẩm có phải là bộ phận dùng cho xe thuộc Chương 87 không?",
       "trich": "Bộ phận",
       "nguon": "bieu:4016991#1",
       "vanTay": "2ff1f1e01f851b334efaf9f6f69afa9e2f056e5d1fd77b0ac557f6c68ce2bf60"
@@ -4083,7 +4083,7 @@
         "bieu:40169310"
       ],
       "ketQua": "CHƯA ĐỦ DỮ KIỆN",
-      "lyDo": "Tuy mh:4016:05 (PB=CHỐT) đã có GIAI_CHONG hs:bieu:401693:8151 chốt vòng cao su nhỏ cách điện chân tụ điện PCB vào 4016.93.10 theo QT 6 & QT 3(a), và mh:4016:04 (hs:bieu:40169:8152) ưu tiên 4016.93 cho gioăng/vòng đệm bơm hơi, trong cây vẫn cần xác nhận thực tế sản phẩm là vòng cách điện chân tụ PCB và không giao thoa với các dòng trên trục chưa chứng minh tách rời ở bậc 4016.9.",
+      "lyDo": "Tuy mh:4016:05 (PB=CHỐT) đã có GIAI_CHONG hs:bieu:401693:8151 chốt vòng cao su nhỏ cách điện chân tụ điện PCB vào 4016.93.10 theo QT 6 & QT 3(a), bậc 4016.9 vẫn giữ mở vùng chồng giữa 4016.93 và 4016.95 (mh:4016:04) và còn các dòng trên trục chưa chứng minh tách rời nên cần xác nhận thực tế sản phẩm là vòng cách điện chân tụ PCB.",
       "cauHoi": "Vòng cao su nhỏ đó có đúng là vòng dùng để cách điện cho các chân tụ điện lắp trên tấm mạch in (4016.93.10) không?",
       "canCu": [
         {
@@ -4111,7 +4111,7 @@
         "bieu:40169320"
       ],
       "ketQua": "CHƯA ĐỦ DỮ KIỆN",
-      "lyDo": "Đã bổ sung GIAI_CHONG hs:bieu:40169:8152 (4016.93 thắng 4016.95 theo mh:4016:04) và hs:bieu:401693:8151 (4016.93.10 thắng 4016.93.20 theo mh:4016:05), nhưng bậc 4016.9 còn thiếu tapDu giữa các chủng loại và bậc 4016.93 dùng daTri=true chưa chứng minh tách kín giữa 4016.93.10 và 4016.93.20 nên cần xác nhận mặt hàng không phải vòng cách điện chân tụ PCB.",
+      "lyDo": "Đã có GIAI_CHONG hs:bieu:401693:8151 (4016.93.10 thắng 4016.93.20 theo mh:4016:05), nhưng bậc 4016.9 giữ mở vùng chồng giữa 4016.93 và 4016.95 (mh:4016:04) và bậc 4016.93 dùng daTri=true chưa chứng minh tách kín giữa 4016.93.10 và 4016.93.20 nên cần xác nhận mặt hàng không phải vòng cách điện chân tụ PCB.",
       "cauHoi": "Sản phẩm là miếng đệm hoặc vành khung tròn dùng cho xe cơ giới 87.02/87.03/87.04/87.11 (không phải vòng nhỏ cách điện chân tụ điện trên tấm mạch in 4016.93.10) phải không?",
       "canCu": [
         {
@@ -4135,7 +4135,7 @@
         "bieu:40169390"
       ],
       "ketQua": "CHƯA ĐỦ DỮ KIỆN",
-      "lyDo": "Đã bổ sung GIAI_CHONG hs:bieu:40169:8152 (mh:4016:04 ưu tiên 4016.93 cho gioăng làm kín bơm hơi) và hs:bieu:401693:8151 (mh:4016:05), nhưng bậc 4016.9 còn cặp thiếu tapDu và bậc 4016.93 cần xác nhận hàng hóa loại trừ cả 4016.93.10 và 4016.93.20.",
+      "lyDo": "Bậc 4016.9 giữ mở vùng chồng giữa 4016.93 và 4016.95 (mh:4016:04) và còn cặp thiếu tapDu; bậc 4016.93 cần xác nhận hàng hóa loại trừ cả 4016.93.10 và 4016.93.20.",
       "cauHoi": "Miếng đệm, vòng đệm hoặc miếng chèn làm kín này có chắc chắn không phải vòng cách điện chân tụ PCB (4016.93.10) và không phải miếng đệm/vành khung tròn dùng cho xe 87.02–04/87.11 (4016.93.20) không?",
       "canCu": [
         {
@@ -4211,8 +4211,8 @@
         "bieu:40169911"
       ],
       "ketQua": "CHƯA ĐỦ DỮ KIỆN",
-      "lyDo": "Mắt 401699 có mh:4016:01 (đã có GIAI_CHONG hs:bieu:401699:8151 giữa kết cấu xe Ch.87 với cụm máy/điện Phần XVI) và chưa xử lý ranh giới với 40169930 (dải cao su); mắt 4016991 tách trục \"nhóm xe thuộc Chương 87\" (daTri=true) với \"loại xe\" (xe đạp) và đã thêm GIAI_CHONG 87.11 vs xe đạp cùng tapDu bộ phận/phụ kiện xe đạp.",
-      "cauHoi": "Sản phẩm có đúng là bộ phận hoặc phụ kiện gắn vào kết cấu xe 87.02–87.05 (trừ viền cao su quanh kính cửa 4016.99.13), không phải chi tiết máy/dây điện Phần XVI (4016.99.5), và không dùng chung với 87.11 hay xe đạp không?",
+      "lyDo": "Mắt 401699 giữ nguyên chữ biểu 4016.99.1 (\"Bộ phận và phụ kiện dùng cho xe thuộc Chương 87\") và giải cặp 4016.99.1 × 4016.99.5 bằng chữ \"khác\" của bieu:4016995#1 (hs:bieu:401699:8151, TRU — ví dụ cao su chân máy ô tô thuộc 4016.99.11, không phải 4016.99.59), còn mở ranh giới với 4016.99.30 (dải cao su) và dòng đích danh 4016.99.54 (mh:4016:01); mắt 4016991 tách trục \"nhóm xe thuộc Chương 87\" (daTri=true) với \"loại xe\" (xe đạp) và giữ mở vùng chồng 87.11 × xe đạp (mh:4016:09).",
+      "cauHoi": "Sản phẩm có đúng là bộ phận hoặc phụ kiện dùng cho xe thuộc nhóm 87.02–87.05 (trừ viền cao su quanh kính cửa 4016.99.13), không thuộc dòng đích danh vòng/vỏ bọc hệ thống dây điện ô tô (4016.99.54) và không dùng chung với 87.11 hay xe đạp không?",
       "canCu": [
         {
           "idCau": "bieu:4016991#1",
@@ -4236,8 +4236,8 @@
         "bieu:40169912"
       ],
       "ketQua": "CHƯA ĐỦ DỮ KIỆN",
-      "lyDo": "Mắt 401699 có mh:4016:01 (4016.99.1 vs 4016.99.5) và chưa phân xử với 40169930; mắt 4016991 tách sạch trục \"nhóm xe thuộc Chương 87\" (87.11 gồm cả xe đạp có động cơ phụ trợ) khỏi trục \"loại xe\" (xe đạp) kèm 3 GIAI_CHONG hs:bieu:4016991:8154..8156 với 4016.99.16/17/18.",
-      "cauHoi": "Sản phẩm có dùng chuyên biệt cho kết cấu xe thuộc nhóm 87.11 (kể cả xe đạp gắn động cơ phụ trợ, phân biệt với xe đạp thường ở 4016.99.16/17/18) và không thuộc cụm máy/điện Phần XVI (4016.99.5) không?",
+      "lyDo": "Mắt 401699 giữ nguyên chữ biểu 4016.99.1 (hs:bieu:401699:8151 giải cặp 4016.99.1 × 4016.99.5 bằng chữ \"khác\" của bieu:4016995#1, còn mở mh:4016:01 và ranh giới với 4016.99.30); mắt 4016991 tách sạch trục \"nhóm xe thuộc Chương 87\" (87.11 gồm cả xe đạp có động cơ phụ trợ) khỏi trục \"loại xe\" (xe đạp) và giữ mở vùng chồng với 4016.99.16/17/18 theo mh:4016:09.",
+      "cauHoi": "Sản phẩm có phải là bộ phận hoặc phụ kiện dùng cho xe thuộc nhóm 87.11 (phân biệt rõ với xe đạp ở 4016.99.16/17/18 khi có vùng chồng xe đạp gắn động cơ phụ trợ theo mh:4016:09) và không thuộc các dòng đích danh khác ở 4016.99 không?",
       "canCu": [
         {
           "idCau": "bieu:4016991#1",
@@ -4286,8 +4286,8 @@
         "bieu:40169915"
       ],
       "ketQua": "CHƯA ĐỦ DỮ KIỆN",
-      "lyDo": "Mắt 401699 có mh:4016:01 (4016.99.1 vs 4016.99.5) và giao thoa 40169930; mắt 4016991 dùng trục đa trị daTri=true trên nhóm xe Ch.87.",
-      "cauHoi": "Sản phẩm có đúng là bộ phận hoặc phụ kiện kết cấu dùng cho xe thuộc nhóm 87.09, 87.13, 87.15 hoặc 87.16 (không phải chi tiết máy/điện 4016.99.5 và không dùng chung 87.02–05/87.11) không?",
+      "lyDo": "Mắt 401699 giữ nguyên chữ biểu 4016.99.1 (còn mở mh:4016:01 và giao thoa 4016.99.30); mắt 4016991 dùng trục đa trị daTri=true trên nhóm xe thuộc Chương 87.",
+      "cauHoi": "Sản phẩm có đúng là bộ phận hoặc phụ kiện dùng cho xe thuộc nhóm 87.09, 87.13, 87.15 hoặc 87.16 (không dùng chung với 87.02–05/87.11 và không thuộc các dòng đích danh khác trong 4016.99) không?",
       "canCu": [
         {
           "idCau": "bieu:4016991#1",
@@ -4493,8 +4493,8 @@
         "bieu:40169951"
       ],
       "ketQua": "CHƯA ĐỦ DỮ KIỆN",
-      "lyDo": "Mắt 401699 có mh:4016:01 (4016.99.1 vs 4016.99.5, đã có GIAI_CHONG hs:bieu:401699:8151 dựa trên vị trí cụm máy/điện Phần XVI vs kết cấu xe Ch.87); dưới 4016.99.5 dùng trục daTri=true (chỉ rõ là trục lăn cao su, không phải 4016.99.52/53/54).",
-      "cauHoi": "Sản phẩm có đúng là trục lăn cao su sử dụng cho máy/thiết bị kỹ thuật (không phải bộ phận kết cấu xe Ch.87 và không kiêm cốt làm lốp hay nắp/vòng cách điện dây điện) không?",
+      "lyDo": "Mắt 401699 giải cặp 4016.99.1 × 4016.99.5 bằng chữ \"khác\" của bieu:4016995#1 (hs:bieu:401699:8151, TRU; vẫn giữ mở mh:4016:01); dưới 4016.99.5 dùng trục daTri=true (chỉ rõ là trục lăn cao su, không phải 4016.99.52/53/54).",
+      "cauHoi": "Sản phẩm có đúng là trục lăn cao su sử dụng cho máy hoặc thiết bị điện/cơ khí/mục đích kỹ thuật khác ngoài bộ phận và phụ kiện dùng cho xe thuộc Chương 87 (4016.99.1), và không kiêm cốt làm lốp hay nắp/vòng cách điện dây điện không?",
       "canCu": [
         {
           "idCau": "bieu:4016995#1",
@@ -4576,8 +4576,8 @@
         "bieu:40169954"
       ],
       "ketQua": "CHƯA ĐỦ DỮ KIỆN",
-      "lyDo": "Mắt 401699 có mh:4016:01 (4016.99.1 vs 4016.99.5: hệ thống dây điện ô tô là Phần XVI nên thuộc 4016.99.54 theo hs:bieu:401699:8151); mắt 4016995 có GIAI_CHONG hs:bieu:4016995:8151 (mh:4016:02: 4016.99.54 thắng 4016.99.53), nhưng cần xác nhận đúng chi tiết hệ thống dây điện ô tô thay vì chi tiết khung vỏ xe Ch.87.",
-      "cauHoi": "Vòng hoặc vỏ bọc cao su này có đúng là dùng cho giắc nối/đầu dây thuộc hệ thống dây điện (wiring harness) của ô tô (không phải chi tiết kết cấu khung vỏ xe Ch.87) không?",
+      "lyDo": "Mắt 401699 giữ mở mh:4016:01 (ranh giới giữa chữ biểu chung 4016.99.1 \"Bộ phận và phụ kiện dùng cho xe thuộc Chương 87\" với dòng đích danh 4016.99.54 \"Vòng và vỏ bọc bằng cao su sử dụng cho hệ thống dây điện của ô tô\" nằm dưới 4016.99.5); mắt 4016995 có GIAI_CHONG hs:bieu:4016995:8151 (mh:4016:02: 4016.99.54 thắng 4016.99.53), cần xác nhận đúng vòng hoặc vỏ bọc dùng cho hệ thống dây điện ô tô.",
+      "cauHoi": "Vòng hoặc vỏ bọc bằng cao su này có đúng là sử dụng cho hệ thống dây điện (wiring harness) của ô tô (4016.99.54) chứ không phải bộ phận/phụ kiện khác dùng cho xe thuộc Chương 87 (4016.99.1) không?",
       "canCu": [
         {
           "idCau": "bieu:4016995#1",
@@ -4601,8 +4601,8 @@
         "bieu:40169959"
       ],
       "ketQua": "CHƯA ĐỦ DỮ KIỆN",
-      "lyDo": "Kế thừa mh:4016:01 (ranh giới 4016.99.1 kết cấu xe Ch.87 vs 4016.99.5 chi tiết máy/điện Phần XVI) và mh:4016:02; đồng thời phải bảo đảm không phải sản phẩm kỹ thuật đặc thù đã định danh ở 4016.99.60/70 (mh:4016:03) hay nhóm ngoài như bộ gioăng 84.84 (đã chặn ở bieu:4016).",
-      "cauHoi": "Sản phẩm kỹ thuật này có chắc chắn không phải trục lăn, cốt làm lốp, nắp chụp cách điện, vòng/vỏ bọc dây điện ô tô, không phải lót đường ray (4016.99.60) hay gối chịu lực xây dựng (4016.99.70) và không thuộc kết cấu xe Ch.87 (4016.99.1) không?",
+      "lyDo": "Mắt 401699 giải cặp 4016.99.1 × 4016.99.5 bằng chữ \"khác\" của bieu:4016995#1 (hs:bieu:401699:8151, TRU: các bộ phận/phụ kiện dùng cho xe thuộc Chương 87 như cao su chân máy ô tô đi 4016.99.1 chứ không rơi vào 4016.99.59) và vẫn giữ mở mh:4016:01, mh:4016:02; đồng thời phải bảo đảm không phải sản phẩm kỹ thuật đặc thù đã định danh ở 4016.99.60/70 (mh:4016:03) hay nhóm ngoài như bộ gioăng 84.84 (đã chặn ở bieu:4016).",
+      "cauHoi": "Sản phẩm kỹ thuật này có chắc chắn không phải bộ phận hoặc phụ kiện dùng cho xe thuộc Chương 87 (4016.99.1 — như cao su chân máy ô tô 4016.99.11), không phải trục lăn, cốt làm lốp, nắp chụp cách điện, vòng/vỏ bọc dây điện ô tô, và không phải lót đường ray (4016.99.60) hay gối chịu lực xây dựng (4016.99.70) không?",
       "canCu": [
         {
           "idCau": "bieu:4016995#1",

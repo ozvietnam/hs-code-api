@@ -25,7 +25,7 @@
 | **Bước D2 — Người đọc chốt cuối (1 vòng)** | `diem-mo-ho.jsonl` (`58` mục) + đồng bộ `4005/4006/4014/4016.json` | `1` lượt `gemini-4-neon-high` | `~4 phút` | `13` `CHỐT`, `17` `CHỐT KÈM GIẢ ĐỊNH`, `28` `CHƯA ĐỦ DỮ KIỆN` (`56/58` đồng thuận, `30/58` đổi/khép kết luận; `2` điểm `mh:4016:01, :04` giữ mở theo Luật đọc 4) | **PASS `0` lỗi** (`442` trích nguyên văn) |
 | **Tổng cộng toàn Chương 40** | **1 chương · 17 nhóm · 215 mã 8 số** | **6 phiên `gemini-4-neon-high` + 3 lô `gemini-4-argon-high`** | **~42 phút wall-clock** | `18` JSON + `diem-mo-ho.jsonl` (`58` mục) + `dieu-kien.jsonl` (`514` dòng) + `bang-anh-em.jsonl` (`102` bảng) + `docs/so-tay-tra-sai/40.md` (`33/33` trích đúng) | **PASS `0` lỗi khuôn & `0` lỗi trích nguyên văn trên `20/20` tệp JSON/JSONL** |
 
-### 1.3 Phân tích `58` `DIEM_MO_HO` (cộng `2` điểm mới `40.16` v2) — Giá trị thực của cặp mô hình mạnh khác dòng
+### 1.3 Phân tích `58` `DIEM_MO_HO` (cộng `3` điểm mới `40.16`) — Giá trị thực của cặp mô hình mạnh khác dòng
 
 #### Phân loại `58` điểm đã phản biện theo nguyên nhân gốc
 | Loại điểm mơ hồ (`loaiMoHo`) | Số lượng | Ví dụ tiêu biểu |
@@ -47,11 +47,11 @@
 
 ### 1.4 Tác động thực đo của 4 Luật đọc mới trên nhóm `40.16` (v1 → v2/v3) & Chẩn đoán Cổng 6–14
 
-Sau khi QT chấm mù `40.16` v1 (`25 ĐÚNG · 11 CHƯA ĐỦ DỮ KIỆN · 2 SAI` trên 38 ca thử) và ban hành 3 Luật đọc đầu tiên, bản đọc lại `40.16` (`979d3e8dc`) được QT chấm lại đạt **`26 ĐÚNG · 11 CHƯA ĐỦ DỮ KIỆN · 0 SAI`** (**`0` lần ra mã sai / `38` ca thử**, khớp phân bố bảng vàng). Tiếp đó, `gpu-agy` hoàn thiện 3 mục cuối theo **Luật đọc 4** (giữ nguyên chữ biểu `4016.99.1`, thêm *"hoặc các Chương khác"* vào `4016:8105`, gỡ 5 `GIAI_CHONG` tự chốt `.12 × .16/.17/.18` và `401691/401693 × 401695` để mở thành vùng chồng + `mh:4016:09`):
+Sau khi QT chấm mù `40.16` v1 (`25 ĐÚNG · 11 CHƯA ĐỦ DỮ KIỆN · 2 SAI` trên 38 ca thử) và ban hành 3 Luật đọc đầu tiên, bản đọc lại `40.16` (`979d3e8dc` → `1e8c9421a`) được QT chấm lại đạt **`26 ĐÚNG · 12 CHƯA ĐỦ DỮ KIỆN · 0 SAI`** (**`0` lần ra mã sai / `38` ca thử**, tìm đủ **`10/10` cặp chồng vàng**). Tiếp đó, `gpu-agy` hoàn thiện các điểm theo **Luật đọc 4** (giữ nguyên chữ biểu `4016.99.1` cả ở vế `8101`/`8102` lẫn phần `lyDo`/`cauHoi`, thêm *"hoặc các Chương khác"* vào `4016:8105`, gỡ 5 `GIAI_CHONG` tự chốt `.12 × .16/.17/.18` và `401691/401693 × 401695` để mở thành vùng chồng + `mh:4016:09`):
 
 | Chỉ tiêu nhóm `40.16` | Trước (v1 — chưa có luật mới) | Sau (áp 4 luật đọc mới) |
 |---|---:|---:|
-| Kết quả chấm bảng vàng của QT (`38` ca thử) | `25 ĐÚNG · 11 CHƯA ĐỦ · 2 SAI` | **`26 ĐÚNG · 11 CHƯA ĐỦ · 0 SAI`** (`0` lần sai trên `38` ca) |
+| Kết quả chấm bảng vàng của QT (`38` ca thử) | `25 ĐÚNG · 11 CHƯA ĐỦ · 2 SAI` | **`26 ĐÚNG · 12 CHƯA ĐỦ · 0 SAI`** (`0` lần sai trên `38` ca, `10/10` cặp chồng vàng) |
 | Loại trừ có đích ngoài nhóm đặt ở nút con (`6/8` số) | `8` (gây lọt ca 36 bộ gioăng `84.84` xuống `4016.99.59`) | **`0`** (100% đặt ở `bieu:4016` `ve: 0, phu: true`; `doBangAnhEm` chặn ngay `NGOAI_PHAM_VI`) |
 | `CO_KHONG` trên nút con / `GIA_TRI` toàn nhóm | `47` / `10` | **`7`** / **`54`** (gom trục `GIA_TRI` chung, tách sạch trục `"nhóm xe Ch.87"` khỏi `"loại xe"`) |
 | Cặp `GIAI_CHONG` (không tự chốt vùng chồng mở) | `8` | **`12`** (`4016995 × 4016991` dùng `TRU` chữ *"khác"*; `.12 × .16/.17/.18` và `401691/93 × 401695` để mở vùng chồng) |
