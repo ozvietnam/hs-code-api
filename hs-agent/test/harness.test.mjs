@@ -6,7 +6,7 @@ import { parseListing, parseTitle, classifyDoc, hsCodesIn, refKey, isKtcnRegulat
 import { codeAppears, coverage, girRuleField, scrub, verifyRecords } from '../lib/extract.mjs';
 import { createRunBudget, BudgetExceeded } from '../lib/budget.mjs';
 import { matchAny, push, classifyChanges } from '../lib/workspace.mjs';
-import { mkdtempSync, writeFileSync, mkdirSync, appendFileSync } from 'fs';
+import { mkdtempSync, writeFileSync, mkdirSync, appendFileSync, existsSync, statSync, readFileSync } from 'fs';
 import { tmpdir } from 'os';
 import { execFileSync } from 'child_process';
 import { join } from 'path';
@@ -158,6 +158,70 @@ t('parseBench: đọc 4 mức × 2, lấy cột "sau"', pb && pb.top1[0] === 39.
   t('ownerOf: freshness → dev dữ liệu', ownerOf('freshness', 'stale', 'Biểu thuế').startsWith('dev dữ liệu'));
 }
 
+
+// --- đồng bộ clone chuẩn về origin/main (scripts/sync-main.sh)
+// Bối cảnh: ExecStartPre cũ là `git pull --ff-only`. Khi HEAD của clone chuẩn
+// đứng trên một nhánh KHÔNG còn trên remote (đo 28/11/2026: `agent/pr89-extract-only`
+// đã bị xoá trên GitHub) thì pull hỏng âm thầm → job chạy bằng code cũ nhiều tuần:
+// clone lệch origin/main 2029 commit, J2 chạy logic cũ, bench đóng băng.
+{
+  const sync = join(repo, 'hs-agent', 'scripts', 'sync-main.sh');
+  t('sync-main.sh tồn tại và chạy được', existsSync(sync) && (statSync(sync).mode & 0o111) !== 0, sync);
+
+  // Repo tạm + "remote" tạm (origin trỏ về chính repo tạm).
+  const syncRepo = mkdtempSync(join(tmpdir(), 'hssync-'));
+  const sg = (...a) => execFileSync('git', a, { cwd: syncRepo, stdio: 'pipe' });
+  sg('init', '-q', '-b', 'main');
+  writeFileSync(join(syncRepo, 'a.txt'), 'v1\n');
+  sg('add', '-A');
+  sg('-c', 'user.name=t', '-c', 'user.email=t@t', 'commit', '-qm', 'v1');
+  const firstSha = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: syncRepo, encoding: 'utf8' }).trim();
+
+  const remoteDir = mkdtempSync(join(tmpdir(), 'hssync-remote-'));
+  const rg = (...a) => execFileSync('git', a, { cwd: remoteDir, stdio: 'pipe' });
+  rg('init', '-q', '-b', 'main');
+  writeFileSync(join(remoteDir, 'a.txt'), 'v2\n');
+  writeFileSync(join(remoteDir, 'b.txt'), 'moi\n');
+  rg('add', '-A');
+  rg('-c', 'user.name=t', '-c', 'user.email=t@t', 'commit', '-qm', 'v2');
+  sg('remote', 'add', 'origin', remoteDir);
+  sg('fetch', '-q', 'origin', 'main');
+
+  const runSync = () => execFileSync('bash', [sync], {
+    cwd: syncRepo,
+    encoding: 'utf8',
+    env: { ...process.env, SYNC_REPO: syncRepo, SYNC_REMOTE: 'origin', SYNC_BRANCH: 'main', SYNC_LOG: join(syncRepo, 'sync.log') },
+  });
+  const headNow = () => execFileSync('git', ['rev-parse', 'HEAD'], { cwd: syncRepo, encoding: 'utf8' }).trim();
+  const targetSha = () => execFileSync('git', ['rev-parse', 'refs/remotes/origin/main'], { cwd: syncRepo, encoding: 'utf8' }).trim();
+
+  // Tình huống thật: HEAD đứng trên nhánh KHÔNG có trên remote (pull --ff-only hỏng).
+  sg('checkout', '-q', '-b', 'agent/da-xoa');
+  const syncOut = runSync();
+  t('sync-main: nhánh đã bị xoá trên remote → vẫn về đúng commit của main', headNow() === targetSha() && headNow() !== firstSha, syncOut);
+  t('sync-main: tệp mới có trong main xuất hiện trong cây làm việc', existsSync(join(syncRepo, 'b.txt')));
+
+  // Cây bẩn (sửa tay chưa commit) → KHÔNG giẫm mất, phải cảnh báo.
+  // Kịch bản thật: HEAD lệch main (chưa đồng bộ) VÀ cây bẩn → phải bỏ qua.
+  writeFileSync(join(remoteDir, 'c.txt'), 'v3\n');
+  rg('add', '-A');
+  rg('-c', 'user.name=t', '-c', 'user.email=t@t', 'commit', '-qm', 'v3');
+  sg('fetch', '-q', 'origin', 'main');
+  writeFileSync(join(syncRepo, 'a.txt'), 'sua-tay\n');
+  const headBeforeDirty = headNow();
+  const dirtyOut = runSync();
+  t('sync-main: cây bẩn → giữ nguyên, cảnh báo', /chưa commit|mục sửa/.test(dirtyOut) && readFileSync(join(syncRepo, 'a.txt'), 'utf8') === 'sua-tay\n', dirtyOut);
+  t('sync-main: cây bẩn → không đồng bộ (HEAD đứng yên)', headNow() === headBeforeDirty);
+
+  // Bỏ sửa tay → đồng bộ được về commit mới của main.
+  sg('checkout', '-q', '--', 'a.txt');
+  const cleanOut = runSync();
+  t('sync-main: cây sạch → đồng bộ được về main', headNow() === targetSha() && existsSync(join(syncRepo, 'c.txt')), cleanOut);
+
+  // Đã đúng commit của main → không đụng gì, mã thoát 0.
+  const sameOut = runSync();
+  t('sync-main: đã đúng commit main → chạy êm, mã thoát 0', sameOut.trim() === '' && headNow() === targetSha(), sameOut);
+}
 
 // --- LLM: router gắn "data: [DONE]" sau JSON không stream (9Router) — trước đây làm J2 báo "LLM không trả JSON"
 t('parseBody: bỏ đuôi data: [DONE]', parseBody('{"choices":[{"message":{"content":"x"}}]}\ndata: [DONE]\n\n').choices[0].message.content === 'x');
