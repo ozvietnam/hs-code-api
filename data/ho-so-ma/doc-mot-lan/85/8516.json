@@ -958,8 +958,12 @@
       "truc": "loại đối tượng",
       "daTri": false,
       "tap": [
-        "dụng cụ nhiệt điện hoàn chỉnh",
-        "điện trở đốt nóng bằng điện",
+        "dụng cụ điện đun nước nóng tức thời hoặc đun nước nóng có dự trữ và đun nước nóng kiểu nhúng",
+        "dụng cụ điện làm nóng không gian và làm nóng đất",
+        "dụng cụ nhiệt điện làm tóc (ví dụ, máy sấy tóc, máy uốn tóc, dụng cụ kẹp uốn tóc) và máy sấy làm khô tay",
+        "bàn là điện",
+        "dụng cụ nhiệt điện gia dụng khác",
+        "các loại điện trở đốt nóng bằng điện, trừ loại thuộc nhóm 85.45",
         "bộ phận của hàng hóa nhóm 85.16"
       ],
       "mo": "MO_TA_HUONG_DAN",
@@ -971,7 +975,7 @@
         "phan:XVI:kq:64#1": "d6ceb2673909760f7de25a56fa9951a61828788549a6dd23df57653e90c2b729",
         "nhom:8516:ct:69#1": "a8f568944eaac055a052e5ea62e9240775a3bb1836bbfe2485501910f5d28483"
       },
-      "cauHoi": "Hàng hóa là dụng cụ nhiệt điện hoàn chỉnh (hoặc chưa hoàn chỉnh/tháo rời đã có đặc trưng cơ bản theo Quy tắc 2(a)), điện trở đốt nóng bằng điện riêng rẽ, hay bộ phận chuyên dùng của hàng hóa nhóm 85.16?",
+      "cauHoi": "Hàng hóa thuộc vế nào của nhóm 85.16: (1) đun nước nóng tức thời/dự trữ/nhúng; (2) làm nóng không gian/đất; (3) làm tóc/sấy khô tay; (4) bàn là điện; (5) dụng cụ nhiệt điện gia dụng khác; (6) điện trở đốt nóng (trừ 85.45); hay bộ phận của nhóm 85.16?",
       "trich": "Dụng cụ điện đun nước nóng tức thời hoặc đun nước nóng có dự trữ và đun nước nóng kiểu nhúng; dụng cụ điện làm nóng không gian và làm nóng đất; dụng cụ nhiệt điện làm tóc (ví dụ, máy sấy tóc, máy uốn tóc, dụng cụ kẹp uốn tóc) và máy sấy làm khô tay; bàn là điện; dụng cụ nhiệt điện gia dụng khác; các loại điện trở đốt nóng bằng điện, trừ loại thuộc nhóm 85.45",
       "nguon": "bieu:8516#1",
       "vanTay": "759fb79f04bea3b11343394bb1b2956978fdc062775f997affb9d5d9da328d43"
@@ -1360,12 +1364,12 @@
       "truc": "nhóm hàng hóa bị loại trừ khỏi 85.16",
       "daTri": true,
       "tap": [
-        "thiết bị nhiệt điện không thường dùng trong gia đình như máy pha cà phê quầy hàng, máy ủ sữa/trà, chảo rán cửa hàng (nhóm 84.19)"
+        "máy pha cà phê dùng cho quầy hàng, máy ủ sữa hoặc trà, chảo rán và chảo chao dầu mỡ trong các cửa hàng bán đồ rán, và các thiết bị nhiệt điện khác mà không thường được sử dụng trong gia đình (nhóm 84.19)"
       ],
       "mo": "MO_TA_HUONG_DAN",
       "moNguon": "nhom:8516:ct:57#1",
       "moNguonVanTay": "3e19c4fbfebfc340da69b61be6918d2ae9aef901d53d605489abf559a0da8921",
-      "cauHoi": "Nếu thuộc nhóm dụng cụ nấu/pha chế nhiệt điện, thiết bị có thuộc loại dùng cho quầy hàng/cửa hàng/không thường dùng trong gia đình (nhóm 84.19) không?",
+      "cauHoi": "Thiết bị có phải là máy pha cà phê dùng cho quầy hàng, máy ủ sữa hoặc trà, chảo rán và chảo chao dầu mỡ (ví dụ trong các cửa hàng bán đồ rán), hoặc các thiết bị nhiệt điện khác mà không thường được sử dụng trong gia đình (nhóm 84.19) không?",
       "trich": "(c) Máy pha cà phê dùng cho quầy hàng, máy ủ sữa hoặc trà, chảo rán và chảo chao dầu mỡ, ví dụ, trong các cửa hàng bán đồ rán, và các thiết bị nhiệt điện khác mà không thường được sử dụng trong gia đình (nhóm 84.19…).",
       "nguon": "nhom:8516:ct:57#1",
       "vanTay": "3e19c4fbfebfc340da69b61be6918d2ae9aef901d53d605489abf559a0da8921"
@@ -1472,7 +1476,7 @@
       "truc": "loại đối tượng",
       "daTri": false,
       "tap": [
-        "dụng cụ nhiệt điện hoàn chỉnh"
+        "dụng cụ điện đun nước nóng tức thời hoặc đun nước nóng có dự trữ và đun nước nóng kiểu nhúng"
       ],
       "mo": "NGHIA_THUONG",
       "cauHoi": "Hàng hóa có phải là dụng cụ điện hoàn chỉnh (không phải điện trở rời hay bộ phận rời)?",
@@ -1635,7 +1639,7 @@
       "truc": "loại đối tượng",
       "daTri": false,
       "tap": [
-        "dụng cụ nhiệt điện hoàn chỉnh"
+        "dụng cụ điện làm nóng không gian và làm nóng đất"
       ],
       "mo": "NGHIA_THUONG",
       "cauHoi": "Hàng hóa có phải là dụng cụ điện hoàn chỉnh dùng để làm nóng không gian hoặc làm nóng đất không?",
@@ -1732,7 +1736,7 @@
       "truc": "loại đối tượng",
       "daTri": false,
       "tap": [
-        "dụng cụ nhiệt điện hoàn chỉnh"
+        "dụng cụ nhiệt điện làm tóc (ví dụ, máy sấy tóc, máy uốn tóc, dụng cụ kẹp uốn tóc) và máy sấy làm khô tay"
       ],
       "mo": "NGHIA_THUONG",
       "cauHoi": "Hàng hóa có phải là dụng cụ làm tóc hoặc máy sấy làm khô tay hoạt động bằng nhiệt điện không?",
@@ -1779,7 +1783,7 @@
       "phu": false,
       "kieu": "GIA_TRI",
       "truc": "chủng loại dụng cụ làm tóc hoặc sấy tay",
-      "daTri": true,
+      "daTri": false,
       "tap": [
         "máy sấy khô tóc"
       ],
@@ -1799,7 +1803,7 @@
       "phu": false,
       "kieu": "GIA_TRI",
       "truc": "chủng loại dụng cụ làm tóc hoặc sấy tay",
-      "daTri": true,
+      "daTri": false,
       "tap": [
         "máy sấy khô tóc"
       ],
@@ -1818,10 +1822,10 @@
       "ve": 0,
       "phu": false,
       "kieu": "GIA_TRI",
-      "truc": "chức năng nhiệt điện chính",
-      "daTri": true,
+      "truc": "chủng loại dụng cụ làm tóc hoặc sấy tay",
+      "daTri": false,
       "tap": [
-        "làm tóc"
+        "dụng cụ làm tóc khác"
       ],
       "mo": "MO_TA_HUONG_DAN",
       "moNguon": [
@@ -1845,7 +1849,7 @@
       "phu": true,
       "kieu": "GIA_TRI",
       "truc": "chủng loại dụng cụ làm tóc hoặc sấy tay",
-      "daTri": true,
+      "daTri": false,
       "tap": [
         "máy sấy khô tóc"
       ],
@@ -1863,7 +1867,7 @@
       "phu": true,
       "kieu": "GIA_TRI",
       "truc": "chủng loại dụng cụ làm tóc hoặc sấy tay",
-      "daTri": true,
+      "daTri": false,
       "tap": [
         "máy sấy khô tóc"
       ],
@@ -1881,7 +1885,7 @@
       "phu": false,
       "kieu": "GIA_TRI",
       "truc": "chủng loại dụng cụ làm tóc hoặc sấy tay",
-      "daTri": true,
+      "daTri": false,
       "tap": [
         "máy sấy làm khô tay"
       ],
@@ -1901,7 +1905,7 @@
       "phu": false,
       "kieu": "GIA_TRI",
       "truc": "chủng loại dụng cụ làm tóc hoặc sấy tay",
-      "daTri": true,
+      "daTri": false,
       "tap": [
         "máy sấy làm khô tay"
       ],
@@ -1923,7 +1927,7 @@
       "truc": "loại đối tượng",
       "daTri": false,
       "tap": [
-        "dụng cụ nhiệt điện hoàn chỉnh"
+        "bàn là điện"
       ],
       "mo": "NGHIA_THUONG",
       "cauHoi": "Hàng hóa có phải là bàn là điện hoàn chỉnh không?",
@@ -1987,7 +1991,7 @@
       "truc": "loại đối tượng",
       "daTri": false,
       "tap": [
-        "dụng cụ nhiệt điện hoàn chỉnh"
+        "dụng cụ nhiệt điện gia dụng khác"
       ],
       "mo": "NGHIA_THUONG",
       "cauHoi": "Hàng hóa có phải là lò vi sóng hoàn chỉnh không?",
@@ -2071,7 +2075,7 @@
       "truc": "loại đối tượng",
       "daTri": false,
       "tap": [
-        "dụng cụ nhiệt điện hoàn chỉnh"
+        "dụng cụ nhiệt điện gia dụng khác"
       ],
       "mo": "NGHIA_THUONG",
       "cauHoi": "Hàng hóa có phải là thiết bị nấu nướng nhiệt điện hoàn chỉnh thuộc nhóm 8516.60 không?",
@@ -2149,6 +2153,29 @@
       "vanTay": "759fb79f04bea3b11343394bb1b2956978fdc062775f997affb9d5d9da328d43"
     },
     {
+      "id": "hs:bieu:851660:8106",
+      "nut": "bieu:851660",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": false,
+      "kieu": "GIA_TRI",
+      "truc": "chủng loại và kiểu gia nhiệt theo mục (2) phần E của 8516.60",
+      "daTri": true,
+      "tap": [
+        "các loại lò nướng và nồi nấu khác (kiểu đối lưu, kiểu điện trở, kiểu hồng ngoại, cảm ứng cao tần và các thiết bị điện khí)",
+        "đĩa nấu",
+        "vòng đun sôi",
+        "vỉ quay và nướng"
+      ],
+      "mo": "MO_TA_HUONG_DAN",
+      "moNguon": "nhom:8516:ct:35#1",
+      "moNguonVanTay": "bd019345f097c99fa9f7087962cfa4b841193d68091d7ef2d26e7817a86336af",
+      "cauHoi": "Theo mục (2) phần E chú giải nhóm 85.16, thiết bị gia dụng có thuộc các loại lò nướng và nồi nấu khác, đĩa nấu, vòng đun sôi, vỉ quay và nướng (ví dụ kiểu đối lưu, kiểu điện trở, kiểu hồng ngoại, cảm ứng cao tần và các thiết bị điện khí) không?",
+      "trich": "(2) Các loại lò nướng và nồi nấu khác, đĩa nấu, vòng đun sôi, vỉ quay và nướng (ví dụ kiểu đối lưu, kiểu điện trở, kiểu hồng ngoại, cảm ứng cao tần và các thiết bị điện khí).",
+      "nguon": "nhom:8516:ct:35#1",
+      "vanTay": "bd019345f097c99fa9f7087962cfa4b841193d68091d7ef2d26e7817a86336af"
+    },
+    {
       "id": "hs:bieu:85166010:8101",
       "nut": "bieu:85166010",
       "loai": "DIEU_KIEN",
@@ -2176,7 +2203,7 @@
       "truc": "loại đối tượng",
       "daTri": false,
       "tap": [
-        "dụng cụ nhiệt điện hoàn chỉnh"
+        "dụng cụ nhiệt điện gia dụng khác"
       ],
       "mo": "NGHIA_THUONG",
       "cauHoi": "Hàng hóa có phải là dụng cụ nhiệt điện gia dụng hoàn chỉnh thuộc nhánh 8516.7 không?",
@@ -2353,7 +2380,7 @@
       "truc": "loại đối tượng",
       "daTri": false,
       "tap": [
-        "điện trở đốt nóng bằng điện"
+        "các loại điện trở đốt nóng bằng điện, trừ loại thuộc nhóm 85.45"
       ],
       "mo": "MO_TA_HUONG_DAN",
       "moNguon": [
@@ -2394,6 +2421,73 @@
       "trich": "Các điện trở vẫn được phân loại ở đây nếu như nó được thiết kế đặc biệt cho các máy móc chuyên dùng, nhưng nếu được lắp với các phần khác ngoại trừ một cách điện đơn giản hoặc các kết nối điện thì được phân loại như các bộ phận hoặc máy móc mà nó đáp ứng (ví dụ, tấm đế dùng cho bàn là và tấm đun dùng cho nồi cơm điện).",
       "nguon": "nhom:8516:ct:66#1",
       "vanTay": "7e43339a49b6e89db038817fed8e2a352b44af24fccda5ffc14659696c4fba53"
+    },
+    {
+      "id": "hs:bieu:851680:8103",
+      "nut": "bieu:851680",
+      "loai": "DIEU_KIEN",
+      "ve": 1,
+      "phu": false,
+      "kieu": "GIA_TRI",
+      "truc": "điều kiện nhận diện dây điện trở không được gắn (vế 1 của ct:65#2)",
+      "daTri": false,
+      "tap": [
+        "được cắt theo chiều dài và làm xoắn"
+      ],
+      "mo": "MO_TA_HUONG_DAN",
+      "moNguon": "nhom:8516:ct:65#2",
+      "moNguonVanTay": "bb3695d5a9ddef15a1accc9a513e9628b291a25b6ef5b1003760a59d71770ac9",
+      "cauHoi": "Nếu là dây điện trở không được gắn trên đế/lõi cách điện, loại dây này có được cắt theo chiều dài và làm xoắn không?",
+      "trich": "Nếu không được gắn, loại dây này chỉ được phân loại ở đây nếu được cắt theo chiều dài và làm xoắn",
+      "nguon": "nhom:8516:ct:65#2",
+      "vanTay": "bb3695d5a9ddef15a1accc9a513e9628b291a25b6ef5b1003760a59d71770ac9"
+    },
+    {
+      "id": "hs:bieu:851680:8104",
+      "nut": "bieu:851680",
+      "loai": "DIEU_KIEN",
+      "ve": 2,
+      "phu": false,
+      "kieu": "GIA_TRI",
+      "truc": "điều kiện nhận diện dây điện trở không được gắn (vế 2 của ct:65#2)",
+      "daTri": false,
+      "tap": [
+        "hình dáng của nó được nhận biết như một yếu tố điện trở nhiệt"
+      ],
+      "mo": "MO_TA_HUONG_DAN",
+      "moNguon": "nhom:8516:ct:65#2",
+      "moNguonVanTay": "bb3695d5a9ddef15a1accc9a513e9628b291a25b6ef5b1003760a59d71770ac9",
+      "cauHoi": "Nếu là dây điện trở không được gắn trên đế/lõi cách điện, hình dáng của nó có được nhận biết như một yếu tố điện trở nhiệt không?",
+      "trich": "hình dáng của nó được nhận biết như một yếu tố điện trở nhiệt",
+      "nguon": "nhom:8516:ct:65#2",
+      "vanTay": "bb3695d5a9ddef15a1accc9a513e9628b291a25b6ef5b1003760a59d71770ac9"
+    },
+    {
+      "id": "hs:bieu:851680:8105",
+      "nut": "bieu:851680",
+      "loai": "DIEU_KIEN",
+      "ve": 3,
+      "phu": false,
+      "kieu": "GIA_TRI",
+      "truc": "dạng gắn hoặc cắt sẵn sàng sử dụng của điện trở đốt nóng",
+      "daTri": false,
+      "tap": [
+        "dây điện trở gắn trên đế cách điện hoặc gắn trên các lõi cách điện mềm",
+        "thanh, que, tấm được cắt theo chiều dài hoặc kích cỡ sẵn sàng để sử dụng"
+      ],
+      "mo": "MO_TA_HUONG_DAN",
+      "moNguon": [
+        "nhom:8516:ct:65#1",
+        "nhom:8516:ct:65#3"
+      ],
+      "moNguonVanTay": {
+        "nhom:8516:ct:65#1": "706edbb589c0c41951dc594d17301eb4d5c9d573ca3b59459fd765085d9f602b",
+        "nhom:8516:ct:65#3": "e4352c158e3b145d480fe10fd6d25dfbb9a90dc0f9d3bcf59a482a94642a4f03"
+      },
+      "cauHoi": "Điện trở đốt nóng có phải là dây điện trở gắn trên đế/lõi cách điện, hoặc dạng thanh, que, tấm đã được cắt theo chiều dài hoặc kích cỡ sẵn sàng để sử dụng không?",
+      "trich": "Quy định này cũng áp dụng cho các thanh, que, tấm cũng được phân loại ở đây, phải được cắt theo chiều dài hoặc kích cỡ sẵn sàng để sử dụng.",
+      "nguon": "nhom:8516:ct:65#3",
+      "vanTay": "e4352c158e3b145d480fe10fd6d25dfbb9a90dc0f9d3bcf59a482a94642a4f03"
     },
     {
       "id": "hs:bieu:85168010:8101",
@@ -2512,10 +2606,8 @@
       "tap": [
         "các tấm toả nhiệt (sealed hotplates)"
       ],
-      "mo": "MO_TA_HUONG_DAN",
-      "moNguon": "nhom:8516:ct:66#1",
-      "moNguonVanTay": "7e43339a49b6e89db038817fed8e2a352b44af24fccda5ffc14659696c4fba53",
-      "cauHoi": "Bộ phận thuộc nhánh 8516.90.2 có phải là các tấm tỏa nhiệt kín (sealed hotplates) không?",
+      "mo": "NGHIA_THUONG",
+      "cauHoi": "Bộ phận thuộc nhánh 8516.90.2 có phải là các tấm toả nhiệt (sealed hotplates) không?",
       "trich": "- - - Các tấm toả nhiệt (sealed hotplates) dùng cho thiết bị gia dụng",
       "nguon": "bieu:85169021#1",
       "vanTay": "259437ca69db61f7738416b53ca177b2c0d8cf45bac1faf9ab7f6731d3c0a277"
@@ -2791,7 +2883,7 @@
       "vanTay": "7d77cf3b522f1099a494bb7ce724429be0389117f51e2cf39130239384241e4f"
     },
     {
-      "id": "hs:bieu:851680:8103",
+      "id": "hs:bieu:851680:8106",
       "nut": "bieu:851680",
       "loai": "GIAI_CHONG",
       "cap": [
@@ -2804,7 +2896,7 @@
       "vanTay": "43c6d0bc4dbfee5211b6f045ed54ae29291d74d420d82e8a3cd596882a754ff9"
     },
     {
-      "id": "hs:bieu:851680:8104",
+      "id": "hs:bieu:851680:8107",
       "nut": "bieu:851680",
       "loai": "GIAI_CHONG",
       "cap": [
