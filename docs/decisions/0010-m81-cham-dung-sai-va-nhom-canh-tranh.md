@@ -72,3 +72,30 @@ Hàng đợi cuốn chiếu dừng tới khi mục 2 và 3 đã gộp và mục 
 
 - Cuốn chiếu chậm lại. Đổi lại, gói đủ luật thì lỗi thiếu nhóm cạnh tranh không nhân ra 1.228 nhóm.
 - Còn mở: 85.16 có câu loại trừ đặt sai phạm vi (8516:8108). Đây là lỗi soạn theo Luật 3 của skill `doc-tron-nhom`, không do gói. Mục 4 sẽ cho thấy lỗi này còn hay hết.
+
+## Bổ sung 28/11 — vai trò và ba ô kết quả (CEO phê cách làm M-81)
+
+CEO 28/11, nguyên văn (fork chuyển trên #2410): *"a cần kết quả cuối cùng chỉ có : đúng / sai ( dẫn luật ). [...] đi xây cổng kiểm, cho mô hình kém hơn chạy, sai - sửa cổng, ko sai thì tự động cho qua. Lại còn thuê người chấm chéo? Dùng llm local mà đi chấm chéo cho mô hình thông minh hơn nó 10 lần."*
+
+### 6. Vai trò
+
+- **Người soạn**: mô hình rẻ (Gemini qua agy), chạy dưới cổng máy.
+- **Máy (cổng)**: chỉ kiểm phần tất định. Câu trích phải là chuỗi con của văn bản gốc và gắn đúng nút. Chuỗi luật phải đủ. Anh em và nhóm cạnh tranh phải được phủ. Chồng số học phải chứng minh được bằng máy.
+- **Mô hình mạnh hơn người soạn** (Claude, theo quyết định CEO 13/11): làm bảng vàng trên mẫu để **tìm lỗi**. Mỗi lỗi tìm được phải thành một cổng máy mới, hoặc làm cổng cũ chặt hơn ("sai thì sửa cổng"). Cấm vá dữ liệu riêng nhóm đó cho qua.
+- **Qua đủ cổng thì tự cho qua**: nhóm thành `DONG` và tự gộp khi CI xanh, không chờ người.
+- **Bỏ** khâu soi bằng Gemma (`soi-chong.mjs`) với vai người chấm: mô hình yếu hơn không chấm mô hình mạnh hơn. Kết quả soi ở PR #2446 không dùng làm căn cứ. Phần kiểm chồng số học tất định vẫn giữ trong cổng 8.
+- **Bỏ** gói duyệt cho người làm nghề (`docs/mong/duyet/`, 212 phiếu) khỏi kế hoạch: không thuê người chấm.
+
+### 7. Ba ô kết quả cho mỗi mã 8 số
+
+- **ĐÚNG**: mỗi bậc 4 → 6 → 8 có câu luật nguyên văn cho chính mã đó, **và** ở mỗi bậc, mọi mã anh em cùng cấp đều bị loại bằng một điều kiện có `trich` nguyên văn. Thiếu một mắt thì không được ghi ĐÚNG.
+- **SAI**: dẫn câu luật mà kết quả vi phạm.
+- **CHƯA ĐỦ DỮ KIỆN**: nêu đúng `cauHoi` phải hỏi khách, lấy từ điều kiện còn thiếu dữ kiện.
+
+**Cổng 14 — ĐỦ CHUỖI** là cổng dương: nó đòi bằng chứng cho từng mắt, chứ không chỉ "không thấy lỗi". Mọi cổng hiện chỉ báo "không thấy lỗi" phải đổi sang đòi bằng chứng. Ví dụ ở 85.16, cổng 8 ra 0 cảnh báo chỉ vì phiếu ghi mỗi trục một giá trị.
+
+### 8. Báo kết quả
+
+- So với bảng vàng của mô hình mạnh hơn: mỗi ca chỉ một trong ba ô ĐÚNG / SAI / CHƯA ĐỦ DỮ KIỆN.
+- Báo dạng "dùng N lần thì mấy lần ra kết quả sai". Vòng 2b: 12/191 ca ra mã sai, tức khoảng 16 lần dùng có 1 lần sai. Không dùng phần trăm.
+- Ngưỡng mở hàng đợi vẫn là 0 lần sai trên các ca đã sai trước đó và trên mẫu kiểm.
