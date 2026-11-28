@@ -25,6 +25,8 @@ import {
   sinhBangAnhEm,
   danhGiaCongThuc,
   doBangAnhEm,
+  phanXuCapGiaiChong,
+  chonUngVienThangKhiChong,
   chungMinhPhuKin,
   chiaVeDieuKien,
   haiNutRoiNhau,
@@ -36,12 +38,13 @@ import {
   timCauBoPhanTrenChuoiCha,
   chungMinhPhanHoachCauTruc,
 } from './ho-so-ma/bang-anh-em.mjs';
-import { chayCong, napLuatCong, parseCongArg, vanTay, chuanSo, cacNutCungDong } from './ho-so-ma/cong.mjs';
+import { chayCong, napLuatCong, parseCongArg, vanTay, chuanSo, cacNutCungDong, danhGiaChuoi468 } from './ho-so-ma/cong.mjs';
 import {
   HUONG_DAN_TACH_DIEU_KIEN,
   tachDieuKienNut,
   tachDanhSachNut,
   chuanHoaDieuKien,
+  chuanHoaCanhTranh,
   docBool,
   goiOpenAICompatible,
   rutJsonDieuKien,
@@ -50,11 +53,12 @@ import {
   chuanHoaGoiNhom,
   tachGoiNhom,
 } from './ho-so-ma/tach-dieu-kien.mjs';
-import { soPhieuDieuKien } from './ho-so-ma/so-phieu-dieu-kien.mjs';
+import { soPhieuDieuKien, chamDungSaiM81 } from './ho-so-ma/so-phieu-dieu-kien.mjs';
 import {
   chuanNhom4,
   docBangCanhTranhMd,
   dungGoiNhom,
+  timCanhTranhTimThay,
 } from './ho-so-ma/goi-nhom.mjs';
 import {
   chamDiemNhom,
@@ -1645,16 +1649,17 @@ const KHO_CHUAN = ghiHoSoTam({
         nut: nutDat,
         loai: 'CANH_TRANH',
         nhomCanhTranh: ['bieu:1213', 'bieu:1214'],
-        phepThu: [`${nutDat}#1`],
+        phepThu: [{ nguon: `${nutDat}#1`, trich: 'chưa được chi tiết hoặc ghi ở nơi khác' }],
         trich: 'chưa được chi tiết hoặc ghi ở nơi khác',
         nguon: `${nutDat}#1`,
         vanTay: vanTay(L_REAL.chuCau(`${nutDat}#1`)),
       },
     ],
   });
-  const sd2308_4 = chamDiemNhom('2308', { luat: LUAT_THAT, hoSo: taoBo2308('bieu:2308'), L: L_REAL, bieuMeta: metaReal });
-  const sd2308_6 = chamDiemNhom('2308', { luat: LUAT_THAT, hoSo: taoBo2308('bieu:230800'), L: L_REAL, bieuMeta: metaReal });
-  const sd2308_8 = chamDiemNhom('2308', { luat: LUAT_THAT, hoSo: taoBo2308('bieu:23080000'), L: L_REAL, bieuMeta: metaReal });
+  const ct2308Map = { '2308': ['1213', '1214'] };
+  const sd2308_4 = chamDiemNhom('2308', { luat: LUAT_THAT, hoSo: taoBo2308('bieu:2308'), L: L_REAL, bieuMeta: metaReal, canhTranhTimThayTheoNhom: ct2308Map });
+  const sd2308_6 = chamDiemNhom('2308', { luat: LUAT_THAT, hoSo: taoBo2308('bieu:230800'), L: L_REAL, bieuMeta: metaReal, canhTranhTimThayTheoNhom: ct2308Map });
+  const sd2308_8 = chamDiemNhom('2308', { luat: LUAT_THAT, hoSo: taoBo2308('bieu:23080000'), L: L_REAL, bieuMeta: metaReal, canhTranhTimThayTheoNhom: ct2308Map });
   const r2308Thieu = chayCong({ luat: LUAT_THAT, hoSo: khoRongCho2308(), phamVi: ['2308'], chiTrong: true, cong: [6, 12], L: L_REAL, bieuMeta: metaReal });
   function khoRongCho2308() { return ghiHoSoTam({ dkList: [] }); }
 
@@ -3558,6 +3563,534 @@ const KHO_CHUAN = ghiHoSoTam({
     && rProbe6Am.cong[5].loi.some((l) => /bang-anh-em\(bieu:9031\): vanTayCau lệch câu chuong:90#1/.test(l))
     && rProbe6Am.cong[7].loi.some((l) => /bieu:9031.*HO_PHU/.test(l)),
     { kqCanCu9031, vt90: bang9031That?.vanTayCau?.['chuong:90#1'], canCuP6Am, c5: rProbe6Am.cong[5].loi, c7: rProbe6Am.cong[7].loi });
+
+  // ---------- 14. Kiểm thử toàn diện ADR-0010 (canhTranhTimThay 84.71, khongCanhTranh, Cổng 13, Cổng 14 + 3 ô kết quả, bỏ tiLeKhop & chấm 0/0/0) ----------
+  {
+    // 14A. Mục 2 ADR-0010: goi-nhom.mjs kéo canhTranhTimThay trên 84.71 (bắt được 8523 & 8517 + 3 câu luật gốc, không đổi thành loaiTru)
+    const goi8471Tat = dungGoiNhom('8471', { luat: LUAT_THAT, L: L_THAT_P6, bieuMeta: metaThatP6, tatCanhTranhTimThay: true });
+    const goi8471 = dungGoiNhom('8471', { luat: LUAT_THAT, L: L_THAT_P6, bieuMeta: metaThatP6 });
+    const dsMa8471 = (goi8471.canhTranhTimThay || []).map((u) => u.nhom);
+    const cauIds8471 = new Set((goi8471.cauTrongGoi || []).map((c) => c.id));
+    const nguonTimDayDu = (goi8471.canhTranhTimThay || []).length > 0
+      && goi8471.canhTranhTimThay.every((u) => (
+        u.nhom !== '8471'
+        && Array.isArray(u.nguonTim) && u.nguonTim.length > 0
+        && u.nguonTim.every((nt) => (
+          typeof nt.idCau === 'string'
+          && typeof nt.cauHoi === 'string'
+          && ((nt.hangNhomXet !== null && nt.hang >= 1 && nt.hang < nt.hangNhomXet) || (nt.hangNhomXet === null && nt.hang === 1))
+        ))
+      ));
+    const tatCaCauHoiId8471 = new Set(
+      (goi8471.canhTranhTimThay || []).flatMap((u) => (u.nguonTim || []).map((nt) => nt.idCau)),
+    );
+    const boCauDanTheoCauTruc = !tatCaCauHoiId8471.has('nhom:8471:ct:1#1')
+      && !tatCaCauHoiId8471.has('nhom:8471:ct:7#1')
+      && !tatCaCauHoiId8471.has('nhom:8471:ct:9#1');
+    const srcGoiNhom = fs.readFileSync(path.join(GOC, 'scripts/ho-so-ma/goi-nhom.mjs'), 'utf8');
+    const khongDungRegexCauDan = !srcGoiNhom.includes('RE_CAU_DAN_THUAN') && !srcGoiNhom.includes('RE_KY_HIEU_MUC');
+    const loaiTruKhongDoi = JSON.stringify(goi8471.loaiTru) === JSON.stringify(goi8471Tat.loaiTru);
+    const khongCoChuong98 = !dsMa8471.some((m) => Number(m.slice(0, 2)) > 97 || Number(m.slice(0, 2)) < 1);
+    const khongKeoKqHayNgoaiChuong = (goi8471.canhTranhTimThay || []).every((uv) => {
+      const chUv = uv.nhom.slice(0, 2);
+      return (uv.taiLieuPhaiDoc?.chuGiaiChuongPhan || []).every((cg) => (
+        !/:kq(?::|$)/.test(cg.nut || '')
+        && (!/^chuong:/.test(cg.nut || '') || cg.nut.startsWith(`chuong:${chUv}:`))
+      ));
+    });
+    const prompt8471 = dungLoiHoiGoiNhom(goi8471)[1].content;
+    const goi8471Chia = dungGoiNhom('8471', { luat: LUAT_THAT, L: L_THAT_P6, bieuMeta: metaThatP6, chiaTheo6So: true });
+    const promptChunk0 = dungLoiHoiGoiNhom(goi8471Chia, { chunk: goi8471Chia.goiCon[0] })[1].content;
+    const promptChunk1 = dungLoiHoiGoiNhom(goi8471Chia, { chunk: goi8471Chia.goiCon[1] })[1].content;
+
+    kiem('ADR-0010 mục 2 (goi-nhom 84.71 — tiêu chí X đứng trên H hoặc đứng đầu): gọn còn 22 ứng viên (còn cả 8523 & 8517 + 3 câu luật), bỏ câu dẫn theo cấu trúc cha/dan (0 regex chữ) & cô lập goiCon[0]',
+      dsMa8471.length === 22
+      && dsMa8471.includes('8523')
+      && dsMa8471.includes('8517')
+      && goi8471.cauTrongGoi.length === 661
+      && cauIds8471.has('chuong:85:cg:5#1')
+      && cauIds8471.has('chuong:85:cg:6:a#1')
+      && cauIds8471.has('nhom:8523:ct:18#3')
+      && !goi8471.cauTrongGoi.some((c) => /^(?:tb|wco):/.test(c.id))
+      && khongCoChuong98
+      && khongKeoKqHayNgoaiChuong
+      && nguonTimDayDu
+      && boCauDanTheoCauTruc
+      && khongDungRegexCauDan
+      && loaiTruKhongDoi
+      && prompt8471.includes('ỨNG VIÊN CẠNH TRANH TÌM THẤY QUA MÁY TÌM')
+      && prompt8471.includes('khongCanhTranh')
+      && promptChunk0.includes('ỨNG VIÊN CẠNH TRANH TÌM THẤY QUA MÁY TÌM')
+      && !promptChunk1.includes('ỨNG VIÊN CẠNH TRANH TÌM THẤY QUA MÁY TÌM')
+      && promptChunk1.length < promptChunk0.length,
+      { soUv: dsMa8471.length, dsMa8471, soCau: goi8471.cauTrongGoi.length, boCauDanTheoCauTruc, khongDungRegexCauDan, len0: promptChunk0.length, len1: promptChunk1.length });
+
+    // 14B. Mục 3 ADR-0010: Khuôn khongCanhTranh, chuanHoaCanhTranh & Cổng 13 PHỦ CẠNH TRANH (1 ca dương + 5 ca âm đối kháng + độ tươi vân tay so-diem)
+    const chuCg85_5 = L_THAT_P6.chuCau('chuong:85:cg:5#1');
+    const chuCg85_6a = L_THAT_P6.chuCau('chuong:85:cg:6:a#1');
+    const trich85_5 = chuCg85_5.slice(0, Math.min(60, chuCg85_5.length)).trim();
+    const trich85_6a = chuCg85_6a.slice(0, Math.min(60, chuCg85_6a.length)).trim();
+
+    const kctNormOk = chuanHoaCanhTranh([
+      {
+        nut: 'bieu:0201',
+        nhomCanhTranh: [],
+        phepThu: [],
+        khongCanhTranh: [
+          { nhom: '85.23', nguon: 'chuong:85:cg:6:a#1', trich: trich85_6a, lyDo: 'Không thuộc thịt trâu bò' },
+        ],
+      },
+    ], 'bieu:0201', L_THAT_P6);
+    const kctBadRong = kiemBanGhi({
+      id: 'hs:bieu:0201:8171',
+      nut: 'bieu:0201',
+      loai: 'CANH_TRANH',
+      nhomCanhTranh: [],
+      phepThu: [],
+      khongCanhTranh: [],
+      trich: 'Thịt của động vật họ trâu bò',
+      nguon: 'bieu:0201#1',
+      vanTay: vanTay(L_THAT_P6.chuCau('bieu:0201#1')),
+    });
+    const kctBadMauThuan = kiemBanGhi({
+      id: 'hs:bieu:0201:8171',
+      nut: 'bieu:0201',
+      loai: 'CANH_TRANH',
+      nhomCanhTranh: ['bieu:8523'],
+      phepThu: [{ nguon: 'chuong:85:cg:6:a#1', trich: trich85_6a }],
+      khongCanhTranh: [{ nhom: 'bieu:8523', nguon: 'chuong:85:cg:6:a#1', trich: trich85_6a }],
+      trich: trich85_6a,
+      nguon: 'chuong:85:cg:6:a#1',
+      vanTay: vanTay(chuCg85_6a),
+    });
+    const kctBadTb = kiemBanGhi({
+      id: 'hs:bieu:0201:8171',
+      nut: 'bieu:0201',
+      loai: 'CANH_TRANH',
+      nhomCanhTranh: [],
+      phepThu: [],
+      khongCanhTranh: [{ nhom: 'bieu:8523', nguon: 'tb:123#1', trich: 'tiền lệ' }],
+      trich: 'Thịt của động vật họ trâu bò',
+      nguon: 'bieu:0201#1',
+      vanTay: vanTay(L_THAT_P6.chuCau('bieu:0201#1')),
+    });
+
+    const dk0201That = docDong(path.join(GOC, 'data/ho-so-ma/dieu-kien/02.jsonl'))
+      .map((l) => JSON.parse(l))
+      .filter((r) => /^bieu:0201/.test(r.nut || '') && r.loai !== 'CANH_TRANH');
+    const ungVienGiaLap = { '0201': ['8523', '8517'] };
+
+    // Ca dương Cổng 13: 8523 trả lời qua CANH_TRANH (phepThu trích nguyên văn), 8517 trả lời qua khongCanhTranh (trich nguyên văn)
+    const ctDuong13 = {
+      id: 'hs:bieu:0201:8171',
+      nut: 'bieu:0201',
+      loai: 'CANH_TRANH',
+      nhomCanhTranh: ['bieu:8523'],
+      phepThu: [{ nhom: 'bieu:8523', nguon: 'chuong:85:cg:6:a#1', trich: trich85_6a, vanTay: vanTay(chuCg85_6a) }],
+      khongCanhTranh: [{ nhom: 'bieu:8517', nguon: 'chuong:85:cg:5#1', trich: trich85_5, vanTay: vanTay(chuCg85_5) }],
+      trich: trich85_6a,
+      nguon: 'chuong:85:cg:6:a#1',
+      vanTay: vanTay(chuCg85_6a),
+    };
+    const kho13Duong = ghiHoSoTam({ dkList: [...dk0201That, ctDuong13] });
+    const r13Duong = chayCong({
+      luat: LUAT_THAT,
+      hoSo: kho13Duong,
+      phamVi: ['0201'],
+      chiTrong: true,
+      cong: [4, 5, 12, 13],
+      L: L_THAT_P6,
+      bieuMeta: metaThatP6,
+      canhTranhTimThayTheoNhom: ungVienGiaLap,
+    });
+
+    // Ca âm (a): thiếu trả lời cho bieu:8517
+    const kho13Thieu = ghiHoSoTam({
+      dkList: [...dk0201That, { ...ctDuong13, khongCanhTranh: undefined }],
+    });
+    const r13Thieu = chayCong({
+      luat: LUAT_THAT,
+      hoSo: kho13Thieu,
+      phamVi: ['0201'],
+      chiTrong: true,
+      cong: [13],
+      L: L_THAT_P6,
+      bieuMeta: metaThatP6,
+      canhTranhTimThayTheoNhom: ungVienGiaLap,
+    });
+
+    // Ca âm (b): phepThu chỉ là chuỗi id câu (không có trich nguyên văn)
+    const kho13ChuoiTran = ghiHoSoTam({
+      dkList: [...dk0201That, { ...ctDuong13, phepThu: ['chuong:85:cg:6:a#1'] }],
+    });
+    const r13ChuoiTran = chayCong({
+      luat: LUAT_THAT,
+      hoSo: kho13ChuoiTran,
+      phamVi: ['0201'],
+      chiTrong: true,
+      cong: [13],
+      L: L_THAT_P6,
+      bieuMeta: metaThatP6,
+      canhTranhTimThayTheoNhom: ungVienGiaLap,
+    });
+
+    // Ca âm (c): nhét bieu:8517 vào nhomCanhTranh nhưng phepThu chỉ gắn nhom: "bieu:8523"
+    const kho13LachNhom = ghiHoSoTam({
+      dkList: [...dk0201That, {
+        ...ctDuong13,
+        nhomCanhTranh: ['bieu:8523', 'bieu:8517'],
+        khongCanhTranh: undefined,
+      }],
+    });
+    const r13LachNhom = chayCong({
+      luat: LUAT_THAT,
+      hoSo: kho13LachNhom,
+      phamVi: ['0201'],
+      chiTrong: true,
+      cong: [13],
+      L: L_THAT_P6,
+      bieuMeta: metaThatP6,
+      canhTranhTimThayTheoNhom: ungVienGiaLap,
+    });
+
+    // Ca âm (d): trich trong khongCanhTranh bịa chữ không nguyên văn
+    const kho13SaiTrich = ghiHoSoTam({
+      dkList: [...dk0201That, {
+        ...ctDuong13,
+        khongCanhTranh: [{ nhom: 'bieu:8517', nguon: 'chuong:85:cg:5#1', trich: 'câu trích tự bịa không nằm trong chú giải 5' }],
+      }],
+    });
+    const r13SaiTrich = chayCong({
+      luat: LUAT_THAT,
+      hoSo: kho13SaiTrich,
+      phamVi: ['0201'],
+      chiTrong: true,
+      cong: [4, 12, 13],
+      L: L_THAT_P6,
+      bieuMeta: metaThatP6,
+      canhTranhTimThayTheoNhom: ungVienGiaLap,
+    });
+
+    // Ca âm (e): mâu thuẫn chéo giữa 2 bản ghi CANH_TRANH cùng nhóm (8523 vừa ở CANH_TRANH vừa ở khongCanhTranh)
+    const kho13MauThuanCheo = ghiHoSoTam({
+      dkList: [
+        ...dk0201That,
+        { ...ctDuong13, khongCanhTranh: [{ nhom: 'bieu:8517', nguon: 'chuong:85:cg:5#1', trich: trich85_5 }] },
+        {
+          id: 'hs:bieu:0201:8172',
+          nut: 'bieu:0201',
+          loai: 'CANH_TRANH',
+          nhomCanhTranh: [],
+          phepThu: [],
+          khongCanhTranh: [{ nhom: 'bieu:8523', nguon: 'chuong:85:cg:6:a#1', trich: trich85_6a }],
+          trich: trich85_6a,
+          nguon: 'chuong:85:cg:6:a#1',
+          vanTay: vanTay(chuCg85_6a),
+        },
+      ],
+    });
+    const r13MauThuanCheo = chayCong({
+      luat: LUAT_THAT,
+      hoSo: kho13MauThuanCheo,
+      phamVi: ['0201'],
+      chiTrong: true,
+      cong: [13],
+      L: L_THAT_P6,
+      bieuMeta: metaThatP6,
+      canhTranhTimThayTheoNhom: ungVienGiaLap,
+    });
+
+    // Độ tươi vân tay khongCanhTranh trong Cổng 5 & so-diem.mjs khi vanTay lệch
+    const kho13LechVt = ghiHoSoTam({
+      dkList: [...dk0201That, {
+        ...ctDuong13,
+        khongCanhTranh: [{ nhom: 'bieu:8517', nguon: 'chuong:85:cg:5#1', trich: trich85_5, vanTay: '0'.repeat(64) }],
+      }],
+    });
+    const r5LechKct = chayCong({ luat: LUAT_THAT, hoSo: kho13LechVt, cong: [5], L: L_THAT_P6, bieuMeta: metaThatP6 });
+    const sdLechKct = chamDiemNhom('0201', { luat: LUAT_THAT, hoSo: kho13LechVt, L: L_THAT_P6, bieuMeta: metaThatP6 });
+
+    // Ca âm (f — Kiểm toán R1): nhóm mới ngoài 12 mã tiền ADR-0010 (vd 2308) bỏ quên khongCanhTranh khi gọi chamDiemNhom MẶC ĐỊNH -> bắt buộc DO ở Cổng 13!
+    const kho2308ThieuCt13 = ghiHoSoTam({
+      dkList: [{
+        id: 'hs:bieu:2308:8101',
+        nut: 'bieu:2308',
+        loai: 'DIEU_KIEN',
+        ve: 1,
+        phu: false,
+        kieu: 'CO_KHONG',
+        mo: 'NGHIA_THUONG',
+        cauHoi: 'Có phải nguyên liệu thực vật dùng làm thức ăn chăn nuôi chưa ghi ở nơi khác không?',
+        trich: 'chưa được chi tiết hoặc ghi ở nơi khác',
+        nguon: 'bieu:2308#1',
+        vanTay: vanTay(L_THAT_P6.chuCau('bieu:2308#1')),
+      }, {
+        id: 'hs:bieu:2308:8171',
+        nut: 'bieu:2308',
+        loai: 'CANH_TRANH',
+        nhomCanhTranh: ['bieu:1213'],
+        phepThu: [{ nguon: 'bieu:2308#1', trich: 'chưa được chi tiết hoặc ghi ở nơi khác' }],
+        trich: 'chưa được chi tiết hoặc ghi ở nơi khác',
+        nguon: 'bieu:2308#1',
+        vanTay: vanTay(L_THAT_P6.chuCau('bieu:2308#1')),
+      }],
+    });
+    const sd2308MacDinhDo13 = chamDiemNhom('2308', {
+      luat: LUAT_THAT,
+      hoSo: kho2308ThieuCt13,
+      L: L_THAT_P6,
+      bieuMeta: metaThatP6,
+    });
+
+    kiem('ADR-0010 mục 3 (Khuôn & Cổng 13 PHỦ CẠNH TRANH): dương XANH (4,5,12,13); bắt đủ 6 ca âm (kể cả so-diem mặc định bật Cổng 13 cho nhóm mới vắng khongCanhTranh) & lệch vanTay',
+      kctNormOk.banGhi.length === 1
+      && kctNormOk.banGhi[0].khongCanhTranh?.[0]?.nhom === 'bieu:8523'
+      && typeof kctNormOk.banGhi[0].khongCanhTranh?.[0]?.vanTay === 'string'
+      && kctBadRong.length > 0
+      && kctBadMauThuan.some((e) => /trùng nhau/.test(e))
+      && kctBadTb.some((e) => /tb:/.test(e))
+      && parseCongArg('6..14').join(',') === '6,7,8,9,10,11,12,13,14'
+      && r13Duong.khuon.length === 0
+      && [4, 5, 12, 13].every((c) => r13Duong.cong[c].loi.length === 0)
+      && r13Thieu.cong[13].loi.some((l) => /bieu:8517/.test(l))
+      && r13ChuoiTran.cong[13].loi.some((l) => /bieu:8523/.test(l))
+      && r13LachNhom.cong[13].loi.some((l) => /bieu:8517/.test(l))
+      && r13SaiTrich.cong[4].loi.length > 0 && r13SaiTrich.cong[12].loi.length > 0 && r13SaiTrich.cong[13].loi.some((l) => /bieu:8517/.test(l))
+      && r13MauThuanCheo.cong[13].loi.some((l) => /bieu:8523.*mâu thuẫn/.test(l))
+      && sd2308MacDinhDo13.trangThai === 'DO' && sd2308MacDinhDo13.congLoi.includes(13)
+      && r5LechKct.cong[5].loi.some((l) => /khongCanhTranh vanTay lệch/.test(l))
+      && sdLechKct.trangThai === 'DO' && sdLechKct.cauDoiVanTay.includes('chuong:85:cg:5#1'),
+      {
+        norm: kctNormOk.loi,
+        duong13: r13Duong.cong[13],
+        thieu: r13Thieu.cong[13].loi,
+        chuoiTran: r13ChuoiTran.cong[13].loi,
+        lachNhom: r13LachNhom.cong[13].loi,
+        saiTrich: r13SaiTrich.cong[13].loi,
+        mauThuan: r13MauThuanCheo.cong[13].loi,
+        sd2308Do13: sd2308MacDinhDo13.congLoi,
+        sdLech: sdLechKct.cauDoiVanTay,
+      });
+
+    // 14C. Mục 7 ADR-0010: Cổng 14 ĐỦ CHUỖI & danhGiaChuoi468 (3 ô DUNG / SAI / CHUA_DU_DU_KIEN + hồi quy 12 nhóm vàng)
+    const NHOM_12_HOI_QUY = ['0201', '3004', '3926', '4202', '6110', '7326', '8479', '8501', '8517', '8543', '8708', '9031'];
+    const r14_12 = chayCong({
+      luat: LUAT_THAT,
+      hoSo: path.join(GOC, 'data/ho-so-ma'),
+      phamVi: NHOM_12_HOI_QUY,
+      chiTrong: true,
+      cong: [14],
+      L: L_THAT_P6,
+      bieuMeta: metaThatP6,
+    });
+    const sd12HoiQuy = chamSoDiem({
+      luat: LUAT_THAT,
+      hoSo: path.join(GOC, 'data/ho-so-ma'),
+      nhom: NHOM_12_HOI_QUY,
+      L: L_THAT_P6,
+      bieuMeta: metaThatP6,
+    });
+
+    // Kiểm trực tiếp 3 ô của danhGiaChuoi468 trên 02011000 (kho thật)
+    const kqChuoiRong = danhGiaChuoi468('bieu:02011000', {}, {
+      luat: LUAT_THAT,
+      hoSo: kho13Duong,
+      L: L_THAT_P6,
+      bieuMeta: metaThatP6,
+    });
+    const dks0201All = dk0201That.filter((x) => x.loai === 'DIEU_KIEN');
+    const gan02011000Dung = {};
+    for (const d of dks0201All) {
+      if (d.nut === 'bieu:0201' || d.nut === 'bieu:020110' || d.nut === 'bieu:02011000') {
+        gan02011000Dung[d.id] = !d.phu;
+      } else if (d.nut === 'bieu:020120' || d.nut === 'bieu:020130') {
+        // Bắt các điều kiện dương thành false (hoặc điều kiện phủ thành true) để bác bỏ anh em 020120 & 020130
+        gan02011000Dung[d.id] = Boolean(d.phu);
+      }
+    }
+    const kqChuoiDung = danhGiaChuoi468('bieu:02011000', gan02011000Dung, {
+      luat: LUAT_THAT,
+      hoSo: kho13Duong,
+      L: L_THAT_P6,
+      bieuMeta: metaThatP6,
+    });
+    // Xoá dữ kiện bác bỏ anh em 020130 -> thiếu mắt loại anh em cùng cấp -> cấm ghi DUNG, phải trả CHUA_DU_DU_KIEN kèm cauHoi (nếu không tự rời nhau)
+    const dk0201ViPhamCha = dks0201All.find((d) => d.nut === 'bieu:0201');
+    const kqChuoiSai = danhGiaChuoi468('bieu:02011000', {
+      ...gan02011000Dung,
+      [dk0201ViPhamCha.id]: Boolean(dk0201ViPhamCha.phu),
+    }, {
+      luat: LUAT_THAT,
+      hoSo: kho13Duong,
+      L: L_THAT_P6,
+      bieuMeta: metaThatP6,
+    });
+
+    // Ca âm Cổng 14: xoá sạch DIEU_KIEN của anh em có tên bieu:020130 -> Cổng 14 ĐỎ thiếu điều kiện loại anh em cùng cấp
+    const kho14ThieuAe = ghiHoSoTam({
+      dkList: dk0201That.filter((x) => x.nut !== 'bieu:020130'),
+    });
+    const r14ThieuAe = chayCong({
+      luat: LUAT_THAT,
+      hoSo: kho14ThieuAe,
+      phamVi: ['0201'],
+      chiTrong: true,
+      cong: [14],
+      L: L_THAT_P6,
+      bieuMeta: metaThatP6,
+    });
+    // Ca âm Cổng 14 trên viDu vi phạm câu luật
+    const r14ViDuSai = chayCong({
+      luat: LUAT_THAT,
+      hoSo: kho13Duong,
+      phamVi: ['0201'],
+      chiTrong: true,
+      cong: [14],
+      L: L_THAT_P6,
+      bieuMeta: metaThatP6,
+      viDu: [{
+        trich: 'Ca vi phạm điều kiện cha 0201',
+        dich: 'bieu:02011000',
+        ganDieuKien: { ...gan02011000Dung, [dk0201ViPhamCha.id]: Boolean(dk0201ViPhamCha.phu) },
+      }],
+    });
+
+    // Kiểm toán R1 Lỗi #2: bất biến KHÔNG BAO GIỜ có 2 mã 8 số cùng trả o === 'DUNG' trên cùng 1 ganDieuKien khi có GIAI_CHONG
+    // (i) Cặp 85437030 × 85437050 (CHU_GIAI phan:XVI:cg:3#1 + gir:3:c#1): cả hai cùng true nhưng chưa biết chức năng chính -> cả hai CHUA_DU_DU_KIEN (0 mã DUNG), và doBangAnhEm áp dự phòng gir:3:c chọn 85437050
+    const dks8543That = docDong(path.join(GOC, 'data/ho-so-ma/dieu-kien/85.jsonl'))
+      .map((l) => JSON.parse(l))
+      .filter((r) => /^bieu:8543/.test(r.nut || ''));
+    const ganBoth8543 = {};
+    for (const d of dks8543That) {
+      if (d.loai !== 'DIEU_KIEN') continue;
+      if (['bieu:8543', 'bieu:854370', 'bieu:85437030', 'bieu:85437050'].includes(d.nut)) {
+        ganBoth8543[d.id] = !d.phu;
+      } else {
+        ganBoth8543[d.id] = Boolean(d.phu);
+      }
+    }
+    const kqGc8543_30 = danhGiaChuoi468('bieu:85437030', ganBoth8543, { luat: LUAT_THAT, hoSo: path.join(GOC, 'data/ho-so-ma'), L: L_THAT_P6, bieuMeta: metaThatP6 });
+    const kqGc8543_50 = danhGiaChuoi468('bieu:85437050', ganBoth8543, { luat: LUAT_THAT, hoSo: path.join(GOC, 'data/ho-so-ma'), L: L_THAT_P6, bieuMeta: metaThatP6 });
+    const bang8543Map = new Map(
+      docDong(path.join(GOC, 'data/ho-so-ma/bang-anh-em/85.jsonl'))
+        .map((l) => JSON.parse(l))
+        .filter((b) => /^bieu:8543/.test(b.cha))
+        .map((b) => [b.cha, b]),
+    );
+    const route8543Both = doBangAnhEm('bieu:854370', ganBoth8543, bang8543Map, { L: L_THAT_P6 });
+
+    // (ii) Cặp dẫn nguồn đích danh 1 bên (NGUON_RIENG: bieu:020110#1) và cặp thuần gir:3:c#1 (GIR_3C: nhánh sau thắng, nhánh trước SAI)
+    const gcNguonRieng = {
+      id: 'hs:bieu:0201:8151',
+      nut: 'bieu:0201',
+      loai: 'GIAI_CHONG',
+      cap: ['bieu:020110', 'bieu:020120'],
+      cach: 'QUY_TAC_3',
+      trich: 'Thịt cả con và nửa con',
+      nguon: 'bieu:020110#1',
+      vanTay: vanTay(L_THAT_P6.chuCau('bieu:020110#1')),
+    };
+    const khoGcNguonRieng = ghiHoSoTam({ dkList: [...dk0201That, gcNguonRieng] });
+    const ganBoth0201_10_20 = {};
+    for (const d of dks0201All) {
+      if (['bieu:0201', 'bieu:020110', 'bieu:020120'].includes(d.nut)) {
+        ganBoth0201_10_20[d.id] = !d.phu;
+      } else {
+        ganBoth0201_10_20[d.id] = Boolean(d.phu);
+      }
+    }
+    const kqNrThang = danhGiaChuoi468('bieu:02011000', ganBoth0201_10_20, { luat: LUAT_THAT, hoSo: khoGcNguonRieng, L: L_THAT_P6, bieuMeta: metaThatP6 });
+    const kqNrThua = danhGiaChuoi468('bieu:02012000', ganBoth0201_10_20, { luat: LUAT_THAT, hoSo: khoGcNguonRieng, L: L_THAT_P6, bieuMeta: metaThatP6 });
+
+    const gc3cThuan = {
+      id: 'hs:bieu:0201:8152',
+      nut: 'bieu:0201',
+      loai: 'GIAI_CHONG',
+      cap: ['bieu:020110', 'bieu:020120'],
+      cach: 'QUY_TAC_3',
+      trich: 'phân loại vào nhóm cuối cùng theo thứ tự đánh số',
+      nguon: 'gir:3:c#1',
+      vanTay: vanTay(L_THAT_P6.chuCau('gir:3:c#1')),
+    };
+    const khoGc3c = ghiHoSoTam({ dkList: [...dk0201That, gc3cThuan] });
+    const kq3cThuaTruoc = danhGiaChuoi468('bieu:02011000', ganBoth0201_10_20, { luat: LUAT_THAT, hoSo: khoGc3c, L: L_THAT_P6, bieuMeta: metaThatP6 });
+    const kq3cThangSau = danhGiaChuoi468('bieu:02012000', ganBoth0201_10_20, { luat: LUAT_THAT, hoSo: khoGc3c, L: L_THAT_P6, bieuMeta: metaThatP6 });
+
+    kiem('ADR-0010 mục 7 (Cổng 14 ĐỦ CHUỖI & danhGiaChuoi468 3 ô): 12 nhóm hồi quy không gãy, bất biến <= 1 mã DUNG khi chồng GIAI_CHONG (NGUON_RIENG, GIR_3C, CHU_GIAI) & ca âm thiếu anh em ĐỎ',
+      r14_12.cong[14].loi.length === 0
+      && r14_12.cong[14].canhBao.some((c) => /bieu:8501.*CHUA_DU_DU_KIEN/.test(c))
+      && sd12HoiQuy.dong === 11
+      && sd12HoiQuy.do === 1
+      && sd12HoiQuy.nhom.find((x) => x.nhom === '8501')?.congLoi.join(',') === '7'
+      && kqChuoiRong.o === 'CHUA_DU_DU_KIEN' && kqChuoiRong.cauHoi.length > 0
+      && kqChuoiDung.o === 'DUNG'
+      && kqChuoiDung.bangChung468.length >= 2
+      && kqChuoiDung.bangChungLoaiAnhEm.length >= 2
+      && kqChuoiSai.o === 'SAI'
+      && kqChuoiSai.viPham.some((v) => v.nguon === dk0201ViPhamCha.nguon && v.trich === dk0201ViPhamCha.trich)
+      && kqGc8543_30.o === 'CHUA_DU_DU_KIEN'
+      && kqGc8543_50.o === 'CHUA_DU_DU_KIEN'
+      && route8543Both.trangThai === 'DICH' && route8543Both.dich === 'bieu:85437050'
+      && kqNrThang.o === 'DUNG'
+      && kqNrThua.o === 'SAI' && kqNrThua.viPham.some((v) => v.nguon === 'bieu:020110#1')
+      && kq3cThuaTruoc.o === 'SAI' && kq3cThuaTruoc.viPham.some((v) => v.nguon === 'gir:3:c#1')
+      && kq3cThangSau.o === 'DUNG'
+      && r14ThieuAe.cong[14].loi.some((l) => /bieu:020130.*thiếu DIEU_KIEN/.test(l))
+      && r14ViDuSai.cong[14].loi.some((l) => /vi phạm chuỗi 4→6→8 \(SAI\)/.test(l)),
+      {
+        c14_12: r14_12.cong[14].dem,
+        sd12: { dong: sd12HoiQuy.dong, do: sd12HoiQuy.do },
+        gc8543: [kqGc8543_30.o, kqGc8543_50.o, route8543Both.dich],
+        nr: [kqNrThang.o, kqNrThua.o],
+        c3c: [kq3cThuaTruoc.o, kq3cThangSau.o],
+        thieuAe: r14ThieuAe.cong[14].loi,
+        vdSai: r14ViDuSai.cong[14].loi,
+      });
+
+    // 14D. Mục 1 & 8 ADR-0010: bỏ tiLeKhop khỏi soPhieuDieuKien, chamDungSaiM81 ngưỡng 0/0/0 ("một phần" = sai) & câu báo CEO không dùng %
+    const spKhop = soPhieuDieuKien([dk0201ViPhamCha], [dk0201ViPhamCha]);
+    const spLech = soPhieuDieuKien([dk0201ViPhamCha], []);
+    const chamDat = chamDungSaiM81({
+      dieuKienDung: 49,
+      dieuKienMotPhan: 0,
+      dieuKienThieu: 0,
+      caDung: 30,
+      caChuaDuDuKien: 5,
+      caDichSai: 0,
+      capChongTim: 9,
+      capChongSot: 0,
+    });
+    const chamMotPhan = chamDungSaiM81({
+      dieuKienDung: 48,
+      dieuKienMotPhan: 1,
+      caDung: 35,
+      caDichSai: 0,
+      capChongSot: 0,
+    });
+    const chamVong2b = chamDungSaiM81({
+      dieuKienMotPhan: 70,
+      caDung: 155,
+      caChuaDuDuKien: 24,
+      caDichSai: 12,
+      tongCa: 191,
+      capChongSot: 2,
+    });
+
+    kiem('ADR-0010 mục 1 & 8 (soPhieuDieuKien & chamDungSaiM81): bỏ sạch tiLeKhop, "một phần" tính là sai, ngưỡng 0/0/0 và báo "12/191 ca ra mã sai, tức cứ khoảng 16 lần dùng có 1 lần khai sai" không dùng %',
+      !('tiLeKhop' in spKhop.thongKe)
+      && spKhop.thongKe.dat === true
+      && spLech.thongKe.dat === false
+      && chamDat.dat === true
+      && chamDat.ketLuan === 'DAT'
+      && chamDat.baoCaoKhach === '0/35 lần dùng ra mã sai'
+      && chamDat.baOKetQua.DUNG === 30 && chamDat.baOKetQua.CHUA_DU_DU_KIEN === 5 && chamDat.baOKetQua.SAI === 0
+      && chamMotPhan.dat === false
+      && chamMotPhan.dieuKienSai === 1
+      && chamVong2b.dat === false
+      && chamVong2b.baoCaoKhach === '12/191 ca ra mã sai, tức cứ khoảng 16 lần dùng có 1 lần khai sai'
+      && !chamVong2b.baoCaoKhach.includes('%'),
+      { spKhop: spKhop.thongKe, chamDat, chamMotPhan, chamVong2b });
+  }
 }
 
 fs.rmSync(TAM, { recursive: true, force: true });

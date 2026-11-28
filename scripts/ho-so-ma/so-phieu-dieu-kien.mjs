@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// scripts/ho-so-ma/so-phieu-dieu-kien.mjs — M-81 (#2410, ADR-0007): đối chiếu tất định hai phiếu DIEU_KIEN độc lập -> KHOP / LECH_PHIEU.
+// scripts/ho-so-ma/so-phieu-dieu-kien.mjs — M-81 (#2410, ADR-0007, ADR-0010): đối chiếu tất định hai phiếu DIEU_KIEN độc lập -> KHOP / LECH_PHIEU & chấm nhị phân Đúng/Sai ngưỡng 0/0/0.
 // Không gọi LLM, không mạng.
 //   node scripts/ho-so-ma/so-phieu-dieu-kien.mjs --phieu-1 <p1.jsonl> --phieu-2 <p2.jsonl> [--out <out.jsonl>] [--bao-cao] [--strict]
 import fs from 'node:fs';
@@ -93,8 +93,8 @@ const tomTatPhieu = (r, macDinh) => ({
 });
 
 /**
- * So sánh hai danh sách DIEU_KIEN từ hai phiếu độc lập.
- * Trả `{ ketQua, thongKe: { tong, khop, lechPhieu, tiLeKhop }, lechChiTiet }`.
+ * So sánh hai danh sách DIEU_KIEN từ hai phiếu độc lập (ADR-0010: chỉ đếm số nguyên, không tính phần trăm hay trung bình).
+ * Trả `{ ketQua, thongKe: { tong, khop, lechPhieu, dat }, lechChiTiet }`.
  */
 export function soPhieuDieuKien(phieu1, phieu2) {
   const ds1 = [...(phieu1 || [])].filter((x) => x && x.loai === 'DIEU_KIEN');
@@ -186,16 +186,76 @@ export function soPhieuDieuKien(phieu1, phieu2) {
   const khop = ketQua.filter((r) => r.trangThai === 'KHOP').length;
   const lechPhieu = ketQua.length - khop;
   const tong = ketQua.length;
-  const tiLeKhop = tong ? Number((khop / tong).toFixed(4)) : 1;
+  const dat = lechPhieu === 0;
 
   return {
     ketQua,
-    thongKe: { tong, khop, lechPhieu, tiLeKhop },
+    thongKe: { tong, khop, lechPhieu, dat },
     lechChiTiet,
   };
 }
 
 export const soHaiPhieuDieuKien = soPhieuDieuKien;
+
+/**
+ * Chấm nhị phân Đúng/Sai M-81 so với bảng chuẩn theo ngưỡng 0/0/0 và 3 ô kết quả ĐÚNG / SAI / CHƯA ĐỦ DỮ KIỆN
+ * (ADR-0010 mục 1, 7, 8 & chỉ đạo CEO #2410#issuecomment-7231147427).
+ * "Một phần", thiếu, sai phạm vi, sai nghĩa đều là điều kiện sai; báo kết quả theo số lần dùng sai, không dùng phần trăm.
+ */
+export function chamDungSaiM81(dauVao = {}) {
+  const {
+    dieuKienDung = 0,
+    dieuKienMotPhan = 0,
+    dieuKienThieu = 0,
+    dieuKienSaiNghia = 0,
+    dieuKienSaiPhamVi = 0,
+    dieuKienSai = null,
+    caDung = 0,
+    caChuaDuDuKien = null,
+    caDungHoi = 0,
+    caSai = null,
+    caDichSai = 0,
+    tongCa = null,
+    capChongTim = 0,
+    capChongSot = 0,
+  } = dauVao || {};
+
+  const dkDung = Number(dieuKienDung);
+  const tongDieuKienSai = dieuKienSai !== null
+    ? Number(dieuKienSai)
+    : (Number(dieuKienMotPhan) + Number(dieuKienThieu) + Number(dieuKienSaiNghia) + Number(dieuKienSaiPhamVi));
+  const cDung = Number(caDung);
+  const cChuaDu = caChuaDuDuKien !== null ? Number(caChuaDuDuKien) : Number(caDungHoi);
+  const cDichSai = caSai !== null ? Number(caSai) : Number(caDichSai);
+  const tongSoCa = tongCa !== null ? Number(tongCa) : (cDung + cChuaDu + cDichSai);
+  const chongTim = Number(capChongTim);
+  const chongSot = Number(capChongSot);
+  const dat = (tongDieuKienSai === 0) && (cDichSai === 0) && (chongSot === 0);
+  const baoCaoKhach = cDichSai === 0
+    ? `0/${tongSoCa} lần dùng ra mã sai`
+    : `${cDichSai}/${tongSoCa} ca ra mã sai, tức cứ khoảng ${Math.max(1, Math.round(tongSoCa / cDichSai))} lần dùng có 1 lần khai sai`;
+
+  return {
+    dat,
+    ketLuan: dat ? 'DAT' : 'KHONG_DAT',
+    dieuKienDung: dkDung,
+    dieuKienSai: tongDieuKienSai,
+    caDung: cDung,
+    caChuaDuDuKien: cChuaDu,
+    caDungHoi: cChuaDu,
+    caSai: cDichSai,
+    caDichSai: cDichSai,
+    tongCa: tongSoCa,
+    capChongTim: chongTim,
+    capChongSot: chongSot,
+    baOKetQua: {
+      DUNG: cDung,
+      SAI: cDichSai,
+      CHUA_DU_DU_KIEN: cChuaDu,
+    },
+    baoCaoKhach,
+  };
+}
 
 function docJsonl(tep) {
   return fs.readFileSync(path.resolve(tep), 'utf8')
@@ -223,7 +283,7 @@ function main() {
   if (a.includes('--bao-cao') || a.includes('--json')) {
     console.log(JSON.stringify({ thongKe: r.thongKe, lechChiTiet: r.lechChiTiet }, null, 2));
   } else {
-    console.log(`So phiếu DIEU_KIEN: ${r.thongKe.khop}/${r.thongKe.tong} KHOP, ${r.thongKe.lechPhieu} LECH_PHIEU`);
+    console.log(`So phiếu DIEU_KIEN: ${r.thongKe.khop}/${r.thongKe.tong} KHOP, ${r.thongKe.lechPhieu} LECH_PHIEU -> ${r.thongKe.dat ? 'DAT (0 lệch)' : 'KHONG_DAT'}`);
     for (const l of r.lechChiTiet.slice(0, 30)) {
       console.log(`  ! ${l.nut} (${l.nguon}): ${l.lyDo.join(', ')}`);
     }

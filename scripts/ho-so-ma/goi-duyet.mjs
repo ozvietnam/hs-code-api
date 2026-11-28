@@ -6,7 +6,7 @@
 //   Mỗi Chương trọng điểm: 30 vấn đề chọn ngẫu nhiên + TOÀN BỘ LECH_PHIEU + mọi vấn đề
 //   trích không khớp câu luật (máy tự cắm cờ ⚠). Ô chấm: Rút đúng / Rút sai / Không rõ.
 //
-// Chế độ M-81 (--m81):
+// Chế độ M-81 (--m81) — [ĐÃ BỎ KHỎI KẾ HOẠCH NGHIỆM THU THEO ADR-0010 MỤC 6: không thuê người chấm, chỉ đi cổng máy 6–14; giữ tương thích kiểm thử]:
 //   Xuất mọi mục cần người làm nghề duyệt từ dữ liệu dieu-kien/ + bang-anh-em/ + luat-goc/:
 //     I.   VUNG_CHONG chưa giải (chồng dải số, danh sách vungChong, hoặc bảng M-81-chuyen-*.md chưa có GIAI_CHONG)
 //     II.  GIAI_CHONG mang ghiChu cần người duyệt (CAN_NGUOI_DUYET / VUNG_CHONG / chờ duyệt / LECH_PHIEU), gom 1 phiếu/cặp

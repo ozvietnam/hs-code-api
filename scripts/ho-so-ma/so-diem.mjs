@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-// scripts/ho-so-ma/so-diem.mjs — M-81 (#2410, ADR-0008): sổ điểm tất định theo nhóm 4 số, tính hoàn toàn từ dữ liệu (KHÔNG tệp trạng thái riêng).
-//   DONG: có DIEU_KIEN, không lỗi khuôn, bang-anh-em qua cổng 6–12 và vân tay mọi câu luật liên quan còn khớp.
+// scripts/ho-so-ma/so-diem.mjs — M-81 (#2410, ADR-0008, ADR-0010): sổ điểm tất định theo nhóm 4 số, tính hoàn toàn từ dữ liệu (KHÔNG tệp trạng thái riêng).
+//   DONG: có DIEU_KIEN, không lỗi khuôn, bang-anh-em qua cổng 6–14 (cổng 13 bật mặc định; TẠM miễn cho 12 nhóm tiền ADR-0010 tới khi bổ sung khongCanhTranh theo tiêu chí mới) và vân tay mọi câu luật liên quan còn khớp.
 //   CHUA: chưa có bản ghi nào thuộc nhóm (hàng đợi chỉ phát nhóm CHUA).
-//   DO  : lỗi khuôn / trượt cổng 6–12 / vân tay câu luật đổi (chỉ mở lại đúng nút dính câu đổi).
-//   node scripts/ho-so-ma/so-diem.mjs [--chuong 85] [--nhom 8543] [--hang-doi] [--kiem-nhom 8543] [--gioi-han 10] [--kiem-dong] [--json]
+//   DO  : lỗi khuôn / trượt cổng 6–14 / vân tay câu luật đổi (chỉ mở lại đúng nút dính câu đổi).
+//   node scripts/ho-so-ma/so-diem.mjs [--chuong 85] [--nhom 8543] [--hang-doi] [--kiem-nhom 8543] [--gioi-han 10] [--kiem-dong] [--cong-13] [--json]
 import fs from 'node:fs';
 import path from 'node:path';
 import { createRequire } from 'node:module';
@@ -24,6 +24,16 @@ const require = createRequire(import.meta.url);
 const G = require('../../lib/ho-so-ma/ghep.js');
 
 const MO_CUA_NHOM = new Set(['DIEU_KIEN', 'GIAI_CHONG', 'CANH_TRANH']);
+
+/**
+ * [TẠM] Danh sách đóng 12 nhóm soạn ở Vòng 1 trước ADR-0010 tạm miễn Cổng 13 mặc định khi chưa có `khongCanhTranh`.
+ * Điều kiện gỡ bỏ: gỡ hoàn toàn hằng số này ngay khi cả 12 nhóm đã bổ sung `khongCanhTranh` theo tiêu chí mới của ADR-0010 mục 2.
+ */
+export const NHOM_TIEN_ADR_0010 = Object.freeze([
+  '0201', '3004', '3926', '4202', '6110', '7326',
+  '8479', '8501', '8517', '8543', '8708', '9031',
+]);
+const TAP_NHOM_TIEN_ADR_0010 = new Set(NHOM_TIEN_ADR_0010);
 
 function locViDuTheoNhom(viDu, cayIds) {
   if (!Array.isArray(viDu) || !viDu.length) return [];
@@ -112,6 +122,9 @@ function chuanBiNguCanh(opts = {}) {
     viDu: opts.viDu || [],
     vungChong: opts.vungChong || [],
     batBuocTepBang: Boolean(opts.batBuocTepBang),
+    kiemCong13: Boolean(opts.kiemCong13),
+    mienCong13TienAdr0010: opts.mienCong13TienAdr0010 !== false,
+    canhTranhTimThayTheoNhom: opts.canhTranhTimThayTheoNhom || null,
   };
 }
 
@@ -158,6 +171,19 @@ export function chamDiemNhom(nhom4HoacNut, ctx = {}) {
     };
   }
 
+  const coKhongCanhTranh = canhTranh.some((ct) => Array.isArray(ct.khongCanhTranh));
+  const mienCong13 = !c.kiemCong13
+    && c.mienCong13TienAdr0010 !== false
+    && !coKhongCanhTranh
+    && TAP_NHOM_TIEN_ADR_0010.has(nhom4);
+  const canChayCong13 = !mienCong13;
+  const daCoUngVienTruyenVao = Boolean(
+    c.canhTranhTimThayTheoNhom && (
+      (c.canhTranhTimThayTheoNhom instanceof Map && (c.canhTranhTimThayTheoNhom.has(nhom4) || c.canhTranhTimThayTheoNhom.has(nut)))
+      || (typeof c.canhTranhTimThayTheoNhom === 'object' && (Object.hasOwn(c.canhTranhTimThayTheoNhom, nhom4) || Object.hasOwn(c.canhTranhTimThayTheoNhom, nut)))
+    ),
+  );
+
   // Dựng gói đọc để kiểm tra toàn bộ vân tay câu luật trong gói
   const goi = dungGoiNhom(nhom4, {
     luat: c.luat,
@@ -168,6 +194,7 @@ export function chamDiemNhom(nhom4HoacNut, ctx = {}) {
     canhTranhMap: c.canhTranhMap,
     canhTranhMd: c.canhTranhMd,
     maxBytes: Infinity,
+    tatCanhTranhTimThay: !canChayCong13 || daCoUngVienTruyenVao,
   });
 
   const loiSet = new Set();
@@ -273,10 +300,23 @@ export function chamDiemNhom(nhom4HoacNut, ctx = {}) {
     } else if (ct.vanTay && vanTay(chu) !== ct.vanTay) {
       ghiLechCau(ct.nguon, ct.nut, ct.id, 'CANH_TRANH vân tay câu đã đổi');
     }
-      for (const p of ct.phepThu || []) {
+    for (const p of ct.phepThu || []) {
       const pNguon = typeof p === 'string' ? p : p?.nguon;
-      if (pNguon && c.L.chuCau(pNguon) === null) {
+      const pChu = pNguon && !/^(?:tb|wco):/.test(pNguon) ? c.L.chuCau(pNguon) : null;
+      if (pNguon && pChu === null) {
         ghiLechCau(pNguon, ct.nut, ct.id, 'CANH_TRANH phepThu không còn trong kho luật');
+      } else if (p && typeof p === 'object' && p.vanTay && vanTay(pChu) !== p.vanTay) {
+        ghiLechCau(pNguon, ct.nut, ct.id, 'CANH_TRANH phepThu vân tay câu đã đổi');
+      }
+    }
+    for (const m of ct.khongCanhTranh || []) {
+      if (!m || typeof m !== 'object') continue;
+      const mNguon = m.nguon || '';
+      const mChu = mNguon && !/^(?:tb|wco):/.test(mNguon) ? c.L.chuCau(mNguon) : null;
+      if (mChu === null) {
+        ghiLechCau(mNguon, ct.nut, ct.id, 'CANH_TRANH khongCanhTranh không còn trong kho luật');
+      } else if (m.vanTay && vanTay(mChu) !== m.vanTay) {
+        ghiLechCau(mNguon, ct.nut, ct.id, 'CANH_TRANH khongCanhTranh vân tay câu đã đổi');
       }
     }
   }
@@ -344,25 +384,32 @@ export function chamDiemNhom(nhom4HoacNut, ctx = {}) {
     loiSet.add(`${nut}: bang-anh-em/${chuong}.jsonl cũ hoặc thiếu bảng của nhóm`);
   }
 
-  // 3. Chạy cổng 6..12 trên dữ liệu tươi (không đọc bảng anh em cũ trên đĩa)
+  // 3. Chạy cổng 6..14 trên dữ liệu tươi (cổng 13 bật mặc định; chỉ miễn trên 12 nhóm hồi quy tiền ADR-0010 khi chưa có khongCanhTranh)
+  const dsCong = canChayCong13
+    ? [6, 7, 8, 9, 10, 11, 12, 13, 14]
+    : [6, 7, 8, 9, 10, 11, 12, 14];
+  const canhTranhTimThayForCong = canChayCong13
+    ? (daCoUngVienTruyenVao ? c.canhTranhTimThayTheoNhom : { [nhom4]: goi.canhTranhTimThay })
+    : null;
   const rCong = chayCong({
     luat: c.luat,
     hoSo: c.hoSo,
     phamVi: [nhom4],
     chiTrong: true,
-    cong: [6, 7, 8, 9, 10, 11, 12],
+    cong: dsCong,
     L: c.L,
     kho: c.kho,
     bieuMeta: c.bieuMeta,
     dungBangTrongKho: false,
     viDu: viDuNhom,
     vungChong: vungChongNhom,
+    ...(canhTranhTimThayForCong ? { canhTranhTimThayTheoNhom: canhTranhTimThayForCong } : {}),
   });
 
   const congLoi = [];
   const canhBao = [];
   const nutLoiCongSet = new Set();
-  for (const k of [6, 7, 8, 9, 10, 11, 12]) {
+  for (const k of dsCong) {
     const gk = rCong.cong[k];
     if (!gk) continue;
     if (gk.loi?.length) {
@@ -490,6 +537,7 @@ function main() {
   const kiemDong = a.includes('--kiem-dong');
   const jsonMode = a.includes('--json');
   const batBuocTepBang = a.includes('--bat-buoc-tep-bang');
+  const kiemCong13 = a.includes('--cong-13');
   const viDu = docDanhSachTuyChon(lay('--vi-du'));
   const vungChong = docDanhSachTuyChon(lay('--vung-chong'));
 
@@ -509,7 +557,7 @@ function main() {
   }
 
   if (hangDoiMode) {
-    const q = layHangDoi({ luat, hoSo, chuong, nhom: dsNhomCli, gioiHan, canhTranhMd, viDu, vungChong, batBuocTepBang });
+    const q = layHangDoi({ luat, hoSo, chuong, nhom: dsNhomCli, gioiHan, canhTranhMd, viDu, vungChong, batBuocTepBang, kiemCong13 });
     if (jsonMode) {
       console.log(JSON.stringify(q, null, 2));
     } else {
@@ -519,7 +567,7 @@ function main() {
     process.exit(kiemDong && q.do > 0 ? 1 : 0);
   }
 
-  const res = chamSoDiem({ luat, hoSo, chuong, nhom: dsNhomCli, canhTranhMd, viDu, vungChong, batBuocTepBang });
+  const res = chamSoDiem({ luat, hoSo, chuong, nhom: dsNhomCli, canhTranhMd, viDu, vungChong, batBuocTepBang, kiemCong13 });
   if (jsonMode) {
     console.log(JSON.stringify(res, null, 2));
   } else if (dsNhomCli && dsNhomCli.length === 1) {

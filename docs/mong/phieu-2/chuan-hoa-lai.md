@@ -1,8 +1,8 @@
-# M-81 · Phiếu 2c: chấm lại vòng 2 sau sửa gộp chunk + gốc sai nghĩa `8516:8108`
+# M-81 · Phiếu 2c: chấm lại Đúng/Sai `0/0/0` vòng 2 sau sửa gộp chunk (#2447) + gốc sai phạm vi `8516:8108`
 
-Thẻ #2410. Đầu vào: trả lời gốc Gemini `goc/tra-<nhóm>.txt` (trùng byte `~/phieu2/tra-*.txt` trên .131), vàng `docs/mong/the/M-81-vang-{8516,9405,8471,4016}.md`, main `f2dee4901` (đã có #2447). Không sửa skill / test / `data/`.
+Thẻ #2410 · ADR-0008/0009/0010. Đầu vào: trả lời gốc Gemini `goc/tra-<nhóm>.txt` (trùng byte `~/phieu2/tra-*.txt` trên .131), vàng `docs/mong/the/M-81-vang-{8516,9405,8471,4016}.md`, main `f2dee4901` (đã có #2447). Không sửa dữ liệu `data/`. Cập nhật ngày 28/11 theo chuẩn chấm nhị phân Đúng/Sai ngưỡng `0/0/0` của `ADR-0010` và cách báo cáo của CEO (`#2410#issuecomment-7231147427`).
 
-## 1. Gốc sai nghĩa `hs:bieu:8516:8108`
+## 1. Gốc sai nghĩa / sai phạm vi `hs:bieu:8516:8108`
 
 ### Gemini viết gì
 
@@ -36,21 +36,21 @@ Thẻ #2410. Đầu vào: trả lời gốc Gemini `goc/tra-<nhóm>.txt` (trùng
 | 94.05 | `ct:8` "(5) Đèn xách tay (trừ đèn thuộc nhóm 85.13)" trong mục (I) → `9405:8112` ve 0. Danh sách `ct:28–40` đứng sau mục cuối, áp cả nhóm → `ve: 0` đúng | 0 |
 | 40.16 | Chú giải nhóm không chia mục; `ct:17` "Các mặt hàng sau cũng bị loại trừ khỏi nhóm này:" áp cả nhóm → `ve: 0` đúng | 0 |
 
-Đối chứng: phạm vi của chữ **biểu** theo dấu `;` thì Gemini làm đúng ở cả 4 nhóm ("chưa được chi tiết hoặc ghi ở nơi khác" chỉ gắn vế 3–6 của 84.71; "nguồn sáng cố định thường xuyên" chỉ gắn vế biển hiệu của 94.05). Skill có luật riêng cho `;` (bước 4, Tầng 4) nhưng với chú giải nhóm thì Luật 3 lại viết "**mọi mệnh đề loại trừ ở … Chú giải nhóm** … Dùng `ve: 0, phu: true`" và bước 4 viết "`ve: 0` … thường là `phu: true` cho mệnh đề loại trừ ở Chú giải Phần/Chương/nhóm"; không có phép kiểm phạm vi mục.
+Đối chứng: phạm vi của chữ **biểu** theo dấu `;` thì Gemini làm đúng ở cả 4 nhóm ("chưa được chi tiết hoặc ghi ở nơi khác" chỉ gắn vế 3–6 của 84.71; "nguồn sáng cố định thường xuyên" chỉ gắn vế biển hiệu của 94.05). Skill trước đó có luật riêng cho `;` (bước 4, Tầng 4) nhưng với chú giải nhóm thì Luật 3 lại viết "**mọi mệnh đề loại trừ ở … Chú giải nhóm** … Dùng `ve: 0, phu: true`" và bước 4 viết "`ve: 0` … thường là `phu: true` cho mệnh đề loại trừ ở Chú giải Phần/Chương/nhóm"; chưa có phép kiểm phạm vi mục.
 
-**Kết luận: lỗi hệ thống.** Cùng một cơ chế (luật skill đẩy mọi loại trừ của chú giải nhóm lên `ve: 0`, không xét câu đó nằm trong mục nào) sinh 9 lần nâng sai phạm vi ở 3/4 nhóm. Chỉ 1 lần thành sai nghĩa, vì chỉ câu đó loại theo **thuộc tính** (nơi dùng), là phủ định chữ định tính của một vế. Các lần còn lại loại theo **loại hàng** nên tình cờ vô hại. Nhóm sau có chú giải chia mục theo vế mà loại trừ theo công dụng, nơi dùng hoặc quy mô sẽ lặp lỗi này.
+**Kết luận: lỗi hệ thống.** Cùng một cơ chế (luật skill cũ đẩy mọi loại trừ của chú giải nhóm lên `ve: 0`, không xét câu đó nằm trong mục nào) sinh 9 lần nâng sai phạm vi ở 3/4 nhóm. Chỉ 1 lần thành sai nghĩa, vì chỉ câu đó loại theo **thuộc tính** (nơi dùng), là phủ định chữ định tính của một vế. Các lần còn lại loại theo **loại hàng** nên tình cờ vô hại. Nhóm sau có chú giải chia mục theo vế mà loại trừ theo công dụng, nơi dùng hoặc quy mô sẽ lặp lỗi này.
 
-### Đề xuất luật cho skill `doc-tron-nhom` (chưa sửa skill; sạch mã cho đo mù)
+### Luật phạm vi câu loại trừ của chú giải nhóm (đã đưa vào skill `doc-tron-nhom`; sạch mã cho đo mù)
 
 > **Phạm vi câu loại trừ của chú giải nhóm.** (1) Câu "nhóm này loại trừ / không bao gồm" đứng trong một mục (A), (B)… hoặc (I), (II)… của chú giải nhóm chỉ chắc chắn chi phối vế tên nhóm mà mục đó giải thích. Chỉ nâng lên `ve: 0` khi câu đứng ngoài mọi mục, hoặc khi đã chứng minh nó không loại hàng mà một vế khác hay một dòng biểu con ghi đích danh. (2) Câu loại trừ theo thuộc tính chung (nơi dùng, quy mô, đối tượng dùng…) đúng bằng phủ định của chữ định tính mà chỉ một vế mang thì gắn `phu: true` vào đúng vế đó, hoặc ghi `CANH_TRANH`; cấm `ve: 0`. (3) Chữ biểu thắng vị trí câu trong chú giải chi tiết: `ve: 0` nào làm một dòng con mất hàng của chính nó là sai phạm vi.
 
 Bốn câu trước khi sửa (CLAUDE.md):
 1. **Bậc:** Quy tắc 1, soát loại trừ cấp nhóm 4 số.
-2. **Cấu trúc sinh lỗi:** Luật 3 + bước 4 của skill mặc định `ve: 0` cho mọi loại trừ của chú giải nhóm. Cơ chế xuất hiện ở 3 nhóm, nên sửa luật chứ không sửa ca `8108`.
+2. **Cấu trúc sinh lỗi:** Luật 3 + bước 4 của skill cũ mặc định `ve: 0` cho mọi loại trừ của chú giải nhóm. Cơ chế xuất hiện ở 3 nhóm, nên sửa luật chứ không sửa ca `8108`.
 3. **Kho đã có:** skill đã có luật phạm vi cho `;` (Tầng 4) và luật "văn bản cao hơn thắng" (Tầng 1). Chỉ cần mở rộng hai luật này sang câu loại trừ của chú giải nhóm, không viết luật mới. Gói `goi-nhom` đã giữ thứ tự `ct:N` và tiêu đề mục (A)…(F), nên LLM có đủ dữ kiện.
-4. **Cổng giữ:** khâu soi (ADR-0008) hỏi thêm một câu hẹp PHẠM VI cho mỗi `ve: 0, phu: true` có nguồn chú giải nhóm: "điều kiện này có loại hàng mà một vế khác hay một dòng con ghi đích danh không?". Bộ ca rẽ nhánh có ca cho hàng không mang chữ định tính đi qua các vế không có chữ đó. Cổng 8 / cổng 10 hiện không bắt được lỗi này (cổng 10 chấm ca nới).
+4. **Cổng giữ:** bộ ca rẽ nhánh có ca cho hàng không mang chữ định tính đi qua các vế không có chữ đó để kiểm `ve: 0` không loại nhầm. Cổng 8 / cổng 10 lúc đó chưa tự bắt được lỗi này (cổng 10 chấm ca nới).
 
-## 2. Chấm lại vòng 2 trên bản chuẩn hoá đã sửa
+## 2. Chấm lại Đúng/Sai vòng 2 trên bản chuẩn hoá đã sửa (#2447)
 
 ### Chạy lại chuẩn hoá
 
@@ -67,38 +67,39 @@ Bốn câu trước khi sửa (CLAUDE.md):
 - 84.71 vẫn còn `loi` CANH_TRANH `phepThu "nhom:8471:ct:55#1" không hợp lệ hoặc không nguyên văn`, như bản cũ (cổng 12 FAIL, 0 CANH_TRANH). Lỗi này thuộc phiếu, không thuộc chuẩn hoá.
 - Cổng 6–12 (`cong.mjs --pham-vi <nhóm> --cong 6..12`, kho tạm = `data/ho-so-ma` + phiếu): kết quả **trùng `cong-goc/`** ở cả 4 nhóm, chỉ khác dòng đếm "khuôn" (nền kho khác).
 
-### Bảng chấm (cột như README; khớp theo nghĩa luật)
+### Bảng chấm Đúng/Sai (số đếm nguyên theo `ADR-0010`)
 
-Phiếu đã chuẩn hoá đúng trùng byte với bộ (b), nên giữ nguyên chấm chi tiết của `cham/<nhóm>.md` mục 6. Tôi soát độc lập các mục đổi điểm giữa (a) và (b): 847149 ×3 (CPU / bộ nhập / bộ xuất khớp vàng `847149:8103–8105`, THIẾU → KHỚP) và 94053 ×2 (giá trị gộp "Dây đèn dùng cho cây Nô-en" so với vàng tách hai điều kiện, THIẾU → MỘT_PHẦN). Cả hai mục đúng như bộ (b) đã chấm.
+Phiếu đã chuẩn hoá đúng trùng byte với bộ (b), nên giữ nguyên số đếm chi tiết của `cham/<nhóm>.md` mục 6. Soát độc lập các mục đổi giữa (a) và (b): 847149 ×3 (CPU / bộ nhập / bộ xuất khớp vàng `847149:8103–8105`, THIẾU → ĐÚNG) và 94053 ×2 (giá trị gộp "Dây đèn dùng cho cây Nô-en" so với vàng tách hai điều kiện, THIẾU → MỘT_PHẦN và theo `ADR-0010` vẫn tính là **Sai**).
 
-| Nhóm | ĐK vàng | Khớp / một phần / thiếu | Tỉ lệ | Cặp vàng: tìm / sót | Ca đúng / dừng hỏi / sai | Sai nghĩa |
+| Nhóm | ĐK vàng | Đúng | Sai = `một phần` + `thiếu` + `sai nghĩa` | Cặp chồng vàng: tìm / sót | Ca 3 ô: `ĐÚNG` / `CHƯA ĐỦ DỮ KIỆN` / `SAI` | Sai nghĩa / sai phạm vi |
 |---|---|---|---|---|---|---|
-| 85.16 | 51 | 41/7/3 | 0,873 | 9: 9/0 | 42 / 15 / 8 | 1 (`8516:8108`) |
-| 84.71 | 62 | 46/15/1 | 0,863 | 6: 6/0 | 27 / 16 / 4 | 0 |
-| 40.16 | 64 | 40/22/2 | 0,797 | 10: 3/7 | 25 / 13 / 0 | 0 |
-| 94.05 | 105 | 85/18/2 | 0,895 | 39: 31/8 | 13 / 28 / 0 | 0 |
-| **Gộp** | 282 | 212/62/8 | **TB 0,857** · min 0,797 | 64: 49/15 (sót 23,4 %) | 107 / 72 / 12 (191 ca) | **1** |
+| 85.16 | 51 | 41 | **11** (7 + 3 + 1) | 9: 9 / 0 | 42 / 15 / **8** (65 ca) | 1 (`8516:8108`) |
+| 84.71 | 62 | 46 | **16** (15 + 1 + 0) | 6: 6 / 0 | 27 / 16 / **4** (47 ca) | 0 |
+| 40.16 | 64 | 40 | **24** (22 + 2 + 0) | 10: 3 / **7** | 25 / 13 / 0 (38 ca) | 0 |
+| 94.05 | 105 | 85 | **20** (18 + 2 + 0) | 39: 31 / **8** | 13 / 28 / 0 (41 ca) | 0 |
+| **Gộp** | **282** | **212** | **71** (62 + 8 + 1) | **64: 49 / 15** | **107 / 72 / 12** (191 ca) | **1** |
 
-### So với số cũ
+### So với số đếm cũ (không dùng điểm trung bình hay phần trăm)
 
-| Chỉ số | Chuẩn hoá cũ (a) | Gốc Gemini (b) | **Chuẩn hoá đã sửa** |
+> **Lưu ý `ADR-0010` mục 6–8 (CEO phê 28/11, `#2410#issuecomment-7231263425`):** Khâu soi bằng mô hình cục bộ yếu hơn (`Gemma` / `soi.mjs` / `soi-chong.mjs`) và gói người làm nghề chấm chéo **đã bãi bỏ**, không dùng làm căn cứ nghiệm thu (phần kiểm chồng số học tất định giữ trong Cổng 8). Kết quả chỉ chấm theo **3 ô** (`ĐÚNG` / `SAI` / `CHƯA ĐỦ DỮ KIỆN`), đối chiếu ngưỡng **`0/0/0`**, và báo cáo theo dạng *"dùng N lần thì mấy lần ra kết quả sai"*.
+
+| Hạng mục số đếm nguyên | Chuẩn hoá cũ (a) | Gốc Gemini (b) | **Chuẩn hoá đã sửa (#2447)** |
 |---|---|---|---|
-| TB tỉ lệ | 0,841 | 0,857 | **0,857** |
-| Min | 0,797 | 0,797 | 0,797 |
-| Sót chồng (chỉ phiếu) | 36/64 = 56 % | 15/64 = 23 % | 15/64 = **23,4 %** |
-| Sót chồng dây chuyền (soạn + soi) / (+ cổng 8) | — | 14,1 % / 3,1 % | **14,1 % / 3,1 %** (phiếu và cổng trùng, soi 2b dùng nguyên) |
-| Ca đúng / dừng hỏi / sai | 107 / 70 / 14 | 107 / 72 / 12 | 107 / 72 / 12 |
-| Sai nghĩa | 8 (7 do chuẩn hoá ở 94.05) | 1 | **1** |
+| Điều kiện đúng / ĐK vàng | 208 / 282 | 212 / 282 | **212 / 282** |
+| Điều kiện sai (`một phần` + `thiếu` + `sai nghĩa`) | 82 (`74 + 8 sai nghĩa`) | 71 (`70 + 1 sai nghĩa`) | **71 (`70 + 1 sai nghĩa`)** |
+| Cặp chồng sót (chỉ phiếu) | 36 / 64 | 15 / 64 | **15 / 64** |
+| Cặp chồng sót lịch sử Vòng 2b (đã bãi bỏ soi chấm chéo): (soạn + soi) / (+ cổng 8) | — | 9 / 64 · 2 / 64 | **9 / 64 · 2 / 64** |
+| Ca 3 ô: `ĐÚNG` / `CHƯA ĐỦ DỮ KIỆN` / `SAI` (`191` ca) | 107 / 70 / 14 | 107 / 72 / 12 | **107 / 72 / 12** |
+| Sai nghĩa / sai phạm vi | 8 (7 do chuẩn hoá cũ ở 94.05) | 1 | **1** (`8516:8108`) |
 
-Mức chênh 0,84 → 0,857 toàn do lỗi máy chuẩn hoá: sửa #2447 khôi phục đủ phần của Gemini, không còn chênh giữa "như máy nạp" và "bản gốc".
+Sửa #2447 khôi phục đủ 85 điều kiện của Gemini bị gộp nhầm, không còn chênh lệch giữa bản "như máy nạp" và "bản gốc".
 
-### Ngưỡng mở cuốn chiếu (dây chuyền soạn + soi + cổng 8, trên bản chuẩn hoá đã sửa)
+### So ngưỡng mở cuốn chiếu `0/0/0` (`ADR-0010`, CEO chốt 28/11)
 
-| Ngưỡng | Kết quả |
-|---|---|
-| TB ≥ 0,85 | 0,857 ✔ |
-| Không nhóm < 0,75 | min 0,797 ✔ |
-| Sót chồng ≤ 10 % | soạn + soi 14,1 % ✘ · + cổng 8 3,1 % ✔ |
-| 0 sai nghĩa | 1 ✘ (`8516:8108`, lỗi hệ thống của skill, mục 1) |
+| Hạng mục ngưỡng `0/0/0` | Ngưỡng đạt | Bản chuẩn hoá đã sửa |
+|---|---|---|
+| Điều kiện sai (`một phần` + `thiếu` + `sai phạm vi` + `sai nghĩa`) | `0` | **`71`** (`70 + 1 sai nghĩa`) ✘ |
+| Ca ra đích sai (`SAI`) | `0` | **`12`** (`12/191` ca) ✘ |
+| Cặp chồng sót | `0` | **`15`** trên phiếu (**`2`** sau cả cổng 8) ✘ |
 
-Còn chặn: **1 sai nghĩa**. Muốn gỡ thì sửa luật phạm vi loại trừ trong skill (đề xuất ở mục 1), rồi đo mù lại ít nhất một nhóm có chú giải nhóm chia mục theo vế và có loại trừ theo thuộc tính. Không soạn lại 4 nhóm vàng này. Cổng 8 vẫn cần cách lọc cảnh báo (40.16: 52 → 6) thì bộ "+ cổng 8" mới dùng được thật.
+**Kết luận: `KHÔNG ĐẠT`** — cả 4 nhóm đều còn điều kiện sai (`71` điều kiện sai), còn `15/64` cặp chồng sót trên phiếu (`2/64` cặp lọt qua cả cổng 8), và **`12/191 ca ra mã sai, tức cứ khoảng 16 lần dùng có 1 lần khai sai`**. Theo `ADR-0010`, hàng đợi cuốn chiếu dừng cho tới khi sửa máy dựng gói kéo `canhTranhTimThay`, bật Cổng 13 (`PHỦ CẠNH TRANH`) & Cổng 14 (`ĐỦ CHUỖI`), và đo lại các ca sai đạt đúng ngưỡng `0/0/0`.
