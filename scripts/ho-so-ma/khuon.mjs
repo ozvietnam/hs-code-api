@@ -21,8 +21,11 @@ export const CACH_GIAI_CHONG = Object.freeze(['TRU', 'QUY_TAC_3', 'CHU_GIAI', 'N
 export const CO_BANG_ANH_EM = Object.freeze(['HO_PHU', 'VUNG_CHONG', 'CHUA_CHUNG_MINH_TACH', 'NGHIA_THUONG', 'THIEU_VI_DU']);
 export const THU_MUC_DIEU_KIEN = 'dieu-kien';
 export const THU_MUC_BANG_ANH_EM = 'bang-anh-em';
+export const THU_MUC_DOC_MOT_LAN = 'doc-mot-lan';
 export const THU_MUC_HO_SO = Object.freeze([...G.THU_MUC, THU_MUC_DIEU_KIEN]);
-export const THU_MUC_KHO = Object.freeze([...THU_MUC_HO_SO, THU_MUC_BANG_ANH_EM]);
+export const THU_MUC_KHO = Object.freeze([...THU_MUC_HO_SO, THU_MUC_BANG_ANH_EM, THU_MUC_DOC_MOT_LAN]);
+export const KET_QUA_MA8_M82 = Object.freeze(['ĐÚNG', 'SAI', 'CHƯA ĐỦ DỮ KIỆN']);
+export const KET_LUAN_MO_HO_M82 = Object.freeze(['CHỐT', 'CHỐT KÈM GIẢ ĐỊNH', 'CHƯA ĐỦ DỮ KIỆN']);
 export const TEN_TEP_THU_TU = 'thu-tu-cuon-chieu.json';
 export const BO_QUA = 'BO_QUA';
 export const TRANG_THAI = Object.freeze(['KHOP', 'LECH_PHIEU', 'VENH']);
@@ -424,14 +427,280 @@ export function kiemBanGhi(x) {
   return loi;
 }
 
+/** Kiểm đệ quy không lọt nguồn cấm tb:/wco: trong mọi bản ghi doc-mot-lan (M-82, ADR-0011). */
+function quetNguonCamDocMotLan(obj, o, loi) {
+  if (!obj || typeof obj !== 'object') return;
+  if (Array.isArray(obj)) {
+    obj.forEach((v, i) => quetNguonCamDocMotLan(v, `${o}[${i}]`, loi));
+    return;
+  }
+  for (const k of ['idCau', 'nguon']) {
+    if (typeof obj[k] === 'string' && /^(?:tb|wco):/i.test(obj[k])) {
+      loi.push(`${o}.${k}: cấm nguồn ${obj[k]} trong doc-mot-lan`);
+    }
+  }
+  for (const [k, v] of Object.entries(obj)) {
+    if (v && typeof v === 'object') quetNguonCamDocMotLan(v, `${o}.${k}`, loi);
+  }
+}
+
+function kiemCanCuDocMotLan(arr, o, loi, batBuocKhongRong = true) {
+  if (!Array.isArray(arr) || (batBuocKhongRong && arr.length === 0)) {
+    loi.push(`${o}: phải là mảng căn cứ${batBuocKhongRong ? ' không rỗng' : ''}`);
+    return;
+  }
+  arr.forEach((c, i) => {
+    const p = `${o}[${i}]`;
+    if (!c || typeof c !== 'object' || Array.isArray(c)) { loi.push(`${p}: phải là object`); return; }
+    const idCau = c.idCau ?? c.nguon;
+    if (!chuoi(idCau) || !RE_CAU.test(idCau)) loi.push(`${p}: idCau sai ngữ pháp "${idCau}"`);
+    else if (/^(?:tb|wco):/i.test(idCau)) loi.push(`${p}: cấm nguồn ${idCau}`);
+    if (!chuoi(c.trich)) loi.push(`${p}: thiếu trich nguyên văn`);
+  });
+}
+
+function kiemMucDiemMoHo(m, o, loi) {
+  if (!m || typeof m !== 'object' || Array.isArray(m)) { loi.push(`${o}: điểm mơ hồ phải là object`); return; }
+  if (!chuoi(m.id)) loi.push(`${o}: thiếu id`);
+  if (!RE_NUT.test(m.nut || '')) loi.push(`${o}: nut sai ngữ pháp "${m.nut}"`);
+  if (!chuoi(m.cauHoi)) loi.push(`${o}: thiếu cauHoi`);
+  if (!Array.isArray(m.cachHieu) || m.cachHieu.length === 0 || !m.cachHieu.every(chuoi)) {
+    loi.push(`${o}: cachHieu phải là mảng chuỗi không rỗng`);
+  }
+  kiemCanCuDocMotLan(m.canCu, `${o}.canCu`, loi, true);
+}
+
+/** Kiểm khuôn chuong.json (doc-mot-lan-chuong@1, ADR-0011). [] = đúng khuôn. */
+export function kiemChuongDocMotLan(x, chuong) {
+  const loi = [];
+  const o = `${THU_MUC_DOC_MOT_LAN}/${chuong}/chuong.json`;
+  if (!x || typeof x !== 'object' || Array.isArray(x)) return [`${o}: phải là JSON object`];
+  if (x.khuon !== 'doc-mot-lan-chuong@1') loi.push(`${o}: khuon phải là "doc-mot-lan-chuong@1", nhận "${x.khuon}"`);
+  if (x.ma !== chuong) loi.push(`${o}: ma "${x.ma}" không khớp thư mục "${chuong}"`);
+  if (x.nut !== `chuong:${chuong}`) loi.push(`${o}: nut phải là "chuong:${chuong}", nhận "${x.nut}"`);
+  if (!chuoi(x.ten)) loi.push(`${o}: thiếu ten`);
+  if (!chuoi(x.nguoiDoc)) loi.push(`${o}: thiếu nguoiDoc`);
+  if (!RE_VAN.test(x.vanTayGoi || '')) loi.push(`${o}: vanTayGoi phải là sha256 64 hex`);
+  if (x.canCu !== undefined) kiemCanCuDocMotLan(x.canCu, `${o}.canCu`, loi, true);
+  for (const k of ['phamVi', 'loaiTru', 'dinhNghia', 'uuTien', 'trucChinh', 'canhTranh', 'diemMoHo']) {
+    if (!Array.isArray(x[k])) loi.push(`${o}: ${k} phải là mảng`);
+  }
+  if (Array.isArray(x.diemMoHo)) x.diemMoHo.forEach((m, i) => kiemMucDiemMoHo(m, `${o}.diemMoHo[${i}]`, loi));
+  quetNguonCamDocMotLan(x, o, loi);
+  return loi;
+}
+
+/** Kiểm khuôn <nhom>.json (doc-mot-lan-nhom@1, ADR-0011). [] = đúng khuôn. */
+export function kiemNhomDocMotLan(x, chuong, nhom) {
+  const loi = [];
+  const o = `${THU_MUC_DOC_MOT_LAN}/${chuong}/${nhom}.json`;
+  if (!x || typeof x !== 'object' || Array.isArray(x)) return [`${o}: phải là JSON object`];
+  if (x.khuon !== 'doc-mot-lan-nhom@1') loi.push(`${o}: khuon phải là "doc-mot-lan-nhom@1", nhận "${x.khuon}"`);
+  if (!x.nhom || typeof x.nhom !== 'object' || Array.isArray(x.nhom)) {
+    loi.push(`${o}: thiếu khối nhom`);
+  } else {
+    if (x.nhom.ma !== nhom) loi.push(`${o}: nhom.ma "${x.nhom.ma}" không khớp tệp ${nhom}.json`);
+    if (x.nhom.nut !== `bieu:${nhom}`) loi.push(`${o}: nhom.nut phải là "bieu:${nhom}", nhận "${x.nhom.nut}"`);
+    if (!chuoi(x.nhom.ten)) loi.push(`${o}: thiếu nhom.ten`);
+    if (!chuoi(x.nhom.nguoiDoc)) loi.push(`${o}: thiếu nhom.nguoiDoc`);
+    if (!RE_VAN.test(x.nhom.vanTayGoi || '')) loi.push(`${o}: nhom.vanTayGoi phải là sha256 64 hex`);
+    if (!Array.isArray(x.nhom.canhTranh)) loi.push(`${o}: nhom.canhTranh phải là mảng`);
+    if (!Array.isArray(x.nhom.khongCanhTranh)) loi.push(`${o}: nhom.khongCanhTranh phải là mảng`);
+  }
+  if (!Array.isArray(x.dieuKien) || x.dieuKien.length === 0) {
+    loi.push(`${o}: dieuKien phải là mảng không rỗng`);
+  } else {
+    const daThay = new Set();
+    x.dieuKien.forEach((dk, i) => {
+      const l1 = kiemBanGhi(dk);
+      for (const e of l1) loi.push(`${o}.dieuKien[${i}]: ${e}`);
+      if (!l1.length) {
+        if (!LOAI_DIEU_KIEN.includes(dk.loai)) loi.push(`${o}.dieuKien[${i}]: loại ${dk.loai} không thuộc DIEU_KIEN/GIAI_CHONG/CANH_TRANH`);
+        else if (tepCuaNutKhuon(dk.nut, THU_MUC_DIEU_KIEN) !== chuong) loi.push(`${o}.dieuKien[${i}]: nút ${dk.nut} không thuộc chương ${chuong}`);
+      }
+      if (dk?.id) {
+        if (daThay.has(dk.id)) loi.push(`${o}.dieuKien[${i}]: trùng id ${dk.id}`);
+        else daThay.add(dk.id);
+      }
+    });
+  }
+  if (!Array.isArray(x.ma8) || x.ma8.length === 0) {
+    loi.push(`${o}: ma8 phải là mảng không rỗng`);
+  } else {
+    const maSeen = new Set();
+    x.ma8.forEach((m, i) => {
+      const p = `${o}.ma8[${i}]`;
+      if (!m || typeof m !== 'object' || Array.isArray(m)) { loi.push(`${p}: phải là object`); return; }
+      if (!chuoi(m.ma) || !/^bieu:\d{8}$/.test(m.ma) || !m.ma.startsWith(`bieu:${nhom}`)) {
+        loi.push(`${p}: ma "${m.ma}" phải là bieu:${nhom}NNNN`);
+      } else if (maSeen.has(m.ma)) {
+        loi.push(`${p}: trùng mã 8 số ${m.ma}`);
+      } else {
+        maSeen.add(m.ma);
+      }
+      if (!KET_QUA_MA8_M82.includes(m.ketQua)) {
+        loi.push(`${p}: ketQua lạ "${m.ketQua}" (chỉ ${KET_QUA_MA8_M82.join(' | ')})`);
+      } else if (m.ketQua === 'CHƯA ĐỦ DỮ KIỆN' && !chuoi(m.cauHoi)) {
+        loi.push(`${p}: ${m.ma} CHƯA ĐỦ DỮ KIỆN nhưng thiếu cauHoi`);
+      }
+    });
+  }
+  if (!Array.isArray(x.diemMoHo)) {
+    loi.push(`${o}: diemMoHo phải là mảng`);
+  } else {
+    x.diemMoHo.forEach((m, i) => kiemMucDiemMoHo(m, `${o}.diemMoHo[${i}]`, loi));
+  }
+  quetNguonCamDocMotLan(x, o, loi);
+  return loi;
+}
+
+/** Kiểm khuôn một dòng diem-mo-ho.jsonl (doc-mot-lan-mo-ho@1, ADR-0011). [] = đúng khuôn. */
+export function kiemMoHoDocMotLan(x, chuong) {
+  const loi = [];
+  const o = x?.id || '(thiếu id)';
+  if (!x || typeof x !== 'object' || Array.isArray(x)) return ['diem-mo-ho: phải là JSON object'];
+  if (x.khuon !== 'doc-mot-lan-mo-ho@1') loi.push(`${o}: khuon phải là "doc-mot-lan-mo-ho@1", nhận "${x.khuon}"`);
+  if (!chuoi(x.id)) loi.push(`${o}: thiếu id`);
+  if (!RE_NUT.test(x.nut || '')) loi.push(`${o}: nut sai ngữ pháp "${x.nut}"`);
+  if (!chuoi(x.nhom) || !(x.nhom === chuong || (x.nhom.startsWith(chuong) && /^\d{4}$/.test(x.nhom)))) {
+    loi.push(`${o}: nhom "${x.nhom}" không khớp chương "${chuong}"`);
+  }
+  if (!chuoi(x.cauHoi)) loi.push(`${o}: thiếu cauHoi`);
+  if (!Array.isArray(x.cachHieu) || x.cachHieu.length === 0 || !x.cachHieu.every(chuoi)) {
+    loi.push(`${o}: cachHieu phải là mảng chuỗi không rỗng`);
+  }
+  kiemCanCuDocMotLan(x.canCuNguoiDoc, `${o}.canCuNguoiDoc`, loi, true);
+  if (!chuoi(x.nguoiDoc)) loi.push(`${o}: thiếu nguoiDoc`);
+  if (!chuoi(x.nguoiPhanBien)) loi.push(`${o}: thiếu nguoiPhanBien`);
+  if (x.soVongPhanBien !== 1) loi.push(`${o}: soVongPhanBien phải bằng 1 theo ADR-0011 (nhận ${x.soVongPhanBien})`);
+  if (!x.phanBien || typeof x.phanBien !== 'object' || Array.isArray(x.phanBien)) {
+    loi.push(`${o}: thiếu khối phanBien`);
+  } else {
+    if (!chuoi(x.phanBien.giaiThich)) loi.push(`${o}.phanBien: thiếu giaiThich`);
+    kiemCanCuDocMotLan(x.phanBien.chungMinh, `${o}.phanBien.chungMinh`, loi, true);
+    if (!chuoi(x.phanBien.phanBien)) loi.push(`${o}.phanBien: thiếu phanBien`);
+    if (!KET_LUAN_MO_HO_M82.includes(x.phanBien.ketLuan)) {
+      loi.push(`${o}.phanBien: ketLuan lạ "${x.phanBien.ketLuan}" (chỉ ${KET_LUAN_MO_HO_M82.join(' | ')})`);
+    }
+  }
+  if (!x.chotNguoiDoc || typeof x.chotNguoiDoc !== 'object' || Array.isArray(x.chotNguoiDoc)) {
+    loi.push(`${o}: thiếu khối chotNguoiDoc`);
+  } else {
+    if (typeof x.chotNguoiDoc.dongYPhanBien !== 'boolean') loi.push(`${o}.chotNguoiDoc: dongYPhanBien phải là boolean`);
+    if (typeof x.chotNguoiDoc.doiKetLuanSauPhanBien !== 'boolean') loi.push(`${o}.chotNguoiDoc: doiKetLuanSauPhanBien phải là boolean`);
+    if (!KET_LUAN_MO_HO_M82.includes(x.chotNguoiDoc.ketLuanCuoi)) {
+      loi.push(`${o}.chotNguoiDoc: ketLuanCuoi lạ "${x.chotNguoiDoc.ketLuanCuoi}"`);
+    } else if (x.chotNguoiDoc.ketLuanCuoi === 'CHƯA ĐỦ DỮ KIỆN' && !chuoi(x.chotNguoiDoc.cauHoiKhach)) {
+      loi.push(`${o}.chotNguoiDoc: CHƯA ĐỦ DỮ KIỆN nhưng thiếu cauHoiKhach`);
+    }
+    if (!chuoi(x.chotNguoiDoc.lyDo)) loi.push(`${o}.chotNguoiDoc: thiếu lyDo`);
+  }
+  quetNguonCamDocMotLan(x, o, loi);
+  return loi;
+}
+
+/** Kiểm một tệp nằm trong doc-mot-lan/<chuong>/<tep>. */
+export function kiemTepDocMotLan(tuongDoi, noiDung) {
+  const loi = [];
+  const norm = tuongDoi.split(path.sep).join('/');
+  const m = /^doc-mot-lan\/(\d{2})\/([^/]+)$/.exec(norm);
+  if (!m) return { loi: [`${tuongDoi}: đường dẫn sai khuôn (chỉ doc-mot-lan/<2-chữ-số>/<tệp>)`], soBanGhi: 0 };
+  const [, chuong, tenTep] = m;
+  if (tenTep === 'chuong.json') {
+    let x; try { x = JSON.parse(noiDung); } catch { return { loi: [`${norm}: không phải JSON hợp lệ`], soBanGhi: 0 }; }
+    return { loi: kiemChuongDocMotLan(x, chuong), soBanGhi: 1 };
+  }
+  const mNhom = /^(\d{4})\.json$/.exec(tenTep);
+  if (mNhom) {
+    if (!mNhom[1].startsWith(chuong)) return { loi: [`${norm}: nhóm ${mNhom[1]} không thuộc chương ${chuong}`], soBanGhi: 0 };
+    let x; try { x = JSON.parse(noiDung); } catch { return { loi: [`${norm}: không phải JSON hợp lệ`], soBanGhi: 0 }; }
+    return { loi: kiemNhomDocMotLan(x, chuong, mNhom[1]), soBanGhi: 1 };
+  }
+  if (tenTep === 'diem-mo-ho.jsonl') {
+    const daThay = new Set(); let dem = 0;
+    noiDung.split('\n').forEach((l, i) => {
+      if (!l.trim()) return;
+      dem += 1;
+      let x; try { x = JSON.parse(l); } catch { loi.push(`${norm}:${i + 1}: không phải JSON`); return; }
+      for (const e of kiemMoHoDocMotLan(x, chuong)) loi.push(`${norm}:${i + 1}: ${e}`);
+      if (x?.id) {
+        if (daThay.has(x.id)) loi.push(`${norm}:${i + 1}: trùng id ${x.id}`);
+        else daThay.add(x.id);
+      }
+    });
+    return { loi, soBanGhi: dem };
+  }
+  if (tenTep === 'dieu-kien.jsonl') {
+    const daThay = new Set(); let dem = 0;
+    noiDung.split('\n').forEach((l, i) => {
+      if (!l.trim()) return;
+      dem += 1;
+      let x; try { x = JSON.parse(l); } catch { loi.push(`${norm}:${i + 1}: không phải JSON`); return; }
+      const l1 = kiemBanGhi(x);
+      for (const e of l1) loi.push(`${norm}:${i + 1}: ${e}`);
+      if (!l1.length) {
+        if (!LOAI_DIEU_KIEN.includes(x.loai)) loi.push(`${norm}:${i + 1}: loại ${x.loai} không thuộc DIEU_KIEN/GIAI_CHONG/CANH_TRANH`);
+        else if (tepCuaNutKhuon(x.nut, THU_MUC_DIEU_KIEN) !== chuong) loi.push(`${norm}:${i + 1}: nút ${x.nut} không thuộc chương ${chuong}`);
+      }
+      if (x?.id) {
+        if (daThay.has(x.id)) loi.push(`${norm}:${i + 1}: trùng id ${x.id}`);
+        else daThay.add(x.id);
+      }
+    });
+    return { loi, soBanGhi: dem };
+  }
+  if (tenTep === 'bang-anh-em.jsonl') {
+    let dem = 0;
+    noiDung.split('\n').forEach((l, i) => {
+      if (!l.trim()) return;
+      dem += 1;
+      let x; try { x = JSON.parse(l); } catch { loi.push(`${norm}:${i + 1}: không phải JSON`); return; }
+      const l1 = kiemBangAnhEm(x);
+      if (!l1.length && x.chuong !== chuong) l1.push(`${x.cha}: chuong "${x.chuong}" không khớp chương ${chuong}`);
+      for (const e of l1) loi.push(`${norm}:${i + 1}: ${e}`);
+    });
+    return { loi, soBanGhi: dem };
+  }
+  return { loi: [`${norm}: tệp lạ trong ${THU_MUC_DOC_MOT_LAN}/${chuong}/ (chỉ chuong.json, <nhóm>.json, diem-mo-ho.jsonl, dieu-kien.jsonl, bang-anh-em.jsonl)`], soBanGhi: 0 };
+}
+
+/** Kiểm toàn bộ thư mục data/ho-so-ma/doc-mot-lan/ (M-82, ADR-0011). Không bỏ qua im lặng. */
+export function kiemThuMucDocMotLan(gocDocMotLan) {
+  const loi = []; let soTep = 0; let soBanGhiDocMotLan = 0;
+  if (!fs.existsSync(gocDocMotLan)) return { loi, soTep, soBanGhiDocMotLan };
+  for (const e of fs.readdirSync(gocDocMotLan, { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name))) {
+    if (!e.isDirectory() || !/^\d{2}$/.test(e.name)) {
+      loi.push(`${THU_MUC_DOC_MOT_LAN}/${e.name}: lạ trong ${THU_MUC_DOC_MOT_LAN}/ (chỉ thư mục chương 2 chữ số)`);
+      continue;
+    }
+    const tmCh = path.join(gocDocMotLan, e.name);
+    for (const f of fs.readdirSync(tmCh, { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name))) {
+      const tuongDoi = `${THU_MUC_DOC_MOT_LAN}/${e.name}/${f.name}`;
+      if (!f.isFile()) {
+        loi.push(`${tuongDoi}: không cho phép thư mục con trong ${THU_MUC_DOC_MOT_LAN}/${e.name}/`);
+        continue;
+      }
+      soTep += 1;
+      const r = kiemTepDocMotLan(tuongDoi, fs.readFileSync(path.join(tmCh, f.name), 'utf8'));
+      loi.push(...r.loi);
+      soBanGhiDocMotLan += r.soBanGhi;
+    }
+  }
+  return { loi, soTep, soBanGhiDocMotLan };
+}
+
 /** Kiểm một tệp: từng dòng đúng khuôn, nút nằm đúng tệp, id không trùng trong tệp. tuongDoi = "<thư mục>/<khoá>.jsonl". */
 export function kiemTep(tuongDoi, noiDung) {
   const loi = []; const banGhi = []; const bangAnhEm = [];
   const norm = tuongDoi.split(path.sep).join('/');
+  if (norm.startsWith(`${THU_MUC_DOC_MOT_LAN}/`)) {
+    const r = kiemTepDocMotLan(norm, noiDung);
+    return { loi: r.loi, banGhi, bangAnhEm };
+  }
   const mDkPhu = /^(dieu-kien)\/(?:([0-9A-Z]+)-)?(giai-chong|canh-tranh)\.jsonl$/.exec(norm);
   const m = mDkPhu ? [mDkPhu[0], mDkPhu[1], mDkPhu[2] || null, mDkPhu[3]] : /^([a-z-]+)\/([0-9A-Z]+|gir)\.jsonl$/.exec(norm);
-  if (!m || !THU_MUC_KHO.includes(m[1])) {
-    return { loi: [`${tuongDoi}: tệp lạ (chỉ ${THU_MUC_KHO.map((t) => `${t}/<khoá>.jsonl`).join(', ')})`], banGhi, bangAnhEm };
+  if (!m || !THU_MUC_KHO.includes(m[1]) || m[1] === THU_MUC_DOC_MOT_LAN) {
+    return { loi: [`${tuongDoi}: tệp lạ (chỉ ${THU_MUC_KHO.map((t) => (t === THU_MUC_DOC_MOT_LAN ? `${t}/<ch>/<tệp>` : `${t}/<khoá>.jsonl`)).join(', ')})`], banGhi, bangAnhEm };
   }
   const thuMuc = m[1];
   noiDung.split('\n').forEach((l, i) => {
@@ -514,6 +783,12 @@ export function kiemKhoHoSo(goc = G.HO_SO_MAC_DINH) {
   }
   for (const tm of THU_MUC_KHO) {
     if (!fs.existsSync(path.join(goc, tm))) continue;
+    if (tm === THU_MUC_DOC_MOT_LAN) {
+      const rDml = kiemThuMucDocMotLan(path.join(goc, tm));
+      loi.push(...rDml.loi);
+      soTep += rDml.soTep;
+      continue;
+    }
     for (const f of fs.readdirSync(path.join(goc, tm)).sort()) {
       soTep += 1;
       const r = kiemTep(`${tm}/${f}`, fs.readFileSync(path.join(goc, tm, f), 'utf8'));
