@@ -553,6 +553,40 @@
             "trich": "Đồ dùng cơ khí hoạt động bằng tay, nặng 10 kg trở xuống, dùng để chế biến, pha chế hoặc phục vụ đồ ăn hoặc đồ uống"
           }
         ]
+      },
+      {
+        "nhom": "bieu:8420",
+        "lyDo": "Chú giải 4 Chương 85 và CGCT 85.09 loại trừ các máy cán hoặc máy là kiểu trục lăn sang nhóm 84.20.",
+        "phepThu": [
+          {
+            "idCau": "chuong:85:cg:4:ket#1",
+            "trich": "Tuy nhiên, nhóm này không bao gồm quạt hoặc nắp chụp hút tuần hoàn gió hoặc thông gió có kèm theo quạt, có hoặc không lắp bộ phận lọc (nhóm 84.14), máy làm khô quần áo bằng ly tâm (nhóm 84.21), máy rửa bát đĩa (nhóm 84.22), máy giặt gia đình (nhóm 84.50), các loại máy cán hoặc máy là khác (nhóm 84.20 hoặc 84.51), máy khâu (nhóm 84.52), kéo điện (nhóm 84.67) hoặc các dụng cụ nhiệt điện (nhóm 85.16)."
+          },
+          {
+            "idCau": "nhom:8509:ct:27#1",
+            "trich": "(c) Các máy cán hoặc máy là khác (nhóm 84.20 hay 84.51)."
+          }
+        ]
+      },
+      {
+        "nhom": "bieu:8434",
+        "lyDo": "Chú giải chi tiết 85.09 loại trừ các máy đánh kem tươi từ sữa sang nhóm 84.34.",
+        "phepThu": [
+          {
+            "idCau": "nhom:8509:ct:31#1",
+            "trich": "(g) Các máy đánh kem tươi từ sữa (nhóm 84.34)."
+          }
+        ]
+      },
+      {
+        "nhom": "bieu:9019",
+        "lyDo": "Chú giải chi tiết 85.09 loại trừ các máy mát xa sang nhóm 90.19.",
+        "phepThu": [
+          {
+            "idCau": "nhom:8509:ct:37#1",
+            "trich": "(n) Các máy mát xa (nhóm 90.19)."
+          }
+        ]
       }
     ],
     "khongCanhTranh": [
@@ -716,6 +750,33 @@
       "ghiChu": "Áp dụng cho nhóm (b) của Chú giải 4 Chương 85; nhóm (a) (máy đánh bóng sàn, máy nghiền và trộn thực phẩm, máy ép rau hoặc quả) có khối lượng bất kỳ."
     },
     {
+      "id": "hs:bieu:8509:8211",
+      "nut": "bieu:8509",
+      "loai": "DIEU_KIEN",
+      "ve": 2,
+      "phu": false,
+      "kieu": "GIA_TRI",
+      "truc": "nhóm miễn ngưỡng khối lượng 20 kg tại Chú giải 4 Chương 85",
+      "tap": [
+        "máy đánh bóng sàn, máy nghiền và trộn thực phẩm, máy ép rau hoặc quả với khối lượng bất kỳ (Chú giải 4(a))",
+        "bộ phận của thiết bị thuộc nhóm 85.09"
+      ],
+      "mo": "DINH_NGHIA_LUAT",
+      "moNguon": [
+        "chuong:85:cg:4:a#1",
+        "nhom:8509:ct:23#1"
+      ],
+      "moNguonVanTay": {
+        "chuong:85:cg:4:a#1": "0d1441b3bf2c22c0b106fcb09fa5dded379ba4f3c958a91f40130797ffc66873",
+        "nhom:8509:ct:23#1": "ad8480f3a19a40d0cfa0f01d3170547b69f394028e7c6acda44c480d3702e76b"
+      },
+      "cauHoi": "Nếu thiết bị có khối lượng trên 20 kg, hàng hóa có thuộc nhóm miễn giới hạn khối lượng theo Chú giải 4(a) Chương 85 (máy đánh bóng sàn, máy nghiền/trộn thực phẩm, máy ép rau quả gia dụng) hoặc là bộ phận rời 8509.90 không?",
+      "trich": "(a) Máy đánh bóng sàn, máy nghiền và trộn thực phẩm, và máy ép rau hoặc quả, với khối lượng bất kỳ;",
+      "nguon": "chuong:85:cg:4:a#1",
+      "vanTay": "0d1441b3bf2c22c0b106fcb09fa5dded379ba4f3c958a91f40130797ffc66873",
+      "ghiChu": "Vế thay thế (ve: 2) cho hs:bieu:8509:8203 (ve: 1, ≤ 20 kg theo Chú giải 4(b)) tại cửa nhóm bieu:8509."
+    },
+    {
       "id": "hs:bieu:8509:8204",
       "nut": "bieu:8509",
       "loai": "DIEU_KIEN",
@@ -781,13 +842,21 @@
       "mo": "MO_TA_HUONG_DAN",
       "moNguon": [
         "nhom:8509:ct:2#2",
+        "nhom:8509:ct:26#1",
+        "nhom:8509:ct:30#1",
+        "nhom:8509:ct:31#1",
         "nhom:8509:ct:32#1",
+        "nhom:8509:ct:33#1",
         "nhom:8509:ct:35#1",
         "nhom:8509:ct:37#1"
       ],
       "moNguonVanTay": {
         "nhom:8509:ct:2#2": "36776fff46d0c198565cec3608f03669651117d81847a0294637b028059bade5",
+        "nhom:8509:ct:26#1": "285780e97841522eb657cc89559d265f82578932aec1a203ce9f3bb8308b84ab",
+        "nhom:8509:ct:30#1": "f38124734b37fe96eedc83b0890f279ee491c61535dedb57b11c08818cf28544",
+        "nhom:8509:ct:31#1": "138ca1ed631f3703ec12fbc54f69c572044cc8778ac6043fb069097f3ad00eec",
         "nhom:8509:ct:32#1": "8c8a45561da4be685ae9bf09fba5b1df8ceb5861dde73a95dea1ece0c9251e2f",
+        "nhom:8509:ct:33#1": "45b847cd1dec56a7a7048160dbead6cc446e308af670ef2a1bcae7ed745154b3",
         "nhom:8509:ct:35#1": "4f48fb0f299cf9f49e11c6c77e88689e3e6515e5ac4c44ac8f652ad849419a07",
         "nhom:8509:ct:37#1": "17f191adb9d638a6b0daa22f083e3e348afab0bab4703420043b13def32bfd96"
       },
@@ -814,6 +883,32 @@
       "trich": "BẢNG ĐIỀU KHIỂN CỦA LOẠI THÍCH HỢP DÙNG CHO HÀNG HOÁ CỦA NHÓM 84.15, 84.18, 84.50, 85.08, 85.09 HOẶC 85.16",
       "nguon": "sen:85371013:1#1",
       "vanTay": "55296740e97f49bf0a79c937ec65b8f612682336cd83b3dcc37db90bb898fc6e"
+    },
+    {
+      "id": "hs:bieu:8509:8210",
+      "nut": "bieu:8509",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "loại trừ bộ phận theo Chú giải 1(o) và 2(a) Phần XVI",
+      "tap": [
+        "dụng cụ có thể thay đổi thuộc nhóm 82.07 hoặc bàn chải sử dụng như bộ phận của máy (nhóm 96.03)",
+        "bộ phận đã được chi tiết tại nhóm riêng của Chương 84 hoặc 85 (như động cơ điện 85.01, bộ phận động cơ 85.03)"
+      ],
+      "mo": "DINH_NGHIA_LUAT",
+      "moNguon": [
+        "phan:XVI:cg:1:o#1",
+        "phan:XVI:cg:2:a#1"
+      ],
+      "moNguonVanTay": {
+        "phan:XVI:cg:1:o#1": "5d582e8f6f9048214766230b7a78b01ca34df74d185020fcb755f303e0c5ab4f",
+        "phan:XVI:cg:2:a#1": "0be725fa818c15a71b0fe25b4f42bb5366794d9c3be56b673c9827efb0e80698"
+      },
+      "cauHoi": "Nếu là bộ phận xuất trình riêng, hàng hóa có phải dụng cụ có thể thay đổi (nhóm 82.07), bàn chải dùng như bộ phận máy (nhóm 96.03), hoặc bộ phận đã chi tiết ở nhóm riêng Chương 84/85 theo Chú giải 2(a) Phần XVI không?",
+      "trich": "(o) Các dụng cụ có thể thay đổi thuộc nhóm 82.07 hoặc bàn chải sử dụng như các bộ phận của máy (nhóm 96.03); ",
+      "nguon": "phan:XVI:cg:1:o#1",
+      "vanTay": "5d582e8f6f9048214766230b7a78b01ca34df74d185020fcb755f303e0c5ab4f"
     },
     {
       "id": "hs:bieu:850940:8201",
@@ -876,7 +971,7 @@
       "kieu": "GIA_TRI",
       "truc": "chức năng thiết bị cơ điện gia dụng",
       "tap": [
-        "thiết bị cơ điện gia dụng khác ngoài máy nghiền/trộn thức ăn và máy ép quả/rau"
+        "thiết bị cơ điện gia dụng hoàn chỉnh thuộc nhóm 85.09 (không phải bộ phận 8509.90)"
       ],
       "mo": "MO_TA_HUONG_DAN",
       "moNguon": [
@@ -888,6 +983,24 @@
         "nhom:8509:ct:10#1": "4e35622973a18e8e7942f11bb10724e08da5fc22c86e5d013d4618614a21563d"
       },
       "cauHoi": "Thiết bị có phải là thiết bị cơ điện gia dụng khác (không thuộc máy nghiền/trộn thức ăn và máy ép quả/rau 8509.40) không?",
+      "trich": "- Thiết bị khác:",
+      "nguon": "bieu:850980#1",
+      "vanTay": "0b7442cc09a308444cd32a194fb04d6d39ef0b90cc06b4e291fd4af6acf16ea5"
+    },
+    {
+      "id": "hs:bieu:850980:8204",
+      "nut": "bieu:850980",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "chức năng thiết bị cơ điện gia dụng",
+      "tap": [
+        "máy nghiền và trộn thức ăn",
+        "máy ép quả hoặc rau"
+      ],
+      "mo": "NGHIA_THUONG",
+      "cauHoi": "Thiết bị cơ điện gia dụng này có phải là máy nghiền và trộn thức ăn hoặc máy ép quả/rau (8509.40) không?",
       "trich": "- Thiết bị khác:",
       "nguon": "bieu:850980#1",
       "vanTay": "0b7442cc09a308444cd32a194fb04d6d39ef0b90cc06b4e291fd4af6acf16ea5"
@@ -961,6 +1074,21 @@
       "trich": "- - Thiết bị tiêu hủy chất thải nhà bếp",
       "nguon": "bieu:85098020#1",
       "vanTay": "735b3715b943bad50a41d992b62f01036e00400625851fe8d93a8c3190a5a601"
+    },
+    {
+      "id": "hs:bieu:85098020:8202",
+      "nut": "bieu:85098020",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": false,
+      "kieu": "SO",
+      "nguong": "hs:bieu:8509:8501",
+      "mo": "NGUONG",
+      "cauHoi": "Thiết bị tiêu hủy chất thải nhà bếp có khối lượng không quá 20 kg (không tính phụ kiện tháo rời, theo Chú giải 4(b) Chương 85) không?",
+      "trich": "(b) Các loại máy khác có khối lượng không quá 20 kg.",
+      "nguon": "chuong:85:cg:4:b#1",
+      "vanTay": "c6f5f3f412a0b5f50477ec3ad316f17910e8d0ceadf6d79a7606944da4241c6d",
+      "ghiChu": "Bắt buộc theo Chú giải 4(b) Chương 85 vì thiết bị tiêu hủy chất thải nhà bếp không thuộc danh mục miễn giới hạn khối lượng tại Chú giải 4(a)."
     },
     {
       "id": "hs:bieu:850980:8202",
@@ -1040,7 +1168,10 @@
         "bieu:8510",
         "bieu:8516",
         "bieu:8537",
-        "bieu:8210"
+        "bieu:8210",
+        "bieu:8420",
+        "bieu:8434",
+        "bieu:9019"
       ],
       "phepThu": [
         {
@@ -1240,6 +1371,30 @@
           "trich": "Đồ dùng cơ khí hoạt động bằng tay, nặng 10 kg trở xuống, dùng để chế biến, pha chế hoặc phục vụ đồ ăn hoặc đồ uống",
           "vanTay": "f971ce91180559d03a4e5595aacc94e2bf6ed28cf2c9c68d7952812bf88ad0f2",
           "nhom": "bieu:8210"
+        },
+        {
+          "nguon": "chuong:85:cg:4:ket#1",
+          "trich": "Tuy nhiên, nhóm này không bao gồm quạt hoặc nắp chụp hút tuần hoàn gió hoặc thông gió có kèm theo quạt, có hoặc không lắp bộ phận lọc (nhóm 84.14), máy làm khô quần áo bằng ly tâm (nhóm 84.21), máy rửa bát đĩa (nhóm 84.22), máy giặt gia đình (nhóm 84.50), các loại máy cán hoặc máy là khác (nhóm 84.20 hoặc 84.51), máy khâu (nhóm 84.52), kéo điện (nhóm 84.67) hoặc các dụng cụ nhiệt điện (nhóm 85.16).",
+          "vanTay": "0fe557969f6f3e5f84631ae3a07197b0a514bc690a434b14557fb44da7b5a1f0",
+          "nhom": "bieu:8420"
+        },
+        {
+          "nguon": "nhom:8509:ct:27#1",
+          "trich": "(c) Các máy cán hoặc máy là khác (nhóm 84.20 hay 84.51).",
+          "vanTay": "8009f77898f95cd3cddd86030e158c2e9193c74f47477d40f0457bb92200aa34",
+          "nhom": "bieu:8420"
+        },
+        {
+          "nguon": "nhom:8509:ct:31#1",
+          "trich": "(g) Các máy đánh kem tươi từ sữa (nhóm 84.34).",
+          "vanTay": "138ca1ed631f3703ec12fbc54f69c572044cc8778ac6043fb069097f3ad00eec",
+          "nhom": "bieu:8434"
+        },
+        {
+          "nguon": "nhom:8509:ct:37#1",
+          "trich": "(n) Các máy mát xa (nhóm 90.19).",
+          "vanTay": "17f191adb9d638a6b0daa22f083e3e348afab0bab4703420043b13def32bfd96",
+          "nhom": "bieu:9019"
         }
       ],
       "khongCanhTranh": [

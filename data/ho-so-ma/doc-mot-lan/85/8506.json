@@ -129,6 +129,20 @@
             "trich": "1. Chương này không bao gồm:"
           }
         ]
+      },
+      {
+        "dich": "bieu:8544",
+        "lyDo": "Các bộ phận của pin sơ cấp đã được chi tiết ở nhóm riêng của Chương 84 hoặc 85 (như 85.35, 85.44, 85.47, 84.87) phân loại vào nhóm đó theo Chú giải 2 và 2(a) Phần XVI.",
+        "canCu": [
+          {
+            "idCau": "phan:XVI:cg:2#1",
+            "trich": "2. Theo Chú giải 1 của Phần này, Chú giải 1 Chương 84 và Chú giải 1 Chương 85, các bộ phận của máy (ngoài các bộ phận của hàng hóa thuộc nhóm 84.84, 85.44, 85.45, 85.46 hoặc 85.47) được phân loại theo các quy tắc sau:"
+          },
+          {
+            "idCau": "phan:XVI:cg:2:a#1",
+            "trich": "(a) Các bộ phận đã được chi tiết tại nhóm nào đó của Chương 84 hoặc 85 (trừ các nhóm 84.09, 84.31, 84.48, 84.66, 84.73, 84.87, 85.03, 85.22, 85.29, 85.38 và 85.48) được phân loại vào nhóm đó trong mọi trường hợp;"
+          }
+        ]
       }
     ],
     "canhTranh": [
@@ -666,6 +680,27 @@
       }
     },
     {
+      "id": "hs:bieu:8506:8209",
+      "nut": "bieu:8506",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "CO_KHONG",
+      "mo": "DINH_NGHIA_LUAT",
+      "moNguon": [
+        "phan:XVI:cg:2#1",
+        "phan:XVI:cg:2:a#1"
+      ],
+      "moNguonVanTay": {
+        "phan:XVI:cg:2#1": "fb4029fd7c6f49628ce8acdc645aff37fb3e7d2bb9d84f5c99ea4a67f0125974",
+        "phan:XVI:cg:2:a#1": "0be725fa818c15a71b0fe25b4f42bb5366794d9c3be56b673c9827efb0e80698"
+      },
+      "cauHoi": "Hàng hóa là bộ phận rời của pin sơ cấp nhưng đã được chi tiết tại nhóm riêng của Chương 84 hoặc 85 (như 85.35, 85.36, 85.44, 85.47, 84.87) theo Chú giải 2(a) Phần XVI không?",
+      "trich": "(a) Các bộ phận đã được chi tiết tại nhóm nào đó của Chương 84 hoặc 85 (trừ các nhóm 84.09, 84.31, 84.48, 84.66, 84.73, 84.87, 85.03, 85.22, 85.29, 85.38 và 85.48) được phân loại vào nhóm đó trong mọi trường hợp;",
+      "nguon": "phan:XVI:cg:2:a#1",
+      "vanTay": "0be725fa818c15a71b0fe25b4f42bb5366794d9c3be56b673c9827efb0e80698"
+    },
+    {
       "loai": "DIEU_KIEN",
       "id": "hs:bieu:850610:8201",
       "nut": "bieu:850610",
@@ -691,23 +726,36 @@
       "ve": 0,
       "phu": false,
       "kieu": "GIA_TRI",
-      "truc": "thành phần điện cực",
+      "truc": "thành phần ca-tốt (điện cực khử cực)",
       "tap": [
-        "ca-tốt bằng dioxit mangan (không có a-nốt bằng liti)"
+        "dioxit mangan"
       ],
       "mo": "MO_TA_HUONG_DAN",
-      "moNguon": [
-        "pn:850610:ct:1#1",
-        "pn:850610:ct:1#2"
-      ],
-      "cauHoi": "Pin có ca-tốt bằng dioxit mangan (và a-nốt không phải liti) không?",
+      "moNguon": "pn:850610:ct:1#1",
+      "cauHoi": "Pin có ca-tốt (điện cực khử cực) bằng dioxit mangan không?",
       "trich": "- Bằng dioxit mangan:",
       "nguon": "bieu:850610#1",
       "vanTay": "3b7c1227b4adb69ff69abee2f5df18070553bad507752e9666dbbeb2fefccb24",
-      "moNguonVanTay": {
-        "pn:850610:ct:1#1": "7b09c51a8c240f556a2442d09ccfc7a02bdca73c28df211183b1b1cb3750a327",
-        "pn:850610:ct:1#2": "a62b58259d4aaffde11ccdd0b4a9c8a5cba10071f84be067d3c8ea571970c85d"
-      }
+      "moNguonVanTay": "7b09c51a8c240f556a2442d09ccfc7a02bdca73c28df211183b1b1cb3750a327"
+    },
+    {
+      "id": "hs:bieu:850610:8203",
+      "nut": "bieu:850610",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "thành phần a-nốt",
+      "tap": [
+        "liti"
+      ],
+      "mo": "MO_TA_HUONG_DAN",
+      "moNguon": "pn:850610:ct:1#2",
+      "moNguonVanTay": "a62b58259d4aaffde11ccdd0b4a9c8a5cba10071f84be067d3c8ea571970c85d",
+      "cauHoi": "Pin có a-nốt bằng liti (nếu có thì xếp vào 8506.50 dù ca-tốt là dioxit mangan) không?",
+      "trich": "pin với ca-tốt bằng đioxit mangan và a-nốt là liti",
+      "nguon": "pn:850610:ct:1#2",
+      "vanTay": "a62b58259d4aaffde11ccdd0b4a9c8a5cba10071f84be067d3c8ea571970c85d"
     },
     {
       "loai": "DIEU_KIEN",
@@ -818,9 +866,9 @@
       "ve": 0,
       "phu": false,
       "kieu": "GIA_TRI",
-      "truc": "thành phần điện cực",
+      "truc": "thành phần ca-tốt (điện cực khử cực)",
       "tap": [
-        "ca-tốt bằng oxit thủy ngân"
+        "oxit thủy ngân"
       ],
       "mo": "MO_TA_HUONG_DAN",
       "moNguon": "pn:850630:ct:1#1",
@@ -856,9 +904,9 @@
       "ve": 0,
       "phu": false,
       "kieu": "GIA_TRI",
-      "truc": "thành phần điện cực",
+      "truc": "thành phần ca-tốt (điện cực khử cực)",
       "tap": [
-        "ca-tốt bằng oxit bạc"
+        "oxit bạc"
       ],
       "mo": "MO_TA_HUONG_DAN",
       "moNguon": "pn:850640:ct:1#1",
@@ -894,9 +942,9 @@
       "ve": 0,
       "phu": false,
       "kieu": "GIA_TRI",
-      "truc": "thành phần điện cực",
+      "truc": "thành phần a-nốt",
       "tap": [
-        "a-nốt bằng liti"
+        "liti"
       ],
       "mo": "MO_TA_HUONG_DAN",
       "moNguon": [
@@ -938,7 +986,7 @@
       "ve": 0,
       "phu": false,
       "kieu": "GIA_TRI",
-      "truc": "thành phần điện cực",
+      "truc": "hệ điện cực kẽm-khí",
       "tap": [
         "kẽm-khí (a-nốt kẽm, ca-tốt oxy khuếch tán)"
       ],
@@ -982,6 +1030,59 @@
       "nguon": "bieu:850680#1",
       "vanTay": "1ff77dfda01183c1e90ec4206bce1d2de3418babaa2991607b036c2e32aa2ce3",
       "moNguonVanTay": "834886e2f96db4a9e3adf19bd7dbdae0ca9ca83196e8785e456d16a55eb01e9f"
+    },
+    {
+      "id": "hs:bieu:850680:8202",
+      "nut": "bieu:850680",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "thành phần ca-tốt (điện cực khử cực)",
+      "tap": [
+        "dioxit mangan",
+        "oxit thủy ngân",
+        "oxit bạc"
+      ],
+      "mo": "NGHIA_THUONG",
+      "cauHoi": "Pin có ca-tốt bằng dioxit mangan (8506.10), oxit thủy ngân (8506.30) hay oxit bạc (8506.40) không?",
+      "trich": "- Pin và bộ pin khác:",
+      "nguon": "bieu:850680#1",
+      "vanTay": "1ff77dfda01183c1e90ec4206bce1d2de3418babaa2991607b036c2e32aa2ce3"
+    },
+    {
+      "id": "hs:bieu:850680:8203",
+      "nut": "bieu:850680",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "thành phần a-nốt",
+      "tap": [
+        "liti"
+      ],
+      "mo": "NGHIA_THUONG",
+      "cauHoi": "Pin có a-nốt bằng liti (thuộc 8506.50) không?",
+      "trich": "- Pin và bộ pin khác:",
+      "nguon": "bieu:850680#1",
+      "vanTay": "1ff77dfda01183c1e90ec4206bce1d2de3418babaa2991607b036c2e32aa2ce3"
+    },
+    {
+      "id": "hs:bieu:850680:8204",
+      "nut": "bieu:850680",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "hệ điện cực kẽm-khí",
+      "tap": [
+        "kẽm-khí (a-nốt kẽm, ca-tốt oxy khuếch tán)"
+      ],
+      "mo": "NGHIA_THUONG",
+      "cauHoi": "Pin có phải loại kẽm-khí (thuộc 8506.60) không?",
+      "trich": "- Pin và bộ pin khác:",
+      "nguon": "bieu:850680#1",
+      "vanTay": "1ff77dfda01183c1e90ec4206bce1d2de3418babaa2991607b036c2e32aa2ce3"
     },
     {
       "loai": "DIEU_KIEN",

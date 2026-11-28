@@ -835,6 +835,29 @@
             "trich": "- Bàn là điện:"
           }
         ]
+      },
+      {
+        "nhom": "bieu:8515",
+        "lyDo": "Ranh giới pháp lý trực tiếp giữa điện trở đốt nóng bằng điện riêng rẽ (kể cả được thiết kế đặc biệt cho máy/mỏ hàn điện thuộc nhóm 85.15, đi vào 8516.80 theo nhom:8516:ct:63#1 và Chú giải 2(a) Phần XVI) với phần tử đốt nóng đã lắp ghép thêm các phần khác ngoài cách điện đơn giản/kết nối điện (phân loại như bộ phận máy hàn thuộc 85.15 theo nhom:8516:ct:66#1) hoặc máy/mỏ hàn điện hoàn chỉnh thuộc nhóm 85.15.",
+        "phepThu": "Kiểm tra hàng hóa là máy/mỏ hàn điện hoàn chỉnh hoặc phần tử đốt nóng đã lắp ghép thêm các phần khác ngoài cách điện đơn giản/kết nối điện (nhóm 85.15), hay là điện trở đốt nóng bằng điện riêng rẽ không làm bằng cacbon (nhóm 8516.80 theo Chú giải 2(a) Phần XVI).",
+        "canCu": [
+          {
+            "idCau": "bieu:8515#1",
+            "trich": "Máy và thiết bị hàn các loại dùng điện (kể cả khí ga nung nóng bằng điện), dùng chùm tia laser hoặc chùm tia sáng khác hoặc chùm phô-tông, siêu âm, chùm electron, xung từ hoặc hồ quang, có hoặc không có khả năng cắt; máy và thiết bị dùng điện để xì nóng kim loại hoặc gốm kim loại"
+          },
+          {
+            "idCau": "nhom:8516:ct:63#1",
+            "trich": "Ngoại trừ các loại làm từ cacbon (nhóm 85.45), tất cả các điện trở làm nóng được phân loại vào đây không phụ thuộc vào các máy móc hoặc thiết bị mà nó sẽ được sử dụng ở trong."
+          },
+          {
+            "idCau": "nhom:8516:ct:66#1",
+            "trich": "Các điện trở vẫn được phân loại ở đây nếu như nó được thiết kế đặc biệt cho các máy móc chuyên dùng, nhưng nếu được lắp với các phần khác ngoại trừ một cách điện đơn giản hoặc các kết nối điện thì được phân loại như các bộ phận hoặc máy móc mà nó đáp ứng (ví dụ, tấm đế dùng cho bàn là và tấm đun dùng cho nồi cơm điện)."
+          },
+          {
+            "idCau": "phan:XVI:cg:2:a#1",
+            "trich": "(a) Các bộ phận đã được chi tiết tại nhóm nào đó của Chương 84 hoặc 85 (trừ các nhóm 84.09, 84.31, 84.48, 84.66, 84.73, 84.87, 85.03, 85.22, 85.29, 85.38 và 85.48) được phân loại vào nhóm đó trong mọi trường hợp;"
+          }
+        ]
       }
     ],
     "khongCanhTranh": [
@@ -879,16 +902,6 @@
         ]
       },
       {
-        "nhom": "bieu:8515",
-        "lyDo": "Nhóm 85.15 là máy và thiết bị hàn (điện, laser, siêu âm, hồ quang...) và xì nóng kim loại/gốm kim loại, khác phạm vi dụng cụ đun nước/sưởi/làm tóc/bàn là/nhiệt điện gia dụng của 85.16; chỉ dính từ câu chuẩn về bộ phận (nhom:8516:ct:69#1). Riêng điện trở đốt nóng riêng rẽ đi 8516.80 theo nguyên tắc chung Chú giải 2(a) Phần XVI.",
-        "canCu": [
-          {
-            "idCau": "bieu:8515#1",
-            "trich": "Máy và thiết bị hàn các loại dùng điện (kể cả khí ga nung nóng bằng điện), dùng chùm tia laser hoặc chùm tia sáng khác hoặc chùm phô-tông, siêu âm, chùm electron, xung từ hoặc hồ quang, có hoặc không có khả năng cắt; máy và thiết bị dùng điện để xì nóng kim loại hoặc gốm kim loại"
-          }
-        ]
-      },
-      {
         "nhom": "bieu:8517",
         "lyDo": "Nhóm 85.17 là thiết bị điện thoại và viễn thông truyền/nhận tiếng, hình ảnh, dữ liệu, không liên quan đến dụng cụ nhiệt điện 85.16; chỉ trùng câu chuẩn về quy tắc bộ phận.",
         "canCu": [
@@ -920,11 +933,15 @@
       },
       {
         "nhom": "bieu:9614",
-        "lyDo": "Nhóm 96.14 là tẩu thuốc, điếu bát và đót thuốc lá/xì gà cơ học thông thường (tự loại trừ thuốc lá điện tử sang 85.43 theo nhom:9614:ct:10#1), không giao với thiết bị nhiệt điện 85.16.",
+        "lyDo": "Nhóm 96.14 là tẩu thuốc, điếu bát và đót xì gà/thuốc lá thông thường (bieu:9614#1), còn thiết bị điện tử dùng cho thuốc lá điện tử đã được loại trừ khỏi nhóm 85.16 sang nhóm 85.43 theo nhom:8516:ct:59#1, không giao thoa với thiết bị nhiệt điện 85.16.",
         "canCu": [
           {
             "idCau": "bieu:9614#1",
             "trich": "Tẩu thuốc (kể cả điếu bát) và đót xì gà hoặc đót thuốc lá, và bộ phận của chúng"
+          },
+          {
+            "idCau": "nhom:8516:ct:59#1",
+            "trich": "(e) Thiết bị điện tử dùng cho thuốc lá điện tử và các thiết bị điện hóa hơi cá nhân tương tự (nhóm 85.43)."
           }
         ]
       }
@@ -1501,7 +1518,7 @@
       "phu": false,
       "kieu": "GIA_TRI",
       "truc": "kiểu đun nước nóng 8516.10",
-      "daTri": false,
+      "daTri": true,
       "tap": [
         "đun nước nóng tức thời",
         "đun nước nóng có dự trữ"
@@ -1588,7 +1605,7 @@
       "phu": false,
       "kieu": "GIA_TRI",
       "truc": "kiểu đun nước nóng 8516.10",
-      "daTri": false,
+      "daTri": true,
       "tap": [
         "đun nước nóng kiểu nhúng"
       ],
@@ -3366,6 +3383,44 @@
       "ghiChu": "Bàn là phẳng không dùng điện (dùng khí đốt, parafin, dầu hỏa, than củi...) thuộc 82.05; còn bàn là điện thuộc 8516.40."
     },
     {
+      "id": "hs:bieu:8516:8150",
+      "nut": "bieu:8516",
+      "loai": "CANH_TRANH",
+      "nhomCanhTranh": [
+        "bieu:8515"
+      ],
+      "phepThu": [
+        {
+          "nguon": "bieu:8515#1",
+          "trich": "Máy và thiết bị hàn các loại dùng điện (kể cả khí ga nung nóng bằng điện), dùng chùm tia laser hoặc chùm tia sáng khác hoặc chùm phô-tông, siêu âm, chùm electron, xung từ hoặc hồ quang, có hoặc không có khả năng cắt; máy và thiết bị dùng điện để xì nóng kim loại hoặc gốm kim loại",
+          "vanTay": "ede0029dad296b6502fac17f4f69060e22aaba618e4e6c3fd12ff9608e135197",
+          "nhom": "bieu:8515"
+        },
+        {
+          "nguon": "nhom:8516:ct:63#1",
+          "trich": "Ngoại trừ các loại làm từ cacbon (nhóm 85.45), tất cả các điện trở làm nóng được phân loại vào đây không phụ thuộc vào các máy móc hoặc thiết bị mà nó sẽ được sử dụng ở trong.",
+          "vanTay": "25d5efc7d0569d01cd1ef10c062816e2e41f6f2088f60a0d53e47cafd5fe4823",
+          "nhom": "bieu:8516"
+        },
+        {
+          "nguon": "nhom:8516:ct:66#1",
+          "trich": "Các điện trở vẫn được phân loại ở đây nếu như nó được thiết kế đặc biệt cho các máy móc chuyên dùng, nhưng nếu được lắp với các phần khác ngoại trừ một cách điện đơn giản hoặc các kết nối điện thì được phân loại như các bộ phận hoặc máy móc mà nó đáp ứng (ví dụ, tấm đế dùng cho bàn là và tấm đun dùng cho nồi cơm điện).",
+          "vanTay": "7e43339a49b6e89db038817fed8e2a352b44af24fccda5ffc14659696c4fba53",
+          "nhom": "bieu:8515"
+        },
+        {
+          "nguon": "phan:XVI:cg:2:a#1",
+          "trich": "(a) Các bộ phận đã được chi tiết tại nhóm nào đó của Chương 84 hoặc 85 (trừ các nhóm 84.09, 84.31, 84.48, 84.66, 84.73, 84.87, 85.03, 85.22, 85.29, 85.38 và 85.48) được phân loại vào nhóm đó trong mọi trường hợp;",
+          "vanTay": "0be725fa818c15a71b0fe25b4f42bb5366794d9c3be56b673c9827efb0e80698",
+          "nhom": "bieu:8516"
+        }
+      ],
+      "trich": "Ngoại trừ các loại làm từ cacbon (nhóm 85.45), tất cả các điện trở làm nóng được phân loại vào đây không phụ thuộc vào các máy móc hoặc thiết bị mà nó sẽ được sử dụng ở trong.",
+      "nguon": "nhom:8516:ct:63#1",
+      "vanTay": "25d5efc7d0569d01cd1ef10c062816e2e41f6f2088f60a0d53e47cafd5fe4823",
+      "ghiChu": "Ranh giới giữa điện trở đốt nóng riêng rẽ không bằng cacbon (8516.80 theo nhom:8516:ct:63#1 và Chú giải 2(a) Phần XVI) với phần tử đốt nóng đã lắp ghép thêm chi tiết ngoài cách điện đơn giản/kết nối điện hoặc máy/mỏ hàn điện hoàn chỉnh (85.15 theo nhom:8516:ct:66#1)."
+    },
+    {
       "id": "hs:bieu:8516:8149",
       "nut": "bieu:8516",
       "loai": "CANH_TRANH",
@@ -3399,13 +3454,6 @@
           "lyDo": "Nhóm 84.66 chỉ gồm bộ phận/phụ kiện chỉ dùng hoặc chủ yếu dùng cho máy công cụ nhóm 84.56-84.65 và bộ phận kẹp dụng cụ cầm tay, không giao với bộ phận thiết bị nhiệt điện 85.16."
         },
         {
-          "nhom": "bieu:8515",
-          "nguon": "bieu:8515#1",
-          "trich": "Máy và thiết bị hàn các loại dùng điện (kể cả khí ga nung nóng bằng điện), dùng chùm tia laser hoặc chùm tia sáng khác hoặc chùm phô-tông, siêu âm, chùm electron, xung từ hoặc hồ quang, có hoặc không có khả năng cắt; máy và thiết bị dùng điện để xì nóng kim loại hoặc gốm kim loại",
-          "vanTay": "ede0029dad296b6502fac17f4f69060e22aaba618e4e6c3fd12ff9608e135197",
-          "lyDo": "Nhóm 85.15 là máy và thiết bị hàn (điện, laser, siêu âm, hồ quang...) và xì nóng kim loại/gốm kim loại, khác phạm vi dụng cụ đun nước/sưởi/làm tóc/bàn là/nhiệt điện gia dụng của 85.16; chỉ dính từ câu chuẩn về bộ phận (nhom:8516:ct:69#1). Riêng điện trở đốt nóng riêng rẽ đi 8516.80 theo nguyên tắc chung Chú giải 2(a) Phần XVI."
-        },
-        {
           "nhom": "bieu:8517",
           "nguon": "bieu:8517#1",
           "trich": "Bộ điện thoại, kể cả điện thoại thông minh và điện thoại khác cho mạng di động tế bào hoặc mạng không dây khác; thiết bị khác để truyền hoặc nhận tiếng, hình ảnh hoặc dữ liệu khác, kể cả các thiết bị viễn thông nối mạng hữu tuyến hoặc không dây (như loại sử dụng trong mạng nội bộ hoặc mạng diện rộng), trừ loại thiết bị truyền hoặc thu của nhóm 84.43, 85.25, 85.27 hoặc 85.28",
@@ -3431,13 +3479,13 @@
           "nguon": "bieu:9614#1",
           "trich": "Tẩu thuốc (kể cả điếu bát) và đót xì gà hoặc đót thuốc lá, và bộ phận của chúng",
           "vanTay": "90952d215a59a220444974e85f32e8cefb3ceaa32903407d40588fdda10c4efc",
-          "lyDo": "Nhóm 96.14 là tẩu thuốc, điếu bát và đót thuốc lá/xì gà cơ học thông thường (tự loại trừ thuốc lá điện tử sang 85.43 theo nhom:9614:ct:10#1), không giao với thiết bị nhiệt điện 85.16."
+          "lyDo": "Nhóm 96.14 là tẩu thuốc, điếu bát và đót xì gà/thuốc lá thông thường (bieu:9614#1), còn thiết bị điện tử dùng cho thuốc lá điện tử đã được loại trừ khỏi nhóm 85.16 sang nhóm 85.43 theo nhom:8516:ct:59#1, không giao thoa với thiết bị nhiệt điện 85.16."
         }
       ],
       "trich": "Dụng cụ điện đun nước nóng tức thời hoặc đun nước nóng có dự trữ và đun nước nóng kiểu nhúng; dụng cụ điện làm nóng không gian và làm nóng đất; dụng cụ nhiệt điện làm tóc (ví dụ, máy sấy tóc, máy uốn tóc, dụng cụ kẹp uốn tóc) và máy sấy làm khô tay; bàn là điện; dụng cụ nhiệt điện gia dụng khác; các loại điện trở đốt nóng bằng điện, trừ loại thuộc nhóm 85.45",
       "nguon": "bieu:8516#1",
       "vanTay": "759fb79f04bea3b11343394bb1b2956978fdc062775f997affb9d5d9da328d43",
-      "ghiChu": "9 nhóm trong canhTranhTimThay không cạnh tranh trực tiếp với 85.16 (chủ yếu trùng từ khóa tự động)."
+      "ghiChu": "8 nhóm trong canhTranhTimThay không cạnh tranh trực tiếp với 85.16 (chủ yếu trùng từ khóa tự động)."
     }
   ],
   "ma8": [

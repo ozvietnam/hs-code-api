@@ -474,23 +474,26 @@
       "ve": 0,
       "phu": false,
       "kieu": "GIA_TRI",
-      "truc": "nguyên lý hoạt động điện hóa",
+      "truc": "nguyên lý hoạt động điện hóa của ắc quy (hoặc ắc quy mà bộ phận/vách ngăn lắp vào)",
       "tap": [
-        "phản ứng điện hóa học có thể đảo ngược (sạc và xả lặp lại)"
+        "ắc quy hoạt động theo phản ứng điện hóa học có thể đảo ngược (sạc và xả lặp lại), hoặc bộ phận/vách ngăn chuyên dùng cho loại ắc quy này"
       ],
       "mo": "MO_TA_HUONG_DAN",
       "moNguon": [
         "nhom:8507:ct:1#1",
-        "nhom:8507:ct:1#5"
+        "nhom:8507:ct:1#5",
+        "nhom:8507:ct:16#1"
       ],
       "moNguonVanTay": {
         "nhom:8507:ct:1#1": "3078088acfb7d9d21a4d5f7cf8c2c35b794661645b313539953aeba548b6e0c5",
-        "nhom:8507:ct:1#5": "ba78e0c41c965642a2f77ef7f1b8dfe7801a11b44a5933a107e251ea4ca5bccc"
+        "nhom:8507:ct:1#5": "ba78e0c41c965642a2f77ef7f1b8dfe7801a11b44a5933a107e251ea4ca5bccc",
+        "nhom:8507:ct:16#1": "a07622136f3b0ce6f84de3f9ce65a1b0fcb7551e6ffe1396495b92b2f01ddf15"
       },
-      "cauHoi": "Hàng hóa có hoạt động theo phản ứng điện hóa học đảo ngược cho phép nạp điện và xả điện lặp đi lặp lại không (kể cả khi xuất trình chưa chứa chất điện phân)?",
+      "cauHoi": "Hàng hóa là ắc quy hoạt động theo phản ứng điện hóa học đảo ngược cho phép nạp-xả lặp lại (kể cả chưa chứa chất điện phân), hay là bộ phận/vách ngăn chuyên dùng lắp cho loại ắc quy đó?",
       "trich": "Ắc quy điện (các pin sạc hoặc pin thứ cấp) được đặc trưng bởi các phản ứng điện hóa học có thể đảo ngược dẫn đến ắc quy có thể nạp được.",
       "nguon": "nhom:8507:ct:1#1",
-      "vanTay": "3078088acfb7d9d21a4d5f7cf8c2c35b794661645b313539953aeba548b6e0c5"
+      "vanTay": "3078088acfb7d9d21a4d5f7cf8c2c35b794661645b313539953aeba548b6e0c5",
+      "ghiChu": "Áp dụng cho cả ắc quy hoàn chỉnh và ắc quy đích mà bộ phận/tấm vách ngăn (8507.90) được thiết kế để lắp vào."
     },
     {
       "id": "hs:bieu:8507:8203",
@@ -582,6 +585,59 @@
       "vanTay": "7fc686da4c85fcb827c96bfcfdbe1785b94cfd5adbb0ea231372ea216a4f60e1"
     },
     {
+      "id": "hs:bieu:8507:8214",
+      "nut": "bieu:8507",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "loại trừ chung Phần XVI và Chương 85",
+      "tap": [
+        "bộ phận có công dụng chung bằng kim loại cơ bản (Phần XV) hoặc bằng plastic tương tự (Chương 39)",
+        "hàng hóa thuộc diện loại trừ của Chú giải 1 Phần XVI hoặc Chú giải 1 Chương 85"
+      ],
+      "mo": "DINH_NGHIA_LUAT",
+      "moNguon": [
+        "phan:XVI:cg:1#1",
+        "phan:XVI:cg:1:g#1",
+        "chuong:85:cg:1#1"
+      ],
+      "moNguonVanTay": {
+        "phan:XVI:cg:1#1": "79b410931b6e4a07760fe5b1be2502d90a390383dd574965bb9e2aceb3344abd",
+        "phan:XVI:cg:1:g#1": "76a8b3b2d4baf617968af52e227ddb5b7327b9cec396bee49ef2ed308428af07",
+        "chuong:85:cg:1#1": "3cfa8c9291bd8ad3448adf4f926fbf01ca2aeba372e1cfed9690eed12b69362a"
+      },
+      "cauHoi": "Hàng hóa có thuộc diện bị loại trừ chung khỏi Phần XVI (như bộ phận có công dụng chung bằng kim loại cơ bản Phần XV hoặc bằng plastic Chương 39) hoặc loại trừ theo Chú giải 1 Chương 85 không?",
+      "trich": "(g) Các bộ phận có công dụng chung, như đã định nghĩa trong Chú giải 2 Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các hàng hóa tương tự bằng plastic (Chương 39);",
+      "nguon": "phan:XVI:cg:1:g#1",
+      "vanTay": "76a8b3b2d4baf617968af52e227ddb5b7327b9cec396bee49ef2ed308428af07"
+    },
+    {
+      "id": "hs:bieu:8507:8215",
+      "nut": "bieu:8507",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "loại trừ bộ phận đã chi tiết ở nhóm riêng theo Chú giải 2(a) Phần XVI",
+      "tap": [
+        "bộ phận đã được chi tiết ở nhóm riêng Chương 84 hoặc 85 (như điện cực than 85.45, dây cáp điện cách điện 85.44, đầu nối điện trên 1.000 V nhóm 85.35, phụ kiện cách điện có cấu trúc đặc biệt nhóm 85.47)"
+      ],
+      "mo": "DINH_NGHIA_LUAT",
+      "moNguon": [
+        "phan:XVI:cg:2#1",
+        "phan:XVI:cg:2:a#1"
+      ],
+      "moNguonVanTay": {
+        "phan:XVI:cg:2#1": "fb4029fd7c6f49628ce8acdc645aff37fb3e7d2bb9d84f5c99ea4a67f0125974",
+        "phan:XVI:cg:2:a#1": "0be725fa818c15a71b0fe25b4f42bb5366794d9c3be56b673c9827efb0e80698"
+      },
+      "cauHoi": "Nếu là bộ phận xuất trình riêng, hàng hóa có thuộc nhóm riêng của Chương 84 hoặc 85 theo Chú giải 2(a) Phần XVI (như điện cực than 85.45, dây cáp cách điện 85.44, đầu nối > 1.000 V nhóm 85.35, phụ kiện cách điện đặc biệt 85.47) không?",
+      "trich": "(a) Các bộ phận đã được chi tiết tại nhóm nào đó của Chương 84 hoặc 85 (trừ các nhóm 84.09, 84.31, 84.48, 84.66, 84.73, 84.87, 85.03, 85.22, 85.29, 85.38 và 85.48) được phân loại vào nhóm đó trong mọi trường hợp;",
+      "nguon": "phan:XVI:cg:2:a#1",
+      "vanTay": "0be725fa818c15a71b0fe25b4f42bb5366794d9c3be56b673c9827efb0e80698"
+    },
+    {
       "id": "hs:bieu:850710:8201",
       "nut": "bieu:850710",
       "loai": "DIEU_KIEN",
@@ -641,14 +697,14 @@
       "nut": "bieu:850720",
       "loai": "DIEU_KIEN",
       "ve": 0,
-      "phu": false,
+      "phu": true,
       "kieu": "GIA_TRI",
       "truc": "công dụng ắc quy axit-chì",
       "tap": [
-        "không dùng để khởi động động cơ piston (ắc quy axit-chì khác)"
+        "dùng để khởi động động cơ piston"
       ],
       "mo": "NGHIA_THUONG",
-      "cauHoi": "Ắc quy axit-chì có thuộc loại khác (không phải loại dùng để khởi động động cơ piston thuộc 8507.10) không?",
+      "cauHoi": "Ắc quy axit-chì này có thuộc loại dùng để khởi động động cơ piston (8507.10) không?",
       "trich": "- Ắc qui axit - chì khác:",
       "nguon": "bieu:850720#1",
       "vanTay": "bb86912c1815af4c7253c8bf562d079ac216cbbe2dee7fcd60df6079ada30456"
@@ -717,9 +773,9 @@
       "ve": 0,
       "phu": false,
       "kieu": "GIA_TRI",
-      "truc": "hệ hóa học ắc quy",
+      "truc": "loại đối tượng",
       "tap": [
-        "hệ hóa học khác ngoài axit-chì, niken-cađimi, niken-hydrua kim loại và ion liti"
+        "ắc quy điện (pin sạc/pin thứ cấp, kể cả bộ nguồn ắc quy)"
       ],
       "mo": "MO_TA_HUONG_DAN",
       "moNguon": [
@@ -732,7 +788,27 @@
         "nhom:8507:ct:8#1": "7f0714991478c9689fe12bc73214eb6f659e6aaf79d7acfd0e67b371c90605b7",
         "nhom:8507:ct:9#1": "185e3ed5b0d64039768fa8db53997fb010fca19b95e8911d8634a43c0d7358b9"
       },
-      "cauHoi": "Ắc quy có thuộc hệ hóa học khác (như sắt-niken, liti kim loại, bạc-kẽm...), không phải axit-chì, Ni-Cd, Ni-MH hay ion liti không?",
+      "cauHoi": "Hàng hóa là ắc quy điện hoàn chỉnh (không phải bộ phận rời 8507.90) thuộc các hệ hóa học khác ngoài axit-chì, Ni-Cd, Ni-MH và ion liti không?",
+      "trich": "- Ắc qui khác:",
+      "nguon": "bieu:850780#1",
+      "vanTay": "22cb0b05538c9783cc3910c3df370ac1f7f4c8c843ad1eb319dfbdccd5ccb788"
+    },
+    {
+      "id": "hs:bieu:850780:8204",
+      "nut": "bieu:850780",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "hệ hóa học ắc quy",
+      "tap": [
+        "axit-chì",
+        "niken-cađimi (Ni-Cd)",
+        "niken-hydrua kim loại (Ni-MH)",
+        "ion liti (Li-ion)"
+      ],
+      "mo": "NGHIA_THUONG",
+      "cauHoi": "Ắc quy này có sử dụng hệ hóa học axit-chì (8507.10/8507.20), niken-cađimi (8507.30), niken-hydrua kim loại (8507.50) hoặc ion liti (8507.60) không?",
       "trich": "- Ắc qui khác:",
       "nguon": "bieu:850780#1",
       "vanTay": "22cb0b05538c9783cc3910c3df370ac1f7f4c8c843ad1eb319dfbdccd5ccb788"
@@ -1813,6 +1889,42 @@
       "vanTay": "f88109bb25d041814801fa2518868c48274881cc2dc895b9f8820b062b9ba33f"
     },
     {
+      "id": "hs:bieu:85079093:8202",
+      "nut": "bieu:85079093",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "phạm vi ắc quy sử dụng bộ phận",
+      "tap": [
+        "dùng cho máy bay"
+      ],
+      "mo": "NGHIA_THUONG",
+      "cauHoi": "Bộ phận khác này có phải là loại dùng cho máy bay (8507.90.91) không?",
+      "trich": "- - - Loại khác,",
+      "nguon": "bieu:85079093#1",
+      "vanTay": "f88109bb25d041814801fa2518868c48274881cc2dc895b9f8820b062b9ba33f"
+    },
+    {
+      "id": "hs:bieu:85079093:8203",
+      "nut": "bieu:85079093",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "chủng loại bộ phận ắc quy",
+      "tap": [
+        "vách ngăn ắc quy sẵn sàng để sử dụng làm từ mọi vật liệu trừ poly(vinyl clorua) (PVC)"
+      ],
+      "mo": "MO_TA_HUONG_DAN",
+      "moNguon": "nhom:8507:ct:16#2",
+      "moNguonVanTay": "7fc686da4c85fcb827c96bfcfdbe1785b94cfd5adbb0ea231372ea216a4f60e1",
+      "cauHoi": "Bộ phận khác này có phải là vách ngăn ắc quy sẵn sàng để sử dụng làm từ mọi vật liệu trừ poly(vinyl clorua) (PVC) (8507.90.92) không?",
+      "trich": "- - - Loại khác,",
+      "nguon": "bieu:85079093#1",
+      "vanTay": "f88109bb25d041814801fa2518868c48274881cc2dc895b9f8820b062b9ba33f"
+    },
+    {
       "id": "hs:bieu:8507909:8201",
       "nut": "bieu:8507909",
       "loai": "GIAI_CHONG",
@@ -2132,7 +2244,7 @@
       "ten": "- - Dùng cho máy bay",
       "laLoaiKhac": false,
       "ketQua": "ĐÚNG",
-      "cauHoi": "Ắc quy axit-chì khởi động động cơ piston có thiết kế/chứng nhận dùng cho máy bay không?",
+      "cauHoi": null,
       "lyDo": "Đủ căn cứ biểu thuế: ắc quy axit-chì dùng khởi động động cơ piston (8507.10) và dùng cho máy bay (8507.10.10), loại trừ khỏi nhóm 85.11 và Phần XVII.",
       "canCu": [
         {
@@ -2159,7 +2271,7 @@
       "ten": "- - - - Chiều cao (không bao gồm đầu cực và tay cầm) không quá 13 cm",
       "laLoaiKhac": false,
       "ketQua": "ĐÚNG",
-      "cauHoi": "Xác nhận ắc quy axit-chì khởi động không dùng cho máy bay (8507.10.10) và có thông số 6 V hoặc 12 V, dung lượng ≤ 200 Ah, chiều cao (không tính đầu cực và tay cầm) ≤ 13 cm?",
+      "cauHoi": null,
       "lyDo": "Phân loại theo ngưỡng điện áp, dung lượng phóng điện và chiều cao (không tính đầu cực và tay cầm) tại biểu thuế: 6 V hoặc 12 V, dung lượng ≤ 200 Ah, chiều cao (không tính đầu cực và tay cầm) ≤ 13 cm.",
       "canCu": [
         {
@@ -2190,7 +2302,7 @@
       "ten": "- - - - Chiều cao (không bao gồm đầu cực và tay cầm) trên 13 cm nhưng không quá 23 cm",
       "laLoaiKhac": false,
       "ketQua": "ĐÚNG",
-      "cauHoi": "Xác nhận ắc quy axit-chì khởi động không dùng cho máy bay (8507.10.10) và có thông số 6 V hoặc 12 V, dung lượng ≤ 200 Ah, chiều cao trên 13 cm đến ≤ 23 cm?",
+      "cauHoi": null,
       "lyDo": "Phân loại theo ngưỡng điện áp, dung lượng phóng điện và chiều cao (không tính đầu cực và tay cầm) tại biểu thuế: 6 V hoặc 12 V, dung lượng ≤ 200 Ah, chiều cao trên 13 cm đến ≤ 23 cm.",
       "canCu": [
         {
@@ -2221,7 +2333,7 @@
       "ten": "- - - - Chiều cao (không bao gồm đầu cực và tay cầm) trên 23 cm",
       "laLoaiKhac": false,
       "ketQua": "ĐÚNG",
-      "cauHoi": "Xác nhận ắc quy axit-chì khởi động không dùng cho máy bay (8507.10.10) và có thông số 6 V hoặc 12 V, dung lượng ≤ 200 Ah, chiều cao trên 23 cm?",
+      "cauHoi": null,
       "lyDo": "Phân loại theo ngưỡng điện áp, dung lượng phóng điện và chiều cao (không tính đầu cực và tay cầm) tại biểu thuế: 6 V hoặc 12 V, dung lượng ≤ 200 Ah, chiều cao trên 23 cm.",
       "canCu": [
         {
@@ -2252,7 +2364,7 @@
       "ten": "- - - - Chiều cao (không bao gồm đầu cực và tay cầm) không quá 13 cm",
       "laLoaiKhac": false,
       "ketQua": "ĐÚNG",
-      "cauHoi": "Xác nhận ắc quy axit-chì khởi động không dùng cho máy bay (8507.10.10) và có thông số ngoài mức (6 V/12 V và ≤ 200 Ah), chiều cao ≤ 13 cm?",
+      "cauHoi": null,
       "lyDo": "Phân loại theo ngưỡng điện áp, dung lượng phóng điện và chiều cao (không tính đầu cực và tay cầm) tại biểu thuế: ngoài mức (6 V/12 V và ≤ 200 Ah), chiều cao ≤ 13 cm.",
       "canCu": [
         {
@@ -2283,7 +2395,7 @@
       "ten": "- - - - Chiều cao (không bao gồm đầu cực và tay cầm) trên 13 cm nhưng không quá 23 cm",
       "laLoaiKhac": false,
       "ketQua": "ĐÚNG",
-      "cauHoi": "Xác nhận ắc quy axit-chì khởi động không dùng cho máy bay (8507.10.10) và có thông số ngoài mức (6 V/12 V và ≤ 200 Ah), chiều cao trên 13 cm đến ≤ 23 cm?",
+      "cauHoi": null,
       "lyDo": "Phân loại theo ngưỡng điện áp, dung lượng phóng điện và chiều cao (không tính đầu cực và tay cầm) tại biểu thuế: ngoài mức (6 V/12 V và ≤ 200 Ah), chiều cao trên 13 cm đến ≤ 23 cm.",
       "canCu": [
         {
@@ -2314,7 +2426,7 @@
       "ten": "- - - - Chiều cao (không bao gồm đầu cực và tay cầm) trên 23 cm",
       "laLoaiKhac": false,
       "ketQua": "ĐÚNG",
-      "cauHoi": "Xác nhận ắc quy axit-chì khởi động không dùng cho máy bay (8507.10.10) và có thông số ngoài mức (6 V/12 V và ≤ 200 Ah), chiều cao trên 23 cm?",
+      "cauHoi": null,
       "lyDo": "Phân loại theo ngưỡng điện áp, dung lượng phóng điện và chiều cao (không tính đầu cực và tay cầm) tại biểu thuế: ngoài mức (6 V/12 V và ≤ 200 Ah), chiều cao trên 23 cm.",
       "canCu": [
         {
@@ -2345,7 +2457,7 @@
       "ten": "- - Dùng cho máy bay",
       "laLoaiKhac": false,
       "ketQua": "ĐÚNG",
-      "cauHoi": "Ắc quy axit-chì không dùng để khởi động động cơ piston (8507.10) có dùng cho máy bay không?",
+      "cauHoi": null,
       "lyDo": "Đủ căn cứ biểu thuế: ắc quy axit-chì khác (ngoài 8507.10) và dùng cho máy bay.",
       "canCu": [
         {
@@ -2372,7 +2484,7 @@
       "ten": "- - - - Chiều cao (không bao gồm đầu cực và tay cầm) không quá 13 cm",
       "laLoaiKhac": false,
       "ketQua": "ĐÚNG",
-      "cauHoi": "Xác nhận ắc quy axit-chì khác (không thuộc 8507.10 và không dùng cho máy bay 8507.20.10) và có thông số 6 V hoặc 12 V, dung lượng ≤ 200 Ah, chiều cao (không tính đầu cực và tay cầm) ≤ 13 cm?",
+      "cauHoi": null,
       "lyDo": "Phân loại theo ngưỡng điện áp, dung lượng phóng điện và chiều cao (không tính đầu cực và tay cầm) tại biểu thuế: 6 V hoặc 12 V, dung lượng ≤ 200 Ah, chiều cao (không tính đầu cực và tay cầm) ≤ 13 cm.",
       "canCu": [
         {
@@ -2403,7 +2515,7 @@
       "ten": "- - - - Chiều cao (không bao gồm đầu cực và tay cầm) trên 13 cm nhưng không quá 23 cm",
       "laLoaiKhac": false,
       "ketQua": "ĐÚNG",
-      "cauHoi": "Xác nhận ắc quy axit-chì khác (không thuộc 8507.10 và không dùng cho máy bay 8507.20.10) và có thông số 6 V hoặc 12 V, dung lượng ≤ 200 Ah, chiều cao trên 13 cm đến ≤ 23 cm?",
+      "cauHoi": null,
       "lyDo": "Phân loại theo ngưỡng điện áp, dung lượng phóng điện và chiều cao (không tính đầu cực và tay cầm) tại biểu thuế: 6 V hoặc 12 V, dung lượng ≤ 200 Ah, chiều cao trên 13 cm đến ≤ 23 cm.",
       "canCu": [
         {
@@ -2434,7 +2546,7 @@
       "ten": "- - - - Chiều cao (không bao gồm đầu cực và tay cầm) trên 23 cm",
       "laLoaiKhac": false,
       "ketQua": "ĐÚNG",
-      "cauHoi": "Xác nhận ắc quy axit-chì khác (không thuộc 8507.10 và không dùng cho máy bay 8507.20.10) và có thông số 6 V hoặc 12 V, dung lượng ≤ 200 Ah, chiều cao trên 23 cm?",
+      "cauHoi": null,
       "lyDo": "Phân loại theo ngưỡng điện áp, dung lượng phóng điện và chiều cao (không tính đầu cực và tay cầm) tại biểu thuế: 6 V hoặc 12 V, dung lượng ≤ 200 Ah, chiều cao trên 23 cm.",
       "canCu": [
         {
@@ -2465,7 +2577,7 @@
       "ten": "- - - - Chiều cao (không bao gồm đầu cực và tay cầm) không quá 13 cm",
       "laLoaiKhac": false,
       "ketQua": "ĐÚNG",
-      "cauHoi": "Xác nhận ắc quy axit-chì khác (không thuộc 8507.10 và không dùng cho máy bay 8507.20.10) và có thông số ngoài mức (6 V/12 V và ≤ 200 Ah), chiều cao ≤ 13 cm?",
+      "cauHoi": null,
       "lyDo": "Phân loại theo ngưỡng điện áp, dung lượng phóng điện và chiều cao (không tính đầu cực và tay cầm) tại biểu thuế: ngoài mức (6 V/12 V và ≤ 200 Ah), chiều cao ≤ 13 cm.",
       "canCu": [
         {
@@ -2496,7 +2608,7 @@
       "ten": "- - - - Chiều cao (không bao gồm đầu cực và tay cầm) trên 13 cm nhưng không quá 23 cm",
       "laLoaiKhac": false,
       "ketQua": "ĐÚNG",
-      "cauHoi": "Xác nhận ắc quy axit-chì khác (không thuộc 8507.10 và không dùng cho máy bay 8507.20.10) và có thông số ngoài mức (6 V/12 V và ≤ 200 Ah), chiều cao trên 13 cm đến ≤ 23 cm?",
+      "cauHoi": null,
       "lyDo": "Phân loại theo ngưỡng điện áp, dung lượng phóng điện và chiều cao (không tính đầu cực và tay cầm) tại biểu thuế: ngoài mức (6 V/12 V và ≤ 200 Ah), chiều cao trên 13 cm đến ≤ 23 cm.",
       "canCu": [
         {
@@ -2527,7 +2639,7 @@
       "ten": "- - - - Chiều cao (không bao gồm đầu cực và tay cầm) trên 23 cm",
       "laLoaiKhac": false,
       "ketQua": "ĐÚNG",
-      "cauHoi": "Xác nhận ắc quy axit-chì khác (không thuộc 8507.10 và không dùng cho máy bay 8507.20.10) và có thông số ngoài mức (6 V/12 V và ≤ 200 Ah), chiều cao trên 23 cm?",
+      "cauHoi": null,
       "lyDo": "Phân loại theo ngưỡng điện áp, dung lượng phóng điện và chiều cao (không tính đầu cực và tay cầm) tại biểu thuế: ngoài mức (6 V/12 V và ≤ 200 Ah), chiều cao trên 23 cm.",
       "canCu": [
         {
@@ -2558,7 +2670,7 @@
       "ten": "- - Dùng cho máy bay",
       "laLoaiKhac": false,
       "ketQua": "ĐÚNG",
-      "cauHoi": "Ắc quy niken-cađimi có dùng cho máy bay không?",
+      "cauHoi": null,
       "lyDo": "Đủ căn cứ biểu thuế: ắc quy niken-cađimi (8507.30) dùng cho máy bay (8507.30.10).",
       "canCu": [
         {
@@ -2608,7 +2720,7 @@
       "ten": "- - Dùng cho máy bay",
       "laLoaiKhac": false,
       "ketQua": "ĐÚNG",
-      "cauHoi": "Ắc quy niken-hydrua kim loại có dùng cho máy bay không?",
+      "cauHoi": null,
       "lyDo": "Đủ căn cứ biểu thuế: ắc quy niken-hydrua kim loại (8507.50) dùng cho máy bay (8507.50.10).",
       "canCu": [
         {
@@ -2631,7 +2743,7 @@
       "ten": "- - Dùng cho xe thuộc Chương 87",
       "laLoaiKhac": false,
       "ketQua": "ĐÚNG",
-      "cauHoi": "Ắc quy niken-hydrua kim loại có dùng cho xe thuộc Chương 87 không?",
+      "cauHoi": null,
       "lyDo": "Đủ căn cứ biểu thuế: ắc quy niken-hydrua kim loại (8507.50) dùng cho xe thuộc Chương 87 (8507.50.20).",
       "canCu": [
         {
@@ -2685,7 +2797,7 @@
       "ten": "- - - Loại dùng cho máy tính xách tay kể cả loại notebook và subnotebook",
       "laLoaiKhac": false,
       "ketQua": "ĐÚNG",
-      "cauHoi": "Bộ pin (battery pack) ion liti có dùng cho máy tính xách tay (kể cả notebook và subnotebook) không?",
+      "cauHoi": null,
       "lyDo": "Đủ căn cứ biểu thuế: bộ pin ion liti (8507.60.3) dùng cho máy tính xách tay kể cả notebook và subnotebook.",
       "canCu": [
         {
@@ -2712,7 +2824,7 @@
       "ten": "- - - Dùng cho máy bay",
       "laLoaiKhac": false,
       "ketQua": "ĐÚNG",
-      "cauHoi": "Bộ pin (battery pack) ion liti có dùng cho máy bay không?",
+      "cauHoi": null,
       "lyDo": "Đủ căn cứ biểu thuế: bộ pin ion liti (8507.60.3) dùng cho máy bay.",
       "canCu": [
         {
@@ -2739,7 +2851,7 @@
       "ten": "- - - Dùng cho xe thuộc Chương 87",
       "laLoaiKhac": false,
       "ketQua": "ĐÚNG",
-      "cauHoi": "Bộ pin (battery pack) ion liti có dùng cho xe thuộc Chương 87 không?",
+      "cauHoi": null,
       "lyDo": "Đủ căn cứ biểu thuế: bộ pin ion liti (8507.60.3) dùng cho xe thuộc Chương 87.",
       "canCu": [
         {
@@ -2832,7 +2944,7 @@
       "ten": "- - - Bằng sắt-niken",
       "laLoaiKhac": false,
       "ketQua": "ĐÚNG",
-      "cauHoi": "Ắc quy khác (ngoài axit-chì, Ni-Cd, Ni-MH, Li-ion) có phải dùng cho máy bay và bằng sắt-niken không?",
+      "cauHoi": null,
       "lyDo": "Đủ căn cứ biểu thuế: ắc quy khác (8507.80), dùng cho máy bay (8507.80.1), bằng sắt-niken (8507.80.11).",
       "canCu": [
         {
@@ -2890,7 +3002,7 @@
       "ten": "- - Loại dùng cho máy tính xách tay kể cả loại notebook và subnotebook",
       "laLoaiKhac": false,
       "ketQua": "ĐÚNG",
-      "cauHoi": "Ắc quy khác (ngoài axit-chì, Ni-Cd, Ni-MH, Li-ion) có dùng cho máy tính xách tay (kể cả notebook và subnotebook) không?",
+      "cauHoi": null,
       "lyDo": "Đủ căn cứ biểu thuế: ắc quy khác (8507.80) dùng cho máy tính xách tay kể cả notebook và subnotebook.",
       "canCu": [
         {
@@ -2913,7 +3025,7 @@
       "ten": "- - - Bằng sắt-niken",
       "laLoaiKhac": false,
       "ketQua": "ĐÚNG",
-      "cauHoi": "Ắc quy khác (không dùng cho máy bay 8507.80.1, không dùng cho máy tính xách tay 8507.80.20) có phải bằng sắt-niken không?",
+      "cauHoi": null,
       "lyDo": "Đủ căn cứ biểu thuế: ắc quy khác không dùng cho máy bay hay máy tính xách tay, bằng sắt-niken.",
       "canCu": [
         {
@@ -2979,7 +3091,7 @@
       "ten": "- - - Của hàng hóa thuộc phân nhóm 8507.10.92, 8507.10.95, 8507.10.96, 8507.10.97, 8507.10.98 hoặc 8507.10.99",
       "laLoaiKhac": false,
       "ketQua": "ĐÚNG",
-      "cauHoi": "Các bản cực có phải dùng cho hàng hóa thuộc 8507.10.92, 8507.10.95, 8507.10.96, 8507.10.97, 8507.10.98 hoặc 8507.10.99 không?",
+      "cauHoi": null,
       "lyDo": "Đủ căn cứ biểu thuế: bộ phận ắc quy (8507.90), là các bản cực (8507.90.1), dùng cho các phân nhóm 8507.10.92..99.",
       "canCu": [
         {
@@ -3006,7 +3118,7 @@
       "ten": "- - - Dùng cho máy bay",
       "laLoaiKhac": false,
       "ketQua": "ĐÚNG",
-      "cauHoi": "Các bản cực ắc quy có phải là loại dùng cho máy bay không?",
+      "cauHoi": null,
       "lyDo": "Đủ căn cứ biểu thuế: bộ phận ắc quy là các bản cực (8507.90.1) dùng cho máy bay (8507.90.12).",
       "canCu": [
         {
@@ -3130,8 +3242,8 @@
       "ten": "- - - Loại khác, của hàng hóa thuộc phân nhóm 8507.10.92, 8507.10.95, 8507.10.96, 8507.10.97, 8507.10.98 hoặc 8507.10.99",
       "laLoaiKhac": false,
       "ketQua": "ĐÚNG",
-      "cauHoi": "Bộ phận khác của ắc quy (không phải bản cực, không dùng cho máy bay, không phải vách ngăn trừ PVC) có dùng cho hàng hóa thuộc 8507.10.92..99 không?",
-      "lyDo": "Dòng \"Loại khác, có vế dương\": loại trừ 8507.90.91 và 8507.90.92 theo chữ \"Loại khác\", đồng thời định danh vế dương dùng cho hàng hóa thuộc 8507.10.92..99.",
+      "cauHoi": null,
+      "lyDo": "Dòng \"Loại khác, có vế dương\": loại trừ 8507.90.91 (dùng cho máy bay) và 8507.90.92 (vách ngăn trừ PVC, kể cả nếu dùng cho ắc quy 8507.10.92..99) theo chữ \"Loại khác\", đồng thời định danh vế dương dùng cho hàng hóa thuộc 8507.10.92..99.",
       "canCu": [
         {
           "idCau": "bieu:8507#1",
@@ -3148,6 +3260,14 @@
         {
           "idCau": "bieu:85079093#1",
           "trich": "- - - Loại khác, của hàng hóa thuộc phân nhóm 8507.10.92, 8507.10.95, 8507.10.96, 8507.10.97, 8507.10.98 hoặc 8507.10.99"
+        },
+        {
+          "idCau": "bieu:85079091#1",
+          "trich": "- - - Dùng cho máy bay"
+        },
+        {
+          "idCau": "bieu:85079092#1",
+          "trich": "- - - Vách ngăn ắc qui, sẵn sàng để sử dụng, làm từ mọi vật liệu trừ poly(vinyl clorua)"
         }
       ]
     },

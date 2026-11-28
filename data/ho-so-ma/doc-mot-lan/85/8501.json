@@ -1256,6 +1256,46 @@
       }
     },
     {
+      "id": "hs:bieu:8501:8122",
+      "nut": "bieu:8501",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "loai_tru_ngoai_nhom_8501",
+      "daTri": true,
+      "tap": [
+        "hệ thống thủy lực đồng bộ gồm bộ phận tạo nguồn thủy lực có bơm thủy lực và động cơ điện (nhóm 84.12)"
+      ],
+      "mo": "MO_TA_HUONG_DAN",
+      "cauHoi": "Hàng hóa có phải là hệ thống thủy lực đồng bộ gồm bộ phận tạo nguồn thủy lực (bơm thủy lực, động cơ điện, van điều khiển, thùng chứa dầu), xi lanh và ống dẫn thuộc nhóm 84.12 không?",
+      "trich": "(1) Hệ thống thủy lực bao gồm một bộ phận tạo nguồn thủy lực (chủ yếu bao gồm một bơm thủy lực, một động cơ điện, van điều khiển và thùng chứa dầu), xi lanh thủy lực và ống dẫn hoặc ống nhỏ cần thiết để nối xi lanh với đơn vị năng lượng thủy lực (nhóm 84.12).",
+      "nguon": "phan:XVI:kq:86#1",
+      "vanTay": "2f68c40d201e4fcbc1c994f8148c7a22eed62210a5772cca9fc6ccb12129a6a9",
+      "moNguon": "phan:XVI:kq:86#1",
+      "moNguonVanTay": "2f68c40d201e4fcbc1c994f8148c7a22eed62210a5772cca9fc6ccb12129a6a9"
+    },
+    {
+      "id": "hs:bieu:8501:8123",
+      "nut": "bieu:8501",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "loai_tru_ngoai_nhom_8501",
+      "daTri": true,
+      "tap": [
+        "thiết bị cơ điện gia dụng hoàn chỉnh có động cơ điện gắn liền (nhóm 85.09)"
+      ],
+      "mo": "DINH_NGHIA_LUAT",
+      "cauHoi": "Hàng hóa có phải là thiết bị cơ điện gia dụng hoàn chỉnh có động cơ điện gắn liền thuộc nhóm 85.09 (không phải động cơ điện rời thuộc nhóm 85.01) không?",
+      "trich": "Thiết bị cơ điện gia dụng có động cơ điện gắn liền, trừ máy hút bụi của nhóm 85.08",
+      "nguon": "bieu:8509#1",
+      "vanTay": "63b60ffb156efe65e1c55e0132c19b952a2709cad85f01fad9653d63be08a976",
+      "moNguon": "bieu:8509#1",
+      "moNguonVanTay": "63b60ffb156efe65e1c55e0132c19b952a2709cad85f01fad9653d63be08a976"
+    },
+    {
       "id": "hs:bieu:850110:8101",
       "nut": "bieu:850110",
       "loai": "DIEU_KIEN",
@@ -1358,6 +1398,24 @@
       "vanTay": "3b01022fc43aad7dbc786e1011fc6253fe6f68c239160430fb6137f00d08c28f"
     },
     {
+      "id": "hs:bieu:85011022:8102",
+      "nut": "bieu:85011022",
+      "loai": "DIEU_KIEN",
+      "ve": 1,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "cong_dung_thiet_bi_8501",
+      "daTri": true,
+      "tap": [
+        "loại dùng cho hàng hóa thuộc 84.15, 84.18, 84.50, 85.09 hoặc 85.16 (8501.10.21)"
+      ],
+      "mo": "NGHIA_THUONG",
+      "cauHoi": "Động cơ bước một chiều này có thuộc loại dùng cho hàng hóa tại mã 8501.10.21 (84.15/84.18/84.50/85.09/85.16) không?",
+      "trich": "Loại khác",
+      "nguon": "bieu:85011022#1",
+      "vanTay": "3b01022fc43aad7dbc786e1011fc6253fe6f68c239160430fb6137f00d08c28f"
+    },
+    {
       "id": "hs:bieu:85011030:8101",
       "nut": "bieu:85011030",
       "loai": "DIEU_KIEN",
@@ -1411,14 +1469,30 @@
       "truc": "loai_dong_dien_8501",
       "daTri": false,
       "tap": [
-        "xoay chiều một pha (AC 1 pha)",
-        "xoay chiều đa pha (AC đa pha)",
-        "vạn năng một chiều/xoay chiều (AC/DC)",
-        "xoay chiều (AC)"
+        "xoay chiều (AC)",
+        "vạn năng một chiều/xoay chiều (AC/DC)"
       ],
       "mo": "NGHIA_THUONG",
       "cauHoi": "Động cơ điện ≤ 37,5 W có phải động cơ xoay chiều (1 pha/đa pha) hoặc động cơ vạn năng (một chiều/xoay chiều), không phải động cơ một chiều thuần không?",
       "trich": "- - Động cơ khác, kể cả động cơ vạn năng (một chiều/xoay chiều):",
+      "nguon": "bieu:850110:td2#1",
+      "vanTay": "26018ae7fb84e45418a8e4809b71a3060a8395a9c404264de5222f0cef9a2835"
+    },
+    {
+      "id": "hs:bieu:850110:td2:8104",
+      "nut": "bieu:850110:td2",
+      "loai": "DIEU_KIEN",
+      "ve": 1,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "loai_dong_dien_8501",
+      "daTri": false,
+      "tap": [
+        "một chiều (DC)"
+      ],
+      "mo": "NGHIA_THUONG",
+      "cauHoi": "Động cơ công suất ≤ 37,5 W này có phải là động cơ một chiều thuần (thuộc tiêu đề 8501.10 - Động cơ một chiều) không?",
+      "trich": "- - Động cơ khác",
       "nguon": "bieu:850110:td2#1",
       "vanTay": "26018ae7fb84e45418a8e4809b71a3060a8395a9c404264de5222f0cef9a2835"
     },
@@ -1657,6 +1731,38 @@
       "vanTay": "bf44494339acf78f482a5dc5328c537c4fc2fafe85d7d3d1260ce316e593284b"
     },
     {
+      "id": "hs:bieu:85013:8108",
+      "nut": "bieu:85013",
+      "loai": "DIEU_KIEN",
+      "ve": 1,
+      "phu": true,
+      "kieu": "SO",
+      "nguong": "hs:bieu:850110:1",
+      "mo": "NGUONG",
+      "cauHoi": "Động cơ một chiều này có công suất không quá 37,5 W (thuộc nhánh 8501.10) không?",
+      "trich": "Động cơ một chiều khác",
+      "nguon": "bieu:85013#1",
+      "vanTay": "bf44494339acf78f482a5dc5328c537c4fc2fafe85d7d3d1260ce316e593284b"
+    },
+    {
+      "id": "hs:bieu:85013:8109",
+      "nut": "bieu:85013",
+      "loai": "DIEU_KIEN",
+      "ve": 1,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "loai_dong_dien_8501",
+      "daTri": false,
+      "tap": [
+        "vạn năng một chiều/xoay chiều (AC/DC)"
+      ],
+      "mo": "NGHIA_THUONG",
+      "cauHoi": "Động cơ điện này có phải động cơ vạn năng một chiều/xoay chiều (thuộc nhánh 8501.20) không?",
+      "trich": "Động cơ một chiều khác",
+      "nguon": "bieu:85013#1",
+      "vanTay": "bf44494339acf78f482a5dc5328c537c4fc2fafe85d7d3d1260ce316e593284b"
+    },
+    {
       "id": "hs:bieu:85013:8103",
       "nut": "bieu:85013",
       "loai": "DIEU_KIEN",
@@ -1691,6 +1797,26 @@
       "mo": "NGHIA_THUONG",
       "cauHoi": "Máy phát điện (không phải quang điện) có phát ra dòng điện một chiều (DC) không?",
       "trich": "máy phát điện một chiều, trừ máy phát quang điện",
+      "nguon": "bieu:85013#1",
+      "vanTay": "bf44494339acf78f482a5dc5328c537c4fc2fafe85d7d3d1260ce316e593284b"
+    },
+    {
+      "id": "hs:bieu:85013:8110",
+      "nut": "bieu:85013",
+      "loai": "DIEU_KIEN",
+      "ve": 2,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "loai_may_8501",
+      "daTri": false,
+      "tap": [
+        "máy phát quang điện"
+      ],
+      "mo": "MO_TA_HUONG_DAN",
+      "moNguon": "nhom:8501:ct:22#1",
+      "moNguonVanTay": "95be462aa0ad8a1aaf00d6a71b6d844bbb447cead8d98feba0c3bd2fda83875f",
+      "cauHoi": "Máy phát điện một chiều này có phải là máy phát quang điện (thuộc nhánh 8501.7) không?",
+      "trich": "trừ máy phát quang điện",
       "nguon": "bieu:85013#1",
       "vanTay": "bf44494339acf78f482a5dc5328c537c4fc2fafe85d7d3d1260ce316e593284b"
     },
@@ -1794,6 +1920,25 @@
       ],
       "mo": "NGHIA_THUONG",
       "cauHoi": "Hàng hóa thuộc 8501.31 có phải là động cơ điện (khác với loại dùng cho 84.15/18/50/09/16 và xe Chương 87) không?",
+      "trich": "- - - Động cơ khác",
+      "nguon": "bieu:85013170#1",
+      "vanTay": "cf1842a5185fca73ad92857c048e1ede7d810eb63a40cc70f2858573b67005c8"
+    },
+    {
+      "id": "hs:bieu:85013170:8102",
+      "nut": "bieu:85013170",
+      "loai": "DIEU_KIEN",
+      "ve": 1,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "cong_dung_thiet_bi_8501",
+      "daTri": true,
+      "tap": [
+        "loại dùng cho hàng hóa thuộc 84.15, 84.18, 84.50, 85.09 hoặc 85.16 (8501.31.30)",
+        "loại dùng cho xe thuộc 87 (8501.31.60)"
+      ],
+      "mo": "NGHIA_THUONG",
+      "cauHoi": "Động cơ một chiều ≤ 750 W này có thuộc loại dùng cho 84.15/84.18/84.50/85.09/85.16 (8501.31.30) hoặc xe cơ giới (8501.31.60) không?",
       "trich": "- - - Động cơ khác",
       "nguon": "bieu:85013170#1",
       "vanTay": "cf1842a5185fca73ad92857c048e1ede7d810eb63a40cc70f2858573b67005c8"
@@ -1937,6 +2082,25 @@
       "vanTay": "97541ff899b516c300a1a501fe67815a8ee2c85139c442db65a19d5e7afe9733"
     },
     {
+      "id": "hs:bieu:85013225:8102",
+      "nut": "bieu:85013225",
+      "loai": "DIEU_KIEN",
+      "ve": 1,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "cong_dung_thiet_bi_8501",
+      "daTri": true,
+      "tap": [
+        "loại dùng cho hàng hóa thuộc 84.15, 84.18, 84.50, 85.09 hoặc 85.16 (8501.32.21)",
+        "loại dùng cho xe thuộc 87 (8501.32.24)"
+      ],
+      "mo": "NGHIA_THUONG",
+      "cauHoi": "Động cơ một chiều > 750 W đến ≤ 37,5 kW này có thuộc loại dùng cho 84.15/84.18/84.50/85.09/85.16 (8501.32.21) hoặc xe cơ giới (8501.32.24) không?",
+      "trich": "- - - - Động cơ khác",
+      "nguon": "bieu:85013225#1",
+      "vanTay": "97541ff899b516c300a1a501fe67815a8ee2c85139c442db65a19d5e7afe9733"
+    },
+    {
       "id": "hs:bieu:85013226:8101",
       "nut": "bieu:85013226",
       "loai": "DIEU_KIEN",
@@ -2020,6 +2184,24 @@
       ],
       "mo": "NGHIA_THUONG",
       "cauHoi": "Hàng hóa thuộc 8501.32 (> 37,5 kW đến ≤ 75 kW) có phải là động cơ điện (không phải loại dùng cho 84.15, 84.18 hoặc 84.50) không?",
+      "trich": "- - - - Động cơ khác",
+      "nguon": "bieu:85013232#1",
+      "vanTay": "97541ff899b516c300a1a501fe67815a8ee2c85139c442db65a19d5e7afe9733"
+    },
+    {
+      "id": "hs:bieu:85013232:8102",
+      "nut": "bieu:85013232",
+      "loai": "DIEU_KIEN",
+      "ve": 1,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "cong_dung_thiet_bi_8501",
+      "daTri": true,
+      "tap": [
+        "loại dùng cho hàng hóa thuộc 84.15, 84.18 hoặc 84.50 (8501.32.31)"
+      ],
+      "mo": "NGHIA_THUONG",
+      "cauHoi": "Động cơ một chiều > 37,5 kW đến ≤ 75 kW này có thuộc loại dùng cho 84.15, 84.18 hoặc 84.50 (8501.32.31) không?",
       "trich": "- - - - Động cơ khác",
       "nguon": "bieu:85013232#1",
       "vanTay": "97541ff899b516c300a1a501fe67815a8ee2c85139c442db65a19d5e7afe9733"
@@ -2120,10 +2302,60 @@
       "truc": "loai_dong_dien_8501",
       "daTri": false,
       "tap": [
-        "xoay chiều một pha (AC 1 pha)"
+        "xoay chiều (AC)"
       ],
       "mo": "NGHIA_THUONG",
-      "cauHoi": "Động cơ xoay chiều có phải loại một pha (AC 1 pha) không?",
+      "cauHoi": "Động cơ điện có hoạt động bằng dòng điện xoay chiều (AC) không?",
+      "trich": "- Động cơ xoay chiều khác, một pha:",
+      "nguon": "bieu:850140#1",
+      "vanTay": "ce90ec3aa15e3769b09709aa027fc7a968fda47c31e861f343261a920c24bc45"
+    },
+    {
+      "id": "hs:bieu:850140:8104",
+      "nut": "bieu:850140",
+      "loai": "DIEU_KIEN",
+      "ve": 1,
+      "phu": false,
+      "kieu": "GIA_TRI",
+      "truc": "so_pha_xoay_chieu_8501",
+      "daTri": false,
+      "tap": [
+        "một pha"
+      ],
+      "mo": "NGHIA_THUONG",
+      "cauHoi": "Động cơ xoay chiều này có phải loại một pha (1 pha) không?",
+      "trich": "một pha",
+      "nguon": "bieu:850140#1",
+      "vanTay": "ce90ec3aa15e3769b09709aa027fc7a968fda47c31e861f343261a920c24bc45"
+    },
+    {
+      "id": "hs:bieu:850140:8105",
+      "nut": "bieu:850140",
+      "loai": "DIEU_KIEN",
+      "ve": 1,
+      "phu": true,
+      "kieu": "SO",
+      "nguong": "hs:bieu:850110:1",
+      "mo": "NGUONG",
+      "cauHoi": "Động cơ xoay chiều một pha này có công suất không quá 37,5 W (thuộc nhánh 8501.10) không?",
+      "trich": "- Động cơ xoay chiều khác, một pha:",
+      "nguon": "bieu:850140#1",
+      "vanTay": "ce90ec3aa15e3769b09709aa027fc7a968fda47c31e861f343261a920c24bc45"
+    },
+    {
+      "id": "hs:bieu:850140:8106",
+      "nut": "bieu:850140",
+      "loai": "DIEU_KIEN",
+      "ve": 1,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "loai_dong_dien_8501",
+      "daTri": false,
+      "tap": [
+        "vạn năng một chiều/xoay chiều (AC/DC)"
+      ],
+      "mo": "NGHIA_THUONG",
+      "cauHoi": "Động cơ này có phải là động cơ vạn năng một chiều/xoay chiều (thuộc nhánh 8501.20) không?",
       "trich": "- Động cơ xoay chiều khác, một pha:",
       "nguon": "bieu:850140#1",
       "vanTay": "ce90ec3aa15e3769b09709aa027fc7a968fda47c31e861f343261a920c24bc45"
@@ -2222,10 +2454,60 @@
       "truc": "loai_dong_dien_8501",
       "daTri": false,
       "tap": [
-        "xoay chiều đa pha (AC đa pha)"
+        "xoay chiều (AC)"
       ],
       "mo": "NGHIA_THUONG",
-      "cauHoi": "Động cơ xoay chiều có phải loại đa pha (ví dụ 3 pha) không?",
+      "cauHoi": "Động cơ điện có hoạt động bằng dòng điện xoay chiều (AC) không?",
+      "trich": "- Động cơ xoay chiều khác, đa pha:",
+      "nguon": "bieu:85015#1",
+      "vanTay": "95c4fc03e62e570d08f684672baaab22f31e171ceee771939c506fa12e269009"
+    },
+    {
+      "id": "hs:bieu:85015:8105",
+      "nut": "bieu:85015",
+      "loai": "DIEU_KIEN",
+      "ve": 1,
+      "phu": false,
+      "kieu": "GIA_TRI",
+      "truc": "so_pha_xoay_chieu_8501",
+      "daTri": false,
+      "tap": [
+        "đa pha"
+      ],
+      "mo": "NGHIA_THUONG",
+      "cauHoi": "Động cơ xoay chiều này có phải loại đa pha (ví dụ 3 pha) không?",
+      "trich": "đa pha",
+      "nguon": "bieu:85015#1",
+      "vanTay": "95c4fc03e62e570d08f684672baaab22f31e171ceee771939c506fa12e269009"
+    },
+    {
+      "id": "hs:bieu:85015:8106",
+      "nut": "bieu:85015",
+      "loai": "DIEU_KIEN",
+      "ve": 1,
+      "phu": true,
+      "kieu": "SO",
+      "nguong": "hs:bieu:850110:1",
+      "mo": "NGUONG",
+      "cauHoi": "Động cơ xoay chiều đa pha này có công suất không quá 37,5 W (thuộc nhánh 8501.10) không?",
+      "trich": "- Động cơ xoay chiều khác, đa pha:",
+      "nguon": "bieu:85015#1",
+      "vanTay": "95c4fc03e62e570d08f684672baaab22f31e171ceee771939c506fa12e269009"
+    },
+    {
+      "id": "hs:bieu:85015:8107",
+      "nut": "bieu:85015",
+      "loai": "DIEU_KIEN",
+      "ve": 1,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "loai_dong_dien_8501",
+      "daTri": false,
+      "tap": [
+        "vạn năng một chiều/xoay chiều (AC/DC)"
+      ],
+      "mo": "NGHIA_THUONG",
+      "cauHoi": "Động cơ này có phải là động cơ vạn năng một chiều/xoay chiều (thuộc nhánh 8501.20) không?",
       "trich": "- Động cơ xoay chiều khác, đa pha:",
       "nguon": "bieu:85015#1",
       "vanTay": "95c4fc03e62e570d08f684672baaab22f31e171ceee771939c506fa12e269009"
@@ -2493,6 +2775,26 @@
       "mo": "NGHIA_THUONG",
       "cauHoi": "Máy phát điện (không phải quang điện) có phát ra dòng điện xoay chiều (AC) không?",
       "trich": "- Máy phát điện xoay chiều (máy dao điện), trừ máy phát quang điện:",
+      "nguon": "bieu:85016#1",
+      "vanTay": "5de0d3955399c7ceab3ed22f4c2f30052b6fec1d3d1a2cfe60b3aeadc8f96254"
+    },
+    {
+      "id": "hs:bieu:85016:8106",
+      "nut": "bieu:85016",
+      "loai": "DIEU_KIEN",
+      "ve": 1,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "loai_may_8501",
+      "daTri": false,
+      "tap": [
+        "máy phát quang điện"
+      ],
+      "mo": "MO_TA_HUONG_DAN",
+      "moNguon": "nhom:8501:ct:22#1",
+      "moNguonVanTay": "95be462aa0ad8a1aaf00d6a71b6d844bbb447cead8d98feba0c3bd2fda83875f",
+      "cauHoi": "Máy phát điện xoay chiều này có phải là máy phát quang điện (thuộc nhánh 8501.80) không?",
+      "trich": "trừ máy phát quang điện",
       "nguon": "bieu:85016#1",
       "vanTay": "5de0d3955399c7ceab3ed22f4c2f30052b6fec1d3d1a2cfe60b3aeadc8f96254"
     },
@@ -5922,8 +6224,8 @@
     {
       "ma": "bieu:85017100",
       "ten": "- - Công suất không quá 50 W",
-      "ketQua": "ĐÚNG",
-      "lyDo": "Xác định trực tiếp theo chữ biểu thuế và phân dải công suất liên tiếp (dòng duy nhất phân nhóm 8501.71): máy phát quang điện một chiều, công suất ≤ 50 W.",
+      "ketQua": "CHƯA ĐỦ DỮ KIỆN",
+      "lyDo": "Tồn tại các điểm mơ hồ về ranh giới tấm/mô-đun mặt trời có gắn linh kiện đơn giản cấp điện trực tiếp với nhóm 85.41 (dmh:8501:6), trường hợp hệ tích hợp cả đầu ra DC và AC giữa 8501.7 và 8501.80 (dmh:8501:7), và phương pháp xác định công suất định mức so với công suất đỉnh Wp (dmh:8501:4).",
       "canCu": [
         {
           "idCau": "bieu:8501#1",
@@ -5941,13 +6243,14 @@
           "idCau": "bieu:85017100#1",
           "trich": "- - Công suất không quá 50 W"
         }
-      ]
+      ],
+      "cauHoi": "Hệ máy phát quang điện này đã được gắn sẵn linh kiện cho phép cung cấp điện năng trực tiếp cho tải (như đi-ốt điều khiển chiều dòng điện, bộ điều chỉnh/biến tần — phân biệt với mô-đun quang điện thuộc 85.41) chưa; dòng điện đầu ra chính là một chiều (DC) (không phải đầu ra còn lại giữa 8501.7 và 8501.80); và công suất định mức liên tục (xác định rõ so với Wp) có thuộc dải công suất không quá 50 W không?"
     },
     {
       "ma": "bieu:85017210",
       "ten": "- - - Công suất không quá 750 W",
-      "ketQua": "ĐÚNG",
-      "lyDo": "Xác định trực tiếp theo chữ biểu thuế và phân dải công suất liên tiếp: máy phát quang điện một chiều, công suất > 50 W đến ≤ 750 W.",
+      "ketQua": "CHƯA ĐỦ DỮ KIỆN",
+      "lyDo": "Tồn tại các điểm mơ hồ về ranh giới tấm/mô-đun mặt trời có gắn linh kiện đơn giản cấp điện trực tiếp với nhóm 85.41 (dmh:8501:6), trường hợp hệ tích hợp cả đầu ra DC và AC giữa 8501.7 và 8501.80 (dmh:8501:7), và phương pháp xác định công suất định mức so với công suất đỉnh Wp (dmh:8501:4).",
       "canCu": [
         {
           "idCau": "bieu:8501#1",
@@ -5965,13 +6268,14 @@
           "idCau": "bieu:85017210#1",
           "trich": "- - - Công suất không quá 750 W"
         }
-      ]
+      ],
+      "cauHoi": "Hệ máy phát quang điện này đã được gắn sẵn linh kiện cho phép cung cấp điện năng trực tiếp cho tải (như đi-ốt điều khiển chiều dòng điện, bộ điều chỉnh/biến tần — phân biệt với mô-đun quang điện thuộc 85.41) chưa; dòng điện đầu ra chính là một chiều (DC) (không phải đầu ra còn lại giữa 8501.7 và 8501.80); và công suất định mức liên tục (xác định rõ so với Wp) có thuộc dải công suất trên 50 W nhưng không quá 750 W không?"
     },
     {
       "ma": "bieu:85017220",
       "ten": "- - - Công suất trên 750 W nhưng không quá 37,5 kW",
-      "ketQua": "ĐÚNG",
-      "lyDo": "Xác định trực tiếp theo chữ biểu thuế và phân dải công suất liên tiếp: máy phát quang điện một chiều, công suất > 750 W đến ≤ 37,5 kW.",
+      "ketQua": "CHƯA ĐỦ DỮ KIỆN",
+      "lyDo": "Tồn tại các điểm mơ hồ về ranh giới tấm/mô-đun mặt trời có gắn linh kiện đơn giản cấp điện trực tiếp với nhóm 85.41 (dmh:8501:6), trường hợp hệ tích hợp cả đầu ra DC và AC giữa 8501.7 và 8501.80 (dmh:8501:7), và phương pháp xác định công suất định mức so với công suất đỉnh Wp (dmh:8501:4).",
       "canCu": [
         {
           "idCau": "bieu:8501#1",
@@ -5989,13 +6293,14 @@
           "idCau": "bieu:85017220#1",
           "trich": "- - - Công suất trên 750 W nhưng không quá 37,5 kW"
         }
-      ]
+      ],
+      "cauHoi": "Hệ máy phát quang điện này đã được gắn sẵn linh kiện cho phép cung cấp điện năng trực tiếp cho tải (như đi-ốt điều khiển chiều dòng điện, bộ điều chỉnh/biến tần — phân biệt với mô-đun quang điện thuộc 85.41) chưa; dòng điện đầu ra chính là một chiều (DC) (không phải đầu ra còn lại giữa 8501.7 và 8501.80); và công suất định mức liên tục (xác định rõ so với Wp) có thuộc dải công suất trên 750 W nhưng không quá 37,5 kW không?"
     },
     {
       "ma": "bieu:85017230",
       "ten": "- - - Công suất trên 37,5 kW nhưng không quá 75 kW",
-      "ketQua": "ĐÚNG",
-      "lyDo": "Xác định trực tiếp theo chữ biểu thuế và phân dải công suất liên tiếp: máy phát quang điện một chiều, công suất > 37,5 kW đến ≤ 75 kW.",
+      "ketQua": "CHƯA ĐỦ DỮ KIỆN",
+      "lyDo": "Tồn tại các điểm mơ hồ về ranh giới tấm/mô-đun mặt trời có gắn linh kiện đơn giản cấp điện trực tiếp với nhóm 85.41 (dmh:8501:6), trường hợp hệ tích hợp cả đầu ra DC và AC giữa 8501.7 và 8501.80 (dmh:8501:7), và phương pháp xác định công suất định mức so với công suất đỉnh Wp (dmh:8501:4).",
       "canCu": [
         {
           "idCau": "bieu:8501#1",
@@ -6013,13 +6318,14 @@
           "idCau": "bieu:85017230#1",
           "trich": "- - - Công suất trên 37,5 kW nhưng không quá 75 kW"
         }
-      ]
+      ],
+      "cauHoi": "Hệ máy phát quang điện này đã được gắn sẵn linh kiện cho phép cung cấp điện năng trực tiếp cho tải (như đi-ốt điều khiển chiều dòng điện, bộ điều chỉnh/biến tần — phân biệt với mô-đun quang điện thuộc 85.41) chưa; dòng điện đầu ra chính là một chiều (DC) (không phải đầu ra còn lại giữa 8501.7 và 8501.80); và công suất định mức liên tục (xác định rõ so với Wp) có thuộc dải công suất trên 37,5 kW nhưng không quá 75 kW không?"
     },
     {
       "ma": "bieu:85017240",
       "ten": "- - - Công suất trên 75 kW",
-      "ketQua": "ĐÚNG",
-      "lyDo": "Xác định trực tiếp theo chữ biểu thuế và phân dải công suất liên tiếp: máy phát quang điện một chiều, công suất > 75 kW.",
+      "ketQua": "CHƯA ĐỦ DỮ KIỆN",
+      "lyDo": "Tồn tại các điểm mơ hồ về ranh giới tấm/mô-đun mặt trời có gắn linh kiện đơn giản cấp điện trực tiếp với nhóm 85.41 (dmh:8501:6), trường hợp hệ tích hợp cả đầu ra DC và AC giữa 8501.7 và 8501.80 (dmh:8501:7), và phương pháp xác định công suất định mức so với công suất đỉnh Wp (dmh:8501:4).",
       "canCu": [
         {
           "idCau": "bieu:8501#1",
@@ -6037,13 +6343,14 @@
           "idCau": "bieu:85017240#1",
           "trich": "- - - Công suất trên 75 kW"
         }
-      ]
+      ],
+      "cauHoi": "Hệ máy phát quang điện này đã được gắn sẵn linh kiện cho phép cung cấp điện năng trực tiếp cho tải (như đi-ốt điều khiển chiều dòng điện, bộ điều chỉnh/biến tần — phân biệt với mô-đun quang điện thuộc 85.41) chưa; dòng điện đầu ra chính là một chiều (DC) (không phải đầu ra còn lại giữa 8501.7 và 8501.80); và công suất định mức liên tục (xác định rõ so với Wp) có thuộc dải công suất trên 75 kW không?"
     },
     {
       "ma": "bieu:85018010",
       "ten": "- - Công suất không quá 75 kVA",
-      "ketQua": "ĐÚNG",
-      "lyDo": "Xác định trực tiếp theo chữ biểu thuế và phân dải công suất liên tiếp: máy phát quang điện xoay chiều, công suất ≤ 75 kVA.",
+      "ketQua": "CHƯA ĐỦ DỮ KIỆN",
+      "lyDo": "Tồn tại các điểm mơ hồ về ranh giới tấm/mô-đun mặt trời có gắn linh kiện đơn giản cấp điện trực tiếp với nhóm 85.41 (dmh:8501:6), trường hợp hệ tích hợp cả đầu ra DC và AC giữa 8501.7 và 8501.80 (dmh:8501:7), và phương pháp xác định công suất định mức so với công suất đỉnh Wp (dmh:8501:4).",
       "canCu": [
         {
           "idCau": "bieu:8501#1",
@@ -6057,13 +6364,14 @@
           "idCau": "bieu:85018010#1",
           "trich": "- - Công suất không quá 75 kVA"
         }
-      ]
+      ],
+      "cauHoi": "Hệ máy phát quang điện này đã được gắn sẵn linh kiện cho phép cung cấp điện năng trực tiếp cho tải (như đi-ốt điều khiển chiều dòng điện, bộ điều chỉnh/biến tần — phân biệt với mô-đun quang điện thuộc 85.41) chưa; dòng điện đầu ra chính là xoay chiều (AC) (không phải đầu ra còn lại giữa 8501.7 và 8501.80); và công suất định mức liên tục (xác định rõ so với Wp) có thuộc dải công suất không quá 75 kVA không?"
     },
     {
       "ma": "bieu:85018020",
       "ten": "- - Công suất trên 75 kVA nhưng không quá 375 kVA",
-      "ketQua": "ĐÚNG",
-      "lyDo": "Xác định trực tiếp theo chữ biểu thuế và phân dải công suất liên tiếp: máy phát quang điện xoay chiều, công suất > 75 kVA đến ≤ 375 kVA.",
+      "ketQua": "CHƯA ĐỦ DỮ KIỆN",
+      "lyDo": "Tồn tại các điểm mơ hồ về ranh giới tấm/mô-đun mặt trời có gắn linh kiện đơn giản cấp điện trực tiếp với nhóm 85.41 (dmh:8501:6), trường hợp hệ tích hợp cả đầu ra DC và AC giữa 8501.7 và 8501.80 (dmh:8501:7), và phương pháp xác định công suất định mức so với công suất đỉnh Wp (dmh:8501:4).",
       "canCu": [
         {
           "idCau": "bieu:8501#1",
@@ -6077,13 +6385,14 @@
           "idCau": "bieu:85018020#1",
           "trich": "- - Công suất trên 75 kVA nhưng không quá 375 kVA"
         }
-      ]
+      ],
+      "cauHoi": "Hệ máy phát quang điện này đã được gắn sẵn linh kiện cho phép cung cấp điện năng trực tiếp cho tải (như đi-ốt điều khiển chiều dòng điện, bộ điều chỉnh/biến tần — phân biệt với mô-đun quang điện thuộc 85.41) chưa; dòng điện đầu ra chính là xoay chiều (AC) (không phải đầu ra còn lại giữa 8501.7 và 8501.80); và công suất định mức liên tục (xác định rõ so với Wp) có thuộc dải công suất trên 75 kVA nhưng không quá 375 kVA không?"
     },
     {
       "ma": "bieu:85018030",
       "ten": "- - Công suất trên 375 kVA nhưng không quá 750 kVA",
-      "ketQua": "ĐÚNG",
-      "lyDo": "Xác định trực tiếp theo chữ biểu thuế và phân dải công suất liên tiếp: máy phát quang điện xoay chiều, công suất > 375 kVA đến ≤ 750 kVA.",
+      "ketQua": "CHƯA ĐỦ DỮ KIỆN",
+      "lyDo": "Tồn tại các điểm mơ hồ về ranh giới tấm/mô-đun mặt trời có gắn linh kiện đơn giản cấp điện trực tiếp với nhóm 85.41 (dmh:8501:6), trường hợp hệ tích hợp cả đầu ra DC và AC giữa 8501.7 và 8501.80 (dmh:8501:7), và phương pháp xác định công suất định mức so với công suất đỉnh Wp (dmh:8501:4).",
       "canCu": [
         {
           "idCau": "bieu:8501#1",
@@ -6097,13 +6406,14 @@
           "idCau": "bieu:85018030#1",
           "trich": "- - Công suất trên 375 kVA nhưng không quá 750 kVA"
         }
-      ]
+      ],
+      "cauHoi": "Hệ máy phát quang điện này đã được gắn sẵn linh kiện cho phép cung cấp điện năng trực tiếp cho tải (như đi-ốt điều khiển chiều dòng điện, bộ điều chỉnh/biến tần — phân biệt với mô-đun quang điện thuộc 85.41) chưa; dòng điện đầu ra chính là xoay chiều (AC) (không phải đầu ra còn lại giữa 8501.7 và 8501.80); và công suất định mức liên tục (xác định rõ so với Wp) có thuộc dải công suất trên 375 kVA nhưng không quá 750 kVA không?"
     },
     {
       "ma": "bieu:85018040",
       "ten": "- - Công suất trên 750 kVA",
-      "ketQua": "ĐÚNG",
-      "lyDo": "Xác định trực tiếp theo chữ biểu thuế và phân dải công suất liên tiếp: máy phát quang điện xoay chiều, công suất > 750 kVA.",
+      "ketQua": "CHƯA ĐỦ DỮ KIỆN",
+      "lyDo": "Tồn tại các điểm mơ hồ về ranh giới tấm/mô-đun mặt trời có gắn linh kiện đơn giản cấp điện trực tiếp với nhóm 85.41 (dmh:8501:6), trường hợp hệ tích hợp cả đầu ra DC và AC giữa 8501.7 và 8501.80 (dmh:8501:7), và phương pháp xác định công suất định mức so với công suất đỉnh Wp (dmh:8501:4).",
       "canCu": [
         {
           "idCau": "bieu:8501#1",
@@ -6117,7 +6427,8 @@
           "idCau": "bieu:85018040#1",
           "trich": "- - Công suất trên 750 kVA"
         }
-      ]
+      ],
+      "cauHoi": "Hệ máy phát quang điện này đã được gắn sẵn linh kiện cho phép cung cấp điện năng trực tiếp cho tải (như đi-ốt điều khiển chiều dòng điện, bộ điều chỉnh/biến tần — phân biệt với mô-đun quang điện thuộc 85.41) chưa; dòng điện đầu ra chính là xoay chiều (AC) (không phải đầu ra còn lại giữa 8501.7 và 8501.80); và công suất định mức liên tục (xác định rõ so với Wp) có thuộc dải công suất trên 750 kVA không?"
     }
   ],
   "diemMoHo": [

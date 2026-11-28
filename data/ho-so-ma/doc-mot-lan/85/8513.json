@@ -156,6 +156,16 @@
             "trich": "(15) Các loại đèn thuộc nhóm 85.39."
           }
         ]
+      },
+      {
+        "moTa": "Sản phẩm hỗn hợp (đèn kết hợp bút, tuốc nơ vít, vòng chìa khóa...) mà chức năng chính không phải là cấp ánh sáng",
+        "dich": "gir:3:b",
+        "canCu": [
+          {
+            "idCau": "nhom:8513:ct:11#2",
+            "trich": "Sản phẩm hỗn hợp bao gồm một đèn hoặc đuốc và một bút, tuốc nơ vít, vòng chìa khóa... chỉ được phân loại ở đây nếu chức năng chính của nó là cấp ánh sáng."
+          }
+        ]
       }
     ],
     "dinhNghia": [
@@ -569,6 +579,25 @@
       "vanTay": "0be725fa818c15a71b0fe25b4f42bb5366794d9c3be56b673c9827efb0e80698"
     },
     {
+      "id": "hs:bieu:8513:8214",
+      "nut": "bieu:8513",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "loai_tru_ngoai_nhom_8513",
+      "tap": [
+        "sản phẩm hỗn hợp (đèn kết hợp bút, tuốc nơ vít, vòng chìa khóa...) mà chức năng chính không phải là cấp ánh sáng"
+      ],
+      "mo": "MO_TA_HUONG_DAN",
+      "moNguon": "nhom:8513:ct:11#2",
+      "moNguonVanTay": "679e79e9b0a5aa4d8106f0ea0240759ef999c32d5c26938fe505691d222068c1",
+      "cauHoi": "Sản phẩm có phải là đồ vật hỗn hợp (kết hợp bút, tuốc nơ vít, móc chìa khóa...) mà chức năng chính KHÔNG phải là cấp ánh sáng không?",
+      "trich": "Sản phẩm hỗn hợp bao gồm một đèn hoặc đuốc và một bút, tuốc nơ vít, vòng chìa khóa... chỉ được phân loại ở đây nếu chức năng chính của nó là cấp ánh sáng.",
+      "nguon": "nhom:8513:ct:11#2",
+      "vanTay": "679e79e9b0a5aa4d8106f0ea0240759ef999c32d5c26938fe505691d222068c1"
+    },
+    {
       "id": "hs:bieu:851310:8201",
       "nut": "bieu:851310",
       "loai": "DIEU_KIEN",
@@ -659,7 +688,7 @@
       "ve": 0,
       "phu": false,
       "kieu": "GIA_TRI",
-      "truc": "loai_bo_phan_8513",
+      "truc": "loai_den_su_dung_bo_phan",
       "tap": [
         "bộ phận của đèn gắn trên mũ thợ mỏ",
         "bộ phận của đèn thợ khai thác đá"
@@ -676,7 +705,8 @@
       "cauHoi": "Bộ phận này có chỉ dùng hoặc chủ yếu dùng cho đèn gắn trên mũ thợ mỏ hoặc đèn thợ khai thác đá không?",
       "trich": "- - Của đèn gắn trên mũ thợ mỏ hoặc của đèn thợ khai thác đá",
       "nguon": "bieu:85139010#1",
-      "vanTay": "37af77c7a28e011431b4089980b20e36c9f438b5df4b8d081b4924393eb25617"
+      "vanTay": "37af77c7a28e011431b4089980b20e36c9f438b5df4b8d081b4924393eb25617",
+      "ghiChu": "Tách trục khỏi chi_tiet_bo_phan_den_chop (8513.90.30) để giữ mở giao thoa dmh:8513:02."
     },
     {
       "id": "hs:bieu:85139030:8201",
@@ -685,7 +715,7 @@
       "ve": 0,
       "phu": false,
       "kieu": "GIA_TRI",
-      "truc": "loai_bo_phan_8513",
+      "truc": "chi_tiet_bo_phan_den_chop",
       "tap": [
         "bộ phản quang của đèn chớp",
         "chi tiết trượt (gạt) bằng plastic dùng cho cơ cấu công tắc đèn chớp"
@@ -694,7 +724,8 @@
       "cauHoi": "Bộ phận này có phải là bộ phản quang của đèn chớp (flashlight/torch) hoặc chi tiết trượt (gạt) bằng plastic dùng cho cơ cấu công tắc đèn chớp không?",
       "trich": "- - Bộ phản quang của đèn chớp; chi tiết trượt (gạt) bằng plastic dùng cho cơ cấu công tắc đèn chớp",
       "nguon": "bieu:85139030#1",
-      "vanTay": "eec2e549de7c588de1e0651e553310e63e488d60854de8cdaa7ac54ebfdfab61"
+      "vanTay": "eec2e549de7c588de1e0651e553310e63e488d60854de8cdaa7ac54ebfdfab61",
+      "ghiChu": "Tách trục khỏi loai_den_su_dung_bo_phan (8513.90.10) để giữ mở giao thoa dmh:8513:02."
     },
     {
       "id": "hs:bieu:8513:8206",
@@ -967,9 +998,9 @@
       "ma": "bieu:85139010",
       "ten": "- - Của đèn gắn trên mũ thợ mỏ hoặc của đèn thợ khai thác đá",
       "laLoaiKhac": false,
-      "ketQua": "ĐÚNG",
+      "ketQua": "CHƯA ĐỦ DỮ KIỆN",
       "lyDo": "Đáp ứng phân nhóm 8513.90 (bộ phận của đèn nhóm 85.13 theo Chú giải 2(b) Phần XVI) và dòng 8513.90.10 dành cho đèn gắn trên mũ thợ mỏ hoặc đèn thợ khai thác đá.",
-      "cauHoi": null,
+      "cauHoi": "Bộ phận của đèn gắn trên mũ thợ mỏ hoặc đèn thợ khai thác đá này có phải là bộ phản quang hoặc chi tiết trượt (gạt) bằng plastic dùng cho cơ cấu công tắc đèn chớp (giao thoa với 8513.90.30 theo dmh:8513:02) không?",
       "canCu": [
         {
           "idCau": "bieu:851390#1",

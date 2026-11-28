@@ -398,18 +398,21 @@
       "truc": "đối tượng loại trừ ngoại nhóm",
       "tap": [
         "linh kiện bán dẫn cảm quang dùng hiệu ứng quang điện bên trong (nhóm 85.41)",
-        "sản phẩm thuộc Chương 90 hoặc bộ phận công dụng chung Phần XV/Chương 39"
+        "sản phẩm thuộc Chương 90 hoặc bộ phận công dụng chung Phần XV/Chương 39",
+        "máy và thiết bị của nhóm 84.86 (Chú giải 1(c) Chương 85)"
       ],
       "mo": "DINH_NGHIA_LUAT",
       "moNguon": [
+        "chuong:85:cg:1:c#1",
         "phan:XVI:cg:1:m#1",
         "phan:XVI:cg:1:g#1"
       ],
       "moNguonVanTay": {
+        "chuong:85:cg:1:c#1": "02e3f71e0655533c7bf837699511b5fa88b96f5a46f664b1270bb09b4dca7cc8",
         "phan:XVI:cg:1:m#1": "39adc93bdf86b7fd24ed1a3aa05862f822b00363be1ff3e2be7baa195a7f0ccc",
         "phan:XVI:cg:1:g#1": "76a8b3b2d4baf617968af52e227ddb5b7327b9cec396bee49ef2ed308428af07"
       },
-      "cauHoi": "Hàng hóa có thuộc diện loại trừ của Phần XVI/Chương 85 (như sản phẩm Chương 90, bộ phận công dụng chung Phần XV/Chương 39, hoặc linh kiện bán dẫn cảm quang nhóm 85.41) không?",
+      "cauHoi": "Hàng hóa có thuộc diện loại trừ của Phần XVI/Chương 85 (như máy và thiết bị của nhóm 84.86, sản phẩm Chương 90, bộ phận công dụng chung Phần XV/Chương 39, hoặc linh kiện bán dẫn cảm quang nhóm 85.41) không?",
       "trich": "(m) Các sản phẩm thuộc Chương 90;",
       "nguon": "phan:XVI:cg:1:m#1",
       "vanTay": "39adc93bdf86b7fd24ed1a3aa05862f822b00363be1ff3e2be7baa195a7f0ccc"
@@ -606,18 +609,37 @@
       "kieu": "GIA_TRI",
       "truc": "chủng loại đèn/ống điện tử",
       "tap": [
-        "ống tia ca-tốt khác (không phải ống đèn hình 8540.1x, ống camera/quang điện 8540.20, ống hiển thị 8540.40)"
+        "ống tia ca-tốt"
       ],
       "mo": "MO_TA_HUONG_DAN",
-      "moNguon": [
-        "nhom:8540:ct:10#1",
-        "nhom:8540:ct:11#1"
+      "moNguon": "nhom:8540:ct:10#1",
+      "moNguonVanTay": "4df2120fb735d479a07a0a720e16a6215fa590763a4c4d91db17ce8f9899925a",
+      "cauHoi": "Sản phẩm có phải là ống tia ca-tốt (ví dụ dùng trong ra-đa, máy hiện sóng, ống lưu thông tin, hoặc ống hiển thị màu có bước điểm lân quang >= 0,4 mm) không?",
+      "trich": "- Ống tia ca-tốt khác",
+      "nguon": "bieu:854060#1",
+      "vanTay": "7d529cc450972308bd7bfb5c14dd2c4530e811c74d56de849255c18839bb6ae3",
+      "ghiChu": "Chỉ gồm ống tia ca-tốt KHÔNG thuộc 8540.11, 8540.12, 8540.20 và 8540.40 (ống hiển thị dữ liệu/đồ họa đơn sắc hoặc màu bước điểm lân quang < 0,4 mm thuộc 8540.40)."
+    },
+    {
+      "id": "hs:bieu:854060:8202",
+      "nut": "bieu:854060",
+      "loai": "DIEU_KIEN",
+      "ve": 1,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "chủng loại đèn/ống điện tử",
+      "tap": [
+        "ống đèn hình vô tuyến dùng tia ca-tốt",
+        "ống đèn hình của màn hình video dùng tia ca-tốt",
+        "ống camera truyền hình",
+        "bộ chuyển đổi hình ảnh",
+        "bộ tăng cường hình ảnh",
+        "ống đèn ca-tốt quang điện khác",
+        "ống hiển thị dữ liệu/đồ họa đơn sắc",
+        "ống hiển thị dữ liệu/đồ họa loại màu có bước điểm lân quang < 0,4 mm"
       ],
-      "moNguonVanTay": {
-        "nhom:8540:ct:10#1": "4df2120fb735d479a07a0a720e16a6215fa590763a4c4d91db17ce8f9899925a",
-        "nhom:8540:ct:11#1": "e9cc475f6380b0f02993a415b3b6d35c2517dd89ee62beeb1928ac13cb6d825d"
-      },
-      "cauHoi": "Sản phẩm có phải là ống tia ca-tốt khác (ví dụ ống tia ca-tốt cho ra-đa, máy hiện sóng, ống lưu thông tin hoặc ống hiển thị màu bước điểm >= 0,4 mm) không thuộc 8540.11, 8540.12, 8540.20 hoặc 8540.40 không?",
+      "mo": "NGHIA_THUONG",
+      "cauHoi": "Ống tia ca-tốt này có thuộc ống đèn hình vô tuyến/màn hình video (8540.1x), ống camera/ca-tốt quang điện (8540.20), hay ống hiển thị dữ liệu/đồ họa đơn sắc hoặc màu bước điểm < 0,4 mm (8540.40) không?",
       "trich": "- Ống tia ca-tốt khác",
       "nguon": "bieu:854060#1",
       "vanTay": "7d529cc450972308bd7bfb5c14dd2c4530e811c74d56de849255c18839bb6ae3"
@@ -684,7 +706,7 @@
       "kieu": "GIA_TRI",
       "truc": "chủng loại đèn/ống điện tử",
       "tap": [
-        "đèn điện tử và ống điện tử khác (không phải ống tia ca-tốt, ống ca-tốt quang điện, ống vi sóng không điều khiển lưới)"
+        "đèn điện tử và ống điện tử hoàn chỉnh (không phải bộ phận rời 8540.9)"
       ],
       "mo": "MO_TA_HUONG_DAN",
       "moNguon": [
@@ -696,6 +718,32 @@
         "nhom:8540:ct:14#1": "e00965779231648c9041e79a461a42687b575fbbb0c8b43783402d9013713f15"
       },
       "cauHoi": "Sản phẩm có phải là đèn điện tử hoặc ống điện tử khác (kể cả ống chỉnh lưu, thyratron, đèn điều khiển lưới, đèn thu/khuếch đại) ngoài các phân nhóm 8540.1x–8540.7x không?",
+      "trich": "- Đèn điện tử và ống điện tử khác:",
+      "nguon": "bieu:85408#1",
+      "vanTay": "1c0aa99560f6146f509b616399780a19fd557c6f9647cdc33495ec3dee46ddfb"
+    },
+    {
+      "id": "hs:bieu:85408:8202",
+      "nut": "bieu:85408",
+      "loai": "DIEU_KIEN",
+      "ve": 1,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "chủng loại đèn/ống điện tử",
+      "tap": [
+        "ống đèn hình vô tuyến dùng tia ca-tốt",
+        "ống đèn hình của màn hình video dùng tia ca-tốt",
+        "ống camera truyền hình",
+        "bộ chuyển đổi hình ảnh",
+        "bộ tăng cường hình ảnh",
+        "ống đèn ca-tốt quang điện khác",
+        "ống hiển thị dữ liệu/đồ họa đơn sắc",
+        "ống hiển thị dữ liệu/đồ họa loại màu có bước điểm lân quang < 0,4 mm",
+        "ống tia ca-tốt khác (8540.60)",
+        "ống đèn vi sóng không điều khiển lưới (8540.7)"
+      ],
+      "mo": "NGHIA_THUONG",
+      "cauHoi": "Đèn/ống điện tử này có thuộc ống đèn hình CRT (8540.1x), ống camera/ca-tốt quang điện (8540.20), ống hiển thị dữ liệu/đồ họa (8540.40), ống tia ca-tốt khác (8540.60), hay ống đèn vi sóng không điều khiển lưới (8540.7) không?",
       "trich": "- Đèn điện tử và ống điện tử khác:",
       "nguon": "bieu:85408#1",
       "vanTay": "1c0aa99560f6146f509b616399780a19fd557c6f9647cdc33495ec3dee46ddfb"
@@ -782,6 +830,136 @@
       "nguon": "bieu:854040#1",
       "vanTay": "9f299b040bdc8280a84bd85cf1e0480fa3c1401e984a84d0404281a463eae412",
       "ghiChu": "Ống hiển thị dữ liệu/đồ họa loại màu có bước điểm lân quang < 0,4 mm thuộc 8540.40; nếu >= 0,4 mm (và không phải ống đèn hình video 8540.11) chuyển sang 8540.60."
+    },
+    {
+      "id": "hs:bieu:8540:8212",
+      "nut": "bieu:8540",
+      "loai": "GIAI_CHONG",
+      "cap": [
+        "bieu:85401",
+        "bieu:854060"
+      ],
+      "cach": "TRU",
+      "trich": "- Ống tia ca-tốt khác",
+      "nguon": "bieu:854060#1",
+      "vanTay": "7d529cc450972308bd7bfb5c14dd2c4530e811c74d56de849255c18839bb6ae3"
+    },
+    {
+      "id": "hs:bieu:8540:8213",
+      "nut": "bieu:8540",
+      "loai": "GIAI_CHONG",
+      "cap": [
+        "bieu:854020",
+        "bieu:854060"
+      ],
+      "cach": "TRU",
+      "trich": "- Ống tia ca-tốt khác",
+      "nguon": "bieu:854060#1",
+      "vanTay": "7d529cc450972308bd7bfb5c14dd2c4530e811c74d56de849255c18839bb6ae3"
+    },
+    {
+      "id": "hs:bieu:8540:8214",
+      "nut": "bieu:8540",
+      "loai": "GIAI_CHONG",
+      "cap": [
+        "bieu:85401",
+        "bieu:85408"
+      ],
+      "cach": "TRU",
+      "trich": "- Đèn điện tử và ống điện tử khác:",
+      "nguon": "bieu:85408#1",
+      "vanTay": "1c0aa99560f6146f509b616399780a19fd557c6f9647cdc33495ec3dee46ddfb"
+    },
+    {
+      "id": "hs:bieu:8540:8215",
+      "nut": "bieu:8540",
+      "loai": "GIAI_CHONG",
+      "cap": [
+        "bieu:854020",
+        "bieu:85408"
+      ],
+      "cach": "TRU",
+      "trich": "- Đèn điện tử và ống điện tử khác:",
+      "nguon": "bieu:85408#1",
+      "vanTay": "1c0aa99560f6146f509b616399780a19fd557c6f9647cdc33495ec3dee46ddfb"
+    },
+    {
+      "id": "hs:bieu:8540:8216",
+      "nut": "bieu:8540",
+      "loai": "GIAI_CHONG",
+      "cap": [
+        "bieu:854040",
+        "bieu:85408"
+      ],
+      "cach": "TRU",
+      "trich": "- Đèn điện tử và ống điện tử khác:",
+      "nguon": "bieu:85408#1",
+      "vanTay": "1c0aa99560f6146f509b616399780a19fd557c6f9647cdc33495ec3dee46ddfb"
+    },
+    {
+      "id": "hs:bieu:8540:8217",
+      "nut": "bieu:8540",
+      "loai": "GIAI_CHONG",
+      "cap": [
+        "bieu:854060",
+        "bieu:85408"
+      ],
+      "cach": "TRU",
+      "trich": "- Đèn điện tử và ống điện tử khác:",
+      "nguon": "bieu:85408#1",
+      "vanTay": "1c0aa99560f6146f509b616399780a19fd557c6f9647cdc33495ec3dee46ddfb"
+    },
+    {
+      "id": "hs:bieu:854040:8210",
+      "nut": "bieu:854040",
+      "loai": "GIAI_CHONG",
+      "cap": [
+        "bieu:85404010",
+        "bieu:85404090"
+      ],
+      "cach": "TRU",
+      "trich": "- - Loại khác",
+      "nguon": "bieu:85404090#1",
+      "vanTay": "43c6d0bc4dbfee5211b6f045ed54ae29291d74d420d82e8a3cd596882a754ff9"
+    },
+    {
+      "id": "hs:bieu:85407:8210",
+      "nut": "bieu:85407",
+      "loai": "GIAI_CHONG",
+      "cap": [
+        "bieu:854071",
+        "bieu:854079"
+      ],
+      "cach": "TRU",
+      "trich": "- - Loại khác",
+      "nguon": "bieu:854079#1",
+      "vanTay": "43c6d0bc4dbfee5211b6f045ed54ae29291d74d420d82e8a3cd596882a754ff9"
+    },
+    {
+      "id": "hs:bieu:85408:8210",
+      "nut": "bieu:85408",
+      "loai": "GIAI_CHONG",
+      "cap": [
+        "bieu:854081",
+        "bieu:854089"
+      ],
+      "cach": "TRU",
+      "trich": "- - Loại khác",
+      "nguon": "bieu:854089#1",
+      "vanTay": "43c6d0bc4dbfee5211b6f045ed54ae29291d74d420d82e8a3cd596882a754ff9"
+    },
+    {
+      "id": "hs:bieu:85409:8210",
+      "nut": "bieu:85409",
+      "loai": "GIAI_CHONG",
+      "cap": [
+        "bieu:854091",
+        "bieu:854099"
+      ],
+      "cach": "TRU",
+      "trich": "- - Loại khác",
+      "nguon": "bieu:854099#1",
+      "vanTay": "43c6d0bc4dbfee5211b6f045ed54ae29291d74d420d82e8a3cd596882a754ff9"
     },
     {
       "id": "hs:bieu:8540:8220",
@@ -1096,8 +1274,8 @@
           "trich": "- Ống tia ca-tốt khác"
         },
         {
-          "idCau": "nhom:8540:ct:11#1",
-          "trich": "Đèn ống tia catốt cũng thường được sử dụng trong rađa, trong các máy hiện sóng và trong các thiết bị đầu cuối của hệ thống xử lý dữ liệu tự động (ống đèn hiển thị)."
+          "idCau": "nhom:8540:ct:10#1",
+          "trich": "(d) Các ống điện tử tia catốt khác mà trong nó các tín hiệu điện được biến đổi thành hình ảnh nhìn thấy được một cách trực tiếp hoặc gián tiếp. "
         }
       ]
     },

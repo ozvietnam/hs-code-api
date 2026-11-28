@@ -656,7 +656,8 @@
       "cauHoi": "Máy có hoạt động theo nguyên lý hàn chảy (hàn thiếc/hàn thau: chỉ nguyên liệu độn hàn nóng chảy, vật liệu nền không nóng chảy) không?",
       "trich": "- Máy và thiết bị để hàn chảy (nguyên lý hàn thiếc, chỉ có phần nguyên liệu hàn được làm nóng chảy, đối tượng được hàn không bị nóng chảy):",
       "nguon": "bieu:85151#1",
-      "vanTay": "16a4277b302302e7205a31b281fe8a2ee111271f0a2f4846cbc267cf4eaf1125"
+      "vanTay": "16a4277b302302e7205a31b281fe8a2ee111271f0a2f4846cbc267cf4eaf1125",
+      "daTri": true
     },
     {
       "id": "hs:bieu:851511:8201",
@@ -737,7 +738,8 @@
       "cauHoi": "Máy có dùng để hàn kim loại bằng nguyên lý điện trở (dòng điện chạy qua vật hàn tạo nhiệt Jun kết hợp áp suất, như hàn điểm/hàn ghép mối/hàn nổi/hàn lăn)?",
       "trich": "- Máy và thiết bị để hàn kim loại bằng nguyên lý điện trở:",
       "nguon": "bieu:85152#1",
-      "vanTay": "49f7e12b98db10d00366b2c1770dda71ce6a3eec911d227e56738874c5f492e5"
+      "vanTay": "49f7e12b98db10d00366b2c1770dda71ce6a3eec911d227e56738874c5f492e5",
+      "daTri": true
     },
     {
       "id": "hs:bieu:851521:8201",
@@ -783,7 +785,8 @@
       "cauHoi": "Máy có dùng để hàn hồ quang kim loại (hồ quang điện hoặc hồ quang plasma, có hoặc không có khả năng cắt) không?",
       "trich": "- Máy và thiết bị hàn hồ quang kim loại (kể cả hồ quang plasma):",
       "nguon": "bieu:85153#1",
-      "vanTay": "0337ad4034f3645dbef540ef2f0274f03c841d047e842d39a3f54355fc265aa6"
+      "vanTay": "0337ad4034f3645dbef540ef2f0274f03c841d047e842d39a3f54355fc265aa6",
+      "daTri": true
     },
     {
       "id": "hs:bieu:851531:8201",
@@ -814,9 +817,7 @@
       "tap": [
         "dùng điện xoay chiều, kiểu biến thế"
       ],
-      "mo": "MO_TA_HUONG_DAN",
-      "moNguon": "nhom:8515:ct:41#1",
-      "moNguonVanTay": "b9c0faee2e9fe87db0f13e534b9c7e3525e28bc36c7254fc0f3108f6750c959d",
+      "mo": "NGHIA_THUONG",
       "cauHoi": "Máy hàn hồ quang kim loại (không phải loại tự động hoàn toàn hoặc một phần) này có dùng điện xoay chiều và có cấu tạo kiểu biến thế không?",
       "trich": "- - - Máy hàn hồ quang dùng điện xoay chiều, kiểu biến thế",
       "nguon": "bieu:85153910#1",
@@ -829,28 +830,34 @@
       "ve": 0,
       "phu": false,
       "kieu": "GIA_TRI",
-      "truc": "nguyên lý hàn",
+      "truc": "loại đối tượng",
       "tap": [
-        "hàn bằng cảm ứng, chùm tia điện tử, khuếch tán chân không, tia laser/ánh sáng/photon, siêu âm, xung từ, hàn vật liệu nhiệt dẻo (khí nóng/điện/cao tần) hoặc xì nóng kim loại/gốm kim loại"
+        "máy và thiết bị hàn các loại (hàn chảy/thiếc/thau, hàn điện trở, hàn hồ quang/plasma, hàn cảm ứng, hàn tia laser/ánh sáng/photon, hàn siêu âm, hàn chùm electron, hàn xung từ, hàn vật liệu nhiệt dẻo bằng điện/khí nóng/cao tần)",
+        "máy và thiết bị dùng điện để xì nóng kim loại hoặc gốm kim loại"
       ],
-      "mo": "MO_TA_HUONG_DAN",
-      "moNguon": [
-        "nhom:8515:ct:19#1",
-        "nhom:8515:ct:21#1",
-        "nhom:8515:ct:26#1",
-        "nhom:8515:ct:32#1",
-        "nhom:8515:ct:39#1",
-        "nhom:8515:ct:49#1"
+      "mo": "NGHIA_THUONG",
+      "cauHoi": "Hàng hóa có phải là máy hoặc thiết bị hoàn chỉnh thuộc 85.15 (không phải bộ phận rời 8515.90) không?",
+      "trich": "- Máy và thiết bị khác:",
+      "nguon": "bieu:851580#1",
+      "vanTay": "3aa50de9c92a10f189cbdcbba1c87906e05764bc18015ea36dcdaf2f46229b15"
+    },
+    {
+      "id": "hs:bieu:851580:8202",
+      "nut": "bieu:851580",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "nguyên lý hàn",
+      "daTri": true,
+      "tap": [
+        "hàn chảy (hàn thiếc hoặc hàn thau: chỉ làm nóng chảy nguyên liệu độn hàn, đối tượng được hàn không bị nóng chảy)",
+        "hàn kim loại bằng nguyên lý điện trở (nhiệt Jun dưới áp suất, không dùng chất trợ dung hoặc chất độn kim loại)",
+        "hàn hồ quang kim loại (MIG, MAG, TIG, hồ quang tay, hồ quang chìm, hàn xỉ điện, hàn khí điện)",
+        "hàn hồ quang plasma kim loại"
       ],
-      "moNguonVanTay": {
-        "nhom:8515:ct:19#1": "fa6ba72ff6c3adaa1e5c73eb71cbdcbf8ac0b199f4752de1083772f9651e1bd6",
-        "nhom:8515:ct:21#1": "56632212303006da4dc1e46cf5bdeb1bcb3cced632052ccc21128d896a5a32fa",
-        "nhom:8515:ct:26#1": "1ede133b3750678ec971f6bcb6e1d2735004d99c08cc213360545c0ebc804f03",
-        "nhom:8515:ct:32#1": "7318137ce9a76e2f68b059bbfa7f21d4eed0563f66807d40c7692d7bb5135862",
-        "nhom:8515:ct:39#1": "7beed7e68e19457f65f20a74040ae9aeaafa83d83b439b4082758d8598b2b556",
-        "nhom:8515:ct:49#1": "95ac0c592f3ceb854146104247afb380f504cc2823b47f9d717ce259c05f428e"
-      },
-      "cauHoi": "Hàng hóa là máy/thiết bị thuộc nhóm 85.15 KHÔNG thuộc 3 nhánh hàn chảy (8515.1), hàn điện trở kim loại (8515.2) và hàn hồ quang kim loại (8515.3) (ví dụ xì nóng kim loại, hàn laser, hàn siêu âm, hàn chùm electron, hàn nhựa)?",
+      "mo": "NGHIA_THUONG",
+      "cauHoi": "Máy và thiết bị này có thuộc nhánh hàn chảy (8515.1), hàn điện trở kim loại (8515.2) hoặc hàn hồ quang kim loại (8515.3) không?",
       "trich": "- Máy và thiết bị khác:",
       "nguon": "bieu:851580#1",
       "vanTay": "3aa50de9c92a10f189cbdcbba1c87906e05764bc18015ea36dcdaf2f46229b15"
@@ -1021,6 +1028,48 @@
       "nguon": "phan:XVI:kq:94#1",
       "vanTay": "6b75b73d29b3004a023f20cac75451b3553ab190b2cd9544c6bd55e38332e6ae",
       "ghiChu": "Bộ thiết bị hàn gồm mỏ hàn/đầu kẹp xuất trình cùng biến thế/máy phát phân loại như máy hàn hoàn chỉnh (8515.1–8515.80), không phân vào bộ phận 8515.90."
+    },
+    {
+      "id": "hs:bieu:8515:8256",
+      "nut": "bieu:8515",
+      "loai": "GIAI_CHONG",
+      "cap": [
+        "bieu:85151",
+        "bieu:851590"
+      ],
+      "cach": "CHU_GIAI",
+      "trich": "(9) Thiết bị hàn bao gồm mỏ hàn hoặc cặp hàn, với máy biến thế, máy phát điện hoặc nắn dòng để cung cấp điện (nhóm 85.15).",
+      "nguon": "phan:XVI:kq:94#1",
+      "vanTay": "6b75b73d29b3004a023f20cac75451b3553ab190b2cd9544c6bd55e38332e6ae",
+      "ghiChu": "Đối chiếu cùng nhom:8515:ct:41#3 khi máy biến điện xuất trình cùng mỏ hàn/thiết bị hàn."
+    },
+    {
+      "id": "hs:bieu:8515:8257",
+      "nut": "bieu:8515",
+      "loai": "GIAI_CHONG",
+      "cap": [
+        "bieu:85152",
+        "bieu:851590"
+      ],
+      "cach": "CHU_GIAI",
+      "trich": "(9) Thiết bị hàn bao gồm mỏ hàn hoặc cặp hàn, với máy biến thế, máy phát điện hoặc nắn dòng để cung cấp điện (nhóm 85.15).",
+      "nguon": "phan:XVI:kq:94#1",
+      "vanTay": "6b75b73d29b3004a023f20cac75451b3553ab190b2cd9544c6bd55e38332e6ae",
+      "ghiChu": "Đối chiếu cùng nhom:8515:ct:41#3 khi máy biến điện xuất trình cùng mỏ hàn/thiết bị hàn."
+    },
+    {
+      "id": "hs:bieu:8515:8258",
+      "nut": "bieu:8515",
+      "loai": "GIAI_CHONG",
+      "cap": [
+        "bieu:851580",
+        "bieu:851590"
+      ],
+      "cach": "CHU_GIAI",
+      "trich": "(9) Thiết bị hàn bao gồm mỏ hàn hoặc cặp hàn, với máy biến thế, máy phát điện hoặc nắn dòng để cung cấp điện (nhóm 85.15).",
+      "nguon": "phan:XVI:kq:94#1",
+      "vanTay": "6b75b73d29b3004a023f20cac75451b3553ab190b2cd9544c6bd55e38332e6ae",
+      "ghiChu": "Đối chiếu cùng nhom:8515:ct:41#3 khi máy biến điện xuất trình cùng mỏ hàn/thiết bị hàn."
     },
     {
       "id": "hs:bieu:8515:8290",

@@ -210,6 +210,16 @@
             "trich": "(B) Các lô hàng hỗn hợp gồm “phế liệu và phế thải điện và điện tử” và phế liệu và phế thải khác được phân loại vào nhóm 85.49."
           }
         ]
+      },
+      {
+        "doiTuong": "Ống chỉ, trục cuốn, lõi tương tự bằng vật liệu bất kỳ trình bày riêng rẽ không kèm băng từ",
+        "dich": "phan:XV",
+        "canCu": [
+          {
+            "idCau": "phan:XVI:cg:1:c#1",
+            "trich": "(c) Ống chỉ, trục cuốn, ống lõi sợi con, lõi ống sợi, lõi ống côn, lõi guồng hoặc các loại lõi tương tự, bằng vật liệu bất kỳ (ví dụ, Chương 39, 40, 44 hoặc 48 hoặc Phần XV);"
+          }
+        ]
       }
     ],
     "dinhNghia": [
@@ -1152,6 +1162,32 @@
       "trangThai": "KHOP"
     },
     {
+      "id": "hs:bieu:8523:8210",
+      "nut": "bieu:8523",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "đối tượng bị loại trừ khỏi nhóm 85.23",
+      "tap": [
+        "các sản phẩm thuộc Chương 90",
+        "ống chỉ, trục cuốn, lõi tương tự bằng vật liệu bất kỳ trình bày riêng rẽ không kèm băng từ (Chương 39, 40, 44, 48 hoặc Phần XV)"
+      ],
+      "mo": "DINH_NGHIA_LUAT",
+      "moNguon": [
+        "phan:XVI:cg:1:m#1",
+        "phan:XVI:cg:1:c#1"
+      ],
+      "moNguonVanTay": {
+        "phan:XVI:cg:1:m#1": "39adc93bdf86b7fd24ed1a3aa05862f822b00363be1ff3e2be7baa195a7f0ccc",
+        "phan:XVI:cg:1:c#1": "dfcfd7154f57e18e4c950b0cd28ad694431ec1aa3f46e12d3f8c2632e6b4b6e7"
+      },
+      "cauHoi": "Hàng hóa có phải sản phẩm thuộc Chương 90 hoặc ống chỉ/trục cuốn/lõi trình bày riêng rẽ không kèm băng từ (Chú giải 1(c) và 1(m) Phần XVI) không?",
+      "trich": "(m) Các sản phẩm thuộc Chương 90;",
+      "nguon": "phan:XVI:cg:1:m#1",
+      "vanTay": "39adc93bdf86b7fd24ed1a3aa05862f822b00363be1ff3e2be7baa195a7f0ccc"
+    },
+    {
       "id": "hs:bieu:85232:8201",
       "nut": "bieu:85232",
       "loai": "DIEU_KIEN",
@@ -1277,6 +1313,25 @@
       "nguon": "bieu:852321#1",
       "vanTay": "e59f316d537a06184e5cd2f01d0111823f7091e6f7fd2b8a621f2d8f1138aab2",
       "trangThai": "KHOP"
+    },
+    {
+      "id": "hs:bieu:852321:8202",
+      "nut": "bieu:852321",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "loại phương tiện bán dẫn",
+      "tap": [
+        "thẻ thông minh"
+      ],
+      "mo": "DINH_NGHIA_LUAT",
+      "moNguon": "chuong:85:cg:6:b#2",
+      "moNguonVanTay": "f6c047c2c61a67b3cade48e51cad9fd51969a4f29552568359c96c8cc19d6bce",
+      "cauHoi": "Thẻ có dải từ này có gắn chip mạch tích hợp bên trong (thuộc 8523.52 thẻ thông minh) không?",
+      "trich": "Các thẻ này có thể bao gồm các tiếp điểm, dải từ tính hoặc ăng ten gắn bên trong nhưng không chứa bất cứ phần tử chủ động hoặc thụ động nào khác.",
+      "nguon": "chuong:85:cg:6:b#2",
+      "vanTay": "f6c047c2c61a67b3cade48e51cad9fd51969a4f29552568359c96c8cc19d6bce"
     },
     {
       "id": "hs:bieu:85232110:8201",
@@ -1651,6 +1706,24 @@
       "trangThai": "KHOP"
     },
     {
+      "id": "hs:bieu:85232943:8202",
+      "nut": "bieu:85232943",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "mục đích sử dụng phương tiện",
+      "tap": [
+        "băng máy tính",
+        "dùng cho điện ảnh"
+      ],
+      "mo": "NGHIA_THUONG",
+      "cauHoi": "Phương tiện lưu trữ này có thuộc các phân nhóm cùng cấp đứng trước (85232941, 85232942) trên trục \"mục đích sử dụng phương tiện\" không?",
+      "trich": "- - - - - Băng video khác",
+      "nguon": "bieu:85232943#1",
+      "vanTay": "fae7dca71e07ee9c9d89f34b6afbf807a5f04e94b5c9f1689a3cf812e395b930"
+    },
+    {
       "id": "hs:bieu:8523295:8201",
       "nut": "bieu:8523295",
       "loai": "DIEU_KIEN",
@@ -1761,6 +1834,24 @@
       "trangThai": "KHOP"
     },
     {
+      "id": "hs:bieu:85232963:8202",
+      "nut": "bieu:85232963",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "nội dung hoặc mục đích tái tạo",
+      "tap": [
+        "tái tạo tập lệnh, dữ liệu, âm thanh và hình ảnh dạng mã nhị phân qua máy xử lý dữ liệu tự động hoặc phương tiện định dạng riêng (đã ghi)",
+        "dùng cho điện ảnh"
+      ],
+      "mo": "NGHIA_THUONG",
+      "cauHoi": "Phương tiện lưu trữ này có thuộc các phân nhóm cùng cấp đứng trước (85232961, 85232962) trên trục \"nội dung hoặc mục đích tái tạo\" không?",
+      "trich": "- - - - - Băng video khác",
+      "nguon": "bieu:85232963#1",
+      "vanTay": "fae7dca71e07ee9c9d89f34b6afbf807a5f04e94b5c9f1689a3cf812e395b930"
+    },
+    {
       "id": "hs:bieu:8523297:8201",
       "nut": "bieu:8523297",
       "loai": "DIEU_KIEN",
@@ -1853,6 +1944,23 @@
       "trangThai": "KHOP"
     },
     {
+      "id": "hs:bieu:85232983:8202",
+      "nut": "bieu:85232983",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "nội dung hoặc mục đích tái tạo",
+      "tap": [
+        "tái tạo các hiện tượng trừ âm thanh hoặc hình ảnh"
+      ],
+      "mo": "NGHIA_THUONG",
+      "cauHoi": "Phương tiện lưu trữ này có thuộc các phân nhóm cùng cấp đứng trước (8523298:td1) trên trục \"nội dung hoặc mục đích tái tạo\" không?",
+      "trich": "- - - - - Loại khác, loại sử dụng để tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh, được ghi ở dạng mã nhị phân để máy có thể đọc được, và có thể thao tác hoặc có thể tương tác với người sử dụng, thông qua một máy xử lý dữ liệu tự động; phương tiện lưu trữ được định dạng riêng (đã ghi)",
+      "nguon": "bieu:85232983#1",
+      "vanTay": "2f128c5d644aebe51f67657d9d56dd17ca73528735253ee7960295c4033c5081"
+    },
+    {
       "id": "hs:bieu:85232985:8201",
       "nut": "bieu:85232985",
       "loai": "DIEU_KIEN",
@@ -1871,6 +1979,24 @@
       "trangThai": "KHOP"
     },
     {
+      "id": "hs:bieu:85232985:8202",
+      "nut": "bieu:85232985",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "nội dung hoặc mục đích tái tạo",
+      "tap": [
+        "tái tạo các hiện tượng trừ âm thanh hoặc hình ảnh",
+        "tái tạo tập lệnh, dữ liệu, âm thanh và hình ảnh dạng mã nhị phân qua máy xử lý dữ liệu tự động hoặc phương tiện định dạng riêng (đã ghi)"
+      ],
+      "mo": "NGHIA_THUONG",
+      "cauHoi": "Phương tiện lưu trữ này có thuộc các phân nhóm cùng cấp đứng trước (8523298:td1, 85232983) trên trục \"nội dung hoặc mục đích tái tạo\" không?",
+      "trich": "- - - - - Loại khác, chứa phim điện ảnh trừ phim thời sự, phim du lịch, phim kỹ thuật, phim khoa học, và phim tài liệu khác",
+      "nguon": "bieu:85232985#1",
+      "vanTay": "7dc10a88eff42d3120a3b9f39d7234692a48f5ca5903a8154c5dd7c4b139507d"
+    },
+    {
       "id": "hs:bieu:85232986:8201",
       "nut": "bieu:85232986",
       "loai": "DIEU_KIEN",
@@ -1887,6 +2013,25 @@
       "nguon": "bieu:85232986#1",
       "vanTay": "7dd66bd67db6a8d5fdc25a939c049b04c4c678d2886222020334d2c46c09709e",
       "trangThai": "KHOP"
+    },
+    {
+      "id": "hs:bieu:85232986:8202",
+      "nut": "bieu:85232986",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "nội dung hoặc mục đích tái tạo",
+      "tap": [
+        "tái tạo các hiện tượng trừ âm thanh hoặc hình ảnh",
+        "tái tạo tập lệnh, dữ liệu, âm thanh và hình ảnh dạng mã nhị phân qua máy xử lý dữ liệu tự động hoặc phương tiện định dạng riêng (đã ghi)",
+        "chứa phim điện ảnh trừ phim thời sự, phim du lịch, phim kỹ thuật, phim khoa học, và phim tài liệu khác"
+      ],
+      "mo": "NGHIA_THUONG",
+      "cauHoi": "Phương tiện lưu trữ này có thuộc các phân nhóm cùng cấp đứng trước (8523298:td1, 85232983, 85232985) trên trục \"nội dung hoặc mục đích tái tạo\" không?",
+      "trich": "- - - - - Loại khác, dùng cho điện ảnh",
+      "nguon": "bieu:85232986#1",
+      "vanTay": "7dd66bd67db6a8d5fdc25a939c049b04c4c678d2886222020334d2c46c09709e"
     },
     {
       "id": "hs:bieu:8523299:td1:8201",
@@ -1979,6 +2124,23 @@
       "nguon": "bieu:85232995#1",
       "vanTay": "2f128c5d644aebe51f67657d9d56dd17ca73528735253ee7960295c4033c5081",
       "trangThai": "KHOP"
+    },
+    {
+      "id": "hs:bieu:85232995:8202",
+      "nut": "bieu:85232995",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "nội dung hoặc mục đích tái tạo",
+      "tap": [
+        "tái tạo các hiện tượng trừ âm thanh hoặc hình ảnh"
+      ],
+      "mo": "NGHIA_THUONG",
+      "cauHoi": "Phương tiện lưu trữ này có thuộc các phân nhóm cùng cấp đứng trước (8523299:td2:td1) trên trục \"nội dung hoặc mục đích tái tạo\" không?",
+      "trich": "- - - - - Loại khác, loại sử dụng để tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh, được ghi ở dạng mã nhị phân để máy có thể đọc được, và có thể thao tác hoặc có thể tương tác với người sử dụng, thông qua một máy xử lý dữ liệu tự động; phương tiện lưu trữ được định dạng riêng (đã ghi)",
+      "nguon": "bieu:85232995#1",
+      "vanTay": "2f128c5d644aebe51f67657d9d56dd17ca73528735253ee7960295c4033c5081"
     },
     {
       "id": "hs:bieu:852341:8201",
@@ -2119,6 +2281,24 @@
       "trangThai": "KHOP"
     },
     {
+      "id": "hs:bieu:85234914:8202",
+      "nut": "bieu:85234914",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "nội dung hoặc mục đích tái tạo",
+      "tap": [
+        "tái tạo các hiện tượng trừ âm thanh hoặc hình ảnh",
+        "chỉ tái tạo âm thanh"
+      ],
+      "mo": "NGHIA_THUONG",
+      "cauHoi": "Phương tiện lưu trữ này có thuộc các phân nhóm cùng cấp đứng trước (85234911, 8523491:td1) trên trục \"nội dung hoặc mục đích tái tạo\" không?",
+      "trich": "- - - - Loại khác, loại sử dụng để tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh, được ghi ở dạng mã nhị phân để máy có thể đọc được, và có thể thao tác hoặc có thể tương tác với người sử dụng, thông qua một máy xử lý dữ liệu tự động; phương tiện lưu trữ được định dạng riêng (đã ghi)",
+      "nguon": "bieu:85234914#1",
+      "vanTay": "bda1a1678622992bbb6b35df11b80c51d2a60113c2bc4a40f2968db47f68058d"
+    },
+    {
       "id": "hs:bieu:85234915:8201",
       "nut": "bieu:85234915",
       "loai": "DIEU_KIEN",
@@ -2137,6 +2317,25 @@
       "trangThai": "KHOP"
     },
     {
+      "id": "hs:bieu:85234915:8202",
+      "nut": "bieu:85234915",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "nội dung hoặc mục đích tái tạo",
+      "tap": [
+        "tái tạo các hiện tượng trừ âm thanh hoặc hình ảnh",
+        "chỉ tái tạo âm thanh",
+        "tái tạo tập lệnh, dữ liệu, âm thanh và hình ảnh dạng mã nhị phân qua máy xử lý dữ liệu tự động hoặc phương tiện định dạng riêng (đã ghi)"
+      ],
+      "mo": "NGHIA_THUONG",
+      "cauHoi": "Phương tiện lưu trữ này có thuộc các phân nhóm cùng cấp đứng trước (85234911, 8523491:td1, 85234914) trên trục \"nội dung hoặc mục đích tái tạo\" không?",
+      "trich": "- - - - Loại khác, chứa phim điện ảnh trừ phim thời sự, phim du lịch, phim kỹ thuật, phim khoa học, và phim tài liệu khác",
+      "nguon": "bieu:85234915#1",
+      "vanTay": "885badcbc56fe224233535d9d34875ff66443ca67f484ee831fb14910cb03a56"
+    },
+    {
       "id": "hs:bieu:85234916:8201",
       "nut": "bieu:85234916",
       "loai": "DIEU_KIEN",
@@ -2153,6 +2352,26 @@
       "nguon": "bieu:85234916#1",
       "vanTay": "e3aebafb1a406b135f256c2d51aae37ad505328b3f0fb3910e6f6a276dc55e2f",
       "trangThai": "KHOP"
+    },
+    {
+      "id": "hs:bieu:85234916:8202",
+      "nut": "bieu:85234916",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "nội dung hoặc mục đích tái tạo",
+      "tap": [
+        "tái tạo các hiện tượng trừ âm thanh hoặc hình ảnh",
+        "chỉ tái tạo âm thanh",
+        "tái tạo tập lệnh, dữ liệu, âm thanh và hình ảnh dạng mã nhị phân qua máy xử lý dữ liệu tự động hoặc phương tiện định dạng riêng (đã ghi)",
+        "chứa phim điện ảnh trừ phim thời sự, phim du lịch, phim kỹ thuật, phim khoa học, và phim tài liệu khác"
+      ],
+      "mo": "NGHIA_THUONG",
+      "cauHoi": "Phương tiện lưu trữ này có thuộc các phân nhóm cùng cấp đứng trước (85234911, 8523491:td1, 85234914, 85234915) trên trục \"nội dung hoặc mục đích tái tạo\" không?",
+      "trich": "- - - - Loại khác, dùng cho điện ảnh",
+      "nguon": "bieu:85234916#1",
+      "vanTay": "e3aebafb1a406b135f256c2d51aae37ad505328b3f0fb3910e6f6a276dc55e2f"
     },
     {
       "id": "hs:bieu:85234991:8201",
@@ -2207,6 +2426,24 @@
       "nguon": "bieu:85234993#1",
       "vanTay": "bda1a1678622992bbb6b35df11b80c51d2a60113c2bc4a40f2968db47f68058d",
       "trangThai": "KHOP"
+    },
+    {
+      "id": "hs:bieu:85234993:8202",
+      "nut": "bieu:85234993",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "nội dung hoặc mục đích tái tạo",
+      "tap": [
+        "tái tạo các hiện tượng trừ âm thanh hoặc hình ảnh",
+        "chỉ tái tạo âm thanh"
+      ],
+      "mo": "NGHIA_THUONG",
+      "cauHoi": "Phương tiện lưu trữ này có thuộc các phân nhóm cùng cấp đứng trước (85234991, 85234992) trên trục \"nội dung hoặc mục đích tái tạo\" không?",
+      "trich": "- - - - Loại khác, loại sử dụng để tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh, được ghi ở dạng mã nhị phân để máy có thể đọc được, và có thể thao tác hoặc có thể tương tác với người sử dụng, thông qua một máy xử lý dữ liệu tự động; phương tiện lưu trữ được định dạng riêng (đã ghi)",
+      "nguon": "bieu:85234993#1",
+      "vanTay": "bda1a1678622992bbb6b35df11b80c51d2a60113c2bc4a40f2968db47f68058d"
     },
     {
       "id": "hs:bieu:852351:8201",
@@ -2327,6 +2564,23 @@
       "trangThai": "KHOP"
     },
     {
+      "id": "hs:bieu:85235130:8202",
+      "nut": "bieu:85235130",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "nội dung hoặc mục đích tái tạo",
+      "tap": [
+        "tái tạo các hiện tượng trừ âm thanh hoặc hình ảnh"
+      ],
+      "mo": "NGHIA_THUONG",
+      "cauHoi": "Phương tiện lưu trữ này có thuộc các phân nhóm cùng cấp đứng trước (8523512) trên trục \"nội dung hoặc mục đích tái tạo\" không?",
+      "trich": "- - - - Loại khác, loại sử dụng để tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh, được ghi ở dạng mã nhị phân để máy có thể đọc được, và có thể thao tác hoặc có thể tương tác với người sử dụng, thông qua một máy xử lý dữ liệu tự động; phương tiện lưu trữ được định dạng riêng (đã ghi)",
+      "nguon": "bieu:85235130#1",
+      "vanTay": "bda1a1678622992bbb6b35df11b80c51d2a60113c2bc4a40f2968db47f68058d"
+    },
+    {
       "id": "hs:bieu:85235191:8201",
       "nut": "bieu:85235191",
       "loai": "DIEU_KIEN",
@@ -2345,6 +2599,25 @@
       "trangThai": "KHOP"
     },
     {
+      "id": "hs:bieu:85235191:8202",
+      "nut": "bieu:85235191",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "nội dung hoặc mục đích tái tạo",
+      "tap": [
+        "tái tạo các hiện tượng trừ âm thanh hoặc hình ảnh",
+        "tái tạo tập lệnh, dữ liệu, âm thanh và hình ảnh dạng mã nhị phân qua máy xử lý dữ liệu tự động hoặc phương tiện định dạng riêng (đã ghi)",
+        "phim thời sự, phim du lịch, phim kỹ thuật, phim khoa học, và phim tài liệu khác"
+      ],
+      "mo": "NGHIA_THUONG",
+      "cauHoi": "Thiết bị lưu trữ bền vững, thể rắn đã ghi này có thuộc 8523.51.2, 8523.51.30 hay chứa phim thời sự, du lịch, kỹ thuật, khoa học, tài liệu khác không?",
+      "trich": "- - - - - Loại khác, chứa phim điện ảnh trừ phim thời sự, phim du lịch, phim kỹ thuật, phim khoa học, và phim tài liệu khác",
+      "nguon": "bieu:85235191#1",
+      "vanTay": "7dc10a88eff42d3120a3b9f39d7234692a48f5ca5903a8154c5dd7c4b139507d"
+    },
+    {
       "id": "hs:bieu:85235192:8201",
       "nut": "bieu:85235192",
       "loai": "DIEU_KIEN",
@@ -2361,6 +2634,23 @@
       "nguon": "bieu:85235192#1",
       "vanTay": "7dd66bd67db6a8d5fdc25a939c049b04c4c678d2886222020334d2c46c09709e",
       "trangThai": "KHOP"
+    },
+    {
+      "id": "hs:bieu:85235192:8202",
+      "nut": "bieu:85235192",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "nội dung hoặc mục đích tái tạo",
+      "tap": [
+        "chứa phim điện ảnh trừ phim thời sự, phim du lịch, phim kỹ thuật, phim khoa học, và phim tài liệu khác"
+      ],
+      "mo": "NGHIA_THUONG",
+      "cauHoi": "Phương tiện lưu trữ này có thuộc các phân nhóm cùng cấp đứng trước (85235191) trên trục \"nội dung hoặc mục đích tái tạo\" không?",
+      "trich": "- - - - - Loại khác, dùng cho điện ảnh",
+      "nguon": "bieu:85235192#1",
+      "vanTay": "7dd66bd67db6a8d5fdc25a939c049b04c4c678d2886222020334d2c46c09709e"
     },
     {
       "id": "hs:bieu:852352:8201",
@@ -2435,6 +2725,23 @@
       "trangThai": "KHOP"
     },
     {
+      "id": "hs:bieu:8523592:8202",
+      "nut": "bieu:8523592",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "dạng phương tiện bán dẫn khác",
+      "tap": [
+        "thẻ không tiếp xúc (dạng card và dạng tag)"
+      ],
+      "mo": "NGHIA_THUONG",
+      "cauHoi": "Phương tiện lưu trữ này có thuộc các phân nhóm cùng cấp đứng trước (85235910) trên trục \"dạng phương tiện bán dẫn khác\" không?",
+      "trich": "- - - Loại khác, chưa ghi:",
+      "nguon": "bieu:8523592#1",
+      "vanTay": "8bd677548df7751562703c38ce5f6af5523d747aaccc81c236f0ec0a6885a64b"
+    },
+    {
       "id": "hs:bieu:85235921:8201",
       "nut": "bieu:85235921",
       "loai": "DIEU_KIEN",
@@ -2489,6 +2796,23 @@
       "trangThai": "KHOP"
     },
     {
+      "id": "hs:bieu:85235940:8202",
+      "nut": "bieu:85235940",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "nội dung hoặc mục đích tái tạo",
+      "tap": [
+        "tái tạo các hiện tượng trừ âm thanh hoặc hình ảnh"
+      ],
+      "mo": "NGHIA_THUONG",
+      "cauHoi": "Phương tiện lưu trữ này có thuộc các phân nhóm cùng cấp đứng trước (85235930) trên trục \"nội dung hoặc mục đích tái tạo\" không?",
+      "trich": "- - - - Loại khác, loại sử dụng để tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh, được ghi ở dạng mã nhị phân để máy có thể đọc được, và có thể thao tác hoặc có thể tương tác với người sử dụng, thông qua một máy xử lý dữ liệu tự động; phương tiện lưu trữ được định dạng riêng (đã ghi)",
+      "nguon": "bieu:85235940#1",
+      "vanTay": "bda1a1678622992bbb6b35df11b80c51d2a60113c2bc4a40f2968db47f68058d"
+    },
+    {
       "id": "hs:bieu:85238040:8201",
       "nut": "bieu:85238040",
       "loai": "DIEU_KIEN",
@@ -2527,6 +2851,23 @@
       "nguon": "bieu:8523805#1",
       "vanTay": "889354cf3f7c6b42049ed023e97ea3f182fd2b2db6e530c47c6724bc96c701dc",
       "trangThai": "KHOP"
+    },
+    {
+      "id": "hs:bieu:8523805:8202",
+      "nut": "bieu:8523805",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "dạng phương tiện lưu trữ khác",
+      "tap": [
+        "đĩa ghi âm sử dụng kỹ thuật analog"
+      ],
+      "mo": "NGHIA_THUONG",
+      "cauHoi": "Phương tiện lưu trữ này có thuộc các phân nhóm cùng cấp đứng trước (85238040) trên trục \"dạng phương tiện lưu trữ khác\" không?",
+      "trich": "- - Loại khác, chưa ghi:",
+      "nguon": "bieu:8523805#1",
+      "vanTay": "889354cf3f7c6b42049ed023e97ea3f182fd2b2db6e530c47c6724bc96c701dc"
     },
     {
       "id": "hs:bieu:85238051:8201",
@@ -2581,6 +2922,23 @@
       "nguon": "bieu:85238092#1",
       "vanTay": "b022bd0c93ac79143c624efe9822a4f521b44afa957bf412f89f29facf65b255",
       "trangThai": "KHOP"
+    },
+    {
+      "id": "hs:bieu:85238092:8202",
+      "nut": "bieu:85238092",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "nội dung hoặc mục đích tái tạo",
+      "tap": [
+        "tái tạo các hiện tượng trừ âm thanh hoặc hình ảnh"
+      ],
+      "mo": "NGHIA_THUONG",
+      "cauHoi": "Phương tiện lưu trữ này có thuộc các phân nhóm cùng cấp đứng trước (85238091) trên trục \"nội dung hoặc mục đích tái tạo\" không?",
+      "trich": "- - - Loại khác, loại sử dụng để tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh, được ghi ở dạng mã nhị phân để máy có thể đọc được, và có thể thao tác hoặc có thể tương tác với người sử dụng, thông qua một máy xử lý dữ liệu tự động; phương tiện lưu trữ được định dạng riêng (đã ghi)",
+      "nguon": "bieu:85238092#1",
+      "vanTay": "b022bd0c93ac79143c624efe9822a4f521b44afa957bf412f89f29facf65b255"
     },
     {
       "id": "hs:bieu:8523:8251",
@@ -3989,6 +4347,20 @@
       "trangThai": "KHOP"
     },
     {
+      "id": "hs:bieu:85235:8253",
+      "nut": "bieu:85235",
+      "loai": "GIAI_CHONG",
+      "cap": [
+        "bieu:852351",
+        "bieu:852352"
+      ],
+      "cach": "CHU_GIAI",
+      "trich": "Các thẻ này có thể bao gồm các tiếp điểm, dải từ tính hoặc ăng ten gắn bên trong nhưng không chứa bất cứ phần tử chủ động hoặc thụ động nào khác.",
+      "nguon": "chuong:85:cg:6:b#2",
+      "vanTay": "f6c047c2c61a67b3cade48e51cad9fd51969a4f29552568359c96c8cc19d6bce",
+      "ghiChu": "Đối chiếu chuong:85:cg:6:a#1, chuong:85:cg:6:a#2 (8523.51 có thể có phần tử thụ động riêng biệt) vs chuong:85:cg:6:b#2 (8523.52 không chứa bất cứ phần tử chủ động hoặc thụ động nào khác)."
+    },
+    {
       "id": "hs:bieu:8523:82801",
       "nut": "bieu:8523",
       "loai": "CANH_TRANH",
@@ -5074,7 +5446,7 @@
       "ten": "- - - - - Loại dùng cho điện ảnh",
       "laLoaiKhac": false,
       "ketQua": "CHƯA ĐỦ DỮ KIỆN",
-      "cauHoi": "Trong nhánh [Phương tiện lưu trữ thông tin từ tính → Loại khác → Băng từ, có chiều rộng trên 4 mm nhưng không quá 6,5 mm → Loại khác], băng từ đã ghi có chiều rộng chính xác bao nhiêu mm và nội dung đã ghi thuộc loại nào: không thuộc các dòng đứng trên (85232941 (Băng máy tính)) và đúng là “Loại dùng cho điện ảnh” (cụ thể phân biệt điện ảnh, video khác, máy tính hay mã nhị phân ADP)?",
+      "cauHoi": "Trong nhánh băng từ đã ghi rộng trên 4 mm đến không quá 6,5 mm, băng từ có chiều rộng chính xác bao nhiêu mm và nội dung đã ghi có chuyên dùng cho điện ảnh (phân định trực tiếp với băng máy tính 8523.29.41 và băng video khác 8523.29.43)?",
       "lyDo": "Nằm dưới nhánh “Loại khác” (đã ghi) và sử dụng tiêu chí mục đích/nội dung nghĩa thường (“Loại dùng cho điện ảnh”); cần xác minh chiều rộng (mm) và nội dung thực tế đã ghi.",
       "canCu": [
         {
@@ -5347,7 +5719,7 @@
       "ten": "- - - - - Loại dùng cho điện ảnh",
       "laLoaiKhac": false,
       "ketQua": "CHƯA ĐỦ DỮ KIỆN",
-      "cauHoi": "Trong nhánh [Phương tiện lưu trữ thông tin từ tính → Loại khác → Băng từ, có chiều rộng trên 6,5 mm → Loại khác], băng từ đã ghi có chiều rộng chính xác bao nhiêu mm và nội dung đã ghi thuộc loại nào: không thuộc các dòng đứng trên (85232961 (Loại sử dụng để tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh, được ghi ở dạng mã nhị phân để máy có thể đọc được, và có thể thao tác hoặc có thể tương tác với người sử dụng, thông qua một máy xử lý dữ liệu tự động; phương tiện lưu trữ được định dạng riêng (đã ghi))) và đúng là “Loại dùng cho điện ảnh” (cụ thể phân biệt điện ảnh, video khác, máy tính hay mã nhị phân ADP)?",
+      "cauHoi": "Trong nhánh băng từ đã ghi rộng trên 6,5 mm, băng từ có chiều rộng chính xác bao nhiêu mm và nội dung đã ghi có chuyên dùng cho điện ảnh (phân định trực tiếp với loại tái tạo mã nhị phân ADP 8523.29.61 và băng video khác 8523.29.63)?",
       "lyDo": "Nằm dưới nhánh “Loại khác” (đã ghi) và sử dụng tiêu chí mục đích/nội dung nghĩa thường (“Loại dùng cho điện ảnh”); cần xác minh chiều rộng (mm) và nội dung thực tế đã ghi.",
       "canCu": [
         {
@@ -6876,8 +7248,8 @@
       "maSo": "85235200",
       "ten": "- - \"Thẻ thông minh\"",
       "laLoaiKhac": false,
-      "ketQua": "ĐÚNG",
-      "cauHoi": null,
+      "ketQua": "CHƯA ĐỦ DỮ KIỆN",
+      "cauHoi": "Thẻ thông minh này có xác nhận chỉ chứa chip mạch tích hợp (có thể có tiếp điểm, dải từ tính hoặc ăng ten gắn bên trong) và KHÔNG chứa bất kỳ phần tử chủ động hay thụ động nào khác theo Chú giải 6(b) Chương 85 (để phân biệt với thiết bị lưu trữ bền vững thể rắn 8523.51 và thẻ không tiếp xúc 8523.59.10) không?",
       "lyDo": "Đáp ứng định nghĩa pháp lý về “thẻ thông minh” tại Chú giải 6(b) Chương 85 (thẻ gắn bên trong 1 hoặc nhiều mạch tích hợp dạng chip, có thể gồm tiếp điểm/dải từ/ăng ten nhưng không chứa phần tử chủ động hay thụ động nào khác) và được ưu tiên vào nhóm 85.23 trước 85.41/85.42 theo Chú giải 12 Chương 85.",
       "canCu": [
         {

@@ -1200,17 +1200,14 @@
       "tap": [
         "của hàng hóa thuộc phân nhóm 8512.10"
       ],
-      "tapDu": [
-        "của hàng hóa thuộc phân nhóm 8512.10",
-        "của hàng hóa thuộc phân nhóm 8512.20, 8512.30 hoặc 8512.40"
-      ],
       "mo": "DINH_NGHIA_LUAT",
       "moNguon": "bieu:85129010#1",
       "moNguonVanTay": "ec0b11e87ea2b2a02d84dbdd760894b95901dc811e7a9e25da2df58cdd864b90",
       "cauHoi": "Bộ phận này chỉ dùng hoặc chủ yếu dùng cho thiết bị chiếu sáng/tín hiệu trực quan của xe đạp thuộc phân nhóm 8512.10?",
       "trich": "- - Của hàng hóa thuộc phân nhóm 8512.10",
       "nguon": "bieu:85129010#1",
-      "vanTay": "ec0b11e87ea2b2a02d84dbdd760894b95901dc811e7a9e25da2df58cdd864b90"
+      "vanTay": "ec0b11e87ea2b2a02d84dbdd760894b95901dc811e7a9e25da2df58cdd864b90",
+      "daTri": true
     },
     {
       "id": "hs:bieu:85129020:8201",
@@ -1223,17 +1220,14 @@
       "tap": [
         "của hàng hóa thuộc phân nhóm 8512.20, 8512.30 hoặc 8512.40"
       ],
-      "tapDu": [
-        "của hàng hóa thuộc phân nhóm 8512.10",
-        "của hàng hóa thuộc phân nhóm 8512.20, 8512.30 hoặc 8512.40"
-      ],
       "mo": "DINH_NGHIA_LUAT",
       "moNguon": "bieu:85129020#1",
       "moNguonVanTay": "950963ddbd8cc2d4b904a82e7f26d51e012ccfacc17179361ee23c999fc075e1",
       "cauHoi": "Bộ phận này chỉ dùng hoặc chủ yếu dùng cho hàng hóa thuộc phân nhóm 8512.20, 8512.30 hoặc 8512.40?",
       "trich": "- - Của hàng hóa thuộc phân nhóm 8512.20, 8512.30 hoặc 8512.40",
       "nguon": "bieu:85129020#1",
-      "vanTay": "950963ddbd8cc2d4b904a82e7f26d51e012ccfacc17179361ee23c999fc075e1"
+      "vanTay": "950963ddbd8cc2d4b904a82e7f26d51e012ccfacc17179361ee23c999fc075e1",
+      "daTri": true
     },
     {
       "id": "hs:bieu:8512:8209",
@@ -1306,20 +1300,6 @@
       "ghiChu": "Thiết bị hoàn chỉnh (hoặc chưa hoàn chỉnh/tháo rời có đặc trưng cơ bản) xếp ở phân nhóm thiết bị, tách với bộ phận rời 8512.90."
     },
     {
-      "id": "hs:bieu:8512:8214",
-      "nut": "bieu:8512",
-      "loai": "GIAI_CHONG",
-      "cap": [
-        "bieu:851210",
-        "bieu:851230"
-      ],
-      "cach": "CHU_GIAI",
-      "trich": "- Thiết bị tín hiệu âm thanh:",
-      "nguon": "bieu:851230#1",
-      "vanTay": "ea2a7b0337d6a18f12be61e67235bd0e044502709a7fda3c067b2167e2701325",
-      "ghiChu": "Tách thiết bị chiếu sáng/tín hiệu trực quan (8512.10) với thiết bị tín hiệu âm thanh (8512.30)."
-    },
-    {
       "id": "hs:bieu:8512:8215",
       "nut": "bieu:8512",
       "loai": "GIAI_CHONG",
@@ -1360,20 +1340,6 @@
       "nguon": "gir:2:a:ct:7#1",
       "vanTay": "439653030c9f71dde8521ae3ce11e30eac6867324e6b2a6c2b9733fe589001bc",
       "ghiChu": "Tách còi đã lắp ráp (8512.30.10) với thiết bị tín hiệu âm thanh chưa lắp ráp (8512.30.20)."
-    },
-    {
-      "id": "hs:bieu:851290:8202",
-      "nut": "bieu:851290",
-      "loai": "GIAI_CHONG",
-      "cap": [
-        "bieu:85129010",
-        "bieu:85129020"
-      ],
-      "cach": "CHU_GIAI",
-      "trich": "- - Của hàng hóa thuộc phân nhóm 8512.10",
-      "nguon": "bieu:85129010#1",
-      "vanTay": "ec0b11e87ea2b2a02d84dbdd760894b95901dc811e7a9e25da2df58cdd864b90",
-      "ghiChu": "Tách bộ phận của 8512.10 (8512.90.10) với bộ phận của 8512.20/8512.30/8512.40 (8512.90.20)."
     },
     {
       "id": "hs:bieu:8512:8217",
@@ -1835,6 +1801,96 @@
       "trich": "(c) Dụng cụ hoặc thiết bị tạo âm thanh bằng điện (nhóm 85.12 hay 85.31, tùy theo trường hợp).",
       "nguon": "nhom:9208:ct:20#1",
       "vanTay": "14030f95849d4e8fc869cbefebc89e8bbe2227c3f61f71f621d4e44cc3f4c591"
+    },
+    {
+      "id": "hs:bieu:8512:8234",
+      "nut": "bieu:8512",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "loai_tru_ngoai_nhom_8512",
+      "tap": [
+        "bộ phận có công dụng chung (Chú giải 1(g) Phần XVI)",
+        "sản phẩm thủy tinh thuộc nhóm 70.11 (Chú giải 1(b) Chương 85)",
+        "bộ phận rời đã được chi tiết ở nhóm riêng khác của Chương 84/85 như động cơ điện rời 85.01, công tắc rời 85.36 (Chú giải 2(a) Phần XVI)"
+      ],
+      "mo": "DINH_NGHIA_LUAT",
+      "moNguon": [
+        "phan:XVI:cg:1:g#1",
+        "chuong:85:cg:1:b#1",
+        "phan:XVI:cg:2:a#1"
+      ],
+      "moNguonVanTay": {
+        "phan:XVI:cg:1:g#1": "76a8b3b2d4baf617968af52e227ddb5b7327b9cec396bee49ef2ed308428af07",
+        "chuong:85:cg:1:b#1": "fb0cf66f2c0d0705c2c15cc22edbdc61a4c01a8eebbd5453a32d12fad6bb401d",
+        "phan:XVI:cg:2:a#1": "0be725fa818c15a71b0fe25b4f42bb5366794d9c3be56b673c9827efb0e80698"
+      },
+      "cauHoi": "Hàng hóa có thuộc bộ phận công dụng chung (Phần XV/Chương 39 theo Chú giải 1(g) Phần XVI), sản phẩm thủy tinh nhóm 70.11 (Chú giải 1(b) Chương 85), hoặc bộ phận rời đã được chi tiết ở nhóm riêng khác của Chương 84/85 (như động cơ điện rời 85.01, công tắc rời 85.36 theo Chú giải 2(a) Phần XVI) không?",
+      "trich": "(a) Các bộ phận đã được chi tiết tại nhóm nào đó của Chương 84 hoặc 85 (trừ các nhóm 84.09, 84.31, 84.48, 84.66, 84.73, 84.87, 85.03, 85.22, 85.29, 85.38 và 85.48) được phân loại vào nhóm đó trong mọi trường hợp;",
+      "nguon": "phan:XVI:cg:2:a#1",
+      "vanTay": "0be725fa818c15a71b0fe25b4f42bb5366794d9c3be56b673c9827efb0e80698"
+    },
+    {
+      "id": "hs:bieu:851220:8204",
+      "nut": "bieu:851220",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "phuong_tien_phan_nhom",
+      "tap": [
+        "xe đạp"
+      ],
+      "mo": "MO_TA_HUONG_DAN",
+      "moNguon": "bieu:851210#1",
+      "moNguonVanTay": "bb55d5e21d73da27c8df1584456d1708b55198cc25741ffb856d3caeb5dd3a95",
+      "cauHoi": "Thiết bị chiếu sáng hoặc tạo tín hiệu trực quan này có phải loại dùng cho xe đạp (8512.10) không?",
+      "trich": "- Thiết bị chiếu sáng hoặc tạo tín hiệu trực quan khác:",
+      "nguon": "bieu:851220#1",
+      "vanTay": "606a49247498ebd45291eb4c11e7d3266fcd9d9fe3cee4e364750e9d9ad78fcc"
+    },
+    {
+      "id": "hs:bieu:851220:8205",
+      "nut": "bieu:851220",
+      "loai": "GIAI_CHONG",
+      "cap": [
+        "bieu:85122020",
+        "bieu:8512209"
+      ],
+      "cach": "TRU",
+      "trich": "- - Loại khác:",
+      "nguon": "bieu:8512209#1",
+      "vanTay": "f7471cc258651df3a699c9ded6e380c1d526ade5c0ef4511b997105979ec5aa9",
+      "ghiChu": "Nhánh \"Loại khác:\" 8512.20.9 loại trừ thiết bị chiếu sáng hoặc tạo tín hiệu trực quan chưa lắp ráp (8512.20.20)."
+    },
+    {
+      "id": "hs:bieu:851230:8204",
+      "nut": "bieu:851230",
+      "loai": "GIAI_CHONG",
+      "cap": [
+        "bieu:85123010",
+        "bieu:8512309"
+      ],
+      "cach": "TRU",
+      "trich": "- - Loại khác:",
+      "nguon": "bieu:8512309#1",
+      "vanTay": "f7471cc258651df3a699c9ded6e380c1d526ade5c0ef4511b997105979ec5aa9",
+      "ghiChu": "Nhánh \"Loại khác:\" 8512.30.9 loại trừ còi đã lắp ráp (8512.30.10)."
+    },
+    {
+      "id": "hs:bieu:851230:8205",
+      "nut": "bieu:851230",
+      "loai": "GIAI_CHONG",
+      "cap": [
+        "bieu:85123020",
+        "bieu:8512309"
+      ],
+      "cach": "TRU",
+      "trich": "- - Loại khác:",
+      "nguon": "bieu:8512309#1",
+      "vanTay": "f7471cc258651df3a699c9ded6e380c1d526ade5c0ef4511b997105979ec5aa9",
+      "ghiChu": "Nhánh \"Loại khác:\" 8512.30.9 loại trừ thiết bị tín hiệu âm thanh chưa lắp ráp (8512.30.20)."
     }
   ],
   "ma8": [
@@ -1842,9 +1898,9 @@
       "ma": "bieu:85121000",
       "ten": "- Thiết bị chiếu sáng hoặc tạo tín hiệu trực quan dùng cho xe đạp",
       "laLoaiKhac": false,
-      "ketQua": "ĐÚNG",
-      "lyDo": "Đáp ứng nội dung phân nhóm 8512.10 (cùng dòng với 8512.10.00): thiết bị chiếu sáng hoặc tạo tín hiệu trực quan hoạt động bằng điện dùng cho xe đạp.",
-      "cauHoi": null,
+      "ketQua": "CHƯA ĐỦ DỮ KIỆN",
+      "lyDo": "Đáp ứng nội dung phân nhóm 8512.10 (cùng dòng với 8512.10.00): thiết bị chiếu sáng hoặc tạo tín hiệu trực quan hoạt động bằng điện dùng cho xe đạp. Đã gỡ khóa cứng giữa 8512.10 và 8512.30 để mở vùng chồng thiết bị xe đạp kết hợp đèn + còi (Chú giải 3 Phần XVI / dmh:8512:01) và ranh giới xe đạp điện (dmh:8512:02).",
+      "cauHoi": "Thiết bị dùng cho xe đạp/xe có động cơ này chỉ thực hiện một chức năng đơn lẻ hay kết hợp đồng thời cả chiếu sáng/tín hiệu trực quan (8512.10/8512.20) và tín hiệu âm thanh (8512.30) trong cùng một vỏ (nếu kết hợp, chức năng chính theo Chú giải 3 Phần XVI / dmh:8512:01 là gì)? Đồng thời xác nhận dùng cho xe đạp thông thường hay xe đạp điện/xe gắn máy có động cơ phụ trợ (dmh:8512:02)?",
       "canCu": [
         {
           "idCau": "bieu:8512#1",
@@ -1861,6 +1917,10 @@
         {
           "idCau": "nhom:8512:ct:4#2",
           "trich": "các đèn hoạt động bằng ắc quy được thiết kế để gắn trên xe đạp"
+        },
+        {
+          "idCau": "phan:XVI:cg:3#1",
+          "trich": "3. Trừ khi có yêu cầu cụ thể khác, các loại máy liên hợp gồm hai hoặc nhiều máy lắp ghép với nhau thành một thiết bị đồng bộ và các loại máy khác được thiết kế để thực hiện hai hoặc nhiều chức năng khác nhau hoặc bổ trợ lẫn nhau được phân loại theo bộ phận chính hoặc máy thực hiện chức năng chính."
         }
       ]
     },
@@ -1946,9 +2006,9 @@
       "ma": "bieu:85123010",
       "ten": "- - Còi, đã lắp ráp",
       "laLoaiKhac": false,
-      "ketQua": "ĐÚNG",
-      "lyDo": "Đáp ứng phân nhóm 8512.30 (thiết bị tín hiệu âm thanh bằng điện dùng cho xe đạp/xe có động cơ) và dòng 8512.30.10 là còi đã lắp ráp.",
-      "cauHoi": null,
+      "ketQua": "CHƯA ĐỦ DỮ KIỆN",
+      "lyDo": "Đáp ứng phân nhóm 8512.30 (thiết bị tín hiệu âm thanh bằng điện dùng cho xe đạp/xe có động cơ) và dòng 8512.30.10 là còi đã lắp ráp. Đã gỡ khóa cứng giữa 8512.10 và 8512.30; cần xác minh thiết bị không phải dạng tổ hợp vừa phát sáng/tín hiệu trực quan vừa phát âm thanh theo Chú giải 3 Phần XVI (dmh:8512:01).",
+      "cauHoi": "Thiết bị dùng cho xe đạp/xe có động cơ này chỉ thực hiện một chức năng đơn lẻ hay kết hợp đồng thời cả chiếu sáng/tín hiệu trực quan (8512.10/8512.20) và tín hiệu âm thanh (8512.30) trong cùng một vỏ (nếu kết hợp, chức năng chính theo Chú giải 3 Phần XVI / dmh:8512:01 là gì)?",
       "canCu": [
         {
           "idCau": "bieu:851230#1",
@@ -1961,6 +2021,10 @@
         {
           "idCau": "nhom:8512:ct:14#1",
           "trich": "(12) Còi, còi báo hiệu và các thiết bị báo tín hiệu âm thanh bằng điện khác."
+        },
+        {
+          "idCau": "phan:XVI:cg:3#1",
+          "trich": "3. Trừ khi có yêu cầu cụ thể khác, các loại máy liên hợp gồm hai hoặc nhiều máy lắp ghép với nhau thành một thiết bị đồng bộ và các loại máy khác được thiết kế để thực hiện hai hoặc nhiều chức năng khác nhau hoặc bổ trợ lẫn nhau được phân loại theo bộ phận chính hoặc máy thực hiện chức năng chính."
         }
       ]
     },
@@ -1968,9 +2032,9 @@
       "ma": "bieu:85123020",
       "ten": "- - Thiết bị tín hiệu âm thanh chưa lắp ráp",
       "laLoaiKhac": false,
-      "ketQua": "ĐÚNG",
-      "lyDo": "Đáp ứng phân nhóm 8512.30 và dòng 8512.30.20: thiết bị tín hiệu âm thanh xuất trình ở dạng chưa lắp ráp theo Quy tắc 2(a).",
-      "cauHoi": null,
+      "ketQua": "CHƯA ĐỦ DỮ KIỆN",
+      "lyDo": "Đáp ứng phân nhóm 8512.30 và dòng 8512.30.20: thiết bị tín hiệu âm thanh xuất trình ở dạng chưa lắp ráp theo Quy tắc 2(a). Đã gỡ khóa cứng giữa 8512.10 và 8512.30; cần xác minh thiết bị không phải dạng tổ hợp vừa phát sáng/tín hiệu trực quan vừa phát âm thanh theo Chú giải 3 Phần XVI (dmh:8512:01).",
+      "cauHoi": "Thiết bị dùng cho xe đạp/xe có động cơ này chỉ thực hiện một chức năng đơn lẻ hay kết hợp đồng thời cả chiếu sáng/tín hiệu trực quan (8512.10/8512.20) và tín hiệu âm thanh (8512.30) trong cùng một vỏ (nếu kết hợp, chức năng chính theo Chú giải 3 Phần XVI / dmh:8512:01 là gì)?",
       "canCu": [
         {
           "idCau": "bieu:851230#1",
@@ -1983,6 +2047,10 @@
         {
           "idCau": "gir:2:a:ct:7#1",
           "trich": "(VII) Theo mục đích của Quy tắc này, “hàng hóa ở dạng chưa lắp ráp hoặc tháo rời” là những hàng hóa mà bộ phận của chúng sẽ được lắp ráp lại với nhau bằng các dụng cụ lắp ráp (vít, bu-lông, đai ốc, ê -cu,…), hoặc ghép bằng đinh tán hoặc bằng cách hàn lại, với điều kiện những hoạt động này chỉ đơn thuần là lắp ráp."
+        },
+        {
+          "idCau": "phan:XVI:cg:3#1",
+          "trich": "3. Trừ khi có yêu cầu cụ thể khác, các loại máy liên hợp gồm hai hoặc nhiều máy lắp ghép với nhau thành một thiết bị đồng bộ và các loại máy khác được thiết kế để thực hiện hai hoặc nhiều chức năng khác nhau hoặc bổ trợ lẫn nhau được phân loại theo bộ phận chính hoặc máy thực hiện chức năng chính."
         }
       ]
     },
@@ -2084,9 +2152,9 @@
       "ma": "bieu:85129010",
       "ten": "- - Của hàng hóa thuộc phân nhóm 8512.10",
       "laLoaiKhac": false,
-      "ketQua": "ĐÚNG",
-      "lyDo": "Đáp ứng phân nhóm 8512.90 (bộ phận của hàng hóa nhóm 85.12 theo Chú giải 2(b) Phần XVI) và dòng 8512.90.10 dành riêng hoặc chủ yếu cho thiết bị thuộc phân nhóm 8512.10.",
-      "cauHoi": null,
+      "ketQua": "CHƯA ĐỦ DỮ KIỆN",
+      "lyDo": "Đáp ứng phân nhóm 8512.90 (bộ phận của hàng hóa nhóm 85.12 theo Chú giải 2(b) Phần XVI) và dòng 8512.90.10 dành riêng hoặc chủ yếu cho thiết bị thuộc phân nhóm 8512.10. Đã gỡ GIAI_CHONG yếu giữa 8512.90.10 và 8512.90.20 để gắn về điểm mơ hồ dmh:8512:03 đối với bộ phận dùng chung cho cả 8512.10 và 8512.20/30/40.",
+      "cauHoi": "Theo bản vẽ kỹ thuật và thông số thiết kế (kích thước, ngàm lắp, tiêu chuẩn điện — dmh:8512:03), bộ phận này được thiết kế chỉ dùng/chủ yếu dùng cho đèn xe đạp (8512.10) hay cho thiết bị chiếu sáng/tín hiệu/gạt nước của xe máy, ô tô (8512.20, 8512.30, 8512.40), hay dùng chung cho cả hai nhánh mà chưa rõ công dụng chủ yếu?",
       "canCu": [
         {
           "idCau": "bieu:851290#1",
@@ -2099,6 +2167,10 @@
         {
           "idCau": "phan:XVI:cg:2:b#1",
           "trich": "(b) Các bộ phận khác, nếu phù hợp để chỉ sử dụng hoặc chủ yếu sử dụng cho các loại máy cụ thể, hoặc cho một số loại máy cùng nhóm (kể cả máy thuộc nhóm 84.79 hoặc 85.43) được phân loại theo nhóm của các máy cụ thể đó hoặc vào nhóm thích hợp như 84.09, 84.31, 84.48, 84.66, 84.73, 85.03, 85.22, 85.29 hoặc 85.38."
+        },
+        {
+          "idCau": "phan:XVI:cg:2:c#1",
+          "trich": "(c) Tất cả các bộ phận khác được phân loại trong nhóm thích hợp như 84.09, 84.31, 84.48, 84.66, 84.73, 85.03, 85.22, 85.29 hoặc 85.38 hoặc, nếu không thì, phân loại vào nhóm 84.87 hoặc 85.48."
         }
       ]
     },
@@ -2106,9 +2178,9 @@
       "ma": "bieu:85129020",
       "ten": "- - Của hàng hóa thuộc phân nhóm 8512.20, 8512.30 hoặc 8512.40",
       "laLoaiKhac": false,
-      "ketQua": "ĐÚNG",
-      "lyDo": "Đáp ứng phân nhóm 8512.90 và dòng 8512.90.20 dành riêng hoặc chủ yếu cho hàng hóa thuộc phân nhóm 8512.20, 8512.30 hoặc 8512.40.",
-      "cauHoi": null,
+      "ketQua": "CHƯA ĐỦ DỮ KIỆN",
+      "lyDo": "Đáp ứng phân nhóm 8512.90 và dòng 8512.90.20 dành riêng hoặc chủ yếu cho hàng hóa thuộc phân nhóm 8512.20, 8512.30 hoặc 8512.40. Đã gỡ GIAI_CHONG yếu giữa 8512.90.10 và 8512.90.20 để gắn về điểm mơ hồ dmh:8512:03 đối với bộ phận dùng chung cho cả 8512.10 và 8512.20/30/40.",
+      "cauHoi": "Theo bản vẽ kỹ thuật và thông số thiết kế (kích thước, ngàm lắp, tiêu chuẩn điện — dmh:8512:03), bộ phận này được thiết kế chỉ dùng/chủ yếu dùng cho đèn xe đạp (8512.10) hay cho thiết bị chiếu sáng/tín hiệu/gạt nước của xe máy, ô tô (8512.20, 8512.30, 8512.40), hay dùng chung cho cả hai nhánh mà chưa rõ công dụng chủ yếu?",
       "canCu": [
         {
           "idCau": "bieu:851290#1",
@@ -2121,6 +2193,10 @@
         {
           "idCau": "phan:XVI:cg:2:b#1",
           "trich": "(b) Các bộ phận khác, nếu phù hợp để chỉ sử dụng hoặc chủ yếu sử dụng cho các loại máy cụ thể, hoặc cho một số loại máy cùng nhóm (kể cả máy thuộc nhóm 84.79 hoặc 85.43) được phân loại theo nhóm của các máy cụ thể đó hoặc vào nhóm thích hợp như 84.09, 84.31, 84.48, 84.66, 84.73, 85.03, 85.22, 85.29 hoặc 85.38."
+        },
+        {
+          "idCau": "phan:XVI:cg:2:c#1",
+          "trich": "(c) Tất cả các bộ phận khác được phân loại trong nhóm thích hợp như 84.09, 84.31, 84.48, 84.66, 84.73, 85.03, 85.22, 85.29 hoặc 85.38 hoặc, nếu không thì, phân loại vào nhóm 84.87 hoặc 85.48."
         }
       ]
     }

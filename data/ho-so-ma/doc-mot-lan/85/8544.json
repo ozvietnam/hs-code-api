@@ -622,6 +622,10 @@
           {
             "idCau": "bieu:8601#1",
             "trich": "Đầu máy di chuyển trên đường ray chạy bằng nguồn điện bên ngoài hoặc bằng ắc qui điện"
+          },
+          {
+            "idCau": "phan:XVI:cg:1:l#1",
+            "trich": "(l) Các sản phẩm thuộc Phần XVII;"
           }
         ]
       },
@@ -632,6 +636,10 @@
           {
             "idCau": "bieu:9104#1",
             "trich": "Đồng hồ thời gian lắp trên bàn điều khiển phương tiện và các loại đồng hồ thời gian tương tự dùng cho xe cộ, phương tiện bay, tàu vũ trụ hoặc tàu thủy"
+          },
+          {
+            "idCau": "phan:XVI:cg:1:n#1",
+            "trich": "(n) Đồng hồ thời gian, đồng hồ cá nhân hoặc các sản phẩm khác thuộc Chương 91;"
           }
         ]
       },
@@ -642,6 +650,10 @@
           {
             "idCau": "bieu:9110#1",
             "trich": "Máy đồng hồ thời gian hoặc đồng hồ cá nhân đủ bộ, chưa lắp ráp hoặc đã lắp ráp từng phần (cụm máy); máy đồng hồ thời gian hoặc máy đồng hồ cá nhân chưa đủ bộ, đã lắp ráp; máy đồng hồ thời gian hoặc máy đồng hồ cá nhân chưa đủ bộ, chưa lắp ráp"
+          },
+          {
+            "idCau": "phan:XVI:cg:1:n#1",
+            "trich": "(n) Đồng hồ thời gian, đồng hồ cá nhân hoặc các sản phẩm khác thuộc Chương 91;"
           }
         ]
       },
@@ -1000,15 +1012,30 @@
       "nut": "bieu:85444",
       "loai": "DIEU_KIEN",
       "ve": 1,
-      "phu": false,
+      "phu": true,
       "kieu": "GIA_TRI",
       "truc": "nhánh chủng loại cấp 1 trong 85.44",
       "tap": [
-        "các vật dẫn điện khác (không thuộc dây đơn dạng cuộn, cáp đồng trục, bộ dây phương tiện, cáp sợi quang)"
+        "dây đơn dạng cuộn",
+        "cáp đồng trục và các dây dẫn điện đồng trục khác",
+        "bộ dây đánh lửa và bộ dây khác loại sử dụng cho xe, phương tiện bay hoặc tàu thuyền",
+        "cáp sợi quang"
       ],
-      "mo": "NGHIA_THUONG",
-      "cauHoi": "Hàng hóa có phải vật dẫn điện cách điện khác (không phải dây đơn dạng cuộn, cáp đồng trục, bộ dây đánh lửa/bộ dây phương tiện, cáp sợi quang) không?",
-      "trich": "Các vật dẫn điện khác(*)",
+      "mo": "MO_TA_HUONG_DAN",
+      "moNguon": [
+        "bieu:85441#1",
+        "bieu:854420#1",
+        "bieu:854430#1",
+        "bieu:854470#1"
+      ],
+      "moNguonVanTay": {
+        "bieu:85441#1": "18c515ab9655359ba9626db33551f26ba2b509f803a9b179b0196085cf56b404",
+        "bieu:854420#1": "5bca19ba2fe171dea4059cf6d9d4e6f54fe06542c646522deb7c40cb533ba265",
+        "bieu:854430#1": "e8bb54a5048f4af8095a7e83bacb8db7a0f47a15a2232e3556d9a47b2261b44a",
+        "bieu:854470#1": "20f851264897d037ab3bd82248f0f6cba65801abaf2ab6edb8b6433e481ef512"
+      },
+      "cauHoi": "Vật dẫn điện này có thuộc một trong các nhánh đặc thù đứng trên của nhóm 85.44 (dây đơn dạng cuộn 8544.1, cáp đồng trục 8544.20, bộ dây dùng cho xe/phương tiện bay/tàu thuyền 8544.30, hay cáp sợi quang 8544.70) không?",
+      "trich": "- Các vật dẫn điện khác(*), dùng cho điện áp không quá 1.000 V:",
       "nguon": "bieu:85444#1",
       "vanTay": "c81f928180be011f56746102da95b30b756525e02cb4224fd67f2ca8264611e7"
     },
@@ -1031,15 +1058,30 @@
       "nut": "bieu:854460",
       "loai": "DIEU_KIEN",
       "ve": 1,
-      "phu": false,
+      "phu": true,
       "kieu": "GIA_TRI",
       "truc": "nhánh chủng loại cấp 1 trong 85.44",
       "tap": [
-        "các vật dẫn điện khác (không thuộc dây đơn dạng cuộn, cáp đồng trục, bộ dây phương tiện, cáp sợi quang)"
+        "dây đơn dạng cuộn",
+        "cáp đồng trục và các dây dẫn điện đồng trục khác",
+        "bộ dây đánh lửa và bộ dây khác loại sử dụng cho xe, phương tiện bay hoặc tàu thuyền",
+        "cáp sợi quang"
       ],
-      "mo": "NGHIA_THUONG",
-      "cauHoi": "Hàng hóa có phải vật dẫn điện cách điện khác (không phải dây đơn dạng cuộn, cáp đồng trục, bộ dây phương tiện, cáp sợi quang) không?",
-      "trich": "Các vật dẫn điện khác(*)",
+      "mo": "MO_TA_HUONG_DAN",
+      "moNguon": [
+        "bieu:85441#1",
+        "bieu:854420#1",
+        "bieu:854430#1",
+        "bieu:854470#1"
+      ],
+      "moNguonVanTay": {
+        "bieu:85441#1": "18c515ab9655359ba9626db33551f26ba2b509f803a9b179b0196085cf56b404",
+        "bieu:854420#1": "5bca19ba2fe171dea4059cf6d9d4e6f54fe06542c646522deb7c40cb533ba265",
+        "bieu:854430#1": "e8bb54a5048f4af8095a7e83bacb8db7a0f47a15a2232e3556d9a47b2261b44a",
+        "bieu:854470#1": "20f851264897d037ab3bd82248f0f6cba65801abaf2ab6edb8b6433e481ef512"
+      },
+      "cauHoi": "Vật dẫn điện này có thuộc một trong các nhánh đặc thù đứng trên của nhóm 85.44 (dây đơn dạng cuộn 8544.1, cáp đồng trục 8544.20, bộ dây dùng cho xe/phương tiện bay/tàu thuyền 8544.30, hay cáp sợi quang 8544.70) không?",
+      "trich": "- Các vật dẫn điện khác(*), dùng cho điện áp trên 1000 V:",
       "nguon": "bieu:854460#1",
       "vanTay": "27f4114cd6e9ff4fde5bf0db17642544b3b56e4b596bbf3464a21d71bc544ca3"
     },
@@ -1608,11 +1650,11 @@
         "bieu:8544201",
         "bieu:8544202"
       ],
-      "cach": "TRU",
-      "trich": "- - Cáp cách điện đã gắn với đầu nối, dùng cho điện áp không quá 66 kV:",
-      "nguon": "bieu:8544201#1",
-      "vanTay": "cebec8cb7fd5ecbeb97fb5626ed5c4d89e0c03b4982df1d9f26975b0bd2b9160",
-      "ghiChu": "Phân tách theo tình trạng đã gắn vs chưa gắn đầu nối."
+      "cach": "CHU_GIAI",
+      "trich": "- - Cáp cách điện chưa gắn với đầu nối, dùng cho điện áp không quá 66 kV:",
+      "nguon": "bieu:8544202#1",
+      "vanTay": "9dca8b0df799d6857147fd86d000ec783bd245a8e65d4d5a4f85b2a02902953b",
+      "ghiChu": "Phân tách trực tiếp bằng mệnh đề đối lập \"đã gắn với đầu nối\" (bieu:8544201#1) vs \"chưa gắn với đầu nối\" (bieu:8544202#1)."
     },
     {
       "id": "hs:bieu:854420:8203",
@@ -1622,11 +1664,11 @@
         "bieu:8544203",
         "bieu:8544204"
       ],
-      "cach": "TRU",
-      "trich": "- - Cáp cách điện đã gắn với đầu nối, dùng cho điện áp trên 66 kV:",
-      "nguon": "bieu:8544203#1",
-      "vanTay": "c7e55af81bb498b031a45c084aab46280d00f1ff5ef4ebad1a3bd5c81063da3d",
-      "ghiChu": "Phân tách theo tình trạng đã gắn vs chưa gắn đầu nối."
+      "cach": "CHU_GIAI",
+      "trich": "- - Cáp cách điện chưa gắn với đầu nối, dùng cho điện áp trên 66 kV:",
+      "nguon": "bieu:8544204#1",
+      "vanTay": "e087d8d82095735c644c89e93019f8b7a3493d4068596b0aa0afeb597b410690",
+      "ghiChu": "Phân tách trực tiếp bằng mệnh đề đối lập \"đã gắn với đầu nối\" (bieu:8544203#1) vs \"chưa gắn với đầu nối\" (bieu:8544204#1)."
     },
     {
       "id": "hs:bieu:854420:8204",
@@ -2552,7 +2594,7 @@
       "trich": "- - - - Cáp điện cách điện bằng plastic, trong đó mỗi lõi có đường kính không quá 5 mm",
       "nguon": "bieu:85444294#1",
       "vanTay": "7fc8e14712f2789e6a8939167306b14d5478f03b688dcfc18879eaf15c3c271d",
-      "ghiChu": "Phân tách theo đường kính mỗi lõi <= 5 mm vs > 5 đến <= 19,5 mm."
+      "ghiChu": "Phân tách theo đường kính mỗi lõi <= 5 mm vs > 5 đến <= 19,5 mm. Áp dụng kèm điểm mơ hồ dmh:8544:06 (cách đo đường kính lõi) và dmh:8544:07 (ranh giới cáp điện/cáp bọc vs dây dẫn khác); giữ CHƯA ĐỦ DỮ KIỆN tại ma8."
     },
     {
       "id": "hs:bieu:8544429:8203",
@@ -2565,7 +2607,8 @@
       "cach": "TRU",
       "trich": "- - - - Cáp điện cách điện bằng plastic khác",
       "nguon": "bieu:85444296#1",
-      "vanTay": "21413e0c30e4d4e99ec3842a9801176e9a40f1b15753b8752bcb96570b5f43b4"
+      "vanTay": "21413e0c30e4d4e99ec3842a9801176e9a40f1b15753b8752bcb96570b5f43b4",
+      "ghiChu": "Áp dụng kèm điểm mơ hồ dmh:8544:06 (cách đo đường kính lõi) và dmh:8544:07 (ranh giới cáp điện/cáp bọc vs dây dẫn khác); giữ CHƯA ĐỦ DỮ KIỆN tại ma8."
     },
     {
       "id": "hs:bieu:8544429:8204",
@@ -2578,7 +2621,8 @@
       "cach": "TRU",
       "trich": "- - - - Cáp điện cách điện bằng plastic khác",
       "nguon": "bieu:85444296#1",
-      "vanTay": "21413e0c30e4d4e99ec3842a9801176e9a40f1b15753b8752bcb96570b5f43b4"
+      "vanTay": "21413e0c30e4d4e99ec3842a9801176e9a40f1b15753b8752bcb96570b5f43b4",
+      "ghiChu": "Áp dụng kèm điểm mơ hồ dmh:8544:06 (cách đo đường kính lõi) và dmh:8544:07 (ranh giới cáp điện/cáp bọc vs dây dẫn khác); giữ CHƯA ĐỦ DỮ KIỆN tại ma8."
     },
     {
       "id": "hs:bieu:8544429:8205",
@@ -2990,7 +3034,8 @@
       "cach": "TRU",
       "trich": "- - - - - Cáp điện cách điện bằng plastic khác",
       "nguon": "bieu:85444923#1",
-      "vanTay": "4f1f744963aae06552f22f59f7c9c392e21d9cddea8d906b9c5f77f239d057b4"
+      "vanTay": "4f1f744963aae06552f22f59f7c9c392e21d9cddea8d906b9c5f77f239d057b4",
+      "ghiChu": "Áp dụng kèm điểm mơ hồ dmh:8544:06 (cách đo đường kính lõi) và dmh:8544:07 (ranh giới cáp điện/cáp bọc vs dây dẫn khác); giữ CHƯA ĐỦ DỮ KIỆN tại ma8."
     },
     {
       "id": "hs:bieu:8544492:td1:8202",
@@ -3003,7 +3048,8 @@
       "cach": "TRU",
       "trich": "- - - - - Loại khác, cách điện bằng cao su, plastic hoặc giấy",
       "nguon": "bieu:85444924#1",
-      "vanTay": "212555f581e0a5589710c10b232ffb4ce470db8a0889dd88d4ea02c22f8ed744"
+      "vanTay": "212555f581e0a5589710c10b232ffb4ce470db8a0889dd88d4ea02c22f8ed744",
+      "ghiChu": "Áp dụng kèm điểm mơ hồ dmh:8544:06 (cách đo đường kính lõi) và dmh:8544:07 (ranh giới cáp điện/cáp bọc vs dây dẫn khác); giữ CHƯA ĐỦ DỮ KIỆN tại ma8."
     },
     {
       "id": "hs:bieu:8544492:td1:8203",
@@ -3016,7 +3062,8 @@
       "cach": "TRU",
       "trich": "- - - - - Loại khác, cách điện bằng cao su, plastic hoặc giấy",
       "nguon": "bieu:85444924#1",
-      "vanTay": "212555f581e0a5589710c10b232ffb4ce470db8a0889dd88d4ea02c22f8ed744"
+      "vanTay": "212555f581e0a5589710c10b232ffb4ce470db8a0889dd88d4ea02c22f8ed744",
+      "ghiChu": "Áp dụng kèm điểm mơ hồ dmh:8544:06 (cách đo đường kính lõi) và dmh:8544:07 (ranh giới cáp điện/cáp bọc vs dây dẫn khác); giữ CHƯA ĐỦ DỮ KIỆN tại ma8."
     },
     {
       "id": "hs:bieu:8544492:td1:8204",
@@ -3336,7 +3383,8 @@
       "cach": "TRU",
       "trich": "- - - - Loại khác, cách điện bằng cao su, plastic hoặc giấy",
       "nguon": "bieu:85444942#1",
-      "vanTay": "664d9da86f8bdbe74c9cc03a4a1beef55f7e1f677432ce5e420af4b3777ad85f"
+      "vanTay": "664d9da86f8bdbe74c9cc03a4a1beef55f7e1f677432ce5e420af4b3777ad85f",
+      "ghiChu": "Áp dụng kèm điểm mơ hồ dmh:8544:06 (cách đo đường kính lõi) và dmh:8544:07 (ranh giới cáp điện/cáp bọc vs dây dẫn khác); giữ CHƯA ĐỦ DỮ KIỆN tại ma8."
     },
     {
       "id": "hs:bieu:8544494:8204",
@@ -3512,7 +3560,8 @@
       "cach": "TRU",
       "trich": "- - - Loại khác, cách điện bằng cao su, plastic hoặc giấy",
       "nguon": "bieu:85446012#1",
-      "vanTay": "1dc23fd58eaa4e4bcd29922c305b3eab6e8a17f9c126e6d1070834faa2fe423a"
+      "vanTay": "1dc23fd58eaa4e4bcd29922c305b3eab6e8a17f9c126e6d1070834faa2fe423a",
+      "ghiChu": "Áp dụng kèm điểm mơ hồ dmh:8544:06 (cách đo đường kính lõi) và dmh:8544:07 (ranh giới cáp điện/cáp bọc vs dây dẫn khác); giữ CHƯA ĐỦ DỮ KIỆN tại ma8."
     },
     {
       "id": "hs:bieu:8544601:8203",
@@ -3632,7 +3681,8 @@
       "cach": "TRU",
       "trich": "- - - Loại khác, cách điện bằng cao su, plastic hoặc giấy",
       "nguon": "bieu:85446022#1",
-      "vanTay": "1dc23fd58eaa4e4bcd29922c305b3eab6e8a17f9c126e6d1070834faa2fe423a"
+      "vanTay": "1dc23fd58eaa4e4bcd29922c305b3eab6e8a17f9c126e6d1070834faa2fe423a",
+      "ghiChu": "Áp dụng kèm điểm mơ hồ dmh:8544:06 (cách đo đường kính lõi) và dmh:8544:07 (ranh giới cáp điện/cáp bọc vs dây dẫn khác); giữ CHƯA ĐỦ DỮ KIỆN tại ma8."
     },
     {
       "id": "hs:bieu:8544602:8203",
@@ -3951,6 +4001,290 @@
       "trich": "Dây điện, cáp điện (kể cả cáp đồng trục) có cách điện (kể cả loại đã tráng men cách điện hoặc mạ lớp cách điện) và các vật dẫn(*) có cách điện khác, đã hoặc chưa gắn với đầu nối; cáp sợi quang, làm bằng các bó sợi đơn có vỏ bọc riêng biệt từng sợi, có hoặc không gắn với dây dẫn điện hoặc gắn với đầu nối",
       "nguon": "bieu:8544#1",
       "vanTay": "6164a9da48a25450ebfb4c446a1114d4ff1c70864698be6f0d8d0ee41f4ba7e0"
+    },
+    {
+      "id": "hs:bieu:8544:8220",
+      "nut": "bieu:8544",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "hàng hóa bị loại trừ khỏi nhóm 85.44",
+      "tap": [
+        "bộ phận rời của hàng hóa thuộc nhóm 85.44 không áp dụng Chú giải 2 Phần XVI (phân loại theo chất liệu cấu thành)",
+        "ống chỉ, trục cuốn, lõi guồng không kèm dây cáp bằng vật liệu bất kỳ (Chú giải 1(c) Phần XVI)"
+      ],
+      "mo": "DINH_NGHIA_LUAT",
+      "moNguon": [
+        "phan:XVI:cg:2#1",
+        "phan:XVI:kq:57#1",
+        "phan:XVI:kq:57#2",
+        "phan:XVI:cg:1:c#1"
+      ],
+      "moNguonVanTay": {
+        "phan:XVI:cg:2#1": "fb4029fd7c6f49628ce8acdc645aff37fb3e7d2bb9d84f5c99ea4a67f0125974",
+        "phan:XVI:kq:57#1": "8fd61b9eefa8421a79fb388236931fa44ee54981ebb00777173b0e5671abcc59",
+        "phan:XVI:kq:57#2": "848979d1ebdc50b003ddfebf75993336f47307fa2c2ca0e50a388dfd0c76978c",
+        "phan:XVI:cg:1:c#1": "dfcfd7154f57e18e4c950b0cd28ad694431ec1aa3f46e12d3f8c2632e6b4b6e7"
+      },
+      "cauHoi": "Hàng hóa có phải là bộ phận rời của hàng hóa nhóm 85.44 (không áp dụng Chú giải 2 Phần XVI mà phân loại theo chất liệu cấu thành) hoặc ống chỉ, trục cuốn, lõi guồng không kèm dây cáp bằng vật liệu bất kỳ (Chú giải 1(c) Phần XVI) không?",
+      "trich": "2. Theo Chú giải 1 của Phần này, Chú giải 1 Chương 84 và Chú giải 1 Chương 85, các bộ phận của máy (ngoài các bộ phận của hàng hóa thuộc nhóm 84.84, 85.44, 85.45, 85.46 hoặc 85.47) được phân loại theo các quy tắc sau:",
+      "nguon": "phan:XVI:cg:2#1",
+      "vanTay": "fb4029fd7c6f49628ce8acdc645aff37fb3e7d2bb9d84f5c99ea4a67f0125974"
+    },
+    {
+      "id": "hs:bieu:85444213:8202",
+      "nut": "bieu:85444213",
+      "loai": "DIEU_KIEN",
+      "ve": 1,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "chủng loại cáp viễn thông",
+      "tap": [
+        "cáp điện thoại ngầm dưới biển",
+        "cáp điện báo ngầm dưới biển",
+        "cáp chuyển tiếp vô tuyến ngầm dưới biển"
+      ],
+      "mo": "MO_TA_HUONG_DAN",
+      "moNguon": "bieu:85444211#1",
+      "moNguonVanTay": "cc4ff57014b9bc68027bf2debfbac31559731726296259cf46833510320b83e3",
+      "cauHoi": "Cáp viễn thông này có phải là cáp điện thoại ngầm dưới biển, cáp điện báo ngầm dưới biển hoặc cáp chuyển tiếp vô tuyến ngầm dưới biển thuộc dòng đứng đầu nhánh không?",
+      "trich": "- - - - Loại khác, cách điện bằng cao su, plastic hoặc giấy",
+      "nguon": "bieu:85444213#1",
+      "vanTay": "664d9da86f8bdbe74c9cc03a4a1beef55f7e1f677432ce5e420af4b3777ad85f"
+    },
+    {
+      "id": "hs:bieu:85444223:8202",
+      "nut": "bieu:85444223",
+      "loai": "DIEU_KIEN",
+      "ve": 1,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "chủng loại cáp viễn thông",
+      "tap": [
+        "cáp điện thoại ngầm dưới biển",
+        "cáp điện báo ngầm dưới biển",
+        "cáp chuyển tiếp vô tuyến ngầm dưới biển"
+      ],
+      "mo": "MO_TA_HUONG_DAN",
+      "moNguon": "bieu:85444221#1",
+      "moNguonVanTay": "cc4ff57014b9bc68027bf2debfbac31559731726296259cf46833510320b83e3",
+      "cauHoi": "Cáp viễn thông này có phải là cáp điện thoại ngầm dưới biển, cáp điện báo ngầm dưới biển hoặc cáp chuyển tiếp vô tuyến ngầm dưới biển thuộc dòng đứng đầu nhánh không?",
+      "trich": "- - - - Loại khác, cách điện bằng cao su, plastic hoặc giấy",
+      "nguon": "bieu:85444223#1",
+      "vanTay": "664d9da86f8bdbe74c9cc03a4a1beef55f7e1f677432ce5e420af4b3777ad85f"
+    },
+    {
+      "id": "hs:bieu:85444913:8202",
+      "nut": "bieu:85444913",
+      "loai": "DIEU_KIEN",
+      "ve": 1,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "chủng loại cáp viễn thông",
+      "tap": [
+        "cáp điện thoại ngầm dưới biển",
+        "cáp điện báo ngầm dưới biển",
+        "cáp chuyển tiếp vô tuyến ngầm dưới biển"
+      ],
+      "mo": "MO_TA_HUONG_DAN",
+      "moNguon": "bieu:85444911#1",
+      "moNguonVanTay": "cc4ff57014b9bc68027bf2debfbac31559731726296259cf46833510320b83e3",
+      "cauHoi": "Cáp viễn thông này có phải là cáp điện thoại ngầm dưới biển, cáp điện báo ngầm dưới biển hoặc cáp chuyển tiếp vô tuyến ngầm dưới biển thuộc dòng đứng đầu nhánh không?",
+      "trich": "- - - - Loại khác, cách điện bằng cao su, plastic hoặc giấy",
+      "nguon": "bieu:85444913#1",
+      "vanTay": "664d9da86f8bdbe74c9cc03a4a1beef55f7e1f677432ce5e420af4b3777ad85f"
+    },
+    {
+      "id": "hs:bieu:85444932:8202",
+      "nut": "bieu:85444932",
+      "loai": "DIEU_KIEN",
+      "ve": 1,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "chủng loại cáp viễn thông",
+      "tap": [
+        "cáp điện thoại ngầm dưới biển",
+        "cáp điện báo ngầm dưới biển",
+        "cáp chuyển tiếp vô tuyến ngầm dưới biển"
+      ],
+      "mo": "MO_TA_HUONG_DAN",
+      "moNguon": "bieu:85444931#1",
+      "moNguonVanTay": "cc4ff57014b9bc68027bf2debfbac31559731726296259cf46833510320b83e3",
+      "cauHoi": "Cáp viễn thông này có phải là cáp điện thoại ngầm dưới biển, cáp điện báo ngầm dưới biển hoặc cáp chuyển tiếp vô tuyến ngầm dưới biển thuộc dòng đứng đầu nhánh không?",
+      "trich": "- - - - Loại khác, cách điện bằng plastic",
+      "nguon": "bieu:85444932#1",
+      "vanTay": "4506903866edfdff2e8d8cb13f4489d7a33f3057596208595faeadc0988ba991"
+    },
+    {
+      "id": "hs:bieu:85444933:8202",
+      "nut": "bieu:85444933",
+      "loai": "DIEU_KIEN",
+      "ve": 1,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "chủng loại cáp viễn thông",
+      "tap": [
+        "cáp điện thoại ngầm dưới biển",
+        "cáp điện báo ngầm dưới biển",
+        "cáp chuyển tiếp vô tuyến ngầm dưới biển"
+      ],
+      "mo": "MO_TA_HUONG_DAN",
+      "moNguon": "bieu:85444931#1",
+      "moNguonVanTay": "cc4ff57014b9bc68027bf2debfbac31559731726296259cf46833510320b83e3",
+      "cauHoi": "Cáp viễn thông này có phải là cáp điện thoại ngầm dưới biển, cáp điện báo ngầm dưới biển hoặc cáp chuyển tiếp vô tuyến ngầm dưới biển thuộc dòng đứng đầu nhánh không?",
+      "trich": "- - - - Loại khác, cách điện bằng cao su hoặc giấy",
+      "nguon": "bieu:85444933#1",
+      "vanTay": "39b86a67a3238ce0855b915873d7bc38b7063365b2fc91b27e8264db1b297da5"
+    },
+    {
+      "id": "hs:bieu:85444292:8203",
+      "nut": "bieu:85444292",
+      "loai": "DIEU_KIEN",
+      "ve": 1,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "vật liệu cách điện",
+      "tap": [
+        "cao su",
+        "plastic",
+        "giấy"
+      ],
+      "mo": "MO_TA_HUONG_DAN",
+      "moNguon": "bieu:85444291#1",
+      "moNguonVanTay": "ada3b0d701a7ce8f4ceaeb1675f66c75edf88db37467e44655dec46ba950bc97",
+      "cauHoi": "Cáp dữ liệu dẹt có hai sợi hoặc hơn này có cách điện bằng cao su, plastic hoặc giấy (thuộc 8544.42.91) không?",
+      "trich": "- - - - Cáp dữ liệu dẹt có hai sợi hoặc hơn, loại khác",
+      "nguon": "bieu:85444292#1",
+      "vanTay": "af846b656f502bb9bf2732868b435c3d5de54853c349fe444a564a494f361df1"
+    },
+    {
+      "id": "hs:bieu:85444296:8203",
+      "nut": "bieu:85444296",
+      "loai": "DIEU_KIEN",
+      "ve": 1,
+      "phu": true,
+      "kieu": "SO",
+      "nguong": "hs:bieu:85444294:8501",
+      "mo": "NGUONG",
+      "cauHoi": "Mỗi lõi của cáp điện cách điện bằng plastic này có đường kính không quá 5 mm (thuộc 8544.42.94) không?",
+      "trich": "- - - - Cáp điện cách điện bằng plastic khác",
+      "nguon": "bieu:85444296#1",
+      "vanTay": "21413e0c30e4d4e99ec3842a9801176e9a40f1b15753b8752bcb96570b5f43b4"
+    },
+    {
+      "id": "hs:bieu:85444296:8204",
+      "nut": "bieu:85444296",
+      "loai": "DIEU_KIEN",
+      "ve": 1,
+      "phu": true,
+      "kieu": "SO",
+      "nguong": "hs:bieu:85444295:8501",
+      "mo": "NGUONG",
+      "cauHoi": "Mỗi lõi của cáp điện cách điện bằng plastic này có đường kính trên 5 mm nhưng không quá 19,5 mm (thuộc 8544.42.95) không?",
+      "trich": "- - - - Cáp điện cách điện bằng plastic khác",
+      "nguon": "bieu:85444296#1",
+      "vanTay": "21413e0c30e4d4e99ec3842a9801176e9a40f1b15753b8752bcb96570b5f43b4"
+    },
+    {
+      "id": "hs:bieu:85444923:8203",
+      "nut": "bieu:85444923",
+      "loai": "DIEU_KIEN",
+      "ve": 1,
+      "phu": true,
+      "kieu": "SO",
+      "nguong": "hs:bieu:85444922:8501",
+      "mo": "NGUONG",
+      "cauHoi": "Mỗi lõi của cáp điện cách điện bằng plastic này có đường kính không quá 19,5 mm (thuộc 8544.49.22) không?",
+      "trich": "- - - - - Cáp điện cách điện bằng plastic khác",
+      "nguon": "bieu:85444923#1",
+      "vanTay": "4f1f744963aae06552f22f59f7c9c392e21d9cddea8d906b9c5f77f239d057b4"
+    },
+    {
+      "id": "hs:bieu:85444924:8202",
+      "nut": "bieu:85444924",
+      "loai": "DIEU_KIEN",
+      "ve": 1,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "dạng vật dẫn (8544.49.2)",
+      "tap": [
+        "cáp điện cách điện bằng plastic"
+      ],
+      "mo": "MO_TA_HUONG_DAN",
+      "moNguon": [
+        "bieu:85444922#1",
+        "bieu:85444923#1"
+      ],
+      "moNguonVanTay": {
+        "bieu:85444922#1": "7e990cf09ef94a60c6a437e9bf9d319bca94b886d61e2bebf0f58e8f01cd2e0f",
+        "bieu:85444923#1": "4f1f744963aae06552f22f59f7c9c392e21d9cddea8d906b9c5f77f239d057b4"
+      },
+      "cauHoi": "Hàng hóa có phải là cáp điện cách điện bằng plastic thuộc 8544.49.22 hoặc 8544.49.23 (xem thêm dmh:8544:06 và dmh:8544:07) không?",
+      "trich": "- - - - - Loại khác, cách điện bằng cao su, plastic hoặc giấy",
+      "nguon": "bieu:85444924#1",
+      "vanTay": "212555f581e0a5589710c10b232ffb4ce470db8a0889dd88d4ea02c22f8ed744",
+      "ghiChu": "Loại trừ cáp điện cách điện bằng plastic đứng trên (8544.49.22/23); ranh giới cáp vs dây/vật liệu cách điện gắn với dmh:8544:06 và dmh:8544:07."
+    },
+    {
+      "id": "hs:bieu:85444942:8202",
+      "nut": "bieu:85444942",
+      "loai": "DIEU_KIEN",
+      "ve": 1,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "dạng vật dẫn (8544.49.4)",
+      "tap": [
+        "cáp bọc cách điện bằng plastic"
+      ],
+      "mo": "MO_TA_HUONG_DAN",
+      "moNguon": "bieu:85444941#1",
+      "moNguonVanTay": "9d432dab26b165f8dd5e8f8876438e7ef6fc25951055838e2245dda802091d6d",
+      "cauHoi": "Hàng hóa có phải là cáp bọc cách điện bằng plastic thuộc 8544.49.41 (xem thêm dmh:8544:07) không?",
+      "trich": "- - - - Loại khác, cách điện bằng cao su, plastic hoặc giấy",
+      "nguon": "bieu:85444942#1",
+      "vanTay": "664d9da86f8bdbe74c9cc03a4a1beef55f7e1f677432ce5e420af4b3777ad85f",
+      "ghiChu": "Loại trừ cáp bọc cách điện bằng plastic (8544.49.41); ranh giới gắn với dmh:8544:07."
+    },
+    {
+      "id": "hs:bieu:85446012:8202",
+      "nut": "bieu:85446012",
+      "loai": "DIEU_KIEN",
+      "ve": 1,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "dạng vật dẫn (8544.60)",
+      "tap": [
+        "cáp bọc cách điện bằng plastic có đường kính mỗi lõi dưới 22,7 mm"
+      ],
+      "mo": "MO_TA_HUONG_DAN",
+      "moNguon": "bieu:85446011#1",
+      "moNguonVanTay": "8cd076bb35f16c2c92e170732fcd2a84966f3e79481a998f1c03dd7d2f825e85",
+      "cauHoi": "Hàng hóa có phải là cáp bọc cách điện bằng plastic có đường kính mỗi lõi dưới 22,7 mm thuộc 8544.60.11 (xem thêm dmh:8544:06 và dmh:8544:07) không?",
+      "trich": "- - - Loại khác, cách điện bằng cao su, plastic hoặc giấy",
+      "nguon": "bieu:85446012#1",
+      "vanTay": "1dc23fd58eaa4e4bcd29922c305b3eab6e8a17f9c126e6d1070834faa2fe423a",
+      "ghiChu": "Loại trừ 8544.60.11; ranh giới cách đo đường kính lõi và định nghĩa cáp gắn với dmh:8544:06 và dmh:8544:07."
+    },
+    {
+      "id": "hs:bieu:85446022:8202",
+      "nut": "bieu:85446022",
+      "loai": "DIEU_KIEN",
+      "ve": 1,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "dạng vật dẫn (8544.60)",
+      "tap": [
+        "cáp bọc cách điện bằng plastic có đường kính mỗi lõi dưới 22,7 mm"
+      ],
+      "mo": "MO_TA_HUONG_DAN",
+      "moNguon": "bieu:85446021#1",
+      "moNguonVanTay": "8cd076bb35f16c2c92e170732fcd2a84966f3e79481a998f1c03dd7d2f825e85",
+      "cauHoi": "Hàng hóa có phải là cáp bọc cách điện bằng plastic có đường kính mỗi lõi dưới 22,7 mm thuộc 8544.60.21 (xem thêm dmh:8544:06 và dmh:8544:07) không?",
+      "trich": "- - - Loại khác, cách điện bằng cao su, plastic hoặc giấy",
+      "nguon": "bieu:85446022#1",
+      "vanTay": "1dc23fd58eaa4e4bcd29922c305b3eab6e8a17f9c126e6d1070834faa2fe423a",
+      "ghiChu": "Loại trừ 8544.60.21; ranh giới cách đo đường kính lõi và định nghĩa cáp gắn với dmh:8544:06 và dmh:8544:07."
     }
   ],
   "ma6": [
@@ -4778,9 +5112,9 @@
       "cap": 8,
       "ten": "- - - - Loại dùng cho xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11",
       "laLoaiKhac": false,
-      "ketQua": "ĐÚNG",
-      "lyDo": "Bộ dây đánh lửa hoặc bộ dây điện cho xe có động cơ, cách điện bằng cao su hoặc plastic, dùng cho xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11 theo nội dung 8544.30, 8544.30.1 và 8544.30.12 (Quy tắc 1 & 6).",
-      "cauHoi": null,
+      "ketQua": "CHƯA ĐỦ DỮ KIỆN",
+      "lyDo": "Bộ dây đánh lửa hoặc bộ dây điện cho xe có động cơ, cách điện bằng cao su hoặc plastic, dùng cho xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11 theo nội dung 8544.30, 8544.30.1 và 8544.30.12 (Quy tắc 1 & 6). Cần phân định ranh giới giữa dây cáp ắc qui đơn lẻ gắn đầu cực (8544.42.32 dưới nhánh \"Các vật dẫn điện khác\" 8544.4) và tổ hợp bộ dây điện nhiều nhánh lắp cho xe (8544.30.12) theo dmh:8544:04.",
+      "cauHoi": "Sản phẩm là dây/cáp nối cọc bình ắc qui riêng lẻ đã gắn đầu cực (8544.42.32) hay là một tổ hợp bộ dây điện hoàn chỉnh gồm nhiều nhánh dây dẫn (wiring harness) lắp cho xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11 (8544.30.12) theo dmh:8544:04?",
       "dieuKienIds": [
         "hs:bieu:8544:8201",
         "hs:bieu:8544:8202",
@@ -4816,6 +5150,14 @@
         {
           "idCau": "bieu:85443012#1",
           "trich": "- - - - Loại dùng cho xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11"
+        },
+        {
+          "idCau": "bieu:8544423#1",
+          "trich": "- - - Cáp ắc qui:"
+        },
+        {
+          "idCau": "bieu:85444232#1",
+          "trich": "- - - - - Cho xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11"
         }
       ]
     },
@@ -5335,9 +5677,9 @@
       "cap": 8,
       "ten": "- - - - - Cho xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11",
       "laLoaiKhac": false,
-      "ketQua": "ĐÚNG",
-      "lyDo": "Cáp ắc qui (<= 1.000 V) đã lắp đầu nối, cách điện bằng cao su hoặc plastic, dùng cho xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11 theo nội dung 8544.42.3 và 8544.42.32 (Quy tắc 1 & 6).",
-      "cauHoi": null,
+      "ketQua": "CHƯA ĐỦ DỮ KIỆN",
+      "lyDo": "Cáp ắc qui (<= 1.000 V) đã lắp đầu nối, cách điện bằng cao su hoặc plastic, dùng cho xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11 theo nội dung 8544.42.3 và 8544.42.32 (Quy tắc 1 & 6). Cần phân định ranh giới giữa dây cáp ắc qui đơn lẻ gắn đầu cực (8544.42.32 dưới nhánh \"Các vật dẫn điện khác\" 8544.4) và tổ hợp bộ dây điện nhiều nhánh lắp cho xe (8544.30.12) theo dmh:8544:04.",
+      "cauHoi": "Sản phẩm là dây/cáp nối cọc bình ắc qui riêng lẻ đã gắn đầu cực (8544.42.32) hay là một tổ hợp bộ dây điện hoàn chỉnh gồm nhiều nhánh dây dẫn (wiring harness) lắp cho xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11 (8544.30.12) theo dmh:8544:04?",
       "dieuKienIds": [
         "hs:bieu:8544:8201",
         "hs:bieu:8544:8202",
@@ -5379,6 +5721,14 @@
         {
           "idCau": "bieu:85444232#1",
           "trich": "- - - - - Cho xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11"
+        },
+        {
+          "idCau": "bieu:854430#1",
+          "trich": "- Bộ dây đánh lửa và bộ dây khác loại sử dụng cho xe, phương tiện bay hoặc tàu thuyền:"
+        },
+        {
+          "idCau": "bieu:85443012#1",
+          "trich": "- - - - Loại dùng cho xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11"
         }
       ]
     },

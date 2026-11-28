@@ -72,6 +72,38 @@
             "trich": "(d) Thiết bị hút chân không sử dụng trong lĩnh vực y tế, phẫu thuật, nha khoa hoặc thú y (nhóm 90.18);"
           }
         ]
+      },
+      {
+        "nhom": "bieu:8542",
+        "dieuKien": "Mạch tích hợp đa thành phần (MCO) có kết hợp phần tử thực hiện chức năng tụ điện ưu tiên nhóm 85.42 theo Chú giải 12 Chương 85",
+        "canCu": [
+          {
+            "idCau": "chuong:85:cg:12:b:iv#1",
+            "trich": "(iv) Mạch tích hợp đa thành phần (MCOs): sự kết hợp một hoặc nhiều mạch tích hợp đơn khối, lai hoặc đa chíp có ít nhất một trong những thành phần sau: cảm biến, cơ cấu chấp hành, bộ dao động, bộ cộng hưởng nền silic, hoặc kết hợp giữa chúng, hoặc các thành phần thực hiện chức năng của hàng hóa thuộc nhóm 85.32, 85.33, 85.41, hoặc cuộn cảm thuộc nhóm 85.04, được định hình với mọi mục đích thành một khối duy nhất không thể tách rời giống một bảng mạch tích hợp, như thành phần được lắp ráp trên tấm mạch in (PCB) hoặc trên vật mang khác, thông qua việc kết nối các chân cắm, dây dẫn (leads), khớp nối cầu (balls), dải nối (lands), mấu nối (bumps), hoặc đế/đệm nối (pads).\n"
+          },
+          {
+            "idCau": "chuong:85:cg:12:ket#1",
+            "trich": "Để phân loại những mặt hàng được định nghĩa trong Chú giải này, các nhóm 85.41 và 85.42 được ưu tiên xem xét trước hết so với bất kỳ nhóm nào khác trong Danh mục hàng hóa, trừ các mặt hàng thuộc nhóm 85.23."
+          }
+        ]
+      },
+      {
+        "nhom": "bieu:8534",
+        "dieuKien": "Tụ điện tạo thành trong quá trình in mạch tổ hợp trên mạch in thuộc nhóm 85.34 (hoặc mạch lai thuộc 85.42) theo Chú giải 8 Chương 85",
+        "canCu": [
+          {
+            "idCau": "chuong:85:cg:8#1",
+            "trich": "8. Theo mục đích của nhóm 85.34 “mạch in” là mạch được tạo ra trên một tấm cách điện bằng một quy trình in mạch nào đó (ví dụ, rập nổi, mạ, khắc axit) hoặc bằng kỹ thuật tạo “mạch điện màng”, các phần tử dẫn điện, các tiếp điểm hoặc các thành phần dùng cho mạch in khác (ví dụ, cuộn cảm, điện trở, tụ điện) đơn lẻ hoặc được liên kết theo sơ đồ mẫu đã thiết kế trước, trừ các phần tử có thể phát (tạo ra), chỉnh lưu, điều biến hoặc khuếch đại tín hiệu điện (ví dụ, các phần tử bán dẫn).\n"
+          },
+          {
+            "idCau": "chuong:85:cg:8#2",
+            "trich": "Thuật ngữ “mạch in” không bao gồm mạch đã tổ hợp với các phần tử trừ các phần tử đã được hình thành trong quá trình in mạch, và cũng không bao gồm điện trở, tụ điện hoặc cuộn cảm đơn lẻ hoặc bố trí ghép nối riêng biệt. "
+          },
+          {
+            "idCau": "chuong:85:cg:8#4",
+            "trich": "Mạch điện màng mỏng hoặc dày bao gồm phần tử chủ động và thụ động hợp thành trong cùng một quy trình công nghệ được phân loại trong nhóm 85.42."
+          }
+        ]
       }
     ],
     "dinhNghia": [],
@@ -115,6 +147,16 @@
           {
             "idCau": "bieu:8532#1",
             "trich": "Tụ điện, loại có điện dung cố định, biến đổi hoặc điều chỉnh được (theo mức định trước)"
+          }
+        ]
+      },
+      {
+        "nhom": "bieu:8542",
+        "lyDo": "Mạch tích hợp đa thành phần (MCO) kết hợp thành phần tụ điện được ưu tiên vào nhóm 85.42 theo Chú giải 12 Chương 85.",
+        "canCu": [
+          {
+            "idCau": "chuong:85:cg:12:ket#1",
+            "trich": "Để phân loại những mặt hàng được định nghĩa trong Chú giải này, các nhóm 85.41 và 85.42 được ưu tiên xem xét trước hết so với bất kỳ nhóm nào khác trong Danh mục hàng hóa, trừ các mặt hàng thuộc nhóm 85.23."
           }
         ]
       }
@@ -177,6 +219,71 @@
       "trich": "Nhóm này không bao gồm các động cơ đồng bộ được dùng để cải thiện hệ số công suất, mặc dù chúng thường được gọi là “các tụ đồng bộ” (nhóm 85.01). ***",
       "nguon": "nhom:8532:ct:18#1",
       "vanTay": "a264b97613a60a4cd1d2a9ae781b382809762c5e88d8759584f9611ac796e6de"
+    },
+    {
+      "id": "hs:bieu:8532:8203",
+      "nut": "bieu:8532",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "CO_KHONG",
+      "mo": "DINH_NGHIA_LUAT",
+      "moNguon": [
+        "chuong:85:cg:12:b:iv#1",
+        "chuong:85:cg:12:ket#1"
+      ],
+      "moNguonVanTay": {
+        "chuong:85:cg:12:b:iv#1": "1d4ca2059cdfb0249c8b38e46333423204622610a8ef8b70a224e542c7ea63ac",
+        "chuong:85:cg:12:ket#1": "a73a3041214a55370a8925d8606ddebc7ea10a30479735153e186bd363cbcd69"
+      },
+      "cauHoi": "Hàng hóa có phải là mạch tích hợp đa thành phần (MCO) có kết hợp phần tử tụ điện được ưu tiên phân loại vào nhóm 85.42 theo Chú giải 12 Chương 85 không?",
+      "trich": "Để phân loại những mặt hàng được định nghĩa trong Chú giải này, các nhóm 85.41 và 85.42 được ưu tiên xem xét trước hết so với bất kỳ nhóm nào khác trong Danh mục hàng hóa, trừ các mặt hàng thuộc nhóm 85.23.",
+      "nguon": "chuong:85:cg:12:ket#1",
+      "vanTay": "a73a3041214a55370a8925d8606ddebc7ea10a30479735153e186bd363cbcd69"
+    },
+    {
+      "id": "hs:bieu:8532:8204",
+      "nut": "bieu:8532",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "CO_KHONG",
+      "mo": "DINH_NGHIA_LUAT",
+      "moNguon": [
+        "chuong:85:cg:8#1",
+        "chuong:85:cg:8#2",
+        "chuong:85:cg:8#4"
+      ],
+      "moNguonVanTay": {
+        "chuong:85:cg:8#1": "e0a47906a46bf13095f312a519ecbb2d5136296516ac3111a10776aca7f235e0",
+        "chuong:85:cg:8#2": "68521abdacaa055141aa04cf80c10c96a71c89f7eace03bd43afcea1415535e6",
+        "chuong:85:cg:8#4": "0f1116117c971166d86f53ec4dde00621cebcaae5b0d15ce0890d001a7cad824"
+      },
+      "cauHoi": "Tụ điện có được tạo thành trong quá trình in mạch tổ hợp trên mạch in thuộc nhóm 85.34 (hoặc mạch màng mỏng/dày có phần tử chủ động thuộc nhóm 85.42) theo Chú giải 8 Chương 85 không?",
+      "trich": "8. Theo mục đích của nhóm 85.34 “mạch in” là mạch được tạo ra trên một tấm cách điện bằng một quy trình in mạch nào đó (ví dụ, rập nổi, mạ, khắc axit) hoặc bằng kỹ thuật tạo “mạch điện màng”, các phần tử dẫn điện, các tiếp điểm hoặc các thành phần dùng cho mạch in khác (ví dụ, cuộn cảm, điện trở, tụ điện) đơn lẻ hoặc được liên kết theo sơ đồ mẫu đã thiết kế trước, trừ các phần tử có thể phát (tạo ra), chỉnh lưu, điều biến hoặc khuếch đại tín hiệu điện (ví dụ, các phần tử bán dẫn).\n",
+      "nguon": "chuong:85:cg:8#1",
+      "vanTay": "e0a47906a46bf13095f312a519ecbb2d5136296516ac3111a10776aca7f235e0"
+    },
+    {
+      "id": "hs:bieu:8532:8205",
+      "nut": "bieu:8532",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "CO_KHONG",
+      "mo": "DINH_NGHIA_LUAT",
+      "moNguon": [
+        "phan:XVI:cg:1:g#1",
+        "phan:XVI:cg:2:a#1"
+      ],
+      "moNguonVanTay": {
+        "phan:XVI:cg:1:g#1": "76a8b3b2d4baf617968af52e227ddb5b7327b9cec396bee49ef2ed308428af07",
+        "phan:XVI:cg:2:a#1": "0be725fa818c15a71b0fe25b4f42bb5366794d9c3be56b673c9827efb0e80698"
+      },
+      "cauHoi": "Hàng hóa là bộ phận công dụng chung (Chú giải 1(g) Phần XVI) hay bộ phận đã được chi tiết ở nhóm riêng của Chương 84 hoặc 85 (Chú giải 2(a) Phần XVI) không?",
+      "trich": "(a) Các bộ phận đã được chi tiết tại nhóm nào đó của Chương 84 hoặc 85 (trừ các nhóm 84.09, 84.31, 84.48, 84.66, 84.73, 84.87, 85.03, 85.22, 85.29, 85.38 và 85.48) được phân loại vào nhóm đó trong mọi trường hợp;",
+      "nguon": "phan:XVI:cg:2:a#1",
+      "vanTay": "0be725fa818c15a71b0fe25b4f42bb5366794d9c3be56b673c9827efb0e80698"
     },
     {
       "id": "hs:bieu:853210:8201",
@@ -361,19 +468,38 @@
       "vanTay": "619f646b771c18113a0c8bdfc9bdeac28bf32edc39e8003d241d46917fe7bb54"
     },
     {
+      "id": "hs:bieu:85322:8203",
+      "nut": "bieu:85322",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "CO_KHONG",
+      "mo": "NGUONG",
+      "cauHoi": "Tụ điện cố định này có được thiết kế dùng trong mạch tần số 50/60 Hz và có giới hạn công suất phản kháng cho phép không dưới 0,5 kvar (tụ nguồn 8532.10) không?",
+      "trich": "- Tụ điện cố định khác:",
+      "nguon": "bieu:85322#1",
+      "vanTay": "619f646b771c18113a0c8bdfc9bdeac28bf32edc39e8003d241d46917fe7bb54"
+    },
+    {
       "id": "hs:bieu:853221:8201",
       "nut": "bieu:853221",
       "loai": "DIEU_KIEN",
       "ve": 0,
       "phu": false,
       "kieu": "GIA_TRI",
-      "truc": "chủng loại vật liệu bản cực hoặc chất điện môi",
+      "truc": "bản chất lớp chất điện môi của tụ điện cố định",
       "tap": [
-        "tantan (tantalum)"
+        "lớp điện môi hợp chất tạo trên bản cực tantan (tụ điện hóa tantan)"
       ],
       "mo": "MO_TA_HUONG_DAN",
-      "moNguon": "nhom:8532:ct:11#1",
-      "moNguonVanTay": "486878f34fdb1e2c4b0c32d68a768495ea3663367fadd259715c6c89209be547",
+      "moNguon": [
+        "nhom:8532:ct:11#1",
+        "nhom:8532:ct:11#2"
+      ],
+      "moNguonVanTay": {
+        "nhom:8532:ct:11#1": "486878f34fdb1e2c4b0c32d68a768495ea3663367fadd259715c6c89209be547",
+        "nhom:8532:ct:11#2": "fd03e1be0e455b19d3b1d5a875138defb16e6b158555a6ce96fc7fe30592fa98"
+      },
       "cauHoi": "Tụ điện cố định là tụ tantan (tantalum)?",
       "trich": "- - Tụ tantan (tantalum)",
       "nguon": "bieu:853221#1",
@@ -386,13 +512,19 @@
       "ve": 0,
       "phu": false,
       "kieu": "GIA_TRI",
-      "truc": "chủng loại vật liệu bản cực hoặc chất điện môi",
+      "truc": "bản chất lớp chất điện môi của tụ điện cố định",
       "tap": [
-        "nhôm"
+        "lớp điện môi oxit tạo bởi phản ứng điện phân trên bản cực nhôm (tụ điện hóa nhôm)"
       ],
       "mo": "MO_TA_HUONG_DAN",
-      "moNguon": "nhom:8532:ct:11#1",
-      "moNguonVanTay": "486878f34fdb1e2c4b0c32d68a768495ea3663367fadd259715c6c89209be547",
+      "moNguon": [
+        "nhom:8532:ct:11#1",
+        "nhom:8532:ct:11#2"
+      ],
+      "moNguonVanTay": {
+        "nhom:8532:ct:11#1": "486878f34fdb1e2c4b0c32d68a768495ea3663367fadd259715c6c89209be547",
+        "nhom:8532:ct:11#2": "fd03e1be0e455b19d3b1d5a875138defb16e6b158555a6ce96fc7fe30592fa98"
+      },
       "cauHoi": "Tụ điện cố định là tụ nhôm (tụ điện hóa bản cực nhôm)?",
       "trich": "- - Tụ nhôm",
       "nguon": "bieu:853222#1",
@@ -405,7 +537,7 @@
       "ve": 0,
       "phu": false,
       "kieu": "GIA_TRI",
-      "truc": "chủng loại vật liệu bản cực hoặc chất điện môi",
+      "truc": "bản chất lớp chất điện môi của tụ điện cố định",
       "tap": [
         "gốm"
       ],
@@ -459,7 +591,7 @@
       "ve": 0,
       "phu": false,
       "kieu": "GIA_TRI",
-      "truc": "chủng loại vật liệu bản cực hoặc chất điện môi",
+      "truc": "bản chất lớp chất điện môi của tụ điện cố định",
       "tap": [
         "gốm"
       ],
@@ -513,16 +645,18 @@
       "ve": 0,
       "phu": false,
       "kieu": "GIA_TRI",
-      "truc": "chủng loại vật liệu bản cực hoặc chất điện môi",
+      "truc": "bản chất lớp chất điện môi của tụ điện cố định",
       "tap": [
-        "giấy",
-        "plastic"
+        "chất điện môi bằng giấy",
+        "chất điện môi bằng plastic"
       ],
-      "mo": "NGHIA_THUONG",
+      "mo": "MO_TA_HUONG_DAN",
       "cauHoi": "Chất điện môi của tụ điện cố định là giấy hoặc plastic?",
       "trich": "- - Tụ giấy hoặc plastic",
       "nguon": "bieu:853225#1",
-      "vanTay": "c9f033eb60c8ddfe25ab69bc7ed8d3835ef3bcc6d14c5623081aba79a623e51f"
+      "vanTay": "c9f033eb60c8ddfe25ab69bc7ed8d3835ef3bcc6d14c5623081aba79a623e51f",
+      "moNguon": "nhom:8532:ct:8#1",
+      "moNguonVanTay": "666b8faf7119fb3ad3bbf57df9af9c4a728e364a841ed97e489292fdb58654da"
     },
     {
       "id": "hs:bieu:853230:8201",
@@ -811,13 +945,41 @@
       "vanTay": "43c6d0bc4dbfee5211b6f045ed54ae29291d74d420d82e8a3cd596882a754ff9"
     },
     {
+      "id": "hs:bieu:8532:8251",
+      "nut": "bieu:8532",
+      "loai": "GIAI_CHONG",
+      "cap": [
+        "bieu:853210",
+        "bieu:85322"
+      ],
+      "cach": "TRU",
+      "trich": "- Tụ điện cố định khác:",
+      "nguon": "bieu:85322#1",
+      "vanTay": "619f646b771c18113a0c8bdfc9bdeac28bf32edc39e8003d241d46917fe7bb54"
+    },
+    {
+      "id": "hs:bieu:85322:8251",
+      "nut": "bieu:85322",
+      "loai": "GIAI_CHONG",
+      "cap": [
+        "bieu:853222",
+        "bieu:853225"
+      ],
+      "cach": "CHU_GIAI",
+      "trich": "Phản ứng điện phân tạo ra trên bản cực nhôm hoặc tantan một lớp mỏng hợp chất hoá học phức tạp mà sau đó hình thành lớp điện môi. ",
+      "nguon": "nhom:8532:ct:11#2",
+      "vanTay": "fd03e1be0e455b19d3b1d5a875138defb16e6b158555a6ce96fc7fe30592fa98",
+      "ghiChu": "Phân định tụ điện hóa nhôm (lớp điện môi oxit tạo trên bản cực nhôm theo nhom:8532:ct:11#1-2) với tụ giấy/plastic có lá nhôm làm bản cực dẫn điện (nhom:8532:ct:8#1)."
+    },
+    {
       "id": "hs:bieu:8532:8220",
       "nut": "bieu:8532",
       "loai": "CANH_TRANH",
       "nhomCanhTranh": [
         "bieu:8501",
         "bieu:8534",
-        "bieu:8535"
+        "bieu:8535",
+        "bieu:8542"
       ],
       "phepThu": [
         {
@@ -837,6 +999,12 @@
           "nguon": "bieu:8535#1",
           "trich": "Thiết bị điện để đóng ngắt mạch hoặc bảo vệ mạch điện, hoặc dùng để đấu nối hoặc lắp trong mạch điện (ví dụ, cầu dao, công tắc, cầu chì, bộ chống sét, bộ khống chế điện áp, bộ triệt xung điện, phích cắm và đầu nối khác, hộp đấu nối), dùng cho điện áp trên 1.000 V",
           "vanTay": "5218cb100285d681e5f2ff23a2f1920ac9f0315d7297540cbcab1fa6d5681c78"
+        },
+        {
+          "nhom": "bieu:8542",
+          "nguon": "chuong:85:cg:12:ket#1",
+          "trich": "Để phân loại những mặt hàng được định nghĩa trong Chú giải này, các nhóm 85.41 và 85.42 được ưu tiên xem xét trước hết so với bất kỳ nhóm nào khác trong Danh mục hàng hóa, trừ các mặt hàng thuộc nhóm 85.23.",
+          "vanTay": "a73a3041214a55370a8925d8606ddebc7ea10a30479735153e186bd363cbcd69"
         }
       ],
       "khongCanhTranh": [
@@ -860,9 +1028,9 @@
       "cap": 8,
       "ten": "- Tụ điện cố định được thiết kế dùng trong mạch có tần số 50/60 Hz và có giới hạn công suất phản kháng cho phép không dưới 0,5 kvar (tụ nguồn)",
       "laLoaiKhac": false,
-      "ketQua": "ĐÚNG",
+      "ketQua": "CHƯA ĐỦ DỮ KIỆN",
       "lyDo": "Áp dụng cho tụ điện cố định (tụ nguồn) thiết kế cho mạch 50/60 Hz và có giới hạn công suất phản kháng cho phép không dưới 0,5 kvar.",
-      "cauHoi": null,
+      "cauHoi": "Tụ điện cố định này có được thiết kế dùng trong mạch có tần số 50/60 Hz và có giới hạn công suất phản kháng cho phép đạt từ 0,5 kvar trở lên (phân biệt với nhánh tụ điện cố định khác 8532.2 theo dmh:8532:2) không?",
       "canCu": [
         {
           "idCau": "bieu:8532#1",
@@ -880,9 +1048,9 @@
       "cap": 8,
       "ten": "- - Tụ tantan (tantalum)",
       "laLoaiKhac": false,
-      "ketQua": "ĐÚNG",
+      "ketQua": "CHƯA ĐỦ DỮ KIỆN",
       "lyDo": "Áp dụng cho tụ điện cố định loại tantan (tantalum) ngoài tụ nguồn của 8532.10.",
-      "cauHoi": null,
+      "cauHoi": "Tụ điện cố định này có chắc chắn KHÔNG phải tụ nguồn thiết kế cho mạch 50/60 Hz có công suất phản kháng >= 0,5 kvar (8532.10 theo dmh:8532:2), và có lớp điện môi hình thành trên bản cực tantan (tụ tantan) không?",
       "canCu": [
         {
           "idCau": "bieu:85322#1",
@@ -904,9 +1072,9 @@
       "cap": 8,
       "ten": "- - Tụ nhôm",
       "laLoaiKhac": false,
-      "ketQua": "ĐÚNG",
+      "ketQua": "CHƯA ĐỦ DỮ KIỆN",
       "lyDo": "Áp dụng cho tụ điện cố định loại nhôm (tụ điện hóa nhôm) ngoài tụ nguồn của 8532.10.",
-      "cauHoi": null,
+      "cauHoi": "Tụ điện cố định này có chắc chắn KHÔNG phải tụ nguồn thiết kế cho mạch 50/60 Hz có công suất phản kháng >= 0,5 kvar (8532.10 theo dmh:8532:2), và có lớp điện môi oxit tạo bởi phản ứng điện phân trên bản cực nhôm (không phải tụ giấy/plastic dùng lá nhôm làm bản cực dẫn điện thuộc 8532.25 theo dmh:8532:1) không?",
       "canCu": [
         {
           "idCau": "bieu:85322#1",
@@ -928,9 +1096,9 @@
       "cap": 8,
       "ten": "- - Tụ gốm, một lớp",
       "laLoaiKhac": false,
-      "ketQua": "ĐÚNG",
+      "ketQua": "CHƯA ĐỦ DỮ KIỆN",
       "lyDo": "Áp dụng cho tụ điện cố định chất điện môi bằng gốm sứ một lớp, dạng đĩa hoặc ống.",
-      "cauHoi": null,
+      "cauHoi": "Tụ điện cố định này có chắc chắn KHÔNG phải tụ nguồn thiết kế cho mạch 50/60 Hz có công suất phản kháng >= 0,5 kvar (8532.10 theo dmh:8532:2), và có chất điện môi gốm sứ một lớp không?",
       "canCu": [
         {
           "idCau": "bieu:85322#1",
@@ -952,9 +1120,9 @@
       "cap": 8,
       "ten": "- - Tụ gốm, nhiều lớp",
       "laLoaiKhac": false,
-      "ketQua": "ĐÚNG",
+      "ketQua": "CHƯA ĐỦ DỮ KIỆN",
       "lyDo": "Áp dụng cho tụ điện cố định chất điện môi bằng gốm sứ nhiều lớp, có nhiều chân nối hoặc dạng chip.",
-      "cauHoi": null,
+      "cauHoi": "Tụ điện cố định này có chắc chắn KHÔNG phải tụ nguồn thiết kế cho mạch 50/60 Hz có công suất phản kháng >= 0,5 kvar (8532.10 theo dmh:8532:2), và có chất điện môi gốm sứ nhiều lớp không?",
       "canCu": [
         {
           "idCau": "bieu:85322#1",
@@ -976,9 +1144,9 @@
       "cap": 8,
       "ten": "- - Tụ giấy hoặc plastic",
       "laLoaiKhac": false,
-      "ketQua": "ĐÚNG",
+      "ketQua": "CHƯA ĐỦ DỮ KIỆN",
       "lyDo": "Áp dụng cho tụ điện cố định chất điện môi bằng giấy hoặc plastic ngoài tụ nguồn 8532.10.",
-      "cauHoi": null,
+      "cauHoi": "Tụ điện cố định này có chắc chắn KHÔNG phải tụ nguồn thiết kế cho mạch 50/60 Hz có công suất phản kháng >= 0,5 kvar (8532.10 theo dmh:8532:2), và có chất điện môi là giấy hoặc plastic (kể cả khi dùng lá nhôm làm bản cực dẫn điện, khác tụ điện hóa nhôm 8532.22 theo dmh:8532:1) không?",
       "canCu": [
         {
           "idCau": "bieu:85322#1",

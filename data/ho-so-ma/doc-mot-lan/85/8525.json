@@ -708,7 +708,7 @@
       "id": "hs:bieu:852582:8202",
       "nut": "bieu:852582",
       "loai": "DIEU_KIEN",
-      "ve": 2,
+      "ve": 1,
       "phu": false,
       "kieu": "SO",
       "mo": "NGUONG",
@@ -717,6 +717,25 @@
       "nguon": "chuong:85:cgpn:2#2",
       "vanTay": "a29113ebfd7d985cdf8c655039174356daf7fc27309586e3cda5469802e28a9c",
       "nguong": "hs:bieu:852582:8202"
+    },
+    {
+      "id": "hs:bieu:852582:8203",
+      "nut": "bieu:852582",
+      "loai": "DIEU_KIEN",
+      "ve": 1,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "đặc tính chuyên dụng của camera",
+      "tap": [
+        "loại tốc độ cao nêu tại Chú giải Phân nhóm 1 của Chương này (8525.81)"
+      ],
+      "mo": "DINH_NGHIA_LUAT",
+      "moNguon": "chuong:85:cgpn:1#1",
+      "moNguonVanTay": "3b040e49fa576e385afe5ba14fa6136fb6833fa0cc65a4ef64ef09723e801c2f",
+      "cauHoi": "Camera này có thuộc loại tốc độ cao đáp ứng Chú giải Phân nhóm 1 của Chương này (8525.81) không?",
+      "trich": "- - Loại khác, được làm cứng bức xạ hoặc chịu bức xạ nêu tại Chú giải Phân nhóm 2 của Chương này:",
+      "nguon": "bieu:852582#1",
+      "vanTay": "d0c8897b2a0905f6492bb1f2136e342eea04429b384d6265bfa3886fea71f531"
     },
     {
       "id": "hs:bieu:85258210:8201",
@@ -805,6 +824,32 @@
       ],
       "moNguon": "chuong:85:cgpn:3#2",
       "moNguonVanTay": "a172f0a2e779b884f6afef63bc27bf44ab2cce5a0001cec8a109ba3bf02eb98b"
+    },
+    {
+      "id": "hs:bieu:852583:8203",
+      "nut": "bieu:852583",
+      "loai": "DIEU_KIEN",
+      "ve": 1,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "đặc tính chuyên dụng của camera",
+      "tap": [
+        "loại tốc độ cao nêu tại Chú giải Phân nhóm 1 của Chương này (8525.81)",
+        "được làm cứng bức xạ hoặc chịu bức xạ"
+      ],
+      "mo": "DINH_NGHIA_LUAT",
+      "moNguon": [
+        "chuong:85:cgpn:1#1",
+        "chuong:85:cgpn:2#1"
+      ],
+      "moNguonVanTay": {
+        "chuong:85:cgpn:1#1": "3b040e49fa576e385afe5ba14fa6136fb6833fa0cc65a4ef64ef09723e801c2f",
+        "chuong:85:cgpn:2#1": "da42b4eae7a55ea65e625efe6ad78ca26869eb741eacfa4d9dbdebdc7662024a"
+      },
+      "cauHoi": "Camera này có thuộc loại tốc độ cao (8525.81) hoặc loại được làm cứng bức xạ/chịu bức xạ (8525.82) không?",
+      "trich": "- - Loại khác, loại nhìn ban đêm nêu tại Chú giải Phân nhóm 3 của Chương này:",
+      "nguon": "bieu:852583#1",
+      "vanTay": "989a07bb14e61b622d40c0af5288976348d85a5da444f7aea2747a72e7fc48a9"
     },
     {
       "id": "hs:bieu:85258310:8201",
@@ -909,6 +954,25 @@
       }
     },
     {
+      "id": "hs:bieu:85258920:8202",
+      "nut": "bieu:85258920",
+      "loai": "DIEU_KIEN",
+      "ve": 1,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "chủng loại camera",
+      "tap": [
+        "webcam"
+      ],
+      "mo": "MO_TA_HUONG_DAN",
+      "moNguon": "nhom:8525:ct:15#1",
+      "moNguonVanTay": "9d633acc69ab5ec0ab8c1d1827f2e8f3e374c585461e85d18388b51244cac34f",
+      "cauHoi": "Camera truyền hình này có phải là webcam được thiết kế để sử dụng cùng máy xử lý dữ liệu tự động (8525.89.30) không?",
+      "trich": "Một số camera loại này cũng được sử dụng với máy xử lý dữ liệu tự động (ví dụ webcam).",
+      "nguon": "nhom:8525:ct:15#1",
+      "vanTay": "9d633acc69ab5ec0ab8c1d1827f2e8f3e374c585461e85d18388b51244cac34f"
+    },
+    {
       "id": "hs:bieu:85258930:8201",
       "nut": "bieu:85258930",
       "loai": "DIEU_KIEN",
@@ -949,9 +1013,10 @@
         "bieu:85258"
       ],
       "cach": "CHU_GIAI",
-      "trich": "Nhóm này bao gồm các camera chụp hình ảnh và chuyển đổi chúng thành tín hiệu điện tử mà:",
-      "nguon": "nhom:8525:ct:9#1",
-      "vanTay": "f1e47ab3870090e7a8805755a88e6e5f27d6557dd489885e0c84018caffe532f"
+      "trich": "3. Trừ khi có yêu cầu cụ thể khác, các loại máy liên hợp gồm hai hoặc nhiều máy lắp ghép với nhau thành một thiết bị đồng bộ và các loại máy khác được thiết kế để thực hiện hai hoặc nhiều chức năng khác nhau hoặc bổ trợ lẫn nhau được phân loại theo bộ phận chính hoặc máy thực hiện chức năng chính.",
+      "nguon": "phan:XVI:cg:3#1",
+      "vanTay": "a227555f471b02870c08353e40dcc9816d21557ddaaa63966a33115d3d14c5db",
+      "ghiChu": "Phân biệt chức năng riêng theo nhom:8525:ct:2#1–2#2 (thiết bị phát) và nhom:8525:ct:9#1 (camera); trường hợp máy liên hợp kết hợp cả camera và bộ phát thanh/truyền hình thì áp dụng Chú giải 3 Phần XVI (qua gir:6#2) theo chức năng chính."
     },
     {
       "id": "hs:bieu:8525:8253",
@@ -962,9 +1027,10 @@
         "bieu:85258"
       ],
       "cach": "CHU_GIAI",
-      "trich": "Nhóm này bao gồm các camera chụp hình ảnh và chuyển đổi chúng thành tín hiệu điện tử mà:",
-      "nguon": "nhom:8525:ct:9#1",
-      "vanTay": "f1e47ab3870090e7a8805755a88e6e5f27d6557dd489885e0c84018caffe532f"
+      "trich": "3. Trừ khi có yêu cầu cụ thể khác, các loại máy liên hợp gồm hai hoặc nhiều máy lắp ghép với nhau thành một thiết bị đồng bộ và các loại máy khác được thiết kế để thực hiện hai hoặc nhiều chức năng khác nhau hoặc bổ trợ lẫn nhau được phân loại theo bộ phận chính hoặc máy thực hiện chức năng chính.",
+      "nguon": "phan:XVI:cg:3#1",
+      "vanTay": "a227555f471b02870c08353e40dcc9816d21557ddaaa63966a33115d3d14c5db",
+      "ghiChu": "Phân biệt chức năng riêng theo nhom:8525:ct:2#1–2#2 (thiết bị phát) và nhom:8525:ct:9#1 (camera); trường hợp máy liên hợp kết hợp cả camera và bộ phát thanh/truyền hình thì áp dụng Chú giải 3 Phần XVI (qua gir:6#2) theo chức năng chính."
     },
     {
       "id": "hs:bieu:85258:8251",
@@ -1039,10 +1105,10 @@
         "bieu:852583",
         "bieu:852589"
       ],
-      "cach": "CHU_GIAI",
-      "trich": "Phân nhóm này loại trừ camera ảnh nhiệt (thường thuộc phân nhóm 8525.89).",
-      "nguon": "chuong:85:cgpn:3#2",
-      "vanTay": "a172f0a2e779b884f6afef63bc27bf44ab2cce5a0001cec8a109ba3bf02eb98b"
+      "cach": "TRU",
+      "trich": "- - Loại khác:",
+      "nguon": "bieu:852589#1",
+      "vanTay": "f7471cc258651df3a699c9ded6e380c1d526ade5c0ef4511b997105979ec5aa9"
     },
     {
       "id": "hs:bieu:852581:8251",
@@ -1212,6 +1278,34 @@
       "trich": "- - - Loại khác",
       "nguon": "bieu:85258990#1",
       "vanTay": "7d77cf3b522f1099a494bb7ce724429be0389117f51e2cf39130239384241e4f"
+    },
+    {
+      "id": "hs:bieu:852589:8255",
+      "nut": "bieu:852589",
+      "loai": "GIAI_CHONG",
+      "cap": [
+        "bieu:85258920",
+        "bieu:85258930"
+      ],
+      "cach": "CHU_GIAI",
+      "trich": "Một số camera loại này cũng được sử dụng với máy xử lý dữ liệu tự động (ví dụ webcam).",
+      "nguon": "nhom:8525:ct:15#1",
+      "vanTay": "9d633acc69ab5ec0ab8c1d1827f2e8f3e374c585461e85d18388b51244cac34f",
+      "ghiChu": "Webcam (8525.89.30) là một loại camera truyền hình sử dụng với máy xử lý dữ liệu tự động, được định danh riêng tách khỏi 8525.89.20; trường hợp camera hội nghị USB/HDMI giao thoa xem điểm mơ hồ dmh:bieu:852589:3."
+    },
+    {
+      "id": "hs:bieu:852589:8256",
+      "nut": "bieu:852589",
+      "loai": "GIAI_CHONG",
+      "cap": [
+        "bieu:85258910",
+        "bieu:85258930"
+      ],
+      "cach": "CHU_GIAI",
+      "trich": "Những camera này không có bất kỳ khả năng ghi hình ảnh nào ở trong nó.",
+      "nguon": "nhom:8525:ct:14#2",
+      "vanTay": "e40d16fdd1e9ac38650b5f45efb918ced6c55934fec20a69a0445687a4895c3a",
+      "ghiChu": "Webcam thuộc nhóm camera truyền hình không có khả năng ghi hình bên trong (nhom:8525:ct:14#2 và ct:15#1), tách khỏi camera ghi hình ảnh 8525.89.10."
     },
     {
       "id": "hs:bieu:8525:8270",
@@ -1844,9 +1938,9 @@
     {
       "ma": "bieu:85258930",
       "ten": "- - - Webcam",
-      "ketQua": "ĐÚNG",
-      "lyDo": "Định danh trực tiếp webcam (camera truyền hình không ghi bên trong dùng với máy xử lý dữ liệu tự động theo Chú giải chi tiết nhóm 85.25), không thuộc các loại đặc biệt 8525.81–8525.83.",
-      "cauHoi": null,
+      "ketQua": "CHƯA ĐỦ DỮ KIỆN",
+      "lyDo": "Thuộc phân nhóm 8525.89 (\"Loại khác\") và có vùng giao thoa với camera truyền hình/hội nghị PTZ (8525.89.20, xem dmh:bieu:852589:3); cần xác nhận là webcam dùng với máy xử lý dữ liệu tự động, không ghi hình bên trong và không thuộc 8525.81–8525.83.",
+      "cauHoi": "Camera này có chắc chắn là webcam thiết kế để kết nối với máy xử lý dữ liệu tự động (không có khả năng ghi hình bên trong, không thuộc 8525.81–8525.83), hay là camera truyền hình/hội nghị PTZ độc lập (8525.89.20) hoặc camera ghi hình ảnh (8525.89.10)?",
       "canCu": [
         {
           "idCau": "bieu:852589#1",
@@ -1859,6 +1953,10 @@
         {
           "idCau": "nhom:8525:ct:15#1",
           "trich": "Một số camera loại này cũng được sử dụng với máy xử lý dữ liệu tự động (ví dụ webcam)."
+        },
+        {
+          "idCau": "bieu:85258920#1",
+          "trich": "- - - Camera truyền hình"
         }
       ]
     },

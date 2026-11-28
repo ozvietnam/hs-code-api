@@ -852,22 +852,28 @@
         "chuyển mạch nhiều vị trí của nhóm 85.36",
         "quạt hoặc bơm làm mát của nhóm 84.13 hoặc 84.14",
         "bộ phận có công dụng chung của Phần XV hoặc Chương 39",
-        "phế liệu và phế thải điện, điện tử của nhóm 85.49"
+        "phế liệu và phế thải điện, điện tử của nhóm 85.49",
+        "ống chỉ, trục cuốn, lõi cuộn dây (bobbins/coil formers) bằng vật liệu bất kỳ (Chú giải 1(c) Phần XVI)",
+        "máy biến điện đóng bộ bán lẻ cùng đồ chơi mang đặc trưng cơ bản của đồ chơi (nhóm 95.03 theo Chú giải 4 Chương 95)"
       ],
       "mo": "DINH_NGHIA_LUAT",
-      "cauHoi": "Nếu là linh kiện/bộ phận rời, hàng hóa có phải thành phần đã được chi tiết riêng ở nhóm khác (chuyển mạch 85.36, quạt/bơm 84.13-84.14, vật tư công dụng chung Phần XV/Chương 39) hoặc phế liệu điện tử (85.49) không?",
+      "cauHoi": "Nếu là linh kiện/bộ phận rời hoặc hàng đóng bộ, hàng hóa có thuộc nhóm loại trừ: thành phần đã chi tiết ở nhóm riêng (chuyển mạch 85.36, quạt/bơm 84.13-84.14, bộ phận công dụng chung Phần XV/Chương 39), ống chỉ/trục cuốn/lõi cuộn dây bằng vật liệu bất kỳ (Chú giải 1(c) Phần XVI), máy biến điện đóng bộ bán lẻ cùng đồ chơi mang đặc trưng cơ bản của đồ chơi (nhóm 95.03 theo Chú giải 4 Chương 95), hay phế liệu điện tử (85.49) không?",
       "trich": "(a) Các bộ phận đã được chi tiết tại nhóm nào đó của Chương 84 hoặc 85 (trừ các nhóm 84.09, 84.31, 84.48, 84.66, 84.73, 84.87, 85.03, 85.22, 85.29, 85.38 và 85.48) được phân loại vào nhóm đó trong mọi trường hợp;",
       "nguon": "phan:XVI:cg:2:a#1",
       "vanTay": "0be725fa818c15a71b0fe25b4f42bb5366794d9c3be56b673c9827efb0e80698",
       "moNguon": [
         "phan:XVI:cg:2:a#1",
         "phan:XVI:cg:1:g#1",
-        "phan:XVI:cg:6:B#1"
+        "phan:XVI:cg:6:B#1",
+        "phan:XVI:cg:1:c#1",
+        "chuong:95:cg:4#1"
       ],
       "moNguonVanTay": {
         "phan:XVI:cg:2:a#1": "0be725fa818c15a71b0fe25b4f42bb5366794d9c3be56b673c9827efb0e80698",
         "phan:XVI:cg:1:g#1": "76a8b3b2d4baf617968af52e227ddb5b7327b9cec396bee49ef2ed308428af07",
-        "phan:XVI:cg:6:B#1": "2248d7ff8b1228ff5c3760d9b7af69de9ad83fb076d46d2a8b39005b48322c47"
+        "phan:XVI:cg:6:B#1": "2248d7ff8b1228ff5c3760d9b7af69de9ad83fb076d46d2a8b39005b48322c47",
+        "phan:XVI:cg:1:c#1": "dfcfd7154f57e18e4c950b0cd28ad694431ec1aa3f46e12d3f8c2632e6b4b6e7",
+        "chuong:95:cg:4#1": "b38fab955fea4d5a670a2b61e110db237fbd3e6a0a84116bdc173e618f7ff50c"
       }
     },
     {
@@ -3417,7 +3423,7 @@
       "kieu": "GIA_TRI",
       "truc": "đối tượng được lắp của bộ phận 8504.90",
       "tap": [
-        "hàng hóa thuộc phân nhóm 8504.10"
+        "chấn lưu dùng cho đèn phóng hoặc ống phóng (8504.10)"
       ],
       "mo": "DINH_NGHIA_LUAT",
       "cauHoi": "Bộ phận có chỉ dùng hoặc chủ yếu dùng cho chấn lưu thuộc phân nhóm 8504.10 không?",
@@ -4288,6 +4294,356 @@
         }
       ],
       "ghiChu": "4 ứng viên từ canhTranhTimThay (7203, 8466, 3907, 4001) không có ranh giới phân loại trực tiếp với nhóm 85.04."
+    },
+    {
+      "id": "hs:bieu:85043:8208",
+      "nut": "bieu:85043",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "nhóm đối tượng trong 85.04",
+      "tap": [
+        "chấn lưu dùng cho đèn phóng hoặc ống phóng",
+        "máy biến điện sử dụng điện môi lỏng"
+      ],
+      "mo": "MO_TA_HUONG_DAN",
+      "moNguon": [
+        "bieu:850410#1",
+        "bieu:85042#1",
+        "nhom:8504:ct:4#2"
+      ],
+      "moNguonVanTay": {
+        "bieu:850410#1": "1d663cc4812c28938712f35f474cddcf0719f46831cf72c36f0ff56ea5a519a6",
+        "bieu:85042#1": "3290b5b6cddba5497ced55511ec73b2e2d6679f3f524c9ba01c80aedc21e4077",
+        "nhom:8504:ct:4#2": "83e34744cf5ae0803fbdf52c5f2bb29053a24b2efb64562f0892ec0838934aa4"
+      },
+      "cauHoi": "Máy biến điện này có phải là chấn lưu dùng cho đèn phóng/ống phóng (8504.10) hoặc máy biến điện sử dụng điện môi lỏng (8504.2) không?",
+      "trich": "- Máy biến điện khác:",
+      "nguon": "bieu:85043#1",
+      "vanTay": "a5912cc381032752251d065f7e2582d01ad79ee6d6b241a4ca88dfdb211a8a60"
+    },
+    {
+      "id": "hs:bieu:8504:8227",
+      "nut": "bieu:8504",
+      "loai": "GIAI_CHONG",
+      "cap": [
+        "bieu:850410",
+        "bieu:85043"
+      ],
+      "cach": "TRU",
+      "trich": "- Máy biến điện khác:",
+      "nguon": "bieu:85043#1",
+      "vanTay": "a5912cc381032752251d065f7e2582d01ad79ee6d6b241a4ca88dfdb211a8a60",
+      "ghiChu": "8504.3 (\"Máy biến điện khác\") loại trừ chấn lưu kiểu biến áp cho đèn phóng/ống phóng đã xếp ở 8504.10 (theo nhom:8504:ct:4#2)."
+    },
+    {
+      "id": "hs:bieu:85043192:8202",
+      "nut": "bieu:85043192",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "công dụng chuyên dùng của máy biến điện",
+      "tap": [
+        "đồ chơi, mô hình thu nhỏ hoặc các mô hình giải trí tương tự"
+      ],
+      "mo": "MO_TA_HUONG_DAN",
+      "moNguon": "bieu:85043191#1",
+      "moNguonVanTay": "f5490a9566222e63d682f400258e109f2e509a7813db8f856061ccb96a52ccc1",
+      "cauHoi": "Biến áp thích ứng này có sử dụng cho đồ chơi, mô hình thu nhỏ hoặc các mô hình giải trí tương tự (8504.31.91) không?",
+      "trich": "- - - - Biến áp thích ứng khác (SEN)",
+      "nguon": "bieu:85043192#1",
+      "vanTay": "1bd0aca4b96412736285c48b510c5a5d7a3ab77f230eee1f5bb372092f57804b"
+    },
+    {
+      "id": "hs:bieu:8504319:8204",
+      "nut": "bieu:8504319",
+      "loai": "GIAI_CHONG",
+      "cap": [
+        "bieu:85043191",
+        "bieu:85043192"
+      ],
+      "cach": "TRU",
+      "trich": "- - - - Biến áp thích ứng khác (SEN)",
+      "nguon": "bieu:85043192#1",
+      "vanTay": "1bd0aca4b96412736285c48b510c5a5d7a3ab77f230eee1f5bb372092f57804b",
+      "ghiChu": "8504.31.92 (\"Biến áp thích ứng khác\") loại trừ máy biến điện sử dụng cho đồ chơi, mô hình thu nhỏ hoặc mô hình giải trí tương tự tại 8504.31.91."
+    },
+    {
+      "id": "hs:bieu:85043220:8202",
+      "nut": "bieu:85043220",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "loại máy biến điện khô 1-16 kVA",
+      "tap": [
+        "máy biến đổi đo lường (biến áp và biến dòng)"
+      ],
+      "mo": "MO_TA_HUONG_DAN",
+      "moNguon": "bieu:8504321#1",
+      "moNguonVanTay": "54e7f2ba764b71694da6c3e2e9aa00963413cfb65c9dd00966c273ca7158c765",
+      "cauHoi": "Máy biến điện này có phải là máy biến đổi đo lường (biến áp và biến dòng) loại công suất danh định không quá 5 kVA thuộc 8504.32.1 không?",
+      "trich": "- - - Loại khác, sử dụng cho đồ chơi, mô hình thu nhỏ hoặc các mô hình giải trí tương tự",
+      "nguon": "bieu:85043220#1",
+      "vanTay": "0a08a432e318c56bec8c4863c51a37799b403ca9c20c45fd50bbef9faab3b39a"
+    },
+    {
+      "id": "hs:bieu:85043230:8202",
+      "nut": "bieu:85043230",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "loại máy biến điện khô 1-16 kVA",
+      "tap": [
+        "máy biến đổi đo lường (biến áp và biến dòng)"
+      ],
+      "mo": "MO_TA_HUONG_DAN",
+      "moNguon": "bieu:8504321#1",
+      "moNguonVanTay": "54e7f2ba764b71694da6c3e2e9aa00963413cfb65c9dd00966c273ca7158c765",
+      "cauHoi": "Máy biến điện này có phải là máy biến đổi đo lường (biến áp và biến dòng) loại công suất danh định không quá 5 kVA thuộc 8504.32.1 không?",
+      "trich": "- - - Loại khác, tần số tối thiểu 3 MHz",
+      "nguon": "bieu:85043230#1",
+      "vanTay": "6a48e733e12f39accc45b3e4c57a0c0c5dd951857ab14915ed11dd36e6b0bcd5"
+    },
+    {
+      "id": "hs:bieu:850432:8207",
+      "nut": "bieu:850432",
+      "loai": "GIAI_CHONG",
+      "cap": [
+        "bieu:85043220",
+        "bieu:8504324"
+      ],
+      "cach": "TRU",
+      "trich": "- - - Loại khác, có công suất danh định không quá 10 kVA:",
+      "nguon": "bieu:8504324#1",
+      "vanTay": "26b215e672cd7aec13518104b3e7ebdbb82c7875116a22a0719f6b450e910e0d",
+      "ghiChu": "8504.32.4 (\"Loại khác, có công suất danh định không quá 10 kVA\") loại trừ máy dùng cho đồ chơi/mô hình (8504.32.20)."
+    },
+    {
+      "id": "hs:bieu:850432:8208",
+      "nut": "bieu:850432",
+      "loai": "GIAI_CHONG",
+      "cap": [
+        "bieu:85043230",
+        "bieu:8504324"
+      ],
+      "cach": "TRU",
+      "trich": "- - - Loại khác, có công suất danh định không quá 10 kVA:",
+      "nguon": "bieu:8504324#1",
+      "vanTay": "26b215e672cd7aec13518104b3e7ebdbb82c7875116a22a0719f6b450e910e0d",
+      "ghiChu": "8504.32.4 (\"Loại khác, có công suất danh định không quá 10 kVA\") loại trừ máy có tần số tối thiểu 3 MHz (8504.32.30)."
+    },
+    {
+      "id": "hs:bieu:850432:8209",
+      "nut": "bieu:850432",
+      "loai": "GIAI_CHONG",
+      "cap": [
+        "bieu:85043220",
+        "bieu:8504325"
+      ],
+      "cach": "TRU",
+      "trich": "- - - Loại khác, có công suất danh định trên 10 kVA:",
+      "nguon": "bieu:8504325#1",
+      "vanTay": "8ee60162c35898e5bc9f9630695e49bfa94f5eb57fc2dc6e87d83f05e5b896f1",
+      "ghiChu": "8504.32.5 (\"Loại khác, có công suất danh định trên 10 kVA\") loại trừ máy dùng cho đồ chơi/mô hình (8504.32.20)."
+    },
+    {
+      "id": "hs:bieu:850432:8210",
+      "nut": "bieu:850432",
+      "loai": "GIAI_CHONG",
+      "cap": [
+        "bieu:85043230",
+        "bieu:8504325"
+      ],
+      "cach": "TRU",
+      "trich": "- - - Loại khác, có công suất danh định trên 10 kVA:",
+      "nguon": "bieu:8504325#1",
+      "vanTay": "8ee60162c35898e5bc9f9630695e49bfa94f5eb57fc2dc6e87d83f05e5b896f1",
+      "ghiChu": "8504.32.5 (\"Loại khác, có công suất danh định trên 10 kVA\") loại trừ máy có tần số tối thiểu 3 MHz (8504.32.30)."
+    },
+    {
+      "id": "hs:bieu:8504324:8203",
+      "nut": "bieu:8504324",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "loại máy biến điện khô 1-16 kVA",
+      "tap": [
+        "máy biến đổi đo lường (biến áp và biến dòng)"
+      ],
+      "mo": "MO_TA_HUONG_DAN",
+      "moNguon": "bieu:8504321#1",
+      "moNguonVanTay": "54e7f2ba764b71694da6c3e2e9aa00963413cfb65c9dd00966c273ca7158c765",
+      "cauHoi": "Máy biến điện này có phải là máy biến đổi đo lường loại công suất danh định không quá 5 kVA (8504.32.1) không?",
+      "trich": "- - - Loại khác, có công suất danh định không quá 10 kVA:",
+      "nguon": "bieu:8504324#1",
+      "vanTay": "26b215e672cd7aec13518104b3e7ebdbb82c7875116a22a0719f6b450e910e0d"
+    },
+    {
+      "id": "hs:bieu:8504324:8204",
+      "nut": "bieu:8504324",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "công dụng chuyên dùng của máy biến điện",
+      "tap": [
+        "đồ chơi, mô hình thu nhỏ hoặc các mô hình giải trí tương tự"
+      ],
+      "mo": "MO_TA_HUONG_DAN",
+      "moNguon": "bieu:85043220#1",
+      "moNguonVanTay": "0a08a432e318c56bec8c4863c51a37799b403ca9c20c45fd50bbef9faab3b39a",
+      "cauHoi": "Máy biến điện này có sử dụng cho đồ chơi, mô hình thu nhỏ hoặc các mô hình giải trí tương tự (8504.32.20) không?",
+      "trich": "- - - Loại khác, có công suất danh định không quá 10 kVA:",
+      "nguon": "bieu:8504324#1",
+      "vanTay": "26b215e672cd7aec13518104b3e7ebdbb82c7875116a22a0719f6b450e910e0d"
+    },
+    {
+      "id": "hs:bieu:8504324:8205",
+      "nut": "bieu:8504324",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "SO",
+      "nguong": "hs:bieu:85043230:1",
+      "mo": "NGUONG",
+      "cauHoi": "Máy biến điện này có tần số làm việc tối thiểu 3 MHz (thuộc 8504.32.30) không?",
+      "trich": "- - - Loại khác, có công suất danh định không quá 10 kVA:",
+      "nguon": "bieu:8504324#1",
+      "vanTay": "26b215e672cd7aec13518104b3e7ebdbb82c7875116a22a0719f6b450e910e0d"
+    },
+    {
+      "id": "hs:bieu:8504325:8203",
+      "nut": "bieu:8504325",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "loại máy biến điện khô 1-16 kVA",
+      "tap": [
+        "máy biến đổi đo lường (biến áp và biến dòng)"
+      ],
+      "mo": "MO_TA_HUONG_DAN",
+      "moNguon": "bieu:8504321#1",
+      "moNguonVanTay": "54e7f2ba764b71694da6c3e2e9aa00963413cfb65c9dd00966c273ca7158c765",
+      "cauHoi": "Máy biến điện này có phải là máy biến đổi đo lường loại công suất danh định không quá 5 kVA (8504.32.1) không?",
+      "trich": "- - - Loại khác, có công suất danh định trên 10 kVA:",
+      "nguon": "bieu:8504325#1",
+      "vanTay": "8ee60162c35898e5bc9f9630695e49bfa94f5eb57fc2dc6e87d83f05e5b896f1"
+    },
+    {
+      "id": "hs:bieu:8504325:8204",
+      "nut": "bieu:8504325",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "công dụng chuyên dùng của máy biến điện",
+      "tap": [
+        "đồ chơi, mô hình thu nhỏ hoặc các mô hình giải trí tương tự"
+      ],
+      "mo": "MO_TA_HUONG_DAN",
+      "moNguon": "bieu:85043220#1",
+      "moNguonVanTay": "0a08a432e318c56bec8c4863c51a37799b403ca9c20c45fd50bbef9faab3b39a",
+      "cauHoi": "Máy biến điện này có sử dụng cho đồ chơi, mô hình thu nhỏ hoặc các mô hình giải trí tương tự (8504.32.20) không?",
+      "trich": "- - - Loại khác, có công suất danh định trên 10 kVA:",
+      "nguon": "bieu:8504325#1",
+      "vanTay": "8ee60162c35898e5bc9f9630695e49bfa94f5eb57fc2dc6e87d83f05e5b896f1"
+    },
+    {
+      "id": "hs:bieu:8504325:8205",
+      "nut": "bieu:8504325",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "SO",
+      "nguong": "hs:bieu:85043230:1",
+      "mo": "NGUONG",
+      "cauHoi": "Máy biến điện này có tần số làm việc tối thiểu 3 MHz (thuộc 8504.32.30) không?",
+      "trich": "- - - Loại khác, có công suất danh định trên 10 kVA:",
+      "nguon": "bieu:8504325#1",
+      "vanTay": "8ee60162c35898e5bc9f9630695e49bfa94f5eb57fc2dc6e87d83f05e5b896f1"
+    },
+    {
+      "id": "hs:bieu:85044030:8202",
+      "nut": "bieu:85044030",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "công dụng chuyên dùng của máy biến đổi tĩnh",
+      "tap": [
+        "dùng cho máy xử lý dữ liệu tự động và các khối chức năng của chúng",
+        "dùng cho thiết bị viễn thông"
+      ],
+      "mo": "DINH_NGHIA_LUAT",
+      "moNguon": "bieu:8504401#1",
+      "moNguonVanTay": "0c8fc560ae766ddb0116e0416098fe21a235c7373f3f33b2555ca5ef012e6f7c",
+      "cauHoi": "Bộ chỉnh lưu này có dùng cho các máy xử lý dữ liệu tự động, các khối chức năng của chúng hoặc thiết bị viễn thông (8504.40.1) không?",
+      "trich": "- - Bộ chỉnh lưu khác",
+      "nguon": "bieu:85044030#1",
+      "vanTay": "d6e6dddcb27b423b3f81924479585285575bf1eb177fbdcac76baeac0a726cee"
+    },
+    {
+      "id": "hs:bieu:85044030:8203",
+      "nut": "bieu:85044030",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "loại máy biến đổi tĩnh điện",
+      "tap": [
+        "máy nạp ắc qui, pin có công suất danh định trên 100 kVA"
+      ],
+      "mo": "MO_TA_HUONG_DAN",
+      "moNguon": "bieu:85044020#1",
+      "moNguonVanTay": "9b011cba1d5ba64c48704bfb4a99408298aedb3a175000acfc9d1a80fdc12169",
+      "cauHoi": "Bộ chỉnh lưu này có phải là máy nạp ắc qui, pin có công suất danh định trên 100 kVA (8504.40.20) không?",
+      "trich": "- - Bộ chỉnh lưu khác",
+      "nguon": "bieu:85044030#1",
+      "vanTay": "d6e6dddcb27b423b3f81924479585285575bf1eb177fbdcac76baeac0a726cee"
+    },
+    {
+      "id": "hs:bieu:850450:8204",
+      "nut": "bieu:850450",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "nhóm đối tượng trong 85.04",
+      "tap": [
+        "chấn lưu dùng cho đèn phóng hoặc ống phóng"
+      ],
+      "mo": "MO_TA_HUONG_DAN",
+      "moNguon": "bieu:850410#1",
+      "moNguonVanTay": "1d663cc4812c28938712f35f474cddcf0719f46831cf72c36f0ff56ea5a519a6",
+      "cauHoi": "Cuộn cảm này có phải là chấn lưu dùng cho đèn phóng hoặc ống phóng (8504.10) không?",
+      "trich": "- Cuộn cảm khác:",
+      "nguon": "bieu:850450#1",
+      "vanTay": "89e225edb2e65474449f9772b28a0e36ccb65e6d0938313f8b8a45adba8c2fd7"
+    },
+    {
+      "id": "hs:bieu:8504903:8204",
+      "nut": "bieu:8504903",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "đối tượng được lắp của bộ phận 8504.90",
+      "tap": [
+        "chấn lưu dùng cho đèn phóng hoặc ống phóng (8504.10)"
+      ],
+      "mo": "DINH_NGHIA_LUAT",
+      "moNguon": "bieu:85049010#1",
+      "moNguonVanTay": "9bf74370f0ba973dbe854e3dd83a925cfd0c1508571ef92862821fbda58bd821",
+      "cauHoi": "Bộ phận này có phải là bộ phận của chấn lưu đèn phóng hoặc ống phóng thuộc mã 8504.10 (8504.90.10) không?",
+      "trich": "- - Dùng cho máy biến điện có công suất không quá 10.000 kVA:",
+      "nguon": "bieu:8504903#1",
+      "vanTay": "056635711f6050704e2180373d84c1f69f3dbca077350d78a415f2756741e145"
     }
   ],
   "ma6": [
@@ -5164,7 +5520,7 @@
       "laLoaiKhac": true,
       "ketQua": "CHƯA ĐỦ DỮ KIỆN",
       "lyDo": "Dòng \"Loại khác\" thuần dưới cha bieu:8504211 (Máy ổn áp từng nấc (biến áp tự ngẫu); máy biến đổi đo lường (1) có công suất danh định không quá 5 kVA:); theo Quy tắc 6 chỉ xác định bằng cách loại trừ trực tiếp các phân nhóm anh em cùng cấp đứng trên trong cùng nhánh cha: .",
-      "cauHoi": "Hàng hóa thuộc nhánh bieu:8504211 (Máy ổn áp từng nấc (biến áp tự ngẫu); máy biến đổi đo lường (1) có công suất danh định không quá 5 kVA:) có chắc chắn KHÔNG thuộc các phân nhóm anh em đứng trên sau đây không: ?",
+      "cauHoi": "Hàng hóa thuộc nhánh bieu:8504211 (Máy ổn áp từng nấc (biến áp tự ngẫu); máy biến đổi đo lường (1) có công suất danh định không quá 5 kVA:) có chắc chắn KHÔNG thuộc các phân nhóm anh em đứng trên sau đây không: 8504.21.11 (Máy biến đổi đo lường (1) loại công suất danh định không quá 1 kVA và đầu điện áp cao từ 110 kV trở lên (SEN))?",
       "dieuKienIds": [
         "hs:bieu:8504:8201",
         "hs:bieu:8504:8202",
@@ -5402,7 +5758,7 @@
       "laLoaiKhac": true,
       "ketQua": "CHƯA ĐỦ DỮ KIỆN",
       "lyDo": "Dòng \"Loại khác\" thuần dưới cha bieu:8504219 (Loại khác:); theo Quy tắc 6 chỉ xác định bằng cách loại trừ trực tiếp các phân nhóm anh em cùng cấp đứng trên trong cùng nhánh cha: .",
-      "cauHoi": "Hàng hóa thuộc nhánh bieu:8504219 (Loại khác:) có chắc chắn KHÔNG thuộc các phân nhóm anh em đứng trên sau đây không: ?",
+      "cauHoi": "Hàng hóa thuộc nhánh bieu:8504219 (Loại khác:) có chắc chắn KHÔNG thuộc các phân nhóm anh em đứng trên sau đây không: 8504.21.92 (Có công suất danh định trên 10 kVA và đầu điện áp cao từ 110 kV trở lên (SEN)); 8504.21.93 (Có công suất danh định trên 10 kVA và đầu điện áp cao từ 66 kV trở lên, nhưng dưới 110 kV (SEN))?",
       "dieuKienIds": [
         "hs:bieu:8504:8201",
         "hs:bieu:8504:8202",
@@ -5534,7 +5890,7 @@
       "laLoaiKhac": true,
       "ketQua": "CHƯA ĐỦ DỮ KIỆN",
       "lyDo": "Dòng \"Loại khác\" thuần dưới cha bieu:8504221 (Máy ổn áp từng nấc (biến áp tự ngẫu):); theo Quy tắc 6 chỉ xác định bằng cách loại trừ trực tiếp các phân nhóm anh em cùng cấp đứng trên trong cùng nhánh cha: .",
-      "cauHoi": "Hàng hóa thuộc nhánh bieu:8504221 (Máy ổn áp từng nấc (biến áp tự ngẫu):) có chắc chắn KHÔNG thuộc các phân nhóm anh em đứng trên sau đây không: ?",
+      "cauHoi": "Hàng hóa thuộc nhánh bieu:8504221 (Máy ổn áp từng nấc (biến áp tự ngẫu):) có chắc chắn KHÔNG thuộc các phân nhóm anh em đứng trên sau đây không: 8504.22.11 (Đầu điện áp cao từ 66 kV trở lên (SEN))?",
       "dieuKienIds": [
         "hs:bieu:8504:8201",
         "hs:bieu:8504:8202",
@@ -5740,7 +6096,7 @@
       "laLoaiKhac": true,
       "ketQua": "CHƯA ĐỦ DỮ KIỆN",
       "lyDo": "Dòng \"Loại khác\" thuần dưới cha bieu:8504229 (Loại khác:); theo Quy tắc 6 chỉ xác định bằng cách loại trừ trực tiếp các phân nhóm anh em cùng cấp đứng trên trong cùng nhánh cha: .",
-      "cauHoi": "Hàng hóa thuộc nhánh bieu:8504229 (Loại khác:) có chắc chắn KHÔNG thuộc các phân nhóm anh em đứng trên sau đây không: ?",
+      "cauHoi": "Hàng hóa thuộc nhánh bieu:8504229 (Loại khác:) có chắc chắn KHÔNG thuộc các phân nhóm anh em đứng trên sau đây không: 8504.22.92 (Đầu điện áp cao từ 110 kV trở lên (SEN)); 8504.22.93 (Đầu điện áp cao từ 66 kV trở lên, nhưng dưới 110 kV (SEN))?",
       "dieuKienIds": [
         "hs:bieu:8504:8201",
         "hs:bieu:8504:8202",
@@ -6017,7 +6373,7 @@
       "laLoaiKhac": true,
       "ketQua": "CHƯA ĐỦ DỮ KIỆN",
       "lyDo": "Dòng \"Loại khác\" thuần dưới cha bieu:8504232 (Có công suất danh định trên 15.000 kVA:); theo Quy tắc 6 chỉ xác định bằng cách loại trừ trực tiếp các phân nhóm anh em cùng cấp đứng trên trong cùng nhánh cha: .",
-      "cauHoi": "Hàng hóa thuộc nhánh bieu:8504232 (Có công suất danh định trên 15.000 kVA:) có chắc chắn KHÔNG thuộc các phân nhóm anh em đứng trên sau đây không: ?",
+      "cauHoi": "Hàng hóa thuộc nhánh bieu:8504232 (Có công suất danh định trên 15.000 kVA:) có chắc chắn KHÔNG thuộc các phân nhóm anh em đứng trên sau đây không: 8504.23.21 (Không quá 20.000 kVA); 8504.23.22 (Trên 20.000 kVA nhưng không quá 30.000 kVA)?",
       "dieuKienIds": [
         "hs:bieu:8504:8201",
         "hs:bieu:8504:8202",
@@ -6073,9 +6429,9 @@
       "cap": 8,
       "ten": "- - - - Điện áp từ 110 kV trở lên",
       "laLoaiKhac": false,
-      "ketQua": "ĐÚNG",
-      "lyDo": "Thuộc nhánh máy biến điện không dùng điện môi lỏng <= 1 kVA, là máy biến áp đo lường (nhom:8504:ct:3#1) có ngưỡng điện áp từ 110 kV trở lên.",
-      "cauHoi": null,
+      "ketQua": "CHƯA ĐỦ DỮ KIỆN",
+      "lyDo": "Thuộc nhánh máy biến điện không dùng điện môi lỏng <= 1 kVA, là máy biến áp đo lường (nhom:8504:ct:3#1) có ngưỡng điện áp từ 110 kV trở lên. Cần xác nhận theo dmh:8504:4 rằng thiết bị là loại đo áp thuần hoặc đo dòng thuần chứ không phải máy biến đổi đo lường kết hợp vừa đo áp vừa đo dòng trong cùng một khối (nhom:8504:ct:3#1, phan:XVI:cg:3#1).",
+      "cauHoi": "Thiết bị là máy biến áp đo lường riêng (8504.31.1), máy biến dòng đo lường riêng (8504.31.2) hay máy biến đổi đo lường kết hợp cả đo áp và đo dòng (theo dmh:8504:4, nếu kết hợp thì chức năng nào là chức năng chính), và dùng cho mức điện áp bao nhiêu kV?",
       "dieuKienIds": [
         "hs:bieu:8504:8201",
         "hs:bieu:8504:8202",
@@ -6139,6 +6495,14 @@
         {
           "idCau": "bieu:85043111#1",
           "trich": "- - - - Điện áp từ 110 kV trở lên"
+        },
+        {
+          "idCau": "nhom:8504:ct:3#1",
+          "trich": "máy biến đổi đo lường (máy biến dòng hoặc biến áp, máy biến điện kết hợp) thường được sử dụng để điều chỉnh mức điện áp hoặc cường độ dòng điện ở mức phù hợp với thiết bị kết nối, ví dụ, thiết bị đo lường, công tơ điện, rơle bảo vệ."
+        },
+        {
+          "idCau": "phan:XVI:cg:3#1",
+          "trich": "3. Trừ khi có yêu cầu cụ thể khác, các loại máy liên hợp gồm hai hoặc nhiều máy lắp ghép với nhau thành một thiết bị đồng bộ và các loại máy khác được thiết kế để thực hiện hai hoặc nhiều chức năng khác nhau hoặc bổ trợ lẫn nhau được phân loại theo bộ phận chính hoặc máy thực hiện chức năng chính."
         }
       ]
     },
@@ -6148,9 +6512,9 @@
       "cap": 8,
       "ten": "- - - - Điện áp từ 66 kV trở lên, nhưng dưới 110 kV",
       "laLoaiKhac": false,
-      "ketQua": "ĐÚNG",
-      "lyDo": "Thuộc nhánh máy biến điện không dùng điện môi lỏng <= 1 kVA, là máy biến áp đo lường có ngưỡng điện áp từ 66 kV trở lên nhưng dưới 110 kV.",
-      "cauHoi": null,
+      "ketQua": "CHƯA ĐỦ DỮ KIỆN",
+      "lyDo": "Thuộc nhánh máy biến điện không dùng điện môi lỏng <= 1 kVA, là máy biến áp đo lường có ngưỡng điện áp từ 66 kV trở lên nhưng dưới 110 kV. Cần xác nhận theo dmh:8504:4 rằng thiết bị là loại đo áp thuần hoặc đo dòng thuần chứ không phải máy biến đổi đo lường kết hợp vừa đo áp vừa đo dòng trong cùng một khối (nhom:8504:ct:3#1, phan:XVI:cg:3#1).",
+      "cauHoi": "Thiết bị là máy biến áp đo lường riêng (8504.31.1), máy biến dòng đo lường riêng (8504.31.2) hay máy biến đổi đo lường kết hợp cả đo áp và đo dòng (theo dmh:8504:4, nếu kết hợp thì chức năng nào là chức năng chính), và dùng cho mức điện áp bao nhiêu kV?",
       "dieuKienIds": [
         "hs:bieu:8504:8201",
         "hs:bieu:8504:8202",
@@ -6214,6 +6578,14 @@
         {
           "idCau": "bieu:85043112#1",
           "trich": "- - - - Điện áp từ 66 kV trở lên, nhưng dưới 110 kV"
+        },
+        {
+          "idCau": "nhom:8504:ct:3#1",
+          "trich": "máy biến đổi đo lường (máy biến dòng hoặc biến áp, máy biến điện kết hợp) thường được sử dụng để điều chỉnh mức điện áp hoặc cường độ dòng điện ở mức phù hợp với thiết bị kết nối, ví dụ, thiết bị đo lường, công tơ điện, rơle bảo vệ."
+        },
+        {
+          "idCau": "phan:XVI:cg:3#1",
+          "trich": "3. Trừ khi có yêu cầu cụ thể khác, các loại máy liên hợp gồm hai hoặc nhiều máy lắp ghép với nhau thành một thiết bị đồng bộ và các loại máy khác được thiết kế để thực hiện hai hoặc nhiều chức năng khác nhau hoặc bổ trợ lẫn nhau được phân loại theo bộ phận chính hoặc máy thực hiện chức năng chính."
         }
       ]
     },
@@ -6223,9 +6595,9 @@
       "cap": 8,
       "ten": "- - - - Điện áp từ 1 kV trở lên, nhưng dưới 66 kV",
       "laLoaiKhac": false,
-      "ketQua": "ĐÚNG",
-      "lyDo": "Thuộc nhánh máy biến điện không dùng điện môi lỏng <= 1 kVA, là máy biến áp đo lường có ngưỡng điện áp từ 1 kV trở lên nhưng dưới 66 kV.",
-      "cauHoi": null,
+      "ketQua": "CHƯA ĐỦ DỮ KIỆN",
+      "lyDo": "Thuộc nhánh máy biến điện không dùng điện môi lỏng <= 1 kVA, là máy biến áp đo lường có ngưỡng điện áp từ 1 kV trở lên nhưng dưới 66 kV. Cần xác nhận theo dmh:8504:4 rằng thiết bị là loại đo áp thuần hoặc đo dòng thuần chứ không phải máy biến đổi đo lường kết hợp vừa đo áp vừa đo dòng trong cùng một khối (nhom:8504:ct:3#1, phan:XVI:cg:3#1).",
+      "cauHoi": "Thiết bị là máy biến áp đo lường riêng (8504.31.1), máy biến dòng đo lường riêng (8504.31.2) hay máy biến đổi đo lường kết hợp cả đo áp và đo dòng (theo dmh:8504:4, nếu kết hợp thì chức năng nào là chức năng chính), và dùng cho mức điện áp bao nhiêu kV?",
       "dieuKienIds": [
         "hs:bieu:8504:8201",
         "hs:bieu:8504:8202",
@@ -6289,6 +6661,14 @@
         {
           "idCau": "bieu:85043113#1",
           "trich": "- - - - Điện áp từ 1 kV trở lên, nhưng dưới 66 kV"
+        },
+        {
+          "idCau": "nhom:8504:ct:3#1",
+          "trich": "máy biến đổi đo lường (máy biến dòng hoặc biến áp, máy biến điện kết hợp) thường được sử dụng để điều chỉnh mức điện áp hoặc cường độ dòng điện ở mức phù hợp với thiết bị kết nối, ví dụ, thiết bị đo lường, công tơ điện, rơle bảo vệ."
+        },
+        {
+          "idCau": "phan:XVI:cg:3#1",
+          "trich": "3. Trừ khi có yêu cầu cụ thể khác, các loại máy liên hợp gồm hai hoặc nhiều máy lắp ghép với nhau thành một thiết bị đồng bộ và các loại máy khác được thiết kế để thực hiện hai hoặc nhiều chức năng khác nhau hoặc bổ trợ lẫn nhau được phân loại theo bộ phận chính hoặc máy thực hiện chức năng chính."
         }
       ]
     },
@@ -6300,7 +6680,7 @@
       "laLoaiKhac": true,
       "ketQua": "CHƯA ĐỦ DỮ KIỆN",
       "lyDo": "Dòng \"Loại khác\" thuần dưới cha bieu:8504311 (Máy biến áp đo lường:); theo Quy tắc 6 chỉ xác định bằng cách loại trừ trực tiếp các phân nhóm anh em cùng cấp đứng trên trong cùng nhánh cha: .",
-      "cauHoi": "Hàng hóa thuộc nhánh bieu:8504311 (Máy biến áp đo lường:) có chắc chắn KHÔNG thuộc các phân nhóm anh em đứng trên sau đây không: ?",
+      "cauHoi": "Hàng hóa thuộc nhánh bieu:8504311 (Máy biến áp đo lường:) có chắc chắn KHÔNG thuộc các phân nhóm anh em đứng trên sau đây không: 8504.31.11 (Điện áp từ 110 kV trở lên); 8504.31.12 (Điện áp từ 66 kV trở lên, nhưng dưới 110 kV); 8504.31.13 (Điện áp từ 1 kV trở lên, nhưng dưới 66 kV)?",
       "dieuKienIds": [
         "hs:bieu:8504:8201",
         "hs:bieu:8504:8202",
@@ -6356,9 +6736,9 @@
       "cap": 8,
       "ten": "- - - - - Máy biến dòng dạng vòng dùng cho đường dây có điện áp không quá 220 kV (SEN)",
       "laLoaiKhac": false,
-      "ketQua": "ĐÚNG",
-      "lyDo": "Thuộc nhánh máy biến dòng đo lường không dùng điện môi lỏng <= 1 kVA cho đường dây >= 110 kV, có cấu tạo dạng vòng theo SEN sen:85043121:1#6 và ngưỡng điện áp đường dây <= 220 kV.",
-      "cauHoi": null,
+      "ketQua": "CHƯA ĐỦ DỮ KIỆN",
+      "lyDo": "Thuộc nhánh máy biến dòng đo lường không dùng điện môi lỏng <= 1 kVA cho đường dây >= 110 kV, có cấu tạo dạng vòng theo SEN sen:85043121:1#6 và ngưỡng điện áp đường dây <= 220 kV. Cần xác nhận theo dmh:8504:4 rằng thiết bị là loại đo áp thuần hoặc đo dòng thuần chứ không phải máy biến đổi đo lường kết hợp vừa đo áp vừa đo dòng trong cùng một khối (nhom:8504:ct:3#1, phan:XVI:cg:3#1).",
+      "cauHoi": "Thiết bị là máy biến áp đo lường riêng (8504.31.1), máy biến dòng đo lường riêng (8504.31.2) hay máy biến đổi đo lường kết hợp cả đo áp và đo dòng (theo dmh:8504:4, nếu kết hợp thì chức năng nào là chức năng chính), và dùng cho mức điện áp bao nhiêu kV?",
       "dieuKienIds": [
         "hs:bieu:8504:8201",
         "hs:bieu:8504:8202",
@@ -6436,6 +6816,14 @@
         {
           "idCau": "bieu:85043121#1",
           "trich": "dùng cho đường dây có điện áp không quá 220 kV"
+        },
+        {
+          "idCau": "nhom:8504:ct:3#1",
+          "trich": "máy biến đổi đo lường (máy biến dòng hoặc biến áp, máy biến điện kết hợp) thường được sử dụng để điều chỉnh mức điện áp hoặc cường độ dòng điện ở mức phù hợp với thiết bị kết nối, ví dụ, thiết bị đo lường, công tơ điện, rơle bảo vệ."
+        },
+        {
+          "idCau": "phan:XVI:cg:3#1",
+          "trich": "3. Trừ khi có yêu cầu cụ thể khác, các loại máy liên hợp gồm hai hoặc nhiều máy lắp ghép với nhau thành một thiết bị đồng bộ và các loại máy khác được thiết kế để thực hiện hai hoặc nhiều chức năng khác nhau hoặc bổ trợ lẫn nhau được phân loại theo bộ phận chính hoặc máy thực hiện chức năng chính."
         }
       ]
     },
@@ -6447,7 +6835,7 @@
       "laLoaiKhac": true,
       "ketQua": "CHƯA ĐỦ DỮ KIỆN",
       "lyDo": "Dòng \"Loại khác\" thuần dưới cha bieu:8504312:td1 (Dùng cho đường dây có điện áp từ 110 kV trở lên:); theo Quy tắc 6 chỉ xác định bằng cách loại trừ trực tiếp các phân nhóm anh em cùng cấp đứng trên trong cùng nhánh cha: .",
-      "cauHoi": "Hàng hóa thuộc nhánh bieu:8504312:td1 (Dùng cho đường dây có điện áp từ 110 kV trở lên:) có chắc chắn KHÔNG thuộc các phân nhóm anh em đứng trên sau đây không: ?",
+      "cauHoi": "Hàng hóa thuộc nhánh bieu:8504312:td1 (Dùng cho đường dây có điện áp từ 110 kV trở lên:) có chắc chắn KHÔNG thuộc các phân nhóm anh em đứng trên sau đây không: 8504.31.21 (Máy biến dòng dạng vòng dùng cho đường dây có điện áp không quá 220 kV (SEN))?",
       "dieuKienIds": [
         "hs:bieu:8504:8201",
         "hs:bieu:8504:8202",
@@ -6508,9 +6896,9 @@
       "cap": 8,
       "ten": "- - - - Điện áp từ 66 kV trở lên, nhưng dưới 110 kV",
       "laLoaiKhac": false,
-      "ketQua": "ĐÚNG",
-      "lyDo": "Thuộc nhánh máy biến dòng đo lường không dùng điện môi lỏng <= 1 kVA có ngưỡng điện áp từ 66 kV trở lên nhưng dưới 110 kV.",
-      "cauHoi": null,
+      "ketQua": "CHƯA ĐỦ DỮ KIỆN",
+      "lyDo": "Thuộc nhánh máy biến dòng đo lường không dùng điện môi lỏng <= 1 kVA có ngưỡng điện áp từ 66 kV trở lên nhưng dưới 110 kV. Cần xác nhận theo dmh:8504:4 rằng thiết bị là loại đo áp thuần hoặc đo dòng thuần chứ không phải máy biến đổi đo lường kết hợp vừa đo áp vừa đo dòng trong cùng một khối (nhom:8504:ct:3#1, phan:XVI:cg:3#1).",
+      "cauHoi": "Thiết bị là máy biến áp đo lường riêng (8504.31.1), máy biến dòng đo lường riêng (8504.31.2) hay máy biến đổi đo lường kết hợp cả đo áp và đo dòng (theo dmh:8504:4, nếu kết hợp thì chức năng nào là chức năng chính), và dùng cho mức điện áp bao nhiêu kV?",
       "dieuKienIds": [
         "hs:bieu:8504:8201",
         "hs:bieu:8504:8202",
@@ -6574,6 +6962,14 @@
         {
           "idCau": "bieu:85043123#1",
           "trich": "- - - - Điện áp từ 66 kV trở lên, nhưng dưới 110 kV"
+        },
+        {
+          "idCau": "nhom:8504:ct:3#1",
+          "trich": "máy biến đổi đo lường (máy biến dòng hoặc biến áp, máy biến điện kết hợp) thường được sử dụng để điều chỉnh mức điện áp hoặc cường độ dòng điện ở mức phù hợp với thiết bị kết nối, ví dụ, thiết bị đo lường, công tơ điện, rơle bảo vệ."
+        },
+        {
+          "idCau": "phan:XVI:cg:3#1",
+          "trich": "3. Trừ khi có yêu cầu cụ thể khác, các loại máy liên hợp gồm hai hoặc nhiều máy lắp ghép với nhau thành một thiết bị đồng bộ và các loại máy khác được thiết kế để thực hiện hai hoặc nhiều chức năng khác nhau hoặc bổ trợ lẫn nhau được phân loại theo bộ phận chính hoặc máy thực hiện chức năng chính."
         }
       ]
     },
@@ -6583,9 +6979,9 @@
       "cap": 8,
       "ten": "- - - - Điện áp từ 1 kV trở lên, nhưng dưới 66 kV",
       "laLoaiKhac": false,
-      "ketQua": "ĐÚNG",
-      "lyDo": "Thuộc nhánh máy biến dòng đo lường không dùng điện môi lỏng <= 1 kVA có ngưỡng điện áp từ 1 kV trở lên nhưng dưới 66 kV.",
-      "cauHoi": null,
+      "ketQua": "CHƯA ĐỦ DỮ KIỆN",
+      "lyDo": "Thuộc nhánh máy biến dòng đo lường không dùng điện môi lỏng <= 1 kVA có ngưỡng điện áp từ 1 kV trở lên nhưng dưới 66 kV. Cần xác nhận theo dmh:8504:4 rằng thiết bị là loại đo áp thuần hoặc đo dòng thuần chứ không phải máy biến đổi đo lường kết hợp vừa đo áp vừa đo dòng trong cùng một khối (nhom:8504:ct:3#1, phan:XVI:cg:3#1).",
+      "cauHoi": "Thiết bị là máy biến áp đo lường riêng (8504.31.1), máy biến dòng đo lường riêng (8504.31.2) hay máy biến đổi đo lường kết hợp cả đo áp và đo dòng (theo dmh:8504:4, nếu kết hợp thì chức năng nào là chức năng chính), và dùng cho mức điện áp bao nhiêu kV?",
       "dieuKienIds": [
         "hs:bieu:8504:8201",
         "hs:bieu:8504:8202",
@@ -6649,6 +7045,14 @@
         {
           "idCau": "bieu:85043124#1",
           "trich": "- - - - Điện áp từ 1 kV trở lên, nhưng dưới 66 kV"
+        },
+        {
+          "idCau": "nhom:8504:ct:3#1",
+          "trich": "máy biến đổi đo lường (máy biến dòng hoặc biến áp, máy biến điện kết hợp) thường được sử dụng để điều chỉnh mức điện áp hoặc cường độ dòng điện ở mức phù hợp với thiết bị kết nối, ví dụ, thiết bị đo lường, công tơ điện, rơle bảo vệ."
+        },
+        {
+          "idCau": "phan:XVI:cg:3#1",
+          "trich": "3. Trừ khi có yêu cầu cụ thể khác, các loại máy liên hợp gồm hai hoặc nhiều máy lắp ghép với nhau thành một thiết bị đồng bộ và các loại máy khác được thiết kế để thực hiện hai hoặc nhiều chức năng khác nhau hoặc bổ trợ lẫn nhau được phân loại theo bộ phận chính hoặc máy thực hiện chức năng chính."
         }
       ]
     },
@@ -6660,7 +7064,7 @@
       "laLoaiKhac": true,
       "ketQua": "CHƯA ĐỦ DỮ KIỆN",
       "lyDo": "Dòng \"Loại khác\" thuần dưới cha bieu:8504312 (Máy biến dòng đo lường:); theo Quy tắc 6 chỉ xác định bằng cách loại trừ trực tiếp các phân nhóm anh em cùng cấp đứng trên trong cùng nhánh cha: .",
-      "cauHoi": "Hàng hóa thuộc nhánh bieu:8504312 (Máy biến dòng đo lường:) có chắc chắn KHÔNG thuộc các phân nhóm anh em đứng trên sau đây không: ?",
+      "cauHoi": "Hàng hóa thuộc nhánh bieu:8504312 (Máy biến dòng đo lường:) có chắc chắn KHÔNG thuộc các phân nhóm anh em đứng trên sau đây không: 8504312:td1 (Dùng cho đường dây có điện áp từ 110 kV trở lên); 8504.31.23 (Điện áp từ 66 kV trở lên, nhưng dưới 110 kV); 8504.31.24 (Điện áp từ 1 kV trở lên, nhưng dưới 66 kV)?",
       "dieuKienIds": [
         "hs:bieu:8504:8201",
         "hs:bieu:8504:8202",
@@ -7080,7 +7484,7 @@
       "laLoaiKhac": true,
       "ketQua": "CHƯA ĐỦ DỮ KIỆN",
       "lyDo": "Dòng \"Loại khác\" thuần dưới cha bieu:8504319 (Loại khác:); theo Quy tắc 6 chỉ xác định bằng cách loại trừ trực tiếp các phân nhóm anh em cùng cấp đứng trên trong cùng nhánh cha: .",
-      "cauHoi": "Hàng hóa thuộc nhánh bieu:8504319 (Loại khác:) có chắc chắn KHÔNG thuộc các phân nhóm anh em đứng trên sau đây không: ?",
+      "cauHoi": "Hàng hóa thuộc nhánh bieu:8504319 (Loại khác:) có chắc chắn KHÔNG thuộc các phân nhóm anh em đứng trên sau đây không: 8504.31.91 (Sử dụng cho đồ chơi, mô hình thu nhỏ hoặc các mô hình giải trí tương tự); 8504.31.92 (Biến áp thích ứng khác (SEN)); 8504.31.93 (Máy biến áp tăng/giảm từng nấc (Step up/down transformers); máy điều chỉnh điện áp trượt (slide regulators) (SEN))?",
       "dieuKienIds": [
         "hs:bieu:8504:8201",
         "hs:bieu:8504:8202",
@@ -7221,7 +7625,7 @@
       "laLoaiKhac": true,
       "ketQua": "CHƯA ĐỦ DỮ KIỆN",
       "lyDo": "Dòng \"Loại khác\" thuần dưới cha bieu:8504321 (Máy biến đổi đo lường(1) (biến áp và biến dòng) loại công suất danh định không quá 5 kVA:); theo Quy tắc 6 chỉ xác định bằng cách loại trừ trực tiếp các phân nhóm anh em cùng cấp đứng trên trong cùng nhánh cha: .",
-      "cauHoi": "Hàng hóa thuộc nhánh bieu:8504321 (Máy biến đổi đo lường(1) (biến áp và biến dòng) loại công suất danh định không quá 5 kVA:) có chắc chắn KHÔNG thuộc các phân nhóm anh em đứng trên sau đây không: ?",
+      "cauHoi": "Hàng hóa thuộc nhánh bieu:8504321 (Máy biến đổi đo lường(1) (biến áp và biến dòng) loại công suất danh định không quá 5 kVA:) có chắc chắn KHÔNG thuộc các phân nhóm anh em đứng trên sau đây không: 8504.32.11 (Biến áp thích ứng (SEN))?",
       "dieuKienIds": [
         "hs:bieu:8504:8201",
         "hs:bieu:8504:8202",
@@ -7515,7 +7919,7 @@
       "laLoaiKhac": true,
       "ketQua": "CHƯA ĐỦ DỮ KIỆN",
       "lyDo": "Dòng \"Loại khác\" thuần dưới cha bieu:8504324 (Loại khác, có công suất danh định không quá 10 kVA:); theo Quy tắc 6 chỉ xác định bằng cách loại trừ trực tiếp các phân nhóm anh em cùng cấp đứng trên trong cùng nhánh cha: .",
-      "cauHoi": "Hàng hóa thuộc nhánh bieu:8504324 (Loại khác, có công suất danh định không quá 10 kVA:) có chắc chắn KHÔNG thuộc các phân nhóm anh em đứng trên sau đây không: ?",
+      "cauHoi": "Hàng hóa thuộc nhánh bieu:8504324 (Loại khác, có công suất danh định không quá 10 kVA:) có chắc chắn KHÔNG thuộc các phân nhóm anh em đứng trên sau đây không: 8504.32.41 (Biến áp thích ứng (SEN))?",
       "dieuKienIds": [
         "hs:bieu:8504:8201",
         "hs:bieu:8504:8202",
@@ -7656,7 +8060,7 @@
       "laLoaiKhac": true,
       "ketQua": "CHƯA ĐỦ DỮ KIỆN",
       "lyDo": "Dòng \"Loại khác\" thuần dưới cha bieu:8504325 (Loại khác, có công suất danh định trên 10 kVA:); theo Quy tắc 6 chỉ xác định bằng cách loại trừ trực tiếp các phân nhóm anh em cùng cấp đứng trên trong cùng nhánh cha: .",
-      "cauHoi": "Hàng hóa thuộc nhánh bieu:8504325 (Loại khác, có công suất danh định trên 10 kVA:) có chắc chắn KHÔNG thuộc các phân nhóm anh em đứng trên sau đây không: ?",
+      "cauHoi": "Hàng hóa thuộc nhánh bieu:8504325 (Loại khác, có công suất danh định trên 10 kVA:) có chắc chắn KHÔNG thuộc các phân nhóm anh em đứng trên sau đây không: 8504.32.51 (Biến áp thích ứng (SEN))?",
       "dieuKienIds": [
         "hs:bieu:8504:8201",
         "hs:bieu:8504:8202",
@@ -7793,7 +8197,7 @@
       "laLoaiKhac": true,
       "ketQua": "CHƯA ĐỦ DỮ KIỆN",
       "lyDo": "Dòng \"Loại khác\" thuần dưới cha bieu:8504331 (Có đầu điện áp cao từ 66 kV trở lên:); theo Quy tắc 6 chỉ xác định bằng cách loại trừ trực tiếp các phân nhóm anh em cùng cấp đứng trên trong cùng nhánh cha: .",
-      "cauHoi": "Hàng hóa thuộc nhánh bieu:8504331 (Có đầu điện áp cao từ 66 kV trở lên:) có chắc chắn KHÔNG thuộc các phân nhóm anh em đứng trên sau đây không: ?",
+      "cauHoi": "Hàng hóa thuộc nhánh bieu:8504331 (Có đầu điện áp cao từ 66 kV trở lên:) có chắc chắn KHÔNG thuộc các phân nhóm anh em đứng trên sau đây không: 8504.33.11 (Biến áp thích ứng (SEN))?",
       "dieuKienIds": [
         "hs:bieu:8504:8201",
         "hs:bieu:8504:8202",
@@ -7925,7 +8329,7 @@
       "laLoaiKhac": true,
       "ketQua": "CHƯA ĐỦ DỮ KIỆN",
       "lyDo": "Dòng \"Loại khác\" thuần dưới cha bieu:8504339 (Loại khác:); theo Quy tắc 6 chỉ xác định bằng cách loại trừ trực tiếp các phân nhóm anh em cùng cấp đứng trên trong cùng nhánh cha: .",
-      "cauHoi": "Hàng hóa thuộc nhánh bieu:8504339 (Loại khác:) có chắc chắn KHÔNG thuộc các phân nhóm anh em đứng trên sau đây không: ?",
+      "cauHoi": "Hàng hóa thuộc nhánh bieu:8504339 (Loại khác:) có chắc chắn KHÔNG thuộc các phân nhóm anh em đứng trên sau đây không: 8504.33.91 (Biến áp thích ứng (SEN))?",
       "dieuKienIds": [
         "hs:bieu:8504:8201",
         "hs:bieu:8504:8202",
@@ -8160,7 +8564,7 @@
       "laLoaiKhac": true,
       "ketQua": "CHƯA ĐỦ DỮ KIỆN",
       "lyDo": "Dòng \"Loại khác\" thuần dưới cha bieu:8504341:td1 (Có công suất danh định trên 10.000 kVA và đầu điện áp cao từ 66 kV trở lên:); theo Quy tắc 6 chỉ xác định bằng cách loại trừ trực tiếp các phân nhóm anh em cùng cấp đứng trên trong cùng nhánh cha: .",
-      "cauHoi": "Hàng hóa thuộc nhánh bieu:8504341:td1 (Có công suất danh định trên 10.000 kVA và đầu điện áp cao từ 66 kV trở lên:) có chắc chắn KHÔNG thuộc các phân nhóm anh em đứng trên sau đây không: ?",
+      "cauHoi": "Hàng hóa thuộc nhánh bieu:8504341:td1 (Có công suất danh định trên 10.000 kVA và đầu điện áp cao từ 66 kV trở lên:) có chắc chắn KHÔNG thuộc các phân nhóm anh em đứng trên sau đây không: 8504.34.11 (Biến áp thích ứng (SEN)); 8504.34.12 (Máy biến áp loại khô phòng nổ (SEN))?",
       "dieuKienIds": [
         "hs:bieu:8504:8201",
         "hs:bieu:8504:8202",
@@ -8390,7 +8794,7 @@
       "laLoaiKhac": true,
       "ketQua": "CHƯA ĐỦ DỮ KIỆN",
       "lyDo": "Dòng \"Loại khác\" thuần dưới cha bieu:8504341:td2 (Loại khác:); theo Quy tắc 6 chỉ xác định bằng cách loại trừ trực tiếp các phân nhóm anh em cùng cấp đứng trên trong cùng nhánh cha: .",
-      "cauHoi": "Hàng hóa thuộc nhánh bieu:8504341:td2 (Loại khác:) có chắc chắn KHÔNG thuộc các phân nhóm anh em đứng trên sau đây không: ?",
+      "cauHoi": "Hàng hóa thuộc nhánh bieu:8504341:td2 (Loại khác:) có chắc chắn KHÔNG thuộc các phân nhóm anh em đứng trên sau đây không: 8504.34.14 (Biến áp thích ứng (SEN)); 8504.34.15 (Máy biến áp loại khô phòng nổ)?",
       "dieuKienIds": [
         "hs:bieu:8504:8201",
         "hs:bieu:8504:8202",
@@ -8612,7 +9016,7 @@
       "laLoaiKhac": true,
       "ketQua": "CHƯA ĐỦ DỮ KIỆN",
       "lyDo": "Dòng \"Loại khác\" thuần dưới cha bieu:8504342:td1 (Có đầu điện áp cao từ 66 kV trở lên:); theo Quy tắc 6 chỉ xác định bằng cách loại trừ trực tiếp các phân nhóm anh em cùng cấp đứng trên trong cùng nhánh cha: .",
-      "cauHoi": "Hàng hóa thuộc nhánh bieu:8504342:td1 (Có đầu điện áp cao từ 66 kV trở lên:) có chắc chắn KHÔNG thuộc các phân nhóm anh em đứng trên sau đây không: ?",
+      "cauHoi": "Hàng hóa thuộc nhánh bieu:8504342:td1 (Có đầu điện áp cao từ 66 kV trở lên:) có chắc chắn KHÔNG thuộc các phân nhóm anh em đứng trên sau đây không: 8504.34.22 (Biến áp thích ứng (SEN)); 8504.34.23 (Máy biến áp loại khô phòng nổ (SEN))?",
       "dieuKienIds": [
         "hs:bieu:8504:8201",
         "hs:bieu:8504:8202",
@@ -8833,7 +9237,7 @@
       "laLoaiKhac": true,
       "ketQua": "CHƯA ĐỦ DỮ KIỆN",
       "lyDo": "Dòng \"Loại khác\" thuần dưới cha bieu:8504342:td2 (Loại khác:); theo Quy tắc 6 chỉ xác định bằng cách loại trừ trực tiếp các phân nhóm anh em cùng cấp đứng trên trong cùng nhánh cha: .",
-      "cauHoi": "Hàng hóa thuộc nhánh bieu:8504342:td2 (Loại khác:) có chắc chắn KHÔNG thuộc các phân nhóm anh em đứng trên sau đây không: ?",
+      "cauHoi": "Hàng hóa thuộc nhánh bieu:8504342:td2 (Loại khác:) có chắc chắn KHÔNG thuộc các phân nhóm anh em đứng trên sau đây không: 8504.34.25 (Biến áp thích ứng (SEN)); 8504.34.26 (Máy biến áp loại khô phòng nổ)?",
       "dieuKienIds": [
         "hs:bieu:8504:8201",
         "hs:bieu:8504:8202",
@@ -8965,7 +9369,7 @@
       "laLoaiKhac": true,
       "ketQua": "CHƯA ĐỦ DỮ KIỆN",
       "lyDo": "Dòng \"Loại khác\" thuần dưới cha bieu:8504401 (Dùng cho các máy xử lý dữ liệu tự động và các khối chức năng của chúng, và thiết bị viễn thông:); theo Quy tắc 6 chỉ xác định bằng cách loại trừ trực tiếp các phân nhóm anh em cùng cấp đứng trên trong cùng nhánh cha: .",
-      "cauHoi": "Hàng hóa thuộc nhánh bieu:8504401 (Dùng cho các máy xử lý dữ liệu tự động và các khối chức năng của chúng, và thiết bị viễn thông:) có chắc chắn KHÔNG thuộc các phân nhóm anh em đứng trên sau đây không: ?",
+      "cauHoi": "Hàng hóa thuộc nhánh bieu:8504401 (Dùng cho các máy xử lý dữ liệu tự động và các khối chức năng của chúng, và thiết bị viễn thông:) có chắc chắn KHÔNG thuộc các phân nhóm anh em đứng trên sau đây không: 8504.40.11 (Bộ nguồn cấp điện liên tục (UPS) (SEN))?",
       "dieuKienIds": [
         "hs:bieu:8504:8201",
         "hs:bieu:8504:8202",
@@ -9222,7 +9626,7 @@
       "laLoaiKhac": true,
       "ketQua": "CHƯA ĐỦ DỮ KIỆN",
       "lyDo": "Dòng \"Loại khác\" thuần dưới cha bieu:850440 (Máy biến đổi tĩnh điện:); theo Quy tắc 6 chỉ xác định bằng cách loại trừ trực tiếp các phân nhóm anh em cùng cấp đứng trên trong cùng nhánh cha: .",
-      "cauHoi": "Hàng hóa thuộc nhánh bieu:850440 (Máy biến đổi tĩnh điện:) có chắc chắn KHÔNG thuộc các phân nhóm anh em đứng trên sau đây không: ?",
+      "cauHoi": "Hàng hóa thuộc nhánh bieu:850440 (Máy biến đổi tĩnh điện:) có chắc chắn KHÔNG thuộc các phân nhóm anh em đứng trên sau đây không: 8504.40.1 (Dùng cho các máy xử lý dữ liệu tự động và các khối chức năng của chúng, và thiết bị viễn thông); 8504.40.20 (Máy nạp ắc qui, pin có công suất danh định trên 100 kVA); 8504.40.30 (Bộ chỉnh lưu khác); 8504.40.40 (Bộ nghịch lưu)?",
       "dieuKienIds": [
         "hs:bieu:8504:8201",
         "hs:bieu:8504:8202",
@@ -9834,7 +10238,7 @@
       "laLoaiKhac": true,
       "ketQua": "CHƯA ĐỦ DỮ KIỆN",
       "lyDo": "Dòng \"Loại khác\" thuần dưới cha bieu:8504903 (Dùng cho máy biến điện có công suất không quá 10.000 kVA:); theo Quy tắc 6 chỉ xác định bằng cách loại trừ trực tiếp các phân nhóm anh em cùng cấp đứng trên trong cùng nhánh cha: .",
-      "cauHoi": "Hàng hóa thuộc nhánh bieu:8504903 (Dùng cho máy biến điện có công suất không quá 10.000 kVA:) có chắc chắn KHÔNG thuộc các phân nhóm anh em đứng trên sau đây không: ?",
+      "cauHoi": "Hàng hóa thuộc nhánh bieu:8504903 (Dùng cho máy biến điện có công suất không quá 10.000 kVA:) có chắc chắn KHÔNG thuộc các phân nhóm anh em đứng trên sau đây không: 8504.90.31 (Tấm, cụm tấm tản nhiệt; ống tản nhiệt đã lắp ráp thành dạng tấm phẳng, cụm tấm dùng cho biến áp phân phối và biến áp nguồn)?",
       "dieuKienIds": [
         "hs:bieu:8504:8201",
         "hs:bieu:8504:8202",
@@ -9984,7 +10388,7 @@
       "laLoaiKhac": true,
       "ketQua": "CHƯA ĐỦ DỮ KIỆN",
       "lyDo": "Dòng \"Loại khác\" thuần dưới cha bieu:8504904 (Dùng cho máy biến điện có công suất trên 10.000 kVA:); theo Quy tắc 6 chỉ xác định bằng cách loại trừ trực tiếp các phân nhóm anh em cùng cấp đứng trên trong cùng nhánh cha: .",
-      "cauHoi": "Hàng hóa thuộc nhánh bieu:8504904 (Dùng cho máy biến điện có công suất trên 10.000 kVA:) có chắc chắn KHÔNG thuộc các phân nhóm anh em đứng trên sau đây không: ?",
+      "cauHoi": "Hàng hóa thuộc nhánh bieu:8504904 (Dùng cho máy biến điện có công suất trên 10.000 kVA:) có chắc chắn KHÔNG thuộc các phân nhóm anh em đứng trên sau đây không: 8504.90.41 (Tấm, cụm tấm tản nhiệt; ống tản nhiệt đã lắp ráp thành dạng tấm phẳng, cụm tấm dùng cho biến áp phân phối và biến áp nguồn)?",
       "dieuKienIds": [
         "hs:bieu:8504:8201",
         "hs:bieu:8504:8202",
@@ -10046,7 +10450,7 @@
       "laLoaiKhac": true,
       "ketQua": "CHƯA ĐỦ DỮ KIỆN",
       "lyDo": "Dòng \"Loại khác\" thuần dưới cha bieu:850490 (Bộ phận:); theo Quy tắc 6 chỉ xác định bằng cách loại trừ trực tiếp các phân nhóm anh em cùng cấp đứng trên trong cùng nhánh cha: .",
-      "cauHoi": "Hàng hóa thuộc nhánh bieu:850490 (Bộ phận:) có chắc chắn KHÔNG thuộc các phân nhóm anh em đứng trên sau đây không: ?",
+      "cauHoi": "Hàng hóa thuộc nhánh bieu:850490 (Bộ phận:) có chắc chắn KHÔNG thuộc các phân nhóm anh em đứng trên sau đây không: 8504.90.10 (Của hàng hóa thuộc phân nhóm 8504.10); 8504.90.20 (Mạch in đã lắp ráp dùng cho hàng hóa thuộc phân nhóm 8504.40.11, 8504.40.19 hoặc 8504.50.10); 8504.90.3 (Dùng cho máy biến điện có công suất không quá 10.000 kVA); 8504.90.4 (Dùng cho máy biến điện có công suất trên 10.000 kVA)?",
       "dieuKienIds": [
         "hs:bieu:8504:8201",
         "hs:bieu:8504:8202",

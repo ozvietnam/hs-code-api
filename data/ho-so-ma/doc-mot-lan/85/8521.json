@@ -132,6 +132,45 @@
             "trich": "(A) Theo mục đích của nhóm 84.71, khái niệm \"máy xử lý dữ liệu tự động\" là máy có khả năng:"
           }
         ]
+      },
+      {
+        "moTa": "Sản phẩm và máy trò chơi video thuộc Chương 95.",
+        "den": [
+          "chuong:95"
+        ],
+        "canCu": [
+          {
+            "idCau": "phan:XVI:cg:1:p#1",
+            "trich": "(p) Các sản phẩm thuộc Chương 95; "
+          },
+          {
+            "idCau": "chuong:95:cgpn:1:ket#1",
+            "trich": "Phân nhóm này không bao gồm các máy hoặc thiết bị trò chơi điện tử video hoạt động bằng đồng xu, tiền giấy, thẻ ngân hàng, token hoặc bất kỳ phương tiện thanh toán khác (phân nhóm 9504.30)."
+          }
+        ]
+      },
+      {
+        "moTa": "Mô-đun màn hình dẹt (85.24), linh kiện bán dẫn/IC (85.41–85.42) và phế liệu điện tử (85.49).",
+        "den": [
+          "bieu:8524",
+          "bieu:8541",
+          "bieu:8542",
+          "bieu:8549"
+        ],
+        "canCu": [
+          {
+            "idCau": "chuong:85:cg:7#5",
+            "trich": "Để phân loại mô-đun màn hình dẹt được định nghĩa trong Chú giải này, nhóm 85.24 sẽ được ưu tiên hơn bất kỳ nhóm nào khác trong Danh mục."
+          },
+          {
+            "idCau": "chuong:85:cg:12:ket#1",
+            "trich": "Để phân loại những mặt hàng được định nghĩa trong Chú giải này, các nhóm 85.41 và 85.42 được ưu tiên xem xét trước hết so với bất kỳ nhóm nào khác trong Danh mục hàng hóa, trừ các mặt hàng thuộc nhóm 85.23."
+          },
+          {
+            "idCau": "phan:XVI:cg:6:B#1",
+            "trich": "(B) Các lô hàng hỗn hợp gồm “phế liệu và phế thải điện và điện tử” và phế liệu và phế thải khác được phân loại vào nhóm 85.49."
+          }
+        ]
       }
     ],
     "trucChinh": [
@@ -361,6 +400,41 @@
       "vanTay": "72b81d04b860f5c561ca0a9b68cfa5416f67f894e4876fd64c4c25d3356ff5d5"
     },
     {
+      "id": "hs:bieu:8521:8203",
+      "nut": "bieu:8521",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "loại trừ ngoài nhóm 85.21",
+      "daTri": true,
+      "tap": [
+        "sản phẩm và máy trò chơi video thuộc Chương 95",
+        "mô-đun màn hình dẹt ưu tiên nhóm 85.24 theo Chú giải 7 Chương 85",
+        "linh kiện bán dẫn và mạch điện tử tích hợp ưu tiên nhóm 85.41/85.42 theo Chú giải 12 Chương 85",
+        "phế liệu và phế thải điện và điện tử thuộc nhóm 85.49 theo Chú giải 6 Phần XVI"
+      ],
+      "mo": "DINH_NGHIA_LUAT",
+      "moNguon": [
+        "phan:XVI:cg:1:p#1",
+        "chuong:95:cgpn:1:ket#1",
+        "chuong:85:cg:7#5",
+        "chuong:85:cg:12:ket#1",
+        "phan:XVI:cg:6:B#1"
+      ],
+      "moNguonVanTay": {
+        "phan:XVI:cg:1:p#1": "b1cd00d27893b69c25fa659d4d5ca82e8cb7ec32b8fd5c385562e8a2775b583f",
+        "chuong:95:cgpn:1:ket#1": "0239aacca9d6415a653d49f331b2bb20ccf5f40dd803b786adaa1de72cd0c41e",
+        "chuong:85:cg:7#5": "094c756ded30e02427146c954dc6e531fc4c0a160cad35fe0e883b9cca93bccc",
+        "chuong:85:cg:12:ket#1": "a73a3041214a55370a8925d8606ddebc7ea10a30479735153e186bd363cbcd69",
+        "phan:XVI:cg:6:B#1": "2248d7ff8b1228ff5c3760d9b7af69de9ad83fb076d46d2a8b39005b48322c47"
+      },
+      "cauHoi": "Hàng hóa có phải là máy trò chơi video Chương 95, mô-đun màn hình dẹt 85.24, linh kiện bán dẫn/IC 85.41–85.42 hay phế liệu điện tử 85.49 không?",
+      "trich": "(p) Các sản phẩm thuộc Chương 95; ",
+      "nguon": "phan:XVI:cg:1:p#1",
+      "vanTay": "b1cd00d27893b69c25fa659d4d5ca82e8cb7ec32b8fd5c385562e8a2775b583f"
+    },
+    {
       "id": "hs:bieu:852110:8201",
       "nut": "bieu:852110",
       "loai": "DIEU_KIEN",
@@ -377,7 +451,9 @@
       "cauHoi": "Thiết bị ghi hoặc tái tạo video này có sử dụng băng từ làm phương tiện ghi/đọc không?",
       "trich": "- Loại dùng băng từ:",
       "nguon": "bieu:852110#1",
-      "vanTay": "9ca4127198ee9d26685e1ddd636dd1e5b87dbc95448af19739da6881cebbb101"
+      "vanTay": "9ca4127198ee9d26685e1ddd636dd1e5b87dbc95448af19739da6881cebbb101",
+      "daTri": true,
+      "ghiChu": "Đặt daTri:true để giữ mở thiết bị video kết hợp nhiều phương tiện (VHS+DVD/HDD), phân giải theo chức năng chính (phan:XVI:cg:3#1)."
     },
     {
       "id": "hs:bieu:85211010:8201",
@@ -427,7 +503,9 @@
       "cauHoi": "Thiết bị (không dùng băng từ) này có phải là đầu đĩa laser (sử dụng đĩa quang đọc/ghi bằng tia laser) không?",
       "trich": "- - Đầu đĩa laser:",
       "nguon": "bieu:8521901#1",
-      "vanTay": "3c58d179d429db37badcf15caf48b4c9ea71ada9f69ee3900e71a921b92212be"
+      "vanTay": "3c58d179d429db37badcf15caf48b4c9ea71ada9f69ee3900e71a921b92212be",
+      "daTri": true,
+      "ghiChu": "Đặt daTri:true để giữ mở thiết bị video kết hợp nhiều phương tiện (VHS+DVD/HDD), phân giải theo chức năng chính (phan:XVI:cg:3#1)."
     },
     {
       "id": "hs:bieu:85219011:8201",
@@ -506,6 +584,45 @@
       "nguon": "bieu:8521909#1",
       "vanTay": "f7471cc258651df3a699c9ded6e380c1d526ade5c0ef4511b997105979ec5aa9",
       "ghiChu": "8521909 chỉ gồm các loại không phải đầu đĩa laser (loại trừ 8521901)."
+    },
+    {
+      "id": "hs:bieu:852110:8251",
+      "nut": "bieu:852110",
+      "loai": "GIAI_CHONG",
+      "cap": [
+        "bieu:85211010",
+        "bieu:85211090"
+      ],
+      "cach": "TRU",
+      "trich": "- - Loại khác",
+      "nguon": "bieu:85211090#1",
+      "vanTay": "43c6d0bc4dbfee5211b6f045ed54ae29291d74d420d82e8a3cd596882a754ff9"
+    },
+    {
+      "id": "hs:bieu:8521901:8251",
+      "nut": "bieu:8521901",
+      "loai": "GIAI_CHONG",
+      "cap": [
+        "bieu:85219011",
+        "bieu:85219019"
+      ],
+      "cach": "TRU",
+      "trich": "- - - Loại khác",
+      "nguon": "bieu:85219019#1",
+      "vanTay": "7d77cf3b522f1099a494bb7ce724429be0389117f51e2cf39130239384241e4f"
+    },
+    {
+      "id": "hs:bieu:8521909:8251",
+      "nut": "bieu:8521909",
+      "loai": "GIAI_CHONG",
+      "cap": [
+        "bieu:85219091",
+        "bieu:85219099"
+      ],
+      "cach": "TRU",
+      "trich": "- - - Loại khác",
+      "nguon": "bieu:85219099#1",
+      "vanTay": "7d77cf3b522f1099a494bb7ce724429be0389117f51e2cf39130239384241e4f"
     },
     {
       "id": "hs:bieu:8521:8290",

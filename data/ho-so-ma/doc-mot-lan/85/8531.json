@@ -178,6 +178,50 @@
             "trich": "(d) Thiết bị hút chân không sử dụng trong lĩnh vực y tế, phẫu thuật, nha khoa hoặc thú y (nhóm 90.18);"
           }
         ]
+      },
+      {
+        "nhom": "bieu:8541",
+        "dieuKien": "Các bộ phận rời đã được chi tiết tại nhóm riêng của Chương 84 hoặc 85 theo Chú giải 2(a) Phần XVI (như LED/cảm biến bán dẫn rời nhóm 85.41 ưu tiên theo Chú giải 12 Chương 85, loa/tăng âm 85.18)",
+        "canCu": [
+          {
+            "idCau": "phan:XVI:cg:2:a#1",
+            "trich": "(a) Các bộ phận đã được chi tiết tại nhóm nào đó của Chương 84 hoặc 85 (trừ các nhóm 84.09, 84.31, 84.48, 84.66, 84.73, 84.87, 85.03, 85.22, 85.29, 85.38 và 85.48) được phân loại vào nhóm đó trong mọi trường hợp;"
+          },
+          {
+            "idCau": "chuong:85:cg:12:ket#1",
+            "trich": "Để phân loại những mặt hàng được định nghĩa trong Chú giải này, các nhóm 85.41 và 85.42 được ưu tiên xem xét trước hết so với bất kỳ nhóm nào khác trong Danh mục hàng hóa, trừ các mặt hàng thuộc nhóm 85.23."
+          }
+        ]
+      },
+      {
+        "nhom": "bieu:9405",
+        "dieuKien": "Bản đồ chiếu sáng và tín hiệu quảng cáo dùng điện (loại trừ theo Chú giải chi tiết 85.31)",
+        "canCu": [
+          {
+            "idCau": "nhom:8531:ct:17#1",
+            "trich": "Nhóm này không bao gồm các bản đồ đường bộ hoặc đường sắt đặt nơi công cộng, trong đó một vị trí, một con đường, một khu vực, một tuyến đường cụ thể được chiếu sáng khi ấn một nút thích hợp, cũng như không bao gồm các tín hiệu quảng cáo dùng điện."
+          }
+        ]
+      },
+      {
+        "nhom": "chuong:92",
+        "dieuKien": "Chuông chùm chơi nhạc thuộc Chương 92",
+        "canCu": [
+          {
+            "idCau": "nhom:8531:ct:4#5",
+            "trich": "Nhóm này cũng bao gồm các loại chuông cửa điện có nhạc, loại có một hoặc nhiều ống kim loại được gõ vào để phát ra một hay nhiều nốt nhạc và các chuông nhà thờ hoạt động bằng điện, ngoại trừ các chuông chùm thích hợp cho việc chơi nhạc (Chương 92)."
+          }
+        ]
+      },
+      {
+        "nhom": "chuong:90",
+        "dieuKien": "Thiết bị báo khói gắn kèm bộ chỉ báo mức độ hoặc ghi âm thuộc Chương 90",
+        "canCu": [
+          {
+            "idCau": "nhom:8531:ct:26#3",
+            "trich": "Những thiết bị tương tự được gắn với bộ chỉ báo mức độ hoặc với hệ thống ghi âm được xếp phân loại vào Chương 90."
+          }
+        ]
       }
     ],
     "dinhNghia": [],
@@ -598,6 +642,29 @@
       "vanTay": "2c3e345d7ed82f101267ae3f8d5b5e79e04f9078fe2d7943fb76956ac543ea2c"
     },
     {
+      "id": "hs:bieu:8531:8208",
+      "nut": "bieu:8531",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "CO_KHONG",
+      "mo": "DINH_NGHIA_LUAT",
+      "moNguon": [
+        "phan:XVI:cg:1:g#1",
+        "phan:XVI:cg:2:a#1",
+        "chuong:85:cg:12:ket#1"
+      ],
+      "moNguonVanTay": {
+        "phan:XVI:cg:1:g#1": "76a8b3b2d4baf617968af52e227ddb5b7327b9cec396bee49ef2ed308428af07",
+        "phan:XVI:cg:2:a#1": "0be725fa818c15a71b0fe25b4f42bb5366794d9c3be56b673c9827efb0e80698",
+        "chuong:85:cg:12:ket#1": "a73a3041214a55370a8925d8606ddebc7ea10a30479735153e186bd363cbcd69"
+      },
+      "cauHoi": "Hàng hóa là bộ phận công dụng chung (Chú giải 1(g) Phần XVI) hay bộ phận rời đã được chi tiết ở nhóm riêng của Chương 84/85 (như LED/cảm biến bán dẫn rời 85.41 theo Chú giải 12 Chương 85, loa/bộ tăng âm 85.18) theo Chú giải 2(a) Phần XVI không?",
+      "trich": "(a) Các bộ phận đã được chi tiết tại nhóm nào đó của Chương 84 hoặc 85 (trừ các nhóm 84.09, 84.31, 84.48, 84.66, 84.73, 84.87, 85.03, 85.22, 85.29, 85.38 và 85.48) được phân loại vào nhóm đó trong mọi trường hợp;",
+      "nguon": "phan:XVI:cg:2:a#1",
+      "vanTay": "0be725fa818c15a71b0fe25b4f42bb5366794d9c3be56b673c9827efb0e80698"
+    },
+    {
       "id": "hs:bieu:853110:8201",
       "nut": "bieu:853110",
       "loai": "DIEU_KIEN",
@@ -643,7 +710,7 @@
       "ve": 0,
       "phu": false,
       "kieu": "GIA_TRI",
-      "truc": "chủng loại thiết bị báo hiệu",
+      "truc": "công dụng báo động an toàn",
       "tap": [
         "báo động chống trộm",
         "báo cháy",
@@ -682,7 +749,8 @@
       "cauHoi": "Thiết bị dùng để báo động chống trộm (gồm phần phát hiện xâm nhập và phần phát tín hiệu)?",
       "trich": "- - Báo trộm",
       "nguon": "bieu:85311010#1",
-      "vanTay": "49d5ba6ae904a03032b7173fa2e6691ffe947a281bed010afd85a55bc84b36ff"
+      "vanTay": "49d5ba6ae904a03032b7173fa2e6691ffe947a281bed010afd85a55bc84b36ff",
+      "daTri": true
     },
     {
       "id": "hs:bieu:85311020:8201",
@@ -707,22 +775,40 @@
       "cauHoi": "Thiết bị dùng để báo cháy (tự động hoặc báo cháy không tự động)?",
       "trich": "- - Báo cháy",
       "nguon": "bieu:85311020#1",
-      "vanTay": "5b43927e09f4d89a6f2cef4ac09f084a8a9fea5e33f4e825d32e4451337c9dd8"
+      "vanTay": "5b43927e09f4d89a6f2cef4ac09f084a8a9fea5e33f4e825d32e4451337c9dd8",
+      "daTri": true
     },
     {
       "id": "hs:bieu:85311030:8201",
       "nut": "bieu:85311030",
       "loai": "DIEU_KIEN",
-      "ve": 0,
+      "ve": 1,
       "phu": false,
       "kieu": "GIA_TRI",
       "truc": "đối tượng cảnh báo",
       "tap": [
-        "báo khói",
+        "báo khói"
+      ],
+      "mo": "NGHIA_THUONG",
+      "cauHoi": "Thiết bị là thiết bị báo khói không?",
+      "trich": "- - Báo khói; chuông báo động cá nhân bỏ túi (còi rú)",
+      "nguon": "bieu:85311030#1",
+      "vanTay": "38383b2077aa9bd1383845dab0d05c14adfd737f8735c633057b440bcf39fe6f",
+      "daTri": true
+    },
+    {
+      "id": "hs:bieu:85311030:8202",
+      "nut": "bieu:85311030",
+      "loai": "DIEU_KIEN",
+      "ve": 2,
+      "phu": false,
+      "kieu": "GIA_TRI",
+      "truc": "hình thái thiết bị báo động cá nhân",
+      "tap": [
         "chuông báo động cá nhân bỏ túi (còi rú)"
       ],
       "mo": "NGHIA_THUONG",
-      "cauHoi": "Thiết bị là báo khói hoặc chuông báo động cá nhân bỏ túi (còi rú)?",
+      "cauHoi": "Thiết bị là chuông báo động cá nhân bỏ túi (còi rú)?",
       "trich": "- - Báo khói; chuông báo động cá nhân bỏ túi (còi rú)",
       "nguon": "bieu:85311030#1",
       "vanTay": "38383b2077aa9bd1383845dab0d05c14adfd737f8735c633057b440bcf39fe6f"
@@ -773,7 +859,7 @@
       "ve": 0,
       "phu": false,
       "kieu": "GIA_TRI",
-      "truc": "chủng loại thiết bị báo hiệu",
+      "truc": "hình thái bảng chỉ báo LCD/LED",
       "tap": [
         "bảng chỉ báo có gắn màn hình tinh thể lỏng (LCD)",
         "bảng chỉ báo có gắn đi-ốt phát quang (LED)"
@@ -826,6 +912,43 @@
       "vanTay": "0b7442cc09a308444cd32a194fb04d6d39ef0b90cc06b4e291fd4af6acf16ea5"
     },
     {
+      "id": "hs:bieu:853180:8202",
+      "nut": "bieu:853180",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "công dụng báo động an toàn",
+      "tap": [
+        "báo động chống trộm",
+        "báo cháy",
+        "thiết bị báo động tương tự"
+      ],
+      "mo": "NGHIA_THUONG",
+      "cauHoi": "Thiết bị có phải là thiết bị báo động chống trộm, báo cháy hoặc báo động an toàn tương tự (8531.10) không?",
+      "trich": "- Thiết bị khác:",
+      "nguon": "bieu:853180#1",
+      "vanTay": "0b7442cc09a308444cd32a194fb04d6d39ef0b90cc06b4e291fd4af6acf16ea5"
+    },
+    {
+      "id": "hs:bieu:853180:8203",
+      "nut": "bieu:853180",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "hình thái bảng chỉ báo LCD/LED",
+      "tap": [
+        "bảng chỉ báo có gắn màn hình tinh thể lỏng (LCD)",
+        "bảng chỉ báo có gắn đi-ốt phát quang (LED)"
+      ],
+      "mo": "NGHIA_THUONG",
+      "cauHoi": "Thiết bị có phải là bảng chỉ báo có gắn màn hình LCD hoặc LED (8531.20) không?",
+      "trich": "- Thiết bị khác:",
+      "nguon": "bieu:853180#1",
+      "vanTay": "0b7442cc09a308444cd32a194fb04d6d39ef0b90cc06b4e291fd4af6acf16ea5"
+    },
+    {
       "id": "hs:bieu:8531801:8201",
       "nut": "bieu:8531801",
       "loai": "DIEU_KIEN",
@@ -848,7 +971,8 @@
       "cauHoi": "Thiết bị là chuông điện tử hoặc thiết bị báo hiệu bằng âm thanh khác (còi điện, còi báo, chuông cửa...)?",
       "trich": "- - Chuông điện tử và các thiết bị báo hiệu bằng âm thanh khác:",
       "nguon": "bieu:8531801#1",
-      "vanTay": "603a6decb1221eda0093f90b6af0489f0248571062c5c659b5aadf5aef950815"
+      "vanTay": "603a6decb1221eda0093f90b6af0489f0248571062c5c659b5aadf5aef950815",
+      "daTri": true
     },
     {
       "id": "hs:bieu:85318011:8201",
@@ -880,6 +1004,25 @@
       ],
       "mo": "NGHIA_THUONG",
       "cauHoi": "Thiết bị là màn hình dẹt dùng báo hiệu (quang điện tử, plasma, huỳnh quang chân không hoặc công nghệ khác ngoài LCD/LED của 8531.20)?",
+      "trich": "- - Màn hình dẹt (kể cả loại công nghệ quang điện tử, plasma và công nghệ khác):",
+      "nguon": "bieu:8531802#1",
+      "vanTay": "2d8640743e8e77d7f4a120c6c10962397949b8af7b360e5c8341c535a0f45d5f",
+      "daTri": true
+    },
+    {
+      "id": "hs:bieu:8531802:8202",
+      "nut": "bieu:8531802",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "hình thái bảng chỉ báo LCD/LED",
+      "tap": [
+        "bảng chỉ báo có gắn màn hình tinh thể lỏng (LCD)",
+        "bảng chỉ báo có gắn đi-ốt phát quang (LED)"
+      ],
+      "mo": "NGHIA_THUONG",
+      "cauHoi": "Màn hình dẹt báo hiệu này có phải là bảng chỉ báo có gắn màn hình tinh thể lỏng (LCD) hoặc đi-ốt phát quang (LED) thuộc 8531.20 không?",
       "trich": "- - Màn hình dẹt (kể cả loại công nghệ quang điện tử, plasma và công nghệ khác):",
       "nguon": "bieu:8531802#1",
       "vanTay": "2d8640743e8e77d7f4a120c6c10962397949b8af7b360e5c8341c535a0f45d5f"
@@ -997,6 +1140,23 @@
       ],
       "mo": "NGHIA_THUONG",
       "cauHoi": "Bộ phận có dùng cho chuông hoặc thiết bị báo hiệu bằng âm thanh khác (không phải loại dùng cho cửa của 8531.90.20)?",
+      "trich": "- - Của chuông hoặc các thiết bị báo hiệu bằng âm thanh khác",
+      "nguon": "bieu:85319030#1",
+      "vanTay": "95e75c0039ccfd3615a5059b14c0d799a691370586eff8a6a0bc5e745509a048"
+    },
+    {
+      "id": "hs:bieu:85319030:8202",
+      "nut": "bieu:85319030",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "thiết bị chủ của bộ phận",
+      "tap": [
+        "chuông cửa hoặc thiết bị báo hiệu bằng âm thanh khác dùng cho cửa"
+      ],
+      "mo": "NGHIA_THUONG",
+      "cauHoi": "Bộ phận có dùng cho chuông cửa hoặc thiết bị báo hiệu bằng âm thanh khác dùng cho cửa (thuộc 8531.90.20) không?",
       "trich": "- - Của chuông hoặc các thiết bị báo hiệu bằng âm thanh khác",
       "nguon": "bieu:85319030#1",
       "vanTay": "95e75c0039ccfd3615a5059b14c0d799a691370586eff8a6a0bc5e745509a048"
@@ -1210,6 +1370,45 @@
       "vanTay": "95e75c0039ccfd3615a5059b14c0d799a691370586eff8a6a0bc5e745509a048"
     },
     {
+      "id": "hs:bieu:8531:8251",
+      "nut": "bieu:8531",
+      "loai": "GIAI_CHONG",
+      "cap": [
+        "bieu:853110",
+        "bieu:853120"
+      ],
+      "cach": "CHU_GIAI",
+      "trich": "Những thiết bị này gồm có 2 phần: phần phát hiện, và phần phát tín hiệu (chuông, còi, bộ chỉ báo có thể nhìn thấy được v.v...) là bộ phận sẽ tự động báo động khi bộ phận phát hiện được kích hoạt. ",
+      "nguon": "nhom:8531:ct:18#2",
+      "vanTay": "cdf0cd472fe5bf60e6bdb4a50bba6bae8cdd5968c8f2285688e11e2fc09af27f"
+    },
+    {
+      "id": "hs:bieu:853110:8251",
+      "nut": "bieu:853110",
+      "loai": "GIAI_CHONG",
+      "cap": [
+        "bieu:85311020",
+        "bieu:85311030"
+      ],
+      "cach": "CHU_GIAI",
+      "trich": "3. Trừ khi có yêu cầu cụ thể khác, các loại máy liên hợp gồm hai hoặc nhiều máy lắp ghép với nhau thành một thiết bị đồng bộ và các loại máy khác được thiết kế để thực hiện hai hoặc nhiều chức năng khác nhau hoặc bổ trợ lẫn nhau được phân loại theo bộ phận chính hoặc máy thực hiện chức năng chính.",
+      "nguon": "phan:XVI:cg:3#1",
+      "vanTay": "a227555f471b02870c08353e40dcc9816d21557ddaaa63966a33115d3d14c5db"
+    },
+    {
+      "id": "hs:bieu:853180:8251",
+      "nut": "bieu:853180",
+      "loai": "GIAI_CHONG",
+      "cap": [
+        "bieu:8531801",
+        "bieu:8531802"
+      ],
+      "cach": "CHU_GIAI",
+      "trich": "Một số bảng chỉ báo này, v.v. cũng được gắn với chuông hoặc các thiết bị tín hiệu âm thanh khác.",
+      "nguon": "nhom:8531:ct:16#1",
+      "vanTay": "5340aea831e9c15dcafe01b47b4c016b4e610cd22ea6207361ace1c44394f264"
+    },
+    {
       "id": "hs:bieu:8531:8220",
       "nut": "bieu:8531",
       "loai": "CANH_TRANH",
@@ -1364,9 +1563,9 @@
       "cap": 8,
       "ten": "- - Báo trộm",
       "laLoaiKhac": false,
-      "ketQua": "ĐÚNG",
+      "ketQua": "CHƯA ĐỦ DỮ KIỆN",
       "lyDo": "Áp dụng cho thiết bị báo động chống trộm gồm bộ phận phát hiện và bộ phận phát tín hiệu âm thanh/hình ảnh theo mô tả biểu 8531.10.10.",
-      "cauHoi": null,
+      "cauHoi": "Thiết bị báo trộm này có gồm phần phát hiện và phần phát tín hiệu, và chắc chắn không phải chuông báo động cá nhân bỏ túi (còi rú) thuộc 8531.10.30 không?",
       "canCu": [
         {
           "idCau": "bieu:853110#1",
@@ -1540,9 +1739,9 @@
       "cap": 8,
       "ten": "- - - Màn hình sử dụng huỳnh quang chân không",
       "laLoaiKhac": false,
-      "ketQua": "ĐÚNG",
+      "ketQua": "CHƯA ĐỦ DỮ KIỆN",
       "lyDo": "Áp dụng cho màn hình dẹt báo hiệu sử dụng công nghệ huỳnh quang chân không dưới nhánh 8531.80.2 (ngoài bảng chỉ báo LCD/LED 8531.20 và màn hình 85.24/85.28).",
-      "cauHoi": null,
+      "cauHoi": "Màn hình huỳnh quang chân không (VFD) này có phải là thiết bị báo hiệu hoàn chỉnh thuộc 8531.80.21 (xác nhận không phải mô-đun màn hình dẹt 85.24 theo Chú giải 7 Chương 85 và không phải bảng chỉ báo LCD/LED 8531.20) không?",
       "canCu": [
         {
           "idCau": "bieu:8531802#1",

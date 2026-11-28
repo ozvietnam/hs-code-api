@@ -792,7 +792,8 @@
       "cauHoi": "Lò luyện, nung hoặc lò sấy có hoạt động theo nguyên lý gia nhiệt bằng điện trở (điện trở nung nóng gián tiếp, trực tiếp qua vật liệu, điện trở lỏng hoặc lò điện phân) không?",
       "trich": "- Lò luyện, nung và lò sấy gia nhiệt bằng điện trở:",
       "nguon": "bieu:85141#1",
-      "vanTay": "b8c2385962fca0741d8458e5a92343766b095ec6696dab499643461fd7cf472e"
+      "vanTay": "b8c2385962fca0741d8458e5a92343766b095ec6696dab499643461fd7cf472e",
+      "daTri": true
     },
     {
       "id": "hs:bieu:851411:8201",
@@ -839,7 +840,8 @@
       "cauHoi": "Lò luyện, nung hoặc lò sấy có hoạt động bằng cảm ứng điện (tần số thấp/cao) hoặc tổn hao điện môi (kể cả lò vi sóng công nghiệp) không?",
       "trich": "- Lò luyện, nung và lò sấy hoạt động bằng cảm ứng điện hoặc tổn hao điện môi:",
       "nguon": "bieu:851420#1",
-      "vanTay": "e9245dc0a3a9662e3ef96250dd3b546ac66d687cb8cbb7d0b0923ac044759081"
+      "vanTay": "e9245dc0a3a9662e3ef96250dd3b546ac66d687cb8cbb7d0b0923ac044759081",
+      "daTri": true
     },
     {
       "id": "hs:bieu:85142020:8201",
@@ -879,6 +881,27 @@
         "nhom:8514:ct:13#1": "0564841573e0504fb9d9b6ce6a23db394538c445cbbd039937dc3041e94b2242"
       },
       "cauHoi": "Lò luyện, nung hoặc lò sấy điện này có dùng nguyên lý gia nhiệt khác ngoài điện trở (8514.1) và ngoài cảm ứng điện/tổn hao điện môi (8514.20) không?",
+      "trich": "- Lò luyện, nung và lò sấy khác:",
+      "nguon": "bieu:85143#1",
+      "vanTay": "6ecf9a886ea20c62aea3309c2ff0a7d0b9b80cdba6d372d958b4675c5bdaa2d6",
+      "daTri": true
+    },
+    {
+      "id": "hs:bieu:85143:8202",
+      "nut": "bieu:85143",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "nguyên lý gia nhiệt của lò",
+      "daTri": true,
+      "tap": [
+        "gia nhiệt bằng điện trở",
+        "cảm ứng điện",
+        "tổn hao điện môi (kể cả vi sóng)"
+      ],
+      "mo": "NGHIA_THUONG",
+      "cauHoi": "Lò luyện, nung hoặc lò sấy này có hoạt động bằng điện trở (8514.1) hay bằng cảm ứng điện/tổn hao điện môi (8514.20) không?",
       "trich": "- Lò luyện, nung và lò sấy khác:",
       "nguon": "bieu:85143#1",
       "vanTay": "6ecf9a886ea20c62aea3309c2ff0a7d0b9b80cdba6d372d958b4675c5bdaa2d6"
@@ -928,9 +951,7 @@
       "tap": [
         "lò hồ quang plasma và chân không"
       ],
-      "mo": "MO_TA_HUONG_DAN",
-      "moNguon": "nhom:8514:ct:12#1",
-      "moNguonVanTay": "5bba45b60f3a9be92582999f01c0a1790ee15e903ac22521f41345ad48329ccb",
+      "mo": "NGHIA_THUONG",
       "cauHoi": "Lò thuộc nhánh 8514.3 này có phải là lò hồ quang plasma và chân không không?",
       "trich": "- - Lò hồ quang plasma và chân không:",
       "nguon": "bieu:851432#1",
@@ -993,6 +1014,25 @@
         "nhom:8514:ct:26#1": "f9d1f31f296b411b7e140b55a3c31047f151dfe35746da1d5e2a05683bad2fc4"
       },
       "cauHoi": "Hàng hóa có phải là thiết bị xử lý nhiệt bằng cảm ứng điện hoặc tổn hao điện môi không ở dạng một lò luyện/nung/sấy khép kín (như máy tôi cảm ứng bề mặt có cuộn cảm, máy sấy điện môi có điện cực dạng tấm/thanh)?",
+      "trich": "- Thiết bị khác để xử lý nhiệt các vật liệu bằng cảm ứng điện hoặc tổn hao điện môi",
+      "nguon": "bieu:851440#1",
+      "vanTay": "a86bf6d9070cceae22672a35efbeed839c6a135ce413e8f0b57c59612f55c53b"
+    },
+    {
+      "id": "hs:bieu:851440:8202",
+      "nut": "bieu:851440",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "GIA_TRI",
+      "truc": "loại đối tượng",
+      "tap": [
+        "lò luyện, nung và lò sấy điện"
+      ],
+      "mo": "MO_TA_HUONG_DAN",
+      "moNguon": "nhom:8514:ct:23#1",
+      "moNguonVanTay": "ae7914bae3875aec02d3624e5850fc9c643f9985045bc8e8ce6d163182d30ed0",
+      "cauHoi": "Thiết bị xử lý nhiệt bằng cảm ứng điện hoặc tổn hao điện môi này có ở dạng lò luyện, nung hoặc lò sấy (thuộc 8514.1, 8514.20 hoặc 8514.3) không?",
       "trich": "- Thiết bị khác để xử lý nhiệt các vật liệu bằng cảm ứng điện hoặc tổn hao điện môi",
       "nguon": "bieu:851440#1",
       "vanTay": "a86bf6d9070cceae22672a35efbeed839c6a135ce413e8f0b57c59612f55c53b"
@@ -1094,6 +1134,58 @@
       "nguon": "phan:XVI:kq:64#1",
       "vanTay": "d6ceb2673909760f7de25a56fa9951a61828788549a6dd23df57653e90c2b729",
       "ghiChu": "Lò hoàn chỉnh hoặc chưa hoàn chỉnh đã có đặc trưng cơ bản phân loại vào nhánh lò (8514.1/20/3), không vào bộ phận 8514.90."
+    },
+    {
+      "id": "hs:bieu:8514:8255",
+      "nut": "bieu:8514",
+      "loai": "GIAI_CHONG",
+      "cap": [
+        "bieu:851420",
+        "bieu:851440"
+      ],
+      "cach": "TRU",
+      "trich": "- Thiết bị khác để xử lý nhiệt các vật liệu bằng cảm ứng điện hoặc tổn hao điện môi",
+      "nguon": "bieu:851440#1",
+      "vanTay": "a86bf6d9070cceae22672a35efbeed839c6a135ce413e8f0b57c59612f55c53b"
+    },
+    {
+      "id": "hs:bieu:8514:8256",
+      "nut": "bieu:8514",
+      "loai": "GIAI_CHONG",
+      "cap": [
+        "bieu:851420",
+        "bieu:851490"
+      ],
+      "cach": "CHU_GIAI",
+      "trich": "Trong toàn bộ nội dung Phần XVI, khi nhắc đến khái niệm máy móc hoặc thiết bị thì không chỉ bao gồm máy móc hoàn chỉnh, mà còn liên quan đến máy móc chưa hoàn chỉnh (ví dụ: việc lắp ráp các bộ phận của máy tới mức mà nó đã có những đặc trưng cơ bản của chiếc máy hoàn chỉnh). ",
+      "nguon": "phan:XVI:kq:64#1",
+      "vanTay": "d6ceb2673909760f7de25a56fa9951a61828788549a6dd23df57653e90c2b729"
+    },
+    {
+      "id": "hs:bieu:8514:8257",
+      "nut": "bieu:8514",
+      "loai": "GIAI_CHONG",
+      "cap": [
+        "bieu:85143",
+        "bieu:851490"
+      ],
+      "cach": "CHU_GIAI",
+      "trich": "Trong toàn bộ nội dung Phần XVI, khi nhắc đến khái niệm máy móc hoặc thiết bị thì không chỉ bao gồm máy móc hoàn chỉnh, mà còn liên quan đến máy móc chưa hoàn chỉnh (ví dụ: việc lắp ráp các bộ phận của máy tới mức mà nó đã có những đặc trưng cơ bản của chiếc máy hoàn chỉnh). ",
+      "nguon": "phan:XVI:kq:64#1",
+      "vanTay": "d6ceb2673909760f7de25a56fa9951a61828788549a6dd23df57653e90c2b729"
+    },
+    {
+      "id": "hs:bieu:8514:8258",
+      "nut": "bieu:8514",
+      "loai": "GIAI_CHONG",
+      "cap": [
+        "bieu:851440",
+        "bieu:851490"
+      ],
+      "cach": "CHU_GIAI",
+      "trich": "Trong toàn bộ nội dung Phần XVI, khi nhắc đến khái niệm máy móc hoặc thiết bị thì không chỉ bao gồm máy móc hoàn chỉnh, mà còn liên quan đến máy móc chưa hoàn chỉnh (ví dụ: việc lắp ráp các bộ phận của máy tới mức mà nó đã có những đặc trưng cơ bản của chiếc máy hoàn chỉnh). ",
+      "nguon": "phan:XVI:kq:64#1",
+      "vanTay": "d6ceb2673909760f7de25a56fa9951a61828788549a6dd23df57653e90c2b729"
     },
     {
       "id": "hs:bieu:8514:8290",
@@ -1601,9 +1693,9 @@
     {
       "ma": "bieu:85144000",
       "ten": "- Thiết bị khác để xử lý nhiệt các vật liệu bằng cảm ứng điện hoặc tổn hao điện môi",
-      "ketQua": "ĐÚNG",
+      "ketQua": "CHƯA ĐỦ DỮ KIỆN",
       "lyDo": "Nội dung phân nhóm 8514.40 và Chú giải chi tiết mô tả rõ thiết bị công nghiệp hoặc phòng thí nghiệm xử lý nhiệt vật liệu bằng cảm ứng điện hoặc tổn hao điện môi không ở dạng lò luyện/nung/sấy (sau khi đã loại trừ máy hàn cảm ứng/điện môi 85.15 và thiết bị sấy/khử trùng 84.19 ở cấp nhóm).",
-      "cauHoi": null,
+      "cauHoi": "Thiết bị xử lý nhiệt bằng cảm ứng điện hoặc tổn hao điện môi này có chắc chắn không ở dạng lò luyện, nung hoặc lò sấy (thuộc 8514.20 theo điểm mơ hồ mh:8514:02) không?",
       "canCu": [
         {
           "idCau": "bieu:8514#1",
