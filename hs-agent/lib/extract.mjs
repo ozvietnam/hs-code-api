@@ -1,29 +1,45 @@
 // Trích bản ghi tiền lệ từ MỘT văn bản phân loại (§2.1 nguyên tắc 4: thà 0 bản ghi
 // còn hơn 1 bản ghi sai). LLM chỉ đề xuất; mọi thứ quyết định đều kiểm tất định:
 //   - số hiệu + ngày lấy từ TIÊU ĐỀ nguồn, không lấy từ LLM
+//   - evidence.soHieu lấy NGUYÊN VĂN dòng "Số: …" từ toàn văn trang đã fetch và phải khớp số hiệu nguồn
+//   - evidence.ketLuan là chuỗi con nguyên văn của toàn văn (sau chuẩn hoá khoảng trắng), chứa mã HS, dài ≥ 30 ký tự
+//   - attributes.bieuThue tính tất định theo ngày ký (bieuThueTheoNgay dùng chung với validate-community)
 //   - mã HS phải xuất hiện NGUYÊN VĂN trong toàn văn (8504.40.90 / 85044090)
 //   - ≥ 60 % từ của mô tả phải có trong toàn văn (chống bịa)
 //   - lọc riêng tư của repo (tên DN, MST, số tờ khai) — dính là bỏ bản ghi
 // Trường cần lấy + cách đọc một thông báo: docs/huong-dan-trich-tb-tchq.md (sửa prompt thì sửa cả hai).
 import { createRequire } from 'module';
 import { join } from 'path';
+import { bieuThueTheoNgay } from '../../lib/bieu-thue-theo-ngay.mjs';
+
+export { bieuThueTheoNgay };
 
 export const SYSTEM_PROMPT = `Bạn trích KẾT QUẢ PHÂN LOẠI mã HS từ MỘT văn bản của Hải quan Việt Nam (thông báo kết quả phân loại, thông báo xác định trước mã số, hoặc công văn hướng dẫn phân loại).
 LUẬT:
 1. CHỈ dùng nội dung văn bản. Không suy ra mã từ kiến thức riêng. Mã HS chép ĐÚNG như văn bản kết luận (bỏ dấu chấm): 8 chữ số; nếu văn bản chỉ kết luận tới nhóm/phân nhóm thì ghi 4 hoặc 6 chữ số.
 2. Chỉ lấy mã mà văn bản KẾT LUẬN hàng THUỘC VỀ. Mã văn bản nói "không thuộc", "loại trừ", hay chỉ trích dẫn làm căn cứ thì đưa vào confusedWith (nếu là mã hàng bị nhầm) hoặc bỏ.
 3. Văn bản nói "không đủ cơ sở", trả hồ sơ, chuyển đơn vị khác, chỉ nhắc nguyên tắc chung mà không kết luận mã cho mặt hàng cụ thể → coKetLuan=false, records=[].
-4. description = tên hàng + đặc tính kỹ thuật quyết định việc phân loại (chất liệu, cấu tạo, chức năng, thông số), 20–400 ký tự, tiếng Việt. TUYỆT ĐỐI KHÔNG ghi tên doanh nghiệp, địa chỉ, số công văn của doanh nghiệp, số tờ khai, trị giá. Tên nhãn hiệu/model của HÀNG thì được.
-5. Một văn bản có nhiều mặt hàng → mỗi mặt hàng một record. Kết luận có điều kiện ("nếu dùng cho… thì…") → mỗi nhánh một record, ghi điều kiện vào conditionVi.
+4. description = tên hàng + đặc tính kỹ thuật quyết định việc phân loại (chất liệu, cấu tạo, chức năng, thông số), 40–400 ký tự, tiếng Việt. TUYỆT ĐỐI KHÔNG ghi tên doanh nghiệp, địa chỉ, số công văn của doanh nghiệp, số tờ khai, trị giá. Tên nhãn hiệu/model của HÀNG thì được.
+5. ketLuan = chép NGUYÊN VĂN câu (hoặc mệnh đề) kết luận có chứa mã HS từ văn bản, dài ≥ 30 ký tự, không tự tóm tắt hay đổi chữ, không lấy đoạn chứa tên doanh nghiệp.
+6. Một văn bản có nhiều mặt hàng → mỗi mặt hàng một record. Kết luận có điều kiện ("nếu dùng cho… thì…") → mỗi nhánh một record, ghi điều kiện vào conditionVi.
 Trả DUY NHẤT JSON:
 {"coKetLuan": true|false, "lyDoKhongKetLuan": "…"|null,
- "records": [{"hsCode": "85044090", "description": "…", "reasonVi": "căn cứ như văn bản nêu (chú giải, quy tắc GIR, đặc tính), ≤ 600 ký tự", "girRule": "GIR 1"|null, "confusedWith": ["8 chữ số"], "conditionVi": "…"|null}]}`;
+ "records": [{"hsCode": "85044090", "description": "…", "ketLuan": "câu kết luận nguyên văn có mã HS trong văn bản (≥ 30 ký tự)", "reasonVi": "căn cứ như văn bản nêu (chú giải, quy tắc GIR, đặc tính) kèm câu kết luận, ≤ 600 ký tự", "girRule": "GIR 1"|null, "confusedWith": ["8 chữ số"], "conditionVi": "…"|null}]}`;
 
 export function buildUserPrompt({ title, text }) {
   return `TIÊU ĐỀ: ${title}\n\nTOÀN VĂN:\n${String(text).slice(0, 14000)}`;
 }
 
 const fold = (s) => String(s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd');
+const normSpace = (s) => String(s || '').replace(/\s+/g, ' ').trim();
+const nref = (x) => String(x || '').toUpperCase().replace(/^SỐ\s*:?\s*/i, '').replace(/\s+/g, '');
+const SO_HIEU_RE = /\bSố\s*:\s*\d{1,7}\s*\/\s*[A-Za-zĐđ0-9-]+(?:\/[A-Za-zĐđ0-9-]+)*/iu;
+
+/** Lấy NGUYÊN VĂN dòng "Số: …" từ toàn văn trang đã fetch (máy tìm, không để LLM bịa). */
+export function extractSoHieu(text) {
+  const m = String(text || '').match(SO_HIEU_RE);
+  return m ? normSpace(m[0]) : null;
+}
 
 /**
  * Mã HS có xuất hiện NGUYÊN VĂN trong toàn văn không.
@@ -73,6 +89,9 @@ export function verifyRecords(llmJson, { text, ref, date, url, repoDir }) {
   const records = [];
   const rejected = [];
   if (!llmJson || llmJson.coKetLuan === false) return { records, rejected, noConclusion: llmJson?.lyDoKhongKetLuan || 'không có kết luận' };
+  const soHieu = extractSoHieu(text);
+  const bieuThue = bieuThueTheoNgay(date);
+  const normText = normSpace(text);
   for (const r of Array.isArray(llmJson.records) ? llmJson.records : []) {
     const hsCode = String(r.hsCode || '').replace(/\D/g, '');
     const why = (w) => rejected.push({ hsCode, why: w });
@@ -86,15 +105,30 @@ export function verifyRecords(llmJson, { text, ref, date, url, repoDir }) {
     if (description.length > 480) description = description.slice(0, 477) + '…';
     const cov = coverage(description, text);
     if (cov < 0.6) { why(`mô tả chỉ khớp ${Math.round(cov * 100)}% toàn văn`); continue; }
+    if (!soHieu) { why('thiếu evidence.soHieu: không tìm thấy dòng "Số: …" trong toàn văn'); continue; }
+    if (!ref || nref(soHieu) !== nref(ref)) { why(`evidence.soHieu (${soHieu}) không khớp số hiệu nguồn (${ref || '?'})`); continue; }
+    const ketLuan = normSpace(r.ketLuan ?? r.evidence?.ketLuan ?? '');
+    if (ketLuan.length < 30) { why('thiếu evidence.ketLuan hoặc ngắn hơn 30 ký tự'); continue; }
+    if (!normText.includes(ketLuan)) { why('evidence.ketLuan không phải chuỗi con nguyên văn của toàn văn'); continue; }
+    if (!codeAppears(hsCode, ketLuan)) { why('evidence.ketLuan không chứa mã HS kết luận'); continue; }
+    if (!bieuThue) { why('thiếu ngày ban hành hợp lệ để tính attributes.bieuThue'); continue; }
     let reasonVi = scrub(r.reasonVi);
-    if (r.conditionVi) reasonVi = `${reasonVi} Điều kiện: ${scrub(r.conditionVi)}`.trim();
+    const cond = r.conditionVi ? ` Điều kiện: ${scrub(r.conditionVi)}` : '';
+    if (!normSpace(reasonVi).includes(ketLuan)) {
+      const budget = Math.max(0, 1000 - ketLuan.length - cond.length - 1);
+      const prefix = reasonVi.slice(0, budget).trim();
+      reasonVi = prefix ? `${prefix} ${ketLuan}` : ketLuan;
+    }
+    if (cond) reasonVi = `${reasonVi}${cond}`.trim();
     const rec = {
       hsCode: code,
       description,
       source: { type: 'TB-TCHQ', reference: ref, ...(date ? { issuedDate: date } : {}), url },
+      attributes: { bieuThue },
       ...(reasonVi ? { reasonVi: reasonVi.slice(0, 1000) } : {}),
       ...girRuleField(r.girRule),
       confusedWith: [...new Set((r.confusedWith || []).map((c) => String(c).replace(/\D/g, '')).filter((c) => c.length === 8 && c !== code && codeAppears(c, text)))],
+      evidence: { soHieu, ketLuan },
     };
     const hits = scanObject(rec).filter((h) => h.hard !== false);
     if (hits.length) { why(`lọc riêng tư: ${hits.map((h) => `${h.path} ${h.what}`).slice(0, 2).join('; ')}`); continue; }

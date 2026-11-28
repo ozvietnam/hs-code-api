@@ -21,6 +21,7 @@ import { readFileSync, readdirSync, existsSync, statSync } from 'fs';
 import { join, dirname, relative, isAbsolute } from 'path';
 import { fileURLToPath } from 'url';
 import { createRequire } from 'module';
+import { bieuThueTheoNgay } from '../lib/bieu-thue-theo-ngay.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const COMMUNITY_DIR = join(root, 'data', 'community');
@@ -224,18 +225,6 @@ const EVIDENCE_FROM = '2026-10-06';
 const BIEU_THUE = new Set(['2012', '2017', '2022']);
 const LOAI_TB = new Set(['KET_QUA_PHAN_LOAI', 'XAC_DINH_TRUOC', 'DINH_CHINH']);
 const THIN_REASON = 150;
-
-/**
- * Biểu thuế theo ngày ký thông báo: TT 65/2017 áp dụng từ 01/01/2018, TT 31/2022 từ 01/12/2022.
- * Khớp 100% với 1.873 bản ghi có ngày trong kho (10/2026). Thông báo cuối 2021 vẫn là biểu 2017.
- */
-function bieuThueTheoNgay(issuedDate) {
-  const d = String(issuedDate || '');
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(d)) return null;
-  if (d < '2018-01-01') return '2012';
-  if (d < '2022-12-01') return '2017';
-  return '2022';
-}
 
 /** Mã kết luận phải có mặt trong lý do, dạng có chấm (3926.90.99) hoặc liền (39269099). */
 function hsInText(hs, text) {
