@@ -152,7 +152,7 @@
     {
       "duongDan": "data/chu-giai-chuong.json",
       "lop": "BO_TRO",
-      "aiDoc": ["lib/classify.js", "lib/do-thi/dung-bang-canh.js", "lib/do-thi/hoi-truoc-4so.js", "lib/evidence-pack.js", "lib/gir-notes.js", "lib/ho-so/cong-ranh-gioi.js", "lib/hs-tree-sources.js", "lib/hs-tree.js", "lib/nguon-loai.js", "lib/notes-coverage.js", "lib/so-tay.js", "lib/soat-luat-re.js"],
+      "aiDoc": ["lib/do-thi/dung-bang-canh.js", "lib/do-thi/hoi-truoc-4so.js", "lib/evidence-pack.js", "lib/gir-notes.js", "lib/ho-so/cong-ranh-gioi.js", "lib/hs-tree-sources.js", "lib/hs-tree.js", "lib/nguon-loai.js", "lib/notes-coverage.js", "lib/so-tay.js", "lib/soat-luat-re.js"],
       "moTa": "Kho chú giải Chương/Phần cũ — .phan là bản cũ không nguồn, thay bằng data/luat-goc/phan.jsonl (thiếu Chú giải 9 Phần XV…).",
       "truongLan": {
         "chuong": "LUAT",
@@ -164,7 +164,7 @@
     {
       "duongDan": "data/chu-giai-heading.json",
       "lop": "BO_TRO",
-      "aiDoc": ["lib/classify.js", "lib/declaration-options.js", "lib/do-thi/ban-do-4so.js", "lib/do-thi/chu-giai-2-phan-xvi.js", "lib/do-thi/hoi-truoc-4so.js", "lib/evidence-pack.js", "lib/gir-notes.js", "lib/gir.js", "lib/ho-so/cong-ranh-gioi.js", "lib/hs-tree-sources.js", "lib/hs-tree.js", "lib/legal-basis.js", "lib/nguon-loai.js", "lib/notes-coverage.js", "lib/so-tay.js", "lib/tim-cgct.js"],
+      "aiDoc": ["lib/declaration-options.js", "lib/do-thi/ban-do-4so.js", "lib/do-thi/chu-giai-2-phan-xvi.js", "lib/do-thi/hoi-truoc-4so.js", "lib/evidence-pack.js", "lib/gir-notes.js", "lib/ho-so/cong-ranh-gioi.js", "lib/hs-tree-sources.js", "lib/hs-tree.js", "lib/legal-basis.js", "lib/nguon-loai.js", "lib/notes-coverage.js", "lib/so-tay.js"],
       "moTa": "Kho chú giải nhóm cũ — lẫn nguyên văn (nhom, nhom_day_du, ten_nhom, sen) với bao_gom/khong_bao_gom/loai_tru dính chữ chương sau, chữ lặp và tinh_chat/phan_biet (BO_TRO).",
       "truongLan": {
         "nhom": "LUAT",
@@ -257,7 +257,7 @@
     {
       "duongDan": "data/explanatory-notes.json",
       "lop": "BO_TRO",
-      "aiDoc": ["lib/data.js", "lib/explanatory-notes-index.js", "lib/hs-tree-sources.js", "lib/nguon-loai.js", "lib/tim-cgct.js"],
+      "aiDoc": ["lib/data.js", "lib/explanatory-notes-index.js", "lib/hs-tree-sources.js", "lib/nguon-loai.js"],
       "moTa": "Chỉ mục chú giải theo mã 8 số (câu cụt, gán giả cấp 8 số, trộn HS 2017 — xuống BO_TRO).",
       "truongLan": {
         "noteVi": "BO_TRO",
@@ -471,7 +471,7 @@
     {
       "duongDan": "data/notes.json",
       "lop": "RUT_TU_LUAT",
-      "aiDoc": ["lib/classify.js", "lib/do-thi/hoi-truoc-4so.js"],
+      "aiDoc": ["lib/do-thi/hoi-truoc-4so.js"],
       "moTa": "Chú giải Chương gộp phẳng (sẽ thay bằng kho luat-goc qua /api/notes ở M-21).",
       "truongLan": {
         "*": "RUT_TU_LUAT"
@@ -977,13 +977,13 @@
     {
       "duongDan": "data/luat-goc/bieu.jsonl",
       "lop": "LUAT",
-      "aiDoc": [],
+      "aiDoc": ["lib/tim-cgct.js"],
       "moTa": "Kho nguyên văn tên Chương/Nhóm/Phân nhóm/Dòng theo cấp gạch (M-18)."
     },
     {
       "duongDan": "data/luat-goc/chuong.jsonl",
       "lop": "LUAT",
-      "aiDoc": [],
+      "aiDoc": ["lib/classify.js", "lib/tim-cgct.js"],
       "moTa": "Kho nguyên văn Chú giải 97 Chương (M-13)."
     },
     {
@@ -1002,7 +1002,7 @@
     {
       "duongDan": "data/luat-goc/nhom.jsonl",
       "lop": "LUAT",
-      "aiDoc": [],
+      "aiDoc": ["lib/classify.js", "lib/gir.js", "lib/tim-cgct.js"],
       "tuyChon": true,
       "moTa": "Kho nguyên văn Chú giải chi tiết nhóm (M-14, chờ gộp)."
     },
@@ -1015,14 +1015,14 @@
     {
       "duongDan": "data/luat-goc/phan-nhom.jsonl",
       "lop": "LUAT",
-      "aiDoc": [],
+      "aiDoc": ["lib/tim-cgct.js"],
       "tuyChon": true,
       "moTa": "Kho nguyên văn Chú giải chi tiết phân nhóm (M-15, chờ gộp)."
     },
     {
       "duongDan": "data/luat-goc/sen.jsonl",
       "lop": "LUAT",
-      "aiDoc": [],
+      "aiDoc": ["lib/tim-cgct.js"],
       "tuyChon": true,
       "moTa": "Kho nguyên văn SEN 2022 (M-16, chờ gộp)."
     },
