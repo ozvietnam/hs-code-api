@@ -244,3 +244,49 @@ Sau khi QT chấm mù `40.16` v1 (`25 ĐÚNG · 11 CHƯA ĐỦ DỮ KIỆN · 2 
 | **Cổng 12 BÙ** *(chỉ cảnh báo)* | **PASS `0` lỗi** | **PASS `1/1` (`0` lỗi)** |
 | **Cổng 13 PHỦ CẠNH TRANH** *(chỉ cảnh báo)* | **PASS `0` lỗi** | **PASS `41/41` (`0` lỗi)** |
 | **Cổng 14 ĐỦ CHUỖI** *(chỉ cảnh báo)* | `385` mã (`339` cảnh báo kế thừa Cổng 6 nguồn chéo nhóm) | `27` mã (`81` cảnh báo từ 3 nguồn ngoại nhóm tại `bieu:3926`) |
+
+---
+
+## 4. Thí điểm Chương 85 (`85.01–85.49`) — Quy mô lớn (`48` nhóm · `896` mã) với Bảng soát 5 luật (`gpu-agy` & `agy`)
+
+### 4.1 Đội hình mô hình, kỷ luật soạn mù & quy trình Bảng soát 5 luật
+| Vai trò | Mô hình thực dùng | Hạ tầng chạy | Kỷ luật mù & phạm vi |
+|---|---|---|---|
+| **Người đọc (Reader)** | `gemini-4-neon-high` | Máy Windows `gpu-agy` (`1` phiên Bậc 2 + `18` phiên ong Bậc 4/6/8 chia 2 đợt song song + `1` lượt chốt `chotNguoiDoc` + `4` ong áp dụng Bảng soát 5 luật; `0` dùng `flash`/`flash_lite`, `0` dùng `gpt-oss` hay LLM cục bộ) | Đọc mù 100% từ gói chính thức `goi-chuong.mjs(85)` & `goi-nhom.mjs --soan-mu` sau `#2486` (có đủ `161` câu nguyên văn `GIR 1–6` + `tenNhomDich` + `chayVoiDataGoc`, `49/49` `vanTayGoi` khớp tuyệt đối `main`); tuyệt đối không mở `M-81-vang-8516.md` hay bất kỳ tệp `M-81-vang-*.md` / `docs/mong/phieu-*/` / `data/ho-so-ma/dieu-kien/85.jsonl` / `data/ho-so/ranh-gioi/` / `#2410`; không chạy `soi-chong`; không đưa `nguon-thuc-te/85.md` cho ong đọc mù (chỉ nạp riêng khi soạn `docs/so-tay-tra-sai/85.md`). |
+| **Người phản biện & Soát 5 luật (Challenger)** | `gemini-4-argon-high` (khác dòng mô hình với `gemini-4-neon-high`) | Máy Mac `agy` (bàn giao sạch qua `origin/agy/m-82-c85-phan-bien` `8ab1a6bcb`, `2.057,41 s` = `~34,3 phút`) | Thực hiện đồng thời: (1) Phản biện mù **đúng 1 vòng** trên toàn bộ **`195` `DIEM_MO_HO`** (`195/195` `CHƯA ĐỦ DỮ KIỆN`, `0` `CHỐT KÈM GIẢ ĐỊNH`, `0` lỗi trích nguyên văn); (2) **Bảng soát 5 luật** gồm **`358` mục** (`docs/nghien-cuu/soat-5-luat-c85-argon.json`: `189 GIỮ · 160 SỬA · 9 CHUYỂN_DIEM_MO_HO`, riêng nhóm vàng **`85.16`** đạt **`31/34` `GIỮ`**, chỉ `3` mục `SỬA`). |
+| **Kiểm máy chính thức** | `scripts/ho-so-ma/doc-mot-lan.mjs --kiem --chuong 85` + `khuon.mjs` | Node.js `v22.23.5` tất định | **`PASS khuôn=0 lỗi · trích=0 lỗi · phủ=0 lỗi` trên toàn bộ `32.228` câu trích nguyên văn**, `49/49` `vanTayGoi` khớp `main` 100%, `0` nguồn `tb:`/`wco:`, `0` `QUY_TAC_3`. |
+
+### 4.2 Số liệu sản lượng, lượt chạy và thời gian thực đo
+| Giai đoạn | Phạm vi | Số phiên / lượt chạy | Thời gian thực đo | Sản lượng đầu ra | Kiểm chứng hình thức |
+|---|---|---:|---:|---|---|
+| **Bước A — Đóng gói mù (`--soan-mu` + GIR 1–6 + `tenNhomDich`)** | Chương 85 + `48` nhóm `85.01–85.49` (trừ `85.20`) | `0` (tất định) | `30,0 s` | `1` gói chương (`230,6 KB`) + `48` gói nhóm (`896` mã 8 số, `543` `canhTranhTimThay`) | `49/49` `vanTayGoi` khớp tuyệt đối |
+| **Bước B — Đọc Bậc 2 (`CHUONG`)** | `chuong.json` (Phần XVI, Chương 85) | `1` phiên `gemini-4-neon-high` | `~6 phút` | `8` phạm vi, `23` loại trừ (trọn `17/17` CG 1 Phần XVI + CG 6(C) + `5/5` CG 1 Chương 85), `16` định nghĩa (`CG 2–12` + `CGPN 1–5`), `8` ưu tiên, `13` trục chính phủ `48/48` nhóm, `13` cạnh tranh, `8` `DIEM_MO_HO` | **PASS `0` lỗi** (`297` trích nguyên văn) |
+| **Bước C — Đọc Bậc 4/6/8 lần đầu (áp trọn 5 Luật đọc)** | `48` nhóm `85.01–85.49`: Đợt 1 (`85.16` vàng riêng + `85.01`, `85.04`, `85.23`, `85.36`, `85.37–38`, `85.39`, `85.44` — `416` mã) + Đợt 2 (`10` ong chia đều `39` nhóm — `480` mã) | `18` phiên ong `gemini-4-neon-high` | `~28 phút` wall-clock | `896/896` mã 8 số (`280 ĐÚNG · 616 CĐDK`), `2.689` bản ghi (`0` `QUY_TAC_3`, `0` cụm `"không giao thoa"` ở `ĐÚNG`), `450` bảng anh em, `187` `DIEM_MO_HO` cấp nhóm (`12` của `85.16`) | **PASS `0` lỗi** trên `51/51` tệp (`17.591` trích nguyên văn lượt 1) |
+| **Bước D1 — Phản biện 1 vòng + Bảng soát 5 luật (`agy`)** | `195` `DIEM_MO_HO` + `358` mục soát 5 luật (`docs/nghien-cuu/soat-5-luat-c85-argon.json`) | `gemini-4-argon-high` | `2.057,41 s` (`~34,3 phút`) | **`195/195` `CHƯA ĐỦ DỮ KIỆN`** (`0` `CHỐT KÈM GIẢ ĐỊNH`, `0` lỗi trích); Bảng soát 5 luật: **`189 GIỮ · 160 SỬA · 9 CHUYỂN_DIEM_MO_HO`** (riêng `85.16`: **`31/34 GIỮ · 3 SỬA`**) | **PASS `0` lỗi** trích nguyên văn |
+| **Bước D2 — Chốt `chotNguoiDoc` & áp dụng Bảng soát 5 luật** | Chốt `195` `diem-mo-ho.jsonl` + áp dụng trọn bộ mục `CHUYỂN_DIEM_MO_HO` (`9/9`), `L3` `daTri`/tách trục (`27/27`), `L2` cửa nhóm và `3/3` mục `SỬA` trên `85.16` (giữ nút `"Loại khác"` thuần trống `DIEU_KIEN` theo `bang-anh-em.mjs`) + soạn `docs/so-tay-tra-sai/85.md` | `4` ong sửa + `1` ong sổ tay (`gemini-4-neon-high`) | `~14 phút` wall-clock | **`195/195` đồng thuận `CHƯA ĐỦ DỮ KIỆN`** (`0` `CHỐT KÈM GIẢ ĐỊNH`); `896` mã 8 số (`224 ĐÚNG · 672 CĐDK`), `2.963` bản ghi (`1.668 DIEU_KIEN` [`1.361 GIA_TRI · 224 SO · 83 CO_KHONG`], `996 GIAI_CHONG` [`0` `QUY_TAC_3`], `299 CANH_TRANH`), `450` bảng anh em; `docs/so-tay-tra-sai/85.md` (`65` bẫy, `215/215` trích đúng) | **PASS `0` lỗi** (`doc-mot-lan.mjs --kiem --chuong 85`: **`32.228` câu trích nguyên văn**, `0` lỗi) |
+| **Tổng cộng toàn Chương 85** | **1 chương · 48 nhóm · 896 mã 8 số** | **`24` phiên `gemini-4-neon-high` + `agy` (`gemini-4-argon-high`)** | **~83 phút wall-clock** | `52` tệp kho `doc-mot-lan/85/` + `docs/so-tay-tra-sai/85.md` (`65` bẫy) + `docs/nghien-cuu/soat-5-luat-c85-argon.json` (`358` mục soát) | **PASS `0` lỗi trên `52/52` tệp (`32.228` trích nguyên văn)** |
+
+### 4.3 Kết quả Bảng soát 5 luật (`gemini-4-argon-high`, `358` mục) & Các ca chặn lỗi nổi bật trên `85.16`, `85.01`, `85.36`, `85.37`
+- **Nhóm vàng `85.16` (`31/34 GIỮ · 3 SỬA · 0 CHUYỂN_DIEM_MO_HO`):**
+  1. **Luật 3 (`hs:bieu:8516101:8101`, `hs:bieu:85161030:8101`):** Đổi `daTri: false → true` trên trục *"kiểu đun nước nóng 8516.10"* vì theo `nhom:8516:ct:4#1` và `ct:9#1`, bình đun nước nóng có dự trữ cũng có phần tử làm nóng kiểu nhúng bên trong — tránh loại trừ giả.
+  2. **Luật 4 (`bieu:8515`):** Chuyển `85.15` (mỏ hàn điện/máy hàn điện) từ `khongCanhTranh` sang `canhTranh` kèm 4 căn cứ nguyên văn (`bieu:8515#1`, `nhom:8516:ct:63#1`, `ct:66#1`, `phan:XVI:cg:2:a#1`) + thêm bản ghi `CANH_TRANH` `hs:bieu:8516:8150` để bảo vệ ranh giới điện trở đốt nóng `8516.80` vs bộ phận máy hàn `85.15`.
+  3. **Luật 4 (`bieu:9614`):** Gỡ tham chiếu câu ngoài gói `"nhom:9614:ct:10#1"` khỏi `lyDo`, giữ đúng căn cứ trong gói (`bieu:9614#1` & `nhom:8516:ct:59#1`).
+- **Toàn Chương 85 (`9/9 CHUYỂN_DIEM_MO_HO` & `27/27 L3` đã xử lý triệt để):**
+  - Chuyển các mã đang để `ĐÚNG` dù có vùng giao thoa mở sang `CHƯA ĐỦ DỮ KIỆN` kèm câu hỏi khách cụ thể: `8501.7`/`8501.80` (9 mã máy phát quang điện — biên `85.41` & đầu ra DC/AC), `8537.10.40` (biên nhánh bảng điều khiển `8537.10.1`), `8536.90.22` & `8536.49.10` (hộp đấu nối rỗng & rơ-le vs công tắc bán dẫn), `8504.31.11–13`/`21–24` (máy biến đổi đo lường kết hợp), `8511.40.31–33`/`50.31–33` (động cơ lắp chung nhiều nhóm xe Chương 87), `8512.10`/`30`/`90` (đèn-còi kết hợp & bộ phận dùng chung), `8529.10.21`/`30`, `8544.30.12`/`42.32` (cáp ắc quy vs bộ dây điện xe).
+  - Tách sạch trục & bật `daTri: true` tại toàn bộ 27 điểm Luật 3 (`8501` tách `so_pha_xoay_chieu_8501`, `8516` kiểu đun nước nóng, `8514` lò đa phương pháp, `8515` nguyên lý hàn, `8517` modem/router & PCBA, `8518` loại đối tượng vs chủng loại, `8531` báo động vs hiển thị, `8532` chất điện môi, `8535` vỏ hộp đúc vs ELCB, `8539` y tế vs xe cơ giới & bộ phận LED, `8542` IC đa chức năng, `8549` thu hồi kim loại quý vs vật thể).
+  - **Quy ước kỹ thuật giữ sạch nút `"Loại khác"` thuần (`laLoaiKhacThuan === true`):** Các đề xuất thêm `DIEU_KIEN (phu: true)` lên nút `"Loại khác"` thuần trong Bảng soát 5 luật được chủ động giữ trống `DIEU_KIEN` để bảo toàn 100% tương thích tất định với `bang-anh-em.mjs` và `doc-mot-lan.mjs` (phủ định nút `"Loại khác"` thuần được suy tự động từ `DIEU_KIEN` anh em + `GIAI_CHONG (TRU)`).
+
+### 4.4 Kết quả kiểm máy chính thức & chẩn đoán Cổng 6–14 (`doc-mot-lan.mjs --kiem --chuong 85`)
+| Cổng kiểm / chẩn đoán | Toàn Chương 85 (`85.01–85.49`, 48 nhóm, 896 mã 8 số) |
+|---|---:|
+| **Kiểm chính thức `doc-mot-lan.mjs --kiem --chuong 85`** | **PASS `0` lỗi** (`khuôn=0`, `trích=0`, `phủ=0`, **`32.228` câu trích nguyên văn**, `49/49` `vanTayGoi` khớp `main`) |
+| **Khuôn toàn kho (`khuon.mjs`)** | **PASS `0` lỗi** (`19.731` tệp, `85.385` bản ghi, `176` bảng anh em) |
+| **Cổng 6 TÁCH** *(chỉ cảnh báo)* | `542` cảnh báo *(chủ yếu ID ngưỡng `SO` mới ghi nhận ở bước đọc mù chưa trùng ID cũ trong `nguong/85.jsonl`)* |
+| **Cổng 7 PHỦ** *(chỉ cảnh báo)* | `450` bảng, `68` `HO_PHU` *(nút cha không có dòng `"Loại khác"`)* |
+| **Cổng 8 CHỒNG** *(chỉ cảnh báo)* | **PASS `0` lỗi** (`19` rời nhau, `460` giải chồng, `0` `vungChong`, `1.581` cảnh báo mềm phản ánh đúng vùng chồng mở) |
+| **Cổng 9 HỎI** *(chỉ cảnh báo)* | **PASS `0` lỗi** |
+| **Cổng 10 DÒ** *(chỉ cảnh báo)* | **PASS `0` lỗi** (`370` cảnh báo thiếu ví dụ) |
+| **Cổng 11 MỞ** *(chỉ cảnh báo)* | **PASS `0` lỗi** (`1.668` điều kiện: `539` nghĩa thường, `211` định nghĩa luật, `239` ngưỡng, `679` mô tả hướng dẫn) |
+| **Cổng 12 BÙ** *(chỉ cảnh báo)* | **PASS `0` lỗi** |
+| **Cổng 13 PHỦ CẠNH TRANH** *(chỉ cảnh báo)* | `45` cảnh báo *(ứng viên nhiễu từ khóa đã phủ đầy đủ trong `nhom.khongCanhTranh`)* |
+| **Cổng 14 ĐỦ CHUỖI** *(chỉ cảnh báo)* | `896` mã (`1.637` cảnh báo kế thừa Cổng 6 ID ngưỡng `SO`) |
