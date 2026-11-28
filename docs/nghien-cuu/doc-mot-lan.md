@@ -1,6 +1,7 @@
 # Nghiên cứu thực nghiệm: Đọc một lần từ Chương xuống 8 số (M-82 · ADR-0011)
 
 > Tài liệu này ghi chép số liệu thực đo, so sánh hai mô hình mạnh khác dòng (`Người đọc` vs `Người phản biện`) và bài học quy trình cho thí điểm **M-82** (`#2483`, `ADR-0011`).
+> Mọi đánh giá kết quả tuân thủ `ADR-0010` mục 1: đếm thẳng số ca `ĐÚNG` / `CHƯA ĐỦ DỮ KIỆN` / `SAI` và diễn đạt *"dùng N lần thì mấy lần sai"*, không dùng tỷ lệ phần trăm cho kết luận phân loại.
 
 ---
 
@@ -76,4 +77,113 @@ Sau khi QT chấm mù `40.16` v1 (`25 ĐÚNG · 11 CHƯA ĐỦ DỮ KIỆN · 2 
 ### 1.5 Nâng cấp hạ tầng khuôn & bài học giữ lại cho `doc-mot-lan`
 1. **Nâng cấp `scripts/ho-so-ma/khuon.mjs`:** Đã thêm `doc-mot-lan` vào `THU_MUC_KHO` và cài đặt kiểm khuôn chặt từng tệp (`chuong.json`, `<nhóm>.json`, `diem-mo-ho.jsonl`, `dieu-kien.jsonl`, `bang-anh-em.jsonl`: cấm `tb:`/`wco:`, `soVongPhanBien === 1`, bắt buộc `cauHoi`/`cauHoiKhach` khi `CHƯA ĐỦ DỮ KIỆN`, từ chối tệp/thư mục lạ — không bỏ qua im lặng), kèm bộ kiểm thử `scripts/test-doc-mot-lan-khuon.mjs` đăng ký trong `scripts/danh-sach-test.txt`.
 2. **Bắt buộc cặp mô hình mạnh khác dòng (`ADR-0011`):** Phản biện bằng `gemini-4-argon-high` đạt `0` lỗi trích trên `58/58` mục và giải quyết chính xác mọi câu hỏi QT 3(a)/3(c)/QT 6, vượt trội hoàn toàn so với mô hình cục bộ nhỏ hơn.
-3. **3 Luật đọc cốt tử đã vào bản chính `.agents/skills/doc-mot-lan/SKILL.md` (do `agy` giữ):** Luật 1 (không chốt sớm ngoài lời phân nhóm), Luật 2 (loại trừ ngoại nhóm đặt tại nút nhóm 4 số), Luật 3 (mỗi trục `GIA_TRI` một loại giá trị, không rải `CO_KHONG`, không gộp ý).
+3. **4 Luật đọc cốt tử đã vào bản chính `.agents/skills/doc-mot-lan/SKILL.md` (do `agy` giữ):** Luật 1 (không chốt sớm ngoài lời phân nhóm), Luật 2 (loại trừ ngoại nhóm đặt tại nút nhóm 4 số), Luật 3 (mỗi trục `GIA_TRI` một loại giá trị, không rải `CO_KHONG`, không gộp ý), Luật 4 (không thu hẹp/mở rộng chữ biểu bằng giả định, không tự chốt vùng chồng mở bằng `QUY_TAC_3`).
+
+---
+
+## 2. Thí điểm Chương 94 (`94.01–94.06`) — Dây chuyền mù 100% trên `agy`
+
+### 2.1 Phương pháp, Kỷ luật soạn mù & Phân vai mô hình
+
+1. **Nguyên tắc cốt lõi (`ADR-0011`):**
+   - Thực hiện **một lượt đọc trọn gói luật từ trên xuống dưới (`2 → 4 → 6 → 8`)** do mô hình mạnh thực hiện, đi kèm **đúng 1 vòng phản biện độc lập** bởi một mô hình mạnh khác dòng cho toàn bộ điểm mơ hồ (`DIEM_MO_HO`).
+   - Máy (`goi-chuong.mjs`, `goi-nhom.mjs --soan-mu`, `doc-mot-lan.mjs`) chỉ làm hai việc tất định: (a) dựng gói đủ luật (gồm nguyên văn `GIR 1–6` từ `data/luat-goc/gir.jsonl`, chú giải Phần/Chương, chú giải tổng quát `:kq:`, chú giải chi tiết nhóm/phân nhóm, `SEN`, cạnh loại trừ ra/vào và tài liệu ứng viên `timCgct`); (b) kiểm tra **100% câu trích có thật nguyên văn trong `data/luat-goc` và gắn đúng `idCau`**. Các cổng `6–14` cũ chỉ chạy ở chế độ cảnh báo tham khảo, không chặn nghiệm thu.
+2. **Kỷ luật soạn mù tuyệt đối (`#2483` mục 7):**
+   - Trong suốt quá trình xây dựng và chạy dây chuyền Chương 94, **tuyệt đối không mở** `docs/mong/the/M-81-vang-9405.md` (hay bất kỳ tệp `M-81-vang-*.md` nào), không mở `docs/mong/phieu-*/`, không đọc bình luận chấm điểm `#2410`, và dùng cờ `--soan-mu` trên `goi-nhom.mjs` để không nạp dữ liệu cũ ở `data/ho-so-ma/dieu-kien/94.jsonl` hay `M-81-canh-tranh.md`.
+   - Không đọc hay trích dẫn nguồn `tb:` (TB-TCHQ) hoặc `wco:` (ý kiến phân loại WCO) ở bất kỳ bản ghi nào.
+3. **Đội hình hai mô hình mạnh khác dòng (đã báo cáo và được QT duyệt tại `#2483#issuecomment-7233837274`):**
+
+| Vai trò | Tên mô hình thực chạy | Cấu hình & Kỷ luật hạn mức | Ghi chú thực nghiệm trên máy Mac `agy` |
+|---|---|---|---|
+| **Người đọc (`nguoiDoc`)** | `gemini-4-hydrogen-tiered-xhigh` | Antigravity Gemini 4 Pro bậc suy luận cao nhất (`0` lượt dùng bản nhẹ `flash`/`flash_lite`, `0` đụng hạn mức Claude Max) | Mỗi gói chạy đúng `1` lượt đơn (`plannerTurns = 1`, `toolCalls = 0`), giữ kích thước lời nhắc `< 148 KB` UTF-8 để tránh ngưỡng cắt `184 KB` của `CreateConversation`. |
+| **Người phản biện (`nguoiPhanBien`)** | `gemini-4-argon-high` | Mô hình Gemini 4 mạnh **khác dòng** với `gemini-4-hydrogen-tiered-xhigh` | Độc lập phản biện 1 vòng cho cả **77 `DIEM_MO_HO` Chương 94** và hỗ trợ chéo **58 `DIEM_MO_HO` Chương 40** (`#2484`, bàn giao tại `origin/agy/m-82-c40-phan-bien` `55a13850b`, `434 s`, `0` lỗi trích). |
+| **Máy kiểm tất định** | `scripts/ho-so-ma/doc-mot-lan.mjs` + `test-doc-mot-lan.mjs` | Node.js tất định, không mạng, không gọi mô hình | Đối chiếu từng chuỗi trích với `data/luat-goc`, dựng tất định `bang-anh-em.jsonl` + `ma6`/`ma8` trong `<nhóm>.json`, tương thích 100% với `khuon.mjs` trên `main`. |
+
+### 2.2 Số liệu đo thực tế Chương 94 (Lượt gọi, Token, Thời gian & Sản lượng)
+
+#### Thống kê từng giai đoạn thực chạy (`metrics.json`)
+
+| Giai đoạn | Hạng mục | Mô hình thực chạy | Số lượt gọi LLM | Token vào / ra | Thời gian thực đo (`wall-clock`) | Đầu ra & Kiểm nguyên văn |
+|---|---|---|---:|---:|---:|---|
+| **Bước 0 — Đóng gói mù** | `goi-chuong(94)` + `6` `goi-nhom(9401..9406, --soan-mu)` (kèm nguyên văn `GIR 1–6`) | Tất định (`0` LLM) | `0` | `0 / 0` | `~6 s` | `7` gói luật đủ chữ + vân tay `sha256` (`0` `tb:`/`wco:`) |
+| **Bước 1 — Đọc Bậc 2 (`CHUONG`)** | `chuong.json` (Phần `XX`, Chương `94`) | `gemini-4-hydrogen-tiered-xhigh` | `1` | `66.328 / 65.004` | `267,99 s` (`~4,5 phút`) | `1` bản ghi `CHUONG` (`7` phạm vi, `16` loại trừ, `4` định nghĩa, `6` ưu tiên, `6` trục chính, `19` cạnh tranh, `6` `DIEM_MO_HO`) |
+| **Bước 2 — Đọc Bậc 4→6→8 (`6` nhóm)** | Đợt 1 (`94.05`, `94.01`, `94.03`) → Đợt 2 (`94.02`, `94.04`, `94.06`) | `gemini-4-hydrogen-tiered-xhigh` | `6` | `370.295 / 588.047` | `855,12 s` (`~14,3 phút`) | `6` tệp `9401..9406.json` (`516` bản ghi điều kiện/giải chồng/cạnh tranh sau chuẩn hoá Luật 1–5, `0` sót nút có tên, `0` sót `timCgct`, riêng `94.05` chạy `535,95 s` sinh `142.309` token ra với `0` lỗi trích) |
+| **Bước 3 — Phản biện 1 vòng** | Toàn bộ `77` `DIEM_MO_HO` của Chương 94 (chia `7` lô song song) | `gemini-4-argon-high` | `7` | `373.648 / 164.358` | `771,09 s` (`~12,9 phút`) | `77/77` phản biện độc lập kèm `chungMinh[]` nguyên văn (`0` lỗi trích câu nguồn) |
+| **Bước 4 — Chốt 1 vòng cuối** | Người đọc xem lại phản biện & chốt `77` `DIEM_MO_HO` (`7` lô song song) | `gemini-4-hydrogen-tiered-xhigh` | `7` | `436.308 / 411.477` | `597,00 s` (`~10,0 phút`) | Chốt `77` dòng `diem-mo-ho.jsonl` (`soVongPhanBien = 1`), đổi kết luận `9` điểm sang `CHƯA ĐỦ DỮ KIỆN` |
+| **Bước 5 — Hệ thống hoá & Kiểm máy** | `doc-mot-lan.mjs --dung-bang` & `--kiem --chuong 94` + sổ tay `94.md` | Tất định (`0` LLM) | `0` | `0 / 0` | `~5 s` | **`PASS 0 lỗi khuôn · 0 lỗi trích & khớp 100% vanTayGoi / 17.233 câu trích nguyên văn · 0 lỗi phủ`** (`54` mã 6 số: `24 ĐÚNG · 30 CHƯA ĐỦ DỮ KIỆN`; `127` mã 8 số: `45 ĐÚNG · 82 CHƯA ĐỦ DỮ KIỆN`) |
+| **Tổng toàn Chương 94** | **1 chương · 6 nhóm · 54 mã 6 số · 127 mã 8 số** | **`gemini-4-hydrogen-tiered-xhigh` + `gemini-4-argon-high`** | **`21` lượt đơn (`0` tool)** | **`1.246.579 / 1.228.886`** | **`2.490,19 s` (`~41,5 phút`)** | **`10` tệp kho `doc-mot-lan/94/` + `83` bẫy tra sai tại `docs/so-tay-tra-sai/94.md`** |
+
+#### Chi tiết thời gian và quy mô từng nhóm 4 số của Chương 94
+
+| Nhóm 4 số | Tên nhóm (tóm tắt) | Thời gian đọc Bậc 4→6→8 | Token vào / ra | Số điều kiện & giải chồng (`dieuKien` đã chuẩn hoá Luật 1–5) | Số điểm mơ hồ cấp nhóm |
+|---|---|---:|---:|---:|---:|
+| **`94.01`** | Ghế ngồi (trừ nhóm `94.02`) và bộ phận | `412,54 s` | `69.697 / 104.172` | `120` (`87` `DIEU_KIEN` + `32` `GIAI_CHONG` + `1` `CANH_TRANH`) | `17` |
+| **`94.02`** | Đồ nội thất y tế, giải phẫu, nha khoa, thú y; ghế cắt tóc | `319,05 s` | `48.113 / 82.616` | `60` (`60` `DIEU_KIEN` + `0` `GIAI_CHONG` + `0` `CANH_TRANH`) | `11` |
+| **`94.03`** | Đồ nội thất khác và bộ phận | `373,40 s` | `73.466 / 99.503` | `87` (`75` `DIEU_KIEN` + `11` `GIAI_CHONG` + `1` `CANH_TRANH`) | `8` |
+| **`94.04`** | Khung đệm; bộ đồ giường, nệm, chăn, đệm ghế, gối | `310,02 s` | `49.608 / 77.315` | `43` (`40` `DIEU_KIEN` + `2` `GIAI_CHONG` + `1` `CANH_TRANH`) | `9` |
+| **`94.05`** | Đèn (`luminaires`) và bộ đèn; biển hiệu được chiếu sáng và bộ phận | `535,95 s` | `81.458 / 142.309` | `161` (`126` `DIEU_KIEN` + `34` `GIAI_CHONG` + `1` `CANH_TRANH`) | `18` |
+| **`94.06`** | Nhà lắp ghép | `319,07 s` | `47.953 / 82.132` | `45` (`39` `DIEU_KIEN` + `5` `GIAI_CHONG` + `1` `CANH_TRANH`) | `8` |
+
+### 2.3 Phân tích 77 `DIEM_MO_HO` của Chương 94 & Các ca đổi kết luận sau 1 vòng phản biện
+
+#### Phân bố 77 `DIEM_MO_HO` theo kiểu mơ hồ (`loaiMoHo`)
+
+| Kiểu điểm mơ hồ (`loaiMoHo`) | Số lượng | Nội dung pháp lý điển hình gặp ở Chương 94 |
+|---|---:|---|
+| `NGHIA_THUONG_PHAN_NHOM` | `30` | Chữ phân nhóm/dòng dùng khái niệm thực tế không kèm định nghĩa định lượng trong biểu/SEN (*đèn pha* vs *đèn rọi* vs *downlight* `dmh:9405:8`; *đèn phòng mổ* vs *đèn khám* `dmh:9405:2`; *không gian mở công cộng/đường phố lớn* vs *sân hiên nhà riêng* `dmh:9405:7`; *ghế văn phòng* vs *ghế xoay gia đình*). |
+| `RANH_GIOI_CHUONG_NHOM` | `16` | Ranh giới giữa Chương 94 với các Chương `39`, `42`, `44`, `63`, `70`, `83`, `85`, `87`, `90`, `95` (đèn tích hợp pin sạc `85.13` vs `94.05` `dmh:9405:3`; biển hiệu tĩnh `94.05` vs bảng chỉ báo điện tử `85.31` `dmh:9405:4`; dây đèn `94.05` vs đèn lồng lễ hội `95.05` `dmh:9405:5`). |
+| `VAT_LIEU_CAU_TAO` | `15` | Phối hợp đa vật liệu ở cấp 6/8 số (ghế khung gỗ + khung kim loại kết hợp song mây; bộ phận đèn thuỷ tinh kết hợp kim loại/plastic `dmh:9405:15`; khối mô-đun xây dựng kết cấu thép ốp vật liệu khác `dmh:9406:5`). |
+| `BO_PHAN_VS_NGUYEN_CHIEC` | `8` | Hàng tháo rời/chưa hoàn chỉnh theo `GIR 2(a)` đối đầu các mệnh đề cấm bộ phận rời của Chương 94 (mặt kính/đá rời Chú giải `3(A)`, đệm rời Chú giải `3(B)`, bộ đèn nhập thiếu bóng `dmh:9405:14`, cấu kiện nhà lắp ghép trình bày riêng `kq:20#1`). |
+| `DA_CHUC_NANG_CHUC_NANG_CHINH` | `6` | Tổ hợp đa chức năng cần xác định đặc tính cơ bản theo `GIR 3(b)` (quạt trần liền đèn, đèn bàn tích hợp loa/sạc không dây, sưởi phòng tắm có đèn `dmh:9405:17`; tủ gương có đèn; giường gắn thiết bị massage). |
+| `DIEU_KIEN_DAT_SAN_TREO_TUONG` | `1` | Xung đột giữa ngoại lệ Chú giải `2(a)` (cho phép tủ có ngăn/giá sách/kệ đơn kèm giá đỡ gắn tường hoặc đặt trên đồ vật khác vào `94.03`) với loại trừ thiết bị văn phòng để bàn `39.26/83.04` và đồ gỗ nhỏ `44.20` tại `chuong:94:kq:13#2` (`dmh:94:1`). |
+| `NGUON_SANG_LED_MODULE_VS_DEN` | `1` | Ranh giới 3 tầng công nghệ chiếu sáng LED: linh kiện chip/gói LED `85.41` (Chú giải `12(a)(ii)` Chương 85) ↔ bóng/mô-đun nguồn sáng LED `85.39` ↔ bộ đèn hoàn chỉnh `94.05` (`dmh:9405:1`). |
+| **Tổng cộng** | **`77`** | **Sau 1 vòng phản biện `gemini-4-argon-high` + chốt `gemini-4-hydrogen-tiered-xhigh`: `77/77` giữ chuẩn `CHƯA ĐỦ DỮ KIỆN` kèm `cauHoiKhach` cụ thể (`0` chốt ẩu khi thiếu thông tin hàng thật).** |
+
+#### Danh sách 9 điểm mơ hồ đổi kết luận sau 1 vòng phản biện (`doiKetLuanSauPhanBien = true`)
+
+1. **`dmh:94:1` (`chuong:94` — Tủ/kệ nhỏ đặt bàn hoặc gắn tường):** Lượt đầu định `"CHỐT KÈM GIẢ ĐỊNH"` đẩy toàn bộ đồ nhỏ đặt bàn không chân đặt sàn ra khỏi `94.03`. `gemini-4-argon-high` dẫn trực tiếp `chuong:94:cg:2#2` (*"để đứng trên 1 đồ vật khác"*) đối chiếu `chuong:94:kq:13#2` chứng minh giả định này thu hẹp trái phép Chú giải `2(a)` → đổi sang **`CHƯA ĐỦ DỮ KIỆN`** và hỏi đủ 4 dữ kiện (kiểu lắp đặt, phụ kiện cố định tường, công năng nội thất vs thiết bị văn phòng để bàn, chất liệu).
+2. **`dmh:94:3` (`chuong:94` — Đồ nội thất / nhà lắp ghép tháo rời kèm mặt kính/đá/đệm hoặc chi tiết dư):** Chặn giả định gộp theo bộ khi chưa xác minh trình bày đồng bộ cùng chuyến (`chuong:94:kq:17#1`) và định mức vật tư hợp lý (`nhom:9406:ct:11#1`) → đổi sang **`CHƯA ĐỦ DỮ KIỆN`**.
+3. **`dmh:940110:1` (`bieu:940110` — *"Ghế dùng cho phương tiện bay"*):** Lượt đầu định mở rộng hoặc loại trừ cứng tàu vũ trụ/khinh khí cầu/buồng tập lái mặt đất. Phản biện chỉ ra chữ phân nhóm `9401.10` không định nghĩa ranh giới với nhóm `88.02`/`88.05` cho thiết bị bay đặc thù/mô phỏng → đổi sang **`CHƯA ĐỦ DỮ KIỆN`** (đúng Luật đọc 1 & 4).
+4. **`dmh:9404:6` (`bieu:940429` — Đệm vừa có lõi lò xo `9404.29.10` vừa tích hợp làm nóng/làm mát bằng điện `9404.29.20`):** Lượt đầu định `"CHỐT KÈM GIẢ ĐỊNH"` ưu tiên `9404.29.10` vì dòng `.20` mở đầu bằng chữ *"Loại khác,"*. Phản biện chứng minh cần kiểm chứng cấu tạo thực tế của đệm kết hợp → đổi sang **`CHƯA ĐỦ DỮ KIỆN`**.
+5. **`dmh:9404:9` (`bieu:9404` — Đệm ngồi / nệm ghế dài so với bộ phận ghế `94.01`):** Bác bỏ `"CHỐT KÈM GIẢ ĐỊNH"`, bắt buộc xác minh hàng nhập tách biệt hoàn toàn (vào `94.04` theo Chú giải `3(B)`) hay nhập đồng bộ/gắn liền khung ghế `94.01` → đổi sang **`CHƯA ĐỦ DỮ KIỆN`**.
+6. **`dmh:9405:9` (`bieu:9405199` — Đèn trần/tường vừa là đèn rọi `9405.19.91` vừa gắn bóng huỳnh quang `9405.19.92`, hoặc máng đèn nhập chưa gắn bóng):** Bác bỏ `"CHỐT KÈM GIẢ ĐỊNH"` ưu tiên `.92` hơn `.91`; giữ mở vùng chồng và hỏi rõ kết cấu quang học rọi điểm cùng trạng thái bóng đi kèm → đổi sang **`CHƯA ĐỦ DỮ KIỆN`** (đồng thời bỏ `GIAI_CHONG` `QUY_TAC_3` tự chốt giữa `.91` và `.92`).
+7. **`dmh:9405:12` (`bieu:940541` / `9405.42` / `9405.49` — Đèn pha `.10` / đèn rọi `.20` giao thoa với đèn tàu thuỷ/đầu máy/phương tiện bay/hải đăng bằng kim loại cơ bản `.30` hoặc đèn đường phố `.40/.50`):** Bác bỏ `"CHỐT KÈM GIẢ ĐỊNH"` tự đặt thứ tự ưu tiên giữa dòng tên đèn (`.10/.20`) và dòng công dụng phương tiện + vật liệu (`.30`) → đổi sang **`CHƯA ĐỦ DỮ KIỆN`**.
+8. **`dmh:9405:13` (`bieu:940550` — Đèn đốt bằng dầu `9405.50.1` giao thoa với Đèn bão `9405.50.40` và Đèn thợ mỏ `9405.50.50`):** Chuyển từ `"CHỐT KÈM GIẢ ĐỊNH"` sang **`CHƯA ĐỦ DỮ KIỆN`** khi chưa biết chủng loại đèn cụ thể (đèn bão, đèn thợ mỏ đốt dầu hay đèn dầu nghi lễ/thông thường).
+9. **`dmh:9406:5` (`bieu:940620` — Khối mô-đun xây dựng khung chịu lực bằng thép nhưng vỏ tường/sàn/mái bằng vật liệu khác):** Bác bỏ giả định chỉ nhìn khung thép để chốt `9406.20`; bắt buộc hỏi vật liệu của cả kết cấu chịu lực lẫn bao che theo `pn:940620:ct:1` → đổi sang **`CHƯA ĐỦ DỮ KIỆN`**.
+
+### 2.4 Kết quả QT chấm mù hai vòng của `94.05` (`#2486`), Luật đọc 5 & Lịch sử vân tay gói (`vanTayGoi`)
+
+1. **Kết quả QT chấm mù lần đọc đầu (`d00938a77`) và sau lượt sửa một lượt (`39ecc74bb`):**
+   - **Ca thử mù:** **`13 ĐÚNG · 28 CHƯA ĐỦ DỮ KIỆN · 0 SAI → dùng 41 lần thì 0 lần ra mã sai`**; toàn bộ **`12/12` ca ngoài nhóm** đều bị chặn đúng ở nút `9405`.
+   - **Đối chiếu bảng vàng `94.05`:**
+     - Lần đọc đầu (`d00938a77`): Điều kiện vàng (`105`) tăng từ `85 / 20` (bản cũ) lên **`94 / 11`**; cặp chồng (`39`) đạt `32 / 7`.
+     - Sau 1 lượt sửa áp đủ 5 Luật đọc (`39ecc74bb`): **Nội dung ĐẠT — Điều kiện vàng đạt `104 / 105`, cặp chồng đạt `39 / 39` (`0` sót), dùng 41 lần thì `0` lần ra mã sai.**
+2. **5 điểm hoàn thiện một lượt trên `94.05` + 3 nâng cấp hệ thống giữ lại cho mọi chương:**
+   - **Luật đọc 5 (Quy tắc 6 cho chữ `"khác"`):** Chữ `"khác"` ở `9405.41.20 / 9405.42.20 / 9405.49.20` (*"Đèn rọi khác"*) chỉ so với anh em cùng cấp 3 gạch đứng trên là *"Đèn pha"* (`.10`), không so chéo với nhánh `9405.1`; bổ sung `¬Đèn pha` + 3 cặp `GIAI_CHONG` `pha × rọi` và 2 cặp `.40 × .60` ở `9405.42` & `9405.49`.
+   - **Tách trục loại đối tượng và kiểu hàng (Luật đọc 3):** Tách `nhomHang9405` thành `loaiDoiTuong9405` (`daTri: false`: đèn và bộ đèn | biển hiệu được chiếu sáng | bộ phận) và `kieuDen` (`daTri: false`); mở đủ 2 vùng chồng bộ phận *"dùng cho đèn rọi"* × *"dùng cho đèn pha"* ở `9405.91` (`9405.91.20 × 9405.91.50`) và `9405.92` (`9405.92.20 × 9405.92.30`).
+   - **Giữ nguyên phạm vi chú giải chung, gói kèm tên nhóm đích & cố định tuyệt đối `vanTayGoi` (`goi-nhom.mjs` + `goi-chuong.mjs` + `doc-mot-lan.mjs`):** Giữ nguyên câu chung Chú giải `1(f)` Chương 94, bổ sung đủ các mục `a..m` của Chú giải 1 Chương 94 và điều kiện *"chưa được chi tiết hoặc ghi ở nơi khác"* trên `bieu:9405#1`; `goi-nhom.mjs` xuất trực tiếp `goi.tenNhomDich` (`bieu:5908#1`, `bieu:8516#1`, `bieu:8531#1`…; trong `DIEU_KIEN` gắn ở `moNguon` để giữ `DIEU_KIEN.nguon` trên đường đi tổ tiên của Cổng 6/14) và bọc `chayVoiDataGoc()` quanh `tim-cgct.js` + `phai-doc.js` để `vanTayGoi` bất biến 100% kể cả khi môi trường chấm chạy khác thư mục (`cwd`) và đặt `HS_DATA_DIR` sang thư mục tạm rỗng.
+3. **Truy vết minh bạch gói đã đọc (`vanTayGoiLanDocDau` vs `vanTayGoi` hiện hành):**
+
+| Tệp hồ sơ | `vanTayGoiLanDocDau` (gói v1 lần đọc mù đầu) | `vanTayGoi` hiện hành (gói v3 có GIR 1–6 + `tenNhomDich`) | Phạm vi đọc trên gói cũ (v1) vs cập nhật trên gói hiện hành (v3) |
+|---|---|---|---|
+| `chuong.json` | `e642f4548841…` | `e642f4548841…` | Không đổi (`100%` đọc từ đầu trên gói đã có GIR 1–6, Chú giải Phần XX / Chương 94 và ứng viên `timCgct`). |
+| `9401.json` | `a4426c4cee9e…` | `890ddb517009…` | Lần đọc mù đầu (cây 4→6→8 + `17` `DIEM_MO_HO`) đọc trên v1; vòng 2 bổ sung đủ Chú giải 1 `a..m` & câu tên nhóm đích trên v3. |
+| `9402.json` | `0e7f6be68f92…` | `e4f13f354473…` | Lần đọc mù đầu (cây 4→6→8 + `11` `DIEM_MO_HO`) đọc trên v1; vòng 2 bổ sung đủ Chú giải 1 `a..m` & câu tên nhóm đích trên v3. |
+| `9403.json` | `7abedfc86930…` | `826fa96795bc…` | Lần đọc mù đầu (cây 4→6→8 + `8` `DIEM_MO_HO`) đọc trên v1; vòng 2 tách gộp ý Luật 3, phủ định anh em `9403.8` Luật 5, đủ Chú giải 1 `a..m` & tên nhóm đích trên v3. |
+| `9404.json` | `66c64bfc202c…` | `5d53468a9852…` | Lần đọc mù đầu (cây 4→6→8 + `9` `DIEM_MO_HO`) đọc trên v1; vòng 2 chuẩn hoá `daTri` Luật 3, phủ định anh em `9404.29` Luật 5, đủ Chú giải 1 `a..m` & tên nhóm đích trên v3. |
+| `9405.json` | `b536f5141d91…` | `6352d91d98cc…` | Lần đọc mù đầu (cây 4→6→8 + `18` `DIEM_MO_HO`) đọc trên v1; vòng 2 sửa trọn 5 mục (`9405.4x.20`, tách trục `loaiDoiTuong9405`/`kieuDen`, `.40×.60`, bộ phận rọi×pha, Chú giải 1 `a..m` & `moNguon` tên nhóm đích `59.08, 85.16, 85.31`) trên v3. |
+| `9406.json` | `28588fc19339…` | `486d90b0cad3…` | Lần đọc mù đầu (cây 4→6→8 + `8` `DIEM_MO_HO`) đọc trên v1; vòng 2 phủ định anh em `9406.90` Luật 5, đủ Chú giải 1 `a..m` & tên nhóm đích trên v3. |
+
+### 2.5 Chẩn đoán Cổng 6–14 ở chế độ cảnh báo (Tham khảo theo `ADR-0011` mục 1)
+
+| Cổng tham khảo | Tên cổng | Số lỗi cảnh báo | Ghi chú chẩn đoán |
+|---:|---|---:|---|
+| **6** | `TÁCH` | **`0`** | 100% nút có tên có điều kiện nguyên tử hợp lệ trên đường đi |
+| **7** | `PHỦ` | `4` | Báo `HO_PHU` tự nhiên tại các nút cha không có dòng `"Loại khác"` (`chuong:94`, `9401`, `9403`, `9405`; riêng `94042` đã chứng minh phủ kín) |
+| **8** | `CHỒNG` | **`0`** | `0` lỗi (`14` cặp chứng minh rời nhau `roiNhau`, `69` cặp giải chồng bằng `TRU`/`CHU_GIAI`, `120` cảnh báo giao thoa mở tương ứng `DIEM_MO_HO`) |
+| **9** | `HỎI` | **`0`** | 100% nhánh `"Loại khác"` sinh được câu hỏi tối thiểu sạch |
+| **10** | `DÒ` | **`0`** | `0` lỗi cấu trúc dò bảng anh em |
+| **11** | `MỞ` | **`0`** | `427` điều kiện phân loại sạch (`86` `DINH_NGHIA_LUAT`, `150` `MO_TA_HUONG_DAN`, `191` `NGHIA_THUONG`) |
+| **12** | `BÙ` | `1` | Nhắc cấp `chuong:94` (5 nhóm có phạm vi mở/dư `9401, 9403, 9404, 9405, 9406` đều có bản ghi `CANH_TRANH`, `soCanhTranh = 5`; riêng `9402` không phải nhóm dư và đã phủ đủ `nhom.canhTranh` / `nhom.khongCanhTranh`) |
+| **13** | `PHỦ CẠNH TRANH` | **`0`** | Phủ đủ 100% ứng viên `timCgct` trên cả 6 nhóm `94.01–94.06` |
+| **14** | `ĐỦ CHUỖI` | **`0`** | **`0` lỗi chuỗi và `thieuBangChungSai = 0` trên toàn bộ `127/127` dòng 8 số** |
