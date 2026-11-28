@@ -72,7 +72,9 @@ const LOAI_CANH_BAT_BUOC = new Set(['LOAI_SANG', 'PHAN_VE', 'DINH_NGHIA']); // c
 export function napLuatCong(thuMuc = G.LUAT_MAC_DINH) {
   const nut = new Map(); const cau = new Map(); const canhTheoTu = new Map(); const canhTheoDen = new Map();
   for (const f of fs.readdirSync(thuMuc).filter((x) => x.endsWith('.jsonl') && !KHO_BO.has(x)).sort()) {
-    for (const n of G.docJsonl(path.join(thuMuc, f))) if (n.lop !== 'TIEN_LE') nut.set(n.id, { lop: n.lop, nguon: n.nguon?.vanBan ?? null, v: n.nguyenVan });
+    for (const n of G.docJsonl(path.join(thuMuc, f))) {
+      if (n.lop !== 'TIEN_LE') nut.set(n.id, { lop: n.lop, nguon: n.nguon?.vanBan ?? null, v: n.nguyenVan, cha: n.cha ?? null });
+    }
   }
   const tmCau = path.join(thuMuc, 'cau');
   if (fs.existsSync(tmCau)) {

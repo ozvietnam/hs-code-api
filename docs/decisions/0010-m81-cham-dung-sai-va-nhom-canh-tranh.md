@@ -44,7 +44,7 @@ Bốn câu theo CLAUDE.md:
 
 `goi-nhom.mjs` thêm khối `canhTranhTimThay`:
 - Câu hỏi cho máy tìm = nguyên văn từng dòng biểu của nhóm và từng câu CGCT của nhóm nêu hàng cụ thể. Gọi `timCgct` (`lib/tim-cgct.js`), giữ 10 nhóm đầu mỗi câu. Đặt 10 là TẠM; đổi bằng số đo ở mục 4.
-- Nhóm khác nhóm đang xét xuất hiện trong kết quả là ứng viên cạnh tranh. Gói kéo tài liệu phải đọc của ứng viên qua `phai-doc`: chú giải chương có "Theo mục đích của nhóm X", các câu CGCT của nhóm X mà máy tìm trúng. Mỗi mục ghi nguồn tìm: câu hỏi, hạng, id câu.
+- Nhóm X là ứng viên cạnh tranh của nhóm H khi, với ít nhất một câu hỏi lấy từ chính lời luật của H, `timCgct` xếp X **trên** H. Nếu H không có trong 10 nhóm đầu, X là ứng viên khi X đứng **đầu**. Lý do: máy tìm đọc chính lời của H mà vẫn đẩy hàng sang X trước, nên luật phải nói rõ vì sao không phải X. Nhóm chỉ đứng sau H thì không bắt trả lời. Gói kéo tài liệu phải đọc của ứng viên qua `phai-doc`: chú giải chương có "Theo mục đích của nhóm X", các câu CGCT của nhóm X mà máy tìm trúng. Mỗi mục ghi nguồn tìm: câu hỏi, hạng, id câu.
 - Kết quả tìm chỉ là tài liệu bắt buộc đọc. Không biến thành cạnh, không thành kết luận. Ai chọn nhóm vẫn là người soạn đọc luật (ADR-0005).
 
 ### 3. Cổng 13 — PHỦ CẠNH TRANH

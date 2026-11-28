@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // scripts/ho-so-ma/so-diem.mjs — M-81 (#2410, ADR-0008, ADR-0010): sổ điểm tất định theo nhóm 4 số, tính hoàn toàn từ dữ liệu (KHÔNG tệp trạng thái riêng).
-//   DONG: có DIEU_KIEN, không lỗi khuôn, bang-anh-em qua cổng 6–14 (cổng 13 bật mặc định; chỉ miễn trên 12 nhóm hồi quy tiền ADR-0010 khi chưa có khongCanhTranh) và vân tay mọi câu luật liên quan còn khớp.
+//   DONG: có DIEU_KIEN, không lỗi khuôn, bang-anh-em qua cổng 6–14 (cổng 13 bật mặc định; TẠM miễn cho 12 nhóm tiền ADR-0010 tới khi bổ sung khongCanhTranh theo tiêu chí mới) và vân tay mọi câu luật liên quan còn khớp.
 //   CHUA: chưa có bản ghi nào thuộc nhóm (hàng đợi chỉ phát nhóm CHUA).
 //   DO  : lỗi khuôn / trượt cổng 6–14 / vân tay câu luật đổi (chỉ mở lại đúng nút dính câu đổi).
 //   node scripts/ho-so-ma/so-diem.mjs [--chuong 85] [--nhom 8543] [--hang-doi] [--kiem-nhom 8543] [--gioi-han 10] [--kiem-dong] [--cong-13] [--json]
@@ -25,7 +25,10 @@ const G = require('../../lib/ho-so-ma/ghep.js');
 
 const MO_CUA_NHOM = new Set(['DIEU_KIEN', 'GIAI_CHONG', 'CANH_TRANH']);
 
-/** Danh sách đóng 12 nhóm hồi quy soạn ở Vòng 1 trước ADR-0010 (miễn Cổng 13 mặc định khi chưa bồi đắp khongCanhTranh). */
+/**
+ * [TẠM] Danh sách đóng 12 nhóm soạn ở Vòng 1 trước ADR-0010 tạm miễn Cổng 13 mặc định khi chưa có `khongCanhTranh`.
+ * Điều kiện gỡ bỏ: gỡ hoàn toàn hằng số này ngay khi cả 12 nhóm đã bổ sung `khongCanhTranh` theo tiêu chí mới của ADR-0010 mục 2.
+ */
 export const NHOM_TIEN_ADR_0010 = Object.freeze([
   '0201', '3004', '3926', '4202', '6110', '7326',
   '8479', '8501', '8517', '8543', '8708', '9031',

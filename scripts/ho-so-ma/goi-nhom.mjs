@@ -53,8 +53,6 @@ const _timCgctCache = new Map();
 const _ungVienNenCache = new WeakMap();
 const _canhTranhCache = new WeakMap();
 
-const RE_KY_HIEU_MUC = /^\(?[IVXLCDM0-9A-Z]+\)?[.:]?$/iu;
-const RE_CAU_DAN_THUAN = /^(?:(?:nhóm|phân\s+nhóm|chương|phần)\s+này\s+(?:cũng\s+)?(?:không\s+bao\s+gồm|loại\s+trừ|bao\s+gồm(?:\s+các\s+loại\s+sau)?))\s*:?$/iu;
 const BUOC_CHU_GIAI_UNG_VIEN = ['CHU_GIAI_PHAN', 'CHU_GIAI_CHUONG', 'CHU_GIAI_PHAN_CHUONG', 'CHU_GIAI_PHAN_NHOM'];
 const TRAN_CGCT_MOI_TRUY_VAN = 3;
 const TRAN_CGCT_MOI_UNG_VIEN = 12;
@@ -87,8 +85,10 @@ function layChiMucCau(L) {
   if (_chiMucCauCache.has(L)) return _chiMucCauCache.get(L);
   const theoNut = new Map();
   const theoChu = new Map();
+  const cauCoKhoanCon = new Set();
   for (const [cauId, c] of L.cau.entries()) {
     if (!c || /^tb:/.test(cauId) || /^wco:/.test(cauId)) continue;
+    if (c.dan) cauCoKhoanCon.add(c.dan);
     if (!theoNut.has(c.nut)) theoNut.set(c.nut, []);
     theoNut.get(c.nut).push(cauId);
     const chu = G.chuCuaCau(cauId);
@@ -99,7 +99,18 @@ function layChiMucCau(L) {
   }
   for (const arr of theoNut.values()) arr.sort();
   for (const arr of theoChu.values()) arr.sort();
-  const idx = { theoNut, theoChu };
+  const nutCoCon = new Set();
+  for (const n of L.nut.values()) {
+    if (n?.cha) nutCoCon.add(n.cha);
+  }
+  for (const [chaId, conList] of (L.cay?.con?.entries?.() || [])) {
+    if (Array.isArray(conList) && conList.length > 0) nutCoCon.add(chaId);
+  }
+  for (const nid of nutCoCon) {
+    const ds = theoNut.get(nid);
+    if (ds && ds.length === 1) cauCoKhoanCon.add(ds[0]);
+  }
+  const idx = { theoNut, theoChu, cauCoKhoanCon };
   _chiMucCauCache.set(L, idx);
   return idx;
 }
@@ -442,14 +453,14 @@ export function timCanhTranhTimThay(nhom4HoacNut, opts = {}) {
 
   const bieuMeta = layBieuMeta(L, opts.bieuMeta || null);
   const cayBieu = opts.cayBieu || thuThapCayNhom(nhom4, L, bieuMeta).cayBieu;
-  const { theoNut } = layChiMucCau(L);
+  const { theoNut, cauCoKhoanCon } = layChiMucCau(L);
   const nhomCt = opts.luatNen?.nhomCt || (() => {
     const pdSelf = layPhaiDoc(nhom4, luat);
     const muc = pdSelf?.trinhTu?.find((b) => b.buoc === 'CHU_GIAI_NHOM')?.muc || [];
     return muc.map((m) => dinhDangMucLuatNen(m, theoNut));
   })();
 
-  // 1. Tập câu hỏi cho máy tìm: nguyên văn từng dòng biểu có tên (!loaiKhac) và từng câu CGCT nêu hàng cụ thể
+  // 1. Tập câu hỏi cho máy tìm: nguyên văn từng dòng biểu có tên (!loaiKhac) và từng câu CGCT lá (bỏ câu dẫn có khoản con trỏ cha/dan theo cấu trúc, 0 regex đoán chữ)
   const dsCauHoi = [];
   const seenQ = new Set();
   for (const n of cayBieu) {
@@ -468,13 +479,12 @@ export function timCanhTranhTimThay(nhom4HoacNut, opts = {}) {
   for (const m of nhomCt) {
     for (const cid of m.cauIds || []) {
       if (/^(?:tb|wco):/.test(cid) || seenQ.has(cid)) continue;
+      if (cauCoKhoanCon.has(cid)) continue;
       const chu = L.chuCau(cid);
       const chuGon = gon(chu);
-      const laTieuDeInHoa = /\p{Lu}/u.test(chuGon) && !/\p{Ll}/u.test(chuGon);
-      const laCauDanMoDanhSach = /:\s*$/.test(chuGon);
-      if (!chuGon || RE_KY_HIEU_MUC.test(chuGon) || RE_CAU_DAN_THUAN.test(chuGon) || laTieuDeInHoa || laCauDanMoDanhSach) continue;
+      if (!chuGon) continue;
       const tok = tachTu(chuGon);
-      if (tok.coDau.length < 2) continue;
+      if (tok.coDau.length < 1) continue;
       seenQ.add(cid);
       dsCauHoi.push({ idCau: cid, loaiCau: 'CGCT', cauHoi: chuGon, tok });
     }
@@ -485,17 +495,20 @@ export function timCanhTranhTimThay(nhom4HoacNut, opts = {}) {
     return [];
   }
 
-  // 2. Gọi timCgct cho từng câu hỏi và gom ứng viên Chương 01–97 tồn tại trong L.cay.theoId (loại Chương 98–99 quốc gia)
+  // 2. Tiêu chí ADR-0010 mục 2: X là ứng viên của H khi timCgct xếp X TRÊN H; nếu H không có trong top 10 thì chỉ lấy X đứng ĐẦU (idx === 0)
   const ungVienTheoMa = new Map();
   for (const q of dsCauHoi) {
     const topNhom = timCgctCoDem(q.cauHoi, topK);
-    for (let idx = 0; idx < topNhom.length; idx += 1) {
+    const idxH = topNhom.indexOf(nhom4);
+    const gioiHanIdx = idxH >= 0 ? idxH : 1;
+    for (let idx = 0; idx < Math.min(topNhom.length, gioiHanIdx); idx += 1) {
       const cand4 = topNhom[idx];
       if (!cand4 || cand4 === nhom4 || !/^\d{4}$/.test(cand4)) continue;
       const chSo = Number(cand4.slice(0, 2));
       if (!Number.isInteger(chSo) || chSo < 1 || chSo > 97) continue;
       if (!L.cay.theoId.has(`bieu:${cand4}`)) continue;
       const hang = idx + 1;
+      const hangNhomXet = idxH >= 0 ? idxH + 1 : null;
       let hitMap = ungVienTheoMa.get(cand4);
       if (!hitMap) {
         hitMap = new Map();
@@ -503,7 +516,7 @@ export function timCanhTranhTimThay(nhom4HoacNut, opts = {}) {
       }
       const prev = hitMap.get(q.idCau);
       if (!prev || hang < prev.hang) {
-        hitMap.set(q.idCau, { idCau: q.idCau, cauHoi: q.cauHoi, hang, tok: q.tok });
+        hitMap.set(q.idCau, { idCau: q.idCau, cauHoi: q.cauHoi, hang, hangNhomXet, tok: q.tok });
       }
     }
   }
@@ -520,7 +533,7 @@ export function timCanhTranhTimThay(nhom4HoacNut, opts = {}) {
   const ketQua = [];
   for (const [cand4, hitMap] of ungVienTheoMa.entries()) {
     const hits = [...hitMap.values()].sort((a, b) => (a.hang - b.hang) || a.idCau.localeCompare(b.idCau));
-    const nguonTim = hits.map(({ idCau, cauHoi, hang }) => ({ idCau, cauHoi, hang }));
+    const nguonTim = hits.map(({ idCau, cauHoi, hang, hangNhomXet }) => ({ idCau, cauHoi, hang, hangNhomXet: hangNhomXet ?? null }));
     const nguonTimGoc = nguonTim.slice(0, TRAN_NGUON_TIM_MUC);
     const nen = layNenUngVien(cand4, luat, L);
 

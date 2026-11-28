@@ -3575,8 +3575,20 @@ const KHO_CHUAN = ghiHoSoTam({
       && goi8471.canhTranhTimThay.every((u) => (
         u.nhom !== '8471'
         && Array.isArray(u.nguonTim) && u.nguonTim.length > 0
-        && u.nguonTim.every((nt) => typeof nt.idCau === 'string' && typeof nt.cauHoi === 'string' && nt.hang >= 1 && nt.hang <= 10)
+        && u.nguonTim.every((nt) => (
+          typeof nt.idCau === 'string'
+          && typeof nt.cauHoi === 'string'
+          && ((nt.hangNhomXet !== null && nt.hang >= 1 && nt.hang < nt.hangNhomXet) || (nt.hangNhomXet === null && nt.hang === 1))
+        ))
       ));
+    const tatCaCauHoiId8471 = new Set(
+      (goi8471.canhTranhTimThay || []).flatMap((u) => (u.nguonTim || []).map((nt) => nt.idCau)),
+    );
+    const boCauDanTheoCauTruc = !tatCaCauHoiId8471.has('nhom:8471:ct:1#1')
+      && !tatCaCauHoiId8471.has('nhom:8471:ct:7#1')
+      && !tatCaCauHoiId8471.has('nhom:8471:ct:9#1');
+    const srcGoiNhom = fs.readFileSync(path.join(GOC, 'scripts/ho-so-ma/goi-nhom.mjs'), 'utf8');
+    const khongDungRegexCauDan = !srcGoiNhom.includes('RE_CAU_DAN_THUAN') && !srcGoiNhom.includes('RE_KY_HIEU_MUC');
     const loaiTruKhongDoi = JSON.stringify(goi8471.loaiTru) === JSON.stringify(goi8471Tat.loaiTru);
     const khongCoChuong98 = !dsMa8471.some((m) => Number(m.slice(0, 2)) > 97 || Number(m.slice(0, 2)) < 1);
     const khongKeoKqHayNgoaiChuong = (goi8471.canhTranhTimThay || []).every((uv) => {
@@ -3591,9 +3603,11 @@ const KHO_CHUAN = ghiHoSoTam({
     const promptChunk0 = dungLoiHoiGoiNhom(goi8471Chia, { chunk: goi8471Chia.goiCon[0] })[1].content;
     const promptChunk1 = dungLoiHoiGoiNhom(goi8471Chia, { chunk: goi8471Chia.goiCon[1] })[1].content;
 
-    kiem('ADR-0010 mục 2 (goi-nhom 84.71): canhTranhTimThay bắt trúng 8523 & 8517, kéo đủ chuong:85:cg:5#1 + 6:a#1 + nhom:8523:ct:18#3, loại Chương 98/:kq:/ngoại chương & không nhân bản sang goiCon[1..k]',
-      dsMa8471.includes('8523')
+    kiem('ADR-0010 mục 2 (goi-nhom 84.71 — tiêu chí X đứng trên H hoặc đứng đầu): gọn còn 22 ứng viên (còn cả 8523 & 8517 + 3 câu luật), bỏ câu dẫn theo cấu trúc cha/dan (0 regex chữ) & cô lập goiCon[0]',
+      dsMa8471.length === 22
+      && dsMa8471.includes('8523')
       && dsMa8471.includes('8517')
+      && goi8471.cauTrongGoi.length === 661
       && cauIds8471.has('chuong:85:cg:5#1')
       && cauIds8471.has('chuong:85:cg:6:a#1')
       && cauIds8471.has('nhom:8523:ct:18#3')
@@ -3601,13 +3615,15 @@ const KHO_CHUAN = ghiHoSoTam({
       && khongCoChuong98
       && khongKeoKqHayNgoaiChuong
       && nguonTimDayDu
+      && boCauDanTheoCauTruc
+      && khongDungRegexCauDan
       && loaiTruKhongDoi
       && prompt8471.includes('ỨNG VIÊN CẠNH TRANH TÌM THẤY QUA MÁY TÌM')
       && prompt8471.includes('khongCanhTranh')
       && promptChunk0.includes('ỨNG VIÊN CẠNH TRANH TÌM THẤY QUA MÁY TÌM')
       && !promptChunk1.includes('ỨNG VIÊN CẠNH TRANH TÌM THẤY QUA MÁY TÌM')
       && promptChunk1.length < promptChunk0.length,
-      { top10: dsMa8471.slice(0, 10), soCau: goi8471.cauTrongGoi.length, khongCoChuong98, khongKeoKqHayNgoaiChuong, len0: promptChunk0.length, len1: promptChunk1.length });
+      { soUv: dsMa8471.length, dsMa8471, soCau: goi8471.cauTrongGoi.length, boCauDanTheoCauTruc, khongDungRegexCauDan, len0: promptChunk0.length, len1: promptChunk1.length });
 
     // 14B. Mục 3 ADR-0010: Khuôn khongCanhTranh, chuanHoaCanhTranh & Cổng 13 PHỦ CẠNH TRANH (1 ca dương + 5 ca âm đối kháng + độ tươi vân tay so-diem)
     const chuCg85_5 = L_THAT_P6.chuCau('chuong:85:cg:5#1');
