@@ -58,7 +58,7 @@ const TRAN_CGCT_MOI_TRUY_VAN = 3;
 const TRAN_CGCT_MOI_UNG_VIEN = 12;
 const TRAN_NGUON_TIM_MUC = 3;
 
-function layPhaiDoc(nhom4, luat = G.LUAT_MAC_DINH) {
+export function layPhaiDoc(nhom4, luat = G.LUAT_MAC_DINH) {
   const key = `${path.resolve(luat)}\0${nhom4}`;
   if (_phaiDocCache.has(key)) return _phaiDocCache.get(key);
   const pd = phaiDoc(nhom4, { thuMuc: luat, dayDu: true });
@@ -66,7 +66,7 @@ function layPhaiDoc(nhom4, luat = G.LUAT_MAC_DINH) {
   return pd;
 }
 
-function timCgctCoDem(cauGon, topK) {
+export function timCgctCoDem(cauGon, topK) {
   const key = `${topK}\0${cauGon}`;
   if (_timCgctCache.has(key)) return _timCgctCache.get(key);
   const kq = timCgct(cauGon, '', { limit: topK });
@@ -81,7 +81,7 @@ function nhacToiNhom(txt, ma4) {
   return mk.don.includes(ma4) || mk.khoang.includes(ma4);
 }
 
-function layChiMucCau(L) {
+export function layChiMucCau(L) {
   if (_chiMucCauCache.has(L)) return _chiMucCauCache.get(L);
   const theoNut = new Map();
   const theoChu = new Map();
@@ -270,7 +270,7 @@ export function thuThapCayNhom(nhom4, L, bieuMeta = null) {
   return { cayBieu, nhomAnhEm };
 }
 
-function dinhDangMucLuatNen(m, theoNut) {
+export function dinhDangMucLuatNen(m, theoNut) {
   const nutId = m.nut || m.id;
   return {
     id: m.id,
@@ -284,7 +284,7 @@ function dinhDangMucLuatNen(m, theoNut) {
   };
 }
 
-function layNenUngVien(ma4, luat, L) {
+export function layNenUngVien(ma4, luat, L) {
   let theoL = _ungVienNenCache.get(L);
   if (!theoL) {
     theoL = new Map();
@@ -683,8 +683,11 @@ export function dungGoiNhom(nhom4HoacNut, opts = {}) {
   const hoSo = opts.hoSo || G.HO_SO_MAC_DINH;
   const L = opts.L || napLuatCong(luat);
   const bieuMeta = layBieuMeta(L, opts.bieuMeta || null);
-  const kho = opts.kho || kiemKhoHoSo(hoSo);
-  const canhTranhData = opts.canhTranhMap || docBangCanhTranhMd(opts.canhTranhMd ?? DEFAULT_CANH_TRANH_MD);
+  const soanMu = Boolean(opts.soanMu);
+  const kho = opts.kho || (soanMu ? { loi: [], banGhi: [], bangAnhEm: [], soTep: 0 } : kiemKhoHoSo(hoSo));
+  const canhTranhData = opts.canhTranhMap || (soanMu
+    ? { coTep: false, byNut: new Map(), byNhom: new Map(), canhTranhChung: new Map(), canhBao: [] }
+    : docBangCanhTranhMd(opts.canhTranhMd ?? DEFAULT_CANH_TRANH_MD));
   const maxBytes = opts.maxBytes ?? MAX_BYTES_MAC_DINH;
   const chiaTheo6So = Boolean(opts.chiaTheo6So);
 
@@ -706,7 +709,32 @@ export function dungGoiNhom(nhom4HoacNut, opts = {}) {
     buocMap.set(b.buoc, b.muc || []);
   }
 
+  // Quy tắc chung giải thích GIR 1–6 nguyên văn từ data/luat-goc/gir.jsonl (#2483 / ADR-0011)
+  const gir = [...L.nut.entries()]
+    .filter(([nid]) => nid.startsWith('gir:'))
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([nid, info]) => {
+      const cids = [...(theoNut.get(nid) || [])];
+      return {
+        id: nid,
+        nut: nid,
+        loai: info.loai || null,
+        lop: info.lop,
+        nguyenVan: info.v,
+        trich: info.v,
+        nguon: info.nguon,
+        cauIds: cids,
+        cau: cids
+          .filter((cid) => L.cau.has(cid))
+          .map((cid) => {
+            const chu = L.chuCau(cid);
+            return { id: cid, nut: nid, chu, vanTay: vanTay(chu) };
+          }),
+      };
+    });
+
   const luatNen = {
+    gir,
     phan: (buocMap.get('CHU_GIAI_PHAN') || []).map((m) => dinhDangMucLuatNen(m, theoNut)),
     chuong: (buocMap.get('CHU_GIAI_CHUONG') || []).map((m) => dinhDangMucLuatNen(m, theoNut)),
     phanChuong: (buocMap.get('CHU_GIAI_PHAN_CHUONG') || []).map((m) => dinhDangMucLuatNen(m, theoNut)),
@@ -830,9 +858,11 @@ export function dungGoiNhom(nhom4HoacNut, opts = {}) {
   });
 
   // Thu thập toàn bộ câu luật có thật trong gói kèm sha256 vanTay
+  const gopCauGir = Boolean(soanMu || opts.gopCauGir);
   const cauIdSet = new Set();
   for (const n of cayBieu) for (const cid of n.cauIds) cauIdSet.add(cid);
-  for (const group of Object.values(luatNen)) {
+  for (const [tenNhomLuat, group] of Object.entries(luatNen)) {
+    if (tenNhomLuat === 'gir' && !gopCauGir) continue;
     for (const m of group) for (const cid of m.cauIds || []) cauIdSet.add(cid);
   }
   for (const edge of [...loaiTruRa, ...loaiTruVao]) {
@@ -916,6 +946,7 @@ export function dungGoiNhom(nhom4HoacNut, opts = {}) {
     phanChuong,
     ten,
     vanTayGoi,
+    gir,
     cayBieu,
     nhomAnhEm,
     luatNen,
@@ -951,8 +982,11 @@ export function dungTatCaGoiNhom(opts = {}) {
   const hoSo = opts.hoSo || G.HO_SO_MAC_DINH;
   const L = opts.L || napLuatCong(luat);
   const bieuMeta = layBieuMeta(L, opts.bieuMeta || null);
-  const kho = opts.kho || kiemKhoHoSo(hoSo);
-  const canhTranhMap = opts.canhTranhMap || docBangCanhTranhMd(opts.canhTranhMd ?? DEFAULT_CANH_TRANH_MD);
+  const soanMu = Boolean(opts.soanMu);
+  const kho = opts.kho || (soanMu ? { loi: [], banGhi: [], bangAnhEm: [], soTep: 0 } : kiemKhoHoSo(hoSo));
+  const canhTranhMap = opts.canhTranhMap || (soanMu
+    ? { coTep: false, byNut: new Map(), byNhom: new Map(), canhTranhChung: new Map(), canhBao: [] }
+    : docBangCanhTranhMd(opts.canhTranhMd ?? DEFAULT_CANH_TRANH_MD));
   const dsNhom = lietKeNhom4({ chuong: opts.chuong ?? null, luat, L });
   return dsNhom.map((nhom4) => dungGoiNhom(nhom4, {
     ...opts,
@@ -980,6 +1014,8 @@ function main() {
   const chiaTheo6So = a.includes('--chia-6so');
   const topKCanhTranh = lay('--top-k-canh-tranh') ? Number(lay('--top-k-canh-tranh')) : TOP_K_CANH_TRANH_MAC_DINH;
   const tatCanhTranhTimThay = a.includes('--tat-canh-tranh-tim-thay');
+  const soanMu = a.includes('--soan-mu');
+  const gopCauGir = !a.includes('--khong-gop-cau-gir');
 
   const t0 = performance.now();
   const goi = dungGoiNhom(nhomArg, {
@@ -990,6 +1026,8 @@ function main() {
     chiaTheo6So,
     topKCanhTranh,
     tatCanhTranhTimThay,
+    soanMu,
+    gopCauGir,
   });
   const thoiGianMs = Math.round(performance.now() - t0);
   const out = lay('--out');
