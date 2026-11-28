@@ -33,6 +33,7 @@ import * as GoiNhomMod from './goi-nhom.mjs';
 import {
   napBieuMeta,
   laLoaiKhacThuan,
+  phanXuCapGiaiChong,
   taoBanDoTruAnhEm,
   demDoanChamPhay,
   haiNutRoiNhau,
@@ -1693,14 +1694,38 @@ export function danhGiaChuoi468(dong8Id, ganDieuKien = {}, opts = {}) {
           }
         } else if (gcCap) {
           if (evalNut?.kq === true) {
-            bangChungLoaiAnhEm.push({
-              cha: chaId,
-              nut: nutId,
-              anhEm: aeId,
-              cachLoai: 'GIAI_CHONG',
-              nguon: gcCap.nguon,
-              trich: gcCap.trich,
-            });
+            const px = phanXuCapGiaiChong(nutId, aeId, gcHopLeCha, dsCon);
+            const canCuPx = px.canCu || gcCap;
+            if (px.thang === nutId) {
+              bangChungLoaiAnhEm.push({
+                cha: chaId,
+                nut: nutId,
+                anhEm: aeId,
+                cachLoai: 'GIAI_CHONG',
+                nguon: canCuPx.nguon,
+                trich: canCuPx.trich,
+              });
+            } else if (px.thua === nutId) {
+              viPham.push({
+                nut: nutId,
+                anhEmThang: aeId,
+                idDieuKien: canCuPx.id || dAeTrue.id,
+                nguon: canCuPx.nguon,
+                trich: canCuPx.trich,
+                lyDo: `thua anh em cùng cấp ${aeId} theo GIAI_CHONG (${canCuPx.nguon})`,
+              });
+            } else {
+              const idHoiGc = canCuPx.id || `gc:${chaId}:${[nutId, aeId].sort().join('|')}`;
+              if (!cauHoiMap.has(idHoiGc)) {
+                cauHoiMap.set(idHoiGc, {
+                  id: idHoiGc,
+                  nut: chaId,
+                  cauHoi: `Giữa ${nutId} và ${aeId} cùng thỏa điều kiện, mặt hàng thuộc nhánh nào theo quy tắc phân xử (${canCuPx.nguon})?`,
+                  nguon: canCuPx.nguon,
+                  trich: canCuPx.trich,
+                });
+              }
+            }
           }
         } else if (evalNut?.kq === true) {
           viPham.push({

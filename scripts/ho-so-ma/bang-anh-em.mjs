@@ -1703,6 +1703,106 @@ function thuThapIdChuaRoCongThuc(congThuc, ganDieuKien, bang, outIds, anhEmDaLoa
   }
 }
 
+function nguonThuocCayNutAnhEm(nguon, nutId) {
+  const chu = G.chuCuaCau(nguon || '') || String(nguon || '').split('#')[0];
+  if (!chu || !nutId) return false;
+  if (chu === nutId || chu.startsWith(`${nutId}:`)) return true;
+  const ma = nutId.replace(/^bieu:/, '');
+  if (!ma || ma.includes(':')) return false;
+  for (const pre of ['bieu:', 'pn:', 'sen:']) {
+    if (chu.startsWith(pre)) {
+      const rest = chu.slice(pre.length);
+      if (rest === ma || rest.startsWith(`${ma}:`) || (ma.length < 8 && /^\d/.test(rest) && rest.startsWith(ma))) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
+/**
+ * Phân xử tất định cặp anh em (A, B) cùng thoả điều kiện theo danh sách GIAI_CHONG của nút cha.
+ * Trả `{ cheDo: 'TRU' | 'NGUON_RIENG' | 'GIR_3C' | 'CHUA_PHAN_DINH', thang, thua, canCu }`.
+ * - TRU: nhánh mang mệnh đề trừ ("… khác" / "trừ…") thua nhánh kia.
+ * - NGUON_RIENG: câu nguồn GIAI_CHONG (không phải TRU) thuộc riêng cây một bên -> bên được dẫn nguồn thắng.
+ * - GIR_3C: chỉ dẫn Quy tắc 3(c) (gir:3:c#*, không vướng gir:3:[ab] hay CHU_GIAI chức năng chính chưa phân định) -> nhánh đứng sau theo thứ tự dsCon thắng.
+ * - CHUA_PHAN_DINH: quy tắc phụ thuộc chức năng chính / đặc tính cơ bản / mô tả cụ thể hơn chưa chốt cứng một bên từ dữ kiện boolean.
+ */
+export function phanXuCapGiaiChong(A, B, giaiChong = [], dsCon = []) {
+  const gcCap = (giaiChong || []).filter(
+    (g) => g && Array.isArray(g.cap) && g.cap.includes(A) && g.cap.includes(B),
+  );
+  if (!gcCap.length) {
+    return { cheDo: 'CHUA_PHAN_DINH', thang: null, thua: null, canCu: null };
+  }
+
+  const gcTruA = gcCap.find((g) => g.cach === 'TRU' && nguonThuocCayNutAnhEm(g.nguon, A));
+  const gcTruB = gcCap.find((g) => g.cach === 'TRU' && nguonThuocCayNutAnhEm(g.nguon, B));
+  if (gcTruA && !gcTruB) return { cheDo: 'TRU', thang: B, thua: A, canCu: gcTruA };
+  if (gcTruB && !gcTruA) return { cheDo: 'TRU', thang: A, thua: B, canCu: gcTruB };
+
+  const gcPhiTru = gcCap.filter((g) => g.cach !== 'TRU');
+  const gcDanA = gcPhiTru.find((g) => nguonThuocCayNutAnhEm(g.nguon, A) && !nguonThuocCayNutAnhEm(g.nguon, B));
+  const gcDanB = gcPhiTru.find((g) => nguonThuocCayNutAnhEm(g.nguon, B) && !nguonThuocCayNutAnhEm(g.nguon, A));
+  if (gcDanA && !gcDanB) return { cheDo: 'NGUON_RIENG', thang: A, thua: B, canCu: gcDanA };
+  if (gcDanB && !gcDanA) return { cheDo: 'NGUON_RIENG', thang: B, thua: A, canCu: gcDanB };
+
+  const gc3c = gcPhiTru.find((g) => /^gir:3:c(?::|#)/.test(g.nguon || ''));
+  const coQuyTacCanDuKien = gcPhiTru.some(
+    (g) => /^gir:3:[ab](?::|#)/.test(g.nguon || '') || g.cach === 'CHU_GIAI',
+  );
+  if (gc3c && !coQuyTacCanDuKien) {
+    const idxA = dsCon.indexOf(A);
+    const idxB = dsCon.indexOf(B);
+    const bSauA = idxA >= 0 && idxB >= 0 ? idxB > idxA : A.localeCompare(B) < 0;
+    return bSauA
+      ? { cheDo: 'GIR_3C', thang: B, thua: A, canCu: gc3c }
+      : { cheDo: 'GIR_3C', thang: A, thua: B, canCu: gc3c };
+  }
+
+  const canCuChinh = gcPhiTru.find((g) => !/^gir:6(?::|#)/.test(g.nguon || '') && !/^gir:3:c(?::|#)/.test(g.nguon || ''))
+    || gcPhiTru[0]
+    || gcCap[0];
+  return { cheDo: 'CHUA_PHAN_DINH', thang: null, thua: null, canCu: canCuChinh };
+}
+
+export function chonUngVienThangKhiChong(trung, giaiChong = [], dsCon = null) {
+  if (trung.length <= 1) return trung[0]?.nut ?? null;
+  const thuTu = Array.isArray(dsCon) && dsCon.length ? dsCon : trung.map((x) => x.nut);
+  let conLai = [...trung];
+
+  // 1. Loại nhánh phần bù có tên thua qua truAnhEm
+  conLai = conLai.filter((u) => !conLai.some((t) => (
+    t.nut !== u.nut && (u.congThuc?.truAnhEm || []).includes(t.nut)
+  )));
+  if (conLai.length === 1) return conLai[0].nut;
+  if (conLai.length === 0) conLai = [...trung];
+
+  // 2. Xét từng cặp theo phanXuCapGiaiChong (kèm nhánh dự phòng gir:3:c#* nếu cặp có khai gir:3:c#*)
+  const biThua = new Set();
+  for (let i = 0; i < conLai.length; i += 1) {
+    for (let j = i + 1; j < conLai.length; j += 1) {
+      const A = conLai[i].nut;
+      const B = conLai[j].nut;
+      const px = phanXuCapGiaiChong(A, B, giaiChong, thuTu);
+      if (px.thua) {
+        biThua.add(px.thua);
+      } else {
+        const gcCap = (giaiChong || []).filter(
+          (g) => g && g.cach !== 'TRU' && Array.isArray(g.cap) && g.cap.includes(A) && g.cap.includes(B),
+        );
+        if (gcCap.some((g) => /^gir:3:c(?::|#)/.test(g.nguon || ''))) {
+          const idxA = thuTu.indexOf(A);
+          const idxB = thuTu.indexOf(B);
+          biThua.add((idxA >= 0 && idxB >= 0 ? idxB > idxA : A.localeCompare(B) < 0) ? A : B);
+        }
+      }
+    }
+  }
+  const thang = conLai.filter((x) => !biThua.has(x.nut));
+  return (thang[0] || conLai[0] || trung[0]).nut;
+}
+
 /** Định tuyến một ca thử { ganDieuKien } từ bảng cha `chaId` đi xuống tối đa qua các bảng con. */
 export function doBangAnhEm(chaId, ganDieuKien, bangTheoCha, { L = null, nguongById = null, hoSo = null } = {}) {
   let hienTai = chaId;
@@ -1785,7 +1885,7 @@ export function doBangAnhEm(chaId, ganDieuKien, bangTheoCha, { L = null, nguongB
           };
         }
       }
-      const chon = trung[0].nut;
+      const chon = chonUngVienThangKhiChong(trung, bang.giaiChong || [], coTen.map((x) => x.nut));
       daDi.push(chon);
       if (bangTheoCha.has(chon)) { hienTai = chon; continue; }
       return { trangThai: 'DICH', dich: chon, duong: daDi };

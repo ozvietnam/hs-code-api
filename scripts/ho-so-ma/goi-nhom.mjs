@@ -284,6 +284,8 @@ function layNenUngVien(ma4, luat, L) {
 
   const { theoNut } = layChiMucCau(L);
   const pdX = layPhaiDoc(ma4, luat);
+  const chuongX = pdX?.chuong || ma4.slice(0, 2);
+  const phanX = pdX?.phan || CHUONG_SANG_PHAN[chuongX] || null;
   const nutBieu = `bieu:${ma4}`;
   const tenX = gon(pdX?.ten || L.cay.theoId.get(nutBieu)?.ten || L.nut.get(nutBieu)?.v || '');
   const cauTenNhom = (theoNut.get(nutBieu) || []).filter((cid) => !/^(?:tb|wco):/.test(cid) && L.cau.has(cid));
@@ -293,11 +295,23 @@ function layNenUngVien(ma4, luat, L) {
     trinhTuMap.set(b.buoc, b.muc || []);
   }
 
-  // Các nút chú giải Phần/Chương/Phân nhóm có cạnh DUOC_NHAC trỏ về nhóm ứng viên X
+  // Chỉ nhận chú giải pháp lý (:cg:, :cgbs:, :cgpn:) thuộc chính Phần/Chương/Phân nhóm của ứng viên X; bỏ :kq: và chú giải ngoại chương
+  const laChuGiaiPhapLyCuaUngVien = (nutId) => {
+    if (!nutId || /^(?:tb|wco):/.test(nutId)) return false;
+    if (/:kq(?::|$)/.test(nutId)) return false;
+    if (nutId.startsWith(`pn:${ma4}`)) return true;
+    if (!/:(?:cg|cgbs|cgpn)(?::|$)/.test(nutId)) return false;
+    return (
+      nutId.startsWith(`chuong:${chuongX}:`)
+      || (phanX ? nutId.startsWith(`phan:${phanX}:`) : false)
+    );
+  };
+
+  // Các nút chú giải Phần/Chương/Phân nhóm của chính X có cạnh DUOC_NHAC trỏ về nhóm ứng viên X
   const duocNhacNutSet = new Set();
   for (const m of trinhTuMap.get('DUOC_NHAC') || []) {
     const srcNut = m.tuNut || m.id || '';
-    if (!srcNut || /^(?:tb|wco):/.test(srcNut) || !/^(?:phan|chuong|pn):/.test(srcNut)) continue;
+    if (!laChuGiaiPhapLyCuaUngVien(srcNut)) continue;
     const den = String(m.den || m.nut || '');
     if (den === nutBieu || den.startsWith(`${nutBieu}`) || nhacToiNhom(m.trich || m.cau || '', ma4)) {
       duocNhacNutSet.add(srcNut);
@@ -307,7 +321,7 @@ function layNenUngVien(ma4, luat, L) {
   const chuGiaiChuongPhanGoc = [];
   const seenCgNut = new Set();
   const themMucChuGiai = (id, nutId, lop, trich) => {
-    if (!nutId || seenCgNut.has(nutId) || /^(?:tb|wco):/.test(nutId)) return;
+    if (!laChuGiaiPhapLyCuaUngVien(nutId) || seenCgNut.has(nutId)) return;
     const cauIds = (theoNut.get(id) || theoNut.get(nutId) || [])
       .filter((cid) => !/^(?:tb|wco):/.test(cid) && L.cau.has(cid));
     if (!cauIds.length) return;
@@ -327,7 +341,7 @@ function layNenUngVien(ma4, luat, L) {
     const directSet = new Set();
     for (const m of mucList) {
       const nutId = m.nut || m.id || '';
-      if (!nutId || /^(?:tb|wco):/.test(nutId)) continue;
+      if (!laChuGiaiPhapLyCuaUngVien(nutId)) continue;
       if (
         nutId.startsWith(`pn:${ma4}`)
         || duocNhacNutSet.has(nutId)
@@ -340,13 +354,13 @@ function layNenUngVien(ma4, luat, L) {
 
     for (const m of mucList) {
       const nutId = m.nut || m.id || '';
-      if (!nutId || /^(?:tb|wco):/.test(nutId)) continue;
+      if (!laChuGiaiPhapLyCuaUngVien(nutId)) continue;
       let chon = directSet.has(nutId);
       if (!chon) {
         for (const hitId of directSet) {
           // Kéo toàn bộ khoản con khi điều khoản cha trúng (vd chuong:85:cg:6 -> chuong:85:cg:6:a, 6:b)
           if (nutId.startsWith(`${hitId}:`)) { chon = true; break; }
-          // Kéo câu dẫn điều khoản cha trực tiếp khi khoản con trúng (vd chuong:95:cg:1:m -> chuong:95:cg:1)
+          // Kéo câu dẫn điều khoản cha trực tiếp khi khoản con trúng (vd chuong:85:cg:6:a -> chuong:85:cg:6)
           if (hitId.startsWith(`${nutId}:`) && /:(?:cg|cgbs|cgpn)(?::[^:]+)?$/.test(nutId)) { chon = true; break; }
         }
       }
@@ -354,7 +368,6 @@ function layNenUngVien(ma4, luat, L) {
     }
   }
 
-  // Bổ sung chú giải chéo chương/phần từ DUOC_NHAC chưa nằm trong chương/phần của chính X
   for (const srcNut of [...duocNhacNutSet].sort()) {
     if (seenCgNut.has(srcNut) || !L.nut.has(srcNut)) continue;
     const parts = srcNut.split(':');
@@ -457,7 +470,9 @@ export function timCanhTranhTimThay(nhom4HoacNut, opts = {}) {
       if (/^(?:tb|wco):/.test(cid) || seenQ.has(cid)) continue;
       const chu = L.chuCau(cid);
       const chuGon = gon(chu);
-      if (!chuGon || RE_KY_HIEU_MUC.test(chuGon) || RE_CAU_DAN_THUAN.test(chuGon)) continue;
+      const laTieuDeInHoa = /\p{Lu}/u.test(chuGon) && !/\p{Ll}/u.test(chuGon);
+      const laCauDanMoDanhSach = /:\s*$/.test(chuGon);
+      if (!chuGon || RE_KY_HIEU_MUC.test(chuGon) || RE_CAU_DAN_THUAN.test(chuGon) || laTieuDeInHoa || laCauDanMoDanhSach) continue;
       const tok = tachTu(chuGon);
       if (tok.coDau.length < 2) continue;
       seenQ.add(cid);
@@ -470,13 +485,15 @@ export function timCanhTranhTimThay(nhom4HoacNut, opts = {}) {
     return [];
   }
 
-  // 2. Gọi timCgct cho từng câu hỏi và gom ứng viên tồn tại trong L.cay.theoId
+  // 2. Gọi timCgct cho từng câu hỏi và gom ứng viên Chương 01–97 tồn tại trong L.cay.theoId (loại Chương 98–99 quốc gia)
   const ungVienTheoMa = new Map();
   for (const q of dsCauHoi) {
     const topNhom = timCgctCoDem(q.cauHoi, topK);
     for (let idx = 0; idx < topNhom.length; idx += 1) {
       const cand4 = topNhom[idx];
       if (!cand4 || cand4 === nhom4 || !/^\d{4}$/.test(cand4)) continue;
+      const chSo = Number(cand4.slice(0, 2));
+      if (!Number.isInteger(chSo) || chSo < 1 || chSo > 97) continue;
       if (!L.cay.theoId.has(`bieu:${cand4}`)) continue;
       const hang = idx + 1;
       let hitMap = ungVienTheoMa.get(cand4);
@@ -639,7 +656,7 @@ function taoBanGoiCon(goi, { maxBytes = MAX_BYTES_MAC_DINH, chiaTheo6So = false 
       hoSoCon,
     };
     Object.defineProperty(chunkObj, 'canhTranhTimThay', {
-      value: goi.canhTranhTimThay || [],
+      value: chunks.length === 0 ? (goi.canhTranhTimThay || []) : [],
       enumerable: false,
     });
     chunks.push(chunkObj);

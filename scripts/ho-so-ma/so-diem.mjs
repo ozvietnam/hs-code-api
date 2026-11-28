@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 // scripts/ho-so-ma/so-diem.mjs — M-81 (#2410, ADR-0008, ADR-0010): sổ điểm tất định theo nhóm 4 số, tính hoàn toàn từ dữ liệu (KHÔNG tệp trạng thái riêng).
-//   DONG: có DIEU_KIEN, không lỗi khuôn, bang-anh-em qua cổng 6–14 (cổng 13 bật khi có khongCanhTranh hoặc --cong-13) và vân tay mọi câu luật liên quan còn khớp.
+//   DONG: có DIEU_KIEN, không lỗi khuôn, bang-anh-em qua cổng 6–14 (cổng 13 bật mặc định; chỉ miễn trên 12 nhóm hồi quy tiền ADR-0010 khi chưa có khongCanhTranh) và vân tay mọi câu luật liên quan còn khớp.
 //   CHUA: chưa có bản ghi nào thuộc nhóm (hàng đợi chỉ phát nhóm CHUA).
-//   DO  : lỗi khuôn / trượt cổng / vân tay câu luật đổi (chỉ mở lại đúng nút dính câu đổi).
+//   DO  : lỗi khuôn / trượt cổng 6–14 / vân tay câu luật đổi (chỉ mở lại đúng nút dính câu đổi).
 //   node scripts/ho-so-ma/so-diem.mjs [--chuong 85] [--nhom 8543] [--hang-doi] [--kiem-nhom 8543] [--gioi-han 10] [--kiem-dong] [--cong-13] [--json]
 import fs from 'node:fs';
 import path from 'node:path';
@@ -24,6 +24,13 @@ const require = createRequire(import.meta.url);
 const G = require('../../lib/ho-so-ma/ghep.js');
 
 const MO_CUA_NHOM = new Set(['DIEU_KIEN', 'GIAI_CHONG', 'CANH_TRANH']);
+
+/** Danh sách đóng 12 nhóm hồi quy soạn ở Vòng 1 trước ADR-0010 (miễn Cổng 13 mặc định khi chưa bồi đắp khongCanhTranh). */
+export const NHOM_TIEN_ADR_0010 = Object.freeze([
+  '0201', '3004', '3926', '4202', '6110', '7326',
+  '8479', '8501', '8517', '8543', '8708', '9031',
+]);
+const TAP_NHOM_TIEN_ADR_0010 = new Set(NHOM_TIEN_ADR_0010);
 
 function locViDuTheoNhom(viDu, cayIds) {
   if (!Array.isArray(viDu) || !viDu.length) return [];
@@ -113,6 +120,8 @@ function chuanBiNguCanh(opts = {}) {
     vungChong: opts.vungChong || [],
     batBuocTepBang: Boolean(opts.batBuocTepBang),
     kiemCong13: Boolean(opts.kiemCong13),
+    mienCong13TienAdr0010: opts.mienCong13TienAdr0010 !== false,
+    canhTranhTimThayTheoNhom: opts.canhTranhTimThayTheoNhom || null,
   };
 }
 
@@ -159,8 +168,18 @@ export function chamDiemNhom(nhom4HoacNut, ctx = {}) {
     };
   }
 
-  const canChayCong13 = Boolean(c.kiemCong13)
-    || canhTranh.some((ct) => Array.isArray(ct.khongCanhTranh));
+  const coKhongCanhTranh = canhTranh.some((ct) => Array.isArray(ct.khongCanhTranh));
+  const mienCong13 = !c.kiemCong13
+    && c.mienCong13TienAdr0010 !== false
+    && !coKhongCanhTranh
+    && TAP_NHOM_TIEN_ADR_0010.has(nhom4);
+  const canChayCong13 = !mienCong13;
+  const daCoUngVienTruyenVao = Boolean(
+    c.canhTranhTimThayTheoNhom && (
+      (c.canhTranhTimThayTheoNhom instanceof Map && (c.canhTranhTimThayTheoNhom.has(nhom4) || c.canhTranhTimThayTheoNhom.has(nut)))
+      || (typeof c.canhTranhTimThayTheoNhom === 'object' && (Object.hasOwn(c.canhTranhTimThayTheoNhom, nhom4) || Object.hasOwn(c.canhTranhTimThayTheoNhom, nut)))
+    ),
+  );
 
   // Dựng gói đọc để kiểm tra toàn bộ vân tay câu luật trong gói
   const goi = dungGoiNhom(nhom4, {
@@ -172,7 +191,7 @@ export function chamDiemNhom(nhom4HoacNut, ctx = {}) {
     canhTranhMap: c.canhTranhMap,
     canhTranhMd: c.canhTranhMd,
     maxBytes: Infinity,
-    tatCanhTranhTimThay: !canChayCong13,
+    tatCanhTranhTimThay: !canChayCong13 || daCoUngVienTruyenVao,
   });
 
   const loiSet = new Set();
@@ -362,10 +381,13 @@ export function chamDiemNhom(nhom4HoacNut, ctx = {}) {
     loiSet.add(`${nut}: bang-anh-em/${chuong}.jsonl cũ hoặc thiếu bảng của nhóm`);
   }
 
-  // 3. Chạy cổng 6..14 trên dữ liệu tươi (cổng 13 bật khi có khongCanhTranh hoặc --cong-13)
+  // 3. Chạy cổng 6..14 trên dữ liệu tươi (cổng 13 bật mặc định; chỉ miễn trên 12 nhóm hồi quy tiền ADR-0010 khi chưa có khongCanhTranh)
   const dsCong = canChayCong13
     ? [6, 7, 8, 9, 10, 11, 12, 13, 14]
     : [6, 7, 8, 9, 10, 11, 12, 14];
+  const canhTranhTimThayForCong = canChayCong13
+    ? (daCoUngVienTruyenVao ? c.canhTranhTimThayTheoNhom : { [nhom4]: goi.canhTranhTimThay })
+    : null;
   const rCong = chayCong({
     luat: c.luat,
     hoSo: c.hoSo,
@@ -378,6 +400,7 @@ export function chamDiemNhom(nhom4HoacNut, ctx = {}) {
     dungBangTrongKho: false,
     viDu: viDuNhom,
     vungChong: vungChongNhom,
+    ...(canhTranhTimThayForCong ? { canhTranhTimThayTheoNhom: canhTranhTimThayForCong } : {}),
   });
 
   const congLoi = [];

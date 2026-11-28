@@ -218,7 +218,7 @@ export function dungLoiHoiGoiNhom(goi, { chunk = null } = {}) {
     }
   }
 
-  const dsUngVienCt = chunk?.canhTranhTimThay || goi.canhTranhTimThay || [];
+  const dsUngVienCt = chunk ? (chunk.canhTranhTimThay || []) : (goi.canhTranhTimThay || []);
   if (dsUngVienCt.length) {
     dong.push('', 'ỨNG VIÊN CẠNH TRANH TÌM THẤY QUA MÁY TÌM (tài liệu bắt buộc đọc — phải phủ đủ ở Cổng 13 qua CANH_TRANH hoặc khongCanhTranh):');
     for (const uv of dsUngVienCt) {
@@ -236,10 +236,42 @@ export function dungLoiHoiGoiNhom(goi, { chunk = null } = {}) {
     }
   }
 
-  // Luôn liệt kê đầy đủ danh sách câu hợp lệ để mô hình trích đúng nguon & moNguon
+  // Liệt kê danh sách câu hợp lệ theo đúng phạm vi gói hoặc chunk để tránh nhân bản toàn bộ câu ứng viên vào mọi goiCon
   const cauMap = new Map();
-  for (const c of goi.cauTrongGoi || []) cauMap.set(c.id, c);
-  for (const c of cauList) cauMap.set(c.id, c);
+  if (!chunk) {
+    for (const c of goi.cauTrongGoi || []) cauMap.set(c.id, c);
+    for (const c of cauList) cauMap.set(c.id, c);
+  } else {
+    const choPhepIds = new Set();
+    for (const c of cauList) if (c?.id) choPhepIds.add(c.id);
+    for (const n of chunk.chuoiCha || []) for (const cid of n.cauIds || []) choPhepIds.add(cid);
+    const cayById = new Map((goi.cayBieu || []).map((n) => [n.id, n]));
+    for (const ae of chunk.anhEmCungCap || []) {
+      const fullAe = cayById.get(ae.id);
+      for (const cid of ae.cauIds || fullAe?.cauIds || []) choPhepIds.add(cid);
+    }
+    for (const grp of Object.values(goi.luatNen || {})) {
+      for (const m of grp || []) for (const cid of m.cauIds || []) choPhepIds.add(cid);
+    }
+    for (const e of [...(goi.loaiTru?.ra || []), ...(goi.loaiTru?.vao || [])]) {
+      if (e.cauId) choPhepIds.add(e.cauId);
+      for (const cid of e.cauIds || []) choPhepIds.add(cid);
+    }
+    for (const g of hoSo?.nguong || []) if (g.cau) choPhepIds.add(g.cau);
+    for (const d of hoSo?.dinhNghia || []) if (d.cau) choPhepIds.add(d.cau);
+    for (const l of hoSo?.lietKe || []) if (l.cau) choPhepIds.add(l.cau);
+    for (const uv of dsUngVienCt) {
+      const tl = uv.taiLieuPhaiDoc;
+      if (!tl) continue;
+      for (const cid of tl.cauTenNhom || []) choPhepIds.add(cid);
+      for (const cg of tl.chuGiaiChuongPhan || []) for (const cid of cg.cauIds || []) choPhepIds.add(cid);
+      for (const ct of tl.cgctTrung || []) if (ct.cauId) choPhepIds.add(ct.cauId);
+    }
+    for (const c of goi.cauTrongGoi || []) {
+      if (choPhepIds.has(c.id)) cauMap.set(c.id, c);
+    }
+    for (const c of cauList) cauMap.set(c.id, c);
+  }
   const dsCau = [...cauMap.values()].sort((a, b) => a.id.localeCompare(b.id));
   if (dsCau.length) {
     dong.push('', 'CÁC CÂU LUẬT HỢP LỆ TRONG GÓI (dùng làm nguon / moNguon):');
