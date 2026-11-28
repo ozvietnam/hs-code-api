@@ -3,7 +3,7 @@
 import { dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
 import { parseListing, parseTitle, classifyDoc, hsCodesIn, refKey, isKtcnRegulation } from '../lib/vbpl.mjs';
-import { codeAppears, coverage, girRuleField, scrub, verifyRecords } from '../lib/extract.mjs';
+import { bieuThueTheoNgay, codeAppears, coverage, extractSoHieu, girRuleField, scrub, verifyRecords } from '../lib/extract.mjs';
 import { createRunBudget, BudgetExceeded } from '../lib/budget.mjs';
 import { matchAny, push, classifyChanges } from '../lib/workspace.mjs';
 import { mkdtempSync, writeFileSync, mkdirSync, appendFileSync, existsSync, statSync, readFileSync } from 'fs';
@@ -69,12 +69,13 @@ t('coverage: mô tả bịa < 0,6', coverage('Máy xúc lật bánh lốp độn
 t('girRule: nhiều quy tắc → giữ quy tắc đầu, đúng mẫu validate-community', girRuleField('GIR 3(b) và GIR 6').girRule === 'GIR 3(b)' && girRuleField('gir 1, GIR 6').girRule === 'GIR 1');
 t('girRule: không phải GIR 1–6 → bỏ trường', !('girRule' in girRuleField('GIR 7')) && !('girRule' in girRuleField('Quy tắc 1')) && !('girRule' in girRuleField(null)));
 t('scrub: bỏ tên doanh nghiệp', !/công ty|tnhh/i.test(scrub('Thiết bị sạc của Công ty TNHH Táo Xanh, hàng mới')));
+const klMagsafe = 'Căn cứ Chú giải 5 Chương 85, mặt hàng thuộc nhóm 85.04, phân nhóm 8504.40, mã số 8504.40.90 "- - - Loại khác".';
 const v = verifyRecords({
   coKetLuan: true,
   records: [
-    { hsCode: '8504.40.90', description: 'Thiết bị sạc không dây MagSafe Charger nhãn hiệu Apple, có mạch nghịch lưu chuyển đổi DC thành xoay chiều tần số cao, cuộn dây phát', reasonVi: 'Chú giải 5 Chương 85', girRule: 'GIR 1', confusedWith: ['85176259', '85176299'] },
-    { hsCode: '85044019', description: 'Thiết bị sạc không dây MagSafe Charger nhãn hiệu Apple có mạch nghịch lưu', reasonVi: '' },
-    { hsCode: '85044090', description: 'Máy xúc lật bánh lốp động cơ diesel tải trọng 5 tấn dùng trong xây dựng' },
+    { hsCode: '8504.40.90', description: 'Thiết bị sạc không dây MagSafe Charger nhãn hiệu Apple, có mạch nghịch lưu chuyển đổi DC thành xoay chiều tần số cao, cuộn dây phát', ketLuan: klMagsafe, reasonVi: 'Chú giải 5 Chương 85', girRule: 'GIR 1', confusedWith: ['85176259', '85176299'] },
+    { hsCode: '85044019', description: 'Thiết bị sạc không dây MagSafe Charger nhãn hiệu Apple có mạch nghịch lưu', ketLuan: klMagsafe, reasonVi: '' },
+    { hsCode: '85044090', description: 'Máy xúc lật bánh lốp động cơ diesel tải trọng 5 tấn dùng trong xây dựng', ketLuan: klMagsafe },
   ],
 }, { text, ref: '43049/CHQ-NVTHQ', date: '2025-12-16', url: 'https://vbpl.ts24.com.vn/support/solutions/articles/16000230222', repoDir: repo });
 t('verifyRecords: giữ đúng 1 bản ghi thật', v.records.length === 1 && v.records[0].hsCode === '85044090', JSON.stringify(v));
@@ -83,11 +84,164 @@ t('verifyRecords: bỏ mô tả bịa', v.rejected.some((r) => /khớp/.test(r.w
 t('verifyRecords: confusedWith giữ mã văn bản nêu (8517.62.59), bỏ mã bịa (8517.62.99)', JSON.stringify(v.records[0].confusedWith) === '["85176259"]', JSON.stringify(v.records[0].confusedWith));
 t('verifyRecords: số hiệu/ngày/url từ nguồn', v.records[0].source.reference === '43049/CHQ-NVTHQ' && v.records[0].source.issuedDate === '2025-12-16' && v.records[0].source.type === 'TB-TCHQ');
 t('verifyRecords: không kết luận → 0 bản ghi', verifyRecords({ coKetLuan: false, lyDoKhongKetLuan: 'không đủ cơ sở', records: [] }, { text, ref: 'x', repoDir: repo }).noConclusion === 'không đủ cơ sở');
-const leak = verifyRecords({ coKetLuan: true, records: [{ hsCode: '85044090', description: 'Thiết bị sạc không dây MagSafe Charger mạch nghịch lưu cuộn dây phát MST 0101234567', reasonVi: '' }] }, { text: `${text} 0101234567`, ref: 'x', url: 'https://a.b/1', repoDir: repo });
+const leak = verifyRecords({ coKetLuan: true, records: [{ hsCode: '85044090', description: 'Thiết bị sạc không dây MagSafe Charger mạch nghịch lưu cuộn dây phát MST 0101234567', ketLuan: klMagsafe, reasonVi: '' }] }, { text: `${text} 0101234567`, ref: '43049/CHQ-NVTHQ', date: '2025-12-16', url: 'https://a.b/1', repoDir: repo });
 t('verifyRecords: dính MST → bỏ', leak.records.length === 0 && /riêng tư/.test(leak.rejected[0]?.why || ''), JSON.stringify(leak));
 
-const v10 = verifyRecords({ coKetLuan: true, records: [{ hsCode: '2517.41.00.10', description: 'Bột đá cẩm thạch trắng calcium carbonate nghiền mịn dùng làm chất độn', reasonVi: '' }] }, { text: 'Mặt hàng bột đá cẩm thạch trắng calcium carbonate nghiền mịn dùng làm chất độn thuộc mã 2517.41.00.10', ref: 'x', url: 'https://a.b/1', repoDir: repo });
+const text10 = 'Số: 123/TB-TCHQ. Mặt hàng bột đá cẩm thạch trắng calcium carbonate nghiền mịn dùng làm chất độn thuộc mã 2517.41.00.10';
+const v10 = verifyRecords({ coKetLuan: true, records: [{ hsCode: '2517.41.00.10', description: 'Bột đá cẩm thạch trắng calcium carbonate nghiền mịn dùng làm chất độn', ketLuan: 'Mặt hàng bột đá cẩm thạch trắng calcium carbonate nghiền mịn dùng làm chất độn thuộc mã 2517.41.00.10', reasonVi: '' }] }, { text: text10, ref: '123/TB-TCHQ', date: '2025-12-16', url: 'https://a.b/1', repoDir: repo });
 t('verifyRecords: mã 10 số (dòng thống kê cũ) → ghi 8 số hợp schema', v10.records.length === 1 && v10.records[0].hsCode === '25174100', JSON.stringify(v10));
+
+// --- hồi quy J2 (OZV-2445): evidence.soHieu, evidence.ketLuan, attributes.bieuThue (ca đạt + ca phải bỏ)
+{
+  t('bieuThueTheoNgay: 2012 (<2018-01-01), 2017 (<2022-12-01), 2022 (>=2022-12-01), sai định dạng → null',
+    bieuThueTheoNgay('2017-12-31') === '2012'
+    && bieuThueTheoNgay('2018-01-01') === '2017'
+    && bieuThueTheoNgay('2022-11-30') === '2017'
+    && bieuThueTheoNgay('2022-12-01') === '2022'
+    && bieuThueTheoNgay('2025-04-09') === '2022'
+    && bieuThueTheoNgay('09/04/2025') === null
+    && bieuThueTheoNgay('') === null);
+
+  t('extractSoHieu: lấy nguyên văn "Số: …" từ đầu văn bản, không bắt nhầm địa chỉ hoặc công văn DN',
+    extractSoHieu(text) === 'Số: 43049/CHQ-NVTHQ'
+    && extractSoHieu('Địa chỉ: Số 11D đường Doãn Kế Thiện\nSố: 19554/CHQ-NVTHQ\nKính gửi: ... công văn số 10/2025AVIC') === 'Số: 19554/CHQ-NVTHQ'
+    && extractSoHieu('Văn bản không có dòng số hiệu chuẩn') === null);
+
+  const t0 = Date.now();
+  extractSoHieu(`${'Số: '.repeat(40000)}12345 / ${'CHQ-'.repeat(40000)}`);
+  const redosMs = Date.now() - t0;
+  t('extractSoHieu: ReDoS 40.000 từ lặp < 2000ms', redosMs < 2000, `${redosMs}ms`);
+
+  // Ca đạt cho cả 3 trường trên bản ghi v.records[0]
+  t('verifyRecords (đạt): điền đúng evidence.soHieu nguyên văn từ toàn văn', v.records[0].evidence?.soHieu === 'Số: 43049/CHQ-NVTHQ', JSON.stringify(v.records[0].evidence));
+  t('verifyRecords (đạt): điền đúng evidence.ketLuan nguyên văn chứa mã và nối vào reasonVi',
+    v.records[0].evidence?.ketLuan === klMagsafe && v.records[0].reasonVi.includes(klMagsafe), JSON.stringify(v.records[0]));
+  t('verifyRecords (đạt): điền đúng attributes.bieuThue theo ngày ký',
+    v.records[0].attributes?.bieuThue === '2022', JSON.stringify(v.records[0].attributes));
+
+  const baseRec = {
+    hsCode: '8504.40.90',
+    description: 'Thiết bị sạc không dây MagSafe Charger nhãn hiệu Apple, có mạch nghịch lưu chuyển đổi DC thành xoay chiều tần số cao, cuộn dây phát',
+    ketLuan: klMagsafe,
+    reasonVi: 'Căn cứ Chú giải 5 Chương 85 và Thông tư 31/2022/TT-BTC.',
+  };
+
+  // Ca đạt: ketLuan có xuống dòng / khoảng trắng thừa trong văn bản gốc → chuẩn hoá khoảng trắng vẫn khớp
+  const multilineText = text.replace('phân nhóm 8504.40, mã số', 'phân nhóm 8504.40,\n   mã số');
+  const vMulti = verifyRecords({ coKetLuan: true, records: [baseRec] }, { text: multilineText, ref: '43049/CHQ-NVTHQ', date: '2020-05-10', url: 'https://a.b/1', repoDir: repo });
+  t('verifyRecords (đạt): ketLuan khớp toàn văn sau chuẩn hoá khoảng trắng + bieuThue 2017',
+    vMulti.records.length === 1 && vMulti.records[0].attributes?.bieuThue === '2017', JSON.stringify(vMulti));
+
+  // Ca phải bỏ 1 (evidence.soHieu): toàn văn thiếu dòng "Số: …"
+  const textNoSoHieu = text.replace('Số: 43049/CHQ-NVTHQ.', 'Công văn phân loại hàng hóa.');
+  const vNoSo = verifyRecords({ coKetLuan: true, records: [baseRec] }, { text: textNoSoHieu, ref: '43049/CHQ-NVTHQ', date: '2025-12-16', url: 'https://a.b/1', repoDir: repo });
+  t('verifyRecords (bỏ - evidence.soHieu): toàn văn không có dòng "Số: …" → bỏ bản ghi',
+    vNoSo.records.length === 0 && /soHieu/.test(vNoSo.rejected[0]?.why || ''), JSON.stringify(vNoSo));
+
+  // Ca phải bỏ 2 (evidence.soHieu): dòng "Số: …" trong trang đã mở khác ref tiêu đề
+  const vWrongSo = verifyRecords({ coKetLuan: true, records: [baseRec] }, { text, ref: '99999/CHQ-NVTHQ', date: '2025-12-16', url: 'https://a.b/1', repoDir: repo });
+  t('verifyRecords (bỏ - evidence.soHieu): Số: trong toàn văn khác ref nguồn → bỏ bản ghi',
+    vWrongSo.records.length === 0 && /soHieu.*không khớp/.test(vWrongSo.rejected[0]?.why || ''), JSON.stringify(vWrongSo));
+
+  // Ca phải bỏ 3 (evidence.ketLuan): thiếu hoặc ngắn < 30 ký tự
+  const vShortKl = verifyRecords({ coKetLuan: true, records: [{ ...baseRec, ketLuan: 'mã số 8504.40.90' }] }, { text, ref: '43049/CHQ-NVTHQ', date: '2025-12-16', url: 'https://a.b/1', repoDir: repo });
+  t('verifyRecords (bỏ - evidence.ketLuan): ketLuan ngắn < 30 ký tự → bỏ bản ghi',
+    vShortKl.records.length === 0 && /ketLuan.*30 ký tự/.test(vShortKl.rejected[0]?.why || ''), JSON.stringify(vShortKl));
+
+  // Ca phải bỏ 4 (evidence.ketLuan): LLM tự viết lại câu kết luận không phải chuỗi con nguyên văn của toàn văn
+  const vFakeKl = verifyRecords({ coKetLuan: true, records: [{ ...baseRec, ketLuan: 'Do đó mặt hàng sạc không dây MagSafe Charger được phân loại vào mã số 8504.40.90.' }] }, { text, ref: '43049/CHQ-NVTHQ', date: '2025-12-16', url: 'https://a.b/1', repoDir: repo });
+  t('verifyRecords (bỏ - evidence.ketLuan): ketLuan không phải chuỗi con của toàn văn → bỏ bản ghi',
+    vFakeKl.records.length === 0 && /ketLuan.*chuỗi con/.test(vFakeKl.rejected[0]?.why || ''), JSON.stringify(vFakeKl));
+
+  // Ca phải bỏ 5 (evidence.ketLuan): câu có nguyên văn trong toàn văn nhưng không chứa mã HS kết luận
+  const vNoCodeKl = verifyRecords({ coKetLuan: true, records: [{ ...baseRec, ketLuan: 'Mặt hàng xem xét là Thiết bị sạc không dây MagSafe Charger, nhãn hiệu Apple, nhận nguồn điện một chiều' }] }, { text, ref: '43049/CHQ-NVTHQ', date: '2025-12-16', url: 'https://a.b/1', repoDir: repo });
+  t('verifyRecords (bỏ - evidence.ketLuan): ketLuan không chứa mã HS kết luận → bỏ bản ghi',
+    vNoCodeKl.records.length === 0 && /ketLuan.*không chứa mã/.test(vNoCodeKl.rejected[0]?.why || ''), JSON.stringify(vNoCodeKl));
+
+  // Ca phải bỏ 6 (attributes.bieuThue): thiếu ngày hoặc ngày không đúng YYYY-MM-DD
+  const vNoDate = verifyRecords({ coKetLuan: true, records: [baseRec] }, { text, ref: '43049/CHQ-NVTHQ', date: '', url: 'https://a.b/1', repoDir: repo });
+  t('verifyRecords (bỏ - attributes.bieuThue): thiếu issuedDate hợp lệ → bỏ bản ghi',
+    vNoDate.records.length === 0 && /bieuThue/.test(vNoDate.rejected[0]?.why || ''), JSON.stringify(vNoDate));
+
+  // Ca hồi quy dựng từ đúng 3 bản ghi J2 bị đỏ cổng validate-community ngày 28/11 (1392/CHQ-NVTHQ → 8501, 685/TCHQ-TXNK → 3919, 684/TCHQ-TXNK → 3919)
+  const j2Docs = [
+    {
+      ref: '1392/CHQ-NVTHQ',
+      date: '2025-04-09',
+      url: 'https://vbpl.ts24.com.vn/support/solutions/articles/16000211253',
+      text: `Số: 1392/CHQ-NVTHQ\nV/v phân loại "xy lanh điện"\nHà Nội, ngày 09 tháng 4 năm 2025\n1. Đặc điểm hàng hóa: mặt hàng "xy lanh điện" được sử dụng cho các bộ phận vận hành máy móc công nghiệp, là sản phẩm hoàn chỉnh, có cấu tạo gồm: phần động cơ điện (không thể tháo rời là bộ phận tạo ra chuyển động quay) và phần xy lanh (phần tạo ra chuyển động tuyến tính). Bên trong xy lanh có các bộ phận như: trục vít (screw shaft), thanh cần (rod), hộp số (gear).\n2. Về phân loại: Căn cứ Thông tư số 31/2022/TT-BTC ngày 08/6/2022. Tham khảo Chú giải Chi tiết nhóm 85.01; Đặc điểm của hàng hóa nêu tại điểm 1 phù hợp phân loại vào nhóm 85.01, mã số tùy thuộc vào đặc điểm (ví dụ: một pha hay ba pha, xoay chiều hay một chiều...) và công suất của động cơ.`,
+      llm: {
+        coKetLuan: true,
+        records: [{
+          hsCode: '8501',
+          description: 'Xy lanh điện sử dụng cho các bộ phận vận hành máy móc công nghiệp, sản phẩm hoàn chỉnh gồm phần động cơ điện không thể tháo rời và phần xy lanh có trục vít, thanh cần, hộp số',
+          ketLuan: 'Đặc điểm của hàng hóa nêu tại điểm 1 phù hợp phân loại vào nhóm 85.01, mã số tùy thuộc vào đặc điểm (ví dụ: một pha hay ba pha, xoay chiều hay một chiều...) và công suất của động cơ.',
+          reasonVi: 'Căn cứ Thông tư số 31/2022/TT-BTC và Chú giải Chi tiết nhóm 85.01.',
+        }],
+      },
+    },
+    {
+      ref: '685/TCHQ-TXNK',
+      date: '2025-02-14',
+      url: 'https://vbpl.ts24.com.vn/support/solutions/articles/16000207978',
+      text: `Số: 685/TCHQ-TXNK\nV/v thông báo kết quả phân loại\nHà Nội, ngày 14 tháng 02 năm 2025\nTổng cục Hải quan nhận thấy mặt hàng có tên khai báo nhãn dính bằng nhựa đã in (in thông tin sản phẩm).\n2. Tổng cục Hải quan đã có công văn số 624/TCHQ-TXNK ngày 11/02/2025 hướng dẫn về mã số hàng hóa đối với mặt hàng nhãn nhựa tự dính, đã in. Theo đó, trường hợp mặt hàng có bản chất là dạng hình học phẳng, tự dính, bằng plastic, đã in thì phù hợp phân loại thuộc nhóm 39.19.`,
+      llm: {
+        coKetLuan: true,
+        records: [{
+          hsCode: '3919',
+          description: 'Nhãn dính bằng nhựa đã in thông tin sản phẩm, bản chất là dạng hình học phẳng, tự dính, bằng plastic, đã in',
+          ketLuan: 'Theo đó, trường hợp mặt hàng có bản chất là dạng hình học phẳng, tự dính, bằng plastic, đã in thì phù hợp phân loại thuộc nhóm 39.19.',
+          reasonVi: 'Hướng dẫn về mã số hàng hóa đối với mặt hàng nhãn nhựa tự dính, đã in theo công văn số 624/TCHQ-TXNK.',
+        }],
+      },
+    },
+    {
+      ref: '684/TCHQ-TXNK',
+      date: '2025-02-14',
+      url: 'https://vbpl.ts24.com.vn/support/solutions/articles/16000207977',
+      text: `Số: 684/TCHQ-TXNK\nV/v thông báo kết quả phân loại\nHà Nội, ngày 14 tháng 02 năm 2025\nTổng cục Hải quan xem xét mặt hàng có tên khai báo nhãn dán dùng để dán lên lốp xe đạp.\n2. Tổng cục Hải quan đã có công văn số 624/TCHQ-TXNK ngày 11/02/2025 hướng dẫn về mã số hàng hóa đối với mặt hàng nhãn nhựa tự dính, đã in. Theo đó, trường hợp mặt hàng có bản chất là dạng hình học phẳng, tự dính, bằng plastic, đã in thì phù hợp phân loại thuộc nhóm 39.19.`,
+      llm: {
+        coKetLuan: true,
+        records: [{
+          hsCode: '3919',
+          description: 'Nhãn dán dùng để dán lên lốp xe đạp, bản chất là dạng hình học phẳng, tự dính, bằng plastic, đã in',
+          ketLuan: 'Theo đó, trường hợp mặt hàng có bản chất là dạng hình học phẳng, tự dính, bằng plastic, đã in thì phù hợp phân loại thuộc nhóm 39.19.',
+          reasonVi: 'Hướng dẫn về mã số hàng hóa đối với mặt hàng nhãn nhựa tự dính, đã in theo công văn số 624/TCHQ-TXNK.',
+        }],
+      },
+    },
+  ];
+  const j2Records = [];
+  for (const d of j2Docs) {
+    const res = verifyRecords(d.llm, { text: d.text, ref: d.ref, date: d.date, url: d.url, repoDir: repo });
+    j2Records.push(...res.records);
+  }
+  t('hồi quy 3 bản ghi J2 (1392, 685, 684): cả 3 đều qua verifyRecords với đủ soHieu, ketLuan, bieuThue=2022',
+    j2Records.length === 3
+    && j2Records.every((r) => r.attributes?.bieuThue === '2022' && r.evidence?.soHieu?.startsWith('Số: ') && r.evidence?.ketLuan?.length >= 30),
+    JSON.stringify(j2Records));
+
+  // Chạy cổng thật scripts/validate-community.mjs trên tệp tạm chứa 3 bản ghi J2 này
+  const tmpDir = mkdtempSync(join(tmpdir(), 'j2-val-'));
+  const tmpFile = join(tmpDir, 'agent-vbpl-2026-11-28.json');
+  writeFileSync(tmpFile, JSON.stringify({
+    kind: 'precedent',
+    contributor: { name: 'hs-agent (vps-hsagent)', github: 'ozvietnam' },
+    license: 'CC-BY-SA-4.0',
+    submittedAt: '2026-11-28',
+    note: 'Hồi quy J2 OZV-2445',
+    records: j2Records,
+  }, null, 2));
+  let gateOut = '';
+  let gateOk = false;
+  try {
+    gateOut = execFileSync(process.execPath, [join(repo, 'scripts/validate-community.mjs'), tmpFile], { encoding: 'utf8', stdio: 'pipe' });
+    gateOk = /0 lỗi/.test(gateOut);
+  } catch (e) {
+    gateOut = (e.stdout || '') + (e.stderr || '') + e.message;
+  }
+  t('hồi quy 3 bản ghi J2 (1392, 685, 684): qua cổng scripts/validate-community.mjs với 0 lỗi', gateOk, gateOut);
+}
 
 // --- ngân sách, vùng ghi, nhánh
 const b = createRunBudget({ fetch: 2 });
