@@ -1,5 +1,7 @@
 #!/usr/bin/env node
-// scripts/ho-so-ma/soi-chong.mjs — M-81 (#2410, ADR-0008): khâu soi độc lập bằng mô hình hãng khác (gemma4:31b qua Ollama / OpenAI-compatible).
+// scripts/ho-so-ma/soi-chong.mjs — [ĐÃ BÃI BỎ VAI TRÒ NGƯỜI CHẤM M-81 THEO ADR-0010 MỤC 6]
+// Mô hình cục bộ yếu hơn (gemma4:31b) không chấm mô hình mạnh hơn; nghiệm thu M-81 chỉ đi qua cổng máy tất định 6–14.
+// Giữ mô-đun này để bảo toàn tương thích kiểm thử hồi quy; không gọi trong quy trình cuốn chiếu M-81.
 // Soi 3 mục hẹp trên bảng anh em + gói đọc trọn nhóm 4 số:
 //   (1) chong        : cặp anh em có tên cùng thoả trên một mặt hàng thực tế (chưa có GIAI_CHONG, không dính "Loại khác" thuần).
 //   (2) ho           : mặt hàng thực tế thuộc phạm vi nút cha nhưng không thoả dòng anh em nào.
@@ -1240,6 +1242,7 @@ async function main() {
     console.error('Thiếu --nhom <4 số> (vd: SOI_URL=http://127.0.0.1:11434 node scripts/ho-so-ma/soi-chong.mjs --nhom 8543)');
     process.exit(2);
   }
+  console.error('[ADR-0010 mục 6] Lưu ý: khâu soi bằng mô hình cục bộ đã bãi bỏ khỏi quy trình nghiệm thu M-81; chỉ dùng cổng máy tất định 6–14.');
 
   try {
     const baoCao = await soiNhom4(nhomArg, {

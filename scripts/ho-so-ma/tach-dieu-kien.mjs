@@ -9,7 +9,12 @@ import { fileURLToPath } from 'node:url';
 import { napLuatCong, chuanSo, vanTay } from './cong.mjs';
 import { kiemBanGhi, kiemKhoHoSo, KIEU_DIEU_KIEN, MO_DIEU_KIEN, CACH_GIAI_CHONG } from './khuon.mjs';
 import { laLoaiKhacThuan, napBieuMeta } from './bang-anh-em.mjs';
-import { dungGoiNhom, lietKeNhom4, DEFAULT_CANH_TRANH_MD, MAX_BYTES_MAC_DINH } from './goi-nhom.mjs';
+import {
+  dungGoiNhom,
+  lietKeNhom4,
+  DEFAULT_CANH_TRANH_MD,
+  MAX_BYTES_MAC_DINH,
+} from './goi-nhom.mjs';
 
 const require = createRequire(import.meta.url);
 const G = require('../../lib/ho-so-ma/ghep.js');
@@ -38,7 +43,11 @@ Quy tắc tách trọn nhóm bốn số (một lượt):
    - \`trich\`: chuỗi con NGUYÊN VĂN của câu \`nguon\`.
    - \`nguon\`: đúng id câu nguồn có trong gói (ví dụ \`bieu:XXXXXXXX#1\`).
 3. \`giaiChong\`: rà soát đầy đủ mọi cặp anh em cùng cha có thể cùng thoả trên một mặt hàng thực tế để lập \`{ nut, cap: [A, B], cach: "TRU"|"QUY_TAC_3"|"CHU_GIAI"|"NGUONG", trich, nguon }\` đúng căn cứ luật (phân biệt rõ \`QUY_TAC_3\` với \`CHU_GIAI\`).
-4. \`canhTranh\`: bắt buộc lập cho mọi nút mang cụm "chưa được chi tiết hoặc ghi ở nơi khác" từ dữ liệu cạnh tranh trong gói (\`{ nut, nhomCanhTranh: ["bieu:...", ...], phepThu: [{ nguon, trich }], trich, nguon }\` — \`nhomCanhTranh\` phải là id nút hợp lệ).
+4. \`canhTranh\`:
+   - Bắt buộc lập cho mọi nút mang cụm "chưa được chi tiết hoặc ghi ở nơi khác" từ dữ liệu cạnh tranh trong gói (\`{ nut, nhomCanhTranh: ["bieu:...", ...], phepThu: [{ nguon, trich }], trich, nguon }\` — \`nhomCanhTranh\` phải là id nút hợp lệ; Cổng 12).
+   - Khi gói có khối \`ỨNG VIÊN CẠNH TRANH TÌM THẤY QUA MÁY TÌM\` (\`canhTranhTimThay\`), MỌI nhóm ứng viên \`bieu:XXXX\` bắt buộc được trả lời ở bản ghi \`CANH_TRANH\` của nút nhóm bốn số bằng đúng một trong hai cách (Cổng 13 — cấm để cùng một \`bieu:XXXX\` vừa nằm trong \`nhomCanhTranh\` vừa nằm trong \`khongCanhTranh\`, cấm \`tb:\`/\`wco:\`):
+     (a) Đưa \`"bieu:XXXX"\` vào \`nhomCanhTranh\` kèm \`phepThu: [{ nguon: "<id câu>", trich: "<chuỗi nguyên văn>" }]\` phân ranh giới nguyên văn; hoặc
+     (b) Đưa vào \`khongCanhTranh: [{ nhom: "bieu:XXXX", nguon: "<id câu>", trich: "<chuỗi nguyên văn>" }]\` chứng minh hàng của nhóm đang xét không rơi vào nhóm \`bieu:XXXX\` (cho phép bản ghi \`CANH_TRANH\` mang \`nhomCanhTranh: [], phepThu: []\` khi \`khongCanhTranh\` không rỗng).
 
 Trả về DUY NHẤT JSON hợp lệ dạng:
 {"dieuKien":[{"nut":"bieu:...","ve":1,"phu":false,"kieu":"CO_KHONG","mo":"NGHIA_THUONG","cauHoi":"...","trich":"...","nguon":"..."}],"giaiChong":[],"canhTranh":[]}`;
@@ -206,6 +215,24 @@ export function dungLoiHoiGoiNhom(goi, { chunk = null } = {}) {
     }
     for (const cc of goi.canhTranh.canhTranhChung || []) {
       dong.push(`- ${cc.pham} chung: ${(cc.canhTranh || []).slice(0, 15).map((c) => c.nhom).join(', ')}`);
+    }
+  }
+
+  const dsUngVienCt = chunk?.canhTranhTimThay || goi.canhTranhTimThay || [];
+  if (dsUngVienCt.length) {
+    dong.push('', 'ỨNG VIÊN CẠNH TRANH TÌM THẤY QUA MÁY TÌM (tài liệu bắt buộc đọc — phải phủ đủ ở Cổng 13 qua CANH_TRANH hoặc khongCanhTranh):');
+    for (const uv of dsUngVienCt) {
+      const nutUv = uv.nut || `bieu:${uv.nhom}`;
+      const ngDau = uv.nguonTim?.[0];
+      const infoNg = ngDau ? `; nguồn tìm đầu: [${ngDau.idCau}] hạng ${ngDau.hang}` : '';
+      dong.push(`- [${nutUv}] ${gon(uv.ten || '')} (hạng tốt nhất=${uv.hangTotNhat ?? '?'}; số câu trùng=${uv.soCauHoiTrung ?? 0}${infoNg})`);
+      for (const cg of (uv.taiLieuPhaiDoc?.chuGiaiChuongPhan || []).slice(0, 8)) {
+        const dsId = Array.isArray(cg.cauIds) && cg.cauIds.length ? cg.cauIds.join(', ') : cg.id;
+        dong.push(`  * chú giải [${dsId}] (${cg.lop || 'LUAT'}): ${gon(cg.trich)}`);
+      }
+      for (const ct of (uv.taiLieuPhaiDoc?.cgctTrung || []).slice(0, 6)) {
+        dong.push(`  * CGCT [${ct.cauId}]: ${gon(ct.chu)}`);
+      }
     }
   }
 
@@ -518,6 +545,176 @@ export function chuanHoaDieuKien(rawList, nut, L, { batDauSo = 8101, nguongSanCo
   return { banGhi, loi };
 }
 
+function chuanNutDichCanhTranh(raw, L) {
+  const s = gon(raw || '');
+  if (!s) return '';
+  if (/^\d{2}\.?\d{2}$/.test(s)) {
+    const d4 = s.replace('.', '');
+    if (L?.cay?.theoId?.has(`bieu:${d4}`)) return `bieu:${d4}`;
+  }
+  return s;
+}
+
+/** Chuẩn hoá danh sách đề xuất `CANH_TRANH` (hỗ trợ cả `khongCanhTranh` cho Cổng 13 theo ADR-0010). */
+export function chuanHoaCanhTranh(rawList, nutMacDinh, L, { batDauSo = 8171, cayNutSet = null, moHinh = null } = {}) {
+  const banGhi = [];
+  const loi = [];
+  const sttCtTheoNut = new Map();
+  const list = Array.isArray(rawList) ? rawList : (rawList ? [rawList] : []);
+
+  for (const item of list) {
+    if (!item || typeof item !== 'object' || Array.isArray(item)) {
+      loi.push(`${nutMacDinh}: phần tử canhTranh không phải object`);
+      continue;
+    }
+    const nut = gon(item.nut || nutMacDinh);
+    if (cayNutSet && !cayNutSet.has(nut)) {
+      loi.push(`${nutMacDinh}: CANH_TRANH nut "${nut}" không thuộc cây nhóm ${nutMacDinh.replace(/^bieu:/, '')}`);
+      continue;
+    }
+
+    const nhomCanhTranh = Array.isArray(item.nhomCanhTranh)
+      ? [...new Set(item.nhomCanhTranh.map((x) => chuanNutDichCanhTranh(x, L)).filter(Boolean))]
+      : [];
+
+    const phepThu = [];
+    let phepThuLoi = false;
+    for (const p of item.phepThu || []) {
+      if (typeof p === 'string') {
+        const pn = gon(p);
+        if (/^(?:tb|wco):/.test(pn) || L.chuCau(pn) === null) {
+          loi.push(`${nut}: CANH_TRANH phepThu "${pn}" không hợp lệ hoặc không có trong kho luật`);
+          phepThuLoi = true;
+          break;
+        }
+        phepThu.push(pn);
+      } else if (p && typeof p === 'object' && !Array.isArray(p)) {
+        const pn = gon(p.nguon || '');
+        const pChu = /^(?:tb|wco):/.test(pn) ? null : L.chuCau(pn);
+        const pTrich = pChu ? timTrichNguyenVan(p.trich, pChu) : null;
+        if (!pTrich) {
+          loi.push(`${nut}: CANH_TRANH phepThu "${pn}" không hợp lệ hoặc không nguyên văn`);
+          phepThuLoi = true;
+          break;
+        }
+        phepThu.push({
+          nguon: pn,
+          trich: pTrich,
+          vanTay: vanTay(pChu),
+          ...(p.nhom !== undefined && gon(p.nhom) ? { nhom: chuanNutDichCanhTranh(p.nhom, L) } : {}),
+        });
+      } else {
+        loi.push(`${nut}: CANH_TRANH phepThu chứa phần tử không hợp lệ`);
+        phepThuLoi = true;
+        break;
+      }
+    }
+    if (phepThuLoi) continue;
+
+    let khongCanhTranh;
+    if (item.khongCanhTranh !== undefined) {
+      if (!Array.isArray(item.khongCanhTranh)) {
+        loi.push(`${nut}: CANH_TRANH khongCanhTranh phải là mảng`);
+        continue;
+      }
+      khongCanhTranh = [];
+      let kctLoi = false;
+      const seenKctNhom = new Set();
+      for (const m of item.khongCanhTranh) {
+        if (!m || typeof m !== 'object' || Array.isArray(m)) {
+          loi.push(`${nut}: CANH_TRANH phần tử khongCanhTranh không phải object`);
+          kctLoi = true;
+          break;
+        }
+        const mNhom = chuanNutDichCanhTranh(m.nhom, L);
+        if (!mNhom) {
+          loi.push(`${nut}: CANH_TRANH khongCanhTranh thiếu nhom hợp lệ`);
+          kctLoi = true;
+          break;
+        }
+        const mNguon = gon(m.nguon || '');
+        if (/^(?:tb|wco):/.test(mNguon)) {
+          loi.push(`${nut}: CANH_TRANH khongCanhTranh từ chối tiền lệ/WCO ${mNguon}`);
+          kctLoi = true;
+          break;
+        }
+        const mChu = L.chuCau(mNguon);
+        if (mChu === null) {
+          loi.push(`${nut}: CANH_TRANH khongCanhTranh nguon "${mNguon}" không có trong kho luật`);
+          kctLoi = true;
+          break;
+        }
+        const mTrich = timTrichNguyenVan(m.trich, mChu);
+        if (!mTrich) {
+          loi.push(`${nut}: CANH_TRANH khongCanhTranh trich không nguyên văn câu ${mNguon}`);
+          kctLoi = true;
+          break;
+        }
+        if (seenKctNhom.has(mNhom)) continue;
+        seenKctNhom.add(mNhom);
+        khongCanhTranh.push({
+          nhom: mNhom,
+          nguon: mNguon,
+          trich: mTrich,
+          vanTay: vanTay(mChu),
+          ...(typeof m.lyDo === 'string' && gon(m.lyDo) ? { lyDo: gon(m.lyDo) } : {}),
+        });
+      }
+      if (kctLoi) continue;
+    }
+
+    const rawNguon = gon(item.nguon || '');
+    const coTrich = item.trich !== undefined && item.trich !== null && gon(item.trich) !== '';
+    const dungFallbackKct = !rawNguon && !coTrich && Array.isArray(khongCanhTranh) && khongCanhTranh.length > 0;
+    const nguon = dungFallbackKct ? khongCanhTranh[0].nguon : rawNguon;
+    const trichIn = dungFallbackKct ? khongCanhTranh[0].trich : item.trich;
+
+    if (/^(?:tb|wco):/.test(nguon)) {
+      loi.push(`${nut}: CANH_TRANH từ chối tiền lệ ${nguon}`);
+      continue;
+    }
+    const chu = L.chuCau(nguon);
+    if (chu === null) {
+      loi.push(`${nut}: CANH_TRANH nguon "${nguon}" không có trong kho luật`);
+      continue;
+    }
+    const trich = timTrichNguyenVan(trichIn, chu);
+    if (!trich) {
+      loi.push(`${nut}: CANH_TRANH trich không nguyên văn câu ${nguon}`);
+      continue;
+    }
+
+    const nextBase = batDauSo - 1;
+    const stt = (sttCtTheoNut.get(nut) || nextBase) + 1;
+    sttCtTheoNut.set(nut, stt);
+    const rec = {
+      id: `hs:${nut}:${stt}`,
+      nut,
+      loai: 'CANH_TRANH',
+      nhomCanhTranh,
+      phepThu,
+      ...(khongCanhTranh !== undefined && khongCanhTranh.length > 0 ? { khongCanhTranh } : {}),
+      trich,
+      nguon,
+      vanTay: vanTay(chu),
+      ...(typeof item.ghiChu === 'string' && gon(item.ghiChu) ? { ghiChu: gon(item.ghiChu) } : {}),
+      ...(moHinh ? {
+        phieu: [{
+          mo: moHinh,
+          nhomCanhTranh,
+          ...(khongCanhTranh !== undefined && khongCanhTranh.length > 0 ? { khongCanhTranh } : {}),
+          trich,
+          nguon,
+        }],
+      } : {}),
+    };
+    const err = kiemBanGhi(rec);
+    if (err.length) { loi.push(...err); continue; }
+    banGhi.push(rec);
+  }
+
+  return { banGhi, loi };
+}
 /** Chuẩn hoá toàn bộ đầu ra `{ dieuKien, giaiChong, canhTranh }` của một gói nhóm 4 số. */
 export function chuanHoaGoiNhom(rawObj, goi, L, { nguongSanCo = null, moHinh = null } = {}) {
   const obj = Array.isArray(rawObj)
@@ -592,65 +789,14 @@ export function chuanHoaGoiNhom(rawObj, goi, L, { nguongSanCo = null, moHinh = n
     giaiChong.push(rec);
   }
 
-  // 3. CANH_TRANH
-  const sttCtTheoNut = new Map();
-  for (const item of obj.canhTranh || []) {
-    if (!item || typeof item !== 'object') { loi.push(`${goi.nut}: phần tử canhTranh không phải object`); continue; }
-    const nut = gon(item.nut || goi.nut);
-    if (!cayNutSet.has(nut)) {
-      loi.push(`${goi.nut}: CANH_TRANH nut "${nut}" không thuộc cây nhóm ${goi.nhom}`);
-      continue;
-    }
-    const nguon = gon(item.nguon || '');
-    if (/^tb:/.test(nguon)) { loi.push(`${nut}: CANH_TRANH từ chối tiền lệ ${nguon}`); continue; }
-    const chu = L.chuCau(nguon);
-    if (chu === null) { loi.push(`${nut}: CANH_TRANH nguon "${nguon}" không có trong kho luật`); continue; }
-    const trich = timTrichNguyenVan(item.trich, chu);
-    if (!trich) { loi.push(`${nut}: CANH_TRANH trich không nguyên văn câu ${nguon}`); continue; }
-
-    const nhomCanhTranh = Array.isArray(item.nhomCanhTranh) ? item.nhomCanhTranh.map(gon).filter(Boolean) : [];
-    const phepThu = [];
-    let phepThuLoi = false;
-    for (const p of item.phepThu || []) {
-      if (typeof p === 'string') {
-        const pn = gon(p);
-        if (/^tb:/.test(pn) || L.chuCau(pn) === null) {
-          loi.push(`${nut}: CANH_TRANH phepThu "${pn}" không có trong kho luật`);
-          phepThuLoi = true;
-          break;
-        }
-        phepThu.push(pn);
-      } else if (p && typeof p === 'object') {
-        const pn = gon(p.nguon || '');
-        const pChu = /^tb:/.test(pn) ? null : L.chuCau(pn);
-        const pTrich = pChu ? timTrichNguyenVan(p.trich, pChu) : null;
-        if (!pTrich) {
-          loi.push(`${nut}: CANH_TRANH phepThu "${pn}" không hợp lệ hoặc không nguyên văn`);
-          phepThuLoi = true;
-          break;
-        }
-        phepThu.push({ nguon: pn, trich: pTrich });
-      }
-    }
-    if (phepThuLoi) continue;
-
-    const stt = (sttCtTheoNut.get(nut) || 8170) + 1;
-    sttCtTheoNut.set(nut, stt);
-    const rec = {
-      id: `hs:${nut}:${stt}`,
-      nut,
-      loai: 'CANH_TRANH',
-      nhomCanhTranh,
-      phepThu,
-      trich,
-      nguon,
-      vanTay: vanTay(chu),
-      ...(moHinh ? { phieu: [{ mo: moHinh, nhomCanhTranh, trich, nguon }] } : {}),
-    };
-    const err = kiemBanGhi(rec);
-    if (err.length) { loi.push(...err); continue; }
-    canhTranh.push(rec);
-  }
+  // 3. CANH_TRANH (gồm cả khongCanhTranh cho Cổng 13)
+  const rCt = chuanHoaCanhTranh(obj.canhTranh || [], goi.nut, L, {
+    batDauSo: 8171,
+    cayNutSet,
+    moHinh,
+  });
+  canhTranh.push(...rCt.banGhi);
+  loi.push(...rCt.loi);
 
   return {
     banGhi: [...dieuKien, ...giaiChong, ...canhTranh],
@@ -901,7 +1047,7 @@ export function gopKetQuaChunk(dsParsed, { nutMacDinh = '' } = {}) {
                 return s ? JSON.stringify(['str', s]) : '';
               }
               if (p && typeof p === 'object' && !Array.isArray(p)) {
-                return JSON.stringify(['obj', gon(p.nguon || ''), chuanChuoiGop(p.trich || '')]);
+                return JSON.stringify(['obj', gon(p.nhom || ''), gon(p.nguon || ''), chuanChuoiGop(p.trich || '')]);
               }
               return '';
             })
@@ -910,9 +1056,35 @@ export function gopKetQuaChunk(dsParsed, { nutMacDinh = '' } = {}) {
         : [];
       const ghiChuRaw = c.ghiChu === undefined || c.ghiChu === null ? '' : chuanChuoiGop(c.ghiChu);
       const ghiChu = ghiChuRaw || null;
+      const khongCtNhomSorted = Array.isArray(c.khongCanhTranh)
+        ? [...new Set(
+          c.khongCanhTranh
+            .map((m) => (m && typeof m === 'object' ? gon(m.nhom || '') : ''))
+            .filter(Boolean),
+        )].sort()
+        : [];
+      const khongCtSorted = Array.isArray(c.khongCanhTranh)
+        ? [...new Set(
+          c.khongCanhTranh
+            .map((m) => {
+              if (!m || typeof m !== 'object' || Array.isArray(m)) return '';
+              return JSON.stringify([
+                gon(m.nhom || ''),
+                gon(m.nguon || ''),
+                chuanChuoiGop(m.trich || ''),
+                m.lyDo === undefined || m.lyDo === null ? '' : chuanChuoiGop(m.lyDo),
+              ]);
+            })
+            .filter(Boolean),
+        )].sort()
+        : [];
 
-      const khoaCt = JSON.stringify([nut, nhomCtSorted, nguon, trich]);
-      const noiDungCt = JSON.stringify({ phepThu: phepThuSorted, ghiChu });
+      const khoaCt = khongCtNhomSorted.length
+        ? JSON.stringify([nut, nhomCtSorted, khongCtNhomSorted, nguon, trich])
+        : JSON.stringify([nut, nhomCtSorted, nguon, trich]);
+      const noiDungCt = khongCtSorted.length
+        ? JSON.stringify({ phepThu: phepThuSorted, khongCanhTranh: khongCtSorted, ghiChu })
+        : JSON.stringify({ phepThu: phepThuSorted, ghiChu });
 
       if (!theoKhoaCt.has(khoaCt)) {
         theoKhoaCt.set(khoaCt, new Set([noiDungCt]));
@@ -948,6 +1120,8 @@ export async function tachGoiNhom(nhom4OrGoi, opts = {}) {
       canhTranhMd: opts.canhTranhMd ?? DEFAULT_CANH_TRANH_MD,
       maxBytes: opts.maxBytes ?? MAX_BYTES_MAC_DINH,
       chiaTheo6So: Boolean(opts.chiaTheo6So),
+      topKCanhTranh: opts.topKCanhTranh,
+      tatCanhTranhTimThay: opts.tatCanhTranhTimThay,
     })
     : nhom4OrGoi;
 
