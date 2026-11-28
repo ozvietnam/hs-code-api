@@ -3,12 +3,12 @@
 - **Khuôn áp dụng:** `ho-so-ma@1` ([`docs/mong/khuon-ho-so-ma.md`](../khuon-ho-so-ma.md), [`docs/decisions/0006-ho-so-van-de-ma-8-so.md`](../../decisions/0006-ho-so-van-de-ma-8-so.md))
 - **Kho dữ liệu (`RUT_TU_LUAT`, khai trong `data/lop-kho.json`):**
   - `data/ho-so-ma/nguong/XVI.jsonl`: **2 bản ghi `NGUONG`** ở `phan:XVI` (`phan:XVI:kq:41#1` dung sai bi thép 84.82: `<= 1%` và `<= 0,05 mm`) — giữ nguyên không chạm.
-  - `data/ho-so-ma/nguong/84.jsonl`: **404 bản ghi** (`311 NGUONG`, `81 TACH_ANH_EM`, `12 BO_QUA`) từ Chú giải Chương/Phân nhóm (`7`, `9`, `pn:4`), Phân nhóm/Nhóm/SEN và tên dòng biểu thuế `bieu:84*` (đã hoàn tất rà ngược **Gói 1: `84.01–84.12`**, **Gói 2: `84.13–84.20`**, **Gói 3: `84.21–84.35`**, **Gói 4: `84.36–84.50`**, **Gói 5: `84.51–84.65`** và **Gói 6: `84.66–84.80`**; giữ nguyên 100% từng byte **394 bản ghi** ngoài Gói 6 gồm `347` bản ghi Gói 1+2+3+4+5 và `47` bản ghi còn lại của `84.81–84.87` + phi-biểu ngoài Gói 6).
-  - **Tổng toàn Chương 84 + Phần XVI: 406 bản ghi**, không chứa dữ liệu khách, tờ khai, `tb:`, `wco:`, `gir:`, hay thông số ví dụ/bảng mẫu tham khảo.
+  - `data/ho-so-ma/nguong/84.jsonl`: **425 bản ghi** (`311 NGUONG`, `102 TACH_ANH_EM`, `12 BO_QUA`, `152` bản ghi mang mảng `phuDinh`) từ Chú giải Chương/Phân nhóm (`7`, `9`, `pn:4`), Phân nhóm/Nhóm/SEN và tên dòng biểu thuế `bieu:84*` (**đã hoàn tất 100% rà ngược toàn Chương 84 qua đủ 7/7 gói**: Gói 1 `84.01–84.12` `#2461`, Gói 2 `84.13–84.20` `#2466`, Gói 3 `84.21–84.35` `#2469`, Gói 4 `84.36–84.50` `#2471`, Gói 5 `84.51–84.65` `#2473`, Gói 6 `84.66–84.80` `#2475` và Gói 7/7 `84.81–84.87`; giữ nguyên 100% từng byte **357 bản ghi** ngoài Gói 7 thuộc Gói 1–6; toàn Chương 84 sạch **`0/311`** mã HS và **`0/311`** `"thông số"` trong `nguong.daiLuong`).
+  - **Tổng toàn Chương 84 + Phần XVI: 427 bản ghi**, không chứa dữ liệu khách, tờ khai, `tb:`, `wco:`, `gir:`, hay thông số ví dụ/bảng mẫu tham khảo.
 - **Áp dụng đầy đủ 3 quy ước QT chốt sau Chương 76 & 8 Luật M-74:**
   1. **Không lấy thông số ví dụ / bảng mẫu tham khảo:** lọc bằng `laCauViDuHoacBangMau()` (loại các dải minh họa trong Chú giải như `nhom:8424` 3.000–4.000 bar, `nhom:8448` khoảng 0,1–2 mm, `nhom:8455` xấp xỉ 30–520 cm, `pn:842211` bảng kích thước đặt sàn, `pn:842441` ví dụ 3 bar/5 lít, `sen:84145930` ví dụ 0,5 m³/s).
   2. **Bảng thành phần hợp kim:** Chương 84 không có bảng thành phần mác hợp kim kiểu `5182/5082`.
-  3. **Dòng *"Loại khác"* phủ định anh em:** kế thừa 55 bản ghi *"Loại khác"* phần bù 1 khoảng duy nhất (bao gồm ca lấp khoảng giữa `(18,65; 100] kW` ở `bieu:8408909` giữa `.9010 <= 18,65` và `.905 > 100`, cùng đồng thời `<= 21,10 kW` và `< 220 cc` ở `bieu:84143090`), nay đang được nâng cấp theo từng gói để bổ sung trường mảng `phuDinh`, tách `TACH_ANH_EM` De Morgan cho điều kiện ghép và ghi `BO_QUA` cho câu mô tả thông thường (Luật 1–8).
+  3. **Dòng *"Loại khác"* phủ định anh em:** kế thừa nền tảng phần bù 1 khoảng duy nhất (bao gồm ca lấp khoảng giữa `(18,65; 100] kW` ở `bieu:8408909` giữa `.9010 <= 18,65` và `.905 > 100`, cùng đồng thời `<= 21,10 kW` và `< 220 cc` ở `bieu:84143090`), nay **đã hoàn tất rà ngược toàn bộ 7/7 gói Chương 84** theo 8 Luật M-74 (**`152`** bản ghi mang trường mảng `phuDinh`, **`102 TACH_ANH_EM`** De Morgan cho điều kiện ghép / miền bù rời và **`12 BO_QUA`** tường minh cho câu mô tả thông thường).
 - **Kiểm phân dải anh em & cặp đại lượng-đơn vị (`kiemDaiAnhEm` + `kiemDonViDaiLuong` + Cổng 3):**
   - Bắt cặp bắt buộc `daiLuong ↔ donVi` qua `kiemDonViDaiLuong()` (ví dụ chặn `công suất` gắn `mm`, `đường kính` gắn `kW`; giữ riêng `bieu:84603110` thành `công suất <= 0,74 kW` và `đường kính chuôi <= 3,175 mm`).
   - Tổng toàn Chương 84: **80 cụm anh em `NGUONG`** (**74 cụm phủ kín `(-∞, +∞)`**, **6 cụm hữu hạn đúng cấu trúc biểu**: `840732` thừa hưởng `(50; 250] cc`; `841350/841360/841370`; `8415819`; `848180:td6`). **0 lỗi chồng dải, 0 lỗi hở dải, 0 lỗi `voi`.**
@@ -326,3 +326,73 @@
 - **Ca 1 `nguong-test.mjs` (dòng 170):** `banGhi84.some(x => x.nut === 'bieu:8470' && x.nguong?.den === 170)` → **`PASS`**.
 - **Tính lũy đẳng (`idempotent`):** Chạy `patch-c84-b6.mjs` lần 2 cho `editedCount: 0, insertedCount: 0`, đầu ra **khớp 100% từng byte** với lần 1; toàn bộ `394` dòng ngoài `84.66–84.80` giữ nguyên 100% từng byte.
 - **Đối chiếu `data/ho-so/ranh-gioi/8466..8480*.json` (chỉ-đọc):** **45 tệp** (**2 dòng `dieuKienSo`** trên `84743211`, `84743221`) đều được phủ đầy đủ (`0` thiếu).
+
+---
+
+## Rà ngược Gói 7/7 (`84.81–84.87`) — Hoàn tất 100% Chương 84 theo 8 Luật M-74
+
+- **Phạm vi xử lý:** **7 nhóm 4 số** cuối cùng của Chương 84 (`84.81, 84.82, 84.83, 84.84, 84.85, 84.86, 84.87`). Không đụng `data/ho-so-ma/nguong/XVI.jsonl` (`phan:XVI` giữ nguyên 2 bản ghi cho Ca 1 `nguong-test.mjs`). Giữ nguyên 100% từng byte **357 bản ghi** ngoài phạm vi `84.81–84.87` (toàn bộ Gói 1–6 đã gộp ở #2461/#2466/#2469/#2471/#2473/#2475).
+
+### 1. Biến động bản ghi phạm vi `84.81–84.87`
+
+| Chỉ tiêu (phạm vi `bieu:8481*..8487*`) | Nền `origin/main` | Sau rà ngược Gói 7 | Biến động |
+|---|---:|---:|---|
+| Tổng bản ghi gói `84.81–84.87` | 47 | **68** | **`+21` thêm / `34` sửa / `0` bỏ** (`13` giữ nguyên; cả tệp `84.jsonl`: `404 → 425`) |
+| `NGUONG` | 47 | **47** | Xóa sạch 3 `"thông số (cm)"`, 2 mã HS `(8482.91)` & `(CG 7 Ch.84)`, tách 2 cặp nhánh `HOẶC`/`;`, bổ sung `voi`/`phuDinh` |
+| `DINH_NGHIA` | 0 | **0** | Chú giải 10, 11 & CGPN 3 Ch.84 (`84.81`, `84.85`, `84.86`) định nghĩa định tính, không đặt ngưỡng số |
+| `TACH_ANH_EM` | 0 | **21** | Thêm mới 21 bản ghi `TACH_ANH_EM` + `phuDinh` phủ kín 100% nút `"Loại khác"` / phần bù (`Van plastic khác`...) dưới cha có `NGUONG` |
+| `BO_QUA` | 0 | **0** | Không có câu CGCT mô tả tính chất thông thường kèm đơn vị đo vật lý trong 7 nhóm |
+| Bản ghi có trường mảng `phuDinh` | 0 | **23** | 1 `NGUONG` `"Loại khác"` thuần (`84831039`) + 1 `NGUONG` `loaiKhacCoVe` (`84818097`) + 21 `TACH_ANH_EM` |
+| `NGUONG` chứa `"thông số"` trong `daiLuong` | 3 | **0** | **Sạch 100%** (`84818073`, `84818074`, `84818077`) |
+| `NGUONG` chứa mã HS trong `daiLuong` | 2 | **0** | **Sạch 100%** (`848291:8401..8402`; đồng thời làm sạch `(CG 7 Ch.84)` trên `8482:8401..8402`) |
+
+### 2. Các điểm chuẩn hoá chính trong Gói 7 (`84.81–84.87`)
+
+- **Xóa sạch 3 đại lượng mơ hồ `"thông số (cm)"` ở `84.81` (Luật 3):**
+  - `hs:bieu:84818073:8401`, `hs:bieu:84818074:8401`, `hs:bieu:84818077:8401` (dưới `bieu:848180:td6:td2` *Van cổng, điều khiển bằng tay, bằng sắt hoặc thép*): đổi `"thông số (cm)"` theo đúng nguyên văn dòng biểu thành **`"đường kính trong cửa nạp và cửa thoát"`** (`<= 5 cm`, `(5; 40] cm`, `> 40 cm`), giữ nguyên cụm phủ kín `(-∞, +∞) cm`.
+- **Xóa sạch 2 mã HS trong `daiLuong` ở `84.82` & giữ tương thích Ca 1 `nguong-test.mjs` (Luật 3):**
+  - `hs:bieu:848291:8401..8402` (bỏ `(8482.91)`) và `hs:bieu:8482:8401..8402` (bỏ `(CG 7 Ch.84)`): thống nhất thành **`"dung sai tương đối đường kính bi thép đánh bóng"`** (`<= 1 %`) và **`"dung sai tuyệt đối đường kính bi thép đánh bóng"`** (`<= 0,05 mm`).
+  - `hs:bieu:848240:8401..8402`: giữ nguyên `nut: "bieu:848240"`, `daiLuong: "tỉ lệ chiều dài / đường kính bi đũa"`, `donVi: "lần"` (`>= 3 lần`) để đạt kiểm Ca 1 `nguong-test.mjs` dòng 169; gắn `voi: ["bieu:848250", "bieu:848280"]`.
+- **Tách rõ 2 điểm nóng Luật 3 (`HOẶC` & `;`) trên `84.81` (nền cũ gộp chung `daiLuong: "đường kính trong"`):**
+  - `bieu:84812020`: tách rõ 2 nhánh `HOẶC` → `:8401` **`"đường kính trong (bằng đồng hoặc hợp kim đồng)"`** (`<= 2,5 cm`) và `:8402` **`"đường kính trong (bằng plastic)"`** (`1–2,5 cm`).
+  - `bieu:848180:td3:td1`: tách rõ 2 nhánh dấu `;` → `:8401` **`"đường kính trong (van cổng bằng gang đúc)"`** (`>= 4 cm`) và `:8402` **`"đường kính trong (van bướm bằng gang đúc)"`** (`>= 8 cm`).
+- **Phủ đủ 100% nút `"Loại khác"` / phần bù dưới cha có `NGUONG` (Luật 1 & 2 De Morgan):**
+  - Bổ sung trường mảng **`phuDinh`** trên `hs:bieu:84831039:8401` (`> 22,38 kW`, `"Loại khác"` thuần) và `hs:bieu:84818097:8401` (`loaiKhacCoVe`, phủ định 8 nhánh đứng trước dưới `8481.80:td6`).
+  - Thêm mới **21 `TACH_ANH_EM` + `phuDinh`** (`hs:<nut>:7401`):
+    - Nhóm `84.81` (**18 nút**): `84811019`, `84811099`, `84812090`, `84813090`, `84814090`, `84818049`, `84818059`, `84818062`, `84818063`, `84818065`, `84818067`, `84818072`, `84818079`, `84818082`, `848180:td6:td5` (*Van plastic khác* — phần bù De Morgan cho van plastic gồm cả van ngắt nhiên liệu ô tô plastic `> 2,5 cm`), `848180:td6:td6`, `84818099`, `84819090`.
+    - Nhóm `84.82` (**3 nút**): `848250` (*Các loại ổ đũa hình trụ khác*, phủ định De Morgan 2 chiều `<= 5 mm VÀ >= 3 lần` của `8482.40`), `848280` (*Loại khác, kể cả ổ kết hợp bi cầu/bi đũa*, phủ định `.10/.20/.30/.40/.50`), `848299` (*Loại khác* dưới bộ phận `8482.9`, phủ định `8482.91`).
+
+### 3. Bảng đối soát câu chứa chữ số + đơn vị theo Luật 6 (`84.81–84.87`)
+
+| Nguồn câu (`84.81–84.87`) | Trúng số + đơn vị | Đã rút `NGUONG` | Ghi `BO_QUA` | Bỏ qua hợp lệ (nhắc lại luật / ví dụ) | Chi tiết đối soát |
+|---|---:|---:|---:|---:|---|
+| Pháp lý Chú giải Ch.84 (`chuong:84:cg:7#1`, `cgpn:4#1`) | 2 | 2 | 0 | 0 | `8482`/`848291` (`<= 1%`, `<= 0,05 mm`) & `848240` (`<= 5 mm`, `>= 3 lần`) |
+| Dòng biểu `bieu:8481*` | 34 | 34 | 0 | 0 | Đường kính trong / cửa nạp / cửa thoát (`cm`, `mm`) và khối lượng `< 3 kg` (`84818097`) + 18 `TACH_ANH_EM` |
+| Dòng biểu `bieu:8483*` | 4 | 4 | 0 | 0 | Dung tích xi lanh (`<= 2.000`, `2.000–3.000`, `> 3.000 cc` trên `84831025..27`) & công suất (`<= / > 22,38 kW` trên `84831031/39`) |
+| Dòng biểu `8482, 8484, 8485, 8486, 8487` | 0 | 0 | 0 | 0 | Chỉ có dẫn chiếu phân nhóm / Chú giải 11 (C) |
+| CGCT `84.82` (`nhom:8482:ct:9#2`, `nhom:8482:ct:13#1`) | 2 | 0 | 0 | **2** | Nhắc lại nguyên văn ngưỡng `<= 5 mm` / `>= 3 lần` (`cgpn:4#1`) và `<= 1%` / `<= 0,05 mm` (`cg:7#1`) đã rút từ Chú giải pháp lý |
+| CGCT / SEN các nhóm còn lại (`8481, 8483..8487`) | 0 | 0 | 0 | 0 | Chỉ có số đếm cấu tạo (`6 rãnh`), ví dụ `5 tấm đệm`, tên `in 3D / 3 chiều`, tỉ lệ chiếu `1:1`, và tiêu đề SEN `8481.80.64/65` |
+| **Tổng Gói 7 (`84.81–84.87`)** | **42** | **40** | **0** | **2** | **42/42 câu có số+đơn vị đã đối soát, `0` bỏ sót** |
+
+### 4. Kiểm phân dải anh em, Ca 1 `nguong-test.mjs` & đối chiếu `ranh-gioi` (`84.81–84.87`)
+
+- **Cụm anh em trong Gói 7 (`kiemDaiAnhEm` + Cổng 3):** **7 cụm anh em**: **6 cụm phủ kín `(-∞, +∞)`** (`8481102`, `8481802`, `848180:td6:td2` [*đường kính trong cửa nạp và cửa thoát*], `848180:td6:td5`, `8483102:td1`, `8483103`) + **1 cụm hữu hạn đúng cấu trúc biểu** (`848180:td6` van ngắt nhiên liệu plastic xe ô tô `< 1 cm` & `1–2,5 cm`), tổng toàn Chương 84 đạt **80 cụm** (`74` phủ kín, `6` hữu hạn, khớp `>= 80` của `nguong-test.mjs` Ca 3), **`0` chồng dải, `0` hở dải, `0` lỗi `voi`/`phuDinh`, `0` lỗi đơn vị**.
+- **Ca 1 `nguong-test.mjs` (dòng 169–175):** `bieu:848240` (`donVi === 'lần'`), `bieu:8470` (`den === 170`), `bieu:845210` (`den === 120`), `bieu:84603110` (`2` bản ghi `kW`/`mm`) và Ca 3 (`bieu:8408909`, `dai84 >= 80`) đều **`PASS`**.
+- **Tính lũy đẳng (`idempotent`):** Chạy `patch-c84-b7.mjs` lần 2 cho `editedCount: 0, insertedCount: 0`, đầu ra **khớp 100% từng byte** với lần 1; toàn bộ `357` dòng ngoài `84.81–84.87` giữ nguyên 100% từng byte.
+- **Đối chiếu `data/ho-so/ranh-gioi/8481..8487*.json` (chỉ-đọc):** **18 tệp** (**36 dòng `dieuKienSo`**) đều được phủ đầy đủ (`0` thiếu).
+
+---
+
+## Tổng kết toàn Chương 84 (`7/7` gói — `86/86` nhóm 4 số hoàn tất)
+
+| Gói | Phạm vi | Trước rà | Sau rà | `NGUONG` | `TACH_ANH_EM` | `BO_QUA` | Có `phuDinh` | Mã HS / `"thông số"` trong `daiLuong` |
+|---|---|---:|---:|---:|---:|---:|---:|---|
+| Gói 1 (`#2461`) | `84.01–84.12` | 98 | 138 | 98 | 39 | 1 | 49 | `0 / 0` → **`0 / 0`** |
+| Gói 2 (`#2466`) | `84.13–84.20` | 101 | 121 | 96 | 22 | 3 | 47 | `5 / 0` → **`0 / 0`** |
+| Gói 3 (`#2469`) | `84.21–84.35` | 16 | 33 | 19 | 11 | 3 | 13 | `1 / 0` → **`0 / 0`** |
+| Gói 4 (`#2471`) | `84.36–84.50` | 23 | 26 | 23 | 2 | 1 | 6 | `1 / 0` → **`0 / 0`** |
+| Gói 5 (`#2473`) | `84.51–84.65` | 22 | 29 | 20 | 5 | 4 | 10 | `3 / 0` → **`0 / 0`** |
+| Gói 6 (`#2475`) | `84.66–84.80` | 8 | 10 | 8 | 2 | 0 | 4 | `3 / 0` → **`0 / 0`** |
+| Gói 7/7 (PR này) | `84.81–84.87` | 47 | 68 | 47 | 21 | 0 | 23 | `2 / 3` → **`0 / 0`** |
+| **Tổng `84.jsonl`** | **`84.01–84.87`** | **315** | **425** | **311** | **102** | **12** | **152** | **`15 / 3` → `0 / 0`** |
+| **Cộng `XVI.jsonl`** | **`phan:XVI` + Ch.84** | **317** | **427** | **313** | **102** | **12** | **152** | **`0` chồng · `0` hở · `80` cụm (`74` phủ kín) · `258/258` `ranh-gioi`** |
