@@ -9,6 +9,7 @@ import { nhomChuaCoSoTay } from './nhom-chua-co-so-tay.mjs';
 const require = createRequire(import.meta.url);
 const { dataPath } = require('../lib/data-paths.js');
 const rt = require('../lib/so-tay-runtime.js');
+const wco = require('../lib/wco-op.js');
 const T = require('../lib/hs-tree.js');
 const S = require('../lib/so-tay.js');
 const GOC = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -38,6 +39,7 @@ assert('canGiaiTrinh: là NGHI (có lý do, có nguồn), không phải kết lu
 assert('yKienWco: mã 8 số → chỉ đúng mã 6 số 8528.52 (không lẫn 8528.62)', a.yKienWco.length === 2 && a.yKienWco.every((x) => x.hs === '852852'));
 assert('yKienWco: có mô tả tự viết + độ tin cậy + cờ chưa soát ảnh; KHÔNG lộ dấu vết/ trích', a.yKienWco[0].moTa && a.yKienWco[0].doTinCay === 'CHAC' && a.yKienWco[0].daSoatAnh === false && !('dauVet' in a.yKienWco[0]) && !('trich' in a.yKienWco[0]));
 assert('yKienWcoDayDu=false được báo (không để hiểu là đủ)', a.yKienWcoDayDu === false);
+assert('[OZV-2352] yKienWco ≥1 mục ⇒ kèm banQuyen đúng chuỗi lib/wco-op.js (NOTICE.md: nội dung WCO không thuộc CC BY-SA)', a.yKienWco.length >= 1 && a.banQuyen === wco.BAN_QUYEN && /bản quyền của Tổ chức Hải quan Thế giới/.test(a.banQuyen));
 
 const b = rt.advise({ topHs: '8528', candidates: [{ code4: '8525' }, { hs: '85171300' }] });
 assert('mã 4 số: mọi ý kiến trong nhóm; ứng viên dạng đối tượng/8 số đều nhận', b.yKienWco.length === 3 && b.canGiaiTrinh.map((x) => x.sangNhom).join() === '8525');
@@ -65,6 +67,7 @@ fs.rmSync(dataPath('so-tay'), { recursive: true, force: true }); rt.reset();
 const real = rt.advise({ topHs: '85285200', candidates: ['8525'] });
 assert('dữ liệu thật: 8528.52 có ý kiến WCO trong sổ tay công khai', real.trangThai === 'CO_SO_TAY' && real.yKienWco.length >= 5 && real.yKienWco.every((x) => x.hs === '852852'), JSON.stringify(real).slice(0, 200));
 assert('dữ liệu thật: không có trường nguyên văn nào lọt ra (chỉ moTa tự viết ≤ 300 ký tự)', real.yKienWco.every((x) => x.moTa.length <= 300 && !('trich' in x) && !('text' in x)));
+assert('[OZV-2352] dữ liệu thật: phản hồi có yKienWco ⇒ có banQuyen', real.yKienWco.length >= 5 && real.banQuyen === wco.BAN_QUYEN);
 
 
 // ── Cây quan hệ (#236): viTri + loaiKhac đính vào soTay, cố vấn, không đổi mã ──
@@ -80,6 +83,7 @@ assert('dữ liệu thật: không có trường nguyên văn nào lọt ra (ch�
   assert('viTri: đường dẫn phần→chương→nhóm→phân nhóm, cha 850440 không suyRa, anh em có nhóm con 8504401 suyRa', v.viTri && v.viTri.duongDan.length === 4 && v.viTri.cha.id === '850440' && v.viTri.cha.suyRa === false && v.viTri.anhEm.some((x) => x.id === '8504401' && x.suyRa), JSON.stringify(v.viTri));
   assert('loaiKhac: tổ tiên có tên 850440, 4 anh em có tên; anh em có trong dong8 thì kèm dieuKien + nguon + trich', v.loaiKhac && v.loaiKhac.toTienCoTen.id === '850440' && v.loaiKhac.anhEmCoTen.length === 4 && v.loaiKhac.anhEmCoTen[0].hs === '85044011' && v.loaiKhac.anhEmCoTen[0].nguon === 'sen.85044011' && /Bộ nguồn/.test(v.loaiKhac.anhEmCoTen[0].trich) && !v.loaiKhac.anhEmCoTen[1].trich, JSON.stringify(v.loaiKhac));
   assert('loaiKhac: dòng chính nó có dieuKienSoTay; ghi chú nói "phải chứng minh KHÔNG rơi vào"', /không thuộc/.test(v.loaiKhac.dieuKienSoTay) && /KHÔNG rơi vào/.test(v.loaiKhac.ghiChu));
+  assert('[OZV-2352] yKienWco 0 mục ⇒ KHÔNG có banQuyen (không tuyên bố khi không trả nội dung WCO)', v.yKienWco.length === 0 && !('banQuyen' in v));
   const w = rt.advise({ topHs: '85042111', candidates: [] });
   assert('mã có tên (không Loại khác): có viTri (cha là tiêu đề bị lược), không có loaiKhac', w.viTri && w.viTri.cha.id === '8504211' && w.viTri.cha.suyRa === true && !w.loaiKhac);
   // 4907 (tem bưu chính) chưa có sổ tay; 1509 đã có từ lô 059 (27/10), 4011 từ vòng soạn 20 nhóm 11/10.
