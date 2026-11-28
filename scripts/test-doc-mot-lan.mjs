@@ -5,6 +5,7 @@
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
+import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { napLuatCong, vanTay } from './ho-so-ma/cong.mjs';
 import { napBieuMeta } from './ho-so-ma/bang-anh-em.mjs';
@@ -66,19 +67,39 @@ try { chuanChuong2('77'); } catch { batLoiChuongSai = true; }
 ca('chuanChuong2 từ chối chương dự phòng 77', batLoiChuongSai);
 
 const goi9405Mu = dungGoiNhom('9405', { luat: LUAT_THAT, L, bieuMeta, soanMu: true });
+const cli9405Tmp = JSON.parse(
+  execFileSync(process.execPath, [path.join(GOC, 'scripts', 'ho-so-ma', 'goi-nhom.mjs'), '--nhom', '9405', '--tom-tat'], {
+    cwd: os.tmpdir(),
+    encoding: 'utf8',
+  }),
+);
+const cli9405SoanMuTmp = JSON.parse(
+  execFileSync(process.execPath, [path.join(GOC, 'scripts', 'ho-so-ma', 'goi-nhom.mjs'), '--nhom', '9405', '--soan-mu', '--tom-tat'], {
+    cwd: os.tmpdir(),
+    encoding: 'utf8',
+  }),
+);
 const cauIds9405Mu = new Set(goi9405Mu.cauTrongGoi.map((c) => c.id));
 ca(
-  'goi-nhom(9405, soanMu:true): kèm nguyên văn GIR 1–6 (kể cả gir:3:a#1, gir:3:c#1), không nạp dieu-kien/94.jsonl hay M-81-canh-tranh.md',
+  'goi-nhom(9405): kèm nguyên văn GIR 1–6 + câu tên nhóm đích chú giải đẩy sang (59.08, 85.16, 85.31, 70.09, 83.03), đồng nhất vanTayGoi giữa hàm JS (--soan-mu) và CLI khác cwd',
   Array.isArray(goi9405Mu.gir)
     && goi9405Mu.gir.length >= 6
     && cauIds9405Mu.has('gir:1#1')
     && cauIds9405Mu.has('gir:3:a#1')
     && cauIds9405Mu.has('gir:3:c#1')
     && cauIds9405Mu.has('gir:6#1')
+    && cauIds9405Mu.has('bieu:5908#1')
+    && cauIds9405Mu.has('bieu:8516#1')
+    && cauIds9405Mu.has('bieu:8531#1')
+    && cauIds9405Mu.has('bieu:7009#1')
+    && cauIds9405Mu.has('bieu:8303#1')
+    && goi9405Mu.vanTayGoi === cli9405Tmp.vanTayGoi
+    && goi9405Mu.vanTayGoi === cli9405SoanMuTmp.vanTayGoi
     && goi9405Mu.hoSoSanCo.daCo.dieuKien.length === 0
     && goi9405Mu.hoSoSanCo.nguong.length === 0
     && goi9405Mu.canhTranh === null
     && goi9405Mu.canhTranhTimThay.length > 0,
+  { vanTayMu: goi9405Mu.vanTayGoi, vanTayCliTmp: cli9405Tmp.vanTayGoi, vanTayCliSoanMuTmp: cli9405SoanMuTmp.vanTayGoi },
 );
 
 // ── 2. Kiểm khuôn chuẩn QT & máy kiểm nguyên văn trên chương nhỏ 13 trong os.tmpdir() ──────────────
@@ -284,6 +305,30 @@ try {
     'ca ngược doc-mot-lan: bỏ sót ứng viên timCgct trong <nhóm>.json bị bắt đỏ ở loiPhu',
     kq13ThieuCt.ok === false && kq13ThieuCt.loiPhu.some((e) => e.includes('ứng viên timCgct')),
     kq13ThieuCt.loiPhu,
+  );
+
+  // Ca ngược: vanTayGoi trong <nhóm>.json hoặc chuong.json lệch với gói dựng lại -> kiemDocMotLanChuong bắt đỏ ở loiTrich
+  const obj1302 = JSON.parse(fs.readFileSync(path.join(dml13, '1302.json'), 'utf8'));
+  const vanTayCu1302 = obj1302.nhom.vanTayGoi;
+  obj1302.nhom.vanTayGoi = '0'.repeat(64);
+  fs.writeFileSync(path.join(dml13, '1302.json'), `${JSON.stringify(obj1302, null, 2)}\n`, 'utf8');
+  const kq13LechVanTay = kiemDocMotLanChuong('13', { luat: LUAT_THAT, hoSo: hoSoTmp, L, bieuMeta, canhBaoCong: false });
+  ca(
+    'ca ngược doc-mot-lan: vanTayGoi ghi trong <nhóm>.json lệch gói dựng lại bị bắt đỏ ở loiTrich',
+    kq13LechVanTay.ok === false && kq13LechVanTay.loiTrich.some((e) => e.includes('1302.json: nhom.vanTayGoi') && e.includes('không khớp gói nhóm dựng lại')),
+    kq13LechVanTay.loiTrich,
+  );
+  obj1302.nhom.vanTayGoi = vanTayCu1302;
+  fs.writeFileSync(path.join(dml13, '1302.json'), `${JSON.stringify(obj1302, null, 2)}\n`, 'utf8');
+
+  const ch13Lech = JSON.parse(fs.readFileSync(path.join(dml13, 'chuong.json'), 'utf8'));
+  ch13Lech.vanTayGoi = 'f'.repeat(64);
+  fs.writeFileSync(path.join(dml13, 'chuong.json'), `${JSON.stringify(ch13Lech, null, 2)}\n`, 'utf8');
+  const kqCh13Lech = kiemDocMotLanChuong('13', { luat: LUAT_THAT, hoSo: hoSoTmp, L, bieuMeta, canhBaoCong: false });
+  ca(
+    'ca ngược doc-mot-lan: vanTayGoi ghi trong chuong.json lệch gói chương dựng lại bị bắt đỏ ở loiTrich',
+    kqCh13Lech.ok === false && kqCh13Lech.loiTrich.some((e) => e.includes('chuong.json: vanTayGoi') && e.includes('không khớp gói chương dựng lại')),
+    kqCh13Lech.loiTrich,
   );
 } finally {
   fs.rmSync(tmpRoot, { recursive: true, force: true });

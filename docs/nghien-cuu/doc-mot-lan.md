@@ -107,22 +107,22 @@ Sau khi QT chấm mù `40.16` v1 (`25 ĐÚNG · 11 CHƯA ĐỦ DỮ KIỆN · 2 
 |---|---|---|---:|---:|---:|---|
 | **Bước 0 — Đóng gói mù** | `goi-chuong(94)` + `6` `goi-nhom(9401..9406, --soan-mu)` (kèm nguyên văn `GIR 1–6`) | Tất định (`0` LLM) | `0` | `0 / 0` | `~6 s` | `7` gói luật đủ chữ + vân tay `sha256` (`0` `tb:`/`wco:`) |
 | **Bước 1 — Đọc Bậc 2 (`CHUONG`)** | `chuong.json` (Phần `XX`, Chương `94`) | `gemini-4-hydrogen-tiered-xhigh` | `1` | `66.328 / 65.004` | `267,99 s` (`~4,5 phút`) | `1` bản ghi `CHUONG` (`7` phạm vi, `16` loại trừ, `4` định nghĩa, `6` ưu tiên, `6` trục chính, `19` cạnh tranh, `6` `DIEM_MO_HO`) |
-| **Bước 2 — Đọc Bậc 4→6→8 (`6` nhóm)** | Đợt 1 (`94.05`, `94.01`, `94.03`) → Đợt 2 (`94.02`, `94.04`, `94.06`) | `gemini-4-hydrogen-tiered-xhigh` | `6` | `370.295 / 588.047` | `855,12 s` (`~14,3 phút`) | `6` tệp `9401..9406.json` (`457` bản ghi điều kiện/giải chồng/cạnh tranh sau chuẩn hoá Luật 1–4, `0` sót nút có tên, `0` sót `timCgct`, riêng `94.05` chạy `535,95 s` sinh `142.309` token ra với `0` lỗi trích) |
+| **Bước 2 — Đọc Bậc 4→6→8 (`6` nhóm)** | Đợt 1 (`94.05`, `94.01`, `94.03`) → Đợt 2 (`94.02`, `94.04`, `94.06`) | `gemini-4-hydrogen-tiered-xhigh` | `6` | `370.295 / 588.047` | `855,12 s` (`~14,3 phút`) | `6` tệp `9401..9406.json` (`516` bản ghi điều kiện/giải chồng/cạnh tranh sau chuẩn hoá Luật 1–5, `0` sót nút có tên, `0` sót `timCgct`, riêng `94.05` chạy `535,95 s` sinh `142.309` token ra với `0` lỗi trích) |
 | **Bước 3 — Phản biện 1 vòng** | Toàn bộ `77` `DIEM_MO_HO` của Chương 94 (chia `7` lô song song) | `gemini-4-argon-high` | `7` | `373.648 / 164.358` | `771,09 s` (`~12,9 phút`) | `77/77` phản biện độc lập kèm `chungMinh[]` nguyên văn (`0` lỗi trích câu nguồn) |
 | **Bước 4 — Chốt 1 vòng cuối** | Người đọc xem lại phản biện & chốt `77` `DIEM_MO_HO` (`7` lô song song) | `gemini-4-hydrogen-tiered-xhigh` | `7` | `436.308 / 411.477` | `597,00 s` (`~10,0 phút`) | Chốt `77` dòng `diem-mo-ho.jsonl` (`soVongPhanBien = 1`), đổi kết luận `9` điểm sang `CHƯA ĐỦ DỮ KIỆN` |
-| **Bước 5 — Hệ thống hoá & Kiểm máy** | `doc-mot-lan.mjs --dung-bang` & `--kiem --chuong 94` + sổ tay `94.md` | Tất định (`0` LLM) | `0` | `0 / 0` | `~5 s` | **`PASS 0 lỗi khuôn · 0 lỗi trích / 14.413 câu trích nguyên văn · 0 lỗi phủ`** (`54` mã 6 số: `24 ĐÚNG · 30 CHƯA ĐỦ DỮ KIỆN`; `127` mã 8 số: `45 ĐÚNG · 82 CHƯA ĐỦ DỮ KIỆN`) |
-| **Tổng toàn Chương 94** | **1 chương · 6 nhóm · 54 mã 6 số · 127 mã 8 số** | **`gemini-4-hydrogen-tiered-xhigh` + `gemini-4-argon-high`** | **`21` lượt đơn (`0` tool)** | **`1.246.579 / 1.228.886`** | **`2.490,19 s` (`~41,5 phút`)** | **`10` tệp kho `doc-mot-lan/94/` + `82` bẫy tra sai tại `docs/so-tay-tra-sai/94.md`** |
+| **Bước 5 — Hệ thống hoá & Kiểm máy** | `doc-mot-lan.mjs --dung-bang` & `--kiem --chuong 94` + sổ tay `94.md` | Tất định (`0` LLM) | `0` | `0 / 0` | `~5 s` | **`PASS 0 lỗi khuôn · 0 lỗi trích & khớp 100% vanTayGoi / 17.233 câu trích nguyên văn · 0 lỗi phủ`** (`54` mã 6 số: `24 ĐÚNG · 30 CHƯA ĐỦ DỮ KIỆN`; `127` mã 8 số: `45 ĐÚNG · 82 CHƯA ĐỦ DỮ KIỆN`) |
+| **Tổng toàn Chương 94** | **1 chương · 6 nhóm · 54 mã 6 số · 127 mã 8 số** | **`gemini-4-hydrogen-tiered-xhigh` + `gemini-4-argon-high`** | **`21` lượt đơn (`0` tool)** | **`1.246.579 / 1.228.886`** | **`2.490,19 s` (`~41,5 phút`)** | **`10` tệp kho `doc-mot-lan/94/` + `83` bẫy tra sai tại `docs/so-tay-tra-sai/94.md`** |
 
 #### Chi tiết thời gian và quy mô từng nhóm 4 số của Chương 94
 
-| Nhóm 4 số | Tên nhóm (tóm tắt) | Thời gian đọc Bậc 4→6→8 | Token vào / ra | Số điều kiện & giải chồng (`dieuKien` đã chuẩn hoá) | Số điểm mơ hồ cấp nhóm |
+| Nhóm 4 số | Tên nhóm (tóm tắt) | Thời gian đọc Bậc 4→6→8 | Token vào / ra | Số điều kiện & giải chồng (`dieuKien` đã chuẩn hoá Luật 1–5) | Số điểm mơ hồ cấp nhóm |
 |---|---|---:|---:|---:|---:|
-| **`94.01`** | Ghế ngồi (trừ nhóm `94.02`) và bộ phận | `412,54 s` | `69.697 / 104.172` | `114` (`81` `DIEU_KIEN` + `32` `GIAI_CHONG` + `1` `CANH_TRANH`) | `17` |
-| **`94.02`** | Đồ nội thất y tế, giải phẫu, nha khoa, thú y; ghế cắt tóc | `319,05 s` | `48.113 / 82.616` | `59` (`59` `DIEU_KIEN` + `0` `GIAI_CHONG` + `0` `CANH_TRANH`) | `11` |
-| **`94.03`** | Đồ nội thất khác và bộ phận | `373,40 s` | `73.466 / 99.503` | `83` (`71` `DIEU_KIEN` + `11` `GIAI_CHONG` + `1` `CANH_TRANH`) | `8` |
-| **`94.04`** | Khung đệm; bộ đồ giường, nệm, chăn, đệm ghế, gối | `310,02 s` | `49.608 / 77.315` | `31` (`29` `DIEU_KIEN` + `1` `GIAI_CHONG` + `1` `CANH_TRANH`) | `9` |
-| **`94.05`** | Đèn (`luminaires`) và bộ đèn; biển hiệu được chiếu sáng và bộ phận | `535,95 s` | `81.458 / 142.309` | `139` (`109` `DIEU_KIEN` + `29` `GIAI_CHONG` + `1` `CANH_TRANH`) | `18` |
-| **`94.06`** | Nhà lắp ghép | `319,07 s` | `47.953 / 82.132` | `31` (`25` `DIEU_KIEN` + `5` `GIAI_CHONG` + `1` `CANH_TRANH`) | `8` |
+| **`94.01`** | Ghế ngồi (trừ nhóm `94.02`) và bộ phận | `412,54 s` | `69.697 / 104.172` | `120` (`87` `DIEU_KIEN` + `32` `GIAI_CHONG` + `1` `CANH_TRANH`) | `17` |
+| **`94.02`** | Đồ nội thất y tế, giải phẫu, nha khoa, thú y; ghế cắt tóc | `319,05 s` | `48.113 / 82.616` | `60` (`60` `DIEU_KIEN` + `0` `GIAI_CHONG` + `0` `CANH_TRANH`) | `11` |
+| **`94.03`** | Đồ nội thất khác và bộ phận | `373,40 s` | `73.466 / 99.503` | `87` (`75` `DIEU_KIEN` + `11` `GIAI_CHONG` + `1` `CANH_TRANH`) | `8` |
+| **`94.04`** | Khung đệm; bộ đồ giường, nệm, chăn, đệm ghế, gối | `310,02 s` | `49.608 / 77.315` | `43` (`40` `DIEU_KIEN` + `2` `GIAI_CHONG` + `1` `CANH_TRANH`) | `9` |
+| **`94.05`** | Đèn (`luminaires`) và bộ đèn; biển hiệu được chiếu sáng và bộ phận | `535,95 s` | `81.458 / 142.309` | `161` (`126` `DIEU_KIEN` + `34` `GIAI_CHONG` + `1` `CANH_TRANH`) | `18` |
+| **`94.06`** | Nhà lắp ghép | `319,07 s` | `47.953 / 82.132` | `45` (`39` `DIEU_KIEN` + `5` `GIAI_CHONG` + `1` `CANH_TRANH`) | `8` |
 
 ### 2.3 Phân tích 77 `DIEM_MO_HO` của Chương 94 & Các ca đổi kết luận sau 1 vòng phản biện
 
@@ -151,16 +151,26 @@ Sau khi QT chấm mù `40.16` v1 (`25 ĐÚNG · 11 CHƯA ĐỦ DỮ KIỆN · 2 
 8. **`dmh:9405:13` (`bieu:940550` — Đèn đốt bằng dầu `9405.50.1` giao thoa với Đèn bão `9405.50.40` và Đèn thợ mỏ `9405.50.50`):** Chuyển từ `"CHỐT KÈM GIẢ ĐỊNH"` sang **`CHƯA ĐỦ DỮ KIỆN`** khi chưa biết chủng loại đèn cụ thể (đèn bão, đèn thợ mỏ đốt dầu hay đèn dầu nghi lễ/thông thường).
 9. **`dmh:9406:5` (`bieu:940620` — Khối mô-đun xây dựng khung chịu lực bằng thép nhưng vỏ tường/sàn/mái bằng vật liệu khác):** Bác bỏ giả định chỉ nhìn khung thép để chốt `9406.20`; bắt buộc hỏi vật liệu của cả kết cấu chịu lực lẫn bao che theo `pn:940620:ct:1` → đổi sang **`CHƯA ĐỦ DỮ KIỆN`**.
 
-### 2.4 Chẩn đoán Cổng 6–14 ở chế độ cảnh báo (Tham khảo theo `ADR-0011` mục 1)
+### 2.4 Kết quả QT chấm mù lần đọc đầu của `94.05` (`#2486`) & Nâng cấp Luật đọc 5
+
+1. **Kết quả QT chấm mù lần đọc đầu (`d00938a77`):**
+   - **Ca thử:** **`13 ĐÚNG · 28 CHƯA ĐỦ DỮ KIỆN · 0 SAI → dùng 41 lần thì 0 lần ra mã sai`**; toàn bộ **`12/12` ca ngoài nhóm** đều bị chặn đúng ở nút `9405`.
+   - **Đối chiếu bảng vàng `94.05`:** Điều kiện vàng (`105`) tăng từ `85 / 20` (bản cũ) lên **`94 / 11`**; cặp chồng (`39`) đạt `32 / 7`. Luật 1 (không chốt sớm) và Luật 2 (toàn bộ loại trừ ngoài nhóm đặt ở nút nhóm `9405`) ăn ngay từ lượt đọc đầu.
+2. **5 điểm hoàn thiện một lượt trên `94.05` + 3 nâng cấp hệ thống giữ lại cho mọi chương:**
+   - **Luật đọc 5 (Quy tắc 6 cho chữ `"khác"`):** Chữ `"khác"` ở `9405.41.20 / 9405.42.20 / 9405.49.20` (*"Đèn rọi khác"*) chỉ so với anh em cùng cấp 3 gạch đứng trên là *"Đèn pha"* (`.10`), không so chéo với nhánh `9405.1`; bổ sung `¬Đèn pha` + 3 cặp `GIAI_CHONG` `pha × rọi` và 2 cặp `.40 × .60` ở `9405.42` & `9405.49`.
+   - **Tách trục loại đối tượng và kiểu hàng (Luật đọc 3):** Tách `nhomHang9405` thành `loaiDoiTuong9405` (`daTri: false`: đèn và bộ đèn | biển hiệu được chiếu sáng | bộ phận) và `kieuDen` (`daTri: false`); mở đủ 2 vùng chồng bộ phận *"dùng cho đèn rọi"* × *"dùng cho đèn pha"* ở `9405.91` (`9405.91.20 × 9405.91.50`) và `9405.92` (`9405.92.20 × 9405.92.30`).
+   - **Giữ nguyên phạm vi chú giải chung & gói kèm tên nhóm đích (Luật đọc 4 + `goi-nhom.mjs` + `doc-mot-lan.mjs`):** Giữ nguyên câu chung Chú giải `1(f)` Chương 94, bổ sung đủ 100% các mục `a..m` của Chú giải 1 Chương 94 và điều kiện *"chưa được chi tiết hoặc ghi ở nơi khác"* trên `bieu:9405#1`; `goi-nhom.mjs` tự động gói kèm câu tên nhóm 4 số đích bị chú giải đẩy hàng sang (`59.08, 85.16, 85.31…`) và cố định `vanTayGoi`; `doc-mot-lan.mjs` đối chiếu trực tiếp `vanTayGoi` trong `chuong.json` và `<nhóm>.json` với gói dựng lại.
+
+### 2.5 Chẩn đoán Cổng 6–14 ở chế độ cảnh báo (Tham khảo theo `ADR-0011` mục 1)
 
 | Cổng tham khảo | Tên cổng | Số lỗi cảnh báo | Ghi chú chẩn đoán |
 |---:|---|---:|---|
 | **6** | `TÁCH` | **`0`** | 100% nút có tên có điều kiện nguyên tử hợp lệ trên đường đi |
-| **7** | `PHỦ` | `5` | Báo `HO_PHU` tự nhiên tại các nút cha không có dòng `"Loại khác"` (`chuong:94`, `9401`, `9403`, `94042`, `9405`) — đúng bản chất biểu thuế, không ép giả `tapDu` |
-| **8** | `CHỒNG` | **`0`** | `0` lỗi (`89` cặp cùng trục, `63` cặp giải chồng bằng `TRU`/`CHU_GIAI`, `133` cảnh báo giao thoa mở tương ứng `DIEM_MO_HO`) |
+| **7** | `PHỦ` | `4` | Báo `HO_PHU` tự nhiên tại các nút cha không có dòng `"Loại khác"` (`chuong:94`, `9401`, `9403`, `9405`; riêng `94042` đã chứng minh phủ kín) |
+| **8** | `CHỒNG` | **`0`** | `0` lỗi (`14` cặp chứng minh rời nhau `roiNhau`, `69` cặp giải chồng bằng `TRU`/`CHU_GIAI`, `120` cảnh báo giao thoa mở tương ứng `DIEM_MO_HO`) |
 | **9** | `HỎI` | **`0`** | 100% nhánh `"Loại khác"` sinh được câu hỏi tối thiểu sạch |
 | **10** | `DÒ` | **`0`** | `0` lỗi cấu trúc dò bảng anh em |
-| **11** | `MỞ` | **`0`** | `374` điều kiện phân loại sạch (`76` `DINH_NGHIA_LUAT`, `118` `MO_TA_HUONG_DAN`, `180` `NGHIA_THUONG`) |
+| **11** | `MỞ` | **`0`** | `427` điều kiện phân loại sạch (`86` `DINH_NGHIA_LUAT`, `150` `MO_TA_HUONG_DAN`, `191` `NGHIA_THUONG`) |
 | **12** | `BÙ` | `1` | Nhắc cấp `chuong:94` (5 nhóm có phạm vi mở/dư `9401, 9403, 9404, 9405, 9406` đều có bản ghi `CANH_TRANH`, `soCanhTranh = 5`; riêng `9402` không phải nhóm dư và đã phủ đủ `nhom.canhTranh` / `nhom.khongCanhTranh`) |
 | **13** | `PHỦ CẠNH TRANH` | **`0`** | Phủ đủ 100% ứng viên `timCgct` trên cả 6 nhóm `94.01–94.06` |
 | **14** | `ĐỦ CHUỖI` | **`0`** | **`0` lỗi chuỗi và `thieuBangChungSai = 0` trên toàn bộ `127/127` dòng 8 số** |

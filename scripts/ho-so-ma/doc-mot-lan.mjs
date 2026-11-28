@@ -676,6 +676,10 @@ export function kiemDocMotLanChuong(chuongArg, opts = {}) {
       if (tenChuongBieu && gon(chuongObj.ten) !== tenChuongBieu) {
         loiPhu.push(`chuong.json: ten "${gon(chuongObj.ten)}" không khớp nguyên văn biểu "${tenChuongBieu}"`);
       }
+      const goiChuong = dungGoiChuong(ch, { luat, L });
+      if (chuongObj.vanTayGoi !== goiChuong.vanTayGoi) {
+        loiTrich.push(`doc-mot-lan/${ch}/chuong.json: vanTayGoi "${chuongObj.vanTayGoi}" không khớp gói chương dựng lại "${goiChuong.vanTayGoi}"`);
+      }
     } catch { /* đã bắt ở loiKhuon */ }
   }
 
@@ -697,6 +701,9 @@ export function kiemDocMotLanChuong(chuongArg, opts = {}) {
     }
 
     const goiNhom = dungGoiNhom(ma4, { luat, hoSo, L, bieuMeta, soanMu: true });
+    if (nhomObj.nhom?.vanTayGoi !== goiNhom.vanTayGoi) {
+      loiTrich.push(`doc-mot-lan/${ch}/${ma4}.json: nhom.vanTayGoi "${nhomObj.nhom?.vanTayGoi}" không khớp gói nhóm dựng lại "${goiNhom.vanTayGoi}"`);
+    }
     const daXet = new Set([
       ...(nhomObj.nhom?.canhTranh || []),
       ...(nhomObj.nhom?.khongCanhTranh || []),

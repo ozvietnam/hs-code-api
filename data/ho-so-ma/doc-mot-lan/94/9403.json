@@ -6,7 +6,7 @@
     "chuong": "94",
     "ten": "Đồ nội thất khác và các bộ phận của chúng",
     "nguoiDoc": "gemini-4-hydrogen-tiered-xhigh",
-    "vanTayGoi": "d8c464f2c87ca273ef945b9e627b2cac4bcf9ae943bacaa7498e254e565dbac6",
+    "vanTayGoi": "826fa96795bc85e8dee301f91d4281c5c899ede38aee856b05aaed0085ebcd16",
     "canCu": [
       {
         "idCau": "bieu:9403#1",
@@ -1605,7 +1605,7 @@
       "moNguon": "chuong:94:cg:1:d#1",
       "moNguonVanTay": "54c9f3e33a25bb40ca0ed767086971e0c7577eb624f948e1c0af238a758beb45",
       "cauHoi": "Sản phẩm có phải bộ phận có công dụng chung (lò xo, ổ khóa, bản lề...) bằng kim loại cơ bản (Phần XV) hoặc hàng hóa tương tự bằng plastic (Chương 39) không?",
-      "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39)",
+      "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39), hoặc két an toàn thuộc nhóm 83.03;",
       "nguon": "chuong:94:cg:1:d#1",
       "vanTay": "54c9f3e33a25bb40ca0ed767086971e0c7577eb624f948e1c0af238a758beb45"
     },
@@ -1625,7 +1625,7 @@
       "moNguon": "chuong:94:cg:1:d#1",
       "moNguonVanTay": "54c9f3e33a25bb40ca0ed767086971e0c7577eb624f948e1c0af238a758beb45",
       "cauHoi": "Sản phẩm có phải két sắt / két an toàn có khả năng chống phá bằng khoan, cắt thuộc nhóm 83.03 không?",
-      "trich": "hoặc két an toàn thuộc nhóm 83.03;",
+      "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39), hoặc két an toàn thuộc nhóm 83.03;",
       "nguon": "chuong:94:cg:1:d#1",
       "vanTay": "54c9f3e33a25bb40ca0ed767086971e0c7577eb624f948e1c0af238a758beb45"
     },
@@ -1921,28 +1921,49 @@
       "vanTay": "11b9c7277f6c928754d622854780f336a5c24c11c8bb171c83c3803fd7c76ab0"
     },
     {
-      "id": "hs:bieu:9403:8226",
+      "id": "hs:bieu:9403:8252",
       "nut": "bieu:9403",
       "loai": "DIEU_KIEN",
       "ve": 0,
       "phu": true,
-      "kieu": "GIA_TRI",
-      "truc": "loai_hang_ngoai_9403",
-      "tap": [
-        "go_chuoi_hat_khuon_duc_4409",
-        "van_dam_bao_ranh_chu_u_4410",
-        "chan_dung_khong_tach_roi_may_8470_8472_8473",
-        "xe_day_tre_em_8715_xe_thuc_pham_nha_ga_8716",
-        "do_suu_tap_do_co_chuong_97"
-      ],
-      "daTri": false,
+      "kieu": "CO_KHONG",
       "mo": "MO_TA_HUONG_DAN",
-      "moNguon": "chuong:94:kq:22#1",
-      "moNguonVanTay": "ce42c667cd0859a91b4ca218e017497df1fea91dd9ae57954104f3f1d590b9b7",
-      "cauHoi": "Sản phẩm có phải gờ khuôn đúc (44.09), ván rãnh gấp chữ U (44.10), chân đứng không tách rời của máy 84.70–84.72 (84.73), xe đẩy trẻ em (87.15), xe đẩy ăn nhà ga (87.16), hoặc đồ sưu tập/đồ cổ (Chương 97) không?",
+      "moNguon": "bieu:4409#1",
+      "moNguonVanTay": "fe2e20b3468f945f992173abda9a04ca0597a6bc6b8e5840b28aabc7e53fdba2",
+      "cauHoi": "Mặt hàng có phải là gờ dạng chuỗi hạt hoặc khuôn đúc bằng gỗ thuộc nhóm 44.09 không?",
+      "trich": "(a) Gờ dạng chuỗi hạt và khuôn đúc, thuộc nhóm 44.09.",
+      "nguon": "chuong:94:kq:22#1",
+      "vanTay": "ce42c667cd0859a91b4ca218e017497df1fea91dd9ae57954104f3f1d590b9b7"
+    },
+    {
+      "id": "hs:bieu:9403:8253",
+      "nut": "bieu:9403",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "CO_KHONG",
+      "mo": "MO_TA_HUONG_DAN",
+      "moNguon": "bieu:4410#1",
+      "moNguonVanTay": "2afdbc0542d127ddd3698df2240bc2402ad7e0a0edddc13ba25348a402215603",
+      "cauHoi": "Mặt hàng có phải là miếng ván dăm bào rãnh phủ plastic dùng gấp chữ U làm bộ phận đồ nội thất thuộc nhóm 44.10 không?",
       "trich": "(b) Miếng ván dăm bào rãnh, được phủ plastic hoặc các vật liệu khác, dùng để cắt và gấp dọc theo vết cắt thành hình chữ “U” để tạo thành một bộ phận của đồ nội thất (ví dụ vách ngăn của ngăn kéo) (nhóm 44.10).",
       "nguon": "chuong:94:kq:23#1",
       "vanTay": "fe72f034e9f04d884dd25e4dcbe5d6876c42dce4d3559a64e486e5d7baabe8d2"
+    },
+    {
+      "id": "hs:bieu:9403:8254",
+      "nut": "bieu:9403",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "CO_KHONG",
+      "mo": "MO_TA_HUONG_DAN",
+      "moNguon": "chuong:94:kq:27#1",
+      "moNguonVanTay": "89949af5f24ccfa4e65d426737b6a9ed8f29c7f66c05a29e90b58a9cf747c436",
+      "cauHoi": "Mặt hàng có phải là đồ sưu tập hoặc đồ cổ thuộc Chương 97 không?",
+      "trich": "(f) Đồ sưu tập và đồ cổ (Chương 97).",
+      "nguon": "chuong:94:kq:27#1",
+      "vanTay": "89949af5f24ccfa4e65d426737b6a9ed8f29c7f66c05a29e90b58a9cf747c436"
     },
     {
       "id": "hs:bieu:9403:8227",
@@ -2728,18 +2749,17 @@
       "nut": "bieu:94038",
       "loai": "DIEU_KIEN",
       "ve": 1,
-      "phu": false,
+      "phu": true,
       "kieu": "GIA_TRI",
       "truc": "vat_lieu",
       "tap": [
-        "tre",
-        "song_may",
-        "lieu_gai",
-        "vat_lieu_khac"
+        "kim_loai",
+        "go",
+        "plastic"
       ],
       "daTri": true,
       "mo": "NGHIA_THUONG",
-      "cauHoi": "Đồ nội thất này có cấu tạo bằng vật liệu khác ngoài kim loại, gỗ, plastic (kể cả tre, song/mây, liễu gai, thủy tinh, đá, gốm, sứ, da...) không?",
+      "cauHoi": "Đồ nội thất này có cấu tạo chủ yếu bằng kim loại, bằng gỗ hoặc bằng plastic (thuộc các phân nhóm anh em đứng trên 9403.10–9403.70) không?",
       "trich": "bằng vật liệu khác, kể cả mây, liễu gai, tre hoặc các vật liệu tương tự",
       "nguon": "bieu:94038#1",
       "vanTay": "f3a64245ff6d34df9d186a48f6189fe55032c7e6a683ed27654be63e474db85c"
@@ -2911,6 +2931,36 @@
       "trich": "Của phân nhóm 9403.70.10",
       "nguon": "bieu:94039910#1",
       "vanTay": "c2fc760e70a89a1871ab6dd9c0d22d7eb7cf2cdb0563c5d48b2ff100e8df1e90"
+    },
+    {
+      "id": "hs:bieu:9403:8250",
+      "nut": "bieu:9403",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "CO_KHONG",
+      "mo": "DINH_NGHIA_LUAT",
+      "moNguon": "chuong:94:cg:1:c#1",
+      "moNguonVanTay": "c44681ee19003606f0139ca249d9ec2e15c81b9382b2e2cbf24b4cbe4ceb592c",
+      "cauHoi": "Sản phẩm có phải là mặt hàng thuộc Chương 71 (theo Chú giải 1(c) Chương 94) không?",
+      "trich": "(c) Các mặt hàng thuộc Chương 71;",
+      "nguon": "chuong:94:cg:1:c#1",
+      "vanTay": "c44681ee19003606f0139ca249d9ec2e15c81b9382b2e2cbf24b4cbe4ceb592c"
+    },
+    {
+      "id": "hs:bieu:9403:8251",
+      "nut": "bieu:9403",
+      "loai": "DIEU_KIEN",
+      "ve": 0,
+      "phu": true,
+      "kieu": "CO_KHONG",
+      "mo": "DINH_NGHIA_LUAT",
+      "moNguon": "chuong:94:cg:1:f#1",
+      "moNguonVanTay": "190c059b743a70209a1b61474c3a234942a3af7263b1bc706e7eb0ec54a72406",
+      "cauHoi": "Sản phẩm có phải là đèn hoặc nguồn sáng và bộ phận của chúng thuộc Chương 85 (theo Chú giải 1(f) Chương 94) không?",
+      "trich": "(f) Đèn hoặc nguồn sáng và bộ phận của chúng thuộc Chương 85;",
+      "nguon": "chuong:94:cg:1:f#1",
+      "vanTay": "190c059b743a70209a1b61474c3a234942a3af7263b1bc706e7eb0ec54a72406"
     },
     {
       "id": "hs:bieu:9403:8238",
@@ -3353,7 +3403,11 @@
         "hs:bieu:9403:8223",
         "hs:bieu:9403:8224",
         "hs:bieu:9403:8225",
-        "hs:bieu:9403:8226",
+        "hs:bieu:9403:8252",
+        "hs:bieu:9403:8253",
+        "hs:bieu:9403:8254",
+        "hs:bieu:9403:8250",
+        "hs:bieu:9403:8251",
         "hs:bieu:940310:8201",
         "hs:bieu:940310:8202",
         "hs:bieu:940310:8203"
@@ -3377,7 +3431,7 @@
         {
           "anhEm": "bieu:9405",
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "anhEm": "bieu:9406",
@@ -3468,11 +3522,7 @@
         },
         {
           "idCau": "chuong:94:cg:1:d#1",
-          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39)"
-        },
-        {
-          "idCau": "chuong:94:cg:1:d#1",
-          "trich": "hoặc két an toàn thuộc nhóm 83.03;"
+          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39), hoặc két an toàn thuộc nhóm 83.03;"
         },
         {
           "idCau": "chuong:94:cg:1:e#1",
@@ -3531,8 +3581,24 @@
           "trich": "(b) Cầu thang, bậc thang, giàn giáo, bàn thợ mộc và các loại tương tự không có đặc điểm của đồ nội thất;"
         },
         {
+          "idCau": "chuong:94:kq:22#1",
+          "trich": "(a) Gờ dạng chuỗi hạt và khuôn đúc, thuộc nhóm 44.09."
+        },
+        {
           "idCau": "chuong:94:kq:23#1",
           "trich": "(b) Miếng ván dăm bào rãnh, được phủ plastic hoặc các vật liệu khác, dùng để cắt và gấp dọc theo vết cắt thành hình chữ “U” để tạo thành một bộ phận của đồ nội thất (ví dụ vách ngăn của ngăn kéo) (nhóm 44.10)."
+        },
+        {
+          "idCau": "chuong:94:kq:27#1",
+          "trich": "(f) Đồ sưu tập và đồ cổ (Chương 97)."
+        },
+        {
+          "idCau": "chuong:94:cg:1:c#1",
+          "trich": "(c) Các mặt hàng thuộc Chương 71;"
+        },
+        {
+          "idCau": "chuong:94:cg:1:f#1",
+          "trich": "(f) Đèn hoặc nguồn sáng và bộ phận của chúng thuộc Chương 85;"
         },
         {
           "idCau": "bieu:9401#1",
@@ -3548,7 +3614,7 @@
         },
         {
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "idCau": "bieu:9406#1",
@@ -3634,7 +3700,11 @@
         "hs:bieu:9403:8223",
         "hs:bieu:9403:8224",
         "hs:bieu:9403:8225",
-        "hs:bieu:9403:8226",
+        "hs:bieu:9403:8252",
+        "hs:bieu:9403:8253",
+        "hs:bieu:9403:8254",
+        "hs:bieu:9403:8250",
+        "hs:bieu:9403:8251",
         "hs:bieu:940320:8201",
         "hs:bieu:940320:8202"
       ],
@@ -3657,7 +3727,7 @@
         {
           "anhEm": "bieu:9405",
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "anhEm": "bieu:9406",
@@ -3748,11 +3818,7 @@
         },
         {
           "idCau": "chuong:94:cg:1:d#1",
-          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39)"
-        },
-        {
-          "idCau": "chuong:94:cg:1:d#1",
-          "trich": "hoặc két an toàn thuộc nhóm 83.03;"
+          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39), hoặc két an toàn thuộc nhóm 83.03;"
         },
         {
           "idCau": "chuong:94:cg:1:e#1",
@@ -3811,8 +3877,24 @@
           "trich": "(b) Cầu thang, bậc thang, giàn giáo, bàn thợ mộc và các loại tương tự không có đặc điểm của đồ nội thất;"
         },
         {
+          "idCau": "chuong:94:kq:22#1",
+          "trich": "(a) Gờ dạng chuỗi hạt và khuôn đúc, thuộc nhóm 44.09."
+        },
+        {
           "idCau": "chuong:94:kq:23#1",
           "trich": "(b) Miếng ván dăm bào rãnh, được phủ plastic hoặc các vật liệu khác, dùng để cắt và gấp dọc theo vết cắt thành hình chữ “U” để tạo thành một bộ phận của đồ nội thất (ví dụ vách ngăn của ngăn kéo) (nhóm 44.10)."
+        },
+        {
+          "idCau": "chuong:94:kq:27#1",
+          "trich": "(f) Đồ sưu tập và đồ cổ (Chương 97)."
+        },
+        {
+          "idCau": "chuong:94:cg:1:c#1",
+          "trich": "(c) Các mặt hàng thuộc Chương 71;"
+        },
+        {
+          "idCau": "chuong:94:cg:1:f#1",
+          "trich": "(f) Đèn hoặc nguồn sáng và bộ phận của chúng thuộc Chương 85;"
         },
         {
           "idCau": "bieu:9401#1",
@@ -3828,7 +3910,7 @@
         },
         {
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "idCau": "bieu:9406#1",
@@ -3910,7 +3992,11 @@
         "hs:bieu:9403:8223",
         "hs:bieu:9403:8224",
         "hs:bieu:9403:8225",
-        "hs:bieu:9403:8226",
+        "hs:bieu:9403:8252",
+        "hs:bieu:9403:8253",
+        "hs:bieu:9403:8254",
+        "hs:bieu:9403:8250",
+        "hs:bieu:9403:8251",
         "hs:bieu:940330:8201",
         "hs:bieu:940330:8202",
         "hs:bieu:940330:8203"
@@ -3934,7 +4020,7 @@
         {
           "anhEm": "bieu:9405",
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "anhEm": "bieu:9406",
@@ -4025,11 +4111,7 @@
         },
         {
           "idCau": "chuong:94:cg:1:d#1",
-          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39)"
-        },
-        {
-          "idCau": "chuong:94:cg:1:d#1",
-          "trich": "hoặc két an toàn thuộc nhóm 83.03;"
+          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39), hoặc két an toàn thuộc nhóm 83.03;"
         },
         {
           "idCau": "chuong:94:cg:1:e#1",
@@ -4088,8 +4170,24 @@
           "trich": "(b) Cầu thang, bậc thang, giàn giáo, bàn thợ mộc và các loại tương tự không có đặc điểm của đồ nội thất;"
         },
         {
+          "idCau": "chuong:94:kq:22#1",
+          "trich": "(a) Gờ dạng chuỗi hạt và khuôn đúc, thuộc nhóm 44.09."
+        },
+        {
           "idCau": "chuong:94:kq:23#1",
           "trich": "(b) Miếng ván dăm bào rãnh, được phủ plastic hoặc các vật liệu khác, dùng để cắt và gấp dọc theo vết cắt thành hình chữ “U” để tạo thành một bộ phận của đồ nội thất (ví dụ vách ngăn của ngăn kéo) (nhóm 44.10)."
+        },
+        {
+          "idCau": "chuong:94:kq:27#1",
+          "trich": "(f) Đồ sưu tập và đồ cổ (Chương 97)."
+        },
+        {
+          "idCau": "chuong:94:cg:1:c#1",
+          "trich": "(c) Các mặt hàng thuộc Chương 71;"
+        },
+        {
+          "idCau": "chuong:94:cg:1:f#1",
+          "trich": "(f) Đèn hoặc nguồn sáng và bộ phận của chúng thuộc Chương 85;"
         },
         {
           "idCau": "bieu:9401#1",
@@ -4105,7 +4203,7 @@
         },
         {
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "idCau": "bieu:9406#1",
@@ -4191,7 +4289,11 @@
         "hs:bieu:9403:8223",
         "hs:bieu:9403:8224",
         "hs:bieu:9403:8225",
-        "hs:bieu:9403:8226",
+        "hs:bieu:9403:8252",
+        "hs:bieu:9403:8253",
+        "hs:bieu:9403:8254",
+        "hs:bieu:9403:8250",
+        "hs:bieu:9403:8251",
         "hs:bieu:940340:8201",
         "hs:bieu:940340:8202",
         "hs:bieu:940340:8203"
@@ -4215,7 +4317,7 @@
         {
           "anhEm": "bieu:9405",
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "anhEm": "bieu:9406",
@@ -4306,11 +4408,7 @@
         },
         {
           "idCau": "chuong:94:cg:1:d#1",
-          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39)"
-        },
-        {
-          "idCau": "chuong:94:cg:1:d#1",
-          "trich": "hoặc két an toàn thuộc nhóm 83.03;"
+          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39), hoặc két an toàn thuộc nhóm 83.03;"
         },
         {
           "idCau": "chuong:94:cg:1:e#1",
@@ -4369,8 +4467,24 @@
           "trich": "(b) Cầu thang, bậc thang, giàn giáo, bàn thợ mộc và các loại tương tự không có đặc điểm của đồ nội thất;"
         },
         {
+          "idCau": "chuong:94:kq:22#1",
+          "trich": "(a) Gờ dạng chuỗi hạt và khuôn đúc, thuộc nhóm 44.09."
+        },
+        {
           "idCau": "chuong:94:kq:23#1",
           "trich": "(b) Miếng ván dăm bào rãnh, được phủ plastic hoặc các vật liệu khác, dùng để cắt và gấp dọc theo vết cắt thành hình chữ “U” để tạo thành một bộ phận của đồ nội thất (ví dụ vách ngăn của ngăn kéo) (nhóm 44.10)."
+        },
+        {
+          "idCau": "chuong:94:kq:27#1",
+          "trich": "(f) Đồ sưu tập và đồ cổ (Chương 97)."
+        },
+        {
+          "idCau": "chuong:94:cg:1:c#1",
+          "trich": "(c) Các mặt hàng thuộc Chương 71;"
+        },
+        {
+          "idCau": "chuong:94:cg:1:f#1",
+          "trich": "(f) Đèn hoặc nguồn sáng và bộ phận của chúng thuộc Chương 85;"
         },
         {
           "idCau": "bieu:9401#1",
@@ -4386,7 +4500,7 @@
         },
         {
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "idCau": "bieu:9406#1",
@@ -4472,7 +4586,11 @@
         "hs:bieu:9403:8223",
         "hs:bieu:9403:8224",
         "hs:bieu:9403:8225",
-        "hs:bieu:9403:8226",
+        "hs:bieu:9403:8252",
+        "hs:bieu:9403:8253",
+        "hs:bieu:9403:8254",
+        "hs:bieu:9403:8250",
+        "hs:bieu:9403:8251",
         "hs:bieu:940350:8201",
         "hs:bieu:940350:8202",
         "hs:bieu:940350:8203"
@@ -4496,7 +4614,7 @@
         {
           "anhEm": "bieu:9405",
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "anhEm": "bieu:9406",
@@ -4587,11 +4705,7 @@
         },
         {
           "idCau": "chuong:94:cg:1:d#1",
-          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39)"
-        },
-        {
-          "idCau": "chuong:94:cg:1:d#1",
-          "trich": "hoặc két an toàn thuộc nhóm 83.03;"
+          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39), hoặc két an toàn thuộc nhóm 83.03;"
         },
         {
           "idCau": "chuong:94:cg:1:e#1",
@@ -4650,8 +4764,24 @@
           "trich": "(b) Cầu thang, bậc thang, giàn giáo, bàn thợ mộc và các loại tương tự không có đặc điểm của đồ nội thất;"
         },
         {
+          "idCau": "chuong:94:kq:22#1",
+          "trich": "(a) Gờ dạng chuỗi hạt và khuôn đúc, thuộc nhóm 44.09."
+        },
+        {
           "idCau": "chuong:94:kq:23#1",
           "trich": "(b) Miếng ván dăm bào rãnh, được phủ plastic hoặc các vật liệu khác, dùng để cắt và gấp dọc theo vết cắt thành hình chữ “U” để tạo thành một bộ phận của đồ nội thất (ví dụ vách ngăn của ngăn kéo) (nhóm 44.10)."
+        },
+        {
+          "idCau": "chuong:94:kq:27#1",
+          "trich": "(f) Đồ sưu tập và đồ cổ (Chương 97)."
+        },
+        {
+          "idCau": "chuong:94:cg:1:c#1",
+          "trich": "(c) Các mặt hàng thuộc Chương 71;"
+        },
+        {
+          "idCau": "chuong:94:cg:1:f#1",
+          "trich": "(f) Đèn hoặc nguồn sáng và bộ phận của chúng thuộc Chương 85;"
         },
         {
           "idCau": "bieu:9401#1",
@@ -4667,7 +4797,7 @@
         },
         {
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "idCau": "bieu:9406#1",
@@ -4753,7 +4883,11 @@
         "hs:bieu:9403:8223",
         "hs:bieu:9403:8224",
         "hs:bieu:9403:8225",
-        "hs:bieu:9403:8226",
+        "hs:bieu:9403:8252",
+        "hs:bieu:9403:8253",
+        "hs:bieu:9403:8254",
+        "hs:bieu:9403:8250",
+        "hs:bieu:9403:8251",
         "hs:bieu:940360:8201",
         "hs:bieu:940360:8202"
       ],
@@ -4776,7 +4910,7 @@
         {
           "anhEm": "bieu:9405",
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "anhEm": "bieu:9406",
@@ -4867,11 +5001,7 @@
         },
         {
           "idCau": "chuong:94:cg:1:d#1",
-          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39)"
-        },
-        {
-          "idCau": "chuong:94:cg:1:d#1",
-          "trich": "hoặc két an toàn thuộc nhóm 83.03;"
+          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39), hoặc két an toàn thuộc nhóm 83.03;"
         },
         {
           "idCau": "chuong:94:cg:1:e#1",
@@ -4930,8 +5060,24 @@
           "trich": "(b) Cầu thang, bậc thang, giàn giáo, bàn thợ mộc và các loại tương tự không có đặc điểm của đồ nội thất;"
         },
         {
+          "idCau": "chuong:94:kq:22#1",
+          "trich": "(a) Gờ dạng chuỗi hạt và khuôn đúc, thuộc nhóm 44.09."
+        },
+        {
           "idCau": "chuong:94:kq:23#1",
           "trich": "(b) Miếng ván dăm bào rãnh, được phủ plastic hoặc các vật liệu khác, dùng để cắt và gấp dọc theo vết cắt thành hình chữ “U” để tạo thành một bộ phận của đồ nội thất (ví dụ vách ngăn của ngăn kéo) (nhóm 44.10)."
+        },
+        {
+          "idCau": "chuong:94:kq:27#1",
+          "trich": "(f) Đồ sưu tập và đồ cổ (Chương 97)."
+        },
+        {
+          "idCau": "chuong:94:cg:1:c#1",
+          "trich": "(c) Các mặt hàng thuộc Chương 71;"
+        },
+        {
+          "idCau": "chuong:94:cg:1:f#1",
+          "trich": "(f) Đèn hoặc nguồn sáng và bộ phận của chúng thuộc Chương 85;"
         },
         {
           "idCau": "bieu:9401#1",
@@ -4947,7 +5093,7 @@
         },
         {
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "idCau": "bieu:9406#1",
@@ -5029,7 +5175,11 @@
         "hs:bieu:9403:8223",
         "hs:bieu:9403:8224",
         "hs:bieu:9403:8225",
-        "hs:bieu:9403:8226",
+        "hs:bieu:9403:8252",
+        "hs:bieu:9403:8253",
+        "hs:bieu:9403:8254",
+        "hs:bieu:9403:8250",
+        "hs:bieu:9403:8251",
         "hs:bieu:940370:8201",
         "hs:bieu:940370:8202"
       ],
@@ -5052,7 +5202,7 @@
         {
           "anhEm": "bieu:9405",
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "anhEm": "bieu:9406",
@@ -5143,11 +5293,7 @@
         },
         {
           "idCau": "chuong:94:cg:1:d#1",
-          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39)"
-        },
-        {
-          "idCau": "chuong:94:cg:1:d#1",
-          "trich": "hoặc két an toàn thuộc nhóm 83.03;"
+          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39), hoặc két an toàn thuộc nhóm 83.03;"
         },
         {
           "idCau": "chuong:94:cg:1:e#1",
@@ -5206,8 +5352,24 @@
           "trich": "(b) Cầu thang, bậc thang, giàn giáo, bàn thợ mộc và các loại tương tự không có đặc điểm của đồ nội thất;"
         },
         {
+          "idCau": "chuong:94:kq:22#1",
+          "trich": "(a) Gờ dạng chuỗi hạt và khuôn đúc, thuộc nhóm 44.09."
+        },
+        {
           "idCau": "chuong:94:kq:23#1",
           "trich": "(b) Miếng ván dăm bào rãnh, được phủ plastic hoặc các vật liệu khác, dùng để cắt và gấp dọc theo vết cắt thành hình chữ “U” để tạo thành một bộ phận của đồ nội thất (ví dụ vách ngăn của ngăn kéo) (nhóm 44.10)."
+        },
+        {
+          "idCau": "chuong:94:kq:27#1",
+          "trich": "(f) Đồ sưu tập và đồ cổ (Chương 97)."
+        },
+        {
+          "idCau": "chuong:94:cg:1:c#1",
+          "trich": "(c) Các mặt hàng thuộc Chương 71;"
+        },
+        {
+          "idCau": "chuong:94:cg:1:f#1",
+          "trich": "(f) Đèn hoặc nguồn sáng và bộ phận của chúng thuộc Chương 85;"
         },
         {
           "idCau": "bieu:9401#1",
@@ -5223,7 +5385,7 @@
         },
         {
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "idCau": "bieu:9406#1",
@@ -5278,7 +5440,7 @@
       "ten": "- - Bằng tre",
       "laLoaiKhac": false,
       "ketQua": "ĐÚNG",
-      "cauHoi": "Mặt hàng có phải là đồ nội thất nguyên chiếc (kể cả dạng tháo rời trình bày đồng bộ), không phải bộ phận rời không? Đồ nội thất này có cấu tạo bằng vật liệu khác ngoài kim loại, gỗ, plastic (kể cả tre, song/mây, liễu gai, thủy tinh, đá, gốm, sứ, da...) không? Đồ nội thất này có cấu tạo bằng tre (hoặc tre tạo đặc tính cơ bản) không?",
+      "cauHoi": "Mặt hàng có phải là đồ nội thất nguyên chiếc (kể cả dạng tháo rời trình bày đồng bộ), không phải bộ phận rời không? Đồ nội thất này có cấu tạo chủ yếu bằng kim loại, bằng gỗ hoặc bằng plastic (thuộc các phân nhóm anh em đứng trên 9403.10–9403.70) không? Đồ nội thất này có cấu tạo bằng tre (hoặc tre tạo đặc tính cơ bản) không?",
       "dieuKienIds": [
         "hs:bieu:9403:8201",
         "hs:bieu:9403:8202",
@@ -5305,7 +5467,11 @@
         "hs:bieu:9403:8223",
         "hs:bieu:9403:8224",
         "hs:bieu:9403:8225",
-        "hs:bieu:9403:8226",
+        "hs:bieu:9403:8252",
+        "hs:bieu:9403:8253",
+        "hs:bieu:9403:8254",
+        "hs:bieu:9403:8250",
+        "hs:bieu:9403:8251",
         "hs:bieu:94038:8201",
         "hs:bieu:94038:8202",
         "hs:bieu:940382:8201"
@@ -5329,7 +5495,7 @@
         {
           "anhEm": "bieu:9405",
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "anhEm": "bieu:9406",
@@ -5430,11 +5596,7 @@
         },
         {
           "idCau": "chuong:94:cg:1:d#1",
-          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39)"
-        },
-        {
-          "idCau": "chuong:94:cg:1:d#1",
-          "trich": "hoặc két an toàn thuộc nhóm 83.03;"
+          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39), hoặc két an toàn thuộc nhóm 83.03;"
         },
         {
           "idCau": "chuong:94:cg:1:e#1",
@@ -5493,8 +5655,24 @@
           "trich": "(b) Cầu thang, bậc thang, giàn giáo, bàn thợ mộc và các loại tương tự không có đặc điểm của đồ nội thất;"
         },
         {
+          "idCau": "chuong:94:kq:22#1",
+          "trich": "(a) Gờ dạng chuỗi hạt và khuôn đúc, thuộc nhóm 44.09."
+        },
+        {
           "idCau": "chuong:94:kq:23#1",
           "trich": "(b) Miếng ván dăm bào rãnh, được phủ plastic hoặc các vật liệu khác, dùng để cắt và gấp dọc theo vết cắt thành hình chữ “U” để tạo thành một bộ phận của đồ nội thất (ví dụ vách ngăn của ngăn kéo) (nhóm 44.10)."
+        },
+        {
+          "idCau": "chuong:94:kq:27#1",
+          "trich": "(f) Đồ sưu tập và đồ cổ (Chương 97)."
+        },
+        {
+          "idCau": "chuong:94:cg:1:c#1",
+          "trich": "(c) Các mặt hàng thuộc Chương 71;"
+        },
+        {
+          "idCau": "chuong:94:cg:1:f#1",
+          "trich": "(f) Đèn hoặc nguồn sáng và bộ phận của chúng thuộc Chương 85;"
         },
         {
           "idCau": "bieu:9401#1",
@@ -5510,7 +5688,7 @@
         },
         {
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "idCau": "bieu:9406#1",
@@ -5573,7 +5751,7 @@
       "ten": "- - Bằng song, mây",
       "laLoaiKhac": false,
       "ketQua": "ĐÚNG",
-      "cauHoi": "Mặt hàng có phải là đồ nội thất nguyên chiếc (kể cả dạng tháo rời trình bày đồng bộ), không phải bộ phận rời không? Đồ nội thất này có cấu tạo bằng vật liệu khác ngoài kim loại, gỗ, plastic (kể cả tre, song/mây, liễu gai, thủy tinh, đá, gốm, sứ, da...) không? Đồ nội thất này có cấu tạo bằng song, mây (hoặc song, mây tạo đặc tính cơ bản) không?",
+      "cauHoi": "Mặt hàng có phải là đồ nội thất nguyên chiếc (kể cả dạng tháo rời trình bày đồng bộ), không phải bộ phận rời không? Đồ nội thất này có cấu tạo chủ yếu bằng kim loại, bằng gỗ hoặc bằng plastic (thuộc các phân nhóm anh em đứng trên 9403.10–9403.70) không? Đồ nội thất này có cấu tạo bằng song, mây (hoặc song, mây tạo đặc tính cơ bản) không?",
       "dieuKienIds": [
         "hs:bieu:9403:8201",
         "hs:bieu:9403:8202",
@@ -5600,7 +5778,11 @@
         "hs:bieu:9403:8223",
         "hs:bieu:9403:8224",
         "hs:bieu:9403:8225",
-        "hs:bieu:9403:8226",
+        "hs:bieu:9403:8252",
+        "hs:bieu:9403:8253",
+        "hs:bieu:9403:8254",
+        "hs:bieu:9403:8250",
+        "hs:bieu:9403:8251",
         "hs:bieu:94038:8201",
         "hs:bieu:94038:8202",
         "hs:bieu:940383:8201"
@@ -5624,7 +5806,7 @@
         {
           "anhEm": "bieu:9405",
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "anhEm": "bieu:9406",
@@ -5725,11 +5907,7 @@
         },
         {
           "idCau": "chuong:94:cg:1:d#1",
-          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39)"
-        },
-        {
-          "idCau": "chuong:94:cg:1:d#1",
-          "trich": "hoặc két an toàn thuộc nhóm 83.03;"
+          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39), hoặc két an toàn thuộc nhóm 83.03;"
         },
         {
           "idCau": "chuong:94:cg:1:e#1",
@@ -5788,8 +5966,24 @@
           "trich": "(b) Cầu thang, bậc thang, giàn giáo, bàn thợ mộc và các loại tương tự không có đặc điểm của đồ nội thất;"
         },
         {
+          "idCau": "chuong:94:kq:22#1",
+          "trich": "(a) Gờ dạng chuỗi hạt và khuôn đúc, thuộc nhóm 44.09."
+        },
+        {
           "idCau": "chuong:94:kq:23#1",
           "trich": "(b) Miếng ván dăm bào rãnh, được phủ plastic hoặc các vật liệu khác, dùng để cắt và gấp dọc theo vết cắt thành hình chữ “U” để tạo thành một bộ phận của đồ nội thất (ví dụ vách ngăn của ngăn kéo) (nhóm 44.10)."
+        },
+        {
+          "idCau": "chuong:94:kq:27#1",
+          "trich": "(f) Đồ sưu tập và đồ cổ (Chương 97)."
+        },
+        {
+          "idCau": "chuong:94:cg:1:c#1",
+          "trich": "(c) Các mặt hàng thuộc Chương 71;"
+        },
+        {
+          "idCau": "chuong:94:cg:1:f#1",
+          "trich": "(f) Đèn hoặc nguồn sáng và bộ phận của chúng thuộc Chương 85;"
         },
         {
           "idCau": "bieu:9401#1",
@@ -5805,7 +5999,7 @@
         },
         {
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "idCau": "bieu:9406#1",
@@ -5868,7 +6062,7 @@
       "ten": "- - Loại khác:",
       "laLoaiKhac": true,
       "ketQua": "ĐÚNG",
-      "cauHoi": "Mặt hàng có phải là đồ nội thất nguyên chiếc (kể cả dạng tháo rời trình bày đồng bộ), không phải bộ phận rời không? Đồ nội thất này có cấu tạo bằng vật liệu khác ngoài kim loại, gỗ, plastic (kể cả tre, song/mây, liễu gai, thủy tinh, đá, gốm, sứ, da...) không? Đồ nội thất này có cấu tạo bằng tre (hoặc tre tạo đặc tính cơ bản) không? Đồ nội thất này có cấu tạo bằng song, mây (hoặc song, mây tạo đặc tính cơ bản) không?",
+      "cauHoi": "Mặt hàng có phải là đồ nội thất nguyên chiếc (kể cả dạng tháo rời trình bày đồng bộ), không phải bộ phận rời không? Đồ nội thất này có cấu tạo chủ yếu bằng kim loại, bằng gỗ hoặc bằng plastic (thuộc các phân nhóm anh em đứng trên 9403.10–9403.70) không? Đồ nội thất này có cấu tạo bằng tre (hoặc tre tạo đặc tính cơ bản) không? Đồ nội thất này có cấu tạo bằng song, mây (hoặc song, mây tạo đặc tính cơ bản) không?",
       "dieuKienIds": [
         "hs:bieu:9403:8201",
         "hs:bieu:9403:8202",
@@ -5895,7 +6089,11 @@
         "hs:bieu:9403:8223",
         "hs:bieu:9403:8224",
         "hs:bieu:9403:8225",
-        "hs:bieu:9403:8226",
+        "hs:bieu:9403:8252",
+        "hs:bieu:9403:8253",
+        "hs:bieu:9403:8254",
+        "hs:bieu:9403:8250",
+        "hs:bieu:9403:8251",
         "hs:bieu:94038:8201",
         "hs:bieu:94038:8202"
       ],
@@ -5918,7 +6116,7 @@
         {
           "anhEm": "bieu:9405",
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "anhEm": "bieu:9406",
@@ -6019,11 +6217,7 @@
         },
         {
           "idCau": "chuong:94:cg:1:d#1",
-          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39)"
-        },
-        {
-          "idCau": "chuong:94:cg:1:d#1",
-          "trich": "hoặc két an toàn thuộc nhóm 83.03;"
+          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39), hoặc két an toàn thuộc nhóm 83.03;"
         },
         {
           "idCau": "chuong:94:cg:1:e#1",
@@ -6082,8 +6276,24 @@
           "trich": "(b) Cầu thang, bậc thang, giàn giáo, bàn thợ mộc và các loại tương tự không có đặc điểm của đồ nội thất;"
         },
         {
+          "idCau": "chuong:94:kq:22#1",
+          "trich": "(a) Gờ dạng chuỗi hạt và khuôn đúc, thuộc nhóm 44.09."
+        },
+        {
           "idCau": "chuong:94:kq:23#1",
           "trich": "(b) Miếng ván dăm bào rãnh, được phủ plastic hoặc các vật liệu khác, dùng để cắt và gấp dọc theo vết cắt thành hình chữ “U” để tạo thành một bộ phận của đồ nội thất (ví dụ vách ngăn của ngăn kéo) (nhóm 44.10)."
+        },
+        {
+          "idCau": "chuong:94:kq:27#1",
+          "trich": "(f) Đồ sưu tập và đồ cổ (Chương 97)."
+        },
+        {
+          "idCau": "chuong:94:cg:1:c#1",
+          "trich": "(c) Các mặt hàng thuộc Chương 71;"
+        },
+        {
+          "idCau": "chuong:94:cg:1:f#1",
+          "trich": "(f) Đèn hoặc nguồn sáng và bộ phận của chúng thuộc Chương 85;"
         },
         {
           "idCau": "bieu:9401#1",
@@ -6099,7 +6309,7 @@
         },
         {
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "idCau": "bieu:9406#1",
@@ -6189,7 +6399,11 @@
         "hs:bieu:9403:8223",
         "hs:bieu:9403:8224",
         "hs:bieu:9403:8225",
-        "hs:bieu:9403:8226",
+        "hs:bieu:9403:8252",
+        "hs:bieu:9403:8253",
+        "hs:bieu:9403:8254",
+        "hs:bieu:9403:8250",
+        "hs:bieu:9403:8251",
         "hs:bieu:94039:8201",
         "hs:bieu:940391:8201"
       ],
@@ -6212,7 +6426,7 @@
         {
           "anhEm": "bieu:9405",
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "anhEm": "bieu:9406",
@@ -6308,11 +6522,7 @@
         },
         {
           "idCau": "chuong:94:cg:1:d#1",
-          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39)"
-        },
-        {
-          "idCau": "chuong:94:cg:1:d#1",
-          "trich": "hoặc két an toàn thuộc nhóm 83.03;"
+          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39), hoặc két an toàn thuộc nhóm 83.03;"
         },
         {
           "idCau": "chuong:94:cg:1:e#1",
@@ -6371,8 +6581,24 @@
           "trich": "(b) Cầu thang, bậc thang, giàn giáo, bàn thợ mộc và các loại tương tự không có đặc điểm của đồ nội thất;"
         },
         {
+          "idCau": "chuong:94:kq:22#1",
+          "trich": "(a) Gờ dạng chuỗi hạt và khuôn đúc, thuộc nhóm 44.09."
+        },
+        {
           "idCau": "chuong:94:kq:23#1",
           "trich": "(b) Miếng ván dăm bào rãnh, được phủ plastic hoặc các vật liệu khác, dùng để cắt và gấp dọc theo vết cắt thành hình chữ “U” để tạo thành một bộ phận của đồ nội thất (ví dụ vách ngăn của ngăn kéo) (nhóm 44.10)."
+        },
+        {
+          "idCau": "chuong:94:kq:27#1",
+          "trich": "(f) Đồ sưu tập và đồ cổ (Chương 97)."
+        },
+        {
+          "idCau": "chuong:94:cg:1:c#1",
+          "trich": "(c) Các mặt hàng thuộc Chương 71;"
+        },
+        {
+          "idCau": "chuong:94:cg:1:f#1",
+          "trich": "(f) Đèn hoặc nguồn sáng và bộ phận của chúng thuộc Chương 85;"
         },
         {
           "idCau": "bieu:9401#1",
@@ -6388,7 +6614,7 @@
         },
         {
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "idCau": "bieu:9406#1",
@@ -6470,7 +6696,11 @@
         "hs:bieu:9403:8223",
         "hs:bieu:9403:8224",
         "hs:bieu:9403:8225",
-        "hs:bieu:9403:8226",
+        "hs:bieu:9403:8252",
+        "hs:bieu:9403:8253",
+        "hs:bieu:9403:8254",
+        "hs:bieu:9403:8250",
+        "hs:bieu:9403:8251",
         "hs:bieu:94039:8201"
       ],
       "loaiAnhEm": [
@@ -6492,7 +6722,7 @@
         {
           "anhEm": "bieu:9405",
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "anhEm": "bieu:9406",
@@ -6588,11 +6818,7 @@
         },
         {
           "idCau": "chuong:94:cg:1:d#1",
-          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39)"
-        },
-        {
-          "idCau": "chuong:94:cg:1:d#1",
-          "trich": "hoặc két an toàn thuộc nhóm 83.03;"
+          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39), hoặc két an toàn thuộc nhóm 83.03;"
         },
         {
           "idCau": "chuong:94:cg:1:e#1",
@@ -6651,8 +6877,24 @@
           "trich": "(b) Cầu thang, bậc thang, giàn giáo, bàn thợ mộc và các loại tương tự không có đặc điểm của đồ nội thất;"
         },
         {
+          "idCau": "chuong:94:kq:22#1",
+          "trich": "(a) Gờ dạng chuỗi hạt và khuôn đúc, thuộc nhóm 44.09."
+        },
+        {
           "idCau": "chuong:94:kq:23#1",
           "trich": "(b) Miếng ván dăm bào rãnh, được phủ plastic hoặc các vật liệu khác, dùng để cắt và gấp dọc theo vết cắt thành hình chữ “U” để tạo thành một bộ phận của đồ nội thất (ví dụ vách ngăn của ngăn kéo) (nhóm 44.10)."
+        },
+        {
+          "idCau": "chuong:94:kq:27#1",
+          "trich": "(f) Đồ sưu tập và đồ cổ (Chương 97)."
+        },
+        {
+          "idCau": "chuong:94:cg:1:c#1",
+          "trich": "(c) Các mặt hàng thuộc Chương 71;"
+        },
+        {
+          "idCau": "chuong:94:cg:1:f#1",
+          "trich": "(f) Đèn hoặc nguồn sáng và bộ phận của chúng thuộc Chương 85;"
         },
         {
           "idCau": "bieu:9401#1",
@@ -6668,7 +6910,7 @@
         },
         {
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "idCau": "bieu:9406#1",
@@ -6752,7 +6994,11 @@
         "hs:bieu:9403:8223",
         "hs:bieu:9403:8224",
         "hs:bieu:9403:8225",
-        "hs:bieu:9403:8226",
+        "hs:bieu:9403:8252",
+        "hs:bieu:9403:8253",
+        "hs:bieu:9403:8254",
+        "hs:bieu:9403:8250",
+        "hs:bieu:9403:8251",
         "hs:bieu:940310:8201",
         "hs:bieu:940310:8202",
         "hs:bieu:940310:8203",
@@ -6779,7 +7025,7 @@
         {
           "anhEm": "bieu:9405",
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "anhEm": "bieu:9406",
@@ -6870,11 +7116,7 @@
         },
         {
           "idCau": "chuong:94:cg:1:d#1",
-          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39)"
-        },
-        {
-          "idCau": "chuong:94:cg:1:d#1",
-          "trich": "hoặc két an toàn thuộc nhóm 83.03;"
+          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39), hoặc két an toàn thuộc nhóm 83.03;"
         },
         {
           "idCau": "chuong:94:cg:1:e#1",
@@ -6933,8 +7175,24 @@
           "trich": "(b) Cầu thang, bậc thang, giàn giáo, bàn thợ mộc và các loại tương tự không có đặc điểm của đồ nội thất;"
         },
         {
+          "idCau": "chuong:94:kq:22#1",
+          "trich": "(a) Gờ dạng chuỗi hạt và khuôn đúc, thuộc nhóm 44.09."
+        },
+        {
           "idCau": "chuong:94:kq:23#1",
           "trich": "(b) Miếng ván dăm bào rãnh, được phủ plastic hoặc các vật liệu khác, dùng để cắt và gấp dọc theo vết cắt thành hình chữ “U” để tạo thành một bộ phận của đồ nội thất (ví dụ vách ngăn của ngăn kéo) (nhóm 44.10)."
+        },
+        {
+          "idCau": "chuong:94:kq:27#1",
+          "trich": "(f) Đồ sưu tập và đồ cổ (Chương 97)."
+        },
+        {
+          "idCau": "chuong:94:cg:1:c#1",
+          "trich": "(c) Các mặt hàng thuộc Chương 71;"
+        },
+        {
+          "idCau": "chuong:94:cg:1:f#1",
+          "trich": "(f) Đèn hoặc nguồn sáng và bộ phận của chúng thuộc Chương 85;"
         },
         {
           "idCau": "bieu:9401#1",
@@ -6950,7 +7208,7 @@
         },
         {
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "idCau": "bieu:9406#1",
@@ -7048,7 +7306,11 @@
         "hs:bieu:9403:8223",
         "hs:bieu:9403:8224",
         "hs:bieu:9403:8225",
-        "hs:bieu:9403:8226",
+        "hs:bieu:9403:8252",
+        "hs:bieu:9403:8253",
+        "hs:bieu:9403:8254",
+        "hs:bieu:9403:8250",
+        "hs:bieu:9403:8251",
         "hs:bieu:940320:8201",
         "hs:bieu:940320:8202",
         "hs:bieu:94032010:8201"
@@ -7072,7 +7334,7 @@
         {
           "anhEm": "bieu:9405",
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "anhEm": "bieu:9406",
@@ -7168,11 +7430,7 @@
         },
         {
           "idCau": "chuong:94:cg:1:d#1",
-          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39)"
-        },
-        {
-          "idCau": "chuong:94:cg:1:d#1",
-          "trich": "hoặc két an toàn thuộc nhóm 83.03;"
+          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39), hoặc két an toàn thuộc nhóm 83.03;"
         },
         {
           "idCau": "chuong:94:cg:1:e#1",
@@ -7231,8 +7489,24 @@
           "trich": "(b) Cầu thang, bậc thang, giàn giáo, bàn thợ mộc và các loại tương tự không có đặc điểm của đồ nội thất;"
         },
         {
+          "idCau": "chuong:94:kq:22#1",
+          "trich": "(a) Gờ dạng chuỗi hạt và khuôn đúc, thuộc nhóm 44.09."
+        },
+        {
           "idCau": "chuong:94:kq:23#1",
           "trich": "(b) Miếng ván dăm bào rãnh, được phủ plastic hoặc các vật liệu khác, dùng để cắt và gấp dọc theo vết cắt thành hình chữ “U” để tạo thành một bộ phận của đồ nội thất (ví dụ vách ngăn của ngăn kéo) (nhóm 44.10)."
+        },
+        {
+          "idCau": "chuong:94:kq:27#1",
+          "trich": "(f) Đồ sưu tập và đồ cổ (Chương 97)."
+        },
+        {
+          "idCau": "chuong:94:cg:1:c#1",
+          "trich": "(c) Các mặt hàng thuộc Chương 71;"
+        },
+        {
+          "idCau": "chuong:94:cg:1:f#1",
+          "trich": "(f) Đèn hoặc nguồn sáng và bộ phận của chúng thuộc Chương 85;"
         },
         {
           "idCau": "bieu:9401#1",
@@ -7248,7 +7522,7 @@
         },
         {
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "idCau": "bieu:9406#1",
@@ -7334,7 +7608,11 @@
         "hs:bieu:9403:8223",
         "hs:bieu:9403:8224",
         "hs:bieu:9403:8225",
-        "hs:bieu:9403:8226",
+        "hs:bieu:9403:8252",
+        "hs:bieu:9403:8253",
+        "hs:bieu:9403:8254",
+        "hs:bieu:9403:8250",
+        "hs:bieu:9403:8251",
         "hs:bieu:940320:8201",
         "hs:bieu:940320:8202"
       ],
@@ -7357,7 +7635,7 @@
         {
           "anhEm": "bieu:9405",
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "anhEm": "bieu:9406",
@@ -7453,11 +7731,7 @@
         },
         {
           "idCau": "chuong:94:cg:1:d#1",
-          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39)"
-        },
-        {
-          "idCau": "chuong:94:cg:1:d#1",
-          "trich": "hoặc két an toàn thuộc nhóm 83.03;"
+          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39), hoặc két an toàn thuộc nhóm 83.03;"
         },
         {
           "idCau": "chuong:94:cg:1:e#1",
@@ -7516,8 +7790,24 @@
           "trich": "(b) Cầu thang, bậc thang, giàn giáo, bàn thợ mộc và các loại tương tự không có đặc điểm của đồ nội thất;"
         },
         {
+          "idCau": "chuong:94:kq:22#1",
+          "trich": "(a) Gờ dạng chuỗi hạt và khuôn đúc, thuộc nhóm 44.09."
+        },
+        {
           "idCau": "chuong:94:kq:23#1",
           "trich": "(b) Miếng ván dăm bào rãnh, được phủ plastic hoặc các vật liệu khác, dùng để cắt và gấp dọc theo vết cắt thành hình chữ “U” để tạo thành một bộ phận của đồ nội thất (ví dụ vách ngăn của ngăn kéo) (nhóm 44.10)."
+        },
+        {
+          "idCau": "chuong:94:kq:27#1",
+          "trich": "(f) Đồ sưu tập và đồ cổ (Chương 97)."
+        },
+        {
+          "idCau": "chuong:94:cg:1:c#1",
+          "trich": "(c) Các mặt hàng thuộc Chương 71;"
+        },
+        {
+          "idCau": "chuong:94:cg:1:f#1",
+          "trich": "(f) Đèn hoặc nguồn sáng và bộ phận của chúng thuộc Chương 85;"
         },
         {
           "idCau": "bieu:9401#1",
@@ -7533,7 +7823,7 @@
         },
         {
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "idCau": "bieu:9406#1",
@@ -7619,7 +7909,11 @@
         "hs:bieu:9403:8223",
         "hs:bieu:9403:8224",
         "hs:bieu:9403:8225",
-        "hs:bieu:9403:8226",
+        "hs:bieu:9403:8252",
+        "hs:bieu:9403:8253",
+        "hs:bieu:9403:8254",
+        "hs:bieu:9403:8250",
+        "hs:bieu:9403:8251",
         "hs:bieu:940330:8201",
         "hs:bieu:940330:8202",
         "hs:bieu:940330:8203",
@@ -7646,7 +7940,7 @@
         {
           "anhEm": "bieu:9405",
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "anhEm": "bieu:9406",
@@ -7737,11 +8031,7 @@
         },
         {
           "idCau": "chuong:94:cg:1:d#1",
-          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39)"
-        },
-        {
-          "idCau": "chuong:94:cg:1:d#1",
-          "trich": "hoặc két an toàn thuộc nhóm 83.03;"
+          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39), hoặc két an toàn thuộc nhóm 83.03;"
         },
         {
           "idCau": "chuong:94:cg:1:e#1",
@@ -7800,8 +8090,24 @@
           "trich": "(b) Cầu thang, bậc thang, giàn giáo, bàn thợ mộc và các loại tương tự không có đặc điểm của đồ nội thất;"
         },
         {
+          "idCau": "chuong:94:kq:22#1",
+          "trich": "(a) Gờ dạng chuỗi hạt và khuôn đúc, thuộc nhóm 44.09."
+        },
+        {
           "idCau": "chuong:94:kq:23#1",
           "trich": "(b) Miếng ván dăm bào rãnh, được phủ plastic hoặc các vật liệu khác, dùng để cắt và gấp dọc theo vết cắt thành hình chữ “U” để tạo thành một bộ phận của đồ nội thất (ví dụ vách ngăn của ngăn kéo) (nhóm 44.10)."
+        },
+        {
+          "idCau": "chuong:94:kq:27#1",
+          "trich": "(f) Đồ sưu tập và đồ cổ (Chương 97)."
+        },
+        {
+          "idCau": "chuong:94:cg:1:c#1",
+          "trich": "(c) Các mặt hàng thuộc Chương 71;"
+        },
+        {
+          "idCau": "chuong:94:cg:1:f#1",
+          "trich": "(f) Đèn hoặc nguồn sáng và bộ phận của chúng thuộc Chương 85;"
         },
         {
           "idCau": "bieu:9401#1",
@@ -7817,7 +8123,7 @@
         },
         {
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "idCau": "bieu:9406#1",
@@ -7915,7 +8221,11 @@
         "hs:bieu:9403:8223",
         "hs:bieu:9403:8224",
         "hs:bieu:9403:8225",
-        "hs:bieu:9403:8226",
+        "hs:bieu:9403:8252",
+        "hs:bieu:9403:8253",
+        "hs:bieu:9403:8254",
+        "hs:bieu:9403:8250",
+        "hs:bieu:9403:8251",
         "hs:bieu:940340:8201",
         "hs:bieu:940340:8202",
         "hs:bieu:940340:8203",
@@ -7942,7 +8252,7 @@
         {
           "anhEm": "bieu:9405",
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "anhEm": "bieu:9406",
@@ -8033,11 +8343,7 @@
         },
         {
           "idCau": "chuong:94:cg:1:d#1",
-          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39)"
-        },
-        {
-          "idCau": "chuong:94:cg:1:d#1",
-          "trich": "hoặc két an toàn thuộc nhóm 83.03;"
+          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39), hoặc két an toàn thuộc nhóm 83.03;"
         },
         {
           "idCau": "chuong:94:cg:1:e#1",
@@ -8096,8 +8402,24 @@
           "trich": "(b) Cầu thang, bậc thang, giàn giáo, bàn thợ mộc và các loại tương tự không có đặc điểm của đồ nội thất;"
         },
         {
+          "idCau": "chuong:94:kq:22#1",
+          "trich": "(a) Gờ dạng chuỗi hạt và khuôn đúc, thuộc nhóm 44.09."
+        },
+        {
           "idCau": "chuong:94:kq:23#1",
           "trich": "(b) Miếng ván dăm bào rãnh, được phủ plastic hoặc các vật liệu khác, dùng để cắt và gấp dọc theo vết cắt thành hình chữ “U” để tạo thành một bộ phận của đồ nội thất (ví dụ vách ngăn của ngăn kéo) (nhóm 44.10)."
+        },
+        {
+          "idCau": "chuong:94:kq:27#1",
+          "trich": "(f) Đồ sưu tập và đồ cổ (Chương 97)."
+        },
+        {
+          "idCau": "chuong:94:cg:1:c#1",
+          "trich": "(c) Các mặt hàng thuộc Chương 71;"
+        },
+        {
+          "idCau": "chuong:94:cg:1:f#1",
+          "trich": "(f) Đèn hoặc nguồn sáng và bộ phận của chúng thuộc Chương 85;"
         },
         {
           "idCau": "bieu:9401#1",
@@ -8113,7 +8435,7 @@
         },
         {
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "idCau": "bieu:9406#1",
@@ -8211,7 +8533,11 @@
         "hs:bieu:9403:8223",
         "hs:bieu:9403:8224",
         "hs:bieu:9403:8225",
-        "hs:bieu:9403:8226",
+        "hs:bieu:9403:8252",
+        "hs:bieu:9403:8253",
+        "hs:bieu:9403:8254",
+        "hs:bieu:9403:8250",
+        "hs:bieu:9403:8251",
         "hs:bieu:940350:8201",
         "hs:bieu:940350:8202",
         "hs:bieu:940350:8203",
@@ -8238,7 +8564,7 @@
         {
           "anhEm": "bieu:9405",
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "anhEm": "bieu:9406",
@@ -8329,11 +8655,7 @@
         },
         {
           "idCau": "chuong:94:cg:1:d#1",
-          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39)"
-        },
-        {
-          "idCau": "chuong:94:cg:1:d#1",
-          "trich": "hoặc két an toàn thuộc nhóm 83.03;"
+          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39), hoặc két an toàn thuộc nhóm 83.03;"
         },
         {
           "idCau": "chuong:94:cg:1:e#1",
@@ -8392,8 +8714,24 @@
           "trich": "(b) Cầu thang, bậc thang, giàn giáo, bàn thợ mộc và các loại tương tự không có đặc điểm của đồ nội thất;"
         },
         {
+          "idCau": "chuong:94:kq:22#1",
+          "trich": "(a) Gờ dạng chuỗi hạt và khuôn đúc, thuộc nhóm 44.09."
+        },
+        {
           "idCau": "chuong:94:kq:23#1",
           "trich": "(b) Miếng ván dăm bào rãnh, được phủ plastic hoặc các vật liệu khác, dùng để cắt và gấp dọc theo vết cắt thành hình chữ “U” để tạo thành một bộ phận của đồ nội thất (ví dụ vách ngăn của ngăn kéo) (nhóm 44.10)."
+        },
+        {
+          "idCau": "chuong:94:kq:27#1",
+          "trich": "(f) Đồ sưu tập và đồ cổ (Chương 97)."
+        },
+        {
+          "idCau": "chuong:94:cg:1:c#1",
+          "trich": "(c) Các mặt hàng thuộc Chương 71;"
+        },
+        {
+          "idCau": "chuong:94:cg:1:f#1",
+          "trich": "(f) Đèn hoặc nguồn sáng và bộ phận của chúng thuộc Chương 85;"
         },
         {
           "idCau": "bieu:9401#1",
@@ -8409,7 +8747,7 @@
         },
         {
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "idCau": "bieu:9406#1",
@@ -8507,7 +8845,11 @@
         "hs:bieu:9403:8223",
         "hs:bieu:9403:8224",
         "hs:bieu:9403:8225",
-        "hs:bieu:9403:8226",
+        "hs:bieu:9403:8252",
+        "hs:bieu:9403:8253",
+        "hs:bieu:9403:8254",
+        "hs:bieu:9403:8250",
+        "hs:bieu:9403:8251",
         "hs:bieu:940360:8201",
         "hs:bieu:940360:8202",
         "hs:bieu:94036010:8201"
@@ -8531,7 +8873,7 @@
         {
           "anhEm": "bieu:9405",
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "anhEm": "bieu:9406",
@@ -8627,11 +8969,7 @@
         },
         {
           "idCau": "chuong:94:cg:1:d#1",
-          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39)"
-        },
-        {
-          "idCau": "chuong:94:cg:1:d#1",
-          "trich": "hoặc két an toàn thuộc nhóm 83.03;"
+          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39), hoặc két an toàn thuộc nhóm 83.03;"
         },
         {
           "idCau": "chuong:94:cg:1:e#1",
@@ -8690,8 +9028,24 @@
           "trich": "(b) Cầu thang, bậc thang, giàn giáo, bàn thợ mộc và các loại tương tự không có đặc điểm của đồ nội thất;"
         },
         {
+          "idCau": "chuong:94:kq:22#1",
+          "trich": "(a) Gờ dạng chuỗi hạt và khuôn đúc, thuộc nhóm 44.09."
+        },
+        {
           "idCau": "chuong:94:kq:23#1",
           "trich": "(b) Miếng ván dăm bào rãnh, được phủ plastic hoặc các vật liệu khác, dùng để cắt và gấp dọc theo vết cắt thành hình chữ “U” để tạo thành một bộ phận của đồ nội thất (ví dụ vách ngăn của ngăn kéo) (nhóm 44.10)."
+        },
+        {
+          "idCau": "chuong:94:kq:27#1",
+          "trich": "(f) Đồ sưu tập và đồ cổ (Chương 97)."
+        },
+        {
+          "idCau": "chuong:94:cg:1:c#1",
+          "trich": "(c) Các mặt hàng thuộc Chương 71;"
+        },
+        {
+          "idCau": "chuong:94:cg:1:f#1",
+          "trich": "(f) Đèn hoặc nguồn sáng và bộ phận của chúng thuộc Chương 85;"
         },
         {
           "idCau": "bieu:9401#1",
@@ -8707,7 +9061,7 @@
         },
         {
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "idCau": "bieu:9406#1",
@@ -8793,7 +9147,11 @@
         "hs:bieu:9403:8223",
         "hs:bieu:9403:8224",
         "hs:bieu:9403:8225",
-        "hs:bieu:9403:8226",
+        "hs:bieu:9403:8252",
+        "hs:bieu:9403:8253",
+        "hs:bieu:9403:8254",
+        "hs:bieu:9403:8250",
+        "hs:bieu:9403:8251",
         "hs:bieu:940360:8201",
         "hs:bieu:940360:8202"
       ],
@@ -8816,7 +9174,7 @@
         {
           "anhEm": "bieu:9405",
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "anhEm": "bieu:9406",
@@ -8912,11 +9270,7 @@
         },
         {
           "idCau": "chuong:94:cg:1:d#1",
-          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39)"
-        },
-        {
-          "idCau": "chuong:94:cg:1:d#1",
-          "trich": "hoặc két an toàn thuộc nhóm 83.03;"
+          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39), hoặc két an toàn thuộc nhóm 83.03;"
         },
         {
           "idCau": "chuong:94:cg:1:e#1",
@@ -8975,8 +9329,24 @@
           "trich": "(b) Cầu thang, bậc thang, giàn giáo, bàn thợ mộc và các loại tương tự không có đặc điểm của đồ nội thất;"
         },
         {
+          "idCau": "chuong:94:kq:22#1",
+          "trich": "(a) Gờ dạng chuỗi hạt và khuôn đúc, thuộc nhóm 44.09."
+        },
+        {
           "idCau": "chuong:94:kq:23#1",
           "trich": "(b) Miếng ván dăm bào rãnh, được phủ plastic hoặc các vật liệu khác, dùng để cắt và gấp dọc theo vết cắt thành hình chữ “U” để tạo thành một bộ phận của đồ nội thất (ví dụ vách ngăn của ngăn kéo) (nhóm 44.10)."
+        },
+        {
+          "idCau": "chuong:94:kq:27#1",
+          "trich": "(f) Đồ sưu tập và đồ cổ (Chương 97)."
+        },
+        {
+          "idCau": "chuong:94:cg:1:c#1",
+          "trich": "(c) Các mặt hàng thuộc Chương 71;"
+        },
+        {
+          "idCau": "chuong:94:cg:1:f#1",
+          "trich": "(f) Đèn hoặc nguồn sáng và bộ phận của chúng thuộc Chương 85;"
         },
         {
           "idCau": "bieu:9401#1",
@@ -8992,7 +9362,7 @@
         },
         {
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "idCau": "bieu:9406#1",
@@ -9078,7 +9448,11 @@
         "hs:bieu:9403:8223",
         "hs:bieu:9403:8224",
         "hs:bieu:9403:8225",
-        "hs:bieu:9403:8226",
+        "hs:bieu:9403:8252",
+        "hs:bieu:9403:8253",
+        "hs:bieu:9403:8254",
+        "hs:bieu:9403:8250",
+        "hs:bieu:9403:8251",
         "hs:bieu:940370:8201",
         "hs:bieu:940370:8202",
         "hs:bieu:94037010:8201"
@@ -9102,7 +9476,7 @@
         {
           "anhEm": "bieu:9405",
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "anhEm": "bieu:9406",
@@ -9203,11 +9577,7 @@
         },
         {
           "idCau": "chuong:94:cg:1:d#1",
-          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39)"
-        },
-        {
-          "idCau": "chuong:94:cg:1:d#1",
-          "trich": "hoặc két an toàn thuộc nhóm 83.03;"
+          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39), hoặc két an toàn thuộc nhóm 83.03;"
         },
         {
           "idCau": "chuong:94:cg:1:e#1",
@@ -9266,8 +9636,24 @@
           "trich": "(b) Cầu thang, bậc thang, giàn giáo, bàn thợ mộc và các loại tương tự không có đặc điểm của đồ nội thất;"
         },
         {
+          "idCau": "chuong:94:kq:22#1",
+          "trich": "(a) Gờ dạng chuỗi hạt và khuôn đúc, thuộc nhóm 44.09."
+        },
+        {
           "idCau": "chuong:94:kq:23#1",
           "trich": "(b) Miếng ván dăm bào rãnh, được phủ plastic hoặc các vật liệu khác, dùng để cắt và gấp dọc theo vết cắt thành hình chữ “U” để tạo thành một bộ phận của đồ nội thất (ví dụ vách ngăn của ngăn kéo) (nhóm 44.10)."
+        },
+        {
+          "idCau": "chuong:94:kq:27#1",
+          "trich": "(f) Đồ sưu tập và đồ cổ (Chương 97)."
+        },
+        {
+          "idCau": "chuong:94:cg:1:c#1",
+          "trich": "(c) Các mặt hàng thuộc Chương 71;"
+        },
+        {
+          "idCau": "chuong:94:cg:1:f#1",
+          "trich": "(f) Đèn hoặc nguồn sáng và bộ phận của chúng thuộc Chương 85;"
         },
         {
           "idCau": "bieu:9401#1",
@@ -9283,7 +9669,7 @@
         },
         {
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "idCau": "bieu:9406#1",
@@ -9373,7 +9759,11 @@
         "hs:bieu:9403:8223",
         "hs:bieu:9403:8224",
         "hs:bieu:9403:8225",
-        "hs:bieu:9403:8226",
+        "hs:bieu:9403:8252",
+        "hs:bieu:9403:8253",
+        "hs:bieu:9403:8254",
+        "hs:bieu:9403:8250",
+        "hs:bieu:9403:8251",
         "hs:bieu:940370:8201",
         "hs:bieu:940370:8202",
         "hs:bieu:94037020:8201"
@@ -9397,7 +9787,7 @@
         {
           "anhEm": "bieu:9405",
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "anhEm": "bieu:9406",
@@ -9498,11 +9888,7 @@
         },
         {
           "idCau": "chuong:94:cg:1:d#1",
-          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39)"
-        },
-        {
-          "idCau": "chuong:94:cg:1:d#1",
-          "trich": "hoặc két an toàn thuộc nhóm 83.03;"
+          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39), hoặc két an toàn thuộc nhóm 83.03;"
         },
         {
           "idCau": "chuong:94:cg:1:e#1",
@@ -9561,8 +9947,24 @@
           "trich": "(b) Cầu thang, bậc thang, giàn giáo, bàn thợ mộc và các loại tương tự không có đặc điểm của đồ nội thất;"
         },
         {
+          "idCau": "chuong:94:kq:22#1",
+          "trich": "(a) Gờ dạng chuỗi hạt và khuôn đúc, thuộc nhóm 44.09."
+        },
+        {
           "idCau": "chuong:94:kq:23#1",
           "trich": "(b) Miếng ván dăm bào rãnh, được phủ plastic hoặc các vật liệu khác, dùng để cắt và gấp dọc theo vết cắt thành hình chữ “U” để tạo thành một bộ phận của đồ nội thất (ví dụ vách ngăn của ngăn kéo) (nhóm 44.10)."
+        },
+        {
+          "idCau": "chuong:94:kq:27#1",
+          "trich": "(f) Đồ sưu tập và đồ cổ (Chương 97)."
+        },
+        {
+          "idCau": "chuong:94:cg:1:c#1",
+          "trich": "(c) Các mặt hàng thuộc Chương 71;"
+        },
+        {
+          "idCau": "chuong:94:cg:1:f#1",
+          "trich": "(f) Đèn hoặc nguồn sáng và bộ phận của chúng thuộc Chương 85;"
         },
         {
           "idCau": "bieu:9401#1",
@@ -9578,7 +9980,7 @@
         },
         {
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "idCau": "bieu:9406#1",
@@ -9668,7 +10070,11 @@
         "hs:bieu:9403:8223",
         "hs:bieu:9403:8224",
         "hs:bieu:9403:8225",
-        "hs:bieu:9403:8226",
+        "hs:bieu:9403:8252",
+        "hs:bieu:9403:8253",
+        "hs:bieu:9403:8254",
+        "hs:bieu:9403:8250",
+        "hs:bieu:9403:8251",
         "hs:bieu:940370:8201",
         "hs:bieu:940370:8202"
       ],
@@ -9691,7 +10097,7 @@
         {
           "anhEm": "bieu:9405",
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "anhEm": "bieu:9406",
@@ -9792,11 +10198,7 @@
         },
         {
           "idCau": "chuong:94:cg:1:d#1",
-          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39)"
-        },
-        {
-          "idCau": "chuong:94:cg:1:d#1",
-          "trich": "hoặc két an toàn thuộc nhóm 83.03;"
+          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39), hoặc két an toàn thuộc nhóm 83.03;"
         },
         {
           "idCau": "chuong:94:cg:1:e#1",
@@ -9855,8 +10257,24 @@
           "trich": "(b) Cầu thang, bậc thang, giàn giáo, bàn thợ mộc và các loại tương tự không có đặc điểm của đồ nội thất;"
         },
         {
+          "idCau": "chuong:94:kq:22#1",
+          "trich": "(a) Gờ dạng chuỗi hạt và khuôn đúc, thuộc nhóm 44.09."
+        },
+        {
           "idCau": "chuong:94:kq:23#1",
           "trich": "(b) Miếng ván dăm bào rãnh, được phủ plastic hoặc các vật liệu khác, dùng để cắt và gấp dọc theo vết cắt thành hình chữ “U” để tạo thành một bộ phận của đồ nội thất (ví dụ vách ngăn của ngăn kéo) (nhóm 44.10)."
+        },
+        {
+          "idCau": "chuong:94:kq:27#1",
+          "trich": "(f) Đồ sưu tập và đồ cổ (Chương 97)."
+        },
+        {
+          "idCau": "chuong:94:cg:1:c#1",
+          "trich": "(c) Các mặt hàng thuộc Chương 71;"
+        },
+        {
+          "idCau": "chuong:94:cg:1:f#1",
+          "trich": "(f) Đèn hoặc nguồn sáng và bộ phận của chúng thuộc Chương 85;"
         },
         {
           "idCau": "bieu:9401#1",
@@ -9872,7 +10290,7 @@
         },
         {
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "idCau": "bieu:9406#1",
@@ -9935,7 +10353,7 @@
       "ten": "- - Bằng tre",
       "laLoaiKhac": false,
       "ketQua": "ĐÚNG",
-      "cauHoi": "Mặt hàng có phải là đồ nội thất nguyên chiếc (kể cả dạng tháo rời trình bày đồng bộ), không phải bộ phận rời không? Đồ nội thất này có cấu tạo bằng vật liệu khác ngoài kim loại, gỗ, plastic (kể cả tre, song/mây, liễu gai, thủy tinh, đá, gốm, sứ, da...) không? Đồ nội thất này có cấu tạo bằng tre (hoặc tre tạo đặc tính cơ bản) không?",
+      "cauHoi": "Mặt hàng có phải là đồ nội thất nguyên chiếc (kể cả dạng tháo rời trình bày đồng bộ), không phải bộ phận rời không? Đồ nội thất này có cấu tạo chủ yếu bằng kim loại, bằng gỗ hoặc bằng plastic (thuộc các phân nhóm anh em đứng trên 9403.10–9403.70) không? Đồ nội thất này có cấu tạo bằng tre (hoặc tre tạo đặc tính cơ bản) không?",
       "dieuKienIds": [
         "hs:bieu:9403:8201",
         "hs:bieu:9403:8202",
@@ -9962,7 +10380,11 @@
         "hs:bieu:9403:8223",
         "hs:bieu:9403:8224",
         "hs:bieu:9403:8225",
-        "hs:bieu:9403:8226",
+        "hs:bieu:9403:8252",
+        "hs:bieu:9403:8253",
+        "hs:bieu:9403:8254",
+        "hs:bieu:9403:8250",
+        "hs:bieu:9403:8251",
         "hs:bieu:94038:8201",
         "hs:bieu:94038:8202",
         "hs:bieu:940382:8201",
@@ -9987,7 +10409,7 @@
         {
           "anhEm": "bieu:9405",
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "anhEm": "bieu:9406",
@@ -10088,11 +10510,7 @@
         },
         {
           "idCau": "chuong:94:cg:1:d#1",
-          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39)"
-        },
-        {
-          "idCau": "chuong:94:cg:1:d#1",
-          "trich": "hoặc két an toàn thuộc nhóm 83.03;"
+          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39), hoặc két an toàn thuộc nhóm 83.03;"
         },
         {
           "idCau": "chuong:94:cg:1:e#1",
@@ -10151,8 +10569,24 @@
           "trich": "(b) Cầu thang, bậc thang, giàn giáo, bàn thợ mộc và các loại tương tự không có đặc điểm của đồ nội thất;"
         },
         {
+          "idCau": "chuong:94:kq:22#1",
+          "trich": "(a) Gờ dạng chuỗi hạt và khuôn đúc, thuộc nhóm 44.09."
+        },
+        {
           "idCau": "chuong:94:kq:23#1",
           "trich": "(b) Miếng ván dăm bào rãnh, được phủ plastic hoặc các vật liệu khác, dùng để cắt và gấp dọc theo vết cắt thành hình chữ “U” để tạo thành một bộ phận của đồ nội thất (ví dụ vách ngăn của ngăn kéo) (nhóm 44.10)."
+        },
+        {
+          "idCau": "chuong:94:kq:27#1",
+          "trich": "(f) Đồ sưu tập và đồ cổ (Chương 97)."
+        },
+        {
+          "idCau": "chuong:94:cg:1:c#1",
+          "trich": "(c) Các mặt hàng thuộc Chương 71;"
+        },
+        {
+          "idCau": "chuong:94:cg:1:f#1",
+          "trich": "(f) Đèn hoặc nguồn sáng và bộ phận của chúng thuộc Chương 85;"
         },
         {
           "idCau": "bieu:9401#1",
@@ -10168,7 +10602,7 @@
         },
         {
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "idCau": "bieu:9406#1",
@@ -10235,7 +10669,7 @@
       "ten": "- - Bằng song, mây",
       "laLoaiKhac": false,
       "ketQua": "ĐÚNG",
-      "cauHoi": "Mặt hàng có phải là đồ nội thất nguyên chiếc (kể cả dạng tháo rời trình bày đồng bộ), không phải bộ phận rời không? Đồ nội thất này có cấu tạo bằng vật liệu khác ngoài kim loại, gỗ, plastic (kể cả tre, song/mây, liễu gai, thủy tinh, đá, gốm, sứ, da...) không? Đồ nội thất này có cấu tạo bằng song, mây (hoặc song, mây tạo đặc tính cơ bản) không?",
+      "cauHoi": "Mặt hàng có phải là đồ nội thất nguyên chiếc (kể cả dạng tháo rời trình bày đồng bộ), không phải bộ phận rời không? Đồ nội thất này có cấu tạo chủ yếu bằng kim loại, bằng gỗ hoặc bằng plastic (thuộc các phân nhóm anh em đứng trên 9403.10–9403.70) không? Đồ nội thất này có cấu tạo bằng song, mây (hoặc song, mây tạo đặc tính cơ bản) không?",
       "dieuKienIds": [
         "hs:bieu:9403:8201",
         "hs:bieu:9403:8202",
@@ -10262,7 +10696,11 @@
         "hs:bieu:9403:8223",
         "hs:bieu:9403:8224",
         "hs:bieu:9403:8225",
-        "hs:bieu:9403:8226",
+        "hs:bieu:9403:8252",
+        "hs:bieu:9403:8253",
+        "hs:bieu:9403:8254",
+        "hs:bieu:9403:8250",
+        "hs:bieu:9403:8251",
         "hs:bieu:94038:8201",
         "hs:bieu:94038:8202",
         "hs:bieu:940383:8201",
@@ -10287,7 +10725,7 @@
         {
           "anhEm": "bieu:9405",
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "anhEm": "bieu:9406",
@@ -10388,11 +10826,7 @@
         },
         {
           "idCau": "chuong:94:cg:1:d#1",
-          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39)"
-        },
-        {
-          "idCau": "chuong:94:cg:1:d#1",
-          "trich": "hoặc két an toàn thuộc nhóm 83.03;"
+          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39), hoặc két an toàn thuộc nhóm 83.03;"
         },
         {
           "idCau": "chuong:94:cg:1:e#1",
@@ -10451,8 +10885,24 @@
           "trich": "(b) Cầu thang, bậc thang, giàn giáo, bàn thợ mộc và các loại tương tự không có đặc điểm của đồ nội thất;"
         },
         {
+          "idCau": "chuong:94:kq:22#1",
+          "trich": "(a) Gờ dạng chuỗi hạt và khuôn đúc, thuộc nhóm 44.09."
+        },
+        {
           "idCau": "chuong:94:kq:23#1",
           "trich": "(b) Miếng ván dăm bào rãnh, được phủ plastic hoặc các vật liệu khác, dùng để cắt và gấp dọc theo vết cắt thành hình chữ “U” để tạo thành một bộ phận của đồ nội thất (ví dụ vách ngăn của ngăn kéo) (nhóm 44.10)."
+        },
+        {
+          "idCau": "chuong:94:kq:27#1",
+          "trich": "(f) Đồ sưu tập và đồ cổ (Chương 97)."
+        },
+        {
+          "idCau": "chuong:94:cg:1:c#1",
+          "trich": "(c) Các mặt hàng thuộc Chương 71;"
+        },
+        {
+          "idCau": "chuong:94:cg:1:f#1",
+          "trich": "(f) Đèn hoặc nguồn sáng và bộ phận của chúng thuộc Chương 85;"
         },
         {
           "idCau": "bieu:9401#1",
@@ -10468,7 +10918,7 @@
         },
         {
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "idCau": "bieu:9406#1",
@@ -10535,7 +10985,7 @@
       "ten": "- - - Tủ hút hơi độc (SEN)",
       "laLoaiKhac": false,
       "ketQua": "ĐÚNG",
-      "cauHoi": "Mặt hàng có phải là đồ nội thất nguyên chiếc (kể cả dạng tháo rời trình bày đồng bộ), không phải bộ phận rời không? Đồ nội thất này có cấu tạo bằng vật liệu khác ngoài kim loại, gỗ, plastic (kể cả tre, song/mây, liễu gai, thủy tinh, đá, gốm, sứ, da...) không? Đồ nội thất này có cấu tạo bằng tre (hoặc tre tạo đặc tính cơ bản) không? Đồ nội thất này có cấu tạo bằng song, mây (hoặc song, mây tạo đặc tính cơ bản) không?",
+      "cauHoi": "Mặt hàng có phải là đồ nội thất nguyên chiếc (kể cả dạng tháo rời trình bày đồng bộ), không phải bộ phận rời không? Đồ nội thất này có cấu tạo chủ yếu bằng kim loại, bằng gỗ hoặc bằng plastic (thuộc các phân nhóm anh em đứng trên 9403.10–9403.70) không? Đồ nội thất này có cấu tạo bằng tre (hoặc tre tạo đặc tính cơ bản) không? Đồ nội thất này có cấu tạo bằng song, mây (hoặc song, mây tạo đặc tính cơ bản) không?",
       "dieuKienIds": [
         "hs:bieu:9403:8201",
         "hs:bieu:9403:8202",
@@ -10562,7 +11012,11 @@
         "hs:bieu:9403:8223",
         "hs:bieu:9403:8224",
         "hs:bieu:9403:8225",
-        "hs:bieu:9403:8226",
+        "hs:bieu:9403:8252",
+        "hs:bieu:9403:8253",
+        "hs:bieu:9403:8254",
+        "hs:bieu:9403:8250",
+        "hs:bieu:9403:8251",
         "hs:bieu:94038:8201",
         "hs:bieu:94038:8202",
         "hs:bieu:94038910:8201"
@@ -10586,7 +11040,7 @@
         {
           "anhEm": "bieu:9405",
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "anhEm": "bieu:9406",
@@ -10692,11 +11146,7 @@
         },
         {
           "idCau": "chuong:94:cg:1:d#1",
-          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39)"
-        },
-        {
-          "idCau": "chuong:94:cg:1:d#1",
-          "trich": "hoặc két an toàn thuộc nhóm 83.03;"
+          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39), hoặc két an toàn thuộc nhóm 83.03;"
         },
         {
           "idCau": "chuong:94:cg:1:e#1",
@@ -10755,8 +11205,24 @@
           "trich": "(b) Cầu thang, bậc thang, giàn giáo, bàn thợ mộc và các loại tương tự không có đặc điểm của đồ nội thất;"
         },
         {
+          "idCau": "chuong:94:kq:22#1",
+          "trich": "(a) Gờ dạng chuỗi hạt và khuôn đúc, thuộc nhóm 44.09."
+        },
+        {
           "idCau": "chuong:94:kq:23#1",
           "trich": "(b) Miếng ván dăm bào rãnh, được phủ plastic hoặc các vật liệu khác, dùng để cắt và gấp dọc theo vết cắt thành hình chữ “U” để tạo thành một bộ phận của đồ nội thất (ví dụ vách ngăn của ngăn kéo) (nhóm 44.10)."
+        },
+        {
+          "idCau": "chuong:94:kq:27#1",
+          "trich": "(f) Đồ sưu tập và đồ cổ (Chương 97)."
+        },
+        {
+          "idCau": "chuong:94:cg:1:c#1",
+          "trich": "(c) Các mặt hàng thuộc Chương 71;"
+        },
+        {
+          "idCau": "chuong:94:cg:1:f#1",
+          "trich": "(f) Đèn hoặc nguồn sáng và bộ phận của chúng thuộc Chương 85;"
         },
         {
           "idCau": "bieu:9401#1",
@@ -10772,7 +11238,7 @@
         },
         {
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "idCau": "bieu:9406#1",
@@ -10839,7 +11305,7 @@
       "ten": "- - - Loại khác",
       "laLoaiKhac": true,
       "ketQua": "ĐÚNG",
-      "cauHoi": "Mặt hàng có phải là đồ nội thất nguyên chiếc (kể cả dạng tháo rời trình bày đồng bộ), không phải bộ phận rời không? Đồ nội thất này có cấu tạo bằng vật liệu khác ngoài kim loại, gỗ, plastic (kể cả tre, song/mây, liễu gai, thủy tinh, đá, gốm, sứ, da...) không? Đồ nội thất này có cấu tạo bằng tre (hoặc tre tạo đặc tính cơ bản) không? Đồ nội thất này có cấu tạo bằng song, mây (hoặc song, mây tạo đặc tính cơ bản) không?",
+      "cauHoi": "Mặt hàng có phải là đồ nội thất nguyên chiếc (kể cả dạng tháo rời trình bày đồng bộ), không phải bộ phận rời không? Đồ nội thất này có cấu tạo chủ yếu bằng kim loại, bằng gỗ hoặc bằng plastic (thuộc các phân nhóm anh em đứng trên 9403.10–9403.70) không? Đồ nội thất này có cấu tạo bằng tre (hoặc tre tạo đặc tính cơ bản) không? Đồ nội thất này có cấu tạo bằng song, mây (hoặc song, mây tạo đặc tính cơ bản) không?",
       "dieuKienIds": [
         "hs:bieu:9403:8201",
         "hs:bieu:9403:8202",
@@ -10866,7 +11332,11 @@
         "hs:bieu:9403:8223",
         "hs:bieu:9403:8224",
         "hs:bieu:9403:8225",
-        "hs:bieu:9403:8226",
+        "hs:bieu:9403:8252",
+        "hs:bieu:9403:8253",
+        "hs:bieu:9403:8254",
+        "hs:bieu:9403:8250",
+        "hs:bieu:9403:8251",
         "hs:bieu:94038:8201",
         "hs:bieu:94038:8202"
       ],
@@ -10889,7 +11359,7 @@
         {
           "anhEm": "bieu:9405",
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "anhEm": "bieu:9406",
@@ -10995,11 +11465,7 @@
         },
         {
           "idCau": "chuong:94:cg:1:d#1",
-          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39)"
-        },
-        {
-          "idCau": "chuong:94:cg:1:d#1",
-          "trich": "hoặc két an toàn thuộc nhóm 83.03;"
+          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39), hoặc két an toàn thuộc nhóm 83.03;"
         },
         {
           "idCau": "chuong:94:cg:1:e#1",
@@ -11058,8 +11524,24 @@
           "trich": "(b) Cầu thang, bậc thang, giàn giáo, bàn thợ mộc và các loại tương tự không có đặc điểm của đồ nội thất;"
         },
         {
+          "idCau": "chuong:94:kq:22#1",
+          "trich": "(a) Gờ dạng chuỗi hạt và khuôn đúc, thuộc nhóm 44.09."
+        },
+        {
           "idCau": "chuong:94:kq:23#1",
           "trich": "(b) Miếng ván dăm bào rãnh, được phủ plastic hoặc các vật liệu khác, dùng để cắt và gấp dọc theo vết cắt thành hình chữ “U” để tạo thành một bộ phận của đồ nội thất (ví dụ vách ngăn của ngăn kéo) (nhóm 44.10)."
+        },
+        {
+          "idCau": "chuong:94:kq:27#1",
+          "trich": "(f) Đồ sưu tập và đồ cổ (Chương 97)."
+        },
+        {
+          "idCau": "chuong:94:cg:1:c#1",
+          "trich": "(c) Các mặt hàng thuộc Chương 71;"
+        },
+        {
+          "idCau": "chuong:94:cg:1:f#1",
+          "trich": "(f) Đèn hoặc nguồn sáng và bộ phận của chúng thuộc Chương 85;"
         },
         {
           "idCau": "bieu:9401#1",
@@ -11075,7 +11557,7 @@
         },
         {
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "idCau": "bieu:9406#1",
@@ -11169,7 +11651,11 @@
         "hs:bieu:9403:8223",
         "hs:bieu:9403:8224",
         "hs:bieu:9403:8225",
-        "hs:bieu:9403:8226",
+        "hs:bieu:9403:8252",
+        "hs:bieu:9403:8253",
+        "hs:bieu:9403:8254",
+        "hs:bieu:9403:8250",
+        "hs:bieu:9403:8251",
         "hs:bieu:94039:8201",
         "hs:bieu:940391:8201",
         "hs:bieu:94039100:8201"
@@ -11193,7 +11679,7 @@
         {
           "anhEm": "bieu:9405",
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "anhEm": "bieu:9406",
@@ -11289,11 +11775,7 @@
         },
         {
           "idCau": "chuong:94:cg:1:d#1",
-          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39)"
-        },
-        {
-          "idCau": "chuong:94:cg:1:d#1",
-          "trich": "hoặc két an toàn thuộc nhóm 83.03;"
+          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39), hoặc két an toàn thuộc nhóm 83.03;"
         },
         {
           "idCau": "chuong:94:cg:1:e#1",
@@ -11352,8 +11834,24 @@
           "trich": "(b) Cầu thang, bậc thang, giàn giáo, bàn thợ mộc và các loại tương tự không có đặc điểm của đồ nội thất;"
         },
         {
+          "idCau": "chuong:94:kq:22#1",
+          "trich": "(a) Gờ dạng chuỗi hạt và khuôn đúc, thuộc nhóm 44.09."
+        },
+        {
           "idCau": "chuong:94:kq:23#1",
           "trich": "(b) Miếng ván dăm bào rãnh, được phủ plastic hoặc các vật liệu khác, dùng để cắt và gấp dọc theo vết cắt thành hình chữ “U” để tạo thành một bộ phận của đồ nội thất (ví dụ vách ngăn của ngăn kéo) (nhóm 44.10)."
+        },
+        {
+          "idCau": "chuong:94:kq:27#1",
+          "trich": "(f) Đồ sưu tập và đồ cổ (Chương 97)."
+        },
+        {
+          "idCau": "chuong:94:cg:1:c#1",
+          "trich": "(c) Các mặt hàng thuộc Chương 71;"
+        },
+        {
+          "idCau": "chuong:94:cg:1:f#1",
+          "trich": "(f) Đèn hoặc nguồn sáng và bộ phận của chúng thuộc Chương 85;"
         },
         {
           "idCau": "bieu:9401#1",
@@ -11369,7 +11867,7 @@
         },
         {
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "idCau": "bieu:9406#1",
@@ -11455,7 +11953,11 @@
         "hs:bieu:9403:8223",
         "hs:bieu:9403:8224",
         "hs:bieu:9403:8225",
-        "hs:bieu:9403:8226",
+        "hs:bieu:9403:8252",
+        "hs:bieu:9403:8253",
+        "hs:bieu:9403:8254",
+        "hs:bieu:9403:8250",
+        "hs:bieu:9403:8251",
         "hs:bieu:94039:8201",
         "hs:bieu:94039910:8201"
       ],
@@ -11478,7 +11980,7 @@
         {
           "anhEm": "bieu:9405",
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "anhEm": "bieu:9406",
@@ -11579,11 +12081,7 @@
         },
         {
           "idCau": "chuong:94:cg:1:d#1",
-          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39)"
-        },
-        {
-          "idCau": "chuong:94:cg:1:d#1",
-          "trich": "hoặc két an toàn thuộc nhóm 83.03;"
+          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39), hoặc két an toàn thuộc nhóm 83.03;"
         },
         {
           "idCau": "chuong:94:cg:1:e#1",
@@ -11642,8 +12140,24 @@
           "trich": "(b) Cầu thang, bậc thang, giàn giáo, bàn thợ mộc và các loại tương tự không có đặc điểm của đồ nội thất;"
         },
         {
+          "idCau": "chuong:94:kq:22#1",
+          "trich": "(a) Gờ dạng chuỗi hạt và khuôn đúc, thuộc nhóm 44.09."
+        },
+        {
           "idCau": "chuong:94:kq:23#1",
           "trich": "(b) Miếng ván dăm bào rãnh, được phủ plastic hoặc các vật liệu khác, dùng để cắt và gấp dọc theo vết cắt thành hình chữ “U” để tạo thành một bộ phận của đồ nội thất (ví dụ vách ngăn của ngăn kéo) (nhóm 44.10)."
+        },
+        {
+          "idCau": "chuong:94:kq:27#1",
+          "trich": "(f) Đồ sưu tập và đồ cổ (Chương 97)."
+        },
+        {
+          "idCau": "chuong:94:cg:1:c#1",
+          "trich": "(c) Các mặt hàng thuộc Chương 71;"
+        },
+        {
+          "idCau": "chuong:94:cg:1:f#1",
+          "trich": "(f) Đèn hoặc nguồn sáng và bộ phận của chúng thuộc Chương 85;"
         },
         {
           "idCau": "bieu:9401#1",
@@ -11659,7 +12173,7 @@
         },
         {
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "idCau": "bieu:9406#1",
@@ -11745,7 +12259,11 @@
         "hs:bieu:9403:8223",
         "hs:bieu:9403:8224",
         "hs:bieu:9403:8225",
-        "hs:bieu:9403:8226",
+        "hs:bieu:9403:8252",
+        "hs:bieu:9403:8253",
+        "hs:bieu:9403:8254",
+        "hs:bieu:9403:8250",
+        "hs:bieu:9403:8251",
         "hs:bieu:94039:8201"
       ],
       "loaiAnhEm": [
@@ -11767,7 +12285,7 @@
         {
           "anhEm": "bieu:9405",
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "anhEm": "bieu:9406",
@@ -11868,11 +12386,7 @@
         },
         {
           "idCau": "chuong:94:cg:1:d#1",
-          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39)"
-        },
-        {
-          "idCau": "chuong:94:cg:1:d#1",
-          "trich": "hoặc két an toàn thuộc nhóm 83.03;"
+          "trich": "(d) Các bộ phận có công dụng chung như đã định nghĩa trong Chú giải 2 của Phần XV, bằng kim loại cơ bản (Phần XV), hoặc các loại hàng hóa tương tự bằng plastic (Chương 39), hoặc két an toàn thuộc nhóm 83.03;"
         },
         {
           "idCau": "chuong:94:cg:1:e#1",
@@ -11931,8 +12445,24 @@
           "trich": "(b) Cầu thang, bậc thang, giàn giáo, bàn thợ mộc và các loại tương tự không có đặc điểm của đồ nội thất;"
         },
         {
+          "idCau": "chuong:94:kq:22#1",
+          "trich": "(a) Gờ dạng chuỗi hạt và khuôn đúc, thuộc nhóm 44.09."
+        },
+        {
           "idCau": "chuong:94:kq:23#1",
           "trich": "(b) Miếng ván dăm bào rãnh, được phủ plastic hoặc các vật liệu khác, dùng để cắt và gấp dọc theo vết cắt thành hình chữ “U” để tạo thành một bộ phận của đồ nội thất (ví dụ vách ngăn của ngăn kéo) (nhóm 44.10)."
+        },
+        {
+          "idCau": "chuong:94:kq:27#1",
+          "trich": "(f) Đồ sưu tập và đồ cổ (Chương 97)."
+        },
+        {
+          "idCau": "chuong:94:cg:1:c#1",
+          "trich": "(c) Các mặt hàng thuộc Chương 71;"
+        },
+        {
+          "idCau": "chuong:94:cg:1:f#1",
+          "trich": "(f) Đèn hoặc nguồn sáng và bộ phận của chúng thuộc Chương 85;"
         },
         {
           "idCau": "bieu:9401#1",
@@ -11948,7 +12478,7 @@
         },
         {
           "idCau": "bieu:9405#1",
-          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi và bộ phận của chúng"
+          "trich": "Đèn (luminaires) và bộ đèn kể cả đèn pha và đèn rọi"
         },
         {
           "idCau": "bieu:9406#1",

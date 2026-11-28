@@ -11,6 +11,11 @@ import { napLuatCong, vanTay } from './cong.mjs';
 import { napBieuMeta, boGachTen } from './bang-anh-em.mjs';
 import { kiemKhoHoSo, LOAI_DIEU_KIEN } from './khuon.mjs';
 
+const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
+if (!process.env.HS_DATA_DIR) {
+  process.env.HS_DATA_DIR = path.join(REPO_ROOT, 'data');
+}
+
 const require = createRequire(import.meta.url);
 const G = require('../../lib/ho-so-ma/ghep.js');
 const { phaiDoc } = require('../../lib/do-thi/phai-doc.js');
@@ -21,8 +26,6 @@ const {
   xayChiMuc: xayChiMucTimCgct,
   trichMaVaKhoang,
 } = require('../../lib/tim-cgct.js');
-
-const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
 export const DEFAULT_CANH_TRANH_MD = path.join(REPO_ROOT, 'docs', 'mong', 'the', 'M-81-canh-tranh.md');
 export const MAX_BYTES_MAC_DINH = 180 * 1024;
 export const TOP_K_CANH_TRANH_MAC_DINH = 10;
@@ -846,6 +849,69 @@ export function dungGoiNhom(nhom4HoacNut, opts = {}) {
     }
   }
 
+  // Bổ sung câu tên nguyên văn của mọi nhóm 4 số đích bị chú giải hoặc biểu nhắc tới / đẩy hàng sang (vd 59.08, 85.16, 85.31...)
+  const nhomDichSet = new Set();
+  const themMa4Dich = (m4) => {
+    if (!m4 || !/^\d{4}$/.test(m4) || m4 === nhom4) return;
+    if (L.cay.theoId.has(`bieu:${m4}`)) nhomDichSet.add(m4);
+  };
+  const quetMa4TuNut = (nutStr) => {
+    const m = /^(?:bieu|nhom|pn|sen):(\d{4})/.exec(String(nutStr || ''));
+    if (m) themMa4Dich(m[1]);
+  };
+  const quetMa4TuChu = (txt) => {
+    if (!txt) return;
+    const mk = trichMaVaKhoang(String(txt));
+    for (const m4 of mk.don || []) themMa4Dich(m4);
+    for (const m4 of mk.khoang || []) themMa4Dich(m4);
+  };
+  for (const n of cayBieu) {
+    for (const cid of n.cauIds || []) {
+      if (L.cau.has(cid)) quetMa4TuChu(L.chuCau(cid));
+    }
+  }
+  for (const [tenNhomLuat, group] of Object.entries(luatNen)) {
+    if (tenNhomLuat === 'gir') continue;
+    for (const m of group) {
+      quetMa4TuNut(m.nut || m.id);
+      quetMa4TuChu(m.trich);
+      for (const cid of m.cauIds || []) {
+        if (L.cau.has(cid)) quetMa4TuChu(L.chuCau(cid));
+      }
+    }
+  }
+  for (const edge of [...loaiTruRa, ...loaiTruVao]) {
+    quetMa4TuNut(edge.den);
+    quetMa4TuNut(edge.tuNut);
+    quetMa4TuChu(edge.trich);
+    quetMa4TuChu(edge.cau);
+    if (edge.cauId && L.cau.has(edge.cauId)) quetMa4TuChu(L.chuCau(edge.cauId));
+    for (const cid of edge.cauIds || []) {
+      if (L.cau.has(cid)) quetMa4TuChu(L.chuCau(cid));
+    }
+  }
+  luatNen.tenNhomDich = [...nhomDichSet]
+    .sort()
+    .map((m4) => {
+      const nutDich = `bieu:${m4}`;
+      const nodeDich = L.cay.theoId.get(nutDich);
+      const infoDich = L.nut.get(nutDich);
+      const tenDich = nodeDich?.ten || infoDich?.v || '';
+      const cids = [...(theoNut.get(nutDich) || [])].filter((cid) => !/^(?:tb|wco):/.test(cid) && L.cau.has(cid));
+      return {
+        id: nutDich,
+        nut: nutDich,
+        nhom: m4,
+        lop: infoDich?.lop || 'BIEU',
+        trang: infoDich?.trang ?? null,
+        ten: tenDich,
+        trich: tenDich,
+        nguon: infoDich?.nguon ?? null,
+        cauIds: cids,
+      };
+    })
+    .filter((x) => x.cauIds.length > 0);
+
   // Ứng viên cạnh tranh tìm thấy qua máy tìm (ADR-0010 mục 2: chỉ nạp tài liệu phải đọc, KHÔNG đẩy vào loaiTru)
   const canhTranhTimThay = timCanhTranhTimThay(nhom4, {
     luat,
@@ -857,12 +923,14 @@ export function dungGoiNhom(nhom4HoacNut, opts = {}) {
     tatCanhTranhTimThay: opts.tatCanhTranhTimThay,
   });
 
-  // Thu thập toàn bộ câu luật có thật trong gói kèm sha256 vanTay
-  const gopCauGir = Boolean(soanMu || opts.gopCauGir);
+  // Thu thập toàn bộ câu luật có thật trong gói kèm sha256 vanTay (soanMu / CLI mặc định gồm GIR + tên nhóm đích; chế độ nền cũ không truyền cờ giữ nguyên tập câu cho M-81)
+  const gopCauGir = opts.gopCauGir ?? soanMu;
+  const gopTenNhomDich = opts.gopTenNhomDich ?? Boolean(gopCauGir || soanMu);
   const cauIdSet = new Set();
   for (const n of cayBieu) for (const cid of n.cauIds) cauIdSet.add(cid);
   for (const [tenNhomLuat, group] of Object.entries(luatNen)) {
     if (tenNhomLuat === 'gir' && !gopCauGir) continue;
+    if (tenNhomLuat === 'tenNhomDich' && !gopTenNhomDich) continue;
     for (const m of group) for (const cid of m.cauIds || []) cauIdSet.add(cid);
   }
   for (const edge of [...loaiTruRa, ...loaiTruVao]) {
@@ -1016,6 +1084,7 @@ function main() {
   const tatCanhTranhTimThay = a.includes('--tat-canh-tranh-tim-thay');
   const soanMu = a.includes('--soan-mu');
   const gopCauGir = !a.includes('--khong-gop-cau-gir');
+  const gopTenNhomDich = !a.includes('--khong-gop-ten-nhom-dich');
 
   const t0 = performance.now();
   const goi = dungGoiNhom(nhomArg, {
@@ -1028,6 +1097,7 @@ function main() {
     tatCanhTranhTimThay,
     soanMu,
     gopCauGir,
+    gopTenNhomDich,
   });
   const thoiGianMs = Math.round(performance.now() - t0);
   const out = lay('--out');
