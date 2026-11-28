@@ -499,6 +499,24 @@ check('M-78 nutChuCua: nạp được câu sen:* nguyên văn từ sen.jsonl', m
     JSON.stringify({ gen: runGen.stdout + runGen.stderr, doc: runDoc.stdout + runDoc.stderr }),
   );
 
+  // Ca âm --nhom sai định dạng ("8.4.13", "sai"): ném lỗi rõ ràng, không lọc trắng 0 phiếu âm thầm
+  let nemLoiChamSai = false;
+  try {
+    goiM81('2026-11-27', { hoSo: hoSo81, luat: luat81, docsDir: null, nhom: '8.4.13', out: path.join(tmp, 'out-nhom-sai1') });
+  } catch (e) {
+    nemLoiChamSai = /không hợp lệ/.test(String(e?.message || e));
+  }
+  const runNhomSai = spawnSync(
+    process.execPath,
+    [path.join(GOC, 'scripts/ho-so-ma/goi-duyet.mjs'), '--m81', '--nhom=sai', `--ho-so=${hoSo81}`, `--luat=${luat81}`, `--out=${path.join(tmp, 'out-nhom-sai2')}`],
+    { encoding: 'utf8' },
+  );
+  check(
+    'CA NGƯỢC goiM81 --nhom sai định dạng ("8.4.13", "sai") ⇒ ném lỗi và CLI thoát khác 0',
+    nemLoiChamSai && runNhomSai.status !== 0 && /không hợp lệ/.test(runNhomSai.stderr + runNhomSai.stdout),
+    JSON.stringify({ nemLoiChamSai, status: runNhomSai.status, err: runNhomSai.stderr }),
+  );
+
   // Kiểm Nhóm IV (HO_PHU -> [M81-HP-...]) và docBang đọc lại phiếu M81-HP-...
   const hoSo81Hp = path.join(tmp, 'ho-so-81-hp');
   fs.mkdirSync(path.join(hoSo81Hp, 'dieu-kien'), { recursive: true });
@@ -532,9 +550,13 @@ check('M-78 nutChuCua: nạp được câu sen:* nguyên văn từ sen.jsonl', m
 
 // ── C. Kiểm gói M-81 trên kho thật hiện hành (xuất ra tmp, không ghi vào repo) ──
 {
+  const NHOM_VANG_12 = [
+    '0201', '3004', '3926', '4202', '6110', '7326',
+    '8479', '8501', '8517', '8543', '8708', '9031',
+  ];
   const LThat = napLuatCong(path.join(GOC, 'data', 'luat-goc'));
   const outKhoThat = path.join(tmp, 'out-kho-that');
-  const kqThat = goiM81('2026-11-27', { L: LThat, out: outKhoThat });
+  const kqThat = goiM81('2026-11-27', { L: LThat, nhom: NHOM_VANG_12, out: outKhoThat });
   const mdThat = fs.readFileSync(kqThat.tepMd, 'utf8');
   const tokenCauTrongMd = [...new Set(
     [...mdThat.matchAll(/\b((?:gir|phan|chuong|nhom|pn|bieu|sen|wco|tb):[A-Za-z0-9:._-]+#\d+)\b/g)].map((m) => m[1]),
@@ -617,6 +639,32 @@ check('M-78 nutChuCua: nạp được câu sen:* nguyên văn từ sen.jsonl', m
       JSON.stringify({ maCamKet, sameAsGenerated: mdCamKet === mdThat }),
     );
   }
+
+  // Kiểm toàn bộ kho thật (kể cả các nhóm cuốn chiếu mới): 0 lỗi câu luật, 0 token ma/tb:, 0 phát sinh VUNG_CHONG hay HO_PHU mới
+  const outKhoToanBo = path.join(tmp, 'out-kho-toan-bo');
+  const kqToanKho = goiM81('2026-11-28', { L: LThat, out: outKhoToanBo });
+  const mdToanKho = fs.readFileSync(kqToanKho.tepMd, 'utf8');
+  const tokToanKho = [...new Set(
+    [...mdToanKho.matchAll(/\b((?:gir|phan|chuong|nhom|pn|bieu|sen|wco|tb):[A-Za-z0-9:._-]+#\d+)\b/g)].map((m) => m[1]),
+  )];
+  const maToanKho = tokToanKho.filter((cid) => /^tb:/.test(cid) || LThat.chuCau(cid) === null);
+  check(
+    'goiM81 trên toàn kho hiện hành (gồm cả nhóm cuốn chiếu): 0 lỗi câu luật, 0 id câu ma/tb:, 0 phát sinh VUNG_CHONG/HO_PHU mới',
+    kqToanKho.loiCau.length === 0
+    && maToanKho.length === 0
+    && kqToanKho.soVungChong === 9
+    && kqToanKho.soHoPhu === 1
+    && kqToanKho.soGiaiChong >= kqThat.soGiaiChong
+    && kqToanKho.soNghiaThuong >= kqThat.soNghiaThuong,
+    JSON.stringify({
+      soVungChong: kqToanKho.soVungChong,
+      soGiaiChong: kqToanKho.soGiaiChong,
+      soHoPhu: kqToanKho.soHoPhu,
+      soNghiaThuong: kqToanKho.soNghiaThuong,
+      loiCau: kqToanKho.loiCau,
+      maToanKho,
+    }),
+  );
 }
 
 fs.rmSync(tmp, { recursive: true, force: true });

@@ -441,6 +441,36 @@ function goiM81(ngay, opts = {}) {
   const luatDir = opts.luat || LUAT;
   const outDir = opts.out || OUT_M81;
   const chuongLoc = opts.chuong ? String(opts.chuong).padStart(2, '0') : null;
+  const nhomCoTruyen = opts.nhom !== undefined && opts.nhom !== null && String(opts.nhom).trim() !== '';
+  const nhomRaw = Array.isArray(opts.nhom)
+    ? opts.nhom
+    : (typeof opts.nhom === 'string' ? opts.nhom.split(',') : []);
+  let tapNhomLoc = null;
+  if (nhomCoTruyen) {
+    const danhSachSach = nhomRaw.map((x) => String(x ?? '').trim()).filter(Boolean);
+    if (!danhSachSach.length) {
+      throw new Error('Tham số --nhom rỗng: cần truyền mã nhóm 4 số hợp lệ (ví dụ 8413 hoặc 84.13)');
+    }
+    tapNhomLoc = new Set();
+    for (const tok of danhSachSach) {
+      if (!/^\d{2}\.?\d{2}$/.test(tok)) {
+        throw new Error(`Mã nhóm 4 số không hợp lệ trong --nhom: "${tok}" (cần dạng XX.XX hoặc XXXX)`);
+      }
+      const bonSo = tok.replace('.', '');
+      tapNhomLoc.add(`${bonSo.slice(0, 2)}.${bonSo.slice(2)}`);
+    }
+  }
+  const tapChuongTuNhom = tapNhomLoc
+    ? new Set([...tapNhomLoc].map((x) => x.slice(0, 2)))
+    : null;
+  const thuocPhamViNhom = (nutId) => {
+    if (!tapNhomLoc) return true;
+    const n4 = nhom4CuaNut(nutId);
+    if (n4) return tapNhomLoc.has(n4);
+    const ch = G.chuongCuaNut(nutId);
+    if (ch) return tapChuongTuNhom.has(ch);
+    return /^phan:/.test(String(nutId || ''));
+  };
   const tatCaNghiaThuong = Boolean(opts.tatCaNghiaThuong);
   const docsDir = opts.docsDir !== undefined
     ? opts.docsDir
@@ -458,6 +488,7 @@ function goiM81(ngay, opts = {}) {
   if (fs.existsSync(dkDir)) {
     for (const f of fs.readdirSync(dkDir).filter((x) => x.endsWith('.jsonl')).sort()) {
       for (const r of docJsonl(path.join(dkDir, f))) {
+        if (!thuocPhamViNhom(r.nut)) continue;
         if (r.loai === 'DIEU_KIEN') dks.push(r);
         else if (r.loai === 'GIAI_CHONG') gcs.push(r);
       }
@@ -492,7 +523,9 @@ function goiM81(ngay, opts = {}) {
   }
 
   // Tập các nút cha cần xét gia đình anh em từ cấp nhóm 4 số trở xuống (không gộp bieu:NN 2 số cấp Chương)
-  const laChaGiaDinh = (chaId) => Boolean(chaId && !/^bieu:\d{2}$/.test(chaId) && G.conCua(chaId, L.cay).length >= 2);
+  const laChaGiaDinh = (chaId) => Boolean(
+    chaId && !/^bieu:\d{2}$/.test(chaId) && thuocPhamViNhom(chaId) && G.conCua(chaId, L.cay).length >= 2,
+  );
   const tapCha = new Set();
   if (fs.existsSync(baeDir)) {
     for (const f of fs.readdirSync(baeDir).filter((x) => x.endsWith('.jsonl')).sort()) {
@@ -522,6 +555,7 @@ function goiM81(ngay, opts = {}) {
     const nutA0 = maSangNutBieu(rawA, L) || rawA;
     const nutB0 = maSangNutBieu(rawB, L) || rawB;
     if (!nutA0 || !nutB0 || nutA0 === nutB0) return;
+    if (!thuocPhamViNhom(nutA0) || !thuocPhamViNhom(nutB0)) return;
     const chaId = chaRaw || L.cay.theoId.get(nutA0)?.cha || L.cay.theoId.get(nutB0)?.cha || null;
     if (!chaId) return;
     const ch = G.chuongCuaNut(chaId) || G.chuongCuaNut(nutA0);
@@ -1038,8 +1072,10 @@ function main(argv = process.argv.slice(2)) {
   const outArg = layGiaTriCo(argv, '--out');
 
   if (argv.includes('--m81')) {
+    const nhomArg = layGiaTriCo(argv, '--nhom');
     const kq = goiM81(ngay, {
       chuong: chuongArg ? chuongArg.padStart(2, '0') : null,
+      nhom: nhomArg || null,
       tatCaNghiaThuong: argv.includes('--tat-ca-nghia-thuong'),
       vungChong: layGiaTriCo(argv, '--vung-chong'),
       hoSo: hoSoArg ? path.resolve(hoSoArg) : HO_SO,

@@ -1852,6 +1852,14 @@ const KHO_CHUAN = ghiHoSoTam({
   const sdVang12 = chamSoDiem({
     luat: LUAT_THAT,
     hoSo: HO_SO_THAT,
+    nhom: NHOM_VANG_12,
+    batBuocTepBang: true,
+    L: L_VANG12,
+    bieuMeta: metaVang12,
+  });
+  const sdToanKho = chamSoDiem({
+    luat: LUAT_THAT,
+    hoSo: HO_SO_THAT,
     batBuocTepBang: true,
     L: L_VANG12,
     bieuMeta: metaVang12,
@@ -1876,10 +1884,13 @@ const KHO_CHUAN = ghiHoSoTam({
   }
   dsChaHoPhu.sort();
 
-  kiem('HỒI QUY 12 BẢNG VÀNG (so-diem): 11/12 nhóm đạt DONG (kể cả 8708); duy nhất 8501 báo DO do HO_PHU trung thực trên đúng 1 bảng [bieu:8501], 0 VUNG_CHONG, khớp vân tay bang-anh-em',
+  kiem('HỒI QUY 12 BẢNG VÀNG (so-diem): 11/12 nhóm đạt DONG (kể cả 8708); duy nhất 8501 báo DO do HO_PHU trung thực trên đúng 1 bảng [bieu:8501], 0 VUNG_CHONG, khớp vân tay bang-anh-em, toàn kho không phát sinh nhóm DO mới khi cuốn chiếu',
     sdVang12.loiKho.length === 0
     && sdVang12.dong === 11
     && sdVang12.do === 1
+    && sdToanKho.loiKho.length === 0
+    && sdToanKho.dong >= 11
+    && sdToanKho.do === 1
     && tongBangVang === 176
     && JSON.stringify(dsChaHoPhu) === JSON.stringify(['bieu:8501'])
     && soBangVungChong === 0
@@ -3558,6 +3569,51 @@ const KHO_CHUAN = ghiHoSoTam({
     && rProbe6Am.cong[5].loi.some((l) => /bang-anh-em\(bieu:9031\): vanTayCau lệch câu chuong:90#1/.test(l))
     && rProbe6Am.cong[7].loi.some((l) => /bieu:9031.*HO_PHU/.test(l)),
     { kqCanCu9031, vt90: bang9031That?.vanTayCau?.['chuong:90#1'], canCuP6Am, c5: rProbe6Am.cong[5].loi, c7: rProbe6Am.cong[7].loi });
+}
+
+// ── PROBE 7: doBangAnhEm chọn đúng nhánh thắng khi trung.length > 1 (bieu đích danh, gir:3:c#1, TRU, ca âm CHONG_LAP) ──
+{
+  const taoBangThuChong = (giaiChong) => new Map([[
+    'bieu:853710',
+    {
+      cha: 'bieu:853710',
+      chuoiCha: [],
+      anhEm: [
+        {
+          nut: 'bieu:8537101',
+          laLoaiKhac: false,
+          congThuc: { loai: 'HOAC_CUA_VA', cacVe: [{ ve: 1, cacDieuKien: [{ id: 'dk1', phu: false }] }] },
+          cauHoiToiThieu: [],
+        },
+        {
+          nut: 'bieu:85371030',
+          laLoaiKhac: false,
+          congThuc: { loai: 'HOAC_CUA_VA', cacVe: [{ ve: 1, cacDieuKien: [{ id: 'dk2', phu: false }] }] },
+          cauHoiToiThieu: [],
+        },
+      ],
+      giaiChong,
+    },
+  ]]);
+
+  const rCaAm = doBangAnhEm('bieu:853710', { dk1: true, dk2: true }, taoBangThuChong([]));
+  const rDanBieuSau = doBangAnhEm('bieu:853710', { dk1: true, dk2: true }, taoBangThuChong([
+    { cap: ['bieu:8537101', 'bieu:85371030'], cach: 'QUY_TAC_3', nguon: 'gir:3:a#1' },
+    { cap: ['bieu:8537101', 'bieu:85371030'], cach: 'QUY_TAC_3', nguon: 'bieu:85371030#1' },
+  ]));
+  const rGir3c = doBangAnhEm('bieu:853710', { dk1: true, dk2: true }, taoBangThuChong([
+    { cap: ['bieu:8537101', 'bieu:85371030'], cach: 'QUY_TAC_3', nguon: 'gir:3:c#1' },
+  ]));
+  const rTru = doBangAnhEm('bieu:853710', { dk1: true, dk2: true }, taoBangThuChong([
+    { cap: ['bieu:8537101', 'bieu:85371030'], cach: 'TRU', nguon: 'bieu:8537101#1' },
+  ]));
+
+  kiem('PROBE 7 (doBangAnhEm khi trung.length > 1): không có GIAI_CHONG ⇒ CHONG_LAP; dẫn bieu nhánh sau, gir:3:c#1 hoặc TRU ở nhánh đầu ⇒ chọn đúng bieu:85371030 thay vì mù quáng lấy trung[0]',
+    rCaAm.trangThai === 'CHONG_LAP'
+    && rDanBieuSau.trangThai === 'DICH' && rDanBieuSau.dich === 'bieu:85371030'
+    && rGir3c.trangThai === 'DICH' && rGir3c.dich === 'bieu:85371030'
+    && rTru.trangThai === 'DICH' && rTru.dich === 'bieu:85371030',
+    { rCaAm, rDanBieuSau, rGir3c, rTru });
 }
 
 fs.rmSync(TAM, { recursive: true, force: true });
